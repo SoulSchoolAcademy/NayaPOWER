@@ -1,0 +1,40 @@
+/* Smart Block: ship-gate — byte-true from Naya Epic Elements - Lego pieces N5.html */
+.gate-head { margin: 20px 0 18px; padding: 26px; border-radius: 20px; background: linear-gradient(180deg, #0d0d14, #060608); border: 1px solid var(--line); box-shadow: inset 0 2px 12px rgba(0,0,0,.6), 0 16px 40px rgba(0,0,0,.5); text-align: center; }
+
+.gate-bar { position: relative; height: 14px; border-radius: 99px; background: #050507; border: 1px solid rgba(255,255,255,.1); box-shadow: inset 0 2px 6px rgba(0,0,0,.7); overflow: hidden; margin-bottom: 16px; }
+
+.gate-fill { height: 100%; width: 0%; border-radius: 99px; background: linear-gradient(90deg, #e84fff, #a06bff, #3fb8ff, #2fe89e, #ffbf3d); box-shadow: 0 0 18px rgba(47,232,158,.5); transition: width .5s var(--ease); }
+
+.gate-shine { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(255,255,255,.18), transparent 55%); pointer-events: none; border-radius: 99px; }
+
+.gate-status { font-size: 17px; font-weight: 800; letter-spacing: .14em; color: var(--quiet); transition: all .3s; }
+
+.gate-status .gate-lock { color: var(--gold); margin-right: 8px; }
+
+.gate-status.open { color: #2fe89e; text-shadow: 0 0 24px rgba(47,232,158,.7); animation: gate-glow 2s ease-in-out infinite; }
+
+.gate-status.open .gate-lock { color: #2fe89e; }
+
+.checks { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; margin-top: 14px; }
+
+.check { --cc: #a06bff; position: relative; display: flex; gap: 14px; align-items: center; font-size: 15px; cursor: pointer; padding: 16px 18px 16px 64px; border-radius: 16px; background: linear-gradient(160deg, rgba(255,255,255,.04), rgba(255,255,255,.01)); border: 1px solid color-mix(in srgb, var(--cc) 30%, transparent); transition: all .22s var(--ease); }
+
+.check:hover { border-color: color-mix(in srgb, var(--cc) 60%, transparent); transform: translateY(-2px); box-shadow: 0 12px 30px rgba(0,0,0,.5), 0 0 24px -10px var(--cc); }
+
+.check .stage-n { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); font-size: 20px; font-weight: 900; color: var(--cc); opacity: .75; letter-spacing: .05em; text-shadow: 0 0 14px var(--cc); }
+
+.check input { appearance: none; -webkit-appearance: none; width: 26px; height: 26px; margin: 0; flex: none; cursor: pointer; border-radius: 8px; border: 1.5px solid rgba(255,255,255,.4); background: radial-gradient(circle at 32% 28%, rgba(255,255,255,.25), transparent 45%), rgba(255,255,255,.04); transition: all .2s; position: relative; }
+
+.check input:checked { border-color: #2fe89e; background: radial-gradient(circle at 32% 28%, rgba(255,255,255,.85), transparent 42%), radial-gradient(circle at 50% 55%, #2fe89e, color-mix(in srgb, #2fe89e 45%, #000) 78%); box-shadow: 0 0 16px rgba(47,232,158,.6); }
+
+.check input:checked::after { content: "✓"; position: absolute; inset: 0; display: grid; place-items: center; color: #fff; font-size: 14px; font-weight: 900; text-shadow: 0 1px 4px rgba(0,0,0,.6); }
+
+.check:has(input:checked) { border-color: #2fe89e; background: rgba(47,232,158,.06); }
+
+.check:has(input:checked) .stage-n { color: #2fe89e; text-shadow: 0 0 14px #2fe89e; opacity: 1; }
+
+.check:has(input:checked) span:last-child { text-decoration: line-through; opacity: .6; }
+
+@media (prefers-reduced-motion: reduce) {
+  .gate-status.open { animation: none; }
+}

@@ -1,0 +1,5 @@
+.icon-tile{--tone:var(--purple);--rgb:141,99,245;min-height:105px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:#fff;border:1px solid rgba(255,255,255,.09);border-radius:16px;background:linear-gradient(160deg,rgba(255,255,255,.04),rgba(255,255,255,.008));font-size:12px}
+
+.icon-tile:hover .mini-gem{transform:translateY(-3px) rotate(-4deg);box-shadow:inset 0 -5px 9px rgba(0,0,0,.5),0 12px 20px rgba(0,0,0,.48),0 0 20px rgba(var(--rgb),.48)}
+
+.icon-tile:hover .mini-gem.diamond{transform:translateY(-3px) rotate(41deg)}

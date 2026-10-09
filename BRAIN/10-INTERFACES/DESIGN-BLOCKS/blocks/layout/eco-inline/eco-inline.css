@@ -1,0 +1,30 @@
+.eco-inline::-webkit-scrollbar{display:none;}
+
+.eco-dot:hover{transform:translateY(-2px) scale(1.18);border-color:var(--eco-c,#8a5cff) !important;
+  box-shadow:0 0 22px var(--eco-c,#8a5cff),0 0 6px var(--eco-c,#8a5cff),inset 0 1px rgba(255,255,255,.3),0 4px 14px rgba(0,0,0,.5) !important;}
+
+.eco-dot:hover svg{filter:drop-shadow(0 0 7px var(--eco-c,#8a5cff)) !important;}
+
+.eco-dot:hover svg *{stroke:var(--eco-c,#8a5cff) !important;}
+
+.eco-dot:active{transform:scale(1.05);}
+
+@media (max-width:640px) {
+.eco-inline{gap:4px;}
+
+.eco-dot{width:30px !important;height:30px !important;min-width:30px !important;}
+
+.eco-dot svg{width:15px !important;height:15px !important;}
+}
+
+@media(prefers-reduced-motion:reduce){
+
+  *,
+  *:before,
+  *:after{
+    animation-duration:.001ms !important;
+    animation-iteration-count:1 !important;
+    scroll-behavior:auto !important;
+    transition-duration:.001ms !important;
+  }
+}

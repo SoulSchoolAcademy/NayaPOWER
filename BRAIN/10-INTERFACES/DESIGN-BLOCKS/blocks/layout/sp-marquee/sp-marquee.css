@@ -1,0 +1,5 @@
+/* sp-marquee — extracted VERBATIM from "Smart Spaces Page Design.html" <style> block (source order preserved). */
+.sp-marquee{ overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent); mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent); }
+.sp-marquee-track{ display:flex; gap:10px; width:max-content; padding:4px 2px 10px; animation:sp-marquee 60s linear infinite; }
+.sp-invited:hover .sp-marquee-track{ animation-play-state:paused; }
+@keyframes sp-marquee{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }

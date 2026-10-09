@@ -1,0 +1,10 @@
+/* Smart Block: orb-item — byte-true from Naya Jewel Library - N5.html */
+.orb-row { display: flex; gap: 40px; justify-content: center; flex-wrap: wrap; margin: 36px 0 12px; }
+
+.orb-row { display: flex; gap: 28px; flex-wrap: wrap; align-items: center; margin: 24px 0; }
+
+.orb-item { display: flex; gap: 12px; align-items: center; }
+
+.orb-item .orb-label { font-size: 14px; font-weight: 800; }
+
+.orb-item .orb-label small { display: block; font-size: 12px; color: #d6cce5; font-weight: 400; }

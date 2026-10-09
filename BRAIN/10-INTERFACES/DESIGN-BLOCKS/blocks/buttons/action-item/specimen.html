@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Block: action-item &mdash; specimen</title>
+<link rel="stylesheet" href="../../tokens/design-tokens/design-tokens.css">
+<link rel="stylesheet" href="action-item.css">
+<style>
+/* specimen chrome only -- not part of the block */
+body{background:#050507;color:#f8f7fb;font:500 16px/1.6 Manrope,ui-sans-serif,system-ui,sans-serif;margin:0;padding:48px 20px}
+.spec-note{max-width:960px;margin:0 auto 28px;color:#c8c2ce;font-size:13px;letter-spacing:.04em}
+.spec-stage{max-width:960px;margin:0 auto}
+</style>
+</head>
+<body>
+<p class="spec-note">SMART BLOCK SPECIMEN &middot; <b>action-item</b> &middot; Labeled universal action cell: circular action button with tone-lit label beneath. &mdash; markup and CSS extracted byte-true from <i>Naya Building Blocks - The Ultimate Design System - Naya 2.html</i>.</p>
+<div class="spec-stage">
+<svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden"><defs>
+<symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.8 4.6a5.4 5.4 0 0 0-7.6 0L12 5.8l-1.2-1.2a5.4 5.4 0 0 0-7.6 7.6L12 21l8.8-8.8a5.4 5.4 0 0 0 0-7.6Z"/></symbol>
+<symbol id="i-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.5 6.8-4M8.6 13.5l6.8 4"/></symbol>
+<symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+</defs></svg>
+<div class="action-item" style="--tone:#e455f4"><button class="naya-btn icon" aria-label="Like" data-aware><svg class="icon"><use href="#i-heart"/></svg></button><span>LIKE</span></div>
+<div class="action-item" style="--tone:#8d63f5"><button class="naya-btn icon" aria-label="Share" data-aware><svg class="icon"><use href="#i-share"/></svg></button><span>SHARE</span></div>
+<div class="action-item" style="--tone:#3f9ff5"><button class="naya-btn icon" aria-label="Add" data-aware><svg class="icon"><use href="#i-plus"/></svg></button><span>ADD</span></div>
+</div>
+</body>
+</html>

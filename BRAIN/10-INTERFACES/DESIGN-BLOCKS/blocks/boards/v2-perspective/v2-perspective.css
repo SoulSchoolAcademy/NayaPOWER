@@ -1,0 +1,19 @@
+:root{--bg:#06060a;--base:#0b0b12;--rise:#15141f;--white:#fff;--purple:#9d75ff;--indigo:#7285ff;--blue:#55b9ee;--teal:#40d3bb;--emerald:#55e39a;--lime:#b8ee57;--gold:#e8b64c;--orange:#ff9557;--red:#ff5e6c;--magenta:#ed58cd;--ease:cubic-bezier(.16,.84,.22,1)}
+
+.perspective{--c:var(--blue);padding:26px 22px;border:1.5px solid #ffffffbd;border-radius:19px;background:radial-gradient(340px 220px at -20% -40%,color-mix(in srgb,var(--c) 19%,transparent),transparent 75%),linear-gradient(130deg,#16131c,#08080b);box-shadow:inset 0 1px #fff5,0 19px 32px #000a}
+
+.perspective h3{font-size:20px}
+
+.perspective p{font-size:18px;margin:0}
+
+.perspective .jewel{width:23px;height:30px;margin-bottom:12px}
+
+.block-line{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+
+.block-line{grid-template-columns:repeat(2,minmax(0,1fr))}
+
+.block-line{grid-template-columns:1fr}
+
+@media(max-width:1100px){.block-line{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+@media(max-width:740px){.block-line{grid-template-columns:1fr}}

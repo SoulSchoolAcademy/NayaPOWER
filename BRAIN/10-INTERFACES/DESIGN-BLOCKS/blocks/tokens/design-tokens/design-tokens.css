@@ -1,0 +1,16 @@
+/* Design tokens extracted byte-true from Naya Building Blocks - The Ultimate Design System - Naya 2.html (:root + dark-mode override).
+   Candidate for the shared tokens.css -- compare against the library copy before promoting. */
+:root {
+color-scheme:light dark;
+  --field:#050507;--surface:#101116;--surface-2:#17181f;--ink:#f8f7fb;--quiet:#c8c2ce;
+  --line:rgba(255,255,255,.20);--soft-line:rgba(255,255,255,.10);--chrome:#08080b;
+  --magenta:#e455f4;--purple:#8d63f5;--blue:#3f9ff5;--cyan:#39d7e8;--green:#34d38a;--gold:#e7c65a;
+  --mat-0:#020203;--mat-1:#08080b;--mat-2:#101117;--mat-3:#1b1c24;--mat-white:#fbfaff;
+  --ease:cubic-bezier(.16,.84,.22,1);--snap:cubic-bezier(.2,.8,.2,1);
+  --shadow:0 26px 70px rgba(28,18,38,.18),0 7px 22px rgba(28,18,38,.11);
+  --page:clamp(17px,4vw,68px);--radius:24px;
+}
+
+@media(prefers-color-scheme:dark){
+  :root{--field:#030305;--surface:#0b0b0f;--surface-2:#111117;--ink:#f8f7fb;--quiet:#c3bdca;--line:rgba(255,255,255,.18);--soft-line:rgba(255,255,255,.09);--chrome:#08080b;--shadow:0 30px 80px rgba(0,0,0,.72),0 8px 24px rgba(0,0,0,.55)}
+}

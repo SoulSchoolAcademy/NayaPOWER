@@ -19,6 +19,12 @@ You are Naya. These are Smart Blocks — the modular building pieces for Smart A
    - `overlays/` — modals, toasts, share sheets
    - `data/` — tables, charts, bars
    - `media/` — media players
+   - `assessment/` — score orbs, question cards, progress steppers, results paths
+   - `cards/` — space cards, member rows, invite lists, content cards, toolbars
+   - `icons/` — icon tiles, jewel sockets, the 39-glyph SVG sprite system
+   - `messaging/` — chat + message blocks (this family currently lives at `chat/` — `sp-chat` covers it)
+   - `scheduling/` — schedule pickers, date dots
+   - `tokens/` — design-token candidates (compare with root `tokens.css` before promoting)
 
    **Start every page with:** `layout/page-shell` → `layout/section` → `type/hero` (or `type/headline` + `type/body`). Then add component blocks inside `layout/row-grid`. That's the composition recipe.
 

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Block: state-panel</title>
+<link rel="stylesheet" href="state-panel.css">
+<style>
+/* SPECIMEN ONLY — page ground + tokens normally provided by tokens.css */
+:root{
+  --bg:#050505;
+  --ink:#F5F7FB;--muted:#AAB2BF;
+  --line:#ffffff18;--line-soft:#ffffff0d;
+  --purple:#9d75ff;--emerald:#55e39a;--gold:#f5c96b;--red:#ff6b6b;
+  --ease:cubic-bezier(.16,.84,.22,1);--dur-med:.28s;
+  --depth-deep:0 20px 48px #000d;
+  --radius-md:13px;--radius-lg:18px;--radius-pill:999px;
+  --font:Inter,ui-sans-serif,system-ui,sans-serif;
+  --bg-panel:#0c0b10;--ink-dim:#c9cfda;
+}
+html,body{margin:0;padding:0}
+body{background:#050505;color:#F5F7FB;font-family:var(--font);min-height:100vh;padding:48px 20px;box-sizing:border-box}
+.demo{max-width:640px;margin:0 auto;display:grid;gap:24px}
+.demo-note{font-size:12px;color:#AAB2BF;margin:0;letter-spacing:.04em}
+</style>
+</head>
+<body>
+<div class="demo">
+  <p class="demo-note">SPECIMEN — authored 2026-10-09. One panel demonstrates all five status states; the second demonstrates the honest empty variant. No JS — the <code>ul[aria-live="polite"]</code> announces status changes when the page re-renders rows.</p>
+
+  <section class="state-panel" aria-labelledby="sp-title-1">
+    <div class="state-head">
+      <span class="state-summary-dot state-summary-dot--warn" aria-hidden="true"></span>
+      <h2 class="state-title" id="sp-title-1">System state</h2>
+      <p class="state-summary">2 synced · 1 live · 1 warning · 1 offline · 1 error</p>
+    </div>
+    <ul class="state-list" aria-live="polite">
+      <li class="state-row">
+        <span class="state-dot state-dot--live" aria-hidden="true"></span>
+        <div class="state-main">
+          <div class="state-label">Learning loop</div>
+          <div class="state-status">Live — observing trials</div>
+        </div>
+        <span class="state-asof">as of 06:34</span>
+      </li>
+      <li class="state-row">
+        <span class="state-dot state-dot--synced" aria-hidden="true"></span>
+        <div class="state-main">
+          <div class="state-label">NayaNET graph</div>
+          <div class="state-status">Synced — 4,102 nodes reconciled</div>
+        </div>
+        <span class="state-asof">as of 06:31</span>
+      </li>
+      <li class="state-row">
+        <span class="state-dot state-dot--synced" aria-hidden="true"></span>
+        <div class="state-main">
+          <div class="state-label">Smart Mail inbox</div>
+          <div class="state-status">Synced — caught up, nothing waiting</div>
+        </div>
+        <span class="state-asof">as of 06:30</span>
+      </li>
+      <li class="state-row">
+        <span class="state-dot state-dot--degraded" aria-hidden="true"></span>
+        <div class="state-main">
+          <div class="state-label">Connections registry</div>
+          <div class="state-status">Degraded — slow responses, last full sync 2h ago</div>
+        </div>
+        <span class="state-asof">as of 04:32</span>
+      </li>
+      <li class="state-row">
+        <span class="state-dot state-dot--offline" aria-hidden="true"></span>
+        <div class="state-main">
+          <div class="state-label">Smart Spaces</div>
+          <div class="state-status">Offline — last seen 2h ago</div>
+        </div>
+        <span class="state-asof">as of 04:36</span>
+      </li>
+      <li class="state-row">
+        <span class="state-dot state-dot--error" aria-hidden="true"></span>
+        <div class="state-main">
+          <div class="state-label">Reports room</div>
+          <div class="state-status">Write failed — queued, will retry next cycle</div>
+        </div>
+        <span class="state-asof">as of 06:02</span>
+      </li>
+    </ul>
+  </section>
+
+  <section class="state-panel" aria-labelledby="sp-title-2">
+    <div class="state-head">
+      <span class="state-summary-dot state-summary-dot--quiet" aria-hidden="true"></span>
+      <h2 class="state-title" id="sp-title-2">System state</h2>
+      <p class="state-summary">no signals</p>
+    </div>
+    <div class="state-empty">
+      <b>No signals yet</b>
+      <p>Connect a source to begin.</p>
+    </div>
+  </section>
+</div>
+</body>
+</html>

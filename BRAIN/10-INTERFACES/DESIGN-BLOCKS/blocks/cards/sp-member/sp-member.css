@@ -1,0 +1,56 @@
+/* sp-member — extracted VERBATIM from "Smart Spaces Page Design.html" <style> block (source order preserved). */
+.sp-mstack{ display:flex; }
+.sp-mstack .sp-ava{ margin-left:-8px; border:2px solid #0c0c10; }
+.sp-mstack .sp-ava:first-child{ margin-left:0; }
+.sp-ava{
+  display:inline-flex; align-items:center; justify-content:center; flex:none;
+  width:44px; height:44px; border-radius:50%;
+  font-size:16px; font-weight:900; color:#fff; letter-spacing:.02em;
+  text-shadow:0 1px 6px rgba(0,0,0,.75);
+  background:
+    radial-gradient(circle at 32% 26%, rgba(255,255,255,.55) 0%, rgba(255,255,255,0) 44%),
+    radial-gradient(circle at 50% 58%, color-mix(in srgb, var(--cc,#8b93a3) 92%, #000) 0%, color-mix(in srgb, var(--cc,#8b93a3) 42%, #050508) 100%);
+  border:1px solid color-mix(in srgb, var(--cc,#8b93a3) 72%, #fff);
+  box-shadow:0 0 14px -3px var(--cc,#8b93a3), inset 0 1px 2px rgba(255,255,255,.35), inset 0 -4px 8px rgba(0,0,0,.55);
+}
+.sp-ava.xs{ width:28px; height:28px; font-size:10px; }
+.sp-ava.sm{ width:36px; height:36px; font-size:12px; }
+.sp-ava.md{ width:52px; height:52px; font-size:16px; }
+.sp-member{
+  display:flex; align-items:center; gap:16px;
+  background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.08);
+  border-radius:18px; padding:16px 18px; margin-bottom:12px;
+  transition:border-color .2s, transform .15s;
+}
+.sp-member:hover{ border-color:rgba(157,117,255,.4); transform:translateX(4px); }
+.sp-member-info{ flex:1; min-width:0; }
+.sp-member-name{ font-size:16px; font-weight:800; color:#fff; }
+.sp-member-role{ font-size:12px; color:#8a8a96; margin-top:2px; }
+.sp-save-contact{
+  padding:11px 22px; border-radius:999px; font-size:11px; font-weight:800; letter-spacing:.08em;
+  cursor:pointer; font-family:inherit; color:#fff; white-space:nowrap;
+  background:linear-gradient(180deg,#161618,#0a0a0c);
+  border:1px solid rgba(157,117,255,.6);
+  box-shadow:0 6px 20px -6px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.08), inset 0 0 0 1px rgba(157,117,255,.05,.25);
+  transition:transform .15s, box-shadow .25s;
+}
+.sp-save-contact:hover{ transform:translateY(-2px) scale(1.03); color:#fff; text-shadow:0 0 12px rgba(255,255,255,.7); border-color:rgba(157,117,255,.85); box-shadow:0 10px 28px -6px rgba(124,92,255,.9), 0 0 20px -4px rgba(157,117,255,.5); }
+.sp-saved-badge{
+  font-size:11px; font-weight:800; color:#0d9e6f; white-space:nowrap;
+  background:rgba(85,227,154,.1); border:1px solid rgba(85,227,154,.3);
+  border-radius:99px; padding:8px 16px;
+}
+.sp-member-mail{
+  width:40px; height:40px; border-radius:50%; font-size:16px;
+  cursor:pointer; color:#c9cdd8; flex:none;
+  background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.15);
+  transition:border-color .2s, color .2s;
+}
+.sp-member-mail:hover{ border-color:#7c3aed; color:#a78bfa; }
+@media(max-width:760px){
+.sp-member{ flex-wrap:wrap; }
+.sp-save-contact{ width:100%; text-align:center; }
+}
+@media(prefers-reduced-motion:reduce){
+.sp-card, .sp-member, .sp-modal, .sp-save-contact{ transition:none; animation:none; }
+}

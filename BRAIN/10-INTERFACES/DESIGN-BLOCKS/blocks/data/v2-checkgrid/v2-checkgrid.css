@@ -1,0 +1,15 @@
+:root{--bg:#06060a;--base:#0b0b12;--rise:#15141f;--white:#fff;--purple:#9d75ff;--indigo:#7285ff;--blue:#55b9ee;--teal:#40d3bb;--emerald:#55e39a;--lime:#b8ee57;--gold:#e8b64c;--orange:#ff9557;--red:#ff5e6c;--magenta:#ed58cd;--ease:cubic-bezier(.16,.84,.22,1)}
+
+.checkgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+
+.checkgrid{grid-template-columns:1fr}
+
+.check{--c:var(--purple);display:flex;gap:20px;align-items:flex-start;border:1.5px solid #ffffff9e;background:linear-gradient(130deg,#17131e,#08080c);padding:24px;border-radius:20px;box-shadow:inset 0 1px #ffffff42,0 15px 35px #000a}
+
+.check .jewel{width:29px;height:37px}
+
+.check b{font-size:20px;display:block;margin-bottom:6px}
+
+.check p{font-size:18px;margin:0}
+
+@media(max-width:740px){.checkgrid{grid-template-columns:1fr}}

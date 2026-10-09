@@ -1,0 +1,37 @@
+/* Smart Block: n4-tongue
+ * Source: Naya Design Standard Showcase (1).html (byte-true extraction, not rewritten)
+ * Type: boards
+ * Extracted: 2026-10-09
+ */
+
+/* ---- component rules ---- */
+
+.tongues{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
+
+.tongue{border:1.5px solid color-mix(in srgb, var(--tc3) 45%, rgba(255,255,255,.35)); border-radius:16px; padding:24px; background:linear-gradient(180deg,#0e0e13,#070709);
+  box-shadow:inset 0 2px 3px rgba(255,255,255,.12), 0 16px 40px rgba(0,0,0,.6), 0 0 36px -6px var(--tc3);
+  transition:border-color .25s var(--ease), box-shadow .25s var(--ease), transform .25s var(--ease);}
+
+.tongue:hover{border-color:color-mix(in srgb, var(--tc3) 62%, rgba(255,255,255,.55));
+  box-shadow:inset 0 2px 3px rgba(255,255,255,.16), 0 22px 50px rgba(0,0,0,.65), 0 0 52px -4px var(--tc3), 0 0 90px -14px var(--tc3);
+  transform:translateY(-3px);}
+
+.aiphase{font-size:14px; font-weight:800; letter-spacing:.26em; color:rgba(255,255,255,.55); text-transform:uppercase; margin:16px 0 8px;}
+
+.aiphase:first-of-type{margin-top:4px;}
+
+.tongue h3{text-shadow:0 0 18px currentColor;}
+
+.tongue h3{font-size:14px; letter-spacing:.2em; color:var(--tc3); margin:0 0 12px;}
+
+.tongue p, .tongue li{font-size:18px; color:#fff;}
+
+.tongue ul{margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:12px;}
+
+.tongue ul li{display:flex; gap:12px; align-items:flex-start;}
+
+.tongue ul li .jw{width:24px; height:24px; font-size:11px; margin-top:2px;}
+
+@media (max-width:900px) {
+.tongues{grid-template-columns:1fr;}
+}

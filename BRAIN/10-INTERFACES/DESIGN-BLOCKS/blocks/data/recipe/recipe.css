@@ -1,0 +1,5 @@
+.recipe{margin-top:18px;overflow:hidden;border:1px solid var(--line);border-radius:22px;background:#08080c;color:#f8f7fb}
+
+.recipe-head{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:15px 18px;border-bottom:1px solid rgba(255,255,255,.14)}
+
+.recipe-head strong{font-size:14px}

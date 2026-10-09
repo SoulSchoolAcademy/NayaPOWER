@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Block: hub-rail</title>
+<link rel="stylesheet" href="hub-rail.css">
+<style>
+/* SPECIMEN ONLY — page ground + tokens normally provided by tokens.css */
+:root{
+  --bg:#0B0D12;--bg-panel:#12151D;
+  --ink:#F5F7FB;--ink-dim:#F5F7FB;--muted:#AAB2BF;
+  --line-soft:#ffffff0d;
+  --purple:#9d75ff;
+  --ease:cubic-bezier(.16,.84,.22,1);--dur-med:.28s;
+  --depth-deep:0 20px 48px #000d;
+  --radius-lg:17px;
+  --font:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+html,body{margin:0;padding:0}
+body{background:#0B0D12;color:#F5F7FB;font-family:var(--font);min-height:100vh;display:grid;place-items:center;padding:48px 20px;box-sizing:border-box}
+.demo{width:min(420px,100%);display:grid;gap:20px;justify-items:center}
+.demo-note{font-size:12px;color:#AAB2BF;margin:0;letter-spacing:.04em;text-align:center}
+</style>
+</head>
+<body>
+<div class="demo">
+  <p class="demo-note">SPECIMEN — reconstructed from CSS: .rail-card / .rail-toggle / .rail-collapsed have NO rendered instance in the source (the shipped rail shell uses different classes). Structure follows the CSS. .rail-collapsed is a state class applied to the shell grid parent.</p>
+
+  <button
+    class="rail-toggle"
+    type="button"
+    aria-label="Toggle rail"
+  ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+
+  <aside class="rail-card">
+    <b>RAIL NOTE</b>
+    <p>A quiet card that lives in the hub rail — context, hints, or a mini status readout beside the room navigation.</p>
+  </aside>
+
+  <p class="demo-note">Collapsed state (applied to the shell grid): <code>.rail-collapsed</code> slides the rail off-canvas — <code>.rail-collapsed .rail.left { transform: translateX(-100%); opacity: 0; pointer-events: none; }</code></p>
+</div>
+</body>
+</html>

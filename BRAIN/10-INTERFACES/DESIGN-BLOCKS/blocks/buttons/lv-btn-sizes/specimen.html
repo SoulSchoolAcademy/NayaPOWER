@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Block: lv-btn-sizes</title>
+<link rel="stylesheet" href="lv-btn-sizes.css">
+<style>
+/* SPECIMEN ONLY — page ground + tokens normally provided by tokens.css */
+:root {
+  --lv-ease: cubic-bezier(.22,1,.36,1);
+  --lv-snap: cubic-bezier(.32,.72,0,1);
+}
+body { background:#050507; color:#F8F7FB; font-family:system-ui,-apple-system,sans-serif; padding:48px 32px; min-height:100vh; }
+.sb-note { max-width:760px; margin:0 0 32px; padding:16px 20px; border:1px dashed rgba(255,255,255,.25); border-radius:12px; font-size:13px; color:rgba(255,255,255,.65); }
+.sb-note b { color:#fff; }
+</style>
+</head>
+<body>
+<div class="sb-note"><b>Smart Block: lv-btn-sizes</b> &mdash; specimen. Block CSS is byte-true from <i>Naya  Elite Buttons N5.html</i>. Requires <b>tokens.css</b>, buttons/lv-btn.</div>
+<span class="lv-wrap">
+  <button class="lv-btn lv-hero" style="--lv-accent:#e84fff;--lv-accent-rgb:232,79,255"><span class="lv-label">ENTER THE STANDARD</span></button>
+</span>
+<span class="lv-wrap">
+  <button class="lv-btn lv-sm" style="--lv-accent:#3fb8ff;--lv-accent-rgb:63,184,255"><span class="lv-label">Compact</span></button>
+</span>
+
+</body>
+</html>

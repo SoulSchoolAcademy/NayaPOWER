@@ -1,0 +1,188 @@
+/* Smart Block: continue-button — the assessment continue CTA.
+   `.continue-button` base anatomy is verbatim from Maxis App Design.html,
+   decoupled from the `.primary-black` compound it shipped with. The sheen,
+   `.ready` breath, and `.continue-hint` are authored: this button carries
+   momentum — "continue" is a promise of progress, not just a label. */
+.continue-button{
+  position:relative;
+  min-width:190px;
+  min-height:54px;
+  padding:0 22px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  overflow:hidden;
+  border-radius:18px;
+  border:1px solid rgba(181,140,255,.78);
+  color:#fff;
+  background:
+    linear-gradient(
+      180deg,
+      #15151a,
+      #08080b
+    );
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.09),
+    0 12px 28px rgba(0,0,0,.62),
+    0 0 28px rgba(116,55,223,.15);
+  font-size:14px;
+  font-weight:950;
+  letter-spacing:.01em;
+  cursor:pointer;
+  transition:
+    transform .22s var(--ease),
+    border-color .22s ease,
+    box-shadow .22s ease,
+    background .22s ease;
+}
+/* Top highlight line — the bevel that keeps it elevated, never flat. */
+.continue-button::before{
+  content:"";
+  position:absolute;
+  left:10%;
+  right:10%;
+  top:5px;
+  height:1px;
+  background:rgba(255,255,255,.45);
+  pointer-events:none;
+}
+/* Forward-motion sheen — a restrained sweep on hover. */
+.continue-button::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  background:
+    linear-gradient(
+      105deg,
+      transparent 40%,
+      rgba(255,255,255,.10) 50%,
+      transparent 60%
+    );
+  transform:translateX(-130%);
+  transition:transform .6s ease;
+  pointer-events:none;
+}
+.continue-button:hover:not(:disabled)::after{
+  transform:translateX(130%);
+}
+.continue-button:hover:not(:disabled){
+  transform:translateY(-2px);
+  border-color:#c5a8ff;
+  background:
+    linear-gradient(
+      180deg,
+      #1b1721,
+      #09090d
+    );
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.13),
+    0 15px 35px rgba(0,0,0,.66),
+    0 0 42px rgba(155,96,255,.30);
+}
+.continue-button:active:not(:disabled){
+  transform:translateY(0) scale(.985);
+  border-color:#c5a8ff;
+  background:
+    linear-gradient(
+      180deg,
+      #1b1721,
+      #09090d
+    );
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.13),
+    0 15px 35px rgba(0,0,0,.66),
+    0 0 42px rgba(155,96,255,.30);
+}
+.continue-button:focus-visible{
+  outline:2px solid rgba(181,140,255,.85);
+  outline-offset:3px;
+}
+.continue-button:disabled{
+  color:rgba(255,255,255,.42);
+  border-color:rgba(255,255,255,.10);
+  background:#0b0b0e;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.04),
+    0 7px 18px rgba(0,0,0,.30);
+  opacity:.7;
+  cursor:not-allowed;
+}
+.continue-button:disabled::after{
+  display:none;
+}
+/* The arrow — forward motion made visible. */
+.button-arrow{
+  display:inline-block;
+  transition:transform .22s var(--ease);
+  color:#d0bcff;
+}
+.continue-button:hover:not(:disabled) .button-arrow{
+  transform:translateX(3px);
+}
+.continue-button:active:not(:disabled) .button-arrow{
+  transform:translateX(6px);
+}
+/* `.ready` — one gentle breath the moment the button becomes clickable.
+   Added by continue-button.js when `disabled` is removed. */
+.continue-button.ready{
+  animation:cb-ready .9s var(--ease);
+}
+@keyframes cb-ready{
+  0%{
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.09),
+      0 12px 28px rgba(0,0,0,.62),
+      0 0 28px rgba(116,55,223,.15);
+  }
+  40%{
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.14),
+      0 14px 34px rgba(0,0,0,.66),
+      0 0 48px rgba(155,96,255,.38);
+  }
+  100%{
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.09),
+      0 12px 28px rgba(0,0,0,.62),
+      0 0 28px rgba(116,55,223,.15);
+  }
+}
+/* Guidance microcopy — calm, never nagging. */
+.continue-hint{
+  margin:10px 0 0;
+  color:#96919d;
+  font-size:13px;
+  font-weight:600;
+  text-align:center;
+}
+@media (prefers-reduced-motion:reduce){
+  .continue-button,
+  .continue-button:hover:not(:disabled),
+  .continue-button:active:not(:disabled){
+    transform:none;
+    transition:none;
+  }
+  .continue-button::after{
+    display:none;
+  }
+  .continue-button .button-arrow{
+    transition:none;
+  }
+  .continue-button.ready{
+    animation:none;
+  }
+}
+@media (max-width:420px){
+  .continue-button{
+    min-width:0;
+    width:100%;
+  }
+}
+@media print{
+  .continue-button,
+  .continue-hint{
+    display:none;
+  }
+}

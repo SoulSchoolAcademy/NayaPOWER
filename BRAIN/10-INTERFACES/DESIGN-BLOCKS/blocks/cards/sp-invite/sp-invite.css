@@ -1,0 +1,44 @@
+/* sp-invite — extracted VERBATIM from "Smart Spaces Page Design.html" <style> block (source order preserved). */
+.sp-mstack .sp-ava{ margin-left:-8px; border:2px solid #0c0c10; }
+.sp-mstack .sp-ava:first-child{ margin-left:0; }
+.sp-ava{
+  display:inline-flex; align-items:center; justify-content:center; flex:none;
+  width:44px; height:44px; border-radius:50%;
+  font-size:16px; font-weight:900; color:#fff; letter-spacing:.02em;
+  text-shadow:0 1px 6px rgba(0,0,0,.75);
+  background:
+    radial-gradient(circle at 32% 26%, rgba(255,255,255,.55) 0%, rgba(255,255,255,0) 44%),
+    radial-gradient(circle at 50% 58%, color-mix(in srgb, var(--cc,#8b93a3) 92%, #000) 0%, color-mix(in srgb, var(--cc,#8b93a3) 42%, #050508) 100%);
+  border:1px solid color-mix(in srgb, var(--cc,#8b93a3) 72%, #fff);
+  box-shadow:0 0 14px -3px var(--cc,#8b93a3), inset 0 1px 2px rgba(255,255,255,.35), inset 0 -4px 8px rgba(0,0,0,.55);
+}
+.sp-ava.xs{ width:28px; height:28px; font-size:10px; }
+.sp-ava.sm{ width:36px; height:36px; font-size:12px; }
+.sp-ava.md{ width:52px; height:52px; font-size:16px; }
+.sp-invite-btn{
+  padding:9px 20px; border-radius:999px; font-size:11px; font-weight:800; letter-spacing:.08em;
+  cursor:pointer; font-family:inherit; color:#fff;
+  background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.2);
+  transition:border-color .2s, box-shadow .25s;
+}
+.sp-invite-btn:hover{ border-color:var(--sc); box-shadow:0 0 16px -4px var(--sc); }
+.sp-invite-list{ max-height:320px; overflow-y:auto; margin-bottom:16px; }
+.sp-invite-row{ display:flex; align-items:center; gap:12px; padding:10px 0; border-bottom:1px solid rgba(255,255,255,.06); }
+.sp-invite-name{ flex:1; font-size:14px; font-weight:600; color:#fff; }
+.sp-invite-add{
+  padding:8px 18px; border-radius:999px; font-size:11px; font-weight:800;
+  cursor:pointer; font-family:inherit; color:#a78bfa;
+  background:rgba(157,117,255,.12); border:1px solid rgba(157,117,255,.4);
+}
+.sp-invite-add:hover{ background:rgba(157,117,255,.2); }
+.sp-invited{ margin:4px 0 18px; }
+.sp-invited-title{ font-size:14px; font-weight:800; letter-spacing:.04em; margin-bottom:10px; color:#fff; }
+.sp-invited:hover .sp-marquee-track{ animation-play-state:paused; }
+.sp-inv-chip{ flex:0 0 auto; display:flex; flex-direction:column; gap:6px; align-items:flex-start;
+  padding:12px 14px; border-radius:16px; cursor:pointer; text-align:left; font-family:inherit;
+  background:linear-gradient(135deg, color-mix(in srgb, var(--sc) 30%, transparent), rgba(10,8,16,.92));
+  border:1px solid color-mix(in srgb, var(--sc) 45%, transparent); color:#fff; max-width:230px;
+  transition:transform .15s ease, box-shadow .15s ease; }
+.sp-inv-chip:hover{ transform:translateY(-2px); box-shadow:0 8px 28px -8px var(--sc); }
+.sp-inv-chip-name{ font-size:13px; font-weight:800; line-height:1.3; }
+.sp-inv-chip-join{ font-size:11px; font-weight:700; color:var(--sc); letter-spacing:.06em; }

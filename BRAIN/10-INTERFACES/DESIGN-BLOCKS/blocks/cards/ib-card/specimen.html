@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Block: ib-card</title>
+<link rel="stylesheet" href="ib-card.css">
+<style>
+/* SPECIMEN ONLY — page ground + tokens normally provided by tokens.css */
+:root{
+  --bg:#0B0D12;--bg-raise:#12151D;
+  --ink:#F5F7FB;--muted:#AAB2BF;
+  --line:#ffffff18;--line-soft:#ffffff0d;
+  --purple:#9d75ff;--indigo:#6675ff;--sapphire:#55b9ee;--teal:#40d3bb;
+  --emerald:#55e39a;--lime:#b8ee57;--yellow:#f1d75a;--gold:#e8b64c;
+  --orange:#ff9a5a;--rich-orange:#ff7a3d;--red:#ff5a6e;--magenta:#d86cff;
+  --ease:cubic-bezier(.16,.84,.22,1);--dur-med:.28s;
+  --depth-deep:0 20px 48px #000d;--depth-hi:inset 0 1px #fff6;--depth-drop:0 18px 42px #000b;
+  --radius-lg:17px;
+  --font:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+html,body{margin:0;padding:0}
+body{background:#0B0D12;color:#F5F7FB;font-family:var(--font);min-height:100vh;padding:48px 20px;box-sizing:border-box}
+.demo{max-width:760px;margin:0 auto;display:grid;gap:28px}
+.demo-note{font-size:12px;color:#AAB2BF;margin:0;letter-spacing:.04em}
+</style>
+</head>
+<body>
+<div class="demo">
+  <p class="demo-note">SPECIMEN — the intelligent block card is JS-rendered in the source (intelBoard); converted here to static HTML. Structure and class names are verbatim; demo content stands in for a real Smart Note. NOTE: the source nests &lt;button class="ib-layer-play"&gt; inside &lt;button class="ib-layer-head"&gt; — kept verbatim.</p>
+
+  <article
+    class="intel-board tone-purple board"
+    aria-label="Smart Note demo-note"
+    data-intelligence-id="smart-note-demo"
+  >
+
+    <!-- Block top: identity (jewel + title + meta) -->
+    <div class="ib-blocktop">
+      <div class="ib-identity">
+        <span
+          class="ib-jewel"
+          aria-hidden="true"
+          style="--tone:var(--purple);color:#9d75ff"
+        >
+          <svg class="v10-icon" viewBox="0 0 32 32" aria-hidden="true">
+            <polygon class="core" points="16,3 28,12 16,29 4,12"/>
+            <polygon class="facet" points="16,3 22,12 16,12"/>
+            <polygon class="facet" points="16,3 10,12 16,12" opacity=".3"/>
+            <polygon class="shade" points="16,29 28,12 16,12"/>
+            <polygon class="edge" points="16,3 28,12 16,29 4,12"/>
+          </svg>
+        </span>
+        <div>
+          <h2 class="ib-title">The One-Brain Principle</h2>
+          <div class="ib-meta"><span>doctrine</span><span class="meta-sep">·</span><span>architecture</span><span class="meta-sep">·</span><span>memory</span></div>
+          <div class="ib-subtitle">One user-owned brain; every AI rides on top of it.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Nutshell -->
+    <div class="ib-nutshell">
+      <b>IN A NUTSHELL</b>
+      <p>{{the extracted "In A Nutshell" layer body — up to 600 chars in the source}}</p>
+    </div>
+
+    <!-- Layers -->
+    <div class="ib-layers">
+
+      <div class="ib-layer layer-purple">
+        <button
+          class="ib-layer-head open"
+          aria-expanded="true"
+        >
+          <span class="layer-jewel-wrap" style="--lc:#55e39a">
+            <svg class="layer-jewel-svg" viewBox="0 0 32 32" aria-hidden="true">
+              <circle cx="16" cy="16" r="14" fill="#0a0a0e" stroke="#55e39a" stroke-width="2.5"/>
+              <circle cx="16" cy="16" r="14" fill="none" stroke="#55e39a" stroke-width="1" opacity=".4"/>
+              <g transform="translate(8,8) scale(.67)" fill="#ffffff" stroke="#ffffff" stroke-width=".5"><circle cx="12" cy="12" r="4"/></g>
+            </svg>
+          </span>
+          <b>What It Means</b>
+          <button
+            class="ib-layer-play"
+            data-layer-name="What It Means"
+            aria-label="Hear Naya read What It Means"
+            title="Play in Naya's voice"
+          ><span>▶</span></button>
+        </button>
+        <div class="ib-layer-body">
+          <p>{{primary-tier layer body — rendered markdown in the source}}</p>
+        </div>
+      </div>
+
+      <div class="ib-layer layer-sapphire is-deeper">
+        <button
+          class="ib-layer-head"
+          aria-expanded="false"
+        >
+          <span class="layer-jewel-wrap" style="--lc:#55b9ee">
+            <svg class="layer-jewel-svg" viewBox="0 0 32 32" aria-hidden="true">
+              <circle cx="16" cy="16" r="14" fill="#0a0a0e" stroke="#55b9ee" stroke-width="2.5"/>
+              <circle cx="16" cy="16" r="14" fill="none" stroke="#55b9ee" stroke-width="1" opacity=".4"/>
+              <g transform="translate(8,8) scale(.67)" fill="#ffffff" stroke="#ffffff" stroke-width=".5"><circle cx="12" cy="12" r="4"/></g>
+            </svg>
+          </span>
+          <b>How To Use It</b>
+          <button
+            class="ib-layer-play"
+            data-layer-name="How To Use It"
+            aria-label="Hear Naya read How To Use It"
+            title="Play in Naya's voice"
+          ><span>▶</span></button>
+        </button>
+        <div
+          class="ib-layer-body"
+          hidden
+        >
+          <p>{{deeper-tier layer body — hidden until expanded in the source}}</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Provenance foot -->
+    <div class="ib-foot">
+      <span>Smart Note demo · from your Smart Feed</span>
+    </div>
+
+    <!-- Microcopy trust signals -->
+    <div class="ib-microcopy">
+      <span class="left">ONE INTELLIGENCE · MANY VIEWS · ONE IDENTITY</span>
+      <span class="right">TRUST: SOURCE / INTERPRETATION SEPARATED</span>
+    </div>
+
+  </article>
+</div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+/* Smart Block: n4-type-card
+ * Source: Naya Design Standard Showcase (1).html (byte-true extraction, not rewritten)
+ * Type: type
+ * Extracted: 2026-10-09
+ */
+
+/* ---- component rules ---- */
+
+.typecards{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
+
+.typecard{border-radius:18px; padding:28px 26px; background:linear-gradient(180deg,#0d0d13,#070709);
+  border:1.5px solid color-mix(in srgb, var(--tc) 55%, transparent);
+  box-shadow:0 14px 40px rgba(0,0,0,.6), 0 0 28px -6px var(--tc), inset 0 1px 0 rgba(255,255,255,.08);}
+
+.typecard .tk{font-size:14px; font-weight:800; letter-spacing:.22em; color:var(--tc); margin:0 0 14px;
+  text-shadow:0 0 16px var(--tc);}
+
+@media (max-width:900px) {
+.typecards{grid-template-columns:1fr;}
+}

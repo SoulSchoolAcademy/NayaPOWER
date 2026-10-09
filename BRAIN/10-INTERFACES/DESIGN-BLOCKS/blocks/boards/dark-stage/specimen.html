@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Block: dark-stage &mdash; specimen</title>
+<link rel="stylesheet" href="../../tokens/design-tokens/design-tokens.css">
+<link rel="stylesheet" href="dark-stage.css">
+<style>
+/* specimen chrome only -- not part of the block */
+body{background:#050507;color:#f8f7fb;font:500 16px/1.6 Manrope,ui-sans-serif,system-ui,sans-serif;margin:0;padding:48px 20px}
+.spec-note{max-width:960px;margin:0 auto 28px;color:#c8c2ce;font-size:13px;letter-spacing:.04em}
+.spec-stage{max-width:960px;margin:0 auto}
+</style>
+</head>
+<body>
+<p class="spec-note">SMART BLOCK SPECIMEN &middot; <b>dark-stage</b> &middot; Dark radial stage for component showcases: purple-top glow, heading + lede. &mdash; markup and CSS extracted byte-true from <i>Naya Building Blocks - The Ultimate Design System - Naya 2.html</i>.</p>
+<div class="spec-stage">
+<svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden"><defs>
+<symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 2 2.1 7.9L22 12l-7.9 2.1L12 22l-2.1-7.9L2 12l7.9-2.1Z"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+<symbol id="i-diamond" viewBox="0 0 24 24"><path d="M6 4h12l5 6-11 12L1 10 6 4Zm-5 6h22M6 4l6 18L18 4"/></symbol>
+<symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="m4 12 5.5 5.5L20 6"/></symbol>
+<symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="7"/><path d="m16 16 5 5"/></symbol>
+</defs></svg>
+<div class="dark-stage"><div class="stage-heading"><h3>The flagship set</h3><p>Move toward them slowly. Light responds before the cursor arrives; geometry never becomes noisy.</p></div><div class="flagship-grid"><div class="flagship" style="--rgb:228,85,244"><span class="source-rank"><b>01</b> NAYA 4 · LEAD STANDARD</span><button class="naya-btn lead" style="--tone:#e455f4"><svg class="icon"><use href="#i-spark"/></svg>Enter the standard<svg class="icon icon-sm"><use href="#i-arrow"/></svg></button><span class="spec-name">OBSIDIAN PILL / strongest depth + restraint</span></div><div class="flagship" style="--rgb:141,99,245"><span class="source-rank"><b>02</b> NAYA 2 · MACHINE LAW</span><button class="naya-btn machine" style="--tone:#8d63f5"><span class="law-glyph">§</span>Machine law</button><span class="spec-name">LAW PILL / incredible clarity at rest</span></div><div class="flagship" style="--rgb:63,159,245"><span class="source-rank"><b>03</b> NAYA 3 · APP CRAFT</span><button class="naya-btn streak" style="--tone:#3f9ff5"><svg class="icon"><use href="#i-diamond"/></svg>Illuminate meaning</button><span class="spec-name">LIGHT STREAK / precise interface detail</span></div></div><div class="button-library"><div class="button-cell"><button class="naya-btn proximity" style="--tone:#34d38a;--rgb:52,211,138" data-aware><svg class="icon icon-sm"><use href="#i-plus"/></svg>Create space</button><span class="caption">04 · Naya 5 proximity · black restored</span></div><div class="button-cell"><button class="naya-btn split" style="--tone:#e7c65a;--rgb:231,198,90" data-aware>View proof<span class="split-orb"><svg class="icon"><use href="#i-check"/></svg></span></button><span class="caption">Portal variant</span></div><div class="button-cell"><button class="naya-btn icon" aria-label="Search" style="--tone:#e7c65a;--rgb:231,198,90" data-aware><svg class="icon"><use href="#i-search"/></svg></button><span class="caption">Icon action</span></div><div class="button-cell"><div class="segmented" role="tablist" aria-label="View mode"><button aria-selected="true">Human</button><button aria-selected="false">Naya</button><button aria-selected="false">Machine</button></div><span class="caption">Smart lens</span></div></div><p class="proximity-note"><span class="proximity-dot"></span>Library order: Naya 4 → Naya 2 → Naya 3 → Naya 5. Every variant inherits <code>.naya-btn</code>. Naya 5’s washed black is corrected to true obsidian.</p></div>
+</div>
+</body>
+</html>

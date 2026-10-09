@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Block: search-field &mdash; specimen</title>
+<link rel="stylesheet" href="../../tokens/design-tokens/design-tokens.css">
+<link rel="stylesheet" href="search-field.css">
+<style>
+/* specimen chrome only -- not part of the block */
+body{background:#050507;color:#f8f7fb;font:500 16px/1.6 Manrope,ui-sans-serif,system-ui,sans-serif;margin:0;padding:48px 20px}
+.spec-note{max-width:960px;margin:0 auto 28px;color:#c8c2ce;font-size:13px;letter-spacing:.04em}
+.spec-stage{max-width:960px;margin:0 auto}
+</style>
+</head>
+<body>
+<p class="spec-note">SMART BLOCK SPECIMEN &middot; <b>search-field</b> &middot; Search interface: recessed searchbox with kbd hint + scoped result rows. &mdash; markup and CSS extracted byte-true from <i>Naya Building Blocks - The Ultimate Design System - Naya 2.html</i>.</p>
+<div class="spec-stage">
+<svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden"><defs>
+<symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="7"/><path d="m16 16 5 5"/></symbol>
+<symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 2 2.1 7.9L22 12l-7.9 2.1L12 22l-2.1-7.9L2 12l7.9-2.1Z"/></symbol>
+</defs></svg>
+<div class="recessed-field search-field" role="searchbox" tabindex="0" aria-label="Search your intelligence"><svg class="icon"><use href="#i-search"/></svg><span>Search your intelligence</span><kbd>⌘ K</kbd></div>
+<div class="search-result"><span class="mini-gem diamond"><svg class="icon"><use href="#i-spark"/></svg></span><div><strong>One governed answer</strong><small>Source and truth state stay visible.</small></div></div>
+</div>
+</body>
+</html>

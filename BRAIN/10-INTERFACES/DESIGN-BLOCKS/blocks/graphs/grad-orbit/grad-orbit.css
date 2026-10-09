@@ -1,0 +1,23 @@
+.grad-orbit{position:relative;width:min(100%,330px);aspect-ratio:1;margin:auto}
+
+.grad-orbit .ring{position:absolute;border:1px solid var(--line);border-radius:50%}
+
+.grad-orbit .r1{inset:0}
+
+.grad-orbit .r2{inset:17%}
+
+.grad-orbit .r3{inset:34%}
+
+.grad-orbit .core{position:absolute;inset:42%;border-radius:50%;background:radial-gradient(circle at 35% 25%,#fff,var(--purple) 30%,#060408);box-shadow:0 0 20px rgba(141,99,245,.45)}
+
+.step-dot{--angle:0deg;position:absolute;left:50%;top:50%;width:26px;height:26px;margin:-13px;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:10px;font-weight:800;background:radial-gradient(circle at 35% 25%,#fff,var(--tone) 34%,#050507);border:1px solid #fff;box-shadow:0 0 12px color-mix(in srgb,var(--tone) 50%,transparent);transform:rotate(var(--angle)) translateX(145px) rotate(calc(-1 * var(--angle)))}
+
+@media(max-width:820px) {
+.step-dot{transform:rotate(var(--angle)) translateX(145px) rotate(calc(-1 * var(--angle)))}
+.grad-orbit{max-width:330px}
+}
+
+@media(max-width:560px) {
+.grad-orbit{max-width:280px}
+.step-dot{transform:rotate(var(--angle)) translateX(124px) rotate(calc(-1 * var(--angle)))}
+}

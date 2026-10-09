@@ -1,0 +1,15 @@
+/* Smart Block: lv-aura — byte-true from Naya  Elite Buttons N5.html */
+.lv-wrap { position: relative; display: inline-block; }
+
+.lv-wrap.block { display: block; }
+
+.lv-aura {
+  position: absolute; inset: -70px; border-radius: 999px;
+  background: radial-gradient(circle, rgba(var(--lv-accent-rgb,160,107,255),.20) 0%, rgba(var(--lv-accent-rgb,160,107,255),.06) 45%, transparent 70%);
+  filter: blur(14px); opacity: 0; pointer-events: none;
+  transition: opacity .55s ease;
+}
+
+.lv-wrap.lv-aware .lv-aura { opacity: .55; }
+
+.lv-wrap:hover .lv-aura, .lv-wrap:focus-within .lv-aura { opacity: 1; }

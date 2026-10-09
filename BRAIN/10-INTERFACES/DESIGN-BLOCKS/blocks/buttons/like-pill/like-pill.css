@@ -1,0 +1,31 @@
+/* Smart Block: like-pill — byte-true from Naya Beautiful Button Set N4.html */
+.like-pill { --sc: #ff5e6c; padding: 11px 22px; border-radius: 999px; font-size: 14px; font-weight: 800; cursor: pointer; font-family: inherit; color: rgba(255,255,255,.55); background: linear-gradient(180deg, #181820, #0a0a0e); border: 1px solid rgba(255,255,255,.12); box-shadow: inset 0 1px 0 rgba(255,255,255,.1), inset 0 -2px 6px rgba(0,0,0,.45), 0 8px 22px rgba(0,0,0,.5); transition: all .22s var(--ease); }
+
+.like-pill:hover { color: #fff; transform: translateY(-2px); border-color: rgba(255,255,255,.25); box-shadow: inset 0 1px 0 rgba(255,255,255,.14), 0 12px 28px rgba(0,0,0,.55), 0 0 20px -6px var(--sc); }
+
+.like-pill.on { color: #fff; border-color: color-mix(in srgb, var(--sc) 65%, transparent); background: linear-gradient(180deg, #221016, #0d0709); box-shadow: inset 0 1px 0 rgba(255,255,255,.12), inset 0 -2px 8px rgba(0,0,0,.5), 0 0 24px -4px var(--sc), 0 8px 24px rgba(0,0,0,.55); text-shadow: 0 0 10px var(--sc); }
+
+.seg-tab, .like-pill, .act-chip, .tog-chip, .day-dot, .send-cta { position: relative; }
+
+.seg-tab::before, .like-pill::before, .act-chip::before, .tog-chip::before, .day-dot::before, .send-cta::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit;
+  z-index: 0; pointer-events: none; opacity: 0; transition: opacity .28s var(--ease);
+  background: radial-gradient(110px 110px at var(--mx,50%) var(--my,50%), rgba(255,255,255,.14), rgba(255,255,255,.03) 45%, transparent 68%);
+}
+
+.seg-tab.lv-aware::before, .like-pill.lv-aware::before, .act-chip.lv-aware::before,
+.tog-chip.lv-aware::before, .day-dot.lv-aware::before, .send-cta.lv-aware::before { opacity: 1; }
+
+.seg-tab.lv-aware, .like-pill.lv-aware, .act-chip.lv-aware, .tog-chip.lv-aware, .day-dot.lv-aware { border-color: rgba(255,255,255,.22); }
+
+.seg-tab.on::after, .like-pill.on::after, .act-chip.on::after, .tog-chip.on::after, .day-dot.on::after {
+  content: ""; position: absolute; inset: -1px; border-radius: inherit; pointer-events: none;
+  box-shadow: 0 0 20px -2px var(--sc); opacity: .4; animation: ctrl-pulse 4s ease-in-out infinite;
+}
+
+@keyframes ctrl-pulse { 0%,100% { opacity: .3; } 50% { opacity: .78; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .seg-tab.on::after, .like-pill.on::after, .act-chip.on::after, .tog-chip.on::after, .day-dot.on::after { animation: none; opacity: .4; }
+  .seg-tab::before, .like-pill::before, .act-chip::before, .tog-chip::before, .day-dot::before, .send-cta::before { display: none; }
+}

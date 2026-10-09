@@ -1,0 +1,106 @@
+/* state-panel — authored 2026-10-09 for Hub/Ledger completion.
+   The system-state readout: a dark-elevated panel listing live status rows.
+   Each row: jewel marker dot + label + honest status text + right "as of" time.
+   No JS — statuses are rendered by the page; this file is the visual system. */
+.state-panel{
+  background:
+    radial-gradient(circle at 28% 0%, #191420 0%, var(--bg-panel) 58%),
+    var(--bg-panel);
+  border:1px solid var(--line);
+  border-radius:var(--radius-lg);
+  box-shadow:var(--depth-deep), inset 0 1px 0 #ffffff0f;
+  padding:18px;
+}
+.state-head{
+  display:flex;align-items:center;gap:10px;
+  padding-bottom:10px;
+  border-bottom:1px solid var(--line-soft);
+}
+.state-title{
+  font-size:18px;font-weight:800;letter-spacing:.01em;
+  color:var(--ink);margin:0;
+}
+.state-summary-dot{
+  width:9px;height:9px;border-radius:50%;flex:0 0 9px;
+}
+.state-summary-dot--ok{background:var(--emerald);box-shadow:0 0 10px var(--emerald);}
+.state-summary-dot--warn{background:var(--gold);box-shadow:0 0 10px var(--gold);}
+.state-summary-dot--down{background:var(--red);box-shadow:0 0 10px var(--red);}
+.state-summary-dot--quiet{background:var(--muted);opacity:.35;}
+.state-summary{
+  margin:0 0 0 auto;
+  font-size:12px;color:var(--muted);
+  white-space:nowrap;
+}
+.state-list{
+  list-style:none;margin:0;padding:0;
+}
+/* Mobile-first: marker + stacked text; the "as of" time drops below the row text. */
+.state-row{
+  display:grid;
+  grid-template-columns:14px minmax(0,1fr);
+  grid-template-areas:
+    "dot main"
+    "dot asof";
+  gap:4px 10px;
+  padding:13px 6px;
+  border-radius:var(--radius-md);
+}
+.state-row + .state-row{border-top:1px solid var(--line-soft);}
+.state-dot{
+  grid-area:dot;
+  width:8px;height:8px;border-radius:50%;
+  margin-top:6px;
+}
+.state-dot--synced{background:var(--emerald);box-shadow:0 0 10px var(--emerald);}
+.state-dot--live{
+  background:var(--purple);box-shadow:0 0 10px var(--purple);
+  animation:state-pulse 2.4s ease-in-out infinite;
+}
+.state-dot--degraded{background:var(--gold);box-shadow:0 0 10px var(--gold);}
+.state-dot--offline{background:var(--muted);opacity:.5;}
+.state-dot--error{background:var(--red);box-shadow:0 0 10px var(--red);}
+.state-main{grid-area:main;min-width:0;}
+.state-label{
+  font-size:14px;font-weight:700;color:var(--ink);
+  line-height:1.35;
+}
+.state-status{
+  font-size:13px;color:var(--ink-dim);
+  line-height:1.5;margin-top:2px;
+}
+.state-asof{
+  grid-area:asof;
+  font-size:12px;color:var(--muted);
+  white-space:nowrap;
+}
+/* Wider screens: "as of" time moves to a right-aligned third column. */
+@media (min-width:520px){
+  .state-row{
+    grid-template-columns:14px minmax(0,1fr) auto;
+    grid-template-areas:"dot main asof";
+    gap:4px 12px;
+    align-items:start;
+  }
+  .state-asof{margin-top:5px;text-align:right;}
+}
+.state-empty{
+  padding:24px 10px 12px;
+  text-align:center;
+}
+.state-empty b{
+  display:block;
+  font-size:14px;font-weight:700;color:var(--ink);
+  margin-bottom:5px;
+}
+.state-empty p{
+  margin:0;
+  font-size:13px;line-height:1.55;color:var(--muted);
+}
+@keyframes state-pulse{
+  0%,100%{opacity:.55;transform:scale(.9);}
+  50%{opacity:1;transform:scale(1);}
+}
+@media (prefers-reduced-motion: reduce){
+  .state-panel,.state-panel *{animation:none!important;transition:none!important;}
+}

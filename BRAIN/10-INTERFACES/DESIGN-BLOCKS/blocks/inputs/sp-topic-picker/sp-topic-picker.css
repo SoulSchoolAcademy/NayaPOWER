@@ -1,0 +1,45 @@
+/* sp-topic-picker — topic chip multi-select.
+   Each chip carries its own jewel marker (--tc); markers cycle the spectrum
+   across the row. Selected chips (.on) wear their own-color edge + tint. */
+.sp-topic{
+  display:flex; flex-wrap:wrap; gap:10px;
+}
+.sp-topic-chip{
+  --tc:#7c3aed;
+  display:inline-flex; align-items:center; gap:10px;
+  min-height:44px; min-width:44px; padding:0 18px 0 14px; border-radius:999px;
+  font:inherit; font-size:14px; font-weight:700; color:#c9cdd8; cursor:pointer;
+  background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.07);
+  -webkit-tap-highlight-color:transparent;
+  transition: transform .22s cubic-bezier(.16,.84,.22,1), border-color .2s, box-shadow .25s, color .2s, background .2s;
+}
+.sp-topic-chip:hover{
+  color:#fff;
+  border-color:color-mix(in srgb, var(--tc) 55%, transparent);
+  transform:translateY(-1px);
+}
+.sp-topic-chip:active{ transform:scale(.96); }
+.sp-topic-chip:focus-visible{ outline:2px solid var(--tc); outline-offset:2px; }
+.sp-topic-gem{
+  flex:none; width:10px; height:10px; transform:rotate(45deg); border-radius:2px;
+  background:linear-gradient(135deg, #fff, var(--tc) 60%, color-mix(in srgb, var(--tc) 40%, #000));
+  box-shadow:0 0 10px -1px var(--tc), 0 0 4px var(--tc);
+  opacity:.55; transition:opacity .2s, box-shadow .25s;
+}
+.sp-topic-chip.on{
+  color:#fff;
+  border-color:color-mix(in srgb, var(--tc) 80%, #fff);
+  background:color-mix(in srgb, var(--tc) 16%, #101018);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 0 16px -5px var(--tc);
+}
+.sp-topic-chip.on .sp-topic-gem{
+  opacity:1;
+  box-shadow:0 0 14px -1px var(--tc), 0 0 8px var(--tc);
+}
+.sp-topic-chip.on::after{
+  content:"✓"; font-size:12px; font-weight:900; color:var(--tc); margin-left:2px;
+}
+@media(prefers-reduced-motion:reduce){
+  .sp-topic-chip{ transition:none; }
+}

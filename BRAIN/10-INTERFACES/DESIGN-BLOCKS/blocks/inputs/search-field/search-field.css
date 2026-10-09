@@ -1,0 +1,11 @@
+.modal-mini strong,.modal-mini small,.toast-mini strong,.toast-mini small,.search-result strong,.search-result small,.content-card strong,.content-card small,.setting-row strong,.setting-row small,.media-copy strong,.media-copy small,.smart-link strong,.smart-link small{display:block}
+
+.modal-mini small,.toast-mini small,.search-result small,.content-card small,.setting-row small,.media-copy small,.smart-link small{color:#bdb7c5;font-size:11px;margin-top:3px}
+
+.search-field{justify-content:flex-start}
+
+.search-field kbd{margin-left:auto;padding:4px 7px;border:1px solid rgba(255,255,255,.28);border-radius:6px;background:#111116;color:#bdb7c5;font:11px Manrope}
+
+.search-result{display:flex;align-items:center;gap:12px;margin-top:12px;padding:12px;border:1px solid rgba(255,255,255,.18);border-radius:14px;background:#08080b}
+
+.search-result .mini-gem{width:34px;height:34px;flex:none}

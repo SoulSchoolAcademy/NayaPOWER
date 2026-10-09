@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Block: v2-room-picker</title>
+<link rel="stylesheet" href="../../jewels/v2-facet-gem/v2-facet-gem.css">
+<link rel="stylesheet" href="v2-room-picker.css">
+<style>
+/* SPECIMEN ONLY — tokens normally provided by tokens.css */
+:root{--bg:#06060a;--base:#0b0b12;--rise:#15141f;--white:#fff;--purple:#9d75ff;--indigo:#7285ff;--blue:#55b9ee;--teal:#40d3bb;--emerald:#55e39a;--lime:#b8ee57;--gold:#e8b64c;--orange:#ff9557;--red:#ff5e6c;--magenta:#ed58cd;--ease:cubic-bezier(.16,.84,.22,1)}
+body{background:#06060a;color:#fff;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;padding:40px 24px;margin:0}
+</style>
+</head>
+<body>
+<div class="room-grid">
+<button type="button" class="room" data-room="today" aria-pressed="true" style="--c:#9d75ff"><i class="jewel"></i><b>Today</b><small>Know what matters now.</small></button>
+<button type="button" class="room" data-room="spaces" aria-pressed="false" style="--c:#55e39a"><i class="jewel"></i><b>Spaces</b><small>Belong and build together.</small></button>
+<button type="button" class="room" data-room="reports" aria-pressed="false" style="--c:#7285ff"><i class="jewel"></i><b>Reports</b><small>Understand what's changed.</small></button>
+</div><div class="room-detail" aria-live="polite"><h3 id="room-title">Today</h3><p id="room-message">Open Naya and quickly understand what deserves your attention.</p><span class="ref">This is a design example, not a live room connection.</span></div>
+<script src="v2-room-picker.js"></script>
+</body>
+</html>

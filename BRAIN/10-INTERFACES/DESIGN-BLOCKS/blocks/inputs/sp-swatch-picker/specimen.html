@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>sp-swatch-picker — specimen</title>
+<link rel="stylesheet" href="sp-swatch-picker.css">
+<style>
+  body{margin:0;background:#050507;color:#e8eaf2;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;padding:32px 20px;}
+  .demo{max-width:560px;margin:0 auto;display:grid;gap:22px;align-content:start;}
+  .cap{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#8b93a3;}
+  .out{font-size:14px;color:#8a8a96;}
+  .out b{color:#c9cdd8;}
+</style>
+</head>
+<body>
+<div class="demo">
+  <div class="cap">Swatch picker — spectrum swatches, 44px targets, selected ring</div>
+  <div class="sp-swatch" role="radiogroup" aria-label="Cover color" id="sw">
+    <button class="sp-swatch-s on" data-swatch="#7c3aed" style="--sw:#7c3aed" aria-label="Purple"></button>
+    <button class="sp-swatch-s" data-swatch="#1e6fd9" style="--sw:#1e6fd9" aria-label="Blue"></button>
+    <button class="sp-swatch-s" data-swatch="#0d9e6f" style="--sw:#0d9e6f" aria-label="Emerald"></button>
+    <button class="sp-swatch-s" data-swatch="#d4a017" style="--sw:#d4a017" aria-label="Gold"></button>
+    <button class="sp-swatch-s" data-swatch="#d946ef" style="--sw:#d946ef" aria-label="Magenta"></button>
+    <button class="sp-swatch-s" data-swatch="#f97316" style="--sw:#f97316" aria-label="Orange"></button>
+    <button class="sp-swatch-s" data-swatch="#14b8a6" style="--sw:#14b8a6" aria-label="Teal"></button>
+    <button class="sp-swatch-s" data-swatch="#ef4444" style="--sw:#ef4444" aria-label="Red"></button>
+  </div>
+  <p class="out">Selected: <b id="sel">#7c3aed</b></p>
+</div>
+<script src="sp-swatch-picker.js"></script>
+<script>
+  document.getElementById('sw').addEventListener('sp-swatch-change', function(e){
+    document.getElementById('sel').textContent = e.detail.swatch;
+  });
+</script>
+</body>
+</html>

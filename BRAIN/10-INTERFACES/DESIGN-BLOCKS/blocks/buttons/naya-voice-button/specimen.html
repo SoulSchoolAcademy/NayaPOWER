@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Block: naya-voice-button</title>
+<link rel="stylesheet" href="naya-voice-button.css">
+<style>
+/* SPECIMEN ONLY — page ground + tokens normally provided by tokens.css */
+:root{
+  --bg:#020204;--surface:#09090d;--surface2:#101016;
+  --text:#f8f7fb;--muted:#aaa7b3;
+  --purple:#8a5cff;--purple2:#b895ff;--gold:#ffd45a;--green:#35e39b;--blue:#3ca8ff;--violet:#765cff;--magenta:#ed42c4;
+  --line:rgba(255,255,255,.11);
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
+html,body{margin:0;padding:0}
+body{background:#020204;color:#f8f7fb;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;min-height:100vh;display:grid;place-items:center;padding:48px 20px;box-sizing:border-box}
+.demo{width:min(560px,100%);display:flex;flex-direction:column;gap:28px;align-items:flex-start}
+.demo-note{font-size:12px;color:#aaa7b3;margin:0;letter-spacing:.04em;line-height:1.6}
+.demo-state{font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#8f8a99;margin:0 0 10px}
+.demo-row{display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+</style>
+</head>
+<body>
+<div class="demo">
+  <p class="demo-note">SPECIMEN — the voice read-aloud button. Click the idle button to hear your device's synthesized voice read the demo line (the button fires <code>naya-voice-request</code>; the specimen answers with <code>NayaVoiceButton.speak()</code>). The playing/paused rows are pre-set states for visual review.</p>
+
+  <div class="demo-row">
+    <p class="demo-state">Idle — tap to speak</p>
+    <button class="naya-button" id="nayaDemo" type="button" aria-label="Listen to Naya" aria-pressed="false" data-voice-kind="synthesized">
+      <span class="naya-orb" aria-hidden="true"></span>
+      <span class="naya-copy">
+        <span class="naya-primary">Press Play</span>
+        <span class="naya-secondary">Listen to Naya</span>
+        <span class="naya-voice-kind">Synthesized voice</span>
+      </span>
+      <span class="naya-waveform" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+    </button>
+  </div>
+
+  <div class="demo-row">
+    <p class="demo-state">Speaking — pulsing jewel + waveform</p>
+    <button class="naya-button playing" type="button" aria-label="Listen to Naya" aria-pressed="true" data-voice-kind="synthesized" disabled>
+      <span class="naya-orb" aria-hidden="true"></span>
+      <span class="naya-copy">
+        <span class="naya-primary">Pause Naya</span>
+        <span class="naya-secondary">Naya is speaking</span>
+        <span class="naya-voice-kind">Synthesized voice</span>
+      </span>
+      <span class="naya-waveform" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+    </button>
+  </div>
+
+  <div class="demo-row">
+    <p class="demo-state">Paused</p>
+    <button class="naya-button paused" type="button" aria-label="Listen to Naya" aria-pressed="false" data-voice-kind="synthesized" disabled>
+      <span class="naya-orb" aria-hidden="true"></span>
+      <span class="naya-copy">
+        <span class="naya-primary">Resume</span>
+        <span class="naya-secondary">Paused</span>
+        <span class="naya-voice-kind">Synthesized voice</span>
+      </span>
+      <span class="naya-waveform" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+    </button>
+  </div>
+
+  <div class="demo-row">
+    <p class="demo-state">Cloned voice affordance — honest label flips only when wired</p>
+    <button class="naya-button" type="button" aria-label="Listen to Naya" aria-pressed="false" data-voice-kind="cloned" disabled>
+      <span class="naya-orb" aria-hidden="true"></span>
+      <span class="naya-copy">
+        <span class="naya-primary">Press Play</span>
+        <span class="naya-secondary">Listen to Naya</span>
+        <span class="naya-voice-kind">Naya's voice</span>
+      </span>
+      <span class="naya-waveform" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+    </button>
+  </div>
+
+  <p class="demo-note">Stop-on-navigate: the assessment dispatches <code>window.dispatchEvent(new Event('naya-voice-stop'))</code> before rendering the next question. Escape and tab-hidden also stop playback.</p>
+</div>
+<script src="naya-voice-button.js"></script>
+<script>
+/* SPECIMEN ONLY — answer the block's naya-voice-request with demo text. */
+document.getElementById('nayaDemo').addEventListener('naya-voice-request', function (e) {
+  NayaVoiceButton.speak('When AI gives you something useful, what do you usually do next?', e.target);
+});
+</script>
+</body>
+</html>

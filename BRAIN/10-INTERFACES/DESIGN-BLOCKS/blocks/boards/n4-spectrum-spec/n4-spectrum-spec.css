@@ -1,0 +1,43 @@
+/* Smart Block: n4-spectrum-spec
+ * Source: Naya Design Standard Showcase (1).html (byte-true extraction, not rewritten)
+ * Type: boards
+ * Extracted: 2026-10-09
+ */
+
+/* ---- component rules ---- */
+
+.specwide{margin-top:22px; border-radius:18px; overflow:hidden; border:1.5px solid rgba(255,255,255,.2);
+  background:linear-gradient(180deg,#0c0c12,#070709);
+  box-shadow:0 14px 40px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.08);}
+
+.specwide .specbar{height:64px; background:linear-gradient(90deg,#ed42c4,#8a5cff,#3ca8ff,#35e39b,#ffd45a,#ed42c4,#8a5cff,#3ca8ff,#35e39b,#ffd45a);
+  box-shadow:0 0 34px rgba(237,66,196,.32);}
+
+.specwide-t{display:flex; align-items:baseline; gap:14px; padding:16px 22px;}
+
+.specwide-t b{font-size:14px; letter-spacing:.22em; color:#fff;}
+
+.specwide-t span{font-size:14px; color:#fff; opacity:.75;}
+
+.spectrum{display:flex; gap:10px; margin-top:14px;}
+
+.spec{flex:1; border-radius:14px; min-width:0; overflow:hidden; text-align:center;
+  border:1.5px solid color-mix(in srgb, var(--c) 55%, rgba(255,255,255,.45));
+  background:linear-gradient(180deg, var(--c) 0%, color-mix(in srgb, var(--c) 60%, #000) 55%, #060608 130%);
+  box-shadow:inset 0 2px 3px rgba(255,255,255,.35), inset 0 -5px 12px rgba(0,0,0,.45), 0 14px 34px rgba(0,0,0,.6), 0 0 34px color-mix(in srgb, var(--c) 58%, transparent), 0 0 70px -12px var(--c);
+  transition:transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s var(--ease);}
+
+.spec:hover{transform:translateY(-4px); border-color:color-mix(in srgb, var(--c) 70%, rgba(255,255,255,.6));
+  box-shadow:inset 0 2px 3px rgba(255,255,255,.45), inset 0 -5px 12px rgba(0,0,0,.4), 0 20px 44px rgba(0,0,0,.65), 0 0 48px color-mix(in srgb, var(--c) 70%, transparent), 0 0 96px -10px var(--c);}
+
+.spec b{display:block; font-size:14px; letter-spacing:.14em; color:#fff; padding:14px 4px 2px;
+  text-shadow:0 1px 6px rgba(0,0,0,.7);}
+
+.spec span{font-size:14px; color:#fff; opacity:.92; line-height:1.35; display:block; padding:0 6px 14px;
+  text-shadow:0 1px 4px rgba(0,0,0,.7);}
+
+@media (max-width:900px) {
+.spectrum{display:grid; grid-template-columns:repeat(2,1fr);}
+.spec b{padding-top:12px;}
+.spec:last-child{grid-column:1/-1;}
+}

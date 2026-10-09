@@ -1,0 +1,38 @@
+/* Smart Block: n4-law-card
+ * Source: Naya Design Standard Showcase (1).html (byte-true extraction, not rewritten)
+ * Type: boards
+ * Extracted: 2026-10-09
+ */
+
+/* ---- component rules ---- */
+
+.laws{display:grid; grid-template-columns:repeat(4,1fr); gap:16px;}
+
+.lawcard{border:1.5px solid rgba(255,255,255,.22); border-radius:16px; padding:22px;
+  background:#08080c; position:relative; overflow:hidden;}
+
+.lawcard::before{content:""; position:absolute; left:0; top:0; bottom:0; width:4px;
+  background:var(--lc); box-shadow:0 0 14px var(--lc);}
+
+.lawcard .ln{display:flex; align-items:center; gap:10px; font-size:14px; font-weight:800;
+  letter-spacing:.2em; color:var(--lc); margin-bottom:10px;}
+
+.lawcard .ld{width:11px; height:11px; transform:rotate(45deg); background:var(--lc);
+  box-shadow:0 0 10px var(--lc); flex:none;}
+
+.lawcard{transition:border-color .25s var(--ease), box-shadow .25s var(--ease), transform .25s var(--ease);}
+
+.lawcard:hover{border-color:color-mix(in srgb, var(--lc) 65%, transparent);
+  box-shadow:0 0 34px -6px var(--lc), inset 0 1px 0 rgba(255,255,255,.08); transform:translateY(-3px);}
+
+.lawcard h3{font-size:24px; margin:0 0 8px; color:#fff;}
+
+.lawcard p{font-size:18px; color:#fff; margin:0; opacity:.92;}
+
+@media (max-width:1150px) {
+.laws{grid-template-columns:repeat(2,1fr);}
+}
+
+@media (max-width:640px) {
+.laws{grid-template-columns:1fr;}
+}

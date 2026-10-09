@@ -1,0 +1,6 @@
+/* Smart Block: nl-checklist — byte-true from Naya Epic Elements - Lego pieces N5.html */
+.checklist { list-style: none; margin: 20px 0; }
+
+.checklist li { padding: 12px 0 12px 40px; position: relative; border-bottom: 1px solid rgba(255,255,255,.06); font-size: 16px; }
+
+.checklist li::before { content: "✓"; position: absolute; left: 8px; color: var(--green); font-weight: 800; }

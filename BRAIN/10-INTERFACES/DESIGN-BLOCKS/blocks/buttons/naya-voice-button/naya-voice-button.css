@@ -1,0 +1,224 @@
+/* Smart Block: naya-voice-button — voice read-aloud control for the Maxis assessment.
+   `.naya-button` / `.naya-orb` / `.naya-copy` are verbatim from Maxis App Design.html;
+   `.naya-primary/.naya-secondary` replace the source ids, and the waveform,
+   voice-kind badge, and `.paused` state are authored for this block. */
+.naya-button{
+  min-height:54px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:6px 15px 6px 7px;
+  border:1px solid rgba(255,255,255,.20);
+  border-radius:19px;
+  color:#fff;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.065),
+      rgba(255,255,255,.018)
+    );
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.10),
+    0 10px 28px rgba(0,0,0,.42),
+    0 0 25px rgba(118,92,255,.06);
+  cursor:pointer;
+  transition:
+    transform .22s var(--ease),
+    border-color .22s ease,
+    box-shadow .22s ease;
+}
+.naya-button:hover{
+  transform:translateY(-2px);
+  border-color:rgba(255,255,255,.45);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.13),
+    0 14px 34px rgba(0,0,0,.5),
+    0 0 32px rgba(118,92,255,.16);
+}
+.naya-button:active{
+  transform:translateY(0) scale(.985);
+  border-color:rgba(255,255,255,.45);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.13),
+    0 14px 34px rgba(0,0,0,.5),
+    0 0 32px rgba(118,92,255,.16);
+}
+.naya-button:focus-visible{
+  outline:2px solid rgba(181,140,255,.85);
+  outline-offset:3px;
+}
+.naya-button.playing{
+  border-color:rgba(181,140,255,.75);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.14),
+    0 12px 32px rgba(0,0,0,.48),
+    0 0 35px rgba(138,92,255,.25);
+}
+.naya-button.paused{
+  border-color:rgba(181,140,255,.45);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.10),
+    0 10px 28px rgba(0,0,0,.42),
+    0 0 22px rgba(138,92,255,.14);
+}
+.naya-orb{
+  position:relative;
+  width:39px;
+  height:39px;
+  flex:0 0 39px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:
+    radial-gradient(
+      circle at 30% 20%,
+      #fff 0%,
+      #dfd1ff 12%,
+      #946dff 38%,
+      #3b1b83 70%,
+      #09050f 100%
+    );
+  border:1px solid #ddd1ff;
+  box-shadow:
+    inset 0 2px 4px rgba(255,255,255,.75),
+    0 0 22px rgba(116,76,255,.38),
+    0 7px 15px rgba(0,0,0,.6);
+}
+.naya-orb::after{
+  content:"";
+  width:0;
+  height:0;
+  margin-left:3px;
+  border-top:7px solid transparent;
+  border-bottom:7px solid transparent;
+  border-left:11px solid #fff;
+  filter:drop-shadow(0 2px 3px rgba(0,0,0,.6));
+}
+.naya-button.playing .naya-orb::after{
+  width:10px;
+  height:13px;
+  margin-left:0;
+  border:0;
+  background:
+    linear-gradient(
+      90deg,
+      #fff 0 35%,
+      transparent 35% 65%,
+      #fff 65% 100%
+    );
+}
+.naya-button.paused .naya-orb{
+  filter:saturate(.55) brightness(.85);
+}
+/* Speaking pulse — a jewel ring breathing around the orb while audio plays. */
+.naya-button.playing .naya-orb::before{
+  content:"";
+  position:absolute;
+  inset:-6px;
+  border-radius:50%;
+  border:1px solid rgba(181,140,255,.55);
+  animation:nv-pulse 1.6s var(--ease) infinite;
+}
+@keyframes nv-pulse{
+  0%{transform:scale(.92);opacity:.9;}
+  70%{transform:scale(1.12);opacity:0;}
+  100%{transform:scale(1.12);opacity:0;}
+}
+.naya-copy{
+  display:flex;
+  flex-direction:column;
+  text-align:left;
+  line-height:1.25;
+  gap:2px;
+}
+.naya-primary{
+  font-size:14px;
+  font-weight:950;
+  color:#fff;
+}
+.naya-secondary{
+  font-size:12px;
+  font-weight:700;
+  color:#aaa7b3;
+}
+/* Honest voice labeling: synthesized (default) vs Naya's cloned voice. */
+.naya-voice-kind{
+  align-self:flex-start;
+  margin-top:3px;
+  padding:3px 8px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.18);
+  font-size:9px;
+  font-weight:950;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:#c9c4d2;
+  background:rgba(255,255,255,.04);
+}
+.naya-button[data-voice-kind="cloned"] .naya-voice-kind{
+  border-color:rgba(181,140,255,.6);
+  color:#d0bcff;
+  background:rgba(138,92,255,.12);
+  box-shadow:0 0 12px rgba(138,92,255,.18);
+}
+/* Waveform hint — five bars that dance only while speaking. */
+.naya-waveform{
+  display:flex;
+  align-items:center;
+  gap:3px;
+  height:22px;
+  margin-left:4px;
+  opacity:0;
+  transition:opacity .25s ease;
+}
+.naya-waveform i{
+  width:3px;
+  height:6px;
+  border-radius:2px;
+  background:#b895ff;
+  transform-origin:center;
+}
+.naya-button.playing .naya-waveform{
+  opacity:1;
+}
+.naya-button.playing .naya-waveform i{
+  animation:nv-wave 1s ease-in-out infinite;
+}
+.naya-button.playing .naya-waveform i:nth-child(2){animation-delay:.12s;}
+.naya-button.playing .naya-waveform i:nth-child(3){animation-delay:.24s;}
+.naya-button.playing .naya-waveform i:nth-child(4){animation-delay:.36s;}
+.naya-button.playing .naya-waveform i:nth-child(5){animation-delay:.48s;}
+@keyframes nv-wave{
+  0%,100%{transform:scaleY(.5);}
+  50%{transform:scaleY(2.6);}
+}
+.naya-button.paused .naya-waveform{
+  opacity:.45;
+}
+.naya-button.paused .naya-waveform i{
+  animation-play-state:paused;
+}
+@media (prefers-reduced-motion:reduce){
+  .naya-button,
+  .naya-button:hover,
+  .naya-button:active{
+    transform:none;
+    transition:none;
+  }
+  .naya-button.playing .naya-orb::before,
+  .naya-button.playing .naya-waveform i{
+    animation:none;
+  }
+  .naya-button.playing .naya-orb::before{
+    opacity:.5;
+  }
+  .naya-waveform{
+    transition:none;
+  }
+}
+@media (max-width:420px){
+  .naya-waveform{display:none;}
+}
+@media print{
+  .naya-button{display:none;}
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Block: hub-foot</title>
+<link rel="stylesheet" href="hub-foot.css">
+<style>
+/* SPECIMEN ONLY — page ground + tokens normally provided by tokens.css */
+:root{
+  --bg:#0B0D12;
+  --ink:#F5F7FB;--ink-dim:#F5F7FB;--muted:#AAB2BF;
+  --line:#ffffff18;
+  --purple:#9d75ff;
+  --ease:cubic-bezier(.16,.84,.22,1);--dur-med:.28s;
+  --depth-deep:0 20px 48px #000d;
+  --font:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+html,body{margin:0;padding:0}
+body{background:#0B0D12;color:#F5F7FB;font-family:var(--font);min-height:100vh;padding:48px 20px;box-sizing:border-box}
+.demo{max-width:860px;margin:0 auto;display:grid;gap:28px}
+.demo-note{font-size:12px;color:#AAB2BF;margin:0;letter-spacing:.04em}
+</style>
+</head>
+<body>
+<div class="demo">
+  <p class="demo-note">SPECIMEN — the .hub-quote markup is verbatim from the source (JS-rendered mission quote). The .hub-foot markup was REMOVED in the source on 2026-10-03 ("dead buttons with no destination") — its CSS survives, so the footer below is reconstructed from CSS and marked as such.</p>
+
+  <div class="hub-quote">
+    <p class="hub-quote-text">Your life creates your intelligence every day.</p>
+    <p class="hub-quote-sub">Naya helps you capture it, understand it, remember it, compound it, and use it.</p>
+  </div>
+
+  <footer class="hub-foot">
+    <div class="hub-foot-mission">
+      <b>{{mission headline}}</b>
+      <p>{{mission statement — one or two lines on what NayaNET is for}}</p>
+    </div>
+    <div class="hub-foot-links">
+      <a
+        class="hub-foot-link"
+        href="{{url}}"
+      ><span class="hub-foot-dot"></span>HOME</a>
+      <a
+        class="hub-foot-link"
+        href="{{url}}"
+      ><span class="hub-foot-dot"></span>NAYA POWER</a>
+      <a
+        class="hub-foot-link"
+        href="{{url}}"
+      ><span class="hub-foot-dot"></span>ABOUT US</a>
+      <a
+        class="hub-foot-link"
+        href="{{url}}"
+      ><span class="hub-foot-dot"></span>WHITE PAPER</a>
+    </div>
+  </footer>
+</div>
+</body>
+</html>

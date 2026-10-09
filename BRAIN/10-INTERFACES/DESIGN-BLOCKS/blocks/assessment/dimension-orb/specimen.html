@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Block: dimension-orb</title>
+<link rel="stylesheet" href="dimension-orb.css">
+<style>
+/* SPECIMEN ONLY — page ground + tokens normally provided by tokens.css */
+:root{
+  --bg:#020204;--surface:#09090d;
+  --text:#f8f7fb;--muted:#aaa7b3;
+  --purple:#8a5cff;--purple2:#b895ff;--gold:#ffd45a;--green:#35e39b;--blue:#3ca8ff;--violet:#765cff;--magenta:#ed42c4;
+  --line:rgba(255,255,255,.11);
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
+html,body{margin:0;padding:0}
+body{background:#020204;color:#f8f7fb;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;min-height:100vh;display:grid;place-items:center;padding:48px 20px;box-sizing:border-box}
+.demo{width:min(680px,100%)}
+.demo-note{font-size:12px;color:#aaa7b3;margin:0 0 18px;letter-spacing:.04em}
+</style>
+</head>
+<body>
+<div class="demo">
+  <p class="demo-note">SPECIMEN — orbs are JS-rendered in the source (renderDimensions); converted here to static HTML. Values use the source's real dimension config (colors) and level bands (Master ≥ 90 · Advancing ≥ 75 · Developing ≥ 60 · Foundation &lt; 60).</p>
+
+  <div
+    class="dimension-constellation"
+    id="dimensionConstellation"
+  >
+
+    <div
+      class="dimension-orb"
+      style="--dimensionColor:#ffd45a"
+    >
+
+      <div
+        class="dimension-ring"
+        style="--dimDeg:295.2deg"
+      >
+
+        <span class="dimension-score">
+          82
+        </span>
+
+      </div>
+
+      <div class="dimension-name">
+        Direction
+      </div>
+
+      <div class="dimension-status">
+        Advancing
+      </div>
+
+    </div>
+
+    <div
+      class="dimension-orb"
+      style="--dimensionColor:#35e39b"
+    >
+
+      <div
+        class="dimension-ring"
+        style="--dimDeg:230.4deg"
+      >
+
+        <span class="dimension-score">
+          64
+        </span>
+
+      </div>
+
+      <div class="dimension-name">
+        Communication
+      </div>
+
+      <div class="dimension-status">
+        Developing
+      </div>
+
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

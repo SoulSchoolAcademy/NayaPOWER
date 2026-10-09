@@ -1,0 +1,8 @@
+.share-actions{display:flex;gap:8px;margin-top:10px}
+
+.share-actions .naya-btn{flex:1;padding-inline:10px}
+
+@media(max-width:620px) {
+.share-actions{flex-direction:column}
+.share-actions .naya-btn{width:100%}
+}

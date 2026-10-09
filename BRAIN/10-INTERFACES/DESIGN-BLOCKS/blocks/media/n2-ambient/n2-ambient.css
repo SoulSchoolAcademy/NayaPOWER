@@ -1,0 +1,25 @@
+/* Smart Block: n2-ambient
+ * Source: Naya Design Elements N2.html (byte-true extraction, not rewritten)
+ * Type: media
+ * Extracted: 2026-10-09
+ */
+
+/* ---- required @keyframes ---- */
+
+/* ---- component rules ---- */
+
+@keyframes drift1{to{transform:translate(120px,80px) scale(1.12)}}
+
+@keyframes drift2{to{transform:translate(-100px,60px) scale(1.08)}}
+
+@keyframes drift3{to{transform:translate(90px,-70px) scale(1.15)}}
+
+.ambient{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+
+.amb{position:absolute;border-radius:50%;filter:blur(100px);opacity:.15}
+
+.amb.a{width:560px;height:560px;left:-160px;top:-120px;background:radial-gradient(circle,#9d75ff,transparent 70%);animation:drift1 18s ease-in-out infinite alternate}
+
+.amb.b{width:640px;height:640px;right:-200px;top:32%;background:radial-gradient(circle,#ed42c4,transparent 70%);animation:drift2 22s ease-in-out infinite alternate}
+
+.amb.c{width:520px;height:520px;left:22%;bottom:-180px;background:radial-gradient(circle,#3ca8ff,transparent 70%);animation:drift3 26s ease-in-out infinite alternate}

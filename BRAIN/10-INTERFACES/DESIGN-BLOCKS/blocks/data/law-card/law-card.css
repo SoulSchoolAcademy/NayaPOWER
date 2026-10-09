@@ -1,0 +1,12 @@
+/* Smart Block: law-card — byte-true from Naya Epic Elements - Lego pieces N5.html */
+.law-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 28px 0; }
+
+.law-card { --sc: var(--soul); background: var(--raise); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 26px; position: relative; overflow: hidden; transition: transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s; }
+
+.law-card::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 3px; background: var(--sc); opacity: .7; }
+
+.law-card:hover { transform: translateY(-3px); border-color: var(--sc); box-shadow: 0 16px 44px rgba(0,0,0,.55), 0 0 28px -6px var(--sc); }
+
+.law-card h3 { font-size: 21px; margin-bottom: 8px; }
+
+.law-card p { font-size: 15px; color: var(--quiet); margin: 0; }

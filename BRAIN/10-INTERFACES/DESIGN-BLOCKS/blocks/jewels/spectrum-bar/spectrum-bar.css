@@ -1,0 +1,18 @@
+/* Smart Block: spectrum-bar — byte-true from Naya Epic Elements - Lego pieces N5.html */
+.spectrum-bar { display: flex; height: 10px; border-radius: 99px; overflow: hidden; max-width: 560px; margin: 0 auto; box-shadow: 0 4px 24px rgba(0,0,0,.5); }
+
+.spectrum-bar span { flex: 1; }
+
+.spectrum-bar span:nth-child(1) { background: var(--magenta); box-shadow: 0 0 18px var(--magenta); }
+
+.spectrum-bar span:nth-child(2) { background: var(--purple); box-shadow: 0 0 18px var(--purple); }
+
+.spectrum-bar span:nth-child(3) { background: var(--blue); box-shadow: 0 0 18px var(--blue); }
+
+.spectrum-bar span:nth-child(4) { background: var(--green); box-shadow: 0 0 18px var(--green); }
+
+.spectrum-bar span:nth-child(5) { background: var(--gold); box-shadow: 0 0 18px var(--gold); }
+
+.spectrum-label { margin-top: 14px; font-size: 13px; letter-spacing: .3em; color: var(--secondary); text-transform: uppercase; }
+
+footer .spectrum-bar { max-width: 320px; margin-bottom: 20px; }

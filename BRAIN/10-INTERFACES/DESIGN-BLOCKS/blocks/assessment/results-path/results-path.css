@@ -1,0 +1,315 @@
+/* Smart Block: results-path — the assessment results journey.
+   Score reveal → dimension breakdown → path forward, as a stepped progression.
+   The `.score-stage` family and `.path*` rules are verbatim from
+   Maxis App Design.html; the journey wrapper, phase heads, arrival treatment,
+   and dividers are authored for this block. */
+.results-path{
+  max-width:880px;
+  margin:0 auto;
+}
+/* A phase of the journey. Starts unrevealed; `.revealed` is the arrival —
+   the report lands in stages instead of printing all at once. */
+.results-phase{
+  opacity:0;
+  transform:translateY(26px);
+  transition:
+    opacity .7s var(--ease),
+    transform .7s var(--ease);
+  transition-delay:calc(var(--phase-i,0) * 120ms);
+}
+.results-phase.revealed{
+  opacity:1;
+  transform:none;
+}
+.results-phase + .results-phase{
+  margin-top:64px;
+}
+.results-phase-kicker{
+  color:#c4a8ff;
+  font-size:10px;
+  font-weight:950;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  text-align:center;
+}
+.results-phase-title{
+  margin:12px 0 0;
+  color:#fff;
+  font-size:24px;
+  font-weight:950;
+  letter-spacing:-.02em;
+  text-align:center;
+}
+.results-phase-sub{
+  max-width:60ch;
+  margin:10px auto 0;
+  color:#aaa7b3;
+  font-size:14px;
+  line-height:1.6;
+  font-weight:600;
+  text-align:center;
+}
+/* ---- Phase 1: score reveal ---- */
+.results-phase-arrival{
+  position:relative;
+  text-align:center;
+}
+.results-phase-arrival::before{
+  content:"";
+  position:absolute;
+  inset:-40px 0;
+  background:
+    radial-gradient(
+      circle at 50% 28%,
+      rgba(138,92,255,.14),
+      transparent 60%
+    );
+  pointer-events:none;
+}
+.score-stage{
+  position:relative;
+  width:260px;
+  height:260px;
+  margin:34px auto 24px;
+  display:grid;
+  place-items:center;
+}
+.score-stage::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  background:
+    conic-gradient(
+      from -90deg,
+      var(--scoreColor) 0 var(--scoreDeg),
+      rgba(255,255,255,.07) var(--scoreDeg) 100%
+    );
+  -webkit-mask:
+    radial-gradient(
+      farthest-side,
+      transparent calc(100% - 12px),
+      #000 calc(100% - 11px)
+    );
+  mask:
+    radial-gradient(
+      farthest-side,
+      transparent calc(100% - 12px),
+      #000 calc(100% - 11px)
+    );
+  filter:
+    drop-shadow(
+      0 0 18px
+      color-mix(
+        in srgb,
+        var(--scoreColor) 38%,
+        transparent
+      )
+    );
+}
+.score-stage::after{
+  content:"";
+  position:absolute;
+  inset:26px;
+  border-radius:50%;
+  background:
+    radial-gradient(
+      circle at 35% 25%,
+      rgba(255,255,255,.08),
+      transparent 30%
+    ),
+    #09080d;
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow:
+    inset 0 0 40px rgba(138,92,255,.10),
+    0 20px 50px rgba(0,0,0,.48);
+}
+.score-content{
+  position:relative;
+  z-index:2;
+  text-align:center;
+}
+.score-number{
+  display:block;
+  font-size:72px;
+  line-height:.9;
+  font-weight:950;
+  letter-spacing:-.06em;
+  color:#fff;
+}
+.score-outof{
+  display:block;
+  margin-top:9px;
+  color:#85818c;
+  font-size:9px;
+  letter-spacing:.18em;
+  font-weight:950;
+}
+.result-level{
+  position:relative;
+  z-index:2;
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  padding:9px 17px;
+  border:1px solid color-mix(
+    in srgb,
+    var(--scoreColor) 60%,
+    white 8%
+  );
+  border-radius:999px;
+  color:#fff;
+  background:
+    color-mix(
+      in srgb,
+      var(--scoreColor) 8%,
+      #08080b
+    );
+  font-size:13px;
+  font-weight:950;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  box-shadow:
+    0 0 25px color-mix(
+      in srgb,
+      var(--scoreColor) 13%,
+      transparent
+    );
+}
+.result-level-dot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:var(--scoreColor);
+  box-shadow:
+    0 0 12px var(--scoreColor);
+}
+/* ---- Divider between phases: a jewel hairline with a diamond ---- */
+.results-divider{
+  position:relative;
+  height:1px;
+  max-width:420px;
+  margin:64px auto 0;
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(181,140,255,.5),
+      transparent
+    );
+}
+.results-divider::after{
+  content:"✦";
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  padding:0 12px;
+  background:#0a090e;
+  color:#b895ff;
+  font-size:12px;
+  line-height:1;
+}
+/* ---- Phase 2: dimension breakdown (hosts assessment/dimension-orb) ---- */
+.results-dimensions{
+  margin-top:30px;
+}
+/* ---- Phase 3: the path forward ---- */
+.path{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+  margin-top:30px;
+}
+.path-step{
+  position:relative;
+  min-height:180px;
+  padding:27px 24px;
+  border-radius:
+    40px 48px 38px 46px /
+    46px 38px 48px 40px;
+  background:
+    linear-gradient(
+      145deg,
+      #131219,
+      #08080c
+    );
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow:
+    0 15px 35px rgba(0,0,0,.30),
+    inset 0 1px 0 rgba(255,255,255,.06);
+}
+.path-number{
+  width:36px;
+  height:36px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  border:1px solid rgba(181,140,255,.48);
+  color:#d0bcff;
+  font-weight:950;
+}
+.path-step h4{
+  margin:17px 0 0;
+  color:#fff;
+  font-size:18px;
+  font-weight:950;
+}
+.path-step p{
+  margin:9px 0 0;
+  color:#aaa6b1;
+  font-size:13px;
+  line-height:1.5;
+  font-weight:600;
+}
+@media (max-width:760px){
+  .path{
+    grid-template-columns:1fr;
+  }
+  .score-stage{
+    width:220px;
+    height:220px;
+  }
+  .results-phase + .results-phase{
+    margin-top:48px;
+  }
+  .results-divider{
+    margin-top:48px;
+  }
+}
+@media (prefers-reduced-motion:reduce){
+  .results-phase{
+    opacity:1;
+    transform:none;
+    transition:none;
+  }
+}
+@media print{
+  .results-phase{
+    opacity:1!important;
+    transform:none!important;
+  }
+  .results-phase + .results-phase,
+  .results-divider{
+    margin-top:35px;
+  }
+  .score-stage{
+    break-inside:avoid;
+  }
+  .path-step{
+    background:#fafafa!important;
+    color:#111!important;
+    border:1px solid #ddd!important;
+    box-shadow:none!important;
+    break-inside:avoid;
+  }
+  .path-step h4{
+    color:#111!important;
+  }
+  .path-step p{
+    color:#333!important;
+  }
+  .score-number{
+    color:#111!important;
+  }
+}

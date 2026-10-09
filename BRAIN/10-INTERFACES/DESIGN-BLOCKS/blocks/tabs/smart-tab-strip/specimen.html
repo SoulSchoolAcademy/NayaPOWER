@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Block: smart-tab-strip</title>
+<link rel="stylesheet" href="smart-tab-strip.css">
+<style>
+/* SPECIMEN ONLY — page ground + tokens normally provided by tokens.css */
+:root{
+  --bg:#050505;
+  --ink:#F5F7FB;--muted:#AAB2BF;--ink-dim:#c9cfda;
+  --line:#ffffff18;--line-soft:#ffffff0d;
+  --purple:#9d75ff;--emerald:#55e39a;--gold:#f5c96b;
+  --ease:cubic-bezier(.16,.84,.22,1);--dur-med:.28s;
+  --depth-deep:0 20px 48px #000d;
+  --radius-md:13px;--radius-lg:18px;--radius-pill:999px;
+  --font:Inter,ui-sans-serif,system-ui,sans-serif;
+  --bg-panel:#0c0b10;
+}
+html,body{margin:0;padding:0}
+body{background:#050505;color:#F5F7FB;font-family:var(--font);min-height:100vh;padding:48px 20px;box-sizing:border-box}
+.demo{max-width:860px;margin:0 auto;display:grid;gap:28px}
+.demo-note{font-size:12px;color:#AAB2BF;margin:0;letter-spacing:.04em}
+.demo h2{font-size:24px;font-weight:700;margin:0}
+.demo .sub{font-size:18px;color:var(--muted);margin:-20px 0 0;font-weight:400}
+.demo-section{display:grid;gap:12px}
+.demo-caption{font-size:12px;color:var(--muted);margin:0}
+</style>
+</head>
+<body>
+<div class="demo">
+  <p class="demo-note">SPECIMEN — the canonical reusable SmartTabs strip. The glowing indicator slides via transform (translateX/scaleX) with the signature ease. Keyboard: Tab into the strip, then ArrowLeft/ArrowRight/Home/End move focus and Enter/Space activates.</p>
+
+  <section class="demo-section">
+    <h2>Library tabs</h2>
+    <p class="sub">Four tabs with counts; the indicator glides between them.</p>
+    <div class="smart-tab-strip">
+      <div class="smart-tab-scroll">
+        <div class="smart-tab-list" role="tablist" aria-label="Library sections">
+          <button class="smart-tab" role="tab" type="button" aria-selected="true" style="--tone:var(--purple)">
+            <span class="smart-tab-dot" aria-hidden="true"></span><span>All</span><span class="smart-tab-count">48</span>
+          </button>
+          <button class="smart-tab" role="tab" type="button" aria-selected="false" style="--tone:var(--emerald)">
+            <span class="smart-tab-dot" aria-hidden="true"></span><span>Rooms</span><span class="smart-tab-count">12</span>
+          </button>
+          <button class="smart-tab" role="tab" type="button" aria-selected="false" style="--tone:var(--gold)">
+            <span class="smart-tab-dot" aria-hidden="true"></span><span>Intelligence</span><span class="smart-tab-count">9</span>
+          </button>
+          <button class="smart-tab" role="tab" type="button" aria-selected="false" style="--tone:var(--muted)">
+            <span class="smart-tab-dot" aria-hidden="true"></span><span>Archived</span><span class="smart-tab-count">3</span>
+          </button>
+          <span class="smart-tab-indicator" aria-hidden="true"></span>
+        </div>
+      </div>
+      <button class="smart-tab-add" type="button" aria-label="Add tab">+</button>
+    </div>
+  </section>
+
+  <section class="demo-section">
+    <h2>Overflow strip</h2>
+    <p class="sub">Seven tabs — the strip scrolls horizontally on small screens; the add button stays pinned at the end.</p>
+    <div class="smart-tab-strip">
+      <div class="smart-tab-scroll">
+        <div class="smart-tab-list" role="tablist" aria-label="Intelligence views">
+          <button class="smart-tab" role="tab" type="button" aria-selected="false" style="--tone:var(--purple)"><span class="smart-tab-dot" aria-hidden="true"></span><span>Today</span></button>
+          <button class="smart-tab" role="tab" type="button" aria-selected="true" style="--tone:var(--emerald)"><span class="smart-tab-dot" aria-hidden="true"></span><span>This week</span><span class="smart-tab-count">7</span></button>
+          <button class="smart-tab" role="tab" type="button" aria-selected="false" style="--tone:var(--gold)"><span class="smart-tab-dot" aria-hidden="true"></span><span>Doctrines</span><span class="smart-tab-count">21</span></button>
+          <button class="smart-tab" role="tab" type="button" aria-selected="false" style="--tone:var(--purple)"><span class="smart-tab-dot" aria-hidden="true"></span><span>Lessons</span><span class="smart-tab-count">14</span></button>
+          <button class="smart-tab" role="tab" type="button" aria-selected="false" style="--tone:var(--emerald)"><span class="smart-tab-dot" aria-hidden="true"></span><span>People</span><span class="smart-tab-count">5</span></button>
+          <button class="smart-tab" role="tab" type="button" aria-selected="false" style="--tone:var(--gold)"><span class="smart-tab-dot" aria-hidden="true"></span><span>Decisions</span><span class="smart-tab-count">11</span></button>
+          <button class="smart-tab" role="tab" type="button" aria-selected="false" style="--tone:var(--muted)"><span class="smart-tab-dot" aria-hidden="true"></span><span>Experiments</span></button>
+          <span class="smart-tab-indicator" aria-hidden="true"></span>
+        </div>
+      </div>
+      <button class="smart-tab-add" type="button" aria-label="Add tab">+</button>
+    </div>
+    <p class="demo-caption">The “+” add affordance is a fixed 44px circle — it never scrolls away. Keyboard users reach it with Tab after the last tab.</p>
+  </section>
+</div>
+<script src="smart-tab-strip.js"></script>
+</body>
+</html>

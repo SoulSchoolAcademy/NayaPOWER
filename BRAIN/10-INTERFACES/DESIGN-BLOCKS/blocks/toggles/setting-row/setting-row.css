@@ -1,0 +1,7 @@
+.modal-mini strong,.modal-mini small,.toast-mini strong,.toast-mini small,.search-result strong,.search-result small,.content-card strong,.content-card small,.setting-row strong,.setting-row small,.media-copy strong,.media-copy small,.smart-link strong,.smart-link small{display:block}
+
+.modal-mini small,.toast-mini small,.search-result small,.content-card small,.setting-row small,.media-copy small,.smart-link small{color:#bdb7c5;font-size:11px;margin-top:3px}
+
+.setting-row{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 0;border-top:1px solid rgba(255,255,255,.12)}
+
+.setting-row:nth-of-type(2){border:0}

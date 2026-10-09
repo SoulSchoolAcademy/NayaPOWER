@@ -1,0 +1,9 @@
+/* Smart Block: orb-ctx-card — byte-true from Naya Jewel Library - N5.html */
+.orb-context { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin: 24px 0; }
+
+.orb-ctx-card { border: 1px solid var(--line); border-radius: var(--r-lg); padding: 22px;
+  background: linear-gradient(180deg, rgba(255,255,255,.03), transparent); transition: transform .25s var(--ease), border-color .25s var(--ease); }
+
+.orb-ctx-card:hover { transform: translateY(-3px); border-color: rgba(255,255,255,.25); }
+
+.orb-ctx-card h4 { display: flex; align-items: center; gap: 12px; font-size: 18px; margin: 0 0 12px; }

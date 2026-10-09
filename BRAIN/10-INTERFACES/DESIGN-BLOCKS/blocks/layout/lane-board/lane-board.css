@@ -1,0 +1,11 @@
+/* lane-board — extracted verbatim from Naya Smart Hub Design.html */
+.meta-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:11px;color:var(--muted);font-size:10.5px}
+.meta-row span{padding:4px 8px;border:1px solid var(--line-soft);border-radius:var(--radius-pill)}
+.lane-board{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+.lane{min-height:200px;padding:14px;border:1px solid var(--line);border-radius:var(--radius-md);background:#09080d}
+.lane-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:11px;font-weight:900;letter-spacing:.1em}
+.lane-count{color:var(--muted)}
+.list-card{padding:12px;border:1px solid var(--line-soft);border-radius:11px;background:#121019;margin-bottom:9px}
+.list-card b{font-size:12.5px}
+.why{margin-top:6px;font-size:10.5px;color:var(--muted);line-height:1.45}
+.why::before{content:"WHY · ";font-weight:900;color:var(--room-accent)}

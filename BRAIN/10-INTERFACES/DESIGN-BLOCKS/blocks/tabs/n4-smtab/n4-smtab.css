@@ -1,0 +1,36 @@
+/* Smart Block: n4-smtab
+ * Source: Naya Design Element Set N4.html (byte-true extraction, not rewritten)
+ * Type: tabs
+ * Extracted: 2026-10-09
+ */
+
+/* ---- component rules ---- */
+
+.smtab{--tc:#ffffff; display:inline-flex; align-items:center; gap:8px; padding:12px 22px; min-height:44px;
+  border-radius:999px; border:1.5px solid rgba(255,255,255,.55);
+  background:linear-gradient(180deg,#1a1a20,#0a0a0d);
+  color:#fff; font-size:14px; font-weight:800; font-family:inherit; cursor:pointer;
+  text-shadow:0 1px 3px rgba(0,0,0,.9);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.4), inset 0 -1px 0 rgba(0,0,0,.7), inset 0 -6px 12px rgba(0,0,0,.55), 0 0 16px -6px rgba(255,255,255,.14), 0 14px 30px rgba(0,0,0,.75);
+  transition:border-color .22s, box-shadow .25s, transform .18s var(--ease), text-shadow .25s;}
+
+.smtab .dots{opacity:.75; font-weight:900; letter-spacing:.05em; padding:0 2px;}
+
+.smtab.heart{box-shadow:inset 0 0 0 2px rgba(183,114,255,.4), inset 0 1px 0 rgba(255,255,255,.4), inset 0 -1px 0 rgba(0,0,0,.7), inset 0 -6px 12px rgba(0,0,0,.55), 0 0 20px -4px rgba(183,114,255,.5), 0 14px 30px rgba(0,0,0,.75);}
+
+.smtab.star{box-shadow:inset 0 0 0 2px rgba(248,201,56,.4), inset 0 1px 0 rgba(255,255,255,.4), inset 0 -1px 0 rgba(0,0,0,.7), inset 0 -6px 12px rgba(0,0,0,.55), 0 0 20px -4px rgba(248,201,56,.5), 0 14px 30px rgba(0,0,0,.75);}
+
+.smtab:hover{border-color:var(--tc); transform:translateY(-2px);
+  box-shadow:inset 0 2px 3px rgba(255,255,255,.35), inset 0 -4px 8px rgba(0,0,0,.6), 0 0 30px var(--tc), 0 0 64px -10px var(--tc), 0 16px 34px rgba(0,0,0,.7);
+  text-shadow:0 0 12px var(--tc);}
+
+.smtab.active{border-color:var(--tc);
+  box-shadow:inset 0 2px 3px rgba(255,255,255,.35), inset 0 -4px 8px rgba(0,0,0,.6), 0 0 26px var(--tc), 0 0 56px -10px var(--tc), 0 14px 30px rgba(0,0,0,.68);}
+
+.smtab:active{transform:translateY(1px) scale(.98);}
+
+.smtab:focus-visible{outline:2px solid var(--tc); outline-offset:3px;}
+
+.smtab.add{border-style:dashed; opacity:.85;}
+
+.smtabs-status{font-size:14px; color:#fff; opacity:.8; margin:14px 2px 0;}

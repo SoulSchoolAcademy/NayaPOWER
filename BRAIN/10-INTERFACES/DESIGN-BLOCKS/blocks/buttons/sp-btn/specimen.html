@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>sp-btn — specimen</title>
+<link rel="stylesheet" href="sp-btn.css">
+<style>
+  body{margin:0;background:#050507;color:#e8eaf2;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;padding:32px 20px;}
+  .demo{max-width:520px;margin:0 auto;display:grid;gap:22px;align-content:start;}
+  .cap{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#8b93a3;}
+  .row{display:flex;gap:14px;flex-wrap:wrap;align-items:center;}
+</style>
+</head>
+<body>
+<div class="demo">
+  <div class="cap">Canonical spaces button — black heart, white voice, own-color ignite</div>
+  <div class="row">
+    <button class="sp-btn sp-btn--create" style="--sc:#7c3aed"><span class="sp-btn-icon">＋</span> Create Space</button>
+    <button class="sp-btn" style="--sc:#1e6fd9">Join</button>
+    <button class="sp-btn sp-btn--ghost">Cancel</button>
+  </div>
+  <div class="row">
+    <button class="sp-btn sp-btn--create sp-btn--block" style="--sc:#0d9e6f"><span class="sp-btn-icon">＋</span> Create your first space</button>
+  </div>
+  <div class="row">
+    <button class="sp-btn" style="--sc:#d4a017" disabled>Disabled</button>
+  </div>
+</div>
+</body>
+</html>

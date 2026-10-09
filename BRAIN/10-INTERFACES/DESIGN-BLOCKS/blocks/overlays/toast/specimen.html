@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Block: toast &mdash; specimen</title>
+<link rel="stylesheet" href="../../tokens/design-tokens/design-tokens.css">
+<link rel="stylesheet" href="toast.css">
+<style>
+/* specimen chrome only -- not part of the block */
+body{background:#050507;color:#f8f7fb;font:500 16px/1.6 Manrope,ui-sans-serif,system-ui,sans-serif;margin:0;padding:48px 20px}
+.spec-note{max-width:960px;margin:0 auto 28px;color:#c8c2ce;font-size:13px;letter-spacing:.04em}
+.spec-stage{max-width:960px;margin:0 auto}
+</style>
+</head>
+<body>
+<p class="spec-note">SMART BLOCK SPECIMEN &middot; <b>toast</b> &middot; Toast system: fixed live-region toast + rich toast-mini card. Reports briefly, truthfully. &mdash; markup and CSS extracted byte-true from <i>Naya Building Blocks - The Ultimate Design System - Naya 2.html</i>.</p>
+<div class="spec-stage">
+<svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden"><defs>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="m4 12 5.5 5.5L20 6"/></symbol>
+<symbol id="i-close" viewBox="0 0 24 24"><path d="m5 5 14 14M19 5 5 19"/></symbol>
+</defs></svg>
+<div class="toast" role="status" aria-live="polite" id="toast">Copied</div>
+<div class="toast-mini"><svg class="icon"><use href="#i-check"/></svg><div><strong>Copied to clipboard</strong><small>Truthful, brief, dismissible.</small></div><button class="naya-btn icon micro" aria-label="Dismiss notification"><svg class="icon"><use href="#i-close"/></svg></button></div>
+</div>
+</body>
+</html>

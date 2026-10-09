@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Block: results-path</title>
+<link rel="stylesheet" href="../dimension-orb/dimension-orb.css">
+<link rel="stylesheet" href="results-path.css">
+<style>
+/* SPECIMEN ONLY — page ground + tokens normally provided by tokens.css */
+:root{
+  --bg:#020204;--surface:#09090d;--surface2:#101016;
+  --text:#f8f7fb;--muted:#aaa7b3;
+  --purple:#8a5cff;--purple2:#b895ff;--gold:#ffd45a;--green:#35e39b;--blue:#3ca8ff;--violet:#765cff;--magenta:#ed42c4;
+  --line:rgba(255,255,255,.11);
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
+html,body{margin:0;padding:0}
+body{background:#020204;color:#f8f7fb;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;min-height:100vh;padding:48px 20px;box-sizing:border-box}
+.demo{width:min(880px,100%);margin:0 auto}
+.demo-note{font-size:12px;color:#aaa7b3;margin:0 0 32px;letter-spacing:.04em;line-height:1.6}
+.demo-jump{display:block;text-align:center;margin:0 0 24px;font-size:12px;color:#8f8a99;letter-spacing:.04em}
+</style>
+</head>
+<body>
+<div class="demo">
+  <p class="demo-note">SPECIMEN — the results journey. Scroll: each phase arrives in stages (score reveal → dimension breakdown → path forward). The dimension orbs are the real <code>assessment/dimension-orb</code> block, composed here as a declared dependency. The score counts up on arrival.</p>
+  <p class="demo-jump">↓ scroll to watch the journey arrive ↓</p>
+
+  <div class="results-path" id="resultsPath">
+
+    <!-- Phase 1: score reveal -->
+    <section class="results-phase results-phase-arrival" style="--phase-i:0" aria-labelledby="rpScoreTitle">
+      <div class="results-phase-kicker">Your personal AI mastery report</div>
+      <h2 class="results-phase-title" id="rpScoreTitle">Your Naya Power Score</h2>
+      <p class="results-phase-sub">This is a starting line, not a verdict — it shows where your AI capability stands today.</p>
+      <div class="score-stage" style="--scoreColor:#b895ff;--scoreDeg:295.2deg" role="img" aria-label="Naya Power Score: 82 out of 100">
+        <div class="score-content">
+          <span class="score-number" data-count-to="82" aria-hidden="true">0</span>
+          <span class="score-outof">OUT OF 100</span>
+        </div>
+      </div>
+      <div class="result-level" style="--scoreColor:#b895ff">
+        <span class="result-level-dot"></span>
+        <span>Advancing</span>
+      </div>
+      <div class="results-divider" aria-hidden="true"></div>
+    </section>
+
+    <!-- Phase 2: dimension breakdown -->
+    <section class="results-phase" style="--phase-i:1" aria-labelledby="rpDimsTitle">
+      <div class="results-phase-kicker">Your five dimensions</div>
+      <h2 class="results-phase-title" id="rpDimsTitle">How you actually work with AI</h2>
+      <p class="results-phase-sub">Your overall score is only the beginning. These dimensions show where your capability is already strong — and where your greatest leverage is waiting.</p>
+      <div class="results-dimensions">
+        <div class="dimension-constellation">
+          <div class="dimension-orb" style="--dimensionColor:#ffd45a">
+            <div class="dimension-ring" style="--dimDeg:320.4deg"><span class="dimension-score">89</span></div>
+            <div class="dimension-name">Direction</div>
+            <div class="dimension-status">Advancing</div>
+          </div>
+          <div class="dimension-orb" style="--dimensionColor:#35e39b">
+            <div class="dimension-ring" style="--dimDeg:295.2deg"><span class="dimension-score">82</span></div>
+            <div class="dimension-name">Communication</div>
+            <div class="dimension-status">Advancing</div>
+          </div>
+          <div class="dimension-orb" style="--dimensionColor:#3ca8ff">
+            <div class="dimension-ring" style="--dimDeg:273.6deg"><span class="dimension-score">76</span></div>
+            <div class="dimension-name">Evaluation</div>
+            <div class="dimension-status">Advancing</div>
+          </div>
+          <div class="dimension-orb" style="--dimensionColor:#765cff">
+            <div class="dimension-ring" style="--dimDeg:302.4deg"><span class="dimension-score">84</span></div>
+            <div class="dimension-name">Iteration</div>
+            <div class="dimension-status">Advancing</div>
+          </div>
+          <div class="dimension-orb" style="--dimensionColor:#ed42c4">
+            <div class="dimension-ring" style="--dimDeg:248.4deg"><span class="dimension-score">69</span></div>
+            <div class="dimension-name">Systems Thinking</div>
+            <div class="dimension-status">Developing</div>
+          </div>
+        </div>
+      </div>
+      <div class="results-divider" aria-hidden="true"></div>
+    </section>
+
+    <!-- Phase 3: the path forward -->
+    <section class="results-phase" style="--phase-i:2" aria-labelledby="rpPathTitle">
+      <div class="results-phase-kicker">Your next level</div>
+      <h2 class="results-phase-title" id="rpPathTitle">Where to go from here</h2>
+      <p class="results-phase-sub">Three moves, in order. Small enough to start tonight, compounding enough to matter in a month.</p>
+      <div class="path">
+        <article class="path-step">
+          <div class="path-number" aria-hidden="true">1</div>
+          <h4>Strengthen your strongest move</h4>
+          <p>Turn your best AI habit into a repeatable workflow you can run without thinking.</p>
+        </article>
+        <article class="path-step">
+          <div class="path-number" aria-hidden="true">2</div>
+          <h4>Close your biggest gap</h4>
+          <p>One focused practice in Systems Thinking — the dimension with the most leverage waiting.</p>
+        </article>
+        <article class="path-step">
+          <div class="path-number" aria-hidden="true">3</div>
+          <h4>Make it compound</h4>
+          <p>Retake the assessment in 30 days and watch the constellation shift.</p>
+        </article>
+      </div>
+    </section>
+
+  </div>
+</div>
+<script src="results-path.js"></script>
+</body>
+</html>

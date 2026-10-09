@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>sp-modal-type — specimen</title>
+<link rel="stylesheet" href="sp-modal-type.css">
+<link rel="stylesheet" href="../../buttons/sp-btn/sp-btn.css">
+<style>
+  body{margin:0;background:#050507;color:#e8eaf2;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;padding:32px 20px;}
+  .demo{max-width:520px;margin:0 auto;display:grid;gap:22px;align-content:start;}
+  .cap{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#8b93a3;}
+</style>
+</head>
+<body>
+<div class="demo">
+  <div class="cap">Type selector — click to preview the modal</div>
+  <button class="sp-btn sp-btn--create" id="open" style="--sc:#7c3aed"><span class="sp-btn-icon">＋</span> Create Space</button>
+</div>
+
+<div class="sp-mback" id="mback">
+  <div class="sp-mtype" role="dialog" aria-modal="true" aria-labelledby="spmt-t" style="--sc:#7c3aed">
+    <div class="sp-mtype-head">
+      <p class="sp-mlabel">New space</p>
+      <h2 class="sp-mtitle" id="spmt-t">What kind of space?</h2>
+      <p class="sp-msub">Pick the shape that fits your people.</p>
+      <button class="sp-mtype-x" data-sp-close aria-label="Close">✕</button>
+    </div>
+    <div class="sp-mtype-grid" role="radiogroup" aria-label="Space type">
+      <button class="sp-mtype-opt on" data-type="gathering" style="--oc:#7c3aed">
+        <span class="sp-mtype-jewel" aria-hidden="true"></span>
+        <span class="sp-mtype-name">Gathering</span>
+        <span class="sp-mtype-desc">An open room for people, posts, and conversation.</span>
+      </button>
+      <button class="sp-mtype-opt" data-type="channel" style="--oc:#1e6fd9">
+        <span class="sp-mtype-jewel" aria-hidden="true"></span>
+        <span class="sp-mtype-name">Channel</span>
+        <span class="sp-mtype-desc">Broadcast updates to everyone who follows.</span>
+      </button>
+      <button class="sp-mtype-opt" data-type="circle" style="--oc:#0d9e6f">
+        <span class="sp-mtype-jewel" aria-hidden="true"></span>
+        <span class="sp-mtype-name">Circle</span>
+        <span class="sp-mtype-desc">Private and trusted — just your chosen few.</span>
+      </button>
+      <button class="sp-mtype-opt" data-type="studio" style="--oc:#d4a017">
+        <span class="sp-mtype-jewel" aria-hidden="true"></span>
+        <span class="sp-mtype-name">Studio</span>
+        <span class="sp-mtype-desc">Build together — a project room with its own rhythm.</span>
+      </button>
+    </div>
+    <p class="sp-mnote">You can change this later — nothing here is permanent.</p>
+    <div class="sp-mtype-actions" style="margin-top:14px">
+      <button class="sp-btn sp-btn--ghost" data-sp-close>Back</button>
+      <button class="sp-btn sp-btn--create" style="--sc:#7c3aed">Continue →</button>
+    </div>
+  </div>
+</div>
+
+<script src="sp-modal-type.js"></script>
+<script>
+  document.getElementById('open').addEventListener('click', function(){
+    document.getElementById('mback').spModalType.open();
+  });
+  document.querySelector('.sp-mtype').addEventListener('sp-type-change', function(e){
+    document.querySelector('.sp-mtype').style.setProperty('--sc',
+      {gathering:'#7c3aed', channel:'#1e6fd9', circle:'#0d9e6f', studio:'#d4a017'}[e.detail.type]);
+  });
+</script>
+</body>
+</html>

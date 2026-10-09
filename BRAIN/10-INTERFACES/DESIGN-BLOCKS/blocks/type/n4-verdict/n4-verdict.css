@@ -1,0 +1,15 @@
+/* Smart Block: n4-verdict
+ * Source: Naya Design Standard Showcase (1).html (byte-true extraction, not rewritten)
+ * Type: type
+ * Extracted: 2026-10-09
+ */
+
+/* ---- component rules ---- */
+
+.verdict{font-family:var(--voice); font-size:24px; font-weight:600; text-align:center;
+  color:#fff; line-height:1.25; margin:10px 0 8px;
+  text-shadow:0 2px 12px rgba(0,0,0,.8), 0 0 40px rgba(255,212,90,.22);}
+
+.verdict strong{color:#ffd45a;}
+
+.verdictsub{text-align:center; font-size:14px; letter-spacing:.24em; color:#fff; opacity:.7; margin:0;}

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Block: naya-nav-chrome</title>
+<link rel="stylesheet" href="naya-nav-chrome.css">
+<style>
+/* SPECIMEN ONLY — page ground + tokens normally provided by tokens.css */
+:root{
+  --bg:#050505;
+  --ink:#F5F7FB;--muted:#AAB2BF;
+  --line:#ffffff18;--line-soft:#ffffff0d;
+  --purple:#9d75ff;--emerald:#55e39a;--gold:#f5c96b;--red:#ff6b6b;
+  --ease:cubic-bezier(.16,.84,.22,1);--dur-med:.28s;
+  --depth-deep:0 20px 48px #000d;
+  --radius-md:13px;--radius-lg:18px;--radius-pill:999px;
+  --font:Inter,ui-sans-serif,system-ui,sans-serif;
+  --bg-panel:#0c0b10;--ink-dim:#c9cfda;
+}
+html,body{margin:0;padding:0}
+body{background:#050505;color:#F5F7FB;font-family:var(--font);min-height:100vh}
+.demo-note{font-size:12px;color:#AAB2BF;margin:0;letter-spacing:.04em;padding:28px 20px 0;max-width:760px}
+.demo-body{max-width:760px;padding:28px 20px 140px;margin:0 auto}
+.demo-body h1{font-size:24px;color:var(--ink);margin:0 0 6px}
+.demo-body h2{font-size:18px;color:var(--ink-dim);margin:28px 0 8px}
+.demo-body p{font-size:14px;line-height:1.65;color:var(--ink-dim);margin:0 0 14px}
+/* SPECIMEN ONLY — stand-in bottom bar. The real ecosystem bar ships as layout/eco-dock. */
+.eco-dock-demo{
+  position:fixed;left:0;right:0;bottom:0;z-index:200;
+  display:flex;justify-content:space-around;gap:4px;
+  padding:8px 12px calc(10px + env(safe-area-inset-bottom, 0px));
+  background:color-mix(in srgb, #050505 82%, transparent);
+  -webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);
+  border-top:1px solid #ffffff0d;
+}
+.eco-demo-btn{
+  flex:1;max-width:96px;min-height:44px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
+  background:none;border:0;border-radius:12px;color:#AAB2BF;cursor:pointer;
+  font-family:inherit;font-size:10.5px;letter-spacing:.06em;
+  transition:color .28s cubic-bezier(.16,.84,.22,1),box-shadow .28s cubic-bezier(.16,.84,.22,1);
+}
+.eco-demo-btn svg{width:21px;height:21px}
+.eco-demo-btn:hover{color:#F5F7FB;box-shadow:0 0 16px #9d75ff44}
+.eco-demo-btn:active{color:#F5F7FB;box-shadow:0 0 16px #9d75ff44;transform:scale(.96)}
+.eco-demo-btn[aria-current="page"]{color:#F5F7FB}
+.eco-demo-btn[aria-current="page"] .eco-demo-jewel{background:#9d75ff;box-shadow:0 0 10px #9d75ff}
+.eco-demo-jewel{width:7px;height:7px;border-radius:50%;background:transparent}
+</style>
+</head>
+<body>
+
+<header class="nav-chrome">
+  <div class="nav-chrome-bar">
+    <button class="nav-trigger" type="button" aria-label="Open rooms">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M7 21V9.5L12 4l5 5.5V21"/>
+        <path d="M10 21v-6h4v6"/>
+      </svg>
+    </button>
+    <div class="nav-lockup">
+      <span class="nav-wordmark">NAYA</span>
+      <span class="nav-live-dot" aria-hidden="true"></span>
+      <p class="nav-tagline">Living intel, kept.</p>
+    </div>
+    <div class="nav-side">
+      <p class="nav-sync" aria-live="polite"><span class="nav-sync-dot" aria-hidden="true"></span>Synced · just now</p>
+      <button class="nav-trigger" type="button" aria-label="Open NayaNET">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+          <circle cx="12" cy="5.5" r="2.2"/>
+          <circle cx="5.5" cy="18.5" r="2.2"/>
+          <circle cx="18.5" cy="18.5" r="2.2"/>
+          <path d="M10.6 7.2 6.8 16.8M13.4 7.2l3.8 9.6M7.7 18.5h8.6"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="demo-body">
+  <p class="demo-note" style="padding:0 0 24px">SPECIMEN — authored 2026-10-09. Scroll: the topbar stays pinned (sticky, blurred black glass). The bottom bar is a SPECIMEN-ONLY stand-in; the real ecosystem dock ships as <code>layout/eco-dock</code>.</p>
+  <h1>The Ledger is the memory of the system</h1>
+  <h2>Every signal, kept alive</h2>
+  <p>Scroll down and the topbar stays pinned: the rooms trigger on the left, the front-door lockup in the center, and the NayaNET trigger plus the honest sync readout on the right. The sync line re-renders from the page — it says "Synced · just now" only when that is true.</p>
+  <h2>One organism, two bars</h2>
+  <p>The topbar and the bottom ecosystem bar share the same token language, the same 24/18/14 type scale, and the same signature ease — one organism with <code>layout/hub-shell</code>, not two navs bolted together. Drawer opening is the page's job; this block is the chrome.</p>
+  <h2>Alive at rest</h2>
+  <p>The emerald dot beside the wordmark breathes — the one sign that the system is awake. On mobile the center line truncates with an ellipsis instead of wrapping, and both triggers stay a full 44px.</p>
+  <h2>Honesty at the top</h2>
+  <p>The right-hand live region carries the same honesty law as the state panel: when the graph is stale it reads "Stale · 12 min ago" with a gold dot, never "Synced".</p>
+  <p>More room to scroll — the blur behind the bar gets stronger as content passes under it.</p>
+  <p>Keep scrolling. The topbar is still there, the bottom dock is still there, and nothing has moved out of reach.</p>
+  <p>Last stretch. On a real Ledger page this is where the stream of intelligence cards begins.</p>
+</main>
+
+<nav class="eco-dock-demo" aria-label="Ecosystem (specimen placeholder — use layout/eco-dock)">
+  <button class="eco-demo-btn" type="button" aria-current="page">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7 8 7v9a1 1 0 0 1-1 1h-5v-6h-4v6H5a1 1 0 0 1-1-1z"/></svg>
+    <span>Home</span><span class="eco-demo-jewel"></span>
+  </button>
+  <button class="eco-demo-btn" type="button">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 21V9.5L12 4l5 5.5V21"/><path d="M10 21v-6h4v6"/></svg>
+    <span>Rooms</span><span class="eco-demo-jewel"></span>
+  </button>
+  <button class="eco-demo-btn" type="button">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="5.5" r="2.2"/><circle cx="5.5" cy="18.5" r="2.2"/><circle cx="18.5" cy="18.5" r="2.2"/><path d="M10.6 7.2 6.8 16.8M13.4 7.2l3.8 9.6M7.7 18.5h8.6"/></svg>
+    <span>Graph</span><span class="eco-demo-jewel"></span>
+  </button>
+  <button class="eco-demo-btn" type="button">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg>
+    <span>Inbox</span><span class="eco-demo-jewel"></span>
+  </button>
+</nav>
+
+</body>
+</html>
