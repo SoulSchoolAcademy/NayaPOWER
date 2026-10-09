@@ -15,15 +15,15 @@
   background: linear-gradient(180deg, #101117, #0a0b0f);
   border: 1px solid var(--soft-line);
   box-shadow: inset 0 1px 0 rgba(255,255,255,.12), inset 0 -12px 24px rgba(0,0,0,.4), 0 16px 34px rgba(0,0,0,.5); }
-.sg-card h4 { margin: 0 0 4px; font-size: 16px; color: #fff; font-weight: 700; }
-.sg-card .c-sub { font-size: 13px; color: var(--quiet); margin-bottom: 6px; }
+.sg-card h4 { margin: 0 0 4px; font-size: 18px; color: #fff; font-weight: 700; }
+.sg-card .c-sub { font-size: 14px; color: var(--quiet); margin-bottom: 6px; }
 
 @keyframes pr-ping { 0% { transform: scale(.28); opacity: .9; } 100% { transform: scale(1); opacity: 0; } }
 @keyframes pr-twinkle { 0%,100% { opacity: .55; } 50% { opacity: 1; } }
 @keyframes pr-core { 0%,100% { transform: scale(1); } 50% { transform: scale(1.06); } }
 @keyframes pr-in { from { opacity: 0; transform: scale(.8); } to { opacity: 1; transform: none; } }
 
-.pr-stage { position: relative; width: 280px; height: 280px; margin: 18px auto 8px; }
+.pr-stage { position: relative; width: min(280px, 70vw); height: min(280px, 70vw); margin: 18px auto 8px; }
 .sg-card.lit .pr-stage { animation: pr-in .8s var(--ease) .1s both; }
 
 .pr-ring { --rc: var(--purple); --rcrgb: var(--purple-rgb); --pd: 4s;
@@ -45,13 +45,13 @@
 .pr-core .pr-label { color: rgba(255,255,255,.7); font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
 
 .pr-keys { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 12px;
-  font-size: 12.5px; color: var(--quiet); }
+  font-size: 14px; color: var(--quiet); }
 .pr-keys span { display: inline-flex; align-items: center; gap: 7px; }
 .pr-keys i { width: 9px; height: 9px; border-radius: 50%; background: var(--kc, var(--purple));
   box-shadow: 0 0 8px var(--kc, var(--purple)); animation: pr-twinkle 3s ease-in-out infinite; }
 
 .sg-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 14px;
-  padding-top: 14px; border-top: 1px solid var(--soft-line); font-size: 12.5px; color: var(--quiet); }
+  padding-top: 14px; border-top: 1px solid var(--soft-line); font-size: 14px; color: var(--quiet); }
 
 @media (prefers-reduced-motion: reduce) {
   .pr-ring, .pr-core, .pr-keys i { animation: none; }

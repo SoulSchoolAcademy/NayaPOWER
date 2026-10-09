@@ -180,7 +180,7 @@
   width: 100%;
   padding: 24px clamp(20px, 4vw, 48px);
   border-top: 1px solid rgba(255, 255, 255, 0.07);
-  font-size: 13px;
+  font-size: 14px;
   color: rgba(248, 247, 251, 0.45);
 }
 

@@ -9,9 +9,9 @@
       .nl-chart{border-radius:20px;padding:24px 22px 18px;background:linear-gradient(180deg,#101117,#0a0b0f);border:1px solid var(--soft-line);
         box-shadow:inset 0 1px 0 rgba(255,255,255,.12),inset 0 -12px 24px rgba(0,0,0,.4),0 16px 34px rgba(0,0,0,.5)}
 
-      .nl-chart h4{margin:0 0 4px;font-size:16px}
+      .nl-chart h4{margin:0 0 4px;font-size:18px}
 
-      .nl-chart .c-sub{font-size:13px;color:var(--quiet);margin-bottom:18px}
+      .nl-chart .c-sub{font-size:14px;color:var(--quiet);margin-bottom:18px}
 
       .nl-bars{display:flex;align-items:flex-end;gap:10px;height:170px;padding-top:8px}
 
@@ -30,7 +30,7 @@
 
       .nl-barcol span{font-size:11.5px;color:var(--quiet);font-weight:700}
 
-      .nl-barcol b{font-size:12.5px;font-variant-numeric:tabular-nums}
+      .nl-barcol b{font-size:14px;font-variant-numeric:tabular-nums}
 
       .nl-line{width:100%;height:170px}
 
@@ -44,6 +44,6 @@
       .nl-charts.lit .nl-line circle.pt{opacity:1}
       .nl-chart.lit .nl-line circle.pt{opacity:1}
 
-      .nl-legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:12px;font-size:13px;color:var(--quiet)}
+      .nl-legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:12px;font-size:14px;color:var(--quiet)}
 
       .nl-legend i{width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:6px;box-shadow:0 0 8px currentColor}

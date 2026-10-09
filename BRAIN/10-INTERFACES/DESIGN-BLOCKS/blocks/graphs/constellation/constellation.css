@@ -16,8 +16,8 @@
   background: linear-gradient(180deg, #101117, #0a0b0f);
   border: 1px solid var(--soft-line);
   box-shadow: inset 0 1px 0 rgba(255,255,255,.12), inset 0 -12px 24px rgba(0,0,0,.4), 0 16px 34px rgba(0,0,0,.5); }
-.sg-card h4 { margin: 0 0 4px; font-size: 16px; color: #fff; font-weight: 700; }
-.sg-card .c-sub { font-size: 13px; color: var(--quiet); margin-bottom: 10px; }
+.sg-card h4 { margin: 0 0 4px; font-size: 18px; color: #fff; font-weight: 700; }
+.sg-card .c-sub { font-size: 14px; color: var(--quiet); margin-bottom: 10px; }
 
 @keyframes sc-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
 @keyframes sc-twinkle { 0%,100% { opacity: .55; } 50% { opacity: 1; } }
@@ -46,7 +46,7 @@
 .sc-hub { animation: sc-float 6s ease-in-out infinite; }
 .sc-star { fill: #fff; animation: sc-twinkle 3.4s ease-in-out infinite; }
 
-.sg-legend { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 12px; font-size: 13px; color: var(--quiet); }
+.sg-legend { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 14px; font-size: 14px; color: var(--quiet); }
 .sg-legend i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 7px;
   background: var(--lc, var(--purple)); box-shadow: 0 0 8px var(--lc, var(--purple)); }
 
