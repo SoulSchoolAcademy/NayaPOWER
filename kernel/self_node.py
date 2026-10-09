@@ -3,11 +3,18 @@ from __future__ import annotations
 import hashlib
 import json
 from dataclasses import asdict, dataclass, field
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
 class SelfNodeError(ValueError):
     """Raised when SELF cannot establish or restore valid state."""
+
+
+# Truth states eligible for preservation into SELF continuity. Anything below
+# VERIFIED — CANDIDATE, DRAFT, FALSIFIED, or an unresolvable note — cannot
+# enter `state.known` through the governed path (Phase 4 / GAP 5).
+GOVERNED_TRUTH_STATES = frozenset({"VERIFIED", "RATIFIED", "ACTIVE", "LEARNED"})
 
 @dataclass(frozen=True)
 class RuntimeIdentity:
@@ -26,6 +33,9 @@ class SelfState:
     known: list[str] = field(default_factory=list)
     unknown: list[str] = field(default_factory=list)
     blocked: list[str] = field(default_factory=list)
+    # Governed lesson references: one entry per accepted Smart Note,
+    # {smart_note_id, truth_state, recorded_at}. Raw text never lands here.
+    lesson_refs: list = field(default_factory=list)
     predecessor_id: str | None = None
     checkpoint_id: str | None = None
     successor_ready: bool = False
@@ -121,6 +131,7 @@ class SelfNode:
             known=list(known if known is not None else ([] if prior is None else prior.known)),
             unknown=list(unknown if unknown is not None else ([] if prior is None else prior.unknown)),
             blocked=list(blocked if blocked is not None else ([] if prior is None else prior.blocked)),
+            lesson_refs=list(prior.lesson_refs) if prior is not None else [],
             predecessor_id=prior.identity.actor_id if prior else None,
             checkpoint_id=prior.checkpoint_id if prior else None,
             successor_ready=False,
@@ -134,11 +145,107 @@ class SelfNode:
         receipt["prior_checkpoint_integrity"] = "VERIFIED" if prior is not None else "ABSENT"
         return receipt
 
-    def record_experience(self, *, lesson: str, observed_outcome: str, next_objective: str | None = None) -> dict[str, Any]:
+    def record_experience(
+        self,
+        *,
+        lesson: str | None = None,
+        smart_note_id: str | None = None,
+        observed_outcome: str | None = None,
+        next_objective: str | None = None,
+    ) -> dict[str, Any]:
+        """Preserve an experience into SELF continuity (GAP 5 hardened).
+
+        Governed path (preferred): pass ``smart_note_id``. The note's
+        ``truth_state`` is read from the Smart Note registry and must be at or
+        above VERIFIED (VERIFIED / RATIFIED / ACTIVE / LEARNED). A lower state —
+        or a missing/unresolvable note — is REFUSED without touching state.
+
+        Legacy path: pass raw ``lesson`` text. Kept for backward compatibility
+        but stored as ``"unverified:<lesson>"`` and returned as
+        PRESERVED_UNVERIFIED with a warning, so the unverified path stays
+        visible and can never masquerade as governed truth.
+
+        When both are given, the governed Smart Note reference wins.
+        ``observed_outcome`` remains required.
+        """
         self._require_ready()
-        if not lesson or not observed_outcome:
+        if not observed_outcome:
             raise SelfNodeError("experience_incomplete")
-        if lesson not in self.state.known:
+        has_note = bool(smart_note_id)
+        has_lesson = bool(lesson)
+        if not has_note and not has_lesson:
+            raise SelfNodeError("experience_incomplete")
+        if has_note:
+            return self._record_governed_experience(smart_note_id, observed_outcome, next_objective)
+        self._persist_experience(f"unverified:{lesson}", next_objective)
+        return {
+            "status": "PRESERVED_UNVERIFIED",
+            "lesson": lesson,
+            "warning": "unverified_lesson_not_governed",
+            "observed_outcome": observed_outcome,
+            "checkpoint_id": self.state.checkpoint_id,
+            "experience_count": self.state.experience_count,
+        }
+
+    def _record_governed_experience(
+        self, smart_note_id: str, observed_outcome: str, next_objective: str | None
+    ) -> dict[str, Any]:
+        # Lazy import: tools.smart_note_v2 must never pull kernel at import time.
+        from tools.smart_note_v2 import REGISTRY, load_json
+
+        try:
+            registry = load_json(REGISTRY)
+            entries = registry.get("entries", []) if isinstance(registry, dict) else []
+            entry = next(
+                (
+                    e
+                    for e in entries
+                    if isinstance(e, dict) and e.get("smart_note_id") == smart_note_id
+                ),
+                None,
+            )
+        except Exception:
+            # Registry missing or unreadable: fail closed, exactly like an
+            # unresolvable note.
+            entry = None
+        if entry is None:
+            return {
+                "status": "REFUSED",
+                "reason": "note_not_found",
+                "smart_note_id": smart_note_id,
+                "truth_state": None,
+            }
+        truth_state = entry.get("truth_state")
+        if truth_state not in GOVERNED_TRUTH_STATES:
+            return {
+                "status": "REFUSED",
+                "reason": "truth_state_below_VERIFIED",
+                "smart_note_id": smart_note_id,
+                "truth_state": truth_state,
+            }
+        ref = f"sn:{smart_note_id}"
+        if ref not in self.state.known:
+            self.state.known.append(ref)
+        self.state.lesson_refs.append(
+            {
+                "smart_note_id": smart_note_id,
+                "truth_state": truth_state,
+                "recorded_at": datetime.now(timezone.utc).isoformat(),
+            }
+        )
+        self._persist_experience(None, next_objective)
+        return {
+            "status": "PRESERVED",
+            "smart_note_id": smart_note_id,
+            "truth_state": truth_state,
+            "observed_outcome": observed_outcome,
+            "checkpoint_id": self.state.checkpoint_id,
+            "experience_count": self.state.experience_count,
+        }
+
+    def _persist_experience(self, lesson: str | None, next_objective: str | None) -> None:
+        """Shared persistence tail for preserved experiences (governed or raw)."""
+        if lesson is not None and lesson not in self.state.known:
             self.state.known.append(lesson)
         if next_objective:
             self.state.objective = next_objective
@@ -146,13 +253,6 @@ class SelfNode:
         self.state.successor_ready = True
         self.state.checkpoint_id = checkpoint_id(_canonical_payload(self.state))
         self.store.save(self.state)
-        return {
-            "status": "PRESERVED",
-            "lesson": lesson,
-            "observed_outcome": observed_outcome,
-            "checkpoint_id": self.state.checkpoint_id,
-            "experience_count": self.state.experience_count,
-        }
 
     def successor_packet(self) -> dict[str, Any]:
         self._require_ready()
@@ -228,6 +328,7 @@ def _state_from_payload(payload: dict[str, Any]) -> SelfState:
         known=list(payload.get("known", [])),
         unknown=list(payload.get("unknown", [])),
         blocked=list(payload.get("blocked", [])),
+        lesson_refs=list(payload.get("lesson_refs", [])),
         predecessor_id=payload.get("predecessor_id"),
         checkpoint_id=payload.get("checkpoint_id"),
         successor_ready=bool(payload.get("successor_ready", False)),

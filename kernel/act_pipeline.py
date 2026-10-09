@@ -45,6 +45,7 @@ Canonical constants:
 """
 from __future__ import annotations
 
+import sys
 import uuid
 from dataclasses import dataclass, field
 from typing import Callable, Sequence
@@ -413,7 +414,7 @@ def execute_plan(plan: ActionPlan,
             expected_outcome=plan.chosen.expected_outcome,
         ))
 
-    completed = emit(ActionReceipt(
+    completed = ActionReceipt(
         receipt_id=_new_id(), plan_id=plan.plan_id, phase="EXECUTION_COMPLETED",
         executed=True, outcome_verified=False, truth_state="UNKNOWN",
         evidence=(
@@ -424,10 +425,51 @@ def execute_plan(plan: ActionPlan,
         codes=(),
         observed_outcome=observed,
         expected_outcome=plan.chosen.expected_outcome,
-    ))
+    )
+    receipt = emit(completed)
     if on_executed is not None:
-        on_executed(plan, completed)
-    return completed
+        on_executed(plan, receipt)
+    # ACT -> KNOW feedback arc (Phase 3): hand the completed execution to the
+    # KNOW node. Never raises — _emit_execution_handoff swallows and logs.
+    _emit_execution_handoff(plan=plan, receipt=receipt, observed=observed)
+    return receipt
+
+
+def _emit_execution_handoff(*, plan: ActionPlan, receipt: ActionReceipt,
+                            observed: str) -> None:
+    """Phase 3 wiring (ACT -> KNOW feedback arc): hand a completed execution
+    to the KNOW node as an ExecutionHandoff for knowledge ingestion.
+
+    NEVER raises: KNOW ingest failure must not fail the execution itself.
+    Failures are logged to stderr and the execution receipt stands as-is.
+    The import is function-local so a broken/absent KNOW receiver cannot
+    break the kernel module at import time.
+    """
+    try:
+        from kernel.handoffs import emit_execution_handoff
+        from tools.know_ingest import ingest_execution
+        handoff = emit_execution_handoff(
+            execution_id=receipt.receipt_id,
+            action_taken=plan.action,
+            decision_ref=plan.authority.grant_id,
+            outcome_observed=observed,
+            predicted_outcome=plan.chosen.expected_outcome,
+            provenance={
+                "law_receipt_id": plan.authority.grant_id,
+                "act_receipt_id": receipt.receipt_id,
+                "plan_id": plan.plan_id,
+                "phase": receipt.phase,
+            },
+        )
+        result = ingest_execution(handoff.to_dict())
+        if result.get("status") != "RECORDED":
+            print(f"[act_pipeline] KNOW ingest refused execution "
+                  f"{receipt.receipt_id}: {result.get('reason')}",
+                  file=sys.stderr)
+    except Exception as exc:  # noqa: BLE001 — execution must not fail on KNOW ingest
+        print(f"[act_pipeline] KNOW ingest failed for execution "
+              f"{receipt.receipt_id}: {type(exc).__name__}: {exc}",
+              file=sys.stderr)
 
 
 def apply_verify_verdict(receipt: ActionReceipt, *, verified: bool,

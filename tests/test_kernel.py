@@ -51,10 +51,17 @@ def test_law_allows_scoped_authority_without_fabricating_execution():
     assert result.blocked_by is None
     assert result.executed is False
     assert result.truth_state is TruthState.UNKNOWN
-    assert result.trace == (Node.SELF, Node.LAW)
+    # Phase 2 wiring: trace may include KNOW when applicable intelligence was
+    # consulted, but must always begin at SELF -> LAW.
+    assert result.trace[:2] == (Node.SELF, Node.LAW)
+    assert len(result.trace) in (2, 3)
     assert result.outcome is None
-    assert result.next_state == {}
+    # Phase 2 wiring: next_state now carries the KNOW consultation record.
+    assert result.next_state["intelligence_count"] == len(
+        result.next_state["intelligence_consulted"]
+    )
     assert "DECISION.authorized_not_executed" in result.evidence
+    assert any(e.startswith("KNOW.intelligence:") for e in result.evidence)
 
 
 def test_decision_does_not_masquerade_as_nine_node_runtime_or_observation():
@@ -69,13 +76,20 @@ def test_decision_does_not_masquerade_as_nine_node_runtime_or_observation():
 
     assert result.allowed is True
     assert result.executed is False
-    assert result.evidence == (
+    # Phase 2 wiring: evidence gains the KNOW consultation entry; the first
+    # two entries are unchanged and nothing claims a nine-node runtime ran.
+    assert result.evidence[:2] == (
         "LAW.authority:reversible_change",
         "DECISION.authorized_not_executed",
     )
+    assert result.evidence[2].startswith("KNOW.intelligence:")
+    assert result.evidence[2].endswith("_blocks_consulted")
     assert result.outcome is None
-    assert result.next_state == {}
-    assert result.trace == (Node.SELF, Node.LAW)
+    assert result.next_state["intelligence_count"] == len(
+        result.next_state["intelligence_consulted"]
+    )
+    assert result.trace[:2] == (Node.SELF, Node.LAW)
+    assert len(result.trace) in (2, 3)
     assert result.truth_state is TruthState.UNKNOWN
 
 
