@@ -1,10 +1,10 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-09",
-  "receipt_basis_commit": "527ebcfbc04896c3a6beee127757785597e0713a",
-  "inventory_file_count": 1211,
+  "receipt_basis_commit": "5dd6bd04774e335fa465431a3a5df402a1c4e8d4",
+  "inventory_file_count": 1213,
   "domain_counts": {
-    "00-ACTIVATION": 3,
+    "00-ACTIVATION": 5,
     "00-ARCHITECTURE": 5,
     "00-SPEC": 15,
     "01-GOVERNANCE": 28,
@@ -27,13 +27,23 @@
   "files": [
     {
       "path": "BRAIN/00-ACTIVATION/ACTIVATION-CHECKLIST.md",
-      "blob_sha": "1b990d7507f61098f203764363e698eec6f36f16",
-      "size": 10868
+      "blob_sha": "5b84c7cf5c58bd92aa3ce050f0e190d1e53c14e1",
+      "size": 21075
+    },
+    {
+      "path": "BRAIN/00-ACTIVATION/ACTIVATION-MASTER-CHECKLIST.json",
+      "blob_sha": "4506798546423026bec173f78d14370f39653d90",
+      "size": 30706
     },
     {
       "path": "BRAIN/00-ACTIVATION/DESIGN-ACTIVATION.md",
       "blob_sha": "fed3bb338e0205ac2d31c4afac69b06641f243ca",
       "size": 4229
+    },
+    {
+      "path": "BRAIN/00-ACTIVATION/DRIVER-INTEGRATION.md",
+      "blob_sha": "18c7d0f704cbfabee11f2178f46c86a745ccafd8",
+      "size": 2307
     },
     {
       "path": "BRAIN/00-ACTIVATION/activation-checklist.json",
