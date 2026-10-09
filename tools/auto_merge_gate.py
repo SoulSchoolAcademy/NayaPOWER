@@ -212,8 +212,15 @@ def _check_receipt(receipt, reasons):
     # ---- Step 5: RECEIPT — written AND posted.
     s5 = receipt.get("step5_receipt")
     if isinstance(s5, dict):
-        if not isinstance(s5.get("receipt_posted_comment_id"), int):
-            reasons.append("step5: receipt_posted_comment_id missing — a private scorecard is not a gate")
+        posted_id = s5.get("receipt_posted_comment_id")
+        if isinstance(posted_id, bool) or not isinstance(posted_id, int):
+            # isinstance(True, int) is True in Python — a bool is not a posted
+            # comment id. This exclusion lives in the CANONICAL checker so
+            # every gate delegating to _check_receipt inherits it; a local
+            # check in any one caller would re-create the drift this fix
+            # closes (#1943 B5: delegated gate's "cannot drift" claim).
+            reasons.append("step5: receipt_posted_comment_id must be an integer comment id "
+                           "(a bool is not a comment id) — a private scorecard is not a gate")
     else:
         reasons.append("step5: step5_receipt missing or not an object")
 

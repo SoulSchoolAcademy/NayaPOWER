@@ -249,6 +249,17 @@ class TestDelegatedMergeReceiptGate(unittest.TestCase):
                 allowed, _ = self.allow(r)
                 self.assertFalse(allowed, f"bool {label}.comment_id ALLOWED")
 
+    def test_bool_receipt_posted_comment_id_denies(self):
+        """#1943 B5: the five-step checker this gate delegates C2 to is the
+        canonical seam — a bool where the posted comment id belongs must
+        deny there, not be worked around in the caller. A bare True is not
+        a written-and-posted receipt."""
+        r = _valid_receipt()
+        r["self_scorecard"]["scorecard_receipt"]["step5_receipt"]["receipt_posted_comment_id"] = True
+        allowed, reasons = self.allow(r)
+        self.assertFalse(allowed, "bool receipt_posted_comment_id ALLOWED")
+        self.assertTrue(any("receipt_posted_comment_id" in x for x in reasons), reasons)
+
 
 if __name__ == "__main__":
     unittest.main()
