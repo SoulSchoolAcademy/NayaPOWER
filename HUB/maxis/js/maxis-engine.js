@@ -1336,6 +1336,11 @@ function renderResults(){
   );
 
 
+  document.body.classList.add(
+    "showing-results"
+  );
+
+
   DOM.overallScore.textContent=
     Math.round(results.overall);
 
@@ -1620,6 +1625,11 @@ function resetAssessment(){
 
   DOM.resultsView.classList.remove(
     "visible"
+  );
+
+
+  document.body.classList.remove(
+    "showing-results"
   );
 
   DOM.interestsView.classList.remove(
