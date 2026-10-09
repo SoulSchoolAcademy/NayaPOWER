@@ -1,5 +1,5 @@
 # NAYANET ARCHITECTURE DOCTRINE — distilled from Shawn's NayaNET spec (2026-10-09)
-Status: [CANDIDATE] as canonical reference — needs Shawn's ratification. First complete
+Status: [RATIFIED 2026-10-09 as canonical reference, by Shawn's word]. First complete
 network product architecture in the corpus.
 
 ## Foundation

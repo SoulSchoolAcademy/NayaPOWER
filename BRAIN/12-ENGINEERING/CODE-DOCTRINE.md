@@ -2,7 +2,7 @@
 Companion to design-doctrine.md and operating-doctrine.md. Status: [CANDIDATE] items
 are usable as preparatory gate checks, not law until Shawn ratifies.
 
-## The Craft Standard [CANDIDATE — from Shawn's 2026-10-08 directive; needs ratification for law status]
+## The Craft Standard [RATIFIED 2026-10-09, by Shawn's word]
 - **Code:** correct first — works, tested, verified, no exceptions. Readable by another
   Naya without explanation. Minimal — smallest change, no gold-plating, no dead code.
   Tested on actual behavior, not just the happy path. Documented WHY where complex.
@@ -64,7 +64,7 @@ reliably determine what to do: CONTINUITY HAS FAILED.
 6. Convergence, not proliferation: one app, one router, one runtime adapter, one design
    system, one room architecture, one truth model.
 
-## Maxis execution law [CANDIDATE as Maxis build law — needs Shawn's ratification]
+## Maxis execution law [RATIFIED 2026-10-09 as Maxis build law, by Shawn's word]
 Primary law: DO NOT SHIP THE INSTRUCTION. SHIP THE INTENT. Completion law: DO NOT SHIP
 "DONE." SHIP PROVEN EXCELLENCE.
 Master loop: RESTORE → READ SOURCE OF TRUTH → ESTABLISH CURRENT STATE → UNDERSTAND
