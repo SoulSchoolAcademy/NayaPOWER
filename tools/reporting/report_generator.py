@@ -830,6 +830,12 @@ def _dedup(items: list[Item]) -> list[Item]:
     return out
 
 
+# A heuristic claim not re-affirmed within this long is stale: lanes
+# re-score roughly every 6h, so two silent cycles means nobody stands
+# behind the number anymore. Authoritative scores are exempt — their
+# warrant is authority (Naya 1 / Shawn), not recency.
+SCORE_STALE_AFTER = dt.timedelta(hours=12)
+
 # Allow a small clock-skew margin for items timestamped just ahead of now.
 _FUTURE_SKEW = dt.timedelta(minutes=10)
 
@@ -1035,11 +1041,28 @@ class ReportGenerator:
         for area in AREAS:
             entry = new_state.get(area)
             if entry:
+                as_of = dt.datetime.fromisoformat(entry["as_of"])
+                if as_of.tzinfo is None:
+                    as_of = as_of.replace(tzinfo=dt.timezone.utc)
+                status = entry.get("status", "claim")
+                source = entry.get("source", "?")
+                # Provenance labeling — the staleness fix (2026-10-09).
+                # A number without provenance is a lie with formatting:
+                # a carried-forward claim is shown WITH its age and
+                # source, and labeled stale once nobody has re-affirmed
+                # it within SCORE_STALE_AFTER — never as a current score.
+                # Seeds were never observations. Authoritative scores keep
+                # their status: their warrant is authority, not recency.
+                if source.startswith("seed"):
+                    status = "seed"
+                elif (status == "claim"
+                      and now - as_of > SCORE_STALE_AFTER):
+                    status = "stale"
                 data.scores.append(ScorePoint(
                     area=area, score=entry["score"],
-                    as_of=dt.datetime.fromisoformat(entry["as_of"]),
-                    source=entry.get("source", "?"),
-                    status=entry.get("status", "claim"),
+                    as_of=as_of,
+                    source=source,
+                    status=status,
                 ))
 
         # Holes / achievements / activity / intelligence / next actions.
@@ -1102,15 +1125,23 @@ class ReportGenerator:
             lines.append("Quiet hour — no window activity.")
         lines.append("")
         lines.append("## Scoreboard")
-        lines.append("| Area | Score | Status | Δ |")
-        lines.append("|---|---|---|---|")
+        lines.append("| Area | Score | Status | As of (UTC) | Source | Δ |")
+        lines.append("|---|---|---|---|---|---:|")
         if data.scores:
             for sp in data.scores:
                 delta = ReportGenerator._delta_str(sp, data.previous_scores)
+                asof = sp.as_of.strftime("%m-%d %H:%M")
+                src = sp.source if len(sp.source) <= 44 else \
+                    sp.source[:41].rstrip() + "…"
                 lines.append(f"| {sp.area} | {sp.score:.1f} | {sp.status} | "
-                             f"{delta} |")
+                             f"{asof} | {src} | {delta} |")
+            if any(sp.status in ("stale", "seed") for sp in data.scores):
+                lines.append("")
+                lines.append("_Stale = claim not re-affirmed in 12h; seed = "
+                             "never observed. Both show their age and source "
+                             "and are never current scores._")
         else:
-            lines.append("| _No scores recorded yet_ | | | |")
+            lines.append("| _No scores recorded yet_ | | | | | |")
         lines.append("")
         lines.append("## Needs from Shawn")
         needs = sorted(data.holes, key=lambda i: -i.priority)[:3]

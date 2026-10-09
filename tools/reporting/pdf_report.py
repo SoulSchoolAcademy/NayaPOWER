@@ -158,12 +158,22 @@ def _delta_header(st: dict) -> Paragraph:
 # Flowable builders
 # ---------------------------------------------------------------------------
 
+def _provenance_cell(sp, st):
+    """As-of + source: a score without provenance is a lie with
+    formatting. Truncated to fit the column."""
+    asof = sp.as_of.strftime("%m-%d %H:%M")
+    src = sp.source if len(sp.source) <= 26 else sp.source[:23].rstrip() + "\u2026"
+    return Paragraph(f"{asof}<br/><font size=7>{_esc(src)}</font>",
+                     st["cell"])
+
+
 def _scoreboard_table(st: dict, data: ReportData) -> Table:
     """Minimal scoreboard: hairlines only, no boxes, no fills."""
     header = [
         Paragraph("<b>Area</b>", st["cell_head"]),
         Paragraph("<b>Score</b>", st["cell_head"]),
         Paragraph("<b>Status</b>", st["cell_head"]),
+        Paragraph("<b>As of / source</b>", st["cell_head"]),
         _delta_header(st),
     ]
     rows = [header]
@@ -172,16 +182,18 @@ def _scoreboard_table(st: dict, data: ReportData) -> Table:
             Paragraph(_esc(sp.area), st["cell"]),
             Paragraph(f"<b>{sp.score:.1f}</b>", st["cell_bold"]),
             Paragraph(_esc(sp.status), st["cell"]),
+            _provenance_cell(sp, st),
             _delta_cell(sp, data.previous_scores, st),
         ])
     if len(rows) == 1:
         rows.append([Paragraph("<i>No scores recorded yet.</i>", st["cell"]),
                      Paragraph("", st["cell"]),
                      Paragraph("", st["cell"]),
+                     Paragraph("", st["cell"]),
                      Paragraph("", st["cell"])])
 
     avail = PAGE_W - 2 * MARGIN
-    widths = [2.6 * inch, 0.9 * inch, 1.5 * inch, 0.8 * inch]
+    widths = [2.0 * inch, 0.7 * inch, 1.1 * inch, 1.9 * inch, 0.6 * inch]
     scale = avail / sum(widths)
     widths = [w * scale for w in widths]
     t = Table(rows, colWidths=widths, repeatRows=1)

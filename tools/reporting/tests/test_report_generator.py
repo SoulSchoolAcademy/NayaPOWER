@@ -431,8 +431,8 @@ def test_render_structure():
     assert "Nothing recorded this window" not in report
     # Headline: biggest movement wins.
     assert report.splitlines()[2] == "Learning 5.0 → 5.5."
-    # Scoreboard row with claim label and delta.
-    assert "| Learning | 5.5 | claim | +0.5 |" in report
+    # Scoreboard row with claim label, provenance, and delta.
+    assert "| Learning | 5.5 | claim | 10-08 12:00 | w1 | +0.5 |" in report
     # Sources attached.
     assert "_(src: w1)_" in report
     # Evidence snapshot.
@@ -887,7 +887,7 @@ def test_pinned_learning_on_scoreboard():
     assert data.scores[0].score == 5.0
     assert data.scores[0].status == "authoritative"
     report = gen.render(data)
-    assert "| Learning | 5.0 | authoritative |" in report
+    assert "| Learning | 5.0 | authoritative | 10-08 12:00 |" in report
 
 
 def test_freshness_gate_drops_stale_and_unknown_items():
@@ -957,3 +957,98 @@ def test_headline_follows_most_important_window_event():
     hl = _headline_text(data, moved)
     assert hl != "Quiet hour."
     assert "_(src:" not in hl  # source tag stripped from the headline
+
+
+# ---------------------------------------------------------------------------
+# Score provenance — the staleness fix (2026-10-09).
+# The 14:59 report showed Successor Reuse 4.5 as a bare "claim" while the
+# lane had moved to 8.0: a 15h-old carried-forward score presented as
+# current, with its age and source hidden. A number without provenance
+# is a lie with formatting.
+# ---------------------------------------------------------------------------
+
+
+def _provenance_gen(state):
+    return ReportGenerator(
+        fetch_worker_logs=lambda s: [],
+        fetch_memory=lambda s: {"achievements": [], "intelligence": [],
+                                "holes": [], "scores": []},
+        fetch_github_fn=lambda s: {"prs": [], "comments": [], "error": None},
+        fetch_supabase_fn=lambda: {"counts": {}, "error": None},
+        load_scores_fn=lambda: state,
+        save_scores_fn=lambda s: None,
+    )
+
+
+def test_stale_claim_labeled_not_presented_as_current():
+    # 30h-old heuristic claim: must render as stale WITH its age and
+    # source — never as a current claim.
+    state = {"Successor Reuse": {
+        "score": 4.5,
+        "as_of": (NOW - dt.timedelta(hours=30)).isoformat(),
+        "source": "memory:2026-10-08", "status": "claim"}}
+    gen = _provenance_gen(state)
+    data = gen.collect("hourly", NOW - dt.timedelta(hours=1), NOW)
+    sp = [s for s in data.scores if s.area == "Successor Reuse"][0]
+    assert sp.status == "stale"
+    assert sp.score == 4.5  # value preserved, judgment changed
+    report = gen.render(data)
+    assert "| Successor Reuse | 4.5 | stale |" in report
+    assert "memory:2026-10-08" in report  # source traceable
+    assert "Stale = claim not re-affirmed in 12h" in report
+
+
+def test_fresh_claim_stays_claim():
+    state = {"Safety": {
+        "score": 8.8,
+        "as_of": (NOW - dt.timedelta(hours=1)).isoformat(),
+        "source": "safety-builder-20261008-1100", "status": "claim"}}
+    gen = _provenance_gen(state)
+    data = gen.collect("hourly", NOW - dt.timedelta(hours=1), NOW)
+    sp = [s for s in data.scores if s.area == "Safety"][0]
+    assert sp.status == "claim"
+    report = gen.render(data)
+    assert "| Safety | 8.8 | claim |" in report
+
+
+def test_seed_labeled_as_seed_never_claim():
+    # A seed value was never an observation — it must not wear "claim".
+    state = {"Human Value": {
+        "score": 7.5,
+        "as_of": (NOW - dt.timedelta(hours=2)).isoformat(),
+        "source": "seed 2026-10-08", "status": "claim"}}
+    gen = _provenance_gen(state)
+    data = gen.collect("hourly", NOW - dt.timedelta(hours=1), NOW)
+    sp = [s for s in data.scores if s.area == "Human Value"][0]
+    assert sp.status == "seed"
+    report = gen.render(data)
+    assert "| Human Value | 7.5 | seed |" in report
+
+
+def test_authoritative_does_not_decay_with_age():
+    # Authority is the warrant, not recency: Naya 1's pinned score stays
+    # authoritative even when old.
+    state = {"Learning": {
+        "score": 5.0,
+        "as_of": (NOW - dt.timedelta(hours=30)).isoformat(),
+        "source": "Naya 1 reconciliation 2026-10-08 (pinned)",
+        "status": "authoritative"}}
+    gen = _provenance_gen(state)
+    data = gen.collect("hourly", NOW - dt.timedelta(hours=1), NOW)
+    sp = [s for s in data.scores if s.area == "Learning"][0]
+    assert sp.status == "authoritative"
+    report = gen.render(data)
+    assert "| Learning | 5.0 | authoritative |" in report
+
+
+def test_stale_boundary_twelve_hours():
+    # 11h59m old: still a claim. 12h01m old: stale. The bound is real.
+    for age_h, want in [(11, "claim"), (13, "stale")]:
+        state = {"Truth": {
+            "score": 9.0,
+            "as_of": (NOW - dt.timedelta(hours=age_h)).isoformat(),
+            "source": "truth-builder", "status": "claim"}}
+        gen = _provenance_gen(state)
+        data = gen.collect("hourly", NOW - dt.timedelta(hours=1), NOW)
+        sp = [s for s in data.scores if s.area == "Truth"][0]
+        assert sp.status == want, f"age {age_h}h -> {sp.status}"
