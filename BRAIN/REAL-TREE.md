@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-09  
-**Receipt basis commit:** `c791b7798c34198f954d901248af1301cd244e2b`  
-**Inventory file count:** 1191  
+**Receipt basis commit:** `2e96aa43baf37cba8bfc49159004b6c781eca821`  
+**Inventory file count:** 1195  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -20,7 +20,7 @@
 | 07-LEARNING | 4 |
 | 08-SUCCESSION | 2 |
 | 09-EVOLUTION | 2 |
-| 10-INTERFACES | 376 |
+| 10-INTERFACES | 380 |
 | 11-KNOWLEDGE | 7 |
 | 12-ENGINEERING | 25 |
 | 90-OPERATIONS | 13 |
@@ -1171,10 +1171,14 @@
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/unapproved-inventions-1968/rich-editor/rich-editor.js` — `b439f622914b` (5642 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/unapproved-inventions-1968/rich-editor/specimen.html` — `d91fdacb5e06` (4226 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/tokens.css` — `b314de3bcc35` (7207 bytes)
-- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/tools/README.md` — `191b77bae583` (2971 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/tools/README.md` — `eac8cf2eacc3` (3976 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/tools/activation_pregate.py` — `9422535a3151` (9480 bytes)
-- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/tools/design-compliance-check.py` — `023ede9c3398` (18669 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/tools/design-compliance-check.py` — `6081a6f402cd` (57386 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/tools/test_activation_pregate.py` — `3973bb4628ec` (6871 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/tools/test_css_parser.py` — `82a440455761` (6283 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/tools/test_datauri_documents.py` — `6d64570970ba` (19695 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/tools/test_link_stylesheets.py` — `992a9ee4f728` (18112 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/tools/test_srcdoc_stylesheets.py` — `065e95edfc08` (13864 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/ultimate-design-system/MANIFEST.md` — `fb4326693d95` (2260 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/ultimate-design-system/index.html` — `8226325770ba` (1134115 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/ultimate-design-system/tokens.css` — `caac347591eb` (925 bytes)

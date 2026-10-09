@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-09",
-  "receipt_basis_commit": "c791b7798c34198f954d901248af1301cd244e2b",
-  "inventory_file_count": 1191,
+  "receipt_basis_commit": "2e96aa43baf37cba8bfc49159004b6c781eca821",
+  "inventory_file_count": 1195,
   "domain_counts": {
     "00-ACTIVATION": 2,
     "00-SPEC": 15,
@@ -15,7 +15,7 @@
     "07-LEARNING": 4,
     "08-SUCCESSION": 2,
     "09-EVOLUTION": 2,
-    "10-INTERFACES": 376,
+    "10-INTERFACES": 380,
     "11-KNOWLEDGE": 7,
     "12-ENGINEERING": 25,
     "90-OPERATIONS": 13,
@@ -5616,8 +5616,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/tools/README.md",
-      "blob_sha": "191b77bae5835a64a1f085ff7ac1fe6deed196b9",
-      "size": 2971
+      "blob_sha": "eac8cf2eacc3a09fa08b06fac6fdf8cc3391e72b",
+      "size": 3976
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/tools/activation_pregate.py",
@@ -5626,13 +5626,33 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/tools/design-compliance-check.py",
-      "blob_sha": "023ede9c3398ca94c1e05d77ea2ca3e2405c2b0d",
-      "size": 18669
+      "blob_sha": "6081a6f402cdc2cba3f405555705314a074e3315",
+      "size": 57386
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/tools/test_activation_pregate.py",
       "blob_sha": "3973bb4628ecdb5ababc54102b58f8cba894aa53",
       "size": 6871
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/tools/test_css_parser.py",
+      "blob_sha": "82a440455761824774407be66a1f88bd8fc87bc5",
+      "size": 6283
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/tools/test_datauri_documents.py",
+      "blob_sha": "6d64570970ba8119408b1a007f66b040bf31a590",
+      "size": 19695
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/tools/test_link_stylesheets.py",
+      "blob_sha": "992a9ee4f728a005a46308498a3f6dc48ef28b6f",
+      "size": 18112
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/tools/test_srcdoc_stylesheets.py",
+      "blob_sha": "065e95edfc08aedf250d4532a1ea09b81d6981c0",
+      "size": 13864
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/ultimate-design-system/MANIFEST.md",
