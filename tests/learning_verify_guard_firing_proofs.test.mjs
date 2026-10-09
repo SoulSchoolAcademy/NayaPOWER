@@ -29,10 +29,21 @@ const source = readFileSync(
   new URL("../supabase/functions/nayanet-learning-verify/index.ts", import.meta.url),
   "utf8"
 );
+// #2077 added a local import (./admission_gate.ts) whose functions index.ts
+// uses. The import-stripping below removes it, so load the real admission
+// gate into the vm context first (it has no imports of its own).
+const admissionGateSource = readFileSync(
+  new URL("../supabase/functions/nayanet-learning-verify/admission_gate.ts", import.meta.url),
+  "utf8"
+);
+const admissionGateCode = stripTypeScriptTypes(
+  admissionGateSource.replace(/^export /gm, "")
+);
 const code = stripTypeScriptTypes(
-  source
-    .replace(/^import .*from "\.\/.*";\r?\n/gm, "")
-    .replace(/^import .*;\r?\n/gm, "")
+  // Strip import statements (single- or multi-line) before vm loading.
+  // The old /^import .*;/ only matched single-line imports; #2077 added a
+  // multi-line import which survived stripping and broke vm.Script.
+  source.replace(/^import[\s\S]*?;\r?\n/gm, "")
 );
 
 const OWNER = "adfdf0b8-5558-41d1-9fed-ec51abf4fe2f";
@@ -231,6 +242,8 @@ async function runtime({ mode = "verify", body = {}, tables = {}, auth = {}, met
     Error,
   };
   vm.createContext(context);
+  // Load the admission gate's functions into the context (its import was stripped above).
+  new vm.Script(admissionGateCode, { filename: "nayanet-learning-verify/admission_gate.ts" }).runInContext(context);
   new vm.Script(code, { filename: "nayanet-learning-verify/index.ts" }).runInContext(context);
 
   const req = {
