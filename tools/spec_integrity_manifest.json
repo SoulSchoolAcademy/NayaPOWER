@@ -17,6 +17,10 @@
     {
       "path": "BRAIN/01-GOVERNANCE/0014-mantra-v1.machine.json",
       "reason": "Predicate-style law spec (formal predicates, no phase structure); pin here only if it adopts the ratified phase envelope -- same precedent as the 0003 exclusion. Recorded 2026-10-06 with Law 0014 forge (no ratified content touched)."
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0006-naya-calculator-v1.machine.json",
+      "reason": "Status CANDIDATE (not DIRECTOR-RATIFIED): machine projection lacks the ratified envelope keys (schema/ratified_by/ratified_date), has no phase list (loop.phases/cycle.phases), no invariants, and ratified_by is null -- only Shawn Vibert's ratification counts. A pin was attempted in PR #1982 (merged 2026-10-09 as f78d4e7a); tools/spec_integrity_check.py failed it mechanically on the exact tip bytes (7 envelope/structural failures) because this manifest pins RATIFIED projections only. Pin here when 0006 adopts the ratified phase envelope or Shawn ratifies it -- same precedent as the 0003/0013/0014 exclusions. Recorded by the brain-build loop 2026-10-09 (supersedes #1952's exclusion draft, now stale)."
     }
   ],
   "note": "Pins are git blob SHAs of the ratified projections as they existed on live main at establishment. Any deliberate spec change must update the pins in the same (reviewed) PR. A pin mismatch is spec drift until proven otherwise. This manifest is a drift detector anchored at a known-good point, not a re-proof of the original ratification.",
@@ -55,25 +59,6 @@
         "machine": {
           "blob_sha": "c7e6b0497fb020e0a3aab095c19f2d8bbd3371af",
           "path": "BRAIN/01-GOVERNANCE/0005-captain-operating-protocol-v1.machine.json"
-        }
-      },
-      "smart_note": "SN-0400"
-    },
-    {
-      "dir": "BRAIN/01-GOVERNANCE",
-      "law": "Naya Calculator",
-      "projections": {
-        "human": {
-          "blob_sha": "456e88ce35a988aaf0790e5654bcad219799797a",
-          "path": "BRAIN/01-GOVERNANCE/0006-NAYA-CALCULATOR-V1.human.md"
-        },
-        "ai": {
-          "blob_sha": "5f07061bcd01878ee9122dbdd4e4906c0445f2bd",
-          "path": "BRAIN/01-GOVERNANCE/0006-NAYA-CALCULATOR-V1.ai.md"
-        },
-        "machine": {
-          "blob_sha": "6e62c7ad6be9e8632fc4ee41f7c8d1f9b59e3f7f",
-          "path": "BRAIN/01-GOVERNANCE/0006-naya-calculator-v1.machine.json"
         }
       },
       "smart_note": "SN-0400"
