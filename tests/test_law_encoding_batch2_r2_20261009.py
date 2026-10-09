@@ -74,12 +74,15 @@ def _report(plain):
 # ---------------- Gap 2, round 2: aggregate content accounting
 def test_r2_split_across_fields_voids():
     # The re-validator's exact residual: 200+200 chars stays a ping.
+    # TOP-KEY FIX (2026-10-09): the total is now 412 — the extra 12 are
+    # the field names 'title'/'message', which count as content. The
+    # residual class is closed: a top-level name is not a hiding place.
     rec = {"report_type": "status_ping", "title": "x" * 200,
            "message": "x" * 200}
     r = two_layer.check(rec)
     assert r["pass"] is False, r["reasons"]
     assert r["details"].get("exemption_voided")
-    assert "400 chars" in r["details"]["exemption_voided"]
+    assert "412 chars" in r["details"]["exemption_voided"]
 
 
 def test_r2_split_across_unlisted_field_names_voids():
@@ -136,18 +139,20 @@ def test_r2_unblock_action_on_ping_voids():
 
 
 def test_r2_aggregate_boundary_total_299_still_ping():
-    # The boundary is TOTAL content now: 290 + 9 (title) = 299 -> ping.
+    # The boundary is TOTAL content now: 278 + 9 (title) + 12 (the field
+    # names 'title'/'message', which count since the top-key fix) = 299
+    # -> ping.
     rec = {"report_type": "status_ping", "title": "123456789",
-           "message": "x" * 290}
+           "message": "x" * 278}
     r = two_layer.check(rec)
     assert r["pass"] is True, r["reasons"]
     assert "exemption_voided" not in r["details"]
 
 
 def test_r2_aggregate_boundary_total_300_voids():
-    # 291 + 9 (title) = 300 -> voided.
+    # 279 + 9 (title) + 12 (field names) = 300 -> voided.
     rec = {"report_type": "status_ping", "title": "123456789",
-           "message": "x" * 291}
+           "message": "x" * 279}
     r = two_layer.check(rec)
     assert r["pass"] is False, r["reasons"]
     assert r["details"].get("exemption_voided")
