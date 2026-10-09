@@ -178,7 +178,7 @@ def test_h3_sprinkled_signal_fails():
     }
     r = two_layer.check(rec)
     assert r["pass"] is False, r["reasons"]
-    assert "Flesch" in r["reasons"][0]
+    assert "abstraction" in r["reasons"][0]
 
 
 def test_h3_paraphrase_with_signal_fails():
@@ -195,7 +195,7 @@ def test_h3_paraphrase_with_signal_fails():
     }
     r = two_layer.check(rec)
     assert r["pass"] is False, r["reasons"]
-    assert "Flesch" in r["reasons"][0]
+    assert "abstraction" in r["reasons"][0]
 
 
 def test_h3_honoring_plain_still_passes():
@@ -207,13 +207,14 @@ def test_h3_honoring_plain_still_passes():
     }
     r = two_layer.check(rec)
     assert r["pass"] is True, r["reasons"]
-    assert r["details"]["plain_flesch"] >= 50.0
+    assert r["details"]["plain_abstraction"] < 0.10
 
 
 def test_h3_bound_vacuous_readable_documents_limit():
-    # THE HONEST BOUND, pinned in code: the check proves READABILITY, not
-    # truthfulness. A readable-but-vacuous layer passes the mechanics
-    # while explaining nothing. High-stakes reports still need a human.
+    # THE HONEST BOUND, pinned in code: the check proves PLAINNESS OF
+    # DICTION, not truthfulness. A plain-but-vacuous layer passes the
+    # mechanics while explaining nothing. High-stakes reports still need
+    # a human.
     rec = {
         "report_type": "deliverable_report",
         "title": "vacuous",
@@ -224,7 +225,7 @@ def test_h3_bound_vacuous_readable_documents_limit():
         ),
     }
     r = two_layer.check(rec)
-    assert r["pass"] is True, r["reasons"]  # documented: readability != truth
+    assert r["pass"] is True, r["reasons"]  # documented: plain diction != truth
 
 
 # --------------------------------- Gap 4: bool is not int/float
@@ -257,6 +258,82 @@ def test_h4_real_int_and_float_still_pass():
 def test_h4_bool_type_still_accepts_bool():
     r = shape_closed.check(_shape("bool", True))
     assert r["pass"] is True, r["reasons"]
+
+
+# --------------------------------- Rewrite: Flesch -> abstraction wall
+# Round-2 disproved Flesch on live probes: choppy jargon scored 54.7-62.8
+# (passed the >= 50 gate) while genuinely plain writing scored 41.6-47
+# (failed it). The wall now measures abstraction density (jargon lexicon +
+# nominalizations, per word). Probe texts mirror the canonical corpus at
+# tools/protocol/probes/clarity_probes.json; run_clarity_probes.py
+# re-runs the full before/after table.
+CHOPPY_JARGON = (
+    "In other words: synergy is key. We leverage core competencies. "
+    "We drive alignment daily. We optimize throughput. KPIs guide bandwidth."
+)
+FLOWING_PLAIN = (
+    "Literally what I'm saying: when everything is working properly you "
+    "don't notice the machinery underneath at all — you simply ask for "
+    "what you need and it arrives the way you remember it, without "
+    "thinking about where anything is kept. The complicated part "
+    "disappears and you're left with exactly what you wanted."
+)
+EVERYDAY_NOUNS = (
+    "Literally what I'm saying: the app tried to send the report, but the "
+    "server was asleep — imagine yelling into a house where nobody's home. "
+    "The words leave your mouth fine; there's just nobody there to hear them."
+)
+LONG_JARGON = (
+    "In plain terms, the initiative encountered a systemic authorization "
+    "failure across the credential propagation infrastructure, "
+    "necessitating a holistic reconfiguration of the authentication "
+    "delegation framework to restore operational continuity."
+)
+
+
+def _two_layer_record(plain):
+    return {
+        "report_type": "deliverable_report",
+        "title": "rewrite probe",
+        "technical": TECHNICAL,
+        "plain_human": plain,
+    }
+
+
+def test_rw_choppy_jargon_fails():
+    # The Flesch false-accept, fixed: short buzzword sentences sailed past
+    # the old >= 50 gate (54.7). The abstraction wall fails them.
+    r = two_layer.check(_two_layer_record(CHOPPY_JARGON))
+    assert r["pass"] is False, r["reasons"]
+    assert "abstraction" in r["reasons"][0]
+
+
+def test_rw_long_jargon_sentences_fail():
+    # Rhythm-independent: long jargon sentences fail the same wall.
+    r = two_layer.check(_two_layer_record(LONG_JARGON))
+    assert r["pass"] is False, r["reasons"]
+
+
+def test_rw_flowing_plain_passes():
+    # The Flesch false-reject, fixed: genuinely plain writing with flowing
+    # sentences (Flesch 41.6) failed the old gate; it passes the new one.
+    r = two_layer.check(_two_layer_record(FLOWING_PLAIN))
+    assert r["pass"] is True, r["reasons"]
+    assert r["details"]["plain_abstraction"] == 0.0
+
+
+def test_rw_everyday_nouns_pass():
+    # False-positive guard: ordinary nouns (app, server, report, apartment)
+    # in a plain layer must not trip the wall.
+    r = two_layer.check(_two_layer_record(EVERYDAY_NOUNS))
+    assert r["pass"] is True, r["reasons"]
+
+
+def test_rw_hits_named_in_details():
+    # Provenance: the number is explainable — every hit is named.
+    r = two_layer.check(_two_layer_record(CHOPPY_JARGON))
+    hits = r["details"]["abstraction_hits"]
+    assert "synergy" in hits and "bandwidth" in hits, hits
 
 
 # ---------------------------------------------------------------- runner
