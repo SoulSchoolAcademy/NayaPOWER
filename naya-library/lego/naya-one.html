@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NAYA ONE — The Living Interface</title>
+<!--
+  NAYA ONE — the composition. Not a page. An environment.
+  She is at the center: a living ball of energy. Every instrument orbits her
+  as a holographic projection she emits. You don't use it. You enter it.
+  Built via the Vision-to-Code Protocol. V-1 through V-13, all of them.
+-->
+<style>
+:root{
+  --field:#040405; --ink:#f8f7fb; --quiet:#8f8a9e; --dim:#4a4756;
+  --magenta:#e84fff; --purple:#a06bff; --blue:#3fb8ff; --green:#2fe89e; --gold:#ffbf3d;
+  --ease:cubic-bezier(.22,1,.36,1); --spring:cubic-bezier(.32,.72,0,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  background:var(--field); color:var(--ink);
+  font-family:Manrope,Inter,ui-sans-serif,system-ui,sans-serif;
+  overflow:hidden; -webkit-font-smoothing:antialiased;
+  cursor:default;
+}
+#stage{position:fixed;inset:0;display:block;touch-action:none}
+/* ---------- whisper chrome ---------- */
+.chrome{position:fixed;z-index:20;pointer-events:none}
+#brand{top:24px;left:30px}
+#brand .t{font-size:13px;font-weight:800;letter-spacing:.34em}
+#brand .t b{background:linear-gradient(100deg,var(--magenta),var(--purple),var(--blue),var(--green),var(--gold));
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+#brand .s{font-size:9px;letter-spacing:.3em;color:var(--quiet);margin-top:6px}
+#voiceBadge{top:26px;right:30px;display:none;align-items:center;gap:9px;
+  font-size:10px;font-weight:800;letter-spacing:.28em;color:var(--purple)}
+#voiceBadge.on{display:flex}
+#voiceBadge i{width:10px;height:10px;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,#fff,var(--purple) 60%,transparent 78%);
+  box-shadow:0 0 14px var(--purple);animation:vpulse .45s ease-in-out infinite alternate}
+@keyframes vpulse{from{transform:scale(.75);opacity:.55}to{transform:scale(1.3);opacity:1}}
+#readout{top:24px;left:50%;transform:translateX(-50%);text-align:center}
+#roSubj{font-size:10px;font-weight:800;letter-spacing:.3em;color:var(--quiet)}
+#roNum{font-size:30px;font-weight:800;letter-spacing:-.01em;font-variant-numeric:tabular-nums;
+  color:#f8f7fb;margin-top:2px}
+/* ---------- instrument icon rail ---------- */
+#rail{position:fixed;z-index:20;left:50%;bottom:96px;transform:translateX(-50%);
+  display:flex;gap:14px;align-items:center;pointer-events:auto}
+.icorb{position:relative;width:58px;height:58px;border-radius:50%;cursor:pointer;
+  background:radial-gradient(circle at 38% 32%,#1c1d26 0%,#0b0c11 62%,#060608 100%);
+  border:1px solid rgba(255,255,255,.13);
+  box-shadow:0 10px 26px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.1),inset 0 -10px 18px rgba(0,0,0,.5);
+  display:flex;align-items:center;justify-content:center;
+  transition:transform .3s var(--spring),box-shadow .3s var(--ease),border-color .3s;
+  animation:icobreathe 5s ease-in-out infinite}
+.icorb:nth-child(2){animation-delay:.4s}.icorb:nth-child(3){animation-delay:.8s}
+.icorb:nth-child(4){animation-delay:1.2s}.icorb:nth-child(5){animation-delay:1.6s}
+.icorb:nth-child(6){animation-delay:2s}.icorb:nth-child(7){animation-delay:2.4s}
+@keyframes icobreathe{0%,100%{box-shadow:0 10px 26px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.1),inset 0 -10px 18px rgba(0,0,0,.5)}
+  50%{box-shadow:0 10px 26px rgba(0,0,0,.6),0 0 18px var(--ig,rgba(160,107,255,.28)),inset 0 1px 0 rgba(255,255,255,.14),inset 0 -10px 18px rgba(0,0,0,.5)}}
+.icorb svg{width:26px;height:26px;fill:none;stroke:var(--ig,#a06bff);stroke-width:1.5;
+  stroke-linecap:round;stroke-linejoin:round;transition:stroke .3s,filter .3s;filter:drop-shadow(0 0 5px var(--igg,rgba(160,107,255,.5)))}
+.icorb:hover{transform:translateY(-4px) scale(1.08);border-color:rgba(255,255,255,.3)}
+.icorb.active{border-color:var(--ig);transform:scale(1.14);
+  box-shadow:0 14px 34px rgba(0,0,0,.65),0 0 30px var(--igg),inset 0 1px 0 rgba(255,255,255,.18),inset 0 -10px 18px rgba(0,0,0,.45)}
+.icorb.active svg{stroke:#fff;filter:drop-shadow(0 0 9px var(--ig))}
+.icorb .k{position:absolute;bottom:-16px;left:50%;transform:translateX(-50%);
+  font-size:8px;font-weight:800;letter-spacing:.2em;color:var(--dim)}
+.icorb .nm{position:absolute;top:calc(100% + 26px);left:50%;transform:translateX(-50%) translateY(4px);
+  font-size:8px;font-weight:800;letter-spacing:.24em;color:var(--quiet);white-space:nowrap;
+  opacity:0;transition:opacity .25s,transform .25s}
+.icorb:hover .nm,.icorb.active .nm{opacity:1;transform:translateX(-50%) translateY(0)}
+/* ---------- command bar ---------- */
+#cmdbar{position:fixed;z-index:20;left:50%;bottom:28px;transform:translateX(-50%);
+  display:flex;align-items:center;gap:0;pointer-events:auto;
+  background:linear-gradient(180deg,#14151c,#0a0b0f);
+  border:1px solid rgba(255,255,255,.16);border-radius:999px;
+  box-shadow:0 16px 40px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.12),inset 0 -12px 22px rgba(0,0,0,.45);
+  padding:6px 6px 6px 22px;max-width:94vw}
+#cmdIn{background:transparent;border:none;outline:none;color:var(--ink);
+  font:600 14px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.03em;
+  width:min(380px,52vw);padding:10px 0}
+#cmdIn::placeholder{color:var(--dim)}
+#cmdGo{border:none;cursor:pointer;border-radius:999px;padding:13px 26px;
+  font:800 11px/1 ui-sans-serif,system-ui;letter-spacing:.22em;color:#fff;
+  background:linear-gradient(120deg,var(--magenta),var(--purple) 40%,var(--blue));
+  box-shadow:0 6px 20px rgba(160,107,255,.4),inset 0 1px 0 rgba(255,255,255,.35);
+  transition:transform .2s var(--spring),box-shadow .2s}
+#cmdGo:hover{transform:scale(1.05);box-shadow:0 8px 26px rgba(160,107,255,.55),inset 0 1px 0 rgba(255,255,255,.4)}
+#cmdGo:active{transform:scale(.97)}
+#cmdOut{position:fixed;z-index:20;left:50%;bottom:196px;transform:translateX(-50%);
+  font-size:11px;letter-spacing:.14em;color:var(--quiet);pointer-events:none;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;white-space:nowrap}
+#cmdOut .ok{color:var(--green)} #cmdOut .q{color:var(--purple)} #cmdOut .wr{color:var(--gold)}
+/* ---------- boot: compression → release ---------- */
+#boot{position:fixed;inset:0;z-index:50;background:#000;display:flex;align-items:center;
+  justify-content:center;flex-direction:column;gap:26px;transition:opacity 1.1s ease}
+#boot.gone{opacity:0;pointer-events:none}
+#bootCore{width:14px;height:14px;border-radius:50%;background:#fff;
+  box-shadow:0 0 30px #fff,0 0 80px var(--purple);animation:ignite 2.2s var(--ease) forwards}
+@keyframes ignite{0%{transform:scale(.2);opacity:.2}55%{transform:scale(3.2);opacity:1}
+  100%{transform:scale(5.5);opacity:0}}
+#bootWord{font-size:11px;font-weight:800;letter-spacing:.5em;color:var(--quiet);
+  animation:bw 2.2s ease forwards}
+@keyframes bw{0%{opacity:0}40%{opacity:1}100%{opacity:0}}
+/* ---------- tooltip ---------- */
+#tip{position:fixed;z-index:30;pointer-events:none;background:#15161d;
+  border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:11px 15px;min-width:170px;
+  opacity:0;transform:translateY(6px);transition:opacity .18s,transform .18s;
+  box-shadow:0 18px 44px rgba(0,0,0,.6)}
+#tip.show{opacity:1;transform:translateY(0)}
+#tip .t-name{font-size:12px;font-weight:800;letter-spacing:.12em}
+#tip .t-val{font-size:22px;font-weight:800;font-variant-numeric:tabular-nums;margin-top:2px}
+#tip .t-chg{font-size:12px;font-weight:700;margin-top:2px}
+footer.chrome{bottom:8px;right:14px;font-size:9px;letter-spacing:.22em;color:#33313d}
+@media (max-width:640px){
+  #rail{bottom:118px;gap:9px}.icorb{width:46px;height:46px}.icorb svg{width:21px;height:21px}
+  #cmdbar{bottom:22px}#cmdOut{bottom:216px}#readout{top:16px}
+}
+@media (prefers-reduced-motion:reduce){
+  .icorb{animation:none}#voiceBadge i{animation:none}#bootCore,#bootWord{animation-duration:.01s}
+}
+</style>
+</head>
+<body>
+<canvas id="stage"></canvas>
+
+<div id="boot"><div id="bootCore"></div><div id="bootWord">NAYA</div></div>
+
+<header class="chrome" id="brand">
+  <div class="t">NAYA <b>ONE</b></div>
+  <div class="s">THE&nbsp;LIVING&nbsp;INTERFACE</div>
+</header>
+
+<div class="chrome" id="voiceBadge" aria-hidden="true"><i></i>NAYA&nbsp;SPEAKING</div>
+
+<div class="chrome" id="readout">
+  <div id="roSubj">—</div>
+  <div id="roNum">···</div>
+</div>
+
+<div id="cmdOut" aria-live="polite"></div>
+
+<nav id="rail" aria-label="Instruments"></nav>
+
+<div id="cmdbar">
+  <input id="cmdIn" type="text" autocomplete="off" spellcheck="false"
+    placeholder="give me the stats on…" aria-label="Ask Naya for stats">
+  <button id="cmdGo">EXECUTE</button>
+</div>
+
+<div id="tip"><div class="t-name"></div><div class="t-val"></div><div class="t-chg"></div></div>
+
+<footer class="chrome">SPECIMEN&nbsp;·&nbsp;SYNTHETIC&nbsp;DATA&nbsp;·&nbsp;RENDERED&nbsp;LIVE</footer>
+
+<script>
+(function(){
+'use strict';
+/* ================= NAYA ONE =================
+   One space. She is at the center. Every instrument is a hologram she emits.
+   V-1 through V-13. Sharpened → atoms → laws → specimen. Her eye compiles. */
+
+/* ---------- utils ---------- */
+function $(id){return document.getElementById(id);}
+function clamp(v,a,b){return v<a?a:v>b?b:v;}
+function lerp(a,b,t){return a+(b-a)*t;}
+var TAU=Math.PI*2;
+var REDUCED=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function hashStr(s){var h=2166136261;for(var i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619);}return h>>>0;}
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+function fmt(n){return Math.round(n).toLocaleString('en-US');}
+function easeIO(t){return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;}
+
+/* ---------- spectrum: magenta → purple → blue → green → gold (law order) ---------- */
+var SPEC9=[{v:-9,c:[232,79,255]},{v:-4.5,c:[160,107,255]},{v:0,c:[63,184,255]},{v:4.5,c:[47,232,158]},{v:9,c:[255,191,61]}];
+function specRGB(v){
+  v=clamp(v,-9,9);
+  for(var i=0;i<SPEC9.length-1;i++){
+    var a=SPEC9[i],b=SPEC9[i+1];
+    if(v>=a.v&&v<=b.v){var t=(v-a.v)/(b.v-a.v);
+      return [Math.round(lerp(a.c[0],b.c[0],t)),Math.round(lerp(a.c[1],b.c[1],t)),Math.round(lerp(a.c[2],b.c[2],t))];}
+  }
+  return SPEC9[SPEC9.length-1].c.slice();
+}
+function specCSS(v,a){var c=specRGB(v);return 'rgba('+c[0]+','+c[1]+','+c[2]+','+(a==null?1:a)+')';}
+var SPEC5=['#e84fff','#a06bff','#3fb8ff','#2fe89e','#ffbf3d'];
+var SPEC5RGB=['232,79,255','160,107,255','63,184,255','47,232,158','255,191,61'];
+
+/* ---------- topic model: the machine's imagination ---------- */
+var SETS=[
+ {re:/bitcoin|crypto|\beth\b|defi|token|blockchain|solana/i,label:'CRYPTO PULSE',
+  cats:['TRADERS','MINERS','HOLDERS','DEVS','EXCHANGES'],
+  units:['swaps routed','blocks sealed','wallets awake','commits merged','pairs live'],base:[48200,16400,96300,7210,13800]},
+ {re:/health|\bfit\b|sleep|\brun\b|steps|heart|gym|body/i,label:'BODY TELEMETRY',
+  cats:['STEPS','SLEEP','HEART','WORKOUTS','RECOVERY'],
+  units:['steps logged','hours banked','resting bpm','sessions crushed','readiness'],base:[96400,54,61,26,93]},
+ {re:/\bapp\b|apps|startup|business|saas|revenue|product|founder/i,label:'VENTURE TELEMETRY',
+  cats:['USERS','SIGNUPS','REVENUE','RETENTION','REFERRALS'],
+  units:['active now','new today','dollars in','day-30 pct','invites sent'],base:[128400,3420,96400,74,5120]},
+ {re:/community|team|people|group|dao|network|school|class/i,label:'COLLECTIVE MIND',
+  cats:['CREATORS','BUILDERS','LEARNERS','SHARERS','EARNERS'],
+  units:['new apps','components shipped','lessons completed','shares sent','payouts earned'],base:[12840,9615,18230,7240,3285]}
+];
+var FALLBACK={label:'SIGNAL FIELD',cats:['NODES','STREAMS','QUERIES','EVENTS','SIGNALS'],
+ units:['online','flowing','resolved','captured','routed'],base:[512,4096,88200,15600,64000]};
+function modelFor(topic){
+  var t=(topic||'').toLowerCase(),set=FALLBACK,i;
+  for(i=0;i<SETS.length;i++){if(SETS[i].re.test(t)){set=SETS[i];break;}}
+  var rng=mulberry32(hashStr(topic||'void')),cats=[],total=0;
+  for(i=0;i<5;i++){
+    var v=Math.round(set.base[i]*(0.55+rng()*0.9));
+    var ch=+(rng()*46-9).toFixed(1);
+    cats.push({name:set.cats[i],unit:set.units[i],value:v,change:ch,color:SPEC5[i],rgb:SPEC5RGB[i]});
+    total+=v;
+  }
+  var weeks=[],w=set.base[2]*(0.5+rng()*0.4);
+  for(i=0;i<12;i++){w=w*(0.92+rng()*0.22);weeks.push(Math.round(w));}
+  return {label:set.label,cats:cats,total:total,weeks:weeks,topic:topic};
+}
+
+/* ---------- state ---------- */
+var S={
+  topic:'community intelligence', model:null,
+  view:'deep', viewPrev:'deep', trans:1,       // trans 0→1: dive transition
+  beat:0, t:0, speaking:false, voicePulse:0,
+  energy:0.6, computing:false,
+  rings:[],                                    // heartbeat ripples
+  dialV:8.8, dialD:8.8, dialVel:0, dialHist:[], // the ±9 needle lives in value-space
+  numShown:0, numTarget:0                       // breathing readout number
+};
+S.model=modelFor(S.topic);
+
+/* ---------- canvas ---------- */
+var cv=$('stage'), ctx=cv.getContext('2d');
+var W=0,H=0,DPR=1,cx=0,cy=0,R=200,rE=70;
+function resize(){
+  DPR=Math.min(window.devicePixelRatio||1,2);
+  W=window.innerWidth;H=window.innerHeight;
+  cv.width=Math.round(W*DPR);cv.height=Math.round(H*DPR);
+  cv.style.width=W+'px';cv.style.height=H+'px';
+  ctx.setTransform(DPR,0,0,DPR,0,0);
+  cx=W/2;cy=H*0.44;
+  R=clamp(Math.min(W,H*0.78)*0.34,160,320);
+  rE=clamp(Math.min(W,H)*0.085,52,104);
+  buildInstrumentGeometry();
+}
+window.addEventListener('resize',resize);
+
+/* ---------- cursor parallax: holographic depth (V-9) ---------- */
+var PAR={x:0,y:0},PARt={x:0,y:0};
+if(!REDUCED)document.addEventListener('mousemove',function(e){
+  PARt.x=e.clientX/W-0.5;PARt.y=e.clientY/H-0.5;
+});
+var MX=-9999,MY=-9999; // raw cursor for field disturbance
+document.addEventListener('mousemove',function(e){MX=e.clientX;MY=e.clientY;});
+document.addEventListener('mouseleave',function(){MX=-9999;MY=-9999;});
+
+/* ================= SHE — the ball of energy at the center =================
+   V-1. Not an avatar. Not a face. A living ball of energy. Voice comes from her.
+   Every instrument is a hologram she emits. Atoms: plasma body, spectrum rim,
+   shimmer motes, 72bpm heartbeat, breathing scale. */
+var motes=[];
+for(var mi=0;mi<64;mi++)motes.push({a:Math.random()*TAU,rr:0.75+Math.random()*0.6,
+  sp:(0.15+Math.random()*0.6)*(Math.random()<0.5?-1:1),sz:0.7+Math.random()*1.7,ph:Math.random()*TAU});
+function drawEnergy(t,scale){
+  scale=scale==null?1:scale;
+  var breathe=1+0.028*Math.sin(t*TAU/4.2)+S.beat*0.035+(S.speaking?0.022*Math.sin(t*46):0);
+  var r=rE*breathe*scale;
+  ctx.save();
+  ctx.globalCompositeOperation='lighter';
+  // ambient halo — presence felt in the periphery (V-1: you know she's there)
+  var halo=ctx.createRadialGradient(cx,cy,r*0.5,cx,cy,r*4.2);
+  halo.addColorStop(0,'rgba(160,107,255,0.10)');halo.addColorStop(1,'rgba(160,107,255,0)');
+  ctx.fillStyle=halo;ctx.beginPath();ctx.arc(cx,cy,r*4.2,0,TAU);ctx.fill();
+  // spectrum rim — the full color language, slowly turning
+  if(ctx.createConicGradient){
+    var rim=ctx.createConicGradient(t*0.4,cx,cy);
+    rim.addColorStop(0,'rgba(232,79,255,0.6)');rim.addColorStop(0.2,'rgba(160,107,255,0.6)');
+    rim.addColorStop(0.4,'rgba(63,184,255,0.6)');rim.addColorStop(0.6,'rgba(47,232,158,0.6)');
+    rim.addColorStop(0.8,'rgba(255,191,61,0.6)');rim.addColorStop(1,'rgba(232,79,255,0.6)');
+    ctx.strokeStyle=rim;ctx.lineWidth=r*0.20;
+    ctx.beginPath();ctx.arc(cx+PAR.x*10,cy+PAR.y*10,r*1.16,0,TAU);ctx.stroke();
+  }
+  // plasma body — hue drifts through the spectrum
+  var mid=specRGB(9*Math.sin(t*0.5));
+  var body=ctx.createRadialGradient(cx-r*0.18+PAR.x*6,cy-r*0.22+PAR.y*6,0,cx,cy,r);
+  body.addColorStop(0,'rgba(255,255,255,0.98)');
+  body.addColorStop(0.22,'rgba(255,255,255,0.85)');
+  body.addColorStop(0.48,'rgba('+mid[0]+','+mid[1]+','+mid[2]+',0.55)');
+  body.addColorStop(0.8,'rgba('+mid[0]+','+mid[1]+','+mid[2]+',0.12)');
+  body.addColorStop(1,'rgba('+mid[0]+','+mid[1]+','+mid[2]+',0)');
+  ctx.fillStyle=body;ctx.beginPath();ctx.arc(cx,cy,r,0,TAU);ctx.fill();
+  // inner turbulence — two slow counter-rotating blobs
+  for(var b=0;b<2;b++){
+    var ba=t*(b?-0.7:0.9)+b*2.4;
+    var bx=cx+Math.cos(ba)*r*0.32, by=cy+Math.sin(ba)*r*0.32;
+    var bc=specRGB(b?-6:6);
+    var blob=ctx.createRadialGradient(bx,by,0,bx,by,r*0.5);
+    blob.addColorStop(0,'rgba('+bc[0]+','+bc[1]+','+bc[2]+',0.32)');
+    blob.addColorStop(1,'rgba('+bc[0]+','+bc[1]+','+bc[2]+',0)');
+    ctx.fillStyle=blob;ctx.beginPath();ctx.arc(bx,by,r*0.5,0,TAU);ctx.fill();
+  }
+  // shimmer motes
+  motes.forEach(function(m,idx){
+    var ma=m.a+t*m.sp, mr=r*m.rr*2.1;
+    var mx=cx+Math.cos(ma)*mr+PAR.x*22, my=cy+Math.sin(ma)*mr*0.92+PAR.y*22;
+    var mc=specRGB(((idx*37)%19)-9);
+    var mal=0.3+0.42*Math.abs(Math.sin(t*2+m.ph));
+    ctx.fillStyle='rgba('+mc[0]+','+mc[1]+','+mc[2]+','+mal+')';
+    ctx.beginPath();ctx.arc(mx,my,m.sz*scale,0,TAU);ctx.fill();
+  });
+  // heartbeat ripple rings — 72bpm, she is alive
+  for(var ri=S.rings.length-1;ri>=0;ri--){
+    var rg=S.rings[ri];
+    if(!REDUCED){rg.r+=2.6*scale;rg.a-=0.014;}
+    if(rg.a<=0){S.rings.splice(ri,1);continue;}
+    ctx.strokeStyle='rgba(255,255,255,'+(rg.a*0.5)+')';ctx.lineWidth=1.5;
+    ctx.beginPath();ctx.arc(cx,cy,rg.r,0,TAU);ctx.stroke();
+  }
+  ctx.restore();
+}
+setInterval(function(){
+  S.beat=1;
+  S.rings.push({r:rE*1.1,a:0.5});
+  if(S.rings.length>14)S.rings.shift();
+},833);
+
+/* ================= BOOT — compression → release (teamLab) ================= */
+function boot(){
+  setTimeout(function(){
+    $('boot').classList.add('gone');
+    setTimeout(function(){$('boot').style.display='none';},1300);
+    if(S.queried)return; // she already answered — never stomp a live answer
+    // she ignites: convergence on the default topic, then she speaks
+    runConvergence(S.topic,S.model,function(){
+      speak('Naya one. I am here. '+voiceSummary(S.topic,S.model));
+    });
+  },REDUCED?200:2300);
+}
+
+/* ================= VOICE — she speaks, you see her talking (V-5) ================= */
+function numWords(n){
+  n=Math.round(n);
+  var ones=['','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen'];
+  var tens=['','','twenty','thirty','forty','fifty','sixty','seventy','eighty','ninety'];
+  function two(x){return x<20?ones[x]:tens[Math.floor(x/10)]+(x%10?' '+ones[x%10]:'');}
+  function three(x){var h=Math.floor(x/100),r=x%100;return ((h?ones[h]+' hundred'+(r?' ':''):'')+(r?two(r):''))||'zero';}
+  if(n>=1e9)return three(Math.floor(n/1e9))+' billion';
+  if(n>=1e6)return three(Math.floor(n/1e6))+' million';
+  if(n>=1e3){var th=three(Math.floor(n/1e3))+' thousand';return n%1e3?th+' '+three(n%1e3):th;}
+  return three(n);
+}
+function hush(){
+  try{if('speechSynthesis' in window)window.speechSynthesis.cancel();}catch(e){}
+  $('voiceBadge').classList.remove('on');S.speaking=false;
+}
+function speak(text){
+  if(REDUCED)return;
+  try{
+    if(!('speechSynthesis' in window))return;
+    window.speechSynthesis.cancel();
+    var u=new SpeechSynthesisUtterance(text);
+    u.rate=1.04;u.pitch=1.08;u.volume=1;
+    var vs=window.speechSynthesis.getVoices().filter(function(v){return v.lang&&v.lang.indexOf('en')===0;});
+    var pick=vs.filter(function(v){return /natural|neural|premium|samantha|zira|aria|jenny|google us english/i.test(v.name);})[0]||vs[0];
+    if(pick)u.voice=pick;
+    u.onstart=function(){$('voiceBadge').classList.add('on');S.speaking=true;};
+    var end=function(){$('voiceBadge').classList.remove('on');S.speaking=false;};
+    u.onend=end;u.onerror=end;
+    // you SEE her talking: pulse rings fire on word boundaries
+    u.onboundary=function(){S.voicePulse=1;S.rings.push({r:rE*1.05,a:0.65});};
+    window.speechSynthesis.speak(u);
+  }catch(e){}
+}
+function voiceSummary(topic,model){
+  var top=model.cats.slice().sort(function(a,b){return b.value-a.value;})[0];
+  var avg=model.cats.reduce(function(a,c){return a+c.change;},0)/model.cats.length;
+  var mom=avg>15?'Momentum is exceptional.':avg>8?'Momentum is strong.':avg>0?'Trending upward.':'Cooling off.';
+  return topic+'. '+numWords(model.total)+' signals across five worlds. Led by '+top.name.toLowerCase()+'. '+mom;
+}
+
+/* ================= COMMAND ENGINE — mess in, beauty out (V-13) ================= */
+function parseTopic(v){
+  var t=(v||'').trim();if(!t)return null;
+  var low=t.toLowerCase();
+  if(low==='help'||low==='status'||low==='clear')return {cmd:low};
+  var m=t.match(/give me the stats on (.+)/i)||t.match(/(?:show|get|pull)(?: me)?(?: the)? stats (?:on|for|about) (.+)/i)||
+        t.match(/stats (?:on|for|about) (.+)/i)||t.match(/analy[sz]e (.+)/i)||t.match(/(?:tell me about|what about|how about) (.+)/i);
+  var topic=(m?m[1]:t).replace(/[?.!…]+$/,'').trim();
+  return topic?{topic:topic}:null;
+}
+function cmdSay(html){$('cmdOut').innerHTML=html;}
+function execute(raw){
+  var p=parseTopic(raw);
+  if(!p){cmdSay('<span class="wr">◈</span> e.g. <span class="q">"give me the stats on bitcoin"</span>');return;}
+  if(p.cmd==='help'){cmdSay('<span class="q">◈</span> "give me the stats on X" · keys 1–7 · / to ask');return;}
+  if(p.cmd==='status'){cmdSay('<span class="ok">◈</span> "'+S.topic+'" · '+fmt(S.model.total)+' signals');return;}
+  if(p.cmd==='clear'){cmdSay('<span class="q">◈</span> cleared');return;}
+  var topic=p.topic;
+  hush();
+  S.queried=true;
+  cmdSay('<span class="q">◈</span> "'+topic.replace(/</g,'&lt;')+'" · she is calculating…');
+  S.computing=true;
+  setView('deep'); // the answer comes from HER
+  setTimeout(function(){
+    S.topic=topic;S.model=modelFor(topic);
+    $('roSubj').textContent=topic.toUpperCase();
+    S.numTarget=S.model.total;
+    runConvergence(topic,S.model,function(){
+      S.computing=false;
+      cmdSay('<span class="ok">◈</span> '+fmt(S.model.total)+' signals · keys 1–7 to see');
+      speak(voiceSummary(topic,S.model));
+      buildInstrumentGeometry(); // every instrument re-themes around the new subject
+    });
+  },REDUCED?60:600);
+}
+function bindCommand(){
+  $('cmdGo').addEventListener('click',function(){
+    execute($('cmdIn').value);$('cmdIn').value='';$('cmdIn').blur();
+  });
+  $('cmdIn').addEventListener('keydown',function(e){
+    if(e.key==='Enter'){execute(e.target.value);e.target.value='';e.target.blur();}
+    if(e.key==='Escape'){hush();e.target.blur();}
+  });
+}
+
+/* ================= CONVERGENCE — the answer materializes (V-4) =================
+   Light moves first; words follow. 150 signal particles stream in from the
+   edges, spiral into HER, and collapse into the number with an ignition flash.
+   You watch her calculate. */
+var conv={parts:[],run:false,t:0,dur:1700,done:null};
+function runConvergence(topic,model,done){
+  conv.parts=[];conv.t=0;conv.done=done||function(){};conv.run=true;
+  var n=REDUCED?0:150;
+  for(var i=0;i<n;i++){
+    var edge=Math.floor(Math.random()*4),x,y;
+    if(edge===0){x=Math.random()*W;y=-10;}else if(edge===1){x=W+10;y=Math.random()*H;}
+    else if(edge===2){x=Math.random()*W;y=H+10;}else{x=-10;y=Math.random()*H;}
+    var a=Math.random()*TAU,r=rE*(0.6+Math.random()*1.1);
+    conv.parts.push({x:x,y:y,tx:cx+Math.cos(a)*r,ty:cy+Math.sin(a)*r*0.85,
+      c:SPEC5[i%5],s:1+Math.random()*2.4,ph:Math.random()*TAU});
+  }
+  $('roNum').textContent='···';
+  countUp(0,model.total,1500);
+}
+function drawConvergence(now){
+  if(!conv.run)return;
+  ctx.fillStyle='rgba(4,4,5,0.16)';ctx.fillRect(0,0,W,H);
+  conv.t+=16.7;
+  var p=Math.min(conv.t/conv.dur,1),e=easeIO(p);
+  conv.parts.forEach(function(pt){
+    var wob=Math.sin(now/300+pt.ph)*14*(1-e);
+    var x=pt.x+(pt.tx-pt.x)*e+wob,y=pt.y+(pt.ty-pt.y)*e-wob*0.6;
+    var al=p>0.92?(1-p)/0.08:1;
+    ctx.globalAlpha=Math.max(al,0)*0.9;
+    ctx.fillStyle=pt.c;ctx.shadowColor=pt.c;ctx.shadowBlur=10;
+    ctx.beginPath();ctx.arc(x,y,pt.s,0,7);ctx.fill();
+  });
+  ctx.globalAlpha=1;ctx.shadowBlur=0;
+  // progress ring around HER
+  var rr=rE*2.1;
+  ctx.strokeStyle='rgba(255,255,255,.12)';ctx.lineWidth=3;
+  ctx.beginPath();ctx.arc(cx,cy,rr,0,7);ctx.stroke();
+  var g=ctx.createLinearGradient(cx-rr,cy,cx+rr,cy);
+  g.addColorStop(0,'#e84fff');g.addColorStop(.5,'#a06bff');g.addColorStop(1,'#3fb8ff');
+  ctx.strokeStyle=g;ctx.lineWidth=4;ctx.shadowColor='#a06bff';ctx.shadowBlur=16;
+  ctx.beginPath();ctx.arc(cx,cy,rr,-Math.PI/2,-Math.PI/2+p*TAU);ctx.stroke();
+  ctx.shadowBlur=0;
+  if(p>=1){
+    var fl=ctx.createRadialGradient(cx,cy,0,cx,cy,rE*3.4);
+    fl.addColorStop(0,'rgba(255,255,255,.85)');fl.addColorStop(1,'rgba(255,255,255,0)');
+    ctx.fillStyle=fl;ctx.beginPath();ctx.arc(cx,cy,rE*3.4,0,7);ctx.fill();
+    conv.run=false;
+    var d=conv.done;conv.done=function(){};d();
+  }
+}
+var countGen=0;
+function countUp(from,to,ms){
+  var t0=performance.now();
+  var gen=++countGen; // latest chain wins; superseded chains stop silently
+  S.numTarget=to;
+  if(REDUCED){S.numShown=to;return;}
+  (function tick(t){
+    if(gen!==countGen)return;
+    var p=Math.min((t-t0)/ms,1),e=easeIO(p);
+    S.numShown=from+(to-from)*e;
+    if(p<1)requestAnimationFrame(tick);
+  })(t0);
+}
+
+/* ================= THE ICON LANGUAGE =================
+   Hand-drawn glyphs. Fine linework, spectrum accents, they glow when alive,
+   they breathe. Icons are the primary navigation — not text menus. (V-2) */
+var ICONS={
+ deep:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="6.5"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/><path d="M12 2.5v3.5M12 18v3.5M2.5 12H6M18 12h3.5"/></svg>',
+ tidal:'<svg viewBox="0 0 24 24"><path d="M2 8.5q4.5-4 9 0t9 0"/><path d="M2 12.5q4.5-4 9 0t9 0" opacity=".65"/><path d="M2 16.5q4.5-4 9 0t9 0" opacity=".35"/></svg>',
+ spiral:'<svg viewBox="0 0 24 24"><path d="M12 12h.1"/><path d="M12 12c0-1 .8-1.8 1.8-1.8 1.4 0 2.5 1.1 2.5 2.5 0 1.9-1.6 3.5-3.5 3.5-2.5 0-4.5-2-4.5-4.5 0-3.1 2.5-5.6 5.6-5.6 3.7 0 6.7 3 6.7 6.7"/></svg>',
+ orbital:'<svg viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="10" ry="4.2"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(60 12 12)" opacity=".45"/><circle cx="12" cy="12" r="2.4"/></svg>',
+ pulse:'<svg viewBox="0 0 24 24"><path d="M2 12h4l2.5-6.5 4 13 2.5-6.5H22"/></svg>',
+ constel:'<svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="1.8"/><circle cx="18" cy="8" r="1.8"/><circle cx="11" cy="17.5" r="1.8"/><path d="M7.6 6.6l8.6.9M6.8 7.6l3.4 8M17.2 9.6l-4.9 6.2"/></svg>',
+ dial:'<svg viewBox="0 0 24 24"><path d="M5 19a8 8 0 1 1 14 0"/><path d="M12 11v-5" stroke-width="2"/><circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/><path d="M12 3.5v2M5.8 6.8l1.4 1.4M18.2 6.8l-1.4 1.4" opacity=".6"/></svg>'
+};
+var INSTR=[
+ {id:'deep',   n:'1',name:'DEEP MIND',   c:'#e84fff',g:'rgba(232,79,255,.5)', icon:'deep'},
+ {id:'tidal',  n:'2',name:'TIDAL FIELD', c:'#3fb8ff',g:'rgba(63,184,255,.5)', icon:'tidal'},
+ {id:'spiral', n:'3',name:'SPIRAL LEDGER',c:'#e84fff',g:'rgba(232,79,255,.5)',icon:'spiral'},
+ {id:'orbital',n:'4',name:'ORBITAL ARRAY',c:'#a06bff',g:'rgba(160,107,255,.5)',icon:'orbital'},
+ {id:'pulse',  n:'5',name:'PULSE CORE',   c:'#2fe89e',g:'rgba(47,232,158,.5)',icon:'pulse'},
+ {id:'constel',n:'6',name:'CONSTELLATION',c:'#ffbf3d',g:'rgba(255,191,61,.5)', icon:'constel'},
+ {id:'dial',   n:'7',name:'THE DIAL',     c:'#e84fff',g:'rgba(232,79,255,.5)',icon:'dial'}
+];
+function buildRail(){
+  var rail=$('rail');
+  INSTR.forEach(function(ins){
+    var b=document.createElement('button');
+    b.className='icorb'+(ins.id===S.view?' active':'');
+    b.id='ic-'+ins.id;b.setAttribute('aria-label',ins.name);
+    b.style.setProperty('--ig',ins.c);b.style.setProperty('--igg',ins.g);
+    b.innerHTML=ICONS[ins.icon]+'<span class="k">'+ins.n+'</span><span class="nm">'+ins.name+'</span>';
+    b.addEventListener('click',function(){setView(ins.id);});
+    rail.appendChild(b);
+  });
+}
+/* diving, not clicking: spring the transition */
+function setView(id){
+  if(!INSTR.some(function(x){return x.id===id;})||id===S.view)return;
+  S.viewPrev=S.view;S.view=id;S.trans=0;
+  var tip=$('tip');if(tip)tip.classList.remove('show');
+  INSTR.forEach(function(ins){
+    $('ic-'+ins.id).classList.toggle('active',ins.id===id);
+  });
+  buildInstrumentGeometry();
+}
+document.addEventListener('keydown',function(e){
+  if(document.activeElement===$('cmdIn'))return;
+  var map={'1':'deep','2':'tidal','3':'spiral','4':'orbital','5':'pulse','6':'constel','7':'dial'};
+  if(map[e.key])setView(map[e.key]);
+  if(e.key==='/'){$('cmdIn').focus();e.preventDefault();}
+  if(e.key==='Escape')hush();
+});
+
+/* ================= INSTRUMENT GEOMETRY — rebuilt per subject ================= */
+var GEO={wells:[],orbs:[],stars:[],spiralW:[]};
+function buildInstrumentGeometry(){
+  var cats=S.model.cats,maxV=Math.max.apply(null,cats.map(function(c){return c.value;}));
+  var i,a;
+  // tidal wells: orbit HER
+  GEO.wells=cats.map(function(c,i){
+    a=(i/5)*TAU-Math.PI/2;
+    var wr=R*1.02;
+    return {x:cx+Math.cos(a)*wr,y:cy+Math.sin(a)*wr*0.9,
+      m:0.35+(c.value/maxV)*1.6,r:clamp(20+(c.value/maxV)*40,20,60),cat:c,ph:Math.random()*7,ang:a};
+  });
+  // orbital worlds: she is the sun
+  var order=cats.slice().sort(function(x,y){return x.value-y.value;});
+  GEO.orbs=order.map(function(c,i){
+    return {rad:R*(0.42+i*0.16),size:clamp(14+(c.value/maxV)*30,14,44),
+      cat:c,ang:Math.random()*TAU,spd:(0.25+Math.random()*0.5)*(i%2?-1:1)};
+  });
+  // constellation stars: she is the central star
+  var spots=[[0.16,0.20],[0.84,0.18],[0.12,0.78],[0.88,0.76],[0.50,0.88]];
+  GEO.stars=cats.map(function(c,i){
+    return {x:spots[i][0]*W,y:spots[i][1]*H,
+      s:clamp(20+(c.value/maxV)*26,20,46),cat:c};
+  });
+  // spiral: 12 cycle widths
+  var weeks=S.model.weeks,maxW=Math.max.apply(null,weeks);
+  GEO.spiralW=weeks.map(function(w){return 4+(w/maxW)*20;});
+  // tidal particles
+  tidal.parts=[];
+  var n=REDUCED?0:240;
+  for(i=0;i<n;i++)tidal.parts.push({x:Math.random()*W,y:Math.random()*H,
+    vx:(Math.random()-.5)*2.4,vy:(Math.random()-.5)*2.4,
+    c:SPEC5[i%5],s:0.8+Math.random()*1.8,z:i%3});
+}
+
+/* ================= TIDAL FIELD — data as weather (V-9) =================
+   She is at the center of the weather. Wells orbit her. Your cursor disturbs it. */
+var tidal={parts:[],mx:-999,my:-999,hover:-1};
+function drawTidal(now){
+  var t=now/1000,hov=-1,hd=1e9,i;
+  ctx.fillStyle='rgba(4,4,5,0.10)';ctx.fillRect(0,0,W,H);
+  GEO.wells.forEach(function(w,i){
+    // wells slowly orbit her — the weather moves
+    if(!REDUCED)w.ang+=0.00016*(i%2?1:-1);
+    w.x=cx+Math.cos(w.ang)*R*1.02;w.y=cy+Math.sin(w.ang)*R*1.02*0.9;
+    var d=Math.hypot(MX-w.x,MY-w.y);
+    if(d<hd){hd=d;hov=i;}
+  });
+  tidal.hover=(hd<Math.max(W,H)*0.14)?hov:-1;
+  GEO.wells.forEach(function(w,i){
+    var pulse=1+0.08*Math.sin(t*2+w.ph);
+    var rad=w.r*pulse,hot=i===tidal.hover;
+    var ox=PAR.x*30,oy=PAR.y*30;
+    var g=ctx.createRadialGradient(w.x+ox,w.y+oy,0,w.x+ox,w.y+oy,rad*2.2);
+    g.addColorStop(0,w.cat.color);g.addColorStop(0.35,'rgba('+w.cat.rgb+',.35)');g.addColorStop(1,'rgba('+w.cat.rgb+',0)');
+    ctx.globalAlpha=hot?0.95:0.65;ctx.fillStyle=g;
+    ctx.beginPath();ctx.arc(w.x+ox,w.y+oy,rad*2.2,0,7);ctx.fill();
+    ctx.globalAlpha=1;
+    // ghost rings — the well tunnels backward through glass sheets (holography)
+    for(var gh=1;gh<=2;gh++){
+      ctx.globalAlpha=0.15/gh;ctx.strokeStyle=w.cat.color;ctx.lineWidth=1;
+      ctx.beginPath();ctx.arc(w.x+ox-PAR.x*gh*54,w.y+oy-PAR.y*gh*54,rad*(1+gh*0.42),0,7);ctx.stroke();
+    }
+    ctx.globalAlpha=1;
+    ctx.strokeStyle=w.cat.color;ctx.lineWidth=hot?3:1.5;ctx.globalAlpha=0.85;
+    ctx.beginPath();ctx.arc(w.x+ox,w.y+oy,rad,0,7);ctx.stroke();ctx.globalAlpha=1;
+    ctx.fillStyle='rgba(255,255,255,0.85)';ctx.font='700 10px ui-monospace,monospace';
+    ctx.textAlign='center';ctx.fillText(w.cat.name,w.x+ox,w.y+oy+rad+20);
+  });
+  tidal.parts.forEach(function(p){
+    var fx=0,fy=0;
+    GEO.wells.forEach(function(w){
+      var dx=w.x-p.x,dy=w.y-p.y,d2=dx*dx+dy*dy+4000,d=Math.sqrt(d2);
+      var f=(w.m*90000)/d2;
+      fx+=dx/d*f;fy+=dy/d*f;fx+=-dy/d*f*0.35;fy+=dx/d*f*0.35;
+    });
+    // she pulls too — gentle gravity at the center
+    var sdx=cx-p.x,sdy=cy-p.y,sd2=sdx*sdx+sdy*sdy+90000,sd=Math.sqrt(sd2);
+    fx+=sdx/sd*90000/sd2*0.4;fy+=sdy/sd*90000/sd2*0.4;
+    var cdx=p.x-MX,cdy=p.y-MY,cd2=cdx*cdx+cdy*cdy;
+    if(cd2<32400){var cd=Math.sqrt(cd2)||1;fx+=cdx/cd*3.2;fy+=cdy/cd*3.2;}
+    p.vx=(p.vx+fx)*0.985;p.vy=(p.vy+fy)*0.985;
+    p.x+=p.vx;p.y+=p.vy;
+    if(p.x<-20)p.x=W+20;if(p.x>W+20)p.x=-20;if(p.y<-20)p.y=H+20;if(p.y>H+20)p.y=-20;
+    var ox2=PAR.x*(p.z-1)*52,oy2=PAR.y*(p.z-1)*52;
+    ctx.globalAlpha=0.45+p.z*0.22;ctx.fillStyle=p.c;ctx.shadowColor=p.c;ctx.shadowBlur=4+p.z*3;
+    ctx.beginPath();ctx.arc(p.x+ox2,p.y+oy2,p.s*(0.7+p.z*0.28),0,7);ctx.fill();
+  });
+  ctx.shadowBlur=0;ctx.globalAlpha=1;
+  var tip=$('tip');
+  if(tidal.hover>=0){
+    var c=GEO.wells[tidal.hover].cat,w2=GEO.wells[tidal.hover];
+    tip.querySelector('.t-name').textContent=c.name;tip.querySelector('.t-name').style.color=c.color;
+    tip.querySelector('.t-val').textContent=fmt(c.value);
+    tip.querySelector('.t-chg').textContent=(c.change>0?'+':'')+c.change+'% · '+c.unit;
+    tip.querySelector('.t-chg').style.color=c.change>0?'#2fe89e':'#ff5e6c';
+    tip.style.left=Math.min(w2.x+70,W-200)+'px';tip.style.top=Math.max(10,w2.y-40)+'px';
+    tip.classList.add('show');
+  }else tip.classList.remove('show');
+}
+
+/* ================= SPIRAL LEDGER — time, read outward =================
+   Twelve cycles wound around her. The past at her edge, now at the rim.
+   She is the center the spiral winds from. */
+var spiral={idx:0,acc:0};
+function drawSpiral(now){
+  var t=now/1000,i,s;
+  var size=R*2.15,cxx=cx+PAR.x*24,cyy=cy+PAR.y*24;
+  var TURNS=3,TH=TAU*TURNS,SEG=12;
+  function pt(th){var r=rE*1.7+th*(size/2-rE*1.7-30)/TH;
+    return [cxx+Math.cos(th-Math.PI/2)*r,cyy+Math.sin(th-Math.PI/2)*r];}
+  // ghost spirals on deeper glass sheets (holography)
+  [[0.14,'#a06bff',1.0],[0.07,'#e84fff',1.22]].forEach(function(gh){
+    ctx.globalAlpha=gh[0];ctx.strokeStyle=gh[1];ctx.lineWidth=3;
+    ctx.beginPath();
+    for(s=0;s<=120;s++){
+      var th2=s/120*TH;
+      var rr=(rE*1.7+th2*(size/2-rE*1.7-30)/TH)*gh[2];
+      var px=cxx+Math.cos(th2-Math.PI/2)*rr+PAR.x*gh[2]*40;
+      var py=cyy+Math.sin(th2-Math.PI/2)*rr+PAR.y*gh[2]*40;
+      s===0?ctx.moveTo(px,py):ctx.lineTo(px,py);
+    }
+    ctx.stroke();ctx.globalAlpha=1;
+  });
+  // the reading sweep
+  if(!REDUCED){spiral.acc+=16.7;if(spiral.acc>1700){spiral.acc=0;spiral.idx=(spiral.idx+1)%SEG;}}
+  for(i=0;i<SEG;i++){
+    var th0=i/SEG*TH+0.02,th1=(i+1)/SEG*TH-0.02;
+    var on=i===spiral.idx;
+    ctx.globalAlpha=on?1:0.34;
+    ctx.strokeStyle=SPEC5[i%5];ctx.lineWidth=GEO.spiralW[i];
+    ctx.lineCap='round';ctx.shadowColor=SPEC5[i];ctx.shadowBlur=on?16:7;
+    ctx.beginPath();
+    for(s=0;s<=24;s++){
+      var th3=th0+(th1-th0)*s/24,q=pt(th3);
+      s===0?ctx.moveTo(q[0],q[1]):ctx.lineTo(q[0],q[1]);
+    }
+    ctx.stroke();
+  }
+  ctx.globalAlpha=1;ctx.shadowBlur=0;
+  // traveler of light on the spiral
+  var tth=(t*TAU/26)%TH,tq=pt(tth);
+  ctx.fillStyle='#fff';ctx.shadowColor='#fff';ctx.shadowBlur=12;
+  ctx.beginPath();ctx.arc(tq[0],tq[1],5,0,TAU);ctx.fill();ctx.shadowBlur=0;
+  // cycle readout — whisper
+  ctx.fillStyle='rgba(143,138,158,0.75)';ctx.font='700 10px ui-monospace,monospace';ctx.textAlign='center';
+  ctx.fillText('CYCLE '+String(spiral.idx+1).padStart(2,'0')+' / 12 · '+fmt(S.model.weeks[spiral.idx]),cxx,cyy+size/2+26);
+}
+
+/* ================= ORBITAL ARRAY — she is the sun =================
+   Five worlds in orbit around HER. Sized by value, spectrum-colored,
+   each at its own speed like real planets. */
+var orbTipShown=-1;
+function drawOrbital(now){
+  var t=now/1000,i;
+  GEO.orbs.forEach(function(o,i){
+    if(!REDUCED)o.ang+=o.spd*0.0035;
+    var rad=o.rad;
+    var ox=cx+Math.cos(o.ang)*rad+PAR.x*(20+i*14);
+    var oy=cy+Math.sin(o.ang)*rad*0.9+PAR.y*(20+i*14);
+    // orbit ring — whisper
+    ctx.strokeStyle='rgba(255,255,255,0.08)';ctx.lineWidth=1;
+    ctx.beginPath();ctx.ellipse(cx,cy,rad,rad*0.9,0,0,TAU);ctx.stroke();
+    // the world
+    var g=ctx.createRadialGradient(ox-o.size*0.3,oy-o.size*0.35,0,ox,oy,o.size);
+    g.addColorStop(0,'rgba(255,255,255,.95)');g.addColorStop(0.24,'rgba(255,255,255,.22)');
+    g.addColorStop(0.56,o.cat.color);g.addColorStop(0.88,'rgba(0,0,0,.55)');
+    ctx.fillStyle=g;ctx.shadowColor=o.cat.color;ctx.shadowBlur=22;
+    ctx.beginPath();ctx.arc(ox,oy,o.size,0,TAU);ctx.fill();ctx.shadowBlur=0;
+    ctx.fillStyle='rgba(200,194,206,0.8)';ctx.font='800 10px ui-sans-serif,system-ui';
+    ctx.textAlign='center';ctx.fillText(o.cat.name,ox,oy+o.size+16);
+    o._x=ox;o._y=oy;
+  });
+  // hover: hold a world still, read it
+  var tip=$('tip'),best=-1,bd=1e9;
+  GEO.orbs.forEach(function(o,i){
+    var d=Math.hypot(MX-o._x,MY-o._y);
+    if(d<o.size+14&&d<bd){bd=d;best=i;}
+  });
+  if(best>=0){
+    var c=GEO.orbs[best].cat,o2=GEO.orbs[best];
+    tip.querySelector('.t-name').textContent=c.name;tip.querySelector('.t-name').style.color=c.color;
+    tip.querySelector('.t-val').textContent=fmt(c.value);
+    tip.querySelector('.t-chg').textContent=(c.change>0?'+':'')+c.change+'% · '+c.unit;
+    tip.querySelector('.t-chg').style.color=c.change>0?'#2fe89e':'#ff5e6c';
+    tip.style.left=Math.min(o2._x+o2.size+16,W-200)+'px';tip.style.top=Math.max(10,o2._y-30)+'px';
+    tip.classList.add('show');
+  }else tip.classList.remove('show');
+}
+
+/* ================= PULSE CORE — the spectrum wave field =================
+   Five waves of living data, one per spectrum color, stacked in depth like
+   glass sheets. She breathes with them — the field and her heartbeat are one. */
+function drawPulse(now){
+  var t=now/1000;
+  ctx.fillStyle='rgba(4,4,5,0.20)';ctx.fillRect(0,0,W,H);
+  var layers=[
+    {c:'#e84fff',d:2.0,amp:0.62,y:0.30,o:0.26,sp:0.7},
+    {c:'#a06bff',d:1.2,amp:0.78,y:0.42,o:0.38,sp:1.0},
+    {c:'#3fb8ff',d:0.4,amp:1.00,y:0.54,o:0.60,sp:1.35},
+    {c:'#2fe89e',d:-0.5,amp:1.18,y:0.66,o:0.78,sp:1.7},
+    {c:'#ffbf3d',d:-1.3,amp:1.34,y:0.78,o:0.92,sp:2.1}
+  ];
+  var e=S.energy;
+  layers.forEach(function(L){
+    var yy=H*L.y+PAR.y*L.d*46,eAmp=L.amp*(0.75+0.5*e)*(1+S.beat*0.25);
+    ctx.globalAlpha=L.o;
+    ctx.strokeStyle=L.c;ctx.lineWidth=Math.max(1.4,3.4-L.d*0.7);
+    ctx.shadowColor=L.c;ctx.shadowBlur=20;
+    ctx.beginPath();
+    for(var x=-40;x<=W+40;x+=7){
+      var n=Math.sin(x*0.0065+t*1.9*L.sp+L.d*2.2)*Math.sin(x*0.0027-t*1.05*L.sp);
+      var y=yy+Math.sin(x*0.011+t*2.6*L.sp+L.d*1.4)*H*0.045*eAmp+n*H*0.075*eAmp;
+      x<=-33?ctx.moveTo(x+PAR.x*L.d*64,y):ctx.lineTo(x+PAR.x*L.d*64,y);
+    }
+    ctx.stroke();
+    ctx.globalAlpha=L.o*0.12;ctx.lineTo(W+PAR.x*L.d*64,H+40);ctx.lineTo(PAR.x*L.d*64-40,H+40);
+    ctx.closePath();ctx.fillStyle=L.c;ctx.fill();
+  });
+  ctx.globalAlpha=1;ctx.shadowBlur=0;
+  // bpm — she sets the tempo
+  var bpm=68+Math.round(4*Math.sin(t*0.5)+4*Math.sin(t*1.7));
+  ctx.fillStyle='rgba(255,255,255,0.9)';ctx.font='800 34px ui-sans-serif,system-ui';
+  ctx.textAlign='center';ctx.shadowColor='rgba(47,232,158,.5)';ctx.shadowBlur=22;
+  ctx.fillText(bpm,cx,cy-R-56);ctx.shadowBlur=0;
+  ctx.fillStyle='rgba(143,138,158,0.7)';ctx.font='800 9px ui-sans-serif,system-ui';
+  ctx.fillText('D A T A · P U L S E',cx,cy-R-36);
+}
+
+/* ================= NEURAL CONSTELLATION — starlight, and she is its heart =================
+   Relationships drawn as light. She is the central star; everything connects
+   through her. Hover a star to light up everything it touches. */
+var constel={lit:null};
+function drawConstel(now){
+  var t=now/1000;
+  var stars=[{x:cx,y:cy,s:rE*1.1,c:'#f8f7fb',label:'NAYA',her:true}];
+  GEO.stars.forEach(function(s){
+    stars.push({x:s.x+PAR.x*30,y:s.y+PAR.y*30,s:s.s,c:s.cat.color,label:s.cat.name,cat:s.cat});
+  });
+  var links=[];
+  for(var i=1;i<stars.length;i++)links.push([0,i]);
+  links.push([1,2],[2,3],[3,4],[4,5],[1,5],[2,4]);
+  // find hovered star
+  var hov=-1,bd=1e9;
+  stars.forEach(function(s,i){
+    var d=Math.hypot(MX-s.x,MY-s.y);
+    if(d<s.s+12&&d<bd){bd=d;hov=i;}
+  });
+  constel.lit=hov;
+  links.forEach(function(l){
+    var a=stars[l[0]],b=stars[l[1]];
+    var on=hov>=0&&(l[0]===hov||l[1]===hov);
+    ctx.strokeStyle=on?a.c:'rgba(255,255,255,0.13)';
+    ctx.lineWidth=on?2.5:1.2;
+    if(on){ctx.shadowColor=a.c;ctx.shadowBlur=10;}
+    ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
+    ctx.shadowBlur=0;
+  });
+  stars.forEach(function(s,i){
+    if(s.her)return; // she is drawn by drawEnergy
+    var on=hov===i;
+    var tw=0.75+0.25*Math.sin(t*2+i*1.7);
+    var g=ctx.createRadialGradient(s.x-s.s*0.3,s.y-s.s*0.35,0,s.x,s.y,s.s);
+    g.addColorStop(0,'rgba(255,255,255,.95)');g.addColorStop(0.26,'rgba(255,255,255,.2)');
+    g.addColorStop(0.58,s.c);g.addColorStop(0.9,'rgba(0,0,0,.6)');
+    ctx.globalAlpha=tw;ctx.fillStyle=g;
+    ctx.shadowColor=s.c;ctx.shadowBlur=on?30:18;
+    ctx.beginPath();ctx.arc(s.x,s.y,s.s*(on?1.25:1),0,TAU);ctx.fill();
+    ctx.shadowBlur=0;ctx.globalAlpha=1;
+    ctx.fillStyle='rgba(200,194,206,0.8)';ctx.font='800 10px ui-sans-serif,system-ui';
+    ctx.textAlign='center';ctx.fillText(s.label,s.x,s.y+s.s+16);
+  });
+  var tip=$('tip');
+  if(hov>0){
+    var c=stars[hov].cat;
+    tip.querySelector('.t-name').textContent=c.name;tip.querySelector('.t-name').style.color=c.color;
+    tip.querySelector('.t-val').textContent=fmt(c.value);
+    tip.querySelector('.t-chg').textContent=(c.change>0?'+':'')+c.change+'% · '+c.unit;
+    tip.querySelector('.t-chg').style.color=c.change>0?'#2fe89e':'#ff5e6c';
+    tip.style.left=Math.min(stars[hov].x+40,W-200)+'px';tip.style.top=Math.max(10,stars[hov].y-30)+'px';
+    tip.classList.add('show');
+  }else tip.classList.remove('show');
+}
+
+/* ================= THE DIAL — the universal instrument, projected by her =================
+   V-11. She holds out her hand and the dial appears as light around her.
+   Fixed scale, moving light. ±9 of structure, infinity beyond. */
+function angOf(v){var deg=90-(clamp(v,-9,9)/9)*135;return deg*Math.PI/180;}
+function ptA(theta,r){return [cx+Math.cos(theta)*r,cy-Math.sin(theta)*r];}
+function drawDialInst(now){
+  var t=now/1000,i;
+  var Rd=R*1.18;
+  // machined rings
+  ctx.strokeStyle='rgba(255,255,255,0.16)';ctx.lineWidth=1.5;
+  ctx.beginPath();ctx.arc(cx+PAR.x*14,cy+PAR.y*14,Rd+10,0,TAU);ctx.stroke();
+  ctx.strokeStyle='rgba(255,255,255,0.07)';
+  ctx.beginPath();ctx.arc(cx+PAR.x*14,cy+PAR.y*14,Rd-24,0,TAU);ctx.stroke();
+  // tick band in spectrum law order
+  for(var v=-9;v<=9.001;v+=0.5){
+    var isMaj=Math.abs(v-Math.round(v))<0.01;
+    var theta=angOf(v),r1=Rd+(isMaj?-15:-9),r2=Rd+4;
+    var p=ptA(theta,r1),q=ptA(theta,r2);
+    ctx.strokeStyle=specCSS(v,isMaj?0.95:0.3);ctx.lineWidth=isMaj?2.5:1.2;
+    if(isMaj){ctx.shadowColor=specCSS(v,0.8);ctx.shadowBlur=6;}
+    ctx.beginPath();ctx.moveTo(p[0],p[1]);ctx.lineTo(q[0],q[1]);ctx.stroke();
+    ctx.shadowBlur=0;
+  }
+  ctx.font='600 11px ui-monospace,monospace';ctx.textAlign='center';ctx.textBaseline='middle';
+  ctx.fillStyle='rgba(200,194,206,0.55)';
+  [-9,-6,-3,3,6,9].forEach(function(lv){
+    var th=angOf(lv),pp=ptA(th,Rd+24);
+    ctx.fillText((lv>0?'+':'')+lv,pp[0],pp[1]);
+  });
+  // overflow: infinity becomes more rings
+  var av=Math.abs(S.dialV);
+  if(av>9){
+    var ov=Math.log2(av/9),sgn=S.dialV<0?-1:1;
+    var stopTheta=angOf(sgn*9),stopC=specRGB(sgn*9);
+    var rings=Math.min(6,Math.ceil(ov*2.5));
+    for(i=0;i<rings;i++){
+      var rr=Rd+20+i*15;
+      ctx.strokeStyle='rgba('+stopC[0]+','+stopC[1]+','+stopC[2]+','+(0.5*(1-i/rings))+')';
+      ctx.lineWidth=4;ctx.shadowColor=specCSS(sgn*9,0.9);ctx.shadowBlur=12;
+      ctx.beginPath();
+      for(var s2=0;s2<=20;s2++){
+        var a0=stopTheta-(sgn>0?1:-1)*0.16,a1=stopTheta+(sgn>0?1:-1)*0.16;
+        var th2=a0+(a1-a0)*s2/20,ppp=ptA(th2,rr);
+        s2===0?ctx.moveTo(ppp[0],ppp[1]):ctx.lineTo(ppp[0],ppp[1]);
+      }
+      ctx.stroke();
+    }
+    ctx.shadowBlur=0;
+  }
+  // needle of light — spring physics in value-space
+  var theta=angOf(S.dialD);
+  var tip=ptA(theta,Rd*0.99),base=ptA(theta,rE*1.25);
+  var c=specRGB(S.dialD);
+  var energy=clamp(Math.abs(S.dialV)/9,0,2.5);
+  var halo=ctx.createRadialGradient(tip[0],tip[1],0,tip[0],tip[1],50+energy*20);
+  halo.addColorStop(0,'rgba('+c[0]+','+c[1]+','+c[2]+','+(0.3+0.1*energy)+')');
+  halo.addColorStop(1,'rgba('+c[0]+','+c[1]+','+c[2]+',0)');
+  ctx.fillStyle=halo;ctx.beginPath();ctx.arc(tip[0],tip[1],50+energy*20,0,TAU);ctx.fill();
+  var g=ctx.createLinearGradient(base[0],base[1],tip[0],tip[1]);
+  g.addColorStop(0,'rgba(255,255,255,0)');g.addColorStop(0.4,'rgba(255,255,255,'+(0.55+0.2*energy)+')');
+  g.addColorStop(0.78,specCSS(S.dialD,0.85));g.addColorStop(1,specCSS(S.dialD,0.15));
+  ctx.strokeStyle=g;ctx.lineWidth=5;ctx.lineCap='round';
+  ctx.shadowColor=specCSS(S.dialD,0.9);ctx.shadowBlur=18+energy*10;
+  ctx.beginPath();ctx.moveTo(base[0],base[1]);ctx.lineTo(tip[0],tip[1]);ctx.stroke();
+  ctx.shadowBlur=0;
+  ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(tip[0],tip[1],3.4,0,TAU);ctx.fill();
+  // reading under her — the number breathes (V-3)
+  var br=1+0.012*Math.sin(t*TAU/4.2)*(0.6+S.energy);
+  ctx.save();ctx.translate(cx,cy+rE*2.1+34);ctx.scale(br,br);
+  ctx.font='800 40px Manrope,Inter,ui-sans-serif,system-ui';ctx.textAlign='center';ctx.textBaseline='middle';
+  ctx.fillStyle='#f8f7fb';ctx.shadowColor=specCSS(S.dialV,0.55);ctx.shadowBlur=24;
+  ctx.fillText((S.dialV<0?'−':'+')+Math.abs(S.dialV).toFixed(1),0,0);
+  ctx.restore();ctx.shadowBlur=0;
+  ctx.font='800 9px ui-sans-serif,system-ui';ctx.fillStyle=specCSS(clamp(S.dialV,-9,9),0.9);
+  ctx.fillText(dialZone(S.dialV),cx,cy+rE*2.1+62);
+}
+function dialZone(v){
+  var av=Math.abs(v);
+  if(av>9)return 'BEYOND THE DIAL · ×'+(av/9).toFixed(1);
+  if(v>=9)return 'THE FLOOR · ELITE';
+  if(v>=7)return 'STRONG';if(v>=4)return 'BUILDING';if(v>=0)return 'SEEDLING';
+  return 'DRIFT · CREATION ENERGY';
+}
+function dialSet(v,sayIt){
+  v=clamp(v,-1e6,1e6);
+  S.dialV=v;S.dialHist.push({v:v,t:S.t});
+  if(S.dialHist.length>12)S.dialHist.shift();
+  if(sayIt!==false&&!REDUCED){
+    var av=Math.abs(v);
+    var words=(v<0?'minus ':'plus ')+Math.abs(v).toFixed(1)+'. '+dialZone(v).toLowerCase()+'.';
+    setTimeout(function(){speak(words);},380);
+  }
+}
+
+/* ================= BACKGROUND — the tailored black suit (V-7) ================= */
+function drawBG(t){
+  ctx.fillStyle='#040405';ctx.fillRect(0,0,W,H);
+  var vg=ctx.createRadialGradient(cx,cy,Math.min(W,H)*0.2,cx,cy,Math.max(W,H)*0.75);
+  vg.addColorStop(0,'rgba(0,0,0,0)');vg.addColorStop(1,'rgba(0,0,0,0.55)');
+  ctx.fillStyle=vg;ctx.fillRect(0,0,W,H);
+  var amb=0.028+0.010*Math.sin(t*TAU/9);
+  var g1=ctx.createRadialGradient(W*0.08,0,0,W*0.08,0,H*0.6);
+  g1.addColorStop(0,'rgba(232,79,255,'+amb+')');g1.addColorStop(1,'rgba(232,79,255,0)');
+  ctx.fillStyle=g1;ctx.fillRect(0,0,W,H);
+  var g2=ctx.createRadialGradient(W*0.94,H*0.9,0,W*0.94,H*0.9,H*0.6);
+  g2.addColorStop(0,'rgba(63,184,255,'+amb+')');g2.addColorStop(1,'rgba(63,184,255,0)');
+  ctx.fillStyle=g2;ctx.fillRect(0,0,W,H);
+}
+
+/* ================= THE BREATHING NUMBER (V-3) ================= */
+function drawReadout(t){
+  var el=$('roNum');
+  var shown=Math.round(S.numShown);
+  if(el._last!==shown){el.textContent=fmt(shown);el._last=shown;}
+  var br=1+0.010*Math.sin(t*TAU/4.2)*(0.5+S.energy);
+  el.style.transform='scale('+br.toFixed(4)+')';
+  el.style.textShadow='0 0 '+(26+30*S.energy)+'px rgba(168,107,255,'+(0.3+0.25*S.energy).toFixed(3)+')';
+}
+
+/* ================= MAIN LOOP — one space, one heartbeat ================= */
+var last=performance.now();
+function frame(now){
+  var dt=Math.min((now-last)/1000,0.05);last=now;
+  S.t+=dt;
+  // envelopes
+  S.beat=Math.max(0,S.beat-dt*2.2);
+  S.voicePulse=Math.max(0,S.voicePulse-dt*3);
+  PAR.x+=(PARt.x-PAR.x)*0.06;PAR.y+=(PARt.y-PAR.y)*0.06;
+  // dive transition: spring 0→1
+  if(S.trans<1)S.trans=Math.min(1,S.trans+dt*1.6);
+  var te=easeIO(S.trans);
+  // dial needle physics: spring in value-space
+  var k=90,c=12;
+  var acc=k*(S.dialV-S.dialD)-c*S.dialVel;
+  S.dialVel+=acc*dt;S.dialD+=S.dialVel*dt;
+  // energy follows the data
+  S.energy=0.45+0.3*Math.sin(S.t*0.4)+S.beat*0.2;
+  drawBG(S.t);
+  ctx.save();
+  // the dive: instruments scale in from her
+  var zs=0.82+0.18*te;
+  ctx.translate(cx,cy);ctx.scale(zs,zs);ctx.translate(-cx,-cy);
+  ctx.globalAlpha=te;
+  var v=S.view;
+  if(v==='tidal')drawTidal(now);
+  else if(v==='spiral')drawSpiral(now);
+  else if(v==='orbital')drawOrbital(now);
+  else if(v==='pulse')drawPulse(now);
+  else if(v==='constel')drawConstel(now);
+  else if(v==='dial')drawDialInst(now);
+  // deep: just her, breathing, with the number
+  ctx.restore();
+  drawConvergence(now);
+  drawEnergy(S.t,1);
+  drawReadout(S.t);
+  if(!REDUCED)requestAnimationFrame(frame);
+}
+
+/* ================= IGNITION ================= */
+function init(){
+  resize();
+  buildRail();
+  buildInstrumentGeometry();
+  bindCommand();
+  $('roSubj').textContent=S.topic.toUpperCase();
+  S.numTarget=S.model.total;S.numShown=0;
+  // the dial opens on the design-system score: +8.8, the floor, elite
+  S.dialV=8.8;S.dialD=0;S.dialVel=0;
+  if(REDUCED){
+    drawBG(0);drawEnergy(0,1);
+    S.numShown=S.model.total;
+    var el=$('roNum');el.textContent=fmt(S.model.total);el._last=S.model.total;
+  }else{
+    requestAnimationFrame(frame);
+  }
+  boot();
+  /* test hook (harmless in production) */
+  window.__one={S:S,modelFor:modelFor,parseTopic:parseTopic,setView:setView,
+    specRGB:specRGB,dialSet:dialSet,INSTR:INSTR};
+}
+init();
+})();
+</script>
+</body>
+</html>
