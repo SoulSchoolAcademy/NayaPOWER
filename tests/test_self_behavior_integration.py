@@ -111,7 +111,9 @@ def test_integration_records_self_experience_when_node_given(tmp_path):
     store = BehaviorPolicyStore(tmp_path / "policy.json")
     node = _booted_node(tmp_path)
     receipt = integrate_verified_lesson(_valid_lesson(), store, self_node=node)
-    assert receipt["experience_receipt"]["status"] == "PRESERVED"
+    # #2062 hardened record_experience: the raw-text legacy path is preserved
+    # as PRESERVED_UNVERIFIED (it cannot masquerade as governed truth).
+    assert receipt["experience_receipt"]["status"] == "PRESERVED_UNVERIFIED"
     assert node.state.experience_count == 1
     assert any("Unverified candidates must never enter" in k for k in node.state.known)
 

@@ -327,13 +327,21 @@ def execute_plan(plan: ActionPlan,
                  profile: QualityProfile,
                  max_law_age_seconds: float = MAX_LAW_AGE_SECONDS,
                  ledger: ReceiptLedger | None = None,
-                 risk_policy: RiskPolicy | None = None) -> ActionReceipt:
+                 risk_policy: RiskPolicy | None = None,
+                 on_executed: Callable[[ActionPlan, ActionReceipt], None] | None = None) -> ActionReceipt:
     """Phase 2: re-resolve live LAW authority, re-verify the do-no-harm gate,
     then execute.
 
     re_resolve must return a FRESH LawAuthority read at execution time
     (SN-0493). If it returns None, or the fresh authority fails any time
     check, execution is refused and the executor is never called.
+
+    on_executed is the post-execution hook seam (WO5b): it fires exactly once,
+    after the EXECUTION_COMPLETED receipt is emitted to the ledger, with
+    (plan, receipt). SELF wires kernel.self_integration.make_act_experience_hook
+    here so every completed action is preserved as experience. Refused or
+    failed executions never reach the hook — only a completed outcome is
+    recordable experience.
 
     Do-no-harm enforcement (fail-closed): the chosen candidate is re-run
     through the calculus's gate_candidate at the last responsible moment,
@@ -419,6 +427,8 @@ def execute_plan(plan: ActionPlan,
         expected_outcome=plan.chosen.expected_outcome,
     )
     receipt = emit(completed)
+    if on_executed is not None:
+        on_executed(plan, receipt)
     # ACT -> KNOW feedback arc (Phase 3): hand the completed execution to the
     # KNOW node. Never raises — _emit_execution_handoff swallows and logs.
     _emit_execution_handoff(plan=plan, receipt=receipt, observed=observed)
