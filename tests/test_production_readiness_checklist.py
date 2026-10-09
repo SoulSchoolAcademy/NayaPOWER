@@ -41,7 +41,20 @@ jobs:
         with:
           name: production-promotion-receipt
       - run: echo NAYAPOWER_PRODUCTION_PROMOTION_RECEIPT_V1
+      - name: Write production promotion failure receipt
+        if: ${{ failure() }}
+        run: echo receipt
 """
+
+NARROWED_GATE_DISPATCH = GOOD_DISPATCH.replace(
+    "if: ${{ failure() }}",
+    "if: ${{ failure() && steps.standing_policy.outputs.allowed != '' }}",
+)
+
+NO_ANCHOR_DISPATCH = GOOD_DISPATCH.replace(
+    "- name: Write production promotion failure receipt",
+    "- name: Write some other receipt",
+)
 
 
 # ---- C5 dispatch contract ----------------------------------------------------
@@ -170,11 +183,27 @@ def test_proof_workflows_live_repo_passes():
 def test_receipt_path_pass():
     r = prc.check_receipt_path(text=GOOD_DISPATCH)
     assert r["verdict"] == "PASS", r
+    assert r["evidence"]["failure_receipt_gate_unconditional"] is True
+    assert r["evidence"]["failure_receipt_gate"] == "failure()"
 
 
 def test_receipt_path_warn():
     r = prc.check_receipt_path(text="no receipt here")
     assert r["verdict"] == "WARN"
+
+
+def test_receipt_path_warn_on_renarrowed_gate():
+    # Regression guard: the 2026-10-08 silent-failure hole must not return.
+    r = prc.check_receipt_path(text=NARROWED_GATE_DISPATCH)
+    assert r["verdict"] == "WARN", r
+    assert "silent" in r["summary"], r
+    assert r["evidence"]["failure_receipt_gate_unconditional"] is False
+
+
+def test_receipt_path_warn_on_missing_step_anchor():
+    r = prc.check_receipt_path(text=NO_ANCHOR_DISPATCH)
+    assert r["verdict"] == "WARN", r
+    assert r["evidence"]["failure_receipt_step_found"] is False
 
 
 def test_receipt_path_live_repo_passes():

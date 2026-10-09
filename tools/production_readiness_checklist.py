@@ -20,7 +20,9 @@ Checks (each emits PASS / WARN / FAIL / UNKNOWN with evidence):
   C6 migration_hygiene   — migration filenames unique/ordered/conforming; every pending
                            ledger entry's file exists (read-only; no SQL parsing needed).
   C7 proof_workflows_exist— every workflow file referenced by the promotion workflow exists.
-  C8 receipt_path        — the promotion workflow writes a durable promotion receipt artifact.
+  C8 receipt_path        — the promotion workflow writes a durable promotion receipt artifact,
+                           and the failure-receipt step fires on unconditional failure()
+                           (regression guard for the 2026-10-08 silent-failure hole).
 
 Exit codes: 0 = all PASS (WARN allowed), 1 = any FAIL, 2 = instrument error.
 
@@ -570,18 +572,70 @@ def check_proof_workflows_exist(text: str | None = None,
     return check_result("C7", "PASS", f"all {len(refs)} referenced workflows exist", evidence)
 
 
+def _failure_receipt_gate_condition(content: str) -> tuple[bool, str | None]:
+    """Locate the failure-receipt step and return (step_found, normalized if-condition).
+
+    Regression guard for the 2026-10-08 superseded-tip-race finding (run
+    37813418273): gating the failure-receipt step on the standing-policy
+    step's outputs leaves pre-policy failures silent. The healthy condition
+    is exactly unconditional ``failure()``.
+    """
+    lines = content.splitlines()
+    start = None
+    for i, line in enumerate(lines):
+        if "Write production promotion failure receipt" in line:
+            start = i
+            break
+    if start is None:
+        return False, None
+    for line in lines[start + 1:]:
+        stripped = line.strip()
+        if re.match(r"-\s+(name|uses|run)\s*:", stripped):
+            break  # next step reached without an if: line
+        m = re.match(r"if\s*:\s*(.+)", stripped)
+        if m:
+            cond = m.group(1).strip()
+            wrap = re.match(r"\$\{\{\s*(.*?)\s*\}\}$", cond)
+            if wrap:
+                cond = wrap.group(1)
+            return True, cond
+    return True, None
+
+
 def check_receipt_path(text: str | None = None) -> dict:
-    """C8 — the promotion workflow writes a durable promotion receipt artifact."""
+    """C8 — the promotion workflow writes a durable promotion receipt artifact.
+
+    Also guards the 2026-10-08 silent-failure regression: the failure-receipt
+    step must fire on unconditional ``failure()``. A re-narrowed gate (or a
+    missing step anchor) cannot be PASS — silent failures would return.
+    """
     try:
         content = text if text is not None else WORKFLOW_PATH.read_text(encoding="utf-8")
     except OSError as e:
         return check_result("C8", "FAIL", f"promotion workflow unreadable: {e}", {})
     has_receipt = "production-promotion-receipt" in content
     has_schema = "NAYAPOWER_PRODUCTION_PROMOTION_RECEIPT_V1" in content
-    evidence = {"receipt_artifact": has_receipt, "receipt_schema": has_schema}
-    if has_receipt and has_schema:
-        return check_result("C8", "PASS", "durable promotion receipt path present", evidence)
-    return check_result("C8", "WARN", "promotion receipt path incomplete", evidence)
+    step_found, gate = _failure_receipt_gate_condition(content)
+    evidence = {
+        "receipt_artifact": has_receipt,
+        "receipt_schema": has_schema,
+        "failure_receipt_step_found": step_found,
+        "failure_receipt_gate": gate,
+        "failure_receipt_gate_unconditional": (gate == "failure()"),
+    }
+    if not (has_receipt and has_schema):
+        return check_result("C8", "WARN", "promotion receipt path incomplete", evidence)
+    if not step_found:
+        return check_result(
+            "C8", "WARN",
+            "durable receipt path present but failure-receipt step anchor not found — gate condition unverifiable",
+            evidence)
+    if gate != "failure()":
+        return check_result(
+            "C8", "WARN",
+            f"failure-receipt gate re-narrowed ({gate!r}): pre-policy promotion failures would go silent again",
+            evidence)
+    return check_result("C8", "PASS", "durable promotion receipt path present; failure receipt fires unconditionally", evidence)
 
 
 # ---------------------------------------------------------------- report
