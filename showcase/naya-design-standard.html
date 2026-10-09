@@ -170,24 +170,71 @@ p { margin-bottom: 16px; max-width: 72ch; }
 /* the face — lit from above: crown, foot, halo → contact → ambient → glow.
    The cursor is the light source: the face turns toward it (JS: --rx/--ry). */
 .hero-btn-face {
-  position: relative; z-index: 2; overflow: hidden;
-  display: flex; align-items: center; justify-content: center;
-  padding: 21px 44px; border-radius: 999px;
-  background: linear-gradient(180deg, #ffffff 0%, #f3f5fb 48%, #d8def0 100%);
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 21px 44px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #ffffff 0%, #f4f6fc 45%, #dbe1f2 100%);
+  border: 1.5px solid rgba(255,255,255,.9);
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.9),
-    inset 0 -2px 8px rgba(105,120,170,.42),
-    0 0 0 1.5px rgba(0,0,0,.5),
-    0 2px 6px rgba(0,0,0,.5),
-    0 14px 36px rgba(0,0,0,.55),
-    0 0 44px -6px rgba(var(--c),.55);
+    inset 0 2px 4px rgba(255,255,255,.95),
+    inset 0 -5px 12px rgba(110,125,175,.38),
+    0 0 28px rgba(255,255,255,.35),
+    0 0 70px -12px rgba(var(--c),.5),
+    0 18px 44px rgba(0,0,0,.6);
   transform: perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) scale(var(--press,1));
-  transition: transform .28s cubic-bezier(.22,1,.36,1), background .28s ease, box-shadow .35s ease, filter .3s ease;
+  transition: transform .28s cubic-bezier(.22,1,.36,1), background .28s ease, box-shadow .35s ease, filter .3s ease, border-color .25s ease;
   will-change: transform;
+  animation: face-breathe 4s ease-in-out infinite;
+}
+.hero-btn-face::after {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0; width: 45%; left: -60%;
+  background: linear-gradient(105deg, transparent, rgba(255,255,255,.35), transparent);
+  transform: skewX(-18deg);
+  animation: face-shimmer 5.5s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 3;
+}
+@keyframes face-breathe {
+  0%,100% {
+    box-shadow:
+      inset 0 2px 4px rgba(255,255,255,.95),
+      inset 0 -5px 12px rgba(110,125,175,.38),
+      0 0 28px rgba(255,255,255,.35),
+      0 0 70px -12px rgba(var(--c),.5),
+      0 18px 44px rgba(0,0,0,.6);
+  }
+  50% {
+    box-shadow:
+      inset 0 2px 4px rgba(255,255,255,1),
+      inset 0 -5px 12px rgba(110,125,175,.33),
+      0 0 40px rgba(255,255,255,.48),
+      0 0 88px -10px rgba(var(--c),.65),
+      0 21px 50px rgba(0,0,0,.63);
+  }
+}
+@keyframes face-shimmer {
+  0% { left: -60%; }
+  55% { left: 130%; }
+  100% { left: 130%; }
 }
 .hero-btn:active .hero-btn-face {
   --press: .965;
+  animation: none;
   transition: transform .1s ease-out, background .28s ease, box-shadow .35s ease, filter .3s ease;
+  transform: perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) scale(var(--press,1)) translateY(1px);
+  box-shadow:
+    inset 0 3px 12px rgba(0,0,0,.28),
+    inset 0 -2px 6px rgba(0,0,0,.18),
+    0 0 22px rgba(255,255,255,.28),
+    0 0 44px -6px rgba(var(--c),.65),
+    0 8px 22px rgba(0,0,0,.5);
 }
 
 /* the spotlight — your light, washing the pearl */
@@ -217,14 +264,21 @@ p { margin-bottom: 16px; max-width: 72ch; }
 /* IGNITE — the pearl becomes your meaning-color; the voice goes white.
    Lifted: shadows soften and spread, like a real object rising toward light. */
 .hero-btn:hover .hero-btn-face {
-  background: linear-gradient(180deg, #ffffff 0%, var(--c-base) 46%, var(--c-deep) 100%);
+  animation: none;
+  background: linear-gradient(180deg, #ffffff 0%, var(--c-base) 45%, var(--c-deep) 100%);
+  border-color: var(--c-base);
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.85),
-    inset 0 -2px 8px rgba(0,0,0,.38),
-    0 0 0 1.5px rgba(0,0,0,.5),
-    0 4px 10px rgba(0,0,0,.4),
-    0 30px 70px rgba(0,0,0,.45),
-    0 0 100px -6px rgba(var(--c),.95);
+    inset 0 2px 4px rgba(255,255,255,.9),
+    inset 0 -5px 12px rgba(0,0,0,.32),
+    0 0 40px rgba(255,255,255,.5),
+    0 0 64px -4px rgba(var(--c),.95),
+    0 0 110px -10px rgba(var(--c),.7),
+    0 26px 58px rgba(0,0,0,.55);
+  transform: perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) scale(var(--press,1)) translateY(-3px);
+}
+.hero-btn:hover .hero-btn-face::after {
+  animation: none;
+  opacity: 0;
 }
 .hero-btn:hover .hero-btn-label { color: #ffffff; }
 /* the trio is a system — when one is chosen, the others recede */
@@ -238,7 +292,7 @@ p { margin-bottom: 16px; max-width: 72ch; }
 
 @media (prefers-reduced-motion: reduce) {
   .hero-btn { animation: none; }
-  .hero-btn-aura, .hero-btn-beam { animation: none; }
+  .hero-btn-aura, .hero-btn-beam, .hero-btn-face, .hero-btn-face::after { animation: none; }
   .hero-btn-spot, .hero-btn-pearl { display: none; }
 }
 
@@ -510,26 +564,59 @@ footer .spectrum-bar { max-width: 320px; margin-bottom: 20px; }
   position: relative; overflow: hidden; display: flex;
   align-items: center; justify-content: center;
   padding: 21px 44px; border-radius: 999px;
-  background: linear-gradient(180deg, #ffffff 0%, #f3f5fb 48%, #d8def0 100%);
+  background: linear-gradient(180deg, #ffffff 0%, #f4f6fc 45%, #dbe1f2 100%);
+  border: 1.5px solid rgba(255,255,255,.9);
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.9),
-    inset 0 -2px 8px rgba(105,120,170,.42),
-    0 0 0 1.5px rgba(0,0,0,.5),
-    0 2px 6px rgba(0,0,0,.5),
-    0 14px 36px rgba(0,0,0,.55),
-    0 0 44px -6px rgba(var(--c),.55);
+    inset 0 2px 4px rgba(255,255,255,.95),
+    inset 0 -5px 12px rgba(110,125,175,.38),
+    0 0 28px rgba(255,255,255,.35),
+    0 0 70px -12px rgba(var(--c),.5),
+    0 18px 44px rgba(0,0,0,.6);
   transform: perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) scale(var(--press,1));
+  animation: face-breathe 4s ease-in-out infinite;
+}
+.hero-btn-face::after {
+  content: ""; position: absolute;
+  top: 0; bottom: 0; width: 45%; left: -60%;
+  background: linear-gradient(105deg, transparent, rgba(255,255,255,.35), transparent);
+  transform: skewX(-18deg);
+  animation: face-shimmer 5.5s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes face-breathe {
+  0%,100% { box-shadow: inset 0 2px 4px rgba(255,255,255,.95), inset 0 -5px 12px rgba(110,125,175,.38), 0 0 28px rgba(255,255,255,.35), 0 0 70px -12px rgba(var(--c),.5), 0 18px 44px rgba(0,0,0,.6); }
+  50% { box-shadow: inset 0 2px 4px rgba(255,255,255,1), inset 0 -5px 12px rgba(110,125,175,.33), 0 0 40px rgba(255,255,255,.48), 0 0 88px -10px rgba(var(--c),.65), 0 21px 50px rgba(0,0,0,.63); }
+}
+@keyframes face-shimmer {
+  0% { left: -60%; } 55% { left: 130%; } 100% { left: 130%; }
 }
 <span class="cm">/* hover: IGNITE — pearl becomes meaning-color, voice goes white */</span>
 .hero-btn:hover .hero-btn-face {
-  background: linear-gradient(180deg, #ffffff 0%, var(--c-base) 46%, var(--c-deep) 100%);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.85), inset 0 -2px 8px rgba(0,0,0,.38),
-    0 0 0 1.5px rgba(0,0,0,.5), 0 4px 10px rgba(0,0,0,.4),
-    0 30px 70px rgba(0,0,0,.45), 0 0 100px -6px rgba(var(--c),.95);
+  animation: none;
+  background: linear-gradient(180deg, #ffffff 0%, var(--c-base) 45%, var(--c-deep) 100%);
+  border-color: var(--c-base);
+  box-shadow:
+    inset 0 2px 4px rgba(255,255,255,.9),
+    inset 0 -5px 12px rgba(0,0,0,.32),
+    0 0 40px rgba(255,255,255,.5),
+    0 0 64px -4px rgba(var(--c),.95),
+    0 0 110px -10px rgba(var(--c),.7),
+    0 26px 58px rgba(0,0,0,.55);
+  transform: perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) scale(var(--press,1)) translateY(-3px);
 }
+.hero-btn:hover .hero-btn-face::after { animation: none; opacity: 0; }
 .hero-btn:hover .hero-btn-label { color: #fff; }
 <span class="cm">/* press: 100ms down, slow release — wire the spring + pearl + ripple JS */</span>
-.hero-btn:active .hero-btn-face { --press: .965; }
+.hero-btn:active .hero-btn-face {
+  --press: .965; animation: none;
+  transform: perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) scale(var(--press,1)) translateY(1px);
+  box-shadow:
+    inset 0 3px 12px rgba(0,0,0,.28),
+    inset 0 -2px 6px rgba(0,0,0,.18),
+    0 0 22px rgba(255,255,255,.28),
+    0 0 44px -6px rgba(var(--c),.65),
+    0 8px 22px rgba(0,0,0,.5);
+}
 </pre>
 
   <h3 style="font-size:24px; margin:40px 0 8px;">The working button — <span style="font-family:Inter">.primo</span></h3>
