@@ -8,12 +8,28 @@
 # SHA): its bytes are verified, never executed as the judge.
 #
 # WHAT it guards: any PR to main that changes a deliverable
-# (tools/activation_gate.py::DELIVERABLE_ROOTS / DELIVERABLE_SUFFIXES —
-# currently smart-blocks/** and **.html) must carry a valid, fresh,
-# tip-bound activation receipt at .naya/activation/receipt.json in the PR
-# head, binding every changed deliverable by path + sha256. No receipt, stale
-# receipt, transplanted receipt, or unregistered component class -> REJECT
-# (exit 1, fail closed) and the PR cannot merge while this check is required.
+# (tools/activation_gate.py::_is_deliverable — smart-blocks/** or *.html,
+# case-insensitive) must carry a valid, fresh, tip-bound activation receipt
+# at .naya/activation/receipt.json in the PR head, binding every changed
+# deliverable by path + sha256. No receipt, stale receipt, transplanted
+# receipt, or unregistered component class -> REJECT (exit 1, fail closed)
+# and the PR cannot merge while this check is required. PRs that change no
+# deliverable -> PASS (nothing to gate).
+#
+# WHY no `paths:` filter (round-4): GitHub's paths filter is case-sensitive
+# minimatch while _is_deliverable is case-insensitive — docs/FOO.HTML was a
+# deliverable the gate never saw (round-3 trigger case-gap). Any YAML-side
+# filter is a SECOND perimeter that can drift from the predicate. The
+# workflow runs on every PR to main; the gate computes scope itself via the
+# single _is_deliverable authority. Predicate == perimeter.
+#
+# WHY `actions: read` (round-4, production break): verify_issuance() calls
+# GET /repos/{repo}/actions/runs/{run_id} and GET .../artifacts. Without the
+# Actions permission both 403 ("Resource not accessible by integration") ->
+# ISSUANCE_UNVERIFIABLE -> every lawful delivery REJECTs. The permission set
+# is part of the system under test: the issuance e2e is re-proven in CI
+# under exactly this permission set (see unified-activation-gate.yml,
+# job issuance-permissions-proof), not the proof workflow's actions:write.
 #
 # NOTE: marking this check *required* in main's branch protection is an
 # authority change — it needs Shawn/admin. Until then the door is built and
@@ -23,13 +39,11 @@ name: Activation Delivery Gate
 on:
   pull_request_target:
     branches: [main]
-    paths:
-      - "smart-blocks/**"
-      - "**.html"
 
 permissions:
   contents: read
   pull-requests: read
+  actions: read
 
 jobs:
   delivery-gate:

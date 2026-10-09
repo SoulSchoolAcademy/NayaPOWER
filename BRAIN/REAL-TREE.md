@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-09  
-**Receipt basis commit:** `b9d21f1925f6bc1c08b7601db15e4ff18d9bade0`  
-**Inventory file count:** 1196  
+**Receipt basis commit:** `7ba8e40ef4d6232b62ca387dea2b3d96ce2c6500`  
+**Inventory file count:** 1208  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -15,24 +15,32 @@
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 25 |
-| 05-MEMORY | 639 |
+| 05-MEMORY | 643 |
 | 06-PROOF | 13 |
-| 07-LEARNING | 4 |
+| 07-LEARNING | 5 |
 | 08-SUCCESSION | 2 |
 | 09-EVOLUTION | 2 |
 | 10-INTERFACES | 380 |
 | 11-KNOWLEDGE | 7 |
 | 12-ENGINEERING | 25 |
 | 90-OPERATIONS | 13 |
-| 99-ARCHIVE | 1 |
+| 99-ARCHIVE | 2 |
 | ROOT | 5 |
 
 ## Files
 
 ### 00-ACTIVATION — (unregistered domain)
 
+- `BRAIN/00-ACTIVATION/ACTIVATION-CHECKLIST.md` — `1b990d7507f6` (10868 bytes)
 - `BRAIN/00-ACTIVATION/DESIGN-ACTIVATION.md` — `fed3bb338e02` (4229 bytes)
-- `BRAIN/00-ACTIVATION/activation-checklist.json` — `af3a0fec47e9` (3427 bytes)
+- `BRAIN/00-ACTIVATION/activation-checklist.json` — `0f8903747734` (3734 bytes)
+### 00-ARCHITECTURE — (unregistered domain)
+
+- `BRAIN/00-ARCHITECTURE/ACTIVATION-NAYA-PLAN.md` — `70774bbfa1e0` (24076 bytes)
+- `BRAIN/00-ARCHITECTURE/ACTIVATION-NAYA-PROJECT.md` — `d93e078f54a5` (8039 bytes)
+- `BRAIN/00-ARCHITECTURE/MACHINE-INTELLIGENCE.json` — `29a81ec0c99e` (85823 bytes)
+- `BRAIN/00-ARCHITECTURE/NORTH-STAR-RATIFICATION-2026-09-26.md` — `e00e0d661405` (3742 bytes)
+- `BRAIN/00-ARCHITECTURE/SYSTEM-BLUEPRINT-20261009.md` — `07a492bbcb3d` (55326 bytes)
 ### 00-SPEC — Specification
 
 - `BRAIN/00-SPEC/0001-INTELLIGENT-GRAPH-AND-TREE-SPEC-V1.md` — `88ce71b543d0` (12877 bytes)
@@ -771,6 +779,10 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/VISION/INCOME-REFRAME/SN-0744/IB-SMART-NOTE-20261009-sn0744-ai-creates-income.md` — `23407a63f5ee` (8719 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/VISION/MAGIC-FEELING/SN-0743/IB-SMART-NOTE-20261009-sn0743-magic-feeling.md` — `507e1bc3ea7d` (7680 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/VISION/SELF-OPTIMIZATION/SN-0742/IB-SMART-NOTE-20261009-sn0742-self-optimizing-system.md` — `151b620a7c56` (6817 bytes)
+- `BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/ACTIVATION-NAYA-INTELLIGENCE.md` — `8a02bda6be42` (27455 bytes)
+- `BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/MANIFEST.json` — `0fc11ff78dc9` (4099 bytes)
+- `BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/PROJECT-INTELLIGENCE-SPEC.md` — `c700b5612b24` (19507 bytes)
+- `BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/PROJECT-INTELLIGENCE-TEMPLATE.md` — `935fff7c308c` (11696 bytes)
 - `BRAIN/05-MEMORY/VERIFICATION-PACKAGES/TIER1-2026-10-08/INDEX.md` — `7afad9abac25` (1331 bytes)
 - `BRAIN/05-MEMORY/VERIFICATION-PACKAGES/TIER1-2026-10-08/T04R-coldsuccessor/note.md` — `71a20d452aa4` (3406 bytes)
 - `BRAIN/05-MEMORY/VERIFICATION-PACKAGES/TIER1-2026-10-08/T04R-coldsuccessor/package.json` — `79d92cf4098f` (1432 bytes)
@@ -808,6 +820,7 @@
 - `BRAIN/07-LEARNING/PROMOTION-RECEIPTS/SCHEMA-V1.md` — `a458a8436eca` (2253 bytes)
 - `BRAIN/07-LEARNING/PROMOTION-RECEIPTS/receipts-2026-10-08.json` — `351a2f836391` (38980 bytes)
 - `BRAIN/07-LEARNING/README.md` — `519227d792b5` (798 bytes)
+- `BRAIN/07-LEARNING/learning-system-blueprint-v1.md` — `f88b24e86ea0` (45508 bytes)
 ### 08-SUCCESSION — Succession
 
 - `BRAIN/08-SUCCESSION/0001-SUCCESSOR-CONTRACT-V1.md` — `315b3cdd3c80` (2105 bytes)
@@ -1252,6 +1265,7 @@
 ### 99-ARCHIVE — Archive
 
 - `BRAIN/99-ARCHIVE/README.md` — `a012a595ea15` (707 bytes)
+- `BRAIN/99-ARCHIVE/brain-reconciliation-ledger-f648833b.md` — `168e14b9b430` (2096 bytes)
 ### ROOT — Brain root files
 
 - `BRAIN/MASTER-MAP.md` — `3a56fd561121` (9551 bytes)

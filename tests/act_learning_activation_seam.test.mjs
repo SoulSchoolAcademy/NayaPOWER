@@ -7,10 +7,12 @@ import {
   buildActPlan,
   canonicalEqual,
   validateAct,
+  measureLearningInfluence,
   ACT_RETRIEVAL_SELECTOR,
   ACT_BASELINE_BEHAVIOR,
   ACT_PROVENANCE_BEHAVIOR,
 } from "../supabase/functions/nayanet-act-runtime/act.ts";
+import { readDecisionContext } from "../supabase/functions/nayanet-act-runtime/decision-context.ts";
 import { selectKnowContext } from "../supabase/functions/nayanet-know-runtime/know.ts";
 
 const OWNER="adfdf0b8-5558-41d1-9fed-ec51abf4fe2f";
@@ -240,7 +242,7 @@ const claims={
   jti:"p0-learning-activation-test",
 };
 
-function handlerRuntime({useTreatment=true,blockOverride=null}={}){
+function handlerRuntime({useTreatment=true,blockOverride=null,learningEvidence=[]}={}){
   let handler;
   let receiptSeq=100;
   const {block,control,treatment}=controlAndTreatment();
@@ -252,6 +254,9 @@ function handlerRuntime({useTreatment=true,blockOverride=null}={}){
     nayanet_execution_receipts:[law(),chosenKnow],
     nayanet_authority_grants:[grant()],
     nayanet_intelligent_blocks:useTreatment?[chosenBlock]:[],
+    // WO4 seam: the plan handler consults verified learning for the target.
+    // Empty here = no ACTIVE lessons, so the seam is a no-op for these tests.
+    learning_evidence:learningEvidence,
   };
 
   const executeQuery=(query)=>{
@@ -288,7 +293,7 @@ function handlerRuntime({useTreatment=true,blockOverride=null}={}){
   const client={from:(table)=>new Query(table)};
   vm.runInNewContext(code,{
     URL,Request,Response,Date,TextEncoder,Uint8Array,console,crypto,
-    validateAct,buildActPlan,canonicalEqual,ACT_RETRIEVAL_SELECTOR,
+    validateAct,buildActPlan,canonicalEqual,measureLearningInfluence,readDecisionContext,ACT_RETRIEVAL_SELECTOR,
     Deno:{
       env:{get:key=>({SUPABASE_URL:"https://offline.invalid",SUPABASE_SERVICE_ROLE_KEY:"offline-key"})[key]},
       serve:cb=>{handler=cb;},
@@ -505,4 +510,94 @@ test("missing selector replay universe or pinned selection time fails closed",()
   const missingTime=buildActPlan(actRequest(),law(),grant(),door(),noTime,block,treatmentUniverse,NOW);
   assert.equal(missingTime.status,"BLOCKED");
   assert.equal(missingTime.reason,"KNOW_SELECTION_TIME_INVALID");
+});
+
+// ---------------------------------------------------------------------------
+// WO4 acceptance: verified-lesson → decision seam, through the full handler.
+// CONTROL plan (no ACTIVE lessons) vs TREATMENT plan (ACTIVE lesson present);
+// the plans must differ exactly as the lesson prescribes, and influenced=true
+// only when the behavioral delta is actually observed.
+// ---------------------------------------------------------------------------
+
+const lessonRow=(overrides={})=>({
+  id:"evidence-wo4-handler-1",
+  member_id:OWNER,
+  target_id:NAYA,
+  level:"E4_TRANSFER",
+  status:"ACTIVE",
+  claim:"Preserve provenance before applying retained intelligence.",
+  observed_value:"PROVENANCE_PRESERVED",
+  source_event_id:"event-wo4-handler-1",
+  verification_method:"CONTROLLED_INTERVENTION",
+  provenance:"VERIFICATION",
+  created_at:NOW.toISOString(),
+  ...overrides,
+});
+
+test("WO4 handler CONTROL: no ACTIVE lessons → baseline plan, influenced=false",async()=>{
+  // useTreatment=false so KNOW does not steer either: pure control.
+  const rt=handlerRuntime({useTreatment:false});
+  const planned=await rt.post(planBody("know-control"));
+  assert.equal(planned.status,200);
+  assert.equal(planned.body.status,"PLANNED");
+  assert.equal(planned.body.plan.post_retrieval_plan.behavior,ACT_BASELINE_BEHAVIOR);
+  assert.equal(planned.body.decision_context.learning_context_available,false);
+  assert.equal(planned.body.decision_context.influenced,false);
+  assert.equal(planned.body.learning_influence.influenced,false);
+  assert.equal(planned.body.learning_influence.basis,"NO_VERIFIED_LEARNING_CONTEXT");
+});
+
+test("WO4 handler TREATMENT: ACTIVE lesson steers the plan as prescribed, influenced=true",async()=>{
+  const rt=handlerRuntime({useTreatment:false,learningEvidence:[lessonRow()]});
+  const planned=await rt.post(planBody("know-control"));
+  assert.equal(planned.status,200);
+  assert.equal(planned.body.status,"PLANNED");
+  // The lesson prescribed PROVENANCE behavior; KNOW steered nothing here.
+  assert.equal(planned.body.plan.post_retrieval_plan.behavior,ACT_PROVENANCE_BEHAVIOR);
+  assert.equal(planned.body.plan.learning_context_applied,true);
+  assert.equal(planned.body.plan.learning_prescription,"PRESERVE_PROVENANCE_BEFORE_APPLY");
+  assert.equal(planned.body.decision_context.learning_context_available,true);
+  assert.equal(planned.body.decision_context.influenced,false,"the context itself never claims influence");
+  assert.equal(planned.body.learning_influence.influenced,true);
+  assert.equal(planned.body.learning_influence.basis,"OBSERVED_BEHAVIORAL_DELTA");
+  assert.equal(planned.body.learning_influence.control_behavior,ACT_BASELINE_BEHAVIOR);
+  assert.equal(planned.body.learning_influence.treatment_behavior,ACT_PROVENANCE_BEHAVIOR);
+  // Authority scope untouched by the lesson.
+  assert.equal(planned.body.plan.post_retrieval_plan.target,NAYA);
+  assert.equal(planned.body.plan.post_retrieval_plan.action,ACTION);
+});
+
+test("WO4 handler: lesson present but irrelevant → plan unchanged, influenced=false (no false influence)",async()=>{
+  const rt=handlerRuntime({useTreatment:false,learningEvidence:[lessonRow({claim:"Always compress logs before rotation."})]});
+  const planned=await rt.post(planBody("know-control"));
+  assert.equal(planned.status,200);
+  assert.equal(planned.body.plan.post_retrieval_plan.behavior,ACT_BASELINE_BEHAVIOR);
+  assert.equal(planned.body.plan.learning_context_applied,false);
+  assert.equal(planned.body.decision_context.learning_context_available,true);
+  assert.equal(planned.body.learning_influence.influenced,false);
+  assert.equal(planned.body.learning_influence.basis,"LESSON_PRESENT_NO_PLAN_DELTA");
+});
+
+test("WO4 handler: lesson cannot take credit for a KNOW-caused delta",async()=>{
+  // KNOW already steers to PROVENANCE via the selected block; the lesson is
+  // also present and prescribes the same behavior. The observed delta between
+  // the control arm (no lesson) and treatment arm (lesson) is zero, so the
+  // lesson must NOT be marked influential — the delta belongs to KNOW.
+  const rt=handlerRuntime({useTreatment:true,learningEvidence:[lessonRow()]});
+  const planned=await rt.post(planBody("know-treatment"));
+  assert.equal(planned.status,200);
+  assert.equal(planned.body.plan.post_retrieval_plan.behavior,ACT_PROVENANCE_BEHAVIOR);
+  assert.equal(planned.body.decision_context.learning_context_available,true);
+  assert.equal(planned.body.learning_influence.influenced,false);
+  assert.equal(planned.body.learning_influence.basis,"LESSON_PRESENT_NO_PLAN_DELTA");
+});
+
+test("WO4 handler: execute replays the lesson-steered plan exactly (no PLAN_STATE_CHANGED_OR_FORGED)",async()=>{
+  const rt=handlerRuntime({useTreatment:false,learningEvidence:[lessonRow()]});
+  const planned=await rt.post(planBody("know-control"));
+  assert.equal(planned.status,200);
+  const executed=await rt.post({mode:"execute",plan_receipt_id:planned.body.plan_receipt.id});
+  assert.equal(executed.status,200);
+  assert.equal(executed.body.status,"EXECUTED");
+  assert.equal(executed.body.observation.behavior,ACT_PROVENANCE_BEHAVIOR);
 });
