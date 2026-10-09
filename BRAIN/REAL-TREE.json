@@ -1,10 +1,10 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-09",
-  "receipt_basis_commit": "527ebcfbc04896c3a6beee127757785597e0713a",
-  "inventory_file_count": 1211,
+  "receipt_basis_commit": "5dd6bd04774e335fa465431a3a5df402a1c4e8d4",
+  "inventory_file_count": 1212,
   "domain_counts": {
-    "00-ACTIVATION": 3,
+    "00-ACTIVATION": 4,
     "00-ARCHITECTURE": 5,
     "00-SPEC": 15,
     "01-GOVERNANCE": 28,
@@ -29,6 +29,11 @@
       "path": "BRAIN/00-ACTIVATION/ACTIVATION-CHECKLIST.md",
       "blob_sha": "1b990d7507f61098f203764363e698eec6f36f16",
       "size": 10868
+    },
+    {
+      "path": "BRAIN/00-ACTIVATION/C5-DISTILLATION-QUALITY-DESIGN-V1.md",
+      "blob_sha": "b9c3d71a6d058960331cdd2a1627d45b4afb2611",
+      "size": 13150
     },
     {
       "path": "BRAIN/00-ACTIVATION/DESIGN-ACTIVATION.md",
