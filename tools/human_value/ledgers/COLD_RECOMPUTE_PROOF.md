@@ -124,3 +124,26 @@ any ledger change, observed +7.0) is cold-recomputable at the pushed SHA. The
 calibration series now reads MAE 0.5 → 0.25 → 0.1667 → 0.125 → 0.1 across five
 real joins, signed bias shrinking in the same steps, zero overprediction
 flags. /tmp clones removed after verification.
+
+## Seventh cold-recompute proof — n=6 loop (2026-10-09 ~16:05 UTC)
+
+Fresh clone of `naya5/human-value-events-20261009` @ `d8e987f076fa5913dcf9a82660a7701741477cbd`
+(rebased onto live tip `3a60163c9`), same procedure, no access to the originating
+workspace:
+
+| Check | Originating worktree | Cold clone | Match |
+|---|---|---|---|
+| HEAD | `d8e987f0` | `d8e987f0` | ✅ |
+| `ledger_sha256` | `sha256:deb7a79c…9a049114` | (same) | ✅ |
+| `hv_per_day_total` | 6.7143 | 6.7143 | ✅ |
+| `dai_per_day` | 0.2857 | 0.2857 | ✅ |
+| `events_validated` | 46 | 46 | ✅ |
+| `calibration.n` / MAE / signed bias | 6 / 0.0833 / +0.0833 | 6 / 0.0833 / +0.0833 | ✅ |
+| overprediction | false | false | ✅ |
+| test suite (real ledger + instrument) | 36 passed | 36 passed | ✅ |
+
+**Verdict:** the n=6 measurement (DEC-006, predicted +7.0 at 15:50 UTC before
+any ledger change, observed +7.0) is cold-recomputable at the pushed SHA. The
+calibration series now reads MAE 0.5 → 0.25 → 0.1667 → 0.125 → 0.1 → 0.0833
+across six real joins, signed bias shrinking in the same steps, zero
+overprediction flags. /tmp/hv-cold removed after verification.
