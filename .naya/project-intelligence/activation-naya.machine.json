@@ -6,7 +6,7 @@
   "project_name": "Activation Naya",
   "project_state": "NOT_FULLY_ACTIVATED",
   "project_health": "NOT_INDEPENDENTLY_RATIFIED",
-  "source_main_sha": "89916e37de86e0ac738f0fce0ff42dfe41ac8e1c",
+  "source_main_sha": "6fb7b7ee631979da9f6c5483f8f9abd7e196ec76",
   "compiled_utc_date": "2026-10-09",
   "source_policy": {
     "precedence": [
@@ -420,6 +420,14 @@
         "refs": [
           "PR-2050"
         ]
+      },
+      {
+        "id": "F09",
+        "state": "VERIFIED_GITHUB",
+        "claim": "43_case_actual_repository_selector_audit_reproduced_exact_2_match_40_other_1_collision_proving_a_relevance_gap_not_learning_failure",
+        "refs": [
+          "PR-2058"
+        ]
       }
     ],
     "source_reported_claims": [
@@ -470,6 +478,12 @@
         "claim": "v7_dispatch_403_and_TRANSACTION_NOT_FOUND_historical_receipts",
         "source": "learning_system_blueprint",
         "validation": "CHECK_LATEST_DEPLOYED_WRITER_RECEIPT_REASONS"
+      },
+      {
+        "id": "R09",
+        "claim": "Naya4_team_reported_14_of_14_blind_learning_battery_average_9_93_with_database_receipts",
+        "source": "BOARD",
+        "validation": "INDEPENDENTLY_FETCH_EXACT_DATABASE_RECEIPTS_KEY_BLINDING_TASK_OUTPUTS_AND_SCORE"
       }
     ],
     "disputed_and_resolution_required": [
@@ -576,6 +590,35 @@
       "source_status": "SOURCE_REPORTED_NOT_RATIFIED",
       "current_earned_value": null,
       "why": "exact_current_retrieval_behavior_successor_proof_absent"
+    },
+    "retrieval_diagnostic": {
+      "schema": "naya.lesson-exam.repository-audit.v1",
+      "state": "GITHUB_REPRODUCED_DIAGNOSTIC_NOT_CAUSAL_LEARNING",
+      "source_pr": 2058,
+      "head_sha": "3920e4f122a3c2540e42f67e39a40b896b75596d",
+      "audited_source_sha": "b62e0ff93295f2d4d648705303bac1ad5a711bca",
+      "evidence_ref": ".naya/evaluations/learning-exam-43/evidence/repository-retrieval-audit-20261009.json",
+      "total_scenarios": 43,
+      "retrieved_expected_id": 2,
+      "selected_different_id": 40,
+      "id_collision": 1,
+      "correct_ids": [
+        "SN-0470",
+        "SN-0496"
+      ],
+      "interpretation": "Measures_exact_note_identity_relevance_in_canonical_repository_selector_not_semantic_answer_correctness_or_learning.",
+      "private_law_read": "NOT_RUN",
+      "act_control_treatment_wrong_lesson": "NOT_RUN",
+      "second_cold_successor": "NOT_RUN"
+    },
+    "team_reported_blind_battery": {
+      "state": "TEAM_REPORTED_NOT_INDEPENDENTLY_REPLAYED_IN_THIS_LANE",
+      "reported_numerator": 14,
+      "reported_denominator": 14,
+      "reported_average_score": 9.93,
+      "source_ref": "BOARD",
+      "distinction": "Different_harness_and_capability_from_the_43_case_repository_selector_diagnostic.",
+      "required_validation": "Fetch_exact_receipts_and_input_outputs;_confirm_blind_scoring_identity_and_integrity,_real_access_scope_and_actual_behavior."
     }
   },
   "work": {
@@ -590,8 +633,16 @@
         "not_authorized": "protected_workflow_merge_without_governed_permission"
       },
       {
-        "id": "A02",
+        "id": "A07",
         "priority": 2,
+        "owner": "Naya_5_KNOW_with_Naya_2_VERIFY",
+        "objective": "Repair_43_case_canonical_selector_relevance_without_cross_promotion_or_parallel_registry_and_resolve_SN0501_collision",
+        "done_when": "fresh_held_out_queries_select_applicable_notes_and_decline_wrong_or_private_matches_with_independent_controls",
+        "not_authorized": "direct_registry_mutation_or_relevance_as_authority"
+      },
+      {
+        "id": "A02",
+        "priority": 3,
         "owner": "Naya_1_LAW_LEARN",
         "objective": "Ratify_separate_lifecycle_truth_promotion_and_access_state_matrix",
         "done_when": "one_machine_contract_exact_source_owners_and_transition_receipts",
@@ -599,7 +650,7 @@
       },
       {
         "id": "A03",
-        "priority": 3,
+        "priority": 4,
         "owner": "Naya_4_ACT_CONNECT_KNOW",
         "objective": "Prove_real_qualified_verified_learning_context_changes_authorized_ACT_plan",
         "done_when": "trace_different_CONTROL_TREATMENT_with_WRONG_LESSON_refusal_on_real_runtime",
@@ -607,7 +658,7 @@
       },
       {
         "id": "A04",
-        "priority": 4,
+        "priority": 5,
         "owner": "Naya_2_VERIFY",
         "objective": "Perform_blinded_causal_experiment_and_second_cold_successor",
         "done_when": "independently_measured_effect_with_provenance_and_replay_receipt",
@@ -615,7 +666,7 @@
       },
       {
         "id": "A05",
-        "priority": 5,
+        "priority": 6,
         "owner": "Naya_5_KNOW",
         "objective": "Reconcile_v2_v7_sources_and_eligible_status_read_back",
         "done_when": "one_identity_hash_lineage_model_no_duplicate_writer_no_private_leak",
@@ -623,7 +674,7 @@
       },
       {
         "id": "A06",
-        "priority": 6,
+        "priority": 7,
         "owner": "Naya_1_Naya_2_Naya_3_Naya_4_Naya_5",
         "objective": "Qualify_project_intelligence_as_a_permission_scoped_projection_of_existing_substrate",
         "done_when": "cold_agent_reads_current_status_blockers_decisions_proof_within_10_minutes_and_five_leader_consensus",
@@ -854,7 +905,8 @@
       "PR-2037": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2037",
       "PR-2050": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2050",
       "PR-2051": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2051",
-      "BOARD": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/1354"
+      "BOARD": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/1354",
+      "PR-2058": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2058"
     }
   },
   "summary_for_agents": "This file is a candidate, scope-filtered project read model. DO NOT use it as a proof of learning, a new registry, authorization, deployment instruction, or replacement of canonical contracts. Refresh current main, reconstruct referenced receipts and conflicts, qualify PR2051's runtime repair, then prove cold intent retrieval, wrong-lesson refusal, verified ACT behavior delta, and successor reuse. If evidence unavailable mark UNKNOWN, never PASS."
