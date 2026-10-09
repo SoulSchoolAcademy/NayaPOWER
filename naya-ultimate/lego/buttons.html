@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Naya Lego — Buttons · The Button Family</title>
+<link rel="stylesheet" href="../tokens.css">
+<style>
+/* Lego page chrome */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--field); color: var(--white); font-family: Inter, ui-sans-serif, system-ui, sans-serif; font-size: var(--type-body); line-height: 1.65; -webkit-font-smoothing: antialiased; padding: 48px 24px; }
+.lego-wrap { max-width: 1000px; margin: 0 auto; }
+.lego-kicker { font-size: 14px; letter-spacing: .28em; text-transform: uppercase; color: var(--quiet); margin-bottom: 12px; }
+.lego-title { font-family: Georgia, serif; font-size: 40px; margin-bottom: 8px; }
+.lego-lede { font-size: 20px; color: var(--quiet); max-width: 68ch; margin-bottom: 16px; }
+.lego-lede strong { color: var(--white); }
+.lego-section { margin: 56px 0; padding: 32px; border: 1px solid var(--line); border-radius: var(--r-xl); background: linear-gradient(180deg, var(--card), var(--deep)); }
+.lego-section h2 { font-family: Georgia, serif; font-size: 28px; margin-bottom: 8px; }
+.lego-section .why { color: var(--quiet); margin-bottom: 24px; max-width: 70ch; }
+.lego-section .why strong { color: var(--white); }
+.demo-row { display: flex; gap: 20px; flex-wrap: wrap; align-items: center; margin: 24px 0; }
+pre.code { background: #0a0d14; border: 1px solid var(--line); border-radius: 14px; padding: 20px 22px; overflow-x: auto; font-size: 13px; line-height: 1.7; font-family: ui-monospace, Menlo, Consolas, monospace; color: #d7e0f5; margin: 20px 0; white-space: pre-wrap; word-break: break-word; max-height: 420px; overflow-y: auto; }
+.copy-btn { background: var(--raise); border: 1px solid var(--line); color: var(--white); border-radius: 8px; padding: 6px 14px; font-size: 13px; cursor: pointer; margin-bottom: 8px; }
+.copy-btn:hover { border-color: var(--soul); }
+.law-note { border-left: 3px solid var(--magenta); padding: 12px 18px; margin: 20px 0; background: rgba(232,79,255,.05); border-radius: 0 10px 10px 0; font-size: 16px; }
+
+/* ============ HERO BUTTONS — .living-btn (Shawn-approved) ============ */
+.hero-buttons { display: flex; gap: 28px; justify-content: center; flex-wrap: wrap; margin-top: 12px; }
+.living-btn {
+  position: relative; overflow: hidden; cursor: pointer; border: none;
+  font-family: Inter, sans-serif; font-weight: 800; font-size: 17px; letter-spacing: .12em;
+  color: #fff; padding: 22px 44px; border-radius: 999px; min-width: 300px;
+  background: linear-gradient(180deg, #17171c 0%, #050505 55%, #0a0a0e 100%);
+  box-shadow:
+    inset 0 0 0 1.7px rgba(255,255,255,.92),
+    inset 0 2px 6px rgba(255,255,255,.22),
+    inset 0 -8px 18px rgba(0,0,0,.75),
+    0 14px 40px rgba(0,0,0,.6),
+    0 4px 14px rgba(0,0,0,.5);
+  transition: transform .28s var(--ease), box-shadow .28s var(--ease);
+  animation: idleBreathe 4.2s ease-in-out infinite;
+}
+.living-btn .btn-glow { position: absolute; inset: -2px; border-radius: 999px; opacity: .55; pointer-events: none; transition: opacity .3s; }
+.living-btn[data-spectrum="magenta"] .btn-glow { box-shadow: 0 0 34px 4px rgba(232,79,255,.5), inset 0 0 22px rgba(232,79,255,.28); }
+.living-btn[data-spectrum="purple"] .btn-glow { box-shadow: 0 0 34px 4px rgba(160,107,255,.5), inset 0 0 22px rgba(160,107,255,.28); animation-delay: 1.4s; }
+.living-btn[data-spectrum="blue"] .btn-glow { box-shadow: 0 0 34px 4px rgba(63,184,255,.5), inset 0 0 22px rgba(63,184,255,.28); animation-delay: 2.8s; }
+.living-btn::after {
+  content: ""; position: absolute; top: -20%; bottom: -20%; width: 46%; left: -70%;
+  background: linear-gradient(105deg, transparent 20%, rgba(255,255,255,.34) 50%, transparent 80%);
+  transform: skewX(-18deg); pointer-events: none;
+  animation: sweep 5.5s var(--ease) infinite;
+}
+.living-btn[data-spectrum="purple"]::after { animation-delay: 1.8s; }
+.living-btn[data-spectrum="blue"]::after { animation-delay: 3.6s; }
+@keyframes sweep { 0%, 62% { left: -70%; } 88%, 100% { left: 130%; } }
+@keyframes idleBreathe {
+  0%, 100% { box-shadow: inset 0 0 0 1.7px rgba(255,255,255,.92), inset 0 2px 6px rgba(255,255,255,.22), inset 0 -8px 18px rgba(0,0,0,.75), 0 14px 40px rgba(0,0,0,.6), 0 4px 14px rgba(0,0,0,.5); }
+  50% { box-shadow: inset 0 0 0 1.7px rgba(255,255,255,1), inset 0 2px 8px rgba(255,255,255,.3), inset 0 -8px 18px rgba(0,0,0,.75), 0 18px 52px rgba(0,0,0,.65), 0 4px 14px rgba(0,0,0,.5); }
+}
+.living-btn:hover { transform: translateY(-4px) scale(1.025); animation: none; }
+.living-btn[data-spectrum="magenta"]:hover { box-shadow: inset 0 0 0 2px var(--magenta), inset 0 2px 8px rgba(255,255,255,.3), inset 0 -8px 18px rgba(0,0,0,.7), 0 22px 60px rgba(232,79,255,.4), 0 6px 18px rgba(0,0,0,.5); }
+.living-btn[data-spectrum="purple"]:hover { box-shadow: inset 0 0 0 2px var(--purple), inset 0 2px 8px rgba(255,255,255,.3), inset 0 -8px 18px rgba(0,0,0,.7), 0 22px 60px rgba(160,107,255,.4), 0 6px 18px rgba(0,0,0,.5); }
+.living-btn[data-spectrum="blue"]:hover { box-shadow: inset 0 0 0 2px var(--blue), inset 0 2px 8px rgba(255,255,255,.3), inset 0 -8px 18px rgba(0,0,0,.7), 0 22px 60px rgba(63,184,255,.4), 0 6px 18px rgba(0,0,0,.5); }
+.living-btn:hover .btn-glow { opacity: 1; }
+.living-btn:active { transform: translateY(1px) scale(.975); transition-duration: .08s; }
+.living-btn .btn-label { position: relative; z-index: 2; display: flex; align-items: center; justify-content: center; gap: 12px; }
+.living-btn .btn-label svg { width: 20px; height: 20px; }
+@media (max-width: 860px) { .living-btn { min-width: 100%; } }
+@media (prefers-reduced-motion: reduce) { .living-btn, .living-btn::after { animation: none; } }
+
+/* ============ LIVING SYSTEM — .lv-btn (7 layers, proximity, cursor sheen) ============ */
+.lv-wrap { position: relative; display: inline-block; }
+.lv-wrap.block { display: block; }
+.lv-aura {
+  position: absolute; inset: -70px; border-radius: 999px;
+  background: radial-gradient(circle, rgba(var(--lv-accent-rgb,160,107,255),.20) 0%, rgba(var(--lv-accent-rgb,160,107,255),.06) 45%, transparent 70%);
+  filter: blur(14px); opacity: 0; pointer-events: none;
+  transition: opacity .55s ease;
+}
+.lv-wrap.lv-aware .lv-aura { opacity: .55; }
+.lv-wrap:hover .lv-aura, .lv-wrap:focus-within .lv-aura { opacity: 1; }
+.lv-btn {
+  --lv-accent: #a06bff;
+  --lv-accent-rgb: 160,107,255;
+  position: relative; isolation: isolate; overflow: hidden;
+  display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+  min-height: 52px; padding: 0 30px; border-radius: 999px;
+  border: 1px solid transparent; cursor: pointer; white-space: nowrap;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-size: 15px; font-weight: 700; letter-spacing: .11em; text-transform: uppercase;
+  color: #F8F7FB;
+  text-shadow: 0 -1px 1px rgba(0,0,0,.85), 0 1px 3px rgba(0,0,0,.6);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.12) 0%, rgba(255,255,255,.02) 38%, rgba(0,0,0,.22) 100%),
+    linear-gradient(180deg, #26262e 0%, #0b0b0f 52%, #020203 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(240,238,230,.40),
+    inset 0 1px 0 rgba(255,255,255,.45),
+    inset 0 -1px 0 rgba(0,0,0,.75),
+    inset 0 -16px 30px rgba(0,0,0,.55),
+    inset 0 12px 22px rgba(255,255,255,.05),
+    0 22px 46px rgba(0,0,0,.85),
+    0 6px 16px rgba(0,0,0,.60);
+  transition: transform .22s var(--ease), box-shadow .38s var(--ease), background .3s ease;
+  animation: lv-breathe 7s ease-in-out infinite;
+  -webkit-tap-highlight-color: transparent;
+}
+@keyframes lv-breathe {
+  0%,100% { box-shadow: inset 0 0 0 1px rgba(240,238,230,.40), inset 0 1px 0 rgba(255,255,255,.45), inset 0 -1px 0 rgba(0,0,0,.75), inset 0 -16px 30px rgba(0,0,0,.55), inset 0 12px 22px rgba(255,255,255,.05), 0 22px 46px rgba(0,0,0,.85), 0 6px 16px rgba(0,0,0,.60); }
+  50% { box-shadow: inset 0 0 0 1px rgba(240,238,230,.46), inset 0 1px 0 rgba(255,255,255,.52), inset 0 -1px 0 rgba(0,0,0,.75), inset 0 -16px 30px rgba(0,0,0,.55), inset 0 12px 22px rgba(255,255,255,.08), 0 24px 50px rgba(0,0,0,.88), 0 6px 16px rgba(0,0,0,.60); }
+}
+.lv-btn::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit;
+  z-index: 0; pointer-events: none; opacity: 0; transition: opacity .4s ease;
+  background: radial-gradient(180px circle at var(--mx,50%) var(--my,50%), rgba(255,255,255,.14), rgba(255,255,255,.03) 42%, transparent 68%);
+}
+.lv-wrap.lv-aware .lv-btn::before { opacity: 1; }
+.lv-btn::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit;
+  z-index: 0; pointer-events: none;
+  background: radial-gradient(120% 90% at 50% 60%, rgba(var(--lv-accent-rgb),.34), rgba(var(--lv-accent-rgb),.08) 55%, transparent 80%);
+  opacity: .10; transition: opacity .45s ease;
+  animation: lv-soul 7s ease-in-out infinite;
+}
+@keyframes lv-soul { 0%,100% { opacity: .08; } 50% { opacity: .16; } }
+.lv-wrap.lv-aware .lv-btn::after { opacity: .30; animation: none; }
+.lv-btn .lv-label { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 10px; }
+.lv-btn .lv-label svg { width: 18px; height: 18px; }
+.lv-wrap.lv-aware .lv-btn {
+  animation: none; transform: translateY(-1px);
+  box-shadow: inset 0 0 0 1px rgba(240,238,230,.58), inset 0 1px 0 rgba(255,255,255,.55), inset 0 -1px 0 rgba(0,0,0,.70), inset 0 -16px 30px rgba(0,0,0,.48), inset 0 12px 22px rgba(255,255,255,.08), 0 0 0 1px rgba(var(--lv-accent-rgb),.16), 0 26px 52px rgba(0,0,0,.87), 0 8px 18px rgba(0,0,0,.62);
+}
+.lv-btn:hover, .lv-btn:focus-visible {
+  animation: none; transform: translateY(-3px) scale(1.012);
+  background: linear-gradient(180deg, rgba(255,255,255,.16) 0%, rgba(255,255,255,.04) 38%, rgba(0,0,0,.18) 100%), linear-gradient(180deg, #2e2e38 0%, #101016 52%, #060608 100%);
+  box-shadow: inset 0 0 0 1px rgba(240,238,230,.72), inset 0 1px 0 rgba(255,255,255,.62), inset 0 -1px 0 rgba(0,0,0,.66), inset 0 -16px 30px rgba(0,0,0,.42), inset 0 12px 22px rgba(255,255,255,.10), inset 0 0 0 1.5px rgba(var(--lv-accent-rgb),.85), 0 0 22px -4px rgba(var(--lv-accent-rgb),.50), 0 32px 60px rgba(0,0,0,.88), 0 10px 22px rgba(0,0,0,.62);
+}
+.lv-btn:hover::after, .lv-btn:focus-visible::after { opacity: .55; animation: none; }
+.lv-btn:hover::before, .lv-btn:focus-visible::before { opacity: 1; }
+.lv-btn:focus-visible { outline: 2px solid rgba(255,255,255,.92); outline-offset: 3px; }
+.lv-btn:active {
+  transform: translateY(1px) scale(.97) !important; transition-duration: .08s;
+  box-shadow: inset 0 0 0 1px rgba(240,238,230,.48), inset 0 4px 14px rgba(0,0,0,.85), inset 0 -4px 10px rgba(0,0,0,.55), inset 0 12px 22px rgba(0,0,0,.30), 0 10px 24px rgba(0,0,0,.78);
+}
+.lv-btn:active::after { opacity: .35; }
+.lv-btn:disabled { opacity: .55; cursor: not-allowed; animation: none; transform: none !important; }
+.lv-hero { min-height: 68px; padding: 0 54px; font-size: 18px; }
+.lv-sm { min-height: 44px; padding: 0 22px; font-size: 13px; gap: 8px; }
+.lv-btn--danger { --lv-accent: #ff5e6c; --lv-accent-rgb: 255,94,108; }
+.lv-btn--danger:hover, .lv-btn--danger:focus-visible {
+  background: linear-gradient(180deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.01) 40%, rgba(0,0,0,.35) 100%), linear-gradient(180deg, #101014 0%, #050506 55%, #000000 100%);
+  box-shadow: inset 0 0 0 1px rgba(240,238,230,.55), inset 0 1px 0 rgba(255,255,255,.35), inset 0 -1px 0 rgba(0,0,0,.85), inset 0 -20px 36px rgba(0,0,0,.70), inset 0 6px 18px rgba(0,0,0,.40), 0 32px 60px rgba(0,0,0,.92), 0 10px 22px rgba(0,0,0,.66);
+}
+@media (prefers-reduced-motion: reduce) { .lv-btn, .lv-btn::after { animation: none !important; } }
+
+/* ============ ESSENTIAL — .cx-btn (4 layers, when simplicity wins) ============ */
+.cx-btn { padding: 15px 32px; border-radius: 999px; font-size: 14px; font-weight: 800; letter-spacing: .1em; cursor: pointer; font-family: inherit; color: #fff; background: linear-gradient(180deg,#15151a,#050506); border: 1.5px solid rgba(255,255,255,.55); display: inline-flex; align-items: center; gap: 10px;
+  box-shadow: inset 0 2px 2px rgba(255,255,255,.22), inset 0 -3px 6px rgba(0,0,0,.6), 0 0 22px -2px rgba(255,255,255,.28), 0 12px 28px rgba(0,0,0,.65);
+  transition: border-color .22s, box-shadow .25s, transform .15s var(--ease); }
+.cx-btn:hover { border-color: var(--soul); transform: translateY(-2px);
+  box-shadow: inset 0 2px 2px rgba(255,255,255,.25), inset 0 -3px 6px rgba(0,0,0,.5), 0 0 42px -2px var(--soul), 0 16px 34px rgba(0,0,0,.6); }
+.cx-btn:active { transform: translateY(1px) scale(.97); box-shadow: inset 0 3px 8px rgba(0,0,0,.7), 0 0 18px -4px var(--soul); }
+
+/* ============ STANDARD — .primo ============ */
+.primo { display: inline-flex; align-items: center; gap: 10px; cursor: pointer; font-weight: 800; font-size: 15px; letter-spacing: .08em; color: #fff; padding: 14px 26px; border-radius: 999px; border: none;
+  background: linear-gradient(180deg, #141419 0%, #050505 60%, #08080c 100%);
+  box-shadow: inset 0 0 0 1.7px rgba(255,255,255,.9), inset 0 2px 5px rgba(255,255,255,.2), inset 0 -6px 14px rgba(0,0,0,.7), 0 10px 28px rgba(0,0,0,.55), 0 3px 10px rgba(0,0,0,.45);
+  transition: transform .22s var(--ease), box-shadow .22s var(--ease); --glow: var(--soul); }
+.primo:hover { transform: translateY(-2px); box-shadow: inset 0 0 0 1.7px var(--glow), inset 0 2px 5px rgba(255,255,255,.25), inset 0 -6px 14px rgba(0,0,0,.65), 0 14px 36px rgba(0,0,0,.6), 0 0 26px -4px var(--glow); }
+.primo:active { transform: translateY(1px) scale(.985); }
+.primo.theme-magenta { --glow: var(--magenta); } .primo.theme-purple { --glow: var(--purple); }
+.primo.theme-blue { --glow: var(--blue); } .primo.theme-green { --glow: var(--green); } .primo.theme-gold { --glow: var(--gold); }
+.primo:disabled { opacity: .6; cursor: default; transform: none; }
+</style>
+</head>
+<body>
+<div class="lego-wrap">
+
+<p class="lego-kicker">Naya Lego · Buttons</p>
+<h1 class="lego-title">The Button Family</h1>
+<p class="lego-lede"><strong>Black heart. White voice. Visible skin.</strong> Four systems, one DNA. Use heroes for the three flagship actions, the living system for spectrum-aware controls, the essential when simplicity wins, and primo for everyday actions.</p>
+
+<div class="law-note"><strong>The law:</strong> No flat buttons. Every button has depth, responds to hover, and ignites in its own color. <strong>Light up, don't glow out</strong> — depth through layers, not neon.</div>
+
+<!-- HEROES -->
+<div class="lego-section">
+<h2>01 · Heroes — <code>.living-btn</code></h2>
+<p class="why"><strong>Why:</strong> Shawn-approved flagship buttons. Dark heart reads dimensional on black ground. The light sweep crosses on its own rhythm — something is always moving. <strong>Use for:</strong> the three most important actions on any page.</p>
+<div class="demo-row hero-buttons">
+  <button class="living-btn" data-spectrum="magenta"><span class="btn-glow"></span><span class="btn-label">✦ ENTER THE STANDARD</span></button>
+  <button class="living-btn" data-spectrum="purple"><span class="btn-glow"></span><span class="btn-label">◈ SEE IT WORKING</span></button>
+  <button class="living-btn" data-spectrum="blue"><span class="btn-glow"></span><span class="btn-label">＋ READ THE LAW</span></button>
+</div>
+<button class="copy-btn" onclick="copyCode('heroCode')">Copy hero markup</button>
+<pre class="code" id="heroCode">&lt;button class="living-btn" data-spectrum="magenta"&gt;
+  &lt;span class="btn-glow"&gt;&lt;/span&gt;
+  &lt;span class="btn-label"&gt;✦ ENTER THE STANDARD&lt;/span&gt;
+&lt;/button&gt;
+&lt;!-- data-spectrum: magenta | purple | blue --&gt;</pre>
+</div>
+
+<!-- LIVING SYSTEM -->
+<div class="lego-section">
+<h2>02 · Living System — <code>.lv-btn</code></h2>
+<p class="why"><strong>Why:</strong> The most advanced button code. Seven shadow layers. Cursor sheen follows your pointer. Wakes at 160px proximity. Physical press with inner shadow deepening. <strong>Use for:</strong> any action that needs a spectrum identity.</p>
+<div class="demo-row">
+  <span class="lv-wrap"><span class="lv-aura"></span><button class="lv-btn lv-hero" style="--lv-accent:#e84fff;--lv-accent-rgb:232,79,255"><span class="lv-label">✦ Magenta Hero</span></button></span>
+  <span class="lv-wrap"><span class="lv-aura"></span><button class="lv-btn lv-hero" style="--lv-accent:#a06bff;--lv-accent-rgb:160,107,255"><span class="lv-label">◈ Purple Hero</span></button></span>
+  <span class="lv-wrap"><span class="lv-aura"></span><button class="lv-btn lv-hero" style="--lv-accent:#3fb8ff;--lv-accent-rgb:63,184,255"><span class="lv-label">＋ Blue Hero</span></button></span>
+</div>
+<div class="demo-row">
+  <span class="lv-wrap"><span class="lv-aura"></span><button class="lv-btn" style="--lv-accent:#e84fff;--lv-accent-rgb:232,79,255"><span class="lv-label">Magenta</span></button></span>
+  <span class="lv-wrap"><span class="lv-aura"></span><button class="lv-btn" style="--lv-accent:#a06bff;--lv-accent-rgb:160,107,255"><span class="lv-label">Purple</span></button></span>
+  <span class="lv-wrap"><span class="lv-aura"></span><button class="lv-btn" style="--lv-accent:#3fb8ff;--lv-accent-rgb:63,184,255"><span class="lv-label">Blue</span></button></span>
+  <span class="lv-wrap"><span class="lv-aura"></span><button class="lv-btn" style="--lv-accent:#2fe89e;--lv-accent-rgb:47,232,158"><span class="lv-label">Green</span></button></span>
+  <span class="lv-wrap"><span class="lv-aura"></span><button class="lv-btn" style="--lv-accent:#ffbf3d;--lv-accent-rgb:255,191,61"><span class="lv-label">Gold</span></button></span>
+</div>
+<div class="demo-row">
+  <span class="lv-wrap"><span class="lv-aura"></span><button class="lv-btn" style="--lv-accent:#40d3bb;--lv-accent-rgb:64,211,187"><span class="lv-label">Teal</span></button></span>
+  <span class="lv-wrap"><span class="lv-aura"></span><button class="lv-btn" style="--lv-accent:#ff5e6c;--lv-accent-rgb:255,94,108"><span class="lv-label">Coral</span></button></span>
+  <span class="lv-wrap"><span class="lv-aura"></span><button class="lv-btn" style="--lv-accent:#b8ee57;--lv-accent-rgb:184,238,87"><span class="lv-label">Lime</span></button></span>
+  <span class="lv-wrap"><span class="lv-aura"></span><button class="lv-btn" style="--lv-accent:#6675ff;--lv-accent-rgb:102,117,255"><span class="lv-label">Indigo</span></button></span>
+  <span class="lv-wrap"><span class="lv-aura"></span><button class="lv-btn lv-btn--danger"><span class="lv-label">✕ Delete</span></button></span>
+</div>
+<div class="demo-row">
+  <span class="lv-wrap"><span class="lv-aura"></span><button class="lv-btn lv-sm" style="--lv-accent:#a06bff;--lv-accent-rgb:160,107,255"><span class="lv-label">Small</span></button></span>
+  <span class="lv-wrap"><span class="lv-aura"></span><button class="lv-btn" disabled><span class="lv-label">Disabled</span></button></span>
+</div>
+<p class="why" style="margin-top:16px"><strong>Move your cursor near a button</strong> — it wakes before you touch it. The sheen follows your pointer. That's the living system.</p>
+<button class="copy-btn" onclick="copyCode('lvCode')">Copy living button markup</button>
+<pre class="code" id="lvCode">&lt;span class="lv-wrap"&gt;
+  &lt;span class="lv-aura"&gt;&lt;/span&gt;
+  &lt;button class="lv-btn" style="--lv-accent:#e84fff;--lv-accent-rgb:232,79,255"&gt;
+    &lt;span class="lv-label"&gt;✦ Your Action&lt;/span&gt;
+  &lt;/button&gt;
+&lt;/span&gt;
+&lt;!-- Requires living.js for proximity + cursor sheen. Sizes: lv-hero, lv-sm. Danger: lv-btn--danger --&gt;</pre>
+</div>
+
+<!-- ESSENTIAL -->
+<div class="lego-section">
+<h2>03 · Essential — <code>.cx-btn</code></h2>
+<p class="why"><strong>Why:</strong> Four shadows, perfectly chosen, beat seven layers of complexity when the job is simple. The simplicity benchmark. <strong>Use for:</strong> secondary actions, quiet contexts.</p>
+<div class="demo-row">
+  <button class="cx-btn">＋ CREATE</button>
+  <button class="cx-btn">◈ DETAILS</button>
+  <button class="cx-btn">→ CONTINUE</button>
+</div>
+<button class="copy-btn" onclick="copyCode('cxCode')">Copy essential markup</button>
+<pre class="code" id="cxCode">&lt;button class="cx-btn"&gt;＋ CREATE&lt;/button&gt;</pre>
+</div>
+
+<!-- PRIMO -->
+<div class="lego-section">
+<h2>04 · Standard — <code>.primo</code></h2>
+<p class="why"><strong>Why:</strong> The everyday workhorse. Themed glow variants per spectrum color. <strong>Use for:</strong> standard actions throughout any app.</p>
+<div class="demo-row">
+  <button class="primo theme-magenta">Magenta</button>
+  <button class="primo theme-purple">Purple</button>
+  <button class="primo theme-blue">Blue</button>
+  <button class="primo theme-green">Green</button>
+  <button class="primo theme-gold">Gold</button>
+</div>
+<button class="copy-btn" onclick="copyCode('primoCode')">Copy primo markup</button>
+<pre class="code" id="primoCode">&lt;button class="primo theme-purple"&gt;Your Action&lt;/button&gt;
+&lt;!-- themes: theme-magenta | theme-purple | theme-blue | theme-green | theme-gold --&gt;</pre>
+</div>
+
+</div>
+<script>
+function copyCode(id) {
+  const el = document.getElementById(id);
+  navigator.clipboard.writeText(el.innerText).then(() => {
+    const btn = event.target; const old = btn.textContent;
+    btn.textContent = 'Copied ✓'; setTimeout(() => btn.textContent = old, 1600);
+  });
+}
+/* Living system JS — proximity + cursor sheen (160px, rAF-throttled) */
+(function () {
+  'use strict';
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var els = Array.prototype.slice.call(document.querySelectorAll('.lv-btn'));
+  if (!els.length) return;
+  var raf = null, lastX = -9999, lastY = -9999;
+  function update() {
+    raf = null;
+    for (var i = 0; i < els.length; i++) {
+      var el = els[i];
+      var wrap = el.closest('.lv-wrap') || el;
+      if (el.disabled) continue;
+      var r = el.getBoundingClientRect();
+      if (r.bottom < -180 || r.top > window.innerHeight + 180) { wrap.classList.remove('lv-aware'); continue; }
+      var dx = Math.max(r.left - lastX, 0, lastX - r.right);
+      var dy = Math.max(r.top - lastY, 0, lastY - r.bottom);
+      var dist = Math.sqrt(dx * dx + dy * dy);
+      var aware = dist < 160;
+      if (aware !== wrap.classList.contains('lv-aware')) wrap.classList.toggle('lv-aware', aware);
+      if (aware || el.matches(':hover')) {
+        el.style.setProperty('--mx', ((lastX - r.left) / Math.max(r.width, 1) * 100).toFixed(1) + '%');
+        el.style.setProperty('--my', ((lastY - r.top) / Math.max(r.height, 1) * 100).toFixed(1) + '%');
+      }
+    }
+  }
+  document.addEventListener('pointermove', function (e) {
+    lastX = e.clientX; lastY = e.clientY;
+    if (!raf) raf = requestAnimationFrame(update);
+  }, { passive: true });
+  document.addEventListener('pointerleave', function () {
+    els.forEach(function (el) { (el.closest('.lv-wrap') || el).classList.remove('lv-aware'); });
+  });
+})();
+</script>
+</body>
+</html>

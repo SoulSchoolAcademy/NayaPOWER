@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Naya Lego — Typography · Size Separates</title>
+<link rel="stylesheet" href="../tokens.css">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--field); color: var(--white); font-family: Inter, ui-sans-serif, system-ui, sans-serif; font-size: var(--type-body); line-height: 1.65; -webkit-font-smoothing: antialiased; padding: 48px 24px; }
+.lego-wrap { max-width: 1000px; margin: 0 auto; }
+.lego-kicker { font-size: 14px; letter-spacing: .28em; text-transform: uppercase; color: var(--quiet); margin-bottom: 12px; }
+.lego-title { font-family: Georgia, serif; font-size: 40px; margin-bottom: 8px; }
+.lego-lede { font-size: 20px; color: var(--quiet); max-width: 68ch; margin-bottom: 16px; }
+.lego-lede strong { color: var(--white); }
+.lego-section { margin: 56px 0; padding: 32px; border: 1px solid var(--line); border-radius: var(--r-xl); background: linear-gradient(180deg, var(--card), var(--deep)); }
+.law-note { border-left: 3px solid var(--magenta); padding: 12px 18px; margin: 20px 0; background: rgba(232,79,255,.05); border-radius: 0 10px 10px 0; font-size: 16px; }
+
+/* ============ TYPE SCALE ============ */
+.type-spec { border-bottom: 1px solid rgba(255,255,255,.08); padding: 22px 0; display: flex; align-items: baseline; gap: 32px; flex-wrap: wrap; }
+.type-spec:last-child { border: none; }
+.type-spec .t-label { min-width: 220px; font-size: 13px; letter-spacing: .18em; text-transform: uppercase; color: var(--quiet); }
+.type-64 { font-size: 64px; font-family: Georgia, serif; line-height: 1.1; }
+.type-40 { font-size: 40px; font-family: Georgia, serif; line-height: 1.15; }
+.type-24 { font-size: 24px; font-weight: 700; }
+.type-18 { font-size: 18px; }
+.type-14 { font-size: 14px; color: var(--quiet); }
+.kicker { font-size: 14px; letter-spacing: .28em; text-transform: uppercase; color: var(--quiet); }
+</style>
+</head>
+<body>
+<div class="lego-wrap">
+
+<p class="lego-kicker">Naya Lego · Typography</p>
+<h1 class="lego-title">24 / 18 / 14. Nothing else.</h1>
+<p class="lego-lede"><strong>Size separates. Color doesn't.</strong> Headlines 24. Body 18 — the standard, most text lives here. Small 14. Display type (64/40) is earned by heroes and chapter heads, never body copy. White 99% of the time.</p>
+
+<div class="law-note"><strong>The law:</strong> Body text is white, 18px, always. Hierarchy by size, never color. No gray body copy. No exceptions.</div>
+
+<div class="lego-section">
+<div class="type-spec"><div class="t-label">Display · 64 · heroes only</div><div class="type-64">The page breathes.</div></div>
+<div class="type-spec"><div class="t-label">Chapter · 40 · section heads</div><div class="type-40">Color has four jobs.</div></div>
+<div class="type-spec"><div class="t-label">Headline · 24</div><div class="type-24">Never cross them.</div></div>
+<div class="type-spec"><div class="t-label">Body · 18 · the standard</div><div class="type-18">White text 99% of the time. Quiet at rest — then the object's own color ignites on touch.</div></div>
+<div class="type-spec"><div class="t-label">Small · 14 · details</div><div class="type-14">Captions, labels, metadata. Still white, never gray.</div></div>
+<div class="type-spec"><div class="t-label">Kicker · 14 · spaced caps</div><div class="kicker">01 · The button family</div></div>
+</div>
+
+</div>
+</body>
+</html>

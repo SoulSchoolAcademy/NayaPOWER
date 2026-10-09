@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Naya Lego — Jewels · Drawn, Not Dotted</title>
+<link rel="stylesheet" href="../tokens.css">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--field); color: var(--white); font-family: Inter, ui-sans-serif, system-ui, sans-serif; font-size: var(--type-body); line-height: 1.65; -webkit-font-smoothing: antialiased; padding: 48px 24px; }
+.lego-wrap { max-width: 1000px; margin: 0 auto; }
+.lego-kicker { font-size: 14px; letter-spacing: .28em; text-transform: uppercase; color: var(--quiet); margin-bottom: 12px; }
+.lego-title { font-family: Georgia, serif; font-size: 40px; margin-bottom: 8px; }
+.lego-lede { font-size: 20px; color: var(--quiet); max-width: 68ch; margin-bottom: 16px; }
+.lego-lede strong { color: var(--white); }
+.lego-section { margin: 56px 0; padding: 32px; border: 1px solid var(--line); border-radius: var(--r-xl); background: linear-gradient(180deg, var(--card), var(--deep)); }
+.lego-section h2 { font-family: Georgia, serif; font-size: 28px; margin-bottom: 8px; }
+.lego-section .why { color: var(--quiet); margin-bottom: 24px; max-width: 70ch; }
+.lego-section .why strong { color: var(--white); }
+pre.code { background: #0a0d14; border: 1px solid var(--line); border-radius: 14px; padding: 20px 22px; overflow-x: auto; font-size: 13px; line-height: 1.7; font-family: ui-monospace, Menlo, Consolas, monospace; color: #d7e0f5; margin: 20px 0; white-space: pre-wrap; word-break: break-word; }
+.copy-btn { background: var(--raise); border: 1px solid var(--line); color: var(--white); border-radius: 8px; padding: 6px 14px; font-size: 13px; cursor: pointer; margin-bottom: 8px; }
+.copy-btn:hover { border-color: var(--soul); }
+.law-note { border-left: 3px solid var(--magenta); padding: 12px 18px; margin: 20px 0; background: rgba(232,79,255,.05); border-radius: 0 10px 10px 0; font-size: 16px; }
+
+/* ============ JEWEL CUTS — 5 distinct SVG cuts, spectrum order ============ */
+.jewel-row { display: flex; gap: 36px; justify-content: center; flex-wrap: wrap; margin: 36px 0; }
+.jewel { text-align: center; }
+.jewel svg { width: 72px; height: 72px; filter: drop-shadow(0 0 16px currentColor); animation: jewelPulse 4s ease-in-out infinite; transition: transform .25s var(--ease); }
+.jewel:hover svg { transform: scale(1.15); }
+.jewel:nth-child(2) svg { animation-delay: .8s; } .jewel:nth-child(3) svg { animation-delay: 1.6s; }
+.jewel:nth-child(4) svg { animation-delay: 2.4s; } .jewel:nth-child(5) svg { animation-delay: 3.2s; }
+@keyframes jewelPulse { 0%,100% { transform: scale(1); opacity: .92; } 50% { transform: scale(1.07); opacity: 1; } }
+.jewel .micro { margin-top: 10px; letter-spacing: .2em; text-transform: uppercase; font-size: 13px; color: var(--quiet); }
+@media (prefers-reduced-motion: reduce) { .jewel svg { animation: none; } }
+
+/* ============ MINI-ORB — the luminous mark (Naya_3) ============ */
+.mini-orb { --c: var(--blue); width: 34px; height: 34px; border-radius: 50%; flex: none;
+  background: radial-gradient(circle at 35% 27%, rgba(255,255,255,.6), var(--c) 37%, #08040c 78%);
+  box-shadow: 0 0 14px var(--c); border: 1px solid rgba(255,255,255,.6); }
+.orb-row { display: flex; gap: 28px; flex-wrap: wrap; align-items: center; margin: 24px 0; }
+.orb-item { display: flex; gap: 12px; align-items: center; }
+.orb-item .orb-label { font-size: 14px; font-weight: 800; }
+.orb-item .orb-label small { display: block; font-size: 12px; color: #d6cce5; font-weight: 400; }
+
+/* ============ GEM BULLETS — for lists ============ */
+.gem-list { list-style: none; margin: 20px 0; }
+.gem-list li { display: flex; gap: 14px; align-items: flex-start; padding: 10px 0; font-size: 17px; }
+.gem-bullet { --tone: var(--purple); width: 12px; height: 12px; flex: none; display: inline-block; transform: rotate(45deg); margin-top: 7px;
+  background: linear-gradient(140deg, #fff, var(--tone) 50%, #18101a); box-shadow: 0 0 14px var(--tone); }
+</style>
+</head>
+<body>
+<div class="lego-wrap">
+
+<p class="lego-kicker">Naya Lego · Jewels</p>
+<h1 class="lego-title">Jewels, not dots.</h1>
+<p class="lego-lede"><strong>Drawn. Glowing. In true spectrum order. Never twice adjacent.</strong> At the highest level, craft distinct icons — don't stamp the same one repeatedly.</p>
+
+<div class="law-note"><strong>The law:</strong> Every bullet a jewel. Never twice in a row. One global spectrum sequence per page: <strong>magenta → purple → blue → green → gold.</strong></div>
+
+<div class="lego-section">
+<h2>01 · Jewel Cuts — five distinct cuts</h2>
+<p class="why"><strong>Why:</strong> Five different SVG cuts, five spectrum colors, in law order. Each pulses on a staggered rhythm. Hover any jewel — it flares.</p>
+<div class="jewel-row" id="jewelRow"></div>
+<button class="copy-btn" onclick="copyCode('jewelCode')">Copy jewel system</button>
+<pre class="code" id="jewelCode">&lt;div class="jewel-row" id="jewelRow"&gt;&lt;/div&gt;
+&lt;script&gt;
+const SPECTRUM = [
+  { name:'MAGENTA', hex:'#e84fff', svg:'&lt;path d="M36 6 L58 30 L36 54 L14 30 Z" fill="none" stroke="COLOR" stroke-width="3"/&gt;&lt;path d="M36 16 L48 30 L36 44 L24 30 Z" fill="COLOR" opacity=".35"/&gt;' },
+  { name:'PURPLE', hex:'#a06bff', svg:'&lt;circle cx="36" cy="30" r="22" fill="none" stroke="COLOR" stroke-width="3"/&gt;&lt;circle cx="36" cy="30" r="10" fill="COLOR" opacity=".4"/&gt;&lt;circle cx="36" cy="30" r="4" fill="#fff"/&gt;' },
+  { name:'BLUE', hex:'#3fb8ff', svg:'&lt;path d="M36 8 L60 52 L12 52 Z" fill="none" stroke="COLOR" stroke-width="3"/&gt;&lt;path d="M36 24 L48 46 L24 46 Z" fill="COLOR" opacity=".3"/&gt;' },
+  { name:'GREEN', hex:'#2fe89e', svg:'&lt;rect x="16" y="10" width="40" height="40" rx="6" transform="rotate(45 36 30)" fill="none" stroke="COLOR" stroke-width="3"/&gt;&lt;rect x="26" y="20" width="20" height="20" rx="3" transform="rotate(45 36 30)" fill="COLOR" opacity=".35"/&gt;' },
+  { name:'GOLD', hex:'#ffbf3d', svg:'&lt;circle cx="36" cy="30" r="22" fill="none" stroke="COLOR" stroke-width="3" stroke-dasharray="6 4"/&gt;&lt;circle cx="36" cy="30" r="22" fill="none" stroke="COLOR" stroke-width="1.5"/&gt;&lt;circle cx="36" cy="30" r="7" fill="COLOR" opacity=".45"/&gt;' }
+];
+document.getElementById('jewelRow').innerHTML = SPECTRUM.map(s =&gt;
+  `&lt;div class="jewel" style="color:${s.hex}"&gt;&lt;svg viewBox="0 0 72 60"&gt;${s.svg.replace(/COLOR/g, s.hex)}&lt;/svg&gt;&lt;p class="micro"&gt;${s.name}&lt;/p&gt;&lt;/div&gt;`
+).join('');
+&lt;/script&gt;</pre>
+</div>
+
+<div class="lego-section">
+<h2>02 · Mini-Orb — the luminous mark</h2>
+<p class="why"><strong>Why:</strong> The atomic unit of the luminous mark language. A radial-gradient sphere that ignites in whatever <code>--c</code> color it's given. White hotspot at 35%/27%, color at 37%, black at 78%.</p>
+<div class="orb-row">
+  <div class="orb-item"><span class="mini-orb" style="--c:var(--green)"></span><span class="orb-label">VERIFIED<small>Only when independent evidence exists</small></span></div>
+  <div class="orb-item"><span class="mini-orb" style="--c:var(--gold)"></span><span class="orb-label">DEMONSTRATION<small>Intentional specimen content</small></span></div>
+  <div class="orb-item"><span class="mini-orb" style="--c:var(--blue)"></span><span class="orb-label">INTELLIGENCE<small>Jewel facets · not generic cards</small></span></div>
+  <div class="orb-item"><span class="mini-orb" style="--c:var(--magenta)"></span><span class="orb-label">LIVING EDGE<small>The leading color</small></span></div>
+</div>
+<button class="copy-btn" onclick="copyCode('orbCode')">Copy mini-orb</button>
+<pre class="code" id="orbCode">.mini-orb { --c: var(--blue); width: 34px; height: 34px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 27%, rgba(255,255,255,.6), var(--c) 37%, #08040c 78%);
+  box-shadow: 0 0 14px var(--c); border: 1px solid rgba(255,255,255,.6); }
+
+&lt;span class="mini-orb" style="--c:var(--green)"&gt;&lt;/span&gt;</pre>
+</div>
+
+<div class="lego-section">
+<h2>03 · Gem Bullets — for lists</h2>
+<p class="why"><strong>Why:</strong> Bullets are drawn jewels, not dots. Rotated 45°, white-to-color gradient, glowing. Cycle through the spectrum — never twice adjacent.</p>
+<ul class="gem-list">
+  <li><span class="gem-bullet" style="--tone:var(--magenta)"></span>Color has four jobs. Never cross them.</li>
+  <li><span class="gem-bullet" style="--tone:var(--purple)"></span>Black heart. White voice. Visible skin.</li>
+  <li><span class="gem-bullet" style="--tone:var(--blue)"></span>One board. One color. A destination you enter.</li>
+  <li><span class="gem-bullet" style="--tone:var(--green)"></span>Size separates. Color doesn't.</li>
+  <li><span class="gem-bullet" style="--tone:var(--gold)"></span>Every bullet a jewel. Never twice in a row.</li>
+</ul>
+<button class="copy-btn" onclick="copyCode('gemCode')">Copy gem bullets</button>
+<pre class="code" id="gemCode">.gem-bullet { --tone: var(--purple); width: 12px; height: 12px; flex: none;
+  display: inline-block; transform: rotate(45deg); margin-top: 7px;
+  background: linear-gradient(140deg, #fff, var(--tone) 50%, #18101a);
+  box-shadow: 0 0 14px var(--tone); }
+
+&lt;span class="gem-bullet" style="--tone:var(--magenta)"&gt;&lt;/span&gt; Your text
+&lt;!-- cycle: magenta → purple → blue → green → gold --&gt;</pre>
+</div>
+
+</div>
+<script>
+function copyCode(id) {
+  const el = document.getElementById(id);
+  navigator.clipboard.writeText(el.innerText).then(() => {
+    const btn = event.target; const old = btn.textContent;
+    btn.textContent = 'Copied ✓'; setTimeout(() => btn.textContent = old, 1600);
+  });
+}
+const SPECTRUM = [
+  { name:'MAGENTA', hex:'#e84fff', svg:'<path d="M36 6 L58 30 L36 54 L14 30 Z" fill="none" stroke="COLOR" stroke-width="3"/><path d="M36 16 L48 30 L36 44 L24 30 Z" fill="COLOR" opacity=".35"/>' },
+  { name:'PURPLE', hex:'#a06bff', svg:'<circle cx="36" cy="30" r="22" fill="none" stroke="COLOR" stroke-width="3"/><circle cx="36" cy="30" r="10" fill="COLOR" opacity=".4"/><circle cx="36" cy="30" r="4" fill="#fff"/>' },
+  { name:'BLUE', hex:'#3fb8ff', svg:'<path d="M36 8 L60 52 L12 52 Z" fill="none" stroke="COLOR" stroke-width="3"/><path d="M36 24 L48 46 L24 46 Z" fill="COLOR" opacity=".3"/>' },
+  { name:'GREEN', hex:'#2fe89e', svg:'<rect x="16" y="10" width="40" height="40" rx="6" transform="rotate(45 36 30)" fill="none" stroke="COLOR" stroke-width="3"/><rect x="26" y="20" width="20" height="20" rx="3" transform="rotate(45 36 30)" fill="COLOR" opacity=".35"/>' },
+  { name:'GOLD', hex:'#ffbf3d', svg:'<circle cx="36" cy="30" r="22" fill="none" stroke="COLOR" stroke-width="3" stroke-dasharray="6 4"/><circle cx="36" cy="30" r="22" fill="none" stroke="COLOR" stroke-width="1.5"/><circle cx="36" cy="30" r="7" fill="COLOR" opacity=".45"/>' }
+];
+document.getElementById('jewelRow').innerHTML = SPECTRUM.map(s =>
+  `<div class="jewel" style="color:${s.hex}"><svg viewBox="0 0 72 60">${s.svg.replace(/COLOR/g, s.hex)}</svg><p class="micro">${s.name}</p></div>`
+).join('');
+</script>
+</body>
+</html>
