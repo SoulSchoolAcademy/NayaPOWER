@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-09",
-  "receipt_basis_commit": "b9d21f1925f6bc1c08b7601db15e4ff18d9bade0",
-  "inventory_file_count": 1196,
+  "receipt_basis_commit": "86d3e339edf61cb35dde50692b171752cd950c16",
+  "inventory_file_count": 1231,
   "domain_counts": {
     "00-ACTIVATION": 2,
     "00-SPEC": 15,
@@ -10,7 +10,7 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
-    "05-MEMORY": 639,
+    "05-MEMORY": 674,
     "06-PROOF": 13,
     "07-LEARNING": 4,
     "08-SUCCESSION": 2,
@@ -643,6 +643,181 @@
       "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/GRADER-REPAIR-2026-10-07/grade_trial14.py",
       "blob_sha": "20c4418652af7367f83f929d14dc19a89a7e4f09",
       "size": 3595
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-13-CROSSDOMAIN/PREREGISTRATION-13.md",
+      "blob_sha": "2f978e3394bb02936df4d1e2764b8540768dca46",
+      "size": 2041
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-13-CROSSDOMAIN/TRIAL-13-RECEIPT.md",
+      "blob_sha": "7d78243e04b0fe32a9af7b8d3cf85a379be470ed",
+      "size": 2352
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-13-CROSSDOMAIN/__pycache__/grade_trial13.cpython-312.pyc",
+      "blob_sha": "2ba8dd27986c1b652bf33d3be760dd9dd3491a98",
+      "size": 1557
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-13-CROSSDOMAIN/answer_key.json",
+      "blob_sha": "1632d69aae0e513178c12f3b9d7f0adee4ce58b6",
+      "size": 619
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-13-CROSSDOMAIN/answer_sheets/T13-AGENT-01.json",
+      "blob_sha": "10e9374bb4499588349428643edcd74d9aebbfbb",
+      "size": 2927
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-13-CROSSDOMAIN/answer_sheets/T13-AGENT-02.json",
+      "blob_sha": "d570437d0e2a013a153d36bb562c792788997e87",
+      "size": 2370
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-13-CROSSDOMAIN/answer_sheets/T13-AGENT-03.json",
+      "blob_sha": "be819fca1df8b88012b357dd7d7f64845473de7d",
+      "size": 3140
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-13-CROSSDOMAIN/answer_sheets/T13-AGENT-04.json",
+      "blob_sha": "3c5a1f9645b460a92d16459b81ad0e9023fb3cec",
+      "size": 2952
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-13-CROSSDOMAIN/answer_sheets/T13-AGENT-05.json",
+      "blob_sha": "292917d02d115af29f23c4148d24af97f4c8b799",
+      "size": 2968
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-13-CROSSDOMAIN/answer_sheets/T13-AGENT-06.json",
+      "blob_sha": "637ae406ecf41907d8e488dc89c9b1478705375d",
+      "size": 2971
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-13-CROSSDOMAIN/answer_sheets/T13-AGENT-07.json",
+      "blob_sha": "0a8af5a63d1d0f6da978edd6c0627b18f96c945d",
+      "size": 3099
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-13-CROSSDOMAIN/answer_sheets/T13-AGENT-08.json",
+      "blob_sha": "d280105782c3cac27d3d01c85d96099a92a05e6e",
+      "size": 3338
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-13-CROSSDOMAIN/answer_sheets/T13-AGENT-09.json",
+      "blob_sha": "33152a860d318075f6802a8df454a2859fe8c37d",
+      "size": 2581
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-13-CROSSDOMAIN/answer_sheets/T13-AGENT-10.json",
+      "blob_sha": "7f7d273bb0109c8cf21f0d42856ac14bc5f5bbf6",
+      "size": 2051
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-13-CROSSDOMAIN/answer_sheets/T13-AGENT-11.json",
+      "blob_sha": "8fbb7646d9705a0a9f2d39f24c8caeef6aa2bb88",
+      "size": 2586
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-13-CROSSDOMAIN/answer_sheets/T13-AGENT-12.json",
+      "blob_sha": "2c62f40f4ac7aabdc815233ab5cc74f64bbf8f65",
+      "size": 2742
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-13-CROSSDOMAIN/answer_sheets/T13-AGENT-13.json",
+      "blob_sha": "7a46de96cb0cdd74f141c1ef22ff91b0e08d7f89",
+      "size": 3134
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-13-CROSSDOMAIN/answer_sheets/T13-AGENT-14.json",
+      "blob_sha": "65faa87cf42a2943e090906be78e08b7b3f136d8",
+      "size": 2541
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-13-CROSSDOMAIN/answer_sheets/T13-AGENT-15.json",
+      "blob_sha": "415a2174181b0b3264aa938464b425cc3c397f5b",
+      "size": 3024
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-13-CROSSDOMAIN/answer_sheets/T13-AGENT-16.json",
+      "blob_sha": "f167aeb8a57f57529e6d532d650441dc5297e3a5",
+      "size": 2600
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-13-CROSSDOMAIN/answer_sheets/T13-AGENT-17.json",
+      "blob_sha": "e84a4bc772a3e04a45be23657fb2c82db8d47b91",
+      "size": 3687
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-13-CROSSDOMAIN/answer_sheets/T13-AGENT-18.json",
+      "blob_sha": "9ad0aeeb63877dd5138f1faa42cac21c065321a6",
+      "size": 2541
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-13-CROSSDOMAIN/answer_sheets/T13-AGENT-19.json",
+      "blob_sha": "b83bc8cd50ac9b994bc475c8b3741bb0c11a6f56",
+      "size": 2942
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-13-CROSSDOMAIN/answer_sheets/T13-AGENT-20.json",
+      "blob_sha": "eebcebcf8ba0813df3a27856df27d97c53fd4f36",
+      "size": 1764
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-13-CROSSDOMAIN/arm_assignment.txt",
+      "blob_sha": "082d603e360880d6f4a909d7ab4a9d58a510e647",
+      "size": 295
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-13-CROSSDOMAIN/brief_control.txt",
+      "blob_sha": "d9fab542dbcf35928a38fc5c130eefb1292598c9",
+      "size": 1111
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-13-CROSSDOMAIN/brief_treatment.txt",
+      "blob_sha": "3ebd2544c8997bc46c0c8f424ede946da0726aae",
+      "size": 1528
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-13-CROSSDOMAIN/briefing/section-01-overview.md",
+      "blob_sha": "1a7d1b1cde6f69bb8dc92bfb8e41e7d7f1252580",
+      "size": 300
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-13-CROSSDOMAIN/briefing/section-02-scoring.md",
+      "blob_sha": "4725ab9d353296dd72cc9ac4dabcf0ec9a76903c",
+      "size": 292
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-13-CROSSDOMAIN/briefing/section-03-threshold.md",
+      "blob_sha": "9e0670ef038f4827112169c63de58e2149cabc90",
+      "size": 388
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-13-CROSSDOMAIN/briefing/section-04-context.md",
+      "blob_sha": "fbf9c96f3978893f8f0915b768923eca414f1c28",
+      "size": 458
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-13-CROSSDOMAIN/grade_trial13.py",
+      "blob_sha": "3a824b7a41813b953cb4aeb5d50a0b349494edd8",
+      "size": 1345
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-13-CROSSDOMAIN/icu_scenarios.json",
+      "blob_sha": "2e1da0d5de7b8d3d7c0cd1ca1b233564d15b028b",
+      "size": 2946
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-13-CROSSDOMAIN/reserve-principle.md",
+      "blob_sha": "b63cdb6c8ce11f4fdbcd8dab0b8f200ead92f3c2",
+      "size": 1798
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-13-CROSSDOMAIN/results_trial13.json",
+      "blob_sha": "693f2f7b2084c54782a9b05ac8f0b785aa283fd8",
+      "size": 1962
     },
     {
       "path": "BRAIN/05-MEMORY/README.md",
