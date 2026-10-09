@@ -94,6 +94,27 @@
       "status": "CANDIDATE",
       "text": "When any agent sees something valuable \u2014 lesson, pattern, fix, insight \u2014 it MUST be documented without waiting to be told. Not documenting discovered value is a disservice.",
       "machine_check": "kernel/protocol/learning_capture.py"
+    },
+    {
+      "id": "TWO-LAYER-LAW",
+      "name": "Two-Layer Communication",
+      "check": "tools/protocol/checks/two_layer.py",
+      "enforcement": "two_layer_required",
+      "statement": "Every consequential update comes in TWO layers, back to back: (1) THE TECHNICAL \u2014 what happened, honestly, real terms; (2) LITERALLY WHAT I AM SAYING \u2014 what it means in plain human words, like explaining to a child; allegories welcome. Never hand Shawn technicals alone. Exempt: one-line status pings, acks, internal coordination notes. Unknown report types fail closed."
+    },
+    {
+      "id": "BLOCKER-SURFACING",
+      "name": "Proactive Blocker Surfacing",
+      "check": "tools/protocol/checks/blocker_surfacing.py",
+      "enforcement": "blocker_post_required",
+      "statement": "A seat that is blocked \u2014 or stalled (no progress inside the stall window) \u2014 with no blocker post naming the X AND the unblock action, in the two-layer format, FAILS. Silence while stuck is the violation, not a report after it broke."
+    },
+    {
+      "id": "FAIL-CLOSED-SHAPE",
+      "name": "Fail Closed on Shape",
+      "check": "tools/protocol/checks/shape_closed.py",
+      "enforcement": "shape_closed_required",
+      "statement": "Absence is the cheapest exploit. Required fields must be present, correctly typed, and non-empty; unknown values fail closed, never silently default. Shape is checked before substance, always."
     }
   ],
   "never_do": [
