@@ -49,6 +49,45 @@ function validateDeclaredTaskClasses(raw: unknown): { governed: string[]; reject
   return { governed, rejected };
 }
 
+// SN-0782 Verification Law: a capture carrying a valid shawn_direct verification marker
+// from Shawn writes its learning_evidence row as ACTIVE with verification_method
+// shawn_direct_verification. Fail-soft by design: a malformed marker writes CANDIDATE
+// with the refusal recorded in observed_value — capture still 200s, a note is never lost.
+// Status is ACTIVE (never VERIFIED): VERIFIED violates the declared check constraint and
+// is invisible to every learning-loop reader, which filters status=eq.ACTIVE.
+async function validateShawnDirectMarker(raw: unknown, now: string): Promise<{ ok: boolean; directive_digest: string | null; refusal: string | null; record: Record<string, string> }> {
+  const v = (raw && typeof raw === "object" ? raw : null) as Record<string, unknown> | null;
+  const refused = (code: string) => ({ ok: false, directive_digest: null, refusal: code, record: {} });
+  if (!v) return refused("NOT_SHAWN_VERIFIED");
+  if (String(v.source ?? "") !== "shawn_direct") return refused("NOT_SHAWN_VERIFIED");
+  if (String(v.verifier ?? "") !== "Shawn") return refused("NOT_SHAWN_VERIFIED");
+  const quote = String(v.quote ?? "").trim();
+  if (quote.length < 8) return refused("MALFORMED_MARKER_QUOTE");
+  const directedAt = String(v.directed_at ?? "");
+  const directedMs = Date.parse(directedAt);
+  if (!directedAt || Number.isNaN(directedMs)) return refused("MALFORMED_MARKER_TIME");
+  if (directedMs > Date.parse(now) + 60000) return refused("FUTURE_DIRECTED_AT");
+  const directiveRef = String(v.directive_ref ?? "");
+  const chatRef = /^chat:[A-Za-z0-9_.:-]{1,128}$/.test(directiveRef);
+  const feedRef = /^feed:\d+#issuecomment-\d+$/.test(directiveRef);
+  if (!chatRef && !feedRef) return refused("MALFORMED_MARKER_REF");
+  const directiveDigest = await sha256Hex({ quote, directed_at: directedAt, directive_ref: directiveRef });
+  return {
+    ok: true,
+    directive_digest: directiveDigest,
+    refusal: null,
+    record: {
+      source: "shawn_direct",
+      verifier: "Shawn",
+      quote: quote.slice(0, 2000),
+      directed_at: directedAt,
+      directive_ref: directiveRef,
+      directive_digest: directiveDigest,
+      verified_at: now,
+    },
+  };
+}
+
 function buildIntelligentBlock(args:{
   eventId:string;
   now:string;
@@ -306,16 +345,23 @@ Deno.serve(async(req)=>{
      learning=legacyLearning.data;
    }
    if(!learning){
+     // SN-0782: a valid shawn_direct marker from Shawn writes ACTIVE; malformed markers
+     // fail soft to CANDIDATE with the refusal recorded. Replays hit the existing row above
+     // and are never upgraded. The checkpoint invariant below matches on evidence_id, untouched.
+     const shawnDirect=await validateShawnDirectMarker(body?.verification,now);
+     const learningObservedBase={source:"v7-smart-note-canonical",event_id:eventId,subject:persistedSubject};
      const createdLearning=await supabase.from("learning_evidence").insert({
        id:learningId,
        member_id:user.id,
        target_id:"smart-note:"+eventId,
        level:"E1_UNDERSTANDS",
        provenance:"USER",
-       status:"CANDIDATE",
+       status:shawnDirect.ok?"ACTIVE":"CANDIDATE",
        claim:learningClaim.slice(0,2000),
-       observed_value:{source:"v7-smart-note-canonical",event_id:eventId,subject:persistedSubject},
-       verification_method:"PENDING_OUTCOME_VERIFICATION",
+       observed_value:shawnDirect.ok
+         ?{...learningObservedBase,shawn_direct_verification:{...shawnDirect.record}}
+         :{...learningObservedBase,shawn_direct_refusal:shawnDirect.refusal},
+       verification_method:shawnDirect.ok?"shawn_direct_verification":"PENDING_OUTCOME_VERIFICATION",
        source_event_id:eventId
      }).select("id,status,claim,target_id").single();
      if(createdLearning.error&&createdLearning.error.code!=="23505")throw createdLearning.error;
