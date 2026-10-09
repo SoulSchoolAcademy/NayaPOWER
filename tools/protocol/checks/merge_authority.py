@@ -79,12 +79,11 @@ import argparse
 import math
 import re
 import sys
-import unicodedata
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from checks import emit, fail, load_record, result  # noqa: E402
-from checks.confusables_table import FOLD as _CONFUSABLE_FOLD  # noqa: E402
+from checks.confusables_table import fold_to_ascii_fixpoint as _fold_fixpoint  # noqa: E402
 
 MIN_SELF_SCORE = 9.0
 MAX_SELF_SCORE = 10.0  # scorecards are scored on the 0–10 scale
@@ -102,37 +101,44 @@ KNOWN_SEAT_ALIASES: dict[str, str] = {}
 
 def _seat_key_folded(seat: str) -> tuple[str, bool]:
     # Identity normalization pipeline, in order:
-    #   1. NFKC-fold (the b61229d03 micro-fix: fullwidth/compatibility first)
-    #   2. Confusable-fold (this fix: Cyrillic/Greek/Armenian/Latin/Other
-    #      look-alikes -> canonical ASCII, per Unicode confusables.txt)
-    #   3. Strip everything outside [a-z0-9]
-    # The confusable fold must come AFTER NFKC (it operates on canonical
-    # forms), BEFORE case-folding (U+039D GREEK CAPITAL LETTER NU folds to
-    # 'n' in the table, but lowercasing first would turn it into U+03BD,
-    # which folds to 'v' — the wrong seat), and BEFORE the strip (so a
-    # folded letter survives comparison instead of being erased — erasing
-    # the unknown is never a comparison).
+    #   1. Confusable-fold to FIXPOINT: iterate NFKC(confusable-fold(x)).
+    #      NFKC-first alone leaves 32 enumerated entries dead — NFKC maps
+    #      U+03F2 -> U+03C2 / U+017F -> 's' / U+2110 -> 'I' before the table
+    #      sees them, and the strip then deletes or mis-folds them
+    #      ("ϲoda-1" folded to "oda1" and passed as a different seat).
+    #      Fold-first alone misses 45 measured characters whose NFKC output
+    #      IS a table source (U+02E0 -> U+0263 -> 'y'). The fixpoint over
+    #      the NFKC-after-fold composition closes both lanes and converges
+    #      in at most 3 passes (see confusables_table.fold_to_ascii_fixpoint).
+    #   2. Case-fold, then strip everything outside [a-z0-9].
+    # The fold must come BEFORE case-folding (U+039D GREEK CAPITAL LETTER
+    # NU folds to 'n' in the table, but lowercasing first would turn it
+    # into U+03BD, which folds to 'v' — the wrong seat), and BEFORE the
+    # strip (so a folded letter survives comparison instead of being
+    # erased — erasing the unknown is never a comparison).
     # Returns (key, confusables_seen): the flag says the raw text carried
     # look-alike characters, so the caller can surface it in the record.
-    normalized = unicodedata.normalize("NFKC", seat).strip()
-    folded = normalized.translate(_CONFUSABLE_FOLD)
+    stripped = seat.strip()
+    folded = _fold_fixpoint(stripped)
     key = re.sub(r"[^a-z0-9]", "", folded.lower())
-    return key, folded != normalized
+    return key, folded != stripped
 
 
 def _seat_key(seat: str) -> str:
-    # NFKC-fold FIRST: normalization must translate before it compares.
-    # Fullwidth "ｎａｙａ５" folds to "naya5"; the old strip-everything-
-    # non-ASCII regex turned it into "" which matches nothing — fail-open
-    # by deletion. Erasing the unknown is never a comparison.
+    # Fold to fixpoint FIRST (see _seat_key_folded): normalization must
+    # translate before it compares. Fullwidth "ｎａｙａ５" folds to "naya5";
+    # the old strip-everything-non-ASCII regex turned it into "" which
+    # matches nothing — fail-open by deletion. Erasing the unknown is
+    # never a comparison.
     #
-    # Confusable-fold SECOND (this fix): "nаya-5" with U+0430 CYRILLIC
-    # SMALL LETTER A folds to "naya5" too. NFKC cannot fold it — U+0430 is
-    # a distinct letter, not a compatibility form — so it needs its own
-    # class mapping (Unicode confusables.txt, 1453 entries), not a bigger
-    # hammer. A fully Cyrillic "nауа-5" is single-script (digits and the
-    # hyphen are Script=Common), so reject-on-mixed-script would miss it;
-    # folding is script-agnostic and closes the whole class.
+    # Confusable-fold (this fix, inside the fixpoint): "nаya-5" with U+0430
+    # CYRILLIC SMALL LETTER A folds to "naya5" too. NFKC cannot fold it —
+    # U+0430 is a distinct letter, not a compatibility form — so it needs
+    # its own class mapping (Unicode confusables.txt, 1455 entries incl.
+    # the 2 NFKC-closure forms), not a bigger hammer. A fully Cyrillic
+    # "nауа-5" is single-script (digits and the hyphen are Script=Common),
+    # so reject-on-mixed-script would miss it; folding is script-agnostic
+    # and closes the whole class.
     key, _ = _seat_key_folded(seat)
     return KNOWN_SEAT_ALIASES.get(key, key)
 

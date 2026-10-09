@@ -70,6 +70,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from checks import emit, fail, load_record, result  # noqa: E402
+from checks.confusables_table import fold_to_ascii_fixpoint as _fold_fixpoint  # noqa: E402
 
 
 # Ordinary English words. An alternative id that IS one of these words
@@ -156,8 +157,14 @@ b c x
 def _is_dictionary_word(ident: str) -> bool:
     """True if ident is an ordinary English word. Such an id can never be
     genuinely 'named' by a prose receipt — the receipt contains it whether
-    the option was named or not — so the id itself is the exploit."""
-    return ident.lower() in ORDINARY_WORDS
+    the option was named or not — so the id itself is the exploit.
+    The comparison runs the same fixpoint pipeline the seat-identity
+    check uses (NFKC -> confusable-fold -> case-fold -> strip, iterated
+    to fixpoint): a ghost id like "chооse" (Cyrillic о U+043E) must key
+    exactly like "choose", or the ban is decoration an attacker walks
+    around by swapping one codepoint."""
+    key = re.sub(r"[^a-z0-9]", "", _fold_fixpoint(ident).lower())
+    return key in ORDINARY_WORDS
 
 
 def _names_id(text_lower: str, ident: str) -> bool:

@@ -813,7 +813,130 @@ def test_receipt_passes_with_honest_identifiers():
     assert r["pass"], r["reasons"]
 
 
-# ================================================================== main
+
+# ------------------------------------------------- fix2: dead-entry lane
+# Re-validator's D1-D3: U+03F2 in "coda-1" sailed through end-to-end --
+# NFKC mapped it to U+03C2 first, the table never saw U+03C2, the strip
+# deleted it: "oda1" vs "coda1" -> PASSED as a different seat. The
+# fixpoint fold (NFKC-after-fold, iterated) plus the 2 NFKC-closure
+# entries (U+03C2/U+03A3 -> 'c') close this lane. Non-ASCII is written
+# as \u escapes here on purpose: invisible homoglyphs in source are a
+# maintenance hazard.
+# ---
+
+def test_merge_fires_on_lunate_sigma_dead_entries():
+    # The exact re-validator probes: U+03F2, U+03F9, and the direct
+    # NFKC-output attacks U+03C2 / U+03A3 typed by hand.
+    twins = (
+        "\u03f2oda-1",  # GREEK LUNATE SIGMA SYMBOL
+        "\u03f9oda-1",  # GREEK CAPITAL LUNATE SIGMA SYMBOL
+        "\u03c2oda-1",  # GREEK SMALL LETTER FINAL SIGMA (direct)
+        "\u03a3oda-1",  # GREEK CAPITAL LETTER SIGMA (direct)
+    )
+    for twin in twins:
+        rec = _good_merge_packet()
+        rec["seat"] = "coda-1"
+        rec["independent_validator"] = twin
+        r = merge_authority.check(rec)
+        assert not r["pass"], f"dead-entry twin {twin!r} passed as a different seat"
+    assert merge_authority._seat_key("\u03f2oda-1") == "coda1"
+    assert merge_authority._seat_key("\u03c2oda-1") == "coda1"
+
+
+def test_merge_fires_on_fresh_dead_entry_variants():
+    # Fresh letter-forms from the measured 32 (not the re-validator's
+    # instances): long-s, script-I, roman-numeral-I, fullwidth-I,
+    # double-struck-P families.
+    twins = [
+        ("\u017fin-1", "fin-1", "fin1"),     # LATIN SMALL LETTER LONG S -> 'f'
+        ("\u2110ook-1", "look-1", "look1"),  # SCRIPT CAPITAL I -> 'l'
+        ("\u2160ook-1", "look-1", "look1"),  # ROMAN NUMERAL ONE -> 'l'
+        ("\uff29ook-1", "look-1", "look1"),  # FULLWIDTH LATIN CAPITAL I -> 'l'
+        ("\u2119in-1", "pin-1", "pin1"),     # DOUBLE-STRUCK CAPITAL P -> 'p'
+    ]
+    for twin, seat, key in twins:
+        rec = _good_merge_packet()
+        rec["seat"] = seat
+        rec["independent_validator"] = twin
+        r = merge_authority.check(rec)
+        assert not r["pass"], f"dead-entry twin {twin!r} passed as {seat!r}"
+        assert merge_authority._seat_key(twin) == key
+    # The 45-char residual a single-pass reorder misses: NFKC output IS
+    # a table source (U+02E0 -> U+0263 -> 'y').
+    assert merge_authority._seat_key("\u02e0") == "y"
+
+
+def test_confusable_fold_closes_every_enumerated_pair():
+    # The class property, not instances: for ALL 1455 table sources,
+    # the fixpoint fold must equal the enumerated target.
+    import re as _re
+    from checks import confusables_table
+    bad = []
+    for s, tgt in zip(confusables_table._SRC, confusables_table._DST):
+        got = _re.sub(r"[^a-z0-9]", "",
+                      confusables_table.fold_to_ascii_fixpoint(s).lower())
+        if got != tgt:
+            bad.append((hex(ord(s)), tgt, got))
+    assert not bad, f"{len(bad)} enumerated pairs do not close: {bad[:5]}"
+
+
+def test_receipt_fires_on_confusable_ghost_word():
+    # Re-validator's cross-lane probe: "ch\u043e\u043ese" (2x CYRILLIC
+    # SMALL LETTER O) is visually "choose" -- an ordinary word -- but the
+    # ban compared raw codepoints and let it through.
+    ghost = "ch\u043e\u043ese"
+    rec = _good_receipt()
+    rec["alternatives"] = [
+        {"id": ghost, "description": "the familiar option"},
+        {"id": "opt-b", "description": "the new option"},
+    ]
+    rec["chosen"] = ghost
+    rec["receipt"] = (f"I chose {ghost}. I looked at {ghost}, opt-b. "
+                      f"{ghost} won because it is familiar. This is what I did.")
+    r = decision_receipt.check(rec)
+    assert not r["pass"], "cyrillic-o ghost word passed the dictionary ban"
+    assert decision_receipt._is_dictionary_word(ghost)
+    assert decision_receipt._is_dictionary_word("choose")
+
+
+def test_receipt_fires_on_fresh_ghost_word_variants():
+    # Fresh ghost words, not the re-validator's instance: "l\u043e\u043ek"
+    # and "ev\u0456dence" (U+0456 CYRILLIC SMALL LETTER
+    # BYELORUSSIAN-UKRAINIAN I).
+    for ghost in ("l\u043e\u043ek", "ev\u0456dence"):
+        assert decision_receipt._is_dictionary_word(ghost), repr(ghost)
+    rec = _good_receipt()
+    rec["alternatives"] = [
+        {"id": "l\u043e\u043ek", "description": "glance option"},
+        {"id": "opt-b", "description": "stare option"},
+    ]
+    rec["chosen"] = "l\u043e\u043ek"
+    rec["receipt"] = ("I chose l\u043e\u043ek. I looked at l\u043e\u043ek, opt-b. "
+                      "l\u043e\u043ek won because it is quick. This is what I did.")
+    r = decision_receipt.check(rec)
+    assert not r["pass"], "cyrillic-o ghost word passed the dictionary ban"
+
+
+def test_receipt_passes_with_multiscript_prose_and_folded_nonword_id():
+    # Honest controls for the cross-lane fix: multi-script prose in the
+    # receipt must not false-positive, and a folded id that is NOT a word
+    # ("opt-\u03b1" -> "opta") must stay legal.
+    rec = _good_receipt()
+    rec["alternatives"] = [
+        {"id": "opt-\u03b1", "description": "greek-suffixed option"},
+        {"id": "plan-2", "description": "second option"},
+    ]
+    rec["chosen"] = "opt-\u03b1"
+    rec["receipt"] = ("I chose opt-\u03b1. I looked at opt-\u03b1, plan-2. "
+                      "opt-\u03b1 won because "
+                      "\u043f\u0440\u043e\u0432\u0435\u0440\u043a\u0430 "
+                      "\u03b4\u03bf\u03ba\u03b9\u03bc\u03ae. "
+                      "This is what I did.")
+    r = decision_receipt.check(rec)
+    assert r["pass"], r["reasons"]
+    assert not decision_receipt._is_dictionary_word("opt-\u03b1")
+    assert not decision_receipt._is_dictionary_word("naya-5")
+
 
 if __name__ == "__main__":
     tests = sorted(
