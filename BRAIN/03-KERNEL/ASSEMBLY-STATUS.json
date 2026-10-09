@@ -1,0 +1,68 @@
+{
+  "schema": "naya.learning-engine-assembly-gate.v1",
+  "status": "BLOCKED",
+  "required_connections": [
+    {
+      "id": "NINE_NODE_RUNTIME_BINDINGS",
+      "status": "NOT_PROVEN",
+      "evidence": [],
+      "current_gap": "Universal nine-node production binding is not proven; canonical kernel manifest entrypoint remains null."
+    },
+    {
+      "id": "CANONICAL_CAPTURE_INTAKE",
+      "status": "PARTIAL",
+      "evidence": [],
+      "current_gap": "v2 capture pipeline and legacy v7 receiver both exist; one canonical intake/writer is not established."
+    },
+    {
+      "id": "LEARNING_EXPERIMENT_ADMISSION",
+      "status": "PARTIAL",
+      "evidence": [],
+      "current_gap": "The TypeScript gate is merged into main at nayanet-learning-verify mode=candidate, but the live workflow sends no admission design and the gate passes through when absent. The deployed nayanet-learning-verify v98 is stale and does not contain the gate. Redesign the pre-experiment placeholder vs post-measurement claim path before enabling E2E."
+    },
+    {
+      "id": "VERIFIED_LESSON_TO_ACT",
+      "status": "PARTIAL",
+      "evidence": [],
+      "current_gap": "main contains the ACT decision-context seam; deployed ACT v65 is stale and lacks it."
+    },
+    {
+      "id": "VERIFIED_LESSON_TO_SELF",
+      "status": "MISSING",
+      "evidence": [],
+      "current_gap": "SELF integration and behavior-policy modules have tests but no production Supabase read adapter/caller."
+    },
+    {
+      "id": "SOURCE_RUNTIME_PARITY",
+      "status": "PARTIAL",
+      "evidence": [],
+      "current_gap": "nayanet-learning-verify v98 and nayanet-act-runtime v65 differ from current main; nayanet-github-dispatch v36 matches the unmerged PR #2012 branch rather than main. Current main SHA changed to 455cdf5a after WO3 merge."
+    },
+    {
+      "id": "PROMOTION_BACKSYNC",
+      "status": "MISSING",
+      "evidence": [],
+      "current_gap": "DB learning promotion is not proven to reconcile the GitHub registry lifecycle/truth state in the same governed loop."
+    },
+    {
+      "id": "RLS_POLICIES",
+      "status": "BLOCKED",
+      "evidence": [],
+      "current_gap": "RLS disabled and no policies returned for smart_note_events, smart_note_artifacts, smart_note_receipts; policy review requires a human decision."
+    },
+    {
+      "id": "COLD_SUCCESSOR_BEHAVIORAL_PROOF",
+      "status": "BLOCKED",
+      "evidence": [],
+      "current_gap": "The exact T11 lesson has not completed the registered cold-successor behavioral acceptance path."
+    }
+  ],
+  "ready_requirements": [
+    "source_main_sha equals the exact SOURCE_SHA for this run",
+    "all nine required connections have status PROVEN",
+    "each connection has at least one receipt with matching source_sha, SHA-256 artifact hash, ISO timestamp, and independent_verifier",
+    "the reviewed manifest status is READY_FOR_END_TO_END"
+  ],
+  "rule": "A blocked gate is an intentional successful hold. No end-to-end learning, cold-runtime, or live-connect experiment runs unless the exact-SHA assembly manifest proves READY_FOR_END_TO_END.",
+  "verified_source_sha": "455cdf5a7d846d16dd56e19b12b4a61ab242d866"
+}
