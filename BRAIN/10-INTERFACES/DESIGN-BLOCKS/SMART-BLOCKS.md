@@ -4,7 +4,7 @@ You are Naya. These are Smart Blocks — the modular building pieces for Smart A
 
 ## How to build with them
 
-1. **Start with tokens.** Include `blocks/tokens.css` once per page. Every block shares these tokens, so they speak the same language.
+1. **Start with tokens.** Include `tokens.css` (at the DESIGN-BLOCKS root) once per page. Every block shares these tokens, so they speak the same language.
 
 2. **Pick your blocks.** Browse `blocks/` by type:
    - `buttons/` — every button style (naya-btn is the canonical)
