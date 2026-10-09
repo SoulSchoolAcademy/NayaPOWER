@@ -167,3 +167,75 @@ pulse-orb per view.
 
 **Layout pattern:** chrome frames content. The room accent colors the kicker and LED;
 content follows whichever recipe fits the room's job.
+
+---
+
+## Appendix: naya5/smart-blocks-library demo mapping (2026-10-09)
+
+The 58 branch demos reconciled against the canonical library. Demos are not blocks: each demo below either became a canonical block (11 demos → 13 blocks) or is a composition recipe naming the canonical blocks it is built from.
+
+### A. Demos ported as canonical blocks (13)
+
+- `new-avatars-naya-avatar-naya-avatar-stack` → **`naya-avatar`, `naya-avatar-stack`** (Avatars .naya-avatar / .naya-avatar-stack)
+- `new-badges-naya-badge` → **`naya-badge`** (Badges .naya-badge)
+- `inputs-jeweled-checkbox-naya-check` → **`naya-check`** (Jeweled checkbox .naya-check)
+- `new-notification-drawer-naya-drawer` → **`naya-drawer`** (Notification drawer .naya-drawer)
+- `new-page-shell-naya-shell` → **`naya-shell`** (Page shell .naya-shell)
+- `new-skeleton-loading-naya-skel` → **`naya-skel`** (Skeleton loading .naya-skel)
+- `new-empty-error-loading-naya-state-naya-spinner` → **`naya-state`, `naya-spinner`** (Empty · error · loading .naya-state / .naya-spinner)
+- `new-live-data-table-table-naya-table-data-sortable` → **`naya-table`** (Live data table table.naya-table[data-sortable])
+- `cards-nested-cards-nestcard` → **`nestcard`** (Nested cards .nestcard)
+- `data-law-library-law-group` → **`law-group`** (Law library .law-group)
+- `specialty-interaction-physics-physics-row` → **`physics-row`** (Interaction physics .physics-row)
+
+### B. Composition demos (47) — build from these canonical blocks
+
+- `buttons-canonical-button-naya-btn` (Canonical button .naya-btn) → `naya-btn`
+- `buttons-signature-variants-naya-btn-lead-machine-prism-proximity-str` (Signature variants .naya-btn.lead / .machine / .prism / .proximity / .streak) → `naya-btn`
+- `buttons-icon-buttons-naya-btn-icon-micro-portal` (Icon buttons .naya-btn.icon / .micro / .portal) → `icon`, `naya-btn`, `portal`
+- `buttons-ghost-amp-danger-naya-btn-ghost-naya-btn-danger` (Ghost &amp; danger .naya-btn--ghost / .naya-btn--danger) → `naya-btn`
+- `buttons-living-button-lv-btn` (Living button .lv-btn) → `lv-btn`
+- `buttons-hero-cta-living-btn` (Hero CTA .living-btn) → `living-btn`
+- `buttons-split-button-naya-btn-split-split-orb` (Split button .naya-btn.split + .split-orb) → `icon`, `naya-btn`
+- `buttons-segmented-control-segmented` (Segmented control .segmented) → `segmented`
+- `buttons-toggle-switch-naya-toggle` (Toggle switch .naya-toggle) → `naya-toggle`
+- `buttons-room-micro-controls-like-pill-act-chip-day-dot-send-cta-mic-` (Room micro-controls .like-pill / .act-chip / .day-dot / .send-cta / .mic-btn / .fab) → `act-chip`, `day-dot`, `fab`, `icon`, `like-pill`, `mic-btn`, `send-cta`
+- `inputs-recessed-field-recessed-field` (Recessed field .recessed-field) → `recessed-field`
+- `inputs-search-field-search-field` (Search field .search-field) → `icon`, `recessed-field`, `search-field`
+- `inputs-orbiting-login-login-card-login-orbit` (Orbiting login .login-card / .login-orbit) → `login-card`, `naya-btn`, `recessed-field`
+- `navigation-top-nav-bar-nav-nav-orb` (Top nav bar .nav / .nav-orb) → `nav`, `nav-orb`
+- `navigation-pill-tabs-smarttabs-smarttab` (Pill tabs .smarttabs / .smarttab) → `smarttab`
+- `navigation-favorites-ribbon-sn-row-smarttabs-js` (Favorites ribbon .sn-row (SmartTabs JS)) → `nav`, `smarttab`
+- `navigation-app-room-nav-app-nav` (App room nav .app-nav) → `app-nav`, `nav`
+- `navigation-anchor-toc-pills-toc-a` (Anchor TOC pills .toc a) → `nav`
+- `cards-elevated-board-elevated-board-board-spine-board-corner` (Elevated board .elevated-board / .board-spine / .board-corner) → `board`, `elevated-board`
+- `cards-spec-board-board` (Spec board .board) → `board`
+- `cards-truth-cards-orbs-truthgrid-truth-torb` (Truth cards + orbs .truthgrid / .truth / .torb) → `truthgrid`
+- `cards-law-cards-lawcard` (Law cards .lawcard) → `lawcard`, `scorecard`
+- `cards-three-tongue-law-cards-tongue` (Three-tongue law cards .tongue) → `jw`, `tongue`
+- `cards-type-scale-cards-typecard` (Type scale cards .typecard) → `type-scale`
+- `cards-metric-trio-metric` (Metric trio .metric) → `icon`, `metric`
+- `cards-job-cards-job` (Job cards .job) → `swatch`
+- `cards-world-tiles-layer` (World tiles .layer) → `gem-bullet`
+- `data-meaning-spheres-sphere` (Meaning spheres .sphere) → `icon`, `sphere`
+- `data-self-scorecard-scorecard-score-row-verdict` (Self-scorecard .scorecard / .score-row / .verdict) → `scorecard`, `verdict`
+- `data-data-table-specimen-data-table` (Data table specimen .data-table) → `data-table`, `status-dot`
+- `overlays-toast-system-nayablocks-toast` (Toast system NayaBlocks.toast()) → `naya-btn`, `toast`
+- `overlays-mini-modal-modal-mini-modal-gem` (Mini modal .modal-mini / .modal-gem) → `modal-mini`, `naya-btn`
+- `overlays-share-sheet-smart-link-share-actions` (Share sheet .smart-link / .share-actions) → `icon`, `naya-btn`, `share-actions`, `smart-link`
+- `media-media-player-media-player` (Media player .media-player) → `icon`, `media-player`, `naya-btn`, `portal`, `timeline`
+- `media-hero-vessel-vessel` (Hero vessel .vessel) → `hero`, `orb`
+- `specialty-orb-system-orb-sm-xs-black-hero-twin-glyph-icon` (Orb system .orb / --sm / --xs / --black / --hero / --twin / --glyph / --icon) → `orb`
+- `specialty-mini-orb-mini-orb` (Mini-orb .mini-orb) → `mini-orb`
+- `specialty-gem-bullets-gem-bullet` (Gem bullets .gem-bullet) → `gem-bullet`, `gem-list`
+- `specialty-spectrum-bar-spectrum-bar` (Spectrum bar .spectrum-bar) → `spectrum-bar`
+- `specialty-spectrum-swatches-token-chips` (Spectrum swatches token chips) → `swatch`
+- `specialty-ship-gate-checklist-gate` (Ship-gate checklist .gate) → `jw`
+- `specialty-code-copy-pre-code-copy-btn` (Code + copy pre.code / .copy-btn) → `naya-btn`, `recipe`
+- `specialty-rule-boards-rule-board` (Rule boards .rule-board) → `board`, `rule-board`
+- `specialty-anti-pattern-drift-demos-driftgrid-drift` (Anti-pattern drift demos .driftgrid / .drift) → _no canonical refs (demo chrome)_
+- `specialty-ambient-field-page-before` (Ambient field page ::before) → _no canonical refs (demo chrome)_
+- `new-command-palette-nayablocks-wirepalette` (Command palette NayaBlocks.wirePalette()) → `icon`, `naya-btn`, `section`
+- `new-real-footer-naya-footer` (Real footer .naya-footer) → `footer`
+
+_47 composition demos. Zero demos lost: 11 ported + 47 mapped = 58._

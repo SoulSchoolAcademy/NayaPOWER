@@ -1,0 +1,9 @@
+/* Smart Block: naya-avatar-stack
+ * Source: naya5/smart-blocks-library (branch) - ported 2026-10-09, byte-faithful
+ * Type: chrome
+ * Token notes: --bg is a branch token (pending Shawn's tokens.css decision); inlined.
+ * Depends on the naya-avatar block for the avatars themselves.
+ */
+.naya-avatar-stack { display: inline-flex; }
+.naya-avatar-stack .naya-avatar { margin-left: -10px; border-color: #050507; /* was var(--bg) */ }
+.naya-avatar-stack .naya-avatar:first-child { margin-left: 0; }

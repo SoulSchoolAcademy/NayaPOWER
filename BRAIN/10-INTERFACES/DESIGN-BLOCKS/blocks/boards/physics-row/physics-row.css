@@ -1,0 +1,8 @@
+/* Smart Block: physics-row
+ * Source: naya5/smart-blocks-library (branch) - ported 2026-10-09, byte-faithful
+ * Type: boards
+ * All tokens used (--soft-line / --purple) are canonical.
+ */
+.physics-row {display:grid;grid-template-columns:100px 1fr;gap:14px;padding:11px 0;border-bottom:1px solid var(--soft-line);font-size:14px}
+.physics-row:last-child {border:0}
+.physics-row b {color:var(--purple)}

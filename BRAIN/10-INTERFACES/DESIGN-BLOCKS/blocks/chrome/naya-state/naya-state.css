@@ -1,0 +1,18 @@
+/* Smart Block: naya-state
+ * Source: naya5/smart-blocks-library (branch) - ported 2026-10-09, byte-faithful
+ * Type: chrome
+ * Token notes: --line / --radius-lg / --ink / --ink-dim / --danger / --depth-hi
+ * are used; --radius-lg / --ink-dim / --danger / --depth-hi are branch tokens
+ * (pending Shawn's tokens.css decision); inlined. --line / --ink are canonical.
+ */
+.naya-state {
+  text-align: center; padding: 56px 28px; border: 1px dashed var(--line);
+  border-radius: 22px; background: rgba(255,255,255,.012); /* was var(--radius-lg) */
+}
+.naya-state h3 { font-size: 17px; font-weight: 800; color: var(--ink); margin: 0 0 8px; }
+.naya-state p { font-size: 13.5px; color: #ddd9e4; max-width: 380px; margin: 0 auto 18px; line-height: 1.6; } /* was var(--ink-dim) */
+.naya-state-icon { display: inline-grid; place-items: center; width: 58px; height: 58px; border-radius: 50%;
+  border: 1px solid var(--line); background: radial-gradient(circle at 50% 30%, #1b1726, #0a0a0e 70%);
+  box-shadow: inset 0 1px rgba(255,255,255,.4), 0 12px 30px rgba(0,0,0,.6); margin-bottom: 16px; color: #a9a4b8; } /* --depth-hi / --ink-faint inlined */
+.naya-state.is-error .naya-state-icon { color: #ff5e6c; border-color: rgba(255,94,108,.35); /* was var(--danger) */
+  box-shadow: inset 0 1px rgba(255,255,255,.4), 0 0 26px -8px rgba(255,94,108,.5), 0 12px 30px rgba(0,0,0,.6); }

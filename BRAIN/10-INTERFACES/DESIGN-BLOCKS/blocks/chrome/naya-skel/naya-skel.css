@@ -1,0 +1,18 @@
+/* Smart Block: naya-skel
+ * Source: naya5/smart-blocks-library (branch) - ported 2026-10-09, byte-faithful
+ * Type: chrome
+ * Token notes: --radius-sm / --line-soft are branch tokens (pending Shawn's
+ * tokens.css decision); inlined.
+ */
+.naya-skel {
+  position: relative; overflow: hidden; border-radius: 10px; /* was var(--radius-sm) */
+  background: linear-gradient(180deg, #16121f, #0d0c12);
+  border: 1px solid rgba(255,255,255,.05); min-height: 16px; /* was var(--line-soft) */
+}
+.naya-skel::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(100deg, transparent 20%, rgba(255,255,255,.07) 50%, transparent 80%);
+  animation: naya-skel-sweep 1.8s ease-in-out infinite;
+}
+@keyframes naya-skel-sweep { from { transform: translateX(-100%); } to { transform: translateX(100%); } }
+@media (prefers-reduced-motion: reduce) { .naya-skel::after { animation: none; } }

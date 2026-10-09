@@ -2334,8 +2334,336 @@
       "score": "unscored \u2014 extracted 2026-10-09",
       "provenance": "EXTRACTED",
       "status": "APPROVED_SOURCE"
+    },
+    {
+      "id": "naya-avatar",
+      "type": "chrome",
+      "description": "Identity avatar: jewel-tone radial glow keyed to --av-hue, three sizes. Initials, not photos.",
+      "source": "naya5/smart-blocks-library @ 1dc1241e (branch) \u2014 ported 2026-10-09",
+      "files": {
+        "css": "blocks/chrome/naya-avatar/naya-avatar.css",
+        "specimen": "blocks/chrome/naya-avatar/specimen.html",
+        "readme": "blocks/chrome/naya-avatar/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [
+        ".xs",
+        ".lg",
+        "--av-hue"
+      ],
+      "selectors": [
+        ".naya-avatar",
+        ".naya-avatar.xs",
+        ".naya-avatar.lg"
+      ],
+      "score": "unscored \u2014 ported 2026-10-09",
+      "provenance": "PORTED",
+      "status": "NEEDS_REVIEW"
+    },
+    {
+      "id": "naya-avatar-stack",
+      "type": "chrome",
+      "description": "Overlapping avatar stack: the companion container for naya-avatar. Negative-margin overlap, page-colored ring.",
+      "source": "naya5/smart-blocks-library @ 1dc1241e (branch) \u2014 ported 2026-10-09",
+      "files": {
+        "css": "blocks/chrome/naya-avatar-stack/naya-avatar-stack.css",
+        "specimen": "blocks/chrome/naya-avatar-stack/specimen.html",
+        "readme": "blocks/chrome/naya-avatar-stack/README.md"
+      },
+      "dependencies": [
+        "tokens.css",
+        "naya-avatar"
+      ],
+      "states": [],
+      "selectors": [
+        ".naya-avatar-stack",
+        ".naya-avatar-stack .naya-avatar"
+      ],
+      "score": "unscored \u2014 ported 2026-10-09",
+      "provenance": "PORTED",
+      "status": "NEEDS_REVIEW"
+    },
+    {
+      "id": "naya-badge",
+      "type": "jewels",
+      "description": "Truth-state badge: uppercase pill with a status dot. Verified / claim / demo / danger are the only colored states \u2014 quiet by default.",
+      "source": "naya5/smart-blocks-library @ 1dc1241e (branch) \u2014 ported 2026-10-09",
+      "files": {
+        "css": "blocks/jewels/naya-badge/naya-badge.css",
+        "specimen": "blocks/jewels/naya-badge/specimen.html",
+        "readme": "blocks/jewels/naya-badge/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [
+        ".is-verified",
+        ".is-claim",
+        ".is-demo",
+        ".is-danger"
+      ],
+      "selectors": [
+        ".naya-badge",
+        ".naya-badge.is-verified",
+        ".naya-badge.is-claim",
+        ".naya-badge.is-demo",
+        ".naya-badge.is-danger"
+      ],
+      "score": "unscored \u2014 ported 2026-10-09",
+      "provenance": "PORTED",
+      "status": "NEEDS_REVIEW"
+    },
+    {
+      "id": "naya-check",
+      "type": "inputs",
+      "description": "Jeweled checkbox: the canonical task checkbox. Silver at rest, emerald ignition on check, press physics on tap.",
+      "source": "naya5/smart-blocks-library @ 1dc1241e (branch) \u2014 ported 2026-10-09",
+      "files": {
+        "css": "blocks/inputs/naya-check/naya-check.css",
+        "specimen": "blocks/inputs/naya-check/specimen.html",
+        "readme": "blocks/inputs/naya-check/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [
+        ":checked",
+        ":hover",
+        ":focus-visible",
+        ":active"
+      ],
+      "selectors": [
+        ".naya-check",
+        ".naya-check .box",
+        ".naya-check input:checked + .box"
+      ],
+      "score": "unscored \u2014 ported 2026-10-09",
+      "provenance": "PORTED",
+      "status": "NEEDS_REVIEW"
+    },
+    {
+      "id": "naya-drawer",
+      "type": "overlays",
+      "description": "Right-side notification drawer: fixed panel with backdrop, head, and scroll list. Distinct from the wave's chrome/drawer (left nav rail) \u2014 this is the notification surface.",
+      "source": "naya5/smart-blocks-library @ 1dc1241e (branch) \u2014 ported 2026-10-09",
+      "files": {
+        "css": "blocks/overlays/naya-drawer/naya-drawer.css",
+        "specimen": "blocks/overlays/naya-drawer/specimen.html",
+        "readme": "blocks/overlays/naya-drawer/README.md",
+        "js": "blocks/overlays/naya-drawer/naya-drawer.js"
+      },
+      "dependencies": [
+        "tokens.css",
+        "naya-drawer.js"
+      ],
+      "states": [
+        "[hidden]",
+        ".is-unread"
+      ],
+      "selectors": [
+        ".naya-drawer",
+        ".naya-drawer-backdrop",
+        ".naya-drawer-head",
+        ".naya-drawer-list",
+        ".naya-note"
+      ],
+      "score": "unscored \u2014 ported 2026-10-09",
+      "provenance": "PORTED",
+      "status": "NEEDS_REVIEW"
+    },
+    {
+      "id": "naya-shell",
+      "type": "layout",
+      "description": "Page shell: rail + head + main grid chassis. The chassis every page starts from \u2014 brand, nav, title, content.",
+      "source": "naya5/smart-blocks-library @ 1dc1241e (branch) \u2014 ported 2026-10-09",
+      "files": {
+        "css": "blocks/layout/naya-shell/naya-shell.css",
+        "specimen": "blocks/layout/naya-shell/specimen.html",
+        "readme": "blocks/layout/naya-shell/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [
+        ".is-demo",
+        ".is-here"
+      ],
+      "selectors": [
+        ".naya-shell",
+        ".naya-shell-rail",
+        ".naya-shell-head",
+        ".naya-shell-main",
+        ".naya-shell-link.is-here"
+      ],
+      "score": "unscored \u2014 ported 2026-10-09",
+      "provenance": "PORTED",
+      "status": "NEEDS_REVIEW"
+    },
+    {
+      "id": "naya-skel",
+      "type": "chrome",
+      "description": "Skeleton loading placeholder: shimmer-sweep bars that hold layout while content loads. Motion encodes waiting, never decoration.",
+      "source": "naya5/smart-blocks-library @ 1dc1241e (branch) \u2014 ported 2026-10-09",
+      "files": {
+        "css": "blocks/chrome/naya-skel/naya-skel.css",
+        "specimen": "blocks/chrome/naya-skel/specimen.html",
+        "readme": "blocks/chrome/naya-skel/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [],
+      "selectors": [
+        ".naya-skel"
+      ],
+      "score": "unscored \u2014 ported 2026-10-09",
+      "provenance": "PORTED",
+      "status": "NEEDS_REVIEW"
+    },
+    {
+      "id": "naya-spinner",
+      "type": "chrome",
+      "description": "Loading spinner: single white arc over a jewel-core glow. One motion, one meaning \u2014 gathering.",
+      "source": "naya5/smart-blocks-library @ 1dc1241e (branch) \u2014 ported 2026-10-09",
+      "files": {
+        "css": "blocks/chrome/naya-spinner/naya-spinner.css",
+        "specimen": "blocks/chrome/naya-spinner/specimen.html",
+        "readme": "blocks/chrome/naya-spinner/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [],
+      "selectors": [
+        ".naya-spinner"
+      ],
+      "score": "unscored \u2014 ported 2026-10-09",
+      "provenance": "PORTED",
+      "status": "NEEDS_REVIEW"
+    },
+    {
+      "id": "naya-state",
+      "type": "chrome",
+      "description": "Empty / error / loading state container: centered icon, headline, lede, action. The honest face of 'nothing here yet'.",
+      "source": "naya5/smart-blocks-library @ 1dc1241e (branch) \u2014 ported 2026-10-09",
+      "files": {
+        "css": "blocks/chrome/naya-state/naya-state.css",
+        "specimen": "blocks/chrome/naya-state/specimen.html",
+        "readme": "blocks/chrome/naya-state/README.md"
+      },
+      "dependencies": [
+        "tokens.css",
+        "naya-spinner (for loading state)"
+      ],
+      "states": [
+        ".is-error"
+      ],
+      "selectors": [
+        ".naya-state",
+        ".naya-state.is-error"
+      ],
+      "score": "unscored \u2014 ported 2026-10-09",
+      "provenance": "PORTED",
+      "status": "NEEDS_REVIEW"
+    },
+    {
+      "id": "naya-table",
+      "type": "data",
+      "description": "Live data table: sortable columns with aria-sort, type-aware compare, hover rows. Distinct from the wave's data-table specimen \u2014 this one sorts.",
+      "source": "naya5/smart-blocks-library @ 1dc1241e (branch) \u2014 ported 2026-10-09",
+      "files": {
+        "css": "blocks/data/naya-table/naya-table.css",
+        "specimen": "blocks/data/naya-table/specimen.html",
+        "readme": "blocks/data/naya-table/README.md",
+        "js": "blocks/data/naya-table/naya-table.js"
+      },
+      "dependencies": [
+        "tokens.css",
+        "naya-table.js"
+      ],
+      "states": [
+        "th.sorted",
+        "[aria-sort=\"ascending/descending]"
+      ],
+      "selectors": [
+        "table.naya-table",
+        ".naya-table[data-sortable] thead th[data-sort]"
+      ],
+      "score": "unscored \u2014 ported 2026-10-09",
+      "provenance": "PORTED",
+      "status": "NEEDS_REVIEW"
+    },
+    {
+      "id": "nestcard",
+      "type": "cards",
+      "description": "Nested cards: the 'in a nutshell' card \u2014 diamond-dot kicker keyed to --nc, one true sentence. Cards inside cards without visual noise.",
+      "source": "naya5/smart-blocks-library @ 1dc1241e (branch) \u2014 ported 2026-10-09",
+      "files": {
+        "css": "blocks/cards/nestcard/nestcard.css",
+        "specimen": "blocks/cards/nestcard/specimen.html",
+        "readme": "blocks/cards/nestcard/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [],
+      "selectors": [
+        ".nestcard",
+        ".nestcard .nk",
+        ".nestcard .ndot"
+      ],
+      "score": "unscored \u2014 ported 2026-10-09",
+      "provenance": "PORTED",
+      "status": "NEEDS_REVIEW"
+    },
+    {
+      "id": "law-group",
+      "type": "knowledge",
+      "description": "Collapsible law library: native details/summary, plus/minus jewel toggle. Laws stay findable without leaving the page.",
+      "source": "naya5/smart-blocks-library @ 1dc1241e (branch) \u2014 ported 2026-10-09",
+      "files": {
+        "css": "blocks/knowledge/law-group/law-group.css",
+        "specimen": "blocks/knowledge/law-group/specimen.html",
+        "readme": "blocks/knowledge/law-group/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [
+        "[open]"
+      ],
+      "selectors": [
+        ".law-group",
+        ".law-group[open]"
+      ],
+      "score": "unscored \u2014 ported 2026-10-09",
+      "provenance": "PORTED",
+      "status": "NEEDS_REVIEW"
+    },
+    {
+      "id": "physics-row",
+      "type": "boards",
+      "description": "Interaction spec row: label/value pair documenting motion values. The physics, written down \u2014 approach, hover, press, focus, reduced motion.",
+      "source": "naya5/smart-blocks-library @ 1dc1241e (branch) \u2014 ported 2026-10-09",
+      "files": {
+        "css": "blocks/boards/physics-row/physics-row.css",
+        "specimen": "blocks/boards/physics-row/specimen.html",
+        "readme": "blocks/boards/physics-row/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [],
+      "selectors": [
+        ".physics-row"
+      ],
+      "score": "unscored \u2014 ported 2026-10-09",
+      "provenance": "PORTED",
+      "status": "NEEDS_REVIEW"
     }
   ],
-  "generated": "2026-10-09T13:38:45Z",
+  "generated": "2026-10-09T17:45:00Z",
   "version": "1.4"
 }

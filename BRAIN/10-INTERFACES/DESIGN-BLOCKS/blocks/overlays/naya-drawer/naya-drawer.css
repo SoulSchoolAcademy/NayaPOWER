@@ -1,0 +1,32 @@
+/* Smart Block: naya-drawer
+ * Source: naya5/smart-blocks-library (branch) - ported 2026-10-09, byte-faithful
+ * Type: overlays
+ * Token notes: --line-soft / --ink-dim / --depth-hi are branch tokens (pending
+ * Shawn's tokens.css decision); inlined. --line / --ink / --ease / --snap are canonical.
+ * Distinct from the wave's chrome/drawer block (left nav rail): this is the
+ * right-side notification drawer.
+ */
+.naya-drawer {
+  position: fixed; top: 0; right: 0; bottom: 0; z-index: 1501; width: min(400px, calc(100vw - 32px));
+  background: linear-gradient(180deg, #12101a, #08080c);
+  border-left: 1px solid var(--line);
+  box-shadow: -30px 0 80px rgba(0,0,0,.7);
+  display: flex; flex-direction: column;
+  animation: naya-drawer-in .28s var(--snap);
+}
+.naya-drawer[hidden] { display: none; }
+.naya-drawer-backdrop { position: fixed; inset: 0; z-index: 1500; background: rgba(3,3,5,.6); backdrop-filter: blur(4px); }
+.naya-drawer-backdrop[hidden] { display: none; }
+.naya-drawer-head { display: flex; align-items: center; justify-content: space-between; padding: 20px 22px; border-bottom: 1px solid rgba(255,255,255,.05); /* was var(--line-soft) */ }
+.naya-drawer-head h2 { font-size: 16px; font-weight: 800; color: var(--ink); margin: 0; }
+.naya-drawer-list { flex: 1; overflow: auto; padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+.naya-note {
+  display: flex; gap: 12px; padding: 14px; border-radius: 14px; /* was var(--radius-md) */
+  border: 1px solid rgba(255,255,255,.05); background: rgba(255,255,255,.02);
+  transition: border-color .18s var(--ease), background .18s var(--ease);
+}
+.naya-note:hover { border-color: var(--line); background: rgba(255,255,255,.04); }
+.naya-note.is-unread { border-color: rgba(160,107,255,.35); background: rgba(160,107,255,.06); }
+.naya-note-body { flex: 1; font-size: 13.5px; color: #ddd9e4; line-height: 1.55; } /* was var(--ink-dim) */
+.naya-note-body strong { color: var(--ink); }
+@keyframes naya-drawer-in { from { transform: translateX(40px); opacity: 0; } to { transform: none; opacity: 1; } }
