@@ -18,12 +18,15 @@ def _job_block(workflow: str, job: str) -> str:
 def test_production_learning_experiment_is_held_until_assembly_is_proven():
     workflow = WORKFLOW.read_text(encoding="utf-8")
     manifest = json.loads(ASSEMBLY.read_text(encoding="utf-8"))
-    assert "  assembly-gate:" in workflow
-    assert "tools/learning_engine_assembly_gate.py" in workflow
+    gate = _job_block(workflow, "assembly-gate")
+    assert "tools/learning_engine_assembly_gate.py" in gate
+    assert "fetch-depth: 0" in gate
+    assert "git merge-base --is-ancestor" in gate
+    assert "git diff --name-only" in gate
     for job in ("cold-runtime-1", "cold-runtime-2", "live-connect", "learning-influence-experiment"):
         block = _job_block(workflow, job)
         assert "needs.assembly-gate.outputs.ready == 'true'" in block, job
-    verdict = assess_assembly(manifest, manifest["source_main_sha"])
+    verdict = assess_assembly(manifest, manifest["verified_source_sha"])
     assert verdict.ready is False
     assert any("ASSEMBLY_STATUS_NOT_READY" in item for item in verdict.blockers)
 
