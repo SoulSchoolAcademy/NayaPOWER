@@ -9,6 +9,7 @@ must remain CANDIDATE.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
 from dataclasses import dataclass
@@ -80,6 +81,16 @@ def verify_capture_admission(capture: Any, expected: Any, lineage: Any, proof: A
         return GateResult(False, "MACHINE_VIEW_REQUIRED")
     if machine_view.get("automatic_truth_ceiling") != "CANDIDATE":
         return GateResult(False, "AUTOMATIC_TRUTH_CEILING_MUST_REMAIN_CANDIDATE")
+
+    # Reconstruct EXACT receiver bytes from this capture, not a caller-supplied
+    # expected hash. Otherwise a post-verification content edit can reuse an
+    # old lineage/receipt and be admitted as if the modified content was proved.
+    distilled = json.dumps(intelligence, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+    if expected["expected_content"] != distilled:
+        return GateResult(False, "CAPTURE_DISTILLATION_MISMATCH")
+    actual_hash = hashlib.sha256(distilled.encode("utf-8")).hexdigest()
+    if actual_hash != expected_hash:
+        return GateResult(False, "CAPTURE_CONTENT_HASH_MISMATCH")
 
     return GateResult(True, "ADMIT")
 
