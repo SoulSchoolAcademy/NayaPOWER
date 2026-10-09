@@ -64,5 +64,11 @@
   "receipt_type": "ALIGNMENT_DECISION",
   "schema_version": "2.1",
   "verification": "UNVERIFIED"
+ },
+ {
+  "decision_id": "DEC-20261009-HV-REALDATA-007",
+  "delta_v_predicted": 7.0,
+  "objective": "Accumulate the verified real events of 2026-10-09 15:41-21:41 UTC: merged PRs #1999 (sequence_policy 745->782, Naya 2 verified on merged tip), #1995 (capture-index flake fix, L4 independent verifier: red->green proven), #2005 (#1993 residual repairs, independent seat repair confirmed), #2030 (brain-index regen, Naya 2 scorecard receipt), #2036 (guard false-positive repair, Naya 2 scorecard receipt), #2028 (quote-smuggle fix, independent paired re-attacker CLOSED 9.5), #1956 (convergence-C receipt instrument, independent validator 9.0/10 + Naya 4 post-merge verified), #1957 (prod proof chains, independent validator 9.1/10), #2052 (activation docs placement, Naya 2 merged-verified), #2056 (manifest wiring, Naya 2 merged-verified). Scan #1354 for attention-demanded events (DAI) since 15:41 UTC. Close the seventh prediction->observation join (n=7). Cold-recompute proof on the pushed SHA, push via the Git Data API with server-tree verification, post scorecard. Excluded by design: #2017 (unsigned scorecard), #2020 (correction saga, authority ambiguity), #1882 (own comment only), #2054 (no scorecard receipt found), #2060 (no receipt yet); Shawn's 17:53 and 21:21 directives classified as live direction, not failure correction (not DAI).",
+  "predicted_at": "2026-10-09T21:47:00Z"
  }
 ]
