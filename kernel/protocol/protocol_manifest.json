@@ -115,6 +115,27 @@
       "check": "tools/protocol/checks/shape_closed.py",
       "enforcement": "shape_closed_required",
       "statement": "Absence is the cheapest exploit. Required fields must be present, correctly typed, and non-empty; unknown values fail closed, never silently default. Shape is checked before substance, always."
+    },
+    {
+      "id": "DECISION-RECEIPT-LAW",
+      "name": "The Decision Receipt Law",
+      "check": "tools/protocol/checks/decision_receipt.py",
+      "enforcement": "decision_receipt_required",
+      "statement": "Every consequential decision ships a receipt: 'I chose X. I looked at A, B, C. X won because [evidence]. This is what I did.' A decision record without >= 2 named alternatives, a choice among them, the winning evidence, and a plain-words receipt naming both FAILS. Close calls must declare uncertainty honestly."
+    },
+    {
+      "id": "WISEST-CHOICE-LAW",
+      "name": "The Wisest Choice Law",
+      "check": "tools/protocol/checks/wisest_choice.py",
+      "enforcement": "wisest_choice_required",
+      "statement": "Always make the wisest, most intelligent choice: name the objective first, analyze the options against it, cite the protocol/rubric/scorecard/measurement/law the basis comes from (never vibes), and ask a human a question only for a named protected gate or a genuine ambiguity the protocol cannot resolve. Close calls declare uncertainty honestly."
+    },
+    {
+      "id": "DELEGATED-MERGE-AUTHORITY",
+      "name": "Delegated Merge Authority",
+      "check": "tools/protocol/checks/merge_authority.py",
+      "enforcement": "merge_packet_required",
+      "statement": "Naya 5 may merge to main without Shawn's per-merge approval iff ALL hold: (1) built + tests green with proof; (2) honest evidence-backed self-scorecard >= 9.0 with value-calculus run; (3) independent validation by a DIFFERENT seat; (4) intent + scorecard + validation posted on #1354, team consensus, zero objections; (5) post-merge report planned. Below 9.0, no independent validation, or any objection still needs Shawn's word. Covers merges to main ONLY."
     }
   ],
   "never_do": [
