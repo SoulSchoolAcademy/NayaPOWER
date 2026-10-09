@@ -58,6 +58,25 @@
         }
       },
       "smart_note": "SN-0400"
+    },
+    {
+      "dir": "BRAIN/01-GOVERNANCE",
+      "law": "Naya Calculator",
+      "projections": {
+        "human": {
+          "blob_sha": "456e88ce35a988aaf0790e5654bcad219799797a",
+          "path": "BRAIN/01-GOVERNANCE/0006-NAYA-CALCULATOR-V1.human.md"
+        },
+        "ai": {
+          "blob_sha": "5f07061bcd01878ee9122dbdd4e4906c0445f2bd",
+          "path": "BRAIN/01-GOVERNANCE/0006-NAYA-CALCULATOR-V1.ai.md"
+        },
+        "machine": {
+          "blob_sha": "6e62c7ad6be9e8632fc4ee41f7c8d1f9b59e3f7f",
+          "path": "BRAIN/01-GOVERNANCE/0006-naya-calculator-v1.machine.json"
+        }
+      },
+      "smart_note": "SN-0400"
     }
   ]
 }
