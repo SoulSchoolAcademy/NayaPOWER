@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Smart Block: eco-dock</title>
+<link rel="stylesheet" href="eco-dock.css">
+<style>
+/* SPECIMEN ONLY — page ground + tokens normally provided by tokens.css */
+:root{
+  --bg:#050505;--ink:#F5F7FB;--muted:#AAB2BF;
+  --line:#ffffff18;--line-soft:#ffffff0d;
+  --purple:#9d75ff;--emerald:#55e39a;--gold:#f5c96b;
+  --ease:cubic-bezier(.16,.84,.22,1);--dur-med:.28s;
+  --depth-deep:0 20px 48px #000d;
+  --radius-md:13px;--radius-lg:18px;--radius-pill:999px;
+  --font:Inter,ui-sans-serif,system-ui,sans-serif;
+  --bg-panel:#0c0b10;--ink-dim:#c9cfda;
+}
+html,body{margin:0;padding:0}
+body{background:#050505;color:#F5F7FB;font-family:var(--font);min-height:100vh;box-sizing:border-box}
+.demo{max-width:640px;margin:0 auto;padding:48px 20px 160px;display:grid;gap:18px}
+.demo-note{font-size:12px;color:#AAB2BF;margin:0;letter-spacing:.04em;line-height:1.6}
+.demo-card{border:1px solid var(--line-soft);border-radius:var(--radius-lg);background:linear-gradient(180deg,#ffffff08,#ffffff02),var(--bg-panel);box-shadow:inset 0 1px #ffffff10,var(--depth-deep);padding:20px}
+.demo-card h3{margin:0 0 6px;font-size:18px;font-weight:700}
+.demo-card p{margin:0;font-size:14px;line-height:1.65;color:var(--muted)}
+.demo-card .kicker{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--purple);box-shadow:0 0 10px var(--purple);margin-right:8px}
+</style>
+</head>
+<body>
+
+<div class="demo">
+  <p class="demo-note">SPECIMEN — the <code>eco-dock</code> ecosystem bar, fixed over a tall scrolling page. Four quick-switchers (Hub / Ledger / Rooms / Spaces) + central plus menu (New room · Add intelligence · Scan). Scroll to confirm the bar stays pinned; tap the plus to open the menu.</p>
+
+  <section class="demo-card"><h3><span class="kicker"></span>Ledger entries, settling</h3><p>Fourteen receipts landed overnight. Each one carries its proof — what was claimed, what was measured, who decided. The ledger never forgets, and it never pretends.</p></section>
+  <section class="demo-card"><h3><span class="kicker"></span>Rooms, breathing</h3><p>Three rooms are active this morning. The doors show their true state — open, quiet, or waiting — and the voice inside each one stays warm.</p></section>
+  <section class="demo-card"><h3><span class="kicker"></span>Spaces, compounding</h3><p>Two spaces filed threads worth keeping last night. The intelligence inside them is already shaping tomorrow's brief — that's the loop working.</p></section>
+  <section class="demo-card"><h3><span class="kicker"></span>The long scroll</h3><p>Keep going — this page is tall on purpose. The dock stays pinned to the viewport bottom with safe-area padding, and the active jewel dot keeps breathing.</p></section>
+  <section class="demo-card"><h3><span class="kicker"></span>More room below</h3><p>Every card is ordinary content; nothing about the page changes for the dock. The <code>.eco-dock-spacer</code> pattern clears the last card from under the bar.</p></section>
+  <section class="demo-card"><h3><span class="kicker"></span>Almost there</h3><p>One more card and you've reached the end. Notice the top hairline and the soft glow above the dock — it floats without hiding the page behind it.</p></section>
+  <div class="eco-dock-spacer"></div>
+</div>
+
+<nav class="eco-dock" aria-label="Ecosystem">
+  <div class="eco-dock-bar">
+    <button class="eco-item is-active" type="button" aria-current="page">
+      <span class="eco-dot"></span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="7"/></svg>
+      <span class="eco-label">Hub</span>
+    </button>
+    <button class="eco-item" type="button">
+      <span class="eco-dot"></span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 7h14M5 12h14M5 17h9"/></svg>
+      <span class="eco-label">Ledger</span>
+    </button>
+    <button class="eco-plus" type="button" aria-expanded="false" aria-label="Create">
+      <span class="eco-plus-orb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
+    </button>
+    <div class="eco-menu" role="menu">
+      <button type="button" role="menuitem" data-action="new-room"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 20V9l8-5 8 5v11"/><path d="M10 20v-6h4v6"/></svg>New room</button>
+      <button type="button" role="menuitem" data-action="add-intelligence"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 3v18M5 8l14 8M19 8L5 16"/></svg>Add intelligence</button>
+      <button type="button" role="menuitem" data-action="scan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 8V4h4M16 4h4v4M20 16v4h-4M8 20H4v-4"/><circle cx="12" cy="12" r="3"/></svg>Scan</button>
+    </div>
+    <button class="eco-item" type="button">
+      <span class="eco-dot"></span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 20V9l8-5 8 5v11"/><path d="M10 20v-6h4v6"/></svg>
+      <span class="eco-label">Rooms</span>
+    </button>
+    <button class="eco-item" type="button">
+      <span class="eco-dot"></span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="5" y="5" width="6" height="6" rx="1.5"/><rect x="13" y="5" width="6" height="6" rx="1.5"/><rect x="5" y="13" width="6" height="6" rx="1.5"/><rect x="13" y="13" width="6" height="6" rx="1.5"/></svg>
+      <span class="eco-label">Spaces</span>
+    </button>
+  </div>
+</nav>
+<script src="eco-dock.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+/* Smart Block: n4-pred
+ * Source: Naya Design Standard Showcase (1).html (byte-true extraction, not rewritten)
+ * Type: data
+ * Extracted: 2026-10-09
+ */
+
+/* ---- component rules ---- */
+
+.pred{font-family:ui-monospace,Menlo,monospace; font-size:14px; color:#fff;
+  border-bottom:1px solid rgba(255,255,255,.1); padding:8px 0; display:flex; align-items:center; gap:10px;}
+
+.pred .jw{width:20px; height:20px; font-size:10px; border-radius:6px; flex:none;}
+
+.pred span.pred-name{flex:1; min-width:0; overflow-wrap:anywhere; word-break:break-word;}
+
+.pred b{color:var(--chrome); white-space:nowrap;}
+
+@media (max-width:700px) {
+.pred{flex-wrap:wrap; gap:6px 10px;}
+.pred span.pred-name{flex:1 1 140px;}
+}

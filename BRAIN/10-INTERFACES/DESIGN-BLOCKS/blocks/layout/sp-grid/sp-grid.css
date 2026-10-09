@@ -1,0 +1,18 @@
+/* sp-grid — responsive Smart Spaces grid.
+   Full-width, no max-width cap; gap rhythm matches sp-card (22px desktop / 18px mobile).
+   Collapses to a single column at the page's 760px breakpoint. */
+.sp-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(300px, 1fr));
+  gap:22px;
+  align-items:start;
+  width:100%;
+}
+.sp-grid--tight{ gap:16px; }
+.sp-grid--loose{ gap:28px; }
+@media(max-width:760px){
+  .sp-grid{ grid-template-columns:1fr; gap:18px; }
+}
+@media(prefers-reduced-motion:reduce){
+  .sp-grid > *{ transition:none; animation:none; }
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>li-ekg specimen</title>
+<link rel="stylesheet" href="li-ekg.css">
+<style>html,body{margin:0;background:#020202;padding:24px;}.li-stage{position:relative;min-height:220px;}</style>
+</head>
+<body>
+<div class="li-stage">
+
+  <svg class="li-ekg" viewBox="0 0 1200 220" preserveAspectRatio="none">
+    <defs>
+      <linearGradient id="li-ekg-grad" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#a855f7"/><stop offset="0.15" stop-color="#6366f1"/>
+        <stop offset="0.28" stop-color="#22d3ee"/><stop offset="0.4" stop-color="#16a34a"/>
+        <stop offset="0.52" stop-color="#a3e635"/><stop offset="0.62" stop-color="#ffea00"/>
+        <stop offset="0.72" stop-color="#d4a017"/><stop offset="0.82" stop-color="#ff8c42"/>
+        <stop offset="0.92" stop-color="#ff5e6c"/><stop offset="1" stop-color="#ec4899"/>
+      </linearGradient>
+    </defs>
+    <path class="li-ekg-base" d="{{ekg-path}}"/>
+    <path class="li-ekg-flow" d="{{ekg-path}}"/>
+    <circle class="li-ekg-dot" r="7">
+      <animateMotion dur="9s" repeatCount="indefinite" path="{{ekg-path}}"/>
+    </circle>
+  </svg>
+
+</div>
+</body>
+</html>

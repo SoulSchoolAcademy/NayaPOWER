@@ -1,0 +1,14 @@
+/* Smart Block: type-scale — byte-true from Naya Epic Elements - Lego pieces N5.html */
+.type-spec { border-bottom: 1px solid rgba(255,255,255,.08); padding: 22px 0; display: flex; align-items: baseline; gap: 32px; flex-wrap: wrap; }
+
+.type-spec .t-label { min-width: 220px; }
+
+.type-64 { font-size: 64px; font-family: Georgia, serif; }
+
+.type-40 { font-size: 40px; font-family: Georgia, serif; }
+
+.type-24 { font-size: 24px; font-weight: 700; }
+
+.type-18 { font-size: 18px; }
+
+.type-14 { font-size: 14px; color: var(--quiet); }

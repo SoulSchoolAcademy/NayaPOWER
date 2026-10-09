@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Block: question-card</title>
+<link rel="stylesheet" href="question-card.css">
+<style>
+/* SPECIMEN ONLY — page ground + tokens normally provided by tokens.css */
+:root{
+  --bg:#020204;--surface:#09090d;--surface2:#101016;
+  --text:#f8f7fb;--muted:#aaa7b3;
+  --purple:#8a5cff;--purple2:#b895ff;--gold:#ffd45a;--green:#35e39b;--blue:#3ca8ff;--violet:#765cff;--magenta:#ed42c4;
+  --line:rgba(255,255,255,.11);
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
+html,body{margin:0;padding:0}
+body{background:#020204;color:#f8f7fb;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;min-height:100vh;display:grid;place-items:center;padding:48px 20px;box-sizing:border-box}
+.demo{width:min(680px,100%)}
+.demo-note{font-size:12px;color:#aaa7b3;margin:0 0 18px;letter-spacing:.04em}
+</style>
+</head>
+<body>
+<div class="demo">
+  <p class="demo-note">SPECIMEN — question-area/answers markup is verbatim from the source body; the answer buttons are JS-rendered in the source (converted here to static HTML, dynamic parts in {{ }}).</p>
+
+  <div
+    class="question-area"
+    id="questionArea"
+  >
+
+    <div
+      class="question-label"
+      id="questionLabel"
+    >
+      AI CRAFTSMANSHIP
+    </div>
+
+    <h1
+      class="question-title"
+      id="questionTitle"
+    >{{question text — e.g. "When AI gives you something useful, what do you usually do next?"}}</h1>
+
+    <div
+      class="question-rule"
+      aria-hidden="true"
+    ></div>
+
+  </div>
+
+
+  <div
+    class="answers"
+    id="answers"
+    role="group"
+    aria-label="Answer choices"
+  >
+
+    <button
+      type="button"
+      class="answer"
+      data-answer-id="{{a1}}"
+      style="--accent:#b895ff"
+      aria-pressed="false"
+    >
+      <span
+        class="jewel"
+        aria-hidden="true"
+      >
+        <span class="glyph">
+          ✦
+        </span>
+      </span>
+
+      <span class="answer-copy">
+
+        <span class="answer-title">
+          Put it straight to work
+        </span>
+
+        <span class="answer-sub">
+          I take what's useful and apply it immediately.
+        </span>
+
+      </span>
+
+      <span
+        class="chevron"
+        aria-hidden="true"
+      >
+        ›
+      </span>
+    </button>
+
+    <button
+      type="button"
+      class="answer selected"
+      data-answer-id="{{a2}}"
+      style="--accent:#35e39b"
+      aria-pressed="true"
+    >
+      <span
+        class="jewel"
+        aria-hidden="true"
+      >
+        <span class="glyph">
+          ◈
+        </span>
+      </span>
+
+      <span class="answer-copy">
+
+        <span class="answer-title">
+          Shape it first
+        </span>
+
+        <span class="answer-sub">
+          I refine and iterate until it fits exactly.
+        </span>
+
+      </span>
+
+      <span
+        class="chevron"
+        aria-hidden="true"
+      >
+        ›
+      </span>
+    </button>
+
+  </div>
+</div>
+</body>
+</html>

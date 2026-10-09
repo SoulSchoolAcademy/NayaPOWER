@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Smart Block: hub-shell</title>
+<link rel="stylesheet" href="hub-shell.css">
+<style>
+/* SPECIMEN ONLY — page ground + tokens normally provided by tokens.css */
+:root{
+  --bg:#050505;--ink:#F5F7FB;--muted:#AAB2BF;
+  --line:#ffffff18;--line-soft:#ffffff0d;
+  --purple:#9d75ff;--emerald:#55e39a;--gold:#f5c96b;
+  --ease:cubic-bezier(.16,.84,.22,1);--dur-med:.28s;
+  --depth-deep:0 20px 48px #000d;
+  --radius-md:13px;--radius-lg:18px;--radius-pill:999px;
+  --font:Inter,ui-sans-serif,system-ui,sans-serif;
+  --bg-panel:#0c0b10;--ink-dim:#c9cfda;
+}
+html,body{margin:0;padding:0}
+body{background:#050505;color:#F5F7FB;font-family:var(--font);min-height:100vh;box-sizing:border-box}
+.demo-note{font-size:12px;color:#AAB2BF;margin:0;letter-spacing:.04em;line-height:1.6}
+/* SPECIMEN ONLY — local toggle demo wiring target */
+.shell.rail-open .shell-rail{transform:translateX(0);opacity:1;pointer-events:auto}
+</style>
+</head>
+<body>
+
+<div class="shell" id="demo-shell">
+
+  <div class="shell-ambient" aria-hidden="true">
+    <div class="shell-wash w1"></div>
+    <div class="shell-wash w2"></div>
+    <div class="shell-wash w3"></div>
+    <span class="shell-mote m1"></span>
+    <span class="shell-mote m2"></span>
+    <span class="shell-mote m3"></span>
+    <span class="shell-mote m4"></span>
+  </div>
+
+  <header class="shell-topbar">
+    <a class="shell-brand" href="#/">
+      <span class="shell-jewel"></span>
+      <span class="shell-wordmark">NAYA</span>
+    </a>
+    <p class="shell-line">Your intelligence, at work.</p>
+    <div class="shell-topbar-actions">
+      <button class="shell-rail-toggle" id="rail-toggle" type="button" aria-label="Toggle rail" aria-expanded="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <aside class="shell-rail" aria-label="Navigation rail">
+    <div class="shell-rail-placeholder">
+      <b>RAIL SLOT</b>
+      This is where the rail block lands (e.g. <code>hub-rail</code> rail chrome). Desktop: fixed 280px column, collapsible. Mobile: off-canvas drawer. Tap the toggle in the topbar to collapse / open it.
+    </div>
+  </aside>
+
+  <main class="shell-outlet">
+    <p class="demo-note">SPECIMEN — the <code>hub-shell</code> chassis: topbar front door (wordmark + breathing jewel + one warm line), 280px rail slot, scrollable main outlet, dock slot. Full width, ambient washes drift on a 46s+ loop behind everything.</p>
+
+    <section class="shell-card">
+      <h3><span class="shell-card-kicker"></span>Morning brief, ready</h3>
+      <p>Three threads moved overnight: the Smart Blocks extraction wave is staged, the design-system near-duplicates are reconciled, and tonight's intelligence report is drafted. Highest leverage first — the blocks library.</p>
+    </section>
+
+    <section class="shell-card">
+      <h3><span class="shell-card-kicker"></span>Learning loop, compounding</h3>
+      <p>Two lessons promoted to CANDIDATE this week: the ambient-life language and the fail-closed collapse convention. Each one carries its provenance — where it was learned, what it cost, who decided.</p>
+    </section>
+
+    <section class="shell-card">
+      <h3><span class="shell-card-kicker"></span>Ten holes, ranked</h3>
+      <p>The biggest gap is still production proof: implementation exists, verification is partial, production evidence is thin. The scoring is honest, the math decides, and the work never waits.</p>
+    </section>
+
+  </main>
+
+  <div class="shell-dock">
+    <div class="shell-dock-placeholder">DOCK SLOT — <code>layout/eco-dock</code> lands here, fixed to the viewport bottom.</div>
+  </div>
+
+</div>
+
+<script>
+document.getElementById('rail-toggle').addEventListener('click', function(){
+  var shell = document.getElementById('demo-shell');
+  if (matchMedia('(max-width:760px)').matches) {
+    var open = shell.classList.toggle('rail-open');
+    this.setAttribute('aria-expanded', String(open));
+  } else {
+    var collapsed = shell.classList.toggle('rail-collapsed');
+    this.setAttribute('aria-expanded', String(!collapsed));
+  }
+});
+</script>
+</body>
+</html>

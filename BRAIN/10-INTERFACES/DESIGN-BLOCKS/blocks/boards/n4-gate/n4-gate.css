@@ -1,0 +1,24 @@
+/* Smart Block: n4-gate
+ * Source: Naya Design Standard Showcase (1).html (byte-true extraction, not rewritten)
+ * Type: boards
+ * Extracted: 2026-10-09
+ */
+
+/* ---- component rules ---- */
+
+.gate{border:2px solid #8a5cff; border-radius:20px; padding:32px;
+  background:linear-gradient(160deg,#0e0a18,#050508);
+  box-shadow:0 0 44px rgba(138,92,255,.25);}
+
+.gate ul{margin:16px 0 0; padding:0; list-style:none; display:flex; flex-direction:column;}
+
+.gate li{display:flex; gap:16px; align-items:flex-start; font-size:18px; color:#fff;
+  padding:13px 0; border-bottom:1px solid rgba(255,255,255,.09);}
+
+.gate li:last-child{border-bottom:none;}
+
+.gate .jw{width:28px; height:28px; font-size:13px; margin-top:1px;}
+
+@media (max-width:700px) {
+.gate{padding:22px 20px;}
+}

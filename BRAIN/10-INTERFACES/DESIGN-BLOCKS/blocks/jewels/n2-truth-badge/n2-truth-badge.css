@@ -1,0 +1,20 @@
+/* Smart Block: n2-truth-badge
+ * Source: Naya Design Elements N2.html (byte-true extraction, not rewritten)
+ * Type: jewels
+ * Extracted: 2026-10-09
+ */
+
+/* ---- component rules ---- */
+
+.truth{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:800;
+  letter-spacing:.12em;padding:7px 14px;border-radius:99px;border:1px solid rgba(255,255,255,.3);
+  background:rgba(0,0,0,.5);color:#fff}
+
+.truth .tdot{width:8px;height:8px;border-radius:50%;background:var(--tc,#9d75ff);
+  box-shadow:0 0 10px var(--tc,#9d75ff)}
+
+.truth.live{--tc:#35e39b}
+
+.truth.demo{--tc:#ffd45a}
+
+.truth.local{--tc:#3ca8ff}

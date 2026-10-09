@@ -1,0 +1,291 @@
+/* interest-select — extracted verbatim from Maxis App Design.html */
+.continue-button,
+.primary-black{
+  position:relative;
+  min-width:190px;
+  min-height:54px;
+  padding:0 22px;
+  border-radius:18px;
+  border:1px solid rgba(181,140,255,.78);
+  color:#fff;
+  background:
+    linear-gradient(
+      180deg,
+      #15151a,
+      #08080b
+    );
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.09),
+    0 12px 28px rgba(0,0,0,.62),
+    0 0 28px rgba(116,55,223,.15);
+  font-size:14px;
+  font-weight:950;
+  cursor:pointer;
+  transition:
+    transform .22s var(--ease),
+    border-color .22s ease,
+    box-shadow .22s ease,
+    background .22s ease;
+}
+.continue-button::before,
+.primary-black::before{
+  content:"";
+  position:absolute;
+  left:10%;
+  right:10%;
+  top:5px;
+  height:1px;
+  background:rgba(255,255,255,.45);
+}
+.continue-button:hover:not(:disabled),
+.primary-black:hover{
+  transform:translateY(-2px);
+  border-color:#c5a8ff;
+  background:
+    linear-gradient(
+      180deg,
+      #1b1721,
+      #09090d
+    );
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.13),
+    0 15px 35px rgba(0,0,0,.66),
+    0 0 42px rgba(155,96,255,.30);
+}
+.button-arrow{
+  display:inline-block;
+  margin-left:8px;
+  font-size:17px;
+  transition:transform .22s var(--ease);
+}
+.continue-button:hover:not(:disabled) .button-arrow{
+  transform:translateX(3px);
+}
+.interests{
+  display:none;
+  width:min(1060px,100%);
+  margin:auto;
+  text-align:center;
+}
+.interests.visible{
+  display:block;
+  animation:resultIn .55s var(--ease) both;
+}
+.interest-eyebrow{
+  color:#b895ff;
+  font-size:10px;
+  font-weight:950;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+}
+.interest-title{
+  margin:10px auto 0;
+  max-width:800px;
+  font-size:clamp(30px,5vw,52px);
+  line-height:1.02;
+  letter-spacing:-.045em;
+  font-weight:950;
+}
+.interest-intro{
+  max-width:700px;
+  margin:16px auto 0;
+  color:#c6c2cc;
+  font-size:16px;
+  line-height:1.55;
+}
+.interest-board{
+  display:none;
+  margin-top:30px;
+}
+.interest-board.active{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:13px;
+  animation:boardIn .35s var(--ease) both;
+}
+.interest-area{
+  --interest:#8a5cff;
+  position:relative;
+  min-height:108px;
+  padding:19px 20px;
+  text-align:left;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:28px;
+  background:
+    radial-gradient(
+      circle at 20% 10%,
+      color-mix(
+        in srgb,
+        var(--interest) 12%,
+        transparent
+      ),
+      transparent 55%
+    ),
+    linear-gradient(
+      145deg,
+      #131219,
+      #08080c
+    );
+  cursor:pointer;
+  color:#fff;
+  transition:
+    transform .22s var(--ease),
+    border-color .22s ease,
+    box-shadow .22s ease;
+}
+.interest-area:hover{
+  transform:translateY(-3px);
+  border-color:color-mix(
+    in srgb,
+    var(--interest) 55%,
+    white 10%
+  );
+  box-shadow:
+    0 15px 35px rgba(0,0,0,.42),
+    0 0 25px color-mix(
+      in srgb,
+      var(--interest) 14%,
+      transparent
+    );
+}
+.interest-area.selected{
+  border-color:var(--interest);
+  box-shadow:
+    0 15px 35px rgba(0,0,0,.48),
+    0 0 35px color-mix(
+      in srgb,
+      var(--interest) 20%,
+      transparent
+    ),
+    inset 0 1px 0 rgba(255,255,255,.10);
+}
+.interest-orb{
+  width:42px;
+  height:42px;
+  display:grid;
+  place-items:center;
+  float:left;
+  margin-right:13px;
+  border-radius:50%;
+  background:
+    radial-gradient(
+      circle at 30% 20%,
+      #fff,
+      var(--interest) 42%,
+      #100b1d 100%
+    );
+  border:1px solid rgba(255,255,255,.65);
+  box-shadow:
+    inset 0 2px 4px rgba(255,255,255,.65),
+    0 0 20px color-mix(
+      in srgb,
+      var(--interest) 25%,
+      transparent
+    );
+}
+.interest-check{
+  opacity:0;
+  font-size:18px;
+  font-weight:950;
+}
+.interest-area.selected .interest-check{
+  opacity:1;
+}
+.interest-name{
+  display:block;
+  padding-top:2px;
+  font-size:16px;
+  line-height:1.2;
+  font-weight:950;
+}
+.interest-description{
+  display:block;
+  margin-top:7px;
+  color:#b9b5c0;
+  font-size:12px;
+  line-height:1.35;
+  font-weight:600;
+}
+.board-dots{
+  display:flex;
+  justify-content:center;
+  gap:7px;
+  margin-top:23px;
+}
+.board-dot{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#3b3941;
+  transition:.2s ease;
+}
+.board-dot.active{
+  width:24px;
+  border-radius:99px;
+  background:#b895ff;
+  box-shadow:0 0 14px rgba(184,149,255,.55);
+}
+.interest-actions{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  margin-top:24px;
+}
+.interest-actions .primary-black{
+  min-width:220px;
+}
+.interest-skip{
+  border:0;
+  background:transparent;
+  color:#898591;
+  cursor:pointer;
+  font-size:13px;
+  font-weight:800;
+}
+.interest-skip:hover{
+  color:#fff;
+}
+.interest-pill{
+  padding:9px 14px;
+  border-radius:999px;
+  border:1px solid rgba(181,140,255,.24);
+  background:rgba(138,92,255,.07);
+  color:#ddd5ef;
+  font-size:12px;
+  font-weight:850;
+}
+@media print {
+.maxess-app::before,
+  .maxess-app::after,
+  .topbar,
+  .footer,
+  .command-row,
+  .interstitial,
+  .interest-actions,
+  .result-actions,
+  .final-cta .cta-actions{
+    display:none!important;
+  }
+}
+@media(max-width:760px) {
+.interest-title{
+    font-size:31px;
+  }
+.interest-board.active{
+    grid-template-columns:1fr;
+  }
+.interest-area{
+    min-height:92px;
+    border-radius:23px;
+  }
+}
+@keyframes boardIn{
+  from{
+    opacity:0;
+    transform:translateX(12px);
+  }
+  to{
+    opacity:1;
+    transform:none;
+  }
+}

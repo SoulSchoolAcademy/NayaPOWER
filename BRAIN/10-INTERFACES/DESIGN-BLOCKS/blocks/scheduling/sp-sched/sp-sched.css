@@ -1,0 +1,43 @@
+/* sp-sched — extracted VERBATIM from "Smart Spaces Page Design.html" <style> block (source order preserved). */
+.sp-sched-btn, .sp-post-btn{
+  padding:10px 20px; border-radius:999px; font-size:11px; font-weight:800; letter-spacing:.08em;
+  cursor:pointer; font-family:inherit;
+}
+.sp-sched-btn{
+  color:#c9cdd8; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.15);
+}
+.sp-sched-btn.set{ border-color:#7c3aed; color:#a78bfa; }
+.sp-sched-badge{
+  font-size:10px; font-weight:800; color:#a78bfa;
+  background:rgba(157,117,255,.12); border:1px solid rgba(157,117,255,.35);
+  border-radius:99px; padding:4px 12px;
+}
+.sp-sched-tabs{ display:flex; gap:8px; margin-bottom:16px; }
+.sp-sched-tab{
+  flex:1; padding:10px; border-radius:12px; font-size:11px; font-weight:800; letter-spacing:.08em;
+  cursor:pointer; font-family:inherit; color:#8a8a96;
+  background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12);
+}
+.sp-sched-tab.on{ color:#a78bfa; border-color:#7c3aed; background:rgba(157,117,255,.12); }
+.sp-sched-body{ margin-bottom:12px; }
+.sp-sched-body input[type="date"], .sp-sched-body input[type="time"]{ color-scheme:dark; }
+.sp-days-row{ display:flex; gap:8px; margin-bottom:8px; }
+.sp-day-btn{
+  width:40px; height:40px; border-radius:50%; font-size:13px; font-weight:800;
+  cursor:pointer; font-family:inherit; color:#8a8a96;
+  background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.15);
+}
+.sp-day-btn.on{ color:#fff; border-color:#7c3aed; background:rgba(157,117,255,.2); box-shadow:0 0 12px -2px #7c3aed; }
+.sp-month-grid{ display:grid; grid-template-columns:repeat(7,1fr); gap:6px; margin-bottom:8px; }
+.sp-dom-btn{
+  aspect-ratio:1; border-radius:10px; font-size:12px; font-weight:700;
+  cursor:pointer; font-family:inherit; color:#8a8a96;
+  background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12);
+}
+.sp-dom-btn.on{ color:#fff; border-color:#7c3aed; background:rgba(157,117,255,.2); }
+.sp-sched-summary{
+  padding:14px 18px; border-radius:12px; margin:12px 0;
+  font-size:13px; font-weight:600; color:#a78bfa;
+  background:rgba(157,117,255,.08); border:1px solid rgba(157,117,255,.25);
+}
+.sp-tz{ font-size:11px; color:#5b5f6e; margin-bottom:8px; }

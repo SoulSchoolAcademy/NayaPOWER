@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>sp-invite — specimen</title>
+<link rel="stylesheet" href="sp-invite.css">
+<style>
+  body{margin:0;background:#050507;color:#e8eaf2;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;padding:32px 20px;}
+  .demo{max-width:520px;margin:0 auto;display:grid;gap:22px;align-content:start;}
+  .cap{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#8b93a3;}
+</style>
+</head>
+<body>
+<div class="demo">
+<div class="cap">Invite rows</div>
+<div class="sp-invite-list">
+  <div class="sp-invite-row">
+    <div class="sp-ava sm" style="--cc:#0d9e6f">J</div>
+    <span class="sp-invite-name">Jo</span>
+    <button class="sp-invite-add">＋ Invite</button>
+  </div>
+  <div class="sp-invite-row">
+    <div class="sp-ava sm" style="--cc:#d4a017">A</div>
+    <span class="sp-invite-name">Ari</span>
+    <button class="sp-invite-add">＋ Invite</button>
+  </div>
+</div>
+<div class="cap">Invited-for-you strip (chips ride inside sp-marquee)</div>
+<div class="sp-invited">
+  <div class="sp-invited-title">✨ Invited for you — tap to step into a room</div>
+  <!-- link ../../layout/sp-marquee/sp-marquee.css for the scrolling track -->
+<div class="sp-marquee">
+    <div class="sp-marquee-track">
+      <button class="sp-inv-chip" style="--sc:#7c3aed"><span class="sp-inv-chip-name">Builders Collective</span><span class="sp-inv-chip-join">Join →</span></button>
+      <button class="sp-inv-chip" style="--sc:#1e6fd9"><span class="sp-inv-chip-name">NayaNET Vision</span><span class="sp-inv-chip-join">Join →</span></button>
+      <button class="sp-inv-chip" style="--sc:#0d9e6f"><span class="sp-inv-chip-name">Health Lab</span><span class="sp-inv-chip-join">Join →</span></button>
+    </div>
+  </div>
+</div>
+</div>
+</body>
+</html>

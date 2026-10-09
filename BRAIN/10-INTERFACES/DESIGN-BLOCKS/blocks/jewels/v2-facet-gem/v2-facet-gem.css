@@ -1,0 +1,7 @@
+:root{--bg:#06060a;--base:#0b0b12;--rise:#15141f;--white:#fff;--purple:#9d75ff;--indigo:#7285ff;--blue:#55b9ee;--teal:#40d3bb;--emerald:#55e39a;--lime:#b8ee57;--gold:#e8b64c;--orange:#ff9557;--red:#ff5e6c;--magenta:#ed58cd;--ease:cubic-bezier(.16,.84,.22,1)}
+
+.jewel{width:28px;height:34px;display:inline-block;flex:none;position:relative;filter:drop-shadow(0 0 8px var(--c))}
+
+.jewel:before{content:"";position:absolute;inset:0;clip-path:polygon(50% 0%,91% 28%,79% 80%,50% 100%,21% 80%,9% 28%);background:linear-gradient(132deg,#fff 0%,var(--c) 42%,#181324 94%);border:1px solid #fff}
+
+.jewel:after{content:"";position:absolute;left:50%;top:2px;bottom:2px;width:1px;background:#ffffffad;box-shadow:0 0 12px #fff6;transform:translateX(-50%)}

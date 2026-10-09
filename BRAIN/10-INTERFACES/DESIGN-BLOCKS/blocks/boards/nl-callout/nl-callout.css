@@ -1,0 +1,4 @@
+/* Smart Block: nl-callout — byte-true from Naya Epic Elements - Lego pieces N5.html */
+.callout { border: 1px solid var(--magenta); border-radius: var(--r-lg); padding: 26px 30px; margin: 32px 0; background: rgba(232,79,255,.05); box-shadow: 0 0 40px -12px rgba(232,79,255,.4); }
+
+.callout p { margin: 0; font-size: 17px; }

@@ -1,0 +1,12 @@
+/* Smart Block: code-block — byte-true from Naya Epic Elements - Lego pieces N5.html */
+.micro { font-size: 14px; color: var(--secondary); }
+
+pre.code { background: #0a0d14; border: 1px solid var(--line); border-radius: 14px; padding: 20px 22px; overflow-x: auto; font-size: 14px; line-height: 1.7; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; color: #d7e0f5; margin: 20px 0; white-space: pre-wrap; word-break: break-word; }
+
+.code-head { display: flex; justify-content: space-between; align-items: center; margin: 28px 0 -12px; }
+
+.code-head .micro { letter-spacing: .18em; text-transform: uppercase; }
+
+.copy-btn { background: var(--raise); border: 1px solid var(--line); color: var(--white); border-radius: 8px; padding: 6px 14px; font-size: 13px; cursor: pointer; }
+
+.copy-btn:hover { border-color: var(--soul); }

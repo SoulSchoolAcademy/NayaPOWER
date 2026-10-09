@@ -1,0 +1,4 @@
+/* Smart Block: nl-sw — byte-true from Naya Epic Elements - Lego pieces N5.html */
+.sw { width: 52px; height: 52px; border-radius: 16px; border: 2px solid rgba(255,255,255,.35); cursor: pointer; background: radial-gradient(circle at 32% 28%, rgba(255,255,255,.7), transparent 45%), var(--c); box-shadow: 0 0 18px var(--c); transition: transform .18s; }
+
+.sw:hover { transform: translateY(-3px) scale(1.06); }

@@ -1,0 +1,147 @@
+/* Smart Block: eco-dock — bottom ecosystem bar. Fixed quick-switcher + central
+   plus menu. Safe-area aware, top hairline + soft top glow, 44px targets,
+   :active mirrors :hover, prefers-reduced-motion kills the breathing. */
+
+.eco-dock{
+  position:fixed;
+  left:0;right:0;bottom:0;
+  z-index:50;
+  padding-bottom:max(12px, env(safe-area-inset-bottom));
+  padding-left:max(10px, env(safe-area-inset-left));
+  padding-right:max(10px, env(safe-area-inset-right));
+  background:color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border-top:1px solid var(--line);
+  box-shadow:0 -1px 0 #ffffff08, 0 -14px 40px #000c, 0 -2px 24px #9d75ff14;
+}
+.eco-dock-bar{
+  position:relative;
+  display:flex;align-items:center;justify-content:center;
+  gap:4px;
+  min-height:64px;
+  padding:8px 0 0;
+}
+
+/* quick-switcher items */
+.eco-item{
+  position:relative;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:3px;
+  min-width:56px;min-height:52px;
+  padding:4px 6px 2px;
+  background:none;border:0;border-radius:var(--radius-md);
+  color:var(--muted);
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+  transition:color var(--dur-med) var(--ease), background var(--dur-med) var(--ease), transform var(--dur-med) var(--ease);
+}
+.eco-item svg{width:24px;height:24px;flex:0 0 24px}
+.eco-item .eco-label{font-size:10.5px;letter-spacing:.04em;color:var(--muted)}
+.eco-item:hover,.eco-item:active{
+  color:var(--ink);
+  background:#ffffff0a;
+  transform:translateY(-1px);
+}
+.eco-item:hover .eco-label,.eco-item:active .eco-label{color:var(--ink-dim)}
+
+/* active item: breathing jewel dot + lifted tint, no full-color fills */
+.eco-item .eco-dot{
+  position:absolute;top:2px;left:50%;
+  width:6px;height:6px;border-radius:50%;
+  transform:translateX(-50%) scale(0);
+  background:var(--emerald);
+  box-shadow:0 0 8px var(--emerald),0 0 16px #55e39a55;
+  transition:transform var(--dur-med) var(--ease);
+}
+.eco-item.is-active{
+  color:var(--ink);
+  background:#ffffff10;
+  box-shadow:inset 0 1px #ffffff12;
+}
+.eco-item.is-active .eco-dot{
+  transform:translateX(-50%) scale(1);
+  animation:eco-breathe 4.2s ease-in-out infinite;
+}
+.eco-item.is-active .eco-label{color:var(--ink-dim)}
+@keyframes eco-breathe{
+  0%,100%{opacity:.8}
+  50%{opacity:1}
+}
+
+/* central plus button */
+.eco-plus{
+  position:relative;
+  min-width:56px;min-height:52px;
+  display:flex;align-items:center;justify-content:center;
+  background:none;border:0;cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+}
+.eco-plus .eco-plus-orb{
+  width:48px;height:48px;border-radius:50%;
+  display:grid;place-items:center;
+  color:#fff;
+  border:1px solid #9d75ff88;
+  background:radial-gradient(circle at 35% 30%, #b79bff, #7a5ae0 55%, #4a3490 100%);
+  box-shadow:
+    inset 0 1px #ffffff55,
+    inset 0 -3px 8px #00000055,
+    0 0 22px #9d75ff66,
+    0 8px 20px #000c;
+  transition:transform var(--dur-med) var(--ease), box-shadow var(--dur-med) var(--ease);
+}
+.eco-plus .eco-plus-orb svg{width:22px;height:22px;transition:transform var(--dur-med) var(--ease)}
+.eco-plus:hover .eco-plus-orb,
+.eco-plus:active .eco-plus-orb{
+  transform:translateY(-2px) scale(1.05);
+  box-shadow:
+    inset 0 1px #ffffff66,
+    inset 0 -3px 8px #00000055,
+    0 0 34px #9d75ffaa,
+    0 10px 24px #000c;
+}
+.eco-plus[aria-expanded="true"] .eco-plus-orb svg{transform:rotate(45deg)}
+
+/* the radial/row menu */
+.eco-menu{
+  position:absolute;
+  bottom:calc(100% + 10px);
+  left:50%;transform:translateX(-50%) translateY(8px);
+  display:flex;flex-direction:column;gap:6px;
+  min-width:220px;
+  padding:10px;
+  border:1px solid var(--line);
+  border-radius:var(--radius-lg);
+  background:color-mix(in srgb, var(--bg-panel) 92%, transparent);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  box-shadow:inset 0 1px #ffffff14, var(--depth-deep), 0 0 24px #9d75ff22;
+  opacity:0;pointer-events:none;
+  transition:opacity var(--dur-med) var(--ease), transform var(--dur-med) var(--ease);
+}
+.eco-plus[aria-expanded="true"] + .eco-menu{
+  opacity:1;pointer-events:auto;
+  transform:translateX(-50%) translateY(0);
+}
+.eco-menu button{
+  display:flex;align-items:center;gap:12px;
+  min-height:44px;
+  padding:8px 12px;
+  border:0;border-radius:var(--radius-md);
+  background:transparent;color:var(--ink-dim);
+  font-size:14px;font-family:inherit;text-align:left;
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+  transition:background var(--dur-med) var(--ease), color var(--dur-med) var(--ease);
+}
+.eco-menu button svg{width:20px;height:20px;flex:0 0 20px;color:var(--muted)}
+.eco-menu button:hover,.eco-menu button:active{
+  background:#ffffff0f;color:var(--ink);
+}
+.eco-menu button:hover svg,.eco-menu button:active svg{color:var(--purple)}
+
+/* keep dock clear of the shell outlet scroll area */
+.eco-dock-spacer{height:96px;flex:0 0 96px}
+
+@media (prefers-reduced-motion:reduce){
+  .eco-item .eco-dot,.eco-item.is-active .eco-dot{animation:none}
+  .eco-item,.eco-item svg,.eco-item .eco-dot,.eco-plus .eco-plus-orb,.eco-plus .eco-plus-orb svg,.eco-menu,.eco-menu button{transition:none}
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Block: add-intel</title>
+<link rel="stylesheet" href="add-intel.css">
+<style>
+/* SPECIMEN ONLY — page ground + tokens normally provided by tokens.css */
+:root{
+  --bg:#050505;
+  --ink:#F5F7FB;--muted:#AAB2BF;--ink-dim:#c9cfda;
+  --line:#ffffff18;--line-soft:#ffffff0d;
+  --purple:#9d75ff;--emerald:#55e39a;--gold:#f5c96b;
+  --ease:cubic-bezier(.16,.84,.22,1);--dur-med:.28s;
+  --depth-deep:0 20px 48px #000d;
+  --radius-md:13px;--radius-lg:18px;--radius-pill:999px;
+  --font:Inter,ui-sans-serif,system-ui,sans-serif;
+  --bg-panel:#0c0b10;
+}
+html,body{margin:0;padding:0}
+body{background:#050505;color:#F5F7FB;font-family:var(--font);min-height:100vh;padding:48px 20px;box-sizing:border-box}
+.demo{max-width:760px;margin:0 auto;display:grid;gap:26px}
+.demo-note{font-size:12px;color:#AAB2BF;margin:0;letter-spacing:.04em}
+.demo h2{font-size:24px;font-weight:700;margin:0}
+.demo .sub{font-size:18px;color:var(--muted);margin:0;font-weight:400}
+.demo-section{display:grid;gap:12px}
+.demo-caption{font-size:12px;color:var(--muted);margin:0}
+.demo-event{font-size:12px;color:var(--emerald);margin:0;min-height:18px}
+</style>
+</head>
+<body>
+<div class="demo">
+  <p class="demo-note">SPECIMEN — the “add intelligence” composer entry: a button that looks like an input. Idle (breathing plus jewel), the listening state (forced here with <code>.is-open</code>; on a real page it appears on keyboard focus), and the hover note below. Clicking a pill below fires <code>add-intel:open</code> — watch the receipt line.</p>
+
+  <section class="demo-section">
+    <h2>Capture</h2>
+    <p class="sub">Everything you notice becomes something Naya can learn from.</p>
+
+    <button class="add-intel" type="button" aria-label="Add to the intelligence — opens the composer">
+      <span class="add-intel-plus" aria-hidden="true"></span>
+      <span class="add-intel-copy">
+        <span class="add-intel-title">Add to the intelligence…</span>
+        <span class="add-intel-sub">What did you learn today?</span>
+      </span>
+      <span class="add-intel-action">Add</span>
+    </button>
+    <p class="demo-caption">Idle state: quiet, elevated, the plus jewel breathing (alive at rest). Hover lifts the pill and ignites the purple edge; press compresses it.</p>
+  </section>
+
+  <section class="demo-section">
+    <h2>Listening</h2>
+    <p class="sub">The honest state — the pill says it is paying attention.</p>
+
+    <button class="add-intel is-open" type="button" aria-label="Add to the intelligence — opens the composer">
+      <span class="add-intel-plus" aria-hidden="true"></span>
+      <span class="add-intel-copy">
+        <span class="add-intel-title">Add to the intelligence…</span>
+        <span class="add-intel-sub">I’m listening — tell me what happened.</span>
+      </span>
+      <span class="add-intel-action">Add</span>
+    </button>
+    <p class="demo-caption"><code>.is-open</code> simulates the <code>:focus-visible</code> listening state for the screenshot: purple hairline + soft outer glow. In real use, Tab to the pill and press Enter to open the composer.</p>
+  </section>
+
+  <p class="demo-event" id="event-receipt" role="status"></p>
+</div>
+<script src="add-intel.js"></script>
+<script>
+document.addEventListener('add-intel:open', function (e) {
+  var r = document.getElementById('event-receipt');
+  r.textContent = 'add-intel:open fired — a page would open its composer now.';
+  clearTimeout(window.__addIntelT);
+  window.__addIntelT = setTimeout(function () { r.textContent = ''; }, 4000);
+});
+</script>
+</body>
+</html>

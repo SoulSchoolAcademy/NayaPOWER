@@ -1,0 +1,25 @@
+/* Smart Block: send-cta — byte-true from Naya Beautiful Button Set N4.html */
+.send-cta { --sc: #3fb8ff; position: relative; overflow: hidden; padding: 20px 44px; font-size: 14px; font-weight: 800; letter-spacing: .18em; border-radius: 18px; cursor: pointer; font-family: inherit; color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,.7); background: linear-gradient(180deg, #203040 0%, #0d1622 55%, #05080d 100%); border: 1px solid color-mix(in srgb, var(--sc) 55%, transparent); box-shadow: inset 0 1px 0 rgba(255,255,255,.18), inset 0 -3px 10px rgba(0,0,0,.55), 0 0 36px -6px var(--sc), 0 16px 40px rgba(0,0,0,.6); transition: all .22s var(--ease); }
+
+.send-cta::after { content: ""; position: absolute; inset: 0; background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,.16) 50%, transparent 60%); transform: translateX(-110%); pointer-events: none; }
+
+.send-cta:hover { transform: translateY(-3px); border-color: var(--sc); box-shadow: inset 0 1px 0 rgba(255,255,255,.22), inset 0 -3px 10px rgba(0,0,0,.5), 0 0 48px -4px var(--sc), 0 20px 48px rgba(0,0,0,.65); }
+
+.send-cta:hover::after { transform: translateX(110%); transition: transform .8s var(--ease); }
+
+.send-cta:active { transform: translateY(0) scale(.98); }
+
+.seg-tab, .like-pill, .act-chip, .tog-chip, .day-dot, .send-cta { position: relative; }
+
+.seg-tab::before, .like-pill::before, .act-chip::before, .tog-chip::before, .day-dot::before, .send-cta::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit;
+  z-index: 0; pointer-events: none; opacity: 0; transition: opacity .28s var(--ease);
+  background: radial-gradient(110px 110px at var(--mx,50%) var(--my,50%), rgba(255,255,255,.14), rgba(255,255,255,.03) 45%, transparent 68%);
+}
+
+.seg-tab.lv-aware::before, .like-pill.lv-aware::before, .act-chip.lv-aware::before,
+.tog-chip.lv-aware::before, .day-dot.lv-aware::before, .send-cta.lv-aware::before { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .seg-tab::before, .like-pill::before, .act-chip::before, .tog-chip::before, .day-dot::before, .send-cta::before { display: none; }
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Block: app-shell &mdash; specimen</title>
+<link rel="stylesheet" href="../../tokens/design-tokens/design-tokens.css">
+<link rel="stylesheet" href="app-shell.css">
+<style>
+/* specimen chrome only -- not part of the block */
+body{background:#050507;color:#f8f7fb;font:500 16px/1.6 Manrope,ui-sans-serif,system-ui,sans-serif;margin:0;padding:48px 20px}
+.spec-note{max-width:960px;margin:0 auto 28px;color:#c8c2ce;font-size:13px;letter-spacing:.04em}
+.spec-stage{max-width:960px;margin:0 auto}
+</style>
+</head>
+<body>
+<p class="spec-note">SMART BLOCK SPECIMEN &middot; <b>app-shell</b> &middot; App chassis: 230px sidebar + main grid, intelligence header, metrics row, board well. &mdash; markup and CSS extracted byte-true from <i>Naya Building Blocks - The Ultimate Design System - Naya 2.html</i>.</p>
+<div class="spec-stage">
+<svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden"><defs>
+<symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 2 2.1 7.9L22 12l-7.9 2.1L12 22l-2.1-7.9L2 12l7.9-2.1Z"/></symbol>
+<symbol id="i-book" viewBox="0 0 24 24"><path d="M12 6c-3-2-6-2-9-1v13c3-1 6-1 9 1m0-13c3-2 6-2 9-1v13c-3-1-6-1-9 1V6Z"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+</defs></svg>
+<div class="app-shell"><aside class="app-side"><div class="app-intelligence"><span class="sphere" style="--tone:#8d63f5;--rgb:141,99,245"><svg class="icon icon-sm"><use href="#i-spark"/></svg></span><span><b>Your intelligence</b><small>Connected and ready</small></span></div><nav class="app-nav" aria-label="Smart App rooms"><button aria-selected="true" data-room="Today" data-copy="What matters, what changed and the clearest next action." style="--tone:#e455f4"><span class="nav-jewel"></span>Today</button><button aria-selected="false" data-room="Reports" data-copy="Evidence turned into understanding—without burying the point." style="--tone:#6675ff"><span class="nav-jewel"></span>Reports</button><button aria-selected="false" data-room="Smart Spaces" data-copy="People and Nayas thinking together around a shared purpose." style="--tone:#34d38a"><span class="nav-jewel"></span>Smart Spaces</button><button aria-selected="false" data-room="Smart Mail" data-copy="Messages understood, prioritized and ready for human judgment." style="--tone:#3f9ff5"><span class="nav-jewel"></span>Smart Mail</button><button aria-selected="false" data-room="Smart Ledger" data-copy="A truthful view of what happened, what it proved and what follows." style="--tone:#e7c65a"><span class="nav-jewel"></span>Smart Ledger</button></nav></aside><div class="app-main"><div class="app-top"><h3 id="room-title">Today</h3><span class="truth-pill"><i></i>INTERACTIVE SPECIMEN</span></div><article class="app-board"><h4 id="room-head">Your day, already understood.</h4><p id="room-copy">What matters, what changed and the clearest next action.</p><div class="app-metrics"><div class="metric" style="--tone:#e455f4"><span class="metric-mark"><svg class="icon icon-sm"><use href="#i-spark"/></svg></span><b>What matters</b><span>Priority is explicit.</span></div><div class="metric" style="--tone:#3f9ff5"><span class="metric-mark"><svg class="icon icon-sm"><use href="#i-book"/></svg></span><b>What changed</b><span>Context stays visible.</span></div><div class="metric" style="--tone:#34d38a"><span class="metric-mark"><svg class="icon icon-sm"><use href="#i-arrow"/></svg></span><b>What happens next</b><span>Direction is clear.</span></div></div></article></div></div>
+</div>
+</body>
+</html>

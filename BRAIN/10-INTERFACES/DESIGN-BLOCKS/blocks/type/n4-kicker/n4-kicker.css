@@ -1,0 +1,10 @@
+/* Smart Block: n4-kicker
+ * Source: Naya Design Standard Showcase (1).html (byte-true extraction, not rewritten)
+ * Type: type
+ * Extracted: 2026-10-09
+ */
+
+/* ---- component rules ---- */
+
+.kicker{font-size:14px; font-weight:800; letter-spacing:.28em; text-transform:uppercase;
+  color:var(--kc,#8a5cff); margin:0 0 14px;}

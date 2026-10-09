@@ -1,0 +1,52 @@
+/* sp-magic-note — AI-drafted note preview card.
+   A gentle shimmer sweeps the card at rest (paused under prefers-reduced-motion);
+   Accept / Edit actions resolve the draft. Invitation copy throughout. */
+.sp-mnote{
+  --sc:#7c3aed;
+  position:relative; overflow:hidden;
+  border-radius:22px; padding:22px;
+  background:
+    radial-gradient(120% 90% at 20% 0%, color-mix(in srgb, var(--sc) 22%, transparent), transparent 55%),
+    linear-gradient(180deg, rgba(255,255,255,.075), rgba(255,255,255,.015));
+  border:1px solid color-mix(in srgb, var(--sc) 34%, rgba(255,255,255,.10));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.10), 0 24px 60px rgba(0,0,0,.55);
+}
+.sp-mnote::after{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:linear-gradient(105deg, transparent 40%, rgba(255,255,255,.07) 50%, transparent 60%);
+  transform:translateX(-100%);
+  animation:sp-mnote-shimmer 7s ease-in-out infinite;
+}
+@keyframes sp-mnote-shimmer{
+  0%, 55%{ transform:translateX(-100%); }
+  85%, 100%{ transform:translateX(100%); }
+}
+.sp-mnote-tag{
+  display:flex; align-items:center; gap:8px;
+  font-size:11px; font-weight:800; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--sc); margin-bottom:12px;
+}
+.sp-mnote-spark{ font-size:14px; filter:drop-shadow(0 0 6px var(--sc)); }
+.sp-mnote-text{
+  font-size:18px; line-height:1.6; color:#fff; margin:0 0 8px; font-style:italic;
+}
+.sp-mnote-sub{ font-size:14px; color:#8a8a96; margin:0 0 18px; }
+.sp-mnote-actions{ display:flex; gap:12px; flex-wrap:wrap; position:relative; z-index:1; }
+.sp-mnote-edit{
+  display:none; width:100%; box-sizing:border-box;
+  background:transparent; border:0; outline:none; resize:vertical;
+  font:inherit; font-size:18px; line-height:1.6; font-style:italic; color:#fff;
+  min-height:96px; padding:0; margin:0 0 8px; caret-color:var(--sc);
+}
+.sp-mnote.is-editing .sp-mnote-text{ display:none; }
+.sp-mnote.is-editing .sp-mnote-edit{ display:block; }
+.sp-mnote.is-done .sp-mnote-actions{ display:none; }
+.sp-mnote-done{
+  display:none; align-items:center; gap:10px; position:relative; z-index:1;
+  font-size:14px; font-weight:800; color:var(--sc);
+}
+.sp-mnote.is-done .sp-mnote-done{ display:flex; }
+.sp-mnote-done .sp-mnote-spark{ font-size:18px; }
+@media(prefers-reduced-motion:reduce){
+  .sp-mnote::after{ animation:none; display:none; }
+}

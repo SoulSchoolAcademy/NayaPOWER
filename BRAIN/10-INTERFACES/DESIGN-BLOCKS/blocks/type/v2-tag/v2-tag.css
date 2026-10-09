@@ -1,0 +1,5 @@
+:root{--bg:#06060a;--base:#0b0b12;--rise:#15141f;--white:#fff;--purple:#9d75ff;--indigo:#7285ff;--blue:#55b9ee;--teal:#40d3bb;--emerald:#55e39a;--lime:#b8ee57;--gold:#e8b64c;--orange:#ff9557;--red:#ff5e6c;--magenta:#ed58cd;--ease:cubic-bezier(.16,.84,.22,1)}
+
+.tag{font-size:14px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#fff;display:flex;align-items:center;gap:12px}
+
+.tag::before{content:"";display:inline-block;width:23px;height:23px;clip-path:polygon(50% 0%,95% 30%,82% 83%,50% 100%,18% 83%,5% 30%);background:radial-gradient(circle at 30% 22%,#fff,var(--c,#9d75ff) 40%,#261045 93%);box-shadow:0 0 20px var(--c,#9d75ff)}

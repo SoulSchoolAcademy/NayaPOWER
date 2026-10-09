@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>li-hero specimen</title>
+<link rel="stylesheet" href="li-hero.css">
+<link rel="stylesheet" href="../../data/li-ekg/li-ekg.css">
+<link rel="stylesheet" href="../../cards/li-card/li-card.css">
+<link rel="stylesheet" href="../../data/li-stat/li-stat.css">
+<style>html,body{margin:0;background:#020202;}</style>
+</head>
+<body>
+<div class="li-stage">
+
+  <section class="li-hero">
+    <div class="li-glow"></div>
+    <svg class="li-ekg" viewBox="0 0 1200 220" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="li-ekg-grad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#a855f7"/><stop offset="0.5" stop-color="#a3e635"/><stop offset="1" stop-color="#ec4899"/>
+        </linearGradient>
+      </defs>
+      <path class="li-ekg-base" d="{{ekg-path}}"/>
+      <path class="li-ekg-flow" d="{{ekg-path}}"/>
+      <circle class="li-ekg-dot" r="7"><animateMotion dur="9s" repeatCount="indefinite" path="{{ekg-path}}"/></circle>
+    </svg>
+    <div class="li-hero-over">
+      <p class="li-kicker"><span class="li-live-dot"></span><span> LIVING INTEL · LIVE</span></p>
+      <h1 class="li-title">The heartbeat of it all</h1>
+      <p class="li-sub">Every report, every note, every action, every connection — {{…}}</p>
+      <div class="li-stats">
+        <div class="li-stat"><span class="li-stat-n">{{n}}</span><span class="li-stat-l">ITEMS FLOWING</span></div>
+        <div class="li-stat"><span class="li-stat-n">{{n}}</span><span class="li-stat-l">SOURCES ALIVE</span></div>
+        <div class="li-stat"><span class="li-stat-n" data-ts="{{ts}}">{{time-ago}}</span><span class="li-stat-l">NEWEST</span></div>
+      </div>
+      <p class="li-sim"><span class="li-live-dot"></span><span> SIMULATED LIVE · demo beats arriving · flips to the real stream at launch</span></p>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

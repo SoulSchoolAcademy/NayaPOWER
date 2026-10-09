@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>sp-grid — specimen</title>
+<link rel="stylesheet" href="sp-grid.css">
+<style>
+  body{margin:0;background:#050507;color:#e8eaf2;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;padding:32px 20px;}
+  .demo{margin:0 auto;display:grid;gap:22px;align-content:start;}
+  .cap{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#8b93a3;}
+  /* stand-in cards so the grid rhythm reads without the sp-card block */
+  .mini{background:linear-gradient(180deg,#0d0c15,#07070c);border:1px solid rgba(255,255,255,.1);border-radius:22px;min-height:160px;box-shadow:inset 0 1px rgba(255,255,255,.06),0 18px 44px rgba(0,0,0,.55);}
+</style>
+</head>
+<body>
+<div class="demo">
+  <div class="cap">Spaces grid — auto-fill, 300px floor, 22px rhythm, 760px collapse</div>
+  <div class="sp-grid">
+    <div class="mini" style="border-color:color-mix(in srgb,#7c3aed 34%,transparent)"></div>
+    <div class="mini" style="border-color:color-mix(in srgb,#1e6fd9 34%,transparent)"></div>
+    <div class="mini" style="border-color:color-mix(in srgb,#0d9e6f 34%,transparent)"></div>
+    <div class="mini" style="border-color:color-mix(in srgb,#d4a017 34%,transparent)"></div>
+    <div class="mini" style="border-color:color-mix(in srgb,#d946ef 34%,transparent)"></div>
+    <div class="mini" style="border-color:color-mix(in srgb,#f97316 34%,transparent)"></div>
+  </div>
+</div>
+</body>
+</html>

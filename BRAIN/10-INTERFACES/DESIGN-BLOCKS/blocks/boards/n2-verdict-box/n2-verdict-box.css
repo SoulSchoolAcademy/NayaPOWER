@@ -1,0 +1,13 @@
+/* Smart Block: n2-verdict-box
+ * Source: Naya Design Elements N2.html (byte-true extraction, not rewritten)
+ * Type: boards
+ * Extracted: 2026-10-09
+ */
+
+/* ---- component rules ---- */
+
+.verdict{margin-top:18px;padding:18px 22px;border:1.5px solid rgba(255,255,255,.9);border-radius:14px;font-size:17px;transition:border-color .3s,box-shadow .3s}
+
+.verdict:hover{border-color:#9d75ff;box-shadow:0 0 26px rgba(157,117,255,.5)}
+
+.verdict strong{font-size:18px}

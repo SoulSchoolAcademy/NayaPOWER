@@ -1,0 +1,63 @@
+/* sp-pin — extracted VERBATIM from "Smart Spaces Page Design.html" <style> block (source order preserved). */
+.sp-mstack .sp-ava{ margin-left:-8px; border:2px solid #0c0c10; }
+.sp-mstack .sp-ava:first-child{ margin-left:0; }
+.sp-ava{
+  display:inline-flex; align-items:center; justify-content:center; flex:none;
+  width:44px; height:44px; border-radius:50%;
+  font-size:16px; font-weight:900; color:#fff; letter-spacing:.02em;
+  text-shadow:0 1px 6px rgba(0,0,0,.75);
+  background:
+    radial-gradient(circle at 32% 26%, rgba(255,255,255,.55) 0%, rgba(255,255,255,0) 44%),
+    radial-gradient(circle at 50% 58%, color-mix(in srgb, var(--cc,#8b93a3) 92%, #000) 0%, color-mix(in srgb, var(--cc,#8b93a3) 42%, #050508) 100%);
+  border:1px solid color-mix(in srgb, var(--cc,#8b93a3) 72%, #fff);
+  box-shadow:0 0 14px -3px var(--cc,#8b93a3), inset 0 1px 2px rgba(255,255,255,.35), inset 0 -4px 8px rgba(0,0,0,.55);
+}
+.sp-ava.xs{ width:28px; height:28px; font-size:10px; }
+.sp-ava.sm{ width:36px; height:36px; font-size:12px; }
+.sp-ava.md{ width:52px; height:52px; font-size:16px; }
+.sp-pin-zone{ margin-bottom:20px; }
+.sp-pin-label{
+  font-size:10px; font-weight:800; letter-spacing:.24em; color:var(--sc);
+  margin:0 0 10px; text-shadow:0 0 14px color-mix(in srgb, var(--sc) 60%, transparent);
+}
+.sp-pin{
+  position:relative; border-radius:22px; padding:22px 24px; margin-bottom:14px;
+  background:
+    radial-gradient(110% 100% at 18% 0%, color-mix(in srgb, var(--sc) 18%, transparent), transparent 60%),
+    linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.015));
+  border:1.5px solid color-mix(in srgb, var(--sc) 48%, rgba(255,255,255,.10));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.10), 0 20px 54px rgba(0,0,0,.55), 0 0 40px -12px var(--sc);
+}
+.sp-pin-badge{
+  position:absolute; top:-11px; left:22px;
+  font-size:9px; font-weight:900; letter-spacing:.2em;
+  padding:5px 12px; border-radius:999px; color:#f5d67b; text-shadow:0 0 10px rgba(212,160,23,.6);
+  background:linear-gradient(180deg,#161618,#0a0a0c);
+  border:1px solid rgba(212,160,23,.65);
+  box-shadow:0 4px 16px rgba(0,0,0,.5), 0 0 18px -4px rgba(212,160,23,.6)x -4px var(--sc);
+}
+.sp-pin-title{ font-size:19px; font-weight:900; color:#fff; margin:6px 0 8px; letter-spacing:-.01em; }
+.sp-pin-cat{ font-size:10px; font-weight:800; letter-spacing:.18em; color:var(--sc); margin-bottom:8px; }
+.sp-pin-sum{ font-size:14.5px; line-height:1.65; color:#d8d3c4; margin:0 0 16px; font-weight:500; }
+.sp-pin-actions{ display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+.sp-pin-act{
+  padding:8px 16px; border-radius:999px; font-size:11px; font-weight:800; letter-spacing:.08em;
+  cursor:pointer; font-family:inherit; color:#fff;
+  background:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.03));
+  border:1px solid rgba(232,234,242,.30);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.18), 0 4px 12px rgba(0,0,0,.35);
+  transition:border-color .2s, box-shadow .25s, transform .15s;
+}
+.sp-pin-act:hover{ border-color:var(--sc); transform:translateY(-1px); box-shadow:0 8px 20px rgba(0,0,0,.4), 0 0 18px -6px var(--sc); }
+.sp-pin-act.on{ border-color:var(--sc); color:#fff; background:color-mix(in srgb, var(--sc) 22%, transparent); box-shadow:0 0 18px -6px var(--sc); }
+.sp-pin-comments{ margin-top:14px; border-top:1px solid rgba(255,255,255,.08); padding-top:12px; display:none; }
+.sp-pin-comments.open{ display:block; }
+.sp-pin-cmt{ display:flex; gap:10px; margin-bottom:10px; align-items:flex-start; }
+.sp-pin-cmt-t{ font-size:13px; color:#d8d3c4; line-height:1.55; }
+.sp-pin-cmt-n{ font-size:12px; font-weight:800; color:#fff; }
+.sp-pin-cmtrow{ display:flex; gap:8px; margin-top:8px; }
+.sp-pin-cmtin{
+  flex:1; border-radius:12px; padding:10px 14px; font-size:13px; font-family:inherit; color:#fff;
+  background:rgba(0,0,0,.4); border:1px solid rgba(255,255,255,.12);
+}
+.sp-pin-cmtin:focus{ outline:none; border-color:var(--sc); }

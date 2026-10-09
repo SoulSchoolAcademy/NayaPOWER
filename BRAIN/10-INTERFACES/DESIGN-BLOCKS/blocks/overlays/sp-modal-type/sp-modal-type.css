@@ -1,0 +1,86 @@
+/* sp-modal-type — space-type selector modal.
+   Carries the sp modal typography kit: .sp-mtitle / .sp-msub / .sp-mnote / .sp-mlabel.
+   Type options are selectable cards with own-color jewels; single-select. */
+.sp-mback{
+  position:fixed; inset:0; z-index:80;
+  display:none; align-items:center; justify-content:center;
+  padding:20px calc(20px + env(safe-area-inset-right, 0px)) 20px calc(20px + env(safe-area-inset-left, 0px));
+  background:rgba(3,3,6,.72);
+  backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+}
+.sp-mback.open{ display:flex; }
+.sp-mtype{
+  --sc:#7c3aed;
+  width:100%; max-width:560px; max-height:calc(100dvh - 48px); overflow:auto;
+  border-radius:26px; padding:28px 24px;
+  background:
+    radial-gradient(110% 70% at 50% 0%, color-mix(in srgb, var(--sc) 18%, transparent), transparent 60%),
+    linear-gradient(180deg, #100e18 0%, #07070c 100%);
+  border:1px solid color-mix(in srgb, var(--sc) 38%, transparent);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 32px 80px rgba(0,0,0,.7), 0 0 44px -10px var(--sc);
+  animation:sp-mtype-in .28s cubic-bezier(.16,.84,.22,1);
+}
+@keyframes sp-mtype-in{
+  from{ opacity:0; transform:translateY(14px) scale(.98); }
+  to{ opacity:1; transform:none; }
+}
+/* — modal typography kit — */
+.sp-mtitle{ font-size:24px; font-weight:900; color:#fff; margin:0 0 6px; }
+.sp-msub{ font-size:18px; line-height:1.5; color:#c9cdd8; margin:0 0 4px; }
+.sp-mnote{ font-size:14px; line-height:1.6; color:#8a8a96; margin:0; }
+.sp-mlabel{ font-size:11px; font-weight:800; letter-spacing:.18em; text-transform:uppercase; color:var(--sc); margin:0; }
+.sp-mtype-head{ position:relative; padding-right:56px; margin-bottom:20px; }
+.sp-mtype-x{
+  position:absolute; top:0; right:0;
+  width:44px; height:44px; border-radius:50%;
+  display:inline-flex; align-items:center; justify-content:center;
+  font-size:16px; color:#c9cdd8; cursor:pointer;
+  background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.14);
+  transition: border-color .2s, box-shadow .25s, transform .15s;
+}
+.sp-mtype-x:hover{ border-color:var(--sc); box-shadow:0 0 16px -4px var(--sc); }
+.sp-mtype-x:active{ transform:scale(.94); }
+/* — type option cards — */
+.sp-mtype-grid{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:18px 0 22px; }
+.sp-mtype-opt{
+  --oc:#7c3aed;
+  display:grid; gap:6px; justify-items:start; text-align:left;
+  min-height:120px; padding:16px; border-radius:18px; cursor:pointer;
+  font:inherit; color:#fff;
+  background:linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.015));
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.07);
+  transition: transform .22s cubic-bezier(.16,.84,.22,1), border-color .2s, box-shadow .25s;
+  -webkit-tap-highlight-color:transparent;
+}
+.sp-mtype-opt:hover{
+  transform:translateY(-3px);
+  border-color:color-mix(in srgb, var(--oc) 60%, transparent);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 0 20px -6px var(--oc);
+}
+.sp-mtype-opt:active{ transform:scale(.98); }
+.sp-mtype-opt.on{
+  border-color:color-mix(in srgb, var(--oc) 80%, #fff);
+  background:
+    radial-gradient(120% 100% at 50% 0%, color-mix(in srgb, var(--oc) 22%, transparent), transparent 60%),
+    linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.12), 0 0 26px -6px var(--oc);
+}
+.sp-mtype-opt:focus-visible{ outline:2px solid var(--oc); outline-offset:2px; }
+.sp-mtype-jewel{
+  width:14px; height:14px; transform:rotate(45deg); border-radius:3px;
+  background:linear-gradient(135deg, #fff, var(--oc) 60%, color-mix(in srgb, var(--oc) 40%, #000));
+  box-shadow:0 0 14px -2px var(--oc), 0 0 6px var(--oc);
+}
+.sp-mtype-name{ font-size:18px; font-weight:800; color:#fff; }
+.sp-mtype-desc{ font-size:14px; line-height:1.5; color:#8a8a96; }
+.sp-mtype-opt.on .sp-mtype-desc{ color:#c9cdd8; }
+.sp-mtype-actions{ display:flex; gap:12px; justify-content:flex-end; flex-wrap:wrap; }
+@media(max-width:520px){
+  .sp-mtype-grid{ grid-template-columns:1fr; }
+  .sp-mtype{ padding:24px 18px; }
+}
+@media(prefers-reduced-motion:reduce){
+  .sp-mtype{ animation:none; }
+  .sp-mtype-opt, .sp-mtype-x{ transition:none; }
+}

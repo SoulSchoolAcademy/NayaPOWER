@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>sp-topic-picker — specimen</title>
+<link rel="stylesheet" href="sp-topic-picker.css">
+<style>
+  body{margin:0;background:#050507;color:#e8eaf2;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;padding:32px 20px;}
+  .demo{max-width:560px;margin:0 auto;display:grid;gap:22px;align-content:start;}
+  .cap{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#8b93a3;}
+  .out{font-size:14px;color:#8a8a96;}
+  .out b{color:#c9cdd8;}
+</style>
+</head>
+<body>
+<div class="demo">
+  <div class="cap">Topic picker — chip multi-select, spectrum-cycling jewel markers</div>
+  <div class="sp-topic" role="group" aria-label="Pick topics" id="tp">
+    <button class="sp-topic-chip on" data-topic="ai-building" style="--tc:#7c3aed"><span class="sp-topic-gem" aria-hidden="true"></span>AI Building</button>
+    <button class="sp-topic-chip" data-topic="design" style="--tc:#1e6fd9"><span class="sp-topic-gem" aria-hidden="true"></span>Design</button>
+    <button class="sp-topic-chip" data-topic="health" style="--tc:#0d9e6f"><span class="sp-topic-gem" aria-hidden="true"></span>Health</button>
+    <button class="sp-topic-chip" data-topic="money" style="--tc:#d4a017"><span class="sp-topic-gem" aria-hidden="true"></span>Money</button>
+    <button class="sp-topic-chip" data-topic="music" style="--tc:#d946ef"><span class="sp-topic-gem" aria-hidden="true"></span>Music</button>
+    <button class="sp-topic-chip" data-topic="food" style="--tc:#f97316"><span class="sp-topic-gem" aria-hidden="true"></span>Food</button>
+    <button class="sp-topic-chip" data-topic="travel" style="--tc:#14b8a6"><span class="sp-topic-gem" aria-hidden="true"></span>Travel</button>
+    <button class="sp-topic-chip" data-topic="sports" style="--tc:#ef4444"><span class="sp-topic-gem" aria-hidden="true"></span>Sports</button>
+  </div>
+  <p class="out">Selected: <b id="sel">ai-building</b></p>
+</div>
+<script src="sp-topic-picker.js"></script>
+<script>
+  document.getElementById('tp').addEventListener('sp-topics-change', function(e){
+    document.getElementById('sel').textContent = e.detail.topics.join(', ') || 'none';
+  });
+</script>
+</body>
+</html>

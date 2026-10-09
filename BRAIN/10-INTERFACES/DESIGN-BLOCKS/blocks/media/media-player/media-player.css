@@ -1,0 +1,10 @@
+.modal-mini strong,.modal-mini small,.toast-mini strong,.toast-mini small,.search-result strong,.search-result small,.content-card strong,.content-card small,.setting-row strong,.setting-row small,.media-copy strong,.media-copy small,.smart-link strong,.smart-link small{display:block}
+
+.modal-mini small,.toast-mini small,.search-result small,.content-card small,.setting-row small,.media-copy small,.smart-link small{color:#bdb7c5;font-size:11px;margin-top:3px}
+
+.media-player{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:16px;align-items:center;padding:17px;border:1px solid rgba(255,255,255,.32);border-radius:19px;background:#050507;box-shadow:inset 0 3px 10px #000,0 14px 28px rgba(0,0,0,.55)}
+
+@media(max-width:620px) {
+.media-player{grid-template-columns:auto minmax(0,1fr)}
+.media-player>.naya-btn:last-child{grid-column:1/-1;width:100%;border-radius:13px}
+}

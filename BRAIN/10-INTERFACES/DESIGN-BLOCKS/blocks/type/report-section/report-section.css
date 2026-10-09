@@ -1,0 +1,360 @@
+/* report-section — extracted verbatim from Maxis App Design.html */
+.result-hero{
+  text-align:center;
+}
+.result-eyebrow{
+  color:#c4a8ff;
+  font-size:10px;
+  font-weight:950;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+}
+.result-title{
+  margin:10px 0 0;
+  font-size:clamp(38px,7vw,76px);
+  line-height:.96;
+  letter-spacing:-.055em;
+  font-weight:950;
+}
+.result-subtitle{
+  max-width:720px;
+  margin:16px auto 0;
+  color:#c7c3ce;
+  font-size:17px;
+  line-height:1.55;
+}
+.score-stage{
+  position:relative;
+  width:260px;
+  height:260px;
+  margin:34px auto 24px;
+  display:grid;
+  place-items:center;
+}
+.score-stage::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  background:
+    conic-gradient(
+      from -90deg,
+      var(--scoreColor) 0 var(--scoreDeg),
+      rgba(255,255,255,.07) var(--scoreDeg) 100%
+    );
+  -webkit-mask:
+    radial-gradient(
+      farthest-side,
+      transparent calc(100% - 12px),
+      #000 calc(100% - 11px)
+    );
+  mask:
+    radial-gradient(
+      farthest-side,
+      transparent calc(100% - 12px),
+      #000 calc(100% - 11px)
+    );
+  filter:
+    drop-shadow(
+      0 0 18px
+      color-mix(
+        in srgb,
+        var(--scoreColor) 38%,
+        transparent
+      )
+    );
+}
+.score-stage::after{
+  content:"";
+  position:absolute;
+  inset:26px;
+  border-radius:50%;
+  background:
+    radial-gradient(
+      circle at 35% 25%,
+      rgba(255,255,255,.08),
+      transparent 30%
+    ),
+    #09080d;
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow:
+    inset 0 0 40px rgba(138,92,255,.10),
+    0 20px 50px rgba(0,0,0,.48);
+}
+.score-content{
+  position:relative;
+  z-index:2;
+  text-align:center;
+}
+.score-number{
+  display:block;
+  font-size:72px;
+  line-height:.9;
+  font-weight:950;
+  letter-spacing:-.06em;
+}
+.score-outof{
+  display:block;
+  margin-top:9px;
+  color:#85818c;
+  font-size:9px;
+  letter-spacing:.18em;
+  font-weight:950;
+}
+.result-level{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  padding:9px 17px;
+  border:1px solid color-mix(
+    in srgb,
+    var(--scoreColor) 60%,
+    white 8%
+  );
+  border-radius:999px;
+  color:#fff;
+  background:
+    color-mix(
+      in srgb,
+      var(--scoreColor) 8%,
+      #08080b
+    );
+  font-size:13px;
+  font-weight:950;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  box-shadow:
+    0 0 25px color-mix(
+      in srgb,
+      var(--scoreColor) 13%,
+      transparent
+    );
+}
+.result-level-dot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:var(--scoreColor);
+  box-shadow:
+    0 0 12px var(--scoreColor);
+}
+.report-section{
+  margin-top:58px;
+}
+.report-heading{
+  text-align:center;
+  margin-bottom:24px;
+}
+.report-kicker{
+  color:#9f80e8;
+  font-size:9px;
+  font-weight:950;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+}
+.report-heading h3{
+  margin:7px 0 0;
+  font-size:clamp(25px,4vw,38px);
+  line-height:1.05;
+  letter-spacing:-.035em;
+  font-weight:950;
+}
+.report-heading p{
+  max-width:680px;
+  margin:11px auto 0;
+  color:#aaa6b2;
+  font-size:14px;
+  line-height:1.5;
+}
+.insight-flow{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:28px;
+  align-items:stretch;
+}
+.insight{
+  position:relative;
+  min-height:220px;
+  padding:34px 34px 30px;
+  overflow:hidden;
+  border-radius:
+    55px 38px 50px 42px /
+    42px 52px 40px 55px;
+  background:
+    radial-gradient(
+      circle at 20% 0%,
+      rgba(255,255,255,.08),
+      transparent 35%
+    ),
+    linear-gradient(
+      145deg,
+      #141219,
+      #08080c
+    );
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow:
+    0 20px 45px rgba(0,0,0,.38),
+    inset 0 1px 0 rgba(255,255,255,.07);
+}
+.insight::after{
+  content:"";
+  position:absolute;
+  width:110px;
+  height:110px;
+  right:-35px;
+  bottom:-45px;
+  border-radius:50%;
+  background:var(--insightColor);
+  opacity:.10;
+  filter:blur(20px);
+}
+.insight-cap{
+  color:var(--insightColor);
+  font-size:9px;
+  font-weight:950;
+  letter-spacing:.20em;
+  text-transform:uppercase;
+}
+.insight h4{
+  margin:10px 0 0;
+  font-size:clamp(22px,3vw,31px);
+  line-height:1.03;
+  letter-spacing:-.035em;
+  font-weight:950;
+}
+.insight p{
+  margin:14px 0 0;
+  color:#c3bfca;
+  font-size:15px;
+  line-height:1.55;
+  font-weight:600;
+}
+.insight-score{
+  position:absolute;
+  top:25px;
+  right:28px;
+  font-size:34px;
+  line-height:1;
+  font-weight:950;
+  color:var(--insightColor);
+}
+.analysis-cloud{
+  position:relative;
+  padding:35px 38px;
+  border-radius:
+    44px 58px 48px 54px /
+    55px 45px 58px 46px;
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(138,92,255,.11),
+      transparent 45%
+    ),
+    linear-gradient(
+      145deg,
+      #121017,
+      #07070b
+    );
+  border:1px solid rgba(181,140,255,.18);
+  box-shadow:
+    0 20px 45px rgba(0,0,0,.36),
+    inset 0 1px 0 rgba(255,255,255,.07);
+}
+.analysis-cloud p{
+  margin:0;
+  color:#ded9e5;
+  font-size:17px;
+  line-height:1.7;
+}
+.analysis-cloud p + p{
+  margin-top:16px;
+}
+.result-actions{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:34px;
+}
+.result-actions button{
+  min-height:51px;
+  padding:0 21px;
+  border-radius:17px;
+  background:#08080b;
+  color:#fff;
+  border:1px solid rgba(181,140,255,.62);
+  cursor:pointer;
+  font-size:13px;
+  font-weight:950;
+}
+.result-actions button:hover{
+  border-color:#d0baff;
+  box-shadow:0 0 25px rgba(138,92,255,.20);
+}
+.result-actions .quiet{
+  border-color:rgba(255,255,255,.12);
+  color:#aaa6b1;
+}
+@media print {
+.maxess-app::before,
+  .maxess-app::after,
+  .topbar,
+  .footer,
+  .command-row,
+  .interstitial,
+  .interest-actions,
+  .result-actions,
+  .final-cta .cta-actions{
+    display:none!important;
+  }
+.result-title,
+  .report-heading h3,
+  .insight h4,
+  .path-step h4,
+  .final-cta h3{
+    color:#111!important;
+  }
+.result-subtitle,
+  .report-heading p,
+  .insight p,
+  .analysis-cloud p,
+  .path-step p,
+  .final-cta p{
+    color:#333!important;
+  }
+.score-stage{
+    break-inside:avoid;
+  }
+.dimension-orb,
+  .insight,
+  .analysis-cloud,
+  .path-step,
+  .final-cta{
+    background:#fafafa!important;
+    color:#111!important;
+    border:1px solid #ddd!important;
+    box-shadow:none!important;
+    break-inside:avoid;
+  }
+.report-section{
+    break-inside:avoid;
+  }
+}
+@media(max-width:760px) {
+.insight-flow{
+    grid-template-columns:1fr;
+  }
+.analysis-cloud{
+    padding:27px 23px;
+  }
+.analysis-cloud p{
+    font-size:15px;
+  }
+.score-stage{
+    width:220px;
+    height:220px;
+  }
+.score-number{
+    font-size:62px;
+  }
+}

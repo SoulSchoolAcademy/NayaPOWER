@@ -1,0 +1,196 @@
+/* cloud-cta — extracted verbatim from Maxis App Design.html */
+.button-arrow{
+  display:inline-block;
+  margin-left:8px;
+  font-size:17px;
+  transition:transform .22s var(--ease);
+}
+.continue-button:hover:not(:disabled) .button-arrow{
+  transform:translateX(3px);
+}
+.interstitial{
+  position:fixed;
+  inset:0;
+  z-index:100;
+  display:none;
+  place-items:center;
+  padding:24px;
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(58,30,112,.20),
+      rgba(0,0,0,.82) 58%,
+      rgba(0,0,0,.94)
+    );
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+}
+.interstitial.visible{
+  display:grid;
+  animation:veilIn .32s ease both;
+}
+.teaching-cloud{
+  position:relative;
+  width:min(680px,100%);
+  padding:42px 46px 38px;
+  text-align:center;
+  border-radius:
+    44px
+    54px
+    48px
+    56px /
+    50px
+    44px
+    54px
+    46px;
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(181,140,255,.14),
+      transparent 44%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(25,20,35,.98),
+      rgba(7,7,11,.98)
+    );
+  border:1px solid rgba(190,160,255,.40);
+  box-shadow:
+    0 35px 100px rgba(0,0,0,.72),
+    0 0 70px rgba(119,71,255,.18),
+    inset 0 1px 0 rgba(255,255,255,.10);
+  animation:cloudIn .48s var(--ease) both;
+}
+.cloud-glow{
+  position:absolute;
+  left:50%;
+  top:-14px;
+  width:130px;
+  height:28px;
+  transform:translateX(-50%);
+  border-radius:50%;
+  background:rgba(181,140,255,.35);
+  filter:blur(20px);
+  pointer-events:none;
+}
+.cloud-eyebrow{
+  color:#cdb7ff;
+  font-size:10px;
+  font-weight:950;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+}
+.cloud-icon{
+  width:64px;
+  height:64px;
+  margin:18px auto 20px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  color:#fff;
+  font-size:25px;
+  background:
+    radial-gradient(
+      circle at 30% 20%,
+      #fff,
+      #c6a7ff 20%,
+      #7747ed 48%,
+      #25104f 100%
+    );
+  border:1px solid rgba(255,255,255,.75);
+  box-shadow:
+    inset 0 2px 4px rgba(255,255,255,.75),
+    0 0 35px rgba(138,92,255,.30);
+}
+.cloud-title{
+  margin:0;
+  font-size:clamp(25px,4vw,39px);
+  line-height:1.08;
+  letter-spacing:-.035em;
+  font-weight:950;
+}
+.cloud-body{
+  max-width:550px;
+  margin:18px auto 0;
+  color:#ddd9e6;
+  font-size:clamp(16px,2vw,19px);
+  line-height:1.55;
+  font-weight:600;
+}
+.cloud-body strong{
+  color:#fff;
+}
+.cloud-actions{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  margin-top:28px;
+}
+.cloud-button{
+  min-height:52px;
+  padding:0 25px;
+  border-radius:17px;
+  border:1px solid rgba(181,140,255,.75);
+  background:#08080b;
+  color:#fff;
+  font-weight:950;
+  cursor:pointer;
+  box-shadow:
+    0 12px 28px rgba(0,0,0,.45),
+    0 0 25px rgba(138,92,255,.12);
+}
+.cloud-button:hover{
+  border-color:#d0baff;
+  box-shadow:
+    0 15px 35px rgba(0,0,0,.55),
+    0 0 35px rgba(138,92,255,.24);
+}
+.cloud-button.secondary{
+  border-color:rgba(255,255,255,.16);
+  color:#c9c5d0;
+}
+@media print {
+.maxess-app::before,
+  .maxess-app::after,
+  .topbar,
+  .footer,
+  .command-row,
+  .interstitial,
+  .interest-actions,
+  .result-actions,
+  .final-cta .cta-actions{
+    display:none!important;
+  }
+}
+@media(max-width:760px) {
+.teaching-cloud{
+    padding:34px 23px 28px;
+    border-radius:36px 42px 38px 44px;
+  }
+.cloud-title{
+    font-size:27px;
+  }
+.cloud-body{
+    font-size:15px;
+  }
+.cloud-actions{
+    flex-direction:column;
+  }
+.cloud-button{
+    width:100%;
+  }
+}
+@keyframes veilIn{
+  from{opacity:0}
+  to{opacity:1}
+}
+@keyframes cloudIn{
+  from{
+    opacity:0;
+    transform:translateY(20px) scale(.96);
+  }
+  to{
+    opacity:1;
+    transform:none;
+  }
+}

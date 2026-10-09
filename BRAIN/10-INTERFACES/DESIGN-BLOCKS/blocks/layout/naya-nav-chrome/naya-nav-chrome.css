@@ -1,0 +1,113 @@
+/* naya-nav-chrome — authored 2026-10-09 for Hub/Ledger completion.
+   Ledger's sticky topbar + ecosystem pairing. One organism with layout/hub-shell:
+   same tokens, same 24/18/14 scale, same signature ease.
+   The real bottom ecosystem bar ships as layout/eco-dock — this file owns the topbar only. */
+.nav-chrome{
+  position:sticky;
+  top:0;
+  z-index:200;
+  background:color-mix(in srgb, var(--bg) 78%, transparent);
+  -webkit-backdrop-filter:blur(16px);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--line-soft);
+}
+.nav-chrome-bar{
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr) auto;
+  align-items:center;
+  gap:12px;
+  min-height:64px;
+  max-width:1200px;
+  margin:0 auto;
+  padding:6px 14px;
+  box-sizing:border-box;
+}
+/* 44px circular triggers — the elevated-circle language from layout/hub-rail. */
+.nav-trigger{
+  width:44px;height:44px;flex:0 0 44px;
+  border-radius:50%;
+  border:1px solid var(--line);
+  background:radial-gradient(circle at 35% 30%, #232028, #0a0a0e 72%);
+  color:var(--ink);
+  cursor:pointer;
+  display:grid;place-items:center;
+  box-shadow:
+    inset 0 1px #ffffff1a,
+    0 4px 14px #000a,
+    0 0 14px #ffffff10;
+  transition:
+    transform var(--dur-med) var(--ease),
+    border-color var(--dur-med) var(--ease),
+    box-shadow var(--dur-med) var(--ease);
+}
+.nav-trigger svg{
+  width:22px;height:22px;
+  filter:drop-shadow(0 0 5px #ffffff40);
+}
+.nav-trigger:hover{
+  transform:translateY(-1px);
+  border-color:#9d75ff80;
+  box-shadow:
+    inset 0 1px #ffffff26,
+    0 6px 18px #000c,
+    0 0 22px #9d75ff55;
+}
+.nav-trigger:active{
+  transform:translateY(0) scale(.96);
+  border-color:#9d75ff80;
+  box-shadow:
+    inset 0 1px #ffffff26,
+    0 3px 10px #000c,
+    0 0 22px #9d75ff55;
+}
+.nav-trigger:focus-visible{
+  outline:2px solid var(--purple);
+  outline-offset:2px;
+}
+.nav-lockup{
+  display:flex;align-items:center;justify-content:center;
+  gap:10px;min-width:0;
+}
+.nav-wordmark{
+  font-size:18px;font-weight:800;letter-spacing:.3em;text-indent:.3em;
+  color:var(--ink);
+  white-space:nowrap;
+}
+.nav-live-dot{
+  width:9px;height:9px;flex:0 0 9px;
+  border-radius:50%;
+  background:var(--emerald);
+  box-shadow:0 0 12px var(--emerald);
+  animation:nav-breathe 3s ease-in-out infinite;
+}
+.nav-tagline{
+  margin:0;
+  font-size:14px;color:var(--ink-dim);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.nav-side{
+  display:flex;align-items:center;gap:10px;min-width:0;
+}
+/* Honest live region — the page re-renders this text; never claim "live" when it isn't. */
+.nav-sync{
+  display:flex;align-items:center;gap:7px;
+  margin:0;
+  font-size:12px;color:var(--muted);
+  white-space:nowrap;
+  min-width:0;overflow:hidden;text-overflow:ellipsis;
+}
+.nav-sync-dot{
+  width:7px;height:7px;flex:0 0 7px;
+  border-radius:50%;
+  background:var(--emerald);
+  box-shadow:0 0 8px var(--emerald);
+}
+.nav-sync-dot--stale{background:var(--gold);box-shadow:0 0 8px var(--gold);}
+.nav-sync-dot--down{background:var(--red);box-shadow:0 0 8px var(--red);}
+@keyframes nav-breathe{
+  0%,100%{opacity:.55;transform:scale(.92);}
+  50%{opacity:1;transform:scale(1);}
+}
+@media (prefers-reduced-motion: reduce){
+  .nav-chrome,.nav-chrome *{animation:none!important;transition:none!important;}
+}

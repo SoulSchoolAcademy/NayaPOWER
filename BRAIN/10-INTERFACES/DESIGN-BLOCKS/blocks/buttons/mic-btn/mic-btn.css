@@ -1,0 +1,8 @@
+/* Smart Block: mic-btn — byte-true from Naya Beautiful Button Set N4.html */
+.mic-btn { width: 52px; height: 52px; border-radius: 50%; border: 1px solid rgba(255,255,255,.2); cursor: pointer; display: grid; place-items: center; background: radial-gradient(circle at 35% 28%, rgba(255,255,255,.16), transparent 45%), linear-gradient(180deg, #1e1e26, #0a0a0e); color: #fff; font-size: 20px; box-shadow: inset 0 1px 0 rgba(255,255,255,.18), inset 0 -3px 8px rgba(0,0,0,.5), 0 10px 26px rgba(0,0,0,.55); transition: all .2s var(--ease); }
+
+.mic-btn:hover { border-color: #a06bff; transform: scale(1.06); box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 0 24px -4px #a06bff, 0 10px 26px rgba(0,0,0,.55); }
+
+.mic-btn.rec { border-color: #ff5d5d; color: #ff8a8a; animation: micpulse 1.2s ease-in-out infinite; }
+
+@keyframes micpulse { 0%,100% { box-shadow: 0 0 12px -2px rgba(255,93,93,.5); } 50% { box-shadow: 0 0 28px -2px rgba(255,93,93,.9); } }

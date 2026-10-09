@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Block: continue-button</title>
+<link rel="stylesheet" href="continue-button.css">
+<style>
+/* SPECIMEN ONLY — page ground + tokens normally provided by tokens.css */
+:root{
+  --bg:#020204;--surface:#09090d;--surface2:#101016;
+  --text:#f8f7fb;--muted:#aaa7b3;
+  --purple:#8a5cff;--purple2:#b895ff;--gold:#ffd45a;--green:#35e39b;--blue:#3ca8ff;--violet:#765cff;--magenta:#ed42c4;
+  --line:rgba(255,255,255,.11);
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
+html,body{margin:0;padding:0}
+body{background:#020204;color:#f8f7fb;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;min-height:100vh;display:grid;place-items:center;padding:48px 20px;box-sizing:border-box}
+.demo{width:min(560px,100%);display:flex;flex-direction:column;gap:40px;align-items:center}
+.demo-note{font-size:12px;color:#aaa7b3;margin:0;letter-spacing:.04em;line-height:1.6;text-align:center;max-width:52ch}
+.demo-state{font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#8f8a99;margin:0 0 14px;text-align:center}
+.demo-row{display:flex;flex-direction:column;align-items:center}
+.demo-toggle{margin-top:18px;background:none;border:1px solid rgba(255,255,255,.18);color:#c9c4d2;border-radius:12px;padding:10px 18px;font-size:13px;font-weight:800;cursor:pointer;min-height:44px}
+.demo-toggle:hover{border-color:rgba(181,140,255,.6);color:#fff}
+</style>
+</head>
+<body>
+<div class="demo">
+  <p class="demo-note">SPECIMEN — the assessment continue CTA. Hover the enabled button: lift, jewel ignite, sheen sweep, arrow slides forward. The waiting state is dimmed with calm guidance microcopy. Use the toggle to watch the <code>.ready</code> breath fire the moment the button becomes clickable.</p>
+
+  <div class="demo-row">
+    <p class="demo-state">Ready — the promise of progress</p>
+    <button class="continue-button" id="continueDemo" type="button">
+      <span class="continue-text">Continue</span>
+      <span class="button-arrow" aria-hidden="true">→</span>
+    </button>
+    <button class="demo-toggle" id="toggleDemo" type="button">Simulate: answer selected</button>
+  </div>
+
+  <div class="demo-row">
+    <p class="demo-state">Waiting — dimmed until an answer is chosen</p>
+    <button class="continue-button" type="button" disabled aria-disabled="true">
+      <span class="continue-text">Continue</span>
+      <span class="button-arrow" aria-hidden="true">→</span>
+    </button>
+    <p class="continue-hint">Select an answer to continue</p>
+  </div>
+
+  <div class="demo-row">
+    <p class="demo-state">Long label variant</p>
+    <button class="continue-button" type="button">
+      <span class="continue-text">Continue to My Report</span>
+      <span class="button-arrow" aria-hidden="true">→</span>
+    </button>
+  </div>
+</div>
+<script src="continue-button.js"></script>
+<script>
+/* SPECIMEN ONLY — simulate the answer-selected transition. */
+(function () {
+  var btn = document.getElementById('continueDemo');
+  var toggle = document.getElementById('toggleDemo');
+  btn.disabled = true;
+  btn.setAttribute('aria-disabled', 'true');
+  var enabled = false;
+  toggle.addEventListener('click', function () {
+    enabled = !enabled;
+    btn.disabled = !enabled;
+    btn.setAttribute('aria-disabled', String(!enabled));
+    toggle.textContent = enabled ? 'Simulate: answer cleared' : 'Simulate: answer selected';
+  });
+})();
+</script>
+</body>
+</html>

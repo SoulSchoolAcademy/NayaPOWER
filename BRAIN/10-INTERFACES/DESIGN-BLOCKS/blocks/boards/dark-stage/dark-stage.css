@@ -1,0 +1,13 @@
+.dark-stage{position:relative;overflow:hidden;background:radial-gradient(800px 300px at 50% -20%,rgba(141,99,245,.13),transparent 72%),#030305;color:#fbfaff;border:1px solid rgba(255,255,255,.17);border-radius:30px;padding:clamp(20px,4vw,48px);box-shadow:0 35px 90px rgba(0,0,0,.42),inset 0 1px rgba(255,255,255,.1)}
+
+.stage-heading{display:flex;justify-content:space-between;gap:22px;align-items:flex-end;margin-bottom:34px}
+
+.stage-heading h3{font:600 24px/1.2 Newsreader,Georgia,serif;margin:0}
+
+.stage-heading p{font-size:14px;color:#bdb7c8;margin:0;max-width:480px}
+
+@media(max-width:560px) {
+.dark-stage{margin-inline:-7px;padding-inline:14px;border-radius:24px}
+.stage-heading{display:block}
+.stage-heading p{margin-top:10px}
+}

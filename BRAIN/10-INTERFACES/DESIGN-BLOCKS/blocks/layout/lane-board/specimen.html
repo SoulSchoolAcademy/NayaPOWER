@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Block: lane-board</title>
+<link rel="stylesheet" href="lane-board.css">
+<style>
+/* SPECIMEN ONLY — page ground + tokens normally provided by tokens.css */
+:root{
+  --bg:#0B0D12;
+  --ink:#F5F7FB;--muted:#AAB2BF;
+  --line:#ffffff18;--line-soft:#ffffff0d;
+  --purple:#9d75ff;
+  --ease:cubic-bezier(.16,.84,.22,1);--dur-med:.28s;
+  --depth-deep:0 20px 48px #000d;
+  --radius-md:13px;--radius-pill:999px;
+  --font:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+html,body{margin:0;padding:0}
+body{background:#0B0D12;color:#F5F7FB;font-family:var(--font);min-height:100vh;padding:48px 20px;box-sizing:border-box}
+.demo{max-width:1020px;margin:0 auto;display:grid;gap:20px}
+.demo-note{font-size:12px;color:#AAB2BF;margin:0;letter-spacing:.04em}
+</style>
+</head>
+<body>
+<div class="demo">
+  <p class="demo-note">SPECIMEN — the lane board is JS-rendered in the source (ListsRoom render); converted here to static HTML. Lane names/counts and the "Nothing qualifying here." empty state are verbatim.</p>
+
+  <div class="lane-board">
+
+    <section class="lane">
+      <div class="lane-head"><span>NOW</span><span class="lane-count">2</span></div>
+      <article class="list-card">
+        <b>Ship the Smart Blocks library</b>
+        <div class="why">Extraction wave is running — Lego blocks for every NayaNET page.</div>
+        <div class="meta-row"><span>build</span><span>today</span></div>
+      </article>
+      <article class="list-card">
+        <b>Review dimension orbs</b>
+        <div class="why">Assessment visuals need a second pass before the report ships.</div>
+        <div class="meta-row"><span>design</span><span>today</span></div>
+      </article>
+    </section>
+
+    <section class="lane">
+      <div class="lane-head"><span>NEXT</span><span class="lane-count">1</span></div>
+      <article class="list-card">
+        <b>Gap analysis on extracted blocks</b>
+        <div class="why">The runtime has not supplied an explanation yet.</div>
+        <div class="meta-row"><span>build</span></div>
+      </article>
+    </section>
+
+    <section class="lane">
+      <div class="lane-head"><span>WAITING</span><span class="lane-count">0</span></div>
+      <div class="why">Nothing qualifying here.</div>
+    </section>
+
+  </div>
+</div>
+</body>
+</html>

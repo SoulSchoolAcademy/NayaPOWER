@@ -1,0 +1,40 @@
+/* room-card — extracted verbatim from Naya Smart Hub Design.html */
+.top-status .led {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--green) 80%, transparent);
+}
+.room-outlet { padding: 0 28px; }
+.room-head { padding: 28px 0 4px; }
+.room-head .kicker {
+  font-size: 11px; letter-spacing: .24em; font-weight: 700;
+  color: var(--room-accent, var(--purple)); margin-bottom: 10px;
+}
+.room-head h2 { font-size: 27px; margin: 0 0 8px; letter-spacing: -0.01em; }
+.room-head p { font-size: 15.5px; color: var(--muted); line-height: 1.6; max-width: 760px; margin: 0; }
+.room-body { padding: 18px 0 8px; }
+@media (max-width: 900px) {
+.room-outlet { padding: 0 14px; }
+.room-head h2 { font-size: 23px; }
+}
+@media (min-width: 1700px) {
+.top, .searchWrap, .shell-lens, .room-outlet { padding-left: 44px; padding-right: 44px; }
+}
+.welcome .kicker { justify-content: center; }
+.welcome .kicker::before { display: none; }
+.room-scene{display:grid;gap:18px}
+.room-toolbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.room-toolbar.between{justify-content:space-between}
+.segmented{display:inline-flex;gap:4px;padding:4px;border:1px solid var(--line);border-radius:var(--radius-pill);background:#08070c;box-shadow:var(--depth-hi),0 8px 22px #0008}
+.segmented button{min-height:34px;border:0;border-radius:var(--radius-pill);background:transparent;color:var(--muted);padding:0 14px;font:800 11px/1 var(--font);letter-spacing:.08em;cursor:pointer;transition:all var(--dur-fast) var(--ease)}
+.segmented button:hover{color:var(--ink);background:#ffffff08}
+.segmented button.active{color:var(--ink);background:color-mix(in srgb,var(--room-accent,var(--magenta)) 17%,#151021);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--room-accent,var(--magenta)) 35%,transparent),0 0 18px color-mix(in srgb,var(--room-accent,var(--magenta)) 18%,transparent)}
+.room-status-line{display:flex;align-items:center;gap:9px;color:var(--muted);font-size:12px}
+.room-status-line .led{width:8px;height:8px;border-radius:50%;background:var(--room-accent,var(--magenta));box-shadow:0 0 10px color-mix(in srgb,var(--room-accent,var(--magenta)) 55%,transparent)}
+@media(max-width:620px) {
+.segmented{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%;border-radius:16px}
+.segmented button{border-radius:12px;padding:0 10px}
+}
+@media(prefers-reduced-motion:reduce) {
+.segmented button,.intel-row{transition:none}
+}

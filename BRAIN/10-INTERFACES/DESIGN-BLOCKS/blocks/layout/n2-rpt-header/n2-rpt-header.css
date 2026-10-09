@@ -1,0 +1,38 @@
+/* Smart Block: n2-rpt-header
+ * Source: Naya Design Elements N2.html (byte-true extraction, not rewritten)
+ * Type: layout
+ * Extracted: 2026-10-09
+ */
+
+/* ---- required @keyframes ---- */
+
+/* ---- component rules ---- */
+
+@keyframes titlebreathe{0%,100%{text-shadow:0 1px 0 rgba(255,255,255,.4),0 3px 10px rgba(0,0,0,.8),0 0 22px rgba(255,255,255,.2)}50%{text-shadow:0 1px 0 rgba(255,255,255,.45),0 3px 10px rgba(0,0,0,.8),0 0 44px rgba(255,255,255,.4)}}
+
+@keyframes orbspin{to{transform:rotate(360deg)}}
+
+@keyframes backbreathe{0%,100%{opacity:.75;transform:scale(.96)}50%{opacity:1;transform:scale(1.05)}}
+
+.rpt-header{position:relative;z-index:1;display:flex;align-items:center;gap:22px;padding:38px 40px 6px}
+
+.rpt-logo{width:58px;height:58px;border-radius:50%;flex:0 0 auto;filter:drop-shadow(0 4px 10px rgba(0,0,0,.7)) drop-shadow(0 0 14px rgba(255,255,255,.35))}
+
+.rpt-titleblock{flex:1 1 auto;min-width:0}
+
+.rpt-h1{font-family:"Cormorant Garamond",Georgia,serif;font-size:46px;font-weight:600;line-height:1.1;color:#fff;text-shadow:0 1px 0 rgba(255,255,255,.4),0 3px 10px rgba(0,0,0,.8),0 0 30px rgba(255,255,255,.26);animation:titlebreathe 6s ease-in-out infinite}
+
+.rpt-h1 em{font-style:italic;font-weight:500}
+
+.rpt-tag{margin-top:8px;font-size:17px;color:#fff}
+
+.orb-mark{position:relative;z-index:0;flex:0 0 auto;width:58px;height:58px;border-radius:50%;background:radial-gradient(circle at 35% 28%,#332a4d 0%,#0d0a16 52%,#000 100%);box-shadow:inset 0 2px 5px rgba(255,255,255,.18),inset 0 -8px 14px rgba(0,0,0,.65),0 6px 16px rgba(0,0,0,.6),0 0 24px rgba(157,117,255,.35)}
+
+.orb-mark::before{content:'';position:absolute;inset:-4px;border-radius:50%;background:conic-gradient(from 0deg,transparent 0deg,rgba(157,117,255,.95) 55deg,rgba(255,255,255,.85) 85deg,transparent 130deg,transparent 360deg);-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 6px),#000 calc(100% - 5px));mask:radial-gradient(farthest-side,transparent calc(100% - 6px),#000 calc(100% - 5px));animation:orbspin 5s linear infinite;filter:drop-shadow(0 0 6px rgba(157,117,255,.8))}
+
+.orb-mark::after{content:'';position:absolute;inset:-20px;border-radius:50%;z-index:-1;background:radial-gradient(circle,rgba(255,255,255,.38) 0%,rgba(255,255,255,.1) 42%,transparent 68%);animation:backbreathe 6s ease-in-out infinite}
+
+@media (max-width:640px) {
+.rpt-header,.rpt-nav,.rpt-sec,.rpt-foot{padding-left:20px;padding-right:20px}
+.rpt-h1{font-size:34px}
+}

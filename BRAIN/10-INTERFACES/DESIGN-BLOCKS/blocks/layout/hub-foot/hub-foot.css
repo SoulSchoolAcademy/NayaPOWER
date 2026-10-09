@@ -1,0 +1,29 @@
+/* hub-foot — extracted verbatim from Naya Smart Hub Design.html */
+.hub-quote {
+  text-align: center;
+  padding: 12px 20px 16px;
+  max-width: 700px;
+  margin: 0 auto;
+  margin-top: -12px;
+}
+.hub-quote-text {
+  font-size: 22px; font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 12px;
+  letter-spacing: .01em;
+}
+.hub-quote-sub {
+  font-size: 15px;
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.6;
+}
+.eco-bar, .hub-foot {
+  padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+}
+.hub-foot{margin:64px 28px 0;padding:44px 8px 54px;border-top:1px solid var(--line);text-align:center}
+.hub-foot-mission b{font-size:21px;color:#fff;letter-spacing:.01em}
+.hub-foot-mission p{font-size:16px;color:var(--ink-dim);line-height:1.65;max-width:640px;margin:12px auto 0}
+.hub-foot-links{display:flex;flex-wrap:wrap;justify-content:center;gap:14px 30px;margin-top:28px}
+.hub-foot-link{display:inline-flex;align-items:center;gap:9px;font-size:13px;font-weight:700;letter-spacing:.14em;color:var(--muted)}
+.hub-foot-dot{width:8px;height:8px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff,var(--purple) 72%);box-shadow:0 0 10px var(--purple)}

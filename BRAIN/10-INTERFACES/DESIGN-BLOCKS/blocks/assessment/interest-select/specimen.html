@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Block: interest-select</title>
+<link rel="stylesheet" href="interest-select.css">
+<style>
+/* SPECIMEN ONLY — page ground + tokens normally provided by tokens.css */
+:root{
+  --bg:#020204;--surface:#09090d;--surface2:#101016;
+  --text:#f8f7fb;--muted:#aaa7b3;
+  --purple:#8a5cff;--purple2:#b895ff;--gold:#ffd45a;--green:#35e39b;--blue:#3ca8ff;--violet:#765cff;--magenta:#ed42c4;
+  --line:rgba(255,255,255,.11);
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
+html,body{margin:0;padding:0}
+body{background:#020204;color:#f8f7fb;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;min-height:100vh;display:grid;place-items:center;padding:48px 20px;box-sizing:border-box}
+.demo{width:min(680px,100%)}
+.demo-note{font-size:12px;color:#aaa7b3;margin:0 0 18px;letter-spacing:.04em}
+</style>
+</head>
+<body>
+<div class="demo">
+  <p class="demo-note">SPECIMEN — section shell is verbatim from the source body; the interest-area cards are JS-rendered in the source (converted to static HTML here).</p>
+
+  <section
+    class="interests visible"
+    id="interestsView"
+    aria-labelledby="interestTitle"
+  >
+
+    <div class="interest-eyebrow">
+      ONE LAST THING
+    </div>
+
+    <h2
+      class="interest-title"
+      id="interestTitle"
+    >
+      Where do you want AI to become more useful to you?
+    </h2>
+
+    <p class="interest-intro">
+      Choose anything that interests you. There are no wrong answers,
+      and you can skip this completely. Your choices simply help us
+      personalize what we show you next.
+    </p>
+
+
+    <div
+      class="interest-board active"
+      data-board="0"
+    >
+
+      <button
+        type="button"
+        class="interest-area"
+        style="--interest:#b895ff"
+        data-area-id="{{writing}}"
+        aria-pressed="false"
+      >
+
+        <span
+          class="interest-orb"
+          aria-hidden="true"
+        >
+          <span class="interest-check">
+            ✓
+          </span>
+        </span>
+
+        <span class="interest-name">
+          Writing &amp; Drafting
+        </span>
+
+        <span class="interest-description">
+          Emails, posts, scripts and documents that sound like you.
+        </span>
+
+      </button>
+
+      <button
+        type="button"
+        class="interest-area selected"
+        style="--interest:#35e39b"
+        data-area-id="{{research}}"
+        aria-pressed="true"
+      >
+
+        <span
+          class="interest-orb"
+          aria-hidden="true"
+        >
+          <span class="interest-check">
+            ✓
+          </span>
+        </span>
+
+        <span class="interest-name">
+          Research &amp; Analysis
+        </span>
+
+        <span class="interest-description">
+          Faster answers from deeper, better-organized knowledge.
+        </span>
+
+      </button>
+
+    </div>
+
+
+    <div class="board-dots">
+      <span
+        class="board-dot active"
+        data-dot="0"
+      ></span>
+
+      <span
+        class="board-dot"
+        data-dot="1"
+      ></span>
+
+      <span
+        class="board-dot"
+        data-dot="2"
+      ></span>
+    </div>
+
+
+    <div class="interest-actions">
+
+      <button
+        class="primary-black"
+        id="interestContinue"
+        type="button"
+      >
+        Continue to My Report
+        <span class="button-arrow">→</span>
+      </button>
+
+    </div>
+
+    <button
+      class="interest-skip"
+      id="interestSkip"
+      type="button"
+    >
+      Skip this step
+    </button>
+
+  </section>
+
+  <p class="demo-note" style="margin-top:32px">Report-side usage — .interest-pill lists the chosen areas on the results report (also JS-rendered in the source):</p>
+  <div>
+    <span class="interest-pill">
+      Research &amp; Analysis
+    </span>
+    <span class="interest-pill">
+      Writing &amp; Drafting
+    </span>
+  </div>
+</div>
+</body>
+</html>

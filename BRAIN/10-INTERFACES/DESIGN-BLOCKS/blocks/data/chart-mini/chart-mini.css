@@ -1,0 +1,7 @@
+.chart-mini{height:150px;display:flex;align-items:end;gap:14px;padding:14px 10px 24px;border-left:1px solid rgba(255,255,255,.34);border-bottom:1px solid rgba(255,255,255,.34);background:repeating-linear-gradient(to top,transparent 0 34px,rgba(255,255,255,.07) 35px)}
+
+.chart-mini>div{position:relative;flex:1;height:var(--h)}
+
+.chart-mini i{display:block;width:100%;height:100%;border:1px solid rgba(255,255,255,.52);border-radius:7px 7px 2px 2px;background:linear-gradient(180deg,color-mix(in srgb,var(--tone) 52%,#111),#08080b);box-shadow:inset 0 1px rgba(255,255,255,.25),0 8px 13px rgba(0,0,0,.5)}
+
+.chart-mini span{position:absolute;top:calc(100% + 5px);left:0;right:0;text-align:center;color:#aaa4b0;font-size:10px}

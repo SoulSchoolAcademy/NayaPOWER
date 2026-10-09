@@ -1,0 +1,15 @@
+.data-table{display:grid;border:1px solid rgba(255,255,255,.26);border-radius:14px;overflow:hidden;background:#050507;box-shadow:inset 0 2px 8px #000}
+
+.trow{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:12px;padding:12px 14px;border-top:1px solid rgba(255,255,255,.12);font-size:13px}
+
+.trow:first-child{border:0}
+
+.trow.thead{color:#a9a3af;background:#101116;font-size:11px;font-weight:800}
+
+@media(max-width:620px) {
+.trow{grid-template-columns:1fr}
+.trow.thead{display:none}
+.trow span:before{font-size:10px;color:#918a98;margin-right:8px}
+.trow span:nth-child(2):before{content:"STATE"}
+.trow span:nth-child(3):before{content:"PROOF"}
+}

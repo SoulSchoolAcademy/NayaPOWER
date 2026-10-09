@@ -1,0 +1,31 @@
+:root{--bg:#06060a;--base:#0b0b12;--rise:#15141f;--white:#fff;--purple:#9d75ff;--indigo:#7285ff;--blue:#55b9ee;--teal:#40d3bb;--emerald:#55e39a;--lime:#b8ee57;--gold:#e8b64c;--orange:#ff9557;--red:#ff5e6c;--magenta:#ed58cd;--ease:cubic-bezier(.16,.84,.22,1)}
+
+.palette{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px;margin-top:28px}
+
+.palette{grid-template-columns:repeat(3,minmax(0,1fr))}
+
+.palette{grid-template-columns:repeat(2,minmax(0,1fr))}
+
+.palette{grid-template-columns:1fr 1fr}
+
+.swatch{min-width:0;--c:#9d75ff;min-height:106px;border:1.5px solid #ffffffba;border-radius:16px;background:radial-gradient(circle at 20% -20%,color-mix(in srgb,var(--c) 35%,transparent),transparent 68%),linear-gradient(160deg,#15131b,#08080d);box-shadow:inset 0 1px #ffffff66,0 13px 23px #000b;padding:15px;display:flex;align-items:center;gap:14px;transition:.3s}
+
+.swatch{min-height:88px;padding:10px;gap:8px}
+
+.swatch .jewel{width:28px;height:35px}
+
+.swatch strong{font-size:16px}
+
+.swatch strong{font-size:15px}
+
+.swatch small{display:block;font-size:14px;color:#fff}
+
+.swatch small{font-size:13px}
+
+.swatch:hover{border-color:var(--c);box-shadow:0 0 24px -5px var(--c)}
+
+@media(max-width:1100px){.palette{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+@media(max-width:740px){.palette{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+@media(max-width:460px){.palette{grid-template-columns:1fr 1fr}.swatch{min-height:88px;padding:10px;gap:8px}.swatch strong{font-size:15px}.swatch small{font-size:13px}}

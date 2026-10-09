@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>sp-magic-note — specimen</title>
+<link rel="stylesheet" href="sp-magic-note.css">
+<link rel="stylesheet" href="../../buttons/sp-btn/sp-btn.css">
+<style>
+  body{margin:0;background:#050507;color:#e8eaf2;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;padding:32px 20px;}
+  .demo{max-width:520px;margin:0 auto;display:grid;gap:22px;align-content:start;}
+  .cap{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#8b93a3;}
+</style>
+</head>
+<body>
+<div class="demo">
+  <div class="cap">Magic note — AI-drafted preview, shimmer at rest, accept / edit</div>
+  <div class="sp-mnote" style="--sc:#7c3aed">
+    <div class="sp-mnote-tag"><span class="sp-mnote-spark">✨</span> Drafted for you</div>
+    <p class="sp-mnote-text">"Builders Collective — a room for people shipping intelligent things, with weekly build reviews and open demos."</p>
+    <p class="sp-mnote-sub">Made from what you told us. Tweak it or take it as-is.</p>
+    <textarea class="sp-mnote-edit" aria-label="Edit draft"></textarea>
+    <div class="sp-mnote-actions">
+      <button class="sp-btn sp-btn--create" data-mnote="accept" style="--sc:#7c3aed">Accept</button>
+      <button class="sp-btn sp-btn--ghost" data-mnote="edit">Edit</button>
+      <button class="sp-btn sp-btn--create" data-mnote="save" style="--sc:#7c3aed;display:none">Save</button>
+      <button class="sp-btn sp-btn--ghost" data-mnote="cancel" style="display:none">Cancel</button>
+    </div>
+    <div class="sp-mnote-done"><span class="sp-mnote-spark">✨</span> Saved — looking good.</div>
+  </div>
+</div>
+<script src="sp-magic-note.js"></script>
+</body>
+</html>

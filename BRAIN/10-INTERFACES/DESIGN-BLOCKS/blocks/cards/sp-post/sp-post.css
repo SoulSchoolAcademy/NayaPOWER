@@ -1,0 +1,40 @@
+/* sp-post — extracted VERBATIM from "Smart Spaces Page Design.html" <style> block (source order preserved). */
+.sp-mstack .sp-ava{ margin-left:-8px; border:2px solid #0c0c10; }
+.sp-mstack .sp-ava:first-child{ margin-left:0; }
+.sp-ava{
+  display:inline-flex; align-items:center; justify-content:center; flex:none;
+  width:44px; height:44px; border-radius:50%;
+  font-size:16px; font-weight:900; color:#fff; letter-spacing:.02em;
+  text-shadow:0 1px 6px rgba(0,0,0,.75);
+  background:
+    radial-gradient(circle at 32% 26%, rgba(255,255,255,.55) 0%, rgba(255,255,255,0) 44%),
+    radial-gradient(circle at 50% 58%, color-mix(in srgb, var(--cc,#8b93a3) 92%, #000) 0%, color-mix(in srgb, var(--cc,#8b93a3) 42%, #050508) 100%);
+  border:1px solid color-mix(in srgb, var(--cc,#8b93a3) 72%, #fff);
+  box-shadow:0 0 14px -3px var(--cc,#8b93a3), inset 0 1px 2px rgba(255,255,255,.35), inset 0 -4px 8px rgba(0,0,0,.55);
+}
+.sp-ava.xs{ width:28px; height:28px; font-size:10px; }
+.sp-ava.sm{ width:36px; height:36px; font-size:12px; }
+.sp-ava.md{ width:52px; height:52px; font-size:16px; }
+.sp-post{
+  background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.08);
+  border-radius:18px; padding:18px; margin-bottom:14px;
+}
+.sp-post-top{ display:flex; align-items:center; gap:12px; margin-bottom:12px; }
+.sp-post-who{ flex:1; }
+.sp-post-name{ font-size:14px; font-weight:800; color:#fff; }
+.sp-post-time{ font-size:11px; color:#6b7280; }
+.sp-sched-badge{
+  font-size:10px; font-weight:800; color:#a78bfa;
+  background:rgba(157,117,255,.12); border:1px solid rgba(157,117,255,.35);
+  border-radius:99px; padding:4px 12px;
+}
+.sp-post-text{ font-size:14.5px; line-height:1.65; color:#e2e5ec; margin-bottom:12px; }
+.sp-post-actions{ display:flex; gap:8px; }
+.sp-like, .sp-mail-author{
+  padding:8px 16px; border-radius:999px; font-size:11px; font-weight:700;
+  cursor:pointer; font-family:inherit; color:#8a8a96;
+  background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.1);
+  transition:all .2s;
+}
+.sp-like.on{ color:#f87171; border-color:rgba(248,113,113,.4); }
+.sp-like:hover, .sp-mail-author:hover{ color:#fff; border-color:rgba(255,255,255,.3); }

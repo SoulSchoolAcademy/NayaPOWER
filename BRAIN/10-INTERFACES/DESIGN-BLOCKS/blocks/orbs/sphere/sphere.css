@@ -1,0 +1,11 @@
+@keyframes ring-spin{to{transform:rotate(360deg)}}
+
+.sphere{--tone:var(--purple);--rgb:141,99,245;position:relative;width:94px;height:94px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 32% 23%,rgba(255,255,255,.92),rgba(var(--rgb),.78) 19%,rgba(var(--rgb),.24) 44%,#050507 76%);border:1px solid rgba(255,255,255,.85);box-shadow:inset -10px -14px 18px rgba(0,0,0,.5),inset 7px 7px 12px rgba(255,255,255,.1),0 18px 28px rgba(0,0,0,.28),0 0 22px rgba(var(--rgb),.25)}
+
+.sphere:after{content:"";position:absolute;inset:-8px;border-radius:50%;border:1px solid color-mix(in srgb,var(--tone) 42%,transparent);border-top-color:#fff;animation:ring-spin 11s linear infinite}
+
+.sphere .icon{width:26px;height:26px;color:#fff;filter:drop-shadow(0 0 8px rgba(255,255,255,.6))}
+
+@media(prefers-reduced-motion:reduce) {
+.orbit,.logo-vessel,.nav-orb:before,.sphere:after,.orbital-diagram .track{animation:none!important}
+}

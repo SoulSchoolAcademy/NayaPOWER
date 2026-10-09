@@ -1,0 +1,31 @@
+/* sp-empty — the Smart Spaces empty state.
+   Invitation, not documentation: jewel mark, 24/18/14 invitation copy, create CTA.
+   Copy reads like an outstretched hand. */
+.sp-empty{
+  --sc:#7c3aed;
+  text-align:center;
+  padding:72px 24px;
+  max-width:560px; margin:0 auto;
+  background:
+    radial-gradient(90% 70% at 50% 0%, color-mix(in srgb, var(--sc) 16%, transparent), transparent 65%),
+    linear-gradient(180deg, #0c0b13 0%, #060609 100%);
+  border:1px solid color-mix(in srgb, var(--sc) 28%, transparent);
+  border-radius:26px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.08), 0 24px 60px rgba(0,0,0,.55);
+}
+.sp-empty-mark{
+  display:inline-block; width:22px; height:22px; margin-bottom:22px;
+  transform:rotate(45deg);
+  background:linear-gradient(135deg, #fff, var(--sc) 60%, color-mix(in srgb, var(--sc) 40%, #000));
+  box-shadow:0 0 24px -2px var(--sc), 0 0 8px var(--sc);
+}
+.sp-empty-title{ font-size:24px; font-weight:900; color:#fff; margin:0 0 10px; }
+.sp-empty-lead{ font-size:18px; line-height:1.55; color:#c9cdd8; margin:0 auto 10px; max-width:40ch; }
+.sp-empty-hint{ font-size:14px; color:#8a8a96; margin:0 0 26px; }
+.sp-empty .sp-btn{ margin-top:2px; }
+@media(max-width:560px){
+  .sp-empty{ padding:52px 20px; }
+}
+@media(prefers-reduced-motion:reduce){
+  .sp-empty{ transition:none; }
+}

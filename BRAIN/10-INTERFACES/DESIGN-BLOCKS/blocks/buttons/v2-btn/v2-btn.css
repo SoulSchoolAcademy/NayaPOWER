@@ -1,0 +1,15 @@
+:root{--bg:#06060a;--base:#0b0b12;--rise:#15141f;--white:#fff;--purple:#9d75ff;--indigo:#7285ff;--blue:#55b9ee;--teal:#40d3bb;--emerald:#55e39a;--lime:#b8ee57;--gold:#e8b64c;--orange:#ff9557;--red:#ff5e6c;--magenta:#ed58cd;--ease:cubic-bezier(.16,.84,.22,1)}
+
+.btn{--glow:var(--purple);position:relative;display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:54px;padding:11px 24px;background:linear-gradient(150deg,#13121a 0%,#050505 58%,#111119 100%);border:1.8px solid #fffffff0;border-radius:999px;color:#fff;font-size:16px;font-weight:750;box-shadow:inset 0 1px #ffffff65,0 15px 30px #000d,0 0 17px -6px #fff8;text-align:center;white-space:normal;transition:border-color .22s,box-shadow .25s,transform .2s var(--ease)}
+
+.btn{width:100%}
+
+.btn:hover,.btn:focus-visible{border-color:var(--glow);box-shadow:inset 0 1px #fff8,0 12px 31px #000a,0 0 22px var(--glow);transform:translateY(-2px)}
+
+.btn:active{transform:translateY(2px);box-shadow:inset 0 2px 8px #000e}
+
+.btn:disabled{cursor:not-allowed;opacity:.45;border-color:#ffffff76;box-shadow:none}
+
+.btn-icon{width:23px;height:23px;display:inline-flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;color:#fff}
+
+@media(max-width:460px){.btn{width:100%}}

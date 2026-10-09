@@ -1,0 +1,4 @@
+/* Smart Block: gem-list — byte-true from Naya Jewel Library - N5.html */
+.gem-list { list-style: none; margin: 20px 0; }
+
+.gem-list li { display: flex; gap: 14px; align-items: flex-start; padding: 10px 0; font-size: 17px; }

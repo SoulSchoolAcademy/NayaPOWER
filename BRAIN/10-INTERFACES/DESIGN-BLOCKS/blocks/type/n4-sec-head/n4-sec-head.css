@@ -1,0 +1,15 @@
+/* Smart Block: n4-sec-head
+ * Source: Naya Design Standard Showcase (1).html (byte-true extraction, not rewritten)
+ * Type: type
+ * Extracted: 2026-10-09
+ */
+
+/* ---- component rules ---- */
+
+.secnum{display:flex; align-items:center; gap:14px; font-size:14px; font-weight:800;
+  letter-spacing:.28em; color:var(--sc,#8a5cff); margin:0 0 10px; text-transform:uppercase;}
+
+.secnum::before{content:""; width:34px; height:2px; background:var(--sc,#8a5cff);
+  box-shadow:0 0 10px var(--sc,#8a5cff);}
+
+.secdeck{font-size:18px; color:#fff; max-width:760px; margin:0 0 28px; opacity:.95;}
