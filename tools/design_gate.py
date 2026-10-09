@@ -484,6 +484,25 @@ def self_test() -> int:
             pm_wrong, mf, require_activation=True, receipt_path=rp_wrong,
             expected_repo="SoulSchoolAcademy/NayaPOWER", expected_repo_id="1337349667",
             expected_main_sha="a" * 40)  # wrong repo -> fail
+        wrongid = dict(receipt, repository_id="999999")
+        rp_wrongid = Path(d) / "receipt_wrongid.json"
+        rp_wrongid.write_bytes(json.dumps(wrongid).encode())
+        wrongid_digest = hashlib.sha256(rp_wrongid.read_bytes()).hexdigest()
+        pm_wrongid = Path(d) / "marked_wrongid.html"
+        pm_wrongid.write_text(good.replace(
+            "</body>", f"<!-- NAYA-ACTIVATION-RECEIPT-SHA256:{wrongid_digest} --></body>"))
+        wrongid_v = run_gate(
+            pm_wrongid, mf, require_activation=True, receipt_path=rp_wrongid,
+            expected_repo="SoulSchoolAcademy/NayaPOWER", expected_repo_id="1337349667",
+            expected_main_sha="a" * 40)
+        stale_v = run_gate(
+            pm, mf, require_activation=True, receipt_path=rp,
+            expected_repo="SoulSchoolAcademy/NayaPOWER", expected_repo_id="1337349667",
+            expected_main_sha="b" * 40)
+        undocumented = good.replace('class="naya-btn"', 'class="undocumented-widget"')
+        pu = Path(d) / "undocumented.html"
+        pu.write_text(undocumented)
+        unknown_class_v = run_gate(pu, mf)
     ok = True
     if not bad_v:
         print("SELF-TEST FAIL: violating page passed the gate")
@@ -504,7 +523,10 @@ def self_test() -> int:
             ("valid receipt", okact_v, False),
             ("forged marker", forged_v, True),
             ("expired receipt", expired_v, True),
-            ("wrong-repository receipt", wrongrepo_v, True)]:
+            ("wrong-repository receipt", wrongrepo_v, True),
+            ("wrong repository ID", wrongid_v, True),
+            ("stale main SHA", stale_v, True),
+            ("undocumented unprefixed class", unknown_class_v, True)]:
         has_act = any(x.startswith("ACTIVATION") for x in vv)
         if want_fail and not has_act:
             print(f"SELF-TEST FAIL: activation case '{name}' did not fail")
