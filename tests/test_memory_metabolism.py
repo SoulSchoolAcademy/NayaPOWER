@@ -351,3 +351,23 @@ def test_metabolize_still_refuses_live_corruption():
         assert str(exc) == "memory_integrity_failed"
     else:
         raise AssertionError("expected metabolize to refuse corruption")
+
+
+def test_metabolize_refuses_naive_or_invalid_now():
+    """A naive or unparseable `now` fails closed at entry — no partial pass."""
+    live = _rec()
+    for bad in ("2026-10-08T00:00:00", "not-a-time", ""):
+        try:
+            metabolize([live], now=bad)
+        except MemoryMetabolismError as exc:
+            assert str(exc) in ("now_invalid", "now_naive_refused")
+        else:
+            raise AssertionError(f"expected refusal for now={bad!r}")
+    assert live.memory_state == ACTIVE  # untouched by the refused passes
+
+
+def test_record_id_collision_is_latest_wins():
+    """Identical content + identical timestamp => identical id (documented)."""
+    a = create_record("same words", epistemic_state="LEARNING", now=NOW)
+    b = create_record("same words", epistemic_state="LEARNING", now=NOW)
+    assert a.record_id == b.record_id

@@ -106,7 +106,9 @@ def test_quarantine_receipt_idempotent_across_loads(tmp_path):
     first = MemoryStore(store.directory)
     first.load(now=NOW)
     n_receipts = len(first._receipts)
-    assert n_receipts == 1
+    assert n_receipts == 2  # 1 save + 1 quarantine
+    assert len([e for e in first._receipts
+                if e["transition"] == "quarantine"]) == 1
     second = MemoryStore(store.directory)
     second.load(now=NOW)
     assert len(second._receipts) == n_receipts  # no duplicate quarantine receipt
@@ -247,6 +249,40 @@ def test_chain_step_is_deterministic():
     receipt = {"a": 1}
     assert _chain_step("prev", receipt) == _chain_step("prev", receipt)
     assert _chain_step("prev", receipt) != _chain_step("other", receipt)
+
+
+def test_save_is_receipted_chain_covers_record_history(tmp_path):
+    # Hard law: all persisted mutations are receipted. save() must leave a
+    # "save" receipt so the chain reconstructs the record's whole history.
+    store = _store(tmp_path)
+    r = _rec("receipted save", at=OLD)
+    store.save(r, now=NOW)
+    mm.strengthen(r, "evidence-1", now=NOW)
+    store.save(r, now=NOW)
+    saves = [e for e in store._receipts if e["transition"] == "save"]
+    assert len(saves) == 2
+    assert all(e["record_id"] == r.record_id for e in saves)
+    assert verify_receipt_chain(store._receipts) == []
+    # Cold load: receipts survive the process boundary intact.
+    rebuilt = MemoryStore(store.directory)
+    rebuilt.load(now=NOW)
+    assert len([e for e in rebuilt._receipts
+                if e["transition"] == "save"]) == 2
+    assert verify_receipt_chain(rebuilt._receipts) == []
+
+
+def test_serve_touch_persist_is_receipted(tmp_path):
+    store = _store(tmp_path)
+    r = _rec("touched", at=OLD)
+    store.save(r, now=NOW)
+    before = len(store._receipts)
+    result = store.serve(now=NOW)
+    assert len(result.items) == 1
+    saves = [e for e in store._receipts[before:]
+             if e["transition"] == "save"]
+    assert len(saves) == 1
+    assert saves[0]["record_id"] == r.record_id
+    assert verify_receipt_chain(store._receipts) == []
 
 
 def test_corrupt_receipt_line_counted_chain_misses_it(tmp_path):

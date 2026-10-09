@@ -8,10 +8,13 @@ invokes the lifecycle:
 - Append-only JSONL record log: nothing is ever deleted or rewritten. Every
   mutation appends a new full version of the record; on load the latest
   version of each record_id wins. History stays reconstructible.
-- Append-only JSONL receipt log: every transition receipt plus every
-  corruption/quarantine event, hash-chained (each entry commits to the
-  previous). The chain is independently verifiable end-to-end — this is the
-  cold-retrievable audit trail of the memory's whole life.
+- Append-only JSONL receipt log: every persisted mutation (save, quarantine,
+  housekeep transitions, retrieval touches) is receipted and hash-chained
+  (each entry commits to the previous). The chain is independently verifiable
+  end-to-end — this is the cold-retrievable audit trail of the memory's whole
+  life. Scope: hashes are unauthenticated SHA-256, so the chain evidences
+  accidental corruption and non-recomputing tampering; it is not a defense
+  against a malicious log-writer who recomputes hashes.
 - `load()` reconstructs all records from zero warm state (cold-boot
   reconstruction). Corrupt lines and integrity failures do not poison the
   store: each is individually quarantined with a receipt; QUARANTINED records
@@ -119,6 +122,26 @@ def verify_receipt_chain(entries: list[dict[str, Any]]) -> list[int]:
 
 # Store -------------------------------------------------------------------------
 
+def _save_receipt(record: mm.MemoryRecord, at: str) -> dict[str, Any]:
+    """Build the receipt for a persisted record version (transition "save").
+
+    Mirrors the naya.memory-metabolism.receipt.v1 schema used by the
+    machinery so the whole receipt log verifies as one chain.
+    """
+    detail = f"state={record.memory_state} integrity={record.integrity}"
+    raw = "|".join(("save", record.record_id, at, detail)).encode()
+    return {
+        "schema": "naya.memory-metabolism.receipt.v1",
+        "receipt_id": "MMR-" + hashlib.sha256(raw).hexdigest()[:16],
+        "transition": "save",
+        "record_id": record.record_id,
+        "from_state": record.memory_state,
+        "to_state": record.memory_state,
+        "at": at,
+        "detail": detail,
+    }
+
+
 class MemoryStore:
     """Durable, integrity-governed store for memory-metabolism records."""
 
@@ -159,12 +182,21 @@ class MemoryStore:
 
     # -- records -----------------------------------------------------------------
 
-    def save(self, record: mm.MemoryRecord) -> str:
-        """Append a record version. Integrity must verify; nothing is rewritten."""
+    def save(self, record: mm.MemoryRecord, *, now: str | None = None) -> str:
+        """Append a record version. Integrity must verify; nothing is rewritten.
+
+        Every save is receipted (transition "save") so the receipt chain is
+        the complete audit trail of the store's record history — the module's
+        hard law "all persisted mutations are receipted" holds for saves,
+        quarantine events, housekeep transitions, and persisted retrieval
+        touches alike. `now` is explicit for determinism; defaults to UTC now.
+        """
         if not mm.integrity_ok(record):
             raise MemoryStoreError("save_refused_integrity_failed")
+        at = now or _utcnow_iso()
         self._append_jsonl(self.records_path, _record_to_dict(record))
         self._records[record.record_id] = record
+        self._log_receipt(_save_receipt(record, at))
         return record.record_id
 
     def _quarantine_line(self, lineno: int, raw: str, reason: str,
@@ -257,18 +289,25 @@ class MemoryStore:
     def serve(self, predicate=None, *, include_audit_states: tuple[str, ...] = (),
               now: str | None = None, persist_touch: bool = True
               ) -> mm.RetrievalResult:
-        """Serve records under fail-closed discipline; persist retrieval touches."""
+        """Serve records under fail-closed discipline; persist retrieval touches.
+
+        Touches are persisted via save(), so they are receipted like any
+        other mutation. Operational note: every served touch appends a full
+        version line plus a receipt — read-heavy workloads grow the append-only
+        log; pass persist_touch=False when touch history is not needed.
+        """
         for state in include_audit_states:
             if state == mm.QUARANTINED:
                 raise MemoryStoreError("quarantine_never_served")
             if state not in mm.MEMORY_STATES:
                 raise MemoryStoreError(f"audit_state_unknown:{state}")
+        at = now or _utcnow_iso()
         result = mm.retrieve(
             list(self._records.values()), predicate,
-            include_audit_states=include_audit_states, now=now)
+            include_audit_states=include_audit_states, now=at)
         if persist_touch:
             for record, _label in result.items:
-                self._append_jsonl(self.records_path, _record_to_dict(record))
+                self.save(record, now=at)
         return result
 
     def housekeep(self, *, now: str, stale_after_days: float = 90.0

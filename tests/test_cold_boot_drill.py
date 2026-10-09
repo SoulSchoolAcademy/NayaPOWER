@@ -146,7 +146,7 @@ def test_quarantine_is_idempotent_across_reloads(crashed_store):
     """Re-loading the same corrupt log must not mint new quarantine receipts."""
     first = _verify(crashed_store)["receipts"]
     second = _verify(crashed_store)["receipts"]
-    assert first == second == 4
+    assert first == second == 8  # 4 save + 4 quarantine; stable, no dupes
 
 
 def test_housekeep_decays_stale_under_receipt(crashed_store):
@@ -229,5 +229,6 @@ def test_full_drill_chain_clean_after_everything(crashed_store):
     _cli(crashed_store, "serve")
     health = _verify(crashed_store)
     assert health["receipt_chain_broken"] == []
-    # 4 quarantine + 8 housekeep receipts, all chained from MMC-GENESIS.
-    assert health["receipts"] == 12
+    # 4 save + 4 quarantine + 8 housekeep + 2 serve-touch receipts,
+    # all chained from MMC-GENESIS.
+    assert health["receipts"] == 18

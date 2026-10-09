@@ -140,6 +140,23 @@ def _require_integrity(record: MemoryRecord) -> None:
         raise MemoryMetabolismError("memory_integrity_failed")
 
 
+def _require_now(now: str) -> str:
+    """Govern the clock input: reject unparseable or timezone-naive `now`.
+
+    Without this, a naive timestamp reaches datetime arithmetic mid-pass and
+    raises a raw TypeError after earlier records were already mutated in
+    memory — failing loudly instead of failing closed. All timestamps in
+    this module are timezone-aware ISO-8601.
+    """
+    try:
+        parsed = datetime.fromisoformat(now)
+    except (TypeError, ValueError):
+        raise MemoryMetabolismError("now_invalid")
+    if parsed.tzinfo is None:
+        raise MemoryMetabolismError("now_naive_refused")
+    return now
+
+
 def create_record(
     content: str,
     *,
@@ -148,6 +165,13 @@ def create_record(
     record_id: str | None = None,
     now: str | None = None,
 ) -> MemoryRecord:
+    """Create an ACTIVE record with integrity sealed at birth.
+
+    record_id derives from sha256(content + now): identical content created
+    at an identical timestamp yields an identical id, and the later version
+    shadows the earlier on load (latest-wins). Callers that need distinct
+    records for identical content must vary `now` or pass an explicit id.
+    """
     if not content:
         raise MemoryMetabolismError("content_missing")
     if epistemic_state not in EPISTEMIC_STATES:
@@ -399,6 +423,7 @@ def metabolize(
     integrity: a quarantined record can never be served or promoted, so the
     exemption buys an attacker nothing.
     """
+    _require_now(now)
     receipts: list[dict[str, Any]] = []
     live: list[MemoryRecord] = []
     for record in records:
