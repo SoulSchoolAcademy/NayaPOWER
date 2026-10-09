@@ -8,7 +8,7 @@
 }
 
 .naya-badge::before {
-  content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--ink-faint);
+  content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--ink-faint, #a9a4b8);
 }
 
 .naya-badge.is-verified { border-color: rgba(47,232,158,.4); }

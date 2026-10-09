@@ -5,7 +5,7 @@
 
 .naya-check .box {
   width: 26px; height: 26px; border-radius: 8px; flex: none;
-  border: 1.5px solid var(--line-bright);
+  border: 1.5px solid var(--line-bright, rgba(232,234,242,.42));
   background: linear-gradient(180deg, #17141f, #0a090e);
   box-shadow: var(--depth-hi), inset 0 -3px 6px rgba(0,0,0,.6), 0 6px 14px rgba(0,0,0,.5);
   display: grid; place-items: center; color: transparent;
@@ -26,4 +26,4 @@
 
 .naya-check .txt { transition: color .2s var(--ease); }
 
-.naya-check input:checked ~ .txt { color: var(--ink-faint); text-decoration: line-through; text-decoration-color: rgba(47,232,158,.5); }
+.naya-check input:checked ~ .txt { color: var(--ink-faint, #a9a4b8); text-decoration: line-through; text-decoration-color: rgba(47,232,158,.5); }

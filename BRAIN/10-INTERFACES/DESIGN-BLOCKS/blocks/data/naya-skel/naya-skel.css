@@ -1,6 +1,6 @@
 /* Smart Block: naya-skel — byte-true from smart-blocks/new/new.css */
 .naya-skel {
-  position: relative; overflow: hidden; border-radius: var(--radius-sm);
+  position: relative; overflow: hidden; border-radius: var(--radius-sm, 10px);
   background: linear-gradient(180deg, #16121f, #0d0c12);
   border: 1px solid var(--line-soft); min-height: 16px;
 }
