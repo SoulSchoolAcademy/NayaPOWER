@@ -330,3 +330,105 @@ Until then, report the exact furthest proven stage and first missing/broken edge
 7. Return to Shawn with a plain-language daily report and evidence links. Keep all protected changes unmerged/un-deployed unless explicitly authorized.
 
 **Final law:** The purpose of the Smart Link is to locate the exact saved intelligence object. The purpose of the capture receipt is to prove that the exact object was persisted. The purpose of the nine-node governed runtime is to retrieve, evaluate, apply, verify, retain, and reuse that intelligence. The purpose of the learning receipt is to prove that the loop actually changed behavior and survived cold succession. These are connected stages—but they are not interchangeable claims.
+
+
+---
+
+## 17. Current-main source audit addendum — code facts vs integration gaps
+
+**Audit basis:** repository `main` observed at `1d73652231ac6127806640af5a31eb516c60738d` on 2026-10-09. This is a source inspection, not a claim that current production deployment is byte-identical to this SHA. Re-fetch main and run the runtime-parity gate before treating it as current production truth.
+
+This audit corrects a dangerous oversimplification: **the system is not merely a filing cabinet. Real capture, persistence, checkpoint, projection, and learning-verification machinery exists. The unresolved question is whether the exact user Smart Note object flows into the same governed learning/retrieval/cold-successor path, with identity and provenance intact.** The architecture must not be rebuilt from scratch or duplicate existing mechanisms.
+
+### 17.1 Existing capture/receipt/Smart Link path — source-confirmed
+
+Source: [`supabase/functions/v7-smart-note-canonical/index.ts`](https://github.com/SoulSchoolAcademy/NayaPOWER/blob/1d73652231ac6127806640af5a31eb516c60738d/supabase/functions/v7-smart-note-canonical/index.ts)
+
+The reviewed source shows this path:
+1. Authenticates an actual Supabase user session; requires both human and Naya note views and an idempotency key.
+2. Calls `v7_create_smart_note` to persist the capture envelope, machine view, Intelligent Block, evidence/receipt, and hub state. The receiver owns the canonical event and IB identity; repository code must not guess it.
+3. Independently checks the persisted transaction response for canonical event, receipt, content digest, and lineage completeness.
+4. Creates/reuses a `learning_evidence` record in `CANDIDATE` state, level `E1_UNDERSTANDS`, target `smart-note:<eventId>`. This is a learning candidate, not an earned learning result.
+5. Persists a checkpoint through `nayanet_record_cognition_event`, binds it to the source Smart Note event, IB hash, receipt, and learning evidence, reads the checkpoint back, and verifies it is visible in the authenticated owner's Smart Feed.
+6. Obtains a narrow, short-lived authority grant for the one repository projection.
+7. Calls `nayanet-github-dispatch` for `project-canonical-smart-note.yml`. It accepts a canonical Smart Link only when the projection response says `ok=true`, `pipeline=PROJECTION_VERIFIED`, and returns a URL matching the exact `main/.../IB-######/smart-note.md` pattern.
+8. If projection dispatch fails, the receiver intentionally preserves the successful capture and returns `SMART_NOTE_CAPTURED_PROJECTION_DEFERRED` / `PROJECTION_FAILED`, with a retry instruction. It does not manufacture a link.
+
+**What this proves from source:** Supabase is doing real operational work—canonical write, idempotency/replay checks, learning-candidate creation, checkpoint persistence, feed verification, authority-scoped projection dispatch, and receipt assembly. The Smart Link is the final generated human projection URL, not a Supabase URL, PR URL, workflow URL, or raw capture-envelope URL.
+
+**What it does not prove by source inspection alone:** that the currently deployed function matches this code; that every production request succeeded; that the generated projection was used by ACT; or that the lesson changed behavior in a cold successor.
+
+### 17.2 The learning-verification machinery exists — but its input contract differs
+
+Source: [`supabase/functions/nayanet-learning-verify/index.ts`](https://github.com/SoulSchoolAcademy/NayaPOWER/blob/1d73652231ac6127806640af5a31eb516c60738d/supabase/functions/nayanet-learning-verify/index.ts), plus the current-main reconciliation document [`RECONCILIATION-ai1-seam.md`](https://github.com/SoulSchoolAcademy/NayaPOWER/blob/1d73652231ac6127806640af5a31eb516c60738d/RECONCILIATION-ai1-seam.md).
+
+The reviewed verifier has a real `candidate` mode and `verify` mode. Candidate mode revalidates an Event → Intelligent Block → Lineage → Relationship → Index → Checkpoint chain, checks source receipts and provenance, and creates/repairs a `learning_evidence` candidate. Verify mode validates evidence references, requires a well-formed causal-verification ID, evaluates the LAW lock-in boundary before mutations, and then performs governed learning-state changes. The source explicitly says this is the governed candidate-promotion path; `LEARNED` is not to be manufactured for convenience.
+
+**Important input-contract seam requiring direct integration proof:**
+- The Smart Note receiver creates its source event in `smart_note_events` (the receiver's comments explicitly distinguish this from `nayanet_cognition_events`), then separately creates a cognition/checkpoint event.
+- The learning verifier's candidate mode, as reviewed, looks up its source event in `nayanet_cognition_events` by event ID plus receipt ID, and expects the surrounding block/lineage/relationship/index/checkpoint records in the `nayanet_intelligent_blocks` / related schema.
+- The receiver-created candidate is keyed to `target_id="smart-note:" + eventId`; the verifier's candidate path creates node learning against `target_id="NAYA-NODE-0001"`.
+- The Smart Note receiver's own checkpoint metadata says future applicability, behavior change, and outcome verification remain open.
+
+These differences may be intentional boundaries between two flows, but **the reviewed source does not by itself establish a complete adapter from the receiver's exact Smart Note transaction to the verifier's exact candidate input contract**. Treat this as a highest-priority integration question, not as proof that no admission machinery exists. The team must show either (a) a durable, explicit, tested mapping that preserves source identity/receipt/digest and semantics, or (b) implement the smallest canonical adapter. Do not duplicate the learning verifier or silently change IDs/states to make it pass.
+
+### 17.3 Current cold-runtime proof is valuable but bounded
+
+Sources:
+- [`supabase/functions/nayanet-cold-runtime-proof/index.ts`](https://github.com/SoulSchoolAcademy/NayaPOWER/blob/1d73652231ac6127806640af5a31eb516c60738d/supabase/functions/nayanet-cold-runtime-proof/index.ts)
+- [`tests/test_cold_successor_continuity.py`](https://github.com/SoulSchoolAcademy/NayaPOWER/blob/1d73652231ac6127806640af5a31eb516c60738d/tests/test_cold_successor_continuity.py)
+- [`tools/verify_nine_node_independent.py`](https://github.com/SoulSchoolAcademy/NayaPOWER/blob/1d73652231ac6127806640af5a31eb516c60738d/tools/verify_nine_node_independent.py)
+- [`.github/workflows/live-supabase-runtime-proof.yml`](https://github.com/SoulSchoolAcademy/NayaPOWER/blob/1d73652231ac6127806640af5a31eb516c60738d/.github/workflows/live-supabase-runtime-proof.yml)
+
+There is an actual OIDC-bound live runtime proof path and a cold-successor test that forbids handing the lesson directly to the successor, recomputes behavior from retrieved state, verifies a distinct successor identity, and proves authority is not inherited. The independent verifier requires a multi-part bundle (executor, cold, graph, graph verification, promotion, reread, evolve), checks source-revision consistency, distinct executor/verifier identities, and reconstructs control/treatment behavior from raw persisted receipts.
+
+**Scope limit:** the currently inspected cold-runtime code uses a fixed canonical node lesson / fixed task registry. This proves the specific fixture/lesson and the specific non-inheritance behavior it exercises. It does not automatically prove that an arbitrary newly captured Smart Note from `v7-smart-note-canonical` reaches that exact path and is learned/reused. The live workflow must be traced to determine whether its fresh producer artifact is the same IB and learning ID consumed by every later stage, not merely a separate fixture.
+
+### 17.4 Source-backed status table at the audit basis
+
+| Capability | Source-level status | What remains to prove |
+|---|---|---|
+| Authenticated Smart Note capture | IMPLEMENTED in `v7-smart-note-canonical` | Exact live deployed revision + fresh invocation evidence |
+| Canonical event/IB/receipt creation | IMPLEMENTED via `v7_create_smart_note` contract | Independent read-back against exact returned IDs/hashes in live run |
+| Learning candidate creation | IMPLEMENTED; initial state CANDIDATE | Candidate identity is the same object the governed verifier later consumes |
+| Checkpoint + authenticated Feed verification | IMPLEMENTED in receiver source | Current live parity and same-object lineage through downstream learning |
+| GitHub human projection + canonical Smart Link | IMPLEMENTED as a guarded dispatch; can be deferred/fail | Successful exact Smart Link receipt for the fresh capture and byte/projection identity match |
+| Candidate revalidation / governed promotion | IMPLEMENTED in `nayanet-learning-verify` | Adapter/contract compatibility with receiver-created Smart Note candidate and source event |
+| ACT/KNOW runtime use | A bounded KNOW/selector and cold-runtime path exist in source | Fresh user Smart Note is retrieved through the actual decision-time path; no fixed fixture/fallback |
+| Behavioral influence | Control/treatment harness and independent verifier exist | Exact fresh Smart Note causes the preregistered held-out behavior delta |
+| Cold successor | Cold-successor path and regression guards exist | Same fresh Smart Note identity flows into successor; no prompt/fixture/handoff leakage |
+| Compounding/evolution | Evolution evidence fields and verifier bundle exist | Same-run, same-revision, same-lineage evidence from fresh capture through later successor |
+| Production parity | Separate parity gate exists in live workflow | Current `main` equals deployed function/config and the same run proves it |
+
+### 17.5 The most likely seam to resolve first
+
+Do not start by rewriting the nine nodes or adding another event bus. Trace one fresh Smart Note end to end across these exact boundaries:
+
+`v7-smart-note-canonical`
+→ `v7_create_smart_note` transaction result
+→ canonical IB/event/receipt/checkpoint IDs
+→ receiver-created `learning_evidence` candidate
+→ projection workflow and Smart Link
+→ `nayanet-learning-verify` candidate mode
+→ `nayanet-learning-verify` verify/promotion mode
+→ KNOW selector / cold-runtime query
+→ ACT control/treatment task
+→ independent verifier
+→ cold successor
+→ evolve/checkpoint receipt.
+
+At each arrow, assert equality of the canonical IB ID, source event ID, learning ID, content digest, checkpoint/lineage references, source SHA, and run correlation ID where that field is applicable. Where schemas legitimately differ, document the explicit mapping and test it. If the candidate cannot pass from the receiver to the verifier because it belongs to a different target/event schema, that is the actual broken connector to repair.
+
+The first deliverable from engineering is **not another green unit test**: it is a trace table for one fresh capture with every input/output identity, the exact function/workflow/SQL operation, the current state, and the first mismatch or missing edge. Only after that table closes should the team run the complete fresh-note golden path.
+
+### 17.6 Protected authority note
+
+The learning verifier's source explicitly guards lock-in mutations behind LAW authorization and accepts only an authorized in-scope grant or a valid, applicable scorecard receipt under its implemented contract. Do not bypass this by editing database rows or forging evidence. This mandate grants no H13 authority and no deployment/merge permission. If lawful promotion is blocked by missing authority, record BLOCKED and continue all non-mutating architecture, schema, harness, and negative-path work; request the protected decision only when the evidence makes it concrete.
+
+### 17.7 Correction to earlier conversational shorthand
+
+The statement “Supabase is just a filing cabinet and nothing wakes up” is too broad for current source. The receiver does orchestrate durable capture, candidate creation, checkpointing, Feed verification, and projection dispatch. The accurate unresolved claim is narrower and more important:
+
+**We have several real pipeline components. We must prove they are one identity-preserving, policy-governed behavioral learning loop for the same freshly captured Smart Note.**
+
+That is the integration bar.
