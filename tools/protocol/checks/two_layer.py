@@ -43,6 +43,26 @@ Checks (fail-closed: shape first via shape_closed.validate_shape):
   7. If full_text is provided, it must contain a TECHNICAL marker followed
      by a PLAIN-WORDS marker. Order is the law: technicals-first-then-literal.
 
+LITERAL-FIRST REFINEMENT (Shawn, 2026-10-09 — the law's root-cause fix):
+  "Write the literal layer FIRST. Think in plain human words before the
+   technicals." The literal layer is for HIM, not for the log — so it must
+   contain NO machine exhaust, ever:
+  8. plain_human contains no SHA-like hex ([0-9a-f]{7,40} with at least one
+     hex letter — pure numbers stay legal), no #NNNN PR/issue refs, no
+     test-count patterns (NNN passed/failed/skipped, N/M ratios), and no
+     CI-state markers (CI, GitHub Actions, green/red build language).
+     A SHA in the literal layer is the law's named failure mode: "speak it
+     in words that I can't understand."
+  9. If full_text is provided, the literal portion (after the plain-words
+     marker) gets the same purity screen — the rule is about the LAYER,
+     wherever it appears, not the field.
+
+HONEST BOUND (what this check provably does NOT do):
+  - It proves the literal layer is free of machine exhaust, not that it is
+    true, complete, or faithful to the technical layer.
+  - Readability (Flesch >= 50, checks 5-6) plus purity (checks 8-9) is a
+    cheap screen against laziness and decoration, not a comprehension test.
+
 Usage:
     python3 tools/protocol/checks/two_layer.py \\
         --record '{"report_type": "deliverable_report", ...}' [--json]
@@ -103,6 +123,55 @@ PLAIN_MARKERS = [
     "plain words:",
     "plainly put",
 ]
+
+# LITERAL-FIRST refinement (Shawn, 2026-10-09): the literal layer is written
+# for HIM, not the log — no machine exhaust, ever. Each pattern is a named
+# failure mode from his correction. The SHA pattern requires at least one
+# hex letter so plain numbers stay legal; the law bans SHAs, not counts.
+LITERAL_PURITY_PATTERNS = [
+    (
+        "sha_like",
+        re.compile(r"\b(?=[0-9a-f]*[a-f])[0-9a-f]{7,40}\b"),
+        "SHA-like hex string",
+    ),
+    (
+        "pr_ref",
+        re.compile(r"(?:#\d{3,}|PR[\s#-]*\d+|pull request\s*#?\s*\d+|issue\s*#\s*\d+)", re.IGNORECASE),
+        "PR/issue number",
+    ),
+    (
+        "test_count",
+        re.compile(
+            r"\b\d+\s*(?:passed|failed|skipped|errored|passing|failing)\b"
+            r"|\b\d+\s+tests?\s+(?:passed|failed|skipped|errored|passing|failing)\b"
+            r"|\b\d+\s*/\s*\d+\b"
+            r"|\b\d+\s+of\s+\d+\s+tests?\b",
+            re.IGNORECASE,
+        ),
+        "test count",
+    ),
+    (
+        "ci_state",
+        re.compile(
+            r"\bCI\b"
+            r"|github actions"
+            r"|\b(?:green|red)\s+(?:build|suite|pipeline|CI)\b"
+            r"|\bbuild\s+(?:passed|failed|green|red)\b",
+            re.IGNORECASE,
+        ),
+        "CI-state marker",
+    ),
+]
+
+
+def _literal_impurities(text: str) -> list[str]:
+    """Return human-readable hits of machine exhaust in the literal layer."""
+    hits: list[str] = []
+    for _name, pattern, label in LITERAL_PURITY_PATTERNS:
+        m = pattern.search(text)
+        if m:
+            hits.append(f"{label} {m.group(0)!r}")
+    return hits
 
 
 def _tokens(text: str) -> set[str]:
@@ -232,6 +301,34 @@ def check(record: dict) -> dict:
                 details,
             )
         reasons.append("full_text: TECHNICAL marker precedes plain-words marker")
+
+        # Literal-first refinement, check 9: the literal PORTION of full_text
+        # gets the same purity screen. The rule is about the layer, wherever
+        # it appears — not the field.
+        literal_portion = full[plain_pos:].strip()
+        full_impurities = _literal_impurities(literal_portion)
+        if full_impurities:
+            return fail(
+                f"{title}: full_text's literal portion carries machine "
+                f"exhaust ({'; '.join(full_impurities)}) — the literal "
+                "layer is written for Shawn, not the log. Write it first, "
+                "in plain human words.",
+                details,
+            )
+        reasons.append("full_text: literal portion free of machine exhaust")
+
+    # Literal-first refinement, check 8: no machine exhaust in plain_human.
+    # This is the named failure mode — "speak it in words I can't understand."
+    impurities = _literal_impurities(plain)
+    if impurities:
+        return fail(
+            f"{title}: plain_human carries machine exhaust "
+            f"({'; '.join(impurities)}) — the literal layer is for Shawn, "
+            "not the log. Think in plain human words FIRST, then attach "
+            "technicals as the evidence appendix.",
+            details,
+        )
+    reasons.append("plain_human: literal layer free of machine exhaust")
 
     reasons.append(
         f"Two-Layer Law honored on {rtype!r}: technicals first, "
