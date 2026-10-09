@@ -418,6 +418,27 @@ def check_protected_gates(action_text: str) -> AdapterResult:
     )
 
 
+def _scores_sane_for_canonical(scores: dict) -> bool:
+    """Input sanity the canonical module does not enforce.
+
+    kernel.protocol.quality_gate validates weights strictly but never checks
+    score finiteness/range (NaN slips through: nan < 9.0 is False, so no
+    reason is recorded and the gate PASSES). This adapter's contract includes
+    the negative controls (NaN / non-finite / out-of-range / empty must FAIL),
+    so insane inputs fall through to the local mirror, which rejects them
+    with accurate reasons. Neither side is weakened.
+    """
+    if not isinstance(scores, dict) or not scores:
+        return False
+    return all(
+        isinstance(v, (int, float))
+        and not isinstance(v, bool)
+        and math.isfinite(v)
+        and 0 <= v <= 10
+        for v in scores.values()
+    )
+
+
 def check_quality_gate(
     scores: dict, weights: dict | None = None
 ) -> AdapterResult:
@@ -430,11 +451,24 @@ def check_quality_gate(
     """
     check_delivery = _try_kernel_attr("quality_gate", "check_delivery")
     Scorecard = _try_kernel_attr("quality_gate", "Scorecard")
-    if check_delivery is not None and Scorecard is not None:
+    if (
+        check_delivery is not None
+        and Scorecard is not None
+        and _scores_sane_for_canonical(scores)
+    ):
         try:
+            # Seam contract (PR #1850): the canonical Scorecard requires weights
+            # summing to 1.0, but this adapter's long-standing contract allows the
+            # caller to omit weights (tests/tools/protocol_gates_test.py). Translate
+            # the no-weights default to equal weights here so the adapter meets the
+            # canonical contract without weakening either side. The canonical module
+            # is untouched.
+            eff_weights = dict(weights) if weights is not None else (
+                {d: 1.0 / len(scores) for d in scores} if scores else {}
+            )
             sc = Scorecard(
                 what="adapter-call", evidence="adapter-call",
-                scores=dict(scores), weights=dict(weights or {}),
+                scores=dict(scores), weights=eff_weights,
                 weakest_point="adapter-call", verified_by="adapter",
             )
             r = check_delivery(sc, builder_id="protocol_gates-adapter")
