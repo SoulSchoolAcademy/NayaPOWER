@@ -52,7 +52,9 @@ Honest bound: the dictionary-word boundary is ORDINARY_WORDS below — a
 word NOT in that list but still common in prose is a residual risk the
 name-check cannot see. The list is the extension point: when a new
 prose-natural word is observed slipping through, add it with its evidence
-instead of weakening the check.
+instead of weakening the check. The law's own template vocabulary
+("I chose X. I looked at A, B, C. X won because [evidence]." → chose,
+looked, evidence, x, b, c) has been audited and is covered.
 
 Usage:
     python3 tools/protocol/checks/decision_receipt.py \
@@ -76,6 +78,15 @@ from checks import emit, fail, load_record, result  # noqa: E402
 # option still passes. Ids must be real identifiers (opt-a, plan-2,
 # north-route) — things a receipt must deliberately write, never things
 # prose writes by accident.
+#
+# Template-vocabulary closure (2026-10-09): the law's own report template
+# ("I chose X. I looked at A, B, C. X won because [evidence].") writes
+# "chose", "looked", "evidence", "x", "b", "c" BY CONSTRUCTION — every
+# receipt written in the template names those ids without naming any
+# option. Ghost options with those ids passed the full check end-to-end.
+# They are banned with the same force as "a" and "the". The check is
+# full-string equality, so honest ids like "opt-a" never collide with
+# the banned bare letters "a", "b", "c", "x".
 ORDINARY_WORDS = frozenset("""
 a an the
 i me my mine we us our ours you your yours he him his she her hers
@@ -135,6 +146,9 @@ one two three four five six seven eight nine ten eleven twelve thirteen
 fourteen fifteen sixteen seventeen eighteen nineteen twenty thirty forty
 fifty sixty seventy eighty ninety hundred thousand million second third
 yes no ok okay please thanks hello hi
+chose looked
+evidence
+b c x
 """.split())
 
 

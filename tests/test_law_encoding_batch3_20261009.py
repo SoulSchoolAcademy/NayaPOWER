@@ -369,8 +369,10 @@ def test_receipt_fires_on_common_word_id_case_insensitive():
     assert not r["pass"], "'This' is an ordinary word even capitalized"
 
 
-def test_receipt_passes_with_nonword_single_letter_id():
-    # Honoring side: "b" is not a dictionary word, so it stays a legal id.
+def test_receipt_fires_on_template_placeholder_letter_id():
+    # "b" is template vocabulary now: the law's own template writes
+    # "I looked at A, B, C" in every receipt, so a bare "b" id can never
+    # be genuinely named — it fails closed exactly like "a".
     rec = {
         "decision": "tiny pick",
         "chosen": "b",
@@ -386,7 +388,7 @@ def test_receipt_passes_with_nonword_single_letter_id():
         "uncertainty_declared": False,
     }
     r = decision_receipt.check(rec)
-    assert r["pass"], r["reasons"]
+    assert not r["pass"], "template placeholder letters must fail closed as ids"
 
 
 def test_wisest_fires_on_fabricated_law_ref():
@@ -487,6 +489,102 @@ def test_merge_passes_on_url_shaped_evidence():
     rec["test_evidence"] = ("https://github.com/SoulSchoolAcademy/NayaPOWER/"
                             "actions/runs/4821 — 61/61 green")
     r = merge_authority.check(rec)
+    assert r["pass"], r["reasons"]
+
+
+# ================= template-vocabulary ghost ids (re-validator's residual hole)
+
+def test_receipt_fires_on_ghost_ids_chose_looked_end_to_end():
+    # The re-validator's demonstrated exploit, locked in as a regression:
+    # ghost options with ids "chose"/"looked" and a receipt written in the
+    # law's own template that never names either option PASSED the full
+    # check pre-fix. The template writes those words by construction.
+    rec = {
+        "decision": "revalidator demo",
+        "chosen": "chose",
+        "alternatives": [
+            {"id": "chose", "description": "ghost option one"},
+            {"id": "looked", "description": "ghost option two"},
+        ],
+        "winning_evidence": "it scored well",
+        "receipt": ("I chose the winner. I looked at every option carefully. "
+                    "The winner won because evidence showed it was best. "
+                    "This is what I did."),
+        "seat": "naya-5",
+        "close_call": False,
+        "uncertainty_declared": False,
+    }
+    r = decision_receipt.check(rec)
+    assert not r["pass"], "ghost ids from the template vocabulary must fail closed"
+
+
+def test_receipt_fires_on_ghost_id_evidence():
+    # "[evidence]" is the template's own evidence slot — the word appears
+    # naturally in every template receipt, so it can never name an option.
+    rec = _good_receipt()
+    rec["alternatives"] = [
+        {"id": "evidence", "description": "ghost option"},
+        {"id": "opt-2", "description": "plan beta"},
+    ]
+    rec["chosen"] = "opt-2"
+    rec["receipt"] = ("I chose opt-2. I looked at opt-2 and the evidence. "
+                      "opt-2 won because the evidence was strong. "
+                      "This is what I did.")
+    r = decision_receipt.check(rec)
+    assert not r["pass"], "'evidence' is template vocabulary, not an id"
+
+
+def test_receipt_fires_on_ghost_id_x():
+    # "X" is the template's chosen placeholder ("I chose X ... X won") —
+    # every template receipt writes it without naming any option.
+    rec = _good_receipt()
+    rec["alternatives"] = [
+        {"id": "x", "description": "ghost option"},
+        {"id": "opt-2", "description": "plan beta"},
+    ]
+    rec["chosen"] = "x"
+    rec["receipt"] = ("I chose X. I looked at X and opt-2. X won because of "
+                      "scoring. This is what I did.")
+    r = decision_receipt.check(rec)
+    assert not r["pass"], "'x' is the template's placeholder, not an id"
+
+
+def test_receipt_fires_on_ghost_id_c():
+    # "C" is the template's third-placeholder letter ("A, B, C") — same
+    # class as "b", which fails closed above.
+    rec = _good_receipt()
+    rec["alternatives"] = [
+        {"id": "c", "description": "ghost option"},
+        {"id": "opt-2", "description": "plan beta"},
+    ]
+    rec["chosen"] = "c"
+    rec["receipt"] = ("I chose X. I looked at A, B, C. X won because it "
+                      "scored 9.1. This is what I did.")
+    r = decision_receipt.check(rec)
+    assert not r["pass"], "template placeholder letters must fail closed as ids"
+
+
+def test_receipt_passes_with_honest_identifiers():
+    # Honoring side for the closure: real identifiers that a receipt must
+    # deliberately write stay legal. The dictionary check is full-string
+    # equality, so "opt-a" never collides with the banned bare letter "a".
+    rec = {
+        "decision": "honest pick",
+        "chosen": "opt-alpha",
+        "alternatives": [
+            {"id": "opt-a", "description": "plan alpha"},
+            {"id": "plan-2", "description": "plan beta"},
+            {"id": "opt-alpha", "description": "plan gamma"},
+        ],
+        "winning_evidence": "opt-alpha scored 9.1 vs 7.0 and 6.5",
+        "receipt": ("I chose opt-alpha. I looked at opt-a, plan-2, "
+                    "opt-alpha. opt-alpha won because it scored 9.1. "
+                    "This is what I did."),
+        "seat": "naya-5",
+        "close_call": False,
+        "uncertainty_declared": False,
+    }
+    r = decision_receipt.check(rec)
     assert r["pass"], r["reasons"]
 
 
