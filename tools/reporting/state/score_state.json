@@ -1,0 +1,68 @@
+{
+  "Action & Execution": {
+    "as_of": "2026-10-08T23:59:59+00:00",
+    "score": 8.5,
+    "source": "memory:2026-10-08",
+    "status": "claim"
+  },
+  "Authority & Governance": {
+    "as_of": "2026-10-08T23:59:59+00:00",
+    "score": 8.0,
+    "source": "memory:2026-10-08",
+    "status": "claim"
+  },
+  "Human Value": {
+    "as_of": "2026-10-08T00:00:00+00:00",
+    "score": 7.5,
+    "source": "seed 2026-10-08",
+    "status": "claim"
+  },
+  "Learning": {
+    "score": 5.0,
+    "as_of": "2026-10-08T09:37:00+00:00",
+    "source": "Naya 1 reconciliation 2026-10-08 (pinned)",
+    "status": "authoritative"
+  },
+  "Memory & Continuity": {
+    "as_of": "2026-10-08T23:59:59+00:00",
+    "score": 7.5,
+    "source": "memory:2026-10-08",
+    "status": "claim"
+  },
+  "Production Readiness": {
+    "as_of": "2026-10-08T23:59:59+00:00",
+    "score": 3.0,
+    "source": "memory:2026-10-08",
+    "status": "claim"
+  },
+  "Retrieval": {
+    "as_of": "2026-10-08T23:59:59+00:00",
+    "score": 7.0,
+    "source": "memory:2026-10-08",
+    "status": "claim"
+  },
+  "Safety": {
+    "as_of": "2026-10-08T23:59:59+00:00",
+    "score": 7.0,
+    "source": "memory:2026-10-08",
+    "status": "claim"
+  },
+  "Successor Reuse": {
+    "as_of": "2026-10-08T23:59:59+00:00",
+    "score": 4.5,
+    "source": "memory:2026-10-08",
+    "status": "claim"
+  },
+  "Truth": {
+    "as_of": "2026-10-08T23:59:59+00:00",
+    "score": 8.8,
+    "source": "memory:2026-10-08",
+    "status": "claim"
+  },
+  "Voice & Experience": {
+    "as_of": "2026-10-08T23:59:59+00:00",
+    "score": 8.0,
+    "source": "memory:2026-10-08",
+    "status": "claim"
+  }
+}
