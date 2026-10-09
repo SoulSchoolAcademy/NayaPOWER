@@ -1,0 +1,68 @@
+{
+  "schema": "naya.learning-engine-assembly-gate.v1",
+  "status": "BLOCKED",
+  "source_main_sha": "527ebcfbc04896c3a6beee127757785597e0713a",
+  "required_connections": [
+    {
+      "id": "NINE_NODE_RUNTIME_BINDINGS",
+      "status": "NOT_PROVEN",
+      "evidence": [],
+      "current_gap": "Universal nine-node production binding is not proven; canonical kernel manifest entrypoint remains null."
+    },
+    {
+      "id": "CANONICAL_CAPTURE_INTAKE",
+      "status": "PARTIAL",
+      "evidence": [],
+      "current_gap": "v2 capture pipeline and legacy v7 receiver both exist; one canonical intake/writer is not established."
+    },
+    {
+      "id": "LEARNING_EXPERIMENT_ADMISSION",
+      "status": "PARTIAL",
+      "evidence": [],
+      "current_gap": "Python admission gate/queue exist, but the production learning claim/promotion path has no proven caller bound to its experiment evidence."
+    },
+    {
+      "id": "VERIFIED_LESSON_TO_ACT",
+      "status": "PARTIAL",
+      "evidence": [],
+      "current_gap": "main contains the ACT decision-context seam; deployed ACT v65 is stale and lacks it."
+    },
+    {
+      "id": "VERIFIED_LESSON_TO_SELF",
+      "status": "MISSING",
+      "evidence": [],
+      "current_gap": "SELF integration and behavior-policy modules have tests but no production Supabase read adapter/caller."
+    },
+    {
+      "id": "SOURCE_RUNTIME_PARITY",
+      "status": "PARTIAL",
+      "evidence": [],
+      "current_gap": "nayanet-learning-verify and nayanet-act-runtime deployed bytes differ from main; deployed nayanet-github-dispatch matches an unmerged draft branch rather than main."
+    },
+    {
+      "id": "PROMOTION_BACKSYNC",
+      "status": "MISSING",
+      "evidence": [],
+      "current_gap": "DB learning promotion is not proven to reconcile the GitHub registry lifecycle/truth state in the same governed loop."
+    },
+    {
+      "id": "RLS_POLICIES",
+      "status": "BLOCKED",
+      "evidence": [],
+      "current_gap": "RLS disabled and no policies returned for smart_note_events, smart_note_artifacts, smart_note_receipts; policy review requires a human decision."
+    },
+    {
+      "id": "COLD_SUCCESSOR_BEHAVIORAL_PROOF",
+      "status": "BLOCKED",
+      "evidence": [],
+      "current_gap": "The exact T11 lesson has not completed the registered cold-successor behavioral acceptance path."
+    }
+  ],
+  "ready_requirements": [
+    "source_main_sha equals the exact SOURCE_SHA for this run",
+    "all nine required connections have status PROVEN",
+    "each connection has at least one receipt with matching source_sha, SHA-256 artifact hash, ISO timestamp, and independent_verifier",
+    "the reviewed manifest status is READY_FOR_END_TO_END"
+  ],
+  "rule": "A blocked gate is an intentional successful hold. No end-to-end learning, cold-runtime, or live-connect experiment runs unless the exact-SHA assembly manifest proves READY_FOR_END_TO_END."
+}
