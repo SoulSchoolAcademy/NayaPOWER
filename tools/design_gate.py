@@ -25,6 +25,22 @@ Structural checks:
   6. LIGHT TEXT — body text color is light.
   7. MOBILE VIEWPORT — the viewport meta declares width=device-width
      (mobile is the primary canvas).
+
+Normalization architecture (durable law, validator 2026-10-09): every
+parser is only as strong as the narrowest input channel it doesn't read.
+So there is ONE scanned CSS stream — <style> blocks AND inline style
+attributes concatenated — punctuation is stripped before every color
+lookup, and cascade winners are judged (inline beats stylesheet,
+!important beats normal, later beats earlier), never first declarations.
+
+Fail direction: black-root judging is fail-CLOSED (an unjudgeable color
+cannot be verified dark); light-surface judging is fail-OPEN on images
+only (a url() cannot be judged without fetching — honest, not a hole).
+
+Alpha judgment: alpha is composited over the black ground. A 5% white
+sheen over black is visually black (passes); a 90% white overlay is
+visually white (fails). The gate enforces the rendered result on Shawn's
+black canvas, not raw channel values.
 """
 from __future__ import annotations
 
@@ -44,8 +60,121 @@ def read_page(path: Path) -> str:
 
 
 def inline_css(html: str) -> str:
-    """All <style> block contents concatenated."""
-    return "\n".join(re.findall(r"<style[^>]*>(.*?)</style>", html, re.S | re.I))
+    """The single scanned CSS stream: <style> blocks AND inline style
+    attributes, concatenated.
+
+    Durable law (validator, 2026-10-09): every parser is only as strong as
+    the narrowest input channel it doesn't read. Inline styles were an
+    unread channel — every color check missed them. Each inline style
+    attribute is wrapped as a `*[inline]` rule so the rule-iterating checks
+    judge it like any other rule.
+    """
+    parts = re.findall(r"<style[^>]*>(.*?)</style>", html, re.S | re.I)
+    for m in re.finditer(
+        r"""\bstyle\s*=\s*"([^"]*)"|\bstyle\s*=\s*'([^']*)'""", html, re.I
+    ):
+        decl = m.group(1) if m.group(1) is not None else m.group(2)
+        decl = (decl or "").strip()
+        if decl:
+            parts.append(f"*[inline]{{{decl}}}")
+    return "\n".join(parts)
+
+
+def _inline_style_of(html: str, tag: str) -> str | None:
+    """The raw style="" attribute of the first <tag>, for cascade judging
+    (inline styles beat stylesheet rules)."""
+    m = re.search(
+        r"<%s\b[^>]*?\bstyle\s*=\s*\"([^\"]*)\"" % tag, html, re.I
+    )
+    if not m:
+        m = re.search(
+            r"<%s\b[^>]*?\bstyle\s*=\s*'([^']*)'" % tag, html, re.I
+        )
+    return m.group(1).strip() if m else None
+
+
+def _split_top_level(value: str) -> list[str]:
+    """Split on commas at paren depth 0 (layers, not gradient stops)."""
+    parts, depth, cur = [], 0, []
+    for ch in value:
+        if ch == "(":
+            depth += 1
+        elif ch == ")":
+            depth = max(0, depth - 1)
+        if ch == "," and depth == 0:
+            parts.append("".join(cur))
+            cur = []
+        else:
+            cur.append(ch)
+    parts.append("".join(cur))
+    return parts
+
+
+def _strip_punct(s: str) -> str:
+    """Strip trailing punctuation/whitespace before every color lookup.
+    (Validator hole 2: "white)" never matched the named-color table.)"""
+    return s.strip().strip(";,")
+
+
+_GRADIENT_HINT_RE = re.compile(
+    r"^(to\s+[a-z\s]+|\d+(\.\d+)?(deg|turn|rad|grad)|circle|ellipse"
+    r"|closest-side|closest-corner|farthest-side|farthest-corner"
+    r"|at\s+.+)$",
+    re.I,
+)
+
+
+def _gradient_stops(value: str) -> list[str]:
+    """Paren-aware color stops of a gradient(), direction/position hints
+    removed, trailing punctuation stripped. Fail-closed callers treat an
+    empty/unparseable result as not-dark."""
+    m = re.search(r"[a-z-]*gradient\s*\(", value, re.I)
+    if not m:
+        return []
+    depth, start, stops = 0, m.end(), []
+    for j in range(m.end() - 1, len(value)):
+        ch = value[j]
+        if ch == "(":
+            depth += 1
+        elif ch == ")":
+            depth -= 1
+            if depth == 0:
+                stops.append(value[start:j])
+                break
+        elif ch == "," and depth == 1:
+            stops.append(value[start:j])
+            start = j + 1
+    cleaned = []
+    for s in stops:
+        t = _strip_punct(s)
+        if _GRADIENT_HINT_RE.match(t):
+            continue
+        t = re.sub(r"(\s+\d+(\.\d+)?%)+$", "", t).strip()
+        if t:
+            cleaned.append(t)
+    return cleaned
+
+
+def _first_color_token(layer: str) -> str | None:
+    """First color-parseable token of a background shorthand layer.
+    Tries the whole value first (functional notations contain spaces:
+    hsl(0, 0%, 100%) must not be split), then falls back to whitespace
+    token scanning for multi-token shorthands (snow url(x.png)).
+    url(...) is skipped (an image cannot be judged without fetching);
+    a layer with no color token is unjudgeable, not light."""
+    t = _strip_punct(layer)
+    if _luminance_of(t) is not None:
+        return t
+    v = re.sub(r"url\(\s*[^)]*\s*\)", " ", layer, flags=re.I)
+    v = re.sub(r"var\(\s*--[^)]*\)", " ", v)
+    for tok in re.split(r"\s+", v):
+        t = _strip_punct(tok)
+        if not t or t.lower() in ("none", "transparent", "inherit",
+                                  "initial"):
+            continue
+        if _luminance_of(t) is not None:
+            return t
+    return None
 
 
 def check_self_contained(html: str) -> list[str]:
@@ -63,17 +192,6 @@ def check_self_contained(html: str) -> list[str]:
         if not src.startswith("data:"):
             v.append(f"SELF-CONTAINED: external script reference: {src}")
     return v
-
-
-def _bg_of_rule(css: str, selector: str) -> str | None:
-    for m in re.finditer(
-        re.escape(selector) + r"\s*\{([^}]*)\}", css, re.I
-    ):
-        body = m.group(1)
-        bg = re.search(r"background(?:-color)?\s*:\s*([^;}]+);?", body, re.I)
-        if bg:
-            return bg.group(1).strip()
-    return None
 
 
 def _root_vars(css: str) -> dict[str, str]:
@@ -150,92 +268,200 @@ _NAMED_COLORS = {
 }
 
 
-def _luminance_of(color: str) -> float | None:
-    """Relative luminance 0..1, or None if the color cannot be parsed."""
-    c = color.strip().lower()
+def _rgba_of(color: str) -> tuple[float, float, float, float] | None:
+    """Parse a CSS color to (r, g, b, a) in 0..1, or None if unparseable."""
+    c = re.sub(r";+$", "", color.strip().lower())
+    if c == "transparent":
+        return (0.0, 0.0, 0.0, 0.0)
     if c in _NAMED_COLORS:
         r, g, b = _NAMED_COLORS[c]
-        return (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255
-    m = re.match(r"#([0-9a-f]{3,8})", c)
+        return (r / 255, g / 255, b / 255, 1.0)
+    m = re.fullmatch(r"#([0-9a-f]{3,4}|[0-9a-f]{6}|[0-9a-f]{8})", c)
     if m:
         h = m.group(1)
-        if len(h) == 3:
+        if len(h) in (3, 4):
             h = "".join(ch * 2 for ch in h)
-        r, g, b = int(h[0:2], 16), int(h[2:4], 16), int(h[4:6], 16)
-        return (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255
-    m = re.match(
-        r"rgba?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)", c
-    )
+        a = int(h[6:8], 16) / 255 if len(h) == 8 else 1.0
+        return (int(h[0:2], 16) / 255, int(h[2:4], 16) / 255,
+                int(h[4:6], 16) / 255, a)
+    m = re.fullmatch(
+        r"rgba?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*"
+        r"(?:,\s*([\d.]+))?\s*\)", c)
     if m:
-        r, g, b = map(int, m.groups())
-        return (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255
-    m = re.match(
-        r"hsla?\(\s*([\d.]+)\s*,\s*([\d.]+)%\s*,\s*([\d.]+)%", c
-    )
+        a = float(m.group(4)) if m.group(4) is not None else 1.0
+        return (int(m.group(1)) / 255, int(m.group(2)) / 255,
+                int(m.group(3)) / 255, max(0.0, min(1.0, a)))
+    m = re.fullmatch(
+        r"hsla?\(\s*([\d.]+)\s*,\s*([\d.]+)%\s*,\s*([\d.]+)%\s*"
+        r"(?:,\s*([\d.]+))?\s*\)", c)
     if m:
-        h, s, l = float(m.group(1)) / 360.0, float(m.group(2)) / 100.0, float(m.group(3)) / 100.0
+        h, s, l = (float(m.group(1)) / 360.0, float(m.group(2)) / 100.0,
+                   float(m.group(3)) / 100.0)
         if s == 0:
-            return l
-        def hue2rgb(p: float, q: float, t: float) -> float:
-            t %= 1.0
-            if t < 1 / 6:
-                return p + (q - p) * 6 * t
-            if t < 1 / 2:
-                return q
-            if t < 2 / 3:
-                return p + (q - p) * (2 / 3 - t) * 6
-            return p
-        q = l * (1 + s) if l < 0.5 else l + s - l * s
-        p = 2 * l - q
-        r, g, b = hue2rgb(p, q, h + 1 / 3), hue2rgb(p, q, h), hue2rgb(p, q, h - 1 / 3)
-        return 0.2126 * r + 0.7152 * g + 0.0722 * b
+            r = g = b = l
+        else:
+            def hue2rgb(p: float, q: float, t: float) -> float:
+                t %= 1.0
+                if t < 1 / 6:
+                    return p + (q - p) * 6 * t
+                if t < 1 / 2:
+                    return q
+                if t < 2 / 3:
+                    return p + (q - p) * (2 / 3 - t) * 6
+                return p
+            q = l * (1 + s) if l < 0.5 else l + s - l * s
+            p = 2 * l - q
+            r, g, b = (hue2rgb(p, q, h + 1 / 3), hue2rgb(p, q, h),
+                       hue2rgb(p, q, h - 1 / 3))
+        a = float(m.group(4)) if m.group(4) is not None else 1.0
+        return (r, g, b, max(0.0, min(1.0, a)))
     return None
 
 
+def _luminance_of(color: str) -> float | None:
+    """Relative luminance 0..1 of the color as rendered on the gate's black
+    ground (alpha composited over black), or None if unparseable.
+
+    Design judgment (validator hole 6): the gate enforces the rendered
+    result on Shawn's black canvas, not raw channel values. A 5% white
+    sheen over black is visually black (passes); a 90% white overlay is
+    visually white (fails)."""
+    rgba = _rgba_of(color)
+    if rgba is None:
+        return None
+    r, g, b, a = rgba
+    r, g, b = r * a, g * a, b * a  # composite over black
+    return (0.2126 * r + 0.7152 * g + 0.0722 * b) / 1.0
+
+
 def _is_dark(color: str, vars: dict[str, str] | None = None) -> bool:
+    """True only if the value is provably dark. Fail-closed everywhere:
+    any light stop, any unparseable stop, any unjudgeable token -> False.
+
+    Gradients are judged by ALL stops: a white-to-black gradient IS a light
+    surface at its white end. (The old "first stop only" rule let
+    linear-gradient(white, black) walk through.)"""
     color = _resolve_vars(color, vars or {})
     c = color.strip().lower()
     if c in ("transparent", "none", "initial", "inherit"):
         return True  # not a light surface
     if "gradient" in c:
-        # gradients: judge by the first color stop (craft highlights allowed)
-        first = c.split(",", 1)[1] if "," in c else c
-        lum = _luminance_of(first.strip())
-        if lum is None:
-            return True  # unparseable stop: not provably a light surface
-        return lum < 0.35
-    lum = _luminance_of(c)
+        stops = _gradient_stops(c)
+        if not stops:
+            return False  # fail closed: no parseable stops
+        for s in stops:
+            lum = _luminance_of(_strip_punct(s))
+            if lum is None:
+                return False  # fail closed: unparseable stop
+            if lum >= 0.35:
+                return False  # any light stop -> not dark
+        return True
+    tok = _first_color_token(c)
+    if tok is None:
+        return False  # fail closed: cannot verify dark
+    lum = _luminance_of(tok)
     if lum is None:
-        # Unparseable opaque color: cannot verify it is dark -> fail closed.
         return False
     return lum < 0.35
+
+
+def _surface_is_light(value: str) -> bool:
+    """True if any layer/stop/token of a background value is provably light.
+    Unparseable layers (images) are unjudgeable, not light — fail-open here
+    is honest: the gate cannot fetch images. (Black-root judging stays
+    fail-closed via _is_dark.)"""
+    c = value.strip()
+    if not c:
+        return False
+    for layer in _split_top_level(c):
+        layer = layer.strip()
+        if not layer:
+            continue
+        if "gradient" in layer.lower():
+            for s in _gradient_stops(layer):
+                lum = _luminance_of(_strip_punct(s))
+                if lum is not None and lum >= 0.6:
+                    return True
+        else:
+            tok = _first_color_token(layer)
+            if tok is None:
+                continue
+            lum = _luminance_of(tok)
+            if lum is not None and lum >= 0.6:
+                return True
+    return False
+
+
+_BG_PAT = re.compile(
+    r"background(?:-color)?\s*:\s*([^;!{}]+)(\s*!important)?", re.I)
+_COLOR_PAT = re.compile(
+    r"(?<![a-z-])color\s*:\s*([^;!{}]+)(\s*!important)?", re.I)
+
+
+def _selector_targets(selector: str, tag: str) -> bool:
+    """Does a CSS selector target <tag> (bare, classed, or descendant)?"""
+    for part in selector.split(","):
+        p = part.strip().lower()
+        if re.fullmatch(r"%s(\.[a-z0-9_-]+)*" % tag, p):
+            return True
+        if re.search(r"(^|[\s>+~])%s(\.[a-z0-9_-]+)?$" % tag, p):
+            return True
+    return False
+
+
+def _prop_declarations(css: str, pat: re.Pattern, html: str,
+                       tag: str) -> tuple[list[tuple[int, int, str]], bool]:
+    """Collect (rank, order, value) for a property on <tag>.
+
+    Cascade ranks: stylesheet normal 1, inline normal 2,
+    stylesheet !important 3, inline !important 4. The winner is
+    max(rank, order) — inline beats stylesheet, !important beats normal,
+    later beats earlier. Durable law: judge the cascade winner, not the
+    first declaration.
+    Returns (declarations, any_rule_targeted_tag)."""
+    decls: list[tuple[int, int, str]] = []
+    order = 0
+    any_rule = False
+    for m in re.finditer(r"([^{}]+)\{([^{}]*)\}", css):
+        selector = m.group(1).strip()
+        if selector.startswith("@"):
+            continue
+        if not _selector_targets(selector, tag):
+            continue
+        any_rule = True
+        for pm in pat.finditer(m.group(2)):
+            rank = 3 if pm.group(2) else 1
+            decls.append((rank, order, pm.group(1).strip()))
+            order += 1
+    inl = _inline_style_of(html, tag)
+    if inl:
+        any_rule = True
+        for pm in pat.finditer(inl):
+            rank = 4 if pm.group(2) else 2
+            decls.append((rank, order, pm.group(1).strip()))
+            order += 1
+    return decls, any_rule
 
 
 def check_black_root(html: str, css: str) -> list[str]:
     v = []
     vars = _root_vars(css)
     for sel in ("html", "body"):
-        bg = _bg_of_rule(css, sel)
-        # also accept body class selectors like body.naya-page
-        if bg is None and sel == "body":
-            m = re.search(
-                r"body\.[a-zA-Z0-9_-]+\s*\{([^}]*)\}", css, re.I
-            )
-            if m:
-                b2 = re.search(
-                    r"background(?:-color)?\s*:\s*([^;}]+);?", m.group(1), re.I
-                )
-                bg = b2.group(1).strip() if b2 else None
-        if bg is None:
+        decls, any_rule = _prop_declarations(css, _BG_PAT, html, sel)
+        if not decls:
             v.append(f"BLACK ROOT: no background declared for `{sel}` "
                      f"(browser default white leaks through)")
-        elif not _is_dark(bg, vars):
-            v.append(f"BLACK ROOT: `{sel}` background is not deep black: {bg}")
+        else:
+            winner = max(decls, key=lambda d: (d[0], d[1]))[2]
+            if not _is_dark(winner, vars):
+                v.append(f"BLACK ROOT: `{sel}` background is not deep black: "
+                         f"{winner}")
     return v
 
 
 def check_no_light_surfaces(css: str) -> list[str]:
     v = []
+    vars = _root_vars(css)
     for m in re.finditer(
         r"([^{}]+)\{([^{}]*)\}", css
     ):
@@ -247,20 +473,16 @@ def check_no_light_surfaces(css: str) -> list[str]:
         if ":before" in selector or ":after" in selector:
             continue
         for bm in re.finditer(
-            r"background(?:-color)?\s*:\s*([^;}]+);?", body, re.I
+            r"background(?:-color)?\s*:\s*([^;{}]+);?", body, re.I
         ):
-            val = bm.group(1).strip()
+            val = _resolve_vars(bm.group(1).strip(), vars)
             # Light surfaces are surfaces: any opaque background with high
             # luminance fails, however it is spelled (hex, name, hsl).
-            # Gradient craft: judge by the first color stop only.
-            probe = val
-            if "gradient" in val.lower():
-                parts = val.split(",", 1)
-                probe = parts[1] if len(parts) > 1 else val
-            lum = _luminance_of(_resolve_vars(probe, _root_vars(css)))
-            if lum is not None and lum >= 0.6:
+            # Every layer of multi-backgrounds is judged; every stop of a
+            # gradient is judged.
+            if _surface_is_light(val):
                 v.append(f"NO LIGHT SURFACES: `{selector}` has light "
-                         f"background: {val}")
+                         f"background: {bm.group(1).strip()}")
     return v
 
 
@@ -329,26 +551,21 @@ def check_no_freestyle(html: str, known: set[str]) -> list[str]:
     return v
 
 
-def check_light_text(css: str) -> list[str]:
-    v = []
-    # body rule or body.<class> rules (page root carries the text color)
-    bodies = re.findall(
-        r"body(?:\.[a-zA-Z0-9_-]+)?\s*\{([^}]*)\}", css, re.I
-    )
-    if not bodies:
+def check_light_text(html: str, css: str) -> list[str]:
+    """Body text must be light. Judges the cascade winner — the last
+    declaration wins (inline styles beat stylesheet rules, !important beats
+    normal) — not the first declaration. (Validator hole 5: a later dark
+    override, including inside @media, used to walk through.)"""
+    decls, any_rule = _prop_declarations(css, _COLOR_PAT, html, "body")
+    if not any_rule:
         return ["LIGHT TEXT: no body rule found"]
-    col = None
-    for b in bodies:
-        m = re.search(r"(?<![a-z-])color\s*:\s*([^;}]+);?", b, re.I)
-        if m:
-            col = m.group(1).strip()
-            break
-    if not col:
+    if not decls:
         return ["LIGHT TEXT: body has no text color declared"]
+    col = max(decls, key=lambda d: (d[0], d[1]))[2]
     # light text = NOT dark
     if _is_dark(col, _root_vars(css)):
-        v.append(f"LIGHT TEXT: body text color is dark: {col}")
-    return v
+        return [f"LIGHT TEXT: body text color is dark: {col}"]
+    return []
 
 
 def check_viewport(html: str) -> list[str]:
@@ -474,7 +691,7 @@ def run_gate(page: Path, manifest: Path,
     else:
         violations.append(f"NO FREESTYLE: manifest not found at {manifest} "
                           f"— cannot verify components")
-    violations += check_light_text(css)
+    violations += check_light_text(html, css)
     if require_activation:
         violations += check_activation(html, receipt_path, expected_repo)
     return violations
@@ -609,6 +826,89 @@ def self_test() -> int:
         else:
             print(f"SELF-TEST: activation case '{name}' "
                   f"{'failed as required' if want_fail else 'passed'} (good)")
+    # --- second-wave blind-spot regressions (validator, 2026-10-09) ---
+    # The first red-team found holes INSIDE the parsers; these were at the
+    # BOUNDARIES between parsers: stylesheet vs inline attribute, first stop
+    # vs named stop, first layer vs second layer, first declaration vs
+    # cascade winner. Durable law: one scanned stream, punctuation stripped
+    # before every lookup, cascade winners judged.
+    def _rule(decl: str) -> str:
+        return "x{%s}" % decl
+
+    wave2 = [
+        # (name, fragment, check-kind, must_flag_violation)
+        ("inline style light bg",
+         '<div style="background:linen">x</div>', "surface_html", True),
+        ("inline style light bg-color",
+         '<div style="background-color: yellow">x</div>', "surface_html",
+         True),
+        ("inline style dark bg passes",
+         '<div style="background:#0a0a0f">x</div>', "surface_html", False),
+        ("inline body bg beats dark stylesheet",
+         '<style>body{background:#050507}</style>'
+         '<body style="background:#ffffff">x</body>', "rooth_html", True),
+        ("inline body dark bg passes",
+         '<html style="background:#000"></html>'
+         '<body style="background:#050507">x</body>', "rooth_html", False),
+        ("gradient named light stop",
+         "linear-gradient(white, black)", "notdark", True),
+        ("gradient all dark stops",
+         "linear-gradient(#0a0a0f, #15151f)", "notdark", False),
+        ("gradient uppercase fn",
+         "LINEAR-GRADIENT(white, black)", "notdark", True),
+        ("gradient rgba heavy stop",
+         "linear-gradient(rgba(255,255,255,0.9), black)", "notdark", True),
+        ("gradient transparent stop passes",
+         "linear-gradient(rgba(0,0,0,0.9), transparent)", "notdark", False),
+        ("background shorthand snow+url",
+         _rule("background:snow url(x.png)"), "surface", True),
+        ("background shorthand url+snow",
+         _rule("background:url(x.png) snow"), "surface", True),
+        ("background image only: unjudgeable",
+         _rule("background:url(x.png)"), "surface", False),
+        ("multi-layer second light",
+         _rule("background:#050507,#ffffff"), "surface", True),
+        ("multi-layer all dark",
+         _rule("background:#050507,#0a0a0f"), "surface", False),
+        ("text cascade: later dark wins",
+         "body{color:#f8f7fb}body{color:#222}", "text", True),
+        ("text cascade: later light wins",
+         "body{color:#222}body{color:#f8f7fb}", "text", False),
+        ("text inline beats stylesheet",
+         '<style>body{color:#f8f7fb}</style>'
+         '<body style="color:#111">x</body>', "texthtml", True),
+        ("text important beats inline",
+         '<style>body{color:#f8f7fb !important}</style>'
+         '<body style="color:#111">x</body>', "texthtml", False),
+        ("text dark inside media",
+         "@media(max-width:1px){body{color:#333}}", "text", True),
+        ("alpha hairline sheen passes",
+         "rgba(255,255,255,0.05)", "notdark", False),
+        ("alpha heavy overlay fails",
+         _rule("background:rgba(255,255,255,0.9)"), "surface", True),
+        ("hex8 translucent white passes",
+         "#ffffff0d", "notdark", False),
+    ]
+    for name, frag, kind, must_flag in wave2:
+        if kind == "surface":
+            flagged = bool(check_no_light_surfaces(frag))
+        elif kind == "surface_html":
+            flagged = bool(check_no_light_surfaces(inline_css(frag)))
+        elif kind == "notdark":
+            # _is_dark True == dark == no violation
+            flagged = not _is_dark(frag)
+        elif kind == "rooth_html":
+            flagged = bool(check_black_root(frag, inline_css(frag)))
+        elif kind == "text":
+            flagged = bool(check_light_text("", frag))
+        elif kind == "texthtml":
+            flagged = bool(check_light_text(frag, inline_css(frag)))
+        if flagged != must_flag:
+            print(f"SELF-TEST FAIL: wave-2 blind-spot '{name}' regressed "
+                  f"(flagged={flagged}, want={must_flag})")
+            ok = False
+        else:
+            print(f"SELF-TEST: wave-2 blind-spot '{name}' held (good)")
     return 0 if ok else 1
 
 
