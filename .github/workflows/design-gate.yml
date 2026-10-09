@@ -1,0 +1,98 @@
+# Design Gate — Code Is Law at the delivery boundary.
+#
+# Naya 1's requirement: this workflow must ACTUALLY RUN the gate, not just exist.
+# Three enforcement proofs, every run:
+#   1. The gate's own red-green self-test must pass (the gate works).
+#   2. A lawful page with a fresh activation receipt must PASS with
+#      --require-activation (the pass path works under enforcement).
+#   3. A violating page must be REJECTED with --require-activation, and the
+#      workflow fails if it isn't (the fail path works under enforcement).
+#
+# Honest limits (not faked):
+#   - The gate checks STRUCTURAL law (self-contained, black root, manifest
+#     components, activation citation). Craft/copy/motion remain Shawn's eye.
+#   - Deep receipt verification against live GitHub state is Naya 3's checker
+#     (tools/qa/, PR #1974), not this gate. This workflow runs the gate layer.
+#   - This workflow does not yet scan arbitrary repo HTML for deliverables;
+#     the fixtures prove enforcement works. Wiring the gate into per-PR page
+#     scanning is the documented next step.
+name: Design Gate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  design-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Gate self-test (proves the gate itself works, red-green)
+        run: python3 tools/design_gate.py --self-test
+
+      - name: Mint a fresh CI activation receipt
+        # Receipts expire after 4h, so CI mints its own: schema, status,
+        # repository binding and marker integrity are all verified by the gate.
+        run: |
+          python3 - <<'EOF'
+          import json, hashlib, datetime, os
+          now = datetime.datetime.now(datetime.timezone.utc)
+          receipt = {
+              "schema": "naya.activation.receipt.v2",
+              "status": "ACTIVATED",
+              "session_id": "ci-design-gate",
+              "naya_identity": "CI",
+              "human_authority": "Shawn",
+              "repository": os.environ["GITHUB_REPOSITORY"],
+              "job": "design-gate-ci",
+              "gates": ["Usefulness Gate"],
+              "proof_plan": "ci-enforcement",
+              "main_sha": os.environ["GITHUB_SHA"],
+              "activated_at": now.isoformat(),
+          }
+          raw = json.dumps(receipt).encode()
+          with open("/tmp/ci-receipt.json", "wb") as f:
+              f.write(raw)
+          digest = hashlib.sha256(raw).hexdigest()
+          with open("tools/design_gate_fixtures/lawful.html") as f:
+              page = f.read()
+          marked = page.replace(
+              "</body>",
+              "<!-- NAYA-ACTIVATION-RECEIPT-SHA256:" + digest + " --></body>")
+          with open("/tmp/lawful-marked.html", "w") as f:
+              f.write(marked)
+          print("receipt minted; marker digest " + digest[:12] + "...")
+          EOF
+
+      - name: Lawful page must PASS with activation enforced
+        run: |
+          python3 tools/design_gate.py /tmp/lawful-marked.html \
+            --require-activation --receipt=/tmp/ci-receipt.json \
+            --expected-repo="${{ github.repository }}"
+
+      - name: Violating page must be REJECTED with activation enforced
+        # The gate must exit 1 (violations found). Exit 0 means the gate was
+        # bypassed -> the workflow fails. Any other exit means the gate
+        # crashed -> the workflow also fails (a crash is not enforcement).
+        run: |
+          set +e
+          python3 tools/design_gate.py tools/design_gate_fixtures/violating.html \
+            --require-activation --receipt=/tmp/ci-receipt.json \
+            --expected-repo="${{ github.repository }}"
+          code=$?
+          set -e
+          if [ "$code" -eq 0 ]; then
+            echo "GATE BYPASS: violating page passed the gate — enforcement is broken"
+            exit 1
+          elif [ "$code" -eq 1 ]; then
+            echo "Gate correctly rejected the violating page (exit 1)"
+          else
+            echo "Gate crashed instead of enforcing (exit $code)"
+            exit 1
+          fi
