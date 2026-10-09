@@ -138,10 +138,8 @@ they are gate-checkable and belong in the design gate:
 2. BLUR TEST: hero → action → value must survive blur.
 3. REMOVE-20% TEST: subtraction as the path to premium. If removing it loses nothing, remove it.
 
-## QUARANTINE — white-theme SmartNET tokens (NEEDS SHAWN'S RULING, 2026-10-09)
-The SmartNET playbook + divine-design docs specify a coherent WHITE canvas ("bright white
-primary canvas," white buttons with purple borders, glassy white cards). This directly
-contradicts the ratified black/obsidian Naya doctrine. Theme tokens from those docs are
-QUARANTINED — extracted above are only the theme-agnostic interaction laws. Ruling needed:
-is SmartNET a separate product line with its own theme, or deprecated in favor of the
-Naya black doctrine? Until ruled: black doctrine governs everything shipped.
+## RESOLVED — SmartNET theme status (Shawn's ruling, 2026-10-09 ~07:55 PDT)
+SmartNET is way outdated. Its white-canvas theme tokens are permanently excluded —
+white is not the option, ever. The black/obsidian doctrine governs everything shipped.
+What survives from SmartNET: only the theme-agnostic interaction laws above, which were
+worth learning regardless of the theme they were written for.
