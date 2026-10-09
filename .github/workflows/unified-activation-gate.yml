@@ -9,7 +9,8 @@
 # from the runner context, live GitHub API). No step supplies truth via flags.
 # A builder cannot establish authenticity by writing a plausible JSON file:
 # the self-minted-truth attack proves the alternate route yields
-# CANDIDATE-LOCAL-*, never PASS.
+# LOCAL-REHEARSAL-* (never PASS) with exit code 3, and a receipt minted for
+# one deliverable cannot ship another (deliverables[] binding).
 name: Unified Activation Gate
 
 on:
