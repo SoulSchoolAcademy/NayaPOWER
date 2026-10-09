@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-09",
-  "receipt_basis_commit": "b9d21f1925f6bc1c08b7601db15e4ff18d9bade0",
-  "inventory_file_count": 1196,
+  "receipt_basis_commit": "89916e37de86e0ac738f0fce0ff42dfe41ac8e1c",
+  "inventory_file_count": 1197,
   "domain_counts": {
     "00-ACTIVATION": 2,
     "00-SPEC": 15,
@@ -12,7 +12,7 @@
     "04-INTELLIGENCE": 25,
     "05-MEMORY": 639,
     "06-PROOF": 13,
-    "07-LEARNING": 4,
+    "07-LEARNING": 5,
     "08-SUCCESSION": 2,
     "09-EVOLUTION": 2,
     "10-INTERFACES": 380,
@@ -3828,6 +3828,11 @@
       "path": "BRAIN/07-LEARNING/README.md",
       "blob_sha": "519227d792b54ea891b46abc6cf055f4d24ff0e3",
       "size": 798
+    },
+    {
+      "path": "BRAIN/07-LEARNING/learning-system-blueprint-v1.md",
+      "blob_sha": "f88b24e86ea066b41a45ed0ec32565d94d31fec5",
+      "size": 45508
     },
     {
       "path": "BRAIN/08-SUCCESSION/0001-SUCCESSOR-CONTRACT-V1.md",
