@@ -34,15 +34,55 @@ Marker contract (on the capture JSON):
         "verifier_role": "human_director",
         "directive_quote": "smart note this: ...",  # his actual words, non-empty
         "directed_at": "2026-10-09T17:30:00Z",       # ISO-8601, not in the future
-        "directive_ref": "..."           # optional: chat/message reference
+        "directive_ref": "chat:session-abc123",      # REQUIRED, see trust model
+        #   - "chat:<opaque-ref>": his words arrived in direct chat.
+        #   - "feed:<issue>#issuecomment-<id>": his words arrived via a
+        #     GitHub comment (e.g. "feed:1354#issuecomment-6085793228").
+        "content_hash": "…"              # OPTIONAL: binds the marker to the
+                                         # exact lesson bytes; mismatch refuses.
     }
 
-Trust boundary (documented, not hidden): the marker is asserted by the
-capturing agent at capture time. Forgery is a provenance lie, which is
-itself a standing law violation -- and the receipt records the full
-marker (quote + timestamp + reference) so any forgery is auditable from
-the receipt alone. The module's job is to make the honest path instant
-and the dishonest path loudly refused, not to solve agent identity.
+Trust model -- EXACT claims, read before relying on this module:
+- REFUSED (mechanistic): malformed markers -- missing/wrong source,
+  wrong verifier, empty quote, unparseable or future timestamp,
+  missing or malformed directive_ref. Malformed forgery never activates.
+- CHECKABLE (mechanistic when a verifier runs): a feed-type
+  directive_ref names a GitHub comment. With a verifier configured
+  (activate(..., ref_verifier=...) or the CLI --verify-ref flag), the
+  comment's author must be the repo owner account or the activation is
+  refused (DIRECTIVE_REF_UNVERIFIED). Without a verifier the check is
+  recorded in the receipt as deferred -- never as passed.
+- HONESTY-PLUS-AUDIT (explicit, not mechanistic): a chat-type
+  directive_ref cannot be independently verified from this seat -- no
+  chat-truth source exists here. A well-formed chat-ref marker minted
+  by a non-Shawn agent WILL activate. The forgery is fully auditable
+  from the receipt (quote + timestamp + ref + content hash), and
+  minting one is a standing law violation -- but this module does not
+  refuse it. Closing that gap needs a chat-truth source (named below
+  under "What remains").
+- REPLAY-RESISTANT (mechanistic): a marker is single-use per content.
+  directive_digest binds the marker instance (quote + timestamp + ref);
+  reusing the same marker for DIFFERENT content is refused
+  (MARKER_REPLAYED). Re-activating identical content is idempotent.
+
+What remains (named, not hidden):
+- A chat-truth source: something this module can call to confirm
+  "Shawn said these words in this chat." Until that exists, chat-ref
+  identity rests on honesty-plus-audit.
+- The deployed Receiver (supabase/functions/v7-smart-note-canonical)
+  hardcodes learning_evidence rows to CANDIDATE; the shawn_direct
+  branch on that insert needs Shawn's per-change authorization
+  (protected gate) before the instant path is live in production.
+- Operating contract section 3's blanket CANDIDATE ceiling needs the
+  ratified Shawn-exception written in (flag for Naya 1, citing the
+  Verification Law).
+
+How it is invoked (A6 wiring): the canonical entry point is
+    python3 tools/smart_note_v2.py capture --capture <capture.json>
+which routes shawn_direct-marked captures here and everything else to
+the standard project path or a fail-closed refusal. This module's own
+CLI (python3 tools/instant_activation.py activate --capture ...) is the
+direct tool for the instant path.
 """
 from __future__ import annotations
 
@@ -85,6 +125,111 @@ def _parse_ts(ts):
         return dt
     except (ValueError, TypeError):
         return None
+
+
+# directive_ref contract: "chat:<opaque-ref>" or "feed:<issue>#issuecomment-<id>".
+_REF_RE = re.compile(r"^(chat|feed):(.+)$")
+_FEED_REF_RE = re.compile(r"^(\d+)#issuecomment-(\d+)$")
+
+# GitHub account expected to author Shawn-relayed directives on the feed.
+# Parameterizable (expected_author) -- the default is the repo owner account.
+_DEFAULT_EXPECTED_AUTHOR = "SoulSchoolAcademy"
+_DEFAULT_REPO = "SoulSchoolAcademy/NayaPOWER"
+
+
+def parse_directive_ref(ref):
+    """Parse and validate a directive_ref. Returns (ref_type, detail).
+
+    ref_type is "chat" or "feed". Raises InstantActivationRefused
+    (NOT_SHAWN_VERIFIED) when the ref is missing or malformed -- a
+    marker without a checkable reference never takes the instant path.
+    """
+    m = _REF_RE.match(str(ref or "").strip())
+    if not m:
+        raise InstantActivationRefused(
+            "NOT_SHAWN_VERIFIED",
+            f"verification.directive_ref is missing or malformed: {ref!r}. "
+            "It must be 'chat:<ref>' or 'feed:<issue>#issuecomment-<id>' so "
+            "the directive is attributable.",
+        )
+    ref_type, rest = m.group(1), m.group(2).strip()
+    if not rest:
+        raise InstantActivationRefused(
+            "NOT_SHAWN_VERIFIED",
+            f"verification.directive_ref has an empty {ref_type} reference.",
+        )
+    if ref_type == "feed":
+        fm = _FEED_REF_RE.match(rest)
+        if not fm:
+            raise InstantActivationRefused(
+                "NOT_SHAWN_VERIFIED",
+                f"feed directive_ref malformed: {ref!r}. Expected "
+                "'feed:<issue>#issuecomment-<comment-id>'.",
+            )
+        return "feed", {"issue": fm.group(1), "comment_id": fm.group(2)}
+    return "chat", {"opaque_ref": rest}
+
+
+def verify_feed_ref(ref, *, transport=None,
+                    expected_author=_DEFAULT_EXPECTED_AUTHOR,
+                    repo=_DEFAULT_REPO):
+    """Mechanically verify a feed-type directive_ref.
+
+    transport(issue, comment_id) -> dict (the GitHub comment payload) is
+    injectable so this is testable without network. With transport=None
+    the check is NOT performed -- returns {"checkable": True,
+    "checked": False, "reason": "no verifier configured"} (deferred,
+    never passed).
+
+    With a transport: the comment must exist and its author login must
+    equal expected_author. Raises InstantActivationRefused
+    (DIRECTIVE_REF_UNVERIFIED) otherwise.
+    """
+    ref_type, detail = parse_directive_ref(ref)
+    if ref_type != "feed":
+        return {"checkable": False, "checked": False,
+                "reason": "chat refs are honesty-plus-audit, not verifiable"}
+    if transport is None:
+        return {"checkable": True, "checked": False,
+                "reason": "no verifier configured; check deferred"}
+    try:
+        payload = transport(detail["issue"], detail["comment_id"])
+    except Exception as e:
+        raise InstantActivationRefused(
+            "DIRECTIVE_REF_UNVERIFIED",
+            f"could not fetch referenced comment {ref}: {e}. "
+            "Fail-closed: an unverifiable feed reference does not activate.")
+    author = ((payload or {}).get("user") or {}).get("login")
+    if author != expected_author:
+        raise InstantActivationRefused(
+            "DIRECTIVE_REF_UNVERIFIED",
+            f"referenced comment {ref} was authored by {author!r}, not the "
+            f"expected {expected_author!r}. A feed reference must name "
+            "Shawn's own words.")
+    return {"checkable": True, "checked": True, "author": author,
+            "comment_id": detail["comment_id"], "issue": detail["issue"]}
+
+
+def _gh_api_transport(issue, comment_id, *, repo=_DEFAULT_REPO, gh_api=None,
+                      timeout=30):
+    """Feed-ref transport over the repo's quiet gh-api path (subprocess)."""
+    import subprocess
+    gh = gh_api or str(Path.home() / "workspace" / "naya" / "bin" / "gh-api")
+    r = subprocess.run(
+        [gh, "GET", f"/repos/{repo}/issues/comments/{comment_id}"],
+        capture_output=True, text=True, timeout=timeout)
+    if r.returncode != 0:
+        raise RuntimeError(f"gh-api GET comment {comment_id} failed: "
+                           f"{r.stderr[:200]}")
+    try:
+        payload = json.loads(r.stdout)
+    except Exception as e:
+        raise RuntimeError(f"gh-api returned non-JSON for comment "
+                           f"{comment_id}: {e}")
+    if isinstance(payload, dict) and payload.get("message"):
+        raise RuntimeError(f"gh-api error for comment {comment_id}: "
+                           f"{str(payload.get('message'))[:200]}")
+    return payload
 
 
 def validate_shawn_direct(capture) -> dict:
@@ -135,13 +280,31 @@ def validate_shawn_direct(capture) -> dict:
             "verification.directed_at is in the future. A future-dated "
             "verification cannot authorize the instant path.",
         )
+    # directive_ref is REQUIRED and format-validated: the marker must name
+    # an attributable directive (chat ref or feed comment ref). A marker
+    # without a checkable reference never takes the instant path.
+    ref_type, _ref_detail = parse_directive_ref(v.get("directive_ref"))
+    quote_clean = quote.strip()
+    directed_iso = directed_at.isoformat()
+    ref_clean = str(v.get("directive_ref")).strip()
+    directive_digest = hashlib.sha256(
+        "|".join([quote_clean, directed_iso, ref_clean]).encode("utf-8")
+    ).hexdigest()
+    trust_basis = ("mechanistic-checkable" if ref_type == "feed"
+                   else "honesty-plus-audit")
     return {
         "source": SHAWN_DIRECT,
         "verifier": SHAWN_VERIFIER,
         "verifier_role": v.get("verifier_role") or SHAWN_VERIFIER_ROLE,
-        "directive_quote": quote.strip(),
-        "directed_at": directed_at.isoformat(),
-        "directive_ref": v.get("directive_ref"),
+        "directive_quote": quote_clean,
+        "directed_at": directed_iso,
+        "directive_ref": ref_clean,
+        "ref_type": ref_type,
+        "trust_basis": trust_basis,
+        "directive_digest": directive_digest,
+        # Optional marker-declared content binding (A3): when present it
+        # must equal the recomputed lesson hash or the input is tampered.
+        "declared_content_hash": v.get("content_hash"),
     }
 
 
@@ -289,19 +452,55 @@ def _build_verify_equiv(block: dict, receipt_id: str) -> dict:
     }
 
 
+def _check_no_marker_replay(receipt_dir, directive_digest, content_hash,
+                           directive_ref):
+    """Refuse a marker reused for different content (A3).
+
+    A marker is single-use per content: directive_digest binds the marker
+    instance (quote + timestamp + ref). If the receipt dir already holds a
+    receipt with the same directive_digest but a DIFFERENT content_hash,
+    the marker is being replayed onto new content -> MARKER_REPLAYED.
+    Same digest + same hash is idempotent re-activation (allowed).
+    Receipts predating directive_digest (v1) are skipped.
+    """
+    rdir = Path(receipt_dir)
+    if not rdir.is_dir():
+        return
+    for p in sorted(rdir.glob("*.json")):
+        try:
+            r = json.loads(p.read_text(encoding="utf-8"))
+        except Exception:
+            continue  # not ours / corrupt: never blocks activation
+        v = (r or {}).get("verification") or {}
+        if v.get("directive_digest") != directive_digest:
+            continue
+        if v.get("content_hash") != content_hash:
+            raise InstantActivationRefused(
+                "MARKER_REPLAYED",
+                f"directive {directive_ref!r} already activated different "
+                f"content (receipt {p.name}). A marker is single-use per "
+                "content; mint a new directive for new content.")
+
+
 def activate(capture: dict, *, registry_path=None, receipt_dir=None,
-             private_root=None, brain_root=None) -> dict:
+             private_root=None, brain_root=None, ref_verifier=None) -> dict:
     """Activate a Shawn-verified capture in one motion.
 
     Steps (all inside this call, no queue, no second human value-review):
-      1. validate the shawn_direct marker (fail-closed),
+      1. validate the shawn_direct marker, incl. required directive_ref
+         (fail-closed),
       2. run the automatic machine integrity guards (fail-closed),
-      3. reserve the SN id,
-      4. render the projection,
-      5. write the registry entry with truth_state=VERIFIED,
-      6. mint the activation receipt,
-      7. verify the persisted bytes by read-back (fail-closed),
-      8. produce the smart link.
+      3. bind the marker to the content: a declared content_hash must
+         match; a marker already used for different content is refused
+         (MARKER_REPLAYED),
+      4. verify a feed-type directive_ref when a verifier is configured
+         (fail-closed on failure; deferred and recorded otherwise),
+      5. reserve the SN id,
+      6. render the projection,
+      7. write the registry entry with truth_state=VERIFIED,
+      8. mint the activation receipt (with the full trust record),
+      9. verify the persisted bytes by read-back (fail-closed),
+      10. produce the smart link.
 
     Naya 1's acceptance (2026-10-09): instant authorization skips the
     value-review queue, NOT machine integrity checks. This function is
@@ -310,6 +509,36 @@ def activate(capture: dict, *, registry_path=None, receipt_dir=None,
     """
     verification = validate_shawn_direct(capture)
     integrity = check_capture_integrity(capture)
+    content_hash = integrity["content_hash"]
+
+    # A3: marker-declared content binding. When the marker names the exact
+    # lesson bytes, they must match what is being activated.
+    declared = verification.get("declared_content_hash")
+    if declared is not None and str(declared).lower() != content_hash:
+        raise InstantActivationRefused(
+            "TAMPERED_INPUT",
+            "verification.content_hash does not match the recomputed lesson "
+            "bytes; the marker was bound to different content.")
+
+    rdir = Path(receipt_dir) if receipt_dir else sn2.ROOT / RECEIPT_DIR
+
+    # A3: replay guard -- before anything is written.
+    _check_no_marker_replay(rdir, verification["directive_digest"],
+                            content_hash, verification["directive_ref"])
+
+    # A1: feed-type refs are mechanically checkable. With a verifier,
+    # a wrong-author reference refuses; without one the check is
+    # recorded as deferred (never as passed).
+    ref_check = {"checkable": verification["ref_type"] == "feed",
+                 "checked": False}
+    if verification["ref_type"] == "feed" and ref_verifier is not None:
+        ref_check = verify_feed_ref(verification["directive_ref"],
+                                    transport=ref_verifier)
+    elif verification["ref_type"] == "feed":
+        ref_check = {"checkable": True, "checked": False,
+                     "reason": "no verifier configured; check deferred"}
+    verification["ref_check"] = ref_check
+    verification["content_hash"] = content_hash
 
     title = str(capture.get("title") or "").strip()
     if not title:
@@ -399,7 +628,6 @@ def activate(capture: dict, *, registry_path=None, receipt_dir=None,
     }
     receipt["receipt_hash"] = _hash_receipt(receipt)
 
-    rdir = Path(receipt_dir) if receipt_dir else sn2.ROOT / RECEIPT_DIR
     rdir.mkdir(parents=True, exist_ok=True)
     ts = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     safe_sn = re.sub(r"[^A-Za-z0-9-]", "_", sn_id)
@@ -453,14 +681,36 @@ def main(argv=None) -> int:
     a.add_argument("--private-root", default=None)
     a.add_argument("--brain-root", default=None, help="Projection root override (tests).")
     a.add_argument("--out", default=None, help="Write the activation result JSON here.")
+    a.add_argument("--verify-ref", action="store_true",
+                   help="Mechanically verify a feed-type directive_ref via the "
+                        "repo's gh-api path (fail-closed on mismatch). Without "
+                        "this flag the feed check is recorded as deferred.")
+    v = sub.add_parser("verify-ref",
+                       help="Audit a directive_ref after the fact: parse it and, "
+                            "for feed refs, verify the comment author via gh-api.")
+    v.add_argument("--ref", required=True, help="The directive_ref to check.")
+    v.add_argument("--expected-author", default=_DEFAULT_EXPECTED_AUTHOR)
     args = ap.parse_args(argv)
 
+    if args.cmd == "verify-ref":
+        try:
+            rec = verify_feed_ref(args.ref, transport=_gh_api_transport,
+                                  expected_author=args.expected_author)
+        except InstantActivationRefused as e:
+            print(json.dumps({"verified": False, "code": e.code,
+                              "detail": e.detail}, ensure_ascii=False))
+            return 3
+        print(json.dumps({"verified": True, **rec}, ensure_ascii=False))
+        return 0
+
     capture = json.loads(Path(args.capture).read_text(encoding="utf-8"))
+    verifier = _gh_api_transport if args.verify_ref else None
     try:
         result = activate(capture, registry_path=args.registry,
                           receipt_dir=args.receipt_dir,
                           private_root=args.private_root,
-                          brain_root=args.brain_root)
+                          brain_root=args.brain_root,
+                          ref_verifier=verifier)
     except InstantActivationRefused as e:
         print(json.dumps({"activated": False, "code": e.code, "detail": e.detail},
                          ensure_ascii=False))

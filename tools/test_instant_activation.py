@@ -42,7 +42,7 @@ def _shawn_capture(**overrides):
             "verifier_role": "human_director",
             "directive_quote": "smart note this: instant activation is the verification",
             "directed_at": _now_iso(),
-            "directive_ref": "test-directive-001",
+            "directive_ref": "chat:test-directive-001",
         },
     }
     cap.update(overrides)
@@ -296,3 +296,162 @@ def test_matching_content_hash_passes_integrity(env):
     result = _activate(cap, env)
     assert result["activated"] is True
     assert "integrity:content_hash_bound" in result["integrity_checks"]
+
+
+# ------------------------------------------------------------------
+# 5. Round 2 -- A1: directive_ref required, attributable, checkable
+# ------------------------------------------------------------------
+
+def _fake_transport_ok(issue, comment_id):
+    return {"user": {"login": "SoulSchoolAcademy"}, "id": int(comment_id)}
+
+
+def _fake_transport_evil(issue, comment_id):
+    return {"user": {"login": "evil-corp"}, "id": int(comment_id)}
+
+
+def _fake_transport_down(issue, comment_id):
+    raise RuntimeError("network down")
+
+
+def _activate_with_verifier(cap, env, verifier):
+    return ia.activate(cap, registry_path=env["registry"],
+                       receipt_dir=env["receipt_dir"],
+                       brain_root=env["brain_root"],
+                       private_root=env["private_root"],
+                       ref_verifier=verifier)
+
+
+def test_missing_directive_ref_refused(env):
+    cap = _shawn_capture()
+    del cap["verification"]["directive_ref"]
+    _refused(cap, env)
+
+
+def test_malformed_directive_ref_refused(env):
+    for bad in ["not-a-ref", "feed:garbage", "feed:1354", "sms:12345",
+                "chat:", "feed:1354#issuecomment-"]:
+        cap = _shawn_capture()
+        cap["verification"]["directive_ref"] = bad
+        _refused(cap, env)
+
+
+def test_feed_ref_without_verifier_defers_check(env):
+    # No verifier configured: the check is recorded as deferred, never
+    # as passed. The instant path does not depend on network.
+    cap = _shawn_capture()
+    cap["verification"]["directive_ref"] = "feed:1354#issuecomment-6085793228"
+    result = _activate(cap, env)
+    assert result["activated"] is True
+    rc = result["receipt"]["verification"]["ref_check"]
+    assert rc["checkable"] is True and rc["checked"] is False
+    assert "deferred" in rc["reason"]
+
+
+def test_feed_ref_verifier_accepts_owner(env):
+    cap = _shawn_capture()
+    cap["verification"]["directive_ref"] = "feed:1354#issuecomment-6085793228"
+    result = _activate_with_verifier(cap, env, _fake_transport_ok)
+    assert result["activated"] is True
+    rc = result["receipt"]["verification"]["ref_check"]
+    assert rc["checked"] is True and rc["author"] == "SoulSchoolAcademy"
+
+
+def test_feed_ref_verifier_rejects_wrong_author(env):
+    cap = _shawn_capture()
+    cap["verification"]["directive_ref"] = "feed:1354#issuecomment-1"
+    with pytest.raises(ia.InstantActivationRefused) as exc:
+        _activate_with_verifier(cap, env, _fake_transport_evil)
+    assert exc.value.code == "DIRECTIVE_REF_UNVERIFIED"
+    assert not Path(env["registry"]).exists()
+    assert not Path(env["receipt_dir"]).exists()
+
+
+def test_feed_ref_verifier_network_failure_refuses(env):
+    cap = _shawn_capture()
+    cap["verification"]["directive_ref"] = "feed:1354#issuecomment-1"
+    with pytest.raises(ia.InstantActivationRefused) as exc:
+        _activate_with_verifier(cap, env, _fake_transport_down)
+    assert exc.value.code == "DIRECTIVE_REF_UNVERIFIED"
+
+
+def test_chat_ref_trust_basis_is_honesty_plus_audit(env):
+    result = _activate(_shawn_capture(), env)
+    v = result["receipt"]["verification"]
+    assert v["ref_type"] == "chat"
+    assert v["trust_basis"] == "honesty-plus-audit"
+    assert len(v["directive_digest"]) == 64
+
+
+def test_spoofed_wellformed_chat_marker_is_auditable_not_refused(env):
+    # The scorer's A1, honestly restated as the accepted design: a
+    # well-formed chat-ref marker minted by a non-Shawn agent ACTIVATES
+    # (honesty-plus-audit -- no chat-truth source exists at this seat).
+    # The guarantee is auditability: the receipt carries quote +
+    # timestamp + ref + content hash so the forgery is checkable after
+    # the fact, and minting one is a standing law violation.
+    cap = _shawn_capture()  # this test is the forger: not Shawn
+    result = _activate(cap, env)
+    assert result["activated"] is True
+    v = result["receipt"]["verification"]
+    assert v["trust_basis"] == "honesty-plus-audit"
+    assert v["directive_quote"].startswith("smart note this")
+    assert v["directive_ref"] == "chat:test-directive-001"
+    assert len(v["content_hash"]) == 64
+
+
+def test_cli_verify_ref_malformed(capsys):
+    rc = ia.main(["verify-ref", "--ref", "garbage"])
+    assert rc == 3
+    out = json.loads(capsys.readouterr().out)
+    assert out["verified"] is False
+
+
+# ------------------------------------------------------------------
+# 6. Round 2 -- A3: marker is single-use per content (replay guard)
+# ------------------------------------------------------------------
+
+def test_marker_replay_different_content_refused(env):
+    cap_a = _shawn_capture()  # content A
+    r1 = _activate(cap_a, env)
+    assert r1["activated"] is True
+    # True replay: the IDENTICAL marker (same quote, timestamp, ref)
+    # attached to different content.
+    cap_b = _shawn_capture()
+    cap_b["verification"] = dict(cap_a["verification"])
+    cap_b["lesson"] = "A completely different lesson wearing the same marker."
+    cap_b["title"] = "Test law: replay attempt"
+    with pytest.raises(ia.InstantActivationRefused) as exc:
+        _activate(cap_b, env)
+    assert exc.value.code == "MARKER_REPLAYED"
+    # Only the first receipt exists; nothing partial for B.
+    assert len(list(Path(env["receipt_dir"]).glob("*.json"))) == 1
+
+
+def test_marker_replay_same_content_stays_idempotent(env):
+    cap = _shawn_capture()
+    r1 = _activate(cap, env)
+    r2 = _activate(cap, env)
+    assert r1["sn_id"] == r2["sn_id"]
+
+
+def test_declared_content_hash_mismatch_refused(env):
+    import hashlib as _hl
+    cap = _shawn_capture()
+    cap["verification"]["content_hash"] = _hl.sha256(b"bound to other bytes").hexdigest()
+    with pytest.raises(ia.InstantActivationRefused) as exc:
+        _activate(cap, env)
+    assert exc.value.code == "TAMPERED_INPUT"
+    assert not Path(env["registry"]).exists()
+
+
+def test_declared_content_hash_match_allows(env):
+    import hashlib as _hl
+    cap = _shawn_capture()
+    intel = {"lesson": cap["lesson"]}
+    cap["intelligence"] = intel
+    cap["verification"]["content_hash"] = _hl.sha256(
+        json.dumps(intel, sort_keys=True, separators=(",", ":"),
+                   ensure_ascii=False).encode()).hexdigest()
+    result = _activate(cap, env)
+    assert result["activated"] is True

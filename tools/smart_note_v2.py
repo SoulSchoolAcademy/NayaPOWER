@@ -1225,17 +1225,80 @@ def audit_registry(root=None, registry_path=None, capture_dir=None, brain_root=N
     }
 
 
-def main():
+def project_capture(cap, ver, private_root=None, sn_id=None):
+    """Standard project path: reserve id, render, write registry entry."""
+    block = ver["persisted"]["block"]
+    ib = block["intelligent_block_id"]
+    # Reserve the SN authoritatively BEFORE rendering: the projected
+    # directory is derived from the reserved ID, so concurrent
+    # projectors can never pick the same directory (projection-path
+    # race). The reservation commits inside its own short transaction;
+    # rendering itself stays concurrent (no lock held across file I/O).
+    sn_id = sn_id or reserve_smart_note_id(cap, ib)
+    p = render(cap, ver, private_root, sn_id=sn_id)
+    published = str(p).startswith(str(BRAIN_SMART_NOTE_ROOT))
+    entry = update_registry(cap, ver, p, sn_id=sn_id) if published else {
+        "intelligent_block_id": ib,
+        "smart_note_id": sn_id,
+        "scope": block.get("owner_scope"),
+        "projection_status": "PRIVATE_RENDER_VERIFIED",
+        "smart_link_status": "PENDING_PRIVATE_PROJECTION",
+        "private_render_path": str(p)
+    }
+    return {"projection_path": str(p), "entry": entry}
+
+
+def capture(capture_path, verify_path=None, *, registry_path=None,
+            receipt_dir=None, private_root=None, brain_root=None,
+            ref_verifier=None):
+    """Capture entry point: route Shawn-verified captures to the instant path.
+
+    Shawn's Verification Law (2026-10-09): a capture carrying a valid
+    shawn_direct marker takes the instant path -- capture -> persist ->
+    receipt -> smart link in one motion, no value-review queue
+    (instant_activation.activate, strict fail-closed validation inside).
+
+    Captures WITHOUT the marker need a verify bundle for the standard
+    project path. With neither, the capture is refused fail-closed with
+    guidance (it never silently drops into a queue): route through the
+    admission-contract lane instead.
+
+    Returns {"path": "instant"|"standard", ...}. Raises ValueError with a
+    NOT_SHAWN_VERIFIED-coded message when refused.
+    """
+    cap = load_json(capture_path)
+    v = (cap or {}).get("verification") or {}
+    if v.get("source") == "shawn_direct":
+        # Lazy import: instant_activation imports this module at top level.
+        from instant_activation import activate
+        result = activate(cap, registry_path=registry_path,
+                          receipt_dir=receipt_dir, private_root=private_root,
+                          brain_root=brain_root, ref_verifier=ref_verifier)
+        return {"path": "instant", "result": result}
+    if verify_path is not None:
+        ver = load_json(verify_path)
+        out = project_capture(cap, ver, private_root)
+        return {"path": "standard", **out}
+    raise ValueError(
+        "NOT_SHAWN_VERIFIED: capture carries no shawn_direct marker and no "
+        "verify bundle was supplied. The instant path requires "
+        "verification.source='shawn_direct' (Shawn's direct verification). "
+        "Route system-captured intelligence through the admission-contract "
+        "lane instead; it never takes the instant path.")
+
+
+def main(argv=None):
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest="cmd", required=True)
     d = sub.add_parser("discover"); d.add_argument("paths", nargs="*")
     mg = sub.add_parser("migrate"); mg.add_argument("--existing", required=True); mg.add_argument("--patch", required=True); mg.add_argument("--out", required=True); mg.add_argument("--receipt", required=True)
     pr = sub.add_parser("project"); pr.add_argument("--capture", required=True); pr.add_argument("--verify", required=True); pr.add_argument("--private-root")
+    c = sub.add_parser("capture", help="Capture entry point: route shawn_direct captures to the instant path."); c.add_argument("--capture", required=True); c.add_argument("--verify", default=None); c.add_argument("--registry", default=None); c.add_argument("--receipt-dir", default=None); c.add_argument("--private-root", default=None); c.add_argument("--brain-root", default=None)
     r = sub.add_parser("retrieve"); r.add_argument("--query", required=True); r.add_argument("--out")
     h = sub.add_parser("held-out"); h.add_argument("--retrieval", required=True); h.add_argument("--out", required=True)
     pm = sub.add_parser("promote"); pm.add_argument("--note", required=True); pm.add_argument("--evidence", required=True); pm.add_argument("--promoter", required=True); pm.add_argument("--registry"); pm.add_argument("--out")
     a = sub.add_parser("audit"); a.add_argument("--root"); a.add_argument("--quiet", action="store_true")
-    args = ap.parse_args()
+    args = ap.parse_args(argv)
     if args.cmd == "audit":
         report = audit_registry(root=args.root)
         print(json.dumps(report, indent=2, ensure_ascii=False) if not args.quiet else ("ok" if report["ok"] else f"DRIFT:{report['defect_total']}"))
@@ -1250,25 +1313,32 @@ def main():
         return
     if args.cmd == "project":
         cap = load_json(args.capture); ver = load_json(args.verify)
-        block = ver["persisted"]["block"]
-        ib = block["intelligent_block_id"]
-        # Reserve the SN authoritatively BEFORE rendering: the projected
-        # directory is derived from the reserved ID, so concurrent
-        # projectors can never pick the same directory (projection-path
-        # race). The reservation commits inside its own short transaction;
-        # rendering itself stays concurrent (no lock held across file I/O).
-        sn_id = reserve_smart_note_id(cap, ib)
-        p = render(cap, ver, args.private_root, sn_id=sn_id)
-        published = str(p).startswith(str(BRAIN_SMART_NOTE_ROOT))
-        entry = update_registry(cap, ver, p, sn_id=sn_id) if published else {
-            "intelligent_block_id": ib,
-            "smart_note_id": sn_id,
-            "scope": block.get("owner_scope"),
-            "projection_status": "PRIVATE_RENDER_VERIFIED",
-            "smart_link_status": "PENDING_PRIVATE_PROJECTION",
-            "private_render_path": str(p)
-        }
-        print(json.dumps({"projection_path":str(p),"entry":entry}, ensure_ascii=False)); return
+        out = project_capture(cap, ver, args.private_root)
+        print(json.dumps(out, ensure_ascii=False)); return
+    if args.cmd == "capture":
+        # The canonical capture entry point (A6 wiring): Shawn-verified
+        # captures route to instant_activation.activate(); everything
+        # else takes the standard project path or is refused fail-closed.
+        try:
+            out = capture(args.capture, args.verify,
+                          registry_path=args.registry,
+                          receipt_dir=args.receipt_dir,
+                          private_root=args.private_root,
+                          brain_root=args.brain_root)
+        except ValueError as e:
+            print(json.dumps({"captured": False, "error": str(e)},
+                             ensure_ascii=False))
+            raise SystemExit(3)
+        summary = {"captured": True, "path": out["path"]}
+        if out["path"] == "instant":
+            r = out["result"]
+            summary.update({"sn_id": r["sn_id"],
+                            "truth_state": r["truth_state"],
+                            "smart_link": r["smart_link"],
+                            "receipt_path": r["receipt_path"]})
+        else:
+            summary.update({"projection_path": out["projection_path"]})
+        print(json.dumps(summary, ensure_ascii=False)); return
     if args.cmd == "retrieve":
         x = retrieve(args.query)
         if args.out:
