@@ -293,3 +293,107 @@ def test_attach_to_lineage_bundle_contract():
     # appending a second receipt accumulates
     out2 = attach_to_lineage_bundle(out, application_receipt=_application(ret["receipt_id"], task_ref="task-B"))
     assert len(out2["application_receipts"]) == 2
+
+
+# --- live end-to-end seam: REAL D producer -> REAL B reconstruct (B+D) --------
+# The merged B consumer built its integrity checks against D's contract
+# while D was not on main (hand-built D-shaped fixtures). Now that D lands,
+# these tests run the real emitter output through the real reconstructor --
+# the wire the consumer docstring anticipated ("D's module is not on main
+# yet"). If producer and consumer ever drift, this is where it fails.
+
+from tools.learning_lineage_receipt import reconstruct  # noqa: E402
+
+
+def _seam_bundle():
+    """Minimal honest candidate bundle in the B consumer's candidate shape."""
+    return {
+        "cognition_event": {"id": "evt-001", "event_id": "EVT-001"},
+        "commit_receipt": {"id": "rcpt-001", "action": "intelligence_commit"},
+        "intelligent_block": {
+            "intelligent_block_id": "IB-LEARN-001",
+            "understanding_state": "CANDIDATE",
+            "evidence_refs": [],
+            "provenance": {},
+        },
+        "learning": {
+            "id": "L-T11",
+            "status": "CANDIDATE",
+            "level": "E1_UNDERSTANDS",
+            "observed_value": {
+                "intelligent_block_id": "IB-LEARN-001",
+                "source_event_id": "evt-001",
+                "source_event_key": "EVT-001",
+                "commit_receipt_id": "rcpt-001",
+                "lineage_id": "lin-001",
+                "relationship_id": "rel-001",
+                "index_id": "idx-001",
+                "checkpoint_id": "chk-001",
+            },
+        },
+        "relationship": {"relationship_id": "rel-001"},
+        "checkpoint": {"id": "chk-001"},
+    }
+
+
+def _seam_receipts(verifier="coda-1"):
+    ret = emit_retrieval_receipt(
+        lesson_id="L-T11", retriever="worker-7",
+        retrieved_at="2026-10-09T03:45:00Z",
+        query_context="apply T11 lesson", lesson_content_sha="sha:abc123",
+    )
+    app = emit_application_receipt(
+        lesson_id="L-T11", retrieval_ref=ret["receipt_id"],
+        task_ref="task-B", applier="worker-7",
+        applied_at="2026-10-09T03:46:00Z",
+        applicability={"relevance_rationale": "task matches lesson pattern",
+                       "task_match": "high"},
+    )
+    out = emit_outcome_record(
+        application_receipt_id=app["receipt_id"], lesson_id="L-T11",
+        task_ref="task-B", measured_effect="latency -12%",
+        observed_at="2026-10-09T03:47:00Z",
+        independent_verification={"verifier": verifier,
+                                  "verified_at": "2026-10-09T03:50:00Z"},
+    )
+    return ret, app, out
+
+
+def test_seam_full_chain_real_producer_real_reconstructor():
+    ret, app, out = _seam_receipts()
+    bundle = _seam_bundle()
+    bundle = attach_to_lineage_bundle(bundle, retrieval_receipt=ret)
+    bundle = attach_to_lineage_bundle(bundle, application_receipt=app)
+    bundle = attach_to_lineage_bundle(bundle, outcome_record=out)
+    receipt = reconstruct(bundle)
+    assert receipt["gaps"] == [], receipt["gaps"]
+    for stage in ("retrieval", "applicability", "application", "outcome"):
+        assert receipt["stages"][stage]["status"] == "PRESENT", (stage, receipt["stages"][stage])
+    assert receipt["stages"]["retrieval"]["refs"]["receipt_ids"] == [ret["receipt_id"]]
+    assert receipt["stages"]["application"]["refs"]["retrieval_refs"] == [ret["receipt_id"]]
+    assert receipt["stages"]["outcome"]["refs"]["independent_verifiers"] == ["coda-1"]
+    assert "application_receipt.%s -> retrieval_receipt.%s" % (app["receipt_id"], ret["receipt_id"]) in receipt["links_verified"]
+    assert "outcome_record.%s -> application_receipt.%s" % (out["record_id"], app["receipt_id"]) in receipt["links_verified"]
+
+
+def test_seam_tampered_receipt_fails_closed_on_reconstruct():
+    ret, app, out = _seam_receipts()
+    app = copy.deepcopy(app)
+    app["task_ref"] = "task-TAMPERED"  # core field changed, receipt_id not recomputed
+    bundle = attach_to_lineage_bundle(_seam_bundle(), retrieval_receipt=ret,
+                                      application_receipt=app, outcome_record=out)
+    receipt = reconstruct(bundle)
+    assert receipt["stages"]["retrieval"]["status"] == "PRESENT"
+    assert receipt["stages"]["application"]["status"] == "GAP"
+    assert any("APPLICATION_INTEGRITY_FAILED" in g for g in receipt["gaps"]), receipt["gaps"]
+
+
+def test_seam_dangling_outcome_link_fails_closed_on_reconstruct():
+    ret, app, out = _seam_receipts()
+    app = copy.deepcopy(app)
+    app["receipt_id"] = "APP-deadbeefdeadbeefdeadbeefdeadbeef"  # breaks outcome->application link
+    bundle = attach_to_lineage_bundle(_seam_bundle(), retrieval_receipt=ret,
+                                      application_receipt=app, outcome_record=out)
+    receipt = reconstruct(bundle)
+    assert receipt["stages"]["outcome"]["status"] == "GAP"
+    assert any("OUTCOME_APPLICATION_LINK_BROKEN" in g for g in receipt["gaps"]), receipt["gaps"]
