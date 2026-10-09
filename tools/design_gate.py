@@ -347,20 +347,148 @@ def inline_css(html: str) -> str:
     return "\n".join(parts)
 
 
+def _skip_tag(html: str, i: int) -> int:
+    """Index just past the `>` that ends the tag open at-or-before i,
+    respecting quoted attribute values (a `>` inside quotes does not end
+    the tag). Returns len(html) when the tag is unterminated."""
+    n = len(html)
+    while i < n:
+        ch = html[i]
+        if ch in "\"'":
+            q = ch
+            i += 1
+            while i < n and html[i] != q:
+                i += 1
+            i += 1  # past the closing quote (or past EOF)
+        elif ch == ">":
+            return i + 1
+        else:
+            i += 1
+    return n
+
+
+def _read_tag_name(html: str, i: int) -> tuple[str, bool, int]:
+    """At html[i] == '<': return (tag name, lowercased; is_closing;
+    index just past the name). `<!doctype>` / `<?...>` / `<![CDATA[`
+    read as bogus names and are skipped whole by the caller."""
+    n = len(html)
+    j = i + 1
+    closing = j < n and html[j] == "/"
+    if closing:
+        j += 1
+    k = j
+    while k < n and html[k] not in " \t\n\r\f/>":
+        k += 1
+    return html[j:k].lower(), closing, k
+
+
+_RAW_TEXT_TAGS = frozenset({"script", "style", "textarea", "title"})
+"""Elements whose content is text, not markup, per the HTML tokenizer.
+A `<body` inside one is characters on a page, never an element — the
+old substring search read them as tags (validator round 7, W1)."""
+
+_SKIP_CONTENT_TAGS = _RAW_TEXT_TAGS | frozenset({"noscript", "iframe"})
+"""Elements whose content can never hold the document <body>, so the
+tag locator skips them whole:
+- template: inert fragment (handled with nesting separately);
+- script/style/textarea/title: raw text / RCDATA — content is text;
+- noscript: raw text when scripting is enabled (the default for
+  rendered pages); a nested body token is dropped or merged, never a
+  new document body;
+- iframe: non-rendered nested browsing context.
+Skipping is fail-closed throughout: it can only cause over-blocks
+(annoying), never walk-throughs — the real <body> is always top-level.
+(Validator round 7, W1 — demonstrated walk-through via noscript.)"""
+
+
+def _skip_to_close(html: str, i: int, name: str, nested: bool) -> int:
+    """Index after the `</name>` that ends the element whose content
+    starts at i. Template fragments nest (inner <template> pairs count);
+    raw-text elements do not (the first `</name>` wins, the way the
+    tokenizer reads them). Comments are skipped, never parsed. EOF when
+    never closed — fail-closed by removal, matching the browser (none of
+    it is markup)."""
+    n = len(html)
+    depth = 1
+    while i < n and depth > 0:
+        if html.startswith("<!--", i):
+            end = html.find("-->", i + 4)
+            i = n if end == -1 else end + 3
+            continue
+        if html[i] != "<":
+            i += 1
+            continue
+        nm, closing, k = _read_tag_name(html, i)
+        after = _skip_tag(html, k)
+        if nm == name:
+            if closing:
+                depth -= 1
+            elif nested:
+                depth += 1
+        i = after
+    return i
+
+
+def _find_real_tag(html: str, tag: str) -> int | None:
+    """Index of the `<` that opens the first REAL <tag> element, located
+    the way the HTML tokenizer locates it — never by substring:
+    - HTML comments are skipped, never searched (an unclosed comment
+      runs to EOF per spec, so everything after it is comment);
+    - `<template>` fragment content is skipped (inert — never the
+      document body; it lives in a separate fragment per spec);
+    - raw-text elements (script/style/textarea/title), noscript, and
+      iframe are skipped (their content is text, inert, or a
+      non-rendered nested context — never the document body);
+    - a `<tag` inside another tag's attribute value is never a tag start
+      (each tag is skipped whole, quotes respected);
+    - the name must match EXACTLY (case-insensitive): `<body-foo>` is a
+      custom element, not `<body>`.
+    The old `re.search(r"<body\\b", ...)` matched every decoy shape
+    (validator round 7, W1: custom elements, comments, template
+    fragments, attribute values) and let the decoy style win the cascade
+    on both channels. Returns None when no real <tag> exists."""
+    want = tag.lower()
+    n = len(html)
+    i = 0
+    while i < n:
+        if html.startswith("<!--", i):
+            end = html.find("-->", i + 4)
+            i = n if end == -1 else end + 3
+            continue
+        if html[i] != "<":
+            i += 1
+            continue
+        name, closing, k = _read_tag_name(html, i)
+        after = _skip_tag(html, k)
+        if not closing and (name == "template" or name in _SKIP_CONTENT_TAGS):
+            i = _skip_to_close(html, after, name,
+                               nested=(name == "template"))
+            continue
+        if not closing and name == want:
+            return i
+        i = after
+    return None
+
+
 def _tag_extent(html: str, tag: str) -> str | None:
-    """Raw text of the first <tag ...> opening tag, with the tag's TRUE
-    extent: quoted attribute values are respected, so a `>` inside quotes
-    does not end the tag early.
+    """Raw text of the first REAL <tag ...> opening tag, with the tag's
+    TRUE extent: the tag is located the way the HTML tokenizer locates
+    it (comments, template fragments, raw-text content, and attribute
+    values are never searched; custom elements never match), and quoted
+    attribute values are respected, so a `>` inside quotes does not end
+    the tag early.
 
     The old `<%s\\b[^>]*?` prefix could not cross a `>` inside a quoted
     attribute value — `<body title="x>y" style="color:#111">` made the
     cascade path judge the stylesheet while the browser rendered the
     inline style. (Validator round 5, C1.) Returns None when there is no
-    <tag or the tag is unterminated — fail closed, no style extracted."""
-    m = re.search(r"<%s\b" % tag, html, re.I)
-    if not m:
+    real <tag or the tag is unterminated — fail closed, no style
+    extracted."""
+    lt = _find_real_tag(html, tag)
+    if lt is None:
         return None
-    i, n = m.end(), len(html)
+    _, _, after_name = _read_tag_name(html, lt)
+    i, n = after_name, len(html)
     while i < n:
         ch = html[i]
         if ch in "\"'":
@@ -370,7 +498,7 @@ def _tag_extent(html: str, tag: str) -> str | None:
                 i += 1
             i += 1  # past the closing quote (or past EOF)
         elif ch == ">":
-            return html[m.start():i + 1]
+            return html[lt:i + 1]
         else:
             i += 1
     return None
@@ -387,9 +515,13 @@ def _style_attr_raw(extent: str) -> tuple[str | None, bool]:
     and invisible dark-on-dark text walked through. Attribute grammar:
     name, optional `=`, then a double-quoted, single-quoted, or unquoted
     value. Per the HTML spec, when an attribute name is duplicated the
-    FIRST occurrence wins — so the first real `style` attribute wins,
-    same as the browser. A `data-style` attribute is not a style
-    attribute (the old `\\bstyle` regex wrongly matched it)."""
+    FIRST occurrence wins — INCLUDING a valueless first: `<body style
+    style="...">` means style="", so the first (empty) wins and the
+    second is dropped by the parser. The old `value is not None` guard
+    skipped the valueless first and returned the second (validator round
+    7, W2), letting a dead style win the cascade. A `data-style`
+    attribute is not a style attribute (the old `\\bstyle` regex wrongly
+    matched it)."""
     m = re.match(r"<[A-Za-z][^\s/>]*", extent)
     i = m.end() if m else 1
     n = len(extent)
@@ -426,7 +558,11 @@ def _style_attr_raw(extent: str) -> tuple[str | None, bool]:
                     j += 1
                 value = extent[i:j]
                 i = j
-        if name.lower() == "style" and value is not None:
+        if name.lower() == "style":
+            # First occurrence wins even when valueless (value None):
+            # the caller treats None as "no inline declarations", so the
+            # stylesheet — what the browser actually applies — wins the
+            # cascade. (Validator round 7, W2.)
             return value, quoted
     return None, False
 
@@ -1549,6 +1685,104 @@ def self_test() -> int:
             ok = False
         else:
             print(f"SELF-TEST: wave-6 blind-spot '{name}' held (good)")
+    # --- tokenizer-located tags + first-wins attributes (validator round 7) ---
+    # Durable law: locate elements the way the HTML tokenizer does — real
+    # tags only (not inside comments, template fragments, raw-text
+    # content, or attribute values; never a tag-name prefix of a custom
+    # element). And duplicate attributes are first-wins INCLUDING
+    # valueless (`<body style style="...">` means style="").
+    w7 = [
+        # (name, fragment, check-kind, must_flag_violation)
+        # W1: decoy <body> shapes must not feed the cascade — the real
+        # body carries no inline style, so the dark stylesheet wins and
+        # the gate must flag the invisible text.
+        ("custom-element decoy ignored",
+         '<style>body{color:#111111;background:#050507}</style>'
+         '<body-foo style="color:#ffffff"></body-foo><body>hi</body>',
+         "texthtml", True),
+        ("comment decoy ignored",
+         '<style>body{color:#111111;background:#050507}</style>'
+         '<!-- <body style="color:#ffffff"> --><body>hi</body>',
+         "texthtml", True),
+        ("template decoy ignored",
+         '<style>body{color:#111111;background:#050507}</style>'
+         '<template><body style="color:#ffffff"></body></template>'
+         '<body>hi</body>',
+         "texthtml", True),
+        ("attr-value decoy ignored",
+         '<style>body{color:#111111;background:#050507}</style>'
+         '<div title="<body style=\'color:#ffffff\'>"></div><body>hi</body>',
+         "texthtml", True),
+        ("script decoy ignored",
+         '<style>body{color:#111111;background:#050507}</style>'
+         '<script>var x="<body style=\'color:#ffffff\'>";</script>'
+         '<body>hi</body>',
+         "texthtml", True),
+        ("style-block decoy ignored",
+         '<style>body{color:#111111;background:#050507}'
+         '/* <body style="color:#ffffff"> */</style><body>hi</body>',
+         "texthtml", True),
+        ("textarea decoy ignored",
+         '<style>body{color:#111111;background:#050507}</style>'
+         '<textarea><body style="color:#ffffff"></textarea><body>hi</body>',
+         "texthtml", True),
+        ("noscript decoy ignored",
+         '<style>body{color:#111111;background:#050507}</style>'
+         '<noscript><body style="color:#ffffff"></body></noscript>'
+         '<body>hi</body>',
+         "texthtml", True),
+        ("iframe decoy ignored",
+         '<style>body{color:#111111;background:#050507}</style>'
+         '<iframe><body style="color:#ffffff"></body></iframe>'
+         '<body>hi</body>',
+         "texthtml", True),
+        # W1 background channel: a decoy black must not mask the white
+        # leak — the real body declares no background.
+        ("decoy black cannot mask white leak",
+         '<body-foo style="background:#000000"></body-foo><body>hi</body>',
+         "rooth_html", True),
+        # Positive controls: real tags are still found.
+        ("real body style still judged",
+         '<style>body{color:#f5f5f5}</style>'
+         '<body style="color:#111111">x</body>',
+         "texthtml", True),
+        ("uppercase BODY still found",
+         '<style>body{color:#f5f5f5}</style>'
+         '<BODY STYLE="color:#111111">x</BODY>',
+         "texthtml", True),
+        ("body after comment still found",
+         '<style>body{color:#f5f5f5}</style>'
+         '<!-- note --><body style="color:#111111">x</body>',
+         "texthtml", True),
+        # W2: valueless-first duplicate — the browser sees style="".
+        ("valueless-first style means empty",
+         '<style>body{color:#111111;background:#050507}</style>'
+         '<body style style="color:#ffffff">x</body>',
+         "texthtml", True),
+        ("valued-first duplicate wins",
+         '<style>body{color:#f5f5f5;background:#050507}</style>'
+         '<body style="color:#111111" style>x</body>',
+         "texthtml", True),
+        ("lone valueless style is empty",
+         '<style>body{color:#f5f5f5;background:#050507}</style>'
+         '<body style>x</body>',
+         "texthtml", False),
+    ]
+    for name, frag, kind, must_flag in w7:
+        if kind == "surface_html":
+            flagged = bool(check_no_light_surfaces(inline_css(frag)))
+        elif kind == "rooth_html":
+            flagged = bool(check_black_root(frag, inline_css(frag)))
+        elif kind == "texthtml":
+            flagged = bool(check_light_text(frag, inline_css(frag)))
+        elif kind == "freestyle":
+            flagged = bool(check_no_freestyle(frag, w4known))
+        if flagged != must_flag:
+            print(f"SELF-TEST FAIL: wave-7 blind-spot '{name}' regressed "
+                  f"(flagged={flagged}, want={must_flag})")
+            ok = False
+        else:
+            print(f"SELF-TEST: wave-7 blind-spot '{name}' held (good)")
     return 0 if ok else 1
 
 
