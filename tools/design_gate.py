@@ -31,6 +31,7 @@ from __future__ import annotations
 import hashlib
 import json
 import re
+import subprocess
 import sys
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
@@ -283,7 +284,28 @@ RECEIPT_MARKER_RE = re.compile(
 RECEIPT_TTL = timedelta(hours=4)
 
 
-def check_activation(html: str, receipt_path: Path | None) -> list[str]:
+def _normalize_repo(ref: str) -> str:
+    """Normalize a repository reference to owner/repo for comparison."""
+    s = str(ref or "").strip().lower()
+    s = re.sub(r"^(https?://github\.com/|git@github\.com:)", "", s)
+    s = re.sub(r"\.git$", "", s).rstrip("/")
+    return s
+
+
+def _detect_repo() -> str:
+    """Best-effort expected repository from git remote.origin.url."""
+    try:
+        out = subprocess.run(
+            ["git", "config", "--get", "remote.origin.url"],
+            capture_output=True, text=True, timeout=10,
+            cwd=REPO_ROOT).stdout.strip()
+    except (OSError, subprocess.SubprocessError):
+        out = ""
+    return _normalize_repo(out)
+
+
+def check_activation(html: str, receipt_path: Path | None,
+                     expected_repo: str | None = None) -> list[str]:
     """Activation citation check (Naya 3's Gap 2 — PR #1974 integration).
 
     With --require-activation, a deliverable FAILS unless it carries a
@@ -321,6 +343,16 @@ def check_activation(html: str, receipt_path: Path | None) -> list[str]:
     main_sha = receipt.get("main_sha", "")
     if not re.fullmatch(r"[a-fA-F0-9]{40}", str(main_sha)):
         v.append("ACTIVATION: receipt main_sha is not a 40-hex SHA")
+    # Repository binding: the receipt must name THIS repository. A receipt
+    # minted for another repo is a wrong-repository activation - fail.
+    want = _normalize_repo(expected_repo) if expected_repo else _detect_repo()
+    got = _normalize_repo(receipt.get("repository", ""))
+    if not want:
+        v.append("ACTIVATION: cannot determine the gated repository "
+                 "(no --expected-repo and no git remote) - refusing to bind")
+    elif got != want:
+        v.append(f"ACTIVATION: receipt is for repository '{got}', not the "
+                 f"gated repository '{want}' (wrong-repository activation)")
     # Integrity: the marker must be the sha256 of the exact receipt bytes.
     digest = hashlib.sha256(raw).hexdigest()
     if digest != marker_sha:
@@ -342,7 +374,8 @@ def check_activation(html: str, receipt_path: Path | None) -> list[str]:
 
 def run_gate(page: Path, manifest: Path,
              require_activation: bool = False,
-             receipt_path: Path | None = None) -> list[str]:
+             receipt_path: Path | None = None,
+             expected_repo: str | None = None) -> list[str]:
     html = read_page(page)
     css = inline_css(html)
     violations: list[str] = []
@@ -358,7 +391,7 @@ def run_gate(page: Path, manifest: Path,
                           f"— cannot verify components")
     violations += check_light_text(css)
     if require_activation:
-        violations += check_activation(html, receipt_path)
+        violations += check_activation(html, receipt_path, expected_repo)
     return violations
 
 
@@ -423,6 +456,18 @@ def self_test() -> int:
             f"<!-- NAYA-ACTIVATION-RECEIPT-SHA256:{d_old} --></body>"))
         expired_v = run_gate(pm_old, mf, require_activation=True,
                              receipt_path=rp_old)    # expired -> fail
+        # wrong-repository receipt -> fail (Naya 1's adversarial case)
+        wrong = dict(receipt, repository="SomeoneElse/OtherRepo")
+        rp_wrong = Path(d) / "receipt_wrong.json"
+        rp_wrong.write_bytes(json.dumps(wrong).encode())
+        d_wrong = hashlib.sha256(rp_wrong.read_bytes()).hexdigest()
+        pm_wrong = Path(d) / "marked_wrong.html"
+        pm_wrong.write_text(good.replace(
+            "</body>",
+            f"<!-- NAYA-ACTIVATION-RECEIPT-SHA256:{d_wrong} --></body>"))
+        wrongrepo_v = run_gate(
+            pm_wrong, mf, require_activation=True, receipt_path=rp_wrong,
+            expected_repo="SoulSchoolAcademy/NayaPOWER")  # wrong repo -> fail
     ok = True
     if not bad_v:
         print("SELF-TEST FAIL: violating page passed the gate")
@@ -442,7 +487,8 @@ def self_test() -> int:
             ("no-marker+required", noact_v, True),
             ("valid receipt", okact_v, False),
             ("forged marker", forged_v, True),
-            ("expired receipt", expired_v, True)]:
+            ("expired receipt", expired_v, True),
+            ("wrong-repository receipt", wrongrepo_v, True)]:
         has_act = any(x.startswith("ACTIVATION") for x in vv)
         if want_fail and not has_act:
             print(f"SELF-TEST FAIL: activation case '{name}' did not fail")
@@ -470,15 +516,19 @@ def main(argv: list[str]) -> int:
     )
     require_activation = "--require-activation" in flags
     receipt_path = None
+    expected_repo = None
     for a in argv:
         if a.startswith("--receipt="):
             receipt_path = Path(a.split("=", 1)[1])
+        elif a.startswith("--expected-repo="):
+            expected_repo = a.split("=", 1)[1]
     if not page.exists():
         print(f"design_gate: no such file: {page}")
         return 2
     violations = run_gate(page, manifest,
                           require_activation=require_activation,
-                          receipt_path=receipt_path)
+                          receipt_path=receipt_path,
+                          expected_repo=expected_repo)
     if violations:
         print(f"DESIGN GATE: FAIL — {len(violations)} violation(s) in {page}:")
         for viol in violations:
