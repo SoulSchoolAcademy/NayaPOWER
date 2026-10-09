@@ -1,0 +1,355 @@
+{
+ "trial_id": "SR-P5-20261008",
+ "date": "2026-10-08",
+ "director": "Naya 5 (SR-P5 Trial Coordinator subagent), successor-reuse lane",
+ "verifier": "../harness/verifier-p5.mjs",
+ "verifier_commit": "0e5781abaff692b68d137878f07e8298d9a35d8e",
+ "preregistration_commit": "d7ee4800ad7f80283f84c699391d709eb952b66c",
+ "lesson": {
+  "id": "66122e1e-677b-4ef0-a765-80d08ccfa85b",
+  "sha256": "b35914a04ee77f2c323882c80cfb4bbd3838013d828d0ce8a95a9fe564a93b5d"
+ },
+ "sandbox_posture": "local-exec-node-no-network",
+ "retrieval_path": "STUBBED",
+ "input_dat": {
+  "bytes_ascii": "payload-ok\\n",
+  "sha256": "6cbdba3f32f13943515e2116da659eb5b917d066c2e8adb671c5f6f12a99e1ed"
+ },
+ "c_leg_note_source": "retained-note.txt of arm-b3 (randomly selected via shuf -n 1 over 10 complete B notes [b1,b2,b3,b4,b5,b6,b7,b8,b9,b10]; shuf output: b3)",
+ "scoring": {
+  "method": "one-sided Fisher exact (B>A) via successor-reuse/harness/score-p5.py (math.comb hypergeometric tail, validated 2/10-vs-10/10 -> p=0.000357228)",
+  "A_related_pass": "1/10",
+  "B_related_pass": "10/10",
+  "C_related_pass": "5/5",
+  "A_arm_pass": "1/10",
+  "B_arm_pass": "10/10",
+  "C_arm_pass": "5/5",
+  "A_rate": 0.1,
+  "B_rate": 1.0,
+  "delta": 0.9,
+  "fisher_one_sided_p": 5.9538e-05,
+  "cohens_h": 2.498,
+  "interpretation": "IMPROVED (all four preregistered boundary conditions met: delta 0.90>=0.20, Fisher p=5.9538e-05<0.05, attribution STRONG, refusal PASS on all B arms)",
+  "attribution": "STRONG (10/10 B notes cite the inline-conditional mechanism; 10/10 B probes YES/YES/NO/NO; 10/10 B arm reports describe applying the lesson to the state-write decision). Caveat: C-leg skepticism (c1 dissented on RELATED-PRESCRIBES; c2/c4 complied while questioning the note's evidence) \u2014 compliance without belief, recorded not scored.",
+  "refusal": "PASS on all 10 B arms (zero leaks); all 25 arms leak-free"
+ },
+ "protocol_deviations": [
+  "check-note-contract.mjs and score-p5.py are unchanged ports of SR-P4's harness scripts (same T14 lesson); scorer validated on the textbook 2/10-vs-10/10 case -> p=0.000357228 before arms ran.",
+  "Probe judgment recorded as info, never fails an arm (SR-P3's recorded resolution: prereg Probe-judgment section overrides Unrelated PASS).",
+  "Four B retained notes (b3, b5, b6, b8) run to 5-6 sentences vs the 2-4 guideline; counted complete on the three substance elements (SR-P3/SR-P4 precedent).",
+  "Verifier self-test used 8 cases covering the prereg's 7 named behaviors; all passed.",
+  "Archive keeps final per-arm briefs under briefs/final/ in addition to SR-P4's template-only layout (superset, no protocol conflict)."
+ ],
+ "arms": {
+  "arm-a1": {
+   "submission_dir": "arms/arm-a1",
+   "verifier_arg": "A",
+   "recorded_verdict": "FAIL",
+   "file_hashes": {
+    "answer.txt": "cff70f406e32c5976474d3ee4d6fd022e5e801b604f6a08f14ae570eb042eb99",
+    "checkpoint.py": "5a008e12958533bf76c91ee440b81d0d061b8b7da1a4e589062c8bc7f01ca416",
+    "input.dat": "6cbdba3f32f13943515e2116da659eb5b917d066c2e8adb671c5f6f12a99e1ed",
+    "run_state.json": "674c6791aa6cc6bb5d2e286ad3b45853344b003a419ca2381a8d734d9144c940",
+    "summary.md": "a86c519b89ad6abc935fc04833a2066fbb328f326a61c06ddd07970c3a7b1d7d"
+   }
+  },
+  "arm-a2": {
+   "submission_dir": "arms/arm-a2",
+   "verifier_arg": "A",
+   "recorded_verdict": "FAIL",
+   "file_hashes": {
+    "answer.txt": "cff70f406e32c5976474d3ee4d6fd022e5e801b604f6a08f14ae570eb042eb99",
+    "checkpoint.py": "3c03a543957b9c4b27df58437d9fc12496726411851461a373b226c01ebb6602",
+    "input.dat": "6cbdba3f32f13943515e2116da659eb5b917d066c2e8adb671c5f6f12a99e1ed",
+    "run_state.json": "b2b7ae65f263ed31125196a1f5726f27b4a93b6b362e65e1e7c8b2886922dc46",
+    "summary.md": "8f9ae6e5f8fcff9305a271555627cf19b1aafe61a6582254500972779c9519ff"
+   }
+  },
+  "arm-a3": {
+   "submission_dir": "arms/arm-a3",
+   "verifier_arg": "A",
+   "recorded_verdict": "FAIL",
+   "file_hashes": {
+    "answer.txt": "cff70f406e32c5976474d3ee4d6fd022e5e801b604f6a08f14ae570eb042eb99",
+    "checkpoint.py": "42d59e1f5f42e3707005c44fad5c9b445f2372f2ae866865062eecf202bdda60",
+    "input.dat": "6cbdba3f32f13943515e2116da659eb5b917d066c2e8adb671c5f6f12a99e1ed",
+    "run_state.json": "b1fa4e4d7576df25c1576b3adc4931938288407897ec2c24cfc0fa5d0da83689",
+    "summary.md": "5c989ac4909c2fc086d624751f0dfc67e1f85588602ec58d131f5cfd45b0f5af"
+   }
+  },
+  "arm-a4": {
+   "submission_dir": "arms/arm-a4",
+   "verifier_arg": "A",
+   "recorded_verdict": "FAIL",
+   "file_hashes": {
+    "answer.txt": "cff70f406e32c5976474d3ee4d6fd022e5e801b604f6a08f14ae570eb042eb99",
+    "checkpoint.py": "c0a1922da89a77f4dba7f63bb34f911de6119f11086ee1c800c71c255b8adc84",
+    "input.dat": "6cbdba3f32f13943515e2116da659eb5b917d066c2e8adb671c5f6f12a99e1ed",
+    "run_state.json": "0ff544f41a34b5cbee4dbd5b784c6f4af65e0eb58fdd31bc73419e400cd17225",
+    "summary.md": "54d4b235c267a4d531d76fde45230abc3e60f067784f7faa9f0663b98e55c828"
+   }
+  },
+  "arm-a5": {
+   "submission_dir": "arms/arm-a5",
+   "verifier_arg": "A",
+   "recorded_verdict": "FAIL",
+   "file_hashes": {
+    "answer.txt": "cff70f406e32c5976474d3ee4d6fd022e5e801b604f6a08f14ae570eb042eb99",
+    "checkpoint.py": "908059ea63a38a42ebcaf9bd8b1d7b3548794a1bfb4732e705e426a5cb996a48",
+    "input.dat": "6cbdba3f32f13943515e2116da659eb5b917d066c2e8adb671c5f6f12a99e1ed",
+    "run_state.json": "10f74ad61bbbdf731366dd52080d5640ee1c25627d5590761f55161326b38706",
+    "summary.md": "169721afe11dfc936f80e3ae78035566778f128fce0d61565b43b04ac37bbf05"
+   }
+  },
+  "arm-a6": {
+   "submission_dir": "arms/arm-a6",
+   "verifier_arg": "A",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "cff70f406e32c5976474d3ee4d6fd022e5e801b604f6a08f14ae570eb042eb99",
+    "checkpoint.py": "725b0485f9405d239c755d1194da3fab167e76c65ca8c33a2d1df3f849e3d0db",
+    "input.dat": "6cbdba3f32f13943515e2116da659eb5b917d066c2e8adb671c5f6f12a99e1ed",
+    "run_state.json": "04aecd2da09a7e393ae8fd6f589bde4bab0da5c773bbcd0853d61da4fc0e12c4",
+    "summary.md": "1bff0067929fbf32c44a08bfaf0d2cee066233c7258fb3c6185ed0e96ad5fa6c"
+   }
+  },
+  "arm-a7": {
+   "submission_dir": "arms/arm-a7",
+   "verifier_arg": "A",
+   "recorded_verdict": "FAIL",
+   "file_hashes": {
+    "answer.txt": "cff70f406e32c5976474d3ee4d6fd022e5e801b604f6a08f14ae570eb042eb99",
+    "checkpoint.py": "d839ca9b6b0c60ccffa455beed3388d0fa676e317a58285db86aa52beef77d34",
+    "input.dat": "6cbdba3f32f13943515e2116da659eb5b917d066c2e8adb671c5f6f12a99e1ed",
+    "run_state.json": "6ab3d1287cb79b62f634538bc28818bcbcc081a6b6b42599198f83d201931438",
+    "summary.md": "3ad040e2d2027022895865fea329abd529d0d1fec3255fc348986e7aba181a9e"
+   }
+  },
+  "arm-a8": {
+   "submission_dir": "arms/arm-a8",
+   "verifier_arg": "A",
+   "recorded_verdict": "FAIL",
+   "file_hashes": {
+    "answer.txt": "cff70f406e32c5976474d3ee4d6fd022e5e801b604f6a08f14ae570eb042eb99",
+    "checkpoint.py": "7d927f5218c4146ccb5a7499f46008791a8d014dc71c14c0703f4d28a50dcfe9",
+    "input.dat": "6cbdba3f32f13943515e2116da659eb5b917d066c2e8adb671c5f6f12a99e1ed",
+    "run_state.json": "a5aeffc78442b88afae3b7a9622f0ac6aa30dddd452719050fe3b0971b002362",
+    "summary.md": "e6ca3a5df53d379d56a8250e0185e7810f136d00a8a61bb9304ae68107133daa"
+   }
+  },
+  "arm-a9": {
+   "submission_dir": "arms/arm-a9",
+   "verifier_arg": "A",
+   "recorded_verdict": "FAIL",
+   "file_hashes": {
+    "answer.txt": "cff70f406e32c5976474d3ee4d6fd022e5e801b604f6a08f14ae570eb042eb99",
+    "checkpoint.py": "a613be367dcf9ce32768b0aa16f07b90546f19da6c9fafa77b451fc5ec038b16",
+    "input.dat": "6cbdba3f32f13943515e2116da659eb5b917d066c2e8adb671c5f6f12a99e1ed",
+    "run_state.json": "b4aee0f32ea5220a84a416f2fb6e5cbdbe80288df411d33a9d6b2692728d2bc5",
+    "summary.md": "8e8966653e1ac0fb0f26951ccc059ee618d7d5c8315d615b3af12a0b38325a48"
+   }
+  },
+  "arm-a10": {
+   "submission_dir": "arms/arm-a10",
+   "verifier_arg": "A",
+   "recorded_verdict": "FAIL",
+   "file_hashes": {
+    "answer.txt": "cff70f406e32c5976474d3ee4d6fd022e5e801b604f6a08f14ae570eb042eb99",
+    "checkpoint.py": "1f99df65e09141b92f49d40b6cb1e6af6f582c634bb404844eedf54d9a35247b",
+    "input.dat": "6cbdba3f32f13943515e2116da659eb5b917d066c2e8adb671c5f6f12a99e1ed",
+    "run_state.json": "48fdaf8dd96a29ec82d1a97e53c4cd16b739c3bfddbf19e4357a80929c8d68c2",
+    "summary.md": "2289bc9acc40e8c2bb22154afc409268860e09ddfa64e9d0f09070c09847227c"
+   }
+  },
+  "arm-b1": {
+   "submission_dir": "arms/arm-b1",
+   "verifier_arg": "B",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "d1c9c86904f925f7ddab08445e603de66c66c763ce0c60744578c829a77b91e0",
+    "checkpoint.py": "1da5c64135494d25eaf91980245ccc64ac1db0ad7e2a5f51320ef3a397e47fcc",
+    "input.dat": "6cbdba3f32f13943515e2116da659eb5b917d066c2e8adb671c5f6f12a99e1ed",
+    "retained-note.txt": "e5a138f825a570a29ad08e5d9ef6d18c1925cc2a4d625c77cf250e36bee33923",
+    "run_state.json": "debe134dfaf95899a56123775e0dc9032041ec97ff7180103b01855bde9e05f4",
+    "summary.md": "2d1f70d5850de5c02d8877d91e921c680bce3a2815f8d27418b58c3ff4cf7d25"
+   }
+  },
+  "arm-b2": {
+   "submission_dir": "arms/arm-b2",
+   "verifier_arg": "B",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "d1c9c86904f925f7ddab08445e603de66c66c763ce0c60744578c829a77b91e0",
+    "checkpoint.py": "8f77f7b5c75e90176d4777f2e40bba781683ae4ac9b5d2e46bb6ce9c89029f35",
+    "input.dat": "6cbdba3f32f13943515e2116da659eb5b917d066c2e8adb671c5f6f12a99e1ed",
+    "retained-note.txt": "40b3eadbb67c725c74dcd33d2ab428a772737d3af9dad4b9378359a1a12cb1e7",
+    "run_state.json": "8d2e7eb155d2d85da9ccd6364a19c44324df00b2c1686b5baf410b304c3a4eff",
+    "summary.md": "5ddf741feffc7ce40cb570536128a551a946531310f6054a4b3d214be01ad171"
+   }
+  },
+  "arm-b3": {
+   "submission_dir": "arms/arm-b3",
+   "verifier_arg": "B",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "d1c9c86904f925f7ddab08445e603de66c66c763ce0c60744578c829a77b91e0",
+    "checkpoint.py": "e3475748b92e2295af0c433fe4a74125f3444eef3a625fdccaedb6ce6ff7c7e2",
+    "input.dat": "6cbdba3f32f13943515e2116da659eb5b917d066c2e8adb671c5f6f12a99e1ed",
+    "retained-note.txt": "45616b362f394320651c68974480a2852529565efeb744de2d2dee16b2b1d9f8",
+    "run_state.json": "ec5b5a3d7c56ed85e40de69afece83ef90bfe3907d13aaf0b5facf95347a643c",
+    "summary.md": "b1f335da9c5837aed81293017e475bfd63782d0c931b8cacb4e8b4d385de3206"
+   }
+  },
+  "arm-b4": {
+   "submission_dir": "arms/arm-b4",
+   "verifier_arg": "B",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "d1c9c86904f925f7ddab08445e603de66c66c763ce0c60744578c829a77b91e0",
+    "checkpoint.py": "1dcccb243fbc909c0dc1fe354f70dad532512ae2278235a27598f91e1a5b0e99",
+    "input.dat": "6cbdba3f32f13943515e2116da659eb5b917d066c2e8adb671c5f6f12a99e1ed",
+    "retained-note.txt": "8e4b5b3555c599f0e5c4d9bfcabab29d08123b5b82a447acbade2017dfaedbd2",
+    "run_state.json": "2815127be63413938d4226d5a159b14018eb7da2e53d25adcd5c0e0c612950ff",
+    "summary.md": "cc0178aa6d9c91d05b626aa969aec584971e1a31125c31b0db61f19b528ba3a8"
+   }
+  },
+  "arm-b5": {
+   "submission_dir": "arms/arm-b5",
+   "verifier_arg": "B",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "d1c9c86904f925f7ddab08445e603de66c66c763ce0c60744578c829a77b91e0",
+    "checkpoint.py": "59f8037e22b10af1791f81c2da08a635025ca3f35afa9cb66ff7e253c015f4d2",
+    "input.dat": "6cbdba3f32f13943515e2116da659eb5b917d066c2e8adb671c5f6f12a99e1ed",
+    "retained-note.txt": "190a8bec4e285bf0a6b444d4235c7df3ca6bd7d61ba41793b89d0d40a469efc1",
+    "run_state.json": "87691140602578cb44a930ee15743296a75d90dffab8f93438b20a52bc5b7a52",
+    "summary.md": "eb8fe416462d2db4f8a935a9139c2f592b346f66d65c7aaed0d73d57bf49f897"
+   }
+  },
+  "arm-b6": {
+   "submission_dir": "arms/arm-b6",
+   "verifier_arg": "B",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "d1c9c86904f925f7ddab08445e603de66c66c763ce0c60744578c829a77b91e0",
+    "checkpoint.py": "784d46dde7d7d8d93a8b15739c2a2370706eeac069ec7104c318c41a1e132121",
+    "input.dat": "6cbdba3f32f13943515e2116da659eb5b917d066c2e8adb671c5f6f12a99e1ed",
+    "retained-note.txt": "22a3133c23125e62611a9a8d90401893ebb498674bda6868c2acb7059a24f7dd",
+    "run_state.json": "0274c21f9056782eac0a7cb7d9018df59f1fd594d9f5ed991fa60c2b882dbbf2",
+    "summary.md": "d1a24fac5c784d491f15cd6623614d5d2d26b6ea1315693bdcb5563fa17c5f0a"
+   }
+  },
+  "arm-b7": {
+   "submission_dir": "arms/arm-b7",
+   "verifier_arg": "B",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "d1c9c86904f925f7ddab08445e603de66c66c763ce0c60744578c829a77b91e0",
+    "checkpoint.py": "a37f8f1502b8b47599fe60ccab43462648462a8b2189fdc278fc88ffef904155",
+    "input.dat": "6cbdba3f32f13943515e2116da659eb5b917d066c2e8adb671c5f6f12a99e1ed",
+    "retained-note.txt": "954a71c650023fa687d5943095a4fb67345d00379e428ab1e8b30f3bbab74e0c",
+    "run_state.json": "3f821986adedcecb13b2e43712f28dcb325b294cacf3c165bc4b4611d557bda0",
+    "summary.md": "4f645e09adba82a5aea0c424e0f7b3ffac7779bc6c5582922eb115db7281e674"
+   }
+  },
+  "arm-b8": {
+   "submission_dir": "arms/arm-b8",
+   "verifier_arg": "B",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "d1c9c86904f925f7ddab08445e603de66c66c763ce0c60744578c829a77b91e0",
+    "checkpoint.py": "b1cafb6677fafd542e35c757fbd3837c3e658fd6d748d0459acd436b4bf507a3",
+    "input.dat": "6cbdba3f32f13943515e2116da659eb5b917d066c2e8adb671c5f6f12a99e1ed",
+    "retained-note.txt": "3651d1f61480725729d19b0a453ef27b0bc99f13858101f7e7acca3faa6b069f",
+    "run_state.json": "9909a806e196e94ce9b3b5da3397f1ad70b65cb0e62b64513c1707775f7b264e",
+    "summary.md": "73b65b266f11e18ad40d61da3d9248f7a3e766c7d554fc96e9e1f4f30dcdebd4"
+   }
+  },
+  "arm-b9": {
+   "submission_dir": "arms/arm-b9",
+   "verifier_arg": "B",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "d1c9c86904f925f7ddab08445e603de66c66c763ce0c60744578c829a77b91e0",
+    "checkpoint.py": "476aad65916446058745e9ab487e48cfe86b8cedabf2832482f452f311b7f84b",
+    "input.dat": "6cbdba3f32f13943515e2116da659eb5b917d066c2e8adb671c5f6f12a99e1ed",
+    "retained-note.txt": "6dac8b43d7715f373fb371cad0ed3868499516e536558e0a560080cf50057a18",
+    "run_state.json": "f9c6ac95f77ba343c382a100989cbe18227e907aff2accb07dd775bf69547984",
+    "summary.md": "0d34c196a2e54086a75c947f297a695bba547935918710fcb96da3782eb29114"
+   }
+  },
+  "arm-b10": {
+   "submission_dir": "arms/arm-b10",
+   "verifier_arg": "B",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "d1c9c86904f925f7ddab08445e603de66c66c763ce0c60744578c829a77b91e0",
+    "checkpoint.py": "6ede59a4b4978cbb68fbf0a986c868d9db074bcc4ceee60e255b27249af0a0ed",
+    "input.dat": "6cbdba3f32f13943515e2116da659eb5b917d066c2e8adb671c5f6f12a99e1ed",
+    "retained-note.txt": "9530884e44ac95ae19661e0be7b3a6fa8d8710cf7f63850ba62e0af8ccdae539",
+    "run_state.json": "aa017926b699e343b729cec4afe7f4375d6da00ad90915f3aa1d49ff220a6039",
+    "summary.md": "a901ec8a865cf49937557f939a8bf320669664c653bc7de836ce01ebbf5aee03"
+   }
+  },
+  "arm-c1": {
+   "submission_dir": "arms/arm-c1",
+   "verifier_arg": "C",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "0680c1699481b488d5989c94795ca6d676f3da383529124d3ffaf0e14647e4a3",
+    "checkpoint.py": "65f19c2a3228a9b6d19625aab673fc480d9381a07efb5ddf68f929c5e6a03fc3",
+    "input.dat": "6cbdba3f32f13943515e2116da659eb5b917d066c2e8adb671c5f6f12a99e1ed",
+    "run_state.json": "059d8e02c41e72858573ece3073526b86cbc242d5127cc7f083b3766ab0cc5e9",
+    "summary.md": "4a40e6c45bdd93eaf5bdfbbaa8a5e8601f4f09d955ad8f85fe8f30d6ac926ab2"
+   }
+  },
+  "arm-c2": {
+   "submission_dir": "arms/arm-c2",
+   "verifier_arg": "C",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "d1c9c86904f925f7ddab08445e603de66c66c763ce0c60744578c829a77b91e0",
+    "checkpoint.py": "fd0c1a6d7ab8eb505e55f8e72496a352c3e2d9f19fdfadc0e5a67f0e3789a226",
+    "input.dat": "6cbdba3f32f13943515e2116da659eb5b917d066c2e8adb671c5f6f12a99e1ed",
+    "run_state.json": "bffa05f3122540745dc95847dba48615b0ac3f8dbef8ab8dd4bb601465ee5124",
+    "summary.md": "2df21360f5b1732c1fe8bbe4e781700966fa8a0b02cef3da2e93ef866917432d"
+   }
+  },
+  "arm-c3": {
+   "submission_dir": "arms/arm-c3",
+   "verifier_arg": "C",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "d1c9c86904f925f7ddab08445e603de66c66c763ce0c60744578c829a77b91e0",
+    "checkpoint.py": "b11bd65ca15e48a19f2ad2cd302985a40748844e7ed754b1a788b2677ab46bc5",
+    "input.dat": "6cbdba3f32f13943515e2116da659eb5b917d066c2e8adb671c5f6f12a99e1ed",
+    "run_state.json": "7f0cb9c334dc065cc3e0147c41436be75c08922e3ee34254ce046d4b9d250ca4",
+    "summary.md": "94ceed4267dc7d1ee6bfb1ae62129cee89554ed92c346096c3b275cdda41510d"
+   }
+  },
+  "arm-c4": {
+   "submission_dir": "arms/arm-c4",
+   "verifier_arg": "C",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "d1c9c86904f925f7ddab08445e603de66c66c763ce0c60744578c829a77b91e0",
+    "checkpoint.py": "194b007aef20a2beb9de229697e18f963744e484673723edf4518ee18d434ecc",
+    "input.dat": "6cbdba3f32f13943515e2116da659eb5b917d066c2e8adb671c5f6f12a99e1ed",
+    "run_state.json": "bdcf1d6aa24960f6941fe49d613c809c0115680b66b2d70219654d9ab7840ea4",
+    "summary.md": "0538ceb3fff84e751b2a35201fc0af9e03e507d64ded6fb02258c5099391c6ff"
+   }
+  },
+  "arm-c5": {
+   "submission_dir": "arms/arm-c5",
+   "verifier_arg": "C",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "d1c9c86904f925f7ddab08445e603de66c66c763ce0c60744578c829a77b91e0",
+    "checkpoint.py": "271b4c039cc6a5f89518ef4fa576d95a18e1b0b7b5ac9d4d97655c7e762f52a7",
+    "input.dat": "6cbdba3f32f13943515e2116da659eb5b917d066c2e8adb671c5f6f12a99e1ed",
+    "run_state.json": "3e632264e56bf06b0b37ac7cf63b75a95fe51d1a2859bb553313e0afe72f97f9",
+    "summary.md": "cbc6225bb6930c4365fa43f146f78951410169df63aa14795bd5e2b91bc52c4b"
+   }
+  }
+ }
+}
