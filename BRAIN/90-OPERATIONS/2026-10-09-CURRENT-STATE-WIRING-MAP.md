@@ -83,7 +83,7 @@ No policies were returned for those three tables. These tables may be exposed to
 ## Source/runtime parity and open work
 
 - PR #2037 is still a draft and its base SHA is `1d73652231ac6127806640af5a31eb516c60738d`, behind the inspected current main `527ebcfbc04896c3a6beee127757785597e0713a`. Do not treat that draft as the current deployed truth without refreshing/reconciling it.
-- PR #2012 (GitHub projection 403 diagnostic) is still draft/unmerged, but the live deployed `nayanet-github-dispatch` version 36 exactly matches that PR branch's current `index.ts` bytes (`a73634296d098a2f171d467e77cd53fabcba74cc`); current `main` does not. This is a production-ahead-of-main parity/governance discrepancy, not an undeployed diagnostic. Reconcile the draft branch with main through review before further edits to this function.
+- PR #2012 (GitHub projection 403 diagnostic) is still draft/unmerged, but the live deployed `nayanet-github-dispatch` version 36 exactly matches PR #2012 branch head `fce8d1eb8c17e8a732f1d00eaaca25400b4fd81f` at the function-source level (the `index.ts` blob SHA is `a73634296d098a2f171d467e77cd53fabcba74cc`); current `main` does not. This is a production-ahead-of-main parity/governance discrepancy, not an undeployed diagnostic. Reconcile the draft branch with main through review before further edits to this function.
 - The canonical activation plan marks production deployment of mismatched Edge Function bytes as a human gate. No production deployment is authorized by this diagnostic.
 
 ## Ordered closure queue — assemble before full end-to-end experiment
