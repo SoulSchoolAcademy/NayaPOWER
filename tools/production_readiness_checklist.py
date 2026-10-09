@@ -290,24 +290,95 @@ def _is_strict_ancestor_of_tip(full_sha: str) -> bool | None:
     return git(["merge-base", "--is-ancestor", full_sha, tip]) is not None
 
 
+def _is_strict_ancestor_of_tip_via_api(full_sha: str) -> bool | None:
+    """Server-side strict-ancestry check through the GitHub compare API.
+
+    Fallback for when the local clone cannot answer honestly (shallow clone
+    or unresolvable tip): GitHub's compare endpoint evaluates ancestry on
+    the full server-side history, which is immune to local shallow
+    boundaries. Comparing base=full_sha...head=tip, status 'ahead' with
+    behind_by == 0 means full_sha is a strict ancestor of the tip.
+    Returns None when the API is unreachable or the comparison cannot be
+    evaluated — callers keep treating None as 'unknown', never as evidence
+    of a race.
+    """
+    if not full_sha or not SHA_RE.match(full_sha):
+        return None
+    ref = gh_get(f"/repos/{REPO}/git/refs/heads/main")
+    tip = (ref.get("object") or {}).get("sha") if isinstance(ref, dict) else None
+    if not tip or not SHA_RE.match(tip):
+        return None
+    if tip == full_sha:
+        return False
+    cmp_ = gh_get(f"/repos/{REPO}/compare/{full_sha}...{tip}")
+    if not isinstance(cmp_, dict):
+        return None
+    if cmp_.get("status") == "ahead" and cmp_.get("behind_by") == 0:
+        return True
+    if cmp_.get("status") in ("behind", "identical", "diverged"):
+        return False
+    return None
+
+
+def _receipt_artifacts_for_run(run_id: int | None) -> list[str] | None:
+    """Non-expired artifact names on a workflow run.
+
+    None when the API is unreachable — recorded honestly, never guessed.
+    Used to verify whether a superseded-tip race left a durable failure
+    receipt instead of asserting it from an older workflow version.
+    """
+    if not run_id:
+        return None
+    data = gh_get(f"/repos/{REPO}/actions/runs/{run_id}/artifacts?per_page=20")
+    if not isinstance(data, dict):
+        return None
+    return [a.get("name") for a in data.get("artifacts", []) or []
+            if not a.get("expired")]
+
+
+def _race_receipt_note(races: list[dict]) -> str:
+    """Human sentence describing the verified receipt state of race runs."""
+    notes = []
+    for f in races:
+        rid = f.get("run_id")
+        arts = f.get("receipt_artifacts")
+        if arts is None:
+            notes.append(f"run {rid}: failure-receipt state unreadable (API)")
+        elif arts:
+            notes.append(f"run {rid}: failure receipt present "
+                         f"({', '.join(arts)})")
+        else:
+            notes.append(f"run {rid}: no failure-receipt artifact found")
+    return "Race receipt state: " + ("; ".join(notes) if notes else "no races") + "."
+
+
 def _race_failures(failures: list[dict]) -> list[dict]:
     """Failures matching the superseded-tip race signature.
 
     Signature: the ONLY failing step is 'Resolve standing authorization mode'
     AND the run's head SHA is a strict ancestor of the current origin/main
-    tip — i.e. main moved between the push event and the runner's tip-currency
-    check, so the run was superseded by a newer push. A benign supersede, not
-    a broken deploy path. Repair-relevant side effect, recorded for the repair
-    lane: the failure-receipt step is skipped on this path (its `if:` requires
-    the standing-policy step's outputs), so the run leaves no durable failure
-    receipt — the failure is silent in the records.
+    tip (verified locally, or via the GitHub compare API when the local
+    clone cannot answer honestly — e.g. a shallow clone) — i.e. main moved
+    between the push event and the runner's tip-currency check, so the run
+    was superseded by a newer push. A benign supersede, not a broken deploy
+    path. For each race run the instrument verifies (never assumes) whether
+    a failure-receipt artifact exists, so repair-lane notes stay factual
+    across workflow versions.
     """
     out = []
     for f in failures:
         steps = f.get("failing_steps") or []
         if steps != [RACE_STEP_NAME]:
             continue
-        if _is_strict_ancestor_of_tip(f.get("head_sha_full") or ""):
+        verdict = _is_strict_ancestor_of_tip(f.get("head_sha_full") or "")
+        if verdict is None:
+            # Local clone cannot answer honestly (shallow or unresolvable
+            # tip): ask the server instead. None stays 'unknown', never
+            # evidence of a race.
+            verdict = _is_strict_ancestor_of_tip_via_api(
+                f.get("head_sha_full") or "")
+        if verdict:
+            f["receipt_artifacts"] = _receipt_artifacts_for_run(f.get("run_id"))
             out.append(f)
     return out
 
@@ -336,6 +407,7 @@ def classify_promotion_failures(failures: list[dict], ci_status: dict) -> dict:
                        and any("standing policy" in (st or "").lower()
                                for st in f.get("failing_steps", [])))
     explained = policy_trips + len(races)
+    receipt_note = _race_receipt_note(races)
     evidence = {"policy_step_trips": policy_trips,
                 "failures_examined": len(failures),
                 "required_ci_failing": ci_failing,
@@ -343,15 +415,14 @@ def classify_promotion_failures(failures: list[dict], ci_status: dict) -> dict:
                 "superseded_tip_race": {
                     "count": len(races),
                     "run_ids": sorted(race_ids),
+                    "receipt_artifacts": {f.get("run_id"): f.get("receipt_artifacts")
+                                          for f in races},
                     "detail": ("run failed only at 'Resolve standing authorization "
                                "mode' while its head SHA is a strict ancestor of "
                                "current origin/main: main moved between the push "
                                "event and the runner's tip-currency check. Benign "
                                "supersede — the newer push's run owns promotion. "
-                               "Side effect: the failure-receipt step is skipped "
-                               "on this path (its `if:` requires standing-policy "
-                               "outputs), so the run leaves no durable failure "
-                               "receipt."),
+                               + receipt_note),
                 }}
     if not failures:
         return {"classification": "NONE", "detail": "no failures", **evidence}
@@ -362,8 +433,7 @@ def classify_promotion_failures(failures: list[dict], ci_status: dict) -> dict:
                            f"(run(s) {ids}): main moved after the push event, "
                            "so the authorization-mode step's tip-currency check "
                            "refused a stale SHA. Benign — the newer push's run "
-                           "supersedes it. Note: no failure receipt was written "
-                           "for these runs (receipt step skipped on this path)."),
+                           "supersedes it. " + receipt_note),
                 **evidence}
     if ci_failing and explained == len(failures):
         jobs = {w: (ci_status[w].get("failed_jobs") or []) for w in ci_failing}
@@ -378,7 +448,7 @@ def classify_promotion_failures(failures: list[dict], ci_status: dict) -> dict:
             ids = ", ".join(str(i) for i in sorted(race_ids))
             detail += (f" Plus {len(races)} superseded-tip race failure(s) "
                        f"(run(s) {ids}): main moved after the push event — "
-                       "benign, no failure receipt written; see evidence.")
+                       f"benign. {receipt_note}")
         return {"classification": "FAIL_CLOSED_BY_DESIGN", "detail": detail,
                 **evidence}
     if ci_unknown and policy_trips:
