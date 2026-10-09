@@ -31,15 +31,24 @@ def _object(value: Any) -> bool:
     return isinstance(value, dict)
 
 
-def assess_assembly(manifest: Any, source_sha: str) -> AssemblyVerdict:
-    """Only an exact-SHA, evidence-backed all-PROVEN manifest can arm E2E work."""
+def assess_assembly(manifest: Any, source_sha: str, *, changed_paths: list[str] | tuple[str, ...] = (), verified_is_ancestor: bool = True) -> AssemblyVerdict:
+    """Only an evidence-backed manifest for unchanged verified code can arm E2E work."""
     blockers: list[str] = []
     if not _object(manifest):
         return AssemblyVerdict(False, ("ASSEMBLY_MANIFEST_MUST_BE_OBJECT",))
     if manifest.get("schema") != "naya.learning-engine-assembly-gate.v1":
         blockers.append("ASSEMBLY_SCHEMA_MISMATCH")
-    if manifest.get("source_main_sha") != source_sha:
-        blockers.append("ASSEMBLY_SOURCE_SHA_MISMATCH")
+    verified_sha = manifest.get("verified_source_sha")
+    if not isinstance(verified_sha, str) or re.fullmatch(r"[0-9a-f]{40}", verified_sha) is None:
+        blockers.append("VERIFIED_SOURCE_SHA_INVALID")
+    if not isinstance(source_sha, str) or re.fullmatch(r"[0-9a-f]{40}", source_sha) is None:
+        blockers.append("RUN_SOURCE_SHA_INVALID")
+    if not verified_is_ancestor:
+        blockers.append("VERIFIED_SOURCE_NOT_ANCESTOR")
+    allowed_delta = {"BRAIN/03-KERNEL/ASSEMBLY-STATUS.json"}
+    unexpected_delta = sorted(set(changed_paths) - allowed_delta)
+    if unexpected_delta:
+        blockers.append("CODE_CHANGED_AFTER_ASSEMBLY_PROOF:" + ",".join(unexpected_delta))
     if manifest.get("status") != "READY_FOR_END_TO_END":
         blockers.append(f"ASSEMBLY_STATUS_NOT_READY:{manifest.get('status')!r}")
 
@@ -71,7 +80,7 @@ def assess_assembly(manifest: Any, source_sha: str) -> AssemblyVerdict:
             if not _object(receipt):
                 blockers.append(f"INVALID_EVIDENCE_OBJECT:{cid}:{index}")
                 continue
-            if receipt.get("source_sha") != source_sha:
+            if receipt.get("source_sha") != verified_sha:
                 blockers.append(f"EVIDENCE_SOURCE_SHA_MISMATCH:{cid}:{index}")
             if not isinstance(receipt.get("independent_verifier"), str) or not receipt["independent_verifier"].strip():
                 blockers.append(f"INDEPENDENT_VERIFIER_REQUIRED:{cid}:{index}")
@@ -97,13 +106,19 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--manifest", required=True)
     parser.add_argument("--source-sha", required=True)
+    parser.add_argument("--verified-is-ancestor", choices=("true", "false"), required=True)
+    parser.add_argument("--changed-paths", default="")
     parser.add_argument("--github-output", required=True)
     args = parser.parse_args()
     blockers: tuple[str, ...]
     try:
         with open(args.manifest, encoding="utf-8") as f:
             manifest = json.load(f)
-        verdict = assess_assembly(manifest, args.source_sha)
+        changed_paths = [line.strip() for line in args.changed_paths.splitlines() if line.strip()]
+        verdict = assess_assembly(
+            manifest, args.source_sha, changed_paths=changed_paths,
+            verified_is_ancestor=args.verified_is_ancestor == "true",
+        )
         ready, blockers = verdict.ready, verdict.blockers
     except (OSError, ValueError, TypeError) as exc:
         ready = False
