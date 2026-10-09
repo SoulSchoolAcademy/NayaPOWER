@@ -25,13 +25,14 @@ refused with PLAN_SAFETY_PROHIBITED. NEEDS_AUTHORITY routing continues to
 be governed by the LAW authority record (the LAW node's seam, not this
 one): this seam enforces the harm hard stops, nothing else is weakened.
 
-Phase 2 (EXECUTE): live LAW authority is re-resolved BEFORE execution
-(SN-0493: decisions expire when the tip moves; the ACT contract requires
-rereading live authority even when the LAW receipt remains fresh). Any
-missing, malformed, future-dated, stale, or expired authority fails closed
-with an EXECUTION_REFUSED receipt — nothing executes. An injected executor
-performs the action; the pipeline records execution state throughout and
-emits the final receipt.
+Phase 2 (EXECUTE): the plan's own freshness is checked first (SN-0493:
+decisions expire when the tip moves — a stale plan's safety inputs would
+launder stale facts through the re-gate), then live LAW authority is
+re-resolved BEFORE execution. Any missing, malformed, future-dated,
+stale, or expired authority fails closed with an EXECUTION_REFUSED
+receipt — nothing executes. An injected executor performs the action;
+the pipeline records execution state throughout and emits the final
+receipt.
 
 Executor claims are NEVER trusted as verification: the receipt records the
 executor's claim and the observed outcome separately, and truth_state stays
@@ -61,6 +62,13 @@ from kernel.value_calculus import (
 
 # Canonical max LAW age for consequential AI actions (DOOR-AI, registry V1).
 MAX_LAW_AGE_SECONDS = 900
+# Max plan age at execution. A plan is a decision, and SN-0493 says
+# decisions expire when the tip moves: the plan's safety inputs (candidate
+# flags, tails, stakeholder harms) are captured at plan time, and the
+# execution-time do-no-harm re-gate re-verifies THOSE inputs. A stale plan
+# would launder stale safety facts through the last-responsible-moment
+# check, so a stale plan must be re-planned, never executed.
+MAX_PLAN_AGE_SECONDS = 900
 
 # Execution refusal codes (fail-closed).
 LAW_RECEIPT_TIME_INVALID = "LAW_RECEIPT_TIME_INVALID"
@@ -74,6 +82,8 @@ PLAN_OUTCOME_UNDEFINED = "PLAN_OUTCOME_UNDEFINED"
 PLAN_PROOF_UNDEFINED = "PLAN_PROOF_UNDEFINED"
 PLAN_CANDIDATE_MISMATCH = "PLAN_CANDIDATE_MISMATCH"
 PLAN_SAFETY_PROHIBITED = "PLAN_SAFETY_PROHIBITED"
+# Plan-freshness refusal: the plan itself expired before execution.
+PLAN_STALE = "PLAN_STALE"
 
 _REVERSIBLE_VALUES = ("REVERSIBLE", "IRREVERSIBLE", "UNKNOWN")
 _STAKE_ORDER = {"low": 0, "medium": 1, "high": 2}
@@ -191,6 +201,21 @@ def _validate_law_time(authority: LawAuthority, now: float,
             return (LAW_AUTHORITY_EXPIRED,)
     if now - decided > max_law_age_seconds:
         return (LAW_AUTHORITY_STALE,)
+    return ()
+
+
+def _validate_plan_freshness(plan: ActionPlan, now: float,
+                             max_plan_age_seconds: float) -> tuple[str, ...]:
+    """Fail-closed plan-freshness check. A plan whose decision is older
+    than the TTL — or whose planned_at is missing, non-numeric, or
+    future-dated — is stale: it must be re-planned, never executed."""
+    planned = plan.planned_at
+    if planned is None or not isinstance(planned, (int, float)):
+        return (PLAN_STALE,)
+    if planned > now:
+        return (PLAN_STALE,)
+    if now - planned > max_plan_age_seconds:
+        return (PLAN_STALE,)
     return ()
 
 
@@ -325,10 +350,17 @@ def execute_plan(plan: ActionPlan,
                  now: float,
                  profile: QualityProfile,
                  max_law_age_seconds: float = MAX_LAW_AGE_SECONDS,
+                 max_plan_age_seconds: float = MAX_PLAN_AGE_SECONDS,
                  ledger: ReceiptLedger | None = None,
                  risk_policy: RiskPolicy | None = None) -> ActionReceipt:
-    """Phase 2: re-resolve live LAW authority, re-verify the do-no-harm gate,
-    then execute.
+    """Phase 2: check plan freshness, re-resolve live LAW authority, re-verify
+    the do-no-harm gate, then execute.
+
+    Plan freshness comes first: the plan is a decision and SN-0493 says
+    decisions expire when the tip moves. Its safety inputs were captured at
+    plan time, and the execution re-gate re-verifies those inputs — so a
+    stale plan (or a missing, malformed, or future-dated planned_at) is
+    refused with PLAN_STALE and must be re-planned. The executor never fires.
 
     re_resolve must return a FRESH LawAuthority read at execution time
     (SN-0493). If it returns None, or the fresh authority fails any time
@@ -369,6 +401,23 @@ def execute_plan(plan: ActionPlan,
             codes=codes,
             expected_outcome=plan.chosen.expected_outcome,
         ))
+
+    # --- Plan-freshness gate (safety floor). Fails closed: missing,
+    # non-numeric, future-dated, or over-TTL planned_at refuses the plan —
+    # re-plan instead of executing. Checked before LAW re-resolution: no
+    # point consulting authority for a decision that has already expired.
+    plan_time_codes = _validate_plan_freshness(plan, now, max_plan_age_seconds)
+    if plan_time_codes:
+        planned = plan.planned_at
+        age = (f"{now - planned:.0f}s" if isinstance(planned, (int, float))
+               and planned <= now else "unverifiable")
+        return refused(
+            PLAN_STALE,
+            evidence=f"plan age {age} exceeds max plan age "
+                     f"{max_plan_age_seconds:.0f}s (SN-0493: decisions expire "
+                     f"when the tip moves); stale safety inputs would launder "
+                     f"through the execution re-gate — re-plan, do not execute",
+        )
 
     fresh = re_resolve()
     if fresh is None:
