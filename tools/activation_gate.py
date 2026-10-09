@@ -1,56 +1,91 @@
 #!/usr/bin/env python3
 """
-Unified Activation Gate — ONE receipt schema, ONE protected truth provider.
+Unified Activation Gate — ROUND 2. ONE receipt schema, ONE protected truth
+provider, ONE locked door.
 
-Unification (Naya 1, 2026-10-09): the activation lane had three checkers
-drifting apart — PR #1979 `drink_first_gate.py` (v1 schema, six fail-open
-defects), PR #1974 `activation_receipt_consistency.mjs` (v2 QA falsifier,
-JS), and `tools/design_gate.py::check_activation` (structural layer).
-This module is the single pre-delivery enforcement point:
+Round-1 (branch naya5/unified-activation-gate) was independently attacked:
+verdict STILL-LEAKING, 5.5/10. Four reproduced bypasses, all closed here:
 
-  ONE schema ........... naya.activation.receipt.v2 (v1 is retired)
-  ONE truth provider ... resolve_truth(): the protected runner resolves
-                         repository, current main SHA, and canonical source
-                         fingerprints ITSELF from the runner context and the
-                         live GitHub API. No caller flag may supply truth.
-  ONE predicate ........ check(): pure function, no I/O, no network.
+  BYPASS 1 (ROW 8 — the gate guarded nothing): the CI workflow's `paths:`
+      filter meant deliverable PRs avoiding 3 files never triggered it, and
+      no required status check existed. CLOSED: new workflow
+      `.github/workflows/activation-delivery-gate.yml` runs on
+      `pull_request_target` for PRs to main touching deliverable paths, and
+      the delivery job fails closed when a changed deliverable has no valid
+      bound receipt. (Marking the check *required* in branch protection is an
+      authority change — needs Shawn/admin; named in the report, not done
+      silently.)
+  BYPASS 2 (PR-EDITABLE TRUST ROOT): `resolve_truth()` read
+      GITHUB_REPOSITORY from a plain env var (proven: it queried
+      `evil-corp/stolen-repo`), and `pull_request` + PR-supplied code meant
+      the gate ran the PR's own judge. CLOSED: repository identity now comes
+      from the runner-written event payload (GITHUB_EVENT_PATH), cross-
+      checked against the GITHUB_REPOSITORY env — any disagreement fails
+      closed. The delivery workflow is `pull_request_target`: the workflow
+      file and the gate code come from BASE, never from the PR. The PR's
+      bytes are data, verified, never executed as the judge.
+  BYPASS 3 (ROW 7 — freestyle component): an undocumented component class +
+      freestyle CSS passed with a valid receipt. The component closed-world
+      belongs to design_gate.py (PR #1996, not merged yet). INTERIM
+      ENFORCEMENT here, same semantics as that lane (Naya-prefixed classes
+      must be registered in the shipped manifest), marked INTERIM-ROW7 and
+      slated for deletion when PR #1996 merges. Named honestly in the
+      report; pure-CSS freestyle with no component class remains that
+      lane's full structural check.
+  BYPASS 4 (RECEIPT TRANSPLANT): a receipt minted for one job shipped a
+      different deliverable — job/proof_plan/session_id were unchecked free
+      text. CLOSED: the receipt must bind every deliverable it covers via
+      `deliverables: [{path, sha256}]`, and the gate recomputes the hash
+      from the actual bytes. A receipt minted for page A cannot ship page B.
+      job/proof_plan/session_id remain descriptive claims about the
+      activation session — the ENFORCED binding is the deliverable hash.
 
-ROUND-2 HARDENING (independent attack, 2026-10-09 — four bypasses closed):
-  1. THE GATE GUARDED NOTHING. The CI workflow trigger was avoidable by
-     path and no required status check existed. The workflow now triggers
-     on EVERY pull_request_target to main (no paths filter) and every push
-     to main. The required status check is documented as the authority
-     step needing Shawn's word — until it is set, the gate says so.
-  2. PR-EDITABLE TRUST ROOT. resolve_truth() read GITHUB_REPOSITORY from a
-     plain env var and the workflow executed the PR's own gate code — the
-     builder graded their own exam. Now: the repository identity is read
-     from the runner-written event payload (GITHUB_EVENT_PATH) and
-     cross-checked against the env; ANY disagreement refuses. The CI
-     workflow runs on pull_request_target (workflow + gate code pinned to
-     the BASE ref; the PR's code is checked out separately and only ever
-     READ as text, never executed).
-  3. UNDOCUMENTED COMPONENTS PASSED SILENTLY. The gate now
-     delegates-and-verifies: in protected mode it runs the design gate
-     (tools/design_gate.py) resolved from the PROTECTED base ref against
-     the deliverable and folds its verdict in. If the design gate is
-     absent from the base ref, the verdict is BLOCKED-DESIGN-GATE-ABSENT
-     — never a silent PASS. No pass-through, ever.
-  4. RECEIPT TRANSPLANT. A receipt for one job could ship another
-     deliverable. The receipt is now bound to the deliverable:
-     deliverable_sha256 (sha256 of the canonical deliverable bytes, marker
-     stripped) is REQUIRED for PASS, and when the runner supplies the
-     delivery job context, receipt.job must match it exactly.
+  PLUS: local-mode label `CANDIDATE-LOCAL-PASS` contained the substring
+      "PASS" and exited 0. CLOSED: local verdicts are
+      `LOCAL-REHEARSAL-UNVERIFIED` / `LOCAL-REHEARSAL-REJECTED` (no "PASS"
+      substring anywhere) and local mode ALWAYS exits 3 — distinct from
+      0=PASS, 1=REJECT, 2=tool error.
 
 ARCHITECTURAL LAW (non-negotiable): a builder cannot establish authenticity
 by writing a plausible JSON file. Any input the builder supplies about the
 truth being checked is untrusted by construction. In protected mode the only
-trusted inputs are the runner context (event payload + GITHUB_TOKEN) and the
-live GitHub API. A self-served truth (--mode local) can never produce a
-PASS verdict — only honestly labeled CANDIDATE-LOCAL-* verdicts.
+trusted inputs are the runner context (the runner-written event payload +
+GITHUB_TOKEN) and the live GitHub API. A self-served truth (--mode local)
+can never produce a PASS verdict — only an honestly labeled
+LOCAL-REHEARSAL-* verdict with a distinct exit code.
 
-Verdicts: PASS | REJECT | BLOCKED-DESIGN-GATE-ABSENT | TOOL-ERROR.
-Local-mode verdicts never contain the substring "PASS".
-Exit codes: 0 = PASS and ONLY PASS | 1 = any non-PASS verdict | 2 = tool error.
+Binding design (no circularity): the deliverable cites the receipt with
+  <!-- NAYA-ACTIVATION-RECEIPT-SHA256:<64hex> -->
+where <64hex> = sha256 of the EXACT receipt bytes. The receipt binds the
+deliverable with deliverables[].sha256 = sha256 of the deliverable bytes
+with ALL citation-marker comments stripped (canonical form). Mint order:
+page -> hash -> receipt -> insert marker. The gate strips markers before
+hashing, so minting converges in one pass.
+
+Acceptance table (every row must hold in real CI):
+  authentic fresh receipt, exact repo, full current main SHA,
+    bound deliverable .............................. PASS
+  fabricated / self-asserted receipt .............. REJECT
+  stale activation / changed commit (tip moved) ... REJECT
+  wrong repository identity ...................... REJECT
+  env-tampered repository (event payload wins) .... TOOL-ERROR (fail closed)
+  missing / abbreviated / mismatched commit SHA .. REJECT
+  missing / tampered receipt ..................... REJECT
+  transplanted receipt (wrong deliverable) ....... REJECT
+  unregistered component class (interim row 7) ... REJECT
+  expired / future activation .................... REJECT
+  alternate route bypassing the gate ............. LOCAL-REHEARSAL-*, never
+      PASS, exit 3 (self-minted truth yields no passing verdict)
+
+Closed-world source rule: receipt.loaded must be an object whose keys are
+EXACTLY the CANONICAL_SOURCES registry below, each a 40-hex blob SHA equal
+to the blob's SHA in the live main tree. A new source is not a new key in a
+receipt — it is a code change to CANONICAL_SOURCES plus its contract, or CI
+fails.
+
+Exit codes: 0 = PASS (protected) | 1 = REJECT | 2 = tool error
+(including "cannot resolve trusted truth" — fail closed) |
+3 = local rehearsal (never a pass, never confusable with one).
 """
 
 import argparse
@@ -58,7 +93,6 @@ import hashlib
 import json
 import os
 import re
-import subprocess
 import sys
 import urllib.request
 import urllib.error
@@ -74,13 +108,31 @@ RECEIPT_MARKER_RE = re.compile(
     r"<!--\s*NAYA-ACTIVATION-RECEIPT-SHA256:([a-fA-F0-9]{64})\s*-->")
 
 # Closed-world registry of canonical activation sources.
+# Logical name -> path in the repository at main. The protected runner binds
+# each to its live blob SHA; the receipt must cite exactly these.
 CANONICAL_SOURCES = {
     "design_contract": "BRAIN/10-INTERFACES/NAYA-DESIGN-CONTRACT-V1.md",
     "blocks_catalog": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/index.json",
 }
 
+# Deliverable scope: what the delivery gate guards. A file is a deliverable
+# when it lives under a DELIVERABLE_ROOT or its name ends with a
+# DELIVERABLE_SUFFIX. The workflow's paths: filter mirrors this list.
+DELIVERABLE_ROOTS = ("smart-blocks/",)
+DELIVERABLE_SUFFIXES = (".html",)
+
+# Conventional receipt location inside the PR head (untrusted bytes —
+# content is fully verified; the path is just where the gate looks).
+RECEIPT_PATH = ".naya/activation/receipt.json"
+
 IDENTITY_FIELDS = ("session_id", "naya_identity", "human_authority",
                    "repository", "job", "proof_plan")
+
+# INTERIM-ROW7: component-class closed-world. These prefixes and the
+# registered-class rule mirror design_gate.py::check_no_freestyle
+# (PR #1996, branch naya5/ship-design-gate). When that lane merges, this
+# interim check is DELETED and the design gate owns row 7 outright.
+COMPONENT_PREFIXES = ("naya-", "board", "orb-", "lv-", "torb", "gem-")
 
 API_HOST = "https://api.github.com"
 
@@ -91,36 +143,57 @@ def _normalize_repo(name):
     return name.strip().lower().rstrip("/")
 
 
-def canonical_deliverable_bytes(deliverable_text):
-    """Bytes the receipt's deliverable_sha256 binds to: the deliverable with
-    the receipt marker stripped (the marker cites the receipt, so it cannot
-    be part of what the receipt binds — otherwise minting is circular)."""
-    if not isinstance(deliverable_text, str):
-        return None
-    return RECEIPT_MARKER_RE.sub("", deliverable_text).encode("utf-8")
+def _safe_repo_path(p):
+    """Repo-relative, no absolute paths, no parent escapes."""
+    if not isinstance(p, str) or not p:
+        return False
+    if p.startswith("/") or p.startswith("\\"):
+        return False
+    parts = p.replace("\\", "/").split("/")
+    if any(part in ("", ".", "..") for part in parts):
+        return False
+    norm = "/".join(parts)
+    return norm == p
 
 
-def check(receipt_bytes, deliverable_text, truth, delivery=None):
-    """Pure predicate: (verdict, violations). No I/O, no network.
+def _is_deliverable(path):
+    if not isinstance(path, str):
+        return False
+    p = path.replace("\\", "/")
+    if any(p == r.rstrip("/") or p.startswith(r) for r in DELIVERABLE_ROOTS):
+        return True
+    return any(p.lower().endswith(s) for s in DELIVERABLE_SUFFIXES)
 
-    receipt_bytes .... exact bytes of the receipt file (digest-bound)
-    deliverable_text . text of the shipped artifact (must cite the receipt)
-    truth ............ {"repository", "main_sha", "source_blobs", "now"}
-    delivery ......... None, or {"job": str, "deliverable_sha256": str}
-                       supplied by the PROTECTED runner (never the builder).
-                       Binds the receipt to THIS deliverable: a receipt
-                       minted for another job/deliverable cannot PASS here.
-    """
+
+def _canonical_deliverable_bytes(raw):
+    """Deliverable bytes with ALL citation markers stripped — the canonical
+    form the receipt's deliverables[].sha256 binds. Lets minting converge
+    in one pass: page -> hash -> receipt -> insert marker."""
+    if isinstance(raw, (bytes, bytearray)):
+        text = bytes(raw).decode("utf-8", errors="replace")
+    else:
+        text = str(raw)
+    return RECEIPT_MARKER_RE.sub("", text).encode("utf-8")
+
+
+def _sha256_hex(data):
+    return hashlib.sha256(bytes(data)).hexdigest()
+
+
+def check_receipt(receipt_bytes, truth):
+    """Receipt-side predicate: (receipt_dict_or_None, verdict, violations).
+    Pure function, no I/O, no network. Covers everything except the
+    deliverable binding and citation (see check_deliverable_binding)."""
     violations = []
 
     if not isinstance(receipt_bytes, (bytes, bytearray)) or not receipt_bytes:
-        return "REJECT", ["RECEIPT_MISSING_OR_EMPTY"]
+        return None, "REJECT", ["RECEIPT_MISSING_OR_EMPTY"]
     try:
         receipt = json.loads(receipt_bytes)
     except (ValueError, UnicodeDecodeError) as e:
-        return "REJECT", ["RECEIPT_UNTAMPERED_UNREADABLE: %s" % e]
+        return None, "REJECT", ["RECEIPT_UNTAMPERED_UNREADABLE: %s" % e]
     if not isinstance(receipt, dict):
-        return "REJECT", ["RECEIPT_NOT_AN_OBJECT"]
+        return None, "REJECT", ["RECEIPT_NOT_AN_OBJECT"]
 
     # --- schema: one schema, v2 ---
     if receipt.get("schema") != SCHEMA:
@@ -137,7 +210,7 @@ def check(receipt_bytes, deliverable_text, truth, delivery=None):
     if not isinstance(gates, list) or not gates:
         violations.append("IDENTITY_INCOMPLETE: gates names no governing gates")
 
-    # --- trusted repository binding ---
+    # --- trusted repository binding (bypass 2) ---
     want_repo = _normalize_repo((truth or {}).get("repository", ""))
     got_repo = _normalize_repo(receipt.get("repository", ""))
     if not want_repo:
@@ -183,7 +256,7 @@ def check(receipt_bytes, deliverable_text, truth, delivery=None):
             elif claimed.lower() != trusted.lower():
                 violations.append("SOURCE_FINGERPRINT_MISMATCH: %s" % name)
 
-    # --- freshness: 4h TTL, no future ---
+    # --- freshness (4h TTL, no future) ---
     now = (truth or {}).get("now")
     if not isinstance(now, datetime):
         violations.append("TRUTH_UNTRUSTED: no trusted clock")
@@ -203,49 +276,231 @@ def check(receipt_bytes, deliverable_text, truth, delivery=None):
         elif now - activated > RECEIPT_TTL:
             violations.append("ACTIVATION_EXPIRED: older than %s" % RECEIPT_TTL)
 
-    # --- citation: always required, digest-bound to exact receipt bytes ---
-    digest = hashlib.sha256(bytes(receipt_bytes)).hexdigest()
-    if not isinstance(deliverable_text, str):
-        violations.append("CITATION_MISSING: no deliverable text to check")
+    # --- deliverables list shape (bypass 4: transplant defense) ---
+    dlist = receipt.get("deliverables")
+    if not isinstance(dlist, list) or not dlist:
+        violations.append("DELIVERABLES_UNBOUND: receipt names no bound "
+                          "deliverables (transplant risk)")
     else:
-        m = RECEIPT_MARKER_RE.search(deliverable_text)
-        if not m:
+        for i, entry in enumerate(dlist):
+            if not isinstance(entry, dict):
+                violations.append("DELIVERABLES_UNBOUND: entry %d not an object" % i)
+                continue
+            if not _safe_repo_path(entry.get("path")):
+                violations.append("DELIVERABLE_PATH_UNSAFE: entry %d path %r"
+                                  % (i, entry.get("path")))
+            if not isinstance(entry.get("sha256"), str) or not SHA64_RE.match(
+                    entry.get("sha256", "")):
+                violations.append("DELIVERABLE_SHA_MALFORMED: entry %d" % i)
+
+    if violations:
+        return receipt, "REJECT", violations
+    return receipt, "PASS", []
+
+
+def check_deliverable_binding(receipt_bytes, receipt, deliverable_bytes):
+    """Two-way binding for ONE presented deliverable. Returns violations.
+
+    deliverable -> receipt: the citation marker must equal sha256 of the
+        EXACT receipt bytes (stale/forged citation impossible).
+    receipt -> deliverable: some deliverables[] entry must equal sha256 of
+        the canonical (marker-stripped) deliverable bytes — a receipt minted
+        for page A cannot ship page B (transplant impossible).
+    """
+    violations = []
+    if receipt is None:
+        return ["RECEIPT_MISSING_OR_EMPTY"]
+    if not isinstance(deliverable_bytes, (bytes, bytearray)):
+        return ["CITATION_MISSING: no deliverable bytes to check"]
+
+    digest = _sha256_hex(receipt_bytes)
+    text = bytes(deliverable_bytes).decode("utf-8", errors="replace")
+    m = RECEIPT_MARKER_RE.search(text)
+    if not m:
+        violations.append(
+            "CITATION_MISSING: deliverable carries no "
+            "<!-- NAYA-ACTIVATION-RECEIPT-SHA256:<64hex> --> marker")
+    elif m.group(1).lower() != digest:
+        violations.append(
+            "CITATION_DIGEST_MISMATCH: marker does not match sha256 of "
+            "the exact receipt bytes (stale or forged citation)")
+
+    dhash = _sha256_hex(_canonical_deliverable_bytes(deliverable_bytes))
+    bound = False
+    for entry in receipt.get("deliverables") or []:
+        if isinstance(entry, dict) and isinstance(entry.get("sha256"), str) \
+                and entry["sha256"].lower() == dhash:
+            bound = True
+            break
+    if not bound:
+        violations.append(
+            "DELIVERABLE_BINDING_MISMATCH: no deliverables[] entry matches "
+            "sha256 of the presented deliverable — receipt was minted for "
+            "different bytes (transplant)")
+    return violations
+
+
+def check(receipt_bytes, deliverable_text, truth):
+    """Pure predicate: (verdict, violations). No I/O, no network.
+
+    receipt_bytes .... exact bytes of the receipt file (digest-bound)
+    deliverable_text . bytes or text of the shipped artifact
+    truth ............ {"repository", "main_sha", "source_blobs", "now"}
+    """
+    receipt, verdict, violations = check_receipt(receipt_bytes, truth)
+    if verdict == "REJECT" and receipt is None:
+        return verdict, violations
+    if isinstance(deliverable_text, str):
+        deliverable_bytes = deliverable_text.encode("utf-8", errors="replace")
+    else:
+        deliverable_bytes = deliverable_text
+    violations = violations + check_deliverable_binding(
+        receipt_bytes, receipt, deliverable_bytes)
+    if violations:
+        return "REJECT", violations
+    return "PASS", []
+
+
+# ---------------------------------------------------------------------------
+# INTERIM-ROW7: component-class closed-world (mirrors design_gate.py).
+# DELETE when PR #1996 (naya5/ship-design-gate) merges — that lane owns row 7.
+# ---------------------------------------------------------------------------
+
+def manifest_known_classes(pr_head_dir):
+    """Classes registered in the shipped manifest: canonical CSS classes +
+    block css_classes + block snippet classes. Raises RuntimeError when the
+    manifest is absent — fail closed, never fail open."""
+    base = os.path.join(pr_head_dir, "smart-blocks")
+    mf = os.path.join(base, "manifest.json")
+    if not os.path.isfile(mf):
+        raise RuntimeError("INTERIM-ROW7: design manifest not found at %s — "
+                           "component closed-world unverifiable, refusing" % mf)
+    with open(mf, encoding="utf-8") as f:
+        data = json.load(f)
+    known = set()
+    css_files = []
+    for root, _dirs, files in os.walk(base):
+        for fn in files:
+            if fn.endswith(".css"):
+                css_files.append(os.path.join(root, fn))
+    for cssf in css_files:
+        with open(cssf, encoding="utf-8", errors="replace") as f:
+            css = f.read()
+        for m in re.finditer(r"\.([a-zA-Z0-9_-]+)", css):
+            if m.group(1).startswith(COMPONENT_PREFIXES):
+                known.add(m.group(1))
+    for b in data.get("blocks", []):
+        for c in b.get("css_classes", []):
+            for part in re.split(r"[/,]", c):
+                known.update(re.findall(r"\.([a-zA-Z0-9_-]+)", part))
+        html_file = b.get("html_file", "")
+        if html_file:
+            snippet = os.path.join(base, b.get("category_id", ""),
+                                   os.path.basename(html_file))
+            if os.path.isfile(snippet):
+                with open(snippet, encoding="utf-8", errors="replace") as f:
+                    shtml = f.read()
+                for m in re.finditer(r"class=[\"']([^\"']+)[\"']", shtml):
+                    known.update(m.group(1).split())
+    known.add("naya-page")  # structural page root, not a component
+    return known
+
+
+def check_no_freestyle_component(html_text, known):
+    """INTERIM-ROW7: every component-prefixed class used must be registered.
+    Same rule as design_gate.py::check_no_freestyle (BEM/state suffixes of
+    known bases allowed)."""
+    violations = []
+    used = set()
+    for m in re.finditer(r"class=[\"']([^\"']+)[\"']", html_text):
+        used.update(m.group(1).split())
+    for cls in sorted(used):
+        if cls.startswith(COMPONENT_PREFIXES) and cls not in known:
+            base_name = cls.split("--")[0].split("__")[0]
+            if base_name not in known:
+                violations.append(
+                    "COMPONENT_NOT_REGISTERED: class `.%s` is not in the "
+                    "shipped manifest — use a canonical block or file the "
+                    "gap (interim row-7; design_gate.py owns this check)" % cls)
+    return violations
+
+
+def check_delivery(receipt_bytes, pr_head_dir, changed_files, truth):
+    """Delivery predicate for ONE pull request. Pure apart from reading the
+    PR-head files from disk (bytes the gate verifies, never trusts).
+
+    Every changed deliverable must be bound by the receipt (path + sha256
+    of PR-head bytes), cite the receipt (marker = sha256 of exact receipt
+    bytes), and — for HTML — use only registered component classes.
+    Returns (verdict, violations).
+    """
+    violations = []
+    receipt, verdict, v = check_receipt(receipt_bytes, truth)
+    violations.extend(v)
+    if receipt is None:
+        return "REJECT", violations
+
+    changed_deliverables = sorted(
+        {f for f in (changed_files or []) if _is_deliverable(f)})
+    if not changed_deliverables:
+        violations.append("DELIVERY_SCOPE_EMPTY: no changed deliverables — "
+                          "nothing for the gate to bind (fail closed)")
+        return "REJECT", violations
+
+    entries = {}
+    for entry in receipt.get("deliverables") or []:
+        if isinstance(entry, dict) and _safe_repo_path(entry.get("path")):
+            entries[entry["path"]] = entry.get("sha256", "")
+
+    for path in changed_deliverables:
+        if path not in entries:
             violations.append(
-                "CITATION_MISSING: deliverable carries no "
-                "<!-- NAYA-ACTIVATION-RECEIPT-SHA256:<64hex> --> marker")
+                "DELIVERABLE_NOT_BOUND: changed deliverable %r is not listed "
+                "in receipt.deliverables" % path)
+            continue
+        if not _safe_repo_path(path):
+            violations.append("DELIVERABLE_PATH_UNSAFE: %r" % path)
+            continue
+        disk_path = os.path.join(pr_head_dir, path)
+        if not os.path.isfile(disk_path):
+            violations.append("DELIVERABLE_MISSING: %r not found in PR head" % path)
+            continue
+        with open(disk_path, "rb") as f:
+            raw = f.read()
+        if _sha256_hex(_canonical_deliverable_bytes(raw)) != entries[path].lower():
+            violations.append(
+                "DELIVERABLE_BINDING_MISMATCH: PR-head bytes of %r do not "
+                "match the receipt's bound sha256 (transplant or drift)" % path)
+            continue
+        # citation: deliverable -> receipt
+        digest = _sha256_hex(receipt_bytes)
+        text = raw.decode("utf-8", errors="replace")
+        m = RECEIPT_MARKER_RE.search(text)
+        if not m:
+            violations.append("CITATION_MISSING: %r carries no receipt marker" % path)
         elif m.group(1).lower() != digest:
             violations.append(
-                "CITATION_DIGEST_MISMATCH: marker does not match sha256 of "
-                "the exact receipt bytes (stale or forged citation)")
-
-    # --- deliverable binding (round-2, hole 4: receipt transplant) ---
-    bound = receipt.get("deliverable_sha256", "")
-    if not isinstance(bound, str) or not SHA64_RE.match(bound):
-        violations.append(
-            "RECEIPT_UNBOUND: receipt carries no deliverable_sha256 binding — "
-            "an unbound receipt could be transplanted onto another deliverable")
-    else:
-        canon = canonical_deliverable_bytes(deliverable_text)
-        if canon is None:
-            violations.append("CITATION_MISSING: no deliverable text to bind")
-        elif hashlib.sha256(canon).hexdigest() != bound.lower():
-            violations.append(
-                "DELIVERABLE_DIGEST_MISMATCH: this receipt was minted for a "
-                "different deliverable (transplant rejected)")
-
-    # --- job binding (when the protected runner supplies delivery context) ---
-    if delivery is not None:
-        want_job = delivery.get("job")
-        if isinstance(want_job, str) and want_job:
-            if receipt.get("job") != want_job:
-                violations.append(
-                    "RECEIPT_JOB_MISMATCH: receipt job %r != delivery job %r"
-                    % (receipt.get("job"), want_job))
+                "CITATION_DIGEST_MISMATCH: %r marker does not match sha256 of "
+                "the exact receipt bytes" % path)
+        # INTERIM-ROW7: component closed-world for HTML deliverables
+        if path.lower().endswith(".html"):
+            try:
+                known = manifest_known_classes(pr_head_dir)
+            except RuntimeError as e:
+                violations.append("TRUTH_UNTRUSTED: %s" % e)
+            else:
+                violations.extend(
+                    "[%s] %s" % (path, x)
+                    for x in check_no_freestyle_component(text, known))
 
     if violations:
         return "REJECT", violations
     return "PASS", []
 
+
+# ---------------------------------------------------------------------------
+# Protected truth provider
+# ---------------------------------------------------------------------------
 
 def _api(method, path, token, body=None):
     req = urllib.request.Request(
@@ -263,52 +518,37 @@ def _api(method, path, token, body=None):
                            % (method, path, e.code, e.read().decode()[:300]))
 
 
-def _repo_from_event_payload():
-    """Repository identity from the runner-written event payload.
-
-    GITHUB_EVENT_PATH is written by the GitHub runner before any workflow
-    step executes. Under pull_request_target the workflow definition comes
-    from the BASE ref, so a PR cannot forge this file. Returns "" when the
-    payload is unavailable (local rehearsal)."""
-    path = os.environ.get("GITHUB_EVENT_PATH", "").strip()
-    if not path or not os.path.isfile(path):
-        return ""
-    try:
-        with open(path, encoding="utf-8") as f:
-            payload = json.load(f)
-        repo = ((payload.get("repository") or {}).get("full_name")) or ""
-        return repo.strip()
-    except (ValueError, OSError, AttributeError):
-        return ""
-
-
 def resolve_truth():
-    """Protected truth provider. Resolves repository identity, current main
-    SHA, and canonical source blob SHAs ITSELF. Raises on any failure —
-    the gate fails closed when trust cannot be established.
+    """Protected truth provider. Repository identity comes from the
+    RUNNER-WRITTEN event payload (GITHUB_EVENT_PATH) — never from a plain
+    env var a workflow step or a local shell could override (bypass 2:
+    the attacker set GITHUB_REPOSITORY=evil-corp/stolen-repo and the old
+    code obeyed). When the GITHUB_REPOSITORY env is present it must AGREE
+    with the event payload; any disagreement fails closed. Raises on any
+    failure — the gate fails closed when trust cannot be established.
 
-    Trust root (round-2, hole 2): the repository identity comes from the
-    RUNNER-WRITTEN EVENT PAYLOAD, cross-checked against GITHUB_REPOSITORY.
-    A step-level `env: GITHUB_REPOSITORY: evil/x` override — or any other
-    caller-supplied identity — is REFUSED. There is deliberately no flag,
+    Trusted inputs ONLY: the runner event payload + GITHUB_TOKEN from the
+    runner context, and the live GitHub API. There is deliberately no flag,
     env var, or file that lets the caller supply truth.
     """
-    payload_repo = _repo_from_event_payload()
+    event_path = os.environ.get("GITHUB_EVENT_PATH", "").strip()
+    if not event_path or not os.path.isfile(event_path):
+        raise RuntimeError("cannot establish trusted repository identity "
+                           "(no runner event context at GITHUB_EVENT_PATH) "
+                           "— refusing")
+    try:
+        with open(event_path, encoding="utf-8") as f:
+            event = json.load(f)
+    except (ValueError, OSError) as e:
+        raise RuntimeError("runner event payload unreadable (%s) — refusing" % e)
+    repo = (((event.get("repository") or {}).get("full_name")) or "").strip()
+    if not repo or "/" not in repo:
+        raise RuntimeError("runner event carries no repository identity — refusing")
     env_repo = os.environ.get("GITHUB_REPOSITORY", "").strip()
-    if not payload_repo:
-        # No runner-written event payload: there is no trusted identity
-        # source at all. GITHUB_REPOSITORY alone is builder-suppliable and
-        # therefore untrusted by construction. Fail closed; --mode local
-        # exists for rehearsal.
+    if env_repo and _normalize_repo(env_repo) != _normalize_repo(repo):
         raise RuntimeError(
-            "no runner event payload (GITHUB_EVENT_PATH) — protected mode "
-            "requires the CI runner context; refusing")
-    if env_repo and _normalize_repo(payload_repo) != _normalize_repo(env_repo):
-        raise RuntimeError(
-            "repository identity conflict: event payload says %r but "
-            "environment says %r — refusing (possible trust-root override)"
-            % (payload_repo, env_repo))
-    repo = payload_repo
+            "GITHUB_REPOSITORY %r disagrees with runner event payload %r — "
+            "the env var is caller-editable and untrusted, refusing" % (env_repo, repo))
     token = os.environ.get("GITHUB_TOKEN", "").strip()
     if not token:
         raise RuntimeError("cannot reach live state without GITHUB_TOKEN — refusing")
@@ -336,8 +576,26 @@ def resolve_truth():
             "source_blobs": blobs, "now": datetime.now(timezone.utc)}
 
 
+def pr_changed_files(repo, pr_number, token):
+    """Changed filenames of a PR, via the live API (trusted)."""
+    files = []
+    page = 1
+    while True:
+        batch = _api("GET", "/repos/%s/pulls/%s/files?per_page=100&page=%d"
+                     % (repo, pr_number, page), token)
+        if not batch:
+            break
+        files.extend(f.get("filename", "") for f in batch)
+        if len(batch) < 100:
+            break
+        page += 1
+        if page > 40:
+            raise RuntimeError("PR file list implausibly large — refusing")
+    return files
+
+
 def load_local_truth(path):
-    """Local rehearsal truth. The verdict is ALWAYS labeled CANDIDATE-LOCAL —
+    """Local rehearsal truth. The verdict is ALWAYS labeled LOCAL-REHEARSAL —
     a self-served truth can never produce PASS (architectural law)."""
     with open(path, encoding="utf-8") as f:
         data = json.load(f)
@@ -354,82 +612,46 @@ def load_local_truth(path):
             "now": now}
 
 
-def run_design_gate(deliverable_path, design_gate_path, manifest_path):
-    """Delegate-and-verify (round-2, hole 3): run the design gate resolved
-    from the PROTECTED base ref against the deliverable. Returns a list of
-    violation strings (empty = the design gate passed).
-
-    The design gate enforces the structural closed-world rule the unified
-    gate cannot see: no freestyle components, every Naya-prefixed class in
-    the manifest, black root, dark scheme, self-contained, mobile viewport.
-    """
-    if not design_gate_path or not os.path.isfile(design_gate_path):
-        return ["DESIGN_GATE_ABSENT"]
-    if not manifest_path or not os.path.isfile(manifest_path):
-        return ["DESIGN_GATE_ABSENT: manifest unavailable"]
-    try:
-        p = subprocess.run(
-            [sys.executable, design_gate_path, deliverable_path,
-             manifest_path],
-            capture_output=True, text=True, timeout=120)
-    except (OSError, subprocess.SubprocessError) as e:
-        return ["DESIGN_GATE_TOOL_ERROR: %s" % e]
-    if p.returncode == 0:
-        return []
-    violations = []
-    for line in (p.stdout + "\n" + p.stderr).splitlines():
-        line = line.strip()
-        if not line:
-            continue
-        # design_gate prints "  ✕ <VIOLATION>" lines; keep them verbatim.
-        if "✕" in line:
-            violations.append("DESIGN_GATE: " + line.split("✕", 1)[1].strip())
-    if not violations:
-        violations.append("DESIGN_GATE: failed with exit %d (no parsed "
-                          "violations)" % p.returncode)
-    return violations
-
-
-def default_design_gate_paths():
-    """Design gate + manifest resolved from the PROTECTED ref.
-
-    The gate module executes from the base-pinned checkout (the CI workflow
-    runs on pull_request_target), so these paths are base code by
-    construction — never the PR's. Returns (gate_path, manifest_path) with
-    "" for whichever is absent."""
-    root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    gp = os.path.join(root, "tools", "design_gate.py")
-    mp = os.path.join(root, "smart-blocks", "manifest.json")
-    return (gp if os.path.isfile(gp) else "",
-            mp if os.path.isfile(mp) else "")
-
-
 def main(argv=None):
     ap = argparse.ArgumentParser(
-        description="Unified Activation Gate: fail closed on unactivated, "
-                    "counterfeit, transplanted, or structurally unlawful "
-                    "deliverables.")
-    ap.add_argument("--receipt", required=True, help="activation receipt JSON path")
-    ap.add_argument("--deliverable", required=True,
-                    help="shipped artifact path (must cite the receipt)")
+        description="Unified Activation Gate (r2): fail closed on unactivated, "
+                    "counterfeit, or transplanted activation.")
+    ap.add_argument("--receipt", default=None,
+                    help="activation receipt JSON path (single-pair mode)")
+    ap.add_argument("--deliverable", default=None,
+                    help="shipped artifact path (single-pair mode)")
+    ap.add_argument("--delivery", action="store_true",
+                    help="delivery mode: gate a whole PR (needs --pr-head, --pr)")
+    ap.add_argument("--pr-head", default=None,
+                    help="directory holding the PR head checkout (delivery mode)")
+    ap.add_argument("--pr", default=None,
+                    help="PR number (delivery mode; changed files via live API)")
+    ap.add_argument("--changed-files", default=None,
+                    help="comma-separated changed paths (delivery mode; "
+                         "overrides the live API — for tests)")
     ap.add_argument("--mode", choices=("protected", "local"),
                     default="protected",
                     help="protected: resolve truth from the runner (default). "
-                         "local: rehearsal only, verdict labeled CANDIDATE-LOCAL.")
+                         "local: rehearsal only, verdict labeled LOCAL-REHEARSAL, "
+                         "exit 3 (never a pass).")
     ap.add_argument("--truth", default=None,
                     help="local-mode truth JSON (ignored in protected mode)")
-    ap.add_argument("--job", default=None,
-                    help="delivery job context (protected runner supplies this; "
-                         "receipt.job must match it exactly)")
-    ap.add_argument("--design-gate", default=None,
-                    help="explicit design_gate.py to delegate to (the CI "
-                         "workflow pins the reviewed design-gate commit here; "
-                         "default resolves from the protected base ref via "
-                         "default_design_gate_paths).")
-    ap.add_argument("--design-manifest", default=None,
-                    help="explicit manifest for the design gate.")
     ap.add_argument("--json", action="store_true")
     args = ap.parse_args(argv)
+
+    if args.delivery and args.mode == "local":
+        return _emit("TOOL-ERROR",
+                     ["delivery mode requires protected truth (local cannot "
+                      "establish the PR's live context)"],
+                     args, 2, local=False)
+
+    if args.delivery:
+        return _run_delivery(args)
+
+    if not args.receipt or not args.deliverable:
+        return _emit("TOOL-ERROR",
+                     ["single-pair mode requires --receipt and --deliverable"],
+                     args, 2, local=False)
 
     try:
         with open(args.receipt, "rb") as f:
@@ -437,8 +659,8 @@ def main(argv=None):
     except OSError as e:
         return _emit("TOOL-ERROR", [str(e)], args, 2, local=False)
     try:
-        with open(args.deliverable, encoding="utf-8") as f:
-            deliverable_text = f.read()
+        with open(args.deliverable, "rb") as f:
+            deliverable_bytes = f.read()
     except OSError as e:
         return _emit("TOOL-ERROR", [str(e)], args, 2, local=False)
 
@@ -454,42 +676,51 @@ def main(argv=None):
     except RuntimeError as e:
         return _emit("TOOL-ERROR", [str(e)], args, 2, local=local)
 
-    # Deliverable binding context: the protected runner supplies the job.
-    # The deliverable digest is always recomputed inside check() from the
-    # presented deliverable bytes — the runner never asserts it.
-    delivery = {"job": args.job}
-
-    verdict, violations = check(receipt_bytes, deliverable_text, truth,
-                                delivery=delivery)
-
-    # Design-gate delegation (round-2, hole 3): structural closed-world.
-    # Never silent: absent gate => BLOCKED, never PASS.
-    if args.design_gate is not None or args.design_manifest is not None:
-        dg_path = args.design_gate or ""
-        dg_manifest = args.design_manifest or ""
-    else:
-        dg_path, dg_manifest = default_design_gate_paths()
-    dg_violations = run_design_gate(args.deliverable, dg_path, dg_manifest)
-    if dg_violations == ["DESIGN_GATE_ABSENT"] or dg_violations == [
-            "DESIGN_GATE_ABSENT: manifest unavailable"]:
-        # Fail closed and honest: without the structural gate the component
-        # closed-world row cannot be evaluated, so PASS is not issuable.
-        return _emit("BLOCKED-DESIGN-GATE-ABSENT",
-                     ["component closed-world unverifiable: the design gate "
-                      "is absent from the protected ref — no silent "
-                      "pass-through"] + violations, args, 1, local=local)
-    violations = violations + dg_violations
-    if violations:
-        verdict = "REJECT"
-
+    verdict, violations = check(receipt_bytes, deliverable_bytes, truth)
     if local:
-        # Local-mode labels never contain the substring "PASS" (round-2 fix):
-        # a naive `"PASS" in verdict` check must not confuse them.
-        verdict = ("CANDIDATE-LOCAL-CLEAN" if verdict == "PASS"
-                   else "CANDIDATE-LOCAL-REJECTED")
-    # Exit discipline: 0 if and ONLY if verdict == "PASS" exactly.
+        # Bypass-5 fix: no "PASS" substring anywhere; exit 3 always.
+        verdict = ("LOCAL-REHEARSAL-UNVERIFIED" if verdict == "PASS"
+                   else "LOCAL-REHEARSAL-REJECTED")
+        return _emit(verdict, violations, args, 3, local=True)
     code = 0 if verdict == "PASS" else 1
-    return _emit(verdict, violations, args, code, local=local)
+    return _emit(verdict, violations, args, code, local=False)
+
+
+def _run_delivery(args):
+    if not args.pr_head or not os.path.isdir(args.pr_head):
+        return _emit("TOOL-ERROR", ["delivery mode requires --pr-head DIR"],
+                     args, 2, local=False)
+    receipt_file = os.path.join(args.pr_head, RECEIPT_PATH)
+    try:
+        with open(receipt_file, "rb") as f:
+            receipt_bytes = f.read()
+    except OSError:
+        return _emit("REJECT", ["RECEIPT_MISSING_OR_EMPTY: no receipt at %s "
+                                "in the PR head — deliverables cannot ship "
+                                "without bound activation (fail closed)"
+                                % RECEIPT_PATH],
+                     args, 1, local=False)
+    try:
+        truth = resolve_truth()
+    except RuntimeError as e:
+        return _emit("TOOL-ERROR", [str(e)], args, 2, local=False)
+
+    token = os.environ.get("GITHUB_TOKEN", "").strip()
+    try:
+        if args.changed_files is not None:
+            changed = [c.strip() for c in args.changed_files.split(",") if c.strip()]
+        else:
+            if not args.pr:
+                return _emit("TOOL-ERROR",
+                             ["delivery mode needs --pr or --changed-files"],
+                             args, 2, local=False)
+            changed = pr_changed_files(truth["repository"], args.pr, token)
+    except RuntimeError as e:
+        return _emit("TOOL-ERROR", [str(e)], args, 2, local=False)
+
+    verdict, violations = check_delivery(receipt_bytes, args.pr_head, changed, truth)
+    code = 0 if verdict == "PASS" else 1
+    return _emit(verdict, violations, args, code, local=False)
 
 
 def _emit(verdict, violations, args, code, local):
