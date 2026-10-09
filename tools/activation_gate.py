@@ -34,7 +34,10 @@ by writing a plausible JSON file. Any input the builder supplies about the
 truth being checked is untrusted by construction. In protected mode the only
 trusted inputs are the runner context (GITHUB_REPOSITORY, GITHUB_TOKEN) and
 the live GitHub API. A self-served truth (--mode local) can never produce a
-PASS verdict — only an honestly labeled CANDIDATE-LOCAL-* verdict.
+PASS verdict — only honestly labeled LOCAL-REHEARSAL-* verdicts
+(LOCAL-REHEARSAL-UNVERIFIED when the predicate rows hold against the
+self-served truth, LOCAL-REHEARSAL-REJECTED otherwise), always with exit
+code 3.
 
 Acceptance table (every row must hold in real CI):
   authentic fresh receipt, exact repo, full current main SHA ... PASS
@@ -44,9 +47,12 @@ Acceptance table (every row must hold in real CI):
   missing / abbreviated / mismatched commit SHA .......... REJECT
   missing / tampered receipt ............................. REJECT
   unregistered source in `loaded` (closed-world) ......... REJECT
-  alternate route bypassing the gate ..................... REJECT
-      (self-minted truth yields CANDIDATE-LOCAL-*, never PASS;
-       the delivery workflow gates shipment on a protected PASS)
+  receipt transplanted onto another deliverable .......... REJECT
+      (receipt.deliverables[] binds sha256 of the canonical deliverable
+       bytes; a receipt minted for one deliverable cannot ship another)
+  alternate route bypassing the gate ..................... LOCAL-REHEARSAL-*, never PASS
+      (self-minted truth yields LOCAL-REHEARSAL-UNVERIFIED / -REJECTED,
+       exit 3; the delivery workflow gates shipment on a protected PASS)
 
 Closed-world source rule: receipt.loaded must be an object whose keys are
 EXACTLY the CANONICAL_SOURCES registry below, each a 40-hex blob SHA equal
@@ -54,8 +60,15 @@ to the blob's SHA in the live main tree. A new source is not a new key in a
 receipt — it is a code change to CANONICAL_SOURCES plus its contract, or CI
 fails.
 
+Deliverable-binding rule (hotfix, 2026-10-09): receipt.deliverables must be
+a non-empty list of {path, sha256} entries binding the sha256 of the
+canonical deliverable bytes (citation marker stripped). The gate recomputes
+the hash from the PRESENTED deliverable — a copied marker on different
+bytes is a transplant and is REJECTed.
+
 Exit codes: 0 = PASS (protected) | 1 = REJECT | 2 = tool error
-(including "cannot resolve trusted truth" — fail closed).
+(including "cannot resolve trusted truth" — fail closed) |
+3 = local rehearsal (LOCAL-REHEARSAL-*, never PASS).
 """
 
 import argparse
@@ -95,6 +108,20 @@ def _normalize_repo(name):
     if not isinstance(name, str):
         return ""
     return name.strip().lower().rstrip("/")
+
+
+def canonical_deliverable_bytes(deliverable_text):
+    """Bytes the receipt's deliverables[].sha256 binds to: the deliverable
+    with the receipt citation marker stripped.
+
+    The marker cites the receipt, so it cannot be part of what the receipt
+    binds — otherwise minting is circular, and two deliverables differing
+    only in their marker would hash differently. Stripping makes the binding
+    marker-independent: binding survives re-marking.
+    """
+    if not isinstance(deliverable_text, str):
+        return None
+    return RECEIPT_MARKER_RE.sub("", deliverable_text).encode("utf-8")
 
 
 def check(receipt_bytes, deliverable_text, truth):
@@ -196,6 +223,30 @@ def check(receipt_bytes, deliverable_text, truth):
         elif now - activated > RECEIPT_TTL:
             violations.append("ACTIVATION_EXPIRED: older than %s" % RECEIPT_TTL)
 
+    # --- deliverables list shape (hotfix, 2026-10-09: transplant defense) ---
+    # A receipt that names no bound deliverables could be replayed onto
+    # arbitrary content. The deliverables[] list scopes the receipt
+    # per-deliverable: each entry binds a path label to the sha256 of the
+    # canonical (marker-stripped) deliverable bytes.
+    dlist = receipt.get("deliverables")
+    if not isinstance(dlist, list) or not dlist:
+        violations.append("DELIVERABLES_UNBOUND: receipt names no bound "
+                          "deliverables (transplant risk)")
+    else:
+        for i, entry in enumerate(dlist):
+            if not isinstance(entry, dict):
+                violations.append("DELIVERABLES_UNBOUND: entry %d not an "
+                                  "object" % i)
+                continue
+            path = entry.get("path")
+            if (not isinstance(path, str) or not path
+                    or path.startswith("/") or ".." in path.split("/")):
+                violations.append("DELIVERABLE_PATH_UNSAFE: entry %d path %r "
+                                  "is not a safe repo-relative path" % (i, path))
+            if not isinstance(entry.get("sha256"), str) or not SHA64_RE.match(
+                    entry.get("sha256", "")):
+                violations.append("DELIVERABLE_SHA_MALFORMED: entry %d" % i)
+
     # --- citation: always required, digest-bound to exact receipt bytes (defect 4) ---
     digest = hashlib.sha256(bytes(receipt_bytes)).hexdigest()
     if not isinstance(deliverable_text, str):
@@ -210,6 +261,27 @@ def check(receipt_bytes, deliverable_text, truth):
             violations.append(
                 "CITATION_DIGEST_MISMATCH: marker does not match sha256 of "
                 "the exact receipt bytes (stale or forged citation)")
+
+    # --- deliverable binding (hotfix, 2026-10-09: transplant defense) ---
+    # Two-way binding: deliverable -> receipt via the citation marker above;
+    # receipt -> deliverable here: some deliverables[] entry must equal the
+    # sha256 of the canonical (marker-stripped) presented bytes. A valid
+    # receipt's marker copied onto DIFFERENT content is a transplant and is
+    # REJECTed, even though the citation check passes.
+    if isinstance(deliverable_text, str):
+        dhash = hashlib.sha256(
+            canonical_deliverable_bytes(deliverable_text)).hexdigest()
+        bound = False
+        for entry in dlist if isinstance(dlist, list) else []:
+            claimed = entry.get("sha256") if isinstance(entry, dict) else None
+            if isinstance(claimed, str) and claimed.lower() == dhash:
+                bound = True
+                break
+        if not bound:
+            violations.append(
+                "DELIVERABLE_BINDING_MISMATCH: no deliverables[] entry matches "
+                "sha256 of the presented deliverable — this receipt was "
+                "minted for different bytes (transplant)")
 
     if violations:
         return "REJECT", violations
@@ -273,7 +345,7 @@ def resolve_truth():
 
 
 def load_local_truth(path):
-    """Local rehearsal truth. The verdict is ALWAYS labeled CANDIDATE-LOCAL —
+    """Local rehearsal truth. The verdict is ALWAYS labeled LOCAL-REHEARSAL —
     a self-served truth can never produce PASS (architectural law)."""
     with open(path, encoding="utf-8") as f:
         data = json.load(f)
@@ -300,7 +372,8 @@ def main(argv=None):
     ap.add_argument("--mode", choices=("protected", "local"),
                     default="protected",
                     help="protected: resolve truth from the runner (default). "
-                         "local: rehearsal only, verdict labeled CANDIDATE-LOCAL.")
+                         "local: rehearsal only, verdict labeled LOCAL-REHEARSAL, "
+                         "exit 3 (never a pass).")
     ap.add_argument("--truth", default=None,
                     help="local-mode truth JSON (ignored in protected mode)")
     ap.add_argument("--json", action="store_true")
@@ -331,11 +404,16 @@ def main(argv=None):
 
     verdict, violations = check(receipt_bytes, deliverable_text, truth)
     if local:
-        verdict = "CANDIDATE-LOCAL-" + verdict  # never PASS (defect 6)
-        code = 0 if verdict.endswith("PASS") else 1
-    else:
-        code = 0 if verdict == "PASS" else 1
-    return _emit(verdict, violations, args, code, local=local)
+        # Hotfix (2026-10-09): local-mode labels never contain the substring
+        # "PASS" — a naive `"PASS" in verdict` check must not confuse them
+        # with PASS. Exit 3 always: a local rehearsal is a distinct,
+        # unambiguous code path that can never be read as a protected pass.
+        verdict = ("LOCAL-REHEARSAL-UNVERIFIED" if verdict == "PASS"
+                   else "LOCAL-REHEARSAL-REJECTED")
+        return _emit(verdict, violations, args, 3, local=True)
+    # Exit discipline: 0 if and ONLY if verdict == "PASS" exactly.
+    code = 0 if verdict == "PASS" else 1
+    return _emit(verdict, violations, args, code, local=False)
 
 
 def _emit(verdict, violations, args, code, local):

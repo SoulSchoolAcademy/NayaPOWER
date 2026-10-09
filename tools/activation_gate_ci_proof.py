@@ -17,7 +17,9 @@ Proves, with exact exit codes:
   unregistered source (closed-world) ............ REJECT
   expired / future activation ................... REJECT
   v1 schema ..................................... REJECT
-  self-minted truth (alternate route) ........... CANDIDATE-LOCAL-*, never PASS
+  receipt transplant (marker replayed on another deliverable) . REJECT
+  unbound receipt (no deliverables[]) ........... REJECT
+  self-minted truth (alternate route) ........... LOCAL-REHEARSAL-*, never PASS (exit 3)
 
 Any assertion failure exits nonzero. If the live main tip moves between the
 mint step and the gate step, the lawful case reports INFRA-FLAKE (the gate
@@ -35,7 +37,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 GATE = os.path.join(HERE, "activation_gate.py")
 WORK = "/tmp/gate-proof"
 sys.path.insert(0, HERE)
-from activation_gate import resolve_truth  # noqa: E402 — same protected source
+from activation_gate import (  # noqa: E402 — same protected source
+    resolve_truth, canonical_deliverable_bytes)
 
 
 def run_gate(receipt_path, deliverable_path, extra=()):
@@ -50,7 +53,10 @@ def run_gate(receipt_path, deliverable_path, extra=()):
     return p.returncode, out
 
 
-def write_receipt(path, truth, **over):
+def mint(name, truth, body, **over):
+    """Two-phase mint: the marker cites the receipt bytes; the receipt binds
+    the canonical (marker-stripped) deliverable bytes. Returns
+    (receipt_path, deliverable_path)."""
     r = {
         "schema": "naya.activation.receipt.v2",
         "status": "ACTIVATED",
@@ -66,21 +72,29 @@ def write_receipt(path, truth, **over):
         "loaded": dict(truth["source_blobs"]),
     }
     r.update(over)
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump(r, f, sort_keys=True)
-    return path
+    rb1 = json.dumps(r, sort_keys=True).encode()
+    d1 = body.replace("</body>",
+                      "<!-- NAYA-ACTIVATION-RECEIPT-SHA256:%s --></body>"
+                      % hashlib.sha256(rb1).hexdigest())
+    r["deliverables"] = [
+        {"path": "%s.html" % name,
+         "sha256": hashlib.sha256(canonical_deliverable_bytes(d1)).hexdigest()}]
+    rb2 = json.dumps(r, sort_keys=True).encode()
+    d2 = body.replace("</body>",
+                      "<!-- NAYA-ACTIVATION-RECEIPT-SHA256:%s --></body>"
+                      % hashlib.sha256(rb2).hexdigest())
+    assert hashlib.sha256(canonical_deliverable_bytes(d2)).hexdigest() == \
+        r["deliverables"][0]["sha256"], "binding dance broken"
+    rp = os.path.join(WORK, "r-%s.json" % name)
+    dp = os.path.join(WORK, "p-%s.html" % name)
+    with open(rp, "wb") as f:
+        f.write(rb2)
+    with open(dp, "w", encoding="utf-8") as f:
+        f.write(d2)
+    return rp, dp
 
 
-def write_page(path, receipt_path, marker=True):
-    with open(receipt_path, "rb") as f:
-        digest = hashlib.sha256(f.read()).hexdigest()
-    body = "<html><body>lawful test page</body></html>"
-    if marker:
-        body = body.replace("</body>",
-                            "<!-- NAYA-ACTIVATION-RECEIPT-SHA256:%s --></body>" % digest)
-    with open(path, "w", encoding="utf-8") as f:
-        f.write(body)
-    return path
+BODY = "<html><body>lawful test page</body></html>"
 
 
 def main():
@@ -92,8 +106,7 @@ def main():
           (truth["repository"], truth["main_sha"][:12]))
 
     # --- lawful ---
-    rp = write_receipt(f"{WORK}/lawful.json", truth)
-    dp = write_page(f"{WORK}/lawful.html", rp)
+    rp, dp = mint("lawful", truth, BODY)
     code, out = run_gate(rp, dp)
     lawful_ok = code == 0 and out.get("verdict") == "PASS"
     results.append(("lawful authentic fresh receipt -> PASS", True, lawful_ok,
@@ -147,8 +160,7 @@ def main():
             with urllib.request.urlopen(req, timeout=30) as r:
                 parents = json.load(r).get("parents", [])
             over["main_sha"] = (parents[0]["sha"] if parents else "0" * 40)
-        rp = write_receipt(f"{WORK}/attack{i}.json", truth, **over)
-        dp = write_page(f"{WORK}/attack{i}.html", rp)
+        rp, dp = mint("attack%d" % i, truth, BODY, **over)
         code, out = run_gate(rp, dp)
         ok = (code == 1 and out.get("verdict") == "REJECT"
               and any(want_viol in v for v in out.get("violations", [])))
@@ -156,8 +168,7 @@ def main():
                         "%s %s" % (out.get("verdict"), out.get("violations"))))
 
     # tampered bytes: marker computed over original, then flip a byte
-    rp = write_receipt(f"{WORK}/tamper.json", truth)
-    dp = write_page(f"{WORK}/tamper.html", rp)
+    rp, dp = mint("tamper", truth, BODY)
     with open(rp, "r+b") as f:
         data = bytearray(f.read()).replace(b"ACTIVATED", b"ACTIVATED ", 1)
         f.seek(0); f.write(data); f.truncate()
@@ -167,12 +178,52 @@ def main():
     results.append(("tampered receipt bytes -> REJECT", True, ok, out.get("verdict")))
 
     # missing citation marker
-    rp = write_receipt(f"{WORK}/nocite.json", truth)
-    dp = write_page(f"{WORK}/nocite.html", rp, marker=False)
+    rp, dp = mint("nocite", truth, BODY)
+    with open(dp, "w", encoding="utf-8") as f:
+        f.write(BODY)  # deliverable without the marker
     code, out = run_gate(rp, dp)
     ok = (code == 1 and any("CITATION_MISSING" in v
                             for v in out.get("violations", [])))
     results.append(("missing citation marker -> REJECT", True, ok, out.get("verdict")))
+
+    # HOTFIX ROW 1: transplant — the lawful receipt's marker replayed onto
+    # different deliverable bytes. Citation passes; the binding must fail.
+    rp, dp = mint("transplant", truth, BODY)
+    with open(dp, encoding="utf-8") as f:
+        page = f.read()
+    marker_start = page.index("<!--")
+    other = ("<html><body>PRODUCTION DEPLOY ARTIFACT</body>"
+             + page[marker_start:])
+    op = os.path.join(WORK, "p-transplant-other.html")
+    with open(op, "w", encoding="utf-8") as f:
+        f.write(other)
+    code, out = run_gate(rp, op)
+    ok = (code == 1 and out.get("verdict") == "REJECT"
+          and any("DELIVERABLE_BINDING_MISMATCH" in v
+                  for v in out.get("violations", [])))
+    results.append(("receipt transplant onto other deliverable -> REJECT", True,
+                    ok, "%s %s" % (out.get("verdict"), out.get("violations"))))
+
+    # HOTFIX ROW 2: unbound receipt — strip the binding, the receipt must
+    # fail closed.
+    rp, dp = mint("unbound", truth, BODY)
+    with open(rp, "rb") as f:
+        receipt = json.loads(f.read())
+    del receipt["deliverables"]
+    rb_raw = json.dumps(receipt, sort_keys=True).encode()
+    with open(rp, "wb") as f:
+        f.write(rb_raw)
+    with open(dp, "w", encoding="utf-8") as f:
+        f.write(BODY.replace(
+            "</body>",
+            "<!-- NAYA-ACTIVATION-RECEIPT-SHA256:%s --></body>"
+            % hashlib.sha256(rb_raw).hexdigest()))
+    code, out = run_gate(rp, dp)
+    ok = (code == 1 and out.get("verdict") == "REJECT"
+          and any("DELIVERABLES_UNBOUND" in v
+                  for v in out.get("violations", [])))
+    results.append(("unbound receipt (no deliverables[]) -> REJECT", True,
+                    ok, "%s %s" % (out.get("verdict"), out.get("violations"))))
 
     # --- alternate route: self-minted truth can never yield PASS ---
     fake_truth = {"repository": truth["repository"],
@@ -180,14 +231,17 @@ def main():
                   "source_blobs": dict(truth["source_blobs"])}
     with open(f"{WORK}/fake-truth.json", "w") as f:
         json.dump(fake_truth, f)
-    rp = write_receipt(f"{WORK}/selfmint.json", truth)
-    dp = write_page(f"{WORK}/selfmint.html", rp)
+    rp, dp = mint("selfmint", truth, BODY)
     code, out = run_gate(rp, dp, extra=("--mode", "local", "--truth",
                                        f"{WORK}/fake-truth.json"))
     verdict = out.get("verdict", "")
-    ok = verdict.startswith("CANDIDATE-LOCAL-") and verdict != "PASS"
-    results.append(("self-minted truth alternate route -> CANDIDATE-LOCAL-*, never PASS",
-                    True, ok, verdict))
+    # HOTFIX: no "PASS" substring anywhere in the local verdict, and the
+    # local code path (exit 3) is unambiguous — it can never be read as a
+    # protected pass (exit 0).
+    ok = (code == 3 and verdict.startswith("LOCAL-REHEARSAL-")
+          and "PASS" not in verdict)
+    results.append(("self-minted truth alternate route -> LOCAL-REHEARSAL-*, never PASS, exit 3",
+                    True, ok, "%s (exit %d)" % (verdict, code)))
 
     # --- report ---
     failed = 0
