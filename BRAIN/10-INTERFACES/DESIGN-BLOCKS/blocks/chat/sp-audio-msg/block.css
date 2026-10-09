@@ -1,0 +1,24 @@
+/* Smart Block CSS: chat/sp-audio-msg
+ * Source: Smart Spaces Page Design.html (extracted byte-true, never rewritten)
+ */
+
+
+/* Audio messages */
+.sp-audio-msg{ display:flex; align-items:center; gap:10px; padding:10px 14px; border-radius:14px;
+  background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.10); margin-top:6px; }
+
+
+.sp-audio-play{
+  width:34px; height:34px; border-radius:50%; border:none; cursor:pointer; flex:0 0 auto;
+  background:linear-gradient(180deg, var(--sc), color-mix(in srgb, var(--sc) 60%, #000));
+  color:#fff; font-size:13px; box-shadow:0 4px 14px rgba(0,0,0,.4), 0 0 16px -4px var(--sc);
+}
+
+
+.sp-audio-wave{ flex:1; height:26px; display:flex; align-items:center; gap:2px; }
+
+
+.sp-audio-wave i{ flex:1; background:var(--sc); opacity:.65; border-radius:2px; min-height:3px; }
+
+
+.sp-audio-dur{ font-size:11px; color:#9aa3b5; font-variant-numeric:tabular-nums; }

@@ -1,0 +1,28 @@
+/* Smart Block CSS: tabs/sp-dtabs
+ * Source: Smart Spaces Page Design.html (extracted byte-true, never rewritten)
+ */
+
+
+
+.sp-dtabs{ display:flex; gap:8px; margin-bottom:18px; border-bottom:1px solid rgba(255,255,255,.08); padding-bottom:2px; }
+
+
+.sp-dtab{
+  background:none; border:none; border-bottom:2px solid transparent;
+  color:#8a8a96; font-size:13px; font-weight:800; letter-spacing:.06em;
+  padding:10px 16px; cursor:pointer; font-family:inherit;
+  display:inline-flex; align-items:center; gap:8px;
+  transition:color .2s, border-color .2s;
+}
+
+
+.sp-dtab:hover{ color:#fff; }
+
+
+.sp-dtab.on{ color:#fff; border-bottom-color:var(--sc); text-shadow:0 0 12px var(--sc); }
+
+
+.sp-dtab-n{
+  font-size:10px; font-weight:800; background:var(--sc); color:#060608;
+  border-radius:99px; padding:2px 8px;
+}
