@@ -1,0 +1,35 @@
+/* Smart Block: report/checks
+ * Source: Naya Design Elements N2.html (byte-true extraction, not rewritten)
+ * Type: report
+ * Extracted: 2026-10-09
+ */
+
+/* Per-check accent: style="--cc:#9d75ff" on .check */
+
+.checks{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+
+.check{--cc:#9d75ff;display:flex;gap:14px;align-items:center;font-size:15px;cursor:pointer;
+  padding:14px 18px;border-radius:16px;background:linear-gradient(160deg,rgba(255,255,255,.04),rgba(255,255,255,.01));
+  border:1px solid color-mix(in srgb, var(--cc) 30%, transparent);
+  border-left:3px solid var(--cc);transition:all .2s}
+
+.check:hover{border-color:color-mix(in srgb, var(--cc) 60%, transparent);transform:translateX(4px)}
+
+.check:hover{border-color:rgba(255,255,255,.3)}
+
+.check input{appearance:none;-webkit-appearance:none;width:26px;height:26px;margin-top:0;flex:none;cursor:pointer;
+  border-radius:8px;border:1.5px solid rgba(255,255,255,.4);
+  background:radial-gradient(circle at 32% 28%,rgba(255,255,255,.25),transparent 45%),rgba(255,255,255,.04);
+  transition:all .2s;position:relative}
+
+.check input:checked{border-color:#35e39b;
+  background:radial-gradient(circle at 32% 28%,rgba(255,255,255,.85),transparent 42%),
+    radial-gradient(circle at 50% 55%,#35e39b,color-mix(in srgb,#35e39b 45%,#000) 78%);
+  box-shadow:0 0 16px rgba(53,227,155,.6)}
+
+.check input:checked::after{content:"✓";position:absolute;inset:0;display:grid;place-items:center;
+  color:#fff;font-size:14px;font-weight:900;text-shadow:0 1px 4px rgba(0,0,0,.6)}
+
+.check:has(input:checked){border-color:#35e39b;background:rgba(53,227,155,.06)}
+
+.check:has(input:checked) span{text-decoration:line-through;opacity:.6}
