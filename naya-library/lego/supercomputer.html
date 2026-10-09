@@ -28,16 +28,18 @@ body{background:var(--field);color:var(--ink);font-family:var(--sans);font-size:
   background:linear-gradient(180deg,transparent,rgba(168,107,255,.05),transparent);
   animation:scanmove 9s linear infinite}
 @keyframes scanmove{0%{top:-15%}100%{top:110%}}
+/* couture vignette — the black suit, tailored: edges fall away into deeper black */
+body::after{content:"";position:fixed;inset:0;z-index:89;pointer-events:none;
+  background:radial-gradient(120% 95% at 50% 38%,transparent 52%,rgba(0,0,0,.52) 100%)}
 
 /* ================= BOOT ================= */
 #boot{position:fixed;inset:0;z-index:200;background:#020203;display:flex;align-items:center;justify-content:center;
   transition:opacity .7s var(--ease)}
 #boot.gone{opacity:0;pointer-events:none}
-.bootbox{width:min(680px,90vw)}
-.bootlogo{font-family:var(--mono);font-size:13px;letter-spacing:.34em;color:var(--purple);margin-bottom:26px}
-#bootlog{font-family:var(--mono);font-size:13.5px;line-height:2;color:#cfc9da;min-height:300px}
-#bootlog .ok{color:var(--green)} #bootlog .warn{color:var(--gold)} #bootlog .dim{color:var(--dim)}
-#bootlog .hot{color:#fff;text-shadow:0 0 18px rgba(232,79,255,.8)}
+.bootbox{width:min(680px,90vw);text-align:center}
+.bootlogo{font-family:var(--mono);font-size:13px;letter-spacing:.34em;color:var(--purple);margin-bottom:6px}
+.bootlights{display:flex;gap:10px;justify-content:center;margin:30px 0 10px}
+.bl{width:52px;height:6px;border-radius:99px;background:rgba(255,255,255,.09);transition:background .3s,box-shadow .3s}
 .bootbar{height:3px;background:rgba(255,255,255,.08);border-radius:99px;margin-top:22px;overflow:hidden}
 .bootbar i{display:block;height:100%;width:0;border-radius:99px;
   background:linear-gradient(90deg,var(--magenta),var(--purple),var(--blue),var(--green));
@@ -53,6 +55,9 @@ header.top{display:flex;align-items:center;gap:18px;padding:0 22px;border-bottom
 .brand b{background:linear-gradient(100deg,var(--magenta),var(--purple) 40%,var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent}
 .sysstat{display:flex;align-items:center;gap:9px;font-family:var(--mono);font-size:11.5px;letter-spacing:.18em;color:var(--green)}
 .sysstat .dot{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green);animation:blink 2.2s ease-in-out infinite}
+.voiceind{display:none;align-items:center;gap:8px;font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;color:var(--purple)}
+.voiceind.on{display:flex}
+.voiceind .vdot{width:8px;height:8px;border-radius:50%;background:var(--purple);box-shadow:0 0 12px var(--purple);animation:blink 1s ease-in-out infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
 .top .spacer{flex:1}
 .topmeta{font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--quiet);display:flex;gap:22px;align-items:center}
@@ -67,9 +72,14 @@ main.deck{display:grid;grid-template-columns:216px 1fr 268px;min-height:0}
 .rail{border-right:1px solid var(--line);padding:16px 12px;display:flex;flex-direction:column;gap:10px;overflow-y:auto;
   background:linear-gradient(180deg,rgba(14,12,24,.5),transparent)}
 .railhead{font-family:var(--mono);font-size:10.5px;letter-spacing:.3em;color:var(--dim);padding:2px 8px 10px}
-.instr{text-align:left;background:var(--panel);border:1px solid var(--soft);border-radius:14px;padding:13px 14px;cursor:pointer;
+.instr{text-align:left;background:linear-gradient(180deg,#0d0e15,#090a0f);border:1px solid var(--soft);border-radius:14px;padding:12px 13px;cursor:pointer;
   color:var(--ink);font-family:var(--sans);transition:border-color .25s var(--ease),box-shadow .25s var(--ease),transform .25s var(--ease);
-  position:relative;overflow:hidden;width:100%}
+  position:relative;overflow:hidden;width:100%;display:flex;align-items:center;gap:12px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 8px 20px rgba(0,0,0,.42)}
+.iglyph{width:34px;height:34px;flex-shrink:0;color:var(--sc,var(--purple));
+  filter:drop-shadow(0 0 8px var(--scg,rgba(168,107,255,.5)))}
+.iglyph svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.instr .txt{min-width:0;flex:1}
 .instr:hover{transform:translateX(3px);border-color:var(--line)}
 .instr .iid{font-family:var(--mono);font-size:10px;letter-spacing:.24em;color:var(--dim)}
 .instr .inm{font-size:13.5px;font-weight:800;letter-spacing:.04em;margin-top:3px}
@@ -98,11 +108,16 @@ main.deck{display:grid;grid-template-columns:216px 1fr 268px;min-height:0}
 .hud{display:flex;align-items:baseline;gap:16px;margin-bottom:6px;z-index:5}
 .hud .sys{font-family:var(--mono);font-size:11px;letter-spacing:.26em;color:var(--sc,var(--purple))}
 .hud .subj{font-size:19px;font-weight:800;letter-spacing:-.01em}
-.hud .subjsub{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--dim);margin-left:auto;text-align:right}
+.hud .subjsub{display:none}
+.halo{position:absolute;top:50%;left:50%;border-radius:50%;pointer-events:none;border:1px solid rgba(168,107,255,.16)}
+.halo.h1{width:360px;height:360px;margin:-180px 0 0 -180px}
+.halo.h2{width:560px;height:560px;margin:-280px 0 0 -280px;border-color:rgba(232,79,255,.10)}
+.halo.h3{width:780px;height:780px;margin:-390px 0 0 -390px;border-color:rgba(63,184,255,.08)}
 .stage{position:relative;flex:1;min-height:0}
 canvas.fill{position:absolute;inset:0;width:100%;height:100%}
 .floatcard{position:absolute;background:rgba(10,11,16,.82);backdrop-filter:blur(10px);border:1px solid var(--line);
-  border-radius:14px;padding:12px 16px;z-index:6;box-shadow:0 18px 44px rgba(0,0,0,.55)}
+  border-radius:14px;padding:12px 16px;z-index:6;
+  box-shadow:0 18px 44px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.08)}
 .parallax{transition:transform .35s var(--ease)}
 
 /* ---- DEEP MIND (the energy you talk to) ---- */
@@ -144,7 +159,6 @@ canvas.fill{position:absolute;inset:0;width:100%;height:100%}
 #orbTip .t-chg{font-family:var(--mono);font-size:12px;font-weight:700;margin-top:3px}
 
 /* ---- PULSE ---- */
-#pulseWrap{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:0 4%}
 #bpmBig{font-size:clamp(50px,7vw,96px);font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.03em;line-height:1;
   text-shadow:0 0 46px rgba(47,232,158,.4)}
 #bpmBig small{font-size:.38em;color:var(--quiet);letter-spacing:.1em}
@@ -176,7 +190,8 @@ canvas.fill{position:absolute;inset:0;width:100%;height:100%}
 /* ================= READOUT RAIL ================= */
 .readouts{border-left:1px solid var(--line);padding:16px 14px;display:flex;flex-direction:column;gap:14px;overflow-y:auto;
   background:linear-gradient(180deg,rgba(14,12,24,.5),transparent)}
-.ro-card{background:var(--panel);border:1px solid var(--soft);border-radius:14px;padding:13px 15px}
+.ro-card{background:linear-gradient(180deg,#0e0f16,#08090d);border:1px solid var(--soft);border-radius:14px;padding:13px 15px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 10px 24px rgba(0,0,0,.45)}
 .ro-card .rl{font-family:var(--mono);font-size:10px;letter-spacing:.26em;color:var(--dim);margin-bottom:8px}
 .ro-big{font-family:var(--mono);font-size:24px;font-weight:700;font-variant-numeric:tabular-nums;color:#fff}
 .ro-big small{font-size:11px;color:var(--dim);letter-spacing:.1em}
@@ -194,12 +209,13 @@ footer.cmd{border-top:1px solid var(--line);padding:12px 22px 14px;background:li
 #cmdOut{font-family:var(--mono);font-size:12.5px;color:var(--quiet);min-height:20px;letter-spacing:.04em}
 #cmdOut .q{color:var(--purple)} #cmdOut .ok{color:var(--green)} #cmdOut .wr{color:var(--gold)}
 .cmdrow{display:flex;align-items:center;gap:14px;background:#08090d;border:1px solid var(--line);border-radius:16px;padding:4px 6px 4px 20px;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 10px 30px rgba(0,0,0,.5)}
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06),inset 0 -8px 18px rgba(0,0,0,.42),0 10px 30px rgba(0,0,0,.5)}
 .cmdrow:focus-within{border-color:rgba(168,107,255,.6);box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 0 0 1px rgba(168,107,255,.4),0 0 34px -6px rgba(168,107,255,.5)}
 .prompt{font-family:var(--mono);font-size:17px;font-weight:800;color:var(--magenta);text-shadow:0 0 14px rgba(232,79,255,.7)}
 #cmdIn{flex:1;background:transparent;border:none;outline:none;color:#fff;font-family:var(--mono);font-size:15.5px;letter-spacing:.02em;padding:13px 0;caret-color:var(--magenta)}
 #cmdIn::placeholder{color:#4d4a5c}
-.cmdhint{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--dim);padding-right:14px;white-space:nowrap}
+.cmdhint{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.2em;color:#fff;
+  text-shadow:0 0 12px rgba(255,255,255,.35);padding-right:16px;white-space:nowrap}
 .footmeta{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;letter-spacing:.22em;color:#3f3c4e}
 .footmeta .honest{color:#55516a}
 
@@ -217,10 +233,10 @@ footer.cmd{border-top:1px solid var(--line);padding:12px 22px 14px;background:li
 <!-- ================= BOOT ================= -->
 <div id="boot" role="status" aria-label="Trillion-core boot sequence">
   <div class="bootbox">
-    <div class="bootlogo">NAYANET · TRILLION-CORE</div>
-    <div id="bootlog"></div>
+    <div class="bootlogo">◈ NAYANET</div>
+    <div class="bootlights" id="bootlights"></div>
     <div class="bootbar"><i id="bootfill"></i></div>
-    <div class="boothint">DEEP MIND INTERFACE · COLD START</div>
+    <div class="boothint" id="boothint">CORE</div>
   </div>
 </div>
 
@@ -228,7 +244,8 @@ footer.cmd{border-top:1px solid var(--line);padding:12px 22px 14px;background:li
 <div id="machine">
   <header class="top">
     <div class="brand"><b>◈ NAYANET</b> <span style="color:var(--dim)">TRILLION-CORE</span></div>
-    <div class="sysstat"><span class="dot"></span><span id="sysstatTxt">ALL SYSTEMS NOMINAL</span></div>
+    <div class="sysstat"><span class="dot"></span><span id="sysstatTxt">NOMINAL</span></div>
+    <div class="voiceind" id="voiceInd"><span class="vdot"></span>VOICE</div>
     <div class="spacer"></div>
     <div class="nodes9" id="nodes9" title="Nine nodes online"></div>
     <div class="topmeta"><span>CORE <b id="clock">--:--:--</b></span><span>UPTIME <b id="uptime">00:00</b></span></div>
@@ -237,82 +254,64 @@ footer.cmd{border-top:1px solid var(--line);padding:12px 22px 14px;background:li
   <main class="deck">
     <!-- INSTRUMENT RAIL -->
     <aside class="rail">
-      <div class="railhead">INSTRUMENTS</div>
+      <div class="railhead">◈</div>
       <div id="instrList"></div>
-      <div class="railfoot">KEYS 0–5 · SWITCH<br>TYPE BELOW · QUERY<br>ESC · RELEASE FOCUS</div>
     </aside>
 
     <!-- VIEWPORT -->
     <section class="viewport" id="viewport">
-      <!-- 00 · DEEP MIND -->
-      <div class="view active" id="view-deep">
+      <!-- 02 · DEEP MIND -->
+      <div class="view" id="view-deep">
         <div class="hud" style="--sc:var(--magenta)">
-          <span class="sys">SYS-00 // DEEP MIND</span><span class="subj" id="deepSubj">community intelligence</span>
-          <span class="subjsub" id="deepSub">THE ENERGY BEHIND THE GLASS · SPEAK BELOW</span>
+          <span class="sys">SYS-02 // DEEP MIND</span><span class="subj" id="deepSubj">community intelligence</span>
         </div>
         <div class="stage">
           <canvas class="fill" id="convCanvas"></canvas>
           <div class="corewrap parallax" data-depth="14">
+            <div class="halo h1 parallax" data-depth="26"></div>
+            <div class="halo h2 parallax" data-depth="40"></div>
+            <div class="halo h3 parallax" data-depth="58"></div>
             <div id="breathNum">0</div>
             <div id="breathLbl">SIGNALS INDEXED</div>
-            <div id="breathSub">Ask below and watch the machine calculate — raw signals converge into the answer, live.</div>
             <div class="corechips" id="coreChips"></div>
-            <div id="convState">CORE IDLE · AWAITING QUERY</div>
+            <div id="convState">IDLE</div>
           </div>
         </div>
       </div>
 
-      <!-- 01 · ORBITAL ARRAY -->
+      <!-- 03 · ORBITAL ARRAY -->
       <div class="view" id="view-orbital">
         <div class="hud" style="--sc:var(--purple)">
-          <span class="sys">SYS-01 // ORBITAL ARRAY</span><span class="subj" id="orbSubj">community intelligence</span>
-          <span class="subjsub">EVERY WORLD IN ORBIT · HOVER TO HOLD · CLICK TO OPEN</span>
+          <span class="sys">SYS-03 // ORBITAL ARRAY</span><span class="subj" id="orbSubj">community intelligence</span>
         </div>
         <div class="stage"><div class="orb-stage" id="orbStage"><div class="sun" id="orbSun"></div></div></div>
       </div>
 
-      <!-- 02 · PULSE CORE -->
+      <!-- 04 · PULSE CORE -->
       <div class="view" id="view-pulse">
         <div class="hud" style="--sc:var(--green)">
-          <span class="sys">SYS-02 // PULSE CORE</span><span class="subj" id="pulseSubj">community intelligence</span>
-          <span class="subjsub">THE NETWORK'S HEARTBEAT · LIVE</span>
+          <span class="sys">SYS-04 // PULSE CORE</span><span class="subj" id="pulseSubj">community intelligence</span>
         </div>
-        <div class="stage"><div id="pulseWrap">
-          <div style="display:flex;align-items:baseline;gap:18px;margin-bottom:4px">
+        <div class="stage">
+          <div style="position:absolute;top:26px;left:30px;z-index:5">
             <div id="bpmBig"><span id="bpmNum">72</span><small> BPM</small></div>
-            <div class="mono" style="font-size:12px;letter-spacing:.2em;color:var(--quiet)">DATA PULSE · LIVE</div>
           </div>
-          <svg viewBox="0 0 640 170" style="width:100%;height:auto;display:block" role="img" aria-label="Engagement heartbeat wave">
-            <defs><linearGradient id="hbGrad" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0" stop-color="#2fe89e"/><stop offset=".5" stop-color="#3fb8ff"/><stop offset="1" stop-color="#2fe89e"/>
-            </linearGradient></defs>
-            <g stroke="rgba(255,255,255,.07)" stroke-width="1">
-              <line x1="0" y1="42" x2="640" y2="42"/><line x1="0" y1="90" x2="640" y2="90"/><line x1="0" y1="138" x2="640" y2="138"/>
-            </g>
-            <path d="M0,90 L110,90 L124,90 L132,58 L141,118 L150,90 L268,90 L282,90 L290,52 L299,124 L308,90 L426,90 L440,90 L448,60 L457,114 L466,90 L640,90"
-              fill="none" stroke="url(#hbGrad)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"
-              style="filter:drop-shadow(0 0 10px rgba(47,232,158,.55))"/>
-            <circle r="14" fill="rgba(47,232,158,.18)"><animateMotion dur="7s" repeatCount="indefinite" path="M0,90 L110,90 L124,90 L132,58 L141,118 L150,90 L268,90 L282,90 L290,52 L299,124 L308,90 L426,90 L440,90 L448,60 L457,114 L466,90 L640,90"/></circle>
-            <circle r="6" fill="#eafff5" style="filter:drop-shadow(0 0 8px #2fe89e)"><animateMotion dur="7s" repeatCount="indefinite" path="M0,90 L110,90 L124,90 L132,58 L141,118 L150,90 L268,90 L282,90 L290,52 L299,124 L308,90 L426,90 L440,90 L448,60 L457,114 L466,90 L640,90"/></circle>
-          </svg>
-          <p style="color:var(--quiet);font-size:13.5px;margin-top:12px" id="pulseNote">Peaks are launch moments. Valleys are rest. The wave never stops because the network never sleeps.</p>
-        </div></div>
+          <canvas class="fill" id="pulseCanvas"></canvas>
+        </div>
       </div>
 
-      <!-- 03 · NEURAL CONSTELLATION -->
+      <!-- 05 · NEURAL CONSTELLATION -->
       <div class="view" id="view-constel">
         <div class="hud" style="--sc:var(--gold)">
-          <span class="sys">SYS-03 // NEURAL CONSTELLATION</span><span class="subj" id="conSubj">community intelligence</span>
-          <span class="subjsub">RELATIONSHIPS AS STARLIGHT · HOVER A STAR</span>
+          <span class="sys">SYS-05 // NEURAL CONSTELLATION</span><span class="subj" id="conSubj">community intelligence</span>
         </div>
         <div class="stage"><div id="constelBox"><svg id="constelSvg" style="position:absolute;inset:0;width:100%;height:100%"></svg></div></div>
       </div>
 
-      <!-- 04 · TIDAL FIELD (invented) -->
-      <div class="view" id="view-tidal">
+      <!-- 00 · TIDAL FIELD (invented) -->
+      <div class="view active" id="view-tidal">
         <div class="hud" style="--sc:var(--blue)">
-          <span class="sys">SYS-04 // TIDAL FIELD</span><span class="subj" id="tidalSubj">community intelligence</span>
-          <span class="subjsub">DATA AS WEATHER · GRAVITY WELLS · MOVE TO DISTURB</span>
+          <span class="sys">SYS-00 // TIDAL FIELD</span><span class="subj" id="tidalSubj">community intelligence</span>
         </div>
         <div class="stage">
           <canvas class="fill" id="tidalCanvas"></canvas>
@@ -324,11 +323,10 @@ footer.cmd{border-top:1px solid var(--line);padding:12px 22px 14px;background:li
         </div>
       </div>
 
-      <!-- 05 · SPIRAL LEDGER (invented) -->
+      <!-- 01 · SPIRAL LEDGER (invented) -->
       <div class="view" id="view-spiral">
         <div class="hud" style="--sc:var(--magenta)">
-          <span class="sys">SYS-05 // SPIRAL LEDGER</span><span class="subj" id="spiralSubj">community intelligence</span>
-          <span class="subjsub">TIME READ OUTWARD · FOLLOW THE SPIRAL</span>
+          <span class="sys">SYS-01 // SPIRAL LEDGER</span><span class="subj" id="spiralSubj">community intelligence</span>
         </div>
         <div class="stage">
           <div id="spiralBox"><svg id="spiralSvg" role="img" aria-label="Time spiral ledger"></svg></div>
@@ -351,14 +349,14 @@ footer.cmd{border-top:1px solid var(--line);padding:12px 22px 14px;background:li
 
   <!-- COMMAND -->
   <footer class="cmd">
-    <div id="cmdOut"><span class="q">◈</span> Deep mind online. Type <span class="q">"give me the stats on …"</span> and watch it calculate.</div>
+    <div id="cmdOut"><span class="q">◈</span> give me the stats on anything — watch it calculate.</div>
     <div class="cmdrow">
       <span class="prompt">&gt;</span>
       <input id="cmdIn" class="mono" type="text" autocomplete="off" spellcheck="false"
         placeholder='give me the stats on "bitcoin" — or anything' aria-label="Command input">
       <span class="cmdhint">⏎ EXECUTE</span>
     </div>
-    <div class="footmeta"><span>SYS-00…05 · ALL INSTRUMENTS ARMED</span><span class="honest">SPECIMEN DATA · SYNTHETIC · RENDERED LIVE</span></div>
+    <div class="footmeta"><span>TRILLION-CORE · LIVE</span><span class="honest">SPECIMEN DATA · RENDERED LIVE</span></div>
   </footer>
 </div>
 
@@ -410,28 +408,39 @@ function modelFor(topic){
 }
 
 /* ================= STATE ================= */
-var S={topic:'community intelligence',model:null,view:'deep',booted:false,rendered:{},energy:0.6,computing:false};
+var S={topic:'community intelligence',model:null,view:'tidal',booted:false,rendered:{},energy:0.6,computing:false};
 S.model=modelFor(S.topic);
+/* global depth-parallax vector, smoothed in the par() loop */
+var PAR={x:0,y:0};
 
 /* ================= INSTRUMENT RAIL ================= */
+var ICONS={
+ waves:'<svg viewBox="0 0 24 24"><path d="M2 9q4.5-4 9 0t9 0"/><path d="M2 15q4.5-4 9 0t9 0"/></svg>',
+ spiral:'<svg viewBox="0 0 24 24"><path d="M12 12h.1"/><path d="M12 12c0-1 .8-1.8 1.8-1.8 1.4 0 2.5 1.1 2.5 2.5 0 1.9-1.6 3.5-3.5 3.5-2.5 0-4.5-2-4.5-4.5 0-3.1 2.5-5.6 5.6-5.6 3.7 0 6.7 3 6.7 6.7"/></svg>',
+ core:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/><path d="M12 1v4M12 19v4M1 12h4M19 12h4"/></svg>',
+ orbit:'<svg viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="10" ry="4.5"/><circle cx="12" cy="12" r="2.6"/></svg>',
+ pulse:'<svg viewBox="0 0 24 24"><path d="M2 12h4l3-7 4 14 3-7h6"/></svg>',
+ stars:'<svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="8" r="2"/><circle cx="11" cy="17" r="2"/><path d="M7.5 7l8.5.7M7 8l3 7M17 9.7l-4.6 5.6"/></svg>'
+};
 var INSTR=[
- {id:'deep',   n:'00',name:'DEEP MIND',      desc:'the energy',      c:'#e84fff',g:'rgba(232,79,255,.5)'},
- {id:'orbital',n:'01',name:'ORBITAL ARRAY',  desc:'worlds in orbit', c:'#a06bff',g:'rgba(160,107,255,.5)'},
- {id:'pulse',  n:'02',name:'PULSE CORE',     desc:'the heartbeat',   c:'#2fe89e',g:'rgba(47,232,158,.5)'},
- {id:'constel',n:'03',name:'NEURAL CONSTELLATION',desc:'starlight links',c:'#ffbf3d',g:'rgba(255,191,61,.5)'},
- {id:'tidal',  n:'04',name:'TIDAL FIELD',    desc:'data as weather', c:'#3fb8ff',g:'rgba(63,184,255,.5)',isNew:true},
- {id:'spiral', n:'05',name:'SPIRAL LEDGER',  desc:'time, outward',   c:'#e84fff',g:'rgba(232,79,255,.5)',isNew:true}
+ {id:'tidal',  n:'00',name:'TIDAL FIELD', c:'#3fb8ff',g:'rgba(63,184,255,.5)', isNew:true, icon:'waves'},
+ {id:'spiral', n:'01',name:'SPIRAL LEDGER',c:'#e84fff',g:'rgba(232,79,255,.5)', isNew:true, icon:'spiral'},
+ {id:'deep',   n:'02',name:'DEEP MIND',    c:'#e84fff',g:'rgba(232,79,255,.5)',            icon:'core'},
+ {id:'orbital',n:'03',name:'ORBITAL ARRAY',c:'#a06bff',g:'rgba(160,107,255,.5)',           icon:'orbit'},
+ {id:'pulse',  n:'04',name:'PULSE CORE',   c:'#2fe89e',g:'rgba(47,232,158,.5)',            icon:'pulse'},
+ {id:'constel',n:'05',name:'NEURAL CONSTELLATION',c:'#ffbf3d',g:'rgba(255,191,61,.5)',     icon:'stars'}
 ];
-var KEYMAP={'0':'deep','1':'orbital','2':'pulse','3':'constel','4':'tidal','5':'spiral'};
+var KEYMAP={'0':'tidal','1':'spiral','2':'deep','3':'orbital','4':'pulse','5':'constel'};
 (function buildRail(){
   var list=$('instrList');
   INSTR.forEach(function(ins){
     var b=document.createElement('button');
-    b.className='instr'+(ins.id==='deep'?' active':'')+(ins.isNew?' new':'');
+    b.className='instr'+(ins.id==='tidal'?' active':'')+(ins.isNew?' new':'');
     b.id='instr-'+ins.id;
     b.style.setProperty('--sc',ins.c);b.style.setProperty('--scg',ins.g);
-    b.innerHTML='<span class="key">'+ins.n+'</span><div class="iid">SYS-'+ins.n+'</div>'+
-      '<div class="inm">'+ins.name+'</div><div class="ist"><i></i>'+(ins.id==='deep'?'ACTIVE':'STANDBY')+'</div>';
+    b.innerHTML='<span class="key">'+ins.n+'</span><span class="iglyph">'+ICONS[ins.icon]+'</span>'+
+      '<span class="txt"><div class="iid">SYS-'+ins.n+'</div>'+
+      '<div class="inm">'+ins.name+'</div><div class="ist"><i></i>'+(ins.id==='tidal'?'ACTIVE':'STANDBY')+'</div></span>';
     b.addEventListener('click',function(){setView(ins.id);});
     list.appendChild(b);
   });
@@ -459,33 +468,24 @@ function lazyRender(id){
   else if(id==='pulse')renderPulse();
 }
 
-/* ================= BOOT SEQUENCE ================= */
-var BOOTLINES=[
- ['dim','NAYANET TRILLION-CORE · deep mind interface · build 2026.10.09'],
- ['','> waking the deep mind '+ '<span class="ok">.................... ONLINE</span>'],
- ['','> aligning nine nodes '+ '<span class="ok">.......................... 9/9</span>'],
- ['','> spectrum bus '+ '<span class="ok">............................... LOCKED</span>'],
- ['','> orbital array '+ '<span class="ok">............................ SPINNING</span>'],
- ['','> pulse core '+ '<span class="ok">................................ LIVE</span>'],
- ['','> tidal field '+ '<span class="ok">............................... CHARGED</span>'],
- ['','> spiral ledger '+ '<span class="ok">............................. WOUND</span>'],
- ['warn','> curiosity engines at 100% — caution advised'],
- ['hot','◈ ALL SYSTEMS NOMINAL — the machine is awake']
-];
+/* ================= BOOT SEQUENCE — progress as light, not words ================= */
+var BOOTWORDS=['CORE','NODES','SPECTRUM','AWAKE'];
+function lightSeg(el,i){
+  var cols=['#e84fff','#a06bff','#3fb8ff','#2fe89e','#ffbf3d'];
+  var c=cols[i%5];el.style.background=c;el.style.boxShadow='0 0 16px '+c+',0 0 34px '+c+'66';
+}
 function boot(){
-  var log=$('bootlog'),fill=$('bootfill'),i=0;
-  if(REDUCED){
-    log.innerHTML=BOOTLINES.map(function(l){return '<div class="'+l[0]+'">'+l[1]+'</div>';}).join('');
-    fill.style.width='100%';finishBoot();return;
-  }
-  var t0=performance.now();
+  var box=$('bootlights'),N=14,i=0,hint=$('boothint'),fill=$('bootfill');
+  for(var k=0;k<N;k++){var s=document.createElement('span');s.className='bl';box.appendChild(s);}
+  var segs=box.children;
+  if(REDUCED){for(var j=0;j<N;j++)lightSeg(segs[j],j);fill.style.width='100%';hint.textContent='AWAKE';finishBoot();return;}
   (function step(){
-    if(i<BOOTLINES.length){
-      var d=document.createElement('div');d.className=BOOTLINES[i][0];d.innerHTML=BOOTLINES[i][1];
-      log.appendChild(d);
-      fill.style.width=Math.round((i+1)/BOOTLINES.length*100)+'%';
-      i++;setTimeout(step,180+Math.random()*160);
-    }else setTimeout(finishBoot,420);
+    if(i<N){
+      lightSeg(segs[i],i);
+      fill.style.width=Math.round((i+1)/N*100)+'%';
+      hint.textContent=BOOTWORDS[Math.min(Math.floor(i/N*4),3)];
+      i++;setTimeout(step,150+Math.random()*140);
+    }else setTimeout(finishBoot,380);
   })();
 }
 function finishBoot(){
@@ -495,7 +495,7 @@ function finishBoot(){
   setTimeout(function(){$('boot').style.display='none';},800);
   startLoops();
   runConvergence(S.topic,S.model,function(){});
-  streamEv('sys','deep mind awake · 9 nodes aligned');
+  streamEv('sys','awake · 9 nodes aligned');
 }
 
 /* ================= COMMAND ENGINE ================= */
@@ -511,24 +511,25 @@ function parseTopic(v){
 function cmdSay(html){$('cmdOut').innerHTML=html;}
 function execute(raw){
   var p=parseTopic(raw);
-  if(!p){cmdSay('<span class="wr">◈</span> Speak, operator — e.g. <span class="q">"give me the stats on bitcoin"</span>');return;}
-  if(p.cmd==='help'){cmdSay('<span class="q">◈</span> queries: "give me the stats on X" · keys 0–5 switch instruments · ESC releases focus');return;}
-  if(p.cmd==='status'){cmdSay('<span class="ok">◈</span> 9 nodes aligned · core load '+$('coreLoadNum').textContent+'% · subject "'+S.topic+'" · '+fmt(S.model.total)+' signals indexed');return;}
-  if(p.cmd==='clear'){$('stream').innerHTML='';cmdSay('<span class="q">◈</span> stream cleared');return;}
+  if(!p){cmdSay('<span class="wr">◈</span> e.g. <span class="q">"give me the stats on bitcoin"</span>');return;}
+  if(p.cmd==='help'){cmdSay('<span class="q">◈</span> "give me the stats on X" · keys 0–5 · ESC');return;}
+  if(p.cmd==='status'){cmdSay('<span class="ok">◈</span> '+$('coreLoadNum').textContent+'% · "'+S.topic+'" · '+fmt(S.model.total)+' signals');return;}
+  if(p.cmd==='clear'){$('stream').innerHTML='';cmdSay('<span class="q">◈</span> cleared');return;}
   var topic=p.topic;
-  cmdSay('<span class="q">◈</span> QUERY ACCEPTED — <span class="q">"'+topic.replace(/</g,'&lt;')+'"</span> · converging signals…');
+  hush();
+  cmdSay('<span class="q">◈</span> "'+topic.replace(/</g,'&lt;')+'" · converging…');
   setView('deep');
   S.computing=true;$('convRead').textContent='COMPUTING';$('convRead').style.color='var(--gold)';
-  $('convState').textContent='CONVERGENCE IN PROGRESS';$('convState').classList.add('live');
+  $('convState').textContent='COMPUTING';$('convState').classList.add('live');
   setTimeout(function(){
     S.topic=topic;S.model=modelFor(topic);
     ['deepSubj','orbSubj','pulseSubj','conSubj','tidalSubj','spiralSubj'].forEach(function(id){$(id).textContent=topic;});
-    $('deepSub').textContent=S.model.label+' · 5 WORLDS · 12 CYCLES';
     runConvergence(topic,S.model,function(){
       S.computing=false;$('convRead').textContent='IDLE';$('convRead').style.color='';
-      $('convState').textContent='CORE IDLE · AWAITING QUERY';$('convState').classList.remove('live');
-      cmdSay('<span class="ok">◈</span> RESOLVED — <span class="ok">'+fmt(S.model.total)+'</span> signals across 5 worlds · instruments live · keys 1–5 to inspect');
-      streamEv('up','query "'+topic+'" → '+fmt(S.model.total)+' signals');
+      $('convState').textContent='IDLE';$('convState').classList.remove('live');
+      cmdSay('<span class="ok">◈</span> '+fmt(S.model.total)+' signals · keys 0–5 to inspect');
+      speak(voiceSummary(topic,S.model));
+      streamEv('up','"'+topic+'" → '+fmt(S.model.total));
       if(spiral.timer){clearInterval(spiral.timer);spiral.timer=null;}
       S.rendered={deep:true}; // instruments re-render lazily with the new model
       buildChips();
@@ -537,7 +538,7 @@ function execute(raw){
 }
 $('cmdIn').addEventListener('keydown',function(e){
   if(e.key==='Enter'){execute(e.target.value);e.target.value='';e.target.blur();}
-  if(e.key==='Escape'){e.target.blur();}
+  if(e.key==='Escape'){hush();e.target.blur();}
 });
 document.addEventListener('keydown',function(e){
   if(document.activeElement===$('cmdIn'))return;
@@ -548,6 +549,47 @@ function buildChips(){
   $('coreChips').innerHTML=S.model.cats.map(function(c){
     return '<span style="border-color:'+c.color+'55"><b style="color:'+c.color+'">'+fmt(c.value)+'</b> '+c.name+'</span>';
   }).join('');
+}
+
+/* ================= VOICE — the machine speaks =================
+   Excellence by default: the machine never asks what quality you want.
+   It speaks — warm, short, intelligent — the moment an answer resolves.
+   Text is the fallback; voice + visual are the language. */
+function numWords(n){
+  n=Math.round(n);
+  var ones=['','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen'];
+  var tens=['','','twenty','thirty','forty','fifty','sixty','seventy','eighty','ninety'];
+  function two(x){return x<20?ones[x]:tens[Math.floor(x/10)]+(x%10?' '+ones[x%10]:'');}
+  function three(x){var h=Math.floor(x/100),r=x%100;return ((h?ones[h]+' hundred'+(r?' ':''):'')+(r?two(r):''))||'zero';}
+  if(n>=1e9)return three(Math.floor(n/1e9))+' billion';
+  if(n>=1e6)return three(Math.floor(n/1e6))+' million';
+  if(n>=1e3){var th=three(Math.floor(n/1e3))+' thousand';return n%1e3?th+' '+three(n%1e3):th;}
+  return three(n);
+}
+var VOICE={on:false};
+function hush(){
+  try{if('speechSynthesis' in window)window.speechSynthesis.cancel();}catch(e){}
+  var v=$('voiceInd');if(v)v.classList.remove('on');VOICE.on=false;
+}
+function speak(text){
+  try{
+    if(!('speechSynthesis' in window))return;
+    window.speechSynthesis.cancel();
+    var u=new SpeechSynthesisUtterance(text);
+    u.rate=1.02;u.pitch=1;u.volume=1;
+    var vs=window.speechSynthesis.getVoices().filter(function(v){return v.lang&&v.lang.indexOf('en')===0;});
+    var pick=vs.filter(function(v){return /natural|neural|premium|samantha|zira|aria|jenny|google us english/i.test(v.name);})[0]||vs[0];
+    if(pick)u.voice=pick;
+    u.onstart=function(){$('voiceInd').classList.add('on');VOICE.on=true;};
+    u.onend=u.onerror=function(){hush();};
+    window.speechSynthesis.speak(u);
+  }catch(e){}
+}
+function voiceSummary(topic,model){
+  var top=model.cats.slice().sort(function(a,b){return b.value-a.value;})[0];
+  var avg=model.cats.reduce(function(a,c){return a+c.change;},0)/model.cats.length;
+  var mom=avg>15?'Momentum is exceptional.':avg>8?'Momentum is strong.':avg>0?'Trending upward.':'Cooling off.';
+  return topic+'. '+numWords(model.total)+' signals across five worlds. Led by '+top.name.toLowerCase()+'. '+mom;
 }
 
 /* ================= CONVERGENCE ENGINE (invented form #1) =================
@@ -653,9 +695,42 @@ function renderOrbital(){
   });
 }
 
-/* ================= SYS-02 · PULSE CORE ================= */
-function renderPulse(){
-  $('pulseNote').textContent='Peaks are launch moments. Valleys are rest. "'+S.topic+'" never sleeps.';
+/* ================= SYS-04 · PULSE CORE — HOLO SPECTRUM FIELD (invented form #4) =================
+   Five waves of living data, one per spectrum color, stacked in depth like
+   glass sheets. Far sheets are dim and slow; near sheets are bright and fast.
+   The stack breathes with core energy; your cursor shifts the sheets apart. */
+var pulseW={};
+function sizePulse(){sizeCanvas($('pulseCanvas'));}
+function renderPulse(){sizePulse();}
+function drawPulse(now){
+  var cv=$('pulseCanvas');if(!cv||S.view!=='pulse')return;
+  var ctx=cv.getContext('2d'),W=cv.width,H=cv.height,t=now/1000;
+  ctx.fillStyle='rgba(4,4,5,0.20)';ctx.fillRect(0,0,W,H);
+  var layers=[
+    {c:'#e84fff',d:2.0,amp:0.62,y:0.30,o:0.28,sp:0.7},
+    {c:'#a06bff',d:1.2,amp:0.78,y:0.42,o:0.40,sp:1.0},
+    {c:'#3fb8ff',d:0.4,amp:1.00,y:0.54,o:0.62,sp:1.35},
+    {c:'#2fe89e',d:-0.5,amp:1.18,y:0.66,o:0.80,sp:1.7},
+    {c:'#ffbf3d',d:-1.3,amp:1.34,y:0.78,o:0.95,sp:2.1}
+  ];
+  var e=S.energy;
+  layers.forEach(function(L){
+    var yy=H*L.y+PAR.y*L.d*46,eAmp=L.amp*(0.75+0.5*e);
+    ctx.globalAlpha=L.o;
+    ctx.strokeStyle=L.c;ctx.lineWidth=(3.4-L.d*0.7);
+    ctx.shadowColor=L.c;ctx.shadowBlur=20;
+    ctx.beginPath();
+    for(var x=-40;x<=W+40;x+=7){
+      var n=Math.sin(x*0.0065+t*1.9*L.sp+L.d*2.2)*Math.sin(x*0.0027-t*1.05*L.sp);
+      var y=yy+Math.sin(x*0.011+t*2.6*L.sp+L.d*1.4)*H*0.045*eAmp+n*H*0.075*eAmp;
+      x<=-40+7?ctx.moveTo(x+PAR.x*L.d*64,y):ctx.lineTo(x+PAR.x*L.d*64,y);
+    }
+    ctx.stroke();
+    // under-glow sheet — the wave reads as a solid holographic plane
+    ctx.globalAlpha=L.o*0.13;ctx.lineTo(W+PAR.x*L.d*64,H+40);ctx.lineTo(PAR.x*L.d*64-40,H+40);
+    ctx.closePath();ctx.fillStyle=L.c;ctx.fill();
+  });
+  ctx.globalAlpha=1;ctx.shadowBlur=0;
 }
 
 /* ================= SYS-03 · NEURAL CONSTELLATION ================= */
@@ -710,7 +785,7 @@ function initTidal(){
   for(var i=0;i<n;i++){
     tidal.parts.push({x:Math.random()*cv.width,y:Math.random()*cv.height,
       vx:(Math.random()-.5)*2.4,vy:(Math.random()-.5)*2.4,
-      c:SPEC[i%5].c,s:0.8+Math.random()*1.8});
+      c:SPEC[i%5].c,s:0.8+Math.random()*1.8,z:i%3}); // z: 0 far · 1 mid · 2 near
   }
   if(cv.dataset.tidalBound)return;
   cv.dataset.tidalBound='1';
@@ -754,6 +829,12 @@ function drawTidal(now){
     ctx.globalAlpha=1;
     ctx.strokeStyle=w.cat.color;ctx.lineWidth=hot?3:1.5;ctx.globalAlpha=0.85;
     ctx.beginPath();ctx.arc(w.x,w.y,rad,0,7);ctx.stroke();ctx.globalAlpha=1;
+    // holographic ghost rings — the well tunnels backward through glass sheets
+    for(var g=1;g<=2;g++){
+      ctx.globalAlpha=0.16/g;ctx.strokeStyle=w.cat.color;ctx.lineWidth=1;
+      ctx.beginPath();ctx.arc(w.x-PAR.x*g*54,w.y-PAR.y*g*54,rad*(1+g*0.42),0,7);ctx.stroke();
+    }
+    ctx.globalAlpha=1;
     ctx.fillStyle='#fff';ctx.font='700 '+Math.round(11*Math.min(W,H)/600+9)+'px ui-monospace,monospace';
     ctx.textAlign='center';ctx.globalAlpha=0.9;
     ctx.fillText(w.cat.name,w.x,w.y+rad+22);ctx.globalAlpha=1;
@@ -773,8 +854,9 @@ function drawTidal(now){
     p.vx=(p.vx+fx)*0.985;p.vy=(p.vy+fy)*0.985;
     p.x+=p.vx;p.y+=p.vy;
     if(p.x<-20)p.x=W+20;if(p.x>W+20)p.x=-20;if(p.y<-20)p.y=H+20;if(p.y>H+20)p.y=-20;
-    ctx.globalAlpha=0.85;ctx.fillStyle=p.c;ctx.shadowColor=p.c;ctx.shadowBlur=6;
-    ctx.beginPath();ctx.arc(p.x,p.y,p.s,0,7);ctx.fill();
+    var ox=PAR.x*(p.z-1)*52,oy=PAR.y*(p.z-1)*52; // depth parallax per plane
+    ctx.globalAlpha=0.45+p.z*0.22;ctx.fillStyle=p.c;ctx.shadowColor=p.c;ctx.shadowBlur=4+p.z*3;
+    ctx.beginPath();ctx.arc(p.x+ox,p.y+oy,p.s*(0.7+p.z*0.28),0,7);ctx.fill();
   });
   ctx.shadowBlur=0;ctx.globalAlpha=1;
   // hover readout
@@ -810,15 +892,24 @@ function renderSpiral(){
   svg.setAttribute('width',size);svg.setAttribute('height',size);
   svg.setAttribute('viewBox','0 0 '+size+' '+size);
   svg.innerHTML='';spiral.segs=[];
+  var NS='http://www.w3.org/2000/svg';
+  var gGhost=document.createElementNS(NS,'g');gGhost.setAttribute('id','sgGhost');svg.appendChild(gGhost);
+  var gMain=document.createElementNS(NS,'g');gMain.setAttribute('id','sgMain');svg.appendChild(gMain);
   var cx=size/2,cy=size/2,weeks=S.model.weeks;
   var maxW=Math.max.apply(null,weeks),TURNS=3,TH=Math.PI*2*TURNS,SEG=12;
   function pt(th){var r=26+th*(size/2-70)/TH;return [cx+Math.cos(th-Math.PI/2)*r,cy+Math.sin(th-Math.PI/2)*r];}
   // full guide path (invisible)
   var guide='M'+pt(0.01).map(function(n){return n.toFixed(1);}).join(',');
   for(var g=0.05;g<=TH;g+=0.05){var q=pt(g);guide+=' L'+q[0].toFixed(1)+','+q[1].toFixed(1);}
-  var gp=document.createElementNS('http://www.w3.org/2000/svg','path');
-  gp.setAttribute('d',guide);gp.setAttribute('fill','none');
-  svg.appendChild(gp);
+  // ghost spirals — the ledger seen through deeper glass sheets
+  [[0.16,1.0,'#a06bff'],[0.08,1.24,'#e84fff']].forEach(function(gh){
+    var gg=document.createElementNS(NS,'path');
+    gg.setAttribute('d',guide);gg.setAttribute('fill','none');
+    gg.setAttribute('stroke',gh[2]);gg.setAttribute('stroke-width','3');
+    gg.setAttribute('opacity',gh[0]);
+    gg.setAttribute('transform','translate('+cx+','+cy+') scale('+gh[1]+') translate('+(-cx)+','+(-cy)+')');
+    gGhost.appendChild(gg);
+  });
   for(var i=0;i<SEG;i++){
     var th0=i/SEG*TH+0.02,th1=(i+1)/SEG*TH-0.02,d='M'+pt(th0).map(function(n){return n.toFixed(1);}).join(',');
     for(var s=th0+0.06;s<th1;s+=0.06){var qq=pt(s);d+=' L'+qq[0].toFixed(1)+','+qq[1].toFixed(1);}
@@ -827,7 +918,7 @@ function renderSpiral(){
     pth.setAttribute('d',d);pth.setAttribute('class','spiral-seg');
     pth.setAttribute('stroke',SPEC[i%5].c);pth.setAttribute('stroke-width',wdt.toFixed(1));
     pth.style.filter='drop-shadow(0 0 8px '+SPEC[i%5].c+'88)';
-    pth.dataset.i=i;svg.appendChild(pth);spiral.segs.push(pth);
+    pth.dataset.i=i;gMain.appendChild(pth);spiral.segs.push(pth);
     (function(idx,el){el.addEventListener('mouseenter',function(){spiralPin(idx);});
       el.addEventListener('mouseleave',function(){spiralPin(-1);});})(i,pth);
   }
@@ -837,18 +928,18 @@ function renderSpiral(){
   trav.style.filter='drop-shadow(0 0 10px #fff)';
   var am=document.createElementNS('http://www.w3.org/2000/svg','animateMotion');
   am.setAttribute('dur','26s');am.setAttribute('repeatCount','indefinite');am.setAttribute('path',guide);
-  trav.appendChild(am);svg.appendChild(trav);
+  trav.appendChild(am);gMain.appendChild(trav);
   // center total
   var tx=document.createElementNS('http://www.w3.org/2000/svg','text');
   tx.setAttribute('x',cx);tx.setAttribute('y',cy-6);tx.setAttribute('text-anchor','middle');
   tx.setAttribute('fill','#fff');tx.setAttribute('font-size','30');tx.setAttribute('font-weight','800');
   tx.setAttribute('font-family','ui-sans-serif,system-ui');tx.textContent=fmt(S.model.total);
-  svg.appendChild(tx);
+  gMain.appendChild(tx);
   var tx2=document.createElementNS('http://www.w3.org/2000/svg','text');
   tx2.setAttribute('x',cx);tx2.setAttribute('y',cy+18);tx2.setAttribute('text-anchor','middle');
   tx2.setAttribute('fill','#8f8a9e');tx2.setAttribute('font-size','10');tx2.setAttribute('letter-spacing','3');
   tx2.setAttribute('font-family','ui-monospace,monospace');tx2.textContent='12 CYCLES';
-  svg.appendChild(tx2);
+  gMain.appendChild(tx2);
   if(spiral.timer)clearInterval(spiral.timer);
   spiral.idx=0;
   if(!REDUCED)spiral.timer=setInterval(function(){spiralPin(spiral.idx);spiral.idx=(spiral.idx+1)%SEG;},1700);
@@ -923,6 +1014,7 @@ function startLoops(){
     bn.style.transform='scale('+br.toFixed(4)+')';
     bn.style.filter='brightness('+(1+0.12*S.energy*Math.sin(t*1.57+1)).toFixed(3)+') drop-shadow(0 0 '+(30+40*S.energy)+'px rgba(168,107,255,'+(0.25+0.3*S.energy).toFixed(3)+'))';
     if(S.view==='tidal'&&!REDUCED)drawTidal(now);
+    if(S.view==='pulse'&&!REDUCED)drawPulse(now);
     drawConvergence(now);
   })(t0);
   // parallax depth
@@ -934,10 +1026,17 @@ function startLoops(){
     (function par(){
       requestAnimationFrame(par);
       px+=(tx2-px)*0.06;py+=(ty2-py)*0.06;
+      PAR.x=px;PAR.y=py;
       document.querySelectorAll('.parallax').forEach(function(el){
         var d=+el.dataset.depth||10;
         el.style.transform='translate('+(px*d).toFixed(1)+'px,'+(py*d).toFixed(1)+'px)';
       });
+      // spiral hologram sheets drift apart with the cursor
+      var gg=$('sgGhost'),gm=$('sgMain');
+      if(gg&&S.view==='spiral'){
+        gg.setAttribute('transform','translate('+(px*64).toFixed(1)+','+(py*64).toFixed(1)+')');
+        gm.setAttribute('transform','translate('+(px*20).toFixed(1)+','+(py*20).toFixed(1)+')');
+      }
     })();
   }
   window.addEventListener('resize',function(){
@@ -946,7 +1045,7 @@ function startLoops(){
     sizeCanvas($('convCanvas'));
   });
   buildChips();
-  lazyRender('deep');
+  lazyRender('tidal');
   $('cmdIn').focus();
 }
 /* ================= IGNITION ================= */
