@@ -1,0 +1,72 @@
+/* Smart Block: body — reading text.
+ * Authored 2026-10-09 for the Smart Blocks library (composition layer).
+ *
+ * 18px minimum per the reading floor. Generous leading. High contrast —
+ * white or near-white, never gray-on-black for body copy.
+ * A 68ch measure keeps lines readable. (This is a typographic measure,
+ * not a page cap — the page stays full-width per the law.)
+ */
+
+.naya-body {
+  box-sizing: border-box;
+  margin: 0 0 1.25em 0;
+  font-family: var(--ui, Inter, ui-sans-serif, system-ui, sans-serif);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.65;
+  color: #f5f7fb;
+  max-width: 68ch;
+  text-wrap: pretty;
+}
+
+.naya-body:last-child {
+  margin-bottom: 0;
+}
+
+/* Quieter variant for secondary copy — still passes contrast */
+.naya-body--quiet {
+  color: rgba(248, 247, 251, 0.72);
+}
+
+/* Small variant for captions, metadata — 14px per the type scale */
+.naya-body--small {
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(248, 247, 251, 0.65);
+}
+
+/* Lead variant — the opening paragraph, slightly larger */
+.naya-body--lead {
+  font-size: clamp(19px, 2.4vw, 21px);
+  line-height: 1.6;
+  color: #ffffff;
+}
+
+/* Full-measure variant — for contexts where the measure should not apply */
+.naya-body--wide {
+  max-width: none;
+}
+
+/* Links inside body copy: purple soul, visible, honest */
+.naya-body a {
+  color: #a583ff;
+  text-decoration: underline;
+  text-decoration-color: rgba(141, 99, 245, 0.5);
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.22s cubic-bezier(0.16, 0.84, 0.22, 1);
+}
+
+.naya-body a:hover {
+  text-decoration-color: #8d63f5;
+}
+
+/* Strong and emphasis */
+.naya-body strong {
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.naya-body em {
+  font-family: var(--voice, "Cormorant Garamond", Georgia, serif);
+  font-style: italic;
+}

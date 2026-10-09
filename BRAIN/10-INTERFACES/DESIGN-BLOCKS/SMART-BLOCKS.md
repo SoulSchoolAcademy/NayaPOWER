@@ -7,6 +7,8 @@ You are Naya. These are Smart Blocks — the modular building pieces for Smart A
 1. **Start with tokens.** Include `tokens.css` (at the DESIGN-BLOCKS root) once per page. Every block shares these tokens, so they speak the same language.
 
 2. **Pick your blocks.** Browse `blocks/` by type:
+   - `layout/` — page-shell (the chassis), section (rhythm), row-grid (responsive layout)
+   - `type/` — hero (page opening), headline (section titles), body (reading text)
    - `buttons/` — every button style (naya-btn is the canonical)
    - `orbs/` — spheres of light, luminous marks
    - `boards/` — elevated containers, content cards
@@ -17,6 +19,8 @@ You are Naya. These are Smart Blocks — the modular building pieces for Smart A
    - `overlays/` — modals, toasts, share sheets
    - `data/` — tables, charts, bars
    - `media/` — media players
+
+   **Start every page with:** `layout/page-shell` → `layout/section` → `type/hero` (or `type/headline` + `type/body`). Then add component blocks inside `layout/row-grid`. That's the composition recipe.
 
 3. **Grab the block.** Each block folder has:
    - `{name}.css` — the exact CSS, byte-true from source. Copy it.

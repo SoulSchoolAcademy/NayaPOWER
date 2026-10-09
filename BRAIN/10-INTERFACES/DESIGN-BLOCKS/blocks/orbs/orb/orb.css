@@ -112,4 +112,8 @@ button.orb--btn { cursor: pointer; font-family: inherit; border: none; }
 .orb--btn:active { transform: scale(.9); transition: transform .1s ease; }
 
 .orb--btn:focus-visible { outline: 2px solid #fff; outline-offset: 8px; }
- .orb, .orb::before { animation: none; }
+/* Restored 2026-10-09: extraction stripped the reduced-motion wrapper.
+ * The kill-rule below must ONLY apply when the user prefers reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  .orb, .orb::before { animation: none; }
+}

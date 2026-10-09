@@ -51,4 +51,16 @@
 .orbit-btn:hover::after { opacity: 1; }
 
 .orbit-btn:active { transform: translateY(1px) scale(.98); transition-duration: .08s; }
- .orbit-btn::before { animation: none; }
+/* Restored 2026-10-09: extraction stripped the reduced-motion wrapper.
+ * The kill-rule below must ONLY apply when the user prefers reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  .orbit-btn::before { animation: none; }
+}
+
+/* Restored 2026-10-09: @property registration was missing from extraction.
+ * Without this, --oa does not interpolate and the orbit ring cannot travel. */
+@property --oa {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}

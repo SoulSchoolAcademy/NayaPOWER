@@ -30,4 +30,5 @@
 
 .board h3{font-family:var(--voice); font-size:24px; margin:0 0 4px; color:#fff; padding-right:52px;}
 
-  .board{padding:22px 20px;}
+/* Removed 2026-10-09: stray padding override from stripped media query.
+ * The documented padding (28px 32px) is the intended default. */

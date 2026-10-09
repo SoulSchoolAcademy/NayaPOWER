@@ -437,7 +437,7 @@
     {
       "id": "board",
       "type": "boards",
-      "description": "Intelligent board container with identity spine.",
+      "description": "Intelligent board container with identity spine. REQUIRED: set --ic identity color.",
       "source": "Naya_4_Design_Element_Set.html",
       "files": {
         "css": "blocks/boards/board/board.css",
@@ -922,8 +922,181 @@
         ".nl-player-top"
       ],
       "score": 8.0
+    },
+    {
+      "id": "page-shell",
+      "type": "layout",
+      "description": "The page chassis. Full-width black ground, no max-width caps, base reset, focus/selection/motion defaults.",
+      "source": "authored 2026-10-09 for the Smart Blocks library (composition layer)",
+      "files": {
+        "css": "blocks/layout/page-shell/page-shell.css",
+        "specimen": "blocks/layout/page-shell/specimen.html",
+        "readme": "blocks/layout/page-shell/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [
+        ":focus-visible",
+        "::selection",
+        "@media (prefers-reduced-motion: reduce)"
+      ],
+      "selectors": [
+        ".naya-page",
+        ".naya-page--edgelight",
+        ".naya-page--edgelight::before",
+        ".naya-page ::selection",
+        ".naya-page :focus-visible",
+        "body:has(.naya-page)"
+      ],
+      "score": 9.0
+    },
+    {
+      "id": "section",
+      "type": "layout",
+      "description": "Content rhythm. Generous fluid vertical spacing, optional glowing hairline divider with diamond jewel break, tint variant.",
+      "source": "authored 2026-10-09 for the Smart Blocks library (composition layer)",
+      "files": {
+        "css": "blocks/layout/section/section.css",
+        "specimen": "blocks/layout/section/specimen.html",
+        "readme": "blocks/layout/section/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [
+        "@media (max-width: 480px)"
+      ],
+      "selectors": [
+        ".naya-section",
+        ".naya-section--compact",
+        ".naya-section--roomy",
+        ".naya-section--divided",
+        ".naya-section--divided::before",
+        ".naya-section--jewel::after",
+        ".naya-section--tint"
+      ],
+      "score": 9.0
+    },
+    {
+      "id": "row-grid",
+      "type": "layout",
+      "description": "Responsive layout. Mobile-first grids (2/3/4 col), flex rows, and equal splits \u2014 all collapsing cleanly, pure CSS.",
+      "source": "authored 2026-10-09 for the Smart Blocks library (composition layer)",
+      "files": {
+        "css": "blocks/layout/row-grid/row-grid.css",
+        "specimen": "blocks/layout/row-grid/specimen.html",
+        "readme": "blocks/layout/row-grid/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [
+        "@media (min-width: 640px)",
+        "@media (min-width: 900px)",
+        "@media (min-width: 1024px)"
+      ],
+      "selectors": [
+        ".naya-grid",
+        ".naya-grid--2",
+        ".naya-grid--3",
+        ".naya-grid--4",
+        ".naya-grid--tight",
+        ".naya-grid--loose",
+        ".naya-grid--center",
+        ".naya-grid--stretch",
+        ".naya-row",
+        ".naya-row--top",
+        ".naya-row--spread",
+        ".naya-split",
+        ".naya-split--flip"
+      ],
+      "score": 9.0
+    },
+    {
+      "id": "hero",
+      "type": "type",
+      "description": "The page opening. Editorial display headline (voice serif, 40-88px fluid) with purple eyebrow kicker, sub-line, CTA row, staggered entrance.",
+      "source": "authored 2026-10-09 for the Smart Blocks library (composition layer)",
+      "files": {
+        "css": "blocks/type/hero/hero.css",
+        "specimen": "blocks/type/hero/specimen.html",
+        "readme": "blocks/type/hero/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [
+        "@media (prefers-reduced-motion: no-preference)"
+      ],
+      "selectors": [
+        ".naya-hero",
+        ".naya-hero--center",
+        ".naya-hero__eyebrow",
+        ".naya-hero__title",
+        ".naya-hero__title .naya-accent",
+        ".naya-hero__sub",
+        ".naya-hero__actions"
+      ],
+      "score": 9.0
+    },
+    {
+      "id": "headline",
+      "type": "type",
+      "description": "Section titles. 24px per the type scale, white, with optional kicker, diamond jewel marker, and sm/lg sizes.",
+      "source": "authored 2026-10-09 for the Smart Blocks library (composition layer)",
+      "files": {
+        "css": "blocks/type/headline/headline.css",
+        "specimen": "blocks/type/headline/specimen.html",
+        "readme": "blocks/type/headline/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [
+        "responsive clamp() on --lg"
+      ],
+      "selectors": [
+        ".naya-headline",
+        ".naya-headline__kicker",
+        ".naya-headline--jewel",
+        ".naya-headline--jewel::before",
+        ".naya-headline--sm",
+        ".naya-headline--lg",
+        ".naya-headline-group"
+      ],
+      "score": 9.0
+    },
+    {
+      "id": "body",
+      "type": "type",
+      "description": "Reading text. 18px floor, 1.65 leading, high contrast, 68ch measure. Lead/quiet/small/wide variants, honest link styling.",
+      "source": "authored 2026-10-09 for the Smart Blocks library (composition layer)",
+      "files": {
+        "css": "blocks/type/body/body.css",
+        "specimen": "blocks/type/body/specimen.html",
+        "readme": "blocks/type/body/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [
+        ":hover (links)"
+      ],
+      "selectors": [
+        ".naya-body",
+        ".naya-body--quiet",
+        ".naya-body--small",
+        ".naya-body--lead",
+        ".naya-body--wide",
+        ".naya-body a",
+        ".naya-body a:hover",
+        ".naya-body strong",
+        ".naya-body em"
+      ],
+      "score": 9.0
     }
   ],
   "generated": "2026-10-09",
-  "version": "1.0"
+  "version": "1.1"
 }

@@ -1,0 +1,85 @@
+/* Smart Block: page-shell — the page chassis.
+ * Authored 2026-10-09 for the Smart Blocks library (composition layer).
+ * Design language: Naya — black ground, white light, purple soul.
+ *
+ * The full-width law: no max-width caps. The page IS the viewport.
+ * Depth: a faint top-edge light washes the ground so black never reads flat.
+ */
+
+/* Base reset scoped to the shell — never touches global * */
+.naya-page,
+.naya-page::before,
+.naya-page::after {
+  box-sizing: border-box;
+}
+
+/* Fixed 2026-10-09 (cold test): the chassis must own the <body> margin.
+ * Without this, the UA's 8px margin frames the "full-width" page in white. */
+.naya-page-body-reset,
+body:has(.naya-page) {
+  margin: 0;
+  padding: 0;
+  background: #050508;
+}
+
+.naya-page {
+  /* Chassis */
+  min-height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+
+  /* Ground: deep black with a whisper of top light so it never reads flat */
+  background:
+    radial-gradient(120% 60% at 50% -10%, rgba(141, 99, 245, 0.06) 0%, transparent 55%),
+    linear-gradient(180deg, #0a0a10 0%, #050508 22%, #050508 100%);
+  background-color: #050508;
+
+  /* Type defaults */
+  color: #ffffff;
+  font-family: var(--ui, Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif);
+  font-size: 18px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+
+  /* Motion */
+  overflow-x: clip;
+}
+
+/* Optional: a hairline of light seated at the very top edge of the viewport.
+ * Apply to .naya-page for pages that open with a hero. */
+.naya-page--edgelight::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.28) 50%, transparent 100%);
+  pointer-events: none;
+  z-index: 100;
+}
+
+/* Selection: purple soul, never default blue */
+.naya-page ::selection {
+  background: rgba(141, 99, 245, 0.45);
+  color: #ffffff;
+}
+
+/* Focus: visible, consistent, on-brand */
+.naya-page :focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Reduced motion: honor it at the chassis level */
+@media (prefers-reduced-motion: reduce) {
+  .naya-page *,
+  .naya-page *::before,
+  .naya-page *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,94 @@
+/* Smart Block: hero — the page opening.
+ * Authored 2026-10-09 for the Smart Blocks library (composition layer).
+ *
+ * Large editorial headline, white, tight leading, confident. An eyebrow
+ * kicker in purple soul above, a sub-line in quiet white below.
+ * Depth: the headline carries a faint dimensional shadow so type never
+ * reads flat against the black ground.
+ */
+
+.naya-hero {
+  box-sizing: border-box;
+  width: 100%;
+  text-align: left;
+}
+
+/* Eyebrow kicker — small caps, purple soul, letterspaced */
+.naya-hero__eyebrow {
+  display: block;
+  font-family: var(--ui, Inter, ui-sans-serif, system-ui, sans-serif);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #8d63f5;
+  margin: 0 0 20px 0;
+}
+
+/* The headline itself — editorial voice, display scale */
+.naya-hero__title {
+  font-family: var(--voice, "Cormorant Garamond", Georgia, serif);
+  font-size: clamp(40px, 7vw, 88px);
+  font-weight: 600;
+  line-height: 1.04;
+  letter-spacing: -0.015em;
+  color: #ffffff;
+  margin: 0 0 24px 0;
+  text-wrap: balance;
+  /* Dimensional: a whisper of depth under the letterforms */
+  text-shadow:
+    0 1px 0 rgba(0, 0, 0, 0.6),
+    0 12px 32px rgba(0, 0, 0, 0.45);
+}
+
+/* Accent words inside the headline — gradient soul, not flat color */
+.naya-hero__title .naya-accent {
+  background: linear-gradient(120deg, #c9b3ff 0%, #8d63f5 55%, #6d3ff0 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Sub-line — quiet white, generous, human */
+.naya-hero__sub {
+  font-family: var(--ui, Inter, ui-sans-serif, system-ui, sans-serif);
+  font-size: clamp(18px, 2.4vw, 22px);
+  font-weight: 400;
+  line-height: 1.55;
+  color: rgba(248, 247, 251, 0.72);
+  margin: 0;
+  max-width: 42ch;
+  text-wrap: pretty;
+}
+
+/* Centered variant */
+.naya-hero--center { text-align: center; }
+.naya-hero--center .naya-hero__sub { margin-left: auto; margin-right: auto; }
+
+/* Actions row — where CTAs live under the sub-line */
+.naya-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 36px;
+}
+.naya-hero--center .naya-hero__actions { justify-content: center; }
+
+/* Entrance: rest → aware. Respects reduced motion via page-shell. */
+@media (prefers-reduced-motion: no-preference) {
+  .naya-hero__eyebrow,
+  .naya-hero__title,
+  .naya-hero__sub,
+  .naya-hero__actions {
+    animation: naya-hero-rise 0.9s cubic-bezier(0.16, 0.84, 0.22, 1) both;
+  }
+  .naya-hero__title { animation-delay: 0.08s; }
+  .naya-hero__sub { animation-delay: 0.16s; }
+  .naya-hero__actions { animation-delay: 0.24s; }
+}
+
+@keyframes naya-hero-rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
