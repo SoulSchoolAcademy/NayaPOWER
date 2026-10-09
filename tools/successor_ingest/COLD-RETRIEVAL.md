@@ -18,7 +18,9 @@ with its level, status, provenance, and independent-verification record.
 - `status = 'ACTIVE'` — live, not retired or superseded
 - `provenance = 'TRIAL_EVIDENCE'` — produced by a governed trial
   (an `E5` row with `OBSERVATION` provenance is an operational note,
-  not a verified law — the seam refuses it, loudly)
+  not a verified law — the seam excludes it quietly: it never enters the
+  output, and the only signal is `eligible_count < row_count` in the
+  retrieval block)
 
 The governing definitions live in `successor-reuse/lesson-selection-criterion.md`
 and the trial protocol in `successor-reuse/protocol.md`. This document is
@@ -81,8 +83,12 @@ From the repo root:
 # 1. Check the seam resolves (prints transport + source, or refuses with a reason)
 python3 -c "
 import sys; sys.path.insert(0, 'tools')
-from successor_ingest.read import resolve_transport
-print(resolve_transport())"
+from successor_ingest.read import resolve_transport, IngestError
+try:
+    print(resolve_transport())
+except IngestError as exc:
+    print(f'REFUSED {exc.code}: {exc.detail}', file=sys.stderr)
+    sys.exit(3)"
 
 # 2. Retrieve all eligible lessons (JSON to stdout)
 python3 tools/successor_ingest/retrieve.py

@@ -1,1 +1,27 @@
-{"build_receipt":{"built_by":"naya5/successor-ingest-r1r2 (successor-ingestion builder seat)","drift_since_previous_pin":"1 file changed with semantic drift since v3.3 pin dad16076: BRAIN/10-INTERFACES/DESIGN-BLOCKS/tools/design-compliance-check.py (commit 2e96aa43b, #2023 — data: URI document 'fourth perimeter'). Other 6 files byte-identical.","verifier":"git show <pin>:<path> | sha256sum, measured 2026-10-09T20:13:59Z"},"enforcement_files":{".github/workflows/design-gate.yml":"18d7207e372069e2d60153e3fb07dba8de57621ad80747183efd51f46b8c2b7d","BRAIN/10-INTERFACES/DESIGN-BLOCKS/tools/activation_pregate.py":"90f487b4d7d6bd8facedf79664f9df8e0599a27bfaa5c827a214ed3b4e8a36bd","BRAIN/10-INTERFACES/DESIGN-BLOCKS/tools/design-compliance-check.py":"4fefb01b2c8205624b926dc16f7639a9b70a6a65797a3f19b189df36bfb8f597","NAYA-ACTIVATION/ACTIVATION-RECEIPT-V2.json":"4418d5270a52260829e255aa8e2046d63c1945ab4589db980a6e406c2f66df1e","smart-blocks/manifest.json":"bb5084e9d7406301296cdc929da904cab33dff583dc0c08c8aedeb93b721ecf3","tools/activation_gate.py":"fe0469d1d7a4b9ea6da0159d554bada1dad9e9ceb34338faf872a2d93853b033","tools/design_gate.py":"39c25e6f6f29e778d99656b73c85150dda043a9a316aa87d8f454ce3fda960a0"},"packet":"COLD-START-PACKET.md","packet_version":"v3.4","pin":"1d73652231ac6127806640af5a31eb516c60738d","pinned_at":"2026-10-09T20:13:59+00:00","schema":"naya.cold_start_packet.pin.v1","sla":{"enforcement_files_must_match_pin":true,"max_age_hours":24,"max_commits_past_pin":50,"note":"Proposed by the builder seat (2026-10-09). Naya 1 ratifies the SLA."}}
+{
+  "build_receipt": {
+    "built_by": "naya5/successor-ingest-r1r2 (successor-ingestion builder seat)",
+    "drift_since_previous_pin": "1 file changed with semantic drift since v3.3 pin dad16076: BRAIN/10-INTERFACES/DESIGN-BLOCKS/tools/design-compliance-check.py (commit 2e96aa43b, #2023 \u2014 data: URI document 'fourth perimeter'). Other 6 files byte-identical.",
+    "verifier": "git show <pin>:<path> | sha256sum, measured 2026-10-09T20:13:59Z"
+  },
+  "enforcement_files": {
+    ".github/workflows/design-gate.yml": "18d7207e372069e2d60153e3fb07dba8de57621ad80747183efd51f46b8c2b7d",
+    "BRAIN/10-INTERFACES/DESIGN-BLOCKS/tools/activation_pregate.py": "90f487b4d7d6bd8facedf79664f9df8e0599a27bfaa5c827a214ed3b4e8a36bd",
+    "BRAIN/10-INTERFACES/DESIGN-BLOCKS/tools/design-compliance-check.py": "4fefb01b2c8205624b926dc16f7639a9b70a6a65797a3f19b189df36bfb8f597",
+    "NAYA-ACTIVATION/ACTIVATION-RECEIPT-V2.json": "4418d5270a52260829e255aa8e2046d63c1945ab4589db980a6e406c2f66df1e",
+    "smart-blocks/manifest.json": "bb5084e9d7406301296cdc929da904cab33dff583dc0c08c8aedeb93b721ecf3",
+    "tools/activation_gate.py": "fe0469d1d7a4b9ea6da0159d554bada1dad9e9ceb34338faf872a2d93853b033",
+    "tools/design_gate.py": "39c25e6f6f29e778d99656b73c85150dda043a9a316aa87d8f454ce3fda960a0"
+  },
+  "packet": "COLD-START-PACKET.md",
+  "packet_version": "v3.5",
+  "pin": "1d73652231ac6127806640af5a31eb516c60738d",
+  "pinned_at": "2026-10-09T20:13:59+00:00",
+  "schema": "naya.cold_start_packet.pin.v1",
+  "sla": {
+    "enforcement_files_must_match_pin": true,
+    "max_age_hours": 24,
+    "max_commits_past_pin": 50,
+    "note": "Proposed by the builder seat (2026-10-09). Naya 1 ratifies the SLA."
+  }
+}
