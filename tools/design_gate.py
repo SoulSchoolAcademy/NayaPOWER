@@ -103,16 +103,54 @@ def _decode_css_escapes(text: str) -> str:
 
 
 def _strip_css_comments(text: str) -> str:
-    """Strip CSS /* */ comments from the scanned stream. An unclosed
-    comment consumes the rest of the input (CSS Syntax) — the tail is
-    dropped, the gate judges less, and _is_dark fails closed on whatever
-    remains unjudgeable. CDO/CDC (<!-- -->) are not comments and are
-    untouched."""
-    text = re.sub(r"/\*.*?\*/", "", text, flags=re.S)
-    cut = text.find("/*")
-    if cut != -1:
-        text = text[:cut]
-    return text
+    """Strip CSS /* */ comments from the scanned stream — STRING-AWARE.
+
+    CSS tokenizes strings BEFORE comments: `content:"/*"` is a STRING
+    token, not a comment opener, so the browser never swallows the tail.
+    The old regex-based stripper couldn't tell quotes from comments, so
+    one 11-character string blinded the gate for the rest of the block.
+
+    Validator law (round 4, 2026-10-09): every regex that strips CSS
+    comments without understanding CSS strings hands the attacker a
+    blindfold to place over the gate. The durable fix is tokenizer
+    awareness — respect strings before stripping comments.
+
+    An unclosed comment consumes the rest of the input (CSS Syntax) —
+    the tail is dropped, the gate judges less, and _is_dark fails closed
+    on whatever remains unjudgeable. An unterminated string likewise
+    consumes to end of input (nothing after it can reopen a comment).
+    CDO/CDC (<!-- -->) are not comments and are untouched. Escapes are
+    decoded AFTER comment stripping (tokenization order), so an escape
+    sequence can never forge a comment opener or a string delimiter."""
+    out: list[str] = []
+    i, n = 0, len(text)
+    while i < n:
+        ch = text[i]
+        if ch in "\"'":
+            # Copy the string token verbatim — escapes ride along.
+            quote = ch
+            out.append(ch)
+            i += 1
+            while i < n:
+                c = text[i]
+                out.append(c)
+                if c == "\\" and i + 1 < n:
+                    out.append(text[i + 1])
+                    i += 2
+                    continue
+                i += 1
+                if c == quote:
+                    break
+        elif ch == "/" and i + 1 < n and text[i + 1] == "*":
+            # Real comment (outside a string): skip to its closer.
+            end = text.find("*/", i + 2)
+            if end == -1:
+                break  # unclosed comment swallows the tail
+            i = end + 2
+        else:
+            out.append(ch)
+            i += 1
+    return "".join(out)
 
 
 def _normalize_css_block(text: str) -> str:
@@ -143,6 +181,13 @@ def inline_css(html: str) -> str:
     raw text (no entity decoding); inline attribute values are
     entity-decoded first. Both then go through comment stripping and CSS
     escape decoding, in browser order.
+
+    Quoting law (validator round 4): HTML does not require quotes —
+    `<div style=background:white>` is applied by the browser. The
+    quote-requiring regexes were a second unread channel, as trivial as
+    the original inline-style hole. The unquoted fallback runs AFTER the
+    quoted forms and cannot match them (a quoted value starts with a
+    quote, which the fallback excludes), so nothing is double-counted.
     """
     parts = [_normalize_css_block(p)
              for p in re.findall(r"<style[^>]*>(.*?)</style>", html, re.S | re.I)]
@@ -151,6 +196,12 @@ def inline_css(html: str) -> str:
     ):
         decl = m.group(1) if m.group(1) is not None else m.group(2)
         decl = (decl or "").strip()
+        if decl:
+            parts.append(f"*[inline]{{{_normalize_style_attr(decl)}}}")
+    for m in re.finditer(
+        r"""\bstyle\s*=\s*([^"'\s>][^>\s]*)""", html, re.I
+    ):
+        decl = (m.group(1) or "").strip().rstrip("/")
         if decl:
             parts.append(f"*[inline]{{{_normalize_style_attr(decl)}}}")
     return "\n".join(parts)
@@ -169,8 +220,21 @@ def _inline_style_of(html: str, tag: str) -> str | None:
             r"<%s\b[^>]*?\bstyle\s*=\s*'([^']*)'" % tag, html, re.I
         )
     if not m:
+        # Unquoted fallback (validator round 4): the quote is excluded as
+        # the first character so quoted forms can never match twice.
+        # A trailing "/" is self-closing syntax, never CSS — stripped so
+        # `<div style=background:white/>` can't hide behind it.
+        m = re.search(
+            r"<%s\b[^>]*?\bstyle\s*=\s*([^\"'\s>][^>\s]*)" % tag, html, re.I
+        )
+        unquoted = True
+    else:
+        unquoted = False
+    if not m:
         return None
     decl = m.group(1).strip()
+    if unquoted:
+        decl = decl.rstrip("/")
     return _normalize_style_attr(decl) if decl else None
 
 
@@ -616,10 +680,21 @@ _NAYA_PREFIXES = ("naya-", "board", "orb-", "lv-", "torb", "gem-")
 
 
 def check_no_freestyle(html: str, known: set[str]) -> list[str]:
+    """Every non-canonical naya-* class must come from the manifest.
+
+    The browser HTML-decodes class attribute values before matching, so
+    `class="&#110;aya-evil"` IS class `naya-evil`. The check decodes
+    entities first (validator round 4, H3) — a leading entity used to
+    evade the raw-text prefix match. Unquoted class attributes are read
+    too (same quoting law as inline styles: `<div class=naya-foo>` is
+    applied by the browser)."""
     v = []
     used: set[str] = set()
-    for m in re.finditer(r'class=["\']([^"\']+)["\']', html):
-        for cls in m.group(1).split():
+    for m in re.finditer(r'class=["\']([^"\']+)["\']', html, re.I):
+        for cls in _ihtml.unescape(m.group(1)).split():
+            used.add(cls)
+    for m in re.finditer(r"\bclass\s*=\s*([^\"'\s>][^>\s]*)", html, re.I):
+        for cls in _ihtml.unescape(m.group(1)).split():
             used.add(cls)
     for cls in sorted(used):
         if cls.startswith(_NAYA_PREFIXES) and cls not in known:
@@ -1055,6 +1130,80 @@ def self_test() -> int:
             ok = False
         else:
             print(f"SELF-TEST: encoding blind-spot '{name}' held (good)")
+    # --- string/quote regression pins (validator round 4, 2026-10-09) ---
+    # Durable law: every regex that strips CSS comments without
+    # understanding CSS strings hands the attacker a blindfold to place
+    # over the gate. Tokenizer awareness: respect strings before
+    # stripping comments; read unquoted attribute values (HTML doesn't
+    # require quotes); decode entities in class values before the
+    # NO-FREESTYLE prefix match.
+    w4known = {"naya-btn"}
+    w4 = [
+        # (name, fragment, check-kind, must_flag_violation)
+        ("string comment-blinding block",
+         '<style>.x::before{content:"/*"}.card{background:white}</style>',
+         "surface_html", True),
+        ("string comment-blinding inline",
+         '<div style="content:\'/*\';background:white">x</div>',
+         "surface_html", True),
+        ("string comment-blinding url",
+         '<style>.a{background:url("/*") #fff}</style>',
+         "surface_html", True),
+        ("string with real comment dark passes",
+         '<style>.a{content:"/* ok */";background:#050507}</style>',
+         "surface_html", False),
+        ("comment still stripped outside strings",
+         '<style>div{background:/*x*/white}</style>',
+         "surface_html", True),
+        ("unclosed comment still swallows tail",
+         '<style>div{background:#050507/*</style>',
+         "surface_html", False),
+        ("unquoted style bg",
+         '<div style=background:white>x</div>', "surface_html", True),
+        ("unquoted style bg-color",
+         '<div style=background-color:yellow>x</div>', "surface_html", True),
+        ("unquoted style dark passes",
+         '<div style=background:#050507>x</div>', "surface_html", False),
+        ("unquoted style spaces around equals",
+         '<div style = background:white>x</div>', "surface_html", True),
+        ("quoted style not double-counted",
+         '<div style="background:#050507">x</div>', "surface_html", False),
+        ("unquoted body bg cascade",
+         '<style>body{background:#050507}</style>'
+         '<body style=background:#ffffff>x</body>', "rooth_html", True),
+        ("unquoted body text cascade",
+         '<style>body{color:#f5f5f5}</style>'
+         '<body style=color:#111>x</body>', "texthtml", True),
+        ("entity-encoded freestyle class",
+         '<div class="&#110;aya-evil">x</div>', "freestyle", True),
+        ("mid-string entity freestyle class",
+         '<div class="naya-&#101;vil">x</div>', "freestyle", True),
+        ("unquoted freestyle class",
+         '<div class=naya-evil>x</div>', "freestyle", True),
+        ("lawful canonical class passes",
+         '<div class="naya-btn">x</div>', "freestyle", False),
+        ("plain non-naya class passes",
+         '<div class="container">x</div>', "freestyle", False),
+        ("self-closing unquoted style",
+         '<div style=background:white/>x</div>', "surface_html", True),
+        ("uppercase CLASS attribute",
+         '<div CLASS="naya-evil">x</div>', "freestyle", True),
+    ]
+    for name, frag, kind, must_flag in w4:
+        if kind == "surface_html":
+            flagged = bool(check_no_light_surfaces(inline_css(frag)))
+        elif kind == "rooth_html":
+            flagged = bool(check_black_root(frag, inline_css(frag)))
+        elif kind == "texthtml":
+            flagged = bool(check_light_text(frag, inline_css(frag)))
+        elif kind == "freestyle":
+            flagged = bool(check_no_freestyle(frag, w4known))
+        if flagged != must_flag:
+            print(f"SELF-TEST FAIL: wave-4 blind-spot '{name}' regressed "
+                  f"(flagged={flagged}, want={must_flag})")
+            ok = False
+        else:
+            print(f"SELF-TEST: wave-4 blind-spot '{name}' held (good)")
     return 0 if ok else 1
 
 
