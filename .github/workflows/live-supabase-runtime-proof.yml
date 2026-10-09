@@ -65,9 +65,22 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          verified_sha="$(python -c 'import json; print(json.load(open("BRAIN/03-KERNEL/ASSEMBLY-STATUS.json", encoding="utf-8"))["verified_source_sha"])')"
+          if git merge-base --is-ancestor "$verified_sha" "$SOURCE_SHA"; then
+            verified_is_ancestor=true
+          else
+            verified_is_ancestor=false
+          fi
+          if changed_paths="$(git diff --name-only "$verified_sha" "$SOURCE_SHA")"; then
+            :
+          else
+            changed_paths="GIT_DIFF_UNAVAILABLE"
+          fi
           python tools/learning_engine_assembly_gate.py \
             --manifest BRAIN/03-KERNEL/ASSEMBLY-STATUS.json \
             --source-sha "$SOURCE_SHA" \
+            --verified-is-ancestor "$verified_is_ancestor" \
+            --changed-paths "$changed_paths" \
             --github-output "$GITHUB_OUTPUT"
 
   contract:
