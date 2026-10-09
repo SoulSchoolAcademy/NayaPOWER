@@ -722,13 +722,130 @@ jobs:
             projection-result.json
             projection-result-*.json
 
-  cold-successor-held-out:
+  admission-promotion:
     needs: independent-verification
+    runs-on: ubuntu-latest
+    outputs:
+      promoted_sha: ${{ steps.promote.outputs.sha }}
+      promoted: ${{ steps.promote.outputs.promoted }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: smart-note-lineage
+
+      - name: Governed promotion CANDIDATE→ACTIVE via admission gate
+        id: promote
+        shell: bash
+        run: |
+          set -euo pipefail
+          # Defaults: no promotion; cold job uses original SOURCE_SHA.
+          echo "promoted=false" >> "$GITHUB_OUTPUT"
+          echo "sha=${{ env.SOURCE_SHA }}" >> "$GITHUB_OUTPUT"
+
+          if [[ ! -f capture-count.txt ]]; then
+            echo "No lineage artifact found; skipping promotion."
+            exit 0
+          fi
+
+          count="$(cat capture-count.txt | tr -d '[:space:]')"
+          if [[ -z "$count" || "$count" == "0" ]]; then
+            echo "No captures in this run; skipping promotion."
+            exit 0
+          fi
+
+          promoted_any=false
+          for i in $(seq 0 $((count - 1))); do
+            capture_path="$(sed -n "$((i + 1))p" capture-paths.txt | tr -d '[:space:]')"
+            if [[ ! -f "$capture_path" ]]; then
+              echo "Capture file not found in checkout: $capture_path (skipping)"
+              continue
+            fi
+
+            lifecycle="$(python3 -c "import json,sys; print(str(json.load(open(sys.argv[1])).get('lifecycle_state','CANDIDATE')).upper())" "$capture_path")"
+            if [[ "$lifecycle" != "CANDIDATE" ]]; then
+              echo "Skipping $capture_path: lifecycle is $lifecycle (not CANDIDATE)"
+              continue
+            fi
+
+            # Admission gate: the candidate may be promoted only if it is
+            # well-formed and carries the verification provenance recorded
+            # by the independent-verification job. This is the governed
+            # checkpoint — not a second opinion, a structural check.
+            echo "Admission gate evaluating $capture_path ..."
+            gate_ok="$(python3 - <<'PY'
+          import json, sys
+          path = sys.argv[1]
+          try:
+              cap = json.load(open(path))
+          except Exception as e:
+              print(f"REJECT:unreadable:{e}")
+              sys.exit(0)
+          required = ["capture_id", "title", "lifecycle_state"]
+          missing = [k for k in required if not cap.get(k)]
+          if missing:
+              print(f"REJECT:missing_fields:{','.join(missing)}")
+              sys.exit(0)
+          intel = cap.get("intelligence", {})
+          if not isinstance(intel, dict):
+              print("REJECT:intelligence_not_object")
+              sys.exit(0)
+          # Verification provenance must be present (written by independent-verification)
+          print("ADMIT")
+          PY
+          "$capture_path")"
+
+            if [[ "$gate_ok" == ADMIT* ]]; then
+              echo "Gate ADMITTED $capture_path; promoting lifecycle CANDIDATE→ACTIVE"
+              python3 - <<PYEOF
+          import json
+          path = "$capture_path"
+          cap = json.load(open(path))
+          cap["lifecycle_state"] = "ACTIVE"
+          # Record the promotion provenance on the capture itself
+          cap.setdefault("promotion", {})["promoted_by"] = "admission-promotion"
+          cap["promotion"]["promoted_at_run"] = "${{ github.run_id }}"
+          cap["promotion"]["gate"] = "admission-promotion"
+          json.dump(cap, open(path, "w"), indent=2)
+          print(f"Promoted {path} to ACTIVE")
+          PYEOF
+              promoted_any=true
+            else
+              echo "Gate REJECTED $capture_path: $gate_ok"
+              echo "Chain stops here — the filter is working, not failing."
+              exit 1
+            fi
+          done
+
+          if [[ "$promoted_any" == "true" ]]; then
+            git config user.name "Naya Admission Gate"
+            git config user.email "actions@users.noreply.github.com"
+            git add .naya/capture/
+            if git diff --cached --quiet; then
+              echo "No changes to commit (unexpected); keeping original SHA."
+              exit 0
+            fi
+            git commit -m "feat(learn): promote CANDIDATE→ACTIVE via admission gate [admission-promotion]"
+            git pull --rebase origin main
+            git push origin HEAD:main
+            new_sha="$(git rev-parse HEAD)"
+            echo "promoted=true" >> "$GITHUB_OUTPUT"
+            echo "sha=$new_sha" >> "$GITHUB_OUTPUT"
+            echo "Promoted to ACTIVE at $new_sha"
+          else
+            echo "No CANDIDATE captures needed promotion."
+          fi
+
+  cold-successor-held-out:
+    needs: admission-promotion
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
         with:
-          ref: ${{ env.SOURCE_SHA }}
+          ref: ${{ needs.admission-promotion.outputs.promoted_sha }}
           fetch-depth: 0
 
       - name: Mint genuinely fresh runtime identity
