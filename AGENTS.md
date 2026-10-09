@@ -320,6 +320,12 @@ goal/mission/objective, analyze options against it, measure, decide by knowing
 not guessing. The protocol, rubrics, and maps ARE the authority — act on what
 they grant. Questions only for genuine protected gates or true ambiguity.
 
+Autonomy is never blind — homework is mandatory: analyze, follow protocol, get
+other seats' input, run the scorecard. Report format: "I chose X. I looked at
+A, B, C. X won because [evidence]. This is what I did." Making a decision
+doesn't make it right — making the RIGHT decision is right. Decisive on clear
+winners, honest on close calls.
+
 ## THE USEFULNESS GATE
 
 If it's not useful, it can never be used. If you wouldn't give it to the world,
