@@ -56,8 +56,9 @@ def test_every_real_event_carries_durable_evidence():
 
 def test_real_ledger_recomputes_deterministically():
     raw_lines, events = load_events()
-    r1 = compute_hv.compute(events, 7, date(2026, 10, 8))
-    r2 = compute_hv.compute(events, 7, date(2026, 10, 8))
+    as_of = date.fromisoformat(max(e["recorded_at"] for e in events))
+    r1 = compute_hv.compute(events, 7, as_of)
+    r2 = compute_hv.compute(events, 7, as_of)
     assert r1 == r2
     raw_lines_again, _ = compute_hv.load_ledger(LEDGER)
     assert compute_hv.ledger_sha256(raw_lines) == compute_hv.ledger_sha256(raw_lines_again)
@@ -72,7 +73,8 @@ def test_real_ledger_as_of_is_latest_event_date_not_wall_clock():
 
 def test_real_ledger_numbers_are_sane():
     _, events = load_events()
-    report = compute_hv.compute(events, 7, date(2026, 10, 8))
+    as_of = date.fromisoformat(max(e["recorded_at"] for e in events))
+    report = compute_hv.compute(events, 7, as_of)
     assert report["hv_per_day_total"] >= 0
     assert report["dai_per_day"] >= 0
     assert report["events_in_window"] == len(events)
