@@ -33,6 +33,16 @@ attributes concatenated — punctuation is stripped before every color
 lookup, and cascade winners are judged (inline beats stylesheet,
 !important beats normal, later beats earlier), never first declarations.
 
+Encoding normalization (extended law, validator 2026-10-09 round 3):
+every parser is only as strong as the narrowest ENCODING it doesn't
+decode. Browsers decode HTML entities in style ATTRIBUTE values (but
+never inside <style> blocks — raw text elements), strip CSS /* */
+comments, and decode CSS \XX escapes before color lookup. The gate's
+normalization layer does exactly the same, in the same order:
+unescape (attributes only) -> strip comments -> decode escapes.
+Fail direction is fail-closed: an encoding the layer cannot resolve
+leaves the value unjudgeable, and unjudgeable is not-dark.
+
 Fail direction: black-root judging is fail-CLOSED (an unjudgeable color
 cannot be verified dark); light-surface judging is fail-OPEN on images
 only (a url() cannot be judged without fetching — honest, not a hole).
@@ -45,6 +55,7 @@ black canvas, not raw channel values.
 from __future__ import annotations
 
 import hashlib
+import html as _ihtml
 import json
 import re
 import subprocess
@@ -59,6 +70,65 @@ def read_page(path: Path) -> str:
     return path.read_text(encoding="utf-8", errors="replace")
 
 
+# --- encoding normalization (validator round 3, 2026-10-09) ---
+# Browsers decode three encodings before a color is ever judged:
+#   1. HTML entities in style ATTRIBUTE values (&#119; -> w). Never inside
+#      <style> blocks — those are raw text elements, entities stay raw.
+#   2. CSS /* */ comments (stripped). An unclosed comment swallows the rest
+#      of the input per CSS Syntax — the gate drops it too (fail-closed).
+#   3. CSS \XX escapes (\69<space> -> i, \<newline> -> line continuation).
+# The gate normalizes in browser order: unescape (attributes only),
+# then strip comments, then decode escapes.
+
+_CSS_ESCAPE_RE = re.compile(
+    r"\\([0-9a-fA-F]{1,6})[ \t\n\r\f]?|\\(\r\n|[\n\r\f])|\\(.)", re.S)
+
+
+def _decode_css_escapes(text: str) -> str:
+    """Decode CSS escape sequences the way a browser's CSS parser does.
+
+    \\<1-6 hex digits> + one optional whitespace (consumed) -> the code
+    point; \\<newline> -> line continuation (removed); \\<any other char>
+    -> that char. Invalid code points become U+FFFD, never a crash."""
+    def repl(m: re.Match) -> str:
+        if m.group(1) is not None:
+            code = int(m.group(1), 16)
+            if code == 0 or code > 0x10FFFF or 0xD800 <= code <= 0xDFFF:
+                return "\uFFFD"
+            return chr(code)
+        if m.group(2) is not None:
+            return ""  # line continuation
+        return m.group(3)
+    return _CSS_ESCAPE_RE.sub(repl, text)
+
+
+def _strip_css_comments(text: str) -> str:
+    """Strip CSS /* */ comments from the scanned stream. An unclosed
+    comment consumes the rest of the input (CSS Syntax) — the tail is
+    dropped, the gate judges less, and _is_dark fails closed on whatever
+    remains unjudgeable. CDO/CDC (<!-- -->) are not comments and are
+    untouched."""
+    text = re.sub(r"/\*.*?\*/", "", text, flags=re.S)
+    cut = text.find("/*")
+    if cut != -1:
+        text = text[:cut]
+    return text
+
+
+def _normalize_css_block(text: str) -> str:
+    """Normalize a <style> block's content: NO html.unescape — browsers do
+    not decode entities in raw text elements. Comments stripped, CSS
+    escapes decoded."""
+    return _decode_css_escapes(_strip_css_comments(text))
+
+
+def _normalize_style_attr(text: str) -> str:
+    """Normalize an extracted style="" attribute value: the HTML parser
+    decodes entities in attribute values before CSS sees them, so
+    html.unescape() runs first, then the CSS pipeline."""
+    return _decode_css_escapes(_strip_css_comments(_ihtml.unescape(text)))
+
+
 def inline_css(html: str) -> str:
     """The single scanned CSS stream: <style> blocks AND inline style
     attributes, concatenated.
@@ -68,21 +138,29 @@ def inline_css(html: str) -> str:
     unread channel — every color check missed them. Each inline style
     attribute is wrapped as a `*[inline]` rule so the rule-iterating checks
     judge it like any other rule.
+
+    Encoding law (validator round 3): <style> blocks are normalized as
+    raw text (no entity decoding); inline attribute values are
+    entity-decoded first. Both then go through comment stripping and CSS
+    escape decoding, in browser order.
     """
-    parts = re.findall(r"<style[^>]*>(.*?)</style>", html, re.S | re.I)
+    parts = [_normalize_css_block(p)
+             for p in re.findall(r"<style[^>]*>(.*?)</style>", html, re.S | re.I)]
     for m in re.finditer(
         r"""\bstyle\s*=\s*"([^"]*)"|\bstyle\s*=\s*'([^']*)'""", html, re.I
     ):
         decl = m.group(1) if m.group(1) is not None else m.group(2)
         decl = (decl or "").strip()
         if decl:
-            parts.append(f"*[inline]{{{decl}}}")
+            parts.append(f"*[inline]{{{_normalize_style_attr(decl)}}}")
     return "\n".join(parts)
 
 
 def _inline_style_of(html: str, tag: str) -> str | None:
-    """The raw style="" attribute of the first <tag>, for cascade judging
-    (inline styles beat stylesheet rules)."""
+    """The normalized style="" attribute of the first <tag>, for cascade
+    judging (inline styles beat stylesheet rules). Normalized through the
+    same encoding layer as inline_css so cascade winners are judged on
+    what the browser actually sees."""
     m = re.search(
         r"<%s\b[^>]*?\bstyle\s*=\s*\"([^\"]*)\"" % tag, html, re.I
     )
@@ -90,7 +168,10 @@ def _inline_style_of(html: str, tag: str) -> str | None:
         m = re.search(
             r"<%s\b[^>]*?\bstyle\s*=\s*'([^']*)'" % tag, html, re.I
         )
-    return m.group(1).strip() if m else None
+    if not m:
+        return None
+    decl = m.group(1).strip()
+    return _normalize_style_attr(decl) if decl else None
 
 
 def _split_top_level(value: str) -> list[str]:
@@ -909,6 +990,71 @@ def self_test() -> int:
             ok = False
         else:
             print(f"SELF-TEST: wave-2 blind-spot '{name}' held (good)")
+    # --- encoding bypass regressions (validator round 3, 2026-10-09) ---
+    # Durable law: every parser is only as strong as the narrowest
+    # ENCODING it doesn't decode. Browsers decode HTML entities in style
+    # attribute values (but NOT inside <style> blocks), strip CSS /* */
+    # comments, and decode CSS \XX escapes. Each has a pinned repro.
+    enc = [
+        # (name, fragment, check-kind, must_flag_violation)
+        ("entity inline bg",
+         '<div style="background:&#119;hite">x</div>', "surface_html", True),
+        ("entity hex inline bg",
+         '<div style="background:&#x77;hite">x</div>', "surface_html", True),
+        ("entity inline bg-color",
+         '<div style="background-color:&#121;ellow">x</div>',
+         "surface_html", True),
+        ("entity in property name",
+         '<div style="&#98;ackground:white">x</div>', "surface_html", True),
+        ("entity text color cascade",
+         '<style>body{color:#f5f5f5}</style>'
+         '<body style="color:&#35;111">x</body>', "texthtml", True),
+        ("entity body bg cascade",
+         '<style>body{background:#050507}</style>'
+         '<body style="background:&#35;ffffff">x</body>', "rooth_html", True),
+        ("entity double-encoded stays raw",
+         '<div style="background:&amp;#119;hite">x</div>',
+         "surface_html", False),
+        ("entity in style block NOT decoded",
+         "<style>div{background:&#119;hite}</style>",
+         "surface_html", False),
+        ("css escape inline bg",
+         '<div style="background:wh\\69te">x</div>', "surface_html", True),
+        ("css escape block bg",
+         "<style>div{background:wh\\69te}</style>", "surface_html", True),
+        ("css escape hex consumes space",
+         "<style>div{background:wh\\49 te}</style>", "surface_html", True),
+        ("css escape line continuation",
+         "<style>div{background:bl\\\nack}</style>", "surface_html", False),
+        ("css escape dark stays dark",
+         "<style>div{background:bl\\61ck}</style>", "surface_html", False),
+        ("css escape uppercase hex",
+         "<style>div{background:WH\\49TE}</style>", "surface_html", True),
+        ("css comment inline bg",
+         '<div style="background:/*x*/white">x</div>', "surface_html", True),
+        ("css comment block bg",
+         "<style>div{background:/*x*/white}</style>", "surface_html", True),
+        ("css comment splits property",
+         "<style>div{back/*x*/ground:white}</style>", "surface_html", True),
+        ("css comment in text color",
+         "<style>body{color:/*x*/#111}</style>", "texthtml", True),
+        ("css comment dark passes",
+         "<style>div{background:/*ok*/#050507}</style>",
+         "surface_html", False),
+    ]
+    for name, frag, kind, must_flag in enc:
+        if kind == "surface_html":
+            flagged = bool(check_no_light_surfaces(inline_css(frag)))
+        elif kind == "rooth_html":
+            flagged = bool(check_black_root(frag, inline_css(frag)))
+        elif kind == "texthtml":
+            flagged = bool(check_light_text(frag, inline_css(frag)))
+        if flagged != must_flag:
+            print(f"SELF-TEST FAIL: encoding blind-spot '{name}' regressed "
+                  f"(flagged={flagged}, want={must_flag})")
+            ok = False
+        else:
+            print(f"SELF-TEST: encoding blind-spot '{name}' held (good)")
     return 0 if ok else 1
 
 
