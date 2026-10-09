@@ -56,9 +56,17 @@ h2{font-size:28px;font-weight:800;letter-spacing:-.01em}
   box-shadow:0 0 60px 12px rgba(160,107,255,.45),0 0 150px 34px rgba(160,107,255,.16),inset 0 -20px 44px rgba(0,0,0,.55);
   animation:sunPulse 5s ease-in-out infinite}
 @keyframes sunPulse{0%,100%{box-shadow:0 0 60px 12px rgba(160,107,255,.45),0 0 150px 34px rgba(160,107,255,.16),inset 0 -20px 44px rgba(0,0,0,.55)}50%{box-shadow:0 0 80px 18px rgba(160,107,255,.6),0 0 190px 44px rgba(160,107,255,.24),inset 0 -20px 44px rgba(0,0,0,.55)}}
-.sun-core{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
-.sun-num{font-size:30px;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:#0a0616}
-.sun-lbl{font-size:10px;font-weight:800;letter-spacing:.18em;color:#2a2140;margin-top:2px}
+.sun-readout{text-align:center;margin:10px 0 4px}
+.ro-num{font-size:clamp(40px,5vw,62px);font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:#f8f7fb;
+  text-shadow:0 0 44px rgba(160,107,255,.5),0 8px 24px rgba(0,0,0,.7)}
+.ro-lbl{font-size:11px;font-weight:800;letter-spacing:.22em;color:var(--quiet);margin-top:4px}
+.how-fill{margin:24px 0 8px;border:1px solid var(--soft-line);border-radius:16px;padding:16px 22px;background:#0b0c11;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06),inset 0 -10px 20px rgba(0,0,0,.3)}
+.hf-row{display:flex;gap:16px;align-items:baseline;padding:9px 0}
+.hf-row+.hf-row{border-top:1px solid var(--soft-line)}
+.hf-who{font-size:11px;font-weight:800;letter-spacing:.2em;color:var(--purple);white-space:nowrap}
+.hf-say{color:var(--ink);font-weight:600}
+.hf-do{color:var(--quiet);font-size:15px}
 .orbit{position:absolute;top:50%;left:50%;border:1px solid rgba(255,255,255,.09);border-radius:50%;transform:translate(-50%,-50%);pointer-events:none}
 .orbit-spin{position:absolute;top:50%;left:50%;width:0;height:0;animation:spin linear infinite;z-index:4}
 @keyframes spin{to{transform:rotate(360deg)}}
@@ -91,7 +99,7 @@ h2{font-size:28px;font-weight:800;letter-spacing:-.01em}
 <div class="wrap">
   <div class="kicker">Smart Stats · Version 2</div>
   <h1>Data you've <span class="grad">never seen before.</span></h1>
-  <p class="lede">Not better bar charts — entirely new ways to see. Orbs in orbit. Rivers of light. A heartbeat you can watch. Numbers with real weight. Every visualization below was invented for NayaNET: dimensional, alive, and honest about what the numbers mean.</p>
+  <p class="lede">Not better bar charts — entirely new ways to see. Orbs in orbit. A heartbeat you can watch. Constellations of connection that light up. Every visualization below was invented for NayaNET: dimensional, alive, and honest about what the numbers mean.</p>
   <div class="lawstrip"><span>BLACK GROUND</span><span>SPECTRUM = MEANING</span><span>ZERO FLAT</span><span>EVERYTHING BREATHES</span><span>PLAY WITH IT</span></div>
 
   <!-- ============ 01 · THE ORBITAL SYSTEM ============ -->
@@ -100,23 +108,21 @@ h2{font-size:28px;font-weight:800;letter-spacing:-.01em}
     <p class="sec-desc">The center holds the whole. Every category is a world in orbit — sized by its value, glowing in its spectrum color, moving at its own speed like real planets. Hover to hold one still. Click to make it the center of its own story.</p>
     <div class="board" style="--spine:var(--purple)">
       <div class="orb-stage" id="orbStage">
-        <div class="sun" id="sun"><div class="sun-core"><div class="sun-num" id="sunNum">51,210</div><div class="sun-lbl">INTELLIGENCE ACTIONS · THIS WEEK</div></div></div>
+        <div class="sun" id="sun" role="img" aria-label="The whole: total intelligence actions this week"></div>
+      </div>
+      <div class="sun-readout"><div class="ro-num" id="roNum">…</div><div class="ro-lbl">INTELLIGENCE ACTIONS · THIS WEEK · ALL WORLDS</div></div>
+      <div class="how-fill">
+        <div class="hf-row"><span class="hf-who">YOU SAY</span><span class="hf-say">“Naya, give me the stats on my community's intelligence this week.”</span></div>
+        <div class="hf-row"><span class="hf-who">NAYA DOES</span><span class="hf-do">Counts every action across 5 worlds, sizes each orb by volume, colors by meaning, and renders the system above — hover an orb to read it, click to open its world.</span></div>
       </div>
       <div class="orb-detail" id="orbDetail"></div>
       <p class="orb-hint">◈ Hover an orb to hold it still &amp; read it &nbsp;·&nbsp; Click an orb to open its world</p>
     </div>
   </section>
 
-  <!-- ============ 02 · RIVERS OF LIGHT ============ -->
-  <section id="rivers">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Rivers of Light</h2></div>
-    <p class="sec-desc">Data doesn't sit still — it flows. Each category is a river of living light, its width carrying its weight, its current always moving. The rivers merge into one great confluence: the whole system, flowing together.</p>
-    <div class="board" style="--spine:var(--blue)" id="riverBoard"></div>
-  </section>
-
-  <!-- ============ 03 · THE HEARTBEAT ============ -->
+  <!-- ============ 02 · THE HEARTBEAT ============ -->
   <section id="heartbeat">
-    <div class="sec-head"><span class="sec-num">03</span><h2>The Heartbeat</h2></div>
+    <div class="sec-head"><span class="sec-num">02</span><h2>The Heartbeat</h2></div>
     <p class="sec-desc">Every living system has a pulse. This is NayaNET's — engagement beating across the week. Watch the light travel the wave. When the rhythm changes, something real changed.</p>
     <div class="board" style="--spine:var(--green)">
       <div style="display:flex;align-items:baseline;gap:18px;margin-bottom:6px">
@@ -142,37 +148,28 @@ h2{font-size:28px;font-weight:800;letter-spacing:-.01em}
     </div>
   </section>
 
-  <!-- ============ 04 · MATERIALIZED NUMBERS ============ -->
-  <section id="numbers">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Materialized Numbers</h2></div>
-    <p class="sec-desc">Numbers with weight. They don't appear — they arrive, counting up from zero like something being built in front of you. Each one casts its own light in its spectrum color.</p>
-    <div class="board" style="--spine:var(--magenta)">
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:28px" id="megaNums"></div>
-    </div>
-  </section>
-
-  <!-- ============ 05 · THE CONSTELLATION ============ -->
+  <!-- ============ 03 · THE CONSTELLATION ============ -->
   <section id="constellation">
-    <div class="sec-head"><span class="sec-num">05</span><h2>The Constellation</h2></div>
+    <div class="sec-head"><span class="sec-num">03</span><h2>The Constellation</h2></div>
     <p class="sec-desc">Relationships drawn as starlight. Every line is a real connection — hover a star to light up everything it touches. This is how the network sees itself.</p>
     <div class="board" style="--spine:var(--gold)">
       <div id="constel" style="position:relative;height:380px;overflow:hidden;border-radius:16px">
         <svg id="constelSvg" style="position:absolute;inset:0;width:100%;height:100%"></svg>
       </div>
-      <p style="color:var(--quiet);font-size:14px;margin-top:14px">6 worlds · 9 living connections · hover any star</p>
+      <p style="color:var(--quiet);font-size:14px;margin-top:14px">8 worlds · 14 living connections · hover any star</p>
     </div>
   </section>
 
-  <!-- ============ 06 · DO'S & DON'TS ============ -->
+  <!-- ============ 04 · DO'S & DON'TS ============ -->
   <section id="rules">
-    <div class="sec-head"><span class="sec-num">06</span><h2>The Laws of Living Data</h2></div>
-    <p class="sec-desc">Innovation without discipline is decoration. These are non-negotiable.</p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px" id="ruleGrid"></div>
+    <div class="sec-head"><span class="sec-num">04</span><h2>The Laws of Living Data</h2></div>
+    <p class="sec-desc">Innovation without discipline is decoration. Six lines. Non-negotiable.</p>
+    <div class="board" style="--spine:var(--purple);padding-top:22px;padding-bottom:22px" id="ruleGrid"></div>
   </section>
 
-  <!-- ============ 07 · COPY THE CODE ============ -->
+  <!-- ============ 05 · COPY THE CODE ============ -->
   <section id="code">
-    <div class="sec-head"><span class="sec-num">07</span><h2>Take It With You</h2></div>
+    <div class="sec-head"><span class="sec-num">05</span><h2>Take It With You</h2></div>
     <p class="sec-desc">Every visualization above is built from three primitives. Learn these and you can invent your own.</p>
     <div class="board" style="--spine:var(--purple)">
 <pre style="background:#0a0b10;border:1px solid var(--soft-line);border-radius:14px;padding:22px;overflow-x:auto;font-size:13.5px;line-height:1.7;color:#d8d4e0"><code><span style="color:#a06bff">/* 1 · THE ORB — a sphere of data */</span>
@@ -185,50 +182,32 @@ h2{font-size:28px;font-weight:800;letter-spacing:-.01em}
 <span style="color:#a06bff">/* 2 · THE ORBIT — motion with meaning (inner = faster) */</span>
 .orbit-spin{ animation:spin var(--dur) linear infinite; }
 @keyframes spin{ to{ transform:rotate(360deg);} }
-<span style="color:#a06bff">/* 3 · THE RIVER — data that flows */</span>
-.flow{
-  background:repeating-linear-gradient(100deg,
-    transparent 0 18px, rgba(var(--crgb),.55) 18px 34px,
-    transparent 34px 52px);
-  animation:flow 2.6s linear infinite;
-}
-@keyframes flow{ to{ background-position:52px 0; } }</code></pre>
-      <p style="color:var(--quiet);font-size:14px;margin-top:14px">Orb + Orbit + River. Spectrum colors in law order. Black ground. That's the whole alphabet — now write poetry.</p>
+<span style="color:#a06bff">/* 3 · THE STARLINK — connections that light up */</span>
+.clink{stroke:rgba(255,255,255,.14);stroke-width:1.5;transition:stroke .25s}
+.lit{stroke:var(--sc);stroke-width:3}  <span style="color:#a06bff">/* JS lights what the star touches */</span></code></pre>
+      <p style="color:var(--quiet);font-size:14px;margin-top:14px">Orb + Orbit + Starlink. Spectrum colors in law order. Black ground. That's the whole alphabet — now write poetry.</p>
     </div>
   </section>
 </div>
 <style>
 /* v2 extension styles */
 .orb{transform:translate(-50%,-50%)}
+.lawrow{display:flex;gap:14px;align-items:baseline;padding:13px 4px;border-bottom:1px solid var(--soft-line);font-size:15px}
+.lawrow:last-child{border-bottom:none}
+.lawrow .ldo{font-weight:800;font-size:17px;flex-shrink:0}
+.lawrow .ldon{color:var(--quiet);flex-shrink:0}
+.lawrow .lx{color:var(--coral);font-weight:800;flex-shrink:0}
+.lawrow strong{color:var(--ink)}
 .mega-num{font-weight:800;letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums;color:#f8f7fb;
-  text-shadow:0 2px 0 rgba(255,255,255,.08),0 8px 22px rgba(0,0,0,.7),0 0 46px var(--ng,rgba(160,107,255,.35))}
-.mega-lbl{font-size:12px;letter-spacing:.2em;color:var(--quiet);margin-top:10px;font-weight:700}
-.riv-row{display:grid;grid-template-columns:120px 1fr 92px;align-items:center;gap:16px;margin:18px 0}
-.riv-label{font-size:12px;font-weight:800;letter-spacing:.16em;color:var(--quiet);text-align:right}
-.river{position:relative;border-radius:999px;overflow:hidden;cursor:pointer;
-  background:linear-gradient(180deg,rgba(255,255,255,.13),rgba(255,255,255,.02) 45%,rgba(0,0,0,.4));
-  box-shadow:inset 0 2px 4px rgba(255,255,255,.12),inset 0 -6px 14px rgba(0,0,0,.5),0 8px 22px rgba(0,0,0,.5)}
-.river .flow{position:absolute;inset:5px;border-radius:999px;
-  background:repeating-linear-gradient(100deg,transparent 0 18px,rgba(var(--crgb),.6) 18px 32px,transparent 32px 50px),
-             linear-gradient(90deg,rgba(var(--crgb),.10),rgba(var(--crgb),.45),rgba(var(--crgb),.10));
-  background-position:0 0,0 0;animation:flow 2.4s linear infinite}
-.river:hover .flow{animation-play-state:paused;filter:brightness(1.5)}
-@keyframes flow{to{background-position:50px 0,0 0}}
-.riv-val{font-variant-numeric:tabular-nums;font-weight:800;text-align:right}
-.confluence{margin-top:28px;padding-top:24px;border-top:1px solid var(--soft-line)}
+  text-shadow:0 8px 22px rgba(0,0,0,.7),0 0 46px var(--ng,rgba(47,232,158,.4))}
 .cstar{position:absolute;transform:translate(-50%,-50%);border-radius:50%;cursor:pointer;z-index:2;
   background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.95),rgba(255,255,255,.2) 26%,var(--sc) 58%,rgba(0,0,0,.6) 90%);
   box-shadow:0 0 22px 2px var(--scg),0 8px 24px rgba(0,0,0,.6);transition:scale .25s var(--ease),box-shadow .25s var(--ease)}
 .cstar:hover{scale:1.35;z-index:3}
 .cstar .slbl{position:absolute;top:calc(100% + 6px);left:50%;transform:translateX(-50%);font-size:10px;font-weight:800;letter-spacing:.16em;color:var(--quiet);white-space:nowrap}
 .clink{stroke:rgba(255,255,255,.14);stroke-width:1.5;transition:stroke-width .25s var(--ease)}
-.rule{background:#0c0d12;border:1px solid var(--soft-line);border-radius:18px;padding:20px 22px;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.07),inset 0 -10px 20px rgba(0,0,0,.3),0 12px 28px rgba(0,0,0,.4)}
-.rule .r-do{color:var(--green);font-weight:800;font-size:14px;letter-spacing:.04em}
-.rule .r-dont{color:var(--coral);font-weight:800;font-size:14px;letter-spacing:.04em;margin-top:12px}
-.rule p{color:var(--quiet);font-size:14px;margin-top:6px}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-@media (max-width:640px){.orb-stage{height:480px}.riv-row{grid-template-columns:86px 1fr 70px}}
+@media (max-width:640px){.orb-stage{height:480px}.lawrow{flex-wrap:wrap;gap:8px}}
 </style>
 <script>
 (function(){
@@ -291,61 +270,27 @@ function renderDetail(cat){
   }).join('');
 }
 renderDetail(CATS[2]);orbs['learners'].el.classList.add('hot');
+document.getElementById('roNum').textContent=fmt(CATS.reduce(function(a,c){return a+c.value;},0));
 
-/* ---------- 02 · RIVERS OF LIGHT ---------- */
-var rb=document.getElementById('riverBoard'),total=CATS.reduce(function(a,c){return a+c.value;},0);
-var rows=CATS.slice().sort(function(a,b){return b.value-a.value;}).map(function(cat){
-  var h=Math.round(16+(cat.value/maxV)*44);
-  return '<div class="riv-row"><div class="riv-label" style="color:'+cat.color+'">'+cat.name+'</div>'+
-    '<div class="river" style="height:'+h+'px" title="'+cat.name+': '+fmt(cat.value)+'"><div class="flow" style="--crgb:'+cat.rgb+'"></div></div>'+
-    '<div class="riv-val">'+fmt(cat.value)+'</div></div>';
-}).join('');
-rb.innerHTML=rows+'<div class="confluence"><div class="riv-row"><div class="riv-label" style="color:#f8f7fb">CONFLUENCE</div>'+
-  '<div class="river" style="height:64px;box-shadow:inset 0 2px 4px rgba(255,255,255,.16),inset 0 -8px 18px rgba(0,0,0,.5),0 0 34px rgba(160,107,255,.35)">'+
-  '<div class="flow" style="--crgb:200,170,255"></div></div>'+
-  '<div class="riv-val" style="font-size:20px">'+fmt(total)+'</div></div>'+
-  '<p style="color:var(--quiet);font-size:14px;margin-top:6px">Five rivers. One system. Hover any river to hold its current still.</p></div>';
-
-/* ---------- 03 · HEARTBEAT wobble ---------- */
+/* ---------- 02 · HEARTBEAT wobble ---------- */
 var bpm=document.getElementById('bpmNum');
 setInterval(function(){bpm.textContent=68+Math.round(Math.random()*8);},3000);
 
-/* ---------- 04 · MATERIALIZED NUMBERS ---------- */
-var MEGAS=[
- {v:51210,l:'INTELLIGENCE ACTIONS · THIS WEEK',c:'rgba(232,79,255,.4)'},
- {v:19.4,l:'AVG. WEEKLY GROWTH · %',c:'rgba(47,232,158,.4)',dec:1},
- {v:5,l:'WORLDS IN ORBIT',c:'rgba(63,184,255,.4)'}
-];
-var mn=document.getElementById('megaNums');
-mn.innerHTML=MEGAS.map(function(m,i){
-  return '<div><div class="mega-num" style="--ng:'+m.c+'" data-v="'+m.v+'" data-dec="'+(m.dec||0)+'" id="mega'+i+'">0</div><div class="mega-lbl">'+m.l+'</div></div>';
-}).join('');
-function countUp(el,to,dec,dur){var t0=performance.now();
-  function f(t){var p=Math.min(1,(t-t0)/dur),e=1-Math.pow(1-p,3),v=to*e;
-    el.textContent=dec?v.toFixed(1):fmt(Math.round(v));
-    if(p<1)requestAnimationFrame(f);}requestAnimationFrame(f);}
-var seen=false;
-var io=new IntersectionObserver(function(es){
-  es.forEach(function(e){
-    if(e.isIntersecting&&!seen){
-      seen=true;
-      MEGAS.forEach(function(m,i){countUp(document.getElementById('mega'+i),m.v,m.dec||0,1600);});
-    }
-  });
-},{threshold:.4});
-io.observe(mn);
-
-/* ---------- 05 · CONSTELLATION ---------- */
+/* ---------- 03 · CONSTELLATION ---------- */
 var STARS=[
  {id:'you',x:50,y:50,label:'YOU',c:'#f8f7fb',s:62},
  {id:'creators',x:19,y:24,label:'CREATORS',c:'#e84fff',s:46},
  {id:'learners',x:79,y:22,label:'LEARNERS',c:'#3fb8ff',s:50},
  {id:'builders',x:15,y:74,label:'BUILDERS',c:'#a06bff',s:44},
  {id:'sharers',x:83,y:70,label:'SHARERS',c:'#2fe89e',s:44},
- {id:'earners',x:50,y:86,label:'EARNERS',c:'#ffbf3d',s:40}
+ {id:'earners',x:50,y:86,label:'EARNERS',c:'#ffbf3d',s:40},
+ {id:'apps',x:33,y:44,label:'APPS',c:'#40d3bb',s:38},
+ {id:'groups',x:66,y:58,label:'GROUPS',c:'#ff5e6c',s:38}
 ];
 var LINKS=[['you','creators'],['you','learners'],['you','builders'],['you','sharers'],['you','earners'],
-           ['creators','learners'],['builders','sharers'],['learners','earners'],['creators','builders']];
+           ['you','apps'],['you','groups'],
+           ['creators','learners'],['builders','sharers'],['learners','earners'],['creators','builders'],
+           ['apps','creators'],['groups','sharers'],['apps','groups']];
 var box=document.getElementById('constel'),svg=document.getElementById('constelSvg'),starEls={};
 function drawConstel(){
   var W=box.clientWidth,H=box.clientHeight;if(!W||!H)return;
@@ -387,8 +332,12 @@ var RULES=[
  ['DO show the whole and the parts.','The sun holds the total; the orbs hold the worlds.','DON\u2019T chart without context.','A number alone is trivia. A number in orbit is intelligence.'],
  ['DO respect reduced motion.','Every animation here yields to prefers-reduced-motion.','DON\u2019T assume everyone sees movement.','Beauty that excludes is not elite.']
 ];
-document.getElementById('ruleGrid').innerHTML=RULES.map(function(r){
-  return '<div class="rule"><div class="r-do">✓ '+r[0]+'</div><p>'+r[1]+'</p><div class="r-dont">✕ '+r[2]+'</div><p>'+r[3]+'</p></div>';
+var LAWCOLS=['#e84fff','#a06bff','#3fb8ff','#2fe89e','#ffbf3d','#e84fff'];
+document.getElementById('ruleGrid').innerHTML=RULES.map(function(r,i){
+  return '<div class="lawrow"><span class="ldo" style="color:'+LAWCOLS[i%6]+'">✓</span>'+
+    '<span class="ldon"><strong>'+r[0]+'</strong> '+r[1]+'</span>'+
+    '<span class="lx">✕</span>'+
+    '<span class="ldon"><strong>'+r[2]+'</strong> '+r[3]+'</span></div>';
 }).join('');
 })();
 </script>
