@@ -4,8 +4,10 @@ on:
   pull_request:
     paths:
       - "tools/design_gate.py"
+      - "tools/qa/**"
       - "smart-blocks/**"
       - ".github/workflows/design-gate-activation.yml"
+      - ".github/workflows/naya-activation-receipt.yml"
   workflow_dispatch:
 
 permissions:
