@@ -78,7 +78,7 @@
       "id": "SN-AUTO-BRAIN",
       "title": "The Automatic Super Brain",
       "status": "CANDIDATE",
-      "text": "The system must be structured so the correct action is the natural action \u2014 computed by architecture, not discovered by effort. Every agent automatically knows what to do, what the mission is, what the goal is, and what choices to make.",
+      "text": "The system must be structured so the correct action is the natural action — computed by architecture, not discovered by effort. Every agent automatically knows what to do, what the mission is, what the goal is, and what choices to make.",
       "machine_check": "kernel/protocol/protocol_integrity_gate.py"
     },
     {
@@ -92,8 +92,29 @@
       "id": "SN-PROACTIVE-DOC",
       "title": "Proactive Documentation",
       "status": "CANDIDATE",
-      "text": "When any agent sees something valuable \u2014 lesson, pattern, fix, insight \u2014 it MUST be documented without waiting to be told. Not documenting discovered value is a disservice.",
+      "text": "When any agent sees something valuable — lesson, pattern, fix, insight — it MUST be documented without waiting to be told. Not documenting discovered value is a disservice.",
       "machine_check": "kernel/protocol/learning_capture.py"
+    },
+    {
+      "id": "DECISION-RECEIPT-LAW",
+      "name": "The Decision Receipt Law",
+      "check": "tools/protocol/checks/decision_receipt.py",
+      "enforcement": "decision_receipt_required",
+      "statement": "Every consequential decision ships a receipt: 'I chose X. I looked at A, B, C. X won because [evidence]. This is what I did.' A decision record without >= 2 named alternatives, a choice among them, the winning evidence, and a plain-words receipt naming both FAILS. Close calls must declare uncertainty honestly."
+    },
+    {
+      "id": "WISEST-CHOICE-LAW",
+      "name": "The Wisest Choice Law",
+      "check": "tools/protocol/checks/wisest_choice.py",
+      "enforcement": "wisest_choice_required",
+      "statement": "Always make the wisest, most intelligent choice: name the objective first, analyze the options against it, cite the protocol/rubric/scorecard/measurement/law the basis comes from (never vibes), and ask a human a question only for a named protected gate or a genuine ambiguity the protocol cannot resolve. Close calls declare uncertainty honestly."
+    },
+    {
+      "id": "DELEGATED-MERGE-AUTHORITY",
+      "name": "Delegated Merge Authority",
+      "check": "tools/protocol/checks/merge_authority.py",
+      "enforcement": "merge_packet_required",
+      "statement": "Naya 5 may merge to main without Shawn's per-merge approval iff ALL hold: (1) built + tests green with proof; (2) honest evidence-backed self-scorecard >= 9.0 with value-calculus run; (3) independent validation by a DIFFERENT seat; (4) intent + scorecard + validation posted on #1354, team consensus, zero objections; (5) post-merge report planned. Below 9.0, no independent validation, or any objection still needs Shawn's word. Covers merges to main ONLY."
     }
   ],
   "never_do": [
