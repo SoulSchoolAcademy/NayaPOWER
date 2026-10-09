@@ -21,6 +21,7 @@ ROOT = Path(__file__).resolve().parents[1]
 ACTIVATION = ROOT / "NAYA-ACTIVATION"
 CURRENT_REALITY = ACTIVATION / "CURRENT-REALITY"
 SUPERSEDED = "SOURCE-PRECEDENCE-AND-NAVIGATION-RECONCILIATION-2026-09-28.md"
+SUPERSEDED_0929 = "SOURCE-PRECEDENCE-AND-NAVIGATION-RECONCILIATION-2026-09-29.md"
 CURRENT_GLOB = "SOURCE-PRECEDENCE-AND-NAVIGATION-RECONCILIATION-*.md"
 
 
@@ -37,6 +38,7 @@ def test_readme_start_with_points_to_current_precedence():
     that directory; its 'Start with' target must never be a superseded pin."""
     readme = (CURRENT_REALITY / "README.md").read_text(encoding="utf-8")
     assert SUPERSEDED not in readme
+    assert SUPERSEDED_0929 not in readme
     assert _current_precedence_name() in readme or CURRENT_GLOB in readme
 
 
@@ -49,5 +51,6 @@ def test_receipt_template_source_of_truth_has_no_superseded_precedence():
     sources = template["source_of_truth"]
     assert isinstance(sources, list) and sources
     assert all(SUPERSEDED not in str(entry) for entry in sources)
+    assert all(SUPERSEDED_0929 not in str(entry) for entry in sources)
     joined = " ".join(str(entry) for entry in sources)
     assert _current_precedence_name() in joined or CURRENT_GLOB in joined
