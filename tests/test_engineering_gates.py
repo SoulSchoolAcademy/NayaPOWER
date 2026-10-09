@@ -9,7 +9,11 @@ import sys
 import tempfile
 from pathlib import Path
 
-sys.path.insert(0, str(Path.home() / "workspace"))
+# Import the gates from this repo (canonical home: kernel/protocol per
+# kernel/protocol/SYNTHESIS.md) — never from a machine-local ~/workspace path,
+# which does not exist in CI and broke collection there (SN-0575 fix).
+_REPO_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(_REPO_ROOT / "kernel" / "protocol"))
 
 from engineering_gates import (
     check_test_the_seam,
