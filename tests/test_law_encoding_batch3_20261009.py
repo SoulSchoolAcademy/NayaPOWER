@@ -475,6 +475,114 @@ def test_merge_passes_for_genuinely_distinct_seats():
     assert r["pass"], r["reasons"]
 
 
+# --------------------------------- confusables class (batch-3 lane fixer)
+# The parked watch-list class: Cyrillic/Greek/Armenian homoglyph smuggling.
+# NFKC cannot fold U+0430 CYRILLIC SMALL LETTER A -- it is a distinct
+# letter, not a compatibility form -- so the NFKC micro-fix leaves this
+# class wide open. Policy: normalize-and-flag (fold to canonical ASCII
+# per Unicode confusables.txt before comparing; record the fold in the
+# details). Reject-on-mixed-script was measured and rejected: a fully
+# Cyrillic "naya-5" (every letter Cyrillic; digits/hyphen are
+# Script=Common) is single-script and would sail past it. Folding is
+# script-agnostic. Non-ASCII is written as \u escapes here on purpose:
+# invisible homoglyphs in source are a maintenance hazard.
+# ---
+
+def test_merge_fires_when_validator_is_cyrillic_a_alias_of_seat():
+    # The original instance: "nаya-5" with U+0430 CYRILLIC SMALL LETTER A.
+    rec = _good_merge_packet()
+    rec["independent_validator"] = "n\u0430ya-5"  # seat is "naya-5"
+    r = merge_authority.check(rec)
+    assert not r["pass"], "cyrillic-a self-validation is not independent validation"
+    assert r["details"].get("confusables_folded") is True
+
+
+def test_merge_fires_on_fresh_mixed_script_variants():
+    # Six fresh single-char swaps across Cyrillic/Greek/Armenian, all must
+    # fold to the seat and fire. Class-first: not the one instance, the
+    # whole family.
+    variants = [
+        "n\u03b1ya-5",   # GREEK SMALL LETTER ALPHA for a
+        "na\u0443a-5",   # CYRILLIC SMALL LETTER U for y
+        "\u039daya-5",   # GREEK CAPITAL LETTER NU for n
+        "\u0578aya-5",   # ARMENIAN SMALL LETTER VO for n
+        "n\u0430y\u0430-5",  # two Cyrillic swaps at once
+        "n\u03b1y\u03b1-5",  # two Greek swaps at once
+    ]
+    for v in variants:
+        rec = _good_merge_packet()
+        rec["independent_validator"] = v
+        r = merge_authority.check(rec)
+        assert not r["pass"], f"smuggled variant {v!r} passed as a different seat"
+        assert merge_authority._seat_key(v) == "naya5", f"{v!r} did not fold to naya5"
+    # Different seat family, same class:
+    rec = _good_merge_packet()
+    rec["seat"] = "coda-1"
+    rec["independent_validator"] = "\u0441oda-1"  # CYRILLIC SMALL LETTER ES for c
+    r = merge_authority.check(rec)
+    assert not r["pass"], "cyrillic-es self-validation is not independent validation"
+
+
+def test_merge_fires_on_full_cyrillic_homoglyph_string():
+    # Every LETTER Cyrillic: "\u0441\u043e\u0501\u0430" (es, o, komi de,
+    # a) + "-1" is visually "coda-1". Digits and the hyphen are
+    # Script=Common, so this is single-script -- a reject-on-mixed-script
+    # policy is blind to it. Folding is script-agnostic, not fooled.
+    # (Note: Cyrillic \u043d looks like 'h', not 'n' -- a "fully Cyrillic
+    # naya-5" is not a visual twin at all. The honest twin is coda-1's.)
+    rec = _good_merge_packet()
+    rec["seat"] = "coda-1"
+    rec["independent_validator"] = "\u0441\u043e\u0501\u0430-1"
+    r = merge_authority.check(rec)
+    assert not r["pass"], "single-script cyrillic self-validation must not pass"
+    assert merge_authority._seat_key("\u0441\u043e\u0501\u0430-1") == "coda1"
+
+
+def test_seat_key_folds_confusables_to_ascii():
+    assert merge_authority._seat_key("n\u0430ya-5") == "naya5"
+    assert merge_authority._seat_key("n\u03b1ya-5") == "naya5"
+    assert merge_authority._seat_key("\u0578aya-5") == "naya5"
+    assert merge_authority._seat_key("\u0441oda-1") == "coda1"
+    # provenance flag: clean text folds nothing, smuggled text folds
+    key, folded = merge_authority._seat_key_folded("naya-5")
+    assert (key, folded) == ("naya5", False)
+    key, folded = merge_authority._seat_key_folded("n\u0430ya-5")
+    assert (key, folded) == ("naya5", True)
+
+
+def test_merge_flags_confusables_in_details():
+    rec = _good_merge_packet()
+    r = merge_authority.check(rec)
+    assert r["pass"], r["reasons"]
+    assert r["details"].get("confusables_folded") is False
+    rec = _good_merge_packet()
+    rec["independent_validator"] = "n\u0430ya-5"
+    r = merge_authority.check(rec)
+    assert not r["pass"]
+    assert r["details"]["seat_key"] == r["details"]["validator_key"] == "naya5"
+    assert r["details"]["confusables_folded"] is True
+
+
+def test_merge_passes_for_confusable_fold_of_a_different_seat():
+    # The fold must not glue distinct seats together: the Cyrillic twin of
+    # "coda-2" folds to coda2, still a different seat from coda-1.
+    rec = _good_merge_packet()
+    rec["seat"] = "coda-1"
+    rec["independent_validator"] = "\u0441\u043e\u0501\u0430-2"
+    r = merge_authority.check(rec)
+    assert r["pass"], r["reasons"]
+
+
+def test_merge_passes_with_multiscript_prose_in_evidence():
+    # Honest multi-script prose must NOT false-positive: the fold only
+    # touches seat identity comparison, never the evidence field.
+    rec = _good_merge_packet()
+    rec["test_evidence"] = ("pytest 61/61 green, CI run 42; notes: "
+                            "проверка системы, δοκιμή, համակարգ")
+    r = merge_authority.check(rec)
+    assert r["pass"], r["reasons"]
+
+
 def test_merge_fires_on_infinite_score():
     # The re-validator's gap 4: score Infinity passed the 9.0 bar.
     rec = _good_merge_packet()

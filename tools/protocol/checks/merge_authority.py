@@ -84,6 +84,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from checks import emit, fail, load_record, result  # noqa: E402
+from checks.confusables_table import FOLD as _CONFUSABLE_FOLD  # noqa: E402
 
 MIN_SELF_SCORE = 9.0
 MAX_SELF_SCORE = 10.0  # scorecards are scored on the 0–10 scale
@@ -99,12 +100,40 @@ MAX_SELF_SCORE = 10.0  # scorecards are scored on the 0–10 scale
 KNOWN_SEAT_ALIASES: dict[str, str] = {}
 
 
+def _seat_key_folded(seat: str) -> tuple[str, bool]:
+    # Identity normalization pipeline, in order:
+    #   1. NFKC-fold (the b61229d03 micro-fix: fullwidth/compatibility first)
+    #   2. Confusable-fold (this fix: Cyrillic/Greek/Armenian/Latin/Other
+    #      look-alikes -> canonical ASCII, per Unicode confusables.txt)
+    #   3. Strip everything outside [a-z0-9]
+    # The confusable fold must come AFTER NFKC (it operates on canonical
+    # forms), BEFORE case-folding (U+039D GREEK CAPITAL LETTER NU folds to
+    # 'n' in the table, but lowercasing first would turn it into U+03BD,
+    # which folds to 'v' — the wrong seat), and BEFORE the strip (so a
+    # folded letter survives comparison instead of being erased — erasing
+    # the unknown is never a comparison).
+    # Returns (key, confusables_seen): the flag says the raw text carried
+    # look-alike characters, so the caller can surface it in the record.
+    normalized = unicodedata.normalize("NFKC", seat).strip()
+    folded = normalized.translate(_CONFUSABLE_FOLD)
+    key = re.sub(r"[^a-z0-9]", "", folded.lower())
+    return key, folded != normalized
+
+
 def _seat_key(seat: str) -> str:
     # NFKC-fold FIRST: normalization must translate before it compares.
     # Fullwidth "ｎａｙａ５" folds to "naya5"; the old strip-everything-
     # non-ASCII regex turned it into "" which matches nothing — fail-open
     # by deletion. Erasing the unknown is never a comparison.
-    key = re.sub(r"[^a-z0-9]", "", unicodedata.normalize("NFKC", seat).strip().lower())
+    #
+    # Confusable-fold SECOND (this fix): "nаya-5" with U+0430 CYRILLIC
+    # SMALL LETTER A folds to "naya5" too. NFKC cannot fold it — U+0430 is
+    # a distinct letter, not a compatibility form — so it needs its own
+    # class mapping (Unicode confusables.txt, 1453 entries), not a bigger
+    # hammer. A fully Cyrillic "nауа-5" is single-script (digits and the
+    # hyphen are Script=Common), so reject-on-mixed-script would miss it;
+    # folding is script-agnostic and closes the whole class.
+    key, _ = _seat_key_folded(seat)
     return KNOWN_SEAT_ALIASES.get(key, key)
 
 
@@ -266,14 +295,25 @@ def check(record: dict) -> dict:
             "self-declared",
             details,
         )
-    if _seat_key(independent_validator) == _seat_key(seat):
+    seat_key, seat_confused = _seat_key_folded(seat)
+    val_key, val_confused = _seat_key_folded(independent_validator)
+    seat_key = KNOWN_SEAT_ALIASES.get(seat_key, seat_key)
+    val_key = KNOWN_SEAT_ALIASES.get(val_key, val_key)
+    details["seat_key"] = seat_key
+    details["validator_key"] = val_key
+    details["confusables_folded"] = seat_confused or val_confused
+    if val_key == seat_key:
+        fold_note = (" Confusable look-alike characters were folded to "
+                     "their canonical forms before comparison."
+                     if details["confusables_folded"] else "")
         return fail(
             f"{branch}: independent_validator {independent_validator!r} is "
             f"the same seat as {seat!r} after identity normalization "
-            f"(both -> {_seat_key(seat)!r}) — 'naya5' vs 'naya-5' is one "
-            "seat wearing different punctuation, not two seats. "
-            "Self-validation is not independent validation; 10/10 is never "
-            "self-declared",
+            f"(both -> {seat_key!r}) — 'naya5' vs 'naya-5' is one "
+            "seat wearing different punctuation, not two seats; "
+            "'n\u0430ya-5' (Cyrillic \u0430, U+0430) is the same trick in "
+            "another alphabet." + fold_note + " Self-validation is not "
+            "independent validation; 10/10 is never self-declared",
             details,
         )
     reasons.append(f"independently validated by {independent_validator}")
