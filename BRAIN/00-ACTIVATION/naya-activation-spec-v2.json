@@ -1,0 +1,1920 @@
+{
+  "meta": {
+    "name": "naya-activation-spec",
+    "version": "2.0.0-draft",
+    "status": "DRAFT_FOR_CONSENSUS",
+    "authority": "Shawn Vibert, Human Director",
+    "issued": "2026-10-09",
+    "issued_by": "Naya 5",
+    "reconciled_by": "Naya 5 (subagent) from naya-activation-spec-v1.json + activation-naya-machine.json",
+    "reconciled_at": "2026-10-09",
+    "sources": [
+      "INTELLIGENCE.md pilot \u2014 activation-naya v1.1 (status, decisions, blockers, lessons)",
+      "PROJECT.pdf \u2014 Activation Naya charter (8 success criteria, 5 scored phases)",
+      "SYSTEM-BLUEPRINT-20261009 (Naya 4 synthesis + 4 research agents)",
+      "activation-naya-plan-v1.md",
+      "learning-system-blueprint-v1 (4 research lanes, verified vs live main 1d736522)",
+      "learning-system-blueprint-v1.md",
+      "naya-activation blueprint v1.1 (Naya 5 \u2014 3 claims corrected under evidence)",
+      "project-intelligence-activation-naya.md",
+      "project-intelligence-template v1 + SPEC v1.1 (four layers, 11 sections)",
+      "project-intelligence-template.md"
+    ],
+    "source_tip": "1d73652231ac6127806640af5a31eb516c60738d",
+    "rule": "Every value must be machine-actionable. If a machine cannot act on it, it does not belong here.",
+    "intended_repo_path": "BRAIN/00-ACTIVATION/naya-activation-spec-v2.json",
+    "changelog": [
+      {
+        "at": "2026-10-09",
+        "by": "Naya 5",
+        "what": "v1.0.0-draft distilled from 9 source documents under Shawn's order"
+      },
+      {
+        "at": "2026-10-09",
+        "by": "Naya 5",
+        "what": "v2.0.0-draft reconciled: union of naya-activation-spec-v1.json (23KB) and activation-naya-machine.json (36KB). 21 laws (was 14+14 with 7 overlaps), 14 work orders (hers added SEED+PROOF), 13 gaps + 7 connections cross-referenced, 9 nodes merged, 8 questions kept incl. disputed Q8."
+      }
+    ]
+  },
+  "mission": {
+    "statement": "Assemble the complete learning system so that a lesson Shawn teaches once demonstrably changes Naya's future behavior without being reminded.",
+    "human": "Build a mind that doesn't forget. Shawn teaches once; days later a fresh Naya gets it right because she pulled the lesson from memory. No one re-taught her. She just knew.",
+    "machine": {
+      "input": "human_instruction: smart note this: <lesson>",
+      "invariants": [
+        "truth_state(CANDIDATE) at capture; never ACTIVE merely by capture",
+        "truth_state(ACTIVE) requires elevation grant + independent verification",
+        "decide() MUST call retrieve() before evaluate_candidates()",
+        "verifier != builder (no self-certification)",
+        "prove() requires observed outcome, not predicted outcome"
+      ],
+      "output": "cold_successor_correct_behavior(similar_situation) with zero prior context",
+      "pipeline": [
+        "capture()",
+        "govern()",
+        "verify()",
+        "record()",
+        "elevate()",
+        "retrieve()",
+        "decide(intelligence)",
+        "execute()",
+        "handoff()",
+        "prove()",
+        "evolve()"
+      ]
+    },
+    "done_criteria": [
+      {
+        "id": "DONE-MACHINE",
+        "test": "One novel falsifiable lesson flows capture->persist->index->verify->promote (DB+repo in sync) -> cold Naya retrieves via RANKED path (not content-hash) and applies it to a pre-registered held-out task -> blind different-seat verifier confirms the behavior change came from the lesson -> every link carries SHA-256 hashes. The protocol is repeatable; the protocol hash is recorded."
+      },
+      {
+        "id": "DONE-HUMAN",
+        "test": "Shawn says 'smart note this' and gets a Smart Link. Days later, in a different conversation, he asks for something in that lesson's territory. She does it the way the lesson prescribes without being reminded. Asked why, she names the lesson and shows the receipt chain. The Smart Link resolves to a note whose header says ACTIVE. Verdict: Shawn's (or his explicit delegate's)."
+      },
+      {
+        "id": "DONE-NO-DEAD",
+        "test": "Every gate has a producer for the state it demands. No two writers own the same table/file without named precedence. No 'looks alive, isn't' components remain."
+      },
+      {
+        "id": "DONE-ONE-TRUTH",
+        "test": "Single canonical capture intake. DB and repo agree on lesson state. Zero duplicate SN numbers; CI gate enforces it."
+      }
+    ],
+    "out_of_scope": [
+      "production NayaNET deployment",
+      "Hub interface",
+      "new features",
+      "constitutional/EVOLVE changes"
+    ]
+  },
+  "root_law": "make intelligence compound; remove whatever stops it from compounding",
+  "definitions": {
+    "VERIFIED_is_not_a_state": "VERIFIED is not a database lifecycle value. Verification is evidence attached to the row (who/how/when), never a status.",
+    "cold_retrieval": "A fresh identity that never saw the lesson fetches and correctly applies it. Proves availability.",
+    "held_out_test": "Proving the lesson changes a decision on a task different from the one that produced it. Proves influence.",
+    "learning": "ONE closed loop: capture -> verify -> promote -> cold retrieve -> behavior change -> independent verification. Nothing less gets the word.",
+    "lifecycle_ACTIVE": "Independently verified, promoted through the governed gate. The only state the reader serves.",
+    "lifecycle_CANDIDATE": "Lesson exists but is unverified. Default label. NOT usable for decisions.",
+    "lifecycle_SUPERSEDED": "Replaced by a newer lesson. Kept for lineage, never served as current.",
+    "memory_vs_storage": "Storage holds. Memory serves. A database nobody queries is storage with extra steps.",
+    "receipt": "Record carrying SHA-256 hashes binding a claim to exact bytes. Three layers: DB receipt (artifact completeness), completion receipt (API response), registry entry (working receipt).",
+    "smart_link": "URL pointing at a Smart Note's file on main. Proves the note exists. Proves nothing about truth or learning.",
+    "smart_note": "A distilled lesson in three voices (human, Naya, machine) with provenance. A filing-cabinet entry until proven otherwise.",
+    "truth_ladder": [
+      "CANDIDATE",
+      "TESTING",
+      "VERIFIED",
+      "RATIFIED",
+      "ACTIVE",
+      "LEARNED"
+    ]
+  },
+  "single_sourcing": {
+    "human_projection": "GitHub",
+    "rule": "back-sync keeps them consistent; on conflict the DB wins and the divergence is a bug",
+    "runtime_truth": "Supabase"
+  },
+  "layers": [
+    {
+      "artifact": "PROJECT.md charter",
+      "authority": "Shawn only",
+      "changes": "rarely",
+      "id": 1,
+      "job": "what we build, why, success criteria",
+      "name": "LAW"
+    },
+    {
+      "artifact": "blueprints, specs",
+      "authority": "design authority",
+      "changes": "when design changes",
+      "id": 2,
+      "job": "how it works technically",
+      "name": "ARCHITECTURE"
+    },
+    {
+      "artifact": "Smart Notes, receipts, evidence",
+      "authority": "capture pipeline",
+      "changes": "constantly, append-only",
+      "id": 3,
+      "job": "raw lessons and proof",
+      "name": "CAPTURE"
+    },
+    {
+      "artifact": "INTELLIGENCE.md",
+      "authority": "project owner",
+      "changes": "on meaningful events",
+      "id": 4,
+      "job": "living synthesis: state, decisions, blockers, lessons, team",
+      "name": "INTELLIGENCE"
+    }
+  ],
+  "architecture": {
+    "binding_status": "NOT_PROVEN",
+    "binding_evidence": "BRAIN/03-KERNEL/MANIFEST.json: runtime_binding.status=NOT_PROVEN, entrypoint=null",
+    "node_binding_note": "NOT_PROVEN by the system's own admission (BRAIN/03-KERNEL/MANIFEST.json: runtime_binding.status NOT_PROVEN, entrypoint null). Seven nodes have real implementations; no single entrypoint wires all nine.",
+    "nodes": [
+      {
+        "id": "SELF",
+        "purpose": "identity gate: who acts, what mission, continuity | Identity, mission, continuity: who am I, what is my objective, what is known vs unknown.",
+        "status": "BUILT",
+        "runs_at": [
+          "kernel/naya_identity_binding.py",
+          "kernel/persona_loader.py",
+          "kernel/self_node.py"
+        ],
+        "inputs": [
+          "authenticated identity",
+          "checkpoint",
+          "constitution",
+          "execution_state",
+          "mission",
+          "successor package",
+          "successor_context"
+        ],
+        "outputs": [
+          "boot receipt",
+          "current_objective",
+          "identity context",
+          "identity_context",
+          "known_unknown_boundary"
+        ],
+        "gap": "record_experience() has zero production callers; no behavior integration (G6) record_experience() has zero production callers; no behavior integration (see WO5b)",
+        "evidence": "PROVEN"
+      },
+      {
+        "id": "LAW",
+        "purpose": "permission: PROHIBITED / NEEDS_AUTHORITY / NEEDS_EVIDENCE / ADMISSIBLE | Permission: AUTHORIZED/DENIED/REQUIRES_CONFIRMATION/AMBIGUOUS/EXPIRED/REVOKED/OUT_OF_SCOPE.",
+        "status": "BUILT",
+        "runs_at": [
+          "kernel/protocol/authority_gate.py",
+          "supabase/functions/nayanet-law-runtime/",
+          "supabase/functions/nayanet-law-runtime/law.ts"
+        ],
+        "inputs": [
+          "ActionProposal",
+          "actor_identity",
+          "governance_contracts",
+          "grant state via KNOW",
+          "proposed_action"
+        ],
+        "outputs": [
+          "GateVerdict",
+          "authorization_verdict",
+          "permission baton"
+        ],
+        "gap": null,
+        "evidence": "PROVEN",
+        "verdict_vocabulary_conflict": {
+          "mine": [
+            "PROHIBITED",
+            "NEEDS_AUTHORITY",
+            "NEEDS_EVIDENCE",
+            "ADMISSIBLE"
+          ],
+          "hers": [
+            "AUTHORIZED",
+            "DENIED",
+            "REQUIRES_CONFIRMATION",
+            "AMBIGUOUS",
+            "EXPIRED",
+            "REVOKED",
+            "OUT_OF_SCOPE"
+          ],
+          "status": "UNRESOLVED \u2014 team must rule before v2 leaves draft"
+        }
+      },
+      {
+        "id": "ACT",
+        "purpose": "only node that acts: plan, execute, observe, receipt; fail-closed | Do things safely: plan, check authority, execute, refuse fail-closed.",
+        "status": "BUILT",
+        "runs_at": [
+          "kernel/act_pipeline.py",
+          "kernel/value_calculus.py",
+          "supabase/functions/nayanet-act-runtime/",
+          "supabase/functions/nayanet-act-runtime/act.ts"
+        ],
+        "inputs": [
+          "LAW authorization",
+          "action_plan",
+          "decision",
+          "law_context",
+          "reversibility_class"
+        ],
+        "outputs": [
+          "ExecutionHandoff",
+          "action",
+          "execution record",
+          "execution_state",
+          "plan",
+          "receipts"
+        ],
+        "gap": "never reads learning_evidence; naya-decision-context zero callers (G4/G5) Reads nayanet_intelligent_blocks, never learning_evidence. naya-decision-context has zero callers (see WO4)",
+        "evidence": "PROVEN"
+      },
+      {
+        "id": "KNOW",
+        "purpose": "memory: store, classify, dedupe, serve applicable knowledge | Memory: store and retrieve intelligence with provenance and uncertainty.",
+        "status": "BUILT",
+        "runs_at": [
+          "kernel/brain_registry.py",
+          "supabase/functions/nayanet-know-runtime/",
+          "supabase/functions/nayanet-know-runtime/know.ts"
+        ],
+        "inputs": [
+          "canonical_objects",
+          "experiences",
+          "learnings",
+          "provenance",
+          "retrieval requests",
+          "retrieval_requests"
+        ],
+        "outputs": [
+          "intelligence context with provenance",
+          "intelligence_context",
+          "retrieval_candidates"
+        ],
+        "gap": null,
+        "evidence": "PROVEN"
+      },
+      {
+        "id": "VERIFY",
+        "purpose": "independent checker: re-derive, attack, classify failures | Check outcomes against expectations: SUCCESS/FAILURE/INCONCLUSIVE/NOT_PROVEN.",
+        "status": "BUILT_DISTRIBUTED",
+        "runs_at": [
+          "nayanet-causal-verify",
+          "nayanet-verified-ai-action",
+          "supabase/functions/nayanet-causal-verify/",
+          "supabase/functions/nayanet-verified-ai-action/"
+        ],
+        "inputs": [
+          "claims",
+          "evidence",
+          "expected outcome",
+          "expected_outcome",
+          "observed data",
+          "observed_data"
+        ],
+        "outputs": [
+          "SUCCESS/FAILURE/INCONCLUSIVE + receipt",
+          "verdict",
+          "verification_receipt"
+        ],
+        "gap": null,
+        "evidence": "PROVEN"
+      },
+      {
+        "id": "PROVE",
+        "purpose": "evidence judge: does evidence support the claim (never truth itself) | Show the work: evidence, lineage, truth state, limitations.",
+        "status": "BUILT",
+        "runs_at": [
+          "supabase/functions/nayanet-prove-runtime/",
+          "supabase/functions/nayanet-prove-runtime/prove.ts"
+        ],
+        "inputs": [
+          "claim",
+          "claims",
+          "evidence",
+          "provenance",
+          "verification_methods"
+        ],
+        "outputs": [
+          "SUPPORTED/REFUSED + sealed receipt",
+          "limitations",
+          "proof_status",
+          "truth_state"
+        ],
+        "gap": null,
+        "evidence": "PROVEN"
+      },
+      {
+        "id": "CONNECT",
+        "purpose": "context broker: what may connect to what; RELATED != RELEVANT != APPLICABLE | Find related things: retrieval, relationships, applicability.",
+        "status": "BUILT_DISTRIBUTED",
+        "runs_at": [
+          "_shared/connect_selector.ts",
+          "supabase/functions/_shared/connect_selector.ts",
+          "supabase/functions/nayanet-intelligence-retrieve/"
+        ],
+        "inputs": [
+          "contradiction_rules",
+          "intelligence_objects",
+          "knowledge graph",
+          "proof-bounded claims",
+          "retrieval_queries",
+          "task context"
+        ],
+        "outputs": [
+          "applicability_assessment",
+          "freshness_indicators",
+          "minimum sufficient context + receipt",
+          "relevant_intelligence_set"
+        ],
+        "gap": "ranked retrieval RPC missing in production (G8) Ranked retrieval RPC nayanet_retrieve_blocks missing in production (migration pending, human-gated)",
+        "evidence": "PROVEN"
+      },
+      {
+        "id": "LEARN",
+        "purpose": "turn verified experience into future behavior | Turn verified experience into future behavior change.",
+        "status": "PARTIAL",
+        "runs_at": [
+          "kernel/protocol/learning_capture.py",
+          "nayanet-learning-verify",
+          "supabase/functions/nayanet-learning-verify/"
+        ],
+        "inputs": [
+          "VERIFY blessed outcomes",
+          "contradiction_reports",
+          "observations",
+          "verify_outcomes"
+        ],
+        "outputs": [
+          "compounding_measurement",
+          "learning candidate",
+          "learning_candidate",
+          "promoted learning",
+          "promoted_learning"
+        ],
+        "gap": "Promotion exists but closed loop (experience->behavior->measured compounding) is NOT evidenced as a working pipeline. Admission gate built, never wired (see WO3)",
+        "evidence": "PROVEN"
+      },
+      {
+        "id": "EVOLVE",
+        "purpose": "succession: package everything for the next cycle; carry context, never authority | Succession: a new Naya picks up where the last left off.",
+        "status": "PARTIAL",
+        "runs_at": [
+          "cold-runtime-proof",
+          "cold-runtime-proof receipts; improvement governance spec-only",
+          "cold-successor receipts"
+        ],
+        "inputs": [
+          "current_truth_state",
+          "gaps",
+          "observed_gaps",
+          "verified learnings",
+          "verified_learnings"
+        ],
+        "outputs": [
+          "evolution_state",
+          "improvement_proposal",
+          "successor package (hash-sealed)",
+          "successor_package"
+        ],
+        "gap": "Succession mechanics exist; improvement governance is spec-only",
+        "evidence": "PROVEN"
+      }
+    ]
+  },
+  "gaps": [
+    {
+      "evidence": "PROVEN",
+      "fix": "WO2",
+      "id": "G1",
+      "severity": "HIGH",
+      "what": "No back-sync after runtime promotion: DB says ACTIVE/LEARNED, repo registry says CANDIDATE forever",
+      "where": "live-supabase-runtime-proof.yml (contents: read)",
+      "see_also": [
+        "CONN-BACKSYNC"
+      ]
+    },
+    {
+      "evidence": "PROVEN",
+      "fix": "WO2 (single writer)",
+      "id": "G2",
+      "severity": "HIGH",
+      "what": "Repo-side promotion never invoked: promote_note() complete, zero callers, zero receipts",
+      "where": "tools/smart_note_v2.py:721",
+      "see_also": [
+        "CONN-BACKSYNC"
+      ]
+    },
+    {
+      "evidence": "PROVEN",
+      "fix": "WO3",
+      "id": "G3",
+      "severity": "MEDIUM",
+      "what": "Admission gate unmerged, uncalled",
+      "where": "naya5/learning-admission-round2 @ 9fba596e",
+      "see_also": [
+        "CONN-ADMISSION"
+      ]
+    },
+    {
+      "evidence": "PROVEN",
+      "fix": "WO4",
+      "id": "G4",
+      "severity": "HIGH",
+      "what": "naya-decision-context has zero callers (dead code)",
+      "where": "supabase/functions/naya-decision-context/index.ts",
+      "see_also": [
+        "CONN-DECISION"
+      ]
+    },
+    {
+      "evidence": "PROVEN",
+      "fix": "WO4",
+      "id": "G5",
+      "severity": "HIGH",
+      "what": "ACT never reads learning_evidence (the store promotion lands in)",
+      "where": "supabase/functions/nayanet-act-runtime/index.ts",
+      "see_also": [
+        "CONN-DECISION"
+      ]
+    },
+    {
+      "evidence": "PROVEN",
+      "fix": "WO5b",
+      "id": "G6",
+      "severity": "HIGH",
+      "what": "SELF has no behavior integration; record_experience() has zero production callers",
+      "where": "kernel/self_node.py",
+      "see_also": [
+        "CONN-SELF"
+      ]
+    },
+    {
+      "evidence": "PROVEN",
+      "fix": "WO6 (repair or retire, no middle state)",
+      "id": "G7",
+      "severity": "MEDIUM",
+      "what": "Receiver->GitHub projection bridge dead (all 5 dispatch receipts failed)",
+      "where": "nayanet_github_dispatch_receipts",
+      "see_also": [
+        "CONN-PROJECTION"
+      ]
+    },
+    {
+      "evidence": "PROVEN",
+      "fix": "migration before PROOF (human gate)",
+      "id": "G8",
+      "severity": "MEDIUM",
+      "what": "Ranked retrieval RPC missing in production",
+      "where": "information_schema.routines",
+      "see_also": [
+        "architecture.nodes.CONNECT.gap",
+        "work_orders.PROOF.human_gates"
+      ]
+    },
+    {
+      "evidence": "PROVEN",
+      "fix": "WO8 (paired with WO1, never alone)",
+      "id": "G9",
+      "severity": "HIGH",
+      "what": "lifecycle_state defaults to ACTIVE in 3 places: missing field passes the gate by omission (fail-open)",
+      "where": "sn002_conformance.py:135, smart_note_v2.py:573, workflow inline",
+      "see_also": [
+        "work_orders.WO8"
+      ]
+    },
+    {
+      "evidence": "PROVEN",
+      "fix": "WO7 (first-claim stands + CI gate)",
+      "id": "G10",
+      "severity": "MEDIUM",
+      "what": "19 duplicate SN numbers on live main (629 entries, 610 distinct IDs)",
+      "where": ".naya/memory/smart-notes/index.json",
+      "see_also": [
+        "work_orders.WO7",
+        "learning_chain.LC3"
+      ]
+    },
+    {
+      "evidence": "PROVEN",
+      "fix": "WO1 (one-line, paired with WO8)",
+      "id": "G11",
+      "severity": "HIGH",
+      "what": "#2020 capture has wrong lifecycle_state value; licp run RED",
+      "where": ".naya/capture/20261009-successor-t11-reserve-rule-canonical.json",
+      "see_also": [
+        "work_orders.WO1",
+        "current_state.known_reds.RED-2020"
+      ]
+    },
+    {
+      "evidence": "PROVEN",
+      "fix": "wire or mark aspirational per node",
+      "id": "G12",
+      "severity": "HIGH",
+      "what": "Nine-node production binding NOT_PROVEN (system's own admission); no single entrypoint",
+      "where": "BRAIN/03-KERNEL/MANIFEST.json",
+      "see_also": [
+        "architecture.binding_status",
+        "connections.CONN-RUNTIME-BRIDGE"
+      ]
+    },
+    {
+      "evidence": "REPORTED",
+      "fix": "PR #1733 (merge or port) before WO4",
+      "id": "G13",
+      "severity": "MEDIUM",
+      "what": "naya-decision-context conflates presence with influence (influenced = !!evidence)",
+      "where": "supabase/functions/naya-decision-context/index.ts",
+      "see_also": [
+        "work_orders.WO4.precondition",
+        "connections.CONN-DECISION"
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "CONN-ADMISSION",
+      "from": "LC2",
+      "to": "LC4",
+      "missing": "Creation-time design validation. Branch naya5/learning-admission-round2@9fba596e holds tools/learning_admission_gate.py (323 lines, 48/48 tests green). No PR exists. Zero callers on main. No workflow slot.",
+      "fix": "WO3: port gate contract into supabase/functions/nayanet-learning-verify/index.ts at mode==='candidate' write site (~line 378), or add workflow job gating before candidate POST. Reject unverifiable candidates with named reason codes; fail-closed on gate error; log invocations.",
+      "see_also": [
+        "G3"
+      ]
+    },
+    {
+      "id": "CONN-DECISION",
+      "from": "learning_evidence",
+      "to": "nayanet-act-runtime",
+      "missing": "supabase/functions/naya-decision-context/index.ts (2,814 bytes) queries learning_evidence WHERE status=ACTIVE and returns USE_VERIFIED_LEARNING_CONTEXT. Zero callers \u2014 dead code.",
+      "fix": "WO4: in nayanet-act-runtime/index.ts mode==='plan' handler, after LAW preflight, before buildActPlan: invoke decision-context for action target_id, merge ACTIVE-lesson context with named precedence vs 181 DURABLE blocks. Hard precondition: PR #1733 merged green (influenced must measure behavioral delta, not presence).",
+      "see_also": [
+        "G4",
+        "G5",
+        "G13"
+      ]
+    },
+    {
+      "id": "CONN-SELF",
+      "from": "learning_evidence",
+      "to": "kernel/self_node.py",
+      "missing": "record_experience() has zero production callers. Nothing reads ACTIVE rows into SELF. Nothing mutates behavior patterns from verified lessons.",
+      "fix": "WO5b: add integrate_verified_lesson() to kernel/self_node.py (pull ACTIVE rows, validate verifier chain doer!=scorer!=verifier, apply to new kernel/behavior_policy.py versioned JSON store). Wire ACT post-execution hook as record_experience() caller. Rollback test required.",
+      "see_also": [
+        "G6"
+      ]
+    },
+    {
+      "id": "CONN-BACKSYNC",
+      "from": "supabase.learning_evidence",
+      "to": ".naya/memory/smart-notes/index.json",
+      "missing": "Promotion writes DB only. Repo registry says CANDIDATE forever. Repo-side promote_note() (tools/smart_note_v2.py:721) complete with zero callers. promotions/ dir absent on main.",
+      "fix": "WO2: route back-sync through promote_note() as the SINGLE repo-side writer. After runtime promotion, update registry truth_state + .md header (Smart Link must tell truth). Idempotent. Serialize index.json writes with loop-guard. contents:write permission change flagged in PR.",
+      "see_also": [
+        "G1",
+        "G2"
+      ]
+    },
+    {
+      "id": "CONN-INTAKE",
+      "from": "v7-receiver",
+      "to": "v2-pipeline",
+      "missing": "Two parallel pipelines write learning_evidence. v7 receiver keeps writing dead rows. 15-min authority-grant scope references nonexistent project-canonical-smart-note.yml.",
+      "fix": "WO9: declare ONE canonical intake (v2: capture -> nayanet-intelligence-commit-runtime -> nayanet-learning-verify). Decommission v7 write path (rows read-only). One writer to learning_evidence with dedup key spanning both paths.",
+      "see_also": [
+        "G9-context"
+      ]
+    },
+    {
+      "id": "CONN-RUNTIME-BRIDGE",
+      "from": "typescript-runtime",
+      "to": "python-kernel",
+      "missing": "WO4/WO5 live in different runtimes (TS edge functions vs Python kernel). No shared behavior-policy store. Nine-node production binding NOT_PROVEN.",
+      "fix": "WO10: shared behavior-policy store both runtimes read, OR declare single runtime for the closed loop with the other's role formally retired. WO5a first: prove kernel->Supabase read seam end-to-end (client? credential? human-gated?).",
+      "see_also": [
+        "G12"
+      ]
+    },
+    {
+      "id": "CONN-PROJECTION",
+      "from": "receiver",
+      "to": "github-projection",
+      "missing": "Receiver->GitHub projection bridge dead: all 5 nayanet_github_dispatch_receipts failed. Zero IB-###### dirs on main.",
+      "fix": "WO6: classify 5 failures. Either N>=3 consecutive canonical captures project end-to-end with resolving Smart Links, or formal retirement (zero repo references, no dead authority grants). Exactly one canonical doc declares LIVE or RETIRED.",
+      "see_also": [
+        "G7"
+      ]
+    }
+  ],
+  "learning_chain": [
+    {
+      "id": "LC1",
+      "name": "CAPTURE",
+      "node": "LEARN",
+      "does": "Distill user's words into human note + machine record.",
+      "status": "WORKING",
+      "depends_on": [],
+      "blocks": [
+        "LC2"
+      ],
+      "maps_to_pipeline": "capture"
+    },
+    {
+      "id": "LC2",
+      "name": "PERSIST",
+      "node": "KNOW",
+      "does": "Save to GitHub (permanent file) and Supabase learning_evidence (DB row). Default label: CANDIDATE.",
+      "status": "WORKING",
+      "depends_on": [
+        "LC1"
+      ],
+      "blocks": [
+        "LC3"
+      ],
+      "note": "Two pipelines exist (v7 receiver + v2 agent); WO9 unifies to one",
+      "maps_to_pipeline": "record"
+    },
+    {
+      "id": "LC3",
+      "name": "INDEX",
+      "node": "KNOW",
+      "does": "Tag by situation, intent, applicability. Registry entry in .naya/memory/smart-notes/index.json.",
+      "status": "PARTIAL",
+      "depends_on": [
+        "LC2"
+      ],
+      "blocks": [
+        "LC4"
+      ],
+      "note": "Stored but not meaningfully indexed for ranked retrieval; 19 duplicate SNs (WO7)",
+      "maps_to_pipeline": "record"
+    },
+    {
+      "id": "LC4",
+      "name": "VERIFY",
+      "node": "VERIFY",
+      "does": "Independent checker confirms the lesson is real, correct, falsifiable.",
+      "status": "BROKEN",
+      "depends_on": [
+        "LC3"
+      ],
+      "blocks": [
+        "LC5"
+      ],
+      "note": "Admission gate (falsifiable-claim/pre-registered-criterion/doer!=scorer) built on branch naya5/learning-admission-round2@9fba596e (48/48 green), never wired. See WO3",
+      "maps_to_pipeline": "govern+verify"
+    },
+    {
+      "id": "LC5",
+      "name": "PROMOTE",
+      "node": "LAW",
+      "does": "Move CANDIDATE->ACTIVE (DB) / ->LEARNED / ->VERIFIED after verification passes.",
+      "status": "PARTIAL",
+      "depends_on": [
+        "LC4"
+      ],
+      "blocks": [
+        "LC6",
+        "LC7"
+      ],
+      "note": "Promotion EXISTS in nayanet-learning-verify (wired, CI-exercised). Missing: creation-time admission (WO3), DB->repo back-sync (WO2)",
+      "maps_to_pipeline": "elevate"
+    },
+    {
+      "id": "LC6",
+      "name": "INTEGRATE",
+      "node": "SELF",
+      "does": "Weave verified lesson into behavior patterns (versioned, reversible policy store).",
+      "status": "MISSING",
+      "depends_on": [
+        "LC5"
+      ],
+      "blocks": [
+        "LC7"
+      ],
+      "note": "No machinery exists. WO5b builds integrate_verified_lesson() + kernel/behavior_policy.py",
+      "maps_to_pipeline": "(no pipeline step \u2014 WO5b builds it)"
+    },
+    {
+      "id": "LC7",
+      "name": "ACT",
+      "node": "ACT",
+      "does": "Before deciding, query verified lessons; behavior changes because of the lesson.",
+      "status": "PARTIAL",
+      "depends_on": [
+        "LC5",
+        "LC6"
+      ],
+      "blocks": [
+        "LC8"
+      ],
+      "note": "ACT hard-requires KNOW receipts and reads intelligent_blocks, but never learning_evidence. naya-decision-context (2,814 bytes) is the seam: zero callers. See WO4",
+      "maps_to_pipeline": "retrieve+decide+execute"
+    },
+    {
+      "id": "LC8",
+      "name": "PROVE",
+      "node": "PROVE",
+      "does": "Document the behavior change with hash-chained receipts; blind independent verifier confirms.",
+      "status": "BLOCKED",
+      "depends_on": [
+        "LC7"
+      ],
+      "blocks": [
+        "LC9"
+      ],
+      "note": "Cannot prove what has not happened. Requires LC7 working first",
+      "maps_to_pipeline": "prove"
+    },
+    {
+      "id": "LC9",
+      "name": "SHARE_EVOLVE",
+      "node": "CONNECT",
+      "does": "Share lesson across contexts; cold successor retrieves and reuses without being taught.",
+      "status": "BLOCKED",
+      "depends_on": [
+        "LC8"
+      ],
+      "blocks": [],
+      "note": "Cold-successor-held-out is the test. T11 failed here (AssertionError: CANDIDATE); WO1 fixes the field",
+      "maps_to_pipeline": "evolve"
+    }
+  ],
+  "pipeline": [
+    {
+      "does": "Shawn speaks; lesson written as JSON to .naya/capture/",
+      "evidence": "PROVEN",
+      "id": "capture",
+      "owner": "LEARN",
+      "state": "WORKS",
+      "maps_to_learning_chain": "LC1"
+    },
+    {
+      "does": "admission gate: authority/toxicity check at creation",
+      "evidence": "PROVEN",
+      "id": "govern",
+      "impl": "naya5/learning-admission-round2 @ 9fba596e (48/48 green), no PR, zero callers",
+      "owner": "LAW",
+      "state": "BUILT_SHELVED",
+      "maps_to_learning_chain": "LC4"
+    },
+    {
+      "does": "independent re-read proves bytes round-tripped",
+      "evidence": "PROVEN",
+      "id": "verify",
+      "note": "mechanism works; 36 candidates sat ~11 days unverified",
+      "owner": "VERIFY",
+      "state": "WORKS_BUT_STARVED",
+      "maps_to_learning_chain": "LC4"
+    },
+    {
+      "does": "durable write: Supabase + registry + BRAIN projection",
+      "evidence": "PROVEN",
+      "id": "record",
+      "owner": "LEARN",
+      "state": "WORKS",
+      "maps_to_learning_chain": "LC2"
+    },
+    {
+      "detail": "nayanet-learning-verify promotes in Supabase (wired, CI-exercised). NO back-sync to repo. Repo promote_note() has zero callers. Cold gate reads repo-side field that never flips.",
+      "does": "CANDIDATE->ACTIVE promotion",
+      "evidence": "PROVEN",
+      "id": "elevate",
+      "owner": "LAW",
+      "state": "WORKS_IN_DB_ONLY",
+      "maps_to_learning_chain": "LC5"
+    },
+    {
+      "detail": "naya-decision-context queries learning_evidence ACTIVE but has zero callers. ACT reads block universe, never learning_evidence. Ranked RPC missing in prod.",
+      "does": "cold query returns applicable ACTIVE lessons",
+      "evidence": "PROVEN",
+      "id": "retrieve",
+      "owner": "KNOW",
+      "state": "BROKEN_SEAM",
+      "maps_to_learning_chain": "LC7"
+    },
+    {
+      "detail": "Kernel.decide() traces SELF->LAW only; evaluate_candidates has no operational callers",
+      "does": "ACT queries KNOW before evaluate_candidates",
+      "evidence": "PROVEN",
+      "id": "decide",
+      "owner": "ACT",
+      "state": "NOT_WIRED",
+      "maps_to_learning_chain": "LC7"
+    },
+    {
+      "does": "perform smallest safe action, record what happened",
+      "evidence": "PROVEN",
+      "id": "execute",
+      "owner": "ACT",
+      "state": "WORKS",
+      "maps_to_learning_chain": "LC7"
+    },
+    {
+      "detail": "ExecutionHandoff type does not exist in code",
+      "does": "ExecutionHandoff recorded in KNOW as knowledge edge",
+      "evidence": "PROVEN",
+      "id": "handoff",
+      "owner": "ACT->KNOW",
+      "state": "NOT_BUILT",
+      "maps_to_learning_chain": "(no LC link \u2014 mine-unique)"
+    },
+    {
+      "does": "independent verdict that outcome matched prediction; written to KNOW",
+      "evidence": "PROVEN",
+      "id": "prove",
+      "owner": "PROVE",
+      "state": "BUILT_NEVER_REACHED",
+      "maps_to_learning_chain": "LC8"
+    },
+    {
+      "does": "successor package: build, hash, validate",
+      "evidence": "PROVEN",
+      "id": "evolve",
+      "owner": "EVOLVE",
+      "state": "NOT_BUILT",
+      "maps_to_learning_chain": "LC9"
+    }
+  ],
+  "work_orders": [
+    {
+      "id": "WO0",
+      "title": "Pre-flight: measure twice",
+      "section": "SECTION-0",
+      "section_name": "WO0 PRE-FLIGHT",
+      "does": "Verify deployed edge-function bytes == main bytes (4 functions); battery green on tip; PR #1733 state+owner+merge-vs-port; WO3 route decision (TS port vs workflow job); lane owners named; workflow_dispatch owner named.",
+      "steps": [
+        "verify deployed<->main byte parity (4 edge functions)",
+        "battery green on tip (record run ID)",
+        "PR #1733 state: green/abandoned, merge-vs-port decision",
+        "WO3 route: TS port vs workflow job",
+        "name lane owners + workflow_dispatch owner"
+      ],
+      "depends_on": [],
+      "blocks": [
+        "WO3",
+        "WO4"
+      ],
+      "files": [
+        "supabase/functions/nayanet-learning-verify/",
+        "supabase/functions/nayanet-act-runtime/",
+        "supabase/functions/naya-decision-context/",
+        "supabase/functions/nayanet-intelligence-commit-runtime/"
+      ],
+      "accept": "Parity report: 4 hashes match or gap named with human-gate owner. Battery green with run ID. #1733 owner+route decided. WO3 route decided. All lane owners named.",
+      "evidence": "report + run ID",
+      "human_gates": [
+        "Deployed-parity gap -> production deploy (Shawn's click)",
+        "workflow_dispatch owner (agents 403)"
+      ],
+      "scope": "hours"
+    },
+    {
+      "id": "WO1",
+      "title": "Fix #2020 live red (one line)",
+      "section": "SECTION-1",
+      "section_name": "IGNITION",
+      "does": "Set top-level lifecycle_state CANDIDATE->ACTIVE in .naya/capture/20261009-successor-t11-reserve-rule-canonical.json. Do NOT touch machine_view.automatic_truth_ceiling.",
+      "steps": [
+        "set top-level lifecycle_state CANDIDATE->ACTIVE in .naya/capture/20261009-successor-t11-reserve-rule-canonical.json (do NOT touch machine_view.automatic_truth_ceiling)",
+        "branch, PR, merge under scorecard law",
+        "re-run licp via workflow_dispatch"
+      ],
+      "depends_on": [],
+      "blocks": [
+        "WO8"
+      ],
+      "files": [
+        ".naya/capture/20261009-successor-t11-reserve-rule-canonical.json"
+      ],
+      "accept": "Fresh workflow_dispatch at receipt-named SHA completes cold-successor-held-out green; no AssertionError. Run ID recorded.",
+      "evidence": "workflow run",
+      "human_gates": [
+        "workflow_dispatch (WO0-named owner)"
+      ],
+      "scope": "15 minutes",
+      "pairs_with": "WO8 (never alone \u2014 one logical change; implement WO1 then WO8 in sequence, neither ships without the other)"
+    },
+    {
+      "id": "WO8",
+      "title": "Remove default-to-ACTIVE",
+      "section": "SECTION-1",
+      "section_name": "IGNITION",
+      "does": "Remove lifecycle_state default-to-ACTIVE in 3 places so a missing field FAILS the gate instead of passing.",
+      "steps": [
+        "remove default in sn002_conformance.py:135, smart_note_v2.py:573, workflow inline",
+        "missing field MUST fail the gate with named error"
+      ],
+      "depends_on": [
+        "WO1"
+      ],
+      "blocks": [],
+      "files": [
+        "tools/sn002_conformance.py:135",
+        "tools/smart_note_v2.py:573",
+        "live-intelligence-commit-proof.yml (inline)"
+      ],
+      "accept": "A capture omitting lifecycle_state, submitted through the real path, fails with the named missing-field error. Any other RED does not count.",
+      "evidence": "test run",
+      "human_gates": [],
+      "scope": "30 minutes",
+      "pairs_with": "WO1 (never alone)"
+    },
+    {
+      "id": "WO9",
+      "title": "Unify intake: one writer",
+      "section": "SECTION-1",
+      "section_name": "IGNITION",
+      "does": "Declare ONE canonical intake (v2). Decommission v7 receiver write path. One writer to learning_evidence with dedup key. Remove dead authority-grant scope.",
+      "steps": [
+        "declare one canonical intake",
+        "retire v7 receiver write path",
+        "single writer owns learning_evidence"
+      ],
+      "depends_on": [],
+      "blocks": [
+        "SEED"
+      ],
+      "files": [
+        "supabase/functions/v7-smart-note-canonical/",
+        "supabase/functions/nayanet-intelligence-commit-runtime/",
+        "supabase/functions/nayanet-learning-verify/"
+      ],
+      "accept": "Single writer owns learning_evidence. Zero new rows from retired path over soak period. Grep returns zero references to dead workflow/scope. Retirement documented.",
+      "evidence": "DB query",
+      "human_gates": [],
+      "scope": "days"
+    },
+    {
+      "id": "WO3",
+      "title": "Wire the admission gate",
+      "section": "SECTION-2",
+      "section_name": "GATE",
+      "does": "Port tools/learning_admission_gate.py contract (falsifiable-claim, pre-registered-criterion, doer!=scorer) into nayanet-learning-verify at mode==='candidate' write site (~line 378), per WO0 route decision.",
+      "steps": [
+        "fetch naya5/learning-admission-round2 @ 9fba596e, verify SHA",
+        "open PR (states: creation-time gate, not promotion)",
+        "wire at nayanet-learning-verify mode==candidate write site (~line 378) OR workflow job per WO0 route",
+        "verify: unverifiable candidate rejected with named reason; verifiable passes"
+      ],
+      "depends_on": [
+        "WO0"
+      ],
+      "blocks": [
+        "SEED",
+        "WO4",
+        "WO5b"
+      ],
+      "files": [
+        "tools/learning_admission_gate.py",
+        "supabase/functions/nayanet-learning-verify/index.ts",
+        "branch naya5/learning-admission-round2@9fba596e"
+      ],
+      "accept": "Pre-registered unverifiable candidate rejected with gate's reason code in workflow log. Verifiable candidate passes. Fail-closed probe: gate forced to error -> candidate rejected. Gate logs invocation (input hash -> reason code).",
+      "evidence": "workflow log",
+      "human_gates": [],
+      "scope": "days"
+    },
+    {
+      "id": "SEED",
+      "title": "Seed-lesson fixture",
+      "section": "SECTION-2",
+      "section_name": "GATE",
+      "does": "Run one real falsifiable lesson through the gated pipeline to ACTIVE. This row is the shared test fixture for CONNECTION.",
+      "steps": [],
+      "depends_on": [
+        "WO3",
+        "WO9",
+        "WO1"
+      ],
+      "blocks": [
+        "WO4",
+        "WO5b"
+      ],
+      "files": [
+        "supabase.learning_evidence"
+      ],
+      "accept": "One ACTIVE row in learning_evidence produced by the real pipeline (capture->gate->causal experiment->promotion). Hand-inserted rows INVALIDATE all downstream acceptance.",
+      "evidence": "ACTIVE row in learning_evidence",
+      "human_gates": [],
+      "scope": "hours",
+      "source": "hers-unique addition; mine's GATE section described the same fixture informally"
+    },
+    {
+      "id": "WO7",
+      "title": "Registry dedup",
+      "section": "SECTION-3",
+      "section_name": "TRUTH",
+      "does": "Dedup 19 duplicate SN numbers (first-claim stands per SN-033). Non-canonical marked SUPERSEDED with pointer. Zero deletions. CI gate fails on new duplicates.",
+      "steps": [
+        "list 19 duplicate SNs",
+        "first-claim stands; other marked SUPERSEDED with pointer; zero deletions",
+        "add CI gate failing on duplicate SNs"
+      ],
+      "depends_on": [],
+      "blocks": [
+        "WO2"
+      ],
+      "files": [
+        ".naya/memory/smart-notes/index.json"
+      ],
+      "accept": "Duplicate count = 0 AND deleted count = 0. CI fails a test duplicate with the named error.",
+      "evidence": "count query + CI run",
+      "human_gates": [],
+      "scope": "hours"
+    },
+    {
+      "id": "WO2",
+      "title": "Back-sync promotion to repo registry",
+      "section": "SECTION-3",
+      "section_name": "TRUTH",
+      "does": "After runtime promotion, update registry truth_state + .md header via promote_note() as the SINGLE repo-side writer. Idempotent. Serialized writes with loop-guard.",
+      "steps": [
+        "after DB promotion confirmed, update .naya/memory/smart-notes/index.json truth_state via promote_note() (single writer)",
+        "carry DB receipt IDs as provenance",
+        "idempotent; loop-guarded; contents:write flagged in PR"
+      ],
+      "depends_on": [
+        "WO7"
+      ],
+      "blocks": [
+        "PROOF"
+      ],
+      "files": [
+        "tools/smart_note_v2.py:721",
+        ".naya/memory/smart-notes/index.json",
+        ".github/workflows/live-supabase-runtime-proof.yml"
+      ],
+      "accept": "Test capture promoted through real pipeline shows, within same workflow run, registry truth_state == DB understanding_state with receipt IDs as provenance. Re-run is a byte-identical no-op. Quiescence re-read after next CI registry write still correct.",
+      "evidence": "registry diff + DB query",
+      "human_gates": [
+        "contents:write permission change on live-supabase-runtime-proof.yml (flag in PR body)"
+      ],
+      "scope": "days"
+    },
+    {
+      "id": "WO5a",
+      "title": "Scope kernel->Supabase read seam",
+      "section": "SECTION-4",
+      "section_name": "CONNECTION",
+      "does": "Prove the kernel can read Supabase: client exists? credential? human-gated provisioning? One real row read end-to-end, or documented architecture decision with named credential owner.",
+      "steps": [
+        "determine: client? credential? human-gated provisioning?",
+        "do NOT start WO5b until this exists"
+      ],
+      "depends_on": [],
+      "blocks": [
+        "WO5b"
+      ],
+      "files": [
+        "kernel/"
+      ],
+      "accept": "Read path proven end-to-end (one real row) OR architecture decision documented with named credential owner. Do NOT start WO5b until this exists.",
+      "evidence": "doc",
+      "human_gates": [
+        "Credential provisioning may be human-gated (unknown until scoped)"
+      ],
+      "scope": "unknown \u2014 biggest buildability risk",
+      "note": "biggest buildability risk (both files agree)"
+    },
+    {
+      "id": "WO4",
+      "title": "Wire verified-lesson->decision seam",
+      "section": "SECTION-4",
+      "section_name": "CONNECTION",
+      "does": "Invoke naya-decision-context in nayanet-act-runtime mode==='plan' handler (after LAW preflight, before buildActPlan). Merge ACTIVE-lesson context with named precedence vs 181 DURABLE blocks.",
+      "steps": [
+        "apply PR #1733 repair first (influenced = observed delta)",
+        "in nayanet-act-runtime mode==plan: after LAW preflight, before buildActPlan: invoke decision-context for target_id, merge ACTIVE lessons into plan",
+        "verify CONTROL vs TREATMENT plans differ as lesson prescribes"
+      ],
+      "depends_on": [
+        "WO0",
+        "SEED"
+      ],
+      "blocks": [
+        "WO5b"
+      ],
+      "files": [
+        "supabase/functions/naya-decision-context/index.ts",
+        "supabase/functions/nayanet-act-runtime/index.ts"
+      ],
+      "accept": "TREATMENT lesson reached ACTIVE through real pipeline. CONTROL (byte-identical inputs minus lesson) vs TREATMENT plans differ in lesson-prescribed dimension per pre-registered prescription. Ablation (lesson present but INACTIVE) reproduces CONTROL. influenced=true only on observed delta.",
+      "evidence": "plan diffs",
+      "human_gates": [],
+      "scope": "days",
+      "precondition": "PR #1733 merged green (influenced measures behavioral delta, not presence). No unreviewed ports."
+    },
+    {
+      "id": "WO10",
+      "title": "Bridge the TS/Python runtime split",
+      "section": "SECTION-4",
+      "section_name": "CONNECTION",
+      "does": "Give WO4/WO5 a shared behavior-policy store both runtimes read, OR declare single runtime for the closed loop with the other's role formally retired.",
+      "steps": [
+        "decide: shared behavior-policy store OR single-runtime declaration"
+      ],
+      "depends_on": [
+        "WO5a"
+      ],
+      "blocks": [
+        "PROOF"
+      ],
+      "files": [
+        "kernel/behavior_policy.py (new)",
+        "supabase/functions/"
+      ],
+      "accept": "One closed-loop execution observably involves both runtimes' integrations, OR architecture declares single runtime with other's role retired. Nine-node binding no longer NOT_PROVEN for the loop path.",
+      "evidence": "doc + code",
+      "human_gates": [],
+      "scope": "days"
+    },
+    {
+      "id": "WO5b",
+      "title": "SELF behavior integration",
+      "section": "SECTION-4",
+      "section_name": "CONNECTION",
+      "does": "Add integrate_verified_lesson() to kernel/self_node.py + new kernel/behavior_policy.py (versioned JSON: situation->prescribed behavior, reversible). Validate verifier chain. Wire ACT post-execution hook as record_experience() caller.",
+      "steps": [
+        "add kernel/self_node.py integrate_verified_lesson(): pull ACTIVE rows, validate verifier chain (doer!=scorer!=verifier), apply to versioned behavior_policy.py",
+        "wire real caller to record_experience() (ACT post-execution hook)",
+        "verify: decision in seen situation reflects lesson; rollback restores prior"
+      ],
+      "depends_on": [
+        "WO5a",
+        "WO4",
+        "WO3"
+      ],
+      "blocks": [
+        "PROOF"
+      ],
+      "files": [
+        "kernel/self_node.py",
+        "kernel/behavior_policy.py (new)"
+      ],
+      "accept": "Decision transcript in previously-seen situation matches pre-registered prescription as scored BLIND by independent verifier (different seat, lesson withheld). Rollback (policy version revert) + cold re-decision reproduces pre-integration baseline.",
+      "evidence": "transcripts + test",
+      "human_gates": [],
+      "scope": "days"
+    },
+    {
+      "id": "WO6",
+      "title": "Projection bridge: repair or retire",
+      "section": "SECTION-5",
+      "section_name": "CLEANUP",
+      "does": "Classify 5 failed nayanet_github_dispatch_receipts. Either repair to N>=3 consecutive end-to-end projections with resolving Smart Links, or formally retire.",
+      "steps": [
+        "classify 5 failed receipts",
+        "either N>=3 consecutive green end-to-end projections OR formal retirement with zero repo references"
+      ],
+      "depends_on": [],
+      "blocks": [],
+      "files": [
+        "supabase.nayanet_github_dispatch_receipts"
+      ],
+      "accept": "Bridge declared LIVE or RETIRED in exactly one canonical doc. LIVE: N>=3 captures project end-to-end through normal receiver path, Smart Links resolve to live main blobs. RETIRED: zero repo references to project-canonical-smart-note.yml/dispatch scope; receiver no longer issues projection authority grants.",
+      "evidence": "runs or retirement record",
+      "human_gates": [],
+      "scope": "days"
+    },
+    {
+      "id": "PROOF",
+      "title": "First closed loop + human moment",
+      "section": "SECTION-6",
+      "section_name": "PROOF",
+      "does": "Machine: pre-registered held-out task, ranked retrieval, fresh cold identity, blind different-seat verifier, published prompts, hash-chained receipts, repeatable protocol. Human: Shawn teach-once/observe-later.",
+      "steps": [],
+      "depends_on": [
+        "WO1",
+        "WO8",
+        "WO9",
+        "WO3",
+        "SEED",
+        "WO7",
+        "WO2",
+        "WO5a",
+        "WO4",
+        "WO10",
+        "WO5b"
+      ],
+      "blocks": [],
+      "files": [],
+      "accept": "DONE-MACHINE and DONE-HUMAN (see mission.done_criteria). Ranked retrieval required (content-hash lookup does not count). Protocol hash recorded.",
+      "evidence": "hash-chained receipts + Shawn's verdict",
+      "human_gates": [
+        "G8 ranked-retrieval RPC migration (nayanet_retrieve_blocks)",
+        "Shawn's verdict closes it"
+      ],
+      "scope": "the proof itself",
+      "source": "hers-unique addition; mine's execution.order PROOF section described the same gate"
+    }
+  ],
+  "execution": {
+    "hard_blocks": [
+      "WO0 parity gap -> human gate (production deploy)",
+      "#1733 green -> WO4",
+      "GATE live AND #1733 merged AND synthetic green -> production arming",
+      "G8 migration (human gate) -> PROOF"
+    ],
+    "order": [
+      {
+        "does": "verify deployed<->main byte parity; battery green on tip; #1733 state; WO3 route; lane owners named",
+        "items": [
+          "WO0"
+        ],
+        "section": "WO0 PRE-FLIGHT"
+      },
+      {
+        "does": "one-line #2020 fix PAIRED WITH default-ACTIVE removal; unify to one canonical intake / one writer",
+        "items": [
+          "WO1",
+          "WO8",
+          "WO9"
+        ],
+        "section": "IGNITION"
+      },
+      {
+        "does": "wire admission gate; one real falsifiable lesson through gated pipeline to ACTIVE as fixture",
+        "items": [
+          "WO3"
+        ],
+        "section": "GATE"
+      },
+      {
+        "does": "dedup 19 SNs (zero deletions) + CI gate; back-sync promotion through single repo writer",
+        "items": [
+          "WO7",
+          "WO2"
+        ],
+        "section": "TRUTH"
+      },
+      {
+        "does": "scope kernel->Supabase seam; wire decision seam (needs #1733 green); bridge TS/Python split; SELF integrate_verified_lesson() + versioned policy store + rollback",
+        "items": [
+          "WO5a",
+          "WO4",
+          "WO10",
+          "WO5b"
+        ],
+        "section": "CONNECTION"
+      },
+      {
+        "does": "projection bridge: N>=3 green end-to-end or formal retirement, exactly one canonical doc, no middle state",
+        "items": [
+          "WO6"
+        ],
+        "section": "CLEANUP"
+      },
+      {
+        "does": "machine loop + human teach-once/observe-later (see activation_test)",
+        "items": [
+          "FIRST_CLOSED_LOOP"
+        ],
+        "section": "PROOF"
+      }
+    ],
+    "parallel_safe": [
+      "WO1",
+      "WO8-build",
+      "WO9",
+      "WO3-build",
+      "WO7",
+      "WO6"
+    ],
+    "strategy": "Alt E: pre-flight before build; stop reds first; gate before arm; build and arm are separate decisions"
+  },
+  "laws": [
+    {
+      "id": "compounding",
+      "alias": [],
+      "statement": "make intelligence compound; remove whatever stops it from compounding. Every other law is this law in different clothes.",
+      "applies_when": "Every decision, every design. The root law.",
+      "source": "mine-unique"
+    },
+    {
+      "id": "L-ASSEMBLE",
+      "alias": [
+        "assemble_before_testing"
+      ],
+      "statement": "Assemble the car before test-driving it: diagram -> wire -> hand-trace -> run. Never test an unbuilt chain; failures of absence look like bugs. Engine first, test drive second.",
+      "applies_when": "Any test campaign on a partially-built system.",
+      "source": "both"
+    },
+    {
+      "id": "verification_law",
+      "alias": [],
+      "statement": "When Shawn says 'smart note this', THAT IS THE VERIFICATION. Instant. No queue, no second check.",
+      "applies_when": "Any direct capture request from Shawn.",
+      "source": "mine-unique"
+    },
+    {
+      "id": "math_decides",
+      "alias": [],
+      "statement": "Inside the gates, the math rules absolutely. Gates are the fence around the math's territory, not human second-guessing. After the math decides: execute, then report.",
+      "applies_when": "Any admissible decision.",
+      "source": "mine-unique"
+    },
+    {
+      "id": "L-SCORECARD",
+      "alias": [],
+      "statement": "Enumerate options -> score each -> gate (reversible? no major damage? positive forward effect?) -> decide (highest score + gates pass -> act) -> receipt posted. No receipt, no merge.",
+      "applies_when": "Any merge, any decision with alternatives.",
+      "source": "hers-unique"
+    },
+    {
+      "id": "fix_first",
+      "alias": [],
+      "statement": "If it's broken and you can fix it, fix it first, then report what you did. Blame doesn't compound.",
+      "applies_when": "Any repairable breakage outside protected gates.",
+      "source": "mine-unique"
+    },
+    {
+      "id": "plain_english_first",
+      "alias": [],
+      "statement": "Every consequential update leads with plain human words. Technicals are the evidence appendix.",
+      "applies_when": "Every consequential update.",
+      "source": "mine-unique"
+    },
+    {
+      "id": "L-EVIDENCE",
+      "alias": [
+        "evidence_or_it_didnt_happen"
+      ],
+      "statement": "UNKNOWN != PASS. BLOCKED != PASS. IMPLEMENTED != VERIFIED. VERIFIED != PRODUCTION-PROVEN. Claims without verifiable proof are rumors. Scores move only on evidence, never optimism. Never claim more than the evidence proves.",
+      "applies_when": "Every status report, every verdict, every score.",
+      "source": "both"
+    },
+    {
+      "id": "L-SMARTLINK",
+      "alias": [
+        "smart_link_is_capture_proof"
+      ],
+      "statement": "A Smart Link attests capture->persist->receipt. It does NOT attest truth or learning. Link = where. Receipt = proof. Neither = learning. Learning is attested only by the closed loop: behavior change + independent verification + cold reuse.",
+      "applies_when": "Any claim about what a Smart Link proves.",
+      "source": "both"
+    },
+    {
+      "id": "L-PRESENCE",
+      "alias": [
+        "presence_not_influence"
+      ],
+      "statement": "A lesson existing in memory does not prove it changed behavior. influenced=true requires observed behavioral delta, not mere presence.",
+      "applies_when": "Any claim that a lesson influenced a decision.",
+      "source": "both"
+    },
+    {
+      "id": "L181",
+      "alias": [
+        "no_gate_without_producer"
+      ],
+      "statement": "For every gate in a pipeline, verify a producer exists for the state the gate demands. A gate whose required state has no producer is a guaranteed-failure trap. Treat the first real-data run as an integration test of the whole chain.",
+      "applies_when": "Building or reviewing any pipeline with state gates.",
+      "source": "both"
+    },
+    {
+      "id": "L-MIRROR",
+      "alias": [
+        "mirror_law"
+      ],
+      "statement": "When something goes wrong, check yourself first. Verify your own inputs before trusting your own outputs; the scorer's failure is more likely than the system's. If you fed the math bad premises, the math's answer is your failure, not the math's.",
+      "applies_when": "Every failure diagnosis, before blaming the system.",
+      "source": "both"
+    },
+    {
+      "id": "L183",
+      "alias": [
+        "manufacture_the_trigger"
+      ],
+      "statement": "Verification depending on organic traffic must manufacture the triggering event immediately. A watch that sees no traffic is an honest inconclusive with a capped score, never a pass.",
+      "applies_when": "Any verification that waits for real-world events.",
+      "source": "both"
+    },
+    {
+      "id": "one_truth",
+      "alias": [],
+      "statement": "Supabase = runtime truth. GitHub = human projection. Back-sync keeps them consistent. Two truth systems that diverge are a bug.",
+      "applies_when": "Any state spanning DB and repo.",
+      "source": "mine-unique"
+    },
+    {
+      "id": "distill_upward",
+      "alias": [],
+      "statement": "Smart Notes (raw) -> Project Intelligence (organized) -> verified learnings -> ACTIVE system knowledge. Distillation flows UP. No layer duplicates another; no second memory.",
+      "applies_when": "Any new intelligence artifact.",
+      "source": "mine-unique"
+    },
+    {
+      "id": "L179",
+      "alias": [],
+      "statement": "A scorecard's jurisdiction step traces the merge's trigger chain, not just its file list. For every changed path, enumerate matching workflow triggers and their production actions. A file is never jurisdictionally innocent until its triggers are read.",
+      "applies_when": "Scoring any PR that touches paths under workflow push filters.",
+      "source": "hers-unique"
+    },
+    {
+      "id": "L180",
+      "alias": [],
+      "statement": "Before accepting a CLOSED verdict, verify the battery's coverage rows per attack class. Zero rows on a class = UNKNOWN for that class. The independence that matters is the battery's, not just the seat's.",
+      "applies_when": "Accepting any adversarial/independent verification verdict.",
+      "source": "hers-unique"
+    },
+    {
+      "id": "L182",
+      "alias": [],
+      "statement": "A lesson candidate must arrive with the capture contract: named task, pre-registered success criterion, machine check. Enforced at admission. Reject contract-less candidates at the door.",
+      "applies_when": "Any lesson entering the learning pipeline.",
+      "source": "hers-unique"
+    },
+    {
+      "id": "L184",
+      "alias": [],
+      "statement": "When a system is designed with a preferred auth path, verify that path EXISTS in the credential store before trusting the fallback. A mint that never fails because it is never reached is not a health signal.",
+      "applies_when": "Any system with designed auth paths and fallbacks.",
+      "source": "hers-unique"
+    },
+    {
+      "id": "L185",
+      "alias": [],
+      "statement": "After any branch reset or rebase, re-verify the head's bytes contain the repairs (diff head vs reviewed SHA) before merging. Never merge a head that moved since the receipt.",
+      "applies_when": "Any merge after reset/rebase.",
+      "source": "hers-unique"
+    },
+    {
+      "id": "L-NO-DUPLICATE",
+      "alias": [],
+      "statement": "Never build a second mechanism for one decision. If main's native implementation covers the work, close as superseded. One writer per table/file without named precedence is a defect.",
+      "applies_when": "Any new schema, migration, tool, protocol, or writer.",
+      "source": "hers-unique"
+    }
+  ],
+  "open_questions": [
+    {
+      "id": "Q1",
+      "needed_by": "before WO0",
+      "q": "Lane-owner confirmations (WO0 proposed: verification lane + parent orchestrator)"
+    },
+    {
+      "id": "Q2",
+      "if_gap": "human gate (production deploy)",
+      "needed_by": "before WO3/WO4",
+      "q": "Deployed<->main byte parity for 4 edge functions"
+    },
+    {
+      "id": "Q3",
+      "needed_by": "before WO4",
+      "q": "PR #1733 state: green? merge or port?"
+    },
+    {
+      "id": "Q4",
+      "needed_by": "before GATE build",
+      "q": "WO3 route: TS port (enforced) vs workflow job (advisory)?"
+    },
+    {
+      "id": "Q5",
+      "needed_by": "before WO5b",
+      "q": "Kernel->Supabase seam: client? credential? human-gated?"
+    },
+    {
+      "id": "Q6",
+      "needed_by": "during CONNECTION",
+      "q": "WO10 architecture: shared store vs single runtime?"
+    },
+    {
+      "id": "Q7",
+      "needed_by": "before first end-to-end test",
+      "q": "Deployment path: merged code -> live Receiver (not automatic)"
+    },
+    {
+      "id": "Q8",
+      "q": "DISPUTED: #2020 merge authorization. INTELLIGENCE.md D-003/D-007 cite Shawn authorization ~12:19 PDT; Naya 5's direct conversation ~12:36 PDT indicated merge preceded his decision. Reconcile against cited transcript before citing as precedent.",
+      "status": "DISPUTED"
+    }
+  ],
+  "current_state": {
+    "as_of": "2026-10-09T20:15:00Z",
+    "main_tip": "1d73652231ac6127806640af5a31eb516c60738d",
+    "battery": {
+      "passed": 1896,
+      "skipped": 11,
+      "failed": 0,
+      "index_files": 1196,
+      "adversarial": "6/6"
+    },
+    "done": [
+      "Blueprint v1 complete (497 lines, evidence-tagged)",
+      "Consensus plan v1 complete (Alt E 7.80, 26 holes fixed, #1354/6088478967)",
+      "PRs merged: #1956 (evidence assembler), #1957 (proof sealer), #1958 (failure receipts), #2036 (guard repair)",
+      "PR #2050 ACCEPTED by Naya 2 (project intelligence pilot)",
+      "7 lessons T-Z applied to AGENTS.md as L179-L185"
+    ],
+    "in_flight": [
+      "Lane-owner confirmations (proposed, not confirmed)",
+      "WO0 pre-flight (not started)",
+      "Project Intelligence pilot consensus (4 of 5 leaders pending)"
+    ],
+    "blocked": [
+      {
+        "item": "WO0",
+        "reason": "Awaiting lane-owner confirmation"
+      },
+      {
+        "item": "Deployed parity",
+        "reason": "Unknown until WO0 runs; gap would be human-gated"
+      },
+      {
+        "item": "PR #1733",
+        "reason": "State unknown; merge-vs-port decision in WO0"
+      },
+      {
+        "item": "G8 RPC migration",
+        "reason": "Human-gated; PROOF prerequisite"
+      }
+    ],
+    "known_reds": [
+      {
+        "id": "RED-2020",
+        "what": "licp run 37980089547 failed: AssertionError CANDIDATE at licp.yml:1090",
+        "fix": "WO1"
+      }
+    ],
+    "point_in_time": true,
+    "note": "Snapshot as of 2026-10-09T20:15Z. Do not treat as live; re-resolve before acting (SN-0493)."
+  },
+  "activation_test": {
+    "purpose": "Prove the system learns: filing became behavior change, verified independently, reusable cold.",
+    "criteria": [
+      {
+        "criterion": "Instant capture: 'smart note this' -> captured, governed, verified, recorded within 5 minutes",
+        "evidence": "Smart Link + receipt",
+        "id": 1
+      },
+      {
+        "criterion": "Promotion works: CANDIDATE -> VERIFIED -> ACTIVE through governed ladder",
+        "evidence": "registry state transitions with receipts",
+        "id": 2
+      },
+      {
+        "criterion": "Retrieval works: cold Naya (git clone only) retrieves correct note for plain-English query",
+        "evidence": "cold drill passing",
+        "id": 3
+      },
+      {
+        "criterion": "Decision integration: decision in ACTIVE-lesson domain shows lesson in decision context",
+        "evidence": "decision logs with intelligence section",
+        "id": 4
+      },
+      {
+        "criterion": "Behavior change: lesson influences decision outcome (weighted, not just attached)",
+        "evidence": "before/after decision comparison",
+        "id": 5
+      },
+      {
+        "criterion": "Execution feedback: completed action produces ExecutionHandoff in KNOW",
+        "evidence": "queryable knowledge edge",
+        "id": 6
+      },
+      {
+        "criterion": "Proof closes loop: PROVE verifies outcome matched prediction, writes proof to KNOW",
+        "evidence": "proof entry with lineage",
+        "id": 7
+      },
+      {
+        "criterion": "Succession works: successor package builds, validates, fresh Naya reconstructs",
+        "evidence": "package hash + cold successor test",
+        "id": 8
+      }
+    ],
+    "preconditions": [
+      "All work_orders complete per their accept criteria",
+      "G8 RPC migration applied (human gate)",
+      "Arming gate passed: GATE live AND #1733 merged AND synthetic rehearsal green"
+    ],
+    "machine_steps": [
+      {
+        "step": 1,
+        "do": "Commit a pool of candidate held-out tasks BEFORE capture. Record pool hash.",
+        "verify": "Pool hash published; tasks unseen by lesson author."
+      },
+      {
+        "step": 2,
+        "do": "Capture one novel falsifiable lesson with capture contract (named task, pre-registered criterion, machine check).",
+        "verify": "Admission gate accepts with reason code; invocation logged."
+      },
+      {
+        "step": 3,
+        "do": "Run pipeline: persist -> index -> verify -> promote.",
+        "verify": "DB learning_evidence.status=ACTIVE AND repo registry truth_state=ACTIVE within same run. Receipt IDs cross-referenced."
+      },
+      {
+        "step": 4,
+        "do": "Fresh cold identity (never saw the lesson) retrieves via RANKED path and applies to a held-out task from the pool.",
+        "verify": "Retrieval used nayanet_retrieve_blocks (ranked), not content-hash lookup. Application matches pre-registered prescription."
+      },
+      {
+        "step": 5,
+        "do": "Blind different-seat verifier confirms the behavior change came from the lesson (task prompt published to rule out leakage).",
+        "verify": "Verifier seat != builder seat. Lesson withheld from verifier until after scoring."
+      },
+      {
+        "step": 6,
+        "do": "Publish hash-chained receipts for every link: capture->promotion->retrieval->behavior->proof.",
+        "verify": "Each receipt carries SHA-256 of exact bytes. Chain verifiable by third party."
+      },
+      {
+        "step": 7,
+        "do": "Repeat with a second lesson to prove the PROTOCOL is repeatable, not the run.",
+        "verify": "Protocol hash recorded. Second run green."
+      }
+    ],
+    "human_steps": [
+      {
+        "step": 1,
+        "do": "Shawn says 'smart note this' on a real lesson. Receives Smart Link.",
+        "verify": "Link resolves."
+      },
+      {
+        "step": 2,
+        "do": "Days later, different conversation, Shawn asks for something in that lesson's territory.",
+        "verify": "She does it the lesson's way WITHOUT being reminded."
+      },
+      {
+        "step": 3,
+        "do": "Shawn asks 'why did you do it that way?'",
+        "verify": "She answers in plain words, names the lesson, shows the receipt chain."
+      },
+      {
+        "step": 4,
+        "do": "Check the Smart Link.",
+        "verify": "Resolves to a note whose header says ACTIVE, not CANDIDATE."
+      },
+      {
+        "step": 5,
+        "do": "Post to Feed with evidence.",
+        "verify": "Accomplishment visible with evidence chain."
+      }
+    ],
+    "anti_gaming": [
+      "Ranked retrieval required; content-hash lookup does not count.",
+      "Hand-inserted ACTIVE rows invalidate the run.",
+      "Verifier must be a different seat; lesson withheld until after scoring.",
+      "Task prompts published to rule out prompt leakage.",
+      "One green run is not proof; the repeatable protocol is."
+    ],
+    "verdict": "Shawn's (or his explicit delegate's). No one else can declare ACTIVATED."
+  },
+  "evidence_index": [
+    {
+      "what": "T11 cold-retrieval root cause",
+      "where": "#1354 comment 6087997893; run 37980089547"
+    },
+    {
+      "what": "Learning blueprint v1 (497 lines, 4 lanes)",
+      "where": "learning-system-blueprint-v1.md"
+    },
+    {
+      "what": "System blueprint v1.0 (946 lines)",
+      "where": "SYSTEM-BLUEPRINT-20261009.md"
+    },
+    {
+      "what": "Activation charter (8 criteria, 5 phases)",
+      "where": "PROJECT.pdf -> ~/workspace/goals/activation-naya/PROJECT.md"
+    },
+    {
+      "what": "Consensus plan Alt E (7.80, 26 holes fixed)",
+      "where": "#1354 comment 6088478967"
+    },
+    {
+      "what": "Admission gate (48/48 green)",
+      "where": "naya5/learning-admission-round2 @ 9fba596e"
+    },
+    {
+      "what": "Naya 5 blueprint v1.1 (3 corrections)",
+      "where": "~/workspace/specs/learning-loop-blueprint-v1.md"
+    },
+    {
+      "what": "Main tip at distillation",
+      "where": "1d73652231ac6127806640af5a31eb516c60738d"
+    }
+  ],
+  "_reconciliation": [
+    {
+      "field": "meta",
+      "sources": [
+        "mine",
+        "hers"
+      ],
+      "decision": "merged",
+      "reason": "Mine carried version/status/issued_by/intended path; hers carried created timestamp, source_tip, and the machine-actionability rule. Union kept; version bumped to 2.0.0-draft to mark the reconciliation.",
+      "conflict": false,
+      "note": "Both distilled from main tip 1d73652231ac6127806640af5a31eb516c60738d \u2014 same tip, no divergence."
+    },
+    {
+      "field": "sources",
+      "sources": [
+        "mine(6)",
+        "hers(4)"
+      ],
+      "decision": "union (9 unique)",
+      "reason": "learning-system-blueprint-v1 and project-intelligence-template overlapped; activation-naya-plan-v1.md unique to hers; SYSTEM-BLUEPRINT-20261009, PROJECT.pdf, SPEC v1.1, INTELLIGENCE.md pilot, blueprint v1.1 unique to mine.",
+      "conflict": false
+    },
+    {
+      "field": "mission",
+      "sources": [
+        "mine",
+        "hers"
+      ],
+      "decision": "merged",
+      "reason": "Mine gave human + machine contract (input/output/11-step pipeline/5 invariants). Hers gave statement + 4 done_criteria + out_of_scope. Complementary, no conflicts; union kept.",
+      "conflict": false
+    },
+    {
+      "field": "architecture.nodes",
+      "sources": [
+        "mine",
+        "hers"
+      ],
+      "decision": "merged per node; order = mine's operational cycle",
+      "reason": "Same 9 nodes, same statuses, same gaps on all 9. Hers added runs_at entries (naya_identity_binding.py, value_calculus.py, nayanet-intelligence-retrieve/, authority_gate.py) and LEARN output compounding_measurement. Mine added per-node evidence=PROVEN. Union of fields.",
+      "conflict": true,
+      "note": "CONFLICT: LAW verdict vocabulary differs. Mine: PROHIBITED/NEEDS_AUTHORITY/NEEDS_EVIDENCE/ADMISSIBLE. Hers: AUTHORIZED/DENIED/REQUIRES_CONFIRMATION/AMBIGUOUS/EXPIRED/REVOKED/OUT_OF_SCOPE. Both kept verbatim with a flag; team must rule on the canonical verdict set before v2 leaves draft."
+    },
+    {
+      "field": "architecture.binding",
+      "sources": [
+        "mine",
+        "hers"
+      ],
+      "decision": "kept both wordings",
+      "reason": "Identical claim (NOT_PROVEN, entrypoint null, MANIFEST.json). No conflict.",
+      "conflict": false
+    },
+    {
+      "field": "gaps",
+      "sources": [
+        "mine(13)"
+      ],
+      "decision": "kept all 13, cross-referenced to hers' connections",
+      "reason": "Hers had no separate gap list; her 7 connections map onto G1-G7/G11/G13. G8/G9/G10/G12 are mine-unique additions (ranked RPC, default-ACTIVE fail-open, 19 duplicate SNs, binding NOT_PROVEN as its own gap).",
+      "conflict": false
+    },
+    {
+      "field": "connections",
+      "sources": [
+        "hers(7)"
+      ],
+      "decision": "kept all 7, cross-referenced to gaps",
+      "reason": "Hers' connections are the fix-side of mine's gaps. No conflicts; hers' fix text is more detailed and is kept verbatim.",
+      "conflict": false
+    },
+    {
+      "field": "learning_chain",
+      "sources": [
+        "hers(9)"
+      ],
+      "decision": "kept; added maps_to cross-references to pipeline",
+      "reason": "Hers' chain is dependency-ordered (depends_on/blocks). Unique to hers: LC6 INTEGRATE (SELF behavior integration as its own link).",
+      "conflict": false
+    },
+    {
+      "field": "pipeline",
+      "sources": [
+        "mine(11)"
+      ],
+      "decision": "kept; added maps_to cross-references to learning_chain",
+      "reason": "Mine's pipeline carries per-step state/owner/evidence. Unique to mine: handoff (ExecutionHandoff NOT_BUILT) as its own step. Two decompositions kept with cross-refs; team should converge on one in a later version \u2014 recorded as open item, not silently dropped.",
+      "conflict": false,
+      "note": "OPEN ITEM: 11-step pipeline vs 9-link learning_chain overlap heavily. Both preserved; convergence deferred to team."
+    },
+    {
+      "field": "work_orders",
+      "sources": [
+        "mine(12)",
+        "hers(14)"
+      ],
+      "decision": "union of 14; per-WO field-level merge",
+      "reason": "SEED and PROOF are hers-unique additions (mine's execution.order had a PROOF section; hers elevates both to full work orders with accept criteria). No WO was dropped. Hers' depends_on/blocks graph + files + human_gates + scope kept; mine's steps + evidence kept; accept = superset wording per WO.",
+      "conflict": true,
+      "note": "MINOR TENSION: mine pairs WO1+WO8 ('never alone \u2014 one logical change'); hers orders them (WO1 blocks WO8). Resolved: implement WO1 then WO8 in sequence within one change window; neither ships to main without the other."
+    },
+    {
+      "field": "execution",
+      "sources": [
+        "mine"
+      ],
+      "decision": "kept",
+      "reason": "Hers had no execution section; her SECTION-0..6 tags map 1:1 onto mine's Alt E order (PRE-FLIGHT/IGNITION/GATE/TRUTH/CONNECTION/CLEANUP/PROOF). Section names preserved on each work order.",
+      "conflict": false
+    },
+    {
+      "field": "laws",
+      "sources": [
+        "mine(14)",
+        "hers(14)"
+      ],
+      "decision": "deduped to 21 unique laws",
+      "reason": "7 overlaps merged (hers' L-IDs kept as canonical because L179-L185 are already referenced live in AGENTS.md; mine's semantic IDs kept as aliases). 7 mine-unique kept (compounding root law, verification_law, math_decides, fix_first, plain_english_first, one_truth, distill_upward \u2014 hers had no equivalents). 7 hers-unique kept (L-SCORECARD, L179, L180, L182, L184, L185, L-NO-DUPLICATE). Overlap statements merged to superset wording.",
+      "conflict": false,
+      "note": "Amusing: both files claimed '14 laws' with different sets. The union is 21."
+    },
+    {
+      "field": "open_questions",
+      "sources": [
+        "mine(8)"
+      ],
+      "decision": "kept all 8 incl. disputed Q8",
+      "reason": "Hers had no open-questions list (her in_flight/blocked cover Q1-Q6's substance). Q7 (deployment path: merged code -> live Receiver not automatic) and Q8 (DISPUTED #2020 authorization) are mine-unique. Q8 kept DISPUTED \u2014 hers' silence is not a contradiction, but the dispute must be resolved against the cited transcript before the incident is used as precedent.",
+      "conflict": true,
+      "note": "Q8: mine records INTELLIGENCE.md D-003/D-007 citing Shawn authorization ~12:19 PDT vs Naya 5's direct conversation ~12:36 PDT indicating merge preceded decision. Hers' file does not mention it."
+    },
+    {
+      "field": "current_state",
+      "sources": [
+        "hers"
+      ],
+      "decision": "kept, marked point-in-time",
+      "reason": "Mine had no current_state. Battery/state numbers are as of 2026-10-09T20:15Z and will go stale; flagged as point-in-time, not living state.",
+      "conflict": false
+    },
+    {
+      "field": "activation_test",
+      "sources": [
+        "mine",
+        "hers"
+      ],
+      "decision": "merged",
+      "reason": "Mine gave 8 pass/fail criteria with evidence; hers gave purpose + 3 preconditions + 7 machine steps + 5 human steps + verdict + 5 anti-gaming rules. Complementary. Hers' verdict ('Shawn's, or his explicit delegate's') kept as the closing authority.",
+      "conflict": true,
+      "note": "CONFLICT (lifecycle vocabulary): mine defines VERIFIED as NOT a database lifecycle value (evidence, never status). Hers' LC5 says promotion moves 'CANDIDATE->ACTIVE (DB) / ->LEARNED / ->VERIFIED'. Kept mine's definition as canonical; hers' LC5 wording flagged for correction in a later version."
+    },
+    {
+      "field": "definitions",
+      "sources": [
+        "mine(13)"
+      ],
+      "decision": "kept all 13",
+      "reason": "Hers had no definitions section. Includes the truth_ladder and the VERIFIED-is-not-a-state definition (see activation_test conflict note).",
+      "conflict": false
+    },
+    {
+      "field": "layers",
+      "sources": [
+        "mine(4)"
+      ],
+      "decision": "kept",
+      "reason": "Hers had no layers section. LAW/ARCHITECTURE/CAPTURE/INTELLIGENCE kept.",
+      "conflict": false
+    },
+    {
+      "field": "single_sourcing",
+      "sources": [
+        "mine"
+      ],
+      "decision": "kept",
+      "reason": "Consistent with hers' DONE-ONE-TRUTH. DB wins on conflict; divergence is a bug.",
+      "conflict": false
+    },
+    {
+      "field": "evidence_index",
+      "sources": [
+        "mine(8)"
+      ],
+      "decision": "kept",
+      "reason": "Hers had no evidence index.",
+      "conflict": false
+    },
+    {
+      "field": "status",
+      "sources": [
+        "mine",
+        "hers"
+      ],
+      "decision": "DRAFT_FOR_CONSENSUS per task",
+      "reason": "Hers was versioned 1.0.0 without draft marking; the merged file stays DRAFT_FOR_CONSENSUS until team sign-off. It must not be treated as ratified.",
+      "conflict": false
+    }
+  ]
+}
