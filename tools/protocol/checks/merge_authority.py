@@ -39,15 +39,34 @@ Input record:
 Checks:
   1. Scope: target != "main" → PASS (not applicable; the delegation covers
      merges to main only). This is the law's own scope, not a loophole.
-  2. tests_green is True AND test_evidence non-empty — "built + tests
-     green" needs the proof, not the claim.
-  3. self_scorecard: score >= 9.0, evidence_backed true, value_calculus_run
-     true — honest, evidence-backed, and the math was run.
-  4. independent_validator named and != seat — validation by a DIFFERENT
-     seat; self-validation is not validation.
+  2. tests_green is True AND test_evidence non-empty AND reference-shaped —
+     "built + tests green" needs the proof, not the claim. test_evidence
+     must name something a validator can resolve (a URL, a CI run/job id,
+     a command transcript with counts, an artifact path) — "trust me,
+     green" names nothing resolvable and is unfalsifiable, which is not
+     proof.
+  3. self_scorecard: score finite and within the 0–10 scale, >= 9.0,
+     evidence_backed true, value_calculus_run true — honest,
+     evidence-backed, and the math was run. Infinity, NaN, and
+     out-of-range scores fail: no isfinite bound means no bar at all.
+  4. independent_validator named and, after seat-identity normalization,
+     != seat — validation by a DIFFERENT seat; self-validation is not
+     validation. "naya5" vs "naya-5" is the same seat wearing different
+     punctuation; string inequality is not identity.
   5. posted_to_1354 true AND team_objections == 0 — intent + scorecard +
      validation posted, team consensus, no seat objects.
   6. post_merge_report_planned true — merge, THEN report after.
+
+Honest bounds:
+  - The evidence-shape gate verifies test_evidence is REFERENCE-SHAPED
+    (resolvable in principle); it cannot verify the run actually went
+    green or that the id is real. Forged-but-plausible ids are a different
+    exploit class, caught by condition (3)'s independent validator and
+    condition (4)'s #1354 posting — the check makes the claim falsifiable,
+    which is what turns "trust me" into evidence.
+  - Seat normalization covers case and separators plus the KNOWN_SEAT_ALIASES
+    map below. A genuinely new alias observed in the wild goes in that map
+    with its evidence; the check is never weakened to accommodate one.
 
 Usage:
     python3 tools/protocol/checks/merge_authority.py \
@@ -57,6 +76,8 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import math
+import re
 import sys
 from pathlib import Path
 
@@ -64,6 +85,43 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from checks import emit, fail, load_record, result  # noqa: E402
 
 MIN_SELF_SCORE = 9.0
+MAX_SELF_SCORE = 10.0  # scorecards are scored on the 0–10 scale
+
+
+# Seat identities: "naya5" vs "naya-5" vs "Naya 5" are the same seat wearing
+# different punctuation. Normalization collapses case and separators;
+# KNOWN_SEAT_ALIASES covers names that differ by more than punctuation
+# (post-normalization keys -> canonical seat key). No such aliases are
+# currently observed in the team's records — the map is the extension
+# point: add an entry with its evidence when one appears, never weaken
+# the comparison instead.
+KNOWN_SEAT_ALIASES: dict[str, str] = {}
+
+
+def _seat_key(seat: str) -> str:
+    key = re.sub(r"[^a-z0-9]", "", seat.strip().lower())
+    return KNOWN_SEAT_ALIASES.get(key, key)
+
+
+# test_evidence must be REFERENCE-SHAPED: it must name something an
+# independent validator can actually resolve — a URL, a run/job/build/
+# artifact/PR/commit identifier, a command transcript with counts, or an
+# artifact path. "trust me, green" matches none of these: it is
+# unfalsifiable, and unfalsifiable is not proof.
+_EVIDENCE_PATTERNS = (
+    re.compile(r"https?://\S+"),
+    re.compile(
+        r"\b(?:ci|test|pytest|workflow|action|run|job|build|suite|artifact|"
+        r"pr|commit|sha|log)s?\b[^\n]{0,60}?\d",
+        re.IGNORECASE,
+    ),
+    re.compile(r"(?:^|[\s(\[])(?:[\w.~][\w.~\-]*/)+[\w.~\-]+"),
+    re.compile(r"\b\d+\s*(?:passed|failed|skipped|green|ok)\b", re.IGNORECASE),
+)
+
+
+def _is_evidence_shaped(text: str) -> bool:
+    return any(p.search(text) for p in _EVIDENCE_PATTERNS)
 
 
 def _nonempty_str(value) -> str:
@@ -128,6 +186,15 @@ def check(record: dict) -> dict:
             "run or command-output reference is a claim, not proof",
             details,
         )
+    if not _is_evidence_shaped(test_evidence):
+        return fail(
+            f"{branch}: test_evidence {test_evidence!r} is not "
+            "reference-shaped — it names no URL, run/job id, command "
+            "transcript, or artifact a validator can resolve. 'trust me, "
+            "green' is unfalsifiable, and unfalsifiable is not proof. "
+            "Name the run, the command, or the artifact.",
+            details,
+        )
     reasons.append(f"built + tests green ({test_evidence})")
 
     # 3. Honest evidence-backed self-scorecard >= 9.0, value calculus run.
@@ -145,6 +212,14 @@ def check(record: dict) -> dict:
         return fail(
             f"{branch}: self_scorecard.score is not a number — the 9.0 bar "
             "cannot be evaluated on a non-number",
+            details,
+        )
+    if not math.isfinite(score) or not 0.0 <= score <= MAX_SELF_SCORE:
+        return fail(
+            f"{branch}: self_scorecard.score {score!r} is not a finite "
+            f"score on the 0–{MAX_SELF_SCORE:g} scale — Infinity, NaN, and "
+            "out-of-range scores fail closed. The 9.0 bar is meaningless "
+            "without a bounded numeric underneath it.",
             details,
         )
     if score < MIN_SELF_SCORE:
@@ -183,6 +258,16 @@ def check(record: dict) -> dict:
         return fail(
             f"{branch}: independent_validator == seat ({seat}) — "
             "self-validation is not independent validation; 10/10 is never "
+            "self-declared",
+            details,
+        )
+    if _seat_key(independent_validator) == _seat_key(seat):
+        return fail(
+            f"{branch}: independent_validator {independent_validator!r} is "
+            f"the same seat as {seat!r} after identity normalization "
+            f"(both -> {_seat_key(seat)!r}) — 'naya5' vs 'naya-5' is one "
+            "seat wearing different punctuation, not two seats. "
+            "Self-validation is not independent validation; 10/10 is never "
             "self-declared",
             details,
         )

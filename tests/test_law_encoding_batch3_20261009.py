@@ -38,17 +38,17 @@ from checks import decision_receipt, merge_authority, wisest_choice  # noqa: E40
 def _good_receipt():
     return {
         "decision": "batch-3 law selection",
-        "chosen": "c",
+        "chosen": "opt-c",
         "alternatives": [
-            {"id": "a", "description": "Decision Receipt Law"},
-            {"id": "b", "description": "Wisest Choice Law"},
-            {"id": "c", "description": "Delegated Merge Authority"},
-            {"id": "d", "description": "SN-0575 Fix It First"},
+            {"id": "opt-a", "description": "Decision Receipt Law"},
+            {"id": "opt-b", "description": "Wisest Choice Law"},
+            {"id": "opt-c", "description": "Delegated Merge Authority"},
+            {"id": "opt-d", "description": "SN-0575 Fix It First"},
         ],
         "winning_evidence": "scorecard 8.5/8.0/8.3 vs 7.2; A+B cover SN-0522's remaining slice",
-        "receipt": ("I chose c. I looked at a, b, c, d. c won because its "
-                    "scorecard beat d's 7.2 and A+B already cover D's slice. "
-                    "This is what I did."),
+        "receipt": ("I chose opt-c. I looked at opt-a, opt-b, opt-c, opt-d. "
+                    "opt-c won because its scorecard beat opt-d's 7.2 and "
+                    "A+B already cover D's slice. This is what I did."),
         "seat": "naya-5",
         "close_call": False,
         "uncertainty_declared": False,
@@ -60,7 +60,7 @@ def _good_wisest():
         "decision": "batch-3 branch base",
         "objective": "keep the law-encoding lane moving with independent re-validation",
         "options_analyzed": ["stack on 8c9a44ab", "fresh off main @ 45f0ed26c"],
-        "basis": {"type": "law", "ref": "batch-2 decision receipt: do not stack on un-merged branches"},
+        "basis": {"type": "law", "ref": "DECISION-RECEIPT-LAW"},
         "question_asked": False,
         "close_call": False,
         "uncertainty_declared": False,
@@ -99,7 +99,7 @@ def test_receipt_fires_when_alternatives_missing():
 
 def test_receipt_fires_when_single_alternative():
     rec = _good_receipt()
-    rec["alternatives"] = [{"id": "c", "description": "Delegated Merge Authority"}]
+    rec["alternatives"] = [{"id": "opt-c", "description": "Delegated Merge Authority"}]
     r = decision_receipt.check(rec)
     assert not r["pass"], "one option is not a decision"
 
@@ -127,7 +127,8 @@ def test_receipt_fires_when_receipt_names_no_choice():
 
 def test_receipt_fires_when_receipt_omits_an_alternative():
     rec = _good_receipt()
-    rec["receipt"] = "I chose c. I looked at a, b, c. c won because evidence."
+    rec["receipt"] = ("I chose opt-c. I looked at opt-a, opt-b, opt-c. "
+                      "opt-c won because evidence.")
     r = decision_receipt.check(rec)
     assert not r["pass"], "'I looked at A, B, C' must name the field"
 
@@ -335,6 +336,158 @@ def test_cli_merge_authority_fires_and_silences():
     bad = _good_merge_packet()
     bad["team_objections"] = 2
     assert _cli("merge_authority.py", bad) == 1
+
+
+# ================================================== gap closures (batch-3 re-validator)
+
+def test_receipt_fires_on_article_id_exploit():
+    # The re-validator's gap 1: id "a" passed as the English word "a" in
+    # prose — the receipt never names the alternative, yet the name-check
+    # passed on articles.
+    rec = _good_receipt()
+    rec["alternatives"] = [
+        {"id": "a", "description": "plan alpha"},
+        {"id": "the", "description": "plan beta"},
+    ]
+    rec["chosen"] = "a"
+    rec["receipt"] = ("I chose the best option after a thorough review. "
+                      "a won because the evidence favored a.")
+    r = decision_receipt.check(rec)
+    assert not r["pass"], "dictionary-word ids must fail closed (article exploit)"
+
+
+def test_receipt_fires_on_common_word_id_case_insensitive():
+    rec = _good_receipt()
+    rec["alternatives"] = [
+        {"id": "This", "description": "plan alpha"},
+        {"id": "opt-2", "description": "plan beta"},
+    ]
+    rec["chosen"] = "This"
+    rec["receipt"] = ("I chose This. I looked at This and opt-2. "
+                      "This won because evidence.")
+    r = decision_receipt.check(rec)
+    assert not r["pass"], "'This' is an ordinary word even capitalized"
+
+
+def test_receipt_passes_with_nonword_single_letter_id():
+    # Honoring side: "b" is not a dictionary word, so it stays a legal id.
+    rec = {
+        "decision": "tiny pick",
+        "chosen": "b",
+        "alternatives": [
+            {"id": "b", "description": "plan beta"},
+            {"id": "opt-2", "description": "plan gamma"},
+        ],
+        "winning_evidence": "b scored 9.1 vs 7.0",
+        "receipt": ("I chose b. I looked at b and opt-2. b won because its "
+                    "score beat opt-2. This is what I did."),
+        "seat": "naya-5",
+        "close_call": False,
+        "uncertainty_declared": False,
+    }
+    r = decision_receipt.check(rec)
+    assert r["pass"], r["reasons"]
+
+
+def test_wisest_fires_on_fabricated_law_ref():
+    # The re-validator's gap 2: {"type": "law", "ref": "SN-9999 ..."} was
+    # verified against nothing.
+    rec = _good_wisest()
+    rec["basis"] = {"type": "law", "ref": "SN-9999 the law I just made up"}
+    r = wisest_choice.check(rec)
+    assert not r["pass"], "fabricated law refs must fail"
+
+
+def test_wisest_fires_on_nonexistent_sn_number():
+    rec = _good_wisest()
+    rec["basis"] = {"type": "law", "ref": "SN-0000"}
+    r = wisest_choice.check(rec)
+    assert not r["pass"], "nonexistent SN numbers must fail"
+
+
+def test_wisest_passes_on_real_law_id():
+    rec = _good_wisest()
+    rec["basis"] = {"type": "law", "ref": "WISEST-CHOICE-LAW"}
+    r = wisest_choice.check(rec)
+    assert r["pass"], r["reasons"]
+
+
+def test_wisest_passes_on_sn_number_inside_prose_ref():
+    rec = _good_wisest()
+    rec["basis"] = {"type": "law", "ref": "SN-0522 Self-Governing Intelligence"}
+    r = wisest_choice.check(rec)
+    assert r["pass"], r["reasons"]
+
+
+def test_wisest_passes_on_law_name():
+    rec = _good_wisest()
+    rec["basis"] = {"type": "law", "ref": "The Decision Receipt Law"}
+    r = wisest_choice.check(rec)
+    assert r["pass"], r["reasons"]
+
+
+def test_merge_fires_when_validator_is_alias_of_seat():
+    # The re-validator's gap 3: "naya5" vs "naya-5" passed as "different";
+    # string inequality is not identity.
+    rec = _good_merge_packet()
+    rec["independent_validator"] = "naya5"  # seat is "naya-5"
+    r = merge_authority.check(rec)
+    assert not r["pass"], "alias evasion: naya5 == naya-5"
+
+
+def test_merge_fires_when_validator_differs_only_by_case_and_spaces():
+    rec = _good_merge_packet()
+    rec["independent_validator"] = "NAYA 5"
+    r = merge_authority.check(rec)
+    assert not r["pass"], "case/separator variants are the same seat"
+
+
+def test_merge_fires_on_infinite_score():
+    # The re-validator's gap 4: score Infinity passed the 9.0 bar.
+    rec = _good_merge_packet()
+    rec["self_scorecard"]["score"] = float("inf")
+    r = merge_authority.check(rec)
+    assert not r["pass"], "Infinity is not a score"
+
+
+def test_merge_fires_on_nan_score():
+    rec = _good_merge_packet()
+    rec["self_scorecard"]["score"] = float("nan")
+    r = merge_authority.check(rec)
+    assert not r["pass"], "NaN is not a score"
+
+
+def test_merge_fires_on_score_above_ten():
+    rec = _good_merge_packet()
+    rec["self_scorecard"]["score"] = 11.0
+    r = merge_authority.check(rec)
+    assert not r["pass"], "scores live on the 0-10 scale"
+
+
+def test_merge_passes_on_boundary_scores():
+    # Honoring side: the bar's own edges stay legal.
+    for s in (9.0, 10.0):
+        rec = _good_merge_packet()
+        rec["self_scorecard"]["score"] = s
+        r = merge_authority.check(rec)
+        assert r["pass"], (s, r["reasons"])
+
+
+def test_merge_fires_on_claim_shaped_evidence():
+    # The re-validator's residual risk: "trust me, green" is unfalsifiable,
+    # not proof.
+    rec = _good_merge_packet()
+    rec["test_evidence"] = "trust me, green"
+    r = merge_authority.check(rec)
+    assert not r["pass"], "'trust me, green' is unfalsifiable, not proof"
+
+
+def test_merge_passes_on_url_shaped_evidence():
+    rec = _good_merge_packet()
+    rec["test_evidence"] = ("https://github.com/SoulSchoolAcademy/NayaPOWER/"
+                            "actions/runs/4821 — 61/61 green")
+    r = merge_authority.check(rec)
+    assert r["pass"], r["reasons"]
 
 
 # ================================================================== main
