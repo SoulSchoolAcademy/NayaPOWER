@@ -101,3 +101,26 @@ No policies were returned for those three tables. These tables may be exposed to
 ## Acceptance boundary
 
 A stage is complete only when its producer, consumer, state transition, authority check, failure path, and durable receipt are all evidenced against the exact source/runtime version. `UNKNOWN` and `BLOCKED` are not PASS. A stored note is not a learned lesson. A deployed source mismatch is not parity.
+
+
+## Follow-up evidence — 2026-10-09 23:10Z
+
+### Exact source/runtime differences observed
+
+- `nayanet-learning-verify` version 98: main imports `resolveScorecardReceiptAuthority` from `./scorecard_receipt_authority.js`; deployed source omits that import and differs by 1,283 characters. This is an authorization-sensitive parity gap and must be reviewed before deployment.
+- `naya-decision-context` version 10: main explicitly returns `learning_context_available` while keeping `influenced: false` until a later controlled intervention; deployed version sets `influenced = !!evidence` and returns `USE_VERIFIED_LEARNING_CONTEXT` merely because an ACTIVE row exists. This deployed behavior conflates availability with causal influence and contradicts the learning-proof boundary.
+- `nayanet-act-runtime` version 65: deployed `index.ts` and `act.ts` differ from main; deployed ACT entrypoint lacks the current `readDecisionContext` import and `measureLearningInfluence` binding. Its bundled `know.ts` and shared `connect_selector.ts` match the inspected main files. ACT runtime parity remains blocked.
+- `nayanet-know-runtime` version 67: inspected `know.ts` matches main exactly.
+- `nayanet-intelligence-commit-runtime` version 82: inspected `index.ts` matches main exactly.
+
+### Capture lifecycle promotion hardening prepared
+
+Draft PR #2075: https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2075
+
+The draft adds `tools/verify_capture_admission_proof.py`, makes the `admission-promotion` workflow download the independent proof artifact, and binds promotion to capture ID/path, Intelligent Block ID, event, receipt, lineage, relationship, index, checkpoint, and content hash. It rejects missing lifecycle fields and preserves both `automatic_truth_ceiling=CANDIDATE` and persisted `understanding_state=CANDIDATE`. The gate is explicitly for capture lifecycle promotion; it does not claim the lesson has been learned and does not replace the separate experiment-admission contract.
+
+Verification observed for PR head `1fec06d2787c146844470d9437537d86afc55153`: the six required repository checks, including Kernel Tests, completed successfully. The PR remains draft/unmerged; no production deployment or end-to-end learning experiment was run.
+
+### Current hard boundary
+
+The next runtime-level step is to reconcile and approve exact deployed source parity for learning-verify, ACT, and decision-context. Production deployment remains a human-controlled gate. The separate learning-experiment admission contract must be attached to the actual experiment evidence and promotion point; it must not be misapplied to the capture-only record.
