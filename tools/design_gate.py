@@ -50,14 +50,34 @@ def inline_css(html: str) -> str:
 
 def check_self_contained(html: str) -> list[str]:
     v = []
-    for m in re.finditer(
-        r'<link[^>]+rel\s*=\s*["\']stylesheet["\'][^>]*>', html, re.I
-    ):
+    css = inline_css(html)
+    # Stylesheet <link> vectors: any rel that loads CSS, not just the
+    # exact string `rel="stylesheet"`. (Challenger 2026-10-09: `alternate
+    # stylesheet` and `preload as=style` slipped through.)
+    for m in re.finditer(r"<link[^>]*>", html, re.I):
         tag = m.group(0)
-        href = re.search(r'href\s*=\s*["\']([^"\']+)', tag, re.I)
-        ref = href.group(1) if href else tag
-        if not ref.startswith("data:"):
-            v.append(f"SELF-CONTAINED: external stylesheet reference: {ref}")
+        rel_m = re.search(r'rel\s*=\s*["\']([^"\']+)["\']', tag, re.I)
+        rel = rel_m.group(1).lower() if rel_m else ""
+        href_m = re.search(r'href\s*=\s*["\']([^"\']+)["\']', tag, re.I)
+        href = href_m.group(1) if href_m else ""
+        if not href or href.startswith("data:"):
+            continue
+        if "stylesheet" in rel:
+            v.append(f"SELF-CONTAINED: external stylesheet reference: {href}")
+        elif rel == "preload":
+            as_m = re.search(r'as\s*=\s*["\']([^"\']+)["\']', tag, re.I)
+            if as_m and as_m.group(1).lower() == "style":
+                v.append(
+                    f"SELF-CONTAINED: external stylesheet preload: {href}")
+    # @import inside <style> blocks — the classic self-containment
+    # bypass. url() and string forms, any nesting depth, any quote style.
+    # (Challenger 2026-10-09 BYPASS #1: @import url("https://...") passed.)
+    for m in re.finditer(
+        r"@import\s+(?:url\(\s*[\"']?([^\"')]+?)[\"']?\s*\)|[\"']([^\"']+)[\"'])",
+        css, re.I):
+        ref = (m.group(1) or m.group(2) or "").strip()
+        if ref and not ref.startswith("data:"):
+            v.append(f"SELF-CONTAINED: external CSS @import: {ref}")
     for m in re.finditer(r'<script[^>]+src\s*=\s*["\']([^"\']+)["\']', html, re.I):
         src = m.group(1)
         if not src.startswith("data:"):
@@ -577,6 +597,12 @@ def self_test() -> int:
         ("named snow surface", "div{background:snow}", "light"),
         ("script src whitespace", '<script src ="https://e/x.js"></script>', "ext"),
         ("link rel whitespace", '<link rel = "stylesheet" href="x.css">', "ext"),
+        # Challenger 2026-10-09: external-CSS vectors that slipped through.
+        ("css @import url()", '<style>@import url("https://e/x.css");</style>', "ext"),
+        ("css @import string", "<style>@import 'https://e/x.css';</style>", "ext"),
+        ("css @import unquoted", "<style>@import url(https://e/x.css);</style>", "ext"),
+        ("alternate stylesheet", '<link rel="alternate stylesheet" href="x.css">', "ext"),
+        ("preload as=style", '<link rel="preload" as="style" href="x.css">', "ext"),
     ]
     for name, frag, want in blind_spots:
         if want == "light":
