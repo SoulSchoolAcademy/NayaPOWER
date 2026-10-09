@@ -180,7 +180,10 @@ def test_retiring_an_id_requires_lifecycle_evidence():
     bad = []
     for e in data.get("entries", []):
         state = str(e.get("lifecycle_state") or "ACTIVE").upper()
-        if state != "ACTIVE":
+        # Only retired states require supersession evidence. CANDIDATE is a
+        # pre-ACTIVE state for new notes (not a retirement) and must not be
+        # flagged here.
+        if state in ("SUPERSEDED", "RETIRED"):
             if not e.get("superseded_by_capture_id"):
                 bad.append((e.get("smart_note_id"), "SUPERSEDED without superseded_by_capture_id"))
             if not e.get("supersession_reason"):
