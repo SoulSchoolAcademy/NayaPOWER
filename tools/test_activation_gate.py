@@ -378,6 +378,35 @@ class TestDeliveryPredicate(unittest.TestCase):
         self.assertEqual(v, "REJECT", viols)
         self.assertTrue(any("DELETION_UNATTESTED" in x for x in viols), viols)
 
+    def test_delivery_empty_scope_passes_without_receipt(self):
+        # round-4: PRs touching no deliverable have nothing to gate — PASS,
+        # even with no receipt bytes at all (docs-only PRs must not fail)
+        v, viols = check_delivery(b"", "/tmp",
+                                  self._chg("docs/notes.md", "tools/x.py"),
+                                  TRUTH, "", "", token="t")
+        self.assertEqual(v, "PASS", viols)
+
+    def test_delivery_case_variant_html_is_gated(self):
+        # round-4 trigger case-gap: docs/FOO.HTML is a deliverable; an
+        # unbound change must REJECT (the gate sees it — no paths filter)
+        d, rb = self._setup({"page.html": "<html><body>x</body></html>"})
+        v, viols = check_delivery(rb, d, self._chg("docs/FOO.HTML"), TRUTH,
+                                  self._dg, self._mf, token="t")
+        self.assertEqual(v, "REJECT", viols)
+        self.assertTrue(any("DELIVERABLE_NOT_BOUND" in x for x in viols),
+                        viols)
+
+    def test_delivery_symlink_rejected(self):
+        # round-4: the PR ships a link, not bytes — never bind through it
+        d, rb = self._setup({"target.html": "<html><body>t</body></html>"})
+        target = os.path.join(d, "target.html")
+        link = os.path.join(d, "link.html")
+        os.symlink("target.html", link)
+        v, viols = check_delivery(rb, d, self._chg("link.html", status="added"),
+                                  TRUTH, self._dg, self._mf, token="t")
+        self.assertEqual(v, "REJECT", viols)
+        self.assertTrue(any("DELIVERABLE_SYMLINK" in x for x in viols), viols)
+
     def test_is_deliverable(self):
         self.assertTrue(_is_deliverable("smart-blocks/manifest.json"))
         self.assertTrue(_is_deliverable("pages/room.html"))
@@ -411,6 +440,44 @@ class TestCanonicalization(unittest.TestCase):
     def test_non_class_attrs_untouched(self):
         html = '<a href="http://x/?a=b" data-v="1">x</a>'
         self.assertEqual(canonicalize_class_attributes(html), html)
+
+    def test_entity_decimal_decoded(self):
+        # round-4: the browser decodes &#110; -> 'n'; the gate must too
+        out = canonicalize_class_attributes(
+            '<div class="&#110;aya-evil">x</div>')
+        self.assertEqual(out, '<div class="naya-evil">x</div>')
+
+    def test_entity_hex_decoded(self):
+        out = canonicalize_class_attributes(
+            '<div class="&#x6E;aya-evil">x</div>')
+        self.assertEqual(out, '<div class="naya-evil">x</div>')
+
+    def test_entity_in_unquoted_decoded(self):
+        out = canonicalize_class_attributes(
+            '<div class=&#110;aya-evil>x</div>')
+        self.assertEqual(out, '<div class="naya-evil">x</div>')
+
+    def test_double_encoded_not_decoded_twice(self):
+        # the browser decodes once; so does the gate (no double-decode)
+        out = canonicalize_class_attributes(
+            '<div class="&amp;#110;aya-evil">x</div>')
+        self.assertEqual(out, '<div class="&#110;aya-evil">x</div>')
+
+    def test_data_dash_class_untouched(self):
+        # round-4: data-class is NOT the class attribute (old \b matched it)
+        html = '<div data-class="naya-evil">x</div>'
+        self.assertEqual(canonicalize_class_attributes(html), html)
+
+    def test_class_inside_attr_value_not_corrupted(self):
+        # round-4: the old regex rewrote class= inside attribute values,
+        # corrupting bytes; the lookbehind keeps them intact
+        html = '<div data-x="class=naya-evil">x</div>'
+        self.assertEqual(canonicalize_class_attributes(html), html)
+
+    def test_lawful_entities_still_decode(self):
+        out = canonicalize_class_attributes(
+            '<div class="naya-btn&#32;x">x</div>')
+        self.assertEqual(out, '<div class="naya-btn x">x</div>')
 
 
 class TestDeletionTombstone(unittest.TestCase):
