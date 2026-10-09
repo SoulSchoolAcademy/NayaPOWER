@@ -1,5 +1,6 @@
 import json
 
+import tools.smart_note_v2 as smart_note_v2
 from kernel.self_node import JsonContinuityStore, RuntimeIdentity, SelfNode, SelfNodeError
 
 
@@ -19,9 +20,10 @@ def test_self_persists_experience_and_cold_successor_inherits_it(tmp_path):
     packet = first.successor_packet()
     cold = SelfNode(store)
     receipt = cold.boot_successor(RuntimeIdentity("naya-2", "NayaPOWER", "naya"), packet)
-    assert saved["status"] == "PRESERVED"
+    assert saved["status"] == "PRESERVED_UNVERIFIED"
+    assert saved["warning"] == "unverified_lesson_not_governed"
     assert receipt["state"] == "READY"
-    assert "Use durable intelligence before planning the next action" in cold.state.known
+    assert "unverified:Use durable intelligence before planning the next action" in cold.state.known
     assert receipt["inherited_checkpoint_id"] == saved["checkpoint_id"]
     assert receipt["inherited_experience_count"] == 1
 
@@ -136,3 +138,121 @@ def test_self_boot_receipt_reports_prior_integrity(tmp_path):
     again = SelfNode(JsonContinuityStore(path))
     receipt = again.cold_boot(RuntimeIdentity("naya-1", "NayaPOWER", "naya"), "Mission", "Objective", "kernel")
     assert receipt["prior_checkpoint_integrity"] == "VERIFIED"
+
+
+# ---- GAP 5 (Phase 4): governed lesson admission ----
+
+
+def _boot_node(tmp_path):
+    node = SelfNode(JsonContinuityStore(tmp_path / "self.json"))
+    node.cold_boot(RuntimeIdentity("naya-1", "NayaPOWER", "naya"), "Mission", "Objective", "kernel")
+    return node
+
+
+def _fake_load_json(entries, fail=False):
+    def _load(path):
+        if fail:
+            raise FileNotFoundError(str(path))
+        return {"entries": entries}
+
+    return _load
+
+
+def test_self_raw_lesson_stored_as_unverified_with_warning(tmp_path):
+    node = _boot_node(tmp_path)
+    saved = node.record_experience(lesson="Raw ungoverned lesson", observed_outcome="It happened")
+    assert saved["status"] == "PRESERVED_UNVERIFIED"
+    assert saved["warning"] == "unverified_lesson_not_governed"
+    assert "unverified:Raw ungoverned lesson" in node.state.known
+    assert "Raw ungoverned lesson" not in node.state.known
+    assert node.state.experience_count == 1
+    assert node.state.successor_ready is True
+
+
+def test_self_candidate_note_refused_without_state_change(tmp_path, monkeypatch):
+    monkeypatch.setattr(
+        smart_note_v2,
+        "load_json",
+        _fake_load_json(
+            [{"smart_note_id": "SN-CAND-1", "intelligent_block_id": "IB-1", "truth_state": "CANDIDATE"}]
+        ),
+    )
+    node = _boot_node(tmp_path)
+    result = node.record_experience(smart_note_id="SN-CAND-1", observed_outcome="Observed")
+    assert result["status"] == "REFUSED"
+    assert result["reason"] == "truth_state_below_VERIFIED"
+    assert result["truth_state"] == "CANDIDATE"
+    assert node.state.experience_count == 0
+    assert node.state.known == []
+    assert node.state.lesson_refs == []
+    assert node.state.successor_ready is False
+
+
+def test_self_verified_note_preserved_with_reference(tmp_path, monkeypatch):
+    monkeypatch.setattr(
+        smart_note_v2,
+        "load_json",
+        _fake_load_json(
+            [{"smart_note_id": "SN-VER-1", "intelligent_block_id": "IB-2", "truth_state": "VERIFIED"}]
+        ),
+    )
+    node = _boot_node(tmp_path)
+    result = node.record_experience(
+        smart_note_id="SN-VER-1", observed_outcome="Outcome held", next_objective="Next"
+    )
+    assert result["status"] == "PRESERVED"
+    assert result["truth_state"] == "VERIFIED"
+    assert result["smart_note_id"] == "SN-VER-1"
+    assert "sn:SN-VER-1" in node.state.known
+    assert node.state.experience_count == 1
+    refs = node.state.lesson_refs
+    assert len(refs) == 1
+    assert refs[0]["smart_note_id"] == "SN-VER-1"
+    assert refs[0]["truth_state"] == "VERIFIED"
+    assert "recorded_at" in refs[0]
+    assert node.state.objective == "Next"
+    assert node.state.successor_ready is True
+
+
+def test_self_missing_note_refused_fail_closed(tmp_path, monkeypatch):
+    monkeypatch.setattr(smart_note_v2, "load_json", _fake_load_json([]))
+    node = _boot_node(tmp_path)
+    result = node.record_experience(smart_note_id="SN-NOPE", observed_outcome="Outcome")
+    assert result["status"] == "REFUSED"
+    assert result["reason"] == "note_not_found"
+    assert node.state.experience_count == 0
+    assert node.state.known == []
+
+
+def test_self_unreadable_registry_refused_fail_closed(tmp_path, monkeypatch):
+    monkeypatch.setattr(smart_note_v2, "load_json", _fake_load_json([], fail=True))
+    node = _boot_node(tmp_path)
+    result = node.record_experience(smart_note_id="SN-ANY", observed_outcome="Outcome")
+    assert result["status"] == "REFUSED"
+    assert result["reason"] == "note_not_found"
+    assert node.state.experience_count == 0
+
+
+def test_self_requires_lesson_or_note(tmp_path):
+    node = _boot_node(tmp_path)
+    try:
+        node.record_experience(observed_outcome="Outcome")
+    except SelfNodeError as exc:
+        assert str(exc) == "experience_incomplete"
+    else:
+        raise AssertionError("missing lesson and note must fail")
+
+
+def test_self_governed_note_against_real_registry(tmp_path):
+    # End-to-end proof that the lazy import and the real REGISTRY path work.
+    # SN-016 is RATIFIED, SN-001 is CANDIDATE in the checked-in registry.
+    node = _boot_node(tmp_path)
+    accepted = node.record_experience(smart_note_id="SN-016", observed_outcome="Observed in this repo")
+    assert accepted["status"] == "PRESERVED"
+    assert accepted["truth_state"] == "RATIFIED"
+    assert "sn:SN-016" in node.state.known
+    refused = node.record_experience(smart_note_id="SN-001", observed_outcome="Observed")
+    assert refused["status"] == "REFUSED"
+    assert refused["reason"] == "truth_state_below_VERIFIED"
+    assert refused["truth_state"] == "CANDIDATE"
+    assert node.state.experience_count == 1

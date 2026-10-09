@@ -11,7 +11,8 @@
   "current_state": {
     "issue_66": "OPEN_CURRENT_CONTROL_PLANE_FRONTIER",
     "graph_v2": "RATIFIED_SOURCE_INTEGRATED_SELECTOR_V2_MERGED",
-    "decision_value_calculus_v2_1": "RATIFIED_EXECUTABLE_SOURCE_CI_VERIFIED_GRAPH_BOUND_ALL_NINE_NODES",
+    "decision_value_calculus_v2_1": "EXECUTABLE_KERNEL_VALUE_CALCULUS_PY_UNIT_TESTED_61_PASS_CI_PYTEST_SUITE_STRUCTURAL_GRAPH_BINDING_PASS",
+    "decision_value_calculus_v2_1_note": "Corrected 2026-10-09: no file kernel/decision-calculus/value-calculus-v2.1.ts exists in the tree; canonical executable is kernel/value_calculus.py (MASTER-INDEX.json, NAYA-DECISION-VALUE-CALCULUS-V2.1.json). Verified: file exists with evaluate_candidates (L330) and retrieval_eligible (L731); tests/test_value_calculus.py 61 passed; kernel-tests.yml runs full pytest suite; structural graph-binding tests 5 passed. No ratification record found; live graph block remains NOT_YET_PERSISTED.",
     "nine_node_binding_registry": "9_OF_9_STRUCTURALLY_BOUND_WITH_PERSISTED_TRANSITIONS_AND_PROOF_BOUNDARIES",
     "current_truth_receipt_awareness": "MERGED_77F3702D_GENERATED_BRAIN_RECEIPTS_NO_LONGER_CREATE_FALSE_STALE_LOOP",
     "latest_source_convergence": "A0A666AB_GRAPH_V2_NINE_NODE_VALUE_RUNTIME_CONTRACT",

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import argparse, contextlib, hashlib, json, os, re, tempfile
+import argparse, contextlib, hashlib, json, os, re, sys, tempfile
 try:
     import fcntl
 except ImportError:  # Windows: lock with msvcrt so concurrent writers still serialize.
@@ -59,6 +59,32 @@ except ImportError:  # running by path: sys.path[0] is tools/, not the repo root
 ROOT = Path(__file__).resolve().parents[1]
 BRAIN_SMART_NOTE_ROOT = ROOT / "BRAIN" / "05-MEMORY" / "SMART-NOTES"
 REGISTRY = ROOT / ".naya" / "memory" / "smart-notes" / "index.json"
+
+# Retrieval eligibility predicate (kernel/value_calculus.py, GAP 8): every
+# retrieve() candidate is gated through retrieval_eligible() so relevance
+# alone can never authorize disclosure of scoped intelligence.
+#
+# Same dual import form as the truth-state guard above:
+#   python -m tools.smart_note_v2 ...   (repo root on sys.path -> package form)
+#   python tools/smart_note_v2.py ...   (tools/ on sys.path   -> path form,
+#                                        repo root inserted for the kernel)
+try:
+    from kernel.value_calculus import (
+        retrieval_eligible as _retrieval_eligible,
+        OperationRequest as _OperationRequest,
+        ELIGIBLE_BLOCKED as _ELIGIBLE_BLOCKED,
+        ELIGIBLE_FAIL as _ELIGIBLE_FAIL,
+        ELIGIBLE_UNKNOWN as _ELIGIBLE_UNKNOWN,
+    )
+except ImportError:  # running by path: sys.path[0] is tools/, not the repo root
+    sys.path.insert(0, str(ROOT))
+    from kernel.value_calculus import (
+        retrieval_eligible as _retrieval_eligible,
+        OperationRequest as _OperationRequest,
+        ELIGIBLE_BLOCKED as _ELIGIBLE_BLOCKED,
+        ELIGIBLE_FAIL as _ELIGIBLE_FAIL,
+        ELIGIBLE_UNKNOWN as _ELIGIBLE_UNKNOWN,
+    )
 
 def slug(s):
     x = re.sub(r"[^a-z0-9]+", "-", str(s).lower()).strip("-")
@@ -643,7 +669,73 @@ def _nutshell_text(projection_path):
     m = re.search(r"##(?:\s+[^\n]*)?IN A NUTSHELL\n\n(.+?)(?:\n\n##|$)", note, re.S | re.I)
     return m.group(1).strip() if m else ""
 
-def retrieve(query):
+# Publication scopes that carry Human-Director public authorization
+# (mirrors render()'s public_authorized set): the projection is published to
+# the public BRAIN, so serving it to an anonymous requester discloses
+# nothing non-public.
+_PUBLIC_PUBLICATION_SCOPES = {"PUBLIC", "COLLECTIVE", "PUBLIC_DERIVED_VIEW",
+                              "PUBLIC_DERIVED_VIEW_BY_HUMAN_DIRECTOR_REQUEST"}
+
+# retrieval_eligible() states that must never serve a candidate. UNKNOWN is
+# included: the predicate's own contract is "UNKNOWN never becomes PASS — it
+# routes to evidence gathering, never to proceed", so fail-closed drops it.
+_RETRIEVAL_INELIGIBLE = {_ELIGIBLE_BLOCKED, _ELIGIBLE_FAIL, _ELIGIBLE_UNKNOWN}
+
+
+def _entry_object_scope(entry):
+    """Object scope for the retrieval predicate, from the entry's scope /
+    visibility metadata.
+
+    - No scope recorded (legacy entries) -> PUBLIC: current retrieve()
+      treats every entry as retrievable; the predicate must not newly block
+      the historical corpus or the existing retrieval tests.
+    - publication_scope carrying public authorization -> PUBLIC: the
+      projection is published to the public BRAIN, so serving it to an
+      anonymous requester discloses nothing non-public.
+    - Otherwise the entry's own scope (PRIVATE, ALL_SEATS, ...).
+    """
+    scope = str(entry.get("scope") or "").strip().upper()
+    publication = str(entry.get("publication_scope") or "").strip().upper()
+    if not scope:
+        return "PUBLIC"
+    if publication in _PUBLIC_PUBLICATION_SCOPES:
+        return "PUBLIC"
+    return scope
+
+
+def _retrieval_operation_request(entry, requester_context):
+    """Build the OperationRequest the retrieval predicate evaluates.
+
+    requester_context is None (anonymous public requester: fail closed for
+    scoped entries, public entries stay eligible) or a dict with
+    requester_id, requester_scope, authority_basis, and optional
+    hard_flags / hard_violation overrides.
+    """
+    note_id = str(entry.get("smart_note_id") or entry.get("intelligent_block_id") or "unknown")
+    ctx = requester_context or {}
+    if requester_context is None:
+        requester_id, requester_scope, authority_basis = "anonymous", "PUBLIC", "public-context"
+    else:
+        requester_id = ctx.get("requester_id")
+        requester_scope = ctx.get("requester_scope")
+        authority_basis = ctx.get("authority_basis")
+    hard_flags = {"LAW": True, "RIGHTS": True, "PRIVACY": True, "SAFETY": True}
+    for source in (entry.get("hard_flags"), ctx.get("hard_flags")):
+        if isinstance(source, dict):
+            hard_flags.update({str(k).upper(): v for k, v in source.items()})
+    return _OperationRequest(
+        operation_id=f"smart-note-retrieve:{note_id}",
+        requester_id=requester_id,
+        requester_scope=str(requester_scope).strip().upper() if requester_scope else None,
+        object_scope=_entry_object_scope(entry),
+        source_canonical=True,  # retrieve() only serves the repository projection index
+        authority_basis=str(authority_basis).strip() if authority_basis else None,
+        hard_violation=bool(entry.get("hard_violation") or ctx.get("hard_violation", False)),
+        hard_flags=hard_flags,
+    )
+
+
+def retrieve(query, requester_context=None):
     registry = load_json(REGISTRY)
     q_raw = re.findall(r"[a-z0-9]+", query.lower())
     q = set(_stem(w) for w in q_raw)
@@ -689,6 +781,18 @@ def retrieve(query):
         # relevant CANDIDATE whose uncertainty is visible. A 1-2 keyword
         # gap at these score magnitudes (1-3) is signal, not noise.
         ranked.append((score, rank, e))
+    # Retrieval predicate (9-node wiring, Phase 1 / GAP 8): relevance never
+    # authorizes disclosure by itself. Every candidate is gated through
+    # retrieval_eligible(); BLOCKED / FAIL / UNKNOWN candidates are dropped
+    # before sorting and selection. Relevance scoring of the survivors is
+    # unchanged, so behavior for public, eligible notes is identical.
+    eligible = []
+    for score, rank, e in ranked:
+        receipt = _retrieval_eligible(_retrieval_operation_request(e, requester_context))
+        if receipt["state"] in _RETRIEVAL_INELIGIBLE:
+            continue
+        eligible.append((score, rank, e))
+    ranked = eligible
     ranked.sort(key=lambda z: (z[0], z[1], z[2].get("captured_at","")), reverse=True)
     if not ranked:
         raise SystemExit("NO_RELEVANT_INTELLIGENCE")
@@ -1121,6 +1225,115 @@ def verify_receipt(receipt, evidence_bundle):
     return True, "Receipt verified: promotion was valid under recorded thresholds."
 
 
+# ============================================================================
+# ELEVATION WRITER — operational path for VERIFIED->RATIFIED->ACTIVE->LEARNED
+# ============================================================================
+# promote_note() only covers CANDIDATE->VERIFIED. Every higher transition
+# runs through truth_state_guard.apply_elevation() here, so authority,
+# evidence, and elevation grants are enforced by code on the write path
+# (GAP 1, 9-node wiring Phase 1).
+#
+# The guard is the authority: this function is a pass-through — it loads the
+# entry, calls the guard, and on success commits the mutated entry
+# atomically. On refusal nothing is written (the guard leaves the entry
+# byte-identical; rejection is a non-event).
+# ============================================================================
+
+def _json_or_path(value):
+    """Accept --evidence/--grant as inline JSON or as a path to a JSON file."""
+    if value is None:
+        return None
+    s = str(value).strip()
+    if s[:1] in ("{", "["):
+        return json.loads(s)
+    return load_json(s)
+
+
+def _find_registry_entry(entries, note_id):
+    """Find a registry entry by Smart Note ID, falling back to IB ID."""
+    nid_up = str(note_id).upper()
+    for e in entries:
+        if str(e.get("smart_note_id", "")).upper() == nid_up:
+            return e
+    for e in entries:
+        if str(e.get("intelligent_block_id", "")).upper() == nid_up:
+            return e
+    return None
+
+
+def elevate_note(note_id, to_state, authority=None, evidence=None, grant=None,
+                 elevation_receipts=None, registry_path=None, dry_run=False):
+    """Attempt a governed truth-state elevation on a registry entry.
+
+    Args:
+        note_id: Smart Note ID (e.g. "SN-012") or Intelligent Block ID.
+        to_state: target truth state (RATIFIED, ACTIVE, LEARNED, or any
+            lower state for demotion).
+        authority: named promoter (the guard requires a named authority for
+            every elevation).
+        evidence: evidence bundle dict {"items": [...], ...} or a bare list
+            of items (normalized to a bundle).
+        grant: a single elevation-grant dict (or list of grants) for
+            VERIFIED->RATIFIED; valid SN-0340 scorecard receipts are
+            accepted as authority-equivalent via elevation_receipts.
+        registry_path: registry file; defaults to the canonical registry.
+        dry_run: evaluate the guard against a copy and report without writing.
+
+    Returns dict: {elevated, note_id, intelligent_block_id, old_state,
+    new_state, dry_run, record} where record is the guard's
+    {ok, reason_code, detail}.
+
+    Side effects on success: registry entry truth_state updated +
+    elevation_history appended, registry written atomically via
+    _atomic_write_json.
+    Side effects on refusal: none — the entry is left byte-identical.
+    """
+    reg_path = Path(registry_path) if registry_path else REGISTRY
+    if not reg_path.exists():
+        raise SystemExit(f"ELEVATION_REGISTRY_NOT_FOUND: {reg_path}")
+    registry = load_json(reg_path)
+    entries = registry.get("entries", [])
+    entry = _find_registry_entry(entries, note_id)
+    if entry is None:
+        raise SystemExit(f"ELEVATION_NOTE_NOT_FOUND: {note_id}")
+    old_state = str(entry.get("truth_state", "CANDIDATE")).strip().upper()
+
+    if isinstance(evidence, list):
+        evidence_bundle = {"items": evidence}
+    else:
+        evidence_bundle = evidence
+    if isinstance(grant, dict):
+        grants = [grant]
+    elif grant:
+        grants = list(grant)
+    else:
+        grants = None
+
+    if dry_run:
+        import copy
+        probe = copy.deepcopy(entry)
+        ok, rec = _guard_apply_elevation(
+            probe, to_state, authority=authority, evidence=evidence_bundle,
+            elevation_grants=grants, elevation_receipts=elevation_receipts)
+        return {"elevated": ok, "note_id": entry.get("smart_note_id"),
+                "intelligent_block_id": entry.get("intelligent_block_id"),
+                "old_state": old_state,
+                "new_state": str(to_state).strip().upper(),
+                "dry_run": True, "record": rec}
+
+    ok, rec = _guard_apply_elevation(
+        entry, to_state, authority=authority, evidence=evidence_bundle,
+        elevation_grants=grants, elevation_receipts=elevation_receipts)
+    if ok and rec.get("reason_code") != "NOOP_SAME_STATE":
+        # NOOP changed nothing — rewriting the file would only add noise.
+        _atomic_write_json(reg_path, registry)
+    return {"elevated": ok, "note_id": entry.get("smart_note_id"),
+            "intelligent_block_id": entry.get("intelligent_block_id"),
+            "old_state": old_state,
+            "new_state": str(entry.get("truth_state", "")).strip().upper(),
+            "dry_run": False, "record": rec}
+
+
 def audit_registry(root=None, registry_path=None, capture_dir=None, brain_root=None):
     """Reconcile captures, the machine registry, and published Brain projections.
 
@@ -1234,6 +1447,9 @@ def main():
     r = sub.add_parser("retrieve"); r.add_argument("--query", required=True); r.add_argument("--out")
     h = sub.add_parser("held-out"); h.add_argument("--retrieval", required=True); h.add_argument("--out", required=True)
     pm = sub.add_parser("promote"); pm.add_argument("--note", required=True); pm.add_argument("--evidence", required=True); pm.add_argument("--promoter", required=True); pm.add_argument("--registry"); pm.add_argument("--out")
+    ev = sub.add_parser("elevate"); ev.add_argument("--note", required=True); ev.add_argument("--to", required=True); ev.add_argument("--authority"); ev.add_argument("--evidence"); ev.add_argument("--grant"); ev.add_argument("--dry-run", action="store_true"); ev.add_argument("--registry")
+    rt = sub.add_parser("ratify"); rt.add_argument("--note", required=True); rt.add_argument("--authority"); rt.add_argument("--evidence"); rt.add_argument("--grant"); rt.add_argument("--dry-run", action="store_true"); rt.add_argument("--registry")
+    ac = sub.add_parser("activate"); ac.add_argument("--note", required=True); ac.add_argument("--authority"); ac.add_argument("--evidence"); ac.add_argument("--dry-run", action="store_true"); ac.add_argument("--registry")
     a = sub.add_parser("audit"); a.add_argument("--root"); a.add_argument("--quiet", action="store_true")
     args = ap.parse_args()
     if args.cmd == "audit":
@@ -1286,6 +1502,21 @@ def main():
         if args.out:
             Path(args.out).write_text(json.dumps(x["record"], indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
         print(json.dumps({"promoted": x["promoted"], "reason": x["record"].get("reason_code", "PROMOTED"), "record_path": x["record_path"]}, ensure_ascii=False)); return
+    if args.cmd in ("elevate", "ratify", "activate"):
+        # Operational truth-state path (GAP 1): elevate is the general form;
+        # ratify/activate are shorthands for the RATIFIED and ACTIVE targets.
+        # The guard enforces every rule — this layer only passes through.
+        target = {"elevate": getattr(args, "to", None), "ratify": "RATIFIED", "activate": "ACTIVE"}[args.cmd]
+        x = elevate_note(
+            args.note, target,
+            authority=args.authority,
+            evidence=_json_or_path(args.evidence),
+            grant=_json_or_path(getattr(args, "grant", None)),
+            registry_path=args.registry,
+            dry_run=args.dry_run,
+        )
+        print(json.dumps(x, ensure_ascii=False))
+        raise SystemExit(0 if x["elevated"] else 1)
 
 if __name__ == "__main__":
     main()
