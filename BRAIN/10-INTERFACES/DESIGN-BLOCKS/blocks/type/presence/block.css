@@ -1,0 +1,37 @@
+/* Smart Block: type/presence
+ * Source: Welcome Page Design.html (byte-true extraction, not rewritten)
+ * Type: type
+ * Extracted: 2026-10-09
+ */
+
+.presence{
+  font-size:clamp(.75rem,3.4vw,1rem);
+  font-weight:950;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  margin-bottom:13px;
+  transition:.5s;
+}
+
+.presence:before{
+  content:"";
+  display:inline-block;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:var(--green);
+  box-shadow:0 0 14px var(--green);
+  margin:0 9px 1px 0;
+  animation:pulse 1.8s infinite;
+}
+
+@keyframes pulse{
+  50%{
+    opacity:.35;
+    transform:scale(.72);
+  }
+}
+
+/* :root {
+  --green: #10b981;
+} */
