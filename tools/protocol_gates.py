@@ -428,6 +428,18 @@ def check_quality_gate(
     the full delivery-scorecard checks (evidence, weakest point, independent
     verifier) live in the canonical module.
     """
+    # Refuse malformed values before the canonical weighted scorer, whose
+    # comparisons alone do not reject NaN.
+    if not isinstance(scores, dict) or not scores or any(
+        not isinstance(v, (int, float)) or isinstance(v, bool)
+        or not math.isfinite(v) or not (0 <= v <= 10)
+        for v in scores.values()
+    ):
+        return AdapterResult(
+            passed=False, verdict="FAIL",
+            reasons=["scores must contain finite numeric values in 0..10"],
+            delegated_to="adapter-input-validation",
+        )
     check_delivery = _try_kernel_attr("quality_gate", "check_delivery")
     Scorecard = _try_kernel_attr("quality_gate", "Scorecard")
     if check_delivery is not None and Scorecard is not None:
