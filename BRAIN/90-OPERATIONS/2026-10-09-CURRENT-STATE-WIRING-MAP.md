@@ -158,3 +158,12 @@ The main branch learning blueprint `BRAIN/07-LEARNING/learning-system-blueprint-
 Current main advanced to `455cdf5a7d846d16dd56e19b12b4a61ab242d866` when PR #2077 merged. That merge added the TypeScript admission-gate port, but the live candidate workflow still sends no admission design and follows the compatibility pass-through. The production runtime remains v98 and lacks the merged main gate. The gate's existence in main is therefore not proof of runtime activation.
 
 The assembly-gate draft PR #2078 was designed with a `verified_source_sha` plus an ancestry/diff check. A manifest-only commit may follow the code commit that was independently verified; any code-file change after that verified commit blocks end-to-end experiments. This avoids an impossible self-referential requirement that a manifest embedded in a commit contain that same commit's SHA.
+
+
+### End-to-end execution hold prepared
+
+Draft PR #2078: https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2078
+
+This adds a machine-enforced gate to `live-supabase-runtime-proof.yml`: cold-runtime, live-connect, and learning-influence E2E jobs are skipped unless the exact verified source commit is an ancestor of the run source, the only subsequent changed file is the assembly status manifest, all nine registered connection classes are `PROVEN`, and each has source-bound SHA-256 evidence, a timestamp, and an independent verifier. The current manifest is deliberately `BLOCKED`; unit/contract checks remain available. The manifest uses `verified_source_sha` plus a manifest-only delta rule so the readiness record does not need to contain its own commit SHA.
+
+Local helper verification: `pytest -q /tmp/naya-assembly-gate` — **12 passed**. The last GitHub Kernel Tests run on an earlier PR head failed with two test-harness issues after the WO3 TypeScript imports were added; both harnesses were updated in later commits (multiline import stripping, explicit stubs for isolated imported symbols). No fresh CI receipt exists for the latest PR #2078 head yet, so this PR is **not green/verified** and remains draft.
