@@ -167,9 +167,10 @@ REPORT_SHAPED_FIELDS = (
 )
 # Everything else is content-accounted IN AGGREGATE across ALL fields,
 # whatever their names: str or nested containers (a 600-word list payload
-# is content, not a type loophole; dict keys count too). Non-text scalars
-# (numbers, bools, None) carry no prose and are not counted. The
-# report_type label itself is not content.
+# is content, not a type loophole; dict keys count too — including the
+# record's own top-level field names, which are counted exactly as nested
+# dict keys are). Non-text scalars (numbers, bools, None) carry no prose
+# and are not counted. The report_type label itself is not content.
 # At/over PING_MAX_CHARS total chars it is a report, not a one-line ping —
 # spreading 400 chars across two fields cannot dodge the accounting.
 # Judgment call, tested at the boundary (299 total chars passes, 300 voids).
@@ -190,13 +191,17 @@ def _content_chars(value) -> int:
 
 def _aggregate_content(record: dict) -> tuple[int, list[tuple[str, int]]]:
     """(total content chars, per-field breakdown) over every field except
-    the report_type label — largest contributor first."""
+    the report_type label — largest contributor first. The record's own
+    top-level field NAMES count as content, exactly as nested dict keys
+    do: the guarantee is total text chars across ALL fields, whatever
+    their names — a 400-char field name with an empty value is content,
+    not an empty field."""
     breakdown: list[tuple[str, int]] = []
     total = 0
     for key, val in record.items():
         if key == "report_type":
             continue
-        n = _content_chars(val)
+        n = _content_chars(key) + _content_chars(val)
         total += n
         if n:
             breakdown.append((str(key), n))
