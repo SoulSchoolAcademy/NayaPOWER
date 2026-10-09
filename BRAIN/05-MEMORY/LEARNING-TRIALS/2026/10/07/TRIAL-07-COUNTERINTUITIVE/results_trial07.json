@@ -1,0 +1,102 @@
+{
+  "T7-AGENT-01": {
+    "passed": 9,
+    "total": 9,
+    "arm": "treatment"
+  },
+  "T7-AGENT-02": {
+    "passed": 9,
+    "total": 9,
+    "arm": "treatment"
+  },
+  "T7-AGENT-06": {
+    "passed": 9,
+    "total": 9,
+    "arm": "treatment"
+  },
+  "T7-AGENT-07": {
+    "passed": 9,
+    "total": 9,
+    "arm": "treatment"
+  },
+  "T7-AGENT-11": {
+    "passed": 8,
+    "total": 9,
+    "arm": "treatment"
+  },
+  "T7-AGENT-13": {
+    "passed": 9,
+    "total": 9,
+    "arm": "treatment"
+  },
+  "T7-AGENT-15": {
+    "passed": 9,
+    "total": 9,
+    "arm": "treatment"
+  },
+  "T7-AGENT-16": {
+    "passed": 9,
+    "total": 9,
+    "arm": "treatment"
+  },
+  "T7-AGENT-17": {
+    "passed": 9,
+    "total": 9,
+    "arm": "treatment"
+  },
+  "T7-AGENT-20": {
+    "passed": 9,
+    "total": 9,
+    "arm": "treatment"
+  },
+  "T7-AGENT-03": {
+    "passed": 9,
+    "total": 9,
+    "arm": "control"
+  },
+  "T7-AGENT-04": {
+    "passed": 8,
+    "total": 9,
+    "arm": "control"
+  },
+  "T7-AGENT-05": {
+    "passed": 9,
+    "total": 9,
+    "arm": "control"
+  },
+  "T7-AGENT-08": {
+    "passed": 9,
+    "total": 9,
+    "arm": "control"
+  },
+  "T7-AGENT-09": {
+    "passed": 9,
+    "total": 9,
+    "arm": "control"
+  },
+  "T7-AGENT-10": {
+    "passed": 9,
+    "total": 9,
+    "arm": "control"
+  },
+  "T7-AGENT-12": {
+    "passed": 9,
+    "total": 9,
+    "arm": "control"
+  },
+  "T7-AGENT-14": {
+    "passed": 9,
+    "total": 9,
+    "arm": "control"
+  },
+  "T7-AGENT-18": {
+    "passed": 8,
+    "total": 9,
+    "arm": "control"
+  },
+  "T7-AGENT-19": {
+    "passed": 8,
+    "total": 9,
+    "arm": "control"
+  }
+}
