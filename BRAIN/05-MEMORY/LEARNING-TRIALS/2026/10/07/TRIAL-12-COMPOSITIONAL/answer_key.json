@@ -1,0 +1,38 @@
+{
+  "Q1": {
+    "correct": "Call A",
+    "category": "reserve"
+  },
+  "Q2": {
+    "correct": "Call A",
+    "category": "reserve"
+  },
+  "Q3": {
+    "correct": "Call A",
+    "category": "reserve"
+  },
+  "Q4": {
+    "correct": "Call B",
+    "category": "override"
+  },
+  "Q5": {
+    "correct": "Call A",
+    "category": "override"
+  },
+  "Q6": {
+    "correct": "Call B",
+    "category": "override"
+  },
+  "Q7": {
+    "correct": "Call A",
+    "category": "normal"
+  },
+  "Q8": {
+    "correct": "Call A",
+    "category": "normal"
+  },
+  "Q9": {
+    "correct": "Call A",
+    "category": "normal"
+  }
+}

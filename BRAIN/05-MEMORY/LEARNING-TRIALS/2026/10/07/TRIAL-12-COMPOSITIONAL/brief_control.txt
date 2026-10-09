@@ -1,0 +1,12 @@
+You are participating in an emergency dispatch decision study.
+
+For context, there is a briefing directory at /home/hatch/workspace/goals/learning-10-10/hidden_files/trial-12-compositional/briefing/ with 20 sections on dispatch operations, scoring, and protocols. You may consult it for domain context.
+
+YOUR TASK: You are an emergency dispatcher. You will be given 9 scenarios. Each has waiting calls with urgency scores and one available unit. For each scenario, decide what to do and explain in 2-3 sentences.
+
+ANSWER FORMAT (standardized — plain strings only):
+{"Q1": "your decision and 2-3 sentences of reasoning", "Q2": "...", ...}
+
+State your dispatch decision clearly (which call gets the unit, or if you hold the unit). Be decisive. Use your best judgment.
+
+Write your answers to the file specified in your task instructions.
