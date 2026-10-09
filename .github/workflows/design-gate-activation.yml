@@ -35,11 +35,37 @@ jobs:
         run: python tools/design_gate.py --self-test
       - name: Run independent activation consistency falsifiers from PR #1974
         run: node --test tools/qa/activation_receipt_consistency.test.mjs
-      - name: Confirm trusted main tip is a full SHA
+      - name: Reject a fabricated receipt through the real CLI path
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
           main_sha="$(gh api "repos/${GITHUB_REPOSITORY}/commits/main" --jq .sha)"
+          repo_id="$(gh api "repos/${GITHUB_REPOSITORY}" --jq .id)"
           test "${#main_sha}" -eq 40
-          printf 'Trusted live main tip resolved: %s\n' "${main_sha}"
+          mkdir -p /tmp/naya-fabricated-receipt
+          MAIN_SHA="${main_sha}" REPO_ID="${repo_id}" python - <<'PY'
+          import hashlib, json, os
+          from datetime import datetime, timezone
+          receipt = {
+            "schema":"naya.activation.receipt.v2","status":"ACTIVATED",
+            "session_id":"fabricated-ci-control","naya_identity":"fake",
+            "human_authority":"fake","repository":os.environ["GITHUB_REPOSITORY"],
+            "repository_id":os.environ["REPO_ID"],"job":"fabricated receipt control",
+            "gates":["CI"],"proof_plan":"must be rejected",
+            "main_sha":os.environ["MAIN_SHA"],"activated_at":datetime.now(timezone.utc).isoformat(),
+            "activation_run_id":"999999999999","activation_run_attempt":"1",
+            "activation_workflow":".github/workflows/naya-activation-receipt.yml"
+          }
+          raw=json.dumps(receipt,sort_keys=True,separators=(",",":")).encode()+b"\\n"
+          open("/tmp/naya-fabricated-receipt/receipt.json","wb").write(raw)
+          digest=hashlib.sha256(raw).hexdigest()
+          page='''<!doctype html><html><head><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="dark"><style>html{background:#050507}body{background:#050507;color:#f8f7fb}</style></head><body><!-- NAYA-ACTIVATION-RECEIPT-SHA256:'''+digest+''' --></body></html>'''
+          open("/tmp/naya-fabricated-receipt/page.html","w",encoding="utf-8").write(page)
+          PY
+          if python tools/design_gate.py /tmp/naya-fabricated-receipt/page.html --require-activation --receipt=/tmp/naya-fabricated-receipt/receipt.json --expected-repo="${GITHUB_REPOSITORY}" --expected-repo-id="${repo_id}" --expected-main-sha="${main_sha}"; then
+            echo "SECURITY FAILURE: fabricated activation receipt passed the real CLI gate"
+            exit 1
+          else
+            echo "PASS: fabricated receipt rejected by independent GitHub run/artifact provenance"
+          fi
