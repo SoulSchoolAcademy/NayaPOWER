@@ -249,6 +249,27 @@ def test_chain_step_is_deterministic():
     assert _chain_step("prev", receipt) != _chain_step("other", receipt)
 
 
+def test_corrupt_receipt_line_counted_chain_misses_it(tmp_path):
+    # A garbage receipt line never participated in the hash chain, so every
+    # prev_chain link still verifies. health() must still surface the damage.
+    store = _store(tmp_path)
+    r = _rec("receipt damage", at=OLD)
+    store.save(r)
+    store.housekeep(now=NOW, stale_after_days=30.0)
+    assert len(store._receipts) >= 1
+    lines = store.receipts_path.read_text(encoding="utf-8").splitlines()
+    lines.insert(1, "{not valid json")
+    store.receipts_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    rebuilt = MemoryStore(store.directory)
+    rebuilt.load(now=NOW)
+    health = rebuilt.health()
+    assert health["corrupt_receipt_lines"] == 1
+    assert health["receipt_chain_broken"] == []
+    # Counter resets on every load: no double counting.
+    rebuilt.load(now=NOW)
+    assert rebuilt.health()["corrupt_receipt_lines"] == 1
+
+
 # Cold-boot reconstruction ---------------------------------------------------------------
 
 def test_full_lifecycle_cold_boot_reconstruction(tmp_path):

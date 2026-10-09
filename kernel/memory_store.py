@@ -129,6 +129,7 @@ class MemoryStore:
         self._records: dict[str, mm.MemoryRecord] = {}
         self._receipts: list[dict[str, Any]] = []
         self._corruption: list[dict[str, Any]] = []
+        self._corrupt_receipt_lines = 0
 
     # -- persistence primitives ------------------------------------------------
 
@@ -210,6 +211,7 @@ class MemoryStore:
         """
         at = now or _utcnow_iso()
         self._records = {}
+        self._corrupt_receipt_lines = 0
         self._receipts = [dict(e) for e in self._iter_receipts()]
         self._corruption = []
         for lineno, raw in self._read_jsonl(self.records_path):
@@ -235,13 +237,20 @@ class MemoryStore:
         return dict(self._records)
 
     def _iter_receipts(self) -> Iterable[dict[str, Any]]:
+        # Corrupt receipt lines never participated in the hash chain, so the
+        # chain alone cannot see them: a garbage line between two valid
+        # entries leaves every prev_chain link intact. Count them explicitly
+        # so health() reports audit-trail damage the chain misses.
         for _, raw in self._read_jsonl(self.receipts_path):
             try:
                 entry = json.loads(raw)
             except json.JSONDecodeError:
+                self._corrupt_receipt_lines += 1
                 continue
             if isinstance(entry, dict) and "log_seq" in entry:
                 yield entry
+            else:
+                self._corrupt_receipt_lines += 1
 
     # -- runtime wiring ------------------------------------------------------------
 
@@ -287,6 +296,7 @@ class MemoryStore:
             "by_state": by_state,
             "receipts": len(self._receipts),
             "receipt_chain_broken": verify_receipt_chain(self._receipts),
+            "corrupt_receipt_lines": self._corrupt_receipt_lines,
             "corrupt_lines": len(self._corruption),
             "corruption": list(self._corruption),
         }
