@@ -45,7 +45,9 @@
         ".naya-btn--secondary",
         ".naya-btn--sm"
       ],
-      "score": 9.0
+      "score": 9.0,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "primo",
@@ -77,7 +79,9 @@
         ".primo:disabled",
         ".primo:hover"
       ],
-      "score": 8.5
+      "score": 8.5,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "orbit-btn",
@@ -107,7 +111,9 @@
         ".orbit-btn:hover::after",
         ".orbit-btn:hover::before"
       ],
-      "score": 9.5
+      "score": 9.5,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "living-btn",
@@ -146,7 +152,9 @@
         ".living-btn[data-spectrum=\"purple\"]::after",
         ".living-btn[data-spectrum=\"purple\"]:hover"
       ],
-      "score": 7.0
+      "score": 7.0,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "lv-btn",
@@ -190,7 +198,9 @@
         ".lv-wrap.lv-aware .lv-btn::after",
         ".lv-wrap.lv-aware .lv-btn::before"
       ],
-      "score": 7.5
+      "score": 7.5,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "cx-btn",
@@ -215,7 +225,9 @@
         ".cx-btn:active",
         ".cx-btn:hover"
       ],
-      "score": 7.0
+      "score": 7.0,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "icon-btn",
@@ -243,7 +255,9 @@
         ".icon-btn[aria-pressed=\"true\"]",
         ".icon-btn[aria-pressed=\"true\"] svg"
       ],
-      "score": 8.0
+      "score": 8.0,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "nl-btn",
@@ -271,7 +285,9 @@
         ".btn:active",
         ".btn:hover"
       ],
-      "score": 8.0
+      "score": 8.0,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "nl-btn-ghost",
@@ -294,7 +310,9 @@
         ".btn-ghost",
         ".btn-ghost:hover"
       ],
-      "score": 7.5
+      "score": 7.5,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "nl-iconbtn",
@@ -321,7 +339,9 @@
         ".nl-iconbtn:active",
         ".nl-iconbtn:hover"
       ],
-      "score": 8.0
+      "score": 8.0,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "nl-playbtn",
@@ -348,7 +368,9 @@
         ".nl-playbtn:active",
         ".nl-playbtn:hover"
       ],
-      "score": 8.0
+      "score": 8.0,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "orb",
@@ -392,7 +414,9 @@
         ".orb--xs::before",
         ".orb-context"
       ],
-      "score": 9.0
+      "score": 9.0,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "mini-orb",
@@ -412,7 +436,9 @@
       "selectors": [
         ".mini-orb"
       ],
-      "score": 8.5
+      "score": 8.5,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "nav-orb",
@@ -432,7 +458,9 @@
       "selectors": [
         ".nav-orb"
       ],
-      "score": 8.0
+      "score": 8.0,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "board",
@@ -459,7 +487,9 @@
         ".board::before",
         ".board:hover"
       ],
-      "score": 8.5
+      "score": 8.5,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "board-tone",
@@ -488,7 +518,9 @@
         ".board-tone::before",
         ".board-tone:hover"
       ],
-      "score": 8.5
+      "score": 8.5,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "demo-board",
@@ -509,12 +541,14 @@
         ".demo-board",
         ".demo-board code"
       ],
-      "score": 8.0
+      "score": 8.0,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "stage",
       "type": "boards",
-      "description": "Demo stage — elevated container for showcasing components.",
+      "description": "Demo stage \u2014 elevated container for showcasing components.",
       "source": "Naya_Lego-blocks.html",
       "files": {
         "css": "blocks/boards/stage/stage.css",
@@ -531,7 +565,9 @@
         ".stage-label",
         ".stage:before"
       ],
-      "score": 8.0
+      "score": 8.0,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "nl-ccard",
@@ -555,7 +591,9 @@
         ".nl-ccard:hover",
         ".nl-ccard:hover .nl-cmedia:after"
       ],
-      "score": 8.0
+      "score": 8.0,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "gem-bullet",
@@ -575,7 +613,9 @@
       "selectors": [
         ".gem-bullet"
       ],
-      "score": 8.5
+      "score": 8.5,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "jw",
@@ -600,7 +640,9 @@
         ".pred .jw",
         ".tongue ul li .jw"
       ],
-      "score": 8.5
+      "score": 8.5,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "nl-field",
@@ -630,7 +672,9 @@
         ".nl-field:focus-within .icon",
         ".nl-field:focus-within .nl-well"
       ],
-      "score": 8.0
+      "score": 8.0,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "nl-search",
@@ -655,7 +699,9 @@
         ".nl-search:focus-within .icon",
         ".nl-search:focus-within .nl-well"
       ],
-      "score": 8.0
+      "score": 8.0,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "nl-switch",
@@ -685,7 +731,9 @@
         ".nl-switch input:disabled ~ .nl-track",
         ".nl-switch input:focus-visible ~ .nl-track"
       ],
-      "score": 8.0
+      "score": 8.0,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "nl-toggle-row",
@@ -710,7 +758,9 @@
         ".nl-toggle-row .t-sub",
         ".nl-toggle-row:hover"
       ],
-      "score": 8.0
+      "score": 8.0,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "seg-tab",
@@ -741,7 +791,9 @@
         ".seg-tab::before, .like-pill::before, .act-chip::before, .tog-chip::before, .day-dot::before, .send-cta::before",
         ".seg-tab:hover"
       ],
-      "score": 8.5
+      "score": 8.5,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "nl-modal",
@@ -771,7 +823,9 @@
         ".nl-modal-x",
         ".nl-modal-x:hover"
       ],
-      "score": 8.0
+      "score": 8.0,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "nl-toast",
@@ -780,7 +834,7 @@
       "source": "Naya_Lego-blocks.html",
       "files": {
         "css": "blocks/overlays/nl-toast/nl-toast.css",
-        "specimen": null,
+        "specimen": "blocks/overlays/nl-toast/specimen.html",
         "js": null,
         "readme": "blocks/overlays/nl-toast/README.md"
       },
@@ -799,7 +853,9 @@
         ".nl-toast-zone",
         ".nl-toast.out"
       ],
-      "score": 8.0
+      "score": 8.0,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "nl-sheet",
@@ -823,7 +879,9 @@
         ".nl-sheet-back",
         ".nl-sheet-back.open"
       ],
-      "score": 8.0
+      "score": 8.0,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "nl-table",
@@ -854,7 +912,9 @@
         ".nl-table th:hover",
         ".nl-table-wrap"
       ],
-      "score": 8.0
+      "score": 8.0,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "nl-chart",
@@ -876,7 +936,9 @@
         ".nl-chart .c-sub",
         ".nl-chart h4"
       ],
-      "score": 7.5
+      "score": 7.5,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "nl-bar",
@@ -900,7 +962,9 @@
         ".nl-bar:hover .nl-knobp",
         ".nl-vol .nl-bar"
       ],
-      "score": 7.5
+      "score": 7.5,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "nl-player",
@@ -921,485 +985,9 @@
         ".nl-player",
         ".nl-player-top"
       ],
-      "score": 8.0
-    },
-    {
-      "id": "page-shell",
-      "type": "layout",
-      "description": "The page chassis. Full-width black ground, no max-width caps, base reset, focus/selection/motion defaults.",
-      "source": "authored 2026-10-09 for the Smart Blocks library (composition layer)",
-      "files": {
-        "css": "blocks/layout/page-shell/page-shell.css",
-        "specimen": "blocks/layout/page-shell/specimen.html",
-        "readme": "blocks/layout/page-shell/README.md"
-      },
-      "dependencies": [
-        "tokens.css"
-      ],
-      "states": [
-        ":focus-visible",
-        "::selection",
-        "@media (prefers-reduced-motion: reduce)"
-      ],
-      "selectors": [
-        ".naya-page",
-        ".naya-page--edgelight",
-        ".naya-page--edgelight::before",
-        ".naya-page ::selection",
-        ".naya-page :focus-visible",
-        "body:has(.naya-page)"
-      ],
-      "score": 9.0
-    },
-    {
-      "id": "section",
-      "type": "layout",
-      "description": "Content rhythm. Generous fluid vertical spacing, optional glowing hairline divider with diamond jewel break, tint variant.",
-      "source": "authored 2026-10-09 for the Smart Blocks library (composition layer)",
-      "files": {
-        "css": "blocks/layout/section/section.css",
-        "specimen": "blocks/layout/section/specimen.html",
-        "readme": "blocks/layout/section/README.md"
-      },
-      "dependencies": [
-        "tokens.css"
-      ],
-      "states": [
-        "@media (max-width: 480px)"
-      ],
-      "selectors": [
-        ".naya-section",
-        ".naya-section--compact",
-        ".naya-section--roomy",
-        ".naya-section--divided",
-        ".naya-section--divided::before",
-        ".naya-section--jewel::after",
-        ".naya-section--tint"
-      ],
-      "score": 9.0
-    },
-    {
-      "id": "row-grid",
-      "type": "layout",
-      "description": "Responsive layout. Mobile-first grids (2/3/4 col), flex rows, and equal splits — all collapsing cleanly, pure CSS.",
-      "source": "authored 2026-10-09 for the Smart Blocks library (composition layer)",
-      "files": {
-        "css": "blocks/layout/row-grid/row-grid.css",
-        "specimen": "blocks/layout/row-grid/specimen.html",
-        "readme": "blocks/layout/row-grid/README.md"
-      },
-      "dependencies": [
-        "tokens.css"
-      ],
-      "states": [
-        "@media (min-width: 640px)",
-        "@media (min-width: 900px)",
-        "@media (min-width: 1024px)"
-      ],
-      "selectors": [
-        ".naya-grid",
-        ".naya-grid--2",
-        ".naya-grid--3",
-        ".naya-grid--4",
-        ".naya-grid--tight",
-        ".naya-grid--loose",
-        ".naya-grid--center",
-        ".naya-grid--stretch",
-        ".naya-row",
-        ".naya-row--top",
-        ".naya-row--spread",
-        ".naya-split",
-        ".naya-split--flip"
-      ],
-      "score": 9.0
-    },
-    {
-      "id": "hero",
-      "type": "type",
-      "description": "The page opening. Editorial display headline (voice serif, 40-88px fluid) with purple eyebrow kicker, sub-line, CTA row, staggered entrance.",
-      "source": "authored 2026-10-09 for the Smart Blocks library (composition layer)",
-      "files": {
-        "css": "blocks/type/hero/hero.css",
-        "specimen": "blocks/type/hero/specimen.html",
-        "readme": "blocks/type/hero/README.md"
-      },
-      "dependencies": [
-        "tokens.css"
-      ],
-      "states": [
-        "@media (prefers-reduced-motion: no-preference)"
-      ],
-      "selectors": [
-        ".naya-hero",
-        ".naya-hero--center",
-        ".naya-hero__eyebrow",
-        ".naya-hero__title",
-        ".naya-hero__title .naya-accent",
-        ".naya-hero__sub",
-        ".naya-hero__actions"
-      ],
-      "score": 9.0
-    },
-    {
-      "id": "headline",
-      "type": "type",
-      "description": "Section titles. 24px per the type scale, white, with optional kicker, diamond jewel marker, and sm/lg sizes.",
-      "source": "authored 2026-10-09 for the Smart Blocks library (composition layer)",
-      "files": {
-        "css": "blocks/type/headline/headline.css",
-        "specimen": "blocks/type/headline/specimen.html",
-        "readme": "blocks/type/headline/README.md"
-      },
-      "dependencies": [
-        "tokens.css"
-      ],
-      "states": [
-        "responsive clamp() on --lg"
-      ],
-      "selectors": [
-        ".naya-headline",
-        ".naya-headline__kicker",
-        ".naya-headline--jewel",
-        ".naya-headline--jewel::before",
-        ".naya-headline--sm",
-        ".naya-headline--lg",
-        ".naya-headline-group"
-      ],
-      "score": 9.0
-    },
-    {
-      "id": "body",
-      "type": "type",
-      "description": "Reading text. 18px floor, 1.65 leading, high contrast, 68ch measure. Lead/quiet/small/wide variants, honest link styling.",
-      "source": "authored 2026-10-09 for the Smart Blocks library (composition layer)",
-      "files": {
-        "css": "blocks/type/body/body.css",
-        "specimen": "blocks/type/body/specimen.html",
-        "readme": "blocks/type/body/README.md"
-      },
-      "dependencies": [
-        "tokens.css"
-      ],
-      "states": [
-        ":hover (links)"
-      ],
-      "selectors": [
-        ".naya-body",
-        ".naya-body--quiet",
-        ".naya-body--small",
-        ".naya-body--lead",
-        ".naya-body--wide",
-        ".naya-body a",
-        ".naya-body a:hover",
-        ".naya-body strong",
-        ".naya-body em"
-      ],
-      "score": 9.0
-    },
-    {
-      "id": "nav",
-      "type": "layout",
-      "description": "Top navigation bar. Logo left, links, CTA right. Sticky translucent bar, mobile hamburger. 44px+ touch targets.",
-      "source": "authored 2026-10-09 for the Smart Blocks library (composition layer)",
-      "files": {
-        "css": "blocks/layout/nav/nav.css",
-        "specimen": "blocks/layout/nav/specimen.html",
-        "js": null,
-        "readme": "blocks/layout/nav/README.md"
-      },
-      "dependencies": [
-        "tokens.css"
-      ],
-      "states": [
-        ":hover",
-        ".naya-nav--open",
-        "@media max-width: 860px",
-        "prefers-reduced-motion"
-      ],
-      "selectors": [
-        ".naya-nav",
-        ".naya-nav--open",
-        ".naya-nav--overlay",
-        ".naya-nav--scrolled",
-        ".naya-nav--static",
-        ".naya-nav__brand",
-        ".naya-nav__cta",
-        ".naya-nav__link",
-        ".naya-nav__link--active",
-        ".naya-nav__link--active::after",
-        ".naya-nav__link:hover",
-        ".naya-nav__links",
-        ".naya-nav__mark",
-        ".naya-nav__row",
-        ".naya-nav__toggle",
-        ".naya-nav__toggle:hover",
-        ".naya-nav__wordmark"
-      ],
-      "score": 9.0
-    },
-    {
-      "id": "footer",
-      "type": "layout",
-      "description": "Page footer. Brand lockup, multi-column links, social icons, legal row. Hairline top light, quiet typography.",
-      "source": "authored 2026-10-09 for the Smart Blocks library (composition layer)",
-      "files": {
-        "css": "blocks/layout/footer/footer.css",
-        "specimen": "blocks/layout/footer/specimen.html",
-        "js": null,
-        "readme": "blocks/layout/footer/README.md"
-      },
-      "dependencies": [
-        "tokens.css"
-      ],
-      "states": [
-        ":hover",
-        "@media max-width: 900px",
-        "@media max-width: 560px",
-        "prefers-reduced-motion"
-      ],
-      "selectors": [
-        ".naya-footer",
-        ".naya-footer--compact",
-        ".naya-footer__brand",
-        ".naya-footer__grid",
-        ".naya-footer__group",
-        ".naya-footer__heading",
-        ".naya-footer__heading::before",
-        ".naya-footer__legal",
-        ".naya-footer__list",
-        ".naya-footer__mark",
-        ".naya-footer__mark-row",
-        ".naya-footer__social",
-        ".naya-footer__tagline",
-        ".naya-footer__wordmark"
-      ],
-      "score": 9.0
-    },
-    {
-      "id": "pulse-orb",
-      "type": "graphs",
-      "description": "A living orb that breathes with the data — value drives diameter and glow.",
-      "source": "authored 2026-10-09 (Smart Graphs visual language)",
-      "files": {
-        "css": "blocks/graphs/pulse-orb/pulse-orb.css",
-        "specimen": "blocks/graphs/pulse-orb/specimen.html",
-        "js": null,
-        "readme": "blocks/graphs/pulse-orb/README.md"
-      },
-      "dependencies": [
-        "tokens.css",
-        "jewels/gem-bullet"
-      ],
-      "states": [
-        ":hover",
-        ".lit",
-        "@media (prefers-reduced-motion: reduce)"
-      ],
-      "selectors": [
-        ".sg-card",
-        ".sg-card .c-sub",
-        ".pulse-orb-stage",
-        ".pulse-orb",
-        ".pulse-orb .po-val",
-        ".pulse-orb .po-num",
-        ".pulse-orb .po-label",
-        ".sg-delta",
-        ".sg-delta .gem-bullet",
-        ".sg-foot"
-      ],
-      "score": 9.0
-    },
-    {
-      "id": "jewel-pillar",
-      "type": "graphs",
-      "description": "Jeweled series pillars — faceted cap, specular edge, glowing base, staggered rise.",
-      "source": "authored 2026-10-09 (Smart Graphs visual language)",
-      "files": {
-        "css": "blocks/graphs/jewel-pillar/jewel-pillar.css",
-        "specimen": "blocks/graphs/jewel-pillar/specimen.html",
-        "js": null,
-        "readme": "blocks/graphs/jewel-pillar/README.md"
-      },
-      "dependencies": [
-        "tokens.css"
-      ],
-      "states": [
-        ":hover",
-        ".lit",
-        "@media (prefers-reduced-motion: reduce)"
-      ],
-      "selectors": [
-        ".sg-card",
-        ".sg-card .c-sub",
-        ".jp-track",
-        ".jp-col",
-        ".jp-val",
-        ".jp-pillar",
-        ".jp-cap",
-        ".sg-legend"
-      ],
-      "score": 9.0
-    },
-    {
-      "id": "spectrum-flow",
-      "type": "graphs",
-      "description": "Layered spectrum bands — composition of a whole flowing like a river over time.",
-      "source": "authored 2026-10-09 (Smart Graphs visual language)",
-      "files": {
-        "css": "blocks/graphs/spectrum-flow/spectrum-flow.css",
-        "specimen": "blocks/graphs/spectrum-flow/specimen.html",
-        "js": null,
-        "readme": "blocks/graphs/spectrum-flow/README.md"
-      },
-      "dependencies": [
-        "tokens.css"
-      ],
-      "states": [
-        ":hover",
-        ".lit",
-        "@media (prefers-reduced-motion: reduce)"
-      ],
-      "selectors": [
-        ".sg-card",
-        ".sg-card .c-sub",
-        ".sf-river",
-        ".sf-bands",
-        ".sf-band",
-        ".sf-grid",
-        ".sf-axis",
-        ".sg-legend"
-      ],
-      "score": 9.0
-    },
-    {
-      "id": "constellation",
-      "type": "graphs",
-      "description": "Constellation map for networks — glowing nodes, weight-sized, light-arc relationships.",
-      "source": "authored 2026-10-09 (Smart Graphs visual language)",
-      "files": {
-        "css": "blocks/graphs/constellation/constellation.css",
-        "specimen": "blocks/graphs/constellation/specimen.html",
-        "js": null,
-        "readme": "blocks/graphs/constellation/README.md"
-      },
-      "dependencies": [
-        "tokens.css"
-      ],
-      "states": [
-        ":hover",
-        ".lit",
-        "@media (prefers-reduced-motion: reduce)"
-      ],
-      "selectors": [
-        ".sg-card",
-        ".sg-card .c-sub",
-        ".sc-sky",
-        ".sc-arc",
-        ".sc-node",
-        ".sc-tag",
-        ".sc-hub",
-        ".sc-star",
-        ".sg-legend"
-      ],
-      "score": 9.0
-    },
-    {
-      "id": "pulse-rings",
-      "type": "graphs",
-      "description": "The network heartbeat — concentric sonar rings, pace carries urgency, live total at center.",
-      "source": "authored 2026-10-09 (Smart Graphs visual language)",
-      "files": {
-        "css": "blocks/graphs/pulse-rings/pulse-rings.css",
-        "specimen": "blocks/graphs/pulse-rings/specimen.html",
-        "js": null,
-        "readme": "blocks/graphs/pulse-rings/README.md"
-      },
-      "dependencies": [
-        "tokens.css"
-      ],
-      "states": [
-        ":hover",
-        ".lit",
-        "@media (prefers-reduced-motion: reduce)"
-      ],
-      "selectors": [
-        ".sg-card",
-        ".sg-card .c-sub",
-        ".pr-stage",
-        ".pr-ring",
-        ".pr-core",
-        ".pr-core .pr-num",
-        ".pr-core .pr-label",
-        ".pr-keys",
-        ".sg-foot"
-      ],
-      "score": 9.0
-    },
-    {
-      "id": "living-counter",
-      "type": "graphs",
-      "description": "The number, alive — count-up tabular numerals, jewel delta, sparkline whisper.",
-      "source": "authored 2026-10-09 (Smart Graphs visual language)",
-      "files": {
-        "css": "blocks/graphs/living-counter/living-counter.css",
-        "specimen": "blocks/graphs/living-counter/specimen.html",
-        "js": "blocks/graphs/living-counter/living-counter.js",
-        "readme": "blocks/graphs/living-counter/README.md"
-      },
-      "dependencies": [
-        "tokens.css"
-      ],
-      "states": [
-        ":hover",
-        ".lit",
-        "@media (prefers-reduced-motion: reduce)"
-      ],
-      "selectors": [
-        ".sg-card",
-        ".sg-card .c-sub",
-        ".lc-num",
-        ".lc-row",
-        ".lc-delta",
-        ".lc-delta .gem",
-        ".lc-per",
-        ".lc-spark",
-        ".sg-foot"
-      ],
-      "score": 9.0
-    },
-    {
-      "id": "orbit-dial",
-      "type": "graphs",
-      "description": "The score set in orbit — jewel ring gauge 0-10, the Calculator's face.",
-      "source": "authored 2026-10-09 (Smart Graphs visual language)",
-      "files": {
-        "css": "blocks/graphs/orbit-dial/orbit-dial.css",
-        "specimen": "blocks/graphs/orbit-dial/specimen.html",
-        "js": null,
-        "readme": "blocks/graphs/orbit-dial/README.md"
-      },
-      "dependencies": [
-        "tokens.css"
-      ],
-      "states": [
-        ":hover",
-        ".lit",
-        "@media (prefers-reduced-motion: reduce)"
-      ],
-      "selectors": [
-        ".sg-card",
-        ".sg-card .c-sub",
-        ".od-stage",
-        ".od-dial",
-        ".od-arc",
-        ".od-ticks",
-        ".od-center",
-        ".od-num",
-        ".od-cap",
-        ".od-scale",
-        ".sg-foot"
-      ],
-      "score": 9.0
+      "score": 8.0,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "answer",
@@ -1430,7 +1018,9 @@
         ".answer-sub",
         ".answer .chevron"
       ],
-      "score": "unscored — extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "dimension-constellation",
@@ -1444,7 +1034,7 @@
       },
       "dependencies": [
         "--dimensionColor per orb",
-        "--dimDeg per ring (score × 3.6deg)"
+        "--dimDeg per ring (score \u00d7 3.6deg)"
       ],
       "states": [],
       "selectors": [
@@ -1456,7 +1046,9 @@
         ".dimension-name",
         ".dimension-status"
       ],
-      "score": "unscored — extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "interest-picker",
@@ -1494,7 +1086,9 @@
         ".selected-interests",
         ".interest-pill"
       ],
-      "score": "unscored — extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "progress-hud",
@@ -1519,7 +1113,9 @@
         ".progress-fill",
         ".progress-percent"
       ],
-      "score": "unscored — extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "question",
@@ -1539,7 +1135,9 @@
         ".question-title",
         ".question-rule"
       ],
-      "score": "unscored — extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "score-stage",
@@ -1552,7 +1150,7 @@
         "readme": "blocks/assessment/score-stage/README.md"
       },
       "dependencies": [
-        "--scoreColor, --scoreDeg (score × 3.6deg) on .score-stage"
+        "--scoreColor, --scoreDeg (score \u00d7 3.6deg) on .score-stage"
       ],
       "states": [],
       "selectors": [
@@ -1561,7 +1159,9 @@
         ".score-number",
         ".score-outof"
       ],
-      "score": "unscored — extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "sp-audio-msg",
@@ -1575,7 +1175,7 @@
         "readme": "blocks/chat/sp-audio-msg/README.md"
       },
       "dependencies": [
-        "--sc (space accent — used by .sp-audio-play background/glow and .sp-audio-wave i",
+        "--sc (space accent \u2014 used by .sp-audio-play background/glow and .sp-audio-wave i",
         "the specimen must set it, e.g. --sc:#7c3aed",
         "spAudioMsg sets it on the message box from opts.accent)"
       ],
@@ -1587,7 +1187,9 @@
         ".sp-audio-wave i",
         ".sp-audio-dur"
       ],
-      "score": "unscored — extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "sp-chat",
@@ -1643,15 +1245,17 @@
         ".sp-mic-btn.rec",
         "@keyframes sppulse"
       ],
-      "score": "unscored — extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "door",
       "type": "chrome",
-      "description": "The Smart Door card — \"one brain, many doors.\" 17px radius, per-door `--door-accent` theming, accent radial glow top-right, 48px icon. The connection mechanic's card.",
+      "description": "The Smart Door card \u2014 \"one brain, many doors.\" 17px radius, per-door `--door-accent` theming, accent radial glow top-right, 48px icon. The connection mechanic's card.",
       "source": "Naya Smart Hub Design.html",
       "files": {
-        "css": "blocks/chrome/door/block.css",
+        "css": "blocks/chrome/door/door.css",
         "specimen": "blocks/chrome/door/specimen.html",
         "readme": "blocks/chrome/door/README.md"
       },
@@ -1671,7 +1275,9 @@
         ".door-desc",
         ".door-foot"
       ],
-      "score": "unscored — extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "drawer",
@@ -1679,7 +1285,7 @@
       "description": "The Hub's slide-in drawer: backdrop + panel + open-state classes. On mobile the left rail becomes a fixed drawer (translateX(-106%) &rarr; 0). Toggle via `.drawer-open` on shell/body. Note: the fuller `.naya-drawer` variant (Ledger file) is a future extraction.",
       "source": "Naya Smart Hub Design.html",
       "files": {
-        "css": "blocks/chrome/drawer/block.css",
+        "css": "blocks/chrome/drawer/drawer.css",
         "specimen": "blocks/chrome/drawer/specimen.html",
         "readme": "blocks/chrome/drawer/README.md"
       },
@@ -1698,7 +1304,9 @@
         ".rail.left",
         "@media (max-width: 900px)"
       ],
-      "score": "unscored — extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "eco-bottombar",
@@ -1706,7 +1314,7 @@
       "description": "The mobile bottom bar shared across Hub, Ledger, and Spaces: 46px round buttons on a radial dark bar, jewel plus-button, pop-up destination menu. `--jewel` themes the plus.",
       "source": "Naya Smart Hub Design.html",
       "files": {
-        "css": "blocks/chrome/eco-bottombar/block.css",
+        "css": "blocks/chrome/eco-bottombar/eco-bottombar.css",
         "specimen": "blocks/chrome/eco-bottombar/specimen.html",
         "readme": "blocks/chrome/eco-bottombar/README.md"
       },
@@ -1731,7 +1339,9 @@
         ".eco-menu a",
         "@media (max-width: 900px)"
       ],
-      "score": "unscored — extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "room-chrome",
@@ -1739,7 +1349,7 @@
       "description": "The room shell: head (kicker + title + lede) + toolbar + status line + body + outlet. Every Hub room composes this; `--room-accent` themes the kicker and LED.",
       "source": "Naya Smart Hub Design.html",
       "files": {
-        "css": "blocks/chrome/room-chrome/block.css",
+        "css": "blocks/chrome/room-chrome/room-chrome.css",
         "specimen": "blocks/chrome/room-chrome/specimen.html",
         "readme": "blocks/chrome/room-chrome/README.md"
       },
@@ -1763,15 +1373,17 @@
         ".room-status-line .led",
         "@media breakpoints"
       ],
-      "score": "unscored — extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "share-fab",
       "type": "chrome",
-      "description": "The 56px jewel FAB — fixed bottom-right, `--jewel` (default #ffea00), 18px radius. Mobile-only in the Hub (hidden on desktop).",
+      "description": "The 56px jewel FAB \u2014 fixed bottom-right, `--jewel` (default #ffea00), 18px radius. Mobile-only in the Hub (hidden on desktop).",
       "source": "Naya Smart Hub Design.html",
       "files": {
-        "css": "blocks/chrome/share-fab/block.css",
+        "css": "blocks/chrome/share-fab/share-fab.css",
         "specimen": "blocks/chrome/share-fab/specimen.html",
         "readme": "blocks/chrome/share-fab/README.md"
       },
@@ -1787,15 +1399,17 @@
         ".share-fab:active",
         "@media (max-width: 768px)"
       ],
-      "score": "unscored — extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "activity-card",
       "type": "feed",
-      "description": "The feed card — \"every event is a card, not a line.\" Jewel, narrative (16px/1.65), source + time meta, accent edge bar with pulse. `--ac` themes per card (default #9d75ff).",
+      "description": "The feed card \u2014 \"every event is a card, not a line.\" Jewel, narrative (16px/1.65), source + time meta, accent edge bar with pulse. `--ac` themes per card (default #9d75ff).",
       "source": "Naya Smart Hub Design.html",
       "files": {
-        "css": "blocks/feed/activity-card/block.css",
+        "css": "blocks/feed/activity-card/activity-card.css",
         "specimen": "blocks/feed/activity-card/specimen.html",
         "readme": "blocks/feed/activity-card/README.md"
       },
@@ -1822,7 +1436,9 @@
         ".activity-card-narrative",
         ".activity-card-meta"
       ],
-      "score": "unscored — extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "activity-stream",
@@ -1830,7 +1446,7 @@
       "description": "The time-grouped stream: time heads, timeline rows, live dot with pulse, ambient pulse ring. The container the feed renders through.",
       "source": "Naya Smart Hub Design.html",
       "files": {
-        "css": "blocks/feed/activity-stream/block.css",
+        "css": "blocks/feed/activity-stream/activity-stream.css",
         "specimen": "blocks/feed/activity-stream/specimen.html",
         "readme": "blocks/feed/activity-stream/README.md"
       },
@@ -1849,7 +1465,9 @@
         ".activity-live-dot",
         ".activity-pulse-ring"
       ],
-      "score": "unscored — extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "intel-row",
@@ -1857,7 +1475,7 @@
       "description": "The compact intel row: type tag + title + summary. `--room-accent` themes the type tag and hover border.",
       "source": "Naya Smart Hub Design.html",
       "files": {
-        "css": "blocks/feed/intel-row/block.css",
+        "css": "blocks/feed/intel-row/intel-row.css",
         "specimen": "blocks/feed/intel-row/specimen.html",
         "readme": "blocks/feed/intel-row/README.md"
       },
@@ -1875,7 +1493,9 @@
         ".intel-title",
         ".intel-summary"
       ],
-      "score": "unscored — extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "li-card",
@@ -1930,7 +1550,9 @@
         "@keyframes libar",
         "@keyframes lgpulse"
       ],
-      "score": "unscored — extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "metric-ribbon",
@@ -1938,7 +1560,7 @@
       "description": "The stat ribbon: auto-fit grid, 1px hairline gaps, one stat per cell. The `.unknown` variant renders honest \"not yet\" states. Also covers the Ledger li-card stat pattern (same grammar).",
       "source": "Naya Smart Hub Design.html",
       "files": {
-        "css": "blocks/feed/metric-ribbon/block.css",
+        "css": "blocks/feed/metric-ribbon/metric-ribbon.css",
         "specimen": "blocks/feed/metric-ribbon/specimen.html",
         "readme": "blocks/feed/metric-ribbon/README.md"
       },
@@ -1956,7 +1578,9 @@
         ".metric.unknown",
         ".digest-stats"
       ],
-      "score": "unscored — extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "intelligent-block",
@@ -1964,7 +1588,7 @@
       "description": "THE signature block of NayaNET. Header (jewel + kind + title + truth badge), the \"in a nutshell\" 4-layer answer, expandable jewel layers, provenance footer. Every knowledge surface composes this.",
       "source": "Naya Smart Hub Design.html",
       "files": {
-        "css": "blocks/knowledge/intelligent-block/block.css",
+        "css": "blocks/knowledge/intelligent-block/intelligent-block.css",
         "specimen": "blocks/knowledge/intelligent-block/specimen.html",
         "readme": "blocks/knowledge/intelligent-block/README.md"
       },
@@ -1999,12 +1623,14 @@
         ".ib-id",
         ".ib-layer.layer-purple/.ib-layer.layer-sapphire/... (12 tone variants)"
       ],
-      "score": "unscored — extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "sp-about-rows",
       "type": "lists",
-      "description": "Key/value about rows — the About-tab card from the space detail view.",
+      "description": "Key/value about rows \u2014 the About-tab card from the space detail view.",
       "source": "Smart Spaces Page Design.html",
       "files": {
         "css": "blocks/lists/sp-about-rows/block.css",
@@ -2023,12 +1649,14 @@
         ".sp-about-v",
         ".sp-about-desc"
       ],
-      "score": "unscored — extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "sp-blockrow",
       "type": "lists",
-      "description": "Block list row with title + uppercase category label — the \"pin an Intelligent Block\" picker list.",
+      "description": "Block list row with title + uppercase category label \u2014 the \"pin an Intelligent Block\" picker list.",
       "source": "Smart Spaces Page Design.html",
       "files": {
         "css": "blocks/lists/sp-blockrow/block.css",
@@ -2039,7 +1667,7 @@
       "dependencies": [],
       "states": [
         "row (default",
-        "hover); list container scrolls (max-height 50vh); optional action button active/inactive (source: Pin / ✓ Pinned)"
+        "hover); list container scrolls (max-height 50vh); optional action button active/inactive (source: Pin / \u2713 Pinned)"
       ],
       "selectors": [
         ".sp-blocklist",
@@ -2047,7 +1675,9 @@
         ".sp-blockrow-t",
         ".sp-blockrow-c"
       ],
-      "score": "unscored — extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "checks",
@@ -2073,7 +1703,9 @@
         ".check input",
         ".check span"
       ],
-      "score": "unscored — extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "law-steps",
@@ -2096,7 +1728,9 @@
         ".law-step strong",
         ".law-step span"
       ],
-      "score": "unscored — extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "lawcard",
@@ -2122,7 +1756,9 @@
         ".lawcard h3",
         ".lawcard p"
       ],
-      "score": "unscored — extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "scorecard",
@@ -2146,7 +1782,9 @@
         ".num",
         ".note"
       ],
-      "score": "unscored — extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "tongue",
@@ -2172,7 +1810,9 @@
         ".pred-name",
         ".jw"
       ],
-      "score": "unscored — extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "verdict",
@@ -2190,12 +1830,14 @@
         ".verdict",
         ".verdictsub"
       ],
-      "score": "unscored — extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "sp-card",
       "type": "spaces",
-      "description": "Space card with cover art — the grid unit of the Spaces discovery view.",
+      "description": "Space card with cover art \u2014 the grid unit of the Spaces discovery view.",
       "source": "Smart Spaces Page Design.html",
       "files": {
         "css": "blocks/spaces/sp-card/block.css",
@@ -2224,12 +1866,14 @@
         ".sp-card-meta",
         ".sp-card-cover"
       ],
-      "score": "unscored — extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "sp-detail",
       "type": "spaces",
-      "description": "Space detail view shell — cover, head row, title/topic/desc, action row, content container.",
+      "description": "Space detail view shell \u2014 cover, head row, title/topic/desc, action row, content container.",
       "source": "Smart Spaces Page Design.html",
       "files": {
         "css": "blocks/spaces/sp-detail/block.css",
@@ -2242,7 +1886,7 @@
         "specimen sets it per space). .sp-back, .sp-join, .sp-invite-btn are emitted by the builder but styled by sibling blocks, not this block's CSS (see Notes)."
       ],
       "states": [
-        "detail shell; topic line `topic · 🔒 Private` / `topic · Public`; joined / not-joined join button; accent per space via `--sc` (default `#7c3aed` from block.css)"
+        "detail shell; topic line `topic \u00b7 \ud83d\udd12 Private` / `topic \u00b7 Public`; joined / not-joined join button; accent per space via `--sc` (default `#7c3aed` from block.css)"
       ],
       "selectors": [
         ".sp-detail",
@@ -2255,7 +1899,9 @@
         ".sp-dcount",
         ".sp-dcontent"
       ],
-      "score": "unscored — extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "sp-inv-chip",
@@ -2291,7 +1937,9 @@
         ".sp-inv-chip-name",
         ".sp-inv-chip-join"
       ],
-      "score": "unscored — extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "voice-type",
@@ -2311,12 +1959,14 @@
         ".voice",
         ".voice em"
       ],
-      "score": "unscored — extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "li-day",
       "type": "data",
-      "description": "Day divider line for the ledger stream — centered, tracked-out label between day groups.",
+      "description": "Day divider line for the ledger stream \u2014 centered, tracked-out label between day groups.",
       "source": "Ledger Page Design.html",
       "files": {
         "css": "blocks/data/li-day/block.css",
@@ -2335,7 +1985,9 @@
         ".li-stage",
         ".li-day"
       ],
-      "score": "unscored — extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "state-badge",
@@ -2343,7 +1995,7 @@
       "description": "The inline honesty badge: 10px/800/.16em, dashed accent border, pill. `--room-accent` themes it; defaults to magenta. Cheap, everywhere.",
       "source": "Naya Smart Hub Design.html",
       "files": {
-        "css": "blocks/data/state-badge/block.css",
+        "css": "blocks/data/state-badge/state-badge.css",
         "specimen": "blocks/data/state-badge/specimen.html",
         "readme": "blocks/data/state-badge/README.md"
       },
@@ -2354,7 +2006,9 @@
       "selectors": [
         ".state-badge"
       ],
-      "score": "unscored — extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "swatch",
@@ -2376,7 +2030,9 @@
         ".swatch",
         ".swatch:hover"
       ],
-      "score": "unscored — extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "truthgrid",
@@ -2399,7 +2055,9 @@
         ".truth b",
         ".truth p"
       ],
-      "score": "unscored — extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "hub-quote",
@@ -2407,7 +2065,7 @@
       "description": "The pull-quote: 22px/700 white text, muted sub-line. The editorial voice for reports, decks, and interstitials.",
       "source": "Naya Smart Hub Design.html",
       "files": {
-        "css": "blocks/type/hub-quote/block.css",
+        "css": "blocks/type/hub-quote/hub-quote.css",
         "specimen": "blocks/type/hub-quote/specimen.html",
         "readme": "blocks/type/hub-quote/README.md"
       },
@@ -2420,7 +2078,9 @@
         ".hub-quote-text",
         ".hub-quote-sub"
       ],
-      "score": "unscored — extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "presence",
@@ -2437,15 +2097,17 @@
       "selectors": [
         ".presence"
       ],
-      "score": "unscored — extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "lens-tabs",
       "type": "tabs",
-      "description": "The three compact single-line lens buttons (Collective/Personal/Activity) — one row, real navigation. Each lens has its own hover glow.",
+      "description": "The three compact single-line lens buttons (Collective/Personal/Activity) \u2014 one row, real navigation. Each lens has its own hover glow.",
       "source": "Naya Smart Hub Design.html",
       "files": {
-        "css": "blocks/tabs/lens-tabs/block.css",
+        "css": "blocks/tabs/lens-tabs/lens-tabs.css",
         "specimen": "blocks/tabs/lens-tabs/specimen.html",
         "readme": "blocks/tabs/lens-tabs/README.md"
       },
@@ -2467,7 +2129,9 @@
         ".lens-tab.lens-activity:hover",
         "@media (max-width: 640px)"
       ],
-      "score": "unscored — extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "smart-tabs",
@@ -2475,7 +2139,7 @@
       "description": "The feed-navigation tab bar: horizontal scroll (scrollbar hidden), per-tab `--tc` theming, popover editor shell. Feed tabs are navigation intent, never storage.",
       "source": "Naya Smart Hub Design.html",
       "files": {
-        "css": "blocks/tabs/smart-tabs/block.css",
+        "css": "blocks/tabs/smart-tabs/smart-tabs.css",
         "specimen": "blocks/tabs/smart-tabs/specimen.html",
         "readme": "blocks/tabs/smart-tabs/README.md"
       },
@@ -2503,12 +2167,14 @@
         ".tab-pop-del",
         ".tab-pop-name"
       ],
-      "score": "unscored — extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "sp-dtabs",
       "type": "tabs",
-      "description": "Underline tabs with count badges — active tab gets the accent underline and glow, badges render the accent chip.",
+      "description": "Underline tabs with count badges \u2014 active tab gets the accent underline and glow, badges render the accent chip.",
       "source": "Smart Spaces Page Design.html",
       "files": {
         "css": "blocks/tabs/sp-dtabs/block.css",
@@ -2517,7 +2183,7 @@
         "readme": "blocks/tabs/sp-dtabs/README.md"
       },
       "dependencies": [
-        "--sc (space accent — underline, glow, badge background",
+        "--sc (space accent \u2014 underline, glow, badge background",
         "set via opts.accent)"
       ],
       "states": [
@@ -2531,12 +2197,14 @@
         ".sp-dtab.on",
         ".sp-dtab-n"
       ],
-      "score": "unscored — extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "sn-pill",
       "type": "inputs",
-      "description": "Smart Note filter pill: glow pill with label, optional 💜/⭐ mark, ⋯ options button, plus a popover editor (label input + purple-heart/gold-star toggles + Cancel/Save) and a shared context menu (Edit / Set Purple Heart / Set Gold Star / Remove).",
+      "description": "Smart Note filter pill: glow pill with label, optional \ud83d\udc9c/\u2b50 mark, \u22ef options button, plus a popover editor (label input + purple-heart/gold-star toggles + Cancel/Save) and a shared context menu (Edit / Set Purple Heart / Set Gold Star / Remove).",
       "source": "Smart Spaces Page Design.html",
       "files": {
         "css": "blocks/inputs/sn-pill/block.css",
@@ -2545,7 +2213,7 @@
         "readme": "blocks/inputs/sn-pill/README.md"
       },
       "dependencies": [
-        "--tc (per-pill accent, set inline by the builder), --cx-dim (dim text color — defined *outside* this block",
+        "--tc (per-pill accent, set inline by the builder), --cx-dim (dim text color \u2014 defined *outside* this block",
         "used by .sn-pill.add and .sn-pop label",
         "the specimen defines --cx-dim:#8a8a96 on :root)"
       ],
@@ -2593,12 +2261,14 @@
         ".sn-pop",
         ".sn-btn.sn-restore"
       ],
-      "score": "unscored — extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "li-modal",
       "type": "overlays",
-      "description": "Ledger detail modal — backdrop overlay, stat grid, explain paragraph, CLOSE button with full close plumbing (backdrop click, Escape, focus trap, focus restore).",
+      "description": "Ledger detail modal \u2014 backdrop overlay, stat grid, explain paragraph, CLOSE button with full close plumbing (backdrop click, Escape, focus trap, focus restore).",
       "source": "Ledger Page Design.html",
       "files": {
         "css": "blocks/overlays/li-modal/block.css",
@@ -2635,7 +2305,9 @@
         ".li-stage .li-modal-x:focus-visible",
         "@keyframes limodal"
       ],
-      "score": "unscored — extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "portal",
@@ -2659,7 +2331,9 @@
         ".naya-white-orbit",
         ".naya-white-light"
       ],
-      "score": "unscored — extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     }
   ],
   "generated": "2026-10-09T13:38:45Z",
