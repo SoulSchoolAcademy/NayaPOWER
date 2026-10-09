@@ -18,13 +18,22 @@ verification against live GitHub state is Naya 3's checker in CI.
 
 Structural checks:
   1. SELF-CONTAINED — no external stylesheet/script references (all inlined).
+     Every vector, every quote form: <link>, <script src>, @import.
   2. BLACK ROOT — html/body background is deep black.
-  3. NO LIGHT SURFACES — no white/light background declarations.
+  3. NO LIGHT SURFACES — no white/light background declarations, in <style>
+     blocks AND inline style= attributes alike.
   4. DARK COLOR-SCHEME — meta or CSS declares dark.
   5. NO FREESTYLE COMPONENTS — every Naya-prefixed class exists in the manifest.
   6. LIGHT TEXT — body text color is light.
   7. MOBILE VIEWPORT — the viewport meta declares width=device-width
      (mobile is the primary canvas).
+
+Hardening doctrine (validator round 2): fix CLASSES, not instances.
+  - One quote-tolerant attribute tokenizer for every tag scan.
+  - One external-resource scan for every vector (<link>, <script>, @import).
+  - One style-source collector (<style> + inline style=) feeding one law.
+  - Fail CLOSED on unparseable color values; alpha-aware luminance
+    composited over the black ground.
 """
 from __future__ import annotations
 
@@ -38,30 +47,138 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 
+# Luminance bands. Below _DARK_LUM a color is deep black / dark; at or above
+# _LIGHT_LUM a background is a light surface. Between the two is "mid" —
+# neither deep black nor a light surface (fails BLACK ROOT, passes
+# NO LIGHT SURFACES — same semantics as the original gate).
+_DARK_LUM = 0.35
+_LIGHT_LUM = 0.6
+
+# Values that are not surfaces at all.
+_NON_SURFACE = ("transparent", "none", "initial", "inherit", "unset")
+
 
 def read_page(path: Path) -> str:
     return path.read_text(encoding="utf-8", errors="replace")
 
 
-def inline_css(html: str) -> str:
+# ---------------------------------------------------------------------------
+# CLASS 1 — quote-tolerant attribute parsing.
+# One tokenizer for every tag scan (src, href, rel, class, style, name,
+# content). Handles double-quoted, single-quoted, and unquoted values per the
+# HTML spec (an unquoted value ends at whitespace or `>`).
+# ---------------------------------------------------------------------------
+_ATTR_RE = re.compile(r"""
+    (?P<name>[^\s"'`>/=]+)
+    (?:\s*=\s*
+        (?:"(?P<dq>[^"]*)"
+         |'(?P<sq>[^']*)'
+         |(?P<uq>[^\s"'`>]+))
+    )?""", re.X)
+
+
+def _parse_attrs(tag: str) -> dict[str, str | None]:
+    """Parse a tag's attributes, tolerating every quote form."""
+    attrs: dict[str, str | None] = {}
+    inner = re.sub(r"^<\s*/?\s*[a-zA-Z][a-zA-Z0-9]*", "", tag)
+    inner = inner.rsplit(">", 1)[0]
+    for m in _ATTR_RE.finditer(inner):
+        val = m.group("dq")
+        if val is None:
+            val = m.group("sq")
+        if val is None:
+            val = m.group("uq")
+        attrs[m.group("name").lower()] = val
+    return attrs
+
+
+def _find_tags(html: str, name: str):
+    return re.finditer(r"<%s\b[^>]*>" % re.escape(name), html, re.I)
+
+
+def _all_tags(html: str):
+    return re.finditer(r"<([a-zA-Z][a-zA-Z0-9]*)\b[^>]*>", html)
+
+
+# ---------------------------------------------------------------------------
+# CLASS 3 — every style source. <style> blocks AND inline style= attributes
+# feed one rule list and one law. A background smuggled through style="" is
+# the same violation as one in a <style> block.
+# ---------------------------------------------------------------------------
+def _style_block_css(html: str) -> str:
     """All <style> block contents concatenated."""
     return "\n".join(re.findall(r"<style[^>]*>(.*?)</style>", html, re.S | re.I))
 
 
+def _inline_styles(html: str) -> list[tuple[str, str]]:
+    """(tag name, style body) for every element carrying style=, in order."""
+    out = []
+    for m in _all_tags(html):
+        style = _parse_attrs(m.group(0)).get("style")
+        if style:
+            out.append((m.group(1).lower(), style))
+    return out
+
+
+def _css_rule_iter(html: str):
+    """(selector, declarations) across EVERY style source."""
+    css = _style_block_css(html)
+    for m in re.finditer(r"([^{}]+)\{([^{}]*)\}", css):
+        yield m.group(1).strip(), m.group(2)
+    for tag, body in _inline_styles(html):
+        yield f"<{tag}> [style]", body
+
+
+def _inline_decl(html: str, tagname: str, prop_re: str) -> str | None:
+    """First matching declaration from an inline style= on <tagname>."""
+    for m in _find_tags(html, tagname):
+        style = _parse_attrs(m.group(0)).get("style")
+        if style:
+            bm = re.search(prop_re, style, re.I)
+            if bm:
+                return bm.group(1).strip()
+    return None
+
+
+# ---------------------------------------------------------------------------
+# CLASS 2 — external resources. One scan for every vector:
+# <link rel=stylesheet href>, <script src>, and @import in any CSS source,
+# in every syntactic form. data: URLs are inline by definition.
+# ---------------------------------------------------------------------------
+# "@import" may be followed directly by a quoted string with no whitespace
+# (@import"..." is valid CSS); anything else requires whitespace, so
+# "@importfoo" (not a real at-rule) is not misread as an import.
+_IMPORT_RE = re.compile(r"""@import(?:\s+|(?=["']))(?:
+      url\(\s*"(?P<u1>[^"]+)"\s*\)
+    | url\(\s*'(?P<u2>[^']+)'\s*\)
+    | url\(\s*(?P<u3>[^"'\s)]+)\s*\)
+    | "(?P<u4>[^"]+)"
+    | '(?P<u5>[^']+)'
+    | (?P<u6>[^"'\s;]+)
+)""", re.I | re.X)
+
+
 def check_self_contained(html: str) -> list[str]:
     v = []
-    for m in re.finditer(
-        r'<link[^>]+rel\s*=\s*["\']stylesheet["\'][^>]*>', html, re.I
-    ):
-        tag = m.group(0)
-        href = re.search(r'href\s*=\s*["\']([^"\']+)', tag, re.I)
-        ref = href.group(1) if href else tag
-        if not ref.startswith("data:"):
-            v.append(f"SELF-CONTAINED: external stylesheet reference: {ref}")
-    for m in re.finditer(r'<script[^>]+src\s*=\s*["\']([^"\']+)["\']', html, re.I):
-        src = m.group(1)
-        if not src.startswith("data:"):
+    for m in _find_tags(html, "link"):
+        attrs = _parse_attrs(m.group(0))
+        rel = (attrs.get("rel") or "")
+        href = attrs.get("href")
+        if ("stylesheet" in rel.lower().split() and href
+                and not href.lower().startswith("data:")):
+            v.append(f"SELF-CONTAINED: external stylesheet reference: {href}")
+    for m in _find_tags(html, "script"):
+        src = _parse_attrs(m.group(0)).get("src")
+        if src and not src.lower().startswith("data:"):
             v.append(f"SELF-CONTAINED: external script reference: {src}")
+    css_sources = [_style_block_css(html)]
+    css_sources += [body for _, body in _inline_styles(html)]
+    for css in css_sources:
+        for m in _IMPORT_RE.finditer(css):
+            url = next(g for g in m.groups() if g)
+            if not url.lower().startswith("data:"):
+                v.append(
+                    f"SELF-CONTAINED: external stylesheet via @import: {url}")
     return v
 
 
@@ -150,82 +267,310 @@ _NAMED_COLORS = {
 }
 
 
-def _luminance_of(color: str) -> float | None:
-    """Relative luminance 0..1, or None if the color cannot be parsed."""
-    c = color.strip().lower()
+# ---------------------------------------------------------------------------
+# CLASS 6 — alpha-aware color model. Every color parses to
+# (effective luminance over black, alpha): eff = alpha * lum, composited over
+# the black ground the law requires. rgba(255,255,255,0.04) renders ~#0a0a0a
+# on black — it is not a light surface, and the gate must not claim it is.
+# ---------------------------------------------------------------------------
+def _lum(r: float, g: float, b: float) -> float:
+    return (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255
+
+
+def _parse_alpha(s: str) -> float | None:
+    s = s.strip()
+    try:
+        if s.endswith("%"):
+            return float(s[:-1]) / 100
+        return float(s)
+    except ValueError:
+        return None
+
+
+def _chan(s: str) -> float:
+    s = s.strip()
+    if s.endswith("%"):
+        return float(s[:-1]) * 255 / 100
+    return float(s)
+
+
+def _hue2rgb(p: float, q: float, t: float) -> float:
+    t %= 1.0
+    if t < 1 / 6:
+        return p + (q - p) * 6 * t
+    if t < 1 / 2:
+        return q
+    if t < 2 / 3:
+        return p + (q - p) * (2 / 3 - t) * 6
+    return p
+
+
+def _parse_color(color: str, vars: dict[str, str]) -> tuple[float, float] | None:
+    """Parse a CSS color -> (effective luminance over black, alpha).
+
+    Supports named colors, #rgb/#rgba/#rrggbb/#rrggbbaa, rgb()/rgba() and
+    hsl()/hsla() in comma or space form with optional `/ alpha`. Returns
+    None when the color cannot be parsed.
+    """
+    c = _resolve_vars(color.strip(), vars).strip().lower()
+    c = re.sub(r"\s*!important\s*$", "", c)
+    if c == "transparent":
+        return (0.0, 0.0)
     if c in _NAMED_COLORS:
         r, g, b = _NAMED_COLORS[c]
-        return (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255
-    m = re.match(r"#([0-9a-f]{3,8})", c)
+        return (_lum(r, g, b), 1.0)
+    m = re.match(r"#([0-9a-f]+)$", c)
     if m:
         h = m.group(1)
-        if len(h) == 3:
-            h = "".join(ch * 2 for ch in h)
-        r, g, b = int(h[0:2], 16), int(h[2:4], 16), int(h[4:6], 16)
-        return (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255
-    m = re.match(
-        r"rgba?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)", c
-    )
+        try:
+            if len(h) == 3:
+                r, g, b = (int(ch * 2, 16) for ch in h)
+                return (_lum(r, g, b), 1.0)
+            if len(h) == 4:
+                r, g, b = (int(ch * 2, 16) for ch in h[:3])
+                a = int(h[3] * 2, 16) / 255
+                return (a * _lum(r, g, b), a)
+            if len(h) == 6:
+                r, g, b = int(h[0:2], 16), int(h[2:4], 16), int(h[4:6], 16)
+                return (_lum(r, g, b), 1.0)
+            if len(h) == 8:
+                r, g, b = int(h[0:2], 16), int(h[2:4], 16), int(h[4:6], 16)
+                a = int(h[6:8], 16) / 255
+                return (a * _lum(r, g, b), a)
+        except ValueError:
+            return None
+        return None
+    m = re.match(r"rgba?\(\s*([^)]+)\)\s*$", c)
     if m:
-        r, g, b = map(int, m.groups())
-        return (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255
-    m = re.match(
-        r"hsla?\(\s*([\d.]+)\s*,\s*([\d.]+)%\s*,\s*([\d.]+)%", c
-    )
+        inner, alpha = m.group(1), 1.0
+        if "/" in inner:
+            inner, a_s = inner.split("/", 1)
+            alpha = _parse_alpha(a_s)
+            if alpha is None:
+                return None
+        else:
+            comma = [p for p in inner.split(",") if p.strip()]
+            if len(comma) == 4:
+                alpha = _parse_alpha(comma[3])
+                if alpha is None:
+                    return None
+                inner = ",".join(comma[:3])
+        nums = [p for p in re.split(r"[,\s]+", inner.strip()) if p]
+        if len(nums) != 3:
+            return None
+        try:
+            r, g, b = (_chan(n) for n in nums)
+        except ValueError:
+            return None
+        if any(not 0 <= x <= 255 for x in (r, g, b)) or not 0 <= alpha <= 1:
+            return None
+        return (alpha * _lum(r, g, b), alpha)
+    m = re.match(r"hsla?\(\s*([^)]+)\)\s*$", c)
     if m:
-        h, s, l = float(m.group(1)) / 360.0, float(m.group(2)) / 100.0, float(m.group(3)) / 100.0
+        inner, alpha = m.group(1), 1.0
+        if "/" in inner:
+            inner, a_s = inner.split("/", 1)
+            alpha = _parse_alpha(a_s)
+            if alpha is None:
+                return None
+        else:
+            comma = [p for p in inner.split(",") if p.strip()]
+            if len(comma) == 4:
+                alpha = _parse_alpha(comma[3])
+                if alpha is None:
+                    return None
+                inner = ",".join(comma[:3])
+        nums = [p for p in re.split(r"[,\s]+", inner.strip()) if p]
+        if len(nums) != 3:
+            return None
+        try:
+            h_s, s_s, l_s = (n.strip() for n in nums)
+            h = float(h_s[:-3] if h_s.endswith("deg") else h_s) % 360 / 360.0
+            if not s_s.endswith("%") or not l_s.endswith("%"):
+                return None
+            s, l = float(s_s[:-1]) / 100, float(l_s[:-1]) / 100
+        except ValueError:
+            return None
+        if not 0 <= alpha <= 1 or not 0 <= s <= 1 or not 0 <= l <= 1:
+            return None
         if s == 0:
-            return l
-        def hue2rgb(p: float, q: float, t: float) -> float:
-            t %= 1.0
-            if t < 1 / 6:
-                return p + (q - p) * 6 * t
-            if t < 1 / 2:
-                return q
-            if t < 2 / 3:
-                return p + (q - p) * (2 / 3 - t) * 6
-            return p
+            return (alpha * l, alpha)
         q = l * (1 + s) if l < 0.5 else l + s - l * s
         p = 2 * l - q
-        r, g, b = hue2rgb(p, q, h + 1 / 3), hue2rgb(p, q, h), hue2rgb(p, q, h - 1 / 3)
-        return 0.2126 * r + 0.7152 * g + 0.0722 * b
+        r, g, b = (_hue2rgb(p, q, h + 1 / 3), _hue2rgb(p, q, h),
+                   _hue2rgb(p, q, h - 1 / 3))
+        return (alpha * (0.2126 * r + 0.7152 * g + 0.0722 * b), alpha)
     return None
 
 
+# ---------------------------------------------------------------------------
+# CLASS 4 — gradient stops done honestly. Background values are split into
+# top-level comma layers FIRST (a light second layer must not hide behind a
+# dark first one); each layer is judged alone; the worst verdict wins.
+# Within a gradient, the argument list is split paren-aware, direction
+# keywords / angles / shapes / positions are skipped, and the first stop
+# that contributes a surface is judged. A stop the gate cannot parse is a
+# verdict of "unknown" — fail CLOSED, never fail open.
+# ---------------------------------------------------------------------------
+_GRADIENT_CALL_RE = re.compile(
+    r"(?:repeating-)?(?:linear|radial|conic)-gradient\s*\(", re.I)
+_NON_COLOR_ARG_RE = re.compile(r"""^(
+      to\s+[a-z][a-z\s]*
+    | [+-]?[\d.]+(?:deg|grad|rad|turn)
+    | from\s+[+-]?[\d.]+(?:deg|grad|rad|turn)
+    | (?:circle|ellipse)(?:\s+at\s+.+)?
+    | at\s+.+
+    | closest-side|closest-corner|farthest-side|farthest-corner
+)$""", re.I | re.X)
+
+
+def _split_top_level(s: str) -> list[str]:
+    parts, depth, cur = [], 0, []
+    for ch in s:
+        if ch == "(":
+            depth += 1
+        elif ch == ")":
+            depth = max(0, depth - 1)
+        if ch == "," and depth == 0:
+            parts.append("".join(cur))
+            cur = []
+        else:
+            cur.append(ch)
+    parts.append("".join(cur))
+    return [p.strip() for p in parts if p.strip()]
+
+
+def _first_stop_eff(layer: str, vars: dict[str, str]) -> float | str:
+    """Effective luminance of the first surface-contributing stop of ONE
+    gradient layer.
+
+    Returns "unknown" when no stop can be verified (fail closed), or
+    "transparent" when every stop is fully transparent (renders nothing).
+    """
+    m = re.match(
+        r"(?:repeating-)?(?:linear|radial|conic)-gradient\s*\((.*)\)\s*$",
+        layer.strip(), re.I | re.S)
+    if not m:
+        return "unknown"
+    for part in _split_top_level(m.group(1)):
+        if _NON_COLOR_ARG_RE.match(part):
+            continue
+        # a stop may carry a position ("red 50%"): split it off, but not
+        # inside parens ("rgba(0, 0, 0, .5) 20%")
+        colorish = re.split(r"\s+(?![^(]*\))", part.strip(), maxsplit=1)[0]
+        colorish = _resolve_vars(colorish, vars)
+        parsed = _parse_color(colorish, vars)
+        if parsed is None:
+            return "unknown"  # unparseable stop: fail closed
+        eff, alpha = parsed
+        if alpha < 0.05:
+            continue  # transparent stop contributes no surface
+        return eff
+    return "transparent"
+
+
+_URL_RE = re.compile(r"url\(\s*[^)]*\)", re.I)
+
+
+def _looks_like_color(c: str) -> bool:
+    return bool(re.search(
+        r"#|rgba?\(|hsla?\(|var\(|color-mix\(|color\(|lab\(|lch\(|"
+        r"oklab\(|oklch\(|light-dark\(|hwb\(", c, re.I)
+    ) or bool(re.fullmatch(r"[a-z]+", c or ""))
+
+
+def _band(eff: float, dark_below: float) -> str:
+    if eff >= _LIGHT_LUM:
+        return "light"
+    if eff < dark_below:
+        return "dark"
+    return "mid"
+
+
+def _layer_verdict(layer: str, vars: dict[str, str],
+                   dark_below: float) -> str:
+    """Verdict for ONE background layer: light | mid | dark | unknown |
+    not-a-color."""
+    L = _resolve_vars(layer.strip(), vars).strip().lower()
+    L = re.sub(r"\s*!important\s*$", "", L)
+    if L in _NON_SURFACE:
+        return "dark"  # not a surface at all
+    if _GRADIENT_CALL_RE.match(L):
+        r = _first_stop_eff(L, vars)
+        if r == "unknown":
+            return "unknown"
+        if r == "transparent":
+            return "dark"  # renders nothing
+        return _band(r, dark_below)
+    # strip image layers, judge any remaining color
+    no_url = _URL_RE.sub(" ", L).strip(" ,")
+    if no_url != L and not _looks_like_color(no_url):
+        return "not-a-color"
+    parsed = _parse_color(no_url or L, vars)
+    if parsed is None:
+        return "unknown" if _looks_like_color(no_url or L) else "not-a-color"
+    return _band(parsed[0], dark_below)
+
+
+def _surface_verdict(val: str, vars: dict[str, str],
+                     dark_below: float = _DARK_LUM) -> str:
+    """One verdict for any background value: light | mid | dark | unknown |
+    not-a-color.
+
+    Multi-layer backgrounds are split first and each layer is judged alone;
+    the worst verdict wins, so a light second layer cannot hide behind a
+    dark first one.
+
+    - "unknown": looks like a color but cannot be parsed -> FAIL CLOSED.
+    - "not-a-color": image backgrounds (url(...)) cannot be machine-verified;
+      a documented boundary, not a silent pass.
+    """
+    c = _resolve_vars(val.strip(), vars).strip().lower()
+    c = re.sub(r"\s*!important\s*$", "", c)
+    if c in _NON_SURFACE:
+        return "dark"  # not a surface at all
+    verdicts = [_layer_verdict(L, vars, dark_below)
+                for L in _split_top_level(c)]
+    for v in ("light", "unknown", "mid", "dark"):
+        if v in verdicts:
+            return v
+    return "not-a-color"  # every layer is an unverifiable image
+
+
 def _is_dark(color: str, vars: dict[str, str] | None = None) -> bool:
-    color = _resolve_vars(color, vars or {})
-    c = color.strip().lower()
-    if c in ("transparent", "none", "initial", "inherit"):
-        return True  # not a light surface
-    if "gradient" in c:
-        # gradients: judge by the first color stop (craft highlights allowed)
-        first = c.split(",", 1)[1] if "," in c else c
-        lum = _luminance_of(first.strip())
-        if lum is None:
-            return True  # unparseable stop: not provably a light surface
-        return lum < 0.35
-    lum = _luminance_of(c)
-    if lum is None:
-        # Unparseable opaque color: cannot verify it is dark -> fail closed.
-        return False
-    return lum < 0.35
+    """True only when the color is verifiably deep black / dark, in EVERY
+    layer. Fail CLOSED on unparseable opaque colors: a color the gate cannot
+    prove dark is not dark."""
+    vars = vars or {}
+    c = _resolve_vars(color.strip(), vars).strip().lower()
+    if c in _NON_SURFACE:
+        return True
+    return all(_layer_verdict(L, vars, _DARK_LUM) == "dark"
+               for L in _split_top_level(c))
 
 
-def check_black_root(html: str, css: str) -> list[str]:
+def check_black_root(html: str) -> list[str]:
     v = []
+    css = _style_block_css(html)
     vars = _root_vars(css)
     for sel in ("html", "body"):
-        bg = _bg_of_rule(css, sel)
-        # also accept body class selectors like body.naya-page
-        if bg is None and sel == "body":
-            m = re.search(
-                r"body\.[a-zA-Z0-9_-]+\s*\{([^}]*)\}", css, re.I
-            )
-            if m:
-                b2 = re.search(
-                    r"background(?:-color)?\s*:\s*([^;}]+);?", m.group(1), re.I
+        # Inline style wins in the browser cascade — read it first, so a
+        # style="" white root cannot hide behind a stylesheet black one.
+        bg = _inline_decl(html, sel,
+                          r"background(?:-color)?\s*:\s*([^;}]+)")
+        if bg is None:
+            bg = _bg_of_rule(css, sel)
+            # also accept body class selectors like body.naya-page
+            if bg is None and sel == "body":
+                m = re.search(
+                    r"body\.[a-zA-Z0-9_-]+\s*\{([^}]*)\}", css, re.I
                 )
-                bg = b2.group(1).strip() if b2 else None
+                if m:
+                    b2 = re.search(
+                        r"background(?:-color)?\s*:\s*([^;}]+);?",
+                        m.group(1), re.I
+                    )
+                    bg = b2.group(1).strip() if b2 else None
         if bg is None:
             v.append(f"BLACK ROOT: no background declared for `{sel}` "
                      f"(browser default white leaks through)")
@@ -234,12 +579,13 @@ def check_black_root(html: str, css: str) -> list[str]:
     return v
 
 
-def check_no_light_surfaces(css: str) -> list[str]:
+def check_no_light_surfaces(html: str) -> list[str]:
+    """No light backgrounds — in <style> blocks AND inline style= attributes,
+    one law for every style source."""
     v = []
-    for m in re.finditer(
-        r"([^{}]+)\{([^{}]*)\}", css
-    ):
-        selector, body = m.group(1).strip(), m.group(2)
+    css = _style_block_css(html)
+    vars = _root_vars(css)
+    for selector, body in _css_rule_iter(html):
         if selector.startswith("@"):
             continue
         # pseudo-element detail craft (specular dots, facet highlights)
@@ -250,27 +596,28 @@ def check_no_light_surfaces(css: str) -> list[str]:
             r"background(?:-color)?\s*:\s*([^;}]+);?", body, re.I
         ):
             val = bm.group(1).strip()
-            # Light surfaces are surfaces: any opaque background with high
-            # luminance fails, however it is spelled (hex, name, hsl).
-            # Gradient craft: judge by the first color stop only.
-            probe = val
-            if "gradient" in val.lower():
-                parts = val.split(",", 1)
-                probe = parts[1] if len(parts) > 1 else val
-            lum = _luminance_of(_resolve_vars(probe, _root_vars(css)))
-            if lum is not None and lum >= 0.6:
+            verdict = _surface_verdict(val, vars, dark_below=_DARK_LUM)
+            if verdict == "light":
                 v.append(f"NO LIGHT SURFACES: `{selector}` has light "
                          f"background: {val}")
+            elif verdict == "unknown":
+                # fail CLOSED: a background the gate cannot verify dark
+                # does not pass (validator round 2: fail-open-on-unparseable)
+                v.append(f"NO LIGHT SURFACES: `{selector}` background "
+                         f"cannot be verified dark: {val}")
     return v
 
 
-def check_dark_scheme(html: str, css: str) -> list[str]:
-    if re.search(
-        r'<meta[^>]+name=["\']color-scheme["\'][^>]*content=["\']dark["\']',
-        html, re.I,
-    ):
-        return []
-    if re.search(r"color-scheme\s*:\s*dark", css, re.I):
+def check_dark_scheme(html: str) -> list[str]:
+    for m in _find_tags(html, "meta"):
+        attrs = _parse_attrs(m.group(0))
+        if ((attrs.get("name") or "").lower() == "color-scheme"
+                and (attrs.get("content") or "").lower() == "dark"):
+            return []
+    for _tag, body in _inline_styles(html):
+        if re.search(r"color-scheme\s*:\s*dark", body, re.I):
+            return []
+    if re.search(r"color-scheme\s*:\s*dark", _style_block_css(html), re.I):
         return []
     return ["DARK COLOR-SCHEME: no dark color-scheme declared "
             "(native controls/chrome render light)"]
@@ -315,9 +662,10 @@ _NAYA_PREFIXES = ("naya-", "board", "orb-", "lv-", "torb", "gem-")
 def check_no_freestyle(html: str, known: set[str]) -> list[str]:
     v = []
     used: set[str] = set()
-    for m in re.finditer(r'class=["\']([^"\']+)["\']', html):
-        for cls in m.group(1).split():
-            used.add(cls)
+    for m in _all_tags(html):
+        cls_attr = _parse_attrs(m.group(0)).get("class")
+        if cls_attr:
+            used.update(cls_attr.split())
     for cls in sorted(used):
         if cls.startswith(_NAYA_PREFIXES) and cls not in known:
             # allow BEM/state suffixes of known bases
@@ -329,20 +677,25 @@ def check_no_freestyle(html: str, known: set[str]) -> list[str]:
     return v
 
 
-def check_light_text(css: str) -> list[str]:
+def check_light_text(html: str) -> list[str]:
     v = []
-    # body rule or body.<class> rules (page root carries the text color)
-    bodies = re.findall(
-        r"body(?:\.[a-zA-Z0-9_-]+)?\s*\{([^}]*)\}", css, re.I
-    )
-    if not bodies:
-        return ["LIGHT TEXT: no body rule found"]
-    col = None
-    for b in bodies:
-        m = re.search(r"(?<![a-z-])color\s*:\s*([^;}]+);?", b, re.I)
-        if m:
-            col = m.group(1).strip()
-            break
+    css = _style_block_css(html)
+    # inline style wins in the browser cascade — read it first
+    col = _inline_decl(html, "body", r"(?<![a-z-])color\s*:\s*([^;}]+)")
+    bodies: list[str] = []
+    if col is None:
+        # body rule or body.<class> rules (page root carries the text color)
+        bodies = re.findall(
+            r"body(?:\.[a-zA-Z0-9_-]+)?\s*\{([^}]*)\}", css, re.I
+        )
+    if col is None:
+        if not bodies:
+            return ["LIGHT TEXT: no body rule found"]
+        for b in bodies:
+            m = re.search(r"(?<![a-z-])color\s*:\s*([^;}]+);?", b, re.I)
+            if m:
+                col = m.group(1).strip()
+                break
     if not col:
         return ["LIGHT TEXT: body has no text color declared"]
     # light text = NOT dark
@@ -352,16 +705,16 @@ def check_light_text(css: str) -> list[str]:
 
 
 def check_viewport(html: str) -> list[str]:
-    m = re.search(
-        r'<meta[^>]+name=["\']viewport["\'][^>]*>', html, re.I
-    )
-    if not m:
-        return ["MOBILE VIEWPORT: no viewport meta tag "
-                "(mobile is the primary canvas)"]
-    if "width=device-width" not in m.group(0).replace(" ", ""):
-        return ["MOBILE VIEWPORT: viewport meta does not declare "
-                "width=device-width"]
-    return []
+    for m in _find_tags(html, "meta"):
+        attrs = _parse_attrs(m.group(0))
+        if (attrs.get("name") or "").lower() == "viewport":
+            content = (attrs.get("content") or "").replace(" ", "")
+            if "width=device-width" in content:
+                return []
+            return ["MOBILE VIEWPORT: viewport meta does not declare "
+                    "width=device-width"]
+    return ["MOBILE VIEWPORT: no viewport meta tag "
+            "(mobile is the primary canvas)"]
 
 
 RECEIPT_MARKER_RE = re.compile(
@@ -415,6 +768,11 @@ def check_activation(html: str, receipt_path: Path | None,
         receipt = json.loads(raw)
     except (OSError, ValueError) as e:
         return [f"ACTIVATION: cannot read receipt {receipt_path}: {e}"]
+    # CLASS FIX (validator round 2): a non-object receipt (array, string,
+    # number, null) is a clean ACTIVATION violation — never an AttributeError.
+    if not isinstance(receipt, dict):
+        return [f"ACTIVATION: receipt is not a JSON object "
+                f"(got {type(receipt).__name__}) — refusing to verify"]
     if receipt.get("schema") != "naya.activation.receipt.v2":
         v.append("ACTIVATION: receipt schema is not naya.activation.receipt.v2")
     if receipt.get("status") != "ACTIVATED":
@@ -462,19 +820,18 @@ def run_gate(page: Path, manifest: Path,
              receipt_path: Path | None = None,
              expected_repo: str | None = None) -> list[str]:
     html = read_page(page)
-    css = inline_css(html)
     violations: list[str] = []
     violations += check_self_contained(html)
-    violations += check_black_root(html, css)
-    violations += check_no_light_surfaces(css)
-    violations += check_dark_scheme(html, css)
+    violations += check_black_root(html)
+    violations += check_no_light_surfaces(html)
+    violations += check_dark_scheme(html)
     violations += check_viewport(html)
     if manifest.exists():
         violations += check_no_freestyle(html, _manifest_classes(manifest))
     else:
         violations.append(f"NO FREESTYLE: manifest not found at {manifest} "
                           f"— cannot verify components")
-    violations += check_light_text(css)
+    violations += check_light_text(html)
     if require_activation:
         violations += check_activation(html, receipt_path, expected_repo)
     return violations
@@ -553,6 +910,21 @@ def self_test() -> int:
         wrongrepo_v = run_gate(
             pm_wrong, mf, require_activation=True, receipt_path=rp_wrong,
             expected_repo="SoulSchoolAcademy/NayaPOWER")  # wrong repo -> fail
+        # non-object receipts -> clean ACTIVATION violation, never a crash
+        # (validator round 2, issue 7)
+        non_object_v: dict[str, list[str] | str] = {}
+        for label, raw in [("array", b"[1,2,3]"), ("string", b'"nope"'),
+                           ("number", b"42"), ("null", b"null")]:
+            rp_x = Path(d) / f"receipt_{label}.json"
+            rp_x.write_bytes(raw)
+            d_x = hashlib.sha256(raw).hexdigest()
+            html_x = f"<!-- NAYA-ACTIVATION-RECEIPT-SHA256:{d_x} -->"
+            try:
+                non_object_v[label] = check_activation(
+                    html_x, rp_x,
+                    expected_repo="SoulSchoolAcademy/NayaPOWER")
+            except Exception as e:  # noqa: BLE001 — any crash here IS the bug
+                non_object_v[label] = f"CRASH {type(e).__name__}: {e}"
     ok = True
     if not bad_v:
         print("SELF-TEST FAIL: violating page passed the gate")
@@ -580,7 +952,7 @@ def self_test() -> int:
     ]
     for name, frag, want in blind_spots:
         if want == "light":
-            got = check_no_light_surfaces(frag)
+            got = check_no_light_surfaces("<style>" + frag + "</style>")
             bad = not got
         elif want == "ext":
             got = check_self_contained(frag)
@@ -593,6 +965,131 @@ def self_test() -> int:
             ok = False
         else:
             print(f"SELF-TEST: blind-spot '{name}' held (good)")
+    # --- validator round-2 regressions: 7 evasions, fixed at CLASS level ---
+    # (name, html, probe, expect_violation)
+    r2 = [
+        # CLASS 1: quote-tolerant attribute parsing
+        ("r2 unquoted script src",
+         "<script src=https://e/x.js></script>", check_self_contained, True),
+        ("r2 single-quoted script src",
+         "<script src='https://e/x.js'></script>", check_self_contained, True),
+        ("r2 unquoted link href",
+         "<link rel=stylesheet href=x.css>", check_self_contained, True),
+        ("r2 unquoted class",
+         "<div class=naya-evil>x</div>",
+         lambda h: check_no_freestyle(h, {"naya-btn"}), True),
+        ("r2 unquoted viewport still passes",
+         '<meta name=viewport content="width=device-width, initial-scale=1">',
+         check_viewport, False),
+        ("r2 unquoted color-scheme still passes",
+         "<meta name=color-scheme content=dark>", check_dark_scheme, False),
+        # CLASS 2: @import in every syntactic form
+        ("r2 @import url dq",
+         '<style>@import url("https://e/x.css");</style>',
+         check_self_contained, True),
+        ("r2 @import url sq",
+         "<style>@import url('https://e/x.css');</style>",
+         check_self_contained, True),
+        ("r2 @import url unquoted",
+         "<style>@import url(https://e/x.css);</style>",
+         check_self_contained, True),
+        ("r2 @import dq",
+         '<style>@import "https://e/x.css";</style>',
+         check_self_contained, True),
+        ("r2 @import sq",
+         "<style>@import 'https://e/x.css';</style>",
+         check_self_contained, True),
+        ("r2 @import bare",
+         "<style>@import https://e/x.css;</style>",
+         check_self_contained, True),
+        ("r2 @import no space before string",
+         '<style>@import"https://e/x.css";</style>',
+         check_self_contained, True),
+        ("r2 @import data: stays allowed",
+         "<style>@import url(data:text/css,body{});</style>",
+         check_self_contained, False),
+        # CLASS 3: inline style= scanned exactly like <style> blocks
+        ("r2 inline style white",
+         '<div style="background:white">x</div>',
+         check_no_light_surfaces, True),
+        ("r2 inline style single-quoted",
+         "<div style='background:#fff'>x</div>",
+         check_no_light_surfaces, True),
+        ("r2 inline style unquoted",
+         "<div style=background:white>x</div>",
+         check_no_light_surfaces, True),
+        ("r2 inline style dark passes",
+         '<div style="background:#050507">x</div>',
+         check_no_light_surfaces, False),
+        ("r2 inline style on body wins cascade",
+         '<body style="background:white">x</body>',
+         check_black_root, True),
+        # CLASS 4: gradients — direction/angle skipped, fail closed
+        ("r2 gradient direction + white",
+         "<style>x{background:linear-gradient(to bottom, white, black)}</style>",
+         check_no_light_surfaces, True),
+        ("r2 gradient angle + white",
+         "<style>x{background:linear-gradient(45deg, #fff, #000)}</style>",
+         check_no_light_surfaces, True),
+        ("r2 gradient turn + white",
+         "<style>x{background:repeating-linear-gradient(.25turn, white, black)}</style>",
+         check_no_light_surfaces, True),
+        ("r2 gradient dark passes",
+         "<style>x{background:linear-gradient(120deg,#050507,#0a0a0f)}</style>",
+         check_no_light_surfaces, False),
+        ("r2 gradient radial dark passes",
+         "<style>x{background:radial-gradient(circle at center, #0a0a0f, #050507)}</style>",
+         check_no_light_surfaces, False),
+        ("r2 gradient unparseable stop fails closed",
+         "<style>x{background:linear-gradient(to right, var(--nope), black)}</style>",
+         check_no_light_surfaces, True),
+        ("r2 gradient transparent first stop passes",
+         "<style>x{background:linear-gradient(rgba(255,255,255,0.04), #050507)}</style>",
+         check_no_light_surfaces, False),
+        ("r2 multilayer light second layer fails",
+         "<style>x{background:linear-gradient(#050507 0%,#050507 100%),"
+         " linear-gradient(white, black)}</style>",
+         check_no_light_surfaces, True),
+        ("r2 multilayer dark layers pass",
+         "<style>x{background:radial-gradient(circle, rgba(255,255,255,.12),"
+         " transparent 48%),linear-gradient(180deg,#15151b,#020203)}</style>",
+         check_no_light_surfaces, False),
+        ("r2 multilayer image over dark fails black-root closed",
+         "<style>html{background:#050507}"
+         "body{background:url(x.png),#050507}</style>",
+         check_black_root, True),
+        # CLASS 6: alpha-aware luminance (composited over black)
+        ("r2 rgba ghost-white passes",
+         "<style>x{background:rgba(255,255,255,0.04)}</style>",
+         check_no_light_surfaces, False),
+        ("r2 rgba near-opaque white fails",
+         "<style>x{background:rgba(255,255,255,0.9)}</style>",
+         check_no_light_surfaces, True),
+        ("r2 8-digit hex ghost passes",
+         "<style>x{background:#ffffff0a}</style>",
+         check_no_light_surfaces, False),
+        ("r2 hsla ghost passes",
+         "<style>x{background:hsla(0,0%,100%,0.04)}</style>",
+         check_no_light_surfaces, False),
+    ]
+    for name, html, fn, want_viol in r2:
+        got = fn(html)
+        if bool(got) != want_viol:
+            print(f"SELF-TEST FAIL: {name}: expected violation={want_viol}, "
+                  f"got={got}")
+            ok = False
+        else:
+            print(f"SELF-TEST: {name} held (good)")
+    # CLASS 5: non-object receipts -> clean violation, never a crash
+    for label, res in non_object_v.items():
+        if isinstance(res, str) or not any(
+                x.startswith("ACTIVATION: receipt is not a JSON object")
+                for x in res):
+            print(f"SELF-TEST FAIL: {label} receipt not cleanly rejected: "
+                  f"{res}")
+            ok = False
+        else:
+            print(f"SELF-TEST: {label} receipt cleanly rejected (good)")
     for name, vv, want_fail in [
             ("no-marker+required", noact_v, True),
             ("valid receipt", okact_v, False),
