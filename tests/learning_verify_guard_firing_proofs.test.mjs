@@ -220,6 +220,16 @@ async function runtime({ mode = "verify", body = {}, tables = {}, auth = {}, met
       };
     },
     createRemoteJWKSet: () => ({}),
+    // The imported modules are isolated here; their own gate and authority behavior
+    // is covered by dedicated tests. Missing-design candidate path uses only the
+    // candidate status constant. Unexpected gate invocation fails loudly.
+    ADMISSION_SCHEMA: "NAYAPOWER_LEARNING_CANDIDATE_ADMISSION_V1",
+    ADMITTED_CANDIDATE: "CANDIDATE",
+    ADMITTED_NOT_VERIFIED: "NOT_VERIFIED",
+    ADMITTED_REJECTED: "REJECTED",
+    GATE_EVALUATION_ERROR: "GATE_EVALUATION_ERROR",
+    admit_candidate: () => { throw new Error("admission gate must be tested through its dedicated proof suite"); },
+    resolveScorecardReceiptAuthority: async () => ({ authorized: false, reason: "TEST_STUB_NO_SCORECARD_RECEIPT" }),
     // The handler logs every refusal to stderr. That is correct runtime behaviour, but
     // here it would bury the test report under 30 stack traces that are the EXPECTED
     // outcome. Keep console.error reachable so nothing is hidden; just route it away.
