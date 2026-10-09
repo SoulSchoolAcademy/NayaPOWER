@@ -4,6 +4,10 @@ The number, alive. A giant tabular-numeral counter that rolls up on entry, a
 jewel delta for the trend, and a whisper of a sparkline for the story behind
 it. For the stats people check every day: prices, totals, streaks.
 
+## Why
+
+A static number is a claim; a counting number is an event. Count-up tabular numerals with a jewel delta make the metric feel current — because it is.
+
 - **Type:** graphs
 - **Source:** authored 2026-10-09 for the Smart Graphs visual language
 - **CSS:** `living-counter.css` · **JS:** `living-counter.js`

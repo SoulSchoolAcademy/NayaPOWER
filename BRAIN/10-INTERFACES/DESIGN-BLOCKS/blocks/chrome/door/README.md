@@ -2,6 +2,10 @@
 
 The Smart Door card — "one brain, many doors." 17px radius, per-door `--door-accent` theming, accent radial glow top-right, 48px icon. The connection mechanic's card.
 
+## Why
+
+‘One brain, many doors.’ The Smart Door card is the connection mechanic made tangible — per-door accent theming means each door feels like its own place while staying one system.
+
 - **Type:** chrome
 - **Source:** `Naya Smart Hub Design.html` (extracted verbatim, never rewritten)
 - **CSS:** `door.css`

@@ -2,6 +2,10 @@
 
 Cormorant voice serif treatment: 24px/700 white with dual text-shadow. Naya's spoken voice, set in type.
 
+## Why
+
+When Naya speaks in type, it must sound like her. Cormorant voice serif at 24px/700 with dual shadow — the spoken voice, set so you can hear it.
+
 - **Type:** voice
 - **Source:** `Naya Design Element Set N4.html` (extracted byte-true, never rewritten)
 - **CSS:** `block.css`

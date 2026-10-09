@@ -2,6 +2,10 @@
 
 Space detail view shell — cover, head row, title/topic/desc, action row, content container.
 
+## Why
+
+Stepping into a space should feel like arriving. Cover, head row, title and topic, action row, content container — the whole room composed before you, ready.
+
 - **Type:** spaces
 - **Source:** `Smart Spaces Page Design.html` (extracted byte-true, never rewritten)
 - **CSS:** `block.css`

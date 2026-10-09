@@ -2,6 +2,10 @@
 
 Question block: eyebrow label, title, and a hairline rule. The asking face of any assessment.
 
+## Why
+
+A question deserves a face. Eyebrow label, title, hairline rule — the asking moment is set apart and given weight, so the answer gets the thought it deserves.
+
 - **Type:** assessment
 - **Source:** `Maxis App Design.html` (extracted byte-true, never rewritten)
 - **CSS:** `block.css`

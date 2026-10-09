@@ -2,6 +2,10 @@
 
 Welcome entry portal: fluid orbit rings + purple radial glow staging a centered core. The front door composition.
 
+## Why
+
+Every arrival needs a front door. Orbit rings and a purple radial glow staging a centered core — the welcome composition that says ‘you’re entering somewhere,’ not ‘you’re loading something.’
+
 - **Type:** layout
 - **Source:** `Welcome Page Design.html` (extracted byte-true, never rewritten)
 - **CSS:** `block.css`

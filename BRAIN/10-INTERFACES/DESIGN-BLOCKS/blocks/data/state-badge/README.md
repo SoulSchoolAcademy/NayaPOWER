@@ -2,6 +2,10 @@
 
 The inline honesty badge: 10px/800/.16em, dashed accent border, pill. `--room-accent` themes it; defaults to magenta. Cheap, everywhere.
 
+## Why
+
+Honesty should be cheap and everywhere. The tiny dashed-accent pill says exactly what state something is in — one badge, no ceremony, no ambiguity.
+
 - **Type:** data
 - **Source:** `Naya Smart Hub Design.html` (extracted verbatim, never rewritten)
 - **CSS:** `state-badge.css`
