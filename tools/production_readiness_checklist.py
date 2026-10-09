@@ -21,6 +21,9 @@ Checks (each emits PASS / WARN / FAIL / UNKNOWN with evidence):
                            ledger entry's file exists (read-only; no SQL parsing needed).
   C7 proof_workflows_exist— every workflow file referenced by the promotion workflow exists.
   C8 receipt_path        — the promotion workflow writes a durable promotion receipt artifact.
+  C9 branch_hygiene       — production branch state: merge-queue health and integration debt (signal only).
+  C10 production_target_governance — the production branch ref is branch-protected:
+                           governance cannot be bypassed by a direct ref move.
 
 Exit codes: 0 = all PASS (WARN allowed), 1 = any FAIL, 2 = instrument error.
 
@@ -30,6 +33,7 @@ the credential without exposing it. With neither, C2/C3 report UNKNOWN.
 """
 from __future__ import annotations
 
+import fnmatch
 import json
 import os
 import re
@@ -467,6 +471,107 @@ def check_branch_hygiene(dirty_scan_limit: int = 15) -> dict:
                         f"no conflicts in oldest {min(dirty_scan_limit, len(prs))}", evidence)
 
 
+def _ref_pattern_matches(ref: str, pattern: str, default_branch: str | None) -> bool:
+    """GitHub ruleset ref-name matching: ~ALL, ~DEFAULT_BRANCH, or fnmatch glob."""
+    if pattern == "~ALL":
+        return True
+    if pattern == "~DEFAULT_BRANCH":
+        return default_branch is not None and ref == f"refs/heads/{default_branch}"
+    return fnmatch.fnmatchcase(ref, pattern)
+
+
+# Rules that actually restrict moving the ref (a ruleset with only
+# deletion/non-fast-forward still allows a direct fast-forward push).
+REF_GUARD_RULES = {"update", "required_pull_request", "required_signatures",
+                   "required_linear_history", "required_deployments",
+                   "required_status_checks", "pull_request"}
+
+
+def _production_guard_rulesets(default_branch: str | None) -> tuple[list[str] | None, bool]:
+    """Names of active rulesets that guard refs/heads/production with a ref-move rule.
+
+    Returns (names, rulesets_checked). names is None when the rulesets API is
+    unreachable — callers must not claim coverage they could not read.
+    """
+    data = gh_get(f"/repos/{REPO}/rulesets?includes_parents=true")
+    if data is None:
+        return None, False
+    guarding: list[str] = []
+    ref = "refs/heads/production"
+    for rs in data if isinstance(data, list) else []:
+        if rs.get("enforcement") != "active":
+            continue
+        rid, name = rs.get("id"), rs.get("name") or f"ruleset-{rs.get('id')}"
+        detail = gh_get(f"/repos/{REPO}/rulesets/{rid}") if rid else rs
+        if not isinstance(detail, dict):
+            continue
+        cond = (detail.get("conditions") or {}).get("ref_name") or {}
+        include = cond.get("include") or []
+        exclude = cond.get("exclude") or []
+        if not any(_ref_pattern_matches(ref, p, default_branch) for p in include):
+            continue
+        if any(_ref_pattern_matches(ref, p, default_branch) for p in exclude):
+            continue
+        rule_types = {r.get("type") for r in detail.get("rules", []) or []}
+        if rule_types & REF_GUARD_RULES:
+            guarding.append(name)
+    return guarding, True
+
+
+def _repo_default_branch() -> str | None:
+    data = gh_get(f"/repos/{REPO}")
+    if isinstance(data, dict) and data.get("default_branch"):
+        return data["default_branch"]
+    return None
+
+
+def check_production_target_governance(branch_data: dict | None = None) -> dict:
+    """C10 — the production branch ref is guarded: governance cannot be bypassed.
+
+    The governed promotion workflow is the only legitimate writer of the
+    `production` ref (it moves the ref via the Git Data API after the
+    standing-policy gate fail-closes). If the branch is not branch-protected
+    (classic protection OR an active ruleset that restricts ref moves), any
+    credential with push access can move the ref directly — bypassing the
+    standing-policy gate, the stamp commit, the provenance binding, and the
+    failure receipt. Read-only: never changes protection, only reports it.
+    """
+    data = branch_data if branch_data is not None else gh_get(f"/repos/{REPO}/branches/production")
+    if data is None:
+        return check_result("C10", "UNKNOWN", "GitHub API unreachable (no credential path)",
+                            {"reason": "no_api"})
+    if not isinstance(data, dict) or "protected" not in data:
+        return check_result("C10", "UNKNOWN", "production branch record has no protection flag",
+                            {"reason": "unexpected_api_shape"})
+    default_branch = _repo_default_branch()
+    guarding, rulesets_checked = _production_guard_rulesets(default_branch)
+    classic = data.get("protected") is True
+    ruleset_guard = bool(guarding)
+    evidence = {"protected": data.get("protected"),
+                "protection_url": data.get("protection_url"),
+                "rulesets_checked": rulesets_checked,
+                "guarding_rulesets": guarding if rulesets_checked else "unchecked"}
+    if classic or ruleset_guard:
+        why = ("classic branch protection" if classic else "") + \
+              (" + " if classic and ruleset_guard else "") + \
+              (f"ruleset(s): {', '.join(guarding)}" if ruleset_guard else "")
+        return check_result("C10", "PASS",
+                            f"production ref guarded by {why}: cannot be moved outside governance",
+                            evidence)
+    evidence["unblock"] = (
+        "guard the production ref — admin action, protected gate (needs Shawn's word): "
+        "classic branch protection or a ruleset with an update/required-pull-request rule "
+        "on refs/heads/production. Design note: the promotion workflow moves the ref "
+        "itself via the Git Data API (force=false), so the rule must exempt the "
+        "workflow's own identity (bypass actor) or it will break the governed path "
+        "it protects.")
+    note = "" if rulesets_checked else " (rulesets API unreachable; graded on classic flag only)"
+    return check_result("C10", "FAIL",
+                        "production branch is NOT guarded: the ref can be moved outside the governed "
+                        f"promotion path, bypassing the standing-policy gate, stamp, and receipts{note}",
+                        evidence)
+
+
 def check_standing_policy(policy_path: Path | None = None) -> dict:
     """C4 — standing promotion policy is RATIFIED and well-formed."""
     ppath = policy_path or POLICY_PATH
@@ -610,6 +715,7 @@ def run() -> tuple[dict, int]:
         check_proof_workflows_exist(),
         check_receipt_path(),
         check_branch_hygiene(),
+        check_production_target_governance(),
     ]
     verdict, exit_code = score(checks)
     report = {"schema": SCHEMA, "verdict": verdict,

@@ -495,6 +495,106 @@ def test_branch_hygiene_unknown_when_no_api(monkeypatch):
     assert prc.check_branch_hygiene()["verdict"] == "UNKNOWN"
 
 
+# ---- C10 production target governance --------------------------------------------
+
+def test_production_target_governance_fail_when_unprotected():
+    r = prc.check_production_target_governance(
+        branch_data={"protected": False,
+                     "protection_url": "https://api.github.com/repos/x/y/branches/production/protection"})
+    assert r["check"] == "C10"
+    assert r["verdict"] == "FAIL", r
+    assert r["evidence"]["protected"] is False
+    assert "unblock" in r["evidence"]
+
+
+def test_production_target_governance_pass_when_protected():
+    r = prc.check_production_target_governance(branch_data={"protected": True})
+    assert r["verdict"] == "PASS", r
+    assert r["evidence"]["protected"] is True
+
+
+def test_production_target_governance_unknown_when_no_api(monkeypatch):
+    monkeypatch.setattr(prc, "gh_get", lambda path: None)
+    r = prc.check_production_target_governance()
+    assert r["verdict"] == "UNKNOWN", r
+
+
+def test_production_target_governance_unknown_on_unexpected_shape():
+    r = prc.check_production_target_governance(branch_data={"commit": {}})
+    assert r["verdict"] == "UNKNOWN", r
+    assert r["evidence"]["reason"] == "unexpected_api_shape"
+
+
+def _gh_rulesets(monkeypatch, rulesets, details):
+    def fake(path):
+        if path.endswith("/branches/production"):
+            return {"protected": False}
+        if path.endswith("/rulesets?includes_parents=true"):
+            return rulesets
+        if "/rulesets/" in path:
+            rid = int(path.rsplit("/", 1)[-1])
+            return details.get(rid)
+        if path.endswith("NayaPOWER"):
+            return {"default_branch": "main"}
+        return None
+    monkeypatch.setattr(prc, "gh_get", fake)
+
+
+def _ruleset(rid, name, include, rules):
+    return {"id": rid, "name": name, "enforcement": "active",
+            "conditions": {"ref_name": {"include": include, "exclude": []}},
+            "rules": [{"type": t} for t in rules]}
+
+
+def test_production_target_governance_pass_via_guarding_ruleset(monkeypatch):
+    rs = _ruleset(1, "prod-guard", ["refs/heads/production"], ["update"])
+    _gh_rulesets(monkeypatch, [{"id": 1, "name": "prod-guard", "enforcement": "active"}],
+                 {1: rs})
+    r = prc.check_production_target_governance()
+    assert r["verdict"] == "PASS", r
+    assert r["evidence"]["guarding_rulesets"] == ["prod-guard"]
+
+
+def test_production_target_governance_fail_when_ruleset_only_blocks_deletion(monkeypatch):
+    # deletion/non-fast-forward rules do NOT stop a direct fast-forward push:
+    # the ref is still bypassable -> FAIL, honestly.
+    rs = _ruleset(1, "weak", ["refs/heads/production"], ["deletion", "non_fast_forward"])
+    _gh_rulesets(monkeypatch, [{"id": 1, "name": "weak", "enforcement": "active"}],
+                 {1: rs})
+    r = prc.check_production_target_governance()
+    assert r["verdict"] == "FAIL", r
+
+
+def test_production_target_governance_fail_when_ruleset_targets_default_branch_only(monkeypatch):
+    # mirrors the live repo: both rulesets target ~DEFAULT_BRANCH (main), not production.
+    rs = _ruleset(1, "main-only", ["~DEFAULT_BRANCH"], ["update"])
+    _gh_rulesets(monkeypatch, [{"id": 1, "name": "main-only", "enforcement": "active"}],
+                 {1: rs})
+    r = prc.check_production_target_governance()
+    assert r["verdict"] == "FAIL", r
+    assert r["evidence"]["guarding_rulesets"] == []
+
+
+def test_production_target_governance_pass_via_all_pattern(monkeypatch):
+    rs = _ruleset(1, "everything", ["~ALL"], ["required_pull_request"])
+    _gh_rulesets(monkeypatch, [{"id": 1, "name": "everything", "enforcement": "active"}],
+                 {1: rs})
+    r = prc.check_production_target_governance()
+    assert r["verdict"] == "PASS", r
+
+
+def test_production_target_governance_grades_classic_when_rulesets_unreachable(monkeypatch):
+    def fake(path):
+        if path.endswith("/branches/production"):
+            return {"protected": False}
+        return None
+    monkeypatch.setattr(prc, "gh_get", fake)
+    r = prc.check_production_target_governance()
+    assert r["verdict"] == "FAIL", r
+    assert r["evidence"]["rulesets_checked"] is False
+    assert "rulesets API unreachable" in r["summary"]
+
+
 # ---- main() --json -------------------------------------------------------------
 
 def test_main_json_flag_emits_pure_json(monkeypatch, capsys):
