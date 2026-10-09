@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Block specimen: inputs/sn-pill</title>
+<link rel="stylesheet" href="block.css">
+<style>
+  :root{ --cx-dim:#8a8a96; } /* source defines --cx-dim elsewhere; needed by .sn-pill.add and .sn-pop label */
+  body{ background:#050507; color:#e8eaf2; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; margin:0; padding:32px 20px; }
+  .demo{ max-width:720px; margin:0 auto; }
+  .demo h2{ font-size:14px; letter-spacing:.12em; text-transform:uppercase; color:#8a8a96; margin:34px 0 12px; }
+  .demo h2:first-child{ margin-top:0; }
+  .sn-row-demo{ display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+  .hint{ font-size:12px; color:#5b5f6e; margin-top:14px; }
+  #log{ margin-top:10px; font-size:13px; color:#9aa3b5; }
+</style>
+</head>
+<body>
+<div class="demo">
+  <h2>Smart Note pills</h2>
+  <div class="sn-row-demo" id="row"></div>
+  <p class="hint">Click a pill to select it. Click ⋯ (or right-click) for the menu: edit opens the popover editor with heart/star toggles; remove deletes the pill. ＋ Add opens the editor to create a pill.</p>
+  <div id="log"></div>
+</div>
+<script src="block.js"></script>
+<script>
+  var row = document.getElementById('row');
+  var log = document.getElementById('log');
+  function say(s){
+    var d = document.createElement('div');
+    d.textContent = s;
+    log.insertBefore(d, log.firstChild);
+  }
+  function mk(o){
+    o.onSelect = function(t, p){
+      row.querySelectorAll('.sn-pill').forEach(function(x){
+        x.classList.remove('on');
+        if(x._snTab) x._snTab.active = false;
+      });
+      t.active = true; p.classList.add('on');
+      say('selected: ' + t.label);
+    };
+    o.onMark = function(t, mark){ say('mark → ' + t.label + ': ' + mark); };
+    o.onChange = function(t){ say('edited: ' + t.label); };
+    o.onRemove = function(t){ say('removed: ' + t.label); };
+    return snPill(o);
+  }
+  row.appendChild(mk({id:'st-all', label:'All', color:'#fff', active:true}));
+  row.appendChild(mk({id:'st-design', label:'Design', color:'#7c3aed', heart:true}));
+  row.appendChild(mk({id:'st-ai', label:'AI', color:'#d4a017', star:true}));
+  row.appendChild(mk({id:'st-music', label:'Music', color:'#0e9bd8'}));
+  var add = snPillAdd({onAdd: function(d){
+    var p = mk(Object.assign({id:'st-' + Date.now().toString(36), color:'#1e6fd9'}, d));
+    row.insertBefore(p, add);
+    say('added: ' + d.label);
+  }});
+  row.appendChild(add);
+</script>
+</body>
+</html>

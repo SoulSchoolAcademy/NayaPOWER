@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Smart Block specimen — overlays/li-modal</title>
+<link rel="stylesheet" href="block.css">
+<style>
+  body{ margin:0; background:#050507; }
+  .demo-note{ color:#a09a8a; font-size:12px; letter-spacing:.18em; font-weight:800; margin:0 0 18px; }
+  .demo-open{
+    padding:14px 34px; border-radius:999px; font-size:12px; font-weight:800; letter-spacing:.14em;
+    cursor:pointer; font-family:inherit; color:#fff;
+    background:linear-gradient(180deg,#1b1b21,#0b0b0e); border:1px solid rgba(168,85,247,.55);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.16), 0 10px 24px rgba(0,0,0,.5);
+    transition:box-shadow .25s, transform .15s;
+  }
+  .demo-open:hover{ box-shadow:0 0 28px -6px #a855f7; transform:translateY(-2px); }
+</style>
+</head>
+<body>
+<div class="li-stage">
+  <p class="demo-note">OVERLAYS / LI-MODAL — SPECIMEN</p>
+  <button class="demo-open" id="openBtn" type="button">OPEN HEARTBEAT</button>
+</div>
+<script src="block.js"></script>
+<script>
+  document.getElementById('openBtn').addEventListener('click', function(){
+    document.body.appendChild(liModal({
+      title:'Signals converge on the 10/10 push',
+      meta:'42m ago',
+      source:'report',
+      color:'#a855f7',
+      stats:[['SIGNALS','14'],['VERIFIED','12'],['STALE','0'],['SCORE','9.4']],
+      explain:'Nine lanes reported green against live bytes at the frozen SHA. Collision registry empty, no drift partitions, loop holds. Every beat verified. Every action recorded.'
+    }));
+  });
+</script>
+</body>
+</html>

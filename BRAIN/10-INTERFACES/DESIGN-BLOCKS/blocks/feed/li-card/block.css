@@ -1,0 +1,138 @@
+/* ============ BLOCK BASE ============ */
+/* Verbatim .li-stage base rule from "Ledger Page Design.html"
+ * (top of <style>). Provides --li-dim, base text color #f5f2ea and the
+ * system font stack every li-* component inherits. Prepended so the
+ * block is self-contained. */
+
+.li-stage{
+  --li-dim:#a09a8a;
+  max-width:100%; margin:0 auto; padding:36px 24px 90px; color:#f5f2ea;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",Inter,"Segoe UI",sans-serif;
+}
+
+
+.li-stage .li-hero.li-flash{ animation:liflash 1.1s ease-out; }
+
+
+
+/* ============ JEWELS ============ */
+.li-stage .li-jewels{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:22px; }
+
+
+.li-stage .li-jewel{
+  display:flex; align-items:center; gap:12px; padding:16px 18px; border-radius:18px;
+  cursor:pointer; font-family:inherit; color:#fff;
+  background:linear-gradient(180deg,#1b1b21,#0b0b0e); border:1px solid rgba(255,255,255,.1);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.16), 0 14px 32px rgba(0,0,0,.55);
+  -webkit-backdrop-filter:blur(16px); backdrop-filter:blur(16px);
+  transition:border-color .22s, box-shadow .25s, transform .15s;
+}
+
+
+.li-stage .li-jewel:hover, .li-stage .li-jewel:focus-visible{
+  border-color:var(--jc); transform:translateY(-2px); outline:none;
+  box-shadow:0 0 28px -6px var(--jc);
+}
+
+
+.li-stage .li-jewel-g{
+  font-size:22px; color:var(--jc); text-shadow:0 0 14px var(--jc);
+  animation:lgpulse 2.4s ease-in-out infinite;
+}
+
+
+.li-stage .li-jewel-n{ font-size:11px; font-weight:800; letter-spacing:.14em; flex:1; text-align:left; }
+
+
+.li-stage .li-jewel-c{
+  font-size:20px; font-weight:900; color:#fff; font-variant-numeric:tabular-nums;
+  text-shadow:0 0 12px var(--jc);
+}
+
+
+.li-stage .li-card{
+  position:relative; overflow:hidden; cursor:pointer;
+  border:2px solid rgba(255,255,255,.4); border-radius:22px;
+  padding:26px 30px;
+  background:rgba(13,11,8,.62);
+  -webkit-backdrop-filter:blur(18px); backdrop-filter:blur(18px);
+  box-shadow:inset 0 1px rgba(255,255,255,.07), 0 22px 55px rgba(0,0,0,.55);
+  transition:transform .22s cubic-bezier(.2,.8,.2,1), border-color .25s, box-shadow .3s;
+  animation:licardin .5s cubic-bezier(.2,.8,.2,1) both;
+}
+
+
+
+.li-stage .li-card::before{
+  content:""; position:absolute; left:0; top:0; bottom:0; width:6px;
+  background:var(--ic); box-shadow:0 0 20px var(--ic);
+  animation:libar 3.2s ease-in-out infinite;
+  animation-delay:calc(var(--i, 0) * .18s);
+}
+
+
+
+.li-stage .li-card:hover, .li-stage .li-card:focus-visible{
+  transform:translateY(-3px); outline:none;
+  border-color:var(--ic);
+  box-shadow:inset 0 1px rgba(255,255,255,.07), 0 28px 65px rgba(0,0,0,.6),
+             0 0 44px -6px var(--ic);
+}
+
+
+.li-stage .li-card-top{ display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:10px; }
+
+
+.li-stage .li-card-j{ font-size:16px; color:var(--ic); text-shadow:0 0 12px var(--ic); }
+
+
+.li-stage .li-card-s{ font-size:11px; font-weight:800; letter-spacing:.16em; color:var(--ic); }
+
+
+.li-stage .li-card-t{ font-size:12.5px; font-weight:600; color:#ece7d9; margin-left:auto; font-variant-numeric:tabular-nums; text-shadow:0 0 8px rgba(255,255,255,.2); }
+
+
+.li-stage .li-card-title{ font-size:clamp(17px,2.2vw,22px); font-weight:800; margin:0 0 10px; color:#fff; line-height:1.35; }
+
+
+.li-stage .li-card-n{ font-size:16px; line-height:1.65; color:#d8d3c4; margin:0 0 10px; font-weight:500; }
+
+
+.li-stage .li-card-m{ font-size:11px; letter-spacing:.08em; color:var(--li-dim); margin:0; font-family:ui-monospace,Menlo,monospace; }
+
+
+
+.li-stage .li-card-hint{
+  display:inline-block; margin-top:14px; font-size:11px; font-weight:800; letter-spacing:.18em;
+  color:rgba(255,255,255,.55); border:1px solid rgba(255,255,255,.25); border-radius:99px; padding:5px 12px;
+  transition:all .25s;
+}
+
+
+.li-stage .li-card:hover .li-card-hint, .li-stage .li-card:focus-visible .li-card-hint{
+  color:var(--ic); border-color:var(--ic); text-shadow:0 0 10px var(--ic);
+}
+
+
+  .li-stage .li-jewels{ grid-template-columns:repeat(2,1fr); }
+
+
+  .li-stage .li-card{ padding:22px 20px 22px 26px; }
+
+
+button,.li-tab,.li-jewel,.li-card,[role="button"]{min-height:44px;min-width:44px;}
+
+
+button,.li-tab,.li-jewel,.li-card{-webkit-user-select:none;user-select:none;touch-action:manipulation;}
+
+@keyframes liflash{
+  0%{ box-shadow:inset 0 1px rgba(255,255,255,.07), 0 30px 80px rgba(0,0,0,.6), 0 0 0 rgba(192,132,252,0); }
+  25%{ box-shadow:inset 0 1px rgba(255,255,255,.07), 0 30px 80px rgba(0,0,0,.6), 0 0 70px -8px rgba(192,132,252,.8); }
+  100%{ box-shadow:inset 0 1px rgba(255,255,255,.07), 0 30px 80px rgba(0,0,0,.6), 0 0 0 rgba(192,132,252,0); }
+}
+
+@keyframes licardin{ from{ opacity:0; transform:translateY(14px);} to{ opacity:1; transform:none;} }
+
+@keyframes libar{ 0%,100%{ opacity:.75;} 50%{ opacity:1; box-shadow:0 0 30px var(--ic);} }
+
+@keyframes lgpulse{ 0%,100%{ opacity:1; transform:scale(1);} 50%{ opacity:.35; transform:scale(.7);} }
