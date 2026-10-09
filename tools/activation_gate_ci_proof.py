@@ -189,6 +189,28 @@ def fetch_pinned_design_gate(token, repo):
     return paths.get("design_gate.py", ""), paths.get("manifest.json", "")
 
 
+def _dispatch_branch():
+    """Branch name to dispatch the mint workflow on.
+
+    On pull_request events GITHUB_REF_NAME is "<pr>/merge", which is not a
+    branch — the workflow-dispatch API 422s on it. Prefer the PR head branch
+    from the runner-written event payload; fall back to GITHUB_REF_NAME for
+    push events.
+    """
+    event_path = os.environ.get("GITHUB_EVENT_PATH", "").strip()
+    if event_path and os.path.isfile(event_path):
+        try:
+            with open(event_path, encoding="utf-8") as f:
+                event = json.load(f)
+            head_ref = ((event.get("pull_request") or {}).get("head") or {}
+                        ).get("ref", "").strip()
+            if head_ref:
+                return head_ref
+        except (ValueError, OSError):
+            pass
+    return os.environ.get("GITHUB_REF_NAME", "")
+
+
 def dispatch_mint(token, repo, ref, deliverables, job):
     """Dispatch the REAL mint workflow; poll to completion; download the
     attested receipt bytes. Returns (receipt_bytes, run_id)."""
@@ -379,7 +401,11 @@ def main():
     # ============ ISSUANCE E2E (trusted mint) ============
     # One dispatch binds every delivery fixture; the SAME attested bytes
     # are reused across rows (issuance verifies, row logic varies).
-    branch = os.environ.get("GITHUB_REF_NAME", "")
+    # Dispatch ref: on pull_request events GITHUB_REF_NAME is "<pr>/merge"
+    # (not a branch — the dispatches API 422s on it). Resolve the PR's head
+    # branch from the runner event payload instead; fall back to the ref
+    # name for push events.
+    branch = _dispatch_branch()
     tombstone_path = "smart-blocks/manifest.json"
     try:
         meta = api("GET", "/repos/%s/contents/%s?ref=%s"

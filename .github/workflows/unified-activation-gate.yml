@@ -28,6 +28,7 @@ on:
     paths:
       - "tools/activation_gate.py"
       - "tools/activation_gate_ci_proof.py"
+      - "tools/issuance_perm_proof.py"
       - "tools/test_activation_gate.py"
       - ".github/workflows/unified-activation-gate.yml"
       - ".github/workflows/activation-delivery-gate.yml"
@@ -50,3 +51,26 @@ jobs:
         run: python3 tools/test_activation_gate.py
       - name: Proof — lawful PASS + adversarial REJECTs in protected mode
         run: python3 tools/activation_gate_ci_proof.py
+
+  issuance-permissions-proof:
+    # A4 (round-4): the permission set is part of the system under test.
+    # Round-3's proof ran under this workflow's `actions: write` token while
+    # the delivery workflow ships with no Actions permission at all — every
+    # lawful delivery 403'd into ISSUANCE_UNVERIFIABLE. This job's token
+    # carries EXACTLY the delivery workflow's production permission set, and
+    # re-proves the issuance e2e (genuine accepted, forgery caught, no 403)
+    # under it. If this job goes red, the door is bricked again.
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
+      actions: read
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.2.2 (pinned SHA)
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0 (pinned SHA)
+        with:
+          python-version: "3.12"
+      - name: Issuance e2e under the production permission set
+        run: python3 tools/issuance_perm_proof.py
