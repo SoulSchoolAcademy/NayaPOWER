@@ -49,10 +49,15 @@
   --magenta: #e455f4;
   /* CONFLICT: defined in Naya_4_Design_Element_Set.html,Naya_5_Beautiful_Button_set.html,Naya_5_Jewel_Library.html,Naya_5__Epic_Elements_-_Lego_pieces.html — first value kept */
   --obsidian: #020203;
-  --purple: #8d63f5;
-  /* CONFLICT: defined in Naya_5_Beautiful_Button_set.html,Naya_5_Jewel_Library.html,Naya_5__Epic_Elements_-_Lego_pieces.html — first value kept */
+  --purple: #a06bff;
+  /* CANONICAL (unified 2026-10-09, PR purple-unification-v1): #a06bff chosen over #8d63f5 (Ultimate Design System)
+     and #8a5cff (Naya Forest). Reasons: (1) richest jewel quality on black — highest luminosity
+     rgb(160,107,255) vs (141,99,245)/(138,92,255), reads as lit-from-within; (2) the accent in the
+     library's two highest-praised components (orbit-btn 9.5/10, orbs 9/10); (3) prior value was
+     accidental ("first value kept" by extractor) and the file paired hex #8d63f5 with rgb 160,107,255
+     — a latent mismatch bug, now fixed; (4) brightest halo in glow contexts (purple is accent/glow only). */
   --purple-rgb: 160,107,255;
-  /* CONFLICT: defined in Naya_5_Beautiful_Button_set.html,Naya_Lego-blocks.html,Naya_5_Jewel_Library.html,Naya_5__Epic_Elements_-_Lego_pieces.html — first value kept */
+  /* Matches --purple #a06bff exactly. */
   --quiet: rgba(248,247,251,.72);
   /* CONFLICT: defined in Naya_5_Beautiful_Button_set.html,Naya_5_Jewel_Library.html,Naya_5__Epic_Elements_-_Lego_pieces.html — first value kept */
   --r-lg: 18px;

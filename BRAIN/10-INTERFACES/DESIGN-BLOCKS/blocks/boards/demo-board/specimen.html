@@ -8,7 +8,7 @@
 <style>
 .sw { width: 52px; height: 52px; border-radius: 16px; border: 2px solid rgba(255,255,255,.35); cursor: pointer; background: radial-gradient(circle at 32% 28%, rgba(255,255,255,.7), transparent 45%), var(--c); box-shadow: 0 0 18px var(--c); transition: transform .18s; }
 .sw:hover { transform: translateY(-3px) scale(1.06); }
-.demo-board { --c: #a06bff; position: relative; border-radius: 22px; padding: 34px; margin-top: 8px; overflow: hidden; background: linear-gradient(160deg,#0b0a12,#050507); border: 1px solid color-mix(in srgb, var(--c) 45%, transparent); box-shadow: 0 24px 60px rgba(0,0,0,.6), 0 0 44px color-mix(in srgb, var(--c) 22%, transparent); transition: border-color .3s, box-shadow .3s; }
+.demo-board { --c: var(--purple); position: relative; border-radius: 22px; padding: 34px; margin-top: 8px; overflow: hidden; background: linear-gradient(160deg,#0b0a12,#050507); border: 1px solid color-mix(in srgb, var(--c) 45%, transparent); box-shadow: 0 24px 60px rgba(0,0,0,.6), 0 0 44px color-mix(in srgb, var(--c) 22%, transparent); transition: border-color .3s, box-shadow .3s; }
 .demo-beam { position: absolute; top: 0; left: 12%; right: 12%; height: 1px; background: linear-gradient(90deg, transparent, var(--c), transparent); box-shadow: 0 0 18px var(--c); }
 .demo-name { font-size: 18px; font-weight: 800; margin: 0 0 8px; color: var(--c); text-shadow: 0 0 14px var(--c); }
 .demo-board code { background: rgba(255,255,255,.08); padding: 2px 8px; border-radius: 6px; font-size: 14px; }
@@ -21,8 +21,8 @@
   <h2><span class="n">04</span>One board. One color. A destination you enter.</h2>
   <p class="lede">The board is the intelligent object: <strong>theme-edged, jewel-marked, elevated.</strong> One spectrum color per board — spine, kicker, corner jewel all speak it. Text stays white. Inside, meaning nests: the nutshell, then what it means, how to use it.</p>
 
-  <div class="board-mix" style="--ic:#a06bff">
-    <span class="corner" style="--ic:#a06bff">◆</span>
+  <div class="board-mix" style="--ic:var(--purple)">
+    <span class="corner" style="--ic:var(--purple)">◆</span>
     <h3>Color has four jobs. Never cross them.</h3>
     <p>Chrome acts. Text speaks. Theme identifies. Adjacent things never share a hue.</p>
   </div>

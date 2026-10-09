@@ -31,7 +31,7 @@ body:has(.naya-page) {
 
   /* Ground: deep black with a whisper of top light so it never reads flat */
   background:
-    radial-gradient(120% 60% at 50% -10%, rgba(141, 99, 245, 0.06) 0%, transparent 55%),
+    radial-gradient(120% 60% at 50% -10%, rgba(var(--purple-rgb), 0.06) 0%, transparent 55%),
     linear-gradient(180deg, #0a0a10 0%, #050508 22%, #050508 100%);
   background-color: #050508;
 
@@ -63,7 +63,7 @@ body:has(.naya-page) {
 
 /* Selection: purple soul, never default blue */
 .naya-page ::selection {
-  background: rgba(141, 99, 245, 0.45);
+  background: rgba(var(--purple-rgb), 0.45);
   color: #ffffff;
 }
 

@@ -17,7 +17,7 @@
 
 /* ============ ORBIT BUTTONS — circle of light, black with color accents ============ */
 .orbit-btn {
-  --oc: #a06bff; --oc-rgb: 160,107,255;
+  --oc: var(--purple); --oc-rgb: var(--purple-rgb);
   position: relative; isolation: isolate; cursor: pointer;
   display: inline-flex; align-items: center; justify-content: center;
   min-height: 60px; padding: 0 40px; border-radius: 999px; border: none;

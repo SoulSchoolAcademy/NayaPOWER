@@ -10,7 +10,7 @@
 
 /* ============ ICON BUTTONS — round, dimensional, never flat ============ */
 .icon-btn {
-  --ic: #a06bff; --ic-rgb: 160,107,255;
+  --ic: var(--purple); --ic-rgb: var(--purple-rgb);
   width: 52px; height: 52px; border-radius: 50%; border: none; cursor: pointer;
   display: inline-grid; place-items: center; color: #fff;
   background: linear-gradient(180deg, rgba(255,255,255,.14) 0%, rgba(255,255,255,.02) 40%, rgba(0,0,0,.25) 100%), linear-gradient(180deg, #23232b 0%, #0a0a0e 55%, #020203 100%);
