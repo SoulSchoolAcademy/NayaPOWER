@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Naya Dial — The Universal Instrument · Naya Lego Library</title>
+<!--
+  THE NAYA DIAL — the universal instrument.
+  Every score in the system flows through one dial: ±9 of structure, infinity beyond.
+  Center: Naya herself — a living ball of energy. The dial is light she projects.
+  Per HOLO-RESEARCH.md: watch dials (#9) + ergonomics (#10) + holographic depth (#6).
+  Black ground. Spectrum = meaning. Fixed scale, moving light.
+-->
+<style>
+:root{
+  --field:#040405; --ink:#f8f7fb; --quiet:#8f8a9e;
+  --magenta:#e84fff; --purple:#a06bff; --blue:#3fb8ff; --green:#2fe89e; --gold:#ffbf3d;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  background:var(--field); color:var(--ink);
+  font-family:Manrope,Inter,ui-sans-serif,system-ui,sans-serif;
+  overflow:hidden; -webkit-font-smoothing:antialiased;
+}
+#stage{position:fixed;inset:0;display:block;cursor:crosshair;touch-action:none}
+/* ---- chrome: minimal, whisper-quiet ---- */
+.chrome{position:fixed;z-index:10;pointer-events:none}
+header.chrome{top:22px;left:28px}
+header.chrome .t{font-size:12px;font-weight:800;letter-spacing:.3em}
+header.chrome .s{font-size:10px;letter-spacing:.24em;color:var(--quiet);margin-top:5px}
+#voiceBadge{
+  top:24px;right:28px;display:none;align-items:center;gap:8px;
+  font-size:10px;font-weight:800;letter-spacing:.26em;color:var(--purple);
+}
+#voiceBadge.on{display:flex}
+#voiceBadge i{
+  width:9px;height:9px;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,#fff,var(--purple) 60%,transparent 75%);
+  box-shadow:0 0 12px var(--purple);animation:vpulse .5s ease-in-out infinite alternate;
+}
+@keyframes vpulse{from{transform:scale(.8);opacity:.6}to{transform:scale(1.25);opacity:1}}
+/* ---- controls: one quiet bar ---- */
+#controls{
+  position:fixed;z-index:10;left:50%;bottom:26px;transform:translateX(-50%);
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center;
+  pointer-events:auto;max-width:94vw;
+}
+#controls input{
+  background:#0b0c11;border:1px solid rgba(255,255,255,.14);border-radius:999px;
+  color:var(--ink);font:600 13px ui-monospace,SFMono-Regular,Menlo,monospace;
+  padding:10px 18px;width:170px;outline:none;text-align:center;letter-spacing:.04em;
+  box-shadow:inset 0 2px 8px rgba(0,0,0,.6), inset 0 -1px 0 rgba(255,255,255,.06);
+  transition:border-color .25s var(--ease), box-shadow .25s var(--ease);
+}
+#controls input:focus{border-color:rgba(160,107,255,.6);box-shadow:inset 0 2px 8px rgba(0,0,0,.6),0 0 18px rgba(160,107,255,.25)}
+#controls input::placeholder{color:#4a4756}
+.btn{
+  background:linear-gradient(180deg,#17181f,#0b0c11);
+  border:1px solid rgba(255,255,255,.16);border-radius:999px;color:#fff;
+  font:800 11px/1 ui-sans-serif,system-ui;letter-spacing:.18em;
+  padding:12px 20px;cursor:pointer;
+  box-shadow:0 8px 22px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.12), inset 0 -8px 14px rgba(0,0,0,.4);
+  transition:transform .2s var(--ease), box-shadow .2s var(--ease), border-color .2s;
+}
+.btn:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.35);
+  box-shadow:0 12px 28px rgba(0,0,0,.6),0 0 20px rgba(160,107,255,.22), inset 0 1px 0 rgba(255,255,255,.16)}
+.btn:active{transform:translateY(1px) scale(.98)}
+.btn.chip{padding:10px 15px;color:var(--quiet)}
+.btn.chip:hover{color:#fff}
+.btn[aria-pressed="true"]{
+  border-color:rgba(47,232,158,.65);color:#fff;
+  box-shadow:0 8px 22px rgba(0,0,0,.55),0 0 22px rgba(47,232,158,.3), inset 0 1px 0 rgba(255,255,255,.14);
+}
+.btn[aria-pressed="true"] .dot{background:var(--green);box-shadow:0 0 10px var(--green)}
+.btn .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#4a4756;margin-right:8px;vertical-align:1px}
+#hint{
+  position:fixed;z-index:10;bottom:76px;left:50%;transform:translateX(-50%);
+  font-size:10px;letter-spacing:.28em;color:#4a4756;pointer-events:none;white-space:nowrap;
+}
+footer.chrome{
+  bottom:8px;right:14px;font-size:9px;letter-spacing:.22em;color:#3a3745;pointer-events:none;
+}
+@media (max-width:640px){
+  #hint{display:none}
+  header.chrome{top:14px;left:16px}
+  #controls{bottom:14px;gap:8px}
+  #controls input{width:130px}
+}
+@media (prefers-reduced-motion:reduce){
+  #voiceBadge i{animation:none}
+}
+</style>
+</head>
+<body>
+<canvas id="stage"></canvas>
+
+<header class="chrome">
+  <div class="t">NAYA&nbsp;DIAL</div>
+  <div class="s">THE&nbsp;UNIVERSAL&nbsp;INSTRUMENT</div>
+</header>
+
+<div class="chrome" id="voiceBadge" aria-hidden="true"><i></i>NAYA&nbsp;SPEAKING</div>
+
+<div id="hint">DRAG&nbsp;THE&nbsp;DIAL&nbsp;&nbsp;·&nbsp;&nbsp;TYPE&nbsp;A&nbsp;VALUE&nbsp;&nbsp;·&nbsp;&nbsp;GO&nbsp;LIVE</div>
+
+<div id="controls">
+  <input id="valIn" inputmode="decimal" placeholder="type a value…" aria-label="Set dial value">
+  <button class="btn" id="setBtn">SET</button>
+  <button class="btn chip" data-v="9.8">9.8</button>
+  <button class="btn chip" data-v="9">9.0</button>
+  <button class="btn chip" data-v="4.2">4.2</button>
+  <button class="btn chip" data-v="-4.2">−4.2</button>
+  <button class="btn chip" data-v="23">23</button>
+  <button class="btn chip" data-v="144">144</button>
+  <button class="btn" id="liveBtn" aria-pressed="false"><span class="dot"></span>LIVE</button>
+  <button class="btn" id="voiceBtn" aria-pressed="true"><span class="dot"></span>VOICE</button>
+</div>
+
+<footer class="chrome">SPECIMEN&nbsp;·&nbsp;SYNTHETIC&nbsp;DATA&nbsp;·&nbsp;RENDERED&nbsp;LIVE</footer>
+
+<script>
+(function(){
+'use strict';
+/* ================= THE NAYA DIAL =================
+   Fixed scale, moving light. ±9 of structure, infinity beyond.
+   The dial is light that Naya — the energy at the center — projects. */
+
+/* ---------- utils ---------- */
+function $(id){return document.getElementById(id);}
+function clamp(v,a,b){return v<a?a:v>b?b:v;}
+function lerp(a,b,t){return a+(b-a)*t;}
+var TAU=Math.PI*2;
+var REDUCED=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------- spectrum: magenta → purple → blue → green → gold (law order) ---------- */
+var SPEC=[{v:-9,c:[232,79,255]},{v:-4.5,c:[160,107,255]},{v:0,c:[63,184,255]},{v:4.5,c:[47,232,158]},{v:9,c:[255,191,61]}];
+function specRGB(v){
+  v=clamp(v,-9,9);
+  for(var i=0;i<SPEC.length-1;i++){
+    var a=SPEC[i],b=SPEC[i+1];
+    if(v>=a.v&&v<=b.v){
+      var t=(v-a.v)/(b.v-a.v);
+      return [Math.round(lerp(a.c[0],b.c[0],t)),Math.round(lerp(a.c[1],b.c[1],t)),Math.round(lerp(a.c[2],b.c[2],t))];
+    }
+  }
+  return SPEC[SPEC.length-1].c.slice();
+}
+function specCSS(v,a){var c=specRGB(v);return 'rgba('+c[0]+','+c[1]+','+c[2]+','+(a==null?1:a)+')';}
+
+/* ---------- state ---------- */
+var S={
+  target:8.8, disp:8.8, vel:0,      // needle physics live in value-space
+  history:[],                       // last 12 readings: {v,t}
+  live:false, voice:true, speaking:false, voicePulse:0,
+  beat:0,                           // heartbeat envelope 0..1
+  t:0,
+  rings:[],                         // heartbeat ripple rings {r,a}
+  subject:'DESIGN SYSTEM · 98/100'
+};
+function overflowOf(v){return Math.abs(v)>9?Math.log2(Math.abs(v)/9):0;}
+
+/* ---------- words ---------- */
+var ONES=['zero','one','two','three','four','five','six','seven','eight','nine'];
+function numWords(v){
+  var neg=v<0, av=Math.abs(v);
+  var whole=Math.floor(av), frac=Math.round((av-whole)*10);
+  var s=(neg?'minus ':'plus ')+ONES[clamp(whole,0,9)];
+  if(frac>0)s+=' point '+ONES[frac];
+  return s;
+}
+function zoneWords(v){
+  var av=Math.abs(v);
+  if(av>9)return 'beyond the dial. '+(av/9).toFixed(1)+' times past nine.';
+  if(v>=9.5)return 'beyond elite.';
+  if(v>=9)return 'the floor. elite.';
+  if(v>=7)return 'strong.';
+  if(v>=4)return 'building.';
+  if(v>=0)return 'seedling.';
+  return 'drift. creation energy.';
+}
+function zoneLabel(v){
+  var av=Math.abs(v);
+  if(av>9)return 'BEYOND THE DIAL · ×'+(av/9).toFixed(1);
+  if(v>=9.5)return 'BEYOND ELITE';
+  if(v>=9)return 'THE FLOOR · ELITE';
+  if(v>=7)return 'STRONG';
+  if(v>=4)return 'BUILDING';
+  if(v>=0)return 'SEEDLING';
+  return 'DRIFT · CREATION ENERGY';
+}
+function fmtVal(v){
+  var s=(v<0?'−':'+')+Math.abs(v).toFixed(1);
+  return s;
+}
+
+/* ---------- canvas ---------- */
+var cv=$('stage'), ctx=cv.getContext('2d');
+var W=0,H=0,DPR=1, cx=0, cy=0, R=200;
+function resize(){
+  DPR=Math.min(window.devicePixelRatio||1,2);
+  W=window.innerWidth; H=window.innerHeight;
+  cv.width=Math.round(W*DPR); cv.height=Math.round(H*DPR);
+  cv.style.width=W+'px'; cv.style.height=H+'px';
+  ctx.setTransform(DPR,0,0,DPR,0,0);
+  cx=W/2; cy=H*0.44;
+  R=clamp(Math.min(W,H*0.82)*0.36,170,330);
+}
+window.addEventListener('resize',resize); resize();
+
+/* ---------- geometry: value → angle (math convention, 0=east, CCW positive) ---------- */
+function angOf(v){
+  var deg=90-(clamp(v,-9,9)/9)*135;   // −9 → 225°, 0 → 90° (top), +9 → −45°
+  return deg*Math.PI/180;
+}
+function valOfAngle(theta){
+  var deg=theta*180/Math.PI;
+  while(deg>180)deg-=360; while(deg<-180)deg+=360;
+  // map back: v = (90−deg)/135*9, valid on the 270° sweep; outside → nearest end
+  var v=(90-deg)/135*9;
+  return v;
+}
+function pt(theta,r){return [cx+Math.cos(theta)*r, cy-Math.sin(theta)*r];}
+
+/* ---------- 4D grid: width × depth, time as animation ---------- */
+var gridPulses=[];
+for(var gi=0;gi<26;gi++)gridPulses.push({line:gi%9,p:Math.random(),sp:0.12+Math.random()*0.22});
+function drawGrid(t){
+  var rClip=R*1.04;
+  ctx.save();
+  ctx.beginPath();ctx.arc(cx,cy,rClip,0,TAU);ctx.clip();
+  var vpx=cx, vpy=cy-R*0.12;
+  var breathe=0.72+0.28*Math.sin(t*TAU/4.2);
+  var glow=1+S.beat*0.9+S.voicePulse*0.4;
+  // depth lines (width) converging to the vanishing point
+  for(var i=0;i<9;i++){
+    var xb=cx+(i-4)*W*0.085;
+    var g=ctx.createLinearGradient(xb,H,vpx,vpy);
+    var cc=specRGB((i-4)/4*9);
+    g.addColorStop(0,'rgba('+cc[0]+','+cc[1]+','+cc[2]+','+(0.10*breathe*glow)+')');
+    g.addColorStop(1,'rgba('+cc[0]+','+cc[1]+','+cc[2]+',0)');
+    ctx.strokeStyle=g;ctx.lineWidth=1;
+    ctx.beginPath();ctx.moveTo(xb,H);ctx.lineTo(vpx,vpy);ctx.stroke();
+  }
+  // cross lines (depth) with perspective spacing
+  for(var j=1;j<=8;j++){
+    var f=Math.pow(j/8,2.4);
+    var y=vpy+(H-vpy)*f;
+    ctx.strokeStyle='rgba(160,150,200,'+(0.05+0.075*f)*breathe*glow+')';
+    ctx.lineWidth=1;
+    ctx.beginPath();ctx.moveTo(cx-rClip*1.4,y);ctx.lineTo(cx+rClip*1.4,y);ctx.stroke();
+  }
+  // pulses: the past flows into the present (edges → center)
+  gridPulses.forEach(function(pu,idx){
+    if(!REDUCED)pu.p+=0.016*pu.sp*(1+S.beat*0.6); if(pu.p>1)pu.p-=1;
+    var xb2=cx+(pu.line-4)*W*0.085;
+    var x=lerp(xb2,vpx,pu.p), y=lerp(H,vpy,pu.p);
+    var a=Math.sin(pu.p*Math.PI)*0.55*breathe;
+    if(a<=0.01)return;
+    var c2=specRGB((pu.line-4)/4*9);
+    ctx.fillStyle='rgba('+c2[0]+','+c2[1]+','+c2[2]+','+a+')';
+    ctx.shadowColor='rgba('+c2[0]+','+c2[1]+','+c2[2]+',.8)';ctx.shadowBlur=8;
+    ctx.beginPath();ctx.arc(x,y,1.6+pu.p*1.4,0,TAU);ctx.fill();
+  });
+  ctx.shadowBlur=0;
+  ctx.restore();
+}
+
+/* ---------- the dial ---------- */
+function drawDial(t){
+  var i,theta,p,q;
+  // machined outer rings
+  ctx.strokeStyle='rgba(255,255,255,0.16)';ctx.lineWidth=1.5;
+  ctx.beginPath();ctx.arc(cx,cy,R+10,0,TAU);ctx.stroke();
+  ctx.strokeStyle='rgba(255,255,255,0.07)';ctx.lineWidth=1;
+  ctx.beginPath();ctx.arc(cx,cy,R-26,0,TAU);ctx.stroke();
+  // tick band
+  for(var v=-9;v<=9.001;v+=0.5){
+    var isMaj=Math.abs(v-Math.round(v))<0.01;
+    theta=angOf(v);
+    var r1=R+(isMaj?-16:-10), r2=R+4;
+    p=pt(theta,r1);q=pt(theta,r2);
+    ctx.strokeStyle=specCSS(v,isMaj?0.95:0.32);
+    ctx.lineWidth=isMaj?2.5:1.2;
+    if(isMaj){ctx.shadowColor=specCSS(v,0.8);ctx.shadowBlur=6;}
+    ctx.beginPath();ctx.moveTo(p[0],p[1]);ctx.lineTo(q[0],q[1]);ctx.stroke();
+    ctx.shadowBlur=0;
+  }
+  // integer labels — whisper-quiet
+  ctx.font='600 11px ui-monospace,SFMono-Regular,Menlo,monospace';
+  ctx.textAlign='center';ctx.textBaseline='middle';
+  ctx.fillStyle='rgba(200,194,206,0.55)';
+  [-9,-6,-3,3,6,9].forEach(function(lv){
+    theta=angOf(lv);p=pt(theta,R+24);
+    ctx.fillText((lv>0?'+':'')+lv,p[0],p[1]);
+  });
+  // ZERO marker — machined diamond at the datum of the universe
+  theta=angOf(0);p=pt(theta,R-16);
+  ctx.save();ctx.translate(p[0],p[1]);ctx.rotate(Math.PI/4);
+  ctx.fillStyle='#fff';ctx.shadowColor='#fff';ctx.shadowBlur=14;
+  ctx.fillRect(-4.5,-4.5,9,9);ctx.restore();ctx.shadowBlur=0;
+  ctx.font='800 10px ui-sans-serif,system-ui';ctx.fillStyle='rgba(255,255,255,0.85)';
+  q=pt(theta,R+24);ctx.fillText('0',q[0],q[1]);
+
+  // overflow: infinity becomes more rings (logarithmic comet trail)
+  var ov=overflowOf(S.target), sgn=S.target<0?-1:1;
+  if(ov>0){
+    var stopTheta=angOf(sgn*9);
+    var stopC=specRGB(sgn*9);
+    var rings=Math.min(8,Math.ceil(ov*2.5));
+    for(i=0;i<rings;i++){
+      var rr=R+20+i*15;
+      var a0=stopTheta-(sgn>0?1:-1)*0.16, a1=stopTheta+(sgn>0?1:-1)*0.16;
+      ctx.strokeStyle='rgba('+stopC[0]+','+stopC[1]+','+stopC[2]+','+(0.55*(1-i/rings))+')';
+      ctx.lineWidth=4;ctx.shadowColor=specCSS(sgn*9,0.9);ctx.shadowBlur=12;
+      ctx.beginPath();
+      // canvas arcs are clockwise-positive with y down; draw in math orientation manually
+      for(var s2=0;s2<=20;s2++){
+        var th2=a0+(a1-a0)*s2/20, pp=pt(th2,rr);
+        if(s2===0)ctx.moveTo(pp[0],pp[1]);else ctx.lineTo(pp[0],pp[1]);
+      }
+      ctx.stroke();
+    }
+    ctx.shadowBlur=0;
+    // white-hot at 2× range
+    if(Math.abs(S.target)>18){
+      var hot=Math.min(0.22,(Math.abs(S.target)-18)/120);
+      var hg=ctx.createRadialGradient(cx,cy,R*0.4,cx,cy,R*2.2);
+      hg.addColorStop(0,'rgba(255,255,255,0)');
+      hg.addColorStop(1,'rgba(255,255,255,'+hot+')');
+      ctx.fillStyle=hg;ctx.beginPath();ctx.arc(cx,cy,R*2.2,0,TAU);ctx.fill();
+    }
+  }
+
+  // history echoes — the dial remembers (12 fading ghosts)
+  var n=S.history.length;
+  for(i=0;i<n;i++){
+    var h=S.history[n-1-i];
+    var ha=(1-i/12)*0.10;
+    if(ha<=0.005)continue;
+    theta=angOf(h.v);
+    p=pt(theta,R*0.34);q=pt(theta,R*0.97);
+    ctx.strokeStyle=specCSS(h.v,ha);ctx.lineWidth=2;
+    ctx.beginPath();ctx.moveTo(p[0],p[1]);ctx.lineTo(q[0],q[1]);ctx.stroke();
+  }
+}
+
+/* ---------- needle of light (fixed scale, moving light — ergonomics law) ---------- */
+function drawNeedle(t){
+  var theta=angOf(S.disp);
+  var tip=pt(theta,R*0.99), base=pt(theta,R*0.10);
+  var c=specRGB(S.disp);
+  var speed=Math.abs(S.vel);
+  var energy=clamp(Math.abs(S.target)/9,0,2.5);
+  // halo: bloom is energy made visible
+  var halo=ctx.createRadialGradient(tip[0],tip[1],0,tip[0],tip[1],60+energy*22+speed*3);
+  halo.addColorStop(0,'rgba('+c[0]+','+c[1]+','+c[2]+','+(0.28+0.10*energy)+')');
+  halo.addColorStop(1,'rgba('+c[0]+','+c[1]+','+c[2]+',0)');
+  ctx.fillStyle=halo;ctx.beginPath();ctx.arc(tip[0],tip[1],60+energy*22+speed*3,0,TAU);ctx.fill();
+  // the beam
+  var g=ctx.createLinearGradient(base[0],base[1],tip[0],tip[1]);
+  g.addColorStop(0,'rgba(255,255,255,0)');
+  g.addColorStop(0.35,'rgba(255,255,255,'+(0.55+0.2*energy)+')');
+  g.addColorStop(0.75,specCSS(S.disp,0.85));
+  g.addColorStop(1,specCSS(S.disp,0.15));
+  ctx.strokeStyle=g;ctx.lineWidth=5;ctx.lineCap='round';
+  ctx.shadowColor=specCSS(S.disp,0.9);ctx.shadowBlur=18+energy*10+speed*2;
+  ctx.beginPath();ctx.moveTo(base[0],base[1]);ctx.lineTo(tip[0],tip[1]);ctx.stroke();
+  ctx.shadowBlur=0;
+  // tip star
+  ctx.fillStyle='#fff';ctx.shadowColor='#fff';ctx.shadowBlur=16;
+  ctx.beginPath();ctx.arc(tip[0],tip[1],3.4,0,TAU);ctx.fill();
+  ctx.shadowBlur=0;
+}
+
+/* ---------- NAYA HERSELF — the ball of energy at the center ----------
+   Not an avatar. Not a face. A living ball of energy. Voice comes from her.
+   Data blooms around her like holographic projections. */
+var motes=[];
+for(var mi=0;mi<46;mi++)motes.push({a:Math.random()*TAU,rr:0.7+Math.random()*0.45,sp:(0.2+Math.random()*0.7)*(Math.random()<0.5?-1:1),sz:0.8+Math.random()*1.6,ph:Math.random()*TAU});
+function drawEnergy(t){
+  var rE=R*0.30;
+  var breathe=1+0.028*Math.sin(t*TAU/4.2)+S.beat*0.03+(S.speaking?0.02*Math.sin(t*44):0);
+  var r=rE*breathe;
+  ctx.save();
+  ctx.globalCompositeOperation='lighter';
+  // spectrum rim — full color language, slowly turning
+  var rim=ctx.createConicGradient?ctx.createConicGradient(t*0.35,cx,cy):null;
+  if(rim){
+    rim.addColorStop(0,'rgba(232,79,255,0.55)');rim.addColorStop(0.2,'rgba(160,107,255,0.55)');
+    rim.addColorStop(0.4,'rgba(63,184,255,0.55)');rim.addColorStop(0.6,'rgba(47,232,158,0.55)');
+    rim.addColorStop(0.8,'rgba(255,191,61,0.55)');rim.addColorStop(1,'rgba(232,79,255,0.55)');
+    ctx.strokeStyle=rim;ctx.lineWidth=r*0.22;
+    ctx.beginPath();ctx.arc(cx,cy,r*1.14,0,TAU);ctx.stroke();
+  }
+  // plasma body — dominant color drifts through the spectrum
+  var mid=specRGB(9*Math.sin(t*0.5));
+  var body=ctx.createRadialGradient(cx-r*0.18,cy-r*0.22,0,cx,cy,r);
+  body.addColorStop(0,'rgba(255,255,255,0.98)');
+  body.addColorStop(0.22,'rgba(255,255,255,0.85)');
+  body.addColorStop(0.48,'rgba('+mid[0]+','+mid[1]+','+mid[2]+',0.55)');
+  body.addColorStop(0.8,'rgba('+mid[0]+','+mid[1]+','+mid[2]+',0.12)');
+  body.addColorStop(1,'rgba('+mid[0]+','+mid[1]+','+mid[2]+',0)');
+  ctx.fillStyle=body;ctx.beginPath();ctx.arc(cx,cy,r,0,TAU);ctx.fill();
+  // inner turbulence — two slow counter-rotating blobs
+  for(var b=0;b<2;b++){
+    var ba=t*(b? -0.7:0.9)+b*2.4;
+    var bx=cx+Math.cos(ba)*r*0.32, by=cy+Math.sin(ba)*r*0.32;
+    var bc=specRGB(b? -6:6);
+    var blob=ctx.createRadialGradient(bx,by,0,bx,by,r*0.5);
+    blob.addColorStop(0,'rgba('+bc[0]+','+bc[1]+','+bc[2]+',0.35)');
+    blob.addColorStop(1,'rgba('+bc[0]+','+bc[1]+','+bc[2]+',0)');
+    ctx.fillStyle=blob;ctx.beginPath();ctx.arc(bx,by,r*0.5,0,TAU);ctx.fill();
+  }
+  // shimmer motes
+  motes.forEach(function(m,idx){
+    var ma=m.a+t*m.sp;
+    var mr=r*m.rr;
+    var mx=cx+Math.cos(ma)*mr, my=cy+Math.sin(ma)*mr*0.92;
+    var mc=specRGB(((idx*37)%19)-9);
+    var mal=0.35+0.4*Math.abs(Math.sin(t*2+m.ph));
+    ctx.fillStyle='rgba('+mc[0]+','+mc[1]+','+mc[2]+','+mal+')';
+    ctx.beginPath();ctx.arc(mx,my,m.sz,0,TAU);ctx.fill();
+  });
+  // heartbeat ripple rings
+  for(var ri=S.rings.length-1;ri>=0;ri--){
+    var rg=S.rings[ri];
+    if(!REDUCED){rg.r+=2.4;rg.a-=0.016;}
+    if(rg.a<=0){S.rings.splice(ri,1);continue;}
+    ctx.strokeStyle='rgba(255,255,255,'+(rg.a*0.5)+')';ctx.lineWidth=1.5;
+    ctx.beginPath();ctx.arc(cx,cy,rg.r,0,TAU);ctx.stroke();
+  }
+  ctx.restore();
+}
+
+/* ---------- reading: the number, floating under her ---------- */
+function drawReading(){
+  var y=cy+R*0.30+58;
+  var v=S.target;
+  ctx.textAlign='center';ctx.textBaseline='middle';
+  ctx.font='800 46px Manrope,Inter,ui-sans-serif,system-ui';
+  ctx.fillStyle='#f8f7fb';
+  ctx.shadowColor=specCSS(v,0.55);ctx.shadowBlur=26;
+  ctx.fillText(fmtVal(v),cx,y);
+  ctx.shadowBlur=0;
+  ctx.font='800 10px ui-sans-serif,system-ui';
+  ctx.fillStyle=specCSS(clamp(v,-9,9),0.9);
+  var zl=zoneLabel(v);
+  // letterspace manually for tiny caps
+  ctx.fillText(zl.split('').join('  '),cx,y+34);
+  ctx.font='600 9px ui-monospace,monospace';ctx.fillStyle='rgba(143,138,158,0.6)';
+  ctx.fillText(S.subject.split('').join(' '),cx,y+52);
+}
+
+/* ---------- voice: she speaks, you see her talking ---------- */
+function speak(text){
+  if(!S.voice||!('speechSynthesis' in window))return;
+  try{
+    speechSynthesis.cancel();
+    var u=new SpeechSynthesisUtterance(text);
+    u.rate=1.06;u.pitch=1.12;u.volume=1;
+    u.onstart=function(){S.speaking=true;$('voiceBadge').classList.add('on');};
+    var end=function(){S.speaking=false;$('voiceBadge').classList.remove('on');};
+    u.onend=end;u.onerror=end;
+    u.onboundary=function(){S.voicePulse=1;S.rings.push({r:R*0.30,a:0.7});};
+    speechSynthesis.speak(u);
+  }catch(e){/* voice unavailable — the visual still speaks */}
+}
+
+/* ---------- set a value ---------- */
+function setValue(v,opts){
+  opts=opts||{};
+  v=typeof v==='number'&&isFinite(v)?v:0;
+  v=clamp(v,-1e6,1e6);
+  S.target=v;
+  S.history.push({v:v,t:S.t});
+  if(S.history.length>12)S.history.shift();
+  if(opts.speak!==false&&!REDUCED){
+    clearTimeout(setValue._st);
+    setValue._st=setTimeout(function(){speak(numWords(v)+'. '+zoneWords(v));},420);
+  }
+}
+
+/* ---------- interaction ---------- */
+var dragging=false;
+function angleFromEvent(e){
+  var r=cv.getBoundingClientRect();
+  var x=e.clientX-r.left-cx, y=cy-(e.clientY-r.top); // math coords (y up)
+  var d=Math.hypot(x,y);
+  return {theta:Math.atan2(y,x),d:d};
+}
+cv.addEventListener('pointerdown',function(e){
+  var a=angleFromEvent(e);
+  if(a.d<R*1.3){dragging=true;cv.setPointerCapture(e.pointerId);setValue(clamp(valOfAngle(a.theta),-30,30),{speak:false});}
+});
+cv.addEventListener('pointermove',function(e){
+  if(!dragging)return;
+  var a=angleFromEvent(e);
+  setValue(clamp(valOfAngle(a.theta),-30,30),{speak:false});
+});
+cv.addEventListener('pointerup',function(){
+  if(dragging){dragging=false;speak(numWords(S.target)+'. '+zoneWords(S.target));}
+});
+$('setBtn').addEventListener('click',function(){
+  var v=parseFloat($('valIn').value);
+  if(isFinite(v)){setValue(v);$('valIn').value='';$('valIn').blur();}
+});
+$('valIn').addEventListener('keydown',function(e){
+  if(e.key==='Enter')$('setBtn').click();
+});
+document.querySelectorAll('[data-v]').forEach(function(b){
+  b.addEventListener('click',function(){setValue(parseFloat(b.getAttribute('data-v')));});
+});
+$('liveBtn').addEventListener('click',function(){
+  S.live=!S.live;
+  $('liveBtn').setAttribute('aria-pressed',S.live?'true':'false');
+  if(S.live)speak('live. the dial is listening.');
+});
+$('voiceBtn').addEventListener('click',function(){
+  S.voice=!S.voice;
+  $('voiceBtn').setAttribute('aria-pressed',S.voice?'true':'false');
+  if(!S.voice&&('speechSynthesis' in window)){try{speechSynthesis.cancel();}catch(e){}S.speaking=false;$('voiceBadge').classList.remove('on');}
+});
+var liveT=0;
+function liveTick(dt){
+  if(!S.live)return;
+  liveT+=dt;
+  if(liveT>1.4){
+    liveT=0;
+    var nv;
+    if(Math.random()<0.12)nv=(Math.random()<0.5?-1:1)*(12+Math.random()*30); // spike past the dial
+    else nv=clamp(S.target+(Math.random()-0.5)*5,-8,13);
+    setValue(nv,{speak:false});
+  }
+}
+
+/* ---------- background: the nicer suit ---------- */
+function drawBG(t){
+  ctx.fillStyle='#040405';ctx.fillRect(0,0,W,H);
+  // couture vignette
+  var vg=ctx.createRadialGradient(cx,cy,Math.min(W,H)*0.2,cx,cy,Math.max(W,H)*0.75);
+  vg.addColorStop(0,'rgba(0,0,0,0)');
+  vg.addColorStop(1,'rgba(0,0,0,0.55)');
+  ctx.fillStyle=vg;ctx.fillRect(0,0,W,H);
+  // ambient spectrum breathing at the edges — barely there
+  var amb=0.028+0.010*Math.sin(t*TAU/9);
+  var g1=ctx.createRadialGradient(W*0.08,0,0,W*0.08,0,H*0.6);
+  g1.addColorStop(0,'rgba(232,79,255,'+amb+')');g1.addColorStop(1,'rgba(232,79,255,0)');
+  ctx.fillStyle=g1;ctx.fillRect(0,0,W,H);
+  var g2=ctx.createRadialGradient(W*0.94,H*0.9,0,W*0.94,H*0.9,H*0.6);
+  g2.addColorStop(0,'rgba(63,184,255,'+amb+')');g2.addColorStop(1,'rgba(63,184,255,0)');
+  ctx.fillStyle=g2;ctx.fillRect(0,0,W,H);
+}
+
+/* ---------- heartbeat: 72bpm — she is alive ---------- */
+setInterval(function(){
+  S.beat=1;
+  S.rings.push({r:R*0.30,a:0.55});
+  if(S.rings.length>14)S.rings.shift();
+},833);
+
+/* ---------- main loop ---------- */
+var last=performance.now();
+function frame(now){
+  var dt=Math.min((now-last)/1000,0.05);last=now;
+  S.t+=dt;
+  // envelopes decay
+  S.beat=Math.max(0,S.beat-dt*2.2);
+  S.voicePulse=Math.max(0,S.voicePulse-dt*3);
+  // needle physics: spring in value-space (slight overshoot = alive)
+  var k=90,c=12;
+  var acc=k*(S.target-S.disp)-c*S.vel;
+  S.vel+=acc*dt;S.disp+=S.vel*dt;
+  liveTick(dt);
+  // render
+  drawBG(S.t);
+  drawGrid(S.t);
+  drawDial(S.t);
+  drawNeedle(S.t);
+  drawEnergy(S.t);
+  drawReading();
+  if(!REDUCED)requestAnimationFrame(frame);
+}
+if(REDUCED){
+  // one honest static frame
+  drawBG(0);drawGrid(0);drawDial(0);
+  S.disp=S.target;drawNeedle(0);drawEnergy(0);drawReading();
+}else{
+  // opening: she wakes, then the dial settles to its first reading
+  S.disp=0;S.vel=0;
+  requestAnimationFrame(frame);
+  setTimeout(function(){speak('the naya dial. every score, one instrument. plus eight point eight. the floor. elite.');},1600);
+}
+
+/* test hook (harmless in production) */
+window.__dial={S:S,setValue:setValue,angOf:angOf,specRGB:specRGB,overflowOf:overflowOf,zoneLabel:zoneLabel};
+})();
+</script>
+</body>
+</html>
