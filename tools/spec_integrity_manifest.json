@@ -21,6 +21,10 @@
     {
       "path": "BRAIN/01-GOVERNANCE/0006-naya-calculator-v1.machine.json",
       "reason": "Status CANDIDATE (not DIRECTOR-RATIFIED): machine projection lacks the ratified envelope keys (schema/ratified_by/ratified_date), has no phase list (loop.phases/cycle.phases), no invariants, and ratified_by is null -- only Shawn Vibert's ratification counts. A pin was attempted in PR #1982 (merged 2026-10-09 as f78d4e7a); tools/spec_integrity_check.py failed it mechanically on the exact tip bytes (7 envelope/structural failures) because this manifest pins RATIFIED projections only. Pin here when 0006 adopts the ratified phase envelope or Shawn ratifies it -- same precedent as the 0003/0013/0014 exclusions. Recorded by the brain-build loop 2026-10-09 (supersedes #1952's exclusion draft, now stale)."
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0007-law-of-one-v1.machine.json",
+      "reason": "Status DRAFT in the machine envelope (status=\"DRAFT\", ratified_by null; the human projection's own Status section reads \"DRAFT -- proposed by Shawn Vibert, 2026-10-09. Awaiting his ratification to become constitutional law.\"). A pin was not attempted: the manifest pins RATIFIED projections only, and the envelope check would fail mechanically (missing schema/ratified_by/ratified_date, no loop.phases/cycle.phases, no invariants -- same failure shape as the 0006 pin attempt #1982). Pin here if/when the machine projection carries the ratified envelope (status DIRECTOR-RATIFIED, ratified_by Shawn Vibert) -- same precedent as the 0003/0006/0013/0014 exclusions. Envelope conformance owned by the authoring lane. Recorded by the brain-build loop 2026-10-09 (supersedes PR #2057's index-heal attempt, now stale)."
     }
   ],
   "note": "Pins are git blob SHAs of the ratified projections as they existed on live main at establishment. Any deliberate spec change must update the pins in the same (reviewed) PR. A pin mismatch is spec drift until proven otherwise. This manifest is a drift detector anchored at a known-good point, not a re-proof of the original ratification.",
