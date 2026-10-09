@@ -195,15 +195,13 @@ def _manifest_classes(manifest_path: Path) -> set[str]:
     data = json.loads(manifest_path.read_text(encoding="utf-8"))
     known: set[str] = set()
     manifest_dir = manifest_path.parent
-    # every class defined in the canonical CSS files is canonical
+    # Closed-world law: every class selector in canonical CSS is documented.
     css_files = list(manifest_dir.glob("*.css"))
     css_files += list(manifest_dir.glob("*/*.css"))
     for cssf in css_files:
         css = cssf.read_text(encoding="utf-8", errors="replace")
         for m in re.finditer(r"\.([a-zA-Z0-9_-]+)", css):
-            cls = m.group(1)
-            if cls.startswith(_NAYA_PREFIXES):
-                known.add(cls)
+            known.add(m.group(1))
     for b in data.get("blocks", []):
         for c in b.get("css_classes", []):
             for part in re.split(r"[/,]", c):
@@ -228,20 +226,14 @@ _NAYA_PREFIXES = ("naya-", "board", "orb-", "lv-", "torb", "gem-")
 
 
 def check_no_freestyle(html: str, known: set[str]) -> list[str]:
-    v = []
+    """Reject every undocumented class, regardless of its spelling/prefix."""
     used: set[str] = set()
     for m in re.finditer(r'class=["\']([^"\']+)["\']', html):
-        for cls in m.group(1).split():
-            used.add(cls)
-    for cls in sorted(used):
-        if cls.startswith(_NAYA_PREFIXES) and cls not in known:
-            # allow BEM/state suffixes of known bases
-            base = re.match(r"([a-zA-Z0-9_-]+?)(--|__|-sm|-xs|-lg|$)", cls)
-            base_name = cls.split("--")[0].split("__")[0]
-            if base_name not in known and cls not in known:
-                v.append(f"NO FREESTYLE: class `.{cls}` is not in the "
-                         f"manifest — use a canonical block or file the gap")
-    return v
+        used.update(m.group(1).split())
+    return [
+        f"NO FREESTYLE: class .{cls} is not in canonical CSS, manifest, or snippets"
+        for cls in sorted(used - known)
+    ]
 
 
 def check_light_text(css: str) -> list[str]:
@@ -305,7 +297,9 @@ def _detect_repo() -> str:
 
 
 def check_activation(html: str, receipt_path: Path | None,
-                     expected_repo: str | None = None) -> list[str]:
+                     expected_repo: str | None = None,
+                     expected_repo_id: str | None = None,
+                     expected_main_sha: str | None = None) -> list[str]:
     """Activation citation check (Naya 3's Gap 2 — PR #1974 integration).
 
     With --require-activation, a deliverable FAILS unless it carries a
@@ -335,7 +329,9 @@ def check_activation(html: str, receipt_path: Path | None,
     if receipt.get("status") != "ACTIVATED":
         v.append("ACTIVATION: receipt status is not ACTIVATED")
     for field in ("session_id", "naya_identity", "human_authority",
-                  "repository", "job", "proof_plan"):
+                  "repository", "job", "proof_plan", "repository_id",
+                  "activation_run_id", "activation_run_attempt",
+                  "activation_workflow"):
         if not receipt.get(field):
             v.append(f"ACTIVATION: receipt missing {field}")
     if not receipt.get("gates"):
@@ -343,9 +339,9 @@ def check_activation(html: str, receipt_path: Path | None,
     main_sha = receipt.get("main_sha", "")
     if not re.fullmatch(r"[a-fA-F0-9]{40}", str(main_sha)):
         v.append("ACTIVATION: receipt main_sha is not a 40-hex SHA")
-    # Repository binding: the receipt must name THIS repository. A receipt
-    # minted for another repo is a wrong-repository activation - fail.
-    want = _normalize_repo(expected_repo) if expected_repo else _detect_repo()
+    # Trusted CI identity is mandatory. Never fall back to a mutable git remote.
+    # Bind both canonical repository name and immutable numeric ID.
+    want = _normalize_repo(expected_repo) if expected_repo else ""
     got = _normalize_repo(receipt.get("repository", ""))
     if not want:
         v.append("ACTIVATION: cannot determine the gated repository "
@@ -353,6 +349,14 @@ def check_activation(html: str, receipt_path: Path | None,
     elif got != want:
         v.append(f"ACTIVATION: receipt is for repository '{got}', not the "
                  f"gated repository '{want}' (wrong-repository activation)")
+    if not expected_repo_id or not str(expected_repo_id).isdigit():
+        v.append("ACTIVATION: trusted --expected-repo-id is required; refusing repository identity fallback")
+    elif str(receipt.get("repository_id", "")) != str(expected_repo_id):
+        v.append("ACTIVATION: receipt repository_id does not match trusted GitHub repository ID")
+    if not expected_main_sha or not re.fullmatch(r"[a-fA-F0-9]{40}", expected_main_sha):
+        v.append("ACTIVATION: trusted --expected-main-sha (full 40-hex) is required")
+    elif str(main_sha).lower() != expected_main_sha.lower():
+        v.append("ACTIVATION: receipt main_sha does not equal trusted live main tip")
     # Integrity: the marker must be the sha256 of the exact receipt bytes.
     digest = hashlib.sha256(raw).hexdigest()
     if digest != marker_sha:
@@ -375,7 +379,9 @@ def check_activation(html: str, receipt_path: Path | None,
 def run_gate(page: Path, manifest: Path,
              require_activation: bool = False,
              receipt_path: Path | None = None,
-             expected_repo: str | None = None) -> list[str]:
+             expected_repo: str | None = None,
+             expected_repo_id: str | None = None,
+             expected_main_sha: str | None = None) -> list[str]:
     html = read_page(page)
     css = inline_css(html)
     violations: list[str] = []
@@ -391,7 +397,8 @@ def run_gate(page: Path, manifest: Path,
                           f"— cannot verify components")
     violations += check_light_text(css)
     if require_activation:
-        violations += check_activation(html, receipt_path, expected_repo)
+        violations += check_activation(html, receipt_path, expected_repo,
+                                       expected_repo_id, expected_main_sha)
     return violations
 
 
@@ -423,6 +430,10 @@ def self_test() -> int:
             "naya_identity": "Naya 5",
             "human_authority": "Shawn",
             "repository": "SoulSchoolAcademy/NayaPOWER",
+            "repository_id": "1337349667",
+            "activation_run_id": "1",
+            "activation_run_attempt": "1",
+            "activation_workflow": ".github/workflows/design-gate-activation.yml",
             "job": "self-test",
             "gates": ["Usefulness Gate"],
             "proof_plan": "self-test",
@@ -437,14 +448,17 @@ def self_test() -> int:
         pm = Path(d) / "marked.html"
         pm.write_text(marked)
         noact_v = run_gate(pg, mf, require_activation=True,
-                           receipt_path=rp)          # no marker -> fail
+                           receipt_path=rp, expected_repo="SoulSchoolAcademy/NayaPOWER",
+                           expected_repo_id="1337349667", expected_main_sha="a" * 40)          # no marker -> fail
         okact_v = run_gate(pm, mf, require_activation=True,
-                           receipt_path=rp)          # valid -> pass
+                           receipt_path=rp, expected_repo="SoulSchoolAcademy/NayaPOWER",
+                           expected_repo_id="1337349667", expected_main_sha="a" * 40)          # valid -> pass
         forged = marked.replace(digest, "0" * 64)
         pf = Path(d) / "forged.html"
         pf.write_text(forged)
         forged_v = run_gate(pf, mf, require_activation=True,
-                            receipt_path=rp)         # mismatch -> fail
+                            receipt_path=rp, expected_repo="SoulSchoolAcademy/NayaPOWER",
+                           expected_repo_id="1337349667", expected_main_sha="a" * 40)         # mismatch -> fail
         old = dict(receipt,
                    activated_at=(now - timedelta(hours=5)).isoformat())
         rp_old = Path(d) / "receipt_old.json"
@@ -455,7 +469,8 @@ def self_test() -> int:
             "</body>",
             f"<!-- NAYA-ACTIVATION-RECEIPT-SHA256:{d_old} --></body>"))
         expired_v = run_gate(pm_old, mf, require_activation=True,
-                             receipt_path=rp_old)    # expired -> fail
+                             receipt_path=rp_old, expected_repo="SoulSchoolAcademy/NayaPOWER",
+                             expected_repo_id="1337349667", expected_main_sha="a" * 40)    # expired -> fail
         # wrong-repository receipt -> fail (Naya 1's adversarial case)
         wrong = dict(receipt, repository="SomeoneElse/OtherRepo")
         rp_wrong = Path(d) / "receipt_wrong.json"
@@ -467,7 +482,8 @@ def self_test() -> int:
             f"<!-- NAYA-ACTIVATION-RECEIPT-SHA256:{d_wrong} --></body>"))
         wrongrepo_v = run_gate(
             pm_wrong, mf, require_activation=True, receipt_path=rp_wrong,
-            expected_repo="SoulSchoolAcademy/NayaPOWER")  # wrong repo -> fail
+            expected_repo="SoulSchoolAcademy/NayaPOWER", expected_repo_id="1337349667",
+            expected_main_sha="a" * 40)  # wrong repo -> fail
     ok = True
     if not bad_v:
         print("SELF-TEST FAIL: violating page passed the gate")
@@ -517,18 +533,26 @@ def main(argv: list[str]) -> int:
     require_activation = "--require-activation" in flags
     receipt_path = None
     expected_repo = None
+    expected_repo_id = None
+    expected_main_sha = None
     for a in argv:
         if a.startswith("--receipt="):
             receipt_path = Path(a.split("=", 1)[1])
         elif a.startswith("--expected-repo="):
             expected_repo = a.split("=", 1)[1]
+        elif a.startswith("--expected-repo-id="):
+            expected_repo_id = a.split("=", 1)[1]
+        elif a.startswith("--expected-main-sha="):
+            expected_main_sha = a.split("=", 1)[1]
     if not page.exists():
         print(f"design_gate: no such file: {page}")
         return 2
     violations = run_gate(page, manifest,
                           require_activation=require_activation,
                           receipt_path=receipt_path,
-                          expected_repo=expected_repo)
+                          expected_repo=expected_repo,
+                          expected_repo_id=expected_repo_id,
+                          expected_main_sha=expected_main_sha)
     if violations:
         print(f"DESIGN GATE: FAIL — {len(violations)} violation(s) in {page}:")
         for viol in violations:
