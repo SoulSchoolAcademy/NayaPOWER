@@ -152,7 +152,7 @@ def _extract_sn_id(path: str, text: str) -> str:
     m = re.search(r"\|\s*Smart Note\s*\|\s*([A-Za-z0-9\-]+)\s*\|", text)
     if m:
         return m.group(1).strip().upper()
-    # 2. Directory name: .../SN-0460/... or .../SN-NET-POWER-MAGIC-001/...
+    # 2. Directory name: .../SN-0460/... or .../SN-0820/...
     for part in path.split(os.sep):
         if re.match(r"(?i)^SN-[A-Za-z0-9\-]+$", part):
             return part.upper()
