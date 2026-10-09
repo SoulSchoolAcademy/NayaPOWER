@@ -579,6 +579,29 @@ def main(argv: list[str]) -> int:
                           expected_repo=expected_repo,
                           expected_repo_id=expected_repo_id,
                           expected_main_sha=expected_main_sha)
+    if require_activation:
+        # CLI delivery path is stricter than pure unit fixtures: verify the
+        # referenced run via GitHub and compare exact receipt bytes to its
+        # downloaded canonical artifact. Missing gh/auth/artifact fails closed.
+        verifier = REPO_ROOT / "tools" / "qa" / "verify_activation_provenance.py"
+        if not receipt_path:
+            violations.append("ACTIVATION PROVENANCE: --receipt is required")
+        elif not expected_repo or not expected_repo_id or not expected_main_sha:
+            violations.append("ACTIVATION PROVENANCE: trusted repo name, repo ID, and main SHA are required")
+        elif not verifier.exists():
+            violations.append("ACTIVATION PROVENANCE: verifier is missing; refusing activation")
+        else:
+            proc = subprocess.run(
+                [sys.executable, str(verifier), "--receipt", str(receipt_path),
+                 "--expected-repo", expected_repo,
+                 "--expected-repo-id", expected_repo_id,
+                 "--expected-main-sha", expected_main_sha],
+                capture_output=True, text=True, check=False, timeout=90,
+            )
+            if proc.returncode:
+                detail = (proc.stdout + "\\n" + proc.stderr).strip()
+                violations.append("ACTIVATION PROVENANCE: independent GitHub run/artifact verification failed" +
+                                  (f": {detail}" if detail else ""))
     if violations:
         print(f"DESIGN GATE: FAIL — {len(violations)} violation(s) in {page}:")
         for viol in violations:
