@@ -12,7 +12,10 @@ What this checks (graded 0-10 compliance score):
   1. BLOCK USAGE — which official block selectors appear in the HTML
   2. CUSTOM CSS — <style> rules and inline styles that duplicate official blocks
      (including <style>/<link>/inline styles nested inside <iframe srcdoc>,
-     parsed recursively — the third perimeter of the class)
+     parsed recursively — the third perimeter of the class — and inside
+     data:text/html documents carried by <iframe src>/<object data>/
+     <embed src>/<frame src>, decoded and parsed recursively — the fourth
+     perimeter of the class)
   3. SCORE — explainable, every deduction named
 
 What this does NOT do (see Naya 5's tools/design_gate.py for the binary gate):
@@ -86,7 +89,25 @@ def load_catalog(path=None):
 
 # srcdoc nesting cap: deep enough for any honest page (2+), bounded so a
 # pathological document cannot recurse without limit. Total by construction.
+# The cap is a SHARED budget: srcdoc iframes and data: URI documents draw
+# from the same depth pool (a data: document inside an 8-deep srcdoc is at
+# depth 9 — beyond the grader's view either way).
 _MAX_SRCDOC_DEPTH = 8
+
+
+# Attributes that can carry a data: URI *document* — a payload the browser
+# renders as a nested browsing context whose CSS applies to the delivered
+# UI (fourth perimeter tag audit):
+#   <iframe src="data:text/html,...">, <object data="data:text/html,...">,
+#   <embed src="data:text/html,...">, <frame src="data:text/html,...">
+#     (frame: obsolete, but browsers still render frameset/frame).
+# Explicitly NOT document carriers — browsers never browse them as
+# documents, so their payloads cannot deliver page CSS:
+#   img/video/audio/source/track/input[type=image] (media renderers),
+#   script/link (fetched as code or CSS, never browsed), a/form (navigation,
+#   not in-document delivery), param (legacy plugin path).
+_DATA_URI_DOC_ATTRS = {"iframe": "src", "object": "data", "embed": "src",
+                       "frame": "src"}
 
 
 class PageParser(HTMLParser):
@@ -102,11 +123,21 @@ class PageParser(HTMLParser):
         self.has_doctype = False
         # --- srcdoc collection (third perimeter; see section below) ---
         self._srcdoc_depth = _srcdoc_depth      # nesting level of THIS parser
+                                        # (shared budget for srcdoc and data:
+                                        #  nested documents)
         self.srcdoc_seen = 0                    # non-empty srcdoc attrs found
         self.srcdoc_graded = 0                  # distinct contents parsed+merged
         self.srcdoc_capped = 0                  # distinct contents beyond depth cap
         self.srcdoc_max_depth = 0               # deepest nesting level reached
-        self._srcdoc_hashes = set()             # exact-duplicate dedup (anti-stuffing)
+        # --- data: URI document collection (fourth perimeter) ---
+        self.datauri_seen = 0                   # data:text/html docs found
+        self.datauri_graded = 0                 # distinct payloads parsed+merged
+        self.datauri_capped = 0                 # distinct payloads beyond depth cap
+        self.datauri_max_depth = 0              # deepest nesting level reached
+        self._srcdoc_hashes = set()             # nested-document dedup across
+                                                # the whole tree (anti-stuffing;
+                                                # shared by srcdoc values and
+                                                # decoded data: payloads)
 
     def handle_decl(self, decl):
         if decl.lower().startswith("doctype"):
@@ -119,6 +150,12 @@ class PageParser(HTMLParser):
             # Third perimeter: the srcdoc document is in-document bytes —
             # what the grader can deterministically see, it reads and grades.
             self._collect_srcdoc(ad.get("srcdoc"))
+        doc_attr = _DATA_URI_DOC_ATTRS.get(tag)
+        if doc_attr is not None:
+            # Fourth perimeter: a data:text/html payload on this attribute
+            # is deterministically in-document — decode it and grade it
+            # with the same recursive machinery as srcdoc.
+            self._collect_datauri(ad.get(doc_attr))
         if tag == "style":
             self._in_style = True
             self._style_buf = []
@@ -195,7 +232,158 @@ class PageParser(HTMLParser):
         self.srcdoc_capped += sub.srcdoc_capped
         if sub.srcdoc_max_depth > self.srcdoc_max_depth:
             self.srcdoc_max_depth = sub.srcdoc_max_depth
+        # A srcdoc document can itself carry data: URI documents (and vice
+        # versa): bubble the sibling family's counters up too.
+        self.datauri_seen += sub.datauri_seen
+        self.datauri_graded += sub.datauri_graded
+        self.datauri_capped += sub.datauri_capped
+        if sub.datauri_max_depth > self.datauri_max_depth:
+            self.datauri_max_depth = sub.datauri_max_depth
         self.tag_count += sub.tag_count
+
+    def _collect_datauri(self, uri):
+        """Parse a data:text/html attribute payload as a nested document.
+
+        The fourth perimeter: <iframe src>/<object data>/<embed src> (and
+        <frame src>) can carry a whole HTML document INSIDE the page's own
+        attribute bytes — data:text/html,... URL-encoded or base64. Browsers
+        render it as a nested document whose <style> applies to the
+        delivered UI, so it is graded by the same recursive machinery as
+        srcdoc: decoded, parsed with a sub-PageParser (shared depth budget,
+        shared content-hash dedup), and merged into this parser's
+        collections. Guards mirror srcdoc exactly: identical payloads grade
+        once (no penalty inflation); the depth cap is recorded + bounded
+        -1.0 at 4g; the parser is total — never raises, never fetches.
+
+        Non-HTML data: URIs (data:image/..., data:font/..., data:text/css,
+        data:image/svg+xml, ...) are NOT documents — they carry no page CSS
+        and are ignored by this lane entirely (no counters, no deduction).
+        SVG posture, explicit: an SVG payload is an isolated image
+        document; its <style> styles the image viewport, not the host page
+        — grading it as page custom CSS would manufacture false positives,
+        the same reason <style> inside <template> is not deliverable page
+        CSS. The document boundary is the rule, not the format.
+        """
+        if uri is None or not uri.strip():
+            return
+        if uri[:5].lower() != "data:":
+            return  # remote / relative / file URL: outside this lane
+        if _data_uri_html_mime(uri) != "text/html":
+            return  # not an HTML document: images, fonts, CSS, SVG, ...
+        self.datauri_seen += 1
+        text = _decode_data_uri_html(uri)
+        if text is None:
+            return  # malformed payload (bad base64): fail closed
+        digest = hashlib.sha256(text.encode("utf-8", "replace")).digest()
+        if digest in self._srcdoc_hashes:
+            return  # identical document already graded (anti-stuffing)
+        self._srcdoc_hashes.add(digest)
+        if self._srcdoc_depth >= _MAX_SRCDOC_DEPTH:
+            # Beyond the cap the document is outside the grader's view —
+            # recorded (datauri_capped) and penalized once at 4g, exactly
+            # the @import/<link>/srcdoc precedent for unseen CSS.
+            self.datauri_capped += 1
+            return  # nesting cap: total, no exceptions
+        depth = self._srcdoc_depth + 1
+        if depth > self.datauri_max_depth:
+            self.datauri_max_depth = depth
+        sub = PageParser(_srcdoc_depth=depth)
+        sub._srcdoc_hashes = self._srcdoc_hashes  # dedup across the whole tree
+        try:
+            sub.feed(text)
+        except Exception:
+            return  # fail closed: an unparseable document contributes nothing
+        self.datauri_graded += 1
+        # Merge: the nested document IS the page's delivered UI, so its
+        # findings join the top-level collections (graded by the same rules).
+        self.style_blocks.extend(sub.style_blocks)
+        self.inline_styles.extend(sub.inline_styles)
+        self.link_stylesheets.extend(sub.link_stylesheets)
+        for c, n in sub.classes_used.items():
+            self.classes_used[c] += n
+        self.datauri_seen += sub.datauri_seen
+        self.datauri_graded += sub.datauri_graded
+        self.datauri_capped += sub.datauri_capped
+        if sub.datauri_max_depth > self.datauri_max_depth:
+            self.datauri_max_depth = sub.datauri_max_depth
+        # Bubble the sibling family's counters too (srcdoc inside data:).
+        self.srcdoc_seen += sub.srcdoc_seen
+        self.srcdoc_graded += sub.srcdoc_graded
+        self.srcdoc_capped += sub.srcdoc_capped
+        if sub.srcdoc_max_depth > self.srcdoc_max_depth:
+            self.srcdoc_max_depth = sub.srcdoc_max_depth
+        self.tag_count += sub.tag_count
+
+
+# ---------------------------------------------------------------------------
+# data:text/html documents — the fourth perimeter (finding 8 follow-up)
+# ---------------------------------------------------------------------------
+#
+# CLASS-LEVEL RULE: the class is "CSS outside the grader's view", not the
+# keyword that references it. srcdoc was closed by CAPABILITY — what the
+# grader can deterministically see, it READS and grades. <object
+# data="data:text/html,...">, <embed src="data:text/html,...">, and
+# <iframe src="data:text/html,..."> (no srcdoc — top-level or nested inside
+# srcdoc) are the same shape: a whole HTML document carried inside the
+# page's own attribute bytes, fully deterministic, but invisible to the
+# grader. A full-viewport data: iframe could hide ALL custom CSS and score
+# a clean 10.0 — the same evasion srcdoc just closed, in a different skin.
+#
+# Closed the same way: a data:text/html payload is decoded (URL-decoding or
+# base64) and parsed as a nested HTML document (PageParser._collect_datauri)
+# with the SAME recursive machinery — its <style>/<link>/inline CSS graded
+# exactly like top-level content, its own nested srcdocs and data: documents
+# recursing for free through the shared depth budget.
+#
+# MIME gate, by capability not keyword: only text/html payloads are parsed
+# as documents. Non-HTML data: URIs are deterministically NOT page CSS —
+# data:image/* and data:font/* render as image/font content, data:text/css
+# on a document-bearing attribute is ignored by browsers as a document.
+# data:image/svg+xml posture, explicit: an SVG payload is an isolated image
+# document; its <style> styles the image viewport, not the host page, so
+# grading it as page custom CSS would manufacture false positives (the same
+# reason <style> inside <template> is not deliverable page CSS). The
+# document boundary is the rule, not the format.
+#
+# Dedup: identical payloads dedupe by decoded-content hash — shared with
+# srcdoc's dedup set, so the same document delivered as srcdoc AND as a
+# data: URI grades once (no penalty inflation, across mechanisms).
+# Total: depth-capped (shared budget of 8 with srcdoc), never touches the
+# network, never raises. Non-data: URLs (remote, relative, file) on these
+# attributes are outside this lane — same boundary as srcdoc.
+
+def _data_uri_html_mime(uri):
+    """Mediatype of a data: URI, lowercased.
+
+    Missing mediatype -> text/plain per RFC 2397 (browsers then render the
+    payload as literal text, not HTML — correctly NOT parsed as a document).
+    """
+    header = uri[5:].partition(",")[0]
+    return (header.split(";")[0] or "text/plain").strip().lower()
+
+
+def _decode_data_uri_html(uri):
+    """Decode a data:text/html payload to document text.
+
+    Handles URL-encoded and base64 payloads (whitespace-tolerant, like
+    browsers); honors ;charset only insofar as UTF-8 with replacement is
+    the fail-closed default. Returns None when the payload is not a
+    decodable HTML document (malformed base64). Never raises, never fetches.
+    """
+    header, _, data = uri[5:].partition(",")
+    parts = header.split(";")
+    is_b64 = any(p.strip().lower() == "base64" for p in parts[1:])
+    try:
+        if is_b64:
+            # browsers skip ASCII whitespace inside base64 data: URIs;
+            # anything else non-alphabet is malformed -> fail closed.
+            data = re.sub(r"\s+", "", data)
+            raw = base64.b64decode(data, validate=True)
+        else:
+            raw = urllib.parse.unquote_to_bytes(data)
+        return raw.decode("utf-8", errors="replace")
+    except Exception:
+        return None  # malformed payload: fail closed, never crash
 
 
 # ---------------------------------------------------------------------------
@@ -919,6 +1107,22 @@ def analyze(page_html, catalog, page_dir=None):
         })
         score -= 1.0
 
+    # 4g. data: URI documents nested beyond the depth cap: the same class
+    # as 4f, the same bounded treatment. The 4d/4e/4f precedent is one
+    # bounded deduction PER PERIMETER — so a page that piles past the cap
+    # through BOTH mechanisms costs -1.0 per mechanism, never more.
+    if parser.datauri_capped:
+        deductions.append({
+            "points": -1.0,
+            "reason": (f"{parser.datauri_capped} data: URI document(s) nested "
+                       f"beyond the grader's depth cap ({_MAX_SRCDOC_DEPTH}) "
+                       "— their CSS is outside the grader's view; "
+                       "duplication unverifiable"),
+            "detail": [f"data: documents seen: {parser.datauri_seen}, "
+                       f"graded: {parser.datauri_graded}"],
+        })
+        score -= 1.0
+
     score = max(0.0, round(score, 1))
     verdict = "PASS" if score >= 7 else "FAIL"
 
@@ -952,6 +1156,12 @@ def analyze(page_html, catalog, page_dir=None):
             "graded": parser.srcdoc_graded,
             "capped": parser.srcdoc_capped,
             "max_depth": parser.srcdoc_max_depth,
+        },
+        "datauri_documents": {
+            "seen": parser.datauri_seen,
+            "graded": parser.datauri_graded,
+            "capped": parser.datauri_capped,
+            "max_depth": parser.datauri_max_depth,
         },
         "specimen_home": home_block_id,
         "notes": sorted(undefined_classes)[:20],
@@ -1002,6 +1212,13 @@ def human_summary(result, page_name):
         L.append(f"srcdoc iframes: {si['graded']}/{si['seen']} parsed+graded "
                  f"(max nesting depth {si['max_depth']}"
                  + (f", {si['capped']} beyond depth cap" if si.get("capped") else "")
+                 + ")")
+        L.append("")
+    du = result.get("datauri_documents") or {}
+    if du.get("seen"):
+        L.append(f"data: URI documents: {du['graded']}/{du['seen']} parsed+graded "
+                 f"(max nesting depth {du['max_depth']}"
+                 + (f", {du['capped']} beyond depth cap" if du.get("capped") else "")
                  + ")")
         L.append("")
     if result["deductions"]:
