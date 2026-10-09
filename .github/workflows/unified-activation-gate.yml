@@ -1,0 +1,41 @@
+# Unified Activation Gate — CI proof (Naya 1's bar).
+#
+# This workflow IS the proof Naya 1 demanded: a verified run of the actual
+# required CI workflow demonstrating the lawful case AND the adversarial
+# rejection cases, with exact commit identities, run/job IDs, exit results,
+# and inspectable evidence.
+#
+# The protected runner resolves truth ITSELF (GITHUB_REPOSITORY + GITHUB_TOKEN
+# from the runner context, live GitHub API). No step supplies truth via flags.
+# A builder cannot establish authenticity by writing a plausible JSON file:
+# the self-minted-truth attack proves the alternate route yields
+# CANDIDATE-LOCAL-*, never PASS.
+name: Unified Activation Gate
+
+on:
+  push:
+    branches: [naya5/unified-activation-gate]
+  pull_request:
+    branches: [main]
+    paths:
+      - "tools/activation_gate.py"
+      - "tools/activation_gate_ci_proof.py"
+      - ".github/workflows/unified-activation-gate.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  gate-proof:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.12"
+      - name: Rehearsal — unit tests (local predicate logic)
+        run: python3 tools/test_activation_gate.py
+      - name: Proof — lawful PASS + adversarial REJECTs in protected mode
+        run: python3 tools/activation_gate_ci_proof.py
