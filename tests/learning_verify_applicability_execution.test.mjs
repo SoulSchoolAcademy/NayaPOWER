@@ -18,7 +18,16 @@ const source = readFileSync(
   new URL("../supabase/functions/nayanet-learning-verify/index.ts", import.meta.url),
   "utf8"
 );
-const code = stripTypeScriptTypes(source.replace(/^import .*;\r?\n/gm, ""));
+const code = stripTypeScriptTypes(
+  source
+    // The VM executes local handler logic; imported gate modules have dedicated tests.
+    .replace(/^import\s*\{[\s\S]*?\}\s*from "\.\/[^"]+";\r?\n/gm, "")
+    .replace(/^import .*from "\.\/.*";\r?\n/gm, "")
+    .replace(/^import .*;\r?\n/gm, "")
+);
+if (/^\s*import\b/m.test(code)) {
+  throw new Error("test harness failed to strip TypeScript imports before vm.Script");
+}
 
 const sandbox = {
   URL, Request, Response, console, Date, TextEncoder, Uint8Array, crypto,
