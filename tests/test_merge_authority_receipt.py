@@ -12,6 +12,7 @@ import copy
 import os
 import sys
 import unittest
+from datetime import datetime, timedelta, timezone
 
 TOOLS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "tools")
 sys.path.insert(0, TOOLS_DIR)
@@ -217,6 +218,36 @@ class TestDelegatedMergeReceiptGate(unittest.TestCase):
         r["self_scorecard"]["score"] = True
         allowed, _ = self.allow(r)
         self.assertFalse(allowed)
+
+    def test_future_window_denies(self):
+        """Validator reproduction (#1354 c6088678545): a consensus window
+        closing in the FUTURE must not read as closed — objections cannot
+        exist yet, so condition 4 (team consensus) is unproven. Probes the
+        time dimension the 20-test suite never varied: both the validator's
+        far-future literal and a near-future window must deny."""
+        for label, closed_at in (
+            ("validator-far-future", "2099-12-31T23:59:59Z"),
+            ("near-future", (datetime.now(timezone.utc).replace(microsecond=0)
+                             + timedelta(hours=1)).isoformat()),
+        ):
+            with self.subTest(window=label):
+                r = _valid_receipt()
+                r["consensus"]["window_closed_at"] = closed_at
+                allowed, reasons = self.allow(r)
+                self.assertFalse(allowed, f"{label} window ALLOWED: {reasons}")
+                self.assertTrue(any("future" in x for x in reasons), reasons)
+
+    def test_bool_comment_id_denies(self):
+        """isinstance(True, int) is True in Python: a bool is not a posted
+        comment id. Both comment_id fields must exclude bools, matching the
+        bool-exclusion the gate already applies to score fields."""
+        for label, block in (("scorecard", "self_scorecard"),
+                             ("intent", "intent_post")):
+            with self.subTest(field=label):
+                r = _valid_receipt()
+                r[block]["comment_id"] = True
+                allowed, _ = self.allow(r)
+                self.assertFalse(allowed, f"bool {label}.comment_id ALLOWED")
 
 
 if __name__ == "__main__":

@@ -1,5 +1,14 @@
 #!/usr/bin/env python3
-"""Enforcement predicate for DELEGATED-MERGE-AUTHORITY-V1.
+"""Receipt CHECKER for DELEGATED-MERGE-AUTHORITY-V1 (advisory — not enforced).
+
+BOUND — READ BEFORE RELYING ON THIS GATE: this module CHECKS whether a
+merge-authority receipt proves the five conditions; it does NOT ENFORCE
+them. Nothing in the merge path (tools/merge_pr_api.py, the gh-api write
+path) invokes this check, so a seat can merge without running it. Until this
+gate is wired into the merge path itself, it is a machine aid for the
+merging seat — an advisory second pair of eyes, not a lock. The delegation
+law stays a protocol law; this gate reports truth, it does not compel
+obedience.
 
 Shawn ratified (2026-10-08, #1354): Naya 5 may merge to main WITHOUT his
 per-merge approval, if and only if ALL hold:
@@ -165,8 +174,12 @@ def _check_delegated_merge_receipt(receipt, check_receipt, reasons):
             reasons.append("C2: self_scorecard.score must be numeric 0-10")
         elif not (MIN_MERGE_SCORE <= score <= 10):
             reasons.append(f"C2: self_scorecard.score {score} < {MIN_MERGE_SCORE} — nothing under 9.0 ships")
-        if not isinstance(sc.get("comment_id"), int):
-            reasons.append("C2: self_scorecard.comment_id missing — a private scorecard is not authority")
+        comment_id = sc.get("comment_id")
+        if isinstance(comment_id, bool) or not isinstance(comment_id, int):
+            # isinstance(True, int) is True in Python — a bool is not a
+            # posted comment id; exclude it exactly like the score fields do.
+            reasons.append("C2: self_scorecard.comment_id must be an integer comment id "
+                           "(a bool is not a comment id) — a private scorecard is not authority")
         if not isinstance(sc.get("calculus_profile_id"), str) or not sc.get("calculus_profile_id").strip():
             reasons.append("C2: self_scorecard.calculus_profile_id missing — the math must be run and recorded")
         five_steps = sc.get("scorecard_receipt")
@@ -208,14 +221,24 @@ def _check_delegated_merge_receipt(receipt, check_receipt, reasons):
     else:
         if intent.get("issue") != INTENT_FEED_ISSUE:
             reasons.append(f"C4: intent_post.issue must be {INTENT_FEED_ISSUE} (the coordination feed)")
-        if not isinstance(intent.get("comment_id"), int):
-            reasons.append("C4: intent_post.comment_id missing — intent must be posted, not claimed")
+        intent_comment_id = intent.get("comment_id")
+        if isinstance(intent_comment_id, bool) or not isinstance(intent_comment_id, int):
+            # Same bool quirk as self_scorecard.comment_id — close it here too.
+            reasons.append("C4: intent_post.comment_id must be an integer comment id "
+                           "(a bool is not a comment id) — intent must be posted, not claimed")
     consensus = get("consensus")
     if not isinstance(consensus, dict):
         reasons.append("C4: consensus block missing — no-objection must be recorded, not assumed")
     else:
-        if _parse_ts(consensus.get("window_closed_at")) is None:
+        closed_at = _parse_ts(consensus.get("window_closed_at"))
+        if closed_at is None:
             reasons.append("C4: consensus.window_closed_at missing or unparsable — the objection window must be closed")
+        elif closed_at > datetime.now(timezone.utc):
+            # A window closing in the future is NOT closed: objections cannot
+            # exist yet, so "no seat objects" is unproven. Parseability alone
+            # must never read as closure — allow only window_closed_at <= now.
+            reasons.append("C4: consensus.window_closed_at is in the future — the objection window is still "
+                           "open, so no-objection cannot be proven; condition 4 (team consensus) is not met")
         objections = consensus.get("objections")
         if not isinstance(objections, list):
             reasons.append("C4: consensus.objections must be a list (empty if none)")
