@@ -81,3 +81,23 @@ Run note: the first cold attempt of this run caught a stale era-pinned test
 (`n == 2` hardcoded); the test was updated to pin the new floor
 (`n >= 3`, LEARN_CANDIDATE proposes, never promotes) and both sides re-ran
 green before this proof. /tmp clones removed after verification.
+
+## Fifth cold run — 2026-10-09 03:48 UTC (29-event ledger, n=4 join)
+
+Fresh clone @ `b60ebc6b` (branch `naya5/human-value-events-20261009`), same
+procedure, no access to the originating workspace:
+
+| Check | Originating worktree | Cold clone | Match |
+|---|---|---|---|
+| HEAD | `b60ebc6b` | `b60ebc6b` | ✅ |
+| `ledger_sha256` | `sha256:90c7b3fe723f172cc2ddb7fe7540823df3a8de513da64db9d02130fe0ff8ceb3` | (same) | ✅ |
+| `hv_per_day_total` | 4.2857 | 4.2857 | ✅ |
+| `dai_per_day` | 0.2857 | 0.2857 | ✅ |
+| `events_validated` | 29 | 29 | ✅ |
+| `calibration.n` / MAE / signed bias | 4 / 0.125 / +0.125 | 4 / 0.125 / +0.125 | ✅ |
+| overprediction | false | false | ✅ |
+| test suite | 10 passed | 10 passed | ✅ |
+
+**Verdict:** the n=4 measurement is cold-recomputable at the branch's final
+state. The DEC-004 outcome event's `delta_v_actual: 7.0` stands: push +
+cold-recompute proof verified; scorecard posts next.
