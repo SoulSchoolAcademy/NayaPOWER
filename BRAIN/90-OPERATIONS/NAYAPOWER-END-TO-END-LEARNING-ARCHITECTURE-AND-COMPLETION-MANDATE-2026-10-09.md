@@ -508,3 +508,20 @@ Every boundary needs a test that deliberately substitutes the wrong IB/event/rec
 5. **Only then** make a protected ship recommendation with exact runtime parity, all receipts, risks, and authority state.
 
 This is a more precise diagnosis than “nothing is wired”: substantial components exist, but the single transaction's hand-off from capture/Smart Link to the behavioral learning proof has not yet been established by the reviewed orchestration source.
+
+
+### 18.7 Critical acceptance risk: the learning-proof producer can use a fallback lesson
+
+The reviewed `.github/workflows/live-intelligence-commit-proof.yml` has a real-capture branch when `tools.smart_note_v2 discover` finds a changed `.naya/capture/*.json` file. But the single-capture path also has an explicit `else` branch when `capture-path.txt` is empty: it manufactures a bounded test lesson titled `Naya runtime flow lesson` with content including `Preserve provenance before applying retained intelligence.`, then commits that lesson through the same runtime and writes a fresh-lineage artifact. The downstream `.github/workflows/live-supabase-runtime-proof.yml` starts from the producer run and consumes its `fresh-lesson-lineage-ids.json` artifact; the reviewed downstream path does not, at its entry, require proof that the producer artifact came from a real user capture rather than the fallback branch.
+
+This fallback may be useful for isolated runtime smoke tests. It must **never satisfy the acceptance claim that Shawn's Smart Note was learned**. Without an explicit source-kind gate, a complete green behavioral proof could describe the fallback test lesson rather than the user's actual note.
+
+**Required machine-enforced repair:**
+- Producer receipt must include `capture_kind=USER_CAPTURE` or `capture_kind=TEST_FALLBACK`, the exact `capture_id`, source capture path, content digest, and a source event/IB identity.
+- The learning-acceptance workflow must require `capture_kind=USER_CAPTURE`, non-empty exact capture ID/path, and a digest that matches the canonical IB before it may publish a **user Smart Note learned** verdict.
+- Fallback runs must remain explicitly labelled test-only and cannot satisfy the Smart Note golden-path gate, scorecard, or learning receipt for a human-authored lesson.
+- The downstream verifier must recompute the binding from the producer artifact and persisted canonical record; it must not trust a caller-supplied boolean or the workflow's display label.
+- Add negative CI proofs showing that (a) no capture path, (b) fallback capture, (c) mismatched capture ID, (d) wrong IB, and (e) digest mismatch all fail the user-learning acceptance gate even if the fallback behavioral test itself passes.
+- Preserve the fallback for component smoke tests if useful, but separate test-success from user-learning-success in workflow conclusions and receipts.
+
+This is a separate, confirmed source-level risk from the Path A/Path B orchestration gap in §18.4. Both must be closed: the user's real capture must reach the learning chain, and the chain must refuse to certify any substitute object.
