@@ -1075,17 +1075,21 @@ class ReportGenerator:
                     "status": "authoritative",
                 }
                 continue
-            # Never downgrade: an authoritative score is not overwritten
-            # by a heuristic claim's status.
-            status = point.status
+            # Authoritative scores are never overwritten by heuristic
+            # claims — neither the label nor the value. (2026-10-09: a
+            # fresh "Truth 2.0/10" claim overwrote Truth 9.0's VALUE while
+            # keeping the authoritative LABEL — a false number wearing the
+            # most-trusted badge. The old code guarded the label; the score
+            # column was the payload.) Authoritative updates still flow
+            # through authoritative points.
             if (existing.get("status") == "authoritative"
-                    and status != "authoritative"):
-                status = "authoritative"
+                    and point.status != "authoritative"):
+                continue
             new_state[area] = {
                 "score": point.score,
                 "as_of": point.as_of.isoformat(),
                 "source": point.source,
-                "status": status,
+                "status": point.status,
             }
         self.save_scores_fn(new_state)
 

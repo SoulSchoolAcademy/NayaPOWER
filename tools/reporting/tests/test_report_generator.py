@@ -1185,3 +1185,39 @@ def test_authoritative_pin_first_write_uses_real_timestamp():
     assert len(kept) == 1
     assert kept[0].score == 5.0
     assert kept[0].as_of.isoformat() == "2026-10-08T00:00:00+00:00"
+
+
+def test_heuristic_claim_cannot_overwrite_authoritative_value():
+    # The N3 repro (2026-10-09): state Truth 9.0/authoritative (Naya 1),
+    # fresh worker-log claim "Truth 2.0/10". The old code kept the
+    # authoritative LABEL but wrote the false 2.0 — a lie wearing the
+    # most-trusted badge. Heuristic claims must never touch
+    # authoritative scores: neither label nor value.
+    state = {"Truth": {"score": 9.0,
+                       "as_of": (NOW - dt.timedelta(hours=2)).isoformat(),
+                       "source": "Naya 1", "status": "authoritative"}}
+    poison = ScorePoint("Truth", 2.0, NOW, "evil", "claim")
+    gen = _ingest_gen(state, [poison])
+    data = gen.collect("hourly", NOW - dt.timedelta(hours=1), NOW)
+    kept = [sp for sp in data.scores if sp.area == "Truth"]
+    assert len(kept) == 1
+    assert kept[0].score == 9.0
+    assert kept[0].status == "authoritative"
+    assert kept[0].source == "Naya 1"
+    from report_generator import _headline_text, _what_moved
+    assert "2.0" not in _headline_text(data, _what_moved(data))
+
+
+def test_authoritative_point_still_updates_authoritative_score():
+    # The guard is one-directional: a genuine authoritative update
+    # (a new Naya 1 reconciliation) must still flow through.
+    state = {"Truth": {"score": 9.0,
+                       "as_of": (NOW - dt.timedelta(days=3)).isoformat(),
+                       "source": "Naya 1", "status": "authoritative"}}
+    update = ScorePoint("Truth", 9.5, NOW, "Naya 1", "authoritative")
+    gen = _ingest_gen(state, [update])
+    data = gen.collect("hourly", NOW - dt.timedelta(hours=1), NOW)
+    kept = [sp for sp in data.scores if sp.area == "Truth"]
+    assert len(kept) == 1
+    assert kept[0].score == 9.5
+    assert kept[0].status == "authoritative"
