@@ -778,9 +778,11 @@ jobs:
             fi
 
             # Admission gate: the candidate may be promoted only if it is
-            # well-formed and carries the verification provenance recorded
-            # by the independent-verification job. This is the governed
-            # checkpoint — not a second opinion, a structural check.
+            # well-formed (required fields present, intelligence is an
+            # object). Verification itself is enforced by chain ordering —
+            # this job runs only after independent-verification succeeds.
+            # This is the governed checkpoint — not a second opinion, a
+            # structural check.
             echo "Admission gate evaluating $capture_path ..."
             gate_ok="$(python3 - <<'PY'
           import json, sys
