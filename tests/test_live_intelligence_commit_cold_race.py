@@ -31,3 +31,15 @@ def test_cold_successor_survives_projection_publication_race():
 
     # The old race-prone unconditional assertion must not return.
     assert 'assert len(matches)==1, matches' not in text
+
+
+def test_capture_lifecycle_promotion_requires_exact_independent_proof():
+    text = WORKFLOW.read_text(encoding="utf-8")
+    start = text.index("  admission-promotion:")
+    end = text.index("  cold-successor-held-out:", start)
+    block = text[start:end]
+    assert "name: smart-note-lineage" in block
+    assert "name: smart-note-independent-proof" in block
+    assert "tools/verify_capture_admission_proof.py" in block
+    assert "smart-note-capture-proof${suffix}.json" in block
+    assert "fresh-lesson-lineage-ids${suffix}.json" in block
