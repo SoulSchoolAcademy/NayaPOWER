@@ -1,13 +1,13 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-09",
-  "receipt_basis_commit": "527ebcfbc04896c3a6beee127757785597e0713a",
-  "inventory_file_count": 1211,
+  "receipt_basis_commit": "a6daf915b7b0921b9c582f14fc9ba4e6ad878709",
+  "inventory_file_count": 1216,
   "domain_counts": {
-    "00-ACTIVATION": 3,
+    "00-ACTIVATION": 5,
     "00-ARCHITECTURE": 5,
     "00-SPEC": 15,
-    "01-GOVERNANCE": 28,
+    "01-GOVERNANCE": 31,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
@@ -27,13 +27,23 @@
   "files": [
     {
       "path": "BRAIN/00-ACTIVATION/ACTIVATION-CHECKLIST.md",
-      "blob_sha": "1b990d7507f61098f203764363e698eec6f36f16",
-      "size": 10868
+      "blob_sha": "5b84c7cf5c58bd92aa3ce050f0e190d1e53c14e1",
+      "size": 21075
+    },
+    {
+      "path": "BRAIN/00-ACTIVATION/ACTIVATION-MASTER-CHECKLIST.json",
+      "blob_sha": "4506798546423026bec173f78d14370f39653d90",
+      "size": 30706
     },
     {
       "path": "BRAIN/00-ACTIVATION/DESIGN-ACTIVATION.md",
       "blob_sha": "fed3bb338e0205ac2d31c4afac69b06641f243ca",
       "size": 4229
+    },
+    {
+      "path": "BRAIN/00-ACTIVATION/DRIVER-INTEGRATION.md",
+      "blob_sha": "18c7d0f704cbfabee11f2178f46c86a745ccafd8",
+      "size": 2307
     },
     {
       "path": "BRAIN/00-ACTIVATION/activation-checklist.json",
@@ -219,6 +229,21 @@
       "path": "BRAIN/01-GOVERNANCE/0006-naya-calculator-v1.machine.json",
       "blob_sha": "6e62c7ad6be9e8632fc4ee41f7c8d1f9b59e3f7f",
       "size": 5880
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0007-LAW-OF-ONE-V1.ai.md",
+      "blob_sha": "e1d870bbc419de8465647b6cd9a211422b62b716",
+      "size": 3368
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0007-LAW-OF-ONE-V1.human.md",
+      "blob_sha": "c306d24012058047861e94ecfccf3c8e2d11459e",
+      "size": 2167
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0007-law-of-one-v1.machine.json",
+      "blob_sha": "f494e4b11ee57cb8be16f726af4d59e46a387289",
+      "size": 1800
     },
     {
       "path": "BRAIN/01-GOVERNANCE/0013-PARALLEL-EXECUTION-V1.ai.md",
