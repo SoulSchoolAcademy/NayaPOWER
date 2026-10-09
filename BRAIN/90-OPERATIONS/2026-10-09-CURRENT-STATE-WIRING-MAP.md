@@ -60,7 +60,7 @@ Do not conflate these fields:
 - Intelligent Block `understanding_state`: epistemic/learning state such as `CANDIDATE` or `LEARNED`.
 - `learning_evidence.status`: status of an evidence/learning record.
 
-The workflow now has an `admission-promotion` job between independent verification and cold retrieval. Its inline gate currently checks basic structure and relies on job ordering for verification; it does not itself validate a falsifiable experiment contract. Separately, PR #2049 merged `tools/learning_admission_gate.py` and `tools/learning_verification_queue.py`. Those are Python-side gate/queue components; repository search shows the choke point/queue calls in the Python modules/tests, but no proven production call from the Supabase learning path. Do not wire the gate indiscriminately to capture: its contract distinguishes a capture/provenance row from a learning-experiment claim. Reconcile the exact claim lifecycle and evidence schema before changing the write point.
+The workflow now has an `admission-promotion` job between independent verification and cold retrieval. Its inline gate currently checks basic structure and relies on job ordering for verification; it does not itself validate a falsifiable experiment contract. PR #2049 merged the Python reference gate/queue, and PR #2077 is now merged on main with a TypeScript port at `nayanet-learning-verify`'s `mode === candidate` write site (38/38 parity fixtures and acceptance proofs reported green). However, the live `live-supabase-runtime-proof.yml` request sends only `mode`, `intelligent_block_id`, and `checkpoint_id`—no admission design. The new TS path explicitly passes through when admission design is absent (`ADMISSION_DESIGN_ABSENT`) to preserve the old workflow, so the live flow still does not exercise the gate. Do not simply reject missing design at this pre-experiment placeholder: the gate contract requires measured arms, but the workflow creates this row before it runs the experiment. The actual missing connection is a two-phase design that distinguishes a pending experiment record from an admitted learning claim, then supplies the preregistered contract + measured arms to the gate before promotion.
 
 ## Live Supabase observations
 
@@ -123,7 +123,7 @@ Verification observed for PR head `1fec06d2787c146844470d9437537d86afc55153`: th
 
 ### Current hard boundary
 
-The next runtime-level step is to reconcile and approve exact deployed source parity for learning-verify, ACT, and decision-context. Production deployment remains a human-controlled gate. The separate learning-experiment admission contract must be attached to the actual experiment evidence and promotion point; it must not be misapplied to the capture-only record.
+The next runtime-level step is to reconcile and approve exact deployed source parity for learning-verify and ACT, then fix the admission sequencing so the TS gate cannot be bypassed by an absent design payload. Production deployment remains a human-controlled gate. The standalone decision-context Edge Function is stale, but ACT's main source now uses the local `nayanet-act-runtime/decision-context.ts` helper; the deployed ACT v65 lacks that helper import.
 
 
 ### Legacy intake table inventory (read-only counts)
