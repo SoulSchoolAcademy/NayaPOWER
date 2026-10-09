@@ -12571,12 +12571,54 @@
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed; no runtime provenance invented"
    }
+  },
+  {
+   "intelligent_block_id": "IB-SMART-NOTE-20261009-sn0742-self-optimizing-system",
+   "smart_note_id": "SN-0742",
+   "title": "The Self-Optimizing System — Self-Correction as Engineering",
+   "captured_at": "2026-10-09",
+   "category": "SYSTEM_INTELLIGENCE",
+   "topic": "VISION/SELF-OPTIMIZATION",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/VISION/SELF-OPTIMIZATION/SN-0742/IB-SMART-NOTE-20261009-sn0742-self-optimizing-system.md",
+   "content_hash": "af06b8ed8aa242442a5ca5d0bf0ecd0a7147408650b365416d31a90b3a9d9127",
+   "smart_link_status": "ACTIVE_AUTH_GATED"
+  },
+  {
+   "intelligent_block_id": "IB-SMART-NOTE-20261009-sn0743-magic-feeling",
+   "smart_note_id": "SN-0743",
+   "title": "The Magic Feeling — Intelligence They Feel, Never Grasp",
+   "captured_at": "2026-10-09",
+   "category": "SYSTEM_INTELLIGENCE",
+   "topic": "VISION/MAGIC-FEELING",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/VISION/MAGIC-FEELING/SN-0743/IB-SMART-NOTE-20261009-sn0743-magic-feeling.md",
+   "content_hash": "167a549183e641fa90f7d879943362122594bbfc60819ab50b59238281af2b85",
+   "smart_link_status": "ACTIVE_AUTH_GATED"
+  },
+  {
+   "intelligent_block_id": "IB-SMART-NOTE-20261009-sn0744-ai-creates-income",
+   "smart_note_id": "SN-0744",
+   "title": "AI Creates Income — The Income Reframe",
+   "captured_at": "2026-10-09",
+   "category": "SYSTEM_INTELLIGENCE",
+   "topic": "VISION/INCOME-REFRAME",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/VISION/INCOME-REFRAME/SN-0744/IB-SMART-NOTE-20261009-sn0744-ai-creates-income.md",
+   "content_hash": "f03141830a10d9fe5545cac1e06748711bbf76bf9fcfaaf391d3da2d19531369",
+   "smart_link_status": "ACTIVE_AUTH_GATED"
   }
  ],
  "sequence_policy": {
   "human_id_format": "SN-###",
   "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-  "next_sequence": 632,
+  "next_sequence": 745,
   "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
  }
 }
