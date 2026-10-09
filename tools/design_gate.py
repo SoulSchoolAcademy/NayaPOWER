@@ -37,7 +37,7 @@ Encoding normalization (extended law, validator 2026-10-09 round 3):
 every parser is only as strong as the narrowest ENCODING it doesn't
 decode. Browsers decode HTML entities in style ATTRIBUTE values (but
 never inside <style> blocks — raw text elements), strip CSS /* */
-comments, and decode CSS \XX escapes before color lookup. The gate's
+comments, and decode CSS \\XX escapes before color lookup. The gate's
 normalization layer does exactly the same, in the same order:
 unescape (attributes only) -> strip comments -> decode escapes.
 Fail direction is fail-closed: an encoding the layer cannot resolve
