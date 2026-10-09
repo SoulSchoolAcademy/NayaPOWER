@@ -370,6 +370,85 @@ def test_collect_never_downgrades_authoritative_status():
                for s in data.scores)
 
 
+def _authoritative_state(area, score, source):
+    return {area: {"score": score,
+                   "as_of": "2026-10-08T00:00:00+00:00",
+                   "source": source,
+                   "status": "authoritative"}}
+
+
+def _gen_with_state(state, points, saved):
+    return ReportGenerator(
+        fetch_worker_logs=lambda s: [{
+            "worker": "w", "mtime": NOW, "ts": NOW, "scores": points,
+            "holes": [], "achievements": [], "activity": [],
+        }],
+        fetch_memory=lambda s: {"achievements": [], "intelligence": [],
+                                "holes": [], "scores": []},
+        fetch_github_fn=lambda s: {"prs": [], "comments": [], "error": None},
+        fetch_supabase_fn=lambda: {"counts": {}, "error": None},
+        load_scores_fn=lambda: dict(state),
+        save_scores_fn=lambda s: saved.update(s),
+    )
+
+
+def test_collect_heuristic_never_displaces_authoritative_value_or_source():
+    # 4th poison path (holding re-checker, 2026-10-09): the old
+    # "Never downgrade" kept only the STATUS label while writing the
+    # heuristic's score/source — Truth 9.0/authoritative became
+    # {'score': 2.0, 'source': 'evil', 'status': 'authoritative'}.
+    # The authoritative entry must survive collect() byte-identical.
+    before = _authoritative_state("Truth", 9.0, "Naya 1 reconciliation")
+    saved = {}
+    gen = _gen_with_state(
+        before,
+        [ScorePoint("Truth", 2.0, NOW, "evil", "claim")],
+        saved,
+    )
+    data = gen.collect("hourly", NOW - dt.timedelta(hours=1), NOW)
+    assert saved["Truth"] == before["Truth"]
+    kept = [s for s in data.scores if s.area == "Truth"]
+    assert len(kept) == 1
+    assert kept[0].score == 9.0
+    assert kept[0].source == "Naya 1 reconciliation"
+    assert kept[0].status == "authoritative"
+
+
+def test_collect_equal_authority_evidence_updates_value():
+    # The gate is precedence, not a freeze: fresh AUTHORITATIVE
+    # evidence for the same area updates value, source and as_of.
+    saved = {}
+    gen = _gen_with_state(
+        _authoritative_state("Truth", 9.0, "Naya 1 reconciliation"),
+        [ScorePoint("Truth", 9.2, NOW, "Naya 1 re-score", "authoritative")],
+        saved,
+    )
+    gen.collect("hourly", NOW - dt.timedelta(hours=1), NOW)
+    assert saved["Truth"] == {
+        "score": 9.2,
+        "as_of": NOW.isoformat(),
+        "source": "Naya 1 re-score",
+        "status": "authoritative",
+    }
+
+
+def test_collect_heuristic_does_not_touch_unrelated_authoritative():
+    # A heuristic claim for a NEW area is collected normally, while a
+    # different area's authoritative entry stays verbatim.
+    state = _authoritative_state("Truth", 9.0, "Naya 1 reconciliation")
+    saved = {}
+    gen = _gen_with_state(
+        state,
+        [ScorePoint("Voice & Experience", 7.5, NOW, "w-heuristic",
+                    "claim")],
+        saved,
+    )
+    gen.collect("hourly", NOW - dt.timedelta(hours=1), NOW)
+    assert saved["Truth"] == state["Truth"]
+    assert saved["Voice & Experience"]["score"] == 7.5
+    assert saved["Voice & Experience"]["status"] == "claim"
+
+
 def test_collect_degraded_sources():
     def bad_github(since):
         return {"prs": [], "comments": [],
