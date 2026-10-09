@@ -89,6 +89,18 @@ class Battery:
             ("entity-prefix", '<div class="&#110;aya-evilwidget">x</div>', True),
             ("entity-hex", '<div class="&#x6E;aya-evilwidget">x</div>', True),
             ("entity-suffix", '<div class="naya-&#101;vilwidget">x</div>', True),
+            # round-5 quote-smuggling: an entity-encoded quote decoded by the
+            # canonicalizer must not terminate the rewritten attribute (or
+            # break the lane's [^"']+ capture via a decoded single quote) —
+            # the freestyle class must stay visible inside the quotes.
+            ("quote-dec", '<div class="&#34; naya-evilwidget">x</div>', True),
+            ("quote-hex", '<div class="&#x22; naya-evilwidget">x</div>', True),
+            ("quote-named", '<div class="&quot; naya-evilwidget">x</div>', True),
+            ("squote-dec", "<div class='&#39; naya-evilwidget'>x</div>", True),
+            ("squote-named", "<div class='&apos; naya-evilwidget'>x</div>", True),
+            ("quote-upper-attr", '<div CLASS="&#34; naya-evilwidget">x</div>', True),
+            ("quote-multi", '<div class="&#34; naya-evilwidget &#34; orb-xwidget">x</div>', True),
+            ("quote-mixed", '<div class="&#34; &#110;aya-evilwidget">x</div>', True),
             ("quoted-baseline", '<div class="naya-evilwidget">x</div>', True),
             ("lawful-known", '<div class="naya-btn">x</div>', False),
             ("lawful-noclass", '<div id="a">x</div>', False),

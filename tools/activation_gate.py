@@ -455,6 +455,10 @@ DESIGN_MANIFEST_FILE = "smart-blocks/manifest.json"
 # so the lane's logic judges every class the browser will see.
 # Semantics-preserving: `class=x` == `class="x"` in HTML, and the browser
 # decodes character references in attribute values (HTML5 tokenization).
+# Round-5: the decoded value is re-escaped (html.escape, quote=True) before
+# re-quoting — a decoded quote must never terminate the rewritten attribute
+# (quote-smuggling: &#34;/&quot;/&#39;), or the canonical bytes parse
+# differently from what the browser applies.
 #
 # The lookbehind `(?<=[\s/])` (not `\b`: there IS a word boundary between
 # `-` and `c`) matches only where a real attribute name can stand — after
@@ -468,11 +472,23 @@ CLASS_ATTR_RE = re.compile(
 
 def canonicalize_class_attributes(html_text):
     """Rewrite every class attribute to canonical `class="..."` form, with
-    character references decoded exactly as the browser decodes them."""
+    character references decoded exactly as the browser decodes them, then
+    re-encoded for the double-quoted wrapper.
+
+    Round-5: decode-then-requote WITHOUT re-escaping is a smuggling hole. An
+    entity such as &#34; decodes to a literal `"` that terminates the
+    rewritten attribute early — the freestyle class falls outside any quoted
+    `class="..."`, invisible to the lane's regex, while the browser still
+    applies it (and a decoded `'` breaks the lane's `[^"']+` capture even
+    inside double quotes). `html.escape(..., quote=True)` after the decode
+    makes the canonical form a fixed point: every conformant parser reads
+    exactly the class tokens the browser sees in the original bytes, so the
+    decode/re-encode asymmetry between canonicalizer and browser is gone.
+    """
     def _q(m):
         val = m.group(1) if m.group(1) is not None else (
             m.group(2) if m.group(2) is not None else (m.group(3) or ""))
-        return 'class="%s"' % _html.unescape(val)
+        return 'class="%s"' % _html.escape(_html.unescape(val), quote=True)
     return CLASS_ATTR_RE.sub(_q, html_text)
 
 

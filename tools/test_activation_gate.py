@@ -458,10 +458,93 @@ class TestCanonicalization(unittest.TestCase):
         self.assertEqual(out, '<div class="naya-evil">x</div>')
 
     def test_double_encoded_not_decoded_twice(self):
-        # the browser decodes once; so does the gate (no double-decode)
+        # the browser decodes once; so does the gate (no double-decode).
+        # round-5: the re-encode is faithful — &amp; survives the round trip,
+        # so the canonical bytes decode to exactly what the browser saw in
+        # the original (the old expectation emitted a bare & that a parser
+        # would decode a second time — the asymmetry this fix closes).
         out = canonicalize_class_attributes(
             '<div class="&amp;#110;aya-evil">x</div>')
-        self.assertEqual(out, '<div class="&#110;aya-evil">x</div>')
+        self.assertEqual(out, '<div class="&amp;#110;aya-evil">x</div>')
+
+    def test_quote_smuggling_decimal(self):
+        # round-5: an entity-encoded quote must not terminate the rewritten
+        # attribute — the freestyle class must stay inside the quotes.
+        out = canonicalize_class_attributes(
+            '<div class="&#34; naya-evil">x</div>')
+        self.assertEqual(out, '<div class="&quot; naya-evil">x</div>')
+
+    def test_quote_smuggling_hex(self):
+        out = canonicalize_class_attributes(
+            '<div class="&#x22; naya-evil">x</div>')
+        self.assertEqual(out, '<div class="&quot; naya-evil">x</div>')
+
+    def test_quote_smuggling_named(self):
+        out = canonicalize_class_attributes(
+            '<div class="&quot; naya-evil">x</div>')
+        self.assertEqual(out, '<div class="&quot; naya-evil">x</div>')
+
+    def test_squote_smuggling_single_quoted(self):
+        # round-5: a decoded ' inside the double-quoted form breaks the
+        # lane's [^"']+ capture — it must be re-escaped too.
+        out = canonicalize_class_attributes(
+            "<div class='&#39; naya-evil'>x</div>")
+        self.assertEqual(out, '<div class="&#x27; naya-evil">x</div>')
+
+    def test_squote_smuggling_named(self):
+        out = canonicalize_class_attributes(
+            "<div class='&apos; naya-evil'>x</div>")
+        self.assertEqual(out, '<div class="&#x27; naya-evil">x</div>')
+
+    def test_quote_smuggling_upper_attr(self):
+        out = canonicalize_class_attributes(
+            '<div CLASS="&#34; naya-evil">x</div>')
+        self.assertEqual(out, '<div class="&quot; naya-evil">x</div>')
+
+    def test_quote_smuggling_multi(self):
+        out = canonicalize_class_attributes(
+            '<div class="&#34; naya-evil &#34; orb-x">x</div>')
+        self.assertEqual(
+            out, '<div class="&quot; naya-evil &quot; orb-x">x</div>')
+
+    def test_quote_smuggling_mixed_with_letter(self):
+        out = canonicalize_class_attributes(
+            '<div class="&#34; &#110;aya-evil">x</div>')
+        self.assertEqual(out, '<div class="&quot; naya-evil">x</div>')
+
+    def test_canonical_form_is_fixed_point(self):
+        # the class law: re-canonicalizing changes nothing, and the browser
+        # decodes the canonical bytes to the same class tokens as the input.
+        from html.parser import HTMLParser
+
+        class B(HTMLParser):
+            def __init__(self):
+                super().__init__(convert_charrefs=True)
+                self.classes = []
+
+            def handle_starttag(self, tag, attrs):
+                for k, v in attrs:
+                    if k.lower() == "class" and v:
+                        self.classes.extend(v.split())
+
+        def seen(html_text):
+            b = B()
+            b.feed(html_text)
+            return b.classes
+
+        payloads = [
+            '<div class="&#34; naya-evil">x</div>',
+            "<div class='&#39; naya-evil'>x</div>",
+            '<div class="&#34; &#110;aya-evil">x</div>',
+            '<div class="&amp;#110;aya-evil">x</div>',
+            '<div class="naya-btn&#32;x">x</div>',
+        ]
+        for p in payloads:
+            once = canonicalize_class_attributes(p)
+            self.assertEqual(canonicalize_class_attributes(once), once,
+                             "not a fixed point: %r" % p)
+            self.assertEqual(seen(once), seen(p),
+                             "decode mismatch: %r" % p)
 
     def test_data_dash_class_untouched(self):
         # round-4: data-class is NOT the class attribute (old \b matched it)
