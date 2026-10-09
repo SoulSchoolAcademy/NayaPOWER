@@ -133,4 +133,9 @@ At inspection time, the three RLS-disabled legacy Smart Note tables contained:
 - `smart_note_artifacts`: 92 rows
 - `smart_note_receipts`: 23 rows
 
-These are existing records; no rows were modified. The current registry index has one `SN-782` entry for T11. The separately reported same-number claim collision is not established as a duplicate registry entry by this check and remains unresolved pending exact cross-store reconciliation.
+These are existing records; no rows were modified. The current registry index has one `SN-782` entry for T11. The current main learning blueprint explicitly refutes an SN-0781/SN-782 collision: the registry has one entry and one directory for SN-782. Do not carry the old SN-782 collision claim forward. The live collision class is elsewhere: 19 duplicate SN numbers are reported in the current blueprint (SN-018, 019, 020, 022, 032, 034, 035, 041, 042, 346, 356, 357, 359, 361, 362, 501, 523, 524, 525), and those—not SN-782—require reconciliation.
+
+
+### Stale-document reconciliation
+
+The main branch learning blueprint `BRAIN/07-LEARNING/learning-system-blueprint-v1.md` contains claims tied to old main tip `1d73652231ac6127806640af5a31eb516c60738d`, including an earlier claim that no capture-promotion job exists. That claim is stale against current main `527ebcfbc04896c3a6beee127757785597e0713a`: PR #2048 merged the `admission-promotion` job. Treat historical diagnostics as historical, and use exact current source/workflow plus live receipts for present-state claims.
