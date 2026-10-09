@@ -108,12 +108,115 @@ def _parse_attrs(tag: str) -> dict[str, str | None]:
     return attrs
 
 
+def _tag_open_end(html: str, i: int) -> int | None:
+    """Index just past the `>` that closes the tag whose `<name` opener
+    ends at i. Quoted attribute values are respected — a `>` inside
+    quotes does not end the tag — so `<body title="x>y"
+    style="color:#111">` scans to its TRUE end. Returns None when the
+    tag is unterminated (fail closed: no extent, no attributes read)."""
+    n = len(html)
+    while i < n:
+        ch = html[i]
+        if ch in "\"'":
+            quote = ch
+            i += 1
+            while i < n and html[i] != quote:
+                i += 1
+            i += 1  # past the closing quote (or past EOF)
+        elif ch == ">":
+            return i + 1
+        else:
+            i += 1
+    return None
+
+
+class _TagMatch:
+    """Minimal re.Match stand-in for the quote-aware tag scanners.
+
+    `_find_tags` / `_all_tags` historically returned re.finditer matches
+    and every caller reads only m.group(0) (group(1) is the tag name on
+    _all_tags). The old `[^>]*>` regexes could not express "respect
+    quotes", so the scanners below find the tag's TRUE extent instead."""
+    __slots__ = ("_text", "_name")
+
+    def __init__(self, text: str, name: str | None):
+        self._text = text
+        self._name = name
+
+    def group(self, n: int = 0) -> str | None:
+        if n == 0:
+            return self._text
+        if n == 1:
+            return self._name
+        raise IndexError(f"no such group: {n}")
+
+
+def _iter_tag_matches(html: str, name_pat: str):
+    """Yield a _TagMatch per opening tag whose name matches name_pat,
+    each carrying the tag's TRUE extent (Port A, validator round 5,
+    C1). Unterminated tags are skipped — fail closed."""
+    for m in re.finditer(r"<(%s)\b" % name_pat, html, re.I):
+        end = _tag_open_end(html, m.end())
+        if end is None:
+            continue
+        yield _TagMatch(html[m.start():end], m.group(1))
+
+
+def _tag_extent(html: str, tag: str) -> str | None:
+    """Raw text of the first <tag ...> opening tag, with the tag's TRUE
+    extent: quoted attribute values are respected, so a `>` inside quotes
+    does not end the tag early.
+
+    (Ported from the repairs5 line: validator round 5, C1. R4's
+    `<%s\\b[^>]*>` prefix could not cross a `>` inside a quoted
+    attribute value — `<body title="x>y" style="color:#111">` made the
+    cascade path judge the stylesheet while the browser rendered the
+    inline style.) Returns None when there is no <tag or the tag is
+    unterminated — fail closed, no style extracted."""
+    for tm in _iter_tag_matches(html, re.escape(tag)):
+        return tm.group(0)
+    return None
+
+
 def _find_tags(html: str, name: str):
-    return re.finditer(r"<%s\b[^>]*>" % re.escape(name), html, re.I)
+    return _iter_tag_matches(html, re.escape(name))
+
+
+_style_close_re = re.compile(r"</style>", re.I)
+
+
+def _style_blocks(html: str):
+    """Raw text of every <style>...</style> block (Port A, C1).
+
+    The opener is scanned with its TRUE extent via _tag_open_end — a `>`
+    inside a quoted attribute value does not end the tag, so
+    `<style title="a>b">` is one tag whose content starts after the real
+    `>`. Content is captured to the first `</style>` (case-insensitive),
+    exactly as the old `<style[^>]*>(.*?)</style>` regex captured it.
+    Name matching is the old regex's `<style` prefix (no `\\b`), so
+    `<stylefoo>` behaves exactly as before — the only inputs whose
+    treatment changes are openers with a quoted `>`.
+
+    Why it exists: the naive opener regex ended the tag at a quoted `>`,
+    leaving a stray `"` in the captured text; _normalize_css_block's
+    string neutralizer then read it as an unterminated string and
+    swallowed the payload — the whole CSS channel went blind while the
+    browser applied the stylesheet (`<style title="a>b">` with hostile
+    CSS passed the gate).
+
+    Fail closed: unterminated openers and unclosed blocks yield nothing."""
+    for m in re.finditer(r"<style", html, re.I):
+        open_end = _tag_open_end(html, m.end())
+        if open_end is None:
+            continue
+        close = _style_close_re.search(html, open_end)
+        if close is None:
+            continue
+        yield html[open_end:close.start()]
 
 
 def _all_tags(html: str):
-    return re.finditer(r"<([a-zA-Z][a-zA-Z0-9]*)\b[^>]*>", html)
+    return _iter_tag_matches(html, r"[a-zA-Z][a-zA-Z0-9]*")
 
 
 def _strip_inert_html(html: str) -> str:
@@ -200,26 +303,120 @@ def _decode_css_escapes(text: str) -> str:
     return _CSS_ESCAPE_RE.sub(repl, text)
 
 
+def _read_css_ident(text: str, i: int) -> tuple[str, int]:
+    """Read a CSS ident starting at text[i], decoding \\ escapes the way
+    the browser's tokenizer does ("consume a name"). Returns
+    (decoded_name, end_index). A backslash-newline is NOT a valid escape,
+    so the ident ends there — exactly like the browser.
+
+    (Ported from the repairs5 line: validator round 5, S3. Needed by
+    _match_url_opener so an escape-forged opener like \\75rl( is
+    recognized as the url token the browser sees.)"""
+    n = len(text)
+    name: list[str] = []
+    j = i
+    while j < n:
+        c = text[j]
+        if c == "\\":
+            if j + 1 >= n or text[j + 1] in "\r\n\f":
+                break  # not a valid escape: the ident ends here
+            k = j + 1
+            hex_digits: list[str] = []
+            while k < n and len(hex_digits) < 6 and \
+                    text[k] in "0123456789abcdefABCDEF":
+                hex_digits.append(text[k])
+                k += 1
+            if hex_digits:
+                if k < n and text[k] in " \t\n\r\f":
+                    k += 1  # one whitespace consumed after a hex escape
+                code = int("".join(hex_digits), 16)
+                if code == 0 or code > 0x10FFFF or 0xD800 <= code <= 0xDFFF:
+                    code = 0xFFFD
+                name.append(chr(code))
+                j = k
+            else:
+                name.append(text[k])
+                j = k + 1
+        elif c.isalnum() or c in "-_" or ord(c) >= 0x80:
+            name.append(c)
+            j += 1
+        else:
+            break
+    return "".join(name), j
+
+
+def _match_url_opener(text: str, i: int) -> int:
+    """If a CSS url( token opener starts at text[i], return the index just
+    past the '('. Otherwise return -1.
+
+    (Ported from the repairs5 line: validator round 5, S3.) Per CSS
+    Syntax ("consume an ident-like token"), the browser creates a url
+    token when the ident-like token's name is an ASCII case-insensitive
+    match for "url" and the next code point is '('. Ident consumption
+    decodes \\ escapes — so \\75rl( is a url token to the browser, and
+    /* inside it is literal. This matcher reads the ident with the same
+    escape decoding, so the gate's map matches the browser's territory
+    exactly.
+
+    What must NOT match (browser agrees):
+      - `url (` with a space: a FUNCTION token — its contents ARE
+        comment-scanned, so the stripper must treat them normally.
+      - `xurl(` / `-url(`: different idents (preceding-char guard).
+      - an escape that starts before i (backslash-parity guard): the
+        ident started earlier, e.g. the `\\` in `a\\75rl(`.
+      - a literal backslash immediately before i: `\\\\75rl(` decodes to
+        ident `\\75rl` (literal backslash in the name), a function token.
+    """
+    n = len(text)
+    if i > 0:
+        # Backslash parity: an odd run means text[i] is inside an escape
+        # that started before i — the ident started earlier.
+        bs = 0
+        j = i - 1
+        while j >= 0 and text[j] == "\\":
+            bs += 1
+            j -= 1
+        if bs % 2 == 1:
+            return -1
+        prev = text[i - 1]
+        if prev.isalnum() or prev in "-_\\" or ord(prev) >= 0x80:
+            return -1
+    # Only 'u'/'U'/backslash can begin an ident that decodes to "url".
+    if text[i] not in "uU\\":
+        return -1
+    name, j = _read_css_ident(text, i)
+    if name.lower() == "url" and j < n and text[j] == "(":
+        return j + 1
+    return -1
+
+
 def _strip_css_comments(text: str) -> str:
-    """Strip CSS /* */ comments from the scanned stream — STRING-AWARE.
+    """Strip CSS /* */ comments from the scanned stream — STRING-AWARE
+    and URL-AWARE.
 
     CSS tokenizes strings BEFORE comments: `content:"/*"` is a STRING
     token, not a comment opener, so the browser never swallows the tail.
-    The old regex-based stripper couldn't tell quotes from comments, so
-    one 11-character string blinded the gate for the rest of the block.
+    Likewise, per CSS Syntax, `/*` is literal inside an unquoted url()
+    token — comment recognition only happens at the top token level — so
+    `.e{background:url(data:text/plain,/*);background:linen}` renders
+    linen while a naive stripper goes blind after the `/*`.
 
     Validator law (round 4, 2026-10-09): every regex that strips CSS
     comments without understanding CSS strings hands the attacker a
-    blindfold to place over the gate. The durable fix is tokenizer
-    awareness — respect strings before stripping comments.
+    blindfold to place over the gate. Extended (round 5, ported from the
+    repairs5 line): the same holds for url() tokens — the stripper must
+    know where strings AND urls begin and end before judging what the
+    text means.
 
     An unclosed comment consumes the rest of the input (CSS Syntax) —
     the tail is dropped, the gate judges less, and _is_dark fails closed
     on whatever remains unjudgeable. An unterminated string likewise
     consumes to end of input (nothing after it can reopen a comment).
-    CDO/CDC (<!-- -->) are not comments and are untouched. Escapes are
-    decoded AFTER comment stripping (tokenization order), so an escape
-    sequence can never forge a comment opener or a string delimiter."""
+    An unterminated url() consumes to the next ) or end of input —
+    same fail-closed direction. CDO/CDC (<!-- -->) are not comments and
+    are untouched. Escapes are decoded AFTER comment stripping
+    (tokenization order), so an escape sequence can never forge a comment
+    opener or a string delimiter."""
     out: list[str] = []
     i, n = 0, len(text)
     while i < n:
@@ -239,8 +436,47 @@ def _strip_css_comments(text: str) -> str:
                 i += 1
                 if c == quote:
                     break
+        elif ch in "uU\\":
+            k = _match_url_opener(text, i)
+            if k == -1:
+                out.append(ch)
+                i += 1
+            else:
+                # A url( token: consume to the matching ) verbatim.
+                # Strings inside are still respected; a \-escape never
+                # terminates (a decoded ) is part of the url's value).
+                out.append(text[i:k])
+                i = k
+                while i < n:
+                    c = text[i]
+                    if c in "\"'":
+                        quote = c
+                        out.append(c)
+                        i += 1
+                        while i < n:
+                            d = text[i]
+                            out.append(d)
+                            if d == "\\" and i + 1 < n:
+                                out.append(text[i + 1])
+                                i += 2
+                                continue
+                            i += 1
+                            if d == quote:
+                                break
+                    elif c == "\\" and i + 1 < n:
+                        out.append(c)
+                        out.append(text[i + 1])
+                        i += 2
+                    elif c == ")":
+                        out.append(c)
+                        i += 1
+                        break
+                    else:
+                        out.append(c)
+                        i += 1
         elif ch == "/" and i + 1 < n and text[i + 1] == "*":
-            # Real comment (outside a string): skip to its closer.
+            # Real comment (outside a string and outside url()): skip to
+            # its closer.
             end = text.find("*/", i + 2)
             if end == -1:
                 break  # unclosed comment swallows the tail
@@ -306,8 +542,7 @@ def inline_css(html: str) -> str:
     forms are all judged exactly once. A trailing `/` on an unquoted
     value is self-closing syntax, never CSS — stripped fail-closed.
     """
-    parts = [_normalize_css_block(p)
-             for p in re.findall(r"<style[^>]*>(.*?)</style>", html, re.S | re.I)]
+    parts = [_normalize_css_block(p) for p in _style_blocks(html)]
     for m in _all_tags(html):
         tag = m.group(0)
         style = _parse_attrs(tag).get("style")
@@ -669,8 +904,7 @@ def _css_sources(html: str) -> list[str]:
     handles comments/strings/escapes itself, so these sources bypass the
     color-normalization pipeline (which is built for color judging, not
     reference extraction)."""
-    sources = list(
-        re.findall(r"<style[^>]*>(.*?)</style>", html, re.S | re.I))
+    sources = list(_style_blocks(html))
     for m in _all_tags(html):
         style = _parse_attrs(m.group(0)).get("style")
         if style:
@@ -1841,6 +2075,71 @@ def self_test() -> int:
             ok = False
         else:
             print(f"SELF-TEST: wave-4 blind-spot '{name}' held (good)")
+    # --- url/tag regression pins (validator round 5, 2026-10-09; ported
+    # from the repairs5 line) ---
+    # Durable law: every check that scans code text must know where
+    # strings begin and end, where url() tokens begin and end, and where
+    # a tag's attributes truly end. Tokenizer-awareness is a three-front
+    # requirement: strings, urls, tags.
+    w5 = [
+        # (name, fragment, check-kind, must_flag_violation)
+        # S3: /* inside unquoted url() is literal per CSS Syntax — the
+        # stripper must not go blind after it.
+        ("unquoted url comment-blinding",
+         "<style>.e{background:url(data:text/plain,/*);background:linen}</style>",
+         "surface_html", True),
+        ("unquoted url blinding in style attr",
+         '<div style="background:url(data:x,/*);background:white">x</div>',
+         "surface_html", True),
+        ("url with space is a function token",
+         "<style>.e{background:url (x);background:/*c*/white}</style>",
+         "surface_html", True),
+        ("escape-forged url opener",
+         "<style>.e{background:\\75rl(data:text/plain,/*);background:linen}</style>",
+         "surface_html", True),
+        ("xurl( is not a url token",
+         "<style>.e{background:xurl(data:x,/*);background:#050507}</style>",
+         "surface_html", False),
+        ("comment after closed url still stripped",
+         '<style>.e{background:url("x");background:/*c*/white}</style>',
+         "surface_html", True),
+        ("lawful data url passes",
+         "<style>.e{background:url(data:image/png;base64,AAA);background:#050507}</style>",
+         "surface_html", False),
+        # C1: a > inside a quoted attribute before style must not blind
+        # the cascade path — the tag's true extent is what matters.
+        ("gt in quoted attr before style",
+         '<style>body{color:#f5f5f5}</style>'
+         '<body title="x>y" style="color:#111111">x</body>',
+         "texthtml", True),
+        ("gt in single-quoted attr before style",
+         "<style>body{color:#f5f5f5}</style>"
+         "<body title='a>b' style='color:#111111'>x</body>",
+         "texthtml", True),
+        ("style before quoted gt still flags",
+         '<style>body{color:#f5f5f5}</style>'
+         '<body style="color:#111111" title="x>y">x</body>',
+         "texthtml", True),
+        ("lawful quoted attr without style passes",
+         '<style>body{color:#f5f5f5;background:#050507}</style>'
+         '<body title="x>y">x</body>',
+         "texthtml", False),
+    ]
+    for name, frag, kind, must_flag in w5:
+        if kind == "surface_html":
+            flagged = bool(check_no_light_surfaces(inline_css(frag)))
+        elif kind == "rooth_html":
+            flagged = bool(check_black_root(frag, inline_css(frag)))
+        elif kind == "texthtml":
+            flagged = bool(check_light_text(frag, inline_css(frag)))
+        elif kind == "freestyle":
+            flagged = bool(check_no_freestyle(frag, w4known))
+        if flagged != must_flag:
+            print(f"SELF-TEST FAIL: wave-5 blind-spot '{name}' regressed "
+                  f"(flagged={flagged}, want={must_flag})")
+            ok = False
+        else:
+            print(f"SELF-TEST: wave-5 blind-spot '{name}' held (good)")
     # --- round-4 pins (validator re-validator verdict, 2026-10-09) ---
     # The repairs3 fork lost round-2's tokenizer and @import scanning
     # (branch-base gap); the re-validator found 8 more holes. Each has a
