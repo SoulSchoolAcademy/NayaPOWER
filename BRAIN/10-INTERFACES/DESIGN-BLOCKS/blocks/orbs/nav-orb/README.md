@@ -2,6 +2,10 @@
 
 40px navigation orb with conic ring.
 
+## Why
+
+40px navigation orb with conic ring. Navigation markers should feel like destinations, not labels. Wayfinding with warmth — the user feels guided, not menued.
+
 - **Type:** orbs
 - **Source:** `Naya_Lego-blocks.html` (extracted byte-true, never rewritten)
 - **CSS:** `nav-orb.css`

@@ -2,6 +2,10 @@
 
 Content card from Missing Blocks library.
 
+## Why
+
+Content card from the Missing Blocks library. The everyday container for a chunk of content — image, title, actions. Information arrives in digestible, tappable pieces.
+
 - **Type:** boards
 - **Source:** `Naya_Lego-blocks.html` (extracted byte-true, never rewritten)
 - **CSS:** `nl-ccard.css`

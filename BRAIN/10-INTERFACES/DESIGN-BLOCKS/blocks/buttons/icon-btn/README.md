@@ -2,6 +2,10 @@
 
 52px round icon button with SVG icons and aria-pressed fill state.
 
+## Why
+
+52px round icon button with SVG icons and an aria-pressed fill state. Icon-only actions need to be tappable, legible, and honest about their state — the fill tells the truth about on/off. Compact controls that stay accessible.
+
 - **Type:** buttons
 - **Source:** `Naya_5_Beautiful_Button_set.html` (extracted byte-true, never rewritten)
 - **CSS:** `icon-btn.css`

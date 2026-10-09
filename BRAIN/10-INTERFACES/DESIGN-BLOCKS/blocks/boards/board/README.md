@@ -2,6 +2,10 @@
 
 Intelligent board container with identity spine.
 
+## Why
+
+Intelligent board container with identity spine. Content needs a room, not a box — the spine gives every board a Naya identity. Disparate content feels like it belongs to one mind.
+
 - **Type:** boards
 - **Source:** `Naya_4_Design_Element_Set.html` (extracted byte-true, never rewritten)
 - **CSS:** `board.css`

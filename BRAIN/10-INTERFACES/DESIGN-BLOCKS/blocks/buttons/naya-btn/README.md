@@ -2,6 +2,10 @@
 
 The canonical Naya button. 95% restraint, 5% fire. 7-layer shadow stack, engraved label.
 
+## Why
+
+The one button every Naya surface should reach for first. 95% restraint means it never shouts; the 5% fire means the action still feels alive. The user always knows exactly what to press, and pressing it feels certain.
+
 - **Type:** buttons
 - **Source:** `Naya_4_Design_Element_Set.html` (extracted byte-true, never rewritten)
 - **CSS:** `naya-btn.css`

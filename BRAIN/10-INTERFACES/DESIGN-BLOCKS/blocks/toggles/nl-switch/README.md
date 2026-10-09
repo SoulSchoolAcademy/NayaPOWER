@@ -2,6 +2,10 @@
 
 Toggle switch from Missing Blocks library.
 
+## Why
+
+Toggle switch. Binary choices should feel physical — a knob that moves is a promise kept. Settings feel certain: on means on.
+
 - **Type:** toggles
 - **Source:** `Naya_Lego-blocks.html` (extracted byte-true, never rewritten)
 - **CSS:** `nl-switch.css`

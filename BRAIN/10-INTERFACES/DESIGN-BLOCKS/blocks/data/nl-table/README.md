@@ -2,6 +2,10 @@
 
 Data table from Missing Blocks library.
 
+## Why
+
+Data table. Rows of facts need alignment, rhythm, and restraint to stay readable. The user scans instead of squints.
+
 - **Type:** data
 - **Source:** `Naya_Lego-blocks.html` (extracted byte-true, never rewritten)
 - **CSS:** `nl-table.css`
