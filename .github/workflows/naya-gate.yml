@@ -1,0 +1,33 @@
+# Naya unified delivery gate — CI wiring (CANDIDATE).
+# Runs the fused gate's adversarial suite on every push/PR touching the gate.
+# The e2e enforce-mode tests resolve the real live tip via git ls-remote
+# (read-only) to prove the trusted runner actually fetches and enforces.
+name: naya-gate
+
+on:
+  push:
+    paths:
+      - "tools/naya_gate.py"
+      - "tools/test_naya_gate.py"
+      - ".github/workflows/naya-gate.yml"
+  pull_request:
+    paths:
+      - "tools/naya_gate.py"
+      - "tools/test_naya_gate.py"
+      - ".github/workflows/naya-gate.yml"
+  workflow_dispatch:
+
+jobs:
+  gate-suite:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install pytest
+        run: pip install pytest
+      - name: Gate self-test (12 adversarial controls)
+        run: python3 tools/naya_gate.py --self-test
+      - name: Pytest suite (13 tests incl. enforce-mode e2e)
+        run: python3 -m pytest tools/test_naya_gate.py -v
