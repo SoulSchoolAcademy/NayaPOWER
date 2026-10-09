@@ -51,9 +51,11 @@ LITERAL-FIRST REFINEMENT (Shawn, 2026-10-09 — the law's root-cause fix):
      hex letter — pure numbers stay legal), no #NNNN PR/issue refs, no
      test-count patterns (NNN passed/failed/skipped, N/M ratios), and no
      CI-state markers (CI, GitHub Actions, green/red build language).
-     Chopping a SHA into sub-7-char chunks does not launder it: runs of
-     short hex tokens that reassemble to 7+ hex chars (with a digit) are
-     caught too. A SHA in the literal layer is the law's named failure
+     Chopping a SHA into sub-7-char chunks does not launder it: the
+     EFFECTIVE hex content is screened, not contiguity — hex chunks
+     scattered across junk words ("01c2 and ab90"), single-char
+     interleaves ("0 x 1 x c x 2"), and full-width hex ("０１ｃ２")
+     are caught too. A SHA in the literal layer is the law's named failure
      mode: "speak it in words that I can't understand."
   9. If full_text is provided, the literal portion (after the plain-words
      marker) gets the same purity screen — the rule is about the LAYER,
@@ -64,13 +66,24 @@ HONEST BOUND (what this check provably does NOT do):
     true, complete, or faithful to the technical layer.
   - Readability (Flesch >= 50, checks 5-6) plus purity (checks 8-9) is a
     cheap screen against laziness and decoration, not a comprehension test.
-  - The reassembly heuristic catches runs of 2+ short (2-6 char) pure-hex
-    tokens that reassemble to 7+ hex chars with at least one digit.
-    Single-letter tokens are excluded and pure numbers stay legal, so
-    ordinary English hex-words ("beef", "face") pass. Two all-letter hex
-    words ("dead beef") are indistinguishable from English words and pass
-    by design — the screen catches exhaust a reader could mechanically
-    reassemble, not every letter arrangement.
+  - The effective-content screen (tiers A/B/C in _reassembled_hex_hits)
+    catches exhaust a reader could mechanically reassemble, not every
+    letter arrangement:
+      * ordinary English hex-words ("beef", "face") pass; pure numbers
+        pass; hex-word+number prose ("the cafe added 12 tables",
+        "face 1234") passes — the mixed-chunk requirement keeps it legal;
+      * all-letter chopped SHA ("dead beef cafe face") is indistinguishable
+        from English words and passes by design — documented bound;
+      * hex-DENSE prose (12+ hex-chunk chars with a digit, e.g. "the cafe
+        added 12 tables and 34 chairs") trips tier B: the literal layer is
+        plain words, so write numbers out as words there;
+      * NAMED RESIDUALS (deliberate, conspicuous trickery — word-salad any
+        human reader instantly sees as machine exhaust, and the human seat
+        stays in the loop): short (<12-char) digit/letter-segregated
+        fragments ("01 23 ab cd"), and single hex chars separated by whole
+        words ("0 and 1 and c and 2"). Segregating a real SHA's digits from
+        its letters chunk-by-chunk is not laziness; it is forgery, and it
+        shows.
 
 Usage:
     python3 tools/protocol/checks/two_layer.py \\
@@ -82,6 +95,7 @@ from __future__ import annotations
 import argparse
 import re
 import sys
+import unicodedata
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
@@ -184,44 +198,122 @@ def _literal_impurities(text: str) -> list[str]:
     return hits
 
 
-# Reassembly heuristic (hole closed 2026-10-09): a SHA chopped into
-# sub-7-char chunks stays reassembleable by any human reader — it is
-# machine exhaust whether or not it arrives in one piece. Find maximal
-# runs of 2+ consecutive short (2-6 char) pure-hex tokens; if they
-# reassemble to 7+ hex chars with at least one digit and at least one
-# hex letter, the run is flagged.
+# Reassembly heuristic (hole closed 2026-10-09; residual hardened 2026-10-09):
+# a SHA chopped into sub-7-char chunks stays reassembleable by any human
+# reader — it is machine exhaust whether or not it arrives in one piece.
+# The 2026-10-09 hardening replaced the contiguity rule with an
+# EFFECTIVE-CONTENT rule: what matters is the hex the reader can
+# mechanically recover, not whether the chunks sit side by side.
+# Interleaving junk words ("01c2 and ab90") or single characters between
+# chunks no longer launders the exhaust.
 #
-# The digit requirement and the 2-char token floor are the tuning: they
-# keep ordinary English hex-words ("beef", "face") and lone articles
-# ("a") legal, while every realistic chopped SHA (which always mixes
-# letters and digits) is caught. Pure numbers stay legal, per the law.
-# Two all-letter hex words ("dead beef") are indistinguishable from
-# English words and pass by design — documented bound, not a claim.
-_HEX_TOKEN = re.compile(r"^[0-9a-f]{2,6}$")
+# Three lanes, all measured against a 31-text honest corpus at 0
+# false positives (evidence: batch4-residual-evidence/policy_compare.py):
+#
+#   Tier A — effective word-chunks: pure-hex tokens of 2-40 chars ANYWHERE
+#   in the text whose total length is >= 7, with at least one MIXED chunk
+#   (a chunk containing both a digit and a hex letter, e.g. "01c2").
+#   The mixed-chunk requirement is the tuning: ordinary prose pairs
+#   hex-words with numbers ("the cafe added 12 tables", "face 1234") but
+#   never mixes digits and letters inside one chunk — while every real
+#   chopped SHA does (a 40-char SHA chopped blind yields a mixed chunk
+#   with probability ~1). English hex-words ("beef", "face") and lone
+#   numbers stay legal.
+#   Tier B — segregated long exhaust: >= 12 total hex-chunk chars with at
+#   least one digit and one hex letter, no mixed chunk required. Catches
+#   the deliberate digit/letter-segregated chop ("01 23 ab cd ..."), which
+#   tier A misses. The 12-char floor keeps honest prose clear (measured).
+#   Tier C — single-char runs: maximal runs of single-character tokens
+#   (hex or junk) holding >= 7 hex singles with a digit and a letter,
+#   tolerating up to 2 consecutive single-char junk tokens. Catches the
+#   single-char-interleaved chop ("0 x 1 x c x 2 ..."). Runs break on any
+#   multi-character token, so list-like prose ("a dog and a cat and 1
+#   fish") never accumulates.
+#
+# NFKC normalization runs first: full-width hex ("０１ｃ２") is the same
+# exhaust in a different costume (cross-lane with the homograph residual).
+_HEX_TOKEN = re.compile(r"^[0-9a-f]{2,6}$")  # legacy contiguous-run shape
+_HEX_WORD = re.compile(r"^[0-9a-f]{2,40}$")
+_HEX_SINGLE = re.compile(r"^[0-9a-f]$")
+_MIN_EFFECTIVE_HEX = 7
+_MIN_SEGREGATED_HEX = 12  # measured: lowest 0-false-positive floor is 12
+_MIN_SINGLES_RUN = 7
+
+
+def _hex_tokens(text: str) -> list[str]:
+    """Alphanumeric tokens over the NFKC-folded, lowercased text."""
+    return re.findall(r"[0-9a-z]+", unicodedata.normalize("NFKC", text).lower())
 
 
 def _reassembled_hex_hits(text: str) -> list[str]:
-    """Flag hex chunks that reassemble to SHA length across separators."""
-    tokens = re.findall(r"[0-9a-z]+", text.lower())
+    """Flag chopped-SHA machine exhaust by EFFECTIVE hex content.
+
+    Returns human-readable hit descriptions (empty when clean). The seam
+    name is kept stable; the rule is effective-content, not contiguity.
+    """
+    toks = _hex_tokens(text)
     hits: list[str] = []
-    run: list[str] = []
+    hits.extend(_effective_word_chunk_hits(toks))
+    hits.extend(_single_char_run_hits(toks))
+    return hits
+
+
+def _effective_word_chunk_hits(toks: list[str]) -> list[str]:
+    """Tiers A and B: hex-chunk material scattered across junk still counts."""
+    word_chunks = [t for t in toks if _HEX_WORD.match(t)]
+    joined = "".join(word_chunks)
+    if len(joined) < _MIN_EFFECTIVE_HEX:
+        return []
+    has_digit = any(c.isdigit() for c in joined)
+    has_letter = any(c in "abcdef" for c in joined)
+    mixed = sum(
+        1
+        for t in word_chunks
+        if any(c.isdigit() for c in t) and any(c in "abcdef" for c in t)
+    )
+    # Tier A: a real chopped SHA always carries mixed chunks; honest
+    # prose never does ("cafe added 12", "face 1234" stay legal).
+    if mixed >= 1:
+        shown = " ".join(word_chunks[:6])
+        if len(word_chunks) > 6:
+            shown += " ..."
+        return [f"reassembled SHA-like hex {shown!r}"]
+    # Tier B: long segregated exhaust (deliberate digit/letter split).
+    if len(joined) >= _MIN_SEGREGATED_HEX and has_digit and has_letter:
+        return [f"segregated SHA-like hex ({len(joined)} hex chars across chunks)"]
+    return []
+
+
+def _single_char_run_hits(toks: list[str]) -> list[str]:
+    """Tier C: single-hex-char runs, tolerant of thin single-char junk."""
+    hits: list[str] = []
+    run_hex: list[str] = []
+    junk_gap = 0
 
     def flush() -> None:
-        if len(run) >= 2:
-            joined = "".join(run)
-            if (
-                len(joined) >= 7
-                and any(c.isdigit() for c in joined)
-                and any(c in "abcdef" for c in joined)
-            ):
-                hits.append(f"reassembled SHA-like hex {' '.join(run)!r}")
-        run.clear()
+        if (
+            len(run_hex) >= _MIN_SINGLES_RUN
+            and any(c.isdigit() for c in run_hex)
+            and any(c in "abcdef" for c in run_hex)
+        ):
+            hits.append(f"single-char-interleaved SHA-like hex ({len(run_hex)} hex chars)")
+        run_hex.clear()
 
-    for tok in tokens:
-        if _HEX_TOKEN.match(tok):
-            run.append(tok)
+    for tok in toks:
+        if _HEX_SINGLE.match(tok):
+            run_hex.append(tok)
+            junk_gap = 0
+        elif len(tok) == 1:
+            # Thin single-character junk ("x" in "0 x 1 x c"): tolerated
+            # up to 2 in a row; anything thicker ends the run, so real
+            # prose ("a dog and a cat and 1 fish") never accumulates.
+            junk_gap += 1
+            if junk_gap > 2:
+                flush()
+                junk_gap = 0
         else:
             flush()
+            junk_gap = 0
     flush()
     return hits
 

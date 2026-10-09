@@ -202,6 +202,87 @@ def test_literal_first_hex_words_in_prose_stay_legal():
     assert out["pass"], out
 
 
+def _literal_attack_report(body):
+    r = _base_two_layer_report()
+    r["plain_human"] = (
+        "Literally what I'm saying: the work finished cleanly, like a "
+        "letter sealed and sent. Think of it as a quiet handoff — "
+        + body + " simply put, basically done."
+    )
+    return r
+
+
+def test_literal_first_word_interleaved_chop_fails():
+    # RESIDUAL 2 hardened (2026-10-09): the screen measures EFFECTIVE hex
+    # content, not contiguity. Junk words interleaved between chunks
+    # ("01c2 and ab90 and ...") no longer launder the exhaust.
+    out = two_layer.check(_literal_attack_report(
+        "the receipt lists 01c2 and ab90 and 7a6c and 52d3 for the record"
+    ))
+    assert not out["pass"], out
+    assert "machine exhaust" in out["reasons"][0]
+
+
+def test_literal_first_single_char_interleave_fails():
+    # Single characters interleaved between chunks ("0 x 1 x c x 2") are
+    # still mechanically reassembleable exhaust.
+    out = two_layer.check(_literal_attack_report(
+        "chunks read 0 x 1 x c x 2 x a x b x 9 x 0 in the log"
+    ))
+    assert not out["pass"], out
+    assert "machine exhaust" in out["reasons"][0]
+
+
+def test_literal_first_fullwidth_hex_fails():
+    # Full-width hex is the same exhaust in a different costume
+    # (cross-lane with the homograph residual): NFKC folds it first.
+    out = two_layer.check(_literal_attack_report(
+        "the code ０１ｃ２ and ａｂ９０ and ７ａ６ｃ was here"
+    ))
+    assert not out["pass"], out
+    assert "machine exhaust" in out["reasons"][0]
+
+
+def test_literal_first_segregated_long_chop_fails():
+    # A chop that deliberately segregates digits from letters ("01 23 45
+    # ab cd ef ...") is still 20 hex chars of exhaust a reader reassembles;
+    # tier B catches long segregated runs without a mixed chunk.
+    out = two_layer.check(_literal_attack_report(
+        "chunks 01 23 45 ab cd ef 67 89 aa bb logged for reference"
+    ))
+    assert not out["pass"], out
+    assert "machine exhaust" in out["reasons"][0]
+
+
+def test_literal_first_hex_word_number_prose_stays_legal():
+    # The mixed-chunk tuning keeps honest prose legal: hex-words next to
+    # numbers ("the cafe added 12 tables", "face 1234") are not exhaust —
+    # no single chunk mixes digits and letters the way a real SHA fragment
+    # does. (The pre-hardening contiguous rule false-positived on these.)
+    for body in (
+        "the cafe added 12 tables this morning",
+        "we face 1234 angry badgers daily",
+    ):
+        out = two_layer.check(_literal_attack_report(body))
+        assert out["pass"], (body, out)
+
+
+def test_literal_first_documented_residual_bounds():
+    # NAMED RESIDUALS, pinned as documented bounds (not hidden): single
+    # hex chars separated by whole words, and short (<12-char)
+    # digit/letter-segregated fragments, are maximally conspicuous
+    # word-salad — closing them re-opens list-prose false positives
+    # (measured in batch4-residual-evidence/). The human seat stays in
+    # the loop for these. If a future change closes them, update the
+    # HONEST BOUND in two_layer.py alongside this test.
+    for body in (
+        "0 and 1 and c and 2 and a and b and 9 and 0 logged",
+        "see chunks 01 23 ab cd here",
+    ):
+        out = two_layer.check(_literal_attack_report(body))
+        assert out["pass"], (body, out)
+
+
 def test_literal_first_technicals_keep_their_exhaust():
     # The technical layer may carry SHAs/PRs/counts — purity is about the
     # LITERAL layer only.
@@ -438,6 +519,84 @@ def test_falsification_folded_norm_keeps_distinct_attacks():
     ]
     out = falsification_first.check(r)
     assert out["pass"], out
+
+
+def test_falsification_homograph_relabel_fails():
+    # RESIDUAL 1 hardened (2026-10-09): the confusable skeleton folds
+    # full-width, circled, math-bold, Cyrillic and Greek lookalikes to the
+    # same identity a human reader sees. A battery entry wearing
+    # confusable characters is a relabel, not a new attack.
+    def sub(s, table):
+        return "".join(table.get(ch, ch) for ch in s)
+
+    def fullwidth(s):
+        return "".join(chr(ord(ch) + 0xFEE0) if "!" <= ch <= "~" else ch for ch in s)
+
+    canon = "snake_case_probe_alpha"
+    cyr = {"a": "а", "e": "е", "o": "о", "p": "р",
+           "c": "с", "x": "х", "s": "ѕ", "h": "һ"}
+    grk = {"a": "α", "e": "ε", "o": "ο", "p": "ρ", "i": "ι"}
+    relabels = [
+        fullwidth(canon),                                            # full-width Latin
+        "".join(chr(0x24D0 + ord(c) - 97) if c.isalpha() else c      # circled
+                for c in canon),
+        "".join(chr(0x1D41A + ord(c) - 97) if c.isalpha() else c     # math bold
+                for c in canon),
+        sub(canon, cyr),                                            # Cyrillic mix
+        sub(canon, grk),                                            # Greek mix
+        sub(fullwidth(canon), cyr),                                 # mixed costumes
+        canon.replace("e", "é"),                                    # combining acute
+    ]
+    for relabel in relabels:
+        r = _base_falsification_report()
+        r["builder_battery"] = [canon]
+        r["verifier_attacks"] = [{"input": relabel, "outcome": "held"}]
+        out = falsification_first.check(r)
+        assert not out["pass"], (relabel, out)
+        assert "relabel" in out["reasons"][0]
+
+
+def test_falsification_compatibility_relabel_fails():
+    # NFKC folds compatibility characters before the skeleton is compared:
+    # ligatures, roman numerals, eszett and superscripts are the same
+    # identifier in a different costume.
+    pairs = [
+        ("official_filter_test", "oﬃcial_ﬁlter_test"),
+        ("test_IV_probe", "test_Ⅳ_probe"),
+        ("test_strasse_probe", "test_straße_probe"),
+        ("test_2_probe", "test_²_probe"),
+    ]
+    for canon, relabel in pairs:
+        r = _base_falsification_report()
+        r["builder_battery"] = [canon]
+        r["verifier_attacks"] = [{"input": relabel, "outcome": "held"}]
+        out = falsification_first.check(r)
+        assert not out["pass"], (canon, relabel, out)
+
+
+def test_falsification_skeleton_keeps_honest_unicode_attacks():
+    # The skeleton must not over-collapse: genuinely different attacks that
+    # happen to carry non-ASCII (accents, German, emoji) stay distinct and
+    # pass. Folding merges only what a human reads as identical.
+    r = _base_falsification_report()
+    r["builder_battery"] = ["null_byte_injection", "oversized-payload-boundary"]
+    r["verifier_attacks"] = [
+        {"input": "naïve résumé parsing with unicode edge cases", "outcome": "held"},
+        {"input": "Größe des Puffers prüfen mit Umlauten", "outcome": "held"},
+    ]
+    out = falsification_first.check(r)
+    assert out["pass"], out
+
+
+def test_falsification_allcaps_canonical_matches_lowercase_relabel():
+    # casefold("I") is "ı" (dotless i): without the ı→i fold, an ALL-CAPS
+    # canonical would normalize apart from its lowercase twin — a relabel
+    # lane through case alone.
+    r = _base_falsification_report()
+    r["builder_battery"] = ["KILIT_KONTROL"]
+    r["verifier_attacks"] = [{"input": "kilit_kontrol", "outcome": "held"}]
+    out = falsification_first.check(r)
+    assert not out["pass"], out
 
 
 # ---------------------------------------------------------------- manifest integrity

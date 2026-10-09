@@ -39,9 +39,13 @@ HONEST BOUND (what this check provably does NOT do):
   - It proves the verifier ATTEMPTED falsification with inputs of their
     own — not that the attacks were competent, complete, or adversarial
     enough to deserve the claim's trust.
-  - Distinctness is normalized-text distinctness (case, punctuation, and
-    whitespace folded), not semantic distinctness. A paraphrased copy of
-    a builder test passes the mechanics.
+  - Distinctness is skeleton distinctness (confusable-skeleton fold —
+    NFKC + casefold + diacritic-strip + Cyrillic/Greek lookalike fold —
+    then case, punctuation, and whitespace folded), not semantic
+    distinctness. A paraphrased copy of a builder test passes the
+    mechanics; a relabel no human reader can distinguish from the
+    builder's battery does not. Digit/letter confusables (o/0, l/1) are
+    deliberately NOT folded — distinguishable in code font.
   - "I came to falsify and could not" is an honesty standard for the
     REPORT. Whether the claim is true still needs a human seat to read
     the attacks.
@@ -56,6 +60,7 @@ from __future__ import annotations
 import argparse
 import re
 import sys
+import unicodedata
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
@@ -66,9 +71,47 @@ LAW_ID = "FALSIFICATION-FIRST-LAW"
 VALID_OUTCOMES = {"held", "broke"}
 PASSING_VERDICTS = {"verified", "pass", "proven", "confirmed"}
 
+# Confusable skeleton (residual hardened 2026-10-09): Cyrillic and Greek
+# lookalikes fold to their Latin twins — the batch-3 Cyrillic family,
+# applied here to the identity machinery. NFKC (below) already folds
+# full-width, circled, mathematical-bold, ligatures, roman numerals and
+# superscripts; casefold + diacritic-strip handle ß/İ/é-class relabels.
+# This table covers only letter→letter confusables: digit/letter pairs
+# (o/0, l/1) are NOT folded — they stay distinguishable in code font,
+# and folding them would merge genuinely different identifiers.
+_CONFUSABLE_FOLD = {
+    # Cyrillic → Latin
+    "а": "a", "е": "e", "о": "o", "р": "p", "с": "c", "х": "x",
+    "у": "y", "і": "i", "ј": "j", "ѕ": "s", "һ": "h",
+    "ԛ": "q", "ԝ": "w", "ԁ": "d", "ӏ": "l",
+    # Greek → Latin
+    "α": "a", "ε": "e", "ο": "o", "ρ": "p", "ι": "i",
+    "κ": "k", "ν": "v", "τ": "t", "χ": "x", "υ": "u",
+    # dotless i (casefold("I") → "ı"; without this, ALL-CAPS
+    # canonicals would normalize apart from their lowercase twins)
+    "ı": "i",
+}
+
+
+def _skeleton(text: str) -> str:
+    """Reduce text to its confusable skeleton: what a human READS.
+
+    NFKC (compatibility decomposition) → casefold → strip combining
+    marks → explicit Cyrillic/Greek confusable fold. Two labels with
+    the same skeleton look the same to the reader; treating them as
+    distinct is the relabel exploit.
+    """
+    text = unicodedata.normalize("NFKC", text)
+    text = text.casefold()
+    text = "".join(
+        c for c in unicodedata.normalize("NFD", text)
+        if unicodedata.category(c) != "Mn"
+    )
+    return "".join(_CONFUSABLE_FOLD.get(c, c) for c in text)
+
 
 def _norm(text: str) -> str:
-    """Fold case, punctuation, and whitespace for copy detection.
+    """Fold to the confusable skeleton, then case/punct/whitespace.
 
     Punctuation is FOLDED to a common separator (one space), never
     deleted. Deleting separators made 'test_x' and 'test x' normalize
@@ -76,8 +119,15 @@ def _norm(text: str) -> str:
     swap separators for spaces (the most natural relabel there is),
     and pass it off as their own attack. Folding closes that lane;
     genuinely different inputs still normalize apart.
+
+    The skeleton step (new) closes the homograph lane: full-width,
+    circled, math-bold, ligature, roman-numeral, superscript, ß/İ/
+    diacritic, Cyrillic and Greek relabels all fold to the same
+    skeleton as their canonical twin. What the human reads is the
+    identity — a relabel the reader cannot distinguish from the
+    builder's battery is not a new attack.
     """
-    return re.sub(r"\s+", " ", re.sub(r"[^a-z0-9]+", " ", text.lower())).strip()
+    return re.sub(r"\s+", " ", re.sub(r"[^a-z0-9]+", " ", _skeleton(text))).strip()
 
 
 def check(record: dict) -> dict:
