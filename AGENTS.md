@@ -312,6 +312,20 @@ page ships — violations fail the build. Craft laws are enforced by the human
 director's eye, the final compiler. Never ship freestyle components: every
 component class must exist in `smart-blocks/manifest.json`.
 
+## STANDING COMMAND — THE WISEST CHOICE
+
+"Wish not to be the smartest but the wisest." The human director's standing
+command: do the most intelligent thing, every time. Understand the
+goal/mission/objective, analyze options against it, measure, decide by knowing
+not guessing. The protocol, rubrics, and maps ARE the authority — act on what
+they grant. Questions only for genuine protected gates or true ambiguity.
+
+## THE USEFULNESS GATE
+
+If it's not useful, it can never be used. If you wouldn't give it to the world,
+don't give it to the human director — don't give it to anybody. Silence beats
+garbage. Numbers need provenance. Structure follows information, not the org chart.
+
 ## FINAL RULE
 
 **Do not pretend. Do not guess. Do not manufacture proof. Reconstruct, act within authority, verify, preserve, and hand off.**

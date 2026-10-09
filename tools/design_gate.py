@@ -16,6 +16,8 @@ Structural checks:
   4. DARK COLOR-SCHEME — meta or CSS declares dark.
   5. NO FREESTYLE COMPONENTS — every Naya-prefixed class exists in the manifest.
   6. LIGHT TEXT — body text color is light.
+  7. MOBILE VIEWPORT — the viewport meta declares width=device-width
+     (mobile is the primary canvas).
 """
 from __future__ import annotations
 
@@ -254,6 +256,19 @@ def check_light_text(css: str) -> list[str]:
     return v
 
 
+def check_viewport(html: str) -> list[str]:
+    m = re.search(
+        r'<meta[^>]+name=["\']viewport["\'][^>]*>', html, re.I
+    )
+    if not m:
+        return ["MOBILE VIEWPORT: no viewport meta tag "
+                "(mobile is the primary canvas)"]
+    if "width=device-width" not in m.group(0).replace(" ", ""):
+        return ["MOBILE VIEWPORT: viewport meta does not declare "
+                "width=device-width"]
+    return []
+
+
 def run_gate(page: Path, manifest: Path) -> list[str]:
     html = read_page(page)
     css = inline_css(html)
@@ -262,6 +277,7 @@ def run_gate(page: Path, manifest: Path) -> list[str]:
     violations += check_black_root(html, css)
     violations += check_no_light_surfaces(css)
     violations += check_dark_scheme(html, css)
+    violations += check_viewport(html)
     if manifest.exists():
         violations += check_no_freestyle(html, _manifest_classes(manifest))
     else:
@@ -277,6 +293,7 @@ def self_test() -> int:
 <style>body{background:#fff;color:#111}</style></head>
 <body><div class="naya-frobnicate">hi</div></body></html>"""
     good = """<!DOCTYPE html><html><head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="dark">
 <style>html{background:#050507}body{background:#050507;color:#f8f7fb}
 .naya-btn{color:#fff}</style></head>
