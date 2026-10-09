@@ -1,10 +1,10 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-09",
-  "receipt_basis_commit": "b1299d02f7a9eb3fe6dcd8d314ef5874cf562331",
-  "inventory_file_count": 1207,
+  "receipt_basis_commit": "7ba8e40ef4d6232b62ca387dea2b3d96ce2c6500",
+  "inventory_file_count": 1208,
   "domain_counts": {
-    "00-ACTIVATION": 2,
+    "00-ACTIVATION": 3,
     "00-ARCHITECTURE": 5,
     "00-SPEC": 15,
     "01-GOVERNANCE": 28,
@@ -25,6 +25,11 @@
   },
   "ledger_assertion": "Per-domain counts asserted against the 2026-09-30 brain-reconciliation ledger classification table. Any drift fails regeneration instead of silently rewriting the table.",
   "files": [
+    {
+      "path": "BRAIN/00-ACTIVATION/ACTIVATION-CHECKLIST.md",
+      "blob_sha": "1b990d7507f61098f203764363e698eec6f36f16",
+      "size": 10868
+    },
     {
       "path": "BRAIN/00-ACTIVATION/DESIGN-ACTIVATION.md",
       "blob_sha": "fed3bb338e0205ac2d31c4afac69b06641f243ca",
