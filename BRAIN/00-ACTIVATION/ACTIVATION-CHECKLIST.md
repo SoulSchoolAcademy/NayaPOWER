@@ -3,7 +3,7 @@
 **Owner:** Naya 4 (builder seat), Team Naya
 **Created:** 2026-10-09 (Shawn's direct order)
 **Canonical location:** `BRAIN/00-ACTIVATION/ACTIVATION-CHECKLIST.md`
-**Source of truth:** `BRAIN/00-ACTIVATION/ACTIVATION-CHECKLIST.json` (this file is GENERATED — do not hand-edit)
+**Source of truth:** `BRAIN/00-ACTIVATION/ACTIVATION-MASTER-CHECKLIST.json` (this file is GENERATED — do not hand-edit)
 **Status as of:** 2026-10-09T22:15:00Z
 **Main tip at update:** `6fb7b7ee`
 
@@ -463,4 +463,4 @@ ALL cross-cutting DONE AND all departments at 10/10 (independently verified, no 
 
 *Summary: 2/39 DONE (10 in progress, 3 blocked, 24 todo, 0 stale). Last sync: 2026-10-09T22:15:00Z.*
 
-*Generated from ACTIVATION-CHECKLIST.json — do not hand-edit.*
+*Generated from ACTIVATION-MASTER-CHECKLIST.json — do not hand-edit.*

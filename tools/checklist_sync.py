@@ -15,7 +15,7 @@ it. This script makes the checklist self-maintaining:
    movement get flagged STALE and posted to #1354. No silent stalls.
 
 3. MD REGENERATION — BRAIN/00-ACTIVATION/ACTIVATION-CHECKLIST.md is
-   GENERATED from ACTIVATION-CHECKLIST.json. The JSON is the single source
+   GENERATED from ACTIVATION-MASTER-CHECKLIST.json. The JSON is the single source
    of truth. Never hand-edit the .md.
 
 USAGE
@@ -43,7 +43,7 @@ GH_API = "/home/hatch/workspace/skills/github/bin/gh-api"
 BOARD_ISSUE = 1354
 
 # Paths relative to repo root. When run from repo root, these resolve directly.
-JSON_PATH = "BRAIN/00-ACTIVATION/ACTIVATION-CHECKLIST.json"
+JSON_PATH = "BRAIN/00-ACTIVATION/ACTIVATION-MASTER-CHECKLIST.json"
 MD_PATH = "BRAIN/00-ACTIVATION/ACTIVATION-CHECKLIST.md"
 
 STALE_HOURS = 48
@@ -358,7 +358,7 @@ def generate_md(data):
                  f"{counts.get('STALE', 0)} stale). "
                  f"Last sync: {meta['updated_at']}.*")
     lines.append("")
-    lines.append("*Generated from ACTIVATION-CHECKLIST.json — do not hand-edit.*")
+    lines.append("*Generated from ACTIVATION-MASTER-CHECKLIST.json — do not hand-edit.*")
     lines.append("")
 
     return "\n".join(lines)
