@@ -1,0 +1,57 @@
+/* Smart Block: body-text
+ * Type: composition (authored 2026-10-09 — cold-test gap fill)
+ * Body copy: readable measure, silver/white voice, breathing spacing.
+ *
+ * LAW ZERO: readability supreme. Body text is silver-white, 18px,
+ * 1.65 line-height, capped at 65ch. Jewel colors never touch body text.
+ */
+
+/* ---- body copy ---- */
+.cmp-body{
+  margin:0 0 1.2em;
+  max-width:65ch;
+  font-size:var(--type-body);
+  line-height:1.65;
+  color:var(--quiet);
+}
+
+.cmp-body:last-child{
+  margin-bottom:0;
+}
+
+.cmp-body strong{
+  color:var(--ink);
+  font-weight:600;
+}
+
+.cmp-body a{
+  color:var(--ink);
+  text-decoration:underline;
+  text-decoration-color:var(--purple);
+  text-underline-offset:3px;
+  text-decoration-thickness:1px;
+}
+
+.cmp-body a:hover{
+  color:#fff;
+  text-decoration-color:#fff;
+}
+
+.cmp-body a:focus-visible{
+  outline:2px solid var(--purple);
+  outline-offset:3px;
+  border-radius:2px;
+}
+
+/* ---- detail copy: evidence, captions, fine print ---- */
+.cmp-body--detail{
+  font-size:var(--type-small);
+  line-height:1.6;
+  color:var(--secondary);
+}
+
+/* ---- lead paragraph: first paragraph emphasis, still silver ---- */
+.cmp-body--lead{
+  font-size:20px;
+  color:var(--ink);
+}

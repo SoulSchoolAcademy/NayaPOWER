@@ -1,0 +1,132 @@
+/* Smart Block: hero
+ * Type: composition (authored 2026-10-09 — cold-test gap fill)
+ * The top of the page: emblem, kicker, headline, subhead, primary
+ * action row. Elevated at rest — hairline edge, contact shadow,
+ * restrained spectrum wash. Centered, thumb-first.
+ *
+ * Set --hc to the page's ignition color (default purple).
+ * Pair with orbs/* for a living emblem, or use the built-in diamond mark.
+ */
+
+/* ---- hero frame: elevated at rest ---- */
+.cmp-hero{
+  --hc:var(--purple);
+  position:relative;
+  overflow:hidden;
+  text-align:center;
+  padding:60px 28px 52px;
+  border:1px solid var(--line);
+  border-radius:var(--r-xl);
+  background:
+    radial-gradient(90% 240px at 50% -40px, color-mix(in srgb, var(--hc) 20%, transparent), transparent 70%),
+    linear-gradient(180deg, rgba(255,255,255,.028), rgba(0,0,0,.28));
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.09),
+    inset 0 -8px 24px rgba(0,0,0,.45),
+    0 28px 70px rgba(0,0,0,.55),
+    0 0 64px -18px var(--hc);
+}
+
+/* hairline top light */
+.cmp-hero::after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:10%;
+  right:10%;
+  height:1px;
+  background:linear-gradient(90deg, transparent, rgba(255,255,255,.35), transparent);
+  pointer-events:none;
+}
+
+/* ---- emblem: built-in diamond mark (small, precise jewel) ---- */
+.cmp-hero__emblem{
+  width:64px;
+  height:64px;
+  margin:0 auto 22px;
+  transform:rotate(45deg);
+  border-radius:14px;
+  background:
+    radial-gradient(circle at 32% 24%, rgba(255,255,255,.9), transparent 46%),
+    radial-gradient(circle at 50% 58%, var(--hc), #000 135%);
+  border:1px solid rgba(255,255,255,.42);
+  box-shadow:
+    0 0 22px var(--hc),
+    0 12px 28px rgba(0,0,0,.5),
+    inset 0 1px 2px rgba(255,255,255,.35);
+}
+
+/* ---- kicker ---- */
+.cmp-hero__kicker{
+  margin:0 0 14px;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.26em;
+  text-transform:uppercase;
+  color:var(--hc);
+}
+
+/* ---- headline: editorial serif, white, balanced ---- */
+.cmp-hero__title{
+  margin:0 auto;
+  max-width:20ch;
+  font-family:var(--voice);
+  font-weight:500;
+  font-size:clamp(32px, 7vw, 44px);
+  line-height:1.18;
+  color:#fff;
+  text-wrap:balance;
+}
+
+/* ---- subhead: silver voice ---- */
+.cmp-hero__sub{
+  margin:16px auto 0;
+  max-width:52ch;
+  font-size:var(--type-body);
+  line-height:1.65;
+  color:var(--quiet);
+}
+
+/* ---- action row: thumb-first, targets never shrink ---- */
+.cmp-hero__actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  justify-content:center;
+  align-items:center;
+  margin-top:32px;
+}
+
+.cmp-hero__actions > *{
+  min-height:44px;
+  flex:0 1 auto;
+}
+
+/* tap mirrors hover: lift the whole hero a breath */
+.cmp-hero__actions > :active{
+  transform:translateY(1px);
+}
+
+/* ---- mobile: tighter, still generous ---- */
+@media (max-width:560px){
+  .cmp-hero{
+    padding:44px 20px 40px;
+  }
+  .cmp-hero__emblem{
+    width:52px;
+    height:52px;
+    border-radius:12px;
+  }
+}
+
+/* ---- reduced motion ---- */
+@media (prefers-reduced-motion:reduce){
+  .cmp-hero{
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.09),
+      0 28px 70px rgba(0,0,0,.55);
+  }
+  .cmp-hero__emblem{
+    box-shadow:0 12px 28px rgba(0,0,0,.5);
+  }
+}

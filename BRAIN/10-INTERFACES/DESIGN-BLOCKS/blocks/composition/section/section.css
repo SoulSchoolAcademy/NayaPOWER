@@ -1,0 +1,89 @@
+/* Smart Block: section
+ * Type: composition (authored 2026-10-09 — cold-test gap fill)
+ * A page section: tracked kicker label, serif section title, generous
+ * vertical rhythm, spectrum-positioned accent edge.
+ *
+ * Set --sc to the section's spectrum color BY DOCUMENT ORDER
+ * (purple → indigo → blue → teal → emerald → lime → yellow → gold →
+ *  orange → red → magenta), never by category.
+ */
+
+/* ---- section frame ---- */
+.cmp-section{
+  --sc:var(--purple);
+  position:relative;
+  padding:44px 0 44px 28px;
+  scroll-margin-top:24px;
+}
+
+/* hairline separation between stacked sections */
+.cmp-section + .cmp-section{
+  border-top:1px solid var(--soft-line);
+}
+
+/* ---- spectrum accent edge ---- */
+.cmp-section::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:44px;
+  bottom:44px;
+  width:3px;
+  border-radius:2px;
+  background:linear-gradient(180deg, var(--sc), transparent 90%);
+  box-shadow:0 0 12px var(--sc);
+  pointer-events:none;
+}
+
+/* ---- tracked kicker label (jewel accent, never body text) ---- */
+.cmp-section__kicker{
+  margin:0 0 10px;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  color:var(--sc);
+}
+
+/* ---- section title: serif voice, white ---- */
+.cmp-section__title{
+  margin:0 0 10px;
+  font-family:var(--voice);
+  font-weight:500;
+  font-size:var(--type-headline);
+  line-height:1.3;
+  color:#fff;
+  text-wrap:balance;
+}
+
+/* ---- optional deck under the title ---- */
+.cmp-section__deck{
+  margin:0 0 28px;
+  max-width:60ch;
+  font-size:var(--type-body);
+  line-height:1.6;
+  color:var(--quiet);
+}
+
+.cmp-section__deck strong{
+  color:var(--ink);
+  font-weight:600;
+}
+
+/* ---- mobile: tighten rhythm, keep the edge ---- */
+@media (max-width:560px){
+  .cmp-section{
+    padding:32px 0 32px 20px;
+  }
+  .cmp-section::before{
+    top:32px;
+    bottom:32px;
+  }
+}
+
+/* ---- reduced motion ---- */
+@media (prefers-reduced-motion:reduce){
+  .cmp-section::before{
+    box-shadow:none;
+  }
+}

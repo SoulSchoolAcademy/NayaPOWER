@@ -1,0 +1,62 @@
+/* Smart Block: headline
+ * Type: composition (authored 2026-10-09 — cold-test gap fill)
+ * Headline + subhead typography pair. Editorial serif headline in
+ * white, silver subhead. Exact type scale from the shared tokens:
+ * 40 chapter / 24 section / 18 sub / 14 detail.
+ *
+ * LAW ZERO: hierarchy comes from size — never from colored text.
+ * Headlines are always white. Jewel color lives in the kicker only.
+ */
+
+/* ---- headline: serif voice, white, never colored ---- */
+.cmp-headline{
+  margin:0 0 10px;
+  font-family:var(--voice);
+  font-weight:500;
+  line-height:1.25;
+  color:#fff;
+  text-wrap:balance;
+}
+
+.cmp-headline--chapter{font-size:clamp(32px, 7vw, 40px); line-height:1.18;}
+.cmp-headline--section{font-size:var(--type-headline);}
+.cmp-headline--card{font-size:20px;}
+
+/* ---- subhead: silver voice ---- */
+.cmp-sub{
+  margin:0;
+  max-width:62ch;
+  font-size:var(--type-body);
+  line-height:1.65;
+  color:var(--quiet);
+}
+
+.cmp-sub strong{
+  color:var(--ink);
+  font-weight:600;
+}
+
+.cmp-sub--detail{
+  font-size:var(--type-small);
+  color:var(--secondary);
+}
+
+/* ---- kicker: the ONLY place jewel color touches type ---- */
+.cmp-kicker{
+  margin:0 0 10px;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  color:var(--kc, var(--purple));
+}
+
+/* ---- eyebrow stack: kicker + headline + sub, one rhythm unit ---- */
+.cmp-eyebrow > .cmp-headline:last-child,
+.cmp-eyebrow > .cmp-sub:last-child{
+  margin-bottom:0;
+}
+
+.cmp-eyebrow{
+  margin-bottom:28px;
+}

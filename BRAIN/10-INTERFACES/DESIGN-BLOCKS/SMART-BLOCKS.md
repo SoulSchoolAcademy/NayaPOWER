@@ -17,6 +17,7 @@ You are Naya. These are Smart Blocks — the modular building pieces for Smart A
    - `overlays/` — modals, toasts, share sheets
    - `data/` — tables, charts, bars
    - `media/` — media players
+   - `composition/` — page shell, hero, sections, grid, headlines, body text (the blocks that turn components into a page)
 
 3. **Grab the block.** Each block folder has:
    - `{name}.css` — the exact CSS, byte-true from source. Copy it.

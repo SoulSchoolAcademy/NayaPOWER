@@ -1,0 +1,51 @@
+/* Smart Block: page-shell
+ * Type: composition (authored 2026-10-09 — cold-test gap fill)
+ * The document frame every Smart App page starts from.
+ * Black obsidian ground, safe-area insets, centered max-width column.
+ * Mobile-first. Zero horizontal scroll.
+ *
+ * Use: <body class="cmp-shell"><div class="cmp-shell__inner"> ... </div></body>
+ * Variants: .cmp-shell--wide (1080px column for dashboards)
+ */
+
+/* ---- document frame ---- */
+.cmp-shell{
+  --shell-ground:#0d0a14;
+  --shell-maxw:720px;
+  margin:0;
+  min-height:100dvh;
+  color-scheme:dark;
+  background:
+    radial-gradient(120% 480px at 50% -120px, rgba(141,99,245,.10), transparent 60%),
+    var(--shell-ground);
+  color:var(--ink);
+  font-family:var(--ui);
+  font-size:var(--type-body);
+  line-height:1.6;
+  overflow-x:clip;
+  -webkit-text-size-adjust:100%;
+  -webkit-tap-highlight-color:transparent;
+}
+
+/* ---- centered column with safe-area ---- */
+.cmp-shell__inner{
+  width:100%;
+  max-width:var(--shell-maxw);
+  margin-inline:auto;
+  padding-left:max(20px, env(safe-area-inset-left));
+  padding-right:max(20px, env(safe-area-inset-right));
+  padding-top:max(28px, env(safe-area-inset-top));
+  padding-bottom:max(56px, env(safe-area-inset-bottom));
+}
+
+/* ---- wide variant: dashboard-style pages ---- */
+.cmp-shell--wide .cmp-shell__inner{
+  max-width:1080px;
+}
+
+/* ---- reduced motion: kill the ambient wash ---- */
+@media (prefers-reduced-motion:reduce){
+  .cmp-shell{
+    background:var(--shell-ground);
+  }
+}

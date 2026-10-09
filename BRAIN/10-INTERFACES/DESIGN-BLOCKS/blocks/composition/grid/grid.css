@@ -1,0 +1,51 @@
+/* Smart Block: grid
+ * Type: composition (authored 2026-10-09 — cold-test gap fill)
+ * Responsive 12-column grid. Full 12 columns on desktop, single
+ * column on mobile. Consistent gutters. Children never blow out.
+ *
+ * Span utilities: .cmp-span-1 … .cmp-span-12
+ * Density: .cmp-grid--tight (12px gutters), .cmp-grid--loose (32px)
+ */
+
+/* ---- 12-column grid ---- */
+.cmp-grid{
+  --cmp-cols:12;
+  --cmp-gap:20px;
+  display:grid;
+  grid-template-columns:repeat(var(--cmp-cols), minmax(0,1fr));
+  gap:var(--cmp-gap);
+  align-items:start;
+}
+
+/* children can never force horizontal overflow */
+.cmp-grid > *{
+  min-width:0;
+}
+
+/* ---- span utilities ---- */
+.cmp-span-1{grid-column:span 1;}
+.cmp-span-2{grid-column:span 2;}
+.cmp-span-3{grid-column:span 3;}
+.cmp-span-4{grid-column:span 4;}
+.cmp-span-5{grid-column:span 5;}
+.cmp-span-6{grid-column:span 6;}
+.cmp-span-7{grid-column:span 7;}
+.cmp-span-8{grid-column:span 8;}
+.cmp-span-9{grid-column:span 9;}
+.cmp-span-10{grid-column:span 10;}
+.cmp-span-11{grid-column:span 11;}
+.cmp-span-12{grid-column:span 12;}
+
+/* ---- gutter density ---- */
+.cmp-grid--tight{--cmp-gap:12px;}
+.cmp-grid--loose{--cmp-gap:32px;}
+
+/* ---- mobile: single column, spans collapse naturally ---- */
+@media (max-width:720px){
+  .cmp-grid{
+    grid-template-columns:minmax(0,1fr);
+  }
+  .cmp-grid > [class*="cmp-span-"]{
+    grid-column:1 / -1;
+  }
+}

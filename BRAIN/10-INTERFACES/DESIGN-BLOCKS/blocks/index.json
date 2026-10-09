@@ -922,6 +922,186 @@
         ".nl-player-top"
       ],
       "score": 8.0
+    },
+    {
+      "id": "page-shell",
+      "type": "composition",
+      "description": "Document frame: black obsidian ground, safe-area insets, centered max-width column. Mobile-first, zero horizontal scroll.",
+      "source": "Authored 2026-10-09 (cold-test gap fill \u2014 no source file existed)",
+      "files": {
+        "css": "blocks/composition/page-shell/page-shell.css",
+        "specimen": "blocks/composition/page-shell/specimen.html",
+        "readme": "blocks/composition/page-shell/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [
+        "@media (prefers-reduced-motion: reduce)"
+      ],
+      "selectors": [
+        ".cmp-shell",
+        ".cmp-shell__inner",
+        ".cmp-shell--wide .cmp-shell__inner"
+      ],
+      "score": 8.5,
+      "score_rationale": "Authored to design law, specimen-rendered, cold-test verified; independent review pending \u2014 not yet battle-tested."
+    },
+    {
+      "id": "section",
+      "type": "composition",
+      "description": "Page section: tracked kicker, serif title, generous rhythm, spectrum-positioned accent edge.",
+      "source": "Authored 2026-10-09 (cold-test gap fill \u2014 no source file existed)",
+      "files": {
+        "css": "blocks/composition/section/section.css",
+        "specimen": "blocks/composition/section/specimen.html",
+        "readme": "blocks/composition/section/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [
+        "@media (max-width: 560px)",
+        "@media (prefers-reduced-motion: reduce)"
+      ],
+      "selectors": [
+        ".cmp-section",
+        ".cmp-section + .cmp-section",
+        ".cmp-section::before",
+        ".cmp-section__kicker",
+        ".cmp-section__title",
+        ".cmp-section__deck",
+        ".cmp-section__deck strong"
+      ],
+      "score": 8.5,
+      "score_rationale": "Authored to design law, specimen-rendered, cold-test verified; independent review pending \u2014 not yet battle-tested."
+    },
+    {
+      "id": "grid",
+      "type": "composition",
+      "description": "Responsive 12-column grid, single column on mobile, consistent gutters, span utilities.",
+      "source": "Authored 2026-10-09 (cold-test gap fill \u2014 no source file existed)",
+      "files": {
+        "css": "blocks/composition/grid/grid.css",
+        "specimen": "blocks/composition/grid/specimen.html",
+        "readme": "blocks/composition/grid/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [
+        "@media (max-width: 720px)"
+      ],
+      "selectors": [
+        ".cmp-grid",
+        ".cmp-grid > *",
+        ".cmp-span-1",
+        ".cmp-span-2",
+        ".cmp-span-3",
+        ".cmp-span-4",
+        ".cmp-span-5",
+        ".cmp-span-6",
+        ".cmp-span-7",
+        ".cmp-span-8",
+        ".cmp-span-9",
+        ".cmp-span-10",
+        ".cmp-span-11",
+        ".cmp-span-12",
+        ".cmp-grid--tight",
+        ".cmp-grid--loose"
+      ],
+      "score": 8.5,
+      "score_rationale": "Authored to design law, specimen-rendered, cold-test verified; independent review pending \u2014 not yet battle-tested."
+    },
+    {
+      "id": "hero",
+      "type": "composition",
+      "description": "Page top: emblem, kicker, serif headline, subhead, primary action row. Elevated at rest.",
+      "source": "Authored 2026-10-09 (cold-test gap fill \u2014 no source file existed)",
+      "files": {
+        "css": "blocks/composition/hero/hero.css",
+        "specimen": "blocks/composition/hero/specimen.html",
+        "readme": "blocks/composition/hero/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [
+        ":active",
+        "@media (max-width: 560px)",
+        "@media (prefers-reduced-motion: reduce)"
+      ],
+      "selectors": [
+        ".cmp-hero",
+        ".cmp-hero::after",
+        ".cmp-hero__emblem",
+        ".cmp-hero__kicker",
+        ".cmp-hero__title",
+        ".cmp-hero__sub",
+        ".cmp-hero__actions",
+        ".cmp-hero__actions > *",
+        ".cmp-hero__actions > :active"
+      ],
+      "score": 8.5,
+      "score_rationale": "Authored to design law, specimen-rendered, cold-test verified; independent review pending \u2014 not yet battle-tested."
+    },
+    {
+      "id": "headline",
+      "type": "composition",
+      "description": "Headline + subhead typography pair: serif white headline, silver subhead, exact token type scale.",
+      "source": "Authored 2026-10-09 (cold-test gap fill \u2014 no source file existed)",
+      "files": {
+        "css": "blocks/composition/headline/headline.css",
+        "specimen": "blocks/composition/headline/specimen.html",
+        "readme": "blocks/composition/headline/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [],
+      "selectors": [
+        ".cmp-headline",
+        ".cmp-headline--chapter",
+        ".cmp-headline--section",
+        ".cmp-headline--card",
+        ".cmp-sub",
+        ".cmp-sub strong",
+        ".cmp-sub--detail",
+        ".cmp-kicker",
+        ".cmp-eyebrow"
+      ],
+      "score": 8.5,
+      "score_rationale": "Authored to design law, specimen-rendered, cold-test verified; independent review pending \u2014 not yet battle-tested."
+    },
+    {
+      "id": "body-text",
+      "type": "composition",
+      "description": "Body copy: 65ch measure, silver/white voice, breathing spacing. LAW ZERO readability.",
+      "source": "Authored 2026-10-09 (cold-test gap fill \u2014 no source file existed)",
+      "files": {
+        "css": "blocks/composition/body-text/body-text.css",
+        "specimen": "blocks/composition/body-text/specimen.html",
+        "readme": "blocks/composition/body-text/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [
+        "a:hover",
+        "a:focus-visible"
+      ],
+      "selectors": [
+        ".cmp-body",
+        ".cmp-body:last-child",
+        ".cmp-body strong",
+        ".cmp-body a",
+        ".cmp-body a:hover",
+        ".cmp-body a:focus-visible",
+        ".cmp-body--detail",
+        ".cmp-body--lead"
+      ],
+      "score": 8.5,
+      "score_rationale": "Authored to design law, specimen-rendered, cold-test verified; independent review pending \u2014 not yet battle-tested."
     }
   ],
   "generated": "2026-10-09",
