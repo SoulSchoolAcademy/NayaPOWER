@@ -2,6 +2,10 @@
 
 Ledger detail modal — backdrop overlay, stat grid, explain paragraph, CLOSE button with full close plumbing (backdrop click, Escape, focus trap, focus restore).
 
+## Why
+
+Detail deserves focus. The ledger modal with backdrop, stat grid, and full close plumbing — backdrop click, Escape, focus trap and restore — means the deep view never traps anyone.
+
 - **Type:** overlays
 - **Source:** `Ledger Page Design.html` (extracted byte-true, never rewritten)
 - **CSS:** `block.css`

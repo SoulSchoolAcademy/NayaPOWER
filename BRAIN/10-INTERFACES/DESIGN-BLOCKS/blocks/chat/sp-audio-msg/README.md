@@ -2,6 +2,10 @@
 
 Audio message with a seeded waveform: circular play button, 24-bar waveform, duration label.
 
+## Why
+
+Voice messages shouldn’t be black boxes. A seeded waveform with play button and duration shows the shape of what was said before you commit to listening.
+
 - **Type:** chat
 - **Source:** `Smart Spaces Page Design.html` (extracted byte-true, never rewritten)
 - **CSS:** `block.css`

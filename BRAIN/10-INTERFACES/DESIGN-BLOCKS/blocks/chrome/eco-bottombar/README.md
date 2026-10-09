@@ -2,6 +2,10 @@
 
 The mobile bottom bar shared across Hub, Ledger, and Spaces: 46px round buttons on a radial dark bar, jewel plus-button, pop-up destination menu. `--jewel` themes the plus.
 
+## Why
+
+Thumbs live at the bottom of the phone. One shared 46px bottom bar across Hub, Ledger, and Spaces makes navigation muscle memory — the jewel plus button is always where your thumb expects it.
+
 - **Type:** chrome
 - **Source:** `Naya Smart Hub Design.html` (extracted verbatim, never rewritten)
 - **CSS:** `eco-bottombar.css`

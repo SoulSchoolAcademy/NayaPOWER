@@ -4,6 +4,10 @@ The network heartbeat. Concentric rings expand outward like sonar — each ring
 is one metric, its color its identity, its pace its urgency. The center holds
 the live total. A system at rest still breathes.
 
+## Why
+
+Urgency has a pace. Concentric sonar rings with a live total at center turn ‘the network is active’ into something you can hear with your eyes — the heartbeat, visible.
+
 - **Type:** graphs
 - **Source:** authored 2026-10-09 for the Smart Graphs visual language
 - **CSS:** `pulse-rings.css`

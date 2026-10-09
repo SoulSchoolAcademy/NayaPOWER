@@ -2,6 +2,10 @@
 
 Space chat message list, chat composer (text input + mic + send), and post composer (textarea + schedule + post button).
 
+## Why
+
+Conversation needs both a floor and a door. The message list and composer handle the talk; the post composer with scheduling handles the saying-to-everyone. Same surface, both modes.
+
 - **Type:** chat
 - **Source:** `Smart Spaces Page Design.html` (extracted byte-true, never rewritten)
 - **CSS:** `block.css`

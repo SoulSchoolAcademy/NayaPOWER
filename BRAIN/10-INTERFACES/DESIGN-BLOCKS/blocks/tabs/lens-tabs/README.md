@@ -2,6 +2,10 @@
 
 The three compact single-line lens buttons (Collective/Personal/Activity) — one row, real navigation. Each lens has its own hover glow.
 
+## Why
+
+Three lenses, one row. The compact Collective/Personal/Activity buttons with per-lens hover glow make switching perspectives feel like shifting focus, not reloading a page.
+
 - **Type:** tabs
 - **Source:** `Naya Smart Hub Design.html` (extracted verbatim, never rewritten)
 - **CSS:** `lens-tabs.css`

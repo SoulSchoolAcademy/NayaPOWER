@@ -4,6 +4,10 @@ Jeweled pillars for series data. Each pillar is cut like a gem — faceted cap,
 specular edge light, glowing base. Values rise on light with a stagger, so the
 series reads as a living thing, not a spreadsheet.
 
+## Why
+
+A bar chart reports; a jeweled pillar holds attention. Faceted caps and specular edges turn series comparisons into something worth looking at — which is exactly what makes them looked at twice.
+
 - **Type:** graphs
 - **Source:** authored 2026-10-09 from nl-chart bar DNA + gem-bullet facet formula
 - **CSS:** `jewel-pillar.css`

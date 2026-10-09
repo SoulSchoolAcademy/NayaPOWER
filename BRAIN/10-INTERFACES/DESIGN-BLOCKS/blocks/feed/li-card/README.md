@@ -2,6 +2,10 @@
 
 Ledger intel card with identity-color edge bar, jewel glyph, source label, time-ago, hint pill, and flash hook.
 
+## Why
+
+Ledger intel needs its identity at a glance. The identity-color edge bar, jewel glyph, and time-ago put who, what, and when in the first 200 milliseconds — the flash hook earns the tap.
+
 - **Type:** feed
 - **Source:** `Ledger Page Design.html` (extracted byte-true, never rewritten)
 - **CSS:** `block.css`

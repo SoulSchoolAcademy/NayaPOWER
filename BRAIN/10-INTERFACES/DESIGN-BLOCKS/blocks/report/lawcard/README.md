@@ -2,6 +2,10 @@
 
 Law card: numbered law with diamond marker, title, and body. Governance made visible, one card per law.
 
+## Why
+
+One law, one card. The diamond marker and numbered title make each law citable and distinct — governance you can point at.
+
 - **Type:** report
 - **Source:** `Naya Design Element Set N4.html` (extracted byte-true, never rewritten)
 - **CSS:** `block.css`

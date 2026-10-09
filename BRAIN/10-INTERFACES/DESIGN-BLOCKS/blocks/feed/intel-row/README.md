@@ -2,6 +2,10 @@
 
 The compact intel row: type tag + title + summary. `--room-accent` themes the type tag and hover border.
 
+## Why
+
+Not every signal deserves a card. The compact row — type tag, title, summary — is the feed’s shorthand: dense enough to scan a hundred of, honest enough to trust each one.
+
 - **Type:** feed
 - **Source:** `Naya Smart Hub Design.html` (extracted verbatim, never rewritten)
 - **CSS:** `intel-row.css`

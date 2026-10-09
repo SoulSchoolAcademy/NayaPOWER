@@ -2,6 +2,10 @@
 
 Vertical law-pipeline steps: jewel marker + bold rule + explanation. Governance as a readable staircase.
 
+## Why
+
+Governance is a staircase, not a wall of text. Jewel marker, bold rule, explanation per step — the pipeline of a law made readable at a glance.
+
 - **Type:** report
 - **Source:** `Naya Design Elements N2.html` (extracted byte-true, never rewritten)
 - **CSS:** `block.css`

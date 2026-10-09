@@ -2,6 +2,10 @@
 
 The feed card — "every event is a card, not a line." Jewel, narrative (16px/1.65), source + time meta, accent edge bar with pulse. `--ac` themes per card (default #9d75ff).
 
+## Why
+
+‘Every event is a card, not a line.’ A feed of lines is a log; a feed of cards with jewels, narrative, and pulse is a story you can scan — and each card’s accent edge says what kind of event it was before you read a word.
+
 - **Type:** feed
 - **Source:** `Naya Smart Hub Design.html` (extracted verbatim, never rewritten)
 - **CSS:** `activity-card.css`
