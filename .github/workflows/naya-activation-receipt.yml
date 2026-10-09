@@ -85,7 +85,7 @@ jobs:
             "activated_at": datetime.now(timezone.utc).isoformat(),
             "activation_run_id": os.environ["GITHUB_RUN_ID"],
             "activation_run_attempt": os.environ["GITHUB_RUN_ATTEMPT"],
-            "activation_workflow": os.environ["GITHUB_WORKFLOW_REF"].split("@")[0].split("/", 1)[1],
+            "activation_workflow": os.environ["GITHUB_WORKFLOW_REF"].split("@")[0].removeprefix(os.environ["GITHUB_REPOSITORY"] + "/"),
           }
           required = ("session_id", "naya_identity", "human_authority", "job", "proof_plan")
           if not all(receipt[k].strip() for k in required) or not receipt["gates"]:
