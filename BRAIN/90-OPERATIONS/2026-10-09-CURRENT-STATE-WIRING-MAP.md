@@ -124,3 +124,13 @@ Verification observed for PR head `1fec06d2787c146844470d9437537d86afc55153`: th
 ### Current hard boundary
 
 The next runtime-level step is to reconcile and approve exact deployed source parity for learning-verify, ACT, and decision-context. Production deployment remains a human-controlled gate. The separate learning-experiment admission contract must be attached to the actual experiment evidence and promotion point; it must not be misapplied to the capture-only record.
+
+
+### Legacy intake table inventory (read-only counts)
+
+At inspection time, the three RLS-disabled legacy Smart Note tables contained:
+- `smart_note_events`: 23 rows
+- `smart_note_artifacts`: 92 rows
+- `smart_note_receipts`: 23 rows
+
+These are existing records; no rows were modified. The current registry index has one `SN-782` entry for T11. The separately reported same-number claim collision is not established as a duplicate registry entry by this check and remains unresolved pending exact cross-store reconciliation.
