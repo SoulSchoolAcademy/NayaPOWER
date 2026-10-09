@@ -432,3 +432,79 @@ The statement “Supabase is just a filing cabinet and nothing wakes up” is to
 **We have several real pipeline components. We must prove they are one identity-preserving, policy-governed behavioral learning loop for the same freshly captured Smart Note.**
 
 That is the integration bar.
+
+
+## 18. Live backend + entrypoint audit — the actual disconnect
+
+**Read-only live inspection performed 2026-10-09** against Supabase project `dahisasgpfvziswqvmvm`. No rows were mutated, no capture was invoked, and no deployment was performed.
+
+### 18.1 The previously reported “ghost table” is not a current confirmed absence
+
+A read-only live schema query confirmed that all of these tables currently resolve in `public`: `v7_smart_note_transactions`, `smart_note_events`, `nayanet_intelligent_blocks`, `nayanet_cognition_events`, `nayanet_intelligence_lineage`, `nayanet_brain_relationships`, `nayanet_intelligence_index`, `learning_evidence`, `nayanet_project_cognition_state`, `nayanet_execution_receipts`, and `nayanet_github_dispatch_receipts`.
+
+Therefore the old SN-0520 claim that `v7_smart_note_transactions` does not exist is **historical evidence, not current ground truth**. Do not reopen it as a live table-absence defect without a new failing query. The table exists now. The current dispatch code and deployed dispatch both query it.
+
+### 18.2 Current deployed function/source parity observations
+
+The live Edge Function inventory reported:
+- `v7-smart-note-canonical`: ACTIVE, version 19, updated 2026-10-07. Its deployed `index.ts` was byte-equivalent to the current `main` source after normalizing the BOM/newline/trailing-file boundary.
+- `nayanet-github-dispatch`: ACTIVE, version 36, updated 2026-10-09. Its deployed source differs from current `main` (deployed source has additional sanitized GitHub failure detail around commit errors). It still references `v7_smart_note_transactions`, which exists in the live schema. This is a **source/deployment drift to reconcile**, not evidence that the table is absent.
+- `nayanet-learning-verify`: ACTIVE, version 98, updated 2026-10-08. The deployed source differs from current `main`; notably, the current-main source imports and uses `resolveScorecardReceiptAuthority`, while the deployed source inspected does not. The operational impact must be tested against the actual intended authority contract. Do not assume the main change is live.
+- `nayanet-cold-runtime-proof`: ACTIVE, version 130, updated 2026-10-08. Its deployed source matched current-main source after substituting its intentional deployment stamp `00f50bb32c1c7fadfbe5cd03d0319646ab9dc0e9` for the source placeholder `UNSTAMPED`. This is consistent with a stamped deployment of that code body.
+
+These observations are time-bound. Recheck versions/hashes before any ship decision. They do not authorize a deployment.
+
+### 18.3 Two real entrypoints currently serve different paths
+
+**Path A — governed agent capture / returned Smart Link**
+- `.github/workflows/nayanet-agent-capture.yml` accepts a workflow-dispatch payload, signs in as the dedicated `naya-runtime` Supabase auth user using repository-held credentials, and invokes the unchanged `v7-smart-note-canonical` with a real user JWT.
+- The receiver performs canonical persistence, candidate creation, checkpoint/feed verification, and calls `nayanet-github-dispatch`.
+- The agent-capture workflow validates the returned `IB-######` and Smart Link and prints a structured capture receipt plus the link in its logs.
+- The receiver/dispatch path is responsible for producing the direct GitHub `smart-note.md` URL.
+
+**Path B — Git capture commit / behavioral proof workflow**
+- `.github/workflows/live-intelligence-commit-proof.yml` discovers changed `.naya/capture/*.json` files, canonicalizes and hashes their intelligence payload, then calls `nayanet-intelligence-commit-runtime` (or verifies/reconciles an existing registry object).
+- It records exact event/IB/lineage/relationship/index/checkpoint/receipt IDs and leaves the fresh block in CANDIDATE state.
+- `.github/workflows/live-supabase-runtime-proof.yml` is triggered by completion of **Live Intelligence Commit Proof** (or by an explicit workflow dispatch). It consumes the producer run's fresh-lineage artifact, invokes `nayanet-learning-verify` candidate mode, runs a control/treatment causal experiment, independent verification, learning promotion, graph control/treatment, and active-learning generalization/cold-successor stages.
+
+These are both real paths in source. They may be useful front doors for different callers, but they must not silently become two competing canonical memory/learning systems.
+
+### 18.4 Confirmed orchestration gap: Smart Link capture is not shown triggering the learning proof chain
+
+The reviewed `nayanet-agent-capture.yml` finishes after invoking the canonical receiver, validating the returned Smart Link/IB identity, and printing the capture receipt. It does not itself dispatch `Live Intelligence Commit Proof` or `Live Supabase Runtime Proof`. The latter workflow is wired to `workflow_run` from `Live Intelligence Commit Proof`, not from `NayaNET Agent Capture`.
+
+Therefore, **the source does not currently demonstrate that a successful “Smart Note this” transaction through the agent-capture/Smart-Link route automatically continues into the same behavioral learning and cold-successor proof path.** The file-capture proof path does continue into learning proof, but that alone does not prove that it is the same canonical transaction as the Smart Link route.
+
+This is the key root-to-top question the implementation team must resolve:
+- Either make one canonical route the orchestrator and have all supported entrypoints call it with the same canonical identity, idempotency semantics, and receipts; or
+- explicitly bridge the receiver's returned transaction/IB/event/learning IDs into the existing downstream learning workflow, with a durable hand-off/outbox and idempotent retries.
+
+Do not solve this by creating a second memory or learning system, by re-capturing the lesson into a different IB, or by treating two semantically similar notes as the same object.
+
+### 18.5 Required next engineering artifact — one end-to-end transaction trace
+
+For a single fresh Smart Note, trace the route actually used by the human/agent command:
+1. Input command and caller identity.
+2. Capture envelope/payload hash and idempotency key.
+3. Receiver transaction ID, canonical event ID, IB ID, IB content hash, capture receipt ID, learning candidate ID and target/state.
+4. Checkpoint ID + checkpoint receipt and authenticated feed verification.
+5. Smart Link projection dispatch receipt, resolved URL, repository path, projected file hash, and proof the URL opens the exact IB revision.
+6. Downstream learning-verification request: exact input IDs and whether the verifier reads this same event/IB/candidate without re-capture.
+7. Admission result and lawful authority receipt (or explicit BLOCKED status).
+8. KNOW query and returned record IDs/state/applicability.
+9. ACT treatment/control inputs and outcomes.
+10. Independent verifier identity, raw persisted receipts, source/deployment revision.
+11. Cold-successor retrieval/use, held-out result, unrelated-case refusal, and no inherited authority.
+12. Learning receipt and updated checkpoint/lineage, with the same canonical IB and trace ID throughout.
+
+Every boundary needs a test that deliberately substitutes the wrong IB/event/receipt/hash and proves the next stage refuses it. A successful receipt must be bound to the same transaction—not merely to a lesson with similar text.
+
+### 18.6 Immediate priority order, updated by evidence
+
+1. **Map and connect the two entrypoints without duplicate intelligence.** The exact fresh Smart Note from Path A must either flow into the downstream verifier/learning workflow or Path B must be formally selected as the only route and the Smart Link path made a projection of that same canonical object.
+2. **Reconcile live/deployed source drift.** In particular, compare `nayanet-learning-verify` deployed v98 to current-main source and determine whether the scorecard-receipt authority bridge is intended and present in production. Do not deploy without authorization.
+3. **Close the human return path.** Verify the invoking Naya/Hub/conversation receives the exact `smart_link` and capture receipt, not only that the URL is printed in a workflow log.
+4. **Run the full proof on that same fresh object.** Use the existing candidate/admission, causal control/treatment, independent verifier, graph, generalization, and cold-successor machinery rather than creating another harness.
+5. **Only then** make a protected ship recommendation with exact runtime parity, all receipts, risks, and authority state.
+
+This is a more precise diagnosis than “nothing is wired”: substantial components exist, but the single transaction's hand-off from capture/Smart Link to the behavioral learning proof has not yet been established by the reviewed orchestration source.
