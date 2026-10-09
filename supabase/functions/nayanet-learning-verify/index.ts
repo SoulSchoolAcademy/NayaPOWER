@@ -1,6 +1,7 @@
 import { createRemoteJWKSet, jwtVerify } from "https://esm.sh/jose@6.0.10";
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { resolveScorecardReceiptAuthority } from "./scorecard_receipt_authority.js";
+import { checkAdmission } from "./admission_contract.js";
 
 const ISSUER = "https://token.actions.githubusercontent.com";
 const AUDIENCE = "nayanet-runtime";
@@ -375,7 +376,31 @@ Deno.serve(async (req: Request) => {
           token_jti: payload.jti ?? null,
         });
       }
-      const candidate = { member_id: ownerId, target_id: "NAYA-NODE-0001", level: "E1_UNDERSTANDS", provenance: "OBSERVATION", status: "CANDIDATE", claim: lesson, observed_value: { intelligent_block_id: blockId, source_event_id: event.id, source_event_key: event.event_id, commit_receipt_id: commitReceiptId, lineage_id: lineage.id, relationship_id: relationship.relationship_id, index_id: index.id, checkpoint_id: checkpoint.id, checkpoint_provenance: checkpointProvenance, immutable_checkpoint_evidence: immutableCheckpointEvidence, provenance_preserved: true }, verification_method: "Pending independent causal verification of the persisted Event → Intelligent Block → Lineage → Relationship → Index → Checkpoint chain.", source_event_id: event.id };
+      // ADMISSION CONTRACT (2026-10-09, kernel/protocol/learning_capture.py):
+      // a system-captured candidate may enter CANDIDATE status only with a
+      // preregistered experiment design that passes all seven rules. Fail
+      // closed: a missing or malformed design is rejected, and nothing is
+      // inserted. The repair path above only re-links an already-admitted
+      // row and is intentionally not re-gated. The human-director lane and
+      // the v7-smart-note-canonical Receiver path are separate lanes and
+      // are never gated by this contract.
+      const admissionDesign = (body as any)?.admission ?? null;
+      const admission = checkAdmission(admissionDesign);
+      if (!admission.passed) {
+        return json({
+          ok: false,
+          error: "ADMISSION_CONTRACT_REJECTED",
+          failed_rules: admission.failed_rules,
+          reasons: admission.reasons,
+        }, 409);
+      }
+      const admissionVerdict = {
+        passed: true,
+        failed_rules: [],
+        checked_at: new Date().toISOString(),
+        contract: "kernel/protocol/learning_capture.py:check_admission",
+      };
+      const candidate = { member_id: ownerId, target_id: "NAYA-NODE-0001", level: "E1_UNDERSTANDS", provenance: "OBSERVATION", status: "CANDIDATE", claim: lesson, observed_value: { intelligent_block_id: blockId, source_event_id: event.id, source_event_key: event.event_id, commit_receipt_id: commitReceiptId, lineage_id: lineage.id, relationship_id: relationship.relationship_id, index_id: index.id, checkpoint_id: checkpoint.id, checkpoint_provenance: checkpointProvenance, immutable_checkpoint_evidence: immutableCheckpointEvidence, provenance_preserved: true, admission_design: admissionDesign, admission_verdict: admissionVerdict }, verification_method: "Pending independent causal verification of the persisted Event → Intelligent Block → Lineage → Relationship → Index → Checkpoint chain.", source_event_id: event.id };
       const { data: learning, error: createError } = await admin.from("learning_evidence").insert(candidate).select("*").single();
       if (createError) throw createError;
       return json({ ok: true, created: true, learning, source: { event, block, lineage, relationship, index, checkpoint }, runtime_identity: "github-actions-oidc", workflow_ref: workflowRef, token_jti: payload.jti ?? null });

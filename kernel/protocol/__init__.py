@@ -12,7 +12,9 @@ This package implements the enforceable gates:
 - quality_gate: 9.0+ delivery enforcement before anything reaches Shawn
 - cold_successor_test: acceptance test that state survives the agent
 - minimal_action: smallest effective change as a checkable proposal
-- learning_capture: every cycle declares its lesson (with provenance) or states why none
+- learning_capture: every cycle declares its lesson (with provenance) or states why none;
+  check_admission: seven-rule admission contract gates system-captured candidates
+  entering CANDIDATE status (fail-closed; human-director lane never gated)
 - takeover: stalled-lane takeover rules as code
 
 Data:
