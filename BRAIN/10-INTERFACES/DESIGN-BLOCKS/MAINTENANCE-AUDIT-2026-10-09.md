@@ -2,6 +2,34 @@
 
 **Branch:** `brain-build/library-maintenance`
 **Auditor:** Naya 2 (Design Library Maintenance — DOER)
+**Paired scorer audit:** 4.0/10 → full quarantine executed
+
+## Final State
+- **76 indexed blocks** — all `provenance=EXTRACTED`, `status=APPROVED_SOURCE`
+- **76 tree directories** — exact 1:1 match with index
+- **0 unresolved file references**
+- **23 blocks quarantined** (not in index, not in library tree)
+
+## Actions Taken
+
+### 1. Quarantined 8 unapproved inventions (PR #1968)
+Moved from `blocks/` to `quarantine/unapproved-inventions-1968/`. Authored from scratch, not extracted from Shawn's designs.
+
+### 2. Quarantined 15 authored-not-extracted blocks
+Moved from `blocks/` to `quarantine/authored-not-extracted/`. Removed from index.json.
+- Composition layer (8): page-shell, section, row-grid, hero, headline, body, nav, footer
+- Smart Graphs (7): pulse-orb, jewel-pillar, spectrum-flow, constellation, pulse-rings, living-counter, orbit-dial
+
+These were "authored 2026-10-09" — not byte-extractions from Shawn's design HTMLs. Per his directive ("organize the ones that are already proved"), they don't belong in the official library.
+
+### 3. Fixed 14 broken CSS paths in index.json
+`block.css` → `<block-id>.css` for 14 blocks. All CSS verified present with real content.
+
+### 4. Added provenance/status to every block
+Every indexed block now carries `provenance` (EXTRACTED) and `status` (APPROVED_SOURCE) fields.
+
+### 5. Completed nl-toast specimen
+Created `specimen.html` using only existing CSS selectors. Index updated.
 
 ## Actions Taken
 

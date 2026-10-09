@@ -45,7 +45,9 @@
         ".naya-btn--secondary",
         ".naya-btn--sm"
       ],
-      "score": 9.0
+      "score": 9.0,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "primo",
@@ -77,7 +79,9 @@
         ".primo:disabled",
         ".primo:hover"
       ],
-      "score": 8.5
+      "score": 8.5,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "orbit-btn",
@@ -107,7 +111,9 @@
         ".orbit-btn:hover::after",
         ".orbit-btn:hover::before"
       ],
-      "score": 9.5
+      "score": 9.5,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "living-btn",
@@ -146,7 +152,9 @@
         ".living-btn[data-spectrum=\"purple\"]::after",
         ".living-btn[data-spectrum=\"purple\"]:hover"
       ],
-      "score": 7.0
+      "score": 7.0,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "lv-btn",
@@ -190,7 +198,9 @@
         ".lv-wrap.lv-aware .lv-btn::after",
         ".lv-wrap.lv-aware .lv-btn::before"
       ],
-      "score": 7.5
+      "score": 7.5,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "cx-btn",
@@ -215,7 +225,9 @@
         ".cx-btn:active",
         ".cx-btn:hover"
       ],
-      "score": 7.0
+      "score": 7.0,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "icon-btn",
@@ -243,7 +255,9 @@
         ".icon-btn[aria-pressed=\"true\"]",
         ".icon-btn[aria-pressed=\"true\"] svg"
       ],
-      "score": 8.0
+      "score": 8.0,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "nl-btn",
@@ -271,7 +285,9 @@
         ".btn:active",
         ".btn:hover"
       ],
-      "score": 8.0
+      "score": 8.0,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "nl-btn-ghost",
@@ -294,7 +310,9 @@
         ".btn-ghost",
         ".btn-ghost:hover"
       ],
-      "score": 7.5
+      "score": 7.5,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "nl-iconbtn",
@@ -321,7 +339,9 @@
         ".nl-iconbtn:active",
         ".nl-iconbtn:hover"
       ],
-      "score": 8.0
+      "score": 8.0,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "nl-playbtn",
@@ -348,7 +368,9 @@
         ".nl-playbtn:active",
         ".nl-playbtn:hover"
       ],
-      "score": 8.0
+      "score": 8.0,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "orb",
@@ -392,7 +414,9 @@
         ".orb--xs::before",
         ".orb-context"
       ],
-      "score": 9.0
+      "score": 9.0,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "mini-orb",
@@ -412,7 +436,9 @@
       "selectors": [
         ".mini-orb"
       ],
-      "score": 8.5
+      "score": 8.5,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "nav-orb",
@@ -432,7 +458,9 @@
       "selectors": [
         ".nav-orb"
       ],
-      "score": 8.0
+      "score": 8.0,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "board",
@@ -459,7 +487,9 @@
         ".board::before",
         ".board:hover"
       ],
-      "score": 8.5
+      "score": 8.5,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "board-tone",
@@ -488,7 +518,9 @@
         ".board-tone::before",
         ".board-tone:hover"
       ],
-      "score": 8.5
+      "score": 8.5,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "demo-board",
@@ -509,7 +541,9 @@
         ".demo-board",
         ".demo-board code"
       ],
-      "score": 8.0
+      "score": 8.0,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "stage",
@@ -531,7 +565,9 @@
         ".stage-label",
         ".stage:before"
       ],
-      "score": 8.0
+      "score": 8.0,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "nl-ccard",
@@ -555,7 +591,9 @@
         ".nl-ccard:hover",
         ".nl-ccard:hover .nl-cmedia:after"
       ],
-      "score": 8.0
+      "score": 8.0,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "gem-bullet",
@@ -575,7 +613,9 @@
       "selectors": [
         ".gem-bullet"
       ],
-      "score": 8.5
+      "score": 8.5,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "jw",
@@ -600,7 +640,9 @@
         ".pred .jw",
         ".tongue ul li .jw"
       ],
-      "score": 8.5
+      "score": 8.5,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "nl-field",
@@ -630,7 +672,9 @@
         ".nl-field:focus-within .icon",
         ".nl-field:focus-within .nl-well"
       ],
-      "score": 8.0
+      "score": 8.0,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "nl-search",
@@ -655,7 +699,9 @@
         ".nl-search:focus-within .icon",
         ".nl-search:focus-within .nl-well"
       ],
-      "score": 8.0
+      "score": 8.0,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "nl-switch",
@@ -685,7 +731,9 @@
         ".nl-switch input:disabled ~ .nl-track",
         ".nl-switch input:focus-visible ~ .nl-track"
       ],
-      "score": 8.0
+      "score": 8.0,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "nl-toggle-row",
@@ -710,7 +758,9 @@
         ".nl-toggle-row .t-sub",
         ".nl-toggle-row:hover"
       ],
-      "score": 8.0
+      "score": 8.0,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "seg-tab",
@@ -741,7 +791,9 @@
         ".seg-tab::before, .like-pill::before, .act-chip::before, .tog-chip::before, .day-dot::before, .send-cta::before",
         ".seg-tab:hover"
       ],
-      "score": 8.5
+      "score": 8.5,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "nl-modal",
@@ -771,7 +823,9 @@
         ".nl-modal-x",
         ".nl-modal-x:hover"
       ],
-      "score": 8.0
+      "score": 8.0,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "nl-toast",
@@ -799,7 +853,9 @@
         ".nl-toast-zone",
         ".nl-toast.out"
       ],
-      "score": 8.0
+      "score": 8.0,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "nl-sheet",
@@ -823,7 +879,9 @@
         ".nl-sheet-back",
         ".nl-sheet-back.open"
       ],
-      "score": 8.0
+      "score": 8.0,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "nl-table",
@@ -854,7 +912,9 @@
         ".nl-table th:hover",
         ".nl-table-wrap"
       ],
-      "score": 8.0
+      "score": 8.0,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "nl-chart",
@@ -876,7 +936,9 @@
         ".nl-chart .c-sub",
         ".nl-chart h4"
       ],
-      "score": 7.5
+      "score": 7.5,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "nl-bar",
@@ -900,7 +962,9 @@
         ".nl-bar:hover .nl-knobp",
         ".nl-vol .nl-bar"
       ],
-      "score": 7.5
+      "score": 7.5,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "nl-player",
@@ -921,485 +985,9 @@
         ".nl-player",
         ".nl-player-top"
       ],
-      "score": 8.0
-    },
-    {
-      "id": "page-shell",
-      "type": "layout",
-      "description": "The page chassis. Full-width black ground, no max-width caps, base reset, focus/selection/motion defaults.",
-      "source": "authored 2026-10-09 for the Smart Blocks library (composition layer)",
-      "files": {
-        "css": "blocks/layout/page-shell/page-shell.css",
-        "specimen": "blocks/layout/page-shell/specimen.html",
-        "readme": "blocks/layout/page-shell/README.md"
-      },
-      "dependencies": [
-        "tokens.css"
-      ],
-      "states": [
-        ":focus-visible",
-        "::selection",
-        "@media (prefers-reduced-motion: reduce)"
-      ],
-      "selectors": [
-        ".naya-page",
-        ".naya-page--edgelight",
-        ".naya-page--edgelight::before",
-        ".naya-page ::selection",
-        ".naya-page :focus-visible",
-        "body:has(.naya-page)"
-      ],
-      "score": 9.0
-    },
-    {
-      "id": "section",
-      "type": "layout",
-      "description": "Content rhythm. Generous fluid vertical spacing, optional glowing hairline divider with diamond jewel break, tint variant.",
-      "source": "authored 2026-10-09 for the Smart Blocks library (composition layer)",
-      "files": {
-        "css": "blocks/layout/section/section.css",
-        "specimen": "blocks/layout/section/specimen.html",
-        "readme": "blocks/layout/section/README.md"
-      },
-      "dependencies": [
-        "tokens.css"
-      ],
-      "states": [
-        "@media (max-width: 480px)"
-      ],
-      "selectors": [
-        ".naya-section",
-        ".naya-section--compact",
-        ".naya-section--roomy",
-        ".naya-section--divided",
-        ".naya-section--divided::before",
-        ".naya-section--jewel::after",
-        ".naya-section--tint"
-      ],
-      "score": 9.0
-    },
-    {
-      "id": "row-grid",
-      "type": "layout",
-      "description": "Responsive layout. Mobile-first grids (2/3/4 col), flex rows, and equal splits \u2014 all collapsing cleanly, pure CSS.",
-      "source": "authored 2026-10-09 for the Smart Blocks library (composition layer)",
-      "files": {
-        "css": "blocks/layout/row-grid/row-grid.css",
-        "specimen": "blocks/layout/row-grid/specimen.html",
-        "readme": "blocks/layout/row-grid/README.md"
-      },
-      "dependencies": [
-        "tokens.css"
-      ],
-      "states": [
-        "@media (min-width: 640px)",
-        "@media (min-width: 900px)",
-        "@media (min-width: 1024px)"
-      ],
-      "selectors": [
-        ".naya-grid",
-        ".naya-grid--2",
-        ".naya-grid--3",
-        ".naya-grid--4",
-        ".naya-grid--tight",
-        ".naya-grid--loose",
-        ".naya-grid--center",
-        ".naya-grid--stretch",
-        ".naya-row",
-        ".naya-row--top",
-        ".naya-row--spread",
-        ".naya-split",
-        ".naya-split--flip"
-      ],
-      "score": 9.0
-    },
-    {
-      "id": "hero",
-      "type": "type",
-      "description": "The page opening. Editorial display headline (voice serif, 40-88px fluid) with purple eyebrow kicker, sub-line, CTA row, staggered entrance.",
-      "source": "authored 2026-10-09 for the Smart Blocks library (composition layer)",
-      "files": {
-        "css": "blocks/type/hero/hero.css",
-        "specimen": "blocks/type/hero/specimen.html",
-        "readme": "blocks/type/hero/README.md"
-      },
-      "dependencies": [
-        "tokens.css"
-      ],
-      "states": [
-        "@media (prefers-reduced-motion: no-preference)"
-      ],
-      "selectors": [
-        ".naya-hero",
-        ".naya-hero--center",
-        ".naya-hero__eyebrow",
-        ".naya-hero__title",
-        ".naya-hero__title .naya-accent",
-        ".naya-hero__sub",
-        ".naya-hero__actions"
-      ],
-      "score": 9.0
-    },
-    {
-      "id": "headline",
-      "type": "type",
-      "description": "Section titles. 24px per the type scale, white, with optional kicker, diamond jewel marker, and sm/lg sizes.",
-      "source": "authored 2026-10-09 for the Smart Blocks library (composition layer)",
-      "files": {
-        "css": "blocks/type/headline/headline.css",
-        "specimen": "blocks/type/headline/specimen.html",
-        "readme": "blocks/type/headline/README.md"
-      },
-      "dependencies": [
-        "tokens.css"
-      ],
-      "states": [
-        "responsive clamp() on --lg"
-      ],
-      "selectors": [
-        ".naya-headline",
-        ".naya-headline__kicker",
-        ".naya-headline--jewel",
-        ".naya-headline--jewel::before",
-        ".naya-headline--sm",
-        ".naya-headline--lg",
-        ".naya-headline-group"
-      ],
-      "score": 9.0
-    },
-    {
-      "id": "body",
-      "type": "type",
-      "description": "Reading text. 18px floor, 1.65 leading, high contrast, 68ch measure. Lead/quiet/small/wide variants, honest link styling.",
-      "source": "authored 2026-10-09 for the Smart Blocks library (composition layer)",
-      "files": {
-        "css": "blocks/type/body/body.css",
-        "specimen": "blocks/type/body/specimen.html",
-        "readme": "blocks/type/body/README.md"
-      },
-      "dependencies": [
-        "tokens.css"
-      ],
-      "states": [
-        ":hover (links)"
-      ],
-      "selectors": [
-        ".naya-body",
-        ".naya-body--quiet",
-        ".naya-body--small",
-        ".naya-body--lead",
-        ".naya-body--wide",
-        ".naya-body a",
-        ".naya-body a:hover",
-        ".naya-body strong",
-        ".naya-body em"
-      ],
-      "score": 9.0
-    },
-    {
-      "id": "nav",
-      "type": "layout",
-      "description": "Top navigation bar. Logo left, links, CTA right. Sticky translucent bar, mobile hamburger. 44px+ touch targets.",
-      "source": "authored 2026-10-09 for the Smart Blocks library (composition layer)",
-      "files": {
-        "css": "blocks/layout/nav/nav.css",
-        "specimen": "blocks/layout/nav/specimen.html",
-        "js": null,
-        "readme": "blocks/layout/nav/README.md"
-      },
-      "dependencies": [
-        "tokens.css"
-      ],
-      "states": [
-        ":hover",
-        ".naya-nav--open",
-        "@media max-width: 860px",
-        "prefers-reduced-motion"
-      ],
-      "selectors": [
-        ".naya-nav",
-        ".naya-nav--open",
-        ".naya-nav--overlay",
-        ".naya-nav--scrolled",
-        ".naya-nav--static",
-        ".naya-nav__brand",
-        ".naya-nav__cta",
-        ".naya-nav__link",
-        ".naya-nav__link--active",
-        ".naya-nav__link--active::after",
-        ".naya-nav__link:hover",
-        ".naya-nav__links",
-        ".naya-nav__mark",
-        ".naya-nav__row",
-        ".naya-nav__toggle",
-        ".naya-nav__toggle:hover",
-        ".naya-nav__wordmark"
-      ],
-      "score": 9.0
-    },
-    {
-      "id": "footer",
-      "type": "layout",
-      "description": "Page footer. Brand lockup, multi-column links, social icons, legal row. Hairline top light, quiet typography.",
-      "source": "authored 2026-10-09 for the Smart Blocks library (composition layer)",
-      "files": {
-        "css": "blocks/layout/footer/footer.css",
-        "specimen": "blocks/layout/footer/specimen.html",
-        "js": null,
-        "readme": "blocks/layout/footer/README.md"
-      },
-      "dependencies": [
-        "tokens.css"
-      ],
-      "states": [
-        ":hover",
-        "@media max-width: 900px",
-        "@media max-width: 560px",
-        "prefers-reduced-motion"
-      ],
-      "selectors": [
-        ".naya-footer",
-        ".naya-footer--compact",
-        ".naya-footer__brand",
-        ".naya-footer__grid",
-        ".naya-footer__group",
-        ".naya-footer__heading",
-        ".naya-footer__heading::before",
-        ".naya-footer__legal",
-        ".naya-footer__list",
-        ".naya-footer__mark",
-        ".naya-footer__mark-row",
-        ".naya-footer__social",
-        ".naya-footer__tagline",
-        ".naya-footer__wordmark"
-      ],
-      "score": 9.0
-    },
-    {
-      "id": "pulse-orb",
-      "type": "graphs",
-      "description": "A living orb that breathes with the data \u2014 value drives diameter and glow.",
-      "source": "authored 2026-10-09 (Smart Graphs visual language)",
-      "files": {
-        "css": "blocks/graphs/pulse-orb/pulse-orb.css",
-        "specimen": "blocks/graphs/pulse-orb/specimen.html",
-        "js": null,
-        "readme": "blocks/graphs/pulse-orb/README.md"
-      },
-      "dependencies": [
-        "tokens.css",
-        "jewels/gem-bullet"
-      ],
-      "states": [
-        ":hover",
-        ".lit",
-        "@media (prefers-reduced-motion: reduce)"
-      ],
-      "selectors": [
-        ".sg-card",
-        ".sg-card .c-sub",
-        ".pulse-orb-stage",
-        ".pulse-orb",
-        ".pulse-orb .po-val",
-        ".pulse-orb .po-num",
-        ".pulse-orb .po-label",
-        ".sg-delta",
-        ".sg-delta .gem-bullet",
-        ".sg-foot"
-      ],
-      "score": 9.0
-    },
-    {
-      "id": "jewel-pillar",
-      "type": "graphs",
-      "description": "Jeweled series pillars \u2014 faceted cap, specular edge, glowing base, staggered rise.",
-      "source": "authored 2026-10-09 (Smart Graphs visual language)",
-      "files": {
-        "css": "blocks/graphs/jewel-pillar/jewel-pillar.css",
-        "specimen": "blocks/graphs/jewel-pillar/specimen.html",
-        "js": null,
-        "readme": "blocks/graphs/jewel-pillar/README.md"
-      },
-      "dependencies": [
-        "tokens.css"
-      ],
-      "states": [
-        ":hover",
-        ".lit",
-        "@media (prefers-reduced-motion: reduce)"
-      ],
-      "selectors": [
-        ".sg-card",
-        ".sg-card .c-sub",
-        ".jp-track",
-        ".jp-col",
-        ".jp-val",
-        ".jp-pillar",
-        ".jp-cap",
-        ".sg-legend"
-      ],
-      "score": 9.0
-    },
-    {
-      "id": "spectrum-flow",
-      "type": "graphs",
-      "description": "Layered spectrum bands \u2014 composition of a whole flowing like a river over time.",
-      "source": "authored 2026-10-09 (Smart Graphs visual language)",
-      "files": {
-        "css": "blocks/graphs/spectrum-flow/spectrum-flow.css",
-        "specimen": "blocks/graphs/spectrum-flow/specimen.html",
-        "js": null,
-        "readme": "blocks/graphs/spectrum-flow/README.md"
-      },
-      "dependencies": [
-        "tokens.css"
-      ],
-      "states": [
-        ":hover",
-        ".lit",
-        "@media (prefers-reduced-motion: reduce)"
-      ],
-      "selectors": [
-        ".sg-card",
-        ".sg-card .c-sub",
-        ".sf-river",
-        ".sf-bands",
-        ".sf-band",
-        ".sf-grid",
-        ".sf-axis",
-        ".sg-legend"
-      ],
-      "score": 9.0
-    },
-    {
-      "id": "constellation",
-      "type": "graphs",
-      "description": "Constellation map for networks \u2014 glowing nodes, weight-sized, light-arc relationships.",
-      "source": "authored 2026-10-09 (Smart Graphs visual language)",
-      "files": {
-        "css": "blocks/graphs/constellation/constellation.css",
-        "specimen": "blocks/graphs/constellation/specimen.html",
-        "js": null,
-        "readme": "blocks/graphs/constellation/README.md"
-      },
-      "dependencies": [
-        "tokens.css"
-      ],
-      "states": [
-        ":hover",
-        ".lit",
-        "@media (prefers-reduced-motion: reduce)"
-      ],
-      "selectors": [
-        ".sg-card",
-        ".sg-card .c-sub",
-        ".sc-sky",
-        ".sc-arc",
-        ".sc-node",
-        ".sc-tag",
-        ".sc-hub",
-        ".sc-star",
-        ".sg-legend"
-      ],
-      "score": 9.0
-    },
-    {
-      "id": "pulse-rings",
-      "type": "graphs",
-      "description": "The network heartbeat \u2014 concentric sonar rings, pace carries urgency, live total at center.",
-      "source": "authored 2026-10-09 (Smart Graphs visual language)",
-      "files": {
-        "css": "blocks/graphs/pulse-rings/pulse-rings.css",
-        "specimen": "blocks/graphs/pulse-rings/specimen.html",
-        "js": null,
-        "readme": "blocks/graphs/pulse-rings/README.md"
-      },
-      "dependencies": [
-        "tokens.css"
-      ],
-      "states": [
-        ":hover",
-        ".lit",
-        "@media (prefers-reduced-motion: reduce)"
-      ],
-      "selectors": [
-        ".sg-card",
-        ".sg-card .c-sub",
-        ".pr-stage",
-        ".pr-ring",
-        ".pr-core",
-        ".pr-core .pr-num",
-        ".pr-core .pr-label",
-        ".pr-keys",
-        ".sg-foot"
-      ],
-      "score": 9.0
-    },
-    {
-      "id": "living-counter",
-      "type": "graphs",
-      "description": "The number, alive \u2014 count-up tabular numerals, jewel delta, sparkline whisper.",
-      "source": "authored 2026-10-09 (Smart Graphs visual language)",
-      "files": {
-        "css": "blocks/graphs/living-counter/living-counter.css",
-        "specimen": "blocks/graphs/living-counter/specimen.html",
-        "js": "blocks/graphs/living-counter/living-counter.js",
-        "readme": "blocks/graphs/living-counter/README.md"
-      },
-      "dependencies": [
-        "tokens.css"
-      ],
-      "states": [
-        ":hover",
-        ".lit",
-        "@media (prefers-reduced-motion: reduce)"
-      ],
-      "selectors": [
-        ".sg-card",
-        ".sg-card .c-sub",
-        ".lc-num",
-        ".lc-row",
-        ".lc-delta",
-        ".lc-delta .gem",
-        ".lc-per",
-        ".lc-spark",
-        ".sg-foot"
-      ],
-      "score": 9.0
-    },
-    {
-      "id": "orbit-dial",
-      "type": "graphs",
-      "description": "The score set in orbit \u2014 jewel ring gauge 0-10, the Calculator's face.",
-      "source": "authored 2026-10-09 (Smart Graphs visual language)",
-      "files": {
-        "css": "blocks/graphs/orbit-dial/orbit-dial.css",
-        "specimen": "blocks/graphs/orbit-dial/specimen.html",
-        "js": null,
-        "readme": "blocks/graphs/orbit-dial/README.md"
-      },
-      "dependencies": [
-        "tokens.css"
-      ],
-      "states": [
-        ":hover",
-        ".lit",
-        "@media (prefers-reduced-motion: reduce)"
-      ],
-      "selectors": [
-        ".sg-card",
-        ".sg-card .c-sub",
-        ".od-stage",
-        ".od-dial",
-        ".od-arc",
-        ".od-ticks",
-        ".od-center",
-        ".od-num",
-        ".od-cap",
-        ".od-scale",
-        ".sg-foot"
-      ],
-      "score": 9.0
+      "score": 8.0,
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "answer",
@@ -1430,7 +1018,9 @@
         ".answer-sub",
         ".answer .chevron"
       ],
-      "score": "unscored \u2014 extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "dimension-constellation",
@@ -1456,7 +1046,9 @@
         ".dimension-name",
         ".dimension-status"
       ],
-      "score": "unscored \u2014 extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "interest-picker",
@@ -1494,7 +1086,9 @@
         ".selected-interests",
         ".interest-pill"
       ],
-      "score": "unscored \u2014 extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "progress-hud",
@@ -1519,7 +1113,9 @@
         ".progress-fill",
         ".progress-percent"
       ],
-      "score": "unscored \u2014 extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "question",
@@ -1539,7 +1135,9 @@
         ".question-title",
         ".question-rule"
       ],
-      "score": "unscored \u2014 extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "score-stage",
@@ -1561,7 +1159,9 @@
         ".score-number",
         ".score-outof"
       ],
-      "score": "unscored \u2014 extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "sp-audio-msg",
@@ -1587,7 +1187,9 @@
         ".sp-audio-wave i",
         ".sp-audio-dur"
       ],
-      "score": "unscored \u2014 extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "sp-chat",
@@ -1643,7 +1245,9 @@
         ".sp-mic-btn.rec",
         "@keyframes sppulse"
       ],
-      "score": "unscored \u2014 extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "door",
@@ -1671,7 +1275,9 @@
         ".door-desc",
         ".door-foot"
       ],
-      "score": "unscored \u2014 extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "drawer",
@@ -1698,7 +1304,9 @@
         ".rail.left",
         "@media (max-width: 900px)"
       ],
-      "score": "unscored \u2014 extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "eco-bottombar",
@@ -1731,7 +1339,9 @@
         ".eco-menu a",
         "@media (max-width: 900px)"
       ],
-      "score": "unscored \u2014 extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "room-chrome",
@@ -1763,7 +1373,9 @@
         ".room-status-line .led",
         "@media breakpoints"
       ],
-      "score": "unscored \u2014 extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "share-fab",
@@ -1787,7 +1399,9 @@
         ".share-fab:active",
         "@media (max-width: 768px)"
       ],
-      "score": "unscored \u2014 extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "activity-card",
@@ -1822,7 +1436,9 @@
         ".activity-card-narrative",
         ".activity-card-meta"
       ],
-      "score": "unscored \u2014 extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "activity-stream",
@@ -1849,7 +1465,9 @@
         ".activity-live-dot",
         ".activity-pulse-ring"
       ],
-      "score": "unscored \u2014 extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "intel-row",
@@ -1875,7 +1493,9 @@
         ".intel-title",
         ".intel-summary"
       ],
-      "score": "unscored \u2014 extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "li-card",
@@ -1930,7 +1550,9 @@
         "@keyframes libar",
         "@keyframes lgpulse"
       ],
-      "score": "unscored \u2014 extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "metric-ribbon",
@@ -1956,7 +1578,9 @@
         ".metric.unknown",
         ".digest-stats"
       ],
-      "score": "unscored \u2014 extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "intelligent-block",
@@ -1999,7 +1623,9 @@
         ".ib-id",
         ".ib-layer.layer-purple/.ib-layer.layer-sapphire/... (12 tone variants)"
       ],
-      "score": "unscored \u2014 extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "sp-about-rows",
@@ -2023,7 +1649,9 @@
         ".sp-about-v",
         ".sp-about-desc"
       ],
-      "score": "unscored \u2014 extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "sp-blockrow",
@@ -2047,7 +1675,9 @@
         ".sp-blockrow-t",
         ".sp-blockrow-c"
       ],
-      "score": "unscored \u2014 extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "checks",
@@ -2073,7 +1703,9 @@
         ".check input",
         ".check span"
       ],
-      "score": "unscored \u2014 extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "law-steps",
@@ -2096,7 +1728,9 @@
         ".law-step strong",
         ".law-step span"
       ],
-      "score": "unscored \u2014 extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "lawcard",
@@ -2122,7 +1756,9 @@
         ".lawcard h3",
         ".lawcard p"
       ],
-      "score": "unscored \u2014 extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "scorecard",
@@ -2146,7 +1782,9 @@
         ".num",
         ".note"
       ],
-      "score": "unscored \u2014 extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "tongue",
@@ -2172,7 +1810,9 @@
         ".pred-name",
         ".jw"
       ],
-      "score": "unscored \u2014 extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "verdict",
@@ -2190,7 +1830,9 @@
         ".verdict",
         ".verdictsub"
       ],
-      "score": "unscored \u2014 extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "sp-card",
@@ -2224,7 +1866,9 @@
         ".sp-card-meta",
         ".sp-card-cover"
       ],
-      "score": "unscored \u2014 extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "sp-detail",
@@ -2255,7 +1899,9 @@
         ".sp-dcount",
         ".sp-dcontent"
       ],
-      "score": "unscored \u2014 extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "sp-inv-chip",
@@ -2291,7 +1937,9 @@
         ".sp-inv-chip-name",
         ".sp-inv-chip-join"
       ],
-      "score": "unscored \u2014 extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "voice-type",
@@ -2311,7 +1959,9 @@
         ".voice",
         ".voice em"
       ],
-      "score": "unscored \u2014 extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "li-day",
@@ -2335,7 +1985,9 @@
         ".li-stage",
         ".li-day"
       ],
-      "score": "unscored \u2014 extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "state-badge",
@@ -2354,7 +2006,9 @@
       "selectors": [
         ".state-badge"
       ],
-      "score": "unscored \u2014 extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "swatch",
@@ -2376,7 +2030,9 @@
         ".swatch",
         ".swatch:hover"
       ],
-      "score": "unscored \u2014 extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "truthgrid",
@@ -2399,7 +2055,9 @@
         ".truth b",
         ".truth p"
       ],
-      "score": "unscored \u2014 extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "hub-quote",
@@ -2420,7 +2078,9 @@
         ".hub-quote-text",
         ".hub-quote-sub"
       ],
-      "score": "unscored \u2014 extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "presence",
@@ -2437,7 +2097,9 @@
       "selectors": [
         ".presence"
       ],
-      "score": "unscored \u2014 extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "lens-tabs",
@@ -2467,7 +2129,9 @@
         ".lens-tab.lens-activity:hover",
         "@media (max-width: 640px)"
       ],
-      "score": "unscored \u2014 extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "smart-tabs",
@@ -2503,7 +2167,9 @@
         ".tab-pop-del",
         ".tab-pop-name"
       ],
-      "score": "unscored \u2014 extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "sp-dtabs",
@@ -2531,7 +2197,9 @@
         ".sp-dtab.on",
         ".sp-dtab-n"
       ],
-      "score": "unscored \u2014 extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "sn-pill",
@@ -2593,7 +2261,9 @@
         ".sn-pop",
         ".sn-btn.sn-restore"
       ],
-      "score": "unscored \u2014 extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "li-modal",
@@ -2635,7 +2305,9 @@
         ".li-stage .li-modal-x:focus-visible",
         "@keyframes limodal"
       ],
-      "score": "unscored \u2014 extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     },
     {
       "id": "portal",
@@ -2659,7 +2331,9 @@
         ".naya-white-orbit",
         ".naya-white-light"
       ],
-      "score": "unscored \u2014 extracted 2026-10-09"
+      "score": "unscored \u2014 extracted 2026-10-09",
+      "provenance": "EXTRACTED",
+      "status": "APPROVED_SOURCE"
     }
   ],
   "generated": "2026-10-09T13:38:45Z",
