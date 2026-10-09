@@ -18,7 +18,17 @@ const source = readFileSync(
   new URL("../supabase/functions/nayanet-learning-verify/index.ts", import.meta.url),
   "utf8"
 );
-const code = stripTypeScriptTypes(source.replace(/^import .*;\r?\n/gm, ""));
+// #2077 added ./admission_gate.ts (self-contained, no imports); its functions
+// are used by index.ts, so load them into the sandbox (import is stripped below).
+const admissionGateSource = readFileSync(
+  new URL("../supabase/functions/nayanet-learning-verify/admission_gate.ts", import.meta.url),
+  "utf8"
+);
+const admissionGateCode = stripTypeScriptTypes(
+  admissionGateSource.replace(/^export /gm, "")
+);
+// Strip imports (single- or multi-line) before vm loading.
+const code = stripTypeScriptTypes(source.replace(/^import[\s\S]*?;\r?\n/gm, ""));
 
 const sandbox = {
   URL, Request, Response, console, Date, TextEncoder, Uint8Array, crypto,
@@ -28,7 +38,7 @@ const sandbox = {
   createClient: () => ({ from: () => ({}) }),
 };
 vm.runInNewContext(
-  code + "\n;globalThis.__h = {deriveGraphApplicability, TASK_CLASS_REGISTRY};",
+  admissionGateCode + "\n" + code + "\n;globalThis.__h = {deriveGraphApplicability, TASK_CLASS_REGISTRY};",
   sandbox
 );
 const { deriveGraphApplicability, TASK_CLASS_REGISTRY } = sandbox.__h;
