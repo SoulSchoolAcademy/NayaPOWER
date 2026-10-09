@@ -12733,7 +12733,7 @@
       "topic": "DISPATCH",
       "subtopic": "RESERVE_RULE",
       "truth_state": "CANDIDATE",
-      "lifecycle_state": "CANDIDATE",
+      "lifecycle_state": "ACTIVE",
       "superseded_by_capture_id": null,
       "supersession_reason": null,
       "scope": "PRIVATE",
