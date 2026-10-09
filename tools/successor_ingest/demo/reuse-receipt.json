@@ -1,0 +1,39 @@
+{
+  "schema": "naya.successor.reuse_receipt.v1",
+  "lesson": {
+    "id": "66122e1e-677b-4ef0-a765-80d08ccfa85b",
+    "target_id": "lesson:TIER1-2026-10-08-T14",
+    "level": "E5_CAN_TEACH",
+    "status": "ACTIVE",
+    "provenance": "TRIAL_EVIDENCE",
+    "verification_method": "Independent verification by Naya 1: all four Tier-S confirmed. T14 re-graded 40/40 vs 28/40, p=1.85e-04, h=1.16. Real archive lesson, not synthetic. Evidence branches untouched.",
+    "claim_text": "Never write state files through inline conditional expressions \u2014 real AGENTS.md lesson with ecological validity",
+    "retrieved_at": "2026-10-09T17:26:26.953480+00:00",
+    "retrieval_query": "SELECT id, target_id, level, status, provenance, verification_method, claim FROM learning_evidence WHERE level = 'E5_CAN_TEACH' AND status = 'ACTIVE' ORDER BY created_at DESC LIMIT 25"
+  },
+  "task": {
+    "family": "state_file",
+    "brief_sha256": "e50fc18afabb6e33e23545a2a142d73d86bf8f47bb6d578a37bad02c78571fa8"
+  },
+  "cold_agent": "cold-arm-b-2124dfd5",
+  "comprehend": {
+    "verdict": "APPLICABLE",
+    "reason": "lesson lesson:TIER1-2026-10-08-T14 registered for 'state_file'; brief carries trigger terms"
+  },
+  "apply": {
+    "artifact_sha256": "fe72dafb820fe184ef3e44f9b0a4e2155a40067b4c33854ad406dad60201c3b1"
+  },
+  "observe": {
+    "evidence": "ifexp_count=0",
+    "detail": "no inline conditional expressions found"
+  },
+  "independently_verify": {
+    "verdict": "PASS",
+    "mechanism": "deterministic AST verifier (tools/successor_ingest/verify.py), separate from the applier"
+  },
+  "successor_reuse": {
+    "reused": true,
+    "reason": "deterministic verifier PASS: the verified law held in the successor's hands"
+  },
+  "receipt_sha256": "8c8c27667143e37565a3acdd61922ae46579dfd04b375a91e16de4fbaf2de88e"
+}

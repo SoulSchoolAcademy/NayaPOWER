@@ -18,6 +18,7 @@ Before changing code, documentation, infrastructure, or configuration:
 10. Inspect current `main`, current GitHub issues/PRs, recent commits, and claim-matched proof/workflow evidence relevant to the assigned work.
 11. Read `BRAIN/01-GOVERNANCE/0004-NONSTOP-LOOP-V1.ai.md` and `BRAIN/01-GOVERNANCE/0004-nonstop-loop-v1.machine.json` — standing NONSTOP LOOP operating law and machine twin.
 12. Establish the human director, authority, scope, current state, proof state, blockers, and exactly one next action.
+13. Know the lesson diary's door. Verified lessons live in the canonical store (`learning_evidence`); the portable cold-retrieval path — where the store is, what "verified" means, the exact query, and the fail-closed refusals — is `tools/successor_ingest/COLD-RETRIEVAL.md`, with the executable seam at `tools/successor_ingest/retrieve.py`. Basic activation does not require the store, but any work that relies on a learned lesson must retrieve it through this seam, never from memory.
 
 Do not rely on hidden conversation memory. Do not infer project truth from this file when stronger current evidence says otherwise.
 
