@@ -40,8 +40,8 @@ HONEST BOUND (what this check provably does NOT do):
     own — not that the attacks were competent, complete, or adversarial
     enough to deserve the claim's trust.
   - Distinctness is skeleton distinctness (confusable-skeleton fold —
-    NFKC + casefold + diacritic-strip + Cyrillic/Greek lookalike fold —
-    then case, punctuation, and whitespace folded), not semantic
+    NFKC + shared confusable-fold + casefold + diacritic-strip — then
+    case, punctuation, and whitespace folded), not semantic
     distinctness. A paraphrased copy of a builder test passes the
     mechanics; a relabel no human reader can distinguish from the
     builder's battery does not. Digit/letter confusables (o/0, l/1) are
@@ -49,6 +49,11 @@ HONEST BOUND (what this check provably does NOT do):
   - "I came to falsify and could not" is an honesty standard for the
     REPORT. Whether the claim is true still needs a human seat to read
     the attacks.
+  - The shared confusable table (Unicode confusables.txt, UTS #39 v18)
+    is the ground truth for "looks the same", not any seat's judgment:
+    U+03B5 (Greek small epsilon) is deliberately NOT folded to 'e' —
+    confusables.txt maps it to U+A793. A relabel wearing ε still reads
+    as a distinct attack to this lane.
 
 Usage:
     python3 tools/protocol/checks/falsification_first.py \\
@@ -65,49 +70,50 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from checks import emit, fail, load_record, result  # noqa: E402
+from checks.confusables_table import FOLD as CONFUSABLE_FOLD  # noqa: E402
 from checks.shape_closed import validate_shape  # noqa: E402
 
 LAW_ID = "FALSIFICATION-FIRST-LAW"
 VALID_OUTCOMES = {"held", "broke"}
 PASSING_VERDICTS = {"verified", "pass", "proven", "confirmed"}
 
-# Confusable skeleton (residual hardened 2026-10-09): Cyrillic and Greek
-# lookalikes fold to their Latin twins — the batch-3 Cyrillic family,
-# applied here to the identity machinery. NFKC (below) already folds
-# full-width, circled, mathematical-bold, ligatures, roman numerals and
-# superscripts; casefold + diacritic-strip handle ß/İ/é-class relabels.
-# This table covers only letter→letter confusables: digit/letter pairs
-# (o/0, l/1) are NOT folded — they stay distinguishable in code font,
-# and folding them would merge genuinely different identifiers.
-_CONFUSABLE_FOLD = {
-    # Cyrillic → Latin
-    "а": "a", "е": "e", "о": "o", "р": "p", "с": "c", "х": "x",
-    "у": "y", "і": "i", "ј": "j", "ѕ": "s", "һ": "h",
-    "ԛ": "q", "ԝ": "w", "ԁ": "d", "ӏ": "l",
-    # Greek → Latin
-    "α": "a", "ε": "e", "ο": "o", "ρ": "p", "ι": "i",
-    "κ": "k", "ν": "v", "τ": "t", "χ": "x", "υ": "u",
-    # dotless i (casefold("I") → "ı"; without this, ALL-CAPS
-    # canonicals would normalize apart from their lowercase twins)
-    "ı": "i",
-}
+# Confusable skeleton (homograph lane, 2026-10-09 narrow fix): one shared
+# translation book — tools/protocol/checks/confusables_table.py (Unicode
+# confusables.txt, UTS #39 v18.0.0, 1453 single-char confusables across
+# Latin, Cyrillic, Greek, Armenian and other scripts) — applied AFTER NFKC
+# and BEFORE casefold. The order is the fix: casefolding first turned
+# capitals into lowercase letters the old hand table did not know
+# (Cyrillic Н/М/В/Т, Greek Β/Η/Ν evaded; Greek Ν mis-folded to 'v' instead
+# of 'n'). The batch-3 ordering rule, applied here: NFKC → confusable-fold
+# → casefold → diacritic-strip.
+#
+# Deliberately NOT folded: digit/letter pairs (o/0, l/1). The table maps
+# only non-ASCII sources to ASCII alphanumerics, so ASCII digits and
+# letters never merge — they stay distinguishable in code font, and
+# folding them would merge genuinely different identifiers. The validator
+# verified this policy interferes with nothing.
+_CONFUSABLE_FOLD_TABLE = CONFUSABLE_FOLD
 
 
 def _skeleton(text: str) -> str:
     """Reduce text to its confusable skeleton: what a human READS.
 
-    NFKC (compatibility decomposition) → casefold → strip combining
-    marks → explicit Cyrillic/Greek confusable fold. Two labels with
-    the same skeleton look the same to the reader; treating them as
-    distinct is the relabel exploit.
+    NFKC (compatibility decomposition) → shared confusable-fold →
+    casefold → strip combining marks. The confusable step must come
+    BEFORE casefold: a capital twin (U+039D GREEK CAPITAL LETTER NU)
+    must fold to its visual twin ('n') while it is still a capital;
+    casefolding first would turn it into a lowercase letter the fold
+    table maps elsewhere (U+03BD → 'v' — the old mis-fold).
+    Two labels with the same skeleton look the same to the reader;
+    treating them as distinct is the relabel exploit.
     """
     text = unicodedata.normalize("NFKC", text)
+    text = text.translate(_CONFUSABLE_FOLD_TABLE)
     text = text.casefold()
-    text = "".join(
+    return "".join(
         c for c in unicodedata.normalize("NFD", text)
         if unicodedata.category(c) != "Mn"
     )
-    return "".join(_CONFUSABLE_FOLD.get(c, c) for c in text)
 
 
 def _norm(text: str) -> str:

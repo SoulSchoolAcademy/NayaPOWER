@@ -535,7 +535,13 @@ def test_falsification_homograph_relabel_fails():
     canon = "snake_case_probe_alpha"
     cyr = {"a": "а", "e": "е", "o": "о", "p": "р",
            "c": "с", "x": "х", "s": "ѕ", "h": "һ"}
-    grk = {"a": "α", "e": "ε", "o": "ο", "p": "ρ", "i": "ι"}
+    # Table-grounded Greek twins (Unicode confusables.txt, UTS #39 v18,
+    # via tools/protocol/checks/confusables_table.py): α→a, Ε→E, ο→o,
+    # ρ→p, ι→i. U+03B5 (Greek SMALL epsilon) is deliberately NOT a twin
+    # here — confusables.txt maps it to U+A793, not 'e' — so the capital
+    # Ε carries the e-twin. Hand-written twins are not ground truth;
+    # the shared table is.
+    grk = {"a": "α", "e": "Ε", "o": "ο", "p": "ρ", "i": "ι"}
     relabels = [
         fullwidth(canon),                                            # full-width Latin
         "".join(chr(0x24D0 + ord(c) - 97) if c.isalpha() else c      # circled
