@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-09",
-  "receipt_basis_commit": "c791b7798c34198f954d901248af1301cd244e2b",
-  "inventory_file_count": 1191,
+  "receipt_basis_commit": "dad160767b57cb5dab140583c86f418f41685bca",
+  "inventory_file_count": 1241,
   "domain_counts": {
     "00-ACTIVATION": 2,
     "00-SPEC": 15,
@@ -10,7 +10,7 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
-    "05-MEMORY": 638,
+    "05-MEMORY": 688,
     "06-PROOF": 13,
     "07-LEARNING": 4,
     "08-SUCCESSION": 2,
@@ -643,6 +643,256 @@
       "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/GRADER-REPAIR-2026-10-07/grade_trial14.py",
       "blob_sha": "20c4418652af7367f83f929d14dc19a89a7e4f09",
       "size": 3595
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-07-COUNTERINTUITIVE/PREREGISTRATION-07.md",
+      "blob_sha": "443256c2feb9ba077736d51fe337ef6440d517e9",
+      "size": 2995
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-07-COUNTERINTUITIVE/TRIAL-07-RECEIPT.md",
+      "blob_sha": "21642b22834d91ef2b56c870e620ff6667b0d3c4",
+      "size": 4042
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-07-COUNTERINTUITIVE/answer_sheets/T7-AGENT-01.json",
+      "blob_sha": "a34b2710029271865ef8bae229692b823b50d19c",
+      "size": 2155
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-07-COUNTERINTUITIVE/answer_sheets/T7-AGENT-02.json",
+      "blob_sha": "c6932ea587af49791e06b4eeb51310ec109dff92",
+      "size": 2708
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-07-COUNTERINTUITIVE/answer_sheets/T7-AGENT-03.json",
+      "blob_sha": "3c234e9e3fe8aaad01475dc4d874588ea0599443",
+      "size": 2118
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-07-COUNTERINTUITIVE/answer_sheets/T7-AGENT-04.json",
+      "blob_sha": "45c1c36b123b70c8f5067cf5ff45cb6333d59e68",
+      "size": 4063
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-07-COUNTERINTUITIVE/answer_sheets/T7-AGENT-05.json",
+      "blob_sha": "37acd30f0772ba87f240619f55c28e8e7a3162f2",
+      "size": 3366
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-07-COUNTERINTUITIVE/answer_sheets/T7-AGENT-06.json",
+      "blob_sha": "140ae0df9420c75e49650a39a44d21bc5c73508e",
+      "size": 2924
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-07-COUNTERINTUITIVE/answer_sheets/T7-AGENT-07.json",
+      "blob_sha": "3efbffce95e9334433a80fa8f4c29cf8721ab4c1",
+      "size": 1864
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-07-COUNTERINTUITIVE/answer_sheets/T7-AGENT-08.json",
+      "blob_sha": "fa224efe8b2fb4bb447833715a39e7a3a20845d2",
+      "size": 2038
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-07-COUNTERINTUITIVE/answer_sheets/T7-AGENT-09.json",
+      "blob_sha": "669e3237ae5d9bb74b025d18b2e860be9e39a1de",
+      "size": 2549
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-07-COUNTERINTUITIVE/answer_sheets/T7-AGENT-10.json",
+      "blob_sha": "5dd107d6be5d480695aefa85d3dbef562900b3d1",
+      "size": 2313
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-07-COUNTERINTUITIVE/answer_sheets/T7-AGENT-11.json",
+      "blob_sha": "bf60b0743ad40e0d10927f50d952b58d8f5f39f1",
+      "size": 2938
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-07-COUNTERINTUITIVE/answer_sheets/T7-AGENT-12.json",
+      "blob_sha": "8712e88851e7efe064888dfa4614a6777f7c4bc5",
+      "size": 1904
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-07-COUNTERINTUITIVE/answer_sheets/T7-AGENT-13.json",
+      "blob_sha": "8e7959efd6197b87a555ca4b6216ee6dda06dcfd",
+      "size": 2329
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-07-COUNTERINTUITIVE/answer_sheets/T7-AGENT-14.json",
+      "blob_sha": "d23f9498ff2ef037c37d0f0c87f8445d40183ae0",
+      "size": 2814
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-07-COUNTERINTUITIVE/answer_sheets/T7-AGENT-15.json",
+      "blob_sha": "5032436ddc60a2b37cc5e37fc51009895fbf04b8",
+      "size": 3271
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-07-COUNTERINTUITIVE/answer_sheets/T7-AGENT-16.json",
+      "blob_sha": "e546738e244af356f5599df55ab3455033f1b353",
+      "size": 1994
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-07-COUNTERINTUITIVE/answer_sheets/T7-AGENT-17.json",
+      "blob_sha": "bdf91732faa4556dd7eef3be32bca3a903c88c66",
+      "size": 2836
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-07-COUNTERINTUITIVE/answer_sheets/T7-AGENT-18.json",
+      "blob_sha": "cabe4fc5f169ca3b360291b075c10e9cf15c5401",
+      "size": 3370
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-07-COUNTERINTUITIVE/answer_sheets/T7-AGENT-19.json",
+      "blob_sha": "b3c4a9d58375b372b133961d734fff69d8ade649",
+      "size": 2067
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-07-COUNTERINTUITIVE/answer_sheets/T7-AGENT-20.json",
+      "blob_sha": "ada7cedb0e66a28a4f68efdf702fe02cf9e15a29",
+      "size": 2318
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-07-COUNTERINTUITIVE/arm_assignment.txt",
+      "blob_sha": "967d2811040070681fec4710028f4e7c30b14191",
+      "size": 285
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-07-COUNTERINTUITIVE/brief_control.txt",
+      "blob_sha": "168a2934b71ba1a256a99f7368a6b6e0021842c9",
+      "size": 812
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-07-COUNTERINTUITIVE/brief_treatment.txt",
+      "blob_sha": "8656946e5398f8b4d71ec579905b92cec90672f9",
+      "size": 920
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-07-COUNTERINTUITIVE/corpus/note-01-sn0568.md",
+      "blob_sha": "38ac4aaa5a90140527e75ce37189feada3689139",
+      "size": 1207
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-07-COUNTERINTUITIVE/corpus/note-02-decision-protocol.md",
+      "blob_sha": "ae7c6278f2ff1c158580f610fa859c03efc809b4",
+      "size": 535
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-07-COUNTERINTUITIVE/corpus/note-03-prime3.md",
+      "blob_sha": "0f7640cf7a6b717ba65e939800fec7b98b6f347e",
+      "size": 343
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-07-COUNTERINTUITIVE/corpus/note-04-nine-floor.md",
+      "blob_sha": "2dc383edc6b0122e8e9dcd41ae032a23bdebaa48",
+      "size": 383
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-07-COUNTERINTUITIVE/corpus/note-05-scorecard-law.md",
+      "blob_sha": "c383a78cbe2f549dcc39dae5e6ab8da82eda47bc",
+      "size": 404
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-07-COUNTERINTUITIVE/corpus/note-06-judgment-rule.md",
+      "blob_sha": "078a838f5d80e8455f56052bb8fcb79c02a7fae4",
+      "size": 371
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-07-COUNTERINTUITIVE/corpus/note-07-proactive-fix.md",
+      "blob_sha": "744485b2f2b9860beba25012a6cbb87281b96292",
+      "size": 382
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-07-COUNTERINTUITIVE/corpus/note-08-evidence-law.md",
+      "blob_sha": "8f49545b36fb9b6dcdf78bd98efa417c4509c074",
+      "size": 225
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-07-COUNTERINTUITIVE/corpus/note-09-ownership.md",
+      "blob_sha": "ccc9f18dd0c788c09c0bfbc80a271de75e891bf3",
+      "size": 286
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-07-COUNTERINTUITIVE/corpus/note-10-captain.md",
+      "blob_sha": "d148214e0662ec8b031c205ddf47d9aa84c42dd9",
+      "size": 310
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-07-COUNTERINTUITIVE/corpus/note-11-awesome-rule.md",
+      "blob_sha": "14b8f54fffa1b68f4daec63493b8fc4d143c3281",
+      "size": 261
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-07-COUNTERINTUITIVE/corpus/note-12-nonstop-loop.md",
+      "blob_sha": "b75644637150259dd1648d644db466d155ce96e2",
+      "size": 281
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-07-COUNTERINTUITIVE/corpus/note-13-intelligence-question.md",
+      "blob_sha": "418906c62fb894a5928129f78f7cbf035beb9a2a",
+      "size": 211
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-07-COUNTERINTUITIVE/corpus/note-14-parallel.md",
+      "blob_sha": "4a0d89b103605c23afc7bd041ca87f88f71c4cfb",
+      "size": 235
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-07-COUNTERINTUITIVE/corpus/note-15-signin-law.md",
+      "blob_sha": "1979f9f36930e07e12e5071b3b8a3909e444ccbf",
+      "size": 245
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-07-COUNTERINTUITIVE/corpus/note-16-trail-rule.md",
+      "blob_sha": "0472e78237e1bccaa9f864dfe93e04df6fba1c2c",
+      "size": 211
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-07-COUNTERINTUITIVE/corpus/note-17-610-doctrine.md",
+      "blob_sha": "77e93cfd5766c75f848133b5574d2c52388ae3b2",
+      "size": 351
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-07-COUNTERINTUITIVE/corpus/note-18-think-first.md",
+      "blob_sha": "7f2d9f5fa70ed1787f227c00da6ebaf5c9b19115",
+      "size": 309
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-07-COUNTERINTUITIVE/corpus/note-19-tip-moves.md",
+      "blob_sha": "4e5c01dc600f22cb7a22db6ab59b59f434246e81",
+      "size": 249
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-07-COUNTERINTUITIVE/corpus/note-20-baby-objective.md",
+      "blob_sha": "2b5b05206b0fb030ce44a261fd305cb6018088d6",
+      "size": 333
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-07-COUNTERINTUITIVE/corpus/note-21-supabase-rule.md",
+      "blob_sha": "d427037e55c4d5f0cd13975b570bdeeea30008f0",
+      "size": 239
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-07-COUNTERINTUITIVE/corpus_manifest.sha256",
+      "blob_sha": "efe25ad0d16f9bcd34c3506c00e7e38b4fa3e924",
+      "size": 1876
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-07-COUNTERINTUITIVE/decision_scenarios.json",
+      "blob_sha": "84a4abca5b6618cf91584da9ce125456b0ce22a2",
+      "size": 4013
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-07-COUNTERINTUITIVE/grade_trial07.py",
+      "blob_sha": "49127ab68df8cf8c27663baef5ba73187ea0013f",
+      "size": 5133
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-07-COUNTERINTUITIVE/results_trial07.json",
+      "blob_sha": "7a0046d917c151a0fc0ea91c557c013a23c61ada",
+      "size": 1582
     },
     {
       "path": "BRAIN/05-MEMORY/README.md",
