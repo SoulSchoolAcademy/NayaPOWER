@@ -73,4 +73,8 @@
 
 .living-btn .btn-label svg { width: 20px; height: 20px; }
  .living-btn { min-width: 100%; }
- .living-btn, .living-btn::after { animation: none; }
+/* Restored 2026-10-09: extraction stripped the reduced-motion wrapper.
+ * The kill-rule below must ONLY apply when the user prefers reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  .living-btn, .living-btn::after { animation: none; }
+}
