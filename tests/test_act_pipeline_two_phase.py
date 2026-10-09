@@ -223,7 +223,8 @@ def test_verify_verdict_can_close_the_receipt():
     receipt = ap.execute_plan(plan, executor=lambda p: "observed x",
                               re_resolve=_fresh(_authority()), now=NOW, profile=_profile())
     closed = ap.apply_verify_verdict(receipt, verified=True,
-                                     evidence="verify-seam observed x matches expected")
+                                     evidence="verify-seam observed x matches expected",
+                                     verifier_id="verify-seam/run-1")
     assert closed.outcome_verified is True
     assert closed.truth_state == "VERIFIED"
     assert closed.receipt_id == receipt.receipt_id  # same receipt, closed — not a new one

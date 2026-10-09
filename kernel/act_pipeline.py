@@ -35,7 +35,8 @@ emits the final receipt.
 
 Executor claims are NEVER trusted as verification: the receipt records the
 executor's claim and the observed outcome separately, and truth_state stays
-UNKNOWN until the VERIFY seam closes it via apply_verify_verdict.
+UNKNOWN until the VERIFY seam closes it via apply_verify_verdict — which
+fail-closes on anonymous verifiers, theater evidence, and verdict shopping.
 
 The ReceiptLedger is a producer-side record of emitted receipts. It is not
 an authority store and grants no authority.
@@ -419,21 +420,47 @@ def execute_plan(plan: ActionPlan,
     ))
 
 
+# Minimum substantive evidence for a VERIFY verdict — the repo's own
+# anti-theater bar (tools/auto_merge_gate.py requires a >= 20 char falsifier).
+_MIN_VERDICT_EVIDENCE_CHARS = 20
+_VERDICT_MARKER = "VERIFY verdict"
+
+
 def apply_verify_verdict(receipt: ActionReceipt, *, verified: bool,
-                         evidence: str) -> ActionReceipt:
+                         evidence: str, verifier_id: str) -> ActionReceipt:
     """VERIFY-seam handoff: close a completed receipt with an independent verdict.
 
     Returns a NEW receipt object with the same receipt_id — the receipt is
-    closed, not replaced. Only the VERIFY seam may call this; the pipeline
-    itself never sets outcome_verified=True.
+    closed, not replaced. The pipeline itself never sets outcome_verified=True.
+
+    Fail-closed contract (safety floor): "only the VERIFY seam may call this"
+    is enforced, not assumed —
+      * verifier_id must identify the VERIFY-seam caller (non-blank);
+        an anonymous verdict is not a VERIFY verdict and is refused.
+      * evidence must be substantive (>= 20 non-whitespace chars); theater
+        evidence ("ok") cannot close a receipt.
+      * a receipt already closed by a VERIFY verdict cannot be re-closed;
+        verdict shopping (BLOCKED -> VERIFIED) is refused, the first
+        verdict stands.
+    Any contract violation raises ValueError and the receipt stays open.
     """
     if receipt.phase != "EXECUTION_COMPLETED":
         raise ValueError(f"verdict applies only to EXECUTION_COMPLETED receipts, got {receipt.phase}")
+    if any(str(e).startswith(_VERDICT_MARKER) for e in receipt.evidence):
+        raise ValueError("receipt already closed by a VERIFY verdict; re-closing is refused")
+    if not isinstance(verifier_id, str) or not verifier_id.strip():
+        raise ValueError("verifier_id is required: an anonymous verdict is not a VERIFY-seam verdict")
+    clean_evidence = evidence.strip() if isinstance(evidence, str) else ""
+    if len(clean_evidence) < _MIN_VERDICT_EVIDENCE_CHARS:
+        raise ValueError(
+            f"verdict evidence is not substantive ({len(clean_evidence)} chars, "
+            f"minimum {_MIN_VERDICT_EVIDENCE_CHARS}); theater evidence cannot close a receipt"
+        )
     return ActionReceipt(
         receipt_id=receipt.receipt_id, plan_id=receipt.plan_id, phase=receipt.phase,
         executed=receipt.executed, outcome_verified=verified,
         truth_state="VERIFIED" if verified else "BLOCKED",
-        evidence=receipt.evidence + (f"VERIFY verdict: {evidence}",),
+        evidence=receipt.evidence + (f"VERIFY verdict by {verifier_id.strip()}: {clean_evidence}",),
         codes=receipt.codes,
         observed_outcome=receipt.observed_outcome,
         expected_outcome=receipt.expected_outcome,
