@@ -1,0 +1,708 @@
+{
+ "accounting": {
+  "wave_blocks": 239,
+  "novel_ported": 13,
+  "total": 252,
+  "branch_files": 58,
+  "branch_compositions": 50,
+  "branch_specimens": 2,
+  "branch_pure_novel_files": 6,
+  "check": "239 + 13 = 252; 50 + 2 + 6 = 58"
+ },
+ "trace": [
+  {
+   "branch_id": "buttons-canonical-button-naya-btn",
+   "name": "Canonical button .naya-btn",
+   "novel_components": [],
+   "composes": [
+    "naya-btn"
+   ],
+   "destination": [
+    "composition-recipes.md (recipe)"
+   ]
+  },
+  {
+   "branch_id": "buttons-signature-variants-naya-btn-lead-machine-prism-proximity-str",
+   "name": "Signature variants .naya-btn.lead / .machine / .prism / .proximity / .streak",
+   "novel_components": [],
+   "composes": [
+    "naya-btn"
+   ],
+   "destination": [
+    "composition-recipes.md (recipe)"
+   ]
+  },
+  {
+   "branch_id": "buttons-icon-buttons-naya-btn-icon-micro-portal",
+   "name": "Icon buttons .naya-btn.icon / .micro / .portal",
+   "novel_components": [],
+   "composes": [
+    "icon",
+    "naya-btn",
+    "portal"
+   ],
+   "destination": [
+    "composition-recipes.md (recipe)"
+   ]
+  },
+  {
+   "branch_id": "buttons-ghost-amp-danger-naya-btn-ghost-naya-btn-danger",
+   "name": "Ghost &amp; danger .naya-btn--ghost / .naya-btn--danger",
+   "novel_components": [],
+   "composes": [
+    "naya-btn"
+   ],
+   "destination": [
+    "composition-recipes.md (recipe)"
+   ]
+  },
+  {
+   "branch_id": "buttons-living-button-lv-btn",
+   "name": "Living button .lv-btn",
+   "novel_components": [],
+   "composes": [
+    "lv-btn"
+   ],
+   "destination": [
+    "composition-recipes.md (recipe)"
+   ]
+  },
+  {
+   "branch_id": "buttons-hero-cta-living-btn",
+   "name": "Hero CTA .living-btn",
+   "novel_components": [],
+   "composes": [
+    "living-btn"
+   ],
+   "destination": [
+    "composition-recipes.md (recipe)"
+   ]
+  },
+  {
+   "branch_id": "buttons-split-button-naya-btn-split-split-orb",
+   "name": "Split button .naya-btn.split + .split-orb",
+   "novel_components": [],
+   "composes": [
+    "icon",
+    "naya-btn"
+   ],
+   "destination": [
+    "composition-recipes.md (recipe)"
+   ]
+  },
+  {
+   "branch_id": "buttons-segmented-control-segmented",
+   "name": "Segmented control .segmented",
+   "novel_components": [],
+   "composes": [
+    "segmented"
+   ],
+   "destination": [
+    "composition-recipes.md (recipe)"
+   ]
+  },
+  {
+   "branch_id": "buttons-toggle-switch-naya-toggle",
+   "name": "Toggle switch .naya-toggle",
+   "novel_components": [],
+   "composes": [
+    "naya-toggle"
+   ],
+   "destination": [
+    "composition-recipes.md (recipe)"
+   ]
+  },
+  {
+   "branch_id": "buttons-room-micro-controls-like-pill-act-chip-day-dot-send-cta-mic-",
+   "name": "Room micro-controls .like-pill / .act-chip / .day-dot / .send-cta / .mic-btn / .fab",
+   "novel_components": [],
+   "composes": [
+    "act-chip",
+    "day-dot",
+    "fab",
+    "icon",
+    "like-pill",
+    "mic-btn",
+    "send-cta"
+   ],
+   "destination": [
+    "composition-recipes.md (recipe)"
+   ]
+  },
+  {
+   "branch_id": "inputs-recessed-field-recessed-field",
+   "name": "Recessed field .recessed-field",
+   "novel_components": [],
+   "composes": [
+    "recessed-field"
+   ],
+   "destination": [
+    "composition-recipes.md (recipe)"
+   ]
+  },
+  {
+   "branch_id": "inputs-search-field-search-field",
+   "name": "Search field .search-field",
+   "novel_components": [],
+   "composes": [
+    "icon",
+    "recessed-field",
+    "search-field"
+   ],
+   "destination": [
+    "composition-recipes.md (recipe)"
+   ]
+  },
+  {
+   "branch_id": "inputs-jeweled-checkbox-naya-check",
+   "name": "Jeweled checkbox .naya-check",
+   "novel_components": [
+    "naya-check"
+   ],
+   "composes": [
+    "board"
+   ],
+   "destination": [
+    "blocks/<type>/naya-check/ (new canonical block)",
+    "composition-recipes.md (recipe)"
+   ]
+  },
+  {
+   "branch_id": "inputs-orbiting-login-login-card-login-orbit",
+   "name": "Orbiting login .login-card / .login-orbit",
+   "novel_components": [],
+   "composes": [
+    "login-card",
+    "naya-btn",
+    "recessed-field"
+   ],
+   "destination": [
+    "composition-recipes.md (recipe)"
+   ]
+  },
+  {
+   "branch_id": "navigation-top-nav-bar-nav-nav-orb",
+   "name": "Top nav bar .nav / .nav-orb",
+   "novel_components": [],
+   "composes": [
+    "nav",
+    "nav-orb"
+   ],
+   "destination": [
+    "composition-recipes.md (recipe)"
+   ]
+  },
+  {
+   "branch_id": "navigation-pill-tabs-smarttabs-smarttab",
+   "name": "Pill tabs .smarttabs / .smarttab",
+   "novel_components": [],
+   "composes": [
+    "smarttab"
+   ],
+   "destination": [
+    "composition-recipes.md (recipe)"
+   ]
+  },
+  {
+   "branch_id": "navigation-favorites-ribbon-sn-row-smarttabs-js",
+   "name": "Favorites ribbon .sn-row (SmartTabs JS)",
+   "novel_components": [],
+   "composes": [
+    "nav",
+    "smarttab"
+   ],
+   "destination": [
+    "composition-recipes.md (recipe)"
+   ]
+  },
+  {
+   "branch_id": "navigation-app-room-nav-app-nav",
+   "name": "App room nav .app-nav",
+   "novel_components": [],
+   "composes": [
+    "app-nav",
+    "nav"
+   ],
+   "destination": [
+    "composition-recipes.md (recipe)"
+   ]
+  },
+  {
+   "branch_id": "navigation-anchor-toc-pills-toc-a",
+   "name": "Anchor TOC pills .toc a",
+   "novel_components": [],
+   "composes": [
+    "nav"
+   ],
+   "destination": [
+    "composition-recipes.md (recipe)"
+   ]
+  },
+  {
+   "branch_id": "cards-elevated-board-elevated-board-board-spine-board-corner",
+   "name": "Elevated board .elevated-board / .board-spine / .board-corner",
+   "novel_components": [],
+   "composes": [
+    "board",
+    "elevated-board"
+   ],
+   "destination": [
+    "composition-recipes.md (recipe)"
+   ]
+  },
+  {
+   "branch_id": "cards-spec-board-board",
+   "name": "Spec board .board",
+   "novel_components": [],
+   "composes": [
+    "board"
+   ],
+   "destination": [
+    "composition-recipes.md (recipe)"
+   ]
+  },
+  {
+   "branch_id": "cards-nested-cards-nestcard",
+   "name": "Nested cards .nestcard",
+   "novel_components": [
+    "nestcard"
+   ],
+   "composes": [],
+   "destination": [
+    "blocks/<type>/nestcard/ (new canonical block)"
+   ]
+  },
+  {
+   "branch_id": "cards-truth-cards-orbs-truthgrid-truth-torb",
+   "name": "Truth cards + orbs .truthgrid / .truth / .torb",
+   "novel_components": [],
+   "composes": [
+    "truthgrid"
+   ],
+   "destination": [
+    "composition-recipes.md (recipe)"
+   ]
+  },
+  {
+   "branch_id": "cards-law-cards-lawcard",
+   "name": "Law cards .lawcard",
+   "novel_components": [],
+   "composes": [
+    "lawcard",
+    "scorecard"
+   ],
+   "destination": [
+    "composition-recipes.md (recipe)"
+   ]
+  },
+  {
+   "branch_id": "cards-three-tongue-law-cards-tongue",
+   "name": "Three-tongue law cards .tongue",
+   "novel_components": [],
+   "composes": [
+    "jw",
+    "tongue"
+   ],
+   "destination": [
+    "composition-recipes.md (recipe)"
+   ]
+  },
+  {
+   "branch_id": "cards-type-scale-cards-typecard",
+   "name": "Type scale cards .typecard",
+   "novel_components": [],
+   "composes": [
+    "type-scale"
+   ],
+   "destination": [
+    "composition-recipes.md (recipe)"
+   ]
+  },
+  {
+   "branch_id": "cards-metric-trio-metric",
+   "name": "Metric trio .metric",
+   "novel_components": [],
+   "composes": [
+    "icon",
+    "metric"
+   ],
+   "destination": [
+    "composition-recipes.md (recipe)"
+   ]
+  },
+  {
+   "branch_id": "cards-job-cards-job",
+   "name": "Job cards .job",
+   "novel_components": [],
+   "composes": [
+    "swatch"
+   ],
+   "destination": [
+    "composition-recipes.md (recipe)"
+   ]
+  },
+  {
+   "branch_id": "cards-world-tiles-layer",
+   "name": "World tiles .layer",
+   "novel_components": [],
+   "composes": [
+    "gem-bullet"
+   ],
+   "destination": [
+    "composition-recipes.md (recipe)"
+   ]
+  },
+  {
+   "branch_id": "data-meaning-spheres-sphere",
+   "name": "Meaning spheres .sphere",
+   "novel_components": [],
+   "composes": [
+    "icon",
+    "sphere"
+   ],
+   "destination": [
+    "composition-recipes.md (recipe)"
+   ]
+  },
+  {
+   "branch_id": "data-self-scorecard-scorecard-score-row-verdict",
+   "name": "Self-scorecard .scorecard / .score-row / .verdict",
+   "novel_components": [],
+   "composes": [
+    "scorecard",
+    "verdict"
+   ],
+   "destination": [
+    "composition-recipes.md (recipe)"
+   ]
+  },
+  {
+   "branch_id": "data-law-library-law-group",
+   "name": "Law library .law-group",
+   "novel_components": [
+    "law-group"
+   ],
+   "composes": [],
+   "destination": [
+    "blocks/<type>/law-group/ (new canonical block)"
+   ]
+  },
+  {
+   "branch_id": "data-data-table-specimen-data-table",
+   "name": "Data table specimen .data-table",
+   "novel_components": [],
+   "composes": [
+    "data-table",
+    "status-dot"
+   ],
+   "destination": [
+    "composition-recipes.md (recipe)"
+   ]
+  },
+  {
+   "branch_id": "overlays-toast-system-nayablocks-toast",
+   "name": "Toast system NayaBlocks.toast()",
+   "novel_components": [],
+   "composes": [
+    "naya-btn",
+    "toast"
+   ],
+   "destination": [
+    "composition-recipes.md (recipe)"
+   ]
+  },
+  {
+   "branch_id": "overlays-mini-modal-modal-mini-modal-gem",
+   "name": "Mini modal .modal-mini / .modal-gem",
+   "novel_components": [],
+   "composes": [
+    "modal-mini",
+    "naya-btn"
+   ],
+   "destination": [
+    "composition-recipes.md (recipe)"
+   ]
+  },
+  {
+   "branch_id": "overlays-share-sheet-smart-link-share-actions",
+   "name": "Share sheet .smart-link / .share-actions",
+   "novel_components": [],
+   "composes": [
+    "icon",
+    "naya-btn",
+    "share-actions",
+    "smart-link"
+   ],
+   "destination": [
+    "composition-recipes.md (recipe)"
+   ]
+  },
+  {
+   "branch_id": "media-media-player-media-player",
+   "name": "Media player .media-player",
+   "novel_components": [],
+   "composes": [
+    "icon",
+    "media-player",
+    "naya-btn",
+    "portal",
+    "timeline"
+   ],
+   "destination": [
+    "composition-recipes.md (recipe)"
+   ]
+  },
+  {
+   "branch_id": "media-hero-vessel-vessel",
+   "name": "Hero vessel .vessel",
+   "novel_components": [],
+   "composes": [
+    "hero",
+    "orb"
+   ],
+   "destination": [
+    "composition-recipes.md (recipe)"
+   ]
+  },
+  {
+   "branch_id": "specialty-orb-system-orb-sm-xs-black-hero-twin-glyph-icon",
+   "name": "Orb system .orb / --sm / --xs / --black / --hero / --twin / --glyph / --icon",
+   "novel_components": [],
+   "composes": [
+    "orb"
+   ],
+   "destination": [
+    "composition-recipes.md (recipe)"
+   ]
+  },
+  {
+   "branch_id": "specialty-mini-orb-mini-orb",
+   "name": "Mini-orb .mini-orb",
+   "novel_components": [],
+   "composes": [
+    "mini-orb"
+   ],
+   "destination": [
+    "composition-recipes.md (recipe)"
+   ]
+  },
+  {
+   "branch_id": "specialty-gem-bullets-gem-bullet",
+   "name": "Gem bullets .gem-bullet",
+   "novel_components": [],
+   "composes": [
+    "gem-bullet",
+    "gem-list"
+   ],
+   "destination": [
+    "composition-recipes.md (recipe)"
+   ]
+  },
+  {
+   "branch_id": "specialty-spectrum-bar-spectrum-bar",
+   "name": "Spectrum bar .spectrum-bar",
+   "novel_components": [],
+   "composes": [
+    "spectrum-bar"
+   ],
+   "destination": [
+    "composition-recipes.md (recipe)"
+   ]
+  },
+  {
+   "branch_id": "specialty-spectrum-swatches-token-chips",
+   "name": "Spectrum swatches token chips",
+   "novel_components": [],
+   "composes": [
+    "swatch"
+   ],
+   "destination": [
+    "composition-recipes.md (recipe)"
+   ]
+  },
+  {
+   "branch_id": "specialty-interaction-physics-physics-row",
+   "name": "Interaction physics .physics-row",
+   "novel_components": [
+    "physics-row"
+   ],
+   "composes": [],
+   "destination": [
+    "blocks/<type>/physics-row/ (new canonical block)"
+   ]
+  },
+  {
+   "branch_id": "specialty-ship-gate-checklist-gate",
+   "name": "Ship-gate checklist .gate",
+   "novel_components": [],
+   "composes": [
+    "jw"
+   ],
+   "destination": [
+    "composition-recipes.md (recipe)"
+   ]
+  },
+  {
+   "branch_id": "specialty-code-copy-pre-code-copy-btn",
+   "name": "Code + copy pre.code / .copy-btn",
+   "novel_components": [],
+   "composes": [
+    "naya-btn",
+    "recipe"
+   ],
+   "destination": [
+    "composition-recipes.md (recipe)"
+   ]
+  },
+  {
+   "branch_id": "specialty-rule-boards-rule-board",
+   "name": "Rule boards .rule-board",
+   "novel_components": [],
+   "composes": [
+    "board",
+    "rule-board"
+   ],
+   "destination": [
+    "composition-recipes.md (recipe)"
+   ]
+  },
+  {
+   "branch_id": "specialty-anti-pattern-drift-demos-driftgrid-drift",
+   "name": "Anti-pattern drift demos .driftgrid / .drift",
+   "novel_components": [],
+   "composes": [],
+   "destination": [
+    "composition-recipes.md (specimen)"
+   ]
+  },
+  {
+   "branch_id": "specialty-ambient-field-page-before",
+   "name": "Ambient field page ::before",
+   "novel_components": [],
+   "composes": [],
+   "destination": [
+    "composition-recipes.md (specimen)"
+   ]
+  },
+  {
+   "branch_id": "new-page-shell-naya-shell",
+   "name": "Page shell .naya-shell",
+   "novel_components": [
+    "naya-shell"
+   ],
+   "composes": [
+    "metric",
+    "orb"
+   ],
+   "destination": [
+    "blocks/<type>/naya-shell/ (new canonical block)",
+    "composition-recipes.md (recipe)"
+   ]
+  },
+  {
+   "branch_id": "new-command-palette-nayablocks-wirepalette",
+   "name": "Command palette NayaBlocks.wirePalette()",
+   "novel_components": [],
+   "composes": [
+    "icon",
+    "naya-btn",
+    "section"
+   ],
+   "destination": [
+    "composition-recipes.md (recipe)"
+   ]
+  },
+  {
+   "branch_id": "new-live-data-table-table-naya-table-data-sortable",
+   "name": "Live data table table.naya-table[data-sortable]",
+   "novel_components": [
+    "naya-table"
+   ],
+   "composes": [
+    "data-table"
+   ],
+   "destination": [
+    "blocks/<type>/naya-table/ (new canonical block)",
+    "composition-recipes.md (recipe)"
+   ]
+  },
+  {
+   "branch_id": "new-empty-error-loading-naya-state-naya-spinner",
+   "name": "Empty \u00b7 error \u00b7 loading .naya-state / .naya-spinner",
+   "novel_components": [
+    "naya-state",
+    "naya-spinner"
+   ],
+   "composes": [
+    "naya-btn"
+   ],
+   "destination": [
+    "blocks/<type>/naya-state/ (new canonical block)",
+    "blocks/<type>/naya-spinner/ (new canonical block)",
+    "composition-recipes.md (recipe)"
+   ]
+  },
+  {
+   "branch_id": "new-skeleton-loading-naya-skel",
+   "name": "Skeleton loading .naya-skel",
+   "novel_components": [
+    "naya-skel"
+   ],
+   "composes": [],
+   "destination": [
+    "blocks/<type>/naya-skel/ (new canonical block)"
+   ]
+  },
+  {
+   "branch_id": "new-avatars-naya-avatar-naya-avatar-stack",
+   "name": "Avatars .naya-avatar / .naya-avatar-stack",
+   "novel_components": [
+    "naya-avatar",
+    "naya-avatar-stack"
+   ],
+   "composes": [],
+   "destination": [
+    "blocks/<type>/naya-avatar/ (new canonical block)",
+    "blocks/<type>/naya-avatar-stack/ (new canonical block)"
+   ]
+  },
+  {
+   "branch_id": "new-badges-naya-badge",
+   "name": "Badges .naya-badge",
+   "novel_components": [
+    "naya-badge"
+   ],
+   "composes": [],
+   "destination": [
+    "blocks/<type>/naya-badge/ (new canonical block)"
+   ]
+  },
+  {
+   "branch_id": "new-notification-drawer-naya-drawer",
+   "name": "Notification drawer .naya-drawer",
+   "novel_components": [
+    "naya-drawer"
+   ],
+   "composes": [
+    "drawer",
+    "icon",
+    "naya-btn"
+   ],
+   "destination": [
+    "blocks/<type>/naya-drawer/ (new canonical block)",
+    "composition-recipes.md (recipe)"
+   ]
+  },
+  {
+   "branch_id": "new-real-footer-naya-footer",
+   "name": "Real footer .naya-footer",
+   "novel_components": [],
+   "composes": [
+    "footer"
+   ],
+   "destination": [
+    "composition-recipes.md (recipe)"
+   ]
+  }
+ ]
+}
