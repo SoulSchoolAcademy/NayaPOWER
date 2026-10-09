@@ -83,7 +83,7 @@ No policies were returned for those three tables. These tables may be exposed to
 ## Source/runtime parity and open work
 
 - PR #2037 is still a draft and its base SHA is `1d73652231ac6127806640af5a31eb516c60738d`, behind the inspected current main `527ebcfbc04896c3a6beee127757785597e0713a`. Do not treat that draft as the current deployed truth without refreshing/reconciling it.
-- PR #2012 (GitHub projection 403 diagnostic) is still draft and not deployed. Deployed `nayanet-github-dispatch` version 36 does not contain its diagnostic receipt change.
+- PR #2012 (GitHub projection 403 diagnostic) is still draft/unmerged, but the live deployed `nayanet-github-dispatch` version 36 exactly matches that PR branch's current `index.ts` bytes (`a73634296d098a2f171d467e77cd53fabcba74cc`); current `main` does not. This is a production-ahead-of-main parity/governance discrepancy, not an undeployed diagnostic. Reconcile the draft branch with main through review before further edits to this function.
 - The canonical activation plan marks production deployment of mismatched Edge Function bytes as a human gate. No production deployment is authorized by this diagnostic.
 
 ## Ordered closure queue — assemble before full end-to-end experiment
@@ -139,3 +139,13 @@ These are existing records; no rows were modified. The current registry index ha
 ### Stale-document reconciliation
 
 The main branch learning blueprint `BRAIN/07-LEARNING/learning-system-blueprint-v1.md` contains claims tied to old main tip `1d73652231ac6127806640af5a31eb516c60738d`, including an earlier claim that no capture-promotion job exists. That claim is stale against current main `527ebcfbc04896c3a6beee127757785597e0713a`: PR #2048 merged the `admission-promotion` job. Treat historical diagnostics as historical, and use exact current source/workflow plus live receipts for present-state claims.
+
+
+### Updated node and projection source parity
+
+- `nayanet-act-runtime` version 65 is stale relative to main: deployed entrypoint lacks `readDecisionContext` and `measureLearningInfluence`; deployed `act.ts` is 20,766 chars vs main 26,509. Main now calls `readDecisionContext` after LAW preflight and compares a control plan with a learning-context treatment plan. The deployed runtime does not contain that connection.
+- `naya-decision-context` version 10 is stale relative to main: deployed behavior equates ACTIVE-row presence with `influenced=true`; main explicitly reports availability while keeping `influenced=false` until a controlled intervention is measured. The ACT production path uses the local `nayanet-act-runtime/decision-context.ts` helper, not this standalone Edge Function.
+- `kernel/self_integration.py` and `kernel/behavior_policy.py` exist, with tests for verified-lesson integration, before/after behavior change, rollback, and the ACT `on_executed` experience hook. Search found no production call sites for `integrate_verified_lesson()` or `make_act_experience_hook()`; current references are the module/tests. A real Supabase read adapter/credential boundary and a production caller remain unproven.
+- `nayanet-cold-runtime-proof` version 130 matches main after normalizing the deployment-only `DEPLOYED_SOURCE_REVISION` stamp (`00f50bb32c1c7fadfbe5cd03d0319646ab9dc0e9`); this is not substantive source drift.
+- `nayanet-causal-verify` v82, `nayanet-causal-learning-experiment` v84, `nayanet-intelligence-commit-runtime` v82, `nayanet-law-runtime` v66, `nayanet-prove-runtime` v64, and `nayanet-know-runtime` v67 match their inspected main entrypoint bytes.
+- `v7-smart-note-canonical` v19 matches current main after removing the leading UTF-8 BOM; it remains a separate legacy intake path. Its three legacy Smart Note tables have 23 events, 92 artifacts, and 23 receipts, and RLS is disabled on all three.
