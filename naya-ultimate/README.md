@@ -10,7 +10,7 @@ This is the canonical component library for building elite Naya Smart Apps. A ne
 |------|-----------|
 | `index.html` | The ultimate showcase — all 9 sections, live demos, copy-paste code |
 | `tokens.css` | Every design token: spectrum, field, light, motion, type, radii |
-| `lego/buttons.html` | The button family: heroes, living system, essential, primo |
+| `lego/buttons.html` | The button family: heroes, living system, essential, primo, orbit, icon buttons |
 | `lego/boards.html` | Three board systems: base, theme (color-mix), tone (layers) |
 | `lego/jewels.html` | Jewel cuts, mini-orbs, gem bullets |
 | `lego/smarttabs.html` | SmartTabs v9 kit — demo + API |

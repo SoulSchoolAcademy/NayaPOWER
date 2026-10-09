@@ -113,7 +113,7 @@ footer .spectrum-bar { max-width: 320px; margin-bottom: 20px; }
   </div>
   <p class="micro btn-note">These three buttons are the standard. Living depth. Lit at rest. Ignite on touch.<br>Every button you ever build starts here.</p>
   <nav class="toc">
-    <a href="#buttons">Buttons</a><a href="#smarttabs">SmartTabs</a><a href="#spectrum">Spectrum</a><a href="#boards">Boards</a><a href="#jewels">Jewels</a><a href="#type">Typography</a><a href="#truth">Truth</a><a href="#laws">Laws</a><a href="#machine">Machine Law</a>
+    <a href="#buttons">Buttons</a><a href="#smarttabs">SmartTabs</a><a href="#spectrum">Spectrum</a><a href="#boards">Boards</a><a href="#jewels">Jewels</a><a href="#type">Typography</a><a href="#truth">Truth</a><a href="#laws">Laws</a><a href="#rules">Do's & Don'ts</a><a href="#machine">Machine Law</a>
   </nav>
 </header>
 
@@ -148,6 +148,14 @@ footer .spectrum-bar { max-width: 320px; margin-bottom: 20px; }
     <button class="cx-btn">＋ CREATE</button>
     <button class="cx-btn">◈ DETAILS</button>
     <button class="cx-btn">→ CONTINUE</button>
+  </div>
+
+  <h3 style="font-size:24px;margin:32px 0 16px">The orbit — <span style="font-family:monospace;font-size:18px">.orbit-btn</span></h3>
+  <p class="micro" style="margin-bottom:16px">A circle of light flows around the button. Black with color accents. Light ignites from behind on hover.</p>
+  <div class="demo-row">
+    <button class="orbit-btn" style="--oc:#e84fff;--oc-rgb:232,79,255"><span class="orbit-label">✦ Create</span></button>
+    <button class="orbit-btn" style="--oc:#a06bff;--oc-rgb:160,107,255"><span class="orbit-label">◈ Launch</span></button>
+    <button class="orbit-btn" style="--oc:#3fb8ff;--oc-rgb:63,184,255"><span class="orbit-label">＋ Begin</span></button>
   </div>
 
   <div class="code-head"><span class="micro">Copy — living button</span><button class="copy-btn" onclick="copyCode('btnCopy')">Copy</button></div>
@@ -189,6 +197,18 @@ footer .spectrum-bar { max-width: 320px; margin-bottom: 20px; }
 .cx-btn { padding: 15px 32px; border-radius: 999px; font-size: 14px; font-weight: 800; letter-spacing: .1em; cursor: pointer; font-family: inherit; color: #fff; background: linear-gradient(180deg,#15151a,#050506); border: 1.5px solid rgba(255,255,255,.55); display: inline-flex; align-items: center; gap: 10px; box-shadow: inset 0 2px 2px rgba(255,255,255,.22), inset 0 -3px 6px rgba(0,0,0,.6), 0 0 22px -2px rgba(255,255,255,.28), 0 12px 28px rgba(0,0,0,.65); transition: border-color .22s, box-shadow .25s, transform .15s var(--ease); }
 .cx-btn:hover { border-color: var(--soul); transform: translateY(-2px); box-shadow: inset 0 2px 2px rgba(255,255,255,.25), inset 0 -3px 6px rgba(0,0,0,.5), 0 0 42px -2px var(--soul), 0 16px 34px rgba(0,0,0,.6); }
 .cx-btn:active { transform: translateY(1px) scale(.97); box-shadow: inset 0 3px 8px rgba(0,0,0,.7), 0 0 18px -4px var(--soul); }
+/* Orbit buttons — circle of light, black with color accents */
+.orbit-btn { --oc: #a06bff; --oc-rgb: 160,107,255; position: relative; isolation: isolate; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; min-height: 60px; padding: 0 40px; border-radius: 999px; border: none; font-family: Inter, sans-serif; font-size: 15px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #fff; text-shadow: 0 -1px 2px rgba(0,0,0,.9), 0 1px 3px rgba(0,0,0,.6); background: linear-gradient(180deg, #1a1a20 0%, #060607 55%, #000000 100%); transition: transform .25s var(--ease); }
+.orbit-btn::before { content: ""; position: absolute; inset: -3px; border-radius: 999px; z-index: -1; background: conic-gradient(from var(--oa, 0deg), transparent 0deg, transparent 300deg, rgba(var(--oc-rgb),.9) 340deg, rgba(255,255,255,.95) 355deg, transparent 360deg); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; padding: 2.5px; animation: orbit-spin 4s linear infinite; opacity: .75; filter: drop-shadow(0 0 8px rgba(var(--oc-rgb),.6)); }
+@property --oa { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+@keyframes orbit-spin { to { --oa: 360deg; } }
+.orbit-btn::after { content: ""; position: absolute; inset: -18px; border-radius: 999px; z-index: -2; background: radial-gradient(ellipse at center, rgba(var(--oc-rgb),.35), transparent 70%); opacity: 0; transition: opacity .4s ease; filter: blur(6px); }
+.orbit-btn .orbit-label { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 10px; }
+.orbit-btn:hover { transform: translateY(-3px) scale(1.02); }
+.orbit-btn:hover::before { opacity: 1; animation-duration: 1.5s; }
+.orbit-btn:hover::after { opacity: 1; }
+.orbit-btn:active { transform: translateY(1px) scale(.98); transition-duration: .08s; }
+@media (prefers-reduced-motion: reduce) { .orbit-btn::before { animation: none; } }
 @media (prefers-reduced-motion: reduce) { .lv-btn, .lv-btn::after { animation: none !important; } }
 </style>
 
@@ -312,8 +332,8 @@ tabs.el.addEventListener('change', e =&gt; console.log(e.detail));
 <style>
 .jewel-row { display: flex; gap: 36px; justify-content: center; flex-wrap: wrap; margin: 36px 0; }
 .jewel { text-align: center; }
-.jewel svg { width: 72px; height: 72px; filter: drop-shadow(0 0 16px currentColor); animation: jewelPulse 4s ease-in-out infinite; transition: transform .25s var(--ease); }
-.jewel:hover svg { transform: scale(1.15); }
+.jewel svg { width: 84px; height: 84px; filter: drop-shadow(0 0 18px currentColor) drop-shadow(0 4px 12px rgba(0,0,0,.6)); animation: jewelPulse 4s ease-in-out infinite; transition: transform .25s var(--ease); }
+.jewel:hover svg { transform: scale(1.18) rotate(4deg); }
 .jewel:nth-child(2) svg { animation-delay: .8s; } .jewel:nth-child(3) svg { animation-delay: 1.6s; }
 .jewel:nth-child(4) svg { animation-delay: 2.4s; } .jewel:nth-child(5) svg { animation-delay: 3.2s; }
 @keyframes jewelPulse { 0%,100% { transform: scale(1); opacity: .92; } 50% { transform: scale(1.07); opacity: 1; } }
@@ -391,10 +411,84 @@ tabs.el.addEventListener('change', e =&gt; console.log(e.detail));
 .law-card p { font-size: 15px; color: var(--quiet); margin: 0; }
 </style>
 
-<!-- ================= 09 MACHINE LAW ================= -->
+<!-- ================= 09 DO'S AND DON'TS ================= -->
+<section id="rules">
+  <p class="kicker">09 · The hundred rules</p>
+  <h2><span class="n">09</span>Do's and don'ts.</h2>
+  <p class="lede">The rules for elite Smart App interfaces, in one place. <strong>Do</strong> the left column. <strong>Never</strong> the right.</p>
+  <div class="rules-grid">
+    <div class="rules-col do">
+      <h3>✓ DO</h3>
+      <ul>
+        <li>Black ground, white light, purple soul</li>
+        <li>Spectrum in law order: magenta → purple → blue → green → gold</li>
+        <li>One color job per thing — never cross them</li>
+        <li>White text 99% of the time</li>
+        <li>Buttons with black hearts, white voice, visible skin</li>
+        <li>Every button has depth — 4+ shadow layers minimum</li>
+        <li>Every board elevated, every board responds on hover</li>
+        <li>Light up, don't glow out — glow stays at borders</li>
+        <li>Jewels, not dots — drawn, glowing, never twice adjacent</li>
+        <li>24 / 18 / 14 — size separates, color doesn't</li>
+        <li>Verified glows green; claims stay quiet</li>
+        <li>Cursor sheen, proximity wake, physical press</li>
+        <li>Copy-paste code for every component</li>
+        <li>Live demo before documentation</li>
+        <li>Score the rendered page, never the code</li>
+        <li>9.0+ or back to the bench</li>
+        <li>Text always clearly visible — highest contrast</li>
+        <li>Icons drawn as vector, readable at 16px</li>
+        <li>Reduced-motion support on everything animated</li>
+        <li>One property drives one law (--c, --sc, --tc2)</li>
+      </ul>
+    </div>
+    <div class="rules-col dont">
+      <h3>✕ NEVER</h3>
+      <ul>
+        <li>Flat elements — no elevation, no depth, no good</li>
+        <li>Random rainbows — spectrum is meaning, not decoration</li>
+        <li>Adjacent things sharing a hue</li>
+        <li>Gray body text</li>
+        <li>Colored text on buttons</li>
+        <li>Red on red, or any low-contrast combination</li>
+        <li>Glow bleeding out and killing elegance</li>
+        <li>Dots instead of jewels</li>
+        <li>Same icon stamped repeatedly</li>
+        <li>Body text under 18px</li>
+        <li>Claims that look like proofs</li>
+        <li>Dead buttons — everything responds</li>
+        <li>Components without copy-paste code</li>
+        <li>Documentation without live demo</li>
+        <li>Self-declared 9.0 without verification</li>
+        <li>Shipping below 9</li>
+        <li>Faded text, washed-out icons</li>
+        <li>Shrunken photo icons</li>
+        <li>Animation without reduced-motion fallback</li>
+        <li>Magic numbers scattered without tokens</li>
+      </ul>
+    </div>
+  </div>
+  <p class="micro" style="margin-top:24px">The full 100-rule playbook ships with the design contract. These 40 are the non-negotiables.</p>
+</section>
+<style>
+.rules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 28px 0; }
+@media (max-width: 768px) { .rules-grid { grid-template-columns: 1fr; } }
+.rules-col { border-radius: var(--r-lg); padding: 28px; }
+.rules-col.do { border: 1.5px solid rgba(47,232,158,.4); background: linear-gradient(180deg, rgba(47,232,158,.06), rgba(0,0,0,.2)); }
+.rules-col.dont { border: 1.5px solid rgba(255,94,108,.4); background: linear-gradient(180deg, rgba(255,94,108,.06), rgba(0,0,0,.2)); }
+.rules-col h3 { font-size: 20px; margin-bottom: 16px; letter-spacing: .1em; }
+.rules-col.do h3 { color: var(--green); }
+.rules-col.dont h3 { color: #ff5e6c; }
+.rules-col ul { list-style: none; margin: 0; }
+.rules-col li { padding: 8px 0 8px 28px; position: relative; font-size: 15px; border-bottom: 1px solid rgba(255,255,255,.05); }
+.rules-col.do li::before { content: "✓"; position: absolute; left: 4px; color: var(--green); font-weight: 800; }
+.rules-col.dont li::before { content: "✕"; position: absolute; left: 4px; color: #ff5e6c; font-weight: 800; }
+</style>
+
+<!-- ================= 10 MACHINE LAW ================= -->
 <section id="machine">
-  <p class="kicker">09 · In code</p>
-  <h2><span class="n">09</span>Machine law &amp; the ship gate.</h2>
+  <p class="kicker">10 · In code</p>
+  <h2><span class="n">10</span>Machine law &amp; the ship gate.</h2>
   <p class="lede">One contract, three tongues. The <strong>machine</strong> is normative — checkable predicates, no adjectives. The <strong>AI</strong> layer is procedure — what a builder does, in order. The <strong>human</strong> layer is philosophy. <strong>On conflict, the machine wins.</strong></p>
   <ul class="checklist">
     <li><strong>Machine law</strong> — <span style="font-family:monospace">contract/naya-design-contract-v1.machine.json</span>: 47+ pinned tokens, prohibited patterns, required patterns. The checker fails the build on violation.</li>
@@ -454,11 +548,11 @@ document.getElementById('swatches').addEventListener('click', function (e) {
 });
 /* Jewels — five cuts, spectrum order */
 const SPECTRUM = [
-  { name:'MAGENTA', hex:'#e84fff', svg:'<path d="M36 6 L58 30 L36 54 L14 30 Z" fill="none" stroke="COLOR" stroke-width="3"/><path d="M36 16 L48 30 L36 44 L24 30 Z" fill="COLOR" opacity=".35"/>' },
-  { name:'PURPLE', hex:'#a06bff', svg:'<circle cx="36" cy="30" r="22" fill="none" stroke="COLOR" stroke-width="3"/><circle cx="36" cy="30" r="10" fill="COLOR" opacity=".4"/><circle cx="36" cy="30" r="4" fill="#fff"/>' },
-  { name:'BLUE', hex:'#3fb8ff', svg:'<path d="M36 8 L60 52 L12 52 Z" fill="none" stroke="COLOR" stroke-width="3"/><path d="M36 24 L48 46 L24 46 Z" fill="COLOR" opacity=".3"/>' },
-  { name:'GREEN', hex:'#2fe89e', svg:'<rect x="16" y="10" width="40" height="40" rx="6" transform="rotate(45 36 30)" fill="none" stroke="COLOR" stroke-width="3"/><rect x="26" y="20" width="20" height="20" rx="3" transform="rotate(45 36 30)" fill="COLOR" opacity=".35"/>' },
-  { name:'GOLD', hex:'#ffbf3d', svg:'<circle cx="36" cy="30" r="22" fill="none" stroke="COLOR" stroke-width="3" stroke-dasharray="6 4"/><circle cx="36" cy="30" r="22" fill="none" stroke="COLOR" stroke-width="1.5"/><circle cx="36" cy="30" r="7" fill="COLOR" opacity=".45"/>' }
+  { name:'MAGENTA', hex:'#e84fff', svg:'<path d="M36 4 L60 30 L36 56 L12 30 Z" fill="none" stroke="COLOR" stroke-width="3.5"/><path d="M36 4 L48 30 L36 56 L24 30 Z" fill="none" stroke="COLOR" stroke-width="1.2" opacity=".7"/><path d="M12 30 L60 30" stroke="COLOR" stroke-width="1.2" opacity=".7"/><path d="M36 14 L48 30 L36 46 L24 30 Z" fill="COLOR" opacity=".4"/><circle cx="28" cy="20" r="3" fill="#fff" opacity=".95"/>' },
+  { name:'PURPLE', hex:'#a06bff', svg:'<circle cx="36" cy="30" r="24" fill="none" stroke="COLOR" stroke-width="3.5"/><circle cx="36" cy="30" r="24" fill="none" stroke="#fff" stroke-width="1" opacity=".5" stroke-dasharray="4 6"/><circle cx="36" cy="30" r="12" fill="COLOR" opacity=".45"/><circle cx="36" cy="30" r="5" fill="#fff"/><circle cx="31" cy="24" r="2.5" fill="#fff" opacity=".9"/>' },
+  { name:'BLUE', hex:'#3fb8ff', svg:'<path d="M36 6 L62 54 L10 54 Z" fill="none" stroke="COLOR" stroke-width="3.5"/><path d="M36 6 L36 54" stroke="COLOR" stroke-width="1.2" opacity=".7"/><path d="M23 30 L49 30" stroke="COLOR" stroke-width="1.2" opacity=".7"/><path d="M36 22 L50 48 L22 48 Z" fill="COLOR" opacity=".35"/><circle cx="30" cy="38" r="2.5" fill="#fff" opacity=".9"/>' },
+  { name:'GREEN', hex:'#2fe89e', svg:'<rect x="14" y="8" width="44" height="44" rx="8" transform="rotate(45 36 30)" fill="none" stroke="COLOR" stroke-width="3.5"/><rect x="14" y="8" width="44" height="44" rx="8" transform="rotate(45 36 30)" fill="none" stroke="#fff" stroke-width="1" opacity=".5"/><rect x="24" y="18" width="24" height="24" rx="4" transform="rotate(45 36 30)" fill="COLOR" opacity=".4"/><circle cx="29" cy="22" r="2.5" fill="#fff" opacity=".9" transform="rotate(45 36 30)"/>' },
+  { name:'GOLD', hex:'#ffbf3d', svg:'<circle cx="36" cy="30" r="24" fill="none" stroke="COLOR" stroke-width="3.5" stroke-dasharray="8 5"/><circle cx="36" cy="30" r="24" fill="none" stroke="COLOR" stroke-width="1.5"/><circle cx="36" cy="30" r="15" fill="none" stroke="COLOR" stroke-width="1" opacity=".6"/><circle cx="36" cy="30" r="8" fill="COLOR" opacity=".5"/><circle cx="31" cy="24" r="2.5" fill="#fff" opacity=".95"/>' }
 ];
 document.getElementById('jewelRow').innerHTML = SPECTRUM.map(s =>
   `<div class="jewel" style="color:${s.hex}"><svg viewBox="0 0 72 60">${s.svg.replace(/COLOR/g, s.hex)}</svg><p class="micro">${s.name}</p></div>`

@@ -266,6 +266,163 @@ pre.code { background: #0a0d14; border: 1px solid var(--line); border-radius: 14
 &lt;!-- themes: theme-magenta | theme-purple | theme-blue | theme-green | theme-gold --&gt;</pre>
 </div>
 
+<!-- ORBIT BUTTONS -->
+<div class="lego-section">
+<h2>05 · Orbit — <code>.orbit-btn</code></h2>
+<p class="why"><strong>Why:</strong> A circle of light flows around the button — black with color accents, never all-color. On hover, light ignites from behind. <strong>Use for:</strong> flagship actions that need to feel alive before they're touched.</p>
+<div class="demo-row">
+  <button class="orbit-btn" style="--oc:#e84fff;--oc-rgb:232,79,255"><span class="orbit-label">✦ Create</span></button>
+  <button class="orbit-btn" style="--oc:#a06bff;--oc-rgb:160,107,255"><span class="orbit-label">◈ Launch</span></button>
+  <button class="orbit-btn" style="--oc:#3fb8ff;--oc-rgb:63,184,255"><span class="orbit-label">＋ Begin</span></button>
+</div>
+<button class="copy-btn" onclick="copyCode('orbitCode')">Copy orbit markup</button>
+<pre class="code" id="orbitCode">&lt;button class="orbit-btn" style="--oc:#e84fff;--oc-rgb:232,79,255"&gt;
+  &lt;span class="orbit-label"&gt;✦ Create&lt;/span&gt;
+&lt;/button&gt;</pre>
+</div>
+<style>
+/* ============ ORBIT BUTTONS — circle of light, black with color accents ============ */
+.orbit-btn {
+  --oc: #a06bff; --oc-rgb: 160,107,255;
+  position: relative; isolation: isolate; cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 60px; padding: 0 40px; border-radius: 999px; border: none;
+  font-family: Inter, sans-serif; font-size: 15px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase;
+  color: #fff; text-shadow: 0 -1px 2px rgba(0,0,0,.9), 0 1px 3px rgba(0,0,0,.6);
+  background: linear-gradient(180deg, #1a1a20 0%, #060607 55%, #000000 100%);
+  transition: transform .25s var(--ease);
+}
+.orbit-btn::before {
+  content: ""; position: absolute; inset: -3px; border-radius: 999px; z-index: -1;
+  background: conic-gradient(from var(--oa, 0deg), transparent 0deg, transparent 300deg, rgba(var(--oc-rgb),.9) 340deg, rgba(255,255,255,.95) 355deg, transparent 360deg);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude; padding: 2.5px;
+  animation: orbit-spin 4s linear infinite; opacity: .75;
+  filter: drop-shadow(0 0 8px rgba(var(--oc-rgb),.6));
+}
+@property --oa { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+@keyframes orbit-spin { to { --oa: 360deg; } }
+.orbit-btn::after {
+  content: ""; position: absolute; inset: -18px; border-radius: 999px; z-index: -2;
+  background: radial-gradient(ellipse at center, rgba(var(--oc-rgb),.35), transparent 70%);
+  opacity: 0; transition: opacity .4s ease; filter: blur(6px);
+}
+.orbit-btn .orbit-label { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 10px; }
+.orbit-btn:hover { transform: translateY(-3px) scale(1.02); }
+.orbit-btn:hover::before { opacity: 1; animation-duration: 1.5s; }
+.orbit-btn:hover::after { opacity: 1; }
+.orbit-btn:active { transform: translateY(1px) scale(.98); transition-duration: .08s; }
+@media (prefers-reduced-motion: reduce) { .orbit-btn::before { animation: none; } }
+</style>
+
+<!-- ICON BUTTONS -->
+<div class="lego-section">
+<h2>06 · Icon Buttons — <code>.icon-btn</code></h2>
+<p class="why"><strong>Why:</strong> Round, dimensional, single-purpose. Every icon button has depth — no flat circles. <strong>Use for:</strong> like, share, add, play, and every compact action.</p>
+<div class="demo-row">
+  <button class="icon-btn" style="--ic:#e84fff;--ic-rgb:232,79,255" aria-label="Like"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-11a7 7 0 0114 0c0 6.5-7 11-7 11z"/></svg></button>
+  <button class="icon-btn" style="--ic:#a06bff;--ic-rgb:160,107,255" aria-label="Share"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg></button>
+  <button class="icon-btn" style="--ic:#3fb8ff;--ic-rgb:63,184,255" aria-label="Add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+  <button class="icon-btn" style="--ic:#2fe89e;--ic-rgb:47,232,158" aria-label="Play"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M8 5v14l11-7z"/></svg></button>
+  <button class="icon-btn" style="--ic:#ffbf3d;--ic-rgb:255,191,61" aria-label="Star"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.2H22l-6 4.6 2.3 7.2-6.3-4.5-6.3 4.5L8 13.8 2 9.2h7.6z"/></svg></button>
+</div>
+<button class="copy-btn" onclick="copyCode('iconBtnCode')">Copy icon button markup</button>
+<pre class="code" id="iconBtnCode">&lt;button class="icon-btn" style="--ic:#e84fff;--ic-rgb:232,79,255" aria-label="Like"&gt;
+  &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+       stroke-width="2" stroke-linecap="round"&gt;...&lt;/svg&gt;
+&lt;/button&gt;</pre>
+</div>
+<style>
+/* ============ ICON BUTTONS — round, dimensional, never flat ============ */
+.icon-btn {
+  --ic: #a06bff; --ic-rgb: 160,107,255;
+  width: 52px; height: 52px; border-radius: 50%; border: none; cursor: pointer;
+  display: inline-grid; place-items: center; color: #fff;
+  background: linear-gradient(180deg, rgba(255,255,255,.14) 0%, rgba(255,255,255,.02) 40%, rgba(0,0,0,.25) 100%), linear-gradient(180deg, #23232b 0%, #0a0a0e 55%, #020203 100%);
+  box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.5), inset 0 2px 4px rgba(255,255,255,.3), inset 0 -4px 10px rgba(0,0,0,.6), 0 12px 28px rgba(0,0,0,.65), 0 4px 10px rgba(0,0,0,.5);
+  transition: transform .2s var(--ease), box-shadow .25s var(--ease);
+}
+.icon-btn svg { width: 22px; height: 22px; filter: drop-shadow(0 1px 3px rgba(0,0,0,.7)); }
+.icon-btn:hover { transform: translateY(-2px) scale(1.06);
+  box-shadow: inset 0 0 0 1.5px rgba(var(--ic-rgb),.9), inset 0 2px 4px rgba(255,255,255,.35), inset 0 -4px 10px rgba(0,0,0,.55), 0 0 24px -4px rgba(var(--ic-rgb),.6), 0 16px 34px rgba(0,0,0,.7); }
+.icon-btn:active { transform: scale(.94); transition-duration: .08s;
+  box-shadow: inset 0 3px 10px rgba(0,0,0,.8), 0 6px 16px rgba(0,0,0,.6); }
+.icon-btn[aria-pressed="true"] { box-shadow: inset 0 0 0 1.5px rgba(var(--ic-rgb),1), inset 0 2px 4px rgba(255,255,255,.3), 0 0 28px -2px rgba(var(--ic-rgb),.7), 0 12px 28px rgba(0,0,0,.65); }
+.icon-btn[aria-pressed="true"] svg { fill: rgba(var(--ic-rgb),.35); }
+</style>
+
+<!-- ROOM CONTROLS — harvested from the live NayaNET boards -->
+<div class="lego-section">
+<h2>07 · Room Controls — harvested from the boards</h2>
+<p class="why"><strong>Why:</strong> Every distinct button type from the live NayaNET intelligent boards — like, share, add, send, schedule, calendar, mic. Upgraded to library depth standard. <strong>Use for:</strong> nearly any app.</p>
+
+<h3 style="margin:20px 0 12px">Segmented tabs <code>.seg-tab</code></h3>
+<div class="demo-row">
+  <div class="seg-tabs"><button class="seg-tab on" type="button">ONCE</button><button class="seg-tab" type="button">DAILY</button><button class="seg-tab" type="button">WEEKLY</button></div>
+</div>
+
+<h3 style="margin:20px 0 12px">Like pill <code>.like-pill</code> + action chip <code>.act-chip</code></h3>
+<div class="demo-row">
+  <button class="like-pill on" type="button">♥ 12</button>
+  <button class="act-chip" type="button">↗ Share</button>
+  <button class="act-chip on" type="button" style="--sc:#a06bff">◈ Pin</button>
+</div>
+
+<h3 style="margin:20px 0 12px">Toggle chip <code>.tog-chip</code> + day picker <code>.day-dot</code></h3>
+<div class="demo-row">
+  <button class="tog-chip on" type="button">Design</button>
+  <button class="tog-chip" type="button">Voice</button>
+  <button class="day-dot on" type="button">M</button>
+  <button class="day-dot" type="button">T</button>
+  <button class="day-dot" type="button">W</button>
+</div>
+
+<h3 style="margin:20px 0 12px">Send CTA <code>.send-cta</code> + mic <code>.mic-btn</code> + FAB <code>.fab</code></h3>
+<div class="demo-row">
+  <button class="send-cta" type="button">SEND NOW</button>
+  <button class="mic-btn" type="button" aria-label="Record">🎤</button>
+  <button class="fab" type="button" aria-label="Add">＋</button>
+</div>
+
+<button class="copy-btn" onclick="copyCode('roomCode')">Copy room controls markup</button>
+<pre class="code" id="roomCode">&lt;div class="seg-tabs"&gt;
+  &lt;button class="seg-tab on"&gt;ONCE&lt;/button&gt;
+  &lt;button class="seg-tab"&gt;DAILY&lt;/button&gt;
+  &lt;button class="seg-tab"&gt;WEEKLY&lt;/button&gt;
+&lt;/div&gt;
+&lt;button class="like-pill on"&gt;♥ 12&lt;/button&gt;
+&lt;button class="act-chip"&gt;↗ Share&lt;/button&gt;
+&lt;button class="tog-chip on"&gt;Design&lt;/button&gt;
+&lt;button class="send-cta"&gt;SEND NOW&lt;/button&gt;
+&lt;button class="mic-btn" aria-label="Record"&gt;🎤&lt;/button&gt;
+&lt;button class="fab" aria-label="Add"&gt;＋&lt;/button&gt;</pre>
+</div>
+<style>
+/* ============ ROOM CONTROLS — harvested from live NayaNET boards ============ */
+.seg-tabs { display: flex; gap: 6px; }
+.seg-tab { flex: 1; padding: 12px 16px; border-radius: 12px; font-size: 12px; font-weight: 800; letter-spacing: .08em; cursor: pointer; font-family: inherit; color: #8a93a8; background: rgba(0,0,0,.3); border: 1px solid rgba(255,255,255,.1); box-shadow: inset 0 1px 2px rgba(255,255,255,.05), 0 4px 12px rgba(0,0,0,.4); transition: all .2s; }
+.seg-tab.on { color: #fff; border-color: rgba(63,184,255,.6); background: rgba(63,184,255,.12); box-shadow: 0 0 16px -4px rgba(63,184,255,.7), inset 0 1px 2px rgba(255,255,255,.1); text-shadow: 0 0 8px rgba(63,184,255,.5); }
+.like-pill { padding: 10px 20px; border-radius: 999px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: inherit; color: #8a8a96; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); box-shadow: inset 0 1px 2px rgba(255,255,255,.06), 0 4px 12px rgba(0,0,0,.35); transition: all .2s; }
+.like-pill.on { color: #f87171; border-color: rgba(248,113,113,.45); box-shadow: 0 0 14px -4px rgba(248,113,113,.5); }
+.like-pill:hover { color: #fff; border-color: rgba(255,255,255,.3); transform: translateY(-1px); }
+.act-chip { --sc: #a06bff; padding: 10px 20px; border-radius: 999px; font-size: 12px; font-weight: 800; letter-spacing: .08em; cursor: pointer; font-family: inherit; color: #fff; background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.03)); border: 1px solid rgba(232,234,242,.3); box-shadow: inset 0 1px 0 rgba(255,255,255,.18), 0 4px 12px rgba(0,0,0,.35); transition: all .2s; }
+.act-chip:hover { border-color: var(--sc); transform: translateY(-1px); box-shadow: 0 8px 20px rgba(0,0,0,.4), 0 0 18px -6px var(--sc); }
+.act-chip.on { border-color: var(--sc); background: color-mix(in srgb, var(--sc) 22%, transparent); box-shadow: 0 0 18px -6px var(--sc); }
+.tog-chip { padding: 10px 20px; border-radius: 999px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: inherit; color: #8a8a96; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.1); box-shadow: inset 0 1px 2px rgba(255,255,255,.05), 0 4px 12px rgba(0,0,0,.3); transition: all .2s; }
+.tog-chip.on { color: #fff; border-color: rgba(160,107,255,.6); background: rgba(160,107,255,.14); box-shadow: 0 0 16px -4px rgba(160,107,255,.6); }
+.day-dot { width: 44px; height: 44px; border-radius: 50%; font-size: 14px; font-weight: 800; cursor: pointer; font-family: inherit; color: #8a8a96; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.15); box-shadow: inset 0 1px 2px rgba(255,255,255,.06), 0 4px 12px rgba(0,0,0,.35); transition: all .2s; }
+.day-dot.on { color: #fff; border-color: #a06bff; background: rgba(160,107,255,.2); box-shadow: 0 0 14px -2px #a06bff, inset 0 1px 2px rgba(255,255,255,.15); }
+.send-cta { padding: 18px 40px; font-size: 13px; font-weight: 800; letter-spacing: .16em; border-radius: 16px; cursor: pointer; font-family: inherit; color: #fff; text-shadow: 0 0 10px rgba(255,255,255,.3); background: linear-gradient(135deg, rgba(63,184,255,.45), rgba(63,184,255,.16)); border: 1px solid rgba(63,184,255,.7); box-shadow: 0 0 32px -6px rgba(63,184,255,.8), inset 0 1px 0 rgba(255,255,255,.18), 0 8px 24px rgba(0,0,0,.5); transition: all .2s; }
+.send-cta:hover { box-shadow: 0 0 40px -4px rgba(63,184,255,.9), inset 0 1px 0 rgba(255,255,255,.2); transform: translateY(-2px); }
+.mic-btn { width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(232,234,242,.35); cursor: pointer; background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.03)); color: #fff; font-size: 19px; box-shadow: 0 6px 18px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.25); transition: all .2s; }
+.mic-btn:hover { border-color: #a06bff; transform: scale(1.06); }
+.mic-btn.rec { border-color: #ff5d5d; color: #ff8a8a; animation: micpulse 1.2s ease-in-out infinite; }
+@keyframes micpulse { 0%,100% { box-shadow: 0 0 12px -2px rgba(255,93,93,.5); } 50% { box-shadow: 0 0 28px -2px rgba(255,93,93,.9); } }
+.fab { --jewel: #ffbf3d; width: 60px; height: 60px; border-radius: 18px; border: 1px solid rgba(255,255,255,.35); cursor: pointer; display: grid; place-items: center; font-size: 26px; font-weight: 900; color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,.6); background: radial-gradient(circle at 32% 22%, rgba(255,255,255,.85), transparent 42%), radial-gradient(circle at 50% 55%, var(--jewel), color-mix(in srgb, var(--jewel) 45%, #000) 78%); box-shadow: inset 0 1px rgba(255,255,255,.5), inset 0 -3px 8px rgba(0,0,0,.4), 0 0 24px color-mix(in srgb, var(--jewel) 60%, transparent), 0 10px 28px rgba(0,0,0,.6); transition: transform .15s; }
+.fab:hover { transform: scale(1.08); }
+.fab:active { transform: scale(.94); }
+</style>
+
 </div>
 <script>
 function copyCode(id) {
