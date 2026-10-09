@@ -51,14 +51,14 @@ def inline_css(html: str) -> str:
 def check_self_contained(html: str) -> list[str]:
     v = []
     for m in re.finditer(
-        r'<link[^>]+rel=["\']stylesheet["\'][^>]*>', html, re.I
+        r'<link[^>]+rel\s*=\s*["\']stylesheet["\'][^>]*>', html, re.I
     ):
         tag = m.group(0)
-        href = re.search(r'href=["\']([^"\']+)', tag, re.I)
+        href = re.search(r'href\s*=\s*["\']([^"\']+)', tag, re.I)
         ref = href.group(1) if href else tag
         if not ref.startswith("data:"):
             v.append(f"SELF-CONTAINED: external stylesheet reference: {ref}")
-    for m in re.finditer(r'<script[^>]+src=["\']([^"\']+)["\']', html, re.I):
+    for m in re.finditer(r'<script[^>]+src\s*=\s*["\']([^"\']+)["\']', html, re.I):
         src = m.group(1)
         if not src.startswith("data:"):
             v.append(f"SELF-CONTAINED: external script reference: {src}")
@@ -94,39 +94,121 @@ def _resolve_vars(color: str, vars: dict[str, str], depth: int = 0) -> str:
     return color
 
 
-def _is_dark(color: str, vars: dict[str, str] | None = None) -> bool:
-    color = _resolve_vars(color, vars or {})
+# CSS named colors -> (r, g, b). Full table so heuristic checks cannot be
+# evaded by spelling a light surface as a name (e.g. "snow", "yellow").
+_NAMED_COLORS = {
+    "aliceblue": (240, 248, 255), "antiquewhite": (250, 235, 215), "aqua": (0, 255, 255),
+    "aquamarine": (127, 255, 212), "azure": (240, 255, 255), "beige": (245, 245, 220),
+    "bisque": (255, 228, 196), "black": (0, 0, 0), "blanchedalmond": (255, 235, 205),
+    "blue": (0, 0, 255), "blueviolet": (138, 43, 226), "brown": (165, 42, 42),
+    "burlywood": (222, 184, 135), "cadetblue": (95, 158, 160), "chartreuse": (127, 255, 0),
+    "chocolate": (210, 105, 30), "coral": (255, 127, 80), "cornflowerblue": (100, 149, 237),
+    "cornsilk": (255, 248, 220), "crimson": (220, 20, 60), "cyan": (0, 255, 255),
+    "darkblue": (0, 0, 139), "darkcyan": (0, 139, 139), "darkgoldenrod": (184, 134, 11),
+    "darkgray": (169, 169, 169), "darkgrey": (169, 169, 169), "darkgreen": (0, 100, 0),
+    "darkkhaki": (189, 183, 107), "darkmagenta": (139, 0, 139), "darkolivegreen": (85, 107, 47),
+    "darkorange": (255, 140, 0), "darkorchid": (153, 50, 204), "darkred": (139, 0, 0),
+    "darksalmon": (233, 150, 122), "darkseagreen": (143, 188, 143), "darkslateblue": (72, 61, 139),
+    "darkslategray": (47, 79, 79), "darkslategrey": (47, 79, 79), "darkturquoise": (0, 206, 209),
+    "darkviolet": (148, 0, 211), "deeppink": (255, 20, 147), "deepskyblue": (0, 191, 255),
+    "dimgray": (105, 105, 105), "dimgrey": (105, 105, 105), "dodgerblue": (30, 144, 255),
+    "firebrick": (178, 34, 34), "floralwhite": (255, 250, 240), "forestgreen": (34, 139, 34),
+    "fuchsia": (255, 0, 255), "gainsboro": (220, 220, 220), "ghostwhite": (248, 248, 255),
+    "gold": (255, 215, 0), "goldenrod": (218, 165, 32), "gray": (128, 128, 128),
+    "grey": (128, 128, 128), "green": (0, 128, 0), "greenyellow": (173, 255, 47),
+    "honeydew": (240, 255, 240), "hotpink": (255, 105, 180), "indianred": (205, 92, 92),
+    "indigo": (75, 0, 130), "ivory": (255, 255, 240), "khaki": (240, 230, 140),
+    "lavender": (230, 230, 250), "lavenderblush": (255, 240, 245), "lawngreen": (124, 252, 0),
+    "lemonchiffon": (255, 250, 205), "lightblue": (173, 216, 230), "lightcoral": (240, 128, 128),
+    "lightcyan": (224, 255, 255), "lightgoldenrodyellow": (250, 250, 210), "lightgray": (211, 211, 211),
+    "lightgrey": (211, 211, 211), "lightgreen": (144, 238, 144), "lightpink": (255, 182, 193),
+    "lightsalmon": (255, 160, 122), "lightseagreen": (32, 178, 170), "lightskyblue": (135, 206, 250),
+    "lightslategray": (119, 136, 153), "lightslategrey": (119, 136, 153), "lightsteelblue": (176, 196, 222),
+    "lightyellow": (255, 255, 224), "lime": (0, 255, 0), "limegreen": (50, 205, 50),
+    "linen": (250, 240, 230), "magenta": (255, 0, 255), "maroon": (128, 0, 0),
+    "mediumaquamarine": (102, 205, 170), "mediumblue": (0, 0, 205), "mediumorchid": (186, 85, 211),
+    "mediumpurple": (147, 112, 219), "mediumseagreen": (60, 179, 113), "mediumslateblue": (123, 104, 238),
+    "mediumspringgreen": (0, 250, 154), "mediumturquoise": (72, 209, 204), "mediumvioletred": (199, 21, 133),
+    "midnightblue": (25, 25, 112), "mintcream": (245, 255, 250), "mistyrose": (255, 228, 225),
+    "moccasin": (255, 228, 181), "navajowhite": (255, 222, 173), "navy": (0, 0, 128),
+    "oldlace": (253, 245, 230), "olive": (128, 128, 0), "olivedrab": (107, 142, 35),
+    "orange": (255, 165, 0), "orangered": (255, 69, 0), "orchid": (218, 112, 214),
+    "palegoldenrod": (238, 232, 170), "palegreen": (152, 251, 152), "paleturquoise": (175, 238, 238),
+    "palevioletred": (219, 112, 147), "papayawhip": (255, 239, 213), "peachpuff": (255, 218, 185),
+    "peru": (205, 133, 63), "pink": (255, 192, 203), "plum": (221, 160, 221),
+    "powderblue": (176, 224, 230), "purple": (128, 0, 128), "rebeccapurple": (102, 51, 153),
+    "red": (255, 0, 0), "rosybrown": (188, 143, 143), "royalblue": (65, 105, 225),
+    "saddlebrown": (139, 69, 19), "salmon": (250, 128, 114), "sandybrown": (244, 164, 96),
+    "seagreen": (46, 139, 87), "seashell": (255, 245, 238), "sienna": (160, 82, 45),
+    "silver": (192, 192, 192), "skyblue": (135, 206, 235), "slateblue": (106, 90, 205),
+    "slategray": (112, 128, 144), "slategrey": (112, 128, 144), "snow": (255, 250, 250),
+    "springgreen": (0, 255, 127), "steelblue": (70, 130, 180), "tan": (210, 180, 140),
+    "teal": (0, 128, 128), "thistle": (216, 191, 216), "tomato": (255, 99, 71),
+    "turquoise": (64, 224, 208), "violet": (238, 130, 238), "wheat": (245, 222, 179),
+    "white": (255, 255, 255), "whitesmoke": (245, 245, 245), "yellow": (255, 255, 0),
+    "yellowgreen": (154, 205, 50),
+}
+
+
+def _luminance_of(color: str) -> float | None:
+    """Relative luminance 0..1, or None if the color cannot be parsed."""
     c = color.strip().lower()
-    if c in ("transparent", "none", "initial", "inherit"):
-        return True  # not a light surface
-    # hex
+    if c in _NAMED_COLORS:
+        r, g, b = _NAMED_COLORS[c]
+        return (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255
     m = re.match(r"#([0-9a-f]{3,8})", c)
     if m:
         h = m.group(1)
         if len(h) == 3:
             h = "".join(ch * 2 for ch in h)
         r, g, b = int(h[0:2], 16), int(h[2:4], 16), int(h[4:6], 16)
-        lum = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255
-        return lum < 0.35
-    if "gradient" in c:
-        # gradients: fail only if they START with a light stop
-        first = c.split(",", 1)[1] if "," in c else c
-        mm = re.search(r"#([0-9a-f]{3,8})", first)
-        if mm:
-            return _is_dark("#" + mm.group(1))
-        if re.search(r"\bwhite\b", first):
-            return False
-        return True
-    if re.search(r"\bwhite\b", c):
-        return False
-    rgba = re.match(
+        return (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255
+    m = re.match(
         r"rgba?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)", c
     )
-    if rgba:
-        r, g, b = map(int, rgba.groups())
-        lum = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255
+    if m:
+        r, g, b = map(int, m.groups())
+        return (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255
+    m = re.match(
+        r"hsla?\(\s*([\d.]+)\s*,\s*([\d.]+)%\s*,\s*([\d.]+)%", c
+    )
+    if m:
+        h, s, l = float(m.group(1)) / 360.0, float(m.group(2)) / 100.0, float(m.group(3)) / 100.0
+        if s == 0:
+            return l
+        def hue2rgb(p: float, q: float, t: float) -> float:
+            t %= 1.0
+            if t < 1 / 6:
+                return p + (q - p) * 6 * t
+            if t < 1 / 2:
+                return q
+            if t < 2 / 3:
+                return p + (q - p) * (2 / 3 - t) * 6
+            return p
+        q = l * (1 + s) if l < 0.5 else l + s - l * s
+        p = 2 * l - q
+        r, g, b = hue2rgb(p, q, h + 1 / 3), hue2rgb(p, q, h), hue2rgb(p, q, h - 1 / 3)
+        return 0.2126 * r + 0.7152 * g + 0.0722 * b
+    return None
+
+
+def _is_dark(color: str, vars: dict[str, str] | None = None) -> bool:
+    color = _resolve_vars(color, vars or {})
+    c = color.strip().lower()
+    if c in ("transparent", "none", "initial", "inherit"):
+        return True  # not a light surface
+    if "gradient" in c:
+        # gradients: judge by the first color stop (craft highlights allowed)
+        first = c.split(",", 1)[1] if "," in c else c
+        lum = _luminance_of(first.strip())
+        if lum is None:
+            return True  # unparseable stop: not provably a light surface
         return lum < 0.35
-    return True
+    lum = _luminance_of(c)
+    if lum is None:
+        # Unparseable opaque color: cannot verify it is dark -> fail closed.
+        return False
+    return lum < 0.35
 
 
 def check_black_root(html: str, css: str) -> list[str]:
@@ -168,13 +250,16 @@ def check_no_light_surfaces(css: str) -> list[str]:
             r"background(?:-color)?\s*:\s*([^;}]+);?", body, re.I
         ):
             val = bm.group(1).strip()
-            # exact white / light page surfaces only — gradient highlights
-            # and tiny jewel facets are craft, not surfaces
-            if re.match(
-                r"^(white|#fff|#ffffff|#fafafa|#f5f5f5|#eee|#eeeeee)$",
-                val.lower(),
-            ):
-                v.append(f"NO LIGHT SURFACES: `{selector}` has white "
+            # Light surfaces are surfaces: any opaque background with high
+            # luminance fails, however it is spelled (hex, name, hsl).
+            # Gradient craft: judge by the first color stop only.
+            probe = val
+            if "gradient" in val.lower():
+                parts = val.split(",", 1)
+                probe = parts[1] if len(parts) > 1 else val
+            lum = _luminance_of(_resolve_vars(probe, _root_vars(css)))
+            if lum is not None and lum >= 0.6:
+                v.append(f"NO LIGHT SURFACES: `{selector}` has light "
                          f"background: {val}")
     return v
 
@@ -483,6 +568,31 @@ def self_test() -> int:
         ok = False
     else:
         print("SELF-TEST: lawful page passed (good)")
+    # --- parser blind-spot regressions (Pair D scorer, 2026-10-09) ---
+    # Every heuristic parser had an evasion; each now has a pinned repro.
+    blind_spots = [
+        ("named light color", "body{background:yellow}", False),
+        ("hsl white", "body{background:hsl(0,0%,100%)}", False),
+        ("hsl black", "body{background:hsl(0,0%,0%)}", True),
+        ("named snow surface", "div{background:snow}", "light"),
+        ("script src whitespace", '<script src ="https://e/x.js"></script>', "ext"),
+        ("link rel whitespace", '<link rel = "stylesheet" href="x.css">', "ext"),
+    ]
+    for name, frag, want in blind_spots:
+        if want == "light":
+            got = check_no_light_surfaces(frag)
+            bad = not got
+        elif want == "ext":
+            got = check_self_contained(frag)
+            bad = not got
+        else:
+            got = _is_dark(frag.split(":", 1)[1].rstrip("}"))
+            bad = (got != want)
+        if bad:
+            print(f"SELF-TEST FAIL: blind-spot '{name}' regressed")
+            ok = False
+        else:
+            print(f"SELF-TEST: blind-spot '{name}' held (good)")
     for name, vv, want_fail in [
             ("no-marker+required", noact_v, True),
             ("valid receipt", okact_v, False),
