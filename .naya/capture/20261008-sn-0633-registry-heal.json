@@ -1,0 +1,20 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-0633",
+ "capture_id": "20261008-sn-0633-registry-heal",
+ "title": "A Bulk Merge Can Hollow a Protected Document",
+ "intelligence": {
+  "title": "A Bulk Merge Can Hollow a Protected Document",
+  "smart_note_id": "SN-0633",
+  "intelligent_block_id": "IB-SMART-NOTE-20261008-sn0633-bulk-merge-hollows-protected-document",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/PROTECTED-DOCUMENT-INTEGRITY/SN-0633/IB-SMART-NOTE-20261008-sn0633-bulk-merge-hollows-protected-document.md",
+  "truth_state": "CANDIDATE",
+  "captured_at": "2026-10-08",
+  "note": "Smart Note SN-0633 published via PR #1823. Capture reconstructed 2026-10-08 to heal registry drift."
+ },
+ "source": {
+  "captured_at": "2026-10-08",
+  "source_type": "registry_heal",
+  "source_reference": "PR #1838 \u2014 heal published_pages_without_registry_entry drift"
+ }
+}
