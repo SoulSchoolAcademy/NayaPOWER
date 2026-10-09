@@ -1,0 +1,72 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-782",
+  "capture_id": "20261009-sn-782-retrieve-reads-the-projection-index-not-the-capt",
+  "title": "Retrieve reads the projection index, not the capture directory",
+  "category": "SYSTEM_INTELLIGENCE",
+  "topic": "SMART_NOTE_SYSTEM",
+  "subtopic": "INSTANT_ACTIVATION",
+  "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+  "lifecycle_state": "ACTIVE",
+  "authority": "human-director-verified",
+  "verified_by": "Shawn Vibert, human director",
+  "verified_at_utc": "2026-10-09T17:32:12Z",
+  "verification_basis": "human_director_capture_request",
+  "verification_law": "Shawn's Verification Law: when the human director says 'smart note this,' THAT IS THE VERIFICATION. The ask is the verification; activates instantly.",
+  "source_utterance": "smart note this: retrieve() reads the projection index, not the capture directory -- a capture file alone is invisible to retrieve(), so instant activation must register the index entry with a valid projection file",
+  "source": {
+    "captured_at": "2026-10-09",
+    "captured_at_utc": "2026-10-09T17:32:12Z",
+    "source_type": "human_director_direct_capture",
+    "source_reference": "Direct capture request from the human director (shawn), 2026-10-09T17:32:12Z: smart note this: retrieve() reads the projection index, not the capture directory -- a capture file alone is invisible to retrieve(), so instant activation must register the index entry with a valid projection file"
+  },
+  "projection": {
+    "category_slug": "SYSTEM_INTELLIGENCE",
+    "topic_slug": "SMART_NOTE_SYSTEM",
+    "subtopic_slug": "INSTANT_ACTIVATION",
+    "publication_scope": "PRIVATE",
+    "human_director_authorized_publication": false
+  },
+  "intelligence": {
+    "essence": "A capture file alone is invisible to retrieve(); the projection index entry plus a valid projection file is what makes a note retrievable.",
+    "human_view": {
+      "meaning": "Writing the capture JSON is only half the job. The note must also be registered in the projection index with a rendered human-readable projection, because that index is the surface retrieve() actually reads.",
+      "simple_rule": "Capture, then project, then register. Never capture alone.",
+      "why_it_matters": "Without registration, cold retrieval finds nothing: the intelligence is stored but unreachable, which for all practical purposes is the same as not captured."
+    },
+    "simple_view": {
+      "child": "Saving a note in one drawer does not help if the finder only looks in another drawer. Put a card in the finder's drawer too.",
+      "grandma": "Writing something down is not enough if nobody can find it later. You also have to file it where the search looks."
+    },
+    "naya_view": {
+      "purpose": "Close the capture-to-retrieve loop for instant activation so a human-verified note is cold-retrievable in the same motion it is captured.",
+      "architectural_rule": "Every capture path must end at the projection index with a valid projection_path, or the capture does not exist for retrieval."
+    },
+    "ai_view": {
+      "operator_guidance": "After writing a capture file, always reserve the Smart Note ID, render the projection, and register the index entry before claiming the note is live."
+    },
+    "machine_view": {
+      "automatic_truth_ceiling": "CANDIDATE",
+      "raw_source_separate_from_distillation": true,
+      "human_director_override": {
+        "verified": true,
+        "authority": "human-director-verified",
+        "by": "Shawn Vibert, human director",
+        "at_utc": "2026-10-09T17:32:12Z",
+        "basis": "human_director_capture_request",
+        "law": "Shawn's Verification Law: the ask is the verification -- activates instantly, no queue, no second verification."
+      },
+      "source_utterance": "smart note this: retrieve() reads the projection index, not the capture directory -- a capture file alone is invisible to retrieve(), so instant activation must register the index entry with a valid projection file"
+    },
+    "decisions": [
+      "Register the projection-index entry as part of instant activation, reusing reserve_smart_note_id, render, and _update_registry_locked from tools/smart_note_v2.py rather than building a parallel path."
+    ],
+    "connections": [],
+    "uncertainty": "Verified against the current retrieve() implementation in tools/smart_note_v2.py. If retrieve()'s read surface changes, this lesson needs re-verification.",
+    "applicability": "Applies to every Smart Note capture path: the capture file, the projection file, and the index entry must all exist and reconcile by content hash.",
+    "learning_lesson": "retrieve() in tools/smart_note_v2.py reads the projection index at .naya/memory/smart-notes/index.json and loads note text from each entry's projection_path. A capture file in .naya/capture/ alone is invisible to retrieve(). Any instant-activation path must therefore register the entry in the projection index with a valid projection file, or cold retrieve will fail at that step.",
+    "successor_effect": "A cold successor building a capture path will register the index entry and render the projection instead of stopping at the capture file.",
+    "priority": "P0 for the instant-activation path: without it the end-to-end proof fails at the cold-retrieve step.",
+    "truth_state": "VERIFIED"
+  }
+}

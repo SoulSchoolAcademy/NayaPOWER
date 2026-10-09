@@ -1,0 +1,69 @@
+{
+  "receipt": {
+    "schema": "naya.instant-activation-receipt.v1",
+    "receipt_id": "ffa2af09-8648-4923-80f4-3b971958e96c",
+    "capture_id": "20261009-sn-782-retrieve-reads-the-projection-index-not-the-capt",
+    "smart_note_id": "SN-782",
+    "intelligent_block_id": "IB-SMART-NOTE-20261009-f9596844-retrieve-reads-the-projection-index-not-the-capt",
+    "capture_path": ".naya/capture/SMART-NOTE-20261009-sn-782-retrieve-reads-the-projection-index-not-the-capt.json",
+    "capture_sha256": "313ec45d3d79a08aa3f3a2f500705d82aaa609f5284c066c7b0f0133f8577b8f",
+    "captured_at_utc": "2026-10-09T17:32:12Z",
+    "authority": "human-director-verified",
+    "verified_by": "Shawn Vibert, human director",
+    "verified_at_utc": "2026-10-09T17:32:12Z",
+    "verification_basis": "human_director_capture_request",
+    "source_utterance": "smart note this: retrieve() reads the projection index, not the capture directory -- a capture file alone is invisible to retrieve(), so instant activation must register the index entry with a valid projection file",
+    "truth_state": "VERIFIED",
+    "lifecycle_state": "ACTIVE",
+    "receipt_hash": "d5947dd56e674e9179c786b5f2982aacd85770762d414997943bdffef42e7de1"
+  },
+  "smart_link_payload": {
+    "schema": "naya.smart-link-payload.v1",
+    "smart_note_id": "SN-782",
+    "intelligent_block_id": "IB-SMART-NOTE-20261009-f9596844-retrieve-reads-the-projection-index-not-the-capt",
+    "title": "Retrieve reads the projection index, not the capture directory",
+    "captured": {
+      "capture_path": ".naya/capture/SMART-NOTE-20261009-sn-782-retrieve-reads-the-projection-index-not-the-capt.json",
+      "registry": ".naya/memory/smart-notes/index.json",
+      "registry_entry": "IB-SMART-NOTE-20261009-f9596844-retrieve-reads-the-projection-index-not-the-capt"
+    },
+    "projection": {
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM_INTELLIGENCE/SMART_NOTE_SYSTEM/INSTANT_ACTIVATION/SN-782/IB-SMART-NOTE-20261009-f9596844-retrieve-reads-the-projection-index-not-the-capt.md",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM_INTELLIGENCE/SMART_NOTE_SYSTEM/INSTANT_ACTIVATION/SN-782/IB-SMART-NOTE-20261009-f9596844-retrieve-reads-the-projection-index-not-the-capt.md",
+      "smart_link_status": "ACTIVE_AUTH_GATED",
+      "resolves": "on main after the branch merges; branch build only -- never presented as universally resolvable before that"
+    },
+    "receipt": {
+      "schema": "naya.instant-activation-receipt.v1",
+      "receipt_id": "ffa2af09-8648-4923-80f4-3b971958e96c",
+      "capture_id": "20261009-sn-782-retrieve-reads-the-projection-index-not-the-capt",
+      "smart_note_id": "SN-782",
+      "intelligent_block_id": "IB-SMART-NOTE-20261009-f9596844-retrieve-reads-the-projection-index-not-the-capt",
+      "capture_path": ".naya/capture/SMART-NOTE-20261009-sn-782-retrieve-reads-the-projection-index-not-the-capt.json",
+      "capture_sha256": "313ec45d3d79a08aa3f3a2f500705d82aaa609f5284c066c7b0f0133f8577b8f",
+      "captured_at_utc": "2026-10-09T17:32:12Z",
+      "authority": "human-director-verified",
+      "verified_by": "Shawn Vibert, human director",
+      "verified_at_utc": "2026-10-09T17:32:12Z",
+      "verification_basis": "human_director_capture_request",
+      "source_utterance": "smart note this: retrieve() reads the projection index, not the capture directory -- a capture file alone is invisible to retrieve(), so instant activation must register the index entry with a valid projection file",
+      "truth_state": "VERIFIED",
+      "lifecycle_state": "ACTIVE",
+      "receipt_hash": "d5947dd56e674e9179c786b5f2982aacd85770762d414997943bdffef42e7de1"
+    },
+    "learning_state": {
+      "truth_state": "VERIFIED",
+      "lifecycle_state": "ACTIVE",
+      "authority": "human-director-verified",
+      "automatic_path_ceiling": "CANDIDATE (unchanged -- governs the automatic path only; the human-director override is recorded in authority)"
+    },
+    "verification_law": "Shawn's Verification Law: the ask is the verification."
+  },
+  "intent": {
+    "intent": true,
+    "alias": "smart note this",
+    "kind": "strong",
+    "refusal": null,
+    "distilled": "retrieve() in tools/smart_note_v2.py reads the projection index at .naya/memory/smart-notes/index.json and loads note text from each entry's projection_path. A capture file in .naya/capture/ alone is invisible to retrieve(). Any instant-activation path must therefore register the entry in the projection index with a valid projection file, or cold retrieve will fail at that step."
+  }
+}
