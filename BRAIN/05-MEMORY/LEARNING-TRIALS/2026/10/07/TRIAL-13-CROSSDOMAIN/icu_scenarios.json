@@ -1,0 +1,158 @@
+[
+  {
+    "id": "Q1",
+    "bed": "ICU bed available",
+    "patients": [
+      {
+        "id": "Patient A",
+        "location": "ER Bay 3",
+        "condition": "sepsis",
+        "score": 8.2
+      },
+      {
+        "id": "Patient B",
+        "location": "ER Bay 7",
+        "condition": "respiratory failure",
+        "score": 8.5
+      }
+    ]
+  },
+  {
+    "id": "Q2",
+    "bed": "ICU bed available",
+    "patients": [
+      {
+        "id": "Patient A",
+        "location": "Floor 4",
+        "condition": "post-surgical",
+        "score": 7.9
+      },
+      {
+        "id": "Patient B",
+        "location": "ER Bay 2",
+        "condition": "stable angina",
+        "score": 6.8
+      }
+    ]
+  },
+  {
+    "id": "Q3",
+    "bed": "ICU bed available",
+    "patients": [
+      {
+        "id": "Patient A",
+        "location": "ER Bay 1",
+        "condition": "stroke",
+        "score": 8.8
+      },
+      {
+        "id": "Patient B",
+        "location": "ER Bay 5",
+        "condition": "MI",
+        "score": 8.6
+      }
+    ]
+  },
+  {
+    "id": "Q4",
+    "bed": "ICU bed available",
+    "patients": [
+      {
+        "id": "Patient A",
+        "location": "Floor 2",
+        "condition": "pneumonia",
+        "score": 7.1
+      },
+      {
+        "id": "Patient B",
+        "location": "Clinic",
+        "condition": "observation",
+        "score": 5.5
+      }
+    ]
+  },
+  {
+    "id": "Q5",
+    "bed": "ICU bed available",
+    "patients": [
+      {
+        "id": "Patient A",
+        "location": "ER Bay 4",
+        "condition": "DKA",
+        "score": 8.1
+      },
+      {
+        "id": "Patient B",
+        "location": "ER Bay 9",
+        "condition": "overdose",
+        "score": 8.4
+      }
+    ]
+  },
+  {
+    "id": "Q6",
+    "bed": "ICU bed available",
+    "patients": [
+      {
+        "id": "Patient A",
+        "location": "Stepdown",
+        "condition": "CHF exacerbation",
+        "score": 6.8
+      },
+      {
+        "id": "Patient B",
+        "location": "ER Bay 6",
+        "condition": "asthma",
+        "score": 6.5
+      }
+    ]
+  },
+  {
+    "id": "Q7",
+    "bed": "ICU bed available",
+    "patients": [
+      {
+        "id": "Patient A",
+        "location": "ER Bay 8",
+        "condition": "trauma",
+        "score": 7.5
+      }
+    ]
+  },
+  {
+    "id": "Q8",
+    "bed": "ICU bed available",
+    "patients": [
+      {
+        "id": "Patient A",
+        "location": "Cath Lab",
+        "condition": "post-PCI",
+        "score": 8.7
+      },
+      {
+        "id": "Patient B",
+        "location": "Floor 3",
+        "condition": "COPD",
+        "score": 7.2
+      }
+    ]
+  },
+  {
+    "id": "Q9",
+    "bed": "ICU bed available",
+    "patients": [
+      {
+        "id": "Patient A",
+        "location": "ER Bay 10",
+        "condition": "cellulitis",
+        "score": 5.9
+      },
+      {
+        "id": "Patient B",
+        "location": "Urgent Care",
+        "condition": "dehydration",
+        "score": 5.6
+      }
+    ]
+  }
+]

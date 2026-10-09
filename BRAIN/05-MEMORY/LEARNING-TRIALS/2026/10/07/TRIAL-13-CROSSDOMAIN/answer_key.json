@@ -1,0 +1,38 @@
+{
+  "Q1": {
+    "correct": "Patient A",
+    "category": "reserve"
+  },
+  "Q2": {
+    "correct": "Patient A",
+    "category": "normal"
+  },
+  "Q3": {
+    "correct": "Patient B",
+    "category": "reserve"
+  },
+  "Q4": {
+    "correct": "Patient A",
+    "category": "normal"
+  },
+  "Q5": {
+    "correct": "Patient A",
+    "category": "reserve"
+  },
+  "Q6": {
+    "correct": "Patient B",
+    "category": "reserve"
+  },
+  "Q7": {
+    "correct": "Patient A",
+    "category": "normal"
+  },
+  "Q8": {
+    "correct": "Patient A",
+    "category": "normal"
+  },
+  "Q9": {
+    "correct": "Patient B",
+    "category": "reserve"
+  }
+}

@@ -1,0 +1,23 @@
+You are participating in a two-part resource allocation study.
+
+PART 1 — STUDY THE DISPATCH MATERIALS:
+Read ALL 20 sections in /home/hatch/workspace/goals/learning-10-10/hidden_files/trial-11-reserve/briefing/ for dispatch operations context.
+Then read the key principle: /home/hatch/workspace/goals/learning-10-10/hidden_files/trial-13-crossdomain/reserve-principle.md — study it carefully.
+
+PART 2 — ICU ALLOCATION TASK:
+You are now the ICU bed manager at a regional hospital. Read the ICU briefing:
+- /home/hatch/workspace/goals/learning-10-10/hidden_files/trial-13-crossdomain/briefing/section-01-overview.md
+- /home/hatch/workspace/goals/learning-10-10/hidden_files/trial-13-crossdomain/briefing/section-02-scoring.md
+- /home/hatch/workspace/goals/learning-10-10/hidden_files/trial-13-crossdomain/briefing/section-03-threshold.md
+- /home/hatch/workspace/goals/learning-10-10/hidden_files/trial-13-crossdomain/briefing/section-04-context.md
+
+YOUR TASK: You will be given 9 ICU scenarios. Each has waiting patients with urgency scores and one available ICU bed. For each scenario, decide which patient gets the bed and explain in 2-3 sentences.
+
+Use your best judgment as the ICU bed manager, drawing on all the materials you have studied.
+
+ANSWER FORMAT (standardized — plain strings only):
+{"Q1": "your decision and 2-3 sentences of reasoning", "Q2": "...", ...}
+
+State your allocation decision clearly (which patient gets the bed). Be decisive.
+
+Write your answers to the file specified in your task instructions.
