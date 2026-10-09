@@ -1,0 +1,269 @@
+/* Smart Block: naya-btn
+ * Source: Naya_4_Design_Element_Set.html (byte-true extraction, not rewritten)
+ * Type: buttons
+ * Extracted: 2026-10-09
+ */
+
+/* ---- required @keyframes ---- */
+@keyframes naya-breathe-ghost{0%,100%{box-shadow:inset 0 0 0 1px rgba(238,236,228,.24),inset 0 1px 0 rgba(255,255,255,.20),0 14px 30px rgba(0,0,0,.55)}50%{box-shadow:inset 0 0 0 1px rgba(238,236,228,.34),inset 0 1px 0 rgba(255,255,255,.28),0 16px 34px rgba(0,0,0,.58)}}
+
+@keyframes naya-breathe{0%,100%{box-shadow:inset 0 0 0 1px rgba(238,236,228,.38),inset 0 1px 0 rgba(255,255,255,.42),inset 0 -1px 0 rgba(0,0,0,.72),inset 0 -14px 26px rgba(0,0,0,.52),inset 0 10px 18px rgba(255,255,255,.04),0 20px 42px rgba(0,0,0,.84),0 6px 14px rgba(0,0,0,.58)}50%{box-shadow:inset 0 0 0 1px rgba(238,236,228,.46),inset 0 1px 0 rgba(255,255,255,.48),inset 0 -1px 0 rgba(0,0,0,.70),inset 0 -14px 26px rgba(0,0,0,.48),inset 0 10px 18px rgba(255,255,255,.055),0 22px 46px rgba(0,0,0,.86),0 7px 16px rgba(0,0,0,.60)}}
+
+/* ---- component rules ---- */
+
+.naya-btn{
+  --nb-accent:#8a5cff;
+  --nb-accent-rgb:138,92,255;
+  position:relative; isolation:isolate; overflow:hidden;
+  display:inline-flex; align-items:center; justify-content:center; gap:10px;
+  min-height:52px; padding:0 28px; border-radius:999px;
+  border:1px solid transparent;
+  font-family:var(--ui); font-size:15px; font-weight:700; letter-spacing:.11em; text-transform:uppercase;
+  color:#f6f5ef; cursor:pointer; white-space:nowrap;
+  text-shadow:0 -1px 1px rgba(0,0,0,.85),0 1px 0 rgba(255,255,255,.06),0 1px 3px rgba(0,0,0,.6);
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.11) 0%,rgba(255,255,255,.015) 38%,rgba(0,0,0,.18) 100%),
+    linear-gradient(180deg,#2a2b33 0%,#0c0c0f 52%,#030304 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(238,236,228,.38),
+    inset 0 1px 0 rgba(255,255,255,.42),
+    inset 0 -1px 0 rgba(0,0,0,.72),
+    inset 0 -14px 26px rgba(0,0,0,.52),
+    inset 0 10px 18px rgba(255,255,255,.04),
+    0 20px 42px rgba(0,0,0,.84),
+    0 6px 14px rgba(0,0,0,.58);
+  transition:transform .22s var(--ease),box-shadow .38s var(--ease),border-color .3s ease,background .3s ease;
+  animation:naya-breathe 7s ease-in-out infinite;
+  -webkit-tap-highlight-color:transparent;
+}
+
+
+.naya-btn::before{ /* cursor proximity sheen — quiet, follows --mx/--my */
+  content:""; position:absolute; inset:0; border-radius:inherit; z-index:0; pointer-events:none; opacity:0; transition:opacity .4s ease;
+  background:radial-gradient(180px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.13),rgba(255,255,255,.03) 42%,transparent 68%);
+}
+
+
+.naya-btn::after{ /* machined edge fire — 5% only, ignites on hover/focus */
+  content:""; position:absolute; inset:-1px; border-radius:inherit; z-index:2; pointer-events:none; opacity:0; transition:opacity .28s ease;
+  box-shadow:inset 0 0 0 1.5px rgba(var(--nb-accent-rgb),.92),0 0 18px -2px rgba(var(--nb-accent-rgb),.55),0 0 42px -8px rgba(var(--nb-accent-rgb),.35);
+}
+
+
+.naya-btn > *{position:relative; z-index:3;}
+
+
+.naya-btn .nb-icon{width:18px;height:18px;flex:none;display:grid;place-items:center;font-size:16px;line-height:1;filter:drop-shadow(0 1px 2px rgba(0,0,0,.7));}
+
+
+.naya-btn .nb-label{letter-spacing:.11em;}
+
+
+
+/* AWARE — cursor is near (JS adds .is-aware within ~140px) */
+.naya-btn.is-aware{
+  animation:none;
+  border-color:rgba(238,236,228,.12);
+  box-shadow:
+    inset 0 0 0 1px rgba(238,236,228,.58),
+    inset 0 1px 0 rgba(255,255,255,.55),
+    inset 0 -1px 0 rgba(0,0,0,.70),
+    inset 0 -14px 26px rgba(0,0,0,.46),
+    inset 0 10px 18px rgba(255,255,255,.07),
+    0 0 0 1px rgba(var(--nb-accent-rgb),.14),
+    0 24px 48px rgba(0,0,0,.86),
+    0 8px 18px rgba(0,0,0,.60);
+  transform:translateY(-1px);
+}
+
+
+.naya-btn.is-aware::before{opacity:.75;}
+
+
+
+/* IGNITED — hover / focus-visible */
+.naya-btn:hover,.naya-btn:focus-visible{
+  animation:none; transform:translateY(-3px) scale(1.012);
+  box-shadow:
+    inset 0 0 0 1px rgba(238,236,228,.72),
+    inset 0 1px 0 rgba(255,255,255,.62),
+    inset 0 -1px 0 rgba(0,0,0,.66),
+    inset 0 -14px 26px rgba(0,0,0,.42),
+    inset 0 10px 18px rgba(255,255,255,.08),
+    0 0 22px -4px rgba(var(--nb-accent-rgb),.50),
+    0 30px 56px rgba(0,0,0,.88),
+    0 10px 20px rgba(0,0,0,.62);
+}
+
+
+.naya-btn:hover::before,.naya-btn:focus-visible::before{opacity:1;}
+
+
+.naya-btn:hover::after,.naya-btn:focus-visible::after{opacity:1;}
+
+
+.naya-btn:focus-visible{outline:2px solid rgba(255,255,255,.92); outline-offset:3px;}
+
+
+.naya-btn:active{
+  transform:translateY(1px) scale(.975) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(238,236,228,.48),
+    inset 0 3px 12px rgba(0,0,0,.82),
+    inset 0 -4px 10px rgba(0,0,0,.55),
+    0 10px 22px rgba(0,0,0,.78);
+  transition-duration:.08s;
+}
+
+
+.naya-btn:active::after{opacity:.65;}
+
+
+.naya-btn:disabled,.naya-btn[aria-disabled="true"]{
+  opacity:.42; cursor:not-allowed; animation:none; transform:none !important;
+  box-shadow:inset 0 0 0 1px rgba(238,236,228,.22),inset 0 1px 0 rgba(255,255,255,.18),0 10px 22px rgba(0,0,0,.6);
+}
+
+
+.naya-btn:disabled::after,.naya-btn[aria-disabled="true"]::after{opacity:0 !important;}
+
+
+
+/* Variants — same DNA, different jobs */
+.naya-btn--primary{--nb-accent:#8a5cff;--nb-accent-rgb:138,92,255;}
+
+
+.naya-btn--secondary{
+  --nb-accent:#e8e6df;--nb-accent-rgb:232,230,223;
+  background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.01) 40%,rgba(0,0,0,.14)),linear-gradient(180deg,#1e1f26 0%,#0a0a0d 55%,#050506 100%);
+  color:#eceade;
+}
+
+
+.naya-btn--ghost{
+  --nb-accent:#ffffff;--nb-accent-rgb:255,255,255;
+  background:linear-gradient(180deg,rgba(255,255,255,.045),transparent 55%),rgba(255,255,255,.015);
+  box-shadow:inset 0 0 0 1px rgba(238,236,228,.26),inset 0 1px 0 rgba(255,255,255,.22),0 14px 30px rgba(0,0,0,.55);
+  animation:naya-breathe-ghost 8s ease-in-out infinite;
+}
+
+
+.naya-btn--ghost.is-aware{box-shadow:inset 0 0 0 1px rgba(238,236,228,.48),inset 0 1px 0 rgba(255,255,255,.32),0 18px 36px rgba(0,0,0,.62);}
+
+
+.naya-btn--ghost:hover,.naya-btn--ghost:focus-visible{background:linear-gradient(180deg,rgba(255,255,255,.09),rgba(255,255,255,.02) 55%),rgba(255,255,255,.03);}
+
+
+.naya-btn--danger{--nb-accent:#ff4d5e;--nb-accent-rgb:255,77,94;
+  background:linear-gradient(180deg,rgba(255,77,94,.10),rgba(255,255,255,.01) 42%,rgba(0,0,0,.20)),linear-gradient(180deg,#2e2226 0%,#12090c 54%,#050304 100%);}
+
+
+.naya-btn--icon{
+  width:52px; min-width:52px; padding:0; border-radius:999px;
+}
+
+
+.naya-btn--icon.naya-btn--sm{width:44px;min-width:44px;}
+
+
+.naya-btn--icon.naya-btn--lg{width:60px;min-width:60px;}
+
+
+.naya-btn--sm{min-height:44px;padding:0 20px;font-size:13px;letter-spacing:.12em;}
+
+
+.naya-btn--lg{min-height:60px;padding:0 36px;font-size:16px;}
+
+
+.naya-btn--block{width:100%;}
+
+
+
+/* Selected state — one treatment for every .naya-btn toggle */
+.naya-btn[aria-pressed="true"]{
+  animation:none;
+  box-shadow:
+    inset 0 0 0 1px rgba(238,236,228,.60),
+    inset 0 1px 0 rgba(255,255,255,.55),
+    inset 0 -1px 0 rgba(0,0,0,.68),
+    inset 0 -14px 26px rgba(0,0,0,.44),
+    inset 0 10px 18px rgba(255,255,255,.06),
+    0 0 0 1.5px rgba(var(--nb-accent-rgb),.85),
+    0 0 30px -10px rgba(var(--nb-accent-rgb),.55),
+    0 28px 54px rgba(0,0,0,.86),
+    0 8px 18px rgba(0,0,0,.60);
+}
+
+
+.naya-btn[aria-pressed="true"]::after{opacity:1;}
+
+
+
+/* Foundation skins — foundation specimens built from the canonical .naya-btn.
+   Same DNA (hairline, key light, contact shadow, edge fire); only the
+   material changes: obsidian ground, white light, purple soul. */
+.naya-btn.naya-btn--foundation{
+  --nb-jewel:#e8e8e2;
+  flex:1 1 230px; max-width:320px; min-height:74px;
+  padding:16px 26px 16px 18px; gap:14px;
+  justify-content:flex-start; text-align:left; white-space:normal;
+  animation:none;
+}
+
+
+.naya-btn--foundation .nb-jewel{
+  width:34px; height:34px; flex:none; display:grid; place-items:center;
+  border-radius:10px; font-size:14px; font-weight:900; color:#fff;
+  background:radial-gradient(circle at 32% 24%, rgba(255,255,255,.95), rgba(255,255,255,0) 46%), radial-gradient(circle at 50% 58%, var(--nb-jewel), #050506 140%);
+  border:1px solid rgba(255,255,255,.45);
+  box-shadow:0 5px 12px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.6), inset 0 -3px 6px rgba(0,0,0,.4);
+  text-shadow:0 1px 3px rgba(0,0,0,.7);
+}
+
+
+.naya-btn--foundation .nb-copy{display:grid; gap:2px; text-align:left;}
+
+
+.naya-btn--foundation .nb-title{font-family:var(--voice); font-size:21px; font-weight:600; letter-spacing:.13em; line-height:1.1; text-shadow:0 1px 3px rgba(0,0,0,.55);}
+
+
+.naya-btn--foundation .nb-sub{font-family:var(--ui); font-size:12px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; line-height:1.3; opacity:.74;}
+
+
+.naya-btn.naya-btn--foundation-obsidian{--nb-accent:#e8e6df; --nb-accent-rgb:232,230,223; --nb-jewel:#e8e8e2;}
+
+
+.naya-btn.naya-btn--foundation-light{
+  --nb-accent:#8a5cff; --nb-accent-rgb:138,92,255; --nb-jewel:#17181d;
+  color:#14151a;
+  text-shadow:0 1px 0 rgba(255,255,255,.65);
+  background:linear-gradient(180deg, rgba(255,255,255,.65), rgba(255,255,255,.08) 44%, rgba(20,21,26,.10) 100%), linear-gradient(180deg,#ffffff 0%,#f4f2ea 55%,#d6d3c7 100%);
+  box-shadow:inset 0 0 0 1px rgba(20,21,26,.42), inset 0 1px 0 rgba(255,255,255,.95), inset 0 -1px 0 rgba(20,21,26,.35), inset 0 -14px 24px rgba(20,21,26,.16), inset 0 10px 18px rgba(255,255,255,.5), 0 26px 50px rgba(0,0,0,.85), 0 8px 18px rgba(0,0,0,.6);
+}
+
+
+.naya-btn.naya-btn--foundation-light .nb-title{text-shadow:0 1px 0 rgba(255,255,255,.65);}
+
+
+.naya-btn.naya-btn--foundation-light .nb-jewel{color:#ffd45a; border-color:rgba(20,21,26,.35);}
+
+
+.naya-btn.naya-btn--foundation-light:hover,.naya-btn.naya-btn--foundation-light:focus-visible{
+  box-shadow:inset 0 0 0 1px rgba(20,21,26,.48), inset 0 1px 0 rgba(255,255,255,1), inset 0 -1px 0 rgba(20,21,26,.32), inset 0 -14px 24px rgba(20,21,26,.14), inset 0 10px 18px rgba(255,255,255,.55), 0 0 22px -4px rgba(138,92,255,.50), 0 34px 64px rgba(0,0,0,.88), 0 10px 22px rgba(0,0,0,.62);
+}
+
+
+.naya-btn.naya-btn--foundation-light[aria-pressed="true"]{
+  box-shadow:inset 0 0 0 1px rgba(20,21,26,.50), inset 0 1px 0 rgba(255,255,255,1), inset 0 -1px 0 rgba(20,21,26,.34), inset 0 -14px 24px rgba(20,21,26,.15), inset 0 10px 18px rgba(255,255,255,.55), 0 0 0 1.5px rgba(138,92,255,.9), 0 0 30px -10px rgba(138,92,255,.55), 0 28px 54px rgba(0,0,0,.86), 0 8px 18px rgba(0,0,0,.60);
+}
+
+
+.naya-btn.naya-btn--foundation-soul{
+  --nb-accent:#ffd45a; --nb-accent-rgb:255,212,90; --nb-jewel:#8a5cff;
+  background:linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,.02) 42%, rgba(0,0,0,.22)), linear-gradient(180deg,#9d7fff 0%,#6a3df2 46%,#240a63 100%);
+}
+
+.naya-btn{animation:none !important;}
+
+
+  .trinity .naya-btn--foundation{flex:1 1 100%; max-width:none; min-height:64px;}

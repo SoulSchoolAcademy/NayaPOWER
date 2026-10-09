@@ -1,0 +1,92 @@
+/* Smart Blocks unified tokens — extracted from all sets, conflicts noted not resolved */
+/* Generated 2026-10-09 */
+
+:root {
+  --blue: #3f9ff5;
+  /* CONFLICT: defined in Naya_5_Beautiful_Button_set.html,Naya_5_Jewel_Library.html,Naya_5__Epic_Elements_-_Lego_pieces.html — first value kept */
+  --blue-rgb: 63,184,255;
+  /* CONFLICT: defined in Naya_5_Beautiful_Button_set.html,Naya_5_Jewel_Library.html,Naya_5__Epic_Elements_-_Lego_pieces.html — first value kept */
+  --card: #141a28;
+  /* CONFLICT: defined in Naya_4_Design_Element_Set.html,Naya_Lego-blocks.html — first value kept */
+  --chrome: #8a5cff;
+  /* CONFLICT: defined in Naya_5_Beautiful_Button_set.html,Naya_5_Jewel_Library.html,Naya_5__Epic_Elements_-_Lego_pieces.html — first value kept */
+  --claim: #ffbf3d;
+  /* CONFLICT: defined in Naya_5_Beautiful_Button_set.html,Naya_5_Jewel_Library.html,Naya_5__Epic_Elements_-_Lego_pieces.html — first value kept */
+  --claim-rgb: 255,191,61;
+  /* CONFLICT: defined in Naya_5_Beautiful_Button_set.html,Naya_5_Jewel_Library.html,Naya_5__Epic_Elements_-_Lego_pieces.html — first value kept */
+  --coral: #ff5e6c;
+  /* CONFLICT: defined in Naya_5_Beautiful_Button_set.html,Naya_5_Jewel_Library.html,Naya_5__Epic_Elements_-_Lego_pieces.html — first value kept */
+  --coral-rgb: 255,94,108;
+  --cyan: #39d7e8;
+  /* CONFLICT: defined in Naya_5_Beautiful_Button_set.html,Naya_5_Jewel_Library.html,Naya_5__Epic_Elements_-_Lego_pieces.html — first value kept */
+  --deep: #0a0e16;
+  /* CONFLICT: defined in Naya_5_Beautiful_Button_set.html,Naya_5_Jewel_Library.html,Naya_5__Epic_Elements_-_Lego_pieces.html — first value kept */
+  --demo: #e84fff;
+  /* CONFLICT: defined in Naya_5_Beautiful_Button_set.html,Naya_5_Jewel_Library.html,Naya_5__Epic_Elements_-_Lego_pieces.html — first value kept */
+  --demo-rgb: 232,79,255;
+  /* CONFLICT: defined in Naya_4_Design_Element_Set.html,Naya_Lego-blocks.html — first value kept */
+  --ease: cubic-bezier(.16,.84,.22,1);
+  --error: #ff6b6b;
+  --field: #050507;
+  --gold: #e7c65a;
+  /* CONFLICT: defined in Naya_5_Beautiful_Button_set.html,Naya_5_Jewel_Library.html,Naya_5__Epic_Elements_-_Lego_pieces.html — first value kept */
+  --gold-rgb: 255,191,61;
+  --green: #34d38a;
+  /* CONFLICT: defined in Naya_5_Beautiful_Button_set.html,Naya_5_Jewel_Library.html,Naya_5__Epic_Elements_-_Lego_pieces.html — first value kept */
+  --green-rgb: 47,232,158;
+  /* CONFLICT: defined in Naya_5_Beautiful_Button_set.html,Naya_5_Jewel_Library.html,Naya_5__Epic_Elements_-_Lego_pieces.html — first value kept */
+  --indigo: #6675ff;
+  /* CONFLICT: defined in Naya_5_Beautiful_Button_set.html,Naya_5_Jewel_Library.html,Naya_5__Epic_Elements_-_Lego_pieces.html — first value kept */
+  --indigo-rgb: 102,117,255;
+  /* CONFLICT: defined in Naya_5_Beautiful_Button_set.html,Naya_Lego-blocks.html,Naya_5_Jewel_Library.html,Naya_5__Epic_Elements_-_Lego_pieces.html — first value kept */
+  --ink: #F5F7FB;
+  /* CONFLICT: defined in Naya_5_Beautiful_Button_set.html,Naya_5_Jewel_Library.html,Naya_5__Epic_Elements_-_Lego_pieces.html — first value kept */
+  --lime: #b8ee57;
+  /* CONFLICT: defined in Naya_5_Beautiful_Button_set.html,Naya_5_Jewel_Library.html,Naya_5__Epic_Elements_-_Lego_pieces.html — first value kept */
+  --lime-rgb: 184,238,87;
+  /* CONFLICT: defined in Naya_5_Beautiful_Button_set.html,Naya_Lego-blocks.html,Naya_5_Jewel_Library.html,Naya_5__Epic_Elements_-_Lego_pieces.html — first value kept */
+  --line: rgba(255,255,255,.12);
+  --magenta: #e455f4;
+  /* CONFLICT: defined in Naya_4_Design_Element_Set.html,Naya_5_Beautiful_Button_set.html,Naya_5_Jewel_Library.html,Naya_5__Epic_Elements_-_Lego_pieces.html — first value kept */
+  --obsidian: #020203;
+  --purple: #8d63f5;
+  /* CONFLICT: defined in Naya_5_Beautiful_Button_set.html,Naya_5_Jewel_Library.html,Naya_5__Epic_Elements_-_Lego_pieces.html — first value kept */
+  --purple-rgb: 160,107,255;
+  /* CONFLICT: defined in Naya_5_Beautiful_Button_set.html,Naya_Lego-blocks.html,Naya_5_Jewel_Library.html,Naya_5__Epic_Elements_-_Lego_pieces.html — first value kept */
+  --quiet: rgba(248,247,251,.72);
+  /* CONFLICT: defined in Naya_5_Beautiful_Button_set.html,Naya_5_Jewel_Library.html,Naya_5__Epic_Elements_-_Lego_pieces.html — first value kept */
+  --r-lg: 18px;
+  /* CONFLICT: defined in Naya_5_Beautiful_Button_set.html,Naya_5_Jewel_Library.html,Naya_5__Epic_Elements_-_Lego_pieces.html — first value kept */
+  --r-md: 13px;
+  /* CONFLICT: defined in Naya_5_Beautiful_Button_set.html,Naya_5_Jewel_Library.html,Naya_5__Epic_Elements_-_Lego_pieces.html — first value kept */
+  --r-pill: 999px;
+  /* CONFLICT: defined in Naya_5_Beautiful_Button_set.html,Naya_5_Jewel_Library.html,Naya_5__Epic_Elements_-_Lego_pieces.html — first value kept */
+  --r-xl: 26px;
+  --radius: 24px;
+  /* CONFLICT: defined in Naya_5_Beautiful_Button_set.html,Naya_5_Jewel_Library.html,Naya_5__Epic_Elements_-_Lego_pieces.html — first value kept */
+  --raise: #10141d;
+  /* CONFLICT: defined in Naya_5_Beautiful_Button_set.html,Naya_5_Jewel_Library.html,Naya_5__Epic_Elements_-_Lego_pieces.html — first value kept */
+  --ring: 0 0 0 2px rgba(160,107,255,.35);
+  /* CONFLICT: defined in Naya_5_Beautiful_Button_set.html,Naya_5_Jewel_Library.html,Naya_5__Epic_Elements_-_Lego_pieces.html — first value kept */
+  --secondary: rgba(248,247,251,.55);
+  /* CONFLICT: defined in Naya_5_Beautiful_Button_set.html,Naya_Lego-blocks.html,Naya_5_Jewel_Library.html,Naya_5__Epic_Elements_-_Lego_pieces.html — first value kept */
+  --snap: cubic-bezier(.32,.72,0,1);
+  --soft-line: rgba(255,255,255,.10);
+  --surface: #101116;
+  --surface-2: #17181f;
+  /* CONFLICT: defined in Naya_5_Beautiful_Button_set.html,Naya_5_Jewel_Library.html,Naya_5__Epic_Elements_-_Lego_pieces.html — first value kept */
+  --teal-rgb: 64,211,187;
+  /* CONFLICT: defined in Naya_5_Beautiful_Button_set.html,Naya_5_Jewel_Library.html,Naya_5__Epic_Elements_-_Lego_pieces.html — first value kept */
+  --type-body: 18px;
+  /* CONFLICT: defined in Naya_5_Beautiful_Button_set.html,Naya_5_Jewel_Library.html,Naya_5__Epic_Elements_-_Lego_pieces.html — first value kept */
+  --type-chapter: 40px;
+  /* CONFLICT: defined in Naya_5_Beautiful_Button_set.html,Naya_5_Jewel_Library.html,Naya_5__Epic_Elements_-_Lego_pieces.html — first value kept */
+  --type-headline: 24px;
+  /* CONFLICT: defined in Naya_5_Beautiful_Button_set.html,Naya_5_Jewel_Library.html,Naya_5__Epic_Elements_-_Lego_pieces.html — first value kept */
+  --type-small: 14px;
+  --ui: Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  /* CONFLICT: defined in Naya_5_Beautiful_Button_set.html,Naya_5_Jewel_Library.html,Naya_5__Epic_Elements_-_Lego_pieces.html — first value kept */
+  --verified-rgb: 47,232,158;
+  --voice: "Cormorant Garamond",Georgia,serif;
+  --white: #ffffff;
+}
