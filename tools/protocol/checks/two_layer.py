@@ -220,7 +220,13 @@ JARGON = {
 # Nominalization suffixes: abstract nouns built from verbs ("implementation"
 # instead of "implement") are the fingerprint of the technical register in
 # plain-words clothing. Plain everyday words that happen to end this way
-# are excepted so ordinary speech never trips the wall.
+# are excepted so ordinary speech never trips the wall. Entry rule: a word
+# is excepted ONLY if it is genuinely ordinary in plain civic/business
+# prose — never a corporate-abstraction term. Seeded from the suffix hits
+# of real plain sentences (never guesswork): 2026-10-09, a re-validator
+# measured a dense-but-plain sentence at 0.160 (false FAIL from
+# government/payment/department/agreement); the exceptions below return it
+# under the wall while the attack probes still fail.
 NOMINAL_SUFFIXES = ("tion", "sion", "ment", "ance", "ence", "ity")
 PLAIN_EXCEPTIONS = {
     "moment", "moments", "comment", "comments", "question", "questions",
@@ -231,6 +237,12 @@ PLAIN_EXCEPTIONS = {
     "apartment", "apartments", "clarity", "explanation", "explanations",
     "quality", "community", "communities", "activity", "activities",
     "security", "priority", "priorities", "reality",
+    # ordinary civic/business nominalizations (2026-10-09 audit):
+    "government", "governments", "payment", "payments", "agreement",
+    "agreements", "department", "departments", "statement", "statements",
+    "development", "developments", "management", "treatment", "treatments",
+    "movement", "movements", "settlement", "settlements", "improvement",
+    "improvements", "arrangement", "arrangements",
 }
 
 

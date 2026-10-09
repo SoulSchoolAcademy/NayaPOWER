@@ -336,6 +336,62 @@ def test_rw_hits_named_in_details():
     assert "synergy" in hits and "bandwidth" in hits, hits
 
 
+# 2026-10-09 PLAIN_EXCEPTIONS extension (re-validator false-positive class):
+# dense-but-plain civic/business prose tripped the nominalization rule.
+DENSE_PLAIN_CIVIC = (
+    "In other words: the government office said the payment would arrive "
+    "within ten days, and the department confirmed the agreement in a "
+    "letter sent to every home today."
+)
+DENSE_PLAIN_CIVIC_V2 = (
+    "In other words: the bank approved the loan arrangement and the "
+    "improvement grant will fund the road treatment work this spring; the "
+    "statement from the housing department said the settlement checks will "
+    "be mailed to every household."
+)
+JARGON_WITH_PLAIN_EXCEPTIONS = (
+    "In other words: the management team will leverage the payment "
+    "agreement to drive alignment across the department ecosystem."
+)
+DILUTED_NATURAL = (
+    "In other words: I made coffee and sat by the window while the rain "
+    "came down."
+)
+
+
+def test_rw_dense_plain_nominalizations_pass():
+    # The re-validator's false FAIL: a dense-but-plain sentence scored
+    # 0.160 from government/payment/department/agreement suffix hits. The
+    # PLAIN_EXCEPTIONS class boundary now admits them: density < 0.10.
+    r = two_layer.check(_two_layer_record(DENSE_PLAIN_CIVIC))
+    assert r["pass"] is True, (r["reasons"], r["details"]["abstraction_hits"])
+    assert r["details"]["plain_abstraction"] < 0.10
+
+
+def test_rw_civic_nominalization_variants_pass():
+    # Second seeding: statement/development/treatment/arrangement/
+    # improvement/settlement/department are ordinary civic words too.
+    r = two_layer.check(_two_layer_record(DENSE_PLAIN_CIVIC_V2))
+    assert r["pass"] is True, (r["reasons"], r["details"]["abstraction_hits"])
+    assert r["details"]["plain_abstraction"] < 0.10
+
+
+def test_rw_jargon_with_plain_exceptions_still_fails():
+    # The wall is not weakened: real jargon fires even when the new
+    # exception words are present in the same text.
+    r = two_layer.check(_two_layer_record(JARGON_WITH_PLAIN_EXCEPTIONS))
+    assert r["pass"] is False, r["reasons"]
+    hits = r["details"]["abstraction_hits"]
+    assert "leverage" in hits and "ecosystem" in hits, hits
+
+
+def test_rw_diluted_natural_passes():
+    # Ordinary diluted text must still pass comfortably.
+    r = two_layer.check(_two_layer_record(DILUTED_NATURAL))
+    assert r["pass"] is True, r["reasons"]
+    assert r["details"]["plain_abstraction"] < 0.10
+
+
 # ---------------------------------------------------------------- runner
 def main() -> int:
     fns = sorted((n, f) for n, f in globals().items()
