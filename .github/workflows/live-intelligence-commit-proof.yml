@@ -163,22 +163,27 @@ jobs:
           expected={"capture_path":capture_path,"capture_id":capture["capture_id"],"expected_content":distilled,"content_hash":digest,"resolved_connections":resolved_connections}
           pathlib.Path(f"smart-note-expected{sfx}.json").write_text(json.dumps(expected,indent=2,ensure_ascii=False))
           if exact:
-              p=exact["provenance"]
+              # WO1 fail-safe: a content-hash hit whose registry entry lacks
+              # complete provenance cannot be runtime-verified against historical
+              # lineage. Fall through to the fresh-execute path below instead of
+              # crashing the step on a hard KeyError index.
+              p=exact.get("provenance") or {}
               ids={
-                "event_id":p["event_id"],
-                "intelligent_block_id":exact["intelligent_block_id"],
-                "lineage_id":p["lineage_id"],
-                "relationship_id":p["relationship_id"],
-                "index_id":p["runtime_index_id"],
-                "checkpoint_id":p["checkpoint_id"],
-                "receipt_id":p["receipt_id"],
+                "event_id":p.get("event_id"),
+                "intelligent_block_id":exact.get("intelligent_block_id"),
+                "lineage_id":p.get("lineage_id"),
+                "relationship_id":p.get("relationship_id"),
+                "index_id":p.get("runtime_index_id"),
+                "checkpoint_id":p.get("checkpoint_id"),
+                "receipt_id":p.get("receipt_id"),
               }
-              pathlib.Path(f"fresh-lesson-lineage-ids{sfx}.json").write_text(json.dumps(ids,indent=2))
-              pathlib.Path(f"registry-hit{sfx}.json").write_text(json.dumps({
-                "status":"REGISTRY_HASH_HIT_REQUIRES_RUNTIME_VERIFICATION",
-                "intelligent_block_id":exact["intelligent_block_id"]
-              },indent=2))
-              raise SystemExit(0)
+              if all(ids.values()):
+                  pathlib.Path(f"fresh-lesson-lineage-ids{sfx}.json").write_text(json.dumps(ids,indent=2))
+                  pathlib.Path(f"registry-hit{sfx}.json").write_text(json.dumps({
+                    "status":"REGISTRY_HASH_HIT_REQUIRES_RUNTIME_VERIFICATION",
+                    "intelligent_block_id":ids["intelligent_block_id"]
+                  },indent=2))
+                  raise SystemExit(0)
           if pathlib.Path("replay-mode.txt").read_text().strip()=="verify-only":
               raise SystemExit("VERIFY_ONLY_REPLAY_REQUIRES_EXISTING_CANONICAL_HASH")
           request={
@@ -301,22 +306,27 @@ jobs:
               expected={"capture_path":capture_path,"capture_id":capture["capture_id"],"expected_content":distilled,"content_hash":digest,"resolved_connections":resolved_connections}
               pathlib.Path("smart-note-expected.json").write_text(json.dumps(expected,indent=2,ensure_ascii=False))
               if exact:
-                  p=exact["provenance"]
+                  # WO1 fail-safe: a content-hash hit whose registry entry lacks
+                  # complete provenance cannot be runtime-verified against historical
+                  # lineage. Fall through to the fresh-execute path below instead of
+                  # crashing the step on a hard KeyError index.
+                  p=exact.get("provenance") or {}
                   ids={
-                    "event_id":p["event_id"],
-                    "intelligent_block_id":exact["intelligent_block_id"],
-                    "lineage_id":p["lineage_id"],
-                    "relationship_id":p["relationship_id"],
-                    "index_id":p["runtime_index_id"],
-                    "checkpoint_id":p["checkpoint_id"],
-                    "receipt_id":p["receipt_id"],
+                    "event_id":p.get("event_id"),
+                    "intelligent_block_id":exact.get("intelligent_block_id"),
+                    "lineage_id":p.get("lineage_id"),
+                    "relationship_id":p.get("relationship_id"),
+                    "index_id":p.get("runtime_index_id"),
+                    "checkpoint_id":p.get("checkpoint_id"),
+                    "receipt_id":p.get("receipt_id"),
                   }
-                  pathlib.Path("fresh-lesson-lineage-ids.json").write_text(json.dumps(ids,indent=2))
-                  pathlib.Path("registry-hit.json").write_text(json.dumps({
-                    "status":"REGISTRY_HASH_HIT_REQUIRES_RUNTIME_VERIFICATION",
-                    "intelligent_block_id":exact["intelligent_block_id"]
-                  },indent=2))
-                  raise SystemExit(0)
+                  if all(ids.values()):
+                      pathlib.Path("fresh-lesson-lineage-ids.json").write_text(json.dumps(ids,indent=2))
+                      pathlib.Path("registry-hit.json").write_text(json.dumps({
+                        "status":"REGISTRY_HASH_HIT_REQUIRES_RUNTIME_VERIFICATION",
+                        "intelligent_block_id":ids["intelligent_block_id"]
+                      },indent=2))
+                      raise SystemExit(0)
               if pathlib.Path("replay-mode.txt").read_text().strip()=="verify-only":
                   raise SystemExit("VERIFY_ONLY_REPLAY_REQUIRES_EXISTING_CANONICAL_HASH")
               request={
