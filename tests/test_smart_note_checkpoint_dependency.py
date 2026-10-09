@@ -21,7 +21,11 @@ def test_checkpoint_preserves_source_identity_evidence_and_receipt_boundary():
     assert '{kind:"smart_note_receipt",receipt_id:persistedReceiptId}' in source
     assert '{kind:"source_event",event_id:eventId}' in source
     assert '{kind:"intelligent_block_hash",sha256:persistedBlockHash}' in source
-    assert '{kind:"learning_evidence",evidence_id:learning.id}' in source
+    # WO9 (2026-10-09): the v7 receiver's learning_evidence write path is retired.
+    # The checkpoint invariant must NOT require a learning_evidence ref from this
+    # path; single writer is nayanet-learning-verify (v2 canonical intake).
+    assert '{kind:"learning_evidence",evidence_id:learning.id}' not in source
+    assert 'WO9-2026-10-09' in source
     assert 'status:"CHECKPOINT_VERIFIED"' in source
     assert 'checkpointRecord?.receipt?.id' in source
 

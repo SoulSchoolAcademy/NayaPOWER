@@ -294,47 +294,20 @@ Deno.serve(async(req)=>{
    if(!persistedReceiptId||!persistedBlockHash)throw new Error("SMART_NOTE_PERSISTED_LINEAGE_INCOMPLETE");
    canonicalReceiptId=persistedReceiptId;
 
-   const learningClaim=persistedNutshell;
-    const learningId=await stableUuid("nayanet-learning:"+user.id+":"+eventId);
-    const learningById=await supabase.from("learning_evidence").select("id,status,claim,target_id").eq("id",learningId).maybeSingle();
-    if(learningById.error)throw learningById.error;
-    let learning:any=learningById.data;
-
-   if(!learning){
-     const legacyLearning=await supabase.from("learning_evidence").select("id,status,claim,target_id").eq("member_id",user.id).eq("source_event_id",eventId).eq("claim",learningClaim).limit(1).maybeSingle();
-     if(legacyLearning.error)throw legacyLearning.error;
-     learning=legacyLearning.data;
-   }
-   if(!learning){
-     const createdLearning=await supabase.from("learning_evidence").insert({
-       id:learningId,
-       member_id:user.id,
-       target_id:"smart-note:"+eventId,
-       level:"E1_UNDERSTANDS",
-       provenance:"USER",
-       status:"CANDIDATE",
-       claim:learningClaim.slice(0,2000),
-       observed_value:{source:"v7-smart-note-canonical",event_id:eventId,subject:persistedSubject},
-       verification_method:"PENDING_OUTCOME_VERIFICATION",
-       source_event_id:eventId
-     }).select("id,status,claim,target_id").single();
-     if(createdLearning.error&&createdLearning.error.code!=="23505")throw createdLearning.error;
-     learning=createdLearning.data;
-     if(!learning){
-       const retry=await supabase.from("learning_evidence").select("id,status,claim,target_id").eq("id",learningId).maybeSingle();
-       if(retry.error)throw retry.error;
-       learning=retry.data;
-     }
-   }
-   if(!learning?.id)throw new Error("SMART_NOTE_LEARNING_EVIDENCE_MISSING");
+   // WO9 (2026-10-09) — ONE DOOR IN: the v7 receiver's direct learning_evidence
+   // write path is RETIRED. Single writer owns learning_evidence:
+   // nayanet-learning-verify (v2 canonical intake). This receiver no longer
+   // mints candidate rows; the checkpoint invariant no longer requires a
+   // learning_evidence ref from this path. (All 23 rows this path ever wrote
+   // were RETIRED, none promoted — the stream was a dead end.)
+   const learning:any=null;
 
 
   const checkpointId="smart-note-checkpoint:"+eventId;
   const checkpointEvidence=[
     {kind:"smart_note_receipt",receipt_id:persistedReceiptId},
     {kind:"source_event",event_id:eventId},
-    {kind:"intelligent_block_hash",sha256:persistedBlockHash},
-    {kind:"learning_evidence",evidence_id:learning.id}
+    {kind:"intelligent_block_hash",sha256:persistedBlockHash}
   ];
 
   // Keep checkpointing inside the existing authenticated cognition boundary.
@@ -373,7 +346,7 @@ Deno.serve(async(req)=>{
       checkpoint_id:checkpointId,
       source_event_ids:[eventId],
       what_changed:"Canonical Smart Note was captured, projected as an Intelligent Block, and entered the governed learning boundary.",
-      learned:learningClaim,
+      learned:persistedNutshell,
       evidence_refs:checkpointEvidence,
       authority_scope:"PERSONAL_INTELLIGENCE_ONLY",
       unknown:["Future applicability, behavior change, and outcome verification remain open."],
@@ -397,7 +370,7 @@ Deno.serve(async(req)=>{
   const persistedCheckpoint=checkpointRecord?.event;
   const checkpointReceiptId=normalizedText(checkpointRecord?.receipt?.id||checkpointRecord?.receipt?.receipt_id);
   const persistedCheckpointEvidence=Array.isArray(persistedCheckpoint?.metadata?.evidence_refs)?persistedCheckpoint.metadata.evidence_refs:[];
-  const checkpointEvidenceMatches=persistedCheckpointEvidence.some(ref=>ref?.kind==="smart_note_receipt"&&String(ref.receipt_id||"")===persistedReceiptId)&&persistedCheckpointEvidence.some(ref=>ref?.kind==="source_event"&&String(ref.event_id||"")===eventId)&&persistedCheckpointEvidence.some(ref=>ref?.kind==="intelligent_block_hash"&&String(ref.sha256||"")===persistedBlockHash)&&persistedCheckpointEvidence.some(ref=>ref?.kind==="learning_evidence"&&String(ref.evidence_id||"")===String(learning.id));
+  const checkpointEvidenceMatches=persistedCheckpointEvidence.some(ref=>ref?.kind==="smart_note_receipt"&&String(ref.receipt_id||"")===persistedReceiptId)&&persistedCheckpointEvidence.some(ref=>ref?.kind==="source_event"&&String(ref.event_id||"")===eventId)&&persistedCheckpointEvidence.some(ref=>ref?.kind==="intelligent_block_hash"&&String(ref.sha256||"")===persistedBlockHash);
   if(String(persistedCheckpoint?.event_id||"")!==checkpointId||!checkpointReceiptId||!checkpointEvidenceMatches){
     throw new Error("SMART_NOTE_CHECKPOINT_FAILED:"+JSON.stringify({status:"UNAVAILABLE",checkpoint_id:persistedCheckpoint?.event_id||"UNAVAILABLE",receipt_id:checkpointReceiptId||"UNAVAILABLE"}));
   }
@@ -413,10 +386,9 @@ Deno.serve(async(req)=>{
   const transactionWithIntelligence={
     ...data,
     learning_evidence:{
-      id:learning.id,
-      status:learning.status,
-      claim:learning.claim,
-      target_id:learning.target_id
+      retired:true,
+      retirement:"WO9-2026-10-09",
+      note:"v7 receiver no longer writes learning_evidence; single writer is nayanet-learning-verify (v2 canonical intake)"
     },
     intelligence_checkpoint:checkpoint
   };

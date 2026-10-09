@@ -45,14 +45,14 @@ INTEGRATION CONTRACT — the gate FIRES on every learning-candidacy write:
   * In-repo: learning_verification_queue.enqueue() runs the gate itself and
     refuses anything not admitted as CANDIDATE — the queue cannot be filled
     around the gate.
-  * Receiver (supabase/functions/v7-smart-note-canonical/index.ts): the
-    learning_evidence INSERT at the CANDIDATE write site is the capture-stage
-    row for the checkpoint invariant, NOT a learning-candidacy claim — the
-    parallel lane (naya5/learn-admission-contract) tested and documented this
-    separation, and capture must never be gated (Verification Law). Learning
-    candidacy begins at submit_learning_claim()/enqueue(). If the Receiver
-    owner ever mints learning-candidate rows for experimental claims, that
-    call site must run this gate first.
+  * Receiver (supabase/functions/v7-smart-note-canonical/index.ts): WO9
+    (2026-10-09) RETIRED the receiver's learning_evidence INSERT — the v7
+    write path no longer exists; single writer is nayanet-learning-verify.
+    (Historical note: the INSERT was the capture-stage row for the checkpoint
+    invariant, NOT a learning-candidacy claim — the parallel lane
+    (naya5/learn-admission-contract) tested and documented this separation,
+    and capture must never be gated (Verification Law).) Learning candidacy
+    begins at submit_learning_claim()/enqueue().
 The gate is pure: no DB, no network.
 """
 
