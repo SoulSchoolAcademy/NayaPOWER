@@ -18,10 +18,19 @@ Pure logic takes an explicit clock so tests are deterministic.
 from __future__ import annotations
 
 import json
-from dataclasses import dataclass, field, asdict
+from dataclasses import asdict, dataclass, field
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any, Callable
+
+from learning_admission_gate import (
+    CANDIDATE as ADMITTED_CANDIDATE,
+)
+from learning_admission_gate import (
+    admit_candidate,
+    normalize_identity,
+    submit_learning_claim,
+)
 
 SLA_HOURS = 48
 
@@ -58,7 +67,25 @@ def _now_iso(clock: Callable[[], datetime]) -> str:
 
 def enqueue(candidate: dict[str, Any], candidate_id: str,
             clock: Callable[[], datetime] = lambda: datetime.now(timezone.utc)) -> QueueEntry:
-    """Admit a gate-passed candidate into the verification queue."""
+    """Admit a gate-passed candidate into the verification queue.
+
+    B8: the gate FIRES here. The candidate runs through submit_learning_claim()
+    first — a rejected design raises instead of entering the queue, and an
+    honest null (NOT_VERIFIED) is negative evidence, not a verification job,
+    so it is refused here too. There is no path into the queue around the gate.
+    """
+    result = submit_learning_claim(candidate)
+    if not result.admitted:
+        raise ValueError(
+            f"ADMISSION_REJECTED id={candidate_id} "
+            f"reasons={','.join(result.reasons)}"
+        )
+    if result.admitted_as != ADMITTED_CANDIDATE:
+        raise ValueError(
+            f"NOT_A_VERIFICATION_CANDIDATE id={candidate_id} "
+            f"admitted_as={result.admitted_as}: honest nulls are kept as "
+            f"negative evidence, never queued for verification"
+        )
     now = _now_iso(clock)
     verify_by = (clock().astimezone(timezone.utc) + timedelta(hours=SLA_HOURS)).isoformat()
     return QueueEntry(
@@ -81,7 +108,8 @@ def claim(entry: QueueEntry, verifier: str,
     v = verifier.strip()
     if not v:
         raise ValueError("verifier required")
-    if v == entry.doer or v == entry.scorer:
+    # B6b: identity normalized — "Naya-5", "naya-5 " and "NAYA-5" are one seat.
+    if normalize_identity(v) in (normalize_identity(entry.doer), normalize_identity(entry.scorer)):
         raise ValueError("verifier must differ from both doer and scorer")
     return QueueEntry(**{**asdict(entry), "status": STATUS_CLAIMED,
                          "verifier": v, "claimed_at": _now_iso(clock)})
