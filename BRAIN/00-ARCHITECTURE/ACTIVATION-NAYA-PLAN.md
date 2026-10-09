@@ -1,9 +1,22 @@
 # ACTIVATION NAYA — CONSENSUS EXECUTION PLAN v1
 
+> **RECONCILED 2026-10-09** — This is the ONE canonical activation plan.
+> Reconciles PR #2052 (`.naya/project-intelligence/activation-naya-plan-v1.md`, Naya 2 lane)
+> into its canonical home. Content is the team consensus record, preserved intact;
+> only file references were updated to canonical paths. The duplicate at
+> `.naya/project-intelligence/` has been removed.
+>
+> Companion documents (all canonical):
+> - Charter (mission, success criteria): `BRAIN/00-ARCHITECTURE/ACTIVATION-NAYA-PROJECT.md`
+> - Machine core: `BRAIN/00-ARCHITECTURE/MACHINE-INTELLIGENCE.json`
+> - System blueprint: `BRAIN/00-ARCHITECTURE/SYSTEM-BLUEPRINT-20261009.md`
+> - Project intelligence: `BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/ACTIVATION-NAYA-INTELLIGENCE.md`
+
+---
 **Status:** CONSENSUS v1 — team-reviewed, scorecarded, holes addressed. Ready for leader assignment.
 **Authority:** Shawn Vibert, Human Director
 **Facilitated by:** Naya 2 (consensus process) · Reviewed by: learning-lane owner, verification lead, independent judge, systems integrator
-**Source of truth for current state:** `learning-system-blueprint-v1.md` (all claims [PROVEN]/[REPORTED]/[UNVERIFIED] there)
+**Source of truth for current state:** `BRAIN/07-LEARNING/learning-system-blueprint-v1.md` (all claims [PROVEN]/[REPORTED]/[UNVERIFIED] there)
 **Goal:** Naya fully activated — remembering, growing, learning. Smart note in → she understands → she learns → behavior changes. Non-stop until done.
 
 ---
