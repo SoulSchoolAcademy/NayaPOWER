@@ -157,3 +157,30 @@ trial therefore ships a machine-replayable archive alongside its report:
 - **Honesty:** rehearsal trials R0–R2 (2026-10-06) are NOT replayable — arm
   submissions were never persisted. Their result files say so explicitly.
   The archive contract closes this gap; it does not retroactively fill it.
+
+## 13. Applicability-answer normalization (protocol v1.1 — PROSPECTIVE ONLY)
+
+**Evidence:** trial SR-P6 (2026-10-08). arm-c1 inherited the compositional
+lesson BEHAVIORALLY perfectly (4/4 dispatches, override priority correct) but
+the sealed verifier scored it FAIL on trailing periods in the applicability
+lines (`applicability === expected`, exact string match). Format fragility is
+a compounding tax on inheritance: the stricter the surface contract, the more
+behaviorally-correct successors fail for orthographic reasons.
+
+**Rule (applies to trials preregistered AFTER this section; never
+retroactively):**
+
+1. Verifiers MUST normalize applicability answers before comparison:
+   trim leading/trailing whitespace, strip trailing sentence punctuation
+   (`.`, `,`, `;`, `:` — repeated until clean), collapse internal whitespace
+   runs to single spaces. NO case-folding, NO internal-punctuation removal,
+   NO line reordering — semantic content must still match exactly after
+   normalization.
+2. The behavioral verdict (does the task output pass?) remains PRIMARY and
+   UNCHANGED. Applicability-label matching after normalization is secondary.
+3. The preregistration MUST state the normalization rule the sealed verifier
+   implements. A sealed verifier that exact-matches without normalizing is
+   legal only if the preregistration says so.
+4. **Integrity boundary:** sealed verifiers and recorded verdicts of
+   COMPLETED trials are never re-scored under v1.1. SR-P6's arm-c1 FAIL and
+   the IMPROVED verdict stand with the caveat recorded in its result file.
