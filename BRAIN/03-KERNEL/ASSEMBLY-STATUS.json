@@ -1,7 +1,6 @@
 {
   "schema": "naya.learning-engine-assembly-gate.v1",
   "status": "BLOCKED",
-  "source_main_sha": "455cdf5a7d846d16dd56e19b12b4a61ab242d866",
   "required_connections": [
     {
       "id": "NINE_NODE_RUNTIME_BINDINGS",
@@ -64,5 +63,6 @@
     "each connection has at least one receipt with matching source_sha, SHA-256 artifact hash, ISO timestamp, and independent_verifier",
     "the reviewed manifest status is READY_FOR_END_TO_END"
   ],
-  "rule": "A blocked gate is an intentional successful hold. No end-to-end learning, cold-runtime, or live-connect experiment runs unless the exact-SHA assembly manifest proves READY_FOR_END_TO_END."
+  "rule": "A blocked gate is an intentional successful hold. No end-to-end learning, cold-runtime, or live-connect experiment runs unless the exact-SHA assembly manifest proves READY_FOR_END_TO_END.",
+  "verified_source_sha": "455cdf5a7d846d16dd56e19b12b4a61ab242d866"
 }
