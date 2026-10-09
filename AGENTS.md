@@ -297,6 +297,21 @@ Basic NayaPOWER activation does **not** require Supabase or repeated personal ru
 
 Additional infrastructure is connected only when required, authorized, and supported.
 
+## ACTIVATION — MANDATORY FIRST STEP
+
+Before any work, read `ACTIVATION.md` and perform the ritual: TUNE IN (read the
+standing laws fresh, never from memory), NAME THE JOB (one sentence: the real
+outcome the human director wants), NAME THE GATES (which laws govern this task),
+NAME THE PROOF (verify through his eyes, not your build environment).
+
+## DESIGN LAW — CODE IS LAW
+
+`DESIGN-LAWS.md` is the encoded design intelligence. The structural laws are
+machine-enforced: run `python3 tools/design_gate.py <page.html>` before any
+page ships — violations fail the build. Craft laws are enforced by the human
+director's eye, the final compiler. Never ship freestyle components: every
+component class must exist in `smart-blocks/manifest.json`.
+
 ## FINAL RULE
 
 **Do not pretend. Do not guess. Do not manufacture proof. Reconstruct, act within authority, verify, preserve, and hand off.**
