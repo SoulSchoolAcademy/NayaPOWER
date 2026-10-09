@@ -13,7 +13,7 @@ A page section: tracked kicker label, serif section title, generous vertical rhy
 
 1. Include `tokens.css` (once per page) and `section.css`.
 2. Copy the `<section class="cmp-section">` structure from `specimen.html`.
-3. Set `--sc` on each section **by document order** — purple, indigo, blue, teal, emerald, lime, yellow, gold, orange, red, magenta, then repeat. Never assign color by category; adjacent sections never share a hue family.
+3. Set `--sc` on each section **by document order**, using only tokens that exist in `tokens.css` — purple, indigo, blue, cyan, green, lime, gold, coral, magenta, demo, then repeat. Never assign color by category; adjacent sections never share a hue family.
 
 ## Composing
 

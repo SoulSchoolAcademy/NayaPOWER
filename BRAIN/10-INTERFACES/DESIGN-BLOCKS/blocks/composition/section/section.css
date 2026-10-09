@@ -3,9 +3,10 @@
  * A page section: tracked kicker label, serif section title, generous
  * vertical rhythm, spectrum-positioned accent edge.
  *
- * Set --sc to the section's spectrum color BY DOCUMENT ORDER
- * (purple → indigo → blue → teal → emerald → lime → yellow → gold →
- *  orange → red → magenta), never by category.
+ * Set --sc to the section's spectrum color BY DOCUMENT ORDER, using
+ * only tokens that exist in tokens.css:
+ * purple → indigo → blue → cyan → green → lime → gold → coral →
+ * magenta → demo, then repeat. Never by category.
  */
 
 /* ---- section frame ---- */
