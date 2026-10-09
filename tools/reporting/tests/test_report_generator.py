@@ -887,7 +887,9 @@ def test_pinned_learning_on_scoreboard():
     assert data.scores[0].score == 5.0
     assert data.scores[0].status == "authoritative"
     report = gen.render(data)
-    assert "| Learning | 5.0 | authoritative | 10-08 12:00 |" in report
+    # The pin keeps its REAL reconciliation timestamp (2026-10-08),
+    # never the triggering window's time (the old code stamped 12:00).
+    assert "| Learning | 5.0 | authoritative | 10-08 00:00 |" in report
 
 
 def test_freshness_gate_drops_stale_and_unknown_items():
@@ -1052,3 +1054,134 @@ def test_stale_boundary_twelve_hours():
         data = gen.collect("hourly", NOW - dt.timedelta(hours=1), NOW)
         sp = [s for s in data.scores if s.area == "Truth"][0]
         assert sp.status == want, f"age {age_h}h -> {sp.status}"
+
+
+# ---------------------------------------------------------------------------
+# Ingest-boundary guards — Pair G round 2 (2026-10-09).
+# Round 1 fixed the render (provenance columns, stale/seed labels), but the
+# Phase-2 attacker proved state could still be poisoned at ingest:
+#   1. stale-value laundering — a historical restatement ("the 4.5 was the
+#      old pre-trial baseline") extracted with a fresh timestamp overwrote
+#      the true 8.0 and drove a fake-regression headline;
+#   2. future-dated scores — as_of 3h ahead overwrote Truth 9.0 → 7.0 and
+#      was immortal (negative age defeats the 12h staleness rule);
+#   3. authoritative pin timestamp refresh — the Learning pin stamped the
+#      triggering window's time, so a days-old 5.0 rendered as today.
+# The lesson: check at the boundary where the bad value ENTERS (state
+# ingest), not where it's displayed.
+# ---------------------------------------------------------------------------
+
+
+def _ingest_gen(state, points):
+    """Generator whose worker log yields the given ScorePoints."""
+    return ReportGenerator(
+        fetch_worker_logs=lambda s: [{
+            "worker": "w1", "mtime": NOW, "scores": points,
+            "holes": [], "achievements": [], "activity": [],
+        }],
+        fetch_memory=lambda s: {"achievements": [], "intelligence": [],
+                                "holes": [], "scores": []},
+        fetch_github_fn=lambda s: {"prs": [], "comments": [], "error": None},
+        fetch_supabase_fn=lambda: {"counts": {}, "error": None},
+        load_scores_fn=lambda: state,
+        save_scores_fn=lambda s: None,
+    )
+
+
+def test_historical_restatement_is_not_a_claim():
+    # The attacker's exact laundering sentence.
+    pts = extract_scores_from_text(
+        "The Successor Reuse score of 4.5 was the old pre-trial baseline.",
+        source="w1", as_of=NOW)
+    assert len(pts) == 1
+    assert pts[0].area == "Successor Reuse"
+    assert pts[0].score == 4.5
+    assert pts[0].status == "history"
+
+
+def test_movement_arrow_stays_a_current_claim():
+    # A movement arrow names the new value explicitly — always current.
+    pts = extract_scores_from_text(
+        "The old Successor Reuse baseline moved 4.5 → 8.0 after the trial.",
+        source="w1", as_of=NOW)
+    assert len(pts) == 1
+    assert pts[0].area == "Successor Reuse"
+    assert pts[0].score == 8.0
+    assert pts[0].status == "claim"
+
+
+def test_plain_current_claim_unaffected():
+    pts = extract_scores_from_text(
+        "Honest score: Retrieval 7.0/10.", source="w1", as_of=NOW)
+    assert len(pts) == 1
+    assert pts[0].status == "claim"
+
+
+def test_historical_restatement_cannot_overwrite_state():
+    # The full laundering attack: true 8.0 in state, fresh log restates
+    # the old 4.5 as history. State must keep 8.0; no fake regression.
+    state = {"Successor Reuse": {"score": 8.0,
+                                 "as_of": (NOW - dt.timedelta(hours=2)).isoformat(),
+                                 "source": "lane", "status": "claim"}}
+    hist = ScorePoint("Successor Reuse", 4.5, NOW, "w1", "history")
+    gen = _ingest_gen(state, [hist])
+    data = gen.collect("hourly", NOW - dt.timedelta(hours=1), NOW)
+    kept = [sp for sp in data.scores if sp.area == "Successor Reuse"]
+    assert [sp.score for sp in kept] == [8.0]
+    from report_generator import _headline_text, _what_moved
+    assert "4.5" not in _headline_text(data, _what_moved(data))
+
+
+def test_future_dated_score_rejected_at_ingest():
+    # A score 3h in the future must never enter state — it would be
+    # immortal (negative age defeats the 12h staleness rule).
+    state = {"Truth": {"score": 9.0,
+                       "as_of": (NOW - dt.timedelta(hours=2)).isoformat(),
+                       "source": "lane", "status": "claim"}}
+    future = ScorePoint("Truth", 7.0, NOW + dt.timedelta(hours=3),
+                        "w1", "claim")
+    gen = _ingest_gen(state, [future])
+    data = gen.collect("hourly", NOW - dt.timedelta(hours=1), NOW)
+    kept = [sp.score for sp in data.scores if sp.area == "Truth"]
+    assert kept == [9.0]
+
+
+def test_small_clock_skew_still_accepted():
+    # Within the 10-minute skew allowance, a slightly-future point is fine.
+    state = {"Truth": {"score": 9.0,
+                       "as_of": (NOW - dt.timedelta(hours=2)).isoformat(),
+                       "source": "lane", "status": "claim"}}
+    skewed = ScorePoint("Truth", 9.5, NOW + dt.timedelta(minutes=5),
+                        "w1", "claim")
+    gen = _ingest_gen(state, [skewed])
+    data = gen.collect("hourly", NOW - dt.timedelta(hours=1), NOW)
+    kept = [sp.score for sp in data.scores if sp.area == "Truth"]
+    assert kept == [9.5]
+
+
+def test_authoritative_pin_keeps_real_timestamp():
+    # The pin must never be re-stamped with the triggering window's time.
+    pin_as_of = "2026-10-08T00:00:00+00:00"
+    state = {"Learning": {"score": 5.0, "as_of": pin_as_of,
+                          "source": "Naya 1 reconciliation 2026-10-08 (pinned)",
+                          "status": "authoritative"}}
+    trigger = ScorePoint("Learning", 7.0, NOW, "w1", "claim")
+    gen = _ingest_gen(state, [trigger])
+    data = gen.collect("hourly", NOW - dt.timedelta(hours=1), NOW)
+    kept = [sp for sp in data.scores if sp.area == "Learning"]
+    assert len(kept) == 1
+    assert kept[0].score == 5.0
+    assert kept[0].status == "authoritative"
+    assert kept[0].as_of.isoformat() == pin_as_of
+
+
+def test_authoritative_pin_first_write_uses_real_timestamp():
+    # First time the pin is written, as_of is the reconciliation date —
+    # never the window's timestamp.
+    trigger = ScorePoint("Learning", 7.0, NOW, "w1", "claim")
+    gen = _ingest_gen({}, [trigger])
+    data = gen.collect("hourly", NOW - dt.timedelta(hours=1), NOW)
+    kept = [sp for sp in data.scores if sp.area == "Learning"]
+    assert len(kept) == 1
+    assert kept[0].score == 5.0
+    assert kept[0].as_of.isoformat() == "2026-10-08T00:00:00+00:00"

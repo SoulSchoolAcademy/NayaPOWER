@@ -199,7 +199,7 @@ class ScorePoint:
     score: float
     as_of: dt.datetime
     source: str
-    status: str = "claim"  # "authoritative" or "claim"
+    status: str = "claim"  # "authoritative", "claim", "stale", "seed", "history"
 
 
 @dataclass
@@ -367,6 +367,19 @@ _NON_SCORE_CONTEXT_RE = re.compile(
     re.IGNORECASE,
 )
 
+# Historical restatements are not current claims (2026-10-09, Pair G round 2).
+# "The Successor Reuse score of 4.5 was the old pre-trial baseline" laundered
+# a stale 4.5 into state and overwrote the true 8.0, driving a fake-regression
+# headline. A sentence whose score is framed as history — past tense, baseline,
+# previous — yields a "history" point that NEVER overwrites state. The movement
+# arrow is exempt: "4.5 → 8.0" names the new value explicitly, and the
+# right-hand value is by definition current.
+_HISTORICAL_SCORE_RE = re.compile(
+    r"\b(was|were|old|previous|previously|baseline|used to be|before the|"
+    r"formerly|back then|historical|history of|had been|prior)\b",
+    re.IGNORECASE,
+)
+
 
 def _scores_in_sentence(sentence: str) -> list[float]:
     """Extract score values from one sentence, movement-wins on overlap."""
@@ -449,9 +462,17 @@ def extract_scores_from_text(text: str, source: str,
         area = areas[0]
         scores = _scores_in_sentence(sentence)
         if scores:
+            # Historical framing ("was the old baseline") is a restatement,
+            # not a claim — unless a movement arrow names the new value.
+            # History points never overwrite state (see collect()).
+            status = "claim"
+            if (_HISTORICAL_SCORE_RE.search(sentence)
+                    and not _MOVEMENT_RE.search(sentence)):
+                status = "history"
             # Last score in the sentence = most recent statement.
             points.append(ScorePoint(area=area, score=scores[-1],
-                                     as_of=as_of, source=source))
+                                     as_of=as_of, source=source,
+                                     status=status))
     return points
 
 
@@ -995,11 +1016,26 @@ class ReportGenerator:
                 # the window must not move state in this window.
                 if p.as_of < since:
                     continue
+                # Future-dated scores are rejected at ingest (2026-10-09,
+                # Pair G round 2): a score 3h in the future overwrote Truth
+                # 9.0 → 7.0 and was immortal — negative age defeats the 12h
+                # staleness rule and wins every tie-break. Small clock-skew
+                # allowance only.
+                if p.as_of > now + _FUTURE_SKEW:
+                    continue
+                # Historical restatements never overwrite state: "the 4.5
+                # was the old baseline" is history, not a claim.
+                if p.status == "history":
+                    continue
                 cur = window_points.get(p.area)
                 if cur is None or p.as_of >= cur.as_of:
                     window_points[p.area] = p
         for p in memory["scores"]:
             if p.as_of < since:
+                continue
+            if p.as_of > now + _FUTURE_SKEW:
+                continue
+            if p.status == "history":
                 continue
             cur = window_points.get(p.area)
             if cur is None or p.as_of >= cur.as_of:
@@ -1010,17 +1046,32 @@ class ReportGenerator:
         # Heuristic extraction NEVER overwrites these.
         # 2026-10-08: Naya 1 reconciled whole-area Learning = 5.0.
         # The 7.0 seen in worker logs is the bounded trial-rung score, not whole-area.
+        # The pin carries its REAL reconciliation timestamp (2026-10-09,
+        # Pair G round 2): the old code stamped the triggering window's
+        # time, so a days-old 5.0 rendered with today's timestamp —
+        # a fabricated as_of. Never fabricate as_of.
         PINNED_AUTHORITATIVE = {
-            "Learning": 5.0,
+            "Learning": {
+                "score": 5.0,
+                # Date-level: Naya 1's reconciliation, 2026-10-08.
+                # Exact hour unrecorded — do not invent precision.
+                "as_of": "2026-10-08T00:00:00+00:00",
+                "source": "Naya 1 reconciliation 2026-10-08 (pinned)",
+            },
         }
         for area, point in window_points.items():
             existing = new_state.get(area, {})
-            # Pinned scores win over everything heuristic.
+            # Pinned scores win over everything heuristic — but the pin is
+            # written once with its real timestamp and never refreshed.
             if area in PINNED_AUTHORITATIVE:
+                pin = PINNED_AUTHORITATIVE[area]
+                if (existing.get("status") == "authoritative"
+                        and existing.get("score") == pin["score"]):
+                    continue  # pin already in place; never refresh as_of
                 new_state[area] = {
-                    "score": PINNED_AUTHORITATIVE[area],
-                    "as_of": point.as_of.isoformat(),
-                    "source": "Naya 1 reconciliation 2026-10-08 (pinned)",
+                    "score": pin["score"],
+                    "as_of": pin["as_of"],
+                    "source": pin["source"],
                     "status": "authoritative",
                 }
                 continue
