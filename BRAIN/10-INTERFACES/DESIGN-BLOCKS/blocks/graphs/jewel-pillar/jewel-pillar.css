@@ -1,0 +1,69 @@
+/* Smart Block: jewel-pillar
+ * Source: authored 2026-10-09 from nl-chart bar DNA + gem-bullet facet formula
+ * Type: graphs
+ * Jeweled pillars for series data. Each pillar is cut like a gem: faceted cap,
+ * specular edge light, glowing base. Values rise on light with stagger.
+ *
+ * Data contract (per .jp-col):
+ *   --v    normalized height 0..1
+ *   --c    identity color var, e.g. var(--blue)
+ *   --crgb its rgb triplet, e.g. var(--blue-rgb)
+ *   --d    entrance delay, e.g. .05s
+ * Dependencies: tokens.css
+ */
+
+.sg-card { border-radius: 20px; padding: 24px 22px 18px;
+  background: linear-gradient(180deg, #101117, #0a0b0f);
+  border: 1px solid var(--soft-line);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.12), inset 0 -12px 24px rgba(0,0,0,.4), 0 16px 34px rgba(0,0,0,.5); }
+.sg-card h4 { margin: 0 0 4px; font-size: 16px; color: #fff; font-weight: 700; }
+.sg-card .c-sub { font-size: 13px; color: var(--quiet); margin-bottom: 18px; }
+
+.jp-track { display: flex; align-items: flex-end; gap: 12px; height: 190px; padding: 10px 4px 0; }
+
+.jp-col { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
+  height: 100%; gap: 8px; min-width: 0; }
+
+.jp-val { font-size: 13px; font-weight: 800; color: #fff; font-variant-numeric: tabular-nums;
+  opacity: 0; transform: translateY(6px); transition: opacity .5s var(--ease) calc(var(--d, 0s) + .5s), transform .5s var(--ease) calc(var(--d, 0s) + .5s); }
+.sg-card.lit .jp-val { opacity: 1; transform: none; }
+
+.jp-pillar { --c: var(--purple); --crgb: var(--purple-rgb);
+  position: relative; width: 100%; max-width: 52px; height: calc(var(--v, .5) * 100%);
+  transform-origin: bottom; transform: scaleY(0);
+  transition: transform .8s var(--snap) var(--d, 0s);
+  border-radius: 10px 10px 5px 5px;
+  background:
+    linear-gradient(105deg, rgba(255,255,255,.85) 0%, rgba(255,255,255,.12) 22%, transparent 40%),
+    linear-gradient(180deg, var(--c) 0%, color-mix(in srgb, var(--c) 55%, #000) 70%, #060608 100%);
+  box-shadow:
+    inset 0 2px 3px rgba(255,255,255,.5),
+    inset 0 -8px 14px rgba(0,0,0,.5),
+    inset 2px 0 4px rgba(255,255,255,.18),
+    0 0 18px -2px rgba(var(--crgb),.55),
+    0 8px 20px rgba(0,0,0,.5);
+}
+.sg-card.lit .jp-pillar { transform: scaleY(1); }
+
+/* faceted cap — the gem cut */
+.jp-pillar::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 14px;
+  border-radius: 10px 10px 3px 3px;
+  background: linear-gradient(140deg, #fff 0%, var(--c) 55%, color-mix(in srgb, var(--c) 30%, #000) 100%);
+  box-shadow: inset 0 1px 2px rgba(255,255,255,.7); }
+
+/* glowing base */
+.jp-pillar::after { content: ""; position: absolute; left: 8%; right: 8%; bottom: -9px; height: 12px;
+  border-radius: 50%; background: radial-gradient(ellipse, rgba(var(--crgb),.5), transparent 70%);
+  filter: blur(4px); pointer-events: none; }
+
+.jp-cap { font-size: 11.5px; color: var(--quiet); font-weight: 700; white-space: nowrap; }
+
+.sg-legend { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 14px; font-size: 13px; color: var(--quiet); }
+.sg-legend i { width: 10px; height: 10px; border-radius: 2px; transform: rotate(45deg); display: inline-block;
+  margin-right: 7px; background: linear-gradient(140deg, #fff, var(--lc, var(--purple)) 55%, #18101a);
+  box-shadow: 0 0 8px var(--lc, var(--purple)); }
+
+@media (prefers-reduced-motion: reduce) {
+  .jp-pillar { transform: none; transition: none; }
+  .jp-val { opacity: 1; transform: none; transition: none; }
+}

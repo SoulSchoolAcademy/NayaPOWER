@@ -1,1181 +1,1407 @@
 {
- "blocks": [
-  {
-   "id": "naya-btn",
-   "type": "buttons",
-   "description": "The canonical Naya button. 95% restraint, 5% fire. 7-layer shadow stack, engraved label.",
-   "source": "Naya_4_Design_Element_Set.html",
-   "files": {
-    "css": "blocks/buttons/naya-btn/naya-btn.css",
-    "specimen": "blocks/buttons/naya-btn/specimen.html",
-    "js": "blocks/buttons/naya-btn/naya-btn.js",
-    "readme": "blocks/buttons/naya-btn/README.md"
-   },
-   "dependencies": [
-    "naya-btn.js",
-    "tokens.css"
-   ],
-   "states": [
-    ":hover",
-    ":active",
-    ":focus",
-    ":focus-visible",
-    ":disabled",
-    ".is-"
-   ],
-   "selectors": [
-    ".naya-btn",
-    ".naya-btn .nb-icon",
-    ".naya-btn .nb-label",
-    ".naya-btn > *",
-    ".naya-btn--block",
-    ".naya-btn--danger",
-    ".naya-btn--foundation .nb-copy",
-    ".naya-btn--foundation .nb-jewel",
-    ".naya-btn--foundation .nb-sub",
-    ".naya-btn--foundation .nb-title",
-    ".naya-btn--ghost",
-    ".naya-btn--ghost.is-aware",
-    ".naya-btn--ghost:hover,.naya-btn--ghost:focus-visible",
-    ".naya-btn--icon",
-    ".naya-btn--icon.naya-btn--lg",
-    ".naya-btn--icon.naya-btn--sm",
-    ".naya-btn--lg",
-    ".naya-btn--primary",
-    ".naya-btn--secondary",
-    ".naya-btn--sm"
-   ],
-   "score": 9.0
-  },
-  {
-   "id": "primo",
-   "type": "buttons",
-   "description": "Standard workhorse button. Disciplined, no idle animation. Spectrum theme classes.",
-   "source": "Naya_5_Beautiful_Button_set.html",
-   "files": {
-    "css": "blocks/buttons/primo/primo.css",
-    "specimen": "blocks/buttons/primo/specimen.html",
-    "js": null,
-    "readme": "blocks/buttons/primo/README.md"
-   },
-   "dependencies": [
-    "tokens.css"
-   ],
-   "states": [
-    ":hover",
-    ":active",
-    ":disabled"
-   ],
-   "selectors": [
-    ".primo",
-    ".primo.theme-blue",
-    ".primo.theme-gold",
-    ".primo.theme-green",
-    ".primo.theme-magenta",
-    ".primo.theme-purple",
-    ".primo:active",
-    ".primo:disabled",
-    ".primo:hover"
-   ],
-   "score": 8.5
-  },
-  {
-   "id": "orbit-btn",
-   "type": "buttons",
-   "description": "Button with conic-gradient ring of light orbiting its perimeter. Law 25 made real.",
-   "source": "Naya_5_Beautiful_Button_set.html",
-   "files": {
-    "css": "blocks/buttons/orbit-btn/orbit-btn.css",
-    "specimen": "blocks/buttons/orbit-btn/specimen.html",
-    "js": null,
-    "readme": "blocks/buttons/orbit-btn/README.md"
-   },
-   "dependencies": [
-    "tokens.css"
-   ],
-   "states": [
-    ":hover",
-    ":active"
-   ],
-   "selectors": [
-    ".orbit-btn",
-    ".orbit-btn .orbit-label",
-    ".orbit-btn::after",
-    ".orbit-btn::before",
-    ".orbit-btn:active",
-    ".orbit-btn:hover",
-    ".orbit-btn:hover::after",
-    ".orbit-btn:hover::before"
-   ],
-   "score": 9.5
-  },
-  {
-   "id": "living-btn",
-   "type": "buttons",
-   "description": "Hero flagship button. Idle breathe + sheen sweep (strip for Shawn's taste).",
-   "source": "Naya_5_Beautiful_Button_set.html",
-   "files": {
-    "css": "blocks/buttons/living-btn/living-btn.css",
-    "specimen": "blocks/buttons/living-btn/specimen.html",
-    "js": null,
-    "readme": "blocks/buttons/living-btn/README.md"
-   },
-   "dependencies": [
-    "tokens.css"
-   ],
-   "states": [
-    ":hover",
-    ":active"
-   ],
-   "selectors": [
-    ".living-btn",
-    ".living-btn .btn-glow",
-    ".living-btn .btn-label",
-    ".living-btn .btn-label svg",
-    ".living-btn, .living-btn::after",
-    ".living-btn::after",
-    ".living-btn:active",
-    ".living-btn:hover",
-    ".living-btn:hover .btn-glow",
-    ".living-btn[data-spectrum=\"blue\"] .btn-glow",
-    ".living-btn[data-spectrum=\"blue\"]::after",
-    ".living-btn[data-spectrum=\"blue\"]:hover",
-    ".living-btn[data-spectrum=\"magenta\"] .btn-glow",
-    ".living-btn[data-spectrum=\"magenta\"]:hover",
-    ".living-btn[data-spectrum=\"purple\"] .btn-glow",
-    ".living-btn[data-spectrum=\"purple\"]::after",
-    ".living-btn[data-spectrum=\"purple\"]:hover"
-   ],
-   "score": 7.0
-  },
-  {
-   "id": "lv-btn",
-   "type": "buttons",
-   "description": "The living button. 7-layer stack, cursor sheen, soul core, proximity aware.",
-   "source": "Naya_5_Beautiful_Button_set.html",
-   "files": {
-    "css": "blocks/buttons/lv-btn/lv-btn.css",
-    "specimen": "blocks/buttons/lv-btn/specimen.html",
-    "js": "blocks/buttons/lv-btn/lv-btn.js",
-    "readme": "blocks/buttons/lv-btn/README.md"
-   },
-   "dependencies": [
-    "lv-btn.js",
-    "tokens.css"
-   ],
-   "states": [
-    ":hover",
-    ":active",
-    ":focus",
-    ":focus-visible",
-    ":disabled"
-   ],
-   "selectors": [
-    ".lv-btn",
-    ".lv-btn .lv-label",
-    ".lv-btn .lv-label svg",
-    ".lv-btn, .lv-btn::after",
-    ".lv-btn--danger",
-    ".lv-btn--danger:hover, .lv-btn--danger:focus-visible",
-    ".lv-btn::after",
-    ".lv-btn::before",
-    ".lv-btn:active",
-    ".lv-btn:active::after",
-    ".lv-btn:disabled",
-    ".lv-btn:focus-visible",
-    ".lv-btn:hover, .lv-btn:focus-visible",
-    ".lv-btn:hover::after, .lv-btn:focus-visible::after",
-    ".lv-btn:hover::before, .lv-btn:focus-visible::before",
-    ".lv-wrap.lv-aware .lv-btn",
-    ".lv-wrap.lv-aware .lv-btn::after",
-    ".lv-wrap.lv-aware .lv-btn::before"
-   ],
-   "score": 7.5
-  },
-  {
-   "id": "cx-btn",
-   "type": "buttons",
-   "description": "Essential CTA button. Simpler tier, 1.5px border.",
-   "source": "Naya_5_Beautiful_Button_set.html",
-   "files": {
-    "css": "blocks/buttons/cx-btn/cx-btn.css",
-    "specimen": "blocks/buttons/cx-btn/specimen.html",
-    "js": null,
-    "readme": "blocks/buttons/cx-btn/README.md"
-   },
-   "dependencies": [
-    "tokens.css"
-   ],
-   "states": [
-    ":hover",
-    ":active"
-   ],
-   "selectors": [
-    ".cx-btn",
-    ".cx-btn:active",
-    ".cx-btn:hover"
-   ],
-   "score": 7.0
-  },
-  {
-   "id": "icon-btn",
-   "type": "buttons",
-   "description": "52px round icon button with SVG icons and aria-pressed fill state.",
-   "source": "Naya_5_Beautiful_Button_set.html",
-   "files": {
-    "css": "blocks/buttons/icon-btn/icon-btn.css",
-    "specimen": "blocks/buttons/icon-btn/specimen.html",
-    "js": null,
-    "readme": "blocks/buttons/icon-btn/README.md"
-   },
-   "dependencies": [
-    "tokens.css"
-   ],
-   "states": [
-    ":hover",
-    ":active"
-   ],
-   "selectors": [
-    ".icon-btn",
-    ".icon-btn svg",
-    ".icon-btn:active",
-    ".icon-btn:hover",
-    ".icon-btn[aria-pressed=\"true\"]",
-    ".icon-btn[aria-pressed=\"true\"] svg"
-   ],
-   "score": 8.0
-  },
-  {
-   "id": "nl-btn",
-   "type": "buttons",
-   "description": "Generic elevated button from the Missing Blocks library. --tone themable.",
-   "source": "Naya_Lego-blocks.html",
-   "files": {
-    "css": "blocks/buttons/nl-btn/nl-btn.css",
-    "specimen": "blocks/buttons/nl-btn/specimen.html",
-    "js": null,
-    "readme": "blocks/buttons/nl-btn/README.md"
-   },
-   "dependencies": [
-    "tokens.css"
-   ],
-   "states": [
-    ":hover",
-    ":active"
-   ],
-   "selectors": [
-    ".btn",
-    ".btn .dot",
-    ".btn-ghost",
-    ".btn-ghost:hover",
-    ".btn:active",
-    ".btn:hover"
-   ],
-   "score": 8.0
-  },
-  {
-   "id": "nl-btn-ghost",
-   "type": "buttons",
-   "description": "Ghost variant button. Minimal chrome.",
-   "source": "Naya_Lego-blocks.html",
-   "files": {
-    "css": "blocks/buttons/nl-btn-ghost/nl-btn-ghost.css",
-    "specimen": "blocks/buttons/nl-btn-ghost/specimen.html",
-    "js": null,
-    "readme": "blocks/buttons/nl-btn-ghost/README.md"
-   },
-   "dependencies": [
-    "tokens.css"
-   ],
-   "states": [
-    ":hover"
-   ],
-   "selectors": [
-    ".btn-ghost",
-    ".btn-ghost:hover"
-   ],
-   "score": 7.5
-  },
-  {
-   "id": "nl-iconbtn",
-   "type": "buttons",
-   "description": "Icon button from Missing Blocks library.",
-   "source": "Naya_Lego-blocks.html",
-   "files": {
-    "css": "blocks/buttons/nl-iconbtn/nl-iconbtn.css",
-    "specimen": "blocks/buttons/nl-iconbtn/specimen.html",
-    "js": null,
-    "readme": "blocks/buttons/nl-iconbtn/README.md"
-   },
-   "dependencies": [
-    "tokens.css"
-   ],
-   "states": [
-    ":hover",
-    ":active"
-   ],
-   "selectors": [
-    ".nl-iconbtn",
-    ".nl-iconbtn.liked",
-    ".nl-iconbtn.saved",
-    ".nl-iconbtn:active",
-    ".nl-iconbtn:hover"
-   ],
-   "score": 8.0
-  },
-  {
-   "id": "nl-playbtn",
-   "type": "buttons",
-   "description": "Play button from Missing Blocks library.",
-   "source": "Naya_Lego-blocks.html",
-   "files": {
-    "css": "blocks/buttons/nl-playbtn/nl-playbtn.css",
-    "specimen": "blocks/buttons/nl-playbtn/specimen.html",
-    "js": null,
-    "readme": "blocks/buttons/nl-playbtn/README.md"
-   },
-   "dependencies": [
-    "tokens.css"
-   ],
-   "states": [
-    ":hover",
-    ":active"
-   ],
-   "selectors": [
-    ".nl-playbtn",
-    ".nl-playbtn .ring",
-    ".nl-playbtn.playing .ring",
-    ".nl-playbtn:active",
-    ".nl-playbtn:hover"
-   ],
-   "score": 8.0
-  },
-  {
-   "id": "orb",
-   "type": "orbs",
-   "description": "Sphere of light. Triple radial-gradient body, orbiting conic ring, light pool beneath.",
-   "source": "Naya_5_Jewel_Library.html",
-   "files": {
-    "css": "blocks/orbs/orb/orb.css",
-    "specimen": "blocks/orbs/orb/specimen.html",
-    "js": null,
-    "readme": "blocks/orbs/orb/README.md"
-   },
-   "dependencies": [
-    "tokens.css"
-   ],
-   "states": [
-    ":hover",
-    ":active",
-    ":focus",
-    ":focus-visible"
-   ],
-   "selectors": [
-    ".orb",
-    ".orb, .orb::before",
-    ".orb--black",
-    ".orb--btn:active",
-    ".orb--btn:focus-visible",
-    ".orb--glyph",
-    ".orb--hero",
-    ".orb--hero::after",
-    ".orb--hero::before",
-    ".orb--icon",
-    ".orb--icon::after",
-    ".orb--icon::before",
-    ".orb--sm",
-    ".orb--sm::after",
-    ".orb--sm::before",
-    ".orb--twin::after",
-    ".orb--xs",
-    ".orb--xs::after",
-    ".orb--xs::before",
-    ".orb-context"
-   ],
-   "score": 9.0
-  },
-  {
-   "id": "mini-orb",
-   "type": "orbs",
-   "description": "Atomic luminous mark. One class, one variable. Most copy-pasteable element.",
-   "source": "Naya_5_Jewel_Library.html",
-   "files": {
-    "css": "blocks/orbs/mini-orb/mini-orb.css",
-    "specimen": "blocks/orbs/mini-orb/specimen.html",
-    "js": null,
-    "readme": "blocks/orbs/mini-orb/README.md"
-   },
-   "dependencies": [
-    "tokens.css"
-   ],
-   "states": [],
-   "selectors": [
-    ".mini-orb"
-   ],
-   "score": 8.5
-  },
-  {
-   "id": "nav-orb",
-   "type": "orbs",
-   "description": "40px navigation orb with conic ring.",
-   "source": "Naya_Lego-blocks.html",
-   "files": {
-    "css": "blocks/orbs/nav-orb/nav-orb.css",
-    "specimen": "blocks/orbs/nav-orb/specimen.html",
-    "js": null,
-    "readme": "blocks/orbs/nav-orb/README.md"
-   },
-   "dependencies": [
-    "tokens.css"
-   ],
-   "states": [],
-   "selectors": [
-    ".nav-orb"
-   ],
-   "score": 8.0
-  },
-  {
-   "id": "board",
-   "type": "boards",
-   "description": "Intelligent board container with identity spine. REQUIRED: set --ic identity color.",
-   "source": "Naya_4_Design_Element_Set.html",
-   "files": {
-    "css": "blocks/boards/board/board.css",
-    "specimen": "blocks/boards/board/specimen.html",
-    "js": null,
-    "readme": "blocks/boards/board/README.md"
-   },
-   "dependencies": [
-    "tokens.css"
-   ],
-   "states": [
-    ":hover"
-   ],
-   "selectors": [
-    ".board",
-    ".board .corner",
-    ".board h3",
-    ".board::after",
-    ".board::before",
-    ".board:hover"
-   ],
-   "score": 8.5
-  },
-  {
-   "id": "board-tone",
-   "type": "boards",
-   "description": "Board with 5px glowing tone spine.",
-   "source": "Naya_5__Epic_Elements_-_Lego_pieces.html",
-   "files": {
-    "css": "blocks/boards/board-tone/board-tone.css",
-    "specimen": "blocks/boards/board-tone/specimen.html",
-    "js": null,
-    "readme": "blocks/boards/board-tone/README.md"
-   },
-   "dependencies": [
-    "tokens.css"
-   ],
-   "states": [
-    ":hover"
-   ],
-   "selectors": [
-    ".board-tone",
-    ".board-tone .board-content",
-    ".board-tone .board-name",
-    ".board-tone .board-sub",
-    ".board-tone .board-tag",
-    ".board-tone::after",
-    ".board-tone::before",
-    ".board-tone:hover"
-   ],
-   "score": 8.5
-  },
-  {
-   "id": "demo-board",
-   "type": "boards",
-   "description": "Board with 1px light beam across the top edge.",
-   "source": "Naya_5__Epic_Elements_-_Lego_pieces.html",
-   "files": {
-    "css": "blocks/boards/demo-board/demo-board.css",
-    "specimen": "blocks/boards/demo-board/specimen.html",
-    "js": null,
-    "readme": "blocks/boards/demo-board/README.md"
-   },
-   "dependencies": [
-    "tokens.css"
-   ],
-   "states": [],
-   "selectors": [
-    ".demo-board",
-    ".demo-board code"
-   ],
-   "score": 8.0
-  },
-  {
-   "id": "stage",
-   "type": "boards",
-   "description": "Demo stage \u2014 elevated container for showcasing components.",
-   "source": "Naya_Lego-blocks.html",
-   "files": {
-    "css": "blocks/boards/stage/stage.css",
-    "specimen": "blocks/boards/stage/specimen.html",
-    "js": null,
-    "readme": "blocks/boards/stage/README.md"
-   },
-   "dependencies": [
-    "tokens.css"
-   ],
-   "states": [],
-   "selectors": [
-    ".stage",
-    ".stage-label",
-    ".stage:before"
-   ],
-   "score": 8.0
-  },
-  {
-   "id": "nl-ccard",
-   "type": "boards",
-   "description": "Content card from Missing Blocks library.",
-   "source": "Naya_Lego-blocks.html",
-   "files": {
-    "css": "blocks/boards/nl-ccard/nl-ccard.css",
-    "specimen": "blocks/boards/nl-ccard/specimen.html",
-    "js": null,
-    "readme": "blocks/boards/nl-ccard/README.md"
-   },
-   "dependencies": [
-    "tokens.css"
-   ],
-   "states": [
-    ":hover"
-   ],
-   "selectors": [
-    ".nl-ccard",
-    ".nl-ccard:hover",
-    ".nl-ccard:hover .nl-cmedia:after"
-   ],
-   "score": 8.0
-  },
-  {
-   "id": "gem-bullet",
-   "type": "jewels",
-   "description": "12px diamond bullet. White-to-tone-to-dark gradient, glowing.",
-   "source": "Naya_5_Jewel_Library.html",
-   "files": {
-    "css": "blocks/jewels/gem-bullet/gem-bullet.css",
-    "specimen": "blocks/jewels/gem-bullet/specimen.html",
-    "js": null,
-    "readme": "blocks/jewels/gem-bullet/README.md"
-   },
-   "dependencies": [
-    "tokens.css"
-   ],
-   "states": [],
-   "selectors": [
-    ".gem-bullet"
-   ],
-   "score": 8.5
-  },
-  {
-   "id": "jw",
-   "type": "jewels",
-   "description": "Jewel atom from Naya Forest. Reusable across bullets, corners, states.",
-   "source": "Naya_4_Design_Element_Set.html",
-   "files": {
-    "css": "blocks/jewels/jw/jw.css",
-    "specimen": "blocks/jewels/jw/specimen.html",
-    "js": null,
-    "readme": "blocks/jewels/jw/README.md"
-   },
-   "dependencies": [
-    "tokens.css"
-   ],
-   "states": [],
-   "selectors": [
-    ".gate .jw",
-    ".hbul .jw",
-    ".jw",
-    ".laws-line .jw",
-    ".pred .jw",
-    ".tongue ul li .jw"
-   ],
-   "score": 8.5
-  },
-  {
-   "id": "nl-field",
-   "type": "inputs",
-   "description": "Text input field from Missing Blocks library.",
-   "source": "Naya_Lego-blocks.html",
-   "files": {
-    "css": "blocks/inputs/nl-field/nl-field.css",
-    "specimen": "blocks/inputs/nl-field/specimen.html",
-    "js": null,
-    "readme": "blocks/inputs/nl-field/README.md"
-   },
-   "dependencies": [
-    "tokens.css"
-   ],
-   "states": [
-    ":focus"
-   ],
-   "selectors": [
-    ".nl-field",
-    ".nl-field .req",
-    ".nl-field label",
-    ".nl-field.err .nl-msg",
-    ".nl-field.err .nl-well",
-    ".nl-field.ok .nl-msg",
-    ".nl-field.ok .nl-well",
-    ".nl-field:focus-within .icon",
-    ".nl-field:focus-within .nl-well"
-   ],
-   "score": 8.0
-  },
-  {
-   "id": "nl-search",
-   "type": "inputs",
-   "description": "Search field from Missing Blocks library.",
-   "source": "Naya_Lego-blocks.html",
-   "files": {
-    "css": "blocks/inputs/nl-search/nl-search.css",
-    "specimen": "blocks/inputs/nl-search/specimen.html",
-    "js": null,
-    "readme": "blocks/inputs/nl-search/README.md"
-   },
-   "dependencies": [
-    "tokens.css"
-   ],
-   "states": [
-    ":focus"
-   ],
-   "selectors": [
-    ".nl-search",
-    ".nl-search .nl-well input",
-    ".nl-search:focus-within .icon",
-    ".nl-search:focus-within .nl-well"
-   ],
-   "score": 8.0
-  },
-  {
-   "id": "nl-switch",
-   "type": "toggles",
-   "description": "Toggle switch from Missing Blocks library.",
-   "source": "Naya_Lego-blocks.html",
-   "files": {
-    "css": "blocks/toggles/nl-switch/nl-switch.css",
-    "specimen": "blocks/toggles/nl-switch/specimen.html",
-    "js": null,
-    "readme": "blocks/toggles/nl-switch/README.md"
-   },
-   "dependencies": [
-    "tokens.css"
-   ],
-   "states": [
-    ":focus",
-    ":focus-visible",
-    ":disabled"
-   ],
-   "selectors": [
-    ".nl-switch",
-    ".nl-switch input",
-    ".nl-switch input:checked ~ .nl-knob",
-    ".nl-switch input:checked ~ .nl-track",
-    ".nl-switch input:disabled",
-    ".nl-switch input:disabled ~ .nl-track",
-    ".nl-switch input:focus-visible ~ .nl-track"
-   ],
-   "score": 8.0
-  },
-  {
-   "id": "nl-toggle-row",
-   "type": "toggles",
-   "description": "Toggle row with label from Missing Blocks library.",
-   "source": "Naya_Lego-blocks.html",
-   "files": {
-    "css": "blocks/toggles/nl-toggle-row/nl-toggle-row.css",
-    "specimen": "blocks/toggles/nl-toggle-row/specimen.html",
-    "js": null,
-    "readme": "blocks/toggles/nl-toggle-row/README.md"
-   },
-   "dependencies": [
-    "tokens.css"
-   ],
-   "states": [
-    ":hover"
-   ],
-   "selectors": [
-    ".nl-toggle-row",
-    ".nl-toggle-row .t-label",
-    ".nl-toggle-row .t-sub",
-    ".nl-toggle-row:hover"
-   ],
-   "score": 8.0
-  },
-  {
-   "id": "seg-tab",
-   "type": "tabs",
-   "description": "Segmented tab from room controls.",
-   "source": "Naya_5_Beautiful_Button_set.html",
-   "files": {
-    "css": "blocks/tabs/seg-tab/seg-tab.css",
-    "specimen": "blocks/tabs/seg-tab/specimen.html",
-    "js": "blocks/tabs/seg-tab/seg-tab.js",
-    "readme": "blocks/tabs/seg-tab/README.md"
-   },
-   "dependencies": [
-    "seg-tab.js",
-    "tokens.css"
-   ],
-   "states": [
-    ":hover",
-    ".on"
-   ],
-   "selectors": [
-    ".seg-tab",
-    ".seg-tab, .like-pill, .act-chip, .tog-chip, .day-dot, .send-cta",
-    ".seg-tab.lv-aware, .like-pill.lv-aware, .act-chip.lv-aware, .tog-chip.lv-aware, .day-dot.lv-aware",
-    ".seg-tab.lv-aware::before, .like-pill.lv-aware::before, .act-chip.lv-aware::before,\n.tog-chip.lv-aware::before, .day-dot.lv-aware::before, .send-cta.lv-aware::before",
-    ".seg-tab.on",
-    ".seg-tab.on::after, .like-pill.on::after, .act-chip.on::after, .tog-chip.on::after, .day-dot.on::after",
-    ".seg-tab::before, .like-pill::before, .act-chip::before, .tog-chip::before, .day-dot::before, .send-cta::before",
-    ".seg-tab:hover"
-   ],
-   "score": 8.5
-  },
-  {
-   "id": "nl-modal",
-   "type": "overlays",
-   "description": "Modal dialog from Missing Blocks library.",
-   "source": "Naya_Lego-blocks.html",
-   "files": {
-    "css": "blocks/overlays/nl-modal/nl-modal.css",
-    "specimen": "blocks/overlays/nl-modal/specimen.html",
-    "js": null,
-    "readme": "blocks/overlays/nl-modal/README.md"
-   },
-   "dependencies": [
-    "tokens.css"
-   ],
-   "states": [
-    ":hover"
-   ],
-   "selectors": [
-    ".nl-modal",
-    ".nl-modal .gem",
-    ".nl-modal h3",
-    ".nl-modal p",
-    ".nl-modal-actions",
-    ".nl-modal-back",
-    ".nl-modal-back.open",
-    ".nl-modal-x",
-    ".nl-modal-x:hover"
-   ],
-   "score": 8.0
-  },
-  {
-   "id": "nl-toast",
-   "type": "overlays",
-   "description": "Toast notification from Missing Blocks library.",
-   "source": "Naya_Lego-blocks.html",
-   "files": {
-    "css": "blocks/overlays/nl-toast/nl-toast.css",
-    "specimen": null,
-    "js": null,
-    "readme": "blocks/overlays/nl-toast/README.md"
-   },
-   "dependencies": [
-    "tokens.css"
-   ],
-   "states": [
-    ":hover"
-   ],
-   "selectors": [
-    ".nl-toast",
-    ".nl-toast .t-act",
-    ".nl-toast .t-act:hover",
-    ".nl-toast .t-dot",
-    ".nl-toast-row",
-    ".nl-toast-zone",
-    ".nl-toast.out"
-   ],
-   "score": 8.0
-  },
-  {
-   "id": "nl-sheet",
-   "type": "overlays",
-   "description": "Share sheet from Missing Blocks library.",
-   "source": "Naya_Lego-blocks.html",
-   "files": {
-    "css": "blocks/overlays/nl-sheet/nl-sheet.css",
-    "specimen": "blocks/overlays/nl-sheet/specimen.html",
-    "js": null,
-    "readme": "blocks/overlays/nl-sheet/README.md"
-   },
-   "dependencies": [
-    "tokens.css"
-   ],
-   "states": [],
-   "selectors": [
-    ".nl-sheet",
-    ".nl-sheet .s-sub",
-    ".nl-sheet h3",
-    ".nl-sheet-back",
-    ".nl-sheet-back.open"
-   ],
-   "score": 8.0
-  },
-  {
-   "id": "nl-table",
-   "type": "data",
-   "description": "Data table from Missing Blocks library.",
-   "source": "Naya_Lego-blocks.html",
-   "files": {
-    "css": "blocks/data/nl-table/nl-table.css",
-    "specimen": "blocks/data/nl-table/specimen.html",
-    "js": null,
-    "readme": "blocks/data/nl-table/README.md"
-   },
-   "dependencies": [
-    "tokens.css"
-   ],
-   "states": [
-    ":hover"
-   ],
-   "selectors": [
-    ".nl-table tbody tr",
-    ".nl-table tbody tr:hover",
-    ".nl-table tbody tr:last-child td",
-    ".nl-table td",
-    ".nl-table th",
-    ".nl-table th .arr",
-    ".nl-table th.sorted",
-    ".nl-table th.sorted .arr",
-    ".nl-table th:hover",
-    ".nl-table-wrap"
-   ],
-   "score": 8.0
-  },
-  {
-   "id": "nl-chart",
-   "type": "data",
-   "description": "Chart container from Missing Blocks library.",
-   "source": "Naya_Lego-blocks.html",
-   "files": {
-    "css": "blocks/data/nl-chart/nl-chart.css",
-    "specimen": "blocks/data/nl-chart/specimen.html",
-    "js": null,
-    "readme": "blocks/data/nl-chart/README.md"
-   },
-   "dependencies": [
-    "tokens.css"
-   ],
-   "states": [],
-   "selectors": [
-    ".nl-chart",
-    ".nl-chart .c-sub",
-    ".nl-chart h4"
-   ],
-   "score": 7.5
-  },
-  {
-   "id": "nl-bar",
-   "type": "data",
-   "description": "Bar chart bar from Missing Blocks library.",
-   "source": "Naya_Lego-blocks.html",
-   "files": {
-    "css": "blocks/data/nl-bar/nl-bar.css",
-    "specimen": "blocks/data/nl-bar/specimen.html",
-    "js": null,
-    "readme": "blocks/data/nl-bar/README.md"
-   },
-   "dependencies": [
-    "tokens.css"
-   ],
-   "states": [
-    ":hover"
-   ],
-   "selectors": [
-    ".nl-bar",
-    ".nl-bar:hover .nl-knobp",
-    ".nl-vol .nl-bar"
-   ],
-   "score": 7.5
-  },
-  {
-   "id": "nl-player",
-   "type": "media",
-   "description": "Media player from Missing Blocks library.",
-   "source": "Naya_Lego-blocks.html",
-   "files": {
-    "css": "blocks/media/nl-player/nl-player.css",
-    "specimen": "blocks/media/nl-player/specimen.html",
-    "js": null,
-    "readme": "blocks/media/nl-player/README.md"
-   },
-   "dependencies": [
-    "tokens.css"
-   ],
-   "states": [],
-   "selectors": [
-    ".nl-player",
-    ".nl-player-top"
-   ],
-   "score": 8.0
-  },
-  {
-   "id": "page-shell",
-   "type": "layout",
-   "description": "The page chassis. Full-width black ground, no max-width caps, base reset, focus/selection/motion defaults.",
-   "source": "authored 2026-10-09 for the Smart Blocks library (composition layer)",
-   "files": {
-    "css": "blocks/layout/page-shell/page-shell.css",
-    "specimen": "blocks/layout/page-shell/specimen.html",
-    "readme": "blocks/layout/page-shell/README.md"
-   },
-   "dependencies": [
-    "tokens.css"
-   ],
-   "states": [
-    ":focus-visible",
-    "::selection",
-    "@media (prefers-reduced-motion: reduce)"
-   ],
-   "selectors": [
-    ".naya-page",
-    ".naya-page--edgelight",
-    ".naya-page--edgelight::before",
-    ".naya-page ::selection",
-    ".naya-page :focus-visible",
-    "body:has(.naya-page)"
-   ],
-   "score": 9.0
-  },
-  {
-   "id": "section",
-   "type": "layout",
-   "description": "Content rhythm. Generous fluid vertical spacing, optional glowing hairline divider with diamond jewel break, tint variant.",
-   "source": "authored 2026-10-09 for the Smart Blocks library (composition layer)",
-   "files": {
-    "css": "blocks/layout/section/section.css",
-    "specimen": "blocks/layout/section/specimen.html",
-    "readme": "blocks/layout/section/README.md"
-   },
-   "dependencies": [
-    "tokens.css"
-   ],
-   "states": [
-    "@media (max-width: 480px)"
-   ],
-   "selectors": [
-    ".naya-section",
-    ".naya-section--compact",
-    ".naya-section--roomy",
-    ".naya-section--divided",
-    ".naya-section--divided::before",
-    ".naya-section--jewel::after",
-    ".naya-section--tint"
-   ],
-   "score": 9.0
-  },
-  {
-   "id": "row-grid",
-   "type": "layout",
-   "description": "Responsive layout. Mobile-first grids (2/3/4 col), flex rows, and equal splits \u2014 all collapsing cleanly, pure CSS.",
-   "source": "authored 2026-10-09 for the Smart Blocks library (composition layer)",
-   "files": {
-    "css": "blocks/layout/row-grid/row-grid.css",
-    "specimen": "blocks/layout/row-grid/specimen.html",
-    "readme": "blocks/layout/row-grid/README.md"
-   },
-   "dependencies": [
-    "tokens.css"
-   ],
-   "states": [
-    "@media (min-width: 640px)",
-    "@media (min-width: 900px)",
-    "@media (min-width: 1024px)"
-   ],
-   "selectors": [
-    ".naya-grid",
-    ".naya-grid--2",
-    ".naya-grid--3",
-    ".naya-grid--4",
-    ".naya-grid--tight",
-    ".naya-grid--loose",
-    ".naya-grid--center",
-    ".naya-grid--stretch",
-    ".naya-row",
-    ".naya-row--top",
-    ".naya-row--spread",
-    ".naya-split",
-    ".naya-split--flip"
-   ],
-   "score": 9.0
-  },
-  {
-   "id": "hero",
-   "type": "type",
-   "description": "The page opening. Editorial display headline (voice serif, 40-88px fluid) with purple eyebrow kicker, sub-line, CTA row, staggered entrance.",
-   "source": "authored 2026-10-09 for the Smart Blocks library (composition layer)",
-   "files": {
-    "css": "blocks/type/hero/hero.css",
-    "specimen": "blocks/type/hero/specimen.html",
-    "readme": "blocks/type/hero/README.md"
-   },
-   "dependencies": [
-    "tokens.css"
-   ],
-   "states": [
-    "@media (prefers-reduced-motion: no-preference)"
-   ],
-   "selectors": [
-    ".naya-hero",
-    ".naya-hero--center",
-    ".naya-hero__eyebrow",
-    ".naya-hero__title",
-    ".naya-hero__title .naya-accent",
-    ".naya-hero__sub",
-    ".naya-hero__actions"
-   ],
-   "score": 9.0
-  },
-  {
-   "id": "headline",
-   "type": "type",
-   "description": "Section titles. 24px per the type scale, white, with optional kicker, diamond jewel marker, and sm/lg sizes.",
-   "source": "authored 2026-10-09 for the Smart Blocks library (composition layer)",
-   "files": {
-    "css": "blocks/type/headline/headline.css",
-    "specimen": "blocks/type/headline/specimen.html",
-    "readme": "blocks/type/headline/README.md"
-   },
-   "dependencies": [
-    "tokens.css"
-   ],
-   "states": [
-    "responsive clamp() on --lg"
-   ],
-   "selectors": [
-    ".naya-headline",
-    ".naya-headline__kicker",
-    ".naya-headline--jewel",
-    ".naya-headline--jewel::before",
-    ".naya-headline--sm",
-    ".naya-headline--lg",
-    ".naya-headline-group"
-   ],
-   "score": 9.0
-  },
-  {
-   "id": "body",
-   "type": "type",
-   "description": "Reading text. 18px floor, 1.65 leading, high contrast, 68ch measure. Lead/quiet/small/wide variants, honest link styling.",
-   "source": "authored 2026-10-09 for the Smart Blocks library (composition layer)",
-   "files": {
-    "css": "blocks/type/body/body.css",
-    "specimen": "blocks/type/body/specimen.html",
-    "readme": "blocks/type/body/README.md"
-   },
-   "dependencies": [
-    "tokens.css"
-   ],
-   "states": [
-    ":hover (links)"
-   ],
-   "selectors": [
-    ".naya-body",
-    ".naya-body--quiet",
-    ".naya-body--small",
-    ".naya-body--lead",
-    ".naya-body--wide",
-    ".naya-body a",
-    ".naya-body a:hover",
-    ".naya-body strong",
-    ".naya-body em"
-   ],
-   "score": 9.0
-  },
-  {
-   "id": "nav",
-   "type": "layout",
-   "description": "Top navigation bar. Logo left, links, CTA right. Sticky translucent bar, mobile hamburger. 44px+ touch targets.",
-   "source": "authored 2026-10-09 for the Smart Blocks library (composition layer)",
-   "files": {
-    "css": "blocks/layout/nav/nav.css",
-    "specimen": "blocks/layout/nav/specimen.html",
-    "js": null,
-    "readme": "blocks/layout/nav/README.md"
-   },
-   "dependencies": [
-    "tokens.css"
-   ],
-   "states": [
-    ":hover",
-    ".naya-nav--open",
-    "@media max-width: 860px",
-    "prefers-reduced-motion"
-   ],
-   "selectors": [
-    ".naya-nav",
-    ".naya-nav--open",
-    ".naya-nav--overlay",
-    ".naya-nav--scrolled",
-    ".naya-nav--static",
-    ".naya-nav__brand",
-    ".naya-nav__cta",
-    ".naya-nav__link",
-    ".naya-nav__link--active",
-    ".naya-nav__link--active::after",
-    ".naya-nav__link:hover",
-    ".naya-nav__links",
-    ".naya-nav__mark",
-    ".naya-nav__row",
-    ".naya-nav__toggle",
-    ".naya-nav__toggle:hover",
-    ".naya-nav__wordmark"
-   ],
-   "score": 9.0
-  },
-  {
-   "id": "footer",
-   "type": "layout",
-   "description": "Page footer. Brand lockup, multi-column links, social icons, legal row. Hairline top light, quiet typography.",
-   "source": "authored 2026-10-09 for the Smart Blocks library (composition layer)",
-   "files": {
-    "css": "blocks/layout/footer/footer.css",
-    "specimen": "blocks/layout/footer/specimen.html",
-    "js": null,
-    "readme": "blocks/layout/footer/README.md"
-   },
-   "dependencies": [
-    "tokens.css"
-   ],
-   "states": [
-    ":hover",
-    "@media max-width: 900px",
-    "@media max-width: 560px",
-    "prefers-reduced-motion"
-   ],
-   "selectors": [
-    ".naya-footer",
-    ".naya-footer--compact",
-    ".naya-footer__brand",
-    ".naya-footer__grid",
-    ".naya-footer__group",
-    ".naya-footer__heading",
-    ".naya-footer__heading::before",
-    ".naya-footer__legal",
-    ".naya-footer__list",
-    ".naya-footer__mark",
-    ".naya-footer__mark-row",
-    ".naya-footer__social",
-    ".naya-footer__tagline",
-    ".naya-footer__wordmark"
-   ],
-   "score": 9.0
-  }
- ],
- "generated": "2026-10-09T04:45:00Z",
- "version": "1.2"
+  "blocks": [
+    {
+      "id": "naya-btn",
+      "type": "buttons",
+      "description": "The canonical Naya button. 95% restraint, 5% fire. 7-layer shadow stack, engraved label.",
+      "source": "Naya_4_Design_Element_Set.html",
+      "files": {
+        "css": "blocks/buttons/naya-btn/naya-btn.css",
+        "specimen": "blocks/buttons/naya-btn/specimen.html",
+        "js": "blocks/buttons/naya-btn/naya-btn.js",
+        "readme": "blocks/buttons/naya-btn/README.md"
+      },
+      "dependencies": [
+        "naya-btn.js",
+        "tokens.css"
+      ],
+      "states": [
+        ":hover",
+        ":active",
+        ":focus",
+        ":focus-visible",
+        ":disabled",
+        ".is-"
+      ],
+      "selectors": [
+        ".naya-btn",
+        ".naya-btn .nb-icon",
+        ".naya-btn .nb-label",
+        ".naya-btn > *",
+        ".naya-btn--block",
+        ".naya-btn--danger",
+        ".naya-btn--foundation .nb-copy",
+        ".naya-btn--foundation .nb-jewel",
+        ".naya-btn--foundation .nb-sub",
+        ".naya-btn--foundation .nb-title",
+        ".naya-btn--ghost",
+        ".naya-btn--ghost.is-aware",
+        ".naya-btn--ghost:hover,.naya-btn--ghost:focus-visible",
+        ".naya-btn--icon",
+        ".naya-btn--icon.naya-btn--lg",
+        ".naya-btn--icon.naya-btn--sm",
+        ".naya-btn--lg",
+        ".naya-btn--primary",
+        ".naya-btn--secondary",
+        ".naya-btn--sm"
+      ],
+      "score": 9.0
+    },
+    {
+      "id": "primo",
+      "type": "buttons",
+      "description": "Standard workhorse button. Disciplined, no idle animation. Spectrum theme classes.",
+      "source": "Naya_5_Beautiful_Button_set.html",
+      "files": {
+        "css": "blocks/buttons/primo/primo.css",
+        "specimen": "blocks/buttons/primo/specimen.html",
+        "js": null,
+        "readme": "blocks/buttons/primo/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [
+        ":hover",
+        ":active",
+        ":disabled"
+      ],
+      "selectors": [
+        ".primo",
+        ".primo.theme-blue",
+        ".primo.theme-gold",
+        ".primo.theme-green",
+        ".primo.theme-magenta",
+        ".primo.theme-purple",
+        ".primo:active",
+        ".primo:disabled",
+        ".primo:hover"
+      ],
+      "score": 8.5
+    },
+    {
+      "id": "orbit-btn",
+      "type": "buttons",
+      "description": "Button with conic-gradient ring of light orbiting its perimeter. Law 25 made real.",
+      "source": "Naya_5_Beautiful_Button_set.html",
+      "files": {
+        "css": "blocks/buttons/orbit-btn/orbit-btn.css",
+        "specimen": "blocks/buttons/orbit-btn/specimen.html",
+        "js": null,
+        "readme": "blocks/buttons/orbit-btn/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [
+        ":hover",
+        ":active"
+      ],
+      "selectors": [
+        ".orbit-btn",
+        ".orbit-btn .orbit-label",
+        ".orbit-btn::after",
+        ".orbit-btn::before",
+        ".orbit-btn:active",
+        ".orbit-btn:hover",
+        ".orbit-btn:hover::after",
+        ".orbit-btn:hover::before"
+      ],
+      "score": 9.5
+    },
+    {
+      "id": "living-btn",
+      "type": "buttons",
+      "description": "Hero flagship button. Idle breathe + sheen sweep (strip for Shawn's taste).",
+      "source": "Naya_5_Beautiful_Button_set.html",
+      "files": {
+        "css": "blocks/buttons/living-btn/living-btn.css",
+        "specimen": "blocks/buttons/living-btn/specimen.html",
+        "js": null,
+        "readme": "blocks/buttons/living-btn/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [
+        ":hover",
+        ":active"
+      ],
+      "selectors": [
+        ".living-btn",
+        ".living-btn .btn-glow",
+        ".living-btn .btn-label",
+        ".living-btn .btn-label svg",
+        ".living-btn, .living-btn::after",
+        ".living-btn::after",
+        ".living-btn:active",
+        ".living-btn:hover",
+        ".living-btn:hover .btn-glow",
+        ".living-btn[data-spectrum=\"blue\"] .btn-glow",
+        ".living-btn[data-spectrum=\"blue\"]::after",
+        ".living-btn[data-spectrum=\"blue\"]:hover",
+        ".living-btn[data-spectrum=\"magenta\"] .btn-glow",
+        ".living-btn[data-spectrum=\"magenta\"]:hover",
+        ".living-btn[data-spectrum=\"purple\"] .btn-glow",
+        ".living-btn[data-spectrum=\"purple\"]::after",
+        ".living-btn[data-spectrum=\"purple\"]:hover"
+      ],
+      "score": 7.0
+    },
+    {
+      "id": "lv-btn",
+      "type": "buttons",
+      "description": "The living button. 7-layer stack, cursor sheen, soul core, proximity aware.",
+      "source": "Naya_5_Beautiful_Button_set.html",
+      "files": {
+        "css": "blocks/buttons/lv-btn/lv-btn.css",
+        "specimen": "blocks/buttons/lv-btn/specimen.html",
+        "js": "blocks/buttons/lv-btn/lv-btn.js",
+        "readme": "blocks/buttons/lv-btn/README.md"
+      },
+      "dependencies": [
+        "lv-btn.js",
+        "tokens.css"
+      ],
+      "states": [
+        ":hover",
+        ":active",
+        ":focus",
+        ":focus-visible",
+        ":disabled"
+      ],
+      "selectors": [
+        ".lv-btn",
+        ".lv-btn .lv-label",
+        ".lv-btn .lv-label svg",
+        ".lv-btn, .lv-btn::after",
+        ".lv-btn--danger",
+        ".lv-btn--danger:hover, .lv-btn--danger:focus-visible",
+        ".lv-btn::after",
+        ".lv-btn::before",
+        ".lv-btn:active",
+        ".lv-btn:active::after",
+        ".lv-btn:disabled",
+        ".lv-btn:focus-visible",
+        ".lv-btn:hover, .lv-btn:focus-visible",
+        ".lv-btn:hover::after, .lv-btn:focus-visible::after",
+        ".lv-btn:hover::before, .lv-btn:focus-visible::before",
+        ".lv-wrap.lv-aware .lv-btn",
+        ".lv-wrap.lv-aware .lv-btn::after",
+        ".lv-wrap.lv-aware .lv-btn::before"
+      ],
+      "score": 7.5
+    },
+    {
+      "id": "cx-btn",
+      "type": "buttons",
+      "description": "Essential CTA button. Simpler tier, 1.5px border.",
+      "source": "Naya_5_Beautiful_Button_set.html",
+      "files": {
+        "css": "blocks/buttons/cx-btn/cx-btn.css",
+        "specimen": "blocks/buttons/cx-btn/specimen.html",
+        "js": null,
+        "readme": "blocks/buttons/cx-btn/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [
+        ":hover",
+        ":active"
+      ],
+      "selectors": [
+        ".cx-btn",
+        ".cx-btn:active",
+        ".cx-btn:hover"
+      ],
+      "score": 7.0
+    },
+    {
+      "id": "icon-btn",
+      "type": "buttons",
+      "description": "52px round icon button with SVG icons and aria-pressed fill state.",
+      "source": "Naya_5_Beautiful_Button_set.html",
+      "files": {
+        "css": "blocks/buttons/icon-btn/icon-btn.css",
+        "specimen": "blocks/buttons/icon-btn/specimen.html",
+        "js": null,
+        "readme": "blocks/buttons/icon-btn/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [
+        ":hover",
+        ":active"
+      ],
+      "selectors": [
+        ".icon-btn",
+        ".icon-btn svg",
+        ".icon-btn:active",
+        ".icon-btn:hover",
+        ".icon-btn[aria-pressed=\"true\"]",
+        ".icon-btn[aria-pressed=\"true\"] svg"
+      ],
+      "score": 8.0
+    },
+    {
+      "id": "nl-btn",
+      "type": "buttons",
+      "description": "Generic elevated button from the Missing Blocks library. --tone themable.",
+      "source": "Naya_Lego-blocks.html",
+      "files": {
+        "css": "blocks/buttons/nl-btn/nl-btn.css",
+        "specimen": "blocks/buttons/nl-btn/specimen.html",
+        "js": null,
+        "readme": "blocks/buttons/nl-btn/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [
+        ":hover",
+        ":active"
+      ],
+      "selectors": [
+        ".btn",
+        ".btn .dot",
+        ".btn-ghost",
+        ".btn-ghost:hover",
+        ".btn:active",
+        ".btn:hover"
+      ],
+      "score": 8.0
+    },
+    {
+      "id": "nl-btn-ghost",
+      "type": "buttons",
+      "description": "Ghost variant button. Minimal chrome.",
+      "source": "Naya_Lego-blocks.html",
+      "files": {
+        "css": "blocks/buttons/nl-btn-ghost/nl-btn-ghost.css",
+        "specimen": "blocks/buttons/nl-btn-ghost/specimen.html",
+        "js": null,
+        "readme": "blocks/buttons/nl-btn-ghost/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [
+        ":hover"
+      ],
+      "selectors": [
+        ".btn-ghost",
+        ".btn-ghost:hover"
+      ],
+      "score": 7.5
+    },
+    {
+      "id": "nl-iconbtn",
+      "type": "buttons",
+      "description": "Icon button from Missing Blocks library.",
+      "source": "Naya_Lego-blocks.html",
+      "files": {
+        "css": "blocks/buttons/nl-iconbtn/nl-iconbtn.css",
+        "specimen": "blocks/buttons/nl-iconbtn/specimen.html",
+        "js": null,
+        "readme": "blocks/buttons/nl-iconbtn/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [
+        ":hover",
+        ":active"
+      ],
+      "selectors": [
+        ".nl-iconbtn",
+        ".nl-iconbtn.liked",
+        ".nl-iconbtn.saved",
+        ".nl-iconbtn:active",
+        ".nl-iconbtn:hover"
+      ],
+      "score": 8.0
+    },
+    {
+      "id": "nl-playbtn",
+      "type": "buttons",
+      "description": "Play button from Missing Blocks library.",
+      "source": "Naya_Lego-blocks.html",
+      "files": {
+        "css": "blocks/buttons/nl-playbtn/nl-playbtn.css",
+        "specimen": "blocks/buttons/nl-playbtn/specimen.html",
+        "js": null,
+        "readme": "blocks/buttons/nl-playbtn/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [
+        ":hover",
+        ":active"
+      ],
+      "selectors": [
+        ".nl-playbtn",
+        ".nl-playbtn .ring",
+        ".nl-playbtn.playing .ring",
+        ".nl-playbtn:active",
+        ".nl-playbtn:hover"
+      ],
+      "score": 8.0
+    },
+    {
+      "id": "orb",
+      "type": "orbs",
+      "description": "Sphere of light. Triple radial-gradient body, orbiting conic ring, light pool beneath.",
+      "source": "Naya_5_Jewel_Library.html",
+      "files": {
+        "css": "blocks/orbs/orb/orb.css",
+        "specimen": "blocks/orbs/orb/specimen.html",
+        "js": null,
+        "readme": "blocks/orbs/orb/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [
+        ":hover",
+        ":active",
+        ":focus",
+        ":focus-visible"
+      ],
+      "selectors": [
+        ".orb",
+        ".orb, .orb::before",
+        ".orb--black",
+        ".orb--btn:active",
+        ".orb--btn:focus-visible",
+        ".orb--glyph",
+        ".orb--hero",
+        ".orb--hero::after",
+        ".orb--hero::before",
+        ".orb--icon",
+        ".orb--icon::after",
+        ".orb--icon::before",
+        ".orb--sm",
+        ".orb--sm::after",
+        ".orb--sm::before",
+        ".orb--twin::after",
+        ".orb--xs",
+        ".orb--xs::after",
+        ".orb--xs::before",
+        ".orb-context"
+      ],
+      "score": 9.0
+    },
+    {
+      "id": "mini-orb",
+      "type": "orbs",
+      "description": "Atomic luminous mark. One class, one variable. Most copy-pasteable element.",
+      "source": "Naya_5_Jewel_Library.html",
+      "files": {
+        "css": "blocks/orbs/mini-orb/mini-orb.css",
+        "specimen": "blocks/orbs/mini-orb/specimen.html",
+        "js": null,
+        "readme": "blocks/orbs/mini-orb/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [],
+      "selectors": [
+        ".mini-orb"
+      ],
+      "score": 8.5
+    },
+    {
+      "id": "nav-orb",
+      "type": "orbs",
+      "description": "40px navigation orb with conic ring.",
+      "source": "Naya_Lego-blocks.html",
+      "files": {
+        "css": "blocks/orbs/nav-orb/nav-orb.css",
+        "specimen": "blocks/orbs/nav-orb/specimen.html",
+        "js": null,
+        "readme": "blocks/orbs/nav-orb/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [],
+      "selectors": [
+        ".nav-orb"
+      ],
+      "score": 8.0
+    },
+    {
+      "id": "board",
+      "type": "boards",
+      "description": "Intelligent board container with identity spine. REQUIRED: set --ic identity color.",
+      "source": "Naya_4_Design_Element_Set.html",
+      "files": {
+        "css": "blocks/boards/board/board.css",
+        "specimen": "blocks/boards/board/specimen.html",
+        "js": null,
+        "readme": "blocks/boards/board/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [
+        ":hover"
+      ],
+      "selectors": [
+        ".board",
+        ".board .corner",
+        ".board h3",
+        ".board::after",
+        ".board::before",
+        ".board:hover"
+      ],
+      "score": 8.5
+    },
+    {
+      "id": "board-tone",
+      "type": "boards",
+      "description": "Board with 5px glowing tone spine.",
+      "source": "Naya_5__Epic_Elements_-_Lego_pieces.html",
+      "files": {
+        "css": "blocks/boards/board-tone/board-tone.css",
+        "specimen": "blocks/boards/board-tone/specimen.html",
+        "js": null,
+        "readme": "blocks/boards/board-tone/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [
+        ":hover"
+      ],
+      "selectors": [
+        ".board-tone",
+        ".board-tone .board-content",
+        ".board-tone .board-name",
+        ".board-tone .board-sub",
+        ".board-tone .board-tag",
+        ".board-tone::after",
+        ".board-tone::before",
+        ".board-tone:hover"
+      ],
+      "score": 8.5
+    },
+    {
+      "id": "demo-board",
+      "type": "boards",
+      "description": "Board with 1px light beam across the top edge.",
+      "source": "Naya_5__Epic_Elements_-_Lego_pieces.html",
+      "files": {
+        "css": "blocks/boards/demo-board/demo-board.css",
+        "specimen": "blocks/boards/demo-board/specimen.html",
+        "js": null,
+        "readme": "blocks/boards/demo-board/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [],
+      "selectors": [
+        ".demo-board",
+        ".demo-board code"
+      ],
+      "score": 8.0
+    },
+    {
+      "id": "stage",
+      "type": "boards",
+      "description": "Demo stage \u2014 elevated container for showcasing components.",
+      "source": "Naya_Lego-blocks.html",
+      "files": {
+        "css": "blocks/boards/stage/stage.css",
+        "specimen": "blocks/boards/stage/specimen.html",
+        "js": null,
+        "readme": "blocks/boards/stage/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [],
+      "selectors": [
+        ".stage",
+        ".stage-label",
+        ".stage:before"
+      ],
+      "score": 8.0
+    },
+    {
+      "id": "nl-ccard",
+      "type": "boards",
+      "description": "Content card from Missing Blocks library.",
+      "source": "Naya_Lego-blocks.html",
+      "files": {
+        "css": "blocks/boards/nl-ccard/nl-ccard.css",
+        "specimen": "blocks/boards/nl-ccard/specimen.html",
+        "js": null,
+        "readme": "blocks/boards/nl-ccard/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [
+        ":hover"
+      ],
+      "selectors": [
+        ".nl-ccard",
+        ".nl-ccard:hover",
+        ".nl-ccard:hover .nl-cmedia:after"
+      ],
+      "score": 8.0
+    },
+    {
+      "id": "gem-bullet",
+      "type": "jewels",
+      "description": "12px diamond bullet. White-to-tone-to-dark gradient, glowing.",
+      "source": "Naya_5_Jewel_Library.html",
+      "files": {
+        "css": "blocks/jewels/gem-bullet/gem-bullet.css",
+        "specimen": "blocks/jewels/gem-bullet/specimen.html",
+        "js": null,
+        "readme": "blocks/jewels/gem-bullet/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [],
+      "selectors": [
+        ".gem-bullet"
+      ],
+      "score": 8.5
+    },
+    {
+      "id": "jw",
+      "type": "jewels",
+      "description": "Jewel atom from Naya Forest. Reusable across bullets, corners, states.",
+      "source": "Naya_4_Design_Element_Set.html",
+      "files": {
+        "css": "blocks/jewels/jw/jw.css",
+        "specimen": "blocks/jewels/jw/specimen.html",
+        "js": null,
+        "readme": "blocks/jewels/jw/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [],
+      "selectors": [
+        ".gate .jw",
+        ".hbul .jw",
+        ".jw",
+        ".laws-line .jw",
+        ".pred .jw",
+        ".tongue ul li .jw"
+      ],
+      "score": 8.5
+    },
+    {
+      "id": "nl-field",
+      "type": "inputs",
+      "description": "Text input field from Missing Blocks library.",
+      "source": "Naya_Lego-blocks.html",
+      "files": {
+        "css": "blocks/inputs/nl-field/nl-field.css",
+        "specimen": "blocks/inputs/nl-field/specimen.html",
+        "js": null,
+        "readme": "blocks/inputs/nl-field/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [
+        ":focus"
+      ],
+      "selectors": [
+        ".nl-field",
+        ".nl-field .req",
+        ".nl-field label",
+        ".nl-field.err .nl-msg",
+        ".nl-field.err .nl-well",
+        ".nl-field.ok .nl-msg",
+        ".nl-field.ok .nl-well",
+        ".nl-field:focus-within .icon",
+        ".nl-field:focus-within .nl-well"
+      ],
+      "score": 8.0
+    },
+    {
+      "id": "nl-search",
+      "type": "inputs",
+      "description": "Search field from Missing Blocks library.",
+      "source": "Naya_Lego-blocks.html",
+      "files": {
+        "css": "blocks/inputs/nl-search/nl-search.css",
+        "specimen": "blocks/inputs/nl-search/specimen.html",
+        "js": null,
+        "readme": "blocks/inputs/nl-search/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [
+        ":focus"
+      ],
+      "selectors": [
+        ".nl-search",
+        ".nl-search .nl-well input",
+        ".nl-search:focus-within .icon",
+        ".nl-search:focus-within .nl-well"
+      ],
+      "score": 8.0
+    },
+    {
+      "id": "nl-switch",
+      "type": "toggles",
+      "description": "Toggle switch from Missing Blocks library.",
+      "source": "Naya_Lego-blocks.html",
+      "files": {
+        "css": "blocks/toggles/nl-switch/nl-switch.css",
+        "specimen": "blocks/toggles/nl-switch/specimen.html",
+        "js": null,
+        "readme": "blocks/toggles/nl-switch/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [
+        ":focus",
+        ":focus-visible",
+        ":disabled"
+      ],
+      "selectors": [
+        ".nl-switch",
+        ".nl-switch input",
+        ".nl-switch input:checked ~ .nl-knob",
+        ".nl-switch input:checked ~ .nl-track",
+        ".nl-switch input:disabled",
+        ".nl-switch input:disabled ~ .nl-track",
+        ".nl-switch input:focus-visible ~ .nl-track"
+      ],
+      "score": 8.0
+    },
+    {
+      "id": "nl-toggle-row",
+      "type": "toggles",
+      "description": "Toggle row with label from Missing Blocks library.",
+      "source": "Naya_Lego-blocks.html",
+      "files": {
+        "css": "blocks/toggles/nl-toggle-row/nl-toggle-row.css",
+        "specimen": "blocks/toggles/nl-toggle-row/specimen.html",
+        "js": null,
+        "readme": "blocks/toggles/nl-toggle-row/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [
+        ":hover"
+      ],
+      "selectors": [
+        ".nl-toggle-row",
+        ".nl-toggle-row .t-label",
+        ".nl-toggle-row .t-sub",
+        ".nl-toggle-row:hover"
+      ],
+      "score": 8.0
+    },
+    {
+      "id": "seg-tab",
+      "type": "tabs",
+      "description": "Segmented tab from room controls.",
+      "source": "Naya_5_Beautiful_Button_set.html",
+      "files": {
+        "css": "blocks/tabs/seg-tab/seg-tab.css",
+        "specimen": "blocks/tabs/seg-tab/specimen.html",
+        "js": "blocks/tabs/seg-tab/seg-tab.js",
+        "readme": "blocks/tabs/seg-tab/README.md"
+      },
+      "dependencies": [
+        "seg-tab.js",
+        "tokens.css"
+      ],
+      "states": [
+        ":hover",
+        ".on"
+      ],
+      "selectors": [
+        ".seg-tab",
+        ".seg-tab, .like-pill, .act-chip, .tog-chip, .day-dot, .send-cta",
+        ".seg-tab.lv-aware, .like-pill.lv-aware, .act-chip.lv-aware, .tog-chip.lv-aware, .day-dot.lv-aware",
+        ".seg-tab.lv-aware::before, .like-pill.lv-aware::before, .act-chip.lv-aware::before,\n.tog-chip.lv-aware::before, .day-dot.lv-aware::before, .send-cta.lv-aware::before",
+        ".seg-tab.on",
+        ".seg-tab.on::after, .like-pill.on::after, .act-chip.on::after, .tog-chip.on::after, .day-dot.on::after",
+        ".seg-tab::before, .like-pill::before, .act-chip::before, .tog-chip::before, .day-dot::before, .send-cta::before",
+        ".seg-tab:hover"
+      ],
+      "score": 8.5
+    },
+    {
+      "id": "nl-modal",
+      "type": "overlays",
+      "description": "Modal dialog from Missing Blocks library.",
+      "source": "Naya_Lego-blocks.html",
+      "files": {
+        "css": "blocks/overlays/nl-modal/nl-modal.css",
+        "specimen": "blocks/overlays/nl-modal/specimen.html",
+        "js": null,
+        "readme": "blocks/overlays/nl-modal/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [
+        ":hover"
+      ],
+      "selectors": [
+        ".nl-modal",
+        ".nl-modal .gem",
+        ".nl-modal h3",
+        ".nl-modal p",
+        ".nl-modal-actions",
+        ".nl-modal-back",
+        ".nl-modal-back.open",
+        ".nl-modal-x",
+        ".nl-modal-x:hover"
+      ],
+      "score": 8.0
+    },
+    {
+      "id": "nl-toast",
+      "type": "overlays",
+      "description": "Toast notification from Missing Blocks library.",
+      "source": "Naya_Lego-blocks.html",
+      "files": {
+        "css": "blocks/overlays/nl-toast/nl-toast.css",
+        "specimen": null,
+        "js": null,
+        "readme": "blocks/overlays/nl-toast/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [
+        ":hover"
+      ],
+      "selectors": [
+        ".nl-toast",
+        ".nl-toast .t-act",
+        ".nl-toast .t-act:hover",
+        ".nl-toast .t-dot",
+        ".nl-toast-row",
+        ".nl-toast-zone",
+        ".nl-toast.out"
+      ],
+      "score": 8.0
+    },
+    {
+      "id": "nl-sheet",
+      "type": "overlays",
+      "description": "Share sheet from Missing Blocks library.",
+      "source": "Naya_Lego-blocks.html",
+      "files": {
+        "css": "blocks/overlays/nl-sheet/nl-sheet.css",
+        "specimen": "blocks/overlays/nl-sheet/specimen.html",
+        "js": null,
+        "readme": "blocks/overlays/nl-sheet/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [],
+      "selectors": [
+        ".nl-sheet",
+        ".nl-sheet .s-sub",
+        ".nl-sheet h3",
+        ".nl-sheet-back",
+        ".nl-sheet-back.open"
+      ],
+      "score": 8.0
+    },
+    {
+      "id": "nl-table",
+      "type": "data",
+      "description": "Data table from Missing Blocks library.",
+      "source": "Naya_Lego-blocks.html",
+      "files": {
+        "css": "blocks/data/nl-table/nl-table.css",
+        "specimen": "blocks/data/nl-table/specimen.html",
+        "js": null,
+        "readme": "blocks/data/nl-table/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [
+        ":hover"
+      ],
+      "selectors": [
+        ".nl-table tbody tr",
+        ".nl-table tbody tr:hover",
+        ".nl-table tbody tr:last-child td",
+        ".nl-table td",
+        ".nl-table th",
+        ".nl-table th .arr",
+        ".nl-table th.sorted",
+        ".nl-table th.sorted .arr",
+        ".nl-table th:hover",
+        ".nl-table-wrap"
+      ],
+      "score": 8.0
+    },
+    {
+      "id": "nl-chart",
+      "type": "data",
+      "description": "Chart container from Missing Blocks library.",
+      "source": "Naya_Lego-blocks.html",
+      "files": {
+        "css": "blocks/data/nl-chart/nl-chart.css",
+        "specimen": "blocks/data/nl-chart/specimen.html",
+        "js": null,
+        "readme": "blocks/data/nl-chart/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [],
+      "selectors": [
+        ".nl-chart",
+        ".nl-chart .c-sub",
+        ".nl-chart h4"
+      ],
+      "score": 7.5
+    },
+    {
+      "id": "nl-bar",
+      "type": "data",
+      "description": "Bar chart bar from Missing Blocks library.",
+      "source": "Naya_Lego-blocks.html",
+      "files": {
+        "css": "blocks/data/nl-bar/nl-bar.css",
+        "specimen": "blocks/data/nl-bar/specimen.html",
+        "js": null,
+        "readme": "blocks/data/nl-bar/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [
+        ":hover"
+      ],
+      "selectors": [
+        ".nl-bar",
+        ".nl-bar:hover .nl-knobp",
+        ".nl-vol .nl-bar"
+      ],
+      "score": 7.5
+    },
+    {
+      "id": "nl-player",
+      "type": "media",
+      "description": "Media player from Missing Blocks library.",
+      "source": "Naya_Lego-blocks.html",
+      "files": {
+        "css": "blocks/media/nl-player/nl-player.css",
+        "specimen": "blocks/media/nl-player/specimen.html",
+        "js": null,
+        "readme": "blocks/media/nl-player/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [],
+      "selectors": [
+        ".nl-player",
+        ".nl-player-top"
+      ],
+      "score": 8.0
+    },
+    {
+      "id": "page-shell",
+      "type": "layout",
+      "description": "The page chassis. Full-width black ground, no max-width caps, base reset, focus/selection/motion defaults.",
+      "source": "authored 2026-10-09 for the Smart Blocks library (composition layer)",
+      "files": {
+        "css": "blocks/layout/page-shell/page-shell.css",
+        "specimen": "blocks/layout/page-shell/specimen.html",
+        "readme": "blocks/layout/page-shell/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [
+        ":focus-visible",
+        "::selection",
+        "@media (prefers-reduced-motion: reduce)"
+      ],
+      "selectors": [
+        ".naya-page",
+        ".naya-page--edgelight",
+        ".naya-page--edgelight::before",
+        ".naya-page ::selection",
+        ".naya-page :focus-visible",
+        "body:has(.naya-page)"
+      ],
+      "score": 9.0
+    },
+    {
+      "id": "section",
+      "type": "layout",
+      "description": "Content rhythm. Generous fluid vertical spacing, optional glowing hairline divider with diamond jewel break, tint variant.",
+      "source": "authored 2026-10-09 for the Smart Blocks library (composition layer)",
+      "files": {
+        "css": "blocks/layout/section/section.css",
+        "specimen": "blocks/layout/section/specimen.html",
+        "readme": "blocks/layout/section/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [
+        "@media (max-width: 480px)"
+      ],
+      "selectors": [
+        ".naya-section",
+        ".naya-section--compact",
+        ".naya-section--roomy",
+        ".naya-section--divided",
+        ".naya-section--divided::before",
+        ".naya-section--jewel::after",
+        ".naya-section--tint"
+      ],
+      "score": 9.0
+    },
+    {
+      "id": "row-grid",
+      "type": "layout",
+      "description": "Responsive layout. Mobile-first grids (2/3/4 col), flex rows, and equal splits \u2014 all collapsing cleanly, pure CSS.",
+      "source": "authored 2026-10-09 for the Smart Blocks library (composition layer)",
+      "files": {
+        "css": "blocks/layout/row-grid/row-grid.css",
+        "specimen": "blocks/layout/row-grid/specimen.html",
+        "readme": "blocks/layout/row-grid/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [
+        "@media (min-width: 640px)",
+        "@media (min-width: 900px)",
+        "@media (min-width: 1024px)"
+      ],
+      "selectors": [
+        ".naya-grid",
+        ".naya-grid--2",
+        ".naya-grid--3",
+        ".naya-grid--4",
+        ".naya-grid--tight",
+        ".naya-grid--loose",
+        ".naya-grid--center",
+        ".naya-grid--stretch",
+        ".naya-row",
+        ".naya-row--top",
+        ".naya-row--spread",
+        ".naya-split",
+        ".naya-split--flip"
+      ],
+      "score": 9.0
+    },
+    {
+      "id": "hero",
+      "type": "type",
+      "description": "The page opening. Editorial display headline (voice serif, 40-88px fluid) with purple eyebrow kicker, sub-line, CTA row, staggered entrance.",
+      "source": "authored 2026-10-09 for the Smart Blocks library (composition layer)",
+      "files": {
+        "css": "blocks/type/hero/hero.css",
+        "specimen": "blocks/type/hero/specimen.html",
+        "readme": "blocks/type/hero/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [
+        "@media (prefers-reduced-motion: no-preference)"
+      ],
+      "selectors": [
+        ".naya-hero",
+        ".naya-hero--center",
+        ".naya-hero__eyebrow",
+        ".naya-hero__title",
+        ".naya-hero__title .naya-accent",
+        ".naya-hero__sub",
+        ".naya-hero__actions"
+      ],
+      "score": 9.0
+    },
+    {
+      "id": "headline",
+      "type": "type",
+      "description": "Section titles. 24px per the type scale, white, with optional kicker, diamond jewel marker, and sm/lg sizes.",
+      "source": "authored 2026-10-09 for the Smart Blocks library (composition layer)",
+      "files": {
+        "css": "blocks/type/headline/headline.css",
+        "specimen": "blocks/type/headline/specimen.html",
+        "readme": "blocks/type/headline/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [
+        "responsive clamp() on --lg"
+      ],
+      "selectors": [
+        ".naya-headline",
+        ".naya-headline__kicker",
+        ".naya-headline--jewel",
+        ".naya-headline--jewel::before",
+        ".naya-headline--sm",
+        ".naya-headline--lg",
+        ".naya-headline-group"
+      ],
+      "score": 9.0
+    },
+    {
+      "id": "body",
+      "type": "type",
+      "description": "Reading text. 18px floor, 1.65 leading, high contrast, 68ch measure. Lead/quiet/small/wide variants, honest link styling.",
+      "source": "authored 2026-10-09 for the Smart Blocks library (composition layer)",
+      "files": {
+        "css": "blocks/type/body/body.css",
+        "specimen": "blocks/type/body/specimen.html",
+        "readme": "blocks/type/body/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [
+        ":hover (links)"
+      ],
+      "selectors": [
+        ".naya-body",
+        ".naya-body--quiet",
+        ".naya-body--small",
+        ".naya-body--lead",
+        ".naya-body--wide",
+        ".naya-body a",
+        ".naya-body a:hover",
+        ".naya-body strong",
+        ".naya-body em"
+      ],
+      "score": 9.0
+    },
+    {
+      "id": "nav",
+      "type": "layout",
+      "description": "Top navigation bar. Logo left, links, CTA right. Sticky translucent bar, mobile hamburger. 44px+ touch targets.",
+      "source": "authored 2026-10-09 for the Smart Blocks library (composition layer)",
+      "files": {
+        "css": "blocks/layout/nav/nav.css",
+        "specimen": "blocks/layout/nav/specimen.html",
+        "js": null,
+        "readme": "blocks/layout/nav/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [
+        ":hover",
+        ".naya-nav--open",
+        "@media max-width: 860px",
+        "prefers-reduced-motion"
+      ],
+      "selectors": [
+        ".naya-nav",
+        ".naya-nav--open",
+        ".naya-nav--overlay",
+        ".naya-nav--scrolled",
+        ".naya-nav--static",
+        ".naya-nav__brand",
+        ".naya-nav__cta",
+        ".naya-nav__link",
+        ".naya-nav__link--active",
+        ".naya-nav__link--active::after",
+        ".naya-nav__link:hover",
+        ".naya-nav__links",
+        ".naya-nav__mark",
+        ".naya-nav__row",
+        ".naya-nav__toggle",
+        ".naya-nav__toggle:hover",
+        ".naya-nav__wordmark"
+      ],
+      "score": 9.0
+    },
+    {
+      "id": "footer",
+      "type": "layout",
+      "description": "Page footer. Brand lockup, multi-column links, social icons, legal row. Hairline top light, quiet typography.",
+      "source": "authored 2026-10-09 for the Smart Blocks library (composition layer)",
+      "files": {
+        "css": "blocks/layout/footer/footer.css",
+        "specimen": "blocks/layout/footer/specimen.html",
+        "js": null,
+        "readme": "blocks/layout/footer/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [
+        ":hover",
+        "@media max-width: 900px",
+        "@media max-width: 560px",
+        "prefers-reduced-motion"
+      ],
+      "selectors": [
+        ".naya-footer",
+        ".naya-footer--compact",
+        ".naya-footer__brand",
+        ".naya-footer__grid",
+        ".naya-footer__group",
+        ".naya-footer__heading",
+        ".naya-footer__heading::before",
+        ".naya-footer__legal",
+        ".naya-footer__list",
+        ".naya-footer__mark",
+        ".naya-footer__mark-row",
+        ".naya-footer__social",
+        ".naya-footer__tagline",
+        ".naya-footer__wordmark"
+      ],
+      "score": 9.0
+    },
+    {
+      "id": "pulse-orb",
+      "type": "graphs",
+      "description": "A living orb that breathes with the data \u2014 value drives diameter and glow.",
+      "source": "authored 2026-10-09 (Smart Graphs visual language)",
+      "files": {
+        "css": "blocks/graphs/pulse-orb/pulse-orb.css",
+        "specimen": "blocks/graphs/pulse-orb/specimen.html",
+        "js": null,
+        "readme": "blocks/graphs/pulse-orb/README.md"
+      },
+      "dependencies": [
+        "tokens.css",
+        "jewels/gem-bullet"
+      ],
+      "states": [
+        ":hover",
+        ".lit",
+        "@media (prefers-reduced-motion: reduce)"
+      ],
+      "selectors": [
+        ".sg-card",
+        ".sg-card .c-sub",
+        ".pulse-orb-stage",
+        ".pulse-orb",
+        ".pulse-orb .po-val",
+        ".pulse-orb .po-num",
+        ".pulse-orb .po-label",
+        ".sg-delta",
+        ".sg-delta .gem-bullet",
+        ".sg-foot"
+      ],
+      "score": 9.0
+    },
+    {
+      "id": "jewel-pillar",
+      "type": "graphs",
+      "description": "Jeweled series pillars \u2014 faceted cap, specular edge, glowing base, staggered rise.",
+      "source": "authored 2026-10-09 (Smart Graphs visual language)",
+      "files": {
+        "css": "blocks/graphs/jewel-pillar/jewel-pillar.css",
+        "specimen": "blocks/graphs/jewel-pillar/specimen.html",
+        "js": null,
+        "readme": "blocks/graphs/jewel-pillar/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [
+        ":hover",
+        ".lit",
+        "@media (prefers-reduced-motion: reduce)"
+      ],
+      "selectors": [
+        ".sg-card",
+        ".sg-card .c-sub",
+        ".jp-track",
+        ".jp-col",
+        ".jp-val",
+        ".jp-pillar",
+        ".jp-cap",
+        ".sg-legend"
+      ],
+      "score": 9.0
+    },
+    {
+      "id": "spectrum-flow",
+      "type": "graphs",
+      "description": "Layered spectrum bands \u2014 composition of a whole flowing like a river over time.",
+      "source": "authored 2026-10-09 (Smart Graphs visual language)",
+      "files": {
+        "css": "blocks/graphs/spectrum-flow/spectrum-flow.css",
+        "specimen": "blocks/graphs/spectrum-flow/specimen.html",
+        "js": null,
+        "readme": "blocks/graphs/spectrum-flow/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [
+        ":hover",
+        ".lit",
+        "@media (prefers-reduced-motion: reduce)"
+      ],
+      "selectors": [
+        ".sg-card",
+        ".sg-card .c-sub",
+        ".sf-river",
+        ".sf-bands",
+        ".sf-band",
+        ".sf-grid",
+        ".sf-axis",
+        ".sg-legend"
+      ],
+      "score": 9.0
+    },
+    {
+      "id": "constellation",
+      "type": "graphs",
+      "description": "Constellation map for networks \u2014 glowing nodes, weight-sized, light-arc relationships.",
+      "source": "authored 2026-10-09 (Smart Graphs visual language)",
+      "files": {
+        "css": "blocks/graphs/constellation/constellation.css",
+        "specimen": "blocks/graphs/constellation/specimen.html",
+        "js": null,
+        "readme": "blocks/graphs/constellation/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [
+        ":hover",
+        ".lit",
+        "@media (prefers-reduced-motion: reduce)"
+      ],
+      "selectors": [
+        ".sg-card",
+        ".sg-card .c-sub",
+        ".sc-sky",
+        ".sc-arc",
+        ".sc-node",
+        ".sc-tag",
+        ".sc-hub",
+        ".sc-star",
+        ".sg-legend"
+      ],
+      "score": 9.0
+    },
+    {
+      "id": "pulse-rings",
+      "type": "graphs",
+      "description": "The network heartbeat \u2014 concentric sonar rings, pace carries urgency, live total at center.",
+      "source": "authored 2026-10-09 (Smart Graphs visual language)",
+      "files": {
+        "css": "blocks/graphs/pulse-rings/pulse-rings.css",
+        "specimen": "blocks/graphs/pulse-rings/specimen.html",
+        "js": null,
+        "readme": "blocks/graphs/pulse-rings/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [
+        ":hover",
+        ".lit",
+        "@media (prefers-reduced-motion: reduce)"
+      ],
+      "selectors": [
+        ".sg-card",
+        ".sg-card .c-sub",
+        ".pr-stage",
+        ".pr-ring",
+        ".pr-core",
+        ".pr-core .pr-num",
+        ".pr-core .pr-label",
+        ".pr-keys",
+        ".sg-foot"
+      ],
+      "score": 9.0
+    },
+    {
+      "id": "living-counter",
+      "type": "graphs",
+      "description": "The number, alive \u2014 count-up tabular numerals, jewel delta, sparkline whisper.",
+      "source": "authored 2026-10-09 (Smart Graphs visual language)",
+      "files": {
+        "css": "blocks/graphs/living-counter/living-counter.css",
+        "specimen": "blocks/graphs/living-counter/specimen.html",
+        "js": "blocks/graphs/living-counter/living-counter.js",
+        "readme": "blocks/graphs/living-counter/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [
+        ":hover",
+        ".lit",
+        "@media (prefers-reduced-motion: reduce)"
+      ],
+      "selectors": [
+        ".sg-card",
+        ".sg-card .c-sub",
+        ".lc-num",
+        ".lc-row",
+        ".lc-delta",
+        ".lc-delta .gem",
+        ".lc-per",
+        ".lc-spark",
+        ".sg-foot"
+      ],
+      "score": 9.0
+    },
+    {
+      "id": "orbit-dial",
+      "type": "graphs",
+      "description": "The score set in orbit \u2014 jewel ring gauge 0-10, the Calculator's face.",
+      "source": "authored 2026-10-09 (Smart Graphs visual language)",
+      "files": {
+        "css": "blocks/graphs/orbit-dial/orbit-dial.css",
+        "specimen": "blocks/graphs/orbit-dial/specimen.html",
+        "js": null,
+        "readme": "blocks/graphs/orbit-dial/README.md"
+      },
+      "dependencies": [
+        "tokens.css"
+      ],
+      "states": [
+        ":hover",
+        ".lit",
+        "@media (prefers-reduced-motion: reduce)"
+      ],
+      "selectors": [
+        ".sg-card",
+        ".sg-card .c-sub",
+        ".od-stage",
+        ".od-dial",
+        ".od-arc",
+        ".od-ticks",
+        ".od-center",
+        ".od-num",
+        ".od-cap",
+        ".od-scale",
+        ".sg-foot"
+      ],
+      "score": 9.0
+    }
+  ],
+  "generated": "2026-10-09T05:43:17Z",
+  "version": "1.3"
 }
