@@ -33,9 +33,17 @@ Exit 0 = PASS (≥7), 1 = FAIL (<7), 2 = tool error.
 
 1. **Block usage** — parses the HTML, matches class attributes against the
    catalog's 91 block selector sets. Reports blocks used + categories covered.
-2. **Custom CSS** — extracts `<style>` rules and `style=""` attributes. For each
-   custom class, infers the job from its name (button, card, modal, …) and checks
-   the catalog: does an official block already do this job?
+2. **Custom CSS** — extracts `<style>` rules and `style=""` attributes.
+   The perimeter is closed by *capability*, not keyword: CSS the grader can
+   deterministically see is read and graded like `<style>` — relative local
+   `<link rel=stylesheet>` files, in-document `data:text/css` URIs, and
+   `<iframe srcdoc="...">` documents (parsed recursively, srcdoc-in-srcdoc
+   included). What it cannot see — remote URLs, missing files, absolute
+   paths, bad schemes, `@import`s, srcdoc nested past the depth cap — is
+   recorded at the delivery boundary and costs one bounded −1.0
+   (duplication UNKNOWN, never "clean"). The grader never touches the network.
+   For each custom class, infers the job from its name (button, card, modal, …)
+   and checks the catalog: does an official block already do this job?
 3. **Flags** — `✗ .my-button (job: button) -> use: naya-btn, primo, cx-btn`.
    Only flagged when the page doesn't already use a covering block.
 4. **Score** — starts at 10; −1.5 per duplicating component (cap −6); −3 for

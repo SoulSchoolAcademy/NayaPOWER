@@ -11,6 +11,8 @@ The law (from naya-design-catalog.json):
 What this checks (graded 0-10 compliance score):
   1. BLOCK USAGE — which official block selectors appear in the HTML
   2. CUSTOM CSS — <style> rules and inline styles that duplicate official blocks
+     (including <style>/<link>/inline styles nested inside <iframe srcdoc>,
+     parsed recursively — the third perimeter of the class)
   3. SCORE — explainable, every deduction named
 
 What this does NOT do (see Naya 5's tools/design_gate.py for the binary gate):
@@ -34,6 +36,7 @@ import re
 import sys
 import os
 import base64
+import hashlib
 import urllib.parse
 from html.parser import HTMLParser
 from collections import defaultdict
@@ -81,8 +84,13 @@ def load_catalog(path=None):
 # HTML parsing — collect classes used, <style> CSS, inline styles
 # ---------------------------------------------------------------------------
 
+# srcdoc nesting cap: deep enough for any honest page (2+), bounded so a
+# pathological document cannot recurse without limit. Total by construction.
+_MAX_SRCDOC_DEPTH = 8
+
+
 class PageParser(HTMLParser):
-    def __init__(self):
+    def __init__(self, _srcdoc_depth=0):
         super().__init__(convert_charrefs=True)
         self.classes_used = defaultdict(int)   # class name -> count
         self.style_blocks = []                  # raw CSS text
@@ -92,6 +100,13 @@ class PageParser(HTMLParser):
         self._style_buf = []
         self.tag_count = 0
         self.has_doctype = False
+        # --- srcdoc collection (third perimeter; see section below) ---
+        self._srcdoc_depth = _srcdoc_depth      # nesting level of THIS parser
+        self.srcdoc_seen = 0                    # non-empty srcdoc attrs found
+        self.srcdoc_graded = 0                  # distinct contents parsed+merged
+        self.srcdoc_capped = 0                  # distinct contents beyond depth cap
+        self.srcdoc_max_depth = 0               # deepest nesting level reached
+        self._srcdoc_hashes = set()             # exact-duplicate dedup (anti-stuffing)
 
     def handle_decl(self, decl):
         if decl.lower().startswith("doctype"):
@@ -100,6 +115,10 @@ class PageParser(HTMLParser):
     def handle_starttag(self, tag, attrs):
         self.tag_count += 1
         ad = dict(attrs)
+        if tag == "iframe":
+            # Third perimeter: the srcdoc document is in-document bytes —
+            # what the grader can deterministically see, it reads and grades.
+            self._collect_srcdoc(ad.get("srcdoc"))
         if tag == "style":
             self._in_style = True
             self._style_buf = []
@@ -131,6 +150,79 @@ class PageParser(HTMLParser):
     def handle_data(self, data):
         if self._in_style:
             self._style_buf.append(data)
+
+    def _collect_srcdoc(self, srcdoc):
+        """Parse an <iframe srcdoc="..."> value as a nested document.
+
+        The nested document's <style> blocks, inline styles, <link>
+        stylesheets and classes are merged into THIS parser's collections,
+        so they are graded exactly like top-level content. Nested srcdoc
+        iframes recurse (same parser, depth+1); srcdoc on non-iframe tags
+        is ignored (browsers ignore it too — it is not delivered CSS).
+        """
+        if srcdoc is None or not srcdoc.strip():
+            return
+        self.srcdoc_seen += 1
+        digest = hashlib.sha256(srcdoc.encode("utf-8", "replace")).digest()
+        if digest in self._srcdoc_hashes:
+            return  # identical srcdoc repeated: grade once (anti-stuffing)
+        self._srcdoc_hashes.add(digest)
+        if self._srcdoc_depth >= _MAX_SRCDOC_DEPTH:
+            # Beyond the cap the content is outside the grader's view —
+            # recorded (srcdoc_capped) and penalized once at 4f, exactly
+            # the @import/<link> precedent for unseen CSS.
+            self.srcdoc_capped += 1
+            return  # nesting cap: total, no exceptions
+        depth = self._srcdoc_depth + 1
+        if depth > self.srcdoc_max_depth:
+            self.srcdoc_max_depth = depth
+        sub = PageParser(_srcdoc_depth=depth)
+        sub._srcdoc_hashes = self._srcdoc_hashes  # dedup across the whole tree
+        try:
+            sub.feed(srcdoc)
+        except Exception:
+            return  # fail closed: an unparseable srcdoc contributes nothing
+        self.srcdoc_graded += 1
+        # Merge: the nested document IS the page's delivered UI, so its
+        # findings join the top-level collections (graded by the same rules).
+        self.style_blocks.extend(sub.style_blocks)
+        self.inline_styles.extend(sub.inline_styles)
+        self.link_stylesheets.extend(sub.link_stylesheets)
+        for c, n in sub.classes_used.items():
+            self.classes_used[c] += n
+        self.srcdoc_seen += sub.srcdoc_seen
+        self.srcdoc_graded += sub.srcdoc_graded
+        self.srcdoc_capped += sub.srcdoc_capped
+        if sub.srcdoc_max_depth > self.srcdoc_max_depth:
+            self.srcdoc_max_depth = sub.srcdoc_max_depth
+        self.tag_count += sub.tag_count
+
+
+# ---------------------------------------------------------------------------
+# <iframe srcdoc="..."> — the third perimeter (finding 8, srcdoc follow-up)
+# ---------------------------------------------------------------------------
+#
+# CLASS-LEVEL RULE: the class is "CSS outside the grader's view", not the
+# keyword that references it. @import was closed with record + bounded -1.0
+# (duplication UNKNOWN); <link rel=stylesheet> was closed by CAPABILITY —
+# what the grader can deterministically see, it READS and grades like
+# <style>. <iframe srcdoc="..."> is the same shape: the whole embedded
+# document — its <style>, its <link> sheets, its @imports, even iframes
+# nested inside it — sits in the page's own bytes but was invisible to the
+# grader. A full-viewport srcdoc iframe could hide ALL custom CSS and score
+# a clean 10.0; the same hole defeats the @import fix the same way.
+#
+# Closed by the same capability principle: a srcdoc value is an attribute
+# on the page itself — deterministically in-document — so the grader parses
+# it as a nested HTML document (PageParser._collect_srcdoc) and grades its
+# <style>/<link>/inline CSS exactly like top-level content. That recursion
+# covers BOTH earlier branches' scope for free: a <link> inside srcdoc is
+# resolved by the <link> machinery (relative hrefs against the page's own
+# directory — browsers give srcdoc the embedder's base URL), and an @import
+# inside srcdoc's <style> is recorded by the at-rule machinery.
+# Dedup: flags already dedupe by class; identical srcdoc VALUES dedupe by
+# content hash so N copies of one iframe grade once (no penalty inflation).
+# Total: depth-capped (8), never touches the network, never raises.
 
 
 # ---------------------------------------------------------------------------
@@ -811,6 +903,22 @@ def analyze(page_html, catalog, page_dir=None):
         })
         score -= 1.0
 
+    # 4f. srcdoc iframes nested beyond the depth cap: their CSS is outside
+    # the grader's view — the same class as 4d/4e, the same bounded
+    # treatment (duplication UNKNOWN, never "clean"). One deduction no
+    # matter how many iframes pile past the cap.
+    if parser.srcdoc_capped:
+        deductions.append({
+            "points": -1.0,
+            "reason": (f"{parser.srcdoc_capped} srcdoc iframe(s) nested beyond "
+                       f"the grader's depth cap ({_MAX_SRCDOC_DEPTH}) — "
+                       "their CSS is outside the grader's view; "
+                       "duplication unverifiable"),
+            "detail": [f"srcdoc seen: {parser.srcdoc_seen}, "
+                       f"graded: {parser.srcdoc_graded}"],
+        })
+        score -= 1.0
+
     score = max(0.0, round(score, 1))
     verdict = "PASS" if score >= 7 else "FAIL"
 
@@ -839,6 +947,12 @@ def analyze(page_html, catalog, page_dir=None):
         "num_at_rules": len(at_rules_seen),
         "external_stylesheets": external_stylesheets,
         "num_external_stylesheets": len(external_stylesheets),
+        "srcdoc_iframes": {
+            "seen": parser.srcdoc_seen,
+            "graded": parser.srcdoc_graded,
+            "capped": parser.srcdoc_capped,
+            "max_depth": parser.srcdoc_max_depth,
+        },
         "specimen_home": home_block_id,
         "notes": sorted(undefined_classes)[:20],
         "stats": {
@@ -882,6 +996,13 @@ def human_summary(result, page_name):
         for e in result["external_stylesheets"]:
             media = f" [media: {e['media']}]" if e["media"] else ""
             L.append(f"  -> {e['kind']}: {e['href']}{media}")
+        L.append("")
+    si = result.get("srcdoc_iframes") or {}
+    if si.get("seen"):
+        L.append(f"srcdoc iframes: {si['graded']}/{si['seen']} parsed+graded "
+                 f"(max nesting depth {si['max_depth']}"
+                 + (f", {si['capped']} beyond depth cap" if si.get("capped") else "")
+                 + ")")
         L.append("")
     if result["deductions"]:
         L.append("Deductions:")
