@@ -18,10 +18,15 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-CHECKS = ROOT / "tools" / "protocol" / "checks"
+CHECKS = ROOT / "kernel" / "protocol" / "checks"
 sys.path.insert(0, str(CHECKS.parent))
+# tools/protocol/checks is a different package with the same top-level name;
+# another test module may have cached it as `checks` — evict so this import
+# resolves to kernel/protocol/checks regardless of collection order.
+sys.modules.pop("checks", None)
 
-from checks import tip_freshness, quality_gate, decision_log, scorecard, action_log  # noqa: E402
+from checks import tip_freshness, decision_log, scorecard, action_log  # noqa: E402
+from checks import delivery_evidence_gate as quality_gate  # noqa: E402 (SN-0526; renamed to avoid collision)
 
 
 def _dims(weight=1 / 7):

@@ -1,7 +1,7 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-09",
-  "receipt_basis_commit": "b9d21f1925f6bc1c08b7601db15e4ff18d9bade0",
+  "receipt_basis_commit": "1d73652231ac6127806640af5a31eb516c60738d",
   "inventory_file_count": 1196,
   "domain_counts": {
     "00-ACTIVATION": 2,
@@ -236,8 +236,8 @@
     },
     {
       "path": "BRAIN/01-GOVERNANCE/TEAM-NAYA-OPERATING-PROTOCOL-V1.md",
-      "blob_sha": "947a3a14a9bf267e50ff8e108b5375dee95fd7b5",
-      "size": 14458
+      "blob_sha": "ae30bc6e4a5f9affdcfb3d3d2c8109d75887ddf2",
+      "size": 15669
     },
     {
       "path": "BRAIN/01-GOVERNANCE/elevation-grants/README.md",

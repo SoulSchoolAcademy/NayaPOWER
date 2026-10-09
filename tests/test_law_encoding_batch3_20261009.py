@@ -29,6 +29,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 CHECKS = ROOT / "tools" / "protocol" / "checks"
 sys.path.insert(0, str(CHECKS.parent))
+# kernel/protocol/checks is a different package with the same top-level name;
+# evict any cached `checks` so this import resolves to tools/protocol/checks
+# regardless of collection order.
+sys.modules.pop("checks", None)
 
 from checks import decision_receipt, merge_authority, wisest_choice  # noqa: E402
 
