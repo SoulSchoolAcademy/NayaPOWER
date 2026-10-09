@@ -263,13 +263,20 @@ def test_protected_empty_action_allowed():
 # ---------------- quality gate (adapter) ----------------
 
 def test_quality_all_dimensions_above_floor():
-    r = check_quality_gate({"correctness": 9.5, "completeness": 9.2, "evidence": 9.0})
+    r = check_quality_gate(
+        {"correctness": 9.5, "completeness": 9.2, "evidence": 9.0},
+        {"correctness": 0.4, "completeness": 0.3, "evidence": 0.3},
+    )
     assert r.passed, r.reasons
 
 
 def test_quality_single_dimension_below_floor_fails():
-    r = check_quality_gate({"correctness": 10.0, "completeness": 7.0, "evidence": 9.5})
+    r = check_quality_gate(
+        {"correctness": 10.0, "completeness": 7.0, "evidence": 9.5},
+        {"correctness": 0.4, "completeness": 0.3, "evidence": 0.3},
+    )
     assert not r.passed  # a 10 never covers a 7
+    assert any("below floor" in reason for reason in r.reasons)
 
 
 def test_quality_weighted_total_at_floor_passes():
