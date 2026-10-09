@@ -444,6 +444,37 @@ def test_merge_fires_when_validator_differs_only_by_case_and_spaces():
     assert not r["pass"], "case/separator variants are the same seat"
 
 
+def test_merge_fires_when_validator_is_fullwidth_alias_of_seat():
+    # The NFKC hole: fullwidth "ｎａｙａ５" stripped to "" which matched
+    # nothing, so self-validation sailed through as "different".
+    # Normalization must translate before it compares, never erase.
+    rec = _good_merge_packet()
+    rec["independent_validator"] = "ｎａｙａ５"  # seat is "naya-5"
+    r = merge_authority.check(rec)
+    assert not r["pass"], "fullwidth self-validation is not independent validation"
+
+
+def test_seat_key_nfkc_folds_fullwidth_to_ascii():
+    assert merge_authority._seat_key("ｎａｙａ５") == merge_authority._seat_key("naya-5") == "naya5"
+    assert merge_authority._seat_key("ｎａｙａ４") == "naya4"
+
+
+def test_merge_passes_for_fullwidth_of_a_different_seat():
+    # The fix must not glue distinct seats together: fullwidth naya-4 is
+    # still a different seat from naya-5.
+    rec = _good_merge_packet()
+    rec["independent_validator"] = "ｎａｙａ４"
+    r = merge_authority.check(rec)
+    assert r["pass"], r["reasons"]
+
+
+def test_merge_passes_for_genuinely_distinct_seats():
+    rec = _good_merge_packet()
+    rec["independent_validator"] = "naya-4"
+    r = merge_authority.check(rec)
+    assert r["pass"], r["reasons"]
+
+
 def test_merge_fires_on_infinite_score():
     # The re-validator's gap 4: score Infinity passed the 9.0 bar.
     rec = _good_merge_packet()

@@ -79,6 +79,7 @@ import argparse
 import math
 import re
 import sys
+import unicodedata
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
@@ -99,7 +100,11 @@ KNOWN_SEAT_ALIASES: dict[str, str] = {}
 
 
 def _seat_key(seat: str) -> str:
-    key = re.sub(r"[^a-z0-9]", "", seat.strip().lower())
+    # NFKC-fold FIRST: normalization must translate before it compares.
+    # Fullwidth "ｎａｙａ５" folds to "naya5"; the old strip-everything-
+    # non-ASCII regex turned it into "" which matches nothing — fail-open
+    # by deletion. Erasing the unknown is never a comparison.
+    key = re.sub(r"[^a-z0-9]", "", unicodedata.normalize("NFKC", seat).strip().lower())
     return KNOWN_SEAT_ALIASES.get(key, key)
 
 
