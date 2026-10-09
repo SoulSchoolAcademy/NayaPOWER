@@ -1,17 +1,17 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-09",
-  "receipt_basis_commit": "7e4fcb6b51fdb128736c01c162305fd8cf9ea53a",
-  "inventory_file_count": 1203,
+  "receipt_basis_commit": "b1299d02f7a9eb3fe6dcd8d314ef5874cf562331",
+  "inventory_file_count": 1207,
   "domain_counts": {
     "00-ACTIVATION": 2,
-    "00-ARCHITECTURE": 3,
+    "00-ARCHITECTURE": 5,
     "00-SPEC": 15,
     "01-GOVERNANCE": 28,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
-    "05-MEMORY": 642,
+    "05-MEMORY": 643,
     "06-PROOF": 13,
     "07-LEARNING": 5,
     "08-SUCCESSION": 2,
@@ -20,7 +20,7 @@
     "11-KNOWLEDGE": 7,
     "12-ENGINEERING": 25,
     "90-OPERATIONS": 13,
-    "99-ARCHIVE": 1,
+    "99-ARCHIVE": 2,
     "ROOT": 5
   },
   "ledger_assertion": "Per-domain counts asserted against the 2026-09-30 brain-reconciliation ledger classification table. Any drift fails regeneration instead of silently rewriting the table.",
@@ -36,14 +36,24 @@
       "size": 3734
     },
     {
+      "path": "BRAIN/00-ARCHITECTURE/ACTIVATION-NAYA-PLAN.md",
+      "blob_sha": "70774bbfa1e0240eceffbab56a6d8a071e22107a",
+      "size": 24076
+    },
+    {
       "path": "BRAIN/00-ARCHITECTURE/ACTIVATION-NAYA-PROJECT.md",
       "blob_sha": "d93e078f54a5d3671392632800a0be43cfc50ba5",
       "size": 8039
     },
     {
       "path": "BRAIN/00-ARCHITECTURE/MACHINE-INTELLIGENCE.json",
-      "blob_sha": "982546196b2401a417bcb773c48e8b156b65ab1a",
-      "size": 47410
+      "blob_sha": "29a81ec0c99e81e12655321146851dbf975a148f",
+      "size": 85823
+    },
+    {
+      "path": "BRAIN/00-ARCHITECTURE/NORTH-STAR-RATIFICATION-2026-09-26.md",
+      "blob_sha": "e00e0d6614054fda707154b0a471cf130dcdabff",
+      "size": 3742
     },
     {
       "path": "BRAIN/00-ARCHITECTURE/SYSTEM-BLUEPRINT-20261009.md",
@@ -3682,8 +3692,13 @@
     },
     {
       "path": "BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/ACTIVATION-NAYA-INTELLIGENCE.md",
-      "blob_sha": "f5ca40dcb4285ee086dff7b4c1fea291ab9ccbba",
-      "size": 14353
+      "blob_sha": "8a02bda6be424d886a03da701ee9b5d124f93dac",
+      "size": 27455
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/MANIFEST.json",
+      "blob_sha": "0fc11ff78dc94e3ca8d05d1cdac346916d253673",
+      "size": 4099
     },
     {
       "path": "BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/PROJECT-INTELLIGENCE-SPEC.md",
@@ -3692,8 +3707,8 @@
     },
     {
       "path": "BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/PROJECT-INTELLIGENCE-TEMPLATE.md",
-      "blob_sha": "bed099ad9863f2d4a62f68f4b4a0ccc52893b44e",
-      "size": 5504
+      "blob_sha": "935fff7c308cf308cda876dc9ddcbe8f356ab539",
+      "size": 11696
     },
     {
       "path": "BRAIN/05-MEMORY/VERIFICATION-PACKAGES/TIER1-2026-10-08/INDEX.md",
@@ -6014,6 +6029,11 @@
       "path": "BRAIN/99-ARCHIVE/README.md",
       "blob_sha": "a012a595ea151b523ec0c5682b1521d8902286ae",
       "size": 707
+    },
+    {
+      "path": "BRAIN/99-ARCHIVE/brain-reconciliation-ledger-f648833b.md",
+      "blob_sha": "168e14b9b430d2eb4a7d5e3d330eb1bae7fdabe5",
+      "size": 2096
     },
     {
       "path": "BRAIN/MASTER-MAP.md",

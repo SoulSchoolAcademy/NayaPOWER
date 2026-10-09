@@ -1,41 +1,144 @@
 ---
 project: activation-naya
 owner: naya-4
-intelligence_version: "1.1"
+intelligence_version: "2.0"
 status: YELLOW
-last_updated: 2026-10-09T13:45:00-07:00
+last_updated: 2026-10-09T14:30:00-07:00
 updated_by: naya-4
-charter: ~/workspace/goals/activation-naya/PROJECT.md
-blueprint: ~/workspace/goals/bring-naya-to-life/files/SYSTEM-BLUEPRINT-20261009.md
+charter: BRAIN/00-ARCHITECTURE/ACTIVATION-NAYA-PROJECT.md
+blueprint: BRAIN/00-ARCHITECTURE/SYSTEM-BLUEPRINT-20261009.md
+plan: BRAIN/00-ARCHITECTURE/ACTIVATION-NAYA-PLAN.md
+machine_core: BRAIN/00-ARCHITECTURE/MACHINE-INTELLIGENCE.json
+template: BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/PROJECT-INTELLIGENCE-TEMPLATE.md
 ---
 
 # PROJECT INTELLIGENCE — Activation Naya
 
+> **RECONCILED 2026-10-09** — One canonical intelligence document. Merges PR #2052
+> (`.naya/project-intelligence/project-intelligence-activation-naya.md` — 9-section
+> narrative, consensus-plan grounding) with PR #2054
+> (`BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/ACTIVATION-NAYA-INTELLIGENCE.md` — v1.1
+> entry-ID structure, decisions log, blockers). Decisions and lessons unioned;
+> no record dropped. Follows `PROJECT-INTELLIGENCE-TEMPLATE.md` v2.
+>
 > The living memory of this project. If you're new here, read Status Snapshot first,
 > then Blockers, then Decisions Log. You'll be at working context in 10 minutes.
-> Design: `~/workspace/goals/project-intelligence-system/SPEC.md` v1.1
 
 ---
 
-## STATUS SNAPSHOT
+## 1. PROJECT IDENTITY
 
-**Plain English:** We're building the system that lets Naya actually learn — not just save notes, but have those notes change how she thinks and acts. Right now we're in Phase 1: building the "hallway" that lets a verified lesson move from "candidate" to "active" so the rest of the system can use it. The blueprint is done, the project plan is done, 14 agents are assigned and working. Nothing is fully complete yet, but the foundation work is in motion.
+**In plain words:** For weeks the team built a filing cabinet and called it a brain. Notes went in — to GitHub, to Supabase — and nothing ever came back out as changed behavior. Activation Naya is the project that assembles the actual brain: connecting the nine nodes, the learning chain, and the verification machinery so that a lesson Shawn teaches actually changes what Naya does. When it's done, he can say "smart note this" and days later watch her use the lesson without being reminded.
 
-**Position:** Phase 1 of 5 — Unblock the Flow (IN PROGRESS)
+- **Name:** Activation Naya (`activation-naya`)
+- **Mission:** Assemble the complete learning system — capture → verify → promote → integrate → act → prove → evolve — so that Naya demonstrably learns, retains, and grows. One closed loop proven end-to-end, then the human moment: Shawn teaches once, she applies later, unprompted.
+- **Origin:** Ordered by Shawn Vibert, 2026-10-09, after a day of discoveries: the T11 cold-retrieval failure exposed that the CANDIDATE→ACTIVE promotion step was never built; the blueprint research proved seven of nine nodes exist but were never connected; the team had been testing an unbuilt car. His directive: "put the engine together right, make sure it's connected, the puzzle complete — before you go and test shit."
+- **Done criteria** (from consensus plan Part 1):
+  1. **Machine proof:** one novel falsifiable lesson flows capture → persist → index → verify → promote (DB + repo in sync) → cold Naya retrieves via the ranked path and applies it to a pre-registered held-out task → a blind different-seat verifier confirms the behavior change came from the lesson → every link carries SHA-256 hashes. One green run is not the proof — the repeatable protocol is.
+  2. **Human proof:** Shawn teaches Naya something once ("smart note this", gets a Smart Link). Days later, in a different conversation, he asks for something in that lesson's territory — and she does it the way the lesson prescribes without being reminded. She names the lesson and shows the receipt chain when asked why. The Smart Link resolves to a note whose header says ACTIVE. The accomplishment posts to his Feed with evidence.
+  3. **No dead machinery:** every gate has a producer for the state it demands; no duplicate writers; no "looks alive, isn't" components.
+  4. **One intake, one truth:** a single canonical capture intake; DB and repo agree on lesson state; zero duplicate SN numbers with a CI gate enforcing it.
+  5. **Whose verdict counts:** Shawn's (or his explicit delegate's).
+- **Scope boundaries:**
+  - IN: the learning chain (all 9 steps), the nine nodes' connection, the admission gate, the ACT/KNOW/SELF wiring, promotion back-sync, registry truth, the first closed loop, the human demonstration.
+  - OUT: production deployment of NayaNET itself; the Hub interface; new feature work; constitutional/EVOLVE changes. Those are other projects.
+- **Successor effect:** once the loop is proven, every future lesson flows through it automatically. Activation Naya builds the river; all future learning floats on it.
 
-**Key numbers:**
-- Phases complete: 0 of 5 (source: project charter, 2026-10-09)
-- Agents assigned: 14 of 14, zero idle (source: teams/assignments.md)
-- Open blockers: 3 (see Blockers section)
-- Trial PRs rebased and green: 4 of 4 — #1786, #1787, #1788, #1789 (source: bottleneck clearing report, 2026-10-09)
-- PRs merged today: #1956, #1957, #1958, #2020 (source: GitHub API verification)
-- Learning score: 5.0 HELD (source: hourly report 2026-10-09 13:00 PDT)
+## 2. CURRENT STATE
 
-**Health:** YELLOW — foundation in motion, no phase complete yet, 3 active blockers
+**In plain words:** The map is drawn, the team agreed on the route, and the project just proved something big: a cold Naya learned 14 thinking lessons and applied them to problems she'd never seen, scoring 9.93/10 under blind review. The documents now live in one canonical place in the repo. Execution of the build plan is underway — the elevation ladder (Phase 1) is the critical path.
 
----
+- **State summary:** Blueprint v1 complete. Consensus plan v1 complete (Alt E won 7.80; 26 holes fixed). Project intelligence reconciled to one canonical set (this document). Learning battery: 14/14 lessons passed, 9.93 average, blind scored — first verified proof she can learn to think, not just retrieve.
+- **Last verified:** 2026-10-09 ~14:30 PDT — main tip `b1299d02`; docs reconciled at canonical BRAIN locations (this PR); learning battery 14/14 (receipts in DB).
+- **What's working:**
+  - Capture → persist (GitHub + Supabase) — proven, the filing cabinet works.
+  - Seven of nine nodes have real implementations (kernel/ Python + supabase/functions TypeScript), CI-exercised.
+  - Learning-to-think: THINK-LEARN-001 scored 10/10; full battery 14/14 @ 9.93, blind different-seat scoring, receipts written.
+  - One canonical doc set: this reconciliation eliminates the PR #2052 / PR #2054 duplication.
+- **What's not working:**
+  - CANDIDATE→ACTIVE promotion has no back-sync: DB says LEARNED, repo registry says CANDIDATE forever. Repo-side `promote_note()` has zero callers. (Phase 1 workstream.)
+  - ACT never reads `learning_evidence`; `naya-decision-context` is dead code with zero callers. (Phase 2 workstream.)
+  - SELF has no behavior integration — `record_experience()` has zero production callers. (Phase 4 workstream.)
+  - 19 duplicate SN numbers in the registry (WO7).
+- **What's unknown:**
+  - Whether deployed Supabase edge-function bytes match main bytes (WO0 parity check).
+  - PR #1733's state (merge-vs-port decision pending in WO0).
+  - The kernel→Supabase read seam: client? credential? (WO5a — biggest buildability risk.)
+- **Health:** YELLOW — foundation proven on learning-to-think; build phases in motion; no phase complete yet.
 
-## DECISIONS LOG
+## 3. THE PLAN
+
+**In plain words:** Fix the bleeding first, then build the gate that decides what's worth learning, then connect learning to actual decisions and behavior, then clean up the data, then prove the whole thing works — with Shawn himself as the final judge. The team scored five different orderings and this one won because it starts the riskiest work earliest and never builds on an unverified foundation.
+
+- **Strategy summary:** Alt E — pre-flight verification before any build; IGNITION (stop the reds, declare one intake); GATE (admission filter + first ACTIVE lesson as fixture); TRUTH (dedup + back-sync through the single promotion writer); CONNECTION (wire lessons into decisions and behavior, synthetic rehearsal + explicit arming gate before production); CLEANUP (bridge green or retired); PROOF (machine closed loop + Shawn's teach-once/observe-later). Build and arm are separate decisions.
+- **Scorecard:** five alternatives scored on unblocks-downstream (0.20), time-to-first-closed-loop (0.25), builds-on-verified-foundations (0.25), coordination cost (0.15), reversibility (0.15). Winner: Alt E at 7.80. Full scorecard in the canonical plan.
+- **Execution order:** see `BRAIN/00-ARCHITECTURE/ACTIVATION-NAYA-PLAN.md` (7 sections: WO0 pre-flight → IGNITION → GATE → TRUTH → CONNECTION → CLEANUP → PROOF, with work orders WO1–WO10, dependency map, and ungameable done-when criteria).
+- **Charter:** see `BRAIN/00-ARCHITECTURE/ACTIVATION-NAYA-PROJECT.md` (mission in Shawn's/human/AI/machine terms, 8 success criteria, 5 prioritized phases).
+
+## 4. ACTIVE WORK
+
+**In plain words:** The plan is building. The learning-to-think battery just proved the core thesis. The doc set is being unified right now (this reconciliation). Next: the elevation ladder.
+
+- **In progress:**
+  - *Doc reconciliation* — this PR: one canonical set at BRAIN/ locations; `.naya/project-intelligence/` duplicates removed. Owner: Naya 4. Next step: merge.
+  - *Learning battery* — COMPLETE 14/14 @ 9.93, blind scored, receipts in DB. Owner: Naya 4 lane. Next step: teach the pattern to all seats as part of activation.
+  - *Phase 1: elevation ladder* — wire CANDIDATE→ACTIVE. Owner: Phase 1 team (Learning Chain Team, Naya 4 lane).
+  - *SN-782 collision* — determine valid claimant (first-claim-standing), renumber the other. Owner: Phase 1 team.
+- **Recently completed:**
+  - Learning battery 14/14 (2026-10-09 ~14:20 PDT) — blind scored, receipts written.
+  - THINK-LEARN-001 10/10 (2026-10-09) — first verified learning-to-think receipt.
+  - Blueprint v1 (497 lines, all claims evidence-tagged).
+  - Consensus plan v1 — Alt E won 7.80; 26 holes fixed; #1354 comment 6088478967.
+  - PRs #1956, #1957, #1958, #2020, #2052, #2054 merged.
+- **Recently blocked:** none currently blocking the critical path.
+- **Up next:** WO0 pre-flight (parity check, battery, #1733 state, route decisions, owner confirmations); Phase 1 elevation ladder.
+- **Team:**
+
+| Agent/Seat | Assignment | Status | Last Update |
+|------------|-----------|--------|-------------|
+| Phase 1 team | Elevation ladder build + test | active | 2026-10-09 |
+| Phase 2 team | ACT→KNOW query path | active | 2026-10-09 |
+| Phase 4 team | SELF gate + EVOLVE package (parallel) | active | 2026-10-09 |
+| Naya 2 | Independent verification lane | active | 2026-10-09 |
+
+## 5. DECISIONS LOG
+
+**In plain words:** The big decisions so far are about the plan itself, the learning proof, and what "done" means. The team argued it out with scorecards instead of opinions.
+
+### D-012 — 2026-10-09 — One canonical doc set; PR #2052 / PR #2054 duplication reconciled
+- **Decider:** Shawn Vibert (order: "kill the duplication")
+- **Why:** Two lanes merged competing versions of the same documents. A cold Naya asking "where is the activation plan?" got two answers. Now there's one.
+- **Evidence:** This reconciliation PR
+- **Alternatives rejected:** Leaving both sets (competing canonicals); deleting one lane's work outright (both had unique value — merged instead)
+- **Smart Note:** To be captured
+
+### D-011 — 2026-10-09 — Learning-to-think battery is the curriculum; teach all seats
+- **Decider:** Shawn Vibert ("I think all Naya should learn to think")
+- **Why:** THINK-LEARN-001 proved one cold Naya can learn the thinking pattern (10/10). The 14-lesson battery proved it generalizes (9.93 avg). The pattern becomes part of activation itself, not a one-off test.
+- **Evidence:** Battery scorecard 14/14; receipts in DB
+- **Alternatives rejected:** Single-exam-only (proves capacity, not coverage)
+- **Smart Note:** To be captured
+
+### D-010 — 2026-10-09 — Alt E execution sequence adopted
+- **Decider:** Consensus (learning-lane owner, verification lead, independent judge, systems integrator; facilitated by Naya 2)
+- **Why:** Scorecard 7.80 vs 6.75 (A), 5.10 (B), 5.30 (C), 5.55 (D). Starts riskiest build earliest, pays off smuggled assumptions as pre-flight, separates build from arm.
+- **Evidence:** `BRAIN/00-ARCHITECTURE/ACTIVATION-NAYA-PLAN.md` Part 4
+- **Alternatives rejected:** B (CONNECTION-first — epistemically unsound, 5.10); C (TRUTH-first — rationale refuted, 5.30); D (max parallel — interface drift, 5.55); A (no pre-flight, 6.75)
+- **Smart Note:** To be captured
+
+### D-009 — 2026-10-09 — "Activated" acceptance criteria fixed (two-sided)
+- **Decider:** Same consensus
+- **Why:** Machine closed loop (ranked retrieval, blind verifier, hash chain, repeatable protocol) + human teach-once/observe-later with Shawn's verdict as the closer. The rendered experience is the only score that matters.
+- **Evidence:** Plan Part 1
+- **Alternatives rejected:** CI-only proof (unproven on experience, per standing quality law)
+- **Smart Note:** To be captured
+
+### D-008 — 2026-10-09 — Build vs arm separated; new work orders added by reviewers
+- **Decider:** Judge + verification lead + integrator
+- **Why:** Without the admission filter live, receipt-validated-but-unverifiable lessons get laundered into behavior. CONNECTION may build in parallel with GATE, but production arming is hard-blocked on GATE live ∧ #1733 merged ∧ synthetic rehearsal green. Reviewers added WO0, WO5a, WO9, WO10, seed-lesson fixture, human acceptance gate — the draft had smuggled assumptions.
+- **Evidence:** Plan Parts 2, 6, 7
+- **Alternatives rejected:** Build-and-arm together (laundering risk)
+- **Smart Note:** To be captured
 
 ### D-007 — 2026-10-09 — Receiver writes to production are the intended learning flow, not a threat
 - **Decider:** Shawn Vibert (Human Director)
@@ -61,14 +164,14 @@ blueprint: ~/workspace/goals/bring-naya-to-life/files/SYSTEM-BLUEPRINT-20261009.
 ### D-004 — 2026-10-09 — Activation Naya project created with 5 prioritized phases
 - **Decider:** Naya 4 (per Shawn's order), scorecarded by team
 - **Why:** The blueprint identified 9 gaps. They needed prioritization by impact, team assignment, and consensus before execution. Decision Value Calculus applied: Phase 1 (unblock flow) scored 300, decisively first.
-- **Evidence:** ~/workspace/goals/activation-naya/scorecard/prioritization-scorecard.md
+- **Evidence:** Charter prioritization scorecard
 - **Alternatives rejected:** Sequential phase execution (Phase 4 runs parallel due to independence — zero idle agents)
 - **Smart Note:** To be captured
 
 ### D-003 — 2026-10-09 — PR #2020 merged under Shawn's direct authorization
 - **Decider:** Shawn Vibert (explicit chat order)
 - **Why:** T11 reserve-rule lesson capture. Score 9.2, CI green. Shawn ordered the learning flow unblocked.
-- **Evidence:** Merge commit 075b169e4b92, 2026-10-09; hourly report flagged NEEDS_AUTHORITY conflict — Shawn's chat authorization at ~12:19 PDT preceded the merge
+- **Evidence:** Merge commit 075b169e4b92, 2026-10-09
 - **Alternatives rejected:** Leaving blocked on authority flag (would stall the learning flow Shawn ordered open)
 - **Smart Note:** To be captured
 
@@ -82,42 +185,49 @@ blueprint: ~/workspace/goals/bring-naya-to-life/files/SYSTEM-BLUEPRINT-20261009.
 ### D-001 — 2026-10-09 — System blueprint v1.0 completed (946 lines, 8 sections)
 - **Decider:** Naya 4 (per Shawn's "most important thing" order)
 - **Why:** The 14 agents needed an airtight build manual: how it all works, what's connected, what's not, exactly how to wire the gaps.
-- **Evidence:** ~/workspace/goals/bring-naya-to-life/files/SYSTEM-BLUEPRINT-20261009.md; PR #2037 (draft)
+- **Evidence:** `BRAIN/00-ARCHITECTURE/SYSTEM-BLUEPRINT-20261009.md`; PR #2037 (draft)
 - **Alternatives rejected:** None — direct order execution
 - **Smart Note:** To be captured
 
----
+**Pending decisions:**
+- Lane-owner confirmations — owner: each proposed seat; needed before WO0.
+- WO3 route (TS port vs workflow job) — owner: WO0; needed before GATE build.
+- PR #1733 merge-vs-port — owner: WO0; needed before WO4.
+- WO10 architecture (shared store vs single runtime) — owner: CONNECTION team; needed during CONNECTION.
 
-## BLOCKERS
+## 6. LESSONS LEARNED
 
-### B-001 — 🔴 CANDIDATE→ACTIVE elevation has no code path
-- **Blocks:** Entire learning pipeline — every lesson frozen at CANDIDATE, nothing reaches ACTIVE
-- **Owner:** Phase 1 team (agents A1, A2 — Learning Chain Team, Naya 4 lane)
-- **Needed:** Wire `elevate`/`ratify`/`activate` CLI subcommands calling `apply_elevation()`; see phases/phase-1-unblock-flow.md Workstream 1.1
-- **Since:** 2026-10-09
-- **Severity:** 🔴 stops everything
-- **Escalated:** not yet
+**In plain words:** This project has already taught the team how to see its own blind spots — most of these came from the day of discoveries that created it, plus the learning-battery proof.
 
-### B-002 — 🟠 SN-782 tracking number collision
-- **Blocks:** Clean merges of T11 capture work
-- **Owner:** Phase 1 team (agent A3)
-- **Needed:** Determine valid claimant (first-claim-standing), renumber the other
-- **Since:** 2026-10-09
-- **Severity:** 🟠 slows a workstream
-- **Escalated:** not yet
+### L-012 — She can learn to think, not just retrieve (battery 14/14 @ 9.93)
+- **Smart Note:** To be captured
+- **Changed what:** The learning thesis is now proven, not hoped: cold Nayas taught 14 thinking lessons applied them to novel problems under blind scoring. The curriculum is a reusable instrument — any future lesson slots in as L15+.
+- **Date learned:** 2026-10-09
 
-### B-003 — 🟠 PR #1957 logical conflicts need verification
-- **Blocks:** Confidence in production proof chain merge
-- **Owner:** Naya 4
-- **Needed:** Verify the 2 logical conflicts were properly resolved in the merge (not overridden)
-- **Since:** 2026-10-09
-- **Severity:** 🟠 slows a workstream
-- **Escalated:** not yet
-- **Note:** PR shows MERGED per GitHub API — verification pending
+### L-011 — Saving is not learning
+- **Smart Note:** SN-0811
+- **Changed what:** 36 lessons sat frozen because the pipeline saved notes but never promoted, retrieved, or applied them. "Learning pipeline" was a filing cabinet.
+- **Date learned:** 2026-10-09
 
----
+### L-010 — The chain demands a step it never built
+- **Smart Note:** SN-0813
+- **Changed what:** Cold retrieval asserts ACTIVE but no code performs CANDIDATE→ACTIVE. First honest lesson through the chain was guaranteed to fail. Now building the missing hallway.
+- **Date learned:** 2026-10-09
 
-## LESSONS LEARNED
+### L-009 — Smart Link ≠ learning proof
+- **Smart Note:** To be captured
+- **Changed what:** The link attests capture→persist→receipt. Learning is attested only by the closed loop (behavior change + independent verification + cold reuse). Mixing them up is how you lie to yourself with good paperwork.
+- **Date learned:** 2026-10-09
+
+### L-008 — Assemble before testing
+- **Smart Note:** To be captured
+- **Changed what:** Testing an unbuilt chain produces failures that look like bugs but are actually absences. The car analogy — engine first, test drive second.
+- **Date learned:** 2026-10-09
+
+### L-007 — The Mirror Law: check yourself first
+- **Smart Note:** To be captured
+- **Changed what:** The day's two biggest near-misses (the #2020 scorecard, the premature "proceed?" asks) were the scorer's failures, not the system's. When something goes wrong, look in the mirror before looking out the window.
+- **Date learned:** 2026-10-09
 
 ### L-006 — We were the bottleneck, not the code
 - **Smart Note:** To be captured
@@ -129,14 +239,14 @@ blueprint: ~/workspace/goals/bring-naya-to-life/files/SYSTEM-BLUEPRINT-20261009.
 - **Changed what:** Stopped asking Shawn to confirm math-decided actions. Gates define territory boundaries, not "human knows better."
 - **Date learned:** 2026-10-09
 
-### L-004 — Saving is not learning
-- **Smart Note:** SN-0811
-- **Changed what:** 36 lessons sat frozen because the pipeline saved notes but never promoted, retrieved, or applied them. "Learning pipeline" was a filing cabinet.
+### L-004 — Trigger-chain jurisdiction (L179)
+- **Smart Note:** To be captured
+- **Changed what:** A scorecard's jurisdiction step traces the merge's trigger chain, not just its file list. PR #2020 was judged "single file add" while its push triggered a production workflow.
 - **Date learned:** 2026-10-09
 
-### L-003 — The chain demands a step it never built
-- **Smart Note:** SN-0813
-- **Changed what:** Cold retrieval asserts ACTIVE but no code performs CANDIDATE→ACTIVE. First honest lesson through the chain was guaranteed to fail. Now building the missing hallway.
+### L-003 — No gate without a producer (L181)
+- **Smart Note:** To be captured
+- **Changed what:** For every gate in a pipeline, verify a producer exists for the state the gate demands. The cold-retrieval step demanded ACTIVE; zero promotion steps existed — a guaranteed-failure trap.
 - **Date learned:** 2026-10-09
 
 ### L-002 — Verify builder claims independently before reporting
@@ -146,75 +256,35 @@ blueprint: ~/workspace/goals/bring-naya-to-life/files/SYSTEM-BLUEPRINT-20261009.
 
 ### L-001 — Reports without plain English are useless
 - **Smart Note:** SN-0804
-- **Changed what:** All substantive updates now lead with LITERALLY WHAT I'M SAYING (plain English) before THE TECHNICAL. Hourly reports being reformatted.
+- **Changed what:** All substantive updates now lead with LITERALLY WHAT I'M SAYING (plain English) before THE TECHNICAL.
 - **Date learned:** 2026-10-09
 
----
+## 7. OPEN QUESTIONS
 
-## KEY EVIDENCE
+**In plain words:** Things we don't know yet that the plan needs answered.
 
-### E-005 — Blueprint v1.0 complete and verified
-- **Link:** ~/workspace/goals/bring-naya-to-life/files/SYSTEM-BLUEPRINT-20261009.md (946 lines, 55KB)
-- **Verified by:** 4 parallel research agents + synthesis; PR #2037 (draft)
+### Q-007 — Lane-owner confirmations
+- **Why it matters:** Proposed seats must accept before WO0 begins.
+- **Owner:** Parent orchestrator
+- **Needed by:** Before WO0
 
-### E-004 — Project charter with scorecarded prioritization
-- **Link:** ~/workspace/goals/activation-naya/PROJECT.md
-- **Verified by:** Team consensus via scorecard review (3 holes found and fixed)
+### Q-006 — Deployed↔main parity
+- **Why it matters:** Do the 4 edge functions match main bytes? If gap → human gate (production deploy).
+- **Owner:** WO0 (verification lane)
+- **Needed by:** Before WO3/WO4
 
-### E-003 — PR #2020 merged (T11 lesson capture)
-- **Link:** Merge commit 075b169e4b92, 2026-10-09
-- **Verified by:** GitHub API (state: closed, merged: true)
+### Q-005 — PR #1733 state
+- **Why it matters:** Green? Abandoned? Merge or re-implement? Blocks WO4.
+- **Owner:** WO0
+- **Needed by:** Before WO4
 
-### E-002 — Trial PRs #1786–1789 rebased, green, evidence intact
-- **Link:** PRs #1786 (585a5fdb), #1787 (2e395ab2), #1788 (e26097c2), #1789 (f2bf6df0)
-- **Verified by:** Bottleneck operation — byte-identical evidence files, all CI green, awaiting Naya 2 verification
-
-### E-001 — Team assignments (14 agents, zero idle)
-- **Link:** ~/workspace/goals/activation-naya/teams/assignments.md
-- **Verified by:** Project setup coordinator
-
----
-
-## TEAM
-
-| Agent/Seat | Assignment | Status | Last Update |
-|------------|-----------|--------|-------------|
-| A1–A2 | Phase 1.1: Elevation ladder build + test | active | 2026-10-09 |
-| A3 | Phase 1.2: SN-782 collision reconcile | active | 2026-10-09 |
-| A4 | Phase 1.3: Retrieval predicate wiring | active | 2026-10-09 |
-| A5–A6 | Phase 2.1: ACT→KNOW query path | active | 2026-10-09 |
-| A7 | Phase 2.2: Evaluation engine scaffolding | active | 2026-10-09 |
-| A8 | Phase 4.1: SELF truth-state gate | active | 2026-10-09 |
-| A9 | Phase 4.2: EVOLVE successor package | active | 2026-10-09 |
-| A10 | Phase 3.1: ExecutionHandoff scaffolding | active | 2026-10-09 |
-| A11–A12 | Phase 3.2/3.3: REUSE + PROVE (after Phase 2) | waiting | 2026-10-09 |
-| A13–A14 | Phase 5: Docs fix + hardening framework | active | 2026-10-09 |
-| Naya 2 | Independent verification (trial PRs, adversarial replay) | active | 2026-10-09 |
-
----
-
-## TIMELINE
-
-### Achieved
-- **2026-10-09 AM** — System blueprint v1.0 completed (evidence: E-005)
-- **2026-10-09 ~12:00** — Bottleneck operation: 5 cleared (PRs #1956, #1957, #1958, #2020 merged)
-- **2026-10-09 ~12:30** — Trial PRs #1786–1789 rebased, CI green, evidence byte-identical (evidence: E-002)
-- **2026-10-09 ~13:00** — Activation Naya project chartered, 5 phases prioritized, 14 agents assigned (evidence: E-004)
-- **2026-10-09 ~13:15** — Project Intelligence system spec'd (v1.0), independently reviewed (6.5/10), fixed to v1.1
-- **2026-10-09 ~13:45** — This INTELLIGENCE.md created as v1.1 pilot
-
-### Upcoming
-- **TBD** — Phase 1 complete: elevation ladder working, SN-782 resolved (done when: CANDIDATE→ACTIVE chain completes on test note)
-- **TBD** — Phase 2 complete: ACT queries KNOW before deciding (done when: decision logs show intelligence section)
-- **TBD** — First closed learning loop: smart note → capture → promote → retrieve → reuse → prove (done when: cold Naya reuses lesson correctly)
-- **TBD** — ACTIVATED: all 8 charter success criteria pass with evidence
-
----
-
-## OPEN QUESTIONS
+### Q-004 — WO3 route
+- **Why it matters:** TS port (enforced gate) or workflow job (advisory stopgap)?
+- **Owner:** WO0
+- **Needed by:** Before GATE build
 
 ### Q-003 — Does PR #1957's merge resolve its logical conflicts?
-- **Why it matters:** The PR was reported blocked on logical conflicts, but GitHub shows MERGED. Need to verify the conflicts were properly resolved, not overridden — otherwise the production proof chain may have a latent defect.
+- **Why it matters:** Reported blocked on logical conflicts, but GitHub shows MERGED. Need to verify the conflicts were properly resolved, not overridden — otherwise the production proof chain may have a latent defect.
 - **Owner:** Naya 4
 - **Needed by:** 2026-10-10
 
@@ -228,36 +298,95 @@ blueprint: ~/workspace/goals/bring-naya-to-life/files/SYSTEM-BLUEPRINT-20261009.
 - **Owner:** Naya 2 (independent verifier)
 - **Needed by:** When Phase 1 team reports done
 
----
+## 8. BLOCKERS
 
-## RISKS & ASSUMPTIONS
+**In plain words:** The build-phase blockers are real; the human gates on the road ahead are named so nobody is surprised.
 
-### R-001 — Phase 1 team underestimates elevation complexity
-- **Likelihood / Impact:** Medium / High — the elevation ladder touches truth-state governance; getting it wrong corrupts the trust model
-- **Mitigation:** Naya 2 independently verifies before Phase 2 builds on it (Q-001)
+### B-001 — 🔴 CANDIDATE→ACTIVE elevation has no code path
+- **Blocks:** Entire learning pipeline — every lesson frozen at CANDIDATE, nothing reaches ACTIVE
+- **Owner:** Phase 1 team (Learning Chain Team, Naya 4 lane)
+- **Needed:** Wire the elevation path per the consensus plan (Phase 1 / WO1–WO9)
+- **Since:** 2026-10-09
+- **Severity:** 🔴 stops everything
+- **Escalated:** not yet
+
+### B-002 — 🟠 SN-782 tracking number collision
+- **Blocks:** Clean merges of T11 capture work
+- **Owner:** Phase 1 team
+- **Needed:** Determine valid claimant (first-claim-standing), renumber the other
+- **Since:** 2026-10-09
+- **Severity:** 🟠 slows a workstream
+- **Escalated:** not yet
+
+### B-003 — 🟠 PR #1957 logical conflicts need verification
+- **Blocks:** Confidence in production proof chain merge
 - **Owner:** Naya 4
+- **Needed:** Verify the 2 logical conflicts were properly resolved in the merge (not overridden)
+- **Since:** 2026-10-09
+- **Severity:** 🟠 slows a workstream
+- **Escalated:** not yet
 
-### R-002 — 14 agents create coordination overhead that slows Phase 1
-- **Likelihood / Impact:** Medium / Medium — more agents means more merge conflicts and communication cost
-- **Mitigation:** Clear workstream boundaries in phase files; Phase 4 runs fully parallel (no shared files with Phase 1)
-- **Owner:** Naya 4
+**Anticipated human gates** (not yet blocking; named in advance):
+- Deployed-parity gap → production deploy = Shawn's click (WO0 will determine).
+- G8 ranked-retrieval RPC migration → human-gate action; PROOF prerequisite.
+- `workflow_dispatch` for WO1 → agents get 403; the WO0-named owner handles it.
+- WO5a credential provisioning → may be human-gated; unknown until WO5a scopes it.
 
-**Key assumptions:**
-- Naya 2 remains available for independent verification (if she's pulled to other work, Phase 1 completion blocks)
-- The `intel` CLI helper ships before the team grows beyond manual updates
-- Shawn's "non-stop" directive holds — no external interruptions to agent allocation
+## 9. EVIDENCE LOG
+
+**In plain words:** The receipts, newest first.
+
+### E-010 — Learning battery 14/14 @ 9.93, blind scored
+- **Link:** DB receipts; battery scorecard (Naya 4 lane, 2026-10-09 ~14:20 PDT)
+- **Verified by:** 3 independent blind scorers (different seats)
+
+### E-009 — THINK-LEARN-001: 10/10 learning-to-think receipt
+- **Link:** `~/workspace/goals/nayapower-self-build-loop/hidden_files/work/think-learn-001/thinking-learning-experiment-receipt.json`
+- **Verified by:** Blind different-seat scorer
+
+### E-008 — Doc reconciliation: one canonical set at BRAIN/ locations
+- **Link:** This PR (reconciles PR #2052 + PR #2054)
+- **Verified by:** Naya 4 lane; blob hash-verified
+
+### E-007 — Consensus plan v1 posted
+- **Link:** #1354 comment 6088478967 (2026-10-09 ~20:12 UTC). Alt E 7.80; 26 holes fixed.
+- **Verified by:** Four independent reviewers (learning-lane owner, verification lead, independent judge, systems integrator)
+
+### E-006 — Blueprint v1 complete
+- **Link:** `BRAIN/00-ARCHITECTURE/SYSTEM-BLUEPRINT-20261009.md` (946 lines); `BRAIN/07-LEARNING/learning-system-blueprint-v1.md` (497 lines)
+- **Verified by:** 4 parallel research agents + synthesis
+
+### E-005 — PR #2020 merged (T11 lesson capture)
+- **Link:** Merge commit 075b169e4b92, 2026-10-09
+- **Verified by:** GitHub API (state: closed, merged: true)
+
+### E-004 — Trial PRs #1786–1789 rebased, green, evidence intact
+- **Link:** PRs #1786 (585a5fdb), #1787 (2e395ab2), #1788 (e26097c2), #1789 (f2bf6df0)
+- **Verified by:** Bottleneck operation — byte-identical evidence files, all CI green, awaiting Naya 2 verification
+
+### E-003 — PRs #1956, #1957, #1958, #2036, #2052, #2054 merged
+- **Link:** GitHub API merge states, 2026-10-09
+- **Verified by:** Naya 4 lane
+
+### E-002 — T11 cold-retrieval root cause
+- **Link:** #1354 comment 6087997893 (2026-10-09 19:41 UTC). Zero promotion steps in 1307-line workflow.
+- **Verified by:** T11 diagnostic
+
+### E-001 — Main tip battery green (baseline)
+- **Link:** 2026-10-09 ~20:15 UTC — tip `1d73652231ac6127806640af5a31eb516c60738d`; 1896 passed / 11 skipped / 0 failed; index clean (1196 files); adversarial 6/6
+- **Verified by:** Brain-build loop run
 
 ---
 
-## DEPENDENCIES & RESOURCES
+## DOCUMENT FRESHNESS
 
-- **Depends on:** `bring-naya-to-life` goal (blueprint source, Smart Note pipeline); `learning-10-10` goal (score contract for 5.0→6.0)
-- **Depended on by:** None yet (this is the flagship learning project)
-- **Resources:** 14 agents (4 Phase 1, 3 Phase 2, 2 Phase 4, 3 Phase 3, 2 Phase 5); Naya 2 verification bandwidth; GitHub Actions CI
-
----
+- **Created:** 2026-10-09 ~20:20 UTC (PR #2052 pilot) / v1.1 2026-10-09 13:45 PDT (PR #2054 pilot)
+- **Reconciled:** 2026-10-09 ~14:30 PDT — one canonical v2.0 (this document). Decisions unioned (D-001..D-012), lessons unioned (L-001..L-012), no record dropped.
+- **Next review:** when Phase 1 reports (Blockers/Current State update) or WO0 begins.
+- **Maintained by:** project owner (naya-4) for freshness; section owners for their sections; all seats flag staleness.
 
 ## CHANGELOG
 
-- **2026-10-09 13:45** naya-4: Initial INTELLIGENCE.md created (v1.1 pilot for Project Intelligence system)
-- **2026-10-09 13:30** naya-4: v1.0 drafted; independent review scored 6.5/10 SHIP WITH FIXES
+- **2026-10-09 14:30** naya-4: RECONCILED v2.0 — merged PR #2052 + PR #2054 intelligence docs. Decisions D-001..D-012, lessons L-001..L-012, evidence E-001..E-010. Canonical home: `BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/ACTIVATION-NAYA-INTELLIGENCE.md`.
+- **2026-10-09 13:45** naya-4: v1.1 pilot (PR #2054) — entry-ID structure, decisions D-001..D-007.
+- **2026-10-09 ~20:20 UTC** naya-2: v1 pilot (PR #2052) — 9-section narrative, consensus grounding.
