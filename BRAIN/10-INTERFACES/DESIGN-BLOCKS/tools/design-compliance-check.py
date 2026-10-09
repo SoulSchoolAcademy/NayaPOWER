@@ -119,22 +119,258 @@ class PageParser(HTMLParser):
 
 
 # ---------------------------------------------------------------------------
-# CSS rule extraction (lightweight — no external deps)
+# CSS parsing (lightweight — no external deps; CSS Syntax semantics)
 # ---------------------------------------------------------------------------
+#
+# CLASS-LEVEL RULE: at-rules are parsed as at-rules, never as selector text.
+# The old implementation (RULE_RE over "anything before a {", then skipping
+# selectors starting with "@") let an at-rule prelude MERGE into the next
+# rule's selector — so `@import url(...); .x{...}` dropped `.x` entirely
+# (grader-blindness / score inflation). Encoding variants of the same class
+# (CSS-escaped at-keywords like `@\69 mport`, comments inside preludes,
+# braces inside strings, unterminated comments) broke the string checks too.
+#
+# This parser tokenizes with browser-equivalent semantics instead:
+#   - comments are consumed (unterminated `/*` runs to EOF, like browsers),
+#   - strings swallow braces/semicolons/comments inside quotes,
+#   - `@keyword prelude;` and `@keyword prelude { ... }` are consumed as
+#     at-rules and RECORDED (never merged into a selector),
+#   - rules nested in at-rule blocks (e.g. @media) are extracted deliberately,
+#   - CSS escapes in at-keywords and selectors are decoded before matching.
+# Fail-closed: the parser is total — any input tokenizes without exceptions;
+# incomplete constructs are dropped exactly where browsers drop them.
 
-RULE_RE = re.compile(r"([^{}]+)\{([^{}]*)\}", re.DOTALL)
 CLASS_RE = re.compile(r"\.([a-zA-Z_][\w-]*)")
+
+_HEX = set("0123456789abcdefABCDEF")
+
+
+def css_unescape(s):
+    """Decode CSS escape sequences (CSS Syntax 3, section 4.3.7)."""
+    out = []
+    i, n = 0, len(s)
+    while i < n:
+        c = s[i]
+        if c != "\\":
+            out.append(c)
+            i += 1
+            continue
+        i += 1
+        if i >= n:
+            out.append("\\")
+            break
+        c2 = s[i]
+        if c2 in "\r\n\f":
+            # escaped newline: line continuation, contributes nothing
+            if c2 == "\r" and i + 1 < n and s[i + 1] == "\n":
+                i += 2
+            else:
+                i += 1
+            continue
+        if c2 in _HEX:
+            j = i
+            while j < n and j - i < 6 and s[j] in _HEX:
+                j += 1
+            code = int(s[i:j], 16)
+            if code == 0 or code > 0x10FFFF or 0xD800 <= code <= 0xDFFF:
+                code = 0xFFFD
+            out.append(chr(code))
+            i = j
+            # one whitespace char after a hex escape is part of the escape
+            if i < n and s[i] in " \t\n\f":
+                i += 1
+            elif i + 1 < n and s[i] == "\r" and s[i + 1] == "\n":
+                i += 2
+            continue
+        out.append(c2)
+        i += 1
+    return "".join(out)
+
+
+# At-rules whose blocks contain style rules (safe to recurse into).
+# All other at-rule blocks (@keyframes, @font-face, @page, ...) hold
+# non-rule content and are recorded but not descended into.
+_RULE_CONTAINER_AT_RULES = frozenset({
+    "media", "supports", "container", "layer", "scope", "starting-style",
+})
+
+
+class _CSSParser:
+    """Recursive-descent CSS parser. parse() -> (rules, at_rules)."""
+
+    def __init__(self, text):
+        self.t = text
+        self.n = len(text)
+
+    # -- low-level consumers ------------------------------------------------
+    def skip_ws_comments(self, i):
+        t = self.t
+        while i < self.n:
+            c = t[i]
+            if c in " \t\n\r\f":
+                i += 1
+            elif c == "/" and i + 1 < self.n and t[i + 1] == "*":
+                end = t.find("*/", i + 2)
+                # unterminated comment runs to EOF — browser semantics
+                i = self.n if end == -1 else end + 2
+            else:
+                break
+        return i
+
+    def consume_string(self, i):
+        """self.t[i] is a quote. Returns index just past the string."""
+        t = self.t
+        q = t[i]
+        i += 1
+        while i < self.n:
+            c = t[i]
+            if c == "\\":
+                i += 2
+                continue
+            if c == q:
+                return i + 1
+            if c in "\n\r\f":
+                return i  # bad string: bail at the newline
+            i += 1
+        return i  # unterminated string runs to EOF
+
+    def consume_ident(self, i):
+        """Consume a CSS ident (escapes allowed). Returns (raw_text, i)."""
+        t = self.t
+        start = i
+        if i < self.n and t[i] == "-":
+            i += 1
+        while i < self.n:
+            c = t[i]
+            if c.isalnum() or c in "-_":
+                i += 1
+            elif (c == "\\" and i + 1 < self.n
+                    and t[i + 1] not in "\n\r\f"):
+                i += 2
+                if t[i - 1] in _HEX:
+                    k = i
+                    while k < self.n and k - i < 5 and t[k] in _HEX:
+                        k += 1
+                    i = k
+                    if i < self.n and t[i] in " \t\n\f":
+                        i += 1
+                    elif (i + 1 < self.n and t[i] == "\r"
+                            and t[i + 1] == "\n"):
+                        i += 2
+            else:
+                break
+        return t[start:i], i
+
+    def consume_prelude(self, i):
+        """Consume until `;`, `{`, `}` or EOF. Returns (text, i, terminator).
+
+        Comments are semantically nothing and are excluded from the text.
+        """
+        t = self.t
+        parts = []
+        start = i
+        while i < self.n:
+            c = t[i]
+            if c in "\"'":
+                i = self.consume_string(i)
+                continue
+            if c == "/" and i + 1 < self.n and t[i + 1] == "*":
+                parts.append(t[start:i])
+                i = self.skip_ws_comments(i)  # comments vanish (semantically)
+                start = i
+                continue
+            if c in ";{}":
+                parts.append(t[start:i])
+                return "".join(parts), i + 1 if c == ";" else i, c
+            i += 1
+        parts.append(t[start:i])
+        return "".join(parts), i, None
+
+    def consume_block(self, i):
+        """self.t[i] == '{'. Returns (inner_text, i_after_closing_brace)."""
+        t = self.t
+        assert t[i] == "{"
+        start = i
+        depth = 0
+        while i < self.n:
+            c = t[i]
+            if c in "\"'":
+                i = self.consume_string(i)
+                continue
+            if c == "/" and i + 1 < self.n and t[i + 1] == "*":
+                i = self.skip_ws_comments(i)
+                continue
+            if c == "{":
+                depth += 1
+            elif c == "}":
+                depth -= 1
+                if depth == 0:
+                    return t[start + 1:i], i + 1
+            i += 1
+        return t[start + 1:], self.n  # unterminated block runs to EOF
+
+    # -- grammar ------------------------------------------------------------
+    def parse_into(self, rules, at_rules):
+        i = self.skip_ws_comments(0)
+        t = self.t
+        while i < self.n:
+            c = t[i]
+            if c == "}":
+                i = self.skip_ws_comments(i + 1)  # stray close: skip
+                continue
+            if c == "@":
+                j = self.skip_ws_comments(i + 1)  # comments may sit between
+                raw, j = self.consume_ident(j)    # '@' and the keyword
+                if not raw:
+                    i = self.skip_ws_comments(i + 1)  # lone '@': skip
+                    continue
+                name = css_unescape(raw).lower()
+                prelude, i, term = self.consume_prelude(j)
+                prelude = prelude.strip()
+                if term == ";":
+                    at_rules.append((name, prelude))
+                elif term == "{":
+                    inner, i = self.consume_block(i)
+                    at_rules.append((name, prelude))
+                    # rules nested in grouping at-rules are real rules:
+                    # extract deliberately, never merge, never swallow
+                    if name in _RULE_CONTAINER_AT_RULES:
+                        _CSSParser(inner).parse_into(rules, at_rules)
+                else:
+                    # EOF or stray '}': record the at-rule, drop the rest
+                    at_rules.append((name, prelude))
+                    if term == "}":
+                        pass  # leave '}' for the main loop to skip
+                i = self.skip_ws_comments(i)
+                continue
+            prelude, i, term = self.consume_prelude(i)
+            if term == "{":
+                inner, i = self.consume_block(i)
+                sel = css_unescape(prelude).strip()
+                decl = inner.strip()
+                if sel and decl:
+                    rules.append((sel, decl))
+            # `;`, `}`, EOF: prelude without a block is not a rule — drop
+            i = self.skip_ws_comments(i)
+
+
+def parse_stylesheet(css_text):
+    """Parse CSS into (rules, at_rules).
+
+    rules:    [(selector_text, declarations_text)] — escapes decoded.
+    at_rules: [(name, prelude)] — name lowercased, escapes decoded;
+              recorded at the delivery boundary instead of silently swallowed.
+    """
+    rules, at_rules = [], []
+    _CSSParser(css_text).parse_into(rules, at_rules)
+    return rules, at_rules
 
 
 def extract_rules(css_text):
     """Yield (selector_text, declarations_text) for each rule."""
-    # strip comments
-    css_text = re.sub(r"/\*.*?\*/", "", css_text, flags=re.DOTALL)
-    for m in RULE_RE.finditer(css_text):
-        sel = m.group(1).strip()
-        decl = m.group(2).strip()
-        if sel and not sel.startswith("@"):
-            yield sel, decl
+    rules, _ = parse_stylesheet(css_text)
+    for sel, decl in rules:
+        yield sel, decl
 
 
 def classes_in_selector(selector):
@@ -249,8 +485,16 @@ def analyze(page_html, catalog):
     # official block selector class.
     official_classes = set(class_to_blocks.keys())
     custom_rules = []  # (selector, declarations, classes)
+    # Delivery boundary: every <style> block is parsed with full at-rule
+    # semantics. At-rules (esp. @import) are RECORDED, never silently
+    # swallowed — absence of the class in the report is the cheapest exploit.
+    at_rules_seen = []  # (name, prelude), deduplicated, in order
     for css in parser.style_blocks:
-        for sel, decl in extract_rules(css):
+        rules, at_rules = parse_stylesheet(css)
+        for name, prelude in at_rules:
+            if (name, prelude) not in at_rules_seen:
+                at_rules_seen.append((name, prelude))
+        for sel, decl in rules:
             sel_classes = classes_in_selector(sel)
             # skip rules that only target official classes or elements
             custom_in_rule = sel_classes - official_classes
@@ -354,6 +598,20 @@ def analyze(page_html, catalog):
         })
         score -= inline_penalty
 
+    # 4d. External @import: rules the grader cannot see (fail closed on the
+    # whole class — an @import of a custom stylesheet is custom CSS whose
+    # duplication status is UNKNOWN, not "clean"). One bounded deduction.
+    imports = [p for n, p in at_rules_seen if n == "import"]
+    if imports:
+        deductions.append({
+            "points": -1.0,
+            "reason": (f"{len(imports)} external stylesheet(s) via @import — "
+                       "their rules are outside the grader's view; "
+                       "duplication unverifiable"),
+            "detail": [f"@import {p}" for p in imports[:5]],
+        })
+        score -= 1.0
+
     score = max(0.0, round(score, 1))
     verdict = "PASS" if score >= 7 else "FAIL"
 
@@ -376,6 +634,10 @@ def analyze(page_html, catalog):
         "num_custom_rules": n_custom_rules,
         "duplication_flags": flags,
         "deductions": deductions,
+        "at_rules": [
+            {"name": n, "prelude": p} for n, p in at_rules_seen
+        ],
+        "num_at_rules": len(at_rules_seen),
         "notes": sorted(undefined_classes)[:20],
         "stats": {
             "total_classes_in_html": len(used_classes),
@@ -408,6 +670,11 @@ def human_summary(result, page_name):
     else:
         L.append("Duplication flags: none")
     L.append("")
+    if result.get("at_rules"):
+        L.append("At-rules seen (parsed, not merged into selectors):")
+        for a in result["at_rules"]:
+            L.append(f"  @ {a['name']} {a['prelude']}".rstrip())
+        L.append("")
     if result["deductions"]:
         L.append("Deductions:")
         for d in result["deductions"]:
