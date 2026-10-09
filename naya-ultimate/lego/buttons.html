@@ -502,6 +502,25 @@ pre.code { background: #0a0d14; border: 1px solid var(--line); border-radius: 14
 .fab { --jewel: #ffbf3d; width: 60px; height: 60px; border-radius: 18px; border: 1px solid rgba(255,255,255,.35); cursor: pointer; display: grid; place-items: center; font-size: 26px; font-weight: 900; color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,.6); background: radial-gradient(circle at 32% 22%, rgba(255,255,255,.85), transparent 42%), radial-gradient(circle at 50% 55%, var(--jewel), color-mix(in srgb, var(--jewel) 45%, #000) 78%); box-shadow: inset 0 1px rgba(255,255,255,.5), inset 0 -3px 8px rgba(0,0,0,.4), 0 0 24px color-mix(in srgb, var(--jewel) 60%, transparent), 0 10px 28px rgba(0,0,0,.6); transition: transform .15s; }
 .fab:hover { transform: scale(1.08); }
 .fab:active { transform: scale(.94); }
+/* ============ ROOM CONTROLS — living upgrade: cursor sheen, proximity wake, pulse ============ */
+.seg-tab, .like-pill, .act-chip, .tog-chip, .day-dot, .send-cta { position: relative; }
+.seg-tab::before, .like-pill::before, .act-chip::before, .tog-chip::before, .day-dot::before, .send-cta::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit;
+  z-index: 0; pointer-events: none; opacity: 0; transition: opacity .28s var(--ease);
+  background: radial-gradient(110px 110px at var(--mx,50%) var(--my,50%), rgba(255,255,255,.14), rgba(255,255,255,.03) 45%, transparent 68%);
+}
+.seg-tab.lv-aware::before, .like-pill.lv-aware::before, .act-chip.lv-aware::before,
+.tog-chip.lv-aware::before, .day-dot.lv-aware::before, .send-cta.lv-aware::before { opacity: 1; }
+.seg-tab.lv-aware, .like-pill.lv-aware, .act-chip.lv-aware, .tog-chip.lv-aware, .day-dot.lv-aware { border-color: rgba(255,255,255,.22); }
+.seg-tab.on::after, .like-pill.on::after, .act-chip.on::after, .tog-chip.on::after, .day-dot.on::after {
+  content: ""; position: absolute; inset: -1px; border-radius: inherit; pointer-events: none;
+  box-shadow: 0 0 20px -2px var(--sc); opacity: .4; animation: ctrl-pulse 4s ease-in-out infinite;
+}
+@keyframes ctrl-pulse { 0%,100% { opacity: .3; } 50% { opacity: .78; } }
+@media (prefers-reduced-motion: reduce) {
+  .seg-tab.on::after, .like-pill.on::after, .act-chip.on::after, .tog-chip.on::after, .day-dot.on::after { animation: none; opacity: .4; }
+  .seg-tab::before, .like-pill::before, .act-chip::before, .tog-chip::before, .day-dot::before, .send-cta::before { display: none; }
+}
 </style>
 
 </div>
@@ -517,7 +536,7 @@ function copyCode(id) {
 (function () {
   'use strict';
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var els = Array.prototype.slice.call(document.querySelectorAll('.lv-btn'));
+  var els = Array.prototype.slice.call(document.querySelectorAll('.lv-btn, .seg-tab, .like-pill, .act-chip, .tog-chip, .day-dot, .send-cta'));
   if (!els.length) return;
   var raf = null, lastX = -9999, lastY = -9999;
   function update() {
