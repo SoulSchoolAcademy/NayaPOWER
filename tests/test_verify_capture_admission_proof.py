@@ -1,3 +1,5 @@
+import hashlib
+import json
 import sys
 from pathlib import Path
 
@@ -16,8 +18,8 @@ def fixture():
     expected = {
         "capture_path": ".naya/capture/capture-1.json",
         "capture_id": "capture-1",
-        "expected_content": "lesson essence",
-        "content_hash": "a" * 64,
+        "expected_content": json.dumps(capture["intelligence"], sort_keys=True, separators=(",", ":"), ensure_ascii=False),
+        "content_hash": hashlib.sha256(json.dumps(capture["intelligence"], sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8")).hexdigest(),
     }
     lineage = {
         "intelligent_block_id": "IB-1", "event_id": "event-1", "receipt_id": "receipt-1",
@@ -32,7 +34,7 @@ def fixture():
         "understanding_state": "CANDIDATE",
         "exact_distilled_payload_match": True,
         "independent_lineage_verification": True,
-        "content_hash": "a" * 64,
+        "content_hash": expected["content_hash"],
     }
     return capture, expected, lineage, proof
 
@@ -104,3 +106,32 @@ def test_capture_path_mismatch_is_rejected():
     c, e, l, p = fixture()
     e["capture_path"] = ".naya/capture/other.json"
     assert check(c, e, l, p).reason == "CAPTURE_PATH_MISMATCH"
+
+
+def test_modified_capture_is_not_admitted_against_old_receipt():
+    c, e, l, p = fixture()
+    c["intelligence"]["machine_view"]["lesson"] = "INJECTED_UNVERIFIED_POLICY"
+    assert check(c, e, l, p).reason == "CAPTURE_DISTILLATION_MISMATCH"
+
+
+def test_modified_expected_content_is_not_admitted_against_old_hash():
+    c, e, l, p = fixture()
+    e["expected_content"] = "UNBOUND_TAMPERED_CONTENT"
+    assert check(c, e, l, p).reason == "CAPTURE_DISTILLATION_MISMATCH"
+
+
+def test_colluding_capture_and_expected_with_old_proof_are_rejected():
+    c, e, l, p = fixture()
+    c["intelligence"]["machine_view"]["lesson"] = "INJECTED_UNVERIFIED_POLICY"
+    e["expected_content"] = json.dumps(c["intelligence"], sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+    assert check(c, e, l, p).reason == "CAPTURE_CONTENT_HASH_MISMATCH"
+
+
+def test_valid_unicode_payload_uses_receiver_canonical_serialization():
+    c, e, l, p = fixture()
+    c["intelligence"]["human_view"] = "Résumé — 学习 💜"
+    e["expected_content"] = json.dumps(c["intelligence"], sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+    h = hashlib.sha256(e["expected_content"].encode("utf-8")).hexdigest()
+    e["content_hash"] = h
+    p["content_hash"] = h
+    assert check(c, e, l, p).reason == "ADMIT"
