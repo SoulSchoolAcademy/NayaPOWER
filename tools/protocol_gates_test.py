@@ -267,6 +267,19 @@ def test_quality_all_dimensions_above_floor():
     assert r.passed, r.reasons
 
 
+def test_quality_default_weights_are_equal_and_explicit_bad_weights_rejected():
+    # Omitted weights are an adapter convenience, not permission to ignore
+    # the canonical scorecard's 1.0 sum or dimension coverage constraints.
+    valid = check_quality_gate({"correctness": 9.5, "evidence": 9.5})
+    assert valid.passed, valid.reasons
+    invalid = check_quality_gate(
+        {"correctness": 9.5, "evidence": 9.5},
+        {"correctness": 0.2, "evidence": 0.2},
+    )
+    assert not invalid.passed
+    assert any("weights must sum to 1.0" in reason for reason in invalid.reasons)
+
+
 def test_quality_single_dimension_below_floor_fails():
     r = check_quality_gate({"correctness": 10.0, "completeness": 7.0, "evidence": 9.5})
     assert not r.passed  # a 10 never covers a 7
