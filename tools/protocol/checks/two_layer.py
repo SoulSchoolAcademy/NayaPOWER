@@ -16,6 +16,14 @@ Consequential types (the law applies — these are things Shawn reads):
 Exempt types (one-line pings stay cheap — the law deliberately skips):
   status_ping, ack, coordination_note.
 
+The carve-out is NARROW: it covers one-line pings only. A record that
+carries substantive consequential content VOIDS the exemption — content
+decides the path, not the label (a relabel is not a rule). Substantive =
+any of technical/plain_human/full_text present and non-blank, or any
+other text field at/over PING_MAX_CHARS (300) chars. The voided record
+is then checked as a consequential report: it can still pass, but only
+by actually honoring the two layers.
+
 Anything else fails CLOSED: an unknown report_type is never silently
 defaulted to exempt. (Fail-closed on shape, not just syntax — the
 validator's meta-law.)
@@ -38,10 +46,27 @@ Checks (fail-closed: shape first via shape_closed.validate_shape):
   4. plain_human present, non-empty, >= 40 chars.
   5. plain_human is not a copy of technical (token Jaccard < 0.7).
      Copy-pasting the jargon into the second field is the laziest exploit.
-  6. plain_human carries at least one plain-words signal. Heuristic, documented
-     as approximate — but fail-closed: no signal, no pass.
+  6. plain_human carries at least one plain-words signal (cheap screen —
+     the law's own markers), AND reads plain: Flesch Reading Ease >= 50.
+     Sprinkling one signal phrase into jargon, or paraphrasing the jargon,
+     keeps the long words and long sentences, so Flesch stays low. To beat
+     50 you must write short sentences in short, common words — which IS
+     the law's demand ("like explaining to a child"). The exploit
+     collapses into compliance.
   7. If full_text is provided, it must contain a TECHNICAL marker followed
      by a PLAIN-WORDS marker. Order is the law: technicals-first-then-literal.
+
+HONEST BOUND (what this check provably does NOT do):
+  - It proves READABILITY, not truthfulness. A readable-but-vacuous layer
+    ("In other words, think of it like a car. For example, it drives.")
+    passes the mechanics while explaining nothing.
+  - It does not grade comprehension, intent, or whether the plain layer
+    faithfully represents the technical layer.
+  - High-stakes reports still need a human seat to actually read them.
+The check is a cheap screen against laziness and decoration — missing
+layer, verbatim copy, marker-free jargon, jargon wearing one plain-words
+phrase as camouflage. It is not a comprehension test, and it never
+claims to be.
 
 Usage:
     python3 tools/protocol/checks/two_layer.py \\
@@ -104,6 +129,77 @@ PLAIN_MARKERS = [
     "plainly put",
 ]
 
+# --- Hardening 2 (2026-10-09): the exempt carve-out is one-line pings only.
+# Fields that ARE the consequential report shape. A ping never carries
+# these; their presence means this is a report wearing a ping's label.
+CONSEQUENTIAL_FIELDS = ("technical", "plain_human", "full_text")
+# Other free-text payload fields a ping may legitimately carry — but only
+# as a one-liner. At/over this length it is a report, not a ping.
+# Judgment call, tested at the boundary (299 passes, 300 voids).
+PING_MAX_CHARS = 300
+PING_TEXT_FIELDS = (
+    "title",
+    "message",
+    "body",
+    "content",
+    "note",
+    "summary",
+    "details",
+    "description",
+    "text",
+)
+
+
+def _exemption_voided_reason(record: dict) -> str | None:
+    """Why the exempt-type carve-out is voided, or None for a genuine
+    one-line ping. Content decides the path, not the label."""
+    for field in CONSEQUENTIAL_FIELDS:
+        val = record.get(field)
+        if isinstance(val, str) and val.strip():
+            return f"carries report field {field!r}"
+    for field in PING_TEXT_FIELDS:
+        val = record.get(field)
+        if isinstance(val, str) and len(val) >= PING_MAX_CHARS:
+            return (
+                f"text field {field!r} is {len(val)} chars "
+                f"(>= {PING_MAX_CHARS}) — a report, not a one-line ping"
+            )
+    return None
+
+
+# --- Hardening 3 (2026-10-09): readability wall.
+# Minimum Flesch Reading Ease for the plain-words layer. Calibrated on
+# real fixtures 2026-10-09: genuine plain layers measured 55–103;
+# jargon-dense attacks (sprinkled signal phrase, paraphrase) measured
+# -0–43. The threshold sits between them with margin on both sides.
+MIN_FLESCH = 50.0
+
+
+def _syllables(word: str) -> int:
+    word = word.lower().strip("'")
+    if not word:
+        return 0
+    count = len(re.findall(r"[aeiouy]+", word))
+    if word.endswith("e"):
+        count -= 1
+    if word.endswith("le") and len(word) > 2 and word[-3] not in "aeiouy":
+        count += 1
+    return max(count, 1)
+
+
+def _flesch_reading_ease(text: str) -> float:
+    """Flesch Reading Ease: 206.835 - 1.015*(words/sentences)
+    - 84.6*(syllables/words). Higher = plainer. Deterministic, no word
+    list, no model — short sentences in short common words score high."""
+    words = re.findall(r"[a-zA-Z']+", text)
+    sentences = [s for s in re.split(r"[.!?;]+", text) if s.strip()]
+    n_words = len(words)
+    n_sent = max(len(sentences), 1)
+    n_syl = sum(_syllables(w) for w in words)
+    if n_words == 0:
+        return 0.0
+    return 206.835 - 1.015 * (n_words / n_sent) - 84.6 * (n_syl / n_words)
+
 
 def _tokens(text: str) -> set[str]:
     return set(re.findall(r"[a-z0-9']+", text.lower()))
@@ -149,11 +245,22 @@ def check(record: dict) -> dict:
     details["title"] = title
 
     if rtype in EXEMPT:
+        void_reason = _exemption_voided_reason(record)
+        if void_reason is None:
+            reasons.append(
+                f"{title}: {rtype!r} is explicitly exempt — one-line pings "
+                "stay cheap, the law deliberately skips them"
+            )
+            return result(True, reasons, details)
+        # Exemption voided: a relabel is not a rule. The record is checked
+        # as a consequential report — it can still pass, but only by
+        # actually honoring the two layers.
         reasons.append(
-            f"{title}: {rtype!r} is explicitly exempt — one-line pings "
-            "stay cheap, the law deliberately skips them"
+            f"{title}: labeled {rtype!r} but {void_reason} — the one-line-ping "
+            "exemption is voided; content decides the path, not the label"
         )
-        return result(True, reasons, details)
+        details["exemption_voided"] = void_reason
+        # fall through to the consequential path below
 
     # Consequential: both layers are required, with substance.
     ok, layer_reasons = validate_shape(
@@ -201,6 +308,25 @@ def check(record: dict) -> dict:
             details,
         )
     reasons.append("plain_human carries plain-words signal")
+
+    # Readability wall: the layer must READ plain, not just wear one
+    # plain-words phrase as camouflage. Sprinkling "in other words" into
+    # jargon, or paraphrasing the jargon, keeps the long words and long
+    # sentences — Flesch stays low. Beating 50 requires writing short
+    # sentences in short, common words: the exploit collapses into
+    # compliance. (Honest bound: this proves readability, not
+    # truthfulness — a readable-but-vacuous layer still passes.)
+    ease = _flesch_reading_ease(plain)
+    details["plain_flesch"] = round(ease, 1)
+    if ease < MIN_FLESCH:
+        return fail(
+            f"{title}: plain_human reads at Flesch {ease:.1f} "
+            f"(< {MIN_FLESCH:g}) — it may carry a plain-words marker, but "
+            "it still reads like technicals. Plain human words, like "
+            "explaining to a child: short sentences, short common words.",
+            details,
+        )
+    reasons.append(f"plain layer reads plain (Flesch {ease:.1f})")
 
     # Order, when the rendered text is provided: technicals FIRST, then literal.
     full = str(record.get("full_text") or "").strip()

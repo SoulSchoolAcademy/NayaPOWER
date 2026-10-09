@@ -51,6 +51,18 @@ TYPES = {
 }
 
 
+def _type_ok(tname: str, value) -> bool:
+    """Type acceptance with the bool quirk closed.
+
+    Python's isinstance(True, int) is True — a bool would silently pass
+    an "int" or "float" gate. A bool is not a number for shape purposes:
+    True is not 1 here. Reject bool for int/float explicitly.
+    """
+    if isinstance(value, bool) and tname in ("int", "float"):
+        return False
+    return isinstance(value, TYPES[tname])
+
+
 def validate_shape(data: dict, schema: dict) -> tuple[bool, list[str]]:
     """Validate data against a shape schema. Returns (ok, reasons)."""
     reasons: list[str] = []
@@ -88,16 +100,20 @@ def validate_shape(data: dict, schema: dict) -> tuple[bool, list[str]]:
     for field, tname in types.items():
         if field not in data or data[field] is None:
             continue  # presence already failed above
-        t = TYPES.get(tname)
-        if t is None:
+        if tname not in TYPES:
             ok = False
             reasons.append(f"schema error: unknown type {tname!r} for {field!r}")
             continue
-        if not isinstance(data[field], t):
+        if not _type_ok(tname, data[field]):
             ok = False
+            bool_note = (
+                " — a bool is not a number (isinstance quirk closed)"
+                if isinstance(data[field], bool)
+                else ""
+            )
             reasons.append(
                 f"field {field!r} is {type(data[field]).__name__}, "
-                f"not {tname} — wrong shape, fail closed"
+                f"not {tname} — wrong shape, fail closed{bool_note}"
             )
             continue
         reasons.append(f"field {field!r} is {tname}")
