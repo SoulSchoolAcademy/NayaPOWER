@@ -19,9 +19,14 @@ What this does NOT do (see Naya 5's tools/design_gate.py for the binary gate):
     and exactly which custom CSS reinvents a solved job.
 
 Usage:
-    python3 tools/design-compliance-check.py <page.html> [--catalog PATH] [--json]
+    python3 tools/design-compliance-check.py <page.html> --receipt <receipt.json> [--catalog PATH] [--json]
 
-Exit codes: 0 = PASS (score >= 7), 1 = FAIL (score < 7), 2 = usage/tool error.
+STEP 0 — ACTIVATION PRE-GATE (Gap-2 integration):
+    The checker REFUSES to score without a valid, current activation receipt.
+    No receipt = no score. Not a low score — a refusal. Activation first.
+
+Exit codes: 0 = PASS (score >= 7), 1 = FAIL (score < 7), 2 = usage/tool error,
+            3 = ACTIVATION REFUSED (no/invalid/stale activation receipt).
 """
 
 import json
@@ -30,6 +35,13 @@ import sys
 import os
 from html.parser import HTMLParser
 from collections import defaultdict
+
+# Activation pre-gate (STEP 0 — runs before any scoring)
+try:
+    from activation_pregate import gate_or_refuse, ActivationRefused
+except ImportError:
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    from activation_pregate import gate_or_refuse, ActivationRefused
 
 # ---------------------------------------------------------------------------
 # Catalog loading
@@ -416,15 +428,31 @@ def human_summary(result, page_name):
 def main(argv):
     if len(argv) < 2 or argv[1] in ("-h", "--help"):
         print(__doc__.strip().split("\n\n")[0])
-        print("Usage: python3 tools/design-compliance-check.py <page.html> [--json] [--catalog PATH]")
+        print("Usage: python3 tools/design-compliance-check.py <page.html> --receipt <receipt.json> [--json] [--catalog PATH]")
+        print("")
+        print("STEP 0 — ACTIVATION PRE-GATE: --receipt is REQUIRED.")
+        print("Without a valid, current activation receipt the checker REFUSES")
+        print("to score (exit 3). Activation first.")
         return 2
     page_path = argv[1]
     as_json = "--json" in argv
     catalog_path = None
+    receipt_path = None
     if "--catalog" in argv:
         i = argv.index("--catalog")
         if i + 1 < len(argv):
             catalog_path = argv[i + 1]
+    if "--receipt" in argv:
+        i = argv.index("--receipt")
+        if i + 1 < len(argv):
+            receipt_path = argv[i + 1]
+
+    # --- STEP 0: ACTIVATION PRE-GATE (runs before anything else) ---
+    if not receipt_path:
+        print("ACTIVATION REFUSED: no --receipt provided.", file=sys.stderr)
+        print("The checker does not score work from an unactivated Naya.", file=sys.stderr)
+        print("Activate first, then re-run with --receipt <receipt.json>.", file=sys.stderr)
+        return 3
 
     try:
         catalog, used_catalog = load_catalog(catalog_path)
@@ -438,10 +466,21 @@ def main(argv):
         print(f"ERROR: cannot read {page_path}: {e}", file=sys.stderr)
         return 2
 
+    # Verify activation against independently-fetched trusted state.
+    # Any failure -> REFUSE (exit 3), never a score.
+    try:
+        receipt_digest = gate_or_refuse(receipt_path, html)
+    except ActivationRefused as e:
+        print(f"ACTIVATION REFUSED: {', '.join(e.violations)}", file=sys.stderr)
+        print("The checker does not score work without valid activation.", file=sys.stderr)
+        return 3
+
     result = analyze(html, catalog)
     result["page"] = page_path
     result["catalog"] = used_catalog
     result["catalog_blocks"] = catalog["total_blocks"]
+    result["activation_receipt_sha256"] = receipt_digest
+    result["activation"] = "VERIFIED"
 
     if as_json:
         print(json.dumps(result, indent=2))
