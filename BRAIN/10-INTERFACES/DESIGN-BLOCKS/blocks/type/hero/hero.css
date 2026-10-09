@@ -21,7 +21,7 @@
   font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: #8d63f5;
+  color: var(--purple);
   margin: 0 0 20px 0;
 }
 
@@ -43,7 +43,7 @@
 
 /* Accent words inside the headline — gradient soul, not flat color */
 .naya-hero__title .naya-accent {
-  background: linear-gradient(120deg, #c9b3ff 0%, #8d63f5 55%, #6d3ff0 100%);
+  background: linear-gradient(120deg, #c9b3ff 0%, var(--purple) 55%, #6d3ff0 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;

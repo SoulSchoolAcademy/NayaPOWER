@@ -24,8 +24,8 @@
 
 
 .lv-btn {
-  --lv-accent: #a06bff;
-  --lv-accent-rgb: 160,107,255;
+  --lv-accent: var(--purple);
+  --lv-accent-rgb: var(--purple-rgb);
   position: relative; isolation: isolate; overflow: hidden;
   display: inline-flex; align-items: center; justify-content: center; gap: 12px;
   min-height: 52px; padding: 0 30px; border-radius: 999px;

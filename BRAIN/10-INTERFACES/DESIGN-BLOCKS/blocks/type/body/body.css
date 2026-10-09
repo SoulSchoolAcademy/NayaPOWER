@@ -51,13 +51,13 @@
 .naya-body a {
   color: #a583ff;
   text-decoration: underline;
-  text-decoration-color: rgba(141, 99, 245, 0.5);
+  text-decoration-color: rgba(var(--purple-rgb), 0.5);
   text-underline-offset: 3px;
   transition: text-decoration-color 0.22s cubic-bezier(0.16, 0.84, 0.22, 1);
 }
 
 .naya-body a:hover {
-  text-decoration-color: #8d63f5;
+  text-decoration-color: var(--purple);
 }
 
 /* Strong and emphasis */

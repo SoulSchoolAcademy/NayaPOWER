@@ -21,7 +21,7 @@
 
 
 
-.orb { --oc: #a06bff; --oc-rgb: 160,107,255; position: relative; display: inline-block; width: 120px; height: 120px; border-radius: 50%;
+.orb { --oc: var(--purple); --oc-rgb: var(--purple-rgb); position: relative; display: inline-block; width: 120px; height: 120px; border-radius: 50%;
   background:
     radial-gradient(circle at 34% 26%, rgba(255,255,255,.95) 0%, rgba(255,255,255,.30) 13%, transparent 30%),
     radial-gradient(circle at 50% 62%, rgba(255,255,255,.10) 0%, transparent 42%),
