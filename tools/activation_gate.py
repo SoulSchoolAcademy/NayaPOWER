@@ -65,6 +65,39 @@ and its artifact's receipt.json is byte-identical to the presented receipt.
 A self-minted receipt, however perfect its public data, FAILS issuance
 verification: ISSUANCE_UNATTESTED / ISSUANCE_BYTES_MISMATCH.
 
+Round-4 (this round) closes the re-attacker's round-3 findings:
+  (1) PRODUCTION BREAK — the delivery workflow ran with
+      `contents:read, pull-requests:read` only, so verify_issuance's two
+      Actions-API calls 403'd and EVERY lawful delivery rejected. Fixed:
+      the workflow now grants `actions: read`, and the issuance e2e is
+      re-proven under the production permission set (a CI job whose token
+      carries exactly the delivery workflow's permissions), not the proof
+      set — the permission set is part of the system under test (A4).
+  (2) ENTITY-ENCODED COMPONENT PREFIX (new class, the encoding layer below
+      D3/D4): `class="&#110;aya-evil"` decodes in the browser to a forbidden
+      class while raw-text checks see nothing. Fixed at the class level:
+      canonicalize_class_attributes() now entity-decodes class values
+      (html.unescape — the browser's own decoding) before the design lane's
+      prefix check. The pin stays at the reviewed design-lane commit; the
+      lane's own regex frontier (comment/script/data-class phantoms) is the
+      lane's to land, then the pin advances.
+  (3) TRIGGER CASE-GAP (bypass-1 residual): `docs/FOO.HTML` is a
+      deliverable per _is_deliverable but evaded the case-sensitive
+      `paths:` filter — the gate never ran. Fixed at the class level: the
+      workflow trigger carries NO paths filter; _is_deliverable is the
+      single scope authority, computed inside the gate. Predicate ==
+      perimeter — there is no second perimeter left to drift.
+  (4) HYGIENE: class regex uses a `(?<=[\s/])` lookbehind (`\b` matches
+      between `-` and `c`, so it never excluded `data-class`); the old
+      regex also CORRUPTED `data-x="class=..."` attribute values —
+      both closed. Symlinked deliverables are REJECTED (never bind through
+      a link). The mint run's head_sha pin was considered and DECLINED:
+      fork runs are already rejected via head_repository, --ref does not
+      enter the receipt's security properties, and an equality pin would
+      risk false-rejecting lawful mints on the main-moved race — a check
+      with no threat model and a lawful-path breakage risk is theater,
+      not defense.
+
 What the gate enforces, precisely:
   (1) ISSUANCE — the receipt was minted by the trusted runner (delivery
       boundary only; the single-pair predicate tests consistency+binding).
@@ -94,6 +127,9 @@ hashing, so minting converges in one pass.
 Acceptance table (every row must hold in real CI):
   authentic fresh receipt, exact repo, full current main SHA,
     bound deliverable, RUN-ATTESTED issuance ........ PASS
+  PR with no changed deliverables .................. PASS (nothing to gate;
+      the workflow triggers on every PR and _is_deliverable is the single
+      scope authority — round-4)
   fabricated / self-asserted receipt .............. REJECT
   self-minted receipt, perfect public data (A1) ... REJECT (ISSUANCE_*)
   tampered attestation / foreign run / failed run . REJECT (ISSUANCE_*)
@@ -103,11 +139,13 @@ Acceptance table (every row must hold in real CI):
   missing / abbreviated / mismatched commit SHA .. REJECT
   missing / tampered receipt ..................... REJECT
   transplanted receipt (wrong deliverable) ....... REJECT
+  symlinked deliverable (PR ships a link) ........ REJECT (round-4)
   deleted deliverable with tombstone ............. PASS
   deleted deliverable without tombstone .......... REJECT
   unregistered component class (design lane) ..... REJECT (delegated)
   unquoted class=naya-evil (D3) .................. REJECT
   spaced class = "..." (D4) ...................... REJECT
+  entity-encoded class (&#110; / &#x6E;) .......... REJECT (round-4)
   expired / future activation .................... REJECT
   alternate route bypassing the gate .............. LOCAL-REHEARSAL-*, never
       PASS, exit 3 (self-minted truth yields no passing verdict)
@@ -125,6 +163,7 @@ Exit codes: 0 = PASS (protected) | 1 = REJECT | 2 = tool error
 
 import argparse
 import hashlib
+import html as _html
 import json
 import os
 import re
@@ -407,21 +446,49 @@ DESIGN_GATE_FILE = "tools/design_gate.py"
 DESIGN_MANIFEST_FILE = "smart-blocks/manifest.json"
 
 
-# D3/D4 (round-3): the design lane's class regex only matches quoted
-# `class="..."`. Unquoted (`class=naya-evil`) and spaced (`class = "..."`)
-# forms evade it. This gate canonicalizes every class attribute to the
-# quoted form BEFORE delegating, so the lane's logic judges every class the
-# browser will see. Semantics-preserving: `class=x` == `class="x"` in HTML.
+# D3/D4 (round-3) + ENTITY LAYER (round-4): the design lane's class regex only
+# matches quoted `class="..."`. Unquoted (`class=naya-evil`) and spaced
+# (`class = "..."`) forms evade it — and character references
+# (`class="&#110;aya-evil"`, `&#x6E;` hex) evade every raw-text check while
+# the browser decodes them to the forbidden class. This gate canonicalizes
+# every class attribute to the quoted, ENTITY-DECODED form BEFORE delegating,
+# so the lane's logic judges every class the browser will see.
+# Semantics-preserving: `class=x` == `class="x"` in HTML, and the browser
+# decodes character references in attribute values (HTML5 tokenization).
+# Round-5: the decoded value is re-escaped (html.escape, quote=True) before
+# re-quoting — a decoded quote must never terminate the rewritten attribute
+# (quote-smuggling: &#34;/&quot;/&#39;), or the canonical bytes parse
+# differently from what the browser applies.
+#
+# The lookbehind `(?<=[\s/])` (not `\b`: there IS a word boundary between
+# `-` and `c`) matches only where a real attribute name can stand — after
+# whitespace or `/`. This keeps `data-class="..."` and `class=` inside other
+# attribute values from matching — the old regex rewrote
+# `data-x="class=naya-evil"` into broken HTML (round-3 corruption).
 CLASS_ATTR_RE = re.compile(
-    r'''\bclass\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))''', re.IGNORECASE)
+    r'''(?<=[\s/])class\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))''',
+    re.IGNORECASE)
 
 
 def canonicalize_class_attributes(html_text):
-    """Rewrite every class attribute to canonical `class="..."` form."""
+    """Rewrite every class attribute to canonical `class="..."` form, with
+    character references decoded exactly as the browser decodes them, then
+    re-encoded for the double-quoted wrapper.
+
+    Round-5: decode-then-requote WITHOUT re-escaping is a smuggling hole. An
+    entity such as &#34; decodes to a literal `"` that terminates the
+    rewritten attribute early — the freestyle class falls outside any quoted
+    `class="..."`, invisible to the lane's regex, while the browser still
+    applies it (and a decoded `'` breaks the lane's `[^"']+` capture even
+    inside double quotes). `html.escape(..., quote=True)` after the decode
+    makes the canonical form a fixed point: every conformant parser reads
+    exactly the class tokens the browser sees in the original bytes, so the
+    decode/re-encode asymmetry between canonicalizer and browser is gone.
+    """
     def _q(m):
         val = m.group(1) if m.group(1) is not None else (
             m.group(2) if m.group(2) is not None else (m.group(3) or ""))
-        return 'class="%s"' % val
+        return 'class="%s"' % _html.escape(_html.unescape(val), quote=True)
     return CLASS_ATTR_RE.sub(_q, html_text)
 
 
@@ -579,6 +646,30 @@ def run_design_gate(deliverable_path, design_gate_path, manifest_path):
     return violations
 
 
+def _expand_renames(changed):
+    """Expand renames into delete(old) + add(new) — the PR files API
+    vocabulary; the gate reasons over logical changes."""
+    logical = []
+    for c in changed or []:
+        path = c.get("path", "")
+        status = (c.get("status") or "modified").lower()
+        prev = c.get("previous_filename")
+        if status == "renamed" and prev and prev != path:
+            logical.append({"path": prev, "status": "removed"})
+            logical.append({"path": path, "status": "added"})
+        else:
+            logical.append({"path": path, "status": status})
+    return logical
+
+
+def _changed_deliverables(changed):
+    """The single scope authority (round-4): a file is gated iff
+    _is_deliverable says so. The workflow trigger carries NO paths filter —
+    GitHub's is case-sensitive minimatch and can never be the scope of
+    record (round-3 trigger case-gap: docs/FOO.HTML)."""
+    return [c for c in _expand_renames(changed) if _is_deliverable(c["path"])]
+
+
 def check_delivery(receipt_bytes, pr_head_dir, changed, truth,
                    design_gate_path="", design_manifest_path="",
                    base_sha="", token=""):
@@ -586,17 +677,30 @@ def check_delivery(receipt_bytes, pr_head_dir, changed, truth,
     PR-head files from disk and the live API calls for issuance + tombstones
     (bytes the gate verifies, never trusts).
 
+    SCOPE FIRST (round-4): the workflow runs on every PR to main; when no
+    changed file is a deliverable there is nothing to gate and the verdict
+    is PASS. A receipt is demanded only when something shippable changed —
+    otherwise every docs-only PR would fail closed on a missing receipt.
+
     Every changed deliverable must be bound by a RUN-ATTESTED receipt
     (issuance verified via the live API — forgery A1), by path + sha256 of
     PR-head bytes, and cite the receipt (marker = sha256 of exact receipt
     bytes). HTML deliverables additionally pass the design lane's gate on
-    canonicalized bytes (D3/D4 quote-tolerant). Deleted deliverables travel
-    the tombstone path: the receipt carries action:"delete" and the gate
-    verifies the base blob. Returns (verdict, violations).
+    canonicalized bytes (D3/D4 quote-tolerant, round-4 entity-decoded).
+    Deleted deliverables travel the tombstone path: the receipt carries
+    action:"delete" and the gate verifies the base blob. Symlinked
+    deliverables are REJECTED outright (round-4): the PR ships a link, not
+    bytes — binding through a link would verify bytes the PR does not ship.
+    Returns (verdict, violations).
 
     `changed`: list of {"path", "status", "previous_filename"} — status in
     added/modified/removed/renamed (the PR files API vocabulary).
     """
+    # scope FIRST: nothing shippable changed -> nothing to gate
+    changed_deliverables = _changed_deliverables(changed)
+    if not changed_deliverables:
+        return "PASS", []
+
     violations = []
     receipt, verdict, v = check_receipt(receipt_bytes, truth)
     violations.extend(v)
@@ -608,23 +712,6 @@ def check_delivery(receipt_bytes, pr_head_dir, changed, truth,
     violations.extend(verify_issuance(receipt, receipt_bytes, truth, token))
     if any(x.startswith("ISSUANCE_") or x.startswith("TRUTH_UNTRUSTED")
            for x in violations):
-        return "REJECT", violations
-
-    # expand renames into delete(old) + add(new)
-    logical = []
-    for c in changed or []:
-        path = c.get("path", "")
-        status = (c.get("status") or "modified").lower()
-        prev = c.get("previous_filename")
-        if status == "renamed" and prev and prev != path:
-            logical.append({"path": prev, "status": "removed"})
-            logical.append({"path": path, "status": "added"})
-        else:
-            logical.append({"path": path, "status": status})
-    changed_deliverables = [c for c in logical if _is_deliverable(c["path"])]
-    if not changed_deliverables:
-        violations.append("DELIVERY_SCOPE_EMPTY: no changed deliverables — "
-                          "nothing for the gate to bind (fail closed)")
         return "REJECT", violations
 
     entries = {}
@@ -643,6 +730,14 @@ def check_delivery(receipt_bytes, pr_head_dir, changed, truth,
             violations.append("DELIVERABLE_PATH_UNSAFE: %r" % path)
             continue
         disk_path = os.path.join(pr_head_dir, path)
+
+        # round-4: never bind through a symlink — the PR ships a link, the
+        # gate would otherwise verify target bytes the PR does not ship.
+        if os.path.islink(disk_path):
+            violations.append(
+                "DELIVERABLE_SYMLINK: %r is a symlink in the PR head — "
+                "deliverables must be real files, refusing" % path)
+            continue
 
         if status == "removed":
             # --- tombstone path (round-3c): legitimate deletions merge ---
@@ -699,11 +794,12 @@ def check_delivery(receipt_bytes, pr_head_dir, changed, truth,
             violations.append(
                 "CITATION_DIGEST_MISMATCH: %r marker does not match sha256 of "
                 "the exact receipt bytes" % path)
-        # ROW 7 — delegate-and-verify on CANONICALIZED bytes (D3/D4): the
-        # design lane's gate judges the structural closed-world; every class
-        # attribute is first rewritten to the quoted form so unquoted/spaced
-        # evasions cannot hide from its regex. Absent design gate fails
-        # closed — never a silent pass.
+        # ROW 7 — delegate-and-verify on CANONICALIZED bytes (D3/D4
+        # quote-tolerant, round-4 entity-decoded): the design lane's gate
+        # judges the structural closed-world; every class attribute is first
+        # rewritten to the quoted, entity-decoded form so unquoted/spaced/
+        # encoded evasions cannot hide from its regex. Absent design gate
+        # fails closed — never a silent pass.
         if path.lower().endswith(".html"):
             canon = canonicalize_class_attributes(text)
             if canon != text:
@@ -958,16 +1054,6 @@ def _run_delivery(args):
     if not args.pr_head or not os.path.isdir(args.pr_head):
         return _emit("TOOL-ERROR", ["delivery mode requires --pr-head DIR"],
                      args, 2, local=False)
-    receipt_file = os.path.join(args.pr_head, RECEIPT_PATH)
-    try:
-        with open(receipt_file, "rb") as f:
-            receipt_bytes = f.read()
-    except OSError:
-        return _emit("REJECT", ["RECEIPT_MISSING_OR_EMPTY: no receipt at %s "
-                                "in the PR head — deliverables cannot ship "
-                                "without bound activation (fail closed)"
-                                % RECEIPT_PATH],
-                     args, 1, local=False)
     try:
         truth = resolve_truth()
     except RuntimeError as e:
@@ -985,6 +1071,26 @@ def _run_delivery(args):
             changed = pr_changed_files(truth["repository"], args.pr, token)
     except RuntimeError as e:
         return _emit("TOOL-ERROR", [str(e)], args, 2, local=False)
+
+    # SCOPE FIRST (round-4): the workflow triggers on every PR to main and
+    # _is_deliverable is the single scope authority. A PR with no changed
+    # deliverables has nothing to gate — PASS without demanding a receipt
+    # (otherwise every docs-only PR would fail closed on a missing receipt).
+    if not _changed_deliverables(changed):
+        return _emit("PASS",
+                     ["no changed deliverables in this PR — nothing to gate"],
+                     args, 0, local=False)
+
+    receipt_file = os.path.join(args.pr_head, RECEIPT_PATH)
+    try:
+        with open(receipt_file, "rb") as f:
+            receipt_bytes = f.read()
+    except OSError:
+        return _emit("REJECT", ["RECEIPT_MISSING_OR_EMPTY: no receipt at %s "
+                                "in the PR head — deliverables cannot ship "
+                                "without bound activation (fail closed)"
+                                % RECEIPT_PATH],
+                     args, 1, local=False)
 
     base_sha = args.base_sha.strip() or ""
     if not base_sha and not args.changed_files:

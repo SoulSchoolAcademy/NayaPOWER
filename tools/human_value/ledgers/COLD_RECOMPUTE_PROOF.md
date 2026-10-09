@@ -81,3 +81,69 @@ Run note: the first cold attempt of this run caught a stale era-pinned test
 (`n == 2` hardcoded); the test was updated to pin the new floor
 (`n >= 3`, LEARN_CANDIDATE proposes, never promotes) and both sides re-ran
 green before this proof. /tmp clones removed after verification.
+
+## Fifth cold run — 2026-10-09 03:48 UTC (29-event ledger, n=4 join)
+
+Fresh clone @ `b60ebc6b` (branch `naya5/human-value-events-20261009`), same
+procedure, no access to the originating workspace:
+
+| Check | Originating worktree | Cold clone | Match |
+|---|---|---|---|
+| HEAD | `b60ebc6b` | `b60ebc6b` | ✅ |
+| `ledger_sha256` | `sha256:90c7b3fe723f172cc2ddb7fe7540823df3a8de513da64db9d02130fe0ff8ceb3` | (same) | ✅ |
+| `hv_per_day_total` | 4.2857 | 4.2857 | ✅ |
+| `dai_per_day` | 0.2857 | 0.2857 | ✅ |
+| `events_validated` | 29 | 29 | ✅ |
+| `calibration.n` / MAE / signed bias | 4 / 0.125 / +0.125 | 4 / 0.125 / +0.125 | ✅ |
+| overprediction | false | false | ✅ |
+| test suite | 10 passed | 10 passed | ✅ |
+
+**Verdict:** the n=4 measurement is cold-recomputable at the branch's final
+state. The DEC-004 outcome event's `delta_v_actual: 7.0` stands: push +
+cold-recompute proof verified; scorecard posts next.
+
+## Sixth cold run — 2026-10-09 ~09:55 UTC (39-event ledger, n=5 join)
+
+Fresh clone @ `8f9ee42b` (branch `naya5/human-value-events-20261009`, rebased
+onto live tip `925e4c348`), same procedure, no access to the originating
+workspace:
+
+| Check | Originating worktree | Cold clone | Match |
+|---|---|---|---|
+| HEAD | `8f9ee42b` | `8f9ee42b` | ✅ |
+| `ledger_sha256` | `sha256:e1b8ed34…35db0f` | (same) | ✅ |
+| `hv_per_day_total` | 5.7143 | 5.7143 | ✅ |
+| `dai_per_day` | 0.2857 | 0.2857 | ✅ |
+| `events_validated` | 39 | 39 | ✅ |
+| `calibration.n` / MAE / signed bias | 5 / 0.1 / +0.1 | 5 / 0.1 / +0.1 | ✅ |
+| overprediction | false | false | ✅ |
+| test suite (real ledger + instrument) | 36 passed | 36 passed | ✅ |
+
+**Verdict:** the n=5 measurement (DEC-005, predicted +7.0 at 09:45 UTC before
+any ledger change, observed +7.0) is cold-recomputable at the pushed SHA. The
+calibration series now reads MAE 0.5 → 0.25 → 0.1667 → 0.125 → 0.1 across five
+real joins, signed bias shrinking in the same steps, zero overprediction
+flags. /tmp clones removed after verification.
+
+## Seventh cold-recompute proof — n=6 loop (2026-10-09 ~16:05 UTC)
+
+Fresh clone of `naya5/human-value-events-20261009` @ `d8e987f076fa5913dcf9a82660a7701741477cbd`
+(rebased onto live tip `3a60163c9`), same procedure, no access to the originating
+workspace:
+
+| Check | Originating worktree | Cold clone | Match |
+|---|---|---|---|
+| HEAD | `d8e987f0` | `d8e987f0` | ✅ |
+| `ledger_sha256` | `sha256:deb7a79c…9a049114` | (same) | ✅ |
+| `hv_per_day_total` | 6.7143 | 6.7143 | ✅ |
+| `dai_per_day` | 0.2857 | 0.2857 | ✅ |
+| `events_validated` | 46 | 46 | ✅ |
+| `calibration.n` / MAE / signed bias | 6 / 0.0833 / +0.0833 | 6 / 0.0833 / +0.0833 | ✅ |
+| overprediction | false | false | ✅ |
+| test suite (real ledger + instrument) | 36 passed | 36 passed | ✅ |
+
+**Verdict:** the n=6 measurement (DEC-006, predicted +7.0 at 15:50 UTC before
+any ledger change, observed +7.0) is cold-recomputable at the pushed SHA. The
+calibration series now reads MAE 0.5 → 0.25 → 0.1667 → 0.125 → 0.1 → 0.0833
+across six real joins, signed bias shrinking in the same steps, zero
+overprediction flags. /tmp/hv-cold removed after verification.
