@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-09",
-  "receipt_basis_commit": "b9d21f1925f6bc1c08b7601db15e4ff18d9bade0",
-  "inventory_file_count": 1196,
+  "receipt_basis_commit": "1d73652231ac6127806640af5a31eb516c60738d",
+  "inventory_file_count": 1197,
   "domain_counts": {
     "00-ACTIVATION": 2,
     "00-SPEC": 15,
@@ -18,7 +18,7 @@
     "10-INTERFACES": 380,
     "11-KNOWLEDGE": 7,
     "12-ENGINEERING": 25,
-    "90-OPERATIONS": 13,
+    "90-OPERATIONS": 14,
     "99-ARCHIVE": 1,
     "ROOT": 5
   },
@@ -5968,6 +5968,11 @@
       "path": "BRAIN/90-OPERATIONS/2026-10-08-COLD-14-INDEPENDENT-RUN-AND-PRODUCT-PATH-REPAIR.md",
       "blob_sha": "37e4e4b70a230f3e5027499fba1c5e3f146996d2",
       "size": 20377
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/NAYAPOWER-END-TO-END-LEARNING-ARCHITECTURE-AND-COMPLETION-MANDATE-2026-10-09.md",
+      "blob_sha": "8aa7b2def5d108bc89aa11a0b9541d4069dad180",
+      "size": 60844
     },
     {
       "path": "BRAIN/90-OPERATIONS/README.md",
