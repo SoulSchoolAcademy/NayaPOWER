@@ -396,7 +396,17 @@ Deno.serve(async (req) => {
         .replace(/[\r\n\t]+/g, " ")
         .replace(/[^\x20-\x7E]/g, "")
         .slice(0, 240) || "UNKNOWN";
-      await failReceipt("GITHUB_COMMIT_FAILED:" + putRes.status + ":" + githubReason);
+      const failureUpdate = await receipts
+        .update({
+          status: "failed",
+          failure: "GITHUB_COMMIT_FAILED:" + putRes.status + ":" + githubReason,
+          authority_grant_id: grantId,
+          intelligent_block_id: ibId,
+          repo_path: repoPath,
+          smart_link: smartLink,
+        })
+        .eq("idempotency_key", idempotencyKey);
+      if (failureUpdate.error) throw failureUpdate.error;
       return json(
         {
           ok: false,
