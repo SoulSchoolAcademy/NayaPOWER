@@ -2,6 +2,8 @@
   "schema": "naya.smart-note-capture.v2",
   "smart_note_id": "SN-041",
   "capture_id": "20261004-sn041-discernment-operating-law",
+  "lifecycle_state": "ACTIVE",
+  "lifecycle_state_provenance": "backfill-20261009 (WO8 fail-open closure): declared ACTIVE to match the record's de facto status under the pre-WO8 default-to-ACTIVE behavior. Not re-verified through the gated pipeline; content untouched.",
   "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
   "category": "GOVERNANCE",
   "topic": "OPERATING-INTELLIGENCE",
