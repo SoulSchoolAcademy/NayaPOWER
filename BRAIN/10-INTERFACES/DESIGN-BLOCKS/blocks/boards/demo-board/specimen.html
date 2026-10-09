@@ -1,0 +1,39 @@
+<!-- Smart Block specimen: demo-board -->
+<!-- Source: Naya_5__Epic_Elements_-_Lego_pieces.html -->
+<div class="demo-board" id="demoBoard">
+    <div class="demo-beam"></div>
+    <p class="demo-name" id="demoName">Purple — Naya herself</p>
+    <p>One property — <code>--c</code> — drives every light on this board. Set it, and the board obeys.</p>
+  </div>
+<style>
+.sw { width: 52px; height: 52px; border-radius: 16px; border: 2px solid rgba(255,255,255,.35); cursor: pointer; background: radial-gradient(circle at 32% 28%, rgba(255,255,255,.7), transparent 45%), var(--c); box-shadow: 0 0 18px var(--c); transition: transform .18s; }
+.sw:hover { transform: translateY(-3px) scale(1.06); }
+.demo-board { --c: var(--purple); position: relative; border-radius: 22px; padding: 34px; margin-top: 8px; overflow: hidden; background: linear-gradient(160deg,#0b0a12,#050507); border: 1px solid color-mix(in srgb, var(--c) 45%, transparent); box-shadow: 0 24px 60px rgba(0,0,0,.6), 0 0 44px color-mix(in srgb, var(--c) 22%, transparent); transition: border-color .3s, box-shadow .3s; }
+.demo-beam { position: absolute; top: 0; left: 12%; right: 12%; height: 1px; background: linear-gradient(90deg, transparent, var(--c), transparent); box-shadow: 0 0 18px var(--c); }
+.demo-name { font-size: 18px; font-weight: 800; margin: 0 0 8px; color: var(--c); text-shadow: 0 0 14px var(--c); }
+.demo-board code { background: rgba(255,255,255,.08); padding: 2px 8px; border-radius: 6px; font-size: 14px; }
+</style>
+</section>
+
+<!-- ================= 04 BOARDS ================= -->
+<section id="boards">
+  <p class="kicker">04 · A world, not a rectangle</p>
+  <h2><span class="n">04</span>One board. One color. A destination you enter.</h2>
+  <p class="lede">The board is the intelligent object: <strong>theme-edged, jewel-marked, elevated.</strong> One spectrum color per board — spine, kicker, corner jewel all speak it. Text stays white. Inside, meaning nests: the nutshell, then what it means, how to use it.</p>
+
+  <div class="board-mix" style="--ic:var(--purple)">
+    <span class="corner" style="--ic:var(--purple)">◆</span>
+    <h3>Color has four jobs. Never cross them.</h3>
+    <p>Chrome acts. Text speaks. Theme identifies. Adjacent things never share a hue.</p>
+  </div>
+
+  <div class="board-tone" style="--tone:var(--purple)">
+    <div class="board-content">
+      <p class="board-tag">Intelligent Block · IB-0001</p>
+      <h3 class="board-name">The board is a world.</h3>
+      <p class="board-sub">Not a rectangle. A destination you enter.</p>
+      <div class="layer-grid">
+        <div class="layer" style="--tone:var(--purple)"><p class="micro"><span class="gem-bullet"></span>In a nutshell</p><p>Capture the essence. Verify the result.</p></div>
+        <div class="layer" style="--tone:var(--blue)"><p class="micro"><span class="gem-bullet"></span>What it means</p><p>Understanding changes what Naya does next.</p></div>
+        <div class="layer" style="--tone:var(--gold)"><p class="micro"><span class="gem-bullet"></span>How to use it</p><p>Retrieve, check limits, carry into action.</p></div>
+      </div>

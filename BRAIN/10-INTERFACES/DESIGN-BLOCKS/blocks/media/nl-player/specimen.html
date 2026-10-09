@@ -1,0 +1,31 @@
+<!-- Smart Block specimen: nl-player -->
+<!-- Source: Naya_Lego-blocks.html -->
+<div class="nl-player">
+      <div class="nl-player-top">
+        <div class="nl-art" role="img" aria-label="Album art"></div>
+        <div><div class="nl-track-t">Morning Intelligence Brief</div><div class="nl-track-a">Naya Daily · 12 min</div></div>
+      </div>
+      <div class="nl-playrow">
+        <button class="nl-playbtn" id="demo-play" aria-label="Play" aria-pressed="false"><span class="ring"></span><span id="demo-play-ico">▶</span></button>
+        <div class="nl-prog">
+          <div class="nl-times"><span id="demo-tcur">3:52</span><span id="demo-ttot">12:00</span></div>
+          <div class="nl-bar" id="demo-bar" role="slider" aria-label="Seek" aria-valuemin="0" aria-valuemax="100" aria-valuenow="32" tabindex="0">
+            <div class="nl-fill" id="demo-fill"></div><div class="nl-knobp" id="demo-knob"></div>
+          </div>
+        </div>
+      </div>
+      <div class="nl-vol">
+        <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16 9a4 4 0 010 6"/></svg>
+        <div class="nl-bar" id="demo-volbar" role="slider" aria-label="Volume" tabindex="0"><div class="nl-fill" style="width:70%"></div><div class="nl-knobp"></div></div>
+      </div>
+    </div>
+    <p style="color:var(--quiet);font-size:14px;text-align:center;margin:16px 0 0">Press play — the ring orbits while playing. Drag the progress knob.</p>
+  </div>
+  <div class="rules">
+    <div class="rule do"><span class="tag">Do</span><b class="mk">✓</b>Make the play button an orb with real press compression and an orbit ring while playing.</div>
+    <div class="rule do"><span class="tag">Do</span><b class="mk">✓</b>Give progress a knob you can grab. Hover grows it — affordance you can feel.</div>
+    <div class="rule dont"><span class="tag">Don't</span><b class="mk">✕</b>Fake the progress. If it's not playing real media, say it's a demo.</div>
+    <div class="rule dont"><span class="tag">Don't</span><b class="mk">✕</b>Use flat gray sliders. Recess the track, light the fill.</div>
+  </div>
+  <div class="codewrap">
+    <div class="codebar"><span>player.css — controls you can feel</span><button class="copybtn" data-copy="code-player">Copy</button></div>

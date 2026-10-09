@@ -1,0 +1,11 @@
+/* Smart Block: demo-board
+ * Source: Naya_5__Epic_Elements_-_Lego_pieces.html (byte-true extraction, not rewritten)
+ * Type: boards
+ * Extracted: 2026-10-09
+ */
+
+/* ---- component rules (v2) ---- */
+
+.demo-board { --c: var(--purple); position: relative; border-radius: 22px; padding: 34px; margin-top: 8px; overflow: hidden; background: linear-gradient(160deg,#0b0a12,#050507); border: 1px solid color-mix(in srgb, var(--c) 45%, transparent); box-shadow: 0 24px 60px rgba(0,0,0,.6), 0 0 44px color-mix(in srgb, var(--c) 22%, transparent); transition: border-color .3s, box-shadow .3s; }
+
+.demo-board code { background: rgba(255,255,255,.08); padding: 2px 8px; border-radius: 6px; font-size: 14px; }

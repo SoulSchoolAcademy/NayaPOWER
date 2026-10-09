@@ -771,16 +771,24 @@ jobs:
       - name: Write production promotion failure receipt
         # Complements the fail-closed handshake above: when the chain fails,
         # the handshake step is skipped and no receipt exists. This step runs
-        # only on the failure path and writes a durable, always-emittable
-        # failure receipt (tools/production_promotion_failure_receipt.py) that
-        # records the refusal explicitly and binds every available proof-leg
-        # artifact to the authorized source and deployment commit. It never
-        # certifies PROMOTED_AND_PROVEN and never raises on missing inputs.
+        # on EVERY failure path — unconditional failure() — and writes a
+        # durable, always-emittable failure receipt
+        # (tools/production_promotion_failure_receipt.py) that records the
+        # refusal explicitly and binds every available proof-leg artifact to
+        # the authorized source and deployment commit. It never certifies
+        # PROMOTED_AND_PROVEN and never raises on missing inputs: absent gate
+        # evidence is recorded as UNKNOWN / NOT_EXECUTED, never invented.
         # It also binds the UPSTREAM gate evidence (standing-policy verdict,
         # promotion denial, required-workflow run conclusions at the source
         # SHA) so the receipt names the gate that stopped the chain instead
         # of leaving the failure unexplained.
-        if: ${{ failure() && (github.event_name == 'workflow_dispatch' || steps.standing_policy.outputs.allowed != '') }}
+        # Rationale for unconditional failure(): the 2026-10-08 finding (run
+        # 37813418273 — superseded-tip race failing "Resolve standing
+        # authorization mode" BEFORE the policy step ran) proved that gating
+        # this step on the policy step's output leaves pre-policy failures
+        # silent, with no receipt at all. A failed promotion attempt is a
+        # receipted event no matter how early the chain stopped.
+        if: ${{ failure() }}
         env:
           GH_TOKEN: ${{ github.token }}
           REPO: ${{ github.repository }}

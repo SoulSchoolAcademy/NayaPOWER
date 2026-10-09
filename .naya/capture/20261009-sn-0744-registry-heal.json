@@ -1,0 +1,20 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-0744",
+ "capture_id": "20261009-sn-0744-registry-heal",
+ "title": "AI Creates Income — The Income Reframe",
+ "intelligence": {
+  "title": "AI Creates Income — The Income Reframe",
+  "smart_note_id": "SN-0744",
+  "intelligent_block_id": "IB-SMART-NOTE-20261009-sn0744-ai-creates-income",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/VISION/INCOME-REFRAME/SN-0744/IB-SMART-NOTE-20261009-sn0744-ai-creates-income.md",
+  "truth_state": "CANDIDATE",
+  "captured_at": "2026-10-09",
+  "note": "Smart Note SN-0744 published via commit 8ae49c54 (no capture step). Capture reconstructed 2026-10-09 to heal registry drift."
+ },
+ "source": {
+  "captured_at": "2026-10-09",
+  "source_type": "registry_heal",
+  "source_reference": "brain-build repair — heal published_pages_without_registry_entry drift for SN-0742/0743/0744"
+ }
+}
