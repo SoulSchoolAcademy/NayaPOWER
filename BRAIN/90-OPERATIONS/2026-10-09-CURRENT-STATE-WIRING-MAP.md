@@ -1,7 +1,7 @@
 # NayaPOWER Current-State Wiring Map — 2026-10-09
 
 **Purpose:** Establish the actual repository/runtime wiring before additional end-to-end learning experiments.
-**Evidence basis:** GitHub `main` at `527ebcfbc04896c3a6beee127757785597e0713a`; connected Supabase project `dahisasgpfvziswqvmvm`; live Edge Function metadata/source; read-only schema and row inspections.
+**Evidence basis:** Current GitHub `main` at `455cdf5a7d846d16dd56e19b12b4a61ab242d866` (initial runtime inventory began at `527ebcfbc04896c3a6beee127757785597e0713a` before WO3 admission-gate merge); connected Supabase project `dahisasgpfvziswqvmvm`; live Edge Function metadata/source; read-only schema and row inspections.
 **Status:** DIAGNOSTIC SNAPSHOT — not a ratified architecture change, not a deployment authorization, and not proof of learning.
 **Human authority:** Shawn Vibert.
 
@@ -65,7 +65,7 @@ The workflow now has an `admission-promotion` job between independent verificati
 ## Live Supabase observations
 
 - `nayanet_intelligence_commit_runtime`: deployed version 82; inspected deployed `index.ts` exactly matches current `main` source.
-- `nayanet-learning-verify`: deployed version 98; inspected deployed source differs from current `main` source (deployed file length 38,539 characters; main file 39,822).
+- `nayanet-learning-verify`: deployed version 98; inspected deployed source differs from current `main` source (deployed file length 38,539 characters; current main file 42,539).
 - `naya-decision-context`: deployed version 10; inspected deployed source differs from current `main` source (deployed file length 2,814 characters; main file 3,208).
 - `nayanet-act-runtime`: deployed version 65; source parity was not established by the inspected response.
 - Read-only row counts: 181 Intelligent Blocks; 195 cognition events; 143 learning_evidence rows (107 ACTIVE, 32 RETIRED, 4 NOT_SUPPORTED); Intelligent Block understanding_state counts: 95 CANDIDATE, 85 LEARNED, 1 VERIFIED. These counts are not a behavioral-learning score.
@@ -117,6 +117,8 @@ A stage is complete only when its producer, consumer, state transition, authorit
 
 Draft PR #2075: https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2075
 
+Draft PR #2078: https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2078 — adds a machine-enforced assembly gate that holds cold-runtime, live-connect, and learning-influence E2E jobs until an exact-source, evidence-backed readiness manifest is reviewed. Its current status is BLOCKED by design; no E2E experiment is run.
+
 The draft adds `tools/verify_capture_admission_proof.py`, makes the `admission-promotion` workflow download the independent proof artifact, and binds promotion to capture ID/path, Intelligent Block ID, event, receipt, lineage, relationship, index, checkpoint, and content hash. It rejects missing lifecycle fields and preserves both `automatic_truth_ceiling=CANDIDATE` and persisted `understanding_state=CANDIDATE`. The gate is explicitly for capture lifecycle promotion; it does not claim the lesson has been learned and does not replace the separate experiment-admission contract.
 
 Verification observed for PR head `1fec06d2787c146844470d9437537d86afc55153`: the six required repository checks, including Kernel Tests, completed successfully. The PR remains draft/unmerged; no production deployment or end-to-end learning experiment was run.
@@ -149,3 +151,10 @@ The main branch learning blueprint `BRAIN/07-LEARNING/learning-system-blueprint-
 - `nayanet-cold-runtime-proof` version 130 matches main after normalizing the deployment-only `DEPLOYED_SOURCE_REVISION` stamp (`00f50bb32c1c7fadfbe5cd03d0319646ab9dc0e9`); this is not substantive source drift.
 - `nayanet-causal-verify` v82, `nayanet-causal-learning-experiment` v84, `nayanet-intelligence-commit-runtime` v82, `nayanet-law-runtime` v66, `nayanet-prove-runtime` v64, and `nayanet-know-runtime` v67 match their inspected main entrypoint bytes.
 - `v7-smart-note-canonical` v19 matches current main after removing the leading UTF-8 BOM; it remains a separate legacy intake path. Its three legacy Smart Note tables have 23 events, 92 artifacts, and 23 receipts, and RLS is disabled on all three.
+
+
+### Latest source-state corrections after WO3 merge
+
+Current main advanced to `455cdf5a7d846d16dd56e19b12b4a61ab242d866` when PR #2077 merged. That merge added the TypeScript admission-gate port, but the live candidate workflow still sends no admission design and follows the compatibility pass-through. The production runtime remains v98 and lacks the merged main gate. The gate's existence in main is therefore not proof of runtime activation.
+
+The assembly-gate draft PR #2078 was designed with a `verified_source_sha` plus an ancestry/diff check. A manifest-only commit may follow the code commit that was independently verified; any code-file change after that verified commit blocks end-to-end experiments. This avoids an impossible self-referential requirement that a manifest embedded in a commit contain that same commit's SHA.
