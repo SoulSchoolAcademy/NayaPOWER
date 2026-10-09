@@ -6,7 +6,7 @@
   "topic": "DISPATCH",
   "subtopic": "RESERVE_RULE",
   "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
-  "lifecycle_state": "CANDIDATE",
+  "lifecycle_state": "ACTIVE",
   "source": {
     "captured_by": "Naya integration",
     "captured_at": "2026-10-09",
