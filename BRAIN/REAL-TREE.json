@@ -1,7 +1,7 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-09",
-  "receipt_basis_commit": "6fb7b7ee631979da9f6c5483f8f9abd7e196ec76",
+  "receipt_basis_commit": "90c2d17f732cc20e216fd029ff9bfeb9525f1fde",
   "inventory_file_count": 1211,
   "domain_counts": {
     "00-ACTIVATION": 3,
@@ -777,8 +777,8 @@
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/BASE-STALENESS/SN-0443/IB-SMART-NOTE-20260930-sn0443-stale-merge-ref-fabricates-the-red.md",
-      "blob_sha": "c9f11886daba307fe15ab74cc9f8cf26af6b95a0",
-      "size": 7885
+      "blob_sha": "9f4be9ecc5263d1a70250635caa259f80b04b700",
+      "size": 7855
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/CI-TRIGGER-SILENCE/SN-048/IB-SMART-NOTE-20260930-sn048-api-push-actions-silence.md",
@@ -2087,8 +2087,8 @@
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/LEARNING-PIPELINE/REGISTRY-DISCIPLINE/SN-0432/IB-SMART-NOTE-20260930-sn0432-direct-to-main-registry-orphan-repair.md",
-      "blob_sha": "c528443afbaae00d45c1671627369e8b4985d97d",
-      "size": 8940
+      "blob_sha": "bc2d829e572e2f511c70a7b52b613a033c3bf044",
+      "size": 8910
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/MEMORY-DISCIPLINE/CORRECT-FORGETTING/SN-009/IB-SMART-NOTE-20260930-sn009-correct-forgetting.md",
@@ -3171,9 +3171,9 @@
       "size": 3536
     },
     {
-      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/NAYAPOWER-NAYANET-CORE-MAGIC/SN-NET-POWER-MAGIC-001/IB-SMART-NOTE-20261005-NET-POWER-MAGIC-001.md",
-      "blob_sha": "b0b521c3ee2c7df296d2e9854db982b6ea6f39bb",
-      "size": 10964
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/NAYAPOWER-NAYANET-CORE-MAGIC/SN-0820/IB-SMART-NOTE-20261005-NET-POWER-MAGIC-001.md",
+      "blob_sha": "fa25a77221f8222ee0508943149c1822f43fd17c",
+      "size": 10949
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/OPERATIONS/DEPLOYMENT-EVIDENCE/SN-0350/IB-SMART-NOTE-20261005-sn0350-deploy-stamp-not-behavioral-evidence.md",
@@ -3407,8 +3407,8 @@
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/GOVERNANCE/EVIDENCE-DISCIPLINE/SN-0466/IB-SMART-NOTE-20261006-sn0466-honest-provenance-registration.md",
-      "blob_sha": "b5670c5af76537ae8b5bde248ff94668928b039a",
-      "size": 3687
+      "blob_sha": "17eed5bbe0900b535f23a8138d773b76e3025eb9",
+      "size": 3672
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/GOVERNANCE/EVIDENCE-DISCIPLINE/SN-0484/IB-SMART-NOTE-20261006-sn0484-merged-is-not-closed-guard-file-not-enforcement.md",

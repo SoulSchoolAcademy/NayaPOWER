@@ -323,7 +323,7 @@ The promise is simple:
 
 **The ultimate goal: intelligence should not disappear just because the conversation ended.**
 
-Canonical intelligence record: BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/NAYAPOWER-NAYANET-CORE-MAGIC/SN-NET-POWER-MAGIC-001/IB-SMART-NOTE-20261005-NET-POWER-MAGIC-001.md
+Canonical intelligence record: BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/NAYAPOWER-NAYANET-CORE-MAGIC/SN-0820/IB-SMART-NOTE-20261005-NET-POWER-MAGIC-001.md
 
 ---
 

@@ -9,7 +9,7 @@
 
 ## IN A NUTSHELL
 
-A registry entry's provenance must describe what actually happened — never invent UUIDs that look pipeline-real. Two legitimate patterns exist: (1) a real pipeline run produces real UUIDs (SN-016); (2) an explicit provenance note documents the exceptional path honestly (SN-NET-POWER-MAGIC-001, and now SN-0340/0399/0400/0408). What's never legitimate: UUIDs no run ever produced. And manual registry edits must maintain every invariant the pipeline maintains — the registration missed sequence_policy.next_sequence (361 vs max SN 408) and the test suite caught it.
+A registry entry's provenance must describe what actually happened — never invent UUIDs that look pipeline-real. Two legitimate patterns exist: (1) a real pipeline run produces real UUIDs (SN-016); (2) an explicit provenance note documents the exceptional path honestly (SN-0820, and now SN-0340/0399/0400/0408). What's never legitimate: UUIDs no run ever produced. And manual registry edits must maintain every invariant the pipeline maintains — the registration missed sequence_policy.next_sequence (361 vs max SN 408) and the test suite caught it.
 
 ## HUMAN NOTE
 

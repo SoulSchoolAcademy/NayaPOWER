@@ -1,7 +1,7 @@
 # 🧠 NayaPOWER Intelligence — The Magic of NayaPOWER
 
 **Intelligent Block:** IB-SMART-NOTE-20261005-NET-POWER-MAGIC-001  
-**Smart Note:** SN-NET-POWER-MAGIC-001  
+**Smart Note:** SN-0820  
 **Status:** DIRECTOR-RATIFIED CONCEPT  
 **Scope:** NayaPOWER / NayaNET / Human Experience  
 **Captured:** 2026-10-05  
