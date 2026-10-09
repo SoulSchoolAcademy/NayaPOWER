@@ -4,16 +4,41 @@
  * Extracted: 2026-10-09
  */
 
-/* ---- component rules ---- */
+/* ---- component rules (v2) ---- */
+
+      .nl-toggle-row{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 20px;border-radius:18px;
+        background:linear-gradient(180deg,#101117,#0a0b0f);border:1px solid var(--soft-line);
+        box-shadow:inset 0 1px 0 rgba(255,255,255,.1),inset 0 -10px 20px rgba(0,0,0,.35),0 12px 26px rgba(0,0,0,.45);
+        transition:transform .2s var(--snap),box-shadow .25s}
+
+
 
       .nl-switch{position:relative;flex:none;width:62px;height:34px}
+
 
 
       .nl-switch input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer;z-index:2}
 
 
+
+      .nl-track{position:absolute;inset:0;border-radius:999px;
+        background:linear-gradient(180deg,#040406,#0b0c10);
+        border:1px solid rgba(255,255,255,.12);
+        box-shadow:inset 0 3px 8px rgba(0,0,0,.85),inset 0 -1px 0 rgba(255,255,255,.05);
+        transition:all .28s var(--snap)}
+
+
+
+      .nl-knob{position:absolute;top:4px;left:4px;width:26px;height:26px;border-radius:50%;
+        background:radial-gradient(circle at 35% 30%,#ffffff,#c9c5d4 55%,#6f6a7d 100%);
+        box-shadow:inset 0 2px 3px rgba(255,255,255,.7),inset 0 -3px 6px rgba(0,0,0,.4),0 3px 8px rgba(0,0,0,.6);
+        transition:left .28s var(--snap),box-shadow .28s}
+
+
+
       .nl-switch input:checked ~ .nl-track{background:linear-gradient(180deg,#2a0f33,#170a1e);border-color:rgba(228,85,244,.6);
         box-shadow:inset 0 3px 8px rgba(0,0,0,.7),0 0 18px -2px rgba(228,85,244,.65)}
+
 
 
       .nl-switch input:checked ~ .nl-knob{left:32px;
@@ -21,10 +46,13 @@
         box-shadow:inset 0 2px 3px rgba(255,255,255,.6),0 0 16px rgba(228,85,244,.8),0 3px 8px rgba(0,0,0,.6)}
 
 
+
       .nl-switch input:focus-visible ~ .nl-track{outline:2px solid var(--purple);outline-offset:3px}
 
 
+
       .nl-switch input:disabled ~ .nl-track{opacity:.45}
+
 
 
       .nl-switch input:disabled{cursor:not-allowed}

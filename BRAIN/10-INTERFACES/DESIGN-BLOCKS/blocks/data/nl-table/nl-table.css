@@ -4,37 +4,24 @@
  * Extracted: 2026-10-09
  */
 
-/* ---- component rules ---- */
+/* ---- component rules (v2) ---- */
 
-    
-
-      .nl-table-wrap{overflow-x:auto;border-radius:18px;border:1px solid var(--soft-line);
-        background:linear-gradient(180deg,#0e0f14,#08090c);
-        box-shadow:inset 0 1px 0 rgba(255,255,255,.1),inset 0 -14px 28px rgba(0,0,0,.4),0 20px 44px rgba(0,0,0,.5)}
-
+      table.nl-table{width:100%;border-collapse:collapse;font-size:15.5px;min-width:520px}
 
       .nl-table th{text-align:left;font-size:12.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--quiet);padding:16px 18px;border-bottom:1px solid rgba(255,255,255,.12);white-space:nowrap;cursor:pointer;user-select:none;transition:color .2s}
 
-
       .nl-table th:hover{color:var(--ink)}
-
 
       .nl-table th.sorted{color:var(--green)}
 
-
       .nl-table th .arr{opacity:0;margin-left:6px;transition:opacity .2s}
-
 
       .nl-table th.sorted .arr{opacity:1}
 
-
       .nl-table td{padding:15px 18px;border-bottom:1px solid rgba(255,255,255,.06);color:#e8e5ef}
-
 
       .nl-table tbody tr{transition:background .18s var(--ease),transform .18s var(--ease)}
 
-
       .nl-table tbody tr:hover{background:rgba(255,255,255,.045);transform:translateX(3px)}
-
 
       .nl-table tbody tr:last-child td{border-bottom:none}

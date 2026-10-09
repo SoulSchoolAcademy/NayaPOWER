@@ -7,14 +7,10 @@
 /* ---- required @keyframes ---- */
 @keyframes nlSheetIn{from{transform:translateY(70%);opacity:.4}to{transform:none;opacity:1}}
 
-/* ---- component rules ---- */
+/* ---- component rules (v2) ---- */
+/* ---- required @keyframes ---- */
+@keyframes nlSheetIn{from{transform:translateY(70%);opacity:.4}to{transform:none;opacity:1}}
 
-    
-
-      .nl-sheet-back{position:fixed;inset:0;z-index:200;display:none;align-items:flex-end;justify-content:center;background:rgba(3,3,5,.6);backdrop-filter:blur(8px)}
-
-
-      .nl-sheet-back.open{display:flex}
 
 
       .nl-sheet{width:min(560px,100%);border-radius:28px 28px 0 0;padding:18px 28px 34px;
@@ -22,8 +18,30 @@
         box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 -30px 70px rgba(0,0,0,.7),0 0 50px -12px rgba(52,211,138,.4);
         animation:nlSheetIn .42s var(--ease)}
 
+      .nl-grab{width:46px;height:5px;border-radius:99px;background:rgba(255,255,255,.22);margin:0 auto 20px;box-shadow:inset 0 1px 2px rgba(0,0,0,.5)}
 
       .nl-sheet h3{margin:0 0 4px;font-size:21px}
 
-
       .nl-sheet .s-sub{color:var(--quiet);font-size:14.5px;margin:0 0 20px}
+
+      .nl-sharegrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px}
+
+      .nl-shareopt{display:flex;flex-direction:column;align-items:center;gap:9px;background:none;border:none;color:var(--ink);font-size:13px;font-weight:600;padding:6px;border-radius:16px;transition:transform .18s var(--snap)}
+
+      .nl-shareopt:hover{transform:translateY(-3px)}
+
+      .nl-shareopt .s-orb{width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;
+        background:radial-gradient(circle at 35% 28%,var(--sc),color-mix(in srgb,var(--sc) 45%,#000) 70%,#07080c);
+        border:1px solid rgba(255,255,255,.22);
+        box-shadow:inset 0 2px 4px rgba(255,255,255,.4),inset 0 -6px 12px rgba(0,0,0,.5),0 0 20px -4px var(--sc),0 10px 22px rgba(0,0,0,.55);
+        transition:box-shadow .25s}
+
+      .nl-shareopt:hover .s-orb{box-shadow:inset 0 2px 4px rgba(255,255,255,.5),inset 0 -6px 12px rgba(0,0,0,.5),0 0 32px -2px var(--sc),0 14px 28px rgba(0,0,0,.6)}
+
+      .nl-copylink{display:flex;align-items:center;gap:12px;border-radius:16px;padding:13px 16px;border:1px dashed rgba(255,255,255,.25);background:rgba(255,255,255,.03);color:var(--quiet);font-size:14.5px;width:100%;transition:all .25s}
+
+      .nl-copylink:hover{border-color:rgba(52,211,138,.6);color:var(--ink)}
+
+      .nl-copylink.copied{border-style:solid;border-color:var(--green);color:var(--green);box-shadow:0 0 24px -6px rgba(52,211,138,.7)}
+
+      .nl-copylink code{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:13.5px}

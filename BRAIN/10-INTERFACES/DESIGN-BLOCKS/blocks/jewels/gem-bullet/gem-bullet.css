@@ -4,7 +4,7 @@
  * Extracted: 2026-10-09
  */
 
-/* ---- component rules ---- */
+/* ---- component rules (v2) ---- */
 
 .gem-bullet { --tone: var(--purple); width: 12px; height: 12px; flex: none; display: inline-block; transform: rotate(45deg); margin-top: 7px;
   background: linear-gradient(140deg, #fff, var(--tone) 50%, #18101a); box-shadow: 0 0 14px var(--tone); }
