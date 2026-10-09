@@ -2,6 +2,10 @@
 
 Bar chart bar from Missing Blocks library.
 
+## Why
+
+Bar chart bar. The atomic unit of comparison — one bar against another is the oldest honest argument. Differences you can feel at a glance.
+
 - **Type:** data
 - **Source:** `Naya_Lego-blocks.html` (extracted byte-true, never rewritten)
 - **CSS:** `nl-bar.css`

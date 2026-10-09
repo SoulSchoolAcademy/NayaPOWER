@@ -2,6 +2,10 @@
 
 Media player from Missing Blocks library.
 
+## Why
+
+Media player. Naya speaks — voice is the interface — and speech needs a home with transport controls. Listening feels as first-class as reading.
+
 - **Type:** media
 - **Source:** `Naya_Lego-blocks.html` (extracted byte-true, never rewritten)
 - **CSS:** `nl-player.css`

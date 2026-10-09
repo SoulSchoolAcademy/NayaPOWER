@@ -2,6 +2,10 @@
 
 Text input field from Missing Blocks library.
 
+## Why
+
+Text input field. Typing is trust — the field should feel solid, calm, and ready. The user types without fighting the box.
+
 - **Type:** inputs
 - **Source:** `Naya_Lego-blocks.html` (extracted byte-true, never rewritten)
 - **CSS:** `nl-field.css`

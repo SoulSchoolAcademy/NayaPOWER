@@ -2,6 +2,10 @@
 
 Chart container from Missing Blocks library.
 
+## Why
+
+Chart container. Numbers become understanding only when they're shaped — this is the frame for the shape. Data turns into decisions.
+
 - **Type:** data
 - **Source:** `Naya_Lego-blocks.html` (extracted byte-true, never rewritten)
 - **CSS:** `nl-chart.css`

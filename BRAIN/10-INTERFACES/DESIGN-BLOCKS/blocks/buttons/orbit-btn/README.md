@@ -2,6 +2,10 @@
 
 Button with conic-gradient ring of light orbiting its perimeter. Law 25 made real.
 
+## Why
+
+A circle of light flows around the button — black with color accents, never all-color. On hover, light ignites from behind. Flagship actions should feel alive before they're touched. Use for the one action on a screen that matters most.
+
 - **Type:** buttons
 - **Source:** `Naya_5_Beautiful_Button_set.html` (extracted byte-true, never rewritten)
 - **CSS:** `orbit-btn.css`

@@ -2,6 +2,10 @@
 
 Demo stage — elevated container for showcasing components.
 
+## Why
+
+Demo stage — an elevated container for showcasing components. A neutral, elevated ground that makes whatever sits on it look considered. Specimens, previews, and examples present like they matter.
+
 - **Type:** boards
 - **Source:** `Naya_Lego-blocks.html` (extracted byte-true, never rewritten)
 - **CSS:** `stage.css`

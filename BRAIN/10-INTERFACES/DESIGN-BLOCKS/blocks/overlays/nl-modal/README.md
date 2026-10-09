@@ -2,6 +2,10 @@
 
 Modal dialog from Missing Blocks library.
 
+## Why
+
+Modal dialog. Some decisions need the world's attention — the modal clears the stage for exactly one choice. Focus: the user decides instead of drifts.
+
 - **Type:** overlays
 - **Source:** `Naya_Lego-blocks.html` (extracted byte-true, never rewritten)
 - **CSS:** `nl-modal.css`

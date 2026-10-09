@@ -2,6 +2,10 @@
 
 Board with 1px light beam across the top edge.
 
+## Why
+
+Board with a 1px light beam across the top edge. Showcasing components deserves a stage with a little ceremony. Demos and galleries feel intentional, not dumped.
+
 - **Type:** boards
 - **Source:** `Naya_5__Epic_Elements_-_Lego_pieces.html` (extracted byte-true, never rewritten)
 - **CSS:** `demo-board.css`

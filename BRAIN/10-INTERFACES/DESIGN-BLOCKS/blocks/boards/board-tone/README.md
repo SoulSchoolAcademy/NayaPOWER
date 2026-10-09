@@ -2,6 +2,10 @@
 
 Board with 5px glowing tone spine.
 
+## Why
+
+Board with a 5px glowing tone spine. The spine lets a board carry meaning — calm here, urgent there — before a single word is read. Scanning speed: the eye knows where to go.
+
 - **Type:** boards
 - **Source:** `Naya_5__Epic_Elements_-_Lego_pieces.html` (extracted byte-true, never rewritten)
 - **CSS:** `board-tone.css`

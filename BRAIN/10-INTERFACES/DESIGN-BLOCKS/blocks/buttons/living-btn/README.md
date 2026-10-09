@@ -2,6 +2,10 @@
 
 Hero flagship button. Idle breathe + sheen sweep (strip for Shawn's taste).
 
+## Why
+
+Hero flagship button with idle breathe and sheen sweep. Launch moments and hero screens need a button with a pulse — strip the idle motion for everyday use. The moment feels momentous without a single extra word.
+
 - **Type:** buttons
 - **Source:** `Naya_5_Beautiful_Button_set.html` (extracted byte-true, never rewritten)
 - **CSS:** `living-btn.css`

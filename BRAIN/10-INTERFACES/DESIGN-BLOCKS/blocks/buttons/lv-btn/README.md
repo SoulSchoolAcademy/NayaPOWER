@@ -2,6 +2,10 @@
 
 The living button. 7-layer stack, cursor sheen, soul core, proximity aware.
 
+## Why
+
+The most advanced button code: seven shadow layers, cursor sheen that follows the pointer, a soul core, wakes at 160px proximity. An action with a spectrum identity should feel like it notices you. Use for signature actions where the interface itself is the delight.
+
 - **Type:** buttons
 - **Source:** `Naya_5_Beautiful_Button_set.html` (extracted byte-true, never rewritten)
 - **CSS:** `lv-btn.css`

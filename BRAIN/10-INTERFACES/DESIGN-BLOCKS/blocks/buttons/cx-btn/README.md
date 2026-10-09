@@ -2,6 +2,10 @@
 
 Essential CTA button. Simpler tier, 1.5px border.
 
+## Why
+
+Essential CTA, simpler tier, 1.5px border. Not every call-to-action earns the full Naya ceremony — this one converts without demanding attention. A clear next step with zero visual debt.
+
 - **Type:** buttons
 - **Source:** `Naya_5_Beautiful_Button_set.html` (extracted byte-true, never rewritten)
 - **CSS:** `cx-btn.css`

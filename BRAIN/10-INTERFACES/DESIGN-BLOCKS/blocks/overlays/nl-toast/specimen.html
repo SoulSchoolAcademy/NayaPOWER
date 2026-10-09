@@ -1,22 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>nl-toast specimen</title>
-<link rel="stylesheet" href="../tokens.css">
-<link rel="stylesheet" href="nl-toast.css">
-<style>body{background:#000;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0}</style>
-</head>
-<body>
-<div class="nl-toast-zone">
-  <div class="nl-toast-row">
-    <div class="nl-toast">
-      <span class="t-dot"></span>
-      <span>Lesson captured to the brain.</span>
-      <button class="t-act">View</button>
-    </div>
-  </div>
+<!-- Smart Block specimen: nl-toast -->
+<!-- Source: Naya_Lego-blocks.html -->
+<!-- Use: 1. Include tokens.css (once per page). 2. Include nl-toast.css. 3. Copy this markup. -->
+
+<div class="nl-toast" style="--ttone:var(--blue)">
+  <span class="t-dot"></span>
+  <span>Saved to your library.</span>
+  <button class="t-act">Undo</button>
 </div>
-</body>
-</html>
+
+<div class="nl-toast" style="--ttone:var(--green)">
+  <span class="t-dot"></span>
+  <span>Published — it's live.</span>
+  <button class="t-act">View</button>
+</div>
+
+<div class="nl-toast out" style="--ttone:var(--purple)">
+  <span class="t-dot"></span>
+  <span>Dismissing…</span>
+</div>
