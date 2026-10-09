@@ -1056,7 +1056,7 @@ jobs:
                       successor_doc=doc
                       break
               assert successor_doc is not None, successor_id
-              assert str(successor_doc.get("lifecycle_state","ACTIVE")).upper()=="ACTIVE"
+              assert str(successor_doc.get("lifecycle_state") or "").upper()=="ACTIVE", f"successor lifecycle_state missing or not ACTIVE: {successor_doc.get('lifecycle_state')!r}"
               successor_result=conformance.get(successor_id)
               assert successor_result is not None and successor_result.conformant, getattr(successor_result,"violations",None)
               resolved=resolve_runtime_connections(successor_doc,reg)
@@ -1286,7 +1286,7 @@ jobs:
                       successor_doc=doc
                       break
               assert successor_doc is not None, successor_id
-              assert str(successor_doc.get("lifecycle_state","ACTIVE")).upper()=="ACTIVE"
+              assert str(successor_doc.get("lifecycle_state") or "").upper()=="ACTIVE", f"successor lifecycle_state missing or not ACTIVE: {successor_doc.get('lifecycle_state')!r}"
               successor_result=conformance.get(successor_id)
               assert successor_result is not None and successor_result.conformant, getattr(successor_result,"violations",None)
               resolved=resolve_runtime_connections(successor_doc,reg)

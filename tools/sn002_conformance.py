@@ -132,7 +132,7 @@ def check_capture(path: str | Path) -> ConformanceResult:
     if isinstance(doc, dict):
         res.smart_note_id = doc.get("smart_note_id")
         res.capture_id = doc.get("capture_id")
-        res.lifecycle_state = str(doc.get("lifecycle_state", "ACTIVE")).upper()
+        res.lifecycle_state = str(doc.get("lifecycle_state")).upper()
         res.superseded_by_capture_id = doc.get("superseded_by_capture_id")
 
     mv = _machine_view(doc, res.violations, res.advisories)

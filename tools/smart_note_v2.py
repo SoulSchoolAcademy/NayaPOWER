@@ -570,7 +570,7 @@ def _update_registry_locked(capture, verify, projection, registry, sn_id=None):
         "topic": capture.get("topic", ""),
         "subtopic": capture.get("subtopic", ""),
         "truth_state": block["understanding_state"],
-        "lifecycle_state": str(capture.get("lifecycle_state", "ACTIVE")).upper(),
+        "lifecycle_state": str(capture.get("lifecycle_state")).upper(),
         "superseded_by_capture_id": capture.get("superseded_by_capture_id"),
         "supersession_reason": capture.get("supersession_reason"),
         "scope": block["owner_scope"],

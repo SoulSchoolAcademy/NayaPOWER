@@ -30,6 +30,7 @@ MINIMAL = {
     "topic": "T",
     "subtopic": "S",
     "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+    "lifecycle_state": "ACTIVE",
     "source": {"captured_at": "2026-01-01"},
     "projection": {},
     "intelligence": {
@@ -64,6 +65,19 @@ def test_minimal_conformant_capture_passes(tmp_path):
 # ==========================================================================
 # NEGATIVE CONTROLS -- the substance of this gate
 # ==========================================================================
+def test_missing_lifecycle_state_fails_closed_with_named_error(tmp_path):
+    """WO8: no default-to-ACTIVE. A missing lifecycle_state must FAIL the gate
+    with the named error, never slip through as ACTIVE."""
+    def drop(doc):
+        del doc["lifecycle_state"]
+    res = check_capture(_write(tmp_path, drop))
+    assert not res.conformant, "missing lifecycle_state passed the gate"
+    assert any(
+        "lifecycle_state must be 'ACTIVE' or 'SUPERSEDED'" in v
+        for v in res.violations
+    ), f"named missing-field error absent; violations={res.violations}"
+
+
 def test_missing_raw_source_key_is_rejected(tmp_path):
     """The exact defect that made SN-020/021/022 RED."""
     def drop(doc):
