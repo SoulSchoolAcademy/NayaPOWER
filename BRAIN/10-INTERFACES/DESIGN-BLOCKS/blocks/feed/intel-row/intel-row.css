@@ -1,0 +1,125 @@
+/* Smart Block: intel-row
+ * Source: Naya Smart Hub Design.html (extracted verbatim, never rewritten)
+ * Category: feed
+ */
+
+/* ——— Shared Hub tokens (also in DESIGN-BLOCKS/tokens.css; copied here so the block is self-contained) ——— */
+:root {
+  --bg: #0B0D12;
+  --bg-raise: #12151D;
+  --depth-hi: inset 0 1px #fff6;
+  --emerald: #55e39a;
+  --ink-dim: #F5F7FB;
+  --line: #ffffff18;
+  --magenta: #d86cff;
+  --purple: #9d75ff;
+  --radius-md: 13px;
+  --sapphire: #55b9ee;
+}
+
+.intel-board {
+  --tone: var(--purple);
+  position: relative;
+  border: 2px solid color-mix(in srgb, var(--tone) 55%, #fff 14%);
+  border-radius: 26px;
+  padding: 32px 32px 24px;
+  background:
+    radial-gradient(720px 240px at 50% -8%, color-mix(in srgb, var(--tone) 14%, transparent), transparent 72%),
+    linear-gradient(145deg, var(--bg-raise), var(--bg));
+  box-shadow:
+    inset 0 1px #ffffff2e,
+    0 28px 64px #000000c0,
+    0 0 44px color-mix(in srgb, var(--tone) 18%, transparent);
+  overflow: hidden;
+}
+
+.intel-board.tone-purple { --tone: var(--purple); }
+
+.intel-board.tone-sapphire { --tone: var(--sapphire); }
+
+.intel-board.tone-emerald { --tone: var(--emerald); }
+
+.intel-board.tone-indigo { --tone: #6675ff; }
+
+.intel-board.tone-forest { --tone: #2e9e6a; }
+
+.intel-board.tone-lime { --tone: #b8ee57; }
+
+.intel-board.tone-gold { --tone: #ffd45a; }
+
+.intel-board.tone-orange { --tone: #ff8c42; }
+
+.intel-board.tone-ruby { --tone: #ff5e6c; }
+
+.intel-board.tone-magenta { --tone: #ed42c4; }
+
+.intel-board::before {
+  content: ""; position: absolute; left: 10px; top: 18px; bottom: 18px; width: 4px;
+  border-radius: 4px;
+  background: linear-gradient(180deg, var(--tone), color-mix(in srgb, var(--tone) 70%, #fff 12%), var(--tone));
+  box-shadow: 0 0 28px color-mix(in srgb, var(--tone) 55%, transparent);
+  pointer-events: none;
+}
+
+.intel-board::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  background: linear-gradient(180deg, #ffffff08, transparent 22%);
+}
+
+.intel-board.flash {
+  animation: borderFlash .4s ease-out;
+}
+
+.intel-board {
+  transition: transform .25s cubic-bezier(.16,.84,.22,1), box-shadow .25s;
+}
+
+.intel-board:hover {
+  transform: translateY(-3px);
+}
+
+.intel-board.tone-gold:hover { box-shadow: inset 0 1px #fff8, 0 30px 70px #000c, 0 0 60px #d4a01755; }
+
+.intel-board.tone-red:hover { box-shadow: inset 0 1px #fff8, 0 30px 70px #000c, 0 0 60px #ff5e6c55; }
+
+.intel-board.tone-purple:hover { box-shadow: inset 0 1px #fff8, 0 30px 70px #000c, 0 0 60px #9d75ff55; }
+
+.intel-board.tone-blue:hover { box-shadow: inset 0 1px #fff8, 0 30px 70px #000c, 0 0 60px #55b9ee55; }
+
+.intel-board.tone-green:hover { box-shadow: inset 0 1px #fff8, 0 30px 70px #000c, 0 0 60px #55e39a55; }
+
+.intel-board.tone-gold { border-color: color-mix(in srgb, #d4a017 60%, transparent); box-shadow: inset 0 1px #fff8, 0 24px 60px #000b, 0 0 42px #d4a01733; }
+
+.intel-board.tone-red { border-color: color-mix(in srgb, #ff5e6c 60%, transparent); box-shadow: inset 0 1px #fff8, 0 24px 60px #000b, 0 0 42px #ff5e6c33; }
+
+.intel-board.tone-purple { border-color: color-mix(in srgb, #9d75ff 60%, transparent); box-shadow: inset 0 1px #fff8, 0 24px 60px #000b, 0 0 42px #9d75ff33; }
+
+.intel-board.tone-blue { border-color: color-mix(in srgb, #55b9ee 60%, transparent); box-shadow: inset 0 1px #fff8, 0 24px 60px #000b, 0 0 42px #55b9ee33; }
+
+.intel-board.tone-green { border-color: color-mix(in srgb, #55e39a 60%, transparent); box-shadow: inset 0 1px #fff8, 0 24px 60px #000b, 0 0 42px #55e39a33; }
+
+@media (max-width: 640px) {
+.intel-board { padding: 22px 18px 18px; border-radius: 20px; }
+}
+
+.intelligence-list {display:grid;gap:12px}
+
+.intel-row {position:relative;padding:17px 18px;border:1px solid var(--line);border-radius:var(--radius-md);background:linear-gradient(145deg,#121019,#09080d);box-shadow:var(--depth-hi),0 10px 24px #0008}
+
+.intel-row:hover {border-color:color-mix(in srgb,var(--room-accent,var(--magenta)) 32%,var(--line))}
+
+.intel-type {font-size:10px;font-weight:900;letter-spacing:.16em;color:var(--room-accent,var(--magenta));text-transform:uppercase;margin-bottom:7px}
+
+.intel-title {font-size:16px;font-weight:850;line-height:1.25}
+
+.intel-summary {color:var(--ink-dim);font-size:13px;line-height:1.55;margin-top:7px}
+
+@media(prefers-reduced-motion:reduce) {
+.segmented button,.intel-row {transition:none}
+}
+
+@keyframes borderFlash {
+  0% { filter: brightness(1); }
+  30% { filter: brightness(1.3); }
+  100% { filter: brightness(1); }
+}

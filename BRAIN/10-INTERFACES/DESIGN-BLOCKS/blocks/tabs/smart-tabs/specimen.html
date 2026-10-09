@@ -1,0 +1,24 @@
+<!-- Smart Block specimen: smart-tabs -->
+<!-- Source: Naya Smart Hub Design.html -->
+<link rel="stylesheet" href="../../../tokens.css">
+<link rel="stylesheet" href="smart-tabs.css">
+<div style="background:#0B0D12;min-height:100vh;padding:32px 20px;font-family:Inter,ui-sans-serif,system-ui,sans-serif;color:#F5F7FB">
+
+<div style="max-width:720px;margin:0 auto">
+  <div class="smart-tabs" role="tablist">
+    <button class="smart-tab active" role="tab" aria-selected="true" style="--tc:#9d75ff"><span class="sn-mark">&#9670;</span><span class="sn-label">All</span></button>
+    <button class="smart-tab" role="tab" aria-selected="false" style="--tc:#55b9ee"><span class="sn-mark">&#9671;</span><span class="sn-label">Learning</span></button>
+    <button class="smart-tab" role="tab" aria-selected="false" style="--tc:#55e39a"><span class="sn-mark">&#9672;</span><span class="sn-label">Signals</span></button>
+    <button class="smart-tab" role="tab" aria-selected="false" style="--tc:#f1d75a"><span class="sn-mark">&#9673;</span><span class="sn-label">Decisions</span><button class="sn-more" aria-label="Tab options">&middot;&middot;&middot;</button></button>
+  </div>
+  <div class="tab-pop" id="demo-tab-pop" hidden>
+    <div class="tab-pop-title">Tab editor</div>
+    <div class="tab-pop-list">
+      <div class="tab-pop-row"><span class="tab-pop-name">All</span><button class="tab-pop-del" aria-label="Delete">&times;</button></div>
+    </div>
+    <button class="tab-pop-add">+ Add tab</button>
+  </div>
+</div>
+
+</div>
+<script src="smart-tabs.js"></script>
