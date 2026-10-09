@@ -1,0 +1,6 @@
+.media-player {display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:16px;align-items:center;padding:17px;border:1px solid rgba(255,255,255,.32);border-radius:19px;background:#050507;box-shadow:inset 0 3px 10px #000,0 14px 28px rgba(0,0,0,.55)}
+
+.vessel {position:relative;min-height:500px;display:grid;place-items:center;isolation:isolate}
+
+.vessel:before {content:"";position:absolute;width:min(88%,470px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(141,99,245,.18),rgba(141,99,245,.035) 45%,transparent 71%);filter:blur(4px)}
+

@@ -1,0 +1,34 @@
+.nav {position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:16px;min-height:68px;padding:10px var(--page);background:color-mix(in srgb,var(--field) 86%,transparent);border-bottom:1px solid var(--soft-line);backdrop-filter:blur(18px)}
+
+.nav-orb {position:relative;width:40px;height:40px;flex:none;border:1px solid color-mix(in srgb,var(--purple) 60%,white);border-radius:50%;background:radial-gradient(circle at 36% 26%,#6c5799,#120d1d 50%,#020203 85%);box-shadow:inset 0 1px 3px rgba(255,255,255,.42),0 7px 20px rgba(0,0,0,.35)}
+
+.nav-orb:before {content:"";position:absolute;inset:-4px;border-radius:inherit;background:conic-gradient(from 40deg,transparent 0 205deg,rgba(255,255,255,.88) 236deg,var(--purple) 264deg,transparent 300deg);mask:radial-gradient(farthest-side,transparent calc(100% - 2px),#000 0);animation:ring-spin 12s linear infinite}
+
+.smarttabs {display:flex;align-items:center;gap:8px;padding:7px;border:1px solid var(--line);border-radius:999px;background:color-mix(in srgb,var(--surface-2) 86%,transparent);box-shadow:inset 0 1px color-mix(in srgb,var(--ink) 7%,transparent);overflow:hidden}
+
+.smarttab {--tone:var(--purple);position:relative;flex:1;min-width:0;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:8px 12px;color:var(--quiet);border:1px solid transparent;border-radius:999px;background:transparent;font-size:14px;font-weight:800;white-space:nowrap}
+
+.smarttab .tab-dot {width:8px;height:8px;transform:rotate(45deg);border:1px solid var(--tone)}
+
+.smarttab[aria-selected=true] {color:var(--ink);background:var(--surface);border-color:var(--line);box-shadow:0 8px 20px rgba(0,0,0,.1),inset 0 1px color-mix(in srgb,var(--ink) 8%,transparent)}
+
+.smarttab[aria-selected=true] .tab-dot {background:var(--tone);box-shadow:0 0 10px var(--tone)}
+
+.app-nav {display:grid;gap:6px}
+
+.app-nav button {display:flex;align-items:center;gap:11px;width:100%;min-height:46px;padding:10px 12px;color:var(--quiet);background:transparent;border:1px solid transparent;border-radius:13px;text-align:left;font-size:14px;font-weight:700}
+
+.app-nav button[aria-selected=true] {color:var(--ink);background:var(--surface);border-color:var(--line);box-shadow:0 8px 22px rgba(0,0,0,.08)}
+
+.app-nav button[aria-selected=true] .nav-jewel {background:var(--tone);box-shadow:0 0 10px var(--tone)}
+
+.sn-row {
+  display: flex; gap: 8px; overflow-x: auto; -webkit-overflow-scrolling: touch;
+  padding: 8px; border-radius: var(--r-pill);
+  background: rgba(255,255,255,.03); border: 1px solid var(--line);
+  box-shadow: var(--depth-hi), 0 10px 26px rgba(0,0,0,.55);
+  scrollbar-width: none;
+}
+
+.sn-row::-webkit-scrollbar { display: none; }
+

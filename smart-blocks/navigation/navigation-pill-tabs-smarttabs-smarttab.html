@@ -1,0 +1,12 @@
+<!-- Pill tabs .smarttabs / .smarttab | navigation-pill-tabs-smarttabs-smarttab | tier: canonical -->
+<!-- needs: navigation/navigation.css + tokens.css + base.css + naya-blocks.js | icons: use #i-name from icons.svg -->
+<div class="smarttabs" role="tablist" aria-label="Rooms">
+        <button class="smarttab" role="tab" aria-selected="true" aria-controls="pane-all" style="--tone:var(--magenta)"><span class="tab-dot"></span>All</button>
+        <button class="smarttab" role="tab" aria-selected="false" aria-controls="pane-saved" style="--tone:var(--soul)"><span class="tab-dot"></span>Saved</button>
+        <button class="smarttab" role="tab" aria-selected="false" aria-controls="pane-shared" style="--tone:var(--emerald)"><span class="tab-dot"></span>Shared</button>
+      </div>
+      <div class="smarttabs-stage" style="padding:18px 4px 0;color:var(--ink-dim);font-size:14px">
+        <div id="pane-all" role="tabpanel">Everything important, across every room.</div>
+        <div id="pane-saved" role="tabpanel" hidden>Intelligence saved because it changed a future decision.</div>
+        <div id="pane-shared" role="tabpanel" hidden>What you gave away — and who it helped.</div>
+      </div>

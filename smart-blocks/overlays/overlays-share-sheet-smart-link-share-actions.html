@@ -1,0 +1,8 @@
+<!-- Share sheet .smart-link / .share-actions | overlays-share-sheet-smart-link-share-actions | tier: canonical -->
+<!-- needs: overlays/overlays.css + tokens.css + base.css | icons: use #i-name from icons.svg -->
+<div class="smart-link"><svg class="icon"><use href="#i-globe"/></svg><span><strong>Public view</strong><small>Who can open this is explicit.</small></span></div>
+      <div class="share-actions">
+        <button class="naya-btn small"><svg class="icon"><use href="#i-people"/></svg>People</button>
+        <button class="naya-btn small"><svg class="icon"><use href="#i-lock"/></svg>Private</button>
+        <button class="naya-btn small" onclick="NayaBlocks.copyText('https://nayanet.example/s/abc123','Smart link')"><svg class="icon"><use href="#i-copy"/></svg>Copy link</button>
+      </div>
