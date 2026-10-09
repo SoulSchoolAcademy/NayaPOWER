@@ -1,9 +1,9 @@
 # COLD-START PACKET — NayaPOWER activation from materials alone
 
-**Version:** v3.1 (2026-10-09). Supersedes v3.
+**Version:** v3.2 (2026-10-09). Supersedes v3.1.
 **For:** a genuinely cold Naya. No conversation history. No tribal knowledge.
 **Repo:** SoulSchoolAcademy/NayaPOWER, branch `main`.
-**Rule:** read the files below, in order. Do not infer from training memory.
+**Rule:** read the 11 files below, in order. Do not infer from training memory.
 Where files disagree, the newest dated file wins; where in doubt, mark UNKNOWN.
 
 **v3 changes (from the 2026-10-09 cold Naya-2 run, packet scored 7.5/10):**
@@ -18,6 +18,30 @@ the binary structural gate MERGED to main (PR #2004) — v3's "pending" line was
 already false; `smart-blocks/manifest.json` (58 blocks) is on main via the same
 PR — v3's "not on main" line was already false. Digest-race volatility measured
 live (~5s). End-to-end proof recorded below.
+
+**v3.2 changes (2026-10-09 — the independent cold retest scored v3.1
+ACTIVATED-WITH-GAPS 7.7/10, #1354 comment 6086149614):**
+the retester's durable lesson — *a packet whose acceptance test needs
+live-main files isn't a cold-start packet* — is now encoded as vendoring.
+The enforcement files the acceptance test invokes are vendored **in this
+branch** at the pinned main tip `45f0ed26c79ae1261bd3ba6181d37970dab601f5`
+(the exact tip where the retester scored 10.0/10 PASS, `activation:
+VERIFIED`): `BRAIN/10-INTERFACES/DESIGN-BLOCKS/tools/activation_pregate.py`
+(retest gap G1 — was missing), the `--receipt`/exit-3-capable
+`design-compliance-check.py` (G2 — the branch's copy predated the pre-gate),
+`NAYA-ACTIVATION/ACTIVATION-RECEIPT-V2.json` (G3 — acceptance item 2a's
+template, was missing), plus the rest of read item 7
+(`tools/design_gate.py`, `tools/activation_gate.py`,
+`.github/workflows/design-gate.yml`) and read item 9's
+`smart-blocks/manifest.json` (58 blocks) — all three were named "on main"
+but absent from the branch. The acceptance test now runs literally from
+this branch, no live-main rescue. The vendored copies are a **pinned
+snapshot, not live main**: if the freshness check (above) shows the
+checker's CLI or the receipt schema changed on live main, the snapshot may
+be stale — report that as a packet finding per freshness §3, exactly as
+before. File-count audit (G4): the read list enumerates **11 items**, and
+the count is now stated explicitly below; every read-list path was
+re-verified to resolve in-branch at v3.2.
 
 ---
 
@@ -97,6 +121,9 @@ Three instruments, not duplicates:
 **Warning:** the README's "Usage" block still shows the old checker command
 without `--receipt` and lists only exit codes 0/1/2. That block is stale —
 trust the checker's own header/`--help` (exit 3 = ACTIVATION REFUSED).
+**v3.2:** the checker, both gates, and the CI workflow are vendored in this
+branch at the pinned tip (see v3.2 changes) — run the branch copies, not
+live main's.
 
 ### 8. `BRAIN/10-INTERFACES/DESIGN-BLOCKS/tools/activation_pregate.py` — the live pre-gate
 **This is the enforcement you must satisfy.** Naya 3's activation receipt
@@ -109,6 +136,15 @@ Key rules the code enforces: trusted state (main SHA, blob SHAs, digests) is
 fetched from the **live GitHub API by the gate itself, never from you**;
 receipts expire after **4 hours**; the deliverable must cite the receipt's
 exact SHA256 (`<!-- NAYA-ACTIVATION-RECEIPT-SHA256:<64hex> -->`).
+**v3.2:** vendored in this branch at the pinned tip (was missing in v3.1 —
+retest gap G1). Import it from the branch path above.
+**Pinned-tip finding (honest, do not paper over):** the vendored v2
+template's `loaded` skeleton uses `design_contract`/`blocks_catalog`
+(matching `tools/activation_gate.py`'s registry), but the checker invokes
+*this* pre-gate, which enforces `design_blob`, `blocks_blob`,
+`goals_digest`, `feed_digest`. Mint with the four key names in acceptance
+item 2a — they are what this gate checks. The template file is the schema
+shell; the key names below are the enforced contract.
 
 ### 9. `BRAIN/10-INTERFACES/DESIGN-BLOCKS/naya-design-catalog.json` — the blocks
 The 91 canonical Smart Blocks (reference). Skim the structure: categories,
@@ -116,6 +152,7 @@ selectors, usage. "If a block exists for the job, use it."
 **Note:** `smart-blocks/manifest.json` (58-block v2 library) is also on main
 now (merged 2026-10-09 via PR #2004). The checker still scores against the
 91-block catalog by default; the v2 manifest is the forward library.
+**v3.2:** vendored in this branch at the pinned tip (was missing in v3.1).
 
 ### 10. `NAYA-ACTIVATION/CURRENT-REALITY/SOURCE-PRECEDENCE-AND-NAVIGATION-RECONCILIATION-2026-10-04.md`
 The newest reality doc: what counts as truth right now and which source
