@@ -324,8 +324,13 @@ def inline_css(html: str) -> str:
     values (a `>` inside quotes does not end the tag). Tokenizer
     awareness is a three-front requirement: strings, urls, tags.
     """
+    # Raw-text law (validator round 6, U1): <style> is a raw-text element
+    # that runs to end-of-input when never closed — `(?:</style>|$)` reads
+    # it the way the browser does. A wrong close tag (</styleX>) or a
+    # self-closing slash (<style/>) does not end the element either.
     parts = [_normalize_css_block(p)
-             for p in re.findall(r"<style[^>]*>(.*?)</style>", html, re.S | re.I)]
+             for p in re.findall(r"<style[^>]*>(.*?)(?:</style>|$)",
+                                 html, re.S | re.I)]
     for m in re.finditer(
         r"""\bstyle\s*=\s*"([^"]*)"|\bstyle\s*=\s*'([^']*)'""", html, re.I
     ):
@@ -371,39 +376,81 @@ def _tag_extent(html: str, tag: str) -> str | None:
     return None
 
 
+def _style_attr_raw(extent: str) -> tuple[str | None, bool]:
+    """Parse a tag extent's attributes as ATTRIBUTES and return the raw
+    value of the first attribute named exactly `style`
+    (case-insensitive), plus whether the value was quoted.
+
+    A `style=` substring inside another attribute's quoted VALUE is a
+    label, not an instruction (validator round 6, D1): the old
+    first-regex-match took the decoy, so the cascade judged a fake color
+    and invisible dark-on-dark text walked through. Attribute grammar:
+    name, optional `=`, then a double-quoted, single-quoted, or unquoted
+    value. Per the HTML spec, when an attribute name is duplicated the
+    FIRST occurrence wins — so the first real `style` attribute wins,
+    same as the browser. A `data-style` attribute is not a style
+    attribute (the old `\\bstyle` regex wrongly matched it)."""
+    m = re.match(r"<[A-Za-z][^\s/>]*", extent)
+    i = m.end() if m else 1
+    n = len(extent)
+    while i < n:
+        while i < n and extent[i] in " \t\n\r\f/":
+            i += 1
+        if i >= n or extent[i] == ">":
+            break
+        j = i
+        while j < n and extent[j] not in " \t\n\r\f=/>":
+            j += 1
+        name = extent[i:j]
+        i = j
+        while i < n and extent[i] in " \t\n\r\f":
+            i += 1
+        value: str | None = None
+        quoted = False
+        if i < n and extent[i] == "=":
+            i += 1
+            while i < n and extent[i] in " \t\n\r\f":
+                i += 1
+            if i < n and extent[i] in "\"'":
+                quote = extent[i]
+                quoted = True
+                i += 1
+                j = i
+                while j < n and extent[j] != quote:
+                    j += 1
+                value = extent[i:j]
+                i = j + 1 if j < n else j
+            else:
+                j = i
+                while j < n and extent[j] not in " \t\n\r\f>":
+                    j += 1
+                value = extent[i:j]
+                i = j
+        if name.lower() == "style" and value is not None:
+            return value, quoted
+    return None, False
+
+
 def _inline_style_of(html: str, tag: str) -> str | None:
     """The normalized style="" attribute of the first <tag>, for cascade
     judging (inline styles beat stylesheet rules). The tag's true extent
-    is found first (quoted attribute values respected), then the style
-    attribute is located within it — so a `>` inside an earlier quoted
-    attribute can no longer blind the cascade path. Normalized through
-    the same encoding layer as inline_css so cascade winners are judged
-    on what the browser actually sees."""
+    is found first (quoted attribute values respected), then its
+    attributes are parsed as attributes — a `style=` written inside
+    another attribute's quoted value is a label, not an instruction, so
+    the cascade can no longer be fed a decoy (validator round 6, D1).
+    Normalized through the same encoding layer as inline_css so cascade
+    winners are judged on what the browser actually sees."""
     extent = _tag_extent(html, tag)
     if not extent:
         return None
-    m = re.search(
-        r"""\bstyle\s*=\s*"([^"]*)\"""", extent, re.I
-    )
-    if not m:
-        m = re.search(
-            r"""\bstyle\s*=\s*'([^']*)'""", extent, re.I
-        )
-    if not m:
-        # Unquoted fallback (validator round 4): the quote is excluded as
-        # the first character so quoted forms can never match twice.
-        # A trailing "/" is self-closing syntax, never CSS — stripped so
-        # `<div style=background:white/>` can't hide behind it.
-        m = re.search(
-            r"""\bstyle\s*=\s*([^\"'\s>][^>\s]*)""", extent, re.I
-        )
-        unquoted = True
-    else:
-        unquoted = False
-    if not m:
+    raw, quoted = _style_attr_raw(extent)
+    if raw is None:
         return None
-    decl = m.group(1).strip()
-    if unquoted:
+    decl = raw.strip()
+    if not quoted:
+        # Unquoted (validator round 4): a trailing "/" is self-closing
+        # syntax, never CSS — stripped so
+        # `<div style=background:white/>` can't hide behind it.
         decl = decl.rstrip("/")
     return _normalize_style_attr(decl) if decl else None
 
@@ -1438,6 +1485,70 @@ def self_test() -> int:
             ok = False
         else:
             print(f"SELF-TEST: wave-5 blind-spot '{name}' held (good)")
+    # --- raw-text / attribute-parsing pins (validator round 6, 2026-10-09) ---
+    # Durable law: the gate must read raw-text elements to end-of-input
+    # the way the browser does (an unclosed <style> still has walls the
+    # browser can see), and must parse attributes as attributes rather
+    # than substring-matching them (a style= inside another attribute's
+    # quoted value is a label, not an instruction).
+    w6 = [
+        # (name, fragment, check-kind, must_flag_violation)
+        # U1: unclosed <style> is an unread channel — EOF is an implicit
+        # close, the way the browser reads it.
+        ("unclosed style to EOF",
+         "<style>body{background:white}", "surface_html", True),
+        ("wrong close tag keeps style alive",
+         "<style>.x{background:white}</styleX>", "surface_html", True),
+        ("self-closing style slash ignored",
+         "<body><style/>body{background:white}", "surface_html", True),
+        ("lawful dark unclosed style passes",
+         "<style>body{background:#050507}", "surface_html", False),
+        ("two blocks second unclosed",
+         "<style>a{color:#111}</style><style>b{background:white}",
+         "surface_html", True),
+        # D1: decoy style= inside an earlier quoted attribute must not
+        # blind the light-text cascade — attributes are parsed, not
+        # substring-matched.
+        ("decoy style in title attr",
+         '<style>body{color:#f5f5f5}</style>'
+         '<body title=\'style="color:#eeeeee"\' style=\'color:#111111\'>x</body>',
+         "texthtml", True),
+        ("decoy style in data attr",
+         '<style>body{color:#f5f5f5}</style>'
+         '<body data-x="style=color:#eeeeee" style="color:#111111">x</body>',
+         "texthtml", True),
+        ("uppercase decoy attr",
+         '<style>body{color:#f5f5f5}</style>'
+         '<body TITLE=\'STYLE="color:#eeeeee"\' style="color:#111111">x</body>',
+         "texthtml", True),
+        ("lawful decoy with dark real style passes",
+         '<style>body{color:#f5f5f5;background:#050507}</style>'
+         '<body title=\'style="color:#eeeeee"\' style="color:#f5f5f5">x</body>',
+         "texthtml", False),
+        ("data-style is not a style attribute",
+         '<style>body{color:#f5f5f5;background:#050507}</style>'
+         '<body data-style="color:#111111">x</body>',
+         "texthtml", False),
+        ("unquoted real style still judged",
+         '<style>body{color:#f5f5f5}</style>'
+         '<body style=color:#111>x</body>',
+         "texthtml", True),
+    ]
+    for name, frag, kind, must_flag in w6:
+        if kind == "surface_html":
+            flagged = bool(check_no_light_surfaces(inline_css(frag)))
+        elif kind == "rooth_html":
+            flagged = bool(check_black_root(frag, inline_css(frag)))
+        elif kind == "texthtml":
+            flagged = bool(check_light_text(frag, inline_css(frag)))
+        elif kind == "freestyle":
+            flagged = bool(check_no_freestyle(frag, w4known))
+        if flagged != must_flag:
+            print(f"SELF-TEST FAIL: wave-6 blind-spot '{name}' regressed "
+                  f"(flagged={flagged}, want={must_flag})")
+            ok = False
+        else:
+            print(f"SELF-TEST: wave-6 blind-spot '{name}' held (good)")
     return 0 if ok else 1
 
 
