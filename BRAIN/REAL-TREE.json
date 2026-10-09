@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-09",
-  "receipt_basis_commit": "2e96aa43baf37cba8bfc49159004b6c781eca821",
-  "inventory_file_count": 1195,
+  "receipt_basis_commit": "b9d21f1925f6bc1c08b7601db15e4ff18d9bade0",
+  "inventory_file_count": 1196,
   "domain_counts": {
     "00-ACTIVATION": 2,
     "00-SPEC": 15,
@@ -10,7 +10,7 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
-    "05-MEMORY": 638,
+    "05-MEMORY": 639,
     "06-PROOF": 13,
     "07-LEARNING": 4,
     "08-SUCCESSION": 2,
@@ -3638,6 +3638,11 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/OPERATING-DOCTRINE/TEAM-PROTOCOL/SN-0638/IB-SMART-NOTE-20261008-sn0638-wisdom-over-smartness.md",
       "blob_sha": "c10e37a63c96a57a39560bcb940554ca40ab71b0",
       "size": 2357
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/OPERATIONAL-INTELLIGENCE/DISPATCH/RESERVE-RULE/SN-782/IB-SMART-NOTE-20261009-successor-t11-reserve-rule-canonical.md",
+      "blob_sha": "91652e0cbce4ba21d3bf0a48b1a98eb30e00b0dc",
+      "size": 3879
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/SCORECARD-DISCIPLINE/GATE-EXECUTION/SN-0781/IB-SMART-NOTE-20261009-sn0781-scorecard-must-run-the-gate.md",
