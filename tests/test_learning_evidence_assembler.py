@@ -10,10 +10,15 @@ as tests/test_lineage_receipt_evidence_consumption.py).
 
 Fail-closed behaviors under test:
   - E0 -> E1 -> E2 -> E3 advancement as evidence accumulates (snapshots)
+  - E3 -> E4 -> E5 -> E6 -> E7 advancement through the assembled path
   - tampered application receipt (digest stale)  -> excluded, E2 unproven
   - outcome verified by the applier              -> E3 unproven (self-attestation)
+  - comprehension verified by the producer       -> E1 unproven (self-attestation)
   - application naming an unknown retrieval       -> excluded (manufactured)
   - receipt carrying a grant field                -> excluded (#1712)
+  - transfer repeating the application task       -> E4 unproven (anti-memorization)
+  - successor == applier or == producer           -> E5 unproven (not cold)
+  - mastery below two verifiers/domains, or conflicts -> E7 unproven / FALSIFIED
   - evidence going stale                          -> REGRESSED flagged, never silent
   - mirror digest vectors pinned                  -> drift guard for the D merge
   - malformed input                               -> unproven, never an exception
@@ -345,3 +350,141 @@ def test_missing_capture_stage_is_unproven_not_e0():
     result = advance(LESSON, "E1_UNDERSTANDS",
                      [{"lineage_bundle": b}], producer_id=PRODUCER)
     assert result["final_earned_level"] == "UNPROVEN"
+
+
+# ---------------------------------------------------------------------------
+# top rung: E4 -> E5 -> E6 -> E7 through the assembled-evidence path
+# ---------------------------------------------------------------------------
+
+def _e3_snap(**over) -> dict:
+    """One snapshot with the full E3 evidence chain already assembled."""
+    ret = _emit_retrieval()
+    app = _emit_application(ret["receipt_id"])
+    out = _emit_outcome(app["receipt_id"], verifier="naya-2")
+    snap = {
+        "lineage_bundle": _bundle(
+            retrieval_receipts=[ret], application_receipts=[app],
+            outcome_records=[out]),
+        "comprehension": _comprehension(),
+    }
+    snap.update(over)
+    return snap
+
+
+def _transfer(task_ref: str = "task-B", verifier: str = "naya-2") -> dict:
+    return {
+        "task_ref": task_ref,
+        "measured_effect": "+9% on held-out task",
+        "independent_verification": {"verifier": verifier,
+                                    "verified_at": "2026-10-09T11:00:00Z"},
+    }
+
+
+def _successor(successor_id: str = "naya-6", verifier: str = "coda-1") -> dict:
+    return {
+        "successor_id": successor_id,
+        "task_ref": "task-C",
+        "independent_verification": {"verifier": verifier,
+                                    "verified_at": "2026-10-09T12:00:00Z"},
+    }
+
+
+def test_advancement_e3_to_e7_on_assembled_evidence():
+    transfer = [_transfer()]
+    successor = [_successor()]
+    retention = {"revalidated_at": "2026-10-09T13:00:00Z",
+                 "revalidation_receipt": "ret-1"}
+    mastery = {"distinct_verifiers": 2, "distinct_transfer_domains": 2}
+    snapshots = [
+        _e3_snap(),
+        _e3_snap(transfer=transfer),
+        _e3_snap(transfer=transfer, successor_use=successor),
+        _e3_snap(transfer=transfer, successor_use=successor,
+                 retention=retention),
+        _e3_snap(transfer=transfer, successor_use=successor,
+                 retention=retention, mastery=mastery),
+    ]
+    result = advance(LESSON, "E7_MASTERED", snapshots,
+                     producer_id=PRODUCER)
+
+    earned = [t["earned_level"] for t in result["trajectory"]]
+    assert earned == ["E3_INDEPENDENT", "E4_TRANSFER", "E5_CAN_TEACH",
+                      "E6_RETAINED", "E7_MASTERED"], earned
+
+    kinds = [t["kind"] for t in result["transitions"]]
+    assert kinds == ["ADVANCED"] * 4, kinds
+    assert result["regressions"] == []
+
+    # The E7 claim is rejected until the whole chain earns it, then accepted.
+    verdicts = [t["verdict"] for t in result["trajectory"]]
+    assert verdicts[:4] == ["REJECTED"] * 4, verdicts
+    assert verdicts[4] == "ACCEPTED", verdicts
+    assert result["final_earned_level"] == "E7_MASTERED"
+    assert result["final_verdict"] == "ACCEPTED"
+
+
+def test_transfer_on_same_task_is_not_transfer():
+    # Repeating the application's own task is memorization, not transfer.
+    snap = _e3_snap(transfer=[_transfer(task_ref="task-A")])
+    result = advance(LESSON, "E4_TRANSFER", [snap],
+                     producer_id=PRODUCER)
+    assert result["final_earned_level"] == "E3_INDEPENDENT"
+
+
+def test_transfer_without_measured_effect_or_verifier_is_not_transfer():
+    snap = _e3_snap(transfer=[{"task_ref": "task-B"}])
+    result = advance(LESSON, "E4_TRANSFER", [snap],
+                     producer_id=PRODUCER)
+    assert result["final_earned_level"] == "E3_INDEPENDENT"
+
+
+def test_successor_same_as_applier_is_not_cold():
+    snap = _e3_snap(transfer=[_transfer()],
+                    successor_use=[_successor(successor_id=APPLIER)])
+    result = advance(LESSON, "E5_CAN_TEACH", [snap],
+                     producer_id=PRODUCER)
+    assert result["final_earned_level"] == "E4_TRANSFER"
+
+
+def test_successor_same_as_producer_is_not_cold():
+    snap = _e3_snap(transfer=[_transfer()],
+                    successor_use=[_successor(successor_id=PRODUCER)])
+    result = advance(LESSON, "E5_CAN_TEACH", [snap],
+                     producer_id=PRODUCER)
+    assert result["final_earned_level"] == "E4_TRANSFER"
+
+
+def test_e7_requires_two_verifiers_and_two_domains():
+    snap = _e3_snap(
+        transfer=[_transfer()],
+        successor_use=[_successor()],
+        retention={"revalidated_at": "2026-10-09T13:00:00Z",
+                   "revalidation_receipt": "ret-1"},
+        mastery={"distinct_verifiers": 1, "distinct_transfer_domains": 2})
+    result = advance(LESSON, "E7_MASTERED", [snap],
+                     producer_id=PRODUCER)
+    assert result["final_earned_level"] == "E6_RETAINED"
+
+
+def test_conflicts_collapse_the_chain_to_e0():
+    snap = _e3_snap(
+        transfer=[_transfer()],
+        successor_use=[_successor()],
+        retention={"revalidated_at": "2026-10-09T13:00:00Z",
+                   "revalidation_receipt": "ret-1"},
+        mastery={"distinct_verifiers": 2, "distinct_transfer_domains": 2},
+        conflicts=True)
+    result = advance(LESSON, "E7_MASTERED", [snap],
+                     producer_id=PRODUCER)
+    assert result["final_earned_level"] == "E0_EXPOSED"
+    assert result["final_verdict"] == "FALSIFIED"
+
+
+def test_comprehension_verified_by_producer_blocks_e1():
+    # The producer self-attestation guard (ladder's _producer_id injection)
+    # must be LIVE through the assembler path, not silently disabled.
+    snap = _e3_snap(comprehension=_comprehension(verifier=PRODUCER))
+    result = advance(LESSON, "E3_INDEPENDENT", [snap],
+                     producer_id=PRODUCER)
+    assert result["final_earned_level"] == "E0_EXPOSED"
+    assert result["final_verdict"] == "REJECTED"
