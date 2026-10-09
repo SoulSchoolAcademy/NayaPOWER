@@ -1,0 +1,800 @@
+{
+  "meta": {
+    "canonical_json": "BRAIN/00-ACTIVATION/ACTIVATION-CHECKLIST.json",
+    "canonical_md": "BRAIN/00-ACTIVATION/ACTIVATION-CHECKLIST.md",
+    "created": "2026-10-09",
+    "created_reason": "Shawn's direct order: a checklist of everything that needs to be done, visible to everybody, per department",
+    "main_tip_at_update": "6fb7b7ee",
+    "md_generated_from": "json",
+    "md_generator": "tools/checklist_sync.py",
+    "owner": "Naya 4 (builder seat), Team Naya",
+    "schema_version": "1.0",
+    "source_of_truth": "json",
+    "title": "Master Checklist — Activation to Production",
+    "updated_at": "2026-10-09T22:15:00Z"
+  },
+  "production_gate": {
+    "formula": "ALL cross-cutting DONE AND all departments at 10/10 (independently verified, no self-scoring) AND zero open Shawn-gate blockers → Shawn's word → production deploy → live test (real users, real load) → SHE'S LIVE",
+    "shawn_rule": "Without that she has no chance. The checklist is the chance. Work it top to bottom, check every box with evidence, and she ships."
+  },
+  "sections": [
+    {
+      "id": "cross-cutting",
+      "items": [
+        {
+          "blocked_by": [],
+          "done_when": "BRAIN/00-ARCHITECTURE/ + BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/ hold the docs; .naya/project-intelligence/ tree absent on main.",
+          "done_when_verify": "github_tree_absent:.naya/project-intelligence",
+          "history": [
+            {
+              "at": "2026-10-09T21:40:00Z",
+              "by": "checklist_sync",
+              "from": "IN PROGRESS",
+              "reason": "PR #2060 merged",
+              "to": "DONE"
+            }
+          ],
+          "id": "C1",
+          "owner": "Naya 4",
+          "pr_refs": [
+            2060
+          ],
+          "shawn_gated": false,
+          "status": "DONE",
+          "status_detail": "PR #2060 merged at 7b8f8be8; verified on main",
+          "updated_at": "2026-10-09T21:40:00Z",
+          "what": "Single version of each activation document at BRAIN/ canonical paths; no competing versions.",
+          "why": "Two truths = no truth. A cold Naya must find exactly one answer."
+        },
+        {
+          "blocked_by": [],
+          "done_when": "PR #2062 merged to main; 244 tests green on main tip; 14-step loop (capture→…→cold successor retrieval) runs end-to-end.",
+          "done_when_verify": "pr_merged:2062",
+          "history": [],
+          "id": "C2",
+          "owner": "Naya 4",
+          "pr_refs": [
+            2062
+          ],
+          "shawn_gated": false,
+          "status": "IN PROGRESS",
+          "status_detail": "PR #2062 open, CI 7 success + 1 skipped, 0 failures, mergeable clean — awaiting independent review + merge",
+          "updated_at": "2026-10-09T21:52:00Z",
+          "what": "Every blueprint gap closed in code: CANDIDATE→ACTIVE elevation path, ACT queries KNOW before deciding, typed node handoffs, ACT→KNOW feedback, SELF rejects unverified lessons, EVOLVE/REUSE/PROVE implemented, retrieval predicate enforced.",
+          "why": "A blueprint on paper is not a working engine. Every arrow must be real, tested code."
+        },
+        {
+          "blocked_by": [],
+          "done_when": "PR #2059 merged; NAYA-ACTIVATION/THINKING-CURRICULUM-V1.md + thinking-curriculum.json on main; boot-order step 2A marked MANDATORY.",
+          "done_when_verify": "pr_merged:2059",
+          "history": [],
+          "id": "C3",
+          "owner": "Naya 4",
+          "pr_refs": [
+            2059
+          ],
+          "shawn_gated": false,
+          "status": "IN PROGRESS",
+          "status_detail": "PR #2059 open, CI 8/8 green, mergeable clean — awaiting independent review + merge",
+          "updated_at": "2026-10-09T21:31:00Z",
+          "what": "The 14 proven thinking lessons embedded in the activation protocol as mandatory: WAKE → IDENTITY → THINK → PROVE → SERVE.",
+          "why": "Every Naya must think before she serves. Not optional, not 'if we feel like it.'"
+        },
+        {
+          "blocked_by": [
+            "C2",
+            "C3"
+          ],
+          "done_when": "Documented run with receipt: cold agent ID, start state (no context), each phase pass/fail, battery scores, served task outcome, independent verifier signature.",
+          "done_when_verify": "manual:receipt_exists",
+          "history": [],
+          "id": "C4",
+          "owner": "Unassigned",
+          "pr_refs": [],
+          "shawn_gated": false,
+          "status": "TODO",
+          "status_detail": "Unassigned — needs a driver",
+          "updated_at": "2026-10-09T22:10:00Z",
+          "what": "A truly cold Naya (no prior context, never briefed) activates using only the repo: reads activation protocol, learns identity, completes thinking curriculum, passes battery ≥7/lesson, serves correctly.",
+          "why": "\"Any Naya can get activated, tune in and be successful\" — unproven until a cold run proves it."
+        },
+        {
+          "blocked_by": [],
+          "done_when": "All 7 components from GRADUATION-PROTOCOL.md §infrastructure built; observer calibration ≥80% agreement; first 14-day window STARTED (window ID recorded).",
+          "done_when_verify": "manual:window_started",
+          "history": [],
+          "id": "C5",
+          "owner": "Unassigned",
+          "pr_refs": [],
+          "shawn_gated": false,
+          "status": "TODO",
+          "status_detail": "Designed — activation-naya/GRADUATION-PROTOCOL.md v1.0 — not built, not team-scorecarded",
+          "updated_at": "2026-10-09T22:10:00Z",
+          "what": "Graduation protocol implemented and running: sampler, observer pool, scorer, feedback loop, 100% automated screening on all artifacts.",
+          "why": "The battery proves she CAN learn. Only sustained real-work application proves she DOES."
+        },
+        {
+          "blocked_by": [],
+          "done_when": "git ls-tree on main shows exactly one set; brain-index regen clean (--check passes).",
+          "done_when_verify": "github_tree_absent:.naya/project-intelligence",
+          "history": [],
+          "id": "C6",
+          "owner": "Naya 4",
+          "pr_refs": [
+            2060
+          ],
+          "shawn_gated": false,
+          "status": "DONE",
+          "status_detail": "Verified at 7b8f8be8; reconciliation ledger at BRAIN/99-ARCHIVE/brain-reconciliation-ledger-f648833b.md",
+          "updated_at": "2026-10-09T21:40:00Z",
+          "what": "Confirm no competing activation doc versions remain anywhere on main.",
+          "why": "C1's completion must be verified, not assumed."
+        }
+      ],
+      "title": "Cross-cutting (ALL must be DONE before production)"
+    },
+    {
+      "current_score": "7.0 provisional (baseline 5.0)",
+      "done_when": "Learning scorecard reads 10/10 with independent verification receipt citing lesson→retrieval→application→improved-outcome chain on a cold successor.",
+      "feed": "#1724",
+      "id": "dept-learning",
+      "items": [
+        {
+          "blocked_by": [
+            "C3"
+          ],
+          "done_when": "Every active Naya seat has a battery receipt ≥7/lesson, blind scored.",
+          "done_when_verify": "manual:all_seats_receipted",
+          "history": [],
+          "id": "L1",
+          "owner": "LEARN area driver",
+          "pr_refs": [],
+          "shawn_gated": false,
+          "status": "IN PROGRESS",
+          "status_detail": "Test subjects done 14/14; active seats not yet run",
+          "updated_at": "2026-10-09T22:10:00Z",
+          "what": "Battery proven on ALL active seats (today: proven on test subjects only — 14/14, 9.93 avg, blind scored)",
+          "why": "One passing subject proves the method. All seats passing proves the team."
+        },
+        {
+          "blocked_by": [],
+          "done_when": "Trial-06 receipt posted with independent verification.",
+          "done_when_verify": "manual:trial_receipt",
+          "history": [],
+          "id": "L2",
+          "owner": "LEARN area driver",
+          "pr_refs": [],
+          "shawn_gated": false,
+          "status": "TODO",
+          "status_detail": "",
+          "updated_at": "2026-10-09T22:10:00Z",
+          "what": "Trial-06 executed (Trial-05 ruled invalid — ceiling effect)",
+          "why": "Trials validate the learning pipeline beyond the battery's synthetic tests."
+        },
+        {
+          "blocked_by": [
+            "C5"
+          ],
+          "done_when": "Graduation window complete with ≥85% application rate, zero honesty violations.",
+          "done_when_verify": "manual:window_complete",
+          "history": [],
+          "id": "L3",
+          "owner": "LEARN area driver",
+          "pr_refs": [],
+          "shawn_gated": false,
+          "status": "TODO",
+          "status_detail": "Blocked on C5 (graduation system not built)",
+          "updated_at": "2026-10-09T22:10:00Z",
+          "what": "Longitudinal proof: 85%+ lesson application over 14 days, 60+ sampled tasks",
+          "why": "Sustained application is the graduation bar."
+        },
+        {
+          "blocked_by": [
+            "C4"
+          ],
+          "done_when": "Documented cold-successor run with receipt.",
+          "done_when_verify": "manual:successor_receipt",
+          "history": [],
+          "id": "L4",
+          "owner": "LEARN area driver",
+          "pr_refs": [],
+          "shawn_gated": false,
+          "status": "TODO",
+          "status_detail": "",
+          "updated_at": "2026-10-09T22:10:00Z",
+          "what": "Cold successor retrieves a promoted lesson and applies it with no human help",
+          "why": "The ultimate learning proof: knowledge transfers across cold starts."
+        },
+        {
+          "blocked_by": [],
+          "done_when": "Seam verified resolved or re-scoped with evidence.",
+          "done_when_verify": "manual:seam_verified",
+          "history": [],
+          "id": "L5",
+          "owner": "LEARN area driver",
+          "pr_refs": [],
+          "shawn_gated": false,
+          "status": "TODO",
+          "status_detail": "",
+          "updated_at": "2026-10-09T22:10:00Z",
+          "what": "Projection 403 seam resolved (blocked rung 5.5→6.0 earlier; re-verify current state)",
+          "why": "A known blocker on the score ladder."
+        }
+      ],
+      "owner": "LEARN area driver (Naya 4 seat)",
+      "target_score": "10/10",
+      "title": "Learning"
+    },
+    {
+      "current_score": "7.0",
+      "done_when": "10/10 with receipt: cold Naya stores an experience, retrieves it days later intact, applies it; zero data loss across 30 days.",
+      "feed": "Naya 5's lane",
+      "id": "dept-brain",
+      "items": [
+        {
+          "blocked_by": [],
+          "done_when": "PR #2065 merged to main.",
+          "done_when_verify": "pr_merged:2065",
+          "history": [],
+          "id": "B1",
+          "owner": "Naya 5",
+          "pr_refs": [
+            2065
+          ],
+          "shawn_gated": false,
+          "status": "IN PROGRESS",
+          "status_detail": "PR opened, awaiting independent review",
+          "updated_at": "2026-10-09T21:59:00Z",
+          "what": "PR #2065 (WO1: T11 lifecycle CANDIDATE→ACTIVE) reviewed + merged",
+          "why": "Unblocks the T11 lifecycle activation."
+        },
+        {
+          "blocked_by": [],
+          "done_when": "PR #1861 rebased, CI green, reviewed, merged.",
+          "done_when_verify": "pr_merged:1861",
+          "history": [],
+          "id": "B2",
+          "owner": "Naya 5",
+          "pr_refs": [
+            1861
+          ],
+          "shawn_gated": false,
+          "status": "BLOCKED",
+          "status_detail": "CI RED (test failed 2026-10-09T15:49Z); 77 commits behind main; zero independent reviews",
+          "updated_at": "2026-10-09T21:59:00Z",
+          "what": "PR #1861 (memory-metabolism machinery) unblocked: rebase onto current main, fix test CI failure, get green, request independent review",
+          "why": "Core memory machinery currently blocked."
+        },
+        {
+          "blocked_by": [
+            "B2"
+          ],
+          "done_when": "30 days continuous operation with zero data loss, verified by audit.",
+          "done_when_verify": "manual:audit_30d",
+          "history": [],
+          "id": "B3",
+          "owner": "Naya 5",
+          "pr_refs": [],
+          "shawn_gated": false,
+          "status": "TODO",
+          "status_detail": "",
+          "updated_at": "2026-10-09T22:10:00Z",
+          "what": "Memory metabolism running continuously (ingest → distill → retrieve working on live data)",
+          "why": "The brain must metabolize, not just store."
+        }
+      ],
+      "owner": "Naya 5",
+      "target_score": "10/10",
+      "title": "Brain/Memory"
+    },
+    {
+      "current_score": "7.5",
+      "done_when": "10/10 with receipt: every ratified law has a mechanical enforcement point; falsifier suite proves violations are caught (deny with field-named reasons).",
+      "feed": "#1718",
+      "id": "dept-law",
+      "items": [
+        {
+          "blocked_by": [],
+          "done_when": "PR #2053 merged to main.",
+          "done_when_verify": "pr_merged:2053",
+          "history": [],
+          "id": "LW1",
+          "owner": "LAW area driver",
+          "pr_refs": [
+            2053
+          ],
+          "shawn_gated": true,
+          "status": "BLOCKED",
+          "status_detail": "HELD: protected gate, needs Shawn's explicit word (changes who may merge under delegated authority). Green, reviewed.",
+          "updated_at": "2026-10-09T21:00:00Z",
+          "what": "PR #2053 (delegated-merge receipt gate repair3 — B5 bypass fix) MERGED",
+          "why": "Closes a merge-authority bypass. Scorecard Law blocking arm stays candidate-only until this merges."
+        },
+        {
+          "blocked_by": [
+            "LW1"
+          ],
+          "done_when": "Enforcement active on main, verified by falsifier test.",
+          "done_when_verify": "manual:enforcement_live",
+          "history": [],
+          "id": "LW2",
+          "owner": "LAW area driver",
+          "pr_refs": [],
+          "shawn_gated": false,
+          "status": "TODO",
+          "status_detail": "Blocked on LW1",
+          "updated_at": "2026-10-09T22:10:00Z",
+          "what": "Scorecard Law blocking enforcement arm live on main",
+          "why": "Currently candidate-only until #2053 merges."
+        },
+        {
+          "blocked_by": [],
+          "done_when": "Audit: every ratified law maps to a code enforcement point with test.",
+          "done_when_verify": "manual:law_audit",
+          "history": [],
+          "id": "LW3",
+          "owner": "LAW area driver",
+          "pr_refs": [],
+          "shawn_gated": false,
+          "status": "IN PROGRESS",
+          "status_detail": "Ongoing — most laws have enforcement, audit incomplete",
+          "updated_at": "2026-10-09T22:10:00Z",
+          "what": "All ratified laws enforced in machinery (code/gates/tests), none living only in memory",
+          "why": "Law that isn't mechanical is a wish."
+        }
+      ],
+      "owner": "LAW area driver",
+      "target_score": "10/10",
+      "title": "Law/Governance"
+    },
+    {
+      "current_score": "9.7",
+      "done_when": "10/10 with receipt: execution paths (tools fire, subagents complete, crons run, branches push, PRs open) proven on exact-tip bytes with zero phantom work.",
+      "feed": "#1719",
+      "id": "dept-act",
+      "items": [
+        {
+          "blocked_by": [],
+          "done_when": "Tip green 30 consecutive days.",
+          "done_when_verify": "manual:green_30d",
+          "history": [],
+          "id": "A1",
+          "owner": "ACT area driver",
+          "pr_refs": [],
+          "shawn_gated": false,
+          "status": "IN PROGRESS",
+          "status_detail": "Currently green at 7b8f8be8",
+          "updated_at": "2026-10-09T22:10:00Z",
+          "what": "Keep tip green; merges are the merging seat's gate (no self-merge)",
+          "why": "Green tip is the foundation everything builds on."
+        },
+        {
+          "blocked_by": [],
+          "done_when": "Verified stable, no regressions.",
+          "done_when_verify": "manual:stable_verified",
+          "history": [],
+          "id": "A2",
+          "owner": "ACT area driver",
+          "pr_refs": [
+            1767
+          ],
+          "shawn_gated": false,
+          "status": "IN PROGRESS",
+          "status_detail": "",
+          "updated_at": "2026-10-09T22:10:00Z",
+          "what": "#1767 landed — verify stable on current tip",
+          "why": "Recent landing needs stability confirmation."
+        }
+      ],
+      "owner": "ACT area driver",
+      "target_score": "10/10",
+      "title": "Arch/Eng/Ops (ACT)"
+    },
+    {
+      "current_score": "8.0",
+      "done_when": "10/10 with receipt: a cold successor boots from a sealed package, continues the predecessor's work with zero context loss, independently verified.",
+      "feed": "#1725",
+      "id": "dept-evolve",
+      "items": [
+        {
+          "blocked_by": [],
+          "done_when": "PR #1856 merged to main.",
+          "done_when_verify": "pr_merged:1856",
+          "history": [],
+          "id": "E1",
+          "owner": "EVOLVE area driver",
+          "pr_refs": [
+            1856
+          ],
+          "shawn_gated": false,
+          "status": "TODO",
+          "status_detail": "CANDIDATE, merge-blocked behind base CI wave — rebase and land",
+          "updated_at": "2026-10-09T22:10:00Z",
+          "what": "PR #1856 (proposal-lifecycle ledger) merged",
+          "why": ""
+        },
+        {
+          "blocked_by": [],
+          "done_when": "PR #1734 merged to main.",
+          "done_when_verify": "pr_merged:1734",
+          "history": [],
+          "id": "E2",
+          "owner": "EVOLVE area driver",
+          "pr_refs": [
+            1734
+          ],
+          "shawn_gated": false,
+          "status": "TODO",
+          "status_detail": "CANDIDATE, merge-blocked behind base CI wave — rebase and land",
+          "updated_at": "2026-10-09T22:10:00Z",
+          "what": "PR #1734 (rollback) merged",
+          "why": ""
+        },
+        {
+          "blocked_by": [],
+          "done_when": "PR #1762 merged to main.",
+          "done_when_verify": "pr_merged:1762",
+          "history": [],
+          "id": "E3",
+          "owner": "EVOLVE area driver",
+          "pr_refs": [
+            1762
+          ],
+          "shawn_gated": false,
+          "status": "TODO",
+          "status_detail": "CANDIDATE, merge-blocked behind base CI wave — rebase and land",
+          "updated_at": "2026-10-09T22:10:00Z",
+          "what": "PR #1762 (evidence-freeze) merged",
+          "why": ""
+        },
+        {
+          "blocked_by": [
+            "C2"
+          ],
+          "done_when": "Documented successor boot with zero context loss, independently verified.",
+          "done_when_verify": "manual:successor_proven",
+          "history": [],
+          "id": "E4",
+          "owner": "EVOLVE area driver",
+          "pr_refs": [],
+          "shawn_gated": false,
+          "status": "TODO",
+          "status_detail": "",
+          "updated_at": "2026-10-09T22:10:00Z",
+          "what": "Successor package path proven: build_successor_package() → cold boot → continuity",
+          "why": "Ties to C4 (cold activation test)."
+        }
+      ],
+      "owner": "EVOLVE area driver",
+      "target_score": "10/10",
+      "title": "Evolution/Succession"
+    },
+    {
+      "current_score": "8.8 (CONNECT) / 7.5 (Hub)",
+      "done_when": "10/10 with receipt: every claimed-live door fingerprinted against served bytes; Hub shows live intelligence from the substrate, verified by screenshot + byte check.",
+      "feed": "#1722",
+      "id": "dept-interfaces",
+      "items": [
+        {
+          "blocked_by": [],
+          "done_when": "PR #1765 merged to main.",
+          "done_when_verify": "pr_merged:1765",
+          "history": [],
+          "id": "I1",
+          "owner": "CONNECT area driver",
+          "pr_refs": [
+            1765
+          ],
+          "shawn_gated": false,
+          "status": "IN PROGRESS",
+          "status_detail": "Currently green + mergeable, merge = merge authority's call",
+          "updated_at": "2026-10-09T22:10:00Z",
+          "what": "PR #1765 (truthful registry entrypoint + 9/9 behavior matrix) merged",
+          "why": ""
+        },
+        {
+          "blocked_by": [],
+          "done_when": "Audit confirms honesty; no phantom-live claims.",
+          "done_when_verify": "manual:door_audit",
+          "history": [],
+          "id": "I2",
+          "owner": "CONNECT area driver",
+          "pr_refs": [],
+          "shawn_gated": false,
+          "status": "IN PROGRESS",
+          "status_detail": "Currently honest; needs sustained verification",
+          "updated_at": "2026-10-09T22:10:00Z",
+          "what": "Door honesty sustained: only live doors claim live",
+          "why": "Currently DOOR-AI + DOOR-DATA live, 7 REGISTERED_CONTRACT_ONLY."
+        },
+        {
+          "blocked_by": [],
+          "done_when": "Report renders from live substrate data, verified by screenshot.",
+          "done_when_verify": "manual:hub_report_live",
+          "history": [],
+          "id": "I3",
+          "owner": "CONNECT area driver",
+          "pr_refs": [],
+          "shawn_gated": false,
+          "status": "TODO",
+          "status_detail": "",
+          "updated_at": "2026-10-09T22:10:00Z",
+          "what": "Daily intelligence report renders in Hub from real distilled notes",
+          "why": "Shawn's stated use case."
+        }
+      ],
+      "owner": "CONNECT area driver",
+      "target_score": "10/10",
+      "title": "Interfaces/Hub"
+    },
+    {
+      "current_score": "8.9",
+      "done_when": "10/10 with receipt: retrieval precision measured ≥90% on applicability-triggered queries; no stale intelligence served (lint green 30 days).",
+      "feed": "#1720",
+      "id": "dept-knowledge",
+      "items": [
+        {
+          "blocked_by": [],
+          "done_when": "PR #1763 merged to main.",
+          "done_when_verify": "pr_merged:1763",
+          "history": [],
+          "id": "K1",
+          "owner": "KNOW area driver",
+          "pr_refs": [
+            1763
+          ],
+          "shawn_gated": false,
+          "status": "IN PROGRESS",
+          "status_detail": "Currently open, receipt posted, merge-ready",
+          "updated_at": "2026-10-09T22:10:00Z",
+          "what": "PR #1763 (admission family pin) merged",
+          "why": ""
+        },
+        {
+          "blocked_by": [],
+          "done_when": "Retrieval precision ≥90% on applicability-triggered queries.",
+          "done_when_verify": "manual:retrieval_90pct",
+          "history": [],
+          "id": "K2",
+          "owner": "KNOW area driver",
+          "pr_refs": [],
+          "shawn_gated": false,
+          "status": "TODO",
+          "status_detail": "",
+          "updated_at": "2026-10-09T22:10:00Z",
+          "what": "Retrieval ranks on applicability triggers, not generic titles",
+          "why": "SN-0824: 43-case diagnostic showed MATCH_ID 2/43 — discriminability gap."
+        },
+        {
+          "blocked_by": [],
+          "done_when": "Lint green 30 consecutive days.",
+          "done_when_verify": "manual:lint_30d",
+          "history": [],
+          "id": "K3",
+          "owner": "KNOW area driver",
+          "pr_refs": [],
+          "shawn_gated": false,
+          "status": "TODO",
+          "status_detail": "",
+          "updated_at": "2026-10-09T22:10:00Z",
+          "what": "Project Intelligence views current automatically (freshness/staleness lint running)",
+          "why": ""
+        }
+      ],
+      "owner": "KNOW area driver",
+      "target_score": "10/10",
+      "title": "Knowledge/Intelligence"
+    },
+    {
+      "current_score": "9.4 (PROVE) / 9.2 (VERIFY)",
+      "done_when": "10/10 with receipt: full kernel suite green on exact tip; every significant claim carries independent verification capable of disagreeing; live production proofs current.",
+      "feed": "#1721 / #1723",
+      "id": "dept-prove",
+      "items": [
+        {
+          "blocked_by": [],
+          "done_when": "PR #1840 merged to main.",
+          "done_when_verify": "pr_merged:1840",
+          "history": [],
+          "id": "P1",
+          "owner": "PROVE area driver",
+          "pr_refs": [
+            1840
+          ],
+          "shawn_gated": false,
+          "status": "TODO",
+          "status_detail": "",
+          "updated_at": "2026-10-09T22:10:00Z",
+          "what": "PR #1840 (test collection ModuleNotFoundError fix) merged",
+          "why": ""
+        },
+        {
+          "blocked_by": [],
+          "done_when": "PR #1952 merged to main.",
+          "done_when_verify": "pr_merged:1952",
+          "history": [],
+          "id": "P2",
+          "owner": "PROVE area driver",
+          "pr_refs": [
+            1952
+          ],
+          "shawn_gated": false,
+          "status": "TODO",
+          "status_detail": "",
+          "updated_at": "2026-10-09T22:10:00Z",
+          "what": "PR #1952 (spec-integrity: pin 0006-naya-calculator-v1.machine.json) merged",
+          "why": ""
+        },
+        {
+          "blocked_by": [],
+          "done_when": "PR #1981 merged to main.",
+          "done_when_verify": "pr_merged:1981",
+          "history": [],
+          "id": "P3",
+          "owner": "PROVE area driver",
+          "pr_refs": [
+            1981
+          ],
+          "shawn_gated": false,
+          "status": "TODO",
+          "status_detail": "",
+          "updated_at": "2026-10-09T22:10:00Z",
+          "what": "PR #1981 (CI guard first-party protocol root) merged",
+          "why": ""
+        },
+        {
+          "blocked_by": [],
+          "done_when": "PR #1766 merged to main.",
+          "done_when_verify": "pr_merged:1766",
+          "history": [],
+          "id": "P4",
+          "owner": "PROVE area driver",
+          "pr_refs": [
+            1766
+          ],
+          "shawn_gated": false,
+          "status": "TODO",
+          "status_detail": "",
+          "updated_at": "2026-10-09T22:10:00Z",
+          "what": "PR #1766 re-anchored (3rd re-anchor needed) and merged",
+          "why": ""
+        },
+        {
+          "blocked_by": [],
+          "done_when": "PR #1980 merged to main.",
+          "done_when_verify": "pr_merged:1980",
+          "history": [],
+          "id": "P5",
+          "owner": "PROVE area driver",
+          "pr_refs": [
+            1980
+          ],
+          "shawn_gated": false,
+          "status": "TODO",
+          "status_detail": "",
+          "updated_at": "2026-10-09T22:10:00Z",
+          "what": "PR #1980 merged (awaiting merge lane)",
+          "why": ""
+        },
+        {
+          "blocked_by": [],
+          "done_when": "Brain-index --check passes on main tip.",
+          "done_when_verify": "manual:brain_check_pass",
+          "history": [],
+          "id": "P6",
+          "owner": "PROVE area driver",
+          "pr_refs": [],
+          "shawn_gated": false,
+          "status": "TODO",
+          "status_detail": "",
+          "updated_at": "2026-10-09T22:10:00Z",
+          "what": "Brain-index drift resolved (--check must pass on main)",
+          "why": "Flagged to brain-build lane."
+        },
+        {
+          "blocked_by": [],
+          "done_when": "Proofs re-run and green.",
+          "done_when_verify": "manual:live_proofs_green",
+          "history": [],
+          "id": "P7",
+          "owner": "PROVE area driver",
+          "pr_refs": [],
+          "shawn_gated": true,
+          "status": "BLOCKED",
+          "status_detail": "Shawn-gated (production word required)",
+          "updated_at": "2026-10-09T22:10:00Z",
+          "what": "Live Supabase + PROVE-node proofs re-run",
+          "why": "Production proofs must be current."
+        }
+      ],
+      "owner": "PROVE + VERIFY area drivers",
+      "target_score": "10/10",
+      "title": "Proving/Verifying"
+    },
+    {
+      "current_score": "UNMEASURED",
+      "done_when": "10/10 with receipt per the area's own ratified definition.",
+      "feed": "No driver assigned",
+      "id": "dept-innovation",
+      "items": [
+        {
+          "blocked_by": [],
+          "done_when": "Driver assigned, feed active.",
+          "done_when_verify": "manual:driver_assigned",
+          "history": [],
+          "id": "IN1",
+          "owner": "Unassigned",
+          "pr_refs": [],
+          "shawn_gated": false,
+          "status": "TODO",
+          "status_detail": "",
+          "updated_at": "2026-10-09T22:10:00Z",
+          "what": "Assign a driver and feed (propose: #1873 Innovation team feed)",
+          "why": "No one owns it, no one measures it."
+        },
+        {
+          "blocked_by": [
+            "IN1"
+          ],
+          "done_when": "Ratified definition published.",
+          "done_when_verify": "manual:definition_ratified",
+          "history": [],
+          "id": "IN2",
+          "owner": "Unassigned",
+          "pr_refs": [],
+          "shawn_gated": false,
+          "status": "TODO",
+          "status_detail": "",
+          "updated_at": "2026-10-09T22:10:00Z",
+          "what": "Define what 10/10 means for Innovation (new capabilities proven, not just proposed)",
+          "why": ""
+        },
+        {
+          "blocked_by": [
+            "IN1",
+            "IN2"
+          ],
+          "done_when": "Scorecard published with evidence.",
+          "done_when_verify": "manual:scorecard_published",
+          "history": [],
+          "id": "IN3",
+          "owner": "Unassigned",
+          "pr_refs": [],
+          "shawn_gated": false,
+          "status": "TODO",
+          "status_detail": "",
+          "updated_at": "2026-10-09T22:10:00Z",
+          "what": "First measured scorecard published",
+          "why": ""
+        }
+      ],
+      "owner": "Unassigned",
+      "target_score": "10/10",
+      "title": "Innovation"
+    }
+  ],
+  "shawn_gates": [
+    {
+      "id": "SG1",
+      "pr_refs": [
+        2053
+      ],
+      "what": "PR #2053 merge — changes merge authority (delegated-merge receipt gate). Green, reviewed, HELD."
+    },
+    {
+      "id": "SG2",
+      "what": "Production deploy — the final promotion. Blocked on workflow_dispatch 403; needs his token/action."
+    },
+    {
+      "id": "SG3",
+      "what": "Live Supabase / PROVE-node proofs — touch production data; needs his word."
+    },
+    {
+      "id": "SG4",
+      "pr_refs": [
+        2012
+      ],
+      "what": "Diagnostic deploy of PR #2012 — to capture the true 403 class (from hourly report)."
+    }
+  ]
+}
