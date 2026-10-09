@@ -35,7 +35,7 @@ on:
   pull_request_target:
     branches: [main]
   push:
-    branches: [main]
+    branches: [main, naya5/unified-activation-gate-round2]
 
 permissions:
   contents: read
