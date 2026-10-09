@@ -1,0 +1,40 @@
+# Naya delivery gate — REAL-deliverable proof (CANDIDATE).
+#
+# Blocker 2 (pair scorer) / Naya 1's raised bar: the gate must be proven to
+# guard a REAL deliverable on the exact head — not just itself. This workflow
+# builds a FRESH activation receipt from live repository state at CI time
+# (live tip + live component blob SHAs, resolved by the gate's own trusted
+# fetch — nothing pre-baked, nothing builder-supplied), gates
+# tools/naya-gate-sample/product.html in --enforce mode, and runs adversarial
+# rejection cases. Lawful must PASS enforcement-grade; every adversarial must
+# FAIL with the named verdict. A run ID + job IDs + exit results are the
+# inspectable evidence Naya 1's acceptance criteria require.
+name: naya-gate-delivery
+
+on:
+  pull_request:
+    paths:
+      - "tools/naya_gate.py"
+      - "tools/test_naya_gate.py"
+      - "tools/naya-gate-sample/**"
+      - ".github/workflows/naya-gate-delivery.yml"
+  push:
+    branches:
+      - "naya4/gate-fusion-20261009"
+    paths:
+      - "tools/naya_gate.py"
+      - "tools/test_naya_gate.py"
+      - "tools/naya-gate-sample/**"
+      - ".github/workflows/naya-gate-delivery.yml"
+  workflow_dispatch:
+
+jobs:
+  delivery-proof:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Delivery proof — gate guards a real deliverable (lawful + adversarial)
+        run: python3 tools/naya-gate-sample/run_delivery_proof.py

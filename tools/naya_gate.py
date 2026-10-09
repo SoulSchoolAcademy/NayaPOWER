@@ -1,22 +1,31 @@
 #!/usr/bin/env python3
 """Naya unified delivery gate — code is law, machine-forced.
 
-ONE gate at the delivery boundary, fusing three existing efforts
+ONE gate at the delivery boundary, fusing existing efforts
 (no competing gates, no duplication):
 
   STAGE 1 — DESIGN (structural)
-      Fused from Naya 5's tools/design_gate.py @ 728cab40
-      (owner: Naya 5 / Smart Blocks lane; deep design rules stay hers).
-      7 machine-provable structural laws.
+      7 machine-provable structural laws, implemented in this file, plus the
+      CLOSED-WORLD component rule (Naya 1, 2026-10-09): every class used in a
+      deliverable must be registered in the manifest (or be a BEM
+      modifier/element of a registered block) — undocumented classes fail
+      whether or not they carry a naya- prefix.
+      ATTRIBUTION (corrected 2026-10-09): previously cited as "Naya 5's
+      tools/design_gate.py @ 728cab40" — that citation is WITHDRAWN.
+      Commit 728cab40 changed only AGENTS.md (+20/-0), and no
+      tools/design_gate.py exists on main or any indexed branch (verified
+      2026-10-09 via contents API + code search). The 7 checks below are
+      the gate-fusion doer's implementation of the reported 7-law
+      specification from the design-gate lane. If the source file
+      surfaces, Stage 1 converges to it.
 
   STAGE 2 — ACTIVATION (drink-first, trusted runner)
       Fused from:
-      - Naya 4's NAYA-ACTIVATION/tools/drink_first_gate.py (PR #1979, 14/14 green)
+      - Naya 4's NAYA-ACTIVATION/tools/drink_first_gate.py (PR #1979, open draft)
         — fail-closed verdicts: unactivated / tip-moved / stale / citation / schema.
-      - Naya 3's tools/qa/activation_receipt_consistency.mjs (PR #1974)
+      - Naya 3's tools/qa/activation_receipt_consistency.mjs (PR #1974, open)
         — receipt consistency falsifier: schema, identity, repository binding,
           main_sha match, freshness, citation binding.
-      - Naya 5's citation marker binding (sha256 of exact receipt bytes).
 
       TRUSTED RUNNER (SN-0787): a builder can forge both the receipt and the
       expected hashes, so expected values must come from a source the builder
@@ -27,11 +36,38 @@ ONE gate at the delivery boundary, fusing three existing efforts
       ADVISORY — never enforcement. If the trusted fetch fails, the gate fails
       closed (FAIL-TRUSTED-FETCH): unverifiable is not shippable.
 
+      COMPONENTS_LIVE (TRUSTED-RUNNER-DESIGN.md check 6): receipts that record
+      component SHAs (doctrine file / manifest blob SHAs) have them verified
+      against the live tree — the gate fetches the tip's tree objects itself
+      (partial clone, blob:none) and reads blob SHAs from the tree, bound to
+      the exact trusted tip. Forged or stale component SHAs fail
+      (FAIL-COMPONENT-MISMATCH). Receipts recording no components emit an
+      explicit COMPONENTS_LIVE NOT_BOUND note (documented limit, not a fail).
+
+      HONEST LIMITS (full text in tools/NAYA-GATE-FUSION-README.md):
+      the gate proves a receipt is CURRENT and INTERNALLY CONSISTENT. A forger
+      who copies ALL true current public values (live tip, current timestamp,
+      live component blob SHAs — all publicly readable) and computes a valid
+      citation produces a receipt this gate cannot distinguish from a genuine
+      activation. COMPONENTS_LIVE raises forgery from "copy any plausible
+      values" to "resolve all true current values" — the same work as genuine
+      activation; the residual gap (did the builder actually read and follow
+      the doctrine) is behavioral, closed by the cold-Naya proof, not by this
+      gate. Naya 2's independent assessment (#1354 comment 6084472606):
+      "Fix requires architectural change (signed receipts or
+      challenge-response)" — recorded as the follow-up that would close the
+      forgery hole fundamentally; explicitly out of scope for this PR.
+
   STAGE 3 — WORKFLOW PROOF
-      tools/test_naya_gate.py proves the required workflow actually runs the
-      gate: adversarial fixtures (valid component passes; forbidden HTML fails;
-      missing/stale/wrong-repo/forged-tip receipts fail) plus an end-to-end
-      enforce-mode run against the REAL live tip.
+      tools/test_naya_gate.py proves the gate's own behavior: adversarial
+      fixtures (valid component passes; forbidden HTML fails;
+      missing/stale/wrong-repo/forged-tip receipts fail) plus end-to-end
+      enforce-mode runs against the REAL live tip.
+      .github/workflows/naya-gate-delivery.yml proves the gate guards a REAL
+      deliverable: it builds a fresh receipt from live state at CI time,
+      gates tools/naya-gate-sample/product.html in --enforce mode, and runs
+      negative controls (tampered / stale / component-mismatched receipts
+      must fail).
 
 Receipt schemas accepted: naya.activation.receipt.v1 (drink-first) and
 naya.activation.receipt.v2 (activation protocol). The gate requires the union
@@ -39,12 +75,32 @@ of critical fields: status ACTIVATED, repository bound to the canonical repo,
 40-hex main_sha, fresh activation timestamp, non-empty loaded set (v1) or
 identity+job+gates (v2).
 
+Recorded deviations from NAYA-ACTIVATION/TRUSTED-RUNNER-DESIGN.md (CANDIDATE):
+- Citation format: this gate uses <!-- NAYA-ACTIVATION-RECEIPT-SHA256:<64hex> -->
+  (sha256 of the EXACT receipt bytes). The design specifies activation:<16-hex>
+  (first 16 hex of sha256 over canonical JSON: keys sorted, separators
+  (',', ':')). Rationale: 256-bit binding is strictly stronger than 64-bit;
+  exact-bytes covers formatting tampering. Canonical-JSON normalization is
+  deferred to a future alignment pass.
+- Schema scope: the design specifies v2-only. This gate accepts v1+v2, to fuse
+  the drink-first receipts already in flight (PR #1979). v1 gets the full
+  battery except COMPONENTS_LIVE (v1 records no component SHAs — the NOT_BOUND
+  note is emitted). v2-only enforcement is a one-line change when ratified.
+- Check location: the design specifies a GitHub Actions workflow runner. The
+  checks live in this tool (trusted fetch via git, same semantics); CI
+  workflows invoke the tool. The trust property is identical — expected
+  values come from the canonical repo, never the builder — and holds in any
+  environment the builder does not control (CI). A builder running the gate
+  on their own machine gets self-attestation, not enforcement.
+
 Usage:
     python3 tools/naya_gate.py --product page.html [--manifest m.json]
     python3 tools/naya_gate.py --product page.html --require-activation --receipt r.json
     python3 tools/naya_gate.py --product page.html --require-activation --receipt r.json --trust-caller --live-tip <sha>
 
 Exit 0 = PASS. Exit 1 = FAIL (violations named). Exit 2 = tool error.
+Notes prefixed ACTIVATION-NOTE: are informational (documented limits);
+they are printed but do not fail the gate.
 """
 from __future__ import annotations
 
@@ -52,8 +108,10 @@ import argparse
 import hashlib
 import json
 import re
+import shutil
 import subprocess
 import sys
+import tempfile
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
@@ -202,15 +260,25 @@ def _manifest_classes(manifest_path: Path) -> set[str]:
 
 
 def check_no_freestyle(html: str, known: set[str]) -> list[str]:
+    """CLOSED-WORLD component rule (Naya 1, 2026-10-09): only explicitly
+    documented and permitted classes are accepted. Every class used in the
+    deliverable must be registered in the manifest (or be a BEM
+    modifier/element of a registered block). An unregistered class fails —
+    whether or not it carries a naya- prefix. A component being
+    undocumented must not mean it escapes the rules."""
     v = []
     used: set[str] = set()
     for m in re.finditer(r'class=["\']([^"\']+)["\']', html):
         used.update(m.group(1).split())
     for cls in sorted(used):
-        if cls.startswith(_NAYA_PREFIXES) and cls not in known:
-            base_name = cls.split("--")[0].split("__")[0]
-            if base_name not in known:
-                v.append(f"NO FREESTYLE: class `.{cls}` is not in the manifest — use a canonical block or file the gap")
+        if cls in known:
+            continue
+        base_name = cls.split("--")[0].split("__")[0]
+        if base_name in known:
+            continue
+        v.append(f"NO FREESTYLE: class `.{cls}` is not registered in the manifest — "
+                 f"register it (and satisfy its contract) or remove it. "
+                 f"Undocumented components do not escape the rules.")
     return v
 
 
@@ -278,6 +346,76 @@ def resolve_live_tip_trusted() -> tuple[str | None, str | None]:
     if not m:
         return None, f"trusted fetch returned unparseable output: {r.stdout[:80]!r}"
     return m.group(1), None
+
+
+def validate_components_shape(components) -> list[str]:
+    """Pure shape validation for receipt `components` (no network).
+    Each component must be {"path": <repo-relative path>, "sha": <40-hex blob SHA>}."""
+    if components is None:
+        return []
+    if not isinstance(components, list):
+        return ["ACTIVATION: receipt components is not a list (FAIL-SCHEMA)"]
+    v = []
+    for i, c in enumerate(components):
+        if not isinstance(c, dict):
+            v.append(f"ACTIVATION: components[{i}] is not an object (FAIL-SCHEMA)")
+            continue
+        if not isinstance(c.get("path"), str) or not c["path"]:
+            v.append(f"ACTIVATION: components[{i}] missing path (FAIL-SCHEMA)")
+        if not re.fullmatch(r"[a-fA-F0-9]{40}", str(c.get("sha", ""))):
+            v.append(f"ACTIVATION: components[{i}] sha is not a 40-hex blob SHA (FAIL-SCHEMA)")
+    return v
+
+
+def fetch_live_tree_blob_shas(paths: list[str]) -> tuple[dict[str, str] | None, str | None]:
+    """Resolve blob SHAs for repo-relative paths at the trusted live tip.
+
+    The gate fetches the tip's TREE objects itself (partial clone,
+    --filter=blob:none: trees only, no blob contents) from the canonical repo
+    and reads blob SHAs from the tree — bound to the exact tip returned by
+    resolve_live_tip_trusted(). The builder cannot write these. No API token,
+    no auth, no rate-limit dependency.
+    Returns ({path: blob_sha}, None) or (None, error_message). Any error is
+    fail-closed by the caller: unverifiable is not shippable.
+    """
+    tip, err = resolve_live_tip_trusted()
+    if err:
+        return None, err
+    tmp = tempfile.mkdtemp(prefix="naya-gate-tree-")
+    try:
+        def git(*args):
+            return subprocess.run(["git", "-C", tmp, *args],
+                                  capture_output=True, text=True, timeout=90)
+        r = git("init", "-q")
+        if r.returncode != 0:
+            return None, f"trusted tree fetch failed: git init exit {r.returncode}"
+        r = git("fetch", "-q", "--depth", "1", "--filter=blob:none",
+                CANONICAL_GIT_URL, "HEAD")
+        if r.returncode != 0:
+            return None, ("trusted tree fetch failed: git fetch exit "
+                          f"{r.returncode}: {r.stderr.strip()[:160]}")
+        r = git("rev-parse", "FETCH_HEAD")
+        fetched = r.stdout.strip()
+        if r.returncode != 0 or fetched.lower() != tip.lower():
+            return None, ("trusted tree fetch failed: fetched tip "
+                          f"{fetched[:8]} != trusted tip {tip[:8]} — refusing "
+                          f"to verify against unbound state")
+        out: dict[str, str] = {}
+        for p in paths:
+            r = git("ls-tree", "FETCH_HEAD", "--", p)
+            if r.returncode != 0:
+                return None, (f"trusted tree fetch failed: ls-tree exit "
+                              f"{r.returncode} for {p!r}")
+            m = re.match(r"^\d+ blob ([a-f0-9]{40})\t", r.stdout)
+            if not m:
+                return None, (f"component not found at live tip: {p!r} "
+                              f"(no blob in tip tree)")
+            out[p] = m.group(1)
+        return out, None
+    except (OSError, subprocess.TimeoutExpired) as e:
+        return None, f"trusted tree fetch failed: {e}"
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
 
 
 def _receipt_timestamp(receipt: dict):
@@ -384,13 +522,39 @@ def run_activation_stage(html: str, receipt_path: Path | None,
         v.append("ACTIVATION: --live-tip without --trust-caller is rejected — "
                  "the gate will not compare against builder-supplied state as live (SN-0787). "
                  "Use --enforce (default) or pass --trust-caller for an advisory check.")
+
+    # 2.7a component shape — pure validation, runs in every mode (no network)
+    components = receipt.get("components")
+    shape_v = validate_components_shape(components)
+    v.extend(shape_v)
+
+    # 2.7b COMPONENTS_LIVE (TRUSTED-RUNNER-DESIGN.md check 6) — enforce only.
+    # Each RECORDED component SHA is verified against the live tree, fetched
+    # by the gate itself and bound to the exact trusted tip. Forged or stale
+    # component SHAs fail. A receipt recording no components emits an explicit
+    # NOT_BOUND note (documented limit — v1 receipts record no components);
+    # it does not fail the gate, and it does not pass silently.
+    if enforce and not shape_v:
+        if components:
+            live, err = fetch_live_tree_blob_shas([c["path"] for c in components])
+            if err:
+                v.append(f"ACTIVATION: {err} (FAIL-TRUSTED-FETCH — unverifiable is not shippable)")
+            else:
+                for c in components:
+                    want = str(c["sha"]).lower()
+                    got = live.get(c["path"])
+                    if got is None or got.lower() != want:
+                        v.append(
+                            f"ACTIVATION: component {c['path']!r} SHA {want[:8]} != "
+                            f"live blob {(got[:8] if got else 'MISSING')} "
+                            "(FAIL-COMPONENT-MISMATCH — forged or stale doctrine/blocks)")
+        else:
+            v.append("ACTIVATION-NOTE: receipt records no component SHAs — "
+                     "COMPONENTS_LIVE NOT_BOUND (documented limit: without recorded "
+                     "component SHAs the gate cannot prove current doctrine/blocks; "
+                     "v1 receipts never record them)")
     # enforce=True and no caller tip: trusted fetch already handled above.
     return v, advisory
-
-
-# =====================================================================
-# main
-# =====================================================================
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description="Naya unified delivery gate (design + activation).")
@@ -436,12 +600,22 @@ def main(argv: list[str] | None = None) -> int:
         violations += act_v
 
     if violations:
-        print(f"NAYA GATE: FAIL — {len(violations)} violation(s) in {page}:")
-        for viol in violations:
-            print(f"  x {viol}")
-        if advisory:
-            print("  (advisory verdict — caller-supplied tip, NOT enforcement-grade)")
-        return 1
+        notes = [x for x in violations if x.startswith("ACTIVATION-NOTE:")]
+        fails = [x for x in violations if not x.startswith("ACTIVATION-NOTE:")]
+        if fails:
+            print(f"NAYA GATE: FAIL — {len(fails)} violation(s) in {page}:")
+            for viol in fails:
+                print(f"  x {viol}")
+            for note in notes:
+                print(f"  ! {note}")
+            if advisory:
+                print("  (advisory verdict — caller-supplied tip, NOT enforcement-grade)")
+            return 1
+        # Notes only: the gate passes, but the documented limits are visible.
+        print(f"NAYA GATE: PASS — {page}" + (" (ADVISORY — not enforcement-grade)" if advisory else ""))
+        for note in notes:
+            print(f"  ! {note}")
+        return 0
     print(f"NAYA GATE: PASS — {page}" + (" (ADVISORY — not enforcement-grade)" if advisory else ""))
     return 0
 
@@ -575,6 +749,44 @@ def self_test() -> int:
         vv, _ = run_activation_stage(marked1, rp1, enforce=False,
                                       caller_tip="a" * 40, trust_caller=True)
         check("v1 receipt schema accepted", vv, False)
+
+        # COMPONENTS shape — pure validation, no network (Naya 1 case 5)
+        bad_comp = receipt(components=[{"path": "HUB/DESIGN-CONTRACT.md"}])
+        rp_bc = td / "rbc.json"
+        rp_bc.write_bytes(json.dumps(bad_comp).encode())
+        d_bc = hashlib.sha256(rp_bc.read_bytes()).hexdigest()
+        marked_bc = _good_html(f"<!-- NAYA-ACTIVATION-RECEIPT-SHA256:{d_bc} -->")
+        vv, _ = run_activation_stage(marked_bc, rp_bc, enforce=False,
+                                      caller_tip="a" * 40, trust_caller=True)
+        check("malformed components (missing sha) rejected", vv, True)
+
+        bad_comp2 = receipt(components="not-a-list")
+        rp_bc2 = td / "rbc2.json"
+        rp_bc2.write_bytes(json.dumps(bad_comp2).encode())
+        d_bc2 = hashlib.sha256(rp_bc2.read_bytes()).hexdigest()
+        marked_bc2 = _good_html(f"<!-- NAYA-ACTIVATION-RECEIPT-SHA256:{d_bc2} -->")
+        vv, _ = run_activation_stage(marked_bc2, rp_bc2, enforce=False,
+                                      caller_tip="a" * 40, trust_caller=True)
+        check("malformed components (not a list) rejected", vv, True)
+
+        # CLOSED-WORLD component rule (Naya 1 case 7): an undocumented class
+        # fails even WITHOUT a naya- prefix — undocumented != escapes the rules.
+        sneaky = td / "sneaky.html"
+        sneaky.write_text("""<!DOCTYPE html><html><head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<style>html{background:#050507}body{background:#050507;color:#f8f7fb}
+.naya-btn{color:#fff}.widget{color:#fff}</style></head>
+<body class="naya-page"><div class="widget">hi</div><button class="naya-btn">Go</button></body></html>""")
+        check("undocumented non-prefixed class rejected (closed-world)",
+              run_design_stage(sneaky, mf), True)
+
+        # BEM modifier/element of a REGISTERED block stays permitted.
+        bem = td / "bem.html"
+        bem.write_text(_good_html().replace(
+            'class="naya-btn"', 'class="naya-btn naya-btn--large"'))
+        check("BEM modifier of registered block permitted",
+              run_design_stage(bem, mf), False)
 
     print("SELF-TEST:", "ALL GREEN" if ok else "BROKEN")
     return 0 if ok else 1

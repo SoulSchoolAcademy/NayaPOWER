@@ -86,6 +86,23 @@ def test_design_accepts_valid_canonical_component(ctx):
     assert G.run_design_stage(pg, mf) == []
 
 
+def test_design_rejects_undocumented_class_without_prefix(ctx):
+    """Closed-world (Naya 1): an unregistered class fails even with no naya-
+    prefix. Undocumented must not mean escapes-the-rules."""
+    tmp_path, mf, pg = ctx
+    pg.write_text(good_html().replace(
+        "</body>", '<div class="widget">x</div></body>'))
+    v = G.run_design_stage(pg, mf)
+    assert any("NO FREESTYLE" in x and ".widget" in x for x in v), v
+
+
+def test_design_permits_bem_modifier_of_registered_block(ctx):
+    tmp_path, mf, pg = ctx
+    pg.write_text(good_html().replace(
+        'class="naya-btn"', 'class="naya-btn naya-btn--large"'))
+    assert G.run_design_stage(pg, mf) == []
+
+
 # ---------------- STAGE 2: activation (advisory) ----------------
 
 def test_activation_rejects_missing_marker(ctx):
@@ -199,3 +216,77 @@ def test_enforce_mode_fails_on_tampered_tip(ctx):
         capture_output=True, text=True, timeout=120)
     assert res.returncode == 1
     assert "FAIL-TIP-MOVED" in res.stdout
+
+
+def _live_component_shas():
+    """Resolve true blob SHAs via the gate's own trusted path (test uses the
+    mechanism under test to obtain ground truth — proves the round trip)."""
+    live, err = G.fetch_live_tree_blob_shas(["HUB/DESIGN-CONTRACT.md", "AGENTS.md"])
+    assert err is None, f"trusted component fetch failed: {err}"
+    return live
+
+
+@pytest.mark.e2e
+def test_enforce_mode_components_live_pass(ctx):
+    tmp_path, mf, pg = ctx
+    tip = _live_tip()
+    live = _live_component_shas()
+    comps = [{"path": p, "sha": s} for p, s in sorted(live.items())]
+    rp = make_receipt(tmp_path, main_sha=tip, components=comps)
+    pg.write_text(marked(good_html(), rp))
+    res = subprocess.run(
+        [sys.executable, str(Path(G.__file__)), str(pg),
+         "--manifest", str(mf), "--require-activation",
+         "--receipt", str(rp)],
+        capture_output=True, text=True, timeout=180)
+    assert res.returncode == 0, f"COMPONENTS_LIVE pass failed:\n{res.stdout[-800:]}"
+    assert "FAIL-COMPONENT-MISMATCH" not in res.stdout
+
+
+@pytest.mark.e2e
+def test_enforce_mode_components_live_rejects_forged_sha(ctx):
+    tmp_path, mf, pg = ctx
+    tip = _live_tip()
+    live = _live_component_shas()
+    comps = [{"path": p, "sha": s} for p, s in sorted(live.items())]
+    comps[0] = {"path": comps[0]["path"], "sha": "0" * 40}  # forged component
+    rp = make_receipt(tmp_path, main_sha=tip, components=comps)
+    pg.write_text(marked(good_html(), rp))
+    res = subprocess.run(
+        [sys.executable, str(Path(G.__file__)), str(pg),
+         "--manifest", str(mf), "--require-activation",
+         "--receipt", str(rp)],
+        capture_output=True, text=True, timeout=180)
+    assert res.returncode == 1
+    assert "FAIL-COMPONENT-MISMATCH" in res.stdout
+
+
+@pytest.mark.e2e
+def test_enforce_mode_components_live_rejects_missing_path(ctx):
+    tmp_path, mf, pg = ctx
+    tip = _live_tip()
+    comps = [{"path": "NOPE/nonexistent-xyz.md", "sha": "a" * 40}]
+    rp = make_receipt(tmp_path, main_sha=tip, components=comps)
+    pg.write_text(marked(good_html(), rp))
+    res = subprocess.run(
+        [sys.executable, str(Path(G.__file__)), str(pg),
+         "--manifest", str(mf), "--require-activation",
+         "--receipt", str(rp)],
+        capture_output=True, text=True, timeout=180)
+    assert res.returncode == 1
+    assert "FAIL-TRUSTED-FETCH" in res.stdout or "no blob in tip tree" in res.stdout
+
+
+@pytest.mark.e2e
+def test_enforce_mode_notes_not_bound_without_components(ctx):
+    tmp_path, mf, pg = ctx
+    tip = _live_tip()
+    rp = make_receipt(tmp_path, main_sha=tip)  # no components recorded
+    pg.write_text(marked(good_html(), rp))
+    res = subprocess.run(
+        [sys.executable, str(Path(G.__file__)), str(pg),
+         "--manifest", str(mf), "--require-activation",
+         "--receipt", str(rp)],
+        capture_output=True, text=True, timeout=180)
+    assert res.returncode == 0  # note, not fail
+    assert "COMPONENTS_LIVE NOT_BOUND" in res.stdout
