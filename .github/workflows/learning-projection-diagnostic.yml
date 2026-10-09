@@ -4,15 +4,8 @@ on:
   push:
     branches:
       - "naya5/learning-projection-403-diagnostic-20261009"
-    paths:
-      - "supabase/functions/nayanet-github-dispatch/index.ts"
-      - "tests/github_dispatch_contract.test.mjs"
-      - ".github/workflows/learning-projection-diagnostic.yml"
   pull_request:
-    paths:
-      - "supabase/functions/nayanet-github-dispatch/index.ts"
-      - "tests/github_dispatch_contract.test.mjs"
-      - ".github/workflows/learning-projection-diagnostic.yml"
+  workflow_dispatch:
 
 permissions:
   contents: read
