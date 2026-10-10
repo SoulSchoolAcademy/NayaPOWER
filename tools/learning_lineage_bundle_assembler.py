@@ -94,6 +94,20 @@ _FIELD_MAP: dict[str, tuple] = {
 _D_BUNDLE_KEYS = ("retrieval_receipts", "application_receipts", "outcome_records")
 
 
+# Optional carry fields: copied into the mapped row WHEN THE SOURCE HAS
+# THEM, silently skipped when absent (never a ROW_FIELD_MISSING note).
+# The B receipt does not read these; the C-side evidence assembler does:
+# learning_evidence_assembler._capture_receipt needs a capture timestamp
+# on the event/commit rows (E0 evidence). Stripping them here broke the
+# B->C composition on live data (2026-10-10 exercise): every live learning
+# evaluated UNPROVEN because no bundle row named a capture time.
+_CARRY_FIELDS: dict[str, tuple[str, ...]] = {
+    "cognition_event": ("created_at",),
+    "commit_receipt": ("created_at",),
+    "intelligent_block": ("created_at",),
+}
+
+
 def _note(notes: list[str], text: str) -> None:
     notes.append(text)
 
@@ -115,6 +129,9 @@ def _map_row(bundle_key: str, row: Any, notes: list[str]) -> dict[str, Any] | No
                   % (bundle_key, rfield))
             return None
         out[bfield] = row[rfield]
+    for cfield in _CARRY_FIELDS.get(bundle_key, ()):
+        if cfield in row:
+            out[cfield] = row[cfield]
     return out
 
 

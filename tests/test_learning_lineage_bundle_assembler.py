@@ -236,3 +236,88 @@ def test_summarize_assembly():
     assert "0 assembly note(s)" in line
     line2 = summarize_assembly(assemble_bundle({"learning": {"id": "x"}}))
     assert "x" in line2 and "assembly note(s)" in line2
+
+
+def _live_rows_with_timestamps():
+    """The live fixture plus the created_at columns the real tables carry
+    (the 2026-10-09 capture used a column subset; these are the live values
+    for the same rows, fetched read-only 2026-10-10)."""
+    rows = _live_rows()
+    rows["cognition_event"] = dict(rows["cognition_event"],
+                                   created_at="2026-10-08T03:05:02.663586+00:00")
+    rows["commit_receipt"] = dict(rows["commit_receipt"],
+                                  created_at="2026-10-08T03:05:03.100000+00:00")
+    rows["intelligent_block"] = dict(rows["intelligent_block"],
+                                     created_at="2026-10-08T03:05:02.663586+00:00")
+    return rows
+
+
+def test_created_at_carried_when_present():
+    """The C-side evidence assembler needs a capture timestamp on the
+    event/commit rows (E0 evidence). The reader carries it when the source
+    row has it."""
+    bundle = assemble_bundle(_live_rows_with_timestamps())
+    assert bundle["assembly_notes"] == [], bundle["assembly_notes"]
+    assert bundle["cognition_event"]["created_at"] == \
+        "2026-10-08T03:05:02.663586+00:00"
+    assert bundle["commit_receipt"]["created_at"] == \
+        "2026-10-08T03:05:03.100000+00:00"
+    assert bundle["intelligent_block"]["created_at"] == \
+        "2026-10-08T03:05:02.663586+00:00"
+
+
+def test_created_at_absent_is_silent_not_a_gap():
+    """created_at is optional carry, not a required receipt field: rows
+    without it assemble cleanly (the money test's notes==[] assertion
+    already pins this; this test names the rule)."""
+    bundle = assemble_bundle(_live_rows())  # no created_at anywhere
+    assert bundle["assembly_notes"] == []
+    assert "created_at" not in bundle["cognition_event"]
+    assert "created_at" not in bundle["commit_receipt"]
+
+
+def test_b_to_c_composition_earns_e0_on_live_shaped_rows():
+    """THE convergence seam, made falsifiable: B's reader -> B's receipt ->
+    C's evidence assembler -> C's ladder. With capture timestamps carried,
+    a live-shaped learning earns E0_EXPOSED (capture proven). Without them
+    the ladder honestly caps at UNPROVEN -- the exact failure the 2026-10-10
+    live exercise found (143/143 UNPROVEN before the carry fix)."""
+    import learning_evidence_assembler as evassembler
+    import learning_evidence_ladder as ladder
+
+    bundle = assemble_bundle(_live_rows_with_timestamps())
+    receipt = reconstruct(bundle)
+    assert receipt["stages"]["capture"]["status"] == "PRESENT"
+
+    lid = "37dfeec3-f120-42e0-a971-5aee95f0b537"
+    ev = evassembler.assemble_evidence(lid, bundle)
+    assert ev["evidence"].get("capture_receipt", {}).get(
+        "intelligent_block_id") == \
+        "IB-NAYA-FLOW-LESSON-207f611c16714130876db60ad70cffb3"
+
+    record = {"id": lid, "target": "NAYA-NODE-0001",
+              "producer_id": "member-1", "claimed_level": "E1_UNDERSTANDS",
+              "evidence": ev["evidence"]}
+    evaluation = ladder.evaluate(record)
+    assert evaluation["earned_level"] == "E0_EXPOSED", evaluation
+    # E1 stays unproven: live evidence_refs carry no control/treatment
+    # verification records -- the ladder caps honestly, not silently.
+    assert "E1_UNDERSTANDS" not in evaluation["proven_chain"]
+
+
+def test_b_to_c_composition_without_timestamps_is_honestly_unproven():
+    """Without capture timestamps the C evidence assembler finds no E0
+    evidence and the ladder reports UNPROVEN -- a named honest cap, not a
+    crash and not a silent pass."""
+    import learning_evidence_assembler as evassembler
+    import learning_evidence_ladder as ladder
+
+    bundle = assemble_bundle(_live_rows())  # no created_at anywhere
+    lid = "37dfeec3-f120-42e0-a971-5aee95f0b537"
+    ev = evassembler.assemble_evidence(lid, bundle)
+    assert "capture_receipt" not in ev["evidence"]
+    record = {"id": lid, "claimed_level": "E1_UNDERSTANDS",
+              "evidence": ev["evidence"]}
+    evaluation = ladder.evaluate(record)
+    assert evaluation["earned_level"] == "UNPROVEN"
+    assert evaluation["verdict"] == "UNPROVEN"
