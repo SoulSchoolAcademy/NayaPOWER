@@ -1,13 +1,13 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-10",
-  "receipt_basis_commit": "7281ede6b07869f64e576d4d6432628c4750d5de",
-  "inventory_file_count": 1241,
+  "receipt_basis_commit": "44953dd1f64ff8369213b18678edd7f2d85cf83c",
+  "inventory_file_count": 1243,
   "domain_counts": {
     "00-ACTIVATION": 3,
     "00-ARCHITECTURE": 5,
     "00-SPEC": 15,
-    "01-GOVERNANCE": 55,
+    "01-GOVERNANCE": 56,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
@@ -21,7 +21,7 @@
     "12-ENGINEERING": 25,
     "90-OPERATIONS": 13,
     "99-ARCHIVE": 2,
-    "ROOT": 5
+    "ROOT": 6
   },
   "ledger_assertion": "Per-domain counts asserted against the 2026-09-30 brain-reconciliation ledger classification table. Any drift fails regeneration instead of silently rewriting the table.",
   "files": [
@@ -399,6 +399,11 @@
       "path": "BRAIN/01-GOVERNANCE/TEAM-NAYA-OPERATING-PROTOCOL-V1.md",
       "blob_sha": "947a3a14a9bf267e50ff8e108b5375dee95fd7b5",
       "size": 14458
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/THE-PROTOCOL.md",
+      "blob_sha": "a16fd69d14daa0310f6bea75a311e98f9cac2cb7",
+      "size": 8059
     },
     {
       "path": "BRAIN/01-GOVERNANCE/THE-TUNE-IN-TEMPLATE.md",
@@ -6204,6 +6209,11 @@
       "path": "BRAIN/99-ARCHIVE/brain-reconciliation-ledger-f648833b.md",
       "blob_sha": "168e14b9b430d2eb4a7d5e3d330eb1bae7fdabe5",
       "size": 2096
+    },
+    {
+      "path": "BRAIN/CURRENT-MISSION-STATE.md",
+      "blob_sha": "d18cfada5ab0e7764cec99c640874244e6778edc",
+      "size": 2330
     },
     {
       "path": "BRAIN/MASTER-MAP.md",

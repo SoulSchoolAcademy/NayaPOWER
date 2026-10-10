@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-10  
-**Receipt basis commit:** `7281ede6b07869f64e576d4d6432628c4750d5de`  
-**Inventory file count:** 1241  
+**Receipt basis commit:** `44953dd1f64ff8369213b18678edd7f2d85cf83c`  
+**Inventory file count:** 1243  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -11,7 +11,7 @@
 | Domain | Files |
 |---|---|
 | 00-SPEC | 15 |
-| 01-GOVERNANCE | 55 |
+| 01-GOVERNANCE | 56 |
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 25 |
@@ -25,7 +25,7 @@
 | 12-ENGINEERING | 25 |
 | 90-OPERATIONS | 13 |
 | 99-ARCHIVE | 2 |
-| ROOT | 5 |
+| ROOT | 6 |
 
 ## Files
 
@@ -112,6 +112,7 @@
 - `BRAIN/01-GOVERNANCE/OPERATING-LAW.md` — `f738cd89a977` (32785 bytes)
 - `BRAIN/01-GOVERNANCE/README.md` — `065bb6dc1530` (1673 bytes)
 - `BRAIN/01-GOVERNANCE/TEAM-NAYA-OPERATING-PROTOCOL-V1.md` — `947a3a14a9bf` (14458 bytes)
+- `BRAIN/01-GOVERNANCE/THE-PROTOCOL.md` — `a16fd69d14da` (8059 bytes)
 - `BRAIN/01-GOVERNANCE/THE-TUNE-IN-TEMPLATE.md` — `e61b5c675a63` (4893 bytes)
 - `BRAIN/01-GOVERNANCE/elevation-grants/README.md` — `37afb12365a8` (1910 bytes)
 - `BRAIN/01-GOVERNANCE/naya-dream-v1.machine.json` — `c469937962eb` (22689 bytes)
@@ -1301,6 +1302,7 @@
 - `BRAIN/99-ARCHIVE/brain-reconciliation-ledger-f648833b.md` — `168e14b9b430` (2096 bytes)
 ### ROOT — Brain root files
 
+- `BRAIN/CURRENT-MISSION-STATE.md` — `d18cfada5ab0` (2330 bytes)
 - `BRAIN/MASTER-MAP.md` — `3a56fd561121` (9551 bytes)
 - `BRAIN/NAYAPOWER-BRAIN-INDEX.json` — _(self-referential index file; blob SHA omitted)_
 - `BRAIN/README.md` — `bf4d982f4f32` (2325 bytes)
