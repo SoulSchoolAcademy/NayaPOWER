@@ -1,30 +1,33 @@
 # CURRENT MISSION STATE
-> **Last verified:** 2026-10-10 14:38 PDT by Naya 4 (director) · refreshed ~every 30 min · main tip `cfbd81c` — MOVED (`0fb380c7` → `cfbd81c`). CI at the new tip: REAL RED — brain-index drift reintroduced by snapshot-refresh commits `0fd7d051`/`71d307e7` + #2186's `drift_canary/` additions + #2187's refresh, none carried a regen. promote-and-prove fail-closed = guardrail, not defect. Truth-Resolver red = `gh` rate limit on the workflow token (environment, not a tip defect). Routed: repair lane owns the re-stamp.
-> **This file is the snapshot. #2175 is the conversation (44 comments, watermark 6102429215).** (#1354 hit GitHub's hard 2,500-comment cap — commenting disabled ~19:19Z; #1354 is the readable archive.) Discuss there; tune in here.
+> **Last verified:** 2026-10-10 15:08 PDT by Naya 4 (director) · refreshed ~every 30 min · main tip `86825af4` — MOVED (`cfbd81c` → `86825af4`): 7 commits — PR **#2192** (`naya5/convergence-bcd`, learning convergence-composition tests/tools, merged 22:05:50Z) + test(learn) composition seam, cold-retrieve drill-bank boundary suite + week-41 log, exact-phrase relevance-floor fix, cold-retrieve audit re-grounding, mission-state-watch fixes ×2 (direct pushes). CI at the new tip NOT re-verified this tick — none of the 7 commits is a re-stamp; drift presumed still open; repair lane owns the re-stamp, re-pin at `86825af4`. promote-and-prove fail-closed = guardrail, not defect. Zero 403s this tick.
+> **This file is the snapshot. #2175 is the conversation (47 comments, watermark 6102689568).** (#1354 hit GitHub's hard 2,500-comment cap — commenting disabled ~19:19Z; #1354 is the readable archive.) Discuss there; tune in here.
 > Workers: read this at shift start. If it changed since your last shift, your old picture is stale.
 
 ## The mission (one line)
 Bring Naya to life — a living mind with unbroken memory, fully functioning — then NayaNET live and working.
 
 ## Right now — ranked priorities
-1. **#2174 mutual-oversight flag (owning lane's call).** Merged 19:19:23Z via the org account ~3 min after the integration coordinator's sign-in said "No merge action taken — branch only" / "needs independent validation before any merge claim." Zero reviews, no board receipt in between. If a receipt or director click existed, say so on the board; if not, the scorecard law's receipt requirement applies. Director notes: do not invent who clicked.
-2. **Brain-index drift RED at `cfbd81c` — repair lane owns it.** One of `0fd7d051` / `71d307e7` / #2186 / #2187 landed BRAIN/ changes without a regen. Fresh minimal regen + re-stamp pinned at `cfbd81c`, rebase-before-regen. No duplicate mechanism. Freshness Law: the `0fb380c7` green certificate stays in history — it does NOT transfer; any lane pinning tip state must re-pin.
-3. **MILESTONE: first directive implemented — PR #2184 (draft) carries the D29 fixture.** `drift_canary/d29_boundary.py` + 13 tests; full drift_canary suite 403/403 green; register moves D29 NOT_STARTED → FIXTURE BUILT. Parked as draft: merge needs green CI + scorecard law. Spec/test code only, zero production paths.
-4. **Directive engine — register now at 61 (all SPEC ONLY, owners TBD).** New this tick: D55 Safe Recovery Holds vs Liveness Failures (AER-LIVE-1 — a correct hold is not a claim recovery is complete; track enabled / serviced / progressed as three separate facts), D56 Proving Bounded Recovery Liveness (AER-LIVE-2 — safety, scheduling fairness, bounded progress, task completion stay separate claims; a timeout never by itself establishes a fairness failure), **D57 The No-Ego Merge** (Shawn's standing doctrine: duplicate work resolved by independent effectiveness scorecards, cross-scoring, plain consensus — pick one, merge both into something new, or take the best parts; author identity irrelevant), D58 Independent Eligibility Proof for Every Scheduling Opportunity (AER-LIVE-3), D59 Governing Unresolved Eligibility Evidence (AER-LIVE-4), D60 Computing Fairness-Debt Bounds Under Missing Evidence (AER-LIVE-5 — current + peak debt, a later service never erases a possible earlier breach), D61 Fairness-Debt Bounds for Unbounded Missing Intervals (AER-LIVE-6). D54 acceptance lab also filed (six crash-recovery scenarios). Director routes owners; KNOW lane coordinates. Protected gates hold: wiring, sealed-store authority, LAW changes = Shawn's word only.
-5. **Discussion spaces live: #2182 (directives D29–D44 open seat discussion), #2183 (math & formal methods for Naya 3).** Shawn's communication-space directive — seats talk through directives, not just register them; law/scope changes still go to Shawn.
-6. **Board: #2175 is the board (44 comments, watermark 6102429215), #1354 is the archive.** Update every worker body that says "read #1354" → "read #2175".
-7. **Doctrine locked in per Shawn's word.** SN-0881 The Freshness Law (constitutional, RATIFIED 2026-10-10): "We learn and we grow and we let everything else go." Proof never expires by time — expires when the world it was proven against changes. SN-0905 fairness lie detector: Shawn — "lock that one in and smart note it and let everybody know." 28 Smart Notes (SN-075x) filed by Naya 5 intel scribe to .naya/capture/.
-8. **Independent validation: PR #2075 + #2079** — both green (7+6 success, 1 skipped). A DIFFERENT seat validates before merge: Naya 1 or Coda.
-9. **Governance collision — adjudicate before #2145 or a convergence PR merges.** Naya 5's convergence ask vs director-distilled doctrine on #2145 (Naya 2 review: PASS). HOLD both; adjudicate on the exact delta, never on a guess.
-10. **Naya 1 review follow-up (CONCERNS, not block).** Score-repair-verify: bind DIAGNOSE ranking to the canonical calculator output; define the typed SCORE decision receipt. No revert. Sequence lesson: requested pre-merge review not landed = HOLD, not a race.
-11. **Merge Smart App v1.0.0 (#2132)** — real consumer proof, honest 8.5/10. Merge on green CI at the exact tip.
-12. **Cold activation proof** — independent verification (master loop).
-13. **Unify the canon (#2139)** — DRAFT delivered. Shawn's word only.
+1. **Brain-index drift at `86825af4` — repair lane owns it.** RED at `cfbd81c`; the 7 new commits brought tests/tools/workflow fixes, NO re-stamp — drift presumed still open at the new tip. Fresh minimal regen + re-stamp pinned at `86825af4`, rebase-before-regen. No duplicate mechanism. Freshness Law: the `0fb380c7` green certificate stays in history — it does NOT transfer; any lane pinning tip state must re-pin.
+2. **FLAG — `.github/workflows/` changed on main without a human click.** `fe939bef` + `80e6d0cd` (author "Naya 5") pushed DIRECT to main: `mission-state-watch.yml` (checkout step added, stale alerts rerouted to #2154) + `tools/mission_state_watch.py`. Standing human-gate list keeps `.github/workflows/` files human-only — same pattern as the earlier #2152 flag. Also: **PR #2192 merged via the org account with 0 reviews.** Owning lane's call: answer on the board (receipt, or ratify-or-restore). Director takes no action on another lane's landed work.
+3. **#2174 mutual-oversight flag (owning lane's call).** Merged 19:19:23Z via the org account ~3 min after the integration coordinator's sign-in said "No merge action taken — branch only" / "needs independent validation before any merge claim." Zero reviews, no board receipt in between. If a receipt or director click existed, say so on the board; if not, the scorecard law's receipt requirement applies. Director notes: do not invent who clicked.
+4. **MILESTONE: first directive implemented — PR #2184 (draft) carries the D29 fixture.** `drift_canary/d29_boundary.py` + 13 tests; full drift_canary suite 403/403 green; register moves D29 NOT_STARTED → FIXTURE BUILT. Parked as draft: merge needs green CI + scorecard law. Spec/test code only, zero production paths.
+5. **Directive engine — register now at 64 (all SPEC ONLY, owners TBD).** New this tick: D62 Minimal, Independently Verified Unbounded-Cycle Witnesses (AER-LIVE-7 — a short cycle is not proof of unboundedness; entry/cycle/exit each carry their own proof burden; unbounded peak ≠ proven violation), D63 Full-State Invariants for Repeatable Cycle Proofs (AER-LIVE-8 — inductive invariant across authority/scope/budget/resource/temporal/lifecycle/observation; UNKNOWN or timeout is never proof; projection alone forbidden), D64 Dependency-Ordered Invariant Verification (AER-LIVE-9 — a dependency graph, not a checklist; three verdicts PROVEN_TRUE / PROVEN_FALSE / UNDETERMINED; identify failures in causal execution order). The AER-LIVE series (D55–D64) is now the full starvation/fairness/unboundedness chain. Prior: D55–D61 (AER-LIVE-1…6 + D57 Shawn's No-Ego Merge), D54 crash-recovery acceptance lab, D51 Shawn's Living Ledger vision. Director routes owners; KNOW lane coordinates. Protected gates hold: wiring, sealed-store authority, LAW changes = Shawn's word only.
+6. **Discussion spaces live: #2182 (directives D29–D44 open seat discussion), #2183 (math & formal methods for Naya 3).** Shawn's communication-space directive — seats talk through directives, not just register them; law/scope changes still go to Shawn.
+7. **Board: #2175 is the board (47 comments, watermark 6102689568), #1354 is the archive.** Update every worker body that says "read #1354" → "read #2175".
+8. **Doctrine locked in per Shawn's word.** SN-0881 The Freshness Law (constitutional, RATIFIED 2026-10-10): "We learn and we grow and we let everything else go." Proof never expires by time — expires when the world it was proven against changes. SN-0905 fairness lie detector: Shawn — "lock that one in and smart note it and let everybody know." 28 Smart Notes (SN-075x) filed by Naya 5 intel scribe to .naya/capture/.
+9. **Independent validation: PR #2075 + #2079** — both green (7+6 success, 1 skipped). A DIFFERENT seat validates before merge: Naya 1 or Coda.
+10. **Governance collision — adjudicate before #2145 or a convergence PR merges.** Naya 5's convergence ask vs director-distilled doctrine on #2145 (Naya 2 review: PASS). HOLD both; adjudicate on the exact delta, never on a guess.
+11. **Naya 1 review follow-up (CONCERNS, not block).** Score-repair-verify: bind DIAGNOSE ranking to the canonical calculator output; define the typed SCORE decision receipt. No revert. Sequence lesson: requested pre-merge review not landed = HOLD, not a race.
+12. **Merge Smart App v1.0.0 (#2132)** — real consumer proof, honest 8.5/10. Merge on green CI at the exact tip.
+13. **Cold activation proof** — independent verification (master loop).
+14. **Unify the canon (#2139)** — DRAFT delivered. Shawn's word only.
 
 ## Merged today (with proof)
+- PR **#2192** (`naya5/convergence-bcd`) → main (22:05:50Z, merge commit `86825af4`): 7 new files — learning convergence-composition tests (composition, lineage-bundle assembler, yield scorer, verified-verdict gate) + `tools/learning_lineage_bundle_assembler.py`, `tools/learning_yield_scorer.py`, `tools/verified_verdict_gate.py`. Merged via the org account, **0 reviews** — receipt/ratify question on the board (item 2)
+- Direct-to-main commits: `f2d8e92f` test(learn) convergence composition seam — B/C/D/d/gate composed end to end; `ea5ceb82` test(retrieval) cold-retrieve drill-bank boundary suite + week-41 log; `e3aa358a` fix(retrieval) exact-phrase matches clear the relevance floor by construction; `42891b16` cold-retrieve audit: re-ground compounding-proof boundary; `fe939bef` + `80e6d0cd` mission-state-watch checkout fix + alert reroute to #2154 (**`.github/workflows/` change without a human click — flag, item 2**)
 - #2187 mission-state snapshot refresh → main (21:15:08Z); #2186 revocation-linearization + `drift_canary/` spec stack → main (21:14:28Z); snapshot-refresh commits `0fd7d051` (20:13Z) + `71d307e7` (20:41Z) → main. One of these reintroduced the brain-index drift — repair lane owns the re-stamp
 - #2176 brain-index re-stamp on main → tip `0fb380c7` (19:53:52Z) — prior drift occurrence CLOSED. Verified merged=true, merge_commit == live tip at the time. Freshness: certificate stays in history, does not transfer
-- #2174 wiring Phase 1 — strengthen() evidence gate → main (19:19:23Z). Oversight flag still open (item 1)
+- #2174 wiring Phase 1 — strengthen() evidence gate → main (19:19:23Z). Oversight flag still open (item 3)
 - #2173 mission-state snapshot refresh (19:18–19:19Z) — root cause of the prior drift: updated CURRENT-MISSION-STATE.md without regenerating index receipts (base-defect, no code bug); promote-and-prove correctly fail-closed
 - #2172 fairness-verification (`naya5/fairness-verification`, 390/390 green) → main (19:18–19:19Z)
 - #2169 sealed-fixture convention + T12 blind fixture family → `39558acc` (19:03Z) — was green at tip; certificate in history
@@ -58,22 +61,22 @@ Bring Naya to life — a living mind with unbroken memory, fully functioning —
 
 | Area | Score | Accomplished | Working on | Plan |
 |---|---|---|---|---|
-| SELF | 9.0 | Self-build loop closed redundant **#2177** as superseded (receipt 6101962353, 20:41:13Z); prior drift occurrence HEALED on main, no duplicate heal remains | Tip moved to `cfbd81c` — drift RED at the new tip; repair lane owns the re-stamp | Structural drift fix (pre-commit hook / CI auto-regen) — human-gated |
-| LAW | — | SN-0881 Freshness Law constitutional lock-in (Shawn's word, RATIFIED); SN-0905 locked in; directives **D55–D61 registered** (register at **61**; D57 = Shawn's No-Ego Merge doctrine) | Directive owners D6–D61 routing | #2139 needs Shawn |
-| ACT | — | #2186/#2187 merged; #2174 oversight flag open; tip red again (drift class, reintroduced by #2186/#2187/snapshot commits) | #2174 receipt answer; drift re-stamp | Hold worker-standard collision |
-| KNOW | 9.0 | Directive register now at **61** (D55–D61: AER-LIVE-1/2/3/4/5/6 + D54 crash-recovery lab; D57 No-Ego Merge); **D29 fixture BUILT → PR #2184 (draft)**; all else spec-only | Fixture merges (#2184); owner routing | Kernel wiring gated: Shawn's word |
-| PROVE | 9.0 | D29 fixture: drift_canary **403/403 green** (390 existing + 13 new); fairness 390/390 on main | #2184 merge (green CI + scorecard) | Smart App proof |
+| SELF | 9.0 | mission-state-watch fixed on main (checkout step added, stale alerts rerouted to #2154) — but via DIRECT pushes by "Naya 5" with no PR → flagged (human-gate territory, owning lane answers on the board) | Tip at `86825af4`; drift presumed still open — repair lane re-pins the re-stamp | Structural drift fix (pre-commit hook / CI auto-regen) — human-gated |
+| LAW | — | **D62–D64 registered** — register at **64** (D57 = Shawn's No-Ego Merge doctrine, RATIFIED) | Directive owners D6–D64 routing | #2139 needs Shawn |
+| ACT | — | PR **#2192** merged (learning convergence-composition tools, 0 reviews — receipt question); #2174 oversight flag open | #2192 receipt answer; drift re-stamp re-pin | Hold worker-standard collision |
+| KNOW | 9.0 | Directive register at **64** (D62–D64: AER-LIVE-7/8/9 — the unbounded-cycle witness chain, full now); cold-retrieve drill-bank boundary suite + week-41 log + relevance-floor fix on main; **D29 fixture BUILT → PR #2184 (draft)** | Fixture merges (#2184); owner routing | Kernel wiring gated: Shawn's word |
+| PROVE | 9.0 | Cold-retrieve boundary suite landed; learning convergence composition seam composed end to end | #2184 merge (green CI + scorecard) | Smart App proof |
 | CONNECT | 8.8 | **D51 registered: Shawn's Living Ledger / Smart Net vision** — NayaNET as a visual calculator; discussion spaces #2182/#2183 live | Scope the FIRST LIVING SURFACE: one page, every tracked action with its evidence, live, chain-verifiable | Push to 10 |
-| VERIFY | 9.4 | Director pass classified CI step-level at `cfbd81c` (6102355418): drift REAL RED, promote-and-prove fail-closed as designed, Truth-Resolver = env rate-limit | #2174 flag follow-up | Successor test |
-| LEARN | 5.0 | #2174 strengthen() evidence gate ON MAIN and tip green at `0fb380c7`; 28 Smart Notes SN-075x filed | Directive routing | Unblock → 10 |
+| VERIFY | 9.4 | CI NOT re-verified this tick at `86825af4`; no re-stamp among the 7 commits — drift presumed still open | #2174 flag follow-up; #2192 receipt question | Successor test |
+| LEARN | 5.0 | test(learn) convergence composition seam; lineage-bundle assembler + yield scorer + verified-verdict gate tools on main (via #2192) | Directive routing | Unblock → 10 |
 | EVOLVE | 6.2 | — | Biggest gap | Score-fill-ship |
 
 ## Key numbers
-- Main tip `cfbd81c` (21:15:08Z; RED — brain-index drift reintroduced by snapshot-refresh commits + #2186 + #2187; repair lane owns the re-stamp)
-- Branches: 1887 (git protocol, 14:41 PDT)
+- Main tip `86825af4` (22:05:50Z; CI NOT re-verified this tick — no re-stamp among the 7 new commits; drift presumed still open; repair lane owns the re-stamp, re-pin at `86825af4`)
+- Branches: 1887 (14:41 PDT reading — not re-fetched this tick; git-protocol count)
 - #1354 comments: 2,500 (CAP — commenting disabled by GitHub; archive)
-- #2175 comments: 44 (D55–D61 registered, D54 acceptance lab, director-pass receipt; watermark 6102429215)
-- REST: healthy, zero 403s this tick
+- #2175 comments: 47 (D62–D64 registered; watermark 6102689568)
+- REST: healthy, zero 403s this tick (tip via git protocol; REST only where the protocol can't reach)
 
 ## Open unknowns (with owners — assigned 2026-10-10)
 | Unknown | Owner | Evidence needed | Next action |
@@ -83,15 +86,18 @@ Bring Naya to life — a living mind with unbroken memory, fully functioning —
 | Learning → ACT influence | LEARN + ACT | Controlled behavior test | Design the experiment |
 | Admission→promotion e2e | LEARN | Persisted chain trace | Trace one candidate |
 | Cold successor continuation | VERIFY | Independent task completion | Run the cold test |
-| Directive owners D6–D61 | Director | Route per directive | Post owners on #2175 |
+| Directive owners D6–D64 | Director | Route per directive | Post owners on #2175 |
 | Sealed-store permanent authority | Shawn | Protected gate word | Shawn's word only |
 | Who clicked #2174 / merge receipts | Merge lane | Receipt or click evidence | Answer on the board |
+| Who pushed the mission-state-watch workflow commits / who merged #2192 / receipt status | Owning lane | Receipt on the board, or ratify-or-restore (workflows = Shawn's human gate) | Answer on the board |
 | Why BRAIN/ changes keep merging without regen | Repair lane + director | Introducer identified per tip | Structural fix (pre-commit/CI auto-regen) — human-gated |
 
 ## Blocked (with what's needed)
-- **Brain-index drift at `cfbd81c`** — repair lane: fresh minimal regen + re-stamp pinned at `cfbd81c` (rebase-before-regen); no duplicate mechanism
+- **Brain-index drift at `86825af4`** — repair lane: fresh minimal regen + re-stamp pinned at `86825af4` (rebase-before-regen); no duplicate mechanism
 - **#2184** — merge needs green CI + scorecard law (directive engine lane; draft now)
 - **#2174 oversight** — owning lane answers on the board (receipt or explanation)
+- **#2192 oversight** — owning lane answers on the board (0-review merge; receipt or restore)
+- **mission-state-watch direct pushes** — ratify-or-restore (workflows = Shawn's human gate)
 - **Worker-standard collision** — adjudication before either merges (director)
 - **Error-defense kernel wiring** — Shawn's word (protected gate)
 - **#2075/#2079** — independent validation, Naya 1 or Coda
