@@ -24,6 +24,7 @@ from datetime import datetime, timezone
 from typing import Any, Callable
 
 from kernel.behavior_policy import BehaviorPolicyStore
+from kernel.memory_metabolism import ACTIVE, MemoryRecord, integrity_ok
 from kernel.self_node import SelfNode
 
 # --- verifier-chain identity contract -------------------------------------
@@ -114,6 +115,74 @@ def lesson_from_evidence_row(row: dict[str, Any]) -> dict[str, Any] | None:
         "admission_admitted_as": str(observed.get("admission_admitted_as") or ""),
         "verification_method": str(row.get("verification_method") or ""),
         "level": str(row.get("level") or ""),
+    }
+
+
+# Promotion bridge: memory-metabolism -> behavior-policy -----------------------
+# A strengthened record is promotable when verification_weight >= 1.0 with at
+# least one evidence entry (strengthen() is the only writer of weight and
+# requires evidence). Unstrengthened, inactive, or integrity-broken records
+# are refused, never promoted.
+MEMORY_PROMOTION_MIN_WEIGHT = 1.0
+
+
+def lesson_from_memory_record(record: Any) -> dict[str, Any]:
+    """Map a strengthened MemoryRecord to a lesson record for integration.
+
+    This is the memory-metabolism → behavior-policy promotion bridge
+    (learning-loop GAP-2): a record strengthened with fresh verification
+    evidence becomes a lesson shaped for integrate_verified_lesson().
+
+    Gates (fail closed; anything failing raises IntegrationError and nothing
+    is promoted):
+      1. the input is a MemoryRecord with verified integrity;
+      2. the record is ACTIVE — decayed/superseded/archived/quarantined
+         records are never promotable (reconcile or replace them);
+      3. the record is strengthened: verification_weight >= 1.0 with at
+         least one evidence entry.
+
+    Field mapping: lesson_id <- record_id; claim <- content; situation /
+    prescribed_behavior / doer / scorer / verifier / admission_admitted_as /
+    verification_method / level <- provenance (the capture contract for
+    actionable records). verdict <- "VERIFIED" only when epistemic_state is
+    "VERIFIED_FACT"; otherwise the record's own epistemic state, which
+    integrate_verified_lesson() will refuse — the bridge never upgrades an
+    epistemic claim.
+    """
+    if not isinstance(record, MemoryRecord):
+        raise IntegrationError("memory_record_not_a_record")
+    if not integrity_ok(record):
+        raise IntegrationError("memory_record_integrity_failed")
+    if record.memory_state != ACTIVE:
+        raise IntegrationError(
+            f"memory_record_not_active:state={record.memory_state}"
+        )
+    if (
+        record.verification_weight < MEMORY_PROMOTION_MIN_WEIGHT
+        or not record.evidence
+    ):
+        raise IntegrationError(
+            "memory_record_unstrengthened:"
+            f"weight={record.verification_weight},"
+            f"evidence={len(record.evidence)}"
+        )
+    provenance = record.provenance if isinstance(record.provenance, dict) else {}
+    epistemic = str(record.epistemic_state or "")
+    return {
+        "lesson_id": str(record.record_id or ""),
+        "claim": str(record.content or ""),
+        "situation": str(provenance.get("situation") or ""),
+        "prescribed_behavior": str(provenance.get("prescribed_behavior") or ""),
+        "doer": str(provenance.get("doer") or ""),
+        "scorer": str(provenance.get("scorer") or ""),
+        "verifier": str(provenance.get("verifier") or ""),
+        "verdict": "VERIFIED" if epistemic == "VERIFIED_FACT" else epistemic,
+        "admission_admitted_as": str(provenance.get("admission_admitted_as") or ""),
+        "verification_method": str(
+            provenance.get("verification_method")
+            or "; ".join(record.evidence[:5])
+        ),
+        "level": str(provenance.get("level") or ""),
     }
 
 
