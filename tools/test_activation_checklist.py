@@ -33,7 +33,23 @@ V2_BRANCH = "origin/brain-build/operating-code-v2"
 ALL_IDS = ["L%d" % i for i in range(1, 15)]
 
 
+def _ensure_ref(ref):
+    """Make sure a remote ref exists locally, fetching it when the clone
+    lacks it. CI checks out a shallow single ref, so origin/* branches for
+    the V2 trust root are absent unless fetched. The gate still verifies
+    live bytes — this only ensures they are reachable."""
+    branch = ref.split(":", 1)[0]
+    name = branch[7:] if branch.startswith("origin/") else branch
+    v = subprocess.run(["git", "rev-parse", "--verify", "--quiet", branch],
+                       cwd=REPO_ROOT, capture_output=True, timeout=60)
+    if v.returncode != 0:
+        f = subprocess.run(["git", "fetch", "origin", name],
+                           cwd=REPO_ROOT, capture_output=True, timeout=120)
+        assert f.returncode == 0, "git fetch failed for %s" % name
+
+
 def _git_show(rev_path):
+    _ensure_ref(rev_path)
     p = subprocess.run(["git", "show", rev_path], cwd=REPO_ROOT,
                        capture_output=True, timeout=60)
     assert p.returncode == 0, "git show failed: %s" % rev_path
