@@ -1,6 +1,6 @@
 # TEAM NAYA — THE OPERATING CODE V2
 ## The One Canonical Law — Everything Shawn Taught, Compiled
-*Status: DRAFT — compiled 2026-10-10, awaiting Shawn's ratification to supersede V1.*
+*Status: RATIFIED — ratified 2026-10-10 by Shawn; in force, supersedes V1.*
 
 > **Supersedes:** `0000-OPERATING-CODE-V1.md` (ratified 2026-10-08). V1 remains in force until V2 is ratified.
 > **Supreme above this document:** The Law of One (0007-LAW-OF-ONE-V1, ratified 2026-10-09).
@@ -257,6 +257,6 @@ Before any design ships:
 ---
 
 ## AMENDMENT PATH
-Amendments come through Shawn's authority only. Propose the change, score it, post the receipt. The loader refuses invalid amendment records.
+Amendments come through Shawn's authority only. Propose the change, score it, post the receipt. Amendment records are validated against this path; automated refusal ships with the amendment loader (in build).
 
 *Compiled from: the Operating Code V1 (2026-10-08), the Law of One (2026-10-09), Shawn's directives 2026-10-09 through 2026-10-10, and the team's proven practices. Every provision traces to his word or to a scored team decision.*
