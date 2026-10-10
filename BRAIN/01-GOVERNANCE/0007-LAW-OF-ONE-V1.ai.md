@@ -5,7 +5,7 @@
 ## LAW-OF-ONE-V1
 
 **Type:** Constitutional (supreme — outranks all other laws on conflict)
-**Status:** DRAFT — proposed 2026-10-09, awaiting ratification by Shawn Vibert
+**Status:** RATIFIED — Shawn Vibert, 2026-10-09. Constitutional law, effective immediately.
 **Supersedes:** Nothing. This is foundational, not corrective.
 
 ## Formal Statement
@@ -67,4 +67,4 @@ Per constitutional amendment protocol: amendments require Shawn Vibert's explici
 
 ## Status
 
-*DRAFT — awaiting ratification.*
+*RATIFIED 2026-10-09 by Shawn Vibert.*
