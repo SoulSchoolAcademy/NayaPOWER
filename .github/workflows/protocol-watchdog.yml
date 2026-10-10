@@ -11,6 +11,10 @@ name: Protocol Watchdog
 #   budget          [CODE] GitHub Actions burn rate vs the ~2,500 min/month
 #                   budget, posted to #1354. When CI minutes die, work stops —
 #                   this is the early-warning gauge.
+#   scorecard       [CODE] Team accountability math: PRs opened/merged/
+#                   closed-unmerged, first-time-right %, avg open-to-merge.
+#                   Written to BRAIN/SCORECARD.md (mission-state branch, no CI
+#                   burn) and posted to #1354. Numbers only, no adjectives.
 
 on:
   schedule:
@@ -37,3 +41,16 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: python3 tools/actions_budget_watch.py
+
+  scorecard:
+    name: Team accountability scorecard
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compute and publish the math
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: python3 tools/team_scorecard.py
