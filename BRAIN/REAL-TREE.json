@@ -1,7 +1,7 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-10",
-  "receipt_basis_commit": "0dbc6d6541ae9c1791f23052a4b13ab316c4535d",
+  "receipt_basis_commit": "26f28c527626c74b164790d3d635ae9b831476a1",
   "inventory_file_count": 1239,
   "domain_counts": {
     "00-ACTIVATION": 3,
@@ -377,13 +377,13 @@
     },
     {
       "path": "BRAIN/01-GOVERNANCE/OPERATING-LAW.json",
-      "blob_sha": "eb1a6d85021251ee091e7759090a1ea0db2489e6",
-      "size": 28653
+      "blob_sha": "2a12fe6ff2680fd424e66aefa206e1ad29144e4a",
+      "size": 32329
     },
     {
       "path": "BRAIN/01-GOVERNANCE/OPERATING-LAW.md",
-      "blob_sha": "17575d56498a793aba19eff9267538c30c183cb4",
-      "size": 29862
+      "blob_sha": "f738cd89a9775f6c987c43f03bb2a9e2fe4265f7",
+      "size": 32785
     },
     {
       "path": "BRAIN/01-GOVERNANCE/README.md",
