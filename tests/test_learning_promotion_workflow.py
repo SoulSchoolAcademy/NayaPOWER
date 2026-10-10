@@ -62,7 +62,10 @@ def test_fresh_intelligent_block_can_enter_existing_learning_candidate_path_with
     assert 'index_id' in source
     assert 'checkpoint_id' in source
     assert 'provenance_preserved: true' in source
-    assert 'status: "CANDIDATE"' in source
+    # #2077 (WO3 admission gate): candidate status is now gate-determined via
+    # admittedStatus (defaults to "CANDIDATE", may be "NOT_VERIFIED").
+    assert 'status: admittedStatus' in source
+    assert 'let admittedStatus = "CANDIDATE"' in source
     assert 'mode === "candidate"' in source
 
 
