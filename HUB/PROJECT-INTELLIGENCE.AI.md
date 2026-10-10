@@ -73,6 +73,24 @@ One brain. Many doors. Each door: themed elevated object, what it is, who it's f
 
 **Door authority law:** Doors expose what Naya can do. LAW decides what Naya may do. ACT does it. VERIFY checks what happened. **CONNECTED ≠ AUTHORIZED.** Connection never implies permission to act.
 
+## 5.5 BREAK THE SHELL BARRIER
+
+Read `HUB/BREAKING-THE-SHELL-BARRIER-V1.md` and `HUB/INTERFACE-COMPLETION-HARNESS-V1.json`.
+
+You are not rewarded for the number of routes, panels or components created.
+
+You are measured on **declared application completion**.
+
+Required operating loop:
+
+`RESTORE → SELECT HIGHEST-VALUE GAP → BUILD → RENDER → LOOK → CLICK → TEST → SCORE → REPAIR → UPDATE COMPLETION STATE → REPEAT`
+
+A first complete room is a reusable reference architecture, not permission to leave the rest of the application thin.
+
+Once a surface is independently verified, preserve its screenshots, acceptance journey and functional tests as a regression baseline.
+
+Do not ask Shawn to identify obvious unfinished rooms, dead controls, mobile breakage or visual regressions that you can discover yourself.
+
 ## 6. WORKING AGREEMENTS
 
 - Coordinate on issue #1354. Never rewrite another lane's in-flight work.
