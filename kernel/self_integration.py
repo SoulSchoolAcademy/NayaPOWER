@@ -125,6 +125,50 @@ def lesson_from_evidence_row(row: dict[str, Any]) -> dict[str, Any] | None:
 # are refused, never promoted.
 MEMORY_PROMOTION_MIN_WEIGHT = 1.0
 
+# Held-out evaluation marker contract (Phase 2): an evidence entry counts as
+# independent held-out evaluation when its stored dict carries
+# evaluation_context == "held_out" (or held_out is True). Writers of evidence
+# (strengthen() callers, the verification queue) set the marker; the bridge
+# never infers it.
+HELD_OUT_CONTEXT = "held_out"
+
+
+def _support_independence_verdict(evidence_entries: list[Any]) -> None:
+    """Promotion-level support-independence gate (held-out evaluation).
+
+    The error-defense spec's promotion predicates require lesson-level
+    context: a support set tracing to a single ultimate source is an echo
+    chamber, not independent support — however many entries it holds.
+    Independence is established by EITHER:
+      - one entry marked as held-out evaluation (evaluation_context), or
+      - entries from at least two distinct evidence_family values.
+    Entries without a family prove nothing about independence and add no
+    family. Bare-string legacy entries are unstructured: they cannot
+    establish independence. Anything else raises IntegrationError —
+    fail closed, promote nothing.
+    """
+    structured = [e for e in evidence_entries if isinstance(e, dict)]
+    if not structured:
+        raise IntegrationError(
+            "promotion_refused:insufficient_independent_support:"
+            "no_structured_evidence"
+        )
+    held_out = any(
+        str(e.get("evaluation_context") or "").strip().lower() == HELD_OUT_CONTEXT
+        or e.get("held_out") is True
+        for e in structured
+    )
+    families = {
+        str(e.get("evidence_family") or "").strip()
+        for e in structured
+    } - {""}
+    if held_out or len(families) >= 2:
+        return
+    raise IntegrationError(
+        "promotion_refused:insufficient_independent_support:"
+        f"families={len(families)},held_out={held_out}"
+    )
+
 
 def lesson_from_memory_record(record: Any) -> dict[str, Any]:
     """Map a strengthened MemoryRecord to a lesson record for integration.
@@ -139,7 +183,10 @@ def lesson_from_memory_record(record: Any) -> dict[str, Any]:
       2. the record is ACTIVE — decayed/superseded/archived/quarantined
          records are never promotable (reconcile or replace them);
       3. the record is strengthened: verification_weight >= 1.0 with at
-         least one evidence entry.
+         least one evidence entry;
+      4. support independence — the evidence must establish independent
+         support (held-out evaluation marker or >= 2 evidence families);
+         a single ultimate source is an echo chamber, never promotion.
 
     Field mapping: lesson_id <- record_id; claim <- content; situation /
     prescribed_behavior / doer / scorer / verifier / admission_admitted_as /
@@ -147,7 +194,9 @@ def lesson_from_memory_record(record: Any) -> dict[str, Any]:
     actionable records). verdict <- "VERIFIED" only when epistemic_state is
     "VERIFIED_FACT"; otherwise the record's own epistemic state, which
     integrate_verified_lesson() will refuse — the bridge never upgrades an
-    epistemic claim.
+    epistemic claim. The record's structured evidence entries ride along as
+    lesson["evidence"] for the promotion predicates in
+    integrate_verified_lesson() (authority purpose check).
     """
     if not isinstance(record, MemoryRecord):
         raise IntegrationError("memory_record_not_a_record")
@@ -166,6 +215,7 @@ def lesson_from_memory_record(record: Any) -> dict[str, Any]:
             f"weight={record.verification_weight},"
             f"evidence={len(record.evidence)}"
         )
+    _support_independence_verdict(record.evidence)
     provenance = record.provenance if isinstance(record.provenance, dict) else {}
     epistemic = str(record.epistemic_state or "")
     return {
@@ -180,9 +230,15 @@ def lesson_from_memory_record(record: Any) -> dict[str, Any]:
         "admission_admitted_as": str(provenance.get("admission_admitted_as") or ""),
         "verification_method": str(
             provenance.get("verification_method")
-            or "; ".join(record.evidence[:5])
+            or "; ".join(
+                str(e.get("evidence_id", "?"))
+                for e in record.evidence[:5] if isinstance(e, dict)
+            )
         ),
         "level": str(provenance.get("level") or ""),
+        "evidence": [
+            dict(e) for e in record.evidence if isinstance(e, dict)
+        ],
     }
 
 
@@ -221,6 +277,15 @@ def integrate_verified_lesson(
          per the admission gate contract.
       4. admission — when the lesson carries an admission record, it must be
          admitted_as CANDIDATE (the admission gate's choke point).
+      5. no material contradiction — the store must not already hold a
+         different prescribed behavior for the same situation from a
+         different lesson (fail closed; adjudication machinery does not
+         exist yet). Re-integration of the same lesson_id versions the
+         update, it is not a contradiction.
+      6. authority purpose — evidence entries carried by the lesson with an
+         explicit authorized_purposes list excluding "certify" cannot
+         support certification (purpose-bound authorization, uncertain-scope
+         spec). Absent markers defer to the admission gate + verifier chain.
 
     On success the lesson's prescribed behavior becomes the policy for its
     situation at a new store version; optionally the integration itself is
@@ -252,11 +317,49 @@ def integrate_verified_lesson(
     if admitted_as and admitted_as != ADMITTED_CANDIDATE:
         raise IntegrationError(f"lesson_not_admitted:admitted_as={admitted_as!r}")
 
+    situation = str(lesson["situation"]).strip()
+    lesson_id = str(lesson["lesson_id"]).strip()
+    new_behavior = normalize_identity(lesson["prescribed_behavior"])
+
+    # 5. material contradiction: a different lesson already prescribes a
+    # different behavior for this situation. Without adjudication machinery
+    # the only safe move is refusal — the store keeps its existing policy.
+    current = policy_store.advise(situation, "")
+    current_source = str(current.get("source") or "")
+    if current_source != "default" and current_source.startswith("lesson:"):
+        current_lesson = current_source[len("lesson:"):]
+        current_behavior = normalize_identity(current.get("behavior") or "")
+        if (
+            current_lesson != lesson_id
+            and current_behavior
+            and current_behavior != new_behavior
+        ):
+            raise IntegrationError(
+                "promotion_refused:material_contradiction:"
+                f"situation={situation!r},existing_lesson={current_lesson!r}"
+            )
+
+    # 6. purpose-bound authority: evidence explicitly authorized for purposes
+    # other than certification cannot certify.
+    for entry in lesson.get("evidence") or []:
+        if not isinstance(entry, dict):
+            continue
+        purposes = entry.get("authorized_purposes")
+        if purposes is None:
+            continue
+        allowed = {str(p).strip().lower() for p in purposes}
+        if "certify" not in allowed:
+            raise IntegrationError(
+                "promotion_refused:authority_purpose_excluded:"
+                f"evidence={entry.get('evidence_id', '?')!r},"
+                f"purposes={sorted(allowed)}"
+            )
+
     prior_version = policy_store.current_version
     new_version = policy_store.integrate(
-        situation=str(lesson["situation"]).strip(),
+        situation=situation,
         behavior=str(lesson["prescribed_behavior"]).strip(),
-        lesson_id=str(lesson["lesson_id"]).strip(),
+        lesson_id=lesson_id,
         note=f"WO5b: integrated verified lesson {lesson['lesson_id']!r}",
     )
 

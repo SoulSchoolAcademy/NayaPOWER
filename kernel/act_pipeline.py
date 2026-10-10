@@ -50,6 +50,7 @@ from dataclasses import dataclass, field
 from typing import Any, Callable, Sequence
 
 from kernel.memory_store import MemoryStore
+from kernel.memory_metabolism import ELIGIBLE, act_eligibility
 from kernel.value_calculus import (
     PROHIBITED,
     Candidate,
@@ -240,6 +241,7 @@ def apply_retained_intelligence(
     situation: str,
     default_behavior: str,
     now: str | None = None,
+    lesson_eligibility: Callable[[str], str] | None = None,
 ) -> dict[str, Any]:
     """Bind retained memory to the authorized-apply decision seam.
 
@@ -248,6 +250,22 @@ def apply_retained_intelligence(
     QUARANTINED records are never served, SUPERSEDED/DECAYED/ARCHIVED never
     surface silently (the store's fail-closed discipline) — and combines them
     with the behavior policy's advise() decision for the same situation.
+
+    Phase 2 (epistemic wiring): every served record is re-checked for
+    ACT-wire eligibility AT THE MOMENT OF USE
+    (kernel.memory_metabolism.act_eligibility) — revoked, suspended, or
+    uncertain records never certify behavior, fail closed. The store's own
+    filtering is never trusted alone (Freshness Law: eligibility is
+    re-evaluated at use, never cached). Refused records are counted in
+    `memory_records_refused`, never served.
+
+    When `lesson_eligibility` is provided, an integrated lesson the policy
+    store would serve is re-checked the same way: it maps a lesson_id to an
+    eligibility verdict ("ELIGIBLE" or an INELIGIBLE_* code). A refused
+    lesson falls through to retained memory or the caller default, with the
+    refusal recorded as `policy_refused`. When absent, the policy path is
+    served as before — the caller owns wiring the incident registry once it
+    exists (documented gap, not a silent pass).
 
     A record matches a situation when its provenance carries the same
     `situation` key (the capture contract for actionable records).
@@ -276,13 +294,26 @@ def apply_retained_intelligence(
         ).strip() == situation
 
     served = memory_store.serve(_situation_matches, now=now, persist_touch=False)
+
+    # Use-time eligibility recheck (Phase 2): revoked / suspended / uncertain
+    # records never certify, however they reached the served set.
+    eligible: list[Any] = []
+    refused: list[tuple[str, str]] = []
+    for record, _label in served.items:
+        verdict = act_eligibility(record)
+        if verdict == ELIGIBLE:
+            eligible.append(record)
+        else:
+            refused.append((str(getattr(record, "record_id", "?")), verdict))
+
     candidates = sorted(
-        (record for record, _label in served.items),
+        eligible,
         key=lambda r: (
             -float(getattr(r, "verification_weight", 0.0) or 0.0),
             str(getattr(r, "last_verified_at", "") or ""),
         ),
     )
+    refused_count = len(refused)
 
     advised = (
         policy_store.advise(situation, default_behavior)
@@ -291,16 +322,28 @@ def apply_retained_intelligence(
     )
     policy_version = advised.get("policy_version") if advised else None
 
+    policy_refused: str | None = None
     if advised is not None and advised.get("source", "default") != "default":
-        return {
-            "behavior": advised["behavior"],
-            "source": advised["source"],
-            "situation": situation,
-            "policy_version": policy_version,
-            "memory_record_id": None,
-            "memory_records_considered": len(candidates),
-            "via": "behavior_policy",
-        }
+        if lesson_eligibility is not None:
+            lesson_id = str(advised.get("source") or "")
+            if lesson_id.startswith("lesson:"):
+                lesson_id = lesson_id[len("lesson:"):]
+            policy_verdict = lesson_eligibility(lesson_id)
+            if policy_verdict != ELIGIBLE:
+                policy_refused = policy_verdict
+                advised = None
+        if advised is not None:
+            return {
+                "behavior": advised["behavior"],
+                "source": advised["source"],
+                "situation": situation,
+                "policy_version": policy_version,
+                "memory_record_id": None,
+                "memory_records_considered": len(candidates),
+                "memory_records_refused": refused_count,
+                "policy_refused": policy_refused,
+                "via": "behavior_policy",
+            }
     if candidates:
         top = candidates[0]
         return {
@@ -311,7 +354,10 @@ def apply_retained_intelligence(
             "memory_record_id": top.record_id,
             "memory_epistemic_state": top.epistemic_state,
             "memory_verification_weight": top.verification_weight,
+            "memory_eligibility": ELIGIBLE,
             "memory_records_considered": len(candidates),
+            "memory_records_refused": refused_count,
+            "policy_refused": policy_refused,
             "via": "memory_store",
         }
     return {
@@ -321,6 +367,8 @@ def apply_retained_intelligence(
         "policy_version": policy_version,
         "memory_record_id": None,
         "memory_records_considered": 0,
+        "memory_records_refused": refused_count,
+        "policy_refused": policy_refused,
         "via": "default",
     }
 

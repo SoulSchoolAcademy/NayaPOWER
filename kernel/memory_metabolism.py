@@ -57,6 +57,84 @@ EPISTEMIC_STATES = (
 AUDIT_ONLY = (SUPERSEDED, DECAYED, ARCHIVED)
 
 
+# ACT-wire eligibility (Phase 2 wiring of the uncertain-scope spec) -------------
+# Shawn's directive 2026-10-10: "wire it into the live system immediately."
+# A record is eligible to certify behavior through the ACT wire only when no
+# adverse standing marker is on record. Markers are written by the
+# revocation/incident machinery (spec branches naya5/uncertain-scope and
+# naya5/independence-propagation) into the record's provenance:
+#   provenance["revocation_verdict"]: one of the six qualification verdicts
+#     (UNAFFECTED / REQUALIFIED / DOWNGRADED / INSUFFICIENT_DATA /
+#      SUSPENDED / REVOKED).
+#   provenance["uncertainty_assessment"]: one of the four assessment states
+#     (confirmed_compromised / possibly_compromised / independently_cleared /
+#      unassessed), plus provenance["incident_id"] naming the live incident.
+# Absent markers mean no incident is on record — not "unassessed under an
+# incident". The four assessment states classify families WITHIN a known
+# incident; inventing an incident where none is recorded would make the wire
+# dead on arrival. Positive adverse markers are always honored: uncertain
+# independence can certify nothing.
+ELIGIBLE = "ELIGIBLE"
+INELIGIBLE_NOT_ACTIVE = "INELIGIBLE_NOT_ACTIVE"
+INELIGIBLE_REVOKED = "INELIGIBLE_REVOKED"
+INELIGIBLE_SUSPENDED = "INELIGIBLE_SUSPENDED"
+INELIGIBLE_UNCERTAIN = "INELIGIBLE_UNCERTAIN"
+
+# Revocation verdicts that bar ACT certification. DOWNGRADED / REQUALIFIED /
+# UNAFFECTED retain positive standing; INSUFFICIENT_DATA cannot establish
+# standing, so it fails closed alongside the explicit holds.
+_DISQUALIFYING_REVOCATION = {
+    "REVOKED": INELIGIBLE_REVOKED,
+    "SUSPENDED": INELIGIBLE_SUSPENDED,
+    "INSUFFICIENT_DATA": INELIGIBLE_UNCERTAIN,
+}
+
+# Uncertainty assessments that bar ACT certification when an incident is on
+# record. "independently_cleared" preserves eligibility (positive evidence).
+_DISQUALIFYING_UNCERTAINTY = {
+    "confirmed_compromised": INELIGIBLE_UNCERTAIN,
+    "possibly_compromised": INELIGIBLE_UNCERTAIN,
+}
+
+
+def act_eligibility(record: Any) -> str:
+    """Use-time eligibility verdict for one record at the ACT wire.
+
+    Evaluated at the moment of use (Freshness Law: proof expires by change,
+    never by time) — never cached from an earlier check. Returns ELIGIBLE
+    or one of the INELIGIBLE_* codes. Fail closed: anything unrecognized in
+    the marker fields is treated as adverse.
+    """
+    if getattr(record, "memory_state", None) != ACTIVE:
+        return INELIGIBLE_NOT_ACTIVE
+    provenance = getattr(record, "provenance", None)
+    provenance = provenance if isinstance(provenance, dict) else {}
+
+    revocation = str(provenance.get("revocation_verdict") or "").strip().upper()
+    if revocation:
+        if revocation in _DISQUALIFYING_REVOCATION:
+            return _DISQUALIFYING_REVOCATION[revocation]
+        if revocation not in (
+            "UNAFFECTED", "REQUALIFIED", "DOWNGRADED",
+        ):
+            # Unrecognized verdict: fail closed, do not certify.
+            return INELIGIBLE_UNCERTAIN
+
+    assessment = str(provenance.get("uncertainty_assessment") or "").strip().lower()
+    if assessment in _DISQUALIFYING_UNCERTAINTY:
+        return _DISQUALIFYING_UNCERTAINTY[assessment]
+    if assessment == "unassessed" and provenance.get("incident_id"):
+        # Known incident, this family never assessed: unknown independence
+        # is not proven independence.
+        return INELIGIBLE_UNCERTAIN
+    if assessment and assessment not in (
+        "independently_cleared", "unassessed",
+    ):
+        return INELIGIBLE_UNCERTAIN
+
+    return ELIGIBLE
+
+
 def _utcnow_iso() -> str:
     return datetime.now(timezone.utc).isoformat(timespec="seconds")
 
