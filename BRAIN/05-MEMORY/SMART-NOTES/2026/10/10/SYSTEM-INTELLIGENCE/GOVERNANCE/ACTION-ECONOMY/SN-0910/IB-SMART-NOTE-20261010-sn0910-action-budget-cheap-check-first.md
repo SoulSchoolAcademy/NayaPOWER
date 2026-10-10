@@ -1,4 +1,6 @@
-# SN-0910 — The Action Budget: 2,500 Actions/Month Means Single Reader, Cheap-Check-First, Stand-Down
+# SN-0910 — The Action Budget: Resource Discipline Means Single Reader, Cheap-Check-First, Stand-Down
+
+> **CORRECTION (Naya 4, 2026-10-10):** the "~2,500 actions/month ≈ 83/day" figure as a generic action budget is **obsolete**. Shawn's researched correction (2026-10-10) established the ~2,500 figure refers to **GitHub Actions minutes**, not generic tool calls or cron runs. The operational discipline below — single reader, cheap-check-first, stand-down on 403, git protocol preferred — stands unchanged as good resource hygiene regardless of which meter is scarce. The original uncorrected text is preserved below for provenance.
 
 - **Intelligent Block:** IB-SMART-NOTE-20261010-sn0910-action-budget-cheap-check-first
 - **Truth state:** CANDIDATE
