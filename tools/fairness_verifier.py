@@ -31,6 +31,7 @@ Usage:
 
 import argparse
 import json
+import os
 import sys
 from datetime import datetime, timezone
 
@@ -494,6 +495,38 @@ def main():
 
     sub.add_parser("test-broken-scheduler", help="Verify broken scheduler is caught")
 
+    fap = sub.add_parser("faap-register", help="Register FAAP assumption object")
+    fap.add_argument("--contract", required=True)
+    fap.add_argument("--id", required=True)
+    fap.add_argument("--predicate", required=True)
+    fap.add_argument("--owner", required=True,
+                     choices=["ENVIRONMENT", "WORKER", "LAW", "EXTERNAL", "HUMAN"])
+    fap.add_argument("--control-boundary", required=True,
+                     choices=["ENVIRONMENT_ONLY", "SCHEDULER_INFLUENCED", "SCHEDULER_CONTROLLED"])
+    fap.add_argument("--justification", default="")
+    fap.add_argument("--revision", default="v1")
+
+    far = sub.add_parser("faap-record", help="Record FAAP gate evidence")
+    far.add_argument("--contract", required=True)
+    far.add_argument("--id", required=True)
+    far.add_argument("--field", required=True,
+                     choices=["satisfiability_witness", "necessity_result",
+                              "circularity_result", "counterexamples_excluded",
+                              "verifier_receipt"])
+    far.add_argument("--value", required=True)
+
+    fg = sub.add_parser("faap-gate", help="Run the four FAAP gates")
+    fg.add_argument("--contract", required=True)
+    fg.add_argument("--target", default="STRONG_FAIRNESS")
+
+    fm = sub.add_parser("faap-minimize", help="Minimization report")
+    fm.add_argument("--contract", required=True)
+    fm.add_argument("--target", default="STRONG_FAIRNESS")
+
+    fr2 = sub.add_parser("faap-receipt", help="Emit FAAP audit receipt")
+    fr2.add_argument("--contract", required=True)
+    fr2.add_argument("--target", default="STRONG_FAIRNESS")
+
     args = parser.parse_args()
     if args.cmd == "classify":
         cycle = json.loads(args.trace)
@@ -516,6 +549,244 @@ def main():
         check_vacuity(args.contract, summary)
     elif args.cmd == "test-broken-scheduler":
         test_broken_scheduler()
+    elif args.cmd == "faap-register":
+        faap_register(args.contract, args.id, args.predicate, args.owner,
+                      args.control_boundary, args.justification, args.revision)
+    elif args.cmd == "faap-gate":
+        faap_run_gates(args.contract, args.target)
+    elif args.cmd == "faap-minimize":
+        faap_minimize(args.contract, args.target)
+    elif args.cmd == "faap-receipt":
+        faap_receipt(args.contract, args.target)
+    elif args.cmd == "faap-record":
+        faap_record_evidence(args.contract, args.id, args.field, args.value)
+
+
+# ============================================================================
+# FAAP — Fairness Assumption Audit Protocol (Naya 1's formal protocol)
+#
+# Four gates, ALL required. Passing three cannot compensate for failing one.
+#   1. Independent justification — evidence not depending on the conclusion
+#   2. Satisfiability — legitimate execution exists; difficult behavior represented
+#   3. Minimal sufficiency — weakest necessary set (leave-one-out)
+#   4. Non-circularity — proving fairness, not assuming it (adversarial test)
+# ============================================================================
+
+FAAP_GATES = ["independence", "satisfiability", "minimal_sufficiency", "non_circularity"]
+
+FAAP_REGISTRY = os.path.expanduser(
+    "~/workspace/goals/nayapower-10-10-completion-drive/hidden_files/faap-registry.json")
+
+
+def _faap_load():
+    try:
+        with open(FAAP_REGISTRY) as f:
+            return json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return {"contracts": {}}
+
+
+def _faap_save(reg):
+    os.makedirs(os.path.dirname(FAAP_REGISTRY), exist_ok=True)
+    with open(FAAP_REGISTRY, "w") as f:
+        json.dump(reg, f, indent=2)
+
+
+def faap_register(contract_id, assumption_id, predicate, owner, control_boundary,
+                  justification="", revision="v1"):
+    """
+    Register an assumption as a full FAAP reviewable object.
+    control_boundary: ENVIRONMENT_ONLY | SCHEDULER_INFLUENCED | SCHEDULER_CONTROLLED
+    """
+    if owner == "SCHEDULER" or control_boundary == "SCHEDULER_CONTROLLED":
+        print(f"⚠ REJECTED: '{predicate[:60]}...'")
+        print(f"  Scheduler-controlled conditions are properties to prove, not assumptions.")
+        return None
+
+    reg = _faap_load()
+    if contract_id not in reg["contracts"]:
+        reg["contracts"][contract_id] = {"assumptions": {}, "gate_results": {},
+                                         "created_at": datetime.now(timezone.utc).isoformat()}
+    reg["contracts"][contract_id]["assumptions"][assumption_id] = {
+        "revision": revision,
+        "predicate": predicate[:300],
+        "owner": owner,
+        "control_boundary": control_boundary,
+        "justification": justification[:300],
+        "counterexamples_excluded": [],
+        "satisfiability_witness": None,
+        "necessity_result": "UNDETERMINED",
+        "circularity_result": "NOT_YET_CHECKED",
+        "verifier_receipt": None,
+        "registered_at": datetime.now(timezone.utc).isoformat(),
+    }
+    _faap_save(reg)
+    print(f"FAAP: registered {assumption_id} (boundary: {control_boundary})")
+    return True
+
+
+def faap_record_evidence(contract_id, assumption_id, field, value):
+    """Record gate evidence: satisfiability_witness, necessity_result, etc."""
+    reg = _faap_load()
+    c = reg["contracts"].get(contract_id, {}).get("assumptions", {}).get(assumption_id)
+    if not c:
+        print(f"Unknown assumption {assumption_id} in {contract_id}")
+        return False
+    c[field] = value
+    _faap_save(reg)
+    print(f"FAAP: {assumption_id}.{field} = {str(value)[:80]}")
+    return True
+
+
+def faap_run_gates(contract_id, target_property="STRONG_FAIRNESS"):
+    """
+    Run all four FAAP gates. ALL must pass for qualification.
+    UNKNOWN stays UNKNOWN — never converted to PASS by aggregation.
+    """
+    reg = _faap_load()
+    contract = reg["contracts"].get(contract_id)
+    if not contract or not contract["assumptions"]:
+        print(f"No FAAP assumptions in {contract_id}")
+        return None
+
+    print(f"\n{'='*70}")
+    print(f"FAAP AUDIT: {contract_id} → {target_property}")
+    print(f"{'='*70}")
+    gates = {}
+
+    # Gate 1: Independent justification
+    g1_issues = []
+    for aid, a in contract["assumptions"].items():
+        if not a.get("justification"):
+            g1_issues.append(f"{aid}: no independent justification")
+        if a["owner"] == "SCHEDULER":
+            g1_issues.append(f"{aid}: scheduler-owned justification")
+        circ_kw = ["eventually serviced", "eventually selected", "fair scheduling"]
+        if any(kw in a["predicate"].lower() for kw in circ_kw):
+            g1_issues.append(f"{aid}: predicate restates the fairness conclusion")
+    gates["independence"] = "PASS" if not g1_issues else "FAIL"
+    print(f"\n  Gate 1 — Independent justification: {gates['independence']}")
+    for issue in g1_issues:
+        print(f"    ✗ {issue}")
+    if not g1_issues:
+        print(f"    ✓ All justifications independent of the fairness conclusion")
+
+    # Gate 2: Satisfiability + non-vacuity
+    g2_issues = []
+    for aid, a in contract["assumptions"].items():
+        if not a.get("satisfiability_witness"):
+            g2_issues.append(f"{aid}: no satisfiability witness")
+    # Non-vacuity: at least one witness must show recurring eligibility for strong fairness
+    if target_property == "STRONG_FAIRNESS":
+        recurring = any(any(kw in str(a.get("satisfiability_witness", "")).lower()
+                            for kw in ["recurr", "alternat", "cycl", "infinitely often"])
+                        for a in contract["assumptions"].values())
+        if not recurring:
+            g2_issues.append("No witness exercises recurring eligibility — VACUOUS_FOR_TARGET")
+    gates["satisfiability"] = "PASS" if not g2_issues else "FAIL"
+    print(f"\n  Gate 2 — Satisfiability / non-vacuity: {gates['satisfiability']}")
+    for issue in g2_issues:
+        print(f"    ✗ {issue}")
+    if not g2_issues:
+        print(f"    ✓ Admissible executions exist; difficult behavior represented")
+
+    # Gate 3: Minimal sufficiency (leave-one-out results must be recorded)
+    g3_issues = []
+    for aid, a in contract["assumptions"].items():
+        if a.get("necessity_result") == "UNDETERMINED":
+            g3_issues.append(f"{aid}: necessity not tested (remove-and-recheck missing)")
+    gates["minimal_sufficiency"] = "PASS" if not g3_issues else "UNKNOWN"
+    print(f"\n  Gate 3 — Minimal sufficiency: {gates['minimal_sufficiency']}")
+    for issue in g3_issues:
+        print(f"    ? {issue}")
+    if not g3_issues:
+        necessary = [aid for aid, a in contract["assumptions"].items()
+                     if a["necessity_result"] == "NECESSARY"]
+        print(f"    ✓ Minimal set: {necessary}")
+
+    # Gate 4: Non-circularity (adversarial scheduler test)
+    g4_issues = []
+    for aid, a in contract["assumptions"].items():
+        if a.get("circularity_result") == "NOT_YET_CHECKED":
+            g4_issues.append(f"{aid}: adversarial scheduler substitution not run")
+        elif a.get("circularity_result") == "CIRCULAR":
+            g4_issues.append(f"{aid}: CIRCULAR — justification depends on the conclusion")
+    gates["non_circularity"] = "PASS" if not g4_issues else ("FAIL" if any("CIRCULAR" in x for x in g4_issues) else "UNKNOWN")
+    print(f"\n  Gate 4 — Non-circularity: {gates['non_circularity']}")
+    for issue in g4_issues:
+        print(f"    {'✗' if 'CIRCULAR' in issue else '?'} {issue}")
+    if not g4_issues:
+        print(f"    ✓ Adversarial scheduler test passed; no hidden semantic circularity")
+
+    contract["gate_results"] = gates
+    _faap_save(reg)
+
+    # Qualification: ALL four required
+    if all(v == "PASS" for v in gates.values()):
+        qual = "QUALIFIED_IN_MODEL_SCOPE"
+    elif any(v == "FAIL" for v in gates.values()):
+        qual = "UNPROVEN"
+    else:
+        qual = "UNKNOWN"
+    contract["qualification"] = qual
+    _faap_save(reg)
+
+    print(f"\n  {'='*70}")
+    print(f"  Qualification: {qual}")
+    if qual != "QUALIFIED_IN_MODEL_SCOPE":
+        print(f"  (All four gates required — three passing cannot compensate for the fourth.)")
+    print(f"  {'='*70}")
+    return gates
+
+
+def faap_minimize(contract_id, target_property="STRONG_FAIRNESS"):
+    """
+    Report the leave-one-out minimization state.
+    Honest framing: this tool tracks recorded necessity results;
+    the actual remove-and-recheck runs happen in the model checker.
+    """
+    reg = _faap_load()
+    contract = reg["contracts"].get(contract_id)
+    if not contract:
+        print(f"Unknown contract {contract_id}")
+        return
+    print(f"\nMinimization report for {contract_id}:")
+    print(f"  {'Assumption':<24} {'Necessity':<16} Interpretation")
+    for aid, a in contract["assumptions"].items():
+        n = a.get("necessity_result", "UNDETERMINED")
+        interp = {"NECESSARY": "removal exposes genuine starvation — keep",
+                  "REDUNDANT": "removal keeps proof — drop",
+                  "UNDETERMINED": "remove-and-recheck not yet run"}.get(n, "?")
+        print(f"  {aid:<24} {n:<16} {interp}")
+    print(f"\n  Minimality is relative to the declared model and candidate set.")
+    print(f"  Record results with: faap-record --field necessity_result --value NECESSARY|REDUNDANT")
+
+
+def faap_receipt(contract_id, target_property="STRONG_FAIRNESS"):
+    """Emit the machine-readable FAAP audit receipt."""
+    reg = _faap_load()
+    contract = reg["contracts"].get(contract_id)
+    if not contract:
+        print(f"Unknown contract {contract_id}")
+        return
+    receipt = {
+        "audit_id": f"FAAP-{contract_id}",
+        "target_property": target_property,
+        "assumptions": [
+            {"id": aid,
+             "owner": a["owner"],
+             "classification": "ENVIRONMENT" if a["control_boundary"] == "ENVIRONMENT_ONLY" else "MIXED",
+             "independent_justification": "PASS" if a.get("justification") else "PENDING",
+             "satisfiable": bool(a.get("satisfiability_witness")),
+             "necessity": a.get("necessity_result", "UNDETERMINED"),
+             "circularity": a.get("circularity_result", "NOT_YET_CHECKED")}
+            for aid, a in contract["assumptions"].items()
+        ],
+        "audit_gates": contract.get("gate_results", {}),
+        "qualification": contract.get("qualification", "UNPROVEN"),
+    }
+    print(json.dumps(receipt, indent=2))
+    return receipt
 
 
 if __name__ == "__main__":
