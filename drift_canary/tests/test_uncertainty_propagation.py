@@ -718,3 +718,249 @@ def test_successor_package_eligible_empty_when_nothing_supported():
     pkg = build_successor_package(env, a)
     assert pkg["currently_eligible_evidence_refs"] == []
     assert pkg["historical_evidence_refs"] == ["e1"]
+
+# ---------------------------------------------------------------------------
+# SN-0785: Preventing Stale Qualifications From Being Republished.
+# ---------------------------------------------------------------------------
+from ..uncertainty_propagation import (
+    VERSION_NAMESPACES, NS_EVIDENCE_ELIGIBILITY, NS_CLAIM_QUALIFICATION,
+    NS_PROJECTION, VersionStamp, VersionAuthority,
+    FencingAuthority, PublicationRecord,
+    publish_allowed, AuthoritativePublicationBoundary,
+    FragmentManifest, fragment_manifest_current,
+    SURFACE_PUBLICATION_RULES, publish_note_event,
+    OutboxEntry, replay_outbox, reconcile_manifests,
+    run_delayed_writer_race,
+    invariant_stale_writer_rejected,
+    invariant_revoked_evidence_no_stale_cert,
+    invariant_independent_support_preserved,
+)
+
+
+def test_t1_t5_delayed_writer_race():
+    race = run_delayed_writer_race()
+    assert race["t1_writer_read_rev"] == 17
+    assert race["t3_claim_rev"] == 18
+    assert race["t4_wall_clock_later_but_irrelevant"] is True
+    assert race["t5_publication_accepted"] is False
+    assert race["t5_code"] in ("STALE_DEPENDENCY", "WRITE_CONFLICT")
+    assert invariant_stale_writer_rejected(race)
+
+
+def test_wall_clock_never_orders_versions():
+    auth = VersionAuthority()
+    s1 = auth.allocate(NS_CLAIM_QUALIFICATION)
+    s2 = auth.allocate(NS_CLAIM_QUALIFICATION)
+    # Even if s1 were stamped with a later wall-clock, s2 is newer:
+    # order comes only from the authority.
+    assert s2.number > s1.number
+
+
+def test_three_namespaces_monotonic_independently():
+    auth = VersionAuthority()
+    auth.allocate(NS_EVIDENCE_ELIGIBILITY)
+    auth.allocate(NS_EVIDENCE_ELIGIBILITY)
+    assert auth.current(NS_EVIDENCE_ELIGIBILITY) == 2
+    assert auth.current(NS_CLAIM_QUALIFICATION) == 0
+    assert auth.current(NS_PROJECTION) == 0
+    assert len(VERSION_NAMESPACES) == 3
+
+
+def test_status_nonmonotonic_allowed_with_new_revision():
+    # SUSPENDED -> REQUALIFIED is legal: statuses aren't monotonic, the
+    # history of qualified assessments is. What matters is a NEWER
+    # revision plus new verification evidence.
+    auth = VersionAuthority()
+    r1 = auth.allocate(NS_CLAIM_QUALIFICATION)  # SUSPENDED rev
+    r2 = auth.allocate(NS_CLAIM_QUALIFICATION)  # REQUALIFIED rev
+    assert r2.number > r1.number  # the revision carries the change
+
+
+def test_publish_allowed_needs_all_three():
+    ok, _ = publish_allowed(True, True, True)
+    assert ok
+    for combo, name in [((False, True, True), "projection_head_matches"),
+                        ((True, False, True),
+                         "qualification_dependencies_current"),
+                        ((True, True, False),
+                         "evidence_dependencies_admissible")]:
+        ok2, failed = publish_allowed(*combo)
+        assert not ok2 and failed == name
+
+
+def test_head_cas_alone_insufficient():
+    # Projection head matches, but E1 was revoked without touching the
+    # projection row -> STALE_DEPENDENCY, never a blind retry.
+    b = AuthoritativePublicationBoundary()
+    for _ in range(5):
+        b.versions.allocate(NS_EVIDENCE_ELIGIBILITY)
+    b._evidence_revisions["E1"] = 5
+    for _ in range(5):
+        b.versions.allocate(NS_CLAIM_QUALIFICATION)
+    b._claim_revisions["A"] = 5
+    b._projection_heads["pub-A"] = 0
+    b.commit_eligibility_change("E1")  # evidence rev -> 6
+    rec = PublicationRecord(
+        publication_id="pub-A", claim_id="A",
+        qualification_revision=VersionStamp(NS_CLAIM_QUALIFICATION, 5),
+        evidence_revisions=(("E1", 5),),
+        projection_revision=VersionStamp(NS_PROJECTION, 0),
+        fencing_token=b.fencing.issue())
+    ok, code, reason = b.publish(rec, claim_current_rev=5)
+    assert not ok and code == "STALE_DEPENDENCY"
+    assert "rebase_on_canonical" in reason
+
+
+def test_fencing_rejects_stale_worker():
+    f = FencingAuthority()
+    t1 = f.issue()
+    t2 = f.issue()
+    f.revoke_worker(t1)
+    ok, reason = f.check(t1)
+    assert not ok and "fenced" in reason
+    ok2, _ = f.check(t2)
+    assert ok2  # positive control: current token passes
+
+
+def test_token_never_replaces_evidence_check():
+    # The newest job can still go stale mid-run: token current, but the
+    # evidence it read was revoked after the read.
+    b = AuthoritativePublicationBoundary()
+    for _ in range(3):
+        b.versions.allocate(NS_EVIDENCE_ELIGIBILITY)
+    b._evidence_revisions["E1"] = 3
+    for _ in range(3):
+        b.versions.allocate(NS_CLAIM_QUALIFICATION)
+    b._claim_revisions["A"] = 3
+    token = b.fencing.issue()           # newest token, job starts
+    b.commit_eligibility_change("E1")  # E1 revoked mid-run -> rev 4
+    rec = PublicationRecord(
+        publication_id="pub-A", claim_id="A",
+        qualification_revision=VersionStamp(NS_CLAIM_QUALIFICATION, 3),
+        evidence_revisions=(("E1", 3),),
+        projection_revision=VersionStamp(NS_PROJECTION, 0),
+        fencing_token=token)
+    ok, code, _ = b.publish(rec, claim_current_rev=3)
+    assert not ok and code == "STALE_DEPENDENCY"
+
+
+def test_fragment_manifest_binds_paths_not_just_ids():
+    frag = FragmentManifest(
+        claim_id="C",
+        validated_support_paths=(("path-b", (("E2", 4),)),),
+        material_contradictions=("E1-vs-E3",),
+        scope_effects=("staging_only",))
+    ok, reason = fragment_manifest_current(frag, {"E2": 4})
+    assert ok and "contradictions_preserved" in reason
+
+
+def test_fragment_manifest_detects_stale_path():
+    frag = FragmentManifest(
+        claim_id="C",
+        validated_support_paths=(("path-b", (("E2", 4),)),),
+        material_contradictions=(), scope_effects=())
+    ok, reason = fragment_manifest_current(frag, {"E2": 5})
+    assert not ok and "stale" in reason
+
+
+def test_note_publish_idempotent_and_conflict():
+    existing = (("ev1", {"text": "a"}),)
+    status, _ = publish_note_event(existing, "ev1", {"text": "a"})
+    assert status == "MERGED_IDEMPOTENT"  # duplicate -> no-op
+    status2, _ = publish_note_event(existing, "ev1", {"text": "b"})
+    assert status2 == "WRITE_CONFLICT"
+    status3, _ = publish_note_event(existing, "ev2", {"text": "c"})
+    assert status3 == "APPENDED"
+
+
+def test_outbox_idempotent_replay():
+    e = OutboxEntry(entry_id="o1", change={"ev": "E1"},
+                    notifications=("sub1",), idempotency_key="k1")
+    applied, pending = replay_outbox([e, e])  # duplicate delivery
+    assert len(applied) == 1 and pending == ["o1"]
+    assert e.replay_count == 1  # no double-apply
+
+
+def test_notification_loss_never_restores_eligibility():
+    # The eligibility change is committed synchronously; lost
+    # notifications only delay refresh.
+    b = AuthoritativePublicationBoundary()
+    b.commit_eligibility_change("E1")
+    assert b._evidence_revisions["E1"] == 1  # committed regardless
+    _, pending = replay_outbox([OutboxEntry(
+        entry_id="o1", change={"ev": "E1"}, notifications=("lost-sub",),
+        idempotency_key="k1")])
+    assert pending == ["o1"]  # refresh delayed...
+    # ...but a publication on the old revision still fails:
+    rec = PublicationRecord(
+        publication_id="pub-A", claim_id="A",
+        qualification_revision=VersionStamp(NS_CLAIM_QUALIFICATION, 0),
+        evidence_revisions=(("E1", 0),),
+        projection_revision=VersionStamp(NS_PROJECTION, 0),
+        fencing_token=b.fencing.issue())
+    ok, _, _ = b.publish(rec, claim_current_rev=0)
+    assert not ok
+
+
+def test_reconcile_manifests():
+    m1 = _manifest(projection_id="p1",
+                   qualification_snapshot_generation=3)
+    m2 = _manifest(projection_id="p2",
+                   qualification_snapshot_generation=5)
+    stale, ok = reconcile_manifests((m1, m2), {}, 5)
+    assert stale == ("p1",) and ok == 1
+
+
+def test_invariant_revoked_evidence_no_stale_cert():
+    b = AuthoritativePublicationBoundary()
+    for _ in range(2):
+        b.versions.allocate(NS_CLAIM_QUALIFICATION)
+    b._claim_revisions["A"] = 2
+    b._evidence_revisions["E1"] = 2
+    assert invariant_revoked_evidence_no_stale_cert(b, "A", "E1")
+
+
+def test_invariant_independent_support_preserved():
+    assert invariant_independent_support_preserved(
+        {"A": "REVOKED", "B": "REQUALIFIED"})
+    assert not invariant_independent_support_preserved(
+        {"A": "REVOKED", "B": "REVOKED"})
+
+
+def test_per_surface_publication_rules():
+    assert set(SURFACE_PUBLICATION_RULES) == {
+        "live_summary", "note", "index", "successor", "receipt"}
+    assert "append_only" in SURFACE_PUBLICATION_RULES["note"]
+    assert "immutable_package_id" in SURFACE_PUBLICATION_RULES["successor"]
+
+
+def test_decisive_race_unaffected_claim_usable():
+    # Protection AND selectivity: the revoked claim's publication fails,
+    # while an unaffected claim publishes without a rebuild.
+    b = AuthoritativePublicationBoundary()
+    for _ in range(4):
+        b.versions.allocate(NS_EVIDENCE_ELIGIBILITY)
+    b._evidence_revisions["E1"] = 4
+    b._evidence_revisions["E2"] = 4
+    for _ in range(4):
+        b.versions.allocate(NS_CLAIM_QUALIFICATION)
+    b._claim_revisions["A"] = 4
+    b._claim_revisions["B"] = 4
+    b.commit_eligibility_change("E1")  # only E1 revoked -> rev 5
+    tok = b.fencing.issue()
+    stale_a = PublicationRecord(
+        publication_id="pub-A", claim_id="A",
+        qualification_revision=VersionStamp(NS_CLAIM_QUALIFICATION, 4),
+        evidence_revisions=(("E1", 4),),
+        projection_revision=VersionStamp(NS_PROJECTION, 0),
+        fencing_token=tok)
+    ok_a, _, _ = b.publish(stale_a, claim_current_rev=4)
+    assert not ok_a
+    fresh_b = PublicationRecord(
+        publication_id="pub-B", claim_id="B",
+        qualification_revision=VersionStamp(NS_CLAIM_QUALIFICATION, 4),
+        evidence_revisions=(("E2", 4),),
+        projection_revision=VersionStamp(NS_PROJECTION, 0),
+        fencing_token=tok)
+    ok_b, code_b, _ = b.publish(fresh_b, claim_current_rev=4)
+    assert ok_b and code_b == "PUBLISHED"

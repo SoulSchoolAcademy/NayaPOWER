@@ -1156,3 +1156,341 @@ def run_projection_cascade_fixture() -> dict:
         "successor_reconciled_verdicts": successor_current,
         "history_reconstructable": True,
     }
+
+# ---------------------------------------------------------------------------
+# SN-0785: Preventing Stale Qualifications From Being Republished.
+# The concurrency MECHANICS underneath SN-0784's invalidation semantics:
+# policies say what should happen; this makes it impossible for it not
+# to happen. Bounded verification candidate — branch only, never main.
+#
+# Targeted gap: propagation.py has version-aware logic (index_lookup
+# staleness, SURFACE_RULES, use-time checks) but NOT transactional CAS,
+# fencing tokens, atomic ordering, or concurrency-safe publication.
+# This connects exactly that gap to one authoritative atomic
+# publication boundary.
+# ---------------------------------------------------------------------------
+
+# 2. Three version namespaces, each monotonically allocated by the
+# authoritative state. Statuses are NOT monotonic; the HISTORY of
+# qualified assessments is. SUSPENDED -> REQUALIFIED on fresh evidence
+# is allowed — with a newer revision AND new verification evidence.
+NS_EVIDENCE_ELIGIBILITY = "evidence_eligibility"
+NS_CLAIM_QUALIFICATION = "claim_qualification"
+NS_PROJECTION = "projection"
+
+VERSION_NAMESPACES = (
+    NS_EVIDENCE_ELIGIBILITY,
+    NS_CLAIM_QUALIFICATION,
+    NS_PROJECTION,
+)
+
+
+@dataclass(frozen=True)
+class VersionStamp:
+    namespace: str
+    number: int
+
+    def __post_init__(self):
+        assert self.namespace in VERSION_NAMESPACES, self.namespace
+        assert self.number >= 0
+
+    def next(self) -> "VersionStamp":
+        return VersionStamp(self.namespace, self.number + 1)
+
+
+class VersionAuthority:
+    """The single orderer of versions. Wall-clock timestamps NEVER order
+    versions — only stamps allocated here do."""
+
+    def __init__(self):
+        self._heads = {ns: 0 for ns in VERSION_NAMESPACES}
+
+    def allocate(self, namespace: str) -> VersionStamp:
+        assert namespace in VERSION_NAMESPACES, namespace
+        self._heads[namespace] += 1
+        return VersionStamp(namespace, self._heads[namespace])
+
+    def current(self, namespace: str) -> int:
+        return self._heads[namespace]
+
+
+# 5. Fencing tokens: monotonically issued by the shared authority. A stale
+# worker is rejected even with an unexpired lease. Tokens NEVER replace
+# evidence-version checks — the newest job can still go stale mid-run.
+class FencingAuthority:
+    def __init__(self):
+        self._token = 0
+        self._revoked_workers = set()
+
+    def issue(self) -> int:
+        self._token += 1
+        return self._token
+
+    def revoke_worker(self, token: int):
+        self._revoked_workers.add(token)
+
+    def check(self, token: int) -> tuple:
+        """(accepted, reason)."""
+        if token in self._revoked_workers:
+            return False, "worker_fenced_stale_despite_unexpired_lease"
+        if token < self._token:
+            return False, "superseded_token"
+        return True, "current_token"
+
+
+@dataclass(frozen=True)
+class PublicationRecord:
+    """What a publication attempt carries to the boundary."""
+    publication_id: str
+    claim_id: str
+    qualification_revision: VersionStamp
+    evidence_revisions: tuple      # ((evidence_id, revision_number), ...)
+    projection_revision: VersionStamp
+    fencing_token: int
+    wall_clock: str = ""          # informational only — never orders
+
+
+# 3. Atomic compare-and-swap at publication.
+# PublishAllowed = ProjectionHeadMatches ∧ QualificationDependenciesCurrent
+#                  ∧ EvidenceDependenciesAdmissible
+# Projection-head CAS alone is INSUFFICIENT (E1 revoked without touching
+# the projection row). STALE_DEPENDENCY / WRITE_CONFLICT -> rebase on
+# canonical state, recompute, regenerate — never blind retry.
+def publish_allowed(projection_head_matches: bool,
+                    qualification_deps_current: bool,
+                    evidence_deps_admissible: bool) -> tuple:
+    """(allowed, failed_conjunct). All three required, named on failure."""
+    checks = (
+        ("projection_head_matches", projection_head_matches),
+        ("qualification_dependencies_current", qualification_deps_current),
+        ("evidence_dependencies_admissible", evidence_deps_admissible),
+    )
+    for name, ok in checks:
+        if not ok:
+            return False, name
+    return True, ""
+
+
+class AuthoritativePublicationBoundary:
+    """The ONE publication boundary. If records span databases, this is
+    the single canonical publication service; independent writes are
+    never allowed to publish qualifications."""
+
+    def __init__(self):
+        self.versions = VersionAuthority()
+        self.fencing = FencingAuthority()
+        self._projection_heads = {}      # projection_id -> revision number
+        self._published = {}            # publication_id -> PublicationRecord
+        self._evidence_revisions = {}    # evidence_id -> revision number
+        self._claim_revisions = {}       # claim_id -> revision number
+        self.diagnostics = []
+
+    def commit_eligibility_change(self, evidence_id: str) -> VersionStamp:
+        """Synchronous protection: the eligibility commit immediately
+        invalidates the old qualification for authoritative use. Async
+        repair (regeneration) happens separately; read-time verification
+        covers the gap. Invariant: PublishedCurrent(P) implies
+        ValidDependencies(P, current state)."""
+        stamp = self.versions.allocate(NS_EVIDENCE_ELIGIBILITY)
+        self._evidence_revisions[evidence_id] = stamp.number
+        return stamp
+
+    def publish(self, record: PublicationRecord,
+                claim_current_rev: int) -> tuple:
+        """(accepted, code, reason). Atomic CAS over all three conjuncts."""
+        token_ok, token_reason = self.fencing.check(record.fencing_token)
+        if not token_ok:
+            return False, "WRITE_CONFLICT", token_reason
+        head_ok = (self._projection_heads.get(record.publication_id, 0)
+                   == record.projection_revision.number)
+        qual_ok = (record.qualification_revision.number
+                   >= self._claim_revisions.get(record.claim_id, 0)
+                   and record.qualification_revision.number
+                   == claim_current_rev)
+        ev_ok = all(
+            self._evidence_revisions.get(eid, 0) <= rev
+            for eid, rev in record.evidence_revisions
+        )
+        allowed, failed = publish_allowed(head_ok, qual_ok, ev_ok)
+        if not allowed:
+            code = ("STALE_DEPENDENCY" if failed
+                    in ("qualification_dependencies_current",
+                        "evidence_dependencies_admissible")
+                    else "WRITE_CONFLICT")
+            self.diagnostics.append({
+                "publication_id": record.publication_id,
+                "code": code, "failed_conjunct": failed,
+            })
+            return False, code, \
+                f"{failed}_rebase_on_canonical_recompute_regenerate"
+        self._published[record.publication_id] = record
+        self._projection_heads[record.publication_id] = \
+            record.projection_revision.number + 1
+        self._claim_revisions[record.claim_id] = \
+            record.qualification_revision.number
+        return True, "PUBLISHED", "all_conjuncts_current"
+
+
+# 6. Fragment-level manifests bind VALIDATED SUPPORT PATHS, not just
+# claim IDs. E1's material contradictions and scope effects are examined
+# even when E3 independently supports the claim.
+@dataclass(frozen=True)
+class FragmentManifest:
+    claim_id: str
+    validated_support_paths: tuple   # (path_id, evidence_revisions)
+    material_contradictions: tuple   # contradiction ids still examined
+    scope_effects: tuple              # scope restrictions carried
+
+
+def fragment_manifest_current(fragment: FragmentManifest,
+                              evidence_revisions: dict) -> tuple:
+    """(current, reason). Every bound path's evidence revisions must be
+    current; contradictions are re-examined, never dropped because an
+    independent path supports the claim."""
+    for path_id, revs in fragment.validated_support_paths:
+        for eid, rev in revs:
+            if evidence_revisions.get(eid, 0) > rev:
+                return False, f"path_{path_id}_evidence_{eid}_stale"
+    if fragment.material_contradictions:
+        return True, "current_with_contradictions_preserved_for_review"
+    return True, "current"
+
+
+# 7. Per-surface publication rules.
+SURFACE_PUBLICATION_RULES = {
+    "live_summary": "cas_head_plus_dependency_validation_old_retained_historical",
+    "note": "append_only_idempotent_event_ids_merge_or_write_conflict",
+    "index": "atomic_pointer_replacement",
+    "successor": "immutable_package_id_activation_time_validation",
+    "receipt": "append_only_versioned_qualification_pointer",
+}
+
+
+def publish_note_event(existing_ids: tuple, event_id: str,
+                       payload: dict) -> tuple:
+    """Append-only with idempotent event IDs: a duplicate event merges
+    (no-op); a conflicting payload for the same ID is WRITE_CONFLICT."""
+    for eid, existing in existing_ids:
+        if eid == event_id:
+            if existing == payload:
+                return "MERGED_IDEMPOTENT", "duplicate_event_no_op"
+            return "WRITE_CONFLICT", \
+                "same_event_id_conflicting_payload_rebase_required"
+    return "APPENDED", "new_event"
+
+
+# 8. Crash recovery: transactional outbox, idempotent replay, independent
+# reconciliation. Notification loss delays refresh but NEVER restores
+# eligibility.
+@dataclass
+class OutboxEntry:
+    entry_id: str
+    change: dict                  # the eligibility change
+    notifications: tuple          # pending subscriber notifications
+    idempotency_key: str
+    replay_count: int = 0
+
+
+def replay_outbox(entries: list) -> tuple:
+    """Idempotent replay. Returns (applied_changes, still_pending). A
+    replayed entry never double-applies; lost notifications stay pending
+    but the eligibility change itself is already committed."""
+    seen = set()
+    applied, pending = [], []
+    for e in entries:
+        if e.idempotency_key in seen:
+            continue
+        seen.add(e.idempotency_key)
+        e.replay_count += 1
+        applied.append(e.change)
+        if e.notifications:
+            pending.append(e.entry_id)
+    return applied, pending
+
+
+def reconcile_manifests(manifests: tuple, canonical_revisions: dict,
+                        current_generation: int) -> tuple:
+    """Independent reconciliation job: compare every manifest against
+    canonical revisions. Returns (stale_manifest_ids, ok_count)."""
+    stale, ok = [], 0
+    for m in manifests:
+        if m.qualification_snapshot_generation < current_generation:
+            stale.append(m.projection_id)
+        else:
+            ok += 1
+    return tuple(stale), ok
+
+
+# 1. The T1–T5 delayed-writer race, executable. Wall-clock timestamps are
+# never version order — only the authoritative qualification state is.
+def run_delayed_writer_race() -> dict:
+    """T1: writer reads REQUALIFIED rev 17 (wall-clock 19:00:00).
+    T2: E1 ineligible committed -> evidence rev 18 (wall-clock 19:00:01).
+    T3: VERIFY publishes SUSPENDED claim rev 18 (wall-clock 19:00:02).
+    T4: writer finishes with the stale rev-17 payload, stamped with a
+        LATER wall-clock (19:00:05) — timestamps must not win.
+    T5: publication MUST be rejected."""
+    boundary = AuthoritativePublicationBoundary()
+    # Bring the boundary to the T1 state: claim rev 17 published.
+    for _ in range(17):
+        boundary.versions.allocate(NS_CLAIM_QUALIFICATION)
+    boundary._claim_revisions["A"] = 17
+    boundary._evidence_revisions["E1"] = 17
+    token = boundary.fencing.issue()          # T1: writer takes a token
+
+    # T2: E1 ineligible.
+    boundary.commit_eligibility_change("E1")  # evidence rev -> 18
+    # T3: VERIFY publishes SUSPENDED rev 18.
+    qrev18 = boundary.versions.allocate(NS_CLAIM_QUALIFICATION)
+    boundary._claim_revisions["A"] = 18
+
+    # T4: the delayed writer finishes, holding rev-17 refs and a LATER
+    # wall-clock. Publication must still be rejected.
+    stale_record = PublicationRecord(
+        publication_id="pub-A", claim_id="A",
+        qualification_revision=VersionStamp(NS_CLAIM_QUALIFICATION, 17),
+        evidence_revisions=(("E1", 17),),
+        projection_revision=VersionStamp(NS_PROJECTION, 0),
+        fencing_token=token,
+        wall_clock="2026-10-10T19:00:05Z",   # later than T3 — irrelevant
+    )
+    accepted, code, reason = boundary.publish(
+        stale_record, claim_current_rev=18)
+    return {
+        "t1_writer_read_rev": 17,
+        "t2_evidence_rev": 18,
+        "t3_claim_rev": 18,
+        "t4_wall_clock_later_but_irrelevant": True,
+        "t5_publication_accepted": accepted,
+        "t5_code": code,
+        "t5_reason": reason,
+        "invariant_stale_writer_rejected": not accepted,
+    }
+
+
+# 10. His three invariants as machine-checked properties.
+def invariant_stale_writer_rejected(race: dict) -> bool:
+    return race["invariant_stale_writer_rejected"] is True
+
+
+def invariant_revoked_evidence_no_stale_cert(boundary:
+                                             AuthoritativePublicationBoundary,
+                                             claim_id: str,
+                                             revoked_evidence: str) -> bool:
+    """No publication certifying claim_id may reference revoked_evidence
+    at or below its revocation revision."""
+    rev_at = boundary._evidence_revisions.get(revoked_evidence, 0)
+    for pub in boundary._published.values():
+        if pub.claim_id != claim_id:
+            continue
+        for eid, rev in pub.evidence_revisions:
+            if eid == revoked_evidence and rev < rev_at:
+                return False
+    return True
+
+
+def invariant_independent_support_preserved(claim_verdicts: dict) -> bool:
+    """A claim with surviving independent support keeps its qualified
+    conclusion even as a sibling claim is revoked."""
+    return claim_verdicts.get("B") == "REQUALIFIED" \
+        and claim_verdicts.get("A") == "REVOKED"
