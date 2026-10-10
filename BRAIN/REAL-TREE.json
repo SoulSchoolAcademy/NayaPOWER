@@ -1,29 +1,35 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-10-09",
-  "receipt_basis_commit": "86d3e339edf61cb35dde50692b171752cd950c16",
-  "inventory_file_count": 1231,
+  "generated_at": "2026-10-10",
+  "receipt_basis_commit": "fe25661c53977da3d78acd7242fafbaca1bd3ea8",
+  "inventory_file_count": 1269,
   "domain_counts": {
-    "00-ACTIVATION": 2,
+    "00-ACTIVATION": 3,
+    "00-ARCHITECTURE": 5,
     "00-SPEC": 15,
-    "01-GOVERNANCE": 28,
+    "01-GOVERNANCE": 49,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
-    "05-MEMORY": 674,
+    "05-MEMORY": 680,
     "06-PROOF": 13,
-    "07-LEARNING": 4,
+    "07-LEARNING": 8,
     "08-SUCCESSION": 2,
     "09-EVOLUTION": 2,
     "10-INTERFACES": 380,
     "11-KNOWLEDGE": 7,
     "12-ENGINEERING": 25,
     "90-OPERATIONS": 13,
-    "99-ARCHIVE": 1,
+    "99-ARCHIVE": 2,
     "ROOT": 5
   },
   "ledger_assertion": "Per-domain counts asserted against the 2026-09-30 brain-reconciliation ledger classification table. Any drift fails regeneration instead of silently rewriting the table.",
   "files": [
+    {
+      "path": "BRAIN/00-ACTIVATION/ACTIVATION-CHECKLIST.md",
+      "blob_sha": "1b990d7507f61098f203764363e698eec6f36f16",
+      "size": 10868
+    },
     {
       "path": "BRAIN/00-ACTIVATION/DESIGN-ACTIVATION.md",
       "blob_sha": "fed3bb338e0205ac2d31c4afac69b06641f243ca",
@@ -31,8 +37,33 @@
     },
     {
       "path": "BRAIN/00-ACTIVATION/activation-checklist.json",
-      "blob_sha": "af3a0fec47e9808cdbb1c7d175f81d48aeb73e7b",
-      "size": 3427
+      "blob_sha": "0f890374773478184236543638ff25de274e4881",
+      "size": 3734
+    },
+    {
+      "path": "BRAIN/00-ARCHITECTURE/ACTIVATION-NAYA-PLAN.md",
+      "blob_sha": "70774bbfa1e0240eceffbab56a6d8a071e22107a",
+      "size": 24076
+    },
+    {
+      "path": "BRAIN/00-ARCHITECTURE/ACTIVATION-NAYA-PROJECT.md",
+      "blob_sha": "d93e078f54a5d3671392632800a0be43cfc50ba5",
+      "size": 8039
+    },
+    {
+      "path": "BRAIN/00-ARCHITECTURE/MACHINE-INTELLIGENCE.json",
+      "blob_sha": "29a81ec0c99e81e12655321146851dbf975a148f",
+      "size": 85823
+    },
+    {
+      "path": "BRAIN/00-ARCHITECTURE/NORTH-STAR-RATIFICATION-2026-09-26.md",
+      "blob_sha": "e00e0d6614054fda707154b0a471cf130dcdabff",
+      "size": 3742
+    },
+    {
+      "path": "BRAIN/00-ARCHITECTURE/SYSTEM-BLUEPRINT-20261009.md",
+      "blob_sha": "07a492bbcb3d52c5ee26cdbaffa70354be1add16",
+      "size": 55326
     },
     {
       "path": "BRAIN/00-SPEC/0001-INTELLIGENT-GRAPH-AND-TREE-SPEC-V1.md",
@@ -190,6 +221,21 @@
       "size": 5880
     },
     {
+      "path": "BRAIN/01-GOVERNANCE/0007-LAW-OF-ONE-V1.ai.md",
+      "blob_sha": "7d0efaf7e3e79cbaeb38469d8882f2152830134c",
+      "size": 3385
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0007-LAW-OF-ONE-V1.human.md",
+      "blob_sha": "7188b5a90066f9e80be6b56193808720438353f5",
+      "size": 2145
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0007-law-of-one-v1.machine.json",
+      "blob_sha": "a0b338815cda6131441e09c9aa01f81aef0a7700",
+      "size": 2007
+    },
+    {
       "path": "BRAIN/01-GOVERNANCE/0013-PARALLEL-EXECUTION-V1.ai.md",
       "blob_sha": "bd192971f09c8b25cadef5abb9620a0e1cd6bbb9",
       "size": 3430
@@ -225,9 +271,99 @@
       "size": 4990
     },
     {
+      "path": "BRAIN/01-GOVERNANCE/0016-LAW-OF-ONE-V1.ai.md",
+      "blob_sha": "29a3b8f959b5c89c13cf04775296ff2f1db211e4",
+      "size": 2654
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0016-LAW-OF-ONE-V1.human.md",
+      "blob_sha": "11c3c9df27e0f7b39ad45d5ebd085d06190c753f",
+      "size": 1508
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0016-law-of-one-v1.machine.json",
+      "blob_sha": "e9e40316e0ae0c2489e08b8f648abc45af034a5c",
+      "size": 1303
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0017-CALCULATOR-AS-DEFAULT-V1.ai.md",
+      "blob_sha": "257e2163a3ad823800a2dff2d71d452106e4f058",
+      "size": 2603
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0017-CALCULATOR-AS-DEFAULT-V1.human.md",
+      "blob_sha": "30e0d35a7799859e81ddbb3e78f97344bf3ec42a",
+      "size": 1248
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0017-calculator-as-default-v1.machine.json",
+      "blob_sha": "7aa30ed57f4fe7c114f26195a07d8181f9fd202f",
+      "size": 917
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0018-PLAIN-WORDS-DECISION-FORMAT-V1.ai.md",
+      "blob_sha": "7fb6ff04999d629b1b88e9fe3f8842d52fb38eca",
+      "size": 2158
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0018-PLAIN-WORDS-DECISION-FORMAT-V1.human.md",
+      "blob_sha": "7757e99a4626251559494d4f9cc5f8f0abe43ab7",
+      "size": 1040
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0018-plain-words-decision-format-v1.machine.json",
+      "blob_sha": "99aa3a4e8a4e09937283759817c015e534898663",
+      "size": 909
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0019-REVERSIBILITY-RULE-V1.ai.md",
+      "blob_sha": "fca74da73be504b4d0bcd081f74aed063b22fc79",
+      "size": 2308
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0019-REVERSIBILITY-RULE-V1.human.md",
+      "blob_sha": "5dfdd1629e177d5be578cf5023d78f2b32005c71",
+      "size": 1015
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0019-reversibility-rule-v1.machine.json",
+      "blob_sha": "860ae3f8aa6be901041d34ec10db40e299e84ad7",
+      "size": 934
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0020-ENGINE-BEFORE-PRODUCTION-V1.ai.md",
+      "blob_sha": "dc767dbaee8ac9f4912c15e95bfdacc458ca91e5",
+      "size": 2079
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0020-ENGINE-BEFORE-PRODUCTION-V1.human.md",
+      "blob_sha": "3054324783e94f6dbdd711708eb22fa4268208dc",
+      "size": 995
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0020-engine-before-production-v1.machine.json",
+      "blob_sha": "abc384701525c59d00e565b192b5b30994885bb8",
+      "size": 947
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/DOC-COMPLETENESS-AUDIT-2026-10-10.md",
+      "blob_sha": "ea273ce3077d1e8be7001203d1c312d44c8e0d86",
+      "size": 2633
+    },
+    {
       "path": "BRAIN/01-GOVERNANCE/LEARNING-INTERNALIZATION-AUTOMATIC-BEHAVIOR-V1.md",
       "blob_sha": "c58ef4864a38dd1eaaf820886a7c7a22aa593240",
       "size": 10500
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/OPERATING-LAW.json",
+      "blob_sha": "eb1a6d85021251ee091e7759090a1ea0db2489e6",
+      "size": 28653
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/OPERATING-LAW.md",
+      "blob_sha": "17575d56498a793aba19eff9267538c30c183cb4",
+      "size": 29862
     },
     {
       "path": "BRAIN/01-GOVERNANCE/README.md",
@@ -563,6 +699,16 @@
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-04-NAYAPOWER-FLOW-PROOF-SPECIMEN.md",
       "blob_sha": "ea6a1d83a40b410b990b09d53b08e9668f188a13",
       "size": 6363
+    },
+    {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-09-LEARNING-EVENT.md",
+      "blob_sha": "c0ee80f3e3fb2dbe0673bb45de9b7c7c2b6d265d",
+      "size": 21517
+    },
+    {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-09-NAYAPOWER-DAILY-INTELLIGENCE.md",
+      "blob_sha": "fe954e32d2c79cf6a7db3cb3e3c0c0aed1c32733",
+      "size": 9817
     },
     {
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/09/27/IB-DIR-NAYAPOWER-20260927-001.md",
@@ -3840,6 +3986,26 @@
       "size": 6817
     },
     {
+      "path": "BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/ACTIVATION-NAYA-INTELLIGENCE.md",
+      "blob_sha": "8a02bda6be424d886a03da701ee9b5d124f93dac",
+      "size": 27455
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/MANIFEST.json",
+      "blob_sha": "0fc11ff78dc94e3ca8d05d1cdac346916d253673",
+      "size": 4099
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/PROJECT-INTELLIGENCE-SPEC.md",
+      "blob_sha": "c700b5612b24637848e8a81ec070166ca0fc4f8a",
+      "size": 19507
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/PROJECT-INTELLIGENCE-TEMPLATE.md",
+      "blob_sha": "935fff7c308cf308cda876dc9ddcbe8f356ab539",
+      "size": 11696
+    },
+    {
       "path": "BRAIN/05-MEMORY/VERIFICATION-PACKAGES/TIER1-2026-10-08/INDEX.md",
       "blob_sha": "7afad9abac251a891147d1adde1cf7e6516b11c5",
       "size": 1331
@@ -3990,6 +4156,11 @@
       "size": 2052
     },
     {
+      "path": "BRAIN/07-LEARNING/BACKLOG-TRIAGE-2026-10-09.md",
+      "blob_sha": "0ab171a524af7aa68936e66acffcb823368c8eac",
+      "size": 3540
+    },
+    {
       "path": "BRAIN/07-LEARNING/PROMOTION-RECEIPTS/SCHEMA-V1.md",
       "blob_sha": "a458a8436eca50dc82f192392ae1182cbe54df70",
       "size": 2253
@@ -4003,6 +4174,21 @@
       "path": "BRAIN/07-LEARNING/README.md",
       "blob_sha": "519227d792b54ea891b46abc6cf055f4d24ff0e3",
       "size": 798
+    },
+    {
+      "path": "BRAIN/07-LEARNING/VERIFICATION-QUEUE/README.md",
+      "blob_sha": "d314acd59aa80c953a2cc30b482b83806fa0b6d3",
+      "size": 742
+    },
+    {
+      "path": "BRAIN/07-LEARNING/VERIFICATION-QUEUE/queue.json",
+      "blob_sha": "fe51488c7066f6687ef680d6bfaa4f7768ef205c",
+      "size": 3
+    },
+    {
+      "path": "BRAIN/07-LEARNING/learning-system-blueprint-v1.md",
+      "blob_sha": "f88b24e86ea066b41a45ed0ec32565d94d31fec5",
+      "size": 45508
     },
     {
       "path": "BRAIN/08-SUCCESSION/0001-SUCCESSOR-CONTRACT-V1.md",
@@ -6153,6 +6339,11 @@
       "path": "BRAIN/99-ARCHIVE/README.md",
       "blob_sha": "a012a595ea151b523ec0c5682b1521d8902286ae",
       "size": 707
+    },
+    {
+      "path": "BRAIN/99-ARCHIVE/brain-reconciliation-ledger-f648833b.md",
+      "blob_sha": "168e14b9b430d2eb4a7d5e3d330eb1bae7fdabe5",
+      "size": 2096
     },
     {
       "path": "BRAIN/MASTER-MAP.md",

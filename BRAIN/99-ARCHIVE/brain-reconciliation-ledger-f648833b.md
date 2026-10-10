@@ -1,3 +1,13 @@
+> **ARCHIVED 2026-10-09** — Superseded. This 2026-09-30 classification baseline
+> (163 files, basis main `507d34213333a38708912d343537985e619938ac`) no longer
+> reflects the live BRAIN inventory (~1197 files). Preserved as a historical record
+> per the zero-deletions ethos. The live classification is maintained by
+> `tools/regenerate_brain_index.py` and verified by CI.
+>
+> Moved here from `.naya/project-intelligence/brain-reconciliation-ledger-f648833b.md`
+> during the 2026-10-09 doc reconciliation (PR #2052 + PR #2054 → one canonical set).
+
+---
 # NayaPOWER Brain Reconciliation Ledger — f648833b
 
 **Status:** ACTIVE BASELINE  
