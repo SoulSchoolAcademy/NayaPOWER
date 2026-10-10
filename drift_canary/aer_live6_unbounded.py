@@ -86,3 +86,44 @@ def u_star_fixture() -> HistoryVerdict:
     # (we haven't proven the model allows it, we just can't bound it)
     assert result == HistoryVerdict.NO_FINITE_UPPER_BOUND_ESTABLISHED
     return HistoryVerdict.UNRESOLVED
+
+
+def decide_missing_interval(
+    finite_opportunity_count_established: bool,
+    reachable_repeatable_cycle: bool,
+    cycle_has_eligible_unserved: bool,
+    cycle_has_mandatory_reset: bool,
+    cycle_can_reach_valid_exit: bool,
+) -> str:
+    """Shawn's canonical missing-interval decision procedure.
+
+    Encodes the flowchart: from "Missing interval" through the
+    finite-count check, the repeatable-cycle check, and the valid-exit
+    check, to one of three outcomes:
+    - "FINITE_STATE_BOUNDS": compute finite-state debt bounds
+    - "PEAK_INFINITY": peak upper bound is +infinity in qualified model
+    - "FINITE_MAX_DESPIBE_UNBOUNDED": compute finite maximum debt
+      despite unbounded interval length (after excluding nonproductive
+      cycles if present)
+    """
+    # Step 1: Finite maximum opportunity count established?
+    if finite_opportunity_count_established:
+        return "FINITE_STATE_BOUNDS"
+
+    # Step 2: Reachable repeatable cycle with eligible-unserved
+    # opportunities and NO mandatory reset?
+    productive_cycle = (
+        reachable_repeatable_cycle
+        and cycle_has_eligible_unserved
+        and not cycle_has_mandatory_reset
+    )
+    if not productive_cycle:
+        # No productive cycle → finite max despite unbounded length
+        return "FINITE_MAX_DESPITE_UNBOUNDED"
+
+    # Step 3: Cycle can reach a valid interval exit?
+    if cycle_can_reach_valid_exit:
+        return "PEAK_INFINITY"
+
+    # Nonproductive cycle: exclude it, then finite max
+    return "FINITE_MAX_DESPITE_UNBOUNDED"

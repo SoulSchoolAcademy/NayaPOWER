@@ -6,6 +6,7 @@ from aer_live6_unbounded import (
     HistoryVerdict,
     MissingInterval,
     assess_interval,
+    decide_missing_interval,
     u_star_fixture,
 )
 
@@ -36,3 +37,28 @@ def test_known_length_unbounded_is_in_model():
 def test_u_star_fixture_unresolved():
     """Decisive U*S: final 0, peak 1..inf, verdict unresolved."""
     assert u_star_fixture() == HistoryVerdict.UNRESOLVED
+
+
+def test_flowchart_finite_count():
+    """Flowchart: finite opportunity count → finite-state bounds."""
+    assert decide_missing_interval(True, False, False, False, False) == "FINITE_STATE_BOUNDS"
+
+
+def test_flowchart_productive_cycle_with_exit():
+    """Flowchart: productive cycle + valid exit → peak is +infinity."""
+    assert decide_missing_interval(False, True, True, False, True) == "PEAK_INFINITY"
+
+
+def test_flowchart_nonproductive_cycle_excluded():
+    """Flowchart: cycle without valid exit → exclude, finite max."""
+    assert decide_missing_interval(False, True, True, False, False) == "FINITE_MAX_DESPITE_UNBOUNDED"
+
+
+def test_flowchart_no_cycle():
+    """Flowchart: no repeatable cycle → finite max despite unbounded."""
+    assert decide_missing_interval(False, False, False, False, False) == "FINITE_MAX_DESPITE_UNBOUNDED"
+
+
+def test_flowchart_mandatory_reset_breaks_cycle():
+    """Flowchart: mandatory reset → not a productive cycle → finite max."""
+    assert decide_missing_interval(False, True, True, True, True) == "FINITE_MAX_DESPITE_UNBOUNDED"
