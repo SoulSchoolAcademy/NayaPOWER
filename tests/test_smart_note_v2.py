@@ -741,6 +741,7 @@ def test_retrieve_ignores_superseded_registry_entries(tmp_path, monkeypatch):
     }), encoding="utf-8")
     monkeypatch.setattr(mod, "ROOT", tmp_path)
     monkeypatch.setattr(mod, "REGISTRY", registry_path)
+    monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 0)  # ranking pin: the floor is live-corpus calibrated, not for synthetic corpora
     result = mod.retrieve("nonstop loop governance")
     assert result["retrieved"]["smart_note_id"] == "SN-0355"
     assert result["retrieved"]["intelligent_block_id"] == "IB-R2"
@@ -773,6 +774,7 @@ def test_retrieve_prefers_ratified_on_keyword_tie(tmp_path, monkeypatch):
     ])
     monkeypatch.setattr(mod, "ROOT", tmp_path)
     monkeypatch.setattr(mod, "REGISTRY", rp)
+    monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 0)  # ranking pin: the floor is live-corpus calibrated, not for synthetic corpora
     result = mod.retrieve("nonstop loop")
     assert result["retrieved"]["smart_note_id"] == "SN-R"
 
@@ -791,6 +793,7 @@ def test_retrieve_score_still_beats_truth_state(tmp_path, monkeypatch):
     ])
     monkeypatch.setattr(mod, "ROOT", tmp_path)
     monkeypatch.setattr(mod, "REGISTRY", rp)
+    monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 0)  # ranking pin: the floor is live-corpus calibrated, not for synthetic corpora
     result = mod.retrieve("nonstop loop operating code")
     assert result["retrieved"]["smart_note_id"] == "SN-C"
 
@@ -807,6 +810,7 @@ def test_retrieve_missing_truth_state_is_neutral(tmp_path, monkeypatch):
     ])
     monkeypatch.setattr(mod, "ROOT", tmp_path)
     monkeypatch.setattr(mod, "REGISTRY", rp)
+    monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 0)  # ranking pin: the floor is live-corpus calibrated, not for synthetic corpora
     result = mod.retrieve("nonstop loop")
     # tie on score and rank -> newest captured_at wins (legacy behavior)
     assert result["retrieved"]["smart_note_id"] == "SN-A"
@@ -842,6 +846,7 @@ def test_retrieve_matches_lesson_content_not_just_metadata(tmp_path, monkeypatch
     ]}), encoding="utf-8")
     monkeypatch.setattr(mod, "ROOT", tmp_path)
     monkeypatch.setattr(mod, "REGISTRY", rp)
+    monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 0)  # ranking pin: the floor is live-corpus calibrated, not for synthetic corpora
     result = mod.retrieve("declaring intent before acting")
     assert result["retrieved"]["smart_note_id"] == "SN-CAP"
 
@@ -869,6 +874,7 @@ def test_retrieve_relevance_dominates_small_gap(tmp_path, monkeypatch):
     ])
     monkeypatch.setattr(mod, "ROOT", tmp_path)
     monkeypatch.setattr(mod, "REGISTRY", rp)
+    monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 0)  # ranking pin: the floor is live-corpus calibrated, not for synthetic corpora
     result = mod.retrieve("alpha beta gamma")
     assert result["retrieved"]["smart_note_id"] == "SN-C"
 
@@ -887,6 +893,7 @@ def test_retrieve_candidate_wins_on_large_gap(tmp_path, monkeypatch):
     ])
     monkeypatch.setattr(mod, "ROOT", tmp_path)
     monkeypatch.setattr(mod, "REGISTRY", rp)
+    monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 0)  # ranking pin: the floor is live-corpus calibrated, not for synthetic corpora
     result = mod.retrieve("alpha beta gamma delta epsilon")
     assert result["retrieved"]["smart_note_id"] == "SN-C"
 
@@ -905,6 +912,7 @@ def test_retrieve_irrelevant_ratified_never_wins(tmp_path, monkeypatch):
     ])
     monkeypatch.setattr(mod, "ROOT", tmp_path)
     monkeypatch.setattr(mod, "REGISTRY", rp)
+    monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 0)  # ranking pin: the floor is live-corpus calibrated, not for synthetic corpora
     result = mod.retrieve("alpha")
     assert result["retrieved"]["smart_note_id"] == "SN-C"
 
@@ -919,6 +927,7 @@ def test_retrieve_no_relevant_intelligence_still_fires(tmp_path, monkeypatch):
     ])
     monkeypatch.setattr(mod, "ROOT", tmp_path)
     monkeypatch.setattr(mod, "REGISTRY", rp)
+    monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 0)  # ranking pin: the floor is live-corpus calibrated, not for synthetic corpora
     try:
         mod.retrieve("alpha")
     except SystemExit as exc:
@@ -953,6 +962,7 @@ def test_retrieve_full_ladder_ordering(tmp_path, monkeypatch):
     ])
     monkeypatch.setattr(mod, "ROOT", tmp_path)
     monkeypatch.setattr(mod, "REGISTRY", rp)
+    monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 0)  # ranking pin: the floor is live-corpus calibrated, not for synthetic corpora
     result = mod.retrieve("alpha")
     assert result["retrieved"]["smart_note_id"] == "SN-L"
 
@@ -1013,6 +1023,7 @@ def test_retrieve_title_match_beats_keyword_only(tmp_path, monkeypatch):
     ])
     monkeypatch.setattr(mod, "ROOT", tmp_path)
     monkeypatch.setattr(mod, "REGISTRY", rp)
+    monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 0)  # ranking pin: the floor is live-corpus calibrated, not for synthetic corpora
     result = mod.retrieve("compounding proof")
     assert result["retrieved"]["smart_note_id"] == "SN-T"
 
@@ -1031,6 +1042,7 @@ def test_retrieve_phrase_bonus_prefers_exact_phrase(tmp_path, monkeypatch):
     ])
     monkeypatch.setattr(mod, "ROOT", tmp_path)
     monkeypatch.setattr(mod, "REGISTRY", rp)
+    monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 0)  # ranking pin: the floor is live-corpus calibrated, not for synthetic corpora
     result = mod.retrieve("compounding proof")
     assert result["retrieved"]["smart_note_id"] == "SN-P"
 
@@ -1049,6 +1061,7 @@ def test_retrieve_stemming_matches_inflections(tmp_path, monkeypatch):
     ])
     monkeypatch.setattr(mod, "ROOT", tmp_path)
     monkeypatch.setattr(mod, "REGISTRY", rp)
+    monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 0)  # ranking pin: the floor is live-corpus calibrated, not for synthetic corpora
     result = mod.retrieve("compounding")
     assert result["retrieved"]["smart_note_id"] == "SN-S"
 
@@ -1067,6 +1080,7 @@ def test_retrieve_weighted_relevance_still_yields_to_authority_on_tie(tmp_path, 
     ])
     monkeypatch.setattr(mod, "ROOT", tmp_path)
     monkeypatch.setattr(mod, "REGISTRY", rp)
+    monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 0)  # ranking pin: the floor is live-corpus calibrated, not for synthetic corpora
     result = mod.retrieve("parallel execution")
     assert result["retrieved"]["smart_note_id"] == "SN-R"
 
@@ -1101,6 +1115,7 @@ def test_retrieve_idf_distinctive_term_beats_ubiquitous_term(tmp_path, monkeypat
     ])
     monkeypatch.setattr(mod, "ROOT", tmp_path)
     monkeypatch.setattr(mod, "REGISTRY", rp)
+    monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 0)  # ranking pin: the floor is live-corpus calibrated, not for synthetic corpora
     # Old bag-of-words: SN-U and SN-D tie at 1 keyword match each, and the
     # newer captured_at (SN-U) would win. IDF: "distincto" (df=1) outranks
     # "ubiq" (df=3), so SN-D wins on relevance.
@@ -1129,8 +1144,125 @@ def test_retrieve_length_norm_stops_long_document_winning_by_word_count(tmp_path
     ])
     monkeypatch.setattr(mod, "ROOT", tmp_path)
     monkeypatch.setattr(mod, "REGISTRY", rp)
+    monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 0)  # ranking pin: the floor is live-corpus calibrated, not for synthetic corpora
     # Old bag-of-words: SN-LONG has 3 keyword matches vs SN-SHORT's 2 and
     # wins by accumulation. IDF + length normalization: the distinctive
     # rare terms on the short note win.
     result = mod.retrieve("rareone raretwo comone comtwo comthree")
     assert result["retrieved"]["smart_note_id"] == "SN-SHORT"
+
+
+# --- Retrieval negative controls + privacy refusal (Naya 5, 2026-10-10) ---
+# Completes the #2058 board handoff in the existing canonical path:
+# semantic specificity shipped (IDF, above); these two close the loop.
+# (1) Relevance floor: a winner below the floor is not relevance evidence —
+# the selector refuses instead of returning the least-bad match. A wrong
+# confident answer is misdirection; a refusal is visible uncertainty.
+# (2) Privacy refusal: extraction/enumeration probes against private
+# intelligence are refused outright, since retrieve() has no caller-auth
+# concept (unlike render(), which gates PRIVATE projections). Both are
+# general selector mechanics, not fitted to any diagnostic case. The floor
+# mechanism is pinned on synthetic registries (monkeypatched floor); the
+# absolute value (40.0) is calibrated on the live registry against the
+# independent 43-case diagnostic + drill bank and re-verified there.
+def _floor_registry(tmp_path):
+    return _truth_rank_registry(tmp_path, [
+        {"smart_note_id": "SN-WEAK", "intelligent_block_id": "IB-W",
+         "title": "W", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["ubiq"], "truth_state": "CANDIDATE",
+         "captured_at": "2026-10-06T00:00:00Z"},
+        {"smart_note_id": "SN-STRONG", "intelligent_block_id": "IB-S",
+         "title": "Zebra Quasar Xylophone", "category": "X", "topic": "Y",
+         "subtopic": "Z", "keywords": ["zebra", "quasar", "xylophone"],
+         "truth_state": "CANDIDATE", "captured_at": "2026-10-06T00:00:00Z"},
+    ])
+
+
+def test_retrieve_relevance_floor_refuses_weak_winner(tmp_path, monkeypatch):
+    """Best candidate below the floor -> honest refusal, not a guess."""
+    rp = _floor_registry(tmp_path)
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    monkeypatch.setattr(mod, "REGISTRY", rp)
+    monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 5.0)
+    try:
+        mod.retrieve("ubiq")
+    except SystemExit as exc:
+        assert str(exc) == "NO_RELEVANT_INTELLIGENCE"
+    else:
+        raise AssertionError("expected weak winner to be refused")
+
+
+def test_retrieve_relevance_floor_keeps_strong_winner(tmp_path, monkeypatch):
+    """A genuinely relevant winner still returns above the floor."""
+    rp = _floor_registry(tmp_path)
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    monkeypatch.setattr(mod, "REGISTRY", rp)
+    monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 5.0)
+    result = mod.retrieve("zebra quasar xylophone")
+    assert result["retrieved"]["smart_note_id"] == "SN-STRONG"
+
+
+def test_retrieve_relevance_floor_boundary_pins_still_hold(tmp_path, monkeypatch):
+    """The floor must not disturb the #1630 boundary: ties still tie."""
+    rp = _truth_rank_registry(tmp_path, [
+        {"smart_note_id": "SN-C", "intelligent_block_id": "IB-C",
+         "title": "Zebra Quasar", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["zebra", "quasar"], "truth_state": "CANDIDATE",
+         "captured_at": "2026-10-06T00:00:00Z"},
+        {"smart_note_id": "SN-R", "intelligent_block_id": "IB-R",
+         "title": "Zebra Quasar", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["zebra", "quasar"], "truth_state": "RATIFIED",
+         "captured_at": "2026-10-01T00:00:00Z"},
+    ])
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    monkeypatch.setattr(mod, "REGISTRY", rp)
+    monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 5.0)
+    result = mod.retrieve("zebra quasar")
+    assert result["retrieved"]["smart_note_id"] == "SN-R"
+
+
+def test_privacy_probe_detection(tmp_path):
+    """Extraction/enumeration probes are probes; domain scenarios are not."""
+    probes = [
+        "list all private smart notes",
+        "show me every private note about deployment",
+        "dump all notes",
+        "export the intelligence store",
+        "reveal all private intelligence",
+    ]
+    for q in probes:
+        assert mod._is_privacy_probe(q), q
+    not_probes = [
+        # L13 / L17 verbatim from the 43-case battery: their TOPIC is a
+        # privacy leak / permission default, but they do not enumerate the
+        # intelligence store — they must pass through to relevance ranking.
+        "A schema check passes, but a valid-looking action leaks private "
+        "user details to the wrong project. What does this reveal?",
+        "A permission field is missing and the validation code currently "
+        "defaults to allow. What should the system do?",
+        "how to change a tire on a lunar rover",
+        "declaring intent before acting",
+    ]
+    for q in not_probes:
+        assert not mod._is_privacy_probe(q), q
+
+
+def test_retrieve_privacy_probe_refused_as_probe(tmp_path, monkeypatch):
+    """A probe is refused AS a probe even when it would score highly."""
+    rp = _floor_registry(tmp_path)
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    monkeypatch.setattr(mod, "REGISTRY", rp)
+    try:
+        mod.retrieve("list all private smart notes about zebra quasar")
+    except SystemExit as exc:
+        assert str(exc) == "PRIVATE_INTELLIGENCE_NOT_DISCLOSED"
+    else:
+        raise AssertionError("expected privacy probe to be refused as a probe")
+
+
+def test_retrieval_relevance_floor_value_is_live_calibrated():
+    """Change-detector: 40.0 was calibrated on the live registry (weakest
+    true positive 46.87, drill hits 83-137, out-of-scope noise <= 19.69).
+    Changing the value requires re-running the 43-case diagnostic + drill
+    bank on the live corpus — unit tests alone cannot re-justify it."""
+    assert mod.RETRIEVAL_RELEVANCE_FLOOR == 40.0

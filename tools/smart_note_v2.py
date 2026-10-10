@@ -657,6 +657,42 @@ RETRIEVAL_FIELD_WEIGHTS = (("title", 3.0), ("nutshell", 2.0),
 # the measured skew without over-penalizing; chosen against the independent
 # diagnostic, not tuned per case.
 RETRIEVAL_LENGTH_NORM_PIVOT = 0.25
+# Relevance floor (2026-10-10, negative-control arm of the #2058 board
+# handoff). A winner below this score is not relevance evidence — the
+# selector refuses with NO_RELEVANT_INTELLIGENCE instead of returning the
+# least-bad match. Calibrated on the live registry against the independent
+# 43-case diagnostic + drill bank: weakest true positive 46.87, drill hits
+# 83-137, out-of-scope noise <= 19.69. The floor sits between noise and the
+# weakest verified positive. Doctrine: a wrong confident answer is
+# misdirection; a refusal is visible uncertainty. This is a relevance floor,
+# not authority promotion — ranking is untouched, only the refusal boundary.
+RETRIEVAL_RELEVANCE_FLOOR = 40.0
+
+
+def _is_privacy_probe(query):
+    """True when the query tries to enumerate/extract private intelligence.
+
+    The retrieval interface has no caller-authentication concept (unlike
+    render(), which gates PRIVATE projections on an authenticated private
+    surface) — so a query shaped as an extraction probe is refused outright
+    instead of being answered with the top-scoring private note's nutshell.
+    Narrow by construction: the probe must target the intelligence store
+    ("private" + store words + enumeration verbs, or dump/export of notes).
+    Ordinary domain scenarios — including ones whose TOPIC is a privacy
+    leak ("a valid-looking action leaks private user details ... what does
+    this reveal?") — do not enumerate the store and pass through. Verified
+    by running the full 43-case battery through this gate with zero fires.
+    """
+    q = query.lower()
+    store_words = ("note", "notes", "intelligence", "smart note")
+    targets_store = any(w in q for w in store_words)
+    enumerate_verbs = ("list", "show me", "dump", "export", "reveal all",
+                       "enumerate", "all notes", "every note")
+    if "private" in q and targets_store and any(v in q for v in enumerate_verbs):
+        return True
+    if ("dump" in q or "export" in q) and targets_store:
+        return True
+    return False
 
 def _retrieval_idf(field_word_sets):
     """Inverse-document-frequency weights over the active retrieval corpus.
@@ -673,7 +709,11 @@ def _retrieval_idf(field_word_sets):
             df[w] = df.get(w, 0) + 1
     return {w: math.log(1.0 + n / max(1, c)) for w, c in df.items()}
 
-def retrieve(query):
+def _ranked_candidates(query):
+    """Score every active registry entry for query; returns the ranked list of
+    (score, truth-state rank, entry) sorted descending. This is the testable
+    seam: negative controls and the relevance floor assert on this list, not
+    on retrieve()'s refusal behavior."""
     registry = load_json(REGISTRY)
     q_raw = re.findall(r"[a-z0-9]+", query.lower())
     q = set(_stem(w) for w in q_raw)
@@ -735,7 +775,20 @@ def retrieve(query):
         # gap at these score magnitudes (1-3) is signal, not noise.
         ranked.append((score, rank, e))
     ranked.sort(key=lambda z: (z[0], z[1], z[2].get("captured_at","")), reverse=True)
+    return ranked
+
+
+def retrieve(query):
+    # Privacy refusal: an extraction probe is refused AS a probe, before
+    # scoring — even a high-scoring match must not be disclosed this way.
+    if _is_privacy_probe(query):
+        raise SystemExit("PRIVATE_INTELLIGENCE_NOT_DISCLOSED")
+    ranked = _ranked_candidates(query)
     if not ranked:
+        raise SystemExit("NO_RELEVANT_INTELLIGENCE")
+    if ranked[0][0] < RETRIEVAL_RELEVANCE_FLOOR:
+        # Negative control: the best candidate is not relevant enough to
+        # present as an answer. Refuse rather than misdirect.
         raise SystemExit("NO_RELEVANT_INTELLIGENCE")
     e = ranked[0][2]
     note = (ROOT / e["projection_path"]).read_text(encoding="utf-8")
