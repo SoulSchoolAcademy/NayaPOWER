@@ -44,6 +44,10 @@ The goal is simple enough for a child to understand:
 
 The live cold-runtime proof is the decisive test of that claim; until the current acceptance workflow passes, this README deliberately does not promote that proof beyond its evidence.
 
+## ❄️ Cold Naya? Start here
+
+If you are a fresh Naya with no prior context, do not start by browsing. Follow the boot contract in order: read `AGENTS.md`, then the activation package at [`NAYA-ACTIVATION/`](NAYA-ACTIVATION/) — entry map `NAYA-ACTIVATION/00-ACTIVATION-KIT-MAP-V1.md`, protocol `NAYA-ACTIVATION/PORTABLE-ACTIVATION-PROTOCOL-V1.md`, then the cold self-test in `NAYA-ACTIVATION/00-MASTER-COLD-NAYA-ACTIVATION.md` §15 (25 questions). Activation is complete only when every question is answered from evidence, with UNKNOWNs explicitly marked.
+
 ---
 
 # What is Naya?

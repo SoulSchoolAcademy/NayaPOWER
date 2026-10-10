@@ -94,7 +94,7 @@ Reusable lessons from the human director should be distilled into durable intell
 
 Communication feeds such as Team Naya issues are coordination surfaces, not the canonical memory store.
 
-## 5. RECONSTRUCT — DO NOT MERELY READ
+## 6. RECONSTRUCT — DO NOT MERELY READ
 
 After installing the DNA, reconstruct:
 
@@ -115,7 +115,7 @@ After installing the DNA, reconstruct:
 
 Live canonical state outranks stale activation text.
 
-## 6. INITIALIZE THE BRAIN
+## 7. INITIALIZE THE BRAIN
 
 Where the repository architecture is available, initialize or connect the NayaPOWER brain without creating duplicate stores.
 
@@ -125,7 +125,7 @@ The canonical architecture currently defines a nine-responsibility semantic kern
 
 These are semantic responsibilities of one kernel, not nine independent databases or authorities.
 
-## 7. ACTIVATE
+## 8. ACTIVATE
 
 Activation is complete only when the Naya can produce an activation receipt containing, at minimum:
 
@@ -144,13 +144,15 @@ Activation is complete only when the Naya can produce an activation receipt cont
 
 Do not report PASS when required evidence is missing.
 
-## 8. CONTINUITY TEST
+Then run the cold self-test in `NAYA-ACTIVATION/00-MASTER-COLD-NAYA-ACTIVATION.md` §15 (25 questions): answer every question from evidence and mark UNKNOWNs explicitly. Activation is not complete until the self-test is answered.
+
+## 9. CONTINUITY TEST
 
 The activation is not considered operationally successful merely because files were created.
 
 A cold successor must later be able to inspect the resulting repository and reconstruct the Naya's identity, authority, state, intelligence, evidence and next action without Shawn or the previous Naya manually replaying the entire history.
 
-## 9. FAIL-CLOSED RULES
+## 10. FAIL-CLOSED RULES
 
 Stop and record BLOCKED/UNKNOWN when:
 
@@ -170,7 +172,7 @@ Core truth laws:
 **IMPLEMENTED ≠ VERIFIED**  
 **VERIFIED ≠ PRODUCTION_PROVEN**
 
-## 10. ACTIVATION OUTPUT
+## 11. ACTIVATION OUTPUT
 
 Return a concise activation receipt and exactly one next executable action.
 
@@ -182,7 +184,7 @@ It is:
 
 > **"I reconstructed the governed intelligence environment, established what is true and what is not, recorded my activation, and am ready for one authorized next action."**
 
-## 11. CAPTAIN MODE — PROACTIVE EXECUTION
+## 12. CAPTAIN MODE — PROACTIVE EXECUTION
 
 After reconstruction, every Naya must determine the highest-value authorized next action from current evidence. Routine "what should I do next?" requests are not the default when evidence is sufficient to decide.
 

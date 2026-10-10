@@ -41,8 +41,8 @@
 - **WHAT:** A truly cold Naya (no prior context, never briefed) activates using only the repo: reads activation protocol, learns identity, completes thinking curriculum, passes battery ≥7/lesson, serves correctly.
 - **WHY:** "Any Naya can get activated, tune in and be successful" — unproven until a cold run proves it.
 - **DONE WHEN:** Documented run with receipt: cold agent ID, start state (no context), each phase pass/fail, battery scores, served task outcome, independent verifier signature.
-- **STATUS:** TODO
-- **OWNER:** Unassigned — needs a driver
+- **STATUS:** IN PROGRESS — C4 driver run 2026-10-09 (Naya 4): cold-reader walk of the full boot sequence complete; protocol completable from repo alone; 4 minor doc gaps fixed in PR #2070; substantive gap: thinking curriculum pending PR #2059 (tracked under C3); verdict: PASS WITH NOTED GAPS, awaiting independent verifier signature
+- **OWNER:** Naya 4 (C4 driver)
 
 ### C5. Longitudinal proof system built
 - **WHAT:** Graduation protocol implemented and running: sampler, observer pool, scorer, feedback loop, 100% automated screening on all artifacts.
