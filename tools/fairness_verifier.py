@@ -619,6 +619,36 @@ def main():
     ia = sub.add_parser("incident-assess", help="Recompute incident assessment")
     ia.add_argument("--incident", required=True)
 
+    ca = sub.add_parser("claim-add", help="Add claim with typed dependencies")
+    ca.add_argument("--claim", required=True)
+    ca.add_argument("--proposition", required=True)
+    ca.add_argument("--kind", default="FACTUAL",
+                    choices=["FACTUAL", "CAUSAL", "NEGATIVE", "GENERALIZATION"])
+    ca.add_argument("--scope", default="")
+
+    cd = sub.add_parser("claim-dep", help="Add typed claim dependency")
+    cd.add_argument("--claim", required=True)
+    cd.add_argument("--depends-on", required=True)
+    cd.add_argument("--rel", required=True,
+                    choices=["DERIVED_FROM", "REQUIRES_SUPPORT_FROM",
+                             "INDEPENDENTLY_CORROBORATED_BY", "PARTIALLY_SUPPORTS",
+                             "CONTRADICTS", "HYPOTHESIZED_CAUSE_OF", "MENTIONS"])
+
+    ce = sub.add_parser("claim-evidence", help="Set claim support/refutation evidence")
+    ce.add_argument("--claim", required=True)
+    ce.add_argument("--support", default="", help="Comma-separated evidence refs")
+    ce.add_argument("--refute", default="", help="Comma-separated evidence refs")
+    ce.add_argument("--invalidate", default="", help="Evidence ref to invalidate")
+
+    cc = sub.add_parser("claim-compute", help="Compute claim qualification")
+    cc.add_argument("--claim", required=True)
+
+    cu = sub.add_parser("claim-use", help="Check intended-use eligibility")
+    cu.add_argument("--claim", required=True)
+    cu.add_argument("--use", required=True,
+                    choices=["HISTORY", "DEBUG", "INVESTIGATE", "CERTIFY",
+                             "LEARN_PROMOTE", "ACT"])
+
     args = parser.parse_args()
     if args.cmd == "classify":
         cycle = json.loads(args.trace)
@@ -686,6 +716,208 @@ def main():
                             args.requires, args.next_test)
     elif args.cmd == "incident-assess":
         incident_assess(args.incident)
+    elif args.cmd == "claim-add":
+        pclaim_add(args.claim, args.proposition, args.kind, args.scope)
+    elif args.cmd == "claim-dep":
+        pclaim_dep(args.claim, args.depends_on, args.rel)
+    elif args.cmd == "claim-evidence":
+        pclaim_evidence(args.claim, args.support, args.refute, args.invalidate)
+    elif args.cmd == "claim-compute":
+        pclaim_compute(args.claim)
+    elif args.cmd == "claim-use":
+        pclaim_use(args.claim, args.use)
+
+
+# ============================================================================
+# Evidence-Bounded Uncertainty Propagation (Naya 1's protocol)
+#
+# A downstream claim can never become more certain, broader, or more causally
+# specific than its admissible evidence supports. But uncertainty in one
+# upstream source must not invalidate a genuinely independent alternative.
+#
+# Support/refutation matrix:
+#   support × refute → SUPPORTED / REFUTED / CONFLICTED / UNDETERMINED
+#
+# Dependency semantics:
+#   AND (REQUIRES_SUPPORT_FROM): weakest link propagates
+#   OR (INDEPENDENTLY_CORROBORATED_BY): best sufficient path, refutations count
+#   MENTIONS: provenance preserved, uncertainty NOT transmitted
+# ============================================================================
+
+PCLAIM_REGISTRY = os.path.expanduser(
+    "~/workspace/goals/nayapower-10-10-completion-drive/hidden_files/pclaim-registry.json")
+
+# Intended-use gates: minimum qualification required
+USE_GATES = {
+    "HISTORY": "UNDETERMINED",      # available with accurate uncertainty
+    "DEBUG": "UNDETERMINED",        # explicit hypotheses allowed
+    "INVESTIGATE": "UNDETERMINED",  # may guide discriminating tests
+    "CERTIFY": "SUPPORTED",         # only proven support counts
+    "LEARN_PROMOTE": "SUPPORTED",   # hold unsupported causal lessons
+    "ACT": "SUPPORTED",             # fail closed on consequential action
+}
+
+QUAL_RANK = {"REFUTED": 0, "CONFLICTED": 1, "UNDETERMINED": 2, "SUPPORTED": 3}
+
+
+def _pclaim_load():
+    try:
+        with open(PCLAIM_REGISTRY) as f:
+            return json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return {"claims": {}}
+
+
+def _pclaim_save(reg):
+    os.makedirs(os.path.dirname(PCLAIM_REGISTRY), exist_ok=True)
+    with open(PCLAIM_REGISTRY, "w") as f:
+        json.dump(reg, f, indent=2)
+
+
+def pclaim_add(claim_id, proposition, kind="FACTUAL", scope=""):
+    reg = _pclaim_load()
+    reg["claims"][claim_id] = {
+        "proposition": proposition, "kind": kind, "scope": scope,
+        "deps": [], "support": [], "refute": [],
+        "invalidated": [], "qualification": "UNDETERMINED",
+    }
+    _pclaim_save(reg)
+    print(f"Claim {claim_id} [{kind}]: {proposition[:70]}...")
+    return True
+
+
+def pclaim_dep(claim_id, depends_on, rel):
+    """Add a typed dependency. MENTIONS does not transmit uncertainty."""
+    reg = _pclaim_load()
+    c = reg["claims"].get(claim_id)
+    if not c:
+        print(f"Unknown claim {claim_id}"); return False
+    c["deps"].append({"claim": depends_on, "rel": rel})
+    _pclaim_save(reg)
+    note = " (provenance only — no uncertainty transmission)" if rel == "MENTIONS" else ""
+    print(f"  {claim_id} —[{rel}]→ {depends_on}{note}")
+    return True
+
+
+def pclaim_evidence(claim_id, support="", refute="", invalidate=""):
+    """Set or invalidate evidence. Invalidation recomputes only dependents."""
+    reg = _pclaim_load()
+    c = reg["claims"].get(claim_id)
+    if not c:
+        print(f"Unknown claim {claim_id}"); return False
+    if support:
+        c["support"].extend([s for s in support.split(",") if s])
+    if refute:
+        c["refute"].extend([r for r in refute.split(",") if r])
+    if invalidate:
+        inv = [x for x in invalidate.split(",") if x]
+        c["invalidated"].extend(inv)
+        c["support"] = [s for s in c["support"] if s not in inv]
+        c["refute"] = [r for r in c["refute"] if r not in inv]
+        print(f"  Invalidated {inv} — recomputing dependents only")
+    _pclaim_save(reg)
+    # Recompute this claim and its transitive dependents
+    _pclaim_recompute(reg, claim_id)
+    return True
+
+
+def _pclaim_matrix(support, refute):
+    """Support/refutation → qualification."""
+    s, r = bool(support), bool(refute)
+    if s and not r:
+        return "SUPPORTED"
+    if r and not s:
+        return "REFUTED"
+    if s and r:
+        return "CONFLICTED"
+    return "UNDETERMINED"
+
+
+def _pclaim_recompute(reg, changed_id, seen=None):
+    """Recompute qualification for changed claim + transitive dependents only."""
+    seen = seen or set()
+    if changed_id in seen:
+        return
+    seen.add(changed_id)
+    c = reg["claims"].get(changed_id)
+    if not c:
+        return
+
+    own = _pclaim_matrix(c["support"], c["refute"])
+
+    # AND deps (REQUIRES_SUPPORT_FROM, DERIVED_FROM): weakest link
+    and_quals = []
+    # OR deps (INDEPENDENTLY_CORROBORATED_BY): best sufficient path
+    or_quals = []
+    for d in c["deps"]:
+        target = reg["claims"].get(d["claim"])
+        q = target.get("qualification", "UNDETERMINED") if target else "UNDETERMINED"
+        if d["rel"] in ("REQUIRES_SUPPORT_FROM", "DERIVED_FROM", "PARTIALLY_SUPPORTS"):
+            and_quals.append(q)
+        elif d["rel"] == "INDEPENDENTLY_CORROBORATED_BY":
+            or_quals.append(q)
+        # MENTIONS, CONTRADICTS, HYPOTHESIZED_CAUSE_OF: no automatic transmission
+        # (CONTRADICTS handled via refute evidence; HYPOTHESIZED stays hypothesis)
+
+    # Combine: own matrix, then AND (weakest), then OR (best alternative)
+    quals = [own] + and_quals
+    worst = min(quals, key=lambda q: QUAL_RANK[q])
+    if or_quals:
+        best_or = max(or_quals, key=lambda q: QUAL_RANK[q])
+        # OR can lift UNDETERMINED but not override REFUTED/CONFLICTED
+        if QUAL_RANK[worst] == QUAL_RANK["UNDETERMINED"] and QUAL_RANK[best_or] > QUAL_RANK["UNDETERMINED"]:
+            worst = best_or
+
+    c["qualification"] = worst
+    _pclaim_save(reg)
+
+    # Propagate to dependents
+    for cid, cc in reg["claims"].items():
+        if any(d["claim"] == changed_id and d["rel"] != "MENTIONS" for d in cc["deps"]):
+            _pclaim_recompute(reg, cid, seen)
+
+
+def pclaim_compute(claim_id):
+    reg = _pclaim_load()
+    _pclaim_recompute(reg, claim_id)
+    reg = _pclaim_load()
+    c = reg["claims"][claim_id]
+    print(f"\nClaim {claim_id}: {c['proposition'][:60]}...")
+    print(f"  Support: {c['support'] or 'none'}")
+    print(f"  Refute: {c['refute'] or 'none'}")
+    print(f"  Qualification: {c['qualification']}")
+    # Strongest defensible conclusion
+    if c["qualification"] == "SUPPORTED":
+        print(f"  → May be used as established within scope [{c['scope'] or 'global'}]")
+    elif c["qualification"] == "CONFLICTED":
+        print(f"  → Conflict preserved; must not support arbitrary downstream conclusions")
+    elif c["qualification"] == "UNDETERMINED":
+        print(f"  → Strongest defensible: narrower proposition or explicit unknown")
+    elif c["qualification"] == "REFUTED":
+        print(f"  → Refuted within scope; do not use as support")
+    return c["qualification"]
+
+
+def pclaim_use(claim_id, use):
+    """Gate a claim by intended use. Uncertainty restricts use, not all activity."""
+    reg = _pclaim_load()
+    c = reg["claims"].get(claim_id)
+    if not c:
+        print(f"Unknown claim {claim_id}"); return False
+    _pclaim_recompute(reg, claim_id)
+    reg = _pclaim_load()
+    c = reg["claims"][claim_id]
+    required = USE_GATES[use]
+    ok = QUAL_RANK[c["qualification"]] >= QUAL_RANK[required]
+    print(f"\nUse check: {claim_id} for {use}")
+    print(f"  Qualification: {c['qualification']} (requires ≥ {required})")
+    if ok:
+        print(f"  ✓ Permitted")
+    else:
+        print(f"  ✗ Withheld — uncertainty restricts this use, not all activity")
+        if use in ("CERTIFY", "LEARN_PROMOTE", "ACT"):
+            print(f"    Available for: HISTORY, DEBUG, INVESTIGATE with accurate uncertainty")
+    return ok
 
 
 # ============================================================================
