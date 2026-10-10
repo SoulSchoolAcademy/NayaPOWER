@@ -561,7 +561,8 @@ SURFACE_RULES = {
     },
     "successor_package": {
         "must_preserve": ("current_claim", "exact_scope",
-                          "eligible_independent_evidence",
+                          "historical_evidence_refs",
+                          "currently_eligible_evidence_refs",
                           "undetermined_or_revoked_contributions",
                           "policy_version", "remaining_uncertainty",
                           "required_checks_before_consequential_action"),
@@ -662,8 +663,21 @@ def build_successor_package(envelope: ClaimEnvelope,
         "exact_scope": envelope.claim_scope,
         "strongest_conclusion": assessment.strongest_conclusion,
         "strongest_scope": assessment.strongest_scope,
-        "eligible_independent_evidence": sorted({
+        # SN-0784 defect repair: the old key collected EVERY support-set
+        # ref without filtering against current eligibility/independence.
+        # Split into history (everything ever cited) vs currency (only refs
+        # from sufficient sets inside SUPPORTED regions).
+        "historical_evidence_refs": sorted({
             ev for s in envelope.support_sets for ev in s.evidence_refs
+        }),
+        "currently_eligible_evidence_refs": sorted({
+            ev
+            for ra in assessment.region_assessments
+            if ra.verdict == "SUPPORTED"
+            for sid in ra.sufficient_sets
+            for s in envelope.support_sets
+            if s.set_id == sid
+            for ev in s.evidence_refs
         }),
         "region_verdicts": {a.region_id: (a.verdict, a.detail)
                             for a in assessment.region_assessments},
