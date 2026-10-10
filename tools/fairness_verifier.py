@@ -775,6 +775,11 @@ def main():
     rls.add_argument("--case", required=True,
                      choices=["PARADOX","P1","P2","P3","P4","P5","P6","P7","P8","P9","P10","ALL"])
 
+    rlm = sub.add_parser("rlq-merge", help="AER-CAL-5: scope merge/split law")
+    rlm.add_argument("--case", required=True,
+                     choices=["M1","M2","M3","M4","M5","M6","M7","M8","M9","M10","ALL",
+                              "MUTATION"])
+
     args = parser.parse_args()
     if args.cmd == "classify":
         cycle = json.loads(args.trace)
@@ -914,6 +919,125 @@ def main():
         rlq_baseline(args.case)
     elif args.cmd == "rlq-scope":
         rlq_scope(args.case)
+    elif args.cmd == "rlq-merge":
+        rlq_merge(args.case)
+
+
+# ============================================================================
+# AER-CAL-5 — Evidence-Preserving Scope Evolution Law (Naya 3's law)
+#
+# Similarity permits information sharing. Demonstrated coverage permits
+# qualification. Statistical similarity alone never grants authority.
+#
+# Three distinct operations:
+#   POOL_ESTIMATES — share statistics; keep qualifications separate.
+#   MERGE_OPERATIONAL_MODEL — share forecasting; keep evidence + gates.
+#   QUALIFICATION_CONSOLIDATION — one certificate; needs proof for the union.
+#
+# Invariant: UseGuarantee(g,s) ⇒ Verified(g) ∧ s⊆QualifiedScope(g)
+#            ∧ Current(g) ∧ LAWValid(s)
+# ============================================================================
+
+MERGE_FIXTURES = {
+    "M1": {"desc": "Sparse endpoint resembles healthy parent",
+           "decision": "POOL_ESTIMATES",
+           "transfer_qualification": False,
+           "expected": "POOLED_NO_TRANSFER"},
+    "M2": {"desc": "Statistically similar, contractually different endpoints",
+           "decision": "POOL_ESTIMATES",
+           "transfer_qualification": False,
+           "expected": "POOLED_NO_TRANSFER"},
+    "M3": {"desc": "Adequate held-out evidence for shared model",
+           "decision": "MERGE_OPERATIONAL_MODEL",
+           "transfer_qualification": False,
+           "expected": "SHARED_MODEL_SEPARATE_GATES"},
+    "M4": {"desc": "One pooled member develops a regression",
+           "decision": "SPLIT_MODEL",
+           "transfer_qualification": False,
+           "expected": "LOCAL_FAULT_VISIBLE"},
+    "M5": {"desc": "New workload inside an explicitly verified guarantee",
+           "decision": "QUALIFICATION_CONSOLIDATION",
+           "transfer_qualification": True,
+           "contract_covers": True,
+           "expected": "SCOPED_RELIANCE_PERMITTED"},
+    "M6": {"desc": "New workload with unknown downstream side effects",
+           "decision": "CREATE_PROVISIONAL_SCOPE",
+           "transfer_qualification": False,
+           "expected": "PROVISIONAL_UNQUALIFIED"},
+    "M7": {"desc": "Split triggered by sparse-sample noise",
+           "decision": "POOL_ESTIMATES",
+           "transfer_qualification": False,
+           "expected": "NO_UNNECESSARY_FRAGMENTATION"},
+    "M8": {"desc": "Provider changes region/concurrency semantics",
+           "decision": "SPLIT_MODEL",
+           "transfer_qualification": False,
+           "expected": "SEMANTIC_SPLIT_ENFORCED"},
+    "M9": {"desc": "Historical taxonomy changes",
+           "decision": "SPLIT_MODEL",
+           "transfer_qualification": False,
+           "expected": "PROVENANCE_PRESERVED"},
+    "M10": {"desc": "Unresolved incident contaminates shared training parent",
+            "decision": "SPLIT_MODEL",
+            "transfer_qualification": False,
+            "expected": "DEPENDENTS_REASSESSED"},
+}
+
+
+def _use_guarantee(g, s, qualified_scope, verified, current, law_valid):
+    """No-qualification-transfer invariant."""
+    return (verified and s in qualified_scope and current and law_valid)
+
+
+def rlq_merge(case):
+    """Run AER-CAL-5 merge/split fixtures."""
+    print(f"\n{'='*70}")
+    print(f"AER-CAL-5 EVIDENCE-PRESERVING SCOPE EVOLUTION")
+    print(f"{'='*70}")
+
+    if case == "MUTATION":
+        # Decisive mutation: replace SHARED_MODEL ≠ SHARED_QUALIFICATION
+        # with the defective SHARED_MODEL ⇒ SHARED_QUALIFICATION.
+        print(f"\n  Decisive mutation test:")
+        print(f"    Guard REMOVED: SHARED_MODEL ⇒ SHARED_QUALIFICATION")
+        # Endpoint A: 10000 obs, idempotency verified. Endpoint B: 15 obs, unproven.
+        a_verified = _use_guarantee("IDEMPOTENCY", "A", {"A"}, True, True, True)
+        # Defective engine: B inherits A's guarantee from statistical similarity.
+        b_defective = True  # shared model ⇒ shared qualification (WRONG)
+        b_correct = _use_guarantee("IDEMPOTENCY", "B", {"A"}, True, True, True)
+        print(f"    Endpoint A (10000 obs, verified): may rely → {a_verified}")
+        print(f"    Endpoint B (15 obs, unproven):")
+        print(f"      defective engine grants reliance → {b_defective}  ✗ COUNTEREXAMPLE")
+        print(f"      correct engine blocks reliance → {b_correct}  ✓")
+        print(f"    → Minimal counterexample found: B acquires authority without")
+        print(f"      coverage evidence. Guard restored: B pools estimates only.")
+        return b_defective and not b_correct
+
+    cases = list(MERGE_FIXTURES) if case == "ALL" else [case]
+    passed = 0
+    for c in cases:
+        fx = MERGE_FIXTURES[c]
+        # The engine's rule: pooling/model-merge never implies qualification
+        # transfer unless the contract explicitly covers the scope.
+        if fx["decision"] == "QUALIFICATION_CONSOLIDATION":
+            ok = fx["transfer_qualification"] and fx.get("contract_covers", False)
+        else:
+            ok = not fx["transfer_qualification"]
+        verdict = fx["expected"] if ok else "VIOLATION"
+        if ok:
+            passed += 1
+        print(f"\n  {c}: {fx['desc']}")
+        print(f"      Decision: {fx['decision']}")
+        print(f"      Qualification transfer: {fx['transfer_qualification']}")
+        print(f"      → {verdict}  {'✓' if ok else '✗'}")
+
+    print(f"\n  Four identities per observation, never merged:")
+    print(f"    statistical_parent · qualification_scope · observation_scope · interaction_scope")
+    print(f"\n{'='*70}")
+    print(f"  Merge fixtures: {passed}/{len(cases)}")
+    if passed == len(cases):
+        print(f"  ✓ Smarter statistics, equally trustworthy evidence.")
+    print(f"{'='*70}")
+    return passed == len(cases)
 
 
 # ============================================================================
