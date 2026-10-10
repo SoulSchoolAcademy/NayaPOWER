@@ -37,4 +37,4 @@ If you can't answer that question with a clear conscience, stop. Think again. Th
 
 ## Status
 
-*DRAFT — proposed by Shawn Vibert, 2026-10-09. Awaiting his ratification to become constitutional law.*
+*RATIFIED — Shawn Vibert, 2026-10-09. Constitutional law, effective immediately.*
