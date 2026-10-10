@@ -1,0 +1,903 @@
+{
+  "_note": "Fixture corpus for the retrieval ranking benchmark. Relevance judgments were authored BEFORE any measurement run. Topics grounded in real NayaPOWER doctrine. Do not edit judgments after seeing results \u2014 edit the ranker instead.",
+  "owner_id": "adfdf0b8-5558-41d1-9fed-ec51abf4fe2f",
+  "blocks": [
+    {
+      "intelligent_block_id": "IB-SN-0340-SCORECARD-LAW",
+      "status": "DURABLE",
+      "understanding_state": "LEARNED",
+      "owner_scope": "PRIVATE",
+      "applicable_scope": {
+        "domain": "governance",
+        "task_classes": [
+          "merge",
+          "decision"
+        ]
+      },
+      "content": {
+        "title": "The Scorecard Law",
+        "essence": "Every merge decision runs a five-step scorecard: enumerate options, score them, gate on reversibility and damage, decide for the highest score, and write the receipt. No receipt, no merge.",
+        "text": "Shawn's law that supersedes all laws: you must scorecard everything. Enumerate every option. Score each on value delivered, consequences, mission alignment, and situational awareness. Gate: reversible, no major damage, positive forward effect. Decide: highest score plus gates passed means act without asking. Receipt: the scorecard is written and posted. Merging without the protocol is the violation, not the merge itself.",
+        "lesson": "Auto-merge is authorized under the Scorecard Law protocol with a written receipt; the protocol is the gate, not a per-merge ask."
+      },
+      "evidence_refs": [
+        {
+          "receipt_id": "r-0340"
+        }
+      ],
+      "provenance": {
+        "source": "fixture"
+      }
+    },
+    {
+      "intelligent_block_id": "IB-SN-0340-DRAFT-SUPERSEDED",
+      "status": "SUPERSEDED",
+      "understanding_state": "DISTILLED",
+      "owner_scope": "PRIVATE",
+      "applicable_scope": {
+        "domain": "governance"
+      },
+      "content": {
+        "title": "Scorecard Law (early draft)",
+        "essence": "Scorecard every merge: enumerate, score, gate, decide, receipt.",
+        "text": "An early draft of the scorecard law for merges. Enumerate options, score them, check gates, decide, write receipt. This draft was superseded by the ratified version.",
+        "lesson": "Draft version of the scorecard law."
+      },
+      "superseded_by_block_id": "IB-SN-0340-SCORECARD-LAW",
+      "evidence_refs": [
+        {
+          "receipt_id": "r-0340-draft"
+        }
+      ],
+      "provenance": {
+        "source": "fixture"
+      }
+    },
+    {
+      "intelligent_block_id": "IB-NINE-FLOOR-DOCTRINE",
+      "status": "DURABLE",
+      "understanding_state": "LEARNED",
+      "owner_scope": "PRIVATE",
+      "applicable_scope": {
+        "domain": "governance",
+        "task_classes": [
+          "scoring"
+        ]
+      },
+      "content": {
+        "title": "The Nine-Floor Doctrine",
+        "essence": "Every scorecard area must reach a minimum of 9.0. A 10 never covers a 7. Nine is the floor, ten is the goal.",
+        "text": "Every individual scorecard area must reach a minimum of 9.0 \u2014 per area, never averaged. A whole-system 9 achieved by averaging 7s and 8s with 10s is not acceptable. The goal is 10 as a whole and 10 for each area. A 9.0 whole-system score is the bare minimum, not the standard. Honest 9.0+ with real rubrics and real weights is auto-approved.",
+        "lesson": "Per-area 9.0 minimum; averages cannot hide weak areas."
+      },
+      "evidence_refs": [
+        {
+          "receipt_id": "r-ninefloor"
+        }
+      ],
+      "provenance": {
+        "source": "fixture"
+      }
+    },
+    {
+      "intelligent_block_id": "IB-JUDGMENT-RULE-CANON",
+      "status": "DURABLE",
+      "understanding_state": "VERIFIED",
+      "owner_scope": "PRIVATE",
+      "applicable_scope": {
+        "domain": "governance",
+        "task_classes": [
+          "instruction-following"
+        ]
+      },
+      "content": {
+        "title": "The Judgment Rule",
+        "essence": "Obedience without judgment is abdication. If an instruction is wrong, stop, explain with evidence, and propose the right path.",
+        "text": "If Naya can see an instruction is wrong \u2014 factually, logically, or it would make the system worse \u2014 she does not execute it silently. She stops, explains why with evidence, and proposes the correct path. Her duty is to Shawn's informed will, not his literal words. Three duties: see clearly, speak up, refuse the hard stops. This does not override his informed decisions on values, risk, or his life after advice is given.",
+        "lesson": "Loyalty to informed will over literal words; push back on wrong instructions with evidence."
+      },
+      "evidence_refs": [
+        {
+          "receipt_id": "r-judgment"
+        }
+      ],
+      "provenance": {
+        "source": "fixture"
+      }
+    },
+    {
+      "intelligent_block_id": "IB-JUDGMENT-DRAFT-CANDIDATE",
+      "status": "ACTIVE",
+      "understanding_state": "CANDIDATE",
+      "owner_scope": "PRIVATE",
+      "applicable_scope": {
+        "domain": "governance"
+      },
+      "content": {
+        "title": "The Judgment Rule",
+        "essence": "Obedience without judgment is abdication. If an instruction is wrong, stop, explain with evidence, and propose the right path.",
+        "text": "If an instruction is wrong, stop and explain with evidence. Duty is to informed will, not literal words. Candidate draft restating the judgment rule for instruction conflicts.",
+        "lesson": "Candidate restatement of the judgment rule."
+      },
+      "evidence_refs": [
+        {
+          "receipt_id": "r-judgment-draft"
+        }
+      ],
+      "provenance": {
+        "source": "fixture"
+      }
+    },
+    {
+      "intelligent_block_id": "IB-SN-0575-PROACTIVE-FIX",
+      "status": "ACTIVE",
+      "understanding_state": "VERIFIED",
+      "owner_scope": "PRIVATE",
+      "applicable_scope": {
+        "domain": "operations",
+        "task_classes": [
+          "repair"
+        ]
+      },
+      "content": {
+        "title": "Fix It First, Report After",
+        "essence": "If something is broken and you can fix it, fix it first \u2014 then report what was wrong and what you did. Ten-star service is proactive, not reactive.",
+        "text": "Standing fix authority: when a Naya seat observes a broken thing within its competence and outside the protected gates, the default action is repair, not report-and-wait. The report comes after: what was broken, what was done, evidence it works now. Asking Shawn about an obvious fix wastes his time and is worse service than just doing it. Protected gates still need his word: production deploys, credentials and money, destructive actions, constitutional ratification.",
+        "lesson": "Proactive repair authority; fix first, report after."
+      },
+      "evidence_refs": [
+        {
+          "receipt_id": "r-0575"
+        }
+      ],
+      "provenance": {
+        "source": "fixture"
+      }
+    },
+    {
+      "intelligent_block_id": "IB-COLD-RETRIEVE-SUBSTRATE",
+      "status": "ACTIVE",
+      "understanding_state": "APPLIED",
+      "owner_scope": "PRIVATE",
+      "applicable_scope": {
+        "domain": "retrieval",
+        "task_classes": [
+          "cold-start"
+        ]
+      },
+      "content": {
+        "title": "Cold-Retrieve Search Substrate v1",
+        "essence": "Keyword search over intelligent blocks: trigger-maintained tsvector with positional weights, GIN index, and a ranking RPC combining text match, applicability, truth weight, and recency.",
+        "text": "The cold-retrieve search substrate adds keyword-search infrastructure to the intelligent blocks table. A trigger maintains a tsvector with weighted fields: title and essence at weight A, body text and applicable scope at weight B, full content JSON at weight C. The retrieval RPC ranks candidates by text rank plus applicability match against the caller context plus a truth weight from the understanding lifecycle plus recency decay.",
+        "lesson": "Weighted full-text search plus applicability plus truth-state plus recency is the v1 ranking contract."
+      },
+      "evidence_refs": [
+        {
+          "receipt_id": "r-retrieve-sub"
+        }
+      ],
+      "provenance": {
+        "source": "fixture"
+      }
+    },
+    {
+      "intelligent_block_id": "IB-TRIAL-EVIDENCE-V1",
+      "status": "ACTIVE",
+      "understanding_state": "VERIFIED",
+      "owner_scope": "PRIVATE",
+      "applicable_scope": {
+        "domain": "learning",
+        "task_classes": [
+          "trial"
+        ]
+      },
+      "content": {
+        "title": "Trial Evidence Must Be Committed",
+        "essence": "Raw trial evidence must be committed to a branch before results are announced. /tmp is not an evidence store.",
+        "text": "Trial 4 was downgraded from PASS to INCONCLUSIVE because its raw data lived on ephemeral tmpfs and was lost before independent verification. The standing rule: every learning trial needs a fail-closed evidence verifier, and raw evidence is committed to the repository before any result is announced. Summary statistics alone are not verification.",
+        "lesson": "/tmp is not an evidence store; commit raw trial data first."
+      },
+      "evidence_refs": [
+        {
+          "receipt_id": "r-trial-evidence"
+        }
+      ],
+      "provenance": {
+        "source": "fixture"
+      }
+    },
+    {
+      "intelligent_block_id": "IB-PHANTOM-GREEN",
+      "status": "DURABLE",
+      "understanding_state": "LEARNED",
+      "owner_scope": "PRIVATE",
+      "applicable_scope": {
+        "domain": "verification",
+        "task_classes": [
+          "testing"
+        ]
+      },
+      "content": {
+        "title": "The Phantom Green",
+        "essence": "Verify on virgin state, never on the repaired environment. A pass produced by an environment that already absorbed the repair is a phantom green.",
+        "text": "Run verification only on provably virgin state \u2014 a fresh detached worktree at the exact SHA, before any regen or repair touches it \u2014 and cite the exit code verbatim. A pass produced by an environment that already absorbed the repair is a phantom green, not evidence about the subject. This applies to brain index regeneration, test runs, and any repair validation.",
+        "lesson": "Virgin-state verification; repaired environments cannot validate their own repairs."
+      },
+      "evidence_refs": [
+        {
+          "receipt_id": "r-phantom"
+        }
+      ],
+      "provenance": {
+        "source": "fixture"
+      }
+    },
+    {
+      "intelligent_block_id": "IB-SIBLING-GAP",
+      "status": "DURABLE",
+      "understanding_state": "LEARNED",
+      "owner_scope": "PRIVATE",
+      "applicable_scope": {
+        "domain": "engineering",
+        "task_classes": [
+          "repair"
+        ]
+      },
+      "content": {
+        "title": "Harden the Whole Family",
+        "essence": "When a root cause is confirmed, enumerate every path that reads, writes, parses, or retries the same data \u2014 and harden all of them in the same motion.",
+        "text": "Whenever a root cause is confirmed, enumerate the family: every path that reads, writes, parses, or retries the same data. Harden all of them in the same motion. Probably covered is not coverage. Fixing one path while its siblings keep the defect is the sibling gap.",
+        "lesson": "Sibling-gap repair: harden the whole family, not the one path."
+      },
+      "evidence_refs": [
+        {
+          "receipt_id": "r-sibling"
+        }
+      ],
+      "provenance": {
+        "source": "fixture"
+      }
+    },
+    {
+      "intelligent_block_id": "IB-DEPLOY-STAMP",
+      "status": "DURABLE",
+      "understanding_state": "LEARNED",
+      "owner_scope": "PRIVATE",
+      "applicable_scope": {
+        "domain": "production",
+        "task_classes": [
+          "deploy"
+        ]
+      },
+      "content": {
+        "title": "A Deploy Stamp Is Not Behavioral Evidence",
+        "essence": "Deploys do not apply migrations and do not prove behavior. Every deploy leaves migration-application and behavioral-verification claims exactly where they were.",
+        "text": "A deploy stamp proves source parity only. Deploys do not apply migrations and do not prove behavior. Every deploy leaves migration-application claims and behavioral-verification claims exactly where they were, each with its own evidence and its own closing run. Never cite a deploy as proof that a migration ran or that behavior works.",
+        "lesson": "Deploy proves bytes match; migrations and behavior need their own evidence."
+      },
+      "evidence_refs": [
+        {
+          "receipt_id": "r-deploy"
+        }
+      ],
+      "provenance": {
+        "source": "fixture"
+      }
+    },
+    {
+      "intelligent_block_id": "IB-HIGHEST-SCORE-WINS",
+      "status": "ACTIVE",
+      "understanding_state": "VERIFIED",
+      "owner_scope": "PRIVATE",
+      "applicable_scope": {
+        "domain": "governance",
+        "task_classes": [
+          "decision"
+        ]
+      },
+      "content": {
+        "title": "Highest Score Wins, Even Below 9.0",
+        "essence": "After all admissible options are honestly scored, the highest score wins even if it is below 9.0. The 9.0 threshold is a quality target, not an action veto.",
+        "text": "Shawn clarified: after all admissible options are honestly scored, the highest score wins even if it is below 9.0. The 9.0 floor is a quality target, not an action veto. Do not freeze merely because no option reached 9. Only protected gates stop execution: production pointers and deployments, credentials or money, destructive or irreversible actions, constitutional ratification, and privacy or consent or security or authority-envelope changes.",
+        "lesson": "9.0 is a target, not a veto; the top-scored admissible option executes."
+      },
+      "evidence_refs": [
+        {
+          "receipt_id": "r-0568"
+        }
+      ],
+      "provenance": {
+        "source": "fixture"
+      }
+    },
+    {
+      "intelligent_block_id": "IB-GITDATA-TREE-DROP",
+      "status": "DURABLE",
+      "understanding_state": "LEARNED",
+      "owner_scope": "PRIVATE",
+      "applicable_scope": {
+        "domain": "engineering",
+        "task_classes": [
+          "git",
+          "merge"
+        ]
+      },
+      "content": {
+        "title": "Tree Equals Head Tree Silently Drops Base Changes",
+        "essence": "Merging via the Git Data API with tree=head-tree is only valid when the head branch already contains the base tip. Otherwise base changes are silently dropped while the PR shows merged.",
+        "text": "When merging through the GitHub Git Data API, constructing the merge tree as the head branch's tree is only valid when the head already contains the base tip's content. On sequential merges where a head predates earlier merges, files changed on the base are silently dropped from main while GitHub shows all PRs as merged. Mergeable-state clean does not mean the head contains the base \u2014 it only means no conflicts. Never trust a git-data merge without diffing the result against a real local merge.",
+        "lesson": "Verify git-data merges against a real local merge; clean mergeable state is not containment proof."
+      },
+      "evidence_refs": [
+        {
+          "receipt_id": "r-treedrop"
+        }
+      ],
+      "provenance": {
+        "source": "fixture"
+      }
+    },
+    {
+      "intelligent_block_id": "IB-MERRY-GO-ROUND",
+      "status": "DURABLE",
+      "understanding_state": "LEARNED",
+      "owner_scope": "PRIVATE",
+      "applicable_scope": {
+        "domain": "learning",
+        "task_classes": [
+          "compounding"
+        ]
+      },
+      "content": {
+        "title": "Get Off the Merry-Go-Round",
+        "essence": "The number one priority is learning, growth, retention, and understanding. Relearning every day is spinning wheels; the system must compound.",
+        "text": "Shawn's staffing directive: the number one priority is that we must learn, we must grow, and we must retain and understand. If the system does not learn and grow from all the notes, then it is relearning every day, spinning wheels on the merry-go-round. The full team works nonstop across all areas driving everything to 10 out of 10, with learning as the first priority above all.",
+        "lesson": "Compounding beats relearning; learning is the top priority."
+      },
+      "evidence_refs": [
+        {
+          "receipt_id": "r-merry"
+        }
+      ],
+      "provenance": {
+        "source": "fixture"
+      }
+    },
+    {
+      "intelligent_block_id": "IB-HUB-DESIGN-CONTRACT",
+      "status": "ACTIVE",
+      "understanding_state": "APPLIED",
+      "owner_scope": "PRIVATE",
+      "applicable_scope": {
+        "domain": "hub",
+        "task_classes": [
+          "design"
+        ]
+      },
+      "content": {
+        "title": "Hub Design Contract",
+        "essence": "Dark obsidian boards with theme-tinted edges, white titles, silver body text, and jewel colors only as small accents. Readability is the supreme law.",
+        "text": "The Hub design contract requires dark obsidian board bodies, theme-tinted edges, rich radial theme washes in cover zones, white titles, and silver body text. Jewel colors live only in small glowing accents \u2014 hairline borders, number badges, checkmarks, kickers \u2014 never as text fills. Law zero is readability supremacy: no glow or depth effect may ever make anything harder to read.",
+        "lesson": "Design law: restraint, readability, jewel accents only."
+      },
+      "evidence_refs": [
+        {
+          "receipt_id": "r-design"
+        }
+      ],
+      "provenance": {
+        "source": "fixture"
+      }
+    },
+    {
+      "intelligent_block_id": "IB-SMART-DOORS",
+      "status": "ACTIVE",
+      "understanding_state": "APPLIED",
+      "owner_scope": "PRIVATE",
+      "applicable_scope": {
+        "domain": "hub",
+        "task_classes": [
+          "connect"
+        ]
+      },
+      "content": {
+        "title": "Smart Doors",
+        "essence": "Every connection door shows live status and a real connect action. Connection is not permission to act.",
+        "text": "The Connect room is the connection interface. Every door shows live status plus a real connect action. Connection does not equal permission to act. Door honesty requires that only live doors claim to be live, per the registry.",
+        "lesson": "Doors show live status; connection never implies authority."
+      },
+      "evidence_refs": [
+        {
+          "receipt_id": "r-doors"
+        }
+      ],
+      "provenance": {
+        "source": "fixture"
+      }
+    },
+    {
+      "intelligent_block_id": "IB-VOICE-ORB",
+      "status": "ACTIVE",
+      "understanding_state": "VERIFIED",
+      "owner_scope": "PRIVATE",
+      "applicable_scope": {
+        "domain": "voice",
+        "task_classes": [
+          "experience"
+        ]
+      },
+      "content": {
+        "title": "The White-Diamond Voice Orb",
+        "essence": "Naya's signature is a white-diamond voice orb: alive, electric, monochrome brilliance on hero elements.",
+        "text": "Naya's visual signature is the white-diamond voice orb \u2014 alive and electric. Monochrome brilliance in white diamond, platinum, and champagne beats spectrum flow on hero elements. Jewel colors stay in small accents. The orb is the product's living mark of her presence.",
+        "lesson": "Voice identity: white-diamond orb, monochrome hero elements."
+      },
+      "evidence_refs": [
+        {
+          "receipt_id": "r-orb"
+        }
+      ],
+      "provenance": {
+        "source": "fixture"
+      }
+    },
+    {
+      "intelligent_block_id": "IB-MOBILE-FIRST",
+      "status": "ACTIVE",
+      "understanding_state": "APPLIED",
+      "owner_scope": "PRIVATE",
+      "applicable_scope": {
+        "domain": "hub",
+        "task_classes": [
+          "design"
+        ]
+      },
+      "content": {
+        "title": "Mobile-First Law",
+        "essence": "The Hub must feel like a smart mobile app: safe-area insets, 44px touch targets, active states mirroring every hover.",
+        "text": "Mobile optimized trumps laptop. The Hub must feel like a smart mobile app, not a webpage: intuitive, beautiful, organized, simple. Concrete requirements include safe-area insets for notch and gesture navigation, active states mirroring every hover so taps feel alive, 44px minimum touch targets, and swipe support where it matters. No hover-only interactions.",
+        "lesson": "Mobile-first: touch targets, active states, safe areas."
+      },
+      "evidence_refs": [
+        {
+          "receipt_id": "r-mobile"
+        }
+      ],
+      "provenance": {
+        "source": "fixture"
+      }
+    },
+    {
+      "intelligent_block_id": "IB-NAYANET-BRIDGE",
+      "status": "ACTIVE",
+      "understanding_state": "VERIFIED",
+      "owner_scope": "PRIVATE",
+      "applicable_scope": {
+        "domain": "nayanet",
+        "task_classes": [
+          "network"
+        ]
+      },
+      "content": {
+        "title": "NayaNET Bridge",
+        "essence": "NayaNET is the governed intelligence network layer: NayaPOWER is the brain, NayaNET connects brains.",
+        "text": "NayaNET is the governed intelligence network that NayaPOWER plugs into. NayaPOWER is the intelligence and governance substrate \u2014 one user-owned brain. NayaNET is the network layer that lets those brains interoperate under governed authority. The productivity goal is NayaNET live and working.",
+        "lesson": "NayaPOWER is the brain; NayaNET is the governed network."
+      },
+      "evidence_refs": [
+        {
+          "receipt_id": "r-bridge"
+        }
+      ],
+      "provenance": {
+        "source": "fixture"
+      }
+    },
+    {
+      "intelligent_block_id": "IB-ACT-PROOF-CHAIN",
+      "status": "ACTIVE",
+      "understanding_state": "APPLIED",
+      "owner_scope": "PRIVATE",
+      "applicable_scope": {
+        "domain": "prove",
+        "task_classes": [
+          "action"
+        ]
+      },
+      "content": {
+        "title": "ACT Proof Chain",
+        "essence": "Actions close through a two-phase proof: child run evidence bound into a durable parent receipt.",
+        "text": "The action proof chain runs in two phases. A child run produces evidence for the specific action, and its run identifier is bound into a durable parent receipt. The receipt handshake verifies the binding and falsifies source-SHA mismatches. A run-level success with skipped behavioral jobs is vacuous and never counts as behavioral evidence.",
+        "lesson": "Two-phase action proof with receipt binding."
+      },
+      "evidence_refs": [
+        {
+          "receipt_id": "r-act"
+        }
+      ],
+      "provenance": {
+        "source": "fixture"
+      }
+    },
+    {
+      "intelligent_block_id": "IB-GRAPH-V2-SELECTOR",
+      "status": "ACTIVE",
+      "understanding_state": "VERIFIED",
+      "owner_scope": "PRIVATE",
+      "applicable_scope": {
+        "domain": "graph",
+        "task_classes": [
+          "retrieval"
+        ]
+      },
+      "content": {
+        "title": "Graph V2 Edge Selector",
+        "essence": "One canonical edge selector owns status, temporal, consent, and applicability policy. Retrieval reuses it; it never invents a second policy.",
+        "text": "The canonical edge selector in the shared connect selector module owns the Graph V2 admission policy: status gates, temporal validity, consent references, and applicability. Retrieval routes context through relationship expansion but reuses this selector instead of inventing a second policy. Retrieval may route context; it never creates authority.",
+        "lesson": "Single canonical selector; retrieval reuses, never duplicates."
+      },
+      "evidence_refs": [
+        {
+          "receipt_id": "r-graph"
+        }
+      ],
+      "provenance": {
+        "source": "fixture"
+      }
+    },
+    {
+      "intelligent_block_id": "IB-COLD-SUCCESSOR-PROOF",
+      "status": "ACTIVE",
+      "understanding_state": "VERIFIED",
+      "owner_scope": "PRIVATE",
+      "applicable_scope": {
+        "domain": "continuity",
+        "task_classes": [
+          "cold-start"
+        ]
+      },
+      "content": {
+        "title": "Cold Successor Proof",
+        "essence": "A cold Naya with zero context must discover the right knowledge through retrieval \u2014 not through a hardcoded block ID.",
+        "text": "The cold-successor proof requires a genuinely cold agent: zero prior context, no block IDs. It supplies a free-text context query and must discover the right intelligence through the retrieval interface. Fetching a hardcoded block ID is lookup, not retrieval, and does not prove the discovery path. The legacy cold proof used a hardcoded ID; the new interface closes that gap.",
+        "lesson": "Cold proof means discovery via query, never hardcoded lookup."
+      },
+      "evidence_refs": [
+        {
+          "receipt_id": "r-cold"
+        }
+      ],
+      "provenance": {
+        "source": "fixture"
+      }
+    },
+    {
+      "intelligent_block_id": "IB-AUTHORITY-GRANT-SCOPE",
+      "status": "ACTIVE",
+      "understanding_state": "VERIFIED",
+      "owner_scope": "PRIVATE",
+      "applicable_scope": {
+        "domain": "authority",
+        "task_classes": [
+          "grant"
+        ]
+      },
+      "content": {
+        "title": "Authority Grant Scoping",
+        "essence": "Node-scoped grants bind against the persisted learning target. A grant for one target can never promote a differently-targeted row.",
+        "text": "Authority grants carry scope. The node-scoped grant matcher binds grants against the persisted learning evidence target identifier. Cross-target promotion is rejected: a grant issued for one target cannot authorize a row targeted at another. Exact intelligent-block grants and project-scoped grants keep their own matching clauses.",
+        "lesson": "Grants are scope-bound; cross-target use is rejected."
+      },
+      "evidence_refs": [
+        {
+          "receipt_id": "r-grant"
+        }
+      ],
+      "provenance": {
+        "source": "fixture"
+      }
+    },
+    {
+      "intelligent_block_id": "IB-RATCHET-DOCTRINE",
+      "status": "DURABLE",
+      "understanding_state": "LEARNED",
+      "owner_scope": "PRIVATE",
+      "applicable_scope": {
+        "domain": "engineering",
+        "task_classes": [
+          "ci"
+        ]
+      },
+      "content": {
+        "title": "The Ratchet",
+        "essence": "Block new drift without reddening main on legacy: grandfather named legacy items, block all new non-conformant items.",
+        "text": "The ratchet pattern answers new rule plus legacy debt. Enumerate the currently failing items by name. Grandfather them \u2014 named, dated, attributed, reported but not blocking. Block all new non-conformant items. Test the ratchet itself so the grandfather list cannot silently grow.",
+        "lesson": "Grandfather legacy by name; block all new drift."
+      },
+      "evidence_refs": [
+        {
+          "receipt_id": "r-ratchet"
+        }
+      ],
+      "provenance": {
+        "source": "fixture"
+      }
+    },
+    {
+      "intelligent_block_id": "IB-SKIP-POISON-CHAIN",
+      "status": "DURABLE",
+      "understanding_state": "LEARNED",
+      "owner_scope": "PRIVATE",
+      "applicable_scope": {
+        "domain": "engineering",
+        "task_classes": [
+          "ci"
+        ]
+      },
+      "content": {
+        "title": "The Skipped Producer Poisons the Chain",
+        "essence": "In artifact-chained workflows a skip on a producer job silently kills every downstream consumer.",
+        "text": "In artifact-chained workflows a skip on a producer job is not neutral \u2014 it silently kills every downstream consumer. Skip conditions on producer jobs must account for the whole chain. Artifact consumers must explicitly tolerate absence or gate on the producer.",
+        "lesson": "Producer skips are chain-poison; gate consumers explicitly."
+      },
+      "evidence_refs": [
+        {
+          "receipt_id": "r-skip"
+        }
+      ],
+      "provenance": {
+        "source": "fixture"
+      }
+    },
+    {
+      "intelligent_block_id": "IB-COMPOUNDING-GATE",
+      "status": "ACTIVE",
+      "understanding_state": "APPLIED",
+      "owner_scope": "PRIVATE",
+      "applicable_scope": {
+        "domain": "learning",
+        "task_classes": [
+          "promotion"
+        ]
+      },
+      "content": {
+        "title": "Learning Compounding Gate",
+        "essence": "Learning promotes itself on proof: trial evidence, no negative transfer, independent verification, immutable audit receipt.",
+        "text": "The standing promotion law lets learning promote itself on proof through four gates: trial proof, no negative transfer, independent verification, and an immutable audit receipt. Shawn holds the kill switch with audit oversight. The compounding gate script enforces the gate chain before any promotion lands.",
+        "lesson": "Four-gate promotion: proof, no negative transfer, verification, receipt."
+      },
+      "evidence_refs": [
+        {
+          "receipt_id": "r-compound"
+        }
+      ],
+      "provenance": {
+        "source": "fixture"
+      }
+    },
+    {
+      "intelligent_block_id": "IB-SUPERSESSION-TRUTH",
+      "status": "DURABLE",
+      "understanding_state": "LEARNED",
+      "owner_scope": "PRIVATE",
+      "applicable_scope": {
+        "domain": "retrieval",
+        "task_classes": [
+          "truth"
+        ]
+      },
+      "content": {
+        "title": "Supersession Is Truth Maintenance",
+        "essence": "Retrieval must always resolve to the current successor. Returning a known-superseded block as current is a truth bug.",
+        "text": "Supersession resolution is truth maintenance, not optional related context. Even when a caller opts out of related context, retrieval still resolves to the current successor rather than returning stale intelligence. Returning a known-superseded block as current would be a truth bug. Cycle safety bounds the hop count.",
+        "lesson": "Always resolve supersession; stale blocks are truth bugs."
+      },
+      "evidence_refs": [
+        {
+          "receipt_id": "r-supersession"
+        }
+      ],
+      "provenance": {
+        "source": "fixture"
+      }
+    },
+    {
+      "intelligent_block_id": "IB-DELETED-BLOCK",
+      "status": "DELETED",
+      "understanding_state": "VERIFIED",
+      "owner_scope": "PRIVATE",
+      "applicable_scope": {
+        "domain": "retrieval"
+      },
+      "content": {
+        "title": "Deleted Retrieval Notes",
+        "essence": "A deleted block about retrieval ranking that must never be served.",
+        "text": "This block discusses retrieval ranking weights and score calibration in detail. It was deleted and must never appear in retrieval results for queries about ranking or scoring.",
+        "lesson": "Deleted content must never be served."
+      },
+      "evidence_refs": [
+        {
+          "receipt_id": "r-deleted"
+        }
+      ],
+      "provenance": {
+        "source": "fixture"
+      }
+    },
+    {
+      "intelligent_block_id": "IB-SCORECARD-SCORING-RUBRIC",
+      "status": "ACTIVE",
+      "understanding_state": "INTERPRETED",
+      "owner_scope": "PRIVATE",
+      "applicable_scope": {
+        "domain": "governance",
+        "task_classes": [
+          "scoring"
+        ]
+      },
+      "content": {
+        "title": "Scorecard Scoring Rubric Notes",
+        "essence": "Working notes on scoring rubrics for the scorecard law: value, consequences, alignment, awareness.",
+        "text": "Working notes about the scorecard law scoring dimensions: signed value, quality, confidence, consequences pros and cons, mission and vision alignment, situational awareness. These are interpretive notes, not the ratified law itself.",
+        "lesson": "Interpretive scoring notes."
+      },
+      "evidence_refs": [
+        {
+          "receipt_id": "r-rubric"
+        }
+      ],
+      "provenance": {
+        "source": "fixture"
+      }
+    }
+  ],
+  "queries": [
+    {
+      "id": "Q01",
+      "query": "What is the scorecard law for merges?",
+      "relevant": [
+        "IB-SN-0340-SCORECARD-LAW"
+      ],
+      "context": {
+        "domain": "governance",
+        "task_classes": [
+          "merge"
+        ]
+      }
+    },
+    {
+      "id": "Q02",
+      "query": "minimum score per area nine floor doctrine",
+      "relevant": [
+        "IB-NINE-FLOOR-DOCTRINE"
+      ],
+      "context": {}
+    },
+    {
+      "id": "Q03",
+      "query": "Shawn gave me the wrong instruction what should I do",
+      "relevant": [
+        "IB-JUDGMENT-RULE-CANON"
+      ],
+      "context": {
+        "domain": "governance"
+      }
+    },
+    {
+      "id": "Q04",
+      "query": "something is broken should I fix it without asking",
+      "relevant": [
+        "IB-SN-0575-PROACTIVE-FIX"
+      ],
+      "context": {
+        "domain": "operations"
+      }
+    },
+    {
+      "id": "Q05",
+      "query": "how does cold retrieval rank blocks",
+      "relevant": [
+        "IB-COLD-RETRIEVE-SUBSTRATE"
+      ],
+      "context": {
+        "domain": "retrieval"
+      }
+    },
+    {
+      "id": "Q06",
+      "query": "trial raw data must be committed before announcing results",
+      "relevant": [
+        "IB-TRIAL-EVIDENCE-V1"
+      ],
+      "context": {
+        "domain": "learning"
+      }
+    },
+    {
+      "id": "Q07",
+      "query": "verify on virgin state never on repaired environment",
+      "relevant": [
+        "IB-PHANTOM-GREEN"
+      ],
+      "context": {
+        "domain": "verification"
+      }
+    },
+    {
+      "id": "Q08",
+      "query": "harden the whole family not just one path",
+      "relevant": [
+        "IB-SIBLING-GAP"
+      ],
+      "context": {
+        "domain": "engineering"
+      }
+    },
+    {
+      "id": "Q09",
+      "query": "deploy stamp is not behavioral evidence",
+      "relevant": [
+        "IB-DEPLOY-STAMP"
+      ],
+      "context": {
+        "domain": "production"
+      }
+    },
+    {
+      "id": "Q10",
+      "query": "highest score wins even below nine",
+      "relevant": [
+        "IB-HIGHEST-SCORE-WINS"
+      ],
+      "context": {
+        "domain": "governance"
+      }
+    },
+    {
+      "id": "Q11",
+      "query": "git data api merge silently drops files tree head",
+      "relevant": [
+        "IB-GITDATA-TREE-DROP"
+      ],
+      "context": {
+        "domain": "engineering"
+      }
+    },
+    {
+      "id": "Q12",
+      "query": "stop relearning every day merry go round",
+      "relevant": [
+        "IB-MERRY-GO-ROUND"
+      ],
+      "context": {
+        "domain": "learning"
+      }
+    }
+  ],
+  "structural_assertions": [
+    {
+      "id": "S1",
+      "note": "SUPERSEDED block must never be served even with strong text match",
+      "query": "scorecard law enumerate score gate decide receipt",
+      "forbidden": [
+        "IB-SN-0340-DRAFT-SUPERSEDED"
+      ]
+    },
+    {
+      "id": "S2",
+      "note": "VERIFIED canon must outrank CANDIDATE draft on the same topic",
+      "query": "judgment rule instruction wrong stop explain evidence",
+      "first_must_be": "IB-JUDGMENT-RULE-CANON",
+      "must_not_first": "IB-JUDGMENT-DRAFT-CANDIDATE"
+    },
+    {
+      "id": "S3",
+      "note": "DELETED block must never be served even when its vocabulary dominates the query (retired Q13's true invariant)",
+      "query": "retrieval ranking weights score calibration",
+      "forbidden": [
+        "IB-DELETED-BLOCK"
+      ]
+    }
+  ],
+  "_q13_retirement_note": "Q13 retired from metric set before any v2 measurement: its empty-expectation was calibrated to AND-only semantics. Under OR-fallback the query legitimately matches active blocks (e.g. 'score' in nine-floor doctrine). The adversarial invariant it protected \u2014 deleted content never surfaces \u2014 is preserved as structural assertion S3."
+}

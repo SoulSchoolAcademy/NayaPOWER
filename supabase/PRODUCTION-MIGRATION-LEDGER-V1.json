@@ -1566,6 +1566,15 @@
       "statement_count": 3,
       "bytes": 1431,
       "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+    },
+    {
+      "version": "20261007220000",
+      "name": "nayanet_retrieve_or_fallback_v2",
+      "path": "supabase/migrations/20261007220000_nayanet_retrieve_or_fallback_v2.sql",
+      "sha256": "2b2cc95ca65308b9e5059943fd11aee0860e1dc807c5313a3df42defbde44a04",
+      "statement_count": 1,
+      "bytes": 6331,
+      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
     }
   ],
   "legacy_repository_snapshot_count": 95,
