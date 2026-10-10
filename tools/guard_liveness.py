@@ -44,6 +44,11 @@ ROOT = Path(__file__).resolve().parents[1]
 
 RUNTIME_DIRS = ["supabase/functions", "kernel", "BRAIN/12-ENGINEERING"]
 
+# Single-file truth-guard target (W5 wiring, Naya 5 truth lane). tools/ as a
+# whole is NOT scanned: that would inflate the denominator with reason strings
+# from unrelated tooling.
+RUNTIME_FILES = ["tools/truth_state_guard.py"]
+
 # Refusal literals: reason strings a handler returns when it DENIES or BLOCKS.
 #
 # The refusal-context requirement is load-bearing. `reason:` alone matches success
@@ -62,6 +67,10 @@ REFUSAL_PATTERNS = [
     re.compile(r'\bblocked_by\s*=\s*"([A-Z][A-Z0-9_]{6,})"'),
     re.compile(r'throw new Error\(\s*"([A-Z][A-Z0-9_]{6,})"'),
     re.compile(r'\braise\s+Exception\(\s*\'([A-Z][A-Z0-9_]{6,})'),
+    # truth_state_guard.py refusal-by-return-value: _record(False, "LITERAL", ...)
+    re.compile(r'_record\(\s*False\s*,\s*"([A-Z][A-Z0-9_]{6,})"'),
+    # truth_state_guard.py check_receipt_authority: fail("LITERAL", ...)
+    re.compile(r'\bfail\(\s*"([A-Z][A-Z0-9_]{6,})"'),
 ]
 
 # Literals that name a SUCCESS. Excluded explicitly and reported, because a reviewer
@@ -93,13 +102,16 @@ EXECUTED_PROOF_PATTERNS = [
 
 def collect_refusals() -> list[dict]:
     found: dict[str, dict] = {}
-    for rel_dir in RUNTIME_DIRS:
-        base = ROOT / rel_dir
-        if not base.exists():
+    scan_targets = [ROOT / d for d in RUNTIME_DIRS] + [ROOT / f for f in RUNTIME_FILES]
+    for base in scan_targets:
+        if base.is_dir():
+            files = [p for p in sorted(base.rglob("*"))
+                     if p.suffix in {".ts", ".py"} and p.is_file()]
+        elif base.is_file() and base.suffix in {".ts", ".py"}:
+            files = [base]
+        else:
             continue
-        for path in sorted(base.rglob("*")):
-            if path.suffix not in {".ts", ".py"} or not path.is_file():
-                continue
+        for path in files:
             text = path.read_text(encoding="utf-8", errors="replace")
             for pattern in REFUSAL_PATTERNS:
                 for match in pattern.finditer(text):
