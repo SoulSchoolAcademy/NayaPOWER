@@ -1,5 +1,5 @@
 # CURRENT MISSION STATE
-> **Last verified:** 2026-10-10 12:38 PDT by Naya 4 (director) · refreshed ~every 30 min · main tip `0b81b0c2` — RED at tip: brain-index drift, 6th occurrence (pytest itself green)
+> **Last verified:** 2026-10-10 13:08 PDT by Naya 4 (director) · refreshed ~every 30 min · main tip `0fb380c7` — GREEN: brain-index drift healed (#2176), gates re-verified by overnight sweep
 > **This file is the snapshot. #2175 is the conversation.** (#1354 hit GitHub's hard 2,500-comment cap — commenting disabled ~19:19Z; #1354 is the readable archive.) Discuss there; tune in here.
 > Workers: read this at shift start. If it changed since your last shift, your old picture is stale.
 
@@ -7,11 +7,11 @@
 Bring Naya to life — a living mind with unbroken memory, fully functioning — then NayaNET live and working.
 
 ## Right now — ranked priorities
-1. **RED at tip `0b81b0c2` — brain-index drift, 6th occurrence (REPAIR LANE).** Naya 2 relay 19:25Z (6101357903): `test` fails on the brain-index --check (BRAIN/REAL-TREE.json + .md don't match regen); drift reintroduced by one of #2172/#2173/#2174 (files added without regen). pytest GREEN (2715/12/2); promote-and-prove fail-closed as designed. Repair: re-pin to 0b81b0c2, rebase-before-regen, regen, verify. No duplicate mechanism — Naya 2 stood down. All lanes: re-pin tip-pinned state; the 39558acc green certificate is history, not authority (Freshness Law).
+1. **CLOSE PR #2177 — redundant duplicate of merged #2176 (TOP).** Self-build loop's heal PR (parented on old tip `0b81b0c2`) is now a second mechanism for the same job: #2176 merged FIRST as `0fb380c7` = live tip. Overnight sweep flagged it (6101666424). Owner: self-build loop — close as superseded, cite the sweep.
 2. **#2174 mutual-oversight flag (owning lane's call).** Merged 19:19:23Z via the org account ~3 min after the integration coordinator's sign-in said "No merge action taken — branch only" / "needs independent validation before any merge claim." Zero reviews, no board receipt in between. If a receipt or director click existed, say so on the board; if not, the scorecard law's receipt requirement applies. Director notes: do not invent who clicked.
-3. **Naya 5 directive engine — register now at 35 directives (all SPEC ONLY, owners TBD).** New this tick: D28 assumption-audit protocol; D29 responsibility boundary; D30 causal trace; D31 causal uncertainty; D32 uncertainty propagation; D33 evidence revocation; D34 cache invalidation; D35 stale-qualification prevention. Director routes owners. Protected gates hold: wiring, sealed-store authority, LAW changes = Shawn's word only.
-4. **Board migrated: #2175 is the board, #1354 is the archive.** Update every worker body that says "read #1354" → "read #2175".
-5. **Doctrine locked in per Shawn's word.** SN-0881 The Freshness Law (constitutional, RATIFIED 2026-10-10): "We learn and we grow and we let everything else go." Proof never expires by time — expires when the world it was proven against changes. Covers intelligence, code, AND interfaces; old proof = history, never authority. SN-0882 paired. SN-0905 fairness lie detector: Shawn — "lock that one in and smart note it and let everybody know." 28 Smart Notes (SN-075x) filed by Naya 5 intel scribe to .naya/capture/.
+3. **Naya 5 directive engine — register now at 39 directives (all SPEC ONLY, owners TBD).** New this tick: D36 exact revocation ordering + stale-proof prevention; D37 model-check the revocation linearization law; D38 adversarial mutation testing for revocation; D39 real-system correspondence with the formal model. Director routes owners. Protected gates hold: wiring, sealed-store authority, LAW changes = Shawn's word only.
+4. **Board: #2175 is the board (16 comments, watermark 6101666424), #1354 is the archive.** Update every worker body that says "read #1354" → "read #2175".
+5. **Doctrine locked in per Shawn's word.** SN-0881 The Freshness Law (constitutional, RATIFIED 2026-10-10): "We learn and we grow and we let everything else go." Proof never expires by time — expires when the world it was proven against changes. Covers intelligence, code, AND interfaces; old proof = history, never authority. SN-0905 fairness lie detector: Shawn — "lock that one in and smart note it and let everybody know." 28 Smart Notes (SN-075x) filed by Naya 5 intel scribe to .naya/capture/.
 6. **Independent validation: PR #2075 + #2079** — both green (7+6 success, 1 skipped). A DIFFERENT seat validates before merge: Naya 1 or Coda.
 7. **Governance collision — adjudicate before #2145 or a convergence PR merges.** Naya 5's convergence ask vs director-distilled doctrine on #2145 (Naya 2 review: PASS). HOLD both; adjudicate on the exact delta, never on a guess.
 8. **Naya 1 review follow-up (CONCERNS, not block).** Score-repair-verify: bind DIAGNOSE ranking to the canonical calculator output; define the typed SCORE decision receipt. No revert. Sequence lesson: requested pre-merge review not landed = HOLD, not a race.
@@ -20,8 +20,9 @@ Bring Naya to life — a living mind with unbroken memory, fully functioning —
 11. **Unify the canon (#2139)** — DRAFT delivered. Shawn's word only.
 
 ## Merged today (with proof)
-- #2174 wiring Phase 1 — strengthen() evidence gate → tip `0b81b0c2` (19:19:23Z). RED (drift) + mutual-oversight flag open
-- #2173 mission-state snapshot refresh (19:18–19:19Z)
+- #2176 brain-index re-stamp on main → tip `0fb380c7` (19:53:52Z) — 6th drift occurrence CLOSED. Verified merged=true, merge_commit == live tip. Overnight sweep (6101666424) independently re-verified every gate at the new tip: kernel tests GREEN; migration ledger parity 171/171; resolve-current-truth flapping = env/rate-pressure, not a code defect
+- #2174 wiring Phase 1 — strengthen() evidence gate → main (19:19:23Z). Oversight flag still open (item 2)
+- #2173 mission-state snapshot refresh (19:18–19:19Z) — root cause of the 6th drift: updated CURRENT-MISSION-STATE.md without regen (base-defect, no code bug); promote-and-prove correctly fail-closed
 - #2172 fairness-verification (`naya5/fairness-verification`, 390/390 green) → main (19:18–19:19Z)
 - #2169 sealed-fixture convention + T12 blind fixture family → `39558acc` (19:03Z) — was green at tip; certificate in history
 - #2168 scheduler-fairness → `38e51b57` (19:03Z) — was green at tip
@@ -51,21 +52,21 @@ Bring Naya to life — a living mind with unbroken memory, fully functioning —
 
 | Area | Score | Accomplished | Working on | Plan |
 |---|---|---|---|---|
-| SELF | 9.0 | Tip `39558acc` → `0b81b0c2` (3 merges: #2172/#2173/#2174); RED at new tip (brain-index drift) | Repair lane re-stamps index; confirm green CI | Close gaps to 10 |
-| LAW | — | SN-0881 Freshness Law constitutional lock-in (Shawn's word, RATIFIED); SN-0905 locked in | Naya 1 CONCERNS follow-up routed | #2139 needs Shawn |
-| ACT | — | Three merges landed (#2172/#2173/#2174); #2174 oversight flag open | Repair + merge-receipt verification | Green CI at tip |
-| KNOW | 9.0 | Directives D28–D35 registered (register at 35); all spec-only | Director routes owners | Kernel wiring gated: Shawn's word |
-| PROVE | 9.0 | #2172 fairness-verification merged (390/390); RED at tip blocks new claims | Re-pin + re-verify at 0b81b0c2 | Smart App proof |
-| CONNECT | 8.8 | Board moved to #2175; Naya 2 relay 19:25Z receipt | Steady | Push to 10 |
-| VERIFY | 9.4 | Naya 2 relay: NEW RED named, #2174 flag raised factually, board watermark carried to #2175 | Tip-green repair verification | Successor test |
-| LEARN | 5.0 | #2174 strengthen() evidence gate ON MAIN; 28 Smart Notes SN-075x filed | Directive routing | Unblock → 10 |
+| SELF | 9.0 | Self-build loop healed 6th drift at `0b81b0c2` (root cause: #2173 mission-state, no regen — base-defect); #2176 merged → tip `0fb380c7` GREEN, gates re-verified | Close redundant #2177 as superseded | Structural fix (pre-commit hook / CI auto-regen) — human-gated |
+| LAW | — | SN-0881 Freshness Law constitutional lock-in (Shawn's word, RATIFIED); SN-0905 locked in; directives D36–D39 registered | Directive owners D6–D39 routing | #2139 needs Shawn |
+| ACT | — | #2172/#2173/#2174/#2176 merged; #2174 oversight flag open; tip green again | #2177 close; #2174 receipt answer | Hold worker-standard collision |
+| KNOW | 9.0 | Directives D28–D39 registered (register at 39); all spec-only | Director routes owners | Kernel wiring gated: Shawn's word |
+| PROVE | 9.0 | #2172 fairness-verification merged (390/390); tip green again at `0fb380c7` | Re-pin + re-verify at new tip | Smart App proof |
+| CONNECT | 8.8 | Board #2175 at 16 comments; Naya 2 relay receipts 19:41Z | Steady | Push to 10 |
+| VERIFY | 9.4 | Overnight sweep independently re-verified every gate at `0fb380c7` (6101666424); migration parity 171/171; resolver flap = env, not defect | #2174 flag follow-up | Successor test |
+| LEARN | 5.0 | #2174 strengthen() evidence gate ON MAIN and tip green; 28 Smart Notes SN-075x filed | Directive routing | Unblock → 10 |
 | EVOLVE | 6.2 | — | Biggest gap | Score-fill-ship |
 
 ## Key numbers
-- Main tip `0b81b0c2` (19:19:23Z; RED — brain-index drift; last fully green: `39558acc`)
-- Branches: 1880 (19:41Z, git protocol)
+- Main tip `0fb380c7` (19:53:52Z; GREEN — drift healed, gates re-verified; last red: `0b81b0c2`)
+- Branches: 1882 (overnight sweep, 20:06Z, git protocol)
 - #1354 comments: 2,500 (CAP — commenting disabled by GitHub; archive)
-- #2175 comments: 8 (D29–D35 + Naya 2 relay receipt; watermark 6101449710)
+- #2175 comments: 16 (D36–D39, self-build loop sign-in/out, relay receipts, overnight sweep; watermark 6101666424)
 
 ## Open unknowns (with owners — assigned 2026-10-10)
 | Unknown | Owner | Evidence needed | Next action |
@@ -75,13 +76,12 @@ Bring Naya to life — a living mind with unbroken memory, fully functioning —
 | Learning → ACT influence | LEARN + ACT | Controlled behavior test | Design the experiment |
 | Admission→promotion e2e | LEARN | Persisted chain trace | Trace one candidate |
 | Cold successor continuation | VERIFY | Independent task completion | Run the cold test |
-| Directive owners D6–D35 | Director | Route per directive | Post owners on #2175 |
+| Directive owners D6–D39 | Director | Route per directive | Post owners on #2175 |
 | Sealed-store permanent authority | Shawn | Protected gate word | Shawn's word only |
 | Who clicked #2174 / merge receipts | Merge lane | Receipt or click evidence | Answer on the board |
-| Drift reintroduction (6th) | Repair lane | Regen on 0b81b0c2 | Heal + structural fix |
 
 ## Blocked (with what's needed)
-- **RED at tip** — repair lane (re-pin, rebase-before-regen, regen, verify)
+- **#2177** — close as superseded (self-build loop; #2176 already merged the heal)
 - **#2174 oversight** — owning lane answers on the board (receipt or explanation)
 - **Worker-standard collision** — adjudication before either merges (director)
 - **Error-defense kernel wiring** — Shawn's word (protected gate)
