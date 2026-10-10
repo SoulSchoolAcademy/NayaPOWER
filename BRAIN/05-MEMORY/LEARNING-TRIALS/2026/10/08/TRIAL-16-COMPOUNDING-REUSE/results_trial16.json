@@ -1,0 +1,280 @@
+{
+  "trial": "T16-20261008-compounding-reuse",
+  "n_treat": 10,
+  "n_ctrl": 10,
+  "treat_valid": 8,
+  "ctrl_valid": 7,
+  "treat_valid_rate": 0.8,
+  "ctrl_valid_rate": 0.7,
+  "fisher_two_sided_p": 1.0,
+  "cohens_h": 0.232,
+  "bayes_P_treat_gt_ctrl": 0.6814,
+  "treat_completeness_mean": 3.0,
+  "ctrl_completeness_mean": 3.0,
+  "ceiling_invalid": true,
+  "negative_transfer": false,
+  "tier_s": false,
+  "verdict": "INVALID_BY_CEILING",
+  "rows": [
+    {
+      "design": "DESIGN-01",
+      "subject": "T16-A08",
+      "arm": "ctrl",
+      "R": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "C": 3,
+      "valid": true
+    },
+    {
+      "design": "DESIGN-02",
+      "subject": "T16-A02",
+      "arm": "ctrl",
+      "R": [
+        1,
+        1,
+        1,
+        0
+      ],
+      "C": 3,
+      "valid": true
+    },
+    {
+      "design": "DESIGN-03",
+      "subject": "T16-A09",
+      "arm": "treat",
+      "R": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "C": 3,
+      "valid": false
+    },
+    {
+      "design": "DESIGN-04",
+      "subject": "T16-A04",
+      "arm": "ctrl",
+      "R": [
+        1,
+        0,
+        1,
+        1
+      ],
+      "C": 3,
+      "valid": true
+    },
+    {
+      "design": "DESIGN-05",
+      "subject": "T16-A13",
+      "arm": "treat",
+      "R": [
+        0,
+        1,
+        1,
+        0
+      ],
+      "C": 3,
+      "valid": false
+    },
+    {
+      "design": "DESIGN-06",
+      "subject": "T16-A06",
+      "arm": "treat",
+      "R": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "C": 3,
+      "valid": true
+    },
+    {
+      "design": "DESIGN-07",
+      "subject": "T16-A11",
+      "arm": "treat",
+      "R": [
+        1,
+        1,
+        1,
+        0
+      ],
+      "C": 3,
+      "valid": true
+    },
+    {
+      "design": "DESIGN-08",
+      "subject": "T16-A15",
+      "arm": "ctrl",
+      "R": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "C": 3,
+      "valid": true
+    },
+    {
+      "design": "DESIGN-09",
+      "subject": "T16-A10",
+      "arm": "ctrl",
+      "R": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "C": 3,
+      "valid": true
+    },
+    {
+      "design": "DESIGN-10",
+      "subject": "T16-A20",
+      "arm": "treat",
+      "R": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "C": 3,
+      "valid": true
+    },
+    {
+      "design": "DESIGN-11",
+      "subject": "T16-A17",
+      "arm": "treat",
+      "R": [
+        1,
+        1,
+        1,
+        0
+      ],
+      "C": 3,
+      "valid": true
+    },
+    {
+      "design": "DESIGN-12",
+      "subject": "T16-A01",
+      "arm": "treat",
+      "R": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "C": 3,
+      "valid": true
+    },
+    {
+      "design": "DESIGN-13",
+      "subject": "T16-A16",
+      "arm": "ctrl",
+      "R": [
+        1,
+        0,
+        1,
+        0
+      ],
+      "C": 3,
+      "valid": false
+    },
+    {
+      "design": "DESIGN-14",
+      "subject": "T16-A07",
+      "arm": "treat",
+      "R": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "C": 3,
+      "valid": true
+    },
+    {
+      "design": "DESIGN-15",
+      "subject": "T16-A12",
+      "arm": "ctrl",
+      "R": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "C": 3,
+      "valid": true
+    },
+    {
+      "design": "DESIGN-16",
+      "subject": "T16-A18",
+      "arm": "ctrl",
+      "R": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "C": 3,
+      "valid": true
+    },
+    {
+      "design": "DESIGN-17",
+      "subject": "T16-A19",
+      "arm": "ctrl",
+      "R": [
+        1,
+        0,
+        1,
+        0
+      ],
+      "C": 3,
+      "valid": false
+    },
+    {
+      "design": "DESIGN-18",
+      "subject": "T16-A03",
+      "arm": "treat",
+      "R": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "C": 3,
+      "valid": true
+    },
+    {
+      "design": "DESIGN-19",
+      "subject": "T16-A14",
+      "arm": "treat",
+      "R": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "C": 3,
+      "valid": true
+    },
+    {
+      "design": "DESIGN-20",
+      "subject": "T16-A05",
+      "arm": "ctrl",
+      "R": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "C": 3,
+      "valid": false
+    }
+  ]
+}

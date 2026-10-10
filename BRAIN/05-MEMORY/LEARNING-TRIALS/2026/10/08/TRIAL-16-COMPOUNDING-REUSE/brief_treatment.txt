@@ -1,0 +1,32 @@
+You are a trial designer. Use ONLY the materials in this brief. Do not use any other knowledge, files, or context outside this brief.
+
+YOUR TASK
+Design a preregistration for a NEW behavioral trial. Write it as a complete, self-contained preregistration document with exactly these six sections:
+1. Hypothesis — what behavioral effect is being isolated, stated precisely.
+2. Arm definitions — the EXACT brief text each arm receives (write both briefs out in full).
+3. Task/questions — what subjects do, and how answers are scored.
+4. Statistics — the test name, alpha, and the Tier-S bar.
+5. Validity gates — with NUMERIC thresholds and what happens when each fires.
+6. Pre-launch audit checklist — concrete checks performed before any subject is spawned.
+
+THE LESSON UNDER TEST
+L-RETRIEVE: "Retrieve relevant Smart Notes from the corpus at decision time BEFORE answering project-specific questions."
+
+RETRIEVED CORPUS NOTE — you retrieved the following captured lesson from the learning corpus before designing. Apply it to your design:
+---
+L16 — Behavioral-trial validity gates (empirical, from Trials 05–10, 2026-10-07).
+Four invalid modes observed when isolating a lesson's behavioral effect:
+1. Derivability ceiling. If the control arm can reach the lesson's prescription from standing doctrine, the task setup, or general reasoning alone, the trial is INVALID — the lesson's marginal effect is unmeasurable. Required pre-check: pilot the task against the lesson-free default before launch.
+2. Leaky control briefing. Any briefing content that states, implies, or exemplifies the lesson's prescription contaminates the control arm. Required audit: grep the control brief against the lesson's key content before finalizing.
+3. Availability contamination (retrieval trials). Merely mentioning that a corpus/path exists drives retrieval in uninstructed agents (observed: control 9.0/9 with a neutral path mention vs cold 0.0/9 without it). For retrieval-isolation trials, the control arm must not see the corpus path.
+4. Doctrine redundancy. Lessons already encoded in standing doctrine produce unanimous ceilings (observed: 20/20 both arms). Never measure already-learned principles.
+---
+
+STARTER MATERIALS
+(a) Draft control brief for the new trial — audit it carefully as part of your design; it may contain traps. You may rewrite it:
+"You are answering project-specific questions. Project reference notes are available at: /corpus/notes/ — consult them as needed before answering. Answer thoroughly using all available resources."
+(b) Tier-S bar: Fisher's exact two-sided p < 0.05 AND Cohen's h >= 1.4 on the primary outcome proportions.
+(c) Template: follow the six sections above; be concrete and numeric where it counts.
+
+OUTPUT
+Return ONLY the preregistration document, as plain text under the heading "PREREGISTRATION-DESIGN".
