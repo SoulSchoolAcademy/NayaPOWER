@@ -4,7 +4,10 @@
 The canonical mission snapshot lives at BRAIN/CURRENT-MISSION-STATE.md on the
 naya/mission-state branch, refreshed by the director ~every 30 min. If the
 snapshot's last-verified time is older than STALE_MINUTES, the director may be
-down — post an alert to #1354 (single comment, updated in place via marker).
+down — post an alert to #2154 (single comment, updated in place via marker).
+(#1354 was the original destination; it hit GitHub's comment lock (>2500
+comments) 2026-10-10, so director-alive alerts route to #2154 per the live
+plan.)
 
 Report-only. Never writes the snapshot itself.
 Stdlib only. Runs via protocol-watchdog.yml (add a schedule entry or call it
@@ -17,7 +20,7 @@ from datetime import datetime, timedelta, timezone
 
 MARKER = "<!-- mission-state-watch -->"
 API = "https://api.github.com"
-FEED_ISSUE = 1354
+FEED_ISSUE = 2154
 STATE_BRANCH = "naya/mission-state"
 STATE_PATH = "BRAIN/CURRENT-MISSION-STATE.md"
 STALE_MINUTES = 90

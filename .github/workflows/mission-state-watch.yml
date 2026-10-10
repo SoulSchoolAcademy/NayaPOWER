@@ -3,10 +3,16 @@ name: Mission State Watch
 # Is the director alive? The canonical mission snapshot
 # (BRAIN/CURRENT-MISSION-STATE.md on the naya/mission-state branch) is
 # refreshed by the director ~every 30 min. If it goes stale, workers are
-# tuning into old orders — this posts an alert to #1354.
+# tuning into old orders — this posts an alert to #2154.
 #
-# Report-only. Cheap: 2-4 API calls per run, no checkout, no CI burn
-# (the snapshot branch triggers no workflows).
+# Report-only. Cheap: 2-4 API calls per run, sparse checkout of the watch
+# script only, no CI burn (the snapshot branch triggers no workflows).
+#
+# NOTE (2026-10-10): a checkout step is REQUIRED — the run executes
+# tools/mission_state_watch.py from this repo. The earlier header claimed
+# "no checkout" as a design goal; that was wrong and produced a
+# deterministic exit-2 (python3 could not find the script on the bare
+# runner). The checkout below fixes it.
 
 on:
   schedule:
@@ -18,6 +24,12 @@ jobs:
     name: Mission snapshot freshness
     runs-on: ubuntu-latest
     steps:
+      - name: Check out the watch script
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            tools/mission_state_watch.py
+          sparse-checkout-cone-mode: false
       - name: Check snapshot age, alert if stale
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
