@@ -1085,6 +1085,184 @@ def obligation_status(obligation_id):
             print(f"    Supersedes: {rev['supersedes']}")
 
 
+# Migration mapping determinations
+MIGRATION_RELATIONS = {
+    "ENTAILS": "Old evidence fully establishes the new obligation (independently justified)",
+    "PARTIALLY_SUPPORTS": "Old evidence supports part of the new obligation",
+    "DOES_NOT_SUPPORT": "Old evidence does not establish the new obligation",
+    "UNDETERMINED": "Cannot determine from available evidence",
+}
+
+# Migration verdicts (obligation-specific, never just PASS/FAIL)
+MIGRATION_VERDICTS = {
+    "CARRIED_FORWARD": "Earlier evidence fully qualifies new obligation in verified scope",
+    "PARTIALLY_MIGRATED": "Some requirements established; others need proof",
+    "BRIDGE_REQUIRED": "Evidence valid but compatibility/integration unproven",
+    "REQUALIFIED": "Additional independent evidence now establishes obligation",
+    "INSUFFICIENT_EVIDENCE": "Qualification cannot currently be established",
+    "INCOMPATIBLE": "Material requirement conflicts with old evidence",
+}
+
+
+def migrate_split(source_obligation_id, source_revision, children):
+    """
+    Split migration: one obligation → several children.
+    children: list of {"id": ..., "text": ..., "relation": ENTAILS|PARTIALLY_SUPPORTS|...,
+                        "evidence_refs": [...], "scope": ...}
+    
+    Each child assessed individually. Old PASS ≠ N new PASSes.
+    """
+    reg = load_registry()
+    source = reg.get("obligations", {}).get(source_obligation_id)
+    if not source or source_revision not in source["revisions"]:
+        print(f"Source {source_obligation_id}@{source_revision} not found.")
+        sys.exit(1)
+
+    migration_id = f"MIG-{datetime.now(timezone.utc).strftime('%Y%m%d%H%M%S')}"
+    results = []
+
+    for child in children:
+        relation = child.get("relation", "UNDETERMINED")
+        if relation not in MIGRATION_RELATIONS:
+            print(f"ERROR: Unknown relation '{relation}'")
+            sys.exit(1)
+
+        # Determine verdict from relation
+        if relation == "ENTAILS":
+            verdict = "CARRIED_FORWARD"
+        elif relation == "PARTIALLY_SUPPORTS":
+            verdict = "PARTIALLY_MIGRATED"
+        elif relation == "DOES_NOT_SUPPORT":
+            verdict = "INSUFFICIENT_EVIDENCE"
+        else:
+            verdict = "INSUFFICIENT_EVIDENCE"
+
+        # Register the child as a new obligation if it doesn't exist
+        child_id = child["id"]
+        if child_id not in reg.get("obligations", {}):
+            register_obligation(
+                child_id,
+                child.get("text", f"Split from {source_obligation_id}"),
+                scope=child.get("scope", ""),
+            )
+            # Reload after registration
+            reg = load_registry()
+
+        result = {
+            "child_id": child_id,
+            "relation": relation,
+            "relation_meaning": MIGRATION_RELATIONS[relation],
+            "evidence_refs": child.get("evidence_refs", []),
+            "verdict": verdict,
+            "shared_lineage": f"Derived from {source_obligation_id}@{source_revision}",
+        }
+        results.append(result)
+        print(f"  {child_id}: {relation} → {verdict}")
+
+    certificate = {
+        "event_type": "COMPOSITE_PROOF_MIGRATION",
+        "migration_id": migration_id,
+        "operation": "SPLIT",
+        "source_obligation": f"{source_obligation_id}@{source_revision}",
+        "children": results,
+        "historical_receipts": "PRESERVED",
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+    }
+
+    if "migrations" not in reg:
+        reg["migrations"] = {}
+    reg["migrations"][migration_id] = certificate
+    save_registry(reg)
+    log_event(certificate)
+
+    print(f"\nSplit migration {migration_id}: {source_obligation_id}@{source_revision} → {len(children)} children")
+    print(f"  Historical source qualification: PRESERVED")
+    print(f"  Old PASS was NOT automatically converted to {len(children)} new PASSes")
+    return certificate
+
+
+def migrate_merge(target_id, target_text, mappings, new_interactions=None):
+    """
+    Merge migration: several obligations → one.
+    mappings: list of {"source": "OBL@rev", "target_part": ..., "relation": ...}
+    new_interactions: list of new interaction requirements introduced by the merge
+    
+    Three green components ≠ proven integration. New interactions need their own proof.
+    """
+    reg = load_registry()
+    migration_id = f"MIG-{datetime.now(timezone.utc).strftime('%Y%m%d%H%M%S')}"
+
+    # Validate all sources exist
+    for m in mappings:
+        src = m["source"]
+        if "@" in src:
+            oid, rev = src.split("@")
+        else:
+            oid, rev = src, None
+        ob = reg.get("obligations", {}).get(oid)
+        if not ob:
+            print(f"ERROR: Source obligation {oid} not found.")
+            sys.exit(1)
+        if rev and rev not in ob["revisions"]:
+            print(f"ERROR: Revision {rev} not found for {oid}.")
+            sys.exit(1)
+
+    # Check mapping relations
+    print(f"\nMerge mappings:")
+    all_entailed = True
+    for m in mappings:
+        relation = m.get("relation", "UNDETERMINED")
+        print(f"  {m['source']} → {m.get('target_part', '?')}: {relation}")
+        if relation != "ENTAILS":
+            all_entailed = False
+
+    # New interactions introduced by merge need their own proof
+    unproved = []
+    if new_interactions:
+        print(f"\nNew interaction requirements (need independent proof):")
+        for ni in new_interactions:
+            print(f"  ⚠ {ni} — NOT established by component evidence alone")
+            unproved.append(ni)
+
+    # Determine target verdict
+    if all_entailed and not unproved:
+        verdict = "CARRIED_FORWARD"
+    elif unproved:
+        verdict = "BRIDGE_REQUIRED"
+    else:
+        verdict = "PARTIALLY_MIGRATED"
+
+    # Register target obligation
+    if target_id not in reg.get("obligations", {}):
+        register_obligation(target_id, target_text, scope="merged composite")
+        reg = load_registry()
+
+    certificate = {
+        "event_type": "COMPOSITE_PROOF_MIGRATION",
+        "migration_id": migration_id,
+        "operation": "MERGE",
+        "source_obligations": [m["source"] for m in mappings],
+        "target_obligation": target_id,
+        "mappings": mappings,
+        "unproved_obligations": unproved,
+        "target_qualification": verdict,
+        "historical_receipts": "PRESERVED",
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+    }
+
+    if "migrations" not in reg:
+        reg["migrations"] = {}
+    reg["migrations"][migration_id] = certificate
+    save_registry(reg)
+    log_event(certificate)
+
+    print(f"\nMerge migration {migration_id} → {target_id}: {verdict}")
+    print(f"  {MIGRATION_VERDICTS[verdict]}")
+    if unproved:
+        print(f"  Component PASSes do NOT prove the merged claim until interactions are verified.")
+    return certificate
+
+
 def main():
     parser = argparse.ArgumentParser(description="Claim-level support-set evaluator")
     sub = parser.add_subparsers(dest="cmd", required=True)
@@ -1199,6 +1377,16 @@ def main():
     so = sub.add_parser("obligation-status", help="Show obligation history")
     so.add_argument("--id", required=True)
 
+    ms = sub.add_parser("migrate-split", help="Split one obligation into children")
+    ms.add_argument("--source", required=True, help="OBLIGATION_ID@revision")
+    ms.add_argument("--children", required=True, help="JSON list of child specs")
+
+    mm = sub.add_parser("migrate-merge", help="Merge obligations into one")
+    mm.add_argument("--sources", required=True, help="JSON list of mappings")
+    mm.add_argument("--target", required=True)
+    mm.add_argument("--target-text", required=True)
+    mm.add_argument("--new-interactions", default="[]", help="JSON list of new interaction requirements")
+
     args = parser.parse_args()
     if args.cmd == "register-claim":
         register_claim(args.id, args.description, args.scope)
@@ -1247,6 +1435,17 @@ def main():
                           effective_from=args.effective_from)
     elif args.cmd == "obligation-status":
         obligation_status(args.id)
+    elif args.cmd == "migrate-split":
+        if "@" in args.source:
+            oid, rev = args.source.split("@")
+        else:
+            oid, rev = args.source, "v1"
+        children = json.loads(args.children)
+        migrate_split(oid, rev, children)
+    elif args.cmd == "migrate-merge":
+        mappings = json.loads(args.sources)
+        new_interactions = json.loads(args.new_interactions)
+        migrate_merge(args.target, args.target_text, mappings, new_interactions)
 
 
 if __name__ == "__main__":
