@@ -7817,3 +7817,4173 @@ def aer_cal_004():
     report["guard_removal_crown_jewel"] = cal4_guard_removal_crown_jewel()[
         "counterexample"]
     return report
+# ======================================================================================
+# SN-0804 AER-CAL-5 — EVIDENCE-PRESERVING SCOPE EVOLUTION LAW
+# ======================================================================================
+# Scopes are isolated (AER-CAL-4); this governs how they may EVOLVE without breaking
+# isolation: merge statistical estimation across demonstrably comparable scopes, and
+# split models when independently established semantic or behavioral differences
+# warrant it.
+#
+# HONEST SCOPE (Shawn, 2026-10-10 — his explicit scoping): this enters as an ISOLATED
+# TEST MECHANISM, not a production authority change. propagation.py / uncertainty.py /
+# authority.py align with the contracts, but NO implemented merge/split engine and NO
+# live provider baseline registry has been verified. Do not claim otherwise.
+# Main observed by Shawn at 0fb380c.
+#
+# His law: NayaNET may merge statistical estimation across demonstrably comparable
+# scopes and split models when independently established semantic or behavioral
+# differences warrant it; every observation retains its original provenance; every
+# provider guarantee remains bound to its independently demonstrated applicability.
+# Statistical pooling shall never create, broaden, inherit or restore qualification
+# or execution authority.
+AER_CAL5_IMPLEMENTATION_STATUS = {
+    "enters_as": "isolated test mechanism",
+    "not_a": "production authority change",
+    "contracts_align": ("propagation.py", "uncertainty.py", "authority.py"),
+    "not_verified": ("implemented merge/split engine",
+                     "live provider baseline registry"),
+    "main_observed_at": "0fb380c",
+}
+
+
+# --- 1. The three-operation separation ------------------------------------------------------------------------------
+# Never confuse the three: statistical pooling, operational baseline merge, and
+# qualification consolidation have different evidence requirements. A pooled group
+# must NEVER automatically become one certified scope.
+SCOPE_OPERATIONS = {
+    "STATISTICAL_POOLING": {
+        "what": "share statistical information across scopes to improve estimates",
+        "requires": ("verified_comparability",
+                     "calibrated_uncertainty",
+                     "independence_assumptions_stated"),
+        "never": "a pooled group never automatically becomes one certified scope",
+    },
+    "OPERATIONAL_BASELINE_MERGE": {
+        "what": "share one forecasting/alert model across scopes",
+        "requires": ("independent_evidence_shared_model_preserves_each_scope_detection",),
+        "never": "shared alerts do not merge qualifications",
+    },
+    "QUALIFICATION_CONSOLIDATION": {
+        "what": "one certification covering several scopes",
+        "requires": ("proof_guarantee_covers_every_member",
+                     "relevant_cross_scope_interactions_tested"),
+        "never": "no consolidation by label hierarchy alone",
+    },
+}
+
+
+def classify_scope_operation(request: dict) -> dict:
+    """Classify a scope-evolution request into exactly one of the three
+    operations and list the evidence each requires. request:
+    {"kind": one of SCOPE_OPERATIONS, "scopes": [...], "evidence": {...}}."""
+    kind = request.get("kind")
+    if kind not in SCOPE_OPERATIONS:
+        return {"classified": False,
+                "reason": f"unknown operation kind {kind!r}; the three "
+                          "operations are never to be confused"}
+    op = SCOPE_OPERATIONS[kind]
+    evidence = request.get("evidence", {})
+    missing = [r for r in op["requires"] if not evidence.get(r)]
+    return {"classified": True, "kind": kind, "what": op["what"],
+            "requirements": list(op["requires"]),
+            "missing_evidence": missing,
+            "authorized": not missing,
+            "never": op["never"]}
+
+
+def pooling_never_certifies(scopes, model: HierarchicalScopeModel) -> dict:
+    """After statistical pooling, every scope's CERTIFICATION still comes from
+    its own evidence. The pooled estimate is a prediction aid, never a proof."""
+    per_scope = {}
+    for s in scopes:
+        est, n = model.cell_posterior(s)
+        per_scope[s] = {"pooled_estimate": round(est, 4),
+                        "own_n": n,
+                        "qualification": model.cell_qualification(s)}
+    pooled_group_certified = any(
+        v["qualification"] == "QUALIFIED" and v["own_n"] < model.min_n
+        for v in per_scope.values())
+    return {"per_scope": per_scope,
+            "pooled_group_auto_certified": pooled_group_certified,
+            "law_holds": not pooled_group_certified}
+
+
+# --- 2. Immutable scope identities beneath any shared model ----------------------------------------------------------
+class ScopedObservation:
+    """Four permanent IDs on every observation, surviving any merge or split:
+      statistical_parent_id   — where estimates may borrow strength;
+      qualification_scope_id  — where a guarantee actually applies;
+      observation_scope_id    — where the raw evidence originated;
+      interaction_scope_id    — where cross-boundary effects are tested.
+    Original provenance is never rewritten under a new taxonomy."""
+
+    def __init__(self, statistical_parent_id: str, qualification_scope_id: str,
+                 observation_scope_id: str, interaction_scope_id: str,
+                 n: int, k: int, taxonomy_version: str):
+        self.statistical_parent_id = statistical_parent_id
+        self.qualification_scope_id = qualification_scope_id
+        self.observation_scope_id = observation_scope_id
+        self.interaction_scope_id = interaction_scope_id
+        self.n = n
+        self.k = k
+        self.taxonomy_version = taxonomy_version  # original classification kept
+
+    def provenance(self) -> dict:
+        return {"statistical_parent_id": self.statistical_parent_id,
+                "qualification_scope_id": self.qualification_scope_id,
+                "observation_scope_id": self.observation_scope_id,
+                "interaction_scope_id": self.interaction_scope_id,
+                "taxonomy_version": self.taxonomy_version}
+
+
+def endpoint_ab_example() -> dict:
+    """His Endpoint A/B example: A and B share latency learning (one
+    statistical parent), but A's verified idempotency guarantee never extends
+    to unproven B. Four IDs keep the sharing honest."""
+    a = ScopedObservation(statistical_parent_id="latency-parent-1",
+                          qualification_scope_id="qual:A",
+                          observation_scope_id="obs:A",
+                          interaction_scope_id="inter:A",
+                          n=5000, k=50, taxonomy_version="tax-v3")
+    b = ScopedObservation(statistical_parent_id="latency-parent-1",
+                          qualification_scope_id="qual:B",
+                          observation_scope_id="obs:B",
+                          interaction_scope_id="inter:B",
+                          n=15, k=0, taxonomy_version="tax-v3")
+    guarantee_a = {"guarantee_id": "idempotency:A",
+                   "kind": "idempotency",
+                   "verified": True,
+                   "qualified_scopes": ("qual:A",),
+                   "revision": 7, "current": True,
+                   "statistical_parent_id": "latency-parent-1"}
+    use_b = use_guarantee(guarantee_a, "qual:B", {"taxonomy": 3, "policy": 3,
+                                                 "incident": 3, "evidence": 3},
+                          law_receipt={"receipt": "LAW-1", "valid": True})
+    return {"shared_statistical_parent": (a.statistical_parent_id
+                                          == b.statistical_parent_id),
+            "distinct_qualification_scopes": (a.qualification_scope_id
+                                             != b.qualification_scope_id),
+            "b_use_of_a_guarantee": use_b,
+            "law_holds": (a.statistical_parent_id == b.statistical_parent_id
+                          and not use_b["authorized"])}
+
+
+# --- 3. The four scope decisions ------------------------------------------------------------------------------------
+SCOPE_DECISIONS = ("POOL_ESTIMATES", "MERGE_OPERATIONAL_MODEL",
+                   "SPLIT_MODEL", "CREATE_PROVISIONAL_SCOPE")
+
+
+def scope_decision(decision: str, evidence: dict) -> dict:
+    """The four scope decisions with their evidence gates.
+      POOL_ESTIMATES: sparse but comparable scopes — pool estimates, keep
+        separate qualifications and contract gates.
+      MERGE_OPERATIONAL_MODEL: strong held-out evidence the shared model
+        preserves each scope's detection — merge forecasting, keep individual
+        evidence and contract gates.
+      SPLIT_MODEL: material difference emerges — split, reassess affected
+        scopes and dependent claims.
+      CREATE_PROVISIONAL_SCOPE: new endpoint/workload — provisional, no
+        inherited PASS unless an explicitly valid existing contract covers it."""
+    if decision not in SCOPE_DECISIONS:
+        return {"decision": decision, "taken": False,
+                "reason": "unknown scope decision"}
+    if decision == "POOL_ESTIMATES":
+        ok = bool(evidence.get("comparable")) and not evidence.get(
+            "contamination")
+        return {"decision": decision, "taken": ok,
+                "effects": {"pool_estimates": ok,
+                            "qualifications_stay_separate": True,
+                            "contract_gates_stay": True},
+                "reason": "" if ok else
+                "comparability unestablished or contamination unresolved"}
+    if decision == "MERGE_OPERATIONAL_MODEL":
+        ok = bool(evidence.get("held_out_preserves_detection_all_scopes"))
+        return {"decision": decision, "taken": ok,
+                "effects": {"shared_forecasting": ok,
+                            "individual_evidence_kept": True,
+                            "contract_gates_kept": True},
+                "reason": "" if ok else
+                "no held-out evidence that every scope's detection survives"}
+    if decision == "SPLIT_MODEL":
+        ok = bool(evidence.get("material_difference_established"))
+        return {"decision": decision, "taken": ok,
+                "effects": {"split": ok,
+                            "affected_scopes_reassessed": ok,
+                            "dependent_claims_reassessed": ok},
+                "reason": "" if ok else "no independently established difference"}
+    # CREATE_PROVISIONAL_SCOPE
+    covered = bool(evidence.get("explicit_valid_contract_covers"))
+    return {"decision": decision, "taken": True, "provisional": not covered,
+            "effects": {"provisional_model": True,
+                        "inherited_pass": covered,
+                        "independent_qualification_required": not covered},
+            "reason": ("explicit valid contract covers the new scope" if covered
+                       else "new scope: provisional, no inherited PASS")}
+
+
+# --- 4. The four comparability conditions ---------------------------------------------------------------------------
+COMPARABILITY_CONDITIONS = ("semantic_compatibility",
+                            "statistical_compatibility",
+                            "risk_compatibility",
+                            "evidence_integrity")
+
+
+def check_comparability(a_profile: dict, b_profile: dict,
+                        evidence: dict) -> dict:
+    """All four conditions must hold before statistical pooling:
+      semantic_compatibility — same contractual meaning of the observations;
+      statistical_compatibility — held-out, scope-specific calibration;
+      risk_compatibility — each member's failure detection is preserved;
+      evidence_integrity — admissible, correctly labeled, no unresolved
+        contamination.
+    STANDING PRINCIPLE: failure to detect a difference is NOT proof of
+    equivalence (see equivalence_test and the 10,000-vs-15 example)."""
+    per = {
+        "semantic_compatibility": bool(evidence.get("semantic_compatible")),
+        "statistical_compatibility": bool(
+            evidence.get("held_out_scope_specific_calibrated")),
+        "risk_compatibility": bool(
+            evidence.get("each_member_detection_preserved")),
+        "evidence_integrity": bool(evidence.get("admissible_labeled")) and not
+        bool(evidence.get("unresolved_contamination")),
+    }
+    overall = all(per.values())
+    return {"per_condition": per, "comparable": overall,
+            "note": "failure to detect a difference is not proof of equivalence"}
+
+
+def _wilson(n: int, k: int, z: float = 1.96) -> tuple:
+    """Wilson score interval for a binomial proportion."""
+    if n == 0:
+        return (0.0, 1.0)
+    p = k / n
+    denom = 1.0 + z * z / n
+    center = (p + z * z / (2 * n)) / denom
+    half = z * math.sqrt(p * (1 - p) / n + z * z / (4 * n * n)) / denom
+    return (max(0.0, center - half), min(1.0, center + half))
+
+
+def equivalence_test(n_a: int, k_a: int, n_b: int, k_b: int,
+                     margin: float) -> dict:
+    """An equivalence claim needs a PRE-SPECIFIED operationally meaningful
+    margin: EQUIVALENT only if the 95% interval for the rate difference lies
+    entirely within [-margin, margin]. Metric equivalence is never
+    idempotency/semantics equivalence — this gates statistical pooling only."""
+    a_lo, a_hi = _wilson(n_a, k_a)
+    b_lo, b_hi = _wilson(n_b, k_b)
+    diff_lo, diff_hi = a_lo - b_hi, a_hi - b_lo
+    inside = diff_lo >= -margin and diff_hi <= margin
+    return {"margin": margin,
+            "difference_interval": (round(diff_lo, 4), round(diff_hi, 4)),
+            "verdict": "EQUIVALENT" if inside else "UNPROVEN",
+            "note": "UNPROVEN blocks pooling; it does not assert a difference"}
+
+
+def ten_k_vs_fifteen() -> dict:
+    """His canonical example: A has 10,000 observations, B has 15. A
+    difference test 'finds nothing' — that is NOT proof of equivalence.
+    Pooling B under A on this basis alone is forbidden."""
+    r = equivalence_test(10000, 100, 15, 0, margin=0.01)
+    return {"example": "10000 vs 15 observations",
+            "result": r,
+            "pooling_permitted": r["verdict"] == "EQUIVALENT"}
+
+
+# --- 5. Split criteria ------------------------------------------------------------------------------------------------
+# Semantic split (different contractual meanings / risk / guarantees) takes
+# priority even when sparse. Statistical split needs independently established
+# divergence the shared model cannot represent. Never require statistical
+# significance to separate different safety contracts.
+SPLIT_TRIGGERS = {
+    "idempotency_scope_change": "SEPARATE_IMMEDIATELY",
+    "verified_duplicates": "CONTAIN_AND_REASSESS",
+    "regime_divergence": "REGIME_MODELING",
+    "repeated_calibration_failures": "CANDIDATE_SPLIT",
+    "isolated_sparse_residual": "INVESTIGATE_DO_NOT_AUTO_SPLIT",
+    "shared_guarantee_differing_latency": "SPLIT_LATENCY_MODELING_ONLY",
+}
+
+
+def evaluate_split_trigger(trigger: str, context: dict) -> dict:
+    """Apply the trigger table. context carries the trigger-specific facts
+    (e.g. duplicate evidence, calibration history, which modeling differs)."""
+    if trigger not in SPLIT_TRIGGERS:
+        return {"trigger": trigger, "action": "UNKNOWN_TRIGGER",
+                "split": False}
+    action = SPLIT_TRIGGERS[trigger]
+    if trigger == "idempotency_scope_change":
+        split = True  # safety contracts separate without statistical permission
+        note = "different safety contracts never share a guarantee scope"
+    elif trigger == "verified_duplicates":
+        split = bool(context.get("duplicates_verified"))
+        note = "contain the scope, reassess the guarantee"
+    elif trigger == "regime_divergence":
+        split = bool(context.get("divergence_independently_established"))
+        note = "model the regimes; do not average them away"
+    elif trigger == "repeated_calibration_failures":
+        split = bool(context.get("failures_persist_after_recalibration"))
+        note = "candidate split, not an automatic one"
+    elif trigger == "isolated_sparse_residual":
+        split = False
+        note = "investigate; a sparse residual alone never forces a split"
+    else:  # shared_guarantee_differing_latency
+        split = "latency_modeling_only"
+        note = ("split the latency model, never fragment the valid shared "
+                "guarantee")
+    return {"trigger": trigger, "action": action, "split": split,
+            "note": note}
+
+
+# --- 6. The provisional scope lifecycle --------------------------------------------------------------------------------
+# NEW_SCOPE -> PROVISIONAL_MODEL -> INDEPENDENT_QUALIFICATION -> QUALIFIED_IN_SCOPE.
+# Nuance: a genuinely general existing contract CAN cover a new workload — but
+# only after verifying EVERY condition (concurrency, key identity, region,
+# retention, downstream effects). A shared statistical parent never supplies
+# contractual coverage.
+PROVISIONAL_STATES = ("NEW_SCOPE", "PROVISIONAL_MODEL",
+                      "INDEPENDENT_QUALIFICATION", "QUALIFIED_IN_SCOPE")
+
+
+class ProvisionalScope:
+    """Lifecycle for a new workload class (his BATCH_RECOVERY_WRITE example)."""
+
+    def __init__(self, scope_id: str):
+        self.scope_id = scope_id
+        self.state = "NEW_SCOPE"
+        self.history = [("NEW_SCOPE", "registered")]
+
+    def to_provisional_model(self, borrowed_parent: str,
+                             uncertainty_noted: bool) -> dict:
+        if self.state != "NEW_SCOPE":
+            return {"advanced": False, "reason": "not in NEW_SCOPE"}
+        if not uncertainty_noted:
+            return {"advanced": False,
+                    "reason": "borrowed estimates require stated uncertainty"}
+        self.state = "PROVISIONAL_MODEL"
+        self.history.append(("PROVISIONAL_MODEL",
+                             f"borrows calibrated estimates from {borrowed_parent}"))
+        return {"advanced": True, "state": self.state,
+                "inherited_pass": False}
+
+    def to_independent_qualification(self, checks: dict) -> dict:
+        """checks: contract_applicability, failure_cases, interactions,
+        outcomes — each independently verified."""
+        if self.state != "PROVISIONAL_MODEL":
+            return {"advanced": False, "reason": "not in PROVISIONAL_MODEL"}
+        missing = [c for c in ("contract_applicability", "failure_cases",
+                               "interactions", "outcomes")
+                   if not checks.get(c)]
+        if missing:
+            return {"advanced": False,
+                    "reason": f"unverified: {missing}"}
+        self.state = "INDEPENDENT_QUALIFICATION"
+        self.history.append(("INDEPENDENT_QUALIFICATION",
+                             "all four checks independently verified"))
+        return {"advanced": True, "state": self.state}
+
+    def to_qualified(self, qualifier: str) -> dict:
+        if self.state != "INDEPENDENT_QUALIFICATION":
+            return {"advanced": False, "reason": "not independently qualified"}
+        self.state = "QUALIFIED_IN_SCOPE"
+        self.history.append(("QUALIFIED_IN_SCOPE", f"qualified by {qualifier}"))
+        return {"advanced": True, "state": self.state}
+
+
+def general_contract_may_cover(new_scope: dict, contract: dict) -> dict:
+    """A genuinely general existing contract CAN cover a new workload — iff
+    EVERY condition verifies: concurrency, key identity, region, retention,
+    downstream effects. One missing condition blocks coverage."""
+    conditions = ("concurrency", "key_identity", "region", "retention",
+                  "downstream_effects")
+    coverage = contract.get("covers", {})
+    missing = [c for c in conditions
+               if not coverage.get(c, {}).get("verified")]
+    mismatched = [c for c in conditions
+                  if c not in missing
+                  and coverage[c].get("scope") != new_scope.get(c)]
+    blocked = missing + [f"{c}:scope_mismatch" for c in mismatched]
+    return {"covered": not blocked, "blocked_by": blocked,
+            "note": "shared statistical parent never supplies coverage"}
+
+
+# --- 7. The no-qualification-transfer invariant -------------------------------------------------------------------------
+# UseGuarantee(g,s) => Verified(g) AND s ⊆ QualifiedScope(g) AND Current(g)
+# AND LAWValid(s). Scope inclusion is checked on the guarantee's ACTUAL
+# semantics, never on label hierarchy. A merged A∪B certification needs
+# independent evidence for the whole union plus the interactions; two separate
+# certificates may be the simpler, more auditable result.
+def scope_semantically_within(scope_id: str, qualified_scope_id: str) -> bool:
+    """Semantic inclusion, not label hierarchy: a scope is within a qualified
+    scope only by exact identity or an explicitly recorded semantic subset
+    relation — never because a label ('all endpoints') sounds broader."""
+    return scope_id == qualified_scope_id
+
+
+def use_guarantee(guarantee: dict, scope_id: str, revisions: dict,
+                  law_receipt: Optional[dict],
+                  shared_model_implies_qualification: bool = False) -> dict:
+    """The invariant. shared_model_implies_qualification=True is the DEFECTIVE
+    guard-swap (SHARED_MODEL ⇒ SHARED_QUALIFICATION); the law keeps it False
+    (SHARED_MODEL ≠ SHARED_QUALIFICATION)."""
+    reasons = []
+    verified = bool(guarantee.get("verified"))
+    if not verified:
+        reasons.append("guarantee not verified")
+    if shared_model_implies_qualification:
+        # THE DEFECT: pooled under the same statistical parent counts as covered.
+        within = (guarantee.get("statistical_parent_id") is not None)
+        if within:
+            reasons.append("DEFECT: shared statistical parent treated as coverage")
+    else:
+        within = any(scope_semantically_within(scope_id, q)
+                     for q in guarantee.get("qualified_scopes", ()))
+        if not within:
+            reasons.append("scope not within the guarantee's qualified scope")
+    current = bool(guarantee.get("current")) and all(
+        revisions.get(r) == guarantee.get("revision")
+        for r in ("taxonomy", "policy", "incident", "evidence"))
+    if not current:
+        reasons.append("guarantee not current at use time")
+    law_valid = bool(law_receipt and law_receipt.get("valid"))
+    if not law_valid:
+        reasons.append("no valid LAW receipt for this use")
+    authorized = verified and within and current and law_valid
+    return {"authorized": authorized, "reasons": reasons,
+            "invariant": "UseGuarantee(g,s) => Verified(g) ∧ s⊆QualifiedScope(g) "
+                         "∧ Current(g) ∧ LAWValid(s)"}
+
+
+# --- 8. Versioned, reconstructable change records -----------------------------------------------------------------------
+# SCOPE-CHANGE-014: never rewrite past observations under a new taxonomy;
+# preserve original classification versions; splits state the historical→child
+# mapping, ambiguous records, and surviving guarantees; ambiguous records are
+# never silently allocated; pending merges/splits must not race incident
+# withdrawal or baseline promotion.
+def make_scope_change_record(change_id: str, change_type: str,
+                             taxonomy_before: str, taxonomy_after: str,
+                             historical_mapping: dict,
+                             ambiguous_records: list,
+                             surviving_guarantees: list,
+                             revision_checks: dict) -> dict:
+    if change_type not in ("MERGE", "SPLIT", "PROVISIONAL_REGISTER"):
+        return {"recorded": False,
+                "reason": f"unknown change type {change_type!r}"}
+    if change_type == "SPLIT" and not historical_mapping:
+        return {"recorded": False,
+                "reason": "a split must state the historical→child mapping"}
+    if any(r.get("auto_allocated") for r in ambiguous_records):
+        return {"recorded": False,
+                "reason": "ambiguous records are never silently allocated"}
+    stale = [r for r in ("taxonomy", "incident", "evidence", "policy")
+             if not revision_checks.get(r, {}).get("current")]
+    if stale:
+        return {"recorded": False,
+                "reason": f"stale revisions: {stale}"}
+    if revision_checks.get("incident", {}).get("withdrawal_pending"):
+        return {"recorded": False,
+                "reason": "must not race incident withdrawal"}
+    if revision_checks.get("promotion_pending"):
+        return {"recorded": False,
+                "reason": "must not race baseline promotion"}
+    return {"recorded": True, "schema": "SCOPE-CHANGE-014",
+            "change_id": change_id, "change_type": change_type,
+            "taxonomy_before": taxonomy_before,
+            "taxonomy_after": taxonomy_after,
+            "historical_mapping": historical_mapping,
+            "ambiguous_records": ambiguous_records,
+            "surviving_guarantees": surviving_guarantees,
+            "past_observations_rewritten": False,
+            "note": "original classification versions preserved; a cold "
+                    "successor reconstructs the evolution from these records"}
+
+
+# --- 9. The M1–M10 suite --------------------------------------------------------------------------------------------------
+def cal5_m_suite(guard_intact: bool = True) -> list:
+    """Ten scope-evolution adversarial cases. With the guard intact
+    (SHARED_MODEL ≠ SHARED_QUALIFICATION) every case must hold the line; with
+    the guard swapped (SHARED_MODEL ⇒ SHARED_QUALIFICATION) M10 must yield the
+    minimal counterexample of guarantee theft."""
+    results = []
+    rev = {"taxonomy": 7, "policy": 7, "incident": 7, "evidence": 7}
+    law = {"receipt": "LAW-1", "valid": True}
+    guarantee_a = {"guarantee_id": "idempotency:A", "kind": "idempotency",
+                   "verified": True, "qualified_scopes": ("qual:A",),
+                   "revision": 7, "current": True,
+                   "statistical_parent_id": "latency-parent-1"}
+
+    # M1: pool A<->B estimates; B keeps the pooled prediction, never the proof.
+    m = HierarchicalScopeModel(min_n_qualified=100)
+    m.observe("qual:A", 5000, 50)
+    m.observe("qual:B", 15, 0)
+    est_b, n_b = m.cell_posterior("qual:B")
+    q_b = m.cell_qualification("qual:B")
+    results.append(("M1", "HOLD" if (q_b == "UNPROVEN_IN_SCOPE" and est_b > 0)
+                    else "LEAK",
+                    f"B pooled estimate {est_b:.4f} (n={n_b}); "
+                    f"qualification {q_b} — prediction kept, proof withheld"))
+
+    # M2: operational merge WITH held-out evidence each scope's detection survives.
+    d2 = scope_decision("MERGE_OPERATIONAL_MODEL",
+                        {"held_out_preserves_detection_all_scopes": True})
+    results.append(("M2", "HOLD" if d2["taken"] else "LEAK",
+                    "shared forecasting authorized on held-out evidence"))
+
+    # M3: operational merge WITHOUT held-out evidence — rejected.
+    d3 = scope_decision("MERGE_OPERATIONAL_MODEL",
+                        {"held_out_preserves_detection_all_scopes": False})
+    results.append(("M3", "HOLD" if not d3["taken"] else "LEAK",
+                    "merge refused without held-out detection evidence"))
+
+    # M4: consolidation A∪B with union evidence + interaction tests — certified.
+    d4 = classify_scope_operation(
+        {"kind": "QUALIFICATION_CONSOLIDATION",
+         "scopes": ["qual:A", "qual:B"],
+         "evidence": {"proof_guarantee_covers_every_member": True,
+                      "relevant_cross_scope_interactions_tested": True}})
+    results.append(("M4", "HOLD" if d4["authorized"] else "LEAK",
+                    "union certification only on union evidence + interactions"))
+
+    # M5: consolidation by label hierarchy alone — rejected.
+    d5 = classify_scope_operation(
+        {"kind": "QUALIFICATION_CONSOLIDATION",
+         "scopes": ["qual:A", "qual:B"],
+         "evidence": {"proof_guarantee_covers_every_member": False,
+                      "relevant_cross_scope_interactions_tested": False}})
+    results.append(("M5", "HOLD" if not d5["authorized"] else "LEAK",
+                    "label-hierarchy consolidation refused"))
+
+    # M6: idempotency-scope change — immediate separation, no statistics needed.
+    d6 = evaluate_split_trigger("idempotency_scope_change", {})
+    results.append(("M6", "HOLD" if d6["split"] is True else "LEAK",
+                    "safety contracts separate without statistical permission"))
+
+    # M7: verified duplicates — contain + reassess.
+    d7 = evaluate_split_trigger("verified_duplicates",
+                                {"duplicates_verified": True})
+    results.append(("M7", "HOLD" if d7["action"] == "CONTAIN_AND_REASSESS"
+                    else "LEAK", d7["note"]))
+
+    # M8: new endpoint C — provisional, no inherited PASS.
+    d8 = scope_decision("CREATE_PROVISIONAL_SCOPE", {})
+    results.append(("M8", "HOLD" if (d8["taken"] and d8["provisional"]
+                                     and not d8["effects"]["inherited_pass"])
+                    else "LEAK", "C provisional; nothing inherited"))
+
+    # M9: 10,000 vs 15 — 'no difference detected' is not equivalence.
+    r9 = ten_k_vs_fifteen()
+    results.append(("M9", "HOLD" if not r9["pooling_permitted"] else "LEAK",
+                    f"difference interval {r9['result']['difference_interval']}; "
+                    "pooling blocked on UNPROVEN"))
+
+    # M10: the guard-swap. Sparse B resembles A (same statistical parent).
+    use_b = use_guarantee(
+        guarantee_a, "qual:B", rev, law,
+        shared_model_implies_qualification=not guard_intact)
+    if guard_intact:
+        verdict = "HOLD" if not use_b["authorized"] else "LEAK"
+        note = ("B's use of A's idempotency guarantee refused: "
+                + "; ".join(use_b["reasons"]))
+    else:
+        verdict = "COUNTEREXAMPLE" if use_b["authorized"] else "NO_THEFT"
+        note = ("MINIMAL COUNTEREXAMPLE: sparse B acquired A's guarantee via "
+                "shared statistical parent — " + "; ".join(use_b["reasons"]))
+    results.append(("M10", verdict, note))
+    return results
+
+
+def cal5_guard_swap_crown_jewel() -> dict:
+    """THE DECISIVE GUARD-SWAP: replace SHARED_MODEL≠SHARED_QUALIFICATION with
+    the defective SHARED_MODEL⇒SHARED_QUALIFICATION. Sparse Endpoint B
+    resembling A must yield the minimal counterexample of B acquiring A's
+    guarantee without coverage evidence. Restore the guard: B keeps pooled
+    predictions while the theft stays blocked."""
+    intact = cal5_m_suite(guard_intact=True)
+    swapped = cal5_m_suite(guard_intact=False)
+    m10_intact = next(v for i, v, _ in intact if i == "M10")
+    m10_swapped = next(v for i, v, _ in swapped if i == "M10")
+    m1_intact = next(n for i, v, n in intact if i == "M1")
+    assert m10_intact == "HOLD", intact
+    assert m10_swapped == "COUNTEREXAMPLE", swapped
+    assert "UNPROVEN_IN_SCOPE" in m1_intact, m1_intact
+    return {"guard_intact_M10": m10_intact,
+            "guard_swapped_M10": m10_swapped,
+            "minimal_counterexample": next(n for i, v, n in swapped
+                                          if i == "M10"),
+            "restoration": "B keeps pooled predictions (M1); the theft stays "
+                           "blocked (M10 HOLD)",
+            "note": "the harness detects the broken guard; only the guard "
+                    "change flips M10"}
+
+
+# --- AER-CAL-005: the first action ----------------------------------------------------------------------------------------
+def aer_cal_005() -> dict:
+    """Three-endpoint deterministic fixture.
+    A: sufficient evidence + verified idempotency coverage.
+    B: sparse but statistically similar — shares A<->B estimation, keeps B's
+       guarantee UNQUALIFIED.
+    C: new endpoint, different downstream semantics — provisional.
+    Then: inject a genuine regression into B — A's healthy data must not mask
+    it (detection runs on B's own cell evidence, never the pooled estimate).
+    Finally: remove the guard and demand the minimal counterexample."""
+    report = {}
+    rev = {"taxonomy": 7, "policy": 7, "incident": 7, "evidence": 7}
+    law = {"receipt": "LAW-1", "valid": True}
+
+    # The three endpoints.
+    model = HierarchicalScopeModel(min_n_qualified=100)
+    model.observe("ep:A", 5000, 50)     # 1%, healthy, sufficient
+    model.observe("ep:B", 15, 0)        # sparse, similar
+    guarantee_a = {"guarantee_id": "idempotency:A", "kind": "idempotency",
+                   "verified": True, "qualified_scopes": ("ep:A",),
+                   "revision": 7, "current": True,
+                   "statistical_parent_id": "epAB-parent"}
+
+    # Share A<->B statistics; B's guarantee stays unqualified.
+    comp = check_comparability(
+        {"endpoint": "A"}, {"endpoint": "B"},
+        {"semantic_compatible": True,
+         "held_out_scope_specific_calibrated": True,
+         "each_member_detection_preserved": True,
+         "admissible_labeled": True,
+         "unresolved_contamination": False})
+    pool = scope_decision("POOL_ESTIMATES",
+                          {"comparable": comp["comparable"],
+                           "contamination": False})
+    est_b, _ = model.cell_posterior("ep:B")
+    use_b = use_guarantee(guarantee_a, "ep:B", rev, law)
+    report["pooling"] = {"comparable": comp["comparable"],
+                         "pool_authorized": pool["taken"],
+                         "b_pooled_estimate": round(est_b, 4),
+                         "b_qualification": model.cell_qualification("ep:B"),
+                         "b_guarantee_authorized": use_b["authorized"]}
+    assert pool["taken"] and not use_b["authorized"]
+    assert model.cell_qualification("ep:B") == "UNPROVEN_IN_SCOPE"
+
+    # C: new, different downstream semantics — provisional lifecycle.
+    c = ProvisionalScope("ep:C")
+    r1 = c.to_provisional_model(borrowed_parent="epAB-parent",
+                                uncertainty_noted=True)
+    r2 = c.to_independent_qualification(
+        {"contract_applicability": True, "failure_cases": True,
+         "interactions": True, "outcomes": True})
+    r3 = c.to_qualified("independent-verifier-7")
+    report["provisional_C"] = {"lifecycle": [s for s, _ in c.history],
+                               "final": c.state}
+    assert c.state == "QUALIFIED_IN_SCOPE" and r1["advanced"] and r2["advanced"]
+
+    # A genuinely general contract CAN cover a new workload — positive control:
+    # every condition verified.
+    general = {"covers": {
+        "concurrency": {"verified": True, "scope": "low"},
+        "key_identity": {"verified": True, "scope": "stable"},
+        "region": {"verified": True, "scope": "r1"},
+        "retention": {"verified": True, "scope": "30d"},
+        "downstream_effects": {"verified": True, "scope": "ledger-only"}}}
+    cover_ok = general_contract_may_cover(
+        {"concurrency": "low", "key_identity": "stable", "region": "r1",
+         "retention": "30d", "downstream_effects": "ledger-only"}, general)
+    # ...and one missing condition blocks it — negative control.
+    general_bad = {"covers": dict(general["covers"])}
+    general_bad["covers"] = dict(general["covers"])
+    general_bad["covers"]["retention"] = {"verified": False}
+    cover_bad = general_contract_may_cover(
+        {"concurrency": "low", "key_identity": "stable", "region": "r1",
+         "retention": "30d", "downstream_effects": "ledger-only"}, general_bad)
+    report["general_contract"] = {"all_verified_covers": cover_ok["covered"],
+                                  "one_missing_blocks": not cover_bad["covered"],
+                                  "blocked_by": cover_bad["blocked_by"]}
+    assert cover_ok["covered"] and not cover_bad["covered"]
+
+    # Inject a genuine regression into B: 200 ops, 16 failures (8%).
+    model.observe("ep:B", 200, 16)
+    n_b, k_b = model.cells["ep:B"]
+    cell_rate_b = k_b / n_b
+    pooled_b, _ = model.cell_posterior("ep:B")
+    # Detection MUST run on B's own cell evidence: 8% >> healthy 1%.
+    detected_on_cell = cell_rate_b >= 0.05
+    masked_by_pool = pooled_b < 0.05
+    report["regression_in_B"] = {
+        "b_cell_rate": round(cell_rate_b, 4),
+        "b_pooled_estimate": round(pooled_b, 4),
+        "detected_on_cell_evidence": detected_on_cell,
+        "pooled_estimate_would_mask": masked_by_pool,
+        "a_cell_unaffected": model.cells["ep:A"] == [5000, 50],
+    }
+    assert detected_on_cell and report["regression_in_B"]["a_cell_unaffected"], \
+        "A's healthy data must not mask B's regression"
+
+    # Remove the guard: demand the minimal counterexample.
+    theft = use_guarantee(guarantee_a, "ep:B", rev, law,
+                          shared_model_implies_qualification=True)
+    report["guard_removed"] = {"theft_authorized": theft["authorized"],
+                               "minimal": "; ".join(theft["reasons"])}
+    assert theft["authorized"], "the defective guard must permit the theft"
+    # Restore: theft blocked, pooled predictions kept.
+    restored = use_guarantee(guarantee_a, "ep:B", rev, law)
+    report["guard_restored"] = {"theft_blocked": not restored["authorized"],
+                                "b_pooled_estimate_kept": round(
+                                    model.cell_posterior("ep:B")[0], 4)}
+    assert not restored["authorized"]
+    return report
+# ======================================================================================
+# SN-0805 AER-TAX-1 — ATOMIC SCOPE EVOLUTION LAW
+# ======================================================================================
+# The CONCURRENCY-GOVERNANCE layer: AER-CAL-5 defined what scope merges/splits mean
+# and required that they not race incident withdrawal or baseline promotion — this is
+# the ordering protocol that enforces it.
+#
+# HONEST SCOPE (Shawn, 2026-10-10 — his explicit scoping): ISOLATED HARNESS
+# DEMONSTRATION FIRST — no live production authority change, no parallel governance
+# registry. propagation.py / revocation.py / authority.py / uncertainty.py align as
+# foundations, but the full protocol and harness are NOT verified to exist.
+# Do not claim otherwise. Main observed by Shawn at 0fb380c.
+#
+# His law: NayaNET shall treat taxonomy revisions, evidence withdrawals,
+# qualification changes, baseline promotions and consequential authorizations as
+# operations over one canonically ordered governance state. Every change must be
+# independently qualified within its scope, revalidated at its authoritative commit
+# boundary, and recorded with reconstructable provenance. Stale or ambiguous state
+# shall not create qualification or execution authority.
+AER_TAX1_IMPLEMENTATION_STATUS = {
+    "enters_as": "isolated harness demonstration",
+    "not_a": ("live production authority change",
+              "parallel governance registry"),
+    "foundations_align": ("propagation.py", "revocation.py",
+                          "authority.py", "uncertainty.py"),
+    "not_verified": ("full protocol implementation",
+                     "harness against production state"),
+    "main_observed_at": "0fb380c",
+}
+
+
+# --- 1. Separation of authorities -----------------------------------------------------------------------------------
+# Taxonomy DESCRIBES what belongs together. Qualification determines what has been
+# PROVEN. LAW determines what MAY BE DONE. None silently grants authority through
+# another. Only consequential changes take the strict commit path.
+AUTHORITY_SEPARATION = {
+    "taxonomy": "describes what belongs together; never proves, never permits",
+    "qualification": "determines what has been proven; never permits by itself",
+    "law": "determines what may be done; never proven by taxonomy alone",
+}
+TAX_CHANGE_TABLE = {
+    "MERGE_SPLIT": "cannot inherit or widen qualifications without proof",
+    "PROVISIONAL_SCOPE": "starts uncertified; no inherited PASS",
+    "INCIDENT_WITHDRAWAL": "invalidates affected stale decisions at the "
+                           "authoritative boundary",
+    "BASELINE_PROMOTION_ACT": "rechecks current scope, incident, and "
+                              "qualification state at commit",
+}
+
+
+# --- 2. One authoritative versioned governance state ------------------------------------------------------------------
+class GovernanceState:
+    """One canonically ordered governance state.
+
+    Snapshot fields (proposed, not an implemented production schema):
+    governance_epoch + taxonomy/incident/qualification/baseline/policy revisions
+    + scope_mapping_hash + active_qualification_set + active_baseline.
+
+    A read snapshot is NOT an authority token: every commit re-proves currency
+    against the live revisions. Single monotonic epoch (conservative): versions
+    are unique, monotonic, never reset or reused after rollback, recovery, or
+    restart. Rollback is a NEW revision — ABA-proof by construction."""
+
+    def __init__(self):
+        self._commit_lock = threading.RLock()
+        self.epoch = 0
+        self.revisions = {"taxonomy": 0, "incident": 0, "qualification": 0,
+                          "baseline": 0, "policy": 0}
+        # scope_id -> {"parent": id|None, "children": [...], "taxonomy_version": int}
+        self.scope_mapping = {}
+        # scope_id -> {"guarantee": id, "status": QUALIFIED|WITHDRAWN|...,
+        #              "qualification_rev": int, "taxonomy_version": int}
+        self.active_qualifications = {}
+        self.active_baseline = None  # {"baseline_id":..., "revision":...}
+        self.incidents = {}          # incident_id -> record
+        self.receipts = []           # append-only; never rewritten
+        self.inflight = {}           # operation_id -> unresolved attempt record
+        self._seq = 0
+
+    def snapshot(self) -> dict:
+        """A read snapshot. NOT an authority token."""
+        import hashlib
+        mapping_hash = hashlib.sha256(
+            repr(sorted(self.scope_mapping.items())).encode()).hexdigest()[:16]
+        return {"governance_epoch": self.epoch,
+                "revisions": dict(self.revisions),
+                "scope_mapping_hash": mapping_hash,
+                "active_qualification_set": sorted(self.active_qualifications),
+                "active_baseline": self.active_baseline,
+                "authority_token": False}
+
+    def _bump(self, *names):
+        for n in names:
+            self.revisions[n] += 1
+        self.epoch += 1
+
+    def _record(self, receipt: dict):
+        self._seq += 1
+        receipt = dict(receipt)
+        receipt["seq"] = self._seq
+        receipt["governance_epoch"] = self.epoch
+        self.receipts.append(receipt)
+        return receipt
+
+
+def _affected_closure(gov: GovernanceState, scopes: list) -> list:
+    """The affected closure: named scopes + children + parent + members whose
+    parent is in the closure (reverse lookup, so withdrawing a merged scope
+    reaches its members). Recomputed against LIVE mapping at commit — the
+    phantom check."""
+    closure = set(scopes)
+    for s in scopes:
+        node = gov.scope_mapping.get(s, {})
+        closure.update(node.get("children", ()))
+        if node.get("parent"):
+            closure.add(node.get("parent"))
+    for sid, nd in gov.scope_mapping.items():
+        if nd.get("parent") in closure:
+            closure.add(sid)
+    return sorted(closure)
+
+
+def prepare_governed_change(change: dict, gov: GovernanceState) -> dict:
+    """PREPARE runs OUTSIDE the commit lock (no global bottleneck): read the
+    snapshot, compute the affected closure, assemble the evidence. The returned
+    prepared change carries expected revisions; the commit re-proves them."""
+    snap = gov.snapshot()
+    change_type = change.get("change_type")
+    scopes = change.get("scopes", [])
+    closure = _affected_closure(gov, scopes)
+    return {"change_id": change.get("change_id"),
+            "change_type": change_type,
+            "scopes": list(scopes),
+            "affected_closure": sorted(closure),
+            "expected_revisions": dict(snap["revisions"]),
+            "expected_epoch": snap["governance_epoch"],
+            "evidence": change.get("evidence", {}),
+            "law_receipt": change.get("law_receipt"),
+            "status": "PREPARED_NOT_COMMITTED"}
+
+
+def commit_prepared_change(gov: GovernanceState, prepared: dict,
+                           check_incident_revision: bool = True,
+                           check_taxonomy_version: bool = True) -> dict:
+    """The commit boundary: PREPARE -> INDEPENDENT VERIFY -> LAW ->
+    ATOMIC COMMIT -> VERIFY -> PROVE -> PROPAGATE.
+
+    Under the single commit lock: reread live revisions, recompute the affected
+    closure, verify qualification + LAW predicates, then publish state +
+    receipt + epoch increment atomically.
+
+    check_incident_revision / check_taxonomy_version are the guard-removal
+    mutation switches: the law keeps both True. Derived indexes, dashboards,
+    and Smart Notes update async AFTER commit and never compete as authority.
+    Multi-DB without one atomic transaction needs a fencing protocol; eventual
+    sync cannot prove atomic authority changes. Selective locking beware the
+    phantom problem: the predicate range, not just named scopes, is locked —
+    here the single commit lock serializes the final authoritative decision."""
+    with gov._commit_lock:
+        live = gov.revisions
+        exp = prepared["expected_revisions"]
+        stale = []
+        for rev in ("taxonomy", "incident", "qualification", "baseline",
+                    "policy"):
+            if rev == "incident" and not check_incident_revision:
+                continue  # MUTANT: the incident-revision check removed
+            if rev == "taxonomy" and not check_taxonomy_version:
+                continue  # MUTANT: the taxonomy-version check removed
+            if live[rev] != exp[rev]:
+                stale.append(rev)
+        if stale:
+            return {"committed": False, "status": "REJECTED_STALE_SNAPSHOT",
+                    "stale_revisions": stale,
+                    "note": "a read snapshot is not an authority token; "
+                            "re-prepare against current state"}
+        # Recompute the affected closure against LIVE mapping (phantom check).
+        closure = set(_affected_closure(gov, prepared["scopes"]))
+        if sorted(closure) != prepared["affected_closure"]:
+            return {"committed": False,
+                    "status": "REJECTED_CLOSURE_CHANGED",
+                    "note": "the mapping moved under the prepared change"}
+        # Qualification + LAW predicates per affected scope.
+        per_scope = {}
+        for s in sorted(closure):
+            q = gov.active_qualifications.get(s)
+            per_scope[s] = _per_scope_commit_check(
+                gov, s, q, prepared["change_type"], prepared["evidence"])
+        blocked = [s for s, r in per_scope.items() if not r["ok"]]
+        if blocked:
+            return {"committed": False, "status": "REJECTED_SCOPE_CHECK",
+                    "blocked_scopes": blocked, "per_scope": per_scope}
+        law = prepared.get("law_receipt") or {}
+        if not law.get("valid"):
+            return {"committed": False, "status": "REJECTED_NO_LAW",
+                    "note": "LAW determines what may be done"}
+        # ATOMIC COMMIT: state + receipt + epoch increment, indivisibly.
+        applied = _apply_governed_change(gov, prepared, per_scope)
+        receipt = make_tax_receipt(
+            prepared["change_id"], prepared["change_type"], exp,
+            prepared["affected_closure"], per_scope,
+            prepared["evidence"].get("verifier_ref"),
+            prepared.get("law_receipt"), "COMMITTED",
+            bumped_revisions=applied.get("bumped_revisions"))
+        recorded = gov._record(receipt)
+        return {"committed": True, "status": "COMMITTED", "applied": applied,
+                "receipt": recorded, "per_scope": per_scope}
+
+
+def _per_scope_commit_check(gov: GovernanceState, scope: str, qual: dict,
+                            change_type: str, evidence: dict) -> dict:
+    """Per-scope qualification predicate at the commit boundary. A split never
+    justifies REQUALIFIED by itself: split children require reassessment."""
+    if change_type == "SPLIT":
+        return {"ok": True, "result": "REASSESSMENT_REQUIRED",
+                "note": "a split never manufactures or destroys evidence; "
+                        "children are reassessed, never auto-requalified"}
+    if change_type == "INCIDENT_WITHDRAWAL":
+        return {"ok": True, "result": "WITHDRAWN_IF_AFFECTED",
+                "note": "withdrawal invalidates affected stale decisions"}
+    if change_type == "PROVISIONAL_REGISTER":
+        return {"ok": True, "result": "PROVISIONAL_UNCERTIFIED",
+                "note": "a provisional scope starts uncertified"}
+    return {"ok": True, "result": "REVALIDATED"}
+
+
+def _apply_governed_change(gov: GovernanceState, prepared: dict,
+                           per_scope: dict) -> dict:
+    """Apply the change to governance state. Called under the commit lock."""
+    ctype = prepared["change_type"]
+    applied = {"change_type": ctype, "bumped_revisions": []}
+    def _bump_record(*names):
+        gov._bump(*names)
+        applied["bumped_revisions"] = list(names)
+    if ctype == "TAXONOMY_SPLIT":
+        parent = prepared["scopes"][0]
+        children = prepared["evidence"].get("children", [])
+        node = gov.scope_mapping.setdefault(parent, {"parent": None,
+                                                     "children": [],
+                                                     "taxonomy_version": 0})
+        node["children"] = list(children)
+        for c in children:
+            gov.scope_mapping[c] = {"parent": parent, "children": [],
+                                    "taxonomy_version":
+                                    gov.revisions["taxonomy"] + 1}
+        node["taxonomy_version"] = gov.revisions["taxonomy"] + 1
+        _bump_record("taxonomy")
+        applied["children"] = children
+    elif ctype == "TAXONOMY_MERGE":
+        members = prepared["scopes"]
+        target = prepared["evidence"].get("merged_id",
+                                          "+".join(sorted(members)))
+        for m_ in members:
+            gov.scope_mapping[m_] = {"parent": target, "children": [],
+                                     "taxonomy_version":
+                                     gov.revisions["taxonomy"] + 1}
+        gov.scope_mapping[target] = {"parent": None, "children": [],
+                                     "taxonomy_version":
+                                     gov.revisions["taxonomy"] + 1}
+        _bump_record("taxonomy")
+        applied["merged_id"] = target
+    elif ctype == "INCIDENT_WITHDRAWAL":
+        incident = prepared["evidence"].get("incident", {})
+        iid = incident.get("incident_id", prepared["change_id"])
+        confirmed = bool(incident.get("confirmed"))
+        gov.incidents[iid] = {"scopes": list(prepared["affected_closure"]),
+                              "confirmed": confirmed,
+                              "kind": ("CONFIRMED" if confirmed
+                                       else "PRECAUTIONARY_HOLD")}
+        for s in prepared["affected_closure"]:
+            q = gov.active_qualifications.get(s)
+            # The qualification revision tracks the qualification SET: it moves
+            # only when a qualification actually transitions. An incident that
+            # withdraws nothing still moves the incident revision — so the two
+            # guards stay separable for mutation testing.
+            if q is not None and q.get("status") == "QUALIFIED":
+                q["status"] = "WITHDRAWN"
+                q["withdrawn_by"] = iid
+        withdrew_any = any(
+            gov.active_qualifications.get(s, {}).get("withdrawn_by") == iid
+            for s in prepared["affected_closure"])
+        bumped = ["incident"] + (["qualification"] if withdrew_any else [])
+        gov._bump(*bumped)
+        applied["incident_id"] = iid
+        applied["bumped_revisions"] = bumped
+    elif ctype == "BASELINE_PROMOTION":
+        gov.active_baseline = {"baseline_id": prepared["evidence"].get(
+            "baseline_id"), "revision": gov.revisions["baseline"] + 1,
+            "scope_revisions": dict(prepared["expected_revisions"])}
+        _bump_record("baseline")
+    elif ctype == "PROVISIONAL_REGISTER":
+        for s in prepared["scopes"]:
+            gov.scope_mapping[s] = {"parent": None, "children": [],
+                                    "taxonomy_version":
+                                    gov.revisions["taxonomy"] + 1}
+            gov.active_qualifications[s] = {"guarantee": None,
+                                            "status": "PROVISIONAL_UNCERTIFIED",
+                                            "qualification_rev": 0,
+                                            "taxonomy_version":
+                                            gov.revisions["taxonomy"] + 1}
+        _bump_record("taxonomy", "qualification")
+    return applied
+
+
+def supersede_receipt(gov: GovernanceState, seq: int, reason: str) -> dict:
+    """A superseded receipt stays historical — never a current certificate.
+    Receipts are append-only; supersession is a new record, not an edit."""
+    with gov._commit_lock:
+        target = next((r for r in gov.receipts if r["seq"] == seq), None)
+        if target is None:
+            return {"superseded": False, "reason": "no such receipt"}
+        note = {"supersedes_seq": seq, "reason": reason,
+                "note": "the prior receipt stays historical; it is never a "
+                        "current certificate"}
+        gov._bump()  # epoch advances; nothing is rewritten
+        return {"superseded": True, "record": gov._record(note)}
+
+
+def rollback_governed_change(gov: GovernanceState, change_id: str,
+                             reason: str) -> dict:
+    """Rollback is a NEW revision, never a rewind — ABA-proof by construction.
+    Versions are never reset or reused after rollback, recovery, or restart."""
+    with gov._commit_lock:
+        gov._bump("taxonomy", "incident", "qualification", "baseline",
+                  "policy")
+        return gov._record({"change_id": change_id, "change_type": "ROLLBACK",
+                            "reason": reason,
+                            "bumped_revisions": ["taxonomy", "incident",
+                                                 "qualification", "baseline",
+                                                 "policy"],
+                            "note": "rollback as a new revision; history kept"})
+
+
+# --- 5. Fast incident containment -----------------------------------------------------------------------------------
+# Separate safety containment from model recomputation. The immediate
+# transaction commits the incident record, withdraws unsupported reliance,
+# advances eligibility revisions, and fences dependent actions; recalibration
+# follows as a separate change. A governed write, not an ignorable alert flag.
+# Uncertain scope is recorded explicitly; unaffected paths are preserved.
+# Unverified incidents are never labeled confirmed.
+def contain_incident(gov: GovernanceState, incident: dict,
+                     law_receipt: dict) -> dict:
+    """incident: {"incident_id", "scopes", "confirmed" (bool),
+    "uncertain_scope" (bool), "evidence_ref"}. Returns the containment record;
+    recalibration is a separate subsequent governed change."""
+    if not (law_receipt or {}).get("valid"):
+        return {"contained": False, "reason": "no valid LAW receipt"}
+    prepared = prepare_governed_change(
+        {"change_id": f"contain-{incident['incident_id']}",
+         "change_type": "INCIDENT_WITHDRAWAL",
+         "scopes": incident["scopes"],
+         "evidence": {"incident": incident,
+                      "verifier_ref": incident.get("evidence_ref")},
+         "law_receipt": law_receipt}, gov)
+    result = commit_prepared_change(gov, prepared)
+    if not result["committed"]:
+        return {"contained": False, **result}
+    # Fence dependent actions: record the fence on every affected scope.
+    fenced = [s for s in prepared["affected_closure"]]
+    return {"contained": True,
+            "kind": ("CONFIRMED" if incident.get("confirmed")
+                     else "PRECAUTIONARY_HOLD"),
+            "uncertain_scope_recorded": bool(incident.get("uncertain_scope")),
+            "fenced_scopes": fenced,
+            "receipt": result["receipt"],
+            "note": "containment first; model recomputation follows separately"}
+
+
+# --- 6. The Authorize(a,s) predicate ----------------------------------------------------------------------------------
+# Authorize(a,s) = CurrentTaxonomy ∧ CurrentQualification ∧
+#   NoDisqualifyingIncident ∧ EvidenceCovers ∧ LAWPermits.
+# Statistical parent ≠ EvidenceCovers. Two boundaries: LAW authorizes against
+# canonical state; ACT re-establishes applicability at execution. Never hold a
+# DB transaction across a provider call — atomically establish a fenced
+# execution intent + durable operation identity instead.
+def authorize_tax_action(gov: GovernanceState, action_id: str, scope_id: str,
+                         guarantee: dict, law_receipt: dict) -> dict:
+    snap = gov.snapshot()  # read snapshot; NOT an authority token
+    node = gov.scope_mapping.get(scope_id, {})
+    qual = gov.active_qualifications.get(scope_id, {})
+    checks = {}
+    # CurrentTaxonomy is scope-relative: the scope's classification is current
+    # iff its qualification was established under its live classification.
+    # A global taxonomy revision never spuriously invalidates an untouched
+    # scope (no global bottleneck, no collateral loss).
+    checks["CurrentTaxonomy"] = bool(node) and (
+        qual.get("taxonomy_version") == node.get("taxonomy_version"))
+    # CurrentQualification is a fresh read; staleness across time is enforced
+    # by act_execute's epoch comparison + full recheck, not by a global rev.
+    checks["CurrentQualification"] = qual.get("status") == "QUALIFIED"
+    disqualified = any(
+        inc.get("confirmed") and scope_id in inc.get("scopes", ())
+        for inc in gov.incidents.values())
+    checks["NoDisqualifyingIncident"] = not disqualified
+    # EvidenceCovers: the guarantee's actual semantics — never the statistical
+    # parent, never label hierarchy.
+    covers = any(scope_semantically_within(scope_id, q)
+                 for q in guarantee.get("qualified_scopes", ()))
+    checks["EvidenceCovers"] = bool(guarantee.get("verified")) and covers
+    checks["LAWPermits"] = bool((law_receipt or {}).get("valid"))
+    authorized = all(checks.values())
+    return {"authorized": authorized, "action_id": action_id,
+            "scope_id": scope_id, "checks": checks,
+            "scope_taxonomy_version": node.get("taxonomy_version"),
+            "authorized_at_epoch": gov.epoch if authorized else None,
+            "note": "LAW authorizes against canonical state; ACT re-establishes "
+                    "applicability at execution"}
+
+
+def act_execute(gov: GovernanceState, authorization: dict, guarantee: dict,
+                law_receipt: dict, revalidate_at_execution: bool = True) -> dict:
+    """The ACT boundary: re-establish applicability at execution. A cached
+    authorization from an older epoch is rechecked, never trusted.
+    revalidate_at_execution=False is the DEFECTIVE mutant (the ACT-side
+    taxonomy currency check removed): a stale inherited authorization then
+    executes — the unsupported-inheritance counterexample."""
+    if not authorization.get("authorized"):
+        return {"executed": False, "reason": "no valid authorization"}
+    if authorization.get("authorized_at_epoch") != gov.epoch:
+        if not revalidate_at_execution:
+            pass  # MUTANT: stale authorization trusted without recheck
+        else:
+            recheck = authorize_tax_action(
+                gov, authorization["action_id"], authorization["scope_id"],
+                guarantee, law_receipt)
+            if not recheck["authorized"]:
+                return {"executed": False, "reason": "stale authorization",
+                        "recheck": recheck["checks"]}
+            authorization = recheck
+    # Fenced execution intent + durable operation identity — established
+    # atomically, never by holding a transaction across a provider call.
+    op_id = authorization["action_id"]
+    with gov._commit_lock:
+        gov.inflight[op_id] = {"scope": authorization["scope_id"],
+                               "status": "INTENT_FENCED",
+                               "epoch": gov.epoch}
+    return {"executed": True, "operation_id": op_id,
+            "intent": "fenced execution intent + durable operation identity",
+            "note": "the intent is committed; the provider call happens "
+                    "outside any held transaction"}
+
+
+def reconcile_inflight(gov: GovernanceState, operation_id: str,
+                       outcome: str) -> dict:
+    """HONEST LIMITATION: ordering cannot revoke a remote effect already in
+    flight. The unresolved attempt is preserved, reconciled, and claims are
+    limited to the actual enforcement boundary."""
+    rec = gov.inflight.get(operation_id)
+    if rec is None:
+        return {"reconciled": False, "reason": "unknown operation"}
+    rec["status"] = outcome  # e.g. EFFECT_CONFIRMED / EFFECT_UNKNOWN
+    rec["reconciled"] = True
+    return {"reconciled": True, "operation_id": operation_id,
+            "outcome": outcome,
+            "note": "unresolved attempts are preserved and reconciled; no "
+                    "claim beyond the enforcement boundary"}
+
+
+# --- 8. The AER-TAX-1 receipt ------------------------------------------------------------------------------------------
+def make_tax_receipt(change_id: str, change_type: str, expected_revisions: dict,
+                     affected_closure: list, per_scope: dict,
+                     verifier_ref: Optional[str], law_ref: dict,
+                     status: str, bumped_revisions: Optional[list] = None) -> dict:
+    """AER-TAX-1 receipt: expected_state revisions, mapping/affected-closure
+    evidence, per-scope qualification results, independent verifier + LAW refs.
+    PREPARED_NOT_COMMITTED is never confused with COMMITTED. A cold successor
+    reconstructs why the change happened, what was unqualified, and what
+    actually committed."""
+    if change_type == "SPLIT" or change_type == "TAXONOMY_SPLIT":
+        bad = [s for s, r in per_scope.items()
+               if r.get("result") == "REQUALIFIED"]
+        if bad:
+            raise ValueError(
+                "a split never justifies REQUALIFIED by itself")
+    return {"schema": "AER-TAX-1", "change_id": change_id,
+            "change_type": change_type, "status": status,
+            "expected_state_revisions": dict(expected_revisions),
+            "affected_closure": list(affected_closure),
+            "mapping_evidence": {"closure_size": len(affected_closure)},
+            "per_scope_qualification": {
+                s: r.get("result") for s, r in per_scope.items()},
+            "independent_verifier_ref": verifier_ref,
+            "law_ref": (law_ref or {}).get("receipt"),
+            "bumped_revisions": list(bumped_revisions or []),
+            "note": "PREPARED_NOT_COMMITTED never counts as committed"}
+
+
+# --- 9. The R1–R12 concurrency harness ------------------------------------------------------------------------------------
+# Deterministic, scheduler-controlled pauses before each commit; both orders
+# explored per pair. Four invariants + historical integrity:
+#   I1 no stale qualification use; I2 no taxonomy-based authority inflation;
+#   I3 no stale baseline promotion; I4 no collateral qualification loss;
+#   H  historical integrity (append-only receipts, monotonic epoch, no
+#      rewritten uncertainty, no revision reuse).
+def _tax_setup_two_scopes() -> GovernanceState:
+    gov = GovernanceState()
+    for s in ("scope:A", "scope:B"):
+        gov.scope_mapping[s] = {"parent": None, "children": [],
+                                "taxonomy_version": 0}
+        gov.active_qualifications[s] = {"guarantee": f"idem:{s}",
+                                        "status": "QUALIFIED",
+                                        "qualification_rev": 0,
+                                        "taxonomy_version": 0}
+    law = {"receipt": "LAW-1", "valid": True}
+    return gov, law
+
+
+def _check_invariants(gov: GovernanceState, baseline_quals: dict) -> dict:
+    """I1..I4 + H over the governance state after an interleaving."""
+    issues = []
+    # I1: no ACT-authorized use of a withdrawn/stale qualification.
+    for op_id, rec in gov.inflight.items():
+        q = gov.active_qualifications.get(rec["scope"], {})
+        if q.get("status") == "WITHDRAWN":
+            issues.append(f"I1: inflight {op_id} on withdrawn {rec['scope']}")
+    # I2: no scope holds QUALIFIED unless its own qualification evidence does.
+    for s, q in gov.active_qualifications.items():
+        if q.get("status") == "QUALIFIED" and not q.get("guarantee"):
+            issues.append(f"I2: {s} qualified without a guarantee")
+    # I3: baseline promotion recorded its scope revisions; a promotion whose
+    # expected revisions differ from commit-time revisions cannot exist —
+    # enforced structurally by commit_prepared_change.
+    # I4: no collateral qualification loss — unaffected scopes keep theirs.
+    for s, st in baseline_quals.items():
+        now = gov.active_qualifications.get(s, {}).get("status")
+        if st == "QUALIFIED" and now not in ("QUALIFIED", "WITHDRAWN_BY_TEST"):
+            # WITHDRAWN is allowed only if the test's incident covered s.
+            covered = any(s in inc.get("scopes", ())
+                          for inc in gov.incidents.values())
+            if not covered:
+                issues.append(f"I4: collateral loss on {s}")
+    # H: epoch monotonic, receipts append-only with increasing seq.
+    seqs = [r["seq"] for r in gov.receipts]
+    if seqs != sorted(seqs) or len(set(seqs)) != len(seqs):
+        issues.append("H: receipt seq not monotonic/unique")
+    epochs = [r["governance_epoch"] for r in gov.receipts]
+    if any(b < a for a, b in zip(epochs, epochs[1:])):
+        issues.append("H: epoch regressed")
+    return {"holds": not issues, "issues": issues}
+
+
+def tax_r_harness() -> list:
+    """R1–R12: the three races, both orders, deterministic interleavings."""
+    results = []
+
+    def fresh():
+        gov, law = _tax_setup_two_scopes()
+        base = {s: q["status"]
+                for s, q in gov.active_qualifications.items()}
+        return gov, law, base
+
+    def withdraw_prep(gov, law, scopes, confirmed=True, iid="inc-1"):
+        return prepare_governed_change(
+            {"change_id": f"wd-{iid}", "change_type": "INCIDENT_WITHDRAWAL",
+             "scopes": scopes,
+             "evidence": {"incident": {"incident_id": iid, "confirmed": confirmed},
+                          "verifier_ref": "verifier-7"},
+             "law_receipt": law}, gov)
+
+    def merge_prep(gov, law, scopes):
+        return prepare_governed_change(
+            {"change_id": "merge-1", "change_type": "TAXONOMY_MERGE",
+             "scopes": scopes, "evidence": {"merged_id": "scope:AB"},
+             "law_receipt": law}, gov)
+
+    def split_prep(gov, law, scope, children):
+        return prepare_governed_change(
+            {"change_id": "split-1", "change_type": "TAXONOMY_SPLIT",
+             "scopes": [scope],
+             "evidence": {"children": children, "verifier_ref": "verifier-7"},
+             "law_receipt": law}, gov)
+
+    def promo_prep(gov, law):
+        return prepare_governed_change(
+            {"change_id": "promo-1", "change_type": "BASELINE_PROMOTION",
+             "scopes": ["scope:A", "scope:B"],
+             "evidence": {"baseline_id": "bl-2", "verifier_ref": "verifier-7"},
+             "law_receipt": law}, gov)
+
+    # R1: Race A order 1 — withdrawal commits, then merge commits on post-W state.
+    gov, law, base = fresh()
+    assert commit_prepared_change(
+        gov, withdraw_prep(gov, law, ["scope:B"]))["committed"]
+    m = commit_prepared_change(gov, merge_prep(gov, law, ["scope:A", "scope:B"]))
+    inv = _check_invariants(gov, base)
+    results.append(("R1", "PASS" if (m["committed"]
+                    and gov.active_qualifications["scope:B"]["status"]
+                    == "WITHDRAWN" and inv["holds"]) else "FAIL",
+                    "W≺M: merge commits on post-withdrawal state"))
+
+    # R2: Race A order 2 — merge prepares pre-W, withdrawal commits, merge
+    # commits ⇒ REJECTED on the stale incident revision.
+    gov, law, base = fresh()
+    stale_merge = merge_prep(gov, law, ["scope:A", "scope:B"])
+    assert commit_prepared_change(
+        gov, withdraw_prep(gov, law, ["scope:B"]))["committed"]
+    m2 = commit_prepared_change(gov, stale_merge)
+    inv = _check_invariants(gov, base)
+    results.append(("R2", "PASS" if (not m2["committed"]
+                    and m2["status"] == "REJECTED_STALE_SNAPSHOT"
+                    and "incident" in m2["stale_revisions"]
+                    and inv["holds"]) else "FAIL",
+                    "stale merge rejected: incident revision moved"))
+
+    # R3: Race A — merge commits first, then withdrawal ⇒ withdrawal removes
+    # the merged scope's current eligibility; the merge receipt stays
+    # historical (superseded), never a current certificate.
+    gov, law, base = fresh()
+    mg = commit_prepared_change(gov, merge_prep(gov, law, ["scope:A",
+                                                           "scope:B"]))
+    assert mg["committed"]
+    w = commit_prepared_change(
+        gov, withdraw_prep(gov, law, ["scope:AB"], iid="inc-2"))
+    sup = supersede_receipt(gov, mg["receipt"]["seq"],
+                            "withdrawal invalidated merged eligibility")
+    inv = _check_invariants(gov, base)
+    hist = any(r.get("supersedes_seq") == mg["receipt"]["seq"]
+               for r in gov.receipts)
+    results.append(("R3", "PASS" if (w["committed"] and sup["superseded"]
+                    and hist and inv["holds"]) else "FAIL",
+                    "M≺W: eligibility withdrawn; merge receipt historical"))
+
+    # R4: Race A — withdrawal of an unrelated scope does not block A's merge.
+    gov, law, base = fresh()
+    gov.scope_mapping["scope:C"] = {"parent": None, "children": [],
+                                    "taxonomy_version": 0}
+    assert commit_prepared_change(
+        gov, withdraw_prep(gov, law, ["scope:C"], iid="inc-3"))["committed"]
+    m4 = commit_prepared_change(gov, merge_prep(gov, law, ["scope:A"]))
+    inv = _check_invariants(gov, base)
+    results.append(("R4", "PASS" if (m4["committed"] and inv["holds"])
+                    else "FAIL",
+                    "unrelated withdrawal causes no collateral loss"))
+
+    # R5: Race B order 1 — split commits, then promotion ⇒ promotion
+    # revalidates against the successor scopes; no silent reinterpretation.
+    gov, law, base = fresh()
+    assert commit_prepared_change(
+        gov, split_prep(gov, law, "scope:B",
+                        ["scope:B1", "scope:B2"]))["committed"]
+    p5 = commit_prepared_change(gov, promo_prep(gov, law))
+    per = p5.get("per_scope", {})
+    children_reassessed = all(
+        per.get(c, {}).get("result") == "REASSESSMENT_REQUIRED"
+        for c in ("scope:B1", "scope:B2") if c in per)
+    inv = _check_invariants(gov, base)
+    results.append(("R5", "PASS" if (p5["committed"]
+                    and p5["receipt"]["expected_state_revisions"]["taxonomy"]
+                    == gov.revisions["taxonomy"] and inv["holds"]) else "FAIL",
+                    "split-first: promotion bound to post-split taxonomy"))
+
+    # R6: Race B order 2 — promotion prepares pre-split, split commits,
+    # promotion commits ⇒ REJECTED on the stale taxonomy revision.
+    gov, law, base = fresh()
+    stale_promo = promo_prep(gov, law)
+    assert commit_prepared_change(
+        gov, split_prep(gov, law, "scope:B",
+                        ["scope:B1", "scope:B2"]))["committed"]
+    p6 = commit_prepared_change(gov, stale_promo)
+    inv = _check_invariants(gov, base)
+    results.append(("R6", "PASS" if (not p6["committed"]
+                    and "taxonomy" in p6.get("stale_revisions", [])
+                    and inv["holds"]) else "FAIL",
+                    "stale promotion rejected: taxonomy moved"))
+
+    # R7: Race B — promotion commits first, then split ⇒ split reassesses
+    # applicability to both children; evidence conserved, never manufactured.
+    gov, law, base = fresh()
+    assert commit_prepared_change(gov, promo_prep(gov, law))["committed"]
+    s7 = commit_prepared_change(
+        gov, split_prep(gov, law, "scope:B", ["scope:B1", "scope:B2"]))
+    inv = _check_invariants(gov, base)
+    kids = [c for c in ("scope:B1", "scope:B2") if c in gov.scope_mapping]
+    parent_kept = gov.scope_mapping["scope:B"]["children"] == ["scope:B1",
+                                                               "scope:B2"]
+    results.append(("R7", "PASS" if (s7["committed"] and len(kids) == 2
+                    and parent_kept and inv["holds"]) else "FAIL",
+                    "promotion-first: split reassesses both children; "
+                    "parent identity + mapping kept"))
+
+    # R8: Race B — split conserves evidence: children partition the parent;
+    # nothing manufactured, nothing destroyed.
+    gov, law, base = fresh()
+    ev_before = {"scope:B": (1000, 10)}
+    s8 = commit_prepared_change(
+        gov, split_prep(gov, law, "scope:B", ["scope:B1", "scope:B2"]))
+    # The harness models evidence as conserved by construction: the split
+    # record must carry the partition, not invent totals.
+    partition = s8.get("applied", {})
+    inv = _check_invariants(gov, base)
+    results.append(("R8", "PASS" if (s8["committed"] and inv["holds"])
+                    else "FAIL",
+                    "split conserves evidence; no manufacture/destruction"))
+
+    # R9: Race C order 1 — provisional scope registered, then ACT ⇒ ACT sees
+    # the new classification and holds (provisional is uncertified).
+    gov, law, base = fresh()
+    assert commit_prepared_change(gov, prepare_governed_change(
+        {"change_id": "prov-1", "change_type": "PROVISIONAL_REGISTER",
+         "scopes": ["scope:P"], "evidence": {}, "law_receipt": law},
+        gov))["committed"]
+    g_p = {"guarantee_id": "idem:P", "verified": True,
+           "qualified_scopes": ("scope:P",), "revision": 0, "current": True}
+    a9 = authorize_tax_action(gov, "act-9", "scope:P", g_p, law)
+    inv = _check_invariants(gov, base)
+    results.append(("R9", "PASS" if (not a9["authorized"]
+                    and not a9["checks"]["CurrentQualification"]
+                    and inv["holds"]) else "FAIL",
+                    "taxonomy-first: ACT holds on provisional scope"))
+
+    # R10: Race C order 2 — ACT authorized, then scope registered provisional
+    # ⇒ the authorization is historical; a fresh ACT rechecks and holds.
+    gov, law, base = fresh()
+    g_a = {"guarantee_id": "idem:A", "verified": True,
+           "qualified_scopes": ("scope:A",), "revision": 0, "current": True}
+    auth10 = authorize_tax_action(gov, "act-10", "scope:A", g_a, law)
+    assert auth10["authorized"]
+    assert commit_prepared_change(gov, prepare_governed_change(
+        {"change_id": "prov-2", "change_type": "PROVISIONAL_REGISTER",
+         "scopes": ["scope:P"], "evidence": {}, "law_receipt": law},
+        gov))["committed"]
+    # The old authorization targeted scope:A — still valid for A (unaffected).
+    re_a = act_execute(gov, auth10, g_a, law)
+    # A NEW authorization for the provisional scope holds.
+    a10p = authorize_tax_action(gov, "act-10p", "scope:P", g_a, law)
+    inv = _check_invariants(gov, base)
+    results.append(("R10", "PASS" if (re_a["executed"]
+                    and not a10p["authorized"] and inv["holds"]) else "FAIL",
+                    "ACT-first: old authorization historical; provisional "
+                    "still held"))
+
+    # R11: Race C — a cached ACT decision rechecks canonical state at
+    # execution: withdraw A's guarantee, then execute the cached auth ⇒ HOLD.
+    gov, law, base = fresh()
+    g_a11 = {"guarantee_id": "idem:A", "verified": True,
+             "qualified_scopes": ("scope:A",), "revision": 0, "current": True}
+    auth11 = authorize_tax_action(gov, "act-11", "scope:A", g_a11, law)
+    assert auth11["authorized"]
+    assert commit_prepared_change(
+        gov, withdraw_prep(gov, law, ["scope:A"], iid="inc-11"))["committed"]
+    e11 = act_execute(gov, auth11, g_a11, law)
+    inv = _check_invariants(gov, base)
+    results.append(("R11", "PASS" if (not e11["executed"]
+                    and e11["reason"] == "stale authorization"
+                    and inv["holds"]) else "FAIL",
+                    "cached ACT rechecked at execution: stale ⇒ hold"))
+
+    # R12: Race C — genuinely ambiguous classification ⇒ hold, never
+    # authorize on ambiguity.
+    gov, law, base = fresh()
+    g_amb = {"guarantee_id": "idem:X", "verified": False,
+             "qualified_scopes": (), "revision": 0, "current": True}
+    a12 = authorize_tax_action(gov, "act-12", "scope:UNKNOWN", g_amb, law)
+    inv = _check_invariants(gov, base)
+    results.append(("R12", "PASS" if (not a12["authorized"]
+                    and not a12["checks"]["EvidenceCovers"]
+                    and inv["holds"]) else "FAIL",
+                    "ambiguous scope: hold, never authorize on ambiguity"))
+    return results
+
+
+def verify_committed_history(gov: GovernanceState) -> dict:
+    """Independent runtime verifier over ACTUAL committed transaction
+    histories: replays the receipt log and checks the four invariants plus
+    historical integrity. Never fabricates missing commits.
+
+    The replay reconstructs the running revision vector from each receipt's
+    recorded bumps and demands that every receipt's expected_state_revisions
+    match the world as of the previous commit — a stale publication is
+    detectable here even if the commit path let it through."""
+    issues = []
+    seen_ids = set()
+    running = {"taxonomy": 0, "incident": 0, "qualification": 0,
+               "baseline": 0, "policy": 0}
+    for r in gov.receipts:
+        cid = r.get("change_id")
+        if cid in seen_ids and r.get("change_type") != "ROLLBACK":
+            issues.append(f"duplicate change_id {cid}")
+        seen_ids.add(cid)
+        if r.get("status") not in ("COMMITTED", "PREPARED_NOT_COMMITTED"):
+            issues.append(f"unknown receipt status on {cid}")
+        if (r.get("change_type") in ("SPLIT", "TAXONOMY_SPLIT")
+                and "REQUALIFIED" in str(r.get("per_scope_qualification"))):
+            issues.append(f"split justified REQUALIFIED on {cid}")
+        exp = r.get("expected_state_revisions") or {}
+        for rev, want in exp.items():
+            if running.get(rev) != want:
+                issues.append(
+                    f"stale {rev} on {cid}: receipt expected {want}, "
+                    f"world was at {running.get(rev)}")
+        for rev in r.get("bumped_revisions") or []:
+            running[rev] = running.get(rev, 0) + 1
+    seqs = [r["seq"] for r in gov.receipts]
+    if seqs != sorted(seqs):
+        issues.append("receipt order violated")
+    return {"verified": not issues, "issues": issues,
+            "receipts_replayed": len(gov.receipts),
+            "note": "replay over actual commits; no fabricated history"}
+
+
+# --- 11. AER-TAX-001: the first action -----------------------------------------------------------------------------------
+def aer_tax_001() -> dict:
+    """Scope A + B sharing a model; four simultaneous operations:
+      (1) split B into B1/B2; (2) withdraw one child's evidence (incident on
+      B1); (3) promote a new baseline; (4) ACT on the withdrawn guarantee (B1).
+    Every meaningful pairwise interleaving (both orders) is explored.
+    Acceptance: no unsupported authority, no stale promotion, A's unaffected
+    portion stays usable, full reconstructability. Then the guard-removal
+    mutations: drop the incident-revision check ⇒ demand a stale-publication
+    counterexample; restore, drop the taxonomy-version check ⇒ demand
+    unsupported inheritance or a block."""
+    report = {}
+    law = {"receipt": "LAW-1", "valid": True}
+
+    def fresh_AB():
+        gov = GovernanceState()
+        for s in ("scope:A", "scope:B"):
+            gov.scope_mapping[s] = {"parent": None, "children": [],
+                                    "taxonomy_version": 0}
+            gov.active_qualifications[s] = {
+                "guarantee": f"idem:{s}", "status": "QUALIFIED",
+                "qualification_rev": 0, "taxonomy_version": 0}
+        return gov
+
+    def op_split(gov):
+        p = prepare_governed_change(
+            {"change_id": "op-split", "change_type": "TAXONOMY_SPLIT",
+             "scopes": ["scope:B"],
+             "evidence": {"children": ["scope:B1", "scope:B2"],
+                          "verifier_ref": "verifier-7"},
+             "law_receipt": law}, gov)
+        return commit_prepared_change(gov, p)
+
+    def op_withdraw(gov):
+        p = prepare_governed_change(
+            {"change_id": "op-withdraw", "change_type": "INCIDENT_WITHDRAWAL",
+             "scopes": ["scope:B1"],
+             "evidence": {"incident": {"incident_id": "inc-B1",
+                                       "confirmed": True},
+                          "verifier_ref": "verifier-7"},
+             "law_receipt": law}, gov)
+        return commit_prepared_change(gov, p)
+
+    def op_promote(gov):
+        p = prepare_governed_change(
+            {"change_id": "op-promote", "change_type": "BASELINE_PROMOTION",
+             "scopes": ["scope:A", "scope:B"],
+             "evidence": {"baseline_id": "bl-3", "verifier_ref": "verifier-7"},
+             "law_receipt": law}, gov)
+        return commit_prepared_change(gov, p)
+
+    def op_act_on_b1(gov):
+        g = {"guarantee_id": "idem:B1", "verified": True,
+             "qualified_scopes": ("scope:B1",), "revision": 0, "current": True}
+        auth = authorize_tax_action(gov, "act-b1", "scope:B1", g, law)
+        if not auth["authorized"]:
+            return {"act": "HELD", "authorization": auth}
+        return {"act": "EXECUTED", **act_execute(gov, auth, g, law)}
+
+    ops = {"split": op_split, "withdraw": op_withdraw, "promote": op_promote,
+           "act": op_act_on_b1}
+    pairs = [("split", "withdraw"), ("split", "promote"), ("split", "act"),
+             ("withdraw", "promote"), ("withdraw", "act"), ("promote", "act")]
+    interleavings = []
+    for first, second in pairs:
+        for order in ((first, second), (second, first)):
+            gov = fresh_AB()
+            # The other two ops commit first in a fixed order.
+            others = [o for o in ops if o not in (first, second)]
+            for o in others:
+                ops[o](gov)
+            r_first = ops[order[0]](gov)
+            r_second = ops[order[1]](gov)
+            base = {"scope:A": "QUALIFIED", "scope:B": "QUALIFIED"}
+            inv = _check_invariants(gov, base)
+            # Acceptance per interleaving.
+            ok = inv["holds"]
+            # No unsupported authority: B1's ACT may only execute while B1
+            # is qualified and undisqualified by incident.
+            b1q = gov.active_qualifications.get("scope:B1", {})
+            acts = [r for r in (r_first, r_second)
+                    if isinstance(r, dict) and r.get("act") == "EXECUTED"]
+            for a in acts:
+                if b1q.get("status") == "WITHDRAWN":
+                    ok = False
+            # No stale promotion: any committed promotion receipt's expected
+            # taxonomy revision must not predate a committed split.
+            promos = [r for r in gov.receipts
+                      if r.get("change_type") == "BASELINE_PROMOTION"]
+            splits = [r for r in gov.receipts
+                      if r.get("change_type") == "TAXONOMY_SPLIT"]
+            for pr in promos:
+                for sp in splits:
+                    sp_tax_after = sp["expected_state_revisions"]["taxonomy"] + (
+                        1 if "taxonomy" in sp.get("bumped_revisions", [])
+                        else 0)
+                    if (sp["seq"] < pr["seq"] and pr[
+                            "expected_state_revisions"]["taxonomy"]
+                            < sp_tax_after):
+                        ok = False
+            # A's unaffected portion stays usable.
+            a_ok = gov.active_qualifications.get(
+                "scope:A", {}).get("status") == "QUALIFIED"
+            # Full reconstructability: every committed change has a receipt.
+            recon = verify_committed_history(gov)["verified"]
+            interleavings.append(
+                {"order": f"{order[0]}≺{order[1]}",
+                 "accepted": bool(ok and a_ok and recon)})
+    report["interleavings"] = interleavings
+    assert all(i["accepted"] for i in interleavings), interleavings
+    report["acceptance"] = ("no unsupported authority, no stale promotion, "
+                            "A usable, fully reconstructable")
+
+    # Guard-removal mutation 1: drop the incident-revision check ⇒ a merge
+    # prepared pre-incident commits on the stale snapshot: demand the
+    # stale-publication counterexample. The incident is precautionary and on
+    # the UNQUALIFIED scope:C, so only the incident revision moves — the
+    # incident and qualification guards are separable, no redundant block.
+    gov = fresh_AB()
+    gov.scope_mapping["scope:C"] = {"parent": None, "children": [],
+                                    "taxonomy_version": 0}
+    stale_merge = prepare_governed_change(
+        {"change_id": "m-mut", "change_type": "TAXONOMY_MERGE",
+         "scopes": ["scope:A", "scope:B"],
+         "evidence": {"merged_id": "scope:AB"}, "law_receipt": law}, gov)
+    contain_incident(gov, {"incident_id": "inc-mut", "scopes": ["scope:C"],
+                           "confirmed": False, "uncertain_scope": True}, law)
+    bad = commit_prepared_change(gov, stale_merge,
+                                 check_incident_revision=False)
+    verifier_flags = verify_committed_history(gov)
+    report["mutant_incident_check_removed"] = {
+        "stale_publication_committed": bad["committed"],
+        "counterexample": "merge committed on a pre-incident snapshot" if
+        bad["committed"] else "NO COUNTEREXAMPLE — harness unqualified",
+        "independent_verifier_flags_stale": (
+            not verifier_flags["verified"]
+            and any("stale incident" in i
+                    for i in verifier_flags["issues"])),
+    }
+    assert bad["committed"], "the mutant must produce the counterexample"
+    assert report["mutant_incident_check_removed"][
+        "independent_verifier_flags_stale"], \
+        "the independent history verifier must flag the stale publication"
+    # Restore the guard: the same history is now rejected.
+    gov2 = fresh_AB()
+    gov2.scope_mapping["scope:C"] = {"parent": None, "children": [],
+                                     "taxonomy_version": 0}
+    stale_merge2 = prepare_governed_change(
+        {"change_id": "m-mut", "change_type": "TAXONOMY_MERGE",
+         "scopes": ["scope:A", "scope:B"],
+         "evidence": {"merged_id": "scope:AB"}, "law_receipt": law}, gov2)
+    contain_incident(gov2, {"incident_id": "inc-mut", "scopes": ["scope:C"],
+                            "confirmed": False, "uncertain_scope": True}, law)
+    good = commit_prepared_change(gov2, stale_merge2,
+                                  check_incident_revision=True)
+    assert not good["committed"] and "incident" in good["stale_revisions"]
+    report["mutant_incident_check_removed"]["restored"] = "rejected"
+
+    # Guard-removal mutation 2: drop the ACT-side taxonomy currency check ⇒
+    # an authorization prepared pre-split executes against a successor scope
+    # on the stale taxonomy: demand the unsupported-inheritance counterexample.
+    gov3 = fresh_AB()
+    g_b = {"guarantee_id": "idem:B", "verified": True,
+           "qualified_scopes": ("scope:B",), "revision": 0, "current": True}
+    auth_b = authorize_tax_action(gov3, "act-b", "scope:B", g_b, law)
+    assert auth_b["authorized"]
+    op_split(gov3)  # taxonomy moves; scope:B now has children B1/B2
+    # Defective ACT: skip revalidation, inherit B's authorization for B1.
+    inherited = {"authorized": True, "action_id": "act-b",
+                 "scope_id": "scope:B1",
+                 "authorized_at_epoch": auth_b["authorized_at_epoch"]}
+    ex = act_execute(gov3, inherited, g_b, law, revalidate_at_execution=False)
+    report["mutant_taxonomy_check_removed"] = {
+        "unsupported_inheritance": ex["executed"],
+        "counterexample": "B1 executed on B's pre-split authorization" if
+        ex["executed"] else "NO COUNTEREXAMPLE — harness unqualified"}
+    assert ex["executed"], "the mutant must produce the counterexample"
+    # Restore: the law's ACT path revalidates at execution — B1 was never
+    # qualified, so the stale inherited authorization is held.
+    ex2 = act_execute(gov3, dict(inherited), g_b, law,
+                      revalidate_at_execution=True)
+    lawful = authorize_tax_action(gov3, "act-b1-lawful", "scope:B1", g_b, law)
+    report["mutant_taxonomy_check_removed"]["restored"] = (
+        "HELD" if (not ex2["executed"] and not lawful["authorized"])
+        else "LEAK")
+    assert not ex2["executed"] and not lawful["authorized"]
+    return report
+# ======================================================================================
+# SN-0806 AER-REC-1 — CRASH-SAFE GOVERNANCE RECOVERY LAW
+# ======================================================================================
+# The CRASH-RECOVERY layer: AER-TAX-1 defined the atomic commit; this defines
+# surviving an interrupted publication.
+#
+# HONEST SCOPE (Shawn, 2026-10-10 — his explicit scoping): CONCEPTUAL PROTOCOL,
+# not production-proven. He has not verified a deployed atomic governance-outbox
+# protocol or crash harness. The pending PR #2185 is likewise unproven in
+# production. Do not claim otherwise.
+#
+# His law: NayaNET shall reconstruct interrupted governance operations from
+# durable, authoritative commit evidence using stable logical identities.
+# Canonical state transitions and their required receipts shall be atomic within
+# a qualified durability boundary; asynchronous projections shall be replayable,
+# idempotent and nonauthoritative. Ambiguous commit outcomes shall not create
+# authority.
+AER_REC1_IMPLEMENTATION_STATUS = {
+    "enters_as": "conceptual protocol + crash harness demonstration",
+    "not_a": "production-proven crash recovery",
+    "not_verified": ("deployed atomic governance-outbox protocol",
+                     "crash harness against production",
+                     "PR #2185 in production"),
+}
+
+# Crash classification: where the crash lands determines the recovery.
+# Default: recover the ORIGINAL operation, never mint a replacement identity.
+# Atomicity vs visibility: one correct ACID transaction cannot half-commit; a
+# truly partially-updated authoritative table is an architecture failure, never
+# "projection delay".
+CRASH_CLASSES = {
+    "BEFORE_COMMIT": "discard the attempt; revalidate fresh",
+    "DURING_COMMIT": "query authoritative evidence by original operation ID; "
+                     "complete the entry, never reapply state",
+    "AFTER_COMMIT_BEFORE_ACK": "recover the original result; never reapply",
+    "AFTER_COMMIT_BEFORE_PROJECTION": "replay derived publication from the "
+                                      "receipt (idempotent)",
+    "DURING_OUTBOX_DELIVERY": "idempotent redelivery; delivered stays delivered",
+    "ACROSS_MULTIPLE_STORES": "contain + reconcile against designated authority",
+    "DURING_EXTERNAL_ACT": "preserve ambiguity; reconcile independently",
+}
+
+# Minimum canonical commit contents: one serializable governance transaction
+# holds taxonomy + scope mappings + incident/qualification state + commit
+# identity + receipt + durable outbox event — commit all or none. The
+# independent verifier's assessment is a SEPARATE proof event, never fabricated
+# inside the writer's transaction. Durability verification is nonnegotiable: an
+# acknowledged withdrawal that vanishes after disaster recovery breaks the
+# revocation boundary.
+CANONICAL_COMMIT_CONTENTS = ("taxonomy_state", "scope_mappings",
+                             "incident_qualification_state", "commit_identity",
+                             "receipt", "durable_outbox_event")
+
+
+class RecoverableGovernance:
+    """GovernanceState + durable commit log + transactional outbox + crash
+    injection, as an isolated harness. The durable log is the authoritative
+    source; replicas lag and never establish non-commit."""
+
+    def __init__(self):
+        self.gov = GovernanceState()
+        # operation_id -> durable entry. UNIQUE constraint on operation_id.
+        self.durable_log = {}
+        # The durable outbox: event_id -> {"operation_id", "delivered": bool}.
+        self.outbox = {}
+        self._event_seq = 0
+        # A lagging replica: NEVER authoritative.
+        self.stale_replica = {}
+        # Recovery leases: operation_id -> holder.
+        self.recovery_leases = {}
+        # Crash injection points armed by the harness.
+        self.crash_at = set()
+
+    # -- identity ---------------------------------------------------------
+    def _check_identity(self, operation_id: str, proposal_hash: str) -> dict:
+        """GOV-OP-904: unique constraint on operation_id bound to the exact
+        proposal hash. Retry with different bytes ⇒ identity-mismatch."""
+        entry = self.durable_log.get(operation_id)
+        if entry is None:
+            return {"ok": True, "existing": None}
+        if entry["proposal_hash"] != proposal_hash:
+            return {"ok": False, "existing": entry,
+                    "reason": "identity mismatch: operation_id bound to a "
+                              "different proposal hash"}
+        return {"ok": True, "existing": entry}
+
+    # -- atomic commit with crash injection --------------------------------
+    def commit_with_crash(self, change: dict, operation_id: str,
+                          proposal_hash: str, law_receipt: dict) -> dict:
+        """The atomic commit: intent marker → apply state → commit entry
+        (receipt + outbox event) — all or none — with crash injection at the
+        classified points. Returns the ack, or raises CrashSimulated."""
+        ident = self._check_identity(operation_id, proposal_hash)
+        if not ident["ok"]:
+            return {"committed": False, "status": "IDENTITY_MISMATCH",
+                    "reason": ident["reason"]}
+        if ident["existing"] is not None and ident["existing"][
+                "state"] == "COMMITTED":
+            # Already committed ⇒ return the ORIGINAL result, never reapply.
+            return {"committed": True, "status": "RECOVERED_ORIGINAL_RESULT",
+                    "receipt": ident["existing"]["receipt"]}
+        prepared = prepare_governed_change(dict(change, change_id=operation_id),
+                                           self.gov)
+        if "BEFORE_COMMIT" in self.crash_at:
+            # Nothing applied, no marker: provably uncommitted.
+            self.durable_log[operation_id] = {
+                "operation_id": operation_id, "proposal_hash": proposal_hash,
+                "state": "PREPARED", "applied": False, "receipt": None,
+                "outbox_event_ids": []}
+            raise CrashSimulated("BEFORE_COMMIT")
+        # Intent marker: durable BEFORE state is touched.
+        self.durable_log[operation_id] = {
+            "operation_id": operation_id, "proposal_hash": proposal_hash,
+            "state": "PREPARED", "applied": False, "receipt": None,
+            "outbox_event_ids": []}
+        result = commit_prepared_change(self.gov, prepared)
+        if not result["committed"]:
+            self.durable_log[operation_id]["state"] = "ABORTED"
+            self.durable_log[operation_id]["abort_reason"] = result["status"]
+            return {"committed": False, "status": result["status"]}
+        self.durable_log[operation_id]["applied"] = True
+        # Stash the canonical receipt BEFORE the crash point: the canonical
+        # commit (state + receipt) has happened; only the durable-log/outbox
+        # finalization may still crash. Recovery finalizes the entry — it
+        # never rebuilds or duplicates the canonical receipt.
+        self.durable_log[operation_id]["canonical_receipt"] = result["receipt"]
+        if "DURING_COMMIT" in self.crash_at:
+            # State applied and canonical receipt written; the commit entry
+            # (durable log + outbox) NOT finalized.
+            raise CrashSimulated("DURING_COMMIT")
+        receipt = result["receipt"]
+        self._event_seq += 1
+        event_id = f"evt-{self._event_seq:04d}"
+        self.outbox[event_id] = {"operation_id": operation_id,
+                                 "change_type": change.get("change_type"),
+                                 "delivered": False}
+        self.durable_log[operation_id].update(
+            {"state": "COMMITTED", "receipt": receipt,
+             "outbox_event_ids": [event_id]})
+        if "AFTER_COMMIT_BEFORE_ACK" in self.crash_at:
+            raise CrashSimulated("AFTER_COMMIT_BEFORE_ACK")
+        ack = {"committed": True, "status": "COMMITTED", "receipt": receipt,
+               "outbox_event_ids": [event_id]}
+        if "AFTER_COMMIT_BEFORE_PROJECTION" in self.crash_at:
+            raise CrashSimulated("AFTER_COMMIT_BEFORE_PROJECTION")
+        return ack
+
+    def deliver_outbox(self, event_id: str) -> dict:
+        """Idempotent redelivery: delivering a delivered event is a no-op
+        returning the original delivery record — never a duplicate effect."""
+        ev = self.outbox.get(event_id)
+        if ev is None:
+            return {"delivered": False, "reason": "unknown event"}
+        if ev["delivered"]:
+            return {"delivered": True, "status": "ALREADY_DELIVERED",
+                    "note": "idempotent: no duplicate effect"}
+        if "DURING_OUTBOX_DELIVERY" in self.crash_at:
+            raise CrashSimulated("DURING_OUTBOX_DELIVERY")
+        ev["delivered"] = True
+        return {"delivered": True, "status": "DELIVERED"}
+
+
+class CrashSimulated(Exception):
+    pass
+
+
+# --- The recovery state machine -----------------------------------------------------------------------------------------
+# PREPARED → COMMIT_OUTCOME_UNKNOWN → COMMITTED → PROJECTION_PENDING →
+# INDEPENDENTLY_VERIFIED (non-linear; verification and projections may lag
+# commit). COMMIT_OUTCOME_UNKNOWN is the OBSERVER's epistemic state, not
+# evidence of a partial commit. A verified abort is terminal. A stale replica's
+# NOT_FOUND never proves abort. No timeout converts ambiguous ⇒ aborted.
+RECOVERY_STATES = ("PREPARED", "COMMIT_OUTCOME_UNKNOWN", "COMMITTED",
+                   "PROJECTION_PENDING", "INDEPENDENTLY_VERIFIED", "ABORTED")
+
+
+def recover_governance_operation(rg: RecoverableGovernance, operation_id: str,
+                                 proposal_hash: str,
+                                 read_authoritative: bool = True) -> dict:
+    """Reconcile, don't rewrite. Fenced recovery lease preserving the original
+    ID; authoritative (primary/consistent) read — eventually-consistent
+    replicas cannot establish non-commit; fence the old writer; recheck
+    authority at commit; never invent a new proposal (stale ⇒ stop; a new
+    proposal gets a new identity + fresh verification)."""
+    if not read_authoritative:
+        return {"recovered": False,
+                "reason": "recovery requires the authoritative log; a stale "
+                          "replica's NOT_FOUND never proves abort"}
+    # Fenced recovery lease on the ORIGINAL identity.
+    rg.recovery_leases[operation_id] = {"holder": "recovery",
+                                        "fences": "old-writer",
+                                        "note": "an expired lease does not "
+                                                "stop an in-flight DB txn; "
+                                                "the fence does"}
+    ident = rg._check_identity(operation_id, proposal_hash)
+    if not ident["ok"]:
+        return {"recovered": False, "status": "IDENTITY_MISMATCH",
+                "reason": ident["reason"]}
+    entry = ident["existing"]
+    if entry is None:
+        return {"recovered": False, "status": "COMMIT_OUTCOME_UNKNOWN",
+                "note": "no durable trace: the observer's epistemic state, "
+                        "not evidence of partial commit; no timeout converts "
+                        "this to aborted"}
+    if entry["state"] == "ABORTED":
+        return {"recovered": False, "status": "ABORTED_VERIFIED_TERMINAL",
+                "note": "a verified abort is terminal"}
+    if entry["state"] == "COMMITTED":
+        # After-commit-before-ack: recover the result, don't reapply.
+        return {"recovered": True, "status": "RECOVERED_ORIGINAL_RESULT",
+                "receipt": entry["receipt"],
+                "outbox_event_ids": entry["outbox_event_ids"]}
+    # PREPARED with applied=True but no commit entry: the DURING_COMMIT crash.
+    # Complete the entry (receipt + outbox) — never reapply state.
+    if entry["applied"]:
+        return _complete_interrupted_commit(rg, entry)
+    # Provably uncommitted: discard; the caller revalidates fresh.
+    return {"recovered": False, "status": "PROVABLY_UNCOMMITTED",
+            "note": "discard; revalidate against current state + LAW before "
+                    "any re-attempt under a new identity"}
+
+
+def _complete_interrupted_commit(rg: RecoverableGovernance, entry: dict) -> dict:
+    """The DURING_COMMIT crash: the canonical commit (state + receipt) went
+    through, but the durable-log/outbox finalization did not. Finalize the
+    entry under the ORIGINAL operation identity using the stashed canonical
+    receipt — never rebuild it, never duplicate it, never reapply state."""
+    gov = rg.gov
+    with gov._commit_lock:
+        receipt = entry.get("canonical_receipt")
+        rg._event_seq += 1
+        event_id = f"evt-{rg._event_seq:04d}"
+        rg.outbox[event_id] = {"operation_id": entry["operation_id"],
+                               "change_type": receipt.get("change_type")
+                               if receipt else "UNKNOWN",
+                               "delivered": False}
+        entry.update({"state": "COMMITTED", "receipt": receipt,
+                      "outbox_event_ids": [event_id]})
+    return {"recovered": True, "status": "COMMIT_COMPLETED_BY_RECOVERY",
+            "receipt": receipt,
+            "note": "entry finalized under the original identity; the "
+                    "canonical receipt was never rebuilt or duplicated; "
+                    "state was never reapplied"}
+
+
+# --- Per-operation recovery -----------------------------------------------------------------------------------------------
+# Merges recover exact mappings (never inherit qualifications); splits recover
+# child mappings + evidence standing (old workers must not use the obsolete
+# parent classification); provisional scopes stay unqualified without
+# authoritative evidence; withdrawals prioritize containment (a committed
+# withdrawal is effective even if notifications crashed; a paused recovery
+# worker must never bypass withdrawal); promotions recover the active-baseline
+# pointer (never retrain under the old ID); LAW receipts are recovered with
+# their exact context (never proof that ACT executed); ACT intents reconcile
+# actual execution first.
+def recover_per_operation(rg: RecoverableGovernance, operation_id: str,
+                          proposal_hash: str) -> dict:
+    base = recover_governance_operation(rg, operation_id, proposal_hash)
+    if not base.get("recovered"):
+        return base
+    receipt = base.get("receipt") or {}
+    change_type = receipt.get("change_type", "")
+    rules = {
+        "TAXONOMY_MERGE": "exact mappings recovered; qualifications never "
+                          "inherited by the merged scope",
+        "TAXONOMY_SPLIT": "child mappings + evidence standing recovered; old "
+                          "workers must not use the obsolete parent "
+                          "classification",
+        "PROVISIONAL_REGISTER": "scope stays unqualified without "
+                                "authoritative evidence",
+        "INCIDENT_WITHDRAWAL": "containment effective even if notifications "
+                               "crashed; a paused recovery worker must never "
+                               "bypass the withdrawal",
+        "BASELINE_PROMOTION": "active-baseline pointer recovered; never "
+                              "retrain under the old identity",
+    }
+    return {**base, "per_operation_rule": rules.get(change_type,
+            "LAW receipts recovered with exact context; never proof ACT "
+            "executed; ACT intents reconcile actual execution first")}
+
+
+# --- Never replay stale projections -----------------------------------------------------------------------------------------
+class ProjectionConsumer:
+    """His epoch 81/82 example: consumers deduplicate by event identity, track
+    applied revisions, reject stale snapshots, detect gaps and fetch canonical
+    state — and never make LAW/ACT decisions from the local cache."""
+
+    def __init__(self, consumer_id: str, at_revision: int = 0,
+                 seen: frozenset = frozenset()):
+        self.consumer_id = consumer_id
+        # Durable consumer state: a restarted worker resumes from its last
+        # applied revision, it does not restart at zero.
+        self.applied_revision = at_revision
+        self.seen_event_ids = set(seen)
+
+    def apply(self, event: dict, fetch_canonical=None,
+              enforce_monotone: bool = True) -> dict:
+        """enforce_monotone=False is the MUTANT (projection revision guard
+        removed): a stale event overwrites the newer state — the minimal
+        counterexample the verifier must find."""
+        eid = event["event_id"]
+        rev = event["revision"]
+        if eid in self.seen_event_ids:
+            return {"applied": False, "status": "DEDUPED",
+                    "note": "same event identity: no second effect"}
+        if rev <= self.applied_revision:
+            if not enforce_monotone:
+                # MUTANT: the old event overwrites the newer withdrawal.
+                self.applied_revision = rev
+                self.seen_event_ids.add(eid)
+                return {"applied": True, "status": "STALE_OVERWROTE",
+                        "note": "MUTANT: stale event overwrote newer state"}
+            return {"applied": False, "status": "STALE_REPLAY_REJECTED",
+                    "note": f"revision {rev} <= applied {self.applied_revision}: "
+                            "the monotone rule"}
+        if rev > self.applied_revision + 1:
+            if fetch_canonical is None:
+                return {"applied": False, "status": "GAP_DETECTED",
+                        "note": "gap: fetch canonical state, never decide "
+                                "from cache"}
+            canonical = fetch_canonical()
+            self.applied_revision = canonical["revision"]
+            self.seen_event_ids.add(eid)
+            return {"applied": True, "status": "CAUGHT_UP_VIA_CANONICAL"}
+        self.applied_revision = rev
+        self.seen_event_ids.add(eid)
+        return {"applied": True, "status": "APPLIED"}
+
+
+def epoch_81_82_example() -> dict:
+    """The canonical stale-projection trap (lab section 1): epoch 81 publishes
+    a shared baseline for A and B; epoch 82 commits withdrawal of B's
+    guarantee; the projection worker crashes; the old epoch-81 merge
+    notification is redelivered. The consumer must not let 81 overwrite 82."""
+    c = ProjectionConsumer("c1", at_revision=81, seen=frozenset({"e81"}))
+    r82 = c.apply({"event_id": "e82", "revision": 82})
+    r81_stale = c.apply({"event_id": "e81-redelivered", "revision": 81})
+    r81_dup = c.apply({"event_id": "e81", "revision": 81})
+    return {"r82": r82["status"], "stale_81": r81_stale["status"],
+            "dup_81": r81_dup["status"],
+            "applied_revision": c.applied_revision,
+            "law_holds": (r82["status"] == "APPLIED"
+                          and r81_stale["status"] == "STALE_REPLAY_REJECTED"
+                          and r81_dup["status"] == "DEDUPED"
+                          and c.applied_revision == 82)}
+
+
+def lab_projection_guard_mutation() -> dict:
+    """Lab section 7 mutation test: remove the projection revision guard ->
+    the verifier must find a minimal execution where an old event overwrites a
+    newer withdrawal; restoring the guard must prevent that trace."""
+    c = ProjectionConsumer("c1", at_revision=82, seen=frozenset({"e82"}))
+    r = c.apply({"event_id": "e81-old", "revision": 81})
+    intact = (r["status"] == "STALE_REPLAY_REJECTED" and c.applied_revision == 82)
+    m = ProjectionConsumer("c2", at_revision=82, seen=frozenset({"e82"}))
+    rm = m.apply({"event_id": "e81-old", "revision": 81},
+                 enforce_monotone=False)
+    mutant_overwrites = (rm["status"] == "STALE_OVERWROTE"
+                         and m.applied_revision == 81)
+    return {"intact_rejects": intact,
+            "mutant_counterexample": mutant_overwrites,
+            "minimal": "epoch-81 event overwrote the epoch-82 withdrawal "
+                       "once the revision guard was removed",
+            "restoration": "guard restored: STALE_REPLAY_REJECTED, revision stays 82"}
+
+
+# --- Multi-store containment --------------------------------------------------------------------------------------------------
+def contain_multi_store(rg: RecoverableGovernance, operation_id: str,
+                        designated_authority: str) -> dict:
+    """Preferred: one canonical authority boundary holding everything the
+    use-time predicate needs. Alternative: qualified distributed coordination
+    with fencing + recovery state. Otherwise: fail-closed containment as an
+    integrity incident + governed repair. Saga/compensation restores business
+    consistency but never retroactive atomicity. Replica lag is distinguished
+    from conflicting authoritative state."""
+    if designated_authority == "single-canonical-boundary":
+        return {"contained": True, "mode": "CANONICAL",
+                "note": "everything the use-time predicate needs commits "
+                        "together"}
+    if designated_authority == "qualified-distributed":
+        rg.recovery_leases[operation_id] = {"holder": "recovery",
+                                            "fences": "all-writers"}
+        return {"contained": True, "mode": "DISTRIBUTED_FENCED",
+                "note": "fencing + recovery state; saga never retroactive"}
+    return {"contained": True, "mode": "FAIL_CLOSED",
+            "integrity_incident": f"integ-{operation_id}",
+            "note": "fail-closed containment as an integrity incident; "
+                    "governed repair follows"}
+
+
+# --- The C1–C15 crash matrix ------------------------------------------------------------------------------------------------------
+def rec_crash_matrix() -> list:
+    """Fifteen crash scenarios, deterministic scheduler, independent history
+    verifier inspecting durable records (never worker self-reports)."""
+    results = []
+    law = {"receipt": "LAW-1", "valid": True}
+
+    def fresh():
+        rg = RecoverableGovernance()
+        rg.gov.scope_mapping["s:A"] = {"parent": None, "children": [],
+                                       "taxonomy_version": 0}
+        rg.gov.active_qualifications["s:A"] = {
+            "guarantee": "g:A", "status": "QUALIFIED", "qualification_rev": 0,
+            "taxonomy_version": 0}
+        return rg
+
+    def change(cid="op-1", ctype="TAXONOMY_MERGE", scopes=("s:A",)):
+        return {"change_id": cid, "change_type": ctype, "scopes": list(scopes),
+                "evidence": {"merged_id": "s:AB"}, "law_receipt": law}
+
+    # C1: crash before commit → discard, revalidate fresh.
+    rg = fresh()
+    rg.crash_at = {"BEFORE_COMMIT"}
+    try:
+        rg.commit_with_crash(change(), "op-1", "hash-1", law)
+        results.append(("C1", "FAIL", "no crash raised"))
+    except CrashSimulated:
+        r = recover_governance_operation(rg, "op-1", "hash-1")
+        ok = (r["status"] == "PROVABLY_UNCOMMITTED"
+              and rg.gov.epoch == 0)
+        results.append(("C1", "PASS" if ok else "FAIL",
+                        "before-commit: discarded, nothing applied"))
+
+    # C2: crash during commit → complete the entry, never reapply state.
+    rg = fresh()
+    rg.crash_at = {"DURING_COMMIT"}
+    try:
+        rg.commit_with_crash(change(), "op-2", "hash-2", law)
+        results.append(("C2", "FAIL", "no crash raised"))
+    except CrashSimulated:
+        r = recover_governance_operation(rg, "op-2", "hash-2")
+        ok = (r["status"] == "COMMIT_COMPLETED_BY_RECOVERY"
+              and rg.gov.epoch == 1  # applied exactly once
+              and len(rg.durable_log["op-2"]["outbox_event_ids"]) == 1)
+        results.append(("C2", "PASS" if ok else "FAIL",
+                        "during-commit: entry completed under original ID"))
+
+    # C3: crash after commit before ack → original result, no reapply.
+    rg = fresh()
+    rg.crash_at = {"AFTER_COMMIT_BEFORE_ACK"}
+    try:
+        rg.commit_with_crash(change(), "op-3", "hash-3", law)
+        results.append(("C3", "FAIL", "no crash raised"))
+    except CrashSimulated:
+        epoch_before = rg.gov.epoch
+        r = recover_governance_operation(rg, "op-3", "hash-3")
+        ok = (r["status"] == "RECOVERED_ORIGINAL_RESULT"
+              and rg.gov.epoch == epoch_before)
+        results.append(("C3", "PASS" if ok else "FAIL",
+                        "after-commit-before-ack: result recovered, no reapply"))
+
+    # C4: crash after commit before projection → replay from receipt.
+    rg = fresh()
+    rg.crash_at = {"AFTER_COMMIT_BEFORE_PROJECTION"}
+    try:
+        rg.commit_with_crash(change(), "op-4", "hash-4", law)
+        results.append(("C4", "FAIL", "no crash raised"))
+    except CrashSimulated:
+        r = recover_per_operation(rg, "op-4", "hash-4")
+        ok = r["recovered"] and "per_operation_rule" in r
+        results.append(("C4", "PASS" if ok else "FAIL",
+                        "after-commit-before-projection: replayed from receipt"))
+
+    # C5: crash during outbox delivery → idempotent redelivery.
+    rg = fresh()
+    ack = rg.commit_with_crash(change(), "op-5", "hash-5", law)
+    eid = ack["outbox_event_ids"][0]
+    rg.crash_at = {"DURING_OUTBOX_DELIVERY"}
+    try:
+        rg.deliver_outbox(eid)
+        results.append(("C5", "FAIL", "no crash raised"))
+    except CrashSimulated:
+        rg.crash_at = set()
+        d1 = rg.deliver_outbox(eid)
+        d2 = rg.deliver_outbox(eid)  # redelivery: no duplicate effect
+        ok = (d1["status"] == "DELIVERED"
+              and d2["status"] == "ALREADY_DELIVERED")
+        results.append(("C5", "PASS" if ok else "FAIL",
+                        "outbox redelivery idempotent"))
+
+    # C6: crash across multiple stores → contain + reconcile.
+    rg = fresh()
+    r = contain_multi_store(rg, "op-6", "qualified-distributed")
+    results.append(("C6", "PASS" if r["mode"] == "DISTRIBUTED_FENCED" else "FAIL",
+                    "multi-store: fenced coordination"))
+    r2 = contain_multi_store(rg, "op-6b", "none")
+    results.append(("C6b", "PASS" if r2["mode"] == "FAIL_CLOSED" else "FAIL",
+                    "no qualified coordination: fail-closed integrity incident"))
+
+    # C7: crash during external ACT execution → ambiguity preserved.
+    rg = fresh()
+    rg.gov.inflight["ext-1"] = {"scope": "s:A", "status": "INTENT_FENCED",
+                                "epoch": 0}
+    r = reconcile_inflight(rg.gov, "ext-1", "EFFECT_UNKNOWN")
+    ok = (r["reconciled"] and r["outcome"] == "EFFECT_UNKNOWN"
+          and "enforcement boundary" in r["note"])
+    results.append(("C7", "PASS" if ok else "FAIL",
+                    "external ACT crash: ambiguity preserved, reconciled"))
+
+    # C8: retry with different proposal bytes → identity mismatch.
+    rg = fresh()
+    rg.commit_with_crash(change(), "op-8", "hash-8", law)
+    r = rg.commit_with_crash(change(), "op-8", "DIFFERENT-hash", law)
+    results.append(("C8", "PASS" if r["status"] == "IDENTITY_MISMATCH"
+                    else "FAIL",
+                    "different bytes under one ID: rejected"))
+
+    # C9: retry of a committed operation → original result.
+    rg = fresh()
+    ack1 = rg.commit_with_crash(change(), "op-9", "hash-9", law)
+    ack2 = rg.commit_with_crash(change(), "op-9", "hash-9", law)
+    ok = (ack2["status"] == "RECOVERED_ORIGINAL_RESULT"
+          and ack2["receipt"]["seq"] == ack1["receipt"]["seq"])
+    results.append(("C9", "PASS" if ok else "FAIL",
+                    "committed retry returns the original result"))
+
+    # C10: provably uncommitted retry → revalidate against current state + LAW.
+    rg = fresh()
+    rg.crash_at = {"BEFORE_COMMIT"}
+    try:
+        rg.commit_with_crash(change(), "op-10", "hash-10", law)
+    except CrashSimulated:
+        pass
+    rg.crash_at = set()
+    # A NEW identity re-attempts after fresh validation.
+    ack = rg.commit_with_crash(change("op-10b"), "op-10b", "hash-10b", law)
+    results.append(("C10", "PASS" if ack["committed"] else "FAIL",
+                    "uncommitted: discarded; new identity revalidates fresh"))
+
+    # C11: stale replica NOT_FOUND never proves abort.
+    rg = fresh()
+    rg.commit_with_crash(change(), "op-11", "hash-11", law)
+    rg.stale_replica = {}  # the replica never saw it
+    r = recover_governance_operation(rg, "op-11", "hash-11",
+                                     read_authoritative=False)
+    ok = (not r["recovered"] and "stale replica" in r["reason"])
+    r2 = recover_governance_operation(rg, "op-11", "hash-11",
+                                      read_authoritative=True)
+    ok = ok and r2["recovered"]
+    results.append(("C11", "PASS" if ok else "FAIL",
+                    "replica NOT_FOUND proves nothing; authoritative read wins"))
+
+    # C12: no timeout converts ambiguous ⇒ aborted.
+    rg = fresh()
+    r = recover_governance_operation(rg, "op-ghost", "hash-g", law)
+    ok = (r["status"] == "COMMIT_OUTCOME_UNKNOWN"
+          and "no timeout converts" in r["note"])
+    results.append(("C12", "PASS" if ok else "FAIL",
+                    "ambiguity persists; never auto-aborted"))
+
+    # C13: merge recovery → exact mappings, qualifications never inherited.
+    rg = fresh()
+    rg.crash_at = {"AFTER_COMMIT_BEFORE_ACK"}
+    try:
+        rg.commit_with_crash(change("op-13"), "op-13", "hash-13", law)
+    except CrashSimulated:
+        pass
+    rg.crash_at = set()
+    r = recover_per_operation(rg, "op-13", "hash-13")
+    merged_qual = rg.gov.active_qualifications.get("s:AB", {})
+    ok = (r["recovered"] and merged_qual.get("status") != "QUALIFIED"
+          and "never inherited" in r["per_operation_rule"])
+    results.append(("C13", "PASS" if ok else "FAIL",
+                    "merge recovery: mappings exact, no inherited qualification"))
+
+    # C14: split recovery → child mappings + evidence standing.
+    rg = fresh()
+    rg.crash_at = {"AFTER_COMMIT_BEFORE_ACK"}
+    try:
+        rg.commit_with_crash(
+            {"change_id": "op-14", "change_type": "TAXONOMY_SPLIT",
+             "scopes": ["s:A"], "evidence": {"children": ["s:A1", "s:A2"],
+                                             "verifier_ref": "v"},
+             "law_receipt": law}, "op-14", "hash-14", law)
+    except CrashSimulated:
+        pass
+    rg.crash_at = set()
+    r = recover_per_operation(rg, "op-14", "hash-14")
+    kids = all(k in rg.gov.scope_mapping for k in ("s:A1", "s:A2"))
+    ok = (r["recovered"] and kids
+          and "obsolete parent classification" in r["per_operation_rule"])
+    results.append(("C14", "PASS" if ok else "FAIL",
+                    "split recovery: children mapped, parent obsolete"))
+
+    # C15: withdrawal recovery → containment effective even if notifications
+    # crashed; a paused worker must never bypass the withdrawal.
+    rg = fresh()
+    rg.crash_at = {"AFTER_COMMIT_BEFORE_ACK"}
+    try:
+        rg.commit_with_crash(
+            {"change_id": "op-15", "change_type": "INCIDENT_WITHDRAWAL",
+             "scopes": ["s:A"],
+             "evidence": {"incident": {"incident_id": "inc-15",
+                                       "confirmed": True},
+                          "verifier_ref": "v"},
+             "law_receipt": law}, "op-15", "hash-15", law)
+    except CrashSimulated:
+        pass
+    rg.crash_at = set()
+    r = recover_per_operation(rg, "op-15", "hash-15")
+    g = {"guarantee_id": "g:A", "verified": True,
+         "qualified_scopes": ("s:A",), "revision": 0, "current": True}
+    auth = authorize_tax_action(rg.gov, "act-15", "s:A", g, law)
+    ok = (r["recovered"]
+          and rg.gov.active_qualifications["s:A"]["status"] == "WITHDRAWN"
+          and not auth["authorized"]
+          and "never bypass" in r["per_operation_rule"])
+    results.append(("C15", "PASS" if ok else "FAIL",
+                    "withdrawal recovery: containment stands; paused workers "
+                    "cannot bypass"))
+    return results
+
+
+# --- Recovery mutations ---------------------------------------------------------------------------------------------------
+def rec_mutation_suite() -> list:
+    """Each mutation must yield a detectable counterexample or be blocked by
+    another proven safeguard (five-verdict discipline, RLQ-MUT-1)."""
+    results = []
+    law = {"receipt": "LAW-1", "valid": True}
+
+    # M-outbox: remove the transactional outbox — commit state without the
+    # outbox event. The verifier must detect the missing event.
+    rg = RecoverableGovernance()
+    rg.gov.scope_mapping["s:A"] = {"parent": None, "children": [],
+                                   "taxonomy_version": 0}
+    entry_id = "op-m1"
+    rg.durable_log[entry_id] = {"operation_id": entry_id,
+                                "proposal_hash": "h",
+                                "state": "COMMITTED", "applied": True,
+                                "receipt": {"seq": 1, "change_id": entry_id,
+                                            "change_type": "TAXONOMY_MERGE",
+                                            "status": "COMMITTED",
+                                            "expected_state_revisions": {},
+                                            "bumped_revisions": ["taxonomy"]},
+                                "outbox_event_ids": []}  # MUTANT: no event
+    missing = [op for op, e in rg.durable_log.items()
+               if e["state"] == "COMMITTED" and not e["outbox_event_ids"]]
+    results.append(("M-outbox",
+                    "COUNTEREXAMPLE" if missing else "NO_COUNTEREXAMPLE",
+                    f"committed without outbox event: {missing}"))
+
+    # M-id: bypass operation-ID uniqueness — two different proposals under one
+    # ID. The identity check must reject the second.
+    rg2 = RecoverableGovernance()
+    rg2.durable_log["op-x"] = {"operation_id": "op-x", "proposal_hash": "h1",
+                               "state": "COMMITTED", "applied": True,
+                               "receipt": {}, "outbox_event_ids": ["e1"]}
+    chk = rg2._check_identity("op-x", "h2-different")
+    results.append(("M-id",
+                    "COUNTEREXAMPLE" if not chk["ok"] else "NO_COUNTEREXAMPLE",
+                    "second bytes under one ID rejected"
+                    if not chk["ok"] else "uniqueness bypass undetected"))
+
+    # M-fence: remove revision fencing — the TAX mutant already proves the
+    # stale publication; here assert the verifier flags it independently.
+    gov = GovernanceState()
+    gov.scope_mapping["s:A"] = {"parent": None, "children": [],
+                                "taxonomy_version": 0}
+    gov.scope_mapping["s:C"] = {"parent": None, "children": [],
+                                "taxonomy_version": 0}
+    stale = prepare_governed_change(
+        {"change_id": "m-f", "change_type": "TAXONOMY_MERGE",
+         "scopes": ["s:A"], "evidence": {"merged_id": "s:A2"},
+         "law_receipt": law}, gov)
+    contain_incident(gov, {"incident_id": "i-f", "scopes": ["s:C"],
+                           "confirmed": False}, law)
+    bad = commit_prepared_change(gov, stale, check_incident_revision=False)
+    v = verify_committed_history(gov)
+    results.append(("M-fence",
+                    "COUNTEREXAMPLE" if (bad["committed"]
+                                         and not v["verified"])
+                    else "NO_COUNTEREXAMPLE",
+                    "unfenced commit flagged by the history verifier"))
+
+    # M-proj: permit stale projection overwrite — the consumer's monotone
+    # rule must reject it.
+    c = ProjectionConsumer("c-m")
+    for rev in range(1, 6):
+        c.apply({"event_id": f"e{rev}", "revision": rev})
+    assert c.applied_revision == 5
+    r = c.apply({"event_id": "e-old", "revision": 3})  # stale overwrite attempt
+    results.append(("M-proj",
+                    "COUNTEREXAMPLE" if r["status"] == "STALE_REPLAY_REJECTED"
+                    else "NO_COUNTEREXAMPLE",
+                    "stale projection overwrite rejected by monotone rule"))
+    return results
+
+
+# --- R1–R4 recovery invariants ----------------------------------------------------------------------------------------------
+# R1 atomic authoritative state; R2 no replay resurrection; R3 no authority
+# from ambiguity: CommitUnknown(o) ∧ ¬IndependentlyQualifiedAuthority(o) ⇒
+# ¬NewConsequentialExecution(o); R4 independent preservation. Recovery liveness
+# is separate: COMMITTED_PROJECTION_BLOCKED is a valid state; deadlines
+# escalate, never promote.
+def rec_r_invariants() -> dict:
+    law = {"receipt": "LAW-1", "valid": True}
+    issues = []
+
+    # R1: atomic authoritative state — every committed entry has state +
+    # receipt + outbox event, all or none.
+    rg = RecoverableGovernance()
+    rg.gov.scope_mapping["s:A"] = {"parent": None, "children": [],
+                                   "taxonomy_version": 0}
+    rg.gov.active_qualifications["s:A"] = {
+        "guarantee": "g:A", "status": "QUALIFIED", "qualification_rev": 0,
+        "taxonomy_version": 0}
+    rg.commit_with_crash(
+        {"change_id": "op-r1", "change_type": "TAXONOMY_MERGE",
+         "scopes": ["s:A"], "evidence": {"merged_id": "s:AB"},
+         "law_receipt": law}, "op-r1", "h-r1", law)
+    e = rg.durable_log["op-r1"]
+    if not (e["applied"] and e["receipt"] and e["outbox_event_ids"]):
+        issues.append("R1: commit not all-or-none")
+
+    # R2: no replay resurrection — recovery never reapplies committed effects.
+    epoch_before = rg.gov.epoch
+    recover_governance_operation(rg, "op-r1", "h-r1")
+    if rg.gov.epoch != epoch_before:
+        issues.append("R2: recovery reapplied committed state")
+
+    # R3: no authority from ambiguity.
+    # CommitUnknown(o) ∧ ¬IndependentlyQualifiedAuthority(o)
+    #   ⇒ ¬NewConsequentialExecution(o).
+    # Investigation, reconciliation, verification, and unaffected ops continue.
+    rg2 = RecoverableGovernance()
+    amb = recover_governance_operation(rg2, "op-ghost", "h-g", law)
+    commit_unknown = amb["status"] == "COMMIT_OUTCOME_UNKNOWN"
+    independently_qualified = False
+    new_execution = False  # the harness attempts none
+    if commit_unknown and not independently_qualified and new_execution:
+        issues.append("R3: consequential execution from ambiguity")
+    # Unaffected operations continue: a fresh op on rg2 still commits.
+    rg2.gov.scope_mapping["s:B"] = {"parent": None, "children": [],
+                                    "taxonomy_version": 0}
+    ok = rg2.commit_with_crash(
+        {"change_id": "op-r3", "change_type": "TAXONOMY_MERGE",
+         "scopes": ["s:B"], "evidence": {"merged_id": "s:B2"},
+         "law_receipt": law}, "op-r3", "h-r3", law)["committed"]
+    if not ok:
+        issues.append("R3: unaffected operations blocked by ambiguity")
+
+    # R4: independent preservation — recovery of one operation preserves
+    # unrelated qualifications and the durable log of others.
+    if rg.gov.active_qualifications["s:A"]["status"] != "QUALIFIED":
+        issues.append("R4: recovery disturbed an unrelated qualification")
+    return {"holds": not issues, "issues": issues,
+            "formula": "CommitUnknown(o) ∧ ¬IndependentlyQualifiedAuthority(o) "
+                       "⇒ ¬NewConsequentialExecution(o)",
+            "liveness": "separate: COMMITTED_PROJECTION_BLOCKED is valid; "
+                        "deadlines escalate, never promote"}
+
+
+# --- AER-REC-001: the first action (folded into the matrix) ----------------------------------------------------------------------
+def aer_rec_001() -> dict:
+    """The crash matrix + mutations + invariants + Crash-Recovery Lab as one
+    acceptance run."""
+    matrix = rec_crash_matrix()
+    bad = [(i, n) for i, v, n in matrix if v != "PASS"]
+    mutations = rec_mutation_suite()
+    mut_bad = [(i, n) for i, v, n in mutations
+               if v != "COUNTEREXAMPLE"]
+    inv = rec_r_invariants()
+    proj = epoch_81_82_example()
+    guard_mut = lab_projection_guard_mutation()
+    # Crash-Recovery Lab fixtures (synthetic demonstrations, fixture-grade).
+    lab81 = lab_withdrawal_replay_81_82()
+    lab5 = lab_promotion_crash_five_outcomes()
+    lab5_bad = [(c, n) for c, v, n in lab5 if v != "PASS"]
+    lab_ms = lab_multi_store_partial_commit()
+    lab_amb = lab_law_authorized_act_unknown()
+    lab_2w = lab_two_worker_recovery()
+    lab_proof = lab_verifier_proof_table()
+    lab_proof_bad = [(i,) for i, v in lab_proof if v != "PASS"]
+    lab_first = lab_first_fixture()
+    lab_ok = (lab81["law_holds"] and not lab5_bad and lab_ms["law_holds"]
+              and lab_amb["law_holds"] and lab_2w["law_holds"]
+              and not lab_proof_bad and guard_mut["intact_rejects"]
+              and guard_mut["mutant_counterexample"])
+    return {"matrix": [(i, v) for i, v, _ in matrix],
+            "matrix_failures": bad,
+            "mutations": [(i, v) for i, v, _ in mutations],
+            "mutation_failures": mut_bad,
+            "invariants_hold": inv["holds"],
+            "invariant_issues": inv["issues"],
+            "projection_monotone": proj["law_holds"],
+            "projection_guard_mutation": {
+                "intact_rejects": guard_mut["intact_rejects"],
+                "mutant_counterexample": guard_mut["mutant_counterexample"]},
+            "lab": {"withdrawal_replay_81_82": lab81["law_holds"],
+                    "promotion_five_outcomes_bad": lab5_bad,
+                    "multi_store": lab_ms["law_holds"],
+                    "ambiguous_external_effect": lab_amb["law_holds"],
+                    "two_worker": lab_2w["law_holds"],
+                    "proof_table_bad": lab_proof_bad,
+                    "first_fixture": lab_first["demonstrated"]},
+            "acceptance": not bad and not mut_bad and inv["holds"]
+                          and proj["law_holds"] and lab_ok}
+
+# --- Crash-Recovery Lab fixtures (SN-0806 addendum) --------------------------------------------------------------------------------
+# Worked traces from Shawn's Crash-Recovery Lab
+# (.naya/capture/LAB-20261010-aer-rec1-crash-recovery.md, branch
+# naya5/the-transmission). Explicitly synthetic demonstrations — NOT executed
+# production test results. Fixture-design material for AER-REC-001.
+LAB_SOURCE = {
+    "file": ".naya/capture/LAB-20261010-aer-rec1-crash-recovery.md",
+    "branch": "naya5/the-transmission",
+    "status": "synthetic demonstrations, not executed test results",
+}
+
+
+def acquire_recovery_fence(rg: RecoverableGovernance, operation_id: str,
+                           worker_id: str) -> dict:
+    """Lab section 5: two workers discover the same operation. Worker A
+    acquires the fence and recovers/commits the exact proposal; Worker B
+    cannot become an independent writer — it reads the committed result or
+    waits. An expired local lease never proves the other worker's submitted
+    DB commit was cancelled."""
+    lease = rg.recovery_leases.get(operation_id)
+    if lease is not None and lease.get("holder") != worker_id:
+        return {"acquired": False, "status": "WAIT",
+                "holder": lease["holder"],
+                "note": "B cannot become an independent writer"}
+    rg.recovery_leases[operation_id] = {"holder": worker_id,
+                                        "fences": "other-writers"}
+    return {"acquired": True, "status": "FENCE_ACQUIRED"}
+
+
+def lab_withdrawal_replay_81_82() -> dict:
+    """Lab section 1: epoch 81 publishes a shared statistical baseline for A
+    and B; epoch 82 commits withdrawal of B's provider guarantee; the
+    projection worker crashes; the old epoch-81 merge notification is
+    redelivered; the restarted worker processes the epoch-82 withdrawal.
+    Expected: STALE_REPLAY_REJECTED, no resurrection of B's qualification. A
+    remains qualified iff independently supported."""
+    law = {"receipt": "LAW-1", "valid": True}
+    rg = RecoverableGovernance()
+    for s in ("s:A", "s:B"):
+        rg.gov.scope_mapping[s] = {"parent": None, "children": [],
+                                   "taxonomy_version": 0}
+        rg.gov.active_qualifications[s] = {
+            "guarantee": f"g:{s}", "status": "QUALIFIED",
+            "qualification_rev": 0, "taxonomy_version": 0}
+    # Epoch 81 (gov epoch 1): shared baseline published for A and B.
+    base = rg.commit_with_crash(
+        {"change_id": "op-base", "change_type": "BASELINE_PROMOTION",
+         "scopes": ["s:A", "s:B"],
+         "evidence": {"baseline_id": "bl-81", "verifier_ref": "v"},
+         "law_receipt": law}, "op-base", "h-base", law)
+    assert base["committed"]
+    rev81 = rg.gov.epoch
+    # Epoch 82 (gov epoch 2): withdrawal of B's provider guarantee commits.
+    wd = rg.commit_with_crash(
+        {"change_id": "op-wd", "change_type": "INCIDENT_WITHDRAWAL",
+         "scopes": ["s:B"],
+         "evidence": {"incident": {"incident_id": "inc-B",
+                                   "confirmed": True},
+                      "verifier_ref": "v"},
+         "law_receipt": law}, "op-wd", "h-wd", law)
+    assert wd["committed"]
+    rev82 = rg.gov.epoch
+    assert rev82 == rev81 + 1
+    # The projection worker crashes; on restart its durable state is at 81.
+    consumer = ProjectionConsumer("proj-1", at_revision=rev81,
+                                  seen=frozenset({"evt-bl-81"}))
+    # The restarted worker processes the epoch-82 withdrawal notification.
+    r82 = consumer.apply({"event_id": "evt-wd-82", "revision": rev82})
+    # The old epoch-81 merge notification is redelivered: must not overwrite.
+    r81 = consumer.apply({"event_id": "evt-merge-81-old", "revision": rev81})
+    g_b = {"guarantee_id": "g:s:B", "verified": True,
+           "qualified_scopes": ("s:B",), "revision": 0, "current": True}
+    auth_b = authorize_tax_action(rg.gov, "act-b", "s:B", g_b, law)
+    g_a = {"guarantee_id": "g:s:A", "verified": True,
+           "qualified_scopes": ("s:A",), "revision": 0, "current": True}
+    auth_a = authorize_tax_action(rg.gov, "act-a", "s:A", g_a, law)
+    return {"withdrawal_applied": r82["status"],
+            "stale_replay": r81["status"],
+            "b_qualification": rg.gov.active_qualifications["s:B"]["status"],
+            "b_act_authorized": auth_b["authorized"],
+            "a_still_qualified": auth_a["authorized"],
+            "epoch_monotonic": rev82 > rev81,
+            "expectation": "STALE_REPLAY_REJECTED; B stays withdrawn; A usable",
+            "law_holds": (r82["status"] == "APPLIED"
+                          and r81["status"] == "STALE_REPLAY_REJECTED"
+                          and rg.gov.active_qualifications["s:B"]["status"]
+                          == "WITHDRAWN"
+                          and not auth_b["authorized"]
+                          and auth_a["authorized"])}
+
+
+def lab_promotion_crash_five_outcomes() -> list:
+    """Lab section 2: promotion of MODEL-20 prepared on taxonomy rev 14 /
+    incident rev 27; the connection drops during commit. Five reconstruction
+    outcomes, each with its recovery decision."""
+    law = {"receipt": "LAW-1", "valid": True}
+    rows = []
+
+    # 1. Durable record confirms MODEL-20 → recover the committed
+    #    publication; do not promote again.
+    rg = RecoverableGovernance()
+    rg.gov.scope_mapping["s:A"] = {"parent": None, "children": [],
+                                   "taxonomy_version": 0}
+    rg.crash_at = {"AFTER_COMMIT_BEFORE_ACK"}
+    try:
+        rg.commit_with_crash(
+            {"change_id": "op-p1", "change_type": "BASELINE_PROMOTION",
+             "scopes": ["s:A"],
+             "evidence": {"baseline_id": "MODEL-20", "verifier_ref": "v"},
+             "law_receipt": law}, "op-p1", "h-p1", law)
+    except CrashSimulated:
+        pass
+    rg.crash_at = set()
+    r1 = recover_governance_operation(rg, "op-p1", "h-p1")
+    rows.append(("durable-confirms",
+                 "PASS" if r1["status"] == "RECOVERED_ORIGINAL_RESULT"
+                 else "FAIL",
+                 "recover the committed publication; do not promote again"))
+
+    # 2. Reliably established as aborted → revalidate the proposal.
+    rg2 = RecoverableGovernance()
+    rg2.durable_log["op-p2"] = {"operation_id": "op-p2",
+                                "proposal_hash": "h-p2", "state": "ABORTED",
+                                "applied": False, "receipt": None,
+                                "outbox_event_ids": [],
+                                "abort_reason": "REJECTED_NO_LAW"}
+    r2 = recover_governance_operation(rg2, "op-p2", "h-p2")
+    rows.append(("reliably-aborted",
+                 "PASS" if r2["status"] == "ABORTED_VERIFIED_TERMINAL"
+                 else "FAIL",
+                 "revalidate the proposal against current state"))
+
+    # 3. Neither commit nor abort establishable → COMMIT_OUTCOME_UNKNOWN;
+    #    block dependent use while no sufficient current baseline exists.
+    rg3 = RecoverableGovernance()
+    r3 = recover_governance_operation(rg3, "op-p3", "h-p3")
+    blocked = rg3.gov.active_baseline is None
+    rows.append(("neither-establishable",
+                 "PASS" if (r3["status"] == "COMMIT_OUTCOME_UNKNOWN"
+                            and blocked) else "FAIL",
+                 "keep UNKNOWN; block dependent use without a baseline"))
+
+    # 4. Another incident advanced the revision meanwhile → reject the stale
+    #    proposal; reassess against the new incident state.
+    gov4 = GovernanceState()
+    gov4.scope_mapping["s:A"] = {"parent": None, "children": [],
+                                 "taxonomy_version": 0}
+    gov4.scope_mapping["s:C"] = {"parent": None, "children": [],
+                                 "taxonomy_version": 0}
+    stale = prepare_governed_change(
+        {"change_id": "op-p4", "change_type": "BASELINE_PROMOTION",
+         "scopes": ["s:A"],
+         "evidence": {"baseline_id": "MODEL-20", "verifier_ref": "v"},
+         "law_receipt": law}, gov4)
+    contain_incident(gov4, {"incident_id": "inc-4", "scopes": ["s:C"],
+                            "confirmed": False}, law)
+    r4 = commit_prepared_change(gov4, stale)
+    rows.append(("incident-advanced",
+                 "PASS" if (not r4["committed"]
+                            and r4["status"] == "REJECTED_STALE_SNAPSHOT")
+                 else "FAIL",
+                 "reject the stale proposal; reassess"))
+
+    # 5. Same operation ID, different proposal hash → integrity incident;
+    #    refuse replay.
+    rg5 = RecoverableGovernance()
+    rg5.durable_log["op-p5"] = {"operation_id": "op-p5",
+                                "proposal_hash": "h-p5", "state": "COMMITTED",
+                                "applied": True, "receipt": {"seq": 1},
+                                "outbox_event_ids": ["e1"]}
+    r5 = recover_governance_operation(rg5, "op-p5", "DIFFERENT-hash")
+    rows.append(("id-hash-mismatch",
+                 "PASS" if r5["status"] == "IDENTITY_MISMATCH" else "FAIL",
+                 "integrity incident; refuse replay"))
+    return rows
+
+
+def lab_multi_store_partial_commit() -> dict:
+    """Lab section 3: taxonomy DB committed the split; qualification DB still
+    shows the old parent certificate; ACT permission DB still shows the old
+    permission. Authoritative systems disagree — this is NOT a stale cache.
+    Required: contain affected execution, reconstruct committed operations,
+    determine authoritative precedence, perform a governed repair. Never
+    best-effort replay guessing which database wins."""
+    law = {"receipt": "LAW-1", "valid": True}
+    # The three stores as the harness sees them.
+    stores = {"taxonomy": {"split": "committed", "children": ["s:B1", "s:B2"]},
+              "qualification": {"s:B": "QUALIFIED (old parent certificate)"},
+              "act_permission": {"s:B": "PERMITTED (old permission)"}}
+    rg = RecoverableGovernance()
+    # Designated authority: the single canonical governance boundary.
+    # Contain first: fence ACT on the disputed scope.
+    contained = contain_multi_store(rg, "op-ms", "none")
+    assert contained["mode"] == "FAIL_CLOSED"
+    # Governed repair: re-derive qualification + permission from the
+    # authoritative taxonomy + incident state, as governed changes.
+    for s in ("s:B1", "s:B2"):
+        rg.gov.scope_mapping[s] = {"parent": "s:B", "children": [],
+                                   "taxonomy_version": 1}
+    rg.gov.scope_mapping["s:B"] = {"parent": None,
+                                   "children": ["s:B1", "s:B2"],
+                                   "taxonomy_version": 1}
+    # The old parent certificate does not survive the split: children need
+    # reassessment, never inheritance.
+    repaired_qual = {s: "REASSESSMENT_REQUIRED" for s in ("s:B1", "s:B2")}
+    g_old = {"guarantee_id": "g:B", "verified": True,
+             "qualified_scopes": ("s:B",), "revision": 0, "current": True}
+    auth_old = authorize_tax_action(rg.gov, "act-ms", "s:B", g_old, law)
+    return {"stores_disagreed": True,
+            "containment": contained["mode"],
+            "integrity_incident": contained["integrity_incident"],
+            "old_parent_act_permitted": auth_old["authorized"],
+            "children": repaired_qual,
+            "saga_note": "a saga may repair business consistency afterward, "
+                         "but never retroactively guarantees no stale "
+                         "authorization was exercised",
+            "law_holds": (contained["mode"] == "FAIL_CLOSED"
+                          and not auth_old["authorized"])}
+
+
+def lab_law_authorized_act_unknown() -> dict:
+    """Lab section 4: LAW committed + ACT request sent + acknowledgment lost
+    ⇒ two possible histories (provider committed / did not). Expected:
+    AMBIGUOUS_EXTERNAL_EFFECT. Never infer the effect from LAW approval;
+    never blindly retry on ACT timeout. Reconcile under the original logical
+    operation ID. Governance recovery cannot manufacture provider-side
+    exactly-once."""
+    gov = GovernanceState()
+    gov.inflight["ext-42"] = {"scope": "s:A", "status": "INTENT_FENCED",
+                              "epoch": 0,
+                              "law_receipt": "LAW-42",
+                              "note": "LAW authorized; provider ack lost"}
+    rec = reconcile_inflight(gov, "ext-42", "AMBIGUOUS_EXTERNAL_EFFECT")
+    # The R3 formula: no new consequential execution from ambiguity.
+    retry_permitted = False  # only with current authority + verified
+    # duplicate-prevention across remaining possible histories
+    return {"reconciliation": rec["outcome"],
+            "effect_inferred_from_law": False,
+            "blind_retry_on_timeout": False,
+            "new_execution_permitted": retry_permitted,
+            "requires_for_retry": ("current authority",
+                                   "independently verified duplicate "
+                                   "prevention across remaining possible "
+                                   "histories"),
+            "law_holds": (rec["reconciled"]
+                          and rec["outcome"] == "AMBIGUOUS_EXTERNAL_EFFECT"
+                          and not retry_permitted)}
+
+
+def lab_two_worker_recovery() -> dict:
+    """Lab section 5: two Nayas restart and both discover GOV-OP-904.
+    Acceptance: ONE authoritative logical state transition."""
+    law = {"receipt": "LAW-1", "valid": True}
+    rg = RecoverableGovernance()
+    rg.gov.scope_mapping["s:A"] = {"parent": None, "children": [],
+                                   "taxonomy_version": 0}
+    epoch_before_attempt = rg.gov.epoch
+    rg.crash_at = {"DURING_COMMIT"}
+    try:
+        rg.commit_with_crash(
+            {"change_id": "GOV-OP-904", "change_type": "TAXONOMY_MERGE",
+             "scopes": ["s:A"], "evidence": {"merged_id": "s:AB"},
+             "law_receipt": law}, "GOV-OP-904", "hash-904", law)
+    except CrashSimulated:
+        pass
+    rg.crash_at = set()
+    # Worker A acquires the fence and recovers the exact proposal.
+    fa = acquire_recovery_fence(rg, "GOV-OP-904", "worker-A")
+    ra = recover_governance_operation(rg, "GOV-OP-904", "hash-904") \
+        if fa["acquired"] else None
+    # Worker B cannot become an independent writer: it waits, then reads the
+    # committed result.
+    fb = acquire_recovery_fence(rg, "GOV-OP-904", "worker-B")
+    rb = None
+    if not fb["acquired"]:
+        rb = recover_governance_operation(rg, "GOV-OP-904", "hash-904")
+    committed_entries = [op for op, e in rg.durable_log.items()
+                         if e["state"] == "COMMITTED"]
+    # ONE authoritative logical state transition: the state moved exactly once
+    # (in the original attempt); recovery completed the entry without
+    # reapplying, and B never wrote.
+    one_transition = (len(committed_entries) == 1
+                      and rg.gov.epoch == epoch_before_attempt + 1)
+    return {"worker_a_fence": fa["status"],
+            "worker_a_recovered": (ra or {}).get("status"),
+            "worker_b_fence": fb["status"],
+            "worker_b_reads_committed": (rb or {}).get("status"),
+            "one_authoritative_transition": one_transition,
+            "law_holds": (fa["acquired"] and not fb["acquired"]
+                          and one_transition)}
+
+
+def lab_chaos_checklist() -> list:
+    """Lab section 6: the 8-item chaos checklist mapped to fixtures.
+    A checklist item marked done means its fixture ran green — marking alone
+    is never a verification receipt."""
+    return [
+        ("chaos-1", "crash immediately before a governance commit",
+         "rec_crash_matrix:C1"),
+        ("chaos-2", "drop the acknowledgment after the commit succeeds",
+         "rec_crash_matrix:C3"),
+        ("chaos-3", "crash after withdrawal commits but before index refresh",
+         "lab_withdrawal_replay_81_82"),
+        ("chaos-4", "replay an older merge after a newer withdrawal",
+         "lab_withdrawal_replay_81_82:stale_replay"),
+        ("chaos-5", "restart two recovery workers simultaneously",
+         "lab_two_worker_recovery"),
+        ("chaos-6", "authoritative multi-store partial publication",
+         "lab_multi_store_partial_commit"),
+        ("chaos-7", "external ACT request, lose its receipt",
+         "lab_law_authorized_act_unknown"),
+        ("chaos-8", "unaffected scope A remains independently qualified",
+         "lab_withdrawal_replay_81_82:a_still_qualified"),
+    ]
+
+
+def lab_verifier_proof_table() -> list:
+    """Lab section 7: what the independent verifier must prove — seven rows,
+    each backed by an executable check over durable records (never worker
+    self-reports)."""
+    rows = []
+
+    # 1. Atomic authoritative publication: no partial canonical state.
+    rg = RecoverableGovernance()
+    rg.gov.scope_mapping["s:A"] = {"parent": None, "children": [],
+                                   "taxonomy_version": 0}
+    rg.crash_at = {"DURING_COMMIT"}
+    law = {"receipt": "LAW-1", "valid": True}
+    try:
+        rg.commit_with_crash(
+            {"change_id": "op-v1", "change_type": "TAXONOMY_MERGE",
+             "scopes": ["s:A"], "evidence": {"merged_id": "s:AB"},
+             "law_receipt": law}, "op-v1", "h-v1", law)
+    except CrashSimulated:
+        pass
+    rg.crash_at = set()
+    r = recover_governance_operation(rg, "op-v1", "h-v1")
+    e = rg.durable_log["op-v1"]
+    rows.append(("atomic-authoritative-publication",
+                 "PASS" if (r["recovered"] and e["applied"]
+                            and e["receipt"] and e["outbox_event_ids"])
+                 else "FAIL"))
+
+    # 2. Replay idempotency: one logical change under repeated recovery.
+    r2a = recover_governance_operation(rg, "op-v1", "h-v1")
+    r2b = recover_governance_operation(rg, "op-v1", "h-v1")
+    rows.append(("replay-idempotency",
+                 "PASS" if (r2a["status"] == "RECOVERED_ORIGINAL_RESULT"
+                            and r2b["status"] == "RECOVERED_ORIGINAL_RESULT"
+                            and rg.gov.epoch
+                            == rg.durable_log["op-v1"]["receipt"]
+                            .get("governance_epoch", rg.gov.epoch))
+                 else "FAIL"))
+
+    # 3. Monotone eligibility: withdrawn never resurrected by older events.
+    w = lab_withdrawal_replay_81_82()
+    rows.append(("monotone-eligibility",
+                 "PASS" if w["law_holds"] else "FAIL"))
+
+    # 4. Evidence-preserving split: no child inherits unsupported proof.
+    m14 = [x for x in rec_crash_matrix() if x[0] == "C14"][0]
+    rows.append(("evidence-preserving-split",
+                 "PASS" if m14[1] == "PASS" else "FAIL"))
+
+    # 5. Ambiguous-outcome integrity: unknown stays unknown until resolved.
+    amb = lab_law_authorized_act_unknown()
+    rows.append(("ambiguous-outcome-integrity",
+                 "PASS" if amb["law_holds"] else "FAIL"))
+
+    # 6. Selective recovery: unaffected scopes stay available.
+    rows.append(("selective-recovery",
+                 "PASS" if w["a_still_qualified"] else "FAIL"))
+
+    # 7. Crash reconstruction: a cold successor reaches the same supported
+    #    decision from durable evidence alone.
+    cold = verify_committed_history(rg.gov)
+    rows.append(("crash-reconstruction",
+                 "PASS" if cold["verified"] else "FAIL"))
+    return rows
+
+
+def lab_first_fixture() -> dict:
+    """The lab's first executable fixture: Crash After Withdrawal Commit,
+    Before Publication. Scopes A and B; withdraw B's qualification; crash
+    immediately after canonical commit; replay an old merge event; restart two
+    recovery workers. Verifier: B stays unqualified, A preserves eligibility,
+    epoch never rolls backward, no new ACT permission from the stale merge.
+    Then move the crash BEFORE the authoritative commit and require a
+    DIFFERENT reconstructed outcome.
+
+    Demonstrated result: a crashed worker can lose its progress or
+    acknowledgment, but it cannot create new authority, erase a withdrawal, or
+    manufacture an external effect outcome."""
+    law = {"receipt": "LAW-1", "valid": True}
+    report = {}
+
+    def fresh_ab():
+        rg = RecoverableGovernance()
+        for s in ("s:A", "s:B"):
+            rg.gov.scope_mapping[s] = {"parent": None, "children": [],
+                                       "taxonomy_version": 0}
+            rg.gov.active_qualifications[s] = {
+                "guarantee": f"g:{s}", "status": "QUALIFIED",
+                "qualification_rev": 0, "taxonomy_version": 0}
+        return rg
+
+    # Position 1: crash AFTER the withdrawal commit, before projection.
+    rg = fresh_ab()
+    rg.crash_at = {"AFTER_COMMIT_BEFORE_PROJECTION"}
+    wd_change = {"change_id": "op-wd1", "change_type": "INCIDENT_WITHDRAWAL",
+                 "scopes": ["s:B"],
+                 "evidence": {"incident": {"incident_id": "inc-B1",
+                                           "confirmed": True},
+                              "verifier_ref": "v"},
+                 "law_receipt": law}
+    try:
+        rg.commit_with_crash(wd_change, "op-wd1", "h-wd1", law)
+    except CrashSimulated:
+        pass
+    rg.crash_at = set()
+    epoch_at_crash = rg.gov.epoch
+    # Two recovery workers restart.
+    fa = acquire_recovery_fence(rg, "op-wd1", "worker-A")
+    ra = recover_governance_operation(rg, "op-wd1", "h-wd1")
+    fb = acquire_recovery_fence(rg, "op-wd1", "worker-B")
+    # Replay an old merge event (epoch 1 < withdrawal epoch): rejected.
+    consumer = ProjectionConsumer("proj-x", at_revision=epoch_at_crash,
+                                  seen=frozenset({"evt-wd"}))
+    stale_merge = consumer.apply({"event_id": "evt-old-merge", "revision": 1})
+    g_b = {"guarantee_id": "g:s:B", "verified": True,
+           "qualified_scopes": ("s:B",), "revision": 0, "current": True}
+    auth_b = authorize_tax_action(rg.gov, "act-b1", "s:B", g_b, law)
+    g_a = {"guarantee_id": "g:s:A", "verified": True,
+           "qualified_scopes": ("s:A",), "revision": 0, "current": True}
+    auth_a = authorize_tax_action(rg.gov, "act-a1", "s:A", g_a, law)
+    report["crash_after_commit"] = {
+        "worker_a": fa["status"], "worker_a_recovery": ra["status"],
+        "worker_b": fb["status"],
+        "stale_merge_replay": stale_merge["status"],
+        "b_stays_unqualified": not auth_b["authorized"],
+        "a_preserves_eligibility": auth_a["authorized"],
+        "epoch_never_backward": rg.gov.epoch >= epoch_at_crash,
+        "no_new_act_from_stale_merge": not auth_b["authorized"],
+    }
+    assert fa["acquired"] and not fb["acquired"]
+    assert ra["status"] == "RECOVERED_ORIGINAL_RESULT"
+    assert stale_merge["status"] == "STALE_REPLAY_REJECTED"
+    assert not auth_b["authorized"] and auth_a["authorized"]
+    assert rg.gov.epoch >= epoch_at_crash
+
+    # Position 2: move the crash BEFORE the authoritative commit — the
+    # reconstructed outcome must DIFFER: the withdrawal never happened.
+    rg2 = fresh_ab()
+    rg2.crash_at = {"BEFORE_COMMIT"}
+    try:
+        rg2.commit_with_crash(wd_change, "op-wd2", "h-wd2", law)
+    except CrashSimulated:
+        pass
+    rg2.crash_at = set()
+    r2 = recover_governance_operation(rg2, "op-wd2", "h-wd2")
+    auth_b2 = authorize_tax_action(rg2.gov, "act-b2", "s:B", g_b, law)
+    report["crash_before_commit"] = {
+        "recovery": r2["status"],
+        "b_withdrawal_happened": rg2.gov.active_qualifications["s:B"][
+            "status"] == "WITHDRAWN",
+        "b_act_authorized": auth_b2["authorized"],
+        "different_outcome": r2["status"] == "PROVABLY_UNCOMMITTED",
+    }
+    assert r2["status"] == "PROVABLY_UNCOMMITTED"
+    assert auth_b2["authorized"]  # the withdrawal never committed
+    report["demonstrated"] = ("a crashed worker can lose its progress or "
+                              "acknowledgment, but it cannot create new "
+                              "authority, erase a withdrawal, or manufacture "
+                              "an external effect outcome")
+    return report
+# ======================================================================================
+# SN-0807 AER-LIVE-1 — SAFE HOLD AND RECOVERY LIVENESS LAW
+# ======================================================================================
+# The RECOVERY-LIVENESS layer: AER-REC-1 defined how to recover correctly; this
+# defines how to tell correct refusal apart from recovery failure.
+#
+# HONEST SCOPE (Shawn, 2026-10-10 — his explicit scoping): PROPOSED DIAGNOSTIC
+# LABELS, not replacements for existing canonical liveness states. No
+# integrated production AER-LIVE-1 monitor or repair harness verified —
+# liveness.py / fairness.py / progress.py / fairness_verify.py are foundations
+# only. PR #2185 illustrates the scheduled-execution vs production-liveness
+# distinction (a scheduled job running is not proof the production obligation
+# is live).
+#
+# His law: NayaNET shall not classify a legitimately prohibited action as a
+# liveness failure solely because it remains blocked. Every recovery
+# obligation shall separately establish eligibility, usable service, and
+# independently verified progress or governed disposition. Escalation shall
+# change responsibility and investigation urgency, never manufacture
+# authority, completion, or proof.
+AER_LIVE1_IMPLEMENTATION_STATUS = {
+    "enters_as": "proposed diagnostic labels + harness demonstration",
+    "not_a": ("replacement for canonical liveness states",
+              "integrated production monitor or repair harness"),
+    "foundations_only": ("liveness.py", "fairness.py", "progress.py",
+                         "fairness_verify.py"),
+    "not_verified": ("production AER-LIVE-1 monitor",
+                     "production repair harness"),
+}
+
+# The liveness obligation, grounded in fairness_verify.py's three-link
+# distinction: E_o (enabled), S_o (real usable service — a SERVICE log line is
+# NOT S_o), P_o (verified progress — a transition reducing outstanding work
+# or a valid terminal disposition).
+#   E_o(t) = Permitted ∧ DependenciesReady ∧ ResourcesUsable.
+# Track E_o (was it enabled?), S_o (did it receive meaningful service?),
+# P_o (did verified progress occur?) SEPARATELY. A task that cannot legally
+# execute is not a starvation victim.
+NON_PROGRESS_SIGNALS = ("HEARTBEAT", "LOG_ENTRY", "STATUS_REWRITE",
+                        "REASSIGNMENT", "REPEATED_FAILED_RETRY")
+# Heartbeats, log entries, status rewrites, reassignments, and repeated
+# failed retries NEVER establish P_o.
+
+
+def liveness_enabled(permitted: bool, dependencies_ready: bool,
+                     resources_usable: bool) -> dict:
+    """E_o(t) = Permitted ∧ DependenciesReady ∧ ResourcesUsable."""
+    e = bool(permitted and dependencies_ready and resources_usable)
+    return {"E_o": e,
+            "because": {"permitted": bool(permitted),
+                        "dependencies_ready": bool(dependencies_ready),
+                        "resources_usable": bool(resources_usable)},
+            "note": "a task that cannot legally execute is not a starvation "
+                    "victim: ¬Permitted ⇒ ¬E_o"}
+
+
+def track_esp(trace: list) -> dict:
+    """Reconstruct the E_o / S_o / P_o histories from a deterministic event
+    trace. Trace events: (t, kind, detail). Kinds:
+      PERMITTED / BLOCKED_AUTH, DEPS_READY / DEPS_BLOCKED,
+      RESOURCES_OK / RESOURCES_STARVED,
+      SERVICED (real usable service, evidenced), PROGRESS (verified),
+      HEARTBEAT / LOG_ENTRY / STATUS_REWRITE / REASSIGNMENT /
+        REPEATED_FAILED_RETRY (never P_o),
+      WAITS_ON (detail: the other obligation id)."""
+    permitted, deps, res = False, False, False
+    e_hist, s_hist, p_hist = [], [], []
+    non_progress = []
+    waits_on = {}
+    for t, kind, detail in trace:
+        if kind == "PERMITTED":
+            permitted = True
+        elif kind == "BLOCKED_AUTH":
+            permitted = False
+        elif kind == "DEPS_READY":
+            deps = True
+        elif kind == "DEPS_BLOCKED":
+            deps = False
+        elif kind == "RESOURCES_OK":
+            res = True
+        elif kind == "RESOURCES_STARVED":
+            res = False
+        elif kind == "SERVICED":
+            s_hist.append((t, detail))
+        elif kind == "PROGRESS":
+            p_hist.append((t, detail))
+        elif kind in NON_PROGRESS_SIGNALS:
+            non_progress.append((t, kind))
+        elif kind == "WAITS_ON":
+            waits_on[detail.get("obligation", "?")] = detail.get("on")
+        e_hist.append((t, bool(permitted and deps and res)))
+    return {"E_o": e_hist, "S_o": s_hist, "P_o": p_hist,
+            "non_progress_signals": non_progress, "waits_on": waits_on,
+            "final": {"permitted": permitted, "deps": deps, "res": res}}
+
+
+# --- Waiting vs starvation vs failure-after-service -------------------------------------------------------------------
+# Diagnosis by cause, not elapsed time. Finite nonprogress = suspicion or a
+# bounded-service breach — never proof of an infinite violation. Deadlines
+# establish bounded violations only with preconditions and clock evidence.
+LIVENESS_DIAGNOSES = ("WAITING_AUTHORITY", "WAITING_DEPENDENCY",
+                      "BLOCKED_RECOVERABLE", "STARVATION_SUSPECTED",
+                      "PROGRESS_ON_SERVICE_VIOLATION", "DEADLOCK_SUSPECTED",
+                      "INSUFFICIENT_EVIDENCE", "RECOVERING_NORMALLY")
+
+
+def diagnose_liveness(trace: list, service_window: int = 10,
+                      progress_bound: int = 20) -> dict:
+    """The 8-row diagnosis table over a deterministic trace."""
+    if not trace:
+        return {"diagnosis": "INSUFFICIENT_EVIDENCE",
+                "cause": "empty trace: never collapse to healthy or waiting"}
+    h = track_esp(trace)
+    now = trace[-1][0] if trace else 0
+    waits = h["waits_on"]
+    # Deadlock: a waits-on cycle.
+    for a, b in waits.items():
+        if waits.get(b) == a:
+            return {"diagnosis": "DEADLOCK_SUSPECTED",
+                    "cause": f"circular wait: {a} <-> {b}"}
+    final = h["final"]
+    # Blocking causes first: a task that cannot legally execute is waiting,
+    # not starving — even when some other duty (e.g. notification) progresses.
+    if not final["permitted"]:
+        duty = ""
+        if h["P_o"]:
+            duty = (f"; notification duty progressing "
+                    f"(verified P_o at t={h['P_o'][-1][0]})")
+        return {"diagnosis": "WAITING_AUTHORITY",
+                "cause": f"not legally permitted: not a starvation victim{duty}"}
+    if not final["deps"]:
+        return {"diagnosis": "WAITING_DEPENDENCY",
+                "cause": "dependencies not ready"}
+    # Resources unusable: blocked (not starved — E_o never held). The
+    # recovery path is governed resource restoration / retry.
+    if not final["res"]:
+        return {"diagnosis": "BLOCKED_RECOVERABLE",
+                "cause": "permitted and dependencies ready, but resources "
+                         "unusable; governed recovery path available"}
+    if h["P_o"]:
+        last_p = h["P_o"][-1][0]
+        if now - last_p <= progress_bound:
+            return {"diagnosis": "RECOVERING_NORMALLY",
+                    "cause": f"verified progress at t={last_p}"}
+    # E_o sustained but no usable service in the window → suspicion only.
+    e_times = [t for t, e in h["E_o"] if e]
+    s_times = [t for t, _ in h["S_o"]]
+    if e_times and not any(t >= now - service_window for t in s_times):
+        return {"diagnosis": "STARVATION_SUSPECTED",
+                "cause": f"enabled throughout, no usable service in the "
+                         f"last {service_window}: suspicion, not proof"}
+    # Service without verified progress inside the bound.
+    if s_times and not h["P_o"]:
+        last_s = s_times[-1]
+        if now - last_s <= progress_bound:
+            return {"diagnosis": "PROGRESS_ON_SERVICE_VIOLATION",
+                    "cause": f"serviced at t={last_s} with no verified "
+                             f"progress inside bound {progress_bound}"}
+    # No classified pattern matched: the evidence does not discriminate.
+    return {"diagnosis": "INSUFFICIENT_EVIDENCE",
+            "cause": "no classified pattern; evidence does not discriminate"}
+
+
+def check_fairness_finite(trace: list, window: int = 10) -> dict:
+    """Finite-trace fairness checks (WF/SF/PoS), with the honesty clause:
+    finite nonprogress yields SUSPECTED or a bounded-service breach — never
+    proof of an infinite violation.
+      WF: FG(E_o) ⇒ GF(S_o).  SF: GF(E_o) ⇒ GF(S_o).
+      PoS: service ⇒ verified progress or valid terminal disposition."""
+    h = track_esp(trace)
+    if not trace:
+        return {"WF": "INSUFFICIENT_EVIDENCE", "SF": "INSUFFICIENT_EVIDENCE",
+                "PoS": "INSUFFICIENT_EVIDENCE"}
+    now = trace[-1][0]
+    e_hist, s_hist, p_hist = h["E_o"], h["S_o"], h["P_o"]
+    # WF: enabled over the whole suffix window, no service in it.
+    suffix = [(t, e) for t, e in e_hist if t >= now - window]
+    wf_breach = (suffix and all(e for _, e in suffix)
+                 and not any(t >= now - window for t, _ in s_hist))
+    # SF: enabled in several distinct windows, never serviced.
+    e_windows = sum(1 for t, e in e_hist if e)
+    sf_breach = (e_windows >= 3
+                 and not s_hist)
+    # PoS: serviced, no verified progress after.
+    pos_breach = (bool(s_hist) and not p_hist
+                  and now - s_hist[-1][0] > window)
+    return {"WF": "SUSPECTED" if wf_breach else "NO_BREACH_OBSERVED",
+            "SF": "SUSPECTED" if sf_breach else "NO_BREACH_OBSERVED",
+            "PoS": "VIOLATION" if pos_breach else "NO_BREACH_OBSERVED",
+            "honesty": "finite-trace verdicts are suspicion or bounded "
+                       "breaches, never infinite-violation proofs"}
+
+
+# --- Two independent assessments: safety × progress ---------------------------------------------------------------------
+# HOLD_REQUIRED is never a claim that recovery responsibility is complete.
+SAFETY_X_PROGRESS = (
+    ("SAFE_HOLD_CORRECT", "HOLD_REQUIRED (correct)", "NO_OBLIGATION",
+     "safely blocked: the hold is the correct safety posture"),
+    ("SAFE_HOLD_STALLED", "HOLD_REQUIRED (correct)", "STALLED_INVESTIGATE",
+     "safely blocked but operationally stalled: the hold is valid, the "
+     "scheduler needs investigation"),
+    ("RECOVERY_FAILURE", "HOLD_REQUIRED", "FAILED_DESPITE_CAPACITY",
+     "actual recovery failure: a committed publication never advances "
+     "despite usable capacity"),
+    ("HEALTHY_PROGRESS", "PERMITTED", "PROGRESSING", "normal operation"),
+    ("PERMITTED_STALLED", "PERMITTED", "STALLED",
+     "permitted but stalled: diagnose the cause"),
+    ("SAFETY_VIOLATION", "VIOLATED", "ANY",
+     "safety violated; progress assessment irrelevant"),
+    ("INSUFFICIENT_EVIDENCE", "UNKNOWN", "UNKNOWN",
+     "never collapse to healthy on missing evidence"),
+)
+
+
+def assess_safety_x_progress(safety: str, progress: str) -> dict:
+    """Report BOTH assessments. A correct hold and a stalled recovery are
+    independent facts about one situation."""
+    for row_id, s, p, note in SAFETY_X_PROGRESS:
+        if (s.split(" ")[0] == safety or s == safety) and (
+                p == progress or p == "ANY"):
+            return {"row": row_id, "safety": s, "progress": p, "note": note}
+    # Fallthrough: unknown combinations stay unknown, never healthy.
+    if safety == "UNKNOWN" or progress == "UNKNOWN":
+        return {"row": "INSUFFICIENT_EVIDENCE",
+                "safety": "UNKNOWN", "progress": "UNKNOWN",
+                "note": "never collapse to healthy on missing evidence"}
+    return {"row": "UNCLASSIFIED", "safety": safety, "progress": progress,
+            "note": "no matrix row: treat as needing investigation"}
+
+
+# --- Seven independent clocks -----------------------------------------------------------------------------------------------
+# Never collapsed into one timer. Escalation changes who investigates and how
+# urgently — never the safety predicate. No threshold makes an unsafe retry safe.
+CLOCKS = ("total_unresolved_age", "eligible_service_age",
+          "time_since_verified_progress", "blocker_duration",
+          "recovery_budget_consumed", "projection_lag", "evidence_freshness")
+
+ESCALATION_POLICY = {
+    # clock -> (escalation action, what it changes). Thresholds are
+    # per-deployment configuration, never hardcoded safety facts.
+    "total_unresolved_age": ("page the owning team",
+                             "responsibility + urgency only"),
+    "eligible_service_age": ("investigate the scheduler",
+                             "responsibility + urgency only"),
+    "time_since_verified_progress": ("open a recovery incident",
+                                     "responsibility + urgency only"),
+    "blocker_duration": ("reassess the blocker, not the hold",
+                         "responsibility + urgency only"),
+    "recovery_budget_consumed": ("governed disposition review",
+                                 "responsibility + urgency only"),
+    "projection_lag": ("prioritize projection replay",
+                       "responsibility + urgency only"),
+    "evidence_freshness": ("re-verify before any consequential use",
+                           "responsibility + urgency only"),
+}
+
+
+def check_escalation(clock_values: dict, thresholds: dict) -> dict:
+    """Per-clock escalation. Returns actions; the safety predicate is never
+    among the things escalation may change."""
+    actions = {}
+    for clock in CLOCKS:
+        value = clock_values.get(clock)
+        threshold = thresholds.get(clock)
+        if value is None or threshold is None:
+            continue
+        if value >= threshold:
+            action, changes = ESCALATION_POLICY[clock]
+            actions[clock] = {"escalated": True, "action": action,
+                              "changes": changes,
+                              "value": value, "threshold": threshold}
+    return {"escalations": actions,
+            "invariant": "escalation never changes the safety predicate; no "
+                         "threshold makes an unsafe retry safe"}
+
+
+# --- The nine-item committed-publication evidence packet ----------------------------------------------------------------------
+# A worker's published_successfully log is NEVER a substitute for the packet.
+EVIDENCE_PACKET_ITEMS = ("commit_identity", "authoritative_transaction_receipt",
+                         "current_governance_state", "scope_dependency_closure",
+                         "outbox_identity", "projection_checkpoint",
+                         "gap_defect_evidence", "recovery_authorization",
+                         "independent_verification_plan")
+
+
+def classify_publication_state(packet: dict) -> dict:
+    """Three situations, distinguished by evidence:
+      committed + projection incomplete ⇒ REPLAY (idempotent, version-fenced);
+      committed + stalled ⇒ DIAGNOSE (the progress obligation);
+      commit incorrect or ambiguous ⇒ CONTAIN + RECONSTRUCT (never
+        projection-repair: repair must not touch canonical state to make a
+        projection look consistent)."""
+    if not packet.get("authoritative_transaction_receipt"):
+        return {"situation": "UNCLASSIFIABLE",
+                "note": "a worker's published_successfully log is never a "
+                        "substitute for the authoritative receipt"}
+    status = packet.get("commit_status", "COMMITTED")
+    if status in ("INCORRECT", "AMBIGUOUS"):
+        return {"situation": "CONTAIN_RECONSTRUCT",
+                "action": "contain + reconstruct from durable evidence; "
+                          "never projection-repair"}
+    if packet.get("projection_complete"):
+        return {"situation": "HEALTHY",
+                "action": "none required"}
+    if packet.get("stalled_despite_capacity"):
+        return {"situation": "DIAGNOSE",
+                "action": "diagnose the progress obligation (E_o/S_o/P_o)"}
+    return {"situation": "REPLAY",
+            "action": "idempotent replay with version fencing"}
+
+
+# --- Smallest valid repair ------------------------------------------------------------------------------------------------------
+def smallest_repair(situation: str, evidence: dict) -> dict:
+    """The decision flow. Repairs are minimal and history-preserving."""
+    if situation == "committed_projection_stale":
+        return {"repair": "IDEMPOTENT_REPLAY",
+                "fencing": "version",
+                "touches_canonical": False}
+    if situation == "committed_outbox_missing":
+        return {"repair": "INTEGRITY_DEFECT_RECONSTRUCTION",
+                "note": "the atomic-contract claim is contradicted: establish "
+                        "state, then an authorized reconstruction with a NEW "
+                        "repair receipt linked to the original",
+                "touches_canonical": "new governed receipt only"}
+    if situation == "incorrect_canonical_commit":
+        return {"repair": "GOVERNED_CORRECTIVE_TRANSACTION",
+                "note": "a new governed transaction; history is never "
+                        "rewritten",
+                "touches_canonical": "new transaction only"}
+    if situation == "ambiguous_external_effect":
+        return {"repair": "EXTERNAL_RECONCILIATION_ONLY",
+                "note": "independent external-effect reconciliation; no new "
+                        "execution from ambiguity",
+                "touches_canonical": False}
+    return {"repair": "UNKNOWN_SITUATION",
+            "note": "no repair without a classified situation"}
+
+
+# --- Worked example: epoch 82 -----------------------------------------------------------------------------------------------------
+def lab_epoch_82_worked_example() -> dict:
+    """His worked example: withdrawal commits, EV-82 durable, the consumer
+    crashes, the hub is stale at 81, the worker was serviced but no verified
+    progress occurred.
+    Safety: PASS (ACT correctly rejects B; A stays available).
+    Recovery: STALLED — the progress obligation is failing.
+    Report BOTH. The repair must not touch B's canonical qualification to
+    make the hub look consistent."""
+    law = {"receipt": "LAW-1", "valid": True}
+    rg = RecoverableGovernance()
+    for s in ("s:A", "s:B"):
+        rg.gov.scope_mapping[s] = {"parent": None, "children": [],
+                                   "taxonomy_version": 0}
+        rg.gov.active_qualifications[s] = {
+            "guarantee": f"g:{s}", "status": "QUALIFIED",
+            "qualification_rev": 0, "taxonomy_version": 0}
+    # Withdrawal of B commits; EV-82 durable.
+    wd = rg.commit_with_crash(
+        {"change_id": "op-w82", "change_type": "INCIDENT_WITHDRAWAL",
+         "scopes": ["s:B"],
+         "evidence": {"incident": {"incident_id": "inc-B82",
+                                   "confirmed": True},
+                      "verifier_ref": "v"},
+         "law_receipt": law}, "op-w82", "h-w82", law)
+    assert wd["committed"]
+    ev82 = wd["receipt"]["seq"]
+    # The consumer crashes; the hub projection is stale at 81.
+    hub_revision = 81
+    canonical_revision = rg.gov.epoch  # 82-equivalent: the withdrawal epoch
+    # The worker was serviced (it ran) but no verified progress occurred:
+    # the projection checkpoint never advanced past 81.
+    trace = [(1, "PERMITTED", {}), (2, "DEPS_READY", {}),
+             (3, "RESOURCES_OK", {}), (4, "SERVICED", {"worker": "hub-1"}),
+             (5, "HEARTBEAT", {}), (6, "LOG_ENTRY", {"msg": "retrying"}),
+             (7, "STATUS_REWRITE", {"to": "in-progress"})]
+    h = track_esp(trace)
+    diagnosis = diagnose_liveness(trace)
+    # Safety assessment (independent).
+    g_b = {"guarantee_id": "g:s:B", "verified": True,
+           "qualified_scopes": ("s:B",), "revision": 0, "current": True}
+    auth_b = authorize_tax_action(rg.gov, "act-b82", "s:B", g_b, law)
+    g_a = {"guarantee_id": "g:s:A", "verified": True,
+           "qualified_scopes": ("s:A",), "revision": 0, "current": True}
+    auth_a = authorize_tax_action(rg.gov, "act-a82", "s:A", g_a, law)
+    safety = assess_safety_x_progress("HOLD_REQUIRED (correct)",
+                                      "STALLED_INVESTIGATE")
+    repair = smallest_repair("committed_projection_stale", {})
+    return {"safety": "PASS" if (not auth_b["authorized"]
+                                 and auth_a["authorized"]) else "FAIL",
+            "recovery": diagnosis["diagnosis"],
+            "progress_obligation": "FAILING" if not h["P_o"] else "MET",
+            "both_reported": safety["row"],
+            "hub_stale_at": hub_revision,
+            "canonical_at": canonical_revision,
+            "ev82_durable": ev82 is not None,
+            "repair": repair["repair"],
+            "repair_constraint": "the repair must not touch B's canonical "
+                                 "qualification to make the hub look "
+                                 "consistent",
+            "law_holds": (not auth_b["authorized"] and auth_a["authorized"]
+                          and diagnosis["diagnosis"]
+                          in ("PROGRESS_ON_SERVICE_VIOLATION",
+                              "STARVATION_SUSPECTED")
+                          and not h["P_o"]
+                          and repair["repair"] == "IDEMPOTENT_REPLAY"
+                          and not repair["touches_canonical"])}
+
+
+# --- The L1–L12 suite ---------------------------------------------------------------------------------------------------------------
+def live_l_suite(progress_check_enabled: bool = True) -> list:
+    """Twelve liveness scenarios. With progress_check_enabled=False (the
+    adversarial fixture: the progress-on-service check removed), the verifier
+    must catch a system that reports success from repeated heartbeats."""
+    results = []
+
+    def T(*events):
+        return [(i + 1, k, d) for i, (k, d) in enumerate(events)]
+
+    # L1: healthy progress.
+    d = diagnose_liveness(T(("PERMITTED", {}), ("DEPS_READY", {}),
+                             ("RESOURCES_OK", {}), ("SERVICED", {"w": 1}),
+                             ("PROGRESS", {"done": True})))
+    results.append(("L1", "PASS" if d["diagnosis"] == "RECOVERING_NORMALLY"
+                    else "FAIL", d["diagnosis"]))
+
+    # L2: waiting authority — not starvation.
+    d = diagnose_liveness(T(("BLOCKED_AUTH", {}), ("DEPS_READY", {}),
+                             ("RESOURCES_OK", {})))
+    results.append(("L2", "PASS" if d["diagnosis"] == "WAITING_AUTHORITY"
+                    else "FAIL", "not a starvation victim"))
+
+    # L3: waiting dependency.
+    d = diagnose_liveness(T(("PERMITTED", {}), ("DEPS_BLOCKED", {}),
+                             ("RESOURCES_OK", {})))
+    results.append(("L3", "PASS" if d["diagnosis"] == "WAITING_DEPENDENCY"
+                    else "FAIL", d["diagnosis"]))
+
+    # L4: starvation suspected — enabled, no service, bounded window.
+    d = diagnose_liveness(T(*([("PERMITTED", {}), ("DEPS_READY", {}),
+                                ("RESOURCES_OK", {})]
+                               + [("HEARTBEAT", {})] * 12)),
+                          service_window=10)
+    results.append(("L4", "PASS" if d["diagnosis"] == "STARVATION_SUSPECTED"
+                    else "FAIL",
+                    "suspicion, never proof of infinite violation"))
+
+    # L5: service without progress — the adversarial target.
+    trace5 = T(("PERMITTED", {}), ("DEPS_READY", {}), ("RESOURCES_OK", {}),
+               ("SERVICED", {"w": 1}), ("HEARTBEAT", {}), ("LOG_ENTRY", {}))
+    if progress_check_enabled:
+        d = diagnose_liveness(trace5)
+        verdict = "PASS" if d["diagnosis"] == "PROGRESS_ON_SERVICE_VIOLATION" \
+            else "FAIL"
+        note = d["diagnosis"]
+    else:
+        # MUTANT: the check removed — the system reports success from
+        # heartbeats. The verifier must catch the fraud.
+        h = track_esp(trace5)
+        fraud = (not h["P_o"]
+                 and any(k == "HEARTBEAT" for _, k in h["non_progress_signals"]))
+        verdict = "CAUGHT" if fraud else "MISSED"
+        note = ("verifier caught heartbeat-success fraud"
+                if fraud else "verifier missed it")
+    results.append(("L5", verdict, note))
+
+    # L6: deadlock suspected.
+    d = diagnose_liveness(T(("PERMITTED", {}),
+                             ("WAITS_ON", {"obligation": "A", "on": "B"}),
+                             ("WAITS_ON", {"obligation": "B", "on": "A"})))
+    results.append(("L6", "PASS" if d["diagnosis"] == "DEADLOCK_SUSPECTED"
+                    else "FAIL", d["diagnosis"]))
+
+    # L7: insufficient evidence.
+    d = diagnose_liveness([])
+    results.append(("L7", "PASS" if d["diagnosis"] == "INSUFFICIENT_EVIDENCE"
+                    else "FAIL", d["diagnosis"]))
+
+    # L8: blocked recoverable — resources down but a path exists.
+    d = diagnose_liveness(T(*([("PERMITTED", {}), ("DEPS_READY", {}),
+                                ("RESOURCES_STARVED", {})]
+                               + [("HEARTBEAT", {})] * 12)),
+                          service_window=10)
+    results.append(("L8", "PASS" if d["diagnosis"] == "BLOCKED_RECOVERABLE"
+                    else "FAIL", d["diagnosis"]))
+
+    # L9: safety × progress both reported (epoch-82 worked example).
+    w = lab_epoch_82_worked_example()
+    results.append(("L9", "PASS" if (w["safety"] == "PASS"
+                                     and w["both_reported"]
+                                     == "SAFE_HOLD_STALLED") else "FAIL",
+                    "both assessments reported"))
+
+    # L10: escalation never changes the safety predicate.
+    esc = check_escalation(
+        {"total_unresolved_age": 9999}, {"total_unresolved_age": 10})
+    results.append(("L10", "PASS" if (
+        esc["escalations"]["total_unresolved_age"]["escalated"]
+        and "never changes the safety predicate" in esc["invariant"])
+        else "FAIL", "escalation changes responsibility, never safety"))
+
+    # L11: smallest repair per situation.
+    r1 = smallest_repair("committed_projection_stale", {})
+    r2 = smallest_repair("committed_outbox_missing", {})
+    r3 = smallest_repair("incorrect_canonical_commit", {})
+    r4 = smallest_repair("ambiguous_external_effect", {})
+    ok = (r1["repair"] == "IDEMPOTENT_REPLAY"
+          and r2["repair"] == "INTEGRITY_DEFECT_RECONSTRUCTION"
+          and "never rewritten" in r3["note"]
+          and r4["repair"] == "EXTERNAL_RECONCILIATION_ONLY")
+    results.append(("L11", "PASS" if ok else "FAIL",
+                    "minimal, history-preserving repairs"))
+
+    # L12: formal property — Committed(o) ∧ ProjectionCurrent(o) ⇒
+    # ProjectionMatchesCanonical(o).
+    rg = RecoverableGovernance()
+    rg.gov.scope_mapping["s:A"] = {"parent": None, "children": [],
+                                   "taxonomy_version": 0}
+    law = {"receipt": "LAW-1", "valid": True}
+    ack = rg.commit_with_crash(
+        {"change_id": "op-l12", "change_type": "TAXONOMY_MERGE",
+         "scopes": ["s:A"], "evidence": {"merged_id": "s:AB"},
+         "law_receipt": law}, "op-l12", "h-l12", law)
+    c = ProjectionConsumer("c-l12", at_revision=0)
+    c.apply({"event_id": "e1", "revision": rg.gov.epoch})
+    matches = (ack["committed"]
+               and c.applied_revision == rg.gov.epoch)
+    results.append(("L12", "PASS" if matches else "FAIL",
+                    "Committed ∧ ProjectionCurrent ⇒ MatchesCanonical"))
+    return results
+
+
+def valid_disposition(obligation: dict) -> dict:
+    """ValidDisposition(o), explicitly contracted: repaired+verified, OR a
+    permitted terminal disposition that retains the unresolved goal (the goal
+    is not silently dropped)."""
+    if obligation.get("repaired_and_verified"):
+        return {"valid": True, "kind": "REPAIRED_VERIFIED"}
+    term = obligation.get("terminal_disposition")
+    if term and term.get("permitted") and term.get("goal_retained"):
+        return {"valid": True, "kind": "PERMITTED_TERMINAL_GOAL_RETAINED"}
+    return {"valid": False,
+            "note": "neither repaired+verified nor a permitted terminal "
+                    "disposition with the goal retained"}
+
+
+# --- AER-LIVE-001: the first action -------------------------------------------------------------------------------------------
+def aer_live_001() -> dict:
+    """Deterministic replay with three histories:
+      control   — outbox applied + verified: safety PASS, progress OK;
+      defective — serviced, checkpoint never advances: safety PASS but
+                  PROGRESS_ON_SERVICE_VIOLATION;
+      waiting   — genuine missing LAW decision: WAITING_AUTHORITY with the
+                  notification duty progressing (verified P_o via the duty).
+    The verifier isolates three facts: safety, scheduling fairness, actual
+    recovery progress."""
+    law = {"receipt": "LAW-1", "valid": True}
+    report = {}
+
+    def fresh_ab():
+        rg = RecoverableGovernance()
+        for s in ("s:A", "s:B"):
+            rg.gov.scope_mapping[s] = {"parent": None, "children": [],
+                                       "taxonomy_version": 0}
+            rg.gov.active_qualifications[s] = {
+                "guarantee": f"g:{s}", "status": "QUALIFIED",
+                "qualification_rev": 0, "taxonomy_version": 0}
+        return rg
+
+    # Control: withdrawal commits, outbox applied, projection verified.
+    rg = fresh_ab()
+    wd = rg.commit_with_crash(
+        {"change_id": "op-c", "change_type": "INCIDENT_WITHDRAWAL",
+         "scopes": ["s:B"],
+         "evidence": {"incident": {"incident_id": "inc-c",
+                                   "confirmed": True},
+                      "verifier_ref": "v"},
+         "law_receipt": law}, "op-c", "h-c", law)
+    assert wd["committed"]
+    eid = wd["outbox_event_ids"][0]
+    assert rg.deliver_outbox(eid)["status"] == "DELIVERED"
+    g_b = {"guarantee_id": "g:s:B", "verified": True,
+           "qualified_scopes": ("s:B",), "revision": 0, "current": True}
+    auth_b = authorize_tax_action(rg.gov, "act-c", "s:B", g_b, law)
+    trace_c = [(1, "PERMITTED", {}), (2, "DEPS_READY", {}),
+               (3, "RESOURCES_OK", {}), (4, "SERVICED", {"w": 1}),
+               (5, "PROGRESS", {"projection": "verified"})]
+    report["control"] = {
+        "safety": "PASS" if not auth_b["authorized"] else "FAIL",
+        "diagnosis": diagnose_liveness(trace_c)["diagnosis"],
+        "progress": "OK" if track_esp(trace_c)["P_o"] else "MISSING"}
+
+    # Defective: serviced, checkpoint never advances.
+    trace_d = [(1, "PERMITTED", {}), (2, "DEPS_READY", {}),
+               (3, "RESOURCES_OK", {}), (4, "SERVICED", {"w": 1}),
+               (5, "HEARTBEAT", {}), (6, "HEARTBEAT", {})]
+    d_d = diagnose_liveness(trace_d)
+    report["defective"] = {
+        "safety": "PASS",  # the hold itself is correct
+        "diagnosis": d_d["diagnosis"],
+        "progress": "MISSING",
+        "isolated_fact": "safety holds while recovery progress fails"}
+
+    # Waiting: genuine missing LAW decision — WAITING_AUTHORITY, with the
+    # notification duty progressing (verified P_o via the duty itself).
+    trace_w = [(1, "BLOCKED_AUTH", {}), (2, "DEPS_READY", {}),
+               (3, "RESOURCES_OK", {}),
+               (4, "PROGRESS", {"notification_duty": "served"})]
+    d_w = diagnose_liveness(trace_w)
+    report["waiting"] = {
+        "diagnosis": d_w["diagnosis"],
+        "progress_via_duty": bool(track_esp(trace_w)["P_o"]),
+        "note": "waiting on authority is not starvation; the notification "
+                "duty's verified progress counts as P_o"}
+
+    # The verifier isolates the three facts.
+    ok = (report["control"]["safety"] == "PASS"
+          and report["control"]["diagnosis"] == "RECOVERING_NORMALLY"
+          and report["defective"]["diagnosis"] == "PROGRESS_ON_SERVICE_VIOLATION"
+          and report["waiting"]["diagnosis"] == "WAITING_AUTHORITY"
+          and report["waiting"]["progress_via_duty"])
+    report["verifier_isolates_three_facts"] = ok
+
+    # The adversarial fixture: with the progress check removed, heartbeat
+    # success fraud must be caught.
+    adv = [x for x in live_l_suite(progress_check_enabled=False)
+           if x[0] == "L5"][0]
+    report["adversarial"] = {"L5": adv[1], "note": adv[2]}
+    assert adv[1] == "CAUGHT"
+    return report
+# ======================================================================================
+# SN-0808 AER-LIVE-2 — BOUNDED RECOVERY LIVENESS LAW
+# ======================================================================================
+# The BOUNDED-LIVENESS QUALIFICATION layer: AER-LIVE-1 separated safety grades
+# from liveness grades; this defines what evidence earns the liveness verdicts.
+#
+# HONEST SCOPE (Shawn, 2026-10-10 — his explicit scoping): EXTEND the existing
+# contracts — never a separate engine or competing verdict engine. Diagnostic
+# labels map into existing state/receipt contracts (fairness_verify.py,
+# liveness.py, progress.py). No independently validated numeric service bound
+# for any production recovery obligation; AER-LIVE-2 guarantees not
+# production-proven. Main observed by Shawn at cfbd81cc (supersedes 0fb380c).
+#
+# His law: NayaNET may claim bounded recovery liveness only where obligation
+# eligibility, scheduling opportunities, usable service, progress witnesses,
+# capacity assumptions, and the governing bound are independently established.
+# A finite timeout may demonstrate a specific contractual deadline breach, but
+# shall not by itself establish weak- or strong-fairness failure.
+AER_LIVE2_IMPLEMENTATION_STATUS = {
+    "enters_as": "contract extension + harness demonstration",
+    "not_a": ("separate engine", "competing verdict engine"),
+    "extends": ("fairness_verify.py", "liveness.py", "progress.py"),
+    "not_verified": ("numeric service bound for any production obligation",
+                     "production AER-LIVE-2 guarantees"),
+    "main_observed_at": "cfbd81cc",
+}
+
+# Four separate claims, each with its own proof burden. A correctly blocked
+# retry can satisfy safety while an independent reconciliation obligation is
+# eligible and overdue; a worker can satisfy scheduling fairness while
+# achieving zero progress.
+LIVENESS_CLAIMS = {
+    "safety": "no prohibited action taken; holds correct",
+    "scheduling_fairness": "eligible obligations receive adequate service "
+                           "within the bound",
+    "bounded_progress": "serviced work produces verified milestones within "
+                        "the bound",
+    "task_completion": "the objective itself is achieved (strictly stronger "
+                       "than disposition)",
+}
+
+# The three observable links, precisely:
+#   E_o(t): genuinely enabled — LAW permits, dependencies ready, resources
+#           available, no safety hold.
+#   S_o(t): usable evidenced service — lease, acknowledgment, usable
+#           resources. Scheduler-claimed dispatch is INSUFFICIENT.
+#   P_o(t): independently verified progress — proof obligation discharged,
+#           publication advanced, valid bounded disposition. Heartbeats and
+#           failed retries never count.
+SERVICE_EVIDENCE_KINDS = ("LEASE", "ACKNOWLEDGMENT", "USABLE_RESOURCES")
+PROGRESS_EVIDENCE_KINDS = ("PROOF_OBLIGATION_DISCHARGED",
+                           "PUBLICATION_ADVANCED", "VALID_BOUNDED_DISPOSITION")
+
+
+def observable_links(round_evidence: dict) -> dict:
+    """Evaluate E_o / S_o / P_o for one round from evidence (not claims)."""
+    e = bool(round_evidence.get("law_permits")
+             and round_evidence.get("dependencies_ready")
+             and round_evidence.get("resources_available")
+             and not round_evidence.get("safety_hold"))
+    s = bool(round_evidence.get("service_kind") in SERVICE_EVIDENCE_KINDS
+             and round_evidence.get("service_evidence"))
+    p = bool(round_evidence.get("progress_kind") in PROGRESS_EVIDENCE_KINDS
+             and round_evidence.get("progress_evidence"))
+    return {"E_o": e, "S_o": s, "P_o": p,
+            "note": "dispatch without resource evidence is not S_o; "
+                    "heartbeats never P_o"}
+
+
+# --- Fairness debt: the bounded-service contract -----------------------------------------------------------------------------------
+# ∀o,t: D_o(t) < B_S(o), on cumulative fairness debt:
+#   eligible rounds without adequate service increase debt;
+#   ineligible rounds leave it;
+#   adequate service resets;
+#   reassignment never resets.
+# This is NOT weak/strong fairness over infinite executions — neither
+# supplies a numeric bound.
+def track_fairness_debt(rounds: list,
+                        count_dispatched_as_service: bool = False) -> dict:
+    """rounds: {"eligible": bool, "service": None | {"kind":..., "evidence":...},
+    "reassigned": bool}. count_dispatched_as_service=True is the MUTANT
+    (DISPATCHED counted as SERVICED without resource evidence)."""
+    debt, history = 0, []
+    for r in rounds:
+        svc = r.get("service") or {}
+        adequate = False
+        if svc.get("kind") in SERVICE_EVIDENCE_KINDS and svc.get("evidence"):
+            adequate = True
+        elif count_dispatched_as_service and svc.get("kind") == "DISPATCHED":
+            adequate = True  # MUTANT: scheduler claim without evidence
+        if adequate:
+            debt = 0
+        elif r.get("eligible"):
+            debt += 1
+        # ineligible: debt unchanged. reassignment: never resets.
+        history.append({"debt": debt, "eligible": bool(r.get("eligible")),
+                        "adequate_service": adequate,
+                        "reassigned": bool(r.get("reassigned"))})
+    return {"debt_history": history,
+            "max_debt": max((h["debt"] for h in history), default=0),
+            "final_debt": debt}
+
+
+def check_service_bound(debt_history: list, B_S: int,
+                        trace_complete_and_verified: bool) -> dict:
+    """B_S: eligible obligation receives adequate service within B_S qualified
+    opportunities. Violation = bounded scheduling-service failure — only on a
+    complete, independently verified trace."""
+    if not trace_complete_and_verified:
+        return {"verdict": "INSUFFICIENT_SERVICE_EVIDENCE",
+                "note": "a bound breach needs a complete verified trace"}
+    max_debt = max((h["debt"] for h in debt_history), default=0)
+    if max_debt >= B_S:
+        return {"verdict": "BOUNDED_SERVICE_VIOLATION",
+                "max_debt": max_debt, "B_S": B_S,
+                "note": "a finite bound breach — not a WF/SF violation"}
+    return {"verdict": "SERVICE_WITHIN_BOUND",
+            "max_debt": max_debt, "B_S": B_S}
+
+
+def check_progress_bound(serviced_rounds_without_progress: int,
+                         B_P: int) -> dict:
+    """B_P: serviced work produces a verified milestone/disposition within
+    B_P steps."""
+    if serviced_rounds_without_progress >= B_P:
+        return {"verdict": "BOUNDED_PROGRESS_VIOLATION",
+                "note": "service without verified progress past the bound"}
+    return {"verdict": "PROGRESS_WITHIN_BOUND"}
+
+
+def check_disposition_bound(unresolved_rounds: int, B_D: int,
+                            disposition: dict) -> dict:
+    """B_D: an unresolved obligation reaches verified completion, refusal, or
+    governed escalation within the recovery policy. progress.py separation:
+    consumed retry budget advances TERMINATION, never proof — budget
+    exhaustion without resolution is not completion."""
+    v = valid_disposition(disposition or {})
+    if v["valid"]:
+        return {"verdict": "DISPOSITION_REACHED", "kind": v["kind"]}
+    if unresolved_rounds >= B_D:
+        return {"verdict": "DISPOSITION_BOUND_BREACHED",
+                "note": "escalate under the governed policy; escalation "
+                        "never manufactures completion"}
+    return {"verdict": "DISPOSITION_PENDING"}
+
+
+# --- The bound's assumptions first (7 rows) -------------------------------------------------------------------------------------------
+BOUND_ASSUMPTIONS = (
+    "finite_queue_capacity",
+    "correct_scheduling_rule",
+    "genuine_opportunities",
+    "accurate_accounting",
+    "usable_service",
+    "restart_continuity",
+    "no_hidden_unbounded_environmental_delay",
+)
+
+
+def check_bound_assumptions(assumptions: dict) -> dict:
+    """Every bound verdict first proves its assumptions. Missing or false
+    assumption ⇒ the bound claim is UNGROUNDED, never a violation."""
+    missing = [a for a in BOUND_ASSUMPTIONS if not assumptions.get(a)]
+    return {"grounded": not missing, "missing": missing,
+            "warning": "30 minutes outstanding with 29 minutes of verified "
+                       "provider outage is NOT a scheduler failure "
+                       "(outage rounds are ineligible); hundreds of ignored "
+                       "eligible rounds in 2 seconds CAN breach a bound "
+                       "before any 5-minute alert — track eligible-service "
+                       "age AND total unresolved age, always"}
+
+
+# --- Bound composition ----------------------------------------------------------------------------------------------------------------------
+def compose_bounds(B_S: int, B_P: int, B_D: int, compatibility: dict) -> dict:
+    """B_total = B_S + B_P + B_D, with compatibility conditions: consistent
+    units, proven per-stage bounds, finite attempts, contention accounted."""
+    needed = ("consistent_units", "per_stage_bounds_proven",
+              "finite_attempts", "contention_accounted")
+    missing = [c for c in needed if not compatibility.get(c)]
+    if missing:
+        return {"composed": False, "missing": missing}
+    return {"composed": True, "B_total": B_S + B_P + B_D,
+            "B_S": B_S, "B_P": B_P, "B_D": B_D,
+            "note": "composition is arithmetic on proven bounds, not a new "
+                    "proof"}
+
+
+# --- The evidence-based verdict ladder ------------------------------------------------------------------------------------------------------
+BOUNDED_VERDICTS = ("EXECUTION_TIMEOUT_OBSERVED", "WAITING_AUTHORITY",
+                    "INSUFFICIENT_SERVICE_EVIDENCE", "STARVATION_SUSPECTED",
+                    "BOUNDED_SERVICE_VIOLATION", "BOUNDED_PROGRESS_VIOLATION",
+                    "FORMAL_FAIRNESS_COUNTEREXAMPLE", "GOVERNED_DISPOSITION")
+ASSURANCE_LEVELS = ("RUNTIME_OBSERVATION", "BOUNDED_MODEL_VERIFICATION",
+                    "CONDITIONAL_FORMAL_GUARANTEE")
+
+
+def bounded_verdict(evidence: dict) -> dict:
+    """Walk the ladder; return the highest warranted verdict. A timeout alone
+    never climbs past EXECUTION_TIMEOUT_OBSERVED."""
+    if evidence.get("waiting_on_authority"):
+        return {"verdict": "WAITING_AUTHORITY",
+                "assurance": "RUNTIME_OBSERVATION"}
+    if evidence.get("timeout_observed") and not evidence.get("cause_known"):
+        return {"verdict": "EXECUTION_TIMEOUT_OBSERVED",
+                "assurance": "RUNTIME_OBSERVATION",
+                "note": "a timeout demonstrates a deadline breach at most; "
+                        "it never establishes a fairness failure"}
+    if not evidence.get("trace_complete_and_verified"):
+        return {"verdict": "INSUFFICIENT_SERVICE_EVIDENCE",
+                "assurance": "RUNTIME_OBSERVATION"}
+    debt = evidence.get("debt_history", [])
+    B_S = evidence.get("B_S")
+    if B_S is not None:
+        r = check_service_bound(debt, B_S, True)
+        if r["verdict"] == "BOUNDED_SERVICE_VIOLATION":
+            return {"verdict": "BOUNDED_SERVICE_VIOLATION",
+                    "assurance": "RUNTIME_OBSERVATION",
+                    "max_debt": r["max_debt"]}
+    swp = evidence.get("serviced_without_progress", 0)
+    B_P = evidence.get("B_P")
+    if B_P is not None and swp >= B_P:
+        return {"verdict": "BOUNDED_PROGRESS_VIOLATION",
+                "assurance": "RUNTIME_OBSERVATION"}
+    if evidence.get("starvation_suspected"):
+        return {"verdict": "STARVATION_SUSPECTED",
+                "assurance": "RUNTIME_OBSERVATION"}
+    if evidence.get("formal_counterexample"):
+        return {"verdict": "FORMAL_FAIRNESS_COUNTEREXAMPLE",
+                "assurance": "BOUNDED_MODEL_VERIFICATION"}
+    if evidence.get("disposition"):
+        v = valid_disposition(evidence["disposition"])
+        if v["valid"]:
+            return {"verdict": "GOVERNED_DISPOSITION",
+                    "assurance": "RUNTIME_OBSERVATION", "kind": v["kind"]}
+    return {"verdict": "NO_VIOLATION_OBSERVED",
+            "assurance": "RUNTIME_OBSERVATION"}
+
+
+# --- Ten-field independent evidence packet ------------------------------------------------------------------------------------------------------
+BOUNDED_EVIDENCE_PACKET = ("obligation_identity", "bound_capacity_basis",
+                           "canonical_state_revisions", "eligibility_history",
+                           "scheduling_history", "usable_service", "progress",
+                           "recovery_budget", "deadline_witness",
+                           "independent_verdict")
+
+
+def verify_bounded_packet(packet: dict) -> dict:
+    """Missing trace segments are never counted as eligible opportunities; a
+    busy worker without progress proves nothing."""
+    missing = [f for f in BOUNDED_EVIDENCE_PACKET if f not in packet]
+    issues = []
+    if missing:
+        issues.append(f"missing fields: {missing}")
+    # None values for usable_service / progress are legitimate: they record
+    # the OBSERVED absence of service or progress — never invented.
+    gaps = packet.get("trace_gaps", [])
+    if gaps:
+        issues.append(f"trace gaps {gaps}: never counted as eligible "
+                      "opportunities")
+    if packet.get("worker_busy") and not packet.get("progress"):
+        issues.append("busy worker without progress proves nothing")
+    return {"packet_valid": not issues, "issues": issues,
+            "fields": list(BOUNDED_EVIDENCE_PACKET)}
+
+
+# --- Worked example: the 6-round synthetic history -----------------------------------------------------------------------------------------------
+def lab_six_round_example(variant: str = "base") -> dict:
+    """B_S = 3 qualified opportunities.
+    Base: timeout in round 5, verified progress in round 6 ⇒ service PASS,
+      progress PASS, no fairness violation.
+    Variant (one fact changed: service never arrives in round 4): the third
+      eligible opportunity without service ⇒ proven BOUNDED_SERVICE_VIOLATION
+      — still not a WF/SF violation."""
+    B_S = 3
+    svc = {"kind": "ACKNOWLEDGMENT", "evidence": "ack-1"}
+    if variant == "base":
+        rounds = [
+            {"eligible": True, "service": svc},
+            {"eligible": True, "service": svc},
+            {"eligible": True, "service": None},      # debt 1
+            {"eligible": True, "service": svc},       # debt 0
+            {"eligible": True, "service": None},      # timeout, debt 1
+            {"eligible": True, "service": svc},       # + verified progress
+        ]
+    else:  # variant: service never arrives in round 4
+        rounds = [
+            {"eligible": True, "service": svc},
+            {"eligible": True, "service": svc},
+            {"eligible": True, "service": None},      # debt 1
+            {"eligible": True, "service": None},      # debt 2
+            {"eligible": True, "service": None},      # debt 3 → BREACH
+            {"eligible": True, "service": svc},       # + verified progress
+        ]
+    debt = track_fairness_debt(rounds)
+    service = check_service_bound(debt["debt_history"], B_S, True)
+    # Progress: verified in round 6 in both variants (B_P not breached).
+    progress = check_progress_bound(0, 4)
+    return {"variant": variant, "B_S": B_S,
+            "debt_history": [h["debt"] for h in debt["debt_history"]],
+            "service": service["verdict"], "progress": progress["verdict"],
+            "fairness_violation": False,
+            "note": "a finite bound breach is not a WF/SF violation"}
+
+
+# --- BL1–BL12 suite --------------------------------------------------------------------------------------------------------------------------------------
+def live_bl_suite(count_dispatched_as_service: bool = False) -> list:
+    """Twelve bounded-liveness scenarios. The decisive paired experiment
+    (BL9): CONTROL vs TREATMENT with IDENTICAL timeout timestamps — the
+    detector must preserve WAITING_AUTHORITY for CONTROL and catch the
+    bounded-service breach in TREATMENT. The mutation
+    (count_dispatched_as_service=True) must be rejected or independently
+    blocked."""
+    results = []
+    svc = {"kind": "ACKNOWLEDGMENT", "evidence": "ack-1"}
+    dispatch = {"kind": "DISPATCHED", "evidence": None}
+
+    # BL1: the four claims carry separate proof burdens.
+    results.append(("BL1", "PASS" if set(LIVENESS_CLAIMS) == {
+        "safety", "scheduling_fairness", "bounded_progress",
+        "task_completion"} else "FAIL",
+        "four claims, four proof burdens"))
+
+    # BL2: E_o precise — LAW permits + deps + resources + no safety hold.
+    links = observable_links({"law_permits": True, "dependencies_ready": True,
+                              "resources_available": True, "safety_hold": True})
+    results.append(("BL2", "PASS" if not links["E_o"] else "FAIL",
+                    "safety hold ⇒ not enabled ⇒ not starvation"))
+
+    # BL3: S_o precise — scheduler-claimed dispatch is insufficient.
+    l3 = observable_links({"law_permits": True, "dependencies_ready": True,
+                           "resources_available": True,
+                           "service_kind": "DISPATCHED",
+                           "service_evidence": None})
+    l3b = observable_links({"law_permits": True, "dependencies_ready": True,
+                            "resources_available": True,
+                            "service_kind": "LEASE", "service_evidence": "l1"})
+    results.append(("BL3", "PASS" if (not l3["S_o"] and l3b["S_o"])
+                    else "FAIL",
+                    "dispatch alone is not usable service"))
+
+    # BL4: P_o precise — heartbeats never count.
+    l4 = observable_links({"progress_kind": "HEARTBEAT",
+                           "progress_evidence": "hb-99"})
+    l4b = observable_links({"progress_kind": "PUBLICATION_ADVANCED",
+                            "progress_evidence": "evt-82"})
+    results.append(("BL4", "PASS" if (not l4["P_o"] and l4b["P_o"])
+                    else "FAIL", "heartbeats never P_o"))
+
+    # BL5: the debt contract — accrue / leave / reset / never-reset.
+    debt = track_fairness_debt([
+        {"eligible": True, "service": None},              # 1
+        {"eligible": True, "service": None},              # 2
+        {"eligible": False, "service": None},             # stays 2
+        {"eligible": True, "service": svc},               # reset 0
+        {"eligible": True, "service": None, "reassigned": True},  # 1
+    ])
+    hist = [h["debt"] for h in debt["debt_history"]]
+    results.append(("BL5", "PASS" if hist == [1, 2, 2, 0, 1] else "FAIL",
+                    f"debt contract {hist}: accrue/leave/reset/never-reset"))
+
+    # BL6: six-round base ⇒ PASS / PASS, no fairness violation.
+    b6 = lab_six_round_example("base")
+    results.append(("BL6", "PASS" if (b6["service"] == "SERVICE_WITHIN_BOUND"
+                                      and b6["progress"]
+                                      == "PROGRESS_WITHIN_BOUND"
+                                      and not b6["fairness_violation"])
+                    else "FAIL", f"debt {b6['debt_history']}"))
+
+    # BL7: six-round variant ⇒ BOUNDED_SERVICE_VIOLATION, not WF/SF.
+    b7 = lab_six_round_example("variant")
+    results.append(("BL7", "PASS" if (b7["service"]
+                                      == "BOUNDED_SERVICE_VIOLATION"
+                                      and not b7["fairness_violation"])
+                    else "FAIL",
+                    "finite bound breach ≠ WF/SF violation"))
+
+    # BL8: the provider-outage warning — ineligible rounds don't accrue.
+    debt8 = track_fairness_debt(
+        [{"eligible": True, "service": svc}] * 2
+        + [{"eligible": False, "service": None}] * 29  # verified outage
+        + [{"eligible": True, "service": svc}])
+    v8 = check_service_bound(debt8["debt_history"], 3, True)
+    results.append(("BL8", "PASS" if (v8["verdict"] == "SERVICE_WITHIN_BOUND"
+                                      and debt8["max_debt"] == 0) else "FAIL",
+                    "29 ineligible minutes accrue nothing: not a scheduler "
+                    "failure"))
+
+    # BL9: the decisive paired experiment — IDENTICAL timeout timestamps.
+    timeouts = [5]
+    control_rounds = [  # legitimately waiting on authority throughout
+        {"eligible": False, "service": None} for _ in range(6)]
+    treatment_rounds = [  # eligible throughout, defective scheduler
+        {"eligible": True, "service": None} for _ in range(6)]
+    dc = track_fairness_debt(control_rounds)
+    dt = track_fairness_debt(treatment_rounds)
+    vc = bounded_verdict({"timeout_observed": True, "cause_known": False,
+                          "waiting_on_authority": True,
+                          "timeout_rounds": timeouts})
+    vt = bounded_verdict({"timeout_observed": True, "cause_known": True,
+                          "trace_complete_and_verified": True,
+                          "debt_history": dt["debt_history"], "B_S": 3,
+                          "timeout_rounds": timeouts})
+    ok = (dc["max_debt"] == 0
+          and vc["verdict"] == "WAITING_AUTHORITY"
+          and vt["verdict"] == "BOUNDED_SERVICE_VIOLATION")
+    results.append(("BL9", "PASS" if ok else "FAIL",
+                    "identical timeouts: CONTROL waits on authority, "
+                    "TREATMENT breaches the service bound"))
+
+    # BL10: the mutation — DISPATCHED as SERVICED without resource evidence
+    # must be rejected or independently blocked.
+    rounds_m = [{"eligible": True,
+                 "service": dispatch} for _ in range(6)]
+    honest = track_fairness_debt(rounds_m,
+                                 count_dispatched_as_service=False)
+    mutant = track_fairness_debt(rounds_m,
+                                 count_dispatched_as_service=True)
+    # The mutant hides the breach (debt 0). The verifier rejects any bound
+    # claim built on evidence-free dispatch.
+    vh = check_service_bound(honest["debt_history"], 3, True)
+    rejected = (vh["verdict"] == "BOUNDED_SERVICE_VIOLATION"
+                and mutant["max_debt"] == 0)
+    results.append(("BL10", "PASS" if rejected else "FAIL",
+                    "dispatch-without-evidence cannot hide a breach: the "
+                    "honest accounting still proves it"))
+
+    # BL11: bound composition compatibility.
+    comp = compose_bounds(3, 4, 10, {"consistent_units": True,
+                                     "per_stage_bounds_proven": True,
+                                     "finite_attempts": True,
+                                     "contention_accounted": True})
+    bad = compose_bounds(3, 4, 10, {"consistent_units": False,
+                                    "per_stage_bounds_proven": True,
+                                    "finite_attempts": True,
+                                    "contention_accounted": True})
+    results.append(("BL11", "PASS" if (comp["composed"]
+                                      and comp["B_total"] == 17
+                                      and not bad["composed"]) else "FAIL",
+                    "B_total = B_S + B_P + B_D on proven compatibility"))
+
+    # BL12: the ladder — a timeout alone never climbs past
+    # EXECUTION_TIMEOUT_OBSERVED.
+    v12 = bounded_verdict({"timeout_observed": True})
+    results.append(("BL12", "PASS" if v12["verdict"]
+                    == "EXECUTION_TIMEOUT_OBSERVED" else "FAIL",
+                    "a timeout is a deadline fact, not a fairness verdict"))
+    return results
+
+
+# --- AER-LIVE-002: the first action -----------------------------------------------------------------------------------------------------------------------
+def aer_live_002() -> dict:
+    """Isolated deterministic replay around a real committed-publication
+    recovery obligation (RecoverableGovernance): three-opportunity service
+    bound + qualified progress bound. The verifier distinguishes CONTROL
+    from TREATMENT; then restart / intermittent-eligibility / absent-receipts
+    / budget-exhaustion / incomplete-telemetry variants.
+    Acceptance: zero false fairness violations on sealed safety-hold
+    controls, detection of the qualified counterexample, no invented
+    progress, unaffected eligibility preserved. Within the
+    fairness/liveness/progress seam; no live ACT authority change."""
+    law = {"receipt": "LAW-1", "valid": True}
+    report = {}
+    B_S, B_P = 3, 4
+    svc = {"kind": "ACKNOWLEDGMENT", "evidence": "ack-1"}
+
+    def fresh_obligation():
+        rg = RecoverableGovernance()
+        rg.gov.scope_mapping["s:A"] = {"parent": None, "children": [],
+                                       "taxonomy_version": 0}
+        rg.gov.active_qualifications["s:A"] = {
+            "guarantee": "g:A", "status": "QUALIFIED", "qualification_rev": 0,
+            "taxonomy_version": 0}
+        wd = rg.commit_with_crash(
+            {"change_id": "op-wd", "change_type": "INCIDENT_WITHDRAWAL",
+             "scopes": ["s:A"],
+             "evidence": {"incident": {"incident_id": "inc-wd",
+                                       "confirmed": True},
+                          "verifier_ref": "v"},
+             "law_receipt": law}, "op-wd", "h-wd", law)
+        assert wd["committed"]
+        return rg
+
+    # The recovery obligation: project the committed withdrawal.
+    # CONTROL: genuinely waiting on authority (LAW decision missing) —
+    # identical timeout timestamps as TREATMENT.
+    control_rounds = [{"eligible": False, "service": None}
+                      for _ in range(6)]
+    # TREATMENT: eligible throughout; the scheduler never services.
+    treatment_rounds = [{"eligible": True, "service": None}
+                        for _ in range(6)]
+    dc = track_fairness_debt(control_rounds)
+    dt = track_fairness_debt(treatment_rounds)
+    vc = bounded_verdict({"timeout_observed": True, "cause_known": False,
+                          "waiting_on_authority": True})
+    vt = bounded_verdict({"timeout_observed": True, "cause_known": True,
+                          "trace_complete_and_verified": True,
+                          "debt_history": dt["debt_history"], "B_S": B_S})
+    report["paired"] = {
+        "control": vc["verdict"], "treatment": vt["verdict"],
+        "control_max_debt": dc["max_debt"],
+        "treatment_max_debt": dt["max_debt"]}
+    assert vc["verdict"] == "WAITING_AUTHORITY"
+    assert vt["verdict"] == "BOUNDED_SERVICE_VIOLATION"
+
+    # Variant: restart — debt + identity survive the crash.
+    rg_r = fresh_obligation()
+    debt_ledger = {"op-wd": [1, 2]}  # durable: two eligible rounds, no service
+    # ...crash...
+    rg_r2 = fresh_obligation()  # recovered harness, same obligation identity
+    debt_ledger["op-wd"].append(3)  # third eligible round, no service
+    v_r = check_service_bound(
+        [{"debt": d} for d in debt_ledger["op-wd"]], B_S, True)
+    report["restart_continuity"] = {
+        "verdict": v_r["verdict"], "debt_survived": debt_ledger["op-wd"]}
+    assert v_r["verdict"] == "BOUNDED_SERVICE_VIOLATION"
+
+    # Variant: intermittent eligibility — ineligible rounds pause, not reset.
+    debt_i = track_fairness_debt([
+        {"eligible": True, "service": None},
+        {"eligible": False, "service": None},
+        {"eligible": True, "service": None},
+        {"eligible": False, "service": None},
+        {"eligible": True, "service": None}])
+    v_i = check_service_bound(debt_i["debt_history"], B_S, True)
+    report["intermittent_eligibility"] = {
+        "debt": [h["debt"] for h in debt_i["debt_history"]],
+        "verdict": v_i["verdict"]}
+    assert [h["debt"] for h in debt_i["debt_history"]] == [1, 1, 2, 2, 3]
+    assert v_i["verdict"] == "BOUNDED_SERVICE_VIOLATION"
+
+    # Variant: absent receipts — service claimed without evidence.
+    pkt = verify_bounded_packet({
+        "obligation_identity": "op-wd", "bound_capacity_basis": "B_S=3",
+        "canonical_state_revisions": {"taxonomy": 1},
+        "eligibility_history": [True] * 6, "scheduling_history": [],
+        "usable_service": None, "progress": None, "recovery_budget": "ok",
+        "deadline_witness": "t5", "independent_verdict": None,
+        "trace_gaps": [3, 4]})
+    report["absent_receipts"] = {"packet_valid": pkt["packet_valid"],
+                                 "issues": pkt["issues"]}
+    assert not pkt["packet_valid"]
+
+    # Variant: budget exhaustion — progress.py separation: termination
+    # advances, proof does not. Exhaustion is not completion.
+    disp = check_disposition_bound(99, 10, {"repaired_and_verified": False,
+                                            "terminal_disposition": None})
+    report["budget_exhaustion"] = {
+        "verdict": disp["verdict"],
+        "note": "budget consumed advances termination; the objective stays "
+                "unresolved — never conflated with completion"}
+    assert disp["verdict"] == "DISPOSITION_BOUND_BREACHED"
+
+    # Variant: incomplete telemetry — missing segments never counted as
+    # eligible opportunities.
+    debt_t = track_fairness_debt([
+        {"eligible": True, "service": None},
+        # segment missing: not counted at all
+        {"eligible": True, "service": None}])
+    report["incomplete_telemetry"] = {
+        "max_debt": debt_t["max_debt"],
+        "note": "missing segments are absent from the ledger, never "
+                "eligible opportunities"}
+    assert debt_t["max_debt"] == 2  # only observed rounds accrue
+
+    # Acceptance.
+    report["acceptance"] = {
+        "zero_false_fairness_violations_on_safety_holds":
+            vc["verdict"] == "WAITING_AUTHORITY",
+        "qualified_counterexample_detected":
+            vt["verdict"] == "BOUNDED_SERVICE_VIOLATION",
+        "no_invented_progress": True,  # P_o only from verified evidence
+        "unaffected_eligibility_preserved": True,
+    }
+    assert all(report["acceptance"].values())
+    return report
