@@ -101,7 +101,7 @@ def test_batch_cold_successor_distinguishes_active_from_superseded_lifecycle():
     block = wf[start:end]
 
     assert 'lifecycle_state=str(capture.get("lifecycle_state","ACTIVE")).upper()' in block
-    assert 'if lifecycle_state=="ACTIVE":' in block
+    assert 'if lifecycle_state in {"ACTIVE","CANDIDATE"}:' in block
     assert 'assert machine.get("raw_source_separate_from_distillation") is True' in block
     assert 'assert machine.get("automatic_truth_ceiling")=="CANDIDATE"' in block
     assert 'else:' in block
@@ -195,7 +195,7 @@ def test_single_cold_successor_distinguishes_active_from_superseded_lifecycle():
     end = wf.index('          json.dump(comprehension,open("cold-retrieval-proof.json","w"),indent=2)', start)
     block = wf[start:end]
     assert 'lifecycle_state=str(capture.get("lifecycle_state","ACTIVE")).upper()' in block
-    assert 'if lifecycle_state=="ACTIVE":' in block
+    assert 'if lifecycle_state in {"ACTIVE","CANDIDATE"}:' in block
     assert 'from tools.sn002_conformance import check_dir' in block
     assert 'resolve_runtime_connections(successor_doc,reg)' in block
     assert 'superseded_excluded_from_active_retrieval' in block
@@ -211,3 +211,13 @@ def test_single_independent_behavior_verification_is_lifecycle_aware():
     assert '"NOT_APPLICABLE_HISTORICAL_OBJECT"' in block
     assert 'superseded_retrieval_refusal_verified' in block
 
+
+
+def test_cold_harness_candidate_state_is_preserved_without_promotion():
+    """A newly captured note is retrievable as CANDIDATE; it is never
+    relabeled ACTIVE or VERIFIED to manufacture a passing proof."""
+    wf = WORKFLOW.read_text(encoding="utf-8")
+    assert wf.count('assert lifecycle_state in {"ACTIVE","CANDIDATE","SUPERSEDED"}') == 2
+    assert wf.count('if lifecycle_state in {"ACTIVE","CANDIDATE"}:') == 2
+    assert '"lifecycle_state":lifecycle_state' in wf
+    assert 'assert machine.get("automatic_truth_ceiling")=="CANDIDATE"' in wf
