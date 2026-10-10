@@ -72,3 +72,29 @@ def test_recontribution_does_not_silently_reactivate_or_rewrite_revoked_wisdom()
     assert expected in sql
     assert "collective_wisdom_revoked_requires_new_source_event" in sql
     assert "on conflict(source_event_id) do update set status='active'" not in sql
+
+
+CORRECTIVE = ROOT / "supabase" / "migrations" / "20260930052000_consent_runtime_consumer_v1.sql"
+
+def _corrective_sql() -> str:
+    assert CORRECTIVE.exists(), "ratified #1136 corrective consent migration is required"
+    sql = " ".join(CORRECTIVE.read_text(encoding="utf-8").split()).lower()
+    sql = re.sub(r"\s*,\s*", ",", sql)
+    sql = re.sub(r"\s*=\s*", "=", sql)
+    return sql
+
+def test_ratified_1136_disconnect_stops_future_contribution_without_retroactive_wisdom_revocation():
+    sql = _corrective_sql()
+    assert "future_collective_contribution','denied'" in sql
+    assert "prior_identity_safe_collective_wisdom','unchanged'" in sql
+    assert "update public.nayanet_collective_wisdom set status='revoked'" not in sql
+
+def test_ratified_1136_collective_read_is_not_gated_by_current_participation():
+    sql = _corrective_sql()
+    assert "using (status='active' or owner_id=auth.uid())" in sql
+    assert "status='active' and public.nayanet_consent_is_active(owner_id)" not in sql
+
+def test_live_consent_reader_remains_for_current_participation_checks():
+    sql = _corrective_sql()
+    assert "create or replace function public.nayanet_consent_is_active" in sql
+    assert "status='active'" in sql and "consent_state='explicit'" in sql
