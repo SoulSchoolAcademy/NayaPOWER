@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-10  
-**Receipt basis commit:** `2eacc1c3c01a61e1f78e5e1062562dd23f7cd78b`  
-**Inventory file count:** 1240  
+**Receipt basis commit:** `01de2e2e8f95630b571c5e86de655f448999ac73`  
+**Inventory file count:** 1264  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -58,6 +58,32 @@
 - `BRAIN/00-SPEC/SCHEMA/LEARNING-RECORD-SCHEMA.json` — `667c9f4a8345` (2470 bytes)
 - `BRAIN/00-SPEC/SCHEMA/PROOF-RECORD-SCHEMA.json` — `7d574a4a4833` (2566 bytes)
 - `BRAIN/00-SPEC/SCHEMA/SUCCESSOR-PACKAGE-SCHEMA.json` — `bab1255dcaf2` (3904 bytes)
+### 00-TEAM — (unregistered domain)
+
+- `BRAIN/00-TEAM/lane-board/LANE-BOARD.md` — `504796927283` (4880 bytes)
+- `BRAIN/00-TEAM/lane-board/README.md` — `4787878e05f6` (3274 bytes)
+- `BRAIN/00-TEAM/lane-board/lane-board.json` — `c9fe113bd7f3` (10140 bytes)
+- `BRAIN/00-TEAM/lane-board/lanes/_schema.json` — `6cca58ec6f79` (772 bytes)
+- `BRAIN/00-TEAM/lane-board/lanes/team-1865.json` — `4138262a3cd3` (386 bytes)
+- `BRAIN/00-TEAM/lane-board/lanes/team-1866.json` — `88c96bc122bb` (390 bytes)
+- `BRAIN/00-TEAM/lane-board/lanes/team-1867.json` — `d8640c159d99` (392 bytes)
+- `BRAIN/00-TEAM/lane-board/lanes/team-1868.json` — `60eeb38fc943` (439 bytes)
+- `BRAIN/00-TEAM/lane-board/lanes/team-1869.json` — `7415e01c4c27` (398 bytes)
+- `BRAIN/00-TEAM/lane-board/lanes/team-1870.json` — `eae5c6b0087a` (428 bytes)
+- `BRAIN/00-TEAM/lane-board/lanes/team-1871.json` — `32d0c02d1883` (400 bytes)
+- `BRAIN/00-TEAM/lane-board/lanes/team-1872.json` — `3a3020cfddc4` (395 bytes)
+- `BRAIN/00-TEAM/lane-board/lanes/team-1873.json` — `3a1ff855a0d1` (424 bytes)
+- `BRAIN/00-TEAM/lane-board/lanes/ws-0.json` — `2fa9cd8e34c8` (444 bytes)
+- `BRAIN/00-TEAM/lane-board/lanes/ws-1.json` — `88473fafce73` (449 bytes)
+- `BRAIN/00-TEAM/lane-board/lanes/ws-10.json` — `8c15f51890f8` (461 bytes)
+- `BRAIN/00-TEAM/lane-board/lanes/ws-2.json` — `9d5c2ec3501e` (469 bytes)
+- `BRAIN/00-TEAM/lane-board/lanes/ws-3.json` — `2336bc44f465` (457 bytes)
+- `BRAIN/00-TEAM/lane-board/lanes/ws-4.json` — `88db78ed1703` (437 bytes)
+- `BRAIN/00-TEAM/lane-board/lanes/ws-5.json` — `757107130d5f` (448 bytes)
+- `BRAIN/00-TEAM/lane-board/lanes/ws-6.json` — `8bce95588000` (444 bytes)
+- `BRAIN/00-TEAM/lane-board/lanes/ws-7.json` — `ea6882e31ad5` (452 bytes)
+- `BRAIN/00-TEAM/lane-board/lanes/ws-8.json` — `928938f14a5e` (432 bytes)
+- `BRAIN/00-TEAM/lane-board/lanes/ws-9.json` — `f84cc78865e3` (444 bytes)
 ### 01-GOVERNANCE — Governance
 
 - `BRAIN/01-GOVERNANCE/0000-OPERATING-CODE-V1.md` — `9f4270a236bd` (6180 bytes)
