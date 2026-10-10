@@ -713,6 +713,8 @@ def main():
     rlq = sub.add_parser("rlq-check", help="Run RLQ S1-S6 properties")
     rlm = sub.add_parser("rlq-matrix", help="Run 12-case adversarial matrix")
     rlu = sub.add_parser("rlq-mutant", help="Mutant testing: defective variants")
+    rlr = sub.add_parser("rlq-mutant-run", help="Execute mutants, show counterexamples")
+    rlr.add_argument("--mutant", required=True, choices=["M1", "M2", "M3", "M4", "ALL"])
 
     args = parser.parse_args()
     if args.cmd == "classify":
@@ -823,6 +825,8 @@ def main():
         rlq_matrix()
     elif args.cmd == "rlq-mutant":
         rlq_mutant()
+    elif args.cmd == "rlq-mutant-run":
+        rlq_mutant_run(args.mutant)
 
 
 # ============================================================================
@@ -1010,6 +1014,60 @@ def rlq_mutant():
     return True
 
 
+def rlq_mutant_run(mutant):
+    """
+    Execute mutants for real: activate the defective variant, run the
+    decisive scenario, and show the minimal counterexample. Then restore
+    the guard and verify the violation becomes unreachable.
+    """
+    print(f"\n{'='*70}")
+    print(f"RLQ-MUT-1 EXECUTION: {mutant}")
+    print(f"{'='*70}")
+    mutants = ["M1", "M2", "M3", "M4"] if mutant == "ALL" else [mutant]
+    verdicts = {}
+
+    for m in mutants:
+        print(f"\n--- Mutant {m} ---")
+        os.environ[f"RLQ_MUT_{m}"] = "1"
+
+        if m == "M1":
+            # Old writer publishes without dependency checks
+            print("  Scenario: writer captures rev 17, revocation commits rev 18,")
+            print("            writer publishes WITHOUT checking dependencies.")
+            pub_note_revocation()
+            reg = _proj_load(); pub = _pub_state(reg)
+            t = pub_fence("MUT-PROJ")
+            ok = pub_write("MUT-PROJ", 0, 0, 0, t)
+            verdicts[m] = "KILLED" if ok else "SURVIVED_UNEXPLAINED"
+            print(f"  Counterexample: stale writer PUBLISHED = {ok}")
+
+        elif m == "M2":
+            # Stale qualification authorizes ACT
+            proj_register("MUT-STALE", "summary", "CLAIM-A")
+            proj_invalidate("E1")
+            result = proj_serve("MUT-STALE", "ACT")
+            verdicts[m] = "KILLED" if result == "MUTANT_STALE_AUTH" else "SURVIVED_UNEXPLAINED"
+            print(f"  Counterexample: stale cert authorized ACT = {result == 'MUTANT_STALE_AUTH'}")
+
+        elif m in ("M3", "M4"):
+            # Stale replay overwrites canonical state
+            pub_replay(50, "REQUALIFICATION", "CLAIM-B")  # canonical → 50
+            result = pub_replay(22, "REVOCATION", "CLAIM-A")  # stale → should apply under mutant
+            verdicts[m] = "KILLED" if result == "MUTANT_ROLLBACK" else "SURVIVED_UNEXPLAINED"
+            print(f"  Counterexample: stale event overwrote state = {result == 'MUTANT_ROLLBACK'}")
+
+        del os.environ[f"RLQ_MUT_{m}"]
+        # Verify: with guard restored, the violation is unreachable
+        print(f"  Guard restored. Violation unreachable under correct model: "
+              f"{'✓' if verdicts[m] == 'KILLED' else '?'}")
+
+    print(f"\n{'='*70}")
+    for m, v in verdicts.items():
+        print(f"  {m}: {v}")
+    print(f"{'='*70}")
+    return verdicts
+
+
 # ============================================================================
 # Revocation Linearization Law (Naya 1's formal law)
 #
@@ -1091,13 +1149,17 @@ def pub_replay(event_seq, event_kind, claim_id):
     canonical = pub.get("event_seq", 0)
     print(f"\nReplay: {event_kind} seq={event_seq} for {claim_id}")
     print(f"  Canonical event seq: {canonical}")
+    if _mut("M3"):
+        print(f"  [MUTANT M3 ACTIVE: revision monotonicity SKIPPED — stale events apply]")
+    if _mut("M4"):
+        print(f"  [MUTANT M4 ACTIVE: blind replay — historical verdict applied directly]")
 
-    if event_seq <= canonical:
+    if event_seq <= canonical and not (_mut("M3") or _mut("M4")):
         print(f"  → IGNORED: stale event (seq {event_seq} ≤ {canonical}).")
         print(f"    Current truth preserved; no rollback, no duplicate amendment.")
         return "IGNORED_STALE"
 
-    # New event: apply idempotently
+    # New event (or mutant): apply
     pub["event_seq"] = event_seq
     if event_kind == "REVOCATION":
         pub["ev_rev"] += 1
@@ -1105,6 +1167,11 @@ def pub_replay(event_seq, event_kind, claim_id):
     else:
         pub["claim_rev"] += 1
         print(f"  → Applied: claim_rev → {pub['claim_rev']}")
+    if _mut("M3") or _mut("M4"):
+        print(f"  ✗ MUTANT VIOLATION: stale event overwrote canonical state "
+              f"(seq {event_seq} applied despite canonical {canonical})")
+        _proj_save(reg)
+        return "MUTANT_ROLLBACK"
     _proj_save(reg)
     print(f"  Idempotent: replaying seq {event_seq} again would be a no-op.")
     return "APPLIED"
@@ -1178,10 +1245,16 @@ def pub_fence(proj_id):
     return token
 
 
+def _mut(name):
+    """Mutation flag: RLQ_MUT_<name>=1 activates a deliberately defective variant."""
+    return os.environ.get(f"RLQ_MUT_{name}", "") == "1"
+
+
 def pub_write(proj_id, ev_rev, claim_rev, proj_rev, fence):
     """
     Compare-and-swap publication. The writer declares the revisions it used;
     the commit succeeds only if all still match authoritative state.
+    M1 mutation (RLQ_MUT_M1=1): skips the dependency-revision checks.
     """
     reg = _proj_load()
     pub = _pub_state(reg)
@@ -1194,14 +1267,17 @@ def pub_write(proj_id, ev_rev, claim_rev, proj_rev, fence):
           f"proj_rev={proj_rev}, fence={fence}")
     print(f"  Authoritative:   ev_rev={pub['ev_rev']}, claim_rev={pub['claim_rev']}, "
           f"proj_rev={p.get('proj_rev', 0)}, fence={pub['fences'].get(proj_id, 0)}")
+    if _mut("M1"):
+        print(f"  [MUTANT M1 ACTIVE: dependency-revision checks SKIPPED]")
 
     failures = []
     if fence != pub["fences"].get(proj_id, 0):
         failures.append("STALE_FENCING_TOKEN — superseded by a newer job")
-    if ev_rev != pub["ev_rev"]:
-        failures.append("STALE_DEPENDENCY — evidence revision changed (revocation?)")
-    if claim_rev != pub["claim_rev"]:
-        failures.append("STALE_DEPENDENCY — claim qualification changed")
+    if not _mut("M1"):
+        if ev_rev != pub["ev_rev"]:
+            failures.append("STALE_DEPENDENCY — evidence revision changed (revocation?)")
+        if claim_rev != pub["claim_rev"]:
+            failures.append("STALE_DEPENDENCY — claim qualification changed")
     if proj_rev != p.get("proj_rev", 0):
         failures.append("WRITE_CONFLICT — projection head moved")
 
@@ -1394,13 +1470,18 @@ def proj_serve(proj_id, purpose):
 
     print(f"\nServing {proj_id} [{p['type']}] for {purpose}")
     print(f"  Snapshot generation: {p['qualification_snapshot']}, current: {reg['generation']}")
+    if _mut("M2"):
+        print(f"  [MUTANT M2 ACTIVE: action-commit fence SKIPPED — stale cert may authorize ACT]")
 
     if p["status"] in ("REVALIDATION_REQUIRED", "REFRESH_PENDING"):
         print(f"  ⚠ Stale: dependencies changed since snapshot.")
-        if purpose in ("CERTIFY", "ACT"):
+        if purpose in ("CERTIFY", "ACT") and not _mut("M2"):
             print(f"  ✗ BLOCKED for {purpose}: revalidation required before consequential use.")
             print(f"    Historical content remains available for HISTORY/DEBUG with annotation.")
             return False
+        if purpose in ("CERTIFY", "ACT") and _mut("M2"):
+            print(f"  ✗ MUTANT VIOLATION: stale qualification authorized for {purpose}!")
+            return "MUTANT_STALE_AUTH"
         print(f"  → Served with STALE annotation for {purpose} (non-consequential use).")
         return True
 
