@@ -1,6 +1,17 @@
 import { createRemoteJWKSet, jwtVerify } from "https://esm.sh/jose@6.0.10";
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { resolveScorecardReceiptAuthority } from "./scorecard_receipt_authority.js";
+import {
+  ADMISSION_SCHEMA,
+  CANDIDATE as ADMITTED_CANDIDATE,
+  NOT_VERIFIED as ADMITTED_NOT_VERIFIED,
+  REJECTED as ADMITTED_REJECTED,
+  GATE_EVALUATION_ERROR,
+  admit_candidate,
+  canonicalJson,
+  inputHash,
+  rejection_log,
+} from "./admission_gate.ts";
 
 const ISSUER = "https://token.actions.githubusercontent.com";
 const AUDIENCE = "nayanet-runtime";
@@ -375,7 +386,46 @@ Deno.serve(async (req: Request) => {
           token_jti: payload.jti ?? null,
         });
       }
-      const candidate = { member_id: ownerId, target_id: "NAYA-NODE-0001", level: "E1_UNDERSTANDS", provenance: "OBSERVATION", status: "CANDIDATE", claim: lesson, observed_value: { intelligent_block_id: blockId, source_event_id: event.id, source_event_key: event.event_id, commit_receipt_id: commitReceiptId, lineage_id: lineage.id, relationship_id: relationship.relationship_id, index_id: index.id, checkpoint_id: checkpoint.id, checkpoint_provenance: checkpointProvenance, immutable_checkpoint_evidence: immutableCheckpointEvidence, provenance_preserved: true }, verification_method: "Pending independent causal verification of the persisted Event → Intelligent Block → Lineage → Relationship → Index → Checkpoint chain.", source_event_id: event.id };
+      // WO3 · G3 · CONN-ADMISSION — the admission gate fires at the candidate
+      // write site. It validates the experimental DESIGN of the learning claim;
+      // it never claims that learning occurred.
+      //
+      // Semantics (deliberate, backward-compatible):
+      // - body.admission present -> full gate. REJECTED: 422 + reason codes,
+      //   nothing written. NOT_VERIFIED: row written with status NOT_VERIFIED
+      //   (honest nulls are negative evidence, never candidates). CANDIDATE:
+      //   row written with status CANDIDATE.
+      // - body.admission absent -> provenance-chain record (existing behavior).
+      //   The gate logs ADMISSION_DESIGN_ABSENT and passes through; the
+      //   pre-existing chain verification above remains the guard for that path.
+      // - The gate itself throwing -> FAIL CLOSED: 500, nothing written. A
+      //   gate that errors never opens the door (WO8's lesson, applied here).
+      const admissionDesign = (body as any)?.admission;
+      let admittedStatus = "CANDIDATE";
+      if (admissionDesign !== undefined && admissionDesign !== null) {
+        const gateInput = {
+          schema: ADMISSION_SCHEMA,
+          claim: lesson,
+          ...(typeof admissionDesign === "object" && !Array.isArray(admissionDesign) ? admissionDesign : {}),
+        };
+        const gateHash = inputHash(canonicalJson(gateInput));
+        let gateResult;
+        try {
+          gateResult = admit_candidate(gateInput);
+        } catch (gateErr) {
+          console.log(`ADMISSION_GATE_ERROR input_hash=${gateHash} error=${gateErr instanceof Error ? gateErr.message : String(gateErr)}`);
+          return json({ ok: false, error: "ADMISSION_GATE_ERROR", reason: GATE_EVALUATION_ERROR }, 500);
+        }
+        console.log(`ADMISSION_GATE input_hash=${gateHash} admitted_as=${gateResult.admitted_as} reasons=${gateResult.reasons.join(",") || "-"}`);
+        if (gateResult.admitted_as === ADMITTED_REJECTED) {
+          console.log(rejection_log(blockId, gateResult));
+          return json({ ok: false, error: "ADMISSION_REJECTED", reasons: gateResult.reasons, input_hash: gateHash }, 422);
+        }
+        admittedStatus = gateResult.admitted_as === ADMITTED_NOT_VERIFIED ? "NOT_VERIFIED" : "CANDIDATE";
+      } else {
+        console.log(`ADMISSION_GATE input_hash=${inputHash(canonicalJson({ block_id: blockId, claim: lesson }))} admitted_as=PASSTHROUGH reasons=ADMISSION_DESIGN_ABSENT`);
+      }
+      const candidate = { member_id: ownerId, target_id: "NAYA-NODE-0001", level: "E1_UNDERSTANDS", provenance: "OBSERVATION", status: admittedStatus, claim: lesson, observed_value: { intelligent_block_id: blockId, source_event_id: event.id, source_event_key: event.event_id, commit_receipt_id: commitReceiptId, lineage_id: lineage.id, relationship_id: relationship.relationship_id, index_id: index.id, checkpoint_id: checkpoint.id, checkpoint_provenance: checkpointProvenance, immutable_checkpoint_evidence: immutableCheckpointEvidence, provenance_preserved: true }, verification_method: "Pending independent causal verification of the persisted Event → Intelligent Block → Lineage → Relationship → Index → Checkpoint chain.", source_event_id: event.id };
       const { data: learning, error: createError } = await admin.from("learning_evidence").insert(candidate).select("*").single();
       if (createError) throw createError;
       return json({ ok: true, created: true, learning, source: { event, block, lineage, relationship, index, checkpoint }, runtime_identity: "github-actions-oidc", workflow_ref: workflowRef, token_jti: payload.jti ?? null });

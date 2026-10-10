@@ -60,6 +60,28 @@ RESTORED_AFTER_DELETION = {
     "SN-0359": "a2f103f4f",
 }
 
+# Lifecycle states that mean the entry is no longer live intelligence and
+# therefore must carry supersession evidence. This matches the retrieval
+# layer's own inactive set (tools/smart_note_v2.py). Pre-active states such
+# as CANDIDATE (written by the capture pipeline for unratified notes) are
+# NOT retired: a CANDIDATE entry is still retrievable intelligence, and the
+# guard's job is to catch silent retirement, not to forbid new arrivals.
+RETIRED_LIFECYCLE_STATES = {"SUPERSEDED", "ARCHIVED", "REVOKED"}
+
+
+def _retired_entry_violations(entry):
+    """Return violation tuples for a registry entry whose lifecycle state is
+    retired. Non-retired states (ACTIVE, CANDIDATE, ...) yield no violations."""
+    state = str(entry.get("lifecycle_state") or "ACTIVE").upper()
+    if state not in RETIRED_LIFECYCLE_STATES:
+        return []
+    bad = []
+    if not entry.get("superseded_by_capture_id"):
+        bad.append((entry.get("smart_note_id"), f"{state} without superseded_by_capture_id"))
+    if not entry.get("supersession_reason"):
+        bad.append((entry.get("smart_note_id"), f"{state} without supersession_reason"))
+    return bad
+
 
 def _git(*args):
     try:
@@ -172,20 +194,38 @@ def test_uningested_ids_are_declared_and_still_have_their_capture():
 
 
 def test_retiring_an_id_requires_lifecycle_evidence():
-    """A SUPERSEDED entry must name what superseded it and why. An entry cannot
-    simply be marked retired with no evidence trail."""
+    """A retired entry must name what superseded it and why. An entry cannot
+    simply be marked retired with no evidence trail. Only retired lifecycle
+    states trigger the requirement -- see RETIRED_LIFECYCLE_STATES."""
     if not REGISTRY.exists():
         pytest.skip("registry not present")
     data = json.loads(REGISTRY.read_text(encoding="utf-8"))
     bad = []
     for e in data.get("entries", []):
-        state = str(e.get("lifecycle_state") or "ACTIVE").upper()
-        if state != "ACTIVE":
-            if not e.get("superseded_by_capture_id"):
-                bad.append((e.get("smart_note_id"), "SUPERSEDED without superseded_by_capture_id"))
-            if not e.get("supersession_reason"):
-                bad.append((e.get("smart_note_id"), "SUPERSEDED without supersession_reason"))
+        bad.extend(_retired_entry_violations(e))
     assert not bad, f"retired ids without lifecycle evidence: {bad}"
+
+
+def test_candidate_entries_do_not_require_supersession_evidence():
+    """CANDIDATE is a pre-active state (unratified note arriving through the
+    capture pipeline), not a retirement. Regression: the guard treated every
+    non-ACTIVE state as retired and fired on SN-782 (T11 reserve-rule, new at
+    main tip b9d21f19) which carries truth_state/lifecycle_state CANDIDATE
+    with no supersession fields -- exactly as a new note should."""
+    candidate = {"smart_note_id": "SN-782", "lifecycle_state": "CANDIDATE"}
+    assert _retired_entry_violations(candidate) == []
+    # The guard still fires on genuinely retired states without evidence:
+    retired_bare = {"smart_note_id": "SN-X", "lifecycle_state": "SUPERSEDED"}
+    assert len(_retired_entry_violations(retired_bare)) == 2
+    retired_ok = {
+        "smart_note_id": "SN-Y",
+        "lifecycle_state": "ARCHIVED",
+        "superseded_by_capture_id": "cap-1",
+        "supersession_reason": "superseded by cap-1",
+    }
+    assert _retired_entry_violations(retired_ok) == []
+    # Missing state defaults to ACTIVE -- no requirement:
+    assert _retired_entry_violations({"smart_note_id": "SN-Z"}) == []
 
 
 def test_restored_objects_retain_their_provenance():

@@ -1,0 +1,1336 @@
+[
+  {
+    "name": "valid",
+    "input": {
+      "schema": "NAYAPOWER_LEARNING_CANDIDATE_ADMISSION_V1",
+      "claim": "Applying the retry-with-backoff lesson reduces failed capture writes on flaky networks.",
+      "falsification_condition": "If treatment and control show identical failure rates over 30 flaky-network trials, the claim is wrong.",
+      "task": "capture-write-retry",
+      "lesson_id": "SN-0000",
+      "success_criterion": "Treatment arm shows >=20% fewer failed writes than control over 30 trials.",
+      "criterion_independent_of_lesson": true,
+      "criterion_registered_at": "2026-10-09T09:00:00Z",
+      "doer": "naya-5",
+      "scorer": "naya-2",
+      "measurement": {
+        "method": "machine",
+        "detail": "write-failure counter in trial harness"
+      },
+      "arms": {
+        "treatment": {
+          "observable": "retries each failed write up to 3x with backoff",
+          "measured_at": "2026-10-09T10:00:00Z"
+        },
+        "control": {
+          "observable": "fails the write immediately, no retry",
+          "measured_at": "2026-10-09T10:05:00Z"
+        }
+      },
+      "asserts_behavioral_change": true,
+      "behavioral_measure": "failed-write count per 30-trial run",
+      "outcome": "pending"
+    },
+    "expected": {
+      "admitted": true,
+      "admitted_as": "CANDIDATE",
+      "reasons": []
+    }
+  },
+  {
+    "name": "schema_mismatch",
+    "input": {
+      "schema": "WRONG",
+      "claim": "Applying the retry-with-backoff lesson reduces failed capture writes on flaky networks.",
+      "falsification_condition": "If treatment and control show identical failure rates over 30 flaky-network trials, the claim is wrong.",
+      "task": "capture-write-retry",
+      "lesson_id": "SN-0000",
+      "success_criterion": "Treatment arm shows >=20% fewer failed writes than control over 30 trials.",
+      "criterion_independent_of_lesson": true,
+      "criterion_registered_at": "2026-10-09T09:00:00Z",
+      "doer": "naya-5",
+      "scorer": "naya-2",
+      "measurement": {
+        "method": "machine",
+        "detail": "write-failure counter in trial harness"
+      },
+      "arms": {
+        "treatment": {
+          "observable": "retries each failed write up to 3x with backoff",
+          "measured_at": "2026-10-09T10:00:00Z"
+        },
+        "control": {
+          "observable": "fails the write immediately, no retry",
+          "measured_at": "2026-10-09T10:05:00Z"
+        }
+      },
+      "asserts_behavioral_change": true,
+      "behavioral_measure": "failed-write count per 30-trial run",
+      "outcome": "pending"
+    },
+    "expected": {
+      "admitted": false,
+      "admitted_as": "REJECTED",
+      "reasons": [
+        "SCHEMA_MISMATCH"
+      ]
+    }
+  },
+  {
+    "name": "missing_falsification",
+    "input": {
+      "schema": "NAYAPOWER_LEARNING_CANDIDATE_ADMISSION_V1",
+      "claim": "Applying the retry-with-backoff lesson reduces failed capture writes on flaky networks.",
+      "falsification_condition": "",
+      "task": "capture-write-retry",
+      "lesson_id": "SN-0000",
+      "success_criterion": "Treatment arm shows >=20% fewer failed writes than control over 30 trials.",
+      "criterion_independent_of_lesson": true,
+      "criterion_registered_at": "2026-10-09T09:00:00Z",
+      "doer": "naya-5",
+      "scorer": "naya-2",
+      "measurement": {
+        "method": "machine",
+        "detail": "write-failure counter in trial harness"
+      },
+      "arms": {
+        "treatment": {
+          "observable": "retries each failed write up to 3x with backoff",
+          "measured_at": "2026-10-09T10:00:00Z"
+        },
+        "control": {
+          "observable": "fails the write immediately, no retry",
+          "measured_at": "2026-10-09T10:05:00Z"
+        }
+      },
+      "asserts_behavioral_change": true,
+      "behavioral_measure": "failed-write count per 30-trial run",
+      "outcome": "pending"
+    },
+    "expected": {
+      "admitted": false,
+      "admitted_as": "REJECTED",
+      "reasons": [
+        "CLAIM_NOT_FALSIFIABLE"
+      ]
+    }
+  },
+  {
+    "name": "no_named_task",
+    "input": {
+      "schema": "NAYAPOWER_LEARNING_CANDIDATE_ADMISSION_V1",
+      "claim": "Applying the retry-with-backoff lesson reduces failed capture writes on flaky networks.",
+      "falsification_condition": "If treatment and control show identical failure rates over 30 flaky-network trials, the claim is wrong.",
+      "task": "",
+      "lesson_id": "SN-0000",
+      "success_criterion": "Treatment arm shows >=20% fewer failed writes than control over 30 trials.",
+      "criterion_independent_of_lesson": true,
+      "criterion_registered_at": "2026-10-09T09:00:00Z",
+      "doer": "naya-5",
+      "scorer": "naya-2",
+      "measurement": {
+        "method": "machine",
+        "detail": "write-failure counter in trial harness"
+      },
+      "arms": {
+        "treatment": {
+          "observable": "retries each failed write up to 3x with backoff",
+          "measured_at": "2026-10-09T10:00:00Z"
+        },
+        "control": {
+          "observable": "fails the write immediately, no retry",
+          "measured_at": "2026-10-09T10:05:00Z"
+        }
+      },
+      "asserts_behavioral_change": true,
+      "behavioral_measure": "failed-write count per 30-trial run",
+      "outcome": "pending"
+    },
+    "expected": {
+      "admitted": false,
+      "admitted_as": "REJECTED",
+      "reasons": [
+        "NO_NAMED_TASK"
+      ]
+    }
+  },
+  {
+    "name": "criterion_not_independent",
+    "input": {
+      "schema": "NAYAPOWER_LEARNING_CANDIDATE_ADMISSION_V1",
+      "claim": "Applying the retry-with-backoff lesson reduces failed capture writes on flaky networks.",
+      "falsification_condition": "If treatment and control show identical failure rates over 30 flaky-network trials, the claim is wrong.",
+      "task": "capture-write-retry",
+      "lesson_id": "SN-0000",
+      "success_criterion": "Treatment arm shows >=20% fewer failed writes than control over 30 trials.",
+      "criterion_independent_of_lesson": false,
+      "criterion_registered_at": "2026-10-09T09:00:00Z",
+      "doer": "naya-5",
+      "scorer": "naya-2",
+      "measurement": {
+        "method": "machine",
+        "detail": "write-failure counter in trial harness"
+      },
+      "arms": {
+        "treatment": {
+          "observable": "retries each failed write up to 3x with backoff",
+          "measured_at": "2026-10-09T10:00:00Z"
+        },
+        "control": {
+          "observable": "fails the write immediately, no retry",
+          "measured_at": "2026-10-09T10:05:00Z"
+        }
+      },
+      "asserts_behavioral_change": true,
+      "behavioral_measure": "failed-write count per 30-trial run",
+      "outcome": "pending"
+    },
+    "expected": {
+      "admitted": false,
+      "admitted_as": "REJECTED",
+      "reasons": [
+        "CRITERION_NOT_INDEPENDENT"
+      ]
+    }
+  },
+  {
+    "name": "no_criterion",
+    "input": {
+      "schema": "NAYAPOWER_LEARNING_CANDIDATE_ADMISSION_V1",
+      "claim": "Applying the retry-with-backoff lesson reduces failed capture writes on flaky networks.",
+      "falsification_condition": "If treatment and control show identical failure rates over 30 flaky-network trials, the claim is wrong.",
+      "task": "capture-write-retry",
+      "lesson_id": "SN-0000",
+      "success_criterion": "",
+      "criterion_independent_of_lesson": true,
+      "criterion_registered_at": "2026-10-09T09:00:00Z",
+      "doer": "naya-5",
+      "scorer": "naya-2",
+      "measurement": {
+        "method": "machine",
+        "detail": "write-failure counter in trial harness"
+      },
+      "arms": {
+        "treatment": {
+          "observable": "retries each failed write up to 3x with backoff",
+          "measured_at": "2026-10-09T10:00:00Z"
+        },
+        "control": {
+          "observable": "fails the write immediately, no retry",
+          "measured_at": "2026-10-09T10:05:00Z"
+        }
+      },
+      "asserts_behavioral_change": true,
+      "behavioral_measure": "failed-write count per 30-trial run",
+      "outcome": "pending"
+    },
+    "expected": {
+      "admitted": false,
+      "admitted_as": "REJECTED",
+      "reasons": [
+        "NO_PREREGISTERED_CRITERION"
+      ]
+    }
+  },
+  {
+    "name": "heuristic_measurement",
+    "input": {
+      "schema": "NAYAPOWER_LEARNING_CANDIDATE_ADMISSION_V1",
+      "claim": "Applying the retry-with-backoff lesson reduces failed capture writes on flaky networks.",
+      "falsification_condition": "If treatment and control show identical failure rates over 30 flaky-network trials, the claim is wrong.",
+      "task": "capture-write-retry",
+      "lesson_id": "SN-0000",
+      "success_criterion": "Treatment arm shows >=20% fewer failed writes than control over 30 trials.",
+      "criterion_independent_of_lesson": true,
+      "criterion_registered_at": "2026-10-09T09:00:00Z",
+      "doer": "naya-5",
+      "scorer": "naya-2",
+      "measurement": {
+        "method": "vibes",
+        "detail": "felt right"
+      },
+      "arms": {
+        "treatment": {
+          "observable": "retries each failed write up to 3x with backoff",
+          "measured_at": "2026-10-09T10:00:00Z"
+        },
+        "control": {
+          "observable": "fails the write immediately, no retry",
+          "measured_at": "2026-10-09T10:05:00Z"
+        }
+      },
+      "asserts_behavioral_change": true,
+      "behavioral_measure": "failed-write count per 30-trial run",
+      "outcome": "pending"
+    },
+    "expected": {
+      "admitted": false,
+      "admitted_as": "REJECTED",
+      "reasons": [
+        "NO_MACHINE_MEASUREMENT"
+      ]
+    }
+  },
+  {
+    "name": "method_machine",
+    "input": {
+      "schema": "NAYAPOWER_LEARNING_CANDIDATE_ADMISSION_V1",
+      "claim": "Applying the retry-with-backoff lesson reduces failed capture writes on flaky networks.",
+      "falsification_condition": "If treatment and control show identical failure rates over 30 flaky-network trials, the claim is wrong.",
+      "task": "capture-write-retry",
+      "lesson_id": "SN-0000",
+      "success_criterion": "Treatment arm shows >=20% fewer failed writes than control over 30 trials.",
+      "criterion_independent_of_lesson": true,
+      "criterion_registered_at": "2026-10-09T09:00:00Z",
+      "doer": "naya-5",
+      "scorer": "naya-2",
+      "measurement": {
+        "method": "machine"
+      },
+      "arms": {
+        "treatment": {
+          "observable": "retries each failed write up to 3x with backoff",
+          "measured_at": "2026-10-09T10:00:00Z"
+        },
+        "control": {
+          "observable": "fails the write immediately, no retry",
+          "measured_at": "2026-10-09T10:05:00Z"
+        }
+      },
+      "asserts_behavioral_change": true,
+      "behavioral_measure": "failed-write count per 30-trial run",
+      "outcome": "pending"
+    },
+    "expected": {
+      "admitted": true,
+      "admitted_as": "CANDIDATE",
+      "reasons": []
+    }
+  },
+  {
+    "name": "method_different_seat",
+    "input": {
+      "schema": "NAYAPOWER_LEARNING_CANDIDATE_ADMISSION_V1",
+      "claim": "Applying the retry-with-backoff lesson reduces failed capture writes on flaky networks.",
+      "falsification_condition": "If treatment and control show identical failure rates over 30 flaky-network trials, the claim is wrong.",
+      "task": "capture-write-retry",
+      "lesson_id": "SN-0000",
+      "success_criterion": "Treatment arm shows >=20% fewer failed writes than control over 30 trials.",
+      "criterion_independent_of_lesson": true,
+      "criterion_registered_at": "2026-10-09T09:00:00Z",
+      "doer": "naya-5",
+      "scorer": "naya-2",
+      "measurement": {
+        "method": "different_seat"
+      },
+      "arms": {
+        "treatment": {
+          "observable": "retries each failed write up to 3x with backoff",
+          "measured_at": "2026-10-09T10:00:00Z"
+        },
+        "control": {
+          "observable": "fails the write immediately, no retry",
+          "measured_at": "2026-10-09T10:05:00Z"
+        }
+      },
+      "asserts_behavioral_change": true,
+      "behavioral_measure": "failed-write count per 30-trial run",
+      "outcome": "pending"
+    },
+    "expected": {
+      "admitted": true,
+      "admitted_as": "CANDIDATE",
+      "reasons": []
+    }
+  },
+  {
+    "name": "method_deterministic",
+    "input": {
+      "schema": "NAYAPOWER_LEARNING_CANDIDATE_ADMISSION_V1",
+      "claim": "Applying the retry-with-backoff lesson reduces failed capture writes on flaky networks.",
+      "falsification_condition": "If treatment and control show identical failure rates over 30 flaky-network trials, the claim is wrong.",
+      "task": "capture-write-retry",
+      "lesson_id": "SN-0000",
+      "success_criterion": "Treatment arm shows >=20% fewer failed writes than control over 30 trials.",
+      "criterion_independent_of_lesson": true,
+      "criterion_registered_at": "2026-10-09T09:00:00Z",
+      "doer": "naya-5",
+      "scorer": "naya-2",
+      "measurement": {
+        "method": "deterministic"
+      },
+      "arms": {
+        "treatment": {
+          "observable": "retries each failed write up to 3x with backoff",
+          "measured_at": "2026-10-09T10:00:00Z"
+        },
+        "control": {
+          "observable": "fails the write immediately, no retry",
+          "measured_at": "2026-10-09T10:05:00Z"
+        }
+      },
+      "asserts_behavioral_change": true,
+      "behavioral_measure": "failed-write count per 30-trial run",
+      "outcome": "pending"
+    },
+    "expected": {
+      "admitted": true,
+      "admitted_as": "CANDIDATE",
+      "reasons": []
+    }
+  },
+  {
+    "name": "doer_equals_scorer",
+    "input": {
+      "schema": "NAYAPOWER_LEARNING_CANDIDATE_ADMISSION_V1",
+      "claim": "Applying the retry-with-backoff lesson reduces failed capture writes on flaky networks.",
+      "falsification_condition": "If treatment and control show identical failure rates over 30 flaky-network trials, the claim is wrong.",
+      "task": "capture-write-retry",
+      "lesson_id": "SN-0000",
+      "success_criterion": "Treatment arm shows >=20% fewer failed writes than control over 30 trials.",
+      "criterion_independent_of_lesson": true,
+      "criterion_registered_at": "2026-10-09T09:00:00Z",
+      "doer": "naya-5",
+      "scorer": "naya-5",
+      "measurement": {
+        "method": "machine",
+        "detail": "write-failure counter in trial harness"
+      },
+      "arms": {
+        "treatment": {
+          "observable": "retries each failed write up to 3x with backoff",
+          "measured_at": "2026-10-09T10:00:00Z"
+        },
+        "control": {
+          "observable": "fails the write immediately, no retry",
+          "measured_at": "2026-10-09T10:05:00Z"
+        }
+      },
+      "asserts_behavioral_change": true,
+      "behavioral_measure": "failed-write count per 30-trial run",
+      "outcome": "pending"
+    },
+    "expected": {
+      "admitted": false,
+      "admitted_as": "REJECTED",
+      "reasons": [
+        "DOER_EQUALS_SCORER"
+      ]
+    }
+  },
+  {
+    "name": "tautological_arms",
+    "input": {
+      "schema": "NAYAPOWER_LEARNING_CANDIDATE_ADMISSION_V1",
+      "claim": "Applying the retry-with-backoff lesson reduces failed capture writes on flaky networks.",
+      "falsification_condition": "If treatment and control show identical failure rates over 30 flaky-network trials, the claim is wrong.",
+      "task": "capture-write-retry",
+      "lesson_id": "SN-0000",
+      "success_criterion": "Treatment arm shows >=20% fewer failed writes than control over 30 trials.",
+      "criterion_independent_of_lesson": true,
+      "criterion_registered_at": "2026-10-09T09:00:00Z",
+      "doer": "naya-5",
+      "scorer": "naya-2",
+      "measurement": {
+        "method": "machine",
+        "detail": "write-failure counter in trial harness"
+      },
+      "arms": {
+        "treatment": {
+          "observable": "",
+          "measured_at": "2026-10-09T10:00:00Z"
+        },
+        "control": {
+          "observable": "",
+          "measured_at": "2026-10-09T10:05:00Z"
+        }
+      },
+      "asserts_behavioral_change": true,
+      "behavioral_measure": "failed-write count per 30-trial run",
+      "outcome": "pending"
+    },
+    "expected": {
+      "admitted": false,
+      "admitted_as": "REJECTED",
+      "reasons": [
+        "ARMS_REQUIRE_OBSERVABLE_BEHAVIOR"
+      ]
+    }
+  },
+  {
+    "name": "indistinguishable_arms",
+    "input": {
+      "schema": "NAYAPOWER_LEARNING_CANDIDATE_ADMISSION_V1",
+      "claim": "Applying the retry-with-backoff lesson reduces failed capture writes on flaky networks.",
+      "falsification_condition": "If treatment and control show identical failure rates over 30 flaky-network trials, the claim is wrong.",
+      "task": "capture-write-retry",
+      "lesson_id": "SN-0000",
+      "success_criterion": "Treatment arm shows >=20% fewer failed writes than control over 30 trials.",
+      "criterion_independent_of_lesson": true,
+      "criterion_registered_at": "2026-10-09T09:00:00Z",
+      "doer": "naya-5",
+      "scorer": "naya-2",
+      "measurement": {
+        "method": "machine",
+        "detail": "write-failure counter in trial harness"
+      },
+      "arms": {
+        "treatment": {
+          "observable": "does the thing",
+          "measured_at": "2026-10-09T10:00:00Z"
+        },
+        "control": {
+          "observable": "does the thing",
+          "measured_at": "2026-10-09T10:05:00Z"
+        }
+      },
+      "asserts_behavioral_change": true,
+      "behavioral_measure": "failed-write count per 30-trial run",
+      "outcome": "pending"
+    },
+    "expected": {
+      "admitted": false,
+      "admitted_as": "REJECTED",
+      "reasons": [
+        "ARMS_INDIMINISHABLE"
+      ]
+    }
+  },
+  {
+    "name": "non_experiment_unmeasured",
+    "input": {
+      "schema": "NAYAPOWER_LEARNING_CANDIDATE_ADMISSION_V1",
+      "claim": "Applying the retry-with-backoff lesson reduces failed capture writes on flaky networks.",
+      "falsification_condition": "If treatment and control show identical failure rates over 30 flaky-network trials, the claim is wrong.",
+      "task": "capture-write-retry",
+      "lesson_id": "SN-0000",
+      "success_criterion": "Treatment arm shows >=20% fewer failed writes than control over 30 trials.",
+      "criterion_independent_of_lesson": true,
+      "criterion_registered_at": "2026-10-09T09:00:00Z",
+      "doer": "naya-5",
+      "scorer": "naya-2",
+      "measurement": {
+        "method": "machine",
+        "detail": "write-failure counter in trial harness"
+      },
+      "arms": {
+        "treatment": {
+          "observable": "retries writes",
+          "measured_at": ""
+        },
+        "control": {
+          "observable": "no retry",
+          "measured_at": ""
+        }
+      },
+      "asserts_behavioral_change": true,
+      "behavioral_measure": "failed-write count per 30-trial run",
+      "outcome": "pending"
+    },
+    "expected": {
+      "admitted": false,
+      "admitted_as": "REJECTED",
+      "reasons": [
+        "NON_EXPERIMENT_NO_MEASURED_ARMS"
+      ]
+    }
+  },
+  {
+    "name": "null_false_flag",
+    "input": {
+      "schema": "NAYAPOWER_LEARNING_CANDIDATE_ADMISSION_V1",
+      "claim": "Applying the retry-with-backoff lesson reduces failed capture writes on flaky networks.",
+      "falsification_condition": "If treatment and control show identical failure rates over 30 flaky-network trials, the claim is wrong.",
+      "task": "capture-write-retry",
+      "lesson_id": "SN-0000",
+      "success_criterion": "Treatment arm shows >=20% fewer failed writes than control over 30 trials.",
+      "criterion_independent_of_lesson": true,
+      "criterion_registered_at": "2026-10-09T09:00:00Z",
+      "doer": "naya-5",
+      "scorer": "naya-2",
+      "measurement": {
+        "method": "machine",
+        "detail": "write-failure counter in trial harness"
+      },
+      "arms": {
+        "treatment": {
+          "observable": "retries each failed write up to 3x with backoff",
+          "measured_at": "2026-10-09T10:00:00Z"
+        },
+        "control": {
+          "observable": "fails the write immediately, no retry",
+          "measured_at": "2026-10-09T10:05:00Z"
+        }
+      },
+      "asserts_behavioral_change": false,
+      "behavioral_measure": "failed-write count per 30-trial run",
+      "outcome": "pending"
+    },
+    "expected": {
+      "admitted": true,
+      "admitted_as": "NOT_VERIFIED",
+      "reasons": []
+    }
+  },
+  {
+    "name": "null_without_arms_rejected",
+    "input": {
+      "schema": "NAYAPOWER_LEARNING_CANDIDATE_ADMISSION_V1",
+      "claim": "Applying the retry-with-backoff lesson reduces failed capture writes on flaky networks.",
+      "falsification_condition": "If treatment and control show identical failure rates over 30 flaky-network trials, the claim is wrong.",
+      "task": "capture-write-retry",
+      "lesson_id": "SN-0000",
+      "success_criterion": "Treatment arm shows >=20% fewer failed writes than control over 30 trials.",
+      "criterion_independent_of_lesson": true,
+      "criterion_registered_at": "2026-10-09T09:00:00Z",
+      "doer": "naya-5",
+      "scorer": "naya-2",
+      "measurement": {
+        "method": "machine",
+        "detail": "write-failure counter in trial harness"
+      },
+      "arms": {
+        "treatment": {
+          "observable": "retries writes",
+          "measured_at": ""
+        },
+        "control": {
+          "observable": "no retry",
+          "measured_at": ""
+        }
+      },
+      "asserts_behavioral_change": false,
+      "behavioral_measure": "failed-write count per 30-trial run",
+      "outcome": "pending"
+    },
+    "expected": {
+      "admitted": false,
+      "admitted_as": "REJECTED",
+      "reasons": [
+        "NON_EXPERIMENT_NO_MEASURED_ARMS"
+      ]
+    }
+  },
+  {
+    "name": "honest_null_outcome",
+    "input": {
+      "schema": "NAYAPOWER_LEARNING_CANDIDATE_ADMISSION_V1",
+      "claim": "Applying the retry-with-backoff lesson reduces failed capture writes on flaky networks.",
+      "falsification_condition": "If treatment and control show identical failure rates over 30 flaky-network trials, the claim is wrong.",
+      "task": "capture-write-retry",
+      "lesson_id": "SN-0000",
+      "success_criterion": "Treatment arm shows >=20% fewer failed writes than control over 30 trials.",
+      "criterion_independent_of_lesson": true,
+      "criterion_registered_at": "2026-10-09T09:00:00Z",
+      "doer": "naya-5",
+      "scorer": "naya-2",
+      "measurement": {
+        "method": "machine",
+        "detail": "write-failure counter in trial harness"
+      },
+      "arms": {
+        "treatment": {
+          "observable": "retries each failed write up to 3x with backoff",
+          "measured_at": "2026-10-09T10:00:00Z"
+        },
+        "control": {
+          "observable": "fails the write immediately, no retry",
+          "measured_at": "2026-10-09T10:05:00Z"
+        }
+      },
+      "asserts_behavioral_change": true,
+      "behavioral_measure": "failed-write count per 30-trial run",
+      "outcome": "null"
+    },
+    "expected": {
+      "admitted": true,
+      "admitted_as": "NOT_VERIFIED",
+      "reasons": []
+    }
+  },
+  {
+    "name": "chain_test_artifact",
+    "input": {
+      "schema": "NAYAPOWER_LEARNING_CANDIDATE_ADMISSION_V1",
+      "claim": "Almost there",
+      "provenance": "USER",
+      "verification_method": "PENDING_OUTCOME_VERIFICATION"
+    },
+    "expected": {
+      "admitted": false,
+      "admitted_as": "REJECTED",
+      "reasons": [
+        "CLAIM_NOT_FALSIFIABLE",
+        "NO_NAMED_TASK",
+        "NO_PREREGISTERED_CRITERION",
+        "NO_MACHINE_MEASUREMENT",
+        "DOER_AND_SCORER_REQUIRED",
+        "ARMS_REQUIRE_OBSERVABLE_BEHAVIOR",
+        "NON_EXPERIMENT_NO_MEASURED_ARMS",
+        "CRITERION_REGISTERED_AT_REQUIRED"
+      ]
+    }
+  },
+  {
+    "name": "non_object",
+    "input": "just a string",
+    "expected": {
+      "admitted": false,
+      "admitted_as": "REJECTED",
+      "reasons": [
+        "CANDIDATE_MUST_BE_OBJECT"
+      ]
+    }
+  },
+  {
+    "name": "b1b_costumed_tautology",
+    "input": {
+      "schema": "NAYAPOWER_LEARNING_CANDIDATE_ADMISSION_V1",
+      "claim": "Applying the lesson changes behavior.",
+      "falsification_condition": "if applying the lesson did not change behavior",
+      "task": "capture-write-retry",
+      "lesson_id": "SN-0000",
+      "success_criterion": "Treatment arm shows >=20% fewer failed writes than control over 30 trials.",
+      "criterion_independent_of_lesson": true,
+      "criterion_registered_at": "2026-10-09T09:00:00Z",
+      "doer": "naya-5",
+      "scorer": "naya-2",
+      "measurement": {
+        "method": "machine",
+        "detail": "write-failure counter in trial harness"
+      },
+      "arms": {
+        "treatment": {
+          "observable": "retries each failed write up to 3x with backoff",
+          "measured_at": "2026-10-09T10:00:00Z"
+        },
+        "control": {
+          "observable": "fails the write immediately, no retry",
+          "measured_at": "2026-10-09T10:05:00Z"
+        }
+      },
+      "asserts_behavioral_change": true,
+      "behavioral_measure": "failed-write count per 30-trial run",
+      "outcome": "pending"
+    },
+    "expected": {
+      "admitted": false,
+      "admitted_as": "REJECTED",
+      "reasons": [
+        "TAUTOLOGICAL_FALSIFICATION"
+      ]
+    }
+  },
+  {
+    "name": "b1b_costumed_criterion",
+    "input": {
+      "schema": "NAYAPOWER_LEARNING_CANDIDATE_ADMISSION_V1",
+      "claim": "Applying the lesson changes behavior.",
+      "falsification_condition": "If treatment and control show identical failure rates over 30 flaky-network trials, the claim is wrong.",
+      "task": "capture-write-retry",
+      "lesson_id": "SN-0000",
+      "success_criterion": "The claim is wrong if applying the lesson does not change behavior.",
+      "criterion_independent_of_lesson": true,
+      "criterion_registered_at": "2026-10-09T09:00:00Z",
+      "doer": "naya-5",
+      "scorer": "naya-2",
+      "measurement": {
+        "method": "machine",
+        "detail": "write-failure counter in trial harness"
+      },
+      "arms": {
+        "treatment": {
+          "observable": "retries each failed write up to 3x with backoff",
+          "measured_at": "2026-10-09T10:00:00Z"
+        },
+        "control": {
+          "observable": "fails the write immediately, no retry",
+          "measured_at": "2026-10-09T10:05:00Z"
+        }
+      },
+      "asserts_behavioral_change": true,
+      "behavioral_measure": "failed-write count per 30-trial run",
+      "outcome": "pending"
+    },
+    "expected": {
+      "admitted": false,
+      "admitted_as": "REJECTED",
+      "reasons": [
+        "TAUTOLOGICAL_CRITERION"
+      ]
+    }
+  },
+  {
+    "name": "b5_post_hoc",
+    "input": {
+      "schema": "NAYAPOWER_LEARNING_CANDIDATE_ADMISSION_V1",
+      "claim": "Applying the retry-with-backoff lesson reduces failed capture writes on flaky networks.",
+      "falsification_condition": "If treatment and control show identical failure rates over 30 flaky-network trials, the claim is wrong.",
+      "task": "capture-write-retry",
+      "lesson_id": "SN-0000",
+      "success_criterion": "Treatment arm shows >=20% fewer failed writes than control over 30 trials.",
+      "criterion_independent_of_lesson": true,
+      "criterion_registered_at": "2026-10-09T11:00:00Z",
+      "doer": "naya-5",
+      "scorer": "naya-2",
+      "measurement": {
+        "method": "machine",
+        "detail": "write-failure counter in trial harness"
+      },
+      "arms": {
+        "treatment": {
+          "observable": "retries each failed write up to 3x with backoff",
+          "measured_at": "2026-10-09T10:00:00Z"
+        },
+        "control": {
+          "observable": "fails the write immediately, no retry",
+          "measured_at": "2026-10-09T10:05:00Z"
+        }
+      },
+      "asserts_behavioral_change": true,
+      "behavioral_measure": "failed-write count per 30-trial run",
+      "outcome": "pending"
+    },
+    "expected": {
+      "admitted": false,
+      "admitted_as": "REJECTED",
+      "reasons": [
+        "POST_HOC_CRITERION"
+      ]
+    }
+  },
+  {
+    "name": "b5_missing_registered_at",
+    "input": {
+      "schema": "NAYAPOWER_LEARNING_CANDIDATE_ADMISSION_V1",
+      "claim": "Applying the retry-with-backoff lesson reduces failed capture writes on flaky networks.",
+      "falsification_condition": "If treatment and control show identical failure rates over 30 flaky-network trials, the claim is wrong.",
+      "task": "capture-write-retry",
+      "lesson_id": "SN-0000",
+      "success_criterion": "Treatment arm shows >=20% fewer failed writes than control over 30 trials.",
+      "criterion_independent_of_lesson": true,
+      "criterion_registered_at": "",
+      "doer": "naya-5",
+      "scorer": "naya-2",
+      "measurement": {
+        "method": "machine",
+        "detail": "write-failure counter in trial harness"
+      },
+      "arms": {
+        "treatment": {
+          "observable": "retries each failed write up to 3x with backoff",
+          "measured_at": "2026-10-09T10:00:00Z"
+        },
+        "control": {
+          "observable": "fails the write immediately, no retry",
+          "measured_at": "2026-10-09T10:05:00Z"
+        }
+      },
+      "asserts_behavioral_change": true,
+      "behavioral_measure": "failed-write count per 30-trial run",
+      "outcome": "pending"
+    },
+    "expected": {
+      "admitted": false,
+      "admitted_as": "REJECTED",
+      "reasons": [
+        "CRITERION_REGISTERED_AT_REQUIRED"
+      ]
+    }
+  },
+  {
+    "name": "b5_unparseable_registered_at",
+    "input": {
+      "schema": "NAYAPOWER_LEARNING_CANDIDATE_ADMISSION_V1",
+      "claim": "Applying the retry-with-backoff lesson reduces failed capture writes on flaky networks.",
+      "falsification_condition": "If treatment and control show identical failure rates over 30 flaky-network trials, the claim is wrong.",
+      "task": "capture-write-retry",
+      "lesson_id": "SN-0000",
+      "success_criterion": "Treatment arm shows >=20% fewer failed writes than control over 30 trials.",
+      "criterion_independent_of_lesson": true,
+      "criterion_registered_at": "sometime yesterday",
+      "doer": "naya-5",
+      "scorer": "naya-2",
+      "measurement": {
+        "method": "machine",
+        "detail": "write-failure counter in trial harness"
+      },
+      "arms": {
+        "treatment": {
+          "observable": "retries each failed write up to 3x with backoff",
+          "measured_at": "2026-10-09T10:00:00Z"
+        },
+        "control": {
+          "observable": "fails the write immediately, no retry",
+          "measured_at": "2026-10-09T10:05:00Z"
+        }
+      },
+      "asserts_behavioral_change": true,
+      "behavioral_measure": "failed-write count per 30-trial run",
+      "outcome": "pending"
+    },
+    "expected": {
+      "admitted": false,
+      "admitted_as": "REJECTED",
+      "reasons": [
+        "CRITERION_TIMESTAMP_UNPARSEABLE"
+      ]
+    }
+  },
+  {
+    "name": "b5_unparseable_measured_at",
+    "input": {
+      "schema": "NAYAPOWER_LEARNING_CANDIDATE_ADMISSION_V1",
+      "claim": "Applying the retry-with-backoff lesson reduces failed capture writes on flaky networks.",
+      "falsification_condition": "If treatment and control show identical failure rates over 30 flaky-network trials, the claim is wrong.",
+      "task": "capture-write-retry",
+      "lesson_id": "SN-0000",
+      "success_criterion": "Treatment arm shows >=20% fewer failed writes than control over 30 trials.",
+      "criterion_independent_of_lesson": true,
+      "criterion_registered_at": "2026-10-09T09:00:00Z",
+      "doer": "naya-5",
+      "scorer": "naya-2",
+      "measurement": {
+        "method": "machine",
+        "detail": "write-failure counter in trial harness"
+      },
+      "arms": {
+        "treatment": {
+          "observable": "retries writes",
+          "measured_at": "yesterday"
+        },
+        "control": {
+          "observable": "no retry",
+          "measured_at": "2026-10-09T10:05:00Z"
+        }
+      },
+      "asserts_behavioral_change": true,
+      "behavioral_measure": "failed-write count per 30-trial run",
+      "outcome": "pending"
+    },
+    "expected": {
+      "admitted": false,
+      "admitted_as": "REJECTED",
+      "reasons": [
+        "MEASURED_AT_UNPARSEABLE"
+      ]
+    }
+  },
+  {
+    "name": "b5_null_with_post_hoc",
+    "input": {
+      "schema": "NAYAPOWER_LEARNING_CANDIDATE_ADMISSION_V1",
+      "claim": "Applying the retry-with-backoff lesson reduces failed capture writes on flaky networks.",
+      "falsification_condition": "If treatment and control show identical failure rates over 30 flaky-network trials, the claim is wrong.",
+      "task": "capture-write-retry",
+      "lesson_id": "SN-0000",
+      "success_criterion": "Treatment arm shows >=20% fewer failed writes than control over 30 trials.",
+      "criterion_independent_of_lesson": true,
+      "criterion_registered_at": "2026-10-09T11:00:00Z",
+      "doer": "naya-5",
+      "scorer": "naya-2",
+      "measurement": {
+        "method": "machine",
+        "detail": "write-failure counter in trial harness"
+      },
+      "arms": {
+        "treatment": {
+          "observable": "retries each failed write up to 3x with backoff",
+          "measured_at": "2026-10-09T10:00:00Z"
+        },
+        "control": {
+          "observable": "fails the write immediately, no retry",
+          "measured_at": "2026-10-09T10:05:00Z"
+        }
+      },
+      "asserts_behavioral_change": true,
+      "behavioral_measure": "failed-write count per 30-trial run",
+      "outcome": "null"
+    },
+    "expected": {
+      "admitted": false,
+      "admitted_as": "REJECTED",
+      "reasons": [
+        "POST_HOC_CRITERION"
+      ]
+    }
+  },
+  {
+    "name": "b2b_null_string",
+    "input": {
+      "schema": "NAYAPOWER_LEARNING_CANDIDATE_ADMISSION_V1",
+      "claim": "Applying the retry-with-backoff lesson reduces failed capture writes on flaky networks.",
+      "falsification_condition": "If treatment and control show identical failure rates over 30 flaky-network trials, the claim is wrong.",
+      "task": "capture-write-retry",
+      "lesson_id": "SN-0000",
+      "success_criterion": "Treatment arm shows >=20% fewer failed writes than control over 30 trials.",
+      "criterion_independent_of_lesson": true,
+      "criterion_registered_at": "2026-10-09T09:00:00Z",
+      "doer": "naya-5",
+      "scorer": "naya-2",
+      "measurement": {
+        "method": "machine",
+        "detail": "write-failure counter in trial harness"
+      },
+      "arms": {
+        "treatment": {
+          "observable": "retries each failed write up to 3x with backoff",
+          "measured_at": "2026-10-09T10:00:00Z"
+        },
+        "control": {
+          "observable": "fails the write immediately, no retry",
+          "measured_at": "2026-10-09T10:05:00Z"
+        }
+      },
+      "asserts_behavioral_change": true,
+      "behavioral_measure": "failed-write count per 30-trial run",
+      "outcome": "null"
+    },
+    "expected": {
+      "admitted": true,
+      "admitted_as": "NOT_VERIFIED",
+      "reasons": []
+    }
+  },
+  {
+    "name": "b2b_null_case_insensitive",
+    "input": {
+      "schema": "NAYAPOWER_LEARNING_CANDIDATE_ADMISSION_V1",
+      "claim": "Applying the retry-with-backoff lesson reduces failed capture writes on flaky networks.",
+      "falsification_condition": "If treatment and control show identical failure rates over 30 flaky-network trials, the claim is wrong.",
+      "task": "capture-write-retry",
+      "lesson_id": "SN-0000",
+      "success_criterion": "Treatment arm shows >=20% fewer failed writes than control over 30 trials.",
+      "criterion_independent_of_lesson": true,
+      "criterion_registered_at": "2026-10-09T09:00:00Z",
+      "doer": "naya-5",
+      "scorer": "naya-2",
+      "measurement": {
+        "method": "machine",
+        "detail": "write-failure counter in trial harness"
+      },
+      "arms": {
+        "treatment": {
+          "observable": "retries each failed write up to 3x with backoff",
+          "measured_at": "2026-10-09T10:00:00Z"
+        },
+        "control": {
+          "observable": "fails the write immediately, no retry",
+          "measured_at": "2026-10-09T10:05:00Z"
+        }
+      },
+      "asserts_behavioral_change": false,
+      "behavioral_measure": "failed-write count per 30-trial run",
+      "outcome": "NULL"
+    },
+    "expected": {
+      "admitted": true,
+      "admitted_as": "NOT_VERIFIED",
+      "reasons": []
+    }
+  },
+  {
+    "name": "b6b_case_variant",
+    "input": {
+      "schema": "NAYAPOWER_LEARNING_CANDIDATE_ADMISSION_V1",
+      "claim": "Applying the retry-with-backoff lesson reduces failed capture writes on flaky networks.",
+      "falsification_condition": "If treatment and control show identical failure rates over 30 flaky-network trials, the claim is wrong.",
+      "task": "capture-write-retry",
+      "lesson_id": "SN-0000",
+      "success_criterion": "Treatment arm shows >=20% fewer failed writes than control over 30 trials.",
+      "criterion_independent_of_lesson": true,
+      "criterion_registered_at": "2026-10-09T09:00:00Z",
+      "doer": "Naya-5",
+      "scorer": "naya-5 ",
+      "measurement": {
+        "method": "machine",
+        "detail": "write-failure counter in trial harness"
+      },
+      "arms": {
+        "treatment": {
+          "observable": "retries each failed write up to 3x with backoff",
+          "measured_at": "2026-10-09T10:00:00Z"
+        },
+        "control": {
+          "observable": "fails the write immediately, no retry",
+          "measured_at": "2026-10-09T10:05:00Z"
+        }
+      },
+      "asserts_behavioral_change": true,
+      "behavioral_measure": "failed-write count per 30-trial run",
+      "outcome": "pending"
+    },
+    "expected": {
+      "admitted": false,
+      "admitted_as": "REJECTED",
+      "reasons": [
+        "DOER_EQUALS_SCORER"
+      ]
+    }
+  },
+  {
+    "name": "b6b_distinct_seats",
+    "input": {
+      "schema": "NAYAPOWER_LEARNING_CANDIDATE_ADMISSION_V1",
+      "claim": "Applying the retry-with-backoff lesson reduces failed capture writes on flaky networks.",
+      "falsification_condition": "If treatment and control show identical failure rates over 30 flaky-network trials, the claim is wrong.",
+      "task": "capture-write-retry",
+      "lesson_id": "SN-0000",
+      "success_criterion": "Treatment arm shows >=20% fewer failed writes than control over 30 trials.",
+      "criterion_independent_of_lesson": true,
+      "criterion_registered_at": "2026-10-09T09:00:00Z",
+      "doer": "Naya-5",
+      "scorer": "NAYA-2",
+      "measurement": {
+        "method": "machine",
+        "detail": "write-failure counter in trial harness"
+      },
+      "arms": {
+        "treatment": {
+          "observable": "retries each failed write up to 3x with backoff",
+          "measured_at": "2026-10-09T10:00:00Z"
+        },
+        "control": {
+          "observable": "fails the write immediately, no retry",
+          "measured_at": "2026-10-09T10:05:00Z"
+        }
+      },
+      "asserts_behavioral_change": true,
+      "behavioral_measure": "failed-write count per 30-trial run",
+      "outcome": "pending"
+    },
+    "expected": {
+      "admitted": true,
+      "admitted_as": "CANDIDATE",
+      "reasons": []
+    }
+  },
+  {
+    "name": "missing_claim",
+    "input": {
+      "schema": "NAYAPOWER_LEARNING_CANDIDATE_ADMISSION_V1",
+      "claim": "",
+      "falsification_condition": "If treatment and control show identical failure rates over 30 flaky-network trials, the claim is wrong.",
+      "task": "capture-write-retry",
+      "lesson_id": "SN-0000",
+      "success_criterion": "Treatment arm shows >=20% fewer failed writes than control over 30 trials.",
+      "criterion_independent_of_lesson": true,
+      "criterion_registered_at": "2026-10-09T09:00:00Z",
+      "doer": "naya-5",
+      "scorer": "naya-2",
+      "measurement": {
+        "method": "machine",
+        "detail": "write-failure counter in trial harness"
+      },
+      "arms": {
+        "treatment": {
+          "observable": "retries each failed write up to 3x with backoff",
+          "measured_at": "2026-10-09T10:00:00Z"
+        },
+        "control": {
+          "observable": "fails the write immediately, no retry",
+          "measured_at": "2026-10-09T10:05:00Z"
+        }
+      },
+      "asserts_behavioral_change": true,
+      "behavioral_measure": "failed-write count per 30-trial run",
+      "outcome": "pending"
+    },
+    "expected": {
+      "admitted": false,
+      "admitted_as": "REJECTED",
+      "reasons": [
+        "CLAIM_REQUIRED"
+      ]
+    }
+  },
+  {
+    "name": "null_arms",
+    "input": {
+      "schema": "NAYAPOWER_LEARNING_CANDIDATE_ADMISSION_V1",
+      "claim": "Applying the retry-with-backoff lesson reduces failed capture writes on flaky networks.",
+      "falsification_condition": "If treatment and control show identical failure rates over 30 flaky-network trials, the claim is wrong.",
+      "task": "capture-write-retry",
+      "lesson_id": "SN-0000",
+      "success_criterion": "Treatment arm shows >=20% fewer failed writes than control over 30 trials.",
+      "criterion_independent_of_lesson": true,
+      "criterion_registered_at": "2026-10-09T09:00:00Z",
+      "doer": "naya-5",
+      "scorer": "naya-2",
+      "measurement": {
+        "method": "machine",
+        "detail": "write-failure counter in trial harness"
+      },
+      "arms": null,
+      "asserts_behavioral_change": true,
+      "behavioral_measure": "failed-write count per 30-trial run",
+      "outcome": "pending"
+    },
+    "expected": {
+      "admitted": false,
+      "admitted_as": "REJECTED",
+      "reasons": [
+        "ARMS_REQUIRE_OBSERVABLE_BEHAVIOR",
+        "NON_EXPERIMENT_NO_MEASURED_ARMS"
+      ]
+    }
+  },
+  {
+    "name": "empty_dict",
+    "input": {},
+    "expected": {
+      "admitted": false,
+      "admitted_as": "REJECTED",
+      "reasons": [
+        "SCHEMA_MISMATCH",
+        "CLAIM_REQUIRED",
+        "CLAIM_NOT_FALSIFIABLE",
+        "NO_NAMED_TASK",
+        "NO_PREREGISTERED_CRITERION",
+        "NO_MACHINE_MEASUREMENT",
+        "DOER_AND_SCORER_REQUIRED",
+        "ARMS_REQUIRE_OBSERVABLE_BEHAVIOR",
+        "NON_EXPERIMENT_NO_MEASURED_ARMS",
+        "CRITERION_REGISTERED_AT_REQUIRED"
+      ]
+    }
+  },
+  {
+    "name": "null_input",
+    "input": null,
+    "expected": {
+      "admitted": false,
+      "admitted_as": "REJECTED",
+      "reasons": [
+        "CANDIDATE_MUST_BE_OBJECT"
+      ]
+    }
+  },
+  {
+    "name": "list_input",
+    "input": [
+      1,
+      2,
+      3
+    ],
+    "expected": {
+      "admitted": false,
+      "admitted_as": "REJECTED",
+      "reasons": [
+        "CANDIDATE_MUST_BE_OBJECT"
+      ]
+    }
+  },
+  {
+    "name": "naive_timestamps",
+    "input": {
+      "schema": "NAYAPOWER_LEARNING_CANDIDATE_ADMISSION_V1",
+      "claim": "Applying the retry-with-backoff lesson reduces failed capture writes on flaky networks.",
+      "falsification_condition": "If treatment and control show identical failure rates over 30 flaky-network trials, the claim is wrong.",
+      "task": "capture-write-retry",
+      "lesson_id": "SN-0000",
+      "success_criterion": "Treatment arm shows >=20% fewer failed writes than control over 30 trials.",
+      "criterion_independent_of_lesson": true,
+      "criterion_registered_at": "2026-10-09T09:00:00",
+      "doer": "naya-5",
+      "scorer": "naya-2",
+      "measurement": {
+        "method": "machine",
+        "detail": "write-failure counter in trial harness"
+      },
+      "arms": {
+        "treatment": {
+          "observable": "retries each failed write up to 3x with backoff",
+          "measured_at": "2026-10-09T10:00:00"
+        },
+        "control": {
+          "observable": "fails the write immediately, no retry",
+          "measured_at": "2026-10-09T10:05:00"
+        }
+      },
+      "asserts_behavioral_change": true,
+      "behavioral_measure": "failed-write count per 30-trial run",
+      "outcome": "pending"
+    },
+    "expected": {
+      "admitted": true,
+      "admitted_as": "CANDIDATE",
+      "reasons": []
+    }
+  },
+  {
+    "name": "registered_exactly_at_first_measured",
+    "input": {
+      "schema": "NAYAPOWER_LEARNING_CANDIDATE_ADMISSION_V1",
+      "claim": "Applying the retry-with-backoff lesson reduces failed capture writes on flaky networks.",
+      "falsification_condition": "If treatment and control show identical failure rates over 30 flaky-network trials, the claim is wrong.",
+      "task": "capture-write-retry",
+      "lesson_id": "SN-0000",
+      "success_criterion": "Treatment arm shows >=20% fewer failed writes than control over 30 trials.",
+      "criterion_independent_of_lesson": true,
+      "criterion_registered_at": "2026-10-09T10:00:00Z",
+      "doer": "naya-5",
+      "scorer": "naya-2",
+      "measurement": {
+        "method": "machine",
+        "detail": "write-failure counter in trial harness"
+      },
+      "arms": {
+        "treatment": {
+          "observable": "retries each failed write up to 3x with backoff",
+          "measured_at": "2026-10-09T10:00:00Z"
+        },
+        "control": {
+          "observable": "fails the write immediately, no retry",
+          "measured_at": "2026-10-09T10:05:00Z"
+        }
+      },
+      "asserts_behavioral_change": true,
+      "behavioral_measure": "failed-write count per 30-trial run",
+      "outcome": "pending"
+    },
+    "expected": {
+      "admitted": false,
+      "admitted_as": "REJECTED",
+      "reasons": [
+        "POST_HOC_CRITERION"
+      ]
+    }
+  },
+  {
+    "name": "unrelated_falsification",
+    "input": {
+      "schema": "NAYAPOWER_LEARNING_CANDIDATE_ADMISSION_V1",
+      "claim": "Applying the retry-with-backoff lesson reduces failed capture writes on flaky networks.",
+      "falsification_condition": "If the database disk fills up, writes fail regardless of retry logic.",
+      "task": "capture-write-retry",
+      "lesson_id": "SN-0000",
+      "success_criterion": "Treatment arm shows >=20% fewer failed writes than control over 30 trials.",
+      "criterion_independent_of_lesson": true,
+      "criterion_registered_at": "2026-10-09T09:00:00Z",
+      "doer": "naya-5",
+      "scorer": "naya-2",
+      "measurement": {
+        "method": "machine",
+        "detail": "write-failure counter in trial harness"
+      },
+      "arms": {
+        "treatment": {
+          "observable": "retries each failed write up to 3x with backoff",
+          "measured_at": "2026-10-09T10:00:00Z"
+        },
+        "control": {
+          "observable": "fails the write immediately, no retry",
+          "measured_at": "2026-10-09T10:05:00Z"
+        }
+      },
+      "asserts_behavioral_change": true,
+      "behavioral_measure": "failed-write count per 30-trial run",
+      "outcome": "pending"
+    },
+    "expected": {
+      "admitted": true,
+      "admitted_as": "CANDIDATE",
+      "reasons": []
+    }
+  }
+]
