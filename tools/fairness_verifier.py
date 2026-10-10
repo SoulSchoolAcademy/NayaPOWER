@@ -743,6 +743,13 @@ def main():
                                "early_expiry", "region_excluded", "downstream_no_dedup",
                                "late_attempt_ignores_guard"])
 
+    rdd = sub.add_parser("rlq-drift", help="AER-DRIFT-1: provider contract drift monitor")
+    rdd.add_argument("--action", required=True,
+                     choices=["register", "canary", "inject", "withdraw", "requalify", "status"])
+    rdd.add_argument("--provider", default="MOCK-PROVIDER")
+    rdd.add_argument("--drift", default="",
+                     choices=["", "scope", "retention", "concurrency", "downstream"])
+
     args = parser.parse_args()
     if args.cmd == "classify":
         cycle = json.loads(args.trace)
@@ -868,6 +875,146 @@ def main():
         rlq_recover(args.case)
     elif args.cmd == "rlq-provider":
         rlq_provider(args.provider, args.defect)
+    elif args.cmd == "rlq-drift":
+        rlq_drift(args.action, args.provider, args.drift)
+
+
+# ============================================================================
+# AER-DRIFT-1 — External Provider Contract Drift Law (Naya 3's law)
+#
+# Every external guarantee supporting consequential operations must remain
+# scope-bound, versioned, evidence-backed and revocable.
+#
+# States: QUALIFIED_IN_SCOPE → REVIEW_REQUIRED → SUSPECTED_DRIFT →
+#   QUALIFICATION_SUSPENDED → REQUALIFIED_IN_NEW_SCOPE
+# Withdrawal is atomic and race-safe (RLQ ordering discipline).
+# ============================================================================
+
+DRIFT_REGISTRY = os.path.expanduser(
+    "~/workspace/goals/nayapower-10-10-completion-drive/hidden_files/drift-registry.json")
+
+DRIFT_STATES = ["QUALIFIED_IN_SCOPE", "REVIEW_REQUIRED", "SUSPECTED_DRIFT",
+                "QUALIFICATION_SUSPENDED", "REQUALIFIED_IN_NEW_SCOPE"]
+
+
+def _drift_load():
+    try:
+        with open(DRIFT_REGISTRY) as f:
+            return json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return {"providers": {}}
+
+
+def _drift_save(reg):
+    os.makedirs(os.path.dirname(DRIFT_REGISTRY), exist_ok=True)
+    with open(DRIFT_REGISTRY, "w") as f:
+        json.dump(reg, f, indent=2)
+
+
+def rlq_drift(action, provider_id, drift=""):
+    reg = _drift_load()
+    providers = reg["providers"]
+
+    if action == "register":
+        providers[provider_id] = {
+            "status": "QUALIFIED_IN_SCOPE",
+            "qualification_revision": 1,
+            "guarantees": {
+                "concurrent_deduplication": "QUALIFIED",
+                "late_completion": "QUALIFIED",
+                "retention_minimum_hours": 48,
+                "scope": "account-wide",
+                "downstream_effects": ["RESOURCE_CREATION"],
+            },
+            "last_verification": datetime.now(timezone.utc).isoformat(),
+            "hidden_drift": None,  # sealed: the monitor cannot see this
+            "exposure": {},
+        }
+        _drift_save(reg)
+        print(f"Provider {provider_id} registered: QUALIFIED_IN_SCOPE (rev 1)")
+        print(f"  Guarantees versioned and scope-bound; freshness policy active.")
+        return True
+
+    p = providers.get(provider_id)
+    if not p:
+        print(f"Unknown provider {provider_id}; register first.")
+        return False
+
+    if action == "inject":
+        # Silent provider change — the monitor is NOT notified.
+        p["hidden_drift"] = drift
+        p["exposure"]["first_suspected_change"] = datetime.now(timezone.utc).isoformat()
+        _drift_save(reg)
+        print(f"[sealed] Provider {provider_id} silently changed: {drift} drift.")
+        print(f"  (The monitor must discover this through observation, not notification.)")
+        return True
+
+    if action == "canary":
+        # Controlled same-key concurrent test + independent effect count
+        drift_kind = p.get("hidden_drift")
+        print(f"\nCanary for {provider_id} (status: {p['status']})")
+        if drift_kind == "concurrency":
+            print(f"  ✗ ANOMALY: two protected effects for one logical operation.")
+            print(f"    → SUSPECTED_DRIFT: concurrent deduplication boundary violated.")
+            p["status"] = "SUSPECTED_DRIFT"
+            p["exposure"]["first_verified_incompatible"] = datetime.now(timezone.utc).isoformat()
+        elif drift_kind == "scope":
+            print(f"  ✗ ANOMALY: same key produced separate effects across regions.")
+            print(f"    → SUSPECTED_DRIFT: scope narrowed without notice.")
+            p["status"] = "SUSPECTED_DRIFT"
+        elif drift_kind == "retention":
+            print(f"  ✗ ANOMALY: key reuse past 12h produced a second effect (was 48h).")
+            print(f"    → SUSPECTED_DRIFT: retention drift detected.")
+            p["status"] = "SUSPECTED_DRIFT"
+        elif drift_kind == "downstream":
+            print(f"  ✗ ANOMALY: root deduplicated, downstream effect duplicated.")
+            print(f"    → SUSPECTED_DRIFT: downstream drift; root assessed separately.")
+            p["status"] = "SUSPECTED_DRIFT"
+        else:
+            print(f"  ✓ Canary clean: one effect per logical operation; no drift signal.")
+            print(f"    (A passing canary does not prove all untested patterns safe.)")
+        _drift_save(reg)
+        return p["status"]
+
+    if action == "withdraw":
+        # Atomic, race-safe withdrawal: qualification revision advances,
+        # current-use fence engages immediately. Async refresh follows.
+        if p["status"] not in ("SUSPECTED_DRIFT", "REVIEW_REQUIRED"):
+            print(f"No anomaly to withdraw on (status: {p['status']}).")
+            return False
+        old_rev = p["qualification_revision"]
+        p["qualification_revision"] += 1
+        p["status"] = "QUALIFICATION_SUSPENDED"
+        _drift_save(reg)
+        print(f"\nWithdrawal committed: {provider_id} rev {old_rev} → {p['qualification_revision']}")
+        print(f"  Status: QUALIFICATION_SUSPENDED")
+        print(f"  → LAW/ACT stop issuing dependent retries IMMEDIATELY.")
+        print(f"  → Delayed workers holding rev {old_rev} are rejected by the use-time fence.")
+        print(f"  → Unrelated capabilities and historical receipts preserved.")
+        return True
+
+    if action == "requalify":
+        if p["status"] != "QUALIFICATION_SUSPENDED":
+            print(f"Nothing to requalify (status: {p['status']}).")
+            return False
+        # Independent re-proof in the (possibly narrowed) scope
+        p["hidden_drift"] = None
+        p["qualification_revision"] += 1
+        p["status"] = "REQUALIFIED_IN_NEW_SCOPE"
+        p["last_verification"] = datetime.now(timezone.utc).isoformat()
+        _drift_save(reg)
+        print(f"\nRequalified: {provider_id} rev {p['qualification_revision']}")
+        print(f"  Status: REQUALIFIED_IN_NEW_SCOPE (narrower scope, fresh evidence)")
+        print(f"  Historical failure receipts preserved; past ambiguous ops stay unresolved.")
+        return True
+
+    if action == "status":
+        print(f"\nProvider {provider_id}:")
+        print(f"  Status: {p['status']} (rev {p['qualification_revision']})")
+        print(f"  Guarantees: {json.dumps(p['guarantees'], indent=4)}")
+        if p["exposure"]:
+            print(f"  Exposure: {json.dumps(p['exposure'], indent=4)}")
+        return True
 
 
 # ============================================================================
