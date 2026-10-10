@@ -1,0 +1,28 @@
+name: Merge consensus gate
+
+# Shawn's protocol as code: no merge without (1) one approving review from a
+# seat other than the author, and (2) a scorecard receipt naming the exact
+# head SHA. Until branch protection requires this check, it reports but does
+# not block — the freeze directive on the board is the interim enforcement.
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened, edited]
+  pull_request_review:
+    types: [submitted, dismissed]
+
+jobs:
+  consensus:
+    name: Team review + scorecard receipt
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check merge consensus
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          PR_AUTHOR: ${{ github.event.pull_request.user.login }}
+        run: python3 tools/check_merge_consensus.py
