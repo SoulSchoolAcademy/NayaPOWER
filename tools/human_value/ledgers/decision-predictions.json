@@ -94,5 +94,13 @@
   "predicted_at": "2026-10-10T16:02:44Z",
   "predicted_by": "Naya 5 (human-value-builder run)",
   "prediction_basis": "Thirteenth real-ledger accumulation run. Pattern established over nine prior joins: pre-register before observation, append only independently-verified or evidence-durable outcomes, close the join with an honest delta_v_actual, recompute deterministically, prove cold-recomputability. Predicted +7.0 consistent with prior loops."
+ },
+ {
+  "decision_id": "DEC-20261010-HV-REALDATA-011",
+  "delta_v_predicted": 4.0,
+  "objective": "Accumulate the verified real events of 2026-10-10 16:10-21:41 UTC: Shawn's self-executed merges #2155 (mission-state snapshot, git-verified merge commit 102c94b8), #2168 (fairness chain, 38e51b57), #2169 (sealed fixtures, 39558acc), #2172 (fairness-verification, e41e91f8), #2173 (mission-state, c96989b0 -- 7th brain-index drift, test red at 0b81b0c, repaired via #2176), #2174 (wiring-phase1 kernel evidence gate, 0b81b0c2 -- repair lane cleared it sound, full suite green, LIVE on main by Shawn's explicit hand), #2176 (Shawn's direct re-stamp push 0fb380c7 -- HEALED main, test SUCCESS at tip), #2186 (revocation-linearization, 3d6e1360), #2187 (mission-state, cfbd81cca6 -- 8th drift, Kernel Tests red at live tip NOW, repair lane dispatched 21:30Z). Per-decision predictions: +6.0 (#2155, landed clean), +5.0 x4 (specs #2168/#2169/#2172/#2186 -- real families, wiring still parked on Shawn's word), +8.0 (#2174 live kernel gate), +8.0 (#2176 healed main, unblocked the team), -3.0 (#2173, created verified rework), -3.0 (#2187, main red now). Mean = +4.0. DAI scan: zero new human-attention demands (#1354 comment-locked; parked items + #2068 are continuing demands, not new). Anti-inflation rule applied: two drift-causing merges scored negative, not hidden.",
+  "predicted_at": "2026-10-10T21:46:00Z",
+  "predicted_by": "Naya 5 (human-value-builder run)",
+  "prediction_basis": "Fourteenth real-ledger accumulation run. Same fail-closed protocol as DEC-010: pre-register before any event append, append only git-verified merges with durable evidence pointers, close the join with an honest delta_v_actual (negative predictions where the verified record shows harm). Aggregate +4.0 = mean of honest per-decision predictions, not a wished number."
  }
 ]
