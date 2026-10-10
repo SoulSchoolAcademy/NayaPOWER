@@ -78,31 +78,85 @@ def register(interp_id, interpretation, evidence_refs, scope="general", policy_v
     return entry
 
 
-def challenge(interp_id, evidence, reason, challenger="unknown"):
+def challenge(interp_id, evidence, reason, challenger="unknown",
+                consequence="low", dependency="incidental"):
+    """
+    Three-gate model (Naya 1's threshold calibration):
+    Gate 1 (record): low threshold — accept attributable, nonduplicate objections
+    Gate 2 (reopen): higher threshold — require material evidence or reproducible defect
+    Gate 3 (restrict): risk-based — restrict if high consequence + credible dispute
+    """
     reg = load_registry()
     if interp_id not in reg:
         print(f"ERROR: {interp_id} not found.")
         sys.exit(1)
 
     entry = reg[interp_id]
+
+    # Gate 1: Record — always accept attributable challenges
     challenge_id = f"CH-{len(entry['challenges']) + 1:03d}"
     chal = {
         "challenge_id": challenge_id,
         "evidence": evidence[:500],
         "trigger": reason,
         "challenger": challenger,
+        "consequence": consequence,  # low | high
+        "dependency": dependency,    # incidental | critical
         "timestamp": datetime.now(timezone.utc).isoformat(),
-        "status": "PENDING",
+        "status": "RECORDED",
     }
-    entry["challenges"].append(chal)
 
-    # Risk-based: does this warrant reopening?
-    # For now: any challenge with evidence moves to CHALLENGED
-    # Human or independent review moves CHALLENGED → REOPENED
-    entry["review_state"] = "CHALLENGED"
+    # Gate 2: Reopen? — material evidence or reproducible defect
+    # For now: specific triggers auto-qualify; others need review
+    AUTO_REOPEN_TRIGGERS = [
+        "NEW_CONTRADICTORY_EVIDENCE",
+        "PROVENANCE_FAILURE",
+        "EXTRACTION_DEFECT",
+        "POLICY_CHANGE",
+        "SOURCE_CORRECTION",
+    ]
+    # Gate 3: Restrict? — high consequence + credible dispute
+    HIGH_RISK_TRIGGERS = [
+        "PROVENANCE_FAILURE",
+        "NEW_CONTRADICTORY_EVIDENCE",
+    ]
+
+    if reason in AUTO_REOPEN_TRIGGERS:
+        chal["status"] = "REOPENED"
+        chal["reopening"] = "REQUIRED"
+        entry["review_state"] = "REOPENED"
+    else:
+        chal["status"] = "RECORDED"
+        chal["reopening"] = "QUEUED"
+        if entry["review_state"] == "RESOLVED":
+            entry["review_state"] = "CHALLENGED"
+
+    # Gate 3: Application restriction
+    if consequence == "high" and reason in HIGH_RISK_TRIGGERS:
+        chal["application_containment"] = "DEPENDENT_USE_ONLY"
+        chal["review_priority"] = "HIGH"
+    elif consequence == "high":
+        chal["application_containment"] = "MONITOR"
+        chal["review_priority"] = "MEDIUM"
+    else:
+        chal["application_containment"] = "NONE"
+        chal["review_priority"] = "LOW"
+
+    # Deduplication: same evidence hash doesn't create duplicate active incidents
+    evidence_hash = content_hash(evidence)
+    for existing in entry["challenges"]:
+        if content_hash(existing["evidence"]) == evidence_hash and existing["status"] in ("RECORDED", "REOPENED", "CHALLENGED"):
+            print(f"Duplicate challenge detected — deduplicated to {existing['challenge_id']}")
+            return existing
+
+    chal["evidence_hash"] = evidence_hash
+    entry["challenges"].append(chal)
     save_registry(reg)
-    print(f"Challenge {challenge_id} registered for {interp_id}. State: CHALLENGED")
-    print(f"  Trigger: {reason}")
+
+    print(f"Challenge {challenge_id} for {interp_id}:")
+    print(f"  Gate 1 (record): ACCEPTED")
+    print(f"  Gate 2 (reopen): {chal['reopening']}")
+    print(f"  Gate 3 (restrict): {chal['application_containment']} (priority: {chal['review_priority']})")
     return chal
 
 
@@ -198,6 +252,8 @@ def main():
     c.add_argument("--evidence", required=True)
     c.add_argument("--reason", required=True)
     c.add_argument("--challenger", default="unknown")
+    c.add_argument("--consequence", default="low", choices=["low", "high"])
+    c.add_argument("--dependency", default="incidental", choices=["incidental", "critical"])
 
     q = sub.add_parser("requalify", help="Create new version")
     q.add_argument("--id", required=True)
@@ -213,7 +269,8 @@ def main():
     if args.cmd == "register":
         register(args.id, args.interpretation, args.evidence, args.scope)
     elif args.cmd == "challenge":
-        challenge(args.id, args.evidence, args.reason, args.challenger)
+        challenge(args.id, args.evidence, args.reason, args.challenger,
+                  args.consequence, args.dependency)
     elif args.cmd == "requalify":
         requalify(args.id, args.new_interpretation, args.evidence)
     elif args.cmd == "show":
