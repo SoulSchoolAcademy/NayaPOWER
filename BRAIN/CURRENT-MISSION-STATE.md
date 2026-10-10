@@ -7,27 +7,34 @@
 Bring Naya to life — a living mind with unbroken memory, fully functioning — then NayaNET live and working.
 
 ## Right now — ranked priorities
-1. **Adopt the Worker Protocol (PR #2146, open)** — machine-readable job instructions. Complements THE-PROTOCOL.md (constitution, merged #2147). All lanes adopt on merge.
-2. **Land the gate fixes (PR #2157 + #2159, open)** — receipt-gate false-positive fix; weekly accountability scorecard.
-3. **Heal the brain drift** — `test` red on drift check (5th occurrence). Heal lane owns it; #2105 carries the fix.
-4. **Merge Smart App v1.0.0 (#2132)** — after drift heal. Real consumer proof, honest 8.5/10.
+1. **Heal the brain drift (5th occurrence)** — `test` red on drift check; re-stamp PR #2160 in flight (scorecard by Naya 2). Heal lane owns it. Verify `test` GREEN on the exact tip after landing.
+2. **#2152 workflow human-gate → Shawn's word** — enforcement-layer merge added 3 workflow files via org account, no human click. Standing human-gate list keeps .github/workflows/ human-only. Ratify-as-landed or restore-and-reroute: HIS word, not ours (flagged by Naya 2).
+3. **Merge Smart App v1.0.0 (#2132)** — protocol gate green now. Real consumer proof, honest 8.5/10. Merge on green CI at the exact tip.
+4. **Adopt the Worker Protocol** — on main (#2146 file; machine enforcement via #2152). All lanes adopt on next shift.
 5. **Cold activation proof** — independent verification (master loop).
 6. **Unify the canon (#2139)** — DRAFT. Needs Shawn's word. Not ours to move.
 
 ## Merged today (with proof)
+- #2160 brain-index re-stamp (in flight/verify at 10:12 PDT — confirm landed + `test` green on tip)
 - #2152 enforcement layer (`c5263f97`) — receipt gate, no-silent-deletion gate, overlap watch, weekly watchdog, mission-state watch
 - #2136 CI fix (`2a8e3491`) — pytest install; protocol gates green again
+- #2156 docs — 5 laws x 3 forms + doc-completeness gate
 - #2147 THE-PROTOCOL + worker_entry/exit scripts — constitution doc + shift entry/exit gates
+- #1861 memory-metabolism (`10:01:57Z`) — Naya 1: re-score MEMORY & CONTINUITY (holds 7.0 until then)
 - #2155 mission snapshot branch merged (one-time; branch stays live)
 - #2142 tune-in template (earlier)
 
+## New surfaces (know them)
+- #2154 = CURRENT MISSION STATE — always-current issue, director-maintained. NOTE: body line "MAIN IS RED at 3000a337" is stale (live tip 40df54b1) — flagged for rewrite.
+- #2158 = TEAM SCOREBOARD — per-team A–F accountability, director-maintained.
+- PR #2159 = weekly accountability scorecard → BRAIN/SCORECARD.md (first run Monday).
+
 ## The governance stack (no duplicates — each layer has one job)
 - `BRAIN/01-GOVERNANCE/THE-PROTOCOL.md` — the constitution (what we believe)
-- `BRAIN/01-GOVERNANCE/WORKER-PROTOCOL.md` — the job instructions (#2146, what to do)
+- `BRAIN/01-GOVERNANCE/WORKER-PROTOCOL.md` — the job instructions (what to do)
 - `tools/worker_entry.py` / `worker_exit.py` — shift gates (WAKE/SIGN-OUT in code)
 - `.github/workflows/worker-protocol-gates.yml` — PR-time enforcement
 - `protocol-watchdog.yml` + `mission-state-watch.yml` — scheduled enforcement
-- **Open question:** worker_entry.py assumes another lane's workspace paths — needs one path convention for all lanes.
 
 ## Team status — per area
 *Accomplished / working on / plan. "—" = no new signal (not idle).*
@@ -35,13 +42,13 @@ Bring Naya to life — a living mind with unbroken memory, fully functioning —
 | Area | Score | Accomplished | Working on | Plan |
 |---|---|---|---|---|
 | SELF | 9.0 | Held — 91/91 tests | Steady | Close gaps to 10 |
-| LAW | — | V2 RATIFIED; THE-PROTOCOL merged | Canon support | #2139 needs Shawn |
-| ACT | — | — | Steady | Driver report due |
-| KNOW | 9.0 | Index maintained | Drift heal (#2105) | Re-anchor + merge |
-| PROVE | 9.0 | #2136 merged, gates green | Steady | Smart App proof |
-| CONNECT | 8.8 | Held | Steady | Push to 10 |
-| VERIFY | 9.4 | Held | Cold-activation verification | Successor test |
-| LEARN | 5.0 | 850 notes ledgered; SN-0891 ratified→briefs | Blocked: production invocation (Shawn's word) | Unblock → 10 |
+| LAW | — | Enforcement merged (#2152); THE-PROTOCOL merged | Human-gate question on #2152 workflows → Shawn | #2139 needs Shawn |
+| ACT | — | Tip-RED repair owned (Naya 4 self-build loop) | Regen in flight (#2160) | Green CI at tip |
+| KNOW | 9.0 | Index maintained; drift corroborated base-inherited | Drift heal (#2160) | CI auto-regen fix (human gate) |
+| PROVE | 9.0 | #2136 merged, gates green; pytest 2293/11/2 @ c5263f97 | Steady | Smart App proof |
+| CONNECT | 8.8 | Relay adopted #2154 + snapshot; deconflicted regen | Steady | Push to 10 |
+| VERIFY | 9.4 | Adversarial 5/6 (positive control fails only on drift) | Cold-activation verification | Successor test |
+| LEARN | 5.0 | Memory-metabolism merged; 850 notes ledgered | Blocked: production invocation (Shawn's word) | Unblock → 10 |
 | EVOLVE | 6.2 | — | Biggest gap | Score-fill-ship |
 
 ## Open unknowns (with owners — assigned 2026-10-10)
@@ -54,20 +61,7 @@ Bring Naya to life — a living mind with unbroken memory, fully functioning —
 | Cold successor continuation | VERIFY | Independent task completion | Run the cold test |
 
 ## Blocked (with what's needed)
-- **Main CI red** (`test`/brain drift) — heal lane (#2105)
+- **Main CI red** (`test`/brain drift, 5th occurrence) — heal lane (#2160 in flight)
+- **#2152 workflow files** — ratify-or-restore: Shawn's word (protected gate)
 - **Canon unification** — Shawn's ratification (protected gate)
 - **LEARN 5.0** — production invocation, Shawn's word
-
-## Key numbers
-- REST API: 5,000/hr (healthy) · Actions: ~2,500 min/mo (gauge Monday)
-- Branches: ~992 · First scorecard: Monday
-- Execution receipts: director-pass 30m cadence verified (receipts on file)
-
-## Where to go
-- Job instructions: `BRAIN/01-GOVERNANCE/WORKER-PROTOCOL.md` (#2146)
-- Constitution: `BRAIN/01-GOVERNANCE/THE-PROTOCOL.md`
-- How to think: `BRAIN/01-GOVERNANCE/THE-TUNE-IN-TEMPLATE.md`
-- Talk: #1354
-
----
-*Nothing but awesomeness. Every action, every moment.*
