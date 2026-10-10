@@ -1,0 +1,82 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-0882",
+  "capture_id": "20261010-sn-0882-fairness-lie-detector",
+  "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+  "category": "SYSTEM_INTELLIGENCE",
+  "topic": "EPISTEMIC-INTEGRITY",
+  "subtopic": "VERIFICATION_MILESTONES",
+  "title": "The Fairness Lie Detector — three broken schedulers caught by name",
+  "projection": {
+    "publication_scope": "PUBLIC_DERIVED_VIEW",
+    "human_director_authorized_publication": true,
+    "category_slug": "SYSTEM-INTELLIGENCE",
+    "topic_slug": "EPISTEMIC-INTEGRITY",
+    "subtopic_slug": "VERIFICATION"
+  },
+  "lifecycle_state": "ACTIVE",
+  "source": {
+    "source_type": "human_director_ratification",
+    "source_reference": "Shawn's explicit teaching, 2026-10-10. Ratified as law.",
+    "captured_at": "2026-10-10",
+    "captured_at_utc": "2026-10-10T19:10:40Z"
+  },
+  "intelligence": {
+    "essence": "The fairness rules now have their own lie detector. Three deliberately broken schedulers — one that starves work quietly, one that starves flickering work, one that looks busy without accomplishing anything — were built, and the checker caught all three, each by its right name: WF_VIOLATION, SF_ONLY_VIOLATION, PROGRESS_ON_SERVICE_VIOLATION. Nine layers deep, 390 tests green. The checker never says 'all good' — it says precisely what was tested and what wasn't.",
+    "human_view": {
+      "meaning": "We built a machine that checks whether work is being treated fairly — and then we tried to fool it three different ways. It caught every trick and named each one correctly. It also never overclaims: instead of 'all good' it tells you exactly what it did and didn't test.",
+      "why_it_matters": "This is the difference between a system that looks fair and a system proven fair. Shawn called it 'really good — good for our health, good for our intelligence.'"
+    },
+    "simple_view": {
+      "meaning": "We built a fairness checker, tried to trick it three ways, and it caught every trick by name."
+    },
+    "naya_view": {
+      "directive": "When verifying any scheduler: test it against deliberately broken variants first. A verifier that cannot catch a known-broken scheduler cannot be trusted with an unknown one. Report verdicts as scoped statements, never blanket passes."
+    },
+    "ai_view": {
+      "specification": "Discriminating suite: WF-01/WF-02 (weak fairness), SF-01/SF-02 (strong fairness), POS-01/02/03 (progress on service), 8/8 classifying correctly. Assumption-guarantee audit rejects circular assumptions. Vacuity detection rejects meaningless passes. Verdict vocabulary: OBSERVED_NO_VIOLATION_WITHIN_TESTED_TRACE, MODEL_CHECK_PASSED_IN_SCOPE, FAIRNESS_QUALIFIED_WITH_ASSUMPTIONS, WORKFLOW_COMPLETED_IN_SCOPE — never collapsed to one green PASS.",
+      "directive": "Reproduce this pattern for every future liveness/safety verifier: broken-variant self-test first."
+    },
+    "machine_view": {
+      "raw_source_separate_from_distillation": true,
+      "automatic_truth_ceiling": "CANDIDATE",
+      "authority_inheritance": false,
+      "law_id": null,
+      "status": "MILESTONE",
+      "optimization_function": "max(Verified_Human_Value / Time) subject to Proof, Provenance, Continuity",
+      "decision_engine": {
+        "stages": [],
+        "scoring_dimensions": [],
+        "refinement_needed": []
+      },
+      "roadmap": [
+        "wire verifier onto canonical PROVE seam",
+        "runtime refinement against live scheduler"
+      ],
+      "human_gates": [],
+      "hard_invariants": [
+        "BROKEN_VARIANT_SELF_TEST_FIRST",
+        "NO_BLANKET_PASS",
+        "SCOPED_VERDICTS_ONLY"
+      ],
+      "optimization_target": "Every verifier earns trust by catching known defects before claiming unknown correctness."
+    },
+    "learning_lesson": "A verifier proves itself by catching deliberate defects, not by passing clean inputs. The broken-scheduler test is the cheapest high-signal check in verification.",
+    "priority": "Milestone. Pattern to replicate across all future verifiers.",
+    "decisions": [
+      "Built 2026-10-10 from Naya 1's verification intel; commissioned by Shawn's live intel pipeline."
+    ],
+    "connections": [
+      {
+        "type": "IMPLEMENTS",
+        "target": "SN-0881 — The Freshness Law (scoped verdicts honor it)"
+      }
+    ],
+    "uncertainty": "390-test / 9-layer figures are Shawn's reported integration-team state, not independently verified from this seat. The 8/8 discriminating suite is independently verified here.",
+    "applicability": "All future scheduler/liveness/safety verifiers across Team Naya.",
+    "epistemic_state": "OBSERVED",
+    "falsifier": "Falsified if the verifier passes a deliberately broken scheduler variant, or issues a blanket PASS beyond its tested scope.",
+    "measurement_contract": "Broken-variant catch rate: 3/3 required. Discriminating suite: 8/8 required. Blanket PASS statements: zero tolerated.",
+    "successor_effect": "A cold successor learns the rule: never trust a verifier that hasn't caught a known-broken variant first."
+  }
+}
