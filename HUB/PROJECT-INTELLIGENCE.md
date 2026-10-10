@@ -156,14 +156,14 @@ Broken, stale, contradictory, misleading, unsafe, missing-proof, below-standard,
 
 ## 6. LAWS THAT GOVERN ALL PHASES
 
-1. **The baseline is the law.** Improve, never replace. (Design Contract §0.)
-2. **No fake anything.** Honest states over simulated liveness. (D4.)
-3. **Producer self-check ≠ qualification.** The scorecard keeper is independent.
-4. **Scores can go down.** A regression found is progress.
-5. **Smallest effective change.** Componentize the code; don't redesign the visual language.
-6. **One shell, many rooms, one substrate.** No second brains, no second databases.
-7. **When in doubt, preserve and ask.** Escalate with options + recommendation, not bare questions.
-
+1. **The Hub is the output, not the input.** The Hub is the visual projection of the intelligence — a screen, not a camera. Smart notes are input: they are created outside the Hub (a human asks any Naya, or they arise automatically from the day), written as intelligent blocks to `BRAIN/05-MEMORY/SMART-NOTES/<YYYY>/<MM>/<DD>/…`, distilled by trigger into the ten layers, and only then emitted as events the Hub displays. Therefore no capture control and no input surface of any kind exists in Hub chrome — this is architecture, not taste. Exactly three pipelines feed the Hub: (1) smart notes → intelligent events → Feed; (2) activity → the now-stream → Feed/Activity; (3) reports → periodic intelligence → Feed + Reports. Connecting a hub shares the human's *intelligence* with the collective, never their *identity*: the personal feed is identified to its owner, the collective feed is anonymized. The feed is organized by smart tabs and switchable Personal / Collective / Activity streams. Acceptance: a human asks any Naya for a smart note → the block is written → the trigger fires → it appears in the feed by itself. If a human must carry it there, the pipeline is broken. (Human Director law, 2026-10-01.)
+2. **The baseline is the law.** Improve, never replace. (Design Contract §0.)
+3. **No fake anything.** Honest states over simulated liveness. (D4.)
+4. **Producer self-check ≠ qualification.** The scorecard keeper is independent.
+5. **Scores can go down.** A regression found is progress.
+6. **Smallest effective change.** Componentize the code; don't redesign the visual language.
+7. **One shell, many rooms, one substrate.** No second brains, no second databases.
+8. **When in doubt, preserve and ask.** Escalate with options + recommendation, not bare questions.
 ---
 
 ## 7. OPEN DECISIONS (SHAWN'S)
