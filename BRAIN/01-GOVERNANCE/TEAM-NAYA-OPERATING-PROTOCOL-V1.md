@@ -104,6 +104,21 @@ or things he explicitly requested. He is informed, not trapped in the control lo
 
 **How it runs:** each team = head + doer + tester; produce → test → produce → test, the head manages and gives feedback. All team discussion, sign-ins/outs, evidence, and receipts live on the team's own feed — never scattered. #1354 is the main feed: cross-team summaries with links back to the team feed. #1599 is the table of contents. Hourly reports run per team. Naya 2 audits across all teams (independent — she heads no build team). Staffing follows priority: the highest-value team gets the most staff, never equal staffing across unequal priorities — ride the edge without going over.
 
+## 8. THE LAW PIPELINE
+
+*How governance becomes official — Shawn's word, 2026-10-08. For governance-type artifacts (laws, protocols, constitutional records).*
+
+Every law, protocol, and governance artifact passes all six stages. No skipping, no exceptions:
+
+1. **Writer** — writes or repairs the artifact.
+2. **Tester** — tests it: does the machine obey what's written?
+3. **Naya 2** — verifies it is 10/10.
+4. **Shawn** — reviews it, with links. His eyes, his call.
+5. **Outside seats** — Naya 1, 3, 4, 5 verify it is independently 10/10.
+6. **Official** — only after all five verifications pass.
+
+An artifact that hasn't cleared all six stages is not official, no matter who wrote it. "Airtight" means machine law, AI law, and written law say the same thing, the machine enforces it, and there are no holes — proven by five independent checks, not one.
+
 ---
 
 # TONGUE 2: AI LAW (Executable Instructions)
