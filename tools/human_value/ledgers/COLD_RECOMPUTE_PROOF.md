@@ -310,3 +310,39 @@ the token fix (asserted in live plan, no durable feed evidence found on #1354/#1
 per this file and posted a verdict on #1604 — reproducibility is proven, independent
 human verification of the ledger itself remains the binding 8.0 gate. DAI series is
 ~5 days of real data; trend readable after 2+ weeks.
+
+## Thirteenth cold-recompute proof — n=11 loop (2026-10-10 ~22:05 UTC)
+
+Same procedure, fresh clone @ `b2546fc4f1675915dbbc52fc821bf3a676eaa078`
+(branch `naya5/human-value-events-20261010-0341`, rebased onto live tip
+`cfbd81cca6`; the rebase collapsed the branch's prior ledger commits into one
+tree-identical commit — ledger bytes byte-for-byte identical across the rebase,
+verified by hash before/after):
+
+| Check | Originating worktree | Cold clone | Match |
+|---|---|---|---|
+| HEAD | `b2546fc4` | `b2546fc4` | ✅ |
+| `ledger_sha256` | `sha256:dddd6c21a22c40a8056f7ca0b5899510489f252334d5d5e8837a5ce4da08f433` | (same) | ✅ |
+| `hv_per_day_total` | 14.4285 | 14.4285 | ✅ |
+| `dai_per_day` | 0.5714 (flat — zero new human-attention demands) | 0.5714 | ✅ |
+| `events_validated` | 102 | 102 | ✅ |
+| `calibration.n` / MAE / bias | 11 / 0.0909 / 0.0 | 11 / 0.0909 / 0.0 | ✅ |
+| test suite | 36 passed | 36 passed | ✅ |
+
+**Anti-inflation note (new this run):** DEC-011 scored two of Shawn's own merges
+(#2173, #2187 — mission-state snapshots without a brain-index re-stamp, the 7th
+and 8th drift occurrences) at **−3.0** durable value instead of hiding them:
+verified rework (repair lanes dispatched, CI red at the exact tip). The loop's
+value is in the honesty — a ledger that only ever goes up is a decoration, not
+an instrument. Predicted aggregate +4.0 → observed +4.0; all 9 per-decision
+components verified as predicted at 21:50Z. Calibration bias stays 0.0, MAE
+improved 0.1 → 0.0909, no overprediction. (Encoding discipline: per-decision
+signed signals live in the prediction record and the join event only — a
+mid-run encoding put delta_v_actual on two outcome events and briefly
+double-counted the join; caught and corrected before push. One decision, one
+observation row.)
+
+**State note (unchanged):** no independent seat has yet cold-recomputed the ledger
+per this file and posted a verdict on #1604 — reproducibility is proven, independent
+human verification of the ledger itself remains the binding 8.0 gate. DAI series is
+~5 days of real data; trend readable after 2+ weeks.
