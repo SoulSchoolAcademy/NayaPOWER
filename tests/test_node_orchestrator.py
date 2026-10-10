@@ -1,12 +1,13 @@
 """Proof tests for the node orchestrator.
 
 What these prove (and what they don't):
-- PROVEN: six implemented stages execute in order with the correlation ID
+- PROVEN: seven implemented stages execute in order with the correlation ID
   chaining every stage record; interruption resumes without re-executing
-  completed stages; the three missing stages report NOT_IMPLEMENTED loudly
-  (no silent PASS); stage failures become explicit FAILED states.
+  completed stages; the two missing stages (LEARN, EVOLVE) report
+  NOT_IMPLEMENTED loudly (no silent PASS); stage failures become explicit
+  FAILED states.
 - NOT PROVEN here: production HTTP invocation (needs deployed functions +
-  credentials); CONNECT/LEARN/EVOLVE behavior (no implementations exist).
+  credentials); LEARN/EVOLVE behavior (no implementations exist).
 """
 
 import json
@@ -95,22 +96,22 @@ def test_commit_is_idempotent(orch, store_root):
 # 2. Full run: six stages execute in order, correlation ID chains everything.
 # --------------------------------------------------------------------------
 
-def test_full_run_executes_six_stages_in_order(orch, executor):
+def test_full_run_executes_seven_stages_in_order(orch, executor):
     capture = make_capture()
     event_id = orch.commit_capture(capture["lesson_id"], fingerprint(capture))
     record = orch.run(event_id, capture)
 
-    # The three missing stages are LOUD, so the ceiling is INCOMPLETE.
+    # The two missing stages are LOUD, so the ceiling is INCOMPLETE.
     assert record.status == RunStatus.INCOMPLETE.value, record.halt_reason
 
-    implemented = ["SELF", "LAW", "ACT", "KNOW", "PROVE", "VERIFY"]
+    implemented = ["SELF", "LAW", "ACT", "KNOW", "PROVE", "CONNECT", "VERIFY"]
     for stage in implemented:
         rec = record.stages[stage]
         assert rec.status == StageStatus.COMPLETED.value, f"{stage}: {rec.status} {rec.error_message}"
         assert rec.correlation_id == record.correlation_id, f"{stage} missing chained correlation ID"
         assert rec.attempts == 1
 
-    for stage in ["CONNECT", "LEARN", "EVOLVE"]:
+    for stage in ["LEARN", "EVOLVE"]:
         rec = record.stages[stage]
         assert rec.status == StageStatus.NOT_IMPLEMENTED.value
         assert rec.not_implemented_reason, f"{stage} has no named reason"
@@ -146,7 +147,7 @@ def test_kill_and_resume(orch, executor):
     record = orch2.run(event_id, capture)
 
     assert record.status == RunStatus.INCOMPLETE.value
-    for stage in ["SELF", "LAW", "ACT", "KNOW", "PROVE", "VERIFY"]:
+    for stage in ["SELF", "LAW", "ACT", "KNOW", "PROVE", "CONNECT", "VERIFY"]:
         assert record.stages[stage].status == StageStatus.COMPLETED.value
 
     # The critical assertion: SELF and LAW were NOT re-executed.
@@ -187,7 +188,7 @@ def test_no_silent_pass_for_missing_stages(orch):
     record = orch.run(event_id, capture)
 
     assert record.status != RunStatus.SUCCESS.value
-    for stage in ["CONNECT", "LEARN", "EVOLVE"]:
+    for stage in ["LEARN", "EVOLVE"]:
         rec = record.stages[stage]
         # A silent PASS would look like COMPLETED with no real execution.
         assert rec.status != StageStatus.COMPLETED.value
@@ -195,7 +196,7 @@ def test_no_silent_pass_for_missing_stages(orch):
         # The reason names the missing implementation explicitly.
         assert "no " in rec.not_implemented_reason.lower() or "NOT_IMPLEMENTED" in rec.not_implemented_reason
     # The halt reason names the missing stages.
-    for stage in ["CONNECT", "LEARN", "EVOLVE"]:
+    for stage in ["LEARN", "EVOLVE"]:
         assert stage in record.halt_reason
 
 

@@ -89,15 +89,11 @@ STAGE_CONTRACTS: dict[StageId, StageContract] = {
     ),
     StageId.CONNECT: StageContract(
         stage=StageId.CONNECT,
-        consumes="evidence binding + knowledge graph",
-        produces="connections {related_blocks, conflicts, downstream_consumers}",
-        implemented=False,
-        implementation="NONE",
-        not_implemented_reason=(
-            "CONNECT_NOT_IMPLEMENTED: no ConnectNode, no connect-runtime, and no "
-            "connection-writing code exists anywhere in the repository (wiring "
-            "manifest 2026-10-09: 0/3 bindings). The stage cannot execute."
-        ),
+        consumes="canonical lesson (post KNOW/PROVE) + knowledge store {IBs, prior lessons}",
+        produces="relationship graph {related_blocks, related_lessons, conflicts "
+        "(explicit, both sides preserved), downstream_consumers}",
+        implemented=True,
+        implementation="tools/connect_node.py::ConnectNode.build_graph (in-process Python)",
     ),
     StageId.VERIFY: StageContract(
         stage=StageId.VERIFY,

@@ -88,6 +88,7 @@ class LocalExecutor:
             StageId.ACT: self._run_act,
             StageId.KNOW: self._run_know,
             StageId.PROVE: self._run_prove,
+            StageId.CONNECT: self._run_connect,
             StageId.VERIFY: self._run_verify,
         }[stage]
         return handler(input, correlation_id)
@@ -222,6 +223,60 @@ class LocalExecutor:
             summary=f"PROVE assessment: {verdict}",
         )
 
+    # -- CONNECT -----------------------------------------------------
+    def _run_connect(self, input: dict[str, Any], correlation_id: str) -> StageOutput:
+        # The canonical lesson: the capture's lesson object enriched with the
+        # KNOW interpretation (essence) and the PROVE evidence binding, both
+        # threaded forward by the orchestrator as know_result / prove_result.
+        from connect_node import ConnectNode
+
+        capture = input.get("capture", {})
+        lesson = dict(input.get("lesson") or capture.get("lesson") or {})
+        if not lesson.get("id"):
+            lesson["id"] = input.get("lesson_id", "unknown-lesson")
+        lesson.setdefault("kind", "lesson")
+
+        know = input.get("know_result", {}).get("know_result", {})
+        if isinstance(know, dict):
+            if not lesson.get("essence") and know.get("essence"):
+                lesson["essence"] = know["essence"]
+            if know.get("selected_block_id"):
+                lesson.setdefault("evidence_refs", []).append(
+                    f"know-selected:{know['selected_block_id']}"
+                )
+
+        prove = input.get("prove_result", {}).get("assessment", {})
+        if isinstance(prove, dict):
+            for ref in prove.get("evidence_refs", []):
+                if ref not in lesson.setdefault("evidence_refs", []):
+                    lesson["evidence_refs"].append(ref)
+
+        store = input.get("knowledge_store") or capture.get("knowledge_store") or []
+        registry = input.get("consumer_registry") or capture.get("consumer_registry") or {}
+
+        try:
+            graph = ConnectNode().build_graph(
+                lesson,
+                store,
+                registry,
+                owner_id=input.get("owner_id", "owner-1"),
+                correlation_id=correlation_id,
+            )
+        except Exception as exc:
+            return StageOutput(
+                ok=False,
+                result={"error": f"{type(exc).__name__}: {exc}"},
+                summary=f"CONNECT failed: {type(exc).__name__}: {str(exc)[:200]}",
+            )
+        n_conf = len(graph["conflicts"])
+        return StageOutput(
+            ok=True,
+            result={"graph": graph, "correlation_id": correlation_id},
+            summary=graph["graph_summary"] + (
+                f" [{n_conf} conflict(s) preserved, none resolved]" if n_conf else ""
+            ),
+        )
+
     # -- VERIFY --------------------------------------------------------
     def _run_verify(self, input: dict[str, Any], correlation_id: str) -> StageOutput:
         # The pinned behavioral twin of the WO3 TypeScript gate (38/38
@@ -267,7 +322,7 @@ PRODUCTION_ENDPOINTS: dict[str, str] = {
     "ACT": "nayanet-act-runtime",
     "KNOW": "nayanet-know-runtime",
     "PROVE": "nayanet-prove-runtime",
-    "CONNECT": "(no implementation — no endpoint)",
+    "CONNECT": "(in-process: tools/connect_node.py — no HTTP binding)",
     "VERIFY": "nayanet-learning-verify (WO3 gate at mode==='candidate' write site, post-merge)",
     "LEARN": "(no implementation — no endpoint)",
     "EVOLVE": "(no implementation — no endpoint)",

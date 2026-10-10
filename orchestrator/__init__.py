@@ -12,7 +12,7 @@ and executes the real implementations:
   ACT     → supabase/functions/nayanet-act-runtime/act.ts (node bridge)
   KNOW    → supabase/functions/nayanet-know-runtime/know.ts (node bridge)
   PROVE   → supabase/functions/nayanet-prove-runtime/prove.ts (node bridge)
-  CONNECT → NOT_IMPLEMENTED (no implementation exists in the repository)
+  CONNECT → tools/connect_node.py::ConnectNode.build_graph (in-process Python)
   VERIFY  → tools/learning_admission_gate.py (pinned behavioral twin of the
             WO3 TypeScript gate; production binding targets the TS gate
             endpoint once merged and deployed)
