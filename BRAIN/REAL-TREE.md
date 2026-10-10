@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-10  
-**Receipt basis commit:** `8a41a18e2860e9b3244c2ff29c11a88b70280f70`  
-**Inventory file count:** 1234  
+**Receipt basis commit:** `fe25661c53977da3d78acd7242fafbaca1bd3ea8`  
+**Inventory file count:** 1235  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -13,7 +13,7 @@
 | 00-SPEC | 15 |
 | 01-GOVERNANCE | 49 |
 | 02-ARCHITECTURE | 5 |
-| 03-KERNEL | 30 |
+| 03-KERNEL | 31 |
 | 04-INTELLIGENCE | 25 |
 | 05-MEMORY | 645 |
 | 06-PROOF | 13 |
@@ -147,6 +147,7 @@
 - `BRAIN/03-KERNEL/SCHEMA/LEARN-NODE-SCHEMA.json` — `865d254f5be9` (1004 bytes)
 - `BRAIN/03-KERNEL/SCHEMA/PROVE-NODE-SCHEMA.json` — `4c89d444684e` (1148 bytes)
 - `BRAIN/03-KERNEL/SCHEMA/SELF-NODE-SCHEMA.json` — `9a5908c493f1` (1494 bytes)
+- `BRAIN/03-KERNEL/SCHEMA/TRIAL-EVIDENCE-V1.json` — `a43a84903d8c` (1945 bytes)
 - `BRAIN/03-KERNEL/SCHEMA/VERIFY-NODE-SCHEMA.json` — `c274f66b9483` (1125 bytes)
 ### 04-INTELLIGENCE — Intelligence
 

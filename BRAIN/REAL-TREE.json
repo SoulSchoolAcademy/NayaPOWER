@@ -1,15 +1,15 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-10",
-  "receipt_basis_commit": "8a41a18e2860e9b3244c2ff29c11a88b70280f70",
-  "inventory_file_count": 1234,
+  "receipt_basis_commit": "fe25661c53977da3d78acd7242fafbaca1bd3ea8",
+  "inventory_file_count": 1235,
   "domain_counts": {
     "00-ACTIVATION": 3,
     "00-ARCHITECTURE": 5,
     "00-SPEC": 15,
     "01-GOVERNANCE": 49,
     "02-ARCHITECTURE": 5,
-    "03-KERNEL": 30,
+    "03-KERNEL": 31,
     "04-INTELLIGENCE": 25,
     "05-MEMORY": 645,
     "06-PROOF": 13,
@@ -554,6 +554,11 @@
       "path": "BRAIN/03-KERNEL/SCHEMA/SELF-NODE-SCHEMA.json",
       "blob_sha": "9a5908c493f1b6528abbca14c5007110f80075c0",
       "size": 1494
+    },
+    {
+      "path": "BRAIN/03-KERNEL/SCHEMA/TRIAL-EVIDENCE-V1.json",
+      "blob_sha": "a43a84903d8c701a777187c8c6e152aa7dfaeabe",
+      "size": 1945
     },
     {
       "path": "BRAIN/03-KERNEL/SCHEMA/VERIFY-NODE-SCHEMA.json",
