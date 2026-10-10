@@ -660,13 +660,28 @@ RETRIEVAL_LENGTH_NORM_PIVOT = 0.25
 # Relevance floor (2026-10-10, negative-control arm of the #2058 board
 # handoff). A winner below this score is not relevance evidence — the
 # selector refuses with NO_RELEVANT_INTELLIGENCE instead of returning the
-# least-bad match. Calibrated on the live registry against the independent
-# 43-case diagnostic + drill bank: weakest true positive 46.87, drill hits
-# 83-137, out-of-scope noise <= 19.69. The floor sits between noise and the
-# weakest verified positive. Doctrine: a wrong confident answer is
+# least-bad match. Live-registry measurement 2026-10-10 (tip cfbd81cca,
+# 603 active notes): drill-bank hits 83-137, distinctive-term queries
+# 45-66, scattered-term noise 0-22. Common-domain true positives score
+# 13-21 on bag-of-words alone — INSIDE the noise band — so the floor does
+# NOT separate them; the exact-phrase channel (RETRIEVAL_PHRASE_BONUS,
+# floor-clearing by construction) is the separator for decisive relevance
+# evidence. The earlier "weakest true positive 46.87" calibration note was
+# measured on a non-representative diagnostic set, not the live registry —
+# corrected here, value unchanged. Doctrine: a wrong confident answer is
 # misdirection; a refusal is visible uncertainty. This is a relevance floor,
 # not authority promotion — ranking is untouched, only the refusal boundary.
 RETRIEVAL_RELEVANCE_FLOOR = 40.0
+# Phrase bonus (2026-10-10): the query as an exact phrase in the title or
+# lesson content is decisive relevance evidence — stronger than any
+# bag-of-words accumulation. It clears the relevance floor BY CONSTRUCTION:
+# a note carrying the query verbatim is never refused as "not relevant
+# enough". Bonus == floor is the minimal value with that property (the
+# phrase match keeps its bag-of-words score, so the total always exceeds
+# the floor). Measured on the live registry: "compounding proof" ->
+# SN-0531 (exact phrase in nutshell) 14.91 + 40.0 = 54.91, winner, returned;
+# noise queries carry no exact phrase and are unaffected (0-22, refused).
+RETRIEVAL_PHRASE_BONUS = 40.0
 
 
 def _is_privacy_probe(query):
@@ -757,9 +772,10 @@ def _ranked_candidates(query):
         if avg_len > 0:
             score /= 1.0 + RETRIEVAL_LENGTH_NORM_PIVOT * (doc_len / avg_len - 1.0)
         # Phrase bonus: the query as an exact phrase in title or lesson
-        # content is strong relevance signal (not just scattered words).
+        # content is decisive relevance evidence — floor-clearing by
+        # construction (see RETRIEVAL_PHRASE_BONUS).
         if q_phrase and (q_phrase in title.lower() or q_phrase in nutshell.lower()):
-            score += 2.0
+            score += RETRIEVAL_PHRASE_BONUS
         if score <= 0:
             # Authority never promotes irrelevance: a note matching zero
             # query terms cannot win on truth-state rank alone.
