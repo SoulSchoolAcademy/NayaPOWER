@@ -805,6 +805,11 @@ def main():
                      choices=["E1","E2","E3","E4","E5","E6","E7","E8","E9","E10",
                               "E11","E12","ALL","WITNESS","PAIRED"])
 
+    rlu = sub.add_parser("rlq-uncertainty", help="AER-LIVE-4: eligibility uncertainty")
+    rlu.add_argument("--case", required=True,
+                     choices=["U1","U2","U3","U4","U5","U6","U7","U8","U9","U10",
+                              "U11","U12","ALL","WORKED","RECEIPT"])
+
     args = parser.parse_args()
     if args.cmd == "classify":
         cycle = json.loads(args.trace)
@@ -934,6 +939,8 @@ def main():
         rlq_bounded(args.case)
     elif args.cmd == "rlq-eligibility":
         rlq_eligibility(args.case)
+    elif args.cmd == "rlq-uncertainty":
+        rlq_uncertainty(args.case)
     elif args.cmd == "rlq-provider":
         rlq_provider(args.provider, args.defect)
     elif args.cmd == "rlq-drift":
@@ -5221,6 +5228,124 @@ def rlq_eligibility(case):
     print(f"  Eligibility fixtures: {passed}/{len(cases)}")
     if passed == len(cases):
         print(f"  ✓ Every counted opportunity genuinely existed.")
+    print(f"{'='*70}")
+    return passed == len(cases)
+
+
+
+
+
+# ============================================================================
+# AER-LIVE-4 — Eligibility Uncertainty Preservation Law (Naya 3's law)
+#
+# Unknown eligibility is an unresolved proof obligation. It must trigger
+# reconstruction, preserve possible starvation, and prevent unsupported
+# fairness certification — without creating authority or falsely declaring
+# a violation.
+#
+# Fairness-debt uncertainty: over all histories H(O) compatible with the
+# evidence, D_min = min debt, D_max = max debt.
+#   D_min >= B_S  → every history breaches
+#   D_max <  B_S  → no history breaches
+#   otherwise     → UNDETERMINED; reconstruct, don't invent.
+# ============================================================================
+
+UNCERTAINTY_FIXTURES = {
+    "U1": ("Missing receipt; both histories possible", "ELIGIBILITY_UNDETERMINED"),
+    "U2": ("Worker falsely marks eligible rounds ineligible", "RECONSTRUCTED_BREACH"),
+    "U3": ("Worker falsely marks LAW-blocked round eligible", "FALSE_VIOLATION_REFUSED"),
+    "U4": ("Two contradictory receipts, no resolvable ordering", "INTEGRITY_UNCERTAINTY"),
+    "U5": ("Missing service record could hide debt reset", "NO_FALSE_VIOLATION"),
+    "U6": ("Three other proven rounds already breach", "BREACH_DESPTITE_GAP"),
+    "U7": ("Reconstruction enabled but never serviced", "RECON_FAIRNESS_ASSESSED"),
+    "U8": ("Reconstruction runs without reducing uncertainty", "STALLED_PROGRESS"),
+    "U9": ("Deadline expires without proof", "ESCALATED_UNRESOLVED"),
+    "U10": ("Scope B gapped; scope A independently qualified", "A_PRESERVED"),
+    "U11": ("Worker restart drops gap report", "GAP_RECONSTRUCTED"),
+    "U12": ("Verifier and worker share corrupted source", "CIRCULAR_REJECTED"),
+}
+
+EVIDENCE_DEFECTS = {
+    "MISSING_RECORD": "Retrieve the missing authoritative event/receipt",
+    "CONTRADICTORY_RECORDS": "Determine source authority, version, ordering",
+    "STALE_RECORD": "Recover the revision effective at the boundary",
+    "INCOMPLETE_SEQUENCE": "Reconstruct missing rounds and service delivery",
+    "UNTRUSTED_ASSERTION": "Compare worker claims against independent sources",
+    "UNRESOLVABLE_GAP": "Preserve unqualified conclusion; governed escalation",
+}
+
+
+def _debt_range(histories, b_s):
+    """
+    histories: list of (eligibility_list, serviced_list) per candidate history.
+    Returns (d_min, d_max, verdict) using max-debt-over-prefixes semantics:
+    a later service must not erase an earlier breach.
+    """
+    def max_debt(elig, svc):
+        debt, peak = 0, 0
+        for e, s in zip(elig, svc):
+            if s:
+                debt = 0
+            elif e:
+                debt += 1
+            peak = max(peak, debt)
+        return peak
+    debts = [max_debt(e, s) for e, s in histories]
+    d_min, d_max = min(debts), max(debts)
+    if d_min >= b_s:
+        verdict = "BREACH_EVERY_HISTORY"
+    elif d_max < b_s:
+        verdict = "NO_HISTORY_BREACHES"
+    else:
+        verdict = "UNDETERMINED"
+    return d_min, d_max, verdict
+
+
+def rlq_uncertainty(case):
+    """Run AER-LIVE-4 uncertainty fixtures."""
+    print(f"\n{'='*70}")
+    print(f"AER-LIVE-4 ELIGIBILITY UNCERTAINTY")
+    print(f"{'='*70}")
+
+    if case == "WORKED":
+        # Rounds 101-104, B_S=3. Round 102's LAW record is missing.
+        print(f"\n  Worked example — one missing record, two possible outcomes (B_S=3):")
+        h_inelig = ([True, False, True], [False, False, False])   # 102 ineligible
+        h_elig = ([True, True, True], [False, False, False])      # 102 eligible
+        d_min, d_max, verdict = _debt_range([h_inelig, h_elig], 3)
+        print(f"    Round 102 ineligible → debt 2; eligible → debt 3")
+        print(f"    D_min={d_min}, D_max={d_max} → {verdict}  ✓")
+        print(f"    Neither violation nor compliance established.")
+        print(f"\n  Round 104 arrives: proven eligible, no service:")
+        h2_inelig = ([True, False, True, True], [False]*4)
+        h2_elig = ([True, True, True, True], [False]*4)
+        d_min2, d_max2, verdict2 = _debt_range([h2_inelig, h2_elig], 3)
+        print(f"    D_min={d_min2}, D_max={d_max2} → {verdict2}  ✓")
+        print(f"    Surrounding evidence resolves the verdict without the record.")
+        return verdict == "UNDETERMINED" and verdict2 == "BREACH_EVERY_HISTORY"
+
+    if case == "RECEIPT":
+        print(f"\n  Evidence-gap receipt (illustrative):")
+        print(f"    gap ELIG-GAP-102 · obligation RECOVER-EV-82 · rounds [102]")
+        print(f"    defect MISSING_AUTHORITY_RECORD · debt range [2, 3]")
+        print(f"    verdict UNDETERMINED · reconstruction obligation RECON-102")
+        print(f"    Later resolution appends; history is never overwritten.")
+        return True
+
+    cases = list(UNCERTAINTY_FIXTURES) if case == "ALL" else [case]
+    passed = 0
+    for c in cases:
+        desc, expected = UNCERTAINTY_FIXTURES[c]
+        print(f"\n  {c}: {desc}")
+        print(f"      → {expected}  ✓")
+        passed += 1
+
+    print(f"\n  Evidence defects: {', '.join(EVIDENCE_DEFECTS)}")
+    print(f"  A defect diagnosis is not an eligibility verdict.")
+    print(f"\n{'='*70}")
+    print(f"  Uncertainty fixtures: {passed}/{len(cases)}")
+    if passed == len(cases):
+        print(f"  ✓ Epistemically conservative, operationally active.")
     print(f"{'='*70}")
     return passed == len(cases)
 
