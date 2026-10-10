@@ -1,0 +1,32 @@
+/* Smart Block: hub-quote
+ * Source: Naya Smart Hub Design.html (extracted verbatim, never rewritten)
+ * Category: type
+ */
+
+/* ——— Shared Hub tokens (also in DESIGN-BLOCKS/tokens.css; copied here so the block is self-contained) ——— */
+:root {
+  --ink: #F5F7FB;
+  --muted: #AAB2BF;
+}
+
+.hub-quote {
+  text-align: center;
+  padding: 12px 20px 16px;
+  max-width: 700px;
+  margin: 0 auto;
+  margin-top: -12px;
+}
+
+.hub-quote-text {
+  font-size: 22px; font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 12px;
+  letter-spacing: .01em;
+}
+
+.hub-quote-sub {
+  font-size: 15px;
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.6;
+}

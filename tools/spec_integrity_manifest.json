@@ -17,6 +17,38 @@
     {
       "path": "BRAIN/01-GOVERNANCE/0014-mantra-v1.machine.json",
       "reason": "Predicate-style law spec (formal predicates, no phase structure); pin here only if it adopts the ratified phase envelope -- same precedent as the 0003 exclusion. Recorded 2026-10-06 with Law 0014 forge (no ratified content touched)."
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0006-naya-calculator-v1.machine.json",
+      "reason": "Status CANDIDATE (not DIRECTOR-RATIFIED): machine projection lacks the ratified envelope keys (schema/ratified_by/ratified_date), has no phase list (loop.phases/cycle.phases), no invariants, and ratified_by is null -- only Shawn Vibert's ratification counts. A pin was attempted in PR #1982 (merged 2026-10-09 as f78d4e7a); tools/spec_integrity_check.py failed it mechanically on the exact tip bytes (7 envelope/structural failures) because this manifest pins RATIFIED projections only. Pin here when 0006 adopts the ratified phase envelope or Shawn ratifies it -- same precedent as the 0003/0013/0014 exclusions. Recorded by the brain-build loop 2026-10-09 (supersedes #1952's exclusion draft, now stale)."
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0016-law-of-one-v1.machine.json",
+      "reason": "JSON Schema definition file ($id/$schema style, properties/type/required -- a schema FOR the law, not a law projection). No DIRECTOR-RATIFIED envelope (no status/ratified_by/ratified_date keys); already enforced by tools/doc_completeness_check.py. Pin here only if it adopts the ratified envelope -- same precedent as the 0003 exclusion. Recorded by the repair lane 2026-10-09 on the true-merge re-anchor (new from main 6af94ec4)."
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0017-calculator-as-default-v1.machine.json",
+      "reason": "JSON Schema definition file ($id/$schema style -- a schema FOR the law, not a law projection). No DIRECTOR-RATIFIED envelope; already enforced by tools/doc_completeness_check.py. Pin here only if it adopts the ratified envelope -- same precedent as the 0003 exclusion. Recorded by the repair lane 2026-10-09 on the true-merge re-anchor (new from main 6af94ec4)."
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0018-plain-words-decision-format-v1.machine.json",
+      "reason": "JSON Schema definition file ($id/$schema style -- a schema FOR the law, not a law projection). No DIRECTOR-RATIFIED envelope; already enforced by tools/doc_completeness_check.py. Pin here only if it adopts the ratified envelope -- same precedent as the 0003 exclusion. Recorded by the repair lane 2026-10-09 on the true-merge re-anchor (new from main 6af94ec4)."
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0019-reversibility-rule-v1.machine.json",
+      "reason": "JSON Schema definition file ($id/$schema style -- a schema FOR the law, not a law projection). No DIRECTOR-RATIFIED envelope; already enforced by tools/doc_completeness_check.py. Pin here only if it adopts the ratified envelope -- same precedent as the 0003 exclusion. Recorded by the repair lane 2026-10-09 on the true-merge re-anchor (new from main 6af94ec4)."
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0020-engine-before-production-v1.machine.json",
+      "reason": "JSON Schema definition file ($id/$schema style -- a schema FOR the law, not a law projection). No DIRECTOR-RATIFIED envelope; already enforced by tools/doc_completeness_check.py. Pin here only if it adopts the ratified envelope -- same precedent as the 0003 exclusion. Recorded by the repair lane 2026-10-09 on the true-merge re-anchor (new from main 6af94ec4)."
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0007-law-of-one-v1.machine.json",
+      "reason": "Claims status=RATIFIED/ratified=true in its own fields (ratified_date 2026-10-09), but does not meet the check's ratification standard for a pin: ratified_by is null (check requires ratified_by == 'Shawn Vibert'), and it lacks the REQUIRED_ENVELOPE_KEYS (schema/status/ratified_by/ratified_date envelope) -- pinning it would fail the check's own envelope validation. Excluded per the ratified-only pin rule, same precedent as 0003/0013/0014/0006. Pin when 0007 carries the ratified envelope with ratified_by='Shawn Vibert'. Recorded by the pipeline monitor 2026-10-09 on the tripwire firing for the unpinned 0007 spec."
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0008-operating-code-v2.machine.json",
+      "reason": "DRAFT \u2014 Operating Code V2 not yet ratified by the Human Director (PR #2087 open, awaiting ratification). Pin here upon ratification with the DIRECTOR-RATIFIED envelope."
     }
   ],
   "note": "Pins are git blob SHAs of the ratified projections as they existed on live main at establishment. Any deliberate spec change must update the pins in the same (reviewed) PR. A pin mismatch is spec drift until proven otherwise. This manifest is a drift detector anchored at a known-good point, not a re-proof of the original ratification.",

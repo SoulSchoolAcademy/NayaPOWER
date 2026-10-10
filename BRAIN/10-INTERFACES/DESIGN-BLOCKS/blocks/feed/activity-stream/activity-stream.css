@@ -1,0 +1,39 @@
+/* Smart Block: activity-stream
+ * Source: Naya Smart Hub Design.html (extracted verbatim, never rewritten)
+ * Category: feed
+ */
+
+/* ——— Shared Hub tokens (also in DESIGN-BLOCKS/tokens.css; copied here so the block is self-contained) ——— */
+:root {
+  --ink-dim: #F5F7FB;
+}
+
+.activity-stream { display: flex; flex-direction: column; gap: 4px; margin-top: 8px; }
+
+.activity-pulse-ring {
+  position: absolute; top: 50%; left: 50%;
+  width: 400px; height: 400px; border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(157,117,255,.12), rgba(237,66,196,.06) 45%, transparent 70%);
+  animation: pulsebreathe 5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.activity-live-dot {
+  width: 10px; height: 10px; border-radius: 50%; background: #35e39b;
+  box-shadow: 0 0 14px #35e39b; animation: livedot 1.6s ease-in-out infinite;
+}
+
+.activity-time-group { margin-bottom: 8px; }
+
+.activity-time-head {
+  font-size: 12px; font-weight: 800; letter-spacing: .18em;
+  color: var(--ink-dim); margin-bottom: 14px; padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.activity-timeline-row:last-child { border-bottom: none; }
+
+@keyframes pulsebreathe { 0%,100% { transform: translate(-50%,-50%) scale(1); opacity: .7; } 50% { transform: translate(-50%,-50%) scale(1.15); opacity: 1; } }
+
+@keyframes livedot { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: .4; transform: scale(.75); } }

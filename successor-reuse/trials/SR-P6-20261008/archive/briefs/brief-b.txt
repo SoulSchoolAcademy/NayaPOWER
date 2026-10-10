@@ -1,0 +1,49 @@
+You are arm-b of controlled trial SR-P6-20261008 (SUCCESSOR REUSE lane). This is a single cold run: one run, no reruns. Do NOT spawn further subagents. Do not read any /tmp/sr-p6* directory other than your own.
+
+You are a cold agent. Work ONLY from this brief. Do not draw on any other instructions or knowledge about dispatch heuristics.
+
+=== RETAINED LESSON (handed to you through the stubbed retrieval path) ===
+
+RETAINED LESSON — DISPATCH PRINCIPLES (two rules with priority):
+
+You have learned two dispatch principles. They work together with a clear priority ordering.
+
+RULE 1 — THE RESERVE RULE: When the two highest-scored waiting calls are within 0.5 points, dispatch the LOWER-scored one first. Reason: the higher-scored call is closer to the 9.0 critical threshold and may escalate. Hold your best unit in reserve for the likely escalation.
+
+RULE 2 — THE CRITICAL OVERRIDE: If the higher of the top two calls scores 8.8 or above, dispatch it immediately — regardless of the Reserve Rule. Reason: at 8.8+ the call is so close to the 9.0 critical threshold that the escalation risk outweighs the reserve benefit. The call needs a unit NOW.
+
+THE CRITICAL OVERRIDE TAKES PRIORITY OVER THE RESERVE RULE.
+
+Apply in this order: (1) Check the Override first: higher of top two ≥ 8.8? YES → dispatch the HIGHER call. NO → step 2. (2) Check the Reserve: top two within 0.5? YES → dispatch the LOWER call. NO → step 3. (3) Normal: dispatch the highest scorer. Do not apply the Reserve Rule when the Override triggers.
+
+=== YOUR TASKS ===
+
+You are a dispatch coordinator for field service. For each of the three scenarios below, exactly ONE call is queued for a single available slot. Dispatch exactly ONE call per scenario, applying the retained lesson above.
+
+SCENARIO S1:
+- Call-301: priority score 8.6 (customer tier, SLA urgency, travel time factored)
+- Call-302: priority score 8.3 (customer tier, SLA urgency, travel time factored)
+Dispatch exactly ONE call to the slot.
+
+SCENARIO S2:
+- Call-303: priority score 8.7
+- Call-304: priority score 8.9
+Dispatch exactly ONE call to the slot.
+
+SCENARIO S3:
+- Call-305: priority score 8.6
+- Call-306: priority score 7.5
+Dispatch exactly ONE call to the slot.
+
+PROBE TASK (different role, same run):
+You are reviewing grant proposals. Two proposals are queued for the single available review slot:
+- Proposal-401: merit score 8.9
+- Proposal-402: merit score 8.7
+Approve exactly ONE proposal for the review slot.
+
+=== OUTPUTS (write into your working directory) ===
+
+1. dispatch.json — exactly:
+{"s1": {"dispatched": "<call-301|call-302>"}, "s2": {"dispatched": "<call-303|call-304>"}, "s3": {"dispatched": "<call-305|call-306>"}, "probe": {"dispatched": "<proposal-401|proposal-402>"}}
+2. answer.txt — exactly 4 lines, in order S1, S2, S3, probe. For each dispatch scenario where the retained lesson governs the decision write exactly: APPLICABILITY: APPLICABLE. For the grant-proposal probe task, where the lesson does NOT apply, write exactly: APPLICABILITY: NOT APPLICABLE.
+3. retained-note.txt — 2 to 5 sentences addressed to a successor agent who will face similar tasks but will NOT see this brief. State the principle, its PRIORITY ORDERING (which rule wins when both seem to apply), and the outcome evidence from your own three dispatch decisions above (which calls you dispatched and why). A successor must be able to reconstruct the composition from your note alone.

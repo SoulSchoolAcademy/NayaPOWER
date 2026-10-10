@@ -68,15 +68,14 @@ class Kernel:
     def __init__(self, brain_root: Path | None = None):
         manifest = load_runtime_manifest(brain_root)
         self._manifest = manifest
-        self._NODE_ORDER = tuple(Node(node["name"]) for node in manifest["nodes"])
 
     @property
     def manifest(self) -> dict:
         return self._manifest
 
-    @property
-    def node_order(self):
-        return self._NODE_ORDER
+    @classmethod
+    def node_order(cls):
+        return cls._NODE_ORDER
 
     def retrieve_intelligent_block(
         self,

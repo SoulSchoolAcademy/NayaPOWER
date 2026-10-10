@@ -1,0 +1,20 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-0743",
+ "capture_id": "20261009-sn-0743-registry-heal",
+ "title": "The Magic Feeling — Intelligence They Feel, Never Grasp",
+ "intelligence": {
+  "title": "The Magic Feeling — Intelligence They Feel, Never Grasp",
+  "smart_note_id": "SN-0743",
+  "intelligent_block_id": "IB-SMART-NOTE-20261009-sn0743-magic-feeling",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/VISION/MAGIC-FEELING/SN-0743/IB-SMART-NOTE-20261009-sn0743-magic-feeling.md",
+  "truth_state": "CANDIDATE",
+  "captured_at": "2026-10-09",
+  "note": "Smart Note SN-0743 published via commit 8ae49c54 (no capture step). Capture reconstructed 2026-10-09 to heal registry drift."
+ },
+ "source": {
+  "captured_at": "2026-10-09",
+  "source_type": "registry_heal",
+  "source_reference": "brain-build repair — heal published_pages_without_registry_entry drift for SN-0742/0743/0744"
+ }
+}

@@ -128,7 +128,7 @@
     },
     ".github/workflows/live-act-proof.yml": {
       "verdict": "REVIEWED_OK",
-      "reason": "SAFE. The literal sits in the proof dict AFTER ~25 independent assertions in the same run step (cold re-read of plan + authoritative execution state, recomputed==stored, receipt-id and behavior matches). The step runs under set -euo pipefail, so any failed assertion aborts before the literal is written; the literal records the workflow's own completed verification, it does not self-certify an unchecked outcome. Recorded so a future edit that moves the literal above the assertion gauntlet fails the move-above-guard test."
+      "reason": "SAFE -- DERIVED, NOT LITERAL (repaired 2026-10-08, branch naya5/truth-act-proof-fix). The proof dict's independent_verification is computed from the named predicate workflow_verified_plan, which summarizes the same ~25 independent assertions (cold re-read of plan + authoritative execution state, recomputed==stored, receipt-id and behavior matches) in the same run step; set -euo pipefail still aborts before the predicate is computed if any assert fails. The proof also carries independent_verification_scope (workflow-level recomputation, NOT act-execution verification) and act_receipt_independent_verification (the receipt's own False-by-design value) so a cold reader cannot mistake the workflow-level PASS for runtime-level verification. The move-above-guard test now pins derivation-after-gauntlet ordering instead of the literal."
     },
     "tools/live_intelligence_reconcile.py": {
       "verdict": "REVIEWED_OK",

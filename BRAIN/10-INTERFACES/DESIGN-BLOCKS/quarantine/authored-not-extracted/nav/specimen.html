@@ -1,0 +1,36 @@
+<!-- Smart Block specimen: nav
+     Include tokens.css, then nav.css.
+     Toggle the mobile menu by adding .naya-nav--open to .naya-nav.
+     Drop a naya-btn or primo into .naya-nav__cta for the CTA. -->
+<nav class="naya-nav" aria-label="Primary">
+  <div class="naya-nav__row">
+    <a class="naya-nav__brand" href="#" aria-label="NayaNET home">
+      <span class="naya-nav__mark" aria-hidden="true"></span>
+      <span class="naya-nav__wordmark">NayaNET</span>
+    </a>
+    <ul class="naya-nav__links">
+      <li><a class="naya-nav__link naya-nav__link--active" href="#" aria-current="page">Spaces</a></li>
+      <li><a class="naya-nav__link" href="#">Stats</a></li>
+      <li><a class="naya-nav__link" href="#">Blocks</a></li>
+      <li><a class="naya-nav__link" href="#">Connect</a></li>
+    </ul>
+    <div class="naya-nav__cta">
+      <a class="naya-btn naya-btn--primary naya-btn--sm" href="#">
+        <span class="nb-label">Get started</span>
+      </a>
+    </div>
+    <button class="naya-nav__toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+    </button>
+  </div>
+</nav>
+<script>
+  // Minimal toggle wiring — keep or replace with your framework's handler.
+  document.querySelectorAll('.naya-nav__toggle').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var nav = btn.closest('.naya-nav');
+      var open = nav.classList.toggle('naya-nav--open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+</script>

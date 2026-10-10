@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Stats — The Living Intelligence Dashboard · Naya Lego Library</title>
+<style>
+/* ============ TOKENS (inlined — self-contained, black ground bulletproof) ============ */
+:root{
+  --field:#050507;--surface:#101116;--surface-2:#17181f;--ink:#f8f7fb;--quiet:#c8c2ce;
+  --line:rgba(255,255,255,.20);--soft-line:rgba(255,255,255,.10);
+  --magenta:#e84fff;--purple:#a06bff;--blue:#3fb8ff;--green:#2fe89e;--gold:#ffbf3d;
+  --teal:#40d3bb;--coral:#ff5e6c;
+  --magenta-rgb:232,79,255;--purple-rgb:160,107,255;--blue-rgb:63,184,255;
+  --green-rgb:47,232,158;--gold-rgb:255,191,61;
+  --ease:cubic-bezier(.22,1,.36,1);--snap:cubic-bezier(.32,.72,0,1);
+  --radius:24px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#050507;color:var(--ink);font-family:Manrope,Inter,ui-sans-serif,system-ui,sans-serif;font-size:18px;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding:56px 24px 120px}
+/* ambient field */
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(900px 480px at 12% 0%,rgba(232,79,255,.06),transparent 60%),
+             radial-gradient(800px 480px at 88% 18%,rgba(160,107,255,.05),transparent 60%),
+             radial-gradient(700px 600px at 50% 100%,rgba(63,184,255,.04),transparent 60%)}
+.wrap{max-width:1180px;margin:0 auto}
+.kicker{font-size:13px;letter-spacing:.28em;text-transform:uppercase;color:var(--quiet);margin-bottom:14px}
+h1{font-size:clamp(34px,5vw,58px);font-weight:800;letter-spacing:-.02em;line-height:1.08;margin-bottom:16px}
+h1 .grad{background:linear-gradient(100deg,var(--magenta),var(--purple) 35%,var(--blue) 70%,var(--green));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lede{color:var(--quiet);max-width:720px;margin-bottom:56px}
+section{margin:72px 0}
+.sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:8px}
+.sec-num{font-size:13px;font-weight:800;letter-spacing:.2em;color:var(--purple)}
+h2{font-size:28px;font-weight:800;letter-spacing:-.01em}
+.sec-desc{color:var(--quiet);margin-bottom:28px;max-width:680px}
+/* ============ LIVING BOARD ============ */
+.board{background:linear-gradient(180deg,#121318,#0a0b0f);border:1px solid var(--line);border-radius:var(--radius);
+  padding:28px;position:relative;transition:transform .28s var(--ease),box-shadow .28s var(--ease),border-color .28s var(--ease);
+  box-shadow:0 22px 50px rgba(0,0,0,.55),0 6px 16px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.09),inset 0 -14px 28px rgba(0,0,0,.35)}
+.board:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.32);
+  box-shadow:0 30px 64px rgba(0,0,0,.65),0 8px 20px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.14),inset 0 -14px 28px rgba(0,0,0,.3)}
+.board::before{content:"";position:absolute;left:28px;top:0;width:56px;height:4px;border-radius:0 0 6px 6px;
+  background:var(--spine,var(--purple));box-shadow:0 0 16px var(--spine,var(--purple))}
+/* ============ STAT CARDS ============ */
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.stat-card{--spine:var(--accent,var(--purple));padding:24px}
+.stat-label{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--quiet);margin-bottom:10px}
+.stat-value{font-size:44px;font-weight:800;letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+.stat-value .unit{font-size:20px;font-weight:600;color:var(--quiet)}
+.stat-trend{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:14px;font-weight:700}
+.trend-up{color:var(--green)}.trend-down{color:var(--coral)}
+.spark{margin-top:14px;display:block}
+/* ============ BAR CHART ============ */
+.bars{display:flex;align-items:flex-end;gap:14px;height:260px;padding:8px 4px 0}
+.bar-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:10px;height:100%;justify-content:flex-end}
+.bar{width:100%;max-width:64px;border-radius:10px 10px 6px 6px;position:relative;cursor:pointer;
+  background:linear-gradient(180deg,var(--bc),color-mix(in srgb,var(--bc) 45%,#000));
+  box-shadow:inset 0 2px 3px rgba(255,255,255,.35),inset 0 -6px 12px rgba(0,0,0,.45),0 0 18px -4px var(--bc);
+  transform-origin:bottom;animation:barRise 1s var(--ease) both;transition:filter .2s var(--ease),transform .2s var(--ease)}
+.bar:hover{filter:brightness(1.25);transform:scaleY(1.02)}
+.bar-tip{position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(4px);background:#1a1b22;
+  border:1px solid var(--line);border-radius:10px;padding:6px 12px;font-size:13px;font-weight:700;white-space:nowrap;
+  opacity:0;pointer-events:none;transition:opacity .18s var(--ease),transform .18s var(--ease);z-index:5}
+.bar:hover .bar-tip{opacity:1;transform:translateX(-50%) translateY(0)}
+.bar-label{font-size:12px;color:var(--quiet);font-weight:600}
+@keyframes barRise{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+/* ============ LINE CHART ============ */
+.line-svg{width:100%;height:auto;display:block}
+.line-path{fill:none;stroke-width:3;stroke-linecap:round;filter:drop-shadow(0 0 8px var(--lc,var(--blue)))}
+.line-area{opacity:.28}
+.dot{fill:#050507;stroke-width:3;cursor:pointer;transition:r .2s var(--ease)}
+.dot:hover{r:9}
+.grid-line{stroke:rgba(255,255,255,.07);stroke-width:1}
+/* ============ DONUT ============ */
+.donut-wrap{display:flex;gap:32px;align-items:center;flex-wrap:wrap}
+.donut{transform:rotate(-90deg)}
+.donut-seg{fill:none;stroke-width:26;stroke-linecap:butt;cursor:pointer;transition:stroke-width .25s var(--ease),opacity .25s var(--ease)}
+.donut-seg:hover{stroke-width:34}
+.legend{display:flex;flex-direction:column;gap:12px}
+.leg-row{display:flex;align-items:center;gap:12px;font-size:15px}
+.leg-dot{width:14px;height:14px;border-radius:50%;box-shadow:0 0 10px currentColor}
+.leg-val{margin-left:auto;font-weight:800;font-variant-numeric:tabular-nums;color:var(--quiet)}
+/* ============ STATS TABLE ============ */
+table.stats{width:100%;border-collapse:separate;border-spacing:0;font-size:15px}
+table.stats th{text-align:left;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--quiet);padding:12px 16px;border-bottom:1px solid var(--line);cursor:pointer;user-select:none}
+table.stats th:hover{color:var(--ink)}
+table.stats td{padding:14px 16px;border-bottom:1px solid var(--soft-line);font-variant-numeric:tabular-nums}
+table.stats tbody tr{transition:background .2s var(--ease),transform .2s var(--ease)}
+table.stats tbody tr:hover{background:rgba(255,255,255,.04);transform:translateX(4px)}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:800;letter-spacing:.08em;padding:5px 12px;border-radius:999px;border:1px solid}
+.pill-live{color:var(--green);border-color:rgba(47,232,158,.4);background:rgba(47,232,158,.08);box-shadow:0 0 12px -2px var(--green)}
+.pill-demo{color:var(--gold);border-color:rgba(255,191,61,.4);background:rgba(255,191,61,.08)}
+.pill-claim{color:var(--blue);border-color:rgba(63,184,255,.4);background:rgba(63,184,255,.08)}
+.mini-bars{display:flex;align-items:flex-end;gap:3px;height:28px}
+.mini-bars i{width:7px;border-radius:2px;background:var(--mc,var(--purple));opacity:.9}
+/* ============ LIVE TICKER ============ */
+.ticker{display:flex;gap:0;overflow:hidden;border-radius:16px;border:1px solid var(--line);background:#0a0b0f}
+.tick{flex:1;padding:20px 24px;border-right:1px solid var(--soft-line);position:relative;overflow:hidden}
+.tick:last-child{border-right:none}
+.tick-flash{position:absolute;inset:0;background:radial-gradient(120px 60px at 50% 50%,rgba(var(--tc-rgb,160,107,255),.25),transparent 70%);opacity:0;pointer-events:none}
+.tick.bump .tick-flash{animation:tickFlash .7s var(--ease)}
+@keyframes tickFlash{0%{opacity:0}25%{opacity:1}100%{opacity:0}}
+.tick-label{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--quiet)}
+.tick-value{font-size:32px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.live-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green);margin-right:8px;animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+/* ============ DASHBOARD ============ */
+.dash{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
+.dash .span4{grid-column:span 4}.dash .span6{grid-column:span 6}.dash .span8{grid-column:span 8}.dash .span12{grid-column:span 12}
+@media(max-width:860px){.dash .span4,.dash .span6,.dash .span8{grid-column:span 12}}
+/* ============ DO / DONT ============ */
+.dd-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.dd{padding:22px}
+.dd h3{font-size:16px;margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.dd-do{--spine:var(--green)}.dd-dont{--spine:var(--coral)}
+.dd-mark{width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex:none}
+.dd-do .dd-mark{background:rgba(47,232,158,.14);color:var(--green);border:1px solid rgba(47,232,158,.5);box-shadow:0 0 12px -2px var(--green)}
+.dd-dont .dd-mark{background:rgba(255,94,108,.14);color:var(--coral);border:1px solid rgba(255,94,108,.5)}
+.dd p{color:var(--quiet);font-size:15px}
+/* ============ CODE ============ */
+pre{background:#07080c;border:1px solid var(--soft-line);border-radius:14px;padding:20px;overflow:auto;font-size:13px;line-height:1.6;margin-top:16px}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#c9d4ff}
+.copy-row{display:flex;justify-content:space-between;align-items:center;margin-top:32px}
+.copy-btn{background:linear-gradient(180deg,#1a1b23,#0c0d12);border:1px solid var(--line);color:var(--ink);border-radius:999px;
+  padding:10px 22px;font-weight:700;font-size:14px;cursor:pointer;transition:all .2s var(--ease);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 8px 20px rgba(0,0,0,.5)}
+.copy-btn:hover{border-color:var(--purple);box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 0 20px -4px var(--purple)}
+.nav{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:40px}
+.nav a{color:var(--quiet);text-decoration:none;font-size:14px;font-weight:600;padding:8px 16px;border:1px solid var(--soft-line);border-radius:999px;transition:all .2s var(--ease)}
+.nav a:hover{color:var(--ink);border-color:var(--purple)}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav class="nav">
+  <a href="#cards">Stat Cards</a><a href="#bars">Bars</a><a href="#lines">Lines</a><a href="#donut">Donut</a>
+  <a href="#table">Table</a><a href="#ticker">Live Ticker</a><a href="#dash">Dashboard</a><a href="#rules">Do / Don't</a><a href="#code">Code</a>
+</nav>
+
+<p class="kicker">Naya Lego Library · Data Intelligence</p>
+<h1>Smart Stats — <span class="grad">the living computer</span></h1>
+<p class="lede">Data that breathes. Every number alive, every chart drawing itself, every point hoverable. This is what intelligence output feels like when it follows the 100 Laws: black ground, white voice, spectrum meaning, living depth — zero flat, always.</p>
+
+<!-- ============ 1. STAT CARDS ============ -->
+<section id="cards">
+  <div class="sec-head"><span class="sec-num">01</span><h2>Stat Cards</h2></div>
+  <p class="sec-desc">Big numbers with trend intelligence. Each card carries one spectrum job, a sparkline that tells the story at a glance, and a trend that explains direction.</p>
+  <div class="stat-grid">
+    <div class="board stat-card" style="--accent:var(--magenta)">
+      <div class="stat-label">Active Intelligence</div>
+      <div class="stat-value">48<span class="unit">K</span></div>
+      <div class="stat-trend trend-up">▲ 12.4% <span style="color:var(--quiet);font-weight:500">vs last week</span></div>
+      <svg class="spark" width="100%" height="44" viewBox="0 0 200 44" preserveAspectRatio="none">
+        <polyline points="0,36 25,32 50,34 75,26 100,28 125,18 150,20 175,10 200,6" fill="none" stroke="#e84fff" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="200" cy="6" r="4" fill="#e84fff"><animate attributeName="r" values="4;6;4" dur="2s" repeatCount="indefinite"/></circle>
+      </svg>
+    </div>
+    <div class="board stat-card" style="--accent:var(--purple)">
+      <div class="stat-label">Smart Apps Live</div>
+      <div class="stat-value">1,284</div>
+      <div class="stat-trend trend-up">▲ 8.1% <span style="color:var(--quiet);font-weight:500">vs last week</span></div>
+      <svg class="spark" width="100%" height="44" viewBox="0 0 200 44" preserveAspectRatio="none">
+        <polyline points="0,30 25,34 50,28 75,30 100,22 125,24 150,16 175,18 200,12" fill="none" stroke="#a06bff" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="200" cy="12" r="4" fill="#a06bff"><animate attributeName="r" values="4;6;4" dur="2s" repeatCount="indefinite"/></circle>
+      </svg>
+    </div>
+    <div class="board stat-card" style="--accent:var(--blue)">
+      <div class="stat-label">Verified Learnings</div>
+      <div class="stat-value">9,412</div>
+      <div class="stat-trend trend-up">▲ 23.7% <span style="color:var(--quiet);font-weight:500">vs last week</span></div>
+      <svg class="spark" width="100%" height="44" viewBox="0 0 200 44" preserveAspectRatio="none">
+        <polyline points="0,38 25,36 50,30 75,32 100,24 125,20 150,22 175,12 200,8" fill="none" stroke="#3fb8ff" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="200" cy="8" r="4" fill="#3fb8ff"><animate attributeName="r" values="4;6;4" dur="2s" repeatCount="indefinite"/></circle>
+      </svg>
+    </div>
+    <div class="board stat-card" style="--accent:var(--green)">
+      <div class="stat-label">System Health</div>
+      <div class="stat-value">99<span class="unit">.98%</span></div>
+      <div class="stat-trend trend-up">▲ 0.02% <span style="color:var(--quiet);font-weight:500">steady</span></div>
+      <svg class="spark" width="100%" height="44" viewBox="0 0 200 44" preserveAspectRatio="none">
+        <polyline points="0,20 25,18 50,20 75,16 100,18 125,14 150,16 175,12 200,14" fill="none" stroke="#2fe89e" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="200" cy="14" r="4" fill="#2fe89e"><animate attributeName="r" values="4;6;4" dur="2s" repeatCount="indefinite"/></circle>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2. BAR CHART ============ -->
+<section id="bars">
+  <div class="sec-head"><span class="sec-num">02</span><h2>Bar Charts</h2></div>
+  <p class="sec-desc">Bars rise on load with stagger. Each bar carries its spectrum job — hover for the exact value. Spectrum order: magenta → purple → blue → green → gold.</p>
+  <div class="board" style="--spine:var(--blue)">
+    <div class="stat-label" style="margin-bottom:20px">Weekly Active Builders</div>
+    <div class="bars" id="barChart">
+      <div class="bar-col"><div class="bar" style="--bc:var(--magenta);height:62%;animation-delay:.05s"><span class="bar-tip">6,204 builders</span></div><span class="bar-label">Mon</span></div>
+      <div class="bar-col"><div class="bar" style="--bc:var(--purple);height:78%;animation-delay:.12s"><span class="bar-tip">7,812 builders</span></div><span class="bar-label">Tue</span></div>
+      <div class="bar-col"><div class="bar" style="--bc:var(--blue);height:55%;animation-delay:.19s"><span class="bar-tip">5,490 builders</span></div><span class="bar-label">Wed</span></div>
+      <div class="bar-col"><div class="bar" style="--bc:var(--green);height:88%;animation-delay:.26s"><span class="bar-tip">8,806 builders</span></div><span class="bar-label">Thu</span></div>
+      <div class="bar-col"><div class="bar" style="--bc:var(--gold);height:96%;animation-delay:.33s"><span class="bar-tip">9,638 builders</span></div><span class="bar-label">Fri</span></div>
+      <div class="bar-col"><div class="bar" style="--bc:var(--magenta);height:44%;animation-delay:.40s"><span class="bar-tip">4,402 builders</span></div><span class="bar-label">Sat</span></div>
+      <div class="bar-col"><div class="bar" style="--bc:var(--purple);height:38%;animation-delay:.47s"><span class="bar-tip">3,815 builders</span></div><span class="bar-label">Sun</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. LINE CHART ============ -->
+<section id="lines">
+  <div class="sec-head"><span class="sec-num">03</span><h2>Line Charts</h2></div>
+  <p class="sec-desc">The line draws itself on load. Data points glow and expand on hover. The area beneath breathes with the line's color.</p>
+  <div class="board" style="--spine:var(--purple)">
+    <div class="stat-label" style="margin-bottom:20px">Intelligence Compounding — 12 Weeks</div>
+    <svg class="line-svg" viewBox="0 0 720 300" id="lineChart" role="img" aria-label="Intelligence compounding over 12 weeks, rising trend">
+      <g class="grid">
+        <line class="grid-line" x1="40" y1="60" x2="700" y2="60"/><line class="grid-line" x1="40" y1="120" x2="700" y2="120"/>
+        <line class="grid-line" x1="40" y1="180" x2="700" y2="180"/><line class="grid-line" x1="40" y1="240" x2="700" y2="240"/>
+      </g>
+      <path class="line-area" id="lineArea" fill="url(#areaGrad)" d=""/>
+      <path class="line-path" id="linePath" style="--lc:var(--blue)" stroke="#3fb8ff" d=""/>
+      <g id="lineDots"></g>
+      <defs>
+        <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#3fb8ff" stop-opacity=".5"/><stop offset="100%" stop-color="#3fb8ff" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+    </svg>
+  </div>
+</section>
+
+<!-- ============ 4. DONUT ============ -->
+<section id="donut">
+  <div class="sec-head"><span class="sec-num">04</span><h2>Donut — Orbital Segments</h2></div>
+  <p class="sec-desc">Spectrum segments in law order. Hover a segment to expand it. The center holds the total — the whole the parts compose.</p>
+  <div class="board" style="--spine:var(--green)">
+    <div class="donut-wrap">
+      <svg class="donut" width="240" height="240" viewBox="0 0 240 240" id="donutChart" role="img" aria-label="Intelligence distribution by area"></svg>
+      <div class="legend" id="donutLegend" style="flex:1;min-width:220px"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. STATS TABLE ============ -->
+<section id="table">
+  <div class="sec-head"><span class="sec-num">05</span><h2>Stats Table</h2></div>
+  <p class="sec-desc">Click any column to sort. Rows lift on hover. Inline mini-charts show the shape behind each number. Status pills tell the truth about every row.</p>
+  <div class="board" style="--spine:var(--gold)">
+    <table class="stats" id="statsTable">
+      <thead><tr>
+        <th data-k="name">Area ↕</th><th data-k="score">Score ↕</th><th data-k="trend">Trend ↕</th><th>Shape</th><th>Status</th>
+      </tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============ 6. LIVE TICKER ============ -->
+<section id="ticker">
+  <div class="sec-head"><span class="sec-num">06</span><h2>Live Ticker — The Living Computer</h2></div>
+  <p class="sec-desc"><span class="live-dot"></span>Live. Numbers update as the system computes. Each tick flashes its spectrum color when the value moves — this is what a living computer feels like.</p>
+  <div class="ticker" id="liveTicker">
+    <div class="tick" style="--tc-rgb:232,79,255"><div class="tick-flash"></div><div class="tick-label">Notes Captured</div><div class="tick-value" id="tick1">0</div></div>
+    <div class="tick" style="--tc-rgb:160,107,255"><div class="tick-flash"></div><div class="tick-label">Links Verified</div><div class="tick-value" id="tick2">0</div></div>
+    <div class="tick" style="--tc-rgb:63,184,255"><div class="tick-flash"></div><div class="tick-label">Learnings Promoted</div><div class="tick-value" id="tick3">0</div></div>
+    <div class="tick" style="--tc-rgb:47,232,158"><div class="tick-flash"></div><div class="tick-label">Successor Reuses</div><div class="tick-value" id="tick4">0</div></div>
+  </div>
+</section>
+
+<!-- ============ 7. DASHBOARD ============ -->
+<section id="dash">
+  <div class="sec-head"><span class="sec-num">07</span><h2>Dashboard Composition</h2></div>
+  <p class="sec-desc">How it all composes. Ticker on top, stat cards in a row, charts side by side, table below. One grid, one language, every element alive.</p>
+  <div class="dash">
+    <div class="board span12" style="--spine:var(--magenta);padding:20px 28px">
+      <div style="display:flex;align-items:center;gap:14px"><span class="live-dot"></span>
+      <div><div style="font-weight:800;font-size:18px">NayaNET Intelligence — Live</div>
+      <div style="color:var(--quiet);font-size:14px">Your idea. Your intelligence. Your Smart App. Your internet, your way.</div></div></div>
+    </div>
+    <div class="board span4" style="--spine:var(--magenta)"><div class="stat-label">Capture Rate</div><div class="stat-value">97<span class="unit">.2%</span></div><div class="stat-trend trend-up">▲ 1.1%</div></div>
+    <div class="board span4" style="--spine:var(--purple)"><div class="stat-label">Verify Rate</div><div class="stat-value">94<span class="unit">.8%</span></div><div class="stat-trend trend-up">▲ 2.4%</div></div>
+    <div class="board span4" style="--spine:var(--blue)"><div class="stat-label">Learn Rate</div><div class="stat-value">88<span class="unit">.1%</span></div><div class="stat-trend trend-down">▼ 0.6%</div></div>
+    <div class="board span6" style="--spine:var(--green)"><div class="stat-label">Throughput</div>
+      <div class="bars" style="height:180px">
+        <div class="bar-col"><div class="bar" style="--bc:var(--green);height:50%;animation-delay:.1s"></div><span class="bar-label">W1</span></div>
+        <div class="bar-col"><div class="bar" style="--bc:var(--green);height:65%;animation-delay:.2s"></div><span class="bar-label">W2</span></div>
+        <div class="bar-col"><div class="bar" style="--bc:var(--green);height:58%;animation-delay:.3s"></div><span class="bar-label">W3</span></div>
+        <div class="bar-col"><div class="bar" style="--bc:var(--green);height:80%;animation-delay:.4s"></div><span class="bar-label">W4</span></div>
+        <div class="bar-col"><div class="bar" style="--bc:var(--green);height:95%;animation-delay:.5s"></div><span class="bar-label">W5</span></div>
+      </div>
+    </div>
+    <div class="board span6" style="--spine:var(--gold)"><div class="stat-label">Quality Gates</div>
+      <div style="display:flex;flex-direction:column;gap:14px;margin-top:16px">
+        <div><div style="display:flex;justify-content:space-between;font-size:14px;margin-bottom:6px"><span>Design Calculator</span><span style="font-weight:800">98</span></div>
+        <div style="height:10px;border-radius:6px;background:#1a1b22;overflow:hidden"><div style="height:100%;width:98%;border-radius:6px;background:linear-gradient(90deg,var(--magenta),var(--purple));box-shadow:0 0 12px var(--purple);animation:barRise 1.2s var(--ease) both;transform-origin:left"></div></div></div>
+        <div><div style="display:flex;justify-content:space-between;font-size:14px;margin-bottom:6px"><span>Truth Verification</span><span style="font-weight:800">95</span></div>
+        <div style="height:10px;border-radius:6px;background:#1a1b22;overflow:hidden"><div style="height:100%;width:95%;border-radius:6px;background:linear-gradient(90deg,var(--blue),var(--green));box-shadow:0 0 12px var(--blue);animation:barRise 1.2s .15s var(--ease) both;transform-origin:left"></div></div></div>
+        <div><div style="display:flex;justify-content:space-between;font-size:14px;margin-bottom:6px"><span>Independent Review</span><span style="font-weight:800">92</span></div>
+        <div style="height:10px;border-radius:6px;background:#1a1b22;overflow:hidden"><div style="height:100%;width:92%;border-radius:6px;background:linear-gradient(90deg,var(--green),var(--gold));box-shadow:0 0 12px var(--green);animation:barRise 1.2s .3s var(--ease) both;transform-origin:left"></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 8. DO / DON'T ============ -->
+<section id="rules">
+  <div class="sec-head"><span class="sec-num">08</span><h2>Data Viz — Do / Don't</h2></div>
+  <p class="sec-desc">The laws of elite data presentation. Every rule paired: what to do, what never to do.</p>
+  <div class="dd-grid">
+    <div class="board dd dd-do"><h3><span class="dd-mark">✓</span>DO animate on load</h3><p>Bars rise, lines draw themselves, donuts sweep in. Motion tells the viewer the data is alive and current.</p></div>
+    <div class="board dd dd-dont"><h3><span class="dd-mark">✕</span>NEVER show static dead charts</h3><p>A chart that just sits there feels like a screenshot. If nothing moves, the viewer assumes nothing is live.</p></div>
+    <div class="board dd dd-do"><h3><span class="dd-mark">✓</span>DO give every series one spectrum job</h3><p>Magenta → purple → blue → green → gold, in order. Color means identity — the viewer learns what each color is.</p></div>
+    <div class="board dd dd-dont"><h3><span class="dd-mark">✕</span>NEVER rainbow without meaning</h3><p>Random colors are decoration. If two series share a hue, the viewer can't tell them apart — that's a defect.</p></div>
+    <div class="board dd dd-do"><h3><span class="dd-mark">✓</span>DO make every point hoverable</h3><p>Hover reveals the exact value. The overview is calm; the detail is one hover away. Progressive disclosure.</p></div>
+    <div class="board dd dd-dont"><h3><span class="dd-mark">✕</span>NEVER hide the numbers</h3><p>A chart without accessible values is a picture, not intelligence. Every visual must resolve to a number.</p></div>
+    <div class="board dd dd-do"><h3><span class="dd-mark">✓</span>DO label truth on every stat</h3><p>VERIFIED glows green. DEMONSTRATION glows gold. A number without a truth state is a claim, not a fact.</p></div>
+    <div class="board dd dd-dont"><h3><span class="dd-mark">✕</span>NEVER present estimates as facts</h3><p>Simulated, projected, or estimated data must say so. A beautiful lie is still a lie — and it kills trust.</p></div>
+    <div class="board dd dd-do"><h3><span class="dd-mark">✓</span>DO use tabular numerals</h3><p><code>font-variant-numeric:tabular-nums</code> — digits align in columns and don't jitter when live values update.</p></div>
+    <div class="board dd dd-dont"><h3><span class="dd-mark">✕</span>NEVER let live numbers jump layout</h3><p>If updating a ticker shifts the whole row, the design is broken. Fixed-width numerals keep the page still.</p></div>
+  </div>
+</section>
+
+<!-- ============ 9. CODE ============ -->
+<section id="code">
+  <div class="sec-head"><span class="sec-num">09</span><h2>Copy-Paste Code</h2></div>
+  <p class="sec-desc">The living stat card. Drop it in, set <code>--accent</code>, done.</p>
+  <div class="copy-row"><span class="stat-label">stat-card.html</span><button class="copy-btn" onclick="copyCode('codeCard')">Copy</button></div>
+<pre id="codeCard"><code>&lt;div class="board stat-card" style="--accent:var(--magenta)"&gt;
+  &lt;div class="stat-label"&gt;Active Intelligence&lt;/div&gt;
+  &lt;div class="stat-value"&gt;48&lt;span class="unit"&gt;K&lt;/span&gt;&lt;/div&gt;
+  &lt;div class="stat-trend trend-up"&gt;&#9650; 12.4%&lt;/div&gt;
+  &lt;svg class="spark" width="100%" height="44" viewBox="0 0 200 44"&gt;
+    &lt;polyline points="0,36 25,32 50,34 75,26 100,28 125,18 150,20 175,10 200,6"
+      fill="none" stroke="#e84fff" stroke-width="2.5" stroke-linecap="round"/&gt;
+  &lt;/svg&gt;
+&lt;/div&gt;</code></pre>
+  <div class="copy-row"><span class="stat-label">live-ticker.js</span><button class="copy-btn" onclick="copyCode('codeTick')">Copy</button></div>
+<pre id="codeTick"><code>// Bump a ticker: update value, flash its spectrum color
+function bumpTick(id, value){
+  const el = document.getElementById(id);
+  el.textContent = value.toLocaleString();
+  const tick = el.closest('.tick');
+  tick.classList.remove('bump'); void tick.offsetWidth;
+  tick.classList.add('bump');
+}
+setInterval(() =&gt; bumpTick('tick1', base1 += rand(1, 9)), 2200);</code></pre>
+</section>
+
+</div><!-- /wrap -->
+
+<script>
+/* ============ LINE CHART — draws itself ============ */
+(function(){
+  const pts = [42,38,44,36,40,32,35,28,30,24,26,18]; // 12 weeks, rising
+  const W=720,H=300,pl=40,pr=20,pt=20,pb=30;
+  const iw=W-pl-pr, ih=H-pt-pb, max=50;
+  const X=i=>pl+iw*i/(pts.length-1), Y=v=>pt+ih*(1-v/max);
+  let d='M'+X(0).toFixed(1)+','+Y(pts[0]).toFixed(1);
+  // smooth curve via catmull-rom -> bezier
+  for(let i=0;i<pts.length-1;i++){
+    const p0=pts[Math.max(0,i-1)],p1=pts[i],p2=pts[i+1],p3=pts[Math.min(pts.length-1,i+2)];
+    const c1x=X(i)+(X(i+1)-X(i-1<0?0:i-1))/6, c1y=Y(p1)+(Y(p2)-Y(p0))/6;
+    const c2x=X(i+1)-(X(Math.min(pts.length-1,i+2))-X(i))/6, c2y=Y(p2)-(Y(p3)-Y(p1))/6;
+    d+='C'+c1x.toFixed(1)+','+c1y.toFixed(1)+' '+c2x.toFixed(1)+','+c2y.toFixed(1)+' '+X(i+1).toFixed(1)+','+Y(p2).toFixed(1);
+  }
+  const path=document.getElementById('linePath');
+  path.setAttribute('d',d);
+  const len=path.getTotalLength();
+  path.style.strokeDasharray=len; path.style.strokeDashoffset=len;
+  path.getBoundingClientRect();
+  path.style.transition='stroke-dashoffset 2.2s cubic-bezier(.22,1,.36,1)';
+  path.style.strokeDashoffset='0';
+  document.getElementById('lineArea').setAttribute('d',d+`L${X(pts.length-1).toFixed(1)},${(H-pb)}L${X(0).toFixed(1)},${(H-pb)}Z`);
+  const g=document.getElementById('lineDots');
+  const vals=['4.2K','3.8K','4.4K','3.6K','4.0K','3.2K','3.5K','2.8K','3.0K','2.4K','2.6K','1.8K'];
+  pts.forEach((v,i)=>{
+    const c=document.createElementNS('http://www.w3.org/2000/svg','circle');
+    c.setAttribute('cx',X(i));c.setAttribute('cy',Y(v));c.setAttribute('r',5);
+    c.setAttribute('class','dot');c.setAttribute('stroke','#3fb8ff');
+    const t=document.createElementNS('http://www.w3.org/2000/svg','title');t.textContent='Week '+(i+1)+': '+vals[i]+' learnings';
+    c.appendChild(t);g.appendChild(c);
+    c.style.opacity='0';c.style.transition=`opacity .3s ease ${1.6+i*.12}s`;requestAnimationFrame(()=>c.style.opacity='1');
+  });
+})();
+
+/* ============ DONUT — orbital segments ============ */
+(function(){
+  const data=[
+    {label:'Learning', val:34, color:'#e84fff'},
+    {label:'Memory', val:26, color:'#a06bff'},
+    {label:'Truth', val:18, color:'#3fb8ff'},
+    {label:'Action', val:14, color:'#2fe89e'},
+    {label:'Growth', val:8, color:'#ffbf3d'}
+  ];
+  const svg=document.getElementById('donutChart'), R=88, C=2*Math.PI*R;
+  let acc=0;
+  const NS='http://www.w3.org/2000/svg';
+  data.forEach((s,i)=>{
+    const frac=s.val/100, segLen=frac*C, gap=frac<1?3:0;
+    const c=document.createElementNS(NS,'circle');
+    c.setAttribute('cx',120);c.setAttribute('cy',120);c.setAttribute('r',R);
+    c.setAttribute('class','donut-seg');c.setAttribute('stroke',s.color);
+    c.setAttribute('stroke-dasharray',`${Math.max(0,segLen-gap)} ${C-segLen+gap}`);
+    c.setAttribute('stroke-dashoffset',-acc*C);
+    c.style.filter=`drop-shadow(0 0 6px ${s.color})`;
+    const t=document.createElementNS(NS,'title');t.textContent=`${s.label}: ${s.val}%`;
+    c.appendChild(t);
+    // animate in
+    c.style.transition='none';c.style.opacity='0';
+    svg.appendChild(c);
+    setTimeout(()=>{c.style.transition='opacity .5s ease';c.style.opacity='1';},300+i*160);
+    acc+=frac;
+  });
+  const txt=document.createElementNS(NS,'text');
+  txt.setAttribute('x',120);txt.setAttribute('y',114);txt.setAttribute('text-anchor','middle');
+  txt.setAttribute('fill','#f8f7fb');txt.setAttribute('font-size','34');txt.setAttribute('font-weight','800');
+  txt.textContent='100%';svg.appendChild(txt);
+  const sub=document.createElementNS(NS,'text');
+  sub.setAttribute('x',120);sub.setAttribute('y',140);sub.setAttribute('text-anchor','middle');
+  sub.setAttribute('fill','#c8c2ce');sub.setAttribute('font-size','12');sub.setAttribute('letter-spacing','2');
+  sub.textContent='VERIFIED';svg.appendChild(sub);
+  const leg=document.getElementById('donutLegend');
+  data.forEach(s=>{
+    const r=document.createElement('div');r.className='leg-row';
+    r.innerHTML=`<span class="leg-dot" style="color:${s.color};background:${s.color}"></span>${s.label}<span class="leg-val">${s.val}%</span>`;
+    leg.appendChild(r);
+  });
+})();
+
+/* ============ STATS TABLE — sortable, mini-charts ============ */
+(function(){
+  const rows=[
+    {name:'Learning',score:92,trend:4.2,shape:[30,45,40,60,55,75,90],status:'live'},
+    {name:'Truth',score:95,trend:2.8,shape:[50,55,60,58,70,78,85],status:'live'},
+    {name:'Memory',score:88,trend:1.4,shape:[40,42,50,48,60,62,70],status:'demo'},
+    {name:'Action',score:84,trend:-0.8,shape:[60,55,58,50,52,48,55],status:'demo'},
+    {name:'Human Value',score:79,trend:3.1,shape:[25,30,35,45,50,60,72],status:'claim'},
+    {name:'Voice',score:86,trend:0.9,shape:[55,58,60,62,65,68,70],status:'live'}
+  ];
+  const colors={Learning:'#e84fff',Truth:'#3fb8ff',Memory:'#a06bff',Action:'#2fe89e','Human Value':'#ffbf3d',Voice:'#40d3bb'};
+  const tbody=document.querySelector('#statsTable tbody');
+  let sortK='score',sortD=-1;
+  function render(){
+    const sorted=[...rows].sort((a,b)=>(a[sortK]>b[sortK]?1:-1)*sortD);
+    tbody.innerHTML='';
+    sorted.forEach(r=>{
+      const tr=document.createElement('tr');
+      const max=Math.max(...r.shape);
+      const bars=r.shape.map(v=>`<i style="height:${(v/max*28).toFixed(0)}px;--mc:${colors[r.name]}"></i>`).join('');
+      const pill=r.status==='live'?'<span class="pill pill-live">● LIVE</span>':r.status==='demo'?'<span class="pill pill-demo">◐ DEMO</span>':'<span class="pill pill-claim">○ CLAIM</span>';
+      const tc=r.trend>=0?`<span class="trend-up">▲ ${r.trend}%</span>`:`<span class="trend-down">▼ ${Math.abs(r.trend)}%</span>`;
+      tr.innerHTML=`<td style="font-weight:700"><span class="leg-dot" style="display:inline-block;width:10px;height:10px;border-radius:50%;background:${colors[r.name]};box-shadow:0 0 8px ${colors[r.name]};margin-right:10px"></span>${r.name}</td>
+        <td style="font-weight:800">${r.score}</td><td>${tc}</td>
+        <td><span class="mini-bars">${bars}</span></td><td>${pill}</td>`;
+      tbody.appendChild(tr);
+    });
+  }
+  document.querySelectorAll('#statsTable th[data-k]').forEach(th=>{
+    th.addEventListener('click',()=>{
+      const k=th.dataset.k;
+      if(sortK===k)sortD*=-1;else{sortK=k;sortD=k==='name'?1:-1;}
+      render();
+    });
+  });
+  render();
+})();
+
+/* ============ LIVE TICKER ============ */
+(function(){
+  const state={tick1:48210,tick2:12884,tick3:9412,tick4:3207};
+  function bump(id,lo,hi){
+    const el=document.getElementById(id);
+    state[id]+=lo+Math.floor(Math.random()*(hi-lo));
+    el.textContent=state[id].toLocaleString();
+    const tick=el.closest('.tick');
+    tick.classList.remove('bump');void tick.offsetWidth;tick.classList.add('bump');
+  }
+  Object.keys(state).forEach(id=>document.getElementById(id).textContent=state[id].toLocaleString());
+  setInterval(()=>bump('tick1',1,9),2200);
+  setInterval(()=>bump('tick2',1,6),3100);
+  setInterval(()=>bump('tick3',1,4),2700);
+  setInterval(()=>bump('tick4',1,3),3600);
+})();
+
+/* ============ COPY ============ */
+function copyCode(id){
+  const t=document.getElementById(id).innerText;
+  navigator.clipboard.writeText(t).then(()=>{});
+}
+</script>
+</body>
+</html>

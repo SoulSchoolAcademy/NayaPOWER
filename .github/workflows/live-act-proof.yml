@@ -365,6 +365,23 @@ jobs:
           assert rr["action"]=="act_node_refusal" and rr["status"]=="BLOCKED", rr
           assert rr["evidence"]["action_executed"] is False, rr
 
+          # SN-0528 discipline: the proof's independent_verification flag is DERIVED
+          # from the verification outcome, never a hardcoded literal. It summarizes
+          # THIS workflow's own independent verification (authoritative reread +
+          # plan recomputation asserted above) — NOT the act execution receipt: the
+          # act runtime fail-closes executor self-attestation, so the receipt's
+          # evidence.independent_verification is False BY DESIGN (asserted above).
+          # The scope field and the carried receipt value keep a cold reader from
+          # mistaking the workflow-level PASS for runtime-level verification.
+          workflow_verified_plan=(
+            recomputed==stored
+            and recomputed["status"]=="READY"
+            and recomputed["reason"]=="APPLICABLE_INTELLIGENCE_STEERED_PLAN"
+            and recomputed["selection_replay_verified"] is True
+            and recomputed["plan_changed"] is True
+            and ae["observed_behavior"]==recomputed["post_retrieval_plan"]["behavior"]
+          )
+
           proof={
             "schema":"naya.act.learning-activation.live-proof.v1",
             "status":"PASS",
@@ -377,7 +394,9 @@ jobs:
             "selected_intelligence_id":ids["selected_block_id"],
             "observed_behavior":ae["observed_behavior"],
             "cold_reconstruction":True,
-            "independent_verification":True,
+            "independent_verification":workflow_verified_plan,
+            "independent_verification_scope":"workflow-level: authoritative reread of persisted receipts + recomputation of the plan from raw rows. This is NOT the act execution being independently verified — the act receipt remains executor-attested (its evidence.independent_verification is False, asserted above and carried below).",
+            "act_receipt_independent_verification":ae["independent_verification"],
             "executor_claim_trusted_as_verification":False,
             "retrieval_creates_authority":False,
           }

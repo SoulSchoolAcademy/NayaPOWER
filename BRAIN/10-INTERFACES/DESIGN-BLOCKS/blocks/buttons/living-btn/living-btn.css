@@ -1,0 +1,80 @@
+/* Smart Block: living-btn
+ * Source: Naya_5_Beautiful_Button_set.html (byte-true extraction, not rewritten)
+ * Type: buttons
+ * Extracted: 2026-10-09
+ */
+
+/* ---- required @keyframes ---- */
+@keyframes sweep { 0%, 62% { left: -70%; } 88%, 100% { left: 130%; } }
+
+@keyframes idleBreathe {
+  0%, 100% { box-shadow: inset 0 0 0 1.7px rgba(255,255,255,.92), inset 0 2px 6px rgba(255,255,255,.22), inset 0 -8px 18px rgba(0,0,0,.75), 0 14px 40px rgba(0,0,0,.6), 0 4px 14px rgba(0,0,0,.5); }
+  50% { box-shadow: inset 0 0 0 1.7px rgba(255,255,255,1), inset 0 2px 8px rgba(255,255,255,.3), inset 0 -8px 18px rgba(0,0,0,.75), 0 18px 52px rgba(0,0,0,.65), 0 4px 14px rgba(0,0,0,.5); }
+}
+
+/* ---- component rules (v2) ---- */
+/* ---- required @keyframes ---- */
+@keyframes sweep { 0%, 62% { left: -70%; } 88%, 100% { left: 130%; } }
+
+@keyframes idleBreathe {
+  0%, 100% { box-shadow: inset 0 0 0 1.7px rgba(255,255,255,.92), inset 0 2px 6px rgba(255,255,255,.22), inset 0 -8px 18px rgba(0,0,0,.75), 0 14px 40px rgba(0,0,0,.6), 0 4px 14px rgba(0,0,0,.5); }
+  50% { box-shadow: inset 0 0 0 1.7px rgba(255,255,255,1), inset 0 2px 8px rgba(255,255,255,.3), inset 0 -8px 18px rgba(0,0,0,.75), 0 18px 52px rgba(0,0,0,.65), 0 4px 14px rgba(0,0,0,.5); }
+}
+
+
+
+.living-btn {
+  position: relative; overflow: hidden; cursor: pointer; border: none;
+  font-family: Inter, sans-serif; font-weight: 800; font-size: 17px; letter-spacing: .12em;
+  color: #fff; padding: 22px 44px; border-radius: 999px; min-width: 300px;
+  background: linear-gradient(180deg, #17171c 0%, #050505 55%, #0a0a0e 100%);
+  box-shadow:
+    inset 0 0 0 1.7px rgba(255,255,255,.92),
+    inset 0 2px 6px rgba(255,255,255,.22),
+    inset 0 -8px 18px rgba(0,0,0,.75),
+    0 14px 40px rgba(0,0,0,.6),
+    0 4px 14px rgba(0,0,0,.5);
+  transition: transform .28s var(--ease), box-shadow .28s var(--ease);
+  animation: idleBreathe 4.2s ease-in-out infinite;
+}
+
+.living-btn .btn-glow { position: absolute; inset: -2px; border-radius: 999px; opacity: .55; pointer-events: none; transition: opacity .3s; }
+
+.living-btn[data-spectrum="magenta"] .btn-glow { box-shadow: 0 0 34px 4px rgba(232,79,255,.5), inset 0 0 22px rgba(232,79,255,.28); }
+
+.living-btn[data-spectrum="purple"] .btn-glow { box-shadow: 0 0 34px 4px rgba(var(--purple-rgb),.5), inset 0 0 22px rgba(var(--purple-rgb),.28); animation-delay: 1.4s; }
+
+.living-btn[data-spectrum="blue"] .btn-glow { box-shadow: 0 0 34px 4px rgba(63,184,255,.5), inset 0 0 22px rgba(63,184,255,.28); animation-delay: 2.8s; }
+
+.living-btn::after {
+  content: ""; position: absolute; top: -20%; bottom: -20%; width: 46%; left: -70%;
+  background: linear-gradient(105deg, transparent 20%, rgba(255,255,255,.34) 50%, transparent 80%);
+  transform: skewX(-18deg); pointer-events: none;
+  animation: sweep 5.5s var(--ease) infinite;
+}
+
+.living-btn[data-spectrum="purple"]::after { animation-delay: 1.8s; }
+
+.living-btn[data-spectrum="blue"]::after { animation-delay: 3.6s; }
+
+.living-btn:hover { transform: translateY(-4px) scale(1.025); animation: none; }
+
+.living-btn[data-spectrum="magenta"]:hover { box-shadow: inset 0 0 0 2px var(--magenta), inset 0 2px 8px rgba(255,255,255,.3), inset 0 -8px 18px rgba(0,0,0,.7), 0 22px 60px rgba(232,79,255,.4), 0 6px 18px rgba(0,0,0,.5); }
+
+.living-btn[data-spectrum="purple"]:hover { box-shadow: inset 0 0 0 2px var(--purple), inset 0 2px 8px rgba(255,255,255,.3), inset 0 -8px 18px rgba(0,0,0,.7), 0 22px 60px rgba(var(--purple-rgb),.4), 0 6px 18px rgba(0,0,0,.5); }
+
+.living-btn[data-spectrum="blue"]:hover { box-shadow: inset 0 0 0 2px var(--blue), inset 0 2px 8px rgba(255,255,255,.3), inset 0 -8px 18px rgba(0,0,0,.7), 0 22px 60px rgba(63,184,255,.4), 0 6px 18px rgba(0,0,0,.5); }
+
+.living-btn:hover .btn-glow { opacity: 1; }
+
+.living-btn:active { transform: translateY(1px) scale(.975); transition-duration: .08s; }
+
+.living-btn .btn-label { position: relative; z-index: 2; display: flex; align-items: center; justify-content: center; gap: 12px; }
+
+.living-btn .btn-label svg { width: 20px; height: 20px; }
+ .living-btn { min-width: 100%; }
+/* Restored 2026-10-09: extraction stripped the reduced-motion wrapper.
+ * The kill-rule below must ONLY apply when the user prefers reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  .living-btn, .living-btn::after { animation: none; }
+}

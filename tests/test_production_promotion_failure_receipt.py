@@ -209,12 +209,98 @@ def test_standing_policy_mode_labels_confirmation():
     assert receipt["human_authorization"]["confirmation"] == "STANDING-PRODUCTION-PROMOTION-V1"
 
 
+# --- upstream gate evidence ------------------------------------------------
+
+def test_gates_bind_verdict_denial_and_required_workflows():
+    """A fail-closed run names the gate that stopped the chain: the
+    standing-policy verdict, the denial receipt, and the required workflows'
+    run conclusions at the source SHA."""
+    receipt = build(
+        {},
+        env={},
+        gates={
+            "standing_policy_verdict": {
+                "policy_id": "STANDING-PRODUCTION-PROMOTION-V1",
+                "policy_version": "1",
+                "verdict": {"decision": "DENY", "reason": "kernel-tests red"},
+            },
+            "promotion_denial": {"decision": "DENY", "reason": "kernel-tests red"},
+            "required_workflows": {
+                "kernel-tests.yml": {
+                    "id": 99, "status": "completed",
+                    "conclusion": "failure", "head_sha": SHA,
+                },
+                "collective-chain-readiness-gate.yml": {
+                    "id": 98, "status": "completed",
+                    "conclusion": "success", "head_sha": SHA,
+                },
+            },
+        },
+    )
+    assert receipt["status"] == "DEPLOY_FAILED"
+    g = receipt["gates"]
+    assert g["standing_policy"]["verdict_file_present"] is True
+    assert g["standing_policy"]["policy_id"] == "STANDING-PRODUCTION-PROMOTION-V1"
+    assert g["standing_policy"]["decision"] == "DENY"
+    assert g["standing_policy"]["reason"] == "kernel-tests red"
+    assert g["promotion_denial"]["denial_file_present"] is True
+    assert g["promotion_denial"]["decision"] == "DENY"
+    kt = g["required_workflows"]["kernel-tests.yml"]
+    assert kt["status"] == "RECORDED"
+    assert kt["conclusion"] == "failure"
+    assert kt["head_sha_matches_authorized_source"] is True
+    ok = g["required_workflows"]["collective-chain-readiness-gate.yml"]
+    assert ok["status"] == "RECORDED"
+    assert ok["conclusion"] == "success"
+
+
+def test_gates_absent_or_malformed_never_raise():
+    """Missing or malformed gate evidence is recorded as absent/UNKNOWN,
+    never invented and never raised."""
+    receipt = build({}, env={}, gates=None)
+    g = receipt["gates"]
+    assert g["standing_policy"]["verdict_file_present"] is False
+    assert g["promotion_denial"]["denial_file_present"] is False
+    for workflow in ("kernel-tests.yml", "collective-chain-readiness-gate.yml"):
+        assert g["required_workflows"][workflow]["status"] == "NOT_EXECUTED"
+
+    receipt = build(
+        {},
+        env={},
+        gates={
+            "standing_policy_verdict": "garbage",
+            "promotion_denial": [1, 2],
+            "required_workflows": "garbage",
+        },
+    )
+    g = receipt["gates"]
+    assert g["standing_policy"]["verdict_file_present"] is False
+    assert g["promotion_denial"]["denial_file_present"] is False
+    assert g["required_workflows"]["kernel-tests.yml"]["status"] == "NOT_EXECUTED"
+
+    receipt = build(
+        {},
+        env={},
+        gates={"required_workflows": {"kernel-tests.yml": "OBSERVATION_FAILED"}},
+    )
+    assert receipt["gates"]["required_workflows"]["kernel-tests.yml"]["status"] == "UNKNOWN"
+
+
+def test_gate_evidence_cannot_weaken_status():
+    """Gate evidence is descriptive only: it never changes the status
+    outcome and never certifies PROMOTED_AND_PROVEN."""
+    receipt = build({}, env={}, gates={"standing_policy_verdict": None})
+    assert receipt["status"] == "DEPLOY_FAILED"
+    assert receipt["status"] != "PROMOTED_AND_PROVEN"
+
+
 # --- workflow wiring ------------------------------------------------------
 
 def test_workflow_wires_failure_receipt_step_on_failure():
     source = WORKFLOW.read_text(encoding="utf-8")
     assert "Write production promotion failure receipt" in source
-    assert "production_promotion_failure_receipt import build_failure_receipt" in source
+    assert "from tools.production_promotion_failure_receipt import" in source
+    assert "build_failure_receipt" in source
     assert "production-promotion-failure-receipt.json" in source
     # The step must run on the failure path but keep the parent handshake's
     # authority: it fires only when the chain already failed.
@@ -227,3 +313,17 @@ def test_workflow_uploads_failure_receipt_artifact():
     assert "production-promotion-failure-receipt.json" in upload
     # The original receipt path is untouched.
     assert "production-promotion-receipt.json" in upload
+
+
+def test_workflow_receipt_step_binds_upstream_gate_evidence():
+    source = WORKFLOW.read_text(encoding="utf-8")
+    step = source[source.index("Write production promotion failure receipt"):]
+    # Loads the verdict + denial files the authorization step writes...
+    assert "VERDICT_FILE" in step
+    assert "DENIAL_FILE" in step
+    # ...observes the required workflows' runs at the source SHA read-only...
+    assert "REQUIRED_WORKFLOWS" in step
+    assert "observe_required_workflows" in step
+    # ...and passes the gate evidence into the receipt builder.
+    assert "gates=gates" in step
+    assert 'assert "gates" in receipt' in step

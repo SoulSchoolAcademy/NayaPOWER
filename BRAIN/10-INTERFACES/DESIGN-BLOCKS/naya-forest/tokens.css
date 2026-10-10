@@ -1,0 +1,9 @@
+/* Design tokens extracted from Naya Forest — The Naya Button Library — Naya 4 */
+/* Source SHA: 04e506733c8470c2 */
+
+:root{
+  --obsidian:#020203; --white:#ffffff; --chrome:#8a5cff;
+  --voice:"Cormorant Garamond",Georgia,serif;
+  --ui:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --ease:cubic-bezier(.16,.84,.22,1);
+}
