@@ -1444,6 +1444,192 @@ def verify_interaction_proof(claim_id, handoff_id, verifier="independent", resul
     return proof
 
 
+# Six multi-party invariant categories
+INVARIANT_CATEGORIES = {
+    "JOINT_IDENTITY": "All participants operate for same authorized principal/target",
+    "TEMPORAL_ORDERING": "Required happens-before relationships hold",
+    "SHARED_CONSISTENCY": "Compatible policy, resource, evidence versions across participants",
+    "AUTHORITY_NON_ESCALATION": "Combined participants cannot exceed individual authority",
+    "END_TO_END_INTEGRITY": "All participants agree on actual operation and outcome",
+    "FAILURE_CONTAINMENT": "One participant's failure cannot cause unauthorized side effects",
+}
+
+# Invariant kinds
+INVARIANT_KINDS = ["SAFETY", "LIVENESS", "TEMPORAL"]
+
+
+def register_multi_party_interaction(interaction_id, participant_obligations, join_keys,
+                                      invariants, scope="", environment=""):
+    """
+    Register a multi-party interaction obligation (3+ participants).
+    
+    The key insight: pairwise PASS ≠ joint PASS. All participants must agree on
+    the same execution context (decision, identity, target, action).
+    
+    join_keys: fields that must match across all participants
+               (e.g., decision_id, principal_id, action_digest, target_id)
+    invariants: list of {"id": ..., "kind": SAFETY|LIVENESS|TEMPORAL,
+                          "category": ..., "predicate": ...}
+    """
+    reg = load_registry()
+
+    if len(participant_obligations) < 3:
+        print(f"WARNING: multi-party interaction expects 3+ participants, got {len(participant_obligations)}")
+
+    for inv in invariants:
+        if inv.get("kind") not in INVARIANT_KINDS:
+            print(f"ERROR: Unknown invariant kind '{inv.get('kind')}'")
+            sys.exit(1)
+        if inv.get("category") not in INVARIANT_CATEGORIES:
+            print(f"ERROR: Unknown category '{inv.get('category')}'")
+            sys.exit(1)
+
+    interaction = {
+        "interaction_id": interaction_id,
+        "revision": "v1",
+        "type": "MULTI_PARTY_INTERACTION",
+        "participant_obligations": participant_obligations,
+        "join_keys": join_keys,
+        "scope": scope[:200],
+        "environment": environment,
+        "invariants": [
+            {
+                "id": inv["id"],
+                "kind": inv["kind"],
+                "category": inv["category"],
+                "category_question": INVARIANT_CATEGORIES[inv["category"]],
+                "predicate": inv.get("predicate", "")[:200],
+                "status": "UNRESOLVED",
+                "positive_witness": "",
+                "counterexample": "",
+            }
+            for inv in invariants
+        ],
+        "qualification": "INSUFFICIENT_EVIDENCE",
+        "registered_at": datetime.now(timezone.utc).isoformat(),
+    }
+
+    if "multi_party_interactions" not in reg:
+        reg["multi_party_interactions"] = {}
+    reg["multi_party_interactions"][interaction_id] = interaction
+    save_registry(reg)
+
+    log_event({
+        "event_type": "MULTI_PARTY_INTERACTION_REGISTERED",
+        "interaction_id": interaction_id,
+        "participants": participant_obligations,
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+    })
+
+    print(f"\nRegistered multi-party interaction {interaction_id}:")
+    print(f"  Participants: {', '.join(participant_obligations)}")
+    print(f"  Join keys: {', '.join(join_keys)}")
+    print(f"  Invariants: {len(invariants)}")
+    for inv in interaction["invariants"]:
+        print(f"    [{inv['kind']}] {inv['id']}: {inv['category']}")
+    print(f"  Rule: pairwise PASS does not establish joint PASS")
+    return interaction
+
+
+def assess_invariant(interaction_id, invariant_id, status, positive_witness="", counterexample=""):
+    """
+    Assess a multi-party invariant with both positive witness and counterexample.
+    status: QUALIFIED, FAILED, UNRESOLVED
+    """
+    if status not in ("QUALIFIED", "FAILED", "UNRESOLVED"):
+        print(f"ERROR: status must be QUALIFIED, FAILED, or UNRESOLVED")
+        sys.exit(1)
+
+    reg = load_registry()
+    interaction = reg.get("multi_party_interactions", {}).get(interaction_id)
+    if not interaction:
+        print(f"Interaction {interaction_id} not found.")
+        sys.exit(1)
+
+    inv = next((i for i in interaction["invariants"] if i["id"] == invariant_id), None)
+    if not inv:
+        print(f"Invariant {invariant_id} not found in {interaction_id}.")
+        sys.exit(1)
+
+    inv["status"] = status
+    inv["positive_witness"] = positive_witness[:200]
+    inv["counterexample"] = counterexample[:200]
+    inv["assessed_at"] = datetime.now(timezone.utc).isoformat()
+
+    # Recompute overall qualification
+    statuses = [i["status"] for i in interaction["invariants"]]
+    if all(s == "QUALIFIED" for s in statuses):
+        interaction["qualification"] = "ESTABLISHED"
+    elif any(s == "FAILED" for s in statuses):
+        interaction["qualification"] = "FAILED"
+    elif any(s == "QUALIFIED" for s in statuses):
+        interaction["qualification"] = "PARTIALLY_ESTABLISHED"
+    else:
+        interaction["qualification"] = "INSUFFICIENT_EVIDENCE"
+
+    save_registry(reg)
+    log_event({
+        "event_type": "INVARIANT_ASSESSED",
+        "interaction_id": interaction_id,
+        "invariant_id": invariant_id,
+        "status": status,
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+    })
+
+    print(f"{interaction_id}/{invariant_id}: → {status}")
+    if status == "QUALIFIED" and not positive_witness:
+        print(f"  WARNING: qualified without positive witness")
+    if status == "QUALIFIED" and not counterexample:
+        print(f"  WARNING: qualified without adversarial counterexample")
+    print(f"  Overall: {interaction['qualification']}")
+    return inv
+
+
+def check_joint_context(interaction_id, participant_contexts):
+    """
+    Verify that all participants agree on the same execution context.
+    
+    participant_contexts: {"KNOW": {"decision_id": "D-101", ...}, "LAW": {...}, "ACT": {...}}
+    
+    This catches the D-101/D-102 mismatch: each pair passes locally but the
+    joint execution is invalid because contexts don't agree.
+    """
+    reg = load_registry()
+    interaction = reg.get("multi_party_interactions", {}).get(interaction_id)
+    if not interaction:
+        print(f"Interaction {interaction_id} not found.")
+        sys.exit(1)
+
+    join_keys = interaction["join_keys"]
+    mismatches = []
+
+    # Check each join key across all participants
+    for key in join_keys:
+        values = {}
+        for participant, ctx in participant_contexts.items():
+            values[participant] = ctx.get(key, "MISSING")
+        unique_values = set(values.values())
+        if len(unique_values) > 1:
+            mismatches.append({
+                "join_key": key,
+                "values": values,
+            })
+
+    if mismatches:
+        print(f"\n⚠ JOINT CONTEXT MISMATCH in {interaction_id}:")
+        for m in mismatches:
+            print(f"  {m['join_key']}:")
+            for p, v in m["values"].items():
+                print(f"    {p}: {v}")
+        print(f"  Pairwise receipts may be green. Joint execution is INVALID.")
+        print(f"  The operation must refuse or safely requalify.")
+        return False, mismatches
+    else:
+        print(f"\n✓ Joint context consistent in {interaction_id}:")
+        print(f"  All participants agree on: {', '.join(join_keys)}")
+        return True, []
+
+
 def main():
     parser = argparse.ArgumentParser(description="Claim-level support-set evaluator")
     sub = parser.add_subparsers(dest="cmd", required=True)
@@ -1588,6 +1774,25 @@ def main():
     vi.add_argument("--verifier", default="independent")
     vi.add_argument("--result", required=True, choices=["QUALIFIED", "REJECTED"])
 
+    mpi = sub.add_parser("register-multi-party", help="Register multi-party interaction")
+    mpi.add_argument("--id", required=True)
+    mpi.add_argument("--participants", required=True, help="Comma-separated obligation IDs")
+    mpi.add_argument("--join-keys", required=True, help="Comma-separated context keys")
+    mpi.add_argument("--invariants", required=True, help="JSON list of {id,kind,category,predicate}")
+    mpi.add_argument("--scope", default="")
+    mpi.add_argument("--environment", default="")
+
+    ai2 = sub.add_parser("assess-invariant", help="Assess multi-party invariant")
+    ai2.add_argument("--interaction", required=True)
+    ai2.add_argument("--invariant", required=True)
+    ai2.add_argument("--status", required=True, choices=["QUALIFIED", "FAILED", "UNRESOLVED"])
+    ai2.add_argument("--positive-witness", default="")
+    ai2.add_argument("--counterexample", default="")
+
+    cjc = sub.add_parser("check-joint-context", help="Verify shared execution context")
+    cjc.add_argument("--interaction", required=True)
+    cjc.add_argument("--contexts", required=True, help="JSON dict of participant->context")
+
     args = parser.parse_args()
     if args.cmd == "register-claim":
         register_claim(args.id, args.description, args.scope)
@@ -1656,6 +1861,18 @@ def main():
                           args.negative_test, args.invariant, participants)
     elif args.cmd == "verify-interaction":
         verify_interaction_proof(args.claim, args.handoff, args.verifier, args.result)
+    elif args.cmd == "register-multi-party":
+        participants = [p.strip() for p in args.participants.split(",")]
+        join_keys = [k.strip() for k in args.join_keys.split(",")]
+        invariants = json.loads(args.invariants)
+        register_multi_party_interaction(args.id, participants, join_keys, invariants,
+                                          args.scope, args.environment)
+    elif args.cmd == "assess-invariant":
+        assess_invariant(args.interaction, args.invariant, args.status,
+                         args.positive_witness, args.counterexample)
+    elif args.cmd == "check-joint-context":
+        contexts = json.loads(args.contexts)
+        check_joint_context(args.interaction, contexts)
 
 
 if __name__ == "__main__":
