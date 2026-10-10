@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Naya Lego — Jewels · Drawn, Not Dotted</title>
+<style>
+/* TOKENS — inlined so this page is self-contained (tokens.css kept for the library) */
+:root {
+  /* The field — the world. Deep, never gray. */
+  --field: #050507;
+  --obsidian: #0B0D12;
+  --raise: #10141d;
+  --card: #141a28;
+  --deep: #0a0e16;
+
+  /* The light — text 99% of the time. Every idle rim. */
+  --white: #F8F7FB;
+  --ink: #F5F7FB;
+  --quiet: rgba(248,247,251,.72);
+  --secondary: rgba(248,247,251,.55);
+  --line: rgba(255,255,255,.12);
+
+  /* The soul — chrome accent. Naya's presence. Never a flood. */
+  --soul: #a06bff;
+
+  /* The spectrum — in law order. Richest first, ultra-rich magenta leading. */
+  --magenta: #e84fff;  /* The living edge. Leads every flow. */
+  --purple: #a06bff;   /* Choosing intelligence. The soul. */
+  --blue: #3fb8ff;     /* Knowledge moving. */
+  --green: #2fe89e;    /* Alive and well. */
+  --gold: #ffbf3d;     /* Attention, earned. */
+
+  /* Spectrum RGB triplets — for rgba() glows */
+  --magenta-rgb: 232,79,255;
+  --purple-rgb: 160,107,255;
+  --blue-rgb: 63,184,255;
+  --green-rgb: 47,232,158;
+  --gold-rgb: 255,191,61;
+
+  /* Extended family */
+  --teal: #40d3bb;
+  --teal-rgb: 64,211,187;
+  --coral: #ff5e6c;
+  --coral-rgb: 255,94,108;
+  --lime: #b8ee57;
+  --lime-rgb: 184,238,87;
+  --indigo: #6675ff;
+  --indigo-rgb: 102,117,255;
+
+  /* Truth states */
+  --verified: #2fe89e;
+  --verified-rgb: 47,232,158;
+  --claim: #ffbf3d;
+  --claim-rgb: 255,191,61;
+  --demo: #e84fff;
+  --demo-rgb: 232,79,255;
+
+  /* Motion */
+  --ease: cubic-bezier(.22,1,.36,1);
+  --snap: cubic-bezier(.32,.72,0,1);
+
+  /* Elevation */
+  --lift: 0 18px 50px rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.4);
+  --ring: 0 0 0 2px rgba(160,107,255,.35);
+
+  /* Radii */
+  --r-sm: 11px;
+  --r-md: 13px;
+  --r-lg: 18px;
+  --r-xl: 26px;
+  --r-pill: 999px;
+
+  /* Type scale — size separates, color doesn't */
+  --type-display: 64px;
+  --type-chapter: 40px;
+  --type-headline: 24px;
+  --type-body: 18px;
+  --type-small: 14px;
+}
+</style>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--field); color: var(--white); font-family: Inter, ui-sans-serif, system-ui, sans-serif; font-size: var(--type-body); line-height: 1.65; -webkit-font-smoothing: antialiased; padding: 48px 24px; }
+.lego-wrap { max-width: 1000px; margin: 0 auto; }
+.lego-kicker { font-size: 14px; letter-spacing: .28em; text-transform: uppercase; color: var(--quiet); margin-bottom: 12px; }
+.lego-title { font-family: Georgia, serif; font-size: 40px; margin-bottom: 8px; }
+.lego-lede { font-size: 20px; color: var(--quiet); max-width: 68ch; margin-bottom: 16px; }
+.lego-lede strong { color: var(--white); }
+.lego-section { margin: 56px 0; padding: 32px; border: 1px solid var(--line); border-radius: var(--r-xl); background: linear-gradient(180deg, var(--card), var(--deep)); }
+.lego-section h2 { font-family: Georgia, serif; font-size: 28px; margin-bottom: 8px; }
+.lego-section .why { color: var(--quiet); margin-bottom: 24px; max-width: 70ch; }
+.lego-section .why strong { color: var(--white); }
+pre.code { background: #0a0d14; border: 1px solid var(--line); border-radius: 14px; padding: 20px 22px; overflow-x: auto; font-size: 13px; line-height: 1.7; font-family: ui-monospace, Menlo, Consolas, monospace; color: #d7e0f5; margin: 20px 0; white-space: pre-wrap; word-break: break-word; }
+.copy-btn { background: var(--raise); border: 1px solid var(--line); color: var(--white); border-radius: 8px; padding: 6px 14px; font-size: 13px; cursor: pointer; margin-bottom: 8px; }
+.copy-btn:hover { border-color: var(--soul); }
+.law-note { border-left: 3px solid var(--magenta); padding: 12px 18px; margin: 20px 0; background: rgba(232,79,255,.05); border-radius: 0 10px 10px 0; font-size: 16px; }
+
+/* ============ ORBS — spherical, orbital, lit from within ============ */
+.orb-row { display: flex; gap: 40px; justify-content: center; flex-wrap: wrap; margin: 36px 0 12px; }
+.orb-wrap { text-align: center; }
+.orb-wrap .micro { margin-top: 16px; letter-spacing: .2em; text-transform: uppercase; font-size: 13px; color: var(--quiet); }
+.orb-wrap .micro small { display: block; letter-spacing: .06em; text-transform: none; color: var(--secondary); margin-top: 4px; font-size: 12px; }
+.orb { --oc: #a06bff; --oc-rgb: 160,107,255; position: relative; display: inline-block; width: 120px; height: 120px; border-radius: 50%;
+  background:
+    radial-gradient(circle at 34% 26%, rgba(255,255,255,.95) 0%, rgba(255,255,255,.30) 13%, transparent 30%),
+    radial-gradient(circle at 50% 62%, rgba(255,255,255,.10) 0%, transparent 42%),
+    radial-gradient(circle at 50% 50%, var(--oc) 0%, color-mix(in srgb, var(--oc) 62%, #000) 56%, #040406 100%);
+  box-shadow:
+    inset 0 0 0 1.5px rgba(255,255,255,.50),
+    inset 0 10px 18px rgba(255,255,255,.14),
+    inset 0 -12px 24px rgba(0,0,0,.62),
+    0 0 30px rgba(var(--oc-rgb),.55),
+    0 0 74px -10px rgba(var(--oc-rgb),.42),
+    0 24px 48px rgba(0,0,0,.65);
+  transition: transform .32s var(--ease), box-shadow .32s var(--ease);
+  animation: orb-breathe 5s ease-in-out infinite;
+}
+.orb-wrap:nth-child(2) .orb { animation-delay: 1s; } .orb-wrap:nth-child(3) .orb { animation-delay: 2s; }
+.orb-wrap:nth-child(4) .orb { animation-delay: 3s; } .orb-wrap:nth-child(5) .orb { animation-delay: 4s; }
+@keyframes orb-breathe { 0%,100% { transform: scale(1); } 50% { transform: scale(1.045); } }
+.orb::before { content: ""; position: absolute; inset: -17px; border-radius: 50%;
+  background: conic-gradient(from 0deg, transparent 0deg, transparent 282deg, rgba(var(--oc-rgb),.85) 328deg, rgba(255,255,255,.95) 350deg, transparent 360deg);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude; padding: 3px;
+  animation: orb-spin 6s linear infinite; opacity: .85; pointer-events: none;
+}
+.orb::after { content: ""; position: absolute; left: 16%; right: 16%; bottom: -30px; height: 24px; border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(var(--oc-rgb),.42), transparent 70%); filter: blur(7px); z-index: -1; pointer-events: none; }
+.orb:hover { animation-play-state: paused; transform: translateY(-8px) scale(1.06);
+  box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.65), inset 0 10px 18px rgba(255,255,255,.2), inset 0 -12px 24px rgba(0,0,0,.55),
+    0 0 44px rgba(var(--oc-rgb),.8), 0 0 90px -8px rgba(var(--oc-rgb),.55), 0 30px 54px rgba(0,0,0,.7); }
+.orb:hover::before { animation-duration: 1.5s; opacity: 1; }
+@keyframes orb-spin { to { transform: rotate(360deg); } }
+.orb--sm { width: 56px; height: 56px; animation: none; }
+.orb--sm::before { inset: -10px; padding: 2px; animation-duration: 7s; }
+.orb--sm::after { bottom: -16px; height: 14px; }
+.orb--xs { width: 30px; height: 30px; animation: none; }
+.orb--xs::before { inset: -7px; padding: 2px; animation-duration: 8s; }
+.orb--xs::after { display: none; }
+.orb--black { background:
+    radial-gradient(circle at 34% 26%, rgba(255,255,255,.55) 0%, transparent 26%),
+    radial-gradient(circle at 50% 55%, #1b1b22 0%, #050507 72%);
+  box-shadow:
+    inset 0 0 0 2px rgba(var(--oc-rgb),.9),
+    inset 0 -12px 24px rgba(0,0,0,.7),
+    0 0 30px rgba(var(--oc-rgb),.5),
+    0 0 70px -12px rgba(var(--oc-rgb),.4),
+    0 24px 48px rgba(0,0,0,.65);
+}
+.orb-scale { display: flex; gap: 48px; justify-content: center; flex-wrap: wrap; align-items: flex-end; margin: 28px 0; padding: 36px 20px; border: 1px solid var(--line); border-radius: var(--r-xl); background: linear-gradient(180deg, rgba(255,255,255,.025), transparent); }
+.orb-demo { text-align: center; }
+.orb-demo .micro { margin-top: 14px; letter-spacing: .18em; text-transform: uppercase; font-size: 12px; color: var(--quiet); }
+.orb-demo .micro small { display: block; letter-spacing: .05em; text-transform: none; color: var(--secondary); margin-top: 4px; }
+/* ============ ORB EXPANSION — hero, glyphs, twins, truth, context ============ */
+.orb--hero { width: 200px; height: 200px; }
+.orb--hero::before { inset: -26px; padding: 4px; animation-duration: 9s; }
+.orb--hero::after { bottom: -46px; height: 36px; }
+.orb-hero-stage { text-align: center; margin: 40px 0 8px; padding: 52px 20px 44px; border: 1px solid var(--line); border-radius: var(--r-xl);
+  background: radial-gradient(620px 320px at 50% 42%, rgba(160,107,255,.09), transparent 70%); }
+.orb-hero-wrap { position: relative; display: inline-block; padding: 38px; }
+.orb-hero-wrap::before { content: ""; position: absolute; inset: 0; border-radius: 50%; pointer-events: none; opacity: .55;
+  background: conic-gradient(from 180deg, transparent 0deg, transparent 298deg, rgba(255,255,255,.75) 338deg, transparent 360deg);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude; padding: 2px;
+  animation: orb-spin-rev 16s linear infinite; }
+@keyframes orb-spin-rev { to { transform: rotate(-360deg); } }
+.orb-hero-stage .micro { margin-top: 22px; letter-spacing: .2em; text-transform: uppercase; font-size: 13px; color: var(--quiet); }
+.orb-hero-stage .micro small { display: block; letter-spacing: .05em; text-transform: none; color: var(--secondary); margin-top: 6px; }
+/* twin rings: second ring replaces the light pool */
+.orb--twin::after { inset: -30px; left: auto; right: auto; top: auto; bottom: auto; height: auto; border-radius: 50%; filter: none; z-index: auto;
+  background: conic-gradient(from 90deg, transparent 0deg, transparent 310deg, rgba(var(--oc-rgb),.6) 345deg, transparent 360deg);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude; padding: 2px;
+  animation: orb-spin-rev 11s linear infinite; opacity: .7; }
+/* glyph orb — the app icon */
+.orb--glyph { display: inline-grid; place-items: center; font-size: 46px; color: #fff;
+  text-shadow: 0 2px 10px rgba(0,0,0,.75), 0 0 22px rgba(var(--oc-rgb),.95); }
+.orb--icon { width: 64px; height: 64px; font-size: 26px; }
+.orb--icon::before { inset: -11px; padding: 2px; }
+.orb--icon::after { bottom: -18px; height: 14px; }
+/* pressable orb */
+button.orb--btn { cursor: pointer; font-family: inherit; border: none; }
+.orb--btn:active { transform: scale(.9); transition: transform .1s ease; }
+.orb--btn:focus-visible { outline: 2px solid #fff; outline-offset: 8px; }
+/* orbs in context */
+.orb-context { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin: 24px 0; }
+.orb-ctx-card { border: 1px solid var(--line); border-radius: var(--r-lg); padding: 22px;
+  background: linear-gradient(180deg, rgba(255,255,255,.03), transparent); transition: transform .25s var(--ease), border-color .25s var(--ease); }
+.orb-ctx-card:hover { transform: translateY(-3px); border-color: rgba(255,255,255,.25); }
+.orb-ctx-card h4 { display: flex; align-items: center; gap: 12px; font-size: 18px; margin: 0 0 12px; }
+.orb-bullet-list { list-style: none; margin: 0; padding: 0; }
+.orb-bullet-list li { display: flex; gap: 12px; align-items: center; padding: 8px 0; font-size: 16px; }
+@media (prefers-reduced-motion: reduce) { .orb, .orb::before { animation: none; } }
+
+/* ============ MINI-ORB — the luminous mark (Naya_3) ============ */
+.mini-orb { --c: var(--blue); width: 34px; height: 34px; border-radius: 50%; flex: none;
+  background: radial-gradient(circle at 35% 27%, rgba(255,255,255,.6), var(--c) 37%, #08040c 78%);
+  box-shadow: 0 0 14px var(--c); border: 1px solid rgba(255,255,255,.6); }
+.orb-row { display: flex; gap: 28px; flex-wrap: wrap; align-items: center; margin: 24px 0; }
+.orb-item { display: flex; gap: 12px; align-items: center; }
+.orb-item .orb-label { font-size: 14px; font-weight: 800; }
+.orb-item .orb-label small { display: block; font-size: 12px; color: #d6cce5; font-weight: 400; }
+
+/* ============ GEM BULLETS — for lists ============ */
+.gem-list { list-style: none; margin: 20px 0; }
+.gem-list li { display: flex; gap: 14px; align-items: flex-start; padding: 10px 0; font-size: 17px; }
+.gem-bullet { --tone: var(--purple); width: 12px; height: 12px; flex: none; display: inline-block; transform: rotate(45deg); margin-top: 7px;
+  background: linear-gradient(140deg, #fff, var(--tone) 50%, #18101a); box-shadow: 0 0 14px var(--tone); }
+</style>
+</head>
+<body>
+<div class="lego-wrap">
+
+<p class="lego-kicker">Naya Lego · Jewels</p>
+<h1 class="lego-title">Jewels, not dots.</h1>
+<p class="lego-lede"><strong>Drawn. Glowing. In true spectrum order. Never twice adjacent.</strong> At the highest level, craft distinct icons — don't stamp the same one repeatedly.</p>
+
+<div class="law-note"><strong>The law:</strong> Every bullet a jewel. Never twice in a row. One global spectrum sequence per page: <strong>magenta → purple → blue → green → gold.</strong></div>
+
+<div class="lego-section">
+<h2>01 · Orbs — finished objects of light</h2>
+<p class="why"><strong>Why:</strong> A jewel is a cut stone. An <strong>orb</strong> is a finished object — spherical, orbital, lit from within. Each holds one spectrum color at its core. A ring of light circles every orb. Hover — the orbit flares and the orb lifts toward you. <strong>Use for:</strong> bullets, section marks, app icons, truth states.</p>
+<div class="orb-row">
+  <div class="orb-wrap"><span class="orb" style="--oc:#e84fff;--oc-rgb:232,79,255"></span><p class="micro">MAGENTA<small>The living edge</small></p></div>
+  <div class="orb-wrap"><span class="orb" style="--oc:#a06bff;--oc-rgb:160,107,255"></span><p class="micro">PURPLE<small>Naya's presence</small></p></div>
+  <div class="orb-wrap"><span class="orb" style="--oc:#3fb8ff;--oc-rgb:63,184,255"></span><p class="micro">BLUE<small>Knowledge moving</small></p></div>
+  <div class="orb-wrap"><span class="orb" style="--oc:#2fe89e;--oc-rgb:47,232,158"></span><p class="micro">GREEN<small>Alive and well</small></p></div>
+  <div class="orb-wrap"><span class="orb" style="--oc:#ffbf3d;--oc-rgb:255,191,61"></span><p class="micro">GOLD<small>Attention, earned</small></p></div>
+</div>
+<div class="orb-scale">
+  <div class="orb-demo"><span class="orb orb--xs" style="--oc:#e84fff;--oc-rgb:232,79,255"></span><p class="micro">BULLET · 30px<small>Lists, gem points</small></p></div>
+  <div class="orb-demo"><span class="orb orb--sm" style="--oc:#3fb8ff;--oc-rgb:63,184,255"></span><p class="micro">SECTION MARK · 56px<small>Room icons, headers</small></p></div>
+  <div class="orb-demo"><span class="orb orb--black" style="--oc:#2fe89e;--oc-rgb:47,232,158"></span><p class="micro">BLACK ORB · 120px<small>Dark soul, color rim</small></p></div>
+</div>
+
+<div class="orb-hero-stage">
+  <div class="orb-hero-wrap"><span class="orb orb--hero" style="--oc:#a06bff;--oc-rgb:160,107,255"></span></div>
+  <p class="micro">HERO ORB · 200px<small>Twin counter-rotating orbits. The centerpiece — one per page, never more.</small></p>
+</div>
+
+<h3 style="font-size:22px;margin:44px 0 4px">Orb variants.</h3>
+<p style="color:var(--quiet);font-size:16px;margin:0 0 8px">Glyphs at the core turn orbs into app icons. Twin rings double the orbit. The orb button presses like something real.</p>
+<div class="orb-row">
+  <div class="orb-wrap"><span class="orb orb--glyph" style="--oc:#e84fff;--oc-rgb:232,79,255">✦</span><p class="micro">APP ICON<small>Glyph at the core</small></p></div>
+  <div class="orb-wrap"><span class="orb orb--glyph" style="--oc:#3fb8ff;--oc-rgb:63,184,255">♥</span><p class="micro">APP ICON<small>Love, luminous</small></p></div>
+  <div class="orb-wrap"><span class="orb orb--twin" style="--oc:#2fe89e;--oc-rgb:47,232,158"></span><p class="micro">TWIN ORBIT<small>Two rings, counter-rotating</small></p></div>
+  <div class="orb-wrap"><button class="orb orb--btn" type="button" aria-label="Activate orb" style="--oc:#ffbf3d;--oc-rgb:255,191,61"></button><p class="micro">ORB BUTTON<small>Press it — it gives</small></p></div>
+</div>
+
+<h3 style="font-size:22px;margin:44px 0 4px">Truth orbs.</h3>
+<p style="color:var(--quiet);font-size:16px;margin:0 0 8px">The truth language, as objects. Green is proven. Gold is shown. Blue is stated.</p>
+<div class="orb-row">
+  <div class="orb-wrap"><span class="orb orb--sm" style="--oc:#2fe89e;--oc-rgb:47,232,158"></span><p class="micro">VERIFIED<small>Proven, glowing green</small></p></div>
+  <div class="orb-wrap"><span class="orb orb--sm" style="--oc:#ffbf3d;--oc-rgb:255,191,61"></span><p class="micro">DEMONSTRATION<small>Shown, golden</small></p></div>
+  <div class="orb-wrap"><span class="orb orb--sm" style="--oc:#3fb8ff;--oc-rgb:63,184,255"></span><p class="micro">CLAIM<small>Stated, quiet blue</small></p></div>
+</div>
+
+<h3 style="font-size:22px;margin:44px 0 4px">Orbs in context.</h3>
+<p style="color:var(--quiet);font-size:16px;margin:0 0 8px">Where orbs live in real interfaces — bullets, section marks, app icons.</p>
+<div class="orb-context">
+  <div class="orb-ctx-card">
+    <h4>Bullets</h4>
+    <ul class="orb-bullet-list">
+      <li><span class="orb orb--xs" style="--oc:#e84fff;--oc-rgb:232,79,255"></span>Every list item earns its light</li>
+      <li><span class="orb orb--xs" style="--oc:#a06bff;--oc-rgb:160,107,255"></span>Spectrum order, never twice adjacent</li>
+      <li><span class="orb orb--xs" style="--oc:#3fb8ff;--oc-rgb:63,184,255"></span>Small but never flat</li>
+    </ul>
+  </div>
+  <div class="orb-ctx-card">
+    <h4><span class="orb orb--sm" style="--oc:#a06bff;--oc-rgb:160,107,255"></span>Section marks</h4>
+    <p style="margin:0;color:var(--quiet);font-size:15px">A 56px orb beside a heading turns a title into a destination. One color per section, in spectrum order.</p>
+  </div>
+  <div class="orb-ctx-card">
+    <h4>App icons</h4>
+    <div style="display:flex;gap:16px;align-items:center">
+      <span class="orb orb--glyph orb--icon" style="--oc:#e84fff;--oc-rgb:232,79,255">✦</span>
+      <span class="orb orb--glyph orb--icon" style="--oc:#2fe89e;--oc-rgb:47,232,158">▶</span>
+      <span class="orb orb--glyph orb--icon" style="--oc:#ffbf3d;--oc-rgb:255,191,61">◈</span>
+    </div>
+    <p style="margin:14px 0 0;color:var(--quiet);font-size:15px">64px glyph orbs — the icon set for rooms and apps.</p>
+  </div>
+</div>
+<button class="copy-btn" onclick="copyCode('orbCode')">Copy orb system</button>
+<pre class="code" id="orbCode">&lt;!-- ORB — one object, every scale. Set --oc / --oc-rgb to any spectrum color. --&gt;
+&lt;span class="orb" style="--oc:#e84fff;--oc-rgb:232,79,255"&gt;&lt;/span&gt;
+&lt;span class="orb orb--sm" style="--oc:#3fb8ff;--oc-rgb:63,184,255"&gt;&lt;/span&gt; &lt;!-- section mark --&gt;
+&lt;span class="orb orb--xs" style="--oc:#2fe89e;--oc-rgb:47,232,158"&gt;&lt;/span&gt; &lt;!-- bullet --&gt;
+&lt;span class="orb orb--black" style="--oc:#ffbf3d;--oc-rgb:255,191,61"&gt;&lt;/span&gt; &lt;!-- black variant --&gt;
+&lt;span class="orb orb--hero" style="--oc:#a06bff;--oc-rgb:160,107,255"&gt;&lt;/span&gt; &lt;!-- hero: wrap in .orb-hero-wrap for twin orbits --&gt;
+&lt;span class="orb orb--glyph" style="--oc:#e84fff;--oc-rgb:232,79,255"&gt;✦&lt;/span&gt; &lt;!-- app icon --&gt;
+&lt;span class="orb orb--twin" style="--oc:#2fe89e;--oc-rgb:47,232,158"&gt;&lt;/span&gt; &lt;!-- twin rings --&gt;
+&lt;button class="orb orb--btn" style="--oc:#ffbf3d;--oc-rgb:255,191,61" aria-label="Activate"&gt;&lt;/button&gt;
+
+&lt;style&gt;
+.orb { --oc:#a06bff; --oc-rgb:160,107,255; position:relative; display:inline-block;
+  width:120px; height:120px; border-radius:50%;
+  background:
+    radial-gradient(circle at 34% 26%, rgba(255,255,255,.95) 0%, rgba(255,255,255,.30) 13%, transparent 30%),
+    radial-gradient(circle at 50% 62%, rgba(255,255,255,.10) 0%, transparent 42%),
+    radial-gradient(circle at 50% 50%, var(--oc) 0%, var(--oc) 56%, #040406 100%);
+  box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.5), inset 0 -12px 24px rgba(0,0,0,.62),
+    0 0 30px rgba(var(--oc-rgb),.55), 0 24px 48px rgba(0,0,0,.65);
+  animation: orb-breathe 5s ease-in-out infinite; }
+.orb::before { /* orbiting ring of light */
+  content:""; position:absolute; inset:-17px; border-radius:50%;
+  background: conic-gradient(from 0deg, transparent 0deg, transparent 282deg,
+    rgba(var(--oc-rgb),.85) 328deg, rgba(255,255,255,.95) 350deg, transparent 360deg);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude; padding:3px;
+  animation: orb-spin 6s linear infinite; }
+.orb:hover { transform: translateY(-8px) scale(1.06); }
+.orb:hover::before { animation-duration:1.5s; }
+@keyframes orb-spin { to { transform: rotate(360deg); } }
+@keyframes orb-breathe { 0%,100% { transform:scale(1); } 50% { transform:scale(1.045); } }
+.orb--sm { width:56px; height:56px; } .orb--sm::before { inset:-10px; }
+.orb--xs { width:30px; height:30px; } .orb--xs::before { inset:-7px; }
+.orb--black { background:
+    radial-gradient(circle at 34% 26%, rgba(255,255,255,.55) 0%, transparent 26%),
+    radial-gradient(circle at 50% 55%, #1b1b22 0%, #050507 72%);
+  box-shadow: inset 0 0 0 2px rgba(var(--oc-rgb),.9), 0 0 30px rgba(var(--oc-rgb),.5); }
+/* — expansion: hero, glyph, twin, pressable — */
+.orb--hero { width:200px; height:200px; }
+.orb--hero::before { inset:-26px; padding:4px; animation-duration:9s; }
+.orb-hero-wrap { position:relative; display:inline-block; padding:38px; }
+.orb-hero-wrap::before { content:""; position:absolute; inset:0; border-radius:50%; pointer-events:none; opacity:.55;
+  background:conic-gradient(from 180deg, transparent 0deg, transparent 298deg, rgba(255,255,255,.75) 338deg, transparent 360deg);
+  -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor; mask-composite:exclude; padding:2px;
+  animation:orb-spin-rev 16s linear infinite; }
+@keyframes orb-spin-rev { to { transform:rotate(-360deg); } }
+.orb--twin::after { inset:-30px; left:auto; right:auto; top:auto; bottom:auto; height:auto; border-radius:50%; filter:none; z-index:auto;
+  background:conic-gradient(from 90deg, transparent 0deg, transparent 310deg, rgba(var(--oc-rgb),.6) 345deg, transparent 360deg);
+  -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor; mask-composite:exclude; padding:2px;
+  animation:orb-spin-rev 11s linear infinite; opacity:.7; }
+.orb--glyph { display:inline-grid; place-items:center; font-size:46px; color:#fff;
+  text-shadow:0 2px 10px rgba(0,0,0,.75), 0 0 22px rgba(var(--oc-rgb),.95); }
+.orb--icon { width:64px; height:64px; font-size:26px; }
+.orb--icon::before { inset:-11px; padding:2px; }
+button.orb--btn { cursor:pointer; font-family:inherit; border:none; }
+.orb--btn:active { transform:scale(.9); transition:transform .1s ease; }
+&lt;/style&gt;</pre>
+</div>
+
+<div class="lego-section">
+<h2>02 · Mini-Orb — the luminous mark</h2>
+<p class="why"><strong>Why:</strong> The atomic unit of the luminous mark language. A radial-gradient sphere that ignites in whatever <code>--c</code> color it's given. White hotspot at 35%/27%, color at 37%, black at 78%.</p>
+<div class="orb-row">
+  <div class="orb-item"><span class="mini-orb" style="--c:var(--green)"></span><span class="orb-label">VERIFIED<small>Only when independent evidence exists</small></span></div>
+  <div class="orb-item"><span class="mini-orb" style="--c:var(--gold)"></span><span class="orb-label">DEMONSTRATION<small>Intentional specimen content</small></span></div>
+  <div class="orb-item"><span class="mini-orb" style="--c:var(--blue)"></span><span class="orb-label">INTELLIGENCE<small>Jewel facets · not generic cards</small></span></div>
+  <div class="orb-item"><span class="mini-orb" style="--c:var(--magenta)"></span><span class="orb-label">LIVING EDGE<small>The leading color</small></span></div>
+</div>
+<button class="copy-btn" onclick="copyCode('orbCode')">Copy mini-orb</button>
+<pre class="code" id="orbCode">.mini-orb { --c: var(--blue); width: 34px; height: 34px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 27%, rgba(255,255,255,.6), var(--c) 37%, #08040c 78%);
+  box-shadow: 0 0 14px var(--c); border: 1px solid rgba(255,255,255,.6); }
+
+&lt;span class="mini-orb" style="--c:var(--green)"&gt;&lt;/span&gt;</pre>
+</div>
+
+<div class="lego-section">
+<h2>03 · Gem Bullets — for lists</h2>
+<p class="why"><strong>Why:</strong> Bullets are drawn jewels, not dots. Rotated 45°, white-to-color gradient, glowing. Cycle through the spectrum — never twice adjacent.</p>
+<ul class="gem-list">
+  <li><span class="gem-bullet" style="--tone:var(--magenta)"></span>Color has four jobs. Never cross them.</li>
+  <li><span class="gem-bullet" style="--tone:var(--purple)"></span>Black heart. White voice. Visible skin.</li>
+  <li><span class="gem-bullet" style="--tone:var(--blue)"></span>One board. One color. A destination you enter.</li>
+  <li><span class="gem-bullet" style="--tone:var(--green)"></span>Size separates. Color doesn't.</li>
+  <li><span class="gem-bullet" style="--tone:var(--gold)"></span>Every bullet a jewel. Never twice in a row.</li>
+</ul>
+<button class="copy-btn" onclick="copyCode('gemCode')">Copy gem bullets</button>
+<pre class="code" id="gemCode">.gem-bullet { --tone: var(--purple); width: 12px; height: 12px; flex: none;
+  display: inline-block; transform: rotate(45deg); margin-top: 7px;
+  background: linear-gradient(140deg, #fff, var(--tone) 50%, #18101a);
+  box-shadow: 0 0 14px var(--tone); }
+
+&lt;span class="gem-bullet" style="--tone:var(--magenta)"&gt;&lt;/span&gt; Your text
+&lt;!-- cycle: magenta → purple → blue → green → gold --&gt;</pre>
+</div>
+
+</div>
+<script>
+function copyCode(id) {
+  const el = document.getElementById(id);
+  navigator.clipboard.writeText(el.innerText).then(() => {
+    const btn = event.target; const old = btn.textContent;
+    btn.textContent = 'Copied ✓'; setTimeout(() => btn.textContent = old, 1600);
+  });
+}
+/* Orbs are static markup — no JS needed. */
+</script>
+</body>
+</html>

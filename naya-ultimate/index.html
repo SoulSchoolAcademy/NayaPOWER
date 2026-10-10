@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Naya Ultimate Lego Library — Understand. Learn. Apply.</title>
+<style>
+/* TOKENS — inlined so this page is self-contained (tokens.css kept for the library) */
+:root {
+  /* The field — the world. Deep, never gray. */
+  --field: #050507;
+  --obsidian: #0B0D12;
+  --raise: #10141d;
+  --card: #141a28;
+  --deep: #0a0e16;
+
+  /* The light — text 99% of the time. Every idle rim. */
+  --white: #F8F7FB;
+  --ink: #F5F7FB;
+  --quiet: rgba(248,247,251,.72);
+  --secondary: rgba(248,247,251,.55);
+  --line: rgba(255,255,255,.12);
+
+  /* The soul — chrome accent. Naya's presence. Never a flood. */
+  --soul: #a06bff;
+
+  /* The spectrum — in law order. Richest first, ultra-rich magenta leading. */
+  --magenta: #e84fff;  /* The living edge. Leads every flow. */
+  --purple: #a06bff;   /* Choosing intelligence. The soul. */
+  --blue: #3fb8ff;     /* Knowledge moving. */
+  --green: #2fe89e;    /* Alive and well. */
+  --gold: #ffbf3d;     /* Attention, earned. */
+
+  /* Spectrum RGB triplets — for rgba() glows */
+  --magenta-rgb: 232,79,255;
+  --purple-rgb: 160,107,255;
+  --blue-rgb: 63,184,255;
+  --green-rgb: 47,232,158;
+  --gold-rgb: 255,191,61;
+
+  /* Extended family */
+  --teal: #40d3bb;
+  --teal-rgb: 64,211,187;
+  --coral: #ff5e6c;
+  --coral-rgb: 255,94,108;
+  --lime: #b8ee57;
+  --lime-rgb: 184,238,87;
+  --indigo: #6675ff;
+  --indigo-rgb: 102,117,255;
+
+  /* Truth states */
+  --verified: #2fe89e;
+  --verified-rgb: 47,232,158;
+  --claim: #ffbf3d;
+  --claim-rgb: 255,191,61;
+  --demo: #e84fff;
+  --demo-rgb: 232,79,255;
+
+  /* Motion */
+  --ease: cubic-bezier(.22,1,.36,1);
+  --snap: cubic-bezier(.32,.72,0,1);
+
+  /* Elevation */
+  --lift: 0 18px 50px rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.4);
+  --ring: 0 0 0 2px rgba(160,107,255,.35);
+
+  /* Radii */
+  --r-sm: 11px;
+  --r-md: 13px;
+  --r-lg: 18px;
+  --r-xl: 26px;
+  --r-pill: 999px;
+
+  /* Type scale — size separates, color doesn't */
+  --type-display: 64px;
+  --type-chapter: 40px;
+  --type-headline: 24px;
+  --type-body: 18px;
+  --type-small: 14px;
+}
+</style>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--field); color: var(--white); font-family: Inter, ui-sans-serif, system-ui, sans-serif; font-size: 18px; line-height: 1.65; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background: radial-gradient(900px 500px at 15% 0%, rgba(232,79,255,.07), transparent 60%), radial-gradient(800px 500px at 85% 20%, rgba(160,107,255,.06), transparent 60%), radial-gradient(700px 600px at 50% 100%, rgba(63,184,255,.05), transparent 60%);
+  animation: breathe 24s ease-in-out infinite; }
+@keyframes breathe { 0%,100% { opacity: .8; } 50% { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { body::before { animation: none; } *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+:focus-visible { outline: 2px solid var(--soul); outline-offset: 3px; box-shadow: 0 0 18px rgba(160,107,255,.5); border-radius: 6px; }
+button:focus:not(:focus-visible) { outline: none; box-shadow: none; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+section { padding: 72px 0; border-top: 1px solid rgba(255,255,255,.07); }
+section:first-of-type { border-top: none; }
+h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; font-weight: 700; letter-spacing: -.01em; }
+h2 { font-size: 40px; margin-bottom: 8px; }
+h2 .n { color: var(--magenta); font-family: Inter, sans-serif; font-size: 18px; vertical-align: super; margin-right: 12px; letter-spacing: .2em; }
+.kicker { font-size: 14px; letter-spacing: .28em; text-transform: uppercase; color: var(--quiet); margin-bottom: 16px; }
+.lede { font-size: 20px; color: var(--quiet); max-width: 68ch; margin-bottom: 32px; }
+.lede strong, p strong { color: var(--white); }
+p { margin-bottom: 16px; max-width: 72ch; }
+.micro { font-size: 14px; color: var(--secondary); }
+/* HERO */
+.hero { min-height: 92vh; display: flex; flex-direction: column; justify-content: center; text-align: center; border: none; padding: 48px 0 64px; }
+.hero h1 { font-size: 64px; line-height: 1.08; margin-bottom: 18px; }
+.hero h1 .soul { color: var(--soul); }
+.hero .tagline { font-size: 22px; color: var(--quiet); margin-bottom: 8px; }
+.hero .law-line { font-size: 15px; letter-spacing: .24em; text-transform: uppercase; color: var(--magenta); margin: 28px 0 40px; }
+.spectrum-bar { display: flex; height: 10px; border-radius: 99px; overflow: hidden; max-width: 560px; margin: 0 auto; box-shadow: 0 4px 24px rgba(0,0,0,.5); }
+.spectrum-bar span { flex: 1; }
+.spectrum-bar span:nth-child(1) { background: var(--magenta); box-shadow: 0 0 18px var(--magenta); }
+.spectrum-bar span:nth-child(2) { background: var(--purple); box-shadow: 0 0 18px var(--purple); }
+.spectrum-bar span:nth-child(3) { background: var(--blue); box-shadow: 0 0 18px var(--blue); }
+.spectrum-bar span:nth-child(4) { background: var(--green); box-shadow: 0 0 18px var(--green); }
+.spectrum-bar span:nth-child(5) { background: var(--gold); box-shadow: 0 0 18px var(--gold); }
+.spectrum-label { margin-top: 14px; font-size: 13px; letter-spacing: .3em; color: var(--secondary); text-transform: uppercase; }
+.toc { display: flex; flex-wrap: wrap; gap: 10px; margin: 32px 0; justify-content: center; }
+.toc a { color: var(--quiet); text-decoration: none; font-size: 14px; padding: 8px 16px; border: 1px solid var(--line); border-radius: 999px; transition: all .2s; }
+.toc a:hover { color: var(--white); border-color: var(--soul); box-shadow: 0 0 16px rgba(160,107,255,.3); }
+/* HERO BUTTONS — .living-btn */
+.hero-buttons { display: flex; gap: 28px; justify-content: center; flex-wrap: wrap; margin-top: 12px; }
+.living-btn { position: relative; overflow: hidden; cursor: pointer; border: none; font-family: Inter, sans-serif; font-weight: 800; font-size: 17px; letter-spacing: .12em; color: #fff; padding: 22px 44px; border-radius: 999px; min-width: 300px;
+  background: linear-gradient(180deg, #17171c 0%, #050505 55%, #0a0a0e 100%);
+  box-shadow: inset 0 0 0 1.7px rgba(255,255,255,.92), inset 0 2px 6px rgba(255,255,255,.22), inset 0 -8px 18px rgba(0,0,0,.75), 0 14px 40px rgba(0,0,0,.6), 0 4px 14px rgba(0,0,0,.5);
+  transition: transform .28s var(--ease), box-shadow .28s var(--ease); animation: idleBreathe 4.2s ease-in-out infinite; }
+.living-btn .btn-glow { position: absolute; inset: -2px; border-radius: 999px; opacity: .55; pointer-events: none; transition: opacity .3s; }
+.living-btn[data-spectrum="magenta"] .btn-glow { box-shadow: 0 0 34px 4px rgba(232,79,255,.5), inset 0 0 22px rgba(232,79,255,.28); }
+.living-btn[data-spectrum="purple"] .btn-glow { box-shadow: 0 0 34px 4px rgba(160,107,255,.5), inset 0 0 22px rgba(160,107,255,.28); animation-delay: 1.4s; }
+.living-btn[data-spectrum="blue"] .btn-glow { box-shadow: 0 0 34px 4px rgba(63,184,255,.5), inset 0 0 22px rgba(63,184,255,.28); animation-delay: 2.8s; }
+.living-btn::after { content: ""; position: absolute; top: -20%; bottom: -20%; width: 46%; left: -70%;
+  background: linear-gradient(105deg, transparent 20%, rgba(255,255,255,.34) 50%, transparent 80%); transform: skewX(-18deg); pointer-events: none; animation: sweep 5.5s var(--ease) infinite; }
+.living-btn[data-spectrum="purple"]::after { animation-delay: 1.8s; }
+.living-btn[data-spectrum="blue"]::after { animation-delay: 3.6s; }
+@keyframes sweep { 0%, 62% { left: -70%; } 88%, 100% { left: 130%; } }
+@keyframes idleBreathe {
+  0%, 100% { box-shadow: inset 0 0 0 1.7px rgba(255,255,255,.92), inset 0 2px 6px rgba(255,255,255,.22), inset 0 -8px 18px rgba(0,0,0,.75), 0 14px 40px rgba(0,0,0,.6), 0 4px 14px rgba(0,0,0,.5); }
+  50% { box-shadow: inset 0 0 0 1.7px rgba(255,255,255,1), inset 0 2px 8px rgba(255,255,255,.3), inset 0 -8px 18px rgba(0,0,0,.75), 0 18px 52px rgba(0,0,0,.65), 0 4px 14px rgba(0,0,0,.5); } }
+.living-btn:hover { transform: translateY(-4px) scale(1.025); animation: none; }
+.living-btn[data-spectrum="magenta"]:hover { box-shadow: inset 0 0 0 2px var(--magenta), inset 0 2px 8px rgba(255,255,255,.3), inset 0 -8px 18px rgba(0,0,0,.7), 0 22px 60px rgba(232,79,255,.4), 0 6px 18px rgba(0,0,0,.5); }
+.living-btn[data-spectrum="purple"]:hover { box-shadow: inset 0 0 0 2px var(--purple), inset 0 2px 8px rgba(255,255,255,.3), inset 0 -8px 18px rgba(0,0,0,.7), 0 22px 60px rgba(160,107,255,.4), 0 6px 18px rgba(0,0,0,.5); }
+.living-btn[data-spectrum="blue"]:hover { box-shadow: inset 0 0 0 2px var(--blue), inset 0 2px 8px rgba(255,255,255,.3), inset 0 -8px 18px rgba(0,0,0,.7), 0 22px 60px rgba(63,184,255,.4), 0 6px 18px rgba(0,0,0,.5); }
+.living-btn:hover .btn-glow { opacity: 1; }
+.living-btn:active { transform: translateY(1px) scale(.975); transition-duration: .08s; }
+.living-btn .btn-label { position: relative; z-index: 2; display: flex; align-items: center; justify-content: center; gap: 12px; }
+.btn-note { text-align: center; margin-top: 26px; }
+@media (max-width: 860px) { .living-btn { min-width: 100%; } .hero h1 { font-size: 42px; } h2 { font-size: 30px; } }
+/* Shared section components */
+.demo-row { display: flex; gap: 20px; flex-wrap: wrap; align-items: center; margin: 24px 0; }
+pre.code { background: #0a0d14; border: 1px solid var(--line); border-radius: 14px; padding: 20px 22px; overflow-x: auto; font-size: 14px; line-height: 1.7; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; color: #d7e0f5; margin: 20px 0; white-space: pre-wrap; word-break: break-word; }
+.code-head { display: flex; justify-content: space-between; align-items: center; margin: 28px 0 -12px; }
+.code-head .micro { letter-spacing: .18em; text-transform: uppercase; }
+.copy-btn { background: var(--raise); border: 1px solid var(--line); color: var(--white); border-radius: 8px; padding: 6px 14px; font-size: 13px; cursor: pointer; }
+.copy-btn:hover { border-color: var(--soul); }
+.callout { border: 1px solid var(--magenta); border-radius: var(--r-lg); padding: 26px 30px; margin: 32px 0; background: rgba(232,79,255,.05); box-shadow: 0 0 40px -12px rgba(232,79,255,.4); }
+.callout p { margin: 0; font-size: 17px; }
+.checklist { list-style: none; margin: 20px 0; }
+.checklist li { padding: 12px 0 12px 40px; position: relative; border-bottom: 1px solid rgba(255,255,255,.06); font-size: 16px; }
+.checklist li::before { content: "✓"; position: absolute; left: 8px; color: var(--green); font-weight: 800; }
+footer { text-align: center; padding: 64px 0 48px; color: var(--secondary); font-size: 14px; border-top: 1px solid rgba(255,255,255,.07); }
+footer .spectrum-bar { max-width: 320px; margin-bottom: 20px; }
+</style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<header class="hero wrap">
+  <h1>The Naya <span class="soul">Ultimate</span> Lego Library</h1>
+  <p class="tagline">The best of the best. One library. Every component copy-paste ready.</p>
+  <p class="law-line">One standard · Every page · No drift</p>
+  <div class="spectrum-bar" aria-label="Spectrum: magenta, purple, blue, green, gold"><span></span><span></span><span></span><span></span><span></span></div>
+  <p class="spectrum-label">Magenta → Purple → Blue → Green → Gold</p>
+  <div style="height:56px"></div>
+  <div class="hero-buttons">
+    <button class="living-btn" data-spectrum="magenta" onclick="document.getElementById('buttons').scrollIntoView({behavior:'smooth'})">
+      <span class="btn-glow"></span>
+      <span class="btn-label">✦ ENTER THE STANDARD</span>
+    </button>
+    <button class="living-btn" data-spectrum="purple" onclick="document.getElementById('smarttabs').scrollIntoView({behavior:'smooth'})">
+      <span class="btn-glow"></span>
+      <span class="btn-label">◈ SEE IT WORKING</span>
+    </button>
+    <button class="living-btn" data-spectrum="blue" onclick="document.getElementById('laws').scrollIntoView({behavior:'smooth'})">
+      <span class="btn-glow"></span>
+      <span class="btn-label">＋ READ THE LAW</span>
+    </button>
+  </div>
+  <p class="micro btn-note">These three buttons are the standard. Living depth. Lit at rest. Ignite on touch.<br>Every button you ever build starts here.</p>
+  <nav class="toc">
+    <a href="#buttons">Buttons</a><a href="#smarttabs">SmartTabs</a><a href="#spectrum">Spectrum</a><a href="#boards">Boards</a><a href="#jewels">Jewels</a><a href="#type">Typography</a><a href="#truth">Truth</a><a href="#laws">Laws</a><a href="#rules">Do's & Don'ts</a><a href="#machine">Machine Law</a>
+  </nav>
+</header>
+
+<div class="wrap">
+
+<!-- ================= 01 BUTTONS ================= -->
+<section id="buttons">
+  <p class="kicker">01 · The button family</p>
+  <h2><span class="n">01</span>Black heart. White voice. Visible skin.</h2>
+  <p class="lede">Four systems, one DNA. <strong>Heroes</strong> for the three flagship actions. The <strong>living system</strong> for spectrum-aware controls that wake before you touch them. The <strong>essential</strong> when simplicity wins. <strong>Primo</strong> for everyday actions.</p>
+  <p><strong>The law:</strong> No flat buttons. Every button has depth, responds to hover, ignites in its own color. <strong>Light up, don't glow out.</strong></p>
+
+  <h3 style="font-size:24px;margin:32px 0 16px">The living system — <span style="font-family:monospace;font-size:18px">.lv-btn</span></h3>
+  <p class="micro" style="margin-bottom:16px">Seven shadow layers. Cursor sheen follows your pointer. Wakes at 160px proximity. Move your cursor near a button — it notices you.</p>
+  <div class="demo-row" id="lvDemo">
+    <span class="lv-wrap"><span class="lv-aura"></span><button class="lv-btn lv-hero" style="--lv-accent:#e84fff;--lv-accent-rgb:232,79,255"><span class="lv-label">✦ Magenta Hero</span></button></span>
+    <span class="lv-wrap"><span class="lv-aura"></span><button class="lv-btn lv-hero" style="--lv-accent:#a06bff;--lv-accent-rgb:160,107,255"><span class="lv-label">◈ Purple Hero</span></button></span>
+    <span class="lv-wrap"><span class="lv-aura"></span><button class="lv-btn lv-hero" style="--lv-accent:#3fb8ff;--lv-accent-rgb:63,184,255"><span class="lv-label">＋ Blue Hero</span></button></span>
+  </div>
+  <div class="demo-row">
+    <span class="lv-wrap"><span class="lv-aura"></span><button class="lv-btn" style="--lv-accent:#e84fff;--lv-accent-rgb:232,79,255"><span class="lv-label">Magenta</span></button></span>
+    <span class="lv-wrap"><span class="lv-aura"></span><button class="lv-btn" style="--lv-accent:#a06bff;--lv-accent-rgb:160,107,255"><span class="lv-label">Purple</span></button></span>
+    <span class="lv-wrap"><span class="lv-aura"></span><button class="lv-btn" style="--lv-accent:#3fb8ff;--lv-accent-rgb:63,184,255"><span class="lv-label">Blue</span></button></span>
+    <span class="lv-wrap"><span class="lv-aura"></span><button class="lv-btn" style="--lv-accent:#2fe89e;--lv-accent-rgb:47,232,158"><span class="lv-label">Green</span></button></span>
+    <span class="lv-wrap"><span class="lv-aura"></span><button class="lv-btn" style="--lv-accent:#ffbf3d;--lv-accent-rgb:255,191,61"><span class="lv-label">Gold</span></button></span>
+    <span class="lv-wrap"><span class="lv-aura"></span><button class="lv-btn lv-btn--danger"><span class="lv-label">✕ Delete</span></button></span>
+  </div>
+
+  <h3 style="font-size:24px;margin:32px 0 16px">The essential — <span style="font-family:monospace;font-size:18px">.cx-btn</span></h3>
+  <p class="micro" style="margin-bottom:16px">Four shadows, perfectly chosen. When simplicity wins over complexity.</p>
+  <div class="demo-row">
+    <button class="cx-btn">＋ CREATE</button>
+    <button class="cx-btn">◈ DETAILS</button>
+    <button class="cx-btn">→ CONTINUE</button>
+  </div>
+
+  <h3 style="font-size:24px;margin:32px 0 16px">The orbit — <span style="font-family:monospace;font-size:18px">.orbit-btn</span></h3>
+  <p class="micro" style="margin-bottom:16px">A circle of light flows around the button. Black with color accents. Light ignites from behind on hover.</p>
+  <div class="demo-row">
+    <button class="orbit-btn" style="--oc:#e84fff;--oc-rgb:232,79,255"><span class="orbit-label">✦ Create</span></button>
+    <button class="orbit-btn" style="--oc:#a06bff;--oc-rgb:160,107,255"><span class="orbit-label">◈ Launch</span></button>
+    <button class="orbit-btn" style="--oc:#3fb8ff;--oc-rgb:63,184,255"><span class="orbit-label">＋ Begin</span></button>
+  </div>
+
+  <div class="code-head"><span class="micro">Copy — living button</span><button class="copy-btn" onclick="copyCode('btnCopy')">Copy</button></div>
+<pre class="code" id="btnCopy">&lt;span class="lv-wrap"&gt;
+  &lt;span class="lv-aura"&gt;&lt;/span&gt;
+  &lt;button class="lv-btn" style="--lv-accent:#e84fff;--lv-accent-rgb:232,79,255"&gt;
+    &lt;span class="lv-label"&gt;✦ Your Action&lt;/span&gt;
+  &lt;/button&gt;
+&lt;/span&gt;
+&lt;!-- Full CSS + living.js in lego/buttons.html --&gt;</pre>
+  <p class="micro">→ <a href="lego/buttons.html" style="color:var(--soul)">Open the complete button library</a> — all 4 systems, full CSS, copy-paste ready.</p>
+</section>
+<style>
+/* Living button system (inline for index demo) */
+.lv-wrap { position: relative; display: inline-block; }
+.lv-aura { position: absolute; inset: -70px; border-radius: 999px; background: radial-gradient(circle, rgba(var(--lv-accent-rgb,160,107,255),.20) 0%, rgba(var(--lv-accent-rgb,160,107,255),.06) 45%, transparent 70%); filter: blur(14px); opacity: 0; pointer-events: none; transition: opacity .55s ease; }
+.lv-wrap.lv-aware .lv-aura { opacity: .55; }
+.lv-wrap:hover .lv-aura { opacity: 1; }
+.lv-btn { --lv-accent: #a06bff; --lv-accent-rgb: 160,107,255; position: relative; isolation: isolate; overflow: hidden; display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 52px; padding: 0 30px; border-radius: 999px; border: 1px solid transparent; cursor: pointer; white-space: nowrap; font-family: Inter, sans-serif; font-size: 15px; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; color: #F8F7FB; text-shadow: 0 -1px 1px rgba(0,0,0,.85), 0 1px 3px rgba(0,0,0,.6);
+  background: linear-gradient(180deg, rgba(255,255,255,.12) 0%, rgba(255,255,255,.02) 38%, rgba(0,0,0,.22) 100%), linear-gradient(180deg, #26262e 0%, #0b0b0f 52%, #020203 100%);
+  box-shadow: inset 0 0 0 1px rgba(240,238,230,.40), inset 0 1px 0 rgba(255,255,255,.45), inset 0 -1px 0 rgba(0,0,0,.75), inset 0 -16px 30px rgba(0,0,0,.55), inset 0 12px 22px rgba(255,255,255,.05), 0 22px 46px rgba(0,0,0,.85), 0 6px 16px rgba(0,0,0,.60);
+  transition: transform .22s var(--ease), box-shadow .38s var(--ease), background .3s ease; animation: lv-breathe 7s ease-in-out infinite; -webkit-tap-highlight-color: transparent; }
+@keyframes lv-breathe { 0%,100% { box-shadow: inset 0 0 0 1px rgba(240,238,230,.40), inset 0 1px 0 rgba(255,255,255,.45), inset 0 -1px 0 rgba(0,0,0,.75), inset 0 -16px 30px rgba(0,0,0,.55), inset 0 12px 22px rgba(255,255,255,.05), 0 22px 46px rgba(0,0,0,.85), 0 6px 16px rgba(0,0,0,.60); } 50% { box-shadow: inset 0 0 0 1px rgba(240,238,230,.46), inset 0 1px 0 rgba(255,255,255,.52), inset 0 -1px 0 rgba(0,0,0,.75), inset 0 -16px 30px rgba(0,0,0,.55), inset 0 12px 22px rgba(255,255,255,.08), 0 24px 50px rgba(0,0,0,.88), 0 6px 16px rgba(0,0,0,.60); } }
+.lv-btn::before { content: ""; position: absolute; inset: 0; border-radius: inherit; z-index: 0; pointer-events: none; opacity: 0; transition: opacity .4s ease; background: radial-gradient(180px circle at var(--mx,50%) var(--my,50%), rgba(255,255,255,.14), rgba(255,255,255,.03) 42%, transparent 68%); }
+.lv-wrap.lv-aware .lv-btn::before { opacity: 1; }
+.lv-btn::after { content: ""; position: absolute; inset: 0; border-radius: inherit; z-index: 0; pointer-events: none; background: radial-gradient(120% 90% at 50% 60%, rgba(var(--lv-accent-rgb),.34), rgba(var(--lv-accent-rgb),.08) 55%, transparent 80%); opacity: .10; transition: opacity .45s ease; animation: lv-soul 7s ease-in-out infinite; }
+@keyframes lv-soul { 0%,100% { opacity: .08; } 50% { opacity: .16; } }
+.lv-wrap.lv-aware .lv-btn::after { opacity: .30; animation: none; }
+.lv-btn .lv-label { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 10px; }
+.lv-wrap.lv-aware .lv-btn { animation: none; transform: translateY(-1px); box-shadow: inset 0 0 0 1px rgba(240,238,230,.58), inset 0 1px 0 rgba(255,255,255,.55), inset 0 -1px 0 rgba(0,0,0,.70), inset 0 -16px 30px rgba(0,0,0,.48), inset 0 12px 22px rgba(255,255,255,.08), 0 0 0 1px rgba(var(--lv-accent-rgb),.16), 0 26px 52px rgba(0,0,0,.87), 0 8px 18px rgba(0,0,0,.62); }
+.lv-btn:hover, .lv-btn:focus-visible { animation: none; transform: translateY(-3px) scale(1.012); background: linear-gradient(180deg, rgba(255,255,255,.16) 0%, rgba(255,255,255,.04) 38%, rgba(0,0,0,.18) 100%), linear-gradient(180deg, #2e2e38 0%, #101016 52%, #060608 100%); box-shadow: inset 0 0 0 1px rgba(240,238,230,.72), inset 0 1px 0 rgba(255,255,255,.62), inset 0 -1px 0 rgba(0,0,0,.66), inset 0 -16px 30px rgba(0,0,0,.42), inset 0 12px 22px rgba(255,255,255,.10), inset 0 0 0 1.5px rgba(var(--lv-accent-rgb),.85), 0 0 22px -4px rgba(var(--lv-accent-rgb),.50), 0 32px 60px rgba(0,0,0,.88), 0 10px 22px rgba(0,0,0,.62); }
+.lv-btn:hover::after, .lv-btn:focus-visible::after { opacity: .55; animation: none; }
+.lv-btn:hover::before, .lv-btn:focus-visible::before { opacity: 1; }
+.lv-btn:active { transform: translateY(1px) scale(.97) !important; transition-duration: .08s; box-shadow: inset 0 0 0 1px rgba(240,238,230,.48), inset 0 4px 14px rgba(0,0,0,.85), inset 0 -4px 10px rgba(0,0,0,.55), inset 0 12px 22px rgba(0,0,0,.30), 0 10px 24px rgba(0,0,0,.78); }
+.lv-btn:active::after { opacity: .35; }
+.lv-hero { min-height: 68px; padding: 0 54px; font-size: 18px; }
+.lv-btn--danger { --lv-accent: #ff5e6c; --lv-accent-rgb: 255,94,108; }
+.lv-btn--danger:hover { background: linear-gradient(180deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.01) 40%, rgba(0,0,0,.35) 100%), linear-gradient(180deg, #101014 0%, #050506 55%, #000000 100%); box-shadow: inset 0 0 0 1px rgba(240,238,230,.55), inset 0 1px 0 rgba(255,255,255,.35), inset 0 -1px 0 rgba(0,0,0,.85), inset 0 -20px 36px rgba(0,0,0,.70), inset 0 6px 18px rgba(0,0,0,.40), 0 32px 60px rgba(0,0,0,.92), 0 10px 22px rgba(0,0,0,.66); }
+.cx-btn { padding: 15px 32px; border-radius: 999px; font-size: 14px; font-weight: 800; letter-spacing: .1em; cursor: pointer; font-family: inherit; color: #fff; background: linear-gradient(180deg,#15151a,#050506); border: 1.5px solid rgba(255,255,255,.55); display: inline-flex; align-items: center; gap: 10px; box-shadow: inset 0 2px 2px rgba(255,255,255,.22), inset 0 -3px 6px rgba(0,0,0,.6), 0 0 22px -2px rgba(255,255,255,.28), 0 12px 28px rgba(0,0,0,.65); transition: border-color .22s, box-shadow .25s, transform .15s var(--ease); }
+.cx-btn:hover { border-color: var(--soul); transform: translateY(-2px); box-shadow: inset 0 2px 2px rgba(255,255,255,.25), inset 0 -3px 6px rgba(0,0,0,.5), 0 0 42px -2px var(--soul), 0 16px 34px rgba(0,0,0,.6); }
+.cx-btn:active { transform: translateY(1px) scale(.97); box-shadow: inset 0 3px 8px rgba(0,0,0,.7), 0 0 18px -4px var(--soul); }
+/* Orbit buttons — circle of light, black with color accents */
+.orbit-btn { --oc: #a06bff; --oc-rgb: 160,107,255; position: relative; isolation: isolate; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; min-height: 60px; padding: 0 40px; border-radius: 999px; border: none; font-family: Inter, sans-serif; font-size: 15px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #fff; text-shadow: 0 -1px 2px rgba(0,0,0,.9), 0 1px 3px rgba(0,0,0,.6); background: linear-gradient(180deg, #1a1a20 0%, #060607 55%, #000000 100%); transition: transform .25s var(--ease); }
+.orbit-btn::before { content: ""; position: absolute; inset: -3px; border-radius: 999px; z-index: -1; background: conic-gradient(from var(--oa, 0deg), transparent 0deg, transparent 300deg, rgba(var(--oc-rgb),.9) 340deg, rgba(255,255,255,.95) 355deg, transparent 360deg); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; padding: 2.5px; animation: orbit-spin 4s linear infinite; opacity: .75; filter: drop-shadow(0 0 8px rgba(var(--oc-rgb),.6)); }
+@property --oa { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+@keyframes orbit-spin { to { --oa: 360deg; } }
+.orbit-btn::after { content: ""; position: absolute; inset: -18px; border-radius: 999px; z-index: -2; background: radial-gradient(ellipse at center, rgba(var(--oc-rgb),.35), transparent 70%); opacity: 0; transition: opacity .4s ease; filter: blur(6px); }
+.orbit-btn .orbit-label { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 10px; }
+.orbit-btn:hover { transform: translateY(-3px) scale(1.02); }
+.orbit-btn:hover::before { opacity: 1; animation-duration: 1.5s; }
+.orbit-btn:hover::after { opacity: 1; }
+.orbit-btn:active { transform: translateY(1px) scale(.98); transition-duration: .08s; }
+@media (prefers-reduced-motion: reduce) { .orbit-btn::before { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .lv-btn, .lv-btn::after { animation: none !important; } }
+</style>
+
+<!-- ================= 02 SMARTTABS ================= -->
+<section id="smarttabs">
+  <p class="kicker">02 · The component that follows you</p>
+  <h2><span class="n">02</span>SmartTabs — try it. It's live.</h2>
+  <p class="lede">A universal favorites ribbon that <strong>follows the user across every page.</strong> Add, edit, heart, star, remove, navigate. State persists. This one below is real — click a pill, right-click it, add your own. Then take the code.</p>
+  <link rel="stylesheet" href="lego/smart-tabs.css">
+  <div id="smarttabs-demo"></div>
+  <p class="micro" style="text-align:center">↑ Live demo — right-click a pill (or tap ⋯) for Edit / 💜 Heart / ⭐ Star / Remove. State saves to this browser.</p>
+  <div class="code-head"><span class="micro">Step 1 — the container</span><button class="copy-btn" onclick="copyCode('st1')">Copy</button></div>
+<pre class="code" id="st1">&lt;div id="mytabs"&gt;&lt;/div&gt;</pre>
+  <div class="code-head"><span class="micro">Step 2 — include the kit and mount</span><button class="copy-btn" onclick="copyCode('st2')">Copy</button></div>
+<pre class="code" id="st2">&lt;link rel="stylesheet" href="smart-tabs.css"&gt;
+&lt;script src="smart-tabs.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  const tabs = SmartTabs.mount('#smarttabs', {
+    storageKey: 'smartnet_shortcuts',
+    onNavigate: (route, s) =&gt; Router.go(route),
+    routeMap: { 'soulschool': '/soulschool' }
+  });
+&lt;/script&gt;</pre>
+  <div class="code-head"><span class="micro">Step 3 — the API</span><button class="copy-btn" onclick="copyCode('st3')">Copy</button></div>
+<pre class="code" id="st3">tabs.list(); tabs.set(arr); tabs.add({id,label,route});
+tabs.update(id, patch); tabs.remove(id);
+tabs.el.addEventListener('change', e =&gt; console.log(e.detail));
+// { id:'sc-1', label:'SoulSchool', route:'/soulschool', heart:true, star:false }</pre>
+  <div class="callout"><p><strong>Why it works everywhere:</strong> one <code>storageKey</code> across all pages so state follows the user. <code>onNavigate</code> wires into your router — the component never assumes. 💜 hearts outrank ⭐ stars: the most important tabs literally rise to the top. Esc closes everything. That's the whole contract.</p></div>
+  <p class="micro">→ <a href="lego/smarttabs.html" style="color:var(--soul)">Open the SmartTabs kit</a> — live demo, full API, standalone files.</p>
+</section>
+
+<!-- ================= 03 SPECTRUM ================= -->
+<section id="spectrum">
+  <p class="kicker">03 · The law, not a palette</p>
+  <h2><span class="n">03</span>The spectrum flows one way.</h2>
+  <p class="lede"><strong>Magenta → purple → blue → green → gold.</strong> Richest first, ultra-rich magenta leading. Every sequence on every page follows it. When a list runs long, return to magenta and flow again. Scramble it and the eye knows something's wrong before the mind does.</p>
+  <p><strong>Color is identity, not decoration.</strong> One color job per thing. Adjacent things never share a hue. The spectrum gives each thing its identity — and never shouts over the brand.</p>
+  <h3 style="font-size:24px;margin:32px 0 16px">Try it — the spectrum law, live</h3>
+  <p class="micro" style="margin-bottom:16px">Click a color. The board re-fires in that color. This is the law, not a description of it.</p>
+  <div class="swatches" id="swatches" style="display:flex;gap:12px;margin:18px 0">
+    <button class="sw" style="--c:#a06bff" data-c="#a06bff" data-name="Purple — Naya herself" aria-label="Purple"></button>
+    <button class="sw" style="--c:#3fb8ff" data-c="#3fb8ff" data-name="Blue — calm truth" aria-label="Blue"></button>
+    <button class="sw" style="--c:#2fe89e" data-c="#2fe89e" data-name="Green — living growth" aria-label="Green"></button>
+    <button class="sw" style="--c:#ffbf3d" data-c="#ffbf3d" data-name="Gold — earned wisdom" aria-label="Gold"></button>
+    <button class="sw" style="--c:#e84fff" data-c="#e84fff" data-name="Magenta — the living edge" aria-label="Magenta"></button>
+  </div>
+  <div class="demo-board" id="demoBoard">
+    <div class="demo-beam"></div>
+    <p class="demo-name" id="demoName">Purple — Naya herself</p>
+    <p>One property — <code>--c</code> — drives every light on this board. Set it, and the board obeys.</p>
+  </div>
+<style>
+.sw { width: 52px; height: 52px; border-radius: 16px; border: 2px solid rgba(255,255,255,.35); cursor: pointer; background: radial-gradient(circle at 32% 28%, rgba(255,255,255,.7), transparent 45%), var(--c); box-shadow: 0 0 18px var(--c); transition: transform .18s; }
+.sw:hover { transform: translateY(-3px) scale(1.06); }
+.demo-board { --c: #a06bff; position: relative; border-radius: 22px; padding: 34px; margin-top: 8px; overflow: hidden; background: linear-gradient(160deg,#0b0a12,#050507); border: 1px solid color-mix(in srgb, var(--c) 45%, transparent); box-shadow: 0 24px 60px rgba(0,0,0,.6), 0 0 44px color-mix(in srgb, var(--c) 22%, transparent); transition: border-color .3s, box-shadow .3s; }
+.demo-beam { position: absolute; top: 0; left: 12%; right: 12%; height: 1px; background: linear-gradient(90deg, transparent, var(--c), transparent); box-shadow: 0 0 18px var(--c); }
+.demo-name { font-size: 18px; font-weight: 800; margin: 0 0 8px; color: var(--c); text-shadow: 0 0 14px var(--c); }
+.demo-board code { background: rgba(255,255,255,.08); padding: 2px 8px; border-radius: 6px; font-size: 14px; }
+</style>
+</section>
+
+<!-- ================= 04 BOARDS ================= -->
+<section id="boards">
+  <p class="kicker">04 · A world, not a rectangle</p>
+  <h2><span class="n">04</span>One board. One color. A destination you enter.</h2>
+  <p class="lede">The board is the intelligent object: <strong>theme-edged, jewel-marked, elevated.</strong> One spectrum color per board — spine, kicker, corner jewel all speak it. Text stays white. Inside, meaning nests: the nutshell, then what it means, how to use it.</p>
+
+  <div class="board-mix" style="--ic:#a06bff">
+    <span class="corner" style="--ic:#a06bff">◆</span>
+    <h3>Color has four jobs. Never cross them.</h3>
+    <p>Chrome acts. Text speaks. Theme identifies. Adjacent things never share a hue.</p>
+  </div>
+
+  <div class="board-tone" style="--tone:var(--purple)">
+    <div class="board-content">
+      <p class="board-tag">Intelligent Block · IB-0001</p>
+      <h3 class="board-name">The board is a world.</h3>
+      <p class="board-sub">Not a rectangle. A destination you enter.</p>
+      <div class="layer-grid">
+        <div class="layer" style="--tone:var(--purple)"><p class="micro"><span class="gem-bullet"></span>In a nutshell</p><p>Capture the essence. Verify the result.</p></div>
+        <div class="layer" style="--tone:var(--blue)"><p class="micro"><span class="gem-bullet"></span>What it means</p><p>Understanding changes what Naya does next.</p></div>
+        <div class="layer" style="--tone:var(--gold)"><p class="micro"><span class="gem-bullet"></span>How to use it</p><p>Retrieve, check limits, carry into action.</p></div>
+      </div>
+    </div>
+  </div>
+  <p class="micro">→ <a href="lego/boards.html" style="color:var(--soul)">Open the complete board library</a> — all 3 systems, full CSS, copy-paste ready.</p>
+</section>
+<style>
+.board-mix { --ic: var(--purple); position: relative; overflow: hidden; border: 2px solid color-mix(in srgb, var(--ic) 45%, rgba(255,255,255,.35)); border-radius: 22px; padding: 28px 32px; margin: 24px 0; background: linear-gradient(165deg, rgba(20,18,16,.85), rgba(8,8,10,.9)); box-shadow: inset 0 2px 2px rgba(255,255,255,.12), inset 0 -4px 12px rgba(0,0,0,.5), 0 28px 70px rgba(0,0,0,.65), 0 0 44px -8px var(--ic); transition: transform .25s var(--ease), box-shadow .25s var(--ease); }
+.board-mix:hover { transform: translateY(-3px); }
+.board-mix::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 7px; background: var(--ic); box-shadow: 0 0 30px var(--ic), 0 0 60px -6px var(--ic); }
+.board-mix .corner { position: absolute; top: 20px; right: 22px; width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center; font-size: 16px; font-weight: 900; color: #fff; background: radial-gradient(circle at 32% 22%, rgba(255,255,255,.85), transparent 42%), radial-gradient(circle at 50% 55%, var(--ic), #000 130%); border: 1px solid rgba(255,255,255,.4); box-shadow: 0 0 16px var(--ic); }
+.board-mix h3 { font-family: Georgia, serif; font-size: 24px; margin: 0 0 4px; color: #fff; padding-right: 52px; }
+.board-mix p { font-size: 18px; color: #fff; margin: 0 0 6px; opacity: .95; }
+.board-tone { --tone: var(--purple); position: relative; overflow: hidden; border-radius: var(--r-xl); border: 1.7px solid rgba(242,238,255,.53); background: linear-gradient(145deg, #171021, #0d0b11 38%, #07070a); box-shadow: inset 0 1px rgba(255,255,255,.33), 0 28px 64px rgba(0,0,0,.8), 0 0 40px -18px var(--tone); transition: border-color .25s, transform .25s var(--ease), box-shadow .25s; margin: 24px 0; }
+.board-tone::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: var(--tone); box-shadow: 0 0 23px var(--tone); }
+.board-tone::after { content: ""; pointer-events: none; position: absolute; inset: 0; background: radial-gradient(650px 420px at 93% 0%, color-mix(in srgb, var(--tone) 11%, transparent), transparent 72%); }
+.board-tone:hover { border-color: color-mix(in srgb, var(--tone) 53%, white); box-shadow: inset 0 1px rgba(255,255,255,.33), 0 32px 72px rgba(0,0,0,.9), 0 0 46px -17px var(--tone); }
+.board-tone .board-content { position: relative; z-index: 1; padding: clamp(24px, 3.3vw, 46px); }
+.board-tone .board-tag { font-size: 14px; letter-spacing: .17em; text-transform: uppercase; font-weight: 850; color: #e2d5f7; }
+.board-tone .board-name { font-family: Georgia, serif; font-size: clamp(28px, 3vw, 40px); font-weight: 500; line-height: 1.07; letter-spacing: -.03em; margin: 2px 0 5px; }
+.board-tone .board-sub { font-size: 16px; color: #ddd4e9; margin: 0; }
+.layer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-top: 16px; }
+.layer { --tone: var(--blue); border: 1px solid color-mix(in srgb, var(--tone) 63%, #fff); background: linear-gradient(145deg, #15151c, #0d0c12); border-radius: 16px; padding: 22px; box-shadow: inset 0 1px rgba(255,255,255,.13), 0 9px 25px rgba(0,0,0,.65), 0 0 18px -10px var(--tone); transition: box-shadow .25s; }
+.layer:hover { box-shadow: inset 0 1px rgba(255,255,255,.13), 0 15px 30px rgba(0,0,0,.65), 0 0 22px -8px var(--tone); }
+.layer .micro { color: #fff; display: flex; gap: 10px; align-items: center; letter-spacing: .09em; font-size: 13px; text-transform: uppercase; font-weight: 800; }
+.layer p { margin: 14px 0 0; color: #ece6f3; font-size: 16px; line-height: 1.7; }
+.gem-bullet { --tone: var(--purple); width: 12px; height: 12px; flex: none; display: inline-block; transform: rotate(45deg); background: linear-gradient(140deg, #fff, var(--tone) 50%, color-mix(in srgb, var(--tone) 35%, #000)); box-shadow: 0 0 14px var(--tone); }
+</style>
+
+<!-- ================= 05 ORBS ================= -->
+<section id="jewels">
+  <p class="kicker">05 · Finished objects, not decorations</p>
+  <h2><span class="n">05</span>Orbs of light.</h2>
+  <p class="lede"><strong>Spherical. Orbital. Lit from within.</strong> Each orb holds one spectrum color at its core — a finished object you could pick up. A ring of light orbits every orb. Hover one — its orbit flares and it lifts toward you.</p>
+  <div class="orb-row">
+    <div class="orb-wrap"><span class="orb" style="--oc:#e84fff;--oc-rgb:232,79,255"></span><p class="micro">MAGENTA<small>The living edge</small></p></div>
+    <div class="orb-wrap"><span class="orb" style="--oc:#a06bff;--oc-rgb:160,107,255"></span><p class="micro">PURPLE<small>Naya's presence</small></p></div>
+    <div class="orb-wrap"><span class="orb" style="--oc:#3fb8ff;--oc-rgb:63,184,255"></span><p class="micro">BLUE<small>Knowledge moving</small></p></div>
+    <div class="orb-wrap"><span class="orb" style="--oc:#2fe89e;--oc-rgb:47,232,158"></span><p class="micro">GREEN<small>Alive and well</small></p></div>
+    <div class="orb-wrap"><span class="orb" style="--oc:#ffbf3d;--oc-rgb:255,191,61"></span><p class="micro">GOLD<small>Attention, earned</small></p></div>
+  </div>
+  <p class="micro" style="text-align:center;margin-top:8px">Five orbs, five spectrum colors, in law order. Never twice adjacent.</p>
+  <div class="orb-hero-stage">
+    <div class="orb-hero-wrap"><span class="orb orb--hero" style="--oc:#a06bff;--oc-rgb:160,107,255"></span></div>
+    <p class="micro">HERO ORB · 200px<small>Twin counter-rotating orbits. The centerpiece — one per page, never more.</small></p>
+  </div>
+  <h3 style="font-size:24px;margin:48px 0 8px">Orb variants.</h3>
+  <p class="lede" style="margin-bottom:20px">Glyphs at the core turn orbs into app icons. Twin rings double the orbit.</p>
+  <div class="orb-row">
+    <div class="orb-wrap"><span class="orb orb--glyph" style="--oc:#e84fff;--oc-rgb:232,79,255">✦</span><p class="micro">APP ICON<small>Glyph at the core</small></p></div>
+    <div class="orb-wrap"><span class="orb orb--twin" style="--oc:#2fe89e;--oc-rgb:47,232,158"></span><p class="micro">TWIN ORBIT<small>Two rings, counter-rotating</small></p></div>
+    <div class="orb-wrap"><span class="orb orb--glyph orb--icon" style="--oc:#ffbf3d;--oc-rgb:255,191,61">◈</span><p class="micro">ICON · 64px<small>Rooms and apps</small></p></div>
+  </div>
+  <h3 style="font-size:24px;margin:48px 0 8px">Where orbs live.</h3>
+  <p class="lede" style="margin-bottom:20px">One object, every scale. Bullets, section marks, app icons — the same orb, sized to its job.</p>
+  <div class="orb-scale">
+    <div class="orb-demo"><span class="orb orb--xs" style="--oc:#e84fff;--oc-rgb:232,79,255"></span><p class="micro">BULLET · 30px<small>Lists, gem points</small></p></div>
+    <div class="orb-demo"><span class="orb orb--sm" style="--oc:#3fb8ff;--oc-rgb:63,184,255"></span><p class="micro">SECTION MARK · 56px<small>Room icons, headers</small></p></div>
+    <div class="orb-demo"><span class="orb orb--black" style="--oc:#2fe89e;--oc-rgb:47,232,158"></span><p class="micro">BLACK ORB · 120px<small>Dark soul, color rim</small></p></div>
+  </div>
+  <p class="micro" style="margin-top:24px">→ <a href="lego/jewels.html" style="color:var(--soul)">Open the orb library</a> — hero orb, glyphs, twins, truth orbs, orbs in context, copy-paste code.</p>
+</section>
+<style>
+/* ============ ORBS — spherical, orbital, lit from within ============ */
+.orb-row { display: flex; gap: 44px; justify-content: center; flex-wrap: wrap; margin: 44px 0 12px; }
+.orb-wrap { text-align: center; }
+.orb-wrap .micro { margin-top: 18px; letter-spacing: .22em; text-transform: uppercase; }
+.orb-wrap .micro small { display: block; letter-spacing: .08em; text-transform: none; color: var(--secondary); margin-top: 4px; font-size: 13px; }
+.orb { --oc: #a06bff; --oc-rgb: 160,107,255; position: relative; display: inline-block; width: 120px; height: 120px; border-radius: 50%;
+  background:
+    radial-gradient(circle at 34% 26%, rgba(255,255,255,.95) 0%, rgba(255,255,255,.30) 13%, transparent 30%),
+    radial-gradient(circle at 50% 62%, rgba(255,255,255,.10) 0%, transparent 42%),
+    radial-gradient(circle at 50% 50%, var(--oc) 0%, color-mix(in srgb, var(--oc) 62%, #000) 56%, #040406 100%);
+  box-shadow:
+    inset 0 0 0 1.5px rgba(255,255,255,.50),
+    inset 0 10px 18px rgba(255,255,255,.14),
+    inset 0 -12px 24px rgba(0,0,0,.62),
+    0 0 30px rgba(var(--oc-rgb),.55),
+    0 0 74px -10px rgba(var(--oc-rgb),.42),
+    0 24px 48px rgba(0,0,0,.65);
+  transition: transform .32s var(--ease), box-shadow .32s var(--ease);
+  animation: orb-breathe 5s ease-in-out infinite;
+}
+.orb-wrap:nth-child(2) .orb { animation-delay: 1s; } .orb-wrap:nth-child(3) .orb { animation-delay: 2s; }
+.orb-wrap:nth-child(4) .orb { animation-delay: 3s; } .orb-wrap:nth-child(5) .orb { animation-delay: 4s; }
+@keyframes orb-breathe { 0%,100% { transform: scale(1); } 50% { transform: scale(1.045); } }
+.orb::before { /* the orbit — a ring of light circling the orb */
+  content: ""; position: absolute; inset: -17px; border-radius: 50%;
+  background: conic-gradient(from 0deg, transparent 0deg, transparent 282deg, rgba(var(--oc-rgb),.85) 328deg, rgba(255,255,255,.95) 350deg, transparent 360deg);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude; padding: 3px;
+  animation: orb-spin 6s linear infinite; opacity: .85; pointer-events: none;
+}
+.orb::after { /* light pool beneath */
+  content: ""; position: absolute; left: 16%; right: 16%; bottom: -30px; height: 24px; border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(var(--oc-rgb),.42), transparent 70%); filter: blur(7px); z-index: -1; pointer-events: none;
+}
+.orb:hover { animation-play-state: paused; transform: translateY(-8px) scale(1.06);
+  box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.65), inset 0 10px 18px rgba(255,255,255,.2), inset 0 -12px 24px rgba(0,0,0,.55),
+    0 0 44px rgba(var(--oc-rgb),.8), 0 0 90px -8px rgba(var(--oc-rgb),.55), 0 30px 54px rgba(0,0,0,.7); }
+.orb:hover::before { animation-duration: 1.5s; opacity: 1; }
+.orb--sm { width: 56px; height: 56px; animation: none; }
+.orb--sm::before { inset: -10px; padding: 2px; animation-duration: 7s; }
+.orb--sm::after { bottom: -16px; height: 14px; }
+.orb--xs { width: 30px; height: 30px; animation: none; }
+.orb--xs::before { inset: -7px; padding: 2px; animation-duration: 8s; }
+.orb--xs::after { display: none; }
+.orb--black { background:
+    radial-gradient(circle at 34% 26%, rgba(255,255,255,.55) 0%, transparent 26%),
+    radial-gradient(circle at 50% 55%, #1b1b22 0%, #050507 72%);
+  box-shadow:
+    inset 0 0 0 2px rgba(var(--oc-rgb),.9),
+    inset 0 -12px 24px rgba(0,0,0,.7),
+    0 0 30px rgba(var(--oc-rgb),.5),
+    0 0 70px -12px rgba(var(--oc-rgb),.4),
+    0 24px 48px rgba(0,0,0,.65);
+}
+.orb-scale { display: flex; gap: 56px; justify-content: center; flex-wrap: wrap; align-items: flex-end; margin: 32px 0; padding: 40px 24px; border: 1px solid var(--line); border-radius: var(--r-xl); background: linear-gradient(180deg, rgba(255,255,255,.025), transparent); }
+.orb-demo { text-align: center; }
+.orb-demo .micro { margin-top: 16px; letter-spacing: .2em; text-transform: uppercase; }
+.orb-demo .micro small { display: block; letter-spacing: .06em; text-transform: none; color: var(--secondary); margin-top: 4px; font-size: 13px; }
+/* — orb expansion: hero, glyph, twin — */
+.orb--hero { width: 200px; height: 200px; }
+.orb--hero::before { inset: -26px; padding: 4px; animation-duration: 9s; }
+.orb--hero::after { bottom: -46px; height: 36px; }
+.orb-hero-stage { text-align: center; margin: 44px 0 8px; padding: 52px 20px 44px; border: 1px solid var(--line); border-radius: var(--r-xl);
+  background: radial-gradient(620px 320px at 50% 42%, rgba(160,107,255,.09), transparent 70%); }
+.orb-hero-wrap { position: relative; display: inline-block; padding: 38px; }
+.orb-hero-wrap::before { content: ""; position: absolute; inset: 0; border-radius: 50%; pointer-events: none; opacity: .55;
+  background: conic-gradient(from 180deg, transparent 0deg, transparent 298deg, rgba(255,255,255,.75) 338deg, transparent 360deg);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude; padding: 2px;
+  animation: orb-spin-rev 16s linear infinite; }
+@keyframes orb-spin-rev { to { transform: rotate(-360deg); } }
+.orb-hero-stage .micro { margin-top: 22px; letter-spacing: .2em; text-transform: uppercase; font-size: 13px; color: var(--quiet); }
+.orb-hero-stage .micro small { display: block; letter-spacing: .05em; text-transform: none; color: var(--secondary); margin-top: 6px; }
+.orb--twin::after { inset: -30px; left: auto; right: auto; top: auto; bottom: auto; height: auto; border-radius: 50%; filter: none; z-index: auto;
+  background: conic-gradient(from 90deg, transparent 0deg, transparent 310deg, rgba(var(--oc-rgb),.6) 345deg, transparent 360deg);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude; padding: 2px;
+  animation: orb-spin-rev 11s linear infinite; opacity: .7; }
+.orb--glyph { display: inline-grid; place-items: center; font-size: 46px; color: #fff;
+  text-shadow: 0 2px 10px rgba(0,0,0,.75), 0 0 22px rgba(var(--oc-rgb),.95); }
+.orb--icon { width: 64px; height: 64px; font-size: 26px; }
+.orb--icon::before { inset: -11px; padding: 2px; }
+.orb--icon::after { bottom: -18px; height: 14px; }
+@media (prefers-reduced-motion: reduce) { .orb, .orb::before { animation: none; } }
+</style>
+
+<!-- ================= 06 TYPOGRAPHY ================= -->
+<section id="type">
+  <p class="kicker">06 · Size separates</p>
+  <h2><span class="n">06</span>24 / 18 / 14. Nothing else.</h2>
+  <p class="lede"><strong>Size separates. Color doesn't.</strong> Headlines 24. Body 18 — the standard, most text lives here. Small 14. White 99% of the time.</p>
+  <div class="type-spec"><div class="t-label micro">DISPLAY · 64 · heroes only</div><div class="type-64">The page breathes.</div></div>
+  <div class="type-spec"><div class="t-label micro">CHAPTER · 40 · section heads</div><div class="type-40">Color has four jobs.</div></div>
+  <div class="type-spec"><div class="t-label micro">HEADLINE · 24</div><div class="type-24">Never cross them.</div></div>
+  <div class="type-spec"><div class="t-label micro">BODY · 18 · the standard</div><div class="type-18">White text 99% of the time. Quiet at rest — then the object's own color ignites on touch.</div></div>
+  <div class="type-spec" style="border:none"><div class="t-label micro">SMALL · 14 · details</div><div class="type-14">Captions, labels, metadata. Still white, never gray.</div></div>
+  <p class="micro" style="margin-top:24px">→ <a href="lego/typography.html" style="color:var(--soul)">Open the type scale</a> · <a href="lego/icons.html" style="color:var(--soul)">Open the icon set</a></p>
+</section>
+<style>
+.type-spec { border-bottom: 1px solid rgba(255,255,255,.08); padding: 22px 0; display: flex; align-items: baseline; gap: 32px; flex-wrap: wrap; }
+.type-spec .t-label { min-width: 220px; }
+.type-64 { font-size: 64px; font-family: Georgia, serif; }
+.type-40 { font-size: 40px; font-family: Georgia, serif; }
+.type-24 { font-size: 24px; font-weight: 700; }
+.type-18 { font-size: 18px; }
+.type-14 { font-size: 14px; color: var(--quiet); }
+</style>
+
+<!-- ================= 07 TRUTH ================= -->
+<section id="truth">
+  <p class="kicker">07 · Truth is part of the visual language</p>
+  <h2><span class="n">07</span>A claim and a proof must never look the same.</h2>
+  <p class="lede">Scores move on evidence, never optimism. <strong>What is verified glows green; what is merely claimed stays quiet until it earns its light.</strong> <em>Animated ≠ alive. Stored ≠ learned. Claimed ≠ proven.</em></p>
+  <div class="truthgrid">
+    <div class="truth" style="--tc2:#2fe89e"><span class="torb" style="--tc2:#2fe89e">✓</span><div><b>AUTH · VERIFIED</b><p>Independent evidence exists. The number survived contact with reality.</p></div></div>
+    <div class="truth" style="--tc2:#ffbf3d"><span class="torb" style="--tc2:#ffbf3d">?</span><div><b>CLAIM · UNVERIFIED</b><p>Self-reported, awaiting its stamp. Shown honestly, never hidden.</p></div></div>
+    <div class="truth" style="--tc2:#e84fff"><span class="torb" style="--tc2:#e84fff">◈</span><div><b>DEMONSTRATION</b><p>Specimen content. Beautiful on purpose, not pretending to be live.</p></div></div>
+  </div>
+  <p class="micro" style="margin-top:24px">→ <a href="lego/truth-pills.html" style="color:var(--soul)">Open the truth library</a> — cards and inline badges.</p>
+</section>
+<style>
+.truthgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+@media (max-width: 900px) { .truthgrid { grid-template-columns: 1fr; } }
+.truth { border: 1.5px solid rgba(255,255,255,.22); border-radius: 16px; padding: 22px; background: linear-gradient(180deg, #0c0c12, #060608); box-shadow: 0 14px 34px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.07); display: flex; gap: 16px; align-items: flex-start; transition: border-color .25s var(--ease), box-shadow .25s var(--ease), transform .25s var(--ease); }
+.truth:hover { border-color: color-mix(in srgb, var(--tc2) 65%, transparent); box-shadow: 0 18px 40px rgba(0,0,0,.6), 0 0 30px -6px var(--tc2), inset 0 1px 0 rgba(255,255,255,.1); transform: translateY(-3px); }
+.torb { width: 44px; height: 44px; border-radius: 50%; flex: none; display: grid; place-items: center; font-size: 18px; font-weight: 900; color: #fff; background: radial-gradient(circle at 35% 30%, var(--tc2), #000 130%); border: 2px solid var(--tc2); box-shadow: 0 0 18px var(--tc2); }
+.truth b { display: block; font-size: 14px; letter-spacing: .18em; color: #fff; margin-bottom: 4px; }
+.truth p { font-size: 18px; color: #fff; margin: 0; opacity: .92; }
+</style>
+
+<!-- ================= 08 LAWS ================= -->
+<section id="laws">
+  <p class="kicker">08 · The laws, at a glance</p>
+  <h2><span class="n">08</span>Principles don't survive contact with a deadline.</h2>
+  <p class="lede">So every principle becomes a <strong>checkable predicate.</strong> Hover any card — it ignites in its own color, never anyone else's.</p>
+  <div class="law-grid">
+    <div class="law-card" style="--sc:#ffbf3d"><h3>Score the experience, never the code.</h3><p>A 9.5 on CSS is worthless if the rendered page is a 5. The lived page is the only scorecard.</p></div>
+    <div class="law-card" style="--sc:#2fe89e"><h3>Back it or bench it.</h3><p>9.0+ ships. Below 9 goes back to the bench. No exceptions, no almost.</p></div>
+    <div class="law-card" style="--sc:#3fb8ff"><h3>Color has jobs. Never cross them.</h3><p>Chrome acts. Text speaks. Theme identifies. Adjacent things never share a hue.</p></div>
+    <div class="law-card" style="--sc:#a06bff"><h3>White light at rest, own color on touch.</h3><p>Visible 1.5px+ rims idle. Ignition belongs to the thing being touched.</p></div>
+    <div class="law-card" style="--sc:#e84fff"><h3>Black heart, white voice, visible skin.</h3><p>#050505 center, white text and icon, real rim. The glyph is a promise.</p></div>
+    <div class="law-card" style="--sc:#ff9a5a"><h3>Size separates, color doesn't.</h3><p>24 headlines, 18 body, 14 details. White 99%. Headers get a voice.</p></div>
+    <div class="law-card" style="--sc:#ff5e6c"><h3>Icons are drawn, not shrunk.</h3><p>Vector geometry, readable at 16px. A shrunken render is mud.</p></div>
+    <div class="law-card" style="--sc:#40d3bb"><h3>Verify before claiming.</h3><p>Read the file. Count the matches. Watch it render. Then say it's done.</p></div>
+  </div>
+  <div class="callout"><p><em>"The board is a world. Not a rectangle. The touch has a promise. Every room has a soul. The best survives — everything else gets lighter. Not what design looks like. What care feels like."</em></p></div>
+</section>
+<style>
+.law-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 28px 0; }
+.law-card { --sc: var(--soul); background: var(--raise); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 26px; position: relative; overflow: hidden; transition: transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s; }
+.law-card::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 3px; background: var(--sc); opacity: .7; }
+.law-card:hover { transform: translateY(-3px); border-color: var(--sc); box-shadow: 0 16px 44px rgba(0,0,0,.55), 0 0 28px -6px var(--sc); }
+.law-card h3 { font-size: 21px; margin-bottom: 8px; }
+.law-card p { font-size: 15px; color: var(--quiet); margin: 0; }
+</style>
+
+<!-- ================= 09 DO'S AND DON'TS ================= -->
+<section id="rules">
+  <p class="kicker">09 · The hundred rules</p>
+  <h2><span class="n">09</span>Do's and don'ts.</h2>
+  <p class="lede">Twenty laws, twenty boards. <strong>Green check — do it.</strong> Red cross — never. Each board carries its spectrum color. Scan them. Know them. Build by them.</p>
+  <div class="rule-boards">
+    <div class="rule-board" style="--rc:#e84fff">
+      <span class="rule-n">01 · MAGENTA</span>
+      <p class="rule-do"><b>✓</b><span>Black ground, white light, purple soul</span></p>
+      <p class="rule-dont"><b>✕</b><span>Flat elements — no elevation, no depth, no good</span></p>
+    </div>
+    <div class="rule-board" style="--rc:#a06bff">
+      <span class="rule-n">02 · PURPLE</span>
+      <p class="rule-do"><b>✓</b><span>Spectrum in law order: magenta → purple → blue → green → gold</span></p>
+      <p class="rule-dont"><b>✕</b><span>Random rainbows — spectrum is meaning, not decoration</span></p>
+    </div>
+    <div class="rule-board" style="--rc:#3fb8ff">
+      <span class="rule-n">03 · BLUE</span>
+      <p class="rule-do"><b>✓</b><span>One color job per thing — never cross them</span></p>
+      <p class="rule-dont"><b>✕</b><span>Adjacent things sharing a hue</span></p>
+    </div>
+    <div class="rule-board" style="--rc:#2fe89e">
+      <span class="rule-n">04 · GREEN</span>
+      <p class="rule-do"><b>✓</b><span>White text 99% of the time</span></p>
+      <p class="rule-dont"><b>✕</b><span>Gray body text</span></p>
+    </div>
+    <div class="rule-board" style="--rc:#ffbf3d">
+      <span class="rule-n">05 · GOLD</span>
+      <p class="rule-do"><b>✓</b><span>Buttons with black hearts, white voice, visible skin</span></p>
+      <p class="rule-dont"><b>✕</b><span>Colored text on buttons</span></p>
+    </div>
+    <div class="rule-board" style="--rc:#e84fff">
+      <span class="rule-n">06 · MAGENTA</span>
+      <p class="rule-do"><b>✓</b><span>Every button has depth — 4+ shadow layers minimum</span></p>
+      <p class="rule-dont"><b>✕</b><span>Red on red, or any low-contrast combination</span></p>
+    </div>
+    <div class="rule-board" style="--rc:#a06bff">
+      <span class="rule-n">07 · PURPLE</span>
+      <p class="rule-do"><b>✓</b><span>Every board elevated, every board responds on hover</span></p>
+      <p class="rule-dont"><b>✕</b><span>Glow bleeding out and killing elegance</span></p>
+    </div>
+    <div class="rule-board" style="--rc:#3fb8ff">
+      <span class="rule-n">08 · BLUE</span>
+      <p class="rule-do"><b>✓</b><span>Light up, don't glow out — glow stays at borders</span></p>
+      <p class="rule-dont"><b>✕</b><span>Dots instead of jewels</span></p>
+    </div>
+    <div class="rule-board" style="--rc:#2fe89e">
+      <span class="rule-n">09 · GREEN</span>
+      <p class="rule-do"><b>✓</b><span>Jewels and orbs — drawn spheres, never twice adjacent</span></p>
+      <p class="rule-dont"><b>✕</b><span>Same icon stamped repeatedly</span></p>
+    </div>
+    <div class="rule-board" style="--rc:#ffbf3d">
+      <span class="rule-n">10 · GOLD</span>
+      <p class="rule-do"><b>✓</b><span>24 / 18 / 14 — size separates, color doesn't</span></p>
+      <p class="rule-dont"><b>✕</b><span>Body text under 18px</span></p>
+    </div>
+    <div class="rule-board" style="--rc:#e84fff">
+      <span class="rule-n">11 · MAGENTA</span>
+      <p class="rule-do"><b>✓</b><span>Verified glows green; claims stay quiet</span></p>
+      <p class="rule-dont"><b>✕</b><span>Claims that look like proofs</span></p>
+    </div>
+    <div class="rule-board" style="--rc:#a06bff">
+      <span class="rule-n">12 · PURPLE</span>
+      <p class="rule-do"><b>✓</b><span>Cursor sheen, proximity wake, physical press</span></p>
+      <p class="rule-dont"><b>✕</b><span>Dead buttons — everything responds</span></p>
+    </div>
+    <div class="rule-board" style="--rc:#3fb8ff">
+      <span class="rule-n">13 · BLUE</span>
+      <p class="rule-do"><b>✓</b><span>Copy-paste code for every component</span></p>
+      <p class="rule-dont"><b>✕</b><span>Components without copy-paste code</span></p>
+    </div>
+    <div class="rule-board" style="--rc:#2fe89e">
+      <span class="rule-n">14 · GREEN</span>
+      <p class="rule-do"><b>✓</b><span>Live demo before documentation</span></p>
+      <p class="rule-dont"><b>✕</b><span>Documentation without live demo</span></p>
+    </div>
+    <div class="rule-board" style="--rc:#ffbf3d">
+      <span class="rule-n">15 · GOLD</span>
+      <p class="rule-do"><b>✓</b><span>Score the rendered page, never the code</span></p>
+      <p class="rule-dont"><b>✕</b><span>Self-declared 9.0 without verification</span></p>
+    </div>
+    <div class="rule-board" style="--rc:#e84fff">
+      <span class="rule-n">16 · MAGENTA</span>
+      <p class="rule-do"><b>✓</b><span>9.0+ or back to the bench</span></p>
+      <p class="rule-dont"><b>✕</b><span>Shipping below 9</span></p>
+    </div>
+    <div class="rule-board" style="--rc:#a06bff">
+      <span class="rule-n">17 · PURPLE</span>
+      <p class="rule-do"><b>✓</b><span>Text always clearly visible — highest contrast</span></p>
+      <p class="rule-dont"><b>✕</b><span>Faded text, washed-out icons</span></p>
+    </div>
+    <div class="rule-board" style="--rc:#3fb8ff">
+      <span class="rule-n">18 · BLUE</span>
+      <p class="rule-do"><b>✓</b><span>Icons drawn as vector, readable at 16px</span></p>
+      <p class="rule-dont"><b>✕</b><span>Shrunken photo icons</span></p>
+    </div>
+    <div class="rule-board" style="--rc:#2fe89e">
+      <span class="rule-n">19 · GREEN</span>
+      <p class="rule-do"><b>✓</b><span>Reduced-motion support on everything animated</span></p>
+      <p class="rule-dont"><b>✕</b><span>Animation without reduced-motion fallback</span></p>
+    </div>
+    <div class="rule-board" style="--rc:#ffbf3d">
+      <span class="rule-n">20 · GOLD</span>
+      <p class="rule-do"><b>✓</b><span>One property drives one law (--c, --sc, --tc2)</span></p>
+      <p class="rule-dont"><b>✕</b><span>Magic numbers scattered without tokens</span></p>
+    </div>
+  </div>
+  <p class="micro" style="margin-top:24px">The full 100-rule playbook ships with the design contract. These 40 are the non-negotiables.</p>
+</section>
+<style>
+.rule-boards { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; margin: 28px 0; }
+.rule-board { --rc: #a06bff; position: relative; border-radius: 16px; padding: 20px 20px 18px; background: linear-gradient(165deg, #111118, #07070a); border: 1px solid color-mix(in srgb, var(--rc) 32%, transparent); box-shadow: inset 0 1px rgba(255,255,255,.08), inset 0 -3px 10px rgba(0,0,0,.4), 0 12px 30px rgba(0,0,0,.5), 0 0 24px -14px var(--rc); transition: transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s; }
+.rule-board:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--rc) 60%, transparent); box-shadow: inset 0 1px rgba(255,255,255,.1), 0 18px 38px rgba(0,0,0,.55), 0 0 34px -10px var(--rc); }
+.rule-n { position: absolute; top: 12px; right: 14px; font-size: 11px; letter-spacing: .18em; color: var(--rc); font-weight: 800; opacity: .85; }
+.rule-do, .rule-dont { display: flex; gap: 12px; align-items: flex-start; margin: 8px 0; font-size: 15px; line-height: 1.5; }
+.rule-do { color: #fff; font-weight: 600; }
+.rule-do b { color: var(--rc); font-size: 17px; flex: none; text-shadow: 0 0 12px var(--rc); }
+.rule-dont { color: var(--quiet); }
+.rule-dont b { color: #ff5e6c; font-size: 15px; flex: none; }
+</style>
+
+<!-- ================= 10 MACHINE LAW ================= -->
+<section id="machine">
+  <p class="kicker">10 · In code</p>
+  <h2><span class="n">10</span>Machine law &amp; the ship gate.</h2>
+  <p class="lede">One contract, three tongues. The <strong>machine</strong> is normative — checkable predicates, no adjectives. The <strong>AI</strong> layer is procedure — what a builder does, in order. The <strong>human</strong> layer is philosophy. <strong>On conflict, the machine wins.</strong></p>
+  <ul class="checklist">
+    <li><strong>Machine law</strong> — <span style="font-family:monospace">contract/naya-design-contract-v1.machine.json</span>: 47+ pinned tokens, prohibited patterns, required patterns. The checker fails the build on violation.</li>
+    <li><strong>AI law</strong> — <span style="font-family:monospace">contract/NAYA-DESIGN-CONTRACT-V1.ai.md</span>: the decision order every Naya follows — FIELD → SPECTRUM → TYPE → SURFACE → COMPONENT → MOTION → TRUTH.</li>
+    <li><strong>Human law</strong> — <span style="font-family:monospace">contract/NAYA-DESIGN-CONTRACT-V1.md</span>: the readable contract, 170+ enforceable statements.</li>
+    <li><strong>Design calculator</strong> — <span style="font-family:monospace">tools/design_law/design_calculator.py</span>: scores any page 0–100. The taste, computable.</li>
+  </ul>
+  <h3 style="font-size:24px;margin:32px 0 8px">Ship gate</h3>
+  <p class="micro" style="margin-bottom:16px">All six, or it doesn't ship.</p>
+  <div class="gate-head">
+    <div class="gate-bar"><div class="gate-fill" id="gateFill"></div><div class="gate-shine"></div></div>
+    <div class="gate-status" id="gateStatus"><span class="gate-lock">◈</span> GATE CLOSED · <b id="gateCount">0 / 6</b> checks cleared</div>
+  </div>
+  <div class="checks">
+    <label class="check" style="--cc:#a06bff"><span class="stage-n">01</span><input type="checkbox"><span>White edge light is visible on every card and button at rest</span></label>
+    <label class="check" style="--cc:#3fb8ff"><span class="stage-n">02</span><input type="checkbox"><span>Themed elements ignite their own color; chrome ignites purple</span></label>
+    <label class="check" style="--cc:#2fe89e"><span class="stage-n">03</span><input type="checkbox"><span>Every button has a black heart, white voice, and a truthful icon</span></label>
+    <label class="check" style="--cc:#ffbf3d"><span class="stage-n">04</span><input type="checkbox"><span>Type hierarchy is 24 / 18 / 14 — size separates, color doesn't</span></label>
+    <label class="check" style="--cc:#ff5e6c"><span class="stage-n">05</span><input type="checkbox"><span>Copy is plain enough for anyone to understand on first read</span></label>
+    <label class="check" style="--cc:#e84fff"><span class="stage-n">06</span><input type="checkbox"><span>Scored the rendered page honestly — 9+ or back to the bench</span></label>
+  </div>
+  <div class="callout">
+    <p><strong>For every new Naya:</strong> open this page. See what elite looks like. Copy the code — it's yours. Follow the laws — they're the standard. When you build, build like this. When you ship, ship at this level. <strong>Understand. Learn. Apply.</strong></p>
+  </div>
+</section>
+<style>
+.gate-head { margin: 20px 0 18px; padding: 26px; border-radius: 20px; background: linear-gradient(180deg, #0d0d14, #060608); border: 1px solid var(--line); box-shadow: inset 0 2px 12px rgba(0,0,0,.6), 0 16px 40px rgba(0,0,0,.5); text-align: center; }
+.gate-bar { position: relative; height: 14px; border-radius: 99px; background: #050507; border: 1px solid rgba(255,255,255,.1); box-shadow: inset 0 2px 6px rgba(0,0,0,.7); overflow: hidden; margin-bottom: 16px; }
+.gate-fill { height: 100%; width: 0%; border-radius: 99px; background: linear-gradient(90deg, #e84fff, #a06bff, #3fb8ff, #2fe89e, #ffbf3d); box-shadow: 0 0 18px rgba(47,232,158,.5); transition: width .5s var(--ease); }
+.gate-shine { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(255,255,255,.18), transparent 55%); pointer-events: none; border-radius: 99px; }
+.gate-status { font-size: 17px; font-weight: 800; letter-spacing: .14em; color: var(--quiet); transition: all .3s; }
+.gate-status .gate-lock { color: var(--gold); margin-right: 8px; }
+.gate-status.open { color: #2fe89e; text-shadow: 0 0 24px rgba(47,232,158,.7); animation: gate-glow 2s ease-in-out infinite; }
+.gate-status.open .gate-lock { color: #2fe89e; }
+@keyframes gate-glow { 0%,100% { text-shadow: 0 0 18px rgba(47,232,158,.5); } 50% { text-shadow: 0 0 34px rgba(47,232,158,.9); } }
+.checks { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; margin-top: 14px; }
+.check { --cc: #a06bff; position: relative; display: flex; gap: 14px; align-items: center; font-size: 15px; cursor: pointer; padding: 16px 18px 16px 64px; border-radius: 16px; background: linear-gradient(160deg, rgba(255,255,255,.04), rgba(255,255,255,.01)); border: 1px solid color-mix(in srgb, var(--cc) 30%, transparent); transition: all .22s var(--ease); }
+.check:hover { border-color: color-mix(in srgb, var(--cc) 60%, transparent); transform: translateY(-2px); box-shadow: 0 12px 30px rgba(0,0,0,.5), 0 0 24px -10px var(--cc); }
+.check .stage-n { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); font-size: 20px; font-weight: 900; color: var(--cc); opacity: .75; letter-spacing: .05em; text-shadow: 0 0 14px var(--cc); }
+.check input { appearance: none; -webkit-appearance: none; width: 26px; height: 26px; margin: 0; flex: none; cursor: pointer; border-radius: 8px; border: 1.5px solid rgba(255,255,255,.4); background: radial-gradient(circle at 32% 28%, rgba(255,255,255,.25), transparent 45%), rgba(255,255,255,.04); transition: all .2s; position: relative; }
+.check input:checked { border-color: #2fe89e; background: radial-gradient(circle at 32% 28%, rgba(255,255,255,.85), transparent 42%), radial-gradient(circle at 50% 55%, #2fe89e, color-mix(in srgb, #2fe89e 45%, #000) 78%); box-shadow: 0 0 16px rgba(47,232,158,.6); }
+.check input:checked::after { content: "✓"; position: absolute; inset: 0; display: grid; place-items: center; color: #fff; font-size: 14px; font-weight: 900; text-shadow: 0 1px 4px rgba(0,0,0,.6); }
+.check:has(input:checked) { border-color: #2fe89e; background: rgba(47,232,158,.06); }
+.check:has(input:checked) .stage-n { color: #2fe89e; text-shadow: 0 0 14px #2fe89e; opacity: 1; }
+.check:has(input:checked) span:last-child { text-decoration: line-through; opacity: .6; }
+@media (prefers-reduced-motion: reduce) { .gate-status.open { animation: none; } }
+</style>
+
+</div><!-- /wrap -->
+
+<footer>
+  <div class="spectrum-bar"><span></span><span></span><span></span><span></span><span></span></div>
+  <p>THE NAYA ULTIMATE LEGO LIBRARY · One standard. Every page. No drift.</p>
+  <p class="micro" style="margin-top:8px">Black ground · White light · Purple soul · Magenta leads</p>
+  <p class="micro" style="margin-top:16px">Your idea. Your intelligence. Your Smart App. Your internet, your way.</p>
+</footer>
+
+<script src="lego/smart-tabs.js"></script>
+<script>
+/* Copy buttons */
+function copyCode(id) {
+  const el = document.getElementById(id);
+  const text = el.innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = event.target; const old = btn.textContent;
+    btn.textContent = 'Copied ✓'; setTimeout(() => btn.textContent = old, 1600);
+  });
+}
+/* Ship gate — launch sequence */
+(function () {
+  var boxes = document.querySelectorAll('.check input');
+  var fill = document.getElementById('gateFill');
+  var status = document.getElementById('gateStatus');
+  var count = document.getElementById('gateCount');
+  function update() {
+    var n = 0; boxes.forEach(function (b) { if (b.checked) n++; });
+    fill.style.width = (n / boxes.length * 100) + '%';
+    if (n === boxes.length) {
+      status.classList.add('open');
+      status.innerHTML = '<span class="gate-lock">✓</span> CLEARED FOR LAUNCH';
+    } else {
+      status.classList.remove('open');
+      status.innerHTML = '<span class="gate-lock">◈</span> GATE CLOSED · <b id="gateCount">' + n + ' / ' + boxes.length + '</b> checks cleared';
+    }
+  }
+  boxes.forEach(function (b) { b.addEventListener('change', update); });
+  update();
+})();
+/* Spectrum demo — click a swatch, the board re-fires */
+document.getElementById('swatches').addEventListener('click', function (e) {
+  var b = e.target.closest('.sw'); if (!b) return;
+  document.getElementById('demoBoard').style.setProperty('--c', b.dataset.c);
+  document.getElementById('demoName').textContent = b.dataset.name;
+});
+/* Orbs are static markup now — no JS needed. */
+/* Living buttons — proximity + cursor sheen (160px, rAF-throttled) */
+(function () {
+  'use strict';
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var els = Array.prototype.slice.call(document.querySelectorAll('.lv-btn'));
+  if (!els.length) return;
+  var raf = null, lastX = -9999, lastY = -9999;
+  function update() {
+    raf = null;
+    for (var i = 0; i < els.length; i++) {
+      var elb = els[i];
+      var wrap = elb.closest('.lv-wrap') || elb;
+      if (elb.disabled) continue;
+      var r = elb.getBoundingClientRect();
+      if (r.bottom < -180 || r.top > window.innerHeight + 180) { wrap.classList.remove('lv-aware'); continue; }
+      var dx = Math.max(r.left - lastX, 0, lastX - r.right);
+      var dy = Math.max(r.top - lastY, 0, lastY - r.bottom);
+      var dist = Math.sqrt(dx * dx + dy * dy);
+      var aware = dist < 160;
+      if (aware !== wrap.classList.contains('lv-aware')) wrap.classList.toggle('lv-aware', aware);
+      if (aware || elb.matches(':hover')) {
+        elb.style.setProperty('--mx', ((lastX - r.left) / Math.max(r.width, 1) * 100).toFixed(1) + '%');
+        elb.style.setProperty('--my', ((lastY - r.top) / Math.max(r.height, 1) * 100).toFixed(1) + '%');
+      }
+    }
+  }
+  document.addEventListener('pointermove', function (e) {
+    lastX = e.clientX; lastY = e.clientY;
+    if (!raf) raf = requestAnimationFrame(update);
+  }, { passive: true });
+  document.addEventListener('pointerleave', function () {
+    els.forEach(function (elb) { (elb.closest('.lv-wrap') || elb).classList.remove('lv-aware'); });
+  });
+})();
+/* SmartTabs demo */
+SmartTabs.mount('#smarttabs-demo', {
+  storageKey: 'naya_ultimate_smarttabs',
+  initial: [
+    { id: 'sc-1', label: 'Buttons', route: '#buttons', heart: true, star: false },
+    { id: 'sc-2', label: 'SmartTabs', route: '#smarttabs', heart: false, star: true },
+    { id: 'sc-3', label: 'Spectrum', route: '#spectrum', heart: false, star: false },
+    { id: 'sc-4', label: 'The Laws', route: '#laws', heart: false, star: false }
+  ]
+});
+</script>
+</body>
+</html>

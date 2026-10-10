@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Naya Lego — SmartTabs v9 · The Component That Follows You</title>
+<style>
+/* TOKENS — inlined so this page is self-contained (tokens.css kept for the library) */
+:root {
+  /* The field — the world. Deep, never gray. */
+  --field: #050507;
+  --obsidian: #0B0D12;
+  --raise: #10141d;
+  --card: #141a28;
+  --deep: #0a0e16;
+
+  /* The light — text 99% of the time. Every idle rim. */
+  --white: #F8F7FB;
+  --ink: #F5F7FB;
+  --quiet: rgba(248,247,251,.72);
+  --secondary: rgba(248,247,251,.55);
+  --line: rgba(255,255,255,.12);
+
+  /* The soul — chrome accent. Naya's presence. Never a flood. */
+  --soul: #a06bff;
+
+  /* The spectrum — in law order. Richest first, ultra-rich magenta leading. */
+  --magenta: #e84fff;  /* The living edge. Leads every flow. */
+  --purple: #a06bff;   /* Choosing intelligence. The soul. */
+  --blue: #3fb8ff;     /* Knowledge moving. */
+  --green: #2fe89e;    /* Alive and well. */
+  --gold: #ffbf3d;     /* Attention, earned. */
+
+  /* Spectrum RGB triplets — for rgba() glows */
+  --magenta-rgb: 232,79,255;
+  --purple-rgb: 160,107,255;
+  --blue-rgb: 63,184,255;
+  --green-rgb: 47,232,158;
+  --gold-rgb: 255,191,61;
+
+  /* Extended family */
+  --teal: #40d3bb;
+  --teal-rgb: 64,211,187;
+  --coral: #ff5e6c;
+  --coral-rgb: 255,94,108;
+  --lime: #b8ee57;
+  --lime-rgb: 184,238,87;
+  --indigo: #6675ff;
+  --indigo-rgb: 102,117,255;
+
+  /* Truth states */
+  --verified: #2fe89e;
+  --verified-rgb: 47,232,158;
+  --claim: #ffbf3d;
+  --claim-rgb: 255,191,61;
+  --demo: #e84fff;
+  --demo-rgb: 232,79,255;
+
+  /* Motion */
+  --ease: cubic-bezier(.22,1,.36,1);
+  --snap: cubic-bezier(.32,.72,0,1);
+
+  /* Elevation */
+  --lift: 0 18px 50px rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.4);
+  --ring: 0 0 0 2px rgba(160,107,255,.35);
+
+  /* Radii */
+  --r-sm: 11px;
+  --r-md: 13px;
+  --r-lg: 18px;
+  --r-xl: 26px;
+  --r-pill: 999px;
+
+  /* Type scale — size separates, color doesn't */
+  --type-display: 64px;
+  --type-chapter: 40px;
+  --type-headline: 24px;
+  --type-body: 18px;
+  --type-small: 14px;
+}
+</style>
+<link rel="stylesheet" href="smart-tabs.css">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--field); color: var(--white); font-family: Inter, ui-sans-serif, system-ui, sans-serif; font-size: var(--type-body); line-height: 1.65; -webkit-font-smoothing: antialiased; padding: 48px 24px; }
+.lego-wrap { max-width: 1000px; margin: 0 auto; }
+.lego-kicker { font-size: 14px; letter-spacing: .28em; text-transform: uppercase; color: var(--quiet); margin-bottom: 12px; }
+.lego-title { font-family: Georgia, serif; font-size: 40px; margin-bottom: 8px; }
+.lego-lede { font-size: 20px; color: var(--quiet); max-width: 68ch; margin-bottom: 16px; }
+.lego-lede strong { color: var(--white); }
+.lego-section { margin: 56px 0; padding: 32px; border: 1px solid var(--line); border-radius: var(--r-xl); background: linear-gradient(180deg, var(--card), var(--deep)); }
+.lego-section h2 { font-family: Georgia, serif; font-size: 28px; margin-bottom: 8px; }
+.lego-section .why { color: var(--quiet); margin-bottom: 24px; max-width: 70ch; }
+.lego-section .why strong { color: var(--white); }
+pre.code { background: #0a0d14; border: 1px solid var(--line); border-radius: 14px; padding: 20px 22px; overflow-x: auto; font-size: 13px; line-height: 1.7; font-family: ui-monospace, Menlo, Consolas, monospace; color: #d7e0f5; margin: 20px 0; white-space: pre-wrap; word-break: break-word; }
+.code-head { display: flex; justify-content: space-between; align-items: center; margin: 28px 0 8px; }
+.code-head .micro { letter-spacing: .18em; text-transform: uppercase; font-size: 13px; color: var(--quiet); }
+.copy-btn { background: var(--raise); border: 1px solid var(--line); color: var(--white); border-radius: 8px; padding: 6px 14px; font-size: 13px; cursor: pointer; }
+.copy-btn:hover { border-color: var(--soul); }
+.callout { border: 1px solid var(--magenta); border-radius: var(--r-lg); padding: 26px 30px; margin: 32px 0; background: rgba(232,79,255,.05); box-shadow: 0 0 40px -12px rgba(232,79,255,.4); }
+.callout p { margin: 0; font-size: 17px; }
+.law-note { border-left: 3px solid var(--magenta); padding: 12px 18px; margin: 20px 0; background: rgba(232,79,255,.05); border-radius: 0 10px 10px 0; font-size: 16px; }
+</style>
+</head>
+<body>
+<div class="lego-wrap">
+
+<p class="lego-kicker">Naya Lego · SmartTabs v9.0.0</p>
+<h1 class="lego-title">The component that follows you.</h1>
+<p class="lego-lede">A universal favorites ribbon that <strong>follows the user across every page.</strong> Add, edit, heart, star, remove, navigate. State persists. This one below is real — click a pill, right-click it, add your own.</p>
+
+<div class="law-note"><strong>The contract:</strong> one <code>storageKey</code> across all pages so state follows the user. <code>onNavigate</code> wires into your router — the component never assumes. 💜 hearts outrank ⭐ stars: the most important tabs literally rise to the top. Esc closes everything.</div>
+
+<div class="lego-section">
+<h2>Live demo</h2>
+<p class="why">Right-click a pill (or tap ⋯) for Edit / 💜 Heart / ⭐ Star / Remove. State saves to this browser.</p>
+<div id="smarttabs-demo"></div>
+
+<div class="code-head"><span class="micro">Step 1 — the container</span><button class="copy-btn" onclick="copyCode('st1')">Copy</button></div>
+<pre class="code" id="st1">&lt;div id="smarttabs"&gt;&lt;/div&gt;</pre>
+
+<div class="code-head"><span class="micro">Step 2 — include the kit and mount</span><button class="copy-btn" onclick="copyCode('st2')">Copy</button></div>
+<pre class="code" id="st2">&lt;link rel="stylesheet" href="smart-tabs.css"&gt;
+&lt;script src="smart-tabs.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  // Shared storageKey across ALL pages — the ribbon stays in sync everywhere.
+  const tabs = SmartTabs.mount('#smarttabs', {
+    storageKey: 'smartnet_shortcuts',
+    onNavigate: (route, s) =&gt; Router.go(route), // hook into your router
+    routeMap: { 'soulschool': '/soulschool' }  // keyword synonyms
+  });
+&lt;/script&gt;</pre>
+
+<div class="code-head"><span class="micro">Step 3 — the API</span><button class="copy-btn" onclick="copyCode('st3')">Copy</button></div>
+<pre class="code" id="st3">// Read &amp; write
+tabs.list();                    // → [{ id, label, route, heart, star }, …]
+tabs.set(arrayOfShortcuts);     // replace wholesale
+tabs.add({ id, label, route, heart, star });
+tabs.update(id, { label, route, heart, star });
+tabs.remove(id);
+// Listen
+tabs.el.addEventListener('change', e =&gt; console.log(e.detail));
+
+// Data shape — heart/star are mutually exclusive, hearts sort first
+{ id: 'sc-1', label: 'SoulSchool', route: '/soulschool',
+  heart: true, star: false }</pre>
+
+<div class="callout">
+<p><strong>Why it works everywhere:</strong> one <code>storageKey</code> across all pages so state follows the user. <code>onNavigate</code> wires into your router — the component never assumes. That's the whole contract.</p>
+</div>
+</div>
+
+</div>
+<script src="smart-tabs.js"></script>
+<script>
+function copyCode(id) {
+  const el = document.getElementById(id);
+  navigator.clipboard.writeText(el.innerText).then(() => {
+    const btn = event.target; const old = btn.textContent;
+    btn.textContent = 'Copied ✓'; setTimeout(() => btn.textContent = old, 1600);
+  });
+}
+SmartTabs.mount('#smarttabs-demo', {
+  storageKey: 'naya_ultimate_smarttabs',
+  initial: [
+    { id: 'sc-1', label: 'Buttons', route: 'buttons.html', heart: true, star: false },
+    { id: 'sc-2', label: 'Boards', route: 'boards.html', heart: false, star: true },
+    { id: 'sc-3', label: 'Jewels', route: 'jewels.html', heart: false, star: false },
+    { id: 'sc-4', label: 'Truth', route: 'truth-pills.html', heart: false, star: false }
+  ]
+});
+</script>
+</body>
+</html>

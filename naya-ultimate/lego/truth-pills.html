@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Naya Lego — Truth · Truth Is Part of the Visual Language</title>
+<style>
+/* TOKENS — inlined so this page is self-contained (tokens.css kept for the library) */
+:root {
+  /* The field — the world. Deep, never gray. */
+  --field: #050507;
+  --obsidian: #0B0D12;
+  --raise: #10141d;
+  --card: #141a28;
+  --deep: #0a0e16;
+
+  /* The light — text 99% of the time. Every idle rim. */
+  --white: #F8F7FB;
+  --ink: #F5F7FB;
+  --quiet: rgba(248,247,251,.72);
+  --secondary: rgba(248,247,251,.55);
+  --line: rgba(255,255,255,.12);
+
+  /* The soul — chrome accent. Naya's presence. Never a flood. */
+  --soul: #a06bff;
+
+  /* The spectrum — in law order. Richest first, ultra-rich magenta leading. */
+  --magenta: #e84fff;  /* The living edge. Leads every flow. */
+  --purple: #a06bff;   /* Choosing intelligence. The soul. */
+  --blue: #3fb8ff;     /* Knowledge moving. */
+  --green: #2fe89e;    /* Alive and well. */
+  --gold: #ffbf3d;     /* Attention, earned. */
+
+  /* Spectrum RGB triplets — for rgba() glows */
+  --magenta-rgb: 232,79,255;
+  --purple-rgb: 160,107,255;
+  --blue-rgb: 63,184,255;
+  --green-rgb: 47,232,158;
+  --gold-rgb: 255,191,61;
+
+  /* Extended family */
+  --teal: #40d3bb;
+  --teal-rgb: 64,211,187;
+  --coral: #ff5e6c;
+  --coral-rgb: 255,94,108;
+  --lime: #b8ee57;
+  --lime-rgb: 184,238,87;
+  --indigo: #6675ff;
+  --indigo-rgb: 102,117,255;
+
+  /* Truth states */
+  --verified: #2fe89e;
+  --verified-rgb: 47,232,158;
+  --claim: #ffbf3d;
+  --claim-rgb: 255,191,61;
+  --demo: #e84fff;
+  --demo-rgb: 232,79,255;
+
+  /* Motion */
+  --ease: cubic-bezier(.22,1,.36,1);
+  --snap: cubic-bezier(.32,.72,0,1);
+
+  /* Elevation */
+  --lift: 0 18px 50px rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.4);
+  --ring: 0 0 0 2px rgba(160,107,255,.35);
+
+  /* Radii */
+  --r-sm: 11px;
+  --r-md: 13px;
+  --r-lg: 18px;
+  --r-xl: 26px;
+  --r-pill: 999px;
+
+  /* Type scale — size separates, color doesn't */
+  --type-display: 64px;
+  --type-chapter: 40px;
+  --type-headline: 24px;
+  --type-body: 18px;
+  --type-small: 14px;
+}
+</style>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--field); color: var(--white); font-family: Inter, ui-sans-serif, system-ui, sans-serif; font-size: var(--type-body); line-height: 1.65; -webkit-font-smoothing: antialiased; padding: 48px 24px; }
+.lego-wrap { max-width: 1000px; margin: 0 auto; }
+.lego-kicker { font-size: 14px; letter-spacing: .28em; text-transform: uppercase; color: var(--quiet); margin-bottom: 12px; }
+.lego-title { font-family: Georgia, serif; font-size: 40px; margin-bottom: 8px; }
+.lego-lede { font-size: 20px; color: var(--quiet); max-width: 68ch; margin-bottom: 16px; }
+.lego-lede strong { color: var(--white); }
+.lego-section { margin: 56px 0; padding: 32px; border: 1px solid var(--line); border-radius: var(--r-xl); background: linear-gradient(180deg, var(--card), var(--deep)); }
+.lego-section h2 { font-family: Georgia, serif; font-size: 28px; margin-bottom: 8px; }
+.lego-section .why { color: var(--quiet); margin-bottom: 24px; max-width: 70ch; }
+.lego-section .why strong { color: var(--white); }
+pre.code { background: #0a0d14; border: 1px solid var(--line); border-radius: 14px; padding: 20px 22px; overflow-x: auto; font-size: 13px; line-height: 1.7; font-family: ui-monospace, Menlo, Consolas, monospace; color: #d7e0f5; margin: 20px 0; white-space: pre-wrap; word-break: break-word; }
+.copy-btn { background: var(--raise); border: 1px solid var(--line); color: var(--white); border-radius: 8px; padding: 6px 14px; font-size: 13px; cursor: pointer; margin-bottom: 8px; }
+.copy-btn:hover { border-color: var(--soul); }
+.law-note { border-left: 3px solid var(--magenta); padding: 12px 18px; margin: 20px 0; background: rgba(232,79,255,.05); border-radius: 0 10px 10px 0; font-size: 16px; }
+
+/* ============ TRUTH PILLS — verified glows, claims stay quiet ============ */
+.truthgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+@media (max-width: 900px) { .truthgrid { grid-template-columns: 1fr; } }
+.truth { border: 1.5px solid rgba(255,255,255,.22); border-radius: 16px; padding: 22px;
+  background: linear-gradient(180deg, #0c0c12, #060608);
+  box-shadow: 0 14px 34px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.07);
+  display: flex; gap: 16px; align-items: flex-start;
+  transition: border-color .25s var(--ease), box-shadow .25s var(--ease), transform .25s var(--ease); }
+.truth:hover { border-color: color-mix(in srgb, var(--tc2) 65%, transparent);
+  box-shadow: 0 18px 40px rgba(0,0,0,.6), 0 0 30px -6px var(--tc2), inset 0 1px 0 rgba(255,255,255,.1);
+  transform: translateY(-3px); }
+.torb { width: 44px; height: 44px; border-radius: 50%; flex: none; display: grid; place-items: center;
+  font-size: 18px; font-weight: 900; color: #fff;
+  background: radial-gradient(circle at 35% 30%, var(--tc2), #000 130%);
+  border: 2px solid var(--tc2); box-shadow: 0 0 18px var(--tc2); }
+.truth b { display: block; font-size: 14px; letter-spacing: .18em; color: #fff; margin-bottom: 4px; }
+.truth p { font-size: 18px; color: #fff; margin: 0; opacity: .92; }
+
+/* ============ TRUTH BADGES — inline pills ============ */
+.truth-badge { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 800;
+  letter-spacing: .12em; padding: 7px 14px; border-radius: 99px; border: 1px solid rgba(255,255,255,.3);
+  background: rgba(0,0,0,.5); color: #fff; }
+.truth-badge .tdot { width: 8px; height: 8px; border-radius: 50%; background: var(--tc, #a06bff);
+  box-shadow: 0 0 10px var(--tc, #a06bff); }
+.truth-badge.live { --tc: var(--green); }
+.truth-badge.demo { --tc: var(--gold); }
+.truth-badge.local { --tc: var(--blue); }
+.badge-row { display: flex; gap: 12px; flex-wrap: wrap; margin: 20px 0; }
+</style>
+</head>
+<body>
+<div class="lego-wrap">
+
+<p class="lego-kicker">Naya Lego · Truth</p>
+<h1 class="lego-title">Truth is part of the visual language.</h1>
+<p class="lego-lede">A claim and a proof must <strong>never look the same.</strong> Scores move on evidence, never optimism. What is verified glows green; what is merely claimed stays quiet until it earns its light.</p>
+
+<div class="law-note"><strong>The law:</strong> <em>Animated ≠ alive. Stored ≠ learned. Claimed ≠ proven.</em> Every claim-bearing surface carries its truth state. No exceptions.</div>
+
+<div class="lego-section">
+<h2>01 · Truth Cards — the three states</h2>
+<p class="why"><strong>Why:</strong> Each card is a <code>--tc2</code>-driven truth statement: colored orb glyph, spaced cap label, plain-English evidence line. Hover ignites the card in its truth color.</p>
+<div class="truthgrid">
+  <div class="truth" style="--tc2:#2fe89e"><span class="torb" style="--tc2:#2fe89e">✓</span><div><b>AUTH · VERIFIED</b><p>Independent evidence exists. The number survived contact with reality.</p></div></div>
+  <div class="truth" style="--tc2:#ffbf3d"><span class="torb" style="--tc2:#ffbf3d">?</span><div><b>CLAIM · UNVERIFIED</b><p>Self-reported, awaiting its stamp. Shown honestly, never hidden.</p></div></div>
+  <div class="truth" style="--tc2:#e84fff"><span class="torb" style="--tc2:#e84fff">◈</span><div><b>DEMONSTRATION</b><p>Specimen content. Beautiful on purpose, not pretending to be live.</p></div></div>
+</div>
+<button class="copy-btn" onclick="copyCode('truthCode')">Copy truth cards</button>
+<pre class="code" id="truthCode">&lt;div class="truthgrid"&gt;
+  &lt;div class="truth" style="--tc2:#2fe89e"&gt;
+    &lt;span class="torb" style="--tc2:#2fe89e"&gt;✓&lt;/span&gt;
+    &lt;div&gt;&lt;b&gt;AUTH · VERIFIED&lt;/b&gt;
+    &lt;p&gt;Independent evidence exists.&lt;/p&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;!-- --tc2: #2fe89e verified · #ffbf3d claim · #e84fff demonstration --&gt;
+&lt;/div&gt;</pre>
+</div>
+
+<div class="lego-section">
+<h2>02 · Truth Badges — inline pills</h2>
+<p class="why"><strong>Why:</strong> Compact truth markers for inline use. One <code>--tc</code> property drives the dot and glow.</p>
+<div class="badge-row">
+  <span class="truth-badge live"><span class="tdot"></span>LIVE</span>
+  <span class="truth-badge demo"><span class="tdot"></span>DEMO</span>
+  <span class="truth-badge local"><span class="tdot"></span>LOCAL</span>
+  <span class="truth-badge"><span class="tdot"></span>CANDIDATE</span>
+</div>
+<button class="copy-btn" onclick="copyCode('badgeCode')">Copy truth badges</button>
+<pre class="code" id="badgeCode">&lt;span class="truth-badge live"&gt;&lt;span class="tdot"&gt;&lt;/span&gt;LIVE&lt;/span&gt;
+&lt;!-- classes: live (green) · demo (gold) · local (blue) · default (purple) --&gt;</pre>
+</div>
+
+</div>
+<script>
+function copyCode(id) {
+  const el = document.getElementById(id);
+  navigator.clipboard.writeText(el.innerText).then(() => {
+    const btn = event.target; const old = btn.textContent;
+    btn.textContent = 'Copied ✓'; setTimeout(() => btn.textContent = old, 1600);
+  });
+}
+</script>
+</body>
+</html>
