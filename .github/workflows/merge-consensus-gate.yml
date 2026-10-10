@@ -19,7 +19,7 @@ jobs:
     name: Team review + scorecard receipt
     runs-on: ubuntu-latest
     # Only run for PR comments, not issue comments
-    if: github.event.issue.pull_request
+    if: github.event_name != 'issue_comment' || github.event.issue.pull_request
     steps:
       - uses: actions/checkout@v4
       - name: Get PR info
