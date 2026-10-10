@@ -24,7 +24,27 @@
     },
     {
       "path": "BRAIN/01-GOVERNANCE/0007-law-of-one-v1.machine.json",
-      "reason": "Status DRAFT in the machine envelope (status=\"DRAFT\", ratified_by null; the human projection's own Status section reads \"DRAFT -- proposed by Shawn Vibert, 2026-10-09. Awaiting his ratification to become constitutional law.\"). A pin was not attempted: the manifest pins RATIFIED projections only, and the envelope check would fail mechanically (missing schema/ratified_by/ratified_date, no loop.phases/cycle.phases, no invariants -- same failure shape as the 0006 pin attempt #1982). Pin here if/when the machine projection carries the ratified envelope (status DIRECTOR-RATIFIED, ratified_by Shawn Vibert) -- same precedent as the 0003/0006/0013/0014 exclusions. Envelope conformance owned by the authoring lane. Recorded by the brain-build loop 2026-10-09 (supersedes PR #2057's index-heal attempt, now stale)."
+      "reason": "Status RATIFIED in the machine envelope (status=\"RATIFIED\", ratified_date=\"2026-10-09\"), but the envelope is missing required keys: no \"schema\" key and no \"ratified_by\" key (tools/spec_integrity_check.py REQUIRED_ENVELOPE_KEYS = (\"schema\",\"status\",\"ratified_by\",\"ratified_date\"); ratified_by must equal \"Shawn Vibert\"). The manifest pins RATIFIED projections only when the full ratified envelope is present, so the pin would fail mechanically on the missing keys. Pin here when the machine projection carries the complete ratified envelope (schema + ratified_by \"Shawn Vibert\") -- same precedent as the 0003/0006/0013/0014 exclusions. Envelope conformance owned by the authoring lane. Reason corrected 2026-10-09 by the repair lane: prior text said status=\"DRAFT\", which is false on current main."
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0016-law-of-one-v1.machine.json",
+      "reason": "JSON Schema definition file ($id/$schema style, properties/type/required -- a schema FOR the law, not a law projection). No DIRECTOR-RATIFIED envelope (no status/ratified_by/ratified_date keys); already enforced by tools/doc_completeness_check.py. Pin here only if it adopts the ratified envelope -- same precedent as the 0003 exclusion. Recorded by the repair lane 2026-10-09 on the true-merge re-anchor (new from main 6af94ec4)."
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0017-calculator-as-default-v1.machine.json",
+      "reason": "JSON Schema definition file ($id/$schema style -- a schema FOR the law, not a law projection). No DIRECTOR-RATIFIED envelope; already enforced by tools/doc_completeness_check.py. Pin here only if it adopts the ratified envelope -- same precedent as the 0003 exclusion. Recorded by the repair lane 2026-10-09 on the true-merge re-anchor (new from main 6af94ec4)."
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0018-plain-words-decision-format-v1.machine.json",
+      "reason": "JSON Schema definition file ($id/$schema style -- a schema FOR the law, not a law projection). No DIRECTOR-RATIFIED envelope; already enforced by tools/doc_completeness_check.py. Pin here only if it adopts the ratified envelope -- same precedent as the 0003 exclusion. Recorded by the repair lane 2026-10-09 on the true-merge re-anchor (new from main 6af94ec4)."
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0019-reversibility-rule-v1.machine.json",
+      "reason": "JSON Schema definition file ($id/$schema style -- a schema FOR the law, not a law projection). No DIRECTOR-RATIFIED envelope; already enforced by tools/doc_completeness_check.py. Pin here only if it adopts the ratified envelope -- same precedent as the 0003 exclusion. Recorded by the repair lane 2026-10-09 on the true-merge re-anchor (new from main 6af94ec4)."
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0020-engine-before-production-v1.machine.json",
+      "reason": "JSON Schema definition file ($id/$schema style -- a schema FOR the law, not a law projection). No DIRECTOR-RATIFIED envelope; already enforced by tools/doc_completeness_check.py. Pin here only if it adopts the ratified envelope -- same precedent as the 0003 exclusion. Recorded by the repair lane 2026-10-09 on the true-merge re-anchor (new from main 6af94ec4)."
     }
   ],
   "note": "Pins are git blob SHAs of the ratified projections as they existed on live main at establishment. Any deliberate spec change must update the pins in the same (reviewed) PR. A pin mismatch is spec drift until proven otherwise. This manifest is a drift detector anchored at a known-good point, not a re-proof of the original ratification.",

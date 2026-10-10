@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-10  
-**Receipt basis commit:** `0bbc1feea2316390b6c546fd63d419e32eac9a6e`  
-**Inventory file count:** 1214  
+**Receipt basis commit:** `93030048d421686c917af6e872277f1985255ede`  
+**Inventory file count:** 1233  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -11,11 +11,11 @@
 | Domain | Files |
 |---|---|
 | 00-SPEC | 15 |
-| 01-GOVERNANCE | 31 |
+| 01-GOVERNANCE | 49 |
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 25 |
-| 05-MEMORY | 643 |
+| 05-MEMORY | 644 |
 | 06-PROOF | 13 |
 | 07-LEARNING | 8 |
 | 08-SUCCESSION | 2 |
@@ -86,7 +86,25 @@
 - `BRAIN/01-GOVERNANCE/0014-MANTRA-V1.human.md` — `866ef064a64d` (4122 bytes)
 - `BRAIN/01-GOVERNANCE/0014-mantra-v1.machine.json` — `9d9d1fe2937d` (3087 bytes)
 - `BRAIN/01-GOVERNANCE/0015-SECURITY-ACKNOWLEDGMENTS-V1.md` — `0800143c89ba` (4990 bytes)
+- `BRAIN/01-GOVERNANCE/0016-LAW-OF-ONE-V1.ai.md` — `29a3b8f959b5` (2654 bytes)
+- `BRAIN/01-GOVERNANCE/0016-LAW-OF-ONE-V1.human.md` — `11c3c9df27e0` (1508 bytes)
+- `BRAIN/01-GOVERNANCE/0016-law-of-one-v1.machine.json` — `e9e40316e0ae` (1303 bytes)
+- `BRAIN/01-GOVERNANCE/0017-CALCULATOR-AS-DEFAULT-V1.ai.md` — `257e2163a3ad` (2603 bytes)
+- `BRAIN/01-GOVERNANCE/0017-CALCULATOR-AS-DEFAULT-V1.human.md` — `30e0d35a7799` (1248 bytes)
+- `BRAIN/01-GOVERNANCE/0017-calculator-as-default-v1.machine.json` — `7aa30ed57f4f` (917 bytes)
+- `BRAIN/01-GOVERNANCE/0018-PLAIN-WORDS-DECISION-FORMAT-V1.ai.md` — `7fb6ff04999d` (2158 bytes)
+- `BRAIN/01-GOVERNANCE/0018-PLAIN-WORDS-DECISION-FORMAT-V1.human.md` — `7757e99a4626` (1040 bytes)
+- `BRAIN/01-GOVERNANCE/0018-plain-words-decision-format-v1.machine.json` — `99aa3a4e8a4e` (909 bytes)
+- `BRAIN/01-GOVERNANCE/0019-REVERSIBILITY-RULE-V1.ai.md` — `fca74da73be5` (2308 bytes)
+- `BRAIN/01-GOVERNANCE/0019-REVERSIBILITY-RULE-V1.human.md` — `5dfdd1629e17` (1015 bytes)
+- `BRAIN/01-GOVERNANCE/0019-reversibility-rule-v1.machine.json` — `860ae3f8aa6b` (934 bytes)
+- `BRAIN/01-GOVERNANCE/0020-ENGINE-BEFORE-PRODUCTION-V1.ai.md` — `dc767dbaee8a` (2079 bytes)
+- `BRAIN/01-GOVERNANCE/0020-ENGINE-BEFORE-PRODUCTION-V1.human.md` — `3054324783e9` (995 bytes)
+- `BRAIN/01-GOVERNANCE/0020-engine-before-production-v1.machine.json` — `abc384701525` (947 bytes)
+- `BRAIN/01-GOVERNANCE/DOC-COMPLETENESS-AUDIT-2026-10-10.md` — `ea273ce3077d` (2633 bytes)
 - `BRAIN/01-GOVERNANCE/LEARNING-INTERNALIZATION-AUTOMATIC-BEHAVIOR-V1.md` — `c58ef4864a38` (10500 bytes)
+- `BRAIN/01-GOVERNANCE/OPERATING-LAW.json` — `eb1a6d850212` (28653 bytes)
+- `BRAIN/01-GOVERNANCE/OPERATING-LAW.md` — `17575d56498a` (29862 bytes)
 - `BRAIN/01-GOVERNANCE/README.md` — `065bb6dc1530` (1673 bytes)
 - `BRAIN/01-GOVERNANCE/TEAM-NAYA-OPERATING-PROTOCOL-V1.md` — `947a3a14a9bf` (14458 bytes)
 - `BRAIN/01-GOVERNANCE/elevation-grants/README.md` — `37afb12365a8` (1910 bytes)
@@ -162,6 +180,7 @@
 - `BRAIN/05-MEMORY/0001-MEMORY-CONTINUITY-CONTRACT-V1.md` — `1dad3e9d1c45` (1937 bytes)
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-03-NAYANET-HUB-DAILY-INTELLIGENCE.md` — `2594fc618ff2` (4371 bytes)
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-04-NAYAPOWER-FLOW-PROOF-SPECIMEN.md` — `ea6a1d83a40b` (6363 bytes)
+- `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-09-NAYAPOWER-DAILY-INTELLIGENCE.md` — `fe954e32d2c7` (9817 bytes)
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/09/27/IB-DIR-NAYAPOWER-20260927-001.md` — `cb3d277c8117` (2359 bytes)
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/09/28/IB-DIR-NAYAPOWER-20260928-001.md` — `9a102af87000` (2091 bytes)
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/09/29/IB-DIR-NAYAPOWER-20260929-001.md` — `ef4f22f9e3c1` (2239 bytes)
