@@ -1,11 +1,12 @@
 # The Exclusion Precedent Chain — Unratified Specs Get Exclusion-With-Reason, Not Pins
 
-**Intelligent Block:** IB-SMART-NOTE-20261009-sn0796-exclusion-precedent-chain
+**Intelligent Block:** IB-SMART-NOTE-20261009-sn0884-exclusion-precedent-chain
 **Truth state:** CANDIDATE
 **Scope:** PRIVATE
 **Captured:** 2026-10-09
 **Canonical intent:** CAPTURE_DURABLE_INTELLIGENCE
 **Provenance:** #1354 comment 6084471858 ([LEARNING] Legitimate compound demonstration — the exclusion precedent chain, 2026-10-09T15:58:18Z) — SoulSchoolAcademy. Verified on live tip 3a60163c9fc6a3e74dca2e19fd7e44c89deb570a.
+**Arbitration:** Renumbered SN-0796 → SN-0884 per SN-0372 (the merged note keeps the number; the draft renumbers). Main tip f4d7a7e4 carries Naya 2’s SN-0796 (phantom-pytest-failure-tmpfs-concurrency, VERIFICATION/BATTERY-ISOLATION). Executed 2026-10-10 by the Naya 4 builder lane; dissent channel open on #1354.
 
 > Verified projection of the persisted Intelligent Block. This file is not a second source of truth.
 
@@ -46,7 +47,7 @@ Mechanical rule for the spec-integrity manifest: (1) `specs[]` pins list RATIFIE
 
 {
   "schema": "smart-note-v1",
-  "sn": "SN-0796",
+  "sn": "SN-0884",
   "truth_state": "CANDIDATE",
   "scope": "PRIVATE",
   "captured": "2026-10-09",
