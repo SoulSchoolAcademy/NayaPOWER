@@ -1,0 +1,66 @@
+name: Worker Protocol Gates
+
+# LAW IS CODE — machine enforcement of BRAIN/01-GOVERNANCE/WORKER-PROTOCOL.md.
+# Runs on every PR to main. Fast by design: stdlib python3 only, no installs,
+# jobs run in parallel. These gates make protocol violations difficult, not
+# merely documented.
+#
+# Gates:
+#   receipt              [CODE] PR body has ## Evidence with >=1 LIVE artifact
+#                        handle (URL resolves / SHA exists / path exists).
+#                        "No receipt, no merge." Dead links fail.
+#   no-silent-deletion   [CODE] Every deleted file declared under ## Deletions
+#                        with a reason. Kills the stale-head trap that nearly
+#                        deleted THE-TUNE-IN-TEMPLATE.md (PR #2136, 2026-10-10).
+#   overlap              [ADVISORY] Warns when another open PR touches the same
+#                        files. Never blocks — information, not bureaucracy.
+#
+# Escape hatch: if a gate false-positives, the merge lane may merge with a
+# written override in the merge commit message plus a note on #1354.
+# A gate that blocks good work is a bug — report it, don't route around it.
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened, edited]
+
+jobs:
+  receipt:
+    name: Receipt gate (evidence or it didn't happen)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate PR receipt
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
+        run: python3 tools/check_pr_receipt.py
+
+  no-silent-deletion:
+    name: No silent deletions
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Check deletions are declared
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: python3 tools/check_pr_deletions.py
+
+  overlap:
+    name: Duplicate-work watch (advisory)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Warn on overlapping open PRs
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: python3 tools/warn_overlapping_prs.py

@@ -1,0 +1,25 @@
+name: Mission State Watch
+
+# Is the director alive? The canonical mission snapshot
+# (BRAIN/CURRENT-MISSION-STATE.md on the naya/mission-state branch) is
+# refreshed by the director ~every 30 min. If it goes stale, workers are
+# tuning into old orders — this posts an alert to #1354.
+#
+# Report-only. Cheap: 2-4 API calls per run, no checkout, no CI burn
+# (the snapshot branch triggers no workflows).
+
+on:
+  schedule:
+    - cron: '*/45 * * * *'
+  workflow_dispatch:
+
+jobs:
+  freshness:
+    name: Mission snapshot freshness
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check snapshot age, alert if stale
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: python3 tools/mission_state_watch.py
