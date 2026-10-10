@@ -1,82 +1,90 @@
 [
-  {
-    "decision_id": "DEC-20261008-HV-REALDATA-001",
-    "delta_v_predicted": 6.5,
-    "objective": "Seed the first REAL Human Value event ledger (public-evidence events only), run the first real HV/day + DAI computation, and prove cold-recomputability from a fresh clone.",
-    "predicted_at": "2026-10-08T09:55:00Z",
-    "predicted_by": "Naya 5 (human-value-builder run)",
-    "prediction_basis": "Completes continuity-gate 8.0 items 2-4 (cold retrieve, recompute same numbers from cited evidence, fail-closed on drift) and starts the real prediction->observation loop. Does NOT claim 8.0: the loop needs accumulated real joined observations over time, which one run cannot manufacture. Prediction recorded BEFORE the work; the outcome event carries delta_v_actual for the join.",
-    "receipt_type": "ALIGNMENT_DECISION",
-    "schema_version": "2.1",
-    "verification": "UNVERIFIED"
-  },
-  {
-    "decision_id": "DEC-20261008-HV-REALDATA-002",
-    "delta_v_predicted": 7.0,
-    "objective": "Accumulate the verified real events of 2026-10-08 post-10:45 UTC (governance ratifications #1863/#1864, nine-team structure, #1764, #1768, #1880, #1881, #1883, #1884, #1885/#1887) into the real ledger with durable evidence, recompute HV/day + DAI deterministically, close the second prediction->observation join (n=2), re-run the cold-recompute proof at the new tip, rebase and push the branch.",
-    "predicted_at": "2026-10-08T15:50:00Z",
-    "predicted_by": "Naya 5 (human-value-builder run)",
-    "prediction_basis": "Continues the continuity-gate 8.0 accumulation: one run cannot manufacture weeks of data, so each run adds one verified joined observation toward the n>=3 recalibration floor. Pre-registered BEFORE the ledger work; the outcome event carries delta_v_actual for the join.",
-    "receipt_type": "ALIGNMENT_DECISION",
-    "schema_version": "2.1",
-    "verification": "UNVERIFIED"
-  },
-  {
-    "decision_id": "DEC-20261008-HV-REALDATA-003",
-    "delta_v_predicted": 7.0,
-    "objective": "Close the third prediction->observation join (n=3, the recalibration floor): accumulate this run's verified human-value measurement work, re-run the cold-recompute proof on a fresh clone of the pushed branch, re-run the 35-test suite green, push the branch via the Git Data API with server-tree verification, and post the run scorecard. One joined observation per run; no weeks of data manufactured.",
-    "predicted_at": "2026-10-08T21:47:00Z",
-    "predicted_by": "Naya 5 (human-value-builder run)",
-    "prediction_basis": "Same basis as DEC-002: continues the continuity-gate 8.0 accumulation. n=3 is the minimum sample for a recalibration candidate (kernel floor); the join observes whether the predicted work actually completed and how calibration moves. Pre-registered BEFORE the ledger work and the cold proof; the outcome event carries delta_v_actual for the join.",
-    "receipt_type": "ALIGNMENT_DECISION",
-    "schema_version": "2.1",
-    "verification": "UNVERIFIED"
-  },
-  {
-    "decision_id": "DEC-20261009-HV-REALDATA-004",
-    "delta_v_predicted": 7.0,
-    "objective": "Accumulate the overnight verified real events (2026-10-08 22:02 UTC to 2026-10-09 03:41 UTC): merged PRs #1916 (lineage B+D consumer), #1919 (grant auto-renewal), #1920 (Design Standard Showcase), #1921 (report reimagined), #1922 (truth act-proof fix), #1923 (prod readiness checklist), #1928 (Design Blocks Library), #1932 (SN-0742/0743/0744 vision notes), #1934 (Smart Blocks 33 components). Scan #1354 for attention-demanded events (DAI) since 21:45 UTC. Verify the merged human-value instrument still computes on the new tip (04ab94be). Close the fourth prediction->observation join (n=4). Cold-recompute proof, push branch, post scorecard.",
-    "predicted_at": "2026-10-09T03:45:00Z",
-    "predicted_by": "Naya 5 (human-value-builder run)",
-    "prediction_basis": "Same run archetype as DEC-002/DEC-003: accumulate verified overnight events with durable evidence, DAI scan, deterministic recompute, one more joined observation toward a deeper calibration series (n=4). Pre-registered BEFORE any ledger change; the outcome event carries delta_v_actual for the join. #1917/#1918 (my own branch's merge) deliberately excluded: HV-20261008-017 already recorded that delivery outcome (one-outcome-no-inflation). DAI trend needs weeks of real data and cannot be manufactured in one run; independent cross-verification of 7.5 still outstanding.",
-    "receipt_type": "ALIGNMENT_DECISION",
-    "schema_version": "2.1",
-    "verification": "UNVERIFIED"
-  },
-  {
-    "decision_id": "DEC-20261009-HV-REALDATA-005",
-    "delta_v_predicted": 7.0,
-    "objective": "Accumulate the verified real events of 2026-10-09 03:41-09:41 UTC: merged PRs #1935 (Smart Blocks v2 sub-components + cold fixes), #1941 (Naya Lego Library final), #1942 (6 composition blocks + cold-test repairs), #1945 (failure receipt on every promotion failure path), #1947 (purple token unify), #1948 (nav+footer composition blocks), #1949 (NAYA-CALCULATOR-V1 universal scoring spec), #1951 (Smart Graphs visual language, 7 graph blocks + 3-language spec + specimens), #1954 (Smart Blocks refinement to 10/10). Scan #1354 for attention-demanded events (DAI) since 03:41 UTC. Rebase the branch onto the live tip (925e4c348) first. Close the fifth prediction->observation join (n=5). Cold-recompute proof on the pushed SHA, push via the Git Data API with server-tree verification, post scorecard.",
-    "predicted_at": "2026-10-09T09:45:00Z",
-    "predicted_by": "Naya 5 (human-value-builder run)",
-    "prediction_basis": "Same run archetype as DEC-002/DEC-003/DEC-004: accumulate verified events with durable evidence (all 9 carry Naya 2 scorecard receipts + merged-verified-at-tip evidence on #1354), DAI scan, deterministic recompute, one more joined observation deepening the calibration series (n=5). Pre-registered BEFORE any ledger change; the outcome event carries delta_v_actual for the join. Own branch's prior content (PR #1939, still open) is carried forward, not re-counted (one-outcome-no-inflation). DAI trend still needs weeks of real data; independent cross-verification of 7.5 still outstanding.",
-    "receipt_type": "ALIGNMENT_DECISION",
-    "schema_version": "2.1",
-    "verification": "UNVERIFIED"
-  },
-  {
-    "decision_id": "DEC-20261009-HV-REALDATA-006",
-    "delta_v_predicted": 7.0,
-    "objective": "Accumulate the verified real events of 2026-10-09 09:41-15:41 UTC: merged PRs #1959 (registry heal SN-0742/0743/0744), #1961 (SN-0632..SN-0639 heal, #1838 adjudicated), #1963/#1964/#1965 (three Smart Blocks extractions, one outcome), #1976 (regenerate_brain_index hardening), #1982/#1983 (CANDIDATE spec pinned then excluded, one outcome), #1986 (SN-0781 scorecard-gate law). All carry Naya 2 scorecard receipts + merged-on-main evidence on #1354. Scan #1354 for attention-demanded events (DAI) since 09:41 UTC. Close the sixth prediction->observation join (n=6). Cold-recompute proof on the pushed SHA, push via the Git Data API with server-tree verification, post scorecard. Excluded by design: #1966/#1968/#1972/#1973/#1975 (merged but no scorecard receipt on #1354 \u2014 fail closed against inflation) and #1955 (own delegated merge; not self-scored).",
-    "predicted_at": "2026-10-09T15:50:00Z",
-    "predicted_by": "Naya 5 (human-value-builder run)",
-    "prediction_basis": "Same run archetype as DEC-002..DEC-005: accumulate verified events with durable evidence, DAI scan, deterministic recompute, one more joined observation deepening the calibration series (n=6). Pre-registered BEFORE any ledger change; the outcome event carries delta_v_actual for the join. Main tip moved during the run (925e4c348 -> 3a60163c9); branch rebased first, no events re-counted. DAI trend still needs weeks of real data; independent cross-verification of the 7.5 claim still outstanding (PR #1939 open, no review).",
-    "receipt_type": "ALIGNMENT_DECISION",
-    "schema_version": "2.1",
-    "verification": "UNVERIFIED"
-  },
-  {
-    "decision_id": "DEC-20261009-HV-REALDATA-007",
-    "delta_v_predicted": 7.0,
-    "objective": "Accumulate the verified real events of 2026-10-09 15:41-21:41 UTC: merged PRs #1999 (sequence_policy 745->782, Naya 2 verified on merged tip), #1995 (capture-index flake fix, L4 independent verifier: red->green proven), #2005 (#1993 residual repairs, independent seat repair confirmed), #2030 (brain-index regen, Naya 2 scorecard receipt), #2036 (guard false-positive repair, Naya 2 scorecard receipt), #2028 (quote-smuggle fix, independent paired re-attacker CLOSED 9.5), #1956 (convergence-C receipt instrument, independent validator 9.0/10 + Naya 4 post-merge verified), #1957 (prod proof chains, independent validator 9.1/10), #2052 (activation docs placement, Naya 2 merged-verified), #2056 (manifest wiring, Naya 2 merged-verified). Scan #1354 for attention-demanded events (DAI) since 15:41 UTC. Close the seventh prediction->observation join (n=7). Cold-recompute proof on the pushed SHA, push via the Git Data API with server-tree verification, post scorecard. Excluded by design: #2017 (unsigned scorecard), #2020 (correction saga, authority ambiguity), #1882 (own comment only), #2054 (no scorecard receipt found), #2060 (no receipt yet); Shawn's 17:53 and 21:21 directives classified as live direction, not failure correction (not DAI).",
-    "predicted_at": "2026-10-09T21:47:00Z"
-  },
-  {
-    "decision_id": "DEC-20261010-HV-REALDATA-008",
-    "delta_v_predicted": 7.0,
-    "objective": "Accumulate the verified real events of 2026-10-09 21:41 UTC to 2026-10-10 03:41 UTC: merged PRs #2061 (WO5b learning, Naya 2 merge-verified), #2063 (WO4 learning, Naya 2 merge-verified), #2059 (thinking curriculum V1, Naya 2 merged-verified at tip), #2066 (activation checklist, Naya 2 merged-verified at tip), #2048 (WO3 admission hallway, Naya 2 merge closure), #2049 (WO3 admission gate, Naya 2 merge closure), #2069 (cold-start doctrine repair, Naya 2 merged-verified at tip), #2072 (Brain index regen, Naya 2 lane-confirmed), #2100 (stale test fix, Naya 2 scorecard), #2084 (spec-integrity exclusion, Naya 2 scorecard), #2107 (daily learning event, Naya 2 merged-verified at tip); two attention-demanded events (#2068 awaiting Shawn's click, prod-readiness C10 awaiting his word); recompute HV/day + DAI deterministically, close the eighth prediction->observation join (n=8), re-run the cold-recompute proof on a fresh clone of the pushed branch, re-run the 36-test suite green, push via the Git Data API with server-tree verification. Exclusions (fail-closed): #2101 (no independent verification receipt), #2068 (open, not a delivered outcome), #2070 (independent HOLD), #2083 (closed unmerged), #2062/#2067 (open), director teaching/question (human-initiated, not system-demanded), #2077 battery red (team-repaired, no human intervention), gate PRs #2094-#2099 (no independent verification or merge), driver-completion claims (self-claims, no independent verification), SLA audit (own-lane self-credit).",
-    "predicted_at": "2026-10-10T03:50:00Z",
-    "predicted_by": "Naya 5 (human-value-builder run)",
-    "prediction_basis": "Eleventh real-ledger accumulation run. Pattern established over seven prior joins: pre-register before observation, append only independently-verified or evidence-durable outcomes, close the join with an honest delta_v_actual, recompute deterministically, prove cold-recomputability. Predicted +7.0 consistent with prior loops."
-  }
+ {
+  "decision_id": "DEC-20261008-HV-REALDATA-001",
+  "delta_v_predicted": 6.5,
+  "objective": "Seed the first REAL Human Value event ledger (public-evidence events only), run the first real HV/day + DAI computation, and prove cold-recomputability from a fresh clone.",
+  "predicted_at": "2026-10-08T09:55:00Z",
+  "predicted_by": "Naya 5 (human-value-builder run)",
+  "prediction_basis": "Completes continuity-gate 8.0 items 2-4 (cold retrieve, recompute same numbers from cited evidence, fail-closed on drift) and starts the real prediction->observation loop. Does NOT claim 8.0: the loop needs accumulated real joined observations over time, which one run cannot manufacture. Prediction recorded BEFORE the work; the outcome event carries delta_v_actual for the join.",
+  "receipt_type": "ALIGNMENT_DECISION",
+  "schema_version": "2.1",
+  "verification": "UNVERIFIED"
+ },
+ {
+  "decision_id": "DEC-20261008-HV-REALDATA-002",
+  "delta_v_predicted": 7.0,
+  "objective": "Accumulate the verified real events of 2026-10-08 post-10:45 UTC (governance ratifications #1863/#1864, nine-team structure, #1764, #1768, #1880, #1881, #1883, #1884, #1885/#1887) into the real ledger with durable evidence, recompute HV/day + DAI deterministically, close the second prediction->observation join (n=2), re-run the cold-recompute proof at the new tip, rebase and push the branch.",
+  "predicted_at": "2026-10-08T15:50:00Z",
+  "predicted_by": "Naya 5 (human-value-builder run)",
+  "prediction_basis": "Continues the continuity-gate 8.0 accumulation: one run cannot manufacture weeks of data, so each run adds one verified joined observation toward the n>=3 recalibration floor. Pre-registered BEFORE the ledger work; the outcome event carries delta_v_actual for the join.",
+  "receipt_type": "ALIGNMENT_DECISION",
+  "schema_version": "2.1",
+  "verification": "UNVERIFIED"
+ },
+ {
+  "decision_id": "DEC-20261008-HV-REALDATA-003",
+  "delta_v_predicted": 7.0,
+  "objective": "Close the third prediction->observation join (n=3, the recalibration floor): accumulate this run's verified human-value measurement work, re-run the cold-recompute proof on a fresh clone of the pushed branch, re-run the 35-test suite green, push the branch via the Git Data API with server-tree verification, and post the run scorecard. One joined observation per run; no weeks of data manufactured.",
+  "predicted_at": "2026-10-08T21:47:00Z",
+  "predicted_by": "Naya 5 (human-value-builder run)",
+  "prediction_basis": "Same basis as DEC-002: continues the continuity-gate 8.0 accumulation. n=3 is the minimum sample for a recalibration candidate (kernel floor); the join observes whether the predicted work actually completed and how calibration moves. Pre-registered BEFORE the ledger work and the cold proof; the outcome event carries delta_v_actual for the join.",
+  "receipt_type": "ALIGNMENT_DECISION",
+  "schema_version": "2.1",
+  "verification": "UNVERIFIED"
+ },
+ {
+  "decision_id": "DEC-20261009-HV-REALDATA-004",
+  "delta_v_predicted": 7.0,
+  "objective": "Accumulate the overnight verified real events (2026-10-08 22:02 UTC to 2026-10-09 03:41 UTC): merged PRs #1916 (lineage B+D consumer), #1919 (grant auto-renewal), #1920 (Design Standard Showcase), #1921 (report reimagined), #1922 (truth act-proof fix), #1923 (prod readiness checklist), #1928 (Design Blocks Library), #1932 (SN-0742/0743/0744 vision notes), #1934 (Smart Blocks 33 components). Scan #1354 for attention-demanded events (DAI) since 21:45 UTC. Verify the merged human-value instrument still computes on the new tip (04ab94be). Close the fourth prediction->observation join (n=4). Cold-recompute proof, push branch, post scorecard.",
+  "predicted_at": "2026-10-09T03:45:00Z",
+  "predicted_by": "Naya 5 (human-value-builder run)",
+  "prediction_basis": "Same run archetype as DEC-002/DEC-003: accumulate verified overnight events with durable evidence, DAI scan, deterministic recompute, one more joined observation toward a deeper calibration series (n=4). Pre-registered BEFORE any ledger change; the outcome event carries delta_v_actual for the join. #1917/#1918 (my own branch's merge) deliberately excluded: HV-20261008-017 already recorded that delivery outcome (one-outcome-no-inflation). DAI trend needs weeks of real data and cannot be manufactured in one run; independent cross-verification of 7.5 still outstanding.",
+  "receipt_type": "ALIGNMENT_DECISION",
+  "schema_version": "2.1",
+  "verification": "UNVERIFIED"
+ },
+ {
+  "decision_id": "DEC-20261009-HV-REALDATA-005",
+  "delta_v_predicted": 7.0,
+  "objective": "Accumulate the verified real events of 2026-10-09 03:41-09:41 UTC: merged PRs #1935 (Smart Blocks v2 sub-components + cold fixes), #1941 (Naya Lego Library final), #1942 (6 composition blocks + cold-test repairs), #1945 (failure receipt on every promotion failure path), #1947 (purple token unify), #1948 (nav+footer composition blocks), #1949 (NAYA-CALCULATOR-V1 universal scoring spec), #1951 (Smart Graphs visual language, 7 graph blocks + 3-language spec + specimens), #1954 (Smart Blocks refinement to 10/10). Scan #1354 for attention-demanded events (DAI) since 03:41 UTC. Rebase the branch onto the live tip (925e4c348) first. Close the fifth prediction->observation join (n=5). Cold-recompute proof on the pushed SHA, push via the Git Data API with server-tree verification, post scorecard.",
+  "predicted_at": "2026-10-09T09:45:00Z",
+  "predicted_by": "Naya 5 (human-value-builder run)",
+  "prediction_basis": "Same run archetype as DEC-002/DEC-003/DEC-004: accumulate verified events with durable evidence (all 9 carry Naya 2 scorecard receipts + merged-verified-at-tip evidence on #1354), DAI scan, deterministic recompute, one more joined observation deepening the calibration series (n=5). Pre-registered BEFORE any ledger change; the outcome event carries delta_v_actual for the join. Own branch's prior content (PR #1939, still open) is carried forward, not re-counted (one-outcome-no-inflation). DAI trend still needs weeks of real data; independent cross-verification of 7.5 still outstanding.",
+  "receipt_type": "ALIGNMENT_DECISION",
+  "schema_version": "2.1",
+  "verification": "UNVERIFIED"
+ },
+ {
+  "decision_id": "DEC-20261009-HV-REALDATA-006",
+  "delta_v_predicted": 7.0,
+  "objective": "Accumulate the verified real events of 2026-10-09 09:41-15:41 UTC: merged PRs #1959 (registry heal SN-0742/0743/0744), #1961 (SN-0632..SN-0639 heal, #1838 adjudicated), #1963/#1964/#1965 (three Smart Blocks extractions, one outcome), #1976 (regenerate_brain_index hardening), #1982/#1983 (CANDIDATE spec pinned then excluded, one outcome), #1986 (SN-0781 scorecard-gate law). All carry Naya 2 scorecard receipts + merged-on-main evidence on #1354. Scan #1354 for attention-demanded events (DAI) since 09:41 UTC. Close the sixth prediction->observation join (n=6). Cold-recompute proof on the pushed SHA, push via the Git Data API with server-tree verification, post scorecard. Excluded by design: #1966/#1968/#1972/#1973/#1975 (merged but no scorecard receipt on #1354 — fail closed against inflation) and #1955 (own delegated merge; not self-scored).",
+  "predicted_at": "2026-10-09T15:50:00Z",
+  "predicted_by": "Naya 5 (human-value-builder run)",
+  "prediction_basis": "Same run archetype as DEC-002..DEC-005: accumulate verified events with durable evidence, DAI scan, deterministic recompute, one more joined observation deepening the calibration series (n=6). Pre-registered BEFORE any ledger change; the outcome event carries delta_v_actual for the join. Main tip moved during the run (925e4c348 -> 3a60163c9); branch rebased first, no events re-counted. DAI trend still needs weeks of real data; independent cross-verification of the 7.5 claim still outstanding (PR #1939 open, no review).",
+  "receipt_type": "ALIGNMENT_DECISION",
+  "schema_version": "2.1",
+  "verification": "UNVERIFIED"
+ },
+ {
+  "decision_id": "DEC-20261009-HV-REALDATA-007",
+  "delta_v_predicted": 7.0,
+  "objective": "Accumulate the verified real events of 2026-10-09 15:41-21:41 UTC: merged PRs #1999 (sequence_policy 745->782, Naya 2 verified on merged tip), #1995 (capture-index flake fix, L4 independent verifier: red->green proven), #2005 (#1993 residual repairs, independent seat repair confirmed), #2030 (brain-index regen, Naya 2 scorecard receipt), #2036 (guard false-positive repair, Naya 2 scorecard receipt), #2028 (quote-smuggle fix, independent paired re-attacker CLOSED 9.5), #1956 (convergence-C receipt instrument, independent validator 9.0/10 + Naya 4 post-merge verified), #1957 (prod proof chains, independent validator 9.1/10), #2052 (activation docs placement, Naya 2 merged-verified), #2056 (manifest wiring, Naya 2 merged-verified). Scan #1354 for attention-demanded events (DAI) since 15:41 UTC. Close the seventh prediction->observation join (n=7). Cold-recompute proof on the pushed SHA, push via the Git Data API with server-tree verification, post scorecard. Excluded by design: #2017 (unsigned scorecard), #2020 (correction saga, authority ambiguity), #1882 (own comment only), #2054 (no scorecard receipt found), #2060 (no receipt yet); Shawn's 17:53 and 21:21 directives classified as live direction, not failure correction (not DAI).",
+  "predicted_at": "2026-10-09T21:47:00Z"
+ },
+ {
+  "decision_id": "DEC-20261010-HV-REALDATA-008",
+  "delta_v_predicted": 7.0,
+  "objective": "Accumulate the verified real events of 2026-10-09 21:41 UTC to 2026-10-10 03:41 UTC: merged PRs #2061 (WO5b learning, Naya 2 merge-verified), #2063 (WO4 learning, Naya 2 merge-verified), #2059 (thinking curriculum V1, Naya 2 merged-verified at tip), #2066 (activation checklist, Naya 2 merged-verified at tip), #2048 (WO3 admission hallway, Naya 2 merge closure), #2049 (WO3 admission gate, Naya 2 merge closure), #2069 (cold-start doctrine repair, Naya 2 merged-verified at tip), #2072 (Brain index regen, Naya 2 lane-confirmed), #2100 (stale test fix, Naya 2 scorecard), #2084 (spec-integrity exclusion, Naya 2 scorecard), #2107 (daily learning event, Naya 2 merged-verified at tip); two attention-demanded events (#2068 awaiting Shawn's click, prod-readiness C10 awaiting his word); recompute HV/day + DAI deterministically, close the eighth prediction->observation join (n=8), re-run the cold-recompute proof on a fresh clone of the pushed branch, re-run the 36-test suite green, push via the Git Data API with server-tree verification. Exclusions (fail-closed): #2101 (no independent verification receipt), #2068 (open, not a delivered outcome), #2070 (independent HOLD), #2083 (closed unmerged), #2062/#2067 (open), director teaching/question (human-initiated, not system-demanded), #2077 battery red (team-repaired, no human intervention), gate PRs #2094-#2099 (no independent verification or merge), driver-completion claims (self-claims, no independent verification), SLA audit (own-lane self-credit).",
+  "predicted_at": "2026-10-10T03:50:00Z",
+  "predicted_by": "Naya 5 (human-value-builder run)",
+  "prediction_basis": "Eleventh real-ledger accumulation run. Pattern established over seven prior joins: pre-register before observation, append only independently-verified or evidence-durable outcomes, close the join with an honest delta_v_actual, recompute deterministically, prove cold-recomputability. Predicted +7.0 consistent with prior loops."
+ },
+ {
+  "decision_id": "DEC-20261010-HV-REALDATA-009",
+  "delta_v_predicted": 7.0,
+  "objective": "Accumulate the verified real events of 2026-10-10 03:41-09:41 UTC: merged PR #2108 (Naya 4 brain-index drift repair, Naya 2 merge-verified at tip, main kernel red->green). DAI scan: no new human-attention demands (brain-index red + draft->ready tooling failure both team-handled; #2068 still awaiting Shawn's click is a continuing, not new, demand).",
+  "predicted_at": "2026-10-10T09:44:00Z",
+  "predicted_by": "Naya 5 (human-value-builder run)",
+  "prediction_basis": "Twelfth real-ledger accumulation run. Pattern established over eight prior joins: pre-register before observation, append only independently-verified or evidence-durable outcomes, close the join with an honest delta_v_actual, recompute deterministically, prove cold-recomputability. Predicted +7.0 consistent with prior loops."
+ }
 ]
