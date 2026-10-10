@@ -18,7 +18,7 @@ import vm from "node:vm";
 const DIR = new URL("../supabase/functions/", import.meta.url);
 function load(rel) {
   const src = readFileSync(new URL(rel, DIR), "utf8");
-  const noImports = src.replace(/^import .*;\r?\n/gm, "");
+  const noImports = src.replace(/^import[\s\S]*?;\r?\n/gm, "");
   const noTypes = stripTypeScriptTypes(noImports);
   let code = noTypes.replace(/^export\s+(default\s+)?/gm, "");
   if (rel.endsWith("nayanet-act-runtime/act.ts")) {

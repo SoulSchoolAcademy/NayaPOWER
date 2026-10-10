@@ -6,7 +6,7 @@ import vm from 'node:vm';
 import {selectKnowContext,validateKnowAuthority} from '../supabase/functions/nayanet-know-runtime/know.ts';
 
 const source=readFileSync(new URL('../supabase/functions/nayanet-know-runtime/index.ts',import.meta.url),'utf8');
-const code=stripTypeScriptTypes(source.replace(/^import .*;\r?\n/gm,''));
+const code=stripTypeScriptTypes(source.replace(/^import[\s\S]*?;\r?\n/gm,''));
 const OWNER='adfdf0b8-5558-41d1-9fed-ec51abf4fe2f',NAYA='NAYA-NODE-0001';
 const NOW='2026-09-29T20:00:00Z';
 class Clock extends Date {constructor(...args){super(...(args.length?args:[NOW]));} static now(){return Date.parse(NOW);}}

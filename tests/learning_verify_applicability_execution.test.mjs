@@ -18,7 +18,25 @@ const source = readFileSync(
   new URL("../supabase/functions/nayanet-learning-verify/index.ts", import.meta.url),
   "utf8"
 );
-const code = stripTypeScriptTypes(source.replace(/^import .*;\r?\n/gm, ""));
+// WO3's admission gate is a pure module the handler calls at runtime. The vm
+// harness cannot resolve relative ESM imports, so inline the REAL gate source
+// (exports de-prefixed) instead of stripping the import — the tests exercise
+// the true gate, not a stub.
+const admissionGateSource = readFileSync(
+  new URL("../supabase/functions/nayanet-learning-verify/admission_gate.ts", import.meta.url),
+  "utf8"
+);
+const admissionGateCode = stripTypeScriptTypes(
+  admissionGateSource.replace(/^export\s+/gm, "")
+);
+const code = stripTypeScriptTypes(
+  source
+    .replace(
+      /^import[\s\S]*?from\s+"\.\/admission_gate\.ts";\r?\n/gm,
+      () => admissionGateCode + "\n"
+    )
+    .replace(/^import[\s\S]*?;\r?\n/gm, "")
+);
 
 const sandbox = {
   URL, Request, Response, console, Date, TextEncoder, Uint8Array, crypto,

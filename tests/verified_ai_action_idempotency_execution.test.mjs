@@ -180,7 +180,7 @@ function makeRuntime({ enforceUnique = true, sourceTransform = (source) => sourc
     },
   };
 
-  const code = stripTypeScriptTypes(sourceTransform(SOURCE.replace(/^import .*;\r?\n/gm, '')));
+  const code = stripTypeScriptTypes(sourceTransform(SOURCE.replace(/^import[\s\S]*?;\r?\n/gm, '')));
   vm.runInNewContext(code, context, { filename: 'nayanet-verified-ai-action/index.ts' });
   assert.ok(handler, 'Deno.serve registered the production handler');
 

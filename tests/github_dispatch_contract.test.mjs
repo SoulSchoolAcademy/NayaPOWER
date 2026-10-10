@@ -5,7 +5,7 @@ import { test } from 'node:test';
 import vm from 'node:vm';
 
 const source = readFileSync(new URL('../supabase/functions/nayanet-github-dispatch/index.ts', import.meta.url), 'utf8');
-const code = stripTypeScriptTypes(source.replace(/^import .*;\r?\n/gm, ''));
+const code = stripTypeScriptTypes(source.replace(/^import[\s\S]*?;\r?\n/gm, ''));
 
 const USER_ID = '11111111-2222-4333-8444-555555555555';
 const TX_ID = 'aaaaaaaa-bbbb-4ccc-8ddd-eeeeeeeeeeee';

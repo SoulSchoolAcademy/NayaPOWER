@@ -6,7 +6,7 @@ import vm from 'node:vm';
 import { evaluateLaw } from '../supabase/functions/nayanet-law-runtime/law.ts';
 
 const source = readFileSync(new URL('../supabase/functions/nayanet-law-runtime/index.ts', import.meta.url), 'utf8');
-const code = stripTypeScriptTypes(source.replace(/^import .*;\r?\n/gm, ''));
+const code = stripTypeScriptTypes(source.replace(/^import[\s\S]*?;\r?\n/gm, ''));
 const OWNER = 'adfdf0b8-5558-41d1-9fed-ec51abf4fe2f';
 const NAYA = 'NAYA-NODE-0001';
 const claims = {

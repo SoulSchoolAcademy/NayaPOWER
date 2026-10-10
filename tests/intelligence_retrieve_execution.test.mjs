@@ -18,7 +18,7 @@ const indexSource = readFileSync(
   new URL("../supabase/functions/nayanet-intelligence-retrieve/index.ts", import.meta.url),
   "utf8",
 );
-const indexCode = stripTypeScriptTypes(indexSource.replace(/^import .*;\r?\n/gm, ""));
+const indexCode = stripTypeScriptTypes(indexSource.replace(/^import[\s\S]*?;\r?\n/gm, ""));
 
 const REPO = "SoulSchoolAcademy/NayaPOWER";
 const REF = "refs/heads/main";

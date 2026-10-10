@@ -15,7 +15,7 @@ import vm from 'node:vm';
 // check, so the boundary is enforced without depending on RLS visibility.
 
 const source = readFileSync(new URL('../supabase/functions/nayanet-github-dispatch/index.ts', import.meta.url), 'utf8');
-const code = stripTypeScriptTypes(source.replace(/^import .*;\r?\n/gm, ''));
+const code = stripTypeScriptTypes(source.replace(/^import[\s\S]*?;\r?\n/gm, ''));
 
 const USER_ID = '11111111-2222-4333-8444-555555555555';
 const OTHER_USER_ID = '99999999-8888-4777-8666-000000000000';

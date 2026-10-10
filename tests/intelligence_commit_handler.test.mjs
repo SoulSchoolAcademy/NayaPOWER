@@ -15,7 +15,7 @@ import {
 // Execute the real handler offline. Only external services and the Deno host
 // are substituted; authentication decisions and RPC serialization remain real.
 const source = readFileSync(new URL('../supabase/functions/nayanet-intelligence-commit-runtime/index.ts', import.meta.url), 'utf8');
-const code = stripTypeScriptTypes(source.replace(/^import .*;\r?\n/gm, ''));
+const code = stripTypeScriptTypes(source.replace(/^import[\s\S]*?;\r?\n/gm, ''));
 const claims = {
   repository: 'SoulSchoolAcademy/NayaPOWER', ref: 'refs/heads/main',
   workflow_ref: 'SoulSchoolAcademy/NayaPOWER/.github/workflows/live-intelligence-commit-proof.yml@refs/heads/main',

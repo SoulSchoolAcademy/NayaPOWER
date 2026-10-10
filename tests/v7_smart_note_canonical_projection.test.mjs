@@ -19,7 +19,7 @@ const source = readFileSync(
   new URL("../supabase/functions/v7-smart-note-canonical/index.ts", import.meta.url),
   "utf8"
 );
-const code = stripTypeScriptTypes(source.replace(/^import .*;\r?\n/gm, ""));
+const code = stripTypeScriptTypes(source.replace(/^import[\s\S]*?;\r?\n/gm, ""));
 
 const USER_ID = "11111111-1111-4111-8111-111111111111";
 const EV_ID = "aaaaaaaa-bbbb-4ccc-8ddd-eeeeeeeeeeee";

@@ -23,7 +23,7 @@ const source = readFileSync(
 const code = stripTypeScriptTypes(
   source
     .replace(/^import .*from "\.\/.*";\r?\n/gm, "")
-    .replace(/^import .*;\r?\n/gm, "")
+    .replace(/^import[\s\S]*?;\r?\n/gm, "")
 );
 
 const WORKFLOW = ".github/workflows/live-intelligence-commit-proof.yml";

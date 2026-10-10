@@ -234,7 +234,7 @@ test("forged retrieval provenance fails closed",()=>{
 });
 
 const source=readFileSync(new URL("../supabase/functions/nayanet-act-runtime/index.ts",import.meta.url),"utf8");
-const code=stripTypeScriptTypes(source.replace(/^import .*;\r?\n/gm,""));
+const code=stripTypeScriptTypes(source.replace(/^import[\s\S]*?;\r?\n/gm,""));
 const claims={
   repository:"SoulSchoolAcademy/NayaPOWER",
   ref:"refs/heads/main",

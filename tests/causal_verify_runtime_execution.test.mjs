@@ -19,7 +19,7 @@ const source = readFileSync(
   new URL("../supabase/functions/nayanet-causal-verify/index.ts", import.meta.url),
   "utf8"
 );
-const code = stripTypeScriptTypes(source.replace(/^import .*;\r?\n/gm, ""));
+const code = stripTypeScriptTypes(source.replace(/^import[\s\S]*?;\r?\n/gm, ""));
 
 const OWNER_ID = "adfdf0b8-5558-41d1-9fed-ec51abf4fe2f";
 const NAYA_ID = "NAYA-NODE-0001";

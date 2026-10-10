@@ -32,7 +32,7 @@ const source = readFileSync(
 const code = stripTypeScriptTypes(
   source
     .replace(/^import .*from "\.\/.*";\r?\n/gm, "")
-    .replace(/^import .*;\r?\n/gm, "")
+    .replace(/^import[\s\S]*?;\r?\n/gm, "")
 );
 
 const OWNER = "adfdf0b8-5558-41d1-9fed-ec51abf4fe2f";

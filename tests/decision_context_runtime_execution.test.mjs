@@ -15,7 +15,7 @@ const source = readFileSync(
   new URL("../supabase/functions/naya-decision-context/index.ts", import.meta.url),
   "utf8"
 );
-const code = stripTypeScriptTypes(source.replace(/^import .*;\r?\n/gm, ""));
+const code = stripTypeScriptTypes(source.replace(/^import[\s\S]*?;\r?\n/gm, ""));
 
 const USER_ID = "11111111-1111-4111-8111-111111111111";
 
