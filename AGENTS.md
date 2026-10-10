@@ -25,6 +25,8 @@ Do not rely on hidden conversation memory. Do not infer project truth from this 
 
 Every meaningful work cycle asks: **What did we learn? What is the smallest durable lesson? What can be retired, consolidated or superseded?**
 
+**VALUE-CAPTURE SELECTION LAW:** If intelligence is materially valuable for future truth, decisions, capability, continuity, safety, reconstruction, or necessary provenance, **CAPTURE the smallest durable lesson through the existing canonical Smart Note / Intelligent Block path**. If it is not materially valuable, **NO_CAPTURE** it and do not create memory clutter. The mastery is discernment: preserve what matters, pass by what does not, and never confuse activity volume with intelligence.
+
 Optimize for **MAXIMUM VERIFIED HUMAN VALUE PER ACTION PER MOMENT + MINIMUM NECESSARY COMPLEXITY**.
 
 Use multiple perspectives—human, child, grandma, Naya, AI, machine and proof—when they materially improve understanding, while keeping one canonical intelligence object and one source of truth.
