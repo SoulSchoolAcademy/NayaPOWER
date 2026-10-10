@@ -16,7 +16,8 @@ and executes the real implementations:
   VERIFY  → tools/learning_admission_gate.py (pinned behavioral twin of the
             WO3 TypeScript gate; production binding targets the TS gate
             endpoint once merged and deployed)
-  LEARN   → NOT_IMPLEMENTED (no implementation exists in the repository)
+  LEARN   → orchestrator/learn_node.py::LearnNode (in-process; the inheritance
+            mechanism — admits VERIFY-passed lessons, serves by intent)
   EVOLVE  → NOT_IMPLEMENTED (no implementation exists in the repository)
 
 Laws honored here:

@@ -115,14 +115,8 @@ STAGE_CONTRACTS: dict[StageId, StageContract] = {
         stage=StageId.LEARN,
         consumes="admitted lesson",
         produces="retained usable knowledge {admitted_to_active_set, retrievable}",
-        implemented=False,
-        implementation="NONE",
-        not_implemented_reason=(
-            "LEARN_NOT_IMPLEMENTED: no LearnNode and no learn-runtime exist in the "
-            "repository (wiring manifest 2026-10-09: 0/3 bindings). "
-            "nayanet-learning-verify is the VERIFY gate, not LEARN. The stage "
-            "cannot execute."
-        ),
+        implemented=True,
+        implementation="orchestrator/learn_node.py::LearnNode.admit (in-process)",
     ),
     StageId.EVOLVE: StageContract(
         stage=StageId.EVOLVE,

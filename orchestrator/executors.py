@@ -12,7 +12,10 @@ LocalExecutor — executes the REAL implementations in this repository:
            the pinned behavioral twin of the WO3 TypeScript gate — 38/38
            fixtures verdict-identical. Production binds the TS gate endpoint
            once merged and deployed. This module is NOT reimplemented here.)
-  CONNECT / LEARN / EVOLVE → NotImplementedStage (loud, named, never PASS)
+  LEARN  → orchestrator/learn_node.py::LearnNode (in-process Python; the
+           inheritance mechanism — admits VERIFY-passed lessons, serves by
+           intent to fresh decision contexts, records every serving)
+  CONNECT / EVOLVE → NotImplementedStage (loud, named, never PASS)
 
 HttpExecutor — production bindings: POSTs each stage to its edge-function
 endpoint. Defined here so the production wiring is explicit and reviewable.
@@ -67,12 +70,20 @@ class StageExecutor(Protocol):
 class LocalExecutor:
     """Executes each implemented stage via its real implementation."""
 
-    def __init__(self, continuity_dir: str | Path = ".naya/orchestrator/continuity"):
+    def __init__(self, continuity_dir: str | Path = ".naya/orchestrator/continuity",
+                 learn_store_dir: str | Path | None = None):
         self.continuity_dir = Path(continuity_dir)
         self.continuity_dir.mkdir(parents=True, exist_ok=True)
+        # The LEARN store: durable lesson inheritance. Defaults under the
+        # orchestrator store root; a shared path lets fresh processes (new
+        # Naya instances) inherit the same admitted lessons.
+        self.learn_store_dir = Path(learn_store_dir) if learn_store_dir else None
         # Count executions per stage: the kill-and-resume proof asserts
         # completed stages are never re-executed.
         self.execution_counts: dict[str, int] = {}
+        # The LearnNode is built lazily on first LEARN execution (see
+        # _learn_node()). The store is durable, so resume and fresh processes
+        # inherit the same admitted lessons.
 
     def _count(self, stage: StageId) -> None:
         self.execution_counts[stage.value] = self.execution_counts.get(stage.value, 0) + 1
@@ -89,6 +100,7 @@ class LocalExecutor:
             StageId.KNOW: self._run_know,
             StageId.PROVE: self._run_prove,
             StageId.VERIFY: self._run_verify,
+            StageId.LEARN: self._run_learn,
         }[stage]
         return handler(input, correlation_id)
 
@@ -253,6 +265,80 @@ class LocalExecutor:
             summary=f"VERIFY verdict: {verdict}",
         )
 
+    # -- LEARN ---------------------------------------------------------
+    def _learn_node(self) -> "LearnNode":
+        # Lazy singleton per executor: the store is durable, so resume and
+        # fresh processes inherit the same admitted lessons.
+        if self.__dict__.get("_learn_node_instance") is None:
+            from .learn_node import LearnNode
+
+            store = self.learn_store_dir
+            if store is None:
+                # Default: alongside the continuity dir's parent (the
+                # orchestrator store root), so the lessons live with the runs.
+                store = self.continuity_dir.parent / "learn_store"
+            self.__dict__["_learn_node_instance"] = LearnNode(store)
+        return self.__dict__["_learn_node_instance"]
+
+    def _run_learn(self, input: dict[str, Any], correlation_id: str) -> StageOutput:
+        # LEARN consumes the VERIFY verdict + the lesson content from the
+        # capture. Only a VERIFY-admitted lesson is freezable — anything else
+        # is refused loudly by LearnNode.admit (fail-closed, never silent).
+        from .learn_node import LearnAdmissionRefused
+
+        verify_result = input.get("verify_result", {})
+        if not isinstance(verify_result, dict) or not verify_result:
+            return StageOutput(
+                ok=False,
+                result={"error": "LEARN requires the VERIFY stage result"},
+                summary="LEARN failed: no verify_result supplied",
+            )
+        # Thread the correlation ID + VERIFY evidence into the admission
+        # provenance so the lesson's trust chain is complete.
+        verify_result = dict(verify_result)
+        verify_result.setdefault("correlation_id", correlation_id)
+        candidate = input.get("candidate")
+        if not isinstance(candidate, dict):
+            candidate = input.get("capture", {}).get("candidate", {})
+        # Enrich the provenance from the candidate that VERIFY examined.
+        for key in ("falsification_condition", "doer", "scorer"):
+            if not verify_result.get(key) and isinstance(candidate, dict):
+                verify_result[key] = candidate.get(key, "")
+        measurement = candidate.get("measurement", {}) if isinstance(candidate, dict) else {}
+        if not verify_result.get("measurement_method"):
+            verify_result["measurement_method"] = measurement.get("method", "")
+
+        lesson = input.get("lesson")
+        if not isinstance(lesson, dict):
+            lesson = input.get("capture", {}).get("lesson")
+        if not isinstance(lesson, dict):
+            return StageOutput(
+                ok=False,
+                result={"error": "LEARN requires a lesson object {lesson_id, lesson_text, intent_signature}"},
+                summary="LEARN failed: no lesson supplied",
+            )
+        try:
+            receipt = self._learn_node().admit(verify_result, lesson)
+        except LearnAdmissionRefused as exc:
+            # Governed refusal, not a crash: the lesson was not VERIFY-admitted.
+            # Fail closed — nothing is written, the reason is named.
+            return StageOutput(
+                ok=False,
+                result={"error": str(exc), "reason_code": exc.reason_code},
+                summary=f"LEARN refused admission: {exc.reason_code}",
+            )
+        return StageOutput(
+            ok=True,
+            result={
+                "admission_receipt": receipt,
+                "correlation_id": correlation_id,
+            },
+            summary=(
+                f"LEARN admitted {receipt['lesson_id']}.v{receipt['version']} "
+                f"(frozen={receipt['frozen']}, duplicate={receipt['duplicate']})"
+            ),
+        )
+
 
 # --------------------------------------------------------------------------
 # HttpExecutor — production bindings (explicit, not live-proven here).
@@ -269,7 +355,7 @@ PRODUCTION_ENDPOINTS: dict[str, str] = {
     "PROVE": "nayanet-prove-runtime",
     "CONNECT": "(no implementation — no endpoint)",
     "VERIFY": "nayanet-learning-verify (WO3 gate at mode==='candidate' write site, post-merge)",
-    "LEARN": "(no implementation — no endpoint)",
+    "LEARN": "(in-process: orchestrator/learn_node.py — no HTTP binding; production endpoint TBD post-merge)",
     "EVOLVE": "(no implementation — no endpoint)",
 }
 
