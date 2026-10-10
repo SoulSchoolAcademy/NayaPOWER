@@ -1,0 +1,41 @@
+# Law landing receipt scan
+#
+# Post-merge tripwire for the Scorecard Law (SCORECARD-LAW-V1, RATIFIED
+# 2026-10-05): "no receipt, no merge". The Director's merge ratifies that
+# merge; every other merge, by any seat, requires a scorecard receipt posted
+# on #1354 BEFORE merging.
+#
+# Automates the LAW TESTER's methodology (BUG-001, filed on #1867): for each
+# merge to main in the last 24h, check the area feed for a pre-merge receipt
+# referencing that PR. Post-merge complement of the pre-merge advisory gate
+# (PR #1778, AUTHGOV lane).
+#
+# READ-ONLY: this workflow never writes code, never merges, never deploys.
+# It fails (red) when a seat merge lands without a pre-merge receipt, and
+# posts the verdict table to #1718 (the LAW area feed) so a seat owns it.
+# A failing run is the tripwire working, not an incident — unless the failure
+# is an instrument error, which exits 2 and needs a human look.
+#
+# Promoting this to a required/blocking check is a merge-policy change and
+# needs the Human Director's word.
+
+name: Law landing receipt scan
+
+on:
+  schedule:
+    - cron: "23 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Scan recent merges for pre-merge scorecard receipts
+        run: python3 tools/law_landing_receipt_scan.py --scan --report-issue 1718
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
