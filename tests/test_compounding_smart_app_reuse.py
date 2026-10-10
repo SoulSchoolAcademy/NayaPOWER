@@ -121,3 +121,11 @@ def test_default_ranker_is_canonical_calculus_not_an_ad_hoc_score():
     bad_row = next(x for x in result["rows"] if x["candidate_id"]=="forbidden")
     assert bad_row["gate"] != "ADMISSIBLE"
     assert result["decision"] != ACT
+
+
+def test_non_string_scope_fails_closed_instead_of_crashing():
+    p = valid_package()
+    p["owner_scope"] = ["PRIVATE"]
+    result = preflight_reuse(p, CONTENT)
+    assert result["status"] == "NOT_READY"
+    assert "SCOPE_INVALID" in result["errors"]
