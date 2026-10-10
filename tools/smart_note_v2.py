@@ -589,6 +589,22 @@ def _update_registry_locked(capture, verify, projection, registry, sn_id=None):
             "receipt_id": verify["persisted"]["receipt"]["id"],
         },
     }
+    # Truth-state durability: the writer rebuilds entries from the capture, but
+    # machine-managed truth history must survive re-ingestion. A re-registration
+    # that silently drops elevation_history would regress the read-side audit
+    # (truth_state_guard --audit) to flagging grandfathered ratifications, and
+    # would erase the very provenance the write-time guard protects
+    # (apply_elevation already rejects SUPERSESSION_ERASES_AUTHORITY; the
+    # writer must not do it either). Carry over the existing history for the
+    # same intelligent block; the rebuild template never sets it.
+    prior = next(
+        (e for e in registry.get("entries", [])
+         if isinstance(e, dict) and e.get("intelligent_block_id") == entry["intelligent_block_id"]),
+        None)
+    if prior is not None and "elevation_history" not in entry:
+        carried = prior.get("elevation_history")
+        if carried:
+            entry["elevation_history"] = carried
     registry["entries"] = [e for e in registry.get("entries", []) if e.get("intelligent_block_id") != entry["intelligent_block_id"]] + [entry]
     registry["entries"] = sorted(registry["entries"], key=lambda x: (x.get("smart_note_id",""), x.get("intelligent_block_id","")))
     seq_match = re.fullmatch(r"SN-(\d+)", sn_id)

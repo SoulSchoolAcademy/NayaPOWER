@@ -156,8 +156,11 @@ def main(argv: list[str]) -> int:
     if args.apply and changed:
         backup = reg_path.with_suffix(".json.backfill-bak")
         backup.write_text(reg_path.read_text(encoding="utf-8"), encoding="utf-8")
-        # Match the canonical file format: 1-space indent, ASCII escapes.
-        reg_path.write_text(json.dumps(registry, indent=1, ensure_ascii=True) + "\n",
+        # Match the canonical file format exactly (verified 2026-10-10 against
+        # the live registry: indent=2, raw UTF-8, trailing newline). Any other
+        # serialization rewrites the whole file and buries the 8 records in
+        # a 25k-line diff.
+        reg_path.write_text(json.dumps(registry, indent=2, ensure_ascii=False) + "\n",
                             encoding="utf-8")
         print(f"wrote {changed} backfill record(s); backup at {backup.name}")
     else:

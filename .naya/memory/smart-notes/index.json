@@ -1346,7 +1346,28 @@
         "content_hash_status": "UNREPRODUCIBLE: capture file content changed after hash was computed (verified 2026-10-04)"
       },
       "smart_link_verified_at": "2026-10-10T15:21:04Z",
-      "smart_link_verified_rev": "bc77c716a143152ddac4002b53e8bedfc1aa937f"
+      "smart_link_verified_rev": "bc77c716a143152ddac4002b53e8bedfc1aa937f",
+      "elevation_history": [
+        {
+          "from": "CANDIDATE",
+          "to": "RATIFIED",
+          "authority": "Human Director",
+          "authority_detail": "Shawn Vibert — Prime 1 Judgment Rule, ratified operating law; lineage recorded in provenance",
+          "evidence_hashes": [
+            "sha256:a857a80d1e20cc01c39f3377045df88c92914c5db035983bdfaf7c5997a62050"
+          ],
+          "evidence_types": [
+            "note-source"
+          ],
+          "evidence_sources": [
+            "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/PRIME-JUDGMENT/SN-016/IB-SMART-NOTE-20260930-sn016-prime-judgment-rule.md"
+          ],
+          "at": "2026-09-30T00:00:00+00:00",
+          "recorded_at": "2026-10-10T15:45:54Z",
+          "kind": "backfill",
+          "constitutional_basis": "Human-Director direct ratification predates the truth-state guard (2026-10-06). Direct CANDIDATE->RATIFIED is the Human Director's constitutional prerogative; the guard governs machine paths and does not — and cannot — govern his word. Recorded so the read-side audit enforces uniformly on all future writes."
+        }
+      ]
     },
     {
       "smart_note_id": "SN-0160",
@@ -5101,7 +5122,28 @@
         "note": "Registration bookkeeping for already-ratified law. Published to main by Team 3 (Naya 4 lane) under Scorecard Law auto-merge authorization, 2026-10-06 (receipt: #1605). Source: existing IB file on draft branch naya4/smart-notes-2026-09-30 (PR #1229), byte-identical. Ratification: Shawn Vibert, 2026-10-05, verbal ratification in main chat. No new capture event was created; no provenance UUIDs invented. Follows the explicit-provenance-note registration pattern (cf. SN-NET-POWER-MAGIC-001)."
       },
       "smart_link_verified_at": "2026-10-10T15:21:04Z",
-      "smart_link_verified_rev": "bc77c716a143152ddac4002b53e8bedfc1aa937f"
+      "smart_link_verified_rev": "bc77c716a143152ddac4002b53e8bedfc1aa937f",
+      "elevation_history": [
+        {
+          "from": "CANDIDATE",
+          "to": "RATIFIED",
+          "authority": "Human Director",
+          "authority_detail": "Shawn Vibert, verbal ratification in main chat 2026-10-05 (provenance: registration bookkeeping for already-ratified law; receipt #1605)",
+          "evidence_hashes": [
+            "sha256:8e85584ef6171eb02183d403df1f8872b5234c8cf9388a1e7d40180bb2e6d09f"
+          ],
+          "evidence_types": [
+            "note-source"
+          ],
+          "evidence_sources": [
+            "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-DOCTRINE/SN-0340/IB-SMART-NOTE-20261005-sn0340-the-scorecard-law.md"
+          ],
+          "at": "2026-10-05T00:00:00+00:00",
+          "recorded_at": "2026-10-10T15:45:54Z",
+          "kind": "backfill",
+          "constitutional_basis": "Human-Director direct ratification predates the truth-state guard (2026-10-06). Direct CANDIDATE->RATIFIED is the Human Director's constitutional prerogative; the guard governs machine paths and does not — and cannot — govern his word. Recorded so the read-side audit enforces uniformly on all future writes."
+        }
+      ]
     },
     {
       "smart_note_id": "SN-0341",
@@ -6643,7 +6685,28 @@
         "note": "Registration bookkeeping for already-ratified law. Published to main by Team 3 (Naya 4 lane) under Scorecard Law auto-merge authorization, 2026-10-06 (receipt: #1605). Source: existing IB file on draft branch naya4/smart-notes-2026-09-30 (PR #1229), byte-identical. Ratification: Shawn declared 2026-10-05: \"this is how we roll... this is what is expected... this is the code we operate under\". No new capture event was created; no provenance UUIDs invented. Follows the explicit-provenance-note registration pattern (cf. SN-NET-POWER-MAGIC-001)."
       },
       "smart_link_verified_at": "2026-10-10T15:21:04Z",
-      "smart_link_verified_rev": "bc77c716a143152ddac4002b53e8bedfc1aa937f"
+      "smart_link_verified_rev": "bc77c716a143152ddac4002b53e8bedfc1aa937f",
+      "elevation_history": [
+        {
+          "from": "CANDIDATE",
+          "to": "RATIFIED",
+          "authority": "Human Director",
+          "authority_detail": "Shawn Vibert 2026-10-05: \"this is how we roll... this is what is expected... this is the code we operate under\" (provenance)",
+          "evidence_hashes": [
+            "sha256:1e74c39dcf434521d6b16061589adf8deb85ef777be7ec1a53f54faaa46c1b9f"
+          ],
+          "evidence_types": [
+            "note-source"
+          ],
+          "evidence_sources": [
+            "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-0399/IB-SMART-NOTE-20261005-sn0399-self-directed-intelligence.md"
+          ],
+          "at": "2026-10-05T00:00:00+00:00",
+          "recorded_at": "2026-10-10T15:45:54Z",
+          "kind": "backfill",
+          "constitutional_basis": "Human-Director direct ratification predates the truth-state guard (2026-10-06). Direct CANDIDATE->RATIFIED is the Human Director's constitutional prerogative; the guard governs machine paths and does not — and cannot — govern his word. Recorded so the read-side audit enforces uniformly on all future writes."
+        }
+      ]
     },
     {
       "smart_note_id": "SN-040",
@@ -6692,7 +6755,28 @@
         "note": "Registration bookkeeping for already-ratified law. Published to main by Team 3 (Naya 4 lane) under Scorecard Law auto-merge authorization, 2026-10-06 (receipt: #1605). Source: existing IB file on draft branch naya4/smart-notes-2026-09-30 (PR #1229), byte-identical. Ratification: Shawn, 2026-10-05: \"I don't ever want you to be reactive, I always want you to be proactive... make it law\". No new capture event was created; no provenance UUIDs invented. Follows the explicit-provenance-note registration pattern (cf. SN-NET-POWER-MAGIC-001)."
       },
       "smart_link_verified_at": "2026-10-10T15:21:04Z",
-      "smart_link_verified_rev": "bc77c716a143152ddac4002b53e8bedfc1aa937f"
+      "smart_link_verified_rev": "bc77c716a143152ddac4002b53e8bedfc1aa937f",
+      "elevation_history": [
+        {
+          "from": "CANDIDATE",
+          "to": "RATIFIED",
+          "authority": "Human Director",
+          "authority_detail": "Shawn Vibert 2026-10-05: \"I don't ever want you to be reactive, I always want you to be proactive... make it law\" (provenance)",
+          "evidence_hashes": [
+            "sha256:db76f3f8cb7aeeb2acd58c454ef48a90883579c034a895c67170e9c21496b0a3"
+          ],
+          "evidence_types": [
+            "note-source"
+          ],
+          "evidence_sources": [
+            "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-0400/IB-SMART-NOTE-20261005-sn0400-captain-directive-proactive-always.md"
+          ],
+          "at": "2026-10-05T00:00:00+00:00",
+          "recorded_at": "2026-10-10T15:45:54Z",
+          "kind": "backfill",
+          "constitutional_basis": "Human-Director direct ratification predates the truth-state guard (2026-10-06). Direct CANDIDATE->RATIFIED is the Human Director's constitutional prerogative; the guard governs machine paths and does not — and cannot — govern his word. Recorded so the read-side audit enforces uniformly on all future writes."
+        }
+      ]
     },
     {
       "smart_note_id": "SN-0401",
@@ -6853,7 +6937,28 @@
         "note": "Registration bookkeeping for already-ratified law. Published to main by Team 3 (Naya 4 lane) under Scorecard Law auto-merge authorization, 2026-10-06 (receipt: #1605). Source: existing IB file on draft branch naya4/smart-notes-2026-09-30 (PR #1229), byte-identical. Ratification: Shawn, 2026-10-05: \"you don't delete anything until you understand fully what it is\". No new capture event was created; no provenance UUIDs invented. Follows the explicit-provenance-note registration pattern (cf. SN-NET-POWER-MAGIC-001)."
       },
       "smart_link_verified_at": "2026-10-10T15:21:04Z",
-      "smart_link_verified_rev": "bc77c716a143152ddac4002b53e8bedfc1aa937f"
+      "smart_link_verified_rev": "bc77c716a143152ddac4002b53e8bedfc1aa937f",
+      "elevation_history": [
+        {
+          "from": "CANDIDATE",
+          "to": "RATIFIED",
+          "authority": "Human Director",
+          "authority_detail": "Shawn Vibert 2026-10-05: \"you don't delete anything until you understand fully what it is\" (provenance)",
+          "evidence_hashes": [
+            "sha256:9b4112db2e20a236d431a8e8454fea0b40502ce86e6ae2fe91bab3a3cd9e5e1d"
+          ],
+          "evidence_types": [
+            "note-source"
+          ],
+          "evidence_sources": [
+            "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-0408/IB-SMART-NOTE-20261005-sn0408-deletion-discipline.md"
+          ],
+          "at": "2026-10-05T00:00:00+00:00",
+          "recorded_at": "2026-10-10T15:45:54Z",
+          "kind": "backfill",
+          "constitutional_basis": "Human-Director direct ratification predates the truth-state guard (2026-10-06). Direct CANDIDATE->RATIFIED is the Human Director's constitutional prerogative; the guard governs machine paths and does not — and cannot — govern his word. Recorded so the read-side audit enforces uniformly on all future writes."
+        }
+      ]
     },
     {
       "smart_note_id": "SN-0409",
@@ -7996,7 +8101,28 @@
         "note": "DIRECT_TO_MAIN: published to main 2026-10-06 by Shawn Vibert (Human Director), PR #1654, tip commit 1204519c (\"docs(memory): SN-0459 parallel-execution directive (documents ratified law 0013)\"); no capture file exists for this note; entry completes registration bookkeeping only, per the SN-NET-POWER-MAGIC-001 precedent (#1585). No content_hash: no capture to hash against. Owning smart-note lane may supersede via the canonical projection pipeline."
       },
       "smart_link_verified_at": "2026-10-10T15:21:04Z",
-      "smart_link_verified_rev": "bc77c716a143152ddac4002b53e8bedfc1aa937f"
+      "smart_link_verified_rev": "bc77c716a143152ddac4002b53e8bedfc1aa937f",
+      "elevation_history": [
+        {
+          "from": "CANDIDATE",
+          "to": "RATIFIED",
+          "authority": "Human Director",
+          "authority_detail": "Shawn Vibert (Human Director), DIRECT_TO_MAIN PR #1654, tip commit 1204519c (provenance)",
+          "evidence_hashes": [
+            "sha256:9fc15c4456adf4e4c8c64e2d0af990b5bc711492f1ba415d7590033ed9107552"
+          ],
+          "evidence_types": [
+            "note-source"
+          ],
+          "evidence_sources": [
+            "BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/EXECUTION/SN-0459/IB-SMART-NOTE-20261006-sn0459-parallel-execution-directive.md"
+          ],
+          "at": "2026-10-06T00:00:00+00:00",
+          "recorded_at": "2026-10-10T15:45:54Z",
+          "kind": "backfill",
+          "constitutional_basis": "Human-Director direct ratification predates the truth-state guard (2026-10-06). Direct CANDIDATE->RATIFIED is the Human Director's constitutional prerogative; the guard governs machine paths and does not — and cannot — govern his word. Recorded so the read-side audit enforces uniformly on all future writes."
+        }
+      ]
     },
     {
       "smart_note_id": "SN-046",
@@ -9352,7 +9478,28 @@
       "superseded_by_capture_id": "(successor unknown capture not yet ingested)",
       "supersession_reason": "renumbered during #1229 consolidation dedup; no surviving distinct page; original runtime provenance not preserved, none invented; converted to lifecycle record during canonical ingestion 2026-10-08",
       "smart_link_verified_at": "2026-10-10T15:21:04Z",
-      "smart_link_verified_rev": "bc77c716a143152ddac4002b53e8bedfc1aa937f"
+      "smart_link_verified_rev": "bc77c716a143152ddac4002b53e8bedfc1aa937f",
+      "elevation_history": [
+        {
+          "from": "CANDIDATE",
+          "to": "RATIFIED",
+          "authority": "Human Director",
+          "authority_detail": "Shawn Vibert 2026-10-07: \"Make it so. Word.\" (provenance; PR #1727 registration). Note markdown file absent on main — evidence is the recorded ratification statement, not the note bytes.",
+          "evidence_hashes": [
+            "sha256:796c45a8eada6f981ff4e6b25df9790153e81566730c7559c7834d91fd7f1130"
+          ],
+          "evidence_types": [
+            "ratification-record"
+          ],
+          "evidence_sources": [
+            "registry provenance note (note markdown absent on main)"
+          ],
+          "at": "2026-10-07T00:00:00+00:00",
+          "recorded_at": "2026-10-10T15:45:54Z",
+          "kind": "backfill",
+          "constitutional_basis": "Human-Director direct ratification predates the truth-state guard (2026-10-06). Direct CANDIDATE->RATIFIED is the Human Director's constitutional prerogative; the guard governs machine paths and does not — and cannot — govern his word. Recorded so the read-side audit enforces uniformly on all future writes."
+        }
+      ]
     },
     {
       "smart_note_id": "SN-0523",
@@ -12862,7 +13009,28 @@
         "note": "DIRECT_TO_MAIN commit 2c34c6e1d by Human Director 2026-10-05 (\"docs: ratify NayaPOWER and NayaNET core magic intelligence\"); no capture file exists for this note; entry completes registration bookkeeping only. Owning smart-note lane may supersede via the canonical projection pipeline."
       },
       "smart_link_verified_at": "2026-10-10T15:21:04Z",
-      "smart_link_verified_rev": "bc77c716a143152ddac4002b53e8bedfc1aa937f"
+      "smart_link_verified_rev": "bc77c716a143152ddac4002b53e8bedfc1aa937f",
+      "elevation_history": [
+        {
+          "from": "CANDIDATE",
+          "to": "RATIFIED",
+          "authority": "Human Director",
+          "authority_detail": "Human Director, DIRECT_TO_MAIN commit 2c34c6e1d 2026-10-05 (provenance)",
+          "evidence_hashes": [
+            "sha256:be00ab3694d133c1e01087c3fdf276b689d7640363ed73d8e52e38cc9805ad11"
+          ],
+          "evidence_types": [
+            "note-source"
+          ],
+          "evidence_sources": [
+            "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/NAYAPOWER-NAYANET-CORE-MAGIC/SN-NET-POWER-MAGIC-001/IB-SMART-NOTE-20261005-NET-POWER-MAGIC-001.md"
+          ],
+          "at": "2026-10-05T00:00:00+00:00",
+          "recorded_at": "2026-10-10T15:45:54Z",
+          "kind": "backfill",
+          "constitutional_basis": "Human-Director direct ratification predates the truth-state guard (2026-10-06). Direct CANDIDATE->RATIFIED is the Human Director's constitutional prerogative; the guard governs machine paths and does not — and cannot — govern his word. Recorded so the read-side audit enforces uniformly on all future writes."
+        }
+      ]
     }
   ],
   "sequence_policy": {
