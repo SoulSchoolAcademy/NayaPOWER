@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-10",
-  "receipt_basis_commit": "26f28c527626c74b164790d3d635ae9b831476a1",
-  "inventory_file_count": 1239,
+  "receipt_basis_commit": "801e3922e236665adb5d00c8b849f179fc968dde",
+  "inventory_file_count": 1291,
   "domain_counts": {
     "00-ACTIVATION": 3,
     "00-ARCHITECTURE": 5,
@@ -11,7 +11,7 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
-    "05-MEMORY": 646,
+    "05-MEMORY": 698,
     "06-PROOF": 13,
     "07-LEARNING": 8,
     "08-SUCCESSION": 2,
@@ -242,18 +242,18 @@
     },
     {
       "path": "BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2.ai.md",
-      "blob_sha": "6dd76254fb224138bb006b639e23325799b21d1f",
-      "size": 14729
+      "blob_sha": "0f81fc721fc143928d94212124886c73906fe196",
+      "size": 14786
     },
     {
       "path": "BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2.human.md",
-      "blob_sha": "c70fc5b7ebf3e2b2cfd82010bf864a82fd176f4c",
-      "size": 9018
+      "blob_sha": "fbe045ba392e5e3af32821f151acd2c4e6868f21",
+      "size": 9007
     },
     {
       "path": "BRAIN/01-GOVERNANCE/0008-operating-code-v2.machine.json",
-      "blob_sha": "210984d7d333d105d9d9532a8b79af6e932d4dae",
-      "size": 5087
+      "blob_sha": "1088c9ae24a78d137cc1158300cda7ef0271ef86",
+      "size": 5146
     },
     {
       "path": "BRAIN/01-GOVERNANCE/0013-PARALLEL-EXECUTION-V1.ai.md",
@@ -809,6 +809,266 @@
       "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/GRADER-REPAIR-2026-10-07/grade_trial14.py",
       "blob_sha": "20c4418652af7367f83f929d14dc19a89a7e4f09",
       "size": 3595
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-12-COMPOSITIONAL/PREREGISTRATION-12.md",
+      "blob_sha": "d94ab1a2d47bcdd742cceeee38ae7ce018b1442f",
+      "size": 2042
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-12-COMPOSITIONAL/TRIAL-12-RECEIPT.md",
+      "blob_sha": "ab26c75202860dfae9cb102068e45cc2c86897b1",
+      "size": 2351
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-12-COMPOSITIONAL/__pycache__/grade_trial12.cpython-312.pyc",
+      "blob_sha": "bcf59ea8dd7ba33b7dcf51395ba594f5665ff5bb",
+      "size": 3976
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-12-COMPOSITIONAL/answer_key.json",
+      "blob_sha": "d7fca942f033ce45110c6a823bdb842f3c47b6c4",
+      "size": 596
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-12-COMPOSITIONAL/answer_sheets/T12-AGENT-01.json",
+      "blob_sha": "8521614e07322d4c1449bb7a3b06be6d255962fc",
+      "size": 2311
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-12-COMPOSITIONAL/answer_sheets/T12-AGENT-02.json",
+      "blob_sha": "c5ed0fb8cc639f3859b046c576930b63f9baffaf",
+      "size": 2280
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-12-COMPOSITIONAL/answer_sheets/T12-AGENT-03.json",
+      "blob_sha": "18937abcad73b68c66679d2d1bf744c026235649",
+      "size": 2937
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-12-COMPOSITIONAL/answer_sheets/T12-AGENT-04.json",
+      "blob_sha": "010db68edbd819639bb2f466c37f0e5f8c9d9518",
+      "size": 2425
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-12-COMPOSITIONAL/answer_sheets/T12-AGENT-05.json",
+      "blob_sha": "af980b3015ccee786bb1731b52eba31b4c0213ed",
+      "size": 3127
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-12-COMPOSITIONAL/answer_sheets/T12-AGENT-06.json",
+      "blob_sha": "5dd3019de0bd0ccf34d8da37ecfc5b39c9dc8598",
+      "size": 2787
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-12-COMPOSITIONAL/answer_sheets/T12-AGENT-07.json",
+      "blob_sha": "d1f432832fc373b24d33bede0d84512fc2df7c6a",
+      "size": 3107
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-12-COMPOSITIONAL/answer_sheets/T12-AGENT-08.json",
+      "blob_sha": "f7c979aa7e5f6923550b4e66e8aa712bd3001812",
+      "size": 2423
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-12-COMPOSITIONAL/answer_sheets/T12-AGENT-09.json",
+      "blob_sha": "65bf4f9a47dea0c217e48d6342a7bc96860fabf3",
+      "size": 2676
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-12-COMPOSITIONAL/answer_sheets/T12-AGENT-10.json",
+      "blob_sha": "cab6aa10fe3f3a62a092313b64bcf3997599667e",
+      "size": 2322
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-12-COMPOSITIONAL/answer_sheets/T12-AGENT-11.json",
+      "blob_sha": "f78304ada01d5b32f9a311deeb14f0b4e9cfb767",
+      "size": 2439
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-12-COMPOSITIONAL/answer_sheets/T12-AGENT-12.json",
+      "blob_sha": "7a4e112f880572e7b601267944f70c0167764852",
+      "size": 2995
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-12-COMPOSITIONAL/answer_sheets/T12-AGENT-13.json",
+      "blob_sha": "71aa6d73f6f9d28b89c6c3758e918798369bca8d",
+      "size": 2446
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-12-COMPOSITIONAL/answer_sheets/T12-AGENT-14.json",
+      "blob_sha": "3736031fcecd07f44f0b9ad6488b7efeffba4dfa",
+      "size": 2193
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-12-COMPOSITIONAL/answer_sheets/T12-AGENT-15.json",
+      "blob_sha": "ca7927d848d68d037523a07056d1c05a7e9bc332",
+      "size": 2852
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-12-COMPOSITIONAL/answer_sheets/T12-AGENT-16.json",
+      "blob_sha": "0392088a5195ba2a38f815d2b6865bafa5a2358d",
+      "size": 2597
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-12-COMPOSITIONAL/answer_sheets/T12-AGENT-17.json",
+      "blob_sha": "bb07232dd292d838497aca9feee251cf581530f4",
+      "size": 2691
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-12-COMPOSITIONAL/answer_sheets/T12-AGENT-18.json",
+      "blob_sha": "4f8ea45817d8afc810cd241ff48efe6736c29b3e",
+      "size": 2330
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-12-COMPOSITIONAL/answer_sheets/T12-AGENT-19.json",
+      "blob_sha": "80a5449cadf83b5af8900124f8a3c499f53ef45c",
+      "size": 2285
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-12-COMPOSITIONAL/answer_sheets/T12-AGENT-20.json",
+      "blob_sha": "c37eac890d92aefa233170e03b7bb5ea22520400",
+      "size": 2832
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-12-COMPOSITIONAL/arm_assignment.txt",
+      "blob_sha": "45ae6ab942e544086c62b92eaf5626cc59dbd264",
+      "size": 295
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-12-COMPOSITIONAL/brief_control.txt",
+      "blob_sha": "1401f40d0db7507580e59eacd7e79d3f6a3844c8",
+      "size": 837
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-12-COMPOSITIONAL/brief_treatment.txt",
+      "blob_sha": "ba29c7d2c8bb7b12657bc908beed61e146f5fe23",
+      "size": 1069
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-12-COMPOSITIONAL/briefing/section-02-scoring.md",
+      "blob_sha": "55676708c84b051702e4abb84ee30fbe8f4e2279",
+      "size": 354
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-12-COMPOSITIONAL/briefing/section-03-units.md",
+      "blob_sha": "b02983bbb50b73f3db8bb71724d356a620189282",
+      "size": 246
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-12-COMPOSITIONAL/briefing/section-04-threshold.md",
+      "blob_sha": "4b9fe2251df10c73ffc882ab84f84368f9437677",
+      "size": 460
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-12-COMPOSITIONAL/briefing/section-05-call-types.md",
+      "blob_sha": "8987954acd0e580620475aa009f214bd110b94d1",
+      "size": 246
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-12-COMPOSITIONAL/briefing/section-06-context.md",
+      "blob_sha": "9639314af56a139e8f99b35165ae1b23887a441f",
+      "size": 424
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-12-COMPOSITIONAL/briefing/section-07-context.md",
+      "blob_sha": "3fe99d1f7793cca88b13cd5d1ff80ec482ea76dd",
+      "size": 424
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-12-COMPOSITIONAL/briefing/section-08-context.md",
+      "blob_sha": "2ba262fb2b578dcea409e39b082f4abbc11b30ed",
+      "size": 424
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-12-COMPOSITIONAL/briefing/section-09-context.md",
+      "blob_sha": "3bc48d1b726a0f7312dd5dcf4d725411921a622f",
+      "size": 424
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-12-COMPOSITIONAL/briefing/section-10-context.md",
+      "blob_sha": "bfad8ac41e93f4ef02147dd6f878afc6aa217ffc",
+      "size": 424
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-12-COMPOSITIONAL/briefing/section-11-context.md",
+      "blob_sha": "a64f8fe6af5c764496d143cfe9e020388d52c2ae",
+      "size": 424
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-12-COMPOSITIONAL/briefing/section-12-context.md",
+      "blob_sha": "c5cb03fafaab6dd62b181cf2b5eb4d8fe0ca78f0",
+      "size": 424
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-12-COMPOSITIONAL/briefing/section-13-context.md",
+      "blob_sha": "a306e308bb0534117ecb9c4e1155a1bdbe49624e",
+      "size": 424
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-12-COMPOSITIONAL/briefing/section-14-context.md",
+      "blob_sha": "7b431f3ede59f79eaf0bdc9a049c7e3c29097986",
+      "size": 424
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-12-COMPOSITIONAL/briefing/section-15-context.md",
+      "blob_sha": "28a935b391a7dec21c00bed1f0774752513cfeb9",
+      "size": 424
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-12-COMPOSITIONAL/briefing/section-16-context.md",
+      "blob_sha": "c74510f8dc36d4f2646999f4cc58ae7fd6803981",
+      "size": 424
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-12-COMPOSITIONAL/briefing/section-17-context.md",
+      "blob_sha": "3517fb773784d7b86f8e1972d388b010df1757b3",
+      "size": 424
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-12-COMPOSITIONAL/briefing/section-18-context.md",
+      "blob_sha": "395b9bd0c53c1b0421102c0bf854605fe8bac2c5",
+      "size": 424
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-12-COMPOSITIONAL/briefing/section-19-context.md",
+      "blob_sha": "46bd2dfd530c0ced95756363ecc9c5b8d0f0a65b",
+      "size": 424
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-12-COMPOSITIONAL/briefing/section-20-context.md",
+      "blob_sha": "1a3aac8396980f9639fcd678ff0b8f0a1ba2f5ba",
+      "size": 424
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-12-COMPOSITIONAL/briefing/section-21-context.md",
+      "blob_sha": "3af02e720685924e21a5fb62a758e645a4e68ab0",
+      "size": 424
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-12-COMPOSITIONAL/briefing_manifest.sha256",
+      "blob_sha": "5659577fb29753e3d86ab2b7e8d0f53a88cee012",
+      "size": 1943
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-12-COMPOSITIONAL/compositional-principles.md",
+      "blob_sha": "e474486b48d98781eb74236f603dd5410ef9318a",
+      "size": 1899
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-12-COMPOSITIONAL/dispatch_scenarios.json",
+      "blob_sha": "c0db5e0cae1d0ada9bc8913f2edfab90518fe999",
+      "size": 2875
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-12-COMPOSITIONAL/grade_trial12.py",
+      "blob_sha": "8e0b45ee7fe14dc9aa62fb880c59d8ae8501b00b",
+      "size": 2989
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-12-COMPOSITIONAL/results_trial12.json",
+      "blob_sha": "ce01ce818cd4365ea095cd2c6ed8fe63d7cf5f9c",
+      "size": 2642
     },
     {
       "path": "BRAIN/05-MEMORY/README.md",

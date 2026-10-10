@@ -1,0 +1,162 @@
+{
+  "T12-AGENT-03": {
+    "total": 9,
+    "comp": 6,
+    "reserve": 3,
+    "override": 3,
+    "normal": 3,
+    "arm": "treatment"
+  },
+  "T12-AGENT-04": {
+    "total": 9,
+    "comp": 6,
+    "reserve": 3,
+    "override": 3,
+    "normal": 3,
+    "arm": "treatment"
+  },
+  "T12-AGENT-05": {
+    "total": 9,
+    "comp": 6,
+    "reserve": 3,
+    "override": 3,
+    "normal": 3,
+    "arm": "treatment"
+  },
+  "T12-AGENT-06": {
+    "total": 9,
+    "comp": 6,
+    "reserve": 3,
+    "override": 3,
+    "normal": 3,
+    "arm": "treatment"
+  },
+  "T12-AGENT-07": {
+    "total": 9,
+    "comp": 6,
+    "reserve": 3,
+    "override": 3,
+    "normal": 3,
+    "arm": "treatment"
+  },
+  "T12-AGENT-08": {
+    "total": 9,
+    "comp": 6,
+    "reserve": 3,
+    "override": 3,
+    "normal": 3,
+    "arm": "treatment"
+  },
+  "T12-AGENT-10": {
+    "total": 9,
+    "comp": 6,
+    "reserve": 3,
+    "override": 3,
+    "normal": 3,
+    "arm": "treatment"
+  },
+  "T12-AGENT-12": {
+    "total": 9,
+    "comp": 6,
+    "reserve": 3,
+    "override": 3,
+    "normal": 3,
+    "arm": "treatment"
+  },
+  "T12-AGENT-16": {
+    "total": 9,
+    "comp": 6,
+    "reserve": 3,
+    "override": 3,
+    "normal": 3,
+    "arm": "treatment"
+  },
+  "T12-AGENT-17": {
+    "total": 9,
+    "comp": 6,
+    "reserve": 3,
+    "override": 3,
+    "normal": 3,
+    "arm": "treatment"
+  },
+  "T12-AGENT-01": {
+    "total": 6,
+    "comp": 3,
+    "reserve": 0,
+    "override": 3,
+    "normal": 3,
+    "arm": "control"
+  },
+  "T12-AGENT-02": {
+    "total": 5,
+    "comp": 2,
+    "reserve": 0,
+    "override": 2,
+    "normal": 3,
+    "arm": "control"
+  },
+  "T12-AGENT-09": {
+    "total": 6,
+    "comp": 3,
+    "reserve": 0,
+    "override": 3,
+    "normal": 3,
+    "arm": "control"
+  },
+  "T12-AGENT-11": {
+    "total": 6,
+    "comp": 3,
+    "reserve": 0,
+    "override": 3,
+    "normal": 3,
+    "arm": "control"
+  },
+  "T12-AGENT-13": {
+    "total": 6,
+    "comp": 3,
+    "reserve": 0,
+    "override": 3,
+    "normal": 3,
+    "arm": "control"
+  },
+  "T12-AGENT-14": {
+    "total": 6,
+    "comp": 3,
+    "reserve": 0,
+    "override": 3,
+    "normal": 3,
+    "arm": "control"
+  },
+  "T12-AGENT-15": {
+    "total": 6,
+    "comp": 3,
+    "reserve": 0,
+    "override": 3,
+    "normal": 3,
+    "arm": "control"
+  },
+  "T12-AGENT-18": {
+    "total": 6,
+    "comp": 3,
+    "reserve": 0,
+    "override": 3,
+    "normal": 3,
+    "arm": "control"
+  },
+  "T12-AGENT-19": {
+    "total": 6,
+    "comp": 3,
+    "reserve": 0,
+    "override": 3,
+    "normal": 3,
+    "arm": "control"
+  },
+  "T12-AGENT-20": {
+    "total": 7,
+    "comp": 4,
+    "reserve": 1,
+    "override": 3,
+    "normal": 3,
+    "arm": "control"
+  }
+}
