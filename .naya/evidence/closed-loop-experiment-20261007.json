@@ -1,0 +1,95 @@
+{
+  "schema": "NAYAPOWER_CLOSED_LOOP_EXPERIMENT_V1",
+  "status": "VERIFIED",
+  "experiment": "resource-capacity-bypass-build-verify-learn-reuse",
+  "build": {
+    "implementation": "tools/closed_loop_executor.py",
+    "tests": "tests/test_closed_loop_executor.py"
+  },
+  "first_tick": {
+    "schema": "NAYAPOWER_RESOURCE_AWARE_CLOSED_LOOP_V1",
+    "status": "VERIFIED",
+    "parallel": {
+      "capacity": 1,
+      "ready": 2,
+      "dispatched": 1
+    },
+    "skipped_by_learning": [],
+    "results": [
+      {
+        "task_id": "local-reversible-fallback",
+        "status": "DONE",
+        "output": {
+          "value": "verified-local-build"
+        }
+      }
+    ],
+    "failures": [
+      {
+        "task_id": "external-agent-pool",
+        "error": "external agent pool unavailable"
+      }
+    ],
+    "learning": {
+      "lesson": "failed capacity-bound work must be bypassed and the next reversible ready task executed",
+      "reusable": true,
+      "persisted": true
+    },
+    "reuse": {
+      "lesson_applied": false,
+      "skipped_task_ids": []
+    },
+    "verification": {
+      "claim_matched_evidence": true,
+      "independent_recheck": true
+    }
+  },
+  "second_tick": {
+    "schema": "NAYAPOWER_RESOURCE_AWARE_CLOSED_LOOP_V1",
+    "status": "VERIFIED",
+    "parallel": {
+      "capacity": 1,
+      "ready": 1,
+      "dispatched": 1
+    },
+    "skipped_by_learning": [
+      "external-agent-pool"
+    ],
+    "results": [
+      {
+        "task_id": "local-reversible-fallback",
+        "status": "DONE",
+        "output": {
+          "value": "verified-local-build"
+        }
+      }
+    ],
+    "failures": [],
+    "learning": {
+      "lesson": "failed capacity-bound work must be bypassed and the next reversible ready task executed",
+      "reusable": true,
+      "persisted": true
+    },
+    "reuse": {
+      "lesson_applied": true,
+      "skipped_task_ids": [
+        "external-agent-pool"
+      ]
+    },
+    "verification": {
+      "claim_matched_evidence": true,
+      "independent_recheck": true
+    }
+  },
+  "calls": [
+    "capacity-bound",
+    "reversible",
+    "reversible"
+  ],
+  "learning_reused": true,
+  "verification": {
+    "independent_recheck": true,
+    "claim_matched_evidence": true,
+    "receipt_reconstructed_after_write": true
+  }
+}
