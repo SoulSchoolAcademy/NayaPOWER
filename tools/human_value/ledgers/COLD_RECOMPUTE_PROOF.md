@@ -273,3 +273,40 @@ post-sign-in; push + DEC-010 window close resume post-reset.
 per this file and posted a verdict on #1604 — reproducibility is proven,
 independent human verification of the ledger itself remains the binding 8.0 gate.
 DAI series is ~5 days of real data; trend readable after 2+ weeks.
+
+## Twelfth cold-recompute proof — n=10 loop (2026-10-10 ~16:05 UTC)
+
+Fresh clone of `naya5/human-value-events-20261010-0341` @ `d3aba03508c85a3f56d8e41af66ea20b0023293c`
+(DEC-010: pre-registered 16:02:44Z at +7.0, 18 verified window events appended,
+join closed at honest +7.0), same procedure, no access to the originating workspace.
+Clone at `~/workspace/_scratch/hv-cold-1602` (fresh checkout; scratch removed after verification).
+
+| Check | Originating worktree | Cold clone | Match |
+|---|---|---|---|
+| HEAD | `d3aba0350` | `d3aba0350` | ✅ |
+| `ledger_sha256` | `sha256:1953a48b…23e5eb7b28` | (same) | ✅ |
+| `hv_per_day_total` | 13.2857 | 13.2857 | ✅ |
+| `dai_per_day` | 0.5714 | 0.5714 | ✅ |
+| `events_validated` | 92 | 92 | ✅ |
+| `calibration.n` / MAE / bias / overprediction | 10 / 0.1 / 0.0 / false | 10 / 0.1 / 0.0 / false | ✅ |
+| test suite (real ledger + instrument) | 36 passed | 36 passed | ✅ |
+
+**Verdict:** the n=10 measurement (DEC-010, predicted +7.0 at 16:02:44Z before any
+ledger change, observed +7.0) is cold-recomputable at the pushed SHA. The window
+was genuinely rich — 18 verified outcome events including Shawn's ratification of
+Operating Code V2 landing on main (#2087, API-verified merged), the 45-law operating
+law (#2122), the tune-in template (#2142, on the live tip), the amendment loader
+(#2129), the gate console (#2127), four gate-hold releases (#2092/#2096/#2098/#2099),
+four enforcement-gate/learning-loop merges (#2094/#2095/#2114/#2115/#2116), the #2113
+revert, #2117, #2120 — plus the 308-branch graveyard cleanup. DAI flat at 0.5714:
+zero new human-attention demands (#2068's wait for Shawn's click is a continuing
+demand, already recorded; WS-9/WS-4 blockers and CI reds are team-handled). MAE
+improved 0.1111 → 0.1, bias 0.0, zero overprediction flags across ten real joins.
+Excluded with reasons (anti-inflation): Naya 4's driver self-completions, Naya 5's
+own CI-heal/hourly-report items, Shawn's direction relays (coordination, not outcome),
+the token fix (asserted in live plan, no durable feed evidence found on #1354/#1604).
+
+**State note (unchanged):** no independent seat has yet cold-recomputed the ledger
+per this file and posted a verdict on #1604 — reproducibility is proven, independent
+human verification of the ledger itself remains the binding 8.0 gate. DAI series is
+~5 days of real data; trend readable after 2+ weeks.
