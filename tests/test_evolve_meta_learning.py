@@ -16,7 +16,7 @@ import pytest
 
 TOOL = Path(__file__).resolve().parent.parent / "tools" / "evolve_meta_learning.py"
 
-NOW = datetime(2026, 10, 9, 2, 45, tzinfo=timezone.utc)
+NOW = datetime.now(timezone.utc)
 
 
 def iso(days_ago: int) -> str:
