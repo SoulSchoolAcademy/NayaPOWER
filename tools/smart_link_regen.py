@@ -114,15 +114,29 @@ def main(argv: list[str]) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--rev", default="HEAD")
     ap.add_argument("--root", default=None)
+    ap.add_argument("--tree-list", default=None,
+                    help="file with one repo path per line; verifies the index "
+                         "against this tree instead of a git rev (for API-only "
+                         "environments). --rev then names the rev the list "
+                         "was taken at and is used for stamping only.")
+    ap.add_argument("--index", default=None,
+                    help="index.json path (default: <root>/.naya/...); used "
+                         "with --tree-list when there is no local repo")
     ap.add_argument("--write", action="store_true")
     ap.add_argument("--receipt-out", default=None)
     a = ap.parse_args(argv)
 
     here = Path(__file__).resolve()
     root = Path(a.root).resolve() if a.root else here.parents[1]
-    rev = _git(root, "rev-parse", a.rev).strip()
-    tree = tree_paths(root, rev)
-    index_path = root / INDEX_REL
+    if a.tree_list:
+        tree = {l.strip() for l in Path(a.tree_list).read_text().splitlines()
+                if l.strip()}
+        rev = a.rev
+        index_path = Path(a.index) if a.index else root / INDEX_REL
+    else:
+        rev = _git(root, "rev-parse", a.rev).strip()
+        tree = tree_paths(root, rev)
+        index_path = root / INDEX_REL
     idx = json.loads(index_path.read_text())
     ents = idx["entries"]
 
