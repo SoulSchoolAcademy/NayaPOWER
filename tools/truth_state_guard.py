@@ -2,8 +2,8 @@
 """Write-time truth-state elevation guard + read-side semantic audit.
 
 Closes #1468: hand-editing a registry entry CANDIDATE->RATIFIED was invisible
-to audit_registry, which checks 10 structural defect classes (hashes,
-duplicates, projection paths) and zero truth_state transitions. The promotion
+to audit_registry, which checks 11 structural defect classes (hashes,
+duplicates incl. ID-keyed id/content conflicts, projection paths) and zero truth_state transitions. The promotion
 machinery (promote_note / verify_receipt in tools/smart_note_v2.py) existed,
 but nothing enforced it at write time — a direct registry edit bypassed the
 entire function.

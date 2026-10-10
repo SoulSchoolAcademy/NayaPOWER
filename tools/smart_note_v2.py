@@ -1145,6 +1145,15 @@ def audit_registry(root=None, registry_path=None, capture_dir=None, brain_root=N
         "entries_without_hash": [],
         "entries_with_stale_hash": [],
         "duplicate_smart_note_ids": [],
+        # ID-keyed twin of duplicate_smart_note_ids. The hash-keyed check above
+        # fires only when one content_hash maps to MULTIPLE ids; it is blind by
+        # construction to the reverse violation — the same smart_note_id
+        # claimed by entries with DIFFERENT content (canonical-ingestion
+        # tombstones written under already-occupied ids, e.g. SN-0359's
+        # duplicate pair). A missing content_hash is its own distinct value so
+        # a hashless tombstone cannot hide beside a hashed live entry. Same-id
+        # + same-hash is a benign double-registration, not a conflict.
+        "conflicting_smart_note_ids": [],
         "published_entries_missing_projection_path": [],
         "registry_projection_paths_absent": [],
         "published_pages_without_registry_entry": [],
@@ -1184,6 +1193,26 @@ def audit_registry(root=None, registry_path=None, capture_dir=None, brain_root=N
     for h, names in entry_hashes.items():
         if len(names) > 1:
             defects["duplicate_smart_note_ids"].append(sorted(names))
+
+    entry_ids = {}
+    for e in entries:
+        sn = e.get("smart_note_id") or e.get("intelligent_block_id") or "<unknown>"
+        if sn == "<unknown>":
+            continue
+        entry_ids.setdefault(sn, []).append(e)
+
+    for sn, group in sorted(entry_ids.items()):
+        if len(group) < 2:
+            continue
+        hashes = {e.get("content_hash") or "<missing>" for e in group}
+        if len(hashes) > 1:
+            defects["conflicting_smart_note_ids"].append({
+                "smart_note_id": sn,
+                "entry_count": len(group),
+                "distinct_content_hashes": sorted(hashes),
+                "lifecycle_states": sorted({str(e.get("lifecycle_state")) for e in group}),
+                "projection_paths": [e.get("projection_path") for e in group],
+            })
 
     for h, name in capture_by_hash.items():
         if h not in entry_hashes:
