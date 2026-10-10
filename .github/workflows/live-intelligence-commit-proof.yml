@@ -536,6 +536,12 @@ jobs:
             "independent_lineage_verification":True,
             "checkpoint_provenance":checkpoint_provenance,
             "mutable_project_checkpoint_may_advance":True,
+            "event_id":persisted["event"]["id"],
+            "receipt_id":persisted["receipt"]["id"],
+            "lineage_id":persisted["lineage"]["id"],
+            "relationship_id":persisted["relationship"]["relationship_id"],
+            "index_id":persisted["index"]["id"],
+            "checkpoint_id":persisted["checkpoint"]["id"],
             "content_hash":expected["content_hash"],
             "privacy_publication_allowed":block["owner_scope"]!="PRIVATE"
           }
@@ -615,6 +621,12 @@ jobs:
                 "independent_lineage_verification":True,
                 "checkpoint_provenance":checkpoint_provenance,
                 "mutable_project_checkpoint_may_advance":True,
+                "event_id":persisted["event"]["id"],
+                "receipt_id":persisted["receipt"]["id"],
+                "lineage_id":persisted["lineage"]["id"],
+                "relationship_id":persisted["relationship"]["relationship_id"],
+                "index_id":persisted["index"]["id"],
+                "checkpoint_id":persisted["checkpoint"]["id"],
                 "content_hash":expected["content_hash"],
                 "privacy_publication_allowed":block["owner_scope"]!="PRIVATE"
               }
@@ -738,7 +750,11 @@ jobs:
         with:
           name: smart-note-lineage
 
-      - name: Governed promotion CANDIDATE→ACTIVE via admission gate
+      - uses: actions/download-artifact@v4
+        with:
+          name: smart-note-independent-proof
+
+      - name: Governed promotion CANDIDATE→ACTIVE via evidence-bound gate
         id: promote
         shell: bash
         run: |
@@ -777,36 +793,14 @@ jobs:
               continue
             fi
 
-            # Admission gate: the candidate may be promoted only if it is
-            # well-formed (required fields present, intelligence is an
-            # object). Verification itself is enforced by chain ordering —
-            # this job runs only after independent-verification succeeds.
-            # This is the governed checkpoint — not a second opinion, a
-            # structural check.
-            echo "Admission gate evaluating $capture_path ..."
-            gate_ok="$(python3 - <<'PY'
-          import json, sys
-          path = sys.argv[1]
-          try:
-              cap = json.load(open(path))
-          except Exception as e:
-              print(f"REJECT:unreadable:{e}")
-              sys.exit(0)
-          required = ["capture_id", "title", "lifecycle_state"]
-          missing = [k for k in required if not cap.get(k)]
-          if missing:
-              print(f"REJECT:missing_fields:{','.join(missing)}")
-              sys.exit(0)
-          intel = cap.get("intelligence", {})
-          if not isinstance(intel, dict):
-              print("REJECT:intelligence_not_object")
-              sys.exit(0)
-          # Verification provenance must be present (written by independent-verification)
-          print("ADMIT")
-          PY
-          "$capture_path")"
+            # Bind promotion to the independent proof artifact for this exact capture.
+            # A successful upstream job is not enough unless its proof IDs and hashes match.
+            if [[ "$count" -eq 1 ]]; then suffix=""; else suffix="-$i"; fi
+            expected_file="smart-note-expected${suffix}.json"
+            lineage_file="fresh-lesson-lineage-ids${suffix}.json"
+            proof_file="smart-note-capture-proof${suffix}.json"
+            if gate_ok="$(python3 tools/verify_capture_admission_proof.py --capture "$capture_path" --expected "$expected_file" --lineage "$lineage_file" --proof "$proof_file" 2>&1)"; then
 
-            if [[ "$gate_ok" == ADMIT* ]]; then
               echo "Gate ADMITTED $capture_path; promoting lifecycle CANDIDATE→ACTIVE"
               python3 - <<PYEOF
           import json
