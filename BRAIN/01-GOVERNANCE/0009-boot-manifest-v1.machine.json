@@ -1,0 +1,161 @@
+{
+  "load_order": [
+    {
+      "path": "NAYA-ACTIVATION/00-ACTIVATION-KIT-MAP-V1.md",
+      "entry_kind": "file",
+      "ref": "main",
+      "phase": 0,
+      "required": true,
+      "purpose": "Kit map: where every activation file lives, so later phases resolve paths against the map, not memory."
+    },
+    {
+      "path": "AGENTS.md",
+      "entry_kind": "file",
+      "ref": "main",
+      "phase": 0,
+      "required": true,
+      "purpose": "Agent boot contract: Prime Judgment Law, human authority, truth/proof ladder, decision efficiency doctrine."
+    },
+    {
+      "path": "NAYA-ACTIVATION/NAYA-ROLES/NAYA.md",
+      "entry_kind": "file",
+      "ref": "main",
+      "phase": 0,
+      "required": true,
+      "purpose": "Base Naya role contract: what a Naya is, independent of seat specialization."
+    },
+    {
+      "path": "NAYA-ACTIVATION/NAYA-ROLES/<THIS-SEAT>.md",
+      "entry_kind": "substituted",
+      "ref": "main",
+      "phase": 0,
+      "required": true,
+      "purpose": "The seat's own role contract (ENGINEERING-NAYA, DESIGN-NAYA, RESEARCH-NAYA, QA-NAYA, PRODUCT-NAYA, ARCHITECTURE-NAYA, CODA, FUTURE-AGENTS). Fail-closed: no boot on a guessed role."
+    },
+    {
+      "path": "NAYA-ACTIVATION/00-MASTER-COLD-NAYA-ACTIVATION.md",
+      "entry_kind": "file",
+      "ref": "main",
+      "phase": 1,
+      "required": true,
+      "purpose": "Identity/mission/history content: who Shawn is, NayaPOWER, NayaNET, the Hub, current engineering reality, the 24-question cold reconstruction test."
+    },
+    {
+      "path": ".naya/project-intelligence/",
+      "entry_kind": "file",
+      "ref": "main",
+      "phase": 1,
+      "required": true,
+      "purpose": "Ratified strategic context (newest first): the current mission objective the seat will serve."
+    },
+    {
+      "path": "NAYA-ACTIVATION/CURRENT-REALITY/SOURCE-PRECEDENCE-AND-NAVIGATION-RECONCILIATION-*.md",
+      "entry_kind": "file",
+      "ref": "main",
+      "phase": 1,
+      "required": true,
+      "purpose": "Source-of-truth precedence: live repo + issues/PRs outrank stale brief text. Resolve newest file matching the glob."
+    },
+    {
+      "path": "<LIVE: main tip + open issues/PRs in assignment area>",
+      "entry_kind": "live",
+      "ref": "main",
+      "phase": 1,
+      "required": false,
+      "purpose": "Live state at boot time: current tip, open issues/PRs, recent commits relevant to the assignment. Noted-and-skipped only if the repo is unreachable; then Phase 1 records UNKNOWN for live state."
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0008-OPERATING-LAW-V1.md",
+      "entry_kind": "file",
+      "ref": "naya4/operating-law-v1",
+      "phase": 2,
+      "required": true,
+      "purpose": "MANDATORY: The Operating Law \u2014 all 8 domains (Decision, Communication, Execution, Learning, Authority, Constitution, Design, Code). The lock. No fallback, no summary-of-summary."
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0008-operating-law-v1.machine.json",
+      "entry_kind": "file",
+      "ref": "naya4/operating-law-v1",
+      "phase": 2,
+      "required": true,
+      "purpose": "MANDATORY: Machine twin of the Operating Law \u2014 queryable form of the same law the seat reads in prose."
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0004-NONSTOP-LOOP-V1.ai.md",
+      "entry_kind": "file",
+      "ref": "main",
+      "phase": 2,
+      "required": true,
+      "purpose": "Standing nonstop-loop operating law (prose form). Required while it stands as ratified law."
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0004-nonstop-loop-v1.machine.json",
+      "entry_kind": "file",
+      "ref": "main",
+      "phase": 2,
+      "required": true,
+      "purpose": "Machine twin of the nonstop-loop operating law."
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/NAYA-DESIGN-CONTRACT-V1.md",
+      "entry_kind": "file",
+      "ref": "main",
+      "phase": 3,
+      "required": false,
+      "purpose": "Lane doctrine: canonical design contract. required=true when the assignment touches design; otherwise skipped."
+    },
+    {
+      "path": "NAYA-ACTIVATION/DESIGN/NAYA-DESIGN-INTELLIGENCE-STANDARD-V1.md",
+      "entry_kind": "file",
+      "ref": "main",
+      "phase": 3,
+      "required": false,
+      "purpose": "Lane doctrine: design intelligence standard (the design operating method). required=true when the assignment touches design."
+    },
+    {
+      "path": "BRAIN/12-ENGINEERING/0001-ENGINEERING-TRUTH-LAW-V1.md",
+      "entry_kind": "file",
+      "ref": "main",
+      "phase": 3,
+      "required": false,
+      "purpose": "Lane doctrine: engineering truth law (status ladder, evidence rules). required=true when the assignment touches code/engineering."
+    },
+    {
+      "path": "NAYA-ACTIVATION/SMART-NOTE-OPERATING-CONTRACT-V1.md",
+      "entry_kind": "file",
+      "ref": "main",
+      "phase": 3,
+      "required": false,
+      "purpose": "Lane doctrine: Smart Note capture protocol. required=true when the assignment touches learning/capture."
+    },
+    {
+      "path": "NAYANODE/0025-VALUE-CALCULUS-SPECIFICATION-V1.md",
+      "entry_kind": "file",
+      "ref": "main",
+      "phase": 3,
+      "required": false,
+      "purpose": "Decision math (value calculus spec). required=true when the assignment involves a consequential choice; kernel/value_calculus.py is the executable twin."
+    },
+    {
+      "path": "<DISPATCH: assignment text as issued>",
+      "entry_kind": "dispatch",
+      "ref": "n/a",
+      "phase": 4,
+      "required": true,
+      "purpose": "The assignment itself: exact task, expected outcome, constraints, success criteria (Allocation Law job definition). Missing any of the four = bounced to dispatcher, no work starts."
+    },
+    {
+      "path": "<NONE: verification phase, no new load>",
+      "entry_kind": "none",
+      "ref": "n/a",
+      "phase": 5,
+      "required": true,
+      "purpose": "Load verification: seven answers from working memory (seat, Shawn, supreme principle, three Prime laws, five protected gates, lane proof bar, assignment outcome + success criteria). Then Layer 2 ritual."
+    }
+  ],
+  "notes": "Ordered load list for Layer 1 boot. entry_kind: 'file' = resolve path at ref; 'substituted' = dispatcher replaces <THIS-SEAT> with the seat's role contract before issuing the brief; 'live' = resolve against live repo state at boot time; 'dispatch' = the assignment handoff, not a file; 'none' = verification phase, no new load. The dispatcher resolves every entry against the live repo before issuing the boot brief. required=true entries are fail-closed: if one cannot be resolved, boot stops and the seat reports BLOCKED with the exact missing path. required=false entries are noted-and-skipped.",
+  "operating_law_ref": "BRAIN/01-GOVERNANCE/0008-OPERATING-LAW-V1.md",
+  "pairs_with": "boot-sequence-v1.md",
+  "schema": "naya.activation.boot_manifest.v1",
+  "version": "1"
+}
