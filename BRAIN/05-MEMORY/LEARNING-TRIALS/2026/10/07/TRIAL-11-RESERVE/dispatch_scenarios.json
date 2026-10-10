@@ -1,0 +1,158 @@
+[
+  {
+    "id": "Q1",
+    "unit": "Medic unit available",
+    "calls": [
+      {
+        "id": "Call A",
+        "location": "Maple St",
+        "type": "chest pain",
+        "score": 8.2
+      },
+      {
+        "id": "Call B",
+        "location": "Oak Ave",
+        "type": "difficulty breathing",
+        "score": 8.5
+      }
+    ]
+  },
+  {
+    "id": "Q2",
+    "unit": "Engine available",
+    "calls": [
+      {
+        "id": "Call A",
+        "location": "Pine Rd",
+        "type": "structure fire",
+        "score": 7.9
+      },
+      {
+        "id": "Call B",
+        "location": "Elm Dr",
+        "type": "vehicle fire",
+        "score": 6.8
+      }
+    ]
+  },
+  {
+    "id": "Q3",
+    "unit": "Ladder truck available",
+    "calls": [
+      {
+        "id": "Call A",
+        "location": "1st St",
+        "type": "high-rise alarm",
+        "score": 8.8
+      },
+      {
+        "id": "Call B",
+        "location": "2nd St",
+        "type": "elevator rescue",
+        "score": 8.6
+      }
+    ]
+  },
+  {
+    "id": "Q4",
+    "unit": "BLS unit available",
+    "calls": [
+      {
+        "id": "Call A",
+        "location": "Hill Rd",
+        "type": "diabetic emergency",
+        "score": 7.1
+      },
+      {
+        "id": "Call B",
+        "location": "Valley Ln",
+        "type": "event standby",
+        "score": 5.5
+      }
+    ]
+  },
+  {
+    "id": "Q5",
+    "unit": "Medic unit available",
+    "calls": [
+      {
+        "id": "Call A",
+        "location": "River St",
+        "type": "overdose",
+        "score": 8.1
+      },
+      {
+        "id": "Call B",
+        "location": "Lake Ave",
+        "type": "seizure",
+        "score": 8.4
+      }
+    ]
+  },
+  {
+    "id": "Q6",
+    "unit": "Engine available",
+    "calls": [
+      {
+        "id": "Call A",
+        "location": "Main St",
+        "type": "vehicle fire",
+        "score": 6.8
+      },
+      {
+        "id": "Call B",
+        "location": "Side St",
+        "type": "brush fire",
+        "score": 6.5
+      }
+    ]
+  },
+  {
+    "id": "Q7",
+    "unit": "Battalion chief available",
+    "calls": [
+      {
+        "id": "Call A",
+        "location": "Park Ave",
+        "type": "multi-vehicle accident",
+        "score": 7.5
+      }
+    ]
+  },
+  {
+    "id": "Q8",
+    "unit": "Medic unit available",
+    "calls": [
+      {
+        "id": "Call A",
+        "location": "Cedar Ln",
+        "type": "stroke",
+        "score": 8.7
+      },
+      {
+        "id": "Call B",
+        "location": "Birch Way",
+        "type": "cardiac arrest",
+        "score": 7.2
+      }
+    ]
+  },
+  {
+    "id": "Q9",
+    "unit": "Engine available",
+    "calls": [
+      {
+        "id": "Call A",
+        "location": "Summit Dr",
+        "type": "gas leak",
+        "score": 5.9
+      },
+      {
+        "id": "Call B",
+        "location": "Ridge Rd",
+        "type": "alarm activation",
+        "score": 5.6
+      }
+    ]
+  }
+]
