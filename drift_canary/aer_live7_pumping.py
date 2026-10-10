@@ -36,6 +36,13 @@ class PumpingWitness:
     max_repetitions: Optional[int]  # None = arbitrary (unbounded)
     exit_valid_after_n: bool  # valid exit after every finite N
     constraints: tuple  # the minimized constraint set
+    # Tokens consumed per traversal of the cycle. 0 = the cycle draws on
+    # no finite resource. Positive = each repetition drains a finite pool.
+    tokens_per_cycle: float = 0.0
+
+    def __post_init__(self):
+        if self.tokens_per_cycle < 0:
+            raise ValueError("tokens_per_cycle cannot be negative")
 
 
 @dataclass(frozen=True)
@@ -63,12 +70,23 @@ def finite_token_mutation_test(w: PumpingWitness,
 
     Returns True if the witness SURVIVES the mutation (truly unbounded),
     False if the mutation invalidates it (was secretly bounded).
+
+    The mutation imposes a finite token pool: each cycle traversal
+    consumes w.tokens_per_cycle tokens. A witness claiming *arbitrary*
+    repetition must survive *any* finite bound. Positive per-cycle
+    consumption against a finite pool caps repetitions at
+    token_bound // tokens_per_cycle, a finite ceiling on an "arbitrary"
+    claim — so the mutation invalidates the apparent cycle.
     """
-    # Simulate: with finite tokens, can we still repeat arbitrarily?
-    # If the witness requires unbounded tokens, it fails.
-    # For spec: if max_repetitions was None but tokens are finite,
-    # check if debt_per_cycle * N would exceed token capacity.
-    # Simplified: a witness claiming arbitrary repetition must not
-    # depend on an implicit infinite resource.
-    return w.max_repetitions is None and w.debt_per_cycle > 0
-    # Note: full implementation would model token consumption
+    if token_bound < 0:
+        raise ValueError("token_bound must be non-negative")
+    # Must claim arbitrary repetition with positive debt to be a candidate.
+    if w.max_repetitions is not None or w.debt_per_cycle <= 0:
+        return False
+    if w.tokens_per_cycle <= 0:
+        # No token consumption: a finite pool cannot constrain repetition.
+        # The unbounded claim survives the mutation.
+        return True
+    # Positive consumption drains any finite pool: the "arbitrary"
+    # repetition claim cannot survive. Mutation invalidates the cycle.
+    return False
