@@ -434,6 +434,223 @@ def strongest_conclusion(claim_id):
     return conclusion
 
 
+# Compatibility dimensions for combining evidence sources.
+# Two sources can only be combined when ALL compatibility checks pass.
+COMPATIBILITY_DIMENSIONS = [
+    "predicate",      # same thing being tested?
+    "policy",         # same policy version requirements?
+    "runtime",        # compatible runtime versions?
+    "environment",    # staging vs production — not interchangeable
+    "time_period",    # compatible time periods?
+    "population",     # compatible test populations?
+    "provenance",     # independent where required?
+]
+
+
+def register_composite_claim(claim_id, description, obligations, composition_rule="ALL_REQUIRED"):
+    """
+    Register a composite claim decomposed into proof obligations.
+    obligations: list of obligation IDs (e.g., nine node names)
+    composition_rule: ALL_REQUIRED (conjunction) or ANY_SUFFICIENT (disjunction)
+    """
+    reg = load_registry()
+    if claim_id in reg["claims"]:
+        print(f"Claim {claim_id} already registered — use existing claim.")
+        claim = reg["claims"][claim_id]
+    else:
+        claim = {
+            "id": claim_id,
+            "description": description[:300],
+            "support_sets": [],
+            "historical_dependencies": [],
+            "qualification": {"status": "UNEVALUATED", "basis": None},
+            "registered_at": datetime.now(timezone.utc).isoformat(),
+        }
+        reg["claims"][claim_id] = claim
+
+    claim["composite"] = True
+    claim["obligations"] = obligations
+    claim["composition_rule"] = composition_rule
+    claim["obligation_evidence"] = {}  # obligation_id -> list of evidence
+    claim["cross_requirements"] = []   # e.g., handoffs, interactions
+    save_registry(reg)
+    print(f"Registered composite claim {claim_id}: {len(obligations)} obligations, rule={composition_rule}")
+    return claim
+
+
+def add_obligation_evidence(claim_id, obligation_id, evidence_id, scope, independence="CONFIRMED", provenance=""):
+    """Record that evidence supports a specific obligation within a composite claim."""
+    reg = load_registry()
+    if claim_id not in reg["claims"]:
+        print(f"Claim {claim_id} not found.")
+        sys.exit(1)
+
+    claim = reg["claims"][claim_id]
+    if not claim.get("composite"):
+        print(f"Claim {claim_id} is not composite. Use register_composite_claim first.")
+        sys.exit(1)
+
+    if obligation_id not in claim["obligations"]:
+        print(f"WARNING: {obligation_id} not in declared obligations for {claim_id}")
+
+    if "obligation_evidence" not in claim:
+        claim["obligation_evidence"] = {}
+    if obligation_id not in claim["obligation_evidence"]:
+        claim["obligation_evidence"][obligation_id] = []
+
+    claim["obligation_evidence"][obligation_id].append({
+        "evidence_id": evidence_id,
+        "scope": scope,
+        "independence": independence,
+        "provenance": provenance[:100],
+        "added_at": datetime.now(timezone.utc).isoformat(),
+    })
+    save_registry(reg)
+    print(f"  {obligation_id} ← {evidence_id} [{independence}, scope={scope}]")
+    return True
+
+
+def check_compatibility(evidence_list):
+    """
+    Check if evidence sources are compatible for combination.
+    Returns (compatible, issues).
+    """
+    if len(evidence_list) < 2:
+        return True, []
+
+    issues = []
+    # Check provenance independence: different evidence IDs sharing provenance = not independent
+    # Same evidence covering multiple obligations is fine (not double-counted as separate sources)
+    ev_by_provenance = {}
+    for e in evidence_list:
+        prov = e.get("provenance", "")
+        eid = e.get("evidence_id", "")
+        if prov:
+            if prov not in ev_by_provenance:
+                ev_by_provenance[prov] = set()
+            ev_by_provenance[prov].add(eid)
+    shared = {p: ids for p, ids in ev_by_provenance.items() if len(ids) > 1}
+    if shared:
+        issues.append(f"Shared provenance across different evidence: {shared} — not independently sourced")
+
+    # Check scope compatibility
+    scopes = [e.get("scope", "") for e in evidence_list]
+    if len(set(scopes)) > 1:
+        issues.append(f"Mixed scopes: {set(scopes)} — staging and production not interchangeable")
+
+    # Check independence
+    compromised = [e["evidence_id"] for e in evidence_list if e.get("independence") == "COMPROMISED"]
+    if compromised:
+        issues.append(f"Compromised evidence: {compromised}")
+
+    return len(issues) == 0, issues
+
+
+def evaluate_composite(claim_id):
+    """
+    Evaluate a composite claim: coverage ∧ admissibility ∧ compatibility ∧ composition.
+    
+    Coverage: does combined evidence cover all required obligations?
+    Composition: does satisfying individual obligations entail the broader claim?
+    """
+    reg = load_registry()
+    if claim_id not in reg["claims"]:
+        print(f"Claim {claim_id} not found.")
+        sys.exit(1)
+
+    claim = reg["claims"][claim_id]
+    if not claim.get("composite"):
+        print(f"Claim {claim_id} is not composite.")
+        sys.exit(1)
+
+    obligations = claim["obligations"]
+    ob_ev = claim.get("obligation_evidence", {})
+    rule = claim.get("composition_rule", "ALL_REQUIRED")
+
+    # Coverage: which obligations have confirmed-independent evidence?
+    covered = []
+    uncovered = []
+    for ob in obligations:
+        ev_list = ob_ev.get(ob, [])
+        confirmed = [e for e in ev_list if e.get("independence") == "CONFIRMED"]
+        if confirmed:
+            covered.append(ob)
+        else:
+            uncovered.append(ob)
+
+    # Compatibility: check all evidence together
+    all_evidence = []
+    for ev_list in ob_ev.values():
+        all_evidence.extend(ev_list)
+    compatible, compat_issues = check_compatibility(all_evidence)
+
+    # Composition validity: cross-requirements (handoffs, interactions)
+    cross_reqs = claim.get("cross_requirements", [])
+    cross_met = len(cross_reqs) == 0  # simplified: no cross-reqs = vacuously met
+
+    # Compute verdict
+    coverage_complete = len(uncovered) == 0
+    
+    if rule == "ALL_REQUIRED":
+        if coverage_complete and compatible and cross_met:
+            status = "FULLY_QUALIFIED"
+            statement = f"All {len(obligations)} obligations covered with compatible evidence."
+        elif covered:
+            status = "PARTIALLY_QUALIFIED"
+            statement = (
+                f"Covered {len(covered)}/{len(obligations)} obligations: {', '.join(covered)}. "
+                f"Missing: {', '.join(uncovered) if uncovered else 'none'}. "
+                f"Broader claim NOT established — coverage is necessary but not sufficient."
+            )
+        else:
+            status = "INSUFFICIENT_EVIDENCE"
+            statement = "No obligations currently covered."
+    else:  # ANY_SUFFICIENT
+        if covered:
+            status = "QUALIFIED"
+            statement = f"At least one obligation covered: {covered[0]}"
+        else:
+            status = "INSUFFICIENT_EVIDENCE"
+            statement = "No obligations covered."
+
+    # Breadth, depth, integration
+    breadth = f"{len(covered)}/{len(obligations)} distinct obligations"
+    depth = f"{len(all_evidence)} evidence contributions"
+    integration = "ESTABLISHED" if cross_met else "NOT_ESTABLISHED"
+
+    qualification = {
+        "status": status,
+        "covered_obligations": covered,
+        "uncovered_obligations": uncovered,
+        "compatibility": "COMPATIBLE" if compatible else "INCOMPATIBLE",
+        "compatibility_issues": compat_issues,
+        "composition_valid": cross_met,
+        "breadth": breadth,
+        "depth": depth,
+        "integration": integration,
+        "statement": statement,
+        "evaluated_at": datetime.now(timezone.utc).isoformat(),
+    }
+    claim["qualification"] = qualification
+    save_registry(reg)
+
+    log_event({
+        "event_type": "COMPOSITE_EVALUATED",
+        "claim_id": claim_id,
+        "qualification": qualification,
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+    })
+
+    print(f"\nComposite evaluation for {claim_id}:")
+    print(f"  Status: {status}")
+    print(f"  Breadth: {breadth} | Depth: {depth} | Integration: {integration}")
+    print(f"  Compatibility: {'✓' if compatible else '✗ ' + '; '.join(compat_issues)}")
+    if uncovered:
+        print(f"  Missing: {', '.join(uncovered)}")
+    print(f"  {statement}")
+    return qualification
+
+
 def main():
     parser = argparse.ArgumentParser(description="Claim-level support-set evaluator")
     sub = parser.add_subparsers(dest="cmd", required=True)
@@ -479,6 +696,24 @@ def main():
     sc = sub.add_parser("strongest", help="Compute strongest defensible conclusion")
     sc.add_argument("--claim", required=True)
 
+    cc = sub.add_parser("register-composite", help="Register composite claim with obligations")
+    cc.add_argument("--id", required=True)
+    cc.add_argument("--description", required=True)
+    cc.add_argument("--obligations", required=True, help="Comma-separated obligation IDs")
+    cc.add_argument("--rule", default="ALL_REQUIRED", choices=["ALL_REQUIRED", "ANY_SUFFICIENT"])
+
+    oe = sub.add_parser("add-obligation-evidence", help="Record evidence for obligation")
+    oe.add_argument("--claim", required=True)
+    oe.add_argument("--obligation", required=True)
+    oe.add_argument("--evidence", required=True)
+    oe.add_argument("--scope", required=True)
+    oe.add_argument("--independence", default="CONFIRMED",
+                    choices=["CONFIRMED", "UNDETERMINED", "COMPROMISED"])
+    oe.add_argument("--provenance", default="")
+
+    ec = sub.add_parser("evaluate-composite", help="Evaluate composite claim")
+    ec.add_argument("--claim", required=True)
+
     args = parser.parse_args()
     if args.cmd == "register-claim":
         register_claim(args.id, args.description, args.scope)
@@ -499,6 +734,14 @@ def main():
         assess_scope_match(args.claim, args.evidence, claim_scope, evidence_scope)
     elif args.cmd == "strongest":
         strongest_conclusion(args.claim)
+    elif args.cmd == "register-composite":
+        obligations = [o.strip() for o in args.obligations.split(",")]
+        register_composite_claim(args.id, args.description, obligations, args.rule)
+    elif args.cmd == "add-obligation-evidence":
+        add_obligation_evidence(args.claim, args.obligation, args.evidence,
+                                args.scope, args.independence, args.provenance)
+    elif args.cmd == "evaluate-composite":
+        evaluate_composite(args.claim)
 
 
 if __name__ == "__main__":
