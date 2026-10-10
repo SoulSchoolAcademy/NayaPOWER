@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-10  
-**Receipt basis commit:** `26f28c527626c74b164790d3d635ae9b831476a1`  
-**Inventory file count:** 1239  
+**Receipt basis commit:** `3db1fa455a5cd27572d407f5d1c5c5d6354977ef`  
+**Inventory file count:** 1240  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -11,7 +11,7 @@
 | Domain | Files |
 |---|---|
 | 00-SPEC | 15 |
-| 01-GOVERNANCE | 53 |
+| 01-GOVERNANCE | 54 |
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 25 |
@@ -80,9 +80,9 @@
 - `BRAIN/01-GOVERNANCE/0007-LAW-OF-ONE-V1.human.md` — `7188b5a90066` (2145 bytes)
 - `BRAIN/01-GOVERNANCE/0007-law-of-one-v1.machine.json` — `a0b338815cda` (2007 bytes)
 - `BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2-ENCODING-AUDIT.md` — `693eabef654a` (11367 bytes)
-- `BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2.ai.md` — `6dd76254fb22` (14729 bytes)
-- `BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2.human.md` — `c70fc5b7ebf3` (9018 bytes)
-- `BRAIN/01-GOVERNANCE/0008-operating-code-v2.machine.json` — `210984d7d333` (5087 bytes)
+- `BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2.ai.md` — `0f81fc721fc1` (14786 bytes)
+- `BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2.human.md` — `fbe045ba392e` (9007 bytes)
+- `BRAIN/01-GOVERNANCE/0008-operating-code-v2.machine.json` — `1088c9ae24a7` (5146 bytes)
 - `BRAIN/01-GOVERNANCE/0013-PARALLEL-EXECUTION-V1.ai.md` — `bd192971f09c` (3430 bytes)
 - `BRAIN/01-GOVERNANCE/0013-PARALLEL-EXECUTION-V1.human.md` — `a82aa1b3ffc3` (2623 bytes)
 - `BRAIN/01-GOVERNANCE/0013-parallel-execution-v1.machine.json` — `45bcf7ab174b` (2592 bytes)
@@ -106,6 +106,7 @@
 - `BRAIN/01-GOVERNANCE/0020-ENGINE-BEFORE-PRODUCTION-V1.human.md` — `3054324783e9` (995 bytes)
 - `BRAIN/01-GOVERNANCE/0020-engine-before-production-v1.machine.json` — `abc384701525` (947 bytes)
 - `BRAIN/01-GOVERNANCE/DOC-COMPLETENESS-AUDIT-2026-10-10.md` — `ea273ce3077d` (2633 bytes)
+- `BRAIN/01-GOVERNANCE/GATE-CONSOLE.md` — `d7810ee7ef34` (10085 bytes)
 - `BRAIN/01-GOVERNANCE/LEARNING-INTERNALIZATION-AUTOMATIC-BEHAVIOR-V1.md` — `c58ef4864a38` (10500 bytes)
 - `BRAIN/01-GOVERNANCE/OPERATING-LAW.json` — `2a12fe6ff268` (32329 bytes)
 - `BRAIN/01-GOVERNANCE/OPERATING-LAW.md` — `f738cd89a977` (32785 bytes)
@@ -124,7 +125,7 @@
 
 - `BRAIN/03-KERNEL/0001-KERNEL-CONTRACT-V1.md` — `c0fbdb92d466` (671 bytes)
 - `BRAIN/03-KERNEL/0002-KERNEL-ACCEPTANCE-V1.md` — `2ceacf3091fa` (411 bytes)
-- `BRAIN/03-KERNEL/0003-RUNTIME-REGISTRY-V1.json` — `cc5f5559c0bf` (13674 bytes)
+- `BRAIN/03-KERNEL/0003-RUNTIME-REGISTRY-V1.json` — `79661f697092` (13753 bytes)
 - `BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json` — `bb9868d5aea0` (25514 bytes)
 - `BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.md` — `900f3d525938` (3347 bytes)
 - `BRAIN/03-KERNEL/0005-NINE-NODE-ULTIMATE-LOCK-AND-NOTE-READINESS-V1.md` — `a71ae7e732e1` (6272 bytes)
