@@ -3,6 +3,13 @@
 Deterministic, dependency-free decision math implementing the canonical
 NAYANODE/0025 value-calculus seam. Value ranks only actions that governance
 already permits. Scores never create authority.
+
+SMART APP v1.0.0 — FROZEN. This module is the first true Smart App under
+Operating Code V2 section 3.5: solve once, freeze at 10, never rebuild.
+Consumers import it; they do not copy, fork, or reimplement it. The frozen
+public interface is locked by tests/test_value_calculus_smart_app_freeze_v1.py
+and documented in docs/SMART-APPS/decision-value-calculus-v1.0.0.md.
+Interface changes require a new major version, never a silent edit.
 """
 
 from __future__ import annotations
@@ -12,6 +19,8 @@ from typing import Mapping, Optional, Sequence
 import math
 
 ENGINE_VERSION = "DECISION-VALUE-CALCULUS-V2.1"
+SMART_APP_VERSION = "1.0.0"
+SMART_APP_ID = "nayapower.decision-value-calculus"
 QUALITY_DIMENSIONS = (
     "objective_fit",
     "evidence_sufficiency",
