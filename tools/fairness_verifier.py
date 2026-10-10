@@ -527,6 +527,23 @@ def main():
     fr2.add_argument("--contract", required=True)
     fr2.add_argument("--target", default="STRONG_FAIRNESS")
 
+    br = sub.add_parser("boundary-register", help="Register responsibility record")
+    br.add_argument("--contract", required=True)
+    br.add_argument("--condition", required=True)
+    br.add_argument("--controller", required=True,
+                    choices=["ENVIRONMENT", "SCHEDULER", "WORKER", "SHARED", "LAW", "HUMAN"])
+    br.add_argument("--producer-guarantee", required=True)
+    br.add_argument("--consumer-assumption", required=True)
+    br.add_argument("--evidence", default="")
+
+    bc = sub.add_parser("boundary-classify", help="Classify failure by control")
+    bc.add_argument("--contract", required=True)
+    bc.add_argument("--symptom", required=True)
+    bc.add_argument("--control-facts", required=True, help="JSON control facts")
+
+    bcp = sub.add_parser("boundary-compat", help="Check interface compatibility")
+    bcp.add_argument("--contract", required=True)
+
     args = parser.parse_args()
     if args.cmd == "classify":
         cycle = json.loads(args.trace)
@@ -560,10 +577,168 @@ def main():
         faap_receipt(args.contract, args.target)
     elif args.cmd == "faap-record":
         faap_record_evidence(args.contract, args.id, args.field, args.value)
+    elif args.cmd == "boundary-register":
+        boundary_register(args.contract, args.condition, args.controller,
+                          args.producer_guarantee, args.consumer_assumption,
+                          args.evidence)
+    elif args.cmd == "boundary-classify":
+        boundary_classify(args.contract, args.symptom, args.control_facts)
+    elif args.cmd == "boundary-compat":
+        boundary_check_compat(args.contract)
 
 
 # ============================================================================
-# FAAP — Fairness Assumption Audit Protocol (Naya 1's formal protocol)
+# Responsibility Boundary Contract (Naya 1's "Enforcing the Environment–
+# Scheduler–Worker Boundary")
+#
+# Central rule: a component cannot convert its own failure into another
+# component's assumption. Responsibility follows control.
+#
+# Proof composition:
+#   A_E ∧ S ⊨ G_S        (scheduler's fair-service guarantee)
+#   A_E ∧ G_S ∧ W ⊨ G_W  (worker's conditional progress guarantee)
+#
+# The most important field is CONTROLLER. A narrative about who caused a
+# failure cannot override the independently established control boundary.
+# ============================================================================
+
+BOUNDARY_REGISTRY = os.path.expanduser(
+    "~/workspace/goals/nayapower-10-10-completion-drive/hidden_files/boundary-registry.json")
+
+# Valid controllers
+CONTROLLERS = ["ENVIRONMENT", "SCHEDULER", "WORKER", "SHARED", "LAW", "HUMAN"]
+
+# Failure classifications
+BOUNDARY_VERDICTS = {
+    "ENVIRONMENT_FAILURE": "Independently-controlled prerequisite genuinely unavailable",
+    "SCHEDULER_FAILURE": "Eligible work denied promised service; scheduler-controlled",
+    "WORKER_FAILURE": "Adequate service received; no progress or valid disposition",
+    "RESPONSIBILITY_BOUNDARY_VIOLATION": "Component relabeled its own failure as another's",
+    "INTERFACE_MISMATCH": "Producer guarantee weaker than consumer assumption",
+    "BOUNDARY_UNDETERMINED": "Insufficient independent evidence to classify",
+    "LEGITIMATE_AUTHORITY_BLOCK": "LAW/HUMAN gate correctly held — not starvation",
+}
+
+
+def _boundary_load():
+    try:
+        with open(BOUNDARY_REGISTRY) as f:
+            return json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return {"contracts": {}}
+
+
+def _boundary_save(reg):
+    os.makedirs(os.path.dirname(BOUNDARY_REGISTRY), exist_ok=True)
+    with open(BOUNDARY_REGISTRY, "w") as f:
+        json.dump(reg, f, indent=2)
+
+
+def boundary_register(contract_id, condition, controller, producer_guarantee,
+                      consumer_assumption, evidence=""):
+    """
+    Register a responsibility record for one condition.
+    The controller field is authoritative — narratives cannot override it.
+    """
+    if controller not in CONTROLLERS:
+        print(f"ERROR: unknown controller '{controller}'")
+        sys.exit(1)
+    reg = _boundary_load()
+    if contract_id not in reg["contracts"]:
+        reg["contracts"][contract_id] = {"conditions": {}, "created_at": datetime.now(timezone.utc).isoformat()}
+    reg["contracts"][contract_id]["conditions"][condition] = {
+        "controller": controller,
+        "producer_guarantee": producer_guarantee[:200],
+        "consumer_assumption": consumer_assumption[:200],
+        "evidence": evidence[:200],
+        "registered_at": datetime.now(timezone.utc).isoformat(),
+    }
+    _boundary_save(reg)
+    print(f"Boundary: '{condition}' → controller={controller}")
+    if controller == "SHARED":
+        print(f"  ⚠ SHARED control must be decomposed into per-component guarantees.")
+    return True
+
+
+def boundary_classify(contract_id, symptom, control_facts):
+    """
+    Classify a failure symptom by control, not by narrative.
+
+    control_facts: JSON describing independently established facts, e.g.
+      {"condition": "db_connection", "resource_available": true,
+       "scheduler_allocated": false, "worker_received": false,
+       "claimed_cause": "DATABASE_UNAVAILABLE"}
+    """
+    facts = json.loads(control_facts)
+    reg = _boundary_load()
+    contract = reg["contracts"].get(contract_id, {})
+    condition = facts.get("condition", "")
+    record = contract.get("conditions", {}).get(condition, {})
+    controller = record.get("controller", "UNKNOWN")
+    claimed = facts.get("claimed_cause", "")
+
+    print(f"\nBoundary classification for: {symptom}")
+    print(f"  Condition: {condition} (registered controller: {controller})")
+    print(f"  Claimed cause: {claimed}")
+
+    # Responsibility-boundary violation: claimed cause contradicts control
+    if controller == "SCHEDULER" and "ENVIRONMENT" in claimed.upper():
+        verdict = "RESPONSIBILITY_BOUNDARY_VIOLATION"
+        reason = (f"Controller is SCHEDULER but failure claimed as {claimed}. "
+                  f"Scheduler-controlled blocking is not an environment failure.")
+    elif controller == "ENVIRONMENT" and not facts.get("resource_available", True):
+        verdict = "ENVIRONMENT_FAILURE"
+        reason = "Independently-controlled resource genuinely unavailable."
+    elif facts.get("resource_available") and not facts.get("scheduler_allocated"):
+        verdict = "SCHEDULER_FAILURE"
+        reason = "Resource available but scheduler never allocated it."
+    elif facts.get("scheduler_allocated") and facts.get("worker_received") and not facts.get("progress_made"):
+        verdict = "WORKER_FAILURE"
+        reason = "Adequate service received; no progress or valid disposition."
+    elif facts.get("law_blocked"):
+        verdict = "LEGITIMATE_AUTHORITY_BLOCK"
+        reason = "LAW/HUMAN gate correctly held — not starvation."
+    else:
+        verdict = "BOUNDARY_UNDETERMINED"
+        reason = "Facts do not determine responsibility; investigate, do not auto-blame."
+
+    print(f"  Verdict: {verdict}")
+    print(f"  {BOUNDARY_VERDICTS[verdict]}")
+    print(f"  Reason: {reason}")
+    return verdict
+
+
+def boundary_check_compat(contract_id):
+    """
+    Check assumption-guarantee compatibility: G_producer ⇒ A_consumer.
+    Flags interface mismatches where the consumer assumes more than the
+    producer guarantees.
+    """
+    reg = _boundary_load()
+    contract = reg["contracts"].get(contract_id)
+    if not contract:
+        print(f"Unknown contract {contract_id}")
+        return
+    print(f"\nInterface compatibility for {contract_id}:")
+    issues = 0
+    for cond, r in contract["conditions"].items():
+        g, a = r["producer_guarantee"], r["consumer_assumption"]
+        absolute = ["always", "guaranteed", "every", "unconditional"]
+        qualified = ["under specified", "occasionally", "when available", "bounded"]
+        consumer_strong = any(w in a.lower() for w in absolute)
+        producer_weak = any(w in g.lower() for w in qualified)
+        if consumer_strong and producer_weak:
+            print(f"  ✗ {cond}: INTERFACE_MISMATCH")
+            print(f"      producer guarantees: '{g[:60]}...'")
+            print(f"      consumer assumes:    '{a[:60]}...'")
+            issues += 1
+        else:
+            print(f"  ✓ {cond}: compatible")
+    if issues:
+        print(f"\n  {issues} interface mismatch(es). Do not silently strengthen the producer.")
+    else:
+        print(f"\n  All interfaces compatible.")
+    return issues
 #
 # Four gates, ALL required. Passing three cannot compensate for failing one.
 #   1. Independent justification — evidence not depending on the conclusion
