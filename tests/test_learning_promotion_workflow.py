@@ -62,7 +62,13 @@ def test_fresh_intelligent_block_can_enter_existing_learning_candidate_path_with
     assert 'index_id' in source
     assert 'checkpoint_id' in source
     assert 'provenance_preserved: true' in source
-    assert 'status: "CANDIDATE"' in source
+    # #2077: the candidate insert routes status through the WO3 admission gate.
+    # The contract's intent is unchanged: the default is CANDIDATE, the gate may
+    # only downgrade to NOT_VERIFIED (never promote), and the insert writes the
+    # gated status with provenance intact.
+    assert 'let admittedStatus = "CANDIDATE"' in source
+    assert 'status: admittedStatus' in source
+    assert 'admitted_as === ADMITTED_NOT_VERIFIED ? "NOT_VERIFIED" : "CANDIDATE"' in source
     assert 'mode === "candidate"' in source
 
 
