@@ -15,7 +15,7 @@
 
 Why this is brain-grade: "canonical" is a status, and status decays when the tip moves. The instinct is to honor the bigger, officially-blessed repair — but a superset whose base is stale is not more valuable than a subset that is fresh, green-on-head, and minimal; it is a time bomb wearing a medal. The selection rule is mechanical: compare the repairs against the CURRENT tip, not their declared status. If the superset's unique value is already green on main, its only remaining contribution is regression risk. Merging the minimal fresh repair first also unblocks CI immediately, which is the actual objective — the canonical superset can return as a separate decision if it still has anything to add.
 
-Rule for a cold successor: **when two repairs race one red, score them on freshness × minimality × green-on-head, never on who was declared canonical first.** A declaration is evidence about the past; the tip is evidence about now.
+Rule for a cold successor: **when two repairs race one red, score them on freshness × minimality × green-on-head, never on who was declared canonical first.** A declaration is evidence about the past; the tip is evidence about now. (SN-0841 captured the earlier half of this same saga: with both repairs fresh on tip `a6daf915`, the brain-build loop declared #2083 canonical as first-in-time superset and recommended #2084's close. This note captures what changed when the tip moved — SN-0493 in action: the canonical superset's base went stale and its unique value went green on main, so the minimal fresh repair won the second round.)
 
 ## HUMAN NOTE
 
@@ -56,6 +56,6 @@ Shawn, when the lanes had two competing spec-integrity repairs, Naya 2 didn't wa
     "scores": {"merge_minimal_fresh_2084": 9.0, "wait_for_superset_rebase_2083": 4.0},
     "rule": "a_declaration_is_evidence_about_the_past_the_tip_is_evidence_about_now"
   },
-  "related": ["SN-0493", "SN-0780", "SN-0419"]
+  "related": ["SN-0493", "SN-0780", "SN-0419", "SN-0841"]
 }
 ```
