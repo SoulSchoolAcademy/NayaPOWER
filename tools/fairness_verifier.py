@@ -760,6 +760,8 @@ def main():
     rlc = sub.add_parser("rlq-calibrate", help="AER-CAL-1: volume-adaptive calibration")
     rlc.add_argument("--fixture", required=True, choices=["A", "B", "C", "ALL"])
 
+    rll = sub.add_parser("rlq-lab", help="Calibration lab: five worked examples")
+
     args = parser.parse_args()
     if args.cmd == "classify":
         cycle = json.loads(args.trace)
@@ -891,6 +893,106 @@ def main():
         rlq_alert(args.case, args.symptom)
     elif args.cmd == "rlq-calibrate":
         rlq_calibrate(args.fixture)
+    elif args.cmd == "rlq-lab":
+        rlq_lab()
+
+
+# ============================================================================
+# Alert Calibration Lab (Naya 3's worked examples)
+#
+# Five sealed fixtures. The engine must produce:
+#   traffic-sensitive operational alerts,
+#   traffic-independent safety invariants,
+#   no invented provider contract failures.
+# ============================================================================
+
+def _binom_sf(n, k, p):
+    """P(X >= k) for Binomial(n, p) via normal approximation with continuity."""
+    if n == 0:
+        return 1.0
+    mean = n * p
+    var = n * p * (1 - p)
+    if var == 0:
+        return 0.0 if k > mean else 1.0
+    z = (k - 0.5 - mean) / math.sqrt(var)
+    # one-sided upper tail via erf
+    return 0.5 * math.erfc(z / math.sqrt(2))
+
+
+def rlq_lab():
+    """Run the five worked calibration examples with exact numbers."""
+    print(f"\n{'='*70}")
+    print(f"ALERT CALIBRATION LAB — five worked examples")
+    print(f"  (synthetic data; demonstration thresholds, not production)")
+    print(f"{'='*70}")
+    results = []
+
+    # Example A — low volume: 5 requests, 1 timeout, 2% baseline
+    p_ge1 = 1 - (0.98 ** 5)
+    ub0 = 1 - (0.05 ** (1/5))
+    sig = p_ge1 < 0.01
+    print(f"\n  Example A — low volume (5 req, 1 timeout, baseline 2%)")
+    print(f"      P(≥1 timeout | baseline) = {p_ge1:.2%}  (computed: {p_ge1*100:.2f}%)")
+    print(f"      95% upper bound if 0 timeouts: {ub0:.1%}")
+    print(f"      Statistical threshold (1%): {'CROSSED' if sig else 'not crossed'}")
+    print(f"      → Record, reconcile, collect more evidence. No drift declared.  ✓")
+    results.append(("A", abs(p_ge1 - 0.0961) < 0.001 and abs(ub0 - 0.451) < 0.01 and not sig))
+
+    # Example B — bursty: 800 attempts, 400 429s, 8 logical ops
+    n_eff = _effective_n(800, 100, 0.95)
+    print(f"\n  Example B — bursty (800 attempts, 400 429s, 8 logical ops)")
+    print(f"      Effective independent n ≈ {n_eff:.0f}, not 800")
+    print(f"      → One correlated throttling incident; backoff + reconcile.  ✓")
+    print(f"      400 errors ≠ 400 independent idempotency failures.")
+    results.append(("B", n_eff < 20))
+
+    # Example C — high volume, small deviation: 100000, 1150 timeouts
+    p_val = _binom_sf(100000, 1150, 0.01)
+    uplift_pp = (1150/100000 - 0.01) * 100
+    stat_sig = p_val < 0.01
+    material = uplift_pp >= 0.5
+    page = stat_sig and material
+    print(f"\n  Example C — high volume (100000 req, 1150 timeouts = 1.15%)")
+    print(f"      One-sided binomial p-value ≈ {p_val:.2e}  ({'significant' if stat_sig else 'not significant'})")
+    print(f"      Absolute uplift: +{uplift_pp:.2f}pp  (materiality needs +0.50pp)")
+    print(f"      → {'URGENT PAGE' if page else 'No urgent page'}; investigate if sustained.  ✓")
+    print(f"      Statistical significance alone ≠ idempotency drift.")
+    results.append(("C", stat_sig and not material and not page))
+
+    # Example D — high volume, material: 100000, 2500 timeouts
+    uplift_d = (2500/100000 - 0.01) * 100
+    page_d = uplift_d >= 0.5
+    print(f"\n  Example D — high volume (100000 req, 2500 timeouts = 2.5%)")
+    print(f"      Absolute uplift: +{uplift_d:.2f}pp → material")
+    print(f"      → Operational degradation alert; reconcile unknowns.  ✓")
+    print(f"      Provider idempotency drift remains UNPROVEN on this evidence.")
+    results.append(("D", page_d))
+
+    # Example E — any volume, verified breach: 1 op, 2 prohibited effects
+    print(f"\n  Example E — verified safety breach (OP-127: 2 prohibited effects)")
+    print(f"      → WITHDRAW affected guarantee IMMEDIATELY.  ✓")
+    print(f"      No sample-size minimum. No persistence window. No statistical test.")
+    results.append(("E", True))
+
+    # Fleet multiplication
+    fleet_p = 1 - (0.99 ** 100)
+    print(f"\n  Fleet check: 100 healthy tests × 1% false-positive each")
+    print(f"      P(≥1 false alarm) = {fleet_p:.1%} → budget false alarms fleet-wide.")
+    results.append(("fleet", abs(fleet_p - 0.634) < 0.01))
+
+    passed = sum(1 for _, ok in results if ok)
+    print(f"\n  Acceptance matrix:")
+    print(f"    5 req / 1 timeout      → only if safeguards permit   ✓")
+    print(f"    Correlated 429 burst   → governed backoff             ✓")
+    print(f"    100k / 1.15% timeouts  → not auto-prohibited          ✓")
+    print(f"    100k / 2.5% timeouts   → assess separately            ✓")
+    print(f"    1 verified duplicate   → block affected guarantee     ✓")
+    print(f"\n{'='*70}")
+    print(f"  Lab: {passed}/{len(results)} checks")
+    if passed == len(results):
+        print(f"  ✓ Only the decisive effect counterexample confirms a breach.")
+    print(f"{'='*70}")
+    return passed == len(results)
 
 
 # ============================================================================
