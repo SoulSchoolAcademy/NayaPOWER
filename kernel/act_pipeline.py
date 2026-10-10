@@ -47,8 +47,9 @@ from __future__ import annotations
 
 import uuid
 from dataclasses import dataclass, field
-from typing import Callable, Sequence
+from typing import Any, Callable, Sequence
 
+from kernel.memory_store import MemoryStore
 from kernel.value_calculus import (
     PROHIBITED,
     Candidate,
@@ -232,6 +233,98 @@ def _select_minimum_sufficient(candidates: Sequence[PlanCandidate],
     return winner, scores
 
 
+def apply_retained_intelligence(
+    *,
+    memory_store: MemoryStore,
+    policy_store: Any | None = None,
+    situation: str,
+    default_behavior: str,
+    now: str | None = None,
+) -> dict[str, Any]:
+    """Bind retained memory to the authorized-apply decision seam.
+
+    Canonical memory→action wire (learning-loop GAP-1): serves ACTIVE,
+    integrity-verified records matching `situation` from the memory store —
+    QUARANTINED records are never served, SUPERSEDED/DECAYED/ARCHIVED never
+    surface silently (the store's fail-closed discipline) — and combines them
+    with the behavior policy's advise() decision for the same situation.
+
+    A record matches a situation when its provenance carries the same
+    `situation` key (the capture contract for actionable records).
+
+    Precedence: integrated lesson (policy store) > retained intelligence
+    (memory store, strongest verification_weight first) > caller default.
+    Every decision names its `source` ("lesson:<id>", "memory:<record_id>",
+    "default") so before/after transcripts prove the behavioral delta.
+
+    Retrieval is read-only (persist_touch=False): deciding must not mutate
+    the store. Raises ValueError when the store or situation is missing
+    (fail closed, decide nothing).
+    """
+    if memory_store is None:
+        raise ValueError("memory_store_required")
+    if policy_store is not None and not hasattr(policy_store, "advise"):
+        raise ValueError("policy_store_invalid:advise_missing")
+    if not str(situation or "").strip():
+        raise ValueError("situation_required")
+    situation = str(situation).strip()
+
+    def _situation_matches(record: Any) -> bool:
+        provenance = getattr(record, "provenance", None)
+        return isinstance(provenance, dict) and str(
+            provenance.get("situation") or ""
+        ).strip() == situation
+
+    served = memory_store.serve(_situation_matches, now=now, persist_touch=False)
+    candidates = sorted(
+        (record for record, _label in served.items),
+        key=lambda r: (
+            -float(getattr(r, "verification_weight", 0.0) or 0.0),
+            str(getattr(r, "last_verified_at", "") or ""),
+        ),
+    )
+
+    advised = (
+        policy_store.advise(situation, default_behavior)
+        if policy_store is not None
+        else None
+    )
+    policy_version = advised.get("policy_version") if advised else None
+
+    if advised is not None and advised.get("source", "default") != "default":
+        return {
+            "behavior": advised["behavior"],
+            "source": advised["source"],
+            "situation": situation,
+            "policy_version": policy_version,
+            "memory_record_id": None,
+            "memory_records_considered": len(candidates),
+            "via": "behavior_policy",
+        }
+    if candidates:
+        top = candidates[0]
+        return {
+            "behavior": top.content,
+            "source": f"memory:{top.record_id}",
+            "situation": situation,
+            "policy_version": policy_version,
+            "memory_record_id": top.record_id,
+            "memory_epistemic_state": top.epistemic_state,
+            "memory_verification_weight": top.verification_weight,
+            "memory_records_considered": len(candidates),
+            "via": "memory_store",
+        }
+    return {
+        "behavior": default_behavior,
+        "source": "default",
+        "situation": situation,
+        "policy_version": policy_version,
+        "memory_record_id": None,
+        "memory_records_considered": 0,
+        "via": "default",
+    }
+
+
 def plan_action(authority: LawAuthority,
                 candidates: Sequence[PlanCandidate],
                 profile: QualityProfile,
@@ -326,13 +419,21 @@ def execute_plan(plan: ActionPlan,
                  profile: QualityProfile,
                  max_law_age_seconds: float = MAX_LAW_AGE_SECONDS,
                  ledger: ReceiptLedger | None = None,
-                 risk_policy: RiskPolicy | None = None) -> ActionReceipt:
+                 risk_policy: RiskPolicy | None = None,
+                 on_executed: Callable[[ActionPlan, ActionReceipt], None] | None = None) -> ActionReceipt:
     """Phase 2: re-resolve live LAW authority, re-verify the do-no-harm gate,
     then execute.
 
     re_resolve must return a FRESH LawAuthority read at execution time
     (SN-0493). If it returns None, or the fresh authority fails any time
     check, execution is refused and the executor is never called.
+
+    on_executed is the post-execution hook seam (WO5b): it fires exactly once,
+    after the EXECUTION_COMPLETED receipt is emitted to the ledger, with
+    (plan, receipt). SELF wires kernel.self_integration.make_act_experience_hook
+    here so every completed action is preserved as experience. Refused or
+    failed executions never reach the hook — only a completed outcome is
+    recordable experience.
 
     Do-no-harm enforcement (fail-closed): the chosen candidate is re-run
     through the calculus's gate_candidate at the last responsible moment,
@@ -405,7 +506,7 @@ def execute_plan(plan: ActionPlan,
             expected_outcome=plan.chosen.expected_outcome,
         ))
 
-    return emit(ActionReceipt(
+    completed = emit(ActionReceipt(
         receipt_id=_new_id(), plan_id=plan.plan_id, phase="EXECUTION_COMPLETED",
         executed=True, outcome_verified=False, truth_state="UNKNOWN",
         evidence=(
@@ -417,6 +518,9 @@ def execute_plan(plan: ActionPlan,
         observed_outcome=observed,
         expected_outcome=plan.chosen.expected_outcome,
     ))
+    if on_executed is not None:
+        on_executed(plan, completed)
+    return completed
 
 
 def apply_verify_verdict(receipt: ActionReceipt, *, verified: bool,

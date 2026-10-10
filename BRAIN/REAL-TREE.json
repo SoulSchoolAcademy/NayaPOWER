@@ -1,37 +1,79 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-10-08",
-  "receipt_basis_commit": "f52ffb966432f8f2429da1ce009c6e5f0ec177ef",
-  "inventory_file_count": 806,
+  "generated_at": "2026-10-10",
+  "receipt_basis_commit": "26f28c527626c74b164790d3d635ae9b831476a1",
+  "inventory_file_count": 1239,
   "domain_counts": {
+    "00-ACTIVATION": 3,
+    "00-ARCHITECTURE": 5,
     "00-SPEC": 15,
-    "01-GOVERNANCE": 22,
+    "01-GOVERNANCE": 53,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
-    "05-MEMORY": 634,
-    "06-PROOF": 10,
-    "07-LEARNING": 2,
+    "05-MEMORY": 646,
+    "06-PROOF": 13,
+    "07-LEARNING": 8,
     "08-SUCCESSION": 2,
     "09-EVOLUTION": 2,
-    "10-INTERFACES": 8,
+    "10-INTERFACES": 380,
     "11-KNOWLEDGE": 7,
     "12-ENGINEERING": 25,
     "90-OPERATIONS": 13,
-    "99-ARCHIVE": 1,
+    "99-ARCHIVE": 2,
     "ROOT": 5
   },
   "ledger_assertion": "Per-domain counts asserted against the 2026-09-30 brain-reconciliation ledger classification table. Any drift fails regeneration instead of silently rewriting the table.",
   "files": [
     {
+      "path": "BRAIN/00-ACTIVATION/ACTIVATION-CHECKLIST.md",
+      "blob_sha": "1b990d7507f61098f203764363e698eec6f36f16",
+      "size": 10868
+    },
+    {
+      "path": "BRAIN/00-ACTIVATION/DESIGN-ACTIVATION.md",
+      "blob_sha": "fed3bb338e0205ac2d31c4afac69b06641f243ca",
+      "size": 4229
+    },
+    {
+      "path": "BRAIN/00-ACTIVATION/activation-checklist.json",
+      "blob_sha": "0f890374773478184236543638ff25de274e4881",
+      "size": 3734
+    },
+    {
+      "path": "BRAIN/00-ARCHITECTURE/ACTIVATION-NAYA-PLAN.md",
+      "blob_sha": "70774bbfa1e0240eceffbab56a6d8a071e22107a",
+      "size": 24076
+    },
+    {
+      "path": "BRAIN/00-ARCHITECTURE/ACTIVATION-NAYA-PROJECT.md",
+      "blob_sha": "d93e078f54a5d3671392632800a0be43cfc50ba5",
+      "size": 8039
+    },
+    {
+      "path": "BRAIN/00-ARCHITECTURE/MACHINE-INTELLIGENCE.json",
+      "blob_sha": "29a81ec0c99e81e12655321146851dbf975a148f",
+      "size": 85823
+    },
+    {
+      "path": "BRAIN/00-ARCHITECTURE/NORTH-STAR-RATIFICATION-2026-09-26.md",
+      "blob_sha": "e00e0d6614054fda707154b0a471cf130dcdabff",
+      "size": 3742
+    },
+    {
+      "path": "BRAIN/00-ARCHITECTURE/SYSTEM-BLUEPRINT-20261009.md",
+      "blob_sha": "07a492bbcb3d52c5ee26cdbaffa70354be1add16",
+      "size": 55326
+    },
+    {
       "path": "BRAIN/00-SPEC/0001-INTELLIGENT-GRAPH-AND-TREE-SPEC-V1.md",
-      "blob_sha": "5dcb8d07285079a5701b31fe1a18fafb278cfe22",
-      "size": 12637
+      "blob_sha": "88ce71b543d0beb5a67f70459c03a8cc1afa22cd",
+      "size": 12877
     },
     {
       "path": "BRAIN/00-SPEC/0002-TREE-AND-GRAPH-NAMING-LAW-V1.md",
-      "blob_sha": "95938c6ed34200a41157f450ffd44a524e6070af",
-      "size": 2751
+      "blob_sha": "7dd1e97029364b6cde28d20d5cd563201a4e4bed",
+      "size": 3277
     },
     {
       "path": "BRAIN/00-SPEC/0003-REPRESENTATION-LAW-V1.md",
@@ -50,13 +92,13 @@
     },
     {
       "path": "BRAIN/00-SPEC/0006-NIA-LANGUAGE-INTENT-CONTRACT-V1.md",
-      "blob_sha": "c7b34af4b206f9c54e3db0c3032970a046d4baba",
-      "size": 5681
+      "blob_sha": "d31a734487be18947224ccf966c9484fd44fa791",
+      "size": 5689
     },
     {
       "path": "BRAIN/00-SPEC/0006-OBJECT-TYPES-V1.md",
-      "blob_sha": "18e886b7038e69497ed2a1b168ec5ac7593a5387",
-      "size": 2864
+      "blob_sha": "d74f53a516057046699006160b9fc01755b932f0",
+      "size": 2969
     },
     {
       "path": "BRAIN/00-SPEC/BRAIN-MACHINE-CONTRACT-V1.schema.json",
@@ -97,6 +139,11 @@
       "path": "BRAIN/00-SPEC/SCHEMA/SUCCESSOR-PACKAGE-SCHEMA.json",
       "blob_sha": "bab1255dcaf28075f11a94028f676f3fc2df4402",
       "size": 3904
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0000-OPERATING-CODE-V1.md",
+      "blob_sha": "9f4270a236bd8aea96fefdddf83b7f4c17c69f03",
+      "size": 6180
     },
     {
       "path": "BRAIN/01-GOVERNANCE/0001-GOVERNANCE-CONTRACT-V1.md",
@@ -159,6 +206,56 @@
       "size": 9313
     },
     {
+      "path": "BRAIN/01-GOVERNANCE/0006-NAYA-CALCULATOR-V1.ai.md",
+      "blob_sha": "5f07061bcd01878ee9122dbdd4e4906c0445f2bd",
+      "size": 9539
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0006-NAYA-CALCULATOR-V1.human.md",
+      "blob_sha": "456e88ce35a988aaf0790e5654bcad219799797a",
+      "size": 4859
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0006-naya-calculator-v1.machine.json",
+      "blob_sha": "6e62c7ad6be9e8632fc4ee41f7c8d1f9b59e3f7f",
+      "size": 5880
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0007-LAW-OF-ONE-V1.ai.md",
+      "blob_sha": "7d0efaf7e3e79cbaeb38469d8882f2152830134c",
+      "size": 3385
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0007-LAW-OF-ONE-V1.human.md",
+      "blob_sha": "7188b5a90066f9e80be6b56193808720438353f5",
+      "size": 2145
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0007-law-of-one-v1.machine.json",
+      "blob_sha": "a0b338815cda6131441e09c9aa01f81aef0a7700",
+      "size": 2007
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2-ENCODING-AUDIT.md",
+      "blob_sha": "693eabef654ad057fdfb3db8d867904fc6df8a9e",
+      "size": 11367
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2.ai.md",
+      "blob_sha": "6dd76254fb224138bb006b639e23325799b21d1f",
+      "size": 14729
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2.human.md",
+      "blob_sha": "c70fc5b7ebf3e2b2cfd82010bf864a82fd176f4c",
+      "size": 9018
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0008-operating-code-v2.machine.json",
+      "blob_sha": "210984d7d333d105d9d9532a8b79af6e932d4dae",
+      "size": 5087
+    },
+    {
       "path": "BRAIN/01-GOVERNANCE/0013-PARALLEL-EXECUTION-V1.ai.md",
       "blob_sha": "bd192971f09c8b25cadef5abb9620a0e1cd6bbb9",
       "size": 3430
@@ -194,9 +291,109 @@
       "size": 4990
     },
     {
+      "path": "BRAIN/01-GOVERNANCE/0016-LAW-OF-ONE-V1.ai.md",
+      "blob_sha": "29a3b8f959b5c89c13cf04775296ff2f1db211e4",
+      "size": 2654
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0016-LAW-OF-ONE-V1.human.md",
+      "blob_sha": "11c3c9df27e0f7b39ad45d5ebd085d06190c753f",
+      "size": 1508
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0016-law-of-one-v1.machine.json",
+      "blob_sha": "e9e40316e0ae0c2489e08b8f648abc45af034a5c",
+      "size": 1303
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0017-CALCULATOR-AS-DEFAULT-V1.ai.md",
+      "blob_sha": "257e2163a3ad823800a2dff2d71d452106e4f058",
+      "size": 2603
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0017-CALCULATOR-AS-DEFAULT-V1.human.md",
+      "blob_sha": "30e0d35a7799859e81ddbb3e78f97344bf3ec42a",
+      "size": 1248
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0017-calculator-as-default-v1.machine.json",
+      "blob_sha": "7aa30ed57f4fe7c114f26195a07d8181f9fd202f",
+      "size": 917
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0018-PLAIN-WORDS-DECISION-FORMAT-V1.ai.md",
+      "blob_sha": "7fb6ff04999d629b1b88e9fe3f8842d52fb38eca",
+      "size": 2158
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0018-PLAIN-WORDS-DECISION-FORMAT-V1.human.md",
+      "blob_sha": "7757e99a4626251559494d4f9cc5f8f0abe43ab7",
+      "size": 1040
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0018-plain-words-decision-format-v1.machine.json",
+      "blob_sha": "99aa3a4e8a4e09937283759817c015e534898663",
+      "size": 909
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0019-REVERSIBILITY-RULE-V1.ai.md",
+      "blob_sha": "fca74da73be504b4d0bcd081f74aed063b22fc79",
+      "size": 2308
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0019-REVERSIBILITY-RULE-V1.human.md",
+      "blob_sha": "5dfdd1629e177d5be578cf5023d78f2b32005c71",
+      "size": 1015
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0019-reversibility-rule-v1.machine.json",
+      "blob_sha": "860ae3f8aa6be901041d34ec10db40e299e84ad7",
+      "size": 934
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0020-ENGINE-BEFORE-PRODUCTION-V1.ai.md",
+      "blob_sha": "dc767dbaee8ac9f4912c15e95bfdacc458ca91e5",
+      "size": 2079
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0020-ENGINE-BEFORE-PRODUCTION-V1.human.md",
+      "blob_sha": "3054324783e94f6dbdd711708eb22fa4268208dc",
+      "size": 995
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0020-engine-before-production-v1.machine.json",
+      "blob_sha": "abc384701525c59d00e565b192b5b30994885bb8",
+      "size": 947
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/DOC-COMPLETENESS-AUDIT-2026-10-10.md",
+      "blob_sha": "ea273ce3077d1e8be7001203d1c312d44c8e0d86",
+      "size": 2633
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/LEARNING-INTERNALIZATION-AUTOMATIC-BEHAVIOR-V1.md",
+      "blob_sha": "c58ef4864a38dd1eaaf820886a7c7a22aa593240",
+      "size": 10500
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/OPERATING-LAW.json",
+      "blob_sha": "2a12fe6ff2680fd424e66aefa206e1ad29144e4a",
+      "size": 32329
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/OPERATING-LAW.md",
+      "blob_sha": "f738cd89a9775f6c987c43f03bb2a9e2fe4265f7",
+      "size": 32785
+    },
+    {
       "path": "BRAIN/01-GOVERNANCE/README.md",
       "blob_sha": "065bb6dc15301d4ab133fea4f01390475b7aabe6",
       "size": 1673
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/TEAM-NAYA-OPERATING-PROTOCOL-V1.md",
+      "blob_sha": "947a3a14a9bf267e50ff8e108b5375dee95fd7b5",
+      "size": 14458
     },
     {
       "path": "BRAIN/01-GOVERNANCE/elevation-grants/README.md",
@@ -495,8 +692,8 @@
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-PERSONA-V1.json",
-      "blob_sha": "5c399eb8b94ef72204613009901f7f7827216190",
-      "size": 3369
+      "blob_sha": "566168f324ebd3e9aabdced3855079308f40b797",
+      "size": 3567
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/README.md",
@@ -522,6 +719,16 @@
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-04-NAYAPOWER-FLOW-PROOF-SPECIMEN.md",
       "blob_sha": "ea6a1d83a40b410b990b09d53b08e9668f188a13",
       "size": 6363
+    },
+    {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-09-LEARNING-EVENT.md",
+      "blob_sha": "c0ee80f3e3fb2dbe0673bb45de9b7c7c2b6d265d",
+      "size": 21517
+    },
+    {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-09-NAYAPOWER-DAILY-INTELLIGENCE.md",
+      "blob_sha": "fe954e32d2c79cf6a7db3cb3e3c0c0aed1c32733",
+      "size": 9817
     },
     {
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/09/27/IB-DIR-NAYAPOWER-20260927-001.md",
@@ -3599,6 +3806,56 @@
       "size": 2357
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/OPERATIONAL-INTELLIGENCE/DISPATCH/RESERVE-RULE/SN-782/IB-SMART-NOTE-20261009-successor-t11-reserve-rule-canonical.md",
+      "blob_sha": "91652e0cbce4ba21d3bf0a48b1a98eb30e00b0dc",
+      "size": 3879
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/SCORECARD-DISCIPLINE/GATE-EXECUTION/SN-0781/IB-SMART-NOTE-20261009-sn0781-scorecard-must-run-the-gate.md",
+      "blob_sha": "868eb151cebb4eb79293196f7017b710c21756a6",
+      "size": 8239
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/VISION/INCOME-REFRAME/SN-0744/IB-SMART-NOTE-20261009-sn0744-ai-creates-income.md",
+      "blob_sha": "23407a63f5ee0b4bae5735d9d2a3d566b8589cb7",
+      "size": 8719
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/VISION/MAGIC-FEELING/SN-0743/IB-SMART-NOTE-20261009-sn0743-magic-feeling.md",
+      "blob_sha": "507e1bc3ea7da539eea53c90866848e5865f1e7d",
+      "size": 7680
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/VISION/SELF-OPTIMIZATION/SN-0742/IB-SMART-NOTE-20261009-sn0742-self-optimizing-system.md",
+      "blob_sha": "151b620a7c5645526a7e2b22f23b33e6af6e36ae",
+      "size": 6817
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/10/SYSTEM-INTELLIGENCE/VERIFICATION/BATTERY-ISOLATION/SN-0796/IB-SMART-NOTE-20261010-sn0796-phantom-pytest-failure-tmpfs-concurrency.md",
+      "blob_sha": "f2553ebdef9e80a2946e2f7f8c314084bfe280cc",
+      "size": 10932
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/ACTIVATION-NAYA-INTELLIGENCE.md",
+      "blob_sha": "8a02bda6be424d886a03da701ee9b5d124f93dac",
+      "size": 27455
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/MANIFEST.json",
+      "blob_sha": "0fc11ff78dc94e3ca8d05d1cdac346916d253673",
+      "size": 4099
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/PROJECT-INTELLIGENCE-SPEC.md",
+      "blob_sha": "c700b5612b24637848e8a81ec070166ca0fc4f8a",
+      "size": 19507
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/PROJECT-INTELLIGENCE-TEMPLATE.md",
+      "blob_sha": "935fff7c308cf308cda876dc9ddcbe8f356ab539",
+      "size": 11696
+    },
+    {
       "path": "BRAIN/05-MEMORY/VERIFICATION-PACKAGES/TIER1-2026-10-08/INDEX.md",
       "blob_sha": "7afad9abac251a891147d1adde1cf7e6516b11c5",
       "size": 1331
@@ -3724,6 +3981,21 @@
       "size": 4815
     },
     {
+      "path": "BRAIN/06-PROOF/2026-10-07-SELF-IDENTITY-TRIAL-V1.json",
+      "blob_sha": "99d6d6530ac65c58dbbf4129cb73be1b03d63bff",
+      "size": 7200
+    },
+    {
+      "path": "BRAIN/06-PROOF/2026-10-07-SELF-IDENTITY-TRIAL-V1.md",
+      "blob_sha": "8ff81e55ac3288f3edc5fe489ea4e7831c1232c4",
+      "size": 3862
+    },
+    {
+      "path": "BRAIN/06-PROOF/2026-10-07-SELF-IDENTITY-TRIAL-V1.rival.json",
+      "blob_sha": "a15b54465e50c42581f81f8f30138b16e2c8a37a",
+      "size": 430
+    },
+    {
       "path": "BRAIN/06-PROOF/README.md",
       "blob_sha": "6e90dab1006fbaa836d48497f3a8eda2ea99ec97",
       "size": 2315
@@ -3734,9 +4006,39 @@
       "size": 2052
     },
     {
+      "path": "BRAIN/07-LEARNING/BACKLOG-TRIAGE-2026-10-09.md",
+      "blob_sha": "0ab171a524af7aa68936e66acffcb823368c8eac",
+      "size": 3540
+    },
+    {
+      "path": "BRAIN/07-LEARNING/PROMOTION-RECEIPTS/SCHEMA-V1.md",
+      "blob_sha": "a458a8436eca50dc82f192392ae1182cbe54df70",
+      "size": 2253
+    },
+    {
+      "path": "BRAIN/07-LEARNING/PROMOTION-RECEIPTS/receipts-2026-10-08.json",
+      "blob_sha": "351a2f836391a7ce474c9f5215b64be3f14e233f",
+      "size": 38980
+    },
+    {
       "path": "BRAIN/07-LEARNING/README.md",
       "blob_sha": "519227d792b54ea891b46abc6cf055f4d24ff0e3",
       "size": 798
+    },
+    {
+      "path": "BRAIN/07-LEARNING/VERIFICATION-QUEUE/README.md",
+      "blob_sha": "d314acd59aa80c953a2cc30b482b83806fa0b6d3",
+      "size": 742
+    },
+    {
+      "path": "BRAIN/07-LEARNING/VERIFICATION-QUEUE/queue.json",
+      "blob_sha": "fe51488c7066f6687ef680d6bfaa4f7768ef205c",
+      "size": 3
+    },
+    {
+      "path": "BRAIN/07-LEARNING/learning-system-blueprint-v1.md",
+      "blob_sha": "f88b24e86ea066b41a45ed0ec32565d94d31fec5",
+      "size": 45508
     },
     {
       "path": "BRAIN/08-SUCCESSION/0001-SUCCESSOR-CONTRACT-V1.md",
@@ -3784,6 +4086,1806 @@
       "size": 5118
     },
     {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/MAINTENANCE-AUDIT-2026-10-09.md",
+      "blob_sha": "25ddc1f38dec172b7a9842ef36860a3452f27c53",
+      "size": 4312
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/README.md",
+      "blob_sha": "56fc0352191b5f000b7bdb68b85df5a2cd2eb6c7",
+      "size": 4218
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/SMART-BLOCKS.md",
+      "blob_sha": "4e550f99f448ffca6aeee2b2a6e2c50de8663680",
+      "size": 2596
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/block-selection-guide.md",
+      "blob_sha": "cf67c69c9f730bf3399e305415b2e5ccf3e86f34",
+      "size": 6902
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/assessment/answer/README.md",
+      "blob_sha": "539667d53121c7a255c0e80a358945a8e4602937",
+      "size": 912
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/assessment/answer/block.css",
+      "blob_sha": "9b77da3d469d48be2b3d981d00dc216271b6dd00",
+      "size": 2140
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/assessment/answer/specimen.html",
+      "blob_sha": "a50a4b991966989c57f4f15555fab410e161aa7c",
+      "size": 962
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/assessment/dimension-constellation/README.md",
+      "blob_sha": "0aa359c63c082669b96232119e98b3be1a50ab2b",
+      "size": 953
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/assessment/dimension-constellation/block.css",
+      "blob_sha": "c9b9fbc294306a39aaeabd912238daaab86bba16",
+      "size": 1937
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/assessment/dimension-constellation/specimen.html",
+      "blob_sha": "2dc2837d9685790e06dc33d3253c74fd4866ed4a",
+      "size": 947
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/assessment/interest-picker/README.md",
+      "blob_sha": "f27a03c1df91b0dd95f9676ca9a68f47411890ee",
+      "size": 1152
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/assessment/interest-picker/block.css",
+      "blob_sha": "90246512c0b8b07d833ca83d68238a760dad6262",
+      "size": 3584
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/assessment/interest-picker/specimen.html",
+      "blob_sha": "b6cac1d2b41c95924695a222a52f327ae2786841",
+      "size": 1213
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/assessment/progress-hud/README.md",
+      "blob_sha": "12c3c706249e44764bc710cb6e725250a0b282fd",
+      "size": 913
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/assessment/progress-hud/block.css",
+      "blob_sha": "5f0e44006c964c70771a645bb0442c79e2d73f67",
+      "size": 1857
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/assessment/progress-hud/specimen.html",
+      "blob_sha": "6c10ba8f698b15bcc420725c8071df68ed4a60a1",
+      "size": 439
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/assessment/question/README.md",
+      "blob_sha": "8f4d82a10f00dc45d14142ba942d787d310e907e",
+      "size": 771
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/assessment/question/block.css",
+      "blob_sha": "7e9eafb370395493bc3f1ddc4213e51436ebfcdc",
+      "size": 1143
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/assessment/question/specimen.html",
+      "blob_sha": "6100231f724bc6519b2b93c0ccfa026a3b6a922b",
+      "size": 288
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/assessment/score-stage/README.md",
+      "blob_sha": "bfbd311d05929051e6a7d1a2b332fb694a1bc643",
+      "size": 835
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/assessment/score-stage/block.css",
+      "blob_sha": "62d3f07515dd6134276815c9b1a64a05709f0c54",
+      "size": 1688
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/assessment/score-stage/specimen.html",
+      "blob_sha": "93a81e2f168d65429dbffa7bb56205e82f16472f",
+      "size": 263
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/boards/board-tone/README.md",
+      "blob_sha": "0c4d6571956c73c9e908925fe540db4a0c5bc781",
+      "size": 623
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/boards/board-tone/board-tone.css",
+      "blob_sha": "5cc651bd8abef14519f26a5c75d6d953956c987f",
+      "size": 1634
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/boards/board-tone/specimen.html",
+      "blob_sha": "685b8e7a9a0005141aff7fab500b4b1da2fc1b50",
+      "size": 966
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/boards/board/README.md",
+      "blob_sha": "9b3f893247df4e94ae894e4421dcae38e4a4ae50",
+      "size": 906
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/boards/board/board.css",
+      "blob_sha": "07d539ab0ade4fe9596831e72c84a997f7e7fdb9",
+      "size": 2032
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/boards/board/specimen.html",
+      "blob_sha": "7921b516ade20bc60cf5fb5e8a28b424ab0eabbe",
+      "size": 2873
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/boards/demo-board/README.md",
+      "blob_sha": "05cddb6534923dc06089e7add62cbcc11f753fda",
+      "size": 501
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/boards/demo-board/demo-board.css",
+      "blob_sha": "77059838277354cf8b4611046ddbb59664387df8",
+      "size": 700
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/boards/demo-board/specimen.html",
+      "blob_sha": "b7ee75898cf20e466bbf1662cf8695fd3c9e6001",
+      "size": 3122
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/boards/nl-ccard/README.md",
+      "blob_sha": "dfbf77737b05084988ffb62f3192afc737ad04be",
+      "size": 498
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/boards/nl-ccard/nl-ccard.css",
+      "blob_sha": "d7404d3fdac9ee8ac3908fee80aea4745d6d5409",
+      "size": 1659
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/boards/nl-ccard/specimen.html",
+      "blob_sha": "3a2c99c2c1d38882655281b8ad865146419f71ed",
+      "size": 2981
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/boards/stage/README.md",
+      "blob_sha": "4c2bb247555a28bcd1145ee0d61bd2c07d9cab2e",
+      "size": 486
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/boards/stage/specimen.html",
+      "blob_sha": "d83eee29414af401949867928e3dcbea5ef5421f",
+      "size": 2937
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/boards/stage/stage.css",
+      "blob_sha": "f861ecf24e4795f4eb7405d9aab4f5689a82460e",
+      "size": 1635
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/cx-btn/README.md",
+      "blob_sha": "85ad04979f73216386fd909a5a3dd92afcc78fab",
+      "size": 499
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/cx-btn/cx-btn.css",
+      "blob_sha": "ea8636014b8543c437a73aea809efcd88d04871a",
+      "size": 1167
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/cx-btn/specimen.html",
+      "blob_sha": "41a8e5476cb8ea7595760ec60341e9283e19b77c",
+      "size": 2101
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/icon-btn/README.md",
+      "blob_sha": "c9597f5849f646f8f244c3e441780d3d6f266572",
+      "size": 608
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/icon-btn/icon-btn.css",
+      "blob_sha": "2f809e09cc09ab06d4783b94853be2edac703697",
+      "size": 1670
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/icon-btn/specimen.html",
+      "blob_sha": "bc2ddd6ebdd136ba576c645189a0afe81b22aa99",
+      "size": 1561
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/living-btn/README.md",
+      "blob_sha": "0bcf9f84d018f59c82360e0e61dc3beff4882f51",
+      "size": 1046
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/living-btn/living-btn.css",
+      "blob_sha": "57597389ec00713c2d83f2e86a95d847babbfad5",
+      "size": 4313
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/living-btn/specimen.html",
+      "blob_sha": "873b256ef52bf72f71cf3b33cfd85e86311aa765",
+      "size": 3063
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/lv-btn/README.md",
+      "blob_sha": "ac0b515dca22b8c1295705ad9e00d5653c698699",
+      "size": 1064
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/lv-btn/lv-btn.css",
+      "blob_sha": "5ab9c43daf59c8025143c3b438d28ddc3f4f0e12",
+      "size": 5958
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/lv-btn/lv-btn.js",
+      "blob_sha": "72abcccc7c694d48d3d0365b84cee0ebbba1c7e4",
+      "size": 2019
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/lv-btn/specimen.html",
+      "blob_sha": "1ac7a691c56b50c8a9c76f7cb21ebf0b368fc7a0",
+      "size": 2884
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/naya-btn/README.md",
+      "blob_sha": "19b6314d0a93f2e30dde5a7a06edb265885d33b2",
+      "size": 1071
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/naya-btn/naya-btn.css",
+      "blob_sha": "fa074f3aa5e63b5e0f4948550a1f68aa2c04fc08",
+      "size": 11554
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/naya-btn/naya-btn.js",
+      "blob_sha": "5f50051da52e050a0c22a815383788afa0acb0f2",
+      "size": 2454
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/naya-btn/specimen.html",
+      "blob_sha": "7cdc223a6616f9952c08723b85fc31693b765943",
+      "size": 1240
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/nl-btn-ghost/README.md",
+      "blob_sha": "1f6f761e1d4bd49ed124ea6fd3f7a0040ddcb12a",
+      "size": 476
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/nl-btn-ghost/nl-btn-ghost.css",
+      "blob_sha": "1ae5c9297b7da39a9754af9233c40db857f48dcd",
+      "size": 523
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/nl-btn-ghost/specimen.html",
+      "blob_sha": "b4345f5286c7efc5534c5d77a1bc39ed4566de86",
+      "size": 1083
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/nl-btn/README.md",
+      "blob_sha": "289126378148e9908beb3da250d2ef8967ba14fc",
+      "size": 541
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/nl-btn/nl-btn.css",
+      "blob_sha": "841cf4db765b6488a00055472ee02b85c0b4f2f6",
+      "size": 1989
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/nl-btn/specimen.html",
+      "blob_sha": "738b104b5cb026a1c72f04a0452eb7598f698a97",
+      "size": 1982
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/nl-iconbtn/README.md",
+      "blob_sha": "2114a8beb9ccddef5979f18196fd05870522e9b8",
+      "size": 539
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/nl-iconbtn/nl-iconbtn.css",
+      "blob_sha": "7669ff4bd62e9687a144c4926404637259b3f66d",
+      "size": 2370
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/nl-iconbtn/specimen.html",
+      "blob_sha": "ed19829045c3218a3b1732b9e37519a35ccb032d",
+      "size": 2321
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/nl-playbtn/README.md",
+      "blob_sha": "7793632b4c6394c586683eb7979b233416e692a2",
+      "size": 547
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/nl-playbtn/nl-playbtn.css",
+      "blob_sha": "8ce5dd82a678b21bc42ad41835b9a1f47769c5d1",
+      "size": 2481
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/nl-playbtn/specimen.html",
+      "blob_sha": "a7c81c2c5c0e7b69ff82e8d0a494fb1c0e80bbab",
+      "size": 1980
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/orbit-btn/README.md",
+      "blob_sha": "c23d0bb3e6aec402ce0cc71fa81e3c1fa4529de0",
+      "size": 660
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/orbit-btn/orbit-btn.css",
+      "blob_sha": "ec52fe1f5157ad0a7e2a0ce31a570b71f2adbaf1",
+      "size": 2705
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/orbit-btn/specimen.html",
+      "blob_sha": "6e41566d2ea9652b3f7174b254f5914012f3e09e",
+      "size": 558
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/primo/README.md",
+      "blob_sha": "1010c7f790f25925c8771636f8635ca51bd55697",
+      "size": 649
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/primo/primo.css",
+      "blob_sha": "4f4f54656e3b08b2d53875d6f9cf11f4c9aa1357",
+      "size": 1382
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/primo/specimen.html",
+      "blob_sha": "f89d5e64c68568d517f416d074681e34092abbdf",
+      "size": 1489
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chat/sp-audio-msg/README.md",
+      "blob_sha": "b5dbf97a752f56a5b673c3436325f6fbb7d82000",
+      "size": 1390
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chat/sp-audio-msg/block.css",
+      "blob_sha": "ba53410f3d77a484d5693d6aad9f55f7fbac1d20",
+      "size": 899
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chat/sp-audio-msg/block.js",
+      "blob_sha": "f16ddf16dc2e358890b2942a3c20e6d671479779",
+      "size": 2337
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chat/sp-audio-msg/specimen.html",
+      "blob_sha": "88db640e964f3ee3cd26ee21f2af668d7c12c78b",
+      "size": 1967
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chat/sp-chat/README.md",
+      "blob_sha": "3f30ddfd53a055de4a63e127288c2b7855ae970b",
+      "size": 2263
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chat/sp-chat/block.css",
+      "blob_sha": "a702cc02cf8a10336886bc4b564f975c85bbb01b",
+      "size": 3694
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chat/sp-chat/block.js",
+      "blob_sha": "9b84bc14fd4083bff29877ad0956b3212e5f10eb",
+      "size": 7340
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chat/sp-chat/specimen.html",
+      "blob_sha": "61dd6ace8cdd28e7a2633a9886db9138a6431ba7",
+      "size": 2649
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chrome/door/README.md",
+      "blob_sha": "e425fbec084f02d5f3aea21efbe81cd6b053528c",
+      "size": 732
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chrome/door/door.css",
+      "blob_sha": "2e7b9041b398d585298d3fe310bcb48783901c3e",
+      "size": 1926
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chrome/door/specimen.html",
+      "blob_sha": "13d2721fdf9864ef913bc8ef745e96f20cd2fa64",
+      "size": 1906
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chrome/drawer/README.md",
+      "blob_sha": "95712f3bc7b0266e35857d05372750fc08ae7e66",
+      "size": 946
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chrome/drawer/drawer.css",
+      "blob_sha": "cc28b6fb6b9954e5dab01b81cc9b7d0c74935918",
+      "size": 1602
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chrome/drawer/drawer.js",
+      "blob_sha": "6104d15dd86cd3ca86103bdc8f01f4471be1c952",
+      "size": 859
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chrome/drawer/specimen.html",
+      "blob_sha": "e09d23e9d7d9726be08264e49aed59611588bd52",
+      "size": 1157
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chrome/eco-bottombar/README.md",
+      "blob_sha": "26e3101fad8a793146e077487a39ae5a86d6a807",
+      "size": 974
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chrome/eco-bottombar/eco-bottombar.css",
+      "blob_sha": "fb75325d59bc2090274e3c32e39e75466ef4cc1a",
+      "size": 8861
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chrome/eco-bottombar/eco-bottombar.js",
+      "blob_sha": "d3c23c1bcae002b3310a55b4cb01ee8cb25fec08",
+      "size": 531
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chrome/eco-bottombar/specimen.html",
+      "blob_sha": "60c8667e251367b4aae82ba63df74f132868e769",
+      "size": 1388
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chrome/room-chrome/README.md",
+      "blob_sha": "7860d3526b08efc9c9511d115800d11acdce817c",
+      "size": 824
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chrome/room-chrome/room-chrome.css",
+      "blob_sha": "928035eed268abdea4a3d4117292558fbf377df6",
+      "size": 1447
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chrome/room-chrome/specimen.html",
+      "blob_sha": "29b182e596c3881fd25fb618dc85fc2314a8522c",
+      "size": 1140
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chrome/share-fab/README.md",
+      "blob_sha": "72e1f2fff7a0029b5efcd2f61d0c70a1bc8602f5",
+      "size": 659
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chrome/share-fab/share-fab.css",
+      "blob_sha": "fd143f4de46c3f2ae842e267543cc756e1444f71",
+      "size": 952
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chrome/share-fab/specimen.html",
+      "blob_sha": "96b9722e930a413d716498eef9054150e0fb11a6",
+      "size": 732
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/data/li-day/README.md",
+      "blob_sha": "1002cb3409bb8b133a46d97eb186deaf2c736749",
+      "size": 1136
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/data/li-day/block.css",
+      "blob_sha": "0205c1b5b0a8c4815293043a9b038377d92d1b9d",
+      "size": 869
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/data/li-day/block.js",
+      "blob_sha": "9d616edecf4ce0187ad4bf674a985f459f1cd2bb",
+      "size": 1038
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/data/li-day/specimen.html",
+      "blob_sha": "6340a832cdc32baedb61bed39e8ce25b82cb5bd6",
+      "size": 1151
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/data/nl-bar/README.md",
+      "blob_sha": "96444538640ac32500ae8da23ddfa93336d8aa9a",
+      "size": 480
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/data/nl-bar/nl-bar.css",
+      "blob_sha": "ea51182f5934649799692d403d4a3b4c6d58b14e",
+      "size": 1499
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/data/nl-bar/specimen.html",
+      "blob_sha": "c427367d73b9440fd08c0a67a8c6e851e0b9f057",
+      "size": 1510
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/data/nl-chart/README.md",
+      "blob_sha": "7f0db17a805056ef731baba6908ee0e36ffd4a2f",
+      "size": 1318
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/data/nl-chart/nl-chart.css",
+      "blob_sha": "a0d8ede952ac04077bd2665da40e98db153c9486",
+      "size": 2400
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/data/nl-chart/specimen.html",
+      "blob_sha": "c791c8f5a629381577a92943edc9c73e1169d5d5",
+      "size": 2499
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/data/nl-table/README.md",
+      "blob_sha": "3974505aa85693dc9775048fa88922bde6dee2e1",
+      "size": 635
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/data/nl-table/nl-table.css",
+      "blob_sha": "72499bfb28df11b008b48654d48885d571bf0e84",
+      "size": 1094
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/data/nl-table/specimen.html",
+      "blob_sha": "335a782189b6d536d3ec6d8318445eb91966f877",
+      "size": 482
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/data/state-badge/README.md",
+      "blob_sha": "50619ecf457df0f41ba94c973816a176fba54c15",
+      "size": 598
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/data/state-badge/specimen.html",
+      "blob_sha": "4b635f151c75e4a057de8a81d53d35b48f0bb1d7",
+      "size": 947
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/data/state-badge/state-badge.css",
+      "blob_sha": "6b92a196b611a29115623850bd59af26fff0dcf8",
+      "size": 720
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/data/swatch/README.md",
+      "blob_sha": "3aa666ec029b5d44059af23e927c70114f0a5a43",
+      "size": 556
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/data/swatch/block.css",
+      "blob_sha": "9e1a0cf1074f7a8af9c381f461b20e655ef69bdd",
+      "size": 861
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/data/swatch/specimen.html",
+      "blob_sha": "d152f6af92a2d6acc96ccb4bcfbcd09156db9dc9",
+      "size": 323
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/data/truthgrid/README.md",
+      "blob_sha": "186f18429503cb1e98f882b2e10c7dbf48a9e92a",
+      "size": 579
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/data/truthgrid/block.css",
+      "blob_sha": "51a61ac181d1fecc53b8d3b8c8221063a68bc2e3",
+      "size": 1365
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/data/truthgrid/specimen.html",
+      "blob_sha": "fe944b4b94153d429e8e23f05fc615f62326a423",
+      "size": 740
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/feed/activity-card/README.md",
+      "blob_sha": "30c961a6a4c416fe50d5261bbda8f7ca5c960d4d",
+      "size": 974
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/feed/activity-card/activity-card.css",
+      "blob_sha": "54097cdde60080f44c6b193e191d52b3c5766358",
+      "size": 3574
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/feed/activity-card/specimen.html",
+      "blob_sha": "1e336eff896567b8318334aefa75045383280594",
+      "size": 1483
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/feed/activity-stream/README.md",
+      "blob_sha": "25a341f656995d238e9cdb5f6c51f60f2154c5e8",
+      "size": 720
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/feed/activity-stream/activity-stream.css",
+      "blob_sha": "87db7aae40dc62d8e15b0dad914e5c1388a8fee2",
+      "size": 1464
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/feed/activity-stream/specimen.html",
+      "blob_sha": "03b330cba9fa32e1741e49c481ed9890a96bc53a",
+      "size": 1537
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/feed/intel-row/README.md",
+      "blob_sha": "75d93ab3200c6a6605621ff2f914358530ce5969",
+      "size": 668
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/feed/intel-row/intel-row.css",
+      "blob_sha": "7795a6ec95907992fb3d633cfe7f09d329e4ba9b",
+      "size": 4502
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/feed/intel-row/specimen.html",
+      "blob_sha": "3a789e88c437303cc064b239f215fb8d80bbccfc",
+      "size": 951
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/feed/li-card/README.md",
+      "blob_sha": "77d265e9569946ff551da2468f6b976ad22d971f",
+      "size": 2326
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/feed/li-card/block.css",
+      "blob_sha": "764c465058aec19f6242452257afc0874f4b8d26",
+      "size": 4927
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/feed/li-card/block.js",
+      "blob_sha": "766a971f6bf4eda837eb2b3e96a8af24cab0c5a4",
+      "size": 4078
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/feed/li-card/specimen.html",
+      "blob_sha": "5f5534c64fce4abef43dea7d2601df9839a27a0d",
+      "size": 1634
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/feed/metric-ribbon/README.md",
+      "blob_sha": "07ae30d66476b54b6fa7748020ad994f27a20c0a",
+      "size": 764
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/feed/metric-ribbon/metric-ribbon.css",
+      "blob_sha": "4c58f37c16e7e96abb3fb4f82af82b49b020e431",
+      "size": 1254
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/feed/metric-ribbon/specimen.html",
+      "blob_sha": "eea5597bb5add6ab7bff2600d9a02f5f91396cd4",
+      "size": 857
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/index.json",
+      "blob_sha": "baa5822af78df3085d8d96019524ad93eaef947e",
+      "size": 72523
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/inputs/nl-field/README.md",
+      "blob_sha": "8b36da8013fa3635dc974bdc53d7a2937d6f7a9b",
+      "size": 633
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/inputs/nl-field/nl-field.css",
+      "blob_sha": "901ad238dbd6e71831648c239d9215c071cacc1f",
+      "size": 2154
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/inputs/nl-field/specimen.html",
+      "blob_sha": "338ee6ff137beb7be700ad6176bb50260dceb2a1",
+      "size": 1843
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/inputs/nl-search/README.md",
+      "blob_sha": "20d021b28c5eaa2de9dcf6089d3dfdbf198a4a55",
+      "size": 542
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/inputs/nl-search/nl-search.css",
+      "blob_sha": "53602a5103ee59f990dad503a3d0ac92c0d15856",
+      "size": 1823
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/inputs/nl-search/specimen.html",
+      "blob_sha": "49a0ecd054091cd45352f81329e23635bfe6c80c",
+      "size": 2426
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/inputs/sn-pill/README.md",
+      "blob_sha": "50e67de62d4d5e000eabe07455848fa54d3f5607",
+      "size": 2817
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/inputs/sn-pill/block.css",
+      "blob_sha": "19aa4b272a3361f9e286e589508f6e05d07e7273",
+      "size": 5023
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/inputs/sn-pill/block.js",
+      "blob_sha": "133418c67466b41a9d7427964c749729e3df6f9c",
+      "size": 8594
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/inputs/sn-pill/specimen.html",
+      "blob_sha": "3821df9b53065f865e16e83d36321f00835c9784",
+      "size": 2579
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/jewels/gem-bullet/README.md",
+      "blob_sha": "9b54fe19ccfce43a749b866d2278d6afd4ac87ca",
+      "size": 484
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/jewels/gem-bullet/gem-bullet.css",
+      "blob_sha": "9c6019d30ddacfd9df0683852e6e55aa68d6ad18",
+      "size": 435
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/jewels/gem-bullet/specimen.html",
+      "blob_sha": "714f9ad7c7050761e0a8a2af7df39d6df82340df",
+      "size": 588
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/jewels/jw/README.md",
+      "blob_sha": "2d85c1c560aa364eb4835118e64e92bc74fb0973",
+      "size": 529
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/jewels/jw/jw.css",
+      "blob_sha": "4113ff813891190bfc0ddd91c0a63be5b5eef2fa",
+      "size": 917
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/jewels/jw/specimen.html",
+      "blob_sha": "2bbb8cf003b19a04de250656bbb5964b6f3b3d1b",
+      "size": 1728
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/knowledge/intelligent-block/README.md",
+      "blob_sha": "5f87ad33d3082f002b922ec084bc4a6c820cb277",
+      "size": 1190
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/knowledge/intelligent-block/intelligent-block.css",
+      "blob_sha": "4adbc293c3bfceb13d1f53c9d48be9a46a199ba9",
+      "size": 10874
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/knowledge/intelligent-block/intelligent-block.js",
+      "blob_sha": "8c0f17a91066e6279229d6ae508e4bc4700fb3d5",
+      "size": 8555
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/knowledge/intelligent-block/specimen.html",
+      "blob_sha": "1bef645c6778bbf6c6d4f969bc44a99f817c7f30",
+      "size": 2825
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/layout/portal/README.md",
+      "blob_sha": "0baa7669a5e224811750b7312bb598268210a950",
+      "size": 695
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/layout/portal/block.css",
+      "blob_sha": "b1f39b51e00528f969a06da03cc27e0132df2257",
+      "size": 3325
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/layout/portal/specimen.html",
+      "blob_sha": "c8702af514d4b13e1571b1da5cffe712163efda0",
+      "size": 460
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/lists/sp-about-rows/README.md",
+      "blob_sha": "63c7da5e63af4fa3e124ec17a2eed1657879268d",
+      "size": 1170
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/lists/sp-about-rows/block.css",
+      "blob_sha": "5636df17bcf09e23189b88704694667ed2ababe8",
+      "size": 601
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/lists/sp-about-rows/block.js",
+      "blob_sha": "331182b27a2f85c1b573db8969877f67f1b40949",
+      "size": 1683
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/lists/sp-about-rows/specimen.html",
+      "blob_sha": "5063c46610a6be24dfa5fa67ecb6f6846d56ac1a",
+      "size": 1168
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/lists/sp-blockrow/README.md",
+      "blob_sha": "a0a5c83947d8fc1f139df1ec5499df7ef9d84079",
+      "size": 1464
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/lists/sp-blockrow/block.css",
+      "blob_sha": "eee569a7bc7ba11a38cc1ac0e13aeae8a3f8ff89",
+      "size": 716
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/lists/sp-blockrow/block.js",
+      "blob_sha": "3e12bef3d9ade5fe1b4aad68f2a1293e3b33d2df",
+      "size": 2169
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/lists/sp-blockrow/specimen.html",
+      "blob_sha": "2ca9be2e8e5c146a688cb111b38d64488ff018a0",
+      "size": 1495
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/media/nl-player/README.md",
+      "blob_sha": "737a132dd261ff5362fedfb5f627f82c5021874b",
+      "size": 470
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/media/nl-player/nl-player.css",
+      "blob_sha": "913b7f99884832f3c26991256f18884338eef8d9",
+      "size": 2321
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/media/nl-player/specimen.html",
+      "blob_sha": "07e377fe2b0c095f7e75871cfa10ecc7bfd3fa90",
+      "size": 2290
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/orbs/mini-orb/README.md",
+      "blob_sha": "85e079e17a930158c7979f804e2ac1ab1d989579",
+      "size": 488
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/orbs/mini-orb/mini-orb.css",
+      "blob_sha": "698d1f19cb25399ac0cf0b190c1ba8ed82e8d0fd",
+      "size": 518
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/orbs/mini-orb/specimen.html",
+      "blob_sha": "73ef7b8544fd84ff7bce699a6e582d4454feeaf5",
+      "size": 1973
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/orbs/nav-orb/README.md",
+      "blob_sha": "ae89581089cb2b58c01d6a8d5563895bbfd97461",
+      "size": 441
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/orbs/nav-orb/nav-orb.css",
+      "blob_sha": "3b32d8253b1e76046f22659eb5e380c307f9787f",
+      "size": 451
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/orbs/nav-orb/specimen.html",
+      "blob_sha": "b91ab8a72169b139d331acbdaed9271b94a26d36",
+      "size": 1496
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/orbs/orb/README.md",
+      "blob_sha": "7e601038ff684b725b9d6ffd8b990061808890bd",
+      "size": 804
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/orbs/orb/orb.css",
+      "blob_sha": "8929d9932c15a993aee023e8267decae0e917ba5",
+      "size": 5258
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/orbs/orb/specimen.html",
+      "blob_sha": "0290abe8876fa631d68b9d3babd6685420456068",
+      "size": 3042
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/overlays/li-modal/README.md",
+      "blob_sha": "56d1ce679811bb86ca960f08dcaa9df71705ab2f",
+      "size": 2092
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/overlays/li-modal/block.css",
+      "blob_sha": "4c5b33c1e0e6413721bf10b3934ff325237d8c4f",
+      "size": 2828
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/overlays/li-modal/block.js",
+      "blob_sha": "4469ea93e3e95a9b91b6fe5e1df23d5a270bae7a",
+      "size": 4852
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/overlays/li-modal/specimen.html",
+      "blob_sha": "1d6bda8ff8f521bf5744901c841458f77f1cc68c",
+      "size": 1562
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/overlays/nl-modal/README.md",
+      "blob_sha": "1aaac1d70176bb9b98afb000b713526633ca803b",
+      "size": 574
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/overlays/nl-modal/nl-modal.css",
+      "blob_sha": "d7dfe26e7eb663b95450ceebe12ae5fe994a71a8",
+      "size": 1983
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/overlays/nl-modal/specimen.html",
+      "blob_sha": "55bc578ca06425c75e869a81d7f5f724ed828ad8",
+      "size": 1630
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/overlays/nl-sheet/README.md",
+      "blob_sha": "9c13fa31e211473ed69d475b1cc0b5fcaf01a34c",
+      "size": 518
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/overlays/nl-sheet/nl-sheet.css",
+      "blob_sha": "da98f6c96f54689d45d7642a4408803319174602",
+      "size": 2680
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/overlays/nl-sheet/specimen.html",
+      "blob_sha": "71ce10a881b28c2eb5e573bca662a39de1fdbe60",
+      "size": 2066
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/overlays/nl-toast/README.md",
+      "blob_sha": "dcfea2298dad2323196ef19537243a3e42d80b1a",
+      "size": 557
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/overlays/nl-toast/nl-toast.css",
+      "blob_sha": "7ae787306f8ce563fd8eebbb68c5c46cf359ef1f",
+      "size": 1620
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/overlays/nl-toast/specimen.html",
+      "blob_sha": "63dfb2136828515806111332ebac330b9c7a0a99",
+      "size": 639
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/report/checks/README.md",
+      "blob_sha": "24d281e910ac98c63667192b947f10330a799c26",
+      "size": 607
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/report/checks/block.css",
+      "blob_sha": "bfb6482346090d21eb9d29524279bbfccb4ca661",
+      "size": 1687
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/report/checks/specimen.html",
+      "blob_sha": "462b4c4b3bc812356545fa129bd00102c1eef1b4",
+      "size": 533
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/report/law-steps/README.md",
+      "blob_sha": "72980c461cf9b17e3d451df1c34c4cbae49e13de",
+      "size": 696
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/report/law-steps/block.css",
+      "blob_sha": "a11c25acd40b23f37c6782d2fee08a1df4740b71",
+      "size": 674
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/report/law-steps/specimen.html",
+      "blob_sha": "3ecadf5647f4e51b9c1b927eb79a3fecf1243b62",
+      "size": 731
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/report/lawcard/README.md",
+      "blob_sha": "7bfa6428a6b08a8c5408b9c6f8bbe74c48e00acd",
+      "size": 647
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/report/lawcard/block.css",
+      "blob_sha": "8fe2c6f5b76b44c83040b9feb875c74c4d9b8d2a",
+      "size": 2458
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/report/lawcard/specimen.html",
+      "blob_sha": "d95ea691aa22bf0494d87333a4c5588115e147bf",
+      "size": 508
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/report/scorecard/README.md",
+      "blob_sha": "62205c53fb96e83cfaff1eb8fcab267e09b2ceb0",
+      "size": 632
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/report/scorecard/block.css",
+      "blob_sha": "9a731c9a38dc1a269fc276379215be81925177d6",
+      "size": 1004
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/report/scorecard/specimen.html",
+      "blob_sha": "9e3648d92add9eaa4026853d3d9425276ce9164a",
+      "size": 691
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/report/tongue/README.md",
+      "blob_sha": "2cdc04570481f9e9fe623ac948d1a6b3a78fa0c6",
+      "size": 646
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/report/tongue/block.css",
+      "blob_sha": "710854f89cfd3d167fcd631d5675c4bc0d8f1019",
+      "size": 2150
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/report/tongue/specimen.html",
+      "blob_sha": "4043085a0d6be8a28221a039092aa6e16518d02f",
+      "size": 716
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/report/verdict/README.md",
+      "blob_sha": "5943b65ad177be0e12f29d925de2432a0f4ffe6c",
+      "size": 590
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/report/verdict/block.css",
+      "blob_sha": "311c37cb5efecaefad0044f33220eba4d7f49c30",
+      "size": 570
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/report/verdict/specimen.html",
+      "blob_sha": "191d819ac14246e597fb8d7e5b789d7a9842485e",
+      "size": 191
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/spaces/sp-card/README.md",
+      "blob_sha": "fb3b4260f4af2bf2f74baebb391eca6c4d1ec156",
+      "size": 2066
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/spaces/sp-card/block.css",
+      "blob_sha": "44a659e9907cb9bc33a7d4ebaf4744fb9edaebbb",
+      "size": 2725
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/spaces/sp-card/block.js",
+      "blob_sha": "194e98e292b5d6f34df341994bd225c077146734",
+      "size": 3362
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/spaces/sp-card/specimen.html",
+      "blob_sha": "e7f9312fc1797d0de0643e91819f103897cd32ff",
+      "size": 2446
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/spaces/sp-detail/README.md",
+      "blob_sha": "84d99fa81968e7cff65aa6cde4fc7c559d3b4011",
+      "size": 1985
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/spaces/sp-detail/block.css",
+      "blob_sha": "2408fd887a9ab2a03315e0e35c58713c595cfeec",
+      "size": 2086
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/spaces/sp-detail/block.js",
+      "blob_sha": "ac3890898cf75edd53c940da6a0ce50d8680a554",
+      "size": 4008
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/spaces/sp-detail/specimen.html",
+      "blob_sha": "0571b084594719262c095eec822be02d48248a27",
+      "size": 2703
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/spaces/sp-inv-chip/README.md",
+      "blob_sha": "89c305bcffe67f9672bce3b4e3fded85190b4df0",
+      "size": 1940
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/spaces/sp-inv-chip/block.css",
+      "blob_sha": "8f7ff727f69daaa3d95e0453f29b3dc79b65a540",
+      "size": 1645
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/spaces/sp-inv-chip/block.js",
+      "blob_sha": "db334582f1e319a80091690e33915e3a04319856",
+      "size": 2702
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/spaces/sp-inv-chip/specimen.html",
+      "blob_sha": "e1d5fa05988f0f98b3d657f177ada56a668e353b",
+      "size": 2284
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/tabs/lens-tabs/README.md",
+      "blob_sha": "3a46d2513f28059a6aafd6814652f6dd1662d106",
+      "size": 820
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/tabs/lens-tabs/lens-tabs.css",
+      "blob_sha": "c7318754b99f9658dd5dd3a9c3b7fff96a16d39e",
+      "size": 1928
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/tabs/lens-tabs/lens-tabs.js",
+      "blob_sha": "f144eaa50f45ddbe2191501542edca3c036522a7",
+      "size": 576
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/tabs/lens-tabs/specimen.html",
+      "blob_sha": "661615680251a57c24fcae5f8ac9ee10232635e0",
+      "size": 771
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/tabs/seg-tab/README.md",
+      "blob_sha": "ad33bab0b0b8976637aa790a7cc73c8411e06f29",
+      "size": 1082
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/tabs/seg-tab/seg-tab.css",
+      "blob_sha": "9f6d03f7a81beb201261fe99682f63449ce0db35",
+      "size": 2621
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/tabs/seg-tab/seg-tab.js",
+      "blob_sha": "bd3cfa8be8624024d23a44b4031e142288e9a001",
+      "size": 2020
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/tabs/seg-tab/specimen.html",
+      "blob_sha": "622e0ab7057bc8eec0a86042e3b7b40c3e5c1c50",
+      "size": 1460
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/tabs/smart-tabs/README.md",
+      "blob_sha": "b87e28312d4aebf68a0c97c608a0bfc96330fbbd",
+      "size": 916
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/tabs/smart-tabs/smart-tabs.css",
+      "blob_sha": "8e78e22d9fd7275d467f59f72c37590893b3a645",
+      "size": 6039
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/tabs/smart-tabs/smart-tabs.js",
+      "blob_sha": "1e9da80d1ace084fea24c754fc3d82bce6d2d290",
+      "size": 708
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/tabs/smart-tabs/specimen.html",
+      "blob_sha": "eaa621aae5ab19f7ff171fe2ddc3dc71713c3d3c",
+      "size": 1560
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/tabs/sp-dtabs/README.md",
+      "blob_sha": "f3fd0e0442faaadbd93063c2204ca525745e812d",
+      "size": 1153
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/tabs/sp-dtabs/block.css",
+      "blob_sha": "78fce4a44c4c3fb2a077018d8f05d9c1c2fdceeb",
+      "size": 802
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/tabs/sp-dtabs/block.js",
+      "blob_sha": "52a26fa5aa8d356e820395799bd5fe0a360997c8",
+      "size": 1947
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/tabs/sp-dtabs/specimen.html",
+      "blob_sha": "a0327edb20217b32b3983f5bc9684771fe402b92",
+      "size": 1562
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/toggles/nl-switch/README.md",
+      "blob_sha": "593d55e81a4c5c1651f5028bacf34d6dba291071",
+      "size": 679
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/toggles/nl-switch/nl-switch.css",
+      "blob_sha": "00ec1debf98e31b87a342d22472e51104ffb189a",
+      "size": 2109
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/toggles/nl-switch/specimen.html",
+      "blob_sha": "72e754ada30f96a04894e162a119d7c6b7c0c144",
+      "size": 812
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/toggles/nl-toggle-row/README.md",
+      "blob_sha": "c1c59ef61ec084c0f89a3e7f17ccb280ef0ea2da",
+      "size": 546
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/toggles/nl-toggle-row/nl-toggle-row.css",
+      "blob_sha": "c22a6c74a08669396923fb084a2397bcf636dc2f",
+      "size": 1543
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/toggles/nl-toggle-row/specimen.html",
+      "blob_sha": "e8c32a7ae6893fc9211b84c922920bf101abbcfc",
+      "size": 1764
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/type/hub-quote/README.md",
+      "blob_sha": "41e8277c68edcc2a3c2cc8f385579bccc4247554",
+      "size": 562
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/type/hub-quote/hub-quote.css",
+      "blob_sha": "0b765396149e7c7cbe94146e82e67c222751f445",
+      "size": 639
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/type/hub-quote/specimen.html",
+      "blob_sha": "f541031965f2f2565e51f388be3a62fe4c0a9736",
+      "size": 638
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/type/presence/README.md",
+      "blob_sha": "5e09e220a71b49d23d75ac2ee5659412afdcbbcd",
+      "size": 543
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/type/presence/block.css",
+      "blob_sha": "cbef3125ef778aa1359a215a5b379d0ccf296c5c",
+      "size": 646
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/type/presence/specimen.html",
+      "blob_sha": "aab81ef210b5f451a43b6fd1baf586f2b4a08c7a",
+      "size": 88
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/voice/voice-type/README.md",
+      "blob_sha": "d286ea3e3f191b13710ffad6d07313c843890063",
+      "size": 567
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/voice/voice-type/block.css",
+      "blob_sha": "ea89174dc49d37604d0e3075eb244a993dc41651",
+      "size": 670
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/voice/voice-type/specimen.html",
+      "blob_sha": "71570dcaaae8c5bfdbd87a4ee3fd2d56a1909266",
+      "size": 219
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/composition-recipes.md",
+      "blob_sha": "7fe3e817afeccbdc67f070d8ccf9ca62492cacfb",
+      "size": 6664
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/manifest.json",
+      "blob_sha": "f904a17ff9b39229261aa4682d5e5254f393e980",
+      "size": 2979
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/naya-5-beautiful-buttons/MANIFEST.md",
+      "blob_sha": "99d205aac724e2857e8aa8012eea072e7ebc7fea",
+      "size": 2036
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/naya-5-beautiful-buttons/index.html",
+      "blob_sha": "b67b6a7555d22d66fda6acb633e95a4c636d40f7",
+      "size": 43090
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/naya-5-beautiful-buttons/tokens.css",
+      "blob_sha": "a8045fcb7de705e9cc26fb7784abaf748698c205",
+      "size": 1960
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/naya-5-epic-elements/MANIFEST.md",
+      "blob_sha": "26f08371dd386e0e77aaf3abaf97a913fb4ff9c6",
+      "size": 2041
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/naya-5-epic-elements/index.html",
+      "blob_sha": "2857ebca6458e5cda0652876719f450386930b54",
+      "size": 71880
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/naya-5-epic-elements/tokens.css",
+      "blob_sha": "2089e0c86c63ef82f499e829f4178684731a8258",
+      "size": 1983
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/naya-5-jewel-library/MANIFEST.md",
+      "blob_sha": "f8f83fb1d0e288865ce3d05f94c0cea27eea525b",
+      "size": 2012
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/naya-5-jewel-library/index.html",
+      "blob_sha": "21c93637ea25b33e32e8058c2222a40c4c95d5cc",
+      "size": 26100
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/naya-5-jewel-library/tokens.css",
+      "blob_sha": "37bc25a40f4445f8719e13d21368d60008e13569",
+      "size": 1959
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/naya-design-catalog.json",
+      "blob_sha": "26687bdcdf9f5a23774f6186d026babc11c5fcea",
+      "size": 100252
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/naya-forest/MANIFEST.md",
+      "blob_sha": "ec5877cde95a3fe22a2c4e361963f7ed90b8d738",
+      "size": 1952
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/naya-forest/index.html",
+      "blob_sha": "4d9c4e8465676e4e64589edc7883dfaad3fb987c",
+      "size": 186511
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/naya-forest/tokens.css",
+      "blob_sha": "a3b2aa37043e28ec51baa0623bf70b0150fce5f6",
+      "size": 345
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/README.md",
+      "blob_sha": "a0217b4fb4a227fd9261549cff90a6c75fc49be2",
+      "size": 1001
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/body/README.md",
+      "blob_sha": "34e6b1f23f0315c4182e5c15fb1e2f3d0f756373",
+      "size": 1337
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/body/body.css",
+      "blob_sha": "e5b3ca73690844806cd1679422b419362d4c2414",
+      "size": 1811
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/body/specimen.html",
+      "blob_sha": "aacb58d233d2d978dd2d4cfa5eff9a3332850bb3",
+      "size": 729
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/constellation/README.md",
+      "blob_sha": "ff39c5926e91eea6aa89cc719cfc186b0834d0de",
+      "size": 1023
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/constellation/constellation.css",
+      "blob_sha": "3ee8c903e6d2a1f576df6812777ba417cd88528f",
+      "size": 3100
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/constellation/specimen.html",
+      "blob_sha": "32ec8bc51f56661f38d89d650a8673503a917c95",
+      "size": 3142
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/footer/README.md",
+      "blob_sha": "7d36d238021d38b6d1bcc5f51d0ddfcb847114fc",
+      "size": 1851
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/footer/footer.css",
+      "blob_sha": "e789e08941edaa5c35983788f44880979a340e63",
+      "size": 5738
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/footer/specimen.html",
+      "blob_sha": "ce1b3aac4f9109b79b0fd97cbb28d18ece0d3068",
+      "size": 2908
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/headline/README.md",
+      "blob_sha": "df215c8502d6e275c2b0e9c61c3316b584b356a3",
+      "size": 1442
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/headline/headline.css",
+      "blob_sha": "53dc9d90c3ae8436cef52a2da1d1e0aee0ec1357",
+      "size": 1570
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/headline/specimen.html",
+      "blob_sha": "6941e75ef28ee08933a8f3b4e094c8dad2d5a7d1",
+      "size": 550
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/hero/README.md",
+      "blob_sha": "686e6005d2c0073e3007bbc55cb5a9bdc41a5664",
+      "size": 1602
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/hero/hero.css",
+      "blob_sha": "ca1100b2fb5a6662437777a932efa62020ead440",
+      "size": 2782
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/hero/specimen.html",
+      "blob_sha": "41b342f7d333b49075ccadea2bce5a77c88cfebb",
+      "size": 640
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/jewel-pillar/README.md",
+      "blob_sha": "f65f48dffc50d3b525ca0aa8dccc8e28c584d03b",
+      "size": 1003
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/jewel-pillar/jewel-pillar.css",
+      "blob_sha": "15f25c719c5211c7873f7755cb0e50b0e506627b",
+      "size": 3486
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/jewel-pillar/specimen.html",
+      "blob_sha": "22572cba6aa40977dd8901aed7c1b2dc6f0db2e3",
+      "size": 1797
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/living-counter/README.md",
+      "blob_sha": "553c7f29d37de4a1153a8a1fe24fcb5953d93655",
+      "size": 1063
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/living-counter/living-counter.css",
+      "blob_sha": "e01c45ec0ab56956e6f77acd1a95740731d664d6",
+      "size": 3146
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/living-counter/living-counter.js",
+      "blob_sha": "7872c4706b282ce036b40b2fe1b68f108e63de85",
+      "size": 1880
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/living-counter/specimen.html",
+      "blob_sha": "097f6109f00a2306b1ac26176abac135a4f5a2ea",
+      "size": 1267
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/nav/README.md",
+      "blob_sha": "1ee033c9e82b442f8323b44b16357492126683e7",
+      "size": 2126
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/nav/nav.css",
+      "blob_sha": "397bea450725efcd3e63e9f55a4b43b0c82f771e",
+      "size": 7337
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/nav/specimen.html",
+      "blob_sha": "fce870e0269e46b4901a751cb434f9215a94e5a1",
+      "size": 1524
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/orbit-dial/README.md",
+      "blob_sha": "8bf8c648f1591c032a6208a55239274bc6d9286c",
+      "size": 1070
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/orbit-dial/orbit-dial.css",
+      "blob_sha": "095e4100ba35b1524a0ca26ed289c9a16708828e",
+      "size": 4568
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/orbit-dial/specimen.html",
+      "blob_sha": "fd308b0ae2687a0e166bf696e6d4757334fd5a65",
+      "size": 766
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/page-shell/README.md",
+      "blob_sha": "d184cdec5062e4fab98f9a68cdf3cff3fc3f8576",
+      "size": 1308
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/page-shell/page-shell.css",
+      "blob_sha": "c597b476c09674d2ee16b5a4b39d9120af5dc037",
+      "size": 2348
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/page-shell/specimen.html",
+      "blob_sha": "3703c8ec6e47cd847d4920ffb6c406d49ca25fb8",
+      "size": 440
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/pulse-orb/README.md",
+      "blob_sha": "9dcb25e0352f94b692f676940f50ecdf7c9b04b3",
+      "size": 1117
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/pulse-orb/pulse-orb.css",
+      "blob_sha": "390a9871de8353e89314a1ca84d395314d048d30",
+      "size": 4269
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/pulse-orb/specimen.html",
+      "blob_sha": "4e55f042c988e2bb7220f634dd4b52524a31d7f4",
+      "size": 856
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/pulse-rings/README.md",
+      "blob_sha": "5557ce9ce8db09d2dd98786341c9472046d446c8",
+      "size": 943
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/pulse-rings/pulse-rings.css",
+      "blob_sha": "36ec22eb91164baf3a2983ba8738e2481273eaca",
+      "size": 3431
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/pulse-rings/specimen.html",
+      "blob_sha": "b33baeb3e0fa9916d4a84c42c4937db6b339e81e",
+      "size": 1145
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/row-grid/README.md",
+      "blob_sha": "b6869fcba3d5bf0f319f1cd0eba3db989f34c53b",
+      "size": 1421
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/row-grid/row-grid.css",
+      "blob_sha": "3071fd33951a1049093a3346fb20d6046d910bbd",
+      "size": 1981
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/row-grid/specimen.html",
+      "blob_sha": "dab55cfa26b39c95c968e7f1653b0334166c7e98",
+      "size": 900
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/section/README.md",
+      "blob_sha": "4f8d63d9ec4a6f32d927afdd911ea15096fea4b3",
+      "size": 1462
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/section/section.css",
+      "blob_sha": "1a00f9d700868eec2dbebb97610c9b90cc0fe19d",
+      "size": 1918
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/section/specimen.html",
+      "blob_sha": "1aa56f325fa93bfc4fb760cbf22e8ae57fb1a32a",
+      "size": 579
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/spectrum-flow/README.md",
+      "blob_sha": "7794d7aab3ee540095bff0da688cb3c6cb48656b",
+      "size": 998
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/spectrum-flow/specimen.html",
+      "blob_sha": "36ef67c1d7c771d388fcb7d3279b1641b400b124",
+      "size": 2774
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/spectrum-flow/spectrum-flow.css",
+      "blob_sha": "d730c94bb5d861d2a465c1a9510cc0772bfb76f6",
+      "size": 2156
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/unapproved-inventions-1968/README.md",
+      "blob_sha": "973fcf5c60e9b1c16e609c588af0504b09ac46a3",
+      "size": 821
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/unapproved-inventions-1968/accordion/README.md",
+      "blob_sha": "bd5b73aeed85909b95811ecf10eb1c0af8de0389",
+      "size": 2245
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/unapproved-inventions-1968/accordion/accordion.css",
+      "blob_sha": "306987ecf2a97452813344c0faec7133f1625d12",
+      "size": 3481
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/unapproved-inventions-1968/accordion/accordion.js",
+      "blob_sha": "a17d07d1d10f405d3c5127afff915ff647cc3e44",
+      "size": 2469
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/unapproved-inventions-1968/accordion/specimen.html",
+      "blob_sha": "4fd9d374230b1c8504ac0e899a0f257e63e5b4b6",
+      "size": 4377
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/unapproved-inventions-1968/color-picker/README.md",
+      "blob_sha": "bee09f5ab713ea618e5b14b69511bdb849d670c2",
+      "size": 2375
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/unapproved-inventions-1968/color-picker/color-picker.css",
+      "blob_sha": "589453b783675089cee6584590e084252cf33b32",
+      "size": 3139
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/unapproved-inventions-1968/color-picker/color-picker.js",
+      "blob_sha": "ff9e0f09c424d0bdf482d6b5454c10538cb43d91",
+      "size": 3503
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/unapproved-inventions-1968/color-picker/specimen.html",
+      "blob_sha": "ac7eebdc17055b77681f2474a4fdf3bc9b0393cd",
+      "size": 4159
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/unapproved-inventions-1968/date-picker/README.md",
+      "blob_sha": "4bf8cdc25356454a11cd64052be334cbaec0bc12",
+      "size": 1605
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/unapproved-inventions-1968/date-picker/date-picker.css",
+      "blob_sha": "0197745efd7e73bfd7c513b846141e9fdc113886",
+      "size": 5210
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/unapproved-inventions-1968/date-picker/date-picker.js",
+      "blob_sha": "7b4f76f32da76ea5d7f764c0a368f7f30d2507b4",
+      "size": 4767
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/unapproved-inventions-1968/date-picker/specimen.html",
+      "blob_sha": "5edf8fc8dc5eef6059100bba49104ad3747e2039",
+      "size": 3103
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/unapproved-inventions-1968/dropdown/README.md",
+      "blob_sha": "c3b66da1408c17a9db6dfc763d2e3cfd9d8b0be8",
+      "size": 1538
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/unapproved-inventions-1968/dropdown/dropdown.css",
+      "blob_sha": "901f8b99c971053f3debf0739057aa4f2cd98c08",
+      "size": 4149
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/unapproved-inventions-1968/dropdown/dropdown.js",
+      "blob_sha": "64eb76fa89c9d0d2c6a09f7274250805183db852",
+      "size": 2902
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/unapproved-inventions-1968/dropdown/specimen.html",
+      "blob_sha": "b0baf7b4ae75c1cabd2110905bd6a4db04bfa9b4",
+      "size": 4064
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/unapproved-inventions-1968/file-upload/README.md",
+      "blob_sha": "f094715c3972f24085f99f643ddfb72805274497",
+      "size": 2494
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/unapproved-inventions-1968/file-upload/file-upload.css",
+      "blob_sha": "aa3930120fe5e09dae31824b66d53c029c69a001",
+      "size": 6008
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/unapproved-inventions-1968/file-upload/file-upload.js",
+      "blob_sha": "54b6c716dc7e8f83cbd726abdcde3fae24b4823c",
+      "size": 3661
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/unapproved-inventions-1968/file-upload/specimen.html",
+      "blob_sha": "77d744cd177799277ceda8cf820ca1c39115cd11",
+      "size": 3288
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/unapproved-inventions-1968/radio-check/README.md",
+      "blob_sha": "b794f48d2e2fabc5e7bdc836c2eb21e8fd819c15",
+      "size": 1695
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/unapproved-inventions-1968/radio-check/radio-check.css",
+      "blob_sha": "aa45816297fb656c292a3b563632de6600b34300",
+      "size": 4229
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/unapproved-inventions-1968/radio-check/radio-check.js",
+      "blob_sha": "05c7269d356a8515cd52af797f4fecb565de0730",
+      "size": 343
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/unapproved-inventions-1968/radio-check/specimen.html",
+      "blob_sha": "d06f1e219145f2be54385928290df28d4910bd8f",
+      "size": 3207
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/unapproved-inventions-1968/range-slider/README.md",
+      "blob_sha": "0a8d4bd633c16e62067c136969eb6330e5ac6128",
+      "size": 1554
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/unapproved-inventions-1968/range-slider/range-slider.css",
+      "blob_sha": "76626374e89c51a42dcccc085cfebc5bd2dc675b",
+      "size": 3411
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/unapproved-inventions-1968/range-slider/range-slider.js",
+      "blob_sha": "ecdfaa92efc3a251bc717bc7802197a3b32d57b7",
+      "size": 3629
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/unapproved-inventions-1968/range-slider/specimen.html",
+      "blob_sha": "d920bf7b545174d0c1baba02724085ea841da569",
+      "size": 2806
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/unapproved-inventions-1968/rich-editor/README.md",
+      "blob_sha": "5f163b64595b5bd046e2b9205267d6dc457b1a85",
+      "size": 2565
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/unapproved-inventions-1968/rich-editor/rich-editor.css",
+      "blob_sha": "cb32b647d6a154d146c1d8c7307dec64adb696fe",
+      "size": 5030
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/unapproved-inventions-1968/rich-editor/rich-editor.js",
+      "blob_sha": "b439f622914b752870215c2f857ec62ebb54d437",
+      "size": 5642
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/unapproved-inventions-1968/rich-editor/specimen.html",
+      "blob_sha": "d91fdacb5e0697dd4937b91230d3240ad0a29757",
+      "size": 4226
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/tokens.css",
+      "blob_sha": "b314de3bcc35187ea016eceff3d6f920739e0c34",
+      "size": 7207
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/tools/README.md",
+      "blob_sha": "eac8cf2eacc3a09fa08b06fac6fdf8cc3391e72b",
+      "size": 3976
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/tools/activation_pregate.py",
+      "blob_sha": "9422535a3151c226ac35c342dd645f9cb157df24",
+      "size": 9480
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/tools/design-compliance-check.py",
+      "blob_sha": "6081a6f402cdc2cba3f405555705314a074e3315",
+      "size": 57386
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/tools/test_activation_pregate.py",
+      "blob_sha": "3973bb4628ecdb5ababc54102b58f8cba894aa53",
+      "size": 6871
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/tools/test_css_parser.py",
+      "blob_sha": "82a440455761824774407be66a1f88bd8fc87bc5",
+      "size": 6283
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/tools/test_datauri_documents.py",
+      "blob_sha": "6d64570970ba8119408b1a007f66b040bf31a590",
+      "size": 19695
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/tools/test_link_stylesheets.py",
+      "blob_sha": "992a9ee4f728a005a46308498a3f6dc48ef28b6f",
+      "size": 18112
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/tools/test_srcdoc_stylesheets.py",
+      "blob_sha": "065e95edfc08aedf250d4532a1ea09b81d6981c0",
+      "size": 13864
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/ultimate-design-system/MANIFEST.md",
+      "blob_sha": "fb4326693d954fbb4122a0f3f04bf51b1a2f48f7",
+      "size": 2260
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/ultimate-design-system/index.html",
+      "blob_sha": "8226325770ba00fed36fed9387ff21ce4093db6f",
+      "size": 1134115
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/ultimate-design-system/tokens.css",
+      "blob_sha": "caac347591eb0669ac8cb9f1922ce098a0705901",
+      "size": 925
+    },
+    {
       "path": "BRAIN/10-INTERFACES/NAYA-DESIGN-CONTRACT-V1.md",
       "blob_sha": "10d0d9e27133a4e0131eaea1f7fc2aaed57de5c5",
       "size": 6827
@@ -3792,6 +5894,66 @@
       "path": "BRAIN/10-INTERFACES/README.md",
       "blob_sha": "7093bf121d662cb6f8e88a0952e814a96dcb7cba",
       "size": 1226
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/SMART-GRAPHS/README.md",
+      "blob_sha": "aeaa4f0b92555adf4cd8ea2e311ab17664fb94e6",
+      "size": 2224
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/SMART-GRAPHS/SMART-GRAPHS-SPEC.ai.md",
+      "blob_sha": "bf68e6ff9a1dd4c2aafca8af4c1720968a63a6aa",
+      "size": 5530
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/SMART-GRAPHS/SMART-GRAPHS-SPEC.human.md",
+      "blob_sha": "7326d11973dd1313ecea8a1abfb4e9cb339b85d8",
+      "size": 7631
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/SMART-GRAPHS/smart-graphs-spec.machine.json",
+      "blob_sha": "2bb90a0d4b6d4835e37b554ae94b7e9624654c7d",
+      "size": 4566
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/SMART-GRAPHS/specimens/01-pulse-orb.html",
+      "blob_sha": "a6c116c088de19027b2f95bb94f51b7e9972dc5c",
+      "size": 2124
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/SMART-GRAPHS/specimens/02-jewel-pillars.html",
+      "blob_sha": "9303e152276aa62c65b2bd5d4041ea670894654b",
+      "size": 3010
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/SMART-GRAPHS/specimens/03-spectrum-flow.html",
+      "blob_sha": "dea2fe238e7ca24bc14d2d02e40f5eadc564eb95",
+      "size": 3865
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/SMART-GRAPHS/specimens/04-constellation.html",
+      "blob_sha": "e66b922b7192ae5d2f3582bb93e38d1b142e67f4",
+      "size": 4298
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/SMART-GRAPHS/specimens/05-pulse-rings.html",
+      "blob_sha": "5a1f4c6493605f6fcd0a712c5be01b34132e3dbc",
+      "size": 2313
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/SMART-GRAPHS/specimens/06-living-counter.html",
+      "blob_sha": "2608daf5814323d1394559670b1b4668a74fd4f9",
+      "size": 2347
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/SMART-GRAPHS/specimens/07-orbit-dial.html",
+      "blob_sha": "09f2d62e08e289d2784fa60965ae802a0987f451",
+      "size": 1980
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/SMART-GRAPHS/specimens/sg-chrome.css",
+      "blob_sha": "70a99d8a7cbf459b5fdf14e5a6c3af7697650d12",
+      "size": 2792
     },
     {
       "path": "BRAIN/10-INTERFACES/naya-voice-sample-v1.mp3",
@@ -4027,6 +6189,11 @@
       "path": "BRAIN/99-ARCHIVE/README.md",
       "blob_sha": "a012a595ea151b523ec0c5682b1521d8902286ae",
       "size": 707
+    },
+    {
+      "path": "BRAIN/99-ARCHIVE/brain-reconciliation-ledger-f648833b.md",
+      "blob_sha": "168e14b9b430d2eb4a7d5e3d330eb1bae7fdabe5",
+      "size": 2096
     },
     {
       "path": "BRAIN/MASTER-MAP.md",

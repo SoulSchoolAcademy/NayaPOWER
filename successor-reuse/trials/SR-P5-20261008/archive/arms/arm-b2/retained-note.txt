@@ -1,0 +1,1 @@
+When writing state files for a job runner, express the logic with explicit statements instead of cramming it into inline conditional expressions. A verified trial showed that writing state files via inline conditionals failed badly: control 2/10 vs treatment 10/10, p=0.0007. Keep this rule for all state-file writing work, such as checkpoint and run-state updates.

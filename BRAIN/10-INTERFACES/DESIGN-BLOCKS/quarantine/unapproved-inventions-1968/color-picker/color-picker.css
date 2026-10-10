@@ -1,0 +1,69 @@
+/* Smart Block: forms/color-picker — swatch grid + custom hex in Naya design language */
+/* shared tokens */
+:root{
+  --field:#050507; --obsidian:#0B0D12; --raise:#10141d; --card:#141a28;
+  --white:#F8F7FB; --ink:#F5F7FB;
+  --quiet:rgba(248,247,251,.72); --secondary:rgba(248,247,251,.55);
+  --line:rgba(255,255,255,.12);
+  --soul:#a06bff;
+  --magenta:#e84fff; --purple:#a06bff; --blue:#3fb8ff; --green:#2fe89e; --gold:#ffbf3d;
+  --magenta-rgb:232,79,255; --purple-rgb:160,107,255; --blue-rgb:63,184,255;
+  --green-rgb:47,232,158; --gold-rgb:255,191,61;
+  --verified:#2fe89e; --claim:#ffbf3d; --demo:#e84fff;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --r-lg:18px; --r-md:13px; --r-pill:999px;
+  --type-headline:24px; --type-body:18px; --type-small:14px;
+}
+
+.cp-wrap{ max-width:420px; }
+
+/* Readout — selected color name + hex */
+.cp-readout{ margin-bottom:18px; }
+.cp-name{ font-size:var(--type-body); font-weight:700; color:var(--white); margin:0 0 2px; }
+.cp-hex{ font-size:var(--type-small); color:var(--secondary); margin:0; font-family:ui-monospace,Menlo,monospace; }
+
+/* Swatch grid — 44px circles, 12px gaps */
+.cp-grid{
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(44px,1fr));
+  gap:12px; margin-bottom:20px;
+}
+
+/* Swatch — radial gem: light top-left → color → dark, machined edge */
+.cp-swatch{
+  width:44px; height:44px; border-radius:50%; border:0; padding:0; cursor:pointer;
+  background:radial-gradient(circle at 30% 28%, var(--cp-hi) 0%, var(--cp-c) 52%, var(--cp-lo) 100%);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.3),
+    inset 0 2px 3px rgba(255,255,255,.35), inset 0 -3px 6px rgba(0,0,0,.5),
+    0 8px 18px rgba(0,0,0,.6);
+  transition:transform .25s var(--ease), box-shadow .25s var(--ease);
+  position:relative;
+}
+.cp-swatch:hover{ transform:scale(1.1); }
+.cp-swatch:focus-visible{ outline:none; box-shadow:inset 0 0 0 1px rgba(255,255,255,.3),
+    0 0 0 3px rgba(var(--purple-rgb),.85); }
+/* Selected: 3px white ring + color glow halo */
+.cp-swatch.cp-selected{
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.3),
+    inset 0 2px 3px rgba(255,255,255,.35), inset 0 -3px 6px rgba(0,0,0,.5),
+    0 0 0 3px var(--white),
+    0 0 26px 4px var(--cp-glow,rgba(var(--purple-rgb),.6)),
+    0 8px 18px rgba(0,0,0,.6);
+}
+
+/* Custom hex row */
+.cp-custom{ display:flex; align-items:center; gap:12px; }
+.cp-hex-input{
+  flex:1; height:44px; border-radius:var(--r-pill);
+  background:linear-gradient(180deg,#1a1d27 0%,#0b0d12 100%);
+  border:1px solid var(--line); color:var(--white);
+  font-size:var(--type-small); font-family:ui-monospace,Menlo,monospace;
+  padding:0 18px; outline:none;
+  transition:border-color .25s var(--ease), box-shadow .25s var(--ease);
+}
+.cp-hex-input::placeholder{ color:var(--secondary); }
+.cp-hex-input:focus{ border-color:var(--purple);
+  box-shadow:inset 0 0 0 1.5px rgba(var(--purple-rgb),.92),
+    0 0 18px -2px rgba(var(--purple-rgb),.55); }
+.cp-hex-input.cp-invalid{ border-color:#ff5b6a;
+  box-shadow:0 0 0 1.5px rgba(255,91,106,.6), 0 0 18px -4px rgba(255,91,106,.5); }
+.cp-custom-label{ font-size:var(--type-small); color:var(--secondary); white-space:nowrap; }

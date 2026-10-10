@@ -1,0 +1,109 @@
+/* Smart Block: activity-card
+ * Source: Naya Smart Hub Design.html (extracted verbatim, never rewritten)
+ * Category: feed
+ */
+
+/* ——— Shared Hub tokens (also in DESIGN-BLOCKS/tokens.css; copied here so the block is self-contained) ——— */
+:root {
+  --muted: #AAB2BF;
+}
+
+button, .btn, .tab, .activity-card, .eco-btn, [role="button"] {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+.activity-card:active {
+  transform: translateY(-1px) scale(.99);
+  border-color: var(--ac, #9d75ff);
+  box-shadow: inset 0 1px rgba(255,255,255,.07), 0 12px 30px rgba(0,0,0,.5),
+              0 0 30px -4px var(--ac, #9d75ff);
+}
+
+button, .btn, .tab, .eco-btn, .activity-card {
+  -webkit-user-select: none; user-select: none;
+  touch-action: manipulation;
+}
+
+.activity-card {
+  position: relative; overflow: hidden; cursor: default;
+  border: 2px solid rgba(255,255,255,.35); border-radius: 20px;
+  padding: 22px 26px 22px 32px;
+  background: rgba(13,11,10,.62);
+  -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px);
+  box-shadow: inset 0 1px rgba(255,255,255,.07), 0 18px 45px rgba(0,0,0,.5);
+  transition: transform .22s cubic-bezier(.2,.8,.2,1), border-color .25s, box-shadow .3s;
+  animation: actcardin .5s cubic-bezier(.2,.8,.2,1) both;
+  margin-bottom: 14px;
+}
+
+.activity-card-high {
+  border-width: 2px;
+  padding: 28px 30px 28px 36px;
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(13,11,10,.62));
+}
+
+.activity-card-high .activity-card-title {
+  font-size: clamp(19px, 2.4vw, 24px);
+}
+
+.activity-card-high::after {
+  content: "★"; position: absolute; top: 18px; right: 22px;
+  font-size: 16px; color: var(--ac);
+  text-shadow: 0 0 12px var(--ac);
+  opacity: .7;
+}
+
+.activity-card::before {
+  content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 6px;
+  background: var(--ac, #9d75ff); box-shadow: 0 0 18px var(--ac, #9d75ff);
+  animation: actbar 3.2s ease-in-out infinite;
+}
+
+.activity-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--ac, #9d75ff);
+  box-shadow: inset 0 1px rgba(255,255,255,.07), 0 24px 55px rgba(0,0,0,.6),
+              0 0 40px -6px var(--ac, #9d75ff);
+}
+
+.activity-card-top { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; flex-wrap: wrap; }
+
+.activity-card-jewel {
+  width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center;
+  background: radial-gradient(circle at 35% 30%, #2a2a32, #0a0a0e 70%);
+  border: 1px solid color-mix(in srgb, var(--ac, #9d75ff) 50%, transparent);
+  box-shadow: 0 0 14px color-mix(in srgb, var(--ac, #9d75ff) 30%, transparent);
+  color: var(--ac, #9d75ff); flex-shrink: 0;
+}
+
+.activity-card-jewel svg { width: 18px; height: 18px; }
+
+.activity-card-source {
+  font-size: 11px; font-weight: 800; letter-spacing: .16em;
+  color: var(--ac, #9d75ff); text-transform: uppercase;
+}
+
+.activity-card-time {
+  font-size: 12px; color: var(--muted); margin-left: auto;
+  font-variant-numeric: tabular-nums;
+}
+
+.activity-card-title {
+  font-size: clamp(16px, 2vw, 20px); font-weight: 800;
+  color: #fff; margin: 0 0 8px; line-height: 1.35;
+}
+
+.activity-card-narrative {
+  font-size: 15px; line-height: 1.6; color: #d8d3c4;
+  margin: 0 0 10px; font-weight: 500;
+}
+
+.activity-card-meta {
+  font-size: 11px; letter-spacing: .06em; color: var(--muted);
+  font-family: ui-monospace, Menlo, monospace; margin: 0;
+}
+
+@keyframes actcardin { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+@keyframes actbar { 0%,100% { opacity: .7; } 50% { opacity: 1; box-shadow: 0 0 28px var(--ac, #9d75ff); } }
