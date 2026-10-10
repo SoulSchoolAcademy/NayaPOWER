@@ -346,6 +346,157 @@ def track_exposure(family_id, case_id):
     return case["exposure_count"]
 
 
+# Qualification verdicts (Naya 1's selective revocation):
+# Evidence-contribution revocation ≠ qualification revocation.
+# A case can lose its right to certify without the lesson being declared false.
+QUALIFICATION_VERDICTS = {
+    "UNAFFECTED": "No material dependency on compromised evidence",
+    "REQUALIFIED": "Remaining independent evidence meets acceptance standard",
+    "DOWNGRADED": "Narrower claim remains supportable",
+    "INSUFFICIENT_DATA": "Evidence valid but no longer sufficient",
+    "SUSPENDED": "Independence or blast radius unresolved",
+    "REVOKED": "Required evidence condition has failed",
+}
+
+# Scope confidence levels
+SCOPE_STATUS = {
+    "CONFIRMED_BOUNDED": "Affected population defensibly identified",
+    "POTENTIALLY_BROADER": "Other cases may share exposure",
+    "UNKNOWN": "Cannot reliably determine blast radius",
+}
+
+
+def register_qualification(qual_id, description, required_families, acceptance_criteria=""):
+    """
+    Register a qualification claim that depends on specific canary families.
+    This tracks WHAT the evaluation established, separate from the cases themselves.
+    """
+    reg = load_registry()
+    if "qualifications" not in reg:
+        reg["qualifications"] = {}
+
+    if qual_id in reg["qualifications"]:
+        print(f"Qualification {qual_id} already registered.")
+        return
+
+    reg["qualifications"][qual_id] = {
+        "id": qual_id,
+        "description": description[:300],
+        "required_families": required_families,  # list of family IDs
+        "acceptance_criteria": acceptance_criteria[:200],
+        "status": "ACTIVE",
+        "verdict": None,
+        "registered_at": datetime.now(timezone.utc).isoformat(),
+        "history": [],
+    }
+    save_registry(reg)
+    print(f"Registered qualification {qual_id}: depends on families {required_families}")
+    return reg["qualifications"][qual_id]
+
+
+def compromise_family(family_id, compromise_type, evidence, scope_status="CONFIRMED_BOUNDED", reporter="unknown"):
+    """
+    Partial compromise at the FAMILY level.
+    Marks all cases in the family, then recalculates affected qualifications.
+    """
+    if scope_status not in SCOPE_STATUS:
+        print(f"ERROR: Unknown scope '{scope_status}'")
+        sys.exit(1)
+
+    reg = load_registry()
+    fid = str(family_id)
+    if fid not in reg["families"]:
+        print(f"Family {family_id} not found.")
+        sys.exit(1)
+
+    family = reg["families"][fid]
+    affected_cases = [c["case_id"] for c in family["cases"]]
+
+    # Create the partial-compromise event
+    event = {
+        "event_type": "CANARY_PARTIAL_COMPROMISE",
+        "incident_id": f"CCI-{datetime.now(timezone.utc).strftime('%Y%m%d%H%M%S')}",
+        "family_id": int(family_id),
+        "cause": compromise_type,
+        "affected_cases": affected_cases,
+        "scope_status": scope_status,
+        "scope_description": SCOPE_STATUS[scope_status],
+        "evidence_refs": [evidence[:200]],
+        "reporter": reporter,
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+    }
+
+    # Mark all cases in family
+    for c in family["cases"]:
+        c["integrity_state"] = "COMPROMISED" if scope_status == "CONFIRMED_BOUNDED" else "SUSPECT"
+        c["independent_proof_suspended"] = True
+
+    # Append event
+    events_file = os.path.join(CANARY_DIR, "compromise_events.jsonl")
+    os.makedirs(CANARY_DIR, exist_ok=True)
+    with open(events_file, "a") as f:
+        f.write(json.dumps(event) + "\n")
+
+    print(f"Family {family_id} compromise: {event['incident_id']}")
+    print(f"  Affected cases: {len(affected_cases)}")
+    print(f"  Scope: {scope_status} — {SCOPE_STATUS[scope_status]}")
+
+    # Recalculate qualifications
+    if scope_status == "UNKNOWN":
+        print(f"  WARNING: blast radius unknown — cannot declare unaffected families independent")
+        print(f"  All dependent qualifications → SUSPENDED pending investigation")
+        for qid, q in reg.get("qualifications", {}).items():
+            if int(family_id) in q["required_families"]:
+                q["verdict"] = "SUSPENDED"
+                q["status"] = "SUSPENDED"
+                q["history"].append({
+                    "timestamp": datetime.now(timezone.utc).isoformat(),
+                    "event": event["incident_id"],
+                    "verdict": "SUSPENDED",
+                    "reason": "Blast radius unknown — cannot verify independence of remaining families",
+                })
+                print(f"    Qualification {qid}: → SUSPENDED")
+    else:
+        for qid, q in reg.get("qualifications", {}).items():
+            if int(family_id) not in q["required_families"]:
+                # Explicitly record unaffected — don't leave it ambiguous
+                q["verdict"] = "UNAFFECTED"
+                q["history"].append({
+                    "timestamp": datetime.now(timezone.utc).isoformat(),
+                    "event": event["incident_id"],
+                    "verdict": "UNAFFECTED",
+                    "reason": "No dependency on compromised family",
+                })
+                print(f"    Qualification {qid}: → UNAFFECTED (no dependency)")
+                continue
+            remaining = [f for f in q["required_families"] if f != int(family_id)]
+            if not remaining:
+                # All required families compromised
+                q["verdict"] = "REVOKED"
+                q["status"] = "REVOKED"
+                reason = "All required evidence families compromised"
+            elif len(remaining) < len(q["required_families"]):
+                # Partial — check if remaining meets acceptance
+                # For now: downgrade unless explicitly requalified
+                q["verdict"] = "DOWNGRADED"
+                q["status"] = "DOWNGRADED"
+                reason = f"Narrowed to families {remaining}; original broad claim no longer supported"
+            else:
+                q["verdict"] = "UNAFFECTED"
+                reason = "No dependency on compromised family"
+
+            q["history"].append({
+                "timestamp": datetime.now(timezone.utc).isoformat(),
+                "event": event["incident_id"],
+                "verdict": q["verdict"],
+                "reason": reason,
+            })
+            print(f"    Qualification {qid}: → {q['verdict']} ({reason[:60]}...)")
+
+    save_registry(reg)
+    return event
+
+
 def main():
     parser = argparse.ArgumentParser(description="Three-layer canary system")
     sub = parser.add_subparsers(dest="cmd", required=True)
@@ -392,6 +543,22 @@ def main():
     exp.add_argument("--family", required=True)
     exp.add_argument("--case", required=True)
 
+    reg_q = sub.add_parser("register-qual", help="Register a qualification claim")
+    reg_q.add_argument("--id", required=True)
+    reg_q.add_argument("--description", required=True)
+    reg_q.add_argument("--families", required=True, help="Comma-separated family IDs")
+    reg_q.add_argument("--criteria", default="")
+
+    comp_f = sub.add_parser("compromise-family", help="Family-level partial compromise")
+    comp_f.add_argument("--family", required=True)
+    comp_f.add_argument("--type", required=True,
+                        choices=["ANSWER_LEAKAGE", "DUPLICATE_LINEAGE",
+                                 "EVALUATOR_CONTAMINATION", "REPEATED_EXPOSURE"])
+    comp_f.add_argument("--evidence", required=True)
+    comp_f.add_argument("--scope", default="CONFIRMED_BOUNDED",
+                        choices=["CONFIRMED_BOUNDED", "POTENTIALLY_BROADER", "UNKNOWN"])
+    comp_f.add_argument("--reporter", default="unknown")
+
     args = parser.parse_args()
     if args.cmd == "register-family":
         register_family(args.id, args.name, args.description)
@@ -411,6 +578,11 @@ def main():
         retire_case(args.family, args.case, args.replacement)
     elif args.cmd == "expose":
         track_exposure(args.family, args.case)
+    elif args.cmd == "register-qual":
+        families = [int(f.strip()) for f in args.families.split(",")]
+        register_qualification(args.id, args.description, families, args.criteria)
+    elif args.cmd == "compromise-family":
+        compromise_family(args.family, args.type, args.evidence, args.scope, args.reporter)
 
 
 if __name__ == "__main__":
