@@ -45,5 +45,17 @@
 #                        certificates, interaction-proof layer (discovery,
 #                        contracts, receipts, proof ladder), cold-successor
 #                        reconstruction. Migrate evidence, not PASS labels.
+#   liveness.py      — multi-node liveness & guaranteed progress: three
+#                        liveness types (disposition / workflow progress /
+#                        task completion), workflow state taxonomy with hard
+#                        gates (WAITING_AUTHORITY can never become COMPLETED;
+#                        liveness never creates permission), deadlock /
+#                        livelock / starvation detection, progress witnesses
+#                        (no invented progress), recovery validity (never
+#                        weakens LAW), the conditional guarantee
+#                        [](Eligible & Fair => <>Completed), append-only
+#                        liveness receipts, cold-successor reconstruction.
+#                        Safety and liveness are separate verdicts on the
+#                        same interaction.
 #   fixtures/        — fixed anchor fixtures (OPEN visibility) for the 10 canary
 #                        families. Sealed fixtures live OUTSIDE this repo by law.
