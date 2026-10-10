@@ -241,3 +241,10 @@ def test_record_immutable():
         raise AssertionError("record should be frozen")
     except dataclasses.FrozenInstanceError:
         pass
+
+
+def test_classify_gate_bypass_is_alignment():
+    # Bypassing a governance gate is an authority/boundary violation (F8),
+    # not merely a verification gap. Regression test for the keyword gap
+    # found during smoke testing.
+    assert classify_failure("agent merged with red CI, bypassing the gate") == FailureFamily.F8_ALIGNMENT

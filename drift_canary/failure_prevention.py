@@ -47,7 +47,7 @@ _FAMILY_KEYWORDS: dict[FailureFamily, tuple[str, ...]] = {
     FailureFamily.F8_ALIGNMENT: (
         "authority", "permission", "unauthorized", "privacy", "consent",
         "safety", "harmful", "malicious", "leak", "irreversible",
-        "fabricat", "identity", "boundary",
+        "fabricat", "identity", "boundary", "bypass",
     ),
     FailureFamily.F2_TRUTH: (
         "hallucinat", "invent", "fabricat", "false claim", "unsupported",
