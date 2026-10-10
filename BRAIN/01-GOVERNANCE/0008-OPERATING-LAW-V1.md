@@ -679,3 +679,18 @@ Reference §3.6 (Ownership Directive) and §3.9 (the 6→10 reversibility checkl
 | 8.7 | Migrations and State Files | Code | Shawn, 2026-09-30/10-06 |
 | 8.8 | Edge-Function Proof | Code | Shawn, 2026-10-03 |
 | 8.9 | Reversibility Is the Safety Net | Code | Shawn, standing |
+
+---
+
+## ENFORCEMENT — THE NAYA ACTIVATION PROTOCOL
+
+> *"If we can get the Nayas locked in where 90% of the time they're producing value — understanding, reducing rework, not drifting, not making mistakes — that's huge."*
+> — Shawn Vibert, 2026-10-09
+
+A law without enforcement is a suggestion. The **Naya Activation Protocol v1** (`BRAIN/01-GOVERNANCE/0009-ACTIVATION-PROTOCOL-V1.md`) is this law's enforcement layer — the machine that makes 10/10 automatic instead of heroic.
+
+- **REQUIRES:** Every seat completes Layer 1 boot (this law loaded into context) and the Layer 2 activation ritual (own-words engagement receipt) before any work. Every encodable provision of this law is enforced by the Layer 3 machine checks, fail-closed. Every independent review fills the Layer 4 compliance scorecard alongside quality. Templates keep the law as the default (Layer 5).
+- **FORBIDS:** Treating this law as reading material. "I read the Operating Law" without an activation receipt is not activation. Encoding a judgment-only provision as a machine check (theater) — the audit names all 32; they live in the ritual and the reviewer, not the linter.
+- **DOES:** A seat that cannot produce a valid activation receipt does not work — any reviewer or dispatcher bounces it. A provision that can be checked, is checked. Law adherence is scored, corrected with the why, and aggregated into the lock-in metric: **90% value-producing time** (compliance ≥ 8 and quality ≥ 8 over the last 30 reviewed work units). When the number drops, the scorecards say exactly where and how to fix it.
+
+The protocol is the arm; this law is the body. Amend the law through Shawn; improve the arm through independent 9.0+ review.
