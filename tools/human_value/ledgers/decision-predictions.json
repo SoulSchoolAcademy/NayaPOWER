@@ -64,5 +64,35 @@
   "receipt_type": "ALIGNMENT_DECISION",
   "schema_version": "2.1",
   "verification": "UNVERIFIED"
+ },
+ {
+  "decision_id": "DEC-20261009-HV-REALDATA-007",
+  "delta_v_predicted": 7.0,
+  "objective": "Accumulate the verified real events of 2026-10-09 15:41-21:41 UTC: merged PRs #1999 (sequence_policy 745->782, Naya 2 verified on merged tip), #1995 (capture-index flake fix, L4 independent verifier: red->green proven), #2005 (#1993 residual repairs, independent seat repair confirmed), #2030 (brain-index regen, Naya 2 scorecard receipt), #2036 (guard false-positive repair, Naya 2 scorecard receipt), #2028 (quote-smuggle fix, independent paired re-attacker CLOSED 9.5), #1956 (convergence-C receipt instrument, independent validator 9.0/10 + Naya 4 post-merge verified), #1957 (prod proof chains, independent validator 9.1/10), #2052 (activation docs placement, Naya 2 merged-verified), #2056 (manifest wiring, Naya 2 merged-verified). Scan #1354 for attention-demanded events (DAI) since 15:41 UTC. Close the seventh prediction->observation join (n=7). Cold-recompute proof on the pushed SHA, push via the Git Data API with server-tree verification, post scorecard. Excluded by design: #2017 (unsigned scorecard), #2020 (correction saga, authority ambiguity), #1882 (own comment only), #2054 (no scorecard receipt found), #2060 (no receipt yet); Shawn's 17:53 and 21:21 directives classified as live direction, not failure correction (not DAI).",
+  "predicted_at": "2026-10-09T21:47:00Z"
+ },
+ {
+  "decision_id": "DEC-20261010-HV-REALDATA-008",
+  "delta_v_predicted": 7.0,
+  "objective": "Accumulate the verified real events of 2026-10-09 21:41 UTC to 2026-10-10 03:41 UTC: merged PRs #2061 (WO5b learning, Naya 2 merge-verified), #2063 (WO4 learning, Naya 2 merge-verified), #2059 (thinking curriculum V1, Naya 2 merged-verified at tip), #2066 (activation checklist, Naya 2 merged-verified at tip), #2048 (WO3 admission hallway, Naya 2 merge closure), #2049 (WO3 admission gate, Naya 2 merge closure), #2069 (cold-start doctrine repair, Naya 2 merged-verified at tip), #2072 (Brain index regen, Naya 2 lane-confirmed), #2100 (stale test fix, Naya 2 scorecard), #2084 (spec-integrity exclusion, Naya 2 scorecard), #2107 (daily learning event, Naya 2 merged-verified at tip); two attention-demanded events (#2068 awaiting Shawn's click, prod-readiness C10 awaiting his word); recompute HV/day + DAI deterministically, close the eighth prediction->observation join (n=8), re-run the cold-recompute proof on a fresh clone of the pushed branch, re-run the 36-test suite green, push via the Git Data API with server-tree verification. Exclusions (fail-closed): #2101 (no independent verification receipt), #2068 (open, not a delivered outcome), #2070 (independent HOLD), #2083 (closed unmerged), #2062/#2067 (open), director teaching/question (human-initiated, not system-demanded), #2077 battery red (team-repaired, no human intervention), gate PRs #2094-#2099 (no independent verification or merge), driver-completion claims (self-claims, no independent verification), SLA audit (own-lane self-credit).",
+  "predicted_at": "2026-10-10T03:50:00Z",
+  "predicted_by": "Naya 5 (human-value-builder run)",
+  "prediction_basis": "Eleventh real-ledger accumulation run. Pattern established over seven prior joins: pre-register before observation, append only independently-verified or evidence-durable outcomes, close the join with an honest delta_v_actual, recompute deterministically, prove cold-recomputability. Predicted +7.0 consistent with prior loops."
+ },
+ {
+  "decision_id": "DEC-20261010-HV-REALDATA-009",
+  "delta_v_predicted": 7.0,
+  "objective": "Accumulate the verified real events of 2026-10-10 03:41-09:41 UTC: merged PR #2108 (Naya 4 brain-index drift repair, Naya 2 merge-verified at tip, main kernel red->green). DAI scan: no new human-attention demands (brain-index red + draft->ready tooling failure both team-handled; #2068 still awaiting Shawn's click is a continuing, not new, demand).",
+  "predicted_at": "2026-10-10T09:44:00Z",
+  "predicted_by": "Naya 5 (human-value-builder run)",
+  "prediction_basis": "Twelfth real-ledger accumulation run. Pattern established over eight prior joins: pre-register before observation, append only independently-verified or evidence-durable outcomes, close the join with an honest delta_v_actual, recompute deterministically, prove cold-recomputability. Predicted +7.0 consistent with prior loops."
+ },
+ {
+  "decision_id": "DEC-20261010-HV-REALDATA-010",
+  "delta_v_predicted": 7.0,
+  "objective": "Accumulate the verified real events of 2026-10-10 10:10-16:10 UTC: merged PRs #2113 (colliding-projection revert, Naya 2 merge-verified at tip), #2114 (honesty repair), #2115 (GAP-1 memory->action wire), #2116 (GAP-2 promotion bridge), #2094 (Gate 1 activation checklist), #2095 (Gate 7 duplicate detector), #2117 (delivery-gate fixture exclusion), #2120 (SN-0796 registry repair) -- all with Naya 2 merge receipts; #2087 (Operating Code V2 -- Shawn RATIFIED 14:47Z, API-verified merged), #2122 (operating law canonical, API-verified merged), #2142 (tune-in template, git-verified on live tip 7281ede6b), #2129 (amendment loader, API-verified merged), #2127 (gate console, API-verified merged), #2092/#2096/#2098/#2099 (gate-hold releases, API-verified merged); 308-branch graveyard cleanup + 7-day claim notice. DAI scan: zero new human-attention demands (#2068 still awaiting Shawn's click = continuing, not new; WS-9/WS-4 blockers + CI reds team-handled/tagged).",
+  "predicted_at": "2026-10-10T16:02:44Z",
+  "predicted_by": "Naya 5 (human-value-builder run)",
+  "prediction_basis": "Thirteenth real-ledger accumulation run. Pattern established over nine prior joins: pre-register before observation, append only independently-verified or evidence-durable outcomes, close the join with an honest delta_v_actual, recompute deterministically, prove cold-recomputability. Predicted +7.0 consistent with prior loops."
  }
 ]
