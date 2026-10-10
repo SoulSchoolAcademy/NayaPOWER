@@ -1,0 +1,71 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-0762",
+ "capture_id": "20261010-sn-0762-composite-audit",
+ "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+ "category": "SYSTEM_INTELLIGENCE",
+ "topic": "SYSTEM_QUALIFICATION",
+ "subtopic": "INTERACTION_CONTRACTS",
+ "title": "Composite Qualification Audit — five obligations, interaction contracts, environment difference maps",
+ "projection": {
+  "publication_scope": "PUBLIC_DERIVED_VIEW",
+  "human_director_authorized_publication": true,
+  "category_slug": "SYSTEM-INTELLIGENCE",
+  "topic_slug": "GOVERNANCE",
+  "subtopic_slug": "LAW-IS-CODE"
+ },
+ "lifecycle_state": "ACTIVE",
+ "source": {
+  "source_type": "human_director_ratification",
+  "source_reference": "Shawn's explicit teaching, main chat, 2026-10-10. Filed same-evening per his standing law: his word IS the verification (Verification Law); filed immediately, not queued.",
+  "captured_at": "2026-10-10",
+  "captured_at_utc": "2026-10-10T19:30:00Z"
+ },
+ "intelligence": {
+  "essence": "Component success plus component success does not equal system success. A composite — anything built from qualified parts — must pass its own audit: five obligations covering the parts, their interactions, the composition, the environment, and the whole's behavior. Interaction contracts specify what the parts assume about each other; environment difference maps record where the deployment context differs from the test context. The audit's standing finding: integration is a claim that needs its own proof, and 'it worked in staging' is evidence about staging, not production.",
+  "human_view": {
+   "meaning": "Nine parts that each pass their own test can still fail together. The connections between parts need their own proof — and 'it worked in the lab' doesn't prove 'it works in the real world.'",
+   "why_it_matters": "This is the law the whole NayaNET vision rests on: a collective intelligence is a composite, and composites are guilty until proven innocent."
+  },
+  "simple_view": {
+   "meaning": "Nine parts that each pass their own test can still fail together. The connections between parts need their own proof — and 'it worked in the lab' doesn't prove 'it works in the real world.'"
+  },
+  "naya_view": {
+   "directive": "Audit every composite against the five obligations. Write interaction contracts for part-to-part assumptions. Map environment differences between test and deployment contexts. Never cite component qualifications as system qualification."
+  },
+  "ai_view": {
+   "specification": "qualify(composite) requires the five obligations; interaction_contract(part_i, part_j) enumerates mutual assumptions; env_diff(test, deploy) must be mapped and each difference dispositioned.",
+   "directive": "Follow as written. This is law, not guidance."
+  },
+  "machine_view": {
+   "raw_source_separate_from_distillation": true,
+   "automatic_truth_ceiling": "CANDIDATE",
+   "authority_inheritance": false,
+   "law_id": "SN-0762",
+   "status": "SPEC_BUILT_TESTED_NOT_ACTIVATED",
+   "spec_only": "Spec-only by design; live KNOW/LAW/ACT wiring parked for the Human Director's word. No production claim.",
+   "test_evidence": "Composite-audit spec L3: audit spec'd (five obligations, interaction contracts, environment difference maps)."
+  },
+  "learning_lesson": "Applied 2026-10-10: each stacked spec branch was audited against its parent before stacking — the practice this law makes permanent.",
+  "decisions": [
+   "Shawn's word ratifies the teaching. His word IS the verification; no second verification of the lesson itself is permitted (Verification Law).",
+   "Branch naya5/independence-propagation, L3 audit spec'd."
+  ],
+  "connections": [
+   {
+    "type": "AUDITS",
+    "target": "SN-0761 Combining evidence — the composition it checks."
+   },
+   {
+    "type": "RELATED",
+    "target": "SN-0766 Multi-obligation invariants — the joint-behavior rules it enforces."
+   }
+  ],
+  "uncertainty": "The five obligations' exact contents are implementer-defined; the requirement that composites carry their own proof is fixed.",
+  "applicability": "Every seat that assembles, deploys, or qualifies a composite system.",
+  "epistemic_state": "RATIFIED",
+  "falsifier": "Falsified if a composite is qualified on component results alone, or an unmapped environment difference causes a deployment failure.",
+  "measurement_contract": "Count composites qualified with vs without interaction contracts; track env-diff coverage.",
+  "successor_effect": "A cold successor handed a 'fully tested' composite asks for the interaction contracts and the environment map before believing it."
+ }
+}

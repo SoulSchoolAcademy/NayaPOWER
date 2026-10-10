@@ -1,0 +1,75 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-0771",
+ "capture_id": "20261010-sn-0771-fairness-verification",
+ "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+ "category": "SYSTEM_INTELLIGENCE",
+ "topic": "VERIFICATION",
+ "subtopic": "LASSO_CLASSIFIER",
+ "title": "Fairness Verification — lasso classifier, twelve tests, no collapsed PASS; 'opportunity → fair service → verified progress'",
+ "projection": {
+  "publication_scope": "PUBLIC_DERIVED_VIEW",
+  "human_director_authorized_publication": true,
+  "category_slug": "SYSTEM-INTELLIGENCE",
+  "topic_slug": "GOVERNANCE",
+  "subtopic_slug": "LAW-IS-CODE"
+ },
+ "lifecycle_state": "ACTIVE",
+ "source": {
+  "source_type": "human_director_ratification",
+  "source_reference": "Shawn's explicit teaching, main chat, 2026-10-10. Filed same-evening per his standing law: his word IS the verification (Verification Law); filed immediately, not queued.",
+  "captured_at": "2026-10-10",
+  "captured_at_utc": "2026-10-10T19:30:00Z"
+ },
+ "intelligence": {
+  "essence": "Every liveness qualification must prove three links: opportunity → fair service → verified progress (or a governed resolution). The lasso classifier names infinite execution shapes so the model checker can't hand-wave them; twelve discriminating tests separate real fairness from passing-by-luck; the canonical trace format makes every verdict re-checkable; the refinement proof connects the model to the implementation. No collapsed PASS: a single green verdict that hides which links were actually exercised is forbidden — the report must show each link's evidence. This is the methodology layer; it doesn't assume the scheduler is fair, it proves it link by link.",
+  "human_view": {
+   "meaning": "Don't just say 'the scheduler is fair.' Prove three things separately: the work got its chance, the chance was actually fair, and the fair chance actually accomplished something. One thumbs-up that hides the details is not allowed.",
+   "why_it_matters": "This is where fairness claims become checkable. Without it, 'verified fair' is a slogan."
+  },
+  "simple_view": {
+   "meaning": "Don't just say 'the scheduler is fair.' Prove three things separately: the work got its chance, the chance was actually fair, and the fair chance actually accomplished something. One thumbs-up that hides the details is not allowed."
+  },
+  "naya_view": {
+   "directive": "Prove the three links separately with the lasso classifier and the twelve tests. Emit the canonical trace for every verdict. Forbid collapsed PASS verdicts — each link shows its evidence or the qualification fails. Connect model to implementation with the refinement proof."
+  },
+  "ai_view": {
+   "specification": "verify(scheduler) = prove(opportunity) ∧ prove(fair_service) ∧ prove(progress ∨ governed_resolution); each with evidence; verdict format = canonical trace; collapsed PASS rejected.",
+   "directive": "Follow as written. This is law, not guidance."
+  },
+  "machine_view": {
+   "raw_source_separate_from_distillation": true,
+   "automatic_truth_ceiling": "CANDIDATE",
+   "authority_inheritance": false,
+   "law_id": "SN-0771",
+   "status": "SPEC_BUILT_TESTED_NOT_ACTIVATED",
+   "spec_only": "Spec-only by design; live KNOW/LAW/ACT wiring parked for the Human Director's word. No production claim.",
+   "test_evidence": "In build 2026-10-10: lasso classifier, 12 discriminating tests, canonical trace, refinement proof, 3-broken-scheduler fixture; assumption-hygiene layer folded in during the build."
+  },
+  "learning_lesson": "Status 2026-10-10 ~20:25 UTC: verification coordinator building (lasso classifier, 12 tests, canonical trace, refinement proof, 3-broken-scheduler fixture); assumption-hygiene layer (SN-0772) folded in during the build.",
+  "decisions": [
+   "Shawn's word ratifies the teaching. His word IS the verification; no second verification of the lesson itself is permitted (Verification Law).",
+   "Branch naya5/fairness-verification, in build 2026-10-10."
+  ],
+  "connections": [
+   {
+    "type": "METHOD_FOR",
+    "target": "SN-0769/0770 Fairness — the proof methodology for the guarantees."
+   },
+   {
+    "type": "USES",
+    "target": "SN-0772 Assumption hygiene — the honesty boundary of every proof."
+   },
+   {
+    "type": "FEEDS",
+    "target": "SN-0768 Progress — the third link's measure."
+   }
+  ],
+  "uncertainty": "Test contents and trace schema are implementer-defined; the three links and the no-collapsed-PASS rule are fixed.",
+  "applicability": "Every seat that verifies or cites a fairness qualification.",
+  "epistemic_state": "RATIFIED",
+  "falsifier": "Falsified if a collapsed PASS is issued, or a link is asserted without its evidence.",
+  "measurement_contract": "Track verdicts by link-evidence completeness; sample traces for re-verification.",
+  "successor_effect": "A cold successor verifying a scheduler produces the three-link trace — and rejects any 'fair' claim that can't show all three."
+ }
+}

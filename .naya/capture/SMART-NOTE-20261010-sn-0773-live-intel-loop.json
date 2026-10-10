@@ -1,0 +1,70 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-0773",
+ "capture_id": "20261010-sn-0773-live-intel-loop",
+ "canonical_intent": "CAPTURE_DURABLE_LAW",
+ "category": "GOVERNANCE",
+ "topic": "OPERATING_MODEL",
+ "subtopic": "STANDING_OPERATION",
+ "title": "The Live Intel Loop — input → understand → apply, continuously, while he speaks",
+ "projection": {
+  "publication_scope": "PUBLIC_DERIVED_VIEW",
+  "human_director_authorized_publication": true,
+  "category_slug": "SYSTEM-INTELLIGENCE",
+  "topic_slug": "GOVERNANCE",
+  "subtopic_slug": "LAW-IS-CODE"
+ },
+ "lifecycle_state": "ACTIVE",
+ "source": {
+  "source_type": "human_director_ratification",
+  "source_reference": "Shawn's explicit teaching, main chat, 2026-10-10. Filed same-evening per his standing law: his word IS the verification (Verification Law); filed immediately, not queued.",
+  "captured_at": "2026-10-10",
+  "captured_at_utc": "2026-10-10T19:30:00Z"
+ },
+ "intelligence": {
+  "essence": "Shawn's standing operation, in his words: as he speaks, the loop runs continuously — input → understand → apply → input → understand → apply, over and over, in live time. No batching, no queue, no waiting. He talks, the intelligence is captured into the system immediately (his word is the verification). It is understood: align-checked against the North Star, de-duplicated against in-flight work. It is applied: agents deployed, building while he's still talking. Then the next intel arrives and the loop runs again. The conversation IS the work order stream. His voice and the work happen at the same time.",
+  "human_view": {
+   "meaning": "When he talks, we don't take notes for later — we capture it, check it makes sense, check we're not already doing it, and start building it while he's still speaking. His voice and the work are the same stream.",
+   "why_it_matters": "This is the operating system of the whole team. Everything tonight — 23 frameworks filed and built the same evening — ran on this loop."
+  },
+  "simple_view": {
+   "meaning": "When he talks, we don't take notes for later — we capture it, check it makes sense, check we're not already doing it, and start building it while he's still speaking. His voice and the work are the same stream."
+  },
+  "naya_view": {
+   "directive": "Run the loop on every intel, in order: capture immediately (his word is verification), align-check against the North Star, de-duplicate against in-flight work, implement with a clear brief, prove with tests and independent verification, report only genuine gates. Never let intel pile up waiting for a processing step."
+  },
+  "ai_view": {
+   "specification": "loop: on(intel): capture(); align_check(NorthStar); dedup(inflight); implement(); prove(); report(gates_only). No batching; no queue.",
+   "directive": "Follow as written. This is law, not guidance. Batching his intel is a law violation."
+  },
+  "machine_view": {
+   "raw_source_separate_from_distillation": true,
+   "automatic_truth_ceiling": "CANDIDATE",
+   "authority_inheritance": false,
+   "law_id": "SN-0773",
+   "status": "STANDING_LAW_RATIFIED_ACTIVE",
+   "spec_only": "Spec-only by design; live KNOW/LAW/ACT wiring parked for the Human Director's word. No production claim.",
+   "test_evidence": "Standing operation since 2026-10-10; tonight's 27-note batch is the first full execution of the loop."
+  },
+  "learning_lesson": "Tonight is the proof: ~23 frameworks arrived as voice-length messages and were specified, tested, and filed the same evening — including this note, filed by the loop, about the loop.",
+  "decisions": [
+   "Shawn's word ratifies the teaching. His word IS the verification; no second verification of the lesson itself is permitted (Verification Law). Standing operation since 2026-10-10."
+  ],
+  "connections": [
+   {
+    "type": "OPERATES",
+    "target": "All 27 notes in this batch — each was captured, align-checked, de-duplicated, and filed by this loop."
+   },
+   {
+    "type": "RELATED",
+    "target": "SN-0776 His intel is live system input — the capture half of the loop."
+   }
+  ],
+  "uncertainty": "The loop assumes his intel arrives in processable form; extremely long single messages may be split across loop iterations without violating continuity.",
+  "applicability": "Every Naya, every conversation, every intel, forever.",
+  "epistemic_state": "RATIFIED",
+  "falsifier": "Falsified if intel is found queued unprocessed while the team idles, or a framework is built without align-check or dedup.",
+  "measurement_contract": "Track intel-to-implementation latency; every intel must resolve to captured/understood/applied or an explicit deferral with reason.",
+  "successor_effect": "A cold successor in its first conversation runs the loop on the first intel it receives — capture, check, dedup, build — without being taught."
+ }
+}

@@ -1,0 +1,71 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-0755",
+ "capture_id": "20261010-sn-0755-drift-canary-system",
+ "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+ "category": "SYSTEM_INTELLIGENCE",
+ "topic": "EVALUATION_INTEGRITY",
+ "subtopic": "EXPOSURE_AUDIT",
+ "title": "Drift Detection & Canary Integrity — calibration fingerprint, three monitoring loops, evaluation firewall, five integrity states",
+ "projection": {
+  "publication_scope": "PUBLIC_DERIVED_VIEW",
+  "human_director_authorized_publication": true,
+  "category_slug": "SYSTEM-INTELLIGENCE",
+  "topic_slug": "GOVERNANCE",
+  "subtopic_slug": "LAW-IS-CODE"
+ },
+ "lifecycle_state": "ACTIVE",
+ "source": {
+  "source_type": "human_director_ratification",
+  "source_reference": "Shawn's explicit teaching, main chat, 2026-10-10. Filed same-evening per his standing law: his word IS the verification (Verification Law); filed immediately, not queued.",
+  "captured_at": "2026-10-10",
+  "captured_at_utc": "2026-10-10T19:30:00Z"
+ },
+ "intelligence": {
+  "essence": "You cannot trust a test the system has already seen the answers to. The drift-canary system keeps a 12-field calibration fingerprint of every evaluation, runs three monitoring loops (input drift, behavior drift, exposure drift), and maintains an evaluation firewall between test content and training/capture material. Canaries come in fixed, rolling, and adversarial types, in open or sealed modes. Every canary family carries one of five integrity states, and exposure budgets bound how much of any test may ever appear in non-test contexts. The exposure audit of 2026-10-10 is the standing proof this is real: 218 test files were found embedding answer keys inline — usable for regression, useless for blind proof. Only the sealed key QUAL-20261010-CIQ-001 was clean.",
+  "human_view": {
+   "meaning": "Tests only prove something if the answers are secret. We checked every test file and found 218 with the answers visible — so we built a system that watches for leaked answers, seals the important tests, and quarantines anything compromised.",
+   "why_it_matters": "This is the immune system of all verification. Every 'proof' in the stack downstream depends on tests whose integrity this system guards."
+  },
+  "simple_view": {
+   "meaning": "Tests only prove something if the answers are secret. We checked every test file and found 218 with the answers visible — so we built a system that watches for leaked answers, seals the important tests, and quarantines anything compromised."
+  },
+  "naya_view": {
+   "directive": "Fingerprint every evaluation (12 fields). Run the three monitoring loops continuously. Keep test content behind the evaluation firewall — never in capture, training, or note material. On exposure detection: set the integrity state, enforce the exposure budget, and downgrade the family's proof value immediately. Blind proof requires sealed canaries; exposed families are regression-only."
+  },
+  "ai_view": {
+   "specification": "canary = (type ∈ {fixed, rolling, adversarial}, mode ∈ {open, sealed}, integrity ∈ 5 states, exposure_budget). Detection: 12-field fingerprint comparison across the three loops. Violation → integrity state transition + budget enforcement.",
+   "directive": "Follow as written. This is law, not guidance. Exposed test families must never be cited as blind proof."
+  },
+  "machine_view": {
+   "raw_source_separate_from_distillation": true,
+   "automatic_truth_ceiling": "CANDIDATE",
+   "authority_inheritance": false,
+   "law_id": "SN-0755",
+   "status": "SPEC_BUILT_TESTED_NOT_ACTIVATED",
+   "spec_only": "Spec-only by design; live KNOW/LAW/ACT wiring parked for the Human Director's word. No production claim.",
+   "test_evidence": "Drift and canary spec: 64/64 tests; 2026-10-10 exposure audit found 218 test files EXPOSED, only the sealed key clean."
+  },
+  "learning_lesson": "The 2026-10-10 exposure audit: 218 files EXPOSED (inline answer keys), verifier tests encode inputs+outputs (EXPOSED), fixtures and root receipts publish expected outcomes (EXPOSED). Sealed-fixture lane built as the repair: 50 SHA-256 commitments, keys in hidden_files, 17/17 green.",
+  "decisions": [
+   "Shawn's word ratifies the teaching. His word IS the verification; no second verification of the lesson itself is permitted (Verification Law).",
+   "Branch naya5/drift-canary-system, 64/64 tests green, spec-only by design."
+  ],
+  "connections": [
+   {
+    "type": "GOVERNS",
+    "target": "All downstream proof claims — no qualification may cite a compromised canary family."
+   },
+   {
+    "type": "REPAIRED_BY",
+    "target": "Sealed-fixture lane (2026-10-10): 17/17 green, 50 SHA-256 commitments."
+   }
+  ],
+  "uncertainty": "Freshness predicate (max proof age) is the Director's open question; integrity-state transition thresholds are implementer-defined.",
+  "applicability": "Every seat that designs, runs, or cites evaluations.",
+  "epistemic_state": "RATIFIED",
+  "falsifier": "Falsified if an exposed family is cited as blind proof, or if drift goes undetected past the monitoring loops.",
+  "measurement_contract": "Re-run exposure audits on schedule; track integrity-state transitions and budget consumption per family.",
+  "successor_effect": "A cold successor citing a test checks its integrity state first — and refuses to claim blind proof from an EXPOSED family."
+ }
+}

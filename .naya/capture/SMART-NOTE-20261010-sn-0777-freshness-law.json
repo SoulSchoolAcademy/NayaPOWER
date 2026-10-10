@@ -1,0 +1,78 @@
+{
+ "canonical_intent": "CAPTURE_DURABLE_LAW",
+ "capture_id": "20261010-sn-0777-freshness-law",
+ "category": "GOVERNANCE",
+ "intelligence": {
+  "ai_view": {
+   "directive": "Follow as written. This is law, not guidance. Hoarding old certificates is the opposite of intelligence.",
+   "specification": "On any dependency change of a proof, mark the proof OUTDATED (history, not authority) and re-prove against the current world. Never set time-based expiry; never govern a current decision with a proof whose world has changed. Retention rule: preserve as record, release as authority."
+  },
+  "applicability": "Every Naya, every proof, every qualification, forever.",
+  "connections": [
+   {
+    "target": "SN-0763 Obligation versioning — change classes are the machinery that detects the changes this law responds to.",
+    "type": "USES"
+   },
+   {
+    "target": "SN-0750 Compounding — Durability gate: a lesson whose world changed must re-earn its standing.",
+    "type": "RELATED"
+   },
+   {
+    "target": "SN-0753 Reopenable interpretation — old readings preserved as history, same instinct.",
+    "type": "RELATED"
+   }
+  ],
+  "decisions": [
+   "Shawn's explicit teaching, main chat, 2026-10-10, in direct answer to the open question 'how fresh must proof be before it expires.'",
+   "Decided 2026-10-10 ~19:08 UTC; designated CONSTITUTIONAL by the Director — it outranks every other law except do-no-harm.",
+   "His words on it: 'good for our health, good for our intelligence.'",
+   "His word IS the verification (Verification Law). Standing constitutional law since 2026-10-10.",
+   "The Director specifically asked that it be smart-noted and shared with the whole team."
+  ],
+  "epistemic_state": "RATIFIED",
+  "essence": "CONSTITUTIONAL. Proofs don't expire by time. They expire by change. The system always evaluates proof against the world as it is NOW — never against the world as it was. An old proof is history, not authority: preserved as record, never governing a current decision. When anything a proof depended on changes, that proof is outdated — let it go and re-prove. The one sentence: we learn and we grow and we let everything else go. Hoarding old certificates is the opposite of intelligence.",
+  "falsifier": "Falsified if a proof is found governing a current decision after its dependencies changed, or if proofs are expired by elapsed time alone while their world is unchanged.",
+  "human_view": {
+   "meaning": "A proof doesn't go stale because it's old — it goes stale because the world changed underneath it. We always judge proof against how things are right now. Old proof becomes history: kept as a record, but it never gets to make today's decisions.",
+   "why_it_matters": "Answers the open freshness question with no timers to game and no certificates to hoard. Keeps the system's authority always current. His words on it: 'good for our health, good for our intelligence.'"
+  },
+  "learning_lesson": "Shawn's one-sentence version — 'we learn and we grow and we let everything else go' — is the whole law. Letting go is the skill; hoarding is the failure mode.",
+  "machine_view": {
+   "authority_inheritance": false,
+   "automatic_truth_ceiling": "CANDIDATE",
+   "law_id": "SN-0777",
+   "raw_source_separate_from_distillation": true,
+   "spec_only": "Standing law, active immediately. No spec branch needed; this governs how all other proofs are evaluated.",
+   "status": "CONSTITUTIONAL_RATIFIED_ACTIVE",
+   "test_evidence": "None required: this is a definitional law answering the Director's direct question, not an empirical claim."
+  },
+  "measurement_contract": "Track proofs marked OUTDATED by dependency change vs re-proven; audit that no current decision cites a proof whose world changed. A proof that never gets re-examined after its dependencies change is a violation, not stability.",
+  "naya_view": {
+   "directive": "Never expire proof by clock. On any change to what a proof depended on, mark it OUTDATED immediately, keep it as history, and re-prove against the current world before it governs anything. A current decision cites only current proof."
+  },
+  "simple_view": {
+   "meaning": "Old proof doesn't expire like milk. It expires when the world changes. We always check against right now."
+  },
+  "successor_effect": "A cold successor never asks 'how old is this proof' — it asks 'has anything it depended on changed' — and lets go of outdated proof without being told.",
+  "uncertainty": "None material on the principle. Dependency-tracking completeness (knowing everything a proof depended on) is the implementation challenge; the law fixes the rule, not the tracker."
+ },
+ "lifecycle_state": "ACTIVE",
+ "projection": {
+  "category_slug": "SYSTEM-INTELLIGENCE",
+  "human_director_authorized_publication": true,
+  "publication_scope": "PUBLIC_DERIVED_VIEW",
+  "subtopic_slug": "LAW-IS-CODE",
+  "topic_slug": "GOVERNANCE"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-0777",
+ "source": {
+  "captured_at": "2026-10-10",
+  "captured_at_utc": "2026-10-10T19:08:00Z",
+  "source_reference": "Shawn's explicit teaching, main chat, 2026-10-10, answering the open freshness question. His word IS the verification.",
+  "source_type": "human_director_ratification"
+ },
+ "subtopic": "RATIFIED_LAWS",
+ "title": "The Freshness Law — proofs expire by change, not by time",
+ "topic": "CONSTITUTIONAL_LAW"
+}

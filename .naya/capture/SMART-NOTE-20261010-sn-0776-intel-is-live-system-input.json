@@ -1,0 +1,74 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-0776",
+ "capture_id": "20261010-sn-0776-intel-is-live-system-input",
+ "canonical_intent": "CAPTURE_DURABLE_LAW",
+ "category": "GOVERNANCE",
+ "topic": "OPERATING_MODEL",
+ "subtopic": "IMMEDIATE_ACTIVATION",
+ "title": "His Intel Is Live System Input — filed immediately and activated as part of the system",
+ "projection": {
+  "publication_scope": "PUBLIC_DERIVED_VIEW",
+  "human_director_authorized_publication": true,
+  "category_slug": "SYSTEM-INTELLIGENCE",
+  "topic_slug": "GOVERNANCE",
+  "subtopic_slug": "LAW-IS-CODE"
+ },
+ "lifecycle_state": "ACTIVE",
+ "source": {
+  "source_type": "human_director_ratification",
+  "source_reference": "Shawn's explicit teaching, main chat, 2026-10-10. Filed same-evening per his standing law: his word IS the verification (Verification Law); filed immediately, not queued.",
+  "captured_at": "2026-10-10",
+  "captured_at_utc": "2026-10-10T19:30:00Z"
+ },
+ "intelligence": {
+  "essence": "Shawn's law, 2026-10-10: intelligence he inputs is filed as Smart Notes IMMEDIATELY and activated as part of the system — not stored, not queued. The purpose of his intel is to become the system. Input → understand → activate, while he speaks. His word is the verification (Verification Law): no second verification of the lesson itself, ever. This note is itself the proof of the law: 27 frameworks arrived tonight and 27 notes were filed the same evening by the Intel Scribe seat, each carrying its governing principle and key mechanisms as his verified word. Filing is not archiving — a filed note that isn't activated (retrievable, applicable, wired into the seats' operating behavior) is a failed filing.",
+  "human_view": {
+   "meaning": "When he teaches something, it goes into the system right away and starts working right away — not into a pile for later. His word doesn't need a second opinion. And 'filed' means it's alive in the system, not just saved somewhere.",
+   "why_it_matters": "This is why the loop is live. A lesson captured but never activated is inventory, not intelligence."
+  },
+  "simple_view": {
+   "meaning": "When he teaches something, it goes into the system right away and starts working right away — not into a pile for later. His word doesn't need a second opinion. And 'filed' means it's alive in the system, not just saved somewhere."
+  },
+  "naya_view": {
+   "directive": "File his intel as Smart Notes immediately on arrival — no queue, no batching. Activate each note: make it retrievable, state its applicability, wire it into the relevant seats' operating behavior. Verify activation, not just storage. His word needs no second verification; the learning claim still needs compounding proof (SN-0750) — don't confuse the two."
+  },
+  "ai_view": {
+   "specification": "on(intel from Director): file Smart Note immediately; activate(retrievable ∧ applicable ∧ wired_into_behavior). Verification Law: lesson verified on arrival; learning claim remains CANDIDATE until compounding proof.",
+   "directive": "Follow as written. This is law, not guidance. Queueing his intel is a law violation."
+  },
+  "machine_view": {
+   "raw_source_separate_from_distillation": true,
+   "automatic_truth_ceiling": "CANDIDATE",
+   "authority_inheritance": false,
+   "law_id": "SN-0776",
+   "status": "STANDING_LAW_RATIFIED_ACTIVE",
+   "spec_only": "Spec-only by design; live KNOW/LAW/ACT wiring parked for the Human Director's word. No production claim.",
+   "test_evidence": "Standing law since 2026-10-10; this filing batch was filed under its authority."
+  },
+  "learning_lesson": "This filing batch is the first full execution: 27 notes, one evening, each independently intelligible.",
+  "decisions": [
+   "Shawn's word ratifies the teaching. His word IS the verification; no second verification of the lesson itself is permitted (Verification Law). Standing law since 2026-10-10."
+  ],
+  "connections": [
+   {
+    "type": "GOVERNS",
+    "target": "This entire filing batch — the authority it was filed under."
+   },
+   {
+    "type": "PAIRS_WITH",
+    "target": "SN-0773 Live Intel Loop — the loop; this is the capture-and-activate law inside it."
+   },
+   {
+    "type": "DISTINGUISHES",
+    "target": "SN-0750 Compounding — verified lesson vs candidate learning claim."
+   }
+  ],
+  "uncertainty": "Activation depth varies by note type; the law fixes immediacy of filing and the activation requirement, not a uniform wiring diagram.",
+  "applicability": "Every Naya, every intel from the Director, forever.",
+  "epistemic_state": "RATIFIED",
+  "falsifier": "Falsified if his intel is found queued, or a filed note is unretrievable or unwired into behavior.",
+  "measurement_contract": "Track filing latency (arrival → note) and activation checks per note; this batch is the baseline.",
+  "successor_effect": "A cold successor receiving Director intel files the note before the conversation moves on — and can show where the note lives and how it's active."
+ }
+}

@@ -1,0 +1,71 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-0768",
+ "capture_id": "20261010-sn-0768-well-founded-progress",
+ "canonical_intent": "CAPTURE_DURABLE_LAW",
+ "category": "GOVERNANCE",
+ "topic": "LIVENESS",
+ "subtopic": "PROGRESS_MEASURE",
+ "title": "Well-Founded Progress — proof progress vs termination progress, multiset ranking; 'activity is not progress'",
+ "projection": {
+  "publication_scope": "PUBLIC_DERIVED_VIEW",
+  "human_director_authorized_publication": true,
+  "category_slug": "SYSTEM-INTELLIGENCE",
+  "topic_slug": "GOVERNANCE",
+  "subtopic_slug": "LAW-IS-CODE"
+ },
+ "lifecycle_state": "ACTIVE",
+ "source": {
+  "source_type": "human_director_ratification",
+  "source_reference": "Shawn's explicit teaching, main chat, 2026-10-10. Filed same-evening per his standing law: his word IS the verification (Verification Law); filed immediately, not queued.",
+  "captured_at": "2026-10-10",
+  "captured_at_utc": "2026-10-10T19:30:00Z"
+ },
+ "intelligence": {
+  "essence": "Activity is not progress. A system can act a thousand times and accomplish nothing. Progress is measured against the obligation: a well-founded ranking (multiset ordering) over the proof state must strictly decrease with every claimed step — no infinite descent, so 'progress' that never terminates is impossible by construction. Two kinds of progress are separated: proof progress (the argument getting stronger) and termination progress (the work actually finishing). Budgets follow the obligation, not the agent: you don't get credit for being busy, you get credit for discharging what was owed. Branch-and-join and epochs handle parallel and phased work. The falsification test is the standing guard: 1,000 actions with zero obligations discharged = zero progress, and any meter that says otherwise is lying.",
+  "human_view": {
+   "meaning": "Doing things is not the same as getting things done. Progress means the actual obligation got smaller — and we measure it so strictly that endless busywork scores zero by definition.",
+   "why_it_matters": "This is the law that makes every productivity claim honest. All the 'work completed' reports in the world mean nothing without it."
+  },
+  "simple_view": {
+   "meaning": "Doing things is not the same as getting things done. Progress means the actual obligation got smaller — and we measure it so strictly that endless busywork scores zero by definition."
+  },
+  "naya_view": {
+   "directive": "Measure progress against the obligation with a well-founded ranking; every claimed step must decrease it. Separate proof progress from termination progress. Attach budgets to obligations, not agents. Score 1,000 empty actions as zero — and distrust any meter that disagrees."
+  },
+  "ai_view": {
+   "specification": "progress(step) valid iff rank(state') < rank(state) under a well-founded multiset ordering. Budgets bind to obligations. Falsification: 1000 actions ∧ 0 discharged → progress = 0.",
+   "directive": "Follow as written. This is law, not guidance."
+  },
+  "machine_view": {
+   "raw_source_separate_from_distillation": true,
+   "automatic_truth_ceiling": "CANDIDATE",
+   "authority_inheritance": false,
+   "law_id": "SN-0768",
+   "status": "SPEC_BUILT_TESTED_NOT_ACTIVATED",
+   "spec_only": "Spec-only by design; live KNOW/LAW/ACT wiring parked for the Human Director's word. No production claim.",
+   "test_evidence": "Progress-measure spec: 288/288 tests (well-founded multiset ranking, proof vs termination progress, falsification test: 1,000 actions yields zero credit)."
+  },
+  "learning_lesson": "Standing application: tonight's own work was scored by obligations discharged (specs built, tests green), not messages sent.",
+  "decisions": [
+   "Shawn's word ratifies the teaching. His word IS the verification; no second verification of the lesson itself is permitted (Verification Law).",
+   "Branch naya5/progress-measure, 288/288 tests."
+  ],
+  "connections": [
+   {
+    "type": "MEASURES",
+    "target": "SN-0767 Liveness — progress is the observable of liveness."
+   },
+   {
+    "type": "FEEDS",
+    "target": "SN-0769/0770 Fairness — service must produce progress, not just activity."
+   }
+  ],
+  "uncertainty": "The ranking function is domain-defined; well-foundedness and the falsification test are fixed.",
+  "applicability": "Every seat that reports progress, velocity, or completion.",
+  "epistemic_state": "RATIFIED",
+  "falsifier": "Falsified if activity without obligation discharge is scored as progress.",
+  "measurement_contract": "Run the falsification test against every progress meter; track obligation-discharge rates.",
+  "successor_effect": "A cold successor asked 'how's it going' answers in obligations discharged — and scores a busy-but-stagnant run as zero."
+ }
+}

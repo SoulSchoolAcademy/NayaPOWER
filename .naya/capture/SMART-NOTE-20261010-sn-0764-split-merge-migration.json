@@ -1,0 +1,71 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-0764",
+ "capture_id": "20261010-sn-0764-split-merge-migration",
+ "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+ "category": "SYSTEM_INTELLIGENCE",
+ "topic": "EPISTEMIC_COMPOSITION",
+ "subtopic": "MIGRATION_CERTIFICATES",
+ "title": "Split/Merge Migration — migration certificates, proof mapping; 'splitting must not multiply proof, merging must not manufacture integration'",
+ "projection": {
+  "publication_scope": "PUBLIC_DERIVED_VIEW",
+  "human_director_authorized_publication": true,
+  "category_slug": "SYSTEM-INTELLIGENCE",
+  "topic_slug": "GOVERNANCE",
+  "subtopic_slug": "LAW-IS-CODE"
+ },
+ "lifecycle_state": "ACTIVE",
+ "source": {
+  "source_type": "human_director_ratification",
+  "source_reference": "Shawn's explicit teaching, main chat, 2026-10-10. Filed same-evening per his standing law: his word IS the verification (Verification Law); filed immediately, not queued.",
+  "captured_at": "2026-10-10",
+  "captured_at_utc": "2026-10-10T19:30:00Z"
+ },
+ "intelligence": {
+  "essence": "When one obligation splits into two, or two merge into one, the proof must migrate honestly. Every migration carries a certificate: a proof mapping that says, for each old proof, whether it ENTAILS, PARTIALLY_SUPPORTS, DOES_NOT_SUPPORT, or is UNDETERMINED for each new obligation. Two-direction audit: forward (is the new obligation's proof sufficient?) and backward (is the old proof faithfully represented, not inflated?). 'Splitting must not multiply proof' — one proof doesn't become two proofs by being cited twice. 'Merging must not manufacture integration' — two component proofs don't become a system proof by being stapled together. Multi-party invariants: join-key binding and race handling (T1–T4) for migrations involving several parties.",
+  "human_view": {
+   "meaning": "When one rule becomes two, the proof doesn't double. When two rules become one, stapling their proofs together doesn't prove the combination. Every move of proof from old rules to new rules gets a certificate saying exactly what survived the move.",
+   "why_it_matters": "Requirement changes are constant; without migration discipline every refactor silently voids or inflates the proof base."
+  },
+  "simple_view": {
+   "meaning": "When one rule becomes two, the proof doesn't double. When two rules become one, stapling their proofs together doesn't prove the combination. Every move of proof from old rules to new rules gets a certificate saying exactly what survived the move."
+  },
+  "naya_view": {
+   "directive": "Issue a migration certificate for every split/merge. Map each old proof to each new obligation with one of the four verdicts. Audit both directions. Never double-count a split proof; never claim integration from a merged proof."
+  },
+  "ai_view": {
+   "specification": "migrate(proof, obligation_old → obligation_new) = certificate(mapping: proof → {ENTAILS, PARTIALLY_SUPPORTS, DOES_NOT_SUPPORT, UNDETERMINED}). Forward audit: sufficiency. Backward audit: fidelity. Split: |proofs| conserved. Merge: integration proof required separately.",
+   "directive": "Follow as written. This is law, not guidance."
+  },
+  "machine_view": {
+   "raw_source_separate_from_distillation": true,
+   "automatic_truth_ceiling": "CANDIDATE",
+   "authority_inheritance": false,
+   "law_id": "SN-0764",
+   "status": "SPEC_BUILT_TESTED_NOT_ACTIVATED",
+   "spec_only": "Spec-only by design; live KNOW/LAW/ACT wiring parked for the Human Director's word. No production claim.",
+   "test_evidence": "Migration spec: 205/205 tests (migration certificates, four mapping verdicts, two-direction audit; D-101/D-102 join-key mismatch caught)."
+  },
+  "learning_lesson": "Standing case: the D-101/D-102 join-key mismatch was caught by the two-direction audit — the mechanism proving its worth on arrival.",
+  "decisions": [
+   "Shawn's word ratifies the teaching. His word IS the verification; no second verification of the lesson itself is permitted (Verification Law).",
+   "Branch naya5/proof-migration, 205/205 tests."
+  ],
+  "connections": [
+   {
+    "type": "USES",
+    "target": "SN-0763 Obligation versioning — migrations are what version changes require."
+   },
+   {
+    "type": "FEEDS",
+    "target": "SN-0765 Cross-obligation interactions — merged obligations need interaction proof."
+   }
+  ],
+  "uncertainty": "Certificate schema is implementer-defined; the four mapping verdicts and the conservation rules are fixed.",
+  "applicability": "Every seat that refactors, splits, merges, or renumbers obligations or requirements.",
+  "epistemic_state": "RATIFIED",
+  "falsifier": "Falsified if a split proof is cited twice as two proofs, or a merge is qualified without separate integration proof.",
+  "measurement_contract": "Track migrations with certificates; audit proof-count conservation across splits.",
+  "successor_effect": "A cold successor splitting an obligation re-maps every proof with a certificate — and refuses to let one proof become two."
+ }
+}
