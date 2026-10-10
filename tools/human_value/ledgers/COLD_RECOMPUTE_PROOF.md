@@ -174,3 +174,33 @@ across seven real joins, zero overprediction flags. /tmp/hv-cold-2141 removed af
 itself remains unmet; the cold-recompute proof above is reproducibility, not
 independent human verification. DAI series is ~3.5 days of real data; trend
 readable after 2+ weeks.
+
+## Ninth cold-recompute proof — n=8 loop (2026-10-10 ~04:00 UTC)
+
+Fresh clone of `naya5/human-value-events-20261010-0341` @ `b4be5ec6afcbf8afe78bf4fdf82355a0c833eb57`
+(rebased onto live tip `8a41a18e2` before push — the DEC-007 carry-forward commits
+`9c088e1e`/`3c94b318` and `0ca7c572` restored main's ledger from 46 to the verified 57-event state,
+plus the n=8 accumulation `b4be5ec6`), same procedure, no access to the originating
+workspace:
+
+| Check | Originating worktree | Cold clone | Match |
+|---|---|---|---|
+| HEAD | `b4be5ec6` | `b4be5ec6` | ✅ |
+| `ledger_sha256` | `sha256:70b2bf77…1dff48b` | (same) | ✅ |
+| `hv_per_day_total` | 10.2856 | 10.2856 | ✅ |
+| `dai_per_day` | 0.5714 | 0.5714 | ✅ |
+| `events_validated` | 71 | 71 | ✅ |
+| `calibration.n` / MAE / bias / overprediction | 8 / 0.0625 / +0.0625 / false | 8 / 0.0625 / +0.0625 / false | ✅ |
+| test suite (real ledger + instrument) | 36 passed | 36 passed | ✅ |
+
+**Verdict:** the n=8 measurement (DEC-008, predicted +7.0 at 03:50 UTC before
+any ledger change, observed +7.0) is cold-recomputable at the pushed SHA. The
+calibration series now reads MAE 0.5 → 0.25 → 0.1667 → 0.125 → 0.1 → 0.0833 → 0.0714 → 0.0625
+across eight real joins, signed bias +0.0625 (the single 6.5 prediction at DEC-001 still
+dominates the bias term), zero overprediction flags. /tmp/hv-cold-0341 removed after verification.
+
+**State note (unchanged):** no independent seat has yet cold-recomputed the ledger
+per this file and posted a verdict on #1604 — reproducibility is proven, independent
+human verification of the ledger itself remains the binding 8.0 gate. DAI series is
+~4 days of real data (0.5714/day this window: two genuine attention demands — #2068
+awaiting Shawn's click, prod-readiness C10 awaiting his word); trend readable after 2+ weeks.
