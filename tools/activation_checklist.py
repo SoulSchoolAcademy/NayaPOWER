@@ -116,20 +116,21 @@ CURRICULUM_LESSON_PINS = {
 }
 
 # Pinned 2026-10-10 from origin/brain-build/operating-code-v2 @
-# 8a93355173141bd8b1d8ab40e2a21dac91610fb4 (PR #2087, OPEN/unmerged).
+# 22b84419ed500f91d677679c153c0599e60ca33c (PR #2087, OPEN/unmerged).
+# Re-pinned: branch moved 8a933551 -> 22b84419 (V2 files changed).
 # Until #2087 merges, run with --v2-root pointing at a checkout of that
 # branch (or pass --v2-expect to re-pin deliberately). After merge, re-pin
 # to the main-tip bytes — the pin source string must name the new ref.
 V2_PIN_SOURCE = (
     "origin/brain-build/operating-code-v2 @ "
-    "8a93355173141bd8b1d8ab40e2a21dac91610fb4 (PR #2087, unmerged 2026-10-10)")
+    "22b84419ed500f91d677679c153c0599e60ca33c (PR #2087, unmerged 2026-10-10)")
 V2_FILE_PINS = {
     "BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2.human.md":
-        "b83595c71f42615d22b5e2b49972acc9cb309ef0ce893f12f2979f32716423ec",
+        "f2a5f81e6d10b9749e3159267411c615c65353845b2d02aa88e98c8115d13537",
     "BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2.ai.md":
-        "afedf3b6cf23851063499c581e3ff6a74eb0444f11e82c2f8868a29ebf732d16",
+        "e4489a40016f05932cfaeee2217b7349ce45277897b79d971e10df0b098fddec",
     "BRAIN/01-GOVERNANCE/0008-operating-code-v2.machine.json":
-        "1c12d07a4abb5e35803324515e3d0024daa04ece02942e09713008edb9543e79",
+        "c1bdf12ad21b990b34329a2a2809c8be4488e9fe6d87539a0f1508b2c9f8ce8b",
 }
 
 
