@@ -237,6 +237,71 @@ def list_all():
         print(f"{iid:<40} v{entry['current_version']:<5} {entry['review_state']:<12} {len(entry['challenges'])}")
 
 
+# Label taxonomy (Naya 1's scarce-evidence calibration):
+# Never collapse uncertain labels. Unreviewed ≠ valid. Absence of harm ≠ proof of safety.
+ADJUDICATION_LABELS = {
+    "CONFIRMED_MATERIAL_ERROR": "Independently established defect",
+    "CONFIRMED_VALID": "Original resolution independently supported",
+    "CONTESTED": "Qualified reviewers disagree",
+    "INDETERMINATE": "Available evidence cannot settle the case",
+    "CENSORED": "Relevant outcome was prevented or cannot be observed",
+    "NOT_REVIEWED": "No adequate adjudication has occurred",
+}
+
+# Rule: unreviewed cases must NEVER automatically become negative examples.
+# A challenge with NOT_REVIEWED status cannot be used as evidence that the
+# original interpretation was correct.
+
+
+def adjudicate(interp_id, challenge_id, label, reviewer="unknown", notes=""):
+    """Adjudicate a challenge with an explicit uncertainty-preserving label."""
+    if label not in ADJUDICATION_LABELS:
+        print(f"ERROR: Unknown label '{label}'. Valid: {', '.join(ADJUDICATION_LABELS.keys())}")
+        sys.exit(1)
+
+    reg = load_registry()
+    if interp_id not in reg:
+        print(f"ERROR: {interp_id} not found.")
+        sys.exit(1)
+
+    entry = reg[interp_id]
+    found = False
+    for c in entry["challenges"]:
+        if c["challenge_id"] == challenge_id:
+            c["adjudication"] = label
+            c["adjudication_notes"] = notes[:500]
+            c["reviewer"] = reviewer
+            c["adjudicated_at"] = datetime.now(timezone.utc).isoformat()
+            found = True
+
+            # Update challenge status based on label
+            if label == "CONFIRMED_MATERIAL_ERROR":
+                c["status"] = "CONFIRMED"
+                entry["review_state"] = "REOPENED"
+            elif label == "CONFIRMED_VALID":
+                c["status"] = "RESOLVED_VALID"
+            elif label in ("CONTESTED", "INDETERMINATE"):
+                c["status"] = "UNRESOLVED"
+                entry["review_state"] = "UNRESOLVED"
+            elif label == "CENSORED":
+                c["status"] = "CENSORED"
+            elif label == "NOT_REVIEWED":
+                c["status"] = "PENDING_REVIEW"
+                # Critical: NOT_REVIEWED does NOT confirm the original.
+                # It means we don't know yet.
+            break
+
+    if not found:
+        print(f"ERROR: Challenge {challenge_id} not found in {interp_id}.")
+        sys.exit(1)
+
+    save_registry(reg)
+    print(f"{challenge_id} adjudicated as {label}: {ADJUDICATION_LABELS[label]}")
+    if label == "NOT_REVIEWED":
+        print(f"  WARNING: This does NOT validate the original interpretation.")
+    return True
+
+
 def main():
     parser = argparse.ArgumentParser(description="Versioned interpretation registry")
     sub = parser.add_subparsers(dest="cmd", required=True)
@@ -263,6 +328,15 @@ def main():
     s = sub.add_parser("show", help="Show interpretation history")
     s.add_argument("--id", required=True)
 
+    adj = sub.add_parser("adjudicate", help="Adjudicate a challenge with uncertainty-preserving label")
+    adj.add_argument("--id", required=True)
+    adj.add_argument("--challenge", required=True)
+    adj.add_argument("--label", required=True,
+                     choices=["CONFIRMED_MATERIAL_ERROR", "CONFIRMED_VALID", "CONTESTED",
+                              "INDETERMINATE", "CENSORED", "NOT_REVIEWED"])
+    adj.add_argument("--reviewer", default="unknown")
+    adj.add_argument("--notes", default="")
+
     sub.add_parser("list", help="List all interpretations")
 
     args = parser.parse_args()
@@ -275,6 +349,8 @@ def main():
         requalify(args.id, args.new_interpretation, args.evidence)
     elif args.cmd == "show":
         show(args.id)
+    elif args.cmd == "adjudicate":
+        adjudicate(args.id, args.challenge, args.label, args.reviewer, args.notes)
     elif args.cmd == "list":
         list_all()
 
