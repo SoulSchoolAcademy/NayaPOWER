@@ -26,7 +26,9 @@ Exit codes: 0 = all PASS (WARN allowed), 1 = any FAIL, 2 = instrument error.
 
 GitHub API access: uses GITHUB_TOKEN env when present (CI). Otherwise delegates to
 the NAYA_GH_API helper script (default: ~/workspace/naya/bin/gh-api), which carries
-the credential without exposing it. With neither, C2/C3 report UNKNOWN.
+the credential without exposing it. When the API is unreachable (rate limit /
+outage), C2 falls back to the git protocol (ls-remote + fetch of the production
+ref); C3 and C9 report UNKNOWN.
 """
 from __future__ import annotations
 
@@ -117,33 +119,83 @@ def check_tip_currency() -> dict:
                         {"tip_sha": sha, "tip_subject": msg[:120]})
 
 
+def _production_stamp_via_git() -> dict | None:
+    """Git-protocol fallback for C2 when the REST API is unreachable.
+
+    Resolves refs/heads/production over the git protocol and reads the stamp
+    message from the tip commit. Returns evidence with source
+    "git-protocol-fallback", or None when the ref cannot be resolved.
+
+    Honesty bound: on a shallow clone this NEVER claims ancestry or commit
+    counts (merge-base is unreliable across shallow boundaries) — only the
+    two SHAs and the stamp message, which need no history.
+    """
+    line = git(["ls-remote", "origin", "refs/heads/production"])
+    if not line:
+        return None
+    remote_sha = line.split()[0]
+    if not SHA_RE.match(remote_sha):
+        return None
+    git(["fetch", "origin", "production", "--quiet"])
+    sha = git(["rev-parse", "origin/production"])
+    if not sha or not SHA_RE.match(sha):
+        return None
+    message = git(["log", "-1", "--format=%B", sha]) or ""
+    m = STAMP_MSG_RE.search(message)
+    shallow = git(["rev-parse", "--is-shallow-repository"]) == "true"
+    return {"production_tip": sha,
+            "stamp_message": message.strip()[:120],
+            "stamped_source_sha": m.group(1) if m else None,
+            "source": "git-protocol-fallback",
+            "shallow_clone": shallow,
+            "ls_remote_sha": remote_sha}
+
+
+def _stamp_verdict(tip_sha: str, evidence: dict) -> dict:
+    """Shared PASS/WARN verdict for the production stamp, either source."""
+    stamped_sha = evidence.get("stamped_source_sha")
+    via = "" if evidence.get("source", "rest-api") == "rest-api" else " (via git-protocol fallback)"
+    if stamped_sha == tip_sha:
+        return check_result("C2", "PASS",
+                            f"production stamped for current tip {tip_sha[:12]}{via}", evidence)
+    if stamped_sha:
+        return check_result("C2", "WARN",
+                            f"production stamped for {stamped_sha[:12]}, not current tip {tip_sha[:12]}{via}",
+                            evidence)
+    return check_result("C2", "WARN",
+                        f"production tip is not a deploy-stamp commit; cannot bind it to a main SHA{via}",
+                        evidence)
+
+
 def check_production_stamp(tip_sha: str | None) -> dict:
-    """C2 — production branch holds a deploy-stamp commit for the current tip."""
+    """C2 — production branch holds a deploy-stamp commit for the current tip.
+
+    Prefers the REST API; when unreachable, falls back to the git protocol
+    (the stamp data needs no API). The evidence records which source produced
+    it — provenance is part of the verdict.
+    """
     if not tip_sha:
         return check_result("C2", "UNKNOWN", "no tip SHA to look for",
                             {"reason": "C1 did not produce a SHA"})
     data = gh_get(f"/repos/{REPO}/branches/production")
     if data is None:
-        return check_result("C2", "UNKNOWN", "GitHub API unreachable (no credential path)",
-                            {"reason": "no_api"})
+        git_ev = _production_stamp_via_git()
+        if git_ev is None:
+            return check_result("C2", "UNKNOWN",
+                                "production branch unreadable: GitHub API unreachable "
+                                "and git-protocol fallback failed",
+                                {"reason": "no_api_no_git"})
+        git_ev["wanted_sha"] = tip_sha
+        return _stamp_verdict(tip_sha, git_ev)
     commit = (data.get("commit") or {})
     message = ((commit.get("commit") or {}).get("message") or "")
     m = STAMP_MSG_RE.search(message)
-    stamped_sha = m.group(1) if m else None
     evidence = {"production_tip": commit.get("sha"),
                 "stamp_message": message[:120],
-                "stamped_source_sha": stamped_sha,
-                "wanted_sha": tip_sha}
-    if stamped_sha == tip_sha:
-        return check_result("C2", "PASS",
-                            f"production stamped for current tip {tip_sha[:12]}", evidence)
-    if stamped_sha:
-        return check_result("C2", "WARN",
-                            f"production stamped for {stamped_sha[:12]}, not current tip {tip_sha[:12]}",
-                            evidence)
-    return check_result("C2", "WARN",
-                        "production tip is not a deploy-stamp commit; cannot bind it to a main SHA",
-                        evidence)
+                "stamped_source_sha": m.group(1) if m else None,
+                "wanted_sha": tip_sha,
+                "source": "rest-api"}
+    return _stamp_verdict(tip_sha, evidence)
 
 
 def check_workflow_health(recent: int = 12) -> dict:

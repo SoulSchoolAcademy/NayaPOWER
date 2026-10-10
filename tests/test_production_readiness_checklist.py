@@ -1,9 +1,10 @@
 """Tests for tools/production_readiness_checklist.py — the production readiness instrument.
 
-Network-dependent checks (C1 fetch, C2, C3) are NOT unit-tested here; they are
-exercised by the live run itself. These tests cover the pure logic: dispatch
-contract, standing policy, migration hygiene, workflow references, receipt path,
-and report scoring.
+Network-dependent checks (C1 fetch, C3) are NOT unit-tested here; they are
+exercised by the live run itself. C2's git-protocol fallback IS unit-tested
+below via faked gh_get/git (no real network). These tests cover the pure
+logic: dispatch contract, standing policy, migration hygiene, workflow
+references, receipt path, production-stamp fallback, and report scoring.
 """
 import json
 import sys
@@ -505,3 +506,73 @@ def test_main_json_flag_emits_pure_json(monkeypatch, capsys):
     out = capsys.readouterr().out
     assert code == 0
     assert json.loads(out)["verdict"] == "READY"  # pure JSON, no trailing text
+
+
+# ---- C2 production stamp (REST-first, git-protocol fallback) -------------------
+
+_STAMP_MSG = ("deploy: stamp Naya runtime source "
+              "00f50bb32c1c7fadfbe5cd03d0319646ab9dc0e9")
+_PROD_SHA = "acf57082f5c4ece46ac27ba04919073dbe02e396"
+_TIP_SHA = "7281ede6b07869f64e576d4d6432628c4750d5de"
+_STAMPED_SRC = "00f50bb32c1c7fadfbe5cd03d0319646ab9dc0e9"
+
+
+def _git_ok(monkeypatch, stamp_msg=_STAMP_MSG):
+    responses = {
+        ("ls-remote", "origin", "refs/heads/production"):
+            f"{_PROD_SHA}\trefs/heads/production",
+        ("fetch", "origin", "production", "--quiet"): "",
+        ("rev-parse", "origin/production"): _PROD_SHA,
+        ("log", "-1", "--format=%B", _PROD_SHA): stamp_msg,
+        ("rev-parse", "--is-shallow-repository"): "true",
+    }
+    monkeypatch.setattr(prc, "gh_get", lambda path: None)
+    monkeypatch.setattr(prc, "git", lambda args: responses.get(tuple(args)))
+
+
+def test_production_stamp_prefers_rest_api(monkeypatch):
+    monkeypatch.setattr(prc, "gh_get", lambda path: {
+        "commit": {"sha": _PROD_SHA,
+                   "commit": {"message": _STAMP_MSG.replace(_STAMPED_SRC, _TIP_SHA)}}})
+    r = prc.check_production_stamp(_TIP_SHA)
+    assert r["check"] == "C2"
+    assert r["verdict"] == "PASS", r
+    assert r["evidence"]["source"] == "rest-api"
+
+
+def test_production_stamp_git_fallback_warn_on_drift(monkeypatch):
+    _git_ok(monkeypatch)  # API down; stamp names an older source SHA
+    r = prc.check_production_stamp(_TIP_SHA)
+    assert r["verdict"] == "WARN", r
+    assert r["evidence"]["source"] == "git-protocol-fallback"
+    assert r["evidence"]["stamped_source_sha"] == _STAMPED_SRC
+    assert r["evidence"]["production_tip"] == _PROD_SHA
+    assert r["evidence"]["shallow_clone"] is True  # no ancestry claimed
+
+
+def test_production_stamp_git_fallback_pass_when_current(monkeypatch):
+    _git_ok(monkeypatch,
+            stamp_msg=f"deploy: stamp Naya runtime source {_TIP_SHA}")
+    r = prc.check_production_stamp(_TIP_SHA)
+    assert r["verdict"] == "PASS", r
+    assert r["evidence"]["source"] == "git-protocol-fallback"
+
+
+def test_production_stamp_git_fallback_warn_when_not_a_stamp(monkeypatch):
+    _git_ok(monkeypatch, stamp_msg="routine merge, no stamp here")
+    r = prc.check_production_stamp(_TIP_SHA)
+    assert r["verdict"] == "WARN", r
+    assert r["evidence"]["stamped_source_sha"] is None
+
+
+def test_production_stamp_unknown_when_both_paths_fail(monkeypatch):
+    monkeypatch.setattr(prc, "gh_get", lambda path: None)
+    monkeypatch.setattr(prc, "git", lambda args: None)
+    r = prc.check_production_stamp(_TIP_SHA)
+    assert r["verdict"] == "UNKNOWN", r
+    assert r["evidence"]["reason"] == "no_api_no_git"
+
+
+def test_production_stamp_unknown_without_tip():
+    r = prc.check_production_stamp(None)
+    assert r["verdict"] == "UNKNOWN"
