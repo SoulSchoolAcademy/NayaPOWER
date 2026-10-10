@@ -1,7 +1,7 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-10  
-**Receipt basis commit:** `4c09decc36dea6c13e9a4fca177757bef31200e0`  
+**Receipt basis commit:** `5eb178d25dcc8dafbd7982c5ff7d3f8b5c27f023`  
 **Inventory file count:** 1214  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
@@ -76,9 +76,9 @@
 - `BRAIN/01-GOVERNANCE/0006-NAYA-CALCULATOR-V1.ai.md` — `5f07061bcd01` (9539 bytes)
 - `BRAIN/01-GOVERNANCE/0006-NAYA-CALCULATOR-V1.human.md` — `456e88ce35a9` (4859 bytes)
 - `BRAIN/01-GOVERNANCE/0006-naya-calculator-v1.machine.json` — `6e62c7ad6be9` (5880 bytes)
-- `BRAIN/01-GOVERNANCE/0007-LAW-OF-ONE-V1.ai.md` — `e1d870bbc419` (3368 bytes)
-- `BRAIN/01-GOVERNANCE/0007-LAW-OF-ONE-V1.human.md` — `c306d2401205` (2167 bytes)
-- `BRAIN/01-GOVERNANCE/0007-law-of-one-v1.machine.json` — `f494e4b11ee5` (1800 bytes)
+- `BRAIN/01-GOVERNANCE/0007-LAW-OF-ONE-V1.ai.md` — `7d0efaf7e3e7` (3385 bytes)
+- `BRAIN/01-GOVERNANCE/0007-LAW-OF-ONE-V1.human.md` — `7188b5a90066` (2145 bytes)
+- `BRAIN/01-GOVERNANCE/0007-law-of-one-v1.machine.json` — `a0b338815cda` (2007 bytes)
 - `BRAIN/01-GOVERNANCE/0013-PARALLEL-EXECUTION-V1.ai.md` — `bd192971f09c` (3430 bytes)
 - `BRAIN/01-GOVERNANCE/0013-PARALLEL-EXECUTION-V1.human.md` — `a82aa1b3ffc3` (2623 bytes)
 - `BRAIN/01-GOVERNANCE/0013-parallel-execution-v1.machine.json` — `45bcf7ab174b` (2592 bytes)
