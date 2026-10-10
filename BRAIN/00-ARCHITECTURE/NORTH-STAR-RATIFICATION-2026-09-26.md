@@ -1,10 +1,18 @@
 # 🔱 NayaPOWER System North Star Ratification — 2026-09-26
 
+> **RECONCILED 2026-10-09** — Moved to its canonical home from
+> `.naya/project-intelligence/NAYAPOWER-SYSTEM-NORTH-STAR-RATIFICATION-2026-09-26.md`
+> (PR #2052). Content preserved exactly — this is a RATIFIED document and its
+> substance is unchanged. Only the companion-doc references were updated for the
+> new location.
+
+---
+
 **Status:** RATIFIED  
 **Authority:** Human Director (Shawn)  
 **Canonical system:** SoulSchoolAcademy/NayaPOWER  
-**Primary specification:** `.naya/NAYAPOWER-SYSTEM-NORTH-STAR-WHITE-PAPER-AND-ENGINEERING-BLUEPRINT-V1.md`  
-**Companion scorecard:** `.naya/NAYAPOWER-SYSTEM-AAA-SCORECARD-V1.md`
+**Primary specification:** `../../.naya/NAYAPOWER-SYSTEM-NORTH-STAR-WHITE-PAPER-AND-ENGINEERING-BLUEPRINT-V1.md`  
+**Companion scorecard:** `../../.naya/NAYAPOWER-SYSTEM-AAA-SCORECARD-V1.md`
 
 ## Ratification
 
