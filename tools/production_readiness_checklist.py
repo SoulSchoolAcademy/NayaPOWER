@@ -155,6 +155,10 @@ def check_workflow_health(recent: int = 12) -> dict:
     a benign supersede, not a broken path), vs NEEDS_INVESTIGATION
     (the gate model cannot explain the failure). A working gate refusing is
     not a broken deploy path — the verdict names the true hole.
+    Runs still in progress (conclusion null, status not completed) are
+    reported as pending and never counted as failures: an unfinished run has
+    no verdict yet, and counting it corrupts the failing-step histogram and
+    the classification.
     """
     data = gh_get(f"/repos/{REPO}/actions/workflows/{PROMOTION_WORKFLOW_FILE}/runs?per_page={recent}")
     if data is None:
@@ -164,13 +168,23 @@ def check_workflow_health(recent: int = 12) -> dict:
     if not runs:
         return check_result("C3", "WARN", "no recent promotion workflow runs found", {})
     failures = []
+    pending = []
     successes = 0
     failing_steps: dict[str, int] = {}
     latest_failed_sha: str | None = None
     for r in runs:
         rid, event = r.get("id"), r.get("event")
         head = (r.get("head_sha") or "")[:12]
-        conclusion = r.get("conclusion")
+        status, conclusion = r.get("status"), r.get("conclusion")
+        if conclusion is None and status != "completed":
+            # Still queued/running: not a failure. Counting it as one corrupts
+            # the failing-step histogram and the classification (observed live:
+            # an in-progress run with an empty step list flipped the verdict
+            # to NEEDS_INVESTIGATION).
+            pending.append({"run_id": rid, "event": event, "head_sha": head,
+                            "head_sha_full": r.get("head_sha"),
+                            "status": status, "created_at": r.get("created_at")})
+            continue
         if conclusion == "success":
             successes += 1
             continue
@@ -190,7 +204,8 @@ def check_workflow_health(recent: int = 12) -> dict:
             failing_steps[st] = failing_steps.get(st, 0) + 1
         failures[-1]["failing_steps"] = steps
     evidence = {"runs_examined": len(runs), "successes": successes,
-                "failures": failures, "failing_step_histogram": failing_steps,
+                "failures": failures, "pending": pending,
+                "failing_step_histogram": failing_steps,
                 "required_ci_at_latest_tip": required_ci_status(latest_failed_sha)}
     failing_ci = [w for w, s in evidence["required_ci_at_latest_tip"].items()
                   if s.get("conclusion") not in ("success", None) or
@@ -203,15 +218,21 @@ def check_workflow_health(recent: int = 12) -> dict:
     evidence["promotion_failure_classification"] = classification
     class_note = (f"; classification: {classification['classification']} — "
                   f"{classification['detail']}")
+    pending_note = (f"; {len(pending)} pending (still running, not failures)"
+                    if pending else "")
     if not failures:
-        return check_result("C3", "PASS", f"last {len(runs)} promotion runs all succeeded", evidence)
+        return check_result("C3", "PASS",
+                            f"last {len(runs)} promotion runs: {successes} succeeded{pending_note}",
+                            evidence)
     if successes == 0:
         return check_result("C3", "FAIL",
                             f"all {len(runs)} recent promotion runs failed; "
-                            f"failing steps: {failing_steps or 'unknown'}{ci_note}{class_note}", evidence)
+                            f"failing steps: {failing_steps or 'unknown'}{ci_note}{class_note}{pending_note}",
+                            evidence)
     return check_result("C3", "WARN",
                         f"{len(failures)}/{len(runs)} recent promotion runs failed; "
-                        f"failing steps: {failing_steps or 'unknown'}{ci_note}{class_note}", evidence)
+                        f"failing steps: {failing_steps or 'unknown'}{ci_note}{class_note}{pending_note}",
+                        evidence)
 
 
 def failed_jobs_for_run(run_id: int | None) -> list[str] | None:

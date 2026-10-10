@@ -423,6 +423,57 @@ def test_check_workflow_health_carries_classification(monkeypatch):
     assert r["evidence"]["required_ci_at_latest_tip"]["kernel-tests.yml"]["failed_jobs"] == ["test"]
 
 
+def test_check_workflow_health_pending_run_not_a_failure(monkeypatch):
+    # Live incident 2026-10-10: an in-progress promotion run (conclusion null)
+    # was counted as a failure with an empty failing-steps list, which flipped
+    # the classification to NEEDS_INVESTIGATION. A run with no verdict yet is
+    # not a failure: it must be reported as pending and excluded from the
+    # failure set, the failing-step histogram, and the classification.
+    head = "d" * 40
+
+    def fake_gh(path):
+        if "governed-supabase-production-deploy.yml/runs" in path:
+            return {"workflow_runs": [
+                {"id": 101, "event": "push", "head_sha": head,
+                 "status": "in_progress", "conclusion": None,
+                 "created_at": "2026-10-10T03:42:14Z"},
+                {"id": 100, "event": "push", "head_sha": head,
+                 "status": "completed", "conclusion": "failure",
+                 "created_at": "2026-10-10T01:48:24Z"}]}
+        if "/actions/runs/100/jobs" in path:
+            return {"jobs": [{"name": "promote", "conclusion": "failure",
+                              "steps": [{"name": "Enforce ratified standing policy "
+                                                 "before automatic promotion",
+                                         "conclusion": "failure"}]}]}
+        if "kernel-tests.yml" in path:
+            return {"workflow_runs": [
+                {"id": 200, "head_sha": head, "head_branch": "main",
+                 "event": "push", "status": "completed", "conclusion": "failure",
+                 "run_attempt": 1}]}
+        if "/actions/runs/200/jobs" in path:
+            return {"jobs": [{"name": "test", "conclusion": "failure",
+                              "steps": [{"name": "Run python -m pytest -q",
+                                         "conclusion": "failure"}]}]}
+        return {"workflow_runs": [
+            {"id": 201, "head_sha": head, "head_branch": "main",
+             "event": "push", "status": "completed", "conclusion": "success",
+             "run_attempt": 1}]}
+
+    monkeypatch.setattr(prc, "gh_get", fake_gh)
+    r = prc.check_workflow_health(recent=2)
+    assert r["check"] == "C3"
+    ev = r["evidence"]
+    assert [p["run_id"] for p in ev["pending"]] == [101], ev
+    assert [p["status"] for p in ev["pending"]] == ["in_progress"], ev
+    assert [f["run_id"] for f in ev["failures"]] == [100], ev
+    cls = ev["promotion_failure_classification"]
+    assert cls["classification"] == "FAIL_CLOSED_BY_DESIGN", cls
+    assert cls["failures_examined"] == 1, cls
+    assert cls["policy_step_trips"] == 1, cls
+    assert "pending" in r["summary"]
+    assert r["verdict"] == "FAIL", r  # every concluded run failed; pending is not a pass
+
+
 # ---- C9 branch hygiene ---------------------------------------------------------
 
 def _prs(n, start=1800, age_days=1):
