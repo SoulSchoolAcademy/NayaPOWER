@@ -703,6 +703,140 @@ def fairness_report(obligation_id):
     print(f"  - Service never counts as proof. Only discharge reduces W(s).")
 
 
+# Strong fairness extension (Naya 1's "When Strong Fairness Is Required"):
+#
+# Weak:  FG E_o → GF S_o  (continuously enabled → eventually serviced)
+# Strong: GF E_o → GF S_o  (infinitely often enabled → eventually serviced)
+#
+# Key: strong fairness must not execute during unauthorized windows.
+# It governs scheduling opportunities, not permission.
+#
+# Decision rule: require STRONG when weak fairness admits a concrete
+# starvation trace — intermittent eligibility that never stays continuous.
+
+
+def record_eligibility_window(obligation_id, target_obligation, was_continuous=False):
+    """
+    Record an eligibility window for intermittent-eligibility tracking.
+    
+    For STRONG fairness: count eligible epochs (windows), not just continuous time.
+    Debt does NOT reset when eligibility flickers — only genuine service clears it.
+    """
+    reg = load_registry()
+    ob = reg["obligations"].get(obligation_id)
+    if not ob or "fairness" not in ob:
+        print(f"No fairness contract for {obligation_id}.")
+        sys.exit(1)
+
+    ledger = ob["fairness"]["ledger"]
+    if target_obligation not in ledger:
+        ledger[target_obligation] = {"opportunities": 0, "services": 0, "advancements": 0,
+                                     "last_service": None, "fairness_debt": 0,
+                                     "eligible_epochs": 0, "continuous_eligible": False}
+
+    entry = ledger[target_obligation]
+    entry["eligible_epochs"] += 1
+    entry["continuous_eligible"] = was_continuous
+    # Debt increases per eligible epoch without service
+    # (service resets it in record_service)
+    if entry["services"] == 0:
+        entry["fairness_debt"] = entry["eligible_epochs"]
+
+    save_registry(reg)
+
+    fairness_type = ob["fairness"]["type"]
+    
+    # Detect weak-fairness starvation trace
+    if fairness_type == "WEAK" and not was_continuous and entry["eligible_epochs"] >= 5:
+        print(f"  ⚠ WEAK-FAIRNESS STARVATION TRACE:")
+        print(f"    {target_obligation}: {entry['eligible_epochs']} intermittent eligible windows, "
+              f"never continuously eligible, never serviced.")
+        print(f"    Weak fairness does not require service here.")
+        print(f"    → Consider STRONG fairness if starvation violates liveness contract.")
+
+    # Detect strong-fairness violation
+    if fairness_type == "STRONG" and entry["eligible_epochs"] >= 10 and entry["services"] == 0:
+        print(f"  ⚠ STRONG-FAIRNESS VIOLATION:")
+        print(f"    {target_obligation}: {entry['eligible_epochs']} eligible windows, zero services.")
+        print(f"    Strong fairness requires eventual service.")
+
+    return entry
+
+
+def upgrade_fairness(obligation_id, new_type, reason=""):
+    """
+    Upgrade fairness requirement (e.g., WEAK → STRONG) when a starvation
+    trace demonstrates weak fairness is insufficient.
+    """
+    if new_type not in FAIRNESS_STANDARDS:
+        print(f"ERROR: Unknown type '{new_type}'")
+        sys.exit(1)
+
+    reg = load_registry()
+    ob = reg["obligations"].get(obligation_id)
+    if not ob or "fairness" not in ob:
+        print(f"No fairness contract for {obligation_id}.")
+        sys.exit(1)
+
+    old_type = ob["fairness"]["type"]
+    ob["fairness"]["type"] = new_type
+    ob["fairness"]["upgrade_reason"] = reason[:200]
+    ob["fairness"]["upgraded_at"] = datetime.now(timezone.utc).isoformat()
+    # Debt is preserved across upgrade — no reset
+    save_registry(reg)
+
+    log_event({
+        "event_type": "FAIRNESS_UPGRADED",
+        "obligation_id": obligation_id,
+        "from": old_type,
+        "to": new_type,
+        "reason": reason[:100],
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+    })
+
+    print(f"{obligation_id}: fairness {old_type} → {new_type}")
+    print(f"  Reason: {reason[:80]}...")
+    print(f"  Fairness debt preserved (no reset on upgrade).")
+    print(f"  Note: strong fairness governs scheduling, not permission.")
+    return ob["fairness"]
+
+
+def check_strong_fairness_need(obligation_id, target_obligation):
+    """
+    Decision procedure: should this obligation require STRONG fairness?
+    Returns recommendation based on observed eligibility pattern.
+    """
+    reg = load_registry()
+    ob = reg["obligations"].get(obligation_id)
+    if not ob or "fairness" not in ob:
+        print(f"No fairness contract for {obligation_id}.")
+        return None
+
+    entry = ob["fairness"]["ledger"].get(target_obligation, {})
+    epochs = entry.get("eligible_epochs", 0)
+    services = entry.get("services", 0)
+    continuous = entry.get("continuous_eligible", False)
+
+    print(f"\nStrong fairness assessment for {target_obligation}:")
+    print(f"  Eligible epochs: {epochs}")
+    print(f"  Services received: {services}")
+    print(f"  Ever continuously eligible: {continuous}")
+
+    if epochs >= 5 and services == 0 and not continuous:
+        print(f"  → RECOMMEND STRONG: intermittent eligibility with zero service.")
+        print(f"    Weak fairness admits this starvation trace.")
+        return "STRONG_RECOMMENDED"
+    elif continuous and services == 0:
+        print(f"  → WEAK SUFFICIENT: continuously eligible but unserviced = weak violation already.")
+        return "WEAK_SUFFICIENT"
+    elif services > 0:
+        print(f"  → NO UPGRADE NEEDED: receiving service.")
+        return "NO_UPGRADE"
+    else:
+        print(f"  → INSUFFICIENT DATA: not enough eligibility history.")
+        return "INSUFFICIENT_DATA"
+
+
 def main():
     parser = argparse.ArgumentParser(description="Multi-node liveness monitor")
     sub = parser.add_subparsers(dest="cmd", required=True)
@@ -778,6 +912,20 @@ def main():
     fr = sub.add_parser("fairness-report", help="Fairness ledger report")
     fr.add_argument("--id", required=True)
 
+    ew = sub.add_parser("eligibility-window", help="Record intermittent eligibility window")
+    ew.add_argument("--id", required=True)
+    ew.add_argument("--obligation", required=True)
+    ew.add_argument("--continuous", action="store_true", help="Was continuously eligible?")
+
+    uf = sub.add_parser("upgrade-fairness", help="Upgrade fairness requirement")
+    uf.add_argument("--id", required=True)
+    uf.add_argument("--type", required=True, choices=["WEAK", "STRONG", "BOUNDED"])
+    uf.add_argument("--reason", default="")
+
+    cs = sub.add_parser("check-fairness-need", help="Assess if strong fairness needed")
+    cs.add_argument("--id", required=True)
+    cs.add_argument("--obligation", required=True)
+
     args = parser.parse_args()
     if args.cmd == "register":
         register(args.id, args.participants, args.trigger, args.target, args.type)
@@ -809,6 +957,12 @@ def main():
         record_eligible_round(args.id, eligible)
     elif args.cmd == "fairness-report":
         fairness_report(args.id)
+    elif args.cmd == "eligibility-window":
+        record_eligibility_window(args.id, args.obligation, args.continuous)
+    elif args.cmd == "upgrade-fairness":
+        upgrade_fairness(args.id, args.type, args.reason)
+    elif args.cmd == "check-fairness-need":
+        check_strong_fairness_need(args.id, args.obligation)
 
 
 if __name__ == "__main__":
