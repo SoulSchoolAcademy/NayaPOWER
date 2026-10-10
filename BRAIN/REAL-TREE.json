@@ -1,7 +1,7 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-10",
-  "receipt_basis_commit": "0dbc6d6541ae9c1791f23052a4b13ab316c4535d",
+  "receipt_basis_commit": "b83f6ded22c5e48018be8e798c4166520a4992cc",
   "inventory_file_count": 1239,
   "domain_counts": {
     "00-ACTIVATION": 3,
@@ -242,18 +242,18 @@
     },
     {
       "path": "BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2.ai.md",
-      "blob_sha": "6dd76254fb224138bb006b639e23325799b21d1f",
-      "size": 14729
+      "blob_sha": "e30e7182081b7a524e2f1d791385fe2dbf6ab880",
+      "size": 14788
     },
     {
       "path": "BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2.human.md",
-      "blob_sha": "c70fc5b7ebf3e2b2cfd82010bf864a82fd176f4c",
-      "size": 9018
+      "blob_sha": "fbe045ba392e5e3af32821f151acd2c4e6868f21",
+      "size": 9007
     },
     {
       "path": "BRAIN/01-GOVERNANCE/0008-operating-code-v2.machine.json",
-      "blob_sha": "210984d7d333d105d9d9532a8b79af6e932d4dae",
-      "size": 5087
+      "blob_sha": "1088c9ae24a78d137cc1158300cda7ef0271ef86",
+      "size": 5146
     },
     {
       "path": "BRAIN/01-GOVERNANCE/0013-PARALLEL-EXECUTION-V1.ai.md",
