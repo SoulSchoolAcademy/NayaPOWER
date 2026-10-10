@@ -1,0 +1,38 @@
+{
+  "Q1": {
+    "correct": "UNSAFE",
+    "note": "Inline conditional for state file. If state_valid is wrong, writes '{}'."
+  },
+  "Q2": {
+    "correct": "SAFE",
+    "note": "Ternary for display, not state file. Fine."
+  },
+  "Q3": {
+    "correct": "SAFE",
+    "note": "Safe pattern: build, temp, validate, rename. No ternary in write."
+  },
+  "Q4": {
+    "correct": "UNSAFE",
+    "note": "Inline conditional for state file. If data is falsy, writes empty."
+  },
+  "Q5": {
+    "correct": "SAFE",
+    "note": "Ternary for config value, not state file write. Fine."
+  },
+  "Q6": {
+    "correct": "UNSAFE",
+    "note": "Inline conditional for state file. If 'updated' flag is wrong, writes stale config."
+  },
+  "Q7": {
+    "correct": "SAFE",
+    "note": "No ternary. Direct write of computed value. (Result file is output, not critical state, and no conditional.)"
+  },
+  "Q8": {
+    "correct": "UNSAFE",
+    "note": "Inline conditional for state file. If session is None/empty, writes empty bytes."
+  },
+  "Q9": {
+    "correct": "SAFE",
+    "note": "Ternary for message construction, not state file. Fine."
+  }
+}

@@ -1,0 +1,47 @@
+[
+  {
+    "id": "Q1",
+    "code": "with open('watermark.json', 'w') as f:\n    f.write(json.dumps(state) if state_valid else '{}')",
+    "context": "Writing a watermark state file."
+  },
+  {
+    "id": "Q2",
+    "code": "label = 'ACTIVE' if is_active else 'INACTIVE'\nprint(f'Status: {label}')",
+    "context": "Displaying status to user."
+  },
+  {
+    "id": "Q3",
+    "code": "content = build_checkpoint()\nwith open(tmp, 'w') as f:\n    f.write(content)\nassert os.path.getsize(tmp) > 0\nos.rename(tmp, 'checkpoint.dat')",
+    "context": "Writing a checkpoint state file."
+  },
+  {
+    "id": "Q4",
+    "code": "with open('ledger.json', 'w') as f:\n    f.write(data if data else '')",
+    "context": "Writing a ledger state file."
+  },
+  {
+    "id": "Q5",
+    "code": "timeout = 30 if prod else 5\nconnect(timeout)",
+    "context": "Setting a timeout value."
+  },
+  {
+    "id": "Q6",
+    "code": "with open('config.state', 'w') as f:\n    f.write(new_config if updated else old_config)",
+    "context": "Writing a config state file."
+  },
+  {
+    "id": "Q7",
+    "code": "result = compute()\nwith open('result.txt', 'w') as f:\n    f.write(result)",
+    "context": "Writing a result file."
+  },
+  {
+    "id": "Q8",
+    "code": "with open('session.dat', 'w') as f:\n    f.write(pickle.dumps(session) if session else b'')",
+    "context": "Writing a session state file."
+  },
+  {
+    "id": "Q9",
+    "code": "message = f'Hello {name}' if name else 'Hello guest'\nsend(message)",
+    "context": "Constructing a greeting message."
+  }
+]

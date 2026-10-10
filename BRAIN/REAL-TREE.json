@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-10",
-  "receipt_basis_commit": "26f28c527626c74b164790d3d635ae9b831476a1",
-  "inventory_file_count": 1239,
+  "receipt_basis_commit": "801e3922e236665adb5d00c8b849f179fc968dde",
+  "inventory_file_count": 1271,
   "domain_counts": {
     "00-ACTIVATION": 3,
     "00-ARCHITECTURE": 5,
@@ -11,7 +11,7 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
-    "05-MEMORY": 646,
+    "05-MEMORY": 678,
     "06-PROOF": 13,
     "07-LEARNING": 8,
     "08-SUCCESSION": 2,
@@ -242,18 +242,18 @@
     },
     {
       "path": "BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2.ai.md",
-      "blob_sha": "6dd76254fb224138bb006b639e23325799b21d1f",
-      "size": 14729
+      "blob_sha": "0f81fc721fc143928d94212124886c73906fe196",
+      "size": 14786
     },
     {
       "path": "BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2.human.md",
-      "blob_sha": "c70fc5b7ebf3e2b2cfd82010bf864a82fd176f4c",
-      "size": 9018
+      "blob_sha": "fbe045ba392e5e3af32821f151acd2c4e6868f21",
+      "size": 9007
     },
     {
       "path": "BRAIN/01-GOVERNANCE/0008-operating-code-v2.machine.json",
-      "blob_sha": "210984d7d333d105d9d9532a8b79af6e932d4dae",
-      "size": 5087
+      "blob_sha": "1088c9ae24a78d137cc1158300cda7ef0271ef86",
+      "size": 5146
     },
     {
       "path": "BRAIN/01-GOVERNANCE/0013-PARALLEL-EXECUTION-V1.ai.md",
@@ -809,6 +809,166 @@
       "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/GRADER-REPAIR-2026-10-07/grade_trial14.py",
       "blob_sha": "20c4418652af7367f83f929d14dc19a89a7e4f09",
       "size": 3595
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-14-REALLESSON/PREREGISTRATION-14.md",
+      "blob_sha": "f60eafd5e850bef53b91c30b64e79f284cfb3ac2",
+      "size": 2095
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-14-REALLESSON/TRIAL-14-RECEIPT.md",
+      "blob_sha": "1eeb338754768e3fda0386a0487c07ba25801410",
+      "size": 2403
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-14-REALLESSON/__pycache__/grade_trial14.cpython-312.pyc",
+      "blob_sha": "85b6c78d92cee46977dc5bddeefffc2958b0b060",
+      "size": 2651
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-14-REALLESSON/answer_key.json",
+      "blob_sha": "5534eb49697833b6d4162e2aefa60f0c23e05557",
+      "size": 1111
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-14-REALLESSON/answer_sheets/T14-AGENT-01.json",
+      "blob_sha": "57ca12669f7ae126d6a2088567cecb842e4e9836",
+      "size": 1985
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-14-REALLESSON/answer_sheets/T14-AGENT-02.json",
+      "blob_sha": "ece4e41800e8c2f304f10fecd5fe7d4e9673298a",
+      "size": 1869
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-14-REALLESSON/answer_sheets/T14-AGENT-03.json",
+      "blob_sha": "b037ad26ffa5ab358284e09578c2397c889c6c1f",
+      "size": 1773
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-14-REALLESSON/answer_sheets/T14-AGENT-04.json",
+      "blob_sha": "e8e00d01b069b43cccd670c3630ba2059538f39b",
+      "size": 1568
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-14-REALLESSON/answer_sheets/T14-AGENT-05.json",
+      "blob_sha": "8d0ff72da78fb4344e8edc53125d4b0c1bdc2ea2",
+      "size": 1399
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-14-REALLESSON/answer_sheets/T14-AGENT-06.json",
+      "blob_sha": "c6ef8d79abe122715bedd745887a57eb66df927a",
+      "size": 1894
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-14-REALLESSON/answer_sheets/T14-AGENT-07.json",
+      "blob_sha": "d43165c1d464b91960bc0dd428819eb656f09715",
+      "size": 1657
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-14-REALLESSON/answer_sheets/T14-AGENT-08.json",
+      "blob_sha": "3d0f7e24d2665cb9ff34e7c0830029f7a6419581",
+      "size": 1660
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-14-REALLESSON/answer_sheets/T14-AGENT-09.json",
+      "blob_sha": "1d9ed20502a9805e5d898def1afed3405723ad94",
+      "size": 1490
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-14-REALLESSON/answer_sheets/T14-AGENT-10.json",
+      "blob_sha": "3582ee587c0cd01dc099174bb0e5eddd90154147",
+      "size": 1984
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-14-REALLESSON/answer_sheets/T14-AGENT-11.json",
+      "blob_sha": "f2dd95067d8d78c5738bbe674b8948d392e6d512",
+      "size": 1533
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-14-REALLESSON/answer_sheets/T14-AGENT-12.json",
+      "blob_sha": "e94b357c362b32518763349bf0dd2165879380b8",
+      "size": 1763
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-14-REALLESSON/answer_sheets/T14-AGENT-13.json",
+      "blob_sha": "22a1bd74b7deb08c8275db16914dce0caf5343ac",
+      "size": 1346
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-14-REALLESSON/answer_sheets/T14-AGENT-14.json",
+      "blob_sha": "b8bf54c896d47b55a8df3afc00727914bd8d2b2f",
+      "size": 1391
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-14-REALLESSON/answer_sheets/T14-AGENT-15.json",
+      "blob_sha": "591ec35d63bca1fab6e0fe5c8f8fcece04e0715e",
+      "size": 1777
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-14-REALLESSON/answer_sheets/T14-AGENT-16.json",
+      "blob_sha": "3a58a44e7621d4d8ce85ae4a329dfc6dba49b93e",
+      "size": 1301
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-14-REALLESSON/answer_sheets/T14-AGENT-17.json",
+      "blob_sha": "009fb5fcf789ea656e8e61ddbcb7e2089433d36e",
+      "size": 1671
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-14-REALLESSON/answer_sheets/T14-AGENT-18.json",
+      "blob_sha": "cb05e54ba2f9b6260a1d718e923841be8c65e9ed",
+      "size": 1506
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-14-REALLESSON/answer_sheets/T14-AGENT-19.json",
+      "blob_sha": "00be5e8b9d81310823b48cb9173fd320c7396e04",
+      "size": 1649
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-14-REALLESSON/answer_sheets/T14-AGENT-20.json",
+      "blob_sha": "0e671993b8c1e6e26180a772269422d45f49d550",
+      "size": 1801
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-14-REALLESSON/arm_assignment.txt",
+      "blob_sha": "6e6b7e5579bc7d6c482ae240b598895a6095fa6a",
+      "size": 295
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-14-REALLESSON/brief_control.txt",
+      "blob_sha": "be3c0fb4a680ba27dbc54aca0ce3f7e4d5573ccf",
+      "size": 808
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-14-REALLESSON/brief_treatment.txt",
+      "blob_sha": "0c0fee904b8966e837d4a3b4a25a8f9a105ac319",
+      "size": 993
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-14-REALLESSON/briefing/control-guidance.md",
+      "blob_sha": "b98cf7cb3f06e143bbb937182c344ce473f91d85",
+      "size": 570
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-14-REALLESSON/code_scenarios.json",
+      "blob_sha": "5a2141d530939baaf50534dd1a29aa61a3ca2a33",
+      "size": 1532
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-14-REALLESSON/grade_trial14.py",
+      "blob_sha": "bcd8e1cd463f6d58d8c7b69a199d85568261c4a8",
+      "size": 2380
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-14-REALLESSON/results_trial14.json",
+      "blob_sha": "1a80c43e6a86eeb341262857010ce6a807001180",
+      "size": 1902
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/TRIAL-14-REALLESSON/state-file-lesson.md",
+      "blob_sha": "7898fffbe873de35453a9e0a14c7e4f3220f6080",
+      "size": 2066
     },
     {
       "path": "BRAIN/05-MEMORY/README.md",
