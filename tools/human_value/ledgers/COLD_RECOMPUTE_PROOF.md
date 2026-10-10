@@ -204,3 +204,38 @@ per this file and posted a verdict on #1604 — reproducibility is proven, indep
 human verification of the ledger itself remains the binding 8.0 gate. DAI series is
 ~4 days of real data (0.5714/day this window: two genuine attention demands — #2068
 awaiting Shawn's click, prod-readiness C10 awaiting his word); trend readable after 2+ weeks.
+
+## Tenth cold-recompute proof — n=9 loop (2026-10-10 ~09:55 UTC)
+
+Fresh clone of `naya5/human-value-events-20261010-0341` @ `05643642f0c4119cd18a8741e60a57fecb4b67ee`
+(rebased onto live tip `fe25661c5` before push — the n=9 accumulation `05643642`:
+DEC-009 pre-registered, PR #2108 merged-verified outcome, join closed at honest
++6.5), same procedure, no access to the originating workspace:
+
+| Check | Originating worktree | Cold clone | Match |
+|---|---|---|---|
+| HEAD | `05643642` | `05643642` | ✅ |
+| `ledger_sha256` | `sha256:f6df6368…64e8fb66` | (same) | ✅ |
+| `hv_per_day_total` | 10.5713 | 10.5713 | ✅ |
+| `dai_per_day` | 0.5714 | 0.5714 | ✅ |
+| `events_validated` | 73 | 73 | ✅ |
+| `calibration.n` / MAE / bias / overprediction | 9 / 0.1111 / 0.0 / false | 9 / 0.1111 / 0.0 / false | ✅ |
+| test suite (real ledger + instrument) | 36 passed | 36 passed | ✅ |
+
+**Verdict:** the n=9 measurement (DEC-009, predicted +7.0 at 09:44 UTC before
+any ledger change, observed +6.5) is cold-recomputable at the pushed SHA. The
+calibration series now reads MAE 0.5 → 0.25 → 0.1667 → 0.125 → 0.1 → 0.0833 → 0.0714 → 0.0625 → 0.1111
+across nine real joins, signed bias back to 0.0 (the single early under-prediction
+error +0.5 and this window's thin-window miss −0.5 cancel), zero overprediction
+flags. This is the loop working as designed: the +7.0 prediction was "consistent
+with prior loops"; the window's thin material (1 verified outcome vs 11 in DEC-008)
+was observed honestly at +6.5 instead of rubber-stamped, and the calibration
+absorbed the miss. /tmp/hv-cold-0941 removed after verification.
+
+**State note (unchanged):** no independent seat has yet cold-recomputed the ledger
+per this file and posted a verdict on #1604 — reproducibility is proven, independent
+human verification of the ledger itself remains the binding 8.0 gate. DAI series is
+~5 days of real data (0.5714/day, flat this window: zero new human-attention demands —
+the brain-index red and the draft→ready tooling failure were both team-handled,
+#2068's wait for Shawn's click is a continuing demand, not a new one); trend
+readable after 2+ weeks.
