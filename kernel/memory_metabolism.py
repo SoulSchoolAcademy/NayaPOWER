@@ -23,7 +23,7 @@ import hashlib
 import json
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
-from typing import Any, Iterable
+from typing import Any, Iterable, NoReturn
 
 
 class MemoryMetabolismError(ValueError):
@@ -69,7 +69,9 @@ class MemoryRecord:
     provenance: dict[str, Any] = field(default_factory=dict)
     memory_state: str = ACTIVE
     verification_weight: float = 0.0
-    evidence: list[str] = field(default_factory=list)
+    # Evidence entries are structured descriptors (EvidenceDescriptor.to_record()),
+    # never bare strings. See the evidence gate below.
+    evidence: list[dict[str, Any]] = field(default_factory=list)
     lineage: list[str] = field(default_factory=list)
     superseded_by: str | None = None
     superseded_at: str | None = None
@@ -190,25 +192,175 @@ def create_record(
     return record
 
 
-def strengthen(record: MemoryRecord, evidence: str, *, now: str | None = None) -> dict[str, Any]:
+# Evidence gate (Phase 1 wiring of the error-defense falsification spec) ---------
+# Shawn's directive 2026-10-10: "Intelligence may learn from itself, but it
+# may not independently verify itself merely by referring back to itself."
+#
+# The falsification suite (error_defense/, spec branch
+# naya5/error-defense-falsification) proved strengthen() accepted ANY
+# non-empty evidence string: a self-citing false lesson reached weight 6.0
+# and outranked a genuine trial-verified lesson (weight 1.0). The bare-string
+# evidence API was the hole.
+#
+# strengthen() now enforces the evidence-level predicates of qualify_lesson
+# fail-closed, in the spec's order, with the spec's verdict codes embedded
+# in the refusal: BLOCKED_INTEGRITY, BLOCKED_CIRCULAR_PROOF,
+# INSUFFICIENT_INDEPENDENT_EVIDENCE, BLOCKED_SELF_CERTIFICATION.
+# Promotion-level predicates (material contradiction, held-out evaluation,
+# authority scope) need lesson-level context strengthen() does not have;
+# they belong at the promotion bridge (lesson_from_memory_record) — Phase 2.
+
+try:  # canonical identity contract: tools/learning_admission_gate.py
+    from tools.learning_admission_gate import (  # type: ignore[import-not-found]
+        normalize_identity as _gate_normalize_identity,
+    )
+
+    def _normalize_identity(value: Any) -> str:
+        return _gate_normalize_identity(value)
+
+except ImportError:  # mirror the contract when tools/ is not importable
+
+    def _normalize_identity(value: Any) -> str:
+        """Canonical identity comparison: case- and whitespace-insensitive."""
+        return str(value).strip().casefold()
+
+
+@dataclass(frozen=True)
+class EvidenceDescriptor:
+    """Structured verification evidence for strengthen().
+
+    content_hash must equal sha256(content): the evidence is self-describing
+    and tamper-evident. origin is the identity that produced the evidence;
+    verifier is the identity asserting it (must differ from the record's
+    doer — self-certification is never evidence). source_record_id names
+    the record this evidence derives from (None when it derives from outside
+    the memory system). evidence_family groups items sharing one ultimate
+    source, for echo-chamber detection at the promotion bridge.
+    """
+
+    evidence_id: str
+    content: str
+    content_hash: str
+    origin: str
+    verifier: str
+    source_record_id: str | None = None
+    evidence_family: str | None = None
+
+    def to_record(self) -> dict[str, Any]:
+        return {
+            "evidence_id": self.evidence_id,
+            "content": self.content,
+            "content_hash": self.content_hash,
+            "origin": self.origin,
+            "verifier": self.verifier,
+            "source_record_id": self.source_record_id,
+            "evidence_family": self.evidence_family,
+        }
+
+
+def evidence_summary(evidence: Any) -> str:
+    """One-line human/audit rendering of a stored evidence entry."""
+    if isinstance(evidence, dict):
+        return (
+            f"{evidence.get('evidence_id', '?')}"
+            f" origin={evidence.get('origin', '?')}"
+            f" verifier={evidence.get('verifier', '?')}"
+        )
+    return str(evidence)  # legacy string entries, if any survive migration
+
+
+def _refuse(code: str, detail: str = "") -> NoReturn:
+    raise MemoryMetabolismError(
+        f"strengthen_evidence_refused:{code}" + (f":{detail}" if detail else "")
+    )
+
+
+def _evidence_gate_verdict(record: MemoryRecord, evidence: Any) -> str:
+    """Run the evidence-level predicates in fail-closed order.
+
+    Returns "EVIDENCE_ACCEPTED" or raises MemoryMetabolismError carrying the
+    spec verdict code. First failure wins; anything unrecognized is refused.
+    """
+    # 1. integrity: structured, identified, hash-verified (spec: BLOCKED_INTEGRITY)
+    if not isinstance(evidence, EvidenceDescriptor):
+        _refuse("BLOCKED_INTEGRITY", "unstructured_evidence")
+    if not str(evidence.evidence_id or "").strip():
+        _refuse("BLOCKED_INTEGRITY", "evidence_id_missing")
+    if not isinstance(evidence.content, str) or not evidence.content:
+        _refuse("BLOCKED_INTEGRITY", "content_missing")
+    recomputed = hashlib.sha256(evidence.content.encode()).hexdigest()
+    if not evidence.content_hash or evidence.content_hash != recomputed:
+        _refuse("BLOCKED_INTEGRITY", "content_hash_mismatch")
+
+    me = _normalize_identity(record.record_id)
+    provenance = record.provenance if isinstance(record.provenance, dict) else {}
+    doer = _normalize_identity(provenance.get("doer") or "")
+
+    # 2. circular proof: the record may not cite itself (spec: BLOCKED_CIRCULAR_PROOF)
+    source = _normalize_identity(evidence.source_record_id or "")
+    if source and source == me:
+        _refuse("BLOCKED_CIRCULAR_PROOF", "self_citation")
+    # Evidence that merely restates the record's own content is self-proof.
+    if evidence.content_hash == hashlib.sha256(record.content.encode()).hexdigest():
+        _refuse("BLOCKED_CIRCULAR_PROOF", "evidence_restates_record")
+
+    # 3. independent support (spec: INSUFFICIENT_INDEPENDENT_EVIDENCE)
+    origin = _normalize_identity(evidence.origin or "")
+    if not origin:
+        _refuse("INSUFFICIENT_INDEPENDENT_EVIDENCE", "origin_missing")
+    if origin == me:
+        _refuse("INSUFFICIENT_INDEPENDENT_EVIDENCE", "origin_is_record_itself")
+    if doer and origin == doer:
+        _refuse("INSUFFICIENT_INDEPENDENT_EVIDENCE", "origin_is_doer_echo_chamber")
+    seen_hashes = {
+        str(e.get("content_hash") or "")
+        for e in record.evidence
+        if isinstance(e, dict)
+    }
+    if evidence.content_hash in seen_hashes:
+        _refuse("INSUFFICIENT_INDEPENDENT_EVIDENCE", "duplicate_evidence")
+
+    # 4. self-certification (spec: BLOCKED_SELF_CERTIFICATION)
+    verifier = _normalize_identity(evidence.verifier or "")
+    if not verifier:
+        _refuse("BLOCKED_SELF_CERTIFICATION", "verifier_missing")
+    if doer and verifier == doer:
+        _refuse("BLOCKED_SELF_CERTIFICATION", "verifier_is_doer")
+
+    return "EVIDENCE_ACCEPTED"
+
+
+def strengthen(record: MemoryRecord, evidence: EvidenceDescriptor, *, now: str | None = None) -> dict[str, Any]:
     """Strengthen an ACTIVE record with fresh verification evidence.
 
     A dead record (superseded/decayed/archived/quarantined) cannot be
     strengthened back to life: reconcile it or replace it. This is the
     machinery that keeps stale intelligence from quietly regaining weight.
+
+    Evidence must pass the evidence gate (_evidence_gate_verdict): structured,
+    hash-verified, non-circular, independently sourced, and asserted by a
+    verifier distinct from the record's doer. Anything failing is refused
+    fail-closed — no weight is granted.
     """
     _require_integrity(record)
     if record.memory_state != ACTIVE:
         raise MemoryMetabolismError("strengthen_refused_not_active")
-    if not evidence:
+    if evidence is None:
         raise MemoryMetabolismError("strengthen_evidence_missing")
+    _evidence_gate_verdict(record, evidence)
     at = now or _utcnow_iso()
     from_state = record.memory_state
-    record.evidence.append(evidence)
+    record.evidence.append(evidence.to_record())
     record.verification_weight = round(record.verification_weight + 1.0, 6)
     record.last_verified_at = at
     record.integrity = record_integrity(record)
-    return _receipt("strengthen", record, from_state, at, f"weight={record.verification_weight}")
+    receipt = _receipt(
+        "strengthen", record, from_state, at,
+        f"weight={record.verification_weight} evidence={evidence.evidence_id}",
+    )
+    receipt["evidence_id"] = evidence.evidence_id
+    receipt["gate_verdict"] = "EVIDENCE_ACCEPTED"
+    return receipt
 
 
 def supersede(old: MemoryRecord, new: MemoryRecord, *, now: str | None = None) -> dict[str, Any]:

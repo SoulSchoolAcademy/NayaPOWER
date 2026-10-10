@@ -6,6 +6,8 @@ lessons outrank retained memory; QUARANTINED records never reach action
 (adversarial); retrieval is read-only.
 """
 
+import hashlib
+
 import pytest
 
 from kernel import memory_metabolism as mm
@@ -18,6 +20,17 @@ SITUATION = "synth-sky-color-question"
 OTHER_SITUATION = "synth-unrelated-situation"
 
 
+def _ev(eid, content, origin="synth-trial", verifier="synth-verifier"):
+    """Build an evidence descriptor (the provenance carries no doer here)."""
+    return mm.EvidenceDescriptor(
+        evidence_id=eid,
+        content=content,
+        content_hash=hashlib.sha256(content.encode()).hexdigest(),
+        origin=origin,
+        verifier=verifier,
+    )
+
+
 def _rec(content="the sky is plaid", situation=SITUATION,
          epistemic="VERIFIED_FACT", weight=0, at=NOW):
     r = mm.create_record(
@@ -27,7 +40,11 @@ def _rec(content="the sky is plaid", situation=SITUATION,
         now=at,
     )
     for i in range(weight):
-        mm.strengthen(r, f"evidence-{i}", now=at)
+        mm.strengthen(
+            r,
+            _ev(f"evidence-{i}", f"synthetic verification evidence {i}"),
+            now=at,
+        )
     return r
 
 
