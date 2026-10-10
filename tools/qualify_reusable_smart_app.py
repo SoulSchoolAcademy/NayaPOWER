@@ -69,7 +69,8 @@ def preflight_reuse(
     source = package["source_main_sha"]
     if not isinstance(source, str) or not SHA40.fullmatch(source):
         errors.append("SOURCE_SHA_INVALID")
-    if package["owner_scope"] not in SCOPES:
+    scope = package["owner_scope"]
+    if not isinstance(scope, str) or scope not in SCOPES:
         errors.append("SCOPE_INVALID")
     for key in NONEMPTY_REFS:
         value = package[key]
