@@ -13,6 +13,7 @@ the actual implementation file.
 from __future__ import annotations
 
 import json
+import shutil
 import subprocess
 from pathlib import Path
 
@@ -30,6 +31,20 @@ _MODULE_FUNCTION: dict[str, tuple[str, str]] = {
 
 class TsBridgeError(RuntimeError):
     """The TypeScript module raised or the bridge itself failed."""
+
+
+def _node_binary() -> str:
+    """Resolve the node executable to an absolute path.
+
+    The child process runs with a deliberately minimal environment whose PATH
+    does not necessarily include node (e.g. CI runners where node lives under
+    a toolcache dir). Resolving here, in the parent process with the real
+    PATH, keeps the hermetic child env while guaranteeing the binary exists.
+    """
+    node_bin = shutil.which("node")
+    if node_bin is None:
+        raise TsBridgeError("node executable not found on PATH")
+    return node_bin
 
 
 def call_ts(stage: str, args: list, timeout_s: int = 60) -> dict:
@@ -58,7 +73,7 @@ def call_ts(stage: str, args: list, timeout_s: int = 60) -> dict:
     }
     try:
         proc = subprocess.run(
-            ["node", "--experimental-strip-types", "--input-type=module", "-e", script],
+            [_node_binary(), "--experimental-strip-types", "--input-type=module", "-e", script],
             cwd=str(_FUNCTIONS_DIR),
             env=env,
             capture_output=True,
