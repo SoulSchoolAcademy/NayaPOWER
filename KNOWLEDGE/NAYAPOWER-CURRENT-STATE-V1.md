@@ -1,6 +1,8 @@
 # NAYAPOWER — CURRENT STATE V1
 
-**Status:** CANONICAL CURRENT-STATE RECORD
+**Status:** STALE HISTORICAL SNAPSHOT — RETAINED FOR PROVENANCE ONLY
+
+> ⚠️ This 2026-09-27 record is no longer a current-state authority. For present truth, use `NAYA-ACTIVATION/CURRENT-REALITY/`, the newest source-precedence reconciliation, current `main`, current GitHub issues/PRs, and claim-matched proof evidence.
 **As of:** 2026-09-27
 **Authority:** NayaPOWER System North Star Ratification (2026-09-26)
 **Companion:** [NAYAPOWER-SYSTEM-AAA-SCORECARD-V1.md](../.naya/NAYAPOWER-SYSTEM-AAA-SCORECARD-V1.md)

@@ -68,7 +68,7 @@
  ],
  "door_law": "connection_does_not_imply_permission_to_act",
  "frozen_baseline": {
-  "commit": "ffedda20",
+  "commit": "7b1126a014b3b27026a0360dbc1b8226a9be9f50",
   "file": "HUB/NAYANET INTERFACE CONCEPT.html"
  },
  "frozen_laws": [
