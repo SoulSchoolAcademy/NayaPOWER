@@ -540,6 +540,169 @@ def new_epoch(obligation_id, reason=""):
     return ob["epoch"]
 
 
+# Scheduler fairness (Naya 1's "Fair Scheduling Without False Progress"):
+#
+# Two independent proof obligations:
+#   Progress: did a required obligation get discharged? (W(s) decreases)
+#   Fairness: was eligible work given adequate opportunity? (F_o(t) tracked)
+#
+# Governing rule: Fairness guarantees opportunity. Execution creates observations.
+# Only qualifying evidence establishes accomplishment.
+#
+# Service levels (each strictly stronger than the last):
+#   SELECTED → DISPATCHED → SERVICED → ATTEMPTED → ADVANCED → COMPLETED
+# Only ADVANCED and COMPLETED affect the proof-progress ranking.
+
+# Fairness standards
+FAIRNESS_STANDARDS = {
+    "WEAK": "Continuously enabled transition cannot be postponed forever",
+    "STRONG": "Infinitely-often-enabled transition cannot be ignored forever",
+    "BOUNDED": "Eligible obligation receives adequate service within specified bound",
+}
+
+# Service levels
+SERVICE_LEVELS = ["SELECTED", "DISPATCHED", "SERVICED", "ATTEMPTED", "ADVANCED", "COMPLETED"]
+
+
+def register_fairness(obligation_id, fairness_type="WEAK", service_bound=None):
+    """Register fairness contract for a liveness obligation."""
+    if fairness_type not in FAIRNESS_STANDARDS:
+        print(f"ERROR: Unknown fairness type '{fairness_type}'")
+        sys.exit(1)
+
+    reg = load_registry()
+    if obligation_id not in reg["obligations"]:
+        print(f"Obligation {obligation_id} not found.")
+        sys.exit(1)
+
+    reg["obligations"][obligation_id]["fairness"] = {
+        "type": fairness_type,
+        "description": FAIRNESS_STANDARDS[fairness_type],
+        "service_bound": service_bound,
+        "ledger": {},  # obligation_id -> {opportunities, services, last_service}
+    }
+    save_registry(reg)
+    print(f"Fairness registered for {obligation_id}: {fairness_type}")
+    print(f"  {FAIRNESS_STANDARDS[fairness_type]}")
+    return reg["obligations"][obligation_id]["fairness"]
+
+
+def record_service(obligation_id, workflow_id, target_obligation, service_level, evidence=""):
+    """
+    Record a scheduler service event for a specific obligation.
+    
+    Critical: service does NOT change proof progress. Only verified discharge does.
+    Fairness debt belongs to the obligation ID — survives reassignment.
+    """
+    if service_level not in SERVICE_LEVELS:
+        print(f"ERROR: Unknown service level '{service_level}'")
+        sys.exit(1)
+
+    reg = load_registry()
+    ob = reg["obligations"].get(obligation_id)
+    if not ob or "fairness" not in ob:
+        print(f"No fairness contract for {obligation_id}. Register fairness first.")
+        sys.exit(1)
+
+    ledger = ob["fairness"]["ledger"]
+    if target_obligation not in ledger:
+        ledger[target_obligation] = {
+            "opportunities": 0,      # times eligible for scheduling
+            "services": 0,            # times received usable execution opportunity
+            "advancements": 0,       # times service led to proof progress
+            "last_service": None,
+            "fairness_debt": 0,      # eligible rounds without adequate service
+        }
+
+    entry = ledger[target_obligation]
+    level_idx = SERVICE_LEVELS.index(service_level)
+
+    # SELECTED/DISPATCHED: scheduling decisions, not service
+    # SERVICED+: counts as genuine opportunity
+    if level_idx >= SERVICE_LEVELS.index("SERVICED"):
+        entry["services"] += 1
+        entry["fairness_debt"] = 0  # debt cleared on genuine service
+        entry["last_service"] = datetime.now(timezone.utc).isoformat()
+    else:
+        # Mere selection/dispatch without usable resources: no fairness credit
+        print(f"  Note: {service_level} is scheduling, not service — no fairness credit")
+
+    if level_idx >= SERVICE_LEVELS.index("ADVANCED"):
+        entry["advancements"] += 1
+
+    save_registry(reg)
+    log_event({
+        "event_type": "FAIRNESS_SERVICE",
+        "obligation_id": obligation_id,
+        "workflow_id": workflow_id,
+        "target": target_obligation,
+        "level": service_level,
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+    })
+
+    print(f"  {target_obligation}: {service_level} (services={entry['services']}, debt={entry['fairness_debt']})")
+    if level_idx < SERVICE_LEVELS.index("SERVICED"):
+        print(f"    → Does NOT satisfy fairness obligation. Does NOT advance proof.")
+    return entry
+
+
+def record_eligible_round(obligation_id, eligible_obligations):
+    """
+    Record a scheduler round. Obligations that were eligible but not serviced
+    accumulate fairness debt. Debt belongs to obligation ID, survives reassignment.
+    """
+    reg = load_registry()
+    ob = reg["obligations"].get(obligation_id)
+    if not ob or "fairness" not in ob:
+        print(f"No fairness contract for {obligation_id}.")
+        sys.exit(1)
+
+    ledger = ob["fairness"]["ledger"]
+    for obl_id in eligible_obligations:
+        if obl_id not in ledger:
+            ledger[obl_id] = {"opportunities": 0, "services": 0, "advancements": 0,
+                              "last_service": None, "fairness_debt": 0}
+        ledger[obl_id]["opportunities"] += 1
+        # Debt increases if not serviced this round
+        # (servicing resets it in record_service)
+        ledger[obl_id]["fairness_debt"] += 1
+
+    save_registry(reg)
+
+    # Check for starvation: high debt = potential fairness violation
+    starving = [(k, v["fairness_debt"]) for k, v in ledger.items() if v["fairness_debt"] >= 5]
+    if starving:
+        print(f"  ⚠ STARVATION SUSPECTED:")
+        for obl_id, debt in starving:
+            print(f"    {obl_id}: {debt} eligible rounds without adequate service")
+    return ledger
+
+
+def fairness_report(obligation_id):
+    """Report fairness and progress independently."""
+    reg = load_registry()
+    ob = reg["obligations"].get(obligation_id)
+    if not ob or "fairness" not in ob:
+        print(f"No fairness contract for {obligation_id}.")
+        return
+
+    print(f"\n{'='*60}")
+    print(f"FAIRNESS LEDGER: {obligation_id}")
+    print(f"{'='*60}")
+    print(f"  Standard: {ob['fairness']['type']} — {ob['fairness']['description']}")
+    print(f"\n  {'Obligation':<20} {'Opportunities':<14} {'Services':<10} {'Advanced':<10} {'Debt':<6}")
+    print(f"  {'-'*70}")
+
+    for obl_id, entry in ob["fairness"]["ledger"].items():
+        print(f"  {obl_id:<20} {entry['opportunities']:<14} {entry['services']:<10} "
+              f"{entry['advancements']:<10} {entry['fairness_debt']:<6}")
+
+    print(f"\n  Interpretation:")
+    print(f"  - Fairly served but stalled = fairness OK, progress failed")
+    print(f"  - Never served while eligible = fairness violation (starvation)")
+    print(f"  - Service never counts as proof. Only discharge reduces W(s).")
+
+
 def main():
     parser = argparse.ArgumentParser(description="Multi-node liveness monitor")
     sub = parser.add_subparsers(dest="cmd", required=True)
@@ -595,6 +758,26 @@ def main():
     ne.add_argument("--id", required=True)
     ne.add_argument("--reason", default="")
 
+    rf = sub.add_parser("register-fairness", help="Register fairness contract")
+    rf.add_argument("--id", required=True)
+    rf.add_argument("--type", default="WEAK", choices=["WEAK", "STRONG", "BOUNDED"])
+    rf.add_argument("--bound", type=int, default=None)
+
+    sv = sub.add_parser("record-service", help="Record scheduler service event")
+    sv.add_argument("--id", required=True)
+    sv.add_argument("--workflow", required=True)
+    sv.add_argument("--obligation", required=True)
+    sv.add_argument("--level", required=True,
+                    choices=["SELECTED", "DISPATCHED", "SERVICED", "ATTEMPTED", "ADVANCED", "COMPLETED"])
+    sv.add_argument("--evidence", default="")
+
+    er = sub.add_parser("eligible-round", help="Record scheduler round")
+    er.add_argument("--id", required=True)
+    er.add_argument("--eligible", required=True, help="Comma-separated obligation IDs")
+
+    fr = sub.add_parser("fairness-report", help="Fairness ledger report")
+    fr.add_argument("--id", required=True)
+
     args = parser.parse_args()
     if args.cmd == "register":
         register(args.id, args.participants, args.trigger, args.target, args.type)
@@ -617,6 +800,15 @@ def main():
         consume_recovery(args.id, args.workflow, args.reason)
     elif args.cmd == "new-epoch":
         new_epoch(args.id, args.reason)
+    elif args.cmd == "register-fairness":
+        register_fairness(args.id, args.type, args.bound)
+    elif args.cmd == "record-service":
+        record_service(args.id, args.workflow, args.obligation, args.level, args.evidence)
+    elif args.cmd == "eligible-round":
+        eligible = [e.strip() for e in args.eligible.split(",")]
+        record_eligible_round(args.id, eligible)
+    elif args.cmd == "fairness-report":
+        fairness_report(args.id)
 
 
 if __name__ == "__main__":
