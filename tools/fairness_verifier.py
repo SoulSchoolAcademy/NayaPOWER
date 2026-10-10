@@ -187,7 +187,7 @@ def verify_trace(events):
 
 def run_discriminating_suite():
     """
-    Run the 12 discriminating tests from Naya 1's spec.
+    Run the 8 discriminating tests from Naya 1's spec.
     Each test constructs a synthetic trace and classifies it.
     """
     print("=" * 70)
@@ -308,9 +308,9 @@ def register_assumption(contract_id, assumption_id, owner, predicate, justificat
         "registered_at": datetime.now(timezone.utc).isoformat(),
     }
 
-    # Store in a simple file-based registry
+    # Store in a simple file-based registry (portable: relative to home)
     import os
-    reg_file = "/home/hatch/workspace/goals/nayapower-10-10-completion-drive/hidden_files/fairness-assumptions.json"
+    reg_file = os.path.expanduser("~/workspace/goals/nayapower-10-10-completion-drive/hidden_files/fairness-assumptions.json")
     os.makedirs(os.path.dirname(reg_file), exist_ok=True)
     try:
         with open(reg_file) as f:
@@ -336,7 +336,7 @@ def audit_assumptions(contract_id):
     Returns findings including circularity and vacuity risks.
     """
     import os
-    reg_file = "/home/hatch/workspace/goals/nayapower-10-10-completion-drive/hidden_files/fairness-assumptions.json"
+    reg_file = os.path.expanduser("~/workspace/goals/nayapower-10-10-completion-drive/hidden_files/fairness-assumptions.json")
     try:
         with open(reg_file) as f:
             reg = json.load(f)
@@ -475,7 +475,7 @@ def main():
     vt = sub.add_parser("verify-trace", help="Verify canonical scheduling trace")
     vt.add_argument("--events", required=True, help="JSON list of trace events")
 
-    sub.add_parser("run-suite", help="Run 12 discriminating tests")
+    sub.add_parser("run-suite", help="Run 8 discriminating tests")
 
     ra = sub.add_parser("register-assumption", help="Register environmental assumption")
     ra.add_argument("--contract", required=True)

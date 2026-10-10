@@ -478,7 +478,7 @@ def register_composite_claim(claim_id, description, obligations, composition_rul
     return claim
 
 
-def add_obligation_evidence(claim_id, obligation_id, evidence_id, scope, independence="CONFIRMED", provenance=""):
+def add_obligation_evidence(claim_id, obligation_id, evidence_id, scope, independence="UNDETERMINED", provenance=""):
     """Record that evidence supports a specific obligation within a composite claim."""
     reg = load_registry()
     if claim_id not in reg["claims"]:
@@ -1686,7 +1686,7 @@ def main():
     oe.add_argument("--obligation", required=True)
     oe.add_argument("--evidence", required=True)
     oe.add_argument("--scope", required=True)
-    oe.add_argument("--independence", default="CONFIRMED",
+    oe.add_argument("--independence", default="UNDETERMINED",
                     choices=["CONFIRMED", "UNDETERMINED", "COMPROMISED"])
     oe.add_argument("--provenance", default="")
 

@@ -11,8 +11,9 @@ Usage:
     python3 tools/performance_ledger.py report [--date YYYY-MM-DD]
     python3 tools/performance_ledger.py score --lane <lane> [--days N]
 
-The ledger lives at: BRAIN/05-MEMORY/PERFORMANCE-LEDGER.jsonl (append-only)
+The ledger lives at: ~/workspace/goals/nayapower-10-10-completion-drive/hidden_files/performance_ledger.jsonl (append-only)
 One JSON object per shift. Immutable. Accountable.
+NOTE: machine-local path. Canonical-seam migration pending audit remediation.
 """
 
 import argparse
