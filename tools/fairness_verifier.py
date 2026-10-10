@@ -681,6 +681,19 @@ def main():
     pr = sub.add_parser("projection-refresh", help="Refresh or annotate projection")
     pr.add_argument("--id", required=True)
 
+    pw = sub.add_parser("pub-write", help="Attempt CAS publication")
+    pw.add_argument("--id", required=True)
+    pw.add_argument("--ev-rev", type=int, required=True, help="Evidence revision used")
+    pw.add_argument("--claim-rev", type=int, required=True, help="Claim revision used")
+    pw.add_argument("--proj-rev", type=int, required=True, help="Projection revision used")
+    pw.add_argument("--fence", type=int, required=True, help="Fencing token held")
+
+    pf = sub.add_parser("pub-fence", help="Issue fencing token for projection job")
+    pf.add_argument("--id", required=True)
+
+    prt = sub.add_parser("pub-race-test", help="Delayed-writer race experiment")
+    prt.add_argument("--id", required=True)
+
     args = parser.parse_args()
     if args.cmd == "classify":
         cycle = json.loads(args.trace)
@@ -772,6 +785,146 @@ def main():
         proj_serve(args.id, args.purpose)
     elif args.cmd == "projection-refresh":
         proj_refresh(args.id)
+    elif args.cmd == "pub-write":
+        pub_write(args.id, args.ev_rev, args.claim_rev, args.proj_rev, args.fence)
+    elif args.cmd == "pub-fence":
+        pub_fence(args.id)
+    elif args.cmd == "pub-race-test":
+        pub_race_test(args.id)
+
+
+# ============================================================================
+# Stale Publication Prevention (Naya 1's protocol)
+#
+# Three invariants:
+#   StaleWriter ⇒ RejectPublication
+#   RevokedEvidence ⇒ NoStaleCertification
+#   IndependentValidSupport ⇒ PreserveSupportedClaim
+#
+# PublishAllowed = ProjectionHeadMatches ∧ QualificationDependenciesCurrent
+#                ∧ EvidenceDependenciesAdmissible ∧ FencingTokenCurrent
+# ============================================================================
+
+
+def _pub_state(reg):
+    return reg.setdefault("pub", {"ev_rev": 0, "claim_rev": 0, "fences": {}})
+
+
+def pub_fence(proj_id):
+    """Issue a fencing token for a projection job. Monotonic, shared authority."""
+    reg = _proj_load()
+    pub = _pub_state(reg)
+    token = pub["fences"].get(proj_id, 0) + 1
+    pub["fences"][proj_id] = token
+    _proj_save(reg)
+    print(f"Fencing token {token} issued for {proj_id}")
+    print(f"  Older tokens are superseded and cannot publish.")
+    return token
+
+
+def pub_write(proj_id, ev_rev, claim_rev, proj_rev, fence):
+    """
+    Compare-and-swap publication. The writer declares the revisions it used;
+    the commit succeeds only if all still match authoritative state.
+    """
+    reg = _proj_load()
+    pub = _pub_state(reg)
+    p = reg["projections"].get(proj_id)
+    if not p:
+        print(f"Unknown projection {proj_id}"); return False
+
+    print(f"\nPublication attempt for {proj_id}:")
+    print(f"  Writer declares: ev_rev={ev_rev}, claim_rev={claim_rev}, "
+          f"proj_rev={proj_rev}, fence={fence}")
+    print(f"  Authoritative:   ev_rev={pub['ev_rev']}, claim_rev={pub['claim_rev']}, "
+          f"proj_rev={p.get('proj_rev', 0)}, fence={pub['fences'].get(proj_id, 0)}")
+
+    failures = []
+    if fence != pub["fences"].get(proj_id, 0):
+        failures.append("STALE_FENCING_TOKEN — superseded by a newer job")
+    if ev_rev != pub["ev_rev"]:
+        failures.append("STALE_DEPENDENCY — evidence revision changed (revocation?)")
+    if claim_rev != pub["claim_rev"]:
+        failures.append("STALE_DEPENDENCY — claim qualification changed")
+    if proj_rev != p.get("proj_rev", 0):
+        failures.append("WRITE_CONFLICT — projection head moved")
+
+    if failures:
+        print(f"  ✗ REJECTED:")
+        for f in failures:
+            print(f"    - {f}")
+        print(f"  Writer must rebase on canonical state, recompute, and retry with new revisions.")
+        print(f"  (No blind retry with incremented version.)")
+        return False
+
+    p["proj_rev"] = p.get("proj_rev", 0) + 1
+    p["status"] = "CURRENT"
+    _proj_save(reg)
+    print(f"  ✓ PUBLISHED at proj_rev={p['proj_rev']}")
+    return True
+
+
+def pub_note_revocation():
+    """Call when evidence is revoked: bumps the authoritative evidence revision."""
+    reg = _proj_load()
+    pub = _pub_state(reg)
+    pub["ev_rev"] += 1
+    _proj_save(reg)
+    return pub["ev_rev"]
+
+
+def pub_note_requalification():
+    """Call when a claim is requalified: bumps the claim revision."""
+    reg = _proj_load()
+    pub = _pub_state(reg)
+    pub["claim_rev"] += 1
+    _proj_save(reg)
+    return pub["claim_rev"]
+
+
+def pub_race_test(proj_id):
+    """
+    The decisive experiment: old PASS vs new revocation vs delayed writer.
+    Writer A starts with current revisions, gets paused; revocation commits;
+    Writer A resumes and must be rejected.
+    """
+    print(f"\n{'='*70}")
+    print(f"DELAYED-WRITER RACE TEST: {proj_id}")
+    print(f"{'='*70}")
+    reg = _proj_load()
+    pub = _pub_state(reg)
+
+    # Writer A starts: captures current revisions + fencing token
+    t_a = pub_fence(proj_id)
+    reg = _proj_load(); pub = _pub_state(reg)
+    a_ev, a_claim = pub["ev_rev"], pub["claim_rev"]
+    a_proj = reg["projections"][proj_id].get("proj_rev", 0)
+    print(f"\n  T1: Writer A captures ev_rev={a_ev}, claim_rev={a_claim}, proj_rev={a_proj}, fence={t_a}")
+    print(f"      (Writer A pauses before publication)")
+
+    # Revocation commits
+    new_ev = pub_note_revocation()
+    new_claim = pub_note_requalification()
+    print(f"\n  T2-T3: Revocation commits → ev_rev={new_ev}, claim_rev={new_claim}")
+
+    # Writer A resumes with stale revisions
+    print(f"\n  T4-T5: Writer A resumes and attempts publication with OLD revisions")
+    ok = pub_write(proj_id, a_ev, a_claim, a_proj, t_a)
+
+    # Genuinely unaffected writer: fresh revisions should succeed
+    print(f"\n  Control: fresh writer with current revisions")
+    t_b = pub_fence(proj_id)
+    reg = _proj_load(); pub = _pub_state(reg)
+    ok2 = pub_write(proj_id, pub["ev_rev"], pub["claim_rev"],
+                     reg["projections"][proj_id].get("proj_rev", 0), t_b)
+
+    print(f"\n{'='*70}")
+    if not ok and ok2:
+        print(f"  ✓ RACE TEST PASSED: stale writer rejected, fresh writer accepted.")
+    else:
+        print(f"  ✗ RACE TEST FAILED: stale_ok={ok}, fresh_ok={ok2}")
+    print(f"{'='*70}")
+    return (not ok) and ok2
 
 
 # ============================================================================
