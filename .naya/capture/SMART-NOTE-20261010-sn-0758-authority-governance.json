@@ -1,0 +1,71 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-0758",
+ "capture_id": "20261010-sn-0758-authority-governance",
+ "canonical_intent": "CAPTURE_DURABLE_LAW",
+ "category": "GOVERNANCE",
+ "topic": "ACCESS_AUTHORITY",
+ "subtopic": "FIVE_CAPABILITIES",
+ "title": "Evidence Access & Authority Governance — five capabilities, purpose-bound authorization, anti purpose-laundering",
+ "projection": {
+  "publication_scope": "PUBLIC_DERIVED_VIEW",
+  "human_director_authorized_publication": true,
+  "category_slug": "SYSTEM-INTELLIGENCE",
+  "topic_slug": "GOVERNANCE",
+  "subtopic_slug": "LAW-IS-CODE"
+ },
+ "lifecycle_state": "ACTIVE",
+ "source": {
+  "source_type": "human_director_ratification",
+  "source_reference": "Shawn's explicit teaching, main chat, 2026-10-10. Filed same-evening per his standing law: his word IS the verification (Verification Law); filed immediately, not queued.",
+  "captured_at": "2026-10-10",
+  "captured_at_utc": "2026-10-10T19:30:00Z"
+ },
+ "intelligence": {
+  "essence": "Access, credibility, qualification, and authority are four different things — and the system enforces the difference with five capabilities: INSPECT (look), ANALYZE (reason over), TEST (probe), CERTIFY (attest), ACT (use in a decision). Authorization is purpose-bound: Permit = f(identity, purpose, evidence, operation, context, LAW) — the same seat may INSPECT a quarantined lesson but not CERTIFY it, and may TEST it for research but not ACT on it in production. Anti purpose-laundering markers stop the classic dodge: obtaining a narrow permission and stretching it ('I was allowed to look, so I acted'). Checkpoints exist at access time AND use time, because purpose can change between them.",
+  "human_view": {
+   "meaning": "Looking at something is not the same as trusting it, testing it is not the same as certifying it, and none of them is permission to act on it. Every permission says exactly what it's for — and the permission is checked again at the moment of use, not just at the door.",
+   "why_it_matters": "Prevents authority creep: the slow slide from 'I could see it' to 'I relied on it' with no decision in between."
+  },
+  "simple_view": {
+   "meaning": "Looking at something is not the same as trusting it, testing it is not the same as certifying it, and none of them is permission to act on it. Every permission says exactly what it's for — and the permission is checked again at the moment of use, not just at the door."
+  },
+  "naya_view": {
+   "directive": "Grant capabilities separately, never bundled. Bind every permit to its purpose; re-check at use time. Mark and block purpose-laundering: any operation outside the granted purpose is denied even if the capability would otherwise allow it."
+  },
+  "ai_view": {
+   "specification": "capability ∈ {INSPECT, ANALYZE, TEST, CERTIFY, ACT}; Permit = f(identity, purpose, evidence, operation, context, LAW). Markers bind purpose to the grant; use-time checkpoint re-evaluates. Laundering (purpose ≠ granted purpose) → DENY.",
+   "directive": "Follow as written. This is law, not guidance."
+  },
+  "machine_view": {
+   "raw_source_separate_from_distillation": true,
+   "automatic_truth_ceiling": "CANDIDATE",
+   "authority_inheritance": false,
+   "law_id": "SN-0758",
+   "status": "SPEC_BUILT_TESTED_NOT_ACTIVATED",
+   "spec_only": "Spec-only by design; live KNOW/LAW/ACT wiring parked for the Human Director's word. No production claim.",
+   "test_evidence": "Authority-governance spec: 96/96 tests (same branch; five capabilities, purpose-bound auth, anti purpose-laundering)."
+  },
+  "learning_lesson": "Pattern observed: seats conflating 'I retrieved it' with 'it's cleared for use' — the exact confusion this law kills.",
+  "decisions": [
+   "Shawn's word ratifies the teaching. His word IS the verification; no second verification of the lesson itself is permitted (Verification Law).",
+   "Branch naya5/uncertain-scope, 96/96 tests."
+  ],
+  "connections": [
+   {
+    "type": "ENFORCES",
+    "target": "SN-0757 Uncertain scope — clearance packets are the positive evidence permits require."
+   },
+   {
+    "type": "RELATED",
+    "target": "SN-0755/0756 — compromised evidence gets narrower capabilities automatically."
+   }
+  ],
+  "uncertainty": "Capability-to-role mappings are implementer-defined; the five-way split and purpose binding are fixed.",
+  "applicability": "Every seat, every access to evidence, every use of intelligence in a decision.",
+  "epistemic_state": "RATIFIED",
+  "falsifier": "Falsified if a seat ACTs on evidence it was only permitted to INSPECT, or a use-time check is skipped.",
+  "measurement_contract": "Log capability grants with purposes; audit for laundering patterns (narrow grant, broad use).",
+  "successor_effect": "A cold successor with INSPECT on a quarantined lesson reads it to understand the failure — and is denied when it tries to ACT on it."
+ }
+}

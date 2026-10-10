@@ -1,0 +1,75 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-0770",
+ "capture_id": "20261010-sn-0770-strong-fairness",
+ "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+ "category": "SYSTEM_INTELLIGENCE",
+ "topic": "LIVENESS",
+ "subtopic": "WEAK_VS_STRONG",
+ "title": "Strong Fairness — weak vs strong decision rule, eight assumptions; 'fairness gives work its chance, progress proves the chance accomplished something'",
+ "projection": {
+  "publication_scope": "PUBLIC_DERIVED_VIEW",
+  "human_director_authorized_publication": true,
+  "category_slug": "SYSTEM-INTELLIGENCE",
+  "topic_slug": "GOVERNANCE",
+  "subtopic_slug": "LAW-IS-CODE"
+ },
+ "lifecycle_state": "ACTIVE",
+ "source": {
+  "source_type": "human_director_ratification",
+  "source_reference": "Shawn's explicit teaching, main chat, 2026-10-10. Filed same-evening per his standing law: his word IS the verification (Verification Law); filed immediately, not queued.",
+  "captured_at": "2026-10-10",
+  "captured_at_utc": "2026-10-10T19:30:00Z"
+ },
+ "intelligence": {
+  "essence": "Weak fairness says: if work is CONTINUOUSLY eligible, it eventually gets served. Strong fairness says: if work is eligible INFINITELY OFTEN — even with gaps — it eventually gets served. The difference is everything for intermittent work: under weak fairness, a scheduler can starve a task forever by letting it flicker in and out of eligibility, and the letter of the guarantee is satisfied. The eight-situation decision rule tells you exactly which standard applies where; the eight-assumption checklist must be satisfied before a strong-fairness claim is made. The flicker ledger tracks eligibility oscillation so the 'it wasn't continuously eligible' defense can be audited. The decisive experiment: two schedulers, one weak-fair one strong-fair, on the same flickering workload — only the strong-fair one serves the intermittent task.",
+  "human_view": {
+   "meaning": "Weak fairness protects work that's always ready. Strong fairness protects work that keeps becoming ready, over and over, with gaps. Without strong fairness, a scheduler can starve intermittent work forever while technically keeping its promise.",
+   "why_it_matters": "Intermittent eligibility is the normal case in real systems (resources come and go). Weak fairness alone legalizes starvation of exactly the work that needs protection."
+  },
+  "simple_view": {
+   "meaning": "Weak fairness protects work that's always ready. Strong fairness protects work that keeps becoming ready, over and over, with gaps. Without strong fairness, a scheduler can starve intermittent work forever while technically keeping its promise."
+  },
+  "naya_view": {
+   "directive": "Apply the eight-situation decision rule to choose the standard. Satisfy the eight-assumption checklist before claiming strong fairness. Keep the flicker ledger on intermittent obligations. Never accept 'not continuously eligible' as a defense without the ledger."
+  },
+  "ai_view": {
+   "specification": "WF: □eligible → ◇served. SF: □◇eligible → ◇served. Decision rule: 8 situations → standard. Checklist: 8 assumptions. Flicker ledger records eligibility oscillation.",
+   "directive": "Follow as written. This is law, not guidance."
+  },
+  "machine_view": {
+   "raw_source_separate_from_distillation": true,
+   "automatic_truth_ceiling": "CANDIDATE",
+   "authority_inheritance": false,
+   "law_id": "SN-0770",
+   "status": "SPEC_BUILT_TESTED_NOT_ACTIVATED",
+   "spec_only": "Spec-only by design; live KNOW/LAW/ACT wiring parked for the Human Director's word. No production claim.",
+   "test_evidence": "Strong-fairness spec: 344/344 tests (weak vs strong decision rule, eight-situation rule, eight-assumption checklist, flicker ledger, two-scheduler experiment)."
+  },
+  "learning_lesson": "The intermittently-eligible ACT scenario is the standing test case; the two-scheduler experiment is the standing proof the distinction is real.",
+  "decisions": [
+   "Shawn's word ratifies the teaching. His word IS the verification; no second verification of the lesson itself is permitted (Verification Law).",
+   "Branch naya5/strong-fairness, 344/344 tests."
+  ],
+  "connections": [
+   {
+    "type": "REFINES",
+    "target": "SN-0769 Scheduler fairness — the standard-selection layer."
+   },
+   {
+    "type": "VERIFIED_BY",
+    "target": "SN-0771 Fairness verification — the methodology that proves it."
+   },
+   {
+    "type": "PROTECTED_BY",
+    "target": "SN-0772 Assumption hygiene — the boundary that keeps the proof honest."
+   }
+  ],
+  "uncertainty": "Situation taxonomy and assumption checklist contents are implementer-defined; the WF/SF distinction and the flicker ledger are fixed.",
+  "applicability": "Every seat that specifies or verifies scheduling guarantees for intermittent work.",
+  "epistemic_state": "RATIFIED",
+  "falsifier": "Falsified if a strong-fairness claim is made with checklist items unsatisfied, or flicker is used to excuse starvation.",
+  "measurement_contract": "Track flicker-ledger entries vs starvation events; verify the two-scheduler experiment reproduces.",
+  "successor_effect": "A cold successor specifying a scheduler for intermittent work reaches for strong fairness by default — and demands the checklist."
+ }
+}

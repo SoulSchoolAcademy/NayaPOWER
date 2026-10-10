@@ -1,0 +1,71 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-0767",
+ "capture_id": "20261010-sn-0767-multi-node-liveness",
+ "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+ "category": "SYSTEM_INTELLIGENCE",
+ "topic": "LIVENESS",
+ "subtopic": "THREE_LIVENESS_TYPES",
+ "title": "Multi-Node Liveness — three liveness types, state taxonomy, three failure modes; 'safety prevents wrong actions, liveness ensures eligible work progresses'",
+ "projection": {
+  "publication_scope": "PUBLIC_DERIVED_VIEW",
+  "human_director_authorized_publication": true,
+  "category_slug": "SYSTEM-INTELLIGENCE",
+  "topic_slug": "GOVERNANCE",
+  "subtopic_slug": "LAW-IS-CODE"
+ },
+ "lifecycle_state": "ACTIVE",
+ "source": {
+  "source_type": "human_director_ratification",
+  "source_reference": "Shawn's explicit teaching, main chat, 2026-10-10. Filed same-evening per his standing law: his word IS the verification (Verification Law); filed immediately, not queued.",
+  "captured_at": "2026-10-10",
+  "captured_at_utc": "2026-10-10T19:30:00Z"
+ },
+ "intelligence": {
+  "essence": "Safety says what must never happen; liveness says what must eventually happen — and a system can be perfectly safe and completely stuck. Three liveness types: disposition (the system's readiness to act), workflow (the process moving forward), task completion (the work actually finishing). A state taxonomy maps where each obligation sits; three failure modes are named: deadlock (circular waiting), livelock (busy but not progressing), starvation (eligible work never chosen). Recovery rules: weakening LAW to 'fix' a liveness failure is an invalid repair — you don't fix a stuck system by removing the rules that kept it safe. The guarantee is conditional: liveness holds when its conditions hold, and the conditions are stated, not assumed.",
+  "human_view": {
+   "meaning": "Being safe isn't the same as being alive. A system can follow every rule and still be frozen, spinning, or ignoring work forever. This law names the three ways work dies and says what counts as a real fix.",
+   "why_it_matters": "Every fairness and progress claim downstream stands on liveness. Without it, 'the system works' means 'the system doesn't crash' — which is half the claim."
+  },
+  "simple_view": {
+   "meaning": "Being safe isn't the same as being alive. A system can follow every rule and still be frozen, spinning, or ignoring work forever. This law names the three ways work dies and says what counts as a real fix."
+  },
+  "naya_view": {
+   "directive": "Classify liveness claims into the three types. Track obligations in the state taxonomy. Name the failure mode on any stall: deadlock, livelock, or starvation. Never repair liveness by weakening LAW. State the guarantee's conditions explicitly."
+  },
+  "ai_view": {
+   "specification": "liveness ∈ {disposition, workflow, task_completion}; failure ∈ {deadlock, livelock, starvation}. Repair validity: any repair that weakens LAW is invalid. Guarantee form: conditions → liveness, with conditions stated.",
+   "directive": "Follow as written. This is law, not guidance."
+  },
+  "machine_view": {
+   "raw_source_separate_from_distillation": true,
+   "automatic_truth_ceiling": "CANDIDATE",
+   "authority_inheritance": false,
+   "law_id": "SN-0767",
+   "status": "SPEC_BUILT_TESTED_NOT_ACTIVATED",
+   "spec_only": "Spec-only by design; live KNOW/LAW/ACT wiring parked for the Human Director's word. No production claim.",
+   "test_evidence": "Liveness spec: 255/255 tests (three liveness types, state taxonomy, deadlock/livelock/starvation, no-weakening-LAW repair rule)."
+  },
+  "learning_lesson": "Standing distinction: heartbeat ≠ progress — a live signal is not evidence of advancing work.",
+  "decisions": [
+   "Shawn's word ratifies the teaching. His word IS the verification; no second verification of the lesson itself is permitted (Verification Law).",
+   "Branch naya5/multi-node-liveness, 255/255 tests."
+  ],
+  "connections": [
+   {
+    "type": "FOUNDATION_FOR",
+    "target": "SN-0768 Progress, SN-0769/0770 Fairness — liveness is what they qualify."
+   },
+   {
+    "type": "RELATED",
+    "target": "SN-0750 Compounding — liveness claims need its gates before promotion."
+   }
+  ],
+  "uncertainty": "State taxonomy details are implementer-defined; the three types, three failures, and the no-weakening-LAW repair rule are fixed.",
+  "applicability": "Every seat that claims the system is working, alive, or making progress.",
+  "epistemic_state": "RATIFIED",
+  "falsifier": "Falsified if a liveness failure is 'repaired' by weakening LAW, or a stall goes unnamed.",
+  "measurement_contract": "Track stall events with named failure modes and repair validity.",
+  "successor_effect": "A cold successor finding a stuck-but-safe system names the failure mode instead of declaring it healthy — and rejects a repair that weakens LAW."
+ }
+}
