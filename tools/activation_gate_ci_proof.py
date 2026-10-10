@@ -264,11 +264,33 @@ def dispatch_mint(token, repo, ref, deliverables, job):
     raise RuntimeError("mint artifact missing (infra)")
 
 
+def row_status(ok):
+    """Row label: HOLD / BREACH / SKIP.
+
+    SKIP (ok=None) means the check never ran. A skipped check must never
+    be counted as a held row — UNKNOWN != VERIFIED.
+    """
+    if ok is None:
+        return "SKIP"
+    return "HOLD" if ok else "BREACH"
+
+
+def tally_rows(results):
+    """Honest tally: skipped rows are excluded from both the held count
+    and the denominator. Returns (held, ran, skipped, failed)."""
+    skipped = sum(1 for _, ok, _ in results if ok is None)
+    failed = sum(1 for _, ok, _ in results if ok is not None and not ok)
+    ran = len(results) - skipped
+    return ran - failed, ran, skipped, failed
+
+
 def main():
     os.makedirs(WORK, exist_ok=True)
     results = []
 
     def record(name, ok, detail):
+        # ok=True -> HOLD, ok=False -> BREACH, ok=None -> SKIP (never ran;
+        # excluded from the hold tally so a skip can never inflate it)
         results.append((name, ok, detail))
 
     token = os.environ.get("GITHUB_TOKEN", "")
@@ -620,19 +642,17 @@ def main():
                out.get("verdict"))
     except Exception as e:  # noqa: BLE001 — best-effort demo
         print("[EXACT] live-PR exact-invocation unavailable: %s" % e)
-        record("exact-invocation: live PR #1996 (skipped — infra)", True,
-               "skipped")
+        record("exact-invocation: live PR #1996 (skipped — infra)", None,
+               "infra unavailable — not run")
     finally:
         if d:
             shutil.rmtree(d, ignore_errors=True)
 
     # ============ REPORT ============
-    failed = 0
+    held, ran, skipped, failed = tally_rows(results)
     print("\n==== UNIFIED ACTIVATION GATE R3 — CI PROOF ====")
     for name, ok, detail in results:
-        print("[%s] %s :: %s" % ("HOLD" if ok else "BREACH", name, detail))
-        if not ok:
-            failed += 1
+        print("[%s] %s :: %s" % (row_status(ok), name, detail))
     if failed:
         try:
             t2 = resolve_truth()
@@ -643,7 +663,8 @@ def main():
                 return 2
         except Exception:
             pass
-    print("==== %d/%d rows hold ====" % (len(results) - failed, len(results)))
+    suffix = " (%d skipped)" % skipped if skipped else ""
+    print("==== %d/%d rows hold%s ====" % (held, ran, suffix))
     return 1 if failed else 0
 
 
