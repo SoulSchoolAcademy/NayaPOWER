@@ -1,0 +1,39 @@
+name: Protocol Watchdog
+
+# Weekly machine hygiene for the Worker Protocol. Report-only: this workflow
+# never deletes, never merges, never blocks. It makes waste VISIBLE so the
+# team can kill it.
+#
+# Jobs:
+#   stale-branches  [CODE] Branches with no commit in 45 days and no open PR
+#                   get reported to #1354. Anti-regrowth machinery: the branch
+#                   cleanup of 2026-10-10 must never need repeating.
+#   budget          [CODE] GitHub Actions burn rate vs the ~2,500 min/month
+#                   budget, posted to #1354. When CI minutes die, work stops —
+#                   this is the early-warning gauge.
+
+on:
+  schedule:
+    - cron: '0 9 * * 1'  # Mondays 09:00 UTC
+  workflow_dispatch:
+
+jobs:
+  stale-branches:
+    name: Stale branch watch
+    runs-on: ubuntu-latest
+    steps:
+      - name: Report stale branches to #1354
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: python3 tools/stale_branch_watch.py
+
+  budget:
+    name: Actions budget watch
+    runs-on: ubuntu-latest
+    steps:
+      - name: Report CI burn rate to #1354
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: python3 tools/actions_budget_watch.py
