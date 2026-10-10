@@ -788,7 +788,7 @@ def main():
     rlrec = sub.add_parser("rlq-gov-recover", help="AER-REC-1: crash-safe recovery")
     rlrec.add_argument("--case", required=True,
                        choices=["C1","C2","C3","C4","C5","C6","C7","C8","C9","C10",
-                                "C11","C12","C13","C14","C15","ALL","ALGO"])
+                                "C11","C12","C13","C14","C15","ALL","ALGO","LAB"])
 
     args = parser.parse_args()
     if args.cmd == "classify":
@@ -991,6 +991,22 @@ def rlq_gov_recover(case):
     print(f"\n{'='*70}")
     print(f"AER-REC-1 CRASH-SAFE GOVERNANCE RECOVERY")
     print(f"{'='*70}")
+
+    if case == "LAB":
+        # Worked example: epoch-81 merge replays after epoch-82 withdrawal.
+        print(f"\n  Crash-Recovery Lab — stale replay vs withdrawal:")
+        print(f"    Epoch 81: shared baseline for A and B commits.")
+        print(f"    Epoch 82: withdrawal of B's guarantee commits.")
+        print(f"    Crash: projection worker dies; old epoch-81 event redelivers.")
+        applied_revision = 82  # consumer has already applied epoch 82
+        incoming_revision = 81
+        if incoming_revision <= applied_revision:
+            print(f"    Consumer: incoming epoch {incoming_revision} ≤ applied {applied_revision}")
+            print(f"    → STALE_REPLAY_REJECTED; B's withdrawal stands.  ✓")
+            print(f"    Scope A: remains qualified (independently supported).  ✓")
+            return True
+        print(f"    ✗ stale event applied — RESURRECTION BUG")
+        return False
 
     if case == "ALGO":
         print(f"\n  Recovery algorithm (reconcile, don't repeat writes):")
