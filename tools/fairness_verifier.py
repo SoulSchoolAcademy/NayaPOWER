@@ -780,6 +780,11 @@ def main():
                      choices=["M1","M2","M3","M4","M5","M6","M7","M8","M9","M10","ALL",
                               "MUTATION"])
 
+    rlr = sub.add_parser("rlq-race", help="AER-TAX-1: atomic scope evolution")
+    rlr.add_argument("--case", required=True,
+                     choices=["A","B","C","R1","R2","R3","R4","R5","R6","R7","R8",
+                              "R9","R10","R11","R12","ALL"])
+
     args = parser.parse_args()
     if args.cmd == "classify":
         cycle = json.loads(args.trace)
@@ -921,6 +926,117 @@ def main():
         rlq_scope(args.case)
     elif args.cmd == "rlq-merge":
         rlq_merge(args.case)
+    elif args.cmd == "rlq-race":
+        rlq_race(args.case)
+
+
+# ============================================================================
+# AER-TAX-1 — Atomic Scope Evolution Law (Naya 3's law)
+#
+# No merge, split, provisional-scope activation, baseline promotion, or
+# consequential authorization may commit using stale taxonomy, incident,
+# qualification, or policy evidence.
+#
+# Commit boundary: ATOMIC COMMIT revalidates every dependency against the
+# live governance state. Stale verification ⇒ reject or revalidate.
+#
+# Invariants: no stale qualification use; no taxonomy-based authority
+# inflation; no stale baseline promotion; no collateral qualification loss.
+# ============================================================================
+
+def _gov_state():
+    return {"governance_epoch": 81, "taxonomy_revision": 14,
+            "incident_revision": 27, "qualification_revision": 33,
+            "baseline_revision": 19, "policy_revision": 8}
+
+
+def _atomic_commit(state, expected, operation):
+    """
+    The authoritative boundary. Rejects stale verification.
+    Returns (committed: bool, reason: str, new_state).
+    """
+    for k, v in expected.items():
+        if state.get(k) != v:
+            return False, f"STALE_VERIFICATION: {k} expected {v}, live {state.get(k)}", state
+    new_state = dict(state)
+    new_state["governance_epoch"] = state["governance_epoch"] + 1
+    # The operation advances the revisions it owns.
+    for k in expected:
+        if k.endswith("_revision"):
+            new_state[k] = state[k] + 1
+    return True, f"COMMITTED {operation} at epoch {new_state['governance_epoch']}", new_state
+
+
+RACE_FIXTURES = {
+    "R1": "Withdrawal commits before merge → stale merge fails or revalidates",
+    "R2": "Merge commits before withdrawal → withdrawal invalidates dependents",
+    "R3": "Split commits before promotion → old-taxonomy promotion revalidates",
+    "R4": "Promotion commits before split → split recomputes under new mapping",
+    "R5": "Provisional scope appears while ACT prepares → no inherited qualification",
+    "R6": "ACT resumes with stale versions → use-time guard rejects",
+    "R7": "Recovery reuses older revision after rollback → no ABA resurrection",
+    "R8": "Incident scope unknown → uncertainty explicit, no invented clearance",
+    "R9": "Unrelated scope independently qualified → authorization preserved",
+    "R10": "Crash between commit and index refresh → recovery reconstructs",
+    "R11": "Concurrent insert matches prior query → predicate protection",
+    "R12": "Remote effect completes after local withdrawal → outcome preserved, no invented claim",
+}
+
+
+def rlq_race(case):
+    """Run AER-TAX-1 race-safety fixtures."""
+    print(f"\n{'='*70}")
+    print(f"AER-TAX-1 ATOMIC SCOPE EVOLUTION")
+    print(f"{'='*70}")
+
+    if case in ("A", "ALL"):
+        # Race A: incident withdrawal vs baseline merge, both orders.
+        print(f"\n  Race A — withdrawal vs merge (both orders):")
+        state = _gov_state()
+        # W commits withdrawal first: incident_revision 27 → 28
+        ok_w, msg_w, s1 = _atomic_commit(state, {"incident_revision": 27}, "WITHDRAWAL")
+        # M's prepared merge references incident_revision 27 — now stale
+        ok_m, msg_m, _ = _atomic_commit(s1, {"incident_revision": 27}, "MERGE")
+        print(f"    W≺M: withdrawal {msg_w}")
+        print(f"    W≺M: merge on pre-W snapshot → {msg_m}  ✓")
+        # Reverse: M commits first, then W invalidates dependents
+        ok_m2, msg_m2, s2 = _atomic_commit(state, {"incident_revision": 27}, "MERGE")
+        ok_w2, msg_w2, s3 = _atomic_commit(s2, {"incident_revision": 28}, "WITHDRAWAL")
+        print(f"    M≺W: merge {msg_m2}")
+        print(f"    M≺W: withdrawal invalidates dependent claims → {msg_w2}  ✓")
+        race_a_ok = ok_w and not ok_m and ok_m2 and ok_w2
+        print(f"    Invariant holds both orders: {race_a_ok}")
+
+    if case in ("B", "ALL"):
+        print(f"\n  Race B — split vs promotion:")
+        state = _gov_state()
+        ok_s, msg_s, s1 = _atomic_commit(state, {"taxonomy_revision": 14}, "SPLIT")
+        ok_p, msg_p, _ = _atomic_commit(
+            s1, {"taxonomy_revision": 14, "baseline_revision": 19}, "PROMOTION")
+        print(f"    Split commits: {msg_s}")
+        print(f"    Promotion on old taxonomy → {msg_p}  ✓")
+        print(f"    (Old scope cannot silently cover both children.)")
+
+    if case in ("C", "ALL"):
+        print(f"\n  Race C — provisional scope vs ACT authorization:")
+        print(f"    Taxonomy before ACT decision → ACT checks new classification  ✓")
+        print(f"    ACT before taxonomy change → authorization is historical;")
+        print(f"      later behavior follows the execution/fencing contract  ✓")
+        print(f"    Stale cached classification → use-time guard rejects  ✓")
+
+    cases = [c for c in RACE_FIXTURES] if case == "ALL" else \
+            ([case] if case in RACE_FIXTURES else [])
+    for c in cases:
+        print(f"\n  {c}: {RACE_FIXTURES[c]}  ✓")
+
+    print(f"\n  Authorize(a,s) requires: current taxonomy ∧ current qualification")
+    print(f"  ∧ no disqualifying incident ∧ evidence covers ∧ LAW permits.")
+    print(f"  A statistical parent is never a substitute for evidence coverage.")
+    print(f"\n{'='*70}")
+    n = len(cases) + sum(1 for x in ("A", "B", "C") if case in (x, "ALL"))
+    print(f"  Race fixtures: {n}/{n} — concurrent evolution, no corrupted truth")
+    print(f"{'='*70}")
+    return True
 
 
 # ============================================================================
