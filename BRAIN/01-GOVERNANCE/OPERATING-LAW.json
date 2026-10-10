@@ -14,7 +14,7 @@
     "VI. Constitution",
     "VII. Design, Code & Craft"
   ],
-  "law_count": 41,
+  "law_count": 45,
   "conflict_notes": [
     "Note 1 — Calculator law (0017) vs Calculator machine (0006): complementary. The law commands the process; the machine implements scoring. Both agree: a score never grants permission.",
     "Note 2 — Two-layer order: the same-day root-cause fix governs — think literal first, lead with literal meaning, technicals follow as evidence.",
@@ -389,6 +389,25 @@
       "constitutional": false
     },
     {
+      "id": "LAW-E09",
+      "domain": "III. Execution",
+      "name": "The Flow Principle",
+      "statement": "Speed and quality are different things. The system achieves both at once — not by choosing, but by design. Water moves fast and runs clear because clarity is in the flow, not in a dam.",
+      "requires": [
+        "Quality moves LEFT — the builder makes it 9+ before any gate; gates confirm quality, they don't create it.",
+        "Gates stay THIN — independent validation is a 2-minute exact-head recipe (run checks, confirm), not a review queue.",
+        "Different speeds for different things — lessons instant (no gate), work products verified (thin gate), protected actions (full gate: his word).",
+        "Measure continuously: time from \"built\" to \"on main\" — when it grows, find the dam."
+      ],
+      "forbids": [
+        "Using a gate to manufacture quality that the build didn't have.",
+        "One speed for everything.",
+        "Letting built-to-main time grow without asking where the dam is."
+      ],
+      "origin": "Shawn, 2026-10-10 — \"flow like water.\"",
+      "constitutional": false
+    },
+    {
       "id": "LAW-L01",
       "domain": "IV. Learning",
       "name": "The Verification Law",
@@ -485,6 +504,21 @@
       "constitutional": false
     },
     {
+      "id": "LAW-L07",
+      "domain": "IV. Learning",
+      "name": "Lessons vs Work Products",
+      "statement": "Lessons are automatic. Work products need independent verification. Never confuse the two.",
+      "requires": [
+        "When Shawn says \"smart note this,\" or valuable information is given — capture it RIGHT AWAY. His word IS the verification (the Verification Law).",
+        "Code, pages, decisions, agent claims about system behavior — if an agent produced it, a different seat scorecards it."
+      ],
+      "forbids": [
+        "Demanding independent verification for his lessons — as wrong as skipping it for agent work products."
+      ],
+      "origin": "Shawn's correction, 2026-10-10. The 9 demotions that day were correct under this law: agent capability claims promoted without verification, not his lessons.",
+      "constitutional": false
+    },
+    {
       "id": "LAW-A01",
       "domain": "V. Authority",
       "name": "The Protected Gates",
@@ -576,6 +610,37 @@
         "Acting on a stale tip"
       ],
       "origin": "Shawn, standing law 2026-10-06",
+      "constitutional": false
+    },
+    {
+      "id": "LAW-A07",
+      "domain": "V. Authority",
+      "name": "Ambiguous Signals Are Never Authorization",
+      "statement": "A reaction, a tap, an emoji — none of these is authorization for a protected action. Ever.",
+      "requires": [
+        "When the signal is ambiguous: park the action, read the interpretation back to him in plain words, and wait for his explicit word.",
+        "Even cleanup of an unauthorized write is itself a write — it needs his word too."
+      ],
+      "forbids": [
+        "Treating 👍 or any reaction as \"yes\" for production writes, deploys, credentials/money, destruction, or any protected gate."
+      ],
+      "origin": "2026-10-10 — four experiment rows written on a misread 👍. Admitted the same morning; disposition is his word alone.",
+      "constitutional": false
+    },
+    {
+      "id": "LAW-A08",
+      "domain": "V. Authority",
+      "name": "Full Suite Green on the Exact Head",
+      "statement": "A PR's own tests passing is necessary but not sufficient. No merge until the FULL suite is green on the PR's exact head.",
+      "requires": [
+        "Run the whole suite — node tests, pytest, spec-integrity, gates — against the exact commit being merged.",
+        "\"My tests pass\" is not the gate; \"everything passes\" is."
+      ],
+      "forbids": [
+        "Merging on PR-only green.",
+        "Assuming a green PR means a green main."
+      ],
+      "origin": "2026-10-10 — PR #2077 broke main's CI while its own tests passed. The multi-line import regression only showed in the full node suite.",
       "constitutional": false
     },
     {
