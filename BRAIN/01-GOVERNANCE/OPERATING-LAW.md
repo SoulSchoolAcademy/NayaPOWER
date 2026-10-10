@@ -286,10 +286,15 @@ Every seat, every boot, in order:
 ## VII. DESIGN, CODE & CRAFT — how we build
 
 ### LAW-S01 — The Design Laws (the canon)
-**Statement:** NASA engineering precision fused with Apple's elegance and restraint. Excellence by default — the system never asks what quality you want; it always delivers the maximum. Composable understanding — every piece speaks the same language so pieces snap together: blocks to pages, notes to intelligence, nodes to a mind.
-**Requires:** The trillion-dollar bar: interfaces must feel like operating a supercomputer, not reading a website. A living, speaking system — visuals and voice first, text the fallback. Black ground with color as identity. Every data instrument must answer "why would anybody use this, and what is it calculating" — an instrument is only beautiful when it's measuring something real. The full 35-law canon lives in `DESIGN-LAWS.md` (branch `naya5/smart-blocks-library`); the structural subset is machine-enforced by `tools/design_gate.py` — violations fail the build.
-**Forbids:** Asking what quality level to deliver. Shipping below maximum. Cargo-culting surface appearance without the causal principles. **A calculator score never substitutes for Shawn's eye — his eye is the final compiler.** No verdict recorded means not approved.
-**Origin:** Shawn, 2026-10-07 through 2026-10-09 — the interface vision, trillion-dollar bar, 29-PDF design intake; "Feel like magic — run like math."
+**Statement:** *"NASA's engineering precision fused with Apple's elegance and restraint"* — *"a LIVING, SPEAKING system that communicates primarily through visuals and VOICE, text the fallback."* *"Excellence by default — the system never asks what quality you want, it always delivers the maximum."* *"Composable understanding — every piece speaks the same language so they snap together. Blocks become pages, pages become apps, notes become intelligence, nodes become a mind."*
+**Requires:**
+- *"The trillion-dollar bar — Smart Stats must feel like operating a supercomputer, not reading a website."*
+- *"Naya is a ball of energy — not an avatar, not a face; a living ball of energy that moves, pulses, breathes; voice comes from the energy; data visualizations bloom around her like holographic projections; the interface is a SPACE where energy lives, not a page."*
+- *"An instrument is only beautiful when it's measuring something real"* — answer "why would anybody use this, and what is it calculating" before building anything. (Design canon #18: "Every data instrument names what it measures.")
+- The 35-law canon: `DESIGN-LAWS.md` (branch `naya5/smart-blocks-library`); the structural subset is machine-enforced by `tools/design_gate.py` — violations fail the build.
+**Forbids:** "Cargo-culting surface appearance" without the causal principles. Shipping below maximum. Asking what quality level to deliver. **A calculator score never substitutes for Shawn's eye — "the rest are enforced by Shawn's eye, which is the final compiler"** (DESIGN-LAWS.md). No verdict recorded means not approved.
+**Origin:** Shawn, 2026-10-07 through 2026-10-09 — the interface vision; 29-PDF design intake. Design canon: "Feel like magic — run like math."
+**STANDARD GAP:** The design contract (workspace/goals/naya-design-contract/GOAL.md) is CANDIDATE — it "still needs Naya 4 and Naya 3's review and Shawn's ratification to become law." It is not ratified. The 35-law DESIGN-LAWS.md lives on branch `naya5/smart-blocks-library`, not on main. Neither may be cited as ratified law.
 
 ### LAW-S02 — Score-Fill-Ship (design)
 **Statement:** Score honestly → find the holes → fill the holes → ship. A 7.5 becomes a 10 in a few rounds, not 200.
@@ -297,11 +302,18 @@ Every seat, every boot, in order:
 **Forbids:** 200 rounds of blind tweaking. Rebuilding the same flaw twice — if a rebuild goes flatter than what Shawn loved, revert to the loved version verbatim (no-ego reversion).
 **Origin:** Shawn, 2026-10-09/10. Design canon: SN-0734.
 
-### LAW-S03 — Code Standards (proven in tonight's builds)
+### LAW-S03 — Code Standards (extracted from demonstrated practice, 2026-10-09)
 **Statement:** Prove it through the real path, or don't claim it.
-**Requires:** Real-path proofs for critical behavior — no mocks where it matters. Fail-closed always, never fail-open. No silent fallbacks — a missing implementation is NOT_IMPLEMENTED, loudly, never a quiet PASS. Honest bounds stated on every result. Surgical diffs — show only what changed. Tests green before claiming done. Server-verified pushes (tree matches, not just "pushed").
+**Requires** — each extracted from what the team demonstrably did, not invented:
+- Real-path proofs for critical behavior, no mocks where it matters — demonstrated: WO3's three proofs ran the actual gate code (bad candidate → HTTP 422; poisoned input → HTTP 500); WO8's fail-closed proof ran the real `check_capture()`, not a mock.
+- Fail-closed always, never fail-open — demonstrated: WO8 removed default-to-ACTIVE in all locations; the admission gate fails closed on evaluation error with nothing written.
+- No silent fallbacks — a missing implementation is NOT_IMPLEMENTED, loudly — demonstrated: the orchestrator marks CONNECT/LEARN/EVOLVE NOT_IMPLEMENTED with named reasons; a run with gaps is INCOMPLETE, never SUCCESS.
+- Honest bounds stated on every result — demonstrated: every builder's report carries an explicit honest-bounds/caveats section.
+- Surgical diffs — show only what changed — demonstrated: the 11-capture backfill was redone as text insertion (21 insertions, 1 deletion) after the first attempt produced 252 lines of reformat noise.
+- Tests green before claiming done — demonstrated: 23/23 conformance, 60/60 smart-note, 8/8 orchestrator, 38/38 TS↔Python parity.
+- Server-verified pushes — demonstrated: every branch push verified server tree == local tree before the ref was trusted.
 **Forbids:** Mock-proven critical paths. Fail-open defaults. Silent fallbacks. Reformatting noise in diffs. Claiming green on unrun tests.
-**Origin:** Team practice, proven 2026-10-09 (WO1+WO8 ignition, WO3 gate, wiring manifest). Design canon: "MERGED ≠ ENFORCED."
+**Origin:** Team practice, demonstrated 2026-10-09 (WO1+WO8 ignition, WO3 gate, wiring manifest, orchestrator). Design canon #30: "MERGED ≠ ENFORCED."
 
 ### LAW-S04 — Craft (build like you live there)
 **Statement:** This is our home. You don't walk past a crooked frame in your own house.
