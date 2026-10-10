@@ -1,0 +1,58 @@
+name: WO3 Admission Gate Proof
+
+# WO3 · G3 · CONN-ADMISSION — CI proof harness for the admission gate.
+# Per WO0 route decision: gate = TypeScript port (enforcement at the
+# nayanet-learning-verify mode==='candidate' write site); this workflow is
+# the proof harness. It pins the TS port verdict-by-verdict against the
+# Python reference and proves the three acceptance cases through the real
+# gate code: (a) bad candidate rejected with reason codes, (b) verifiable
+# candidate passes, (c) forced gate error -> FAIL CLOSED.
+
+on:
+  push:
+    branches: ["naya5/wo3-admission-gate"]
+    paths:
+      - "supabase/functions/nayanet-learning-verify/**"
+      - "tools/learning_admission_gate.py"
+      - "tests/test_learning_admission_gate.py"
+      - "tests/gen_admission_fixtures.py"
+      - "tests/parity_check.mjs"
+      - "tests/wo3_proof.mjs"
+      - ".github/workflows/wo3-admission-gate-proof.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "supabase/functions/nayanet-learning-verify/**"
+      - "tools/learning_admission_gate.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  admission-gate-proof:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+
+      - name: Python reference tests
+        run: python3 -m pytest tests/test_learning_admission_gate.py -q
+
+      - name: Generate parity fixtures from Python reference
+        run: python3 tests/gen_admission_fixtures.py
+
+      - name: TS port parity check (38 fixtures, verdict-by-verdict)
+        run: node tests/parity_check.mjs
+
+      - name: WO3 acceptance proofs (real gate code)
+        run: node tests/wo3_proof.mjs
