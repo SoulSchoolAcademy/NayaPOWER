@@ -1,0 +1,821 @@
+{
+  "schema": "naya.design.protocol.v1",
+  "version": "1.1.0-convergence-candidate",
+  "status": "CONVERGED_CANDIDATE_AWAITING_INDEPENDENT_VERIFICATION_AND_HUMAN_RATIFICATION",
+  "truth_boundary": {
+    "may_claim": [
+      "IMPLEMENTED",
+      "SELF_VALIDATED_IF_CHECKS_PASS"
+    ],
+    "may_not_claim": [
+      "LOCKED",
+      "RATIFIED",
+      "VERIFIED",
+      "CANONICAL",
+      "PRODUCTION_PROVEN"
+    ]
+  },
+  "authority": {
+    "precedence": [
+      "HUMAN_DIRECTOR",
+      "HUB/NAYA-DESIGN-MASTERCLASS-V1.md",
+      "HUB/DESIGN/NAYA-DESIGN-PROTOCOL-V1.md",
+      "HUB/DESIGN-CONTRACT.md",
+      "HUB/ROOMS/_STANDARD/ROOM-PACKAGE-STANDARD.md",
+      "ROOM_CONTRACTS_PR_1290",
+      "COMPONENT_CONTRACTS",
+      "IMPLEMENTATION_AND_COMPLETION_PR_1306",
+      "RENDERED_RUNTIME_EVIDENCE",
+      "INDEPENDENT_VERIFICATION",
+      "RATCHETED_BASELINE_AND_VERIFIED_LEARNING"
+    ],
+    "one_protocol_rule": true,
+    "no_second_overall_score_system": true,
+    "room_authority_owner": "PR_1290",
+    "completion_authority_owner": "PR_1306"
+  },
+  "source_basis": {
+    "observed_main_sha": "ae2fd838d092ae1ae7414aa239fe486e1a5eef46",
+    "masterclass": "HUB/NAYA-DESIGN-MASTERCLASS-V1.md",
+    "inputs": {
+      "PR_1281": "f7a489f25f96dd7b8d45d4bb063df7e2377686f2",
+      "PR_1285": "347f60fb7c85a9345524803de4e1bb251ef0bcc5",
+      "PR_1294": "d9c16cf1a1c8e7bbe4ff524aa89cfe43ccae22dd",
+      "PR_1309": "7afdeb0241692f02285653fcfd2dc35048fc4090"
+    },
+    "coordination_issue": 554,
+    "integration_pr": 1310
+  },
+  "signature_traits": [
+    "OBSIDIAN_FOUNDATION",
+    "VISUAL_BLISS",
+    "LIVING_DEPTH",
+    "SPECTRAL_INTELLIGENCE",
+    "TACTILE_CONTROLS",
+    "INTELLIGENCE_BOARDS",
+    "JEWEL_GLYPHS",
+    "CINEMATIC_COMPOSITION",
+    "EDITORIAL_INTELLIGENCE",
+    "TRUTHFUL_LIVENESS"
+  ],
+  "design_precedence": [
+    "HUMAN_UNDERSTANDING_AND_SAFETY",
+    "TRUTH_AND_STATE_ACCURACY",
+    "VISUAL_BLISS_AND_READABILITY",
+    "PURPOSE_AND_HIERARCHY",
+    "ACCESSIBILITY_AND_HUMAN_COMFORT",
+    "CAUSAL_FUNCTIONALITY",
+    "PERFORMANCE_AND_RESPONSIVENESS",
+    "MATERIAL_DEPTH_AND_PHYSICAL_PRESENCE",
+    "SEMANTIC_COLOR",
+    "MOTION_AND_DELIGHT",
+    "DECORATION"
+  ],
+  "tokens": {
+    "foundation": {
+      "canvas": "#050507",
+      "intelligence_surface_reference": "#0a0a10",
+      "primary_text": "HIGH_CONTRAST_NEUTRAL"
+    },
+    "spacing_px": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24,
+      32,
+      40,
+      48,
+      64,
+      80
+    ],
+    "radii_px": {
+      "small": [
+        10,
+        12
+      ],
+      "control": [
+        14,
+        18
+      ],
+      "board": [
+        22,
+        32
+      ],
+      "portal": [
+        28,
+        36
+      ],
+      "pill": 999
+    },
+    "elevation": [
+      "E0_BACKGROUND",
+      "E1_PASSIVE",
+      "E2_INTERACTIVE",
+      "E3_SELECTED",
+      "E4_FOCUS_PORTAL",
+      "E5_CRITICAL_MODAL"
+    ],
+    "motion": {
+      "micro_ms": [
+        100,
+        180
+      ],
+      "standard_ms": [
+        180,
+        280
+      ],
+      "context_ms": [
+        280,
+        500
+      ],
+      "signature_ease": "cubic-bezier(.16,.84,.22,1)",
+      "compositor_preferred": [
+        "transform",
+        "opacity"
+      ]
+    },
+    "typography": {
+      "body_target_px": [
+        17,
+        18
+      ],
+      "body_floor_px": 16,
+      "control_floor_px": 15,
+      "support_floor_px": 14,
+      "metadata_floor_px": 13,
+      "eyebrow_floor_px": 12,
+      "critical_truth_action_floor_px": 14,
+      "body_line_height": [
+        1.5,
+        1.7
+      ],
+      "reading_measure_chars": [
+        55,
+        80
+      ],
+      "zoom_percent_required": [
+        125,
+        150,
+        200
+      ]
+    },
+    "icon_size_px": [
+      16,
+      24,
+      32,
+      48,
+      64,
+      96
+    ],
+    "touch_target_min_css_px": 44,
+    "required_widths_px": [
+      320,
+      375,
+      390,
+      430,
+      768,
+      820
+    ]
+  },
+  "color": {
+    "identity_foundation": [
+      "PURPLE",
+      "DEEP_PURPLE",
+      "OBSIDIAN",
+      "WHITE"
+    ],
+    "semantics": {
+      "purple": "INTELLIGENCE_EMERGENCE_IDENTITY",
+      "indigo": "COMPREHENSION_DEPTH",
+      "sapphire": "KNOWLEDGE_INFORMATION",
+      "teal": "CONNECTION_FLOW",
+      "emerald": "HEALTHY_AVAILABLE_CONFIRMED_OPERATIONAL_STATE",
+      "lime": "LEARNING_GROWTH",
+      "orange": "ACTION_MOVEMENT",
+      "rich_orange": "TRANSITION_MOMENTUM",
+      "red": "WARNING_DESTRUCTIVE_CONSEQUENCE_RISK",
+      "magenta": "HUMAN_SIGNIFICANCE_EXPRESSION"
+    },
+    "yellow_gold_policy": "SEMANTIC_ONLY_IF_NECESSARY__NOT_BRAND_ACCENT__NOT_ROOM_IDENTITY_DEFAULT__NOT_GENERIC_ACTION_HUE__NOT_BODY_OR_HEADLINE_TEXT",
+    "generic_action_color_forbidden": true,
+    "theme_does_not_equal_status": true,
+    "color_only_state_forbidden": true
+  },
+  "component_physics": [
+    "MATERIAL",
+    "FORM",
+    "DEPTH",
+    "LIGHT",
+    "COLOR",
+    "STATE",
+    "MOTION",
+    "SOUND_OR_HAPTIC_IF_APPLICABLE",
+    "CONSEQUENCE",
+    "MEMORY_IF_APPLICABLE"
+  ],
+  "component_classes": [
+    "POWER_OBJECT",
+    "INTELLIGENCE_SURFACE",
+    "IDENTITY_PORTAL",
+    "ENERGY_PATH",
+    "INTELLIGENCE_GLYPH"
+  ],
+  "component_anatomy": {
+    "power_button": [
+      "material_body",
+      "perimeter_edge",
+      "upper_specular_highlight",
+      "lower_physical_depth",
+      "cast_shadow",
+      "semantic_accent",
+      "label",
+      "glyph_optional",
+      "focus_treatment",
+      "state_feedback",
+      "causal_consequence"
+    ],
+    "intelligence_board": [
+      "identity_glyph",
+      "title",
+      "orientation",
+      "truth_provenance",
+      "dominant_semantic_theme",
+      "primary_intelligence",
+      "nested_perspectives_optional",
+      "meaningful_actions",
+      "evidence_source_access",
+      "continuity_state_if_relevant"
+    ],
+    "jewel_glyph": [
+      "coherent_geometry",
+      "consistent_upper_left_light",
+      "white_or_neutral_glyph_core",
+      "semantic_rim_or_field",
+      "state_response",
+      "accessible_name_when_needed"
+    ],
+    "identity_portal": [
+      "label",
+      "input_or_identity_object",
+      "privacy_or_truth_context",
+      "focus",
+      "validation",
+      "action",
+      "result_state"
+    ],
+    "energy_path": [
+      "track_or_process_context",
+      "actual_progress_or_state",
+      "leading_or_active_indicator_if_supported",
+      "completion_or_error_resolution"
+    ]
+  },
+  "smart_board": {
+    "canonical_intelligence_layer_count": 8,
+    "canonical_layers": [
+      "HUMAN_NOTE",
+      "CHILD_SIMPLIFIED",
+      "GRANDMA_NOTE_WHY_NOTICE",
+      "NAYA_NOTE_INTERPRETATION",
+      "MACHINE_NOTE_EVIDENCE_BOUNDARY",
+      "ADAPTIVE_LEARNING",
+      "WHAT_IT_MEANS",
+      "WHATS_IN_IT_FOR_YOU"
+    ],
+    "required_furniture_not_layers": [
+      "KICKER_OR_IDENTITY_LINE",
+      "IDENTITY_GLYPH_AND_TITLE",
+      "TRUST_PROVENANCE_LINE_IF_APPLICABLE",
+      "CLOSING_SOURCE_SEAL_IF_APPLICABLE"
+    ],
+    "optional_extensions_not_layers": [
+      "IN_A_NUTSHELL",
+      "HOW_TO_USE",
+      "HOW_IT_CONNECTS"
+    ],
+    "fifteen_layer_language": "SUPERSEDED"
+  },
+  "state_system": {
+    "truth_states": [
+      "LOADING",
+      "EMPTY",
+      "READY",
+      "BLOCKED",
+      "UNAUTHORIZED",
+      "NOT_VERIFIED",
+      "VERIFIED",
+      "ERROR",
+      "OFFLINE",
+      "DISABLED"
+    ],
+    "interaction_states": [
+      "REST",
+      "HOVER",
+      "FOCUS",
+      "PRESSED",
+      "SELECTED",
+      "LOADING",
+      "SUCCESS",
+      "ERROR",
+      "DISABLED"
+    ],
+    "ui_state_is_a_claim": true,
+    "verified_requires_evidence": true,
+    "connected_requires_backend_evidence": true,
+    "unknown_must_not_become_empty_or_verified": true
+  },
+  "responsive": {
+    "widths_px": [
+      320,
+      375,
+      390,
+      430,
+      768,
+      820
+    ],
+    "zoom_percent": [
+      125,
+      150,
+      200
+    ],
+    "portrait_landscape_when_applicable": true,
+    "prohibitions": [
+      "DUPLICATE_NAVIGATION",
+      "MOBILE_BLACK_GUTTER",
+      "HORIZONTAL_OVERFLOW",
+      "DESKTOP_CARD_STACK_AS_MOBILE_STRATEGY",
+      "SHRINK_TEXT_TO_SAVE_LAYOUT"
+    ]
+  },
+  "accessibility": {
+    "keyboard_complete": true,
+    "visible_focus": true,
+    "semantic_controls_and_landmarks": true,
+    "accessible_names": true,
+    "no_color_only_state": true,
+    "min_touch_target_css_px": 44,
+    "reduced_motion": true,
+    "error_recovery": true
+  },
+  "visual_subdimensions": {
+    "V1": "COMPOSITION",
+    "V2": "TYPOGRAPHY",
+    "V3": "COLOR",
+    "V4": "GEOMETRY",
+    "V5": "MATERIAL",
+    "V6": "ICONOGRAPHY",
+    "V7": "MOTION",
+    "V8": "RESPONSIVE_COMPOSITION",
+    "V9": "INTERACTION",
+    "V10": "SIGNATURE"
+  },
+  "score_model": {
+    "overall_system": "MASTERCLASS_D1_D8_ONLY",
+    "not_ready_below": 9,
+    "strong_but_requires_improvement": [
+      9,
+      9.49
+    ],
+    "material_dimension_acceptance_min": 9.5,
+    "signature_masterpiece": {
+      "D1_visual_excellence": 10,
+      "D2_D8_min": 9.5,
+      "V1_V9_min": 9.5,
+      "V10_signature": 10
+    },
+    "averages_cannot_hide_weak_dimensions": true,
+    "evidence_required_for_every_score": true,
+    "blueprint_visual_scorecard_role": "DIAGNOSTIC_D1_INPUT_ONLY_NOT_FINAL_ACCEPTANCE"
+  },
+  "hard_gates": [
+    {
+      "id": "HG01",
+      "name": "TRUTHFUL_LIVENESS",
+      "predicate": "No VERIFIED/CONNECTED/live/processing representation without applicable evidence/state."
+    },
+    {
+      "id": "HG02",
+      "name": "CAUSAL_CONTROL",
+      "predicate": "Every apparently-live required control yields a traceable operation/result or explicit unavailable state."
+    },
+    {
+      "id": "HG03",
+      "name": "READABILITY",
+      "predicate": "Required typography floors and readable contrast/hierarchy hold at required viewports and zoom."
+    },
+    {
+      "id": "HG04",
+      "name": "STATE_COMPLETENESS",
+      "predicate": "Every applicable truth and interaction state is represented and testable."
+    },
+    {
+      "id": "HG05",
+      "name": "ACCESSIBILITY",
+      "predicate": "Required keyboard/focus/semantic/touch/reduced-motion journey passes."
+    },
+    {
+      "id": "HG06",
+      "name": "RESPONSIVE",
+      "predicate": "Required widths/zoom preserve hierarchy, identity, controls, and no unintended horizontal overflow."
+    },
+    {
+      "id": "HG07",
+      "name": "CANONICAL_TRUTH",
+      "predicate": "UI projections preserve canonical object identity/source of truth; no local shadow truth."
+    },
+    {
+      "id": "HG08",
+      "name": "ONE_FOUNDATION",
+      "predicate": "No duplicate shell, protocol, room authority, or competing design physics created."
+    },
+    {
+      "id": "HG09",
+      "name": "REGRESSION",
+      "predicate": "No material regression against independently accepted baseline."
+    },
+    {
+      "id": "HG10",
+      "name": "INDEPENDENT_REVIEW",
+      "predicate": "Builder self-score is not the final gate; independent review exists."
+    },
+    {
+      "id": "HG11",
+      "name": "MACHINE_PREDICATES",
+      "predicate": "Every execution-consequential law used for freeze/build has measurable predicate(s)."
+    },
+    {
+      "id": "HG12",
+      "name": "DECLARED_SCOPE",
+      "predicate": "No required room/app surface or journey is silently dropped from the declared completion scope."
+    }
+  ],
+  "room_freeze": {
+    "owner": "PR_1290",
+    "required": [
+      "HUMAN_JOB",
+      "FIRST_THREE_SECONDS_OUTCOME",
+      "SIGNATURE_INSTRUMENT",
+      "EXACT_DESKTOP_COMPOSITION",
+      "CONTROL_INVENTORY_AND_PLACEMENT_RATIONALE",
+      "CANONICAL_DATA_INPUT_OWNERSHIP",
+      "APPLICABLE_STATE_MATRIX",
+      "CROSS_ROOM_OBJECT_ROUTE_HANDOFFS",
+      "CONTEXTUAL_NAYA_BEHAVIOR",
+      "MOBILE_TRANSFORMATION",
+      "ACCESSIBILITY_REQUIREMENTS",
+      "ROOM_VISUAL_THEME_ICON_TREATMENT",
+      "ANNOTATED_VISUALS",
+      "MACHINE_TESTABLE_ACCEPTANCE_PREDICATES",
+      "INDEPENDENT_REVIEW_AND_ZERO_CRITICAL_OPEN_TASTE_UNKNOWNS"
+    ],
+    "co_equal_lock_artifacts": [
+      "SPEC",
+      "ANNOTATED_VISUAL",
+      "MACHINE_CONTRACT"
+    ],
+    "bidirectional_invalidation": {
+      "visual_change": "RECHECK_SPEC_AND_MACHINE",
+      "spec_change": "RERENDER_VISUAL",
+      "predicate_change": "RERUN_REVIEW"
+    }
+  },
+  "evidence": {
+    "completion_owner": "PR_1306",
+    "package": [
+      "BASELINE_BEFORE",
+      "AFTER_RENDER",
+      "STATE_MATRIX",
+      "RESPONSIVE_MATRIX",
+      "ACCESSIBILITY_EVIDENCE",
+      "PERFORMANCE_MEASUREMENTS",
+      "INTERACTION_CAUSAL_PROOF",
+      "SOURCE_RUNTIME_TRUTH_EVIDENCE",
+      "SELF_SCORE",
+      "INDEPENDENT_REVIEW_RESCORE",
+      "REGRESSION_COMPARISON",
+      "KNOWN_UNKNOWNS"
+    ],
+    "completion_state_mapping": {
+      "SPEC_READY": [
+        "ROOM_PACKAGE_COMPLETE",
+        "MACHINE_PREDICATES_PRESENT"
+      ],
+      "DESIGN_READY": [
+        "SPEC_VISUAL_MACHINE_SYNCHRONIZED",
+        "INDEPENDENT_TASTE_REVIEW",
+        "ZERO_CRITICAL_BUILD_UNKNOWNS"
+      ],
+      "IMPLEMENTED": [
+        "CODE_EXISTS_NO_VERIFICATION_IMPLIED"
+      ],
+      "TESTED": [
+        "BROWSER_RENDER",
+        "STATE_CAPTURE",
+        "RESPONSIVE",
+        "ACCESSIBILITY",
+        "PERFORMANCE_WHERE_APPLICABLE"
+      ],
+      "INTEGRATED": [
+        "REAL_RUNTIME_DATA_PATH",
+        "CAUSAL_CONTROLS",
+        "CANONICAL_OBJECT_IDENTITY_PRESERVED"
+      ],
+      "INDEPENDENTLY_VERIFIED": [
+        "DIFFERENT_REVIEWER_RECOMPUTES_APPLICABLE_CHECKS"
+      ],
+      "PRODUCTION_PROVEN": [
+        "DEPLOYED_SOURCE_PARITY",
+        "LIVE_OBSERVATION",
+        "APPLICABLE_RECEIPTS"
+      ]
+    }
+  },
+  "independent_verification": {
+    "required": true,
+    "exact_sha_required": true,
+    "rendered_artifact_required_when_applicable": true,
+    "may_return": [
+      "PASS",
+      "FAIL",
+      "UNKNOWN",
+      "BLOCKED"
+    ],
+    "builder_cannot_close_final_gate": true
+  },
+  "regression_ratchet": {
+    "independently_accepted_artifact_becomes_protected_baseline": true,
+    "future_change_must_prove_no_material_regression": [
+      "HARD_GATES",
+      "D1_D8",
+      "SIGNATURE",
+      "ACCESSIBILITY",
+      "PERFORMANCE",
+      "CANONICAL_TRUTH"
+    ],
+    "cleaner_code_alone_not_superiority_evidence": true
+  },
+  "learning_promotion": {
+    "states": [
+      "CANDIDATE",
+      "INDEPENDENTLY_VERIFIED",
+      "PROMOTED",
+      "RETAINED_AFTER_REUSE",
+      "SUPERSEDED_OR_REJECTED"
+    ],
+    "promotion_requires": [
+      "KNOWN_PROVENANCE",
+      "SCOPED_APPLICABILITY",
+      "INSPECTABLE_BASELINE_AND_CHANGED_OUTCOME",
+      "NO_APPLICABLE_HARD_GATE_REGRESSION",
+      "INDEPENDENT_VERIFICATION",
+      "DURABLE_MECHANISM_UPDATE"
+    ],
+    "durable_mechanism_update_one_of": [
+      "PROTOCOL_RULE_OR_PREDICATE",
+      "MACHINE_CONTRACT",
+      "COMPONENT_OR_TOKEN",
+      "REGRESSION_TEST_OR_BASELINE",
+      "APPROVED_EXAMPLE_OR_ANTI_EXAMPLE"
+    ],
+    "retained_requires_later_reuse_without_material_regression": true,
+    "authority_inheritance": false
+  },
+  "master_build_loop": [
+    "RESTORE",
+    "RESEARCH",
+    "PRESERVE",
+    "DEFINE",
+    "ARCHITECT",
+    "COMPOSE",
+    "VISUALIZE",
+    "PREDICATES",
+    "INDEPENDENT_TASTE_REVIEW",
+    "FREEZE",
+    "BUILD",
+    "RENDER",
+    "OPERATE",
+    "OBSERVE",
+    "SCORE",
+    "ATTACK",
+    "REPAIR",
+    "RE_RENDER",
+    "INDEPENDENT_VERIFY",
+    "RATCHET",
+    "COMPOUND",
+    "NEXT"
+  ],
+  "build_order": [
+    "LOCK_PROTOCOL_AND_PACKAGE_FORMAT",
+    "FREEZE_ONE_ROOM",
+    "BUILD",
+    "VERIFY",
+    "RATCHET",
+    "LEARN",
+    "NEXT_ROOM"
+  ],
+  "deterministic_example": {
+    "id": "EX_POWER_BUTTON_PRIMARY",
+    "component_class": "POWER_OBJECT",
+    "inputs": {
+      "intent": "primary",
+      "semantic_token": "room_accent",
+      "label": "OPEN EVIDENCE"
+    },
+    "anatomy": [
+      "material_body",
+      "perimeter_edge",
+      "upper_specular_highlight",
+      "lower_physical_depth",
+      "cast_shadow",
+      "semantic_accent",
+      "label",
+      "glyph_optional",
+      "focus_treatment",
+      "state_feedback",
+      "causal_consequence"
+    ],
+    "tokens": {
+      "min_target_css_px": 44,
+      "radius": "control_or_pill_token",
+      "hover_translate_y_px": -2,
+      "press_translate_y_px": 1,
+      "easing": "cubic-bezier(.16,.84,.22,1)",
+      "generic_action_hue": null
+    },
+    "required_states": [
+      "REST",
+      "HOVER",
+      "FOCUS",
+      "PRESSED",
+      "LOADING",
+      "DISABLED",
+      "SUCCESS",
+      "ERROR"
+    ],
+    "completion_predicate": "Has real causal consequence or explicit unavailable state; visible focus; readable label; no generic fixed action color."
+  },
+  "convergence": {
+    "decisions": {
+      "PR_1281": "FOLD_THEN_SUPERSEDE_AFTER_VERIFIED_CONVERGENCE",
+      "PR_1285": "FOLD_THEN_SUPERSEDE_AFTER_VERIFIED_CONVERGENCE",
+      "PR_1294": "FOLD_THEN_SUPERSEDE_AFTER_VERIFIED_CONVERGENCE",
+      "PR_1309": "FOLD_THEN_SUPERSEDE_AFTER_VERIFIED_CONVERGENCE",
+      "PR_1310": "KEEP_AS_INTEGRATION_LANE"
+    },
+    "conflicts_resolved": [
+      "9_VS_9_5_THRESHOLD",
+      "VISUAL_ONLY_SCORE_VS_D1_D8",
+      "EYEBROW_MICROTYPE",
+      "GENERIC_GREEN_ACTION_COLOR",
+      "LOCK_ALL_ROOMS_BEFORE_BUILD",
+      "MISSING_MACHINE_CONTRACT",
+      "VISUAL_SPEC_CO_EQUALITY",
+      "REGRESSION_RATCHET",
+      "FALSIFIABLE_SIGNATURE",
+      "VERIFIED_LEARNING_PROMOTION",
+      "SMART_BOARD_8_VS_15",
+      "YELLOW_GOLD_BRAND_ACCENT",
+      "ICON_SCALE_AUTHORITY"
+    ]
+  },
+  "exactly_one_successor_action": "INDEPENDENT_EXACT_BRANCH_DESIGN_PROTOCOL_VERIFICATION",
+  "hard_gates_non_averageable": true,
+  "execution_laws": [
+    {
+      "id": "EL01",
+      "name": "TYPOGRAPHY_FLOORS",
+      "predicate_ids": [
+        "P01"
+      ]
+    },
+    {
+      "id": "EL02",
+      "name": "TRUTHFUL_LIVENESS",
+      "predicate_ids": [
+        "P02"
+      ]
+    },
+    {
+      "id": "EL03",
+      "name": "CAUSAL_CONTROL",
+      "predicate_ids": [
+        "P03"
+      ]
+    },
+    {
+      "id": "EL04",
+      "name": "STATE_COMPLETENESS",
+      "predicate_ids": [
+        "P04"
+      ]
+    },
+    {
+      "id": "EL05",
+      "name": "RESPONSIVE_NO_OVERFLOW",
+      "predicate_ids": [
+        "P05"
+      ]
+    },
+    {
+      "id": "EL06",
+      "name": "KEYBOARD_ACCESSIBILITY",
+      "predicate_ids": [
+        "P06"
+      ]
+    },
+    {
+      "id": "EL07",
+      "name": "REGRESSION_RATCHET",
+      "predicate_ids": [
+        "P07"
+      ]
+    },
+    {
+      "id": "EL08",
+      "name": "SCORE_THRESHOLDS",
+      "predicate_ids": [
+        "P08"
+      ]
+    },
+    {
+      "id": "EL09",
+      "name": "SMART_BOARD_LAYER_COUNT",
+      "predicate_ids": [
+        "P09"
+      ]
+    },
+    {
+      "id": "EL10",
+      "name": "VISUAL_SPEC_CO_EQUALITY",
+      "predicate_ids": [
+        "P10"
+      ]
+    },
+    {
+      "id": "EL11",
+      "name": "DECLARED_SCOPE_COMPLETION",
+      "predicate_ids": [
+        "P11"
+      ]
+    },
+    {
+      "id": "EL12",
+      "name": "INDEPENDENT_VERIFICATION",
+      "predicate_ids": [
+        "P12"
+      ]
+    }
+  ],
+  "predicate_registry": {
+    "P01": {
+      "measure": "COMPUTED_TYPOGRAPHY_AT_REQUIRED_VIEWPORTS_AND_ZOOM",
+      "pass": "body>=16px; controls>=15px; support>=14px; metadata>=13px noncritical; eyebrow>=12px; critical truth/action>=14px; no clipping at 200% zoom"
+    },
+    "P02": {
+      "measure": "UI_STATE_TO_RUNTIME_STATE_BINDING",
+      "pass": "loading/processing/connected/verified motion and labels exist only while applicable backend/runtime evidence supports them and terminate/change on resolved/error"
+    },
+    "P03": {
+      "measure": "CONTROL_ACTIVATION_TRACE",
+      "pass": "each required apparently-live control produces operation->observation->result->state/evidence, or renders explicit unavailable/blocked state"
+    },
+    "P04": {
+      "measure": "APPLICABLE_STATE_MATRIX",
+      "pass": "all applicable truth and interaction states declared by protocol are rendered/tested; missing state fails"
+    },
+    "P05": {
+      "measure": "REQUIRED_VIEWPORT_BROWSER_MATRIX",
+      "pass": "at 320/375/390/430/768/820 and required zoom, no unintended horizontal overflow and hierarchy/location/primary action remain usable"
+    },
+    "P06": {
+      "measure": "KEYBOARD_FOCUS_JOURNEY",
+      "pass": "all required controls reachable, focus visible, semantics correct, no trap, activation/recovery possible without pointer"
+    },
+    "P07": {
+      "measure": "EXACT_BASELINE_COMPARISON_PLUS_INDEPENDENT_RESCORE",
+      "pass": "no hard-gate regression and no protected material dimension/signature/accessibility/performance/truth regression"
+    },
+    "P08": {
+      "measure": "D1_D8_AND_V1_V10_EVIDENCE_SCORE",
+      "pass": "acceptance requires each material D1-D8>=9.5 and all hard gates; Signature/Masterpiece additionally D1=10, V1-V9>=9.5, V10=10"
+    },
+    "P09": {
+      "measure": "SMART_BOARD_STRUCTURE_CHECK",
+      "pass": "exactly eight canonical intelligence layers in required order; furniture/extensions are not counted as layers; no fifteen-layer canonical claim"
+    },
+    "P10": {
+      "measure": "FREEZE_ARTIFACT_HASH_AND_REVIEW_SET",
+      "pass": "spec + annotated visual + machine contract are present and synchronized; any material change invalidates the corresponding freeze until counterpart artifacts are updated/reviewed"
+    },
+    "P11": {
+      "measure": "COMPLETION_MATRIX_COVERAGE",
+      "pass": "all declared required rooms/surfaces/journeys remain machine-visible until their proof gate closes; no slice silently reduces scope"
+    },
+    "P12": {
+      "measure": "REVIEWER_SEPARATION_AND_EXACT_SHA_RECOMPUTATION",
+      "pass": "a different reviewer/process inspects exact SHA, rendered artifact where applicable, predicates/evidence, and can return FAIL/UNKNOWN/BLOCKED"
+    }
+  }
+}
