@@ -138,6 +138,13 @@ PATH_LIKE_RE = re.compile(r"^(BRAIN/|CONSTITUTION/|GOVERNANCE/|ARCHITECTURE/|\.n
 # floor's narrowed job is to stop the regeneration command itself from silently
 # blessing a mass deletion. Git history remains the ultimate backstop.
 BASELINE_DOMAIN_FLOORS = {
+    # 2026-10-10: 00-ACTIVATION registered with floor 3 — Activation Package
+    # v1 (PR #1971): ACTIVATION-CHECKLIST.md, DESIGN-ACTIVATION.md,
+    # activation-checklist.json. Closes the deletion-tripwire gap: the domain
+    # was counted by domain_counts() but absent from DOMAIN_ORDER, so a mass
+    # deletion of the activation package would never trip the ratchet.
+    # Deliberate update.
+    "00-ACTIVATION": 3,
     "00-SPEC": 15,
     # 3 -> 6 for #1444: 0003-FULL-AUTO-MERGE-V1 (ai/human/machine) lands under
     # the supreme Scorecard Law (verbal ratification 2026-10-05). Deliberate update.
@@ -223,6 +230,7 @@ def floor_violations(counts: dict[str, int], floors: dict[str, int]) -> list[str
 
 
 DOMAIN_TITLES = {
+    "00-ACTIVATION": "00-ACTIVATION — Activation",
     "00-SPEC": "00-SPEC — Specification",
     "01-GOVERNANCE": "01-GOVERNANCE — Governance",
     "02-ARCHITECTURE": "02-ARCHITECTURE — Architecture",
