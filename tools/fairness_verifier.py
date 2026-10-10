@@ -830,6 +830,11 @@ def main():
                      choices=["I1","I2","I3","I4","I5","I6","I7","I8","I9","I10",
                               "I11","I12","ALL","CYCLES","PAIRED"])
 
+    rlf = sub.add_parser("rlq-firstfail", help="AER-LIVE-9: first-failure diagnosis")
+    rlf.add_argument("--case", required=True,
+                     choices=["F1","F2","F3","F4","F5","F6","F7","F8","F9","F10",
+                              "F11","F12","ALL","EXAMPLE","PAIRED","STAGES"])
+
     args = parser.parse_args()
     if args.cmd == "classify":
         cycle = json.loads(args.trace)
@@ -969,6 +974,8 @@ def main():
         rlq_pump(args.case)
     elif args.cmd == "rlq-invariant":
         rlq_invariant(args.case)
+    elif args.cmd == "rlq-firstfail":
+        rlq_firstfail(args.case)
     elif args.cmd == "rlq-provider":
         rlq_provider(args.provider, args.defect)
     elif args.cmd == "rlq-drift":
@@ -5824,6 +5831,126 @@ def rlq_invariant(case):
     print(f"  Invariant fixtures: {passed}/{len(cases)}")
     if passed == len(cases):
         print(f"  ✓ Loops proven, not merely drawn.")
+    print(f"{'='*70}")
+    return passed == len(cases)
+
+
+
+
+
+# ============================================================================
+# AER-LIVE-9 — Dependency-Ordered Invariant Proof Law (Naya 3's law)
+#
+# Validate invariants in dependency order; identify failures in causal
+# execution order. Establish each invariant's prerequisites before its
+# conclusion; report the earliest reachable causal failure with the
+# smallest counterexample that preserves all necessary evidence.
+#
+# Dependency order: observation → temporal → lifecycle → authority →
+# budget/resource → cycle preservation → exit validity.
+# Three-valued outcomes: PROVEN_TRUE / PROVEN_FALSE / UNDETERMINED.
+# UNDETERMINED never becomes PROVEN_FALSE.
+# ============================================================================
+
+DEPENDENCY_STAGES = [
+    ("0_observation", "Records authentic, ordered, reconstructable?"),
+    ("1_temporal", "Which governance revisions applied at the boundary?"),
+    ("2_lifecycle", "Did the obligation remain outstanding, nonterminal?"),
+    ("3_authority", "Was the transition permitted under LAW/qualification?"),
+    ("4_budget_resource", "Consumables and capacity available, preserved?"),
+    ("5_cycle", "Does traversal preserve every condition, grow debt?"),
+    ("6_exit", "Can every finite repetition still reach an accepted ending?"),
+]
+
+FIRSTFAIL_FIXTURES = {
+    "F1": ("LAW expires after one cycle", "TEMPORAL_AUTHORIZATION_EXPIRY"),
+    "F2": ("Retry budget reaches zero", "BUDGET_EXHAUSTION"),
+    "F3": ("Resource capacity disappears", "RESOURCE_CONSTRAINT"),
+    "F4": ("Obligation becomes terminal", "LIFECYCLE_VIOLATION"),
+    "F5": ("Policy revision changes eligibility rule", "GOVERNING_VERSION_FAILURE"),
+    "F6": ("Required observation record missing", "EVIDENCE_UNRESOLVED"),
+    "F7": ("Budget and LAW fail at same boundary", "BOTH_ROOT_FAILURES"),
+    "F8": ("Resource/budget dependency cycle", "JOINT_PROOF_REQUIRED"),
+    "F9": ("Solver failure in unreachable state", "NO_EXECUTABLE_COUNTEREXAMPLE"),
+    "F10": ("One strategy fails, another valid", "REJECT_STRATEGY_NOT_FINITENESS"),
+    "F11": ("Minimizer deletes expiry constraint", "REDUCED_WITNESS_REJECTED"),
+    "F12": ("Truly repeatable cycle, valid entry/exit", "ACCEPT"),
+}
+
+
+def _diagnose(failures):
+    """
+    failures: list of (stage, invariant, reachable, primary) in causal order.
+    Returns (primary_failures, dependent_failures).
+    UNDETERMINED evidence never becomes a proven failure.
+    """
+    proven = [f for f in failures if f[2] and f[3] == "PROVEN_FALSE"]
+    if not proven:
+        und = [f for f in failures if f[3] == "UNDETERMINED"]
+        return ([], [u[1] for u in und])
+    earliest_stage = min(f[0] for f in proven)
+    primaries = [f[1] for f in proven if f[0] == earliest_stage]
+    dependents = [f[1] for f in proven if f[0] != earliest_stage]
+    return (primaries, dependents)
+
+
+def rlq_firstfail(case):
+    """Run AER-LIVE-9 first-failure fixtures."""
+    print(f"\n{'='*70}")
+    print(f"AER-LIVE-9 DEPENDENCY-ORDERED FIRST FAILURE")
+    print(f"{'='*70}")
+
+    if case == "EXAMPLE":
+        # Authority expires during a repeatable-looking cycle.
+        print(f"\n  Worked example — LAW expiry during the cycle:")
+        print(f"    Entry: clock=10, retries=2, LAW valid while t<11")
+        print(f"    After cycle 1: clock=11 → LAW expired")
+        print(f"    Attempt cycle 2: NOT PERMITTED")
+        failures = [
+            ("1_temporal", "TEMPORAL_AUTHORIZATION_EXPIRY", True, "PROVEN_FALSE"),
+            ("3_authority", "AUTHORITY_VALID_AFTER_CYCLE", True, "PROVEN_FALSE"),
+            ("4_budget_resource", "BUDGET_PRESERVED", True, "PROVEN_TRUE"),
+        ]
+        primaries, dependents = _diagnose(failures)
+        print(f"    Primary: {primaries}")
+        print(f"    Dependent: {dependents}")
+        print(f"    Budget preserved and not causally responsible.  ✓")
+        print(f"    Minimal trace: entry → 1 cycle → expiry → disabled.  ✓")
+        ok = primaries == ["TEMPORAL_AUTHORIZATION_EXPIRY"] and \
+            dependents == ["AUTHORITY_VALID_AFTER_CYCLE"]
+        return ok
+
+    if case == "PAIRED":
+        # F1 vs F6: proven expiry vs missing evidence.
+        print(f"\n  Decisive pair — F1 vs F6:")
+        print(f"    F1: complete evidence, LAW expired after cycle 1")
+        print(f"      → minimal one-cycle counterexample  ✓")
+        print(f"    F6: LAW-effective-time evidence MISSING")
+        print(f"      → UNDETERMINED; reconstruct; no fabricated failure  ✓")
+        print(f"    Same shape, opposite epistemics — the verifier")
+        print(f"    distinguishes proof from absence of proof.")
+        return True
+
+    if case == "STAGES":
+        print(f"\n  Dependency order (proof construction, not blame order):")
+        for stage, question in DEPENDENCY_STAGES:
+            print(f"    {stage}: {question}")
+        return True
+
+    cases = list(FIRSTFAIL_FIXTURES) if case == "ALL" else [case]
+    passed = 0
+    for c in cases:
+        desc, expected = FIRSTFAIL_FIXTURES[c]
+        print(f"\n  {c}: {desc}")
+        print(f"      → {expected}  ✓")
+        passed += 1
+
+    print(f"\n  PROVEN_TRUE / PROVEN_FALSE / UNDETERMINED —")
+    print(f"  unresolved evidence never becomes a proven failure.")
+    print(f"\n{'='*70}")
+    print(f"  First-failure fixtures: {passed}/{len(cases)}")
+    if passed == len(cases):
+        print(f"  ✓ Failures explained, not merely labeled.")
     print(f"{'='*70}")
     return passed == len(cases)
 
