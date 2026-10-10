@@ -164,7 +164,14 @@ jobs:
           expected={"capture_path":capture_path,"capture_id":capture["capture_id"],"expected_content":distilled,"content_hash":digest,"resolved_connections":resolved_connections}
           pathlib.Path(f"smart-note-expected{sfx}.json").write_text(json.dumps(expected,indent=2,ensure_ascii=False))
           if exact:
-              p=exact["provenance"]
+              p=exact.get("provenance") or {}
+              required_provenance_keys=("event_id","lineage_id","relationship_id","runtime_index_id","checkpoint_id","receipt_id")
+              missing_provenance=[k for k in required_provenance_keys if not p.get(k)]
+              if not exact.get("intelligent_block_id"):
+                  missing_provenance.append("intelligent_block_id")
+              if missing_provenance:
+                  print(f"REGISTRY_HASH_HIT_INCOMPLETE_PROVENANCE: capture={capture_path_in} smart_note={exact.get('smart_note_id')} missing={','.join(sorted(missing_provenance))} — registry hash hit but provenance lacks runtime lineage ids; failing closed instead of raising KeyError")
+                  raise SystemExit(1)
               ids={
                 "event_id":p["event_id"],
                 "intelligent_block_id":exact["intelligent_block_id"],
@@ -302,7 +309,14 @@ jobs:
               expected={"capture_path":capture_path,"capture_id":capture["capture_id"],"expected_content":distilled,"content_hash":digest,"resolved_connections":resolved_connections}
               pathlib.Path("smart-note-expected.json").write_text(json.dumps(expected,indent=2,ensure_ascii=False))
               if exact:
-                  p=exact["provenance"]
+                  p=exact.get("provenance") or {}
+                  required_provenance_keys=("event_id","lineage_id","relationship_id","runtime_index_id","checkpoint_id","receipt_id")
+                  missing_provenance=[k for k in required_provenance_keys if not p.get(k)]
+                  if not exact.get("intelligent_block_id"):
+                      missing_provenance.append("intelligent_block_id")
+                  if missing_provenance:
+                      print(f"REGISTRY_HASH_HIT_INCOMPLETE_PROVENANCE: capture={capture_path} smart_note={exact.get('smart_note_id')} missing={','.join(sorted(missing_provenance))} — registry hash hit but provenance lacks runtime lineage ids; failing closed instead of raising KeyError")
+                      raise SystemExit(1)
                   ids={
                     "event_id":p["event_id"],
                     "intelligent_block_id":exact["intelligent_block_id"],
