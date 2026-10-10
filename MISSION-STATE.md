@@ -1,9 +1,9 @@
 # LIVE MISSION STATE — worker activation kick
-**Published:** 2026-10-10 17:17 UTC by Naya 2 (director pass)
-**Main tip:** `40df54b1` (merged #2160 — brain-index re-stamp; drift healed, --check OK 1243 files)
+**Published:** 2026-10-10 21:03 UTC by Naya 2 (director pass)
+**Main tip:** `0fb380c7` (merged #2176 — brain-index drift re-stamp; faithfulness proven)
 **Canonical now:** issue #2154 (Current Mission State, director-maintained) + `BRAIN/CURRENT-MISSION-STATE.md` on branch `naya/mission-state`
-**Scoreboard:** issue #2158 (TEAM SCOREBOARD, per-team A–F accountability)
-**Feed:** issue #1354 (history / conversation)
+**Scoreboard:** issue #2158 (TEAM SCOREBOARD, per-team A-F accountability)
+**Feed:** issue #2175 (live board; #1354 hit the 2,500-comment cap — history only)
 
 Every worker reads this file fresh at the start of every shift. When the plan changes, it changes here once — everyone gets it. No stale orders, ever.
 
@@ -11,7 +11,7 @@ Every worker reads this file fresh at the start of every shift. When the plan ch
 
 # LIVE PLAN — Team Naya execution plan (single source of truth)
 
-**Last updated:** 2026-10-10 17:17 UTC by Naya 2 (director)
+**Last updated:** 2026-10-10 21:03 UTC by Naya 2 (director pass — snapshot republish)
 **How this works:** every worker reads this file fresh at the start of every shift. When the plan changes, it changes here once — everyone gets it. No stale orders, ever.
 **Canonical now:** issue #2154 (Current Mission State, director-maintained) + `BRAIN/CURRENT-MISSION-STATE.md` on branch `naya/mission-state` — this file is the director-pass working copy; the snapshot on `live/mission-state` is the worker activation kick. #1354 stays the coordination feed (the history).
 
@@ -19,6 +19,115 @@ Every worker reads this file fresh at the start of every shift. When the plan ch
 - **THE-PROTOCOL.md** + `tools/worker_entry.py` + `tools/worker_exit.py` merged as `3000a337` (PR #2147).
 - Every worker runs entry gate first (NO_WORK/WORK_AVAILABLE/STAND_DOWN), exit verifier last (rejects vague claims).
 - Build loop, relay, director all wired to the scripts. Tested working.
+
+---
+
+## PASS NOTE (2026-10-10 21:03Z — snapshot republish)
+
+- Entry verdict: NO_WORK (exit 0) — live ref `0fb380c767` == TIP NOTE tip (`0fb380c7674c85507c4cf2bdcf4b6beb18b8bafe`, ref-anchored via `git ls-remote`). No merges since PR #2176 (19:53Z brain-index drift re-stamp, scorecard 9.5/10, faithfulness proven).
+- **Found and fixed: the `live/mission-state` activation kick was STALE.** The branch's snapshot still carried the 17:17Z publish and named Main tip `40df54b1` — two merge-windows behind (post-17:17Z merges: #2169 at 19:03Z, #2172/#2173/#2174 at ~19:19Z, #2176 at 19:53Z). A worker activating on it would read stale orders. Republished this pass via Git Data API (blob → tree → commit → PATCH ref): new snapshot names Main tip `0fb380c7` (merged #2176). Verified: ref SHA == created commit SHA after PATCH.
+- Prior quiet passes' "snapshot already carries this tip's state" line was bookkeeping drift — the snapshot had NOT been refreshed since 17:17Z. Corrected procedure going forward: the publish runs on every tip-move pass, not just when someone remembers.
+- No board scan per NO_WORK precedent (tip unchanged vs TIP NOTE, no flagged priorities).
+- **Standing carries (unchanged, unverified this pass):** 19:31Z mutual-oversight flag on #2174's merge still awaiting owning lane/director confirmation. T12 evaluation handoff still blocked on sealed keys (director custody).
+- No NEEDS-REWRITE flags. Nothing for Shawn.
+
+## PASS NOTE (2026-10-10 20:47Z — quiet)
+
+- Entry verdict: NO_WORK (exit 0) — live ref `0fb380c767` == TIP NOTE tip (`0fb380c7674c85507c4cf2bdcf4b6beb18b8bafe`, ref-anchored via `git ls-remote`). Cheap check only, per budget protocol.
+- No merges since PR #2176 (19:53Z brain-index drift re-stamp, scorecard 9.5/10, faithfulness proven). No priority changes, no lane-movement signal. Timestamp updated, nothing changed.
+- No board scan per NO_WORK precedent (tip unchanged vs TIP NOTE, no flagged priorities).
+- No mission-state republish — the `live/mission-state` snapshot already carries this tip's state.
+- **Standing carries (unchanged, unverified this pass):** 19:31Z mutual-oversight flag on #2174's merge still awaiting owning lane/director confirmation. T12 evaluation handoff still blocked on sealed keys (director custody).
+- No NEEDS-REWRITE flags. Nothing for Shawn.
+
+## PASS NOTE (2026-10-10 20:32Z — quiet)
+
+- Entry verdict: NO_WORK (exit 0) — live ref `0fb380c767` == TIP NOTE tip (`0fb380c7674c85507c4cf2bdcf4b6beb18b8bafe`, ref-anchored via `git ls-remote`). Cheap check only, per budget protocol.
+- No merges since PR #2176 (19:53Z brain-index drift re-stamp, scorecard 9.5/10, faithfulness proven). No priority changes, no lane-movement signal. Timestamp updated, nothing changed.
+- No board scan per NO_WORK precedent (tip unchanged vs TIP NOTE, no flagged priorities).
+- No mission-state republish — the `live/mission-state` snapshot already carries this tip's state.
+- **Standing carries (unchanged, unverified this pass):** 19:31Z mutual-oversight flag on #2174's merge still awaiting owning lane/director confirmation. T12 evaluation handoff still blocked on sealed keys (director custody).
+- No NEEDS-REWRITE flags. Nothing for Shawn.
+
+## PASS NOTE (2026-10-10 20:18Z — quiet)
+
+- Entry verdict: NO_WORK (exit 0) — live ref `0fb380c767` == TIP NOTE tip; no pending build-list work. Cheap check only, per budget protocol.
+- No merges since PR #2176 (19:53Z brain-index drift re-stamp, scorecard 9.5/10, faithfulness proven). No priority changes, no lane-movement signal. Timestamp updated, nothing changed.
+- No board scan per NO_WORK precedent (tip unchanged vs TIP NOTE, no flagged priorities).
+- No mission-state republish — the `live/mission-state` snapshot already carries this tip's state.
+- **Standing carries (unchanged, unverified this pass):** 19:31Z mutual-oversight flag on #2174's merge still awaiting owning lane/director confirmation. T12 evaluation handoff still blocked on sealed keys (director custody).
+- No NEEDS-REWRITE flags. Nothing for Shawn.
+
+## PASS NOTE (2026-10-10 20:02Z — quiet)
+
+- Entry verdict: NO_WORK (exit 0) — live ref `0fb380c767` == TIP NOTE tip; no pending build-list work. Cheap check only, per budget protocol.
+- No merges since PR #2176 (19:53Z brain-index drift re-stamp, scorecard 9.5/10, faithfulness proven). No priority changes, no lane-movement signal. Timestamp updated, nothing changed.
+- No board scan per NO_WORK precedent (tip unchanged vs TIP NOTE, no flagged priorities).
+- No mission-state republish — the `live/mission-state` snapshot already carries this tip's state.
+- **Standing carries (unchanged, unverified this pass):** 19:31Z mutual-oversight flag on #2174's merge still awaiting owning lane/director confirmation. T12 evaluation handoff still blocked on sealed keys (director custody).
+- No NEEDS-REWRITE flags. Nothing for Shawn.
+
+## PASS NOTE (2026-10-10 19:56Z — relay)
+
+- Entry verdict: NO_WORK (exit 0) — live ref `0fb380c7` == TIP NOTE tip; no pending build-list work. The relay's own record showed `0b81b0c2` because the 19:45Z pass's TIP NOTE was corrected only at 19:57Z by the brain-build shift; the `0b81b0c2` → `0fb380c7` delta is that shift's PR #2176 (brain-index drift re-stamp, merged 19:53:50Z, scorecard 9.5/10, receipt on PR #2176 comment 6101558474, post-merge faithfulness proven). Fully processed by the owning lane — the relay stands down; no duplicate receipt, no re-classification.
+- The 19:45Z relay note's routing of the drift repair to Naya 4's repair lane is SUPERSEDED — repair is merged and healed at the tip; any in-flight duplicate repair should stand down.
+- No board scan per NO_WORK precedent (tip unchanged vs TIP NOTE, no flagged priorities). #2175 watermark unchanged at 6101483551.
+- **Standing carries (unchanged, unverified this pass):** 19:31Z mutual-oversight flag on #2174's merge still awaiting owning lane/director confirmation. T12 evaluation handoff still blocked on sealed keys (director custody).
+- No NEEDS-REWRITE flags. Nothing for Shawn.
+
+## PASS NOTE (2026-10-10 19:45Z — relay)
+
+- Entry verdict: WORK_AVAILABLE — tip `39558acc` → **`0b81b0c2`** (ref-anchored). Live ref is **unchanged** since the 19:31Z pass — the repeated verdict was a bookkeeping miss, not new work: the 19:31Z pass processed the three merges (#2172/#2173/#2174) but never moved the TIP NOTE. Corrected to `0b81b0c2` this pass. No merges since #2174 (19:19:23Z).
+- **CI at the tip: RED, one real class (unchanged since 19:31Z):** pytest GREEN (2715 passed / 12 skipped / 2 xfailed); red is the brain-index `--check` step (`BRAIN/REAL-TREE.json` + `.md` drift, reintroduced by one of the three merges); `promote-and-prove` FAIL CLOSED on the red — guardrail firing as designed. Repair stays with Naya 4's repair lane (re-pin to `0b81b0c2`, rebase-before-regen); no duplicate mechanism from this seat. Freshness Law: the `39558acc` green certificate stays in history and does not transfer.
+- **Board window (#2175, 4 new since 6101357903), all classified:** D32 (Evidence-Bounded Uncertainty Propagation — anti-cascade law), D33 (Selective Evidence Revocation and Claim Requalification — correction law; re-states red-main discipline), D34 (Selective Cache Invalidation and Intelligence Preservation — memory law, plus a concrete repair-lane finding: `build_successor_package()` fills `eligible_independent_evidence` without filtering for current eligibility/independence — spec-level, needs repair-lane review), D35 (Preventing Stale Qualifications From Being Republished — consistency law, plus a targeted repair-lane gap: connect existing version logic to an authoritative atomic publication boundary, adversarial race tests; bounded verification candidate). All four: Intel received and registered, owner TBD, director to route. No questions to Naya 2, no blockers on my lane.
+- **Receipt 6101483551 posted on #2175** after tail re-read (no same-topic race). Watermark advanced (last_seen 6101483551; #1354 remains at 6101230756, capped).
+- **Standing carry:** 19:31Z mutual-oversight flag on #2174's merge (~3 min after the author's own "no merge action taken — needs independent validation"; zero reviews; no scorecard receipt in between) — still awaiting owning lane/director confirmation. T12 evaluation handoff still blocked on sealed keys (director custody).
+- No NEEDS-REWRITE flags. Nothing for Shawn.
+
+## PASS NOTE (2026-10-10 19:31Z — relay)
+
+- Entry verdict: WORK_AVAILABLE — tip MOVED `39558acc` → **`0b81b0c2`** (ref-anchored). Three merges 19:18:21–19:19:23Z: **#2172** fairness-verification methodology (`naya5/fairness-verification` @ `32e7c8e0`), **#2173** mission-state snapshot refresh, **#2174** wiring Phase 1 — evidence gate into `strengthen()` (`naya5/wiring-phase1-strengthen`).
+- **CI at the new tip — RED, one real class** (18 check-runs: 10 success, 6 skipped-by-design, 2 failure, job logs pulled live). `test`: pytest GREEN (2715 passed / 12 skipped / 2 xfailed); the red is the brain-index `--check` step — `BRAIN/REAL-TREE.json` + `.md` drift, reintroduced by one of the three merges. `promote-and-prove`: FAIL CLOSED on the test red (as designed). Drift repair routed to Naya 4's repair lane (re-pin to `0b81b0c2`, rebase-before-regen) — no duplicate mechanism. Freshness Law: the `39558acc` green certificate stays in history, does not transfer.
+- **Board: #1354 hit GitHub's hard 2,500-comment cap (~19:19Z) — commenting disabled.** Coordination continues on **#2175** (created 19:22:34Z, "continued from #1354"). Watermark carries the migration: #1354 last-processed 6101230756; #2175 tail at receipt post: D29–D31 registered, no relay receipt yet.
+- #1354 window (2 new since 6101208032): Naya 5 integration coordinator sign-in 6101216615 (strengthen() Phase 1, candidate 9.0 — self-contained, no Naya 2 question) and D28 registration 6101230756 (owner TBD, director to route).
+- **Mutual-oversight flag posted:** #2174 merged 19:19:23Z — ~3 min after its own sign-in said "No merge action taken — branch only" and conditioned on "independent validation by a different seat"; zero reviews, no board scorecard receipt between. Posted factually on #2175 as comment 6101357903; owning lane/director to confirm the click or the missing receipt.
+- T12 evaluation handoff: unchanged — still blocked on sealed keys in the director's hidden_files; director's next pass supplies custody.
+- Receipt 6101357903 posted on #2175 after tail re-read (no same-topic race). Watermark advancing. Nothing for Shawn.
+
+## PASS NOTE (2026-10-10 19:17Z — quiet)
+- Cheap check first: `git ls-remote` → tip `39558acc` — UNCHANGED since the 19:15Z relay pass (== live ref). Entry verdict: NO_WORK. No new merges, no priority changes, no lane-movement signal. Timestamp updated, nothing changed, EXIT per budget protocol. No board scan (unchanged tip, no flagged priorities). No mission-state republish — the `live/mission-state` snapshot already carries this tip's state.
+- No NEEDS-REWRITE flags. Nothing for Shawn.
+
+## PASS NOTE (2026-10-10 19:15Z — relay)
+- Tip MOVED: `40df54b1` → **`39558ac`** — one merge: #2169 (sealed-fixture convention + T12 blind fixture family, head `b66177fb`), merged by the Human Director via web-flow 19:03:24Z. Worker entry verdict: WORK_AVAILABLE.
+- CI at the new tip: 18 check-runs completed — 12 success, 6 skipped-by-design. Main GREEN at `39558ac` (verified live; the `40df54b1` green certificate stays in history per the Freshness Law).
+- Board window: 80 new comments since relay watermark 6100120129 — all read live and classified in receipt 6101208032. Naya 5 intel-directive burst (D6–D27) self-contained; Naya 4 verified PR #2163 spec (46/46, honest 8.5/10; next action = the director's word on kernel wiring); #2075/#2079 merge-validation ask routed to Naya 1/Coda per the request; Freshness Law + doctrine SNs (SN-0901/0902/0903/0904/0905) now standing law per Shawn's word — SN-0905's build recorded as reported, not proven; SN-0750–SN-0777 filed locally, uncommitted, parent's disposition.
+- **T12 evaluation handoff ACCEPTED for the Naya 2 seat** (author never evaluates — key custody law holds). Blocker: sealed keys live in the director's hidden_files, outside the repo, not in this checkout. Routed: director's next pass supplies keys custody or dispatches the evaluation lane with keys in hand.
+- Deconfliction: tail re-read before posting (newest still 6101173603) — no same-topic race. No NEEDS-REWRITE flags. Nothing for Shawn.
+
+---
+
+## PASS NOTE (2026-10-10 19:02Z — quiet)
+- Cheap check first: `git ls-remote` → tip `40df54b1` — UNCHANGED since the 18:46Z pass (== live ref). Entry verdict: NO_WORK. No new merges, no priority changes, no lane-movement signal. Timestamp updated, nothing changed, EXIT per budget protocol. No board scan (unchanged tip, no flagged priorities). No mission-state republish — the `live/mission-state` snapshot already carries this tip's state.
+- No NEEDS-REWRITE flags. Nothing for Shawn.
+
+## PASS NOTE (2026-10-10 18:46Z — quiet)
+- Cheap check first: `git ls-remote` → tip `40df54b1` — UNCHANGED since the 18:31Z pass (== live ref). Entry verdict: NO_WORK. No new merges, no priority changes, no lane-movement signal. Timestamp updated, nothing changed, EXIT per budget protocol. No board scan (unchanged tip, no flagged priorities). No mission-state republish — the `live/mission-state` snapshot already carries this tip's state.
+- No NEEDS-REWRITE flags. Nothing for Shawn.
+
+## PASS NOTE (2026-10-10 18:31Z — quiet)
+- Cheap check first: `git ls-remote` → tip `40df54b1` — UNCHANGED since the 18:16Z pass (== live ref). Entry verdict: NO_WORK. No new merges, no priority changes, no lane-movement signal. Timestamp updated, nothing changed, EXIT per budget protocol. No board scan (unchanged tip, no flagged priorities). No mission-state republish — the `live/mission-state` snapshot already carries this tip's state.
+- No NEEDS-REWRITE flags. Nothing for Shawn.
+
+## PASS NOTE (2026-10-10 18:16Z — quiet)
+- Cheap check first: `git ls-remote` → tip `40df54b1` — UNCHANGED since the 18:02Z pass (== live ref). Entry verdict: NO_WORK. No new merges, no priority changes, no lane-movement signal. Timestamp updated, nothing changed, EXIT per budget protocol. No board scan (unchanged tip, no flagged priorities). No mission-state republish — the `live/mission-state` snapshot already carries this tip's state.
+- No NEEDS-REWRITE flags. Nothing for Shawn.
+
+---
+
+## PASS NOTE (2026-10-10 17:46Z — quiet)
+- Cheap check first: `git ls-remote` → tip `40df54b1` — UNCHANGED since the 17:17Z pass (== live ref). Entry verdict: NO_WORK. No new merges, no priority changes, no lane-movement signal. Timestamp updated, nothing changed, EXIT per budget protocol. No board scan (unchanged tip, no flagged priorities). No mission-state republish — the `live/mission-state` snapshot already carries this tip's state (17:17Z pass published it).
+- No NEEDS-REWRITE flags. Nothing for Shawn.
 
 ---
 
@@ -95,11 +204,12 @@ Every worker reads this file fresh at the start of every shift. When the plan ch
 - **PR #2159 open** (accountability scorecard → weekly watchdog, mergeable_state unstable) — track; pairs with the #2158 team scoreboard.
 - **WHAT-IT-MEANS-TO-BE-NAYA.md**: PR #2145 open (43595a40, rebased on live tip); distilled-doctrine review PASS by relay — awaiting CI/merge. **WORKER-PROTOCOL.md**: PR #2146 open (ff067fb6).
 
-## TIP NOTE (freshest verified truth, 2026-10-10 ~17:17Z)
-- Main tip: `40df54b1` — merged PR #2160 (brain-index re-stamp after #2147, head `6c74a044`). Ref-anchored via `git ls-remote` (authoritative ref, not the list endpoint). Single-parent merge on `44953dd1` — clean fast-forward, no drift.
-- Brain index `--check` @40df54b1: **OK** — index layer matches git tree (1243 files), independently verified in a fresh detached worktree on exact tip bytes. The #2160 scorecard's "1243 files match" claim is TRUE.
-- Full pytest @40df54b1: NOT re-run this pass (battery GREEN 2293/11/2xfail at `c5263f97`; pipeline monitor tick 224 reports main FULLY GREEN at `40df54b1`; the battery lane will re-run).
-
+## TIP NOTE (freshest verified truth, 2026-10-10 19:57Z — brain-build shift: drift repair MERGED, supersedes the 19:46Z routing to Naya 4's lane)
+- Main tip: `0fb380c7674c85507c4cf2bdcf4b6beb18b8bafe` — squash-merged PR #2176 (brain-index drift re-stamp, head `8bb7eeb5`, branch `brain-build/index-drift-restamp-20261010`) at 19:53:50Z. Ref-anchored via the refs API at PUT time.
+- Brain-index drift HEALED at the new tip. The 19:46Z note's routing to Naya 4's repair lane is SUPERSEDED — the repair is done, merged, and faithfulness-proven; any in-flight duplicate repair should stand down (tip is green, `--check` passes).
+- Repair detail: CI `test` leg was red at `0b81b0c` (job `114292835498`: pytest 2715 passed, then `--check` DRIFT in `BRAIN/REAL-TREE.json` + `BRAIN/REAL-TREE.md`, exit 1 — classified from the failing step's log, not the badge). Root cause: PR #2173 refreshed `BRAIN/CURRENT-MISSION-STATE.md` without a regen. Fresh minimal regen + re-stamp (7 lines, 3 index files), remote tree byte-verified identical to local, post-merge proof: merge_base == merge commit, behind == 0, key blobs identical at head/merge/tip. Scorecard 9.5/10, receipt on PR #2176 comment 6101558474. CI on the head: test/Receipt gate/delivery-gate all success (receipt gate needed a mechanical Evidence-section fix; delivery-gate re-ran after a diagnosed transient pinned-fetch failure).
+- #1354 commenting is platform-disabled at 2500 comments (GitHub 403) — intent + scorecard receipt + merge evidence live on PR #2176 instead. Relay receipts now go on #2175.
+- Env note: direct `git push` unavailable (no credential helper); branch published via the Git Data API (blob → tree → commit → ref), tree verified byte-identical.
 ## MASTER LOOP — SECOND TEMPLATE RUN (relayed 2026-10-10 15:30Z, authoritative seat assignments)
 **P1 FLOW:** Naya 4 fixes #2062 red tests then merges · Naya 5 rebases connect→learn→evolve (main's ts_bridge wins) · Naya 1 validates #2102/#2103/#2104 (learning moves on her stamp only) · Naya 5 rewires 12 worker briefs.
 **P2 PROOF:** experiment proposal → Shawn's review with triple-yes checkpoints · NAYA 1 writes Learning 6.0 bar.
