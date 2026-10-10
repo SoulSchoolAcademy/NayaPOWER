@@ -1,5 +1,17 @@
 # DESIGN / VISUAL LANGUAGE
 
+> **TOP LAW: VISUAL BLISS.**
+>
+> Visual Bliss is the highest NayaNET visual/design law. It outranks palette, spectrum, glow, depth and animation. No visual treatment may make anything harder to read, understand, find, operate or trust.
+
+## Dominant identity
+
+**Purple + black + white** are the primary NayaNET identity. Complementary colors may carry semantic theme/state. Yellow and gold are supporting colors and must not dominate primary reading content.
+
+## Generous legibility
+
+Typography is generous by default. Design for real human vision: comfortable type sizes, strong contrast, clear hierarchy, adequate line-height and spacing. Tiny text is not a premium treatment.
+
 ## Established direction
 NayaNET should feel premium, high-tech, dimensional, alive and coherent rather than like a generic enterprise dashboard.
 

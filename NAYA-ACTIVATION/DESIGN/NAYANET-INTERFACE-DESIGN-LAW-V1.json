@@ -1,0 +1,107 @@
+{
+  "schema": "nayanet.interface-design-law.v1",
+  "version": "1.0.0",
+  "status": "HUMAN_DIRECTOR_DIRECTED_PROPOSED_CANONICAL",
+  "scope": "NayaNET human-facing interfaces",
+  "authority": {
+    "parent": "0000-NAYAPOWER-MASTER-DESIGN-CONTRACT-V1.md",
+    "local_root": "NAYA-ACTIVATION/DESIGN/NAYANET-INTERFACE-DESIGN-CONSTITUTION-V1.md",
+    "top_visual_law": "NAYA-ACTIVATION/DESIGN/NAYANET-VISUAL-BLISS-TOP-LAW-V1.md"
+  },
+  "north_star": "Make sophisticated intelligence feel simple, beautiful, trustworthy, alive and useful to the human.",
+  "visual_bliss": {
+    "rank": "TOP",
+    "formula": [
+      "contrast",
+      "clarity",
+      "cleanliness",
+      "hierarchy",
+      "legibility",
+      "proportion",
+      "presentation",
+      "ease"
+    ],
+    "absolute_rule": "NO VISUAL DEVICE MAY MAKE ANYTHING HARDER TO READ, UNDERSTAND, FIND, OPERATE, OR TRUST."
+  },
+  "identity_palette": {
+    "dominant": [
+      "purple",
+      "black",
+      "white"
+    ],
+    "complementary": [
+      "magenta",
+      "violet",
+      "indigo",
+      "sapphire",
+      "cyan",
+      "teal",
+      "emerald",
+      "lime",
+      "yellow",
+      "gold",
+      "orange",
+      "red"
+    ],
+    "restraint": [
+      "yellow",
+      "gold"
+    ],
+    "primary_reading": "white/light-neutral"
+  },
+  "atomic_laws": [
+    "NAYANET-PRIMO-BUTTON-LAW-V1.md",
+    "NAYANET-INTELLIGENCE-BOARD-LAW-V1.md",
+    "NAYANET-ICON-JEWEL-LAW-V1.md",
+    "NAYANET-COMPOSITION-TYPOGRAPHY-LAW-V1.md",
+    "NAYANET-STATE-LIVENESS-TRUTH-LAW-V1.md",
+    "NAYANET-ACCESSIBILITY-RESPONSIVE-LAW-V1.md",
+    "NAYANET-VISUAL-REGRESSION-LAW-V1.md"
+  ],
+  "states": [
+    "LOADING",
+    "EMPTY",
+    "READY",
+    "BLOCKED",
+    "NOT_VERIFIED",
+    "VERIFIED",
+    "ERROR"
+  ],
+  "causal_path": [
+    "CONTROL",
+    "INTENT",
+    "SCOPE_AUTHORITY",
+    "CAPABILITY",
+    "OBSERVATION",
+    "UI_STATE",
+    "EVIDENCE_WHERE_REQUIRED"
+  ],
+  "anti_patterns": [
+    "generic_dashboard",
+    "flattening",
+    "tiny_typography",
+    "low_contrast_primary_text",
+    "random_icon_families",
+    "emoji_system_icons",
+    "glow_without_meaning",
+    "animation_without_real_state",
+    "fake_success",
+    "fake_data",
+    "card_soup",
+    "decorative_rainbow_noise",
+    "silent_navigation_drift",
+    "self_grade_as_final_proof"
+  ],
+  "acceptance": [
+    "visual_bliss",
+    "identity_coherence",
+    "readability",
+    "causal_function",
+    "truthful_state",
+    "accessibility",
+    "responsive_integrity",
+    "performance",
+    "visual_regression_control",
+    "independent_review"
+  ]
+}

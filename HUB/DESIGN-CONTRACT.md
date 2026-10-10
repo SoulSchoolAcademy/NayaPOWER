@@ -1,3 +1,17 @@
+# 🔱 NayaNET Hub Design Contract — Canonical Binding Notice
+
+> **This Hub contract remains the project-specific visual/experience baseline. It now operates under the canonical NayaNET interface-design law stack.**
+
+**Interface-design root:** `NAYA-ACTIVATION/DESIGN/NAYANET-INTERFACE-DESIGN-CONSTITUTION-V1.md`  
+**Top visual law:** `NAYA-ACTIVATION/DESIGN/NAYANET-VISUAL-BLISS-TOP-LAW-V1.md`  
+**Atomic laws:** `NAYA-ACTIVATION/DESIGN/NAYANET-PRIMO-BUTTON-LAW-V1.md`, `NAYANET-INTELLIGENCE-BOARD-LAW-V1.md`, `NAYANET-ICON-JEWEL-LAW-V1.md`, `NAYANET-COMPOSITION-TYPOGRAPHY-LAW-V1.md`, `NAYANET-STATE-LIVENESS-TRUTH-LAW-V1.md`, `NAYANET-ACCESSIBILITY-RESPONSIVE-LAW-V1.md`, `NAYANET-VISUAL-REGRESSION-LAW-V1.md`.
+
+**Binding priority:** Visual Bliss outranks every effect rule below. Existing glow/depth/animation recipes are permitted only where they preserve readability, clarity, accessibility and truthful state.
+
+**Dominant visual identity:** purple + black + white. Complementary spectrum colors remain available for semantic room/state expression; yellow/gold are restrained and subordinate to primary reading content.
+
+---
+
 # 🔱 NAYANET INTELLIGENT HUB — FULL DEEP-DIVE & ELITE DESIGN CONTRACT
 
 **For:** Any AI builder asked to work on the Hub. Read this entire document before touching anything.
