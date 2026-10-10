@@ -1,10 +1,10 @@
 # LIVE MISSION STATE — worker activation kick
-**Published:** 2026-10-10 22:52 UTC by Naya 2 (director pass)
-**Main tip:** `e7dc6ce` (two director web-flow merges: PR #2196 `naya2/merge-consensus-gate` — gate code on main but NOT enforcing; PR #2189 `naya5/tipred-repair-cfbd81` — brain-index re-stamp at `930b971b` + collection fix, 4 files. CI GREEN — first green in this window: `test` + `promote-and-prove` SUCCESS. Freeze 6102822155 violated twice (both merges with 0 reviews; #2189 also without a scorecard receipt). Content verified clean on exact bytes; the defect is procedural.)
+**Published:** 2026-10-10 23:02 UTC by Naya 2 (director pass)
+**Main tip:** `f2c614a` (one merge: PR #2200 `naya5/fix-test-imports-clean` — absolute-import repair of the last two collection-error files, 2 files, minimal. CI FULLY GREEN: `test` + `promote-and-prove` + all protocol gates SUCCESS; behavioral jobs skipped by design; Supabase Preview skipped. Brain-build battery: 3345 passed / 11 skipped / 2 xfailed, brain-index `--check` CLEAN. Both 22:30Z red classes healed.)
 **Canonical now:** issue #2154 (Current Mission State, director-maintained) + `BRAIN/CURRENT-MISSION-STATE.md` on branch `naya/mission-state`
 **Scoreboard:** issue #2158 (TEAM SCOREBOARD, per-team A-F accountability)
 **Feed:** issue #2175 (live board; #1354 hit the 2,500-comment cap — history only)
-**Merge freeze:** 6102822155 (22:24Z, reversible, scoped) — no main merges without a `## SCORECARD` receipt naming the exact head SHA + one approving cross-seat review; breached twice by early clicks — hold the LINK, not the PR, until protocol complete; lifts when branch protection requires 1 approving review (Shawn's last admin gate; #2196 already merged)
+**Merge freeze:** STANDING ORDER 6103024453 (22:49:56Z — Shawn's word, effective immediately): no main merges until (1) branch protection on main (PR + 2 independent reviews + required checks, no direct pushes), (2) scorecard gate #2198 merged and set as a required check, (3) automation cut over to its own GitHub App identity. Only exception: the brain-index re-stamp repair. Breached by #2200's click ~6s after the order (0 reviews, no scorecard — watch receipt 6103031883). The freeze is prose until branch protection enforces it — hold the LINK, not the PR.
 
 Every worker reads this file fresh at the start of every shift. When the plan changes, it changes here once — everyone gets it. No stale orders, ever.
 
@@ -12,7 +12,7 @@ Every worker reads this file fresh at the start of every shift. When the plan ch
 
 # LIVE PLAN — Team Naya execution plan (single source of truth)
 
-**Last updated:** 2026-10-10 22:52 UTC by Naya 2 (director pass — tip moved again, CI GREEN, freeze breach #2 flagged)
+**Last updated:** 2026-10-10 23:02 UTC by Naya 2 (director pass — tip moved, CI GREEN confirmed, STANDING ORDER freeze recorded, mission-state republished)
 **How this works:** every worker reads this file fresh at the start of every shift. When the plan changes, it changes here once — everyone gets it. No stale orders, ever.
 **Canonical now:** issue #2154 (Current Mission State, director-maintained) + `BRAIN/CURRENT-MISSION-STATE.md` on branch `naya/mission-state` — this file is the director-pass working copy; the snapshot on `live/mission-state` is the worker activation kick. #1354 stays the coordination feed (the history).
 
@@ -22,6 +22,23 @@ Every worker reads this file fresh at the start of every shift. When the plan ch
 - Build loop, relay, director all wired to the scripts. Tested working.
 
 ---
+
+## PASS NOTE (2026-10-10 23:02Z — director: tip moved, CI GREEN confirmed, STANDING ORDER freeze recorded, mission-state republished)
+
+- Entry verdict: WORK_AVAILABLE — live ref moved `e7dc6ceaa9d0691b0c06e1f92bda1c447ce744ec` → **`f2c614a5386b65c84156c707a93a775ec51b907a`** (ref-anchored).
+- One merge: **PR #2200** (`naya5/fix-test-imports-clean`), merged 22:50:02Z by SoulSchoolAcademy (web-flow click). Compare `e7dc6ce...f2c614a` = exactly 2 files — the absolute-import repairs in `tests/test_learning_receipt_verifier_bites.py` + `tests/test_nine_node_receipt_verifier.py`. Minimal, no riders.
+- **CI at the new tip: FULLY GREEN** — 18 check-runs completed: `test` SUCCESS, `promote-and-prove` SUCCESS, kernel protocol law + preflight/guard/chain-readiness-gate/spec-integrity/safety-grant-gate/design-gate SUCCESS; behavioral jobs SKIPPED by design; Supabase Preview SKIPPED (standing branch-association issue). No new defect class.
+- **Brain-build lane verification battery on exact tip bytes** (6103084849, independent): **3345 passed / 11 skipped / 2 xfailed**, brain-index `--check` CLEAN ("OK: index layer matches git tree (1243 files)"). The #2200 diff touched only `tests/` — zero BRAIN/ deltas — so #2189's re-stamp holds. Both 22:30Z red classes (collection poisoning, index drift) are healed at this tip.
+- **Board #2175: tail read in one read (per_page=100, complete at 71).** New since watermark 6102993952:
+  - **STANDING ORDER (6103024453, 22:49:56Z) — Shawn's word, effective immediately:** no main merges until three gates live — (1) branch protection on main (PR + 2 independent reviews + required checks, no direct pushes), (2) scorecard gate #2198 merged and set as a required check, (3) automation cut over to its own GitHub App identity. Only exception: the brain-index re-stamp repair. The merge-review watch now flags ANY main merge during the freeze (except the re-stamp) as a violation.
+  - **Freeze breach #3 (6103031883):** protocol watch flagged PR #2200 — 0 formal reviews, no `## SCORECARD` receipt, merged ~6s AFTER the STANDING ORDER. The freeze is not holding on clicks; enforcement = branch protection checkboxes (Shawn's admin gate). The branch-protection endpoint returns 403 from this token, so gate #1's state is unverifiable from here — carried as unknown, not assumed.
+  - Naya 4 self-build sign-out (6103021339 — delivered the independent review asked of their lane); #2189 merge rehearsal VERIFIED (6103010863); the 22:52Z director receipt (6103053689); the **22:55Z relay receipt (6103096863)** — which already receipted the tip move + CI green + #2200 breach on the board. **No board post this pass** (no double-post; the 22:55Z relay covered the material change 4 minutes before this pass).
+- Watermark advanced: #2175 → 6103096863.
+- **Mission-state snapshot republished** to `live/mission-state` naming `f2c614a` (blob → tree → commit → PATCH ref via Git Data API; ref SHA == created commit SHA verified). The 22:52Z snapshot had named `e7dc6ce` — one merge behind.
+- P5 (drift root fix): heal STABLE at the new tip (clean `--check` + green CI); enforcement lane unchanged — #2198 still open draft, branch-protection clicks pending. No other priority scores moved; all 10 carry live scores → no NEEDS-REWRITE.
+- Harvested lesson: relay passes that receipt the same tip move 4 min before my pass make my material change already-covered — the director pass reads the board tail BEFORE deciding whether to post. (Already in the standing no-double-post rule; this pass's discipline followed it.)
+- **Standing carries (unchanged, unverified this pass):** 19:31Z mutual-oversight flag on #2174's merge still awaiting owning lane/director confirmation. T12 evaluation handoff still blocked on sealed keys (director custody). SLA-audit disposition = main seat, next morning. #2198 open draft. No build-list pending work (brain-build battery sign-in: 0 pending, 11 blocked genuinely).
+- Nothing for Shawn directly — the STANDING ORDER is already his word; the three gate clicks are already on his list.
 
 ## PASS NOTE (2026-10-10 22:52Z — director: tip moved again, CI GREEN — repair verified live, freeze breach #2 flagged)
 
@@ -361,7 +378,7 @@ Maximum verified human value per action. The system learns from experience and g
 2. **Learning loop** — sandbox driver design, then CONNECT/EVOLE/DISTILL/COMPOUND with proofs. Close the loop. (Team)
 3. **Search relevance** — MOVED 22:02Z: Naya 5's exact-phrase relevance-floor fix (`tools/smart_note_v2.py`: exact-phrase matches clear the floor by construction) + cold-retrieve drill-bank boundary suite + week-41 log merged to main via Shawn's clicks. Next: re-measure cold-retrieve against the drill bank and re-score. (Naya 2 + Naya 5)
 4. **Re-prove learning** — independently redo the 14/14 trial with fresh eyes. (Naya 2)
-5. **Drift root fix** — 22:52Z: healed at tip `e7dc6ce` (fresh re-stamp + correct pinning + green CI — the heal loop works); the recurring introducer (snapshot-refresh flow, 3 of 8 occurrences) still needs the permanent rail — enforcement = PR #2198 + branch-protection review requirement (Shawn's last admin gate). (Team)
+5. **Drift root fix** — 23:02Z: heal STABLE at tip `f2c614a` (fresh re-stamp still valid — zero BRAIN/ deltas across #2196/#2200 — `--check` clean + full CI green); the recurring introducer (snapshot-refresh flow, 3 of 8 occurrences) still needs the permanent rail — enforcement = PR #2198 (open draft) + branch-protection review requirement (Shawn's last admin gate; STANDING ORDER 6103024453 raises the bar to 2 independent reviews + required checks). (Team)
 6. **Production parity** — product is 60+ hours behind the brain. Refresh the packet for Shawn's clicks. (Naya 2)
 7. **#2097 rework** — convert to tests-only now that #2092 merged. (Team)
 8. **#2086 experiment** — cold-Naya + independent-judge experiment before it counts as proven. (Owner's lane)
@@ -376,6 +393,7 @@ Maximum verified human value per action. The system learns from experience and g
 - Destructive/irreversible actions
 
 ## DOS AND DON'TS (from real mistakes — read before every shift)
+- **DO** read the board tail before drafting any receipt — the 22:55Z relay receipted the same tip move 4 minutes before this pass; drafting without a tail read would have double-posted. (L-20261010-tail-before-receipt)
 - **DO NOT** post a merge link with conditions attached and expect the conditions to hold — PR #2196 had a scorecard ("APPROVED (pending one cross-seat review)") plus a review ask; PR #2189's lane said it was "held for review per the freeze." Both got clicked before any review landed. Until branch protection enforces it, a freeze is prose: hold the LINK, not the PR — never hand Shawn a merge link until the protocol is complete. (L-20261010-freeze-clicks)
 - **DO NOT** let a commit message describe content the commit doesn't carry — #2189's merged head message read "docs(activation): naya-activation-spec-v2.json reconciled union..." while the tree carried only the brain-index re-stamp + collection fix. The bytes, not the message, are the truth. (L-20261010-message-bytes)
 - **DO NOT** do module-level `sys.path.insert` in test files — it poisons the whole pytest session. `drift_canary/tests/test_aer_live2.py:8` (PR #2195) inserted `drift_canary/` at `sys.path[0]`; because `drift_canary/tests/` is a regular package (`__init__.py` present), the top-level `tests` name resolved to `drift_canary/tests` and shadowed the repo-root `tests/` namespace package — every later `from tests.X import ...` died with `ModuleNotFoundError` and ZERO tests ran at the tip. It passes in isolation and only breaks in full collection, so it sails through a quick local check. Use the package import instead (`from drift_canary.revocation_linearization import ...` — the `__init__.py` files already make it importable). If you must touch `sys.path`, do it inside the test function, never at module import time. (L-20261010-pytest-poison)
