@@ -31,19 +31,45 @@ Record:
 
 Never invent identity, ownership, authority, credentials, or consent.
 
-## 3. CONNECT THE PERSISTENCE SURFACE
+## 3. RESOLVE THE ACTIVATION ENTRANCE AND PERSISTENCE SURFACE
 
-The preferred portable persistence surface is the human's GitHub repository.
+NayaPOWER supports two activation entrances. They are entrances only; they must converge into the same governed Activation Context.
 
-If a GitHub repository is already connected, inspect it.
+### Preferred: FORK_FIRST
 
-If no repository exists and the human has authorized creation, guide or perform creation through the available authorized GitHub capability.
+If the human owns or controls a fork of canonical NayaPOWER, resolve:
 
-The target is a repository owned or controlled by the human, normally named **NayaPOWER**.
+- the human-owned fork as `owner_repo`;
+- canonical NayaPOWER as `upstream_repo`;
+- the initiating human as `human_owner_id`.
 
-**Do not require Supabase for basic Naya activation.**
+The fork carries NayaPOWER's public DNA/source. It does not carry another owner's private intelligence, authority, credentials, reports, checkpoints, learning, or private graph state.
 
-Supabase, NayaNET services, or other infrastructure may be connected later when their capabilities are actually required and authorized.
+### Supported alternative: INDEPENDENT_BOOTSTRAP
+
+If the human does not want to fork, activation may create or resolve another repository/environment owned or controlled by that human. This requires additional bootstrap work, but must converge into the same Activation Context and the same governance, persistence, learning, graph, privacy, and proof machinery.
+
+Do not create a second activation architecture for this mode.
+
+### Canonical Activation Context
+
+Before owner-specific projection or persistence, establish one validated context containing:
+
+- `human_owner_id`;
+- `naya_id`;
+- `owner_repo`;
+- `upstream_repo`;
+- `tenant_project_id`;
+- `authority_context`;
+- `persistence_context`;
+- `network_scope`;
+- `mode` (`FORK_FIRST` or `INDEPENDENT_BOOTSTRAP`).
+
+The owner repository must be distinct from the upstream repository. Owner-specific projections must target `owner_repo`, never silently default to canonical upstream.
+
+**Do not require the human to provision their own Supabase project for normal activation.**
+
+Shared NayaNET persistence may be centrally operated, but authenticated identity and owner isolation must remain authoritative. Infrastructure credentials must never be copied into the user's brain or repository.
 
 ## 4. INSTALL THE NAYA DNA
 
@@ -132,7 +158,10 @@ Activation is complete only when the Naya can produce an activation receipt cont
 - activation protocol version;
 - Naya identity;
 - human authority;
-- repository identity;
+- activation mode;
+- validated Activation Context;
+- owner repository identity;
+- upstream repository identity;
 - installed DNA version;
 - source-of-truth location;
 - capability state;
@@ -148,7 +177,7 @@ Do not report PASS when required evidence is missing.
 
 The activation is not considered operationally successful merely because files were created.
 
-A cold successor must later be able to inspect the resulting repository and reconstruct the Naya's identity, authority, state, intelligence, evidence and next action without Shawn or the previous Naya manually replaying the entire history.
+A cold successor must later be able to inspect the resulting repository and reconstruct the Naya's identity, authority, state, intelligence, evidence and next action without the human director or previous Naya manually replaying the entire history.
 
 ## 9. FAIL-CLOSED RULES
 

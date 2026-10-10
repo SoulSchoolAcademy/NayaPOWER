@@ -5,7 +5,6 @@
   "naya_identity": null,
   "human_director": null,
   "authority": null,
-  "repository": null,
   "installed_kit_version": "v1.1",
   "source_of_truth": [
     "CONSTITUTION/0000-NAYAPOWER-CONSTITUTION-ACT-V1.md",
@@ -24,5 +23,18 @@
     "evidence": []
   },
   "timestamp": null,
-  "next_action": null
+  "next_action": null,
+  "activation_mode": null,
+  "activation_context": {
+    "human_owner_id": null,
+    "naya_id": null,
+    "owner_repo": null,
+    "upstream_repo": "SoulSchoolAcademy/NayaPOWER",
+    "tenant_project_id": null,
+    "authority_context": {},
+    "persistence_context": {},
+    "network_scope": "PRIVATE"
+  },
+  "owner_repository": null,
+  "upstream_repository": "SoulSchoolAcademy/NayaPOWER"
 }
