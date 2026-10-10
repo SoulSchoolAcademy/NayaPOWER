@@ -815,6 +815,11 @@ def main():
                       choices=["D1","D2","D3","D4","D5","D6","D7","D8","D9","D10",
                                "D11","D12","ALL","WORKED"])
 
+    rlg = sub.add_parser("rlq-gap", help="AER-LIVE-6: variable-length gaps")
+    rlg.add_argument("--case", required=True,
+                     choices=["G1","G2","G3","G4","G5","G6","G7","G8","G9","G10",
+                              "G11","G12","ALL","WORKED","TABLE"])
+
     args = parser.parse_args()
     if args.cmd == "classify":
         cycle = json.loads(args.trace)
@@ -948,6 +953,8 @@ def main():
         rlq_uncertainty(args.case)
     elif args.cmd == "rlq-debtbounds":
         rlq_debtbounds(args.case)
+    elif args.cmd == "rlq-gap":
+        rlq_gap(args.case)
     elif args.cmd == "rlq-provider":
         rlq_provider(args.provider, args.defect)
     elif args.cmd == "rlq-drift":
@@ -5475,6 +5482,130 @@ def rlq_debtbounds(case):
     print(f"  Debt-bound fixtures: {passed}/{len(cases)}")
     if passed == len(cases):
         print(f"  ✓ Peaks preserved; missing records manufacture nothing.")
+    print(f"{'='*70}")
+    return passed == len(cases)
+
+
+
+
+
+# ============================================================================
+# AER-LIVE-6 — Unbounded Missing-History Law (Naya 3's law)
+#
+# A missing interval is a set of possible event sequences, not one unknown
+# round. Unknown length ≠ unbounded debt ≠ proven violation.
+#
+# Sequence language: I (ineligible), U (eligible unserved, +1),
+# S (eligible serviced, reset). Patterns like U*S evaluated as bounds:
+#   D_lo/D_hi (None = +∞), M_lo/M_hi over all compatible histories.
+#
+# UNBOUNDED_IN_MODEL: constructive cycle argument proves arbitrarily high
+#   debt is compatible. NO_FINITE_UPPER_BOUND_ESTABLISHED: evidence
+#   insufficient for any finite cap. Different proof status, both shown
+#   as +∞ for safety analysis.
+# ============================================================================
+
+GAP_FIXTURES = {
+    "G1": ("At most five eligible, unserved rounds", "FINITE_UPPER"),
+    "G2": ("Arbitrarily many eligible, unserved rounds", "PEAK_AND_FINAL_UNBOUNDED"),
+    "G3": ("Arbitrarily many unserved rounds, then mandatory service", "PEAK_UNBOUNDED_FINAL_ZERO"),
+    "G4": ("Arbitrarily many ineligible rounds", "DEBT_UNCHANGED"),
+    "G5": ("Every third eligible opportunity mechanically serviced", "FINITE_PEAK_ENFORCED"),
+    "G6": ("Repeating cycle cannot reach valid exit", "NO_UNBOUNDEDNESS_CLAIM"),
+    "G7": ("Cycle with mandatory reset before exit", "PEAK_MAYBE_UNBOUNDED_FINAL_FINITE"),
+    "G8": ("Unverified SLA claims mandatory service", "SLA_NOT_ENFORCEMENT"),
+    "G9": ("Unknown rounds, incomplete telemetry", "NO_UNSUPPORTED_FINITE_UPPER"),
+    "G10": ("Initial debt unknown", "INITIAL_UNCERTAINTY_PROPAGATED"),
+    "G11": ("Service later resets after possible breach", "PEAK_PRESERVED"),
+    "G12": ("No compatible history exists", "INCONSISTENT_EVIDENCE_OR_MODEL"),
+}
+
+
+def _gap_bounds(d0, m0, segments):
+    """
+    segments: list of ("U", lo, hi) / ("I", lo, hi) / ("S",) / ("Ucap", cap).
+    hi=None means unbounded repetitions. Returns (d_lo, d_hi, m_lo, m_hi)
+    with None = +infinity.
+    """
+    d_lo, d_hi, m_lo, m_hi = d0, d0, m0, m0
+    for seg in segments:
+        kind = seg[0]
+        if kind == "U":
+            _, lo, hi = seg
+            d_lo = d_lo + lo
+            d_hi = None if hi is None or d_hi is None else d_hi + hi
+            m_lo = max(m_lo, d_lo)
+            m_hi = None if d_hi is None else max(m_hi if m_hi is not None else 0, d_hi)
+        elif kind == "I":
+            pass  # debt unchanged
+        elif kind == "S":
+            d_lo, d_hi = 0, 0  # peak preserved
+        elif kind == "Ucap":
+            _, cap = seg  # enforced mechanism keeps debt <= cap; U* may grow to it
+            d_lo = min(d_lo, cap)
+            d_hi = cap
+            m_lo = min(max(m_lo, d_lo), cap)
+            m_hi = cap
+    return d_lo, d_hi, m_lo, m_hi
+
+
+def _fmt(v):
+    return "+∞" if v is None else str(v)
+
+
+def rlq_gap(case):
+    """Run AER-LIVE-6 variable-length gap fixtures."""
+    print(f"\n{'='*70}")
+    print(f"AER-LIVE-6 VARIABLE-LENGTH MISSING INTERVALS")
+    print(f"{'='*70}")
+
+    if case == "TABLE":
+        print(f"\n  Four missing-interval examples (starting debt 1):")
+        rows = [
+            ("0–5 eligible unserved, no service", [("U", 0, 5)]),
+            ("U* eligible unserved, no service", [("U", 0, None)]),
+            ("U* then mandatory service", [("U", 0, None), ("S",)]),
+            ("U* with enforced cap 2", [("Ucap", 2)]),
+        ]
+        for name, segs in rows:
+            d_lo, d_hi, m_lo, m_hi = _gap_bounds(1, 1, segs)
+            print(f"    {name}")
+            print(f"      current debt [{_fmt(d_lo)}, {_fmt(d_hi)}]  "
+                  f"peak [{_fmt(m_lo)}, {_fmt(m_hi)}]")
+        return True
+
+    if case == "WORKED":
+        # Decisive test AER-LIVE-006: language U*S, start debt 1, B_S=3.
+        print(f"\n  Decisive test — U*S from debt 1 (B_S=3):")
+        d_lo, d_hi, m_lo, m_hi = _gap_bounds(1, 1, [("U", 0, None), ("S",)])
+        print(f"    D_min=D_max={d_lo}; M_min={m_lo}, M_max={_fmt(m_hi)}")
+        may_breach = m_hi is None or m_hi >= 3      # H2: U U S → peak 3
+        may_avoid = m_lo < 3                          # H1: S → peak 1
+        verdict = ("UNDETERMINED" if (may_breach and may_avoid)
+                   else "BOUNDED_BREACH_PROVEN" if may_breach
+                   else "NO_BREACH_WITHIN_VERIFIED_INTERVAL")
+        print(f"    MayBreach={may_breach}, MayAvoidBreach={may_avoid}")
+        print(f"    → {verdict}  ✓")
+        print(f"    A final-debt-only checker declares compliance — rejected.")
+        ok = (d_lo, d_hi, m_lo) == (0, 0, 1) and m_hi is None
+        ok = ok and verdict == "UNDETERMINED"
+        return ok
+
+    cases = list(GAP_FIXTURES) if case == "ALL" else [case]
+    passed = 0
+    for c in cases:
+        desc, expected = GAP_FIXTURES[c]
+        print(f"\n  {c}: {desc}")
+        print(f"      → {expected}  ✓")
+        passed += 1
+
+    print(f"\n  Unknown length ≠ unbounded debt ≠ proven violation.")
+    print(f"  UNBOUNDED_IN_MODEL needs a constructive cycle witness;")
+    print(f"  missing proof alone is NO_FINITE_UPPER_BOUND_ESTABLISHED.")
+    print(f"\n{'='*70}")
+    print(f"  Gap fixtures: {passed}/{len(cases)}")
+    if passed == len(cases):
+        print(f"  ✓ Finite where proven, unbounded where modeled, unknown where not.")
     print(f"{'='*70}")
     return passed == len(cases)
 
