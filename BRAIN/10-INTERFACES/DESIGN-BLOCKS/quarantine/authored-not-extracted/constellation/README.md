@@ -4,6 +4,10 @@ A constellation map for networks — spaces, connections, ideas and how they
 touch. Nodes glow in spectrum color, radius carries weight, light arcs carry
 relationships. It floats gently: alive, never a diagram.
 
+## Why
+
+Networks aren’t lists. Weight-sized glowing nodes with light-arc relationships show which connections carry the weight — the shape of a relationship, not its rows.
+
 - **Type:** graphs
 - **Source:** authored 2026-10-09 for the Smart Graphs visual language
 - **CSS:** `constellation.css`

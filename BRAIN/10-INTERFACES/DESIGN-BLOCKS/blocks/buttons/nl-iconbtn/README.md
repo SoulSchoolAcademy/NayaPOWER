@@ -2,6 +2,10 @@
 
 Icon button from Missing Blocks library.
 
+## Why
+
+Icon button from the Missing Blocks library. Small, repeated, tappable icon actions — the connective tissue of toolbars and cards. Consistent touch targets everywhere.
+
 - **Type:** buttons
 - **Source:** `Naya_Lego-blocks.html` (extracted byte-true, never rewritten)
 - **CSS:** `nl-iconbtn.css`

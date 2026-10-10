@@ -2,6 +2,10 @@
 
 260px circular score stage: glowing ring gauge with big number + out-of label. The results hero number.
 
+## Why
+
+The results hero is a ceremony, not a cell. A glowing ring with a big number and its out-of label turns a score into a moment — the thing you’ll remember and come back for.
+
 - **Type:** assessment
 - **Source:** `Maxis App Design.html` (extracted byte-true, never rewritten)
 - **CSS:** `block.css`

@@ -2,6 +2,10 @@
 
 Top navigation bar. Logo left, links, CTA right. Sticky, translucent, floating above the page on a hairline of light.
 
+## Why
+
+Nobody should have to hunt for where they are. A sticky translucent bar — logo left, CTA right, 44px+ touch targets — keeps the way in and the way forward always reachable and always tappable.
+
 - **Type:** layout
 - **Source:** authored 2026-10-09 for the Smart Blocks library (composition layer)
 - **CSS:** `nav.css`

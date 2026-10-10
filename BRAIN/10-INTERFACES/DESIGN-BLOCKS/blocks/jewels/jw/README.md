@@ -2,6 +2,10 @@
 
 Jewel atom from Naya Forest. Reusable across bullets, corners, states.
 
+## Why
+
+Jewel atom from Naya Forest — reusable across bullets, corners, and states. One tiny jewel, a hundred uses; consistency compounds. The whole interface glints with the same light.
+
 - **Type:** jewels
 - **Source:** `Naya_4_Design_Element_Set.html` (extracted byte-true, never rewritten)
 - **CSS:** `jw.css`

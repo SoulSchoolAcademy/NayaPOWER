@@ -2,6 +2,10 @@
 
 Answer option: 52px jewel icon / title + sub copy / chevron grid, 66px min-height, per-answer `--accent`.
 
+## Why
+
+An assessment is only as good as its answers. A 52px jewel icon, title, sub copy, and a 66px minimum target make each option feel considered — so the choice itself feels meaningful.
+
 - **Type:** assessment
 - **Source:** `Maxis App Design.html` (extracted byte-true, never rewritten)
 - **CSS:** `block.css`

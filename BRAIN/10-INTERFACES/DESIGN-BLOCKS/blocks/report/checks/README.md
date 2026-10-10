@@ -2,6 +2,10 @@
 
 Vertical checklist: real checkboxes with accent-tinted rows. Verification you can tick.
 
+## Why
+
+Verification you can tick. Real checkboxes with accent-tinted rows turn a list of claims into something the user can physically confirm — trust, one tick at a time.
+
 - **Type:** report
 - **Source:** `Naya Design Elements N2.html` (extracted byte-true, never rewritten)
 - **CSS:** `block.css`

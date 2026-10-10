@@ -2,6 +2,10 @@
 
 Play button from Missing Blocks library.
 
+## Why
+
+Play button. Media needs one unmistakable start — this is it. The user never hunts for how to begin.
+
 - **Type:** buttons
 - **Source:** `Naya_Lego-blocks.html` (extracted byte-true, never rewritten)
 - **CSS:** `nl-playbtn.css`

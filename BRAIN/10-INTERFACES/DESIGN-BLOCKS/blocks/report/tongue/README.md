@@ -2,6 +2,10 @@
 
 Three-language display (human/AI/machine): the 3-language standard made visible. One tongue per language.
 
+## Why
+
+Three languages, one truth. The human/AI/machine display makes the three-language standard visible — the same content, shaped for each tongue that reads it.
+
 - **Type:** report
 - **Source:** `Naya Design Element Set N4.html` (extracted byte-true, never rewritten)
 - **CSS:** `block.css`

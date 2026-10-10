@@ -2,6 +2,10 @@
 
 Invite chip ("tap to step into a room") plus invite-list rows with Invite buttons.
 
+## Why
+
+‘Tap to step into a room.’ The invite chip is the doorway made literal — and the invite-list rows with Invite buttons turn a guest list into an action list.
+
 - **Type:** spaces
 - **Source:** `Smart Spaces Page Design.html` (extracted byte-true, never rewritten)
 - **CSS:** `block.css`

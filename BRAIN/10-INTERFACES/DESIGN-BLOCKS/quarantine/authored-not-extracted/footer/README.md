@@ -2,6 +2,10 @@
 
 Page footer. Brand lockup, multi-column link groups, social icons, legal row. Closes the composition with a hairline of top light — it lands, never just stops.
 
+## Why
+
+The page’s last word should be quiet, not dead. Brand lockup, links, social icons, legal row — everything a user looks for at the bottom, set small enough that it never competes with the content above.
+
 - **Type:** layout
 - **Source:** authored 2026-10-09 for the Smart Blocks library (composition layer)
 - **CSS:** `footer.css`

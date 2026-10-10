@@ -2,6 +2,10 @@
 
 The room shell: head (kicker + title + lede) + toolbar + status line + body + outlet. Every Hub room composes this; `--room-accent` themes the kicker and LED.
 
+## Why
+
+Every room should feel like the same house. Head, toolbar, status, body — the room shell composes every Hub room from one grammar, with per-room accent theming so each room keeps its own light.
+
 - **Type:** chrome
 - **Source:** `Naya Smart Hub Design.html` (extracted verbatim, never rewritten)
 - **CSS:** `room-chrome.css`

@@ -2,6 +2,10 @@
 
 Color swatch: 44px bar, 10px radius, 4-layer shadow, hover lift. The palette made touchable.
 
+## Why
+
+A palette you can’t touch is a palette you can’t trust. The 44px bar with hover lift makes each color pickable — the design system, made handleable.
+
 - **Type:** data
 - **Source:** `Naya Design Element Set N4.html` (extracted byte-true, never rewritten)
 - **CSS:** `block.css`

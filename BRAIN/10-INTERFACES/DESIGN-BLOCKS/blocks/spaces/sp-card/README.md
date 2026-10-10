@@ -2,6 +2,10 @@
 
 Space card with cover art — the grid unit of the Spaces discovery view.
 
+## Why
+
+Discovery is browsing, and browsing needs a unit. The space card with cover art is the grid’s atom — each space gets its face, and the grid gets its rhythm.
+
 - **Type:** spaces
 - **Source:** `Smart Spaces Page Design.html` (extracted byte-true, never rewritten)
 - **CSS:** `block.css`

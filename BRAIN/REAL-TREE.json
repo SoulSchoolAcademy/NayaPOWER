@@ -1,13 +1,13 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-10",
-  "receipt_basis_commit": "7281ede6b07869f64e576d4d6432628c4750d5de",
-  "inventory_file_count": 1241,
+  "receipt_basis_commit": "8de84488922b3ef14209b858ac45fa4ba1a40864",
+  "inventory_file_count": 1242,
   "domain_counts": {
     "00-ACTIVATION": 3,
     "00-ARCHITECTURE": 5,
     "00-SPEC": 15,
-    "01-GOVERNANCE": 55,
+    "01-GOVERNANCE": 56,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
@@ -399,6 +399,11 @@
       "path": "BRAIN/01-GOVERNANCE/TEAM-NAYA-OPERATING-PROTOCOL-V1.md",
       "blob_sha": "947a3a14a9bf267e50ff8e108b5375dee95fd7b5",
       "size": 14458
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/THE-PROTOCOL.md",
+      "blob_sha": "a16fd69d14daa0310f6bea75a311e98f9cac2cb7",
+      "size": 8059
     },
     {
       "path": "BRAIN/01-GOVERNANCE/THE-TUNE-IN-TEMPLATE.md",
@@ -4117,8 +4122,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/assessment/answer/README.md",
-      "blob_sha": "539667d53121c7a255c0e80a358945a8e4602937",
-      "size": 912
+      "blob_sha": "e35ba450ab9bfb94a2da6dcbffa49c5fab69874a",
+      "size": 1105
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/assessment/answer/block.css",
@@ -4132,8 +4137,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/assessment/dimension-constellation/README.md",
-      "blob_sha": "0aa359c63c082669b96232119e98b3be1a50ab2b",
-      "size": 953
+      "blob_sha": "001912d474d598d343755786eb9bc41d329eb65d",
+      "size": 1142
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/assessment/dimension-constellation/block.css",
@@ -4147,8 +4152,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/assessment/interest-picker/README.md",
-      "blob_sha": "f27a03c1df91b0dd95f9676ca9a68f47411890ee",
-      "size": 1152
+      "blob_sha": "b9c22f3e5f778276d15a5b79b5de3cae9057d4f2",
+      "size": 1362
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/assessment/interest-picker/block.css",
@@ -4162,8 +4167,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/assessment/progress-hud/README.md",
-      "blob_sha": "12c3c706249e44764bc710cb6e725250a0b282fd",
-      "size": 913
+      "blob_sha": "335a5402a9e1864396a26062e42a695bfcfcc879",
+      "size": 1095
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/assessment/progress-hud/block.css",
@@ -4177,8 +4182,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/assessment/question/README.md",
-      "blob_sha": "8f4d82a10f00dc45d14142ba942d787d310e907e",
-      "size": 771
+      "blob_sha": "b81c3da93b534863f9449273c71c4ec1bbe7556e",
+      "size": 941
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/assessment/question/block.css",
@@ -4192,8 +4197,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/assessment/score-stage/README.md",
-      "blob_sha": "bfbd311d05929051e6a7d1a2b332fb694a1bc643",
-      "size": 835
+      "blob_sha": "7d8b432e10f61c9e0aeaef687ebb6d97731234ac",
+      "size": 1021
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/assessment/score-stage/block.css",
@@ -4207,8 +4212,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/boards/board-tone/README.md",
-      "blob_sha": "0c4d6571956c73c9e908925fe540db4a0c5bc781",
-      "size": 623
+      "blob_sha": "cda432378ef4e1d743b64e40dcece13b69683e37",
+      "size": 811
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/boards/board-tone/board-tone.css",
@@ -4222,8 +4227,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/boards/board/README.md",
-      "blob_sha": "9b3f893247df4e94ae894e4421dcae38e4a4ae50",
-      "size": 906
+      "blob_sha": "07dcb2fb6fea20af6154e8a8ce568278f6d2a769",
+      "size": 1098
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/boards/board/board.css",
@@ -4237,8 +4242,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/boards/demo-board/README.md",
-      "blob_sha": "05cddb6534923dc06089e7add62cbcc11f753fda",
-      "size": 501
+      "blob_sha": "473030d445ac2349b44c794fd00102990ca843d4",
+      "size": 672
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/boards/demo-board/demo-board.css",
@@ -4252,8 +4257,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/boards/nl-ccard/README.md",
-      "blob_sha": "dfbf77737b05084988ffb62f3192afc737ad04be",
-      "size": 498
+      "blob_sha": "742a86ed937ac46dd8ab22f291769b2d0e2829b6",
+      "size": 678
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/boards/nl-ccard/nl-ccard.css",
@@ -4267,8 +4272,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/boards/stage/README.md",
-      "blob_sha": "4c2bb247555a28bcd1145ee0d61bd2c07d9cab2e",
-      "size": 486
+      "blob_sha": "db3a6e85dc1256b1297a2c88c3936fe8f33a0522",
+      "size": 694
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/boards/stage/specimen.html",
@@ -4282,8 +4287,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/cx-btn/README.md",
-      "blob_sha": "85ad04979f73216386fd909a5a3dd92afcc78fab",
-      "size": 499
+      "blob_sha": "89659f44e3956d6e942fbcc56ff4a9317e0e333c",
+      "size": 697
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/cx-btn/cx-btn.css",
@@ -4297,8 +4302,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/icon-btn/README.md",
-      "blob_sha": "c9597f5849f646f8f244c3e441780d3d6f266572",
-      "size": 608
+      "blob_sha": "f01352f299905b27754d880417b6c21d28ade7dd",
+      "size": 846
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/icon-btn/icon-btn.css",
@@ -4312,8 +4317,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/living-btn/README.md",
-      "blob_sha": "0bcf9f84d018f59c82360e0e61dc3beff4882f51",
-      "size": 1046
+      "blob_sha": "1becac124c3ac7036fe8cd9209cb1fb15ebe3602",
+      "size": 1270
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/living-btn/living-btn.css",
@@ -4327,8 +4332,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/lv-btn/README.md",
-      "blob_sha": "ac0b515dca22b8c1295705ad9e00d5653c698699",
-      "size": 1064
+      "blob_sha": "2a1a4e758ae39f4ce86965f54e9f81c8bd535f1d",
+      "size": 1340
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/lv-btn/lv-btn.css",
@@ -4347,8 +4352,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/naya-btn/README.md",
-      "blob_sha": "19b6314d0a93f2e30dde5a7a06edb265885d33b2",
-      "size": 1071
+      "blob_sha": "280acf25133c429cf3726c3fd4b422343929aa68",
+      "size": 1299
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/naya-btn/naya-btn.css",
@@ -4367,8 +4372,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/nl-btn-ghost/README.md",
-      "blob_sha": "1f6f761e1d4bd49ed124ea6fd3f7a0040ddcb12a",
-      "size": 476
+      "blob_sha": "549551322341b8bb2d6d4e7ead196c4afea516f4",
+      "size": 662
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/nl-btn-ghost/nl-btn-ghost.css",
@@ -4382,8 +4387,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/nl-btn/README.md",
-      "blob_sha": "289126378148e9908beb3da250d2ef8967ba14fc",
-      "size": 541
+      "blob_sha": "c2f1c40a12813ccd62bc92841ce2b9effd7f1082",
+      "size": 731
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/nl-btn/nl-btn.css",
@@ -4397,8 +4402,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/nl-iconbtn/README.md",
-      "blob_sha": "2114a8beb9ccddef5979f18196fd05870522e9b8",
-      "size": 539
+      "blob_sha": "10cd67c2c0f853b1dc860958f2fb2ad7f6770e6e",
+      "size": 718
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/nl-iconbtn/nl-iconbtn.css",
@@ -4412,8 +4417,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/nl-playbtn/README.md",
-      "blob_sha": "7793632b4c6394c586683eb7979b233416e692a2",
-      "size": 547
+      "blob_sha": "be26c31198157d840f24a24b0f01195582d5924e",
+      "size": 659
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/nl-playbtn/nl-playbtn.css",
@@ -4427,8 +4432,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/orbit-btn/README.md",
-      "blob_sha": "c23d0bb3e6aec402ce0cc71fa81e3c1fa4529de0",
-      "size": 660
+      "blob_sha": "cf089da366099bc26836671ea1df142ae70ee852",
+      "size": 908
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/orbit-btn/orbit-btn.css",
@@ -4442,8 +4447,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/primo/README.md",
-      "blob_sha": "1010c7f790f25925c8771636f8635ca51bd55697",
-      "size": 649
+      "blob_sha": "265b4da9351612f5665ad9e4ebc7ed5913b0200f",
+      "size": 900
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/primo/primo.css",
@@ -4457,8 +4462,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chat/sp-audio-msg/README.md",
-      "blob_sha": "b5dbf97a752f56a5b673c3436325f6fbb7d82000",
-      "size": 1390
+      "blob_sha": "a6e86e4840fe447765905fc7d64f9f43f37d1b4e",
+      "size": 1555
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chat/sp-audio-msg/block.css",
@@ -4477,8 +4482,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chat/sp-chat/README.md",
-      "blob_sha": "3f30ddfd53a055de4a63e127288c2b7855ae970b",
-      "size": 2263
+      "blob_sha": "24d9647d68305cc0fa466793421a557afd35048c",
+      "size": 2455
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chat/sp-chat/block.css",
@@ -4497,8 +4502,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chrome/door/README.md",
-      "blob_sha": "e425fbec084f02d5f3aea21efbe81cd6b053528c",
-      "size": 732
+      "blob_sha": "97b46652cfaa2e613e1389212dfb200a7599007a",
+      "size": 926
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chrome/door/door.css",
@@ -4512,8 +4517,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chrome/drawer/README.md",
-      "blob_sha": "95712f3bc7b0266e35857d05372750fc08ae7e66",
-      "size": 946
+      "blob_sha": "44c7cca577a5d43aa113e0ae8891a2079665dcb3",
+      "size": 1134
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chrome/drawer/drawer.css",
@@ -4532,8 +4537,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chrome/eco-bottombar/README.md",
-      "blob_sha": "26e3101fad8a793146e077487a39ae5a86d6a807",
-      "size": 974
+      "blob_sha": "46d483a6aebf85f1b27cb105d1814154fde33a16",
+      "size": 1177
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chrome/eco-bottombar/eco-bottombar.css",
@@ -4552,8 +4557,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chrome/room-chrome/README.md",
-      "blob_sha": "7860d3526b08efc9c9511d115800d11acdce817c",
-      "size": 824
+      "blob_sha": "5cff1452579f7f793138c0a52318b99858956193",
+      "size": 1029
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chrome/room-chrome/room-chrome.css",
@@ -4567,8 +4572,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chrome/share-fab/README.md",
-      "blob_sha": "72e1f2fff7a0029b5efcd2f61d0c70a1bc8602f5",
-      "size": 659
+      "blob_sha": "5bd51ab55e24883886a49ffeca933f3af41f10b1",
+      "size": 826
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chrome/share-fab/share-fab.css",
@@ -4582,8 +4587,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/data/li-day/README.md",
-      "blob_sha": "1002cb3409bb8b133a46d97eb186deaf2c736749",
-      "size": 1136
+      "blob_sha": "07f5d7e760fa0cb5e25e485c44ac2d4c2f6cfbb6",
+      "size": 1293
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/data/li-day/block.css",
@@ -4602,8 +4607,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/data/nl-bar/README.md",
-      "blob_sha": "96444538640ac32500ae8da23ddfa93336d8aa9a",
-      "size": 480
+      "blob_sha": "92574c6d85883bb332893f492ff7d1e38c46292d",
+      "size": 631
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/data/nl-bar/nl-bar.css",
@@ -4617,8 +4622,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/data/nl-chart/README.md",
-      "blob_sha": "7f0db17a805056ef731baba6908ee0e36ffd4a2f",
-      "size": 1318
+      "blob_sha": "c3b5cd0ce2779fbaf3ade9c9cb814291e32db5c0",
+      "size": 1462
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/data/nl-chart/nl-chart.css",
@@ -4632,8 +4637,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/data/nl-table/README.md",
-      "blob_sha": "3974505aa85693dc9775048fa88922bde6dee2e1",
-      "size": 635
+      "blob_sha": "2aadb53633ad71fab93af3ad60738c9350a06cea",
+      "size": 761
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/data/nl-table/nl-table.css",
@@ -4647,8 +4652,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/data/state-badge/README.md",
-      "blob_sha": "50619ecf457df0f41ba94c973816a176fba54c15",
-      "size": 598
+      "blob_sha": "53c828baaf8e57f2ce8fd93aafc22fbfeb2f9d8f",
+      "size": 757
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/data/state-badge/specimen.html",
@@ -4662,8 +4667,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/data/swatch/README.md",
-      "blob_sha": "3aa666ec029b5d44059af23e927c70114f0a5a43",
-      "size": 556
+      "blob_sha": "c26d48793efeb88db5eb956c66520c59665415d0",
+      "size": 720
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/data/swatch/block.css",
@@ -4677,8 +4682,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/data/truthgrid/README.md",
-      "blob_sha": "186f18429503cb1e98f882b2e10c7dbf48a9e92a",
-      "size": 579
+      "blob_sha": "4a88cd7fafd7045eb7fc5f4ab970cf366e17bb93",
+      "size": 735
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/data/truthgrid/block.css",
@@ -4692,8 +4697,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/feed/activity-card/README.md",
-      "blob_sha": "30c961a6a4c416fe50d5261bbda8f7ca5c960d4d",
-      "size": 974
+      "blob_sha": "6b4f397ff42e86af24504e16aac3a2c1a61451f4",
+      "size": 1213
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/feed/activity-card/activity-card.css",
@@ -4707,8 +4712,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/feed/activity-stream/README.md",
-      "blob_sha": "25a341f656995d238e9cdb5f6c51f60f2154c5e8",
-      "size": 720
+      "blob_sha": "2735e61db9cb1e19a8cbf1118ebeed7998d35c50",
+      "size": 906
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/feed/activity-stream/activity-stream.css",
@@ -4722,8 +4727,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/feed/intel-row/README.md",
-      "blob_sha": "75d93ab3200c6a6605621ff2f914358530ce5969",
-      "size": 668
+      "blob_sha": "96d075d49e6a18cadf739dfe67bc661e87ef4125",
+      "size": 855
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/feed/intel-row/intel-row.css",
@@ -4737,8 +4742,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/feed/li-card/README.md",
-      "blob_sha": "77d265e9569946ff551da2468f6b976ad22d971f",
-      "size": 2326
+      "blob_sha": "96358affc1539b8a3fe25cf4734350843ae71c02",
+      "size": 2523
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/feed/li-card/block.css",
@@ -4757,8 +4762,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/feed/metric-ribbon/README.md",
-      "blob_sha": "07ae30d66476b54b6fa7748020ad994f27a20c0a",
-      "size": 764
+      "blob_sha": "8100f59e9259ba2f8fce0459fb4441ac6bcedb0f",
+      "size": 966
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/feed/metric-ribbon/metric-ribbon.css",
@@ -4772,13 +4777,13 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/index.json",
-      "blob_sha": "baa5822af78df3085d8d96019524ad93eaef947e",
+      "blob_sha": "4089c709c9985f99f304ec37446961a08e5bf2bc",
       "size": 72523
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/inputs/nl-field/README.md",
-      "blob_sha": "8b36da8013fa3635dc974bdc53d7a2937d6f7a9b",
-      "size": 633
+      "blob_sha": "5364fae055b22d31f90899f6a84bb5eb9574d768",
+      "size": 767
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/inputs/nl-field/nl-field.css",
@@ -4792,8 +4797,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/inputs/nl-search/README.md",
-      "blob_sha": "20d021b28c5eaa2de9dcf6089d3dfdbf198a4a55",
-      "size": 542
+      "blob_sha": "4f44dc0053743abdbc6f76db98c14779cfd8ab9d",
+      "size": 719
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/inputs/nl-search/nl-search.css",
@@ -4807,8 +4812,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/inputs/sn-pill/README.md",
-      "blob_sha": "50e67de62d4d5e000eabe07455848fa54d3f5607",
-      "size": 2817
+      "blob_sha": "05346642a280b64586a69faf205d9a2af52e63b2",
+      "size": 3033
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/inputs/sn-pill/block.css",
@@ -4827,8 +4832,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/jewels/gem-bullet/README.md",
-      "blob_sha": "9b54fe19ccfce43a749b866d2278d6afd4ac87ca",
-      "size": 484
+      "blob_sha": "71758bd3d64ab44718b78a88e142e8b14cf0c197",
+      "size": 740
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/jewels/gem-bullet/gem-bullet.css",
@@ -4842,8 +4847,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/jewels/jw/README.md",
-      "blob_sha": "2d85c1c560aa364eb4835118e64e92bc74fb0973",
-      "size": 529
+      "blob_sha": "4c923dd49d96299936c750478e6f53a271f40e45",
+      "size": 719
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/jewels/jw/jw.css",
@@ -4857,8 +4862,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/knowledge/intelligent-block/README.md",
-      "blob_sha": "5f87ad33d3082f002b922ec084bc4a6c820cb277",
-      "size": 1190
+      "blob_sha": "ea38c853a1fc603c3926409863a2c18cdd6be473",
+      "size": 1417
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/knowledge/intelligent-block/intelligent-block.css",
@@ -4877,8 +4882,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/layout/portal/README.md",
-      "blob_sha": "0baa7669a5e224811750b7312bb598268210a950",
-      "size": 695
+      "blob_sha": "562c394a7b0f23dbbad641de5caafc373f74101b",
+      "size": 910
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/layout/portal/block.css",
@@ -4892,8 +4897,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/lists/sp-about-rows/README.md",
-      "blob_sha": "63c7da5e63af4fa3e124ec17a2eed1657879268d",
-      "size": 1170
+      "blob_sha": "0f28cd241ab4fc5b96195772901e8d84f4f28b09",
+      "size": 1334
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/lists/sp-about-rows/block.css",
@@ -4912,8 +4917,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/lists/sp-blockrow/README.md",
-      "blob_sha": "a0a5c83947d8fc1f139df1ec5499df7ef9d84079",
-      "size": 1464
+      "blob_sha": "59a51940678b3a6f3b421dcc3f87d2d82419e500",
+      "size": 1666
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/lists/sp-blockrow/block.css",
@@ -4932,8 +4937,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/media/nl-player/README.md",
-      "blob_sha": "737a132dd261ff5362fedfb5f627f82c5021874b",
-      "size": 470
+      "blob_sha": "f2d67c420a9bed3772f7746f6061d03444df8eae",
+      "size": 628
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/media/nl-player/nl-player.css",
@@ -4947,8 +4952,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/orbs/mini-orb/README.md",
-      "blob_sha": "85e079e17a930158c7979f804e2ac1ab1d989579",
-      "size": 488
+      "blob_sha": "2f3cb933342ec4cb7c9a2ee286f27b019ab7ea48",
+      "size": 694
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/orbs/mini-orb/mini-orb.css",
@@ -4962,8 +4967,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/orbs/nav-orb/README.md",
-      "blob_sha": "ae89581089cb2b58c01d6a8d5563895bbfd97461",
-      "size": 441
+      "blob_sha": "c43a3f89740006f63848862e7096ba0bbcf4e679",
+      "size": 611
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/orbs/nav-orb/nav-orb.css",
@@ -4977,8 +4982,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/orbs/orb/README.md",
-      "blob_sha": "7e601038ff684b725b9d6ffd8b990061808890bd",
-      "size": 804
+      "blob_sha": "a6b0b6944b3ebdfe48b46635756e83ab4a7dd328",
+      "size": 1026
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/orbs/orb/orb.css",
@@ -4992,8 +4997,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/overlays/li-modal/README.md",
-      "blob_sha": "56d1ce679811bb86ca960f08dcaa9df71705ab2f",
-      "size": 2092
+      "blob_sha": "287aa0e4f736f0820aa2cc5252e108d336f6de96",
+      "size": 2286
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/overlays/li-modal/block.css",
@@ -5012,8 +5017,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/overlays/nl-modal/README.md",
-      "blob_sha": "1aaac1d70176bb9b98afb000b713526633ca803b",
-      "size": 574
+      "blob_sha": "341e88e285bd0c73f9337cd4781524bda3ee0b11",
+      "size": 737
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/overlays/nl-modal/nl-modal.css",
@@ -5027,8 +5032,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/overlays/nl-sheet/README.md",
-      "blob_sha": "9c13fa31e211473ed69d475b1cc0b5fcaf01a34c",
-      "size": 518
+      "blob_sha": "ce2e3558bfb1de02990a55c53afa9344a7167da9",
+      "size": 664
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/overlays/nl-sheet/nl-sheet.css",
@@ -5042,8 +5047,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/overlays/nl-toast/README.md",
-      "blob_sha": "dcfea2298dad2323196ef19537243a3e42d80b1a",
-      "size": 557
+      "blob_sha": "6c1994c68f4ea8940079cf8fa96e0304cdec188d",
+      "size": 711
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/overlays/nl-toast/nl-toast.css",
@@ -5052,13 +5057,13 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/overlays/nl-toast/specimen.html",
-      "blob_sha": "63dfb2136828515806111332ebac330b9c7a0a99",
-      "size": 639
+      "blob_sha": "f44192d529276432be83b48fb6b4a6171c91e441",
+      "size": 635
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/report/checks/README.md",
-      "blob_sha": "24d281e910ac98c63667192b947f10330a799c26",
-      "size": 607
+      "blob_sha": "65c4242593fbd3d55bec3d88b85f30e8c90ad678",
+      "size": 783
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/report/checks/block.css",
@@ -5072,8 +5077,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/report/law-steps/README.md",
-      "blob_sha": "72980c461cf9b17e3d451df1c34c4cbae49e13de",
-      "size": 696
+      "blob_sha": "7f57f8d64032f8abc7ae100741beeb994e8574e7",
+      "size": 851
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/report/law-steps/block.css",
@@ -5087,8 +5092,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/report/lawcard/README.md",
-      "blob_sha": "7bfa6428a6b08a8c5408b9c6f8bbe74c48e00acd",
-      "size": 647
+      "blob_sha": "4885c9e7a6b58242e13e1b3d9adbc8bb513a4d4e",
+      "size": 781
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/report/lawcard/block.css",
@@ -5102,8 +5107,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/report/scorecard/README.md",
-      "blob_sha": "62205c53fb96e83cfaff1eb8fcab267e09b2ceb0",
-      "size": 632
+      "blob_sha": "64f53814030a919f3de0c247f5d16e58e8cd5a25",
+      "size": 794
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/report/scorecard/block.css",
@@ -5117,8 +5122,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/report/tongue/README.md",
-      "blob_sha": "2cdc04570481f9e9fe623ac948d1a6b3a78fa0c6",
-      "size": 646
+      "blob_sha": "58ac9f55f610d145907d3176235725faba95b8a0",
+      "size": 814
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/report/tongue/block.css",
@@ -5132,8 +5137,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/report/verdict/README.md",
-      "blob_sha": "5943b65ad177be0e12f29d925de2432a0f4ffe6c",
-      "size": 590
+      "blob_sha": "81bcbc8746864b5b7e0962c6460966ba5968399c",
+      "size": 742
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/report/verdict/block.css",
@@ -5147,8 +5152,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/spaces/sp-card/README.md",
-      "blob_sha": "fb3b4260f4af2bf2f74baebb391eca6c4d1ec156",
-      "size": 2066
+      "blob_sha": "cffedebf82723f07b0aaf1d75db31cdff0d4c61d",
+      "size": 2236
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/spaces/sp-card/block.css",
@@ -5167,8 +5172,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/spaces/sp-detail/README.md",
-      "blob_sha": "84d99fa81968e7cff65aa6cde4fc7c559d3b4011",
-      "size": 1985
+      "blob_sha": "72520021d38b3edac3bba105b7f462cd6d83475c",
+      "size": 2154
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/spaces/sp-detail/block.css",
@@ -5187,8 +5192,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/spaces/sp-inv-chip/README.md",
-      "blob_sha": "89c305bcffe67f9672bce3b4e3fded85190b4df0",
-      "size": 1940
+      "blob_sha": "7b01d9bfe02da539abb21431822cf69dad59d3e0",
+      "size": 2112
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/spaces/sp-inv-chip/block.css",
@@ -5207,8 +5212,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/tabs/lens-tabs/README.md",
-      "blob_sha": "3a46d2513f28059a6aafd6814652f6dd1662d106",
-      "size": 820
+      "blob_sha": "0a38dccdcc1aa7c3a1f0a90a1d4b16bcb80d3a56",
+      "size": 1002
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/tabs/lens-tabs/lens-tabs.css",
@@ -5227,8 +5232,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/tabs/seg-tab/README.md",
-      "blob_sha": "ad33bab0b0b8976637aa790a7cc73c8411e06f29",
-      "size": 1082
+      "blob_sha": "c354baba707705a92770be8a9e7480216a11456a",
+      "size": 1233
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/tabs/seg-tab/seg-tab.css",
@@ -5247,8 +5252,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/tabs/smart-tabs/README.md",
-      "blob_sha": "b87e28312d4aebf68a0c97c608a0bfc96330fbbd",
-      "size": 916
+      "blob_sha": "c35bfe1f5565e176ef76f9bcb4bdabee0950ce98",
+      "size": 1090
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/tabs/smart-tabs/smart-tabs.css",
@@ -5267,8 +5272,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/tabs/sp-dtabs/README.md",
-      "blob_sha": "f3fd0e0442faaadbd93063c2204ca525745e812d",
-      "size": 1153
+      "blob_sha": "e56bebc59422907c706b0c64ad73b4d8847dc185",
+      "size": 1329
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/tabs/sp-dtabs/block.css",
@@ -5287,8 +5292,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/toggles/nl-switch/README.md",
-      "blob_sha": "593d55e81a4c5c1651f5028bacf34d6dba291071",
-      "size": 679
+      "blob_sha": "87a2436ad6b4b83be1591ec91ba8cb62690c5315",
+      "size": 816
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/toggles/nl-switch/nl-switch.css",
@@ -5302,8 +5307,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/toggles/nl-toggle-row/README.md",
-      "blob_sha": "c1c59ef61ec084c0f89a3e7f17ccb280ef0ea2da",
-      "size": 546
+      "blob_sha": "e841af0c586e9e0ad32962c279d1bc4b694edb54",
+      "size": 695
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/toggles/nl-toggle-row/nl-toggle-row.css",
@@ -5317,8 +5322,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/type/hub-quote/README.md",
-      "blob_sha": "41e8277c68edcc2a3c2cc8f385579bccc4247554",
-      "size": 562
+      "blob_sha": "afe39f7d1c7f6389fff2f907009e15a56e071d26",
+      "size": 732
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/type/hub-quote/hub-quote.css",
@@ -5332,8 +5337,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/type/presence/README.md",
-      "blob_sha": "5e09e220a71b49d23d75ac2ee5659412afdcbbcd",
-      "size": 543
+      "blob_sha": "284da363637560034a445703edfbd1c6ca0811e0",
+      "size": 694
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/type/presence/block.css",
@@ -5347,8 +5352,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/voice/voice-type/README.md",
-      "blob_sha": "d286ea3e3f191b13710ffad6d07313c843890063",
-      "size": 567
+      "blob_sha": "122320fb8f46e2fdf3c2b87e1c4e21f3d6c9e6b7",
+      "size": 723
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/voice/voice-type/block.css",
@@ -5442,8 +5447,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/body/README.md",
-      "blob_sha": "34e6b1f23f0315c4182e5c15fb1e2f3d0f756373",
-      "size": 1337
+      "blob_sha": "d5cdcbff9099693d825ad96b6fcf19a03c501725",
+      "size": 1528
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/body/body.css",
@@ -5457,8 +5462,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/constellation/README.md",
-      "blob_sha": "ff39c5926e91eea6aa89cc719cfc186b0834d0de",
-      "size": 1023
+      "blob_sha": "9bd11564efb57e62f1c165284061ba21316814b8",
+      "size": 1200
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/constellation/constellation.css",
@@ -5472,8 +5477,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/footer/README.md",
-      "blob_sha": "7d36d238021d38b6d1bcc5f51d0ddfcb847114fc",
-      "size": 1851
+      "blob_sha": "a71c280df0581de04cc89a976774b4931fa43e37",
+      "size": 2066
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/footer/footer.css",
@@ -5487,8 +5492,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/headline/README.md",
-      "blob_sha": "df215c8502d6e275c2b0e9c61c3316b584b356a3",
-      "size": 1442
+      "blob_sha": "1f088c9e9ab695cd13832496e264652d8b288b8a",
+      "size": 1636
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/headline/headline.css",
@@ -5502,8 +5507,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/hero/README.md",
-      "blob_sha": "686e6005d2c0073e3007bbc55cb5a9bdc41a5664",
-      "size": 1602
+      "blob_sha": "f0cac1adf8fffe3f137ad36ab92aa09bbad865a2",
+      "size": 1802
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/hero/hero.css",
@@ -5517,8 +5522,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/jewel-pillar/README.md",
-      "blob_sha": "f65f48dffc50d3b525ca0aa8dccc8e28c584d03b",
-      "size": 1003
+      "blob_sha": "681c6cd17ccea90ab03f404841f3f363a08c4fc2",
+      "size": 1209
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/jewel-pillar/jewel-pillar.css",
@@ -5532,8 +5537,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/living-counter/README.md",
-      "blob_sha": "553c7f29d37de4a1153a8a1fe24fcb5953d93655",
-      "size": 1063
+      "blob_sha": "90205b12c13adceb21eee0523ef49fb26eb602f1",
+      "size": 1224
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/living-counter/living-counter.css",
@@ -5552,8 +5557,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/nav/README.md",
-      "blob_sha": "1ee033c9e82b442f8323b44b16357492126683e7",
-      "size": 2126
+      "blob_sha": "063d7f252310ce3c5c75942ffbc168102bf9fd59",
+      "size": 2332
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/nav/nav.css",
@@ -5567,8 +5572,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/orbit-dial/README.md",
-      "blob_sha": "8bf8c648f1591c032a6208a55239274bc6d9286c",
-      "size": 1070
+      "blob_sha": "c0a341f2e3e552d0f5bbb78a459b4f8a337c0952",
+      "size": 1242
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/orbit-dial/orbit-dial.css",
@@ -5582,8 +5587,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/page-shell/README.md",
-      "blob_sha": "d184cdec5062e4fab98f9a68cdf3cff3fc3f8576",
-      "size": 1308
+      "blob_sha": "625fca945425b92a9b4bf67d4ce5e487baa74727",
+      "size": 1557
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/page-shell/page-shell.css",
@@ -5597,8 +5602,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/pulse-orb/README.md",
-      "blob_sha": "9dcb25e0352f94b692f676940f50ecdf7c9b04b3",
-      "size": 1117
+      "blob_sha": "408bea58cb8849fe2af38c8d96e5b84a9d99ce29",
+      "size": 1296
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/pulse-orb/pulse-orb.css",
@@ -5612,8 +5617,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/pulse-rings/README.md",
-      "blob_sha": "5557ce9ce8db09d2dd98786341c9472046d446c8",
-      "size": 943
+      "blob_sha": "a0222f1874062fee436208a1632eaaa079ccae1e",
+      "size": 1127
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/pulse-rings/pulse-rings.css",
@@ -5627,8 +5632,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/row-grid/README.md",
-      "blob_sha": "b6869fcba3d5bf0f319f1cd0eba3db989f34c53b",
-      "size": 1421
+      "blob_sha": "3eaf064dbf45e77dc0ecf355eaa742c14750434f",
+      "size": 1628
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/row-grid/row-grid.css",
@@ -5642,8 +5647,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/section/README.md",
-      "blob_sha": "4f8d63d9ec4a6f32d927afdd911ea15096fea4b3",
-      "size": 1462
+      "blob_sha": "2bcc8729043055aff2fc86f15a8e58c5e389ee8e",
+      "size": 1682
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/section/section.css",
@@ -5657,8 +5662,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/spectrum-flow/README.md",
-      "blob_sha": "7794d7aab3ee540095bff0da688cb3c6cb48656b",
-      "size": 998
+      "blob_sha": "1a8240f7b8f675183e93c8337a279c902b1d97a0",
+      "size": 1182
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/spectrum-flow/specimen.html",

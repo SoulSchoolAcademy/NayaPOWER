@@ -2,6 +2,10 @@
 
 THE signature block of NayaNET. Header (jewel + kind + title + truth badge), the "in a nutshell" 4-layer answer, expandable jewel layers, provenance footer. Every knowledge surface composes this.
 
+## Why
+
+This is the signature: NayaNET’s whole promise in one block. Jewel header, truth badge, the four-layer ‘in a nutshell,’ expandable layers, provenance footer — knowledge you can trust because it shows its work.
+
 - **Type:** knowledge
 - **Source:** `Naya Smart Hub Design.html` (extracted verbatim, never rewritten)
 - **CSS:** `intelligent-block.css`

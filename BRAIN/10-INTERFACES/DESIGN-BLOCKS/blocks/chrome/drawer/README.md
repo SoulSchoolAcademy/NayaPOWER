@@ -2,6 +2,10 @@
 
 The Hub's slide-in drawer: backdrop + panel + open-state classes. On mobile the left rail becomes a fixed drawer (translateX(-106%) &rarr; 0). Toggle via `.drawer-open` on shell/body. Note: the fuller `.naya-drawer` variant (Ledger file) is a future extraction.
 
+## Why
+
+Space is scarce on a phone, so the left rail must learn to leave. The drawer slides in and out on open-state classes — the Hub’s navigation, there when called, gone when not.
+
 - **Type:** chrome
 - **Source:** `Naya Smart Hub Design.html` (extracted verbatim, never rewritten)
 - **CSS:** `drawer.css`

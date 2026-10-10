@@ -2,6 +2,10 @@
 
 Block list row with title + uppercase category label — the "pin an Intelligent Block" picker list.
 
+## Why
+
+Pinning an Intelligent Block should feel like choosing from a shelf. Title plus uppercase category label per row makes the picker scannable — you see what you’re pinning before you pin it.
+
 - **Type:** lists
 - **Source:** `Smart Spaces Page Design.html` (extracted byte-true, never rewritten)
 - **CSS:** `block.css`

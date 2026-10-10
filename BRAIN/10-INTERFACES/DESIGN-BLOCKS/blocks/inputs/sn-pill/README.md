@@ -2,6 +2,10 @@
 
 Smart Note filter pill: glow pill with label, optional 💜/⭐ mark, ⋯ options button, plus a popover editor (label input + purple-heart/gold-star toggles + Cancel/Save) and a shared context menu (Edit / Set Purple Heart / Set Gold Star / Remove).
 
+## Why
+
+Filters should be touched, not typed. The glow pill with its purple-heart and gold-star marks and popover editor makes Smart Note filtering a gesture — and the shared context menu keeps every pill honest.
+
 - **Type:** inputs
 - **Source:** `Smart Spaces Page Design.html` (extracted byte-true, never rewritten)
 - **CSS:** `block.css`
