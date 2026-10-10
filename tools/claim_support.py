@@ -255,6 +255,185 @@ def report():
             print(f"    Qualified via: {q['basis']} (scope: {q.get('scope', 'unbounded')[:40]})")
 
 
+# Scope dimensions (Naya 1's scope-limited truth):
+# Every claim and evidence contribution is assessed across these dimensions.
+# A mismatch in any dimension = scope limitation, not necessarily evidence failure.
+SCOPE_DIMENSIONS = [
+    "component",    # which nodes/parts (e.g., KNOW vs ALL_NINE)
+    "environment",  # staging vs production
+    "population",   # which cases/executions
+    "behavior",     # what behavior was tested
+    "time",         # when / ongoing vs specific run
+    "conditions",   # operating conditions
+    "outcome",      # what outcome was established
+]
+
+# Region verdicts for each scoped region of a claim
+REGION_VERDICTS = {
+    "SUPPORTED": "Evidence meets required standard in this region",
+    "REFUTED": "Valid evidence contradicts the claim in this region",
+    "CONFLICTED": "Material evidence disagrees, cannot yet reconcile",
+    "UNDETERMINED": "Evidence absent or insufficient",
+    "NOT_APPLICABLE": "Outside the claim's actual domain",
+}
+
+# Support relationship types
+SUPPORT_RELATIONSHIPS = {
+    "FULLY_SUPPORTS": "Evidence establishes the claim within its stated scope",
+    "PARTIALLY_SUPPORTS": "Evidence supports a narrower proposition, not the full claim",
+    "CONTRADICTS": "Evidence refutes the claim in the tested region",
+    "IRRELEVANT": "Evidence does not address the claim's scope",
+}
+
+
+def add_scope_region(claim_id, region_id, scope, verdict, evidence_id="", notes=""):
+    """
+    Add a scoped region assessment to a claim.
+    Divides the claim's scope into independently assessed regions.
+    """
+    if verdict not in REGION_VERDICTS:
+        print(f"ERROR: Unknown verdict '{verdict}'. Valid: {', '.join(REGION_VERDICTS.keys())}")
+        sys.exit(1)
+
+    reg = load_registry()
+    if claim_id not in reg["claims"]:
+        print(f"Claim {claim_id} not found.")
+        sys.exit(1)
+
+    claim = reg["claims"][claim_id]
+    if "scope_regions" not in claim:
+        claim["scope_regions"] = []
+
+    # scope is a dict of dimension -> value
+    region = {
+        "region_id": region_id,
+        "scope": scope,
+        "verdict": verdict,
+        "verdict_description": REGION_VERDICTS[verdict],
+        "evidence_id": evidence_id,
+        "notes": notes[:200],
+        "assessed_at": datetime.now(timezone.utc).isoformat(),
+    }
+    claim["scope_regions"].append(region)
+    save_registry(reg)
+
+    log_event({
+        "event_type": "SCOPE_REGION_ASSESSED",
+        "claim_id": claim_id,
+        "region_id": region_id,
+        "verdict": verdict,
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+    })
+
+    print(f"{claim_id}/{region_id}: {verdict} — {REGION_VERDICTS[verdict]}")
+    return region
+
+
+def assess_scope_match(claim_id, evidence_id, claim_scope, evidence_scope):
+    """
+    Compute scope mismatch between what was claimed and what was tested.
+    Returns the dimensions where evidence is narrower than the claim.
+    """
+    mismatches = []
+    for dim in SCOPE_DIMENSIONS:
+        claim_val = claim_scope.get(dim, "")
+        ev_val = evidence_scope.get(dim, "")
+        if claim_val and ev_val and claim_val != ev_val:
+            # Evidence is narrower if it's a subset/specific instance
+            mismatches.append({
+                "dimension": dim,
+                "claimed": claim_val,
+                "evidence_covers": ev_val,
+            })
+
+    reg = load_registry()
+    if claim_id in reg["claims"]:
+        claim = reg["claims"][claim_id]
+        if "scope_assessments" not in claim:
+            claim["scope_assessments"] = []
+        claim["scope_assessments"].append({
+            "evidence_id": evidence_id,
+            "mismatches": mismatches,
+            "assessed_at": datetime.now(timezone.utc).isoformat(),
+        })
+        save_registry(reg)
+
+    if mismatches:
+        print(f"\nScope mismatch for {claim_id} (evidence {evidence_id}):")
+        for m in mismatches:
+            print(f"  {m['dimension']}: claimed '{m['claimed']}' but evidence covers '{m['evidence_covers']}'")
+        print(f"  → PARTIALLY_SUPPORTS. Broader claim remains UNDETERMINED outside evidence scope.")
+    else:
+        print(f"\nNo scope mismatch: evidence covers the claimed scope.")
+    return mismatches
+
+
+def strongest_conclusion(claim_id):
+    """
+    Compute the strongest defensible conclusion from scoped regions.
+    Never claims more than the evidence establishes.
+    """
+    reg = load_registry()
+    if claim_id not in reg["claims"]:
+        print(f"Claim {claim_id} not found.")
+        sys.exit(1)
+
+    claim = reg["claims"][claim_id]
+    regions = claim.get("scope_regions", [])
+
+    if not regions:
+        print(f"{claim_id}: no scope regions assessed")
+        return None
+
+    supported = [r for r in regions if r["verdict"] == "SUPPORTED"]
+    refuted = [r for r in regions if r["verdict"] == "REFUTED"]
+    conflicted = [r for r in regions if r["verdict"] == "CONFLICTED"]
+    undetermined = [r for r in regions if r["verdict"] == "UNDETERMINED"]
+
+    conclusion = {
+        "claim_id": claim_id,
+        "supported_regions": [r["region_id"] for r in supported],
+        "refuted_regions": [r["region_id"] for r in refuted],
+        "conflicted_regions": [r["region_id"] for r in conflicted],
+        "undetermined_regions": [r["region_id"] for r in undetermined],
+        "computed_at": datetime.now(timezone.utc).isoformat(),
+    }
+
+    # The strongest defensible conclusion
+    if refuted:
+        conclusion["overall"] = "PARTIALLY_REFUTED"
+        conclusion["statement"] = (
+            f"Claim refuted in {len(refuted)} region(s). "
+            f"Supported in {len(supported)} region(s). "
+            f"Undetermined in {len(undetermined)} region(s)."
+        )
+    elif supported and not undetermined and not conflicted:
+        conclusion["overall"] = "FULLY_SUPPORTED_IN_SCOPE"
+        conclusion["statement"] = f"All {len(supported)} assessed regions supported."
+    elif supported:
+        conclusion["overall"] = "PARTIALLY_SUPPORTED"
+        conclusion["statement"] = (
+            f"Supported in {len(supported)} region(s): {', '.join(conclusion['supported_regions'])}. "
+            f"Broader claim beyond these regions remains UNDETERMINED — not established."
+        )
+    else:
+        conclusion["overall"] = "INSUFFICIENT_EVIDENCE"
+        conclusion["statement"] = "No regions currently supported by evidence."
+
+    print(f"\nStrongest defensible conclusion for {claim_id}:")
+    print(f"  {conclusion['overall']}")
+    print(f"  {conclusion['statement']}")
+    print(f"  Rule: never claim more than evidence establishes.")
+
+    log_event({
+        "event_type": "STRONGEST_CONCLUSION_COMPUTED",
+        "claim_id": claim_id,
+        "conclusion": conclusion,
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+    })
+    return conclusion
+
+
 def main():
     parser = argparse.ArgumentParser(description="Claim-level support-set evaluator")
     sub = parser.add_subparsers(dest="cmd", required=True)
@@ -282,6 +461,24 @@ def main():
 
     sub.add_parser("report", help="Claim support report")
 
+    sr = sub.add_parser("add-region", help="Add scoped region assessment")
+    sr.add_argument("--claim", required=True)
+    sr.add_argument("--region", required=True)
+    sr.add_argument("--scope", required=True, help="JSON dict of scope dimensions")
+    sr.add_argument("--verdict", required=True,
+                    choices=["SUPPORTED", "REFUTED", "CONFLICTED", "UNDETERMINED", "NOT_APPLICABLE"])
+    sr.add_argument("--evidence", default="")
+    sr.add_argument("--notes", default="")
+
+    sm = sub.add_parser("scope-match", help="Compute scope mismatch")
+    sm.add_argument("--claim", required=True)
+    sm.add_argument("--evidence", required=True)
+    sm.add_argument("--claim-scope", required=True, help="JSON dict")
+    sm.add_argument("--evidence-scope", required=True, help="JSON dict")
+
+    sc = sub.add_parser("strongest", help="Compute strongest defensible conclusion")
+    sc.add_argument("--claim", required=True)
+
     args = parser.parse_args()
     if args.cmd == "register-claim":
         register_claim(args.id, args.description, args.scope)
@@ -293,6 +490,15 @@ def main():
         revoke_evidence(args.evidence, args.reason)
     elif args.cmd == "report":
         report()
+    elif args.cmd == "add-region":
+        scope = json.loads(args.scope)
+        add_scope_region(args.claim, args.region, scope, args.verdict, args.evidence, args.notes)
+    elif args.cmd == "scope-match":
+        claim_scope = json.loads(args.claim_scope)
+        evidence_scope = json.loads(args.evidence_scope)
+        assess_scope_match(args.claim, args.evidence, claim_scope, evidence_scope)
+    elif args.cmd == "strongest":
+        strongest_conclusion(args.claim)
 
 
 if __name__ == "__main__":
