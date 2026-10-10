@@ -93,6 +93,27 @@ fails the gate.
    `sealed_convention.validate_manifest_file`.
 3. **Filename rule** — no answer-key-looking filenames under `tests/sealed/`.
 
+## Enforcement (Phase 3A activation, 2026-10-10)
+
+Beyond the repo gate above, three machine-enforced modules now ride CI:
+
+- **`family_registry.py`** — the machine-readable family registry both gates
+  enforce. Integrity lifecycle `sealed → suspect → compromised → retired →
+  replaced`, never backwards. Unknown families are NOT blind-eligible
+  (fail-closed).
+- **`test_blind_family_gate.py`** — (1) T11 retirement: any file outside
+  `tests/sealed/` naming `QUAL-20261010-CIQ-001` fails closed, except
+  explicitly allowlisted precedent documentation; (2) no inline expected
+  values for blind-eligible families: a file naming a blind family AND
+  carrying inline expected-answer material fails, pointing here.
+- **`custody.py` (+ `test_custody.py`)** — key custody = the math (Wisest
+  Choice Law, Shawn 2026-10-10). No keyholder list, no person, no role:
+  every access decision is purpose-bound (`BLIND_TRIAL_EVALUATION`,
+  `COMMITMENT_VERIFICATION`, `FAMILY_SEALING`, `AUDIT`), scope-bounded
+  (trial + expiry + justification), default-deny, deterministic and
+  replayable. The fixture author and the trial subject can never read sealed
+  keys; identity is recorded for audit but never sufficient for a grant.
+
 ## Integrity lifecycle
 
 `sealed → suspect → compromised → retired → replaced`. Never back to sealed.
