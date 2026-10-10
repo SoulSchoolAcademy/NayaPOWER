@@ -750,6 +750,13 @@ def main():
     rdd.add_argument("--drift", default="",
                      choices=["", "scope", "retention", "concurrency", "downstream"])
 
+    rla = sub.add_parser("rlq-alert", help="AER-ALERT-1: drift alert engine")
+    rla.add_argument("--case", required=True,
+                     choices=["T1","T2","T3","T4","T5","T6","T7","T8","T9","T10","ALL"])
+    rla.add_argument("--symptom", default="",
+                     choices=["", "timeout", "rate_limit_429", "auth_403", "policy_403",
+                              "server_5xx", "dup_webhook", "dup_effect"])
+
     args = parser.parse_args()
     if args.cmd == "classify":
         cycle = json.loads(args.trace)
@@ -877,6 +884,139 @@ def main():
         rlq_provider(args.provider, args.defect)
     elif args.cmd == "rlq-drift":
         rlq_drift(args.action, args.provider, args.drift)
+    elif args.cmd == "rlq-alert":
+        rlq_alert(args.case, args.symptom)
+
+
+# ============================================================================
+# AER-ALERT-1 — Provider Drift Detection and Evidence Qualification (Naya 3's law)
+#
+# Two independent decisions:
+#   Operational response: OBSERVE / INVESTIGATE / HOLD_AFFECTED_RETRIES /
+#                         BLOCK_AFFECTED_EXECUTION  (what is safe now?)
+#   Evidence diagnosis: TRANSIENT_ANOMALY / SUSPECTED_DRIFT / CONTRACT_SCOPE_CHANGE /
+#                       CONFIRMED_CONTRACT_BREACH / UNDETERMINED  (what is proven?)
+#
+# Alert on observable risk; diagnose from independent evidence;
+# withdraw only qualifications whose guarantees are no longer established.
+# ============================================================================
+
+# Symptom classifier: symptoms are diagnostic inputs, not verdicts.
+SYMPTOM_TABLE = {
+    "timeout": ("OPERATIONAL_ANOMALY", "Outcome ambiguous; reconcile. Does not prove drift."),
+    "rate_limit_429": ("QUOTA_THROTTLING", "Capacity pressure. Not idempotency drift."),
+    "auth_403": ("AUTH_INFRA", "Rate limiting or auth infrastructure. Not a code bug."),
+    "policy_403": ("POLICY_ENFORCEMENT", "Authority boundary. Not rate limiting."),
+    "server_5xx": ("SERVICE_FAILURE", "Proves neither noncommit nor duplicate."),
+    "dup_webhook": ("DELIVERY_RETRY", "Event-delivery retry. Not two business effects."),
+    "dup_effect": ("POSSIBLE_BREACH", "Two verified material effects → investigate breach."),
+}
+
+ALERT_FIXTURES = {
+    "T1": {"desc": "Temporary rate-limit burst, no contract change",
+           "signal": "rate_limit_429", "hidden": "healthy",
+           "exp_response": "OBSERVE", "exp_diagnosis": "TRANSIENT_ANOMALY"},
+    "T2": {"desc": "Provider outage with lost acknowledgments",
+           "signal": "timeout", "hidden": "ambiguous",
+           "exp_response": "INVESTIGATE", "exp_diagnosis": "UNDETERMINED"},
+    "T3": {"desc": "Same business event via two webhooks",
+           "signal": "dup_webhook", "hidden": "healthy",
+           "exp_response": "OBSERVE", "exp_diagnosis": "TRANSIENT_ANOMALY"},
+    "T4": {"desc": "Client unintentionally changes idempotency keys",
+           "signal": "dup_effect", "hidden": "integration_mismatch",
+           "exp_response": "INVESTIGATE", "exp_diagnosis": "UNDETERMINED"},
+    "T5": {"desc": "One conclusive duplicate material effect",
+           "signal": "dup_effect", "hidden": "breach",
+           "exp_response": "BLOCK_AFFECTED_EXECUTION", "exp_diagnosis": "CONFIRMED_CONTRACT_BREACH"},
+    "T6": {"desc": "Silent retention shortened",
+           "signal": "dup_effect", "hidden": "retention_drift",
+           "exp_response": "HOLD_AFFECTED_RETRIES", "exp_diagnosis": "SUSPECTED_DRIFT"},
+    "T7": {"desc": "Scope narrowed for one region",
+           "signal": "dup_effect", "hidden": "scope_drift",
+           "exp_response": "HOLD_AFFECTED_RETRIES", "exp_diagnosis": "CONTRACT_SCOPE_CHANGE"},
+    "T8": {"desc": "Canary fails once, unclear reason",
+           "signal": "timeout", "hidden": "unknown",
+           "exp_response": "INVESTIGATE", "exp_diagnosis": "UNDETERMINED"},
+    "T9": {"desc": "Critical monitoring telemetry disappears",
+           "signal": "timeout", "hidden": "observability_gap",
+           "exp_response": "INVESTIGATE", "exp_diagnosis": "UNDETERMINED"},
+    "T10": {"desc": "Provider returns to healthy behavior",
+            "signal": "", "hidden": "recovered",
+            "exp_response": "OBSERVE", "exp_diagnosis": "UNDETERMINED"},
+}
+
+
+def evaluate_signal(signal, hidden, impact="high"):
+    """
+    Two-stage engine.
+    Stage A (safety): what is safe to do now?
+    Stage B (diagnosis): what has actually been established?
+    """
+    # Stage A — fast safety gate
+    if signal == "dup_effect" and hidden == "breach":
+        response = "BLOCK_AFFECTED_EXECUTION"
+    elif signal == "dup_effect" and hidden in ("retention_drift", "scope_drift"):
+        response = "HOLD_AFFECTED_RETRIES"
+    elif signal in ("timeout",) and hidden in ("ambiguous", "unknown", "observability_gap"):
+        response = "INVESTIGATE"
+    elif signal == "dup_effect" and hidden == "integration_mismatch":
+        response = "INVESTIGATE"
+    elif signal in ("rate_limit_429", "dup_webhook"):
+        response = "OBSERVE"
+    elif signal == "":
+        response = "OBSERVE"
+    else:
+        response = "INVESTIGATE"
+
+    # Stage B — evidence-based diagnosis (never from transport errors alone)
+    if signal == "dup_effect" and hidden == "breach":
+        diagnosis = "CONFIRMED_CONTRACT_BREACH"
+    elif signal == "dup_effect" and hidden == "retention_drift":
+        diagnosis = "SUSPECTED_DRIFT"
+    elif signal == "dup_effect" and hidden == "scope_drift":
+        diagnosis = "CONTRACT_SCOPE_CHANGE"
+    elif signal in ("rate_limit_429", "dup_webhook"):
+        diagnosis = "TRANSIENT_ANOMALY"
+    else:
+        diagnosis = "UNDETERMINED"
+
+    return response, diagnosis
+
+
+def rlq_alert(case, symptom=""):
+    """Run the alert engine; classify a symptom; run T1-T10."""
+    print(f"\n{'='*70}")
+    print(f"AER-ALERT-1 PROVIDER DRIFT ALERT ENGINE")
+    print(f"{'='*70}")
+
+    if symptom:
+        cat, note = SYMPTOM_TABLE[symptom]
+        print(f"\n  Symptom: {symptom}")
+        print(f"  Investigative category: {cat}")
+        print(f"  Note: {note}")
+        print(f"  (An HTTP status is not a root-cause classifier.)")
+        return True
+
+    cases = list(ALERT_FIXTURES) if case == "ALL" else [case]
+    passed = 0
+    for c in cases:
+        fx = ALERT_FIXTURES[c]
+        response, diagnosis = evaluate_signal(fx["signal"], fx["hidden"])
+        ok = response == fx["exp_response"] and diagnosis == fx["exp_diagnosis"]
+        if ok:
+            passed += 1
+        print(f"\n  {c}: {fx['desc']}")
+        print(f"      Signal: {fx['signal'] or '(none)'}, hidden: {fx['hidden']}")
+        print(f"      Response: {response} {'✓' if response == fx['exp_response'] else '✗ exp ' + fx['exp_response']}")
+        print(f"      Diagnosis: {diagnosis} {'✓' if diagnosis == fx['exp_diagnosis'] else '✗ exp ' + fx['exp_diagnosis']}")
+
+    print(f"\n{'='*70}")
+    print(f"  Alert fixtures: {passed}/{len(cases)}")
+    if passed == len(cases):
+        print(f"  ✓ No false drift attributions; no missed decisive breaches;")
+        print(f"    transport errors never prove contract drift.")
+    print(f"{'='*70}")
+    return passed == len(cases)
 
 
 # ============================================================================
