@@ -1,0 +1,213 @@
+name: Scorecard Gate
+
+# Part 2 of the Merge Authority Fix (Shawn, 2026-10-10 — standing law:
+# "Shawn merges nothing. The gate is the protocol, not your finger.").
+#
+# This workflow runs on every PR targeting main and mechanically verifies the
+# scorecard receipt BEFORE merge is allowed. It is the Scorecard Law as code:
+# independent cross-seat scoring, exact-tip pinning, and a D57 consensus
+# statement — checked by the machine, not assumed by a human clicking a button.
+#
+# SIDE-EFFECT-FREE: this job only reads the PR event payload and reports a
+# check. It makes no API calls, writes nothing, and needs no token permissions.
+# The job name `scorecard-gate` is the required-check name for branch
+# protection (Part 1 of the plan).
+#
+# RECEIPT FORMAT (must appear in the PR body, exactly):
+#
+#   ## SCORECARD RECEIPT
+#   ```scorecard
+#   {
+#     "version": 1,
+#     "pr_author_seat": "Naya 4",
+#     "scores": [
+#       {"seat": "Naya 2", "score": 9.4, "head_sha": "<40-char head SHA>"},
+#       {"seat": "Naya 3", "score": 9.6, "head_sha": "<40-char head SHA>"}
+#     ],
+#     "consensus": "compose",
+#     "consensus_statement": "Merged both approaches into one rewrite; ...",
+#     "board_receipt": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-..."
+#   }
+#   ```
+#
+# Rules enforced:
+#   R1. Receipt present and parseable.
+#   R2. At least two independent seat scores, each 9.0–10.0.
+#   R3. No self-scoring: no scoring seat may equal pr_author_seat; scoring
+#       seats must be distinct from each other.
+#   R4. Every score pinned to the EXACT current head SHA (SN-0493: a decision
+#       expires when the tip moves — a score on an old SHA is void).
+#   R5. Consensus in {pick, merge, compose} (D57 No-Ego Merge) with a
+#       non-empty statement explaining the choice.
+#   R6. Board receipt link present (the public evidence trail).
+#
+# KNOWN LIMITATION (closed by Part 3 of the plan): seat names in the receipt
+# are self-declared strings. Full identity binding — "this review really came
+# from that seat" — arrives with the GitHub App identity, when reviews are
+# submitted through the App and count toward branch protection's required
+# reviews. Until then this gate verifies the receipt's internal consistency,
+# not its authorship.
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened, edited]
+
+permissions: {}
+
+jobs:
+  scorecard-gate:
+    name: scorecard-gate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Verify scorecard receipt
+        env:
+          EVENT_PATH: ${{ github.event_path }}
+        run: |
+          python - <<'PYEOF'
+          import json, os, re, sys
+
+          CONSENSUS_VALUES = {"pick", "merge", "compose"}
+          MIN_SCORE = 9.0
+          MAX_SCORE = 10.0
+          REPO_MARKER = "github.com/SoulSchoolAcademy/NayaPOWER"
+
+          failures = []
+          notes = []
+
+          def fail(rule, msg):
+              failures.append(f"{rule}: {msg}")
+
+          def norm_seat(s):
+              return re.sub(r"\s+", "", str(s)).lower()
+
+          # ---- load event payload (no API calls; side-effect-free) ----
+          with open(os.environ["EVENT_PATH"], encoding="utf-8") as f:
+              event = json.load(f)
+          pr = event.get("pull_request") or {}
+          body = pr.get("body") or ""
+          head_sha = (pr.get("head") or {}).get("sha") or ""
+          pr_number = pr.get("number")
+
+          notes.append(f"PR #{pr_number}, head {head_sha[:12] if head_sha else '?'}")
+
+          # ---- R1: receipt present and parseable ----
+          blocks = re.findall(r"```scorecard\s*\n(.*?)```", body, re.DOTALL)
+          if not blocks:
+              fail("R1", "no ```scorecard fenced JSON block found in the PR body "
+                         "(see the SCORECARD RECEIPT format in scorecard-gate.yml)")
+              receipt = None
+          else:
+              if len(blocks) > 1:
+                  notes.append(f"R1: {len(blocks)} scorecard blocks found; using the first")
+              try:
+                  receipt = json.loads(blocks[0])
+              except json.JSONDecodeError as e:
+                  fail("R1", f"scorecard block is not valid JSON: {e}")
+                  receipt = None
+
+          if receipt is not None:
+              if not isinstance(receipt, dict):
+                  fail("R1", "scorecard receipt must be a JSON object")
+                  receipt = None
+
+          if receipt is not None:
+              # ---- R2: >=2 independent scores, each 9.0-10.0 ----
+              scores = receipt.get("scores")
+              if not isinstance(scores, list) or len(scores) < 2:
+                  fail("R2", f"need at least 2 independent seat scores, "
+                              f"found {len(scores) if isinstance(scores, list) else 'none'}")
+                  scores = []
+              seats = []
+              for i, s in enumerate(scores):
+                  tag = f"R2[score {i}]"
+                  if not isinstance(s, dict):
+                      fail(tag, "score entry must be an object")
+                      continue
+                  seat = s.get("seat")
+                  score = s.get("score")
+                  if not seat or not isinstance(seat, str):
+                      fail(tag, "missing seat name")
+                  else:
+                      seats.append(norm_seat(seat))
+                  if not isinstance(score, (int, float)) or isinstance(score, bool):
+                      fail(tag, f"score must be a number, got {score!r}")
+                  elif not (MIN_SCORE <= score <= MAX_SCORE):
+                      fail(tag, f"score {score} outside the 9.0-10.0 bar")
+
+              # ---- R3: no self-scoring, distinct scorers ----
+              author_seat = receipt.get("pr_author_seat")
+              if not author_seat or not isinstance(author_seat, str):
+                  fail("R3", "missing pr_author_seat")
+                  author_norm = None
+              else:
+                  author_norm = norm_seat(author_seat)
+                  for s in scores:
+                      seat = s.get("seat")
+                      if isinstance(seat, str) and norm_seat(seat) == author_norm:
+                          fail("R3", f"self-scoring: '{seat}' scored its own PR")
+              if len(set(seats)) != len(seats):
+                  fail("R3", "scoring seats must be distinct (two scores from "
+                              "one seat count as one independent score)")
+
+              # ---- R4: exact head-SHA pinning (SN-0493) ----
+              for i, s in enumerate(scores):
+                  if not isinstance(s, dict):
+                      continue
+                  pinned = s.get("head_sha")
+                  if not isinstance(pinned, str) or len(pinned) != 40:
+                      fail("R4", f"score {i}: head_sha must be the full 40-char "
+                                 f"head SHA, got {pinned!r}")
+                  elif pinned.lower() != head_sha.lower():
+                      fail("R4", f"score {i}: pinned to {pinned[:12]}, but the "
+                                 f"PR head is now {head_sha[:12]} — the score's "
+                                 f"tip moved, re-score on the current head")
+
+              # ---- R5: D57 consensus ----
+              consensus = receipt.get("consensus")
+              statement = receipt.get("consensus_statement")
+              if consensus not in CONSENSUS_VALUES:
+                  fail("R5", f"consensus must be one of {sorted(CONSENSUS_VALUES)} "
+                             f"(D57 No-Ego Merge: pick / merge / compose), "
+                             f"got {consensus!r}")
+              if not statement or not isinstance(statement, str) or not statement.strip():
+                  fail("R5", "consensus_statement must explain the consensus choice")
+
+              # ---- R6: board receipt ----
+              board = receipt.get("board_receipt")
+              if not board or not isinstance(board, str) or REPO_MARKER not in board:
+                  fail("R6", "board_receipt must link the public evidence trail "
+                              f"(a {REPO_MARKER} URL)")
+
+          # ---- report ----
+          print("=" * 60)
+          print("SCORECARD GATE")
+          for n in notes:
+              print(f"  note: {n}")
+          if failures:
+              print("RESULT: FAIL — merge is blocked")
+              for f_ in failures:
+                  print(f"  FAIL {f_}")
+          else:
+                  print("RESULT: PASS — scorecard receipt is valid")
+          print("=" * 60)
+
+          summary_path = os.environ.get("GITHUB_STEP_SUMMARY")
+          if summary_path:
+              with open(summary_path, "a", encoding="utf-8") as fh:
+                  fh.write("## Scorecard Gate\n\n")
+                  for n in notes:
+                      fh.write(f"- {n}\n")
+                  if failures:
+                      fh.write("\n**RESULT: FAIL — merge blocked**\n\n")
+                      for f_ in failures:
+                          fh.write(f"- ❌ {f_}\n")
+                  else:
+                      fh.write("\n**RESULT: PASS** — receipt valid, protocol satisfied.\n")
+
+          sys.exit(1 if failures else 0)
+          PYEOF
