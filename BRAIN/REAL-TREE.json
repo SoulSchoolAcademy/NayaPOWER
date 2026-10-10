@@ -1,17 +1,17 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-10",
-  "receipt_basis_commit": "fe25661c53977da3d78acd7242fafbaca1bd3ea8",
-  "inventory_file_count": 1266,
+  "receipt_basis_commit": "801e3922e236665adb5d00c8b849f179fc968dde",
+  "inventory_file_count": 1271,
   "domain_counts": {
     "00-ACTIVATION": 3,
     "00-ARCHITECTURE": 5,
     "00-SPEC": 15,
-    "01-GOVERNANCE": 49,
+    "01-GOVERNANCE": 53,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
-    "05-MEMORY": 677,
+    "05-MEMORY": 678,
     "06-PROOF": 13,
     "07-LEARNING": 8,
     "08-SUCCESSION": 2,
@@ -236,6 +236,26 @@
       "size": 2007
     },
     {
+      "path": "BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2-ENCODING-AUDIT.md",
+      "blob_sha": "693eabef654ad057fdfb3db8d867904fc6df8a9e",
+      "size": 11367
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2.ai.md",
+      "blob_sha": "0f81fc721fc143928d94212124886c73906fe196",
+      "size": 14786
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2.human.md",
+      "blob_sha": "fbe045ba392e5e3af32821f151acd2c4e6868f21",
+      "size": 9007
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0008-operating-code-v2.machine.json",
+      "blob_sha": "1088c9ae24a78d137cc1158300cda7ef0271ef86",
+      "size": 5146
+    },
+    {
       "path": "BRAIN/01-GOVERNANCE/0013-PARALLEL-EXECUTION-V1.ai.md",
       "blob_sha": "bd192971f09c8b25cadef5abb9620a0e1cd6bbb9",
       "size": 3430
@@ -357,13 +377,13 @@
     },
     {
       "path": "BRAIN/01-GOVERNANCE/OPERATING-LAW.json",
-      "blob_sha": "eb1a6d85021251ee091e7759090a1ea0db2489e6",
-      "size": 28653
+      "blob_sha": "2a12fe6ff2680fd424e66aefa206e1ad29144e4a",
+      "size": 32329
     },
     {
       "path": "BRAIN/01-GOVERNANCE/OPERATING-LAW.md",
-      "blob_sha": "17575d56498a793aba19eff9267538c30c183cb4",
-      "size": 29862
+      "blob_sha": "f738cd89a9775f6c987c43f03bb2a9e2fe4265f7",
+      "size": 32785
     },
     {
       "path": "BRAIN/01-GOVERNANCE/README.md",
@@ -3969,6 +3989,11 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/VISION/SELF-OPTIMIZATION/SN-0742/IB-SMART-NOTE-20261009-sn0742-self-optimizing-system.md",
       "blob_sha": "151b620a7c5645526a7e2b22f23b33e6af6e36ae",
       "size": 6817
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/10/SYSTEM-INTELLIGENCE/VERIFICATION/BATTERY-ISOLATION/SN-0796/IB-SMART-NOTE-20261010-sn0796-phantom-pytest-failure-tmpfs-concurrency.md",
+      "blob_sha": "f2553ebdef9e80a2946e2f7f8c314084bfe280cc",
+      "size": 10932
     },
     {
       "path": "BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/ACTIVATION-NAYA-INTELLIGENCE.md",

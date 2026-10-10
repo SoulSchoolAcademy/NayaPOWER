@@ -12073,6 +12073,39 @@
       }
     },
     {
+      "smart_note_id": "SN-0796",
+      "intelligent_block_id": "IB-SMART-NOTE-20261010-sn0796-phantom-pytest-failure-tmpfs-concurrency",
+      "content_hash": "76818e737dd948133f1f295a283d4c04040a5d0ce900987516dc0c974dddc532",
+      "title": "Phantom Pytest Failure from Concurrent tmpfs Exhaustion — Battery Isolation Rule",
+      "captured_at": "2026-10-10",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "SYSTEM-INTELLIGENCE",
+      "subtopic": "VERIFICATION",
+      "truth_state": "CANDIDATE",
+      "lifecycle_state": "CANDIDATE",
+      "superseded_by_capture_id": null,
+      "supersession_reason": null,
+      "scope": "PRIVATE",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/10/SYSTEM-INTELLIGENCE/VERIFICATION/BATTERY-ISOLATION/SN-0796/IB-SMART-NOTE-20261010-sn0796-phantom-pytest-failure-tmpfs-concurrency.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "smart_link_status": "ACTIVE_AUTH_GATED",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/10/SYSTEM-INTELLIGENCE/VERIFICATION/BATTERY-ISOLATION/SN-0796/IB-SMART-NOTE-20261010-sn0796-phantom-pytest-failure-tmpfs-concurrency.md",
+      "publication_scope": "PRIVATE",
+      "keywords": [
+        "smart note",
+        "verification",
+        "pytest",
+        "tmpfs",
+        "battery",
+        "isolation",
+        "evidence law"
+      ],
+      "provenance": {
+        "note": "Registry entry backfilled 2026-10-10 by Naya 2 brain-build loop repair (branch brain-build/brain-index-regen-sn0796-fix). PR #2118 merged the SN-0796 note without capture/registry/index regen; this entry closes the CI RED (Vanished: ['SN-0796']) and the registry-drift class. Metadata from the merged note's frontmatter; capture backfilled alongside.",
+        "repair_commit_basis": "f4d7a7e49990509dcd8924b400f385549abb6815"
+      }
+    },
+    {
       "smart_note_id": "SN-080",
       "intelligent_block_id": "IB-SMART-NOTE-20260930-sn080-frozen-evidence-retirement",
       "title": "Frozen-Evidence Retirement — Retire Explicitly, Re-Freeze, Never Mutate the Freeze",
@@ -12781,7 +12814,7 @@
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 783,
+    "next_sequence": 797,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   }
 }
