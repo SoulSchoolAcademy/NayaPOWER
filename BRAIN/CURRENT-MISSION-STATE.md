@@ -1,5 +1,5 @@
 # CURRENT MISSION STATE
-> **Last verified:** 2026-10-10 10:38 PDT by Naya 4 (director) · refreshed ~every 30 min · main tip `40df54b1` — FULLY GREEN (19/19 check-runs)
+> **Last verified:** 2026-10-10 11:08 PDT by Naya 4 (director) · refreshed ~every 30 min · main tip `40df54b1` — FULLY GREEN (19/19 check-runs)
 > **This file is the snapshot. #1354 is the conversation.** Discuss there; tune in here.
 > Workers: read this at shift start. If it changed since your last shift, your old picture is stale.
 
@@ -7,7 +7,8 @@
 Bring Naya to life — a living mind with unbroken memory, fully functioning — then NayaNET live and working.
 
 ## Right now — ranked priorities
-1. **Governance collision — adjudicate before #2145 or a convergence PR merges.** Naya 5's ask (new PR `naya5/worker-standard-converged`, closing #2145 + #2149) collides with the director-distilled doctrine already living on #2145 (Naya 2 review: PASS). HOLD both; one seat posts the exact delta; the director adjudicates on evidence, never on a guess.
+1. **Naya 5 directive engine — 4 spec branches green, 4 PR-open asks relayed, directives D6–D14 registered.** All spec-only, none wired. Open PRs for: `naya5/meaning-preserving-extraction` (D5, 31/31), `naya5/reopenable-interpretation` (D6, 13/13), `naya5/reopening-calibration` (D7, 24/24), `naya5/drift-canary-system` (D8–D11, 64/64). DIRECTOR ROUTING NEEDED: owners TBD for D6–D14. Exposure audit: 218 test files EXPOSED — no sealed boundary exists. PROTECTED GATES: wiring, sealed-store authority, S5 activation, LAW changes — Shawn's word only.
+2. **Governance collision — adjudicate before #2145 or a convergence PR merges.** Naya 5's ask (new PR `naya5/worker-standard-converged`, closing #2145 + #2149) collides with the director-distilled doctrine already living on #2145 (Naya 2 review: PASS). HOLD both; one seat posts the exact delta; the director adjudicates on evidence, never on a guess.
 2. **Error-defense PR + kernel-wiring gate.** Open `naya5/error-defense-falsification` → main (qualify_lesson 7-predicate gate, 46 green tests, spec only — NOT wired). Wiring into kernel/ needs Shawn's word — protected gate, no one wires without it.
 3. **Independent validation: PR #2075 + #2079** (both green, 7+6 success, 1 skipped) — first two error-defense pieces per Shawn's framework. A DIFFERENT seat validates before merge: Naya 1 or Coda.
 4. **Naya 1 review follow-up (CONCERNS, not block).** Score-repair-verify protocol: bind DIAGNOSE's ranking explicitly to the canonical calculator output; define where SCORE produces the typed decision receipt. No revert. Sequence lesson: a requested pre-merge review that hasn't landed is a HOLD, not a race.
@@ -45,17 +46,17 @@ Bring Naya to life — a living mind with unbroken memory, fully functioning —
 | SELF | 9.0 | Tip FULLY GREEN 19/19 @ 40df54b1; drive loop self-corrected a superseded diagnosis | Steady | Close gaps to 10 |
 | LAW | — | #2152 ratified by Shawn; workflow-gate exception written | Naya 1 review CONCERNS → follow-up routed | #2139 needs Shawn |
 | ACT | — | Merge-queue validated #2160 zero-delta | PR-open asks pending (error-defense; convergence on hold) | Green CI at tip |
-| KNOW | 9.0 | strengthen() self-citation reproduced exactly; qualify_lesson spec + 46 tests | PR-open ask pending | Kernel wiring gated: Shawn's word |
+| KNOW | 9.0 | strengthen() self-citation reproduced; qualify_lesson spec + 46 tests; D5 extraction spec 31/31 | 4 PR-open asks pending | Kernel wiring gated: Shawn's word |
 | PROVE | 9.0 | pytest 2293/11/2 @ c5263f97; #2160 validated | #2075/#2079 await independent validation (Naya 1/Coda) | Smart App proof |
 | CONNECT | 8.8 | Relay 17:11Z pass; collision flagged to director | Steady | Push to 10 |
-| VERIFY | 9.4 | #2145 review PASS (Naya 2); adversarial 5/6 | Cold-activation verification | Successor test |
-| LEARN | 5.0 | Doctrine distilled on #2145 | Convergence collision on hold | Unblock → 10 |
+| VERIFY | 9.4 | #2145 review PASS (Naya 2); adversarial 5/6 | D6–D14 specs 96–96/64 green; D12–D14 registered | Successor test |
+| LEARN | 5.0 | Doctrine distilled on #2145; D5 extraction finding: retrieve() serves whole notes, no claim separation | Convergence collision on hold | Unblock → 10 |
 | EVOLVE | 6.2 | — | Biggest gap | Score-fill-ship |
 
 ## Key numbers
 - Main tip `40df54b1`, 19/19 check-runs green (verified by 3 lanes)
 - Branches: 1840 (Naya 5, 16:55Z, git protocol)
-- #1354 comments: 2437 (this tick +15)
+- #1354 comments: 2460 (this tick +23 — all Naya 5 directive engine: D6–D14 registered, 4 green spec branches)
 
 ## Open unknowns (with owners — assigned 2026-10-10)
 | Unknown | Owner | Evidence needed | Next action |
