@@ -571,6 +571,54 @@ def main():
     tls.add_argument("--trace", required=True)
     tls.add_argument("--symptom", required=True)
 
+    io = sub.add_parser("incident-open", help="Open causal uncertainty incident")
+    io.add_argument("--incident", required=True)
+    io.add_argument("--workflow", required=True)
+    io.add_argument("--symptom", required=True)
+
+    iob = sub.add_parser("incident-observe", help="Record scoped observability")
+    iob.add_argument("--incident", required=True)
+    iob.add_argument("--source", required=True)
+    iob.add_argument("--interval", required=True)
+    iob.add_argument("--state", required=True,
+                     choices=["COVERED_COMPLETE", "COVERED_PARTIAL", "UNOBSERVED",
+                              "CONFLICTED_COVERAGE", "NOT_APPLICABLE"])
+    iob.add_argument("--gap", default="")
+    iob.add_argument("--coverage-evidence", default="")
+
+    ip = sub.add_parser("incident-proposition", help="Record evidence-state proposition")
+    ip.add_argument("--incident", required=True)
+    ip.add_argument("--id", required=True)
+    ip.add_argument("--status", required=True,
+                    choices=["SUPPORTED", "REFUTED", "CONFLICTED", "UNDETERMINED",
+                             "NOT_APPLICABLE"])
+    ip.add_argument("--support-refs", default="")
+    ip.add_argument("--contrary-refs", default="")
+    ip.add_argument("--scope", default="")
+
+    ib = sub.add_parser("incident-blocker", help="Record blocker")
+    ib.add_argument("--incident", required=True)
+    ib.add_argument("--id", required=True)
+    ib.add_argument("--condition", required=True)
+    ib.add_argument("--status", required=True,
+                    choices=["SUPPORTED", "REFUTED", "CONFLICTED", "UNDETERMINED"])
+    ib.add_argument("--controller", default="UNRESOLVED",
+                    choices=["ENVIRONMENT", "SCHEDULER", "WORKER", "LAW", "HUMAN", "UNRESOLVED"])
+    ib.add_argument("--evidence-refs", default="")
+    ib.add_argument("--logic", default="OR", choices=["AND", "OR"],
+                    help="How this blocker combines with others")
+
+    ih = sub.add_parser("incident-hypothesis", help="Record competing causal hypothesis")
+    ih.add_argument("--incident", required=True)
+    ih.add_argument("--id", required=True)
+    ih.add_argument("--status", default="UNDETERMINED",
+                    choices=["SUPPORTED", "PLAUSIBLE", "UNDETERMINED", "REFUTED"])
+    ih.add_argument("--requires", default="", help="Comma-separated proposition IDs")
+    ih.add_argument("--next-test", default="", help="Most discriminating next evidence")
+
+    ia = sub.add_parser("incident-assess", help="Recompute incident assessment")
+    ia.add_argument("--incident", required=True)
+
     args = parser.parse_args()
     if args.cmd == "classify":
         cycle = json.loads(args.trace)
@@ -622,6 +670,203 @@ def main():
         trace_verdict(args.trace, args.symptom)
     elif args.cmd == "trace-label-swap":
         trace_label_swap_test(args.trace, args.symptom)
+    elif args.cmd == "incident-open":
+        incident_open(args.incident, args.workflow, args.symptom)
+    elif args.cmd == "incident-observe":
+        incident_observe(args.incident, args.source, args.interval, args.state,
+                         args.gap, args.coverage_evidence)
+    elif args.cmd == "incident-proposition":
+        incident_proposition(args.incident, args.id, args.status,
+                             args.support_refs, args.contrary_refs, args.scope)
+    elif args.cmd == "incident-blocker":
+        incident_blocker(args.incident, args.id, args.condition, args.status,
+                         args.controller, args.evidence_refs, args.logic)
+    elif args.cmd == "incident-hypothesis":
+        incident_hypothesis(args.incident, args.id, args.status,
+                            args.requires, args.next_test)
+    elif args.cmd == "incident-assess":
+        incident_assess(args.incident)
+
+
+# ============================================================================
+# Causal Uncertainty Without False Blame (Naya 1's protocol)
+#
+# Four independent dimensions, never collapsed:
+#   observability / evidence state / blocker state / causal state
+#
+# Governing truths:
+#   Not observed ≠ did not happen. Conflicting evidence ≠ tie.
+#   Confirmed blocker ≠ sole cause. Unresolved hypothesis ≠ false hypothesis.
+#   Reported fault ≠ verified responsibility.
+# ============================================================================
+
+INCIDENT_REGISTRY = os.path.expanduser(
+    "~/workspace/goals/nayapower-10-10-completion-drive/hidden_files/incident-registry.json")
+
+
+def _incident_load():
+    try:
+        with open(INCIDENT_REGISTRY) as f:
+            return json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return {"incidents": {}}
+
+
+def _incident_save(reg):
+    os.makedirs(os.path.dirname(INCIDENT_REGISTRY), exist_ok=True)
+    with open(INCIDENT_REGISTRY, "w") as f:
+        json.dump(reg, f, indent=2)
+
+
+def _incident_get(incident_id):
+    reg = _incident_load()
+    inc = reg["incidents"].get(incident_id)
+    if not inc:
+        print(f"Unknown incident {incident_id}")
+        sys.exit(1)
+    return reg, inc
+
+
+def incident_open(incident_id, workflow_id, symptom):
+    reg = _incident_load()
+    reg["incidents"][incident_id] = {
+        "workflow_id": workflow_id, "symptom": symptom,
+        "observability": [], "propositions": {}, "blockers": {}, "hypotheses": {},
+        "revision": "v1",
+        "opened_at": datetime.now(timezone.utc).isoformat(),
+    }
+    _incident_save(reg)
+    print(f"Incident {incident_id} opened: {symptom}")
+    print(f"  Four dimensions tracked independently; no single failure_reason field.")
+    return True
+
+
+def incident_observe(incident_id, source, interval, state, gap="", coverage_evidence=""):
+    """Record scoped observability. Absence in a gap proves nothing."""
+    reg, inc = _incident_get(incident_id)
+    inc["observability"].append({
+        "source": source, "interval": interval, "state": state,
+        "gap": gap, "coverage_evidence": coverage_evidence,
+    })
+    _incident_save(reg)
+    print(f"  Observability: {source} [{interval}] = {state}" + (f" (gap: {gap})" if gap else ""))
+    if state in ("COVERED_PARTIAL", "UNOBSERVED") :
+        print(f"    → absence of events in uncovered scope is inconclusive, not evidence of absence")
+    return True
+
+
+def incident_proposition(incident_id, prop_id, status, support_refs="", contrary_refs="", scope=""):
+    """Record a proposition's evidence state. CONFLICTED is preserved, not averaged."""
+    reg, inc = _incident_get(incident_id)
+    inc["propositions"][prop_id] = {
+        "status": status,
+        "support_refs": [r for r in support_refs.split(",") if r],
+        "contrary_refs": [r for r in contrary_refs.split(",") if r],
+        "scope": scope,
+    }
+    _incident_save(reg)
+    print(f"  Proposition {prop_id} = {status} (scope: {scope or 'global'})")
+    if status == "CONFLICTED":
+        print(f"    → preserved pending resolution; not averaged, not auto-resolved by recency")
+    return True
+
+
+def incident_blocker(incident_id, blocker_id, condition, status, controller="UNRESOLVED",
+                     evidence_refs="", logic="OR"):
+    """Record a blocker. Multiple blockers combine; repairing one may not unblock."""
+    reg, inc = _incident_get(incident_id)
+    inc["blockers"][blocker_id] = {
+        "condition": condition, "status": status, "controller": controller,
+        "evidence_refs": [r for r in evidence_refs.split(",") if r],
+        "logic": logic,
+    }
+    _incident_save(reg)
+    print(f"  Blocker {blocker_id}: {condition} = {status} [{logic}]")
+    return True
+
+
+def incident_hypothesis(incident_id, hyp_id, status="UNDETERMINED", requires="", next_test=""):
+    """Record a competing causal hypothesis. Unresolved ≠ false."""
+    reg, inc = _incident_get(incident_id)
+    inc["hypotheses"][hyp_id] = {
+        "status": status,
+        "requires": [r for r in requires.split(",") if r],
+        "next_test": next_test,
+    }
+    _incident_save(reg)
+    print(f"  Hypothesis {hyp_id} = {status}")
+    if next_test:
+        print(f"    Next discriminating test: {next_test}")
+    return True
+
+
+def incident_assess(incident_id):
+    """
+    Recompute the incident assessment across all four dimensions.
+    Never trades partial truths for one confident unsupported explanation.
+    """
+    reg, inc = _incident_get(incident_id)
+    print(f"\n{'='*70}")
+    print(f"INCIDENT ASSESSMENT: {incident_id} (rev {inc['revision']})")
+    print(f"Symptom: {inc['symptom']}")
+    print(f"{'='*70}")
+
+    # Dimension 1: observability
+    print(f"\n  [1] OBSERVABILITY")
+    gaps = [o for o in inc["observability"] if o["state"] in ("COVERED_PARTIAL", "UNOBSERVED", "CONFLICTED_COVERAGE")]
+    for o in inc["observability"]:
+        print(f"      {o['source']} [{o['interval']}]: {o['state']}")
+    if gaps:
+        print(f"      → {len(gaps)} coverage gap(s): absence here is inconclusive")
+
+    # Dimension 2: evidence state
+    print(f"\n  [2] EVIDENCE STATE")
+    for pid, p in inc["propositions"].items():
+        print(f"      {pid}: {p['status']}")
+
+    # Dimension 3: blocker state (with AND/OR logic)
+    print(f"\n  [3] BLOCKER STATE")
+    active = [b for b, d in inc["blockers"].items() if d["status"] == "SUPPORTED"]
+    for bid, b in inc["blockers"].items():
+        print(f"      {bid}: {b['condition']} = {b['status']} [{b['logic']}]")
+    # Composite: OR blockers → any one blocks; AND blockers → all must hold
+    or_blockers = [b for b in active if inc["blockers"][b]["logic"] == "OR"]
+    and_blockers = [b for b in active if inc["blockers"][b]["logic"] == "AND"]
+    and_groups = {}
+    for b in and_blockers:
+        and_groups.setdefault("AND-set", []).append(b)
+    blocked = bool(or_blockers) or any(len(v) > 1 for v in and_groups.values())
+    if or_blockers:
+        print(f"      → OR-blockers active {or_blockers}: workflow blocked (each independently sufficient)")
+    if and_blockers and not or_blockers:
+        print(f"      → AND-blockers: {and_blockers} (all must hold to block)")
+
+    # Dimension 4: causal state
+    print(f"\n  [4] CAUSAL STATE")
+    for hid, h in inc["hypotheses"].items():
+        req_status = []
+        for r in h["requires"]:
+            ps = inc["propositions"].get(r, {}).get("status", "MISSING")
+            req_status.append(f"{r}={ps}")
+        print(f"      {hid}: {h['status']}" + (f" (requires: {', '.join(req_status)})" if req_status else ""))
+        if h["status"] == "UNDETERMINED" and h["next_test"]:
+            print(f"        next: {h['next_test']}")
+
+    # Overall: honest summary, never a forced single root cause
+    print(f"\n  OVERALL")
+    unresolved = [h for h, d in inc["hypotheses"].items() if d["status"] in ("UNDETERMINED", "PLAUSIBLE")]
+    print(f"  Workflow blocked: {blocked}")
+    print(f"  Established blockers: {active if active else 'none'}")
+    print(f"  Unresolved hypotheses: {unresolved if unresolved else 'none'}")
+    print(f"  Coverage gaps: {len(gaps)}")
+    if unresolved or gaps:
+        print(f"  → No sole cause assigned. Repair what is established; test what is unresolved.")
+    print(f"{'='*70}")
+
+    inc["revision"] = "v" + str(int(inc["revision"][1:]) + 1)
+    _incident_save(reg)
+    return {"blocked": blocked, "active_blockers": active,
+            "unresolved": unresolved, "gaps": len(gaps)}
 
 
 # ============================================================================
