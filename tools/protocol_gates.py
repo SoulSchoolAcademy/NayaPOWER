@@ -654,7 +654,9 @@ def check_quality_gate(
         try:
             sc = Scorecard(
                 what="adapter-call", evidence="adapter-call",
-                scores=dict(scores), weights=dict(weights or {}),
+                scores=dict(scores),
+                weights=(dict(weights) if weights is not None else
+                         {name: 1.0 / len(scores) for name in scores} if scores else {}),
                 weakest_point="adapter-call", verified_by="adapter",
             )
             r = check_delivery(sc, builder_id="protocol_gates-adapter")
