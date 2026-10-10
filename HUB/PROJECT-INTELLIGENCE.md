@@ -81,8 +81,8 @@ Turn the Hub concept into a real, working, intelligent application that scores 1
 - Resolve Smart Share → Smart Connect naming in the concept file
 
 ### Phase 1 · App Shell + Router
-Componentize the baseline WITHOUT redesigning it: `NayaAppShell`, `NayaLeftRail`, `NayaTopBar`, `NayaSearch`, `NayaBoard`, `NayaIcon`, room router (`/feed`, `/today`, `/reports`, `/library`, `/connect`, `/ledger`, `/connections`, `/lists`, `/mail`, `/spaces`, `/settings`). Visual output must be indistinguishable from the baseline.
-**Gate:** side-by-side visual diff passes.
+Componentize the approved visual baseline into a single shell with two corner controls, left room drawer, right product drawer, one coordinated mode zone, Main Show / Smart Feed entry, global search, Naya presence and the canonical room router (`/today`, `/reports`, `/library`, `/connect`, `/ledger`, `/connections`, `/lists`, `/mail`, `/spaces`, `/settings`). Smart Feed remains the Main Show rather than a room-drawer entry. Preserve the approved visual identity while implementing the new shell direction from #554.
+**Gate:** side-by-side visual diff passes against the approved baseline + shell-behavior proof.
 
 ### Phase 2 · Design Token System
 Spectrum as real tokens (`--naya-purple` … `--naya-magenta`), room accent inheritance, button/board/icon grammar as shared components. Eliminate inline one-off styles.
