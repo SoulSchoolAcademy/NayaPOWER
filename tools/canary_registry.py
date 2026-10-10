@@ -208,6 +208,144 @@ def report():
     print(f"\n  Total: {len(families)} families, {total_cases} cases")
 
 
+# Canary integrity states (Naya 1's compromise lifecycle):
+# SEALED → SUSPECT → COMPROMISED → RETIRED → REPLACED
+# Key rule: never erase compromised evidence. Never use it to certify fresh learning.
+INTEGRITY_STATES = {
+    "SEALED": "Protected holdout with independently established provenance",
+    "SUSPECT": "Credible exposure, lineage, or reviewer-integrity concern exists",
+    "COMPROMISED": "Independent qualification no longer defensible",
+    "RETIRED": "Removed from blind qualification, retained for diagnostics",
+    "REPLACED": "New independent set has taken its evaluation role",
+}
+
+# Four compromise mechanisms
+COMPROMISE_TYPES = {
+    "ANSWER_LEAKAGE": "Worker gained access to hidden expected results",
+    "DUPLICATE_LINEAGE": "Cases derive from training/development examples",
+    "EVALUATOR_CONTAMINATION": "Verifier influenced by builder outputs",
+    "REPEATED_EXPOSURE": "System memorized repeatedly presented holdout",
+}
+
+
+def report_compromise(family_id, case_id, compromise_type, evidence, reporter="unknown"):
+    """
+    DETECT → CONTAIN: Report a canary compromise.
+    Creates append-only event, marks case SUSPECT, suspends its independent-proof use.
+    """
+    if compromise_type not in COMPROMISE_TYPES:
+        print(f"ERROR: Unknown type '{compromise_type}'. Valid: {', '.join(COMPROMISE_TYPES.keys())}")
+        sys.exit(1)
+
+    reg = load_registry()
+    fid = str(family_id)
+    if fid not in reg["families"]:
+        print(f"Family {family_id} not found.")
+        sys.exit(1)
+
+    # Find the case
+    case = None
+    for c in reg["families"][fid]["cases"]:
+        if c["case_id"] == case_id:
+            case = c
+            break
+    if not case:
+        print(f"Case {case_id} not found in family {family_id}.")
+        sys.exit(1)
+
+    # Create append-only compromise event
+    event = {
+        "event_type": "CANARY_INDEPENDENCE_COMPROMISED",
+        "event_id": f"COMP-{datetime.now(timezone.utc).strftime('%Y%m%d%H%M%S')}",
+        "family_id": int(family_id),
+        "case_id": case_id,
+        "compromise_type": compromise_type,
+        "compromise_description": COMPROMISE_TYPES[compromise_type],
+        "evidence_refs": [evidence[:200]],
+        "reporter": reporter,
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "previous_state": case.get("integrity_state", "SEALED"),
+    }
+
+    # CONTAIN: mark SUSPECT, suspend independent-proof use
+    # Preserve the case — never delete. Only its qualification status changes.
+    case["integrity_state"] = "SUSPECT"
+    case["compromise_event"] = event["event_id"]
+    case["independent_proof_suspended"] = True
+
+    # Append event to log
+    events_file = os.path.join(CANARY_DIR, "compromise_events.jsonl")
+    os.makedirs(CANARY_DIR, exist_ok=True)
+    with open(events_file, "a") as f:
+        f.write(json.dumps(event) + "\n")
+
+    save_registry(reg)
+    print(f"Compromise {event['event_id']}: {case_id} marked SUSPECT")
+    print(f"  Type: {compromise_type} — {COMPROMISE_TYPES[compromise_type]}")
+    print(f"  Independent proof use: SUSPENDED (case preserved for diagnostics)")
+    return event
+
+
+def confirm_compromise(family_id, case_id, confirmed=True):
+    """TRACE → confirm or clear. COMPROMISED or back to SEALED."""
+    reg = load_registry()
+    fid = str(family_id)
+    case = next((c for c in reg["families"][fid]["cases"] if c["case_id"] == case_id), None)
+    if not case:
+        print(f"Case {case_id} not found.")
+        sys.exit(1)
+
+    if confirmed:
+        case["integrity_state"] = "COMPROMISED"
+        print(f"{case_id}: SUSPECT → COMPROMISED")
+        print(f"  Independent qualification: DISQUALIFIED")
+        print(f"  Diagnostic use: RETAINED (never erase compromised evidence)")
+    else:
+        case["integrity_state"] = "SEALED"
+        case["independent_proof_suspended"] = False
+        print(f"{case_id}: SUSPECT → SEALED (cleared)")
+    save_registry(reg)
+
+
+def retire_case(family_id, case_id, replacement_case_id=None):
+    """RETIRED → REPLACED: remove from blind qualification, optionally link replacement."""
+    reg = load_registry()
+    fid = str(family_id)
+    case = next((c for c in reg["families"][fid]["cases"] if c["case_id"] == case_id), None)
+    if not case:
+        print(f"Case {case_id} not found.")
+        sys.exit(1)
+
+    case["integrity_state"] = "RETIRED"
+    case["retired_at"] = datetime.now(timezone.utc).isoformat()
+    if replacement_case_id:
+        case["integrity_state"] = "REPLACED"
+        case["replacement_case_id"] = replacement_case_id
+        print(f"{case_id}: RETIRED → REPLACED by {replacement_case_id}")
+    else:
+        print(f"{case_id}: RETIRED (no replacement yet)")
+    save_registry(reg)
+
+
+def track_exposure(family_id, case_id):
+    """Exposure accounting: count presentations of sealed cases."""
+    reg = load_registry()
+    fid = str(family_id)
+    case = next((c for c in reg["families"][fid]["cases"] if c["case_id"] == case_id), None)
+    if not case:
+        print(f"Case {case_id} not found.")
+        sys.exit(1)
+
+    case["exposure_count"] = case.get("exposure_count", 0) + 1
+    case["last_exposure"] = datetime.now(timezone.utc).isoformat()
+    save_registry(reg)
+    print(f"{case_id}: exposure count = {case['exposure_count']}")
+    # Warning: no universal safe number, but flag for review
+    if case["exposure_count"] >= 10 and case.get("visibility") == "sealed":
+        print(f"  WARNING: sealed case exposed {case['exposure_count']}× — review independence")
+    return case["exposure_count"]
+
+
 def main():
     parser = argparse.ArgumentParser(description="Three-layer canary system")
     sub = parser.add_subparsers(dest="cmd", required=True)
@@ -231,6 +369,29 @@ def main():
     sub.add_parser("report", help="Registry report")
     sub.add_parser("fingerprint", help="Calibration fingerprint")
 
+    comp = sub.add_parser("compromise", help="Report canary compromise (DETECT→CONTAIN)")
+    comp.add_argument("--family", required=True)
+    comp.add_argument("--case", required=True)
+    comp.add_argument("--type", required=True,
+                      choices=["ANSWER_LEAKAGE", "DUPLICATE_LINEAGE",
+                               "EVALUATOR_CONTAMINATION", "REPEATED_EXPOSURE"])
+    comp.add_argument("--evidence", required=True)
+    comp.add_argument("--reporter", default="unknown")
+
+    conf = sub.add_parser("confirm", help="Confirm or clear compromise (TRACE)")
+    conf.add_argument("--family", required=True)
+    conf.add_argument("--case", required=True)
+    conf.add_argument("--confirmed", action="store_true")
+
+    ret = sub.add_parser("retire", help="Retire/replace case (REPLACE→REQUALIFY)")
+    ret.add_argument("--family", required=True)
+    ret.add_argument("--case", required=True)
+    ret.add_argument("--replacement", default=None)
+
+    exp = sub.add_parser("expose", help="Track sealed case exposure")
+    exp.add_argument("--family", required=True)
+    exp.add_argument("--case", required=True)
+
     args = parser.parse_args()
     if args.cmd == "register-family":
         register_family(args.id, args.name, args.description)
@@ -242,6 +403,14 @@ def main():
         report()
     elif args.cmd == "fingerprint":
         fingerprint()
+    elif args.cmd == "compromise":
+        report_compromise(args.family, args.case, args.type, args.evidence, args.reporter)
+    elif args.cmd == "confirm":
+        confirm_compromise(args.family, args.case, args.confirmed)
+    elif args.cmd == "retire":
+        retire_case(args.family, args.case, args.replacement)
+    elif args.cmd == "expose":
+        track_exposure(args.family, args.case)
 
 
 if __name__ == "__main__":
