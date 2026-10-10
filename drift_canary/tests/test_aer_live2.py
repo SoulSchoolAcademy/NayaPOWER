@@ -4,9 +4,7 @@ turns a timeout into a verdict. Every negative test gets a positive control.
 HONEST SCOPE: contract extension + harness demonstration; no production
 service bound validated; AER-LIVE-2 guarantees not production-proven.
 """
-import sys, os
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
-from revocation_linearization import (
+from drift_canary.revocation_linearization import (
     LIVENESS_CLAIMS, SERVICE_EVIDENCE_KINDS, PROGRESS_EVIDENCE_KINDS,
     observable_links, track_fairness_debt, check_service_bound,
     check_progress_bound, check_disposition_bound, BOUND_ASSUMPTIONS,
