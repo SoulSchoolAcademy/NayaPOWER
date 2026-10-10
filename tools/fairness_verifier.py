@@ -649,6 +649,20 @@ def main():
                     choices=["HISTORY", "DEBUG", "INVESTIGATE", "CERTIFY",
                              "LEARN_PROMOTE", "ACT"])
 
+    ev = sub.add_parser("evidence-register", help="Register evidence with origin lineage")
+    ev.add_argument("--id", required=True)
+    ev.add_argument("--origin", required=True, help="Origin lineage identifier")
+    ev.add_argument("--scope", default="")
+
+    rv = sub.add_parser("evidence-revoke", help="Revoke evidence eligibility (history preserved)")
+    rv.add_argument("--id", required=True)
+    rv.add_argument("--reason", required=True)
+    rv.add_argument("--use-scope", required=True, help="Use/purpose losing eligibility")
+    rv.add_argument("--evidence-ref", default="", help="Evidence for the revocation decision")
+
+    rq = sub.add_parser("claim-requalify", help="Recompute with six verdicts after revocation")
+    rq.add_argument("--claim", required=True)
+
     args = parser.parse_args()
     if args.cmd == "classify":
         cycle = json.loads(args.trace)
@@ -726,6 +740,187 @@ def main():
         pclaim_compute(args.claim)
     elif args.cmd == "claim-use":
         pclaim_use(args.claim, args.use)
+    elif args.cmd == "evidence-register":
+        ev_register(args.id, args.origin, args.scope)
+    elif args.cmd == "evidence-revoke":
+        ev_revoke(args.id, args.reason, args.use_scope, args.evidence_ref)
+    elif args.cmd == "claim-requalify":
+        pclaim_requalify(args.claim)
+
+
+# ============================================================================
+# Selective Evidence Revocation and Claim Requalification (Naya 1's protocol)
+#
+# Revoke the evidence contribution first. Revoke or downgrade a qualification
+# only if the remaining admissible evidence no longer establishes the claim.
+# Preserve every independently sufficient conclusion.
+#
+# Six verdicts: UNAFFECTED / REQUALIFIED / DOWNGRADED / INSUFFICIENT_DATA /
+#               SUSPENDED / REVOKED
+# These concern certification standing, not truth.
+# ============================================================================
+
+SIX_VERDICTS = ["UNAFFECTED", "REQUALIFIED", "DOWNGRADED",
+                "INSUFFICIENT_DATA", "SUSPENDED", "REVOKED"]
+
+
+def ev_register(ev_id, origin, scope=""):
+    """Register evidence with its origin lineage (for independence checks)."""
+    reg = _pclaim_load()
+    if "evidence" not in reg:
+        reg["evidence"] = {}
+    reg["evidence"][ev_id] = {
+        "origin": origin, "scope": scope,
+        "eligible": {},  # use-scope → true/false
+        "history": [],   # append-only eligibility receipts
+        "registered_at": datetime.now(timezone.utc).isoformat(),
+    }
+    _pclaim_save(reg)
+    print(f"Evidence {ev_id} registered (origin: {origin})")
+    return True
+
+
+def ev_revoke(ev_id, reason, use_scope, evidence_ref=""):
+    """
+    Revoke evidence eligibility for a use-scope. History preserved;
+    an eligibility-change receipt is appended, never overwriting.
+    """
+    reg = _pclaim_load()
+    ev = reg.get("evidence", {}).get(ev_id)
+    if not ev:
+        print(f"Unknown evidence {ev_id}"); return False
+    receipt = {
+        "event_type": "EVIDENCE_ELIGIBILITY_CHANGE",
+        "event_id": f"REV-{ev_id}-{len(ev['history'])+1}",
+        "reason": reason,
+        "use_scope": use_scope,
+        "evidence_ref": evidence_ref,
+        "recorded_at": datetime.now(timezone.utc).isoformat(),
+    }
+    ev["history"].append(receipt)
+    ev["eligible"][use_scope] = False
+    _pclaim_save(reg)
+    print(f"Revoked: {ev_id} for use '{use_scope}' (reason: {reason})")
+    print(f"  History preserved ({len(ev['history'])} receipts). Observation content retained.")
+    print(f"  Factual correctness of the observation is NOT determined by this revocation.")
+    return True
+
+
+def _ev_eligible(reg, ev_id, use_scope="INDEPENDENT_CERTIFICATION"):
+    ev = reg.get("evidence", {}).get(ev_id, {})
+    return ev.get("eligible", {}).get(use_scope, True)
+
+
+def _origins_independent(reg, ev_ids):
+    """Check that evidence IDs do not secretly share one origin."""
+    origins = {}
+    for eid in ev_ids:
+        o = reg.get("evidence", {}).get(eid, {}).get("origin", "UNKNOWN")
+        origins.setdefault(o, []).append(eid)
+    shared = {o: eids for o, eids in origins.items() if len(eids) > 1}
+    return shared
+
+
+def pclaim_requalify(claim_id, use_scope="INDEPENDENT_CERTIFICATION"):
+    """
+    Recompute a claim's standing with the six verdicts after revocation.
+    Only genuinely unsupported conclusions lose standing.
+    """
+    reg = _pclaim_load()
+    c = reg["claims"].get(claim_id)
+    if not c:
+        print(f"Unknown claim {claim_id}"); return None
+
+    support = [s for s in c["support"] if s not in c.get("invalidated", [])]
+    admissible = [s for s in support if _ev_eligible(reg, s, use_scope)]
+    ineligible = [s for s in support if s not in admissible]
+
+    print(f"\nRequalification: {claim_id}")
+    print(f"  Prior support: {support}")
+    print(f"  Admissible now: {admissible}")
+    print(f"  Ineligible: {ineligible}")
+
+    # No material dependency on revoked evidence
+    if not ineligible:
+        verdict = "UNAFFECTED"
+        reason = "No material dependency on revoked evidence."
+    else:
+        # Check independence of remaining support — including against revoked origins
+        shared = _origins_independent(reg, admissible)
+        revoked_origins = {reg.get("evidence", {}).get(e, {}).get("origin") for e in ineligible}
+        tainted = [e for e in admissible
+                   if reg.get("evidence", {}).get(e, {}).get("origin") in revoked_origins]
+        if shared:
+            print(f"  ⚠ FALSE INDEPENDENCE within remaining support: {shared}")
+        if tainted:
+            print(f"  ⚠ FALSE INDEPENDENCE: {tainted} share origin with revoked evidence")
+            print(f"    Shared origin is not an independent alternative.")
+            admissible = [e for e in admissible if e not in tainted]
+        elif shared:
+            # Remove non-independent support
+            keep = []
+            seen_origins = set()
+            for eid in admissible:
+                o = reg["evidence"][eid]["origin"]
+                if o not in seen_origins:
+                    keep.append(eid); seen_origins.add(o)
+            admissible = keep
+
+        # Recompute via AND/OR semantics on admissible evidence
+        and_deps = [d for d in c["deps"] if d["rel"] in ("REQUIRES_SUPPORT_FROM", "DERIVED_FROM")]
+        or_paths = [d for d in c["deps"] if d["rel"] == "INDEPENDENTLY_CORROBORATED_BY"]
+
+        if admissible and not and_deps:
+            # Sufficient admissible support remains
+            if c.get("scope_parts"):
+                supported_parts = [p for p in c["scope_parts"] if p in c.get("supported_parts", c["scope_parts"])]
+                if len(supported_parts) < len(c["scope_parts"]):
+                    verdict = "DOWNGRADED"
+                    reason = f"Narrower scope remains: {supported_parts}"
+                else:
+                    verdict = "REQUALIFIED"
+                    reason = "Independently sufficient remaining evidence meets the standard."
+            else:
+                verdict = "REQUALIFIED"
+                reason = "Independently sufficient remaining evidence meets the standard."
+        elif or_paths:
+            # Check OR alternatives
+            ok_paths = []
+            for d in or_paths:
+                t = reg["claims"].get(d["claim"], {})
+                if t.get("qualification") == "SUPPORTED":
+                    ok_paths.append(d["claim"])
+            if ok_paths:
+                verdict = "REQUALIFIED"
+                reason = f"Surviving independent path(s): {ok_paths}"
+            else:
+                verdict = "INSUFFICIENT_DATA"
+                reason = "No independently sufficient path remains."
+        elif admissible:
+            verdict = "INSUFFICIENT_DATA"
+            reason = "Admissible evidence exists but fails the sufficiency threshold."
+        else:
+            verdict = "REVOKED"
+            reason = "Qualification can no longer be maintained."
+
+    # Refutation check: surviving support doesn't erase genuine contradiction
+    if c["refute"] and verdict in ("REQUALIFIED",):
+        verdict = "DOWNGRADED"
+        reason += " (material refutation preserved — not erased by surviving support)"
+
+    c["six_verdict"] = verdict
+    c["six_reason"] = reason
+    # Append qualification revision (history, not overwrite)
+    c.setdefault("revisions", []).append({
+        "verdict": verdict, "reason": reason,
+        "trigger": f"revocation recompute",
+        "at": datetime.now(timezone.utc).isoformat(),
+    })
+    _pclaim_save(reg)
+
+    print(f"  Verdict: {verdict}")
+    print(f"  Reason: {reason}")
+    return verdict
 
 
 # ============================================================================
