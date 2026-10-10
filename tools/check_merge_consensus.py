@@ -72,15 +72,25 @@ def main():
              "Unattributed work cannot be reviewed.")
 
     # --- Requirement 1: cross-seat review ---
+    # The review must be FRESH: it must reference the exact head SHA being
+    # merged, or have been posted after the head commit was pushed. A review
+    # of an older SHA does not authorize the current code.
     reviews = api_get(f"/repos/{repo}/pulls/{pr_number}/reviews", token)
     comments = api_get(f"/repos/{repo}/issues/{pr_number}/comments", token)
 
     reviewer_seat = None
+    review_is_fresh = False
     # Path A: native GitHub approval from a different login.
     for r in reviews:
         if (r.get("state") == "APPROVED"
                 and (r["user"]["login"] or "").lower() != pr_author_login):
             reviewer_seat = seat_of(r.get("body")) or "external reviewer"
+            # Freshness: approval must name the head SHA or postdate it.
+            # GitHub approvals are tied to a commit via submitted_at; we
+            # require the body to name the SHA explicitly for auditability.
+            body = r.get("body") or ""
+            if head_sha[:10] in body or head_sha in body:
+                review_is_fresh = True
             break
     # Path B: seat-tagged review comment from a different seat.
     if not reviewer_seat:
@@ -91,11 +101,40 @@ def main():
                 s = seat_of(body)
                 if s and s != author_seat:
                     reviewer_seat = s
+                    # Freshness: the review comment must name the exact
+                    # head SHA it approves. A review without a SHA is stale
+                    # by default — it could approve any earlier commit.
+                    if head_sha[:10] in body or head_sha in body:
+                        review_is_fresh = True
                     break
     if not reviewer_seat:
         fail(f"no review from a seat other than the author ({author_seat}). "
              f"Post '[NAYA M · REVIEW] APPROVED' as a PR comment, or submit a "
              f"GitHub approving review from a different account.")
+    if not review_is_fresh:
+        fail(f"review from {reviewer_seat} does not name the exact head SHA "
+             f"{head_sha[:10]}. Reviews must be fresh: re-review the current "
+             f"head and include its SHA. Stale reviews do not authorize merges.")
+
+    # --- Requirement 1b: no unresolved objections ---
+    # If any review requested changes and was not superseded by a later
+    # approval from the same seat, the PR is contested. Contested PRs do
+    # not merge — the objection must be resolved or explicitly withdrawn.
+    for r in reviews:
+        if r.get("state") == "CHANGES_REQUESTED":
+            obj_seat = seat_of(r.get("body")) or r["user"]["login"]
+            # Check if this seat later approved (superseding the objection).
+            superseded = any(
+                x.get("state") == "APPROVED"
+                and x["user"]["login"] == r["user"]["login"]
+                and (x.get("submitted_at") or "") > (r.get("submitted_at") or "")
+                for x in reviews
+            )
+            if not superseded:
+                fail(f"unresolved objection from {obj_seat} "
+                     f"({(r.get('body') or '')[:80]}). "
+                     f"Resolve the objection or have the seat withdraw it "
+                     f"before merging.")
 
     # --- Requirement 2: scorecard receipt naming this exact head SHA ---
     scorer_seat = None
