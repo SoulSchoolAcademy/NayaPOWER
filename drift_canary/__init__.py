@@ -16,5 +16,27 @@
 #   contamination.py — five contamination-form checks (deterministic).
 #   schedule.py      — tiered evaluation schedule + severity response ladder.
 #   receipt.py       — canary run receipt schema (machine-readable).
+#   revocation.py    — partial compromise & selective revocation: four units,
+#                        six verdicts, six-step recomputation, ten rules.
+#   uncertainty.py   — uncertain scope: two-boundary model, three-valued
+#                        typed propagation, clearance packets, governance.
+#   authority.py     — enforcement: five capabilities, purpose-bound
+#                        authorization, anti-laundering, two checkpoints.
+#   propagation.py   — provenance-preserving propagation, four layers:
+#                        1. support-set evaluator, evidence-support envelopes,
+#                           meaning envelopes + region verdicts + strongest
+#                           defensible conclusion, four-surface rules mapped
+#                           to existing CONNECT contracts (no parallel registry)
+#                        2. composition: proof-obligation maps, compatibility
+#                           gate, composition validity, breadth/depth/
+#                           integration, four-part qualification report
+#                        3. composite qualification audit: five questions,
+#                           (E∧A)⇒C implication check, interaction contracts,
+#                           environment difference map, four-verdict
+#                           certificates, adversarial tests
+#                        4. versioning/retiring obligations: immutable
+#                           revisions, bitemporal receipts, change
+#                           classification, migration receipts, affected
+#                           closure, decision-boundary enforcement
 #   fixtures/        — fixed anchor fixtures (OPEN visibility) for the 10 canary
 #                        families. Sealed fixtures live OUTSIDE this repo by law.
