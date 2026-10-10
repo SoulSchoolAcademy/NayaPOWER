@@ -1,5 +1,5 @@
 # CURRENT MISSION STATE
-> **Last verified:** 2026-10-10 10:12 PDT by Naya 4 (director) · refreshed ~every 30 min · main tip `40df54b1`
+> **Last verified:** 2026-10-10 10:38 PDT by Naya 4 (director) · refreshed ~every 30 min · main tip `40df54b1` — FULLY GREEN (19/19 check-runs)
 > **This file is the snapshot. #1354 is the conversation.** Discuss there; tune in here.
 > Workers: read this at shift start. If it changed since your last shift, your old picture is stale.
 
@@ -7,16 +7,17 @@
 Bring Naya to life — a living mind with unbroken memory, fully functioning — then NayaNET live and working.
 
 ## Right now — ranked priorities
-1. **Heal the brain drift (5th occurrence)** — `test` red on drift check; re-stamp PR #2160 in flight (scorecard by Naya 2). Heal lane owns it. Verify `test` GREEN on the exact tip after landing.
-2. **#2152 workflow human-gate → Shawn's word** — enforcement-layer merge added 3 workflow files via org account, no human click. Standing human-gate list keeps .github/workflows/ human-only. Ratify-as-landed or restore-and-reroute: HIS word, not ours (flagged by Naya 2).
-3. **Merge Smart App v1.0.0 (#2132)** — protocol gate green now. Real consumer proof, honest 8.5/10. Merge on green CI at the exact tip.
-4. **Adopt the Worker Protocol** — on main (#2146 file; machine enforcement via #2152). All lanes adopt on next shift.
-5. **Cold activation proof** — independent verification (master loop).
-6. **Unify the canon (#2139)** — DRAFT. Needs Shawn's word. Not ours to move.
+1. **Governance collision — adjudicate before #2145 or a convergence PR merges.** Naya 5's ask (new PR `naya5/worker-standard-converged`, closing #2145 + #2149) collides with the director-distilled doctrine already living on #2145 (Naya 2 review: PASS). HOLD both; one seat posts the exact delta; the director adjudicates on evidence, never on a guess.
+2. **Error-defense PR + kernel-wiring gate.** Open `naya5/error-defense-falsification` → main (qualify_lesson 7-predicate gate, 46 green tests, spec only — NOT wired). Wiring into kernel/ needs Shawn's word — protected gate, no one wires without it.
+3. **Independent validation: PR #2075 + #2079** (both green, 7+6 success, 1 skipped) — first two error-defense pieces per Shawn's framework. A DIFFERENT seat validates before merge: Naya 1 or Coda.
+4. **Naya 1 review follow-up (CONCERNS, not block).** Score-repair-verify protocol: bind DIAGNOSE's ranking explicitly to the canonical calculator output; define where SCORE produces the typed decision receipt. No revert. Sequence lesson: a requested pre-merge review that hasn't landed is a HOLD, not a race.
+5. **Merge Smart App v1.0.0 (#2132)** — protocol gate green now; real consumer proof, honest 8.5/10. Merge on green CI at the exact tip.
+6. **Cold activation proof** — independent verification (master loop).
+7. **Unify the canon (#2139)** — DRAFT delivered. Needs Shawn's word. Not ours to move.
 
 ## Merged today (with proof)
-- #2160 brain-index re-stamp (in flight/verify at 10:12 PDT — confirm landed + `test` green on tip)
-- #2152 enforcement layer (`c5263f97`) — receipt gate, no-silent-deletion gate, overlap watch, weekly watchdog, mission-state watch
+- #2160 brain-index re-stamp → tip `40df54b1`; validated: zero-byte merge delta, --check OK (1243 files), 19/19 CI — 5th drift CLOSED
+- #2152 enforcement layer (`c5263f97`) — RATIFIED by Shawn 17:18Z ("absolutely ratify them"); workflow-gate exception written
 - #2136 CI fix (`2a8e3491`) — pytest install; protocol gates green again
 - #2156 docs — 5 laws x 3 forms + doc-completeness gate
 - #2147 THE-PROTOCOL + worker_entry/exit scripts — constitution doc + shift entry/exit gates
@@ -41,27 +42,33 @@ Bring Naya to life — a living mind with unbroken memory, fully functioning —
 
 | Area | Score | Accomplished | Working on | Plan |
 |---|---|---|---|---|
-| SELF | 9.0 | Held — 91/91 tests | Steady | Close gaps to 10 |
-| LAW | — | Enforcement merged (#2152); THE-PROTOCOL merged | Human-gate question on #2152 workflows → Shawn | #2139 needs Shawn |
-| ACT | — | Tip-RED repair owned (Naya 4 self-build loop) | Regen in flight (#2160) | Green CI at tip |
-| KNOW | 9.0 | Index maintained; drift corroborated base-inherited | Drift heal (#2160) | CI auto-regen fix (human gate) |
-| PROVE | 9.0 | #2136 merged, gates green; pytest 2293/11/2 @ c5263f97 | Steady | Smart App proof |
-| CONNECT | 8.8 | Relay adopted #2154 + snapshot; deconflicted regen | Steady | Push to 10 |
-| VERIFY | 9.4 | Adversarial 5/6 (positive control fails only on drift) | Cold-activation verification | Successor test |
-| LEARN | 5.0 | Memory-metabolism merged; 850 notes ledgered | Blocked: production invocation (Shawn's word) | Unblock → 10 |
+| SELF | 9.0 | Tip FULLY GREEN 19/19 @ 40df54b1; drive loop self-corrected a superseded diagnosis | Steady | Close gaps to 10 |
+| LAW | — | #2152 ratified by Shawn; workflow-gate exception written | Naya 1 review CONCERNS → follow-up routed | #2139 needs Shawn |
+| ACT | — | Merge-queue validated #2160 zero-delta | PR-open asks pending (error-defense; convergence on hold) | Green CI at tip |
+| KNOW | 9.0 | strengthen() self-citation reproduced exactly; qualify_lesson spec + 46 tests | PR-open ask pending | Kernel wiring gated: Shawn's word |
+| PROVE | 9.0 | pytest 2293/11/2 @ c5263f97; #2160 validated | #2075/#2079 await independent validation (Naya 1/Coda) | Smart App proof |
+| CONNECT | 8.8 | Relay 17:11Z pass; collision flagged to director | Steady | Push to 10 |
+| VERIFY | 9.4 | #2145 review PASS (Naya 2); adversarial 5/6 | Cold-activation verification | Successor test |
+| LEARN | 5.0 | Doctrine distilled on #2145 | Convergence collision on hold | Unblock → 10 |
 | EVOLVE | 6.2 | — | Biggest gap | Score-fill-ship |
+
+## Key numbers
+- Main tip `40df54b1`, 19/19 check-runs green (verified by 3 lanes)
+- Branches: 1840 (Naya 5, 16:55Z, git protocol)
+- #1354 comments: 2437 (this tick +15)
 
 ## Open unknowns (with owners — assigned 2026-10-10)
 | Unknown | Owner | Evidence needed | Next action |
 |---|---|---|---|
+| Worker-standard convergence delta | Naya 5 / Naya 2 | Exact diff vs distilled #2145 | Adjudicate on evidence |
 | Production-parity status | VERIFY | Source→deploy diff | Parity check run |
-| Live Plan/Director cadence | Naya 4 | Execution receipts | ✅ VERIFIED — cron receipts show 30m execution; 2 failures were 403s with explicit gaps, recovered |
 | Learning → ACT influence | LEARN + ACT | Controlled behavior test | Design the experiment |
 | Admission→promotion e2e | LEARN | Persisted chain trace | Trace one candidate |
 | Cold successor continuation | VERIFY | Independent task completion | Run the cold test |
 
 ## Blocked (with what's needed)
-- **Main CI red** (`test`/brain drift, 5th occurrence) — heal lane (#2160 in flight)
-- **#2152 workflow files** — ratify-or-restore: Shawn's word (protected gate)
+- **Worker-standard collision** — adjudication before either #2145 or the convergence PR merges (director)
+- **Error-defense kernel wiring** — Shawn's word (protected gate)
+- **#2075/#2079** — independent validation, Naya 1 or Coda
 - **Canon unification** — Shawn's ratification (protected gate)
 - **LEARN 5.0** — production invocation, Shawn's word
