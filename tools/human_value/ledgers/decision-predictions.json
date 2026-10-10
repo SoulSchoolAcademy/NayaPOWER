@@ -57,7 +57,7 @@
  {
   "decision_id": "DEC-20261009-HV-REALDATA-006",
   "delta_v_predicted": 7.0,
-  "objective": "Accumulate the verified real events of 2026-10-09 09:41-15:41 UTC: merged PRs #1959 (registry heal SN-0742/0743/0744), #1961 (SN-0632..SN-0639 heal, #1838 adjudicated), #1963/#1964/#1965 (three Smart Blocks extractions, one outcome), #1976 (regenerate_brain_index hardening), #1982/#1983 (CANDIDATE spec pinned then excluded, one outcome), #1986 (SN-0781 scorecard-gate law). All carry Naya 2 scorecard receipts + merged-on-main evidence on #1354. Scan #1354 for attention-demanded events (DAI) since 09:41 UTC. Close the sixth prediction->observation join (n=6). Cold-recompute proof on the pushed SHA, push via the Git Data API with server-tree verification, post scorecard. Excluded by design: #1966/#1968/#1972/#1973/#1975 (merged but no scorecard receipt on #1354 — fail closed against inflation) and #1955 (own delegated merge; not self-scored).",
+  "objective": "Accumulate the verified real events of 2026-10-09 09:41-15:41 UTC: merged PRs #1959 (registry heal SN-0742/0743/0744), #1961 (SN-0632..SN-0639 heal, #1838 adjudicated), #1963/#1964/#1965 (three Smart Blocks extractions, one outcome), #1976 (regenerate_brain_index hardening), #1982/#1983 (CANDIDATE spec pinned then excluded, one outcome), #1986 (SN-0781 scorecard-gate law). All carry Naya 2 scorecard receipts + merged-on-main evidence on #1354. Scan #1354 for attention-demanded events (DAI) since 09:41 UTC. Close the sixth prediction->observation join (n=6). Cold-recompute proof on the pushed SHA, push via the Git Data API with server-tree verification, post scorecard. Excluded by design: #1966/#1968/#1972/#1973/#1975 (merged but no scorecard receipt on #1354 \u2014 fail closed against inflation) and #1955 (own delegated merge; not self-scored).",
   "predicted_at": "2026-10-09T15:50:00Z",
   "predicted_by": "Naya 5 (human-value-builder run)",
   "prediction_basis": "Same run archetype as DEC-002..DEC-005: accumulate verified events with durable evidence, DAI scan, deterministic recompute, one more joined observation deepening the calibration series (n=6). Pre-registered BEFORE any ledger change; the outcome event carries delta_v_actual for the join. Main tip moved during the run (925e4c348 -> 3a60163c9); branch rebased first, no events re-counted. DAI trend still needs weeks of real data; independent cross-verification of the 7.5 claim still outstanding (PR #1939 open, no review).",
@@ -86,5 +86,13 @@
   "predicted_at": "2026-10-10T09:44:00Z",
   "predicted_by": "Naya 5 (human-value-builder run)",
   "prediction_basis": "Twelfth real-ledger accumulation run. Pattern established over eight prior joins: pre-register before observation, append only independently-verified or evidence-durable outcomes, close the join with an honest delta_v_actual, recompute deterministically, prove cold-recomputability. Predicted +7.0 consistent with prior loops."
+ },
+ {
+  "decision_id": "DEC-20261010-HV-REALDATA-010",
+  "delta_v_predicted": 7.0,
+  "objective": "Accumulate the verified real events of 2026-10-10 10:10-16:10 UTC: merged PRs #2113 (colliding-projection revert, Naya 2 merge-verified at tip), #2114 (honesty repair), #2115 (GAP-1 memory->action wire), #2116 (GAP-2 promotion bridge), #2094 (Gate 1 activation checklist), #2095 (Gate 7 duplicate detector), #2117 (delivery-gate fixture exclusion), #2120 (SN-0796 registry repair) -- all with Naya 2 merge receipts; #2087 (Operating Code V2 -- Shawn RATIFIED 14:47Z, API-verified merged), #2122 (operating law canonical, API-verified merged), #2142 (tune-in template, git-verified on live tip 7281ede6b), #2129 (amendment loader, API-verified merged), #2127 (gate console, API-verified merged), #2092/#2096/#2098/#2099 (gate-hold releases, API-verified merged); 308-branch graveyard cleanup + 7-day claim notice. DAI scan: zero new human-attention demands (#2068 still awaiting Shawn's click = continuing, not new; WS-9/WS-4 blockers + CI reds team-handled/tagged).",
+  "predicted_at": "2026-10-10T16:02:44Z",
+  "predicted_by": "Naya 5 (human-value-builder run)",
+  "prediction_basis": "Thirteenth real-ledger accumulation run. Pattern established over nine prior joins: pre-register before observation, append only independently-verified or evidence-durable outcomes, close the join with an honest delta_v_actual, recompute deterministically, prove cold-recomputability. Predicted +7.0 consistent with prior loops."
  }
 ]
