@@ -12,6 +12,10 @@ import {
   inputHash,
   rejection_log,
 } from "./admission_gate.ts";
+import {
+  buildHeldOutEvidence,
+  mergeHeldOutEvidence,
+} from "./held_out_evidence.ts";
 
 const ISSUER = "https://token.actions.githubusercontent.com";
 const AUDIENCE = "nayanet-runtime";
@@ -504,6 +508,20 @@ Deno.serve(async (req: Request) => {
       }, 400);
     }
 
+    // Phase 3C (2026-10-10, Shawn's word "Word!"): the held-out marker's
+    // evaluator must be the queue's claim() verifier seat — never the
+    // github-actions-oidc runtime identity. The seat asserts its identity
+    // here; it is trusted via the OIDC workflow binding (only the main-branch
+    // workflow can invoke) plus the LAW authority gate below. Fail closed:
+    // no seat, no markers, no promotion.
+    const verifierSeat = String(body?.verifier_seat || "").trim();
+    if (!verifierSeat) {
+      return json({ ok: false, error: "VERIFIER_SEAT_REQUIRED" }, 400);
+    }
+    // Optional audit link to the queue claim (e.g. "VQ-<id>"). Recorded when
+    // supplied, never invented — see held_out_evidence.ts.
+    const queueEntryId = String(body?.queue_entry_id || "").trim();
+
     const verificationMethod = String(
       body?.verification_method || learning.verification_method || "Independent runtime verification."
     );
@@ -581,12 +599,31 @@ Deno.serve(async (req: Request) => {
     }
 
     // All gates passed. Mutations begin here.
+    // Phase 3C (2026-10-10, Shawn's word "Word!"): emit the held-out evidence
+    // marker block into observed_value at promotion. The merge is top-level
+    // (the || equivalent): existing observed_value keys are preserved; only
+    // the held_out_evidence key is (re)written. Exact approved statement shape:
+    //   UPDATE learning_evidence
+    //   SET observed_value = COALESCE(observed_value,'{}')
+    //                        || jsonb_build_object('held_out_evidence', <markers>),
+    //       status='ACTIVE', provenance='VERIFICATION'
+    //   WHERE id='<uuid>' AND member_id='<owner>';
+    const heldOutEvidence = buildHeldOutEvidence({
+      learningId,
+      observed,
+      evidenceRefs: refs,
+      verifierSeat,
+      queueEntryId: queueEntryId || null,
+      nowIso: new Date().toISOString(),
+    });
+    const mergedObservedValue = mergeHeldOutEvidence(observed, heldOutEvidence);
     const { data: promoted, error: promoteError } = await admin
       .from("learning_evidence")
       .update({
         status: "ACTIVE",
         provenance: "VERIFICATION",
         verification_method: verificationMethod,
+        observed_value: mergedObservedValue,
       })
       .eq("id", learningId)
       .eq("member_id", ownerId)
