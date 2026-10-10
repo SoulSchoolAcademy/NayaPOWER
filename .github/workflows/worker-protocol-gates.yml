@@ -30,6 +30,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # fetch-depth 0 is LOAD-BEARING: check_pr_receipt.py validates
+          # 40-char SHAs with `git cat-file -e` against the local store.
+          # A depth-1 checkout of the PR merge ref never contains the head
+          # commit object, so a CORRECT head SHA always failed the gate.
+          # (Sibling jobs already fetch full history for the same reason.)
+          fetch-depth: 0
       - name: Validate PR receipt
         env:
           PR_BODY: ${{ github.event.pull_request.body }}
