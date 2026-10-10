@@ -154,7 +154,7 @@ Top 5
 5. Large products need governance.
 PART II — 10 WORLD-CLASS INTERFACE BENCHMARKS
 IB-DESIGN-011 — Oura
-Nutshell: Oura's redesign converts complicated health signals into progressive levels of understanding using semantic color, hierarchy and scalable visualizations. The app won the 2026 Webby for Best Visual Design–Function. Instrument
+Nutshell: Oura's redesign converts complicated health signals into progressive levels of understanding using semantic color, hierarchy and scalable visualizations. Instrument
 Human: “Tell me what my body is telling me.”
 Child: Green means things look good. Show me why if I ask.
 Grammar: Status → explanation → evidence.
