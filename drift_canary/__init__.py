@@ -38,5 +38,12 @@
 #                           revisions, bitemporal receipts, change
 #                           classification, migration receipts, affected
 #                           closure, decision-boundary enforcement
+#   migration.py     — split/merge proof migration: proof mapping
+#                        (ENTAILS/PARTIALLY_SUPPORTS/DOES_NOT_SUPPORT/
+#                        UNDETERMINED), two-direction audit (forward
+#                        sufficiency + backward fidelity), migration
+#                        certificates, interaction-proof layer (discovery,
+#                        contracts, receipts, proof ladder), cold-successor
+#                        reconstruction. Migrate evidence, not PASS labels.
 #   fixtures/        — fixed anchor fixtures (OPEN visibility) for the 10 canary
 #                        families. Sealed fixtures live OUTSIDE this repo by law.
