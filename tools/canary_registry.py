@@ -497,6 +497,144 @@ def compromise_family(family_id, compromise_type, evidence, scope_status="CONFIR
     return event
 
 
+# Family assessment states (Naya 1's uncertain-scope protocol):
+# Three-valued logic: confirmed, excluded, undetermined.
+# Unknown independence ≠ proven independence. Unknown contamination ≠ proven contamination.
+ASSESSMENT_STATES = {
+    "CONFIRMED_COMPROMISED": "Evidence proves independence failed",
+    "POTENTIALLY_COMPROMISED": "Credible exposure pathway exists, extent unresolved",
+    "INDEPENDENTLY_CLEARED": "Evidence demonstrates separation from incident",
+    "NOT_YET_ASSESSED": "No adequate exposure analysis performed",
+}
+
+# Assessment policy per state
+ASSESSMENT_POLICY = {
+    "CONFIRMED_COMPROMISED": "DISQUALIFY_CONTRIBUTION",
+    "POTENTIALLY_COMPROMISED": "HOLD_INDEPENDENT_CERTIFICATION",
+    "INDEPENDENTLY_CLEARED": "PRESERVE_ELIGIBILITY",
+    "NOT_YET_ASSESSED": "REVIEW_REQUIRED",
+}
+
+# What counts as positive evidence for clearance (absence of leak ≠ proof of independence)
+CLEARANCE_REQUIREMENTS = [
+    "verified_case_family_provenance",
+    "access_control_and_exposure_evidence",
+    "no_disqualifying_answer_dependency",
+    "independent_reviewer_qualification",
+    "recomputed_statistical_acceptance",
+    "recorded_reviewable_verdict",
+]
+
+
+def assess_family(family_id, assessment, exposure_path=None, scope_basis="", reviewer="unknown", review_deadline_days=7):
+    """
+    Assess a canary family's independence with explicit uncertainty.
+    Assessment is three-valued: confirmed compromised, potentially, cleared, or unassessed.
+    """
+    if assessment not in ASSESSMENT_STATES:
+        print(f"ERROR: Unknown assessment '{assessment}'. Valid: {', '.join(ASSESSMENT_STATES.keys())}")
+        sys.exit(1)
+
+    reg = load_registry()
+    fid = str(family_id)
+    if fid not in reg["families"]:
+        print(f"Family {family_id} not found.")
+        sys.exit(1)
+
+    from datetime import timedelta
+    deadline = (datetime.now(timezone.utc) + timedelta(days=review_deadline_days)).isoformat()
+
+    assessment_record = {
+        "assessment": assessment,
+        "assessment_description": ASSESSMENT_STATES[assessment],
+        "policy": ASSESSMENT_POLICY[assessment],
+        "exposure_path": exposure_path,
+        "scope_basis": scope_basis[:200],
+        "reviewer": reviewer,
+        "assessed_at": datetime.now(timezone.utc).isoformat(),
+        "review_deadline": deadline,
+        "clearance_requirements": CLEARANCE_REQUIREMENTS if assessment == "INDEPENDENTLY_CLEARED" else [],
+    }
+
+    family = reg["families"][fid]
+    if "assessments" not in family:
+        family["assessments"] = []
+    family["assessments"].append(assessment_record)
+    family["current_assessment"] = assessment
+    family["qualification_eligibility"] = ASSESSMENT_POLICY[assessment]
+
+    # Update case-level integrity to match
+    for c in family["cases"]:
+        if assessment == "CONFIRMED_COMPROMISED":
+            c["integrity_state"] = "COMPROMISED"
+            c["independent_proof_suspended"] = True
+        elif assessment == "POTENTIALLY_COMPROMISED":
+            c["integrity_state"] = "SUSPECT"
+            c["independent_proof_suspended"] = True
+        elif assessment == "INDEPENDENTLY_CLEARED":
+            if c.get("integrity_state") not in ("COMPROMISED", "RETIRED"):
+                c["integrity_state"] = "SEALED"
+                c["independent_proof_suspended"] = False
+        # NOT_YET_ASSESSED: leave case state unchanged, but flag for review
+
+    save_registry(reg)
+    print(f"Family {family_id}: → {assessment}")
+    print(f"  {ASSESSMENT_STATES[assessment]}")
+    print(f"  Policy: {ASSESSMENT_POLICY[assessment]}")
+    print(f"  Review deadline: {deadline[:10]}")
+    if assessment == "NOT_YET_ASSESSED":
+        print(f"  WARNING: not silently cleared — review required before certification use")
+    return assessment_record
+
+
+def add_exposure_edge(from_family, to_family, mechanism, status="POSSIBLE"):
+    """
+    Record a typed exposure relationship between families.
+    Possible edges ≠ confirmed contamination. They trigger assessment, not automatic propagation.
+    """
+    reg = load_registry()
+    if "exposure_edges" not in reg:
+        reg["exposure_edges"] = []
+
+    edge = {
+        "from": int(from_family),
+        "to": int(to_family),
+        "mechanism": mechanism,
+        "status": status,  # POSSIBLE, CONFIRMED, EXCLUDED
+        "recorded_at": datetime.now(timezone.utc).isoformat(),
+    }
+    reg["exposure_edges"].append(edge)
+    save_registry(reg)
+    print(f"Exposure edge: F{from_family} → F{to_family} [{mechanism}] status={status}")
+    if status == "POSSIBLE":
+        print(f"  Note: possible ≠ confirmed. Assessment required, not automatic propagation.")
+    return edge
+
+
+def uncertainty_report():
+    """Show the current uncertainty state across all families."""
+    reg = load_registry()
+    families = reg.get("families", {})
+    print(f"\n{'='*60}")
+    print("UNCERTAINTY ASSESSMENT REPORT")
+    print(f"{'='*60}")
+    for fid in sorted(families.keys(), key=int):
+        f = families[fid]
+        assessment = f.get("current_assessment", "NOT_YET_ASSESSED")
+        eligibility = f.get("qualification_eligibility", "REVIEW_REQUIRED")
+        n_cases = len(f["cases"])
+        print(f"\n  Family {fid}: {f['name']}")
+        print(f"    Assessment: {assessment}")
+        print(f"    Eligibility: {eligibility}")
+        print(f"    Cases: {n_cases}")
+
+    edges = reg.get("exposure_edges", [])
+    if edges:
+        print(f"\n  Exposure edges ({len(edges)}):")
+        for e in edges:
+            print(f"    F{e['from']} → F{e['to']}: {e['mechanism']} [{e['status']}]")
+
+
 def main():
     parser = argparse.ArgumentParser(description="Three-layer canary system")
     sub = parser.add_subparsers(dest="cmd", required=True)
@@ -559,6 +697,25 @@ def main():
                         choices=["CONFIRMED_BOUNDED", "POTENTIALLY_BROADER", "UNKNOWN"])
     comp_f.add_argument("--reporter", default="unknown")
 
+    assess = sub.add_parser("assess", help="Assess family independence (uncertain-scope)")
+    assess.add_argument("--family", required=True)
+    assess.add_argument("--state", required=True,
+                        choices=["CONFIRMED_COMPROMISED", "POTENTIALLY_COMPROMISED",
+                                 "INDEPENDENTLY_CLEARED", "NOT_YET_ASSESSED"])
+    assess.add_argument("--exposure-path", default=None)
+    assess.add_argument("--basis", default="")
+    assess.add_argument("--reviewer", default="unknown")
+    assess.add_argument("--deadline-days", type=int, default=7)
+
+    edge = sub.add_parser("add-edge", help="Record exposure relationship between families")
+    edge.add_argument("--from", dest="from_f", required=True)
+    edge.add_argument("--to", dest="to_f", required=True)
+    edge.add_argument("--mechanism", required=True)
+    edge.add_argument("--status", default="POSSIBLE",
+                      choices=["POSSIBLE", "CONFIRMED", "EXCLUDED"])
+
+    sub.add_parser("uncertainty", help="Uncertainty assessment report")
+
     args = parser.parse_args()
     if args.cmd == "register-family":
         register_family(args.id, args.name, args.description)
@@ -583,6 +740,13 @@ def main():
         register_qualification(args.id, args.description, families, args.criteria)
     elif args.cmd == "compromise-family":
         compromise_family(args.family, args.type, args.evidence, args.scope, args.reporter)
+    elif args.cmd == "assess":
+        assess_family(args.family, args.state, args.exposure_path, args.basis,
+                      args.reviewer, args.deadline_days)
+    elif args.cmd == "add-edge":
+        add_exposure_edge(args.from_f, args.to_f, args.mechanism, args.status)
+    elif args.cmd == "uncertainty":
+        uncertainty_report()
 
 
 if __name__ == "__main__":
