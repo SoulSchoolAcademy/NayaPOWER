@@ -151,8 +151,11 @@ def integrate_verified_lesson(
          behavior (UNKNOWN != VERIFIED, NOT_VERIFIED != VERIFIED).
       3. verifier chain — doer != scorer != verifier, identity-normalized
          per the admission gate contract.
-      4. admission — when the lesson carries an admission record, it must be
-         admitted_as CANDIDATE (the admission gate's choke point).
+      4. admission — the lesson must carry an admission record admitted_as
+         CANDIDATE (the admission gate's choke point). A missing, empty, or
+         non-CANDIDATE record is refused: the choke point has no omit-field
+         bypass, so lessons that never passed the admission gate can never
+         reach the behavior store.
 
     On success the lesson's prescribed behavior becomes the policy for its
     situation at a new store version; optionally the integration itself is
@@ -181,7 +184,10 @@ def integrate_verified_lesson(
     )
 
     admitted_as = str(lesson.get("admission_admitted_as") or "").strip()
-    if admitted_as and admitted_as != ADMITTED_CANDIDATE:
+    # Fail closed: the admission gate is the choke point — a missing,
+    # empty, or non-CANDIDATE admission record is refused. An omitted field
+    # must never be a bypass around the gate.
+    if admitted_as != ADMITTED_CANDIDATE:
         raise IntegrationError(f"lesson_not_admitted:admitted_as={admitted_as!r}")
 
     prior_version = policy_store.current_version
