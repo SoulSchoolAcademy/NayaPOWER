@@ -68,8 +68,13 @@ def main():
 
     urls = re.findall(r"https?://[^\s\)>\]]+", section)
     shas = re.findall(r"\b[0-9a-f]{40}\b", section)
+    # Backtick spans are only paths if they look like paths: no whitespace
+    # (commands like `python -m pytest tests/x.py -q` are NOT paths — a
+    # backticked command misparsed as a path was a false-positive gate
+    # failure on PR #2136, fixed 2026-10-10).
     paths = [p for p in re.findall(r"`([^`]+)`", section)
-             if "/" in p or p.endswith((".md", ".py", ".yml", ".yaml", ".json"))]
+             if re.fullmatch(r"[\w.\-/]+", p)
+             and ("/" in p or p.endswith((".md", ".py", ".yml", ".yaml", ".json")))]
 
     verified = []
     dead = []
