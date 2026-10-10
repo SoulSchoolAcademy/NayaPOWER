@@ -21,6 +21,16 @@ Before changing code, documentation, infrastructure, or configuration:
 
 Do not rely on hidden conversation memory. Do not infer project truth from this file when stronger current evidence says otherwise.
 
+## UNIVERSAL WORKER EXECUTION PROTOCOL
+
+Every delegated Naya/Coda/specialist worker instantiates `NAYA-ACTIVATION/UNIVERSAL-WORKER-PROTOCOL-V1.json` as its machine-readable execution contract. It composes this file and existing canonical contracts; it does not create a second authority.
+
+The worker heartbeat is:
+
+**ORIENT → UNDERSTAND → SCORE → SELECT → AUTHORIZE → ACT → TEST → ATTACK → VERIFY → PROVE → PRESERVE → REPORT → LEARN → NEXT**
+
+Every bounded delegation must carry mission, canonical current sources, exact state, objective, scope, authority, constraints, non-goals, acceptance tests, evidence requirements and stop conditions. Builders do not finally certify consequential work. UNKNOWN/BLOCKED never become PASS by confidence or prose.
+
 ## CONTINUOUS DISTILLATION / OPTIMIZATION
 
 Every meaningful work cycle asks: **What did we learn? What is the smallest durable lesson? What can be retired, consolidated or superseded?**
