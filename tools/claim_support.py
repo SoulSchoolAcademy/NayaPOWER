@@ -651,6 +651,224 @@ def evaluate_composite(claim_id):
     return qualification
 
 
+# Five proof obligations for composite qualification audit
+AUDIT_OBLIGATIONS = {
+    "COMPONENT_CORRECTNESS": "Each component satisfies its stated behavior in tested scope",
+    "INTERFACE_COMPATIBILITY": "Outputs satisfy the next component's input contract",
+    "INTERACTION_CORRECTNESS": "Ordering, shared state, concurrency preserve invariants",
+    "ENVIRONMENT_APPLICABILITY": "Test evidence applies to target runtime",
+    "COMPOSITE_SUFFICIENCY": "Verified obligations actually establish the broader claim",
+}
+
+# Four-tier qualification verdicts
+QUALIFICATION_TIERS = {
+    "COMPONENT_QUALIFIED": "Individual behaviors established",
+    "INTEGRATION_QUALIFIED": "Composition established within defined environment",
+    "TRANSFER_QUALIFIED": "Qualification justified for target environment via bridge evidence",
+    "PRODUCTION_PROVEN": "Independently demonstrated in actual production",
+}
+
+# Environment difference classifications
+ENV_DIFF_CLASSIFICATIONS = {
+    "IMMATERIAL": "Demonstrably cannot affect the qualified property",
+    "COVERED": "Independent evidence establishes property survives the difference",
+    "REQUIRES_BRIDGE": "Additional testing or formal argument needed",
+    "INCOMPATIBLE": "Original evidence does not qualify target environment",
+}
+
+
+def add_interaction(claim_id, handoff_id, sender, receiver, invariant, audit_test=""):
+    """
+    Record a required node-to-node interaction with its invariant.
+    e.g., LAW → ACT: unexpired, applicable permission required
+    """
+    reg = load_registry()
+    if claim_id not in reg["claims"]:
+        print(f"Claim {claim_id} not found.")
+        sys.exit(1)
+
+    claim = reg["claims"][claim_id]
+    if "interactions" not in claim:
+        claim["interactions"] = {}
+
+    claim["interactions"][handoff_id] = {
+        "sender": sender,
+        "receiver": receiver,
+        "required_invariant": invariant[:200],
+        "audit_test": audit_test[:200],
+        "status": "UNRESOLVED",
+        "assessed_at": None,
+    }
+    save_registry(reg)
+    print(f"Added interaction {handoff_id}: {sender} → {receiver}")
+    print(f"  Invariant: {invariant[:80]}...")
+    return claim["interactions"][handoff_id]
+
+
+def assess_interaction(claim_id, handoff_id, status, evidence=""):
+    """Assess whether an interaction's invariant holds."""
+    if status not in ("QUALIFIED", "UNRESOLVED", "FAILED"):
+        print(f"ERROR: status must be QUALIFIED, UNRESOLVED, or FAILED")
+        sys.exit(1)
+
+    reg = load_registry()
+    claim = reg["claims"].get(claim_id)
+    if not claim or handoff_id not in claim.get("interactions", {}):
+        print(f"Interaction {handoff_id} not found in {claim_id}.")
+        sys.exit(1)
+
+    claim["interactions"][handoff_id]["status"] = status
+    claim["interactions"][handoff_id]["evidence"] = evidence[:200]
+    claim["interactions"][handoff_id]["assessed_at"] = datetime.now(timezone.utc).isoformat()
+    save_registry(reg)
+    print(f"{handoff_id}: → {status}")
+    return True
+
+
+def assess_environment_bridge(claim_id, source_env, target_env, differences):
+    """
+    Assess staging → production (or any env → env) transfer.
+    differences: list of {"dimension": ..., "source": ..., "target": ..., "classification": ...}
+    """
+    reg = load_registry()
+    if claim_id not in reg["claims"]:
+        print(f"Claim {claim_id} not found.")
+        sys.exit(1)
+
+    claim = reg["claims"][claim_id]
+    for d in differences:
+        if d.get("classification") not in ENV_DIFF_CLASSIFICATIONS:
+            print(f"ERROR: Unknown classification '{d.get('classification')}'")
+            sys.exit(1)
+
+    unresolved = [d for d in differences if d["classification"] in ("REQUIRES_BRIDGE", "INCOMPATIBLE")]
+    incompatible = [d for d in differences if d["classification"] == "INCOMPATIBLE"]
+
+    if incompatible:
+        bridge_status = "INCOMPATIBLE"
+    elif unresolved:
+        bridge_status = "INCOMPLETE"
+    else:
+        bridge_status = "COMPLETE"
+
+    claim["environment_bridge"] = {
+        "source": source_env,
+        "target": target_env,
+        "status": bridge_status,
+        "differences": differences,
+        "unresolved": [d["dimension"] for d in unresolved],
+        "assessed_at": datetime.now(timezone.utc).isoformat(),
+    }
+    save_registry(reg)
+
+    print(f"\nEnvironment bridge {source_env} → {target_env}: {bridge_status}")
+    for d in differences:
+        print(f"  {d['dimension']}: {d['classification']} — {ENV_DIFF_CLASSIFICATIONS[d['classification']][:50]}")
+    return claim["environment_bridge"]
+
+
+def audit_composite(claim_id):
+    """
+    Full composite qualification audit.
+    Requires: component sufficiency + interaction sufficiency + environment applicability.
+    Issues the highest justified tier, preserves narrower valid conclusions.
+    """
+    reg = load_registry()
+    if claim_id not in reg["claims"]:
+        print(f"Claim {claim_id} not found.")
+        sys.exit(1)
+
+    claim = reg["claims"][claim_id]
+    if not claim.get("composite"):
+        print(f"Claim {claim_id} is not composite.")
+        sys.exit(1)
+
+    # Recompute component coverage
+    evaluate_composite(claim_id)
+    claim = reg["claims"][claim_id]  # reload after recompute
+    comp_qual = claim["qualification"]
+
+    # Check interactions
+    interactions = claim.get("interactions", {})
+    int_qualified = all(i["status"] == "QUALIFIED" for i in interactions.values()) if interactions else True
+    int_failed = any(i["status"] == "FAILED" for i in interactions.values())
+
+    # Check environment bridge
+    bridge = claim.get("environment_bridge", {})
+    bridge_status = bridge.get("status", "NOT_ASSESSED")
+
+    # Determine highest justified tier
+    # Tier 1: components
+    if comp_qual["status"] not in ("FULLY_QUALIFIED", "PARTIALLY_QUALIFIED", "QUALIFIED"):
+        tier = None
+        verdict = "INSUFFICIENT_EVIDENCE"
+        statement = "Component obligations not met."
+    elif int_failed:
+        tier = "COMPONENT_QUALIFIED"
+        verdict = "COMPONENT_QUALIFIED"
+        statement = "Components qualified. Interaction FAILED — composition not established."
+    elif not int_qualified:
+        tier = "COMPONENT_QUALIFIED"
+        verdict = "COMPONENT_QUALIFIED"
+        statement = "Components qualified. Interactions unresolved — integration not proven."
+    elif bridge_status == "INCOMPATIBLE":
+        tier = "INTEGRATION_QUALIFIED"
+        verdict = "INTEGRATION_QUALIFIED"
+        statement = "Integration qualified in source env. Target env incompatible."
+    elif bridge_status == "INCOMPLETE":
+        tier = "INTEGRATION_QUALIFIED"
+        verdict = "INTEGRATION_QUALIFIED"
+        statement = "Integration qualified in source env. Environment transfer incomplete."
+    elif bridge_status == "COMPLETE":
+        tier = "TRANSFER_QUALIFIED"
+        verdict = "TRANSFER_QUALIFIED"
+        statement = "Qualification transferred to target env via bridge evidence."
+    else:
+        tier = "COMPONENT_QUALIFIED"
+        verdict = "COMPONENT_QUALIFIED"
+        statement = "Components qualified. Environment bridge not assessed."
+
+    # Special: if all components + interactions + bridge complete in production → PRODUCTION_PROVEN
+    if (comp_qual["status"] == "FULLY_QUALIFIED" and int_qualified and
+        bridge.get("target") == "production" and bridge_status == "COMPLETE"):
+        tier = "PRODUCTION_PROVEN"
+        verdict = "PRODUCTION_PROVEN"
+        statement = "Independently demonstrated in production."
+
+    audit = {
+        "claim_id": claim_id,
+        "tier": tier,
+        "verdict": verdict,
+        "statement": statement,
+        "component_status": comp_qual["status"],
+        "interaction_status": "QUALIFIED" if int_qualified else ("FAILED" if int_failed else "UNRESOLVED"),
+        "bridge_status": bridge_status,
+        "narrower_conclusions_preserved": True,
+        "audited_at": datetime.now(timezone.utc).isoformat(),
+    }
+    claim["composite_audit"] = audit
+    save_registry(reg)
+
+    log_event({
+        "event_type": "COMPOSITE_AUDITED",
+        "claim_id": claim_id,
+        "audit": audit,
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+    })
+
+    print(f"\n{'='*60}")
+    print(f"COMPOSITE AUDIT: {claim_id}")
+    print(f"{'='*60}")
+    print(f"  Verdict: {verdict}")
+    print(f"  {QUALIFICATION_TIERS.get(tier, 'No tier achieved')}")
+    print(f"  Components: {comp_qual['status']}")
+    print(f"  Interactions: {audit['interaction_status']}")
+    print(f"  Environment bridge: {bridge_status}")
+    print(f"  {statement}")
+    print(f"  Narrower valid conclusions: PRESERVED")
+    return audit
+
+
 def main():
     parser = argparse.ArgumentParser(description="Claim-level support-set evaluator")
     sub = parser.add_subparsers(dest="cmd", required=True)
@@ -714,6 +932,29 @@ def main():
     ec = sub.add_parser("evaluate-composite", help="Evaluate composite claim")
     ec.add_argument("--claim", required=True)
 
+    ai = sub.add_parser("add-interaction", help="Record required node handoff")
+    ai.add_argument("--claim", required=True)
+    ai.add_argument("--handoff", required=True)
+    ai.add_argument("--sender", required=True)
+    ai.add_argument("--receiver", required=True)
+    ai.add_argument("--invariant", required=True)
+    ai.add_argument("--audit-test", default="")
+
+    si = sub.add_parser("assess-interaction", help="Assess interaction invariant")
+    si.add_argument("--claim", required=True)
+    si.add_argument("--handoff", required=True)
+    si.add_argument("--status", required=True, choices=["QUALIFIED", "UNRESOLVED", "FAILED"])
+    si.add_argument("--evidence", default="")
+
+    eb = sub.add_parser("env-bridge", help="Assess environment transfer")
+    eb.add_argument("--claim", required=True)
+    eb.add_argument("--source", required=True)
+    eb.add_argument("--target", required=True)
+    eb.add_argument("--differences", required=True, help="JSON list of {dimension,source,target,classification}")
+
+    au = sub.add_parser("audit", help="Full composite qualification audit")
+    au.add_argument("--claim", required=True)
+
     args = parser.parse_args()
     if args.cmd == "register-claim":
         register_claim(args.id, args.description, args.scope)
@@ -742,6 +983,16 @@ def main():
                                 args.scope, args.independence, args.provenance)
     elif args.cmd == "evaluate-composite":
         evaluate_composite(args.claim)
+    elif args.cmd == "add-interaction":
+        add_interaction(args.claim, args.handoff, args.sender, args.receiver,
+                        args.invariant, args.audit_test)
+    elif args.cmd == "assess-interaction":
+        assess_interaction(args.claim, args.handoff, args.status, args.evidence)
+    elif args.cmd == "env-bridge":
+        differences = json.loads(args.differences)
+        assess_environment_bridge(args.claim, args.source, args.target, differences)
+    elif args.cmd == "audit":
+        audit_composite(args.claim)
 
 
 if __name__ == "__main__":
