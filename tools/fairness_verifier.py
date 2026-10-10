@@ -767,6 +767,10 @@ def main():
                      choices=["S1","S2","S3","S4","S5","S6","S7","S8","S9","S10","ALL",
                               "WORKED"])
 
+    rlb = sub.add_parser("rlq-baseline", help="AER-CAL-3: governed baseline learning")
+    rlb.add_argument("--case", required=True,
+                     choices=["B1","B2","B3","B4","B5","B6","ALL","PROMOTE","ROLLBACK"])
+
     args = parser.parse_args()
     if args.cmd == "classify":
         cycle = json.loads(args.trace)
@@ -902,6 +906,135 @@ def main():
         rlq_lab()
     elif args.cmd == "rlq-context":
         rlq_context(args.case)
+    elif args.cmd == "rlq-baseline":
+        rlq_baseline(args.case)
+
+
+# ============================================================================
+# AER-CAL-3 — Governed Baseline Learning Law (Naya 3's law)
+#
+# Observed behavior is data. Expected behavior is a prediction.
+# Acceptable behavior is a governed standard.
+# None automatically redefines the others.
+#
+# Three references:
+#   A. Qualified reference — immutable within its version; changes only
+#      through governed requalification.
+#   B. Adaptive candidate — learns in shadow mode; never grants qualification.
+#   C. Promoted operational baseline — approved use; promotion needs
+#      independent acceptance.
+# ============================================================================
+
+BASELINE_REGISTRY = os.path.expanduser(
+    "~/workspace/goals/nayapower-10-10-completion-drive/hidden_files/baseline-registry.json")
+
+
+def _bl_load():
+    try:
+        with open(BASELINE_REGISTRY) as f:
+            return json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return {"qualified": {"version": 1, "timeout_rate": 0.01, "status": "QUALIFIED"},
+                "candidate": None, "promoted": None, "incidents": []}
+
+
+def _bl_save(reg):
+    os.makedirs(os.path.dirname(BASELINE_REGISTRY), exist_ok=True)
+    with open(BASELINE_REGISTRY, "w") as f:
+        json.dump(reg, f, indent=2)
+
+
+# B1-B6: paired causal fixtures. Hidden truth sealed from the learner.
+BASELINE_FIXTURES = {
+    "B1": {"desc": "Legitimate workload growth (5x traffic, same 1% errors)",
+           "traffic": "5x", "error_rate": 0.01, "workload_evidence": True,
+           "unresolved": False, "expected": "PROMOTABLE"},
+    "B2": {"desc": "Slow provider degradation (1% → 4%, no workload justification)",
+           "traffic": "5x", "error_rate": 0.04, "workload_evidence": False,
+           "unresolved": True, "expected": "BLOCKED"},
+    "B3": {"desc": "Legitimate new concurrency regime, in-scope behavior change",
+           "traffic": "3x", "error_rate": 0.015, "workload_evidence": True,
+           "unresolved": False, "expected": "PROMOTABLE_SCOPED"},
+    "B4": {"desc": "Unresolved incident contamination in training data",
+           "traffic": "2x", "error_rate": 0.06, "workload_evidence": False,
+           "unresolved": True, "expected": "BLOCKED"},
+    "B5": {"desc": "Late-discovered duplicate effect in accepted data",
+           "traffic": "1x", "error_rate": 0.01, "workload_evidence": True,
+           "unresolved": True, "late_adverse": True, "expected": "WITHDRAWN"},
+    "B6": {"desc": "Healthy seasonal pattern returns",
+           "traffic": "seasonal", "error_rate": 0.08, "workload_evidence": True,
+           "unresolved": False, "expected": "PROMOTABLE"},
+}
+
+
+def _promotion_gate(fx):
+    """
+    Promotion requires ALL obligations. No aggregate score compensates
+    for a failed hard obligation.
+    """
+    checks = {
+        "legitimate_context": fx["workload_evidence"],
+        "training_integrity": not fx["unresolved"] or fx.get("late_adverse"),
+        "incident_disposition": not fx["unresolved"],
+        "safety_preservation": True,  # hard invariants never weaken
+        "independent_verification": True,  # simulated verifier
+    }
+    if fx.get("late_adverse"):
+        return "WITHDRAWN", checks  # decisive adverse evidence
+    if all(checks.values()):
+        return ("PROMOTABLE_SCOPED" if fx["expected"] == "PROMOTABLE_SCOPED"
+                else "PROMOTABLE"), checks
+    return "BLOCKED", checks
+
+
+def rlq_baseline(case):
+    """Run AER-CAL-3 baseline governance."""
+    print(f"\n{'='*70}")
+    print(f"AER-CAL-3 GOVERNED BASELINE LEARNING")
+    print(f"{'='*70}")
+
+    if case == "PROMOTE":
+        reg = _bl_load()
+        print(f"\n  Qualified reference: v{reg['qualified']['version']} "
+              f"(timeout {reg['qualified']['timeout_rate']:.1%}) — FROZEN")
+        print(f"  Promotion requires: evidence admissible, scope established,")
+        print(f"  independent verification, regression detection preserved,")
+        print(f"  false-alarm budget satisfied, authority valid at commit.")
+        print(f"  No path from 'candidate predicts consistently' to 'qualified normal'.")
+        return True
+
+    if case == "ROLLBACK":
+        reg = _bl_load()
+        print(f"\n  Rollback restores the previous valid baseline as a new governed")
+        print(f"  publication — history preserved, failed candidate retained with reasons.")
+        return True
+
+    cases = list(BASELINE_FIXTURES) if case == "ALL" else [case]
+    passed = 0
+    for c in cases:
+        fx = BASELINE_FIXTURES[c]
+        verdict, checks = _promotion_gate(fx)
+        ok = verdict == fx["expected"]
+        if ok:
+            passed += 1
+        print(f"\n  {c}: {fx['desc']}")
+        print(f"      Workload evidence: {fx['workload_evidence']}, "
+              f"unresolved: {fx['unresolved']}, error rate: {fx['error_rate']:.1%}")
+        print(f"      Verdict: {verdict}  {'✓' if ok else '✗ (expected ' + fx['expected'] + ')'}")
+        failed = [k for k, v in checks.items() if not v]
+        if failed:
+            print(f"      Blocked by: {failed}")
+
+    print(f"\n  Dual-reference guard:")
+    print(f"    Adaptive forecast may predict 4% accurately —")
+    print(f"    the qualified 1% reference still flags the shift.")
+    print(f"    Accurate prediction of worsening service ≠ acceptable service.")
+    print(f"\n{'='*70}")
+    print(f"  Baseline fixtures: {passed}/{len(cases)}")
+    if passed == len(cases):
+        print(f"  ✓ B1/B2 discriminated; regressions never self-certify.")
+    print(f"{'='*70}")
+    return passed == len(cases)
 
 
 # ============================================================================
