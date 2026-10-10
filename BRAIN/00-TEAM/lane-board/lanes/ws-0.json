@@ -1,0 +1,14 @@
+{
+  "lane": "ws-0",
+  "kind": "workstream",
+  "ref": "WS-0",
+  "title": "Ratification landing",
+  "seat": "unassigned",
+  "task": "Naya 4 seat, already running: PR #2087 onto current main, index rebuild, RATIFIED flip.",
+  "status": "SEEDED",
+  "blockers": [],
+  "heartbeat_utc": "2026-10-10T15:30:00Z",
+  "note": "Charter seed \u2014 no lane has signed in yet.",
+  "updated_utc": "2026-10-10T15:30:00Z",
+  "updated_by": "naya-4 (ws-5 seed)"
+}

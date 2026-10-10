@@ -1,12 +1,13 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-10",
-  "receipt_basis_commit": "2eacc1c3c01a61e1f78e5e1062562dd23f7cd78b",
-  "inventory_file_count": 1240,
+  "receipt_basis_commit": "01de2e2e8f95630b571c5e86de655f448999ac73",
+  "inventory_file_count": 1264,
   "domain_counts": {
     "00-ACTIVATION": 3,
     "00-ARCHITECTURE": 5,
     "00-SPEC": 15,
+    "00-TEAM": 24,
     "01-GOVERNANCE": 54,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
@@ -139,6 +140,126 @@
       "path": "BRAIN/00-SPEC/SCHEMA/SUCCESSOR-PACKAGE-SCHEMA.json",
       "blob_sha": "bab1255dcaf28075f11a94028f676f3fc2df4402",
       "size": 3904
+    },
+    {
+      "path": "BRAIN/00-TEAM/lane-board/LANE-BOARD.md",
+      "blob_sha": "5047969272830a7cd1eb92706c1e85083db7b1be",
+      "size": 4880
+    },
+    {
+      "path": "BRAIN/00-TEAM/lane-board/README.md",
+      "blob_sha": "4787878e05f6386090b9b338af17d67c6011818c",
+      "size": 3274
+    },
+    {
+      "path": "BRAIN/00-TEAM/lane-board/lane-board.json",
+      "blob_sha": "c9fe113bd7f33226dcff2f13b1cfd904cb61a60b",
+      "size": 10140
+    },
+    {
+      "path": "BRAIN/00-TEAM/lane-board/lanes/_schema.json",
+      "blob_sha": "6cca58ec6f790a7d01f4e7622a452ce6978da1db",
+      "size": 772
+    },
+    {
+      "path": "BRAIN/00-TEAM/lane-board/lanes/team-1865.json",
+      "blob_sha": "4138262a3cd3c40b6fe4aee0e1068d58b1aa75da",
+      "size": 386
+    },
+    {
+      "path": "BRAIN/00-TEAM/lane-board/lanes/team-1866.json",
+      "blob_sha": "88c96bc122bb48a1e34eb171b1ba978fd00a2d58",
+      "size": 390
+    },
+    {
+      "path": "BRAIN/00-TEAM/lane-board/lanes/team-1867.json",
+      "blob_sha": "d8640c159d9964f69f6720b134f462710ec559e8",
+      "size": 392
+    },
+    {
+      "path": "BRAIN/00-TEAM/lane-board/lanes/team-1868.json",
+      "blob_sha": "60eeb38fc943593fbaf7452f1f95e5340f8f34b9",
+      "size": 439
+    },
+    {
+      "path": "BRAIN/00-TEAM/lane-board/lanes/team-1869.json",
+      "blob_sha": "7415e01c4c27b49b4ce03e5c39ed56aa8e17c81d",
+      "size": 398
+    },
+    {
+      "path": "BRAIN/00-TEAM/lane-board/lanes/team-1870.json",
+      "blob_sha": "eae5c6b0087a5a203a47082f997cd1e7716e3dae",
+      "size": 428
+    },
+    {
+      "path": "BRAIN/00-TEAM/lane-board/lanes/team-1871.json",
+      "blob_sha": "32d0c02d18838ab9278fd3b07e8f4d5dc70efb39",
+      "size": 400
+    },
+    {
+      "path": "BRAIN/00-TEAM/lane-board/lanes/team-1872.json",
+      "blob_sha": "3a3020cfddc446033db5ffe159dfa55eb016c4f5",
+      "size": 395
+    },
+    {
+      "path": "BRAIN/00-TEAM/lane-board/lanes/team-1873.json",
+      "blob_sha": "3a1ff855a0d188f8843d474bea243d5626bc7f68",
+      "size": 424
+    },
+    {
+      "path": "BRAIN/00-TEAM/lane-board/lanes/ws-0.json",
+      "blob_sha": "2fa9cd8e34c84db27737856ae4105653bb9c1e6a",
+      "size": 444
+    },
+    {
+      "path": "BRAIN/00-TEAM/lane-board/lanes/ws-1.json",
+      "blob_sha": "88473fafce73cceaa9cd7e80ec9b3a49fbdd19c2",
+      "size": 449
+    },
+    {
+      "path": "BRAIN/00-TEAM/lane-board/lanes/ws-10.json",
+      "blob_sha": "8c15f51890f8cee2b3209d5ccb751c9f17b9044c",
+      "size": 461
+    },
+    {
+      "path": "BRAIN/00-TEAM/lane-board/lanes/ws-2.json",
+      "blob_sha": "9d5c2ec3501ec1a200fc60e2b3c396f084770b27",
+      "size": 469
+    },
+    {
+      "path": "BRAIN/00-TEAM/lane-board/lanes/ws-3.json",
+      "blob_sha": "2336bc44f4658c6aea835d355136226b7763bca2",
+      "size": 457
+    },
+    {
+      "path": "BRAIN/00-TEAM/lane-board/lanes/ws-4.json",
+      "blob_sha": "88db78ed170325869f8bbbea6ca1cd8f7bfd6b20",
+      "size": 437
+    },
+    {
+      "path": "BRAIN/00-TEAM/lane-board/lanes/ws-5.json",
+      "blob_sha": "757107130d5f79d0cf56151de83c3903342d582a",
+      "size": 448
+    },
+    {
+      "path": "BRAIN/00-TEAM/lane-board/lanes/ws-6.json",
+      "blob_sha": "8bce95588000175297cf336792860faf07ee5dba",
+      "size": 444
+    },
+    {
+      "path": "BRAIN/00-TEAM/lane-board/lanes/ws-7.json",
+      "blob_sha": "ea6882e31ad5a8f23a96a709f23ced99a865b6ac",
+      "size": 452
+    },
+    {
+      "path": "BRAIN/00-TEAM/lane-board/lanes/ws-8.json",
+      "blob_sha": "928938f14a5eff3a18fd91ba479b4e9a4cf3a966",
+      "size": 432
+    },
+    {
+      "path": "BRAIN/00-TEAM/lane-board/lanes/ws-9.json",
+      "blob_sha": "f84cc78865e3ce8482740e1850bd1b1ed631ff3b",
+      "size": 444
     },
     {
       "path": "BRAIN/01-GOVERNANCE/0000-OPERATING-CODE-V1.md",

@@ -1,0 +1,19 @@
+{
+  "$schema": "lane-board lane record v1",
+  "path": "BRAIN/00-TEAM/lane-board/lanes/<lane>.json",
+  "lane": "kebab-case lane id, e.g. ws-5, team-1865",
+  "kind": "workstream | team",
+  "ref": "charter label, e.g. WS-5 or #1865",
+  "title": "plain-words lane title",
+  "seat": "who currently holds the lane (agent id or 'unassigned')",
+  "task": "current task in plain words",
+  "status": "SEEDED | ACTIVE | BLOCKED | SIGNED_OUT",
+  "blockers": [
+    "plain-words blocker strings"
+  ],
+  "heartbeat_utc": "ISO-8601 Z; refreshed by every updater command",
+  "note": "optional plain-words note",
+  "updated_utc": "last mutation time",
+  "updated_by": "writer identity",
+  "derived": "renderer maps ACTIVE/BLOCKED with heartbeat older than 30 min to STALE (never stored)"
+}

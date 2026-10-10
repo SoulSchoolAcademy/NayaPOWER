@@ -1,0 +1,14 @@
+{
+  "lane": "ws-4",
+  "kind": "workstream",
+  "ref": "WS-4",
+  "title": "Waste meter",
+  "seat": "unassigned",
+  "task": "Spec then build: tokens + compute per decision, per merge, per note. Plain-words readout.",
+  "status": "SEEDED",
+  "blockers": [],
+  "heartbeat_utc": "2026-10-10T15:30:00Z",
+  "note": "Charter seed \u2014 no lane has signed in yet.",
+  "updated_utc": "2026-10-10T15:30:00Z",
+  "updated_by": "naya-4 (ws-5 seed)"
+}
