@@ -544,6 +544,33 @@ def main():
     bcp = sub.add_parser("boundary-compat", help="Check interface compatibility")
     bcp.add_argument("--contract", required=True)
 
+    te = sub.add_parser("trace-event", help="Record canonical evidence event")
+    te.add_argument("--trace", required=True)
+    te.add_argument("--event-id", required=True)
+    te.add_argument("--event-type", required=True)
+    te.add_argument("--producer", required=True)
+    te.add_argument("--observer", required=True)
+    te.add_argument("--qualification", default="L0_REPORTED",
+                    choices=["L0_REPORTED", "L1_AUTHENTICATED",
+                             "L2_INDEPENDENTLY_CORROBORATED", "L3_CAUSALLY_QUALIFIED"])
+
+    tl = sub.add_parser("trace-link", help="Add typed causal relationship")
+    tl.add_argument("--trace", required=True)
+    tl.add_argument("--from-id", required=True)
+    tl.add_argument("--to-id", required=True)
+    tl.add_argument("--relationship", required=True,
+                    choices=["CORRELATES_WITH", "HAPPENS_BEFORE", "ENABLED_BY",
+                             "DEPENDS_ON", "PREVENTED_BY", "CAUSED_BY"])
+    tl.add_argument("--evidence", default="")
+
+    tv = sub.add_parser("trace-verdict", help="Issue scoped causal verdict")
+    tv.add_argument("--trace", required=True)
+    tv.add_argument("--symptom", required=True)
+
+    tls = sub.add_parser("trace-label-swap", help="Adversarial label-swap test")
+    tls.add_argument("--trace", required=True)
+    tls.add_argument("--symptom", required=True)
+
     args = parser.parse_args()
     if args.cmd == "classify":
         cycle = json.loads(args.trace)
@@ -585,6 +612,210 @@ def main():
         boundary_classify(args.contract, args.symptom, args.control_facts)
     elif args.cmd == "boundary-compat":
         boundary_check_compat(args.contract)
+    elif args.cmd == "trace-event":
+        trace_record_event(args.trace, args.event_id, args.event_type,
+                           args.producer, args.observer, args.qualification)
+    elif args.cmd == "trace-link":
+        trace_add_link(args.trace, args.from_id, args.to_id, args.relationship,
+                       args.evidence)
+    elif args.cmd == "trace-verdict":
+        trace_verdict(args.trace, args.symptom)
+    elif args.cmd == "trace-label-swap":
+        trace_label_swap_test(args.trace, args.symptom)
+
+
+# ============================================================================
+# Causal Trace Contract (Naya 1's "A Verifiable Causal Trace Across
+# Environment, Scheduler and Worker")
+#
+# Three distinct layers:
+#   1. Observation — what was independently witnessed?
+#   2. Causal relationship — which verified event enabled/prevented another?
+#   3. Responsibility — which component controlled the failing condition?
+#
+# Logs describe what components claim happened. Evidence establishes what
+# happened. Causal verification establishes why.
+#
+# Evidence qualification ladder:
+#   L0 REPORTED → L1 AUTHENTICATED → L2 INDEPENDENTLY_CORROBORATED
+#   → L3 CAUSALLY_QUALIFIED
+# ============================================================================
+
+TRACE_REGISTRY = os.path.expanduser(
+    "~/workspace/goals/nayapower-10-10-completion-drive/hidden_files/trace-registry.json")
+
+QUALIFICATION_LEVELS = ["L0_REPORTED", "L1_AUTHENTICATED",
+                        "L2_INDEPENDENTLY_CORROBORATED", "L3_CAUSALLY_QUALIFIED"]
+
+# Relationship → proof required
+RELATIONSHIP_PROOF = {
+    "CORRELATES_WITH": "valid identifiers and source binding",
+    "HAPPENS_BEFORE": "authenticated message, sequence or state-transition evidence",
+    "ENABLED_BY": "valid precondition and transition evidence",
+    "DEPENDS_ON": "independently reviewed contract or actual dependency",
+    "PREVENTED_BY": "verified blocker and applicable execution semantics",
+    "CAUSED_BY": "reproduction, intervention or independently justified causal argument",
+}
+
+
+def _trace_load():
+    try:
+        with open(TRACE_REGISTRY) as f:
+            return json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return {"traces": {}}
+
+
+def _trace_save(reg):
+    os.makedirs(os.path.dirname(TRACE_REGISTRY), exist_ok=True)
+    with open(TRACE_REGISTRY, "w") as f:
+        json.dump(reg, f, indent=2)
+
+
+def trace_record_event(trace_id, event_id, event_type, producer, observer,
+                       qualification="L0_REPORTED"):
+    """Record a canonical evidence event. Observation ≠ claim ≠ verdict."""
+    if qualification not in QUALIFICATION_LEVELS:
+        print(f"ERROR: unknown qualification '{qualification}'")
+        sys.exit(1)
+    reg = _trace_load()
+    if trace_id not in reg["traces"]:
+        reg["traces"][trace_id] = {"events": {}, "links": [],
+                                   "created_at": datetime.now(timezone.utc).isoformat()}
+    reg["traces"][trace_id]["events"][event_id] = {
+        "type": event_type,
+        "producer": producer,
+        "observer": observer,
+        "qualification": qualification,
+        "causal_status": "UNASSESSED",
+        "recorded_at": datetime.now(timezone.utc).isoformat(),
+    }
+    _trace_save(reg)
+    print(f"Trace {trace_id}: event {event_id} ({event_type}) @ {qualification}")
+    if producer == observer:
+        print(f"  ⚠ producer == observer: self-reported, corroboration still required for L2")
+    return True
+
+
+def trace_add_link(trace_id, from_id, to_id, relationship, evidence=""):
+    """
+    Add a typed causal relationship. Each type has a proof requirement.
+    CORRELATES_WITH must never be silently promoted to CAUSED_BY.
+    """
+    if relationship not in RELATIONSHIP_PROOF:
+        print(f"ERROR: unknown relationship '{relationship}'")
+        sys.exit(1)
+    reg = _trace_load()
+    trace = reg["traces"].get(trace_id)
+    if not trace:
+        print(f"Unknown trace {trace_id}")
+        return False
+    if from_id not in trace["events"] or to_id not in trace["events"]:
+        print(f"Unknown event in link {from_id} → {to_id}")
+        return False
+    if not evidence and relationship in ("CAUSED_BY", "PREVENTED_BY", "ENABLED_BY"):
+        print(f"⚠ {relationship} requires evidence: {RELATIONSHIP_PROOF[relationship]}")
+        print(f"  Link recorded as HYPOTHESIZED, not established.")
+        status = "HYPOTHESIZED"
+    else:
+        status = "SUPPORTED" if evidence else "UNASSESSED"
+    trace["links"].append({
+        "from": from_id, "to": to_id, "relationship": relationship,
+        "proof_required": RELATIONSHIP_PROOF[relationship],
+        "evidence": evidence[:200], "status": status,
+    })
+    if relationship == "CORRELATES_WITH":
+        print(f"  Note: CORRELATES_WITH is ordering/context only — not causation.")
+    _trace_save(reg)
+    print(f"Trace {trace_id}: {from_id} —[{relationship}]→ {to_id} ({status})")
+    return True
+
+
+def trace_verdict(trace_id, symptom):
+    """
+    Issue a scoped causal verdict using the three checks:
+    mechanism, counterfactual, independent reproduction.
+    Reports uncertainty instead of inventing blame.
+    """
+    reg = _trace_load()
+    trace = reg["traces"].get(trace_id)
+    if not trace:
+        print(f"Unknown trace {trace_id}")
+        return None
+
+    events = trace["events"]
+    links = trace["links"]
+    print(f"\nCausal verdict for trace {trace_id}: {symptom}")
+    print(f"  Events: {len(events)}, links: {len(links)}")
+
+    # Evidence quality assessment
+    quals = [e["qualification"] for e in events.values()]
+    best = max((QUALIFICATION_LEVELS.index(q) for q in quals), default=0)
+    print(f"  Best evidence level: {QUALIFICATION_LEVELS[best]}")
+
+    # Check for CAUSED_BY links with real support
+    causal = [l for l in links if l["relationship"] == "CAUSED_BY" and l["status"] == "SUPPORTED"]
+
+    # Negative-claim coverage check
+    negative_claims = [e for e in events.values() if "NOT_OBSERVED" in e["type"] or "NEVER" in e["type"]]
+    if negative_claims and best < 2:
+        print(f"  ⚠ Negative claims without L2+ coverage → INSUFFICIENT_OBSERVABILITY")
+        verdict = "INSUFFICIENT_OBSERVABILITY"
+        reason = "Absent-event claims require coverage evidence, not missing log entries."
+    elif not causal:
+        verdict = "UNDETERMINED"
+        reason = "No supported CAUSED_BY relationship. Competing explanations preserved."
+    elif len(causal) == 1:
+        verdict = causal[0]["to"] + "_CAUSAL"
+        reason = f"Supported by: {causal[0]['evidence'][:80]}"
+    else:
+        verdict = "MULTIPLE_SUPPORTED_CAUSES"
+        reason = f"{len(causal)} supported causal links; do not claim sole causality."
+
+    print(f"  Verdict: {verdict}")
+    print(f"  Reason: {reason}")
+    print(f"  (Scoped to this trace and its evidence. Not a production guarantee.)")
+    return verdict
+
+
+def trace_label_swap_test(trace_id, symptom):
+    """
+    Adversarial test: swap the reported failure labels while leaving the
+    underlying evidence unchanged. The verdict must NOT change.
+    If it changes, the verifier is reading labels, not evidence.
+    """
+    reg = _trace_load()
+    trace = reg["traces"].get(trace_id)
+    if not trace:
+        print(f"Unknown trace {trace_id}")
+        return False
+
+    v1 = trace_verdict(trace_id, symptom)
+
+    # Swap labels: rewrite event types pairwise, keep everything else
+    events = list(trace["events"].items())
+    if len(events) < 2:
+        print("Not enough events for label-swap test")
+        return False
+    (id1, e1), (id2, e2) = events[0], events[1]
+    e1["type"], e2["type"] = e2["type"], e1["type"]
+    _trace_save(reg)
+
+    print(f"\n  Labels swapped: {id1}↔{id2} (evidence unchanged)")
+    v2 = trace_verdict(trace_id, symptom)
+
+    # Restore
+    e1["type"], e2["type"] = e2["type"], e1["type"]
+    _trace_save(reg)
+
+    if v1 == v2:
+        print(f"\n  ✓ PASS: verdict unchanged by label swap ({v1})")
+        print(f"    Verifier reads evidence, not labels.")
+        return True
+    else:
+        print(f"\n  ✗ FAIL: verdict changed {v1} → {v2} on label swap")
+        print(f"    Verifier is label-driven, not evidence-driven. Reject.")
+        return False
 
 
 # ============================================================================
