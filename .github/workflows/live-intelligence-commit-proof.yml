@@ -801,7 +801,13 @@ jobs:
           if not isinstance(intel, dict):
               print("REJECT:intelligence_not_object")
               sys.exit(0)
-          # Verification provenance must be present (written by independent-verification)
+          # No provenance FIELD is checked here (none is written onto captures by
+          # independent-verification). Verification is enforced by chain
+          # ordering alone: this job has needs: independent-verification, so
+          # GitHub never runs it unless that job succeeded — that edge IS the
+          # gate. What this step checks is structural: required fields exist
+          # and intelligence is an object. Do not read ADMIT as a verification
+          # verdict; the verification verdict lives in independent-verification.
           print("ADMIT")
           PY
           "$capture_path")"
