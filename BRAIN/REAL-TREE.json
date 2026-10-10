@@ -1,13 +1,13 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-10",
-  "receipt_basis_commit": "26f28c527626c74b164790d3d635ae9b831476a1",
-  "inventory_file_count": 1239,
+  "receipt_basis_commit": "3db1fa455a5cd27572d407f5d1c5c5d6354977ef",
+  "inventory_file_count": 1240,
   "domain_counts": {
     "00-ACTIVATION": 3,
     "00-ARCHITECTURE": 5,
     "00-SPEC": 15,
-    "01-GOVERNANCE": 53,
+    "01-GOVERNANCE": 54,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
@@ -242,18 +242,18 @@
     },
     {
       "path": "BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2.ai.md",
-      "blob_sha": "6dd76254fb224138bb006b639e23325799b21d1f",
-      "size": 14729
+      "blob_sha": "0f81fc721fc143928d94212124886c73906fe196",
+      "size": 14786
     },
     {
       "path": "BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2.human.md",
-      "blob_sha": "c70fc5b7ebf3e2b2cfd82010bf864a82fd176f4c",
-      "size": 9018
+      "blob_sha": "fbe045ba392e5e3af32821f151acd2c4e6868f21",
+      "size": 9007
     },
     {
       "path": "BRAIN/01-GOVERNANCE/0008-operating-code-v2.machine.json",
-      "blob_sha": "210984d7d333d105d9d9532a8b79af6e932d4dae",
-      "size": 5087
+      "blob_sha": "1088c9ae24a78d137cc1158300cda7ef0271ef86",
+      "size": 5146
     },
     {
       "path": "BRAIN/01-GOVERNANCE/0013-PARALLEL-EXECUTION-V1.ai.md",
@@ -369,6 +369,11 @@
       "path": "BRAIN/01-GOVERNANCE/DOC-COMPLETENESS-AUDIT-2026-10-10.md",
       "blob_sha": "ea273ce3077d1e8be7001203d1c312d44c8e0d86",
       "size": 2633
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/GATE-CONSOLE.md",
+      "blob_sha": "d7810ee7ef34047865a25e378555b57a92e44a28",
+      "size": 10085
     },
     {
       "path": "BRAIN/01-GOVERNANCE/LEARNING-INTERNALIZATION-AUTOMATIC-BEHAVIOR-V1.md",
