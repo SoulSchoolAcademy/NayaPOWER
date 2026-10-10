@@ -13,7 +13,11 @@ SCOPE — companion to Naya 4's kernel/protocol/ (PR #1807), NOT a duplicate:
     - cold_start_gate / read_receipt / takeover / cold_successor_test
   Implemented HERE (the missing delta):
     - check_sign_in / check_sign_out    (sign in/out format validation)
-    - check_scorecard                   (5-step DECISION scorecard completeness)
+    - check_scorecard                   (5-step DECISION scorecard completeness,
+                                         structured-dict input)
+    - check_scorecard_body              (5-step scorecard STRUCTURE gate: scans a
+                                         raw markdown PR body for the five
+                                         headers — Gate 5 of 7, Operating Code V2)
     - check_truth_states                (truth-state label validation)
 
 For check_quality_gate and check_protected_gates this module provides thin
@@ -29,7 +33,10 @@ Stdlib only.
 
 from __future__ import annotations
 
+import json
 import math
+import re
+import sys
 from dataclasses import dataclass, field
 from enum import Enum
 
@@ -314,6 +321,204 @@ def check_scorecard(scorecard: dict) -> ScorecardResult:
 
 
 # ---------------------------------------------------------------------------
+# 5-step scorecard STRUCTURE gate — raw PR body scanner (Gate 5 of 7)
+# ---------------------------------------------------------------------------
+# The Operating Code V2 audit (Domain 1): every merge/scorecard PR must contain
+# all five sections. CI scans the PR BODY for the five headers; missing section
+# = blocked.
+#
+# Same gate, different input representation — NOT a second mechanism:
+#   - check_scorecard            validates the structured dict
+#   - auto_merge_gate._check_receipt  validates pr_state JSON
+#   - check_scorecard_body       validates the raw markdown the human (and the
+#                                CI check) actually reads
+# One decision, one seam: this is the rendered-receipt form of the one gate.
+#
+# Contract (documented for receipt authors):
+#   - Section headers are level-1/2 markdown headings (#, ##) or whole-line
+#     bold leaders (**...**). Level-3+ headings (###) are treated as
+#     in-section structure, not section boundaries.
+#   - A header is claimed by explicit step number first ("Step 3", "3.", "(4)"),
+#     then by keyword (enumerate / score / gate / decide|winner / receipt).
+#     Headers numbered 1-5 are treated as step labels, so do not number
+#     non-step headers 1-5 with a trailing dot/paren/colon.
+#   - Every section must carry non-trivial content: >= MIN_SECTION_CONTENT_CHARS
+#     non-markup characters, and not a bare placeholder (TBD/TODO/N/A...).
+#   - Sections must appear in the law's order: 1 -> 2 -> 3 -> 4 -> 5.
+
+# Section boundaries: ATX level-1/2 headings, or whole-line bold leaders.
+_SECTION_HEADING_RES = (
+    re.compile(r"^\s*#{1,2}\s+(.+?)\s*$"),   # ## Step 1: Enumerate
+    re.compile(r"^\s*\*\*(.+?)\*\*\s*$"),     # **1. Enumerate**
+)
+
+# Explicit step numbers: "Step 3: Gates", "1. Enumerate", "(4) Decide".
+_STEP_NUMBER_RE = re.compile(
+    r"(?:\bstep\s*([1-5])\b|^\s*\(?([1-5])\s*[.:)>\-–—])", re.IGNORECASE
+)
+
+# Per-step keyword matchers (word-boundary, so "Investigation" never matches
+# "gate"). Step 2 strips "scorecard" first so a lone "## Scorecard" title is
+# not mistaken for the score section.
+_STEP_KEYWORD_RES = (
+    re.compile(r"\benumerat(?:e|ion)\b", re.IGNORECASE),                    # 1
+    re.compile(r"\bscor(?:e|es|ed|ing)\b", re.IGNORECASE),                       # 2
+    re.compile(r"\bgates?\b", re.IGNORECASE),                              # 3
+    re.compile(r"\b(?:decide|decided|deciding|decision|winner)\b", re.IGNORECASE),  # 4
+    re.compile(r"\breceipt\b", re.IGNORECASE),                             # 5
+)
+
+STEP_NAMES = ("enumerate", "score", "gate", "decide", "receipt")
+
+# A section must carry at least this many non-markup, non-whitespace
+# characters; a bare header is not a section.
+MIN_SECTION_CONTENT_CHARS = 40
+
+# Placeholder theater: content that starts with a TBD-class token and stays
+# short is not a written section, no matter the header.
+_PLACEHOLDER_START_RE = re.compile(
+    r"^\s*(?:todo|tbd|tbc|n/?a|wip|to be (?:decided|done|written|added)|coming soon)\b",
+    re.IGNORECASE,
+)
+PLACEHOLDER_MAX_CHARS = 120
+
+_MARKUP_STRIP_RE = re.compile(r"[#>*_`|\-]")
+_WHITESPACE_RE = re.compile(r"\s+")
+_HTML_COMMENT_RE = re.compile(r"<!--.*?-->", re.DOTALL)
+
+
+def _iter_headings(body: str):
+    """Yield (line_index, heading_text) for section-boundary headings."""
+    for i, line in enumerate(body.splitlines()):
+        for rx in _SECTION_HEADING_RES:
+            m = rx.match(line)
+            if m:
+                yield i, m.group(1).strip()
+                break
+
+
+def _classify_heading(heading_text: str):
+    """Return (numbered_step_or_None, set_of_keyword_matching_steps)."""
+    numbered = None
+    m = _STEP_NUMBER_RE.search(heading_text)
+    if m:
+        numbered = int(m.group(1) or m.group(2))
+    keywords = set()
+    for idx, rx in enumerate(_STEP_KEYWORD_RES, start=1):
+        text = heading_text
+        if idx == 2:
+            # A lone "## Scorecard" title must not count as the score section.
+            text = re.sub(r"scorecard", " ", text, flags=re.IGNORECASE)
+        if rx.search(text):
+            keywords.add(idx)
+    return numbered, keywords
+
+
+def _assign_steps(headings):
+    """Map each of the five steps to its heading (line_index, text).
+
+    Pass 1: explicit step numbers win (the author's own labels are
+    authoritative). Pass 2: keyword match in step order. A single summary
+    header that names all five steps claims only the first — the rest stay
+    missing, which is the point: naming the steps is not writing them.
+    """
+    assignment = {}  # step -> (line_index, text)
+    used = set()
+    classified = [
+        (idx, text, *_classify_heading(text)) for idx, text in headings
+    ]
+    for idx, text, numbered, _keywords in classified:
+        if numbered and numbered not in assignment:
+            assignment[numbered] = (idx, text)
+            used.add(idx)
+    for step in range(1, 6):
+        if step in assignment:
+            continue
+        for idx, text, _numbered, keywords in classified:
+            if idx in used:
+                continue
+            if step in keywords:
+                assignment[step] = (idx, text)
+                used.add(idx)
+                break
+    return assignment
+
+
+def _substantive_length(text: str) -> int:
+    """Non-markup, non-whitespace character count of a section's content."""
+    text = _HTML_COMMENT_RE.sub(" ", text)
+    text = _MARKUP_STRIP_RE.sub("", text)
+    return len(_WHITESPACE_RE.sub("", text))
+
+
+def check_scorecard_body(body: str) -> ScorecardResult:
+    """Scan a raw markdown PR body for the Scorecard Law's five sections.
+
+    Passes only when all five sections (enumerate, score, gate, decide,
+    receipt) are present as headers, appear in the law's order, and each
+    carries non-trivial content (no bare headers, no TBD theater).
+
+    Fail-closed: a non-string or empty body fails — an unscannable receipt
+    is not a receipt.
+    """
+    reasons: list[str] = []
+    if not isinstance(body, str) or not body.strip():
+        return ScorecardResult(
+            False,
+            ["PR body missing or empty — no sections to scan (fail closed)"],
+        )
+
+    headings = list(_iter_headings(body))
+    assignment = _assign_steps(headings)
+    lines = body.splitlines()
+
+    for step in range(1, 6):
+        if step not in assignment:
+            reasons.append(
+                f"Section {step} ({STEP_NAMES[step - 1]}) MISSING — the PR body "
+                "must contain all five scorecard sections: "
+                "enumerate, score, gate, decide, receipt"
+            )
+    if reasons:
+        return ScorecardResult(False, reasons)
+
+    positions = [assignment[s][0] for s in range(1, 6)]
+    if positions != sorted(positions):
+        found = ", ".join(
+            f"{s}:{STEP_NAMES[s - 1]}"
+            for s in sorted(assignment, key=lambda s: assignment[s][0])
+        )
+        reasons.append(
+            "Scorecard sections OUT OF ORDER — the law's steps are sequential "
+            "(enumerate -> score -> gate -> decide -> receipt); "
+            f"found order: {found}"
+        )
+
+    boundary_lines = sorted(idx for idx, _text in headings)
+    for step in range(1, 6):
+        start, _text = assignment[step]
+        later = [b for b in boundary_lines if b > start]
+        end = min(later) if later else len(lines)
+        content = "\n".join(lines[start + 1 : end])
+        if _substantive_length(content) < MIN_SECTION_CONTENT_CHARS:
+            reasons.append(
+                f"Section {step} ({STEP_NAMES[step - 1]}) EMPTY — "
+                f"< {MIN_SECTION_CONTENT_CHARS} non-markup characters; "
+                "a bare header is not a section"
+            )
+        elif (
+            _PLACEHOLDER_START_RE.match(content)
+            and _substantive_length(content) < PLACEHOLDER_MAX_CHARS
+        ):
+            reasons.append(
+                f"Section {step} ({STEP_NAMES[step - 1]}) is PLACEHOLDER theater "
+                f"({content.strip()[:60]!r}) — write the section or drop the claim"
+            )
+
+    return ScorecardResult(passed=not reasons, reasons=reasons)
+
+
+# ---------------------------------------------------------------------------
 # Adapters to kernel/protocol/ (PR #1807) — canonical implementations
 # ---------------------------------------------------------------------------
 
@@ -481,3 +686,51 @@ def check_quality_gate(
         reasons=reasons,
         delegated_to="local-fallback (kernel/protocol not yet merged)",
     )
+
+
+# ---------------------------------------------------------------------------
+# CLI — the CI-facing entry point for the structure gate.
+# Usage:  python3 tools/protocol_gates.py --scorecard-body <pr-body.md>
+# Exit 0 = all five sections present, ordered, substantive.
+# Exit 1 = blocked (reasons as JSON). Exit 2 = usage / input error.
+# ---------------------------------------------------------------------------
+
+def _main_cli(argv):
+    import argparse
+
+    ap = argparse.ArgumentParser(
+        description=(
+            "Scorecard structure gate: scan a raw PR body for the five "
+            "scorecard sections (enumerate, score, gate, decide, receipt)."
+        )
+    )
+    ap.add_argument(
+        "--scorecard-body",
+        required=True,
+        help="Path to a file containing the raw PR body markdown",
+    )
+    args = ap.parse_args(argv)
+    try:
+        with open(args.scorecard_body, "r", encoding="utf-8") as fh:
+            body = fh.read()
+    except OSError as exc:
+        print(
+            json.dumps(
+                {"gate": "scorecard_structure", "passed": False,
+                 "error": str(exc)}
+            )
+        )
+        return 2
+    result = check_scorecard_body(body)
+    print(
+        json.dumps(
+            {"gate": "scorecard_structure", "passed": result.passed,
+             "reasons": result.reasons},
+            indent=2,
+        )
+    )
+    return 0 if result.passed else 1
+
+
+if __name__ == "__main__":
+    sys.exit(_main_cli(sys.argv[1:]))
