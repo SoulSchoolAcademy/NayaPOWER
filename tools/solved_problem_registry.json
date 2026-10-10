@@ -1,0 +1,124 @@
+{
+  "entry_schema": {
+    "aliases": "Distinctive short phrases a seat might use when describing the same work.",
+    "canonical": "Repo-relative path of the canonical mechanism. This is the only place the problem may be solved.",
+    "evidence": "Where the freeze is proven: test files, receipts, PR numbers.",
+    "frozen": "YYYY-MM-DD date this problem entered the frozen set.",
+    "id": "SP-NNN stable identifier",
+    "problem": "One-paragraph prose description of the SOLVED problem (what problem is gone, not what the code is)."
+  },
+  "problems": [
+    {
+      "aliases": [
+        "board claim scan",
+        "claim collision",
+        "open PR scan",
+        "board tail scan",
+        "concurrent work collision",
+        "work-in-progress scan"
+      ],
+      "canonical": "tools/board_claim_scan.py",
+      "evidence": "tests/test_board_claim_scan.py; in daily use on the team board since 2026-10-09",
+      "frozen": "2026-10-10",
+      "id": "SP-001",
+      "problem": "Concurrent-work claim collisions: two seats claiming or building the same work at the same time (duplicate repairs, double Smart-Note claims, parallel identical PRs). Solved by scanning open PRs plus the team board's newest comments for keyword overlap BEFORE building, with a collision verdict that stops the build until the seats coordinate and consolidate."
+    },
+    {
+      "aliases": [
+        "engineering gates",
+        "no duplicate systems",
+        "excellence gates",
+        "PR engineering check",
+        "five-gate check"
+      ],
+      "canonical": "tools/protocol/engineering_gates.py",
+      "evidence": "tests/test_engineering_gates.py",
+      "frozen": "2026-10-10",
+      "id": "SP-002",
+      "problem": "Engineering excellence enforcement at PR time: every change must test the seam it touches, add no dead code, stay minimal, cite evidence not confidence, and introduce no duplicate systems. Solved by a five-gate mechanical checker, including the no-duplicate-systems gate that fails new symbols which duplicate existing seams by name or near-name."
+    },
+    {
+      "aliases": [
+        "brain index regen",
+        "regenerate brain index",
+        "brain drift check",
+        "index basis anchor"
+      ],
+      "canonical": "tools/regenerate_brain_index.py",
+      "evidence": "tests/test_regenerate_brain_index_unknown_domain.py; adversarial harness battery",
+      "frozen": "2026-10-10",
+      "id": "SP-003",
+      "problem": "Brain index drift: the regenerable derived views of the NayaPOWER brain drifting from their basis commit. Solved by a single regenerator whose basis commit is anchored to the live main tip and whose --check mode compares against the correct basis, with a basis-pointer quirk fix for stale origin/main refs in fetched worktrees."
+    },
+    {
+      "aliases": [
+        "smart note v2",
+        "note capture pipeline",
+        "smart note capture",
+        "note classification"
+      ],
+      "canonical": "tools/smart_note_v2.py",
+      "evidence": "tests/test_smart_note_v2.py; tests/test_smart_note_registry_drift.py; 25/25 adversarial",
+      "frozen": "2026-10-10",
+      "id": "SP-004",
+      "problem": "Smart Note capture pipeline: turning durable intelligence into structured, classified, provenance-carrying notes instead of raw text. Solved by the v2 capture/validate/classify pipeline with machine schema, adversarial qualification (25/25), and registry-drift tests."
+    },
+    {
+      "aliases": [
+        "smart link",
+        "coat-check ticket",
+        "proof of receipt",
+        "capture receipt"
+      ],
+      "canonical": "tools/smart_link.py",
+      "evidence": "tests/test_smart_link_generator.py; tests/test_private_smart_link_viewer.py",
+      "frozen": "2026-10-10",
+      "id": "SP-005",
+      "problem": "Proof of receipt for captured intelligence: distinguishing 'a note was received, saved, and stamped' from 'the lesson was learned'. Solved by the Smart Link coat-check ticket — a receipt token that proves capture only, never learning."
+    },
+    {
+      "aliases": [
+        "activation gate",
+        "one-breath gate",
+        "cold activation check",
+        "activation acceptance"
+      ],
+      "canonical": "tools/activation_gate.py",
+      "evidence": "NAYA-ACTIVATION/COLD-GITHUB-BOOTSTRAP-ACCEPTANCE-V1.md",
+      "frozen": "2026-10-10",
+      "id": "SP-006",
+      "problem": "Cold activation acceptance: a cold Naya is not activated merely because it can read files. Solved by the one-breath activation gate that checks the agent can reconstruct identity, director, authority, system, architecture, verification state, unknowns, current reality, and exactly one next action."
+    },
+    {
+      "aliases": [
+        "value calculus",
+        "decision math",
+        "decision value calculus",
+        "next-best-action profile"
+      ],
+      "canonical": "kernel/value_calculus.py",
+      "evidence": "tests/test_value_calculus.py; NAYANODE/0025-VALUE-CALCULUS-SPECIFICATION-V1.md",
+      "frozen": "2026-10-10",
+      "id": "SP-007",
+      "problem": "Decision math: one canonical way to score material choices (objective, evidence, effect, risk, blast radius, reversibility, cost of inaction, net value, authority) instead of every seat inventing its own scorecard. Solved by the versioned Decision Value Calculus and its recalibration schema."
+    },
+    {
+      "aliases": [
+        "learning evidence ladder",
+        "learning promotion",
+        "behavioral learning proof",
+        "held-out task proof"
+      ],
+      "canonical": "tools/learning_evidence_ladder.py",
+      "evidence": "tests/test_learning_evidence_ladder.py; tools/learning_evidence_ladder.json",
+      "frozen": "2026-10-10",
+      "id": "SP-008",
+      "problem": "Learning promotion proof: a captured lesson is not a learned lesson. Solved by the learning evidence ladder — a behavioral proof ladder that promotes a lesson only when it measurably changes behavior on a held-out task, with control/treatment arms and an adversarial wrong-memory arm for high-value claims."
+    }
+  ],
+  "purpose": "Operating Code V2 — Gate 7 (Duplicate Detector). Machine-readable list of problems already solved at 10 and FROZEN. Before building anything new, run tools/duplicate_detector.py against this registry. A FLAG means the problem is already solved at the canonical location: consolidate or extend that seam — never rebuild. The flag is mandatory; the human director decides the consolidation.",
+  "registry": "solved_problem_registry",
+  "seed_note": "Seeded 2026-10-10 by Gate 7 construction. The 'frozen' date on seed entries is the date the entry was verified into this registry: the repo checkout is shallow so original authorship dates are unrecoverable. Canonical paths were verified present at live main tip. A seat claiming an earlier freeze date should attach the evidence (merged PR / test receipt) to that entry.",
+  "updated": "2026-10-10",
+  "version": 1
+}

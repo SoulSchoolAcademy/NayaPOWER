@@ -18,7 +18,7 @@ const source = readFileSync(
   new URL("../supabase/functions/nayanet-learning-verify/index.ts", import.meta.url),
   "utf8"
 );
-const code = stripTypeScriptTypes(source.replace(/^import .*;\r?\n/gm, ""));
+const code = stripTypeScriptTypes(source.replace(/^import[\s\S]*?;\r?\n/gm, ""));
 
 const sandbox = {
   URL, Request, Response, console, Date, TextEncoder, Uint8Array, crypto,
