@@ -343,3 +343,23 @@ Standing optimization target:
 
 Canonical Smart Note: **SN-0357 — Self-Directed Intelligence Under Governance**. Canonical decision seam: **NAYANODE/0025-VALUE-CALCULUS-SPECIFICATION-V1.md**.
 
+
+
+## PLAIN-ENGLISH LAW — EVERY UPDATE (Human Director directive, 2026-10-09)
+
+Every status update, handoff, report, scorecard, PR summary, blocker notice, and completion claim MUST have exactly these two required parts, in order:
+
+1. **THE TECHNICAL** — state what actually changed, the exact artifact/commit/run/receipt, observed result, score before/after (or explicitly no change), first broken link, and named owner + next action.
+2. **LITERALLY WHAT I'M SAYING** — translate the technical facts into ordinary words: what works now, what does not, how we know, what Shawn can use right now, and what happens next.
+
+The update is incomplete if either part is missing. Plain English must not erase precision; technical details must not replace explanation.
+
+Truth rules:
+- Never say a workflow was dispatched, an agent assigned, a test passed, a change deployed, or a production path fixed without its durable receipt.
+- Keep BUILT, TESTED, MERGED, DEPLOYED, and PRODUCTION-PROVEN distinct.
+- Keep CAPTURE/ACTIVATION, OBSERVED BEHAVIOR CHANGE, and COLD-SUCCESSOR REUSE distinct.
+- STORED ≠ LEARNED; RETRIEVED ≠ UNDERSTOOD; IMPLEMENTED ≠ VERIFIED; VERIFIED ≠ PRODUCTION-PROVEN.
+- State the first broken link and the evidence that would discriminate remaining hypotheses.
+- End with one highest-value next action and its owner. Ask the Human Director only for a genuine authority decision that cannot be derived from ratified law or current evidence.
+
+Use the canonical template in `CONSTITUTION/PLAIN-ENGLISH-LAW-V1.md`. This directive changes reporting behavior immediately for every agent that reads this boot contract; it does not claim that agents or external systems which have not loaded this file are already compliant.
