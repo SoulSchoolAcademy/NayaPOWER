@@ -1,0 +1,80 @@
+# Law of One — Enforcement Report (rung 2: detection, advisory-only).
+#
+# WHAT it is: the detection rung for the supreme law (LAW-OF-ONE-V1, ratified
+# 2026-10-09). On every PR to main and every push to main it runs the rung-1
+# registry check (tools/check_law_of_one.py) against the base code and
+# publishes the honest status to the step summary. It NEVER fails the
+# workflow — detection, not gating.
+#
+# WHY advisory and never failing: the enforcement registry is still a
+# CANDIDATE (#2106). A non-blocking reporter publishes the truth on every
+# change without holding up the merge queue. Making this a required check —
+# or flipping any advisory report into a blocker — is an authority change:
+# Shawn/admin only. Until then: report, don't gate.
+#
+# WHY pull_request_target: the report judges BASE code (the law's current
+# enforcement state on main), not code the PR under review could edit. On
+# pull_request_target the workflow file itself also comes from base, so the
+# party being measured cannot rewrite the measure.
+#
+# Exit-code contract of tools/check_law_of_one.py (from its docstring):
+#   0 = every operational rule has a live mechanical owner.
+#   1 = at least one rule UNOWNED or STALE — the honest baseline signal.
+#   2 = tool/law/registry error — the judge failed closed.
+# The reporter maps all three into a markdown summary and always exits 0.
+# If rung-1 (the check script) is not on main yet, the summary says PENDING
+# instead of pretending to measure.
+name: Law of One — Enforcement Report
+
+on:
+  pull_request_target:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  law-of-one-report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.2.2 (pinned SHA)
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0 (pinned SHA)
+        with:
+          python-version: "3.12"
+      - name: Law-of-One enforcement report (advisory)
+        run: |
+          set -u
+          # --- advisory reporter for tools/check_law_of_one.py (rung-1) ---
+          # Exit 0 always: this workflow reports; it never gates.
+          if [ ! -f "tools/check_law_of_one.py" ]; then
+            {
+              echo "## Law of One — enforcement status: PENDING"
+              echo ""
+              echo "Rung-1 (the enforcement-registry check) is not on main yet."
+              echo "Detection starts when the registry lands; nothing is measured here."
+            } >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          set +e
+          OUTPUT=$(python3 tools/check_law_of_one.py --root "$PWD" 2>&1)
+          CODE=$?
+          set -e
+          {
+            echo "## Law of One — enforcement status"
+            echo ""
+            case "$CODE" in
+              0) echo "PASS — every operational rule has a live mechanical owner." ;;
+              1) echo "BASELINE — the check ran honestly; some operational rules still lack a mechanical owner." ;;
+              2) echo "ERROR — the registry check failed closed; the tool/law/registry needs attention." ;;
+              *) echo "UNKNOWN — unexpected exit code $CODE." ;;
+            esac
+            echo ""
+            echo '```'
+            echo "$OUTPUT"
+            echo '```'
+            echo ""
+            echo "_Advisory report only — this workflow never blocks a merge._"
+          } >> "$GITHUB_STEP_SUMMARY"
+          exit 0
