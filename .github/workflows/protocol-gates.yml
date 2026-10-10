@@ -60,3 +60,24 @@ jobs:
           # AST-based: only actual definitions are flagged — imports and
           # comments can never trip this check.
           python3 tools/check_no_competing_engine.py --root .
+
+  no-test-weakening:
+    name: No test weakening
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fail if the PR weakens tests to manufacture a pass
+        run: |
+          # "Never weaken tests to make a score pass" (Operating Protocol,
+          # WHAT WE NEVER DO) as machine law. AST-based on the PR diff:
+          # newly added skips without a ticket reference, bare pytest.skip()
+          # calls, and deleted tests with no replacement all fail the gate.
+          # Renames, moves, refactors, and splits are never flagged.
+          python3 tools/check_no_test_weakening.py \
+            --base-ref origin/main --head-ref HEAD
