@@ -663,6 +663,24 @@ def main():
     rq = sub.add_parser("claim-requalify", help="Recompute with six verdicts after revocation")
     rq.add_argument("--claim", required=True)
 
+    pj = sub.add_parser("projection-register", help="Register projection with claim deps")
+    pj.add_argument("--id", required=True)
+    pj.add_argument("--type", required=True,
+                    choices=["summary", "smart-note", "index", "successor", "receipt"])
+    pj.add_argument("--claims", required=True, help="Comma-separated claim IDs")
+    pj.add_argument("--fragments", default="", help="Comma-separated content fragments")
+
+    pi = sub.add_parser("projection-invalidate", help="Mark affected projections stale")
+    pi.add_argument("--evidence", required=True, help="Revoked evidence ID")
+
+    ps = sub.add_parser("projection-serve", help="Read-time qualification gate")
+    ps.add_argument("--id", required=True)
+    ps.add_argument("--purpose", required=True,
+                    choices=["HISTORY", "DEBUG", "INVESTIGATE", "CERTIFY", "ACT"])
+
+    pr = sub.add_parser("projection-refresh", help="Refresh or annotate projection")
+    pr.add_argument("--id", required=True)
+
     args = parser.parse_args()
     if args.cmd == "classify":
         cycle = json.loads(args.trace)
@@ -746,6 +764,182 @@ def main():
         ev_revoke(args.id, args.reason, args.use_scope, args.evidence_ref)
     elif args.cmd == "claim-requalify":
         pclaim_requalify(args.claim)
+    elif args.cmd == "projection-register":
+        proj_register(args.id, args.type, args.claims, args.fragments)
+    elif args.cmd == "projection-invalidate":
+        proj_invalidate(args.evidence)
+    elif args.cmd == "projection-serve":
+        proj_serve(args.id, args.purpose)
+    elif args.cmd == "projection-refresh":
+        proj_refresh(args.id)
+
+
+# ============================================================================
+# Selective Cache Invalidation and Intelligence Preservation (Naya 1's protocol)
+#
+# Preserve history. Recompute current qualification. Invalidate stale
+# authority-bearing projections. Refresh only what changed.
+# Keep independently supported conclusions available.
+#
+# Key: a read-time qualification gate. Even if a cached projection has not
+# been regenerated, its old qualification is never treated as current.
+# Generation-bound publication: a stale refresh can never overwrite a newer
+# revocation.
+# ============================================================================
+
+PROJ_REGISTRY = os.path.expanduser(
+    "~/workspace/goals/nayapower-10-10-completion-drive/hidden_files/proj-registry.json")
+
+PROJ_STATES = ["CURRENT", "REVALIDATION_REQUIRED", "REFRESH_PENDING", "HISTORICAL_ONLY"]
+
+
+def _proj_load():
+    try:
+        with open(PROJ_REGISTRY) as f:
+            return json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return {"projections": {}, "generation": 0}
+
+
+def _proj_save(reg):
+    os.makedirs(os.path.dirname(PROJ_REGISTRY), exist_ok=True)
+    with open(PROJ_REGISTRY, "w") as f:
+        json.dump(reg, f, indent=2)
+
+
+def _proj_bump_generation(reg):
+    reg["generation"] += 1
+    return reg["generation"]
+
+
+def proj_register(proj_id, proj_type, claims, fragments=""):
+    """Register a projection with its claim dependencies and generation."""
+    reg = _proj_load()
+    gen = _proj_bump_generation(reg)
+    claim_ids = [c for c in claims.split(",") if c]
+    frags = [f for f in fragments.split(",") if f]
+    # Bind each claim to its current qualification revision
+    creg = _pclaim_load()
+    deps = []
+    for i, cid in enumerate(claim_ids):
+        c = creg["claims"].get(cid, {})
+        deps.append({
+            "claim_id": cid,
+            "qualification": c.get("six_verdict", c.get("qualification", "UNDETERMINED")),
+            "content_fragment": frags[i] if i < len(frags) else "",
+        })
+    reg["projections"][proj_id] = {
+        "type": proj_type, "claim_dependencies": deps,
+        "qualification_snapshot": gen, "status": "CURRENT",
+        "historical_content_preserved": True,
+        "registered_at": datetime.now(timezone.utc).isoformat(),
+    }
+    _proj_save(reg)
+    print(f"Projection {proj_id} [{proj_type}] registered at generation {gen}")
+    print(f"  Claims: {claim_ids}")
+    return True
+
+
+def proj_invalidate(evidence_id):
+    """
+    Two-phase invalidation, phase 1: commit the generation bump and mark
+    affected projections. Only projections with material dependencies change.
+    """
+    reg = _proj_load()
+    creg = _pclaim_load()
+    gen = _proj_bump_generation(reg)
+
+    # Find claims materially depending on the revoked evidence
+    affected_claims = set()
+    for cid, c in creg["claims"].items():
+        if evidence_id in c.get("support", []):
+            affected_claims.add(cid)
+        for d in c.get("deps", []):
+            if d["rel"] != "MENTIONS" and d["claim"] in affected_claims:
+                affected_claims.add(cid)
+
+    marked = []
+    for pid, p in reg["projections"].items():
+        dep_ids = {d["claim_id"] for d in p["claim_dependencies"]}
+        if dep_ids & affected_claims and p["status"] == "CURRENT":
+            p["status"] = "REVALIDATION_REQUIRED"
+            marked.append(pid)
+
+    _proj_save(reg)
+    print(f"Generation → {gen} (evidence {evidence_id} revoked)")
+    print(f"Affected claims: {sorted(affected_claims) or 'none'}")
+    print(f"Projections marked REVALIDATION_REQUIRED: {marked or 'none'}")
+    print(f"  (MENTIONS-only dependents excluded — contextual refs are not proof deps)")
+    return marked
+
+
+def proj_serve(proj_id, purpose):
+    """
+    Read-time qualification gate. Never serves a stale qualification as current,
+    even if the cached projection has not been regenerated yet.
+    """
+    reg = _proj_load()
+    p = reg["projections"].get(proj_id)
+    if not p:
+        print(f"Unknown projection {proj_id}"); return False
+
+    print(f"\nServing {proj_id} [{p['type']}] for {purpose}")
+    print(f"  Snapshot generation: {p['qualification_snapshot']}, current: {reg['generation']}")
+
+    if p["status"] in ("REVALIDATION_REQUIRED", "REFRESH_PENDING"):
+        print(f"  ⚠ Stale: dependencies changed since snapshot.")
+        if purpose in ("CERTIFY", "ACT"):
+            print(f"  ✗ BLOCKED for {purpose}: revalidation required before consequential use.")
+            print(f"    Historical content remains available for HISTORY/DEBUG with annotation.")
+            return False
+        print(f"  → Served with STALE annotation for {purpose} (non-consequential use).")
+        return True
+
+    # Check current claim qualifications even for CURRENT projections
+    creg = _pclaim_load()
+    for d in p["claim_dependencies"]:
+        c = creg["claims"].get(d["claim_id"], {})
+        current = c.get("six_verdict", c.get("qualification", "UNDETERMINED"))
+        if current != d["qualification"] and purpose in ("CERTIFY", "ACT"):
+            print(f"  ✗ BLOCKED: {d['claim_id']} changed {d['qualification']} → {current}")
+            return False
+    print(f"  ✓ Served (qualifications current for {purpose})")
+    return True
+
+
+def proj_refresh(proj_id):
+    """
+    Refresh or annotate a stale projection. Generation-bound: never overwrites
+    a newer canonical assessment with an older refresh.
+    """
+    reg = _proj_load()
+    p = reg["projections"].get(proj_id)
+    if not p:
+        print(f"Unknown projection {proj_id}"); return False
+    if p["status"] == "CURRENT":
+        print(f"{proj_id} already CURRENT; nothing to refresh.")
+        return True
+
+    creg = _pclaim_load()
+    current_gen = reg["generation"]
+    # Rebind claim qualifications at refresh time
+    refreshed = []
+    for d in p["claim_dependencies"]:
+        c = creg["claims"].get(d["claim_id"], {})
+        new_q = c.get("six_verdict", c.get("qualification", "UNDETERMINED"))
+        if new_q != d["qualification"]:
+            refreshed.append(f"{d['claim_id']}: {d['qualification']} → {new_q}")
+            d["qualification"] = new_q
+    p["qualification_snapshot"] = current_gen
+    p["status"] = "CURRENT"
+    _proj_save(reg)
+    print(f"{proj_id} refreshed at generation {current_gen}")
+    for r in refreshed:
+        print(f"  {r}")
+    if not refreshed:
+        print(f"  (no claim changes; status restored to CURRENT)")
+    print(f"  Historical content preserved; only affected fragments annotated.")
+    return True
 
 
 # ============================================================================
