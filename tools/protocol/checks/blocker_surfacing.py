@@ -76,10 +76,25 @@ def _parse_ts(value) -> datetime | None:
 
 
 def _qualifying_blocker_post(post: dict) -> tuple[bool, str]:
-    """A blocker post qualifies iff it names X, names the unblock action,
-    and passes the Two-Layer Law (blocker_post is consequential)."""
+    """A blocker post qualifies iff it IS a blocker_post, names X, names
+    the unblock action, and passes the Two-Layer Law.
+
+    The label gate is the class-level fix (2026-10-09): exempt types pass
+    the two-layer check trivially, so a "blocker post" relabeled as
+    status_ping/ack/coordination_note used to qualify with NO layers at
+    all — defeating the law's "in the two-layer format" requirement by
+    relabeling. A relabel is not a rule: the lane only accepts blocker_post.
+    """
     if not isinstance(post, dict):
         return False, "not a record"
+    rtype = str(post.get("report_type") or "").strip().lower()
+    if rtype != "blocker_post":
+        return False, (
+            f"report_type is {rtype!r}, not 'blocker_post' — a blocker post "
+            "must be labeled as one. Exempt types pass the two-layer check "
+            "trivially, so a relabeled post cannot satisfy 'in the "
+            "two-layer format'"
+        )
     ok, reasons = validate_shape(
         post,
         {

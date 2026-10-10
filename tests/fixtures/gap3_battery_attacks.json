@@ -1,0 +1,48 @@
+{
+  "_doc": "Gap-3 Flesch-wall battery: verbatim attack texts, replayable from the repo. Each entry is a candidate plain_human layer paired with the standard technical layer from tests/test_law_encoding_batch2_hardened_20261009.py; intent ATTACK must FAIL the two_layer check at the Flesch wall (Flesch < 50). PROVENANCE, per entry. HONEST ADMISSION (2026-10-09, Naya 5): the hardening report's '8 battery attacks' were never published verbatim \u2014 neither the hardener's #1354 report (comment 6086536610) nor the round-1 re-validator's #1354 report (comment 6086628793) contains the attack texts, and no battery script survives in the repo or /tmp. Only 2 of the 8 survive verbatim (sprinkle, paraphrase, in the repo's own hardened tests). This fixture recovers 6 independently-verifiable attacks with verbatim texts and measured Flesch scores; the '8' count as stated is therefore NOT independently replayable \u2014 this fixture pins what is. EXCLUDED ON PURPOSE: the corpus probe A1 ('In other words: synergy is key...') scores Flesch 54.7 and PASSES the wall (measured live in the clarity-rewrite lane's evidence doc) \u2014 including it in a 'wall kills all' fixture would be a lie. It is the admitted jargon-readable bound, not a wall kill.",
+  "technical": "The GitHub Actions artifact zip endpoint 401s when the authd-surrogate Bearer is sent through the redirect: the API 302-redirects to a pre-signed blob URL and the surrogate is rejected at the blob host.",
+  "attacks": [
+    {
+      "id": "sprinkle",
+      "label": "signal phrase sprinkled into jargon (hardener battery, surviving verbatim)",
+      "provenance": "tests/test_law_encoding_batch2_hardened_20261009.py::test_h3_sprinkled_signal_fails (verbatim)",
+      "measured_flesch": -0.1,
+      "plain_human": "The authentication surrogate token propagation mechanism experienced a 401 authorization rejection at the pre-signed blob storage endpoint after the API redirect; in other words, the credential relay subsystem failed validation."
+    },
+    {
+      "id": "paraphrase",
+      "label": "paraphrased jargon wearing one signal phrase (hardener battery, surviving verbatim)",
+      "provenance": "tests/test_law_encoding_batch2_hardened_20261009.py::test_h3_paraphrase_with_signal_fails (verbatim)",
+      "measured_flesch": -0.3,
+      "plain_human": "In other words: the compressed artifact retrieval endpoint returns an unauthorized status when the credential delegation token traverses the redirection to the signed storage URL, because the delegation credential is refused at the storage host."
+    },
+    {
+      "id": "initiative-systemic",
+      "label": "jargon-dense long sentences, no choppiness to hide behind",
+      "provenance": "clarity_probes.json probe A4 (b2-clarity-rewrite lane corpus; measured -57.3 there on f1d20d2c, reproduced here)",
+      "measured_flesch": -57.3,
+      "plain_human": "In plain terms, the initiative encountered a systemic authorization failure across the credential propagation infrastructure, necessitating a holistic reconfiguration of the authentication delegation framework to restore operational continuity."
+    },
+    {
+      "id": "sprinkle-fresh",
+      "label": "fresh sprinkle attack (independent r2 re-validator)",
+      "provenance": "/tmp/r2_probes.py MY_ATTACKS['sprinkle-fresh'] (verbatim; measured -46.1 in /tmp/r2_probe_log.txt)",
+      "measured_flesch": -46.1,
+      "plain_human": "The distributed consensus quorum negotiation protocol encountered a partition-induced liveness degradation across the availability zones; in other words, the coordination subsystem experienced an operational anomaly requiring remediation."
+    },
+    {
+      "id": "paraphrase-fresh",
+      "label": "fresh paraphrase attack (independent r2 re-validator)",
+      "provenance": "/tmp/r2_probes.py MY_ATTACKS['paraphrase-fresh'] (verbatim; measured -21.0 in /tmp/r2_probe_log.txt)",
+      "measured_flesch": -21.0,
+      "plain_human": "In other words: the asynchronous replication lag between the primary datastore and its read replicas exceeded the configured threshold, triggering automated failover orchestration and subsequent cache invalidation cascades."
+    },
+    {
+      "id": "buzzword-salad",
+      "label": "buzzword salad with one plain marker (independent r2 re-validator)",
+      "provenance": "/tmp/r2_probes.py MY_ATTACKS['buzzword-salad'] (verbatim; measured -22.5 in /tmp/r2_probe_log.txt)",
+      "measured_flesch": -22.5,
+      "plain_human": "Basically, the synergistic leverage of our paradigm-shifting blockchain-adjacent containerized microservice mesh experienced a holistic degradation in end-to-end throughput velocity."
+    }
+  ]
+}
