@@ -5,6 +5,7 @@
 **Authorized:** Shawn Vibert, 2026-10-09
 **Pairs with:** `activation-receipt-template.json` (schema),
   `validate_receipt.py` (mechanical gate)
+**Summary:** Before any seat begins any work, it must produce an activation receipt in its own words: the mission objective stated fresh, the three Operating Law domains most relevant to this exact assignment and why, and its concrete proof standard. No receipt means no work — any reviewer bounces it. A mechanical validator rejects parroted, canned, or replayed receipts.
 
 ---
 

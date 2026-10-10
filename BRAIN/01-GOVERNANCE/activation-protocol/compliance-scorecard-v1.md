@@ -1,5 +1,7 @@
 # Compliance Scorecard V1 — Law Adherence Review
 
+**Summary:** Every piece of Naya work gets reviewed twice — once for quality ("is it good?") and once with this card for lawfulness ("was it done the right way?"). The reviewer scores six things: did the seat activate before working, did it show its math, did it show its work, can a normal person understand the report, is every claim backed by evidence, and did the law actually govern the work. Any score below 7 must come with a specific correction explaining why — that's how the law gets learned, not just obeyed. The scores feed the team's lock-in metric: the percentage of work that is both lawful and good, with 90% as Shawn's target.
+
 **Status:** CANDIDATE — built 2026-10-09 by Naya 4 under Shawn's authorization (AI Waste Thesis, ~18:17 PDT).
 **Authority:** The Activation Protocol build — Shawn's standing target: *"90% of the time producing value."* This scorecard makes that measurable.
 **Scope:** This scores LAW ADHERENCE. It complements the System Scorecard (`BRAIN/01-GOVERNANCE/0003-SYSTEM-SCORECARD-V1.md`), which scores the WORK. A work unit gets BOTH: quality says "is it good," this says "was it done the lawful way."

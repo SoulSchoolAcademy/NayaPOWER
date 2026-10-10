@@ -4,6 +4,7 @@
 **Status:** CANDIDATE — pending independent scorecard review
 **Authorized:** Shawn Vibert, 2026-10-09
 **Composes with:** NAYA-ACTIVATION cold-start material (see §8)
+**Summary:** This is the ordered load list every Naya seat runs at session start: identity, then mission, then the Operating Law (mandatory, fail-closed), then role doctrine, then the assignment. A seat that has not completed boot has the law available but has not engaged with it — engagement is proven separately by the Layer 2 activation ritual.
 
 ---
 

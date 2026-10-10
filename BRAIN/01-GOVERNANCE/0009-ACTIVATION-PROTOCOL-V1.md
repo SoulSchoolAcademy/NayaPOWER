@@ -4,6 +4,7 @@
 **Authorized:** Shawn Vibert, 2026-10-09 ~18:17 PDT
 **Status:** CANDIDATE — requires independent scorecard review before ratification
 **Enforces:** The Operating Law of Naya Net v1 (`BRAIN/01-GOVERNANCE/0008-OPERATING-LAW-V1.md`)
+**Summary:** The Operating Law says how a Naya must behave; this protocol makes that behavior unavoidable through five layers — boot injection (the seat has the law), activation ritual (the seat engaged with it), law as code (machines enforce what's encodable), compliance scoring (reviewers measure and teach the rest), and path of least resistance (templates make the law the default). It defines the 90% lock-in metric: the share of reviewed work that is both lawful and good.
 
 ---
 
