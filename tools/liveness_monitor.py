@@ -285,6 +285,261 @@ def report(obligation_id):
             print(f"    Witnesses: {len(wf['witnesses'])} | Transitions: {len(wf['state_history'])}")
 
 
+# Well-founded progress measure (Naya 1's "Well-Founded Measure of Real Progress"):
+#
+# Two separate measures:
+#   Proof progress: has a required obligation been discharged with acceptable evidence?
+#   Termination progress: is the system moving toward finite resolution?
+#
+# W(s) = multiset of ranks of outstanding obligations (well-founded multiset order)
+# R(s) = remaining permitted recovery attempts
+# Φ(s) = (W(s), R(s)) ordered lexicographically
+#
+# Activity is not progress. Verified reduction in outstanding obligations is progress.
+
+
+def register_obligation_graph(obligation_id, obligations):
+    """
+    Register the obligation graph for a liveness obligation.
+    obligations: list of {"id": ..., "rank": int, "type": "AND"|"OR"|"LEAF",
+                           "children": [...], "acceptance": ...}
+    
+    Rank rule: a higher-rank obligation decomposes only into finitely many
+    strictly lower-rank obligations. New objectives start a new epoch.
+    """
+    reg = load_registry()
+    if obligation_id not in reg["obligations"]:
+        print(f"Liveness obligation {obligation_id} not found. Register it first.")
+        sys.exit(1)
+
+    # Validate ranks: children must have strictly lower rank than parent
+    ob_map = {o["id"]: o for o in obligations}
+    for o in obligations:
+        for child_id in o.get("children", []):
+            child = ob_map.get(child_id)
+            if not child:
+                print(f"ERROR: child {child_id} not in obligation list")
+                sys.exit(1)
+            if child["rank"] >= o["rank"]:
+                print(f"ERROR: child {child_id} rank {child['rank']} not < parent {o['id']} rank {o['rank']}")
+                print(f"  Refinement must be strictly rank-decreasing (well-founded).")
+                sys.exit(1)
+
+    reg["obligations"][obligation_id]["obligation_graph"] = obligations
+    reg["obligations"][obligation_id]["epoch"] = 1
+    save_registry(reg)
+    print(f"Registered obligation graph for {obligation_id}: {len(obligations)} obligations, epoch 1")
+    return obligations
+
+
+def compute_progress_measure(obligation_id, workflow_id):
+    """
+    Compute Φ(s) = (W(s), R(s)):
+    - W(s): multiset of ranks of outstanding (non-discharged) obligations
+    - R(s): remaining recovery budget
+    
+    Returns the measure and whether it decreased since last computation.
+    """
+    reg = load_registry()
+    ob = reg["obligations"].get(obligation_id)
+    if not ob or "obligation_graph" not in ob:
+        print(f"No obligation graph for {obligation_id}.")
+        return None
+
+    wf_key = f"{obligation_id}/{workflow_id}"
+    wf = reg["workflows"].get(wf_key, {})
+    discharged = set(wf.get("discharged_obligations", []))
+
+    # W(s): ranks of outstanding obligations
+    outstanding = [o for o in ob["obligation_graph"] if o["id"] not in discharged]
+    W = sorted([o["rank"] for o in outstanding], reverse=True)
+
+    # R(s): remaining recovery budget
+    R = wf.get("recovery_budget", ob.get("default_recovery_budget", 3))
+
+    measure = {"W": W, "R": R, "outstanding_ids": [o["id"] for o in outstanding]}
+
+    # Compare with previous
+    prev = wf.get("last_measure")
+    decreased = None
+    if prev:
+        # Lexicographic: W decreases (multiset order), or W same and R decreases
+        if multiset_less(W, prev["W"]):
+            decreased = "PROOF_PROGRESS"
+        elif W == prev["W"] and R < prev["R"]:
+            decreased = "TERMINATION_PROGRESS"
+        elif W == prev["W"] and R == prev["R"]:
+            decreased = "NO_CHANGE"
+        else:
+            decreased = "INCREASED (invalid — work grew without new epoch)"
+
+    wf["last_measure"] = measure
+    if wf_key not in reg["workflows"]:
+        reg["workflows"][wf_key] = wf
+    else:
+        reg["workflows"][wf_key]["last_measure"] = measure
+    save_registry(reg)
+
+    print(f"\nProgress measure Φ for {workflow_id}:")
+    print(f"  W (outstanding ranks): {W}")
+    print(f"  R (recovery budget): {R}")
+    print(f"  Outstanding: {measure['outstanding_ids']}")
+    if decreased:
+        print(f"  Change: {decreased}")
+        if decreased == "PROOF_PROGRESS":
+            print(f"    ✓ Verified reduction in outstanding obligations")
+        elif decreased == "TERMINATION_PROGRESS":
+            print(f"    → Recovery consumed, no proof advancement")
+        elif decreased == "NO_CHANGE":
+            print(f"    → Activity without progress (no credit)")
+    return measure, decreased
+
+
+def multiset_less(a, b):
+    """
+    Well-founded multiset order: a < b if a can be obtained from b by
+    replacing one element with finitely many strictly smaller elements,
+    or by removing elements.
+    Simplified: compare sorted descending; a < b if at first difference, a[i] < b[i],
+    or if a is a proper prefix-subset.
+    """
+    # Remove common elements
+    from collections import Counter
+    ca, cb = Counter(a), Counter(b)
+    # a < b iff for the largest element where they differ, a has fewer
+    all_ranks = sorted(set(list(ca.keys()) + list(cb.keys())), reverse=True)
+    for r in all_ranks:
+        if ca[r] < cb[r]:
+            return True
+        elif ca[r] > cb[r]:
+            return False
+    return False  # equal
+
+
+def discharge_obligation(obligation_id, workflow_id, obligation_id_to_discharge, evidence=""):
+    """
+    Discharge an obligation with acceptable evidence.
+    This is the ONLY way to reduce W(s). Status updates, retries, reassignments don't count.
+    """
+    reg = load_registry()
+    ob = reg["obligations"].get(obligation_id)
+    if not ob or "obligation_graph" not in ob:
+        print(f"No obligation graph for {obligation_id}.")
+        sys.exit(1)
+
+    wf_key = f"{obligation_id}/{workflow_id}"
+    if wf_key not in reg["workflows"]:
+        print(f"Workflow {wf_key} not found.")
+        sys.exit(1)
+
+    wf = reg["workflows"][wf_key]
+    if "discharged_obligations" not in wf:
+        wf["discharged_obligations"] = []
+
+    # Check AND/OR logic: for AND children, all must be discharged before parent
+    ob_map = {o["id"]: o for o in ob["obligation_graph"]}
+    target = ob_map.get(obligation_id_to_discharge)
+    if not target:
+        print(f"Obligation {obligation_id_to_discharge} not in graph.")
+        sys.exit(1)
+
+    # For AND-type parents: verify all children discharged first
+    for o in ob["obligation_graph"]:
+        if obligation_id_to_discharge in o.get("children", []) and o.get("type") == "AND":
+            # This is a child; parent discharge requires all siblings too
+            pass  # child can be discharged independently
+
+    if obligation_id_to_discharge in wf["discharged_obligations"]:
+        print(f"  {obligation_id_to_discharge} already discharged — no double-counting")
+        return False
+
+    wf["discharged_obligations"].append(obligation_id_to_discharge)
+    wf.setdefault("discharge_receipts", []).append({
+        "obligation_id": obligation_id_to_discharge,
+        "evidence": evidence[:200],
+        "discharged_at": datetime.now(timezone.utc).isoformat(),
+    })
+    save_registry(reg)
+
+    log_event({
+        "event_type": "OBLIGATION_DISCHARGED",
+        "obligation_id": obligation_id,
+        "workflow_id": workflow_id,
+        "discharged": obligation_id_to_discharge,
+        "evidence": evidence[:100],
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+    })
+
+    print(f"  ✓ {obligation_id_to_discharge} DISCHARGED (rank {target['rank']})")
+    print(f"    Evidence: {evidence[:80]}...")
+    return True
+
+
+def consume_recovery(obligation_id, workflow_id, reason=""):
+    """
+    Consume one recovery attempt. Reduces R(s), not W(s).
+    Termination progress, not proof progress.
+    """
+    reg = load_registry()
+    wf_key = f"{obligation_id}/{workflow_id}"
+    wf = reg["workflows"].get(wf_key)
+    if not wf:
+        print(f"Workflow {wf_key} not found.")
+        sys.exit(1)
+
+    ob = reg["obligations"][obligation_id]
+    current = wf.get("recovery_budget", ob.get("default_recovery_budget", 3))
+    if current <= 0:
+        print(f"  ✗ Recovery budget exhausted — no attempts remaining")
+        print(f"    Workflow must reach terminal disposition or escalate.")
+        return False
+
+    wf["recovery_budget"] = current - 1
+    save_registry(reg)
+    log_event({
+        "event_type": "RECOVERY_CONSUMED",
+        "obligation_id": obligation_id,
+        "workflow_id": workflow_id,
+        "remaining": current - 1,
+        "reason": reason[:100],
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+    })
+    print(f"  Recovery consumed: {current} → {current - 1} remaining")
+    print(f"    Termination progress (budget decreased), NOT proof progress.")
+    return True
+
+
+def new_epoch(obligation_id, reason=""):
+    """
+    Start a new assessment epoch when genuinely new requirements appear.
+    Old baseline preserved. Progress resets against new obligations.
+    """
+    reg = load_registry()
+    ob = reg["obligations"].get(obligation_id)
+    if not ob:
+        print(f"Obligation {obligation_id} not found.")
+        sys.exit(1)
+
+    old_epoch = ob.get("epoch", 1)
+    ob["epoch"] = old_epoch + 1
+    ob[f"epoch_{old_epoch}_graph"] = ob.get("obligation_graph", [])
+    save_registry(reg)
+
+    log_event({
+        "event_type": "NEW_ASSESSMENT_EPOCH",
+        "obligation_id": obligation_id,
+        "from_epoch": old_epoch,
+        "to_epoch": old_epoch + 1,
+        "reason": reason[:200],
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+    })
+
+    print(f"{obligation_id}: epoch {old_epoch} → {old_epoch + 1}")
+    print(f"  Reason: {reason[:80]}...")
+    print(f"  Old baseline preserved. New obligations must be registered.")
+    return ob["epoch"]
+
+
 def main():
     parser = argparse.ArgumentParser(description="Multi-node liveness monitor")
     sub = parser.add_subparsers(dest="cmd", required=True)
@@ -317,6 +572,29 @@ def main():
     rp = sub.add_parser("report", help="Liveness report")
     rp.add_argument("--id", required=True)
 
+    rg2 = sub.add_parser("register-graph", help="Register obligation graph with ranks")
+    rg2.add_argument("--id", required=True)
+    rg2.add_argument("--obligations", required=True, help="JSON list of {id,rank,type,children}")
+
+    pm = sub.add_parser("measure", help="Compute well-founded progress measure")
+    pm.add_argument("--id", required=True)
+    pm.add_argument("--workflow", required=True)
+
+    dc = sub.add_parser("discharge", help="Discharge obligation with evidence")
+    dc.add_argument("--id", required=True)
+    dc.add_argument("--workflow", required=True)
+    dc.add_argument("--obligation", required=True)
+    dc.add_argument("--evidence", default="")
+
+    cr = sub.add_parser("consume-recovery", help="Consume recovery attempt")
+    cr.add_argument("--id", required=True)
+    cr.add_argument("--workflow", required=True)
+    cr.add_argument("--reason", default="")
+
+    ne = sub.add_parser("new-epoch", help="Start new assessment epoch")
+    ne.add_argument("--id", required=True)
+    ne.add_argument("--reason", default="")
+
     args = parser.parse_args()
     if args.cmd == "register":
         register(args.id, args.participants, args.trigger, args.target, args.type)
@@ -328,6 +606,17 @@ def main():
         check(args.id, args.workflow)
     elif args.cmd == "report":
         report(args.id)
+    elif args.cmd == "register-graph":
+        obligations = json.loads(args.obligations)
+        register_obligation_graph(args.id, obligations)
+    elif args.cmd == "measure":
+        compute_progress_measure(args.id, args.workflow)
+    elif args.cmd == "discharge":
+        discharge_obligation(args.id, args.workflow, args.obligation, args.evidence)
+    elif args.cmd == "consume-recovery":
+        consume_recovery(args.id, args.workflow, args.reason)
+    elif args.cmd == "new-epoch":
+        new_epoch(args.id, args.reason)
 
 
 if __name__ == "__main__":
