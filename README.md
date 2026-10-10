@@ -1,3 +1,26 @@
+> # ⛔ MUST READ FIRST — EVERY NAYA, EVERY TIME, NO EXCEPTIONS
+>
+> **This repo has one process the entire system depends on. If you get this wrong, nothing learns, nothing grows, the system does not operate.**
+>
+> 📖 **Read first:** `NAYA-ACTIVATION/SMART-NOTE-OPERATING-CONTRACT-V1.md` — the Smart Note operating contract (machine-first capture, the full learning chain, the Smart Link law).
+>
+> ✅ **MUST:**
+> - Author ONE conformant JSON capture in `.naya/capture/` (schema `naya.smart-note-capture.v2`, governance keys true). The JSON is the canonical truth — it carries the human view, the AI view, and the machine view together.
+> - Let the pipeline GENERATE every view at the canonical brain path `BRAIN/05-MEMORY/SMART-NOTES/<yyyy>/<mm>/<dd>/...` — THREE projections per note, no exceptions: human `.md` (plain words), AI `.ai.md` (Naya-language instructions), machine `.machine.json` (canonized machine truth). Never hand-write any of them.
+> - Return the **Smart Link** to the human — the viewable note showing where it went, that it is there, what it says. A PR number is an engineering receipt, never the delivery.
+> - Prove learning: cold retrieval → comprehension → behavioral application → independently verified outcome. **Stored is not learned.**
+>
+> 🚫 **MUST NOT:**
+> - Invent your own location for a note (no `.naya/preview/`, no side directories — the placement law is encoded in `.naya/bin/render_smart_note.py` and enforced by the conformance gate).
+> - Hand-write Brain markdown or registry entries.
+> - Batch multiple captures in one PR (one capture per PR).
+> - Reuse a `smart_note_id` (first claim stands — check open PRs).
+> - Call anything CANONICAL, VERIFIED, or LEARNED before the proof exists. New captures are CANDIDATE. Only the human director ratifies.
+>
+> ⚖️ **The conformance gate (`.github/workflows/smart-note-conformance-gate.yml`) enforces this at merge.** Violations don't get reviewed — they get blocked. The law is code.
+
+---
+
 # 🧠 NayaPOWER
 
 # 🔱 Our Operating Manifesto
