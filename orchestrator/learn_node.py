@@ -83,6 +83,22 @@ def _atomic_write(path: Path, payload: dict) -> None:
         raise
 
 
+def _atomic_write_bytes(path: Path, payload: bytes) -> None:
+    """Atomic write for raw bytes (Smart App release artifacts)."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    fd, tmp = tempfile.mkstemp(dir=str(path.parent), suffix=".tmp")
+    try:
+        with os.fdopen(fd, "wb") as f:
+            f.write(payload)
+        os.replace(tmp, path)
+    except BaseException:
+        try:
+            os.unlink(tmp)
+        except OSError:
+            pass
+        raise
+
+
 def _safe_filename(value: str) -> str:
     return "".join(c for c in value if c.isalnum() or c in ("_", "-", "."))
 
@@ -107,6 +123,12 @@ class AdmittedLesson:
     status: str  # ACTIVE | SUPERSEDED
     admitted_at: str
     checksum: str
+    # Optional: when this lesson IS a qualified Smart App (PR #2086 preflight
+    # format), the package metadata lives here and the exact release bytes
+    # live in <store>/smart_apps/<artifact_id>.v<version>/release.bin.
+    # The content_sha256 in smart_app MUST match the stored bytes — verified
+    # by verify_smart_app(), never claimed.
+    smart_app: dict[str, Any] | None = None
 
     def to_dict(self) -> dict:
         return asdict(self)
@@ -126,6 +148,7 @@ class AdmittedLesson:
             status=d["status"],
             admitted_at=d["admitted_at"],
             checksum=d["checksum"],
+            smart_app=d.get("smart_app"),
         )
 
 
@@ -161,6 +184,12 @@ NOT_A_LESSON_CANDIDATE = "NOT_A_LESSON_CANDIDATE"
 LESSON_ID_REQUIRED = "LESSON_ID_REQUIRED"
 LESSON_TEXT_REQUIRED = "LESSON_TEXT_REQUIRED"
 INTENT_SIGNATURE_REQUIRED = "INTENT_SIGNATURE_REQUIRED"
+# Smart App package reason codes (PR #2086 preflight subset).
+SMART_APP_VERSION_INVALID = "SMART_APP_VERSION_INVALID"
+SMART_APP_HASH_INVALID = "SMART_APP_HASH_INVALID"
+SMART_APP_HASH_MISMATCH = "SMART_APP_HASH_MISMATCH"
+SMART_APP_PROOF_MISSING = "SMART_APP_PROOF_MISSING"
+SMART_APP_BYTES_REQUIRED = "SMART_APP_BYTES_REQUIRED"
 
 
 # --------------------------------------------------------------------------
@@ -254,8 +283,10 @@ class LearnNode:
         self.lessons_dir = self.store_path / "lessons"
         self.quarantine_dir = self.store_path / "quarantine"
         self.servings_log = self.store_path / "servings.jsonl"
+        self.smart_apps_dir = self.store_path / "smart_apps"
         self.lessons_dir.mkdir(parents=True, exist_ok=True)
         self.quarantine_dir.mkdir(parents=True, exist_ok=True)
+        self.smart_apps_dir.mkdir(parents=True, exist_ok=True)
         # Inheritance: load everything already admitted. A new instance is
         # born with the lessons — it never saw the admissions happen.
         self._lessons: dict[str, AdmittedLesson] = {}
@@ -343,6 +374,7 @@ class LearnNode:
                 "provenance": lesson.provenance,
                 "supersedes": lesson.supersedes,
                 "admitted_at": lesson.admitted_at,
+                "smart_app": lesson.smart_app,
             },
             sort_keys=True,
         )
@@ -350,11 +382,23 @@ class LearnNode:
 
     # -- admission ------------------------------------------------------
 
-    def admit(self, verify_result: dict[str, Any], lesson: dict[str, Any]) -> dict[str, Any]:
+    def admit(
+        self,
+        verify_result: dict[str, Any],
+        lesson: dict[str, Any],
+        smart_app_package: dict[str, Any] | None = None,
+        release_bytes: bytes | None = None,
+    ) -> dict[str, Any]:
         """Freeze a VERIFY-admitted lesson into the usable knowledge set.
 
         verify_result: the VERIFY stage output {admitted, admitted_as, ...}.
         lesson: {lesson_id, lesson_text, intent_signature, version?, supersedes?}.
+        smart_app_package: optional #2086 preflight package {artifact_id,
+            version, content_sha256, independent_proof_refs, observed_quality,
+            ...}. When present, release_bytes MUST be provided and the
+            content_sha256 MUST match — the preflight subset is checked here,
+            never claimed.
+        release_bytes: the exact Smart App release bytes (stored immutably).
 
         Refuses LOUDLY (LearnAdmissionRefused) unless the lesson was admitted
         by VERIFY as a CANDIDATE. Idempotent: re-admitting the same lesson
@@ -362,6 +406,7 @@ class LearnNode:
         """
         self._check_verify_result(verify_result)
         lesson_id, version, lesson_text, intent_sig, supersedes = self._check_lesson(lesson)
+        smart_app_meta = self._check_smart_app(smart_app_package, release_bytes, lesson_id, version)
 
         key = f"{lesson_id}.v{version}"
         existing = self._lessons.get(key)
@@ -394,6 +439,7 @@ class LearnNode:
             status="ACTIVE",
             admitted_at=admitted_at,
             checksum="",
+            smart_app=smart_app_meta,
         )
         record.checksum = self._checksum_for(record)
 
@@ -404,6 +450,11 @@ class LearnNode:
         filename = f"{_safe_filename(lesson_id)}.v{version}.json"
         _atomic_write(self.lessons_dir / filename, record.to_dict())
         self._lessons[key] = record
+
+        # Store the Smart App release bytes immutably (content-addressed).
+        if smart_app_meta is not None and release_bytes is not None:
+            self._store_release_bytes(smart_app_meta["artifact_id"], version, release_bytes)
+
         return self._admission_receipt(record, duplicate=False)
 
     def _check_verify_result(self, verify_result: Any) -> None:
@@ -442,6 +493,141 @@ class LearnNode:
             raise LearnAdmissionRefused(LESSON_ID_REQUIRED, "lesson.supersedes must be a lesson_id or null")
         return lesson_id.strip(), version, lesson_text.strip(), intent_sig, supersedes
 
+    # -- Smart App package (PR #2086 preflight subset) --------------------
+
+    def _check_smart_app(
+        self,
+        package: dict[str, Any] | None,
+        release_bytes: bytes | None,
+        lesson_id: str,
+        version: int,
+    ) -> dict[str, Any] | None:
+        """Validate the #2086 preflight subset. Returns the frozen metadata.
+
+        Checks: semantic version format, content_sha256 format + matches the
+        actual release bytes, independent_proof_refs non-empty, observed
+        verification status. Never claims external proof — the metadata
+        records what was presented; verify_smart_app() re-checks the bytes.
+        """
+        import re
+
+        if package is None:
+            if release_bytes is not None:
+                raise LearnAdmissionRefused(
+                    SMART_APP_BYTES_REQUIRED,
+                    "release_bytes provided without a smart_app_package",
+                )
+            return None
+        if not isinstance(package, dict):
+            raise LearnAdmissionRefused(SMART_APP_VERSION_INVALID, "smart_app_package must be an object")
+        if release_bytes is None:
+            raise LearnAdmissionRefused(
+                SMART_APP_BYTES_REQUIRED,
+                "smart_app_package provided without release_bytes",
+            )
+        if not isinstance(release_bytes, (bytes, bytearray)):
+            raise LearnAdmissionRefused(SMART_APP_BYTES_REQUIRED, "release_bytes must be bytes")
+
+        # Semantic version (PR #2086: strict x.y.z).
+        pkg_version = package.get("version")
+        if not isinstance(pkg_version, str) or not re.fullmatch(
+            r"(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)", pkg_version
+        ):
+            raise LearnAdmissionRefused(
+                SMART_APP_VERSION_INVALID,
+                f"smart_app_package.version={pkg_version!r} is not semantic x.y.z",
+            )
+
+        # Content hash: format + MUST match the actual bytes.
+        claimed_hash = package.get("content_sha256")
+        if not isinstance(claimed_hash, str) or not re.fullmatch(r"[0-9a-f]{64}", claimed_hash):
+            raise LearnAdmissionRefused(
+                SMART_APP_HASH_INVALID,
+                "smart_app_package.content_sha256 must be a 64-char hex SHA256",
+            )
+        actual_hash = hashlib.sha256(bytes(release_bytes)).hexdigest()
+        if actual_hash != claimed_hash:
+            raise LearnAdmissionRefused(
+                SMART_APP_HASH_MISMATCH,
+                f"content_sha256 mismatch: claimed {claimed_hash[:16]}..., "
+                f"actual {actual_hash[:16]}... — the bytes are not what the package claims",
+            )
+
+        # Independent proof refs: at least one, non-empty strings.
+        proof_refs = package.get("independent_proof_refs")
+        if (
+            not isinstance(proof_refs, list)
+            or not proof_refs
+            or any(not isinstance(r, str) or not r.strip() for r in proof_refs)
+        ):
+            raise LearnAdmissionRefused(
+                SMART_APP_PROOF_MISSING,
+                "smart_app_package.independent_proof_refs must be a non-empty list of references",
+            )
+
+        # Freeze the preflight-relevant metadata (not the entire package —
+        # the lesson record carries what the serving decision needs).
+        return {
+            "artifact_id": str(package.get("artifact_id", lesson_id)),
+            "version": pkg_version,
+            "content_sha256": claimed_hash,
+            "independent_proof_refs": [str(r) for r in proof_refs],
+            "observed_quality": package.get("observed_quality", {}),
+            "owner_scope": str(package.get("owner_scope", "PRIVATE")),
+            "human_job": str(package.get("human_job", "")),
+        }
+
+    def _smart_app_dir(self, artifact_id: str, version: int) -> Path:
+        safe = _safe_filename(artifact_id)
+        return self.store_path / "smart_apps" / f"{safe}.v{version}"
+
+    def _store_release_bytes(self, artifact_id: str, version: int, release_bytes: bytes) -> None:
+        """Store the exact release bytes immutably (content-addressed)."""
+        dest_dir = self._smart_app_dir(artifact_id, version)
+        dest_dir.mkdir(parents=True, exist_ok=True)
+        _atomic_write_bytes(dest_dir / "release.bin", bytes(release_bytes))
+
+    def get_smart_app_bytes(self, lesson_id: str, version: int = 1) -> bytes | None:
+        """Return the exact stored release bytes for reuse. None if not a Smart App."""
+        lesson = self._lessons.get(f"{lesson_id}.v{version}")
+        if lesson is None or not lesson.smart_app:
+            return None
+        path = self._smart_app_dir(lesson.smart_app["artifact_id"], version) / "release.bin"
+        if not path.exists():
+            return None
+        return path.read_bytes()
+
+    def verify_smart_app(self, lesson_id: str, version: int = 1) -> dict[str, Any]:
+        """Re-verify a Smart App: stored bytes MUST match the frozen hash.
+
+        This is the cold-agent trust check — run BEFORE reuse. The hash is
+        recomputed from the actual bytes; a mismatch fails closed.
+        """
+        lesson = self._lessons.get(f"{lesson_id}.v{version}")
+        if lesson is None:
+            return {"verified": False, "reason": "lesson not found"}
+        if not lesson.smart_app:
+            return {"verified": False, "reason": "lesson is not a Smart App"}
+        stored = self.get_smart_app_bytes(lesson_id, version)
+        if stored is None:
+            return {"verified": False, "reason": "release bytes missing from store"}
+        actual = hashlib.sha256(stored).hexdigest()
+        claimed = lesson.smart_app["content_sha256"]
+        if actual != claimed:
+            return {
+                "verified": False,
+                "reason": "content hash mismatch — stored bytes differ from the qualified release",
+                "claimed": claimed,
+                "actual": actual,
+            }
+        return {
+            "verified": True,
+            "artifact_id": lesson.smart_app["artifact_id"],
+            "version": lesson.smart_app["version"],
+            "content_sha256": claimed,
+            "independent_proof_refs": lesson.smart_app["independent_proof_refs"],
+        }
+
     def _supersede(self, old_lesson_id: str, new_lesson_id: str, new_version: int) -> None:
         """Mark the superseded lesson SUPERSEDED. History is preserved, not deleted."""
         for key, old in list(self._lessons.items()):
@@ -457,7 +643,7 @@ class LearnNode:
 
     @staticmethod
     def _admission_receipt(record: AdmittedLesson, duplicate: bool) -> dict[str, Any]:
-        return {
+        receipt: dict[str, Any] = {
             "admitted": True,
             "duplicate": duplicate,
             "lesson_id": record.lesson_id,
@@ -469,6 +655,13 @@ class LearnNode:
             "provenance": record.provenance,
             "supersedes": record.supersedes,
         }
+        if record.smart_app:
+            receipt["smart_app"] = {
+                "artifact_id": record.smart_app["artifact_id"],
+                "version": record.smart_app["version"],
+                "content_sha256": record.smart_app["content_sha256"],
+            }
+        return receipt
 
     # -- serving (inheritance in action) --------------------------------
 
@@ -500,16 +693,19 @@ class LearnNode:
             considered += 1
             score = intent_match_score(lesson.intent_signature, intent)
             if score >= SERVE_THRESHOLD:
-                served.append(
-                    {
-                        "lesson_id": lesson.lesson_id,
-                        "version": lesson.version,
-                        "lesson_text": lesson.lesson_text,
-                        "match_score": score,
-                        "provenance": lesson.provenance,
-                        "checksum": lesson.checksum,
-                    }
-                )
+                entry: dict[str, Any] = {
+                    "lesson_id": lesson.lesson_id,
+                    "version": lesson.version,
+                    "lesson_text": lesson.lesson_text,
+                    "match_score": score,
+                    "provenance": lesson.provenance,
+                    "checksum": lesson.checksum,
+                }
+                # Smart App lessons carry the #2086 package metadata so the
+                # cold agent can verify the hash and reuse the exact bytes.
+                if lesson.smart_app:
+                    entry["smart_app"] = lesson.smart_app
+                served.append(entry)
             else:
                 below_threshold += 1
 
