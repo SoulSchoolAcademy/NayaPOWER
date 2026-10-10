@@ -27,6 +27,8 @@ It also answers Shawn's own earlier question ("how fresh proof has to be before 
 
 Durable rule: **we learn and we grow and we let everything else go. No clock on proof; the world changing is the expiry. History keeps the record; today keeps the vote.**
 
+**CLARIFICATION (Shawn, 2026-10-10 ~12:14 PDT) — what "let go" does and does not touch.** When he says distill everything to its essence — learn, grow, let everything else go — he is talking about **intelligence**, not code or interfaces. This doctrine must never be read as permission to strip code down, remove interfaces, or make anything less than what should be there. Code stays elite-level: everything the system needs, complete, no less. What gets "let go" is the outdated *understanding* — the old conclusion, the superseded certificate, the stale mental model. The overlap: when the world changes you don't keep the OLD interface out of nostalgia — you build the interface the new world needs, at full elite level. Letting go of the old form never means shrinking the capability. Distill = keep the essence, release the husk. For intelligence, the learning is the essence and the outdated claim is the husk. For code, the capability is the essence — capability is never released, only its outdated form, and only when replaced by what the current world needs. Everything is relevant; think about it intelligently and logically, and get the point.
+
 ## HUMAN NOTE
 
 Think of a map. A map doesn't go bad because it's old — it goes bad because a road moved. You don't throw away last year's map on New Year's Day out of superstition; you replace the page when the highway gets rerouted. And you keep the old map in the atlas, because it tells you where you've been — you just don't navigate today's drive with it. That's the whole doctrine: no expiry dates, only changed roads. Learn the route, grow past it, let the old page go.
@@ -71,6 +73,13 @@ Cold successor: never apply time-based expiry to proof, and never honor a proof 
     "learning_compounds": "keep what it taught; let the certificate go"
   },
   "resolves": ["D18 freshness question (bitemporal records): re-check-when-world-changes is the whole rule", "Shawn's 2026-10-10 ~12:01 PDT question on proof expiry"],
+  "clarification_2026_10_10_1214": {
+    "scope": "INTELLIGENCE, not code or interfaces",
+    "verbatim": "I'm talking about intelligence. I'm not talking about code.",
+    "code_rule": "code stays elite-level — everything it needs, complete, never less than what should be there",
+    "interface_rule": "don't keep the old interface out of nostalgia; build what the new world needs at full level — letting go of the old form never shrinks capability",
+    "distill_definition": "keep the essence, release the husk — for intelligence the learning is the essence; for code the capability is the essence and is never released"
+  },
   "related": ["SN-0901 (Tier 0/1 law — living law is the same principle applied to rules)", "SN-0903 (math and logic hold the keys — freshness is a logical property, not a timer)", "D18 (versioned obligations)"],
   "rule": [
     "we learn and we grow and we let everything else go",
