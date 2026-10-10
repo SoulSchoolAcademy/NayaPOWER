@@ -6,6 +6,8 @@ records are refused, never promoted. The bridge never upgrades an epistemic
 claim: only VERIFIED_FACT maps to a VERIFIED verdict.
 """
 
+import hashlib
+
 import pytest
 
 from kernel import memory_metabolism as mm
@@ -31,6 +33,17 @@ PROVENANCE = {
 }
 
 
+def _ev(eid, content, origin="synth-trial", verifier="synth-verifier"):
+    """Build an evidence descriptor independent of the record's doer."""
+    return mm.EvidenceDescriptor(
+        evidence_id=eid,
+        content=content,
+        content_hash=hashlib.sha256(content.encode()).hexdigest(),
+        origin=origin,
+        verifier=verifier,
+    )
+
+
 def _rec(provenance=None, epistemic="VERIFIED_FACT", weight=0, at=NOW):
     r = mm.create_record(
         "the sky is plaid",
@@ -39,7 +52,11 @@ def _rec(provenance=None, epistemic="VERIFIED_FACT", weight=0, at=NOW):
         now=at,
     )
     for i in range(weight):
-        mm.strengthen(r, f"SYNTH-EVIDENCE-00{i}", now=at)
+        mm.strengthen(
+            r,
+            _ev(f"SYNTH-EVIDENCE-00{i}", f"synthetic verification evidence {i}"),
+            now=at,
+        )
     return r
 
 

@@ -5,6 +5,7 @@ tamper isolation, receipt hash-chaining, fail-closed serve, deterministic
 housekeep, cold-boot reconstruction from zero warm state, and the CLI.
 """
 
+import hashlib
 import json
 from pathlib import Path
 
@@ -27,6 +28,16 @@ OLD = "2026-01-01T00:00:00+00:00"
 def _rec(content="lesson one", epistemic="LEARNING", at=NOW):
     return mm.create_record(content, epistemic_state=epistemic,
                             provenance={"test": True}, now=at)
+
+
+def _ev(eid, content, origin="trial-store", verifier="coda-1"):
+    return mm.EvidenceDescriptor(
+        evidence_id=eid,
+        content=content,
+        content_hash=hashlib.sha256(content.encode()).hexdigest(),
+        origin=origin,
+        verifier=verifier,
+    )
 
 
 def _store(tmp_path: Path) -> MemoryStore:
@@ -57,13 +68,18 @@ def test_latest_version_wins_append_only(tmp_path):
     store = _store(tmp_path)
     r = _rec()
     store.save(r)
-    mm.strengthen(r, "evidence-1", now=NOW)
+    mm.strengthen(r, _ev("EV-1", "store evidence 1"), now=NOW)
     store.save(r)
     assert store.records_path.read_text().count("\n") == 2  # both versions kept
     fresh = MemoryStore(store.directory)
     loaded = fresh.load(now=NOW)
     assert loaded[r.record_id].verification_weight == 1.0
-    assert loaded[r.record_id].evidence == ["evidence-1"]
+    entry = loaded[r.record_id].evidence[0]
+    assert entry["evidence_id"] == "EV-1"
+    assert entry["origin"] == "trial-store"
+    assert entry["verifier"] == "coda-1"
+    assert entry["content_hash"] == hashlib.sha256(
+        "store evidence 1".encode()).hexdigest()
 
 
 def test_save_refuses_broken_integrity(tmp_path):
@@ -118,7 +134,7 @@ def test_tampered_version_does_not_destroy_last_good(tmp_path):
     store = _store(tmp_path)
     r = _rec("original truth")
     store.save(r)
-    mm.strengthen(r, "evidence-1", now=NOW)
+    mm.strengthen(r, _ev("EV-1", "store evidence 1"), now=NOW)
     store.save(r)
     # Tamper the *latest* version's line in the log (simulates disk tampering).
     lines = store.records_path.read_text(encoding="utf-8").splitlines()
@@ -257,7 +273,7 @@ def test_save_is_receipted_chain_covers_record_history(tmp_path):
     store = _store(tmp_path)
     r = _rec("receipted save", at=OLD)
     store.save(r, now=NOW)
-    mm.strengthen(r, "evidence-1", now=NOW)
+    mm.strengthen(r, _ev("EV-1", "store evidence 1"), now=NOW)
     store.save(r, now=NOW)
     saves = [e for e in store._receipts if e["transition"] == "save"]
     assert len(saves) == 2
@@ -314,7 +330,7 @@ def test_full_lifecycle_cold_boot_reconstruction(tmp_path):
     b = _rec("lesson v2")
     store.save(a)
     store.save(b)
-    mm.strengthen(b, "trial-evidence", now=NOW)
+    mm.strengthen(b, _ev("EV-1", "trial evidence"), now=NOW)
     store.save(b)
     mm.supersede(a, b, now=NOW)
     store.save(a)

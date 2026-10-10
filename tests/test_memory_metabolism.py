@@ -1,9 +1,12 @@
+import hashlib
+
 from kernel.memory_metabolism import (
     ACTIVE,
     ARCHIVED,
     DECAYED,
     QUARANTINED,
     SUPERSEDED,
+    EvidenceDescriptor,
     MemoryMetabolismError,
     archive,
     compress,
@@ -28,6 +31,16 @@ def _rec(**over):
     kw = dict(content="Retention beats reconstruction", epistemic_state="LEARNING", now=FRESH)
     kw.update(over)
     return create_record(**kw)
+
+
+def _ev(eid, content, origin="trial-4", verifier="coda-1"):
+    return EvidenceDescriptor(
+        evidence_id=eid,
+        content=content,
+        content_hash=hashlib.sha256(content.encode()).hexdigest(),
+        origin=origin,
+        verifier=verifier,
+    )
 
 
 def test_create_record_establishes_verifiable_integrity():
@@ -58,26 +71,35 @@ def test_integrity_excludes_id_from_own_preimage_like_checkpoint_id():
 
 def test_strengthen_bumps_weight_with_evidence_and_refreshes_verified_at():
     record = _rec()
-    receipt = strengthen(record, "reused-in-trial-4", now=NOW)
+    ev = _ev("EV-1", "reused-in-trial-4")
+    receipt = strengthen(record, ev, now=NOW)
     assert record.verification_weight == 1.0
-    assert record.evidence == ["reused-in-trial-4"]
+    assert record.evidence == [ev.to_record()]
     assert record.last_verified_at == NOW
     assert integrity_ok(record)
     assert receipt["transition"] == "strengthen"
     assert receipt["receipt_id"].startswith("MMR-")
+    assert receipt["evidence_id"] == "EV-1"
+    assert receipt["gate_verdict"] == "EVIDENCE_ACCEPTED"
 
 
 def test_strengthen_refuses_dead_records_and_missing_evidence():
     record = _rec()
     supersede(record, _rec(content="newer", now=FRESH), now=NOW)
-    for fn, args in (
-        (strengthen, (record, "evidence",)),
-        (strengthen, (_rec(), "",)),
-    ):
+    cases = [
+        # (callable, expected refusal)
+        (lambda: strengthen(record, _ev("EV-1", "late evidence"), now=NOW),
+         "strengthen_refused_not_active"),
+        (lambda: strengthen(_rec(), "", now=NOW),  # type: ignore[arg-type]
+         "strengthen_evidence_refused:BLOCKED_INTEGRITY:unstructured_evidence"),
+        (lambda: strengthen(_rec(), None, now=NOW),  # type: ignore[arg-type]
+         "strengthen_evidence_missing"),
+    ]
+    for fn, expected in cases:
         try:
-            fn(*args, **({} if len(args) == 2 else {"now": NOW}))
+            fn()
         except MemoryMetabolismError as exc:
-            assert str(exc) in ("strengthen_refused_not_active", "strengthen_evidence_missing")
+            assert str(exc) == expected, f"got {exc}, want {expected}"
         else:
             raise AssertionError("expected strengthen refusal")
 
@@ -293,7 +315,7 @@ def test_metabolize_is_deterministic_and_refuses_corruption():
 def test_full_lifecycle_paths_without_stale_winning():
     # Path A: replacement — strengthen keeps it alive, supersede retires it.
     record = _rec(content="hypothesis H", epistemic_state="HYPOTHESIS", now=STALE)
-    strengthen(record, "trial-4-positive", now=NOW)
+    strengthen(record, _ev("EV-1", "trial-4-positive"), now=NOW)
     assert record.memory_state == ACTIVE  # fresh verification keeps it alive
     successor = _rec(content="verified fact F", epistemic_state="VERIFIED_FACT", now=NOW)
     supersede(record, successor, now=NOW)

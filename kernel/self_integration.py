@@ -24,7 +24,12 @@ from datetime import datetime, timezone
 from typing import Any, Callable
 
 from kernel.behavior_policy import BehaviorPolicyStore
-from kernel.memory_metabolism import ACTIVE, MemoryRecord, integrity_ok
+from kernel.memory_metabolism import (
+    ACTIVE,
+    MemoryRecord,
+    evidence_summary,
+    integrity_ok,
+)
 from kernel.self_node import SelfNode
 
 # --- verifier-chain identity contract -------------------------------------
@@ -180,7 +185,7 @@ def lesson_from_memory_record(record: Any) -> dict[str, Any]:
         "admission_admitted_as": str(provenance.get("admission_admitted_as") or ""),
         "verification_method": str(
             provenance.get("verification_method")
-            or "; ".join(record.evidence[:5])
+            or "; ".join(evidence_summary(e) for e in record.evidence[:5])
         ),
         "level": str(provenance.get("level") or ""),
     }
