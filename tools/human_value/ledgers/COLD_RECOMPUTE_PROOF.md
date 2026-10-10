@@ -239,3 +239,37 @@ human verification of the ledger itself remains the binding 8.0 gate. DAI series
 the brain-index red and the draft→ready tooling failure were both team-handled,
 #2068's wait for Shawn's click is a continuing demand, not a new one); trend
 readable after 2+ weeks.
+
+## Eleventh cold-recompute proof — n=9 loop at rebased head (2026-10-10 ~16:00 UTC)
+
+Fresh clone of `naya5/human-value-events-20261010-0341` @ `45c8035d337fd88db5a4389523bf5aade0ef530a`
+(rebased onto live tip `7281ede6b` — the #2142 tune-in-template merge; no ledger
+changes since the tenth proof), same procedure, no access to the originating
+workspace. Clone at `~/workspace/_scratch/hv-cold-1541` (fresh checkout;
+`/tmp` is a 512M tmpfs and filled mid-clone — scratch removed after verification).
+
+| Check | Originating worktree | Cold clone | Match |
+|---|---|---|---|
+| HEAD | `45c8035d3` | `45c8035d3` | ✅ |
+| `ledger_sha256` | `sha256:f6df6368…64e8fb66` | (same) | ✅ |
+| `hv_per_day_total` | 10.5713 | 10.5713 | ✅ |
+| `dai_per_day` | 0.5714 | 0.5714 | ✅ |
+| `events_validated` | 73 | 73 | ✅ |
+| `calibration.n` / MAE / bias / overprediction | 9 / 0.1111 / 0.0 / false | 9 / 0.1111 / 0.0 / false | ✅ |
+| test suite (real ledger + instrument) | 36 passed | 36 passed | ✅ |
+
+**Verdict:** the rebase onto the live tip preserved the ledger byte-for-byte; the
+n=9 measurement remains cold-recomputable at the rebased head. Merge rehearsal
+(worktree @ `7281ede6b` + `git merge --no-commit --no-ff`): true delta is exactly
+the branch's 3 ledger files — no main-as-reversions artifact. Full pytest on the
+merged tree: 25 failed, all reproducing identically on pristine `7281ede6b`
+(control worktree) — pre-existing main redness (`tools/test_activation_checklist.py`
+expects ref `origin/brain-build/operating-code-v2`, absent here); zero failures
+from this branch. Merge gate honestly blocked on main's redness (Naya 4's #2062
+repair lane), not on this branch. Push deferred: GitHub API 403'd 15:55 UTC
+post-sign-in; push + DEC-010 window close resume post-reset.
+
+**State note (unchanged):** no independent seat has yet cold-recomputed the ledger
+per this file and posted a verdict on #1604 — reproducibility is proven,
+independent human verification of the ledger itself remains the binding 8.0 gate.
+DAI series is ~5 days of real data; trend readable after 2+ weeks.
