@@ -1069,3 +1069,68 @@ def test_retrieve_weighted_relevance_still_yields_to_authority_on_tie(tmp_path, 
     monkeypatch.setattr(mod, "REGISTRY", rp)
     result = mod.retrieve("parallel execution")
     assert result["retrieved"]["smart_note_id"] == "SN-R"
+
+
+# --- Retrieval IDF + length normalization (Naya 5, 2026-10-10) ---
+# Repair for the independent 43-case held-out diagnostic (2/43 MATCH_ID):
+# (1) ubiquitous terms (filename fragments, generic taxonomy) dominated
+# bag-of-words scoring; (2) wrong-note winners had 3x longer nutshells
+# (median 166 vs 53 words) — long documents won by match accumulation.
+# IDF discounts ubiquitous terms; pivoted length normalization stops long
+# documents winning by word count. Both are general relevance mechanics,
+# not fitted to any case. These tests pin them on synthetic registries.
+def test_retrieve_idf_distinctive_term_beats_ubiquitous_term(tmp_path, monkeypatch):
+    """Equal raw match counts -> the distinctive term wins, not the ubiquitous one."""
+    rp = _truth_rank_registry(tmp_path, [
+        {"smart_note_id": "SN-U", "intelligent_block_id": "IB-U",
+         "title": "W", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["ubiq"], "truth_state": "CANDIDATE",
+         "captured_at": "2026-10-06T00:00:00Z"},
+        {"smart_note_id": "SN-D", "intelligent_block_id": "IB-D",
+         "title": "W", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["distincto"], "truth_state": "CANDIDATE",
+         "captured_at": "2026-10-06T00:00:00Z"},
+        {"smart_note_id": "SN-F1", "intelligent_block_id": "IB-F1",
+         "title": "W", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["ubiq"], "truth_state": "CANDIDATE",
+         "captured_at": "2026-10-05T00:00:00Z"},
+        {"smart_note_id": "SN-F2", "intelligent_block_id": "IB-F2",
+         "title": "W", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["ubiq"], "truth_state": "CANDIDATE",
+         "captured_at": "2026-10-04T00:00:00Z"},
+    ])
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    monkeypatch.setattr(mod, "REGISTRY", rp)
+    # Old bag-of-words: SN-U and SN-D tie at 1 keyword match each, and the
+    # newer captured_at (SN-U) would win. IDF: "distincto" (df=1) outranks
+    # "ubiq" (df=3), so SN-D wins on relevance.
+    result = mod.retrieve("ubiq distincto")
+    assert result["retrieved"]["smart_note_id"] == "SN-D"
+
+
+def test_retrieve_length_norm_stops_long_document_winning_by_word_count(tmp_path, monkeypatch):
+    """A long note must not win on accumulated low-value matches alone."""
+    filler = [f"pad{i}" for i in range(200)]
+    rp = _truth_rank_registry(tmp_path, [
+        {"smart_note_id": "SN-SHORT", "intelligent_block_id": "IB-S",
+         "title": "W", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["rareone", "raretwo"], "truth_state": "CANDIDATE",
+         "captured_at": "2026-10-06T00:00:00Z"},
+        {"smart_note_id": "SN-LONG", "intelligent_block_id": "IB-L",
+         "title": "W", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["comone", "comtwo", "comthree"] + filler,
+         "truth_state": "CANDIDATE",
+         "captured_at": "2026-10-06T00:00:00Z"},
+        {"smart_note_id": "SN-F", "intelligent_block_id": "IB-F",
+         "title": "W", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["comone", "comtwo", "comthree"],
+         "truth_state": "CANDIDATE",
+         "captured_at": "2026-10-05T00:00:00Z"},
+    ])
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    monkeypatch.setattr(mod, "REGISTRY", rp)
+    # Old bag-of-words: SN-LONG has 3 keyword matches vs SN-SHORT's 2 and
+    # wins by accumulation. IDF + length normalization: the distinctive
+    # rare terms on the short note win.
+    result = mod.retrieve("rareone raretwo comone comtwo comthree")
+    assert result["retrieved"]["smart_note_id"] == "SN-SHORT"
