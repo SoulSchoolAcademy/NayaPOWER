@@ -1,6 +1,6 @@
 # LIVE MISSION STATE — worker activation kick
-**Published:** 2026-10-10 21:16 UTC by Naya 2 (director pass)
-**Main tip:** `cfbd81c` (merged #2187 — mission-state snapshot refresh; CI RED: brain-index drift reintroduced, routed to brain-build repair lane; promote-and-prove correctly fail-closed; Current Truth Resolver red is environmental rate-limit)
+**Published:** 2026-10-10 22:06 UTC by Naya 2 (director pass)
+**Main tip:** `80e6d0c` (two director web-flow merges: Naya 5 retrieval lane — PR #1886 cold-retrieve drill-bank + week-41 log, exact-phrase relevance-floor fix — and mission-state-watch checkout-step fix; CI RED: brain-index drift carried over byte-identical, routed to brain-build repair lane; promote-and-prove correctly fail-closed; Current Truth Resolver env red gone)
 **Canonical now:** issue #2154 (Current Mission State, director-maintained) + `BRAIN/CURRENT-MISSION-STATE.md` on branch `naya/mission-state`
 **Scoreboard:** issue #2158 (TEAM SCOREBOARD, per-team A-F accountability)
 **Feed:** issue #2175 (live board; #1354 hit the 2,500-comment cap — history only)
@@ -11,7 +11,7 @@ Every worker reads this file fresh at the start of every shift. When the plan ch
 
 # LIVE PLAN — Team Naya execution plan (single source of truth)
 
-**Last updated:** 2026-10-10 21:16 UTC by Naya 2 (director pass — tip moved, red classified, board read)
+**Last updated:** 2026-10-10 22:06 UTC by Naya 2 (director pass — tip moved, two director merge clicks, CI red classified)
 **How this works:** every worker reads this file fresh at the start of every shift. When the plan changes, it changes here once — everyone gets it. No stale orders, ever.
 **Canonical now:** issue #2154 (Current Mission State, director-maintained) + `BRAIN/CURRENT-MISSION-STATE.md` on branch `naya/mission-state` — this file is the director-pass working copy; the snapshot on `live/mission-state` is the worker activation kick. #1354 stays the coordination feed (the history).
 
@@ -21,6 +21,48 @@ Every worker reads this file fresh at the start of every shift. When the plan ch
 - Build loop, relay, director all wired to the scripts. Tested working.
 
 ---
+
+## PASS NOTE (2026-10-10 22:06Z — tip moved, two director merge clicks, CI red classified, board window read)
+
+- Entry verdict: WORK_AVAILABLE (exit 10) — live ref moved `cfbd81c` → **`80e6d0cdca69dbddd043db8da89b4775ab686e00`** (ref-anchored via the refs API, confirmed independently via `git ls-remote`). Two web-flow merge clicks by Shawn Vibert, 21:57:23Z + 22:02:01Z:
+  - `42891b169`: Naya 5's retrieval lane — `ea5ceb824` (PR #1886: cold-retrieve drill-bank boundary suite `tests/test_cold_retrieve_drill_bank.py`, 118 lines, + week-41 log) and `e3aa358a7` (fix: exact-phrase matches clear the relevance floor by construction, `tools/smart_note_v2.py` + tests).
+  - `80e6d0cdc`: Naya 5's mission-state-watch fix `fe939bef4` (branched off stale `0fb380c76`, merged clean) — adds the missing checkout step, reroutes stale alerts to #2154. Workflow file change, but Shawn clicked it himself via web-flow — human gate respected.
+- **CI at the new tip: RED, same two classes — classified from live job logs, not badges:**
+  - `test` (run 38089885628) → step "Verify generated Brain index has no drift" = **REAL RED, brain-index drift (SEVENTH occurrence of the class, second tip carrying it unhealed).** Full tree diff between tips: 6 files, only `tests/`, `tools/`, `.github/workflows/` — **zero BRAIN/ paths changed**, so the drift is byte-identical carryover from `cfbd81c`, not a new introduction. Routed to the brain-build repair lane (fresh minimal regen + re-stamp pinned at `80e6d0c`, rebase-before-regen); no duplicate mechanism from this seat.
+  - `promote-and-prove` (run 38089885672) → step "Enforce ratified standing policy before automatic promotion" = **guardrail firing as designed** (fail-closed on the test red).
+  - The 21:16Z `Current Truth Resolver` env red is GONE at this tip — single-occurrence installation-token rate limit, did not recur. Transient confirmed; no root-cause action.
+- **Board #2175: 5 new comments since watermark 6102355418 — all read live, classified:** directives **D59–D63 registered** (Naya 3's AER-LIVE series: AER-LIVE-4 unresolved eligibility evidence; AER-LIVE-5 fairness-debt bounds under missing evidence; AER-LIVE-6 unbounded missing intervals; AER-LIVE-7 minimal unbounded-cycle witnesses; AER-LIVE-8 full-state invariants for repeatable cycle proofs). Owner TBD — director to route, per the D6–D28 pattern. No questions to this lane, no blockers. Watermark advanced: #2175 → 6102503850 (newest at read time; per_page=100 returned 46, no page 2 — tail complete).
+- **Mission-state snapshot republished** to `live/mission-state` naming `80e6d0c` (blob → tree → commit → PATCH ref via Git Data API; verified ref SHA == created commit SHA).
+- **Priority #3 (search relevance) MOVED:** Naya 5's exact-phrase relevance-floor fix + drill-bank boundary suite are now on main — the relevance fix is live code, not a plan. Re-score on the next fresh cold-retrieve measurement.
+- **Standing carries (unchanged, unverified this pass):** 19:31Z mutual-oversight flag on #2174's merge still awaiting owning lane/director confirmation. T12 evaluation handoff still blocked on sealed keys (director custody).
+- No NEEDS-REWRITE flags. Material change (tip moved + relevance lane landed) → recorded here and in the TIP NOTE; the directive window goes to the relay receipt, not to Shawn directly.
+
+## PASS NOTE (2026-10-10 21:55Z — relay, quiet)
+
+- Entry verdict: NO_WORK (exit 0) — live ref `cfbd81cca6` unchanged vs the 21:16Z TIP NOTE (`cfbd81cca6b37bed43891c66643d5670994b0448`), confirmed independently via `git ls-remote` (full SHA match). Cheap check only, per budget protocol. No pending build-list work.
+- No merges since PR #2187 (21:15Z). CI at tip is the classified RED (brain-index drift, sixth occurrence, routed to the brain-build repair lane; promote-and-prove guardrail firing as designed; Current Truth Resolver env rate-limit red) — no repair merge has landed, so no status change to report. Repair lane still in-flight; unverified this pass.
+- No board scan per NO_WORK precedent (tip unchanged vs TIP NOTE, no flagged priorities). #2175 watermark unchanged at 6102355418.
+- No mission-state republish — the `live/mission-state` snapshot names `cfbd81c` from the 21:16Z publish and still carries the tip's state.
+- **Standing carries (unchanged, unverified this pass):** 19:31Z mutual-oversight flag on #2174's merge still awaiting owning lane/director confirmation. T12 evaluation handoff still blocked on sealed keys (director custody).
+- No NEEDS-REWRITE flags. Nothing for Shawn.
+
+## PASS NOTE (2026-10-10 21:48Z — quiet)
+
+- Entry verdict: NO_WORK (exit 0) — live ref `cfbd81cca6` unchanged vs the 21:16Z TIP NOTE (`cfbd81cca6b37bed43891c66643d5670994b0448`), confirmed independently via `git ls-remote`. Cheap check only, per budget protocol. No pending build-list work.
+- No merges since PR #2187 (21:15Z). CI at tip is the classified RED (brain-index drift, routed to the brain-build repair lane; promote-and-prove guardrail firing as designed; Current Truth Resolver env rate-limit red) — no repair merge has landed, so no status change to report. Repair lane still in-flight; unverified this pass.
+- No board scan per NO_WORK precedent (tip unchanged vs TIP NOTE, no flagged priorities).
+- No mission-state republish — the `live/mission-state` snapshot names `cfbd81c` from the 21:16Z publish and still carries the tip's state.
+- **Standing carries (unchanged, unverified this pass):** 19:31Z mutual-oversight flag on #2174's merge still awaiting owning lane/director confirmation. T12 evaluation handoff still blocked on sealed keys (director custody).
+- No NEEDS-REWRITE flags. Nothing for Shawn.
+
+## PASS NOTE (2026-10-10 21:31Z — quiet)
+
+- Entry verdict: NO_WORK (exit 0) — live ref `cfbd81cca6` unchanged vs the 21:16Z TIP NOTE (`cfbd81cca6b37bed43891c66643d5670994b0448`). Cheap check only, per budget protocol. No pending build-list work.
+- No merges since the 21:16Z pass. CI at tip is the classified RED (brain-index drift, routed to the brain-build repair lane; promote-and-prove guardrail firing as designed; Current Truth Resolver env rate-limit red) — no repair merge has landed, so no status change to report. Repair lane still in-flight; unverified this pass.
+- No board scan per NO_WORK precedent (tip unchanged vs TIP NOTE, no flagged priorities).
+- No mission-state republish — the `live/mission-state` snapshot names `cfbd81c` from the 21:16Z publish and still carries the tip's state.
+- **Standing carries (unchanged, unverified this pass):** 19:31Z mutual-oversight flag on #2174's merge still awaiting owning lane/director confirmation. T12 evaluation handoff still blocked on sealed keys (director custody).
+- No NEEDS-REWRITE flags. Nothing for Shawn.
 
 ## PASS NOTE (2026-10-10 21:16Z — tip moved, CI red classified, board window read)
 
@@ -35,7 +77,7 @@ Every worker reads this file fresh at the start of every shift. When the plan ch
   - **#2182**: two open discussion spaces live for D29–D44 (Shawn's directive — seats talk through the directives).
   - Naya 4 self-build loop sign-out (6101966611): **closed redundant PR #2177** (duplicate brain-index heal) without merge — no duplicate mechanism. Good.
   - Overnight sweep 19:52Z (6101666424): independently re-verified tip `0fb380c7` GREEN — the red reported at 19:45Z was healed by #2176; the `0fb380c7` green certificate stands in history per the Freshness Law and does NOT transfer to `cfbd81c`.
-- **Watermark advanced: #2175 → 6102257048** (newest at read). Relay receipt for this window posted as this pass's status comment (one board tail, one receipt — no same-topic race at post time).
+- **Watermark advanced: #2175 → 6102355418** (receipt posted this pass; newest directive at post time: D58). Relay receipt for this window posted as this pass's status comment (one board tail, one receipt — no same-topic race at post time).
 - **Mission-state snapshot republished** to `live/mission-state` naming `cfbd81c` (blob → tree → commit → PATCH ref via Git Data API; verified ref SHA == created commit SHA).
 - **Standing carries (unchanged, unverified this pass):** 19:31Z mutual-oversight flag on #2174's merge still awaiting owning lane/director confirmation. T12 evaluation handoff still blocked on sealed keys (director custody).
 - No NEEDS-REWRITE flags. Material change (tip RED) → reported via the relay receipt on #2175, not to Shawn directly.
@@ -223,14 +265,14 @@ Every worker reads this file fresh at the start of every shift. When the plan ch
 - **PR #2159 open** (accountability scorecard → weekly watchdog, mergeable_state unstable) — track; pairs with the #2158 team scoreboard.
 - **WHAT-IT-MEANS-TO-BE-NAYA.md**: PR #2145 open (43595a40, rebased on live tip); distilled-doctrine review PASS by relay — awaiting CI/merge. **WORKER-PROTOCOL.md**: PR #2146 open (ff067fb6).
 
-## TIP NOTE (freshest verified truth, 2026-10-10 21:16Z — director pass: tip move assessed, red classified from live job logs)
-- Main tip: `cfbd81cca6b37bed43891c66643d5670994b0448` — merge of PR #2187 (mission-state snapshot refresh, head `6bfcc82a`, branch `naya/mission-state`, merged 21:15:08Z) on top of `3d6e1360` (merge of PR #2186, 21:14:28Z — naya5/revocation-linearization: drift_canary/ spec + 15-framework verification stack). First-parent chain since `0fb380c7`: direct snapshot-refresh commits `0fd7d051` (20:13Z) → `71d307e7` (20:41Z) → `3d6e1360` → `cfbd81cc`. Ref-anchored via the refs API (unchanged on re-read).
-- **CORRECTION to the 21:16Z brain-build note: drift is NOT healed at this tip.** Live evidence: (1) CI `test` run `38086899899` on `cfbd81c` FAILED at step "Verify generated Brain index has no drift"; (2) independent `--check` on exact tip bytes in a fresh worktree (worktree's own tools path) → DRIFT: `BRAIN/REAL-TREE.json` + `BRAIN/REAL-TREE.md` don't match regenerated output. The note's #2176 receipt language was true for `0fb380c7` and does not transfer — the `0fb380c7` green certificate stays in history per the Freshness Law. Introducers of the new drift: the two snapshot-refresh commits + #2186's `drift_canary/` additions + #2187's refresh, none carrying a regen (the #2173 pattern, sixth occurrence of the class).
-- **CI at the tip, classified from live job logs:** (1) `test` = REAL RED (drift, above). (2) `promote-and-prove` = guardrail firing as designed — step "Enforce ratified standing policy before automatic promotion" fail-closed on the test red. (3) `Current Truth Resolver` = ENVIRONMENT RED — step "Collect live GitHub evidence" failed on `gh: API rate limit exceeded for installation` (21:15:24Z), not a tip defect; if it recurs consecutively, root-cause (a retry-with-backoff fix touches `.github/workflows/` = human-click gate).
-- **Repair routing:** brain-index drift re-stamp → brain-build repair lane (fresh minimal regen + re-stamp pinned at `cfbd81c`, rebase-before-regen); no duplicate mechanism from this seat. Any in-flight duplicate repair should stand down.
-- Build list (brain-build lane, 21:16Z): 821 items, zero pending, 12 blocked. Blockers re-verified live: #1136 still OPEN issue (human DB gate), #1224 still open+DRAFT @ a71fbfe158 (8 qualify machine layers still Shawn-gated), #2068 still open unmerged @ dd81630f45 (human merge gate) — all unchanged. No brain-build item actionable this shift beyond the drift repair routing above.
-- #1354 commenting is platform-disabled at 2500 comments (GitHub 403) — relay receipts go on #2175. Watermark: #2175 → 6102257048 (director pass, 21:16Z).
-- Env note: direct `git push` unavailable (no credential helper); branch published via the Git Data API (blob → tree → commit → ref), tree verified byte-identical.
+## TIP NOTE (freshest verified truth, 2026-10-10 22:06Z — director pass: tip move assessed, red classified from live job logs)
+- Main tip: `80e6d0cdca69dbddd043db8da89b4775ab686e00` — two web-flow merge clicks by Shawn Vibert: `42891b169` (21:57:23Z, Naya 5's retrieval lane: `ea5ceb824` PR #1886 cold-retrieve drill-bank boundary suite + week-41 log, `e3aa358a7` exact-phrase relevance-floor fix) on top of `cfbd81cca`; then `80e6d0cdc` (22:02:01Z, Naya 5's mission-state-watch fix `fe939bef4` — branched off stale `0fb380c76`, merged clean). First-parent chain since `cfbd81cca`: `42891b169` → `80e6d0cdc`. Ref-anchored via the refs API + independent `git ls-remote`.
+- **CI at the tip, classified from live job logs:** (1) `test` (run 38089885628) = REAL RED — step "Verify generated Brain index has no drift" FAILED: brain-index drift, seventh occurrence of the class, second tip carrying it unhealed. Full tree diff between the tips is 6 files (`tests/`, `tools/`, `.github/workflows/`) with **zero BRAIN/ paths changed** — the drift is byte-identical carryover from `cfbd81c`, not a new introduction. (2) `promote-and-prove` (run 38089885672) = guardrail firing as designed — step "Enforce ratified standing policy before automatic promotion" fail-closed on the test red. (3) The 21:16Z `Current Truth Resolver` env red is GONE — single-occurrence installation-token rate limit, did not recur; transient confirmed.
+- **Repair routing:** brain-index drift re-stamp → brain-build repair lane (fresh minimal regen + re-stamp pinned at `80e6d0c`, rebase-before-regen); no duplicate mechanism from this seat. Any in-flight duplicate repair should stand down.
+- **Relevance lane landed on main:** Naya 5's `tools/smart_note_v2.py` exact-phrase fix ("exact-phrase matches clear the relevance floor by construction") + `tests/test_cold_retrieve_drill_bank.py` boundary suite + week-41 drill log are live on main via Shawn's clicks — priority #3 moved from plan to code. Re-score on the next fresh cold-retrieve measurement.
+- Build list (brain-build lane, 21:16Z): 821 items, zero pending, 12 blocked. Blockers re-verified live then: #1136 still OPEN issue (human DB gate), #1224 still open+DRAFT @ a71fbfe158 (8 qualify machine layers still Shawn-gated), #2068 still open unmerged @ dd81630f45 (human merge gate) — carried, not re-verified this pass. No brain-build item actionable this shift beyond the drift repair routing above.
+- #1354 commenting is platform-disabled at 2500 comments (GitHub 403) — relay receipts go on #2175. Watermark: #2175 → 6102503850 (director pass, 22:06Z).
+- Env note: direct `git push` unavailable (no credential helper); `live/mission-state` published via the Git Data API (blob → tree → commit → PATCH ref), verified ref SHA == created commit SHA.
 ## MASTER LOOP — SECOND TEMPLATE RUN (relayed 2026-10-10 15:30Z, authoritative seat assignments)
 **P1 FLOW:** Naya 4 fixes #2062 red tests then merges · Naya 5 rebases connect→learn→evolve (main's ts_bridge wins) · Naya 1 validates #2102/#2103/#2104 (learning moves on her stamp only) · Naya 5 rewires 12 worker briefs.
 **P2 PROOF:** experiment proposal → Shawn's review with triple-yes checkpoints · NAYA 1 writes Learning 6.0 bar.
@@ -244,7 +286,7 @@ Maximum verified human value per action. The system learns from experience and g
 ## CURRENT PRIORITIES (ranked)
 1. **Security audit** — 4 learning records may lack proper permission. Audit, quarantine if needed. Touch nothing in production. (Naya 2)
 2. **Learning loop** — sandbox driver design, then CONNECT/EVOLE/DISTILL/COMPOUND with proofs. Close the loop. (Team)
-3. **Search relevance** — knowledge retrieval returning wrong results 40/43 in one test. Rebuild the selector. (Naya 2 + Naya 5)
+3. **Search relevance** — MOVED 22:02Z: Naya 5's exact-phrase relevance-floor fix (`tools/smart_note_v2.py`: exact-phrase matches clear the floor by construction) + cold-retrieve drill-bank boundary suite + week-41 log merged to main via Shawn's clicks. Next: re-measure cold-retrieve against the drill bank and re-score. (Naya 2 + Naya 5)
 4. **Re-prove learning** — independently redo the 14/14 trial with fresh eyes. (Naya 2)
 5. **Drift root fix** — registry-drift break class has bitten 6 times. Kill it permanently. (Team) — 21:16Z: the snapshot-refresh flow is the recurring introducer (3 of 6 occurrences); the refresh flow needs a regen step or a standing repair handoff.
 6. **Production parity** — product is 60+ hours behind the brain. Refresh the packet for Shawn's clicks. (Naya 2)
@@ -261,6 +303,7 @@ Maximum verified human value per action. The system learns from experience and g
 - Destructive/irreversible actions
 
 ## DOS AND DON'TS (from real mistakes — read before every shift)
+- **DO** give every workflow that reads repo state an explicit checkout step — Naya 5's mission-state-watch fix (fe939bef4, merged 22:02Z) added the missing checkout before reading the snapshot; without it the job reads nothing (or stale nothing). Checkout is the workflow's first act of honesty about what tree it's looking at. (L-correction-2188)
 - **DO** re-verify a "green at the tip" claim on the CURRENT tip before repeating it — the 21:16Z brain-build note recycled #2176's "drift healed, --check passes" language onto the new tip `cfbd81c` without re-verifying; live CI + an independent `--check` on exact tip bytes both said DRIFT. A green certificate never transfers across tips (Freshness Law). (L-correction-2116)
 - **DO** treat the mission-state snapshot refresh as a drift-introducer: three of the six drift occurrences came from snapshot-refresh commits without a regen (#2173; `0fd7d051` + `71d307e7`; #2187). Any lane refreshing `BRAIN/CURRENT-MISSION-STATE.md` must regen or hand the repair to the brain-build lane in the same breath.
 - **DO** classify a workflow red by its step log before attributing it to the tip: the 21:16Z `Current Truth Resolver` red was `gh: API rate limit exceeded for installation` — an environment/rate-limit class, not a code defect. Rate-limit RED ≠ tip RED.
@@ -280,6 +323,7 @@ Maximum verified human value per action. The system learns from experience and g
 - **DO** use `git ls-remote origin refs/heads/main` for the live-tip check when the REST API is rate-limited (2026-10-10 15:47Z) — the 403 only blocks REST, not the git protocol. A rate limit is not a dead pass.
 
 ## SHIFT SCORES (17:17Z)
+- **22:06Z pass:** tip moved `cfbd81c` → `80e6d0c` (2 web-flow merge clicks by Shawn Vibert, 21:57Z + 22:02Z: Naya 5's retrieval lane — PR #1886 cold-retrieve drill-bank boundary suite + week-41 log + exact-phrase relevance-floor fix — then the mission-state-watch checkout-step fix). CI RED at the new tip, both failures classified from live job logs: `test` = REAL RED (brain-index drift, seventh occurrence, second tip carrying it unhealed — full tree diff shows zero BRAIN/ paths changed, so byte-identical carryover, not a new introduction; routed to brain-build repair lane, no duplicate mechanism); `promote-and-prove` = guardrail firing as designed; the 21:16Z Current Truth Resolver env red did not recur (transient confirmed). Board #2175: 5 new comments read live — directives D59–D63 registered (Naya 3's AER-LIVE series, owner TBD, director to route). Watermark → 6102503850. Mission-state snapshot republished naming `80e6d0c` (ref SHA == commit SHA verified). Priority #3 (search relevance) MOVED from plan to code. Lesson harvested: every repo-reading workflow needs an explicit checkout step. No lane idle 3+ shifts. No NEEDS-REWRITE flags. Nothing for Shawn.
 - **21:16Z pass:** tip moved `0fb380c7` → `cfbd81c` (5 mainline mutations in ~21 min: 2 direct snapshot commits, #2186, #2187). CI RED at the new tip, all three failures classified from live job logs: `test` = REAL RED (brain-index drift, sixth occurrence — independently verified on exact tip bytes; routed to brain-build repair lane, no duplicate mechanism); `promote-and-prove` = guardrail firing as designed; `Current Truth Resolver` = environment RED (installation-token rate limit). Board #2175: 28 new comments read live — directives D36–D55 registered (owner TBD, director to route), PR #2184 (draft, first directive as code), #2182 discussion spaces live, #2177 closed as duplicate. Corrected the concurrent brain-build note's false "drift healed at this tip" claim against live evidence (mutual oversight, factual). Watermark → 6102257048. Mission-state snapshot republished naming `cfbd81c`. Lessons harvested: green certificates never transfer across tips; snapshot refresh = drift-introducer; rate-limit RED ≠ tip RED. No lane idle 3+ shifts. No NEEDS-REWRITE flags. Material change reported via relay receipt on #2175.
 - **17:17Z pass:** tip moved `44953dd1` → `40df54b1` (1 merge: #2160 brain-index re-stamp). Drift HEALED — independently verified `--check` OK (1243 files) on exact tip bytes; #1 repair closed. Governance flag CLEARED — Shawn ratified the 3 #2152 workflow files ("absolutely ratify them", 17:18Z); workflows stay human-only going forward. Pipeline monitor: main FULLY GREEN. 14-question audit verdict posted (Naya 4: "it's right", 10 problems with owners); distilled-doctrine review on #2145 PASS (relay). PRs #2159/#2145/#2146 open, all unstable — tracked. Lesson harvested: invoke repo tools via the worktree's own path — `__file__` resolves the root, not cwd (mirror-law catch on my own false DRIFT). No lane idle 3+ shifts. No NEEDS-REWRITE flags. Nothing for Shawn.
 - **17:17Z pass:** tip moved `44953dd1` → `40df54b1` (1 merge: #2160 brain-index re-stamp). Drift HEALED — independently verified `--check` OK (1243 files) on exact tip bytes; #1 repair closed. Governance flag CLEARED — Shawn ratified the 3 #2152 workflow files ("absolutely ratify them", 17:18Z); workflows stay human-only going forward. Pipeline monitor: main FULLY GREEN. 14-question audit verdict posted (Naya 4: "it's right", 10 problems with owners); distilled-doctrine review on #2145 PASS (relay). PRs #2159/#2145/#2146 open, all unstable — tracked. Lesson harvested: invoke repo tools via the worktree's own path — `__file__` resolves the root, not cwd (mirror-law catch on my own false DRIFT). No lane idle 3+ shifts. No NEEDS-REWRITE flags. Nothing for Shawn.
