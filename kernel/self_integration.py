@@ -27,13 +27,12 @@ from kernel.behavior_policy import BehaviorPolicyStore
 from kernel.self_node import SelfNode
 
 # --- verifier-chain identity contract -------------------------------------
-# Canonical contract: tools/learning_admission_gate.py on branch
-# naya5/learning-admission-round2 (PR #2049) — normalize_identity() and the
-# claim rule "the verifier must differ from BOTH the doer and the scorer"
-# (tools/learning_verification_queue.py). The gate file is not on main yet,
-# so import it when present and mirror the one-line contract until it lands;
-# the mirror is deleted the moment the import succeeds in CI.
-try:  # pragma: no cover - import path exists only after the gate merges
+# Canonical contract: tools/learning_admission_gate.py (PR #2049, on main) —
+# normalize_identity() and the claim rule "the verifier must differ from
+# BOTH the doer and the scorer" (tools/learning_verification_queue.py).
+# Prefer the canonical import; the local mirror below is a defensive fallback
+# for contexts where tools/ is not importable, not a parallel contract.
+try:  # pragma: no cover - fallback path: canonical import unavailable
     from tools.learning_admission_gate import (  # type: ignore[import-not-found]
         normalize_identity as _gate_normalize_identity,
     )
@@ -43,7 +42,7 @@ try:  # pragma: no cover - import path exists only after the gate merges
 
     _CONTRACT_SOURCE = "tools/learning_admission_gate.py (canonical)"
 
-except ImportError:  # the gate branch is unmerged; mirror its contract
+except ImportError:  # canonical import unavailable; mirror its contract
 
     def normalize_identity(value: Any) -> str:
         """Canonical identity comparison: case- and whitespace-insensitive."""
