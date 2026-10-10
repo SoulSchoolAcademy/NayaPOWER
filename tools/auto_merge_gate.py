@@ -4,10 +4,20 @@ SCORECARD-LAW-V1 (Shawn Vibert, verbal ratification 2026-10-05 ~06:05 PDT,
 recorded #1354 comment 5995131455): "my law that supersedes all laws you must
 scorecard everything."
 
+V2 AMENDMENT (Operating Code V2 §5.2, ratified 2026-10-10): the auto-merge
+grant is restated as tests green on live-verified bytes, no conflicts, branch
+current, intent posted, revertable in one commit, scorecard receipt posted —
+no receipt, no merge. The precondition checks P1-P10/H1-H4 below already cover
+every V2 §5.2 clause; the amendment adds a V2 receipt path: a receipt carrying
+engine "SCORECARD-LAW-V2" is validated by the canonical engine in
+kernel/scorecard_law.py (one mechanism for the receipt, not two — V2 §7.11).
+Receipts without that engine marker keep the legacy SCORECARD-LAW-V1
+validation, byte-for-byte, so in-flight receipts keep working.
+
 The receipt IS the law's five steps:
   1. ENUMERATE every option
-  2. SCORE each on value, consequences (pros/cons), mission/vision alignment,
-     situational awareness
+  2. SCORE each (V1: value, consequences, mission/vision alignment,
+     situational awareness; V2: the six Operating Code V2 §1.1 dimensions)
   3. GATE — reversible? no major damage? positive forward effect? (hard stops)
   4. DECIDE — highest score + gates pass → act; winner, strongest alternative,
      falsifier
@@ -24,12 +34,22 @@ Exit code 2: usage / input error.
 
 Fail-closed: any missing or unresolvable field fails its precondition. UNKNOWN != PASS.
 
-Stdlib only.
+Stdlib only (the V2 receipt path lazily imports kernel.scorecard_law; if the
+engine module is unavailable the V2 receipt fails closed with a named reason).
 """
 
 import json
+import os
 import sys
 from datetime import datetime, timezone
+
+# The V2 receipt path needs kernel.scorecard_law. When this tool is invoked as
+# `python3 tools/auto_merge_gate.py` the script's own directory (tools/) lands
+# on sys.path, not the repo root — so anchor the repo root explicitly. This
+# keeps the lazy import working regardless of the caller's working directory.
+_REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if _REPO_ROOT not in sys.path:
+    sys.path.insert(0, _REPO_ROOT)
 
 LAW_ID = "FULL-AUTO-MERGE-V1"
 
@@ -109,8 +129,61 @@ def _now(evaluation_now):
     return dt or datetime.now(timezone.utc)
 
 
+# V2 §5.2: a receipt carrying this engine marker is validated by the canonical
+# Operating Code V2 §1.1 engine (kernel/scorecard_law.py), not by the legacy
+# SCORECARD-LAW-V1 checks. One mechanism for the receipt, not two (V2 §7.11).
+V2_RECEIPT_ENGINE = "SCORECARD-LAW-V2"
+
+# V2 §5.2 mapping — every clause of the auto-merge grant, and the precondition
+# below that enforces it. Kept as documentation so the grant stays checkable
+# against the code, not just the prose.
+V2_GRANT_CLAUSES = {
+    "tests_green_on_live_verified_bytes": ("P1", "P2"),
+    "no_conflicts": ("P3",),
+    "branch_current": ("P4", "H2"),
+    "intent_posted": ("P5",),
+    "revertable_in_one_commit": ("P7",),
+    "scorecard_receipt_posted": ("P8", "H1", "H4"),
+}
+
+
 def _check_receipt(receipt, reasons):
+    """Dispatch receipt validation on the receipt's engine marker.
+
+    - engine == "SCORECARD-LAW-V2": validated by kernel/scorecard_law.py, the
+      canonical Operating Code V2 §1.1 engine (V2 §5.2 amendment).
+    - anything else: legacy SCORECARD-LAW-V1 validation, unchanged.
+    """
+    if isinstance(receipt, dict) and receipt.get("engine") == V2_RECEIPT_ENGINE:
+        return _check_receipt_v2(receipt, reasons)
+    return _check_receipt_v1(receipt, reasons)
+
+
+def _check_receipt_v2(receipt, reasons):
+    """Validate a SCORECARD-LAW-V2 receipt via the canonical V2 engine.
+
+    Fail-closed: if kernel.scorecard_law is unavailable, the receipt cannot be
+    validated and the merge is refused with a named reason. UNKNOWN != PASS.
+    """
+    try:
+        from kernel.scorecard_law import validate_receipt
+    except ImportError as exc:
+        reasons.append(
+            "P8: SCORECARD-LAW-V2 engine unavailable — cannot validate V2 receipt "
+            f"(fail closed): {exc}"
+        )
+        return None
+    ok, v2_reasons = validate_receipt(receipt)
+    for r in v2_reasons:
+        reasons.append(f"P8: {r}")
+    return "V2" if ok else None
+
+
+def _check_receipt_v1(receipt, reasons):
     """Validate the scorecard receipt against the Scorecard Law's five steps.
+
+    (Legacy SCORECARD-LAW-V1 path — unchanged by the V2 §5.2 amendment so
+    in-flight receipts keep working.)
 
     Returns rigor tier or None. Every step is checked mechanically:
       step 1 — >= 2 enumerated options, each with an id

@@ -1,13 +1,13 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-10",
-  "receipt_basis_commit": "2eacc1c3c01a61e1f78e5e1062562dd23f7cd78b",
-  "inventory_file_count": 1240,
+  "receipt_basis_commit": "01de2e2e8f95630b571c5e86de655f448999ac73",
+  "inventory_file_count": 1241,
   "domain_counts": {
     "00-ACTIVATION": 3,
     "00-ARCHITECTURE": 5,
     "00-SPEC": 15,
-    "01-GOVERNANCE": 54,
+    "01-GOVERNANCE": 55,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
@@ -249,6 +249,11 @@
       "path": "BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2.human.md",
       "blob_sha": "fbe045ba392e5e3af32821f151acd2c4e6868f21",
       "size": 9007
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2.must-tracking.md",
+      "blob_sha": "fa3b3ea9c97b8b41c0357ede3dd946a0ce3f8a99",
+      "size": 13205
     },
     {
       "path": "BRAIN/01-GOVERNANCE/0008-operating-code-v2.machine.json",
