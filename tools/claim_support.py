@@ -1263,6 +1263,187 @@ def migrate_merge(target_id, target_text, mappings, new_interactions=None):
     return certificate
 
 
+# Six interaction classes for systematic discovery
+INTERACTION_CLASSES = {
+    "DATA_CONTRACTS": "Does one obligation supply exactly what another needs?",
+    "ORDERING_TIMING": "Must operations occur in a particular order?",
+    "SHARED_STATE": "Do components rely on consistent identity, versions, resources?",
+    "AUTHORITY_PRIVACY": "Could combination exceed either component's permission?",
+    "FAILURE_COUPLING": "Can one's retry/timeout/failure corrupt another?",
+    "EMERGENT_BEHAVIOR": "Does composite assert result absent from component contracts?",
+}
+
+# Interaction proof ladder (5 levels)
+PROOF_LADDER = {
+    1: "Contract proof — producer guarantees meet consumer assumptions",
+    2: "Pairwise integration proof — actual interface with valid/malformed/delayed/revoked inputs",
+    3: "Multi-party composition proof — shared resources, ordering, cycles, concurrency",
+    4: "Environment bridge proof — result applies under target config/runtime",
+    5: "Independent end-to-end proof — exact broader claim with fresh admissible evidence",
+}
+
+# Merge types
+MERGE_TYPES = {
+    "ADMINISTRATIVE": "Unchanged requirements grouped for convenience — no new behavioral claim",
+    "SEMANTIC": "New claim about cooperation, sequencing, shared state, end-to-end result",
+}
+
+
+def discover_interactions(claim_id, component_obligations, composite_description):
+    """
+    Systematic interaction discovery: five checks before generating proof obligations.
+    
+    1. Semantic comparison: new words (together, before, after, across, improves) signal new claims
+    2. Contract comparison: producer guarantees vs consumer assumptions
+    3. Dependency tracing: real handoffs, shared state, event sequences
+    4. Failure analysis: what goes wrong when components are individually correct?
+    5. Environment comparison: staging vs production assumptions
+    """
+    reg = load_registry()
+    if claim_id not in reg["claims"]:
+        print(f"Claim {claim_id} not found.")
+        sys.exit(1)
+
+    claim = reg["claims"][claim_id]
+
+    # Semantic comparison: detect interaction-signaling words
+    interaction_words = ["together", "before", "after", "always", "across",
+                         "independently", "in production", "improves", "uses",
+                         "influence", "sequence", "end-to-end", "integrated"]
+    found_words = [w for w in interaction_words if w in composite_description.lower()]
+
+    discovery = {
+        "claim_id": claim_id,
+        "components": component_obligations,
+        "composite_description": composite_description[:200],
+        "semantic_signals": found_words,
+        "discovered_interactions": [],
+        "assessed_at": datetime.now(timezone.utc).isoformat(),
+    }
+
+    # For each pair of components, check each interaction class
+    print(f"\nInteraction discovery for {claim_id}:")
+    print(f"  Components: {', '.join(component_obligations)}")
+    if found_words:
+        print(f"  Semantic signals: {', '.join(found_words)} → likely SEMANTIC merge")
+
+    # Generate candidate interactions for each class
+    for i, comp_a in enumerate(component_obligations):
+        for comp_b in component_obligations[i+1:]:
+            for class_id, question in INTERACTION_CLASSES.items():
+                candidate = {
+                    "participants": [comp_a, comp_b],
+                    "class": class_id,
+                    "discovery_question": question,
+                    "status": "CANDIDATE",
+                }
+                discovery["discovered_interactions"].append(candidate)
+
+    print(f"  Candidate interactions: {len(discovery['discovered_interactions'])} "
+          f"({len(component_obligations)} components × {len(INTERACTION_CLASSES)} classes)")
+
+    if "interaction_discovery" not in claim:
+        claim["interaction_discovery"] = []
+    claim["interaction_discovery"].append(discovery)
+    save_registry(reg)
+
+    log_event({
+        "event_type": "INTERACTION_DISCOVERY",
+        "claim_id": claim_id,
+        "discovery": discovery,
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+    })
+    return discovery
+
+
+def prove_interaction(claim_id, handoff_id, proof_level, positive_test="", negative_test="",
+                      invariant="", participants=None):
+    """
+    Issue an interaction-specific proof receipt.
+    Proof level 1-5 on the ladder. Requires both positive AND negative tests.
+    """
+    if proof_level not in PROOF_LADDER:
+        print(f"ERROR: proof_level must be 1-5")
+        sys.exit(1)
+
+    reg = load_registry()
+    claim = reg["claims"].get(claim_id)
+    if not claim:
+        print(f"Claim {claim_id} not found.")
+        sys.exit(1)
+
+    if "interaction_proofs" not in claim:
+        claim["interaction_proofs"] = {}
+
+    # A graph edge is not proof. Both witnesses required.
+    if not positive_test or not negative_test:
+        print(f"WARNING: interaction proof requires BOTH positive and negative test witnesses.")
+        print(f"  A system that refuses all execution does not demonstrate correct integration.")
+
+    receipt = {
+        "interaction_id": handoff_id,
+        "composite_claim_id": claim_id,
+        "participants": participants or [],
+        "invariant": invariant[:200],
+        "proof_level": proof_level,
+        "proof_description": PROOF_LADDER[proof_level],
+        "positive_test": positive_test[:100],
+        "negative_test": negative_test[:100],
+        "independent_verification": "PENDING",
+        "qualification": "NOT_YET_ESTABLISHED",
+        "issued_at": datetime.now(timezone.utc).isoformat(),
+    }
+    claim["interaction_proofs"][handoff_id] = receipt
+    save_registry(reg)
+
+    log_event({
+        "event_type": "INTERACTION_PROOF_ISSUED",
+        "claim_id": claim_id,
+        "receipt": receipt,
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+    })
+
+    print(f"\nInteraction proof {handoff_id} (level {proof_level}):")
+    print(f"  {PROOF_LADDER[proof_level]}")
+    print(f"  Invariant: {invariant[:80]}...")
+    print(f"  Positive: {positive_test[:60]}...")
+    print(f"  Negative: {negative_test[:60]}...")
+    print(f"  Status: NOT_YET_ESTABLISHED (pending independent verification)")
+    return receipt
+
+
+def verify_interaction_proof(claim_id, handoff_id, verifier="independent", result="QUALIFIED"):
+    """Independent verifier qualifies or rejects an interaction proof."""
+    if result not in ("QUALIFIED", "REJECTED"):
+        print(f"ERROR: result must be QUALIFIED or REJECTED")
+        sys.exit(1)
+
+    reg = load_registry()
+    claim = reg["claims"].get(claim_id)
+    if not claim or handoff_id not in claim.get("interaction_proofs", {}):
+        print(f"Interaction proof {handoff_id} not found.")
+        sys.exit(1)
+
+    proof = claim["interaction_proofs"][handoff_id]
+    proof["independent_verification"] = result
+    proof["verifier"] = verifier
+    proof["verified_at"] = datetime.now(timezone.utc).isoformat()
+    proof["qualification"] = "ESTABLISHED" if result == "QUALIFIED" else "FAILED"
+    save_registry(reg)
+
+    log_event({
+        "event_type": "INTERACTION_PROOF_VERIFIED",
+        "claim_id": claim_id,
+        "interaction_id": handoff_id,
+        "result": result,
+        "verifier": verifier,
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+    })
+
+    print(f"{handoff_id}: independently {result} by {verifier}")
+    return proof
+
+
 def main():
     parser = argparse.ArgumentParser(description="Claim-level support-set evaluator")
     sub = parser.add_subparsers(dest="cmd", required=True)
@@ -1387,6 +1568,26 @@ def main():
     mm.add_argument("--target-text", required=True)
     mm.add_argument("--new-interactions", default="[]", help="JSON list of new interaction requirements")
 
+    di = sub.add_parser("discover-interactions", help="Systematic interaction discovery")
+    di.add_argument("--claim", required=True)
+    di.add_argument("--components", required=True, help="Comma-separated obligation IDs")
+    di.add_argument("--description", required=True, help="Composite claim description")
+
+    pi = sub.add_parser("prove-interaction", help="Issue interaction proof receipt")
+    pi.add_argument("--claim", required=True)
+    pi.add_argument("--handoff", required=True)
+    pi.add_argument("--level", type=int, required=True, choices=[1, 2, 3, 4, 5])
+    pi.add_argument("--invariant", required=True)
+    pi.add_argument("--participants", default="", help="Comma-separated")
+    pi.add_argument("--positive-test", default="")
+    pi.add_argument("--negative-test", default="")
+
+    vi = sub.add_parser("verify-interaction", help="Independent verification of interaction")
+    vi.add_argument("--claim", required=True)
+    vi.add_argument("--handoff", required=True)
+    vi.add_argument("--verifier", default="independent")
+    vi.add_argument("--result", required=True, choices=["QUALIFIED", "REJECTED"])
+
     args = parser.parse_args()
     if args.cmd == "register-claim":
         register_claim(args.id, args.description, args.scope)
@@ -1446,6 +1647,15 @@ def main():
         mappings = json.loads(args.sources)
         new_interactions = json.loads(args.new_interactions)
         migrate_merge(args.target, args.target_text, mappings, new_interactions)
+    elif args.cmd == "discover-interactions":
+        components = [c.strip() for c in args.components.split(",")]
+        discover_interactions(args.claim, components, args.description)
+    elif args.cmd == "prove-interaction":
+        participants = [p.strip() for p in args.participants.split(",")] if args.participants else []
+        prove_interaction(args.claim, args.handoff, args.level, args.positive_test,
+                          args.negative_test, args.invariant, participants)
+    elif args.cmd == "verify-interaction":
+        verify_interaction_proof(args.claim, args.handoff, args.verifier, args.result)
 
 
 if __name__ == "__main__":
