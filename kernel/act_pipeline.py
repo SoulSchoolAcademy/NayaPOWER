@@ -144,7 +144,8 @@ class ActionReceipt:
     receipt_id: str
     plan_id: str
     phase: str  # PLAN_ACCEPTED | PLAN_REFUSED | EXECUTION_STARTED |
-                # EXECUTION_COMPLETED | EXECUTION_FAILED | EXECUTION_REFUSED
+                # EXECUTION_COMPLETED | EXECUTION_FAILED | EXECUTION_REFUSED |
+                # EXECUTION_HOOK_FAILED (observer hook raised; action still completed)
     executed: bool
     outcome_verified: bool  # only the VERIFY seam may set True
     truth_state: str        # UNKNOWN | BLOCKED (VERIFIED only via verdict)
@@ -433,7 +434,11 @@ def execute_plan(plan: ActionPlan,
     (plan, receipt). SELF wires kernel.self_integration.make_act_experience_hook
     here so every completed action is preserved as experience. Refused or
     failed executions never reach the hook — only a completed outcome is
-    recordable experience.
+    recordable experience. Hook isolation (safety floor): the hook is an
+    observer, never a decider — a raising hook is recorded as an
+    EXECUTION_HOOK_FAILED ledger receipt and can never turn a completed
+    action into an apparent failure for the caller (no truth/signal
+    divergence, no blind-retry double-execution).
 
     Do-no-harm enforcement (fail-closed): the chosen candidate is re-run
     through the calculus's gate_candidate at the last responsible moment,
@@ -519,7 +524,26 @@ def execute_plan(plan: ActionPlan,
         expected_outcome=plan.chosen.expected_outcome,
     ))
     if on_executed is not None:
-        on_executed(plan, completed)
+        try:
+            on_executed(plan, completed)
+        except Exception as exc:  # noqa: BLE001 — observer failure is evidence, never a rewritten outcome
+            # Hook isolation (safety floor): the hook is an observer, not a
+            # decider. A raising hook must NEVER turn a completed action into
+            # an apparent failure for the caller — the ledger already holds
+            # EXECUTION_COMPLETED, so an escaping exception would be a
+            # truth/signal divergence inviting a blind retry and a
+            # double-execution of an already-completed action. Record the
+            # observer failure as ledger evidence and return the true
+            # completed outcome.
+            emit(ActionReceipt(
+                receipt_id=_new_id(), plan_id=plan.plan_id, phase="EXECUTION_HOOK_FAILED",
+                executed=True, outcome_verified=False, truth_state="UNKNOWN",
+                evidence=(f"post-execution hook raised {type(exc).__name__}: {exc}; "
+                          "action outcome stands EXECUTION_COMPLETED — hook failure is "
+                          "observation evidence, not an action failure; no blind retry",),
+                codes=("EXECUTION_HOOK_FAILED",),
+                expected_outcome=plan.chosen.expected_outcome,
+            ))
     return completed
 
 
