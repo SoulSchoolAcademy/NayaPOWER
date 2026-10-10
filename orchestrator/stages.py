@@ -128,12 +128,12 @@ STAGE_CONTRACTS: dict[StageId, StageContract] = {
         stage=StageId.EVOLVE,
         consumes="applied outcomes over time",
         produces="improvement measurement {delta_vs_baseline, corrections}",
-        implemented=False,
-        implementation="NONE",
-        not_implemented_reason=(
-            "EVOLVE_NOT_IMPLEMENTED: no EvolveNode and no evolve-runtime exist in "
-            "the repository (wiring manifest 2026-10-09: 0/3 bindings). The stage "
-            "cannot execute."
+        implemented=True,
+        implementation=(
+            "tools/learning_evolve.py::evolve_lesson — the EVOLVE node "
+            "(in-process Python, pure; bound by the orchestrator, never "
+            "reimplemented here). Production binding targets a future evolve "
+            "edge function once deployed."
         ),
     ),
 }

@@ -1,12 +1,12 @@
 """Proof tests for the node orchestrator.
 
 What these prove (and what they don't):
-- PROVEN: six implemented stages execute in order with the correlation ID
+- PROVEN: seven implemented stages execute in order with the correlation ID
   chaining every stage record; interruption resumes without re-executing
-  completed stages; the three missing stages report NOT_IMPLEMENTED loudly
+  completed stages; the two missing stages report NOT_IMPLEMENTED loudly
   (no silent PASS); stage failures become explicit FAILED states.
 - NOT PROVEN here: production HTTP invocation (needs deployed functions +
-  credentials); CONNECT/LEARN/EVOLVE behavior (no implementations exist).
+  credentials); CONNECT/LEARN behavior (no implementations exist).
 """
 
 import json
@@ -68,6 +68,32 @@ def make_capture(lesson_id="SN-TEST-001", **overrides):
             "behavioral_measure": "stages completed",
             "outcome": "pending",
         },
+        # EVOLVE's input contract: the lesson plus its recorded application
+        # history. Without these the stage fails closed (named, explicit).
+        "lesson": {
+            "lesson_id": lesson_id,
+            "claim": "The orchestrator executes the implemented stages in order.",
+            "lifecycle_state": "ACTIVE",
+        },
+        "applications": [
+            {
+                "application_receipt_id": "APP-ORCH-1",
+                "task_ref": "orchestrator-proof-run",
+                "task_class": "orchestrator-proof",
+                "applier": "naya-1",
+                "applied_at": "2026-10-09T10:00:00Z",
+                "outcome": {
+                    "success": True,
+                    "effect_text": "orchestrator executed the stage order",
+                    "observed_at": "2026-10-09T10:30:00Z",
+                },
+                "independent_verification": {
+                    "verifier": "naya-2",
+                    "verified_at": "2026-10-09T11:00:00Z",
+                },
+                "baseline_success_rate": 0.5,
+            },
+        ],
     }
     capture.update(overrides)
     return capture
@@ -92,29 +118,32 @@ def test_commit_is_idempotent(orch, store_root):
 
 
 # --------------------------------------------------------------------------
-# 2. Full run: six stages execute in order, correlation ID chains everything.
+# 2. Full run: seven stages execute in order, correlation ID chains everything.
 # --------------------------------------------------------------------------
 
-def test_full_run_executes_six_stages_in_order(orch, executor):
+def test_full_run_executes_seven_stages_in_order(orch, executor):
     capture = make_capture()
     event_id = orch.commit_capture(capture["lesson_id"], fingerprint(capture))
     record = orch.run(event_id, capture)
 
-    # The three missing stages are LOUD, so the ceiling is INCOMPLETE.
+    # The two missing stages are LOUD, so the ceiling is INCOMPLETE.
     assert record.status == RunStatus.INCOMPLETE.value, record.halt_reason
 
-    implemented = ["SELF", "LAW", "ACT", "KNOW", "PROVE", "VERIFY"]
+    implemented = ["SELF", "LAW", "ACT", "KNOW", "PROVE", "VERIFY", "EVOLVE"]
     for stage in implemented:
         rec = record.stages[stage]
         assert rec.status == StageStatus.COMPLETED.value, f"{stage}: {rec.status} {rec.error_message}"
         assert rec.correlation_id == record.correlation_id, f"{stage} missing chained correlation ID"
         assert rec.attempts == 1
 
-    for stage in ["CONNECT", "LEARN", "EVOLVE"]:
+    for stage in ["CONNECT", "LEARN"]:
         rec = record.stages[stage]
         assert rec.status == StageStatus.NOT_IMPLEMENTED.value
         assert rec.not_implemented_reason, f"{stage} has no named reason"
         assert "NOT_IMPLEMENTED" in rec.not_implemented_reason
+
+    # The EVOLVE stage measured the lesson's application history for real.
+    assert "EVOLVE verdict: KEEP" in record.stages["EVOLVE"].output_summary
 
     # Execution order respected: each stage started after the previous completed.
     # (Stage records carry started_at; order follows STAGE_ORDER by construction.)
@@ -146,7 +175,7 @@ def test_kill_and_resume(orch, executor):
     record = orch2.run(event_id, capture)
 
     assert record.status == RunStatus.INCOMPLETE.value
-    for stage in ["SELF", "LAW", "ACT", "KNOW", "PROVE", "VERIFY"]:
+    for stage in ["SELF", "LAW", "ACT", "KNOW", "PROVE", "VERIFY", "EVOLVE"]:
         assert record.stages[stage].status == StageStatus.COMPLETED.value
 
     # The critical assertion: SELF and LAW were NOT re-executed.
@@ -187,7 +216,7 @@ def test_no_silent_pass_for_missing_stages(orch):
     record = orch.run(event_id, capture)
 
     assert record.status != RunStatus.SUCCESS.value
-    for stage in ["CONNECT", "LEARN", "EVOLVE"]:
+    for stage in ["CONNECT", "LEARN"]:
         rec = record.stages[stage]
         # A silent PASS would look like COMPLETED with no real execution.
         assert rec.status != StageStatus.COMPLETED.value
@@ -195,7 +224,7 @@ def test_no_silent_pass_for_missing_stages(orch):
         # The reason names the missing implementation explicitly.
         assert "no " in rec.not_implemented_reason.lower() or "NOT_IMPLEMENTED" in rec.not_implemented_reason
     # The halt reason names the missing stages.
-    for stage in ["CONNECT", "LEARN", "EVOLVE"]:
+    for stage in ["CONNECT", "LEARN"]:
         assert stage in record.halt_reason
 
 
@@ -257,6 +286,7 @@ def test_verify_rejection_halts_as_rejected(orch):
     assert "VERIFY rejected" in record.halt_reason
     # LEARN/EVOLVE never reached: SKIPPED, not silently passed.
     assert record.stages["LEARN"].status == StageStatus.SKIPPED.value
+    assert record.stages["EVOLVE"].status == StageStatus.SKIPPED.value
 
 
 # --------------------------------------------------------------------------

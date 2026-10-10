@@ -18,14 +18,14 @@ A durable state machine that takes a committed capture and executes the nine-nod
 | CONNECT | **NOT_IMPLEMENTED** — no implementation exists anywhere |
 | VERIFY | `tools/learning_admission_gate.py::admit_candidate` — the pinned behavioral twin of the WO3 TS gate (38/38 fixtures verdict-identical). NOT reimplemented here. Production binds the TS gate endpoint once merged/deployed. |
 | LEARN | **NOT_IMPLEMENTED** — no implementation exists anywhere |
-| EVOLVE | **NOT_IMPLEMENTED** — no implementation exists anywhere |
+| EVOLVE | `tools/learning_evolve.py::evolve_lesson` (in-process) — improvement measurement, preservation verdict, correction records with the supersession lifecycle. NOT reimplemented here. Production binds a future evolve edge function once deployed. |
 
 ## The laws it enforces
 
 1. **Durable obligation.** `commit_capture()` derives the event ID deterministically from the capture — the same capture committed twice yields one event. Retries are safe; duplicates are impossible. The append-only JSONL log is the obligation.
 2. **Stage results chain.** Every stage record carries the shared correlation ID. Each stage consumes the previous stages' recorded outputs.
 3. **Resume, never redo.** Completed stages are skipped on resume. A stage left RUNNING by a crash is retried (stages must be idempotent — a recorded contract requirement).
-4. **No silent PASS.** CONNECT/LEARN/EVOLVE report NOT_IMPLEMENTED with named reasons. A run with missing stages is INCOMPLETE, never SUCCESS.
+4. **No silent PASS.** CONNECT/LEARN report NOT_IMPLEMENTED with named reasons. A run with missing stages is INCOMPLETE, never SUCCESS.
 5. **Failures are explicit.** Stage errors become named FAILED states with the error captured; the run halts and resume retries the failed stage.
 6. **Governed halts.** LAW BLOCKED → BLOCKED. LAW NEEDS_HUMAN_AUTHORIZATION → BLOCKED (protected gate). VERIFY rejected → REJECTED. These are rules, not errors.
 
@@ -51,7 +51,7 @@ Run records live at `.naya/orchestrator/runs/<event_id>.json` (atomic writes). E
 
 `tests/test_node_orchestrator.py` (8 tests):
 - Event obligation is idempotent.
-- Six implemented stages execute in order with chained correlation IDs.
+- Seven implemented stages execute in order with chained correlation IDs.
 - Kill-and-resume: completed stages are never re-executed (execution counts asserted).
 - Interrupted RUNNING stages retry exactly once.
 - Missing stages are loud; the run is INCOMPLETE, never SUCCESS; no silent PASS.
@@ -59,8 +59,15 @@ Run records live at `.naya/orchestrator/runs/<event_id>.json` (atomic writes). E
 - VERIFY rejection → REJECTED (governed halt, not failure); downstream stages SKIPPED.
 - Every stage has a defined contract.
 
+`tests/test_learning_evolve.py` (EVOLVE node proof):
+- Improvement measurement: verified wins vs the no-lesson baseline → honest delta.
+- Correction lifecycle: a verified failure emits a correction record with the SUPERSEDES edge; the original lesson is never modified; apply_supersession() performs the atomic ACTIVE→SUPERSEDED / PENDING_ADMISSION→ACTIVE transition fail-closed.
+- FLAG_FOR_REVIEW when no outcome is independently verified (self-attestation never counts).
+- Cycle summary aggregates by task class → admission guidance for the next cycle.
+
 ## What this does NOT prove
 
 - Production HTTP invocation (needs deploy + credentials).
-- CONNECT/LEARN/EVOLVE behavior (nothing exists to execute).
+- CONNECT/LEARN behavior (nothing exists to execute).
+- EVOLVE production invocation (the node is implemented and bound locally; no edge function is deployed).
 - End-to-end learning (that requires the missing stages + the decision consumer + longitudinal proof).

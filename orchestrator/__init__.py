@@ -17,7 +17,10 @@ and executes the real implementations:
             WO3 TypeScript gate; production binding targets the TS gate
             endpoint once merged and deployed)
   LEARN   → NOT_IMPLEMENTED (no implementation exists in the repository)
-  EVOLVE  → NOT_IMPLEMENTED (no implementation exists in the repository)
+  EVOLVE  → tools/learning_evolve.py::evolve_lesson (in-process Python — the
+            compounding measurement instrument: improvement measurement,
+            preservation verdict, correction records with the supersession
+            lifecycle; bound by the orchestrator, never reimplemented)
 
 Laws honored here:
 - No silent fallback to PASS. A missing stage reports NOT_IMPLEMENTED loudly.

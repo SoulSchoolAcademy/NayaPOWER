@@ -12,7 +12,11 @@ LocalExecutor — executes the REAL implementations in this repository:
            the pinned behavioral twin of the WO3 TypeScript gate — 38/38
            fixtures verdict-identical. Production binds the TS gate endpoint
            once merged and deployed. This module is NOT reimplemented here.)
-  CONNECT / LEARN / EVOLVE → NotImplementedStage (loud, named, never PASS)
+  EVOLVE → tools/learning_evolve.py::evolve_lesson (in-process Python;
+           the EVOLVE node: improvement measurement, preservation verdict,
+           and correction records with the supersession lifecycle. This
+           module is NOT reimplemented here.)
+  CONNECT / LEARN → NotImplementedStage (loud, named, never PASS)
 
 HttpExecutor — production bindings: POSTs each stage to its edge-function
 endpoint. Defined here so the production wiring is explicit and reviewable.
@@ -89,6 +93,7 @@ class LocalExecutor:
             StageId.KNOW: self._run_know,
             StageId.PROVE: self._run_prove,
             StageId.VERIFY: self._run_verify,
+            StageId.EVOLVE: self._run_evolve,
         }[stage]
         return handler(input, correlation_id)
 
@@ -253,6 +258,67 @@ class LocalExecutor:
             summary=f"VERIFY verdict: {verdict}",
         )
 
+    # -- EVOLVE --------------------------------------------------------
+    def _run_evolve(self, input: dict[str, Any], correlation_id: str) -> StageOutput:
+        # The EVOLVE node: tools/learning_evolve.py::evolve_lesson (in-process
+        # Python — NOT a reimplementation; this module imports the canonical
+        # reference). It measures the lesson against its recorded application
+        # history, emits the preservation verdict, and — for verified
+        # failures — correction records with the supersession lifecycle.
+        # Production binds a future evolve edge function once deployed.
+        from learning_evolve import evolve_lesson
+
+        lesson = input.get("lesson")
+        if not isinstance(lesson, dict):
+            lesson = input.get("capture", {}).get("lesson")
+        applications = input.get("applications")
+        if applications is None:
+            applications = input.get("capture", {}).get("applications")
+        if not isinstance(lesson, dict):
+            return StageOutput(
+                ok=False,
+                result={"error": "EVOLVE requires a lesson object (input['lesson'])"},
+                summary="EVOLVE failed: no lesson supplied",
+            )
+        if not isinstance(applications, list):
+            return StageOutput(
+                ok=False,
+                result={"error": "EVOLVE requires an applications list (input['applications'])"},
+                summary="EVOLVE failed: no application history supplied",
+            )
+        try:
+            result = evolve_lesson(
+                lesson,
+                applications,
+                baseline_success_rate=input.get("baseline_success_rate"),
+            )
+        except ValueError as exc:
+            return StageOutput(
+                ok=False,
+                result={"error": str(exc)},
+                summary=f"EVOLVE failed: {exc}",
+            )
+        measurement = result.measurement
+        delta = measurement.get("delta_vs_baseline")
+        delta_text = f"{delta:+.3f}" if delta is not None else "UNKNOWN"
+        return StageOutput(
+            ok=True,
+            result={
+                "lesson_id": result.lesson_id,
+                "verdict": result.verdict,
+                "verdict_reason": result.verdict_reason,
+                "measurement": measurement,
+                "correction_records": list(result.correction_records),
+                "correlation_id": correlation_id,
+            },
+            summary=(
+                f"EVOLVE verdict: {result.verdict} "
+                f"(verified={measurement['verified_applications']}, "
+                f"delta_vs_baseline={delta_text}, "
+                f"corrections={len(result.correction_records)})"
+            ),
+        )
+
 
 # --------------------------------------------------------------------------
 # HttpExecutor — production bindings (explicit, not live-proven here).
@@ -270,7 +336,7 @@ PRODUCTION_ENDPOINTS: dict[str, str] = {
     "CONNECT": "(no implementation — no endpoint)",
     "VERIFY": "nayanet-learning-verify (WO3 gate at mode==='candidate' write site, post-merge)",
     "LEARN": "(no implementation — no endpoint)",
-    "EVOLVE": "(no implementation — no endpoint)",
+    "EVOLVE": "(no edge function deployed — local binding only: tools/learning_evolve.py; production binding TBD)",
 }
 
 
