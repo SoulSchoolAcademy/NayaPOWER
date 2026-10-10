@@ -49,6 +49,10 @@
     {
       "path": "BRAIN/01-GOVERNANCE/0008-operating-code-v2.machine.json",
       "reason": "DRAFT \u2014 Operating Code V2 not yet ratified by the Human Director (PR #2087 open, awaiting ratification). Pin here upon ratification with the DIRECTOR-RATIFIED envelope."
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0021-unified-operating-law.machine.json",
+      "reason": "DRAFT - Unified Operating Law pending Shawn's confirmation (Workstream 10, PR #2139). Pin in the manifest on ratification; only Shawn marks RATIFIED."
     }
   ],
   "note": "Pins are git blob SHAs of the ratified projections as they existed on live main at establishment. Any deliberate spec change must update the pins in the same (reviewed) PR. A pin mismatch is spec drift until proven otherwise. This manifest is a drift detector anchored at a known-good point, not a re-proof of the original ratification.",
