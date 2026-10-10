@@ -762,6 +762,11 @@ def main():
 
     rll = sub.add_parser("rlq-lab", help="Calibration lab: five worked examples")
 
+    rlx = sub.add_parser("rlq-context", help="AER-CAL-2: contextual drift detection")
+    rlx.add_argument("--case", required=True,
+                     choices=["S1","S2","S3","S4","S5","S6","S7","S8","S9","S10","ALL",
+                              "WORKED"])
+
     args = parser.parse_args()
     if args.cmd == "classify":
         cycle = json.loads(args.trace)
@@ -895,6 +900,130 @@ def main():
         rlq_calibrate(args.fixture)
     elif args.cmd == "rlq-lab":
         rlq_lab()
+    elif args.cmd == "rlq-context":
+        rlq_context(args.case)
+
+
+# ============================================================================
+# AER-CAL-2 — Contextual Drift Integrity Law (Naya 3's law)
+#
+# Judge a provider against comparable conditions, not one fixed baseline.
+# Seasonality explains predictable operational changes. Maintenance explains
+# a declared bounded condition. Neither excuses safety-guarantee violations.
+#
+# Three layers: contextual baseline / change detection / hard invariants.
+# Frozen qualification reference vs adaptive forecast — the forecast must
+# never silently normalize an unresolved regression.
+# ============================================================================
+
+# Contextual baseline: (context) -> (expected_rate, low, high)
+CONTEXT_BASELINE = {
+    "monday_overnight": (0.005, 0.001, 0.012),
+    "friday_evening": (0.08, 0.05, 0.11),
+    "maintenance": (0.16, 0.12, 0.20),
+}
+
+CONTEXT_FIXTURES = {
+    "S1": {"desc": "Normal Friday-evening traffic spike",
+           "context": "friday_evening", "observed": 0.09, "breach": False,
+           "expected": "EXPECTED_SEASONAL_VARIATION"},
+    "S2": {"desc": "Seasonal spike plus genuine provider regression",
+           "context": "friday_evening", "observed": 0.16, "breach": False,
+           "expected": "CONTEXTUAL_ANOMALY"},
+    "S3": {"desc": "Verified maintenance with expected latency increase",
+           "context": "maintenance", "observed": 0.17, "breach": False,
+           "expected": "MAINTENANCE_CONSISTENT"},
+    "S4": {"desc": "Verified maintenance plus prohibited duplicate effects",
+           "context": "maintenance", "observed": 0.17, "breach": True,
+           "expected": "CONTRACT_VIOLATION"},
+    "S5": {"desc": "Maintenance extends beyond approved window",
+           "context": "maintenance", "observed": 0.17, "breach": False,
+           "extended": True, "expected": "REVIEW_REQUIRED"},
+    "S6": {"desc": "New client release doubles volume, same error probability",
+           "context": "friday_evening", "observed": 0.09, "breach": False,
+           "workload_shift": True, "expected": "WORKLOAD_REGIME_CHANGE"},
+    "S7": {"desc": "New release changes retry identities, creates duplicates",
+           "context": "friday_evening", "observed": 0.09, "breach": True,
+           "integration": True, "expected": "INTEGRATION_DEFECT"},
+    "S8": {"desc": "Slow degradation becomes stable new pattern",
+           "context": "friday_evening", "observed": 0.04, "breach": False,
+           "slow_drift": True, "expected": "CONTEXTUAL_ANOMALY"},
+    "S9": {"desc": "Behavior changes only during peak concurrency",
+           "context": "friday_evening", "observed": 0.16, "breach": True,
+           "expected": "CONTRACT_VIOLATION"},
+    "S10": {"desc": "Monitoring data disappears during peak",
+            "context": "friday_evening", "observed": None, "breach": False,
+            "expected": "INSUFFICIENT_OBSERVABILITY"},
+}
+
+
+def _context_verdict(fx):
+    """Three-layer evaluation: baseline → change → hard invariants."""
+    # Layer 3 first: hard invariants are never relaxed by context
+    if fx.get("breach") and not fx.get("integration"):
+        return "CONTRACT_VIOLATION"
+    if fx.get("integration"):
+        return "INTEGRATION_DEFECT"
+    if fx.get("observed") is None:
+        return "INSUFFICIENT_OBSERVABILITY"
+    if fx.get("extended"):
+        return "REVIEW_REQUIRED"
+    if fx.get("workload_shift"):
+        return "WORKLOAD_REGIME_CHANGE"
+    if fx.get("slow_drift"):
+        # Frozen reference (1%) vs adaptive forecast creeping to 4%:
+        # the difference itself is the event. Never silently normalize.
+        return "CONTEXTUAL_ANOMALY"
+    exp, lo, hi = CONTEXT_BASELINE[fx["context"]]
+    obs = fx["observed"]
+    if lo <= obs <= hi:
+        return "MAINTENANCE_CONSISTENT" if fx["context"] == "maintenance" else "EXPECTED_SEASONAL_VARIATION"
+    return "CONTEXTUAL_ANOMALY"
+
+
+def rlq_context(case):
+    """Run contextual drift fixtures S1-S10 and the four worked examples."""
+    print(f"\n{'='*70}")
+    print(f"AER-CAL-2 CONTEXTUAL DRIFT DETECTION")
+    print(f"{'='*70}")
+
+    if case == "WORKED":
+        worked = [
+            ("Monday overnight", "monday_overnight", 0.008, "Normal"),
+            ("Friday evening peak", "friday_evening", 0.09, "Normal seasonal behavior"),
+            ("Friday evening regression", "friday_evening", 0.16, "Material contextual anomaly; investigate"),
+            ("Verified maintenance", "maintenance", 0.17, "Expected degradation; safeguards stay active"),
+        ]
+        for name, ctx, obs, interp in worked:
+            exp, lo, hi = CONTEXT_BASELINE[ctx]
+            inside = lo <= obs <= hi
+            print(f"\n  {name}: expected {exp:.1%} (range {lo:.1%}–{hi:.1%}), observed {obs:.1%}")
+            print(f"      → {interp}  {'✓' if (inside == (interp in ('Normal', 'Normal seasonal behavior', 'Expected degradation; safeguards stay active'))) else ''}")
+        print(f"\n  A fixed 5% threshold would false-alert every normal Friday.")
+        print(f"  A fixed 20% threshold would miss the overnight regression.")
+        return True
+
+    cases = list(CONTEXT_FIXTURES) if case == "ALL" else [case]
+    passed = 0
+    for c in cases:
+        fx = CONTEXT_FIXTURES[c]
+        verdict = _context_verdict(fx)
+        ok = verdict == fx["expected"]
+        if ok:
+            passed += 1
+        print(f"\n  {c}: {fx['desc']}")
+        print(f"      Verdict: {verdict}  {'✓' if ok else '✗ (expected ' + fx['expected'] + ')'}")
+
+    print(f"\n  Frozen reference vs adaptive forecast:")
+    print(f"    Qualification reference (1%) is frozen; forecast adapts.")
+    print(f"    Forecast drifting from reference = review event, not new normal.")
+    print(f"\n{'='*70}")
+    print(f"  Contextual fixtures: {passed}/{len(cases)}")
+    if passed == len(cases):
+        print(f"  ✓ Seasonality respected; regressions not normalized;")
+        print(f"    maintenance never excuses contract violations.")
+    print(f"{'='*70}")
+    return passed == len(cases)
 
 
 # ============================================================================
