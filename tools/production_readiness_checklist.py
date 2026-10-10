@@ -146,7 +146,7 @@ def check_production_stamp(tip_sha: str | None) -> dict:
                         evidence)
 
 
-def check_workflow_health(recent: int = 12) -> dict:
+def check_workflow_health(tip_sha: str | None, recent: int = 12) -> dict:
     """C3 — recent Governed Production Promotion runs: verdicts + failing step.
 
     Classifies promotion failures as FAIL_CLOSED_BY_DESIGN (the standing-policy
@@ -155,6 +155,16 @@ def check_workflow_health(recent: int = 12) -> dict:
     a benign supersede, not a broken path), vs NEEDS_INVESTIGATION
     (the gate model cannot explain the failure). A working gate refusing is
     not a broken deploy path — the verdict names the true hole.
+    Runs still in progress (conclusion null, status not completed) are
+    reported as pending and never counted as failures: an unfinished run has
+    no verdict yet, and counting it corrupts the failing-step histogram and
+    the classification.
+
+    The required-CI lookup is measured at the CURRENT TIP (tip_sha), never
+    at the latest failed run's head SHA: measuring a dead commit corrupts
+    the classification after the tip moves (observed 2026-10-10 — the red
+    kernel-tests run at 8a41a18e2 was reported as "at latest tip" after
+    #2108 turned the new tip green).
     """
     data = gh_get(f"/repos/{REPO}/actions/workflows/{PROMOTION_WORKFLOW_FILE}/runs?per_page={recent}")
     if data is None:
@@ -164,21 +174,28 @@ def check_workflow_health(recent: int = 12) -> dict:
     if not runs:
         return check_result("C3", "WARN", "no recent promotion workflow runs found", {})
     failures = []
+    pending = []
     successes = 0
     failing_steps: dict[str, int] = {}
-    latest_failed_sha: str | None = None
     for r in runs:
         rid, event = r.get("id"), r.get("event")
         head = (r.get("head_sha") or "")[:12]
-        conclusion = r.get("conclusion")
+        status, conclusion = r.get("status"), r.get("conclusion")
+        if conclusion is None and status != "completed":
+            # Still queued/running: not a failure. Counting it as one corrupts
+            # the failing-step histogram and the classification (observed live:
+            # an in-progress run with an empty step list flipped the verdict
+            # to NEEDS_INVESTIGATION).
+            pending.append({"run_id": rid, "event": event, "head_sha": head,
+                            "head_sha_full": r.get("head_sha"),
+                            "status": status, "created_at": r.get("created_at")})
+            continue
         if conclusion == "success":
             successes += 1
             continue
         failures.append({"run_id": rid, "event": event, "head_sha": head,
                          "head_sha_full": r.get("head_sha"),
                          "conclusion": conclusion, "created_at": r.get("created_at")})
-        if latest_failed_sha is None and r.get("head_sha"):
-            latest_failed_sha = r["head_sha"]
         jobs = gh_get(f"/repos/{REPO}/actions/runs/{rid}/jobs?per_page=30")
         steps = []
         if isinstance(jobs, dict):
@@ -189,29 +206,38 @@ def check_workflow_health(recent: int = 12) -> dict:
         for st in steps:
             failing_steps[st] = failing_steps.get(st, 0) + 1
         failures[-1]["failing_steps"] = steps
+    ci_at_tip = required_ci_status(tip_sha)
     evidence = {"runs_examined": len(runs), "successes": successes,
-                "failures": failures, "failing_step_histogram": failing_steps,
-                "required_ci_at_latest_tip": required_ci_status(latest_failed_sha)}
+                "failures": failures, "pending": pending,
+                "failing_step_histogram": failing_steps,
+                "required_ci_at_latest_tip": ci_at_tip,
+                "ci_lookup_tip_sha": tip_sha}
     failing_ci = [w for w, s in evidence["required_ci_at_latest_tip"].items()
                   if s.get("conclusion") not in ("success", None) or
                   (s.get("status") == "completed" and s.get("conclusion") != "success")]
     ci_note = ""
     if failing_ci:
-        ci_note = (f"; required CI failing at latest tip {latest_failed_sha[:12] if latest_failed_sha else '?'}: "
+        ci_note = (f"; required CI failing at latest tip {tip_sha[:12] if tip_sha else '?'}: "
                    f"{', '.join(failing_ci)}")
     classification = classify_promotion_failures(failures, evidence["required_ci_at_latest_tip"])
     evidence["promotion_failure_classification"] = classification
     class_note = (f"; classification: {classification['classification']} — "
                   f"{classification['detail']}")
+    pending_note = (f"; {len(pending)} pending (still running, not failures)"
+                    if pending else "")
     if not failures:
-        return check_result("C3", "PASS", f"last {len(runs)} promotion runs all succeeded", evidence)
+        return check_result("C3", "PASS",
+                            f"last {len(runs)} promotion runs: {successes} succeeded{pending_note}",
+                            evidence)
     if successes == 0:
         return check_result("C3", "FAIL",
                             f"all {len(runs)} recent promotion runs failed; "
-                            f"failing steps: {failing_steps or 'unknown'}{ci_note}{class_note}", evidence)
+                            f"failing steps: {failing_steps or 'unknown'}{ci_note}{class_note}{pending_note}",
+                            evidence)
     return check_result("C3", "WARN",
                         f"{len(failures)}/{len(runs)} recent promotion runs failed; "
-                        f"failing steps: {failing_steps or 'unknown'}{ci_note}{class_note}", evidence)
+                        f"failing steps: {failing_steps or 'unknown'}{ci_note}{class_note}{pending_note}",
+                        evidence)
 
 
 def failed_jobs_for_run(run_id: int | None) -> list[str] | None:
@@ -290,15 +316,49 @@ def _is_strict_ancestor_of_tip(full_sha: str) -> bool | None:
     return git(["merge-base", "--is-ancestor", full_sha, tip]) is not None
 
 
+def _is_strict_ancestor_of_tip_via_api(full_sha: str) -> bool | None:
+    """Server-side strict-ancestry check through the GitHub compare API.
+
+    Fallback for when the local clone cannot answer honestly (shallow clone
+    or unresolvable tip — merge-base is unreliable across shallow
+    boundaries, so a shallow repo must never claim a race from local data).
+    GitHub's compare endpoint evaluates ancestry on the full server-side
+    history, which is immune to local shallow boundaries. Comparing
+    base=full_sha...head=tip, status 'ahead' with behind_by == 0 means
+    full_sha is a strict ancestor of the tip.
+    Returns None when the API is unreachable or the comparison cannot be
+    evaluated — callers keep treating None as 'unknown', never as evidence
+    of a race.
+    """
+    if not full_sha or not SHA_RE.match(full_sha):
+        return None
+    ref = gh_get(f"/repos/{REPO}/git/refs/heads/main")
+    tip = (ref.get("object") or {}).get("sha") if isinstance(ref, dict) else None
+    if not tip or not SHA_RE.match(tip):
+        return None
+    if tip == full_sha:
+        return False
+    cmp_ = gh_get(f"/repos/{REPO}/compare/{full_sha}...{tip}")
+    if not isinstance(cmp_, dict):
+        return None
+    if cmp_.get("status") == "ahead" and cmp_.get("behind_by") == 0:
+        return True
+    if cmp_.get("status") in ("behind", "identical", "diverged"):
+        return False
+    return None
+
+
 def _race_failures(failures: list[dict]) -> list[dict]:
     """Failures matching the superseded-tip race signature.
 
     Signature: the ONLY failing step is 'Resolve standing authorization mode'
     AND the run's head SHA is a strict ancestor of the current origin/main
-    tip — i.e. main moved between the push event and the runner's tip-currency
-    check, so the run was superseded by a newer push. A benign supersede, not
-    a broken deploy path. Repair-relevant side effect, recorded for the repair
-    lane: the failure-receipt step is skipped on this path (its `if:` requires
+    tip (verified locally, or via the GitHub compare API when the local
+    clone cannot answer honestly — e.g. a shallow clone) — i.e. main moved
+    between the push event and the runner's tip-currency check, so the run
+    was superseded by a newer push. A benign supersede, not a broken deploy
+    path. Repair-relevant side effect, recorded for the repair lane: the
+    failure-receipt step is skipped on this path (its `if:` requires
     the standing-policy step's outputs), so the run leaves no durable failure
     receipt — the failure is silent in the records.
     """
@@ -307,7 +367,14 @@ def _race_failures(failures: list[dict]) -> list[dict]:
         steps = f.get("failing_steps") or []
         if steps != [RACE_STEP_NAME]:
             continue
-        if _is_strict_ancestor_of_tip(f.get("head_sha_full") or ""):
+        verdict = _is_strict_ancestor_of_tip(f.get("head_sha_full") or "")
+        if verdict is None:
+            # Local clone cannot answer honestly (shallow or unresolvable
+            # tip): ask the server instead. None stays 'unknown', never
+            # evidence of a race.
+            verdict = _is_strict_ancestor_of_tip_via_api(
+                f.get("head_sha_full") or "")
+        if verdict:
             out.append(f)
     return out
 
@@ -329,6 +396,13 @@ def classify_promotion_failures(failures: list[dict], ci_status: dict) -> dict:
                   if s.get("status") == "completed" and s.get("conclusion") == "failure"]
     ci_unknown = [w for w, s in ci_status.items()
                   if s.get("conclusion") is None or s.get("status") == "unknown"]
+    # A run that is still queued/running is not "unreadable" — it simply has
+    # no verdict yet. Distinguish pending from truly unreadable state so the
+    # UNKNOWN detail names the right reason (transient CI vs API gap).
+    ci_pending = [w for w, s in ci_status.items()
+                  if s.get("conclusion") is None
+                  and s.get("status") not in ("unknown", "missing", None)]
+    ci_unreadable = [w for w in ci_unknown if w not in ci_pending]
     races = _race_failures(failures)
     race_ids = {f.get("run_id") for f in races}
     policy_trips = sum(1 for f in failures
@@ -340,6 +414,8 @@ def classify_promotion_failures(failures: list[dict], ci_status: dict) -> dict:
                 "failures_examined": len(failures),
                 "required_ci_failing": ci_failing,
                 "required_ci_unknown": ci_unknown,
+                "required_ci_pending": ci_pending,
+                "required_ci_unreadable": ci_unreadable,
                 "superseded_tip_race": {
                     "count": len(races),
                     "run_ids": sorted(race_ids),
@@ -382,10 +458,16 @@ def classify_promotion_failures(failures: list[dict], ci_status: dict) -> dict:
         return {"classification": "FAIL_CLOSED_BY_DESIGN", "detail": detail,
                 **evidence}
     if ci_unknown and policy_trips:
-        return {"classification": "UNKNOWN",
-                "detail": ("required-CI state unreadable; cannot tell "
-                           "fail-closed from pathology"),
-                **evidence}
+        if ci_pending and not ci_unreadable:
+            detail = (f"required CI still running at the tip ({', '.join(ci_pending)}); "
+                      "cannot tell fail-closed from pathology until it lands")
+        elif ci_unreadable:
+            detail = (f"required-CI state unreadable ({', '.join(ci_unreadable)}); "
+                      "cannot tell fail-closed from pathology")
+        else:
+            detail = ("required-CI state unknown; cannot tell fail-closed "
+                      "from pathology")
+        return {"classification": "UNKNOWN", "detail": detail, **evidence}
     detail = ("promotion failures not fully explained by red required "
               f"CI (policy-step trips: {policy_trips}/{len(failures)}; "
               f"red CI: {ci_failing or 'none'})")
@@ -603,7 +685,7 @@ def run() -> tuple[dict, int]:
     checks = [
         tip,
         check_production_stamp(tip_sha),
-        check_workflow_health(),
+        check_workflow_health(tip_sha),
         check_standing_policy(),
         check_dispatch_contract(),
         check_migration_hygiene(),

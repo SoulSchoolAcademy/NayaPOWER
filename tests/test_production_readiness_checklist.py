@@ -414,13 +414,64 @@ def test_check_workflow_health_carries_classification(monkeypatch):
              "run_attempt": 1}]}
 
     monkeypatch.setattr(prc, "gh_get", fake_gh)
-    r = prc.check_workflow_health(recent=1)
+    r = prc.check_workflow_health(head, recent=1)
     assert r["check"] == "C3"
     assert r["verdict"] == "FAIL", r
     cls = r["evidence"]["promotion_failure_classification"]
     assert cls["classification"] == "FAIL_CLOSED_BY_DESIGN", cls
     assert "FAIL_CLOSED_BY_DESIGN" in r["summary"]
     assert r["evidence"]["required_ci_at_latest_tip"]["kernel-tests.yml"]["failed_jobs"] == ["test"]
+
+
+def test_check_workflow_health_pending_run_not_a_failure(monkeypatch):
+    # Live incident 2026-10-10: an in-progress promotion run (conclusion null)
+    # was counted as a failure with an empty failing-steps list, which flipped
+    # the classification to NEEDS_INVESTIGATION. A run with no verdict yet is
+    # not a failure: it must be reported as pending and excluded from the
+    # failure set, the failing-step histogram, and the classification.
+    head = "d" * 40
+
+    def fake_gh(path):
+        if "governed-supabase-production-deploy.yml/runs" in path:
+            return {"workflow_runs": [
+                {"id": 101, "event": "push", "head_sha": head,
+                 "status": "in_progress", "conclusion": None,
+                 "created_at": "2026-10-10T03:42:14Z"},
+                {"id": 100, "event": "push", "head_sha": head,
+                 "status": "completed", "conclusion": "failure",
+                 "created_at": "2026-10-10T01:48:24Z"}]}
+        if "/actions/runs/100/jobs" in path:
+            return {"jobs": [{"name": "promote", "conclusion": "failure",
+                              "steps": [{"name": "Enforce ratified standing policy "
+                                                 "before automatic promotion",
+                                         "conclusion": "failure"}]}]}
+        if "kernel-tests.yml" in path:
+            return {"workflow_runs": [
+                {"id": 200, "head_sha": head, "head_branch": "main",
+                 "event": "push", "status": "completed", "conclusion": "failure",
+                 "run_attempt": 1}]}
+        if "/actions/runs/200/jobs" in path:
+            return {"jobs": [{"name": "test", "conclusion": "failure",
+                              "steps": [{"name": "Run python -m pytest -q",
+                                         "conclusion": "failure"}]}]}
+        return {"workflow_runs": [
+            {"id": 201, "head_sha": head, "head_branch": "main",
+             "event": "push", "status": "completed", "conclusion": "success",
+             "run_attempt": 1}]}
+
+    monkeypatch.setattr(prc, "gh_get", fake_gh)
+    r = prc.check_workflow_health(head, recent=2)
+    assert r["check"] == "C3"
+    ev = r["evidence"]
+    assert [p["run_id"] for p in ev["pending"]] == [101], ev
+    assert [p["status"] for p in ev["pending"]] == ["in_progress"], ev
+    assert [f["run_id"] for f in ev["failures"]] == [100], ev
+    cls = ev["promotion_failure_classification"]
+    assert cls["classification"] == "FAIL_CLOSED_BY_DESIGN", cls
+    assert cls["failures_examined"] == 1, cls
+    assert cls["policy_step_trips"] == 1, cls
+    assert "pending" in r["summary"]
+    assert r["verdict"] == "FAIL", r  # every concluded run failed; pending is not a pass
 
 
 # ---- C9 branch hygiene ---------------------------------------------------------
@@ -505,3 +556,147 @@ def test_main_json_flag_emits_pure_json(monkeypatch, capsys):
     out = capsys.readouterr().out
     assert code == 0
     assert json.loads(out)["verdict"] == "READY"  # pure JSON, no trailing text
+
+
+# ---- C3 tip-SHA regression -----------------------------------------------------
+# Regression for the 2026-10-10 live defect: check_workflow_health measured
+# required CI at the latest FAILED promotion run's head SHA, not at the
+# current tip. After #2108 turned the tip green, the instrument still reported
+# the red kernel-tests run at 8a41a18e2 as "at latest tip". The lookup must
+# be keyed on the tip SHA the check is told about.
+
+OLD_RED_SHA = "8" * 40
+NEW_GREEN_TIP = "f" * 40
+
+
+def test_c3_ci_lookup_uses_current_tip_not_failed_run_sha(monkeypatch):
+    seen_ci_shas = []
+
+    def fake_gh(path):
+        if "actions/workflows/governed-supabase-production-deploy.yml/runs" in path:
+            return {"workflow_runs": [
+                {"id": 100, "event": "push", "head_sha": OLD_RED_SHA,
+                 "status": "completed", "conclusion": "failure",
+                 "created_at": "2026-10-10T03:42:14Z"},
+                {"id": 101, "event": "push", "head_sha": NEW_GREEN_TIP,
+                 "status": "completed", "conclusion": "success",
+                 "created_at": "2026-10-10T07:01:02Z"},
+            ]}
+        if "/actions/runs/100/jobs" in path:
+            return {"jobs": [{"name": "promote-and-prove", "conclusion": "failure",
+                              "steps": [
+                                  {"name": "Enforce ratified standing policy before automatic promotion",
+                                   "conclusion": "failure"}]}]}
+        if "/actions/runs/101/jobs" in path:
+            return {"jobs": []}
+        if "/actions/workflows/" in path and "/runs?head_sha=" in path:
+            seen_ci_shas.append(path.split("head_sha=")[1].split("&")[0])
+            return {"workflow_runs": [
+                {"id": 200, "head_sha": NEW_GREEN_TIP, "head_branch": "main",
+                 "event": "push", "status": "completed", "conclusion": "success",
+                 "run_attempt": 1}]}
+        raise AssertionError(f"unexpected gh_get path: {path}")
+
+    monkeypatch.setattr(prc, "gh_get", fake_gh)
+    r = prc.check_workflow_health(NEW_GREEN_TIP)
+    assert r["check"] == "C3"
+    # The CI evidence is keyed on the tip the caller passed, not the dead SHA.
+    assert r["evidence"]["ci_lookup_tip_sha"] == NEW_GREEN_TIP
+    assert all(sha == NEW_GREEN_TIP for sha in seen_ci_shas), seen_ci_shas
+    assert seen_ci_shas, "required_ci_status never queried the CI workflows"
+    ci = r["evidence"]["required_ci_at_latest_tip"]
+    assert ci["kernel-tests.yml"]["conclusion"] == "success", ci
+
+def test_classify_unknown_names_pending_ci_not_unreadable():
+    # When required CI is still running at the tip, the UNKNOWN detail must
+    # say "still running", not "unreadable" — a transient race is not an
+    # instrument gap.
+    ci = {"kernel-tests.yml": {"status": "in_progress", "conclusion": None,
+                               "run_id": 300, "failed_jobs": None},
+          "collective-chain-readiness-gate.yml": {"status": "completed",
+                                                  "conclusion": "success",
+                                                  "run_id": 301,
+                                                  "failed_jobs": None}}
+    failures = [{"run_id": 100,
+                 "failing_steps": ["Enforce ratified standing policy before automatic promotion"]}]
+    r = prc.classify_promotion_failures(failures, ci)
+    assert r["classification"] == "UNKNOWN", r
+    assert "still running" in r["detail"], r
+    assert r["required_ci_pending"] == ["kernel-tests.yml"], r
+    assert r["required_ci_unreadable"] == [], r
+
+
+def test_classify_unknown_names_unreadable_ci_honestly():
+    ci = {"kernel-tests.yml": {"status": "unknown", "conclusion": None,
+                               "reason": "no_api", "failed_jobs": None},
+          "collective-chain-readiness-gate.yml": {"status": "completed",
+                                                  "conclusion": "success",
+                                                  "run_id": 301,
+                                                  "failed_jobs": None}}
+    failures = [{"run_id": 100,
+                 "failing_steps": ["Enforce ratified standing policy before automatic promotion"]}]
+    r = prc.classify_promotion_failures(failures, ci)
+    assert r["classification"] == "UNKNOWN", r
+    assert "unreadable" in r["detail"], r
+    assert r["required_ci_unreadable"] == ["kernel-tests.yml"], r
+
+def test_ancestor_via_api_true_on_ahead_behind_zero(monkeypatch):
+    def fake_gh(path):
+        if path.endswith("/git/refs/heads/main"):
+            return {"object": {"sha": "b" * 40}}
+        if "/compare/" in path:
+            assert path.endswith("a" * 40 + "..." + "b" * 40), path
+            return {"status": "ahead", "behind_by": 0, "ahead_by": 3}
+        raise AssertionError(path)
+    monkeypatch.setattr(prc, "gh_get", fake_gh)
+    assert prc._is_strict_ancestor_of_tip_via_api("a" * 40) is True
+
+
+def test_ancestor_via_api_false_on_behind_identical_diverged(monkeypatch):
+    for status in ("behind", "identical", "diverged"):
+        def fake_gh(path, _s=status):
+            if path.endswith("/git/refs/heads/main"):
+                return {"object": {"sha": "b" * 40}}
+            return {"status": _s, "behind_by": 1, "ahead_by": 0}
+        monkeypatch.setattr(prc, "gh_get", fake_gh)
+        assert prc._is_strict_ancestor_of_tip_via_api("a" * 40) is False, status
+
+
+def test_ancestor_via_api_none_when_unreachable(monkeypatch):
+    monkeypatch.setattr(prc, "gh_get", lambda path: None)
+    assert prc._is_strict_ancestor_of_tip_via_api("a" * 40) is None
+
+
+def test_ancestor_via_api_false_when_sha_equals_tip(monkeypatch):
+    def fake_gh(path):
+        return {"object": {"sha": "b" * 40}}
+    monkeypatch.setattr(prc, "gh_get", fake_gh)
+    assert prc._is_strict_ancestor_of_tip_via_api("b" * 40) is False
+
+
+def test_race_failures_falls_back_to_api_on_shallow_clone(monkeypatch):
+    # Live incident 2026-10-10: on a shallow clone the local ancestry check
+    # abstains (None), so a genuine superseded-tip race fell through to
+    # NEEDS_INVESTIGATION. The compare-API fallback must attribute it.
+    monkeypatch.setattr(prc, "_is_strict_ancestor_of_tip", lambda sha: None)
+
+    def fake_gh(path):
+        if path.endswith("/git/refs/heads/main"):
+            return {"object": {"sha": "b" * 40}}
+        if "/compare/" in path:
+            return {"status": "ahead", "behind_by": 0, "ahead_by": 2}
+        raise AssertionError(path)
+    monkeypatch.setattr(prc, "gh_get", fake_gh)
+    failures = [{"run_id": 900, "head_sha_full": "a" * 40,
+                 "failing_steps": ["Resolve standing authorization mode"]}]
+    races = prc._race_failures(failures)
+    assert [f["run_id"] for f in races] == [900]
+
+
+def test_race_failures_api_unknown_stays_unknown(monkeypatch):
+    # API unreachable -> None -> not a race. Unknown is never evidence.
+    monkeypatch.setattr(prc, "_is_strict_ancestor_of_tip", lambda sha: None)
+    monkeypatch.setattr(prc, "gh_get", lambda path: None)
+    failures = [{"run_id": 900, "head_sha_full": "a" * 40,
+                 "failing_steps": ["Resolve standing authorization mode"]}]
+    assert prc._race_failures(failures) == []
