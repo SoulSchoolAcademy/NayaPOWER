@@ -262,7 +262,7 @@
     "current_main_prove": "KNOW_PASS_36658860694; LAW_1069_AND_KNOW_1072_SOURCE_BINDINGS_MERGED; CURRENT_MAIN_DEPLOYMENT_PENDING",
     "graph_relationship_contract_v2": "RATIFIED_SOURCE_INTEGRATED_SELECTOR_V2_MERGED_CURRENT_MAIN; LIVE_KNOW_RUNTIME_STALE_TO_CURRENT_SELECTOR; PRODUCTION_BEHAVIOR_NOT_YET_REPROVEN"
   },
-  "last_reconciled_main": "93030048d421686c917af6e872277f1985255ede",
+  "last_reconciled_main": "e3f8f2cdc4e542e6fa1d7dc8d4ccda78a2df1b2a",
   "smart_node_protocol": "BRAIN/04-INTELLIGENCE/0005-SMART-NODE-INTELLIGENT-BLOCK-PROTOCOL-V1.md",
   "operations": {
     "queue": "BRAIN/90-OPERATIONS/0001-MAX-10-EXECUTION-QUEUE-V1.md",
@@ -298,7 +298,7 @@
   "reconciliation": {
     "ledger": ".naya/project-intelligence/brain-reconciliation-ledger-f648833b.md",
     "reconciled_at": "2026-10-10",
-    "basis_commit": "93030048d421686c917af6e872277f1985255ede",
+    "basis_commit": "e3f8f2cdc4e542e6fa1d7dc8d4ccda78a2df1b2a",
     "method": "tools/regenerate_brain_index.py from the committed git tree",
     "domain_counts": {
       "00-ACTIVATION": 3,
