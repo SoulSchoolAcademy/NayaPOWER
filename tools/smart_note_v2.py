@@ -1247,10 +1247,52 @@ def audit_registry(root=None, registry_path=None, capture_dir=None, brain_root=N
         "registry_projection_paths_absent": [],
         "published_pages_without_registry_entry": [],
         "duplicate_published_page_paths": [],
+        "registry_entries_without_capture_identity": [],
+        "captures_without_registry_identity": [],
+        "captures_without_smart_note_id": [],
+        "filename_smart_note_id_divergence": [],
     }
 
     registry = load_json(registry_p) if registry_p.exists() else {"entries": []}
     entries = registry.get("entries", [])
+
+    # Identity reconciliation is deliberately separate from hash reconciliation.
+    # Hash coverage can be incomplete while the human-visible SN identity still
+    # needs a bidirectional whole-surface audit. Match the conformance gate's
+    # SMART-NOTE-*.json authoring surface so legacy/non-note JSON does not alter
+    # the identity denominator.
+    identity_capture_ids = {}
+    if cap_dir.exists():
+        for p in sorted(cap_dir.glob("SMART-NOTE-*.json")):
+            try:
+                data = json.loads(p.read_text(encoding="utf-8"))
+            except ValueError:
+                continue  # already reported by unparseable_captures below
+            sn = data.get("smart_note_id") if isinstance(data, dict) else None
+            if not sn:
+                defects["captures_without_smart_note_id"].append(p.name)
+                continue
+            sn = str(sn)
+            identity_capture_ids.setdefault(sn, []).append(p.name)
+
+            file_match = re.search(r"sn[-_]?0*(\d+)", p.name, re.IGNORECASE)
+            id_match = re.fullmatch(r"SN[-_]?0*(\d+)", sn, re.IGNORECASE)
+            if file_match and id_match and int(file_match.group(1)) != int(id_match.group(1)):
+                defects["filename_smart_note_id_divergence"].append({
+                    "capture": p.name,
+                    "filename_identity": f"SN-{int(file_match.group(1)):03d}",
+                    "smart_note_id": sn,
+                    "capture_id": data.get("capture_id"),
+                })
+
+    registry_ids = {str(e.get("smart_note_id")) for e in entries if e.get("smart_note_id")}
+    capture_ids = set(identity_capture_ids)
+    defects["registry_entries_without_capture_identity"].extend(sorted(registry_ids - capture_ids))
+    for sn in sorted(capture_ids - registry_ids):
+        defects["captures_without_registry_identity"].append({
+            "smart_note_id": sn,
+            "captures": identity_capture_ids[sn],
+        })
 
     def hash_of(data):
         return _canonical_content_hash(json.dumps(data["intelligence"], sort_keys=True, separators=(",", ":"), ensure_ascii=False))
