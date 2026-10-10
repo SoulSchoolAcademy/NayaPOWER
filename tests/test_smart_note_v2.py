@@ -1261,8 +1261,16 @@ def test_retrieve_privacy_probe_refused_as_probe(tmp_path, monkeypatch):
 
 
 def test_retrieval_relevance_floor_value_is_live_calibrated():
-    """Change-detector: 40.0 was calibrated on the live registry (weakest
-    true positive 46.87, drill hits 83-137, out-of-scope noise <= 19.69).
-    Changing the value requires re-running the 43-case diagnostic + drill
-    bank on the live corpus — unit tests alone cannot re-justify it."""
+    """Change-detector: 40.0 is the live-calibrated refusal boundary.
+    Live-registry measurement 2026-10-10 (603 active notes): drill-bank
+    hits 83-137, distinctive-term queries 45-66, scattered-term noise 0-22.
+    Common-domain true positives score 13-21 on bag-of-words alone — inside
+    the noise band — so the floor does NOT separate them; the exact-phrase
+    channel (RETRIEVAL_PHRASE_BONUS, floor-clearing by construction) is the
+    separator for decisive relevance evidence. The earlier "weakest true
+    positive 46.87" note was measured on a non-representative diagnostic
+    set, not the live registry — corrected in smart_note_v2.py, value
+    unchanged. Changing the value requires re-running the drill bank +
+    representative live-corpus probes — unit tests alone cannot re-justify
+    it."""
     assert mod.RETRIEVAL_RELEVANCE_FLOOR == 40.0
