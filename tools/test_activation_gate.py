@@ -413,6 +413,18 @@ class TestDeliveryPredicate(unittest.TestCase):
         self.assertFalse(_is_deliverable("tools/gate.py"))
         self.assertFalse(_is_deliverable("BRAIN/note.md"))
 
+    def test_is_deliverable_fixture_paths_excluded(self):
+        # 2026-10-10: PR #2099's design-gate fixtures tripped the delivery
+        # gate. Fixture trees are never shipped deliverables.
+        self.assertFalse(_is_deliverable("tools/design_gate_fixtures/lawful.html"))
+        self.assertFalse(_is_deliverable("tools/design_gate_fixtures/violating-color.html"))
+        self.assertFalse(_is_deliverable("tests/fixtures/page.html"))
+        self.assertFalse(_is_deliverable("fixtures/a.HTML"))
+        # ...but real deliverables still gate, including .html elsewhere
+        self.assertTrue(_is_deliverable("pages/room.html"))
+        self.assertTrue(_is_deliverable("SMART-BLOCKS/x.html"))
+        self.assertTrue(_is_deliverable("smart-blocks/fixture-like-but-real.html"))
+
 
 class TestCanonicalization(unittest.TestCase):
     """D3/D4: quote-tolerant class-attribute canonicalization."""

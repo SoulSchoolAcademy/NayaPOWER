@@ -195,6 +195,21 @@ CANONICAL_SOURCES = {
 DELIVERABLE_ROOTS = ("smart-blocks/",)
 DELIVERABLE_SUFFIXES = (".html",)
 
+# Fixture/test trees are never shipped deliverables. The delivery gate must
+# not demand activation receipts for them (2026-10-10: PR #2099's
+# tools/design_gate_fixtures/*.html tripped the gate). A path is a fixture
+# path when any of its DIRECTORY segments names a fixture holder
+# ("fixtures", "fixture", or "*fixture*" like "design_gate_fixtures") — the
+# filename itself is not consulted, so a real deliverable merely named
+# *fixture*.html still gates. Evasion note: a bad actor could hide a
+# deliverable under a fixtures/ name to dodge the receipt — but fixtures
+# never ship to users, reviewers see the path, and the design gate still
+# judges content. The convention is the rail; deliberate evasion is a
+# conduct violation, not a predicate gap.
+def _is_fixture_path(path):
+    segments = path.lower().split("/")
+    return any("fixture" in seg for seg in segments[:-1])
+
 # Conventional receipt location inside the PR head (untrusted bytes —
 # content is fully verified; the path is just where the gate looks).
 RECEIPT_PATH = ".naya/activation/receipt.json"
@@ -228,6 +243,8 @@ def _is_deliverable(path):
     if not isinstance(path, str):
         return False
     p = path.replace("\\", "/")
+    if _is_fixture_path(p):
+        return False
     if any(p == r.rstrip("/") or p.startswith(r) for r in DELIVERABLE_ROOTS):
         return True
     return any(p.lower().endswith(s) for s in DELIVERABLE_SUFFIXES)
