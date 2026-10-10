@@ -1,0 +1,67 @@
+{
+  "capture_id": "20261010-sn-0816-aer-live10",
+  "smart_note_id": "SN-0816",
+  "schema": "naya.smart-note-capture.v2",
+  "title": "AER-LIVE-10 — no circular proof",
+  "topic": "EPISTEMIC_GOVERNANCE",
+  "subtopic": "RATIFIED_FRAMEWORKS",
+  "category": "GOVERNANCE",
+  "lifecycle_state": "ACTIVE",
+  "canonical_intent": "CAPTURE_DURABLE_FRAMEWORK",
+  "intelligence": {
+    "epistemic_state": "RATIFIED",
+    "essence": "Strongly Connected Invariant Qualification Law: NayaNET shall collapse cyclic proof dependencies into jointly verified invariant groups. No member of such a group may independently certify another through circular assumptions. Each group must be grounded in authoritative initial state, valid transitions, lawful replenishment, resource conservation and lifecycle constraints. The verifier shall establish reachability, safety closure, repeatability, exit viability and applicable progress properties separately, preserving unresolved evidence and producing minimal joint counterexamples where qualification fails. The behavior: 'I see that budget, resources, replenishment and lifecycle depend on one another. I will not decide which is correct first. I will test whether the complete system has a valid starting state, whether its operations are actually executable, and whether those operations preserve all necessary conditions together.'",
+    "human_view": {
+      "meaning": "When things depend on each other in a circle, you can't prove one by assuming the other. The system must find the real starting point, test whether the whole group works together, and never invent resources or authority that aren't there. A circle in the diagram is not proof of a deadlock, and a loop that looks repeatable isn't proof it can run forever. The SCC-01 vs SCC-02 test is the key: same circular diagram, different starting resources — the verifier must reject the impossible one and accept the valid one, proving it checks reality not just shapes."
+    },
+    "simple_view": {
+      "meaning": "Don't let circular arguments certify themselves. Test the whole knot together against real starting conditions."
+    },
+    "naya_view": {
+      "directive": "Compute SCCs via Tarjan/Kosaraju. Each SCC is one joint proof obligation. Prove reachability, safety closure, repeatability, exit viability separately. Use greatest-fixed-point for finite-state repeatability. Never accept phantom replenishment. Report joint failures without inventing causal order inside the SCC."
+    },
+    "ai_view": {
+      "directive": "Follow as written. Collapse cyclic invariant dependencies into strongly connected components. Each SCC requires: nonempty reachable joint invariant, safety closure over all legal transitions, repeatability via verified strategy with positive debt gain, exit viability via constructive path. Fixed-point R = νX.F(X) for finite-state repeatability. Four verdicts: REPEATABLE_CYCLE_PROVEN / DEADLOCK_PROVEN_IN_SCOPE / LIVELOCK_COUNTEREXAMPLE / EXIT_POSSIBLE_NOT_GUARANTEED / JOINT_PROOF_UNDETERMINED. Producer/verifier separation: verifier recomputes SCC membership, checks satisfiability, derives consumption from contracts, validates transitions, checks provenance, independently verifies exit."
+    },
+    "applicability": "Every verification involving mutually dependent budget, resource, replenishment, lifecycle, or authority invariants in NayaNET.",
+    "connections": [
+      "SN-0815 AER-LIVE-9 (dependency-ordered verification; AER-LIVE-10 handles the cyclic case AER-LIVE-9 identified)",
+      "SN-0813 AER-LIVE-7 (pumping witnesses whose joint repeatability this qualifies)",
+      "SN-0814 AER-LIVE-8 (full-state invariants that form the SCC members)",
+      "liveness.py (wait-for-cycle detection, escape-path concepts)",
+      "fairness_verify.py (trace replay, lasso verification)",
+      "strong_fairness.py (genuine enabling, implementability)",
+      "progress.py (outstanding obligations, recovery budgets)"
+    ],
+    "decisions": [
+      "Shawn's explicit framework, main chat, 2026-10-10. His word IS the verification (Verification Law).",
+      "Filed as the JOINT-PROOF layer for the next build wave — SN-0809 through SN-0816 all filed and queued.",
+      "Shawn's explicit scoping: side-effect-free verification layer over existing liveness/fairness machinery; no new authority system, recovery ledger, or deployment route; not established as implemented; stays separate from production promotion."
+    ],
+    "learning_lesson": "This is the cyclic-dependency solver for AER-LIVE-9's verification order: AER-LIVE-9 said 'detect circular dependencies instead of inventing an order'; AER-LIVE-10 defines exactly how. Permanent contributions: SCC collapse via Tarjan/Kosaraju with the condensation DAG for topological scheduling; the joint invariant I_SCC with cross-terms no member can prove alone; the four separate properties (reachability/safety closure/repeatability/exit viability); the greatest-fixed-point formulation R=νX.F(X) avoiding circular self-certification; the nonempty-reachable requirement; the legitimate-reuse vs impossible-replenishment worked example with three mutations; the five-way verdict taxonomy (repeatable/deadlock/livelock/exit-possible/undetermined); the joint proof manifest schema; producer/verifier responsibility separation; joint failure reporting without invented order; and the SCC-01 through SCC-12 fixtures with SCC-01-vs-SCC-02 as the decisive pair proving the verifier checks state transitions not topology.",
+    "falsifier": "Circular self-certification (budget valid because replenishment valid because budget valid); phantom replenishment without authoritative source; unreachable SCC cycles presented as repeatability; fixed-point convergence treated as model qualification; impossible bootstrap (b=0,r=0) accepted as replenishable; exit possibility confused with guaranteed progress; arbitrary intra-SCC ordering passed off as joint proof; minimized joint explanations that drop necessary constraints.",
+    "measurement_contract": "AER-LIVE-010 (Shawn's executable action): two synthetic recovery systems with identical four-node SCC. System 1: no independent initial allocation, no valid escape — verifier must refuse repeatability, provide minimal joint obstruction. System 2: authoritative initial allocation, valid reservation/release, outstanding obligation, repeatable eligible-unserved transition — verifier must prove repeatability and exit. Same constraint model, same verifier, only qualified initial conditions differ. Acceptance: different verdicts from independently established state-transition facts, not from check ordering.",
+    "successor_effect": "A cold successor inherits the discipline to never let circular arguments certify themselves — it tests the whole knot against reality.",
+    "uncertainty": "Framework ratified; not yet implemented. Queued for the next build wave. The SCC-based joint invariant prover is not established as implemented or production-qualified. Shawn observed main at 86825af4197 (2026-10-10); mission #2154 reported CI issues on earlier tip."
+  },
+  "machine_view": {
+    "law_id": "SN-0816",
+    "spec_only": "Framework ratified; SCC-based joint invariant verification for the next build wave. Filed and queued — not yet implemented.",
+    "automatic_truth_ceiling": "CANDIDATE",
+    "authority_inheritance": false,
+    "raw_source_separate_from_distillation": true
+  },
+  "source": {
+    "source_type": "human_director_ratification",
+    "source_reference": "Shawn's explicit framework 'NayaNET — Joint Verification of Circular Dependencies' (AER-LIVE-10, Strongly Connected Invariant Qualification Law), main chat, 2026-10-10. His word IS the verification. Includes: SCC collapse algorithm; joint invariant construction with cross-terms; four properties; greatest-fixed-point formulation; worked example with mutations; impossible-replenishment trap; five-way verdict taxonomy; joint proof manifest; producer/verifier separation; joint failure reporting; SCC-01 through SCC-12 fixtures. Alignment: liveness.py/fairness_verify.py/strong_fairness.py/progress.py foundations; side-effect-free layer only; not verified as implemented; separate from production promotion; main observed 86825af4197.",
+    "captured_at": "2026-10-10",
+    "captured_at_utc": "2026-10-10T22:14:00Z"
+  },
+  "projection": {
+    "topic_slug": "GOVERNANCE",
+    "subtopic_slug": "AER-LIVE-10",
+    "category_slug": "SYSTEM-INTELLIGENCE",
+    "publication_scope": "PUBLIC_DERIVED_VIEW",
+    "human_director_authorized_publication": true
+  }
+}
