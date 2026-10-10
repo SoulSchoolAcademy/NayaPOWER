@@ -313,3 +313,191 @@ def test_quality_rejects_nan_score():
 def test_quality_rejects_mismatched_weights():
     r = check_quality_gate({"a": 9.5}, {"a": 0.5, "b": 0.5})
     assert not r.passed
+
+
+# ---------------- 5-step scorecard STRUCTURE gate (PR body scanner) ----------------
+
+from tools.protocol_gates import check_scorecard_body  # noqa: E402
+
+
+def _sec1():
+    return """## 1. Enumerate
+Options considered: (a) extend tools/protocol_gates.py with a body scanner;
+(b) create a new tools/scorecard_structure_gate.py; (c) do nothing and rely on
+the structured-dict gates. Each was evaluated on value, reversibility, and
+duplication risk before acting."""
+
+
+def _sec2():
+    return """## 2. Score
+(a) 9/10 — one seam, tests live next door, zero new mechanism. (b) 6/10 — a new
+file for one function duplicates the gate and splits the seam. (c) 3/10 — the
+audit gap stays open and the next merge ships an unread receipt."""
+
+
+def _sec3():
+    return """## 3. Gate
+Reversible: yes — additive function plus tests, no existing behavior changes.
+No major damage: yes — fail-closed on unscannable bodies. Positive forward
+effect: yes — closes the Domain 1 audit gap for every merge/scorecard PR."""
+
+
+def _sec4():
+    return """## 4. Decide
+Winner: (a) — highest score and the only option that strengthens an existing
+seam instead of inventing one. Strongest alternative: (b). Falsifier: if the
+body scanner cannot be invoked from CI, the rendered-receipt story fails."""
+
+
+def _sec5():
+    return """## 5. Receipt
+Posted on #1354 as the sign-out receipt; this PR body is the rendered receipt.
+Evidence: pytest run below. No receipt, no merge."""
+
+
+def good_scorecard_body():
+    return "\n\n".join([
+        "## Scorecard — this merge's five-step record",
+        _sec1(), _sec2(), _sec3(), _sec4(), _sec5(),
+    ])
+
+
+def test_scorecard_body_passes_complete():
+    r = check_scorecard_body(good_scorecard_body())
+    assert r.passed, r.reasons
+
+
+def test_scorecard_body_accepts_mixed_header_styles():
+    body = "\n\n".join([
+        "# 1. ENUMERATE",
+        "Two real options were enumerated, each with an id and a one-line summary of what it changes.",
+        "## (2) Score",
+        "Option A scored 9 on value and 8 on reversibility; option B scored 5 on value with higher duplication risk.",
+        "**Step 3: Gate**",
+        "Reversible yes, no major damage yes, positive forward effect yes — all three hard stops hold.",
+        "## 4) Decide — the winner",
+        "Winner is option A: highest score among gate-passers, with option B named as strongest alternative.",
+        "## 5. Receipt",
+        "Written and posted to #1354; the comment id is the receipt. No receipt, no merge.",
+    ])
+    r = check_scorecard_body(body)
+    assert r.passed, r.reasons
+
+
+def test_scorecard_body_rejects_four_of_five_sections():
+    body = "\n\n".join([
+        "## Scorecard — this merge's five-step record",
+        _sec1(), _sec2(),
+        # gate section deliberately omitted
+        _sec4(), _sec5(),
+    ])
+    r = check_scorecard_body(body)
+    assert not r.passed
+    assert any("3" in x and "gate" in x and "MISSING" in x for x in r.reasons)
+
+
+def test_scorecard_body_rejects_empty_section():
+    body = "\n\n".join([
+        "## Scorecard — this merge's five-step record",
+        _sec1(), _sec2(), _sec3(), _sec4(),
+        "## 5. Receipt",
+        # nothing under the header
+    ])
+    r = check_scorecard_body(body)
+    assert not r.passed
+    assert any("5" in x and "receipt" in x and "EMPTY" in x for x in r.reasons)
+
+
+def test_scorecard_body_rejects_wrong_order():
+    body = "\n\n".join([
+        "## Scorecard — this merge's five-step record",
+        _sec1(), _sec2(), _sec4(), _sec3(), _sec5(),  # decide before gate
+    ])
+    r = check_scorecard_body(body)
+    assert not r.passed
+    assert any("OUT OF ORDER" in x for x in r.reasons)
+
+
+def test_scorecard_body_rejects_single_summary_header():
+    # One header naming all five steps is not five sections.
+    body = (
+        "## Scorecard: enumerate, score, gate, decide, receipt\n\n"
+        "All five steps were followed carefully. Options were enumerated and "
+        "scored, the gates were checked, a decision was made, and the receipt "
+        "was posted to the board for the record."
+    )
+    r = check_scorecard_body(body)
+    assert not r.passed
+    assert any("MISSING" in x for x in r.reasons)
+
+
+def test_scorecard_body_rejects_lone_scorecard_title():
+    # The audit's exact concern: a "## Scorecard" title must not count as
+    # the score section (or any section).
+    r = check_scorecard_body("## Scorecard\n\nLooks good, ship it.")
+    assert not r.passed
+    assert sum(1 for x in r.reasons if "MISSING" in x) == 5
+
+
+def test_scorecard_body_rejects_placeholder_theater():
+    body = "\n\n".join([
+        "## Scorecard — this merge's five-step record",
+        _sec1(), _sec2(),
+        "## 3. Gate\nTBD — final gate values pending the review board's decision next week.",
+        _sec4(), _sec5(),
+    ])
+    r = check_scorecard_body(body)
+    assert not r.passed
+    assert any("3" in x and "PLACEHOLDER" in x for x in r.reasons)
+
+
+def test_scorecard_body_rejects_empty_body():
+    assert not check_scorecard_body("").passed
+    assert not check_scorecard_body("   \n  ").passed
+
+
+def test_scorecard_body_rejects_non_string():
+    assert not check_scorecard_body(None).passed
+    assert not check_scorecard_body({"body": "## 1. Enumerate"}).passed
+
+
+def test_scorecard_body_cli_passes(tmp_path):
+    import subprocess
+
+    f = tmp_path / "body.md"
+    f.write_text(good_scorecard_body())
+    p = subprocess.run(
+        ["python3", "tools/protocol_gates.py", "--scorecard-body", str(f)],
+        capture_output=True, text=True,
+    )
+    assert p.returncode == 0, p.stdout
+
+
+def test_scorecard_body_cli_blocks(tmp_path):
+    import subprocess
+
+    f = tmp_path / "body.md"
+    f.write_text("## Scorecard\n\nLooks good, ship it.")
+    p = subprocess.run(
+        ["python3", "tools/protocol_gates.py", "--scorecard-body", str(f)],
+        capture_output=True, text=True,
+    )
+    assert p.returncode == 1, p.stdout
+    assert "MISSING" in p.stdout
+
+
+def test_scorecard_body_accepts_keyword_headers_without_numbers():
+    body = "\n\n".join([
+        "## Enumerate options",
+        "Two real options were enumerated, each with an id and a one-line summary of what it changes.",
+        "## Scoring",
+        "Option A scored 9 on value and 8 on reversibility; option B scored 5 on value with higher duplication risk.",
+        "## Gate checks",
+        "Reversible yes, no major damage yes, positive forward effect yes — all three hard stops hold.",
+        "## Decision",
+        "Winner is option A: highest score among gate-passers, with option B named as strongest alternative.",
+        "## Receipt",
+        "Written and posted to #1354; the comment id is the receipt. No receipt, no merge.",
+    ])
+    r = check_scorecard_body(body)
+    assert r.passed, r.reasons
