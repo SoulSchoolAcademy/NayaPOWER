@@ -1,0 +1,25 @@
+name: Learning Projection Diagnostic
+
+on:
+  push:
+    branches:
+      - "naya5/learning-projection-403-diagnostic-20261009"
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  projection-diagnostic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Run real handler contract tests
+        run: node --test tests/github_dispatch_contract.test.mjs
