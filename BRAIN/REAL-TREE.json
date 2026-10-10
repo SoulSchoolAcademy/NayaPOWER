@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-10",
-  "receipt_basis_commit": "26f28c527626c74b164790d3d635ae9b831476a1",
-  "inventory_file_count": 1239,
+  "receipt_basis_commit": "801e3922e236665adb5d00c8b849f179fc968dde",
+  "inventory_file_count": 1243,
   "domain_counts": {
     "00-ACTIVATION": 3,
     "00-ARCHITECTURE": 5,
@@ -12,7 +12,7 @@
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
     "05-MEMORY": 646,
-    "06-PROOF": 13,
+    "06-PROOF": 17,
     "07-LEARNING": 8,
     "08-SUCCESSION": 2,
     "09-EVOLUTION": 2,
@@ -242,18 +242,18 @@
     },
     {
       "path": "BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2.ai.md",
-      "blob_sha": "6dd76254fb224138bb006b639e23325799b21d1f",
-      "size": 14729
+      "blob_sha": "0f81fc721fc143928d94212124886c73906fe196",
+      "size": 14786
     },
     {
       "path": "BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2.human.md",
-      "blob_sha": "c70fc5b7ebf3e2b2cfd82010bf864a82fd176f4c",
-      "size": 9018
+      "blob_sha": "fbe045ba392e5e3af32821f151acd2c4e6868f21",
+      "size": 9007
     },
     {
       "path": "BRAIN/01-GOVERNANCE/0008-operating-code-v2.machine.json",
-      "blob_sha": "210984d7d333d105d9d9532a8b79af6e932d4dae",
-      "size": 5087
+      "blob_sha": "1088c9ae24a78d137cc1158300cda7ef0271ef86",
+      "size": 5146
     },
     {
       "path": "BRAIN/01-GOVERNANCE/0013-PARALLEL-EXECUTION-V1.ai.md",
@@ -3996,9 +3996,29 @@
       "size": 430
     },
     {
+      "path": "BRAIN/06-PROOF/2026-10-10-COLD-ACTIVATION-PACK-MANIFEST.md",
+      "blob_sha": "cf7af59391e807c342505f391ac1710ddb3bab34",
+      "size": 8690
+    },
+    {
+      "path": "BRAIN/06-PROOF/2026-10-10-COLD-ACTIVATION-PROTOCOL-V1.md",
+      "blob_sha": "d787d0306078dd97cb702c29c77b7b401d69382d",
+      "size": 6221
+    },
+    {
+      "path": "BRAIN/06-PROOF/2026-10-10-COLD-ACTIVATION-RUN-01.md",
+      "blob_sha": "dbd4da3ad25a3f91ff2afcbdf516d7e3be08b0f6",
+      "size": 20845
+    },
+    {
       "path": "BRAIN/06-PROOF/README.md",
       "blob_sha": "6e90dab1006fbaa836d48497f3a8eda2ea99ec97",
       "size": 2315
+    },
+    {
+      "path": "BRAIN/06-PROOF/cold-activation-pack/COLD-ACTIVATION-PACK-BUNDLE.md",
+      "blob_sha": "a600aae39fd7004fdbb42c36e46034123e6d8446",
+      "size": 169453
     },
     {
       "path": "BRAIN/07-LEARNING/0001-LEARNING-CONTRACT-V1.md",
