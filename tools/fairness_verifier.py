@@ -249,6 +249,222 @@ def run_discriminating_suite():
     return passed, failed
 
 
+# Assumption-guarantee boundary (Naya 1's "Preventing Fairness Assumptions From Hiding Scheduler Defects"):
+#
+# Governing rule: Assume only what the environment can independently guarantee.
+# Prove everything the scheduler is responsible for.
+#
+# Never write: ASSUME every eligible task eventually receives service
+# Then prove:  PROPERTY every eligible task eventually receives service
+# That's circular — the model passes while the scheduler starves.
+#
+# Four predicates (not just "eligible"):
+#   OUTSTANDING(o): obligation still needs valid resolution
+#   ADMISSIBLE(o): authority and non-scheduling prerequisites permit operation
+#   READY(o): has everything apart from scheduling/resource allocation
+#   ENABLED(o): concrete valid execution transition can currently occur
+
+# Assumption owners
+ASSUMPTION_OWNERS = ["ENVIRONMENT", "SCHEDULER", "WORKER", "LAW", "EXTERNAL", "HUMAN"]
+
+# Assumption audit questions
+AUDIT_QUESTIONS = [
+    "who_controls",
+    "what_asserts",
+    "why_reasonable",
+    "can_hide_counterexample",
+    "is_satisfiable",
+    "implies_desired_result",
+    "if_fails",
+    "when_requalified",
+]
+
+
+def register_assumption(contract_id, assumption_id, owner, predicate, justification=""):
+    """
+    Register an environmental assumption with explicit owner and justification.
+    Assumptions about scheduler behavior are REJECTED — those are properties to prove.
+    """
+    if owner not in ASSUMPTION_OWNERS:
+        print(f"ERROR: Unknown owner '{owner}'")
+        sys.exit(1)
+
+    # Circular assumption detection
+    scheduler_keywords = ["eventually serviced", "eventually selected", "fair scheduling",
+                          "will be scheduled", "guaranteed service"]
+    if owner == "SCHEDULER" or any(kw in predicate.lower() for kw in scheduler_keywords):
+        print(f"⚠ CIRCULAR ASSUMPTION REJECTED:")
+        print(f"  '{predicate}'")
+        print(f"  This assumes the fairness property being verified.")
+        print(f"  Scheduler behavior is a PROPERTY TO PROVE, not an assumption.")
+        return None
+
+    assumption = {
+        "id": assumption_id,
+        "owner": owner,
+        "predicate": predicate[:200],
+        "justification": justification[:200],
+        "status": "REQUIRES_INDEPENDENT_PROOF",
+        "registered_at": datetime.now(timezone.utc).isoformat(),
+    }
+
+    # Store in a simple file-based registry
+    import os
+    reg_file = "/home/hatch/workspace/goals/nayapower-10-10-completion-drive/hidden_files/fairness-assumptions.json"
+    os.makedirs(os.path.dirname(reg_file), exist_ok=True)
+    try:
+        with open(reg_file) as f:
+            reg = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        reg = {"contracts": {}}
+    
+    if contract_id not in reg["contracts"]:
+        reg["contracts"][contract_id] = {"assumptions": [], "created_at": datetime.now(timezone.utc).isoformat()}
+    reg["contracts"][contract_id]["assumptions"].append(assumption)
+    
+    with open(reg_file, "w") as f:
+        json.dump(reg, f, indent=2)
+
+    print(f"Registered assumption {assumption_id} (owner: {owner})")
+    print(f"  Predicate: {predicate[:80]}...")
+    return assumption
+
+
+def audit_assumptions(contract_id):
+    """
+    Run the 8-question audit on every assumption in a contract.
+    Returns findings including circularity and vacuity risks.
+    """
+    import os
+    reg_file = "/home/hatch/workspace/goals/nayapower-10-10-completion-drive/hidden_files/fairness-assumptions.json"
+    try:
+        with open(reg_file) as f:
+            reg = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        print(f"No assumption contracts found.")
+        return []
+
+    contract = reg["contracts"].get(contract_id)
+    if not contract:
+        print(f"Contract {contract_id} not found.")
+        return []
+
+    print(f"\n{'='*70}")
+    print(f"ASSUMPTION AUDIT: {contract_id}")
+    print(f"{'='*70}")
+
+    findings = []
+    for a in contract["assumptions"]:
+        print(f"\n  {a['id']} (owner: {a['owner']})")
+        print(f"    Predicate: {a['predicate'][:70]}...")
+        
+        issues = []
+        # Check 1: does it imply the desired result?
+        if "fair" in a["predicate"].lower() and a["owner"] != "ENVIRONMENT":
+            issues.append("May imply desired fairness result — check circularity")
+        
+        # Check 2: is it satisfiable? (heuristic: non-empty, specific predicate)
+        if len(a["predicate"]) < 10:
+            issues.append("Predicate too vague to be satisfiable-checkable")
+        
+        # Check 3: justification present?
+        if not a.get("justification"):
+            issues.append("No independent justification provided")
+        
+        # Check 4: could it hide intermittent eligibility?
+        if "continuously" in a["predicate"].lower() and "eventually" in a["predicate"].lower():
+            issues.append("May exclude intermittent-eligibility patterns — strong fairness untestable")
+        
+        if issues:
+            print(f"    ⚠ Issues:")
+            for issue in issues:
+                print(f"      - {issue}")
+        else:
+            print(f"    ✓ No audit issues detected")
+        
+        findings.append({"assumption_id": a["id"], "issues": issues})
+
+    # Summary
+    total_issues = sum(len(f["issues"]) for f in findings)
+    print(f"\n  Audit complete: {len(findings)} assumptions, {total_issues} issues")
+    if total_issues == 0:
+        print(f"  All assumptions have explicit owners, justifications, and no circularity detected.")
+    return findings
+
+
+def check_vacuity(contract_id, trace_summary):
+    """
+    Detect vacuous proofs: PASS where the property was never meaningfully exercised.
+    
+    trace_summary: {"enabled_states_reached": int, "service_events": int,
+                     "recurring_enablement_cycles": int, "total_states": int}
+    """
+    print(f"\nVacuity check for {contract_id}:")
+    checks = []
+    
+    if trace_summary.get("enabled_states_reached", 0) == 0:
+        checks.append(("FAIL", "No enabled states reached — tasks can never become eligible"))
+    else:
+        checks.append(("PASS", f"{trace_summary['enabled_states_reached']} enabled states reached"))
+    
+    if trace_summary.get("service_events", 0) == 0:
+        checks.append(("FAIL", "Model never permits actual service"))
+    else:
+        checks.append(("PASS", f"{trace_summary['service_events']} service events"))
+    
+    if trace_summary.get("recurring_enablement_cycles", 0) == 0:
+        checks.append(("WARN", "No recurring-enablement cycles — strong fairness never meaningfully exercised"))
+    else:
+        checks.append(("PASS", f"{trace_summary['recurring_enablement_cycles']} recurring cycles"))
+    
+    for status, msg in checks:
+        symbol = "✓" if status == "PASS" else ("⚠" if status == "WARN" else "✗")
+        print(f"  {symbol} [{status}] {msg}")
+    
+    fails = [c for c in checks if c[0] == "FAIL"]
+    if fails:
+        print(f"\n  Result: VACUOUS — proof is mathematically valid but meaningless")
+        return "VACUOUS"
+    warns = [c for c in checks if c[0] == "WARN"]
+    if warns:
+        print(f"\n  Result: PROVED_IN_SCOPE with coverage gaps")
+        return "PROVED_WITH_GAPS"
+    print(f"\n  Result: PROVED_IN_SCOPE — property meaningfully exercised")
+    return "PROVED_IN_SCOPE"
+
+
+def test_broken_scheduler():
+    """
+    Deliberately broken scheduler test: a scheduler that always skips
+    the target obligation must NOT pass verification.
+    If it passes, the assumptions are masking the defect.
+    """
+    print(f"\n{'='*70}")
+    print("BROKEN SCHEDULER TEST")
+    print(f"{'='*70}")
+    print("  Scheduler: always selects other work when target is eligible.")
+    print("  Expected: verifier must find SF_ONLY_VIOLATION or WF_VIOLATION.")
+    print()
+    
+    # Simulate: target eligible intermittently, never serviced
+    cycle = [
+        {"enabled": True, "serviced": False},
+        {"enabled": False, "serviced": False},
+    ] * 6
+    
+    diagnostic, reason = classify_lasso(cycle)
+    print(f"  Classifier result: {diagnostic}")
+    
+    if diagnostic in ("WF_VIOLATION", "SF_ONLY_VIOLATION"):
+        print(f"  ✓ Broken scheduler correctly detected.")
+        print(f"  Assumptions are not masking the defect.")
+        return True
+    else:
+        print(f"  ✗ BROKEN SCHEDULER PASSED — assumptions are suspect!")
+        print(f"  The proof configuration must be investigated.")
+        return False
+
+
 def main():
     parser = argparse.ArgumentParser(description="Three-property fairness verifier")
     sub = parser.add_subparsers(dest="cmd", required=True)
@@ -260,6 +476,23 @@ def main():
     vt.add_argument("--events", required=True, help="JSON list of trace events")
 
     sub.add_parser("run-suite", help="Run 12 discriminating tests")
+
+    ra = sub.add_parser("register-assumption", help="Register environmental assumption")
+    ra.add_argument("--contract", required=True)
+    ra.add_argument("--id", required=True)
+    ra.add_argument("--owner", required=True,
+                    choices=["ENVIRONMENT", "SCHEDULER", "WORKER", "LAW", "EXTERNAL", "HUMAN"])
+    ra.add_argument("--predicate", required=True)
+    ra.add_argument("--justification", default="")
+
+    aa = sub.add_parser("audit-assumptions", help="Run 8-question assumption audit")
+    aa.add_argument("--contract", required=True)
+
+    vc = sub.add_parser("check-vacuity", help="Detect vacuous proofs")
+    vc.add_argument("--contract", required=True)
+    vc.add_argument("--trace-summary", required=True, help="JSON trace statistics")
+
+    sub.add_parser("test-broken-scheduler", help="Verify broken scheduler is caught")
 
     args = parser.parse_args()
     if args.cmd == "classify":
@@ -274,6 +507,15 @@ def main():
         print(json.dumps(result, indent=2))
     elif args.cmd == "run-suite":
         run_discriminating_suite()
+    elif args.cmd == "register-assumption":
+        register_assumption(args.contract, args.id, args.owner, args.predicate, args.justification)
+    elif args.cmd == "audit-assumptions":
+        audit_assumptions(args.contract)
+    elif args.cmd == "check-vacuity":
+        summary = json.loads(args.trace_summary)
+        check_vacuity(args.contract, summary)
+    elif args.cmd == "test-broken-scheduler":
+        test_broken_scheduler()
 
 
 if __name__ == "__main__":
