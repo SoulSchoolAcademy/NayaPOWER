@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-10  
-**Receipt basis commit:** `26f28c527626c74b164790d3d635ae9b831476a1`  
-**Inventory file count:** 1239  
+**Receipt basis commit:** `801e3922e236665adb5d00c8b849f179fc968dde`  
+**Inventory file count:** 1243  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -16,7 +16,7 @@
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 25 |
 | 05-MEMORY | 646 |
-| 06-PROOF | 13 |
+| 06-PROOF | 17 |
 | 07-LEARNING | 8 |
 | 08-SUCCESSION | 2 |
 | 09-EVOLUTION | 2 |
@@ -80,9 +80,9 @@
 - `BRAIN/01-GOVERNANCE/0007-LAW-OF-ONE-V1.human.md` — `7188b5a90066` (2145 bytes)
 - `BRAIN/01-GOVERNANCE/0007-law-of-one-v1.machine.json` — `a0b338815cda` (2007 bytes)
 - `BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2-ENCODING-AUDIT.md` — `693eabef654a` (11367 bytes)
-- `BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2.ai.md` — `6dd76254fb22` (14729 bytes)
-- `BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2.human.md` — `c70fc5b7ebf3` (9018 bytes)
-- `BRAIN/01-GOVERNANCE/0008-operating-code-v2.machine.json` — `210984d7d333` (5087 bytes)
+- `BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2.ai.md` — `0f81fc721fc1` (14786 bytes)
+- `BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2.human.md` — `fbe045ba392e` (9007 bytes)
+- `BRAIN/01-GOVERNANCE/0008-operating-code-v2.machine.json` — `1088c9ae24a7` (5146 bytes)
 - `BRAIN/01-GOVERNANCE/0013-PARALLEL-EXECUTION-V1.ai.md` — `bd192971f09c` (3430 bytes)
 - `BRAIN/01-GOVERNANCE/0013-PARALLEL-EXECUTION-V1.human.md` — `a82aa1b3ffc3` (2623 bytes)
 - `BRAIN/01-GOVERNANCE/0013-parallel-execution-v1.machine.json` — `45bcf7ab174b` (2592 bytes)
@@ -841,7 +841,11 @@
 - `BRAIN/06-PROOF/2026-10-07-SELF-IDENTITY-TRIAL-V1.json` — `99d6d6530ac6` (7200 bytes)
 - `BRAIN/06-PROOF/2026-10-07-SELF-IDENTITY-TRIAL-V1.md` — `8ff81e55ac32` (3862 bytes)
 - `BRAIN/06-PROOF/2026-10-07-SELF-IDENTITY-TRIAL-V1.rival.json` — `a15b54465e50` (430 bytes)
+- `BRAIN/06-PROOF/2026-10-10-COLD-ACTIVATION-PACK-MANIFEST.md` — `cf7af59391e8` (8690 bytes)
+- `BRAIN/06-PROOF/2026-10-10-COLD-ACTIVATION-PROTOCOL-V1.md` — `d787d0306078` (6221 bytes)
+- `BRAIN/06-PROOF/2026-10-10-COLD-ACTIVATION-RUN-01.md` — `dbd4da3ad25a` (20845 bytes)
 - `BRAIN/06-PROOF/README.md` — `6e90dab1006f` (2315 bytes)
+- `BRAIN/06-PROOF/cold-activation-pack/COLD-ACTIVATION-PACK-BUNDLE.md` — `a600aae39fd7` (169453 bytes)
 ### 07-LEARNING — Learning
 
 - `BRAIN/07-LEARNING/0001-LEARNING-CONTRACT-V1.md` — `7380da90eb74` (2052 bytes)
