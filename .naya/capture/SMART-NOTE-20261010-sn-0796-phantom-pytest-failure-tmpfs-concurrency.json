@@ -1,0 +1,71 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-0796",
+ "capture_id": "20261010-sn-0796-phantom-pytest-failure-tmpfs-concurrency",
+ "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+ "category": "SYSTEM_INTELLIGENCE",
+ "topic": "VERIFICATION",
+ "subtopic": "BATTERY_ISOLATION",
+ "title": "Phantom Pytest Failure from Concurrent tmpfs Exhaustion - Battery Isolation Rule",
+ "projection": {
+  "publication_scope": "PUBLIC_DERIVED_VIEW",
+  "human_director_authorized_publication": false,
+  "category_slug": "SYSTEM-INTELLIGENCE",
+  "topic_slug": "VERIFICATION",
+  "subtopic_slug": "BATTERY-ISOLATION"
+ },
+ "lifecycle_state": "CANDIDATE",
+ "source": {
+  "source_type": "intelligent_block_recovery",
+  "source_reference": "PR #2118 (brain-build lane, 2026-10-10) merged the intelligent-block doc BRAIN/05-MEMORY/SMART-NOTES/2026/10/10/SYSTEM-INTELLIGENCE/VERIFICATION/BATTERY-ISOLATION/SN-0796/IB-SMART-NOTE-20261010-sn0796-phantom-pytest-failure-tmpfs-concurrency.md without a capture or registry entry, breaking test_no_smart_note_id_can_vanish_without_a_lifecycle_record on the main tip. This capture is distilled from that IB doc; no deletion occurred - the note was born without a lifecycle record. Recovered per the guard's own prescription.",
+  "captured_at": "2026-10-10",
+  "captured_at_utc": "2026-10-10T13:50:00Z"
+ },
+ "intelligence": {
+  "essence": "A singleton pytest FAILED on an unchanged main tip was an environment defect, not a code defect: a concurrent adversarial harness filled the shared 512MB /tmp tmpfs (ENOSPC), breaking the test's shutil.copytree fixture mid-copy. shutil.Error raised inside the test body reports as FAILED, not ERROR, so it reads exactly like a real defect. Reproduced on demand: /tmp at 98% -> same test FAILED; /tmp healthy -> full suite green. Triage rule: a singleton FAILED on an unchanged tip gets a df check of every scratch disk BEFORE any test diagnosis; serialize or disk-isolate concurrent disk-heavy verifications (battery-isolation rule).",
+  "human_view": {
+   "meaning": "One test failed while the code was fine. A second heavy job had filled the machine's tiny shared scratch disk, so the test ran out of room halfway through its setup and reported 'failed' as if the code were broken. With the disk healthy, everything passed. If exactly one test fails and nothing in the code changed, check whether the machine ran out of scratch space before doubting the code.",
+   "why_it_matters": "Misreading an environment failure as a code defect opens a repair lane for a healthy tip and wastes a full diagnosis cycle. The one-second df check closes the case immediately."
+  },
+  "simple_view": {
+   "meaning": "A test needed temporary space to do its job; another program had filled all the space, so the test failed. The test wasn't broken - it just needed room. When it got room, it passed."
+  },
+  "naya_view": {
+   "directive": "Evidence law applied to infrastructure: UNKNOWN != FAIL. A singleton FAILED on an unchanged tip is UNKNOWN-caused until the environment is read. Read the disk first (df -h /tmp), then the test's logic. Prove environment theories by reproduction before writing the note - inference is not evidence. Disk is a shared finite resource like any lock: serialize or isolate."
+  },
+  "ai_view": {
+   "specification": "Battery-isolation rule (CANDIDATE): never run two disk-heavy verifications concurrently on the shared /tmp tmpfs; serialize them, or point each run's scratch at workspace disk (TMPDIR + repointed mktemp template). Singleton FAILED on unchanged tip => df check of all scratch disks before test diagnosis.",
+   "directive": "Apply the battery-isolation rule to every verification battery this seat runs."
+  },
+  "machine_view": {
+   "sn": "SN-0796",
+   "title": "Phantom Pytest Failure from Concurrent tmpfs Exhaustion - Battery Isolation Rule",
+   "truth_state": "CANDIDATE",
+   "scope": "SYSTEM",
+   "captured": "2026-10-10",
+   "source": "brain-build loop 2026-10-10T13:26-14:10Z (Naya 2); main tip fd7f13ec9a25ee0deebfc479132101aaaa6e0879; verification battery on exact tip bytes",
+   "failure_case": {
+    "test": "tests/test_brain_registry.py::test_brain_population_rejects_node_relationship_drift",
+    "run1": "1 failed, 2133 passed, 11 skipped (concurrent adversarial harness filling /tmp)",
+    "run2_clean": "2134 passed, 11 skipped, 0 failures",
+    "isolated": "3/3 tests/test_brain_registry.py pass",
+    "harness_concurrent": "3 passed, 3 failed - all 3 = 'No space left on device' on 512MB /tmp tmpfs"
+   },
+   "mechanism": {
+    "proved_by_reproduction": true,
+    "repro": "/tmp at 98% -> same test FAILED with shutil.Error from copytree (Errno 28); /tmp healthy -> green",
+    "trap1": "shutil.Error raised inside the test body => pytest reports FAILED, not ERROR - reads as a real defect",
+    "trap2": "summary line carries no environment signal; corruption is silent unless df is checked",
+    "fixture": "shutil.copytree(root/'BRAIN', tmp_path/'BRAIN') with tmp_path on /tmp"
+   },
+   "proposed_discipline": "battery-isolation rule: serialize disk-heavy verifications or disk-isolate each run (TMPDIR + repointed mktemp on workspace disk); singleton FAILED on unchanged tip => df check before test diagnosis",
+   "pairs_with": [
+    "AGENTS.md L202",
+    "Evidence law UNKNOWN!=FAIL",
+    "Mirror Law",
+    "SN-0335 serialize registry writes"
+   ],
+   "falsifier": "A future singleton FAILED on an unchanged tip with all scratch disks provably healthy at the failure instant, failing again in a clean isolated re-run."
+  }
+ }
+}
