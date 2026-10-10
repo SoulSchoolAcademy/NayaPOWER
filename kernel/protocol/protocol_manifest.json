@@ -72,12 +72,18 @@
       "id": "SN-0526",
       "name": "Quality Before Speed",
       "statement": "No deliverable below 9/10 reaches Shawn. Build -> Verify -> Scorecard -> Gate -> Deliver.",
-      "status": "CANDIDATE"
+      "status": "RATIFIED",
+    "ratified": "2026-10-08",
+    "ratified_by": "Shawn Vibert",
+    "ratified_ref": "#1354 comment 6061380885; protocol ratified list"
     },
     {
       "id": "SN-AUTO-BRAIN",
       "title": "The Automatic Super Brain",
-      "status": "CANDIDATE",
+      "status": "RATIFIED",
+    "ratified": "2026-10-08",
+    "ratified_by": "Shawn Vibert",
+    "ratified_ref": "#1354 comment 6061380885; PR #1864",
       "text": "The system must be structured so the correct action is the natural action \u2014 computed by architecture, not discovered by effort. Every agent automatically knows what to do, what the mission is, what the goal is, and what choices to make.",
       "machine_check": "kernel/protocol/protocol_integrity_gate.py"
     },
