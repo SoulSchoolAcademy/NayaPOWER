@@ -39,3 +39,30 @@ being right for everybody.
 `tests/test_protocol_machine_law.py` — gates tested with positive and negative
 controls. The gates are proven to block what they claim to block and allow what
 they claim to allow.
+
+| `AGENTS.md` → sign-out / delivery completion | `repeat_learning_gate` + `tools.protocol_gates.check_sign_out` | Unresolved known repeats cannot complete as DONE; the seam emits `LEARNING_HOLD`. Missing/ambiguous ledger or evidence is `BLOCKED`, never PASS. |
+
+### Repeat-learning enforcement
+
+`kernel/protocol/repeat_learning_gate.py` is the canonical implementation of the
+Repeat Tracker v1.1 contract. `tools/protocol_gates.py` consumes it at the
+sign-out seam rather than duplicating its predicates.
+
+The sign-out record must carry a `learning` object containing `topic`, `action`,
+and the already-read `ledger`; optional evidence, authority, and timestamp are
+passed through to the canonical gate. This is intentionally a hard requirement:
+a sign-out cannot omit the learning decision and silently bypass the repeat
+tripwire.
+
+The machine behavior is now testable in isolation:
+- unresolved matching repeat → `LEARNING_HOLD`;
+- missing/unreadable ledger → `BLOCKED`;
+- ambiguous unresolved match → `BLOCKED`;
+- `VERIFIED` without later behavioral evidence → `BLOCKED`;
+- `VERIFIED` with later behavioral evidence → `PASS`;
+- governed exception may release a hold without changing `fix_status`.
+
+This is **WIRED at the validator seam, not yet production-proven**. A live Team
+Naya sign-out receipt still has to execute through this seam and produce the
+durable hold/release receipt before the learning contract can be called
+runtime-verified.

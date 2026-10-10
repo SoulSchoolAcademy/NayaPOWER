@@ -121,6 +121,7 @@ REQUIRED_SIGN_OUT_FIELDS = (
     "unknown",
     "blocked",
     "next_action",
+    "learning",
 )
 
 
@@ -128,6 +129,7 @@ REQUIRED_SIGN_OUT_FIELDS = (
 class FormatResult:
     passed: bool
     reasons: list = field(default_factory=list)
+    receipts: list = field(default_factory=list)
 
 
 def _nonempty_str(value) -> bool:
@@ -190,6 +192,35 @@ def check_sign_out(sign_out: dict) -> FormatResult:
             f"score {score!r} must be finite and within [0, 10] "
             "(NaN/Infinity fail closed)"
         )
+
+    # Completion now consumes the Repeat Tracker gate at the sign-out seam.
+    # A sign-out without a resolvable learning decision is not complete.
+    learning = sign_out["learning"]
+    if not isinstance(learning, dict):
+        reasons.append("learning must be a dict carrying topic/action/ledger")
+    else:
+        required_learning = ("topic", "action", "ledger", "evidence_refs", "authority_ref")
+        for field_name in required_learning:
+            if field_name not in learning:
+                reasons.append(f"learning field {field_name!r} is required")
+        if not reasons:
+            gate = check_repeat_learning_gate(
+                topic=learning["topic"],
+                action=learning["action"],
+                ledger=learning["ledger"],
+                evidence_refs=learning.get("evidence_refs", []),
+                authority_ref=learning.get("authority_ref", ""),
+                timestamp=learning.get("timestamp"),
+            )
+            if not gate.passed:
+                reasons.append(
+                    f"learning gate {gate.verdict}: " + "; ".join(gate.reasons)
+                )
+            return FormatResult(
+                passed=not reasons,
+                reasons=reasons,
+                receipts=list(gate.receipts),
+            )
     return FormatResult(passed=not reasons, reasons=reasons)
 
 
@@ -329,6 +360,7 @@ class AdapterResult:
     verdict: str | None = None
     reasons: list = field(default_factory=list)
     delegated_to: str = ""
+    receipts: list = field(default_factory=list)
 
 
 def _try_kernel_attr(module_name: str, attr: str):
@@ -481,3 +513,52 @@ def check_quality_gate(
         reasons=reasons,
         delegated_to="local-fallback (kernel/protocol not yet merged)",
     )
+
+
+
+def check_repeat_learning_gate(
+    *,
+    topic: str,
+    action: str,
+    ledger: list[dict] | None,
+    evidence_refs: list[str] | tuple[str, ...] | None = None,
+    authority_ref: str = "",
+    timestamp: float | None = None,
+) -> AdapterResult:
+    """Canonical adapter for the Repeat Tracker v1.1 completion tripwire.
+
+    This is deliberately a thin consumer of kernel.protocol.repeat_learning_gate.
+    It does not duplicate the gate logic. The result is FAIL unless the
+    canonical gate returns PASS.
+    """
+    evaluate = _try_kernel_attr("repeat_learning_gate", "evaluate_learning_gate")
+    if evaluate is None:
+        return AdapterResult(
+            passed=False,
+            verdict="BLOCKED",
+            reasons=["repeat learning gate unavailable — fail closed"],
+            delegated_to="kernel.protocol.repeat_learning_gate (unavailable)",
+        )
+    try:
+        result = evaluate(
+            topic=topic,
+            action=action,
+            ledger=ledger,
+            evidence_refs=evidence_refs,
+            authority_ref=authority_ref,
+            timestamp=timestamp,
+        )
+        return AdapterResult(
+            passed=result.passed,
+            verdict=result.decision,
+            reasons=list(result.reasons),
+            delegated_to="kernel.protocol.repeat_learning_gate",
+            receipts=list(result.receipts),
+        )
+    except Exception as exc:
+        return AdapterResult(
+            passed=False,
+            verdict="BLOCKED",
+            reasons=[f"repeat learning gate error — fail closed: {exc}"],
+            delegated_to="kernel.protocol.repeat_learning_gate",
+        )

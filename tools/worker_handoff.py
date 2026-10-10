@@ -141,7 +141,8 @@ def check_handoff(text: str) -> HandoffResult:
 
     # Evidence discipline: a handoff asserting completion must carry evidence.
     asserts_done = any(
-        m in low for m in ("done", "complete", "pass", "fixed", "green", "verified")
+        re.search(rf"\b{re.escape(m)}\b", low)
+        for m in ("done", "complete", "pass", "fixed", "green", "verified")
     )
     has_evidence = any(m in low for m in EVIDENCE_MARKERS)
     if asserts_done and not has_evidence:
@@ -174,6 +175,37 @@ def check_handoff(text: str) -> HandoffResult:
         base += 0.25
     res.score = round(max(0.0, min(10.0, base)), 2)
     return res
+
+
+@dataclass
+class TeamNayaHandoffExecution:
+    """Result of the canonical Team Naya handoff -> sign-out seam."""
+    passed: bool
+    decision: str
+    handoff: HandoffResult
+    sign_out: object
+    receipts: list = field(default_factory=list)
+
+
+def execute_team_naya_handoff(handoff_text: str, sign_out: dict) -> TeamNayaHandoffExecution:
+    """Execute the canonical handoff/sign-out boundary, fail-closed."""
+    handoff_result = check_handoff(handoff_text)
+    if not handoff_result.accepted:
+        return TeamNayaHandoffExecution(False, "BLOCKED", handoff_result, None)
+
+    from tools.protocol_gates import check_sign_out
+
+    sign_out_result = check_sign_out(sign_out)
+    decision = "PASS" if sign_out_result.passed else (
+        sign_out_result.receipts[0].decision if sign_out_result.receipts else "BLOCKED"
+    )
+    return TeamNayaHandoffExecution(
+        sign_out_result.passed,
+        decision,
+        handoff_result,
+        sign_out_result,
+        list(sign_out_result.receipts),
+    )
 
 
 def scorecard(results: list[HandoffResult]) -> dict[str, int]:

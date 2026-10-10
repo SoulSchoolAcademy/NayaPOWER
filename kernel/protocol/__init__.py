@@ -13,6 +13,7 @@ This package implements the enforceable gates:
 - cold_successor_test: acceptance test that state survives the agent
 - minimal_action: smallest effective change as a checkable proposal
 - learning_capture: every cycle declares its lesson (with provenance) or states why none
+- repeat_learning_gate: unresolved known repeats mechanically block sign-out as LEARNING_HOLD
 - takeover: stalled-lane takeover rules as code
 
 Data:
