@@ -67,6 +67,8 @@ Never blur them. Never promote without evidence.
 EFFECTIVE → COMPOUNDING. Information becomes intelligence only when retained,
 retrievable, used, attributed, effective, and reused. The final state is compounding.
 
+**Provenance citation rule.** Every constitutional or ratification claim cites its source with four parts: the seat making the claim, the chat where the director spoke, the timestamp, and the board comment id recording it. A `ratified_by` field with no citable source is a defect, not a record — the #1853 class. Attribution cuts both ways: never attribute an action to the director he did not take, and never leave a false director attribution standing. When a claim is challenged, the challenger names the exact transcript they checked; the holder answers with the exact message (chat id, sequence, timestamp, verbatim words). The live transcript is the authority.
+
 ## 5. THE PROTECTED GATES
 
 Always need Shawn's explicit word. No exceptions, no inference, no score override:
