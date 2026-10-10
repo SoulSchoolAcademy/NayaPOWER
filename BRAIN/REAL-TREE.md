@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-10  
-**Receipt basis commit:** `5eb178d25dcc8dafbd7982c5ff7d3f8b5c27f023`  
-**Inventory file count:** 1214  
+**Receipt basis commit:** `cf5c98e14fe2948969aafba81fc9f192b33144cc`  
+**Inventory file count:** 1217  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -11,11 +11,11 @@
 | Domain | Files |
 |---|---|
 | 00-SPEC | 15 |
-| 01-GOVERNANCE | 31 |
+| 01-GOVERNANCE | 33 |
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 25 |
-| 05-MEMORY | 643 |
+| 05-MEMORY | 644 |
 | 06-PROOF | 13 |
 | 07-LEARNING | 8 |
 | 08-SUCCESSION | 2 |
@@ -87,6 +87,8 @@
 - `BRAIN/01-GOVERNANCE/0014-mantra-v1.machine.json` — `9d9d1fe2937d` (3087 bytes)
 - `BRAIN/01-GOVERNANCE/0015-SECURITY-ACKNOWLEDGMENTS-V1.md` — `0800143c89ba` (4990 bytes)
 - `BRAIN/01-GOVERNANCE/LEARNING-INTERNALIZATION-AUTOMATIC-BEHAVIOR-V1.md` — `c58ef4864a38` (10500 bytes)
+- `BRAIN/01-GOVERNANCE/OPERATING-LAW.json` — `eb1a6d850212` (28653 bytes)
+- `BRAIN/01-GOVERNANCE/OPERATING-LAW.md` — `17575d56498a` (29862 bytes)
 - `BRAIN/01-GOVERNANCE/README.md` — `065bb6dc1530` (1673 bytes)
 - `BRAIN/01-GOVERNANCE/TEAM-NAYA-OPERATING-PROTOCOL-V1.md` — `947a3a14a9bf` (14458 bytes)
 - `BRAIN/01-GOVERNANCE/elevation-grants/README.md` — `37afb12365a8` (1910 bytes)
@@ -162,6 +164,7 @@
 - `BRAIN/05-MEMORY/0001-MEMORY-CONTINUITY-CONTRACT-V1.md` — `1dad3e9d1c45` (1937 bytes)
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-03-NAYANET-HUB-DAILY-INTELLIGENCE.md` — `2594fc618ff2` (4371 bytes)
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-04-NAYAPOWER-FLOW-PROOF-SPECIMEN.md` — `ea6a1d83a40b` (6363 bytes)
+- `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-09-NAYAPOWER-DAILY-INTELLIGENCE.md` — `fe954e32d2c7` (9817 bytes)
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/09/27/IB-DIR-NAYAPOWER-20260927-001.md` — `cb3d277c8117` (2359 bytes)
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/09/28/IB-DIR-NAYAPOWER-20260928-001.md` — `9a102af87000` (2091 bytes)
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/09/29/IB-DIR-NAYAPOWER-20260929-001.md` — `ef4f22f9e3c1` (2239 bytes)
