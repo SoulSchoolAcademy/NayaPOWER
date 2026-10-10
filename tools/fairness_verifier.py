@@ -250,7 +250,7 @@ def run_discriminating_suite():
     return passed, failed
 
 
-# Assumption-guarantee boundary (Naya 1's "Preventing Fairness Assumptions From Hiding Scheduler Defects"):
+# Assumption-guarantee boundary (Naya 3's "Preventing Fairness Assumptions From Hiding Scheduler Defects"):
 #
 # Governing rule: Assume only what the environment can independently guarantee.
 # Prove everything the scheduler is responsible for.
@@ -862,7 +862,7 @@ def main():
 
 
 # ============================================================================
-# AER-1 — Ambiguous External Effect Recovery Law (Naya 1's law)
+# AER-1 — Ambiguous External Effect Recovery Law (Naya 3's law)
 #
 # Reconcile before retrying. If reconciliation cannot establish the outcome,
 # retry only when an independently verified mechanism guarantees the same
@@ -1007,7 +1007,7 @@ def rlq_recover(case):
 
 
 # ============================================================================
-# RFD-AMB-1 — Ambiguous Execution History Qualification (Naya 1's law)
+# RFD-AMB-1 — Ambiguous Execution History Qualification (Naya 3's law)
 #
 # Possible compliance is not verified compliance.
 # Possible violation is not a proven violation.
@@ -1153,7 +1153,7 @@ def rlq_ambiguous(case):
 
 
 # ============================================================================
-# RFD-POS-1 — Legitimate Behavior Preservation (Naya 1's law)
+# RFD-POS-1 — Legitimate Behavior Preservation (Naya 3's law)
 #
 # An unexpected concrete execution is not automatically a defect.
 # The diagnostician must accept independently established legal behavior.
@@ -1276,7 +1276,7 @@ def rlq_positive(control):
 
 
 # ============================================================================
-# RFD-1 — Refinement Failure Diagnosis Contract (Naya 1's diagnostic law)
+# RFD-1 — Refinement Failure Diagnosis Contract (Naya 3's diagnostic law)
 #
 # A failed refinement check proves the claimed relationship is not
 # established. It does NOT prove which component is defective.
@@ -1608,7 +1608,7 @@ def rlq_refine():
 
 
 # ============================================================================
-# RLQ-1 — Revocation Linearization Qualification (Naya 1's formal suite)
+# RLQ-1 — Revocation Linearization Qualification (Naya 3's formal suite)
 #
 # Fundamental rule:
 #   R_e ≺ X ∧ ¬Requalified(c,e,X) ⇒ ¬UsesRevokedProof(X,e)
@@ -1847,7 +1847,7 @@ def rlq_mutant_run(mutant):
 
 
 # ============================================================================
-# Revocation Linearization Law (Naya 1's formal law)
+# Revocation Linearization Law (Naya 3's formal law)
 #
 # An evidence revocation has one authoritative commit point. Every later
 # certification, projection publication and consequential execution must
@@ -1995,7 +1995,7 @@ def pub_validate(claim_id, purpose):
 
 
 # ============================================================================
-# Stale Publication Prevention (Naya 1's protocol)
+# Stale Publication Prevention (Naya 3's protocol)
 #
 # Three invariants:
 #   StaleWriter ⇒ RejectPublication
@@ -2138,7 +2138,7 @@ def pub_race_test(proj_id):
 
 
 # ============================================================================
-# Selective Cache Invalidation and Intelligence Preservation (Naya 1's protocol)
+# Selective Cache Invalidation and Intelligence Preservation (Naya 3's protocol)
 #
 # Preserve history. Recompute current qualification. Invalidate stale
 # authority-bearing projections. Refresh only what changed.
@@ -2311,7 +2311,7 @@ def proj_refresh(proj_id):
 
 
 # ============================================================================
-# Selective Evidence Revocation and Claim Requalification (Naya 1's protocol)
+# Selective Evidence Revocation and Claim Requalification (Naya 3's protocol)
 #
 # Revoke the evidence contribution first. Revoke or downgrade a qualification
 # only if the remaining admissible evidence no longer establishes the claim.
@@ -2488,7 +2488,7 @@ def pclaim_requalify(claim_id, use_scope="INDEPENDENT_CERTIFICATION"):
 
 
 # ============================================================================
-# Evidence-Bounded Uncertainty Propagation (Naya 1's protocol)
+# Evidence-Bounded Uncertainty Propagation (Naya 3's protocol)
 #
 # A downstream claim can never become more certain, broader, or more causally
 # specific than its admissible evidence supports. But uncertainty in one
@@ -2680,7 +2680,7 @@ def pclaim_use(claim_id, use):
 
 
 # ============================================================================
-# Causal Uncertainty Without False Blame (Naya 1's protocol)
+# Causal Uncertainty Without False Blame (Naya 3's protocol)
 #
 # Four independent dimensions, never collapsed:
 #   observability / evidence state / blocker state / causal state
@@ -2861,7 +2861,7 @@ def incident_assess(incident_id):
 
 
 # ============================================================================
-# Causal Trace Contract (Naya 1's "A Verifiable Causal Trace Across
+# Causal Trace Contract (Naya 3's "A Verifiable Causal Trace Across
 # Environment, Scheduler and Worker")
 #
 # Three distinct layers:
@@ -3055,7 +3055,7 @@ def trace_label_swap_test(trace_id, symptom):
 
 
 # ============================================================================
-# Responsibility Boundary Contract (Naya 1's "Enforcing the Environment–
+# Responsibility Boundary Contract (Naya 3's "Enforcing the Environment–
 # Scheduler–Worker Boundary")
 #
 # Central rule: a component cannot convert its own failure into another
