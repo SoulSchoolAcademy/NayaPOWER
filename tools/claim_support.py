@@ -869,6 +869,222 @@ def audit_composite(claim_id):
     return audit
 
 
+# Obligation lifecycle states (append-only, never overwrite)
+OBLIGATION_LIFECYCLE = {
+    "PROPOSED": "New or revised requirement awaiting review",
+    "ACTIVE": "Ratified and applicable within effective scope",
+    "DEPRECATED": "Still applicable in legacy contexts, replacement scheduled",
+    "SUPERSEDED": "Replaced by newer obligation for defined contexts",
+    "RETIRED": "No longer governs new qualifications in retired scope",
+    "WITHDRAWN": "Obligation found erroneous; authority withdrawn",
+}
+
+# Change classifications for migration
+CHANGE_CLASSES = {
+    "EDITORIAL": "No semantic change — retain qualifications",
+    "STRENGTHENED": "Stronger criterion — require additional proof",
+    "WEAKENED": "Weaker criterion — preserve history, review authorization",
+    "INTERFACE_CHANGED": "Behavior changed — requalify affected obligations",
+    "INTERFACE_RENAMED": "Semantics preserved — carry forward with compatibility doc",
+    "ENV_CHANGED": "Environment assumptions changed — require bridge evidence",
+    "SPLIT": "One obligation → several — map old proof to exact new obligations",
+    "MERGED": "Several → one — verify conjunction establishes merged claim",
+    "REMOVED": "Requirement removed — retire in scope, preserve receipts",
+    "INVALID": "Prior obligation invalid — withdraw authority, reassess dependents",
+}
+
+
+def register_obligation(obligation_id, requirement_text, scope="", acceptance_predicate="",
+                        proof_standard="", assumptions=""):
+    """Register a new proof obligation at revision v1."""
+    reg = load_registry()
+    if "obligations" not in reg:
+        reg["obligations"] = {}
+
+    if obligation_id in reg["obligations"]:
+        print(f"Obligation {obligation_id} exists. Use revise_obligation for new revision.")
+        return
+
+    reg["obligations"][obligation_id] = {
+        "id": obligation_id,
+        "revisions": {
+            "v1": {
+                "revision_id": "v1",
+                "requirement_text": requirement_text[:500],
+                "scope": scope[:200],
+                "acceptance_predicate": acceptance_predicate[:200],
+                "proof_standard": proof_standard[:200],
+                "assumptions": assumptions[:200],
+                "lifecycle": "PROPOSED",
+                "effective_from": datetime.now(timezone.utc).isoformat(),
+                "effective_until": None,
+                "recorded_at": datetime.now(timezone.utc).isoformat(),
+                "supersedes": None,
+                "events": [],
+            }
+        },
+        "current_revision": "v1",
+    }
+    save_registry(reg)
+    print(f"Registered obligation {obligation_id} at v1 (PROPOSED)")
+    return reg["obligations"][obligation_id]
+
+
+def transition_obligation(obligation_id, revision, new_state, reason=""):
+    """Move an obligation revision through its lifecycle (append-only events)."""
+    if new_state not in OBLIGATION_LIFECYCLE:
+        print(f"ERROR: Unknown state '{new_state}'")
+        sys.exit(1)
+
+    reg = load_registry()
+    ob = reg["obligations"].get(obligation_id)
+    if not ob or revision not in ob["revisions"]:
+        print(f"Obligation {obligation_id} revision {revision} not found.")
+        sys.exit(1)
+
+    rev = ob["revisions"][revision]
+    old_state = rev["lifecycle"]
+    rev["lifecycle"] = new_state
+    rev["events"].append({
+        "from": old_state,
+        "to": new_state,
+        "reason": reason[:200],
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+    })
+    if new_state in ("RETIRED", "WITHDRAWN", "SUPERSEDED"):
+        rev["effective_until"] = datetime.now(timezone.utc).isoformat()
+
+    save_registry(reg)
+    log_event({
+        "event_type": "OBLIGATION_TRANSITION",
+        "obligation_id": obligation_id,
+        "revision": revision,
+        "from": old_state,
+        "to": new_state,
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+    })
+    print(f"{obligation_id} {revision}: {old_state} → {new_state}")
+    print(f"  {OBLIGATION_LIFECYCLE[new_state]}")
+    return rev
+
+
+def revise_obligation(obligation_id, new_requirement_text, change_class, scope="",
+                      acceptance_predicate="", proof_standard="", assumptions="",
+                      effective_from=None):
+    """
+    Create a new immutable revision. Semantic change = new revision, never edit in place.
+    Returns migration assessment: what proof carries forward, what's needed.
+    """
+    if change_class not in CHANGE_CLASSES:
+        print(f"ERROR: Unknown change class '{change_class}'")
+        sys.exit(1)
+
+    reg = load_registry()
+    ob = reg["obligations"].get(obligation_id)
+    if not ob:
+        print(f"Obligation {obligation_id} not found.")
+        sys.exit(1)
+
+    old_rev_id = ob["current_revision"]
+    old_rev = ob["revisions"][old_rev_id]
+    new_rev_num = len(ob["revisions"]) + 1
+    new_rev_id = f"v{new_rev_num}"
+
+    # Bitemporal: effective time vs recorded time
+    recorded_at = datetime.now(timezone.utc).isoformat()
+
+    new_rev = {
+        "revision_id": new_rev_id,
+        "requirement_text": new_requirement_text[:500],
+        "scope": scope[:200] or old_rev["scope"],
+        "acceptance_predicate": acceptance_predicate[:200] or old_rev["acceptance_predicate"],
+        "proof_standard": proof_standard[:200] or old_rev["proof_standard"],
+        "assumptions": assumptions[:200] or old_rev["assumptions"],
+        "lifecycle": "PROPOSED",
+        "effective_from": effective_from or recorded_at,
+        "effective_until": None,
+        "recorded_at": recorded_at,
+        "supersedes": old_rev_id,
+        "events": [],
+    }
+    ob["revisions"][new_rev_id] = new_rev
+    ob["current_revision"] = new_rev_id
+
+    # Migration assessment based on change class
+    migration = {
+        "change_class": change_class,
+        "change_description": CHANGE_CLASSES[change_class],
+        "reusable_evidence": [],
+        "new_proof_required": [],
+        "historical_qualification": "PRESERVED",
+    }
+
+    if change_class == "EDITORIAL":
+        migration["reusable_evidence"] = ["ALL_PRIOR"]
+        migration["new_proof_required"] = []
+    elif change_class == "STRENGTHENED":
+        migration["reusable_evidence"] = ["PARTIAL — prior proof covers original conditions"]
+        migration["new_proof_required"] = ["ADDITIONAL — new strengthened conditions"]
+    elif change_class == "INTERFACE_CHANGED":
+        migration["reusable_evidence"] = ["UNCHANGED_PARTS — if semantically verified"]
+        migration["new_proof_required"] = ["AFFECTED_SENDER_RECEIVER_INTERACTION"]
+    elif change_class == "ENV_CHANGED":
+        migration["reusable_evidence"] = ["SOURCE_ENV_RESULTS"]
+        migration["new_proof_required"] = ["BRIDGE_EVIDENCE_FOR_MATERIAL_DIFFERENCES"]
+    elif change_class in ("SPLIT", "MERGED"):
+        migration["reusable_evidence"] = ["MAPPED — to exact new obligations"]
+        migration["new_proof_required"] = ["COMPOSITION_VERIFICATION"]
+    elif change_class == "INVALID":
+        migration["reusable_evidence"] = []
+        migration["new_proof_required"] = ["FULL_REASSESSMENT"]
+        migration["historical_qualification"] = "AUTHORITY_WITHDRAWN"
+
+    # Supersede the old revision
+    old_rev["lifecycle"] = "SUPERSEDED"
+    old_rev["effective_until"] = new_rev["effective_from"]
+    old_rev["events"].append({
+        "from": "ACTIVE",
+        "to": "SUPERSEDED",
+        "reason": f"Superseded by {new_rev_id} ({change_class})",
+        "timestamp": recorded_at,
+    })
+
+    save_registry(reg)
+    log_event({
+        "event_type": "PROOF_OBLIGATION_SUPERSEDED",
+        "obligation_id": obligation_id,
+        "previous_revision": old_rev_id,
+        "new_revision": new_rev_id,
+        "change_class": change_class,
+        "migration_assessment": migration,
+        "timestamp": recorded_at,
+    })
+
+    print(f"\n{obligation_id}: {old_rev_id} → {new_rev_id} ({change_class})")
+    print(f"  {CHANGE_CLASSES[change_class]}")
+    print(f"  Historical {old_rev_id} qualification: {migration['historical_qualification']}")
+    print(f"  Reusable: {migration['reusable_evidence']}")
+    print(f"  New proof required: {migration['new_proof_required']}")
+    return new_rev, migration
+
+
+def obligation_status(obligation_id):
+    """Show full revision history and current state."""
+    reg = load_registry()
+    ob = reg["obligations"].get(obligation_id)
+    if not ob:
+        print(f"Obligation {obligation_id} not found.")
+        return
+    print(f"\nObligation {obligation_id} (current: {ob['current_revision']})")
+    for rev_id, rev in sorted(ob["revisions"].items()):
+        print(f"  {rev_id}: {rev['lifecycle']}")
+        print(f"    {rev['requirement_text'][:80]}...")
+        print(f"    Effective: {rev['effective_from'][:10]} → {rev['effective_until'][:10] if rev['effective_until'] else 'present'}")
+        print(f"    Recorded: {rev['recorded_at'][:19]}")
+        if rev["supersedes"]:
+            print(f"    Supersedes: {rev['supersedes']}")
+
+
 def main():
     parser = argparse.ArgumentParser(description="Claim-level support-set evaluator")
     sub = parser.add_subparsers(dest="cmd", required=True)
@@ -955,6 +1171,34 @@ def main():
     au = sub.add_parser("audit", help="Full composite qualification audit")
     au.add_argument("--claim", required=True)
 
+    ro = sub.add_parser("register-obligation", help="Register proof obligation")
+    ro.add_argument("--id", required=True)
+    ro.add_argument("--text", required=True)
+    ro.add_argument("--scope", default="")
+    ro.add_argument("--predicate", default="")
+    ro.add_argument("--standard", default="")
+    ro.add_argument("--assumptions", default="")
+
+    to = sub.add_parser("transition-obligation", help="Lifecycle transition")
+    to.add_argument("--id", required=True)
+    to.add_argument("--revision", required=True)
+    to.add_argument("--state", required=True,
+                    choices=["PROPOSED", "ACTIVE", "DEPRECATED", "SUPERSEDED", "RETIRED", "WITHDRAWN"])
+    to.add_argument("--reason", default="")
+
+    vo = sub.add_parser("revise-obligation", help="Create new immutable revision")
+    vo.add_argument("--id", required=True)
+    vo.add_argument("--text", required=True)
+    vo.add_argument("--change-class", required=True,
+                    choices=["EDITORIAL", "STRENGTHENED", "WEAKENED", "INTERFACE_CHANGED",
+                             "INTERFACE_RENAMED", "ENV_CHANGED", "SPLIT", "MERGED",
+                             "REMOVED", "INVALID"])
+    vo.add_argument("--scope", default="")
+    vo.add_argument("--effective-from", default=None)
+
+    so = sub.add_parser("obligation-status", help="Show obligation history")
+    so.add_argument("--id", required=True)
+
     args = parser.parse_args()
     if args.cmd == "register-claim":
         register_claim(args.id, args.description, args.scope)
@@ -993,6 +1237,16 @@ def main():
         assess_environment_bridge(args.claim, args.source, args.target, differences)
     elif args.cmd == "audit":
         audit_composite(args.claim)
+    elif args.cmd == "register-obligation":
+        register_obligation(args.id, args.text, args.scope, args.predicate,
+                            args.standard, args.assumptions)
+    elif args.cmd == "transition-obligation":
+        transition_obligation(args.id, args.revision, args.state, args.reason)
+    elif args.cmd == "revise-obligation":
+        revise_obligation(args.id, args.text, args.change_class, args.scope,
+                          effective_from=args.effective_from)
+    elif args.cmd == "obligation-status":
+        obligation_status(args.id)
 
 
 if __name__ == "__main__":
