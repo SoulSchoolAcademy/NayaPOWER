@@ -1,13 +1,13 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-10-09",
-  "receipt_basis_commit": "527ebcfbc04896c3a6beee127757785597e0713a",
-  "inventory_file_count": 1211,
+  "generated_at": "2026-10-10",
+  "receipt_basis_commit": "0bbc1feea2316390b6c546fd63d419e32eac9a6e",
+  "inventory_file_count": 1214,
   "domain_counts": {
     "00-ACTIVATION": 3,
     "00-ARCHITECTURE": 5,
     "00-SPEC": 15,
-    "01-GOVERNANCE": 28,
+    "01-GOVERNANCE": 31,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
@@ -219,6 +219,21 @@
       "path": "BRAIN/01-GOVERNANCE/0006-naya-calculator-v1.machine.json",
       "blob_sha": "6e62c7ad6be9e8632fc4ee41f7c8d1f9b59e3f7f",
       "size": 5880
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0007-LAW-OF-ONE-V1.ai.md",
+      "blob_sha": "7d0efaf7e3e79cbaeb38469d8882f2152830134c",
+      "size": 3385
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0007-LAW-OF-ONE-V1.human.md",
+      "blob_sha": "7188b5a90066f9e80be6b56193808720438353f5",
+      "size": 2145
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0007-law-of-one-v1.machine.json",
+      "blob_sha": "a0b338815cda6131441e09c9aa01f81aef0a7700",
+      "size": 2007
     },
     {
       "path": "BRAIN/01-GOVERNANCE/0013-PARALLEL-EXECUTION-V1.ai.md",
