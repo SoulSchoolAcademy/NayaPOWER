@@ -7,7 +7,7 @@ receipt yet. The name says what is actually proven.
 """
 
 import copy
-from tests.verify_nine_node_behavioral_acceptance import ORDER, verify_receipt
+from verify_nine_node_behavioral_acceptance import ORDER, verify_receipt
 
 def valid_receipt():
     return {
