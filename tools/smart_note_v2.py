@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import argparse, contextlib, hashlib, json, math, os, re, tempfile
+import argparse, contextlib, hashlib, json, os, re, tempfile
 try:
     import fcntl
 except ImportError:  # Windows: lock with msvcrt so concurrent writers still serialize.
@@ -643,119 +643,34 @@ def _nutshell_text(projection_path):
     m = re.search(r"##(?:\s+[^\n]*)?IN A NUTSHELL\n\n(.+?)(?:\n\n##|$)", note, re.S | re.I)
     return m.group(1).strip() if m else ""
 
-# Retrieval field weights (retrieval 10/10 track, 2026-10-06): a query term in
-# the title is stronger relevance evidence than in keywords. Weights were
-# chosen so the #1630 boundary tests still hold: relevance dominates,
-# authority breaks ties, zero-relevance never wins. Kept byte-identical by
-# the 2026-10-10 relevance repair — only the term weighting changed.
-RETRIEVAL_FIELD_WEIGHTS = (("title", 3.0), ("nutshell", 2.0),
-                           ("keywords", 1.5), ("taxonomy", 1.0))
-# Pivoted length-normalization strength (2026-10-10). Measured defect: on the
-# independent 43-case held-out diagnostic, wrong-note winners had 3x longer
-# nutshells (median 166 vs 53 words) than the expected notes — long documents
-# accumulated bag-of-words matches by sheer word count. Pivot 0.25 corrects
-# the measured skew without over-penalizing; chosen against the independent
-# diagnostic, not tuned per case.
-RETRIEVAL_LENGTH_NORM_PIVOT = 0.25
-# Relevance floor (2026-10-10, negative-control arm of the #2058 board
-# handoff). A winner below this score is not relevance evidence — the
-# selector refuses with NO_RELEVANT_INTELLIGENCE instead of returning the
-# least-bad match. Calibrated on the live registry against the independent
-# 43-case diagnostic + drill bank: weakest true positive 46.87, drill hits
-# 83-137, out-of-scope noise <= 19.69. The floor sits between noise and the
-# weakest verified positive. Doctrine: a wrong confident answer is
-# misdirection; a refusal is visible uncertainty. This is a relevance floor,
-# not authority promotion — ranking is untouched, only the refusal boundary.
-RETRIEVAL_RELEVANCE_FLOOR = 40.0
-
-
-def _is_privacy_probe(query):
-    """True when the query tries to enumerate/extract private intelligence.
-
-    The retrieval interface has no caller-authentication concept (unlike
-    render(), which gates PRIVATE projections on an authenticated private
-    surface) — so a query shaped as an extraction probe is refused outright
-    instead of being answered with the top-scoring private note's nutshell.
-    Narrow by construction: the probe must target the intelligence store
-    ("private" + store words + enumeration verbs, or dump/export of notes).
-    Ordinary domain scenarios — including ones whose TOPIC is a privacy
-    leak ("a valid-looking action leaks private user details ... what does
-    this reveal?") — do not enumerate the store and pass through. Verified
-    by running the full 43-case battery through this gate with zero fires.
-    """
-    q = query.lower()
-    store_words = ("note", "notes", "intelligence", "smart note")
-    targets_store = any(w in q for w in store_words)
-    enumerate_verbs = ("list", "show me", "dump", "export", "reveal all",
-                       "enumerate", "all notes", "every note")
-    if "private" in q and targets_store and any(v in q for v in enumerate_verbs):
-        return True
-    if ("dump" in q or "export" in q) and targets_store:
-        return True
-    return False
-
-def _retrieval_idf(field_word_sets):
-    """Inverse-document-frequency weights over the active retrieval corpus.
-
-    idf(w) = log(1 + N/df(w)). The +1 inside the log floors the weight at
-    log(2) so a term present in every note still scores > 0 — "any overlap
-    counts" is preserved for the #1630 boundary tests (equal-relevance
-    ladders must still tie and fall through to truth-state rank).
-    """
-    n = len(field_word_sets)
-    df = {}
-    for fields in field_word_sets:
-        for w in set().union(*fields.values()):
-            df[w] = df.get(w, 0) + 1
-    return {w: math.log(1.0 + n / max(1, c)) for w, c in df.items()}
-
-def _ranked_candidates(query):
-    """Score every active registry entry for query; returns the ranked list of
-    (score, truth-state rank, entry) sorted descending. This is the testable
-    seam: negative controls and the relevance floor assert on this list, not
-    on retrieve()'s refusal behavior."""
+def retrieve(query):
     registry = load_json(REGISTRY)
     q_raw = re.findall(r"[a-z0-9]+", query.lower())
     q = set(_stem(w) for w in q_raw)
     q_phrase = " ".join(q_raw)
     ranked = []
     inactive = {"SUPERSEDED", "ARCHIVED", "REVOKED"}
-    # First pass: per-entry field word sets (one projection read per entry,
-    # same I/O as before) plus corpus document frequencies for IDF.
-    scored_entries = []
+    # Field weights (retrieval 10/10 track, 2026-10-06): a query term in the
+    # title is stronger relevance evidence than in keywords. Weights were
+    # chosen so the #1630 boundary tests still hold: relevance dominates,
+    # authority breaks ties, zero-relevance never wins.
     for e in registry.get("entries", []):
         if str(e.get("lifecycle_state", "ACTIVE")).upper() in inactive:
             continue
         title = e.get("title", "")
         nutshell = _nutshell_text(e.get("projection_path", ""))
-        fields = {
-            "title": _field_words(title),
-            "nutshell": _field_words(nutshell),
-            "keywords": _field_words(" ".join(e.get("keywords", []))),
-            "taxonomy": _field_words(" ".join([e.get("category", ""), e.get("topic", ""), e.get("subtopic", "")])),
-        }
-        scored_entries.append((e, title, nutshell, fields))
-    idf = _retrieval_idf([fields for _, _, _, fields in scored_entries])
-    avg_len = (sum(sum(len(w) for w in fields.values())
-                   for _, _, _, fields in scored_entries)
-               / max(1, len(scored_entries)))
-    # Second pass: IDF-weighted field matches with pivoted length
-    # normalization. Lesson-content matching (retrieval track, 2026-10-06):
-    # capture stamps every note with the same generic keywords, so the
-    # metadata haystack cannot distinguish lessons. Content-word queries
-    # ("declaring intent before acting") retrieved wrong notes. Include each
-    # note's own distilled lesson (NUTSHELL) in the haystack. IDF (2026-10-10)
-    # discounts ubiquitous terms (filename fragments like "ib"/"smart"/"note",
-    # generic taxonomy) so distinctive terms dominate; length normalization
-    # stops long notes winning by word count alone.
-    for e, title, nutshell, fields in scored_entries:
+        keywords = " ".join(e.get("keywords", []))
+        taxonomy = " ".join([e.get("category", ""), e.get("topic", ""), e.get("subtopic", "")])
+        # Lesson-content matching (retrieval track, 2026-10-06): capture stamps
+        # every note with the same generic keywords, so the metadata haystack
+        # cannot distinguish lessons. Content-word queries ("declaring intent
+        # before acting") retrieved wrong notes. Include each note's own
+        # distilled lesson (NUTSHELL) in the haystack.
         score = 0.0
-        for fname, fweight in RETRIEVAL_FIELD_WEIGHTS:
-            for w in q & fields[fname]:
-                score += fweight * idf[w]
-        doc_len = sum(len(w) for w in fields.values())
-        if avg_len > 0:
-            score /= 1.0 + RETRIEVAL_LENGTH_NORM_PIVOT * (doc_len / avg_len - 1.0)
+        score += len(q & _field_words(title)) * 3.0
+        score += len(q & _field_words(nutshell)) * 2.0
+        score += len(q & _field_words(keywords)) * 1.5
+        score += len(q & _field_words(taxonomy)) * 1.0
         # Phrase bonus: the query as an exact phrase in title or lesson
         # content is strong relevance signal (not just scattered words).
         if q_phrase and (q_phrase in title.lower() or q_phrase in nutshell.lower()):
@@ -775,20 +690,7 @@ def _ranked_candidates(query):
         # gap at these score magnitudes (1-3) is signal, not noise.
         ranked.append((score, rank, e))
     ranked.sort(key=lambda z: (z[0], z[1], z[2].get("captured_at","")), reverse=True)
-    return ranked
-
-
-def retrieve(query):
-    # Privacy refusal: an extraction probe is refused AS a probe, before
-    # scoring — even a high-scoring match must not be disclosed this way.
-    if _is_privacy_probe(query):
-        raise SystemExit("PRIVATE_INTELLIGENCE_NOT_DISCLOSED")
-    ranked = _ranked_candidates(query)
     if not ranked:
-        raise SystemExit("NO_RELEVANT_INTELLIGENCE")
-    if ranked[0][0] < RETRIEVAL_RELEVANCE_FLOOR:
-        # Negative control: the best candidate is not relevant enough to
-        # present as an answer. Refuse rather than misdirect.
         raise SystemExit("NO_RELEVANT_INTELLIGENCE")
     e = ranked[0][2]
     note = (ROOT / e["projection_path"]).read_text(encoding="utf-8")

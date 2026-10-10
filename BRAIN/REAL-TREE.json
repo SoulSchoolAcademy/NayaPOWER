@@ -1,13 +1,13 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-10",
-  "receipt_basis_commit": "2eacc1c3c01a61e1f78e5e1062562dd23f7cd78b",
-  "inventory_file_count": 1240,
+  "receipt_basis_commit": "0dbc6d6541ae9c1791f23052a4b13ab316c4535d",
+  "inventory_file_count": 1239,
   "domain_counts": {
     "00-ACTIVATION": 3,
     "00-ARCHITECTURE": 5,
     "00-SPEC": 15,
-    "01-GOVERNANCE": 54,
+    "01-GOVERNANCE": 53,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
@@ -242,18 +242,18 @@
     },
     {
       "path": "BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2.ai.md",
-      "blob_sha": "0f81fc721fc143928d94212124886c73906fe196",
-      "size": 14786
+      "blob_sha": "6dd76254fb224138bb006b639e23325799b21d1f",
+      "size": 14729
     },
     {
       "path": "BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2.human.md",
-      "blob_sha": "fbe045ba392e5e3af32821f151acd2c4e6868f21",
-      "size": 9007
+      "blob_sha": "c70fc5b7ebf3e2b2cfd82010bf864a82fd176f4c",
+      "size": 9018
     },
     {
       "path": "BRAIN/01-GOVERNANCE/0008-operating-code-v2.machine.json",
-      "blob_sha": "1088c9ae24a78d137cc1158300cda7ef0271ef86",
-      "size": 5146
+      "blob_sha": "210984d7d333d105d9d9532a8b79af6e932d4dae",
+      "size": 5087
     },
     {
       "path": "BRAIN/01-GOVERNANCE/0013-PARALLEL-EXECUTION-V1.ai.md",
@@ -371,24 +371,19 @@
       "size": 2633
     },
     {
-      "path": "BRAIN/01-GOVERNANCE/GATE-CONSOLE.md",
-      "blob_sha": "d7810ee7ef34047865a25e378555b57a92e44a28",
-      "size": 10085
-    },
-    {
       "path": "BRAIN/01-GOVERNANCE/LEARNING-INTERNALIZATION-AUTOMATIC-BEHAVIOR-V1.md",
       "blob_sha": "c58ef4864a38dd1eaaf820886a7c7a22aa593240",
       "size": 10500
     },
     {
       "path": "BRAIN/01-GOVERNANCE/OPERATING-LAW.json",
-      "blob_sha": "2a12fe6ff2680fd424e66aefa206e1ad29144e4a",
-      "size": 32329
+      "blob_sha": "eb1a6d85021251ee091e7759090a1ea0db2489e6",
+      "size": 28653
     },
     {
       "path": "BRAIN/01-GOVERNANCE/OPERATING-LAW.md",
-      "blob_sha": "f738cd89a9775f6c987c43f03bb2a9e2fe4265f7",
-      "size": 32785
+      "blob_sha": "17575d56498a793aba19eff9267538c30c183cb4",
+      "size": 29862
     },
     {
       "path": "BRAIN/01-GOVERNANCE/README.md",

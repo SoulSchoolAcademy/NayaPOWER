@@ -1,8 +1,8 @@
 {
   "id": "OPERATING-CODE-V2",
   "version": "2.0.0",
-  "status": "RATIFIED",
-  "ratified": true,
+  "status": "DRAFT",
+  "ratified": false,
   "supersedes": "0000-OPERATING-CODE-V1.md",
   "supreme_law": "0007-LAW-OF-ONE-V1",
   "compiled": "2026-10-10",
@@ -189,7 +189,5 @@
       ]
     }
   },
-  "amendment_path": "through_shawn_only",
-  "ratified_by": "Shawn",
-  "ratified_at": "2026-10-10"
+  "amendment_path": "through_shawn_only"
 }

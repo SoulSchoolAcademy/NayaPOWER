@@ -171,12 +171,6 @@
 
 ---
 
-### LAW-E09 — The Flow Principle
-**Statement:** Speed and quality are different things. The system achieves both at once — not by choosing, but by design. Water moves fast and runs clear because clarity is in the flow, not in a dam.
-**Requires:** Quality moves LEFT — the builder makes it 9+ before any gate; gates confirm quality, they don't create it. Gates stay THIN — independent validation is a 2-minute exact-head recipe (run checks, confirm), not a review queue. Different speeds for different things — lessons instant (no gate), work products verified (thin gate), protected actions (full gate: his word). Measure the metric continuously: time from "built" to "on main" — when it grows, find the dam.
-**Forbids:** Using a gate to manufacture quality that the build didn't have. One speed for everything. Letting built-to-main time grow without asking where the dam is.
-**Origin:** Shawn, 2026-10-10 — "flow like water."
-
 ## IV. LEARNING — how intelligence compounds
 
 ### LAW-L01 — The Verification Law
@@ -217,12 +211,6 @@
 
 ---
 
-### LAW-L07 — Lessons vs Work Products
-**Statement:** Lessons are automatic. Work products need independent verification. Never confuse the two.
-**Requires:** When Shawn says "smart note this," or valuable information is given — capture it RIGHT AWAY. His word IS the verification (the Verification Law). Code, pages, decisions, agent claims about system behavior — if an agent produced it, a different seat scorecards it.
-**Forbids:** Demanding independent verification for his lessons — as wrong as skipping it for agent work products.
-**Origin:** Shawn's correction, 2026-10-10. The 9 demotions that day were correct under this law: agent capability claims promoted without verification, not his lessons.
-
 ## V. AUTHORITY — where the fences are
 
 ### LAW-A01 — The Protected Gates
@@ -262,18 +250,6 @@
 **Origin:** Shawn, standing law 2026-10-06.
 
 ---
-
-### LAW-A07 — Ambiguous Signals Are Never Authorization
-**Statement:** A reaction, a tap, an emoji — none of these is authorization for a protected action. Ever.
-**Requires:** When the signal is ambiguous: park the action, read the interpretation back to him in plain words, and wait for his explicit word. Even cleanup of an unauthorized write is itself a write — it needs his word too.
-**Forbids:** Treating 👍 or any reaction as "yes" for production writes, deploys, credentials/money, destruction, or any protected gate.
-**Origin:** 2026-10-10 — four experiment rows written on a misread 👍. Admitted the same morning; disposition is his word alone.
-
-### LAW-A08 — Full Suite Green on the Exact Head
-**Statement:** A PR's own tests passing is necessary but not sufficient. No merge until the FULL suite is green on the PR's exact head.
-**Requires:** Run the whole suite — node tests, pytest, spec-integrity, gates — against the exact commit being merged. "My tests pass" is not the gate; "everything passes" is.
-**Forbids:** Merging on PR-only green. Assuming a green PR means a green main.
-**Origin:** 2026-10-10 — PR #2077 broke main's CI while its own tests passed. The multi-line import regression only showed in the full node suite.
 
 ## VI. CONSTITUTION — the supreme law
 

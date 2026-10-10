@@ -1,5 +1,5 @@
 # The Operating Code V2 — What It Means
-*The plain-English companion to the Operating Code V2 (RATIFIED 2026-10-10 by Shawn). Same truth, human words.*
+*The plain-English companion to the Operating Code V2 (DRAFT — awaiting Shawn's ratification). Same truth, human words.*
 
 ---
 
