@@ -293,3 +293,172 @@ def test_chain_is_deterministic_and_pure():
     c1 = three_receipt_chain()
     c2 = three_receipt_chain()
     assert c1 == c2
+
+
+# ---- deploy assembly (the runtime wiring seam) ------------------------------
+
+import subprocess
+import sys
+from pathlib import Path
+
+from tools.production_proof_chain import DEPLOY_CHAIN_ROLES, assemble_deploy_chain
+
+
+def promotion_receipt():
+    return {
+        "schema": "NAYAPOWER_PRODUCTION_PROMOTION_RECEIPT_V1",
+        "status": "PROMOTED_AND_PROVEN",
+        "source_sha": SHA,
+        "production_branch": "production",
+    }
+
+
+def test_deploy_chain_roles_are_canonically_ordered():
+    roles = list(DEPLOY_CHAIN_ROLES)
+    assert roles == [
+        "promotion_denial",
+        "promotion_receipt",
+        "failure_receipt",
+        "parity_verdict",
+    ], "order is part of the proof; denial first, decision next, parity last"
+
+
+def test_assemble_deploy_chain_orders_roles_and_verifies_intact():
+    chain = assemble_deploy_chain(
+        {
+            "parity_verdict": parity_verdict(),
+            "promotion_receipt": promotion_receipt(),
+            "promotion_denial": denial_receipt(),
+            "failure_receipt": None,
+        },
+        authorized_source_sha=SHA,
+        chained_by="test",
+        chain_purpose="deploy bundle",
+    )
+    assert [r["role"] for r in chain["roles_chained"]] == [
+        "promotion_denial",
+        "promotion_receipt",
+        "parity_verdict",
+    ]
+    assert chain["roles_skipped"] == [
+        {"role": "failure_receipt", "reason": "RECEIPT_ABSENT"}
+    ]
+    assert chain["role_conflicts"] == []
+    verdict = verify_chain(chain)
+    assert verdict["overall"] == "INTACT"
+    assert verdict["integrity_intact"] is True
+
+
+def test_assemble_deploy_chain_success_failure_conflict_is_flagged_not_hidden():
+    chain = assemble_deploy_chain(
+        {
+            "promotion_receipt": promotion_receipt(),
+            "failure_receipt": failure_receipt(),
+            "parity_verdict": parity_verdict(),
+        }
+    )
+    assert chain["role_conflicts"] == ["BOTH_SUCCESS_AND_FAILURE_RECEIPTS_PRESENT"]
+    # The chain stays integrity-honest about the bundle it was given.
+    verdict = verify_chain(chain)
+    assert verdict["overall"] == "INTACT"
+    assert verdict["integrity_intact"] is True
+
+
+def test_assemble_deploy_chain_never_raises_on_garbage():
+    for bad in (None, 42, "receipts", ["not", "a", "mapping"]):
+        chain = assemble_deploy_chain(bad)
+        assert chain["schema"] == CHAIN_SCHEMA
+        assert chain["roles_chained"] == []
+        assert len(chain["roles_skipped"]) == len(DEPLOY_CHAIN_ROLES)
+    chain = assemble_deploy_chain(
+        {
+            "promotion_receipt": "not a mapping",
+            "failure_receipt": {"no": "schema key"},
+            "parity_verdict": {"schema": "NAYAPOWER_SOMETHING_UNRECOGNIZED_V9"},
+            "promotion_denial": None,
+        }
+    )
+    reasons = {r["role"]: r["reason"] for r in chain["roles_skipped"]}
+    assert reasons["promotion_receipt"] == "RECEIPT_NOT_A_MAPPING"
+    assert reasons["failure_receipt"] == "SCHEMA_ABSENT"
+    assert reasons["parity_verdict"].startswith("UNKNOWN_SCHEMA_")
+    assert reasons["promotion_denial"] == "RECEIPT_ABSENT"
+    assert chain["roles_chained"] == []
+
+
+PROOF_CHAIN_SCRIPT = Path(__file__).resolve().parents[1] / "tools" / "production_proof_chain.py"
+
+
+def _write_chain_file(tmp_path, chain):
+    path = tmp_path / "chain.json"
+    path.write_text(json.dumps(chain), encoding="utf-8")
+    return path
+
+
+def test_cli_verify_exit_zero_on_intact_chain(tmp_path):
+    chain = assemble_deploy_chain(
+        {"failure_receipt": failure_receipt(), "parity_verdict": parity_verdict()},
+        authorized_source_sha=SHA,
+    )
+    path = _write_chain_file(tmp_path, chain)
+    proc = subprocess.run(
+        [sys.executable, str(PROOF_CHAIN_SCRIPT), "--verify", str(path)],
+        capture_output=True,
+        text=True,
+    )
+    assert proc.returncode == 0, proc.stderr
+    assert "overall: INTACT" in proc.stdout
+
+
+def test_cli_verify_exit_one_on_tampered_chain(tmp_path):
+    chain = assemble_deploy_chain(
+        {"failure_receipt": failure_receipt(), "parity_verdict": parity_verdict()},
+        authorized_source_sha=SHA,
+    )
+    tampered = copy.deepcopy(chain)
+    tampered["links"][0]["receipt"]["status"] = "TAMPERED_BY_TEST"
+    path = _write_chain_file(tmp_path, tampered)
+    proc = subprocess.run(
+        [sys.executable, str(PROOF_CHAIN_SCRIPT), "--verify", str(path)],
+        capture_output=True,
+        text=True,
+    )
+    assert proc.returncode == 1, proc.stderr
+    assert "overall: BROKEN" in proc.stdout
+    assert "TAMPERED" in proc.stdout
+
+
+def test_cli_verify_exit_two_on_unreadable_or_unknown(tmp_path):
+    missing = tmp_path / "does-not-exist.json"
+    proc = subprocess.run(
+        [sys.executable, str(PROOF_CHAIN_SCRIPT), "--verify", str(missing)],
+        capture_output=True,
+        text=True,
+    )
+    assert proc.returncode == 2
+    garbage = tmp_path / "garbage.json"
+    garbage.write_text('{"schema": "NOT_A_CHAIN"}', encoding="utf-8")
+    proc = subprocess.run(
+        [sys.executable, str(PROOF_CHAIN_SCRIPT), "--verify", str(garbage)],
+        capture_output=True,
+        text=True,
+    )
+    assert proc.returncode == 2
+    assert "overall: UNKNOWN" in proc.stdout
+
+
+def test_cli_summarize_restates_claims(tmp_path):
+    chain = assemble_deploy_chain(
+        {"failure_receipt": failure_receipt(), "parity_verdict": parity_verdict()},
+        authorized_source_sha=SHA,
+    )
+    path = _write_chain_file(tmp_path, chain)
+    proc = subprocess.run(
+        [sys.executable, str(PROOF_CHAIN_SCRIPT), "--summarize", str(path)],
+        capture_output=True,
+        text=True,
+    )
+    assert proc.returncode == 0, proc.stderr
+    summary = json.loads(proc.stdout)
+    assert summary["chain_id"] == chain["chain_id"]
+    assert "NAYAPOWER_PRODUCTION_PROMOTION_FAILURE_RECEIPT_V1" in summary["schemas"]

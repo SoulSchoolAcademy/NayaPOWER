@@ -930,6 +930,62 @@ jobs:
           PY
           cat production-parity-verdict.json 2>/dev/null || echo "parity verdict not emitted"
 
+      - name: Assemble runtime proof chain (signal-only)
+        # The proof-chain machinery (tools/production_proof_chain.py) was
+        # built and live-exercised, but no workflow ever assembled a chain:
+        # receipts were uploaded individually with nothing binding them into
+        # an ordered, tamper-evident bundle. This step closes that hole. It
+        # collects every chainable receipt the run produced in canonical
+        # order (denial -> promotion receipt (success or failure) -> parity
+        # verdict), hash-links them into a NAYAPOWER_PRODUCTION_PROOF_CHAIN_V1
+        # bundle, self-verifies the bundle, and writes both artifacts for
+        # upload. Signal-only: certifies nothing about promotion and never
+        # fails the build; a BROKEN self-verification is printed loudly so
+        # the run log names it. A verifier can re-check any uploaded bundle
+        # with: python tools/production_proof_chain.py --verify
+        # production-proof-chain.json
+        if: always()
+        shell: bash
+        run: |
+          set -uo pipefail
+          python3 - <<'PY' || true
+          import json, os
+          from tools.production_proof_chain import assemble_deploy_chain, verify_chain
+
+          def load(name):
+              try:
+                  with open(name, encoding="utf-8") as f:
+                      return json.load(f)
+              except (OSError, ValueError):
+                  return None
+
+          chain = assemble_deploy_chain(
+              {
+                  "promotion_denial": load("production-promotion-denial.json"),
+                  "promotion_receipt": load("production-promotion-receipt.json"),
+                  "failure_receipt": load("production-promotion-failure-receipt.json"),
+                  "parity_verdict": load("production-parity-verdict.json"),
+              },
+              authorized_source_sha=os.environ.get("AUTHORIZED_SOURCE_SHA") or os.environ.get("GITHUB_SHA"),
+              chained_by=os.environ.get("GITHUB_ACTOR"),
+              chain_purpose="governed-supabase-production-deploy runtime proof bundle",
+          )
+          verification = verify_chain(chain)
+          json.dump(chain, open("production-proof-chain.json", "w"), indent=2)
+          json.dump(verification, open("production-proof-chain-verification.json", "w"), indent=2)
+          print("CHAIN_ID:", chain["chain_id"], "LINKS:", chain["link_count"],
+                "ROLES:", [r["role"] for r in chain["roles_chained"]])
+          print("SELF-VERIFICATION:", verification["overall"],
+                "INTEGRITY_INTACT:", verification["integrity_intact"])
+          if chain.get("roles_skipped"):
+              print("SKIPPED_ROLES:", [(r["role"], r["reason"]) for r in chain["roles_skipped"]])
+          if chain.get("role_conflicts"):
+              print("ROLE_CONFLICTS:", chain["role_conflicts"])
+          for link in verification["links"]:
+              print("  link", link["seq"], link["schema"], "->", link["verdict"], "-", link["detail"])
+          PY
+          cat production-proof-chain-verification.json 2>/dev/null || echo "proof chain not assembled"
+
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -938,6 +994,8 @@ jobs:
             production-promotion-receipt.json
             production-promotion-failure-receipt.json
             production-parity-verdict.json
+            production-proof-chain.json
+            production-proof-chain-verification.json
             production-promotion-denial.json
             standing-authorization-verdict.json
             standing-ci-evidence.json

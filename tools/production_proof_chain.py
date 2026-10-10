@@ -384,3 +384,120 @@ def summarize_chain(chain: Any) -> dict:
         "authorized_source_sha": chain.get("authorized_source_sha"),
         "chain_purpose": chain.get("chain_purpose"),
     }
+
+
+# Canonical order for the deploy workflow's runtime proof bundle: upstream
+# gate evidence first, promotion decision (denial, success receipt, or
+# failure receipt), then the parity observation last. Only receipts that
+# carry a recognized schema are chained: the chain vouches for the bundle's
+# integrity, never for evidence it does not recognize. The workflow still
+# uploads every receipt individually; skipped roles are recorded, not
+# hidden.
+DEPLOY_CHAIN_ROLES = (
+    "promotion_denial",
+    "promotion_receipt",
+    "failure_receipt",
+    "parity_verdict",
+)
+
+
+def assemble_deploy_chain(
+    receipts_by_role: Any,
+    *,
+    authorized_source_sha: Any = None,
+    chained_by: Any = None,
+    chain_purpose: Any = None,
+) -> dict:
+    """Assemble the deploy run's receipts into an ordered proof chain.
+
+    `receipts_by_role` maps a DEPLOY_CHAIN_ROLES role to a receipt mapping
+    (or None when that file was not produced). Pure, never raises. The
+    returned chain carries `roles_chained` (role + schema per link),
+    `roles_skipped` (role + reason for every role not chained), and
+    `role_conflicts` (both success and failure receipts present would mean
+    the run emitted two promotion decisions; chaining them is still
+    integrity-honest, but the conflict is flagged loudly).
+    """
+    ordered: list[Any] = []
+    roles_chained: list[dict] = []
+    roles_skipped: list[dict] = []
+    role_conflicts: list[str] = []
+    items = receipts_by_role if isinstance(receipts_by_role, Mapping) else {}
+    for role in DEPLOY_CHAIN_ROLES:
+        receipt = items.get(role) if isinstance(items, Mapping) else None
+        if receipt is None:
+            roles_skipped.append({"role": role, "reason": "RECEIPT_ABSENT"})
+            continue
+        if not isinstance(receipt, Mapping):
+            roles_skipped.append({"role": role, "reason": "RECEIPT_NOT_A_MAPPING"})
+            continue
+        schema = receipt.get("schema")
+        if not isinstance(schema, str) or not schema:
+            roles_skipped.append({"role": role, "reason": "SCHEMA_ABSENT"})
+            continue
+        if schema not in KNOWN_RECEIPT_SCHEMAS:
+            roles_skipped.append({"role": role, "reason": f"UNKNOWN_SCHEMA_{schema}"})
+            continue
+        ordered.append(receipt)
+        roles_chained.append({"role": role, "schema": schema})
+    if (
+        isinstance(items, Mapping)
+        and items.get("promotion_receipt") is not None
+        and items.get("failure_receipt") is not None
+    ):
+        role_conflicts.append("BOTH_SUCCESS_AND_FAILURE_RECEIPTS_PRESENT")
+
+    chain = chain_receipts(
+        ordered,
+        authorized_source_sha=authorized_source_sha,
+        chained_by=chained_by,
+        chain_purpose=chain_purpose,
+    )
+    chain["roles_chained"] = roles_chained
+    chain["roles_skipped"] = roles_skipped
+    chain["role_conflicts"] = role_conflicts
+    return chain
+
+
+def _cli(argv: "list[str] | None" = None) -> int:
+    """Independent-verification entry point for another seat or human.
+
+    --verify FILE: verify a NAYAPOWER_PRODUCTION_PROOF_CHAIN_V1 bundle and
+    print per-link verdicts. Exit 0 = INTACT, 1 = BROKEN, 2 = UNKNOWN or
+    unreadable file.
+    --summarize FILE: print the chain's machine summary (its claims, not a
+    verification). Exit 0 on success, 2 on unreadable file.
+    """
+    import argparse
+    import sys
+
+    parser = argparse.ArgumentParser(
+        description="Verify or summarize a runtime production proof chain."
+    )
+    group = parser.add_mutually_exclusive_group(required=True)
+    group.add_argument("--verify", metavar="CHAIN_FILE", help="verify a proof chain file")
+    group.add_argument(
+        "--summarize", metavar="CHAIN_FILE", help="print a proof chain's machine summary"
+    )
+    args = parser.parse_args(argv)
+    path = args.verify or args.summarize
+    try:
+        with open(path, encoding="utf-8") as f:
+            chain = json.load(f)
+    except (OSError, ValueError) as exc:
+        print(f"cannot read chain file {path}: {exc}", file=sys.stderr)
+        return 2
+    if args.summarize:
+        print(json.dumps(summarize_chain(chain), indent=2))
+        return 0
+    verdict = verify_chain(chain)
+    print(f"chain_id: {verdict.get('chain_id')}")
+    print(f"overall: {verdict.get('overall')}  integrity_intact: {verdict.get('integrity_intact')}")
+    for link in verdict.get("links", []):
+        print(f"  link {link['seq']}: {link['schema']} -> {link['verdict']} ({link['detail']})")
+    overall = verdict.get("overall")
+    return 0 if overall == "INTACT" else (1 if overall == "BROKEN" else 2)
+
+
+if __name__ == "__main__":
+    raise SystemExit(_cli())
