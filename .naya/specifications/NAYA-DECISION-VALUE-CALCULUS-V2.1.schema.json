@@ -171,8 +171,25 @@
         "number",
         "null"
       ],
-      "minimum": -10,
-      "maximum": 10
+      "minimum": -9,
+      "maximum": 9,
+      "description": "Verified display value on the -9..+9 ladder. Reconciled 2026-10-11: canonical spec (NAYANODE/0025, section 4) defines D_verified = clamp(Normalize(dV_actual), -9, +9); prior +/-10 schema bound was a discrepancy. Raw delta remains preserved in delta_v_actual."
+    },
+    "value_interpretation": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "TRUE_ZERO",
+        "PRACTICALLY_NEUTRAL",
+        "UNKNOWN",
+        "UNMEASURED",
+        "DELAYED",
+        "INCONCLUSIVE",
+        null
+      ],
+      "description": "Zero Value Law (additive, 2026-10-11): orthogonal classification of what a zero/null value MEANS. TRUE_ZERO = exact zero established by adequate evidence for the defined calculation and scope. PRACTICALLY_NEUTRAL = measured effect within a justified tolerance epsilon with adequate observation coverage. UNKNOWN = outcome cannot currently be determined. UNMEASURED = required measurement not performed. DELAYED = consequences not yet observed; assessment provisional until window closes. INCONCLUSIVE = uncertainty interval permits positive, neutral, or negative effects. The last four are NEVER evidence of zero value."
     },
     "calibration_error": {
       "type": [
@@ -182,6 +199,75 @@
       "minimum": 0
     }
   },
+  "allOf": [
+    {
+      "description": "ZERO VALUE LAW 1: UNVERIFIED receipts must not carry a numeric verified ladder value. d_verified is a VERIFIED display value; without verification it must be null, never 0.",
+      "if": {
+        "properties": {
+          "verification": {
+            "const": "UNVERIFIED"
+          }
+        },
+        "required": [
+          "verification"
+        ]
+      },
+      "then": {
+        "properties": {
+          "d_verified": {
+            "type": "null"
+          }
+        }
+      }
+    },
+    {
+      "description": "ZERO VALUE LAW 2: null actual means no established result. A numeric d_verified with null delta_v_actual is a false zero and is invalid.",
+      "if": {
+        "properties": {
+          "delta_v_actual": {
+            "type": "null"
+          }
+        },
+        "required": [
+          "delta_v_actual"
+        ]
+      },
+      "then": {
+        "properties": {
+          "d_verified": {
+            "type": "null"
+          }
+        }
+      }
+    },
+    {
+      "description": "ZERO VALUE LAW 3: an open observation window means affected outcomes are provisional. A numeric d_verified while the window is OPEN contradicts provisionality.",
+      "if": {
+        "properties": {
+          "observation_window": {
+            "properties": {
+              "status": {
+                "const": "OPEN"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          }
+        },
+        "required": [
+          "observation_window"
+        ]
+      },
+      "then": {
+        "properties": {
+          "d_verified": {
+            "type": "null"
+          }
+        }
+      }
+    }
+  ],
   "$defs": {
     "evaluationRow": {
       "type": "object",

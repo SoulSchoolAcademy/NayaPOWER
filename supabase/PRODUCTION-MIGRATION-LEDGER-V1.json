@@ -1566,6 +1566,15 @@
       "statement_count": 3,
       "bytes": 1431,
       "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+    },
+    {
+      "version": "20261011030000",
+      "name": "zero_value_law_d_verified_nine",
+      "path": "supabase/migrations/20261011030000_zero_value_law_d_verified_nine.sql",
+      "sha256": "e949aa45fcf54e4a05cca5d8d778693de44b70af6f2a236fc5e30857caf00414",
+      "statement_count": 3,
+      "bytes": 4538,
+      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
     }
   ],
   "legacy_repository_snapshot_count": 95,

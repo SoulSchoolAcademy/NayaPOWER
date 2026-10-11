@@ -474,8 +474,9 @@ def test_unknown_hard_flags_yield_to_authority_routing(profile):
     assert "AUTHORITY_MISSING" in reasons
 
 
-@pytest.mark.parametrize("actual", [-10.0, 10.0])
+@pytest.mark.parametrize("actual", [-9.0, 9.0])
 def test_verified_receipt_preserves_full_signed_value_boundary(actual):
+    # Zero Value Law reconciliation (2026-10-11): canonical -9..+9 ladder.
     receipt = build_decision_receipt(
         decision_id="D-boundary",
         objective="preserve signed value",
