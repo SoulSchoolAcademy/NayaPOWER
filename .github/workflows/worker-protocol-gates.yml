@@ -30,6 +30,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # SHA evidence handles resolve via `git cat-file -e` in this
+          # checkout. The default depth-1 merge checkout cannot see the PR
+          # head/base SHAs (the merge commit's parents), false-redding the
+          # gate on valid handles (PR #2340, 2026-10-11). Full history,
+          # same as the sibling jobs below.
+          fetch-depth: 0
       - name: Validate PR receipt
         env:
           PR_BODY: ${{ github.event.pull_request.body }}
