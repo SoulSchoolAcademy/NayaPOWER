@@ -95,6 +95,36 @@ _TIME_RANK = {TIME_IMMEDIATE: 0, TIME_NEAR_TERM: 1, TIME_DELAYED: 2, TIME_UNKNOW
 _MEAS_RANK = {MEAS_MEASURED: 0, MEAS_ESTIMATED: 1, MEAS_UNMEASURABLE: 2, MEAS_UNKNOWN: 3}
 _DIST_RANK = {DIST_SINGLE: 0, DIST_SMALL_GROUP: 1, DIST_BROAD: 2, DIST_UNIVERSAL: 3, DIST_UNKNOWN: 4}
 
+_DIMENSION_RANKS = {
+    "severity": _SEVERITY_RANK,
+    "reversibility": _REV_RANK,
+    "timing": _TIME_RANK,
+    "measurability": _MEAS_RANK,
+    "distribution": _DIST_RANK,
+}
+DIMENSIONS = tuple(_DIMENSION_RANKS)
+
+
+def dimension_rank(dimension: str, value: str) -> int:
+    """Ordinal rank of a dimension value for worst-of / dominance comparisons.
+
+    Rank is NOT a score: it is never summed, averaged, or weighted. It exists
+    only so "no-worse on every axis" can be evaluated without arithmetic.
+    UNKNOWN ranks worst so uncertainty is surfaced, never hidden.
+    Raises KeyError on an unknown dimension, ValueError on a non-canonical
+    value — callers must use canonical ordinals, never free text.
+    """
+    try:
+        rank = _DIMENSION_RANKS[dimension]
+    except KeyError:
+        raise KeyError(f"unknown harm dimension: {dimension!r}") from None
+    try:
+        return rank[value]
+    except KeyError:
+        raise ValueError(
+            f"non-canonical {dimension} value: {value!r}"
+        ) from None
+
 
 # ---------------------------------------------------------------------------
 # GroupHarm — one affected group's five dimensions.
