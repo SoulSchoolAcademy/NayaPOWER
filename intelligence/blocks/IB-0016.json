@@ -1,6 +1,5 @@
 {
-  "id": "IB-0016",
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "title": "The Wisest Choice Law",
   "principle": "Always make the wisest choice: understand the goal, weigh the options, measure, decide by knowing — and act on what the protocol already grants.",
   "source": {
@@ -36,8 +35,32 @@
     "next_step": "Stays in briefing — judgment principle.",
     "enforced_by": null
   },
-  "supersedes": null,
-  "superseded_by": null,
   "created_at": "2026-10-11T20:30:00+00:00",
-  "updated_at": "2026-10-11T20:30:00+00:00"
+  "updated_at": "2026-10-11T20:30:00+00:00",
+  "intelligent_block_id": "IB-0016",
+  "supersedes_block_id": null,
+  "superseded_by_block_id": null,
+  "block_id": null,
+  "owner_id": "",
+  "owner_scope": "TEAM",
+  "block_type": "GOVERNED_INTELLIGENCE",
+  "source_event_ids": [],
+  "provenance": {
+    "authored_via": "intelligence/blocks file form",
+    "source_who": "Shawn",
+    "source_when": "2026-10-09",
+    "source_context": "His standing command: wish to be the wisest, not the smartest.",
+    "owner_assignment_pending": true,
+    "migration": "v1.0 -> v1.1 canonical contract (P0-A, 2026-10-11)",
+    "aliases": [
+      "IB-0016"
+    ]
+  },
+  "purpose": "Standing team law: The Wisest Choice Law",
+  "authority_implications": "",
+  "conflicts": [],
+  "understanding_state": "CANDIDATE",
+  "status": "DURABLE",
+  "version": 1,
+  "applicable_scope": ""
 }
