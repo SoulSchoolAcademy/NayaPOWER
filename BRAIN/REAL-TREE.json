@@ -1,13 +1,13 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-10-10",
-  "receipt_basis_commit": "930b971b5adf96d01f3019d3870ba94c7402f794",
-  "inventory_file_count": 1243,
+  "generated_at": "2026-10-11",
+  "receipt_basis_commit": "f2c614a5386b65c84156c707a93a775ec51b907a",
+  "inventory_file_count": 1245,
   "domain_counts": {
     "00-ACTIVATION": 3,
     "00-ARCHITECTURE": 5,
     "00-SPEC": 15,
-    "01-GOVERNANCE": 56,
+    "01-GOVERNANCE": 58,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
@@ -409,6 +409,16 @@
       "path": "BRAIN/01-GOVERNANCE/THE-TUNE-IN-TEMPLATE.md",
       "blob_sha": "e61b5c675a63106e378c9382c20acb34b1f49cab",
       "size": 4893
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/WIRE-RECEIPT-directive-register.md",
+      "blob_sha": "2a486b6428b5cc6298d61011cc0408d923e6bad8",
+      "size": 3888
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/directive-register.json",
+      "blob_sha": "44d6991e67ede31aa3c184c08b81497da2cc744f",
+      "size": 13876
     },
     {
       "path": "BRAIN/01-GOVERNANCE/elevation-grants/README.md",

@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
-**Generated:** 2026-10-10  
-**Receipt basis commit:** `930b971b5adf96d01f3019d3870ba94c7402f794`  
-**Inventory file count:** 1243  
+**Generated:** 2026-10-11  
+**Receipt basis commit:** `f2c614a5386b65c84156c707a93a775ec51b907a`  
+**Inventory file count:** 1245  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -11,7 +11,7 @@
 | Domain | Files |
 |---|---|
 | 00-SPEC | 15 |
-| 01-GOVERNANCE | 56 |
+| 01-GOVERNANCE | 58 |
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 25 |
@@ -114,6 +114,8 @@
 - `BRAIN/01-GOVERNANCE/TEAM-NAYA-OPERATING-PROTOCOL-V1.md` — `947a3a14a9bf` (14458 bytes)
 - `BRAIN/01-GOVERNANCE/THE-PROTOCOL.md` — `a16fd69d14da` (8059 bytes)
 - `BRAIN/01-GOVERNANCE/THE-TUNE-IN-TEMPLATE.md` — `e61b5c675a63` (4893 bytes)
+- `BRAIN/01-GOVERNANCE/WIRE-RECEIPT-directive-register.md` — `2a486b6428b5` (3888 bytes)
+- `BRAIN/01-GOVERNANCE/directive-register.json` — `44d6991e67ed` (13876 bytes)
 - `BRAIN/01-GOVERNANCE/elevation-grants/README.md` — `37afb12365a8` (1910 bytes)
 - `BRAIN/01-GOVERNANCE/naya-dream-v1.machine.json` — `c469937962eb` (22689 bytes)
 ### 02-ARCHITECTURE — Architecture
