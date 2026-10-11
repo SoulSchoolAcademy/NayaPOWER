@@ -200,6 +200,33 @@ def run_governance() -> dict:
     return evidence
 
 
+def check(record: dict) -> dict:
+    """Gate-pattern entry point: check(record) -> {"pass", "reasons", "details"}.
+
+    Required by the auto-brain boot-surface gate: every manifest-registered
+    check must expose this interface so the protocol machinery can invoke
+    it uniformly.
+    """
+    from tools.protocol.checks import result, fail
+    if not isinstance(record, dict):
+        return fail("record is not a JSON object — fail closed, never check an unnamed tree")
+    try:
+        evidence = run_governance()
+    except AssertionError as e:
+        return fail(f"decision principle governance violated: {e}", {"proofs": {}})
+    except Exception as e:  # noqa: BLE001 — fail closed on anything unexpected
+        return fail(f"governance check errored (fail-closed): {type(e).__name__}: {e}", {"proofs": {}})
+    proofs = evidence["proofs"]
+    total = (proofs["handbuilt_battery"]["scenarios"]
+             + proofs["randomized_seed_7"]["scenarios"]
+             + proofs["randomized_seed_20261011"]["scenarios"])
+    return result(True, [
+        f"decision principle governs the pipeline — {total} cross-implementation scenarios agree",
+        "live pipeline excludes prohibited before optimizing",
+        "verdict mapping correct and fail-closed",
+    ], {"proofs": proofs})
+
+
 def main(argv: list[str]) -> int:
     record: dict = {}
     args = list(argv)

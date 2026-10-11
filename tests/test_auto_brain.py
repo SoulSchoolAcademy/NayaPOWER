@@ -51,7 +51,7 @@ def test_check_passes_on_healthy_tree():
     """Full gate on the real checkout: PASS (proves green, not just red)."""
     result = auto_brain.check({"repo_root": str(ROOT)})
     assert result["pass"] is True, result["reasons"]
-    assert result["details"]["laws_total"] == 18
+    assert result["details"]["laws_total"] == 19
 
 
 def test_dead_check_binding_fails_naming_law_and_file(tmp_path, manifest):
