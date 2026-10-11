@@ -443,7 +443,10 @@ def build_decision_receipt(*, decision_id: str, objective: str, baseline_id: str
     if delta_v_actual is not None:
         actual = _finite(delta_v_actual, "delta_v_actual")
         error = abs(predicted - actual) if predicted is not None else None
-        d_verified = max(-10.0, min(10.0, actual))
+        # ZERO VALUE LAW reconciliation (2026-10-11): canonical spec defines
+        # D_verified = clamp(Normalize(dV_actual), -9, +9). Prior +/-10 bound
+        # was a discrepancy. Raw delta remains preserved in delta_v_actual.
+        d_verified = max(-9.0, min(9.0, actual))
     return {
         "receipt_type": "ALIGNMENT_DECISION",
         "schema_version": "2.1",
@@ -463,6 +466,116 @@ def build_decision_receipt(*, decision_id: str, objective: str, baseline_id: str
         "d_verified": d_verified,
         "calibration_error": error,
     }
+
+
+# ---------------------------------------------------------------------------
+# ZERO VALUE LAW (additive clarification to Smart Ledger V2.1, 2026-10-11)
+#
+# Naya must never confuse zero value with missing knowledge about value.
+# Null is not zero. A numeric d_verified of 0 asserts an ESTABLISHED result;
+# missing, unmeasured, delayed, or inconclusive outcomes must remain
+# explicitly distinguishable from zero.
+# ---------------------------------------------------------------------------
+
+#: The six mutually-exclusive value-interpretation states. The last four are
+#: never evidence of zero value and never automatically evidence of harm.
+VALUE_INTERPRETATIONS = (
+    "TRUE_ZERO",          # exact zero established by adequate evidence, defined scope
+    "PRACTICALLY_NEUTRAL",  # measured effect within justified tolerance epsilon
+    "UNKNOWN",            # outcome cannot currently be determined
+    "UNMEASURED",         # required measurement not performed
+    "DELAYED",            # consequences not yet observed; provisional until window closes
+    "INCONCLUSIVE",       # uncertainty permits positive, neutral, or negative effects
+)
+
+
+def validate_zero_value_law(receipt: Mapping) -> list:
+    """Enforce the Zero Value Law cross-field invariants on a decision receipt.
+
+    Returns a list of violation strings; empty means the receipt complies.
+    Rules:
+      ZVL-1: verification == UNVERIFIED  => d_verified must be null
+      ZVL-2: delta_v_actual is None      => d_verified must be null
+      ZVL-3: observation_window OPEN     => d_verified must be null (provisional)
+      ZVL-4: d_verified, when numeric, must lie within [-9, +9]
+      ZVL-5: value_interpretation, when present, must be one of the six states
+    """
+    violations = []
+    verification = receipt.get("verification")
+    actual = receipt.get("delta_v_actual")
+    d_verified = receipt.get("d_verified")
+    window = receipt.get("observation_window") or {}
+    interp = receipt.get("value_interpretation")
+
+    if verification == "UNVERIFIED" and d_verified is not None:
+        violations.append(
+            "ZVL-1: UNVERIFIED receipt must not carry a numeric d_verified "
+            f"(got {d_verified!r}); unverified value is not zero value."
+        )
+    if actual is None and d_verified is not None:
+        violations.append(
+            "ZVL-2: null delta_v_actual with numeric d_verified "
+            f"({d_verified!r}) is a false zero; d_verified must be null."
+        )
+    if window.get("status") == "OPEN" and d_verified is not None:
+        violations.append(
+            "ZVL-3: OPEN observation window means outcomes are provisional; "
+            f"d_verified must be null (got {d_verified!r})."
+        )
+    if d_verified is not None:
+        if not isinstance(d_verified, (int, float)) or isinstance(d_verified, bool):
+            violations.append(
+                f"ZVL-4: d_verified must be a number or null (got {d_verified!r})."
+            )
+        elif not (-9.0 <= d_verified <= 9.0):
+            violations.append(
+                f"ZVL-4: d_verified {d_verified!r} outside the canonical "
+                "-9..+9 display ladder."
+            )
+    if interp is not None and interp not in VALUE_INTERPRETATIONS:
+        violations.append(
+            f"ZVL-5: value_interpretation {interp!r} is not one of the six "
+            f"Zero Value Law states: {list(VALUE_INTERPRETATIONS)}."
+        )
+    return violations
+
+
+def classify_value_interpretation(*, delta_v_actual=None, interval=None,
+                                  tolerance=None, window_open=False,
+                                  measured=False, deterministic=False):
+    """Classify a value outcome into one of the six Zero Value Law states.
+
+    Args:
+        delta_v_actual: the established actual delta, or None if not established.
+        interval: optional (low, high) uncertainty interval for the estimate.
+        tolerance: the justified practical tolerance epsilon for neutrality.
+        window_open: True if the observation window is still open (delayed).
+        measured: True if an adequate measurement was performed.
+        deterministic: True if the zero comes from an exact deterministic count.
+
+    Returns one of the six VALUE_INTERPRETATIONS strings.
+    """
+    if window_open:
+        return "DELAYED"
+    if not measured:
+        return "UNMEASURED"
+    if delta_v_actual is None and interval is None:
+        return "UNKNOWN"
+    if interval is not None:
+        low, high = interval
+        if tolerance is not None and low >= -tolerance and high <= tolerance:
+            return "PRACTICALLY_NEUTRAL"
+        # Wide interval, or interval straddling zero beyond tolerance:
+        # uncertainty permits positive, neutral, or negative effects.
+        if low < 0 < high:
+            return "INCONCLUSIVE"
+        if delta_v_actual is None:
+            return "INCONCLUSIVE"
+    if delta_v_actual is not None and deterministic and delta_v_actual == 0:
+        return "TRUE_ZERO"
+    if delta_v_actual is None:
+        return "UNKNOWN"
+    return "INCONCLUSIVE"
 
 
 def independent_recompute(receipt: Mapping, candidates: Sequence[Candidate], profile: QualityProfile, risk_policy: RiskPolicy = RiskPolicy()) -> dict:
