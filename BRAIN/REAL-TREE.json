@@ -2,12 +2,12 @@
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-11",
   "receipt_basis_commit": "f2c614a5386b65c84156c707a93a775ec51b907a",
-  "inventory_file_count": 1245,
+  "inventory_file_count": 1247,
   "domain_counts": {
     "00-ACTIVATION": 3,
     "00-ARCHITECTURE": 5,
     "00-SPEC": 15,
-    "01-GOVERNANCE": 58,
+    "01-GOVERNANCE": 60,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
@@ -366,6 +366,11 @@
       "size": 947
     },
     {
+      "path": "BRAIN/01-GOVERNANCE/DIRECTIVE-STATUS-PROMOTION.md",
+      "blob_sha": "0ec0110874949f70eec0a39ea0773ebb8c1eaabf",
+      "size": 2729
+    },
+    {
       "path": "BRAIN/01-GOVERNANCE/DOC-COMPLETENESS-AUDIT-2026-10-10.md",
       "blob_sha": "ea273ce3077d1e8be7001203d1c312d44c8e0d86",
       "size": 2633
@@ -414,6 +419,11 @@
       "path": "BRAIN/01-GOVERNANCE/WIRE-RECEIPT-directive-register.md",
       "blob_sha": "2a486b6428b5cc6298d61011cc0408d923e6bad8",
       "size": 3888
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/WIRE-RECEIPT-directive-status-honesty.md",
+      "blob_sha": "2ee10cf380d7df6c85c5183a0f40a994fe502531",
+      "size": 5627
     },
     {
       "path": "BRAIN/01-GOVERNANCE/directive-register.json",

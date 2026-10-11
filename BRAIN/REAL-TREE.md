@@ -2,7 +2,7 @@
 
 **Generated:** 2026-10-11  
 **Receipt basis commit:** `f2c614a5386b65c84156c707a93a775ec51b907a`  
-**Inventory file count:** 1245  
+**Inventory file count:** 1247  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -11,7 +11,7 @@
 | Domain | Files |
 |---|---|
 | 00-SPEC | 15 |
-| 01-GOVERNANCE | 58 |
+| 01-GOVERNANCE | 60 |
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 25 |
@@ -105,6 +105,7 @@
 - `BRAIN/01-GOVERNANCE/0020-ENGINE-BEFORE-PRODUCTION-V1.ai.md` — `dc767dbaee8a` (2079 bytes)
 - `BRAIN/01-GOVERNANCE/0020-ENGINE-BEFORE-PRODUCTION-V1.human.md` — `3054324783e9` (995 bytes)
 - `BRAIN/01-GOVERNANCE/0020-engine-before-production-v1.machine.json` — `abc384701525` (947 bytes)
+- `BRAIN/01-GOVERNANCE/DIRECTIVE-STATUS-PROMOTION.md` — `0ec011087494` (2729 bytes)
 - `BRAIN/01-GOVERNANCE/DOC-COMPLETENESS-AUDIT-2026-10-10.md` — `ea273ce3077d` (2633 bytes)
 - `BRAIN/01-GOVERNANCE/GATE-CONSOLE.md` — `d7810ee7ef34` (10085 bytes)
 - `BRAIN/01-GOVERNANCE/LEARNING-INTERNALIZATION-AUTOMATIC-BEHAVIOR-V1.md` — `c58ef4864a38` (10500 bytes)
@@ -115,6 +116,7 @@
 - `BRAIN/01-GOVERNANCE/THE-PROTOCOL.md` — `a16fd69d14da` (8059 bytes)
 - `BRAIN/01-GOVERNANCE/THE-TUNE-IN-TEMPLATE.md` — `e61b5c675a63` (4893 bytes)
 - `BRAIN/01-GOVERNANCE/WIRE-RECEIPT-directive-register.md` — `2a486b6428b5` (3888 bytes)
+- `BRAIN/01-GOVERNANCE/WIRE-RECEIPT-directive-status-honesty.md` — `2ee10cf380d7` (5627 bytes)
 - `BRAIN/01-GOVERNANCE/directive-register.json` — `44d6991e67ed` (13876 bytes)
 - `BRAIN/01-GOVERNANCE/elevation-grants/README.md` — `37afb12365a8` (1910 bytes)
 - `BRAIN/01-GOVERNANCE/naya-dream-v1.machine.json` — `c469937962eb` (22689 bytes)
