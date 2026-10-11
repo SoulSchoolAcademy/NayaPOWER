@@ -4,7 +4,8 @@ tools/check_merge_consensus.py :: api_get must follow GitHub's
 Link: rel="next" pagination at per_page=100, so reviews and scorecards on
 busy PRs (>30 comments) stay gate-visible, while single-object endpoints
 pass through untouched. Rate-limited responses (403/429) are retried with
-exponential backoff instead of failing the gate.
+backoff honoring Retry-After instead of crashing the gate, and API failures
+surface as GateAPIError (clean fail-closed message, never a traceback).
 """
 import io
 import json
@@ -16,7 +17,7 @@ from unittest.mock import patch
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
 
-from check_merge_consensus import api_get  # noqa: E402
+from check_merge_consensus import GateAPIError, api_get  # noqa: E402
 
 
 class _FakeHeaders(dict):
@@ -99,13 +100,14 @@ def test_retry_on_429_then_succeeds():
 
 
 def test_non_retryable_error_raises():
-    """A non-rate-limit failure (e.g. 404) is not retried: it propagates."""
+    """A non-rate-limit failure (e.g. 404) is not retried: it surfaces as
+    GateAPIError (clean fail-closed message, never a raw traceback)."""
     with patch("urllib.request.urlopen",
                side_effect=[_http_error(404)]) as m:
         try:
             api_get("/repos/o/r/pulls/999999", "token")
-        except urllib.error.HTTPError as e:
-            assert e.code == 404
+        except GateAPIError as e:
+            assert "404" in str(e)
         else:
-            raise AssertionError("expected HTTPError to propagate")
+            raise AssertionError("expected GateAPIError to propagate")
     assert m.call_count == 1
