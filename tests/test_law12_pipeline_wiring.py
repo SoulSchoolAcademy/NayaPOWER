@@ -129,12 +129,14 @@ def test_execute_refuses_on_expired_proof_window():
 
 
 def test_execute_refuses_on_unbound_sha_when_execute_binds():
-    # Plan never bound a SHA; execute binds one. Unbound is non-comparable:
-    # it does not invalidate — but it also does not validate. The proof
-    # stays honored here; the honesty is in the receipt, not a false block.
+    # T-19 Evidence Binding Law: plan never bound a SHA, but "write"
+    # requires source_sha as a mandatory binding. The proof cannot be
+    # honored — UNBOUND on a mandatory field is MISSING_BINDING, even
+    # when the execute-time context binds a SHA. The plan must pin what
+    # the operation requires; execute cannot backfill it.
     plan, _ = ap.plan_action(_authority(), [_candidate()], _profile(), now=NOW)
     receipt, calls = _execute(plan, now=NOW + 5, source_sha="sha-aaa")
-    assert receipt.phase == "EXECUTION_COMPLETED" and calls
+    assert receipt.phase == "EXECUTION_REFUSED" and not calls
 
 
 # --- negative control: the Law 12 check is the enforcement ---

@@ -191,7 +191,9 @@ def test_door_allows_clean_execution():
 
 def test_full_flow_clean_candidate_plan_to_execute():
     plan, receipt = ap.plan_action(_authority(), [_candidate("p-good")],
-                                   _profile(), now=NOW)
+                                   _profile(), now=NOW,
+                                   source_sha="sha-aaa",
+                                   resource_state_digest="rs-1")
     assert plan is not None
     exec_receipt, calls = _execute(plan)
     assert exec_receipt.phase == "EXECUTION_COMPLETED"

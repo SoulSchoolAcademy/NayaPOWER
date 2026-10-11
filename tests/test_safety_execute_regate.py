@@ -133,7 +133,7 @@ def test_near_perfect_q_harmful_candidate_cannot_win_by_quality():
 
 def test_planned_clean_candidate_still_executes():
     authority = _authority()
-    plan, plan_receipt = ap.plan_action(authority, [_candidate()], _profile(), now=NOW)
+    plan, plan_receipt = ap.plan_action(authority, [_candidate()], _profile(), now=NOW, source_sha="sha-aaa", resource_state_digest="rs-1")
     assert plan is not None and plan_receipt.phase == "PLAN_ACCEPTED"
     receipt, calls = _execute(plan)
     assert receipt.phase == "EXECUTION_COMPLETED"

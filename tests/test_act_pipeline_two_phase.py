@@ -63,7 +63,7 @@ def _candidate(cid="p1", **kw):
 
 def _plan(now=NOW):
     authority = _authority(decided_at=now - 60)
-    plan, receipt = ap.plan_action(authority, [_candidate()], _profile(), now=now)
+    plan, receipt = ap.plan_action(authority, [_candidate()], _profile(), now=now, source_sha="sha-aaa", resource_state_digest="rs-1")
     assert plan is not None
     assert receipt.phase == "PLAN_ACCEPTED"
     return plan
@@ -90,7 +90,7 @@ def test_plan_selects_minimum_sufficient_through_value_calculus():
                       value_benefit=3.0, value_harm=1.0,
                       value_cost=1.0, value_risk=0.5)
     strong = _candidate("p-strong")
-    plan, receipt = ap.plan_action(authority, [weak, strong], _profile(), now=NOW)
+    plan, receipt = ap.plan_action(authority, [weak, strong], _profile(), now=NOW, source_sha="sha-aaa", resource_state_digest="rs-1")
     assert plan is not None
     assert plan.chosen.candidate_id == "p-strong"
     assert receipt.phase == "PLAN_ACCEPTED"
@@ -101,7 +101,7 @@ def test_plan_selects_minimum_sufficient_through_value_calculus():
 
 def test_plan_rejects_scope_mismatch():
     authority = _authority(scope="some_other_scope")
-    plan, receipt = ap.plan_action(authority, [_candidate()], _profile(), now=NOW)
+    plan, receipt = ap.plan_action(authority, [_candidate()], _profile(), now=NOW, source_sha="sha-aaa", resource_state_digest="rs-1")
     assert plan is None
     assert receipt.phase == "PLAN_REFUSED"
     assert "PLAN_UNAUTHORIZED_SCOPE" in receipt.codes

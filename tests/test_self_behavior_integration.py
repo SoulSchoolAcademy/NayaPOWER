@@ -315,7 +315,7 @@ def _candidate(**kw):
 
 def test_act_completion_records_self_experience_via_hook(tmp_path):
     node = _booted_node(tmp_path)
-    plan, plan_receipt = ap.plan_action(_authority(), [_candidate()], _profile(), now=NOW)
+    plan, plan_receipt = ap.plan_action(_authority(), [_candidate()], _profile(), now=NOW, source_sha="sha-aaa", resource_state_digest="rs-1")
     assert plan_receipt.phase == "PLAN_ACCEPTED"
 
     receipt = ap.execute_plan(
@@ -336,7 +336,7 @@ def test_act_completion_records_self_experience_via_hook(tmp_path):
 
 def test_act_refusal_does_not_record_experience(tmp_path):
     node = _booted_node(tmp_path)
-    plan, _ = ap.plan_action(_authority(), [_candidate()], _profile(), now=NOW)
+    plan, _ = ap.plan_action(_authority(), [_candidate()], _profile(), now=NOW, source_sha="sha-aaa", resource_state_digest="rs-1")
     receipt = ap.execute_plan(
         plan,
         executor=lambda p: "never reached",
@@ -351,7 +351,7 @@ def test_act_refusal_does_not_record_experience(tmp_path):
 
 def test_act_completion_without_hook_preserves_prior_behavior(tmp_path):
     node = _booted_node(tmp_path)
-    plan, _ = ap.plan_action(_authority(), [_candidate()], _profile(), now=NOW)
+    plan, _ = ap.plan_action(_authority(), [_candidate()], _profile(), now=NOW, source_sha="sha-aaa", resource_state_digest="rs-1")
     receipt = ap.execute_plan(
         plan,
         executor=lambda p: "ok",

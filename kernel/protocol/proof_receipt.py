@@ -58,45 +58,46 @@ SCOPE_MISMATCH = "SCOPE_MISMATCH"
 REVOKED = "REVOKED"
 EXPIRED = "EXPIRED"
 INTEGRITY_TAMPERED = "INTEGRITY_TAMPERED"
-MANDATORY_BINDING_MISSING = "MANDATORY_BINDING_MISSING"
+# T-19 (Evidence Binding Law): a mandatory binding left UNBOUND, or a bound
+# assumption set that changed since the proof was issued.
+MISSING_BINDING = "MISSING_BINDING"
+ASSUMPTION_CHANGED = "ASSUMPTION_CHANGED"
 
-# MANDATORY BINDINGS — per action type, the receipt fields that MUST be
-# bound. "Recorded openly" is not a license to skip what the action type
-# requires: UNBOUND on a mandatory field FAILS validation (Shawn's Evidence
-# Binding Law, 2026-10-11: "mandatory bindings per action type; UNBOUND on
-# mandatory = FAIL").
+# REQUIRED_BINDINGS — which receipt fields are MANDATORY for each operation.
+# A mandatory field left UNBOUND fails validation outright (MISSING_BINDING):
+# an unbound mandatory field is not "unknown, therefore fine" — it is
+# "unproven, therefore blocked." The machine rule: same claim, same
+# authorized scope, same relevant target and conditions, valid supporting
+# proof — otherwise recheck before acting.
 #
-# Keyed by (operation, environment). Production state-changing operations
-# must pin the exact source, the governing law version, and the authorized
-# scope the verdict was earned against. Development/test and read-only
-# operations keep the honest-UNBOUND semantics (non-comparable, never
-# silently valid).
-#
-# Operation literals mirror kernel.protocol.typed_action.OPERATION_* (kept
-# literal here to avoid an import cycle; the values are stable).
-_MANDATORY_BINDINGS: dict[tuple[str, str], tuple[str, ...]] = {
-    ("deploy", "production"): ("source_sha", "policy_version", "scope"),
-    ("migrate", "production"): ("source_sha", "policy_version", "scope"),
-    ("delete", "production"): ("source_sha", "policy_version", "scope"),
-    ("grant", "production"): ("source_sha", "policy_version", "scope"),
-    ("merge", "production"): ("source_sha", "policy_version", "scope"),
-    ("write", "production"): ("source_sha", "policy_version", "scope"),
+# "*" is the default for any operation not named explicitly.
+REQUIRED_BINDINGS = {
+    # Identity fields are always mandatory: a proof must say who, what,
+    # where, and on what.
+    "*": ("actor_id", "operation", "environment", "resource"),
+    # Deploying code: must pin the exact commit and the governing policy.
+    "deploy": (
+        "actor_id", "operation", "environment", "resource",
+        "source_sha", "policy_version", "scope",
+    ),
+    # Protected writes: must pin exact source, live resource state, scope.
+    "write": (
+        "actor_id", "operation", "environment", "resource",
+        "source_sha", "resource_state_digest", "scope",
+    ),
+    "delete": (
+        "actor_id", "operation", "environment", "resource",
+        "source_sha", "resource_state_digest", "scope",
+    ),
+    # Reads: identity only — the content proof carries the weight.
+    "read": ("actor_id", "operation", "environment", "resource"),
 }
 
 
-def mandatory_bindings(operation: str, environment: str) -> tuple[str, ...]:
-    """Fields that must be bound (not UNBOUND) for this action type."""
-    return _MANDATORY_BINDINGS.get((operation, environment), ())
-
-
-def missing_mandatory_bindings(receipt: "ProofReceipt") -> tuple[str, ...]:
-    """Mandatory fields left UNBOUND on the receipt. Empty = complete."""
-    return tuple(
-        field
-        for field in mandatory_bindings(receipt.operation, receipt.environment)
-        if getattr(receipt, field, UNBOUND) == UNBOUND
-    )
-
+def required_bindings_for(operation: str) -> tuple[str, ...]:
+    """The mandatory binding fields for an operation. Unknown operations
+    fall back to the "*" default — never to an empty set."""
+    return REQUIRED_BINDINGS.get(operation, REQUIRED_BINDINGS["*"])
 
 # Re-verification outcomes.
 STILL_VALID = "STILL_VALID"
@@ -123,6 +124,10 @@ class ProofReceipt:
       revocation_ref: reference that, when exercised, revokes the proof
         (or None).
       dependencies: tuple of (dep_kind, dep_id) the proof remains bound to.
+      assumptions_digest: digest of the bound assumption set (data categories,
+        consent requirements, retention limits, policy version — anything the
+        proof's validity depends on). UNBOUND when the proof binds no
+        assumptions; a changed digest invalidates (ASSUMPTION_CHANGED).
       superseded_by: receipt_id of the receipt that replaced this one, or None.
       integrity: sha256 over the canonical serialization of all fields above.
     """
@@ -143,6 +148,7 @@ class ProofReceipt:
     valid_until: float | None = None
     revocation_ref: str | None = None
     dependencies: tuple[tuple[str, str], ...] = ()
+    assumptions_digest: str = UNBOUND
     superseded_by: str | None = None
     integrity: str = ""
 
@@ -165,6 +171,7 @@ class ProofReceipt:
             "valid_until": self.valid_until,
             "revocation_ref": self.revocation_ref,
             "dependencies": [list(d) for d in self.dependencies],
+            "assumptions_digest": self.assumptions_digest,
             "superseded_by": self.superseded_by,
         }
         return json.dumps(payload, sort_keys=True, separators=(",", ":"))
@@ -194,6 +201,7 @@ def issue_proof_receipt(
     valid_until: float | None = None,
     revocation_ref: str | None = None,
     dependencies: tuple[tuple[str, str], ...] = (),
+    assumptions_digest: str = UNBOUND,
 ) -> ProofReceipt:
     """Issue a Law-12-bound proof receipt. The receipt is immutable once
     issued; its integrity digest is computed over the canonical serialization
@@ -216,6 +224,7 @@ def issue_proof_receipt(
         valid_until=valid_until,
         revocation_ref=revocation_ref,
         dependencies=tuple(dependencies),
+        assumptions_digest=assumptions_digest,
     )
     digest = hashlib.sha256(receipt._canonical().encode()).hexdigest()
     return ProofReceipt(
@@ -231,53 +240,66 @@ class ProofContext:
     policy_hash: str = UNBOUND
     resource_state_digest: str = UNBOUND
     scope: str = UNBOUND
+    assumptions_digest: str = UNBOUND
     now: float = 0.0
     revoked_refs: tuple[str, ...] = ()
 
 
 def check_proof_validity(
-    receipt: ProofReceipt, context: ProofContext
+    receipt: ProofReceipt,
+    context: ProofContext,
+    required_bindings: tuple[str, ...] | None = None,
 ) -> tuple[bool, str | None]:
     """Law 12 runtime gate. Returns (valid, invalidation_event).
 
     Fail-closed order, most severe first:
+      0. MISSING_BINDING — a MANDATORY binding field was left UNBOUND.
+         Unknown never becomes valid: if the proof does not pin what it
+         must pin, it cannot be honored. (T-19 Evidence Binding Law.)
       1. INTEGRITY_TAMPERED — the receipt itself was altered. Never trusted.
-      2. MANDATORY_BINDING_MISSING — the action type requires bindings the
-         receipt left UNBOUND (Shawn's Evidence Binding Law: UNBOUND on
-         mandatory = FAIL). An incomplete proof cannot validate.
-      3. REVOKED — the bound revocation reference was exercised.
-      4. EXPIRED — the validity window passed.
-      5. SOURCE_SHA_MOVED — bound SHA differs from current SHA (both bound).
-      6. POLICY_VERSION_CHANGED / POLICY_HASH_CHANGED — the governing law moved.
-      7. RESOURCE_STATE_CHANGED — the target's state moved.
+      2. REVOKED — the bound revocation reference was exercised.
+      3. EXPIRED — the validity window passed.
+      4. SOURCE_SHA_MOVED — bound SHA differs from current SHA (both bound).
+      5. POLICY_VERSION_CHANGED / POLICY_HASH_CHANGED — the governing law moved.
+      6. RESOURCE_STATE_CHANGED — the target's state moved.
+      7. ASSUMPTION_CHANGED — the bound assumption set changed.
       8. SCOPE_MISMATCH — the receipt's scope does not cover the current scope.
 
-    Unbound NON-mandatory fields are non-comparable: they neither validate
-    nor invalidate. Immaterial change (description text, display names) is
-    not in the bound set and can never invalidate — an unrelated source
-    change does not erase independent outcome evidence.
+    required_bindings: the mandatory field names for this check. Defaults
+    to required_bindings_for(receipt.operation). Pass an explicit tuple to
+    override (e.g. a stricter profile for a consequential action).
+
+    Non-mandatory UNBOUND fields remain non-comparable: they neither
+    validate nor invalidate. Immaterial change (description text, display
+    names) is not in the bound set and can never invalidate.
     """
+    # 0. Mandatory bindings: UNBOUND on a required field is a hard fail.
+    #    A proof that does not pin what it must pin proves nothing.
+    required = (
+        required_bindings
+        if required_bindings is not None
+        else required_bindings_for(receipt.operation)
+    )
+    for field_name in required:
+        if getattr(receipt, field_name, UNBOUND) == UNBOUND:
+            return False, MISSING_BINDING
     # 1. Tamper: a receipt that does not match its own digest is unusable.
     if not receipt.integrity_ok():
         return False, INTEGRITY_TAMPERED
-    # 2. Mandatory bindings: the action type's required fields must be bound.
-    missing = missing_mandatory_bindings(receipt)
-    if missing:
-        return False, MANDATORY_BINDING_MISSING
-    # 3. Revocation exercised.
+    # 2. Revocation exercised.
     if receipt.revocation_ref is not None and receipt.revocation_ref in context.revoked_refs:
         return False, REVOKED
-    # 4. Validity window passed.
+    # 3. Validity window passed.
     if receipt.valid_until is not None and context.now > receipt.valid_until:
         return False, EXPIRED
-    # 5. Source SHA moved (only when both sides bound the SHA).
+    # 4. Source SHA moved (only when both sides bound the SHA).
     if (
         receipt.source_sha != UNBOUND
         and context.source_sha != UNBOUND
         and receipt.source_sha != context.source_sha
     ):
         return False, SOURCE_SHA_MOVED
-    # 6. Policy moved.
+    # 5. Policy moved.
     if (
         receipt.policy_version != UNBOUND
         and context.policy_version != UNBOUND
@@ -290,13 +312,22 @@ def check_proof_validity(
         and receipt.policy_hash != context.policy_hash
     ):
         return False, POLICY_HASH_CHANGED
-    # 7. Resource state moved.
+    # 6. Resource state moved.
     if (
         receipt.resource_state_digest != UNBOUND
         and context.resource_state_digest != UNBOUND
         and receipt.resource_state_digest != context.resource_state_digest
     ):
         return False, RESOURCE_STATE_CHANGED
+    # 7. Assumptions moved (T-19): the proof was earned under one set of
+    #    assumptions (data categories, consent, retention, policy); the
+    #    world now operates under another. The old proof cannot cover it.
+    if (
+        receipt.assumptions_digest != UNBOUND
+        and context.assumptions_digest != UNBOUND
+        and receipt.assumptions_digest != context.assumptions_digest
+    ):
+        return False, ASSUMPTION_CHANGED
     # 8. Scope mismatch: the receipt must cover the current scope.
     if (
         receipt.scope != UNBOUND
@@ -313,8 +344,7 @@ def reverify(receipt: ProofReceipt, context: ProofContext) -> str:
     RECHECK: dependencies moved in a way that only requires re-running the
     gate against the same proof (e.g. policy hash drifted under same version).
     REVERIFY: the proof must be re-earned — expiry, revocation, tamper,
-    a material world move (SHA, version, resource state, scope), or a
-    missing mandatory binding.
+    or a material world move (SHA, version, resource state, scope).
     """
     valid, event = check_proof_validity(receipt, context)
     if valid:
