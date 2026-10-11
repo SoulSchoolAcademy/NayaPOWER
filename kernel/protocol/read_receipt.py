@@ -37,7 +37,7 @@ REQUIRED_SOURCE_PATHS = (
     "BRAIN/01-GOVERNANCE/0004-NONSTOP-LOOP-V1.ai.md",
     "BRAIN/01-GOVERNANCE/0004-nonstop-loop-v1.machine.json",
     "BRAIN/CURRENT-MISSION-STATE.md",
-    "tools/protocol/protocol_manifest.json",
+    "kernel/protocol/protocol_manifest.json",
 )
 
 COMPREHENSION_QUESTIONS = (
