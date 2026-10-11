@@ -207,6 +207,7 @@ def check(record: dict) -> dict:
     check must expose this interface so the protocol machinery can invoke
     it uniformly.
     """
+    sys.path.insert(0, _repo_root())
     from tools.protocol.checks import result, fail
     if not isinstance(record, dict):
         return fail("record is not a JSON object — fail closed, never check an unnamed tree")
