@@ -76,6 +76,12 @@ from kernel.protocol.typed_action import (
     execution_door_check,
     law11_gate,
 )
+from kernel.protocol.proof_receipt import (
+    UNBOUND,
+    ProofContext,
+    check_proof_validity,
+    issue_proof_receipt,
+)
 from kernel.value_calculus import (
     ACT,
     ASK,
@@ -112,6 +118,7 @@ PLAN_SAFETY_NEEDS_EVIDENCE = "PLAN_SAFETY_NEEDS_EVIDENCE"
 PLAN_LAW11_NEEDS_AUTHORITY = "PLAN_LAW11_NEEDS_AUTHORITY"
 PLAN_VALUE_INSUFFICIENT = "PLAN_VALUE_INSUFFICIENT"
 PLAN_NEEDS_HUMAN_JUDGMENT = "PLAN_NEEDS_HUMAN_JUDGMENT"
+PLAN_PROOF_STALE = "PLAN_PROOF_STALE"
 
 _REVERSIBLE_VALUES = ("REVERSIBLE", "IRREVERSIBLE", "UNKNOWN")
 _STAKE_ORDER = {"low": 0, "medium": 1, "high": 2}
@@ -185,6 +192,11 @@ class ActionPlan:
     authority: LawAuthority
     candidate_scores: tuple  # ((candidate_id, Q), ...) — the math is visible
     planned_at: float
+    # Law 12 proof receipt bound at plan time to the exact world the Law 11
+    # ADMISSIBLE verdict was earned against. execute_plan() revalidates it;
+    # a material world move invalidates the proof and refuses execution.
+    # Optional with default None so every existing construction stays valid.
+    law12_proof: object = None
 
 
 @dataclass(frozen=True)
@@ -554,6 +566,8 @@ def plan_action(authority: LawAuthority,
                 risk_policy: RiskPolicy | None = None,
                 actor_id: str = "act_pipeline",
                 environment: str = "development",
+                source_sha: str | None = None,
+                resource_state_digest: str | None = None,
                 ) -> tuple[ActionPlan | None, ActionReceipt]:
     """Phase 1: bind LAW authority to a minimum-sufficient plan.
 
@@ -723,9 +737,33 @@ def plan_action(authority: LawAuthority,
                      f"autonomous selection. {'; '.join(calculus_evidence)}",
         )
 
+    # --- Law 12 proof binding (plan time). The Law 11 ADMISSIBLE verdict for
+    # the chosen candidate is bound to the exact world it was earned against:
+    # source SHA, policy version, resource state digest, scope, and a validity
+    # window. execute_plan() revalidates this proof at the last responsible
+    # moment; any material move invalidates it (proofs expire when the world
+    # changes). Unbound fields are recorded as UNBOUND, never silently valid.
+    law12_proof = issue_proof_receipt(
+        actor_id=actor_id,
+        operation=_infer_operation(chosen.action),
+        environment=environment,
+        resource=authority.scope,
+        law_verdict=LAW11_ADMISSIBLE,
+        reason_ids=(),
+        policy_version="CURRENT",
+        policy_hash=UNBOUND,
+        source_sha=source_sha if source_sha is not None else UNBOUND,
+        resource_state_digest=(resource_state_digest
+                               if resource_state_digest is not None else UNBOUND),
+        scope=authority.scope,
+        evidence_ids=tuple(chosen.proof_requirements),
+        issued_at=now,
+        valid_until=now + MAX_LAW_AGE_SECONDS,
+    )
     plan = ActionPlan(
         plan_id=plan_id, action=authority.action, chosen=chosen,
         authority=authority, candidate_scores=scores, planned_at=now,
+        law12_proof=law12_proof,
     )
     receipt = ActionReceipt(
         receipt_id=_new_id(), plan_id=plan_id, phase="PLAN_ACCEPTED",
@@ -751,7 +789,9 @@ def execute_plan(plan: ActionPlan,
                  risk_policy: RiskPolicy | None = None,
                  on_executed: Callable[[ActionPlan, ActionReceipt], None] | None = None,
                  actor_id: str = "act_pipeline",
-                 environment: str = "development") -> ActionReceipt:
+                 environment: str = "development",
+                 source_sha: str | None = None,
+                 resource_state_digest: str | None = None) -> ActionReceipt:
     """Phase 2: re-resolve live LAW authority, re-verify the do-no-harm gate,
     then execute.
 
@@ -846,6 +886,34 @@ def execute_plan(plan: ActionPlan,
         return refused(PLAN_SAFETY_NEEDS_EVIDENCE, evidence=door_evidence)
     if door_verdict.verdict == LAW11_NEEDS_AUTHORITY:
         return refused(PLAN_LAW11_NEEDS_AUTHORITY, evidence=door_evidence)
+
+    # --- Law 12 proof revalidation (last responsible moment). The plan-time
+    # proof receipt is checked against the FRESH world: source SHA, policy
+    # version, resource state digest, scope, revocation, and the validity
+    # window. Any material move invalidates the proof — proofs expire when
+    # the world changes — and execution is refused with PLAN_PROOF_STALE:
+    # re-plan against the current world instead of executing on a stale
+    # verdict. Unbound plan-time fields are non-comparable (never silently
+    # valid); immaterial change never invalidates.
+    if plan.law12_proof is not None:
+        proof_ctx = ProofContext(
+            source_sha=source_sha if source_sha is not None else UNBOUND,
+            policy_version="CURRENT",
+            policy_hash=UNBOUND,
+            resource_state_digest=(resource_state_digest
+                                   if resource_state_digest is not None else UNBOUND),
+            scope=fresh.scope,
+            now=now,
+            revoked_refs=(),
+        )
+        proof_valid, invalidation = check_proof_validity(plan.law12_proof, proof_ctx)
+        if not proof_valid:
+            return refused(
+                PLAN_PROOF_STALE,
+                evidence=f"Law 12: plan-time proof {plan.law12_proof.receipt_id} "
+                         f"invalidated by material change [{invalidation}]; "
+                         f"proofs expire when the world changes — re-plan.",
+            )
 
     # --- Execution-time do-no-harm re-gate (safety floor). Fail closed:
     # the gate is re-verified at the last responsible moment, immediately
