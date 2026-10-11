@@ -1,0 +1,56 @@
+name: Publication-Boundary Gate (D35 wire)
+
+# Wires the D35 atomic-publication-boundary engine onto the
+# drift-canary governance-verification path. Every publication scenario
+# in tools/d35_publication_manifest.json is cold-executed against the
+# REAL engine (drift_canary/d35_publication.PublicationAuthority): the
+# scenario (setup steps + one publication attempt) is rebuilt from the
+# claim's own model bytes and the claimant's asserted outcome must
+# match the engine's recomputed outcome exactly. A scenario the law
+# refuses — a stale dependency under a valid fencing token, a write
+# conflict on a moved projection head, a scope wider than the
+# read-time pin, a forged token, a sealed successor package that no
+# longer reconciles, a replayed smart-note event, an index pointer
+# that moved — BLOCKS (exit 1). Empty manifest = explicit DORMANT
+# (exit 0), never a false green. Corrupt manifest, unknown
+# assertions/ops, or a broken engine = fail-closed (exit 2).
+#
+# OPERATING PATH: the drift-canary governance-verification CI path.
+# Trigger: this check on pull_request / push-to-main for the paths
+# below. Block: check red blocks the merge path. Defect class: stale
+# qualifications republished as current authority. Verify-
+# still-connected: this file exists and the check is required on the
+# drift-canary path; `python tools/d35_publication_gate.py --json`
+# exits 0 DORMANT on a claim-free tree.
+
+on:
+  pull_request:
+    paths:
+      - "drift_canary/d35_publication.py"
+      - "tools/d35_publication_gate.py"
+      - "tools/d35_publication_manifest.json"
+      - "tests/test_d35_publication_gate.py"
+      - ".github/workflows/d35-publication-gate.yml"
+  push:
+    branches: ["main"]
+    paths:
+      - "drift_canary/d35_publication.py"
+      - "tools/d35_publication_gate.py"
+      - "tools/d35_publication_manifest.json"
+      - "tests/test_d35_publication_gate.py"
+      - ".github/workflows/d35-publication-gate.yml"
+
+jobs:
+  publication-boundary:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      # Bare setup-python images do not always carry pytest; install it
+      # explicitly (same lesson as the D55/D56/D58/D59/D61/D62/D63/D64
+      # mechanism and wire gates and the directive-register gates).
+      - run: python -m pip install pytest
+      - run: python -m pytest tests/test_d35_publication_gate.py -q -p no:cacheprovider
+      - run: python tools/d35_publication_gate.py --json
