@@ -155,9 +155,12 @@ def test_honest_claims_pass(h1, h2, controllers, tmp_path):
     assert any("PASS: 2 claim(s)" in l for l in lines)
 
 
-def test_shipped_manifest_is_dormant():
-    shipped = os.path.join(TOOLS, "d30_causal_trace_manifest.json")
-    code, lines = gate.run_gate(shipped)
+def test_empty_claims_means_dormant(tmp_path):
+    # DORMANT is a behavior of the gate (zero registered claims), not a
+    # property of the checked-in file: the owning lane registers claims
+    # by editing the manifest, and temp-probe commits must flow through
+    # to the gate step itself.
+    code, lines = gate.run_gate(_write_manifest(tmp_path, []))
     assert code == 0, "\n".join(lines)
     assert any("DORMANT" in l for l in lines)
 
