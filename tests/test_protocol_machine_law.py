@@ -43,6 +43,9 @@ CORRECT = {
     "q5": "independent evidence and proof",
     "q6": "AGENTS.md, PROTOCOL.md, Constitution, Team Naya Operating Protocol, Laws Index, Portable Activation Protocol, Smart Note Operating Contract",
     "q7": "#2175 is coordination, #2154 is mission state, #1599 is feed index",
+    "q8": "ACTIVATE, DECIDE, ACT, LEARN, COMPOUND",
+    "q9": "Prohibited actions: refuse. Missing evidence: investigate. Missing authority: ask. Only admissible actions are scored.",
+    "q10": "Independent verifier checks evidence. Sign in, sign out, and test cold successor behavior for learning.",
 }
 
 
@@ -81,6 +84,14 @@ def test_receipt_bound_to_protocol_version_and_required_documents():
 def test_required_document_hashes_cover_every_mandatory_source():
     assert set(DOC_SHAS) == set(REQUIRED_READING_PATHS)
     assert all(len(value) == 64 for value in DOC_SHAS.values())
+
+
+def test_receipt_fails_when_operating_comprehension_is_missing():
+    incomplete = dict(CORRECT)
+    incomplete["q8"] = ""
+    r = issue_receipt("naya-test", incomplete, DOC_SHAS)
+    assert not r.passed
+    assert not r.verify()
 
 
 def test_receipt_fails_when_a_required_document_is_missing():
