@@ -1,6 +1,6 @@
 """Executable law checks for the Team Naya operating protocol.
 
-Each module enforces one ratified law from tools/protocol/protocol_manifest.json.
+Each module enforces one ratified law from kernel/protocol/protocol_manifest.json.
 Pattern (follows cold_start_gate.py):
   - check(record: dict) -> dict  : pure validation, returns
     {"pass": bool, "reasons": [str], "details": {...}}
