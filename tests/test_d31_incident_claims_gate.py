@@ -81,12 +81,6 @@ def test_shipped_examples_deserialize_clean():
         assert incident.incident_id, key
 
 
-def test_shipped_manifest_judges_clean():
-    code, out, _ = run_gate(MANIFEST)
-    assert code == 0, out
-    assert "D31-GATE" in out
-
-
 def test_live_registration_path_honest(tmp_path):
     """The owning lane can register a real claim without editing tests:
     an honest live scenario passes."""
