@@ -392,3 +392,44 @@ def test_cli_unknown_command_refused(tmp_path):
                        capture_output=True, text=True)
     assert r.returncode == 2
     assert "FEED_LIFECYCLE_REFUSED" in r.stderr
+
+
+def test_cli_json_flag_is_compact_single_line(tmp_path):
+    # --json must be a real option: compact single-line JSON for machines,
+    # not a dead flag that prints the same indented output as the default.
+    root = str(tmp_path)
+
+    def run(*args):
+        return subprocess.run([sys.executable, TOOL, "--root", root, *args],
+                              capture_output=True, text=True)
+
+    assert run("--json", "init").returncode == 0
+    r = run("--json", "list", "--kind", "standing")
+    assert r.returncode == 0, r.stderr
+    lines = r.stdout.strip().splitlines()
+    assert len(lines) == 1, "--json output must be exactly one line"
+    parsed = json.loads(lines[0])
+    assert len(parsed["feeds"]) == 9
+
+    # default (no flag) stays human-readable: indented, multi-line
+    r = run("get", "--feed", "feed-1868")
+    assert r.returncode == 0
+    assert len(r.stdout.strip().splitlines()) > 1
+
+
+def test_match_returns_closed_feeds_honestly(seeded):
+    # match() resolves by id/number/URL in ANY status; requiring OPEN is the
+    # caller's check, not this lookup's. Locks in the corrected docstring.
+    fid = create_focused_feed("honest match", "naya2", JUST, "feed-1868",
+                              root=seeded)["feed_id"]
+    resolve_feed(fid, "Closure documented the status-agnostic lookup honestly.",
+                 "SN-2305",
+                 "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2305",
+                 actor="naya2", root=seeded)
+    close_feed(fid, actor="naya2", root=seeded)
+    got = match(fid, root=seeded)
+    assert got["status"] == "CLOSED"
+    # and by issue URL form too, if bound
+    link_issue(fid, 9992, root=seeded)
+    assert match("https://github.com/SoulSchoolAcademy/NayaPOWER/issues/9992",
+                root=seeded)["status"] == "CLOSED"

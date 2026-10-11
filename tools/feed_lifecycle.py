@@ -33,8 +33,10 @@ transition raises a named error — never a silent default. The registry records
 claims (receipts, links); it does not verify Smart Notes exist — that check
 belongs to a live verifier, not this ledger.
 
-Store: .naya/feeds/feed-registry.json (runtime state, like the #2296 event
-ledger — outside BRAIN/, so zero brain-index drift).
+Store: ~/workspace/goals/nayapower-10-10-completion-drive/hidden_files/feed-registry.json
+by default (goal runtime-state dir — outside BRAIN/, so zero brain-index
+drift); `registry_path(root)` / `--root` override it (tests use a temp dir).
+Like the #2296 event ledger, runtime state only — never canonical repo content.
 
 Seam (not wired): match() resolves a feed by id, issue number, or issue URL —
 the lookup #2296's envelope SHARED gate ("requires the specialty-feed URL")
@@ -438,8 +440,11 @@ def list_feeds(status=None, kind=None, root=None):
 def match(query, root=None):
     """Resolve a feed by feed_id, issue number ("1868"/"#1868"), or issue URL.
 
-    The seam #2296's envelope SHARED gate can consult: a specialty-feed URL
-    is only meaningful if it resolves to a known, OPEN feed.
+    Returns the feed in whatever status it holds (OPEN/RESOLVED/CLOSED) — the
+    caller decides what a status means. The seam #2296's envelope SHARED gate
+    can consult: a specialty-feed URL is only meaningful if it resolves to a
+    known feed; whether the gate also requires OPEN is the gate's own check,
+    not this lookup's.
     """
     doc = load_registry(root)
     q = query.strip()
@@ -460,15 +465,19 @@ def match(query, root=None):
 
 def _emit(obj, as_json):
     if as_json:
-        print(json.dumps(obj, indent=2))
+        # Compact single-line JSON for machines (pipelines, jq).
+        print(json.dumps(obj, ensure_ascii=False))
     else:
-        print(json.dumps(obj, indent=2))
+        # Indented JSON for humans reading the terminal.
+        print(json.dumps(obj, indent=2, ensure_ascii=False))
 
 
 def main(argv=None):
     ap = argparse.ArgumentParser(description="Specialty-feed lifecycle registry (#2244 req 2)")
     ap.add_argument("--root", default=None, help="registry dir override (tests)")
-    ap.add_argument("--json", action="store_true", help="JSON output")
+    ap.add_argument("--json", action="store_true",
+                      help="compact single-line JSON output (for machines); "
+                           "default is indented JSON for humans")
     sub = ap.add_subparsers(dest="cmd", required=True)
 
     sub.add_parser("init", help="seed the nine standing feeds (idempotent)")

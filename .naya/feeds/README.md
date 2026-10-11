@@ -38,10 +38,11 @@ envelope's SHARED gate ("requires the specialty-feed URL") can consult.
 
 ## Store
 
-`.naya/feeds/feed-registry.json` — runtime state, created by `init`. Like the
-#2296 event ledger it lives outside `BRAIN/`, so it adds **zero brain-index
-drift**. The registry records claims; it does not verify Smart Notes exist —
-that belongs to a live verifier.
+`~/workspace/goals/nayapower-10-10-completion-drive/hidden_files/feed-registry.json`
+— runtime state, created by `init` (`--root` overrides the directory; the test
+suite uses a temp dir). Like the #2296 event ledger it lives outside `BRAIN/`,
+so it adds **zero brain-index drift**. The registry records claims; it does not
+verify Smart Notes exist — that belongs to a live verifier.
 
 ## CLI
 
