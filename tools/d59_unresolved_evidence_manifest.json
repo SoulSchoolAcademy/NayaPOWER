@@ -1,1 +1,102 @@
-{"_example":{"_comment":"WORKED EXAMPLE — not an active claim. If registered as a claim, the gate BLOCKS it (exit 1): round 1 is UNDETERMINED (scheduler log segment MISSING) while rounds 2-3 are eligible with inadequate service; bound 2. Compatible histories end at debt 2..3 — the range straddles the bound, so the governor finds UNRESOLVED. The claim asserts NO_BREACH: unknown-laundering, the exact defect D59 exists to prevent.","asserted_conclusion":"NO_BREACH","bound":2,"capacity_basis":"scheduler capacity audit 2026-10-11","claimant":"naya2/wire (worked example)","evidence_ref":"https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175","id":"UE-EXAMPLE","obligation_id":"nightly-drift-restamp","reconstructions":[{"reason":"re-fetch scheduled from scheduler log archive","round_seq":1,"status":"open"}],"rounds":[{"adequate_service":false,"defects":[{"component":"APPLICABLE_OPPORTUNITY","detail":"scheduler log segment for round 1 absent — re-fetch scheduled","kind":"MISSING"}],"round_seq":1,"verdict":"undetermined"},{"adequate_service":false,"defects":[],"round_seq":2,"verdict":"eligible"},{"adequate_service":false,"defects":[],"round_seq":3,"verdict":"eligible"}]},"_note":"Unresolved-evidence claims judged by tools/d59_unresolved_evidence_gate.py against the REAL D59 governor (drift_canary/unresolved_evidence.py, PR #2313). Empty 'claims' = explicit DORMANT (never a false green). The first claim merged activates enforcement with zero new wiring. Claims are evidence declarations: the gate rebuilds the rounds, the BOUNDED contract, and the reconstruction coverage from the declared evidence and runs the governor — a claim the governor refuses or disagrees with is BLOCKED (exit 1); an untrustworthy manifest is BROKEN (exit 2).","_schema":{"asserted_conclusion":"BREACH | NO_BREACH | UNRESOLVED — what the team claims the governor finds","bound":"positive integer — the BOUNDED fairness contract's service_bound_rounds","capacity_basis":"non-empty string — what the bound was derived from (never an arbitrary timeout)","claimant":"who asserts this claim","evidence_ref":"link to the evidence (board comment, run log, check run)","id":"unique claim id, e.g. UE-0001","obligation_id":"the scheduling obligation under governance","reconstructions":"optional list — required for every unresolved round when the governor finds UNRESOLVED: [{round_seq, status: open|settled|escalated, reason (required when escalated)}]","rounds":"non-empty list of {round_seq (int), verdict: eligible|ineligible|undetermined, adequate_service (bool — must be a known bool), defects: [{component (one of the six D58 components), kind: MISSING|CONTRADICTORY|STALE|UNVERIFIABLE, detail (non-empty)}] — UNDETERMINED rounds must carry defects; settled verdicts carry none}"},"claims":[]}
+{
+ "_example": {
+  "_comment": "WORKED EXAMPLE \u2014 not an active claim. If registered as a claim, the gate BLOCKS it (exit 1): round 1 is UNDETERMINED (scheduler log segment MISSING) while rounds 2-3 are eligible with inadequate service; bound 2. Compatible histories end at debt 2..3 \u2014 the range straddles the bound, so the governor finds UNRESOLVED. The claim asserts NO_BREACH: unknown-laundering, the exact defect D59 exists to prevent.",
+  "asserted_conclusion": "NO_BREACH",
+  "bound": 2,
+  "capacity_basis": "scheduler capacity audit 2026-10-11",
+  "claimant": "naya2/wire (worked example)",
+  "evidence_ref": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175",
+  "id": "UE-EXAMPLE",
+  "obligation_id": "nightly-drift-restamp",
+  "reconstructions": [
+   {
+    "reason": "re-fetch scheduled from scheduler log archive",
+    "round_seq": 1,
+    "status": "open"
+   }
+  ],
+  "rounds": [
+   {
+    "adequate_service": false,
+    "defects": [
+     {
+      "component": "APPLICABLE_OPPORTUNITY",
+      "detail": "scheduler log segment for round 1 absent \u2014 re-fetch scheduled",
+      "kind": "MISSING"
+     }
+    ],
+    "round_seq": 1,
+    "verdict": "undetermined"
+   },
+   {
+    "adequate_service": false,
+    "defects": [],
+    "round_seq": 2,
+    "verdict": "eligible"
+   },
+   {
+    "adequate_service": false,
+    "defects": [],
+    "round_seq": 3,
+    "verdict": "eligible"
+   }
+  ]
+ },
+ "_note": "Unresolved-evidence claims judged by tools/d59_unresolved_evidence_gate.py against the REAL D59 governor (drift_canary/unresolved_evidence.py, PR #2313). Empty 'claims' = explicit DORMANT (never a false green). The first claim merged activates enforcement with zero new wiring. Claims are evidence declarations: the gate rebuilds the rounds, the BOUNDED contract, and the reconstruction coverage from the declared evidence and runs the governor \u2014 a claim the governor refuses or disagrees with is BLOCKED (exit 1); an untrustworthy manifest is BROKEN (exit 2).",
+ "_schema": {
+  "asserted_conclusion": "BREACH | NO_BREACH | UNRESOLVED \u2014 what the team claims the governor finds",
+  "bound": "positive integer \u2014 the BOUNDED fairness contract's service_bound_rounds",
+  "capacity_basis": "non-empty string \u2014 what the bound was derived from (never an arbitrary timeout)",
+  "claimant": "who asserts this claim",
+  "evidence_ref": "link to the evidence (board comment, run log, check run)",
+  "id": "unique claim id, e.g. UE-0001",
+  "obligation_id": "the scheduling obligation under governance",
+  "reconstructions": "optional list \u2014 required for every unresolved round when the governor finds UNRESOLVED: [{round_seq, status: open|settled|escalated, reason (required when escalated)}]",
+  "rounds": "non-empty list of {round_seq (int), verdict: eligible|ineligible|undetermined, adequate_service (bool \u2014 must be a known bool), defects: [{component (one of the six D58 components), kind: MISSING|CONTRADICTORY|STALE|UNVERIFIABLE, detail (non-empty)}] \u2014 UNDETERMINED rounds must carry defects; settled verdicts carry none}"
+ },
+ "claims": [
+  {
+   "_comment": "WORKED EXAMPLE \u2014 not an active claim. If registered as a claim, the gate BLOCKS it (exit 1): round 1 is UNDETERMINED (scheduler log segment MISSING) while rounds 2-3 are eligible with inadequate service; bound 2. Compatible histories end at debt 2..3 \u2014 the range straddles the bound, so the governor finds UNRESOLVED. The claim asserts NO_BREACH: unknown-laundering, the exact defect D59 exists to prevent.",
+   "asserted_conclusion": "NO_BREACH",
+   "bound": 2,
+   "capacity_basis": "scheduler capacity audit 2026-10-11",
+   "claimant": "naya2/wire (worked example)",
+   "evidence_ref": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175",
+   "id": "UE-EXAMPLE",
+   "obligation_id": "nightly-drift-restamp",
+   "reconstructions": [
+    {
+     "reason": "re-fetch scheduled from scheduler log archive",
+     "round_seq": 1,
+     "status": "open"
+    }
+   ],
+   "rounds": [
+    {
+     "adequate_service": false,
+     "defects": [
+      {
+       "component": "APPLICABLE_OPPORTUNITY",
+       "detail": "scheduler log segment for round 1 absent \u2014 re-fetch scheduled",
+       "kind": "MISSING"
+      }
+     ],
+     "round_seq": 1,
+     "verdict": "undetermined"
+    },
+    {
+     "adequate_service": false,
+     "defects": [],
+     "round_seq": 2,
+     "verdict": "eligible"
+    },
+    {
+     "adequate_service": false,
+     "defects": [],
+     "round_seq": 3,
+     "verdict": "eligible"
+    }
+   ]
+  }
+ ]
+}
