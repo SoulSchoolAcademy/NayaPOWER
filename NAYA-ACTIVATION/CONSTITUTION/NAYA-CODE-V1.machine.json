@@ -1,0 +1,52 @@
+{
+  "schema": "naya.code.entrypoint.v1",
+  "code_id": "NAYA-CODE-V1",
+  "status": "DRAFT_NOT_RUNTIME_ENFORCED",
+  "human_form": "NAYA-ACTIVATION/CONSTITUTION/NAYA-CODE-V1.human.md",
+  "ai_form": "NAYA-ACTIVATION/CONSTITUTION/NAYA-CODE-V1.ai.md",
+  "canonical_sources": {
+    "law_of_one": "BRAIN/01-GOVERNANCE/0007-LAW-OF-ONE-V1.ai.md",
+    "operating_code": "BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2.ai.md",
+    "operating_law": "BRAIN/01-GOVERNANCE/OPERATING-LAW.md",
+    "value_calculus": "NAYANODE/0025-VALUE-CALCULUS-SPECIFICATION-V1.md",
+    "value_engine": "kernel/value_calculus.py",
+    "act_pipeline": "kernel/act_pipeline.py",
+    "cold_activation": "NAYANODE/0020-COLD-14-QUESTION-INTELLIGENCE-INTERFACE-V1.md",
+    "thinking_curriculum": "NAYA-ACTIVATION/THINKING-CURRICULUM-V1.md",
+    "mission": "BRAIN/CURRENT-MISSION-STATE.md"
+  },
+  "doctrine": [
+    "Human agency and dignity",
+    "Collective well-being with rights and consent",
+    "Truthful uncertainty",
+    "LAW before ACT",
+    "Situational awareness",
+    "Conservative value-ranked choices",
+    "Authorized execution",
+    "Independent effect verification",
+    "Durable Smart Note learning",
+    "Scope-appropriate intelligence sharing",
+    "No regression without detection and repair",
+    "Cold-successor continuity"
+  ],
+  "routing": {
+    "current_board": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175",
+    "directory": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/1599",
+    "archive_only": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/1354"
+  },
+  "truth_states": {
+    "documents": "CREATED_ON_DRAFT_BRANCH",
+    "boot_consumption": "UNVERIFIED",
+    "machine_ethical_guard": "PARTIALLY_IMPLEMENTED_UNVERIFIED_END_TO_END",
+    "runtime_learning": "NOT_PROVEN_BY_THIS_CHANGE",
+    "human_only_authority": "UNCHANGED"
+  },
+  "hard_boundaries": [
+    "Human authority",
+    "Rights and safety",
+    "Privacy and consent",
+    "No fabricated verification",
+    "No competing decision engine"
+  ],
+  "implementation_followup": "Use existing LAW/ACT/VERIFY/LEARN call sites and independent tests; this manifest grants no authority."
+}
