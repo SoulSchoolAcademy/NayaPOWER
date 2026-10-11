@@ -202,6 +202,13 @@ class PlanCandidate:
     # None = not provided; the invariant is checked only when the impact
     # matrix shows material adverse effects (fail closed to NEEDS_EVIDENCE).
     design_search_record: object | None = None
+    # Law 11 v2 (Uncertainty Handler): structured harm assessments for
+    # uncertain/asymmetric/delayed/difficult-to-measure harms.
+    # Tuple of HarmAssessment objects (from kernel.protocol.harm_assessment).
+    # Empty = not provided (phase skipped). When present, each assessment
+    # is evaluated; PROHIBITED/NEEDS_EVIDENCE/NEEDS_AUTHORITY excludes
+    # the candidate.
+    harm_assessments: tuple = ()
 
 
 @dataclass(frozen=True)
@@ -724,6 +731,32 @@ def plan_action(authority: LawAuthority,
                      f"nothing admissible to execute. {detail}",
         )
 
+    # --- Law 11 v2 (Uncertainty Handler) phase. Runs AFTER Law 11 v1 hard
+    # gate and BEFORE Conflict Resolution: uncertain/asymmetric/delayed/
+    # difficult-to-measure harms get structured assessment. For candidates
+    # carrying harm_assessments, each is evaluated via assess_uncertain_harm().
+    # PROHIBITED / NEEDS_EVIDENCE / NEEDS_AUTHORITY -> excluded.
+    # Candidates WITHOUT harm_assessments skip this phase (existing behavior).
+    from kernel.protocol.harm_assessment import assess_uncertain_harm
+    law11v2_admissible: list[PlanCandidate] = []
+    law11v2_excluded: list[tuple[str, str, str]] = []  # (cid, verdict, summary)
+    for c in law11_admissible:
+        assessments = c.harm_assessments
+        if not assessments:
+            law11v2_admissible.append(c)
+            continue
+        # Build the typed action for this candidate (same as Law 11 v1 gate)
+        typed_c = _candidate_to_typed_action(c, authority, actor_id=actor_id,
+                                             environment=environment)
+        result = assess_uncertain_harm(typed_c, tuple(assessments))
+        if result.verdict in (LAW11_PROHIBITED, LAW11_NEEDS_EVIDENCE, LAW11_NEEDS_AUTHORITY):
+            law11v2_excluded.append((
+                c.candidate_id, result.verdict,
+                "; ".join(result.reasons[:3]) if result.reasons else result.verdict,
+            ))
+        else:
+            law11v2_admissible.append(c)
+
     # --- Conflict Resolution phase (Law of One). Runs AFTER Law 11 hard
     # prohibitions and BEFORE value scoring: a good calculation cannot
     # erase a group's harm. For candidates carrying a governed impact matrix,
@@ -745,7 +778,7 @@ def plan_action(authority: LawAuthority,
     cr_admissible: list[PlanCandidate] = []
     cr_excluded: list[tuple[str, str, str]] = []  # (cid, verdict, summary)
     cr_notes: list[str] = []  # informational (Pareto breakdowns, comparability)
-    for c in law11_admissible:
+    for c in law11v2_admissible:
         matrix = c.impact_matrix
         if matrix is None:
             cr_admissible.append(c)
@@ -884,12 +917,12 @@ def plan_action(authority: LawAuthority,
         if any(v == CR_PROHIBITED for _, v, _ in cr_excluded):
             return refused(
                 PLAN_SAFETY_PROHIBITED,
-                evidence=f"all {len(law11_admissible)} candidate(s) with impact "
+                evidence=f"all {len(law11v2_admissible)} candidate(s) with impact "
                          f"matrices failed Conflict Resolution; nothing admissible. {detail}",
             )
         return refused(
             PLAN_SAFETY_NEEDS_EVIDENCE,
-            evidence=f"all {len(law11_admissible)} candidate(s) with impact "
+            evidence=f"all {len(law11v2_admissible)} candidate(s) with impact "
                      f"matrices need evidence per Conflict Resolution. {detail}",
         )
 
