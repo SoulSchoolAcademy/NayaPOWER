@@ -29,10 +29,18 @@ import json
 import os
 import re
 import sys
+import time
+import urllib.error
 import urllib.request
 
 API = "https://api.github.com"
 SEAT_RE = re.compile(r"naya\s*([2345])\b", re.I)
+
+# Retry tuning for rate-limit resilience: GitHub answers 403 (secondary rate
+# limit) or 429 when the API is under pressure. Each page fetch gets up to 3
+# attempts with exponential backoff (1s, 2s, 4s) before the gate gives up.
+_API_MAX_ATTEMPTS = 3
+_API_BACKOFF_BASE_S = 1
 
 
 def fail(msg):
@@ -40,14 +48,53 @@ def fail(msg):
     sys.exit(1)
 
 
+def _fetch_page(url, headers):
+    """GET one page. Retries HTTP 403/429 (rate limits) with exponential
+    backoff; other failures propagate immediately. Returns
+    (parsed_json, link_header)."""
+    attempt = 0
+    while True:
+        attempt += 1
+        try:
+            req = urllib.request.Request(url, headers=headers)
+            with urllib.request.urlopen(req, timeout=20) as r:
+                data = json.load(r)
+                link = r.headers.get("Link", "")
+            return data, link
+        except urllib.error.HTTPError as e:
+            if e.code in (403, 429) and attempt < _API_MAX_ATTEMPTS:
+                wait = _API_BACKOFF_BASE_S * (2 ** (attempt - 1))
+                print(f"api_get: HTTP {e.code}, retrying in {wait}s "
+                      f"(attempt {attempt}/{_API_MAX_ATTEMPTS})",
+                      file=sys.stderr)
+                time.sleep(wait)
+                continue
+            raise
+
+
 def api_get(path, token):
-    req = urllib.request.Request(
-        API + path,
-        headers={"Authorization": f"Bearer {token}",
-                 "Accept": "application/vnd.github+json",
-                 "User-Agent": "naya-consensus-gate/2.0"})
-    with urllib.request.urlopen(req, timeout=20) as r:
-        return json.load(r)
+    # Follow pagination: list endpoints return up to 30 items per page by
+    # default, so gate-invisible reviews/scorecards on busy PRs (>30 comments)
+    # would silently fail the gate. Single-object endpoints return a dict
+    # and are returned as-is.
+    sep = "&" if "?" in path else "?"
+    url = API + path + sep + "per_page=100"
+    headers = {"Authorization": f"Bearer {token}",
+               "Accept": "application/vnd.github+json",
+               "User-Agent": "naya-consensus-gate/2.0"}
+    items = None
+    while url:
+        data, link = _fetch_page(url, headers)
+        if isinstance(data, list):
+            items = (items or []) + data
+        else:
+            return data
+        url = None
+        for part in link.split(","):
+            if 'rel="next"' in part:
+                url = part.split(";")[0].strip().strip("<>")
+                break
+    return items if items is not None else []
 
 
 def seat_of(text):
