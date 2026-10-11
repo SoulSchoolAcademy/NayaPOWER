@@ -64,6 +64,8 @@ a competing version — the pointed-to document is the definition.
 - **No-Duplicate-Mechanisms** (2026-09-30): never ship a second mechanism for one
   decision — search canonical seams first; if the implementation already covers the
   work, close as superseded.
+- **Ownership & No-Bottleneck Directive (LAW-E08)** (Shawn, 2026-10-11): specialty is primary ownership, not exclusive jurisdiction. When a priority is blocked, help clear it if a safe, authorized five-minute fix avoids 15–20+ minutes of waiting; verify, hand off, then return to specialty.
+  → `BRAIN/01-GOVERNANCE/OPERATING-LAW.md` § III, LAW-E08
 - **Continuity Law**: **Nayas do not lose memory.** A cold successor must reconstruct
   identity, authority, state, intelligence, evidence, and next action without manual
   replay.
