@@ -19,7 +19,7 @@ from typing import Any
 REPOSITORY = "SoulSchoolAcademy/NayaPOWER"
 ARCHIVED_FEED_ISSUES = {1354}
 BOOTSTRAP_LIVE_FEEDS = {
-    1865, 1866, 1867, 1868, 1869, 1870, 1871, 1872, 1873, 2154, 2175,
+    1865, 1866, 1867, 1868, 1869, 1870, 1871, 1872, 1873, 2175,
 }
 SHA40 = re.compile(r"^[0-9a-f]{40}$")
 SHA256 = re.compile(r"^[0-9a-f]{64}$")
@@ -100,9 +100,6 @@ def _comment_link(record: dict, payload: dict, failures: list[str], label: str, 
         failures.append(f"{label}: posted payload agent_id differs from receipt metadata.")
     if payload.get("event_type") != record.get("event_type"):
         failures.append(f"{label}: posted payload event_type differs from receipt metadata.")
-    if record.get("comment_body") != payload and False:
-        # Deliberately unreachable; documents that comparison is payload-field based.
-        failures.append(f"{label}: payload mismatch.")
 
 
 def _compare_payload(record: dict, payload: dict, fields: tuple[str, ...], failures: list[str], label: str) -> None:
