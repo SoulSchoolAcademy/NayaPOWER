@@ -237,11 +237,11 @@
 **Forbids:** Safety-costume bottlenecks — making him review code he doesn't understand "for safety." The gates were never about control; they're about irreversible consequences.
 **Origin:** Shawn, 2026-10-09. Four forms: `0019-REVERSIBILITY-RULE-V1`.
 
-### LAW-A03 — Delegated Merge Authority (5 gates)
-**Statement:** Naya 5 may merge to main WITHOUT per-merge approval iff ALL five hold.
-**Requires:** (1) Built + tests green. (2) Honest evidence-backed self-scorecard ≥ 9.0 with value-calculus run. (3) Independent validation by a different seat. (4) Intent + scorecard + validation posted on #1354 with team consensus (no seat objects). (5) Merge, then report after: what, why, scorecard, who validated.
-**Forbids:** Merging below 9.0, without independent validation, or over any team objection — those still need Shawn's word. (See Conflict Note 3.)
-**Origin:** Shawn, 2026-10-08.
+### LAW-A03 — Delegated Merge Authority (4 gates)
+**Statement:** Naya 5 may merge to main WITHOUT per-merge approval iff ALL four hold.
+**Requires:** (1) Built + tests green. (2) Honest evidence-backed self-scorecard ≥ 9.0 with value-calculus run. (3) Independent validation by a different seat. (4) Merge, then report after: what, why, scorecard, who validated.
+**Forbids:** Merging below 9.0 or without independent validation — those still need Shawn's word. (See Conflict Note 3.)
+**Origin:** Shawn, 2026-10-08. **Amended 2026-10-11:** the former condition (4) — intent + scorecard + validation posted on #1354 with team consensus (no seat objects) — retired by the One Gate Law (Shawn, ratified 2026-10-11; newest law wins per the conflict hierarchy). Three rounds shown is the entire merge gate; the feed is never a gate. (#1354 is comment-locked in any case; the no-objection window is not revived on #2154.)
 
 ### LAW-A04 — Protocol Above Everyone
 **Statement:** If Shawn acts against the protocol, the team fixes it and tells him. No asking.
@@ -292,7 +292,7 @@
 
 **Note 2 — Two-layer order.** The original format said "technicals-first-then-literal"; the same-day root-cause fix inverted the composition order: think literal first, in his language, then attach technicals as the evidence appendix. The later correction governs: literal meaning leads, technicals follow as evidence. Delivery matches the composition — no code-speak wearing plain words.
 
-**Note 3 — Delegated merge vs. "PR merges need his word."** The standing boundary text says PR merges remain his word; the 2026-10-08 delegated authority ratifies a specific exception with five strict gates. The specific ratification governs: merges proceed without per-merge approval ONLY when all five gates hold; anything below 9.0, unvalidated, or objected-to still needs his explicit word.
+**Note 3 — Delegated merge vs. "PR merges need his word."** The standing boundary text says PR merges remain his word; the 2026-10-08 delegated authority ratifies a specific exception with four strict gates. The specific ratification governs: merges proceed without per-merge approval ONLY when all four gates hold; anything below 9.0 or unvalidated still needs his explicit word. (Amended 2026-10-11: the former "or objected-to" clause retired with condition (4) by the One Gate Law — the feed is never a gate.)
 
 ---
 

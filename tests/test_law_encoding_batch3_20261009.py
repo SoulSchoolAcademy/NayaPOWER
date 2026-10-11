@@ -14,7 +14,7 @@ runs this file blind — no fixtures outside this file.
 Covers:
   - decision_receipt.py (The Decision Receipt Law)
   - wisest_choice.py    (The Wisest Choice Law — Shawn's standing command)
-  - merge_authority.py  (Delegated Merge Authority — the 5-condition gate)
+  - merge_authority.py  (Delegated Merge Authority — the 4-condition gate)
 
 Note on overlap: decision_log.py and scorecard.py (on main) hold the
 decision MATH; this batch holds the decision RECEIPT (the report), the
@@ -77,8 +77,6 @@ def _good_merge_packet():
         "self_scorecard": {"score": 9.1, "evidence_backed": True,
                            "value_calculus_run": True},
         "independent_validator": "naya-1",
-        "posted_to_1354": True,
-        "team_objections": 0,
         "post_merge_report_planned": True,
     }
 
@@ -277,18 +275,15 @@ def test_merge_fires_when_validator_unnamed():
     assert not r["pass"], "absence fails closed"
 
 
-def test_merge_fires_when_not_posted_to_1354():
+def test_merge_ignores_retired_feed_fields():
+    # One Gate Law (Shawn, ratified 2026-10-11; newest law wins): the feed
+    # is never a gate. The retired posted_to_1354 / team_objections fields
+    # are accepted if present but must not gate the merge.
     rec = _good_merge_packet()
     rec["posted_to_1354"] = False
+    rec["team_objections"] = 3
     r = merge_authority.check(rec)
-    assert not r["pass"], "unposted intent is not team consensus"
-
-
-def test_merge_fires_when_team_objects():
-    rec = _good_merge_packet()
-    rec["team_objections"] = 1
-    r = merge_authority.check(rec)
-    assert not r["pass"], "a seat objects — still needs Shawn's word"
+    assert r["pass"], f"feed fields must not gate the merge: {r['reasons']}"
 
 
 def test_merge_fires_when_no_post_merge_report():
@@ -334,7 +329,7 @@ def test_cli_wisest_choice_fires_and_silences():
 def test_cli_merge_authority_fires_and_silences():
     assert _cli("merge_authority.py", _good_merge_packet()) == 0
     bad = _good_merge_packet()
-    bad["team_objections"] = 2
+    bad["self_scorecard"]["score"] = 8.9
     assert _cli("merge_authority.py", bad) == 1
 
 

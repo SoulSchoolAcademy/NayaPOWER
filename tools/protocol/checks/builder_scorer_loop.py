@@ -24,13 +24,11 @@ validates a post when one is recorded (it must name the venue and carry
 real content), but an absent post never blocks a merge. Holding a merge
 for a feed post is the exact behavior this law forbids.
 
-OPEN TENSION — surfaced, not resolved: this law says the feed is never a
-gate, while DELEGATED-MERGE-AUTHORITY (condition 4) still requires the
-posted intent + scorecard + validation with the no-objection window. This
-check implements the loop only; it does not implement, alter, or waive
-any condition of the delegation. Reconciling "don't gate on feed" with
-"no seat objects" is for the team and Shawn — this check will not encode
-a silent resolution.
+RESOLVED 2026-10-11: the One Gate Law (Shawn, ratified 2026-10-11) settled
+this — newest law wins per the conflict hierarchy. The feed is never a
+gate; DELEGATED-MERGE-AUTHORITY's former condition (4) (posted intent +
+no-objection window) is retired, and merge_authority.py no longer enforces
+it. This check implements the loop only, as before.
 
 Honest bounds (plain English): this gate verifies the RECEIPT's shape —
 that three rounds exist, each names a distinct change, a distinct reason

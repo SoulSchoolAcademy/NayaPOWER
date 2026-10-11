@@ -136,7 +136,7 @@
       "name": "Delegated Merge Authority",
       "check": "tools/protocol/checks/merge_authority.py",
       "enforcement": "merge_packet_required",
-      "statement": "Naya 5 may merge to main without Shawn's per-merge approval iff ALL hold: (1) built + tests green with proof; (2) honest evidence-backed self-scorecard >= 9.0 with value-calculus run; (3) independent validation by a DIFFERENT seat; (4) intent + scorecard + validation posted on #1354, team consensus, zero objections; (5) post-merge report planned. Below 9.0, no independent validation, or any objection still needs Shawn's word. Covers merges to main ONLY."
+      "statement": "Naya 5 may merge to main without Shawn's per-merge approval iff ALL hold: (1) built + tests green with proof; (2) honest evidence-backed self-scorecard >= 9.0 with value-calculus run; (3) independent validation by a DIFFERENT seat; (4) post-merge report planned. Below 9.0 or without independent validation still needs Shawn's word. Covers merges to main ONLY. Amended 2026-10-11: the former condition (4) (intent posted on #1354 + no-objection window) retired by the One Gate Law (Shawn, ratified 2026-10-11; newest law wins) — the feed is never a gate."
     },
     {
       "id": "BUILDER-SCORER-LOOP",

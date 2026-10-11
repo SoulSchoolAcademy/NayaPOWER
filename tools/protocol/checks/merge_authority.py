@@ -1,17 +1,24 @@
 #!/usr/bin/env python3
-"""Delegated Merge Authority (Shawn, 2026-10-08 — ratified delegation).
+"""Delegated Merge Authority (Shawn, 2026-10-08 — ratified delegation;
+amended 2026-10-11 by the One Gate Law, newest law wins).
 
 "Naya 5 may merge to main WITHOUT Shawn's per-merge approval iff ALL hold:
 (1) built + tests green; (2) honest evidence-backed self-scorecard >= 9.0
 with value-calculus run ('most intelligent thing wins'); (3) independent
-validation by a DIFFERENT seat; (4) intent + scorecard + validation posted
-on #1354, team consensus (no seat objects); (5) merge, then report after:
-what, why, scorecard, who validated.
+validation by a DIFFERENT seat; (4) merge, then report after: what, why,
+scorecard, who validated.
 
-Below 9.0, no independent validation, or any team objection → still needs
-Shawn's word. Other protected gates (production deploys, credentials/money,
-destructive actions, security/privacy/consent/authority changes) are
-UNCHANGED — this delegation covers merges to main ONLY."
+Below 9.0 or without independent validation → still needs Shawn's word.
+Other protected gates (production deploys, credentials/money, destructive
+actions, security/privacy/consent/authority changes) are UNCHANGED — this
+delegation covers merges to main ONLY."
+
+Retired 2026-10-11: the former condition (4) — intent + scorecard +
+validation posted on #1354 with team consensus (no seat objects). The One
+Gate Law (Shawn, ratified 2026-10-11) is the newest law and wins per the
+conflict hierarchy: three rounds shown is the entire merge gate, and the
+feed is NEVER a gate. (#1354 is comment-locked in any case; the
+no-objection window is not revived on #2154.)
 
 This check verifies a merge-to-main packet carries every condition of the
 delegation. Every field the delegation's hard line depends on is REQUIRED:
@@ -31,10 +38,10 @@ Input record:
         "value_calculus_run": true
       },
       "independent_validator": "<different seat id>",
-      "posted_to_1354": true,
-      "team_objections": 0,
       "post_merge_report_planned": true
     }
+Note: packets may still carry the retired "posted_to_1354" /
+"team_objections" fields — they are accepted and ignored, never gating.
 
 Checks:
   1. Scope: target != "main" → PASS (not applicable; the delegation covers
@@ -53,17 +60,15 @@ Checks:
      != seat — validation by a DIFFERENT seat; self-validation is not
      validation. "naya5" vs "naya-5" is the same seat wearing different
      punctuation; string inequality is not identity.
-  5. posted_to_1354 true AND team_objections == 0 — intent + scorecard +
-     validation posted, team consensus, no seat objects.
-  6. post_merge_report_planned true — merge, THEN report after.
+  5. post_merge_report_planned true — merge, THEN report after.
 
 Honest bounds:
   - The evidence-shape gate verifies test_evidence is REFERENCE-SHAPED
     (resolvable in principle); it cannot verify the run actually went
     green or that the id is real. Forged-but-plausible ids are a different
-    exploit class, caught by condition (3)'s independent validator and
-    condition (4)'s #1354 posting — the check makes the claim falsifiable,
-    which is what turns "trust me" into evidence.
+    exploit class, caught by condition (3)'s independent validator and the
+    post-merge report — the check makes the claim falsifiable, which is
+    what turns "trust me" into evidence.
   - Seat normalization covers case and separators plus the KNOWN_SEAT_ALIASES
     map below. A genuinely new alias observed in the wild goes in that map
     with its evidence; the check is never weakened to accommodate one.
@@ -147,9 +152,10 @@ def check(record: dict) -> dict:
     test_evidence = _nonempty_str(record.get("test_evidence"))
     scorecard = record.get("self_scorecard")
     independent_validator = _nonempty_str(record.get("independent_validator"))
-    posted_to_1354 = record.get("posted_to_1354")
-    team_objections = record.get("team_objections")
     report_planned = record.get("post_merge_report_planned")
+    # Retired 2026-10-11 (One Gate Law, newest law wins): the former
+    # "posted_to_1354" / "team_objections" fields are accepted if present
+    # but never read as gates — the feed is never a gate.
 
     # 1. Scope: the delegation covers merges to main ONLY.
     if not target:
@@ -279,43 +285,26 @@ def check(record: dict) -> dict:
     reasons.append(f"independently validated by {independent_validator}")
     details["independent_validator"] = independent_validator
 
-    # 5. Posted on #1354, team consensus, no objections.
-    if posted_to_1354 is not True:
-        return fail(
-            f"{branch}: posted_to_1354 is not true — condition (4) 'intent + "
-            "scorecard + validation posted on #1354'; unposted intent is "
-            "not team consensus",
-            details,
-        )
-    if not isinstance(team_objections, int) or isinstance(team_objections, bool):
-        return fail(
-            f"{branch}: team_objections is not an integer count — 'no seat "
-            "objects' must be an explicit zero, not an absent field",
-            details,
-        )
-    if team_objections != 0:
-        return fail(
-            f"{branch}: team_objections = {team_objections} — a seat "
-            "objects; the delegation requires team consensus, so this merge "
-            "still needs Shawn's word",
-            details,
-        )
-    reasons.append("intent + scorecard + validation posted on #1354; no "
-                   "team objections")
-
-    # 6. Report after.
+    # 5. Merge, then report after: what, why, scorecard, who validated.
+    # (Formerly condition 6; the old condition 5 — intent posted on #1354
+    # with a no-objection window — was retired by the One Gate Law,
+    # 2026-10-11: the feed is never a gate.)
     if report_planned is not True:
         return fail(
             f"{branch}: post_merge_report_planned is not true — condition "
-            "(5) 'merge, then report after: what, why, scorecard, who "
+            "(4) 'merge, then report after: what, why, scorecard, who "
             "validated'",
             details,
         )
     reasons.append("post-merge report planned (what, why, scorecard, who "
                    "validated)")
 
-    reasons.append(f"{branch}: all 5 delegation conditions met — merge to "
+    reasons.append(f"{branch}: all 4 delegation conditions met — merge to "
                    "main authorized under the delegation")
+    details["one_gate_law"] = (
+        "former feed-posting/no-objection condition retired 2026-10-11; "
+        "the feed is never a gate"
+    )
     return result(True, reasons, details)
 
 

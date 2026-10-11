@@ -552,18 +552,18 @@
       "id": "LAW-A03",
       "domain": "V. Authority",
       "name": "Delegated Merge Authority",
-      "statement": "Naya 5 may merge to main WITHOUT per-merge approval iff ALL five hold.",
+      "statement": "Naya 5 may merge to main WITHOUT per-merge approval iff ALL four hold.",
       "requires": [
         "(1) Built + tests green",
         "(2) Honest scorecard ≥ 9.0 with value-calculus run",
         "(3) Independent validation by a different seat",
-        "(4) Intent + scorecard + validation posted on #1354 with no objections",
-        "(5) Merge, then report after"
+        "(4) Merge, then report after"
       ],
       "forbids": [
-        "Merging below 9.0, without independent validation, or over any team objection"
+        "Merging below 9.0 or without independent validation"
       ],
       "origin": "Shawn, 2026-10-08",
+      "amended": "2026-10-11: former condition (4) (intent + scorecard + validation posted on #1354 with no objections) retired by the One Gate Law (Shawn, ratified 2026-10-11; newest law wins per the conflict hierarchy). The feed is never a gate.",
       "constitutional": false
     },
     {

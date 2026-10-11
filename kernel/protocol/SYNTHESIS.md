@@ -81,4 +81,4 @@ into the machine, document as operational law, update constitution and governanc
 - [ ] PDF review: merge unique clauses from Shawn's 9 PDFs
 - [ ] Whole-brain review: 10/10 wording/logic audit results
 - [ ] Shawn's ratification: constitutional amendment + protocol v1.0
-- [ ] Naya 4 to open PR (Naya 5's token 403s on PR ops)
+- [x] PR-opener premise reconciled (PR #2371, 2026-10-11): the working seat opens PRs — the fine-grained-PAT PR-op 403 is stale (Naya 5's PAT opened #2185 itself on 2026-10-10); re-verify on any PR-op failure before re-applying the old "Naya 4 opens PRs" rule
