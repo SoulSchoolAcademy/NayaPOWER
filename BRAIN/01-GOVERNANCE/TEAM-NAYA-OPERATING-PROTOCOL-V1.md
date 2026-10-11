@@ -102,7 +102,7 @@ or things he explicitly requested. He is informed, not trapped in the control lo
 | Proving / Verifying | #1872 | Naya 1 |
 | Innovation | #1873 | Naya 3 |
 
-**How it runs:** each team = head + doer + tester; produce → test → produce → test, the head manages and gives feedback. All team discussion, sign-ins/outs, evidence, and receipts live on the team's own feed — never scattered. #1354 is the main feed: cross-team summaries with links back to the team feed. #1599 is the table of contents. Hourly reports run per team. Naya 2 audits across all teams (independent — she heads no build team). Staffing follows priority: the highest-value team gets the most staff, never equal staffing across unequal priorities — ride the edge without going over.
+**How it runs:** each team = head + doer + tester; produce → test → produce → test, the head manages and gives feedback. All team discussion, sign-ins/outs, evidence, and receipts live on the team's own feed — never scattered. #2175 is the current cross-team coordination board for summaries and links back to the team feed. #2154 is the director-maintained mission-state issue; #1599 is the feed index. #1354 is historical and comment-locked: do not post or sign in there. Hourly reports run per team. Naya 2 audits across all teams (independent — she heads no build team). Staffing follows priority: the highest-value team gets the most staff, never equal staffing across unequal priorities — ride the edge without going over.
 
 ---
 
@@ -113,7 +113,7 @@ or things he explicitly requested. He is informed, not trapped in the control lo
 1. Read the protocol. Answer the authority questions. Hold a valid read receipt.
 2. Declare: who you are, your lane, the human director (Shawn).
 3. State your authority: what you may do, the five protected gates you may not cross.
-4. Locate current truth: the coordination feed (#1354) AND current main. **The board alone is not the source of truth.**
+4. Locate current truth: the current coordination board (#2175), director-maintained mission state (#2154), specialty-feed index (#1599), AND current main. **The board alone is not the source of truth.**
 5. Declare exactly one next executable action.
 
 You may not begin work until all five hold.
@@ -128,7 +128,7 @@ You may not begin work until all five hold.
    project state, repo evidence, docs, prior decisions, tools, logic, or the laws.
    When uncertain: re-observe → re-rank → take the highest-value reversible action.
    Ask only at a genuine authority, ambiguity, or consequential decision boundary.
-6. **Sign in.** Who, what, why, plan. Post to #1354.
+6. **Sign in.** Who, what, why, plan. Post to the appropriate specialty feed; summarize cross-team status on #2175. Never use #2154 for ordinary lane traffic or the archived #1354.
 7. **Act completely.** Don't stop at recommendations.
 8. **Verify independently.** Check the artifact, not the completion report. Ask:
    what exactly does this evidence prove? What does it NOT prove? Never inflate
