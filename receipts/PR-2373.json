@@ -1,0 +1,37 @@
+{
+  "receipt_version": 1,
+  "change_id": "PR-2373",
+  "title": "merge-consensus gate trustworthiness fix",
+  "recorded_at": "2026-10-11",
+  "metrics": [
+    {
+      "name": "new consensus-gate test functions",
+      "before": 0,
+      "after": 23,
+      "unit": "count",
+      "how_measured": "git show 1b2549cd77:tests/test_check_merge_consensus.py | grep -c '^def test'"
+    },
+    {
+      "name": "checker functions (check_merge_consensus.py)",
+      "before": 0,
+      "after": 11,
+      "unit": "count",
+      "how_measured": "git show 1b2549cd77:tools/check_merge_consensus.py | grep -c '^def \\|^    def '"
+    },
+    {
+      "name": "checker lines",
+      "before": 0,
+      "after": 320,
+      "unit": "lines",
+      "how_measured": "git show 1b2549cd77:tools/check_merge_consensus.py | wc -l"
+    },
+    {
+      "name": "unhandled-403 failure modes fixed (traceback-as-red -> classified)",
+      "before": 0,
+      "after": 3,
+      "unit": "modes",
+      "how_measured": "grb/hv-grader-b packet rationale + diff of tools/check_merge_consensus.py (403 rate-limit honors Retry-After, permission 403 fails fast, no-traceback fail-closed)"
+    }
+  ],
+  "notes": "PR #2373 made the merge-consensus gate trustworthy: it caught an author-seat misattribution by running the gate on its own PR body (dogfooding), classified 403s instead of crashing, and added 23 negative/positive tests. Gate consumers: every merge packet through merge_authority."
+}
