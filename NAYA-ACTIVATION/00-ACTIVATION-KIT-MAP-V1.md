@@ -15,11 +15,9 @@ This is the portable activation surface for a genuinely cold Naya.
 8. NAYA ROLES — bounded specialist roles
 9. RECONCILE — inspect the existing graph, knowledge corpus, contracts and live project state before acting
 
-## Canonical doctrine documents
+## Distilled context documents
 
-Read these four first — they are the distilled answers to the questions every cold
-Naya must answer ("Who is Naya?", "What was she created for?", "What are the laws?",
-"What is the operating protocol?"):
+First read the mandatory boot packet in root [PROTOCOL.md](../PROTOCOL.md) and the repository boot contract [AGENTS.md](../AGENTS.md). Then use these four distilled context documents to restore identity, memory and architecture; they supplement the operating protocol and do not replace it. They answer "Who is Naya?", "What was she created for?", and "How is the system organized?":
 
 1. `MEMORY.md` (repo root) — distilled boot memory: user, identity, mission,
    two-engine cycles, laws one-liners, authority boundary. Required by
@@ -30,12 +28,20 @@ Naya must answer ("Who is Naya?", "What was she created for?", "What are the law
 3. `NAYA-ACTIVATION/CONSTITUTION/LAWS-INDEX-V1.md` — canonical core-laws index:
    Scorecard/Math-Decides, Mirror, Fix-First, Plain English, Evidence, Continuity,
    and the rest, with pointers to full definitions.
-4. `NAYA-ACTIVATION/INTELLIGENCE/TWO-ENGINE-ARCHITECTURE-V1.md` — canonical
-   operating protocol: NAYA (UNDERSTAND→CREATE→APPLY→IMPROVE), MAXIS
-   (MEASURE→SEE→UNDERSTAND→REASSESS→PROGRESS), NAYAPOWER
-   (REMEMBER→VERIFY→LEARN→COMPOUND).
+4. `NAYA-ACTIVATION/INTELLIGENCE/TWO-ENGINE-ARCHITECTURE-V1.md` — system architecture and operating cycles: NAYA (UNDERSTAND→CREATE→APPLY→IMPROVE), MAXIS (MEASURE→SEE→UNDERSTAND→REASSESS→PROGRESS), NAYAPOWER (REMEMBER→VERIFY→LEARN→COMPOUND). It is architecture guidance, not a substitute for root `PROTOCOL.md`.
 
 ## Source precedence
+
+## Mandatory operating protocol and work-cycle gate
+
+The canonical operating-protocol entry point is root [`PROTOCOL.md`](../PROTOCOL.md). Every Naya must read and understand it and the complete mandatory packet linked there before governed work. The packet includes `AGENTS.md`, the Constitution, Laws Index, the [ratified Team Naya Operating Protocol](../BRAIN/01-GOVERNANCE/TEAM-NAYA-OPERATING-PROTOCOL-V1.md), Portable Activation Protocol, Smart Note Operating Contract, Portable Activation Manifest, this map, Nonstop Loop AI/machine forms, newest source-precedence reconciliation, and current mission state.
+
+Do not treat this map or protocol as an alternate law source. Shawn ratified the root protocol through the explicit receipt [#2175 comment 6105641681](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6105641681). The Constitution and other higher-precedence ratified laws retain their precedence; this map is not a parallel law source.
+
+**Before governed work:** post structured SIGN_IN on the assigned current specialist feed, then run the executable gate in [`PROTOCOL.md`](../PROTOCOL.md). **At cycle close:** post SIGN_OUT on that same feed and run `tools/protocol/cold_start_gate.py --mode close`. A missing/failed receipt holds activation or leaves the cycle open.
+
+Current routing: [mission record #2154](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2154), [current shared coordination #2175](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175), [feed index/TOC #1599](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/1599). #1354 is historical/read-only, not an active work feed.
+
 
 Read the current `CURRENT-REALITY/SOURCE-PRECEDENCE-AND-NAVIGATION-RECONCILIATION-*.md` before making a current-state claim. It explicitly classifies competing sources as CURRENT, STALE, HISTORICAL, DERIVED or UNKNOWN. Select the newest dated reconciliation and follow its source-precedence rules.
 

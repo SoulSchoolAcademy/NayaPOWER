@@ -10,20 +10,42 @@ Read it before anything else in this file. It is the code of all codes.
 
 Any AI agent entering this repository must treat this file as the operational entry point.
 
-Before changing code, documentation, infrastructure, or configuration:
+Before changing code, documentation, infrastructure, or configuration, complete the mandatory reading and activation sequence below. The sequence order is intentional:
 
-1. Read this file completely.
-2. Read `NAYA-ACTIVATION/PORTABLE-ACTIVATION-PROTOCOL-V1.md`.
-3. Read `NAYA-ACTIVATION/SMART-NOTE-OPERATING-CONTRACT-V1.md`.
-4. Read `NAYA-ACTIVATION/PORTABLE-ACTIVATION-MANIFEST-V1.json`.
-5. Read `NAYA-ACTIVATION/00-ACTIVATION-KIT-MAP-V1.md`.
-6. Read the newest dated `NAYA-ACTIVATION/CURRENT-REALITY/SOURCE-PRECEDENCE-AND-NAVIGATION-RECONCILIATION-*.md`.
-7. Read the relevant activation-domain README(s) and leaf contracts needed for the assigned work.
-8. Reconcile the package with the existing graph and knowledge surfaces: `BRAIN/00-SPEC/`, `BRAIN/04-INTELLIGENCE/`, `BRAIN/11-KNOWLEDGE/`, and `KNOWLEDGE/`.
-9. Read ratified project intelligence from `.naya/project-intelligence/`.
-10. Inspect current `main`, current GitHub issues/PRs, recent commits, and claim-matched proof/workflow evidence relevant to the assigned work.
-11. Read `BRAIN/01-GOVERNANCE/0004-NONSTOP-LOOP-V1.ai.md` and `BRAIN/01-GOVERNANCE/0004-nonstop-loop-v1.machine.json` — standing NONSTOP LOOP operating law and machine twin.
-12. Establish the human director, authority, scope, current state, proof state, blockers, and exactly one next action.
+1. Read **[PROTOCOL.md](./PROTOCOL.md)** in full first.
+2. Read **[AGENTS.md](./AGENTS.md)** (this boot contract) in full.
+3. Read the **[Founding Constitution](./NAYA-ACTIVATION/CONSTITUTION/CONSTITUTION.md)**.
+4. Read the **[Laws Index](./NAYA-ACTIVATION/CONSTITUTION/LAWS-INDEX-V1.md)**.
+5. Read the **[ratified Team Naya Operating Protocol](./BRAIN/01-GOVERNANCE/TEAM-NAYA-OPERATING-PROTOCOL-V1.md)**.
+6. Read the **[Portable Activation Protocol](./NAYA-ACTIVATION/PORTABLE-ACTIVATION-PROTOCOL-V1.md)**.
+7. Read the **[Smart Note Operating Contract](./NAYA-ACTIVATION/SMART-NOTE-OPERATING-CONTRACT-V1.md)**.
+8. Read `NAYA-ACTIVATION/PORTABLE-ACTIVATION-MANIFEST-V1.json`.
+9. Read the **[Activation Kit Map](./NAYA-ACTIVATION/00-ACTIVATION-KIT-MAP-V1.md)**.
+10. Read both the Nonstop Loop AI law and its machine twin: `BRAIN/01-GOVERNANCE/0004-NONSTOP-LOOP-V1.ai.md` and `BRAIN/01-GOVERNANCE/0004-nonstop-loop-v1.machine.json`.
+11. Read the newest dated `NAYA-ACTIVATION/CURRENT-REALITY/SOURCE-PRECEDENCE-AND-NAVIGATION-RECONCILIATION-*.md`.
+12. Establish current mission truth from `BRAIN/CURRENT-MISSION-STATE.md`, current `main`, issues/PRs, recent commits, and claim-matched proof/workflow evidence.
+13. Read the relevant activation-domain READMEs and leaf contracts for the assigned work. Reconcile them with the existing graph/knowledge surfaces: `BRAIN/00-SPEC/`, `BRAIN/04-INTELLIGENCE/`, `BRAIN/11-KNOWLEDGE/`, and `KNOWLEDGE/`; inspect ratified project intelligence in `.naya/project-intelligence/`.
+14. Establish the human Director, seat, authority, scope, current state, proof state, blockers, owner/overlap, and exactly one next action.
+15. Complete the thirteen free-text comprehension questions in `PROTOCOL.md`. Create a source-revision-bound receipt for the required packet. Missing, stale or conflicting sources, an invalid receipt, or failed comprehension means `ACTIVATION_HELD`.
+16. Before substantive governed work, post a structured `SIGN_IN` to the assigned live specialist feed and run the executable pre-work gate from `PROTOCOL.md`. Proceed only if it exits 0 with `pass: true`.
+17. At cycle close, post structured `SIGN_OUT` to the same live feed and run the gate's `--mode close` check. No passing receipt means the cycle remains open.
+
+The read set includes the protocol itself, this boot contract, Constitution, Laws Index, ratified Team Naya Operating Protocol, Portable Activation Protocol, Smart Note Operating Contract, Portable Activation Manifest, Activation Kit Map, Nonstop Loop AI/machine forms, newest source-precedence reconciliation, and current mission snapshot. A file-open checkbox or unkeyed digest alone does not prove comprehension or authenticate the issuer.
+
+
+The mission record is [#2154](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2154); the current shared coordination board is [#2175](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175); [#1599](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/1599) is a feed index/TOC. Feed IDs and ownership must be refreshed from current mission state. #1354 is historical/read-only.
+
+Executable pre-work gate:
+```bash
+python tools/protocol/cold_start_gate.py --agent-id <seat-id> --answers-json <answers.json> --write-read-receipt <temporary-receipt.json> --sign-in-record <sign-in.json> --json
+```
+
+Executable cycle-close gate:
+```bash
+python tools/protocol/cold_start_gate.py --agent-id <seat-id> --mode close --sign-in-record <sign-in.json> --sign-out-record <sign-out.json> --json
+```
+
+Use `GH_TOKEN` or `GITHUB_TOKEN` with issue-comment read access. The gate validates the actual checkout revisions and fetches posted GitHub comments. If a required source, current main, feed post, credential, or proof is missing, hold governed work; never convert missing evidence into a pass. Safe read-only work may continue.
 
 Do not rely on hidden conversation memory. Do not infer project truth from this file when stronger current evidence says otherwise.
 

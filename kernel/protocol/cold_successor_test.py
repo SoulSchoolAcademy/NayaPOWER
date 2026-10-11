@@ -9,6 +9,8 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 
+from .work_cycle_receipt import check_sign_out
+
 
 @dataclass
 class Handoff:
@@ -19,6 +21,10 @@ class Handoff:
     what_is_open: str
     what_is_blocked: str
     next_action: str
+    sign_in_receipt: dict | None = None
+    sign_out_receipt: dict | None = None
+    current_main_sha: str = ""
+    live_feed_issues: list[int] | None = None
 
 
 @dataclass
@@ -43,4 +49,15 @@ def check_handoff(h: Handoff) -> SuccessorResult:
     # what_is_blocked may legitimately be "none" — but must be stated.
     if not h.what_is_blocked.strip():
         failures.append("Handoff missing: blockers (state 'none' if unblocked).")
+    if h.sign_in_receipt is None or h.sign_out_receipt is None:
+        failures.append("Handoff missing: validated SIGN_IN and SIGN_OUT on the same live specialist feed.")
+    else:
+        allowed = set(h.live_feed_issues) if h.live_feed_issues is not None else None
+        receipt_result = check_sign_out(
+            h.sign_in_receipt,
+            h.sign_out_receipt,
+            h.current_main_sha,
+            allowed,
+        )
+        failures.extend(receipt_result.failures)
     return SuccessorResult(passed=not failures, failures=failures)
