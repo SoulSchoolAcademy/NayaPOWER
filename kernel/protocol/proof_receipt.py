@@ -58,6 +58,45 @@ SCOPE_MISMATCH = "SCOPE_MISMATCH"
 REVOKED = "REVOKED"
 EXPIRED = "EXPIRED"
 INTEGRITY_TAMPERED = "INTEGRITY_TAMPERED"
+MANDATORY_BINDING_MISSING = "MANDATORY_BINDING_MISSING"
+
+# MANDATORY BINDINGS — per action type, the receipt fields that MUST be
+# bound. "Recorded openly" is not a license to skip what the action type
+# requires: UNBOUND on a mandatory field FAILS validation (Shawn's Evidence
+# Binding Law, 2026-10-11: "mandatory bindings per action type; UNBOUND on
+# mandatory = FAIL").
+#
+# Keyed by (operation, environment). Production state-changing operations
+# must pin the exact source, the governing law version, and the authorized
+# scope the verdict was earned against. Development/test and read-only
+# operations keep the honest-UNBOUND semantics (non-comparable, never
+# silently valid).
+#
+# Operation literals mirror kernel.protocol.typed_action.OPERATION_* (kept
+# literal here to avoid an import cycle; the values are stable).
+_MANDATORY_BINDINGS: dict[tuple[str, str], tuple[str, ...]] = {
+    ("deploy", "production"): ("source_sha", "policy_version", "scope"),
+    ("migrate", "production"): ("source_sha", "policy_version", "scope"),
+    ("delete", "production"): ("source_sha", "policy_version", "scope"),
+    ("grant", "production"): ("source_sha", "policy_version", "scope"),
+    ("merge", "production"): ("source_sha", "policy_version", "scope"),
+    ("write", "production"): ("source_sha", "policy_version", "scope"),
+}
+
+
+def mandatory_bindings(operation: str, environment: str) -> tuple[str, ...]:
+    """Fields that must be bound (not UNBOUND) for this action type."""
+    return _MANDATORY_BINDINGS.get((operation, environment), ())
+
+
+def missing_mandatory_bindings(receipt: "ProofReceipt") -> tuple[str, ...]:
+    """Mandatory fields left UNBOUND on the receipt. Empty = complete."""
+    return tuple(
+        field
+        for field in mandatory_bindings(receipt.operation, receipt.environment)
+        if getattr(receipt, field, UNBOUND) == UNBOUND
+    )
+
 
 # Re-verification outcomes.
 STILL_VALID = "STILL_VALID"
@@ -203,35 +242,42 @@ def check_proof_validity(
 
     Fail-closed order, most severe first:
       1. INTEGRITY_TAMPERED — the receipt itself was altered. Never trusted.
-      2. REVOKED — the bound revocation reference was exercised.
-      3. EXPIRED — the validity window passed.
-      4. SOURCE_SHA_MOVED — bound SHA differs from current SHA (both bound).
-      5. POLICY_VERSION_CHANGED / POLICY_HASH_CHANGED — the governing law moved.
-      6. RESOURCE_STATE_CHANGED — the target's state moved.
-      7. SCOPE_MISMATCH — the receipt's scope does not cover the current scope.
+      2. MANDATORY_BINDING_MISSING — the action type requires bindings the
+         receipt left UNBOUND (Shawn's Evidence Binding Law: UNBOUND on
+         mandatory = FAIL). An incomplete proof cannot validate.
+      3. REVOKED — the bound revocation reference was exercised.
+      4. EXPIRED — the validity window passed.
+      5. SOURCE_SHA_MOVED — bound SHA differs from current SHA (both bound).
+      6. POLICY_VERSION_CHANGED / POLICY_HASH_CHANGED — the governing law moved.
+      7. RESOURCE_STATE_CHANGED — the target's state moved.
+      8. SCOPE_MISMATCH — the receipt's scope does not cover the current scope.
 
-    Unbound fields are non-comparable: they neither validate nor invalidate.
-    Immaterial change (description text, display names) is not in the bound
-    set and can never invalidate — an unrelated source change does not erase
-    independent outcome evidence.
+    Unbound NON-mandatory fields are non-comparable: they neither validate
+    nor invalidate. Immaterial change (description text, display names) is
+    not in the bound set and can never invalidate — an unrelated source
+    change does not erase independent outcome evidence.
     """
     # 1. Tamper: a receipt that does not match its own digest is unusable.
     if not receipt.integrity_ok():
         return False, INTEGRITY_TAMPERED
-    # 2. Revocation exercised.
+    # 2. Mandatory bindings: the action type's required fields must be bound.
+    missing = missing_mandatory_bindings(receipt)
+    if missing:
+        return False, MANDATORY_BINDING_MISSING
+    # 3. Revocation exercised.
     if receipt.revocation_ref is not None and receipt.revocation_ref in context.revoked_refs:
         return False, REVOKED
-    # 3. Validity window passed.
+    # 4. Validity window passed.
     if receipt.valid_until is not None and context.now > receipt.valid_until:
         return False, EXPIRED
-    # 4. Source SHA moved (only when both sides bound the SHA).
+    # 5. Source SHA moved (only when both sides bound the SHA).
     if (
         receipt.source_sha != UNBOUND
         and context.source_sha != UNBOUND
         and receipt.source_sha != context.source_sha
     ):
         return False, SOURCE_SHA_MOVED
-    # 5. Policy moved.
+    # 6. Policy moved.
     if (
         receipt.policy_version != UNBOUND
         and context.policy_version != UNBOUND
@@ -244,14 +290,14 @@ def check_proof_validity(
         and receipt.policy_hash != context.policy_hash
     ):
         return False, POLICY_HASH_CHANGED
-    # 6. Resource state moved.
+    # 7. Resource state moved.
     if (
         receipt.resource_state_digest != UNBOUND
         and context.resource_state_digest != UNBOUND
         and receipt.resource_state_digest != context.resource_state_digest
     ):
         return False, RESOURCE_STATE_CHANGED
-    # 7. Scope mismatch: the receipt must cover the current scope.
+    # 8. Scope mismatch: the receipt must cover the current scope.
     if (
         receipt.scope != UNBOUND
         and context.scope != UNBOUND
@@ -267,7 +313,8 @@ def reverify(receipt: ProofReceipt, context: ProofContext) -> str:
     RECHECK: dependencies moved in a way that only requires re-running the
     gate against the same proof (e.g. policy hash drifted under same version).
     REVERIFY: the proof must be re-earned — expiry, revocation, tamper,
-    or a material world move (SHA, version, resource state, scope).
+    a material world move (SHA, version, resource state, scope), or a
+    missing mandatory binding.
     """
     valid, event = check_proof_validity(receipt, context)
     if valid:
