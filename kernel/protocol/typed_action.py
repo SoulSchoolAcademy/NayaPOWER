@@ -37,8 +37,10 @@ All layers fail closed. A PROHIBITED verdict at any layer is final.
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+from collections.abc import Callable
 
 from kernel.protocol import harm_profile as _hp
+from kernel.protocol import neutrality_finding as _nf
 
 
 # Canonical operations. The gate reasons about what is being DONE,
@@ -101,6 +103,11 @@ class TypedAction:
     # Structured per-group harm profile (T-05). None = not assessed.
     harm_profile: _hp.HarmProfile | None = None
 
+    # Neutrality finding states (T-06) for the profile's "no material harm"
+    # claims (kernel/protocol/neutrality_finding.py). Empty = the gate treats
+    # every required claim as UNKNOWN and fails closed (R1 -> R4).
+    neutrality_assessments: tuple[_nf.NeutralityAssessment, ...] = ()
+
     # Free-text description retained for audit, NEVER used for the verdict.
     description: str = ""
 
@@ -156,8 +163,16 @@ def _is_production_write(action: TypedAction) -> bool:
     )
 
 
-def law11_gate(action: TypedAction) -> Law11Verdict:
+def law11_gate(
+    action: TypedAction,
+    window_exists: Callable[[str], bool] | None = None,
+) -> Law11Verdict:
     """Law 11 (Do No Harm) gate. Runs BEFORE Value Calculus scoring.
+
+    window_exists: optional T-07 observation-window registry verifier,
+        threaded through to the neutrality consult (T-06). When absent,
+        DELAYED claims naming a window fail closed as unverifiable —
+        a fake window name never passes as a real observation window.
 
     Order of checks (fail-closed, most severe first):
       1. Inherently prohibited operations -> PROHIBITED (no override)
@@ -166,6 +181,10 @@ def law11_gate(action: TypedAction) -> Law11Verdict:
           harm (catastrophic, or major+irreversible, any single group);
           NEEDS_EVIDENCE on any unknown dimension. No authority can permit
           blocking harm — this runs BEFORE the protected-gate checks.
+      2c. Neutrality-trap finding classification (when a profile is present):
+          every "no material harm" claim needs a validated finding state;
+          missing state / unvalidated claim -> NEEDS_EVIDENCE. DELAYED with
+          a named observation window rides the advisory note.
       3. Protected operations without authority -> NEEDS_AUTHORITY
       4. Unknown safety/privacy/rights status -> NEEDS_EVIDENCE
       5. Otherwise -> ADMISSIBLE
@@ -259,6 +278,30 @@ def law11_gate(action: TypedAction) -> Law11Verdict:
             # Carried on the eventual verdict's reasons at step 5 so the
             # audit record shows delayed harm was seen, not skipped.
             delay_note = (f"HARM_PROFILE_DELAYED_OBSERVATION_REQUIRED:{','.join(delayed_groups)}",)
+
+    # 2c. Neutrality-trap finding classification (T-06). Layers on 2b: every
+    # "no material harm" claim (negligible severity for a group) must carry
+    # a machine-validated finding state. A missing state is treated as
+    # UNKNOWN (R1) and fails closed (R4); a wide-interval-centered-on-zero is
+    # INCONCLUSIVE, never neutrality (R2); post-hoc tolerances are rejected
+    # (R3). Only TRUE_ZERO / PRACTICALLY_NEUTRAL clear a dimension (R6).
+    # DELAYED with a named T-07 window rides delay_note as advisory (R5).
+    if action.harm_profile is not None:
+        nconsult = _nf.consult_neutrality(
+            action.harm_profile, action.neutrality_assessments,
+            window_exists=window_exists,
+        )
+        if nconsult.blocks_admission:
+            return Law11Verdict(
+                verdict=NEEDS_EVIDENCE,
+                reasons=nconsult.needs_evidence_reasons,
+                # Gap 2 fix: groups as direct data from the consult, never
+                # parsed out of reason strings.
+                affected_interests=nconsult.affected_groups,
+                policy_version=policy,
+            )
+        if nconsult.delayed_advisory:
+            delay_note = delay_note + nconsult.delayed_advisory
 
     # 3. Protected gates: these operations need explicit authority.
     #    Checked on typed fields — rewording the description cannot bypass.

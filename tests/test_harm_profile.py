@@ -103,9 +103,18 @@ def test_major_reversible_not_blocked_but_major_irreversible_blocked():
 def test_negligible_irreversible_not_blocked():
     # Irreversibility alone is not harm: negligible severity stays admissible.
     # Severity and reversibility are independent — one never implies the other.
+    # T-06 update: the negligible ("no material harm") claim now carries its
+    # finding state (TRUE_ZERO by mechanism); without one the gate fails
+    # closed on the neutrality trap (see tests/test_neutrality_trap.py).
+    from kernel.protocol import neutrality_finding as nf
     profile = _profile(_group("g1", severity=hp.SEVERITY_NEGLIGIBLE,
                               reversibility=hp.REV_IRREVERSIBLE))
-    v = law11_gate(_action(profile))
+    assessment = nf.NeutralityAssessment(
+        dimension="severity", group="g1", finding=nf.TRUE_ZERO,
+        zero_by_mechanism=True,
+        zero_by_mechanism_ref="no write path reaches external systems",
+    )
+    v = law11_gate(_action(profile, neutrality_assessments=(assessment,)))
     assert v.verdict == ADMISSIBLE
     assert not any(r.startswith("BLOCK:") for r in v.reasons)
 
