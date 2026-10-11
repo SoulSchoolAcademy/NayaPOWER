@@ -314,6 +314,59 @@ class TestStructuredAssessment:
         assert verdict.verdict == NEEDS_AUTHORITY
         assert any("CONSEQUENTIAL_RISK" in r for r in verdict.reasons)
 
+    def test_high_severity_unmitigated_needs_authority(self):
+        """High severity + complete + reliable + NO mitigation → human decides.
+
+        Safety regression test (validator finding 2026-10-11): this case
+        previously fell through to ADMISSIBLE. It must NEVER be admissible.
+        """
+        action = _safe_action()
+        assessment = _full_assessment(
+            severity=SEVERITY_HIGH,
+            likelihood_reliability="high",
+            mitigation_available=False,
+            monitoring_ready=False,
+            neutrality_state=NEUTRAL_TRUE_ZERO,
+        )
+        assert assessment.is_fully_assessed()
+        verdict = assess_uncertain_harm(action, (assessment,))
+        assert verdict.verdict == NEEDS_AUTHORITY
+        assert any("CONSEQUENTIAL_RISK_UNMITIGATED" in r for r in verdict.reasons)
+
+    def test_critical_severity_unmitigated_needs_authority(self):
+        """Critical severity + NO mitigation → human decides, never ADMISSIBLE."""
+        action = _safe_action()
+        assessment = _full_assessment(
+            severity=SEVERITY_CRITICAL,
+            likelihood_reliability="high",
+            mitigation_available=False,
+            monitoring_ready=False,
+            neutrality_state=NEUTRAL_TRUE_ZERO,
+        )
+        assert assessment.is_fully_assessed()
+        verdict = assess_uncertain_harm(action, (assessment,))
+        assert verdict.verdict == NEEDS_AUTHORITY
+        assert any("CONSEQUENTIAL_RISK_UNMITIGATED" in r for r in verdict.reasons)
+
+    def test_high_severity_partial_safeguards_still_needs_authority(self):
+        """High severity with only ONE of mitigation/monitoring → still blocked.
+
+        Either safeguard missing is enough to require human judgment.
+        """
+        action = _safe_action()
+        for mitigation, monitoring in [(True, False), (False, True)]:
+            assessment = _full_assessment(
+                severity=SEVERITY_HIGH,
+                likelihood_reliability="high",
+                mitigation_available=mitigation,
+                monitoring_ready=monitoring,
+                neutrality_state=NEUTRAL_TRUE_ZERO,
+            )
+            verdict = assess_uncertain_harm(action, (assessment,))
+            assert verdict.verdict == NEEDS_AUTHORITY, (
+                f"mitigation={mitigation}, monitoring={monitoring}"
+            )
+
 
 # ---------------------------------------------------------------------------
 # 5. Neutrality trap — six states, only two safe

@@ -368,8 +368,12 @@ def assess_uncertain_harm(
                 reasons.append(f"PROVISIONAL_WINDOW:{assessment.stakeholder_group}")
 
     # Step 3: Consequential risk needing human judgment → NEEDS_AUTHORITY.
-    # If any assessment has high/critical severity with mitigation but
-    # the action is otherwise admissible, it needs human authority.
+    # HIGH/CRITICAL severity ALWAYS requires human authority, whether or not
+    # mitigation exists. An unmitigated high-severity risk must NEVER be
+    # ADMISSIBLE — failing closed here is the entire point of Law 11.
+    # (Safety fix 2026-10-11: prior code only fired this check when
+    # mitigation_available AND monitoring_ready were both true, letting
+    # unmitigated HIGH/CRITICAL fall through to ADMISSIBLE.)
     for assessment in assessments:
         if assessment.severity in (SEVERITY_HIGH, SEVERITY_CRITICAL):
             if assessment.mitigation_available and assessment.monitoring_ready:
@@ -383,6 +387,17 @@ def assess_uncertain_harm(
                     affected_interests=tuple(interests + [assessment.stakeholder_group]),
                     policy_version=policy,
                 )
+            # Unmitigated (or unmonitored) consequential risk → human decides.
+            # This is MORE restrictive than the mitigated case, never less.
+            return Law11Verdict(
+                verdict=NEEDS_AUTHORITY,
+                reasons=tuple(reasons + [
+                    f"CONSEQUENTIAL_RISK_UNMITIGATED:{assessment.stakeholder_group}",
+                    f"SEVERITY:{assessment.severity}",
+                ]),
+                affected_interests=tuple(interests + [assessment.stakeholder_group]),
+                policy_version=policy,
+            )
 
     # Step 4: Preserve v1's NEEDS_EVIDENCE / NEEDS_AUTHORITY.
     if v1_verdict_value in (NEEDS_EVIDENCE, NEEDS_AUTHORITY):
