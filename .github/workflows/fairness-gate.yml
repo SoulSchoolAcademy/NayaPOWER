@@ -51,7 +51,7 @@ jobs:
       - name: Install pytest
         run: python3 -m pip install pytest
       - name: Run Fairness & Liveness gate test suite (real asserts, no theater)
-        run: python3 -m pytest tools/tests/test_fairness.py tools/tests/test_merge_queue_fairness.py -v -p no:cacheprovider
+        run: python3 -m pytest tools/tests/test_fairness.py tools/tests/test_merge_queue_fairness.py tools/tests/test_fairness_assumptions.py -v -p no:cacheprovider
       - name: End-to-end wiring proof -- scanner judges the fixture queue
         # The fixture's PR 9001 is eligible and starving BY DESIGN.
         # Exit 1 with a witness naming PR-9001 proves the gate fires in CI.
