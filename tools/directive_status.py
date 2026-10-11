@@ -119,6 +119,14 @@ def promote_entry(entry: dict, to_status: str, evidence_pr: int, gate: str | Non
             )
     entry["status"] = to_status
     entry["evidence_pr"] = evidence_pr
+    if to_status == "ENFORCED":
+        # REPAIR (wire lane 2026-10-11): the validated gate was accepted and
+        # receipted but never written to the entry — the register could not
+        # answer which live mechanism enforces the directive. Persist it.
+        # (Path-existence validation stays with the caller: validate_gate
+        # needs a repo root, which this function does not receive. The
+        # status-honesty gate re-validates gate paths on the PR path.)
+        entry["gate"] = gate
     return entry
 
 
