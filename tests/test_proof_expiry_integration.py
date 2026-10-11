@@ -33,12 +33,17 @@ def _valid_receipt():
 
 
 def _base_state():
+    # Fixture satisfies the CURRENT cold-start gate contract (the gate is a
+    # separately-tested mechanism: Law 11 acknowledgment + #2154/main
+    # navigation markers). This file tests Law 12 plumbing, not the gate.
     return ColdStartState(
         agent_id="test-agent",
         human_director="Shawn",
         lane="test",
-        authority_summary="production, credentials, money, destructive, ratification",
-        current_truth_location="feed #1354 and main",
+        authority_summary="Protected gates: production, credentials, money, "
+                          "destructive, ratification. "
+                          "Law 11 (do no harm) is the only hard law.",
+        current_truth_location="mission-state feed #2154 and current main",
         next_action="do the work",
         receipt=_valid_receipt(),
     )
@@ -158,6 +163,12 @@ def _make_plan_parts(parts):
         reversibility="REVERSIBLE",
         expected_outcome="test",
         proof_requirements=(),
+        # Safety flags: explicit, not unknown (Zero Value Law: unknown != safe).
+        # The fixture must be Law-11-admissible so the Law-12 check is the
+        # layer under test — unknown dims fail closed at the execution door.
+        rights_safe=True,
+        safety_safe=True,
+        privacy_safe=True,
     )
     plan = ActionPlan(
         plan_id="plan-1", action="test-action", chosen=candidate,
