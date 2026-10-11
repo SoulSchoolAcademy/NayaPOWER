@@ -499,8 +499,7 @@ class SchedulabilityAssessment:
                 f"window {self.window_us}us < dispatch cost "
                 f"{self.dispatch_cost_us}us: NOT a usable opportunity — "
                 f"strong fairness is not a substitute for fixing this "
-                f"mismatch (need: {self.mechanism or 'a reservation/claim '
-                'mechanism'})")
+                f"mismatch (need: {self.mechanism or 'a reservation/claim mechanism'})")
         return True, (
             f"window {self.window_us}us >= dispatch cost "
             f"{self.dispatch_cost_us}us: usable opportunity")
