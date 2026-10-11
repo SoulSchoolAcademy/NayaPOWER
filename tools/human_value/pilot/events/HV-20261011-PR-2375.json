@@ -1,0 +1,21 @@
+{
+  "schema_version": "1",
+  "event_id": "HV-20261011-PR-2375",
+  "recorded_at": "2026-10-11",
+  "value_type": "useful_outcome",
+  "value_units": 1.0,
+  "unit_description": "shipped change graded REAL VALUE (8.8/10) on the human-value rubric",
+  "evidence": [
+    {
+      "kind": "receipt",
+      "ref": "tools/human_value/pilot/packets.json"
+    },
+    {
+      "kind": "url",
+      "ref": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2375"
+    }
+  ],
+  "beneficiary": "team",
+  "delta_v_actual": 7.6,
+  "note": "Intelligent Blocks canonical substrate (intelligence/blocks/) | why not 10: PROOF=8.0 \u2014 Every claimed file verified present at the merge; independent post-merge verification exists with receipts. One point off: verification record lives in a lane feed comment, not in-repo.; USE=9.0 \u2014 The canonical home agents actually read: 20 IB JSONs, a registry, a schema, and runnable tools (ib.py CLI + seed_blocks.py). This is used, not shelved. | proximal (team-level) value: this records an evidenced valuable change, not a directly measured human-life improvement."
+}

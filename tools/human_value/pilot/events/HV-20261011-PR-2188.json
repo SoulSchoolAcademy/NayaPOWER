@@ -1,0 +1,21 @@
+{
+  "schema_version": "1",
+  "event_id": "HV-20261011-PR-2188",
+  "recorded_at": "2026-10-11",
+  "value_type": "useful_outcome",
+  "value_units": 1.0,
+  "unit_description": "shipped change graded REAL VALUE (7.3/10) on the human-value rubric",
+  "evidence": [
+    {
+      "kind": "receipt",
+      "ref": "tools/human_value/pilot/packets.json"
+    },
+    {
+      "kind": "url",
+      "ref": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2188"
+    }
+  ],
+  "beneficiary": "team",
+  "delta_v_actual": 4.6,
+  "note": "Receipt-gate fetch-depth repair (worker-protocol-gates.yml) | why not 10: DELTA=5.0 [UNCITED_CAP] \u2014 Receipt gate went FAILURE -> SUCCESS live at 20:49:02Z. A red gate turned green: the number moved.; USE=8.0 \u2014 Fixed receipt gates failing on UI merges \u2014 the exact pain blocking the merge lane. The workflow runs on every push; the test runs in CI. | flags: DELTA:UNCITED_CAP | proximal (team-level) value: this records an evidenced valuable change, not a directly measured human-life improvement."
+}
