@@ -27,7 +27,7 @@ Refusal codes: IDENTITY_MISSING | VERSION_UNRESOLVABLE | VERSION_MISMATCH
   | READINESS_FAILED
 
 Design: receipts/t2252-a-design.md (night shift, t2252-a).
-Tests: tests/test_activation_gate.py (positive + negative controls).
+Tests: tests/test_activation_gate_failclosed.py (positive + negative controls).
 Manifest: kernel/protocol/protocol_manifest.json, id SN-ACTIVATION-GATE.
 """
 
