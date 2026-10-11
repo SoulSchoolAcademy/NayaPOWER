@@ -1,0 +1,41 @@
+name: Safety-Liveness Claims Gate (D55 wire)
+
+# Wires the D55 safety-liveness classifier onto the recovery-claims path.
+# Every recovery claim in tools/recovery_claims_manifest.json is judged by the
+# REAL classifier; a misclassified claim BLOCKS (exit 1). Empty manifest =
+# explicit DORMANT (exit 0), never a false green. Corrupt manifest or claims
+# without the mechanism = fail-closed (exit 2).
+
+on:
+  pull_request:
+    paths:
+      - "tools/safety_liveness_classifier.py"
+      - "tools/bounded_recovery_liveness.py"
+      - "tools/safety_liveness_gate.py"
+      - "tools/recovery_claims_manifest.json"
+      - "tests/test_safety_liveness_gate.py"
+      - ".github/workflows/safety-liveness-claims.yml"
+  push:
+    branches: ["main"]
+    paths:
+      - "tools/safety_liveness_classifier.py"
+      - "tools/bounded_recovery_liveness.py"
+      - "tools/safety_liveness_gate.py"
+      - "tools/recovery_claims_manifest.json"
+      - "tests/test_safety_liveness_gate.py"
+      - ".github/workflows/safety-liveness-claims.yml"
+
+jobs:
+  claims-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      # Bare setup-python images do not always carry pytest; install it
+      # explicitly (same lesson as the D55 mechanism gate and the
+      # directive-register gates).
+      - run: python -m pip install pytest
+      - run: python -m pytest tests/test_safety_liveness_gate.py -q -p no:cacheprovider
+      - run: python tools/safety_liveness_gate.py --json
