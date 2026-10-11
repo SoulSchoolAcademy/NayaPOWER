@@ -209,6 +209,13 @@ class PlanCandidate:
     # is evaluated; PROHIBITED/NEEDS_EVIDENCE/NEEDS_AUTHORITY excludes
     # the candidate.
     harm_assessments: tuple = ()
+    # Observation windows for delayed harm (ObservationWindow objects from
+    # kernel.protocol.harm_assessment), matched to harm_assessments by
+    # stakeholder_group. Empty = none attached: delayed harm then resolves
+    # to NEEDS_EVIDENCE via DELAYED_HARM_NO_WINDOW. When attached, the
+    # Law 11 v2 phase evaluates them — including the monitoring-aware door
+    # (overdue review date + zero recorded findings → NEEDS_EVIDENCE).
+    observation_windows: tuple = ()
 
 
 @dataclass(frozen=True)
@@ -748,7 +755,9 @@ def plan_action(authority: LawAuthority,
         # Build the typed action for this candidate (same as Law 11 v1 gate)
         typed_c = _candidate_to_typed_action(c, authority, actor_id=actor_id,
                                              environment=environment)
-        result = assess_uncertain_harm(typed_c, tuple(assessments))
+        result = assess_uncertain_harm(
+            typed_c, tuple(assessments), tuple(c.observation_windows)
+        )
         if result.verdict in (LAW11_PROHIBITED, LAW11_NEEDS_EVIDENCE, LAW11_NEEDS_AUTHORITY):
             law11v2_excluded.append((
                 c.candidate_id, result.verdict,

@@ -16,6 +16,8 @@ These tests prove:
 """
 import pytest
 
+from datetime import datetime, timedelta, timezone
+
 from kernel.protocol.typed_action import (
     ADMISSIBLE,
     NEEDS_AUTHORITY,
@@ -600,6 +602,100 @@ class TestDelayedHarm:
         )
         verdict = assess_uncertain_harm(action, (assessment,))
         assert verdict.verdict == NEEDS_EVIDENCE
+
+
+# ---------------------------------------------------------------------------
+# 6b. Monitoring-aware door (T-07-VERIFY)
+#
+# A PENDING observation window whose review is overdue with zero recorded
+# findings is a lapsed monitor — the gate must refuse on the window's own
+# evidence, without depending on an external review() loop having run.
+# ---------------------------------------------------------------------------
+
+class TestMonitoringAwareDoor:
+    def _delayed(self, **kw):
+        base = dict(
+            harm_type=HARM_DELAYED,
+            time_to_appear="months",
+            neutrality_state=NEUTRAL_PRACTICAL,  # safe → reaches window check
+        )
+        base.update(kw)
+        return _full_assessment(**base)
+
+    def _window(self, group="test_group", review_dates=(), findings=()):
+        w = ObservationWindow(
+            window_id="w-door",
+            action_ref="door-test",
+            stakeholder_group=group,
+            indicators=("error_rate",),
+            stop_triggers=("error_rate > 5%",),
+            review_dates=review_dates,
+        )
+        for f in findings:
+            w.record_finding(f)
+        return w
+
+    def _past(self, **kw):
+        return (datetime.now(timezone.utc) - timedelta(**kw)).isoformat()
+
+    def _future(self, **kw):
+        return (datetime.now(timezone.utc) + timedelta(**kw)).isoformat()
+
+    def test_overdue_review_no_findings_blocks(self):
+        """REGRESSION (T-07-VERIFY): review 1h overdue + zero findings → refuse."""
+        action = _safe_action()
+        window = self._window(review_dates=(self._past(hours=1),))
+        verdict = assess_uncertain_harm(action, (self._delayed(),), (window,))
+        assert verdict.verdict == NEEDS_EVIDENCE
+        assert any("OVERDUE_REVIEW_NO_FINDINGS:test_group" in r
+                   for r in verdict.reasons)
+        assert "test_group" in verdict.affected_interests
+
+    def test_overdue_review_with_findings_proceeds_provisional(self):
+        """Monitoring is happening (findings recorded) → provisional, not blocked."""
+        action = _safe_action()
+        window = self._window(
+            review_dates=(self._past(hours=1),),
+            findings=("error_rate nominal at review",),
+        )
+        verdict = assess_uncertain_harm(action, (self._delayed(),), (window,))
+        assert verdict.verdict == ADMISSIBLE
+        assert any("PROVISIONAL_WINDOW" in r for r in verdict.reasons)
+
+    def test_future_review_no_findings_proceeds_provisional(self):
+        """Review not yet due → provisional, not blocked."""
+        action = _safe_action()
+        window = self._window(review_dates=(self._future(days=7),))
+        verdict = assess_uncertain_harm(action, (self._delayed(),), (window,))
+        assert verdict.verdict == ADMISSIBLE
+        assert any("PROVISIONAL_WINDOW" in r for r in verdict.reasons)
+
+    def test_unreadable_review_date_fails_closed(self):
+        """A review schedule that cannot be read cannot be proven on track."""
+        action = _safe_action()
+        window = self._window(review_dates=("not-a-date",))
+        verdict = assess_uncertain_harm(action, (self._delayed(),), (window,))
+        assert verdict.verdict == NEEDS_EVIDENCE
+        assert any("REVIEW_DATE_UNREADABLE:test_group" in r
+                   for r in verdict.reasons)
+
+    def test_naive_review_date_assumed_utc(self):
+        """Naive datetimes are read as UTC (the module's write convention)."""
+        action = _safe_action()
+        naive_past = (datetime.now(timezone.utc)
+                      - timedelta(hours=1)).replace(tzinfo=None).isoformat()
+        window = self._window(review_dates=(naive_past,))
+        verdict = assess_uncertain_harm(action, (self._delayed(),), (window,))
+        assert verdict.verdict == NEEDS_EVIDENCE
+        assert any("OVERDUE_REVIEW_NO_FINDINGS" in r for r in verdict.reasons)
+
+    def test_no_review_dates_unchanged(self):
+        """No review dates → existing provisional behavior preserved."""
+        action = _safe_action()
+        window = self._window()
+        verdict = assess_uncertain_harm(action, (self._delayed(),), (window,))
+        assert verdict.verdict == ADMISSIBLE
+        assert any("PROVISIONAL_WINDOW" in r for r in verdict.reasons)
 
 
 # ---------------------------------------------------------------------------
