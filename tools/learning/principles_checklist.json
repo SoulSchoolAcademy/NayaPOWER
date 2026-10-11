@@ -1,0 +1,128 @@
+{
+  "briefing": {
+    "fingerprint_sha256": "4baaa440db4dc799bee17ac3ed7bdc0d1d43a73856441fc0cc6e8a96b1251992",
+    "line_count": 187,
+    "path": "workspace/agent-briefing-master.md",
+    "pinned_utc": "2026-10-11T22:31:00Z"
+  },
+  "checklist": "briefed-principles/v1",
+  "note": "Each rule is mechanically checkable against a worker artifact. A rule fires when the violation pattern matches AND the required-positive pattern is absent. Evidence is always a verbatim quote with file and line number. Living law: when the briefing changes, re-pin the fingerprint and regenerate this file.",
+  "rules": [
+    {
+      "briefing_line": 40,
+      "kinds": [
+        "lane-report",
+        "pr-body",
+        "text-file",
+        "commit-diff"
+      ],
+      "name": "NO-SELF-DECLARED-10",
+      "plain_words": "A score is a claim; another seat's validation makes it real.",
+      "required_positive_patterns": [
+        "(?i)(independently validated|Naya 1|scorecard judge|validated by|validation by a different seat)"
+      ],
+      "rule_id": "P1",
+      "severity": "medium",
+      "suggested_lesson": "A score is a claim; another seat's validation makes it real. Claiming 10/10 without independent validation is a self-declared score, which the scoring standard forbids.",
+      "violation_patterns": [
+        "(?i)\\b(10\\s*/\\s*10|ten\\s+out\\s+of\\s+ten)\\b",
+        "(?i)\\b(perfect\\s+(10|score)|flawless)\\b"
+      ]
+    },
+    {
+      "briefing_line": 135,
+      "kinds": [
+        "lane-report",
+        "pr-body",
+        "text-file",
+        "commit-diff"
+      ],
+      "name": "NO-DIRECT-MAIN",
+      "plain_words": "Branches and PRs only; main is never written directly.",
+      "required_positive_patterns": [
+        "(?i)(pull request|\\bPR\\b|branch\\s+naya)"
+      ],
+      "rule_id": "P2",
+      "severity": "high",
+      "suggested_lesson": "Main is never written directly. Branches and PRs only; the Git Data API ref-update capability is authority-gated by the merge protocol, not the tool.",
+      "violation_patterns": [
+        "(?i)(\\bgit\\s+)?push\\w*\\s+((origin|upstream)\\s+)?main\\b(?!\\s+(of|off))",
+        "(?i)push\\w*\\s+(directly\\s+)?to\\s+main\\b",
+        "(?i)update\\s+the\\s+main\\s+ref\\b"
+      ]
+    },
+    {
+      "briefing_line": 139,
+      "kinds": [
+        "lane-report",
+        "pr-body",
+        "text-file",
+        "commit-diff"
+      ],
+      "name": "NO-COMMENT-1354",
+      "plain_words": "Issue #1354 is comment-locked; coordination lives on the lane feeds.",
+      "required_positive_patterns": [],
+      "rule_id": "P3",
+      "severity": "medium",
+      "suggested_lesson": "Issue #1354 is comment-locked (2500+ comments, API 403s new ones). Sign-in/out and coordination go to the lane feeds #1713/#1714/#1715, never #1354 or the #554 archive.",
+      "violation_patterns": [
+        "(?i)(post|comment|report|sign[-\\s]?in|sign[-\\s]?out).{0,40}#1354|#1354.{0,40}(post|comment|report)"
+      ]
+    },
+    {
+      "briefing_line": 128,
+      "kinds": [
+        "lane-report",
+        "pr-body",
+        "text-file",
+        "commit-diff"
+      ],
+      "name": "RAW-CREDENTIAL",
+      "plain_words": "Credentials go through the approved flow \u2014 never raw in an artifact.",
+      "required_positive_patterns": [],
+      "rule_id": "P4",
+      "severity": "high",
+      "suggested_lesson": "Credentials move through the Secure Vault or the approved connector flow, never raw in an artifact, log, or report. A raw token in text is a leak the moment it is written.",
+      "violation_patterns": [
+        "ghp_[A-Za-z0-9]{10,}",
+        "github_pat_[A-Za-z0-9_]{10,}",
+        "(?i)(password|secret|api[-_ ]?key|token)\\s*[:=]\\s*[\\w\\-.]{8,}"
+      ]
+    },
+    {
+      "briefing_line": 128,
+      "kinds": [
+        "lane-report"
+      ],
+      "name": "BRIEFING-PROOF-REQUIRED",
+      "plain_words": "No verified briefing proof means you have not started.",
+      "required_positive_patterns": [
+        "briefing[_\\s-]?proof|4baaa440db4dc799bee17ac3ed7bdc0d1d43a73856441fc0cc6e8a96b1251992|verified briefing load"
+      ],
+      "rule_id": "P5",
+      "severity": "low",
+      "suggested_lesson": "The briefing is the load step: every worker proves a verified briefing load before starting, or they have not started. A lane report without the proof marker is work without provenance.",
+      "violation_patterns": []
+    },
+    {
+      "briefing_line": 142,
+      "kinds": [
+        "lane-report",
+        "pr-body",
+        "text-file",
+        "commit-diff"
+      ],
+      "name": "PROTECTED-GATE-WORD",
+      "plain_words": "Protected actions need Shawn's explicit word; an emoji is not a word.",
+      "required_positive_patterns": [
+        "(?i)(Shawn.{0,60}(said|authorized|word|approved)|his word|explicit word|per[-\\s]?write approval)"
+      ],
+      "rule_id": "P6",
+      "severity": "high",
+      "suggested_lesson": "Protected gates (production deploys, database writes, credentials/money, destructive actions, security/privacy/consent/authority changes, ratification) need Shawn's explicit word. A reaction or emoji is not a word; 'WORD!' about a process is not authorization for a specific action.",
+      "violation_patterns": [
+        "(?i)(deploy\\w*\\s+to\\s+production|production\\s+deploy\\w*|database\\s+write|\\bdb\\s+write|destructive\\s+action|\\brm\\s+-rf\\b|sudo\\s+\\w+|charge\\s+(the\\s+)?card|spend\\s+money)"
+      ]
+    }
+  ]
+}
