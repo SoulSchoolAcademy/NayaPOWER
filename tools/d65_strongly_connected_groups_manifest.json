@@ -1,0 +1,90 @@
+{
+ "_note": "Joint-proof claims judged by tools/d65_strongly_connected_groups_gate.py against the REAL D65 engine (drift_canary/strongly_connected_groups.py, PR #2327). Empty 'claims' = explicit DORMANT (never a false green). The first claim merged activates enforcement with zero new wiring. Claims are evidence declarations: the gate rebuilds the JointDeclaration from the declared model (digest recomputed honestly unless 'presented_digest' is given, which is passed through untouched so the engine's tamper-refusal is judgeable) and runs verify_joint \u2014 an asserted verdict the engine disagrees with is BLOCKED (exit 1); an untrustworthy manifest is BROKEN (exit 2). D65's distinctive coverage: cyclically-dependent invariant groups must be proven jointly \u2014 no member may certify another, and the verdicts stay separate (a proven strategy with an exit is EXIT_POSSIBLE_NOT_GUARANTEED, never REPEATABLE_PROVEN).",
+ "_schema": {
+  "id": "unique claim id, e.g. JP-0001",
+  "claimant": "who asserts this claim",
+  "evidence_ref": "link to the evidence (board comment, run log, check run)",
+  "joint_name": "the joint group's name (carried into the verdict)",
+  "asserted_verdict": "REPEATABLE_PROVEN | DEADLOCK_IN_SCOPE | LIVELOCK_COUNTEREXAMPLE | EXIT_POSSIBLE_NOT_GUARANTEED | JOINT_UNDETERMINED \u2014 what the team claims the engine finds",
+  "declared_by": "the external authority grounding the group (must NOT be a member)",
+  "members": "non-empty list of unique member names forming one strongly connected component",
+  "prereq": "object: member -> list of prerequisite member names (the joint's internal topology)",
+  "initial_states": "non-empty list of candidate initial joint states",
+  "authorized_initial": "list (may be empty) of the initial states the authority actually authorized",
+  "transitions": "non-empty list of {src, dst (non-empty), kind: ordinary|replenish|reserve|complete, progress (int), authorization/capacity/owner (optional non-empty strings)} \u2014 the COMPLETE legal transition relation",
+  "exit_states": "list (may be empty) of declared terminal states",
+  "presented_digest": "optional 64-hex sha256 \u2014 passed through untouched so the engine's tamper-refusal is judgeable; only an asserted JOINT_UNDETERMINED can be certified for it"
+ },
+ "_example": {
+  "_comment": "WORKED EXAMPLE \u2014 not an active claim. If registered as a claim, the gate CERTIFIES it (exit 0): the 4-member budget\u2192lifecycle\u2192replenishment\u2192resource\u2192budget cycle (AER-LIVE-010-SCC), declared by treasury (external), authorized initial s0_allocated, progressive cycle (progress 1 per step), replenish step authorized by treasury:auth-001, constructive exit s3_released\u2192s4_exited. Engine: EXIT_POSSIBLE_NOT_GUARANTEED \u2014 the strategy is proven AND the exit is constructed, but the kernel can continue forever. The claim asserts EXIT_POSSIBLE_NOT_GUARANTEED: honest, certified. Flip asserted_verdict to REPEATABLE_PROVEN and the gate BLOCKS it (exit-swallowing: the exit dimension the engine keeps separate may not be collapsed). Set declared_by to 'budget' (a member) and assert anything but JOINT_UNDETERMINED: BLOCKED (the group would establish its own external facts).",
+  "id": "JP-EXAMPLE",
+  "claimant": "naya2/wire (worked example)",
+  "evidence_ref": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175",
+  "joint_name": "AER-LIVE-010-SCC",
+  "asserted_verdict": "EXIT_POSSIBLE_NOT_GUARANTEED",
+  "declared_by": "treasury",
+  "members": [
+   "budget",
+   "lifecycle",
+   "replenishment",
+   "resource"
+  ],
+  "prereq": {
+   "budget": [
+    "lifecycle"
+   ],
+   "resource": [
+    "budget"
+   ],
+   "replenishment": [
+    "resource"
+   ],
+   "lifecycle": [
+    "replenishment"
+   ]
+  },
+  "initial_states": [
+   "s0_allocated"
+  ],
+  "authorized_initial": [
+   "s0_allocated"
+  ],
+  "transitions": [
+   {
+    "src": "s0_allocated",
+    "dst": "s1_drawn",
+    "kind": "ordinary",
+    "progress": 1
+   },
+   {
+    "src": "s1_drawn",
+    "dst": "s2_replenished",
+    "kind": "replenish",
+    "progress": 1,
+    "authorization": "treasury:auth-001"
+   },
+   {
+    "src": "s2_replenished",
+    "dst": "s3_released",
+    "kind": "ordinary",
+    "progress": 1
+   },
+   {
+    "src": "s3_released",
+    "dst": "s0_allocated",
+    "kind": "ordinary",
+    "progress": 1
+   },
+   {
+    "src": "s3_released",
+    "dst": "s4_exited",
+    "kind": "complete",
+    "progress": 1
+   }
+  ],
+  "exit_states": [
+   "s4_exited"
+  ]
+ },
+ "claims": []
+}

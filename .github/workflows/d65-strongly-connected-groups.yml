@@ -1,0 +1,42 @@
+name: Strongly-Connected Groups Gate (D65 wire)
+
+# Wires the D65 joint-proof verifier onto the CI path. Every joint-proof
+# claim in tools/d65_strongly_connected_groups_manifest.json is judged by
+# the REAL engine (drift_canary/strongly_connected_groups.py, PR #2327);
+# an asserted verdict the engine disagrees with (joint-proof laundering)
+# BLOCKS (exit 1). Empty manifest = explicit DORMANT (exit 0), never a
+# false green. Corrupt manifest, claims without the mechanism, or an
+# engine that raises instead of judging = fail-closed (exit 2).
+
+on:
+  pull_request:
+    paths:
+      - "drift_canary/strongly_connected_groups.py"
+      - "drift_canary/tests/test_strongly_connected_groups.py"
+      - "tools/d65_strongly_connected_groups_gate.py"
+      - "tools/d65_strongly_connected_groups_manifest.json"
+      - "tests/test_d65_strongly_connected_groups_gate.py"
+      - ".github/workflows/d65-strongly-connected-groups.yml"
+  push:
+    branches: ["main"]
+    paths:
+      - "drift_canary/strongly_connected_groups.py"
+      - "drift_canary/tests/test_strongly_connected_groups.py"
+      - "tools/d65_strongly_connected_groups_gate.py"
+      - "tools/d65_strongly_connected_groups_manifest.json"
+      - "tests/test_d65_strongly_connected_groups_gate.py"
+      - ".github/workflows/d65-strongly-connected-groups.yml"
+
+jobs:
+  strongly-connected-groups-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      # Bare setup-python images do not always carry pytest; install it
+      # explicitly (same lesson as the D55/D56/D59/D60 mechanism gates).
+      - run: python -m pip install pytest
+      - run: python -m pytest tests/test_d65_strongly_connected_groups_gate.py -q -p no:cacheprovider
+      - run: python tools/d65_strongly_connected_groups_gate.py --json
