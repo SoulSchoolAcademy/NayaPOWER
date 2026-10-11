@@ -174,12 +174,27 @@ class ExitGateTests(unittest.TestCase):
     def setUp(self):
         self.tmp = Path(tempfile.mkdtemp(prefix="wire-exit-"))
         self.ledger = self.tmp / "ledger.json"
+        # Hermetic plan-tip source for the wire's fallback read. The exit
+        # gate has no tip knowledge, so the wire reads LIVE-PLAN.md via
+        # NAYA_GOAL_DIR; without this the tests depend on the ambient
+        # ~/workspace/.../LIVE-PLAN.md (present on dev machines, absent in
+        # CI) and the wire correctly skips with no_source_sha.
+        goal = self.tmp / "goal"
+        goal.mkdir()
+        (goal / "LIVE-PLAN.md").write_text(
+            "# plan\n## TIP NOTE\n- tip: `%s` (verified)\n" % TIP_40,
+            encoding="utf-8",
+        )
+        self.goal_dir = goal
 
     def tearDown(self):
         shutil.rmtree(self.tmp, ignore_errors=True)
 
     def _run(self, *args, tree_tools: Path = TOOLS, **env_extra):
-        env = {"NAYA_EVENT_LEDGER": str(self.ledger)}
+        env = {
+            "NAYA_EVENT_LEDGER": str(self.ledger),
+            "NAYA_GOAL_DIR": str(self.goal_dir),
+        }
         env.update(env_extra)
         return run_gate(tree_tools / "worker_exit.py", *args, env_extra=env)
 
@@ -300,6 +315,46 @@ class NegativeControlTests(unittest.TestCase):
     event may be emitted.
     """
 
+    MAIN_TIP = "57e935c1b44b10fcc27a80f8c99fc9ddb2e69440"
+
+    def _main_gate_bytes(self, name: str) -> bytes:
+        """Exact main-branch gate bytes. Never silently empty.
+
+        CI checks out with fetch-depth 1, so the tip SHA may not resolve
+        locally; fetch it (reachable from origin) before giving up. A
+        negative control running empty or patched bytes would pass
+        vacuously, so fail loudly instead.
+        """
+        repo = str(TOOLS.parent)
+        ref = "%s:tools/%s" % (self.MAIN_TIP, name)
+        proc = subprocess.run(
+            ["git", "-C", repo, "show", ref],
+            capture_output=True, timeout=30,
+        )
+        if proc.returncode != 0 or not proc.stdout.strip():
+            fetch = subprocess.run(
+                ["git", "-C", repo, "fetch", "--depth=1", "--quiet",
+                 "origin", self.MAIN_TIP],
+                capture_output=True, timeout=120,
+            )
+            if fetch.returncode != 0:
+                self.fail(
+                    "cannot resolve main gate bytes for %s: git show failed "
+                    "and fetch failed: %s"
+                    % (name, fetch.stderr.decode(errors="replace")[:300])
+                )
+            proc = subprocess.run(
+                ["git", "-C", repo, "show", ref],
+                capture_output=True, timeout=30,
+            )
+        data = proc.stdout
+        self.assertTrue(data.strip(), "empty gate bytes for %s" % name)
+        self.assertNotIn(
+            b"EVENT_WIRE", data,
+            "%s bytes contain the wire call-site; not unpatched" % name,
+        )
+        return data
+
     def setUp(self):
         self.tmp = Path(tempfile.mkdtemp(prefix="wire-negctl-"))
         self.ledger = self.tmp / "ledger.json"
@@ -307,11 +362,7 @@ class NegativeControlTests(unittest.TestCase):
         copy_gate_tree(tree, with_envelope=True)
         # Overwrite with the exact main-branch gate bytes (no wire call-sites).
         for name in ("worker_entry.py", "worker_exit.py"):
-            data = subprocess.run(
-                ["git", "-C", str(TOOLS.parent), "show", f"57e935c1b44b10fcc27a80f8c99fc9ddb2e69440:{'tools/' + name}"],
-                capture_output=True, timeout=30,
-            ).stdout
-            (tree / "tools" / name).write_bytes(data)
+            (tree / "tools" / name).write_bytes(self._main_gate_bytes(name))
 
     def tearDown(self):
         shutil.rmtree(self.tmp, ignore_errors=True)
