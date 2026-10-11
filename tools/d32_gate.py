@@ -12,8 +12,13 @@ Three rules (all checked mechanically):
   R1 SOURCED-NUMBERS .... every quantitative claim (a number) must have a
      source reference (URL, #issue/PR number, commit SHA, or explicit
      citation) within 3 lines.
-  R2 DOES-NOT-CLAIM ..... the document must contain a "WHAT THIS DOES NOT
-     CLAIM" (or "DOES NOT CLAIM") section, case-insensitive.
+  R2 DOES-NOT-CLAIM ..... the document must contain the phrase "WHAT THIS
+     DOES NOT CLAIM" (or "does not claim"), case-insensitive.
+     MECHANICAL HEURISTIC (honest limit): this checks for the phrase, not
+     for a true humility section — a sentence like "the critic does not
+     claim to have read it" passes. Whether the section genuinely bounds
+     the document's claims remains reviewer judgment. The gate catches
+     missing humility, not fake humility.
   R3 EVIDENCED-CONFIDENCE  every confidence word (proven, verified,
      guaranteed, certain) must share its paragraph with an evidence
      reference (URL, #number, SHA, or markdown link). Bare confidence
@@ -50,7 +55,7 @@ _HEX_LONG_RE = re.compile(r"\b[0-9a-f]{7,40}\b")      # SHAs (handled as sources
 
 # Source references: URL, #issue/PR, commit SHA, explicit citation.
 _URL_RE = re.compile(r"https?://\S+")
-_ISSUE_RE = re.compile(r"#\d{2,}")
+_ISSUE_RE = re.compile(r"#\d+")  # any issue/PR ref, incl. single-digit (#8)
 _SHA_RE = re.compile(r"\b[0-9a-f]{7,40}\b")
 _CITE_RE = re.compile(r"(?i)\bsource\s*[:：]")
 _MD_LINK_RE = re.compile(r"\[[^\]]+\]\(\s*https?://")
@@ -122,11 +127,9 @@ def _check_r1_sourced_numbers(lines: list[str]) -> list[dict]:
     sourced = [_line_has_source(ln) for ln in lines]
     for i, line in enumerate(lines):
         clean = _strip_non_claims(line)
+        # NOTE: numbers preceded by '#' (issue refs like #1234) never reach
+        # here — _NUMBER_RE's negative lookbehind (?<![\w#]) excludes them.
         for m in _NUMBER_RE.finditer(clean):
-            # Skip numbers that ARE issue references (#1234) — they are sources.
-            before = clean[max(0, m.start() - 1):m.start()]
-            if before.endswith("#"):
-                continue
             lo = max(0, i - _SOURCE_WINDOW)
             hi = min(len(lines), i + _SOURCE_WINDOW + 1)
             if not any(sourced[lo:hi]):

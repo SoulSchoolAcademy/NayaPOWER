@@ -55,6 +55,20 @@ Does not claim enforcement — code only, per #2213 discussion.
     assert result["verdict"] == "PASS", result["violations"]
 
 
+def test_pass_numbers_with_single_digit_issue_source():
+    """Single-digit issue refs (#8) count as sources — no R1 false positive."""
+    doc = """# Count
+
+We tracked 8 directives (#8).
+
+## What this does not claim
+
+Does not claim enforcement — code only, per #8 discussion.
+"""
+    result = check_document(doc)
+    assert result["verdict"] == "PASS", result["violations"]
+
+
 def test_pass_numbers_with_sha_sources():
     """Numbers sourced by commit SHAs pass R1."""
     doc = """# Merge record

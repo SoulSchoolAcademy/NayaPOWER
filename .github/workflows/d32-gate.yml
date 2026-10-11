@@ -5,7 +5,7 @@ name: d32-gate
 # inferred / assumed / unverified / disproven. No false precision.
 #
 # Two jobs, one contract:
-#   1. d32-gate-tests — the gate proves ITSELF first (12 real asserts).
+#   1. d32-gate-tests — the gate proves ITSELF first (19 real asserts).
 #      If the gate's own tests fail, nothing it says can be trusted.
 #   2. d32-doc-scan — THE WIRING (2026-10-11): every pull request's
 #      added/changed markdown documents are judged by the gate.
