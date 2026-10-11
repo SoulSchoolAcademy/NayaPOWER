@@ -1,0 +1,47 @@
+name: fairness-assumption-audit
+
+# D28 assumption-audit gate — Naya 2 wire lane, 2026-10-11.
+# Wires the D28 independent fairness-assumption audit protocol to the
+# fairness CI path. The gate is honest about its state:
+#   DORMANT (exit 0) — mechanism absent on this tree, or zero audits
+#     registered in the manifest. Dormant never claims "audited".
+#   VIOLATION (exit 1) — a registered audit fails: rigged, unjustified,
+#     redundant, or unestablished assumption. The merge is blocked.
+#   BROKEN (exit 2) — the gate itself is broken (corrupt manifest):
+#     fail-closed, never a silent pass.
+
+on:
+  pull_request:
+    paths:
+      - 'tools/fairness_assumption_audit_gate.py'
+      - 'tools/fairness_audit_manifest.json'
+      - 'tests/test_fairness_assumption_audit_gate.py'
+      - 'tools/fairness_assumptions.py'
+      - 'drift_canary/fairness_audit.py'
+      - '.github/workflows/fairness-assumption-audit.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'tools/fairness_assumption_audit_gate.py'
+      - 'tools/fairness_audit_manifest.json'
+      - 'tests/test_fairness_assumption_audit_gate.py'
+      - 'tools/fairness_assumptions.py'
+      - 'drift_canary/fairness_audit.py'
+      - '.github/workflows/fairness-assumption-audit.yml'
+
+jobs:
+  assumption-audit-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pytest
+        run: python3 -m pip install pytest
+      - name: Run audit-gate test suite (real asserts, no theater)
+        run: python3 -m pytest tests/test_fairness_assumption_audit_gate.py -v -p no:cacheprovider
+      - name: Fire the D28 audit gate
+        run: python3 tools/fairness_assumption_audit_gate.py
