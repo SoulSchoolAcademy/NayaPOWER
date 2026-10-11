@@ -22,6 +22,7 @@ Rules enforced:
 """
 
 import argparse
+import json
 import re
 import sys
 
@@ -91,6 +92,13 @@ def main():
             print("REJECTED: 'blocked' claim requires naming the blocker. What blocked you?")
             sys.exit(1)
         print(f"ACCEPTED: blocked. Blocker recorded: {evidence[:100]}")
+        # #2244-D: an accepted blocked claim is a material blocker -> DETECTED event.
+        # Best-effort, never raises, never changes this verdict or exit code.
+        try:
+            from worker_event_wire import emit_blocked_event
+            print("EVENT_WIRE: " + json.dumps(emit_blocked_event(evidence)))
+        except Exception:
+            pass  # the wire never breaks the gate
         sys.exit(0)
 
     # Rule 3: work_done requires verifiable evidence

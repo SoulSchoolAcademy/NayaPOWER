@@ -82,6 +82,25 @@ of sitting in a feed nobody polls.
 The envelope still does not *deliver* anything — the outbox owns delivery;
 its receipts are the proof.
 
+## Lifecycle wire (#2244 sequence D)
+
+`tools/worker_event_wire.py` emits DETECTED events from the real worker
+activation/exit gates:
+
+- `worker_entry.py` STAND_DOWN → DETECTED blocker (NOTICE)
+- `worker_exit.py` accepted `blocked` claim → DETECTED blocker (WARNING)
+
+Emission is best-effort and never-raises: a missing/broken envelope, a
+missing source SHA, or any internal error degrades to a recorded skip and
+the gate's verdict and exit code are unchanged. No network, no API —
+emission is a local ledger append. Event IDs are idempotent, so a repeated
+identical claim returns the existing event. Kill switch:
+`NAYA_LIFECYCLE_EVENTS=0`.
+
+Sharing stays a judgment call: the wire issues DETECTED only. Deciding an
+event is worth the team's attention (the SHARED transition, the specialty
+feed, the outbox publish) belongs to the worker/lane, never to this wire.
+
 ## Explicit non-claims
 
 - This is **not** a notification/push delivery mechanism itself (#2244
