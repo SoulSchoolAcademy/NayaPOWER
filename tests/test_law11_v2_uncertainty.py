@@ -368,6 +368,117 @@ class TestStructuredAssessment:
             )
 
 
+class TestSeverityValidation:
+    """Non-canonical severity must fail closed — never ADMISSIBLE.
+
+    Regression tests (validator finding 2026-10-11, re-validation 8.0/10
+    CONDITIONAL): severity comparisons are exact-match. A malformed value
+    ("HIGH", " critical", "severe") previously missed every comparison and
+    fell through to ADMISSIBLE — fail-open on the only hard law.
+    Non-canonical severity is treated as unknown → NEEDS_EVIDENCE.
+    Same pattern as garbage neutrality_state.
+    """
+
+    @pytest.mark.parametrize("bad_severity", [
+        "HIGH",          # wrong case
+        "High",          # title case
+        "CRITICAL ",     # trailing whitespace
+        " critical",     # leading whitespace
+        "severe",        # plausible synonym, not canonical
+        "CRIT",          # abbreviation
+        "",              # empty string
+        "unknown",       # not a canonical level
+        "none",          # not a canonical level
+    ])
+    def test_non_canonical_severity_needs_evidence(self, bad_severity):
+        """Malformed severity + otherwise clean assessment → NEEDS_EVIDENCE."""
+        action = _safe_action()
+        assessment = _full_assessment(
+            severity=bad_severity,
+            neutrality_state=NEUTRAL_TRUE_ZERO,
+        )
+        assert assessment.is_fully_assessed()  # not None → counts as "assessed"
+        verdict = assess_uncertain_harm(action, (assessment,))
+        assert verdict.verdict == NEEDS_EVIDENCE, (
+            f"severity={bad_severity!r} must never be ADMISSIBLE"
+        )
+        assert any("SEVERITY_NON_CANONICAL" in r for r in verdict.reasons)
+
+    def test_non_canonical_severity_asymmetric_blocks(self):
+        """Malformed severity on an asymmetric harm → blocked, not averaged away."""
+        action = _safe_action()
+        assessment = _full_assessment(
+            harm_type=HARM_ASYMMETRIC,
+            severity="severe",
+            neutrality_state=NEUTRAL_TRUE_ZERO,
+        )
+        verdict = assess_uncertain_harm(action, (assessment,))
+        assert verdict.verdict == NEEDS_EVIDENCE
+        assert verdict.verdict != ADMISSIBLE
+
+    def test_non_canonical_severity_never_admissible_across_harm_types(self):
+        """Every harm type with garbage severity → never ADMISSIBLE."""
+        action = _safe_action()
+        for harm_type in [HARM_UNCERTAIN, HARM_ASYMMETRIC, HARM_DELAYED, HARM_DIFFICULT]:
+            kwargs = dict(severity="HIGH", neutrality_state=NEUTRAL_TRUE_ZERO)
+            if harm_type == HARM_DELAYED:
+                # Delayed harm needs a window to avoid the no-window path;
+                # the severity failure must fire first regardless.
+                window = ObservationWindow(
+                    window_id="w1",
+                    action_ref="naya-5:write:kernel/test_module",
+                    stakeholder_group="test_group",
+                    status=WINDOW_COMPLETE,
+                )
+                verdict = assess_uncertain_harm(
+                    action,
+                    (_full_assessment(harm_type=harm_type, **kwargs),),
+                    (window,),
+                )
+            else:
+                verdict = assess_uncertain_harm(
+                    action,
+                    (_full_assessment(harm_type=harm_type, **kwargs),),
+                )
+            assert verdict.verdict == NEEDS_EVIDENCE, (
+                f"harm_type={harm_type}: garbage severity must never be ADMISSIBLE"
+            )
+
+    def test_canonical_severities_unaffected(self):
+        """All five canonical severities still behave exactly as before."""
+        action = _safe_action()
+        # low → fully assessed, safe neutrality → ADMISSIBLE
+        verdict = assess_uncertain_harm(
+            action, (_full_assessment(severity=SEVERITY_LOW),))
+        assert verdict.verdict == ADMISSIBLE
+        # moderate (reversible, non-cumulative) → ADMISSIBLE
+        verdict = assess_uncertain_harm(
+            action, (_full_assessment(severity=SEVERITY_MODERATE),))
+        assert verdict.verdict == ADMISSIBLE
+        # high → NEEDS_AUTHORITY (unmitigated variant per safety fix)
+        verdict = assess_uncertain_harm(
+            action, (_full_assessment(
+                severity=SEVERITY_HIGH,
+                likelihood_reliability="high",
+                mitigation_available=False,
+                monitoring_ready=False,
+            ),))
+        assert verdict.verdict == NEEDS_AUTHORITY
+
+    def test_non_canonical_severity_flagged_in_audit_receipt(self):
+        """The audit receipt records the malformed severity for the record."""
+        action = _safe_action()
+        assessment = _full_assessment(
+            severity="severe",
+            neutrality_state=NEUTRAL_TRUE_ZERO,
+        )
+        verdict = assess_uncertain_harm(action, (assessment,))
+        assert verdict.verdict == NEEDS_EVIDENCE
+        receipt = build_audit_receipt(action, (assessment,), verdict)
+        assert any("SEVERITY_NON_CANONICAL" in n for n in receipt.uncertainty_notes)
+        assert receipt.verdict == NEEDS_EVIDENCE
+
+
 # ---------------------------------------------------------------------------
 # 5. Neutrality trap — six states, only two safe
 # ---------------------------------------------------------------------------

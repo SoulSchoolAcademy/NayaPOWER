@@ -94,6 +94,19 @@ SEVERITY_CRITICAL = "critical"
 # regardless of likelihood — worst credible outcome matters.
 SEVERITY_INVESTIGATION_THRESHOLD = SEVERITY_HIGH
 
+# Canonical severity values. All severity comparisons in this module are
+# exact-match; a non-canonical string ("HIGH", " critical", "severe")
+# would silently miss every comparison and fall through toward ADMISSIBLE.
+# Non-canonical severity is treated as unknown → fail-closed (NEEDS_EVIDENCE),
+# never ADMISSIBLE. Same pattern as garbage neutrality_state.
+SEVERITIES = frozenset({
+    SEVERITY_NEGLIGIBLE,
+    SEVERITY_LOW,
+    SEVERITY_MODERATE,
+    SEVERITY_HIGH,
+    SEVERITY_CRITICAL,
+})
+
 
 # ---------------------------------------------------------------------------
 # Structured harm assessment — per stakeholder, per harm type.
@@ -210,7 +223,12 @@ def _group_harm_material(assessment: HarmAssessment) -> bool:
     Per the spec: "Human worth is not proportional to group size."
     A small group with serious harm blocks regardless of how many
     others benefit.
+
+    Non-canonical severity is treated as material (fail-closed): we cannot
+    prove the harm is low, so we must not assume it.
     """
+    if assessment.severity is not None and assessment.severity not in SEVERITIES:
+        return True
     if assessment.severity in (SEVERITY_HIGH, SEVERITY_CRITICAL):
         return True
     if assessment.severity == SEVERITY_MODERATE:
@@ -227,6 +245,15 @@ def _needs_investigation(assessment: HarmAssessment) -> tuple[bool, str]:
 
     Returns (needs_investigation, reason).
     """
+    # Non-canonical severity → fail closed FIRST. Severity comparisons are
+    # exact-match; a malformed value ("HIGH", " critical", "severe") would
+    # otherwise miss every comparison and fall through to ADMISSIBLE.
+    # Unknown severity is never safe — investigate before proceeding.
+    # Same pattern as garbage neutrality_state (fails closed via
+    # NEUTRALITY_SAFE_STATES).
+    if assessment.severity is not None and assessment.severity not in SEVERITIES:
+        return True, "SEVERITY_NON_CANONICAL"
+
     # Incomplete assessment → investigate.
     if not assessment.is_fully_assessed():
         return True, "INCOMPLETE_ASSESSMENT"
@@ -480,6 +507,9 @@ def build_audit_receipt(
         uncertainty_notes=tuple(
             f"{a.stakeholder_group}:{a.neutrality_state}" for a in assessments
             if a.neutrality_state not in NEUTRALITY_SAFE_STATES
+        ) + tuple(
+            f"{a.stakeholder_group}:SEVERITY_NON_CANONICAL" for a in assessments
+            if a.severity is not None and a.severity not in SEVERITIES
         ),
         authority_ref=action.authority_ref,
         verdict=verdict.verdict,
