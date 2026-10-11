@@ -1,0 +1,26 @@
+name: d30-causal-trace-gate
+
+on:
+  pull_request:
+    paths:
+      - 'tools/d30_causal_trace_gate.py'
+      - 'tools/d30_causal_trace_manifest.json'
+      - 'tests/test_d30_causal_trace_gate.py'
+      - 'drift_canary/d30_causal_trace.py'
+      - 'drift_canary/d29_boundary.py'
+      - '.github/workflows/d30-causal-trace-gate.yml'
+
+jobs:
+  d30-causal-trace-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install test deps
+        run: pip install pytest
+      - name: Gate unit tests
+        run: python -m pytest tests/test_d30_causal_trace_gate.py -q -p no:cacheprovider
+      - name: Causal-trace claims gate
+        run: python tools/d30_causal_trace_gate.py --manifest tools/d30_causal_trace_manifest.json
