@@ -3,6 +3,21 @@
 Deterministic, dependency-free decision math implementing the canonical
 NAYANODE/0025 value-calculus seam. Value ranks only actions that governance
 already permits. Scores never create authority.
+
+Four layers, never conflated (SL-017):
+  1. HARD GATES — admissibility (PROHIBITED / NEEDS_AUTHORITY /
+     NEEDS_EVIDENCE / ADMISSIBLE). Gates decide what may be considered,
+     never how good it is.
+  2. SIGNED VALUE — delta vs baseline, signed end to end. V > 0 is above
+     the line, V = 0 is neutral, V < 0 is below the line. The ±9 anchors
+     are reference vocabulary, not clipping bounds: negative and extreme
+     magnitude must survive the formula untouched.
+  3. QUALITY — Q in [0,10] measures decision soundness, never prize size.
+     A separate number from value by design.
+  4. CONFIDENCE — aggregate and critical floors stay visible; uncertainty
+     intervals ride along, never averaged away.
+No score laundering: predicted vs verified-actual is recorded per receipt,
+and material miscalibration is flagged, never absorbed.
 """
 
 from __future__ import annotations
@@ -440,10 +455,15 @@ def build_decision_receipt(*, decision_id: str, objective: str, baseline_id: str
         predicted = selected["delta_v"]
     error = None
     d_verified = None
+    miscalibration = None
     if delta_v_actual is not None:
         actual = _finite(delta_v_actual, "delta_v_actual")
         error = abs(predicted - actual) if predicted is not None else None
-        d_verified = max(-10.0, min(10.0, actual))
+        # SL-017: signed value survives end to end. The ±9 anchors are
+        # reference vocabulary, not clipping bounds — negative and extreme
+        # magnitude must not be discarded here.
+        d_verified = actual
+        miscalibration = assess_miscalibration(predicted, actual)
     return {
         "receipt_type": "ALIGNMENT_DECISION",
         "schema_version": "2.1",
@@ -462,6 +482,7 @@ def build_decision_receipt(*, decision_id: str, objective: str, baseline_id: str
         "delta_v_actual": delta_v_actual,
         "d_verified": d_verified,
         "calibration_error": error,
+        "miscalibration": miscalibration,
     }
 
 
@@ -471,6 +492,55 @@ def independent_recompute(receipt: Mapping, candidates: Sequence[Candidate], pro
         "matches_decision": evaluation["decision"] == receipt["evaluation"]["decision"],
         "matches_selected": evaluation["selected"] == receipt["evaluation"]["selected"],
         "recomputed": evaluation,
+    }
+
+
+# ---------------------------------------------------------------------------
+# No-score-laundering: predicted vs verified-actual (SL-017, layer 2)
+# ---------------------------------------------------------------------------
+# A predicted +9 that lands at +2 is recorded as a bad prediction, never
+# quietly absorbed. The ±9 anchors are vocabulary; miscalibration is judged
+# against them, not clipped by them.
+MISCALIBRATION_ABS_ERROR_THRESHOLD = 4.0  # half the ±9 anchor scale
+
+
+def assess_miscalibration(predicted: Optional[float], actual: float) -> dict:
+    """Compare a value prediction against its verified actual.
+
+    Returns a record; never raises on a missing prediction. Flags:
+      LARGE_ABSOLUTE_ERROR — |actual - predicted| exceeds half the anchor scale.
+      SIGN_FLIP            — prediction and actual are materially on opposite
+                             sides of the line.
+      WITHIN_TOLERANCE     — no flag.
+      NO_PREDICTION        — nothing to compare against.
+    """
+    actual = _finite(actual, "actual")
+    if predicted is None:
+        return {
+            "predicted": None,
+            "actual": actual,
+            "signed_error": None,
+            "abs_error": None,
+            "miscalibrated": False,
+            "reason": "NO_PREDICTION",
+        }
+    predicted = _finite(predicted, "predicted")
+    signed_error = actual - predicted
+    abs_error = abs(signed_error)
+    sign_flip = (predicted > 1.0 and actual < -1.0) or (predicted < -1.0 and actual > 1.0)
+    if abs_error > MISCALIBRATION_ABS_ERROR_THRESHOLD:
+        reason = "LARGE_ABSOLUTE_ERROR"
+    elif sign_flip:
+        reason = "SIGN_FLIP"
+    else:
+        reason = "WITHIN_TOLERANCE"
+    return {
+        "predicted": predicted,
+        "actual": actual,
+        "signed_error": signed_error,
+        "abs_error": abs_error,
+        "miscalibrated": reason != "WITHIN_TOLERANCE",
+        "reason": reason,
     }
 
 
