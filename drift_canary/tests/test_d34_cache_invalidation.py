@@ -512,6 +512,127 @@ def test_verdict_vocabulary_matches_on_main():
           set(rev.VERDICTS))
 
 
+# ---------------------------------------------------------------------------
+# Real-engine composition (BUILD-lane repair, 2026-10-11).
+#
+# The adapter was previously proven only against a D33-shaped fake — the
+# exact theater risk the WIRE lane flagged on D34. These tests close it:
+# (1) the sharpest-case choreography through the REAL D33 RevocationEngine
+# (PR #2212) yields the hand-computed verdicts; (2) a hostile engine's
+# verdicts surface unchanged through the adapter — it can neither invent
+# qualification nor hide a revocation.
+#
+# The real-engine test is DORMANT by design while d33_revocation is
+# unmerged (clean skip, no failure); it activates automatically once the
+# real engine is on the tree. Proven 2026-10-11 on real #2212 bytes
+# (naya4/d33-evidence-revocation @ 7a7ef9a45a): all four sharpest-case
+# verdicts matched through the adapter with zero code changes.
+# ---------------------------------------------------------------------------
+
+def _register_sharpest_case(store):
+    store.register_source("E1", scope=BOTH)
+    store.register_source("E2", scope=BOTH)
+    store.register_source("E3", scope=STAGING)
+    store.register_source("E4", scope=STAGING)
+    store.register_source("E5", scope=BOTH)
+    store.register_source("E6", scope=BOTH)
+    store.register_source("E7", scope=BOTH)
+    store.register_claim("A_causal", paths=[(frozenset({"E1"}), BOTH)],
+                         scope=BOTH, min_paths=1, kind="certification")
+    store.register_claim("A1_narrow",
+                         paths=[(frozenset({"E1"}), frozenset({"production"})),
+                                (frozenset({"E2"}), STAGING)],
+                         scope=BOTH, min_paths=1, kind="certification")
+    store.register_claim("A2_susp", paths=[(frozenset({"E3"}), STAGING)],
+                         scope=STAGING, min_paths=1, kind="certification")
+    store.register_claim("B_outcome", paths=[(frozenset({"E2"}), BOTH)],
+                         scope=BOTH, min_paths=1, kind="observational")
+
+
+def _run_sharpest_choreography(store):
+    store.commit_eligibility_change("E3", SUSPENDED, reason="possibly compromised")  # G1
+    store.commit_eligibility_change("E6", REVOKED, reason="confirmed compromised")   # G2
+    store.commit_eligibility_change("E5", REVOKED, reason="confirmed compromised")   # G3
+    store.commit_eligibility_change("E7", REVOKED, reason="confirmed compromised")   # G4
+    store.commit_eligibility_change("E1", REVOKED, reason="confirmed compromised")   # G5
+
+
+def test_d33_real_engine_composition_when_available():
+    try:
+        from drift_canary import d33_revocation as d33real
+    except ImportError:
+        print("  SKIP real-D33 composition: d33_revocation not on tree "
+              "(DORMANT by design until D33 merges)")
+        return
+    from drift_canary.d34_cache_invalidation import D33EngineAdapter
+    engine = d33real.RevocationEngine()
+    s = IntelligenceStore(provider=D33EngineAdapter(engine))
+    _register_sharpest_case(s)
+    _run_sharpest_choreography(s)
+    verdicts = {c: s.claims[c].verdict
+                for c in ("A_causal", "A1_narrow", "A2_susp", "B_outcome")}
+    check("real D33: A_causal REVOKED", verdicts["A_causal"] == REVOKED, verdicts)
+    check("real D33: A1_narrow DOWNGRADED", verdicts["A1_narrow"] == DOWNGRADED, verdicts)
+    check("real D33: A2_susp SUSPENDED", verdicts["A2_susp"] == SUSPENDED, verdicts)
+    check("real D33: B_outcome UNAFFECTED", verdicts["B_outcome"] == UNAFFECTED, verdicts)
+    check("real D33: store reached G5", s.generation == 5, s.generation)
+    h = s.provider.history("A_causal")
+    check("real D33: claim history preserved through adapter",
+          len(h) == 2 and h[0][0] == UNAFFECTED and h[1][0] == REVOKED,
+          [x[0] for x in h])
+
+
+def test_adapter_does_not_mask_hostile_engine():
+    """Fraud control: the adapter is a pass-through. A hostile engine that
+    always certifies must surface its (wrong) qualification, and one that
+    always revokes must surface its revocation — the adapter invents
+    nothing and hides nothing."""
+    from drift_canary.d34_cache_invalidation import D33EngineAdapter
+
+    class AlwaysCertify:
+        def register_source(self, source): pass
+        def register_claim(self, claim): pass
+        def add_derivation(self, a, b): pass
+        def revoke(self, source_id, reason, assessment="confirmed_compromised"):
+            class R: affected_claims = ["K1"]
+            return R()
+        def qualification(self, claim_id):
+            class Q:
+                verdict = UNAFFECTED
+                covered_scope = frozenset({"staging", "production"})
+                reason = "hostile: everything is fine"
+            return Q()
+        def history(self, claim_id): return ()
+
+    class AlwaysRevoke:
+        def register_source(self, source): pass
+        def register_claim(self, claim): pass
+        def add_derivation(self, a, b): pass
+        def revoke(self, source_id, reason, assessment="confirmed_compromised"):
+            class R: affected_claims = ["K1"]
+            return R()
+        def qualification(self, claim_id):
+            class Q:
+                verdict = REVOKED
+                covered_scope = frozenset()
+                reason = "hostile: everything is revoked"
+            return Q()
+        def history(self, claim_id): return ()
+
+    s1 = IntelligenceStore(provider=D33EngineAdapter(AlwaysCertify()))
+    s1.register_source("E1")
+    s1.register_claim("K1", paths=[(frozenset({"E1"}), BOTH)], scope=BOTH)
+    s1.commit_eligibility_change("E1", REVOKED, reason="confirmed compromised")
+    check("hostile certifier surfaces UNAFFECTED (not masked to REVOKED)",
+          s1.claims["K1"].verdict == UNAFFECTED, s1.claims["K1"].verdict)
+
+    s2 = IntelligenceStore(provider=D33EngineAdapter(AlwaysRevoke()))
+    s2.register_source("E1")
+    s2.register_claim("K1", paths=[(frozenset({"E1"}), BOTH)], scope=BOTH)
+    check("hostile revoker surfaces REVOKED (not masked to UNAFFECTED)",
+          s2.claims["K1"].verdict == REVOKED, s2.claims["K1"].verdict)
+
+
 if __name__ == "__main__":
     print("D34 decisive fixture tests")
     for name, fn in sorted(

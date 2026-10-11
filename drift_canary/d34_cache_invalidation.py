@@ -166,8 +166,11 @@ class ClaimQualification:
 #   2. D33EngineAdapter — wraps a real D33 RevocationEngine (d33_revocation
 #      branch) and exposes D34's protocol, translating the assessment
 #      vocabulary and record shapes. Tested below against a D33-shaped
-#      fake; the adapter accesses the engine duck-typed (attributes, not
-#      imports), so no dependency on the unmerged branch.
+#      fake AND the real D33 engine when available
+#      (test_d33_real_engine_composition_when_available — DORMANT by
+#      design until D33 merges); the adapter accesses the engine
+#      duck-typed (attributes, not imports), so no dependency on the
+#      unmerged branch.
 # ---------------------------------------------------------------------------
 
 class SimpleRecomputeProvider:
