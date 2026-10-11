@@ -79,6 +79,7 @@
       "title": "The Automatic Super Brain",
       "status": "CANDIDATE",
       "text": "The system must be structured so the correct action is the natural action — computed by architecture, not discovered by effort. Every agent automatically knows what to do, what the mission is, what the goal is, and what choices to make.",
+      "check": "tools/protocol/checks/auto_brain.py",
       "machine_check": "kernel/protocol/protocol_integrity_gate.py"
     },
     {
