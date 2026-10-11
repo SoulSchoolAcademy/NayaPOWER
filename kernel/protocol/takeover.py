@@ -14,7 +14,8 @@ from __future__ import annotations
 import time
 from dataclasses import dataclass, field
 
-from .authority_gate import classify_action, Verdict
+from .authority_gate import classify_action, classify_typed_action, Verdict
+from .typed_action import TypedAction
 
 
 STALL_WINDOW_SECONDS = 4 * 3600  # 4 hours of no progress = stalled
@@ -32,6 +33,10 @@ class TakeoverRecord:
     owner_notified: bool = False
     owner_next_task: str = ""
     recorded_at: float = field(default_factory=time.time)
+    # Law 11 (2026-10-11): optional typed action for the takeover task.
+    # When present, the authority check uses the typed gate (no keyword
+    # matching); when absent, falls back to legacy text classification.
+    typed_action: TypedAction | None = None
 
 
 @dataclass
@@ -53,7 +58,12 @@ def evaluate_takeover(record: TakeoverRecord, now: float | None = None) -> Takeo
         )
 
     # 2. Authority check: the task itself must be within standing authority.
-    gate = classify_action(record.task)
+    # Law 11: prefer the typed-action gate when the record carries a TypedAction;
+    # rewording the task text cannot bypass the gate.
+    if record.typed_action is not None:
+        gate = classify_typed_action(record.typed_action)
+    else:
+        gate = classify_action(record.task)
     if gate.verdict != Verdict.ALLOW:
         reasons.append(
             f"Takeover task fails authority gate: {gate.verdict.value} — {gate.reason}"
