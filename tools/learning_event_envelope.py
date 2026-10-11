@@ -20,9 +20,14 @@ What this module is:
     unchanged).
 
 What this module is NOT (honest boundaries):
-  - not a notification/push delivery mechanism (#2244 requirement 4);
-    sharing records *that* an event was posted to a specialty feed, it does
-    not post it.
+  - not a notification/push delivery mechanism itself (#2244 requirement 4);
+    sharing records *that* an event was posted to a specialty feed. It DOES,
+    however, hand the event to the worker notification outbox
+    (tools/notify_outbox.py, #2244 req 4) on every SHARED transition — a
+    best-effort, fail-safe publish the outbox owns end-to-end. The envelope
+    never claims delivery; the outbox's delivery receipts are the proof.
+    If the outbox is unavailable the transition still succeeds and the
+    skip is recorded on the envelope.
   - not the learning admission gate (tools/learning_admission_gate.py) and
     not the verification queue; the envelope can be attached to those flows
     but never bypasses them.
@@ -204,6 +209,101 @@ def _history(env: dict, action: str, by: str, note: str = "", frm: str = "", to:
     )
 
 
+# ------------------------------------------------------------------ req3 -> req4 seam
+
+# Envelope severities -> outbox severities (tools/notify_outbox.py).
+# Five levels collapse to four: NOTICE and WARNING are both "attention"
+# (look when you can); HIGH is "urgent" (act soon); CRITICAL is "blocker".
+_OUTBOX_SEVERITY_MAP = {
+    "INFO": "info",
+    "NOTICE": "attention",
+    "WARNING": "attention",
+    "HIGH": "urgent",
+    "CRITICAL": "blocker",
+}
+
+# A shared lesson stays visible across the night shift and the morning
+# review; well inside the outbox's 168h bound.
+_SHARE_NOTIFY_TTL_HOURS = 72
+
+
+def _share_notify_enabled() -> bool:
+    """Kill switch for the share->notify seam. Default ON."""
+    return os.environ.get("NAYA_EVENT_SHARE_NOTIFY", "1").strip().lower() not in (
+        "0", "false", "no", "off")
+
+
+def _import_outbox():
+    """Import the worker notification outbox if present on this tree.
+
+    Deferred import on purpose: the outbox (PR #2303) may not be merged yet,
+    and the envelope must work with or without it. Tries both the script
+    layout (``python3 tools/x.py`` -> top-level ``notify_outbox``) and the
+    package layout (``from tools...`` -> ``tools.notify_outbox``).
+    """
+    try:
+        import notify_outbox
+        return notify_outbox
+    except ImportError:
+        pass
+    from tools import notify_outbox
+    return notify_outbox
+
+
+def _notify_shared(env: dict, actor: str) -> dict:
+    """Best-effort handoff: publish a worker notification for a SHARED event.
+
+    The consumer seam of #2244 req 3 -> req 4: when an event transitions to
+    SHARED (with its specialty-feed URL), the team must *receive* awareness,
+    not merely have a post exist. The outbox (tools/notify_outbox.py) owns
+    delivery; this function only hands it the event.
+
+    NEVER raises: any failure degrades to a recorded skip, so a broken or
+    absent outbox can never break the lifecycle transition. Returns a small
+    receipt stored on the envelope as ``share_notification``.
+    """
+    at = _utcnow()
+    if not _share_notify_enabled():
+        return {"skipped": "disabled by NAYA_EVENT_SHARE_NOTIFY", "at": at}
+    try:
+        outbox = _import_outbox()
+    except ImportError:
+        return {"skipped": "notify_outbox unavailable on this tree", "at": at}
+    try:
+        audience = ["all"] + [t for t in env.get("impacted_teams", []) if t != "all"]
+        payload = {
+            "type": "learning-event",
+            "severity": _OUTBOX_SEVERITY_MAP[env["severity"]],
+            "audience": audience,
+            "title": f"[learning-event:{env['event_type']}] {env['title']}",
+            "body": (
+                f"Shared to specialty feed: {env.get('specialty_feed_url', '')}\n"
+                f"Expected: {env.get('expected', '')}\n"
+                f"Actual: {env.get('actual', '')}\n"
+                f"Owner: {env.get('owner', '')} | "
+                f"Teams: {', '.join(env.get('impacted_teams', []))}\n"
+                f"Next: {env.get('next_action', '')}"
+            ),
+            "dedup_key": f"learning-event:{env['event_id']}",
+            "ttl_hours": _SHARE_NOTIFY_TTL_HOURS,
+            "source": {
+                "artifact": env.get("source_artifact", ""),
+                "sha": env.get("source_sha", ""),
+            },
+            "publisher": f"learning-event-envelope:{actor}",
+        }
+        notification_id = outbox.publish(payload)
+        return {
+            "outbox_event_id": notification_id,
+            "dedup_key": payload["dedup_key"],
+            "audience": audience,
+            "severity": payload["severity"],
+            "at": at,
+        }
+    except Exception as exc:  # fail-safe: the seam never breaks the transition
+        return {"skipped": f"publish failed: {type(exc).__name__}", "at": at}
+
+
 def issue_event(fields: dict, ledger_path: Path | None = None, issued_by: str = "") -> tuple[dict, bool]:
     """Issue an event. Returns (envelope, duplicate). Duplicate issuance of
     the same material failure returns the existing record — never a second
@@ -327,6 +427,13 @@ def transition(event_id: str, to_state: str, actor: str,
         env["lesson_status"] = "VERIFIED"
 
     env["lifecycle_state"] = to_state
+    if to_state == "SHARED":
+        # Consumer seam (#2244 req 3 -> req 4): hand the shared event to the
+        # worker notification outbox. Best-effort and fail-safe — _notify_shared
+        # never raises, and the receipt (or the recorded skip) rides along in
+        # the single save below. Placed after the SHARED gate so a rejected
+        # share never notifies.
+        env["share_notification"] = _notify_shared(env, actor)
     _history(env, "TRANSITION", actor, frm=frm, to=to_state,
              note=str(extras.get("note", "")))
     save_ledger(ledger, ledger_path)
@@ -380,7 +487,8 @@ def _cmd_transition(args: argparse.Namespace) -> int:
         return 3
     print(json.dumps({"event_id": env["event_id"],
                       "lifecycle_state": env["lifecycle_state"],
-                      "lesson_status": env["lesson_status"]}, indent=2))
+                      "lesson_status": env["lesson_status"],
+                      "share_notification": env.get("share_notification")}, indent=2))
     return 0
 
 

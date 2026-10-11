@@ -58,10 +58,36 @@ python3 tools/learning_event_envelope.py transition <event-id> --to SHARED \
   --actor naya-2 --feed-url https://github.com/.../issues/2235
 ```
 
+## Share → notify seam (#2244 req 3 → req 4)
+
+Every `transition … --to SHARED` best-effort publishes one notification to
+the worker notification outbox (`tools/notify_outbox.py`, #2244 req 4, PR
+#2303), so a shared lesson reaches workers at their next activation instead
+of sitting in a feed nobody polls.
+
+- **Once per event:** the outbox dedup key is `learning-event:<event_id>`
+  (deterministic), so re-shares never duplicate.
+- **Audience:** `all` plus the event's `impacted_teams` — the proven
+  broadcast path fires and team-targeted activation keeps working.
+- **Severity:** INFO→info, NOTICE→attention, WARNING→attention,
+  HIGH→urgent, CRITICAL→blocker; TTL 72h.
+- **Fail-safe:** the publish never breaks the transition. If the outbox is
+  absent (e.g. #2303 unmerged) or publishing fails, the transition still
+  succeeds and the skip is recorded on the envelope as
+  `share_notification: {skipped: <reason>}`. Kill switch:
+  `NAYA_EVENT_SHARE_NOTIFY=0`.
+- The receipt (`outbox_event_id`, audience, severity) is stored on the
+  envelope as `share_notification` and surfaced by the CLI.
+
+The envelope still does not *deliver* anything — the outbox owns delivery;
+its receipts are the proof.
+
 ## Explicit non-claims
 
-- This is **not** a notification/push delivery mechanism (#2244 requirement 4).
-  It records that an event was shared; it does not deliver it.
+- This is **not** a notification/push delivery mechanism itself (#2244
+  requirement 4 — that is `tools/notify_outbox.py`). The envelope records
+  the share and hands the event to the outbox, best-effort; the outbox's
+  delivery receipts are the only delivery proof.
 - This is **not** the learning admission gate and does not change any
   candidate's truth state. It attaches to existing flows; it never bypasses them.
 - No event here counts as a learned lesson until `BEHAVIORALLY_VERIFIED`
