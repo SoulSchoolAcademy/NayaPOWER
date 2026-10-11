@@ -71,6 +71,15 @@ from fairness_eligibility import (
     VERDICT_LEVELS,
 )
 from fairness_debt import FairnessDebtLedger, DebtWitness
+# D27: assumptions travel as registered ids; the prover resolves them to
+# statements and fails closed on any phantom ref.
+from fairness_assumptions import (
+    FA_A1,
+    FA_A2,
+    FA_A3,
+    FA_A4,
+    resolve as _resolve_assumption,
+)
 
 # The five merge-readiness requirements. ALL must hold for eligibility.
 MERGE_QUEUE_REQUIREMENTS = (
@@ -211,7 +220,8 @@ class QueueVerdict:
     violated: bool
     witness: Optional[DebtWitness]
     deferred_reason: Optional[str]  # blocked_by / parked -- legitimate non-service
-    assumptions: List[str] = field(default_factory=list)
+    assumptions: List[str] = field(default_factory=list)  # resolved statements
+    assumption_ids: List[str] = field(default_factory=list)  # D27 canonical ids
     verdict_level: str = "MODEL_CHECK_PASSED_IN_SCOPE"
 
     def __post_init__(self) -> None:
@@ -291,31 +301,32 @@ def scan_queue(queue: Dict[str, Any], bound: int = BASE_BOUND_WINDOWS,
             scheduler_claim=item.get("scheduler_claim"),  # untrusted, recorded only
             metadata={"pr_number": pr, "head_sha": evidence["head_sha"]},
         )
-        assumptions: List[str] = list(item.get("assumptions", []))
+        # D27: assumption refs are collected BEFORE the prover runs, so every
+        # ref -- registered id or legacy string -- resolves through the
+        # canonical registry inside prove(). A phantom ref raises there
+        # (fail closed); it can never reach a verdict.
+        assumption_refs: List[str] = list(item.get("assumptions", []))
         if evidence["author_seat"] is None:
-            assumptions.append(
-                "author seat not declared (no 'Seat: Naya N' in PR body and "
-                "no nayaN/ branch prefix); cross-seat predicates accept any "
-                "named reviewer seat"
-            )
-
-        window_id = f"scan-{now.strftime('%Y%m%dT%H%M%SZ')}"
-        elig = prover.prove(work, evidence, window_id,
-                            assumptions=assumptions or None)
+            assumption_refs.append(FA_A1)
 
         deferred: Optional[str] = None
         if item.get("blocked_by"):
             deferred = f"service deferred: blocked by {item['blocked_by']}"
-            assumptions.append(deferred + " -- legitimate queue ordering, not starvation")
+            assumption_refs.append(FA_A2)
         parked = item.get("parked")
         if parked:
             reason = parked.get("reason") if isinstance(parked, dict) else str(parked)
             deferred = f"service deferred: parked -- {reason}"
-            assumptions.append(deferred)
+            assumption_refs.append(FA_A3)
+
+        window_id = f"scan-{now.strftime('%Y%m%dT%H%M%SZ')}"
+        elig = prover.prove(work, evidence, window_id,
+                            assumptions=assumption_refs or None)
 
         ready = _ready_since(evidence) if elig.eligible else None
         ledger = FairnessDebtLedger(base_bound=bound)
         widened = False
+        post_refs: List[str] = []
         if elig.eligible and not deferred:
             if ready is None:
                 # Missing evidence: widen the bound, accrue nothing.
@@ -324,10 +335,7 @@ def scan_queue(queue: Dict[str, Any], bound: int = BASE_BOUND_WINDOWS,
                                      eligible={work.item_id}, serviced=set(),
                                      evidence_present=False)
                 widened = True
-                assumptions.append(
-                    "ready_since unprovable from evidence timestamps; "
-                    "bound widened per missing-evidence rule, no debt accrued"
-                )
+                post_refs.append(FA_A4)
             else:
                 n_windows = _complete_windows_since(ready, now, window_hours)
                 base = _parse_iso(ready)
@@ -344,6 +352,15 @@ def scan_queue(queue: Dict[str, Any], bound: int = BASE_BOUND_WINDOWS,
         if widened or status.widenings > 0:
             level = "FAIRNESS_QUALIFIED_WITH_ASSUMPTIONS"
 
+        # D27: post-prove refs (FA_A4) resolve through the same registry so
+        # the verdict's ids and statements stay canonical end to end.
+        final_ids = list(elig.assumption_ids)
+        final_statements = list(elig.assumptions)
+        for ref in post_refs:
+            asm = _resolve_assumption(ref)
+            final_ids.append(asm.id)
+            final_statements.append(asm.statement)
+
         verdicts.append(QueueVerdict(
             pr_number=pr,
             eligible=elig.eligible,
@@ -356,7 +373,8 @@ def scan_queue(queue: Dict[str, Any], bound: int = BASE_BOUND_WINDOWS,
             violated=status.violated,
             witness=status.witness,
             deferred_reason=deferred,
-            assumptions=assumptions,
+            assumptions=final_statements,
+            assumption_ids=final_ids,
             verdict_level=level,
         ))
     return verdicts
@@ -375,6 +393,7 @@ def verdict_to_dict(v: QueueVerdict) -> Dict[str, Any]:
         "violated": v.violated,
         "deferred_reason": v.deferred_reason,
         "assumptions": v.assumptions,
+        "assumption_ids": v.assumption_ids,
         "verdict_level": v.verdict_level,
     }
     if v.witness:

@@ -21,6 +21,11 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Any, Callable, Dict, List, Optional
 
+# D27 assumption-guarantee boundary: every assumption a verdict rests on must
+# resolve through the canonical registry. Unknown refs raise
+# UnknownAssumptionError -- fail closed, never silently named.
+from fairness_assumptions import resolve as _resolve_assumption
+
 # D26's four verdict levels. Every verdict this module emits names one.
 VERDICT_LEVELS = (
     "OBSERVED_NO_VIOLATION",
@@ -83,11 +88,17 @@ class EligibilityVerdict:
     scheduler_claim: Optional[bool]
     claim_contradicted: bool  # True when evidence contradicts scheduler's claim
     verdict_level: str
-    assumptions: List[str] = field(default_factory=list)
+    assumptions: List[str] = field(default_factory=list)  # resolved statements
+    assumption_ids: List[str] = field(default_factory=list)  # canonical ids
 
     def __post_init__(self) -> None:
         if self.verdict_level not in VERDICT_LEVELS:
             raise ValueError(f"invalid verdict level: {self.verdict_level!r}")
+        if len(self.assumptions) != len(self.assumption_ids):
+            raise ValueError(
+                "assumptions and assumption_ids out of sync: "
+                f"{len(self.assumptions)} statements vs "
+                f"{len(self.assumption_ids)} ids")
 
 
 class EligibilityProver:
@@ -108,7 +119,20 @@ class EligibilityProver:
         The scheduler's claim is compared afterwards purely as a diagnostic:
         if the independent evaluation disagrees with the claim, the verdict
         names the contradiction. The claim never influences the verdict.
+
+        D27: every assumption is resolved through the canonical registry
+        BEFORE any verdict is constructed. An unregistered (phantom)
+        assumption raises UnknownAssumptionError -- no verdict is emitted.
         """
+        # D27 choke point: resolve first, verdict second. A phantom ref here
+        # raises before EligibilityVerdict is ever constructed.
+        resolved_ids: List[str] = []
+        resolved_statements: List[str] = []
+        for ref in (assumptions or []):
+            asm = _resolve_assumption(ref)
+            resolved_ids.append(asm.id)
+            resolved_statements.append(asm.statement)
+
         results: List[RequirementResult] = []
         missing: List[str] = []
         for req in item.requirements:
@@ -130,7 +154,7 @@ class EligibilityProver:
         # MODEL_CHECK_PASSED_IN_SCOPE because this module does not observe
         # the live system by itself (the harness in fairness_invariants.py
         # lifts it to WORKFLOW_COMPLETED_IN_SCOPE when wired to real traces).
-        if assumptions:
+        if resolved_ids:
             level = "FAIRNESS_QUALIFIED_WITH_ASSUMPTIONS"
         else:
             level = "MODEL_CHECK_PASSED_IN_SCOPE"
@@ -144,7 +168,8 @@ class EligibilityProver:
             scheduler_claim=item.scheduler_claim,
             claim_contradicted=claim_contradicted,
             verdict_level=level,
-            assumptions=list(assumptions or []),
+            assumptions=resolved_statements,
+            assumption_ids=resolved_ids,
         )
 
 

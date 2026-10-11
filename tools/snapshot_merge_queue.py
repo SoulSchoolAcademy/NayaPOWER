@@ -40,6 +40,11 @@ import urllib.error
 import urllib.request
 from datetime import datetime, timezone
 
+# D27: the snapshot names assumptions by registered id; scan_queue resolves
+# them through the canonical registry (legacy free-text still resolves via
+# the compat map, so old snapshots keep working).
+from fairness_assumptions import FA_A1
+
 API = "https://api.github.com"
 REPO = os.environ.get("REPO", "SoulSchoolAcademy/NayaPOWER")
 MISSION_STATE_DEFAULT = 2154
@@ -235,7 +240,7 @@ def main(argv=None) -> int:
             parked = {"reason": "awaiting Shawn's word (human gate) -- not starvation"}
         assumptions = []
         if not author_seat:
-            assumptions.append("author seat undeclared; branch prefix fallback used")
+            assumptions.append(FA_A1)
 
         queue.append({
             "pr_number": pr_number,
