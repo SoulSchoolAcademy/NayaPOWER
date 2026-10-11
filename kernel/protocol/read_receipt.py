@@ -30,6 +30,7 @@ REQUIRED_SOURCE_PATHS = (
     "AGENTS.md",
     "NAYA-ACTIVATION/CONSTITUTION/CONSTITUTION.md",
     "NAYA-ACTIVATION/CONSTITUTION/LAWS-INDEX-V1.md",
+    "BRAIN/01-GOVERNANCE/TEAM-NAYA-OPERATING-PROTOCOL-V1.md",
     "NAYA-ACTIVATION/PORTABLE-ACTIVATION-PROTOCOL-V1.md",
     "NAYA-ACTIVATION/SMART-NOTE-OPERATING-CONTRACT-V1.md",
     "NAYA-ACTIVATION/PORTABLE-ACTIVATION-MANIFEST-V1.json",
@@ -77,7 +78,7 @@ COMPREHENSION_QUESTIONS = (
     {
         "id": "q7",
         "question": "Name the mandatory boot sources.",
-        "keywords": ("protocol.md", "agents.md", "constitution", "laws-index", "portable-activation", "smart-note-operating-contract", "nonstop-loop", "current-mission-state"),
+        "keywords": ("protocol.md", "agents.md", "constitution", "laws-index", "team-naya-operating-protocol", "portable-activation", "smart-note-operating-contract", "nonstop-loop", "current-mission-state"),
         "minimum": 5,
     },
     {
