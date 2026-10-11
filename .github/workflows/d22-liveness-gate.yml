@@ -1,0 +1,48 @@
+name: d22-liveness-gate
+
+# D22 liveness-claims gate — Naya 2 WIRE LANE, 2026-10-11.
+#
+# Wires the canonical D22 seam (drift_canary/liveness.py) onto the governance
+# path: every liveness claim registered in
+# tools/d22_liveness_claims_manifest.json is judged by the REAL
+# assess_liveness on the claim's declared evidence. A dishonest claim
+# (QUALIFIED asserted on deadlocked / livelocked / starved / witness-bare
+# evidence, or vice versa) BLOCKS the PR (exit 1). Corrupt claims or a
+# missing/neutered mechanism fail closed (exit 2). Zero registered claims is
+# an explicit DORMANT, never a false green.
+#
+# Boundary: CI governance path only. Wiring liveness into kernel/, KNOW,
+# LAW, ACT, or any runtime path still needs Shawn's word (per the
+# mechanism's own docstring). This gate judges claims; it authorizes nothing.
+
+on:
+  pull_request:
+    paths:
+      - 'tools/d22_liveness_gate.py'
+      - 'tools/d22_liveness_claims_manifest.json'
+      - 'tests/test_d22_liveness_gate.py'
+      - 'drift_canary/liveness.py'
+      - '.github/workflows/d22-liveness-gate.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'tools/d22_liveness_gate.py'
+      - 'tools/d22_liveness_claims_manifest.json'
+      - 'tests/test_d22_liveness_gate.py'
+      - 'drift_canary/liveness.py'
+      - '.github/workflows/d22-liveness-gate.yml'
+
+jobs:
+  d22-liveness-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Judge registered liveness claims against the real mechanism
+        run: python3 tools/d22_liveness_gate.py
+      - name: Run the gate's own test suite (real asserts, no theater)
+        run: |
+          python3 -m pip install -q pytest
+          python3 -m pytest tests/test_d22_liveness_gate.py -q -p no:cacheprovider
