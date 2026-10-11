@@ -1,0 +1,45 @@
+name: Unresolved-Evidence Gate (D59 wire)
+
+# Wires the D59 unresolved-evidence governor onto the fairness path.
+# Every unresolved-evidence claim in
+# tools/d59_unresolved_evidence_manifest.json is judged by the REAL
+# governor; a proven BREACH, a conclusion mismatch (unknown-laundering), or
+# unresolved rounds with no reconstruction coverage BLOCK (exit 1). Empty
+# manifest = explicit DORMANT (exit 0), never a false green. Corrupt
+# manifest or claims without the mechanism = fail-closed (exit 2).
+
+on:
+  pull_request:
+    paths:
+      - "drift_canary/unresolved_evidence.py"
+      - "drift_canary/eligibility_proof.py"
+      - "drift_canary/fairness.py"
+      - "tools/d59_unresolved_evidence_gate.py"
+      - "tools/d59_unresolved_evidence_manifest.json"
+      - "tests/test_d59_unresolved_evidence_gate.py"
+      - ".github/workflows/d59-unresolved-evidence.yml"
+  push:
+    branches: ["main"]
+    paths:
+      - "drift_canary/unresolved_evidence.py"
+      - "drift_canary/eligibility_proof.py"
+      - "drift_canary/fairness.py"
+      - "tools/d59_unresolved_evidence_gate.py"
+      - "tools/d59_unresolved_evidence_manifest.json"
+      - "tests/test_d59_unresolved_evidence_gate.py"
+      - ".github/workflows/d59-unresolved-evidence.yml"
+
+jobs:
+  unresolved-evidence-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      # Bare setup-python images do not always carry pytest; install it
+      # explicitly (same lesson as the D55/D56 mechanism gates and the
+      # directive-register gates).
+      - run: python -m pip install pytest
+      - run: python -m pytest tests/test_d59_unresolved_evidence_gate.py -q -p no:cacheprovider
+      - run: python tools/d59_unresolved_evidence_gate.py --json
