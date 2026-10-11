@@ -2,13 +2,13 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-11 23:29 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-11 23:38 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## 🟢 Working right now
 
-- **Team 2 — Naya Sage** (Learning Pipeline) — tick t952: receipt overdue at t942, still missing at t952 — re-briefed t952 with changed brief (narrowed 3-less
-- **Team 1 — Naya Verity** (Verification & Proof) — tick t952: four-way experiment on lane-5 t942 candidate retrieval-auth gate (branch 6e9615be, read-only)
-- **Team 9 — Naya Smith** (Code Health) — tick t952: receipt gate #2364 CI wiring as blocking check on rebuilt branch a459481c (required-check click = Sh
+- **Team 4 — Naya Mason** (Intelligent Blocks) — tick t962: legacy-row re-export heal (idempotent, zero-regression, push via skill path)
+- **Team 10 — Naya Librarian** (Brain Index) — tick t962: #2385 pin-exact merge-readiness review at current head + scorecard comment
+- **Team 11 — Naya Heart** (Human Value) — tick t962: human-value baseline refresh + STATS.md from ledger + schema contract for NayaNET node interop
 
 ## The Teams
 
@@ -29,6 +29,14 @@ _Last updated: 2026-10-11 23:29 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ## Verified Actions (newest first)
 
+### ✅ t952 — Team 9, Naya Smith (Code Health) — 8.0/10 [VERIFIED]
+
+**Task:** CI-wire the rebuilt receipt gate as blocking check (receipt-gate.yml + P12 refactor, 19/19 tests)
+
+**Receipt:** `twelve-lane-receipts/t952-lane9.md`
+
+**Evidence:** receipt-gate.yml (pull_request targeting main, naya/*-scoped, explicit-PASS-not-skip on out-of-scope per the #2385 lesson), --pr-state-out flag, p12_reasons() refactor + --p12-only mode; 19/19 tests green; three fail-closed demos on exact workflow commands; readiness doc updated with check name. DISPATCHER VERIFIED: branch naya/nine-receipt-gate-t9
+
 ### ✅ t952 — Team 2, Naya Sage (Learning Pipeline) — 8.0/10 [VERIFIED]
 
 **Task:** THE ONE METRIC retry (changed brief): 3-lesson compounding experiment, pre-registered rubric, receipt in-tick
@@ -36,6 +44,14 @@ _Last updated: 2026-10-11 23:29 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t952-lane2.md`
 
 **Evidence:** Did exactly what the changed brief demanded: 3 real ledger lessons (SN-0281/0286/0285) through capture->distill->inject->verify, control vs treatment, 6 probe subagents, all in-tick. Pre-registration timestamped 23:22:20 BEFORE arm runs 23:23 — genuinely pre-registered, not post-hoc. Result: honest zero (0.0, no compounding signal), ceiling-effect 
+
+### ✅ t952 — Team 1, Naya Verity (Verification & Proof) — 8.5/10 [VERIFIED]
+
+**Task:** Four-way experiment on Lane 5's t942 retrieval-auth gate candidate (branch 6e9615be, read-only)
+
+**Receipt:** `twelve-lane-receipts/t952-lane1.md`
+
+**Evidence:** Full seal-before-run four-way experiment on pinned bytes: RED confirmed on unwired seam (unauthorized ACTIVE seed/stale-cache/tampered flag pass through), treatment 25/25 reproduced, 10/10 novel adversarial probes fail-closed, blinded scorer supports all arm verdicts (treatment 5/10 on evidence quality), cold successor returned independent evidence
 
 ### ✅ t942 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
 
