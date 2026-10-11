@@ -12,6 +12,19 @@ Any AI agent entering this repository must treat this file as the operational en
 
 Before changing code, documentation, infrastructure, or configuration:
 
+**Mandatory read-and-understand gate — every activation.** Read all seven live sources and attest to their current content digests:
+1. [PROTOCOL.md](PROTOCOL.md)
+2. [AGENTS.md](AGENTS.md) (this file)
+3. [Constitution](NAYA-ACTIVATION/CONSTITUTION/CONSTITUTION.md)
+4. [Ratified Team Naya Operating Protocol](BRAIN/01-GOVERNANCE/TEAM-NAYA-OPERATING-PROTOCOL-V1.md)
+5. [Laws Index](NAYA-ACTIVATION/CONSTITUTION/LAWS-INDEX-V1.md)
+6. [Portable Activation Protocol](NAYA-ACTIVATION/PORTABLE-ACTIVATION-PROTOCOL-V1.md)
+7. [Smart Note Operating Contract](NAYA-ACTIVATION/SMART-NOTE-OPERATING-CONTRACT-V1.md)
+
+A valid read receipt needs all seven current SHA-256 digests and correct comprehension answers; missing/stale sources or failed answers mean activation is HELD. The receipt's unkeyed hash is an integrity binding, not an authenticated digital signature. Do not invent or claim issuer authentication without the Director-approved key-custody decision.
+
+**Current navigation:** [coordination board #2175](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175), [mission state #2154](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2154), and [specialty-feed index #1599](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/1599). Feed #1354 is historical and comment-locked; do not post there. The exact specialty-feed links are in [PROTOCOL.md](PROTOCOL.md).
+
 1. Read this file completely.
 2. Read `NAYA-ACTIVATION/PORTABLE-ACTIVATION-PROTOCOL-V1.md`.
 3. Read `NAYA-ACTIVATION/SMART-NOTE-OPERATING-CONTRACT-V1.md`.
