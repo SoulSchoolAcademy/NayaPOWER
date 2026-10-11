@@ -54,6 +54,8 @@ from dataclasses import dataclass, field
 from typing import Any, Callable, Sequence
 
 from kernel.memory_store import MemoryStore
+from kernel.protocol import conflict_escalation as _ce
+from kernel.protocol import harm_profile as _hp
 from kernel.protocol.typed_action import (
     ADMISSIBLE as LAW11_ADMISSIBLE,
     INHERENTLY_PROHIBITED_OPERATIONS,
@@ -175,6 +177,12 @@ class PlanCandidate:
     value_risk: float | None = None
     value_confidence: dict = field(default_factory=dict)  # per-component B/H/C/R in [0,1]
     value_evidence_count: int = 0
+    # Structured per-group harm profile (T-05, kernel/protocol/harm_profile.py).
+    # When present on 2+ candidates, plan_action runs the T-08 conflict
+    # consult: genuine per-group harm trade-offs escalate to human governance
+    # instead of being settled by value math. None = not assessed (the
+    # scalar Law 11 dimensions above decide alone; backward compatible).
+    harm_profile: "_hp.HarmProfile | None" = None
 
 
 @dataclass(frozen=True)
@@ -375,6 +383,7 @@ def _candidate_to_typed_action(candidate: PlanCandidate,
         privacy_safe=candidate.privacy_safe,
         consent_obtained=None,  # unknown at this seam -> gate fails closed
         description=candidate.description,
+        harm_profile=candidate.harm_profile,
     )
 
 
@@ -554,6 +563,7 @@ def plan_action(authority: LawAuthority,
                 risk_policy: RiskPolicy | None = None,
                 actor_id: str = "act_pipeline",
                 environment: str = "development",
+                baseline_harm_profile: "_hp.HarmProfile | None" = None,
                 ) -> tuple[ActionPlan | None, ActionReceipt]:
     """Phase 1: bind LAW authority to a minimum-sufficient plan.
 
@@ -570,6 +580,13 @@ def plan_action(authority: LawAuthority,
     NEEDS_AUTHORITY verdicts remain
     governed by the LAW authority record (the LAW node's seam): this seam
     enforces the harm hard stops only, and weakens nothing.
+
+    T-08 conflict consult: when 2+ Law-11-admissible candidates carry
+    structured harm profiles AND an assessed do-nothing baseline profile is
+    supplied, the conflict consult runs before value selection. A genuine
+    per-group harm trade-off refuses the plan with
+    PLAN_NEEDS_HUMAN_JUDGMENT and a visible escalation receipt — value math
+    never invents permission to harm the losing group.
     """
     plan_id = _new_id()
 
@@ -646,6 +663,53 @@ def plan_action(authority: LawAuthority,
                      f"nothing admissible to execute. {detail}",
         )
 
+    # --- T-08 conflict consult: genuine per-group harm trade-offs escalate.
+    # A hard-gate consult in Law 11's layer (like the typed-action gate
+    # above), NOT a second decision engine: it eliminates violators, forces
+    # escalation on genuine conflicts, and otherwise lets the canonical value
+    # calculus select. Fail-closed on the hook itself: without an assessed
+    # do-nothing baseline the comparison is incomplete, so no consult runs;
+    # with fewer than 2 profiled candidates there is nothing to compare.
+    conflict_evidence: tuple[str, ...] = ()
+    profiled = [c for c in law11_admissible if c.harm_profile is not None]
+    if len(profiled) >= 2 and baseline_harm_profile is not None:
+        conflict_options: dict[str, _hp.HarmProfile] = {
+            c.candidate_id: c.harm_profile for c in profiled  # type: ignore[misc]
+        }
+        conflict_options[BASELINE_CANDIDATE_ID] = baseline_harm_profile
+        resolution = _ce.consult_conflicts(
+            conflict_options,
+            baseline_option=BASELINE_CANDIDATE_ID,
+            assessed_by=f"act_pipeline:{actor_id}",
+        )
+        receipt_text = " | ".join(resolution.receipt.render().splitlines())
+        if resolution.verdict == _ce.ESCALATE_TO_HUMAN:
+            return refused(
+                PLAN_NEEDS_HUMAN_JUDGMENT,
+                evidence="conflict consult ESCALATE_TO_HUMAN: genuine per-group "
+                         "harm trade-off among admissible options; value math "
+                         "must not invent permission to harm the losing group. "
+                         f"{receipt_text}",
+            )
+        if resolution.verdict == _ce.REFUSE_ALL:
+            return refused(
+                PLAN_SAFETY_PROHIBITED,
+                evidence="conflict consult REFUSE_ALL: every profiled option "
+                         f"violates a hard harm boundary. {receipt_text}",
+            )
+        if resolution.verdict == _ce.NEEDS_EVIDENCE:
+            return refused(
+                PLAN_SAFETY_NEEDS_EVIDENCE,
+                evidence="conflict consult NEEDS_EVIDENCE: every profiled "
+                         "option has unqualified harm dimensions; unknowns "
+                         f"are not decided here. {receipt_text}",
+            )
+        conflict_evidence = (
+            f"conflict consult PROCEED: no genuine per-group harm trade-off "
+            f"(chosen={resolution.chosen_option}); value calculus selects. "
+            f"receipt={resolution.receipt.receipt_id}",
+        )
+
     # --- Do-no-harm hard gate (safety floor). Fail closed: a PROHIBITED
     # candidate gets zero value — it is excluded from selection entirely.
     # A NEEDS_EVIDENCE candidate is likewise excluded: unresolved critical
@@ -679,7 +743,7 @@ def plan_action(authority: LawAuthority,
                      f"NEEDS_EVIDENCE by the do-no-harm gate; critical safety evidence "
                      f"unresolved, nothing admissible to execute. {detail}",
         )
-    gate_evidence = law11_evidence + tuple(
+    gate_evidence = law11_evidence + conflict_evidence + tuple(
         f"candidate {cid} EXCLUDED by do-no-harm gate [{verdict}]: {', '.join(rs)}"
         for cid, verdict, rs in excluded
     )
