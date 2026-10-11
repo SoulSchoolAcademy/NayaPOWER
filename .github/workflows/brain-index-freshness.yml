@@ -1,0 +1,41 @@
+# Brain Index Freshness — required merge gate (Shawn, 2026-10-11)
+#
+# Makes brain-index drift MECHANICALLY BLOCK merges. The check
+# (tools/protocol/checks/brain_index_freshness.py, protocol law
+# BRAIN-INDEX-FRESHNESS) fails when a BRAIN/ change lands without a
+# matching index regen. Eleven drift recurrences proved detection is not
+# prevention — this workflow exists so the drift cannot merge.
+#
+# ENFORCEMENT: this workflow alone does not block. Shawn must mark the
+# `brain-index-freshness` check as REQUIRED in branch protection for main
+# (see docs/branch-protection-brain-index.md). Until that click, this runs
+# advisory-only.
+#
+# Scope: pull_request events touching BRAIN/** only. Additive — does not
+# modify kernel-tests.yml or any existing workflow.
+
+name: Brain Index Freshness Gate
+
+on:
+  pull_request:
+    paths:
+      - "BRAIN/**"
+
+jobs:
+  brain-index-freshness:
+    name: brain-index-freshness
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout (full history — check reads the committed tree)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run brain-index freshness gate
+        run: python3 tools/protocol/checks/brain_index_freshness.py --record '{}'
