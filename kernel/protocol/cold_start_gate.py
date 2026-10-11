@@ -14,7 +14,8 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 
-from .read_receipt import ReadReceipt
+from .read_receipt import PROTOCOL_VERSION, ReadReceipt
+from .work_cycle_receipt import check_sign_in
 
 
 @dataclass
@@ -26,6 +27,9 @@ class ColdStartState:
     current_truth_location: str
     next_action: str
     receipt: ReadReceipt | None = None
+    current_main_sha: str = ""
+    sign_in_record: dict | None = None
+    live_feed_issues: list[int] | None = None
 
 
 @dataclass
@@ -34,7 +38,7 @@ class ColdStartResult:
     failures: list = field(default_factory=list)
 
 
-REQUIRED_TRUTH_MARKERS = ["#1354", "main"]
+REQUIRED_TRUTH_MARKERS = ["#2154", "#2175", "main"]
 
 
 def run_cold_start(state: ColdStartState) -> ColdStartResult:
@@ -44,7 +48,13 @@ def run_cold_start(state: ColdStartState) -> ColdStartResult:
     if state.receipt is None:
         failures.append("No protocol read receipt. Read the protocol, answer the authority questions.")
     elif not state.receipt.verify():
-        failures.append("Read receipt invalid or failed grading. Re-read the protocol.")
+        failures.append("Read receipt invalid, stale, missing a required source, or failed comprehension. Re-read the current boot packet.")
+    elif state.receipt.agent_id != state.agent_id:
+        failures.append("Read receipt belongs to a different agent identity.")
+    elif state.receipt.protocol_version != PROTOCOL_VERSION:
+        failures.append("Read receipt is not bound to the current PROTOCOL.md candidate version.")
+    elif not state.current_main_sha or state.receipt.current_main_sha != state.current_main_sha:
+        failures.append("Read receipt does not match the current origin/main SHA.")
 
     # 2. Identity.
     if not state.agent_id.strip():
@@ -62,11 +72,18 @@ def run_cold_start(state: ColdStartState) -> ColdStartResult:
     nav = state.current_truth_location.lower()
     if not all(m in nav for m in REQUIRED_TRUTH_MARKERS):
         failures.append(
-            "Truth location must reference the coordination feed (#1354) "
-            "and current main — the board alone is not the entire source of truth."
+            "Truth location must reference mission issue #2154, current coordination board #2175, and current main. #1354 is historical/read-only."
         )
 
-    # 5. Exactly one next action.
+    # 5. A real structured SIGN_IN must be observed before governed work.
+    if state.sign_in_record is None:
+        failures.append("No live-feed SIGN_IN receipt. Post and verify it before substantive work.")
+    else:
+        allowed = set(state.live_feed_issues) if state.live_feed_issues is not None else None
+        result = check_sign_in(state.sign_in_record, state.current_main_sha, allowed)
+        failures.extend(result.failures)
+
+    # 6. Exactly one next action.
     if not state.next_action.strip():
         failures.append("No next executable action declared.")
 
