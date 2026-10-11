@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-11",
-  "receipt_basis_commit": "f33bba344a34e9e91b4b5bb6802c22f6eade3145",
-  "inventory_file_count": 1243,
+  "receipt_basis_commit": "1b6f72defa9b7eea98acc822fe80ab307db1aff2",
+  "inventory_file_count": 1244,
   "domain_counts": {
     "00-ACTIVATION": 3,
     "00-ARCHITECTURE": 5,
@@ -12,7 +12,7 @@
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
     "05-MEMORY": 646,
-    "06-PROOF": 13,
+    "06-PROOF": 14,
     "07-LEARNING": 8,
     "08-SUCCESSION": 2,
     "09-EVOLUTION": 2,
@@ -707,8 +707,8 @@
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-PERSONA-V1.json",
-      "blob_sha": "566168f324ebd3e9aabdced3855079308f40b797",
-      "size": 3567
+      "blob_sha": "04a67dfdcf70166d90d590aea17432b5b513cadb",
+      "size": 3842
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/README.md",
@@ -4009,6 +4009,11 @@
       "path": "BRAIN/06-PROOF/2026-10-07-SELF-IDENTITY-TRIAL-V1.rival.json",
       "blob_sha": "a15b54465e50c42581f81f8f30138b16e2c8a37a",
       "size": 430
+    },
+    {
+      "path": "BRAIN/06-PROOF/2026-10-08-SELF-PREFLIGHT-BINDING-V1.md",
+      "blob_sha": "bbcfcef14dced9807d85424e50c27a05d7cec411",
+      "size": 2467
     },
     {
       "path": "BRAIN/06-PROOF/README.md",

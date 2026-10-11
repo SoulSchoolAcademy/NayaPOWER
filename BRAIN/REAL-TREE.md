@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-11  
-**Receipt basis commit:** `f33bba344a34e9e91b4b5bb6802c22f6eade3145`  
-**Inventory file count:** 1243  
+**Receipt basis commit:** `1b6f72defa9b7eea98acc822fe80ab307db1aff2`  
+**Inventory file count:** 1244  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -16,7 +16,7 @@
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 25 |
 | 05-MEMORY | 646 |
-| 06-PROOF | 13 |
+| 06-PROOF | 14 |
 | 07-LEARNING | 8 |
 | 08-SUCCESSION | 2 |
 | 09-EVOLUTION | 2 |
@@ -179,7 +179,7 @@
 - `BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-PROVE.json` — `e51ffebafe62` (4957 bytes)
 - `BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-SELF.json` — `47a611e41ba3` (4161 bytes)
 - `BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-VERIFY.json` — `2739d6b85380` (4561 bytes)
-- `BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-PERSONA-V1.json` — `566168f324eb` (3567 bytes)
+- `BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-PERSONA-V1.json` — `04a67dfdcf70` (3842 bytes)
 - `BRAIN/04-INTELLIGENCE/README.md` — `6bd1a6ab1572` (3827 bytes)
 - `BRAIN/04-INTELLIGENCE/SMART-NODE-PROTOCOL-V1.json` — `8e70ac3fac7e` (4661 bytes)
 ### 05-MEMORY — Memory
@@ -844,6 +844,7 @@
 - `BRAIN/06-PROOF/2026-10-07-SELF-IDENTITY-TRIAL-V1.json` — `99d6d6530ac6` (7200 bytes)
 - `BRAIN/06-PROOF/2026-10-07-SELF-IDENTITY-TRIAL-V1.md` — `8ff81e55ac32` (3862 bytes)
 - `BRAIN/06-PROOF/2026-10-07-SELF-IDENTITY-TRIAL-V1.rival.json` — `a15b54465e50` (430 bytes)
+- `BRAIN/06-PROOF/2026-10-08-SELF-PREFLIGHT-BINDING-V1.md` — `bbcfcef14dce` (2467 bytes)
 - `BRAIN/06-PROOF/README.md` — `6e90dab1006f` (2315 bytes)
 ### 07-LEARNING — Learning
 
