@@ -42,11 +42,33 @@ class QualityResult:
     reasons: list = field(default_factory=list)
 
 
-def check_delivery(scorecard: Scorecard | None, builder_id: str) -> QualityResult:
+def check_delivery(scorecard: Scorecard | None, builder_id: str,
+                   law12_state: dict | None = None,
+                   law12_proof_time: dict | None = None) -> QualityResult:
     reasons: list[str] = []
     if scorecard is None:
         return QualityResult(False, 0.0, DELIVERY_FLOOR,
                              ["No scorecard. No receipt, no delivery."])
+    # Law 12: a scorecard is a proof about specific code under a specific
+    # rubric. law12_proof_time holds the world values when the scorecard was
+    # made; law12_state holds current values. If the scored code moved, the
+    # scorecard is STALE — rescore, don't deliver on history.
+    # (law12_state without law12_proof_time cannot establish staleness, so
+    # the check is skipped — precise, never speculative.)
+    if law12_state is not None and law12_proof_time is not None:
+        from .proof_expiry import proof_from_scorecard, validate_proof
+        proof = proof_from_scorecard(
+            scorecard,
+            source_sha=law12_proof_time.get("source_sha", ""),
+            policy_ref=law12_proof_time.get("policy_ref", ""),
+        )
+        validation = validate_proof(proof, law12_state)
+        if not validation.is_current:
+            reasons.append(
+                f"Law 12: scorecard stale — {validation.reason()}. "
+                "Rescore against current code; do not deliver on expired proof."
+            )
+            return QualityResult(False, 0.0, DELIVERY_FLOOR, reasons)
     try:
         total = scorecard.weighted_total()
     except ValueError as e:

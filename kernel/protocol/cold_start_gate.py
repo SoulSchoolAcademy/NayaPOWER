@@ -37,7 +37,9 @@ class ColdStartResult:
 REQUIRED_TRUTH_MARKERS = ["#1354", "main"]
 
 
-def run_cold_start(state: ColdStartState) -> ColdStartResult:
+def run_cold_start(state: ColdStartState,
+                   current_protocol_version: str | None = None,
+                   current_source_sha: str | None = None) -> ColdStartResult:
     failures: list[str] = []
 
     # 1. Read receipt must exist and verify.
@@ -45,6 +47,25 @@ def run_cold_start(state: ColdStartState) -> ColdStartResult:
         failures.append("No protocol read receipt. Read the protocol, answer the authority questions.")
     elif not state.receipt.verify():
         failures.append("Read receipt invalid or failed grading. Re-read the protocol.")
+    elif current_protocol_version is not None or current_source_sha is not None:
+        # Law 12: a cryptographically valid receipt is not enough — it must
+        # be fresh. If the protocol version moved, the agent read a different
+        # protocol; re-read required. Tip change alone does not stale the
+        # receipt unless the protocol files changed (precise invalidation;
+        # the adapter scopes the tip dependency to protocol_files).
+        from .proof_expiry import proof_from_read_receipt, validate_proof
+        proof = proof_from_read_receipt(
+            state.receipt, source_sha=current_source_sha or "")
+        current_state: dict[str, str] = {}
+        if current_protocol_version is not None:
+            current_state["policy_ref"] = current_protocol_version
+        if current_source_sha is not None:
+            current_state["source_sha"] = current_source_sha
+        validation = validate_proof(proof, current_state)
+        if not validation.is_current:
+            failures.append(
+                f"Read receipt stale (Law 12): {validation.reason()}. "
+                "Re-read the current protocol.")
 
     # 2. Identity.
     if not state.agent_id.strip():
