@@ -38,7 +38,7 @@ class ColdStartResult:
     failures: list = field(default_factory=list)
 
 
-REQUIRED_TRUTH_MARKERS = ["#2154", "#2175", "main"]
+REQUIRED_TRUTH_MARKERS = ["#2154", "#2175", "#1599", "main"]
 
 
 def run_cold_start(state: ColdStartState) -> ColdStartResult:
@@ -52,7 +52,7 @@ def run_cold_start(state: ColdStartState) -> ColdStartResult:
     elif state.receipt.agent_id != state.agent_id:
         failures.append("Read receipt belongs to a different agent identity.")
     elif state.receipt.protocol_version != PROTOCOL_VERSION:
-        failures.append("Read receipt is not bound to the current PROTOCOL.md candidate version.")
+        failures.append("Read receipt is not bound to the current ratified PROTOCOL.md version.")
     elif not state.current_main_sha or state.receipt.current_main_sha != state.current_main_sha:
         failures.append("Read receipt does not match the current origin/main SHA.")
 
@@ -72,7 +72,7 @@ def run_cold_start(state: ColdStartState) -> ColdStartResult:
     nav = state.current_truth_location.lower()
     if not all(m in nav for m in REQUIRED_TRUTH_MARKERS):
         failures.append(
-            "Truth location must reference mission issue #2154, current coordination board #2175, and current main. #1354 is historical/read-only."
+            "Truth location must reference mission issue #2154, current coordination board #2175, specialty-feed index #1599, and current main. #1354 is historical/read-only."
         )
 
     # 5. A real structured SIGN_IN must be observed before governed work.
