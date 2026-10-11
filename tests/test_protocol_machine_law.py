@@ -5,12 +5,15 @@ Prime 2: the law is the code. These tests prove the machinery enforces it.
 Positive AND negative controls: gates must block what they claim to block
 and allow what they claim to allow.
 """
+import hashlib
+import json
 import time
 
 import pytest
 
 from kernel.protocol.read_receipt import (
     AUTHORITY_QUESTIONS,
+    REQUIRED_SOURCE_PATHS,
     ReadReceipt,
     grade_answer,
     issue_receipt,
@@ -18,6 +21,7 @@ from kernel.protocol.read_receipt import (
 from kernel.protocol.authority_gate import classify_action, is_authorized, Verdict
 from kernel.protocol.quality_gate import Scorecard, check_delivery, DELIVERY_FLOOR
 from kernel.protocol.cold_start_gate import ColdStartState, run_cold_start
+from kernel.protocol.work_cycle_receipt import check_sign_in, check_sign_out
 from kernel.protocol.cold_successor_test import Handoff, check_handoff
 from kernel.protocol.takeover import (
     TakeoverRecord,
@@ -31,15 +35,152 @@ from kernel.protocol.takeover import (
 
 CORRECT = {
     "q1": "Shawn Vibert",
-    "q2": "production deploys, credentials and money, destructive actions, ratification, security and privacy",
-    "q3": "No, never",
+    "q2": "production deploys, credentials, money, destructive actions, ratification, security, privacy, consent and authority changes",
+    "q3": "No",
     "q4": "9.0",
     "q5": "independent evidence and proof",
+    "q6": "The current shared coordination board is #2175; #1354 is a read-only historical archive.",
+    "q7": "Mandatory boot sources include AGENTS.md, Naya-Protocol V1, the Constitution, OPERATING-LAW.md, 0008-OPERATING-CODE-V2.ai.md, and TEAM-NAYA-OPERATING-PROTOCOL-V1.md.",
+    "q8": "No, opening a file or hashing a receipt alone does not prove comprehension.",
+    "q9": "Governed work is held and blocked until the missing or conflicting required sources are resolved.",
+    "q10": "Sign in before substantive work and sign out on the same feed at cycle end.",
+    "q11": "The Constitution constrains; Operating Law and Operating Code govern; the Naya Protocol operationalizes them without replacing them.",
+    "q12": "Unknown means missing knowledge is not zero or a pass; preserve uncertainty.",
+    "q13": "The mission is maximum verified human value; independent evidence must prove success before claiming it.",
 }
+
+CURRENT_MAIN_SHA = "640a5fb41522e4a5ae6bbd4d258b8a0a88945ff6"
+SOURCE_REVISIONS = {
+    path: f"{i + 1:040x}" for i, path in enumerate(REQUIRED_SOURCE_PATHS)
+}
+SOURCE_REVISIONS[
+    "NAYA-ACTIVATION/CURRENT-REALITY/SOURCE-PRECEDENCE-AND-NAVIGATION-RECONCILIATION-2026-10-10.md"
+] = "f" * 40
+
+
+def _receipt_body(payload):
+    start = "<!-- NAYA-WORK-CYCLE-RECEIPT:START -->"
+    end = "<!-- NAYA-WORK-CYCLE-RECEIPT:END -->"
+    return start + "\n" + json.dumps(payload, sort_keys=True) + "\n" + end
+
+
+def _good_sign_in():
+    comment_id = "6105462971"
+    record = {
+        "event_type": "SIGN_IN",
+        "agent_id": "naya-9",
+        "feed_issue": 1867,
+        "comment_id": comment_id,
+        "comment_url": f"https://github.com/SoulSchoolAcademy/NayaPOWER/issues/1867#issuecomment-{comment_id}",
+        "task": "protocol boot gate",
+        "owner": "Law/Governance",
+        "objective": "require source-linked protocol comprehension before work",
+        "definition_of_done": "tests prove missing packet or sign-in blocks boot",
+        "current_main_sha": CURRENT_MAIN_SHA,
+        "authority_and_gates": "documentation and reversible branch edits only; no merge",
+        "known_unknowns_and_blockers": "CI and independent review pending",
+        "first_action": "correct cold-start source requirements",
+        "proof_target": "exact-head negative tests",
+        "timestamp": "2026-10-10T21:00:00-08:00",
+    }
+    fields = [
+        "event_type", "feed_issue", "agent_id", "task", "owner", "objective",
+        "definition_of_done", "current_main_sha", "authority_and_gates",
+        "known_unknowns_and_blockers", "first_action", "proof_target", "timestamp",
+    ]
+    record["comment_body"] = _receipt_body({key: record[key] for key in fields})
+    record["comment_body_sha256"] = hashlib.sha256(record["comment_body"].encode("utf-8")).hexdigest()
+    record["github_comment_observed"] = True
+    return record
+
+
+def _good_sign_out(sign_in=None):
+    sign_in = sign_in or _good_sign_in()
+    comment_id = "6105463999"
+    record = {
+        "event_type": "SIGN_OUT",
+        "agent_id": sign_in["agent_id"],
+        "feed_issue": sign_in["feed_issue"],
+        "comment_id": comment_id,
+        "comment_url": f"https://github.com/SoulSchoolAcademy/NayaPOWER/issues/{sign_in['feed_issue']}#issuecomment-{comment_id}",
+        "sign_in_comment_id": sign_in["comment_id"],
+        "current_main_sha": CURRENT_MAIN_SHA,
+        "actual_result": "boot packet and receipt checks changed in PR",
+        "tested_revision": CURRENT_MAIN_SHA,
+        "evidence_links": "PR #2281, exact-head CI to be checked",
+        "truth_status": "IMPLEMENTED_NOT_YET_VERIFIED",
+        "claim_limits": "No test or production claim until CI/independent review",
+        "score": 9.0,
+        "score_delta": 0.5,
+        "failure_or_root_cause": "stale #1354 marker identified and corrected",
+        "remaining_blockers_and_owner": "CI and independent reviewer; Naya 4",
+        "lesson_or_NO_CAPTURE": "NO_CAPTURE",
+        "next_owner": "Naya 4 independent reviewer",
+        "exactly_one_next_action": "Run exact-head acceptance tests",
+        "timestamp": "2026-10-10T21:01:00-08:00",
+    }
+    fields = [
+        "event_type", "feed_issue", "agent_id", "actual_result", "tested_revision",
+        "evidence_links", "truth_status", "claim_limits", "score", "score_delta",
+        "failure_or_root_cause", "remaining_blockers_and_owner",
+        "lesson_or_NO_CAPTURE", "next_owner", "exactly_one_next_action",
+        "timestamp", "sign_in_comment_id", "current_main_sha",
+    ]
+    record["comment_body"] = _receipt_body({key: record[key] for key in fields})
+    record["comment_body_sha256"] = hashlib.sha256(record["comment_body"].encode("utf-8")).hexdigest()
+    record["github_comment_observed"] = True
+    return record
+
+
+def test_sign_in_receipt_passes_for_current_specialist_feed():
+    result = check_sign_in(_good_sign_in(), CURRENT_MAIN_SHA)
+    assert result.passed, result.failures
+
+
+def test_sign_in_rejects_archived_feed():
+    receipt = _good_sign_in()
+    receipt["feed_issue"] = 1354
+    receipt["comment_url"] = (
+        f"https://github.com/SoulSchoolAcademy/NayaPOWER/issues/1354"
+        f"#issuecomment-{receipt['comment_id']}"
+    )
+    result = check_sign_in(receipt, CURRENT_MAIN_SHA)
+    assert not result.passed
+
+
+def test_sign_in_rejects_body_hash_mismatch():
+    receipt = _good_sign_in()
+    receipt["comment_body"] += " forged"
+    result = check_sign_in(receipt, CURRENT_MAIN_SHA)
+    assert not result.passed
+
+
+def test_sign_out_requires_same_feed_and_sign_in_reference():
+    sign_in = _good_sign_in()
+    sign_out = _good_sign_out(sign_in)
+    result = check_sign_out(sign_in, sign_out, CURRENT_MAIN_SHA)
+    assert result.passed, result.failures
+    sign_out["feed_issue"] = 2175
+    sign_out["comment_url"] = (
+        f"https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175"
+        f"#issuecomment-{sign_out['comment_id']}"
+    )
+    result = check_sign_out(sign_in, sign_out, CURRENT_MAIN_SHA)
+    assert not result.passed
+
+
+def test_sign_out_rejects_missing_outcome_receipt():
+    sign_in = _good_sign_in()
+    sign_out = _good_sign_out(sign_in)
+    sign_out["evidence_links"] = ""
+    result = check_sign_out(sign_in, sign_out, CURRENT_MAIN_SHA)
+    assert not result.passed
+
+
 
 
 def test_receipt_passes_with_correct_answers():
-    r = issue_receipt("naya-test", CORRECT)
+    r = issue_receipt("naya-test", CORRECT, SOURCE_REVISIONS, CURRENT_MAIN_SHA)
     assert r.passed
     assert r.verify()
 
@@ -47,25 +188,89 @@ def test_receipt_passes_with_correct_answers():
 def test_receipt_fails_with_wrong_answers():
     bad = dict(CORRECT)
     bad["q3"] = "yes, if the score is high enough"
-    r = issue_receipt("naya-test", bad)
+    r = issue_receipt("naya-test", bad, SOURCE_REVISIONS, CURRENT_MAIN_SHA)
     assert not r.passed
     assert not r.verify()
 
 
 def test_receipt_fails_with_missing_answers():
-    r = issue_receipt("naya-test", {})
+    r = issue_receipt("naya-test", {}, SOURCE_REVISIONS, CURRENT_MAIN_SHA)
     assert not r.passed
+
+def test_receipt_rejects_answer_that_only_starts_with_accepted_text():
+    bad_identity = dict(CORRECT)
+    bad_identity["q1"] = "Shawn is not the final human authority."
+    assert not issue_receipt("naya-test", bad_identity, SOURCE_REVISIONS, CURRENT_MAIN_SHA).passed
+
+    bad_score = dict(CORRECT)
+    bad_score["q4"] = "99"
+    assert not issue_receipt("naya-test", bad_score, SOURCE_REVISIONS, CURRENT_MAIN_SHA).passed
 
 
 def test_receipt_tamper_detected():
-    r = issue_receipt("naya-test", CORRECT)
+    r = issue_receipt("naya-test", CORRECT, SOURCE_REVISIONS, CURRENT_MAIN_SHA)
     r.passed = False  # tamper after signing
     assert not r.verify()
 
+def test_receipt_binds_raw_comprehension_answers():
+    receipt = issue_receipt("naya-test", CORRECT, SOURCE_REVISIONS, CURRENT_MAIN_SHA)
+    assert receipt.verify()
+    receipt.answer_text["q1"] = "Shawn is not the final human authority."
+    receipt.sign()  # even a recomputed public digest cannot make a false answer pass
+    assert not receipt.verify()
+
+
+def test_receipt_rejects_boolean_only_answers_without_answer_text():
+    receipt = issue_receipt("naya-test", CORRECT, SOURCE_REVISIONS, CURRENT_MAIN_SHA)
+    receipt.answer_text = {}
+    receipt.sign()
+    assert not receipt.verify()
+
 
 def test_receipt_bound_to_protocol_version():
-    r = issue_receipt("naya-test", CORRECT)
-    assert r.protocol_version  # version pinned; stale receipts detectable
+    r = issue_receipt("naya-test", CORRECT, SOURCE_REVISIONS, CURRENT_MAIN_SHA)
+    assert r.protocol_version == "NAYA-PROTOCOL-V1/2026-10-11"  # version pinned; stale receipts detectable
+
+
+
+def test_receipt_requires_all_boot_sources():
+    incomplete = dict(SOURCE_REVISIONS)
+    incomplete.pop("CONSTITUTION/🔱 THE NAYAPOWER CONSTITUTION Foundational Operating Laws of Naya, NayaPOWER & NayaNET  Version 1.0 — Founding Constitution.md")
+    r = issue_receipt("naya-test", CORRECT, incomplete, CURRENT_MAIN_SHA)
+    assert not r.passed
+    assert not r.verify()
+
+
+def test_receipt_requires_dated_source_precedence_document():
+    incomplete = {
+        key: value for key, value in SOURCE_REVISIONS.items()
+        if not key.startswith("NAYA-ACTIVATION/CURRENT-REALITY/SOURCE-PRECEDENCE-AND-NAVIGATION-RECONCILIATION-")
+    }
+    r = issue_receipt("naya-test", CORRECT, incomplete, CURRENT_MAIN_SHA)
+    assert not r.passed
+
+
+def test_receipt_requires_valid_current_main_sha():
+    r = issue_receipt("naya-test", CORRECT, SOURCE_REVISIONS, "stale-or-missing")
+    assert not r.passed
+
+
+def test_cold_start_rejects_receipt_for_another_agent():
+    state = _good_state()
+    state.receipt = issue_receipt("other-seat", CORRECT, SOURCE_REVISIONS, CURRENT_MAIN_SHA)
+    assert not run_cold_start(state).passed
+
+
+def test_cold_start_rejects_archived_feed_as_current_navigation():
+    state = _good_state()
+    state.current_truth_location = "historical archive #1354 and current main"
+    assert not run_cold_start(state).passed
+
+
+def test_cold_start_requires_receipt_to_match_main_sha():
+    state = _good_state()
+    state.current_main_sha = "a" * 40
+    assert not run_cold_start(state).passed
 
 
 # ---------- authority_gate ----------
@@ -166,9 +371,11 @@ def _good_state():
         lane="verify",
         authority_summary="Protected gates: production deploys, credentials/money, "
                           "destructive actions, ratification, security/privacy.",
-        current_truth_location="coordination feed #1354 and current main",
+        current_truth_location="mission issue #2154, current coordination board #2175, and live main",
         next_action="re-anchor on live main and check the board",
-        receipt=issue_receipt("naya-9", CORRECT),
+        receipt=issue_receipt("naya-9", CORRECT, SOURCE_REVISIONS, CURRENT_MAIN_SHA),
+        current_main_sha=CURRENT_MAIN_SHA,
+        sign_in_record=_good_sign_in(),
     )
 
 
@@ -185,7 +392,7 @@ def test_cold_start_blocks_missing_receipt():
 
 def test_cold_start_blocks_failed_receipt():
     s = _good_state()
-    s.receipt = issue_receipt("naya-9", {})  # failed grading
+    s.receipt = issue_receipt("naya-9", {}, SOURCE_REVISIONS, CURRENT_MAIN_SHA)  # failed comprehension
     res = run_cold_start(s)
     assert not res.passed
 
@@ -200,6 +407,7 @@ def test_cold_start_requires_board_and_main():
 # ---------- cold_successor_test ----------
 
 def _good_handoff():
+    sign_in = _good_sign_in()
     return Handoff(
         what_happened="repaired the registry drift",
         what_is_true="main is green at abc123",
@@ -208,6 +416,9 @@ def _good_handoff():
         what_is_open="cold-graph gap still open",
         what_is_blocked="none",
         next_action="re-anchor and run the battery",
+        sign_in_receipt=sign_in,
+        sign_out_receipt=_good_sign_out(sign_in),
+        current_main_sha=CURRENT_MAIN_SHA,
     )
 
 
@@ -224,6 +435,23 @@ def test_handoff_fails_missing_proof():
 def test_handoff_fails_unstated_blockers():
     h = _good_handoff()
     h.what_is_blocked = ""
+    assert not check_handoff(h).passed
+
+def test_handoff_fails_without_sign_out_receipt():
+    h = _good_handoff()
+    h.sign_out_receipt = None
+    result = check_handoff(h)
+    assert not result.passed
+    assert any("sign-in and sign-out" in failure.lower() for failure in result.failures)
+
+
+def test_handoff_fails_when_sign_out_uses_different_feed():
+    h = _good_handoff()
+    h.sign_out_receipt["feed_issue"] = 2175
+    h.sign_out_receipt["comment_url"] = (
+        "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175"
+        f"#issuecomment-{h.sign_out_receipt['comment_id']}"
+    )
     assert not check_handoff(h).passed
 
 
