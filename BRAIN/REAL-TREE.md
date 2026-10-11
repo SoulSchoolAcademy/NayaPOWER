@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-11  
-**Receipt basis commit:** `640a5fb41522e4a5ae6bbd4d258b8a0a88945ff6`  
-**Inventory file count:** 1243  
+**Receipt basis commit:** `57e935c1b44b10fcc27a80f8c99fc9ddb2e69440`  
+**Inventory file count:** 1244  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -11,7 +11,7 @@
 | Domain | Files |
 |---|---|
 | 00-SPEC | 15 |
-| 01-GOVERNANCE | 56 |
+| 01-GOVERNANCE | 57 |
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 25 |
@@ -105,6 +105,7 @@
 - `BRAIN/01-GOVERNANCE/0020-ENGINE-BEFORE-PRODUCTION-V1.ai.md` — `dc767dbaee8a` (2079 bytes)
 - `BRAIN/01-GOVERNANCE/0020-ENGINE-BEFORE-PRODUCTION-V1.human.md` — `3054324783e9` (995 bytes)
 - `BRAIN/01-GOVERNANCE/0020-engine-before-production-v1.machine.json` — `abc384701525` (947 bytes)
+- `BRAIN/01-GOVERNANCE/D62-PUMPING-WITNESS-V1.md` — `28712d2934fb` (5030 bytes)
 - `BRAIN/01-GOVERNANCE/DOC-COMPLETENESS-AUDIT-2026-10-10.md` — `ea273ce3077d` (2633 bytes)
 - `BRAIN/01-GOVERNANCE/GATE-CONSOLE.md` — `d7810ee7ef34` (10085 bytes)
 - `BRAIN/01-GOVERNANCE/LEARNING-INTERNALIZATION-AUTOMATIC-BEHAVIOR-V1.md` — `c58ef4864a38` (10500 bytes)
@@ -1302,7 +1303,7 @@
 - `BRAIN/99-ARCHIVE/brain-reconciliation-ledger-f648833b.md` — `168e14b9b430` (2096 bytes)
 ### ROOT — Brain root files
 
-- `BRAIN/CURRENT-MISSION-STATE.md` — `b27a81ea68cd` (42035 bytes)
+- `BRAIN/CURRENT-MISSION-STATE.md` — `9895ef8019b1` (48270 bytes)
 - `BRAIN/MASTER-MAP.md` — `3a56fd561121` (9551 bytes)
 - `BRAIN/NAYAPOWER-BRAIN-INDEX.json` — _(self-referential index file; blob SHA omitted)_
 - `BRAIN/README.md` — `bf4d982f4f32` (2325 bytes)
