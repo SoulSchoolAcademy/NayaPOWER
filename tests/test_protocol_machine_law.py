@@ -40,7 +40,7 @@ CORRECT = {
     "q4": "9.0",
     "q5": "Independent evidence and proof establish verified success.",
     "q6": "The current shared coordination board is #2175; #1354 is a historical archive.",
-    "q7": "Required boot paths: PROTOCOL.md, AGENTS.md, NAYA-ACTIVATION/CONSTITUTION/CONSTITUTION.md, NAYA-ACTIVATION/CONSTITUTION/LAWS-INDEX-V1.md, BRAIN/01-GOVERNANCE/TEAM-NAYA-OPERATING-PROTOCOL-V1.md, NAYA-ACTIVATION/PORTABLE-ACTIVATION-PROTOCOL-V1.md, NAYA-ACTIVATION/SMART-NOTE-OPERATING-CONTRACT-V1.md, BRAIN/01-GOVERNANCE/0004-NONSTOP-LOOP-V1.ai.md, and BRAIN/CURRENT-MISSION-STATE.md.";
+    "q7": "Required boot paths: PROTOCOL.md, AGENTS.md, NAYA-ACTIVATION/CONSTITUTION/CONSTITUTION.md, NAYA-ACTIVATION/CONSTITUTION/LAWS-INDEX-V1.md, BRAIN/01-GOVERNANCE/TEAM-NAYA-OPERATING-PROTOCOL-V1.md, NAYA-ACTIVATION/PORTABLE-ACTIVATION-PROTOCOL-V1.md, NAYA-ACTIVATION/SMART-NOTE-OPERATING-CONTRACT-V1.md, BRAIN/01-GOVERNANCE/0004-NONSTOP-LOOP-V1.ai.md, and BRAIN/CURRENT-MISSION-STATE.md.",
     "q8": "No; opening a file or hashing a receipt alone does not prove comprehension.",
     "q9": "Governed work remains HELD and BLOCKED while required sources are missing or conflicting.",
     "q10": "Sign in before substantive work and sign out on the same feed at cycle end.",
