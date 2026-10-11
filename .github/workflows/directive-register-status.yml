@@ -1,0 +1,55 @@
+# Directive Register Status gate.
+#
+# Refuses silent hand-edits to directive statuses. Statuses are facts, not
+# free text: the only honest way to move NOT_STARTED -> BUILDING ->
+# BUILT_AS_CODE -> ENFORCED is tools/directive_register_promote.py, which
+# writes the audit record the gate demands.
+#
+# Every PR that touches the register or the audit log gets:
+#   - every changed status matched to an audit record in the same PR
+#     (a status change with no audit entry -> check RED)
+#   - every audit record matched to a status change in the same PR
+#     (an orphan audit line -> check RED)
+#   - audit from/to verified against the actual old/new statuses
+#   - the register itself re-validated fail-closed at HEAD
+#
+# This is an ENFORCEMENT gate, not a suggestion. If it is red, the PR does
+# not merge.
+name: Directive Register Status
+
+on:
+  pull_request:
+    paths:
+      - 'BRAIN/01-GOVERNANCE/directive-register.json'
+      - 'BRAIN/01-GOVERNANCE/directive-register-audit.log'
+      - 'tools/directive_register_promote.py'
+      - 'tools/directive_register_status_check.py'
+      - 'tools/tests/test_directive_register_promote.py'
+      - '.github/workflows/directive-register-status.yml'
+
+jobs:
+  directive-register-status:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install pytest
+        run: python3 -m pip install pytest
+
+      - name: Enforce audit-backed status changes
+        run: |
+          BASE="${{ github.base_ref }}"
+          BASE="${BASE:-main}"
+          python3 tools/directive_register_status_check.py --repo . --base-ref "origin/$BASE"
+
+      - name: Run promotion mechanism test suite
+        run: |
+          python3 -m pytest tools/tests/test_directive_register_promote.py -v -p no:cacheprovider
