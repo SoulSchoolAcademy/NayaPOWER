@@ -18,7 +18,7 @@
   "conflict_notes": [
     "Note 1 — Calculator law (0017) vs Calculator machine (0006): complementary. The law commands the process; the machine implements scoring. Both agree: a score never grants permission.",
     "Note 2 — Two-layer order: the same-day root-cause fix governs — think literal first, lead with literal meaning, technicals follow as evidence.",
-    "Note 3 — Delegated merge vs 'PR merges need his word': the 2026-10-08 ratification governs — merges proceed only when all five gates hold."
+    "Note 3 — Delegated merge vs 'PR merges need his word': the 2026-10-08 ratification governs — merges proceed only when all four gates hold. Amended 2026-10-11: the former 'or objected-to' clause retired with condition (4) by the One Gate Law — the feed is never a gate."
   ],
   "laws": [
     {
