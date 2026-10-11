@@ -1,0 +1,56 @@
+name: progress-fairness-gate
+
+# D23/D24/D25 progress & fairness claims gate — Naya 2 WIRE LANE, 2026-10-11.
+#
+# Wires the canonical D23/D24/D25 seams (drift_canary/progress.py,
+# fairness.py, strong_fairness.py) onto the governance path: every
+# progress/fairness claim registered in
+# tools/progress_fairness_claims_manifest.json is judged by the REAL
+# mechanism on the claim's declared evidence. A dishonest claim (proof
+# progress asserted on a heartbeat; accomplishment asserted on
+# dispatch-only evidence; WEAK asserted where STRONG is required; a
+# fairness standard asserted where the mechanism says NEITHER) BLOCKS
+# the PR (exit 1). Corrupt claims or a missing/neutered mechanism fail
+# closed (exit 2). Zero registered claims is an explicit DORMANT, never
+# a false green.
+#
+# Boundary: CI governance path only. Wiring progress/fairness accounting
+# into kernel/, KNOW, LAW, ACT, or any runtime path still needs Shawn's
+# word (per the mechanisms' own docstrings). This gate judges claims;
+# it authorizes nothing; fairness can never create permission through it.
+
+on:
+  pull_request:
+    paths:
+      - 'tools/progress_fairness_gate.py'
+      - 'tools/progress_fairness_claims_manifest.json'
+      - 'tests/test_progress_fairness_gate.py'
+      - 'drift_canary/progress.py'
+      - 'drift_canary/fairness.py'
+      - 'drift_canary/strong_fairness.py'
+      - '.github/workflows/progress-fairness-gate.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'tools/progress_fairness_gate.py'
+      - 'tools/progress_fairness_claims_manifest.json'
+      - 'tests/test_progress_fairness_gate.py'
+      - 'drift_canary/progress.py'
+      - 'drift_canary/fairness.py'
+      - 'drift_canary/strong_fairness.py'
+      - '.github/workflows/progress-fairness-gate.yml'
+
+jobs:
+  progress-fairness-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Judge registered progress/fairness claims against the real mechanism
+        run: python3 tools/progress_fairness_gate.py
+      - name: Run the gate's own test suite (real asserts, no theater)
+        run: |
+          python3 -m pip install -q pytest
+          python3 -m pytest tests/test_progress_fairness_gate.py -q -p no:cacheprovider
