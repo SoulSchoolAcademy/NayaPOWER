@@ -269,6 +269,11 @@ def _notify_shared(env: dict, actor: str) -> dict:
         outbox = _import_outbox()
     except ImportError:
         return {"skipped": "notify_outbox unavailable on this tree", "at": at}
+    except Exception as exc:
+        # F1 (2026-10-11): a present-but-broken outbox raises non-ImportError
+        # at import time. The seam's contract is NEVER raises, so that too
+        # degrades to a recorded skip instead of breaking the transition.
+        return {"skipped": f"notify_outbox import failed: {type(exc).__name__}", "at": at}
     try:
         audience = ["all"] + [t for t in env.get("impacted_teams", []) if t != "all"]
         payload = {

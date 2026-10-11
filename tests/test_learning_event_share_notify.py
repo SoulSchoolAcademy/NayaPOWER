@@ -221,6 +221,26 @@ def test_publish_failure_never_breaks_transition(ledger, monkeypatch):
     assert env["share_notification"]["skipped"] == "publish failed: RuntimeError"
 
 
+def test_broken_outbox_import_never_breaks_transition(ledger, monkeypatch):
+    # F1 regression (2026-10-11): a present-but-broken outbox module raising
+    # at IMPORT time (not an ImportError) must degrade to a recorded skip,
+    # per the seam's NEVER-raises contract — it must not break the transition.
+    class _BrokenOutboxFinder:
+        def find_spec(self, name, path=None, target=None):
+            if name in ("notify_outbox", "tools.notify_outbox"):
+                raise RuntimeError("simulated broken outbox at import time")
+            return None
+
+    monkeypatch.delitem(sys.modules, "notify_outbox", raising=False)
+    monkeypatch.delitem(sys.modules, "tools.notify_outbox", raising=False)
+    monkeypatch.setattr(sys, "meta_path", [_BrokenOutboxFinder()] + sys.meta_path)
+    eid = _issued(ledger)
+    env = transition(eid, "SHARED", actor="naya-2", ledger_path=ledger,
+                     feed_url=FEED_URL)
+    assert env["lifecycle_state"] == "SHARED"
+    assert env["share_notification"]["skipped"] == "notify_outbox import failed: RuntimeError"
+
+
 def test_kill_switch_disables_notify(ledger, outbox_stub, monkeypatch):
     monkeypatch.setenv("NAYA_EVENT_SHARE_NOTIFY", "0")
     eid = _issued(ledger)
