@@ -1,20 +1,14 @@
 """
-cold_start_gate.py — Machine law: mandatory boot sequence for fresh agents.
+cold_start_gate.py — fail-closed boot sequence for fresh agents.
 
-A fresh agent may not begin governed work until it can demonstrate:
-1. Valid protocol read receipt (read_receipt.py)
-2. Identity: who it is, who the human director is
-3. Authority: what it may and may not do
-4. Navigation: where current truth lives
-5. Next action: exactly one executable next step
-
-This is the machine twin of the ACTIVATION ACCEPTANCE contract.
+Governed work requires a valid current-document read receipt, declared identity,
+human authority, correct current navigation, and exactly one next action.
 """
 from __future__ import annotations
 
 from dataclasses import dataclass, field
 
-from .read_receipt import ReadReceipt
+from .read_receipt import ReadReceipt, REQUIRED_READING_PATHS
 
 
 @dataclass
@@ -26,6 +20,7 @@ class ColdStartState:
     current_truth_location: str
     next_action: str
     receipt: ReadReceipt | None = None
+    current_document_sha256: dict[str, str] = field(default_factory=dict)
 
 
 @dataclass
@@ -34,17 +29,19 @@ class ColdStartResult:
     failures: list = field(default_factory=list)
 
 
-REQUIRED_TRUTH_MARKERS = ["#1354", "main"]
+REQUIRED_TRUTH_MARKERS = ["#2175", "#2154", "#1599", "main"]
 
 
 def run_cold_start(state: ColdStartState) -> ColdStartResult:
     failures: list[str] = []
 
-    # 1. Read receipt must exist and verify.
+    # 1. Receipt must bind every required reading to the bytes in current state.
     if state.receipt is None:
-        failures.append("No protocol read receipt. Read the protocol, answer the authority questions.")
-    elif not state.receipt.verify():
-        failures.append("Read receipt invalid or failed grading. Re-read the protocol.")
+        failures.append("No protocol read receipt. Read the required sources and answer the comprehension questions.")
+    elif set(state.current_document_sha256) != set(REQUIRED_READING_PATHS):
+        failures.append("Current hashes for every mandatory reading were not supplied; activation fails closed.")
+    elif not state.receipt.verify(expected_document_sha256=state.current_document_sha256):
+        failures.append("Read receipt failed comprehension, completeness, integrity, or current-source binding.")
 
     # 2. Identity.
     if not state.agent_id.strip():
@@ -54,16 +51,15 @@ def run_cold_start(state: ColdStartState) -> ColdStartResult:
 
     # 3. Authority summary must name at least one protected gate.
     auth = state.authority_summary.lower()
-    if not any(k in auth for k in ["production", "credential", "money",
-                                    "destructive", "ratif", "privacy", "security"]):
+    if not any(k in auth for k in ["production", "credential", "money", "destructive", "ratif", "privacy", "security"]):
         failures.append("Authority summary does not name protected gates.")
 
-    # 4. Navigation: must reference the coordination surface and current main.
+    # 4. Current navigation: coordination, mission state, index, and current main.
     nav = state.current_truth_location.lower()
-    if not all(m in nav for m in REQUIRED_TRUTH_MARKERS):
+    if not all(marker in nav for marker in REQUIRED_TRUTH_MARKERS):
         failures.append(
-            "Truth location must reference the coordination feed (#1354) "
-            "and current main — the board alone is not the entire source of truth."
+            "Truth location must reference current coordination (#2175), mission state (#2154), "
+            "the specialty-feed index (#1599), and current main."
         )
 
     # 5. Exactly one next action.
