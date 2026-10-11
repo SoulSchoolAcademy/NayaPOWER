@@ -1,0 +1,56 @@
+name: Joint-Proof Qualification Gate (D65 wire)
+
+# Wires the D65 strongly-connected-invariant-groups engine onto the
+# drift-canary governance-verification path. Every joint-proof claim in
+# tools/d65_joint_proof_manifest.json is cold-judged by the REAL engine
+# (drift_canary/strongly_connected_groups.py): the declaration is rebuilt
+# from the claim's own model bytes and verify_joint recomputes the
+# verdict, and the claimant's asserted verdict must match the engine's
+# recomputed judgment exactly. A claim the law refuses — a self-certified
+# authority, a digest mismatch (model drifted under the authorization),
+# a spurious joint (members not one strongly connected component), a
+# member-authorized replenishment, an invented REPEATABLE_PROVEN over a
+# livelock, an exit conflated with repeatability, an ungrounded group,
+# or a malformed joint — BLOCKS (exit 1). Empty manifest = explicit
+# DORMANT (exit 0), never a false green. Corrupt manifest, unknown
+# assertions, or a broken engine = fail-closed (exit 2).
+#
+# OPERATING PATH: the drift-canary governance-verification CI path.
+# Trigger: this check on pull_request / push-to-main for the paths
+# below. Block: check red blocks the merge path. Defect class:
+# joint-proof qualification claims that the D65 law refuses. Verify-
+# still-connected: this file exists and the check is required on the
+# drift-canary path; `python tools/d65_joint_proof_gate.py --json`
+# exits 0 DORMANT on a claim-free tree.
+
+on:
+  pull_request:
+    paths:
+      - "drift_canary/strongly_connected_groups.py"
+      - "tools/d65_joint_proof_gate.py"
+      - "tools/d65_joint_proof_manifest.json"
+      - "tests/test_d65_joint_proof_gate.py"
+      - ".github/workflows/d65-joint-proof-verification.yml"
+  push:
+    branches: ["main"]
+    paths:
+      - "drift_canary/strongly_connected_groups.py"
+      - "tools/d65_joint_proof_gate.py"
+      - "tools/d65_joint_proof_manifest.json"
+      - "tests/test_d65_joint_proof_gate.py"
+      - ".github/workflows/d65-joint-proof-verification.yml"
+
+jobs:
+  joint-proof-verification:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      # Bare setup-python images do not always carry pytest; install it
+      # explicitly (same lesson as the D55/D56/D58/D59/D61/D62/D63/D64
+      # mechanism and wire gates and the directive-register gates).
+      - run: python -m pip install pytest
+      - run: python -m pytest tests/test_d65_joint_proof_gate.py -q -p no:cacheprovider
+      - run: python tools/d65_joint_proof_gate.py --json

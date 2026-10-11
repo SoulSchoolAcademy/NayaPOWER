@@ -1,0 +1,95 @@
+{
+  "_note": "D65 joint-proof qualification claim register. Each claim in 'claims' is cold-judged by tools/d65_joint_proof_gate.py against the REAL D65 engine (drift_canary/strongly_connected_groups.verify_joint): the declaration is rebuilt from the claim's own model bytes and the claimant's asserted verdict must match the engine's recomputed verdict exactly. '_example' is a WORKED EXAMPLE, not an active claim.",
+  "_schema": {
+    "claim": {
+      "id": "unique non-empty string",
+      "obligation_id": "non-empty string binding the obligation",
+      "asserts": [
+        "REPEATABLE_PROVEN",
+        "DEADLOCK_IN_SCOPE",
+        "LIVELOCK_COUNTEREXAMPLE",
+        "EXIT_POSSIBLE_NOT_GUARANTEED",
+        "JOINT_UNDETERMINED"
+      ],
+      "model": "JointDeclaration fields: name, members[], declared_by, prereq{}, initial_states[], authorized_initial[], transitions[] (src/dst/kind/progress/authorization/capacity/owner), relation_digest, exit_states[]"
+    },
+    "claims": "list of claim objects (empty = gate DORMANT)"
+  },
+  "_example": {
+    "_comment": "WORKED EXAMPLE \u2014 not an active claim. If registered as a claim, the gate BLOCKS it (exit 1): the model is a zero-progress closed cycle over the 4-member SCC with an honest digest and external treasury authorization. The naive spec baseline certifies this shape REPEATABLE (no progress check \u2014 fraud #3 the D65 law exists to prevent). The real engine computes LIVELOCK_COUNTEREXAMPLE \u2014 the joint system can spin forever without advancing \u2014 so asserting REPEATABLE_PROVEN diverges from the law's judgment and the claim dies.",
+    "id": "D65-WORKED-LIVELOCK-AS-REPEATABLE",
+    "obligation_id": "aer-live-010-worked-example",
+    "asserts": "REPEATABLE_PROVEN",
+    "model": {
+      "name": "AER-LIVE-010-SCC-WORKED",
+      "members": [
+        "budget",
+        "lifecycle",
+        "replenishment",
+        "resource"
+      ],
+      "declared_by": "treasury",
+      "prereq": {
+        "budget": [
+          "lifecycle"
+        ],
+        "resource": [
+          "budget"
+        ],
+        "replenishment": [
+          "resource"
+        ],
+        "lifecycle": [
+          "replenishment"
+        ]
+      },
+      "initial_states": [
+        "s0_allocated"
+      ],
+      "authorized_initial": [
+        "s0_allocated"
+      ],
+      "transitions": [
+        {
+          "src": "s0_allocated",
+          "dst": "s1_drawn",
+          "kind": "ordinary",
+          "progress": 0,
+          "authorization": null,
+          "capacity": null,
+          "owner": null
+        },
+        {
+          "src": "s1_drawn",
+          "dst": "s2_replenished",
+          "kind": "replenish",
+          "progress": 0,
+          "authorization": "treasury:auth-001",
+          "capacity": null,
+          "owner": null
+        },
+        {
+          "src": "s2_replenished",
+          "dst": "s3_released",
+          "kind": "ordinary",
+          "progress": 0,
+          "authorization": null,
+          "capacity": null,
+          "owner": null
+        },
+        {
+          "src": "s3_released",
+          "dst": "s0_allocated",
+          "kind": "ordinary",
+          "progress": 0,
+          "authorization": null,
+          "capacity": null,
+          "owner": null
+        }
+      ],
+      "relation_digest": "035c50a1d9ba5d19316f070d20f2de0e934018b27c3d55b5e0b5f4bc35ad916f",
+      "exit_states": []
+    }
+  },
+  "claims": []
+}
