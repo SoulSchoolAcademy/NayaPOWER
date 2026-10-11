@@ -1,0 +1,73 @@
+# Directive Status Honesty gate.
+#
+# Wires the status ladder (NOT_STARTED -> BUILDING -> BUILT_AS_CODE ->
+# ENFORCED) into the PR merge path for the directive register itself.
+#
+# `tools/directive_status.py` is the honest way to move a directive up the
+# ladder, but nothing forced its use: a hand-edit to
+# BRAIN/01-GOVERNANCE/directive-register.json could skip rungs, claim
+# ENFORCED with no live gate, or ship a phantom gate path. This gate
+# refuses all three on the merge path.
+#
+#   - H1  NOT_STARTED must not carry evidence_pr.
+#   - H2  BUILT_AS_CODE / ENFORCED must carry a valid evidence_pr.
+#   - H3  ENFORCED must record a gate; a repo-path gate must exist.
+#   - H4  Status movement obeys the ladder: exactly one rung up per change,
+#         any distance down (honest news). Entries are never removed.
+#   - Fail-closed: an unloadable register is RED, never a silent pass.
+#
+# This is an ENFORCEMENT gate, not a suggestion. If it is red, the PR does
+# not merge.
+name: Directive Status Honesty
+
+on:
+  pull_request:
+    paths:
+      - 'BRAIN/01-GOVERNANCE/directive-register.json'
+      - 'tools/directive_register.py'
+      - 'tools/directive_status.py'
+      - 'tools/directive_status_honesty.py'
+      - 'tools/tests/test_directive_status_honesty.py'
+      - '.github/workflows/directive-status-honesty.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'BRAIN/01-GOVERNANCE/directive-register.json'
+      - 'tools/directive_status.py'
+      - 'tools/directive_status_honesty.py'
+
+jobs:
+  directive-status-honesty:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Resolve base/head refs
+        id: refs
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            echo "base=${{ github.event.pull_request.base.sha }}" >> "$GITHUB_OUTPUT"
+            echo "head=${{ github.event.pull_request.head.sha }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "base=${{ github.event.before }}" >> "$GITHUB_OUTPUT"
+            echo "head=${{ github.sha }}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Check status honesty on the register diff
+        run: |
+          python3 tools/directive_status_honesty.py \
+            --base-ref "${{ steps.refs.outputs.base }}" \
+            --head-ref "${{ steps.refs.outputs.head }}" \
+            --repo .
+
+      - name: Run honesty gate test suite
+        run: |
+          python3 -m pytest tools/tests/test_directive_status_honesty.py -v -p no:cacheprovider
