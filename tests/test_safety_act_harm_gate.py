@@ -37,14 +37,28 @@ def _candidate(cid="p1", **kw):
         candidate_id=cid,
         action="naya_node_apply",
         description="apply retained intelligence to NAYA-NODE-0001",
-        quality={"objective_fit": 8.0, "evidence_sufficiency": 7.0,
-                 "applicability": 8.0, "robustness": 7.0},
-        confidence={"objective_fit": 0.9, "evidence_sufficiency": 0.8,
-                    "applicability": 0.9, "robustness": 0.8},
+        quality={"objective_fit": 9.0, "evidence_sufficiency": 9.0,
+                 "applicability": 9.0, "robustness": 9.0,
+                 "reversibility": 9.0, "blast_containment": 9.0,
+                 "simplicity": 9.0},
+        confidence={"objective_fit": 0.9, "evidence_sufficiency": 0.9,
+                    "applicability": 0.9, "robustness": 0.9,
+                    "reversibility": 0.9, "blast_containment": 0.9,
+                    "simplicity": 0.9},
         reversibility="REVERSIBLE",
         expected_outcome="node state updated, previous state restorable",
         proof_requirements=("execution_receipt", "state_diff"),
         stakes="low",
+        lawful=True,
+        rights_safe=True,
+        privacy_safe=True,
+        safety_safe=True,
+        value_benefit=8.0,
+        value_harm=1.0,
+        value_cost=1.0,
+        value_risk=0.5,
+        value_confidence={"B": 0.9, "H": 0.9, "C": 0.9, "R": 0.9},
+        value_evidence_count=3,
     )
     base.update(kw)
     return ap.PlanCandidate(**base)
@@ -54,9 +68,13 @@ def _perfect_q(cid="p1", **kw):
     """A candidate with near-perfect decision quality — the falsifier's
     bait. If the gate is bypassed, this candidate always wins on Q."""
     kw.setdefault("quality", {"objective_fit": 9.9, "evidence_sufficiency": 9.9,
-                              "applicability": 9.9, "robustness": 9.9})
+                              "applicability": 9.9, "robustness": 9.9,
+                              "reversibility": 9.9, "blast_containment": 9.9,
+                              "simplicity": 9.9})
     kw.setdefault("confidence", {"objective_fit": 0.99, "evidence_sufficiency": 0.99,
-                                 "applicability": 0.99, "robustness": 0.99})
+                                 "applicability": 0.99, "robustness": 0.99,
+                                 "reversibility": 0.99, "blast_containment": 0.99,
+                                 "simplicity": 0.99})
     return _candidate(cid, **kw)
 
 
@@ -73,18 +91,25 @@ def test_hard_violation_candidate_is_refused():
 
 def test_high_q_hard_violation_cannot_win():
     """FALSIFIER: a near-perfect-Q harmful candidate must not beat a
-    mediocre clean one. Without the gate, the harmful candidate wins."""
+    clean one with lower Q. Without the gate, the harmful candidate wins."""
     harmful = _perfect_q("p-harmful", hard_violation=True)
     clean = _candidate("p-clean",
-                       quality={"objective_fit": 5.0, "evidence_sufficiency": 5.0,
-                                "applicability": 5.0, "robustness": 5.0})
+                       quality={"objective_fit": 9.0, "evidence_sufficiency": 9.0,
+                                "applicability": 9.0, "robustness": 9.0,
+                                "reversibility": 9.0, "blast_containment": 9.0,
+                                "simplicity": 9.0},
+                       confidence={"objective_fit": 0.9, "evidence_sufficiency": 0.9,
+                                   "applicability": 0.9, "robustness": 0.9,
+                                   "reversibility": 0.9, "blast_containment": 0.9,
+                                   "simplicity": 0.9})
     plan, receipt = ap.plan_action(_authority(), [harmful, clean],
                                   _profile(), now=NOW)
     assert plan is not None
     assert plan.chosen.candidate_id == "p-clean"
     assert any("p-harmful" in e and "EXCLUDED" in e for e in receipt.evidence)
     # the prohibited candidate gets zero value: no score recorded for it
-    assert [cid for cid, _q in plan.candidate_scores] == ["p-clean"]
+    # candidate_scores rows are (cid, Q, delta_v, v_safe, gate)
+    assert [row[0] for row in plan.candidate_scores] == ["p-clean"]
 
 
 # ---------------- explicit unsafe flags ----------------
@@ -168,11 +193,20 @@ def test_all_prohibited_refusal_names_every_candidate():
 
 
 def test_clean_candidates_behave_as_before():
-    """Regression: clean candidates are unaffected by the gate —
-    selection still runs on Q, scores still recorded."""
+    """Regression: clean candidates are unaffected by the safety gate —
+    selection runs on the canonical value calculus (ΔV), scores recorded."""
     weak = _candidate("p-weak",
-                      quality={"objective_fit": 4.0, "evidence_sufficiency": 4.0,
-                               "applicability": 4.0, "robustness": 4.0})
+                      quality={"objective_fit": 9.0, "evidence_sufficiency": 9.0,
+                               "applicability": 9.0, "robustness": 9.0,
+                               "reversibility": 9.0, "blast_containment": 9.0,
+                               "simplicity": 9.0},
+                      confidence={"objective_fit": 0.9, "evidence_sufficiency": 0.9,
+                                  "applicability": 0.9, "robustness": 0.9,
+                                  "reversibility": 0.9, "blast_containment": 0.9,
+                                  "simplicity": 0.9},
+                      # Lower value: PV = 2.0 - 1.0 - 0.5 - 0.25 = 0.25
+                      value_benefit=2.0, value_harm=1.0,
+                      value_cost=0.5, value_risk=0.25)
     strong = _candidate("p-strong")
     plan, receipt = ap.plan_action(_authority(), [weak, strong],
                                   _profile(), now=NOW)
@@ -184,9 +218,18 @@ def test_clean_candidates_behave_as_before():
 
 
 def test_plan_candidate_safety_defaults_are_clean():
-    c = _candidate()
+    # Construct directly (not via _candidate helper) to verify dataclass defaults.
+    c = ap.PlanCandidate(
+        candidate_id="p-defaults", action="a", description="d",
+        quality={}, confidence={}, reversibility="REVERSIBLE",
+        expected_outcome="o", proof_requirements=("p",),
+    )
     assert c.hard_violation is False
     assert c.lawful is None and c.rights_safe is None
     assert c.privacy_safe is None and c.safety_safe is None
     assert c.tails == ()
     assert c.stakeholder_harms == {}
+    # Value defaults are UNMEASURED (None), not zero.
+    assert c.value_benefit is None and c.value_harm is None
+    assert c.value_cost is None and c.value_risk is None
+    assert c.value_evidence_count == 0
