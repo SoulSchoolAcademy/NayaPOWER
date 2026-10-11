@@ -1,0 +1,21 @@
+{
+  "_note": "Unbounded-debt claims judged by tools/d62_pumping_witness_gate.py against the REAL D62 cold verifier (drift_canary/pumping_witness.py, PR #2318). Empty 'claims' = explicit DORMANT (never a false green). The first claim merged activates enforcement with zero new wiring. Claims are evidence declarations: the gate reconstructs the certificate from the claim's own certificate_b64 bytes and runs independent_verify \u2014 a certificate the verifier rejects is BLOCKED (exit 1); a BREACH assertion from a witness is BLOCKED as quantifier confusion (exit 1); an untrustworthy manifest is BROKEN (exit 2).",
+  "_schema": {
+    "id": "unique claim id, e.g. PW-0001",
+    "obligation_id": "the scheduling obligation the unbounded upper is asserted for",
+    "claimant": "who asserts this claim",
+    "evidence_ref": "link to the evidence (board comment, run log, check run)",
+    "asserts": "PROVEN_UNBOUNDED | BREACH \u2014 what the claim asserts. BREACH from a witness is always blocked (starvation accusation).",
+    "certificate_b64": "base64 of drift_canary.pumping_witness.certificate_to_json(cert) \u2014 the minimized entry-cycle-exit certificate. The cold verifier reconstructs from these bytes alone."
+  },
+  "_example": {
+    "_comment": "WORKED EXAMPLE \u2014 not an active claim. If registered as a claim, the gate BLOCKS it (exit 1): the two-token defect from AER-LIVE-007. The naive shape-only checker declares this certificate PROVEN_UNBOUNDED (non-empty cycle, positive debt gain), but the real verifier rejects it \u2014 traversal #3 exhausts recovery_token (supply 2, cost 1 per traversal). Minimal counterexample at repetition 3. This is the exact false witness D62 exists to catch.",
+    "id": "PW-EXAMPLE",
+    "obligation_id": "aer-live-007",
+    "claimant": "naya2/wire (worked example)",
+    "evidence_ref": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175",
+    "asserts": "PROVEN_UNBOUNDED",
+    "certificate_b64": "eyJib3VuZGFyeV9yZWYiOiAibGVkZ2VyQHZlcmlmaWVkLXJldiIsICJjeWNsZSI6IFt7ImNsZWFyc19kZWJ0IjogZmFsc2UsICJkZWJ0X2RlbHRhIjogMSwgImlzX21hbmRhdG9yeV9yZXNldCI6IGZhbHNlLCAibmFtZSI6ICJVOnVuc2VydmVkLXJvdW5kIiwgInJlc291cmNlX2Nvc3RzIjogW1sicmVjb3ZlcnlfdG9rZW4iLCAxXV19XSwgImVudHJ5X2RlYnQiOiAyLCAiZW50cnlfcGF0aCI6IFt7ImNsZWFyc19kZWJ0IjogZmFsc2UsICJkZWJ0X2RlbHRhIjogMSwgImlzX21hbmRhdG9yeV9yZXNldCI6IGZhbHNlLCAibmFtZSI6ICJVOnVuc2VydmVkLXJvdW5kIiwgInJlc291cmNlX2Nvc3RzIjogW119XSwgImV4aXRfcGF0aCI6IFt7ImNsZWFyc19kZWJ0IjogdHJ1ZSwgImRlYnRfZGVsdGEiOiAwLCAiaXNfbWFuZGF0b3J5X3Jlc2V0IjogZmFsc2UsICJuYW1lIjogIlM6c2VydmljZS1yb3VuZCIsICJyZXNvdXJjZV9jb3N0cyI6IFtdfV0sICJpbml0aWFsX3Jlc291cmNlcyI6IFtbInJlY292ZXJ5X3Rva2VuIiwgMl1dLCAibW9kZWxfYXNzdW1wdGlvbnMiOiBbIkFFUi1MSVZFLTAwNzogdGhlIHNjaGVkdWxlciBzdGF0ZSBpcyB0aGUgY3ljbGUncyBmaXhlZCBwb2ludDsgZWFjaCB1bnNlcnZlZCByb3VuZCBhZGRzIGV4YWN0bHkgMSBkZWJ0OyBzZXJ2aWNlIGNsZWFycyB0aGUgY291bnRlci4iXSwgIm9ibGlnYXRpb25faWQiOiAiYWVyLWxpdmUtMDA3In0="
+  },
+  "claims": []
+}

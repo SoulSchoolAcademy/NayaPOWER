@@ -1,0 +1,55 @@
+name: Pumping-Witness Gate (D62 wire)
+
+# Wires the D62 pumping-witness verifier onto the fairness path. Every
+# unbounded-debt claim in tools/d62_pumping_witness_manifest.json is
+# cold-verified by the REAL verifier (drift_canary/pumping_witness.py):
+# a rejected certificate, malformed certificate bytes, or a BREACH
+# assertion from a witness (quantifier confusion — a starvation accusation)
+# BLOCKS (exit 1). Empty manifest = explicit DORMANT (exit 0), never a false
+# green. Corrupt manifest, unknown assertions, or claims without the
+# mechanism = fail-closed (exit 2).
+#
+# OPERATING PATH: the fairness CI path. Trigger: this check on
+# pull_request / push-to-main for the paths below. Block: check red blocks
+# the merge path. Defect class: unbounded-debt upper bounds asserted without
+# a minimized independently-verified entry-cycle-exit certificate, and
+# witness-to-breach upgrades. Verify-still-connected: this file exists and
+# the check is required on the fairness path; `python
+# tools/d62_pumping_witness_gate.py --json` exits 0 DORMANT on a claim-free
+# tree.
+
+on:
+  pull_request:
+    paths:
+      - "drift_canary/pumping_witness.py"
+      - "drift_canary/unbounded_debt.py"
+      - "drift_canary/fairness.py"
+      - "tools/d62_pumping_witness_gate.py"
+      - "tools/d62_pumping_witness_manifest.json"
+      - "tests/test_d62_pumping_witness_gate.py"
+      - ".github/workflows/d62-pumping-witness.yml"
+  push:
+    branches: ["main"]
+    paths:
+      - "drift_canary/pumping_witness.py"
+      - "drift_canary/unbounded_debt.py"
+      - "drift_canary/fairness.py"
+      - "tools/d62_pumping_witness_gate.py"
+      - "tools/d62_pumping_witness_manifest.json"
+      - "tests/test_d62_pumping_witness_gate.py"
+      - ".github/workflows/d62-pumping-witness.yml"
+
+jobs:
+  pumping-witness-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      # Bare setup-python images do not always carry pytest; install it
+      # explicitly (same lesson as the D55/D56/D58/D59 mechanism and wire
+      # gates and the directive-register gates).
+      - run: python -m pip install pytest
+      - run: python -m pytest tests/test_d62_pumping_witness_gate.py -q -p no:cacheprovider
+      - run: python tools/d62_pumping_witness_gate.py --json
