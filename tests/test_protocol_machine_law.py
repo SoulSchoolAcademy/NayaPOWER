@@ -235,6 +235,15 @@ def test_cold_start_rejects_archived_coordination_feed():
     assert not res.passed
 
 
+def test_cold_start_rejects_stale_read_receipt():
+    s = _good_state()
+    stale = dict(DOC_SHAS)
+    stale["PROTOCOL.md"] = hashlib.sha256(b"stale protocol bytes").hexdigest()
+    s.receipt = issue_receipt("naya-9", CORRECT, stale)
+    res = run_cold_start(s)
+    assert not res.passed
+
+
 def test_cold_start_requires_complete_current_document_attestations():
     s = _good_state()
     s.receipt = issue_receipt("naya-9", CORRECT, {})
