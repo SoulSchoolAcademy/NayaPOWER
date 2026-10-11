@@ -54,6 +54,8 @@ path. No existing contracts changed.
 """
 from __future__ import annotations
 
+import itertools
+import uuid
 from dataclasses import dataclass, field
 
 # --- Verdict vocabulary: imported from the on-main contract, asserted identical
@@ -102,6 +104,16 @@ class RevisionTriple:
                 and self.projection_rev <= other.projection_rev)
 
 
+# Module-level monotonic counter: every RevisionAuthority instance receives a
+# unique, never-recycled authority identifier. F1 fix-forward (PR #2215
+# retroactive review): authority binding must NOT use id(self) — CPython
+# reuses id() addresses after garbage collection, so a dead authority's
+# fencing token could validate against a NEW authority at the same address.
+# A monotonic authority UUID can never be recycled; the version predicates
+# remain the real enforcement, this binding is the fail-closed belt.
+_AUTHORITY_SEQ = itertools.count(1)
+
+
 class RevisionAuthority:
     """The single shared authority that allocates monotonic revisions.
 
@@ -115,6 +127,8 @@ class RevisionAuthority:
         self._qualification_rev = 0
         self._projection_rev = 0
         self._token_seq = 0
+        # Monotonic authority UUID: never recycled across GC (see _AUTHORITY_SEQ).
+        self.authority_id = f"auth-{next(_AUTHORITY_SEQ):010d}-{uuid.uuid4().hex[:8]}"
 
     def bump_evidence(self) -> int:
         self._evidence_rev += 1
@@ -140,7 +154,7 @@ class RevisionAuthority:
         return FencingToken(token_id=f"tok-{self._token_seq}",
                             worker_id=worker_id,
                             issued_at=self.current(),
-                            authority_id=id(self))
+                            authority_id=self.authority_id)
 
 
 @dataclass(frozen=True)
@@ -148,7 +162,7 @@ class FencingToken:
     token_id: str
     worker_id: str
     issued_at: RevisionTriple
-    authority_id: int
+    authority_id: str
 
 
 @dataclass
@@ -306,7 +320,9 @@ class PublicationAuthority:
     # The atomic publication boundary
     # ------------------------------------------------------------------
     def _token_valid(self, token: FencingToken) -> bool:
-        return token.authority_id == id(self.revisions)
+        # F1: bound to the monotonic authority UUID, never to id(). A recycled
+        # CPython address can never resurrect a dead authority's token.
+        return token.authority_id == self.revisions.authority_id
 
     def _dependencies_valid(self, manifest: FragmentManifest) -> bool:
         """QualificationDependenciesCurrent ∧ EvidenceDependenciesAdmissible."""

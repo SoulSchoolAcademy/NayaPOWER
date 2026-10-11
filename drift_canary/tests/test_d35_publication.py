@@ -385,3 +385,56 @@ def test_repair_never_resurrects_stale_manifest():
     assert new_manifest.qualification_rev_at_read != \
         old_manifest.qualification_rev_at_read
     a.assert_invariant()
+
+
+# ----------------------------------------------------------------------
+# F1 fix-forward: fencing-token authority binding must survive CPython
+# address reuse across garbage collection.
+# ----------------------------------------------------------------------
+def test_fencing_token_rejected_after_authority_address_reuse():
+    """F1 (PR #2215 retroactive review): a dead authority's fencing token
+    must NEVER validate against a new authority — even if CPython recycles
+    the dead authority's memory address. The binding is a monotonic
+    authority UUID, which is never recycled."""
+    import gc
+
+    a1 = make_authority()
+    _, dead_token = a1.read_for_write("C", "W")
+    dead_authority_id = dead_token.authority_id
+    dead_revisions_addr = id(a1.revisions)  # address CPython may recycle
+    del a1
+    gc.collect()
+
+    rejected = 0
+    uuid_collisions = 0
+    address_reuse_seen = 0
+    for _ in range(20000):
+        b = make_authority()
+        # Whatever object sits at the recycled address, the dead token
+        # must not validate.
+        if not b._token_valid(dead_token):
+            rejected += 1
+        if b.revisions.authority_id == dead_authority_id:
+            uuid_collisions += 1
+        if id(b.revisions) == dead_revisions_addr:
+            # Genuine CPython address reuse of the dead authority object.
+            address_reuse_seen += 1
+        del b
+    assert rejected == 20000, "dead token validated against a live authority"
+    assert uuid_collisions == 0, "an authority UUID was recycled"
+
+
+def test_authority_ids_unique_and_monotonic():
+    """Each RevisionAuthority gets a fresh, ordered, never-reused identity."""
+    a = make_authority()
+    b = make_authority()
+    id_a = a.revisions.authority_id
+    id_b = b.revisions.authority_id
+    assert id_a != id_b
+    assert id_a < id_b  # monotonic: later instance sorts later
+    # Cross-authority tokens are rejected.
+    _, tok_a = a.read_for_write("C", "W")
+    assert not b._token_valid(tok_a)
+    assert a._token_valid(tok_a)
+    a.assert_invariant()
+    b.assert_invariant()
