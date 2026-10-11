@@ -38,6 +38,8 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 
+from kernel.protocol import harm_profile as _hp
+
 
 # Canonical operations. The gate reasons about what is being DONE,
 # not how it was described.
@@ -75,6 +77,11 @@ class TypedAction:
       policy_version: which policy version governs (e.g. "CURRENT")
       evidence_refs: supporting evidence receipt IDs
       reversibility: reversible | conditional | irreversible
+      harm_profile: optional structured per-group harm profile
+        (kernel/protocol/harm_profile.py). When present, the gate consults it
+        per Naya 1's Law of One: per-group severity/reversibility/timing/
+        measurability/distribution, never collapsed to a scalar. None = the
+        scalar Law 11 dimensions above decide alone (backward compatible).
     """
     actor_id: str
     operation: str
@@ -90,6 +97,9 @@ class TypedAction:
     safety_safe: bool | None = None
     privacy_safe: bool | None = None
     consent_obtained: bool | None = None
+
+    # Structured per-group harm profile (T-05). None = not assessed.
+    harm_profile: _hp.HarmProfile | None = None
 
     # Free-text description retained for audit, NEVER used for the verdict.
     description: str = ""
@@ -152,6 +162,10 @@ def law11_gate(action: TypedAction) -> Law11Verdict:
     Order of checks (fail-closed, most severe first):
       1. Inherently prohibited operations -> PROHIBITED (no override)
       2. Rights / safety / privacy hard violations -> PROHIBITED
+      2b. Structured harm profile (when present) -> PROHIBITED on blocking
+          harm (catastrophic, or major+irreversible, any single group);
+          NEEDS_EVIDENCE on any unknown dimension. No authority can permit
+          blocking harm — this runs BEFORE the protected-gate checks.
       3. Protected operations without authority -> NEEDS_AUTHORITY
       4. Unknown safety/privacy/rights status -> NEEDS_EVIDENCE
       5. Otherwise -> ADMISSIBLE
@@ -205,6 +219,46 @@ def law11_gate(action: TypedAction) -> Law11Verdict:
                 affected_interests=("privacy",),
                 policy_version=policy,
             )
+
+    # 2b. Structured harm profile (when present). Per Naya 1's Law of One:
+    # no person is expendable, no serious harm disappears inside an average.
+    # Blocking harm in ANY single group -> PROHIBITED, before authority is
+    # even consulted (authority cannot permit catastrophic harm). Unknown
+    # dimensions -> NEEDS_EVIDENCE (unknown is not safe). A delayed-timing
+    # downstream.
+    # Advisory delayed-harm note: set when the profile flags delayed harm,
+    # surfaced on the step-5 ADMISSIBLE verdict so the audit record shows
+    # delayed harm was seen, not skipped. T-07's observation-window
+    # machinery enforces it; this gate does not force a verdict on it.
+    delay_note: tuple[str, ...] = ()
+    if action.harm_profile is not None:
+        judgment = _hp.judge(action.harm_profile)
+        if judgment.blocks:
+            return Law11Verdict(
+                verdict=PROHIBITED,
+                reasons=judgment.block_reasons,
+                affected_interests=tuple(
+                    sorted({r.split(":")[1].split("=")[1] for r in judgment.block_reasons})
+                ),
+                policy_version=policy,
+            )
+        if judgment.needs_evidence:
+            return Law11Verdict(
+                verdict=NEEDS_EVIDENCE,
+                reasons=judgment.evidence_reasons,
+                affected_interests=tuple(
+                    sorted({r.split(":")[1].split("=")[1] for r in judgment.evidence_reasons})
+                ),
+                policy_version=policy,
+            )
+        if judgment.delayed_observation:
+            delayed_groups = tuple(
+                sorted(g.group_id for g in judgment.groups if g.timing == _hp.TIME_DELAYED)
+            )
+            # Advisory only: T-07's observation-window machinery enforces it.
+            # Carried on the eventual verdict's reasons at step 5 so the
+            # audit record shows delayed harm was seen, not skipped.
+            delay_note = (f"HARM_PROFILE_DELAYED_OBSERVATION_REQUIRED:{','.join(delayed_groups)}",)
 
     # 3. Protected gates: these operations need explicit authority.
     #    Checked on typed fields — rewording the description cannot bypass.
@@ -260,7 +314,7 @@ def law11_gate(action: TypedAction) -> Law11Verdict:
     # 5. All checks passed.
     return Law11Verdict(
         verdict=ADMISSIBLE,
-        reasons=(),
+        reasons=delay_note,
         affected_interests=(),
         policy_version=policy,
     )
