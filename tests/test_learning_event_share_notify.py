@@ -203,6 +203,13 @@ def test_outbox_absent_transition_still_succeeds(ledger, monkeypatch):
     # Simulate a tree where PR #2303 has not merged: both import names fail.
     monkeypatch.setitem(sys.modules, "notify_outbox", None)
     monkeypatch.setitem(sys.modules, "tools.notify_outbox", None)
+    # Composition note (#2244-E): when another test module already imported
+    # the real outbox, `from tools import notify_outbox` resolves through the
+    # parent package's attribute and never consults sys.modules -- so the
+    # absence simulation must also drop that attribute binding.
+    pkg = sys.modules.get("tools")
+    if pkg is not None:
+        monkeypatch.delattr(pkg, "notify_outbox", raising=False)
     eid = _issued(ledger)
     env = transition(eid, "SHARED", actor="naya-2", ledger_path=ledger,
                      feed_url=FEED_URL)
