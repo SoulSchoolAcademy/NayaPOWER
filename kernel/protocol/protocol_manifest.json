@@ -151,6 +151,13 @@
       "statement": "Every BRAIN/ change lands with a matching index regen. The index layer (BRAIN/REAL-TREE.json, BRAIN/REAL-TREE.md, BRAIN/NAYAPOWER-BRAIN-INDEX.json) must match the committed git tree; the check fails on drift, fails closed on structural corruption, and names the exact regen command that fixes drift. Mechanical layer only (counts, blob SHAs, pointers) — semantic sections are preserved by the regen, never verified for correctness.",
       "enforcement": "brain_index_freshness_gate",
       "check": "tools/protocol/checks/brain_index_freshness.py"
+    },
+    {
+      "id": "SN-IV-DEFAULT",
+      "name": "Independent Verification by Default",
+      "statement": "A defended 7.5 beats a wished 9.0. Any scorecard claiming 9.0 or higher must carry a validator receipt from a different seat — stating what was checked, an independent score, and a pass verdict — or the claim fails the gate. Below 9.0, triple self-validation suffices.",
+      "enforcement": "iv_receipt_required",
+      "check": "tools/protocol/checks/independent_verify.py"
     }
   ],
   "never_do": [
