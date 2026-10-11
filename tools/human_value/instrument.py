@@ -16,6 +16,12 @@ Commands:
   pilot     --merge SHA --repo REPO --out PACKET.json [--pr N] [--title T]
   to-event  --scorecard CARD.json --out EVENT.json [--date YYYY-MM-DD]
             [--event-id ID] [--receipt-ref REF] [--pr-url URL]
+  compare   --a CARD_A.json --b CARD_B.json [--out REPORT.json]
+            (second-seat grading: agreement bands, not averaged)
+  recheck   --scorecard CARD.json --repo REPO --ref LATER_SHA [--out REPORT.json]
+            (durability loop: re-verify evidence at a later ref)
+  receipt-template [--change-id ID] [--out RECEIPT.json]
+            (in-repo machine-readable delta receipt schema)
 
 `to-event` mints a ledger event ONLY for verdicts HIGH VALUE / REAL VALUE.
 THIN, NO VALUE, and DISQUALIFIED mint nothing — the instrument refuses to
@@ -29,19 +35,30 @@ packet is a lie with formatting — the instrument refuses to produce one.
 Only the standard library is used. Evidence verification shells out to git.
 """
 
+import hashlib
 import json
 import os
 import re
 import subprocess
 import sys
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 PACKET_VERSION = 1
 
 DIMENSIONS = ("USE", "DELTA", "PROOF", "DURABLE", "CLEAN")
 WEIGHTS = {"USE": 0.30, "DELTA": 0.25, "PROOF": 0.20, "DURABLE": 0.15, "CLEAN": 0.10}
 
-EVIDENCE_KINDS = ("file", "sha", "test", "command", "url")
+EVIDENCE_KINDS = ("file", "sha", "test", "command", "url", "receipt")
+
+# Receipt schema v1 — a machine-readable, in-repo record of a change's delta.
+# Lane workers commit receipts/<change-id>.json WITH the change; the instrument
+# then verifies them mechanically (they exist at the ref, they parse, they
+# hold before/after numbers) instead of capping off-repo delta claims at 5.
+# Receipts are verified-but-soft evidence: they carry DELTA up to 8, flagged
+# RECEIPT_SOFT_CAP above that — a committed claim is checkable, but it is
+# still the grader's own claim, not an independent re-run.
+RECEIPT_VERSION = 1
+RECEIPT_SOFT_CAP = 8.0
 
 VERDICTS = (
     (9.0, "HIGH VALUE"),
@@ -113,7 +130,7 @@ def _validate_evidence(item, i, dim):
     kind = _need(item, "kind", where)
     if kind not in EVIDENCE_KINDS:
         raise InstrumentError(f"{where}: unknown kind {kind!r} (want one of {EVIDENCE_KINDS})")
-    if kind in ("file", "test"):
+    if kind in ("file", "test", "receipt"):
         path = _need(item, "path", where)
         if not isinstance(path, str) or not path.strip() or path.startswith("/"):
             raise InstrumentError(f"{where}: bad path {path!r}")
@@ -173,6 +190,51 @@ def validate_packet(packet):
 
 # ---------------------------------------------------------------- verification
 
+def _cited_hash(repo, ref, path, lines):
+    """sha256 of the cited line range of path at ref, or None."""
+    n = _file_line_count(repo, ref, path)
+    if n is None:
+        return None
+    try:
+        if lines:
+            s, e = _parse_lines(lines, n)
+        else:
+            s, e = 1, n
+    except InstrumentError:
+        return None
+    p = _git(repo, "show", f"{ref}:{path}")
+    if p.returncode != 0:
+        return None
+    text = "\n".join(p.stdout.splitlines()[s - 1:e])
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+
+def verify_receipt(item, repo, ref):
+    """Verify a committed receipt: exists at ref, parses, holds before/after
+    metrics. Returns (status, detail)."""
+    path = item["path"]
+    p = _git(repo, "show", f"{ref}:{path}")
+    if p.returncode != 0:
+        return "UNVERIFIABLE", f"receipt {path} not present at {ref[:12]}"
+    try:
+        rec = json.loads(p.stdout)
+    except json.JSONDecodeError as ex:
+        return "UNVERIFIABLE", f"receipt {path} does not parse as JSON: {ex}"
+    if not isinstance(rec, dict) or rec.get("receipt_version") != RECEIPT_VERSION:
+        return "UNVERIFIABLE", f"receipt {path}: receipt_version must be {RECEIPT_VERSION}"
+    metrics = rec.get("metrics")
+    if not isinstance(metrics, list) or not metrics:
+        return "UNVERIFIABLE", f"receipt {path}: 'metrics' must be a non-empty list"
+    good = 0
+    for m in metrics:
+        if (isinstance(m, dict) and isinstance(m.get("name"), str) and m["name"].strip()
+                and "before" in m and "after" in m):
+            good += 1
+    if good == 0:
+        return "UNVERIFIABLE", f"receipt {path}: no metric has before+after values"
+    return "VERIFIED", f"receipt {path} holds {good} before/after metric(s) at {ref[:12]}"
+
+
 def verify_evidence(item, repo, ref):
     """Returns (status, detail). status: VERIFIED | ATTESTED | UNVERIFIABLE."""
     kind = item["kind"]
@@ -182,6 +244,8 @@ def verify_evidence(item, repo, ref):
         if _git_ok(repo, "cat-file", "-e", item["sha"]):
             return "VERIFIED", f"object {item['sha']} exists"
         return "UNVERIFIABLE", f"object {item['sha']} not found in repo"
+    if kind == "receipt":
+        return verify_receipt(item, repo, ref)
     # file / test
     path = item["path"]
     n = _file_line_count(repo, ref, path)
@@ -233,15 +297,19 @@ def grade_packet(packet, repo, ref):
     for j in packet["judgments"]:
         dim = j["dimension"]
         verified = attested = 0
+        receipt_only = True  # verified evidence that is ONLY receipts
         for i, item in enumerate(j["evidence"]):
             status, detail = verify_evidence(item, repo, ref)
             ledger.append({
                 "dimension": dim, "index": i, "kind": item["kind"],
                 "status": status, "detail": detail,
                 "citation": item.get("path") or item.get("sha") or item.get("kind"),
+                "lines": item.get("lines"),  # for recheck content-drift
             })
             if status == "VERIFIED":
                 verified += 1
+                if item["kind"] != "receipt":
+                    receipt_only = False
             elif status == "ATTESTED":
                 attested += 1
         claimed, flags = j["score"], []
@@ -250,6 +318,11 @@ def grade_packet(packet, repo, ref):
             applied, flags = 3.0, ["NO_EVIDENCE_CAP"]
         elif verified == 0 and claimed > 5:
             applied, flags = 5.0, ["UNCITED_CAP"]
+        elif receipt_only and verified > 0 and claimed > RECEIPT_SOFT_CAP:
+            # In-repo receipts are verified-but-soft: a committed claim is
+            # checkable, not independently re-runnable. It carries DELTA up to
+            # 8; above that needs harder evidence (tests, runnable checks).
+            applied, flags = RECEIPT_SOFT_CAP, ["RECEIPT_SOFT_CAP"]
         scored.append({
             "dimension": dim,
             "claimed": claimed,
@@ -284,6 +357,11 @@ def grade_packet(packet, repo, ref):
         "merge_sha": packet["merge_sha"],
         "grader": packet["grader"],
         "graded_at_utc": datetime.now(timezone.utc).isoformat(),
+        # The durability loop (recheck command): DURABLE is a prediction at
+        # grade time; this is when the instrument asks for it to be re-tested.
+        "durable_check_due_utc": (
+            datetime.now(timezone.utc) + timedelta(days=7)
+        ).isoformat(),
         "disqualified": False,
         "score": total,
         "verdict": verdict,
@@ -300,8 +378,19 @@ def mechanical_signals(repo, merge_sha):
     Informational only: the score never depends on these. If the diff base
     does not exist (e.g. a root commit), the section reports UNAVAILABLE
     instead of failing the grade — a grader's evidenced judgment still counts.
+
+    For pre-merge branch heads (single-parent, not a merge commit), the true
+    change is merge-base(origin/main)..head, not head^1..head — the pilot's
+    full run showed ^1 understating branch deltas, so the base is resolved
+    that way when origin/main is available.
     """
     base = f"{merge_sha}^1"
+    mb = _git(repo, "merge-base", "origin/main", merge_sha)
+    if mb.returncode == 0:
+        mb_sha = mb.stdout.strip()
+        first_parent = _git(repo, "rev-parse", f"{merge_sha}^1").stdout.strip()
+        if mb_sha and mb_sha != first_parent:
+            base = mb_sha
     stat = _git(repo, "diff", "--numstat", base, merge_sha)
     names = _git(repo, "diff", "--name-status", base, merge_sha)
     if stat.returncode != 0 or names.returncode != 0:
@@ -360,6 +449,152 @@ def build_skeleton(repo, merge_sha, pr=None, title=None):
         "harm_check": {"found": False, "note": ""},
         "judgments": judgments,
         "_mechanical_preview": mech,
+    }
+
+
+# ---------------------------------------------------------------- compare
+
+AGREE_BANDS = (
+    (1.0, "agree"),          # graders say the same thing
+    (2.5, "review"),         # worth a second look
+    (float("inf"), "dispute"),  # graders disagree; do not trust either alone
+)
+
+
+def compare_scorecards(a, b):
+    """Second-seat comparison of two scorecards for the same change.
+
+    Returns a report dict. Per-dimension |applied_a - applied_b| falls into
+    agree / review / dispute bands; verdict agreement is checked separately.
+    Disagreement is made visible, not averaged away.
+    """
+    for key in ("change_id", "score", "verdict", "judgments"):
+        if key not in a or key not in b:
+            raise InstrumentError(f"compare needs scorecards with {key!r}")
+    da = {j["dimension"]: j["applied"] for j in a["judgments"]}
+    db = {j["dimension"]: j["applied"] for j in b["judgments"]}
+    if set(da) != set(db):
+        raise InstrumentError("scorecards cover different dimensions")
+    dims = []
+    for dim in DIMENSIONS:
+        gap = round(abs(da[dim] - db[dim]), 1)
+        band = next(band for bound, band in AGREE_BANDS if gap <= bound)
+        dims.append({
+            "dimension": dim, "seat_a": da[dim], "seat_b": db[dim],
+            "gap": gap, "band": band,
+        })
+    disputes = [d for d in dims if d["band"] == "dispute"]
+    reviews = [d for d in dims if d["band"] == "review"]
+    verdict_match = a["verdict"] == b["verdict"]
+    score_gap = round(abs(a["score"] - b["score"]), 1)
+    standing = "TRUST" if not disputes and verdict_match else (
+        "REVIEW" if not disputes else "DISPUTE")
+    return {
+        "change_id": a["change_id"],
+        "seat_a": a.get("grader", "?"), "seat_b": b.get("grader", "?"),
+        "score_a": a["score"], "score_b": b["score"], "score_gap": score_gap,
+        "verdict_a": a["verdict"], "verdict_b": b["verdict"],
+        "verdict_match": verdict_match,
+        "dimensions": dims,
+        "n_agree": sum(1 for d in dims if d["band"] == "agree"),
+        "n_review": len(reviews), "n_dispute": len(disputes),
+        "standing": standing,
+        "note": ("Both seats agree." if standing == "TRUST"
+                 else "Disagreement visible — re-grade with a third seat or "
+                      "reconcile evidence before trusting this grade."),
+    }
+
+
+# ---------------------------------------------------------------- recheck (durability loop)
+
+def recheck_scorecard(scorecard, repo, ref):
+    """Re-run the evidence verification of a scorecard at a LATER ref.
+
+    Turns DURABLE from a prediction into a track record: every cited
+    file/test/sha/receipt is checked again. HELD = still verified at the
+    later ref; ROTTED = no longer verifiable (moved, deleted, changed beyond
+    recognition); NOT_RECHECKABLE = attested evidence (a command someone ran,
+    a URL) that no machine can re-run.
+    """
+    for key in ("change_id", "judgments", "evidence_ledger", "verdict"):
+        if key not in scorecard:
+            raise InstrumentError(f"recheck needs a scorecard with {key!r}")
+    if not _git_ok(repo, "cat-file", "-e", ref):
+        raise InstrumentError(f"ref {ref!r} not found in repo {repo}")
+    results = []
+    for item in scorecard["evidence_ledger"]:
+        kind = item["kind"]
+        if kind in ("command", "url"):
+            results.append({**item, "recheck": "NOT_RECHECKABLE",
+                            "recheck_detail": "attested evidence cannot be re-run"})
+            continue
+        citation = ({"kind": kind, "path": item["citation"]}
+                    if kind in ("file", "test", "receipt")
+                    else {"kind": kind, "sha": item["citation"]})
+        status, detail = verify_evidence(citation, repo, ref)
+        state = "HELD" if status == "VERIFIED" else "ROTTED"
+        # Content drift: does the cited content still SAY the same thing?
+        # Compare the cited line range's hash at grade time vs the later ref.
+        # (Regenerated files like brain indexes "rot" exactly this way: the
+        # file still exists, but its content is a different stamping.)
+        drift = ""
+        if state == "HELD" and kind in ("file", "test", "receipt"):
+            orig = scorecard.get("merge_sha")
+            lines = citation.get("lines")
+            if orig:
+                h1 = _cited_hash(repo, orig, citation["path"], lines)
+                h2 = _cited_hash(repo, ref, citation["path"], lines)
+                if h1 and h2:
+                    drift = "UNCHANGED" if h1 == h2 else "CHANGED"
+        results.append({**item, "recheck": state,
+                        "recheck_detail": detail,
+                        "content_drift": drift or None})
+    per_dim = {}
+    for dim in DIMENSIONS:
+        items = [r for r in results if r["dimension"] == dim
+                 and r["recheck"] != "NOT_RECHECKABLE"]
+        if not items:
+            per_dim[dim] = "NOT_RECHECKABLE"
+        elif all(r["recheck"] == "HELD" for r in items):
+            per_dim[dim] = "HELD"
+        elif all(r["recheck"] == "ROTTED" for r in items):
+            per_dim[dim] = "ROTTED"
+        else:
+            per_dim[dim] = "MIXED"
+    rotted = sum(1 for r in results if r["recheck"] == "ROTTED")
+    held = sum(1 for r in results if r["recheck"] == "HELD")
+    drifted = sum(1 for r in results if r.get("content_drift") == "CHANGED")
+    original_durable = next(
+        (j["applied"] for j in scorecard["judgments"] if j["dimension"] == "DURABLE"),
+        None)
+    return {
+        "change_id": scorecard["change_id"],
+        "graded_at_utc": scorecard.get("graded_at_utc"),
+        "original_verdict": scorecard["verdict"],
+        "original_durable": original_durable,
+        "rechecked_at_ref": ref,
+        "rechecked_utc": datetime.now(timezone.utc).isoformat(),
+        "per_dimension": per_dim,
+        "held": held, "rotted": rotted, "content_drifted": drifted,
+        "items": results,
+        "durability_reading": (
+            "DURABLE prediction HELD" if per_dim.get("DURABLE") == "HELD"
+            and not drifted
+            else "DURABLE prediction ROTTED" if per_dim.get("DURABLE") == "ROTTED"
+            else "DURABLE prediction partly rotted"),
+    }
+
+
+def receipt_template(change_id):
+    return {
+        "receipt_version": RECEIPT_VERSION,
+        "change_id": change_id,
+        "recorded_at": "YYYY-MM-DD",
+        "metrics": [
+            {"name": "what got better", "before": 0, "after": 1, "unit": "count",
+             "how_measured": "command run / file inspected (say exactly)"},
+        ],
+        "notes": "plain words: what changed, for whom",
     }
 
 
@@ -481,8 +716,11 @@ def _print_card(card):
 
 
 def main(argv):
-    if len(argv) < 2 or argv[1] not in ("score", "pilot", "to-event"):
-        print("usage: instrument.py {score|pilot|to-event} ...", file=sys.stderr)
+    if len(argv) < 2 or argv[1] not in (
+        "score", "pilot", "to-event", "compare", "recheck", "receipt-template"
+    ):
+        print("usage: instrument.py {score|pilot|to-event|compare|recheck|receipt-template} ...",
+              file=sys.stderr)
         return 2
     cmd = argv[1]
     args = dict(zip(argv[2::2], argv[3::2]))
@@ -509,7 +747,7 @@ def main(argv):
             with open(args["--out"], "w", encoding="utf-8") as f:
                 json.dump(skel, f, indent=2)
             print(f"skeleton written to {args['--out']} for {skel['change_id']}")
-        else:  # to-event
+        elif cmd == "to-event":
             for k in ("--scorecard", "--out"):
                 if k not in args:
                     raise InstrumentError(f"to-event needs {k}")
@@ -526,6 +764,51 @@ def main(argv):
                 json.dump(event, f, indent=2)
             print(f"minted {event['event_id']} ({event['value_type']}, "
                   f"delta_v_actual={event['delta_v_actual']}) -> {args['--out']}")
+        elif cmd == "compare":
+            for k in ("--a", "--b"):
+                if k not in args:
+                    raise InstrumentError(f"compare needs {k}")
+            with open(args["--a"], encoding="utf-8") as f:
+                a = json.load(f)
+            with open(args["--b"], encoding="utf-8") as f:
+                b = json.load(f)
+            report = compare_scorecards(a, b)
+            print(f"{report['change_id']}: seat {report['seat_a']} "
+                  f"({report['score_a']}) vs seat {report['seat_b']} "
+                  f"({report['score_b']}), gap {report['score_gap']}")
+            print(f"  verdicts: {report['verdict_a']} vs {report['verdict_b']} "
+                  f"({'match' if report['verdict_match'] else 'MISMATCH'})")
+            for d in report["dimensions"]:
+                print(f"  {d['dimension']:7s} {d['seat_a']:>4} vs {d['seat_b']:>4} "
+                      f"gap {d['gap']:<4} [{d['band'].upper()}]")
+            print(f"  standing: {report['standing']} — {report['note']}")
+            if "--out" in args:
+                with open(args["--out"], "w", encoding="utf-8") as f:
+                    json.dump(report, f, indent=2)
+        elif cmd == "recheck":
+            for k in ("--scorecard", "--repo", "--ref"):
+                if k not in args:
+                    raise InstrumentError(f"recheck needs {k}")
+            with open(args["--scorecard"], encoding="utf-8") as f:
+                card = json.load(f)
+            report = recheck_scorecard(card, args["--repo"], args["--ref"])
+            print(f"{report['change_id']}: rechecked at {args['--ref'][:12]} "
+                  f"(graded {report['graded_at_utc'][:10]})")
+            for dim in ("USE", "DELTA", "PROOF", "DURABLE", "CLEAN"):
+                print(f"  {dim:7s} {report['per_dimension'][dim]}")
+            print(f"  evidence: {report['held']} held / {report['rotted']} rotted / "
+                  f"{report['content_drifted']} content-drifted")
+            print(f"  reading: {report['durability_reading']}")
+            if "--out" in args:
+                with open(args["--out"], "w", encoding="utf-8") as f:
+                    json.dump(report, f, indent=2)
+        elif cmd == "receipt-template":
+            cid = args.get("--change-id", "PR-0000")
+            tpl = receipt_template(cid)
+            print(json.dumps(tpl, indent=2))
+            if "--out" in args:
+                with open(args["--out"], "w", encoding="utf-8") as f:
+                    json.dump(tpl, f, indent=2)
         return 0
     except InstrumentError as ex:
         print(json.dumps({"ok": False, "error": str(ex)}), file=sys.stderr)
