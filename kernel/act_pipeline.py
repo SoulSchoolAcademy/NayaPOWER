@@ -92,6 +92,13 @@ from kernel.value_calculus import (
     gate_candidate,
     score_quality,
 )
+from kernel.protocol.conflict_resolution import (
+    VERDICT_PROHIBITED as CR_PROHIBITED,
+    VERDICT_WORSENING as CR_WORSENING,
+    VERDICT_PENDING_WINDOW as CR_PENDING,
+    VERDICT_INCONCLUSIVE as CR_INCONCLUSIVE,
+    assess_no_worse_off,
+)
 
 # Canonical max LAW age for consequential AI actions (DOOR-AI, registry V1).
 MAX_LAW_AGE_SECONDS = 900
@@ -175,6 +182,12 @@ class PlanCandidate:
     value_risk: float | None = None
     value_confidence: dict = field(default_factory=dict)  # per-component B/H/C/R in [0,1]
     value_evidence_count: int = 0
+    # Conflict Resolution Engine (Law of One): governed impact matrix for
+    # per-group/per-dimension/per-horizon no-worse-off assessment.
+    # None = not provided (phase skipped, existing behavior preserved).
+    # When present, the candidate must pass the no-worse-off test and
+    # anti-laundering safeguards before value scoring.
+    impact_matrix: object | None = None
 
 
 @dataclass(frozen=True)
@@ -646,6 +659,60 @@ def plan_action(authority: LawAuthority,
                      f"nothing admissible to execute. {detail}",
         )
 
+    # --- Conflict Resolution phase (Law of One). Runs AFTER Law 11 hard
+    # prohibitions and BEFORE value scoring: a good calculation cannot
+    # erase a group's harm. For candidates carrying a governed impact matrix,
+    # the no-worse-off test and anti-laundering safeguards must pass.
+    #   WORSENING / PROHIBITED -> excluded, can never win.
+    #   PENDING_WINDOW / INCONCLUSIVE -> excluded (need evidence first).
+    #   SUPPORTED -> proceeds to the calculus gate below.
+    # Candidates WITHOUT a matrix skip this phase (existing behavior preserved).
+    # Fail closed: unknown bounds, failed laundering, or missing evidence
+    # never support a no-worse-off claim.
+    cr_admissible: list[PlanCandidate] = []
+    cr_excluded: list[tuple[str, str, str]] = []  # (cid, verdict, summary)
+    for c in law11_admissible:
+        matrix = c.impact_matrix
+        if matrix is None:
+            cr_admissible.append(c)
+            continue
+        # Type safety: only ImpactMatrix instances are assessed.
+        # A wrong type is a caller bug -> fail closed to NEEDS_EVIDENCE.
+        from kernel.protocol.conflict_resolution import ImpactMatrix as _IM
+        if not isinstance(matrix, _IM):
+            cr_excluded.append((
+                c.candidate_id, "NEEDS_EVIDENCE",
+                f"impact_matrix has wrong type {type(matrix).__name__}; "
+                "expected ImpactMatrix.",
+            ))
+            continue
+        assessment = assess_no_worse_off(matrix)
+        if assessment.verdict in (CR_PROHIBITED, CR_WORSENING,
+                                  CR_PENDING, CR_INCONCLUSIVE):
+            summary = "; ".join(assessment.notes[:3]) if assessment.notes else assessment.verdict
+            cr_excluded.append((c.candidate_id, assessment.verdict, summary))
+        else:
+            cr_admissible.append(c)
+    cr_evidence = law11_evidence + tuple(
+        f"candidate {cid} EXCLUDED by Conflict Resolution [{v}]: {s}"
+        for cid, v, s in cr_excluded
+    )
+    if not cr_admissible:
+        detail = "; ".join(
+            f"{cid} [{v}: {s}]" for cid, v, s in cr_excluded
+        )
+        if any(v == CR_PROHIBITED for _, v, _ in cr_excluded):
+            return refused(
+                PLAN_SAFETY_PROHIBITED,
+                evidence=f"all {len(law11_admissible)} candidate(s) with impact "
+                         f"matrices failed Conflict Resolution; nothing admissible. {detail}",
+            )
+        return refused(
+            PLAN_SAFETY_NEEDS_EVIDENCE,
+            evidence=f"all {len(law11_admissible)} candidate(s) with impact "
+                     f"matrices need evidence per Conflict Resolution. {detail}",
+        )
+
     # --- Do-no-harm hard gate (safety floor). Fail closed: a PROHIBITED
     # candidate gets zero value — it is excluded from selection entirely.
     # A NEEDS_EVIDENCE candidate is likewise excluded: unresolved critical
@@ -653,7 +720,7 @@ def plan_action(authority: LawAuthority,
     risk = risk_policy if risk_policy is not None else RiskPolicy()
     admissible: list[PlanCandidate] = []
     excluded: list[tuple[str, str, list[str]]] = []  # (candidate_id, gate verdict, gate reasons)
-    for c in law11_admissible:
+    for c in cr_admissible:
         gate, reasons, _q = gate_candidate(_candidate_to_calculus(c), profile, risk)
         if gate in (PROHIBITED, NEEDS_EVIDENCE):
             excluded.append((c.candidate_id, gate, reasons))
@@ -666,20 +733,21 @@ def plan_action(authority: LawAuthority,
             for cid, v, rs in law11_excluded
         )
         prior = f"Law 11 exclusions: {law11_detail}. " if law11_detail else ""
+        cr_prior = f"Conflict Resolution exclusions: {'; '.join(f'{cid} [{v}]' for cid, v, _ in cr_excluded)}. " if cr_excluded else ""
         if any(verdict == PROHIBITED for _, verdict, _ in excluded):
             return refused(
                 PLAN_SAFETY_PROHIBITED,
-                evidence=f"{prior}all {len(law11_admissible)} Law-11-admissible candidate(s) "
+                evidence=f"{prior}{cr_prior}all {len(cr_admissible)} conflict-resolved candidate(s) "
                          f"PROHIBITED by the do-no-harm gate; nothing admissible to "
                          f"execute. {detail}",
             )
         return refused(
             PLAN_SAFETY_NEEDS_EVIDENCE,
-            evidence=f"{prior}all {len(law11_admissible)} Law-11-admissible candidate(s) "
+            evidence=f"{prior}{cr_prior}all {len(cr_admissible)} conflict-resolved candidate(s) "
                      f"NEEDS_EVIDENCE by the do-no-harm gate; critical safety evidence "
                      f"unresolved, nothing admissible to execute. {detail}",
         )
-    gate_evidence = law11_evidence + tuple(
+    gate_evidence = cr_evidence + tuple(
         f"candidate {cid} EXCLUDED by do-no-harm gate [{verdict}]: {', '.join(rs)}"
         for cid, verdict, rs in excluded
     )
