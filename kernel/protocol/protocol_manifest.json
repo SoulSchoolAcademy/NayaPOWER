@@ -143,6 +143,13 @@
       "statement": "BUILD -> SCORE -> FIX -> SCORE -> FIX -> SCORE -> MERGE -> POST. Three honest scorecard rounds minimum before merge; each round records what changed, why the score moved, and the gaps found; the feed is for learning, never for gating.",
       "enforcement": "builder_scorer_loop_gate",
       "check": "tools/protocol/checks/builder_scorer_loop.py"
+    },
+    {
+      "id": "BRAIN-INDEX-FRESHNESS",
+      "name": "Brain Index Regen Habit",
+      "statement": "Every BRAIN/ change lands with a matching index regen. The index layer (BRAIN/REAL-TREE.json, BRAIN/REAL-TREE.md, BRAIN/NAYAPOWER-BRAIN-INDEX.json) must match the committed git tree; the check fails on drift, fails closed on structural corruption, and names the exact regen command that fixes drift. Mechanical layer only (counts, blob SHAs, pointers) — semantic sections are preserved by the regen, never verified for correctness.",
+      "enforcement": "brain_index_freshness_gate",
+      "check": "tools/protocol/checks/brain_index_freshness.py"
     }
   ],
   "never_do": [
