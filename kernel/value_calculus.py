@@ -172,6 +172,11 @@ class Candidate:
     authorized: bool = False
     human_authorized: bool = False
     hard_violation: bool = False
+    # Shawn 2026-10-11 (Intent Doctrine / Disqualification Doctrine): intent to
+    # harm disqualifies the action entirely — it is excluded from A_admissible,
+    # not scored. Intent is the disqualifier, not risk: a well-intentioned
+    # action with calculated, manageable risk remains admissible.
+    intent_to_harm: bool = False
     lawful: Optional[bool] = None
     rights_safe: Optional[bool] = None
     privacy_safe: Optional[bool] = None
@@ -257,6 +262,12 @@ def interval_gap(first: Mapping[str, float], second: Mapping[str, float]) -> flo
 def gate_candidate(candidate: Candidate, profile: QualityProfile, risk_policy: RiskPolicy) -> tuple[str, list[str], dict]:
     q = score_quality(candidate, profile)
     reasons: list[str] = []
+
+    # Shawn 2026-10-11 (Intent Doctrine): intent to harm disqualifies the
+    # action entirely — excluded from A_admissible, not scored. This check runs
+    # FIRST, before all other gates. Intent is the disqualifier, not risk.
+    if candidate.intent_to_harm:
+        return PROHIBITED, ["HARMFUL_INTENT_DISQUALIFIED"], q
 
     if candidate.hard_violation:
         return PROHIBITED, ["JUDGMENT_RULE_HARD_STOP"], q
@@ -818,6 +829,10 @@ class OperationRequest:
     irreversible: bool = False
     human_authorized: bool = False
     hard_violation: bool = False
+    # Shawn 2026-10-11 (Intent Doctrine): intent to harm disqualifies the
+    # operation entirely — BLOCKED, not scored. Intent is the disqualifier,
+    # not risk.
+    intent_to_harm: bool = False
     hard_flags: Optional[Mapping[str, Optional[bool]]] = None  # LAW/RIGHTS/PRIVACY/SAFETY
     confidence_aggregate: Optional[float] = None
     confidence_critical: Optional[float] = None
@@ -856,6 +871,10 @@ def retrieval_eligible(request: OperationRequest) -> dict:
     if request.requester_id is None:
         return _eligibility_receipt("RETRIEVAL_ELIGIBLE", request, ELIGIBLE_BLOCKED,
                                     ["UNAUTHENTICATED_REQUESTER"])
+    # Shawn 2026-10-11 (Intent Doctrine): harmful intent disqualifies first.
+    if request.intent_to_harm:
+        return _eligibility_receipt("RETRIEVAL_ELIGIBLE", request, ELIGIBLE_BLOCKED,
+                                    ["HARMFUL_INTENT_DISQUALIFIED"])
     if request.hard_violation:
         return _eligibility_receipt("RETRIEVAL_ELIGIBLE", request, ELIGIBLE_BLOCKED,
                                     ["JUDGMENT_RULE_HARD_STOP"])
@@ -909,6 +928,10 @@ def consequential_use_eligible(request: OperationRequest, profile: QualityProfil
     if request.requester_id is None:
         return _eligibility_receipt("CONSEQUENTIAL_USE_ELIGIBLE", request, ELIGIBLE_BLOCKED,
                                     ["UNAUTHENTICATED_REQUESTER"])
+    # Shawn 2026-10-11 (Intent Doctrine): harmful intent disqualifies first.
+    if request.intent_to_harm:
+        return _eligibility_receipt("CONSEQUENTIAL_USE_ELIGIBLE", request, ELIGIBLE_BLOCKED,
+                                    ["HARMFUL_INTENT_DISQUALIFIED"])
     if request.hard_violation:
         return _eligibility_receipt("CONSEQUENTIAL_USE_ELIGIBLE", request, ELIGIBLE_BLOCKED,
                                     ["JUDGMENT_RULE_HARD_STOP"])
