@@ -31,6 +31,10 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Install pytest
+        run: python3 -m pip install pytest
+
+
       - name: Run directive register tests
         run: |
           python -m pytest tools/tests/test_directive_register.py -v
