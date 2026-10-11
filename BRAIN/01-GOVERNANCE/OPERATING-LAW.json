@@ -749,7 +749,7 @@
       "requires": [
         "STEP 0 activation before work",
         "Manifest order for priorities",
-        "Branch → PR (Naya 4 opens) → independent exact-head validation → merge only when all 5 delegated gates hold",
+        "Branch → PR (opened by the working seat — the old fine-grained-PAT PR-op 403 appears resolved: Naya 5's PAT opened #2185 itself on 2026-10-10; re-verify on any failure before re-applying the rule) → independent exact-head validation → merge only when all 5 delegated gates hold",
         "Milestones-only reporting",
         "The super-brain directive: each seat maintains their optimized mind"
       ],
