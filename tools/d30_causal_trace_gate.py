@@ -13,13 +13,19 @@ Exit contract:
   1 VIOLATION— at least one claim's asserted verdict/controller disagrees
                with the engine. The disagreement is named.
   2 BROKEN   — fail-closed: manifest unreadable/corrupt, claim malformed,
-               mechanism unavailable or API-incompatible, or the fixed
-               canary probe fails (a blind engine must never look green).
+               mechanism unavailable or API-incompatible, or either
+               fixed canary probe fails (a blind engine — or a seam
+               that heals tampers — must never look green).
 
 The fixed canary (run first, every run): a trace carrying one tampered
 event (seal broken without reseal) MUST verify as
 INSUFFICIENT_OBSERVABILITY/UNDETERMINED. If the engine says anything
 else, it is blind or broken — the gate refuses (exit 2).
+A second canary runs the SAME tampered trace through the reproduction
+seam (serialize -> _trace_from_payload -> verify) — the exact path
+every registered claim travels. A deserialization seam that recomputes
+seals heals the tamper before the engine sees it; that is BROKEN, never
+green.
 
 Boundary: CI governance path only. Runtime kernel/KNOW/LAW/ACT wiring
 still needs Shawn's word per the mechanism docstring. Nothing here
@@ -112,17 +118,45 @@ def _canary_trace(mod):
         events=(evs[0], tampered, evs[2], evs[3]), edges=())
 
 
+def _canary_ok(verdict):
+    return (verdict.verdict == "INSUFFICIENT_OBSERVABILITY"
+            and verdict.controller == "UNDETERMINED")
+
+
 def run_canary(mod):
     """Returns (ok, detail). A blind engine is a BROKEN gate, never green."""
     verdict = mod.CausalVerifier().verify(_canary_trace(mod))
-    if (verdict.verdict == "INSUFFICIENT_OBSERVABILITY"
-            and verdict.controller == "UNDETERMINED"):
+    if _canary_ok(verdict):
         return True, ("canary: tampered trace -> "
                       "INSUFFICIENT_OBSERVABILITY/UNDETERMINED")
     return False, (
         "CANARY BLIND: tampered trace verified as %s/%s "
         "(expected INSUFFICIENT_OBSERVABILITY/UNDETERMINED)" % (
             verdict.verdict, verdict.controller))
+
+
+def run_canary_reproduction_seam(mod):
+    """Second canary, on the REAL attack path. The tampered canary trace
+    is serialized and rebuilt through _trace_from_payload — the exact
+    json.dumps -> deserialize_trace seam every registered claim travels.
+    A seam that recomputes seals heals the tamper before the engine sees
+    it; that must be BROKEN, never green. Returns (ok, detail)."""
+    try:
+        blob = mod.serialize_trace(_canary_trace(mod))
+        payload = json.loads(blob.decode("utf-8"))
+        trace = _trace_from_payload(mod, payload)
+        verdict = mod.CausalVerifier().verify(trace)
+    except Exception as exc:  # noqa: BLE001 — any seam failure is fatal
+        return False, "CANARY SEAM BROKEN: reproduction seam failed: %r" % (
+            exc,)
+    if _canary_ok(verdict):
+        return True, ("canary-seam: tampered trace via reproduction seam -> "
+                      "INSUFFICIENT_OBSERVABILITY/UNDETERMINED")
+    return False, (
+        "CANARY SEAM BROKEN: tampered trace through the reproduction seam "
+        "verified as %s/%s (expected "
+        "INSUFFICIENT_OBSERVABILITY/UNDETERMINED) — "
+        "the seam heals tampers" % (verdict.verdict, verdict.controller))
 
 
 def _trace_from_payload(mod, payload):
@@ -218,6 +252,10 @@ def run_gate(manifest_path):
     if err is not None:
         return 2, ["BROKEN: %s" % err]
     ok, detail = run_canary(mod)
+    lines.append(detail)
+    if not ok:
+        return 2, ["BROKEN: %s" % detail] + lines[1:]
+    ok, detail = run_canary_reproduction_seam(mod)
     lines.append(detail)
     if not ok:
         return 2, ["BROKEN: %s" % detail] + lines[1:]

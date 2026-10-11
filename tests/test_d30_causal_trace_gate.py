@@ -145,6 +145,13 @@ def test_canary_passes_on_real_engine():
     assert ok, detail
 
 
+def test_canary_reproduction_seam_passes_on_real_engine():
+    # The second canary travels the real attack path: serialize ->
+    # _trace_from_payload -> verify. The real seam preserves the tamper.
+    ok, detail = gate.run_canary_reproduction_seam(m)
+    assert ok, detail
+
+
 def test_honest_claims_pass(h1, h2, controllers, tmp_path):
     claims = [
         _claim("H1", h1, [h2], "ENVIRONMENT_BLOCKER", "ENVIRONMENT"),
@@ -261,6 +268,51 @@ def test_blind_engine_fails_canary_closed(monkeypatch):
         os.path.join(TOOLS, "d30_causal_trace_manifest.json"))
     assert code == 2
     assert any("CANARY BLIND" in l for l in lines)
+
+
+_REAL_DESERIALIZE = m.deserialize_trace
+
+
+def _forgiving_deserialize_seam(blob):
+    """Sabotage: a deserialization seam that recomputes seals, healing any
+    tamper before the engine sees it. This is the hole the verify lane's
+    sabotage battery found: the in-memory canary never sees this seam."""
+    import dataclasses
+
+    out = _REAL_DESERIALIZE(blob)
+    healed = []
+    for e in out.events:
+        h = m.event_body_hash(e)
+        healed.append(dataclasses.replace(
+            e, artifact_hash=h,
+            attestation=m.observer_attestation(h, e.observer)))
+    return m.CausalTrace(trace_id=out.trace_id,
+                         events=tuple(healed), edges=out.edges)
+
+
+def test_forgiving_deserialize_seam_heals_the_tamper(monkeypatch):
+    # Prove the sabotage actually lands: through the forgiving seam the
+    # tampered canary no longer reads as tampered.
+    monkeypatch.setattr(m, "deserialize_trace", _forgiving_deserialize_seam)
+    blob = m.serialize_trace(gate._canary_trace(m))
+    trace = gate._trace_from_payload(m, json.loads(blob.decode("utf-8")))
+    v = m.CausalVerifier().verify(trace)
+    assert not (v.verdict == "INSUFFICIENT_OBSERVABILITY"
+                and v.controller == "UNDETERMINED"), \
+        "sabotage did not land: the seam did not heal the tamper"
+
+
+def test_forgiving_deserialize_seam_fails_seam_canary_closed(monkeypatch):
+    # The reproduction-seam canary must catch the forgiving seam: the gate
+    # goes BROKEN (exit 2), never green. This is Finding 1's 9.0 fix.
+    monkeypatch.setattr(m, "deserialize_trace", _forgiving_deserialize_seam)
+    ok, detail = gate.run_canary_reproduction_seam(m)
+    assert not ok, detail
+    assert "SEAM BROKEN" in detail
+    code, lines = gate.run_gate(
+        os.path.join(TOOLS, "d30_causal_trace_manifest.json"))
+    assert code == 2
+    assert any("SEAM BROKEN" in l for l in lines)
 
 
 def test_api_drift_is_broken(monkeypatch):
