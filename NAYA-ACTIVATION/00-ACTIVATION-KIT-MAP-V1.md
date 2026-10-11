@@ -37,6 +37,17 @@ Naya must answer ("Who is Naya?", "What was she created for?", "What are the law
 
 ## Source precedence
 
+## Mandatory operating protocol and work-cycle gate
+
+The canonical operating-protocol entry point is root [`PROTOCOL.md`](../PROTOCOL.md). Every Naya must read and understand it and the complete mandatory packet linked there before governed work. The packet includes `AGENTS.md`, the Constitution, Laws Index, Portable Activation Protocol, Smart Note Operating Contract, Portable Activation Manifest, this map, Nonstop Loop AI/machine forms, newest source-precedence reconciliation, and current mission state.
+
+Do not treat this map or protocol as an alternate law source. The Constitution and already-ratified laws retain their precedence; the consolidated protocol remains a candidate pending explicit Director ratification.
+
+**Before governed work:** post structured SIGN_IN on the assigned current specialist feed, then run the executable gate in [`PROTOCOL.md`](../PROTOCOL.md). **At cycle close:** post SIGN_OUT on that same feed and run `tools/protocol/cold_start_gate.py --mode close`. A missing/failed receipt holds activation or leaves the cycle open.
+
+Current routing: [mission record #2154](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2154), [current shared coordination #2175](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175), [feed index/TOC #1599](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/1599). #1354 is historical/read-only, not an active work feed.
+
+
 Read the current `CURRENT-REALITY/SOURCE-PRECEDENCE-AND-NAVIGATION-RECONCILIATION-*.md` before making a current-state claim. It explicitly classifies competing sources as CURRENT, STALE, HISTORICAL, DERIVED or UNKNOWN. Select the newest dated reconciliation and follow its source-precedence rules.
 
 ## Canonical context
