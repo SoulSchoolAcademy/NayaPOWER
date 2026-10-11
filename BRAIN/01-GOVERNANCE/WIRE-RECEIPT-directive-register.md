@@ -30,14 +30,32 @@ number outside the registered set is caught before merge, with a file:line witne
 
 ## Proof the wiring works (2026-10-11, this run)
 
-- Live fire on the real tree: 41 governance docs scanned → 0 violations,
-  7 out-of-scope refs (D1–D7), 58 register entries. Clean, honestly reported.
-- Negative control: fixture doc referencing an unregistered directive number →
-  1 violation naming file:line, exit 1. The gate blocks.
-- Sabotage: corrupted register JSON → exit 2 FAIL-CLOSED. The gate refuses
-  rather than passing blind.
+Local (mechanism):
+- Live fire on the real tree: 42 governance docs scanned → 0 violations,
+  11 out-of-scope refs (D1–D7), 58 register entries. Clean, honestly reported.
+- Negative control: fixture doc referencing unregistered D99 →
+  1 violation naming file:line, exit 1. The scanner blocks.
+- Sabotage: missing register → exit 2; malformed register → exit 2 FAIL-CLOSED.
+  The gate refuses rather than passing blind.
 - Test suite: 24/24 green (`test_directive_register.py` + `test_directive_register_sync.py`),
   including negative controls for corrupt/missing/duplicate register states.
+
+Live path (enforcement) — independently re-verified 2026-10-11 ~06:00Z:
+- **Wiring defect found:** both gate workflows shipped with a Python-style
+  `"""` docstring above the YAML document — a parse error. Every historical
+  run of both workflows concluded failure with zero jobs: the "gate" never
+  executed on any PR. Fixed (docstring → comments, verified with
+  yaml.safe_load). Second defect: the test steps ran `python3 -m pytest` on a
+  bare setup-python image (`No module named pytest`) — added an explicit
+  pip install step to both workflows.
+- **Gate green on clean tree:** run 38116175188 (Directive Register Sync,
+  pull_request) → success; run 38116175184 (Directive Register Check) → success.
+- **Gate RED on real violation:** temporary commit citing unregistered D99 in
+  `BRAIN/01-GOVERNANCE/__WIRE_TEST_VIOLATION__.md` → run 38116336113 failed at
+  step "Validate directive references in changed governance docs". Reverted
+  immediately after; tree clean.
+- Brain-index drift on this branch (REAL-TREE, 12th occurrence class) re-stamped
+  at basis f2c614a5 (merge-base with live main 57e935c1); `test` check green.
 
 ## How to verify it is still connected
 
