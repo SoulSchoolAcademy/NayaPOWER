@@ -55,12 +55,18 @@ from typing import Any, Callable, Sequence
 
 from kernel.memory_store import MemoryStore
 from kernel.value_calculus import (
+    ACT,
+    ASK,
     NEEDS_EVIDENCE,
     PROHIBITED,
+    READ_MORE,
+    REFUSE,
+    QUALITY_DIMENSIONS,
     Candidate,
     PVEstimate,
     QualityProfile,
     RiskPolicy,
+    evaluate_candidates,
     gate_candidate,
     score_quality,
 )
@@ -81,6 +87,8 @@ PLAN_PROOF_UNDEFINED = "PLAN_PROOF_UNDEFINED"
 PLAN_CANDIDATE_MISMATCH = "PLAN_CANDIDATE_MISMATCH"
 PLAN_SAFETY_PROHIBITED = "PLAN_SAFETY_PROHIBITED"
 PLAN_SAFETY_NEEDS_EVIDENCE = "PLAN_SAFETY_NEEDS_EVIDENCE"
+PLAN_VALUE_INSUFFICIENT = "PLAN_VALUE_INSUFFICIENT"
+PLAN_NEEDS_HUMAN_JUDGMENT = "PLAN_NEEDS_HUMAN_JUDGMENT"
 
 _REVERSIBLE_VALUES = ("REVERSIBLE", "IRREVERSIBLE", "UNKNOWN")
 _STAKE_ORDER = {"low": 0, "medium": 1, "high": 2}
@@ -133,6 +141,17 @@ class PlanCandidate:
     safety_safe: bool | None = None
     tails: tuple = ()
     stakeholder_harms: dict = field(default_factory=dict)
+    # Value estimate fields (Zero Value Law): evidence-backed benefit, harm,
+    # cost, risk for the canonical value calculus. All default to None/empty,
+    # meaning UNMEASURED — not zero. A candidate without value evidence cannot
+    # win on value; the calculus gate verdicts NEEDS_EVIDENCE. Callers that
+    # want value-based selection must supply these with real evidence.
+    value_benefit: float | None = None
+    value_harm: float | None = None
+    value_cost: float | None = None
+    value_risk: float | None = None
+    value_confidence: dict = field(default_factory=dict)  # per-component B/H/C/R in [0,1]
+    value_evidence_count: int = 0
 
 
 @dataclass(frozen=True)
@@ -203,13 +222,43 @@ def _validate_law_time(authority: LawAuthority, now: float,
 
 def _candidate_to_calculus(candidate: PlanCandidate) -> Candidate:
     """Map the plan seam onto the calculus contract, including the
-    do-no-harm fields. Nothing safety-relevant is dropped: harm,
-    violations, tails and safety flags all reach gate_candidate."""
+    do-no-harm fields and the evidence-backed value estimate.
+
+    Nothing safety-relevant is dropped: harm, violations, tails and safety
+    flags all reach gate_candidate.
+
+    Value (Zero Value Law): when the caller supplies evidence-backed
+    value_benefit/harm/cost/risk + confidence + evidence_count, those reach
+    the calculus as the PVEstimate. When absent, the value is UNMEASURED —
+    not zero. The PVEstimate carries placeholder zeros, but evidence_count=0
+    and empty confidence force the calculus gate to verdict NEEDS_EVIDENCE,
+    so unmeasured value can never determine a winner. Null is not zero.
+
+    authorized=True: the LAW authority record (checked at plan level via
+    scope matching) is the authority seam, not the per-candidate flag.
+    This preserves the documented architecture: "NEEDS_AUTHORITY routing
+    continues to be governed by the LAW authority record."
+    """
+    if (candidate.value_benefit is not None and candidate.value_harm is not None
+            and candidate.value_cost is not None and candidate.value_risk is not None):
+        pv = PVEstimate(
+            B=candidate.value_benefit,
+            H=candidate.value_harm,
+            C=candidate.value_cost,
+            R=candidate.value_risk,
+            confidence=dict(candidate.value_confidence),
+            evidence_count=candidate.value_evidence_count,
+        )
+    else:
+        # UNMEASURED value: placeholder zeros that the gate must catch.
+        # evidence_count=0 + empty confidence => NEEDS_EVIDENCE, never ADMISSIBLE.
+        pv = PVEstimate(B=0.0, H=0.0, C=0.0, R=0.0, confidence={},
+                        evidence_count=0)
     return Candidate(
         candidate_id=candidate.candidate_id,
         quality=dict(candidate.quality),
         confidence=dict(candidate.confidence),
-        pv=PVEstimate(B=0.0, H=0.0, C=0.0, R=0.0, confidence={}),
+        pv=pv,
         stakes=candidate.stakes if candidate.stakes in _STAKE_ORDER else "high",
         reversible=candidate.reversibility == "REVERSIBLE",
         hard_violation=candidate.hard_violation,
@@ -219,24 +268,87 @@ def _candidate_to_calculus(candidate: PlanCandidate) -> Candidate:
         safety_safe=candidate.safety_safe,
         tails=tuple(candidate.tails),
         stakeholder_harms=dict(candidate.stakeholder_harms),
+        authorized=True,  # LAW record governs authority at plan level
     )
 
 
-def _select_minimum_sufficient(candidates: Sequence[PlanCandidate],
-                               profile: QualityProfile) -> tuple[PlanCandidate, tuple]:
-    scored = []
-    for c in candidates:
-        q = score_quality(_candidate_to_calculus(c), profile)["Q"]
-        scored.append((c, q))
-    scored.sort(key=lambda item: (
-        -item[1],                                            # highest Q first
-        0 if item[0].reversibility == "REVERSIBLE" else 1,   # prefer reversible
-        _STAKE_ORDER.get(item[0].stakes, 2),                # prefer lower stakes
-        item[0].candidate_id,                                # deterministic
-    ))
-    winner = scored[0][0]
-    scores = tuple((c.candidate_id, round(q, 4)) for c, q in scored)
-    return winner, scores
+BASELINE_CANDIDATE_ID = "__baseline_do_nothing__"
+
+
+def _baseline_candidate() -> Candidate:
+    """Synthesize the explicit 'do nothing' baseline for baseline-relative
+    value (ΔV). The baseline is the current course: by definition ΔV=0
+    against itself. It is constructed to pass the calculus gate (ADMISSIBLE)
+    so it never distorts the NEEDS_EVIDENCE/PROHIBITED accounting of real
+    candidates — it is the reference point, not a contender.
+
+    Baseline zero is exact-by-definition for the ΔV calculation; it says
+    nothing about whether the current course is good or harmful (Zero Value
+    Law: baseline zero ≠ verified neutral).
+    """
+    neutral_quality = {d: 5.0 for d in QUALITY_DIMENSIONS}
+    full_confidence = {d: 1.0 for d in QUALITY_DIMENSIONS}
+    return Candidate(
+        candidate_id=BASELINE_CANDIDATE_ID,
+        quality=neutral_quality,
+        confidence=full_confidence,
+        pv=PVEstimate(B=0.0, H=0.0, C=0.0, R=0.0,
+                      confidence={"B": 1.0, "H": 1.0, "C": 1.0, "R": 1.0},
+                      evidence_count=1),
+        authorized=True,
+        lawful=True,
+        rights_safe=True,
+        privacy_safe=True,
+        safety_safe=True,
+        stakes="low",
+        reversible=True,
+        is_baseline=True,
+    )
+
+
+def _select_minimum_sufficient(
+    candidates: Sequence[PlanCandidate],
+    profile: QualityProfile,
+    risk_policy: RiskPolicy,
+) -> tuple[PlanCandidate | None, tuple, dict]:
+    """Route selection through the canonical value calculus.
+
+    Converts admissible PlanCandidates to calculus Candidates, appends the
+    explicit 'do nothing' baseline, and calls evaluate_candidates() for
+    baseline-relative value (ΔV), Pareto comparison, and interval dominance.
+    There is no second decision engine here.
+
+    Returns (winner_or_None, score_rows, evaluation). The evaluation dict is
+    the raw evaluate_candidates() result: decision ∈ {ACT, READ_MORE, ASK,
+    REFUSE}, selected candidate_id, top3, per-row gate/Q/ΔV/interval detail.
+
+    A high quality score Q can never disguise negative baseline-relative
+    value: eligibility requires v_safe > 0. Unmeasured value can never
+    silently become zero: the gate verdicts NEEDS_EVIDENCE before selection.
+    """
+    by_id = {c.candidate_id: c for c in candidates}
+    calc_candidates = [_candidate_to_calculus(c) for c in candidates]
+    calc_candidates.append(_baseline_candidate())
+    evaluation = evaluate_candidates(
+        calc_candidates, BASELINE_CANDIDATE_ID, profile, risk_policy
+    )
+    selected_id = evaluation.get("selected")
+    winner = by_id.get(selected_id) if selected_id else None
+    # Score rows: (candidate_id, Q, delta_v, v_safe, gate) — the math is visible.
+    rows = {
+        r["candidate_id"]: r for r in evaluation.get("rows", [])
+        if r["candidate_id"] != BASELINE_CANDIDATE_ID
+    }
+    scores = tuple(
+        (cid,
+         round(rows[cid]["q"]["Q"], 4),
+         round(rows[cid]["delta_v"], 4),
+         round(rows[cid]["v_safe"], 4),
+         rows[cid]["gate"])
+        for cid in [c.candidate_id for c in candidates]
+        if cid in rows
+    )
+    return winner, scores, evaluation
 
 
 def apply_retained_intelligence(
@@ -410,7 +522,45 @@ def plan_action(authority: LawAuthority,
         for cid, verdict, rs in excluded
     )
 
-    chosen, scores = _select_minimum_sufficient(admissible, profile)
+    # --- Canonical value-calculus selection. The winner is determined by
+    # evaluate_candidates(): baseline-relative value (ΔV), Pareto comparison,
+    # and interval dominance. There is no second decision engine.
+    chosen, scores, evaluation = _select_minimum_sufficient(admissible, profile, risk)
+    decision = evaluation.get("decision")
+    calculus_evidence = tuple(
+        f"candidate {cid}: Q={q}, ΔV={dv}, v_safe={vs} [{gate}]"
+        for cid, q, dv, vs, gate in scores
+    ) + (
+        f"value-calculus decision={decision}, "
+        f"selected={evaluation.get('selected')}, "
+        f"baseline={BASELINE_CANDIDATE_ID}",
+    )
+    if decision != ACT or chosen is None:
+        # The calculus did not authorize autonomous selection.
+        # REFUSE: nothing admissible clears the bar (all prohibited).
+        # READ_MORE: insufficient evidence — value unmeasured or uncertain.
+        # ASK: consequential/irreversible — needs human judgment beyond LAW.
+        if decision == REFUSE:
+            return refused(
+                PLAN_SAFETY_PROHIBITED,
+                evidence=f"value calculus REFUSED: no admissible candidate clears "
+                         f"the value bar. {'; '.join(calculus_evidence)}",
+            )
+        if decision == ASK:
+            return refused(
+                PLAN_NEEDS_HUMAN_JUDGMENT,
+                evidence=f"value calculus ASK: winner is consequential or "
+                         f"irreversible; human judgment required beyond the LAW "
+                         f"record. {'; '.join(calculus_evidence)}",
+            )
+        # READ_MORE or no selection: value evidence insufficient.
+        # Uncertainty never silently becomes zero — it becomes a refusal.
+        return refused(
+            PLAN_VALUE_INSUFFICIENT,
+            evidence=f"value calculus {decision}: insufficient value evidence for "
+                     f"autonomous selection. {'; '.join(calculus_evidence)}",
+        )
+
     plan = ActionPlan(
         plan_id=plan_id, action=authority.action, chosen=chosen,
         authority=authority, candidate_scores=scores, planned_at=now,
@@ -418,10 +568,10 @@ def plan_action(authority: LawAuthority,
     receipt = ActionReceipt(
         receipt_id=_new_id(), plan_id=plan_id, phase="PLAN_ACCEPTED",
         executed=False, outcome_verified=False, truth_state="UNKNOWN",
-        evidence=gate_evidence
-        + tuple(
-            f"candidate {cid} scored Q={q}" for cid, q in scores
-        ) + (f"selected {chosen.candidate_id} as minimum sufficient",),
+        evidence=gate_evidence + calculus_evidence + (
+            f"selected {chosen.candidate_id} via canonical value calculus "
+            f"(baseline-relative ΔV, Pareto, interval dominance)",
+        ),
         codes=(),
         expected_outcome=chosen.expected_outcome,
     )
