@@ -1,20 +1,19 @@
-"""Directive Register Sync gate.
-
-Wires the machine-readable directive register into the PR merge path.
-
-Every PR that changes a governance document (BRAIN/01-GOVERNANCE/**) gets
-every master-directive reference (D<n>) validated against
-BRAIN/01-GOVERNANCE/directive-register.json — the single source of truth.
-
-  - Reference to an unregistered directive (D66+, or D8-D65 missing from
-    the register) -> check RED. Stale/phantom references cannot merge.
-  - Register unloadable (missing/corrupt) -> check RED (fail-closed).
-  - D1-D7 references are out of scope (meta-governance, excluded per
-    Shawn's scoping) and never fail the check.
-
-This is an ENFORCEMENT gate, not a suggestion. If it is red, the PR does
-not merge.
-"""
+# Directive Register Sync gate.
+#
+# Wires the machine-readable directive register into the PR merge path.
+#
+# Every PR that changes a governance document (BRAIN/01-GOVERNANCE/**) gets
+# every master-directive reference (D<n>) validated against
+# BRAIN/01-GOVERNANCE/directive-register.json — the single source of truth.
+#
+#   - Reference to an unregistered directive (D66+, or D8-D65 missing from
+#     the register) -> check RED. Stale/phantom references cannot merge.
+#   - Register unloadable (missing/corrupt) -> check RED (fail-closed).
+#   - D1-D7 references are out of scope (meta-governance, excluded per
+#     Shawn's scoping) and never fail the check.
+#
+# This is an ENFORCEMENT gate, not a suggestion. If it is red, the PR does
+# not merge.
 name: Directive Register Sync
 
 on:
