@@ -1,0 +1,72 @@
+name: 2244-A Activation Contract Gate
+
+# WIRE lane (Naya 2): #2244 req 1 — machine-checkable worker wake/activation
+# contract — wired to the PR merge path.
+#
+# SCOPE: the WORKER orientation contract — before governed work a worker must
+# be able to show it read the current mission state, verified a fresh main
+# SHA, read the ratified protocol, read the relevant specialty feeds, and
+# signed in to the LIVE board (#2175, not the archive-only #1354).
+# This is NOT the Naya issuance/mint activation gates
+# (unified-activation-gate.yml, activation-delivery-gate.yml,
+# activation-mint.yml) — different mechanism, different operating path.
+#
+# Every PR touching the contract re-runs:
+#   1. the mechanism's unit tests (20 tests, incl. sabotage negative
+#      controls: stale SHA, artifact drift, stale #1354 board ack,
+#      adversarial board swap, malformed claims);
+#   2. the live violation drill (tools/activation_contract_gate_drill.py):
+#      a well-formed claim built from the LIVE tree's actual bytes must
+#      PROCEED, and four real violations — artifact drift, stale main SHA,
+#      stale #1354 board ack, unknown feed — must each STAND_DOWN with the
+#      expected code. A violation the verifier fails to block turns this
+#      check red and blocks the PR.
+#
+# Exit contract: drill exit 0 = wire proven; exit 1 = wire broken (block).
+
+on:
+  pull_request:
+    paths:
+      - "tools/activation_contract.py"
+      - "tools/activation_contract_gate_drill.py"
+      - "tools/activation-contract-draft.human.md"
+      - "tools/activation-contract-draft.ai.md"
+      - "tools/activation_contract.schema.json"
+      - "tests/test_activation_contract.py"
+      - "BRAIN/01-GOVERNANCE/WIRE-RECEIPT-2244a-activation-contract.md"
+      - ".github/workflows/activation-contract-gate.yml"
+  push:
+    branches: [main]
+    paths:
+      - "tools/activation_contract.py"
+      - "tools/activation_contract_gate_drill.py"
+      - "tools/activation-contract-draft.human.md"
+      - "tools/activation-contract-draft.ai.md"
+      - "tools/activation_contract.schema.json"
+      - "tests/test_activation_contract.py"
+      - "BRAIN/01-GOVERNANCE/WIRE-RECEIPT-2244a-activation-contract.md"
+      - ".github/workflows/activation-contract-gate.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  activation-contract-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # Bare setup-python images do not always carry pytest; install it
+      # explicitly (same lesson as the sibling mechanism and wire gates).
+      - name: Install pytest
+        run: python -m pip install pytest
+
+      - name: Gate unit tests (incl. sabotage negative controls)
+        run: python -m pytest tests/test_activation_contract.py -q -p no:cacheprovider
+
+      - name: Live violation drill (green + four blocked violations)
+        run: python3 tools/activation_contract_gate_drill.py
