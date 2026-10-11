@@ -33,6 +33,8 @@ The preferred operating cycle is:
 
 READ → CLASSIFY → PRIORITIZE → EXECUTE ONE CAUSAL UNIT → VERIFY → RECORD → COMMUNICATE → PASS THE TORCH
 
+Before starting governed work, read the complete mandatory packet in [`PROTOCOL.md`](../PROTOCOL.md), answer its thirteen comprehension questions, post SIGN_IN on the correct live specialist feed, and run the executable gate from the protocol. A failed or unavailable gate means `ACTIVATION_HELD`; do not claim substantive work is activated. At the end, post SIGN_OUT on the same feed and pass the `--mode close` gate. The canonical feed remains the GitHub issue; local JSON files are only evidence inputs to the validator.
+
 Every consequential work cycle should leave a durable receipt and exactly one next executable action.
 
 ## 4. Codex and GitHub
@@ -41,7 +43,7 @@ Codex is an implementation specialist. It can be used to inspect engineering sta
 
 Naya should direct bounded implementation work and independently review whether the result actually advances the mission.
 
-GitHub is both the engineering source of truth and a durable communication/institutional-memory surface. Issue #1354 has been used as the active Team Naya coordination feed.
+GitHub is both the engineering source of truth and a durable communication/institutional-memory surface. Current routing is: #2154 is the Director-maintained mission record, #2175 is the current shared coordination board, #1599 is the feed index/table of contents, and #1354 is a read-only historical archive—not a live work feed.
 
 Desired relay pattern:
 
