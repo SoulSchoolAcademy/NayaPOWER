@@ -328,7 +328,7 @@ def _good_state():
         human_director="Shawn Vibert",
         lane="verify",
         authority_summary="Protected gates include production, credentials/money, destructive actions, ratification, security/privacy/consent.",
-        current_truth_location="mission issue #2154, current coordination board #2175, and current main",
+        current_truth_location="mission issue #2154, current coordination board #2175, specialty feed index #1599, and current main",
         next_action="run the boot receipt acceptance tests",
         receipt=issue_receipt("naya-9", CORRECT, SOURCE_REVISIONS, CURRENT_MAIN_SHA),
         current_main_sha=CURRENT_MAIN_SHA,
@@ -359,6 +359,14 @@ def test_cold_start_requires_mission_coordination_and_main():
     result = run_cold_start(state)
     assert not result.passed
     assert any("#2154" in failure or "#2175" in failure for failure in result.failures)
+
+
+def test_cold_start_requires_specialty_feed_index():
+    state = _good_state()
+    state.current_truth_location = "mission issue #2154, coordination board #2175, and current main"
+    result = run_cold_start(state)
+    assert not result.passed
+    assert any("#1599" in failure for failure in result.failures)
 
 
 def test_cold_start_blocks_missing_live_sign_in():
