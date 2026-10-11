@@ -76,6 +76,17 @@ from kernel.protocol.typed_action import (
     execution_door_check,
     law11_gate,
 )
+from kernel.protocol.observation_window import (
+    OBSERVATION_PAUSED as _OBS_PAUSED,
+    OBSERVATION_REGISTRY_UNAVAILABLE as _OBS_REG_UNAVAIL,
+    OBSERVATION_STOPPED as _OBS_STOPPED,
+    OBSERVATION_WINDOW_INVALID as _OBS_WIN_INVALID,
+    OBSERVATION_WINDOW_MISSING as _OBS_WIN_MISSING,
+    OBSERVATION_WINDOW_REQUIRED as _OBS_WIN_REQUIRED,
+    ObservationRegistry,
+    ObservationWindow,
+    validate_window,
+)
 from kernel.value_calculus import (
     ACT,
     ASK,
@@ -112,6 +123,15 @@ PLAN_SAFETY_NEEDS_EVIDENCE = "PLAN_SAFETY_NEEDS_EVIDENCE"
 PLAN_LAW11_NEEDS_AUTHORITY = "PLAN_LAW11_NEEDS_AUTHORITY"
 PLAN_VALUE_INSUFFICIENT = "PLAN_VALUE_INSUFFICIENT"
 PLAN_NEEDS_HUMAN_JUDGMENT = "PLAN_NEEDS_HUMAN_JUDGMENT"
+# T-07: delayed-harm observation windows. A consequential rollout whose harm
+# may appear after execution must name its window, indicators, review dates
+# and stop triggers BEFORE execution (Naya 1's Law 11 intel).
+PLAN_OBSERVATION_WINDOW_REQUIRED = _OBS_WIN_REQUIRED
+PLAN_OBSERVATION_WINDOW_INVALID = _OBS_WIN_INVALID
+PLAN_OBSERVATION_WINDOW_MISSING = _OBS_WIN_MISSING
+PLAN_OBSERVATION_REGISTRY_UNAVAILABLE = _OBS_REG_UNAVAIL
+PLAN_OBSERVATION_PAUSED = _OBS_PAUSED
+PLAN_OBSERVATION_STOPPED = _OBS_STOPPED
 
 _REVERSIBLE_VALUES = ("REVERSIBLE", "IRREVERSIBLE", "UNKNOWN")
 _STAKE_ORDER = {"low": 0, "medium": 1, "high": 2}
@@ -175,6 +195,14 @@ class PlanCandidate:
     value_risk: float | None = None
     value_confidence: dict = field(default_factory=dict)  # per-component B/H/C/R in [0,1]
     value_evidence_count: int = 0
+    # T-07: delayed-harm observation. A candidate whose harm may appear
+    # AFTER execution (delayed / difficult-to-measure harm types) sets
+    # delayed_harm=True and MUST carry an observation_window declared
+    # BEFORE execution (indicators, review dates, stop triggers). The
+    # structured per-group harm profile is T-05's lane; this seam takes
+    # only the requirement flag and the declared window.
+    delayed_harm: bool = False
+    observation_window: ObservationWindow | None = None
 
 
 @dataclass(frozen=True)
@@ -554,6 +582,7 @@ def plan_action(authority: LawAuthority,
                 risk_policy: RiskPolicy | None = None,
                 actor_id: str = "act_pipeline",
                 environment: str = "development",
+                observation_registry: ObservationRegistry | None = None,
                 ) -> tuple[ActionPlan | None, ActionReceipt]:
     """Phase 1: bind LAW authority to a minimum-sufficient plan.
 
@@ -646,6 +675,56 @@ def plan_action(authority: LawAuthority,
                      f"nothing admissible to execute. {detail}",
         )
 
+    # --- T-07 delayed-harm observation gate. Runs AFTER the Law 11 gate
+    # and BEFORE the calculus gate: a candidate whose harm may appear
+    # after execution must name its observation window (indicators,
+    # review dates, stop triggers) UPFRONT. Fail closed:
+    #   - delayed_harm=True with no window -> excluded (no retroactive
+    #     declaration allowed)
+    #   - window failing validate_window -> excluded with reasons
+    #   - window declared in the future (declared_at > now) -> excluded
+    # Valid windows are registered with the registry when one is provided,
+    # so the execution door can verify live status. If nothing remains
+    # admissible, the plan is refused with PLAN_OBSERVATION_WINDOW_REQUIRED.
+    observation_admissible: list[PlanCandidate] = []
+    observation_excluded: list[tuple[str, tuple[str, ...]]] = []  # (cid, reasons)
+    for c in law11_admissible:
+        if not c.delayed_harm:
+            observation_admissible.append(c)
+            continue
+        window = c.observation_window
+        if window is None:
+            observation_excluded.append(
+                (c.candidate_id, ("OBSERVATION_WINDOW_REQUIRED:no window declared "
+                                  "for delayed-harm candidate",)))
+            continue
+        ok, problems = validate_window(window, action=authority.action, now=now)
+        if not ok:
+            observation_excluded.append((c.candidate_id, problems))
+            continue
+        if observation_registry is not None:
+            try:
+                observation_registry.declare(window)
+            except ValueError as exc:
+                observation_excluded.append(
+                    (c.candidate_id, (f"OBSERVATION_WINDOW_INVALID:{exc}",)))
+                continue
+        observation_admissible.append(c)
+    observation_evidence = tuple(
+        f"candidate {cid} EXCLUDED by delayed-harm observation gate: "
+        f"{'; '.join(rs)}" for cid, rs in observation_excluded
+    )
+    if not observation_admissible:
+        detail = "; ".join(
+            f"{cid}: {'; '.join(rs)}" for cid, rs in observation_excluded
+        )
+        return refused(
+            PLAN_OBSERVATION_WINDOW_REQUIRED,
+            evidence=f"all {len(law11_admissible)} Law-11-admissible candidate(s) "
+                     f"require a delayed-harm observation window declared before "
+                     f"execution and none provided a valid one. {detail}",
+        )
+
     # --- Do-no-harm hard gate (safety floor). Fail closed: a PROHIBITED
     # candidate gets zero value — it is excluded from selection entirely.
     # A NEEDS_EVIDENCE candidate is likewise excluded: unresolved critical
@@ -653,7 +732,7 @@ def plan_action(authority: LawAuthority,
     risk = risk_policy if risk_policy is not None else RiskPolicy()
     admissible: list[PlanCandidate] = []
     excluded: list[tuple[str, str, list[str]]] = []  # (candidate_id, gate verdict, gate reasons)
-    for c in law11_admissible:
+    for c in observation_admissible:
         gate, reasons, _q = gate_candidate(_candidate_to_calculus(c), profile, risk)
         if gate in (PROHIBITED, NEEDS_EVIDENCE):
             excluded.append((c.candidate_id, gate, reasons))
@@ -669,17 +748,17 @@ def plan_action(authority: LawAuthority,
         if any(verdict == PROHIBITED for _, verdict, _ in excluded):
             return refused(
                 PLAN_SAFETY_PROHIBITED,
-                evidence=f"{prior}all {len(law11_admissible)} Law-11-admissible candidate(s) "
-                         f"PROHIBITED by the do-no-harm gate; nothing admissible to "
-                         f"execute. {detail}",
+                evidence=f"{prior}all {len(observation_admissible)} observation-admissible "
+                         f"candidate(s) PROHIBITED by the do-no-harm gate; nothing "
+                         f"admissible to execute. {detail}",
             )
         return refused(
             PLAN_SAFETY_NEEDS_EVIDENCE,
-            evidence=f"{prior}all {len(law11_admissible)} Law-11-admissible candidate(s) "
-                     f"NEEDS_EVIDENCE by the do-no-harm gate; critical safety evidence "
-                     f"unresolved, nothing admissible to execute. {detail}",
+            evidence=f"{prior}all {len(observation_admissible)} observation-admissible "
+                     f"candidate(s) NEEDS_EVIDENCE by the do-no-harm gate; critical "
+                     f"safety evidence unresolved, nothing admissible to execute. {detail}",
         )
-    gate_evidence = law11_evidence + tuple(
+    gate_evidence = law11_evidence + observation_evidence + tuple(
         f"candidate {cid} EXCLUDED by do-no-harm gate [{verdict}]: {', '.join(rs)}"
         for cid, verdict, rs in excluded
     )
@@ -727,10 +806,21 @@ def plan_action(authority: LawAuthority,
         plan_id=plan_id, action=authority.action, chosen=chosen,
         authority=authority, candidate_scores=scores, planned_at=now,
     )
+    observation_receipt = ()
+    if chosen.delayed_harm and chosen.observation_window is not None:
+        w = chosen.observation_window
+        observation_receipt = (
+            f"delayed-harm observation window declared UPFRONT: "
+            f"window_id={w.window_id} harm_type={w.harm_type} "
+            f"indicators={[i.name for i in w.indicators]} "
+            f"review_dates={list(w.review_dates)} "
+            f"stop_triggers={[t.name for t in w.stop_triggers]} "
+            f"window_end={w.window_end}",
+        )
     receipt = ActionReceipt(
         receipt_id=_new_id(), plan_id=plan_id, phase="PLAN_ACCEPTED",
         executed=False, outcome_verified=False, truth_state="UNKNOWN",
-        evidence=gate_evidence + calculus_evidence + (
+        evidence=gate_evidence + calculus_evidence + observation_receipt + (
             f"selected {chosen.candidate_id} via canonical value calculus "
             f"(baseline-relative ΔV, Pareto, interval dominance)",
         ),
@@ -751,7 +841,9 @@ def execute_plan(plan: ActionPlan,
                  risk_policy: RiskPolicy | None = None,
                  on_executed: Callable[[ActionPlan, ActionReceipt], None] | None = None,
                  actor_id: str = "act_pipeline",
-                 environment: str = "development") -> ActionReceipt:
+                 environment: str = "development",
+                 observation_registry: ObservationRegistry | None = None,
+                 ) -> ActionReceipt:
     """Phase 2: re-resolve live LAW authority, re-verify the do-no-harm gate,
     then execute.
 
@@ -846,6 +938,46 @@ def execute_plan(plan: ActionPlan,
         return refused(PLAN_SAFETY_NEEDS_EVIDENCE, evidence=door_evidence)
     if door_verdict.verdict == LAW11_NEEDS_AUTHORITY:
         return refused(PLAN_LAW11_NEEDS_AUTHORITY, evidence=door_evidence)
+
+    # --- T-07 delayed-harm observation door. The window declared at plan
+    # time is verified at the last responsible moment, immediately before
+    # the executor fires. Fail closed:
+    #   - delayed-harm chosen with no window on the candidate -> STOP
+    #   - window declared AFTER the plan (retroactive) -> STOP
+    #   - no registry to verify live state against -> STOP
+    #   - window PAUSED (monitoring failure) or STOPPED (trigger fired) -> STOP
+    # A clean observation record never creates authority — it only clears
+    # this door (Naya 1's ninth framework: evidence never creates authority).
+    if plan.chosen.delayed_harm:
+        obs_window = plan.chosen.observation_window
+        if obs_window is None:
+            return refused(
+                PLAN_OBSERVATION_WINDOW_MISSING,
+                evidence="delayed-harm chosen candidate carries no observation "
+                         "window; execution refused (window must be declared "
+                         "before execution)",
+            )
+        if obs_window.declared_at > plan.planned_at:
+            return refused(
+                PLAN_OBSERVATION_WINDOW_INVALID,
+                evidence=f"observation window {obs_window.window_id} declared at "
+                         f"{obs_window.declared_at}, after plan time "
+                         f"{plan.planned_at}; retroactive declaration refused",
+            )
+        if observation_registry is None:
+            return refused(
+                PLAN_OBSERVATION_REGISTRY_UNAVAILABLE,
+                evidence="delayed-harm execution requires a live observation "
+                         "registry to verify window state; none provided",
+            )
+        permitted, obs_code = observation_registry.execution_permitted(
+            obs_window.window_id, plan.action, now)
+        if not permitted:
+            return refused(
+                obs_code,
+                evidence=f"observation door: window {obs_window.window_id} "
+                         f"not executable (code {obs_code})",
+            )
 
     # --- Execution-time do-no-harm re-gate (safety floor). Fail closed:
     # the gate is re-verified at the last responsible moment, immediately
