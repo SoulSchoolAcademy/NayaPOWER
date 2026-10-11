@@ -1,0 +1,39 @@
+# A Selector That Never Calls the Canonical Evaluator Is a Second Engine in Substance
+
+**Intelligent Block:** IB-SMART-NOTE-20261010-sn0942-selector-never-calls-canonical-evaluator-is-second-engine
+**Truth state:** CANDIDATE
+**Scope:** PRIVATE
+**Captured:** 2026-10-10
+**Canonical intent:** CAPTURE_DURABLE_INTELLIGENCE
+**Filed by:** distillation loop, #2175 comments 6104832767 / 6105342001 / 6105330808 (2026-10-10).
+**Provenance:** blocker finding 6104832767 (2026-10-10 ~20:00 PDT) — kernel/act_pipeline.py `_select_minimum_sufficient()` sorts by Q-only score_quality + reversibility/stakes/id tie-breaks, never calls canonical `evaluate_candidates()`; `_candidate_to_calculus()` supplies zero-valued PV components and empty confidence. Naya 4 self-build loop deep verification, cycle sign-out #2175 comment 6105342001 (2026-10-10 ~21:05 PDT) — proof script goals/nayapower-self-build-loop/hidden_files/work/sb-2108/prove_gap.py, all green. GRAPH drive loop receipt #2175 comment 6105330808 (2026-10-10 ~21:08 PDT) — PR #2273 wired the calculus into ACT selection: 81/81 changed tests pass, 7/7 adversarial probes held, verified at exact tip bytes 640a5fb4; board item 6104832767 closed with proof.
+
+> Verified projection of the persisted Intelligent Block. This file is not a second source of truth.
+
+## ✦ IN A NUTSHELL
+
+On 2026-10-10 the team discovered that kernel/act_pipeline.py's selector never called the canonical value-calculus evaluator: `_select_minimum_sufficient()` ranked candidates by Q-only quality score with reversibility/stakes/id tie-breaks, while `_candidate_to_calculus()` fed the canonical path zero-valued benefit/harm/cost/risk components and empty confidence. Two formulas, two winners — demonstrated live: on the same plan the pipeline picked pA (Q 9.6, irreversible, high-stakes) while `evaluate_candidates()` on value-carrying equivalents picked cB (v_safe +6.7 vs −9.8), ACT. The module docstring read "no second decision engine here" — false precision. The guard `check_no_competing_engine.py` was name-based and blind to it: a second ranking formula that never calls the canon is a second decision engine in substance, whatever the module is called.
+
+The detection lesson is the point, not the bug: docstrings and module names are claims about architecture, not evidence of it. Name-based guards verify naming conventions; they cannot verify that the canonical evaluator actually decides. The proof that unmasks a disguised second engine is behavioral — construct one plan, run both formulas, and compare winners. If two formulas pick two different winners, the canon is not deciding; the selector is. A cold successor auditing "does the math choose the winner?" has the exact test: spy on the canonical evaluator's invocation count per plan (must be exactly once per plan), verify PV components are non-zero and provenance-bound before scoring, and run an adversarial probe where high-Q conflicts with negative value (the unmeasured-value probe: unmeasured value must NEVER win; high-Q/negative-delta must be refused). #2273 closed the gap and all seven probes held at exact tip bytes — but the detection method, not the patch, is what compounds: any future selector that routes around the canon will be caught by the same two-winners test.
+
+Why this is brain-grade: it is SN-0732's constructive lesson (one engine, many adapters) turned into its destructive mirror — how to detect the violation. A governed system whose canonical engine is routed around is governed only in prose. The failure mode is quiet: the canon exists, the tests are green, the docstring is confident — and the decision is made by a tie-break chain nobody reviewed. Verification must target the decision path, not the directory listing.
+
+## 🩷 HUMAN NOTE
+
+Shawn — the big machinery win today, in plain words: we found that the code choosing our actions wasn't actually using the value math. The math existed, it was tested, the module even said "no second decision engine here" — but the selector ranked by a quality score and tie-breaks, and two different formulas picked two different winners. We proved it with a head-to-head test, then wired the real math in (81/81 tests, 7/7 adversarial probes green). The durable lesson: never trust a label that says "this is the only decision path" — verify with a spy and a conflict test. Names don't decide; bytes do.
+
+## 🟣 CHILD NOTE
+
+Imagine a contest where the judge says "I'll pick the winner with the official rulebook" — but secretly picks by who smiles the most. The rulebook is real, the judge is real, but the rulebook isn't doing the deciding! That's what we found: the "official rulebook" (the value math) existed, but a different rule (a quality score) was actually picking winners. How did we catch it? We ran both rules on the same contest and compared: they picked DIFFERENT winners. That's the test: if the official rule and the secret rule disagree, the official rule isn't in charge. The lesson: don't believe the label — run the test.
+
+## 👵 GRANDMA NOTE
+
+The team found that the part of the program choosing actions wasn't using the official scoring math — it was ranking by a simpler score, even though the official math existed and everything was labeled correctly. Two different scoring methods on the same choice picked two different winners, which proved the official math wasn't the one deciding. The lesson: a label saying "this is the decision path" is a claim, not proof. The proof is watching the official math actually run — exactly once per decision — and testing with a case where the two methods would disagree. Once that's checked mechanically, the problem can never hide again.
+
+## 🧠 NAYA NOTE
+
+A canonical evaluator that is never invoked is decoration, not governance. Detection protocol for any selector that claims to use the canon: (1) spy on the canonical evaluator — it must be invoked exactly once per plan; (2) verify PV components are non-zero and provenance-bound before scoring (zeros + empty confidence = the canon is fed nothing); (3) run the two-formulas-two-winners probe — construct a plan where quality-score ranking and value-based ranking disagree; if they pick different winners, the canon is routed around; (4) distrust name-based guards — a module named "no second engine" can still rank by a second formula. This is the destructive mirror of SN-0732 (one engine, many adapters): the same architecture, verified from the other side.
+
+## ⚙️ MACHINE NOTE
+
+{"sn": "SN-0942", "title": "A Selector That Never Calls the Canonical Evaluator Is a Second Engine in Substance", "truth_state": "CANDIDATE", "scope": "PRIVATE", "captured": "2026-10-10", "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE", "taxonomy": ["SYSTEM-INTELLIGENCE", "SYSTEM-DESIGN", "CANON-ADAPTERS"], "cousins": ["SN-0732", "SN-0940"], "evidence": {"board": "#2175 comment 6104832767 (blocker, ~20:00 PDT) — act_pipeline selector never calls canonical evaluate_candidates(); _candidate_to_calculus supplies zero PV + empty confidence; pinned to qual issue #830", "deep_verify": "#2175 comment 6105342001 (~21:05 PDT) — self-build cycle 20261010-2108: prove_gap.py all green; two formulas two winners (pipeline picks pA Q 9.6 irreversible; canon picks cB v_safe +6.7 vs -9.8); classified CONTRACT GAP (primary); docstring 'no second decision engine here' is false precision; name-based check_no_competing_engine.py blind", "closure": "#2175 comment 6105330808 (~21:08 PDT) — PR #2273 wired calculus into ACT selection: 81/81 changed tests pass, 7/7 adversarial probes held at exact tip bytes 640a5fb4; board item 6104832767 closed with proof"}, "rule": "a selector that never invokes the canonical evaluator is a second decision engine in substance — detect it behaviorally: spy the evaluator (exactly once per plan), require non-zero provenance-bound PV inputs, and run the two-formulas-two-winners probe; never trust module names or name-based guards"}
