@@ -1,4 +1,8 @@
-"""Tests for the Naya Decision Principle (kernel/decision_principle.py).
+"""Tests for the Naya Decision Principle oracle (kernel/decision_principle.py).
+
+NON-AUTHORITATIVE verification oracle. The canonical engine is
+kernel/value_calculus.py. These tests prove the oracle's independent
+implementation is self-consistent and agrees with the consolidated engine.
 
 Proves, in order:
   (a) a prohibited action with otherwise-high value is DISQUALIFIED, not outscored
@@ -13,7 +17,7 @@ import pytest
 
 from kernel import decision_principle as dp
 from kernel.decision_principle import (
-    Action, DecisionEngine,
+    Action, PrincipleOracle,
     ADMISSIBLE, DISQUALIFIED, DEFERRED,
     ACT, ABSTAIN, REFUSE, ASK,
     gate_protect_people, gate_tell_truth, gate_respect_authority,
@@ -31,7 +35,7 @@ def _clean(aid="a", **kw):
     return Action(**d)
 
 
-ENGINE = DecisionEngine()
+ENGINE = PrincipleOracle()
 
 
 # ---------------------------------------------------------------------------

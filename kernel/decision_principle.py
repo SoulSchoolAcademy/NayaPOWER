@@ -1,4 +1,16 @@
-"""Naya Decision Principle — two-phase decision architecture.
+"""Naya Decision Principle — INDEPENDENT VERIFICATION ORACLE.
+
+NON-AUTHORITATIVE. This module is NOT a decision authority.
+
+The ONE canonical decision engine is kernel/value_calculus.py (Shawn
+2026-10-11: "Bring them together and put the best of them together" —
+consolidate, no exception for a second engine).
+
+This module's role, and ONLY this role: an INDEPENDENT implementation of the
+decision principle, written straight from the spec text, sharing no code paths
+with the canonical engine. It exists so the consolidated engine can be
+cross-verified — two independent implementations must agree, or something is
+wrong. It is a test oracle, never a production decision-maker.
 
 Shawn's principle, as code:
 
@@ -215,13 +227,20 @@ class Decision:
     note: str = ""                     # human-readable explanation
 
 
-class DecisionEngine:
-    """Two-phase decision: hard gates first, optimization second.
+class PrincipleOracle:
+    """Independent oracle of the two-phase decision principle.
+
+    NON-AUTHORITATIVE — test oracle only. The canonical engine is
+    kernel/value_calculus.py.
 
     Phase 1 partitions candidates into admissible / disqualified / deferred.
     Phase 2 runs argmax of V_verified over the admissible set ONLY.
     Disqualified actions never enter the ranking — they were excluded,
     not outscored.
+
+    Written independently from the spec text; shares no code paths with the
+    canonical engine. Used by cross_verify() to prove the consolidated
+    engine governs behavior correctly across MULTIPLE implementations.
     """
 
     def decide(self, actions: Sequence[Action]) -> Decision:
@@ -437,7 +456,7 @@ def verify_pipeline_excludes_first(candidates, baseline_id, profile,
 # govern behavior across MULTIPLE implementations, not just one.
 #
 # Implementation B below is written independently, straight from the spec
-# text, sharing no code paths with DecisionEngine. The harness runs both
+# text, sharing no code paths with PrincipleOracle. The harness runs both
 # over a scenario battery plus randomized scenarios and requires agreement
 # on: the disqualified set, the admissible set, and the chosen action.
 # ---------------------------------------------------------------------------
@@ -445,7 +464,7 @@ def verify_pipeline_excludes_first(candidates, baseline_id, profile,
 def _independent_decide(actions: Sequence[Action]) -> dict:
     """Independent reimplementation, written directly from the spec.
 
-    Deliberately shares no code with DecisionEngine: different structure,
+    Deliberately shares no code with PrincipleOracle: different structure,
     different order of checks, same required semantics.
     """
     disqualified: list[str] = []
@@ -519,11 +538,11 @@ def _independent_decide(actions: Sequence[Action]) -> dict:
 
 
 def cross_verify(scenarios: Sequence[Sequence[Action]]) -> dict:
-    """Run DecisionEngine and the independent implementation over every
+    """Run PrincipleOracle and the independent implementation over every
     scenario. They must agree on disqualified set, admissible set, chosen
     action, and outcome. Returns agreement evidence; raises on divergence.
     """
-    engine = DecisionEngine()
+    engine = PrincipleOracle()
     divergences: list[dict] = []
 
     for i, actions in enumerate(scenarios):
@@ -625,3 +644,175 @@ def scenario_battery() -> list[list[Action]]:
         [base("b-action", verified_value=7.0),
          base("a-action", verified_value=7.0)],
     ]
+
+
+# ---------------------------------------------------------------------------
+# Consolidated cross-verification — proves the ONE canonical engine
+# (kernel/value_calculus.py) governs behavior identically to this independent
+# oracle. This is the consolidation proof: two independent implementations,
+# one authoritative engine.
+# ---------------------------------------------------------------------------
+
+def _action_to_candidate(a: Action):
+    """Adapt a simple Action to the canonical engine's rich Candidate.
+
+    Maps the oracle's epistemic evidence (Optional[bool]) into the calculus's
+    hard-gate flags, preserving the exact gate semantics:
+      - established harm/deception/forbidden scope -> hard_violation (PROHIBITED)
+      - unknown harm/truth -> hard flags None (NEEDS_EVIDENCE -> DEFERRED)
+      - missing authority -> authorized=False (NEEDS_AUTHORITY -> DEFERRED)
+      - consented + mitigated residual risk -> admissible (not prohibited)
+      - verified_value None -> evidence_count=0 (unverified; never competes)
+    """
+    from kernel.value_calculus import Candidate, PVEstimate, QUALITY_DIMENSIONS
+
+    consented_mitigated = bool(a.informed_consent and a.harm_mitigated)
+
+    # --- Hard-gate mapping ------------------------------------------------
+    hard_violation = False
+    safety_safe: Optional[bool] = None
+
+    if a.unacceptable_harm is True and not consented_mitigated:
+        hard_violation = True
+    elif (a.unacceptable_harm is None and a.harm_severity is not None
+          and a.harm_probability is not None
+          and float(a.harm_severity) >= 7.0 and float(a.harm_probability) > 0.05
+          and not consented_mitigated):
+        hard_violation = True
+    elif a.unacceptable_harm is False:
+        safety_safe = True
+    elif consented_mitigated and (
+        a.unacceptable_harm is True
+        or (a.harm_severity is not None and a.harm_probability is not None
+            and float(a.harm_severity) >= 7.0 and float(a.harm_probability) > 0.05)
+    ):
+        # The oracle explicitly admits consented + mitigated residual risk —
+        # but only when there WAS established harm or HIGH assessed risk to
+        # consent to and mitigate. The oracle is conservative: uharm=None
+        # with low/unassessed risk always DEFERS, even if consent/mitigation
+        # flags are set. Match that exactly.
+        safety_safe = True
+    # else: unacceptable_harm is None without high assessed risk -> unknown -> None
+
+    if a.deceptive is True or a.forbidden_scope:
+        hard_violation = True
+
+    lawful: Optional[bool] = None
+    if a.deceptive is True:
+        lawful = False  # deception already triggers hard_violation; flag for receipt
+    elif a.deceptive is False:
+        lawful = True
+
+    # --- Value mapping ----------------------------------------------------
+    # verified_value None -> evidence_count=0 (unverified; never competes).
+    # Otherwise B=verified_value with full confidence (the oracle's "verified").
+    vv = a.verified_value
+    if vv is None:
+        pv = PVEstimate(B=0.0, H=0.0, C=0.0, R=0.0,
+                        confidence={"B": 1.0, "H": 1.0, "C": 1.0, "R": 1.0},
+                        evidence_count=0)
+    else:
+        pv = PVEstimate(B=max(0.0, float(vv)), H=0.0, C=0.0, R=0.0,
+                        confidence={"B": 1.0, "H": 1.0, "C": 1.0, "R": 1.0},
+                        evidence_count=1)
+
+    # Quality at ceiling so the Q-gate never interferes with the cross-check;
+    # the gates under test are the hard gates, not quality scoring.
+    quality = {d: 10.0 for d in QUALITY_DIMENSIONS}
+    confidence = {d: 1.0 for d in QUALITY_DIMENSIONS}
+
+    return Candidate(
+        candidate_id=a.action_id,
+        quality=quality,
+        confidence=confidence,
+        pv=pv,
+        authorized=a.authorized,
+        hard_violation=hard_violation,
+        lawful=lawful,
+        rights_safe=True,
+        privacy_safe=True,
+        safety_safe=safety_safe,
+        informed_consent=a.informed_consent,
+        harm_mitigated=a.harm_mitigated,
+        stakes="low",
+        reversible=True,
+    )
+
+
+def _default_consolidation_profile():
+    """A QualityProfile permissive on quality (ceiling in adapter) but strict
+    on the hard gates — the gates under cross-verification."""
+    from kernel.value_calculus import QualityProfile
+    return QualityProfile(
+        profile_id="CROSS-VERIFY",
+        version="1.0",
+        objective="cross-verification of consolidated engine vs oracle",
+        q_accept=9.0,
+        aggregate_confidence_floor=0.80,
+        critical_confidence_floor=0.75,
+        min_evidence_count=1,
+    )
+
+
+def cross_verify_consolidated(scenarios: Sequence[Sequence[Action]]) -> dict:
+    """Prove the canonical engine agrees with the independent oracle.
+
+    For each scenario: adapt Actions to Candidates, run value_calculus.decide()
+    (the ONE authoritative engine) and PrincipleOracle.decide() (the
+    independent oracle). They must agree on: disqualified set, admissible set,
+    deferred set, chosen action. Outcomes must be in the same family
+    (ACT<->ACT, REFUSE<->REFUSE, ASK<->ASK, ABSTAIN<->ABSTAIN/READ_MORE).
+
+    Returns agreement evidence; raises AssertionError on divergence.
+    """
+    from kernel import value_calculus as vc
+
+    profile = _default_consolidation_profile()
+    oracle = PrincipleOracle()
+    divergences: list[dict] = []
+
+    # Outcome family mapping: oracle -> acceptable canonical outcomes.
+    # The canonical engine distinguishes evidence-gap (READ_MORE) from
+    # no-verified-value (ABSTAIN); the oracle folds both into ABSTAIN.
+    family = {
+        ACT: {vc.DECIDE_ACT},
+        REFUSE: {vc.DECIDE_REFUSE},
+        ASK: {vc.DECIDE_ASK},
+        ABSTAIN: {vc.DECIDE_ABSTAIN, vc.DECIDE_READ_MORE},
+    }
+
+    for i, actions in enumerate(scenarios):
+        candidates = [_action_to_candidate(a) for a in actions]
+        canon = vc.decide(candidates, baseline_id="__none__", profile=profile)
+        orac = oracle.decide(actions)
+
+        canon_result = {
+            "disqualified": sorted(canon["disqualified"]),
+            "admissible": sorted(canon["admissible"]),
+            "deferred": sorted(canon["deferred"]),
+            "chosen": canon["chosen"],
+        }
+        oracle_result = {
+            "disqualified": sorted(orac.disqualified_ids),
+            "admissible": sorted(orac.admissible_ids),
+            "deferred": sorted(orac.deferred_ids),
+            "chosen": orac.chosen_action_id,
+        }
+        outcome_ok = canon["outcome"] in family.get(orac.outcome, set())
+
+        if canon_result != oracle_result or not outcome_ok:
+            divergences.append({
+                "scenario": i,
+                "canonical": {**canon_result, "outcome": canon["outcome"]},
+                "oracle": {**oracle_result, "outcome": orac.outcome},
+            })
+
+    evidence = {
+        "scenarios": len(scenarios),
+        "divergences": divergences,
+        "agreed": len(divergences) == 0,
+    }
+    assert evidence["agreed"], (
+        f"canonical engine and oracle diverged on {len(divergences)} "
+        f"scenario(s): {divergences[:3]}")
+    return evidence

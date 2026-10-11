@@ -3,6 +3,13 @@
 Deterministic, dependency-free decision math implementing the canonical
 NAYANODE/0025 value-calculus seam. Value ranks only actions that governance
 already permits. Scores never create authority.
+
+CONSOLIDATED 2026-10-11 (Shawn: "Bring them together and put the best of
+them together"): This is THE ONE decision engine. The two-phase decision
+architecture, disqualification semantics, unknown-defers law, consented-risk
+refinement, and honest-output framing from kernel/decision_principle.py are
+folded in here. kernel/decision_principle.py is retained ONLY as the
+independent verification oracle (non-authoritative test role).
 """
 
 from __future__ import annotations
@@ -192,6 +199,13 @@ class Candidate:
     dependency_unlock: float = 0.0
     human_burden: float = 0.0
     is_baseline: bool = False
+    # Consolidated 2026-10-11 (from decision_principle.py): the refinement.
+    # Not every risk is a prohibition. Residual risk that is genuinely
+    # minimized AND chosen with full information is admissible — helping
+    # involves trade-offs. The gate tests for UNACCEPTABLE harm, not for the
+    # mere presence of uncertainty.
+    informed_consent: bool = False
+    harm_mitigated: bool = False
 
     def effective_stakes(self) -> str:
         return _stake_max(self.stakes, self.plan_stakes)
@@ -287,6 +301,14 @@ def gate_candidate(candidate: Candidate, profile: QualityProfile, risk_policy: R
         if not 0 <= prob <= 1:
             raise ValueError("tail probability must be in [0,1]")
         if sev >= risk_policy.severity_threshold and prob > risk_policy.probability_threshold:
+            # Consolidated 2026-10-11 (from decision_principle.py): consented
+            # + genuinely mitigated residual risk is ADMISSIBLE, not
+            # prohibited. The gate tests for UNACCEPTABLE harm — residual risk
+            # minimized and chosen with full information passes. Recorded as a
+            # reason; all other gates still apply.
+            if candidate.informed_consent and candidate.harm_mitigated:
+                reasons.append(f"TAIL_RISK_CONSENTED_MITIGATED:{tail.harm_class}")
+                continue
             return risk_policy.response, [f"TAIL_RISK:{tail.harm_class}"], q
 
     harms = candidate.stakeholder_harms or {}
@@ -1128,3 +1150,244 @@ def rank_next_best_actions(candidates: Sequence[NextBestActionCandidate], profil
             for i in eligible:
                 results[i] = NextBestActionResult(results[i].candidate_id, results[i].score, "READ_MORE", "NO_CLEAR_DOMINANT_OPTION")
     return results
+
+
+# ---------------------------------------------------------------------------
+# TWO-PHASE DECISION ARCHITECTURE — the ultimate consolidated engine.
+# (Shawn 2026-10-11: "Bring them together and put the best of them together.")
+#
+# Consolidates kernel/decision_principle.py's two-phase semantics into the
+# canonical Value Calculus. There is ONE decision engine: this file.
+#
+# Phase 1 — HARD GATES: partition candidates into ADMISSIBLE / DISQUALIFIED /
+#   DEFERRED. Disqualification is EXCLUSION, not zero-scoring. A disqualified
+#   candidate never enters the Phase-2 ranking, no matter how high its value.
+#   Unknown is neither safe nor prohibited: uncertainty DEFERS judgment, it
+#   never disqualifies (the Zero Value Law: null is not zero).
+# Phase 2 — OPTIMIZE: argmax of verified value over the ADMISSIBLE set only.
+#
+# Honest outputs are first-class: when no admissible candidate has verified
+# value, abstaining IS the highest-value choice — not a failure to decide.
+# "I don't know yet", "this isn't safe", and "there's a better way" are valid,
+# high-value outputs, never errors.
+# ---------------------------------------------------------------------------
+
+#: Phase-1 verdicts — the only three outcomes a hard gate can produce.
+VERDICT_ADMISSIBLE = "ADMISSIBLE"      # passes the gate; may compete on value
+VERDICT_DISQUALIFIED = "DISQUALIFIED"  # fails on merits; excluded from competition
+VERDICT_DEFERRED = "DEFERRED"          # cannot be judged yet; needs evidence/authority
+
+#: Phase-2 outcomes.
+DECIDE_ACT = "ACT"            # an admissible candidate chosen on verified value
+DECIDE_ABSTAIN = "ABSTAIN"    # honest output: no admissible candidate has verified value
+DECIDE_REFUSE = "REFUSE"      # every candidate disqualified; nothing may proceed
+DECIDE_ASK = "ASK"            # admissible candidates exist but all deferred on authority
+DECIDE_READ_MORE = "READ_MORE"  # deferred on evidence; gather more before deciding
+
+
+def _calculus_gate_to_verdict(gate: str, reasons: list[str] = None) -> str:
+    """Map gate_candidate outcomes into the three Phase-1 verdicts.
+
+    PROHIBITED       -> DISQUALIFIED (excluded on merits, never competes)
+    NEEDS_AUTHORITY  -> DEFERRED (may become admissible once authority granted)
+    NEEDS_EVIDENCE   -> DEFERRED only for safety-unknown (HARD_GATE_UNKNOWN /
+                        UNKNOWN_*); pure value-evidence gaps (EVIDENCE_FLOOR,
+                        confidence floors) are ADMISSIBLE for Phase 1 —
+                        Phase 2 filters on verified value. Unknown safety
+                        defers; unverified value merely doesn't compete.
+    ADMISSIBLE       -> ADMISSIBLE
+    """
+    if gate == PROHIBITED:
+        return VERDICT_DISQUALIFIED
+    if gate == NEEDS_AUTHORITY:
+        return VERDICT_DEFERRED
+    if gate == NEEDS_EVIDENCE:
+        rs = reasons or []
+        # Safety-unknown is epistemic: defer. Value-evidence gaps are Phase-2.
+        if any(r == "HARD_GATE_UNKNOWN" or r.startswith("UNKNOWN_") for r in rs):
+            return VERDICT_DEFERRED
+        return VERDICT_ADMISSIBLE
+    if gate == ADMISSIBLE:
+        return VERDICT_ADMISSIBLE
+    raise ValueError(f"unknown calculus gate: {gate}")
+
+
+def partition_candidates(candidates: Sequence[Candidate], profile: QualityProfile,
+                         risk_policy: RiskPolicy = None) -> dict:
+    """Phase 1: run hard gates over every candidate; partition, don't score.
+
+    Returns:
+        {
+            "admissible": [candidate_id, ...],    # passed all hard gates
+            "disqualified": [candidate_id, ...], # excluded on merits — never competes
+            "deferred": [candidate_id, ...],     # not yet judgeable
+            "verdicts": {candidate_id: (verdict, reasons)},
+            "gate_rows": {candidate_id: gate},  # raw gate_candidate outcomes
+        }
+
+    A single disqualification removes the candidate from the competition.
+    All gates still run for every candidate so the receipt is complete.
+    """
+    policy = risk_policy if risk_policy is not None else RiskPolicy()
+    admissible: list[str] = []
+    disqualified: list[str] = []
+    deferred: list[str] = []
+    verdicts: dict[str, tuple[str, list[str]]] = {}
+    gate_rows: dict[str, str] = {}
+
+    for candidate in candidates:
+        gate, reasons, _ = gate_candidate(candidate, profile, policy)
+        verdict = _calculus_gate_to_verdict(gate, reasons)
+        verdicts[candidate.candidate_id] = (verdict, list(reasons))
+        gate_rows[candidate.candidate_id] = gate
+        if verdict == VERDICT_ADMISSIBLE:
+            admissible.append(candidate.candidate_id)
+        elif verdict == VERDICT_DISQUALIFIED:
+            disqualified.append(candidate.candidate_id)
+        else:
+            deferred.append(candidate.candidate_id)
+
+    return {
+        "admissible": admissible,
+        "disqualified": disqualified,
+        "deferred": deferred,
+        "verdicts": verdicts,
+        "gate_rows": gate_rows,
+    }
+
+
+def decide(candidates: Sequence[Candidate], baseline_id: str,
+           profile: QualityProfile, risk_policy: RiskPolicy = None) -> dict:
+    """The ultimate decision: Phase 1 (hard gates) then Phase 2 (optimize).
+
+    Phase 1 partitions candidates via partition_candidates().
+    Phase 2 runs the full evaluate_candidates() machinery — but ONLY over the
+    admissible set. Disqualified candidates never enter the ranking; they were
+    excluded, not outscored.
+
+    Returns a decision dict:
+        {
+            "outcome": ACT | ABSTAIN | REFUSE | ASK | READ_MORE,
+            "chosen": candidate_id | None,
+            "chosen_value": v_safe of the choice | None,
+            "admissible": [...], "disqualified": [...], "deferred": [...],
+            "ranking": [candidate_id, ...],  # admissible, best first
+            "partition": {...},              # full Phase-1 receipt
+            "evaluation": {...},             # full Phase-2 receipt (admissible only)
+            "note": str,                     # human-readable explanation
+        }
+
+    Outcome semantics (honest outputs first-class):
+      ACT       — an admissible candidate won on verified value.
+      ABSTAIN   — admissible candidates exist but none has verified value.
+                  "I don't know yet" — abstaining beats guessing.
+      REFUSE    — every candidate disqualified on the merits. "This isn't safe."
+      ASK       — deferred on authority. Ask for the missing authority.
+      READ_MORE — deferred on evidence. Gather evidence, then decide.
+    """
+    policy = risk_policy if risk_policy is not None else RiskPolicy()
+    partition = partition_candidates(candidates, profile, policy)
+
+    admissible_ids = partition["admissible"]
+    disqualified_ids = partition["disqualified"]
+    deferred_ids = partition["deferred"]
+
+    if not candidates:
+        return {
+            "outcome": DECIDE_ABSTAIN, "chosen": None, "chosen_value": None,
+            "admissible": [], "disqualified": [], "deferred": [],
+            "ranking": [], "partition": partition, "evaluation": None,
+            "note": "No candidates proposed. Honest output: nothing to decide.",
+        }
+
+    # Phase 2 runs ONLY over the admissible set. Disqualified candidates are
+    # excluded from the evaluation entirely — they never compete.
+    #
+    # "Verified value" (V_verified): the candidate meets the profile's
+    # evidence and confidence floors. This is the caller's contract — the
+    # engine never optimizes on unverified value. Choosing on unverified
+    # value would be guessing, not intelligence.
+    by_id = {c.candidate_id: c for c in candidates}
+    admissible_candidates = [by_id[cid] for cid in admissible_ids]
+
+    def _has_verified_value(c: Candidate) -> bool:
+        pv = c.pv.normalized()
+        if pv.evidence_count < profile.min_evidence_count:
+            return False
+        q = score_quality(c, profile)
+        if q["confidence_aggregate"] < profile.aggregate_confidence_floor:
+            return False
+        if q["confidence_critical"] < profile.critical_confidence_floor:
+            return False
+        return True
+
+    def _conservative_value(c: Candidate) -> float:
+        pv = c.pv.pv(profile.uncertainty_scale)
+        return pv - max(0.0, _finite(c.uncertainty_penalty, "uncertainty_penalty")) - max(
+            0.0, _finite(c.tail_penalty, "tail_penalty"))
+
+    evaluation = None
+    ranking: list[str] = []
+    chosen = None
+    chosen_value = None
+
+    if admissible_candidates:
+        # Rank admissible candidates with verified value by conservative
+        # value, best first. Ties break deterministically by candidate_id.
+        verified = [(c.candidate_id, _conservative_value(c))
+                    for c in admissible_candidates if _has_verified_value(c)]
+        verified.sort(key=lambda t: (-t[1], t[0]))
+        ranking = [cid for cid, _ in verified]
+        if ranking:
+            chosen = ranking[0]
+            chosen_value = next(v for cid, v in verified if cid == chosen)
+        # Full evaluate_candidates receipt when an admissible baseline exists
+        # (for calibration/debugging; the decision above is authoritative).
+        if any(c.candidate_id == baseline_id and c.is_baseline
+               for c in admissible_candidates):
+            evaluation = evaluate_candidates(
+                admissible_candidates, baseline_id, profile, policy)
+
+    # --- Outcome ---------------------------------------------------------
+    if chosen is not None:
+        outcome = DECIDE_ACT
+        note = (f"Chose {chosen} with verified value {chosen_value} from "
+                f"{len(admissible_ids)} admissible candidate(s); "
+                f"{len(disqualified_ids)} disqualified, {len(deferred_ids)} deferred.")
+    elif admissible_ids:
+        outcome = DECIDE_ABSTAIN
+        note = ("Admissible candidates exist but none has verified value. "
+                "Honest output: 'I don't know yet' — abstaining rather than guessing.")
+    elif deferred_ids:
+        # Authority gaps ask; evidence gaps read more. Only DEFERRED
+        # candidates' reasons count — a disqualified candidate's missing
+        # authority is irrelevant; it is out on the merits.
+        deferred_reasons: list[str] = []
+        for cid in deferred_ids:
+            _, reasons = partition["verdicts"][cid]
+            deferred_reasons.extend(reasons)
+        if any("AUTHORITY" in r for r in deferred_reasons):
+            outcome = DECIDE_ASK
+            note = ("Candidates deferred pending authority. "
+                    "Honest output: ask for the missing authority.")
+        else:
+            outcome = DECIDE_READ_MORE
+            note = ("Candidates deferred pending evidence. "
+                    "Honest output: gather evidence, then decide.")
+    else:
+        outcome = DECIDE_REFUSE
+        note = ("Every candidate was disqualified on the merits. "
+                "Nothing may proceed. Honest output: 'this isn't safe'.")
+
+    return {
+        "outcome": outcome,
+        "chosen": chosen,
+        "chosen_value": chosen_value,
+        "admissible": admissible_ids,
+        "disqualified": disqualified_ids,
+        "deferred": deferred_ids,
+        "ranking": ranking,
+        "partition": partition,
+        "evaluation": evaluation,
+        "note": note,
+    }
