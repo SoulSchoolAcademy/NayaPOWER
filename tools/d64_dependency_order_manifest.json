@@ -1,0 +1,184 @@
+{
+  "_example": {
+    "_comment": "WORKED EXAMPLE \u2014 not an active claim. If registered as a claim, the gate BLOCKS it (exit 1): the AER-LIVE-009-F6 certificate with the naive checker's collapsed verdicts asserted as truth. F6 is the case where LAW-effective-time evidence is missing: timing, temporal, lifecycle, authority, preservation and exit stay UNDETERMINED \u2014 no fabricated failure. The naive checker collapses every UNDETERMINED to PROVEN_FALSE and diagnoses the primary failure in verification order ('timing') instead of execution order. Asserting that summary as VERIFIED is the exact invented-failure fraud D64 exists to prevent: the gate's recomputed judgment diverges on six invariants and the primary diagnosis, and names every divergence.",
+    "asserts": "VERIFIED",
+    "certificate": {
+      "boundary_ref": "governance-boundary-2026-10-11",
+      "execution_order": [
+        "temporal",
+        "obs",
+        "timing",
+        "lifecycle",
+        "authority",
+        "budget",
+        "preservation",
+        "exit"
+      ],
+      "invariants": [
+        {
+          "layer": "observation",
+          "name": "obs",
+          "prerequisites": [],
+          "proof_ref": "OBS-7: sensor reading nominal",
+          "value": "PROVEN_TRUE"
+        },
+        {
+          "layer": "observation",
+          "name": "timing",
+          "prerequisites": [
+            "obs"
+          ],
+          "proof_ref": null,
+          "value": "UNDETERMINED"
+        },
+        {
+          "layer": "temporal",
+          "name": "temporal",
+          "prerequisites": [
+            "obs",
+            "timing"
+          ],
+          "proof_ref": null,
+          "value": "UNDETERMINED"
+        },
+        {
+          "layer": "lifecycle",
+          "name": "lifecycle",
+          "prerequisites": [
+            "temporal"
+          ],
+          "proof_ref": null,
+          "value": "UNDETERMINED"
+        },
+        {
+          "layer": "authority",
+          "name": "authority",
+          "prerequisites": [
+            "temporal",
+            "lifecycle"
+          ],
+          "proof_ref": null,
+          "value": "UNDETERMINED"
+        },
+        {
+          "layer": "budget",
+          "name": "budget",
+          "prerequisites": [
+            "obs"
+          ],
+          "proof_ref": "BUD-3: budget solvent",
+          "value": "PROVEN_TRUE"
+        },
+        {
+          "layer": "preservation",
+          "name": "preservation",
+          "prerequisites": [
+            "lifecycle",
+            "authority",
+            "budget"
+          ],
+          "proof_ref": null,
+          "value": "UNDETERMINED"
+        },
+        {
+          "layer": "exit",
+          "name": "exit",
+          "prerequisites": [
+            "preservation"
+          ],
+          "proof_ref": null,
+          "value": "UNDETERMINED"
+        }
+      ],
+      "joint_invariants": [],
+      "model": [
+        {
+          "breaks": [],
+          "name": "observe_sensor",
+          "observations": [
+            "sensor_reading"
+          ],
+          "requires": []
+        },
+        {
+          "breaks": [
+            "temporal"
+          ],
+          "name": "advance_past_expiry",
+          "observations": [],
+          "requires": [
+            "temporal"
+          ]
+        },
+        {
+          "breaks": [
+            "budget"
+          ],
+          "name": "drain_budget",
+          "observations": [],
+          "requires": [
+            "budget"
+          ]
+        },
+        {
+          "breaks": [
+            "authority"
+          ],
+          "name": "corrupt_evidence",
+          "observations": [],
+          "requires": [
+            "authority"
+          ]
+        }
+      ],
+      "model_assumptions": [
+        "Verification order is topological over the prerequisite graph (Kahn's algorithm, name-sorted tie-break): every prerequisite is verified before its dependents. Diagnosis order is the certificate's execution_order: the earliest reachable causal failure, never the first arbitrarily checked box.",
+        "Three verdicts, never two. PROVEN_TRUE needs a named proof and PROVEN_TRUE transitive prerequisites. PROVEN_FALSE needs a reachable, observation-compatible, minimal witness replayed under the original model \u2014 or a falsified transitive prerequisite (dependent diagnosis). UNDETERMINED carries no witness and no proof, and never collapses to PROVEN_FALSE.",
+        "A failed witness kills the certificate, never the claim: WITNESS_INVALID demotes the invariant to UNDETERMINED and rejects the certificate that asserted PROVEN_FALSE on it. Circular dependencies get declared joint invariants (deferred to AER-LIVE-10); an invented ordering is never substituted.",
+        "Every history constructed here is a defensible hypothesis WITHIN THESE ASSUMPTIONS for dependency-ordered verification \u2014 never an asserted fact, never a production authorization."
+      ],
+      "obligation_id": "AER-LIVE-009-F6",
+      "observations": [
+        "sensor_reading"
+      ],
+      "witnesses": []
+    },
+    "claimant": "naya2/wire (worked example)",
+    "evidence_ref": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175",
+    "id": "AE-EXAMPLE",
+    "obligation_id": "AER-LIVE-009-F6",
+    "verdict": {
+      "dependent_failures": [
+        "temporal",
+        "lifecycle",
+        "authority",
+        "preservation",
+        "exit"
+      ],
+      "invariant_verdicts": {
+        "authority": "PROVEN_FALSE",
+        "budget": "PROVEN_TRUE",
+        "exit": "PROVEN_FALSE",
+        "lifecycle": "PROVEN_FALSE",
+        "obs": "PROVEN_TRUE",
+        "preservation": "PROVEN_FALSE",
+        "temporal": "PROVEN_FALSE",
+        "timing": "PROVEN_FALSE"
+      },
+      "primary_failures": [
+        "timing"
+      ]
+    }
+  },
+  "_note": "Dependency-order verification claims judged by tools/d64_dependency_order_gate.py against the REAL D64 engine (drift_canary/dependency_ordered_verification.py, PR #2323). Empty claims = explicit DORMANT (never a false green). The first claim merged activates enforcement with zero new wiring. Claims are evidence declarations: the gate rebuilds the certificate from the claim's own bytes and cold-verifies with independent_verify, then demands the claimant's asserted verdict summary match the engine's recomputed judgment exactly. A claim the law refuses (invented ordering, wrong-order diagnosis, UNDETERMINED collapsed to FALSE, unsound TRUE, unproven FALSE, failed witness, uncovered cycle, malformed or cross-obligation certificate) is BLOCKED (exit 1); an untrustworthy manifest or a broken engine is BROKEN (exit 2).",
+  "_schema": {
+    "asserts": "VERIFIED | REJECTED \u2014 what the claim asserts the certificate establishes",
+    "certificate": "the dependency-order certificate as a JSON object (the gate re-serializes with sort_keys and cold-judges the bytes via independent_verify)",
+    "claimant": "who asserts this claim",
+    "evidence_ref": "link to the evidence (board comment, run log, check run)",
+    "id": "unique claim id, e.g. DO-0001",
+    "obligation_id": "the obligation the verification claim is about (must equal the certificate's own obligation_id \u2014 cross-obligation certificates are refused)",
+    "verdict": "required when asserts=VERIFIED: the asserted verdict summary {primary_failures, dependent_failures, invariant_verdicts} \u2014 the gate recomputes all three from the certificate bytes and demands exact agreement"
+  },
+  "claims": []
+}
