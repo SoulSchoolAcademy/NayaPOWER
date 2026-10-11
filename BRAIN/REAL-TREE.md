@@ -1,7 +1,7 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-11  
-**Receipt basis commit:** `230b397ac449d8904e06c65a8a2027b862882fb2`  
+**Receipt basis commit:** `f33bba344a34e9e91b4b5bb6802c22f6eade3145`  
 **Inventory file count:** 1243  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
@@ -1271,7 +1271,7 @@
 - `BRAIN/12-ENGINEERING/NORTH-STAR-ACCEPTANCE-AUDIT-36516790588.md` — `196cc0ca9705` (13564 bytes)
 - `BRAIN/12-ENGINEERING/README.md` — `51cf103c13dd` (3540 bytes)
 - `BRAIN/12-ENGINEERING/extract-uncreated-table-evidence.py` — `80dd6dfc127a` (6173 bytes)
-- `BRAIN/12-ENGINEERING/kernel_behavior_engine.py` — `9101f2452e1a` (21537 bytes)
+- `BRAIN/12-ENGINEERING/kernel_behavior_engine.py` — `ffaa25fd2a34` (31176 bytes)
 - `BRAIN/12-ENGINEERING/kernel_runtime_loader.py` — `83e52c824b5e` (7561 bytes)
 - `BRAIN/12-ENGINEERING/record-deployed-runtime-observation.py` — `765c0bf9f410` (3850 bytes)
 - `BRAIN/12-ENGINEERING/verify-collective-chain-readiness-controls.py` — `775c647f6925` (9418 bytes)
