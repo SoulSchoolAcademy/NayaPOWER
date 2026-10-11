@@ -31,14 +31,30 @@ def _candidate(cid="p1", **kw):
         candidate_id=cid,
         action="naya_node_apply",
         description="apply retained intelligence to NAYA-NODE-0001",
-        quality={"objective_fit": 8.0, "evidence_sufficiency": 7.0,
-                 "applicability": 8.0, "robustness": 7.0},
-        confidence={"objective_fit": 0.9, "evidence_sufficiency": 0.8,
-                    "applicability": 0.9, "robustness": 0.8},
+        quality={"objective_fit": 9.5, "evidence_sufficiency": 9.0,
+                 "applicability": 9.5, "robustness": 9.0,
+                 "reversibility": 9.5, "blast_containment": 9.0,
+                 "simplicity": 9.0},
+        confidence={"objective_fit": 0.95, "evidence_sufficiency": 0.95,
+                    "applicability": 0.95, "robustness": 0.95,
+                    "reversibility": 0.95, "blast_containment": 0.95,
+                    "simplicity": 0.95},
         reversibility="REVERSIBLE",
+        # Explicitly safe: unknown (None) hard-gate flags are fail-closed
+        # refused at plan (PLAN_SAFETY_UNKNOWN) — "clean" means proven safe,
+        # not unknown. Tests needing None/False pass explicit kwargs.
+        lawful=True, rights_safe=True, privacy_safe=True, safety_safe=True,
         expected_outcome="node state updated, previous state restorable",
         proof_requirements=("execution_receipt", "state_diff"),
         stakes="low",
+        # V2.1 value estimate — supplied, evidenced, positive. The canonical
+        # evaluator routes on this; unsupplied estimates gate NEEDS_EVIDENCE.
+        benefit=8.0,
+        harm=1.0,
+        cost=1.0,
+        risk=0.5,
+        pv_confidence={"B": 0.9, "H": 0.9, "C": 0.9, "R": 0.9},
+        pv_evidence_count=2,
     )
     base.update(kw)
     return ap.PlanCandidate(**base)
@@ -60,19 +76,26 @@ def _fresh(authority):
 
 def test_plan_selects_minimum_sufficient_through_value_calculus():
     authority = _authority()
-    weak = _candidate("p-weak",
-                      quality={"objective_fit": 4.0, "evidence_sufficiency": 4.0,
-                               "applicability": 4.0, "robustness": 4.0},
-                      confidence={"objective_fit": 0.9, "evidence_sufficiency": 0.9,
-                                  "applicability": 0.9, "robustness": 0.9})
+    # High quality but NEGATIVE value: must NOT win. Value beats quality.
+    highq_negv = _candidate(
+        "p-highq-negv",
+        quality={d: 9.8 for d in (
+            "objective_fit", "evidence_sufficiency", "applicability",
+            "robustness", "reversibility", "blast_containment", "simplicity")},
+        benefit=2.0, harm=1.5, cost=1.0, risk=0.5,
+    )
     strong = _candidate("p-strong")
-    plan, receipt = ap.plan_action(authority, [weak, strong], _profile(), now=NOW)
+    plan, receipt = ap.plan_action(authority, [highq_negv, strong], _profile(), now=NOW)
     assert plan is not None
     assert plan.chosen.candidate_id == "p-strong"
     assert receipt.phase == "PLAN_ACCEPTED"
     assert any("p-strong" in e for e in receipt.evidence)
     # both candidate scores recorded — the math is visible, not hidden
     assert len(plan.candidate_scores) == 2
+    # the value math is visible: winner has positive v_safe
+    by_id = {cid: (q, v) for cid, q, v in plan.candidate_scores}
+    assert by_id["p-strong"][1] > 0
+    assert by_id["p-highq-negv"][1] <= 0
 
 
 def test_plan_rejects_scope_mismatch():

@@ -14,14 +14,23 @@ offered, the winner is chosen through the canonical Value Calculus seam
 break toward reversible, low-stakes candidates deterministically.
 
 DO-NO-HARM ENFORCEMENT (safety floor): before any scoring, every candidate
-is run through the calculus's gate_candidate hard gates. A candidate the
+is run through the calculus's gate_candidate hard gates with the LAW
+scope-match threaded as authorized, so unknown hard-gate flags surface as
+NEEDS_EVIDENCE instead of being masked as NEEDS_AUTHORITY. A candidate the
 calculus verdicts PROHIBITED — hard violation, any explicit unsafe flag
 (LAW/RIGHTS/PRIVACY/SAFETY = False), tail risk at or above policy
 threshold, or distributional harm at or above policy maximum — can never
-win and can never execute: harm is zero-valued, not optional. Prohibited
-candidates are excluded from selection with their governing reasons
-recorded as receipt evidence; if nothing admissible remains, planning is
-refused with PLAN_SAFETY_PROHIBITED. NEEDS_AUTHORITY routing continues to
+win and can never execute: harm is zero-valued, not optional. A candidate
+the calculus verdicts NEEDS_EVIDENCE — critical safety evidence unresolved —
+is likewise excluded: it can never win and can never execute until the
+evidence is supplied. A candidate carrying unresolved critical flags
+(HARD_GATE_UNKNOWN / UNKNOWN_LAW / UNKNOWN_RIGHTS / UNKNOWN_PRIVACY /
+UNKNOWN_SAFETY) is likewise refused: unknown safety is never treated as
+safe. Prohibited candidates are excluded from selection with their governing
+reasons recorded as receipt evidence; if nothing admissible remains, planning
+is refused with PLAN_SAFETY_PROHIBITED (hard violations),
+PLAN_SAFETY_UNKNOWN (unresolved critical flags), or PLAN_SAFETY_NEEDS_EVIDENCE
+(other unresolved critical safety evidence). NEEDS_AUTHORITY routing continues to
 be governed by the LAW authority record (the LAW node's seam, not this
 one): this seam enforces the harm hard stops, nothing else is weakened.
 
@@ -51,11 +60,18 @@ from typing import Any, Callable, Sequence
 
 from kernel.memory_store import MemoryStore
 from kernel.value_calculus import (
+    ACT,
+    ASK,
+    NEEDS_EVIDENCE,
     PROHIBITED,
+    QUALITY_DIMENSIONS,
+    READ_MORE,
+    REFUSE,
     Candidate,
     PVEstimate,
     QualityProfile,
     RiskPolicy,
+    evaluate_candidates,
     gate_candidate,
     score_quality,
 )
@@ -75,6 +91,9 @@ PLAN_OUTCOME_UNDEFINED = "PLAN_OUTCOME_UNDEFINED"
 PLAN_PROOF_UNDEFINED = "PLAN_PROOF_UNDEFINED"
 PLAN_CANDIDATE_MISMATCH = "PLAN_CANDIDATE_MISMATCH"
 PLAN_SAFETY_PROHIBITED = "PLAN_SAFETY_PROHIBITED"
+PLAN_SAFETY_NEEDS_EVIDENCE = "PLAN_SAFETY_NEEDS_EVIDENCE"
+PLAN_SAFETY_UNKNOWN = "PLAN_SAFETY_UNKNOWN"
+PLAN_VALUE_UNPROVEN = "PLAN_VALUE_UNPROVEN"
 
 _REVERSIBLE_VALUES = ("REVERSIBLE", "IRREVERSIBLE", "UNKNOWN")
 _STAKE_ORDER = {"low": 0, "medium": 1, "high": 2}
@@ -109,7 +128,20 @@ class PlanCandidate:
     execution seam: hard_violation, the four explicit safety flags,
     tails, and stakeholder_harms. Defaults preserve today's behavior for
     clean candidates (no flags, no tails, no harms); any PROHIBITED
-    verdict excludes the candidate from selection entirely.
+    verdict excludes the candidate from selection entirely, as does any
+    verdict carrying unresolved critical flags (HARD_GATE_UNKNOWN /
+    UNKNOWN_LAW / UNKNOWN_RIGHTS / UNKNOWN_PRIVACY / UNKNOWN_SAFETY) —
+    unknown safety is never treated as safe.
+
+    Value fields carry the candidate's V2.1 value-calculus estimate
+    (benefit, harm, cost, risk + per-component confidence + evidence
+    count). Defaults mark the estimate as NOT SUPPLIED: unknown value is
+    never silently zero (Zero Value Law). A candidate without a supplied
+    estimate (pv_evidence_count == 0, empty pv_confidence) cannot clear
+    the calculus evidence/confidence floors and gates NEEDS_EVIDENCE
+    until real data is provided. Set is_baseline=True on at most one
+    candidate to declare the explicit baseline; when none is declared the
+    pipeline synthesizes the do-nothing baseline.
     """
     candidate_id: str
     action: str
@@ -127,6 +159,16 @@ class PlanCandidate:
     safety_safe: bool | None = None
     tails: tuple = ()
     stakeholder_harms: dict = field(default_factory=dict)
+    # --- V2.1 value estimate (see docstring) ---
+    benefit: float = 0.0
+    harm: float = 0.0
+    cost: float = 0.0
+    risk: float = 0.0
+    pv_confidence: dict = field(default_factory=dict)
+    pv_evidence_count: int = 0
+    uncertainty_penalty: float = 0.0
+    tail_penalty: float = 0.0
+    is_baseline: bool = False
 
 
 @dataclass(frozen=True)
@@ -135,7 +177,7 @@ class ActionPlan:
     action: str
     chosen: PlanCandidate
     authority: LawAuthority
-    candidate_scores: tuple  # ((candidate_id, Q), ...) — the math is visible
+    candidate_scores: tuple  # ((candidate_id, Q, v_safe), ...) — the math is visible
     planned_at: float
 
 
@@ -176,6 +218,23 @@ def _new_id() -> str:
     return uuid.uuid4().hex
 
 
+# Gate reasons that mark unresolved critical hard-gate flags. Any one of
+# these on a candidate's gate verdict is a fail-closed refusal: unknown
+# LAW/RIGHTS/PRIVACY/SAFETY is never treated as safe, and never masked.
+_UNKNOWN_HARD_GATE_REASONS = (
+    "HARD_GATE_UNKNOWN",
+    "UNKNOWN_LAW",
+    "UNKNOWN_RIGHTS",
+    "UNKNOWN_PRIVACY",
+    "UNKNOWN_SAFETY",
+)
+
+
+def _has_unknown_hard_gate(reasons: Sequence[str]) -> bool:
+    """True if the gate verdict carries unresolved critical hard-gate flags."""
+    return any(r in _UNKNOWN_HARD_GATE_REASONS for r in reasons)
+
+
 def _validate_law_time(authority: LawAuthority, now: float,
                        max_law_age_seconds: float) -> tuple[str, ...]:
     """Return refusal codes for the authority's time fields; empty = valid."""
@@ -195,18 +254,46 @@ def _validate_law_time(authority: LawAuthority, now: float,
     return ()
 
 
-def _candidate_to_calculus(candidate: PlanCandidate) -> Candidate:
+def _candidate_to_calculus(candidate: PlanCandidate, *,
+                            authorized: bool = False) -> Candidate:
     """Map the plan seam onto the calculus contract, including the
     do-no-harm fields. Nothing safety-relevant is dropped: harm,
-    violations, tails and safety flags all reach gate_candidate."""
+    violations, tails and safety flags all reach gate_candidate.
+
+    `authorized` threads the LAW scope-match into the calculus. plan_action
+    passes True once authority.scope == authority.action is verified, so the
+    calculus's NEEDS_EVIDENCE hard-gate-unknown verdict becomes reachable
+    in-pipeline instead of being masked as NEEDS_AUTHORITY [AUTHORITY_MISSING].
+    The default False preserves the LAW-governed NEEDS_AUTHORITY path: the
+    execution re-gate deliberately does not thread authority, so a
+    hand-crafted plan still gates NEEDS_AUTHORITY [AUTHORITY_MISSING] and
+    authority stays governed by the LAW re-resolution, not the safety seam.
+
+    Value fields pass through verbatim: benefit/harm/cost/risk, per-component
+    confidence, evidence count, and penalties. When the candidate carries no
+    supplied estimate (pv_evidence_count == 0, empty pv_confidence) the
+    calculus sees an unevidenced estimate — the gate returns NEEDS_EVIDENCE
+    via the evidence/confidence floors. Unknown value is never silently zero.
+    """
     return Candidate(
         candidate_id=candidate.candidate_id,
         quality=dict(candidate.quality),
         confidence=dict(candidate.confidence),
-        pv=PVEstimate(B=0.0, H=0.0, C=0.0, R=0.0, confidence={}),
+        pv=PVEstimate(
+            B=candidate.benefit,
+            H=candidate.harm,
+            C=candidate.cost,
+            R=candidate.risk,
+            confidence=dict(candidate.pv_confidence),
+            evidence_count=candidate.pv_evidence_count,
+        ),
+        uncertainty_penalty=candidate.uncertainty_penalty,
+        tail_penalty=candidate.tail_penalty,
+        is_baseline=candidate.is_baseline,
         stakes=candidate.stakes if candidate.stakes in _STAKE_ORDER else "high",
         reversible=candidate.reversibility == "REVERSIBLE",
         hard_violation=candidate.hard_violation,
+        authorized=authorized,
         lawful=candidate.lawful,
         rights_safe=candidate.rights_safe,
         privacy_safe=candidate.privacy_safe,
@@ -216,21 +303,84 @@ def _candidate_to_calculus(candidate: PlanCandidate) -> Candidate:
     )
 
 
-def _select_minimum_sufficient(candidates: Sequence[PlanCandidate],
-                               profile: QualityProfile) -> tuple[PlanCandidate, tuple]:
-    scored = []
-    for c in candidates:
-        q = score_quality(_candidate_to_calculus(c), profile)["Q"]
-        scored.append((c, q))
-    scored.sort(key=lambda item: (
-        -item[1],                                            # highest Q first
-        0 if item[0].reversibility == "REVERSIBLE" else 1,   # prefer reversible
-        _STAKE_ORDER.get(item[0].stakes, 2),                # prefer lower stakes
-        item[0].candidate_id,                                # deterministic
-    ))
-    winner = scored[0][0]
-    scores = tuple((c.candidate_id, round(q, 4)) for c, q in scored)
-    return winner, scores
+_BASELINE_CANDIDATE_ID = "__baseline_do_nothing__"
+
+
+def _ensure_baseline(candidates: Sequence[Candidate]) -> tuple[list[Candidate], str]:
+    """Ensure exactly one explicit baseline for evaluate_candidates().
+
+    Uses the caller's declared baseline (is_baseline=True) when present;
+    otherwise synthesizes the do-nothing baseline. The synthesized baseline
+    carries zero value BY DEFINITION — comparing the current course against
+    itself ("baseline zero" per the Zero Value Law: definitional, not
+    empirical). It gates ADMISSIBLE so it never pollutes the evaluator's
+    evidence accounting, and it can never win (v_safe == 0 is not > 0).
+    """
+    baselines = [c for c in candidates if c.is_baseline]
+    if len(baselines) > 1:
+        raise ValueError("at most one baseline candidate")
+    if baselines:
+        return list(candidates), baselines[0].candidate_id
+    baseline = Candidate(
+        candidate_id=_BASELINE_CANDIDATE_ID,
+        quality={d: 5.0 for d in QUALITY_DIMENSIONS},
+        confidence={d: 1.0 for d in QUALITY_DIMENSIONS},
+        pv=PVEstimate(
+            B=0.0, H=0.0, C=0.0, R=0.0,
+            confidence={"B": 1.0, "H": 1.0, "C": 1.0, "R": 1.0},
+            evidence_count=1,
+        ),
+        authorized=True,
+        lawful=True,
+        rights_safe=True,
+        privacy_safe=True,
+        safety_safe=True,
+        stakes="low",
+        reversible=True,
+        is_baseline=True,
+    )
+    return [baseline] + list(candidates), _BASELINE_CANDIDATE_ID
+
+
+def _select_via_value_calculus(
+    candidates: Sequence[PlanCandidate],
+    profile: QualityProfile,
+    risk_policy: RiskPolicy,
+) -> tuple[PlanCandidate | None, dict]:
+    """Route candidate selection through the canonical evaluate_candidates().
+
+    This is the single decision seam: value (baseline-relative, conservative)
+    determines the winner, not quality score alone. A high-Q candidate with
+    negative v_safe cannot win; a candidate with unsupplied value evidence
+    never reaches this function (it gates NEEDS_EVIDENCE upstream).
+
+    Returns (winner_or_None, evaluation). The evaluation is the raw
+    evaluate_candidates() result. A None winner means the calculus selected
+    nothing (REFUSE, or READ_MORE with no positive-value candidate) — the
+    caller must refuse planning, never fall back to quality-only ranking.
+    """
+    calculus_candidates = [
+        _candidate_to_calculus(c, authorized=True) for c in candidates
+    ]
+    calculus_candidates, baseline_id = _ensure_baseline(calculus_candidates)
+    evaluation = evaluate_candidates(
+        calculus_candidates,
+        baseline_id=baseline_id,
+        profile=profile,
+        risk_policy=risk_policy,
+    )
+    selected_id = evaluation["selected"]
+    if selected_id is None:
+        return None, evaluation
+    by_id = {c.candidate_id: c for c in candidates}
+    winner = by_id.get(selected_id)
+    # The baseline can never be selected (v_safe == 0 fails the > 0
+    # eligibility floor); a None here is a calculus contract violation.
+    if winner is None:
+        raise ValueError(
+            f"evaluate_candidates selected unknown candidate {selected_id!r}"
+        )
+    return winner, evaluation
 
 
 def apply_retained_intelligence(
@@ -339,10 +489,17 @@ def plan_action(authority: LawAuthority,
     here — planning never executes.
 
     Do-no-harm enforcement: every candidate is hard-gated through the
-    calculus's gate_candidate BEFORE selection. PROHIBITED candidates are
-    excluded and can never win or execute; the exclusion reasons are
-    recorded as receipt evidence. When nothing admissible remains the plan
-    is refused with PLAN_SAFETY_PROHIBITED. NEEDS_AUTHORITY verdicts remain
+    calculus's gate_candidate BEFORE selection, with the LAW scope-match
+    threaded as authorized=True so unknown hard-gate flags surface as
+    NEEDS_EVIDENCE instead of being masked as NEEDS_AUTHORITY. PROHIBITED
+    and NEEDS_EVIDENCE candidates are excluded and can never win or execute;
+    candidates carrying unresolved critical flags (HARD_GATE_UNKNOWN /
+    UNKNOWN_LAW / UNKNOWN_RIGHTS / UNKNOWN_PRIVACY / UNKNOWN_SAFETY) are
+    likewise excluded — fail closed. The exclusion reasons are recorded as
+    receipt evidence. When nothing admissible remains the plan is refused with
+    PLAN_SAFETY_PROHIBITED (hard violations), PLAN_SAFETY_UNKNOWN
+    (unresolved critical flags), or PLAN_SAFETY_NEEDS_EVIDENCE (other
+    unresolved critical safety evidence). NEEDS_AUTHORITY verdicts remain
     governed by the LAW authority record (the LAW node's seam): this seam
     enforces the harm hard stops only, and weakens nothing.
     """
@@ -372,28 +529,102 @@ def plan_action(authority: LawAuthority,
 
     # --- Do-no-harm hard gate (safety floor). Fail closed: a PROHIBITED
     # candidate gets zero value — it is excluded from selection entirely.
+    # A NEEDS_EVIDENCE candidate is likewise excluded: unresolved critical
+    # safety evidence must never reach selection or execution. A candidate
+    # carrying unresolved critical hard-gate flags (HARD_GATE_UNKNOWN /
+    # UNKNOWN_LAW / UNKNOWN_RIGHTS / UNKNOWN_PRIVACY / UNKNOWN_SAFETY) is
+    # likewise excluded: unknown safety is never treated as safe. Authority
+    # is threaded from the LAW scope-match verified above, so the calculus's
+    # NEEDS_EVIDENCE unknown-flag verdict is reachable instead of being
+    # masked as NEEDS_AUTHORITY [AUTHORITY_MISSING].
     risk = risk_policy if risk_policy is not None else RiskPolicy()
     admissible: list[PlanCandidate] = []
-    excluded: list[tuple[str, list[str]]] = []  # (candidate_id, gate reasons)
+    excluded: list[tuple[str, str, list[str]]] = []  # (candidate_id, gate verdict, gate reasons)
     for c in candidates:
-        gate, reasons, _q = gate_candidate(_candidate_to_calculus(c), profile, risk)
-        if gate == PROHIBITED:
-            excluded.append((c.candidate_id, reasons))
+        gate, reasons, _q = gate_candidate(
+            _candidate_to_calculus(c, authorized=True), profile, risk)
+        if gate in (PROHIBITED, NEEDS_EVIDENCE):
+            excluded.append((c.candidate_id, gate, reasons))
         else:
             admissible.append(c)
     if not admissible:
-        detail = "; ".join(f"{cid} [{', '.join(rs)}]" for cid, rs in excluded)
+        detail = "; ".join(f"{cid} [{verdict}: {', '.join(rs)}]" for cid, verdict, rs in excluded)
+        has_prohibited = any(verdict == PROHIBITED for _, verdict, _ in excluded)
+        has_unknown = any(_has_unknown_hard_gate(rs) for _, _, rs in excluded)
+        if has_prohibited and has_unknown:
+            return refused(
+                PLAN_SAFETY_PROHIBITED, PLAN_SAFETY_UNKNOWN,
+                evidence=f"all {len(candidates)} candidate(s) refused by the "
+                         f"do-no-harm gate: hard violations present AND unresolved "
+                         f"critical safety flags (fail closed, unknown is not safe). "
+                         f"{detail}",
+            )
+        if has_prohibited:
+            return refused(
+                PLAN_SAFETY_PROHIBITED,
+                evidence=f"all {len(candidates)} candidate(s) PROHIBITED by the "
+                         f"do-no-harm gate; nothing admissible to execute. {detail}",
+            )
+        if has_unknown:
+            return refused(
+                PLAN_SAFETY_UNKNOWN,
+                evidence=f"all {len(candidates)} candidate(s) refused by the "
+                         f"do-no-harm gate: unresolved critical safety flags "
+                         f"(fail closed, unknown is not safe). {detail}",
+            )
         return refused(
-            PLAN_SAFETY_PROHIBITED,
-            evidence=f"all {len(candidates)} candidate(s) PROHIBITED by the "
-                     f"do-no-harm gate; nothing admissible to execute. {detail}",
+            PLAN_SAFETY_NEEDS_EVIDENCE,
+            evidence=f"all {len(candidates)} candidate(s) NEEDS_EVIDENCE by the "
+                     f"do-no-harm gate; critical safety evidence unresolved, "
+                     f"nothing admissible to execute. {detail}",
         )
     gate_evidence = tuple(
-        f"candidate {cid} EXCLUDED by do-no-harm gate: {', '.join(rs)}"
-        for cid, rs in excluded
+        f"candidate {cid} EXCLUDED by do-no-harm gate [{verdict}]: {', '.join(rs)}"
+        for cid, verdict, rs in excluded
     )
 
-    chosen, scores = _select_minimum_sufficient(admissible, profile)
+    # --- Canonical value-calculus selection. The winner is determined by
+    # evaluate_candidates(): baseline-relative conservative value (v_safe),
+    # not quality score alone. A high-Q candidate with negative value cannot
+    # win. When the calculus selects nothing, planning is refused — there is
+    # no quality-only fallback.
+    winner, evaluation = _select_via_value_calculus(admissible, profile, risk)
+    decision = evaluation["decision"]
+    value_rows = tuple(
+        f"candidate {r['candidate_id']}: gate={r['gate']} "
+        f"Q={r['q']['Q']:.2f} delta_v={r['delta_v']:.2f} v_safe={r['v_safe']:.2f}"
+        + (" [BASELINE]" if r["is_baseline"] else "")
+        for r in evaluation["rows"]
+    )
+    if winner is None:
+        if decision == REFUSE:
+            return refused(
+                PLAN_SAFETY_PROHIBITED,
+                evidence="canonical value calculus refused selection: "
+                         "all non-baseline candidates PROHIBITED. "
+                         + " ".join(value_rows),
+            )
+        return refused(
+            PLAN_VALUE_UNPROVEN,
+            evidence="canonical value calculus selected no candidate "
+                     f"(decision={decision}): no admissible candidate demonstrates "
+                     "positive conservative value vs. the do-nothing baseline; "
+                     "value is unproven, not zero — supply evidence. "
+                     + " ".join(value_rows),
+        )
+    scores = tuple(
+        (r["candidate_id"], round(r["q"]["Q"], 4), round(r["v_safe"], 4))
+        for r in evaluation["rows"] if not r["is_baseline"]
+    )
+    decision_note = (
+        f"canonical evaluate_candidates decision={decision}; "
+        + (
+            "LAW authority governs the authorized action"
+            if decision in (ASK, READ_MORE) else
+            "value-confident autonomous selection"
+        )
+    )
+    chosen = winner
     plan = ActionPlan(
         plan_id=plan_id, action=authority.action, chosen=chosen,
         authority=authority, candidate_scores=scores, planned_at=now,
@@ -402,9 +633,9 @@ def plan_action(authority: LawAuthority,
         receipt_id=_new_id(), plan_id=plan_id, phase="PLAN_ACCEPTED",
         executed=False, outcome_verified=False, truth_state="UNKNOWN",
         evidence=gate_evidence
-        + tuple(
-            f"candidate {cid} scored Q={q}" for cid, q in scores
-        ) + (f"selected {chosen.candidate_id} as minimum sufficient",),
+        + value_rows
+        + (f"selected {chosen.candidate_id} via canonical value calculus",
+           decision_note),
         codes=(),
         expected_outcome=chosen.expected_outcome,
     )
@@ -439,12 +670,18 @@ def execute_plan(plan: ActionPlan,
     through the calculus's gate_candidate at the last responsible moment,
     immediately before the executor fires. A plan hand-crafted outside
     plan_action — or a candidate whose safety status changed after planning
-    — can never reach the executor while PROHIBITED: it is refused with
-    PLAN_SAFETY_PROHIBITED. NEEDS_AUTHORITY verdicts stay governed by the
+    — can never reach the executor while PROHIBITED or NEEDS_EVIDENCE: it is
+    refused with PLAN_SAFETY_PROHIBITED, PLAN_SAFETY_UNKNOWN (unresolved
+    critical hard-gate flags), or PLAN_SAFETY_NEEDS_EVIDENCE respectively.
+    NEEDS_AUTHORITY verdicts stay governed by the
     LAW authority record (the LAW node's seam); this seam enforces the harm
     hard stops only and weakens nothing. Pass the same profile (and risk
     policy) used at plan time so the verdict is a re-verification, not a
     re-derivation under different math.
+    and weakens nothing. Pass the same profile (and risk policy) used at
+    plan time so the verdict is a re-verification, not a re-derivation
+    under different math.
+>>>>>>> naya4/unknown-safety
 
     Every phase transition is appended to ledger when provided.
     """
@@ -486,7 +723,17 @@ def execute_plan(plan: ActionPlan,
     # the gate is re-verified at the last responsible moment, immediately
     # before the executor fires. A PROHIBITED chosen candidate — whether
     # hand-crafted outside plan_action or changed after planning — is
-    # refused here; the executor is never called.
+    # refused here; the executor is never called. A NEEDS_EVIDENCE chosen
+    # candidate is likewise refused: unresolved critical safety evidence
+    # must never reach the executor. A candidate carrying unresolved critical
+    # hard-gate flags (HARD_GATE_UNKNOWN / UNKNOWN_LAW / UNKNOWN_RIGHTS /
+    # UNKNOWN_PRIVACY / UNKNOWN_SAFETY) is likewise refused: unknown safety
+    # is never treated as safe.
+    # Authority is deliberately NOT threaded here: the re-gate preserves the
+    # documented LAW-governed NEEDS_AUTHORITY [AUTHORITY_MISSING] path for
+    # hand-crafted plans (authority is enforced by the LAW re-resolution
+    # above, not the safety seam). The unknown-flag refusal stands as
+    # defense in depth for any verdict that does carry those reasons.
     risk = risk_policy if risk_policy is not None else RiskPolicy()
     gate, reasons, _q = gate_candidate(_candidate_to_calculus(plan.chosen), profile, risk)
     gate_evidence = (f"execution-time do-no-harm re-gate: candidate "
@@ -494,6 +741,10 @@ def execute_plan(plan: ActionPlan,
                      + (f" [{', '.join(reasons)}]" if reasons else ""))
     if gate == PROHIBITED:
         return refused(PLAN_SAFETY_PROHIBITED, evidence=gate_evidence)
+    if _has_unknown_hard_gate(reasons):
+        return refused(PLAN_SAFETY_UNKNOWN, evidence=gate_evidence)
+    if gate == NEEDS_EVIDENCE:
+        return refused(PLAN_SAFETY_NEEDS_EVIDENCE, evidence=gate_evidence)
 
     try:
         observed = executor(plan)

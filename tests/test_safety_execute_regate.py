@@ -36,13 +36,25 @@ def _candidate(cid="x1", **kw):
         action="naya_node_apply",
         description="apply retained intelligence",
         quality={"objective_fit": 9.9, "evidence_sufficiency": 9.9,
-                 "applicability": 9.9, "robustness": 9.9},
+                 "applicability": 9.9, "robustness": 9.9,
+                 "reversibility": 9.9, "blast_containment": 9.9,
+                 "simplicity": 9.9},
         confidence={"objective_fit": 0.99, "evidence_sufficiency": 0.99,
-                    "applicability": 0.99, "robustness": 0.99},
+                    "applicability": 0.99, "robustness": 0.99,
+                    "reversibility": 0.99, "blast_containment": 0.99,
+                    "simplicity": 0.99},
         reversibility="REVERSIBLE",
+        # Explicitly safe: unknown (None) hard-gate flags are fail-closed
+        # refused at plan (PLAN_SAFETY_UNKNOWN) — "clean" means proven safe,
+        # not unknown. Tests needing None/False pass explicit kwargs.
+        lawful=True, rights_safe=True, privacy_safe=True, safety_safe=True,
         expected_outcome="node state updated",
         proof_requirements=("execution_receipt",),
         stakes="low",
+        # V2.1 value estimate — supplied, evidenced, positive.
+        benefit=8.0, harm=1.0, cost=1.0, risk=0.5,
+        pv_confidence={"B": 0.9, "H": 0.9, "C": 0.9, "R": 0.9},
+        pv_evidence_count=2,
     )
     base.update(kw)
     return ap.PlanCandidate(**base)
