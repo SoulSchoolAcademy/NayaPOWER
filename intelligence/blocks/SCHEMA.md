@@ -91,5 +91,12 @@ A block moves up only with evidence. Never moves down except by supersession.
   and `pytest intelligence/tools/test_ib_reconcile.py`.
 - Round-trip contract: `from_persisted_row(to_persisted_row(block))` preserves
   identity, owner, privacy, provenance, evidence refs, state, graduation,
-  supersession, purpose, authority implications, and conflicts.
+  supersession, purpose, authority implications, and conflicts — **losslessly**,
+  including the rich file-form detail: evidence kind/type + per-item
+  explanatory notes (`provenance.evidence_detail`), detailed applicability
+  (`provenance.applicability_detail`), and status history
+  (`provenance.file_status_history`). #2386 closed 2026-10-11: the exporter now
+  emits everything the importer expects; tampered detail fails closed
+  (ValueError), rows persisted before #2386 import via documented ref/empty
+  fallbacks (rich fields are never invented).
   See `intelligence/tools/ib_reconcile.py`.
