@@ -1,0 +1,56 @@
+{
+  "_note": "Full-state repeatability claims judged by tools/d63_fullstate_repeatability_gate.py against the REAL D63 engine (drift_canary/full_state_repeatability.py, PR #2320). Empty claims = explicit DORMANT (never a false green). The first claim merged activates enforcement with zero new wiring. Claims are evidence declarations: the gate rebuilds the certificate from the claim's own bytes and cold-verifies with independent_verify \u2014 a claim the law refuses (REPEATABLE asserted over a broken invariant, malformed certificate bytes, cross-obligation certificate) is BLOCKED (exit 1); an untrustworthy manifest or a broken engine is BROKEN (exit 2).",
+  "_schema": {
+    "id": "unique claim id, e.g. FS-0001",
+    "obligation_id": "the obligation the repeatability claim is about (must equal the certificate's own obligation_id \u2014 cross-obligation certificates are refused)",
+    "claimant": "who asserts this claim",
+    "evidence_ref": "link to the evidence (board comment, run log, check run)",
+    "asserts": "REPEATABLE | NOT_REPEATABLE \u2014 what the claim asserts the certificate establishes",
+    "certificate": "the serialized repeatability certificate as a JSON object (the gate re-serializes with sort_keys and cold-judges the bytes via independent_verify)"
+  },
+  "_example": {
+    "_comment": "WORKED EXAMPLE \u2014 not an active claim. If registered as a claim asserting REPEATABLE, the gate BLOCKS it (exit 1): the AER-LIVE-008 authority-expiry certificate. Debt-positive every traversal, but the authority token expires after 50 traversals. The naive debt-gain-only checker wrongly declares it repeatable \u2014 D63 rejects it at repetition 51 with the minimal counterexample named: invariant breaks at repetition 51: authority_valid. This is the exact repeatability fraud D63 exists to prevent.",
+    "id": "AE-EXAMPLE",
+    "obligation_id": "aer-live-008",
+    "claimant": "naya2/wire (worked example)",
+    "evidence_ref": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175",
+    "asserts": "REPEATABLE",
+    "certificate": {
+      "boundary_ref": "ledger@verified-rev",
+      "cycle": [
+        {
+          "budget_cost": 0.0,
+          "component_ttl": [
+            [
+              "authority_valid",
+              50
+            ]
+          ],
+          "debt_gain": 1.0,
+          "name": "U:unserved-round"
+        }
+      ],
+      "entry_established": true,
+      "entry_state": {
+        "authority_valid": true,
+        "budget_remaining": 100.0,
+        "evidence_intact": true,
+        "lifecycle_outstanding": true,
+        "obligation_active": true,
+        "resources_available": true,
+        "time_valid": true
+      },
+      "exit_cost": 10.0,
+      "exit_requires": [
+        "authority_valid",
+        "evidence_intact"
+      ],
+      "model_assumptions": [
+        "AER-LIVE-008: each unserved round adds exactly 1 debt at zero budget cost; the authority token expires after 50 traversals unless renewed; the exit (audit/shutdown) needs valid authority, intact evidence, and budget covering the exit cost."
+      ],
+      "obligation_id": "aer-live-008",
+      "retry_budget": null
+    }
+  },
+  "claims": []
+}

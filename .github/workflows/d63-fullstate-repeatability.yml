@@ -1,0 +1,55 @@
+name: Full-State Repeatability Gate (D63 wire)
+
+# Wires the D63 full-state repeatability engine onto the fairness path.
+# Every repeatability claim in tools/d63_fullstate_repeatability_manifest.json
+# is cold-judged by the REAL engine (drift_canary/full_state_repeatability.py):
+# the certificate is rebuilt from the claim's own bytes and cold-verified by
+# independent_verify. A claim the law refuses — REPEATABLE asserted over a
+# certificate whose full-state invariant breaks (authority expiry at
+# repetition 51, budget drain at 20, zero debt gain, finite-retries CONTROL
+# rejection, broken entry, unaffordable exit), malformed certificate bytes,
+# or a cross-obligation certificate — BLOCKS (exit 1). Empty manifest =
+# explicit DORMANT (exit 0), never a false green. Corrupt manifest, unknown
+# assertions, or a broken engine = fail-closed (exit 2).
+#
+# OPERATING PATH: the fairness CI path. Trigger: this check on
+# pull_request / push-to-main for the paths below. Block: check red blocks
+# the merge path. Defect class: arbitrary-repetition claims over full-state
+# certificates that the D63 law refuses. Verify-still-connected: this file
+# exists and the check is required on the fairness path; `python
+# tools/d63_fullstate_repeatability_gate.py --json` exits 0 DORMANT on a
+# claim-free tree.
+
+on:
+  pull_request:
+    paths:
+      - "drift_canary/full_state_repeatability.py"
+      - "drift_canary/fairness.py"
+      - "tools/d63_fullstate_repeatability_gate.py"
+      - "tools/d63_fullstate_repeatability_manifest.json"
+      - "tests/test_d63_fullstate_repeatability_gate.py"
+      - ".github/workflows/d63-fullstate-repeatability.yml"
+  push:
+    branches: ["main"]
+    paths:
+      - "drift_canary/full_state_repeatability.py"
+      - "drift_canary/fairness.py"
+      - "tools/d63_fullstate_repeatability_gate.py"
+      - "tools/d63_fullstate_repeatability_manifest.json"
+      - "tests/test_d63_fullstate_repeatability_gate.py"
+      - ".github/workflows/d63-fullstate-repeatability.yml"
+
+jobs:
+  fullstate-repeatability-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      # Bare setup-python images do not always carry pytest; install it
+      # explicitly (same lesson as the D55/D56/D58/D59/D61/D62 mechanism and
+      # wire gates and the directive-register gates).
+      - run: python -m pip install pytest
+      - run: python -m pytest tests/test_d63_fullstate_repeatability_gate.py -q -p no:cacheprovider
+      - run: python tools/d63_fullstate_repeatability_gate.py --json
