@@ -1,0 +1,25 @@
+name: d36-revocation-ordering-gate
+
+on:
+  pull_request:
+    paths:
+      - 'tools/d36_revocation_ordering_gate.py'
+      - 'tools/d36_revocation_ordering_manifest.json'
+      - 'tests/test_d36_revocation_ordering_gate.py'
+      - 'drift_canary/revocation_linearization.py'
+      - '.github/workflows/d36-revocation-ordering-gate.yml'
+
+jobs:
+  d36-revocation-ordering-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install test deps
+        run: pip install pytest
+      - name: Gate unit tests
+        run: python -m pytest tests/test_d36_revocation_ordering_gate.py -q -p no:cacheprovider
+      - name: Revocation-ordering claims gate
+        run: python tools/d36_revocation_ordering_gate.py --manifest tools/d36_revocation_ordering_manifest.json
