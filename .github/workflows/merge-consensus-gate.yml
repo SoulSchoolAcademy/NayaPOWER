@@ -18,8 +18,17 @@ jobs:
   consensus:
     name: Team review + scorecard receipt
     runs-on: ubuntu-latest
-    # Only run for PR comments, not issue comments
-    if: github.event_name != 'issue_comment' || github.event.issue.pull_request
+    # Only run for PR comments, not issue comments. Skip bot-authored
+    # comments: a bot can never declare a seat tag, so the gate would always
+    # fail closed on attribution — a full evaluation whose outcome is
+    # deterministic before it starts. Every such run is pure Actions-minutes
+    # burn (review bots comment on every PR they watch, repo-wide). Using the
+    # comment author's *type* (not a login list) covers every present and
+    # future bot account with zero maintenance. Human/seat comments — and
+    # pull_request / pull_request_review events — still run the gate.
+    if: >
+      (github.event_name != 'issue_comment' || github.event.issue.pull_request)
+      && (github.event_name != 'issue_comment' || github.event.comment.user.type != 'Bot')
     steps:
       - uses: actions/checkout@v4
       - name: Get PR info
