@@ -1,7 +1,7 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-11  
-**Receipt basis commit:** `230b397ac449d8904e06c65a8a2027b862882fb2`  
+**Receipt basis commit:** `f33bba344a34e9e91b4b5bb6802c22f6eade3145`  
 **Inventory file count:** 1243  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
@@ -108,8 +108,8 @@
 - `BRAIN/01-GOVERNANCE/DOC-COMPLETENESS-AUDIT-2026-10-10.md` — `ea273ce3077d` (2633 bytes)
 - `BRAIN/01-GOVERNANCE/GATE-CONSOLE.md` — `d7810ee7ef34` (10085 bytes)
 - `BRAIN/01-GOVERNANCE/LEARNING-INTERNALIZATION-AUTOMATIC-BEHAVIOR-V1.md` — `c58ef4864a38` (10500 bytes)
-- `BRAIN/01-GOVERNANCE/OPERATING-LAW.json` — `e4047b872129` (32501 bytes)
-- `BRAIN/01-GOVERNANCE/OPERATING-LAW.md` — `414cfeb4c7e0` (32957 bytes)
+- `BRAIN/01-GOVERNANCE/OPERATING-LAW.json` — `1a2d226635ff` (32643 bytes)
+- `BRAIN/01-GOVERNANCE/OPERATING-LAW.md` — `df19076fa905` (33364 bytes)
 - `BRAIN/01-GOVERNANCE/README.md` — `065bb6dc1530` (1673 bytes)
 - `BRAIN/01-GOVERNANCE/TEAM-NAYA-OPERATING-PROTOCOL-V1.md` — `947a3a14a9bf` (14458 bytes)
 - `BRAIN/01-GOVERNANCE/THE-PROTOCOL.md` — `a16fd69d14da` (8059 bytes)
@@ -1271,7 +1271,7 @@
 - `BRAIN/12-ENGINEERING/NORTH-STAR-ACCEPTANCE-AUDIT-36516790588.md` — `196cc0ca9705` (13564 bytes)
 - `BRAIN/12-ENGINEERING/README.md` — `51cf103c13dd` (3540 bytes)
 - `BRAIN/12-ENGINEERING/extract-uncreated-table-evidence.py` — `80dd6dfc127a` (6173 bytes)
-- `BRAIN/12-ENGINEERING/kernel_behavior_engine.py` — `9101f2452e1a` (21537 bytes)
+- `BRAIN/12-ENGINEERING/kernel_behavior_engine.py` — `ffaa25fd2a34` (31176 bytes)
 - `BRAIN/12-ENGINEERING/kernel_runtime_loader.py` — `83e52c824b5e` (7561 bytes)
 - `BRAIN/12-ENGINEERING/record-deployed-runtime-observation.py` — `765c0bf9f410` (3850 bytes)
 - `BRAIN/12-ENGINEERING/verify-collective-chain-readiness-controls.py` — `775c647f6925` (9418 bytes)
