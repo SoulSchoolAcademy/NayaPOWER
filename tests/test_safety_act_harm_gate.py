@@ -15,7 +15,9 @@ if plan_action selected on Q alone).
 import pytest
 
 from kernel import act_pipeline as ap
-from kernel.value_calculus import QualityProfile, TailRisk
+from kernel.value_calculus import QUALITY_DIMENSIONS, QualityProfile, TailRisk
+
+ALL_DIMS = tuple(QUALITY_DIMENSIONS)
 
 NOW = 1_790_000_000.0
 
@@ -37,14 +39,25 @@ def _candidate(cid="p1", **kw):
         candidate_id=cid,
         action="naya_node_apply",
         description="apply retained intelligence to NAYA-NODE-0001",
-        quality={"objective_fit": 8.0, "evidence_sufficiency": 7.0,
-                 "applicability": 8.0, "robustness": 7.0},
-        confidence={"objective_fit": 0.9, "evidence_sufficiency": 0.8,
-                    "applicability": 0.9, "robustness": 0.8},
+        quality={"objective_fit": 9.5, "evidence_sufficiency": 9.5,
+                 "applicability": 9.5, "robustness": 9.5,
+                 "reversibility": 9.5, "blast_containment": 9.5,
+                 "simplicity": 9.5},
+        confidence={"objective_fit": 0.95, "evidence_sufficiency": 0.95,
+                    "applicability": 0.95, "robustness": 0.95,
+                    "reversibility": 0.95, "blast_containment": 0.95,
+                    "simplicity": 0.95},
         reversibility="REVERSIBLE",
+        # Explicitly safe: unknown (None) hard-gate flags are fail-closed
+        # refused at plan (PLAN_SAFETY_UNKNOWN) — "clean" means proven safe,
+        # not unknown. Tests needing None/False pass explicit kwargs.
+        lawful=True, rights_safe=True, privacy_safe=True, safety_safe=True,
         expected_outcome="node state updated, previous state restorable",
         proof_requirements=("execution_receipt", "state_diff"),
         stakes="low",
+        benefit=5.0, harm=1.0, cost=1.0, risk=0.5,
+        value_confidence={"B": 0.9, "H": 0.9, "C": 0.9, "R": 0.9},
+        value_evidence_count=3,
     )
     base.update(kw)
     return ap.PlanCandidate(**base)
@@ -54,9 +67,13 @@ def _perfect_q(cid="p1", **kw):
     """A candidate with near-perfect decision quality — the falsifier's
     bait. If the gate is bypassed, this candidate always wins on Q."""
     kw.setdefault("quality", {"objective_fit": 9.9, "evidence_sufficiency": 9.9,
-                              "applicability": 9.9, "robustness": 9.9})
+                 "applicability": 9.9, "robustness": 9.9,
+                 "reversibility": 9.9, "blast_containment": 9.9,
+                 "simplicity": 9.9})
     kw.setdefault("confidence", {"objective_fit": 0.99, "evidence_sufficiency": 0.99,
-                                 "applicability": 0.99, "robustness": 0.99})
+                    "applicability": 0.99, "robustness": 0.99,
+                    "reversibility": 0.99, "blast_containment": 0.99,
+                    "simplicity": 0.99})
     return _candidate(cid, **kw)
 
 
@@ -75,16 +92,14 @@ def test_high_q_hard_violation_cannot_win():
     """FALSIFIER: a near-perfect-Q harmful candidate must not beat a
     mediocre clean one. Without the gate, the harmful candidate wins."""
     harmful = _perfect_q("p-harmful", hard_violation=True)
-    clean = _candidate("p-clean",
-                       quality={"objective_fit": 5.0, "evidence_sufficiency": 5.0,
-                                "applicability": 5.0, "robustness": 5.0})
+    clean = _candidate("p-clean")
     plan, receipt = ap.plan_action(_authority(), [harmful, clean],
                                   _profile(), now=NOW)
     assert plan is not None
     assert plan.chosen.candidate_id == "p-clean"
     assert any("p-harmful" in e and "EXCLUDED" in e for e in receipt.evidence)
     # the prohibited candidate gets zero value: no score recorded for it
-    assert [cid for cid, _q in plan.candidate_scores] == ["p-clean"]
+    assert [cid for cid, _q, _v, _d in plan.candidate_scores] == ["p-clean"]
 
 
 # ---------------- explicit unsafe flags ----------------
@@ -167,13 +182,15 @@ def test_all_prohibited_refusal_names_every_candidate():
     assert "nothing admissible" in joined
 
 
-def test_clean_candidates_behave_as_before():
+def test_clean_candidates_select_by_value():
     """Regression: clean candidates are unaffected by the gate —
-    selection still runs on Q, scores still recorded."""
+    selection runs on canonical value, scores still recorded."""
     weak = _candidate("p-weak",
-                      quality={"objective_fit": 4.0, "evidence_sufficiency": 4.0,
-                               "applicability": 4.0, "robustness": 4.0})
-    strong = _candidate("p-strong")
+                      quality={d: 9.1 for d in ALL_DIMS},
+                      benefit=2.0, harm=0.5, cost=0.5, risk=0.2)
+    strong = _candidate("p-strong",
+                        quality={d: 9.5 for d in ALL_DIMS},
+                        benefit=6.0, harm=1.0, cost=1.0, risk=0.5)
     plan, receipt = ap.plan_action(_authority(), [weak, strong],
                                   _profile(), now=NOW)
     assert plan is not None
@@ -184,7 +201,15 @@ def test_clean_candidates_behave_as_before():
 
 
 def test_plan_candidate_safety_defaults_are_clean():
-    c = _candidate()
+    # Dataclass-level defaults (not the test helper's): unset safety flags
+    # default to None = unknown, which the gate now fail-closed refuses.
+    c = ap.PlanCandidate(
+        candidate_id="p-defaults", action="naya_node_apply",
+        description="defaults probe",
+        quality={"objective_fit": 8.0}, confidence={"objective_fit": 0.9},
+        reversibility="REVERSIBLE", expected_outcome="x",
+        proof_requirements=("execution_receipt",),
+    )
     assert c.hard_violation is False
     assert c.lawful is None and c.rights_safe is None
     assert c.privacy_safe is None and c.safety_safe is None

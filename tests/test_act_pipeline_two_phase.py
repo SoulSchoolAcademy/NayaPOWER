@@ -10,7 +10,9 @@ import uuid
 import pytest
 
 from kernel import act_pipeline as ap
-from kernel.value_calculus import QualityProfile
+from kernel.value_calculus import QUALITY_DIMENSIONS, QualityProfile
+
+ALL_DIMS = tuple(QUALITY_DIMENSIONS)
 
 NOW = 1_790_000_000.0  # fixed clock for deterministic tests
 
@@ -31,14 +33,25 @@ def _candidate(cid="p1", **kw):
         candidate_id=cid,
         action="naya_node_apply",
         description="apply retained intelligence to NAYA-NODE-0001",
-        quality={"objective_fit": 8.0, "evidence_sufficiency": 7.0,
-                 "applicability": 8.0, "robustness": 7.0},
-        confidence={"objective_fit": 0.9, "evidence_sufficiency": 0.8,
-                    "applicability": 0.9, "robustness": 0.8},
+        quality={"objective_fit": 9.5, "evidence_sufficiency": 9.5,
+                 "applicability": 9.5, "robustness": 9.5,
+                 "reversibility": 9.5, "blast_containment": 9.5,
+                 "simplicity": 9.5},
+        confidence={"objective_fit": 0.95, "evidence_sufficiency": 0.95,
+                    "applicability": 0.95, "robustness": 0.95,
+                    "reversibility": 0.95, "blast_containment": 0.95,
+                    "simplicity": 0.95},
         reversibility="REVERSIBLE",
+        # Explicitly safe: unknown (None) hard-gate flags are fail-closed
+        # refused at plan (PLAN_SAFETY_UNKNOWN) — "clean" means proven safe,
+        # not unknown. Tests needing None/False pass explicit kwargs.
+        lawful=True, rights_safe=True, privacy_safe=True, safety_safe=True,
         expected_outcome="node state updated, previous state restorable",
         proof_requirements=("execution_receipt", "state_diff"),
         stakes="low",
+        benefit=5.0, harm=1.0, cost=1.0, risk=0.5,
+        value_confidence={"B": 0.9, "H": 0.9, "C": 0.9, "R": 0.9},
+        value_evidence_count=3,
     )
     base.update(kw)
     return ap.PlanCandidate(**base)
@@ -58,21 +71,26 @@ def _fresh(authority):
 
 # ---------------- PLAN phase ----------------
 
-def test_plan_selects_minimum_sufficient_through_value_calculus():
+def test_plan_selects_by_canonical_value_not_quality():
+    # The S7 falsifier at the pipeline seam: higher Q + negative value
+    # loses to lower Q + positive value. The old Q-sort picked p-flashy.
     authority = _authority()
-    weak = _candidate("p-weak",
-                      quality={"objective_fit": 4.0, "evidence_sufficiency": 4.0,
-                               "applicability": 4.0, "robustness": 4.0},
-                      confidence={"objective_fit": 0.9, "evidence_sufficiency": 0.9,
-                                  "applicability": 0.9, "robustness": 0.9})
-    strong = _candidate("p-strong")
-    plan, receipt = ap.plan_action(authority, [weak, strong], _profile(), now=NOW)
+    flashy = _candidate("p-flashy",
+                        quality={d: 9.8 for d in ALL_DIMS},
+                        benefit=2.0, harm=8.0, cost=0.0, risk=0.0)
+    solid = _candidate("p-solid",
+                       quality={d: 9.1 for d in ALL_DIMS},
+                       benefit=6.0, harm=1.0, cost=1.0, risk=0.5)
+    plan, receipt = ap.plan_action(authority, [flashy, solid], _profile(), now=NOW)
     assert plan is not None
-    assert plan.chosen.candidate_id == "p-strong"
+    assert plan.chosen.candidate_id == "p-solid"
     assert receipt.phase == "PLAN_ACCEPTED"
-    assert any("p-strong" in e for e in receipt.evidence)
-    # both candidate scores recorded — the math is visible, not hidden
+    assert any("p-solid" in e for e in receipt.evidence)
+    # both candidate scores recorded — the math is visible, not hidden:
+    # (candidate_id, Q, v_safe, delta_v)
     assert len(plan.candidate_scores) == 2
+    by_id = {cid: (q, v, d) for cid, q, v, d in plan.candidate_scores}
+    assert by_id["p-flashy"][1] < 0 < by_id["p-solid"][1]
 
 
 def test_plan_rejects_scope_mismatch():
