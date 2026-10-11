@@ -153,8 +153,11 @@ def test_genuine_conflict_escalates_naming_cost_bearers():
     assert r.verdict == ce.ESCALATE_TO_HUMAN
     assert r.chosen_option is None
     bearers = dict(r.receipt.cost_bearers)
-    assert any("x" in g for g in bearers["a"])
-    assert any("y" in g for g in bearers["b"])
+    assert any(g[0] == "x" for g in bearers["a"])
+    assert any(g[0] == "y" for g in bearers["b"])
+    # structured, not display text: (group_id, severity, reversibility, timing)
+    assert ("x", "minor", "fully_reversible", "immediate") in bearers["a"]
+    assert ("y", "minor", "fully_reversible", "immediate") in bearers["b"]
     assert r.receipt.human_decision_requested
     assert r.receipt.redesign_attempted is True
     text = r.receipt.render()
@@ -238,14 +241,59 @@ def test_receipt_deterministic_and_bound():
     assert digests["base"] == hp.profile_digest(opts["base"])
 
 
-def test_assumed_negligible_is_visible_never_silent():
+def test_omitted_group_is_held_not_assumed():
+    # The old assumed-negligible fill was fail-open: an option could win by
+    # "forgetting" a group another option honestly assessed. Omissions are
+    # now held for evidence, and the inconsistency is named on the receipt.
     a = _p(_g("x"))            # assesses x only
     b = _p(_g("y"))            # assesses y only
     base = _p(_g("x"), _g("y"))
     r = _consult({"a": a, "b": b, "base": base}, "base")
-    assumed = set(r.receipt.assumed_negligible)
-    assert ("a", "y") in assumed
-    assert ("b", "x") in assumed
+    assert "a" in r.receipt.evidence_pending
+    assert "b" in r.receipt.evidence_pending
+    assert "a" not in r.receipt.pareto_front
+    assert "b" not in r.receipt.pareto_front
+    reasons = [e for ass in r.receipt.assessments for e in ass.evidence_reasons]
+    assert any("OMISSION_INCONSISTENCY:a omits" in e for e in reasons)
+    assert any("OMISSION_INCONSISTENCY:b omits" in e for e in reasons)
+    # base assessed every group -> admissible -> PROCEED base; nobody is
+    # silently assumed negligible anymore
+    assert r.verdict == ce.PROCEED and r.chosen_option == "base"
+    assert r.receipt.assumed_negligible == ()
+
+
+def test_suspicious_omission_blocks_selection_with_needs_evidence():
+    # The dodge, end to end: A "forgets" y; B honestly assesses y as harmed.
+    # Under the old fill A would dominate (y assumed negligible) and PROCEED.
+    # Now A is held and can never be selected.
+    a = _p(_g("x", severity="minor", reversibility="fully_reversible",
+              timing="immediate", measurability="measured",
+              distribution="small_group"))          # omits y
+    b = _p(_g("x"),
+            _g("y", severity="minor", reversibility="fully_reversible",
+               timing="immediate", measurability="measured",
+               distribution="small_group"))
+    base = _p(_g("x"), _g("y"))
+    r = _consult({"a": a, "b": b, "base": base}, "base")
+    assert "a" in r.receipt.evidence_pending
+    assert "a" not in r.receipt.pareto_front
+    reasons = [e for ass in r.receipt.assessments for e in ass.evidence_reasons]
+    assert any("OMISSION_INCONSISTENCY:a omits" in e and "y" in e
+               for e in reasons)
+    assert r.chosen_option != "a"
+    # b and base fully assessed: base dominates b -> PROCEED base
+    assert r.verdict == ce.PROCEED and r.chosen_option == "base"
+
+
+def test_blank_assessor_defaults_to_unspecified_caller():
+    # A human-governance request must never carry an anonymous assessor.
+    r = _consult({"a": _clean("x"), "base": _clean("x")}, "base", assessed_by="")
+    assert r.receipt.assessed_by == "unspecified-caller"
+    r2 = _consult({"a": _clean("x"), "base": _clean("x")}, "base")
+    assert r2.receipt.assessed_by == "unspecified-caller"
+    r3 = _consult({"a": _clean("x"), "base": _clean("x")}, "base",
+                  assessed_by="naya-2")
+    assert r3.receipt.assessed_by == "naya-2"
 
 
 def test_baseline_must_be_assessed_never_assumed():
@@ -325,20 +373,28 @@ def _status_quo_baseline():
 def test_pipeline_genuine_conflict_refuses_with_escalation_receipt():
     # A fixes z but harms x; B fixes z but harms y; doing nothing harms z.
     # No option dominates: the human must choose who bears the cost.
+    # Every option assesses every group — omissions are held, not assumed.
     prof_a = _p(_g("x", severity="minor", reversibility="fully_reversible",
                    timing="immediate", measurability="measured",
                    distribution="small_group"),
-                 _g("z"))
-    prof_b = _p(_g("y", severity="minor", reversibility="fully_reversible",
+                _g("y"),
+                _g("z"))
+    prof_b = _p(_g("x"),
+                _g("y", severity="minor", reversibility="fully_reversible",
                    timing="immediate", measurability="measured",
                    distribution="small_group"),
-                 _g("z"))
+                _g("z"))
+    baseline = _p(_g("x"), _g("y"),
+                  _g("z", severity="minor",
+                     reversibility="conditionally_reversible",
+                     timing="delayed", measurability="estimated",
+                     distribution="small_group", note="status quo harm"))
     plan, receipt = ap.plan_action(
         _authority(),
         [_candidate("pa", harm_profile=prof_a),
          _candidate("pb", harm_profile=prof_b)],
         _pq_profile(), now=NOW,
-        baseline_harm_profile=_status_quo_baseline(),
+        baseline_harm_profile=baseline,
     )
     assert plan is None
     assert receipt.phase == "PLAN_REFUSED"
@@ -371,13 +427,16 @@ def test_pipeline_single_dominant_option_continues_to_selection():
     assert any("conflict consult PROCEED" in e for e in receipt.evidence)
 
 
-def test_pipeline_hook_skipped_without_baseline():
-    # No assessed baseline -> the hook fails closed (no consult), value
-    # decides as before. Backward compatible.
+def test_pipeline_hook_refuses_without_baseline():
+    # 2+ profiled candidates but no assessed baseline -> the hook fails
+    # closed (PLAN_SAFETY_NEEDS_EVIDENCE). Skipping the consult would let
+    # value math settle a trade-off never compared against doing nothing.
     prof_a = _p(_g("x", severity="minor", reversibility="fully_reversible",
                    timing="immediate", measurability="measured",
-                   distribution="small_group"))
-    prof_b = _p(_g("y", severity="minor", reversibility="fully_reversible",
+                   distribution="small_group"),
+                _g("y"))
+    prof_b = _p(_g("x"),
+                _g("y", severity="minor", reversibility="fully_reversible",
                    timing="immediate", measurability="measured",
                    distribution="small_group"))
     plan, receipt = ap.plan_action(
@@ -386,7 +445,9 @@ def test_pipeline_hook_skipped_without_baseline():
          _candidate("pb", harm_profile=prof_b, value_benefit=7.0)],
         _pq_profile(), now=NOW,
     )
-    assert plan is not None
+    assert plan is None
+    assert receipt.phase == "PLAN_REFUSED"
+    assert ap.PLAN_SAFETY_NEEDS_EVIDENCE in receipt.codes
     assert ap.PLAN_NEEDS_HUMAN_JUDGMENT not in receipt.codes
 
 

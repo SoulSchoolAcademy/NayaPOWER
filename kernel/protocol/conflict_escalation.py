@@ -15,6 +15,11 @@ structured ordinals, never collapsed to a number):
      neutral).
   2. Eliminate rights/hard-harm violations (catastrophic, or
      major+irreversible, in any single group). No override exists.
+  2b. Hold omitting options: a group assessed by one option but omitted by
+     another is a modeling inconsistency — the omitting option is held for
+     evidence (OMISSION_INCONSISTENCY), never silently assumed negligible.
+     Winning by "forgetting" a harmed group is fail-open, so it is
+     refused here.
   3. Prefer Pareto: ordinal dominance only — no-worse on every
      group x dimension, strictly better on at least one. No sums, no means,
      no weights, no invented exchange rates between groups.
@@ -56,13 +61,14 @@ REFUSE_ALL = "REFUSE_ALL"
 NEEDS_EVIDENCE = "NEEDS_EVIDENCE"
 VERDICTS = (PROCEED, ESCALATE_TO_HUMAN, REFUSE_ALL, NEEDS_EVIDENCE)
 
-# Assumed harm for a group an option's profile does not assess. The
-# assumption is RECORDED on the receipt (ASSUMED-NEGLIGIBLE) — never silent.
-# Rationale: a group absent from an option's profile is the caller's modeling
-# choice (that option does not touch that group); treating it as unaffected
-# keeps options comparable, and the visible record lets a reviewer challenge
-# the modeling. Unknown DIMENSIONS inside an assessed group still fail closed
-# per T-05 — that rule is untouched.
+# Assumed harm for a group an option's profile does not assess. Used ONLY by
+# the standalone pareto_front() helper. consult_conflicts() NO LONGER
+# tolerates omissions: an option that omits a group assessed by another
+# option is held for evidence (OMISSION_INCONSISTENCY) — winning by
+# "forgetting" a harmed group was a fail-open dodge. The assumption is
+# RECORDED on pareto_front()'s path, never silent. Unknown DIMENSIONS
+# inside an assessed group still fail closed per T-05 — that rule is
+# untouched.
 _ASSUMED_GROUP_HARM_KWARGS = {
     "severity": _hp.SEVERITY_NEGLIGIBLE,
     "reversibility": _hp.REV_FULLY,
@@ -110,7 +116,10 @@ class EscalationReceipt:
     pareto_front: tuple[str, ...]
     # Per front option: which groups bear non-negligible harm. The "who bears
     # the cost" record — a trade-off is never a silent cost-bearing choice.
-    cost_bearers: tuple[tuple[str, tuple[str, ...]], ...]  # (option, (groups...))
+    # Structured tuples, not display text: (group_id, severity,
+    # reversibility, timing). render() formats for display; consumers must
+    # not parse strings.
+    cost_bearers: tuple[tuple[str, tuple[tuple[str, str, str, str], ...]], ...]
     assumed_negligible: tuple[tuple[str, str], ...]  # (option, group)
     redesign_notes: tuple[str, ...]
     redesign_attempted: bool
@@ -159,8 +168,12 @@ class EscalationReceipt:
         lines.append(f"Pareto front: {', '.join(self.pareto_front) or '(empty)'}")
         if self.cost_bearers:
             lines.append("Who bears the cost (non-negligible harm per option):")
-            for opt, groups in self.cost_bearers:
-                lines.append(f"  - {opt}: {', '.join(groups) or '(none assessed)'}")
+            for opt, bearers in self.cost_bearers:
+                rendered = ", ".join(
+                    f"{gid}(severity={sev},reversibility={rev},timing={timing})"
+                    for gid, sev, rev, timing in bearers
+                )
+                lines.append(f"  - {opt}: {rendered or '(none assessed)'}")
         if self.assumed_negligible:
             lines.append("Assumed-negligible (group not assessed for that option):")
             for opt, grp in self.assumed_negligible:
@@ -294,7 +307,7 @@ def consult_conflicts(
     *,
     baseline_option: str,
     redesign_notes: Sequence[str] = (),
-    assessed_by: str = "",
+    assessed_by: str = "unspecified-caller",
     decided_at: str | None = None,
 ) -> ConflictResolution:
     """Run the conflict-escalation consult over candidate options.
@@ -317,6 +330,9 @@ def consult_conflicts(
             f"baseline_option {baseline_option!r} is not among the assessed "
             "options — the 'do nothing' profile must be assessed, never assumed"
         )
+    # A blank assessor is not a missing assessor: name it explicitly so the
+    # receipt never carries an anonymous human-governance request.
+    assessed_by = assessed_by or "unspecified-caller"
     for name, profile in options.items():
         if not isinstance(profile, _hp.HarmProfile):
             raise ValueError(
@@ -355,6 +371,45 @@ def consult_conflicts(
         else:
             admissible[name] = profile
 
+    # --- Step 2b: omission-inconsistency hold (fail-closed on the dodge).
+    # A group assessed by at least one option but omitted by another is a
+    # modeling inconsistency the machine cannot resolve: the omitting
+    # option is held for evidence and the inconsistency is named on the
+    # receipt. An option may not win by "forgetting" a group another
+    # option honestly assesses — the old assumed-negligible fill was
+    # fail-open here, so it is refused instead.
+    if admissible:
+        assessed_union = {
+            g.group_id for profile in admissible.values() for g in profile.groups
+        }
+        omission_holds: dict[str, tuple[str, ...]] = {}
+        for name, profile in admissible.items():
+            own = {g.group_id for g in profile.groups}
+            omitted = tuple(sorted(assessed_union - own))
+            if omitted:
+                omission_holds[name] = omitted
+        for name, omitted in omission_holds.items():
+            assessments = [
+                OptionAssessment(
+                    option=a.option,
+                    judgment_blocks=a.judgment_blocks,
+                    judgment_needs_evidence=True,
+                    block_reasons=a.block_reasons,
+                    evidence_reasons=a.evidence_reasons
+                    + (
+                        f"OMISSION_INCONSISTENCY:{name} omits groups assessed "
+                        f"by other options: {', '.join(omitted)}",
+                    ),
+                    profile_digest=a.profile_digest,
+                    assumed_groups=a.assumed_groups,
+                )
+                if a.option == name
+                else a
+                for a in assessments
+            ]
+            del admissible[name]
+            evidence_pending.append(name)
+
     def build_receipt(
         verdict: str,
         chosen: str | None,
@@ -382,7 +437,10 @@ def consult_conflicts(
             "eliminated": [list(e) for e in eliminated],
             "evidence_pending": list(evidence_pending),
             "pareto_front": list(front),
-            "cost_bearers": [[o, list(gs)] for o, gs in cost_bearers],
+            "cost_bearers": [
+                [o, [list(entry) for entry in bearers]]
+                for o, bearers in cost_bearers
+            ],
             "assumed_negligible": [list(x) for x in assumed],
             "redesign_notes": list(redesign_notes),
             "human_decision_requested": human_question,
@@ -452,16 +510,17 @@ def consult_conflicts(
     for _name in front:
         distinct_shapes.setdefault(_harm_shape(_name), _name)
 
-    def harmed_groups(name: str) -> tuple[str, ...]:
-        """Groups bearing non-negligible harm under this option."""
+    def harmed_groups(name: str) -> tuple[tuple[str, str, str, str], ...]:
+        """Groups bearing non-negligible harm under this option.
+
+        Structured (group_id, severity, reversibility, timing) tuples —
+        display formatting happens in render(), never here.
+        """
         out = []
         for gid in all_groups:
             g = per_option[name][gid]
             if g.severity != _hp.SEVERITY_NEGLIGIBLE:
-                out.append(
-                    f"{gid}(severity={g.severity},reversibility={g.reversibility},"
-                    f"timing={g.timing})"
-                )
+                out.append((gid, g.severity, g.reversibility, g.timing))
         return tuple(out)
 
     cost_bearers = tuple((name, harmed_groups(name)) for name in front)
@@ -480,9 +539,13 @@ def consult_conflicts(
     # Genuine conflict: the front holds options that differ, so each spares
     # some group another harms. The machine does not pick — it escalates with
     # the full record. This is the "never silent cost-bearing" guarantee.
+    def _fmt_bearer(entry: tuple[str, str, str, str]) -> str:
+        gid, sev, rev, timing = entry
+        return f"{gid}(severity={sev},reversibility={rev},timing={timing})"
+
     trade_lines = "; ".join(
-        f"{name} harms [{', '.join(gs) or 'none assessed'}]"
-        for name, gs in cost_bearers
+        f"{name} harms [{', '.join(_fmt_bearer(e) for e in bearers) or 'none assessed'}]"
+        for name, bearers in cost_bearers
     )
     question = (
         f"Genuine harm trade-off among {len(front)} admissible options "

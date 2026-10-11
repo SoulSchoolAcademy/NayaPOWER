@@ -667,11 +667,23 @@ def plan_action(authority: LawAuthority,
     # A hard-gate consult in Law 11's layer (like the typed-action gate
     # above), NOT a second decision engine: it eliminates violators, forces
     # escalation on genuine conflicts, and otherwise lets the canonical value
-    # calculus select. Fail-closed on the hook itself: without an assessed
-    # do-nothing baseline the comparison is incomplete, so no consult runs;
-    # with fewer than 2 profiled candidates there is nothing to compare.
+    # calculus select. Fail-closed on the hook itself: 2+ profiled
+    # candidates WITHOUT an assessed do-nothing baseline refuse with
+    # PLAN_SAFETY_NEEDS_EVIDENCE — skipping the consult would let value
+    # math settle a trade-off the machine has not compared against doing
+    # nothing. With fewer than 2 profiled candidates there is nothing to
+    # compare, so the hook stands down (backward compatible).
     conflict_evidence: tuple[str, ...] = ()
     profiled = [c for c in law11_admissible if c.harm_profile is not None]
+    if len(profiled) >= 2 and baseline_harm_profile is None:
+        return refused(
+            PLAN_SAFETY_NEEDS_EVIDENCE,
+            evidence="conflict consult cannot run: 2+ candidates carry "
+                     "structured harm profiles but no assessed do-nothing "
+                     "baseline profile was supplied; baseline_harm_profile "
+                     "is required to compare every option against doing "
+                     "nothing.",
+        )
     if len(profiled) >= 2 and baseline_harm_profile is not None:
         conflict_options: dict[str, _hp.HarmProfile] = {
             c.candidate_id: c.harm_profile for c in profiled  # type: ignore[misc]
