@@ -44,7 +44,8 @@
  "proof": {
   "behavioral_status": "PILOT_TRIAL_EVIDENCED",
   "implementation_status": "DOCUMENTED",
-  "organism_binding": "CONTRACT_ALIGNED_RUNTIME_NOT_PROVEN",
+  "organism_binding": "PREFLIGHT_BOUND_KERNEL_TESTS_CANDIDATE",
+  "preflight_binding": "tools/persona_preflight.py asserts persona coherence pins via kernel/persona_loader; enforced by kernel-tests CI (tests/test_persona_preflight.py); run as preflight of every SELF area-driver run. Contract still CANDIDATE — only Shawn ratifies.",
   "production_status": "NOT_PROVEN",
   "relationships_status": "ALIGNED_TO_CANONICAL_GRAPH_SEED; RUNTIME_RELATIONSHIP_PROOF_PENDING",
   "behavioral_trial": "BRAIN/06-PROOF/2026-10-07-SELF-IDENTITY-TRIAL-V1.md — 9/9 pass (3 arms x n=3); pilot scale, see trial limitations"
