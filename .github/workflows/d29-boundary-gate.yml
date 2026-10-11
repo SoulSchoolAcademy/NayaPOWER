@@ -1,0 +1,42 @@
+# D29 boundary-claims gate.
+#
+# Fires whenever the accountability path changes: the D29 mechanism, its
+# tests, the gate itself, the claims manifest, the gate's test suite, or
+# this workflow. Runs the gate's own test suite (which includes sabotage
+# negative controls against fake mechanisms), then fires the gate against
+# the real mechanism. A registered claim that contradicts the mechanism
+# reds the run; a tampered or missing mechanism fails closed.
+
+name: d29-boundary-gate
+
+on:
+  pull_request:
+    paths:
+      - 'drift_canary/d29_boundary.py'
+      - 'drift_canary/tests/test_d29_boundary.py'
+      - 'tools/d29_boundary_gate.py'
+      - 'tools/d29_boundary_manifest.json'
+      - 'tests/test_d29_boundary_gate.py'
+      - '.github/workflows/d29-boundary-gate.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'drift_canary/d29_boundary.py'
+      - 'drift_canary/tests/test_d29_boundary.py'
+      - 'tools/d29_boundary_gate.py'
+      - 'tools/d29_boundary_manifest.json'
+      - 'tests/test_d29_boundary_gate.py'
+      - '.github/workflows/d29-boundary-gate.yml'
+
+jobs:
+  boundary-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Gate test suite (incl. sabotage negative controls)
+        run: python -m pytest tests/test_d29_boundary_gate.py -q
+      - name: Fire the boundary-claims gate
+        run: python tools/d29_boundary_gate.py
