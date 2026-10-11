@@ -43,7 +43,7 @@ Begin phase 1 immediately. Never idle awaiting instruction. Never treat list exh
 - `human_gates`: [production_dispatch, production_db_read, production_db_write, production_migration, credentials, money, destructive_action, constitutional_ratification, evolve_charter_ratification] — never crossed by any seat under any interpretation of this loop.
 - `no_duplicate_lanes`: run board claim scan before starting new work; on COLLISION, coordinate or stand down.
 - `evidence_law`: UNKNOWN≠PASS, BLOCKED≠PASS, IMPLEMENTED≠VERIFIED, VERIFIED≠PRODUCTION-PROVEN.
-- `merge_protocol`: no merge without five-step scorecard receipt posted on #1354.
+- `merge_protocol`: the One Gate Law (Shawn, ratified 2026-10-11) — three rounds shown is the entire merge gate; the scorecard receipt is shown with the work, never held for a feed post. (Retired: the old "no merge without five-step scorecard receipt posted on #1354" — the feed is never a gate.)
 - `correction_duty`: own errors publicly within one cycle; "I was wrong" is mandatory, not optional.
 
 ## Failure modes and recoveries
