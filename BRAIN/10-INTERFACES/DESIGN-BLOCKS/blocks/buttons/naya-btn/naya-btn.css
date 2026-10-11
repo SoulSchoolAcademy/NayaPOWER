@@ -18,8 +18,8 @@
 
 
 .naya-btn{
-  --nb-accent:var(--purple);
-  --nb-accent-rgb:var(--purple-rgb);
+  --nb-accent:#8a5cff; /* Shawn source: Naya Design Element Set N4.html (was var(--purple)=#a06bff, wrong purple) */
+  --nb-accent-rgb:138,92,255; /* matches #8a5cff */
   position:relative; isolation:isolate; overflow:hidden;
   display:inline-flex; align-items:center; justify-content:center; gap:10px;
   min-height:52px; padding:0 28px; border-radius:999px;
@@ -120,7 +120,7 @@
 
 
 /* Variants — same DNA, different jobs */
-.naya-btn--primary{--nb-accent:var(--purple);--nb-accent-rgb:var(--purple-rgb);}
+.naya-btn--primary{--nb-accent:#8a5cff; /* Shawn source: Naya Design Element Set N4.html (was var(--purple)=#a06bff, wrong purple) */--nb-accent-rgb:138,92,255; /* matches #8a5cff */}
 
 .naya-btn--secondary{
   --nb-accent:#e8e6df;--nb-accent-rgb:232,230,223;
@@ -204,7 +204,7 @@
 .naya-btn.naya-btn--foundation-obsidian{--nb-accent:#e8e6df; --nb-accent-rgb:232,230,223; --nb-jewel:#e8e8e2;}
 
 .naya-btn.naya-btn--foundation-light{
-  --nb-accent:var(--purple); --nb-accent-rgb:var(--purple-rgb); --nb-jewel:#17181d;
+  --nb-accent:#8a5cff; /* Shawn source: Naya Design Element Set N4.html (was var(--purple)=#a06bff, wrong purple) */ --nb-accent-rgb:138,92,255; /* matches #8a5cff */ --nb-jewel:#17181d;
   color:#14151a;
   text-shadow:0 1px 0 rgba(255,255,255,.65);
   background:linear-gradient(180deg, rgba(255,255,255,.65), rgba(255,255,255,.08) 44%, rgba(20,21,26,.10) 100%), linear-gradient(180deg,#ffffff 0%,#f4f2ea 55%,#d6d3c7 100%);
