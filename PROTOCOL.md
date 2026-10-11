@@ -11,18 +11,43 @@ Distilled 2026-10-10 from all five seats' protocols (Naya 5 ×2, Naya 4, Naya 1,
 
 Reading this protocol is **required**, not recommended. No Naya begins governed work without loading it. "I didn't read it" is never an excuse — the protocol binds every Naya, every time, no exceptions.
 
-**Required reading list** (all four, every activation):
-1. **[PROTOCOL.md](PROTOCOL.md)** — this document. The canonical operating law: 17 steps across 5 phases. The code of all codes.
-2. **[AGENTS.md](AGENTS.md)** — the operating contract. Boot procedure, governing laws, and workspace rules.
-3. **[Constitution](NAYA-ACTIVATION/CONSTITUTION/CONSTITUTION.md)** — the standing laws. Rights, authority, and the boundaries no score can override.
-4. **[Laws Index](NAYA-ACTIVATION/CONSTITUTION/LAWS-INDEX-V1.md)** — the one-line locator for every standing law and its full definition.
+**Mandatory reading set** (all seven, every activation; links point to the live repository paths):
+1. **[PROTOCOL.md](PROTOCOL.md)** — the consolidated operating sequence. This file remains a candidate until Shawn ratifies it; it cannot silently amend ratified law.
+2. **[AGENTS.md](AGENTS.md)** — the repository boot contract and workspace rules.
+3. **[Constitution](NAYA-ACTIVATION/CONSTITUTION/CONSTITUTION.md)** — rights, human authority, privacy, consent and non-negotiable boundaries.
+4. **[Ratified Team Naya Operating Protocol](BRAIN/01-GOVERNANCE/TEAM-NAYA-OPERATING-PROTOCOL-V1.md)** — the human, AI and machine operating contract.
+5. **[Laws Index](NAYA-ACTIVATION/CONSTITUTION/LAWS-INDEX-V1.md)** — locator for standing laws and their definitions.
+6. **[Portable Activation Protocol](NAYA-ACTIVATION/PORTABLE-ACTIVATION-PROTOCOL-V1.md)** — the activation procedure.
+7. **[Smart Note Operating Contract](NAYA-ACTIVATION/SMART-NOTE-OPERATING-CONTRACT-V1.md)** — capture, lineage and learning requirements.
 
-**Key coordination surfaces** (know where the team works):
-- **Mission-state feed** — [issue #2154](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2154): the live coordination board. Sign in, sign out, post achievements and blockers here.
-- **Feed index** — [issue #1599](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/1599): the table of contents for all specialty feeds.
-- **Activation package** — [NAYA-ACTIVATION/](NAYA-ACTIVATION/): cold-start contracts, activation protocols, and the constitution directory.
+The agent must submit a read receipt that lists the exact current SHA-256 digest of each required file and answers the comprehension questions. Missing sources, missing hashes, stale hashes or failed answers mean **ACTIVATION HELD**. Hashing protects receipt integrity; it does not authenticate the issuer. The current unkeyed digest is not a cryptographic signature. Key custody remains a separate Director-authority decision; do not claim identity assurance or invent a signing key.
 
-**Sign in / sign out — required.** Every work cycle begins with signing in on the appropriate specialty feed and ends with signing out: what was done, the evidence, what remains. No silent work. If the team can't see it, it didn't happen.
+**Canonical navigation — use these exact roles and links:**
+- **[Main branch](https://github.com/SoulSchoolAcademy/NayaPOWER/tree/main)** — current repository state; re-anchor to its live SHA.
+- **[Team Naya coordination board #2175](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175)** — current cross-team coordination, sign-in/out summaries, evidence links and blockers.
+- **[Current mission state #2154](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2154)** — director-maintained mission truth; not the general conversation board.
+- **[Specialty-feed index #1599](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/1599)** — directory of team feeds.
+- **[#1354 archive](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/1354)** — historical and comment-locked; do not sign in or post there.
+- **[Activation package](NAYA-ACTIVATION/)** — cold-start contracts, activation protocols, roles and constitution directory.
+- **[Ratified Team Naya Operating Protocol](BRAIN/01-GOVERNANCE/TEAM-NAYA-OPERATING-PROTOCOL-V1.md)**.
+- **[Value Calculus specification](NAYANODE/0025-VALUE-CALCULUS-SPECIFICATION-V1.md)** and **[executable calculus](kernel/value_calculus.py)**.
+- **[Nonstop Loop AI law](BRAIN/01-GOVERNANCE/0004-NONSTOP-LOOP-V1.ai.md)** and **[machine twin](BRAIN/01-GOVERNANCE/0004-nonstop-loop-v1.machine.json)**.
+
+**Specialty feeds — sign in/out on the feed for the work actually being done:**
+- [Learning #1865](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/1865)
+- [Brain / Memory #1866](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/1866)
+- [Law / Governance #1867](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/1867)
+- [Architecture / Engineering / Operations #1868](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/1868)
+- [Evolution / Succession #1869](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/1869)
+- [Interfaces / Hub #1870](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/1870)
+- [Knowledge / Intelligence #1871](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/1871)
+- [Proving / Verifying #1872](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/1872)
+- [Innovation #1873](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/1873)
+
+**Sign in / sign out — required every work cycle.** Sign in on the appropriate specialty feed before work; summarize cross-team work on #2175. End with a sign-out on the same specialty feed and a cross-team link when useful. Never use #2154 for ordinary lane traffic and never post to archived #1354. No silent work.
+
+**Sign-in receipt fields:** seat, lane, task being taken, why it matters, plan, and observed starting state.  
+**Sign-out receipt fields:** seat, what was done, evidence links, honest score, what is proven, what remains unknown, what is blocked, and exactly one next action. A format check is not proof that the post was delivered; retain the posted comment URL as the receipt.
 
 ## THE THREE MOMENTS
 
