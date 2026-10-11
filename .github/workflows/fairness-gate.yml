@@ -1,0 +1,39 @@
+name: fairness-gate
+
+# Fairness & Liveness Gate — Naya 2, Group 5 (Fairness & Liveness), D58-D65.
+# D26's three-link standard: opportunity, fair service, verified progress.
+# This workflow runs the gate's own test suite on every PR touching it.
+# If the gate's tests fail, the PR is blocked. The gate must prove
+# itself before it judges anything else. Includes the negative control:
+# sabotage the classifier and the suite must fail (no theater).
+
+on:
+  pull_request:
+    paths:
+      - 'tools/fairness_eligibility.py'
+      - 'tools/fairness_debt.py'
+      - 'tools/fairness_invariants.py'
+      - 'tools/tests/test_fairness.py'
+      - '.github/workflows/fairness-gate.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'tools/fairness_eligibility.py'
+      - 'tools/fairness_debt.py'
+      - 'tools/fairness_invariants.py'
+      - 'tools/tests/test_fairness.py'
+
+jobs:
+  fairness-gate-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pytest
+        run: python3 -m pip install pytest
+      - name: Run Fairness & Liveness gate test suite (real asserts, no theater)
+        run: python3 -m pytest tools/tests/test_fairness.py -v -p no:cacheprovider
