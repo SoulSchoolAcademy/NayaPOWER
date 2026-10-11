@@ -34,7 +34,7 @@ jobs:
       - name: Install pytest
         run: python3 -m pip install pytest
       - name: Run D32 gate test suite (real asserts, no theater)
-        run: python3 -m pytest tools/tests/test_d32_gate.py -v -p no:cacheprovider
+        run: python3 -m pytest tools/tests/test_d32_gate.py tools/tests/test_d32_scan_pr.py -v -p no:cacheprovider
 
   d32-doc-scan:
     # PRs only: on push there is no pull_request context to diff against.
@@ -49,7 +49,11 @@ jobs:
         with:
           python-version: '3.11'
       - name: Scan PR documents with the D32 gate (violations block)
+        # Base is the base REF, not pull_request.base.sha: the recorded SHA
+        # can be stale relative to the merge commit GitHub builds, which
+        # would widen the diff to the base branch's own progress. The scanner
+        # resolves the merge-base live from this ref.
         run: |
           python3 tools/d32_scan_pr.py \
-            --base "${{ github.event.pull_request.base.sha }}" \
+            --base "origin/${{ github.event.pull_request.base.ref }}" \
             --head "${{ github.sha }}"
