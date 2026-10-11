@@ -29,6 +29,21 @@ violations). NEEDS_AUTHORITY routing continues to
 be governed by the LAW authority record (the LAW node's seam, not this
 one): this seam enforces the harm hard stops, nothing else is weakened.
 
+CONSENT SEAM (safety floor, execute-time residual — 2026-10-11 rebase): the
+LAW grant binds to the action text, but irreversibility is a property of the
+plan candidate. At plan time the merged decision-principle engine owns this:
+an IRREVERSIBLE or UNKNOWN-reversibility winner yields decision==ASK and is
+refused with PLAN_NEEDS_HUMAN_JUDGMENT (verified at the live tip). This
+seam covers the path no plan-time gate can: a plan built OUTSIDE
+plan_action — hand-crafted — never passes the ASK gate, so execute_plan
+re-verifies the consent dimension against the LIVE re-resolved grant at the
+last responsible moment. Consent granted at plan time may have been
+revoked; a hand-crafted plan may carry an irreversible candidate the
+plan-time grant never consented to. Without live human consent
+(LawAuthority.human_authorized=True on the fresh grant), the executor never
+fires on a non-REVERSIBLE plan. Reversible plans need no consent evidence —
+the grant alone suffices. Consent is evidence, never assumed.
+
 Phase 2 (EXECUTE): live LAW authority is re-resolved BEFORE execution
 (SN-0493: decisions expire when the tip moves; the ACT contract requires
 rereading live authority even when the LAW receipt remains fresh). Any
@@ -128,9 +143,23 @@ PLAN_SAFETY_NEEDS_EVIDENCE = "PLAN_SAFETY_NEEDS_EVIDENCE"
 PLAN_LAW11_NEEDS_AUTHORITY = "PLAN_LAW11_NEEDS_AUTHORITY"
 PLAN_VALUE_INSUFFICIENT = "PLAN_VALUE_INSUFFICIENT"
 PLAN_NEEDS_HUMAN_JUDGMENT = "PLAN_NEEDS_HUMAN_JUDGMENT"
+PLAN_CONSENT_MISSING = "PLAN_CONSENT_MISSING"
 
 _REVERSIBLE_VALUES = ("REVERSIBLE", "IRREVERSIBLE", "UNKNOWN")
 _STAKE_ORDER = {"low": 0, "medium": 1, "high": 2}
+
+
+def _requires_consent(candidate: PlanCandidate) -> bool:
+    """Consent seam: an irreversible — or unknown-reversibility — plan may
+    never execute without recorded human consent.
+
+    Mirrors the calculus's CONSEQUENTIAL_OR_IRREVERSIBLE trigger as it is
+    reachable at this seam: the ACT vocabulary carries reversibility
+    structurally, while the "consequential" stakes level is coerced to
+    "high" by _candidate_to_calculus (the calculus-facing mapping). UNKNOWN
+    reversibility fails closed here — consent is required, not assumed.
+    """
+    return candidate.reversibility != "REVERSIBLE"
 
 
 class LedgerFull(Exception):
@@ -145,12 +174,21 @@ class LawAuthority:
     parseable (float), and no later than the current clock.
     expires_at: epoch seconds, or None for unbounded. An expiry at or
     before the current clock is expired (per the ACT contract).
+    human_authorized: whether a human (the director, via Shawn's grant
+    machinery) explicitly consented to this grant. Fail-closed default
+    False: a grant that cannot evidence human consent authorizes
+    reversible plans only. Irreversible (or unknown-reversibility) plans
+    require human_authorized=True — the consent seam. The grant binds to
+    the action text, but irreversibility is a property of the plan
+    candidate decided AFTER the grant, so no grant-time text check can
+    cover it; the ACT seam enforces the consent dimension here.
     """
     action: str
     scope: str
     decided_at: float | None
     expires_at: float | None
     grant_id: str
+    human_authorized: bool = False
 
 
 @dataclass(frozen=True)
@@ -655,6 +693,10 @@ def plan_action(authority: LawAuthority,
     NEEDS_AUTHORITY verdicts remain
     governed by the LAW authority record (the LAW node's seam): this seam
     enforces the harm hard stops only, and weakens nothing.
+
+    Consent seam: a chosen candidate that is not REVERSIBLE requires the
+    grant to carry recorded human consent (authority.human_authorized);
+    without it the plan is refused with PLAN_CONSENT_MISSING.
     """
     plan_id = _new_id()
 
@@ -1007,6 +1049,16 @@ def plan_action(authority: LawAuthority,
                      f"autonomous selection. {'; '.join(calculus_evidence)}",
         )
 
+    # NOTE (2026-10-11 rebase): the plan-time consent check lived here in the
+    # Oct-9 original. It is superseded by the merged decision-principle
+    # engine: an IRREVERSIBLE or UNKNOWN-reversibility winner now yields
+    # decision==ASK and is refused here with PLAN_NEEDS_HUMAN_JUDGMENT
+    # (human judgment required beyond the LAW record) regardless of consent
+    # on the grant — verified empirically at the live tip. This seam keeps
+    # the EXECUTE-time re-verification below, which is the part no merged
+    # gate covers: hand-crafted plans bypass plan_action (and its ASK gate)
+    # entirely.
+
     plan = ActionPlan(
         plan_id=plan_id, action=authority.action, chosen=chosen,
         authority=authority, candidate_scores=scores, planned_at=now,
@@ -1063,6 +1115,12 @@ def execute_plan(plan: ActionPlan,
     hard stops only and weakens nothing. Pass the same profile (and risk
     policy) used at plan time so the verdict is a re-verification, not a
     re-derivation under different math.
+
+    Consent re-check (fail-closed): a chosen candidate that is not
+    REVERSIBLE requires recorded human consent in the FRESH re-resolved
+    grant (fresh.human_authorized); without it execution is refused with
+    PLAN_CONSENT_MISSING before the executor fires. Consent may have been
+    revoked since plan time — only live consent executes.
 
     Every phase transition is appended to ledger when provided.
     """
@@ -1164,6 +1222,22 @@ def execute_plan(plan: ActionPlan,
                            evidence=f"Law 12: authority grant proof stale: "
                                     f"{validation.reason()}. Re-resolve authority; "
                                     f"do not execute on expired proof.")
+
+    # --- Execution-time consent re-check (safety floor). Fail closed: the
+    # consent evidence is re-verified against the LIVE re-resolved
+    # authority at the last responsible moment, immediately before the
+    # executor fires. Consent granted at plan time may have been revoked;
+    # a hand-crafted plan may carry an irreversible candidate the plan-time
+    # grant never consented to. Either way, without live human consent in
+    # the fresh grant, the executor is never called.
+    if _requires_consent(plan.chosen) and not fresh.human_authorized:
+        return refused(
+            PLAN_CONSENT_MISSING,
+            evidence=(f"chosen candidate {plan.chosen.candidate_id} is "
+                      f"{plan.chosen.reversibility} and the live LAW grant "
+                      f"{fresh.grant_id} carries no human consent; "
+                      f"irreversible plans require human_authorized=True"),
+        )
 
     # --- Execution-time do-no-harm re-gate (safety floor). Fail closed:
     # the gate is re-verified at the last responsible moment, immediately
