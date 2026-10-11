@@ -29,5 +29,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - name: Install pytest
+        run: python3 -m pip install pytest
       - name: Run D32 gate test suite (real asserts, no theater)
         run: python3 -m pytest tools/tests/test_d32_gate.py -v -p no:cacheprovider
