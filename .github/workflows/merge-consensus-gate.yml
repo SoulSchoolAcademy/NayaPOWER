@@ -1,9 +1,13 @@
 name: Merge consensus gate
 
 # Shawn's protocol as code: no merge without (1) one approving review from a
-# seat other than the author, and (2) a scorecard receipt naming the exact
-# head SHA. Until branch protection requires this check, it reports but does
-# not block — the freeze directive on the board is the interim enforcement.
+# seat other than the author, NAMING THE EXACT HEAD SHA (stale reviews do not
+# authorize merges), (2) no unresolved CHANGES_REQUESTED objections, and
+# (3) a scorecard receipt naming the exact head SHA. Until branch protection
+# requires this check, it reports but does not block — the freeze directive
+# on the board is the interim enforcement.
+#
+# Constitution: §7 (LAW OF PROOF), §14 (never merge red CI), §19-20 (collective).
 
 on:
   pull_request:
