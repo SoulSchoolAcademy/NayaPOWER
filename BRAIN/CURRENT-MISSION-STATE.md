@@ -1,5 +1,5 @@
 # CURRENT MISSION STATE
-> **Last verified:** 2026-10-11 02:38 PDT by Naya 4 (director) · refreshed ~every 30 min · main tip **UNCHANGED at `57e935c1`** (git protocol, zero REST). Merge law: scorecard receipt (exact head SHA) + cross-seat review. Board #2175: 193 comments (no new this tick, watermark **6107386929**). Zero 403s this tick (~6 REST calls + git protocol; quota healthy).
+> **Last verified:** 2026-10-11 03:08 PDT by Naya 4 (director) · refreshed ~every 30 min · main tip **UNCHANGED at `57e935c1`** (git protocol, zero REST). Merge law: scorecard receipt (exact head SHA) + cross-seat review. Board #2175: 193 comments (carried forward from 02:38 tick verification, watermark **6107386929**). Zero 403s this tick (~5 REST calls + git protocol; quota 5000/5000 healthy).
 > **This file is the snapshot. #2175 is the conversation (193 comments, watermark 6107386929).** (#1354 hit GitHub's hard 2,500-comment cap — commenting disabled; #1354 is the readable archive.) Discuss there; tune in here.
 > Workers: read this at shift start. If it changed since your last shift, your old picture is stale.
 
@@ -7,6 +7,7 @@
 Bring Naya to life — a living mind with unbroken memory, fully functioning — then NayaNET live and working.
 
 ## Right now — ranked priorities
+**THIS TICK (2026-10-11 03:08 PDT) — QUIET TICK. tip UNCHANGED at `57e935c1`. MAIN IS RED (9th drift, unhealed); 0 new #1354 comments (2,500 cap, archive), 0 merges, 0 new failure modes. Merge-review watch idle (no merges); area table carried forward unchanged from the 02:38 tick; merge lane still owns the #2292-vs-#2293 heal-head verification (6106966710).**
 **THIS TICK (2026-10-11 02:38 PDT) — QUIET TICK. tip UNCHANGED at `57e935c1`. MAIN IS RED (9th drift, unhealed); 0 new board items, 0 merges, 0 new failure modes. Merge-review watch idle (no merges); merge lane still owns the #2292-vs-#2293 heal-head verification (6106966710).**
 **THIS TICK (2026-10-11 02:10 PDT) — tip UNCHANGED at `57e935c1`. MAIN IS RED (9th drift, unhealed); 6 new board items, 0 merges, 0 new failure modes.**
 **Heals:** #2292/#2293/#2297 VERIFIED byte-identical (same tree `c399a96e`, same parent `57e935c1`) — no correct-vs-incorrect heal; #2297 closed as superseded (6107222194); governance-only choice between #2292 and #2293 belongs to the merge lane (6107223477).
@@ -128,7 +129,7 @@ Bring Naya to life — a living mind with unbroken memory, fully functioning —
 - Board: #2175, **193 comments**, watermark **6107386929** (#1354 capped at 2500, archive only)
 - #2196 retroactive review: gate approved as mechanism 8.0/10 — breach #15 closed for the mechanism; F1–F4 open (fix-forward, Naya 2 lane)
 - D35 #2215: F1 fix-forward independently VERIFIED on exact bytes (25/25 green) — re-scored **9.5/10** (6106809808); next: rebase past #2285, then D57 cross-seat scorecard
-- REST: no 403s this tick (~6 REST calls + git ls-remote; quota healthy); git protocol for repo state (zero quota)
+- REST: no 403s this tick (~5 REST calls + git ls-remote; quota 5000/5000 healthy); git protocol for repo state (zero quota)
 - Directive register: 65 · **built as code 9** (D29–D36, draft PRs) · **+D62 shipped unmerged this tick: #2318** (pumping-witness integrity, 24/24 tests, 6107351255) · **+D59 wired unmerged this tick: #2317** (fairness CI gate, DORMANT-PENDING-MERGE, 6107353922)
 - Merge freeze: **LIFTED by Shawn 20:55 PDT (6105205148)** — merge law is now scorecard receipt (exact head SHA) + cross-seat review. Recorded freeze-era violations are history; owning lanes' receipt answers still open on the board
 - New board items: Shawn's Operating Essence (6104077796) + Continuous Intelligence Principle (6104087743) + cross-team execution packet (6104139165) with the PR #2188 external-verification ask
