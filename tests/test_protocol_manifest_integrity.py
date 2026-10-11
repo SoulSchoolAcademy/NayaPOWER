@@ -76,13 +76,26 @@ def test_cold_start_gate_exists():
 
 def test_cold_start_gate_passes():
     result = subprocess.run(
-        [sys.executable, str(GATE_PATH), "--agent-id", "test-agent", "--json"],
+        [sys.executable, str(GATE_PATH), "--agent-id", "test-agent", "--mode", "inspect", "--json"],
         capture_output=True, text=True, timeout=60, cwd=ROOT
     )
     assert result.returncode == 0, f"gate failed: {result.stdout}\n{result.stderr}"
     data = json.loads(result.stdout)
     assert data["pass"] is True
     assert len(data["failures"]) == 0
+
+
+def test_activation_gate_fails_closed_without_receipts():
+    result = subprocess.run(
+        [sys.executable, str(GATE_PATH), "--agent-id", "test-agent", "--mode", "activate", "--json"],
+        capture_output=True, text=True, timeout=60, cwd=ROOT
+    )
+    assert result.returncode != 0
+    data = json.loads(result.stdout)
+    assert data["pass"] is False
+    failed = {item["name"] for item in data["failures"]}
+    assert "read_comprehension_receipt" in failed
+    assert "live_feed_sign_in" in failed
 
 
 def test_gate_does_not_grant_authority():
