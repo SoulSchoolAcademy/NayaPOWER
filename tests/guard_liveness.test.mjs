@@ -23,13 +23,26 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const TOOL = join(ROOT, "tools", "guard_liveness.py");
 const FLOOR = join(ROOT, "tools", "guard-liveness-floor.json");
 
+// The interpreter is resolved at runtime, not hardcoded: CI images carry
+// `python`, minimal VMs carry only `python3`. A gate that cannot execute is
+// a gate that cannot fire. Prefer `python` (today's CI behavior, unchanged
+// where it exists) and fall back to `python3` only where `python` is absent.
+const PYTHON_BIN = (() => {
+  try {
+    execFileSync("python", ["--version"], { stdio: "ignore" });
+    return "python";
+  } catch {
+    return "python3";
+  }
+})();
+
 function runTool(cwd = ROOT, args = [], toolPath = TOOL) {
   // toolPath is explicit because the fixture test copies the tool into a temp repo.
   // ROOT inside the script derives from __file__, so running the real script with a
   // temp cwd would silently scan the REAL repository -- which is exactly the kind of
   // false green this project keeps learning about.
   try {
-    const stdout = execFileSync("python", [toolPath, ...args], {
+    const stdout = execFileSync(PYTHON_BIN, [toolPath, ...args], {
       cwd,
       encoding: "utf8",
       timeout: 180000,
