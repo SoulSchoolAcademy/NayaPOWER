@@ -1,0 +1,43 @@
+{
+  "id": "IB-0011",
+  "schema_version": "1.0",
+  "title": "The Two-Layer Communication Law",
+  "principle": "Every update comes in two layers — what happened, then literally what that means in plain human words — and you write the plain layer first.",
+  "source": {
+    "who": "Shawn",
+    "when": "2026-10-09",
+    "context": "Explicit standing ask; root-cause fix: literal layer written first, not as afterthought."
+  },
+  "evidence": [
+    {
+      "kind": "direct-word",
+      "ref": "AGENTS.md: The Two-Layer Communication Law",
+      "note": "Shawn's explicit format: technicals, then literally-what-I'm-saying."
+    }
+  ],
+  "applicability": {
+    "topics": [
+      "communication",
+      "reporting"
+    ],
+    "situations": "Consequential updates, status reports, blocker surfacing.",
+    "decisions": "How to report anything that matters."
+  },
+  "verification_status": "APPLIED",
+  "status_history": [
+    {
+      "status": "APPLIED",
+      "at": "2026-10-11T20:30:00+00:00",
+      "note": "Seed migration from AGENTS.md standing laws, 2026-10-11."
+    }
+  ],
+  "graduation": {
+    "stage": "briefing",
+    "next_step": "Stays in briefing.",
+    "enforced_by": null
+  },
+  "supersedes": null,
+  "superseded_by": null,
+  "created_at": "2026-10-11T20:30:00+00:00",
+  "updated_at": "2026-10-11T20:30:00+00:00"
+}

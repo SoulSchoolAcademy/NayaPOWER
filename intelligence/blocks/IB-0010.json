@@ -1,0 +1,43 @@
+{
+  "id": "IB-0010",
+  "schema_version": "1.0",
+  "title": "The Shawn-Language Law",
+  "principle": "Nutshell first in plain words, record second, execution details last — never make him decode.",
+  "source": {
+    "who": "Shawn",
+    "when": "2026-10-10",
+    "context": "His standing communication standard: plain words or the output failed."
+  },
+  "evidence": [
+    {
+      "kind": "direct-word",
+      "ref": "AGENTS.md: The Shawn-Language Law",
+      "note": "'If he has to ask what something means, the output failed.'"
+    }
+  ],
+  "applicability": {
+    "topics": [
+      "communication",
+      "reporting"
+    ],
+    "situations": "Anything addressed to Shawn, especially asks and reports.",
+    "decisions": "How to order and word any message to him."
+  },
+  "verification_status": "APPLIED",
+  "status_history": [
+    {
+      "status": "APPLIED",
+      "at": "2026-10-11T20:30:00+00:00",
+      "note": "Seed migration from AGENTS.md standing laws, 2026-10-11."
+    }
+  ],
+  "graduation": {
+    "stage": "briefing",
+    "next_step": "Stays in briefing — language judgment resists mechanization.",
+    "enforced_by": null
+  },
+  "supersedes": null,
+  "superseded_by": null,
+  "created_at": "2026-10-11T20:30:00+00:00",
+  "updated_at": "2026-10-11T20:30:00+00:00"
+}

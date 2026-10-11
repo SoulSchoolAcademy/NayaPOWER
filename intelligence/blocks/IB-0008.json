@@ -1,0 +1,44 @@
+{
+  "id": "IB-0008",
+  "schema_version": "1.0",
+  "title": "Shoot for the 10",
+  "principle": "Every round, aim for a perfect 10 — don't do 'a little better' three times, do your best work three times.",
+  "source": {
+    "who": "Shawn",
+    "when": "2026-10-11",
+    "context": "Refining the Builder-Scorer Loop: mindset, not just process."
+  },
+  "evidence": [
+    {
+      "kind": "direct-word",
+      "ref": "AGENTS.md: Builder-Scorer Loop mindset",
+      "note": "'If you aim for perfect every round, you get excellence.'"
+    }
+  ],
+  "applicability": {
+    "topics": [
+      "process",
+      "quality",
+      "mindset"
+    ],
+    "situations": "Every build round and every fix round.",
+    "decisions": "How much effort a round deserves; whether 'good enough' is acceptable."
+  },
+  "verification_status": "APPLIED",
+  "status_history": [
+    {
+      "status": "APPLIED",
+      "at": "2026-10-11T20:30:00+00:00",
+      "note": "Seed migration from AGENTS.md standing laws, 2026-10-11."
+    }
+  ],
+  "graduation": {
+    "stage": "briefing",
+    "next_step": "Stays in briefing — mindset is enforced by honest scorecards, not code.",
+    "enforced_by": null
+  },
+  "supersedes": null,
+  "superseded_by": null,
+  "created_at": "2026-10-11T20:30:00+00:00",
+  "updated_at": "2026-10-11T20:30:00+00:00"
+}

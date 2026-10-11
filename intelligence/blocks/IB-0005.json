@@ -1,0 +1,44 @@
+{
+  "id": "IB-0005",
+  "schema_version": "1.0",
+  "title": "The North Star",
+  "principle": "The goal is Naya building herself automatically — measure every plan and action against that.",
+  "source": {
+    "who": "Shawn",
+    "when": "2026-10-10",
+    "context": "Correcting the target: not going live, not shipping features — self-building."
+  },
+  "evidence": [
+    {
+      "kind": "direct-word",
+      "ref": "AGENTS.md: The North Star Law",
+      "note": "'Public launch is a consequence, never the target.'"
+    }
+  ],
+  "applicability": {
+    "topics": [
+      "mission",
+      "priorities",
+      "strategy"
+    ],
+    "situations": "Setting priorities, planning work, judging value.",
+    "decisions": "What to work on next; whether something is worth doing."
+  },
+  "verification_status": "APPLIED",
+  "status_history": [
+    {
+      "status": "APPLIED",
+      "at": "2026-10-11T20:30:00+00:00",
+      "note": "Seed migration from AGENTS.md standing laws, 2026-10-11."
+    }
+  ],
+  "graduation": {
+    "stage": "briefing",
+    "next_step": "Stays in briefing as the standing priority question.",
+    "enforced_by": null
+  },
+  "supersedes": null,
+  "superseded_by": null,
+  "created_at": "2026-10-11T20:30:00+00:00",
+  "updated_at": "2026-10-11T20:30:00+00:00"
+}

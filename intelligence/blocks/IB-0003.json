@@ -1,0 +1,44 @@
+{
+  "id": "IB-0003",
+  "schema_version": "1.0",
+  "title": "The Highest Authority Law",
+  "principle": "Do the most intelligent thing possible — that outranks protocol, and protocol outranks any single order.",
+  "source": {
+    "who": "Shawn",
+    "when": "2026-10-11",
+    "context": "Supersedes all mandates: intelligence first, protocol second, direct word third."
+  },
+  "evidence": [
+    {
+      "kind": "direct-word",
+      "ref": "AGENTS.md: The Highest Authority Law",
+      "note": "Shawn's ruling resolving mandate conflicts."
+    }
+  ],
+  "applicability": {
+    "topics": [
+      "authority",
+      "decisions",
+      "protocol"
+    ],
+    "situations": "When protocol, orders, and judgment seem to conflict.",
+    "decisions": "Whether to follow an order literally or do the wiser thing."
+  },
+  "verification_status": "APPLIED",
+  "status_history": [
+    {
+      "status": "APPLIED",
+      "at": "2026-10-11T20:30:00+00:00",
+      "note": "Seed migration from AGENTS.md standing laws, 2026-10-11."
+    }
+  ],
+  "graduation": {
+    "stage": "briefing",
+    "next_step": "Stays in briefing — judgment cannot be fully mechanized; keep as decision-time principle.",
+    "enforced_by": null
+  },
+  "supersedes": null,
+  "superseded_by": null,
+  "created_at": "2026-10-11T20:30:00+00:00",
+  "updated_at": "2026-10-11T20:30:00+00:00"
+}

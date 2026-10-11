@@ -1,0 +1,49 @@
+{
+  "id": "IB-0012",
+  "schema_version": "1.0",
+  "title": "The Intel Intake Law",
+  "principle": "When intel arrives: distill it, place it, track it, implement it — filing without implementing is hoarding.",
+  "source": {
+    "who": "Shawn",
+    "when": "2026-10-11",
+    "context": "'Do your job right!' — the pipeline for every Shawn input."
+  },
+  "evidence": [
+    {
+      "kind": "direct-word",
+      "ref": "AGENTS.md: The Intel Intake Law",
+      "note": "Shawn's standing order."
+    },
+    {
+      "kind": "code",
+      "ref": "~/workspace/bin/intel_intake.py (local pipeline, not yet canonical)",
+      "note": "Local intake pipeline implements distill/place/track; canonical governed path is the graduation next step."
+    }
+  ],
+  "applicability": {
+    "topics": [
+      "learning",
+      "process",
+      "intel"
+    ],
+    "situations": "Receiving any insight, framework, or correction from Shawn.",
+    "decisions": "What to do with incoming intelligence."
+  },
+  "verification_status": "APPLIED",
+  "status_history": [
+    {
+      "status": "APPLIED",
+      "at": "2026-10-11T20:30:00+00:00",
+      "note": "Seed migration from AGENTS.md standing laws, 2026-10-11."
+    }
+  ],
+  "graduation": {
+    "stage": "briefing",
+    "next_step": "Graduate to code-gate: replace the local-only script with a canonical path that creates governed intelligence objects.",
+    "enforced_by": null
+  },
+  "supersedes": null,
+  "superseded_by": null,
+  "created_at": "2026-10-11T20:30:00+00:00",
+  "updated_at": "2026-10-11T20:30:00+00:00"
+}

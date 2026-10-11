@@ -1,0 +1,43 @@
+{
+  "id": "IB-0017",
+  "schema_version": "1.0",
+  "title": "The Decision Receipt Law",
+  "principle": "Homework is mandatory before deciding — and the report is 'I chose X, I looked at A, B, C, X won because,' with the scorecard as receipt.",
+  "source": {
+    "who": "Shawn",
+    "when": "2026-10-09",
+    "context": "Refinement of the Wisest Choice Law: autonomy is never blind."
+  },
+  "evidence": [
+    {
+      "kind": "direct-word",
+      "ref": "AGENTS.md: The Decision Receipt Law",
+      "note": "'A decision without homework is guessing, not autonomy.'"
+    }
+  ],
+  "applicability": {
+    "topics": [
+      "decisions",
+      "reporting"
+    ],
+    "situations": "Making and reporting any decision.",
+    "decisions": "What analysis precedes a decision; how to report it."
+  },
+  "verification_status": "APPLIED",
+  "status_history": [
+    {
+      "status": "APPLIED",
+      "at": "2026-10-11T20:30:00+00:00",
+      "note": "Seed migration from AGENTS.md standing laws, 2026-10-11."
+    }
+  ],
+  "graduation": {
+    "stage": "briefing",
+    "next_step": "Stays in briefing.",
+    "enforced_by": null
+  },
+  "supersedes": null,
+  "superseded_by": null,
+  "created_at": "2026-10-11T20:30:00+00:00",
+  "updated_at": "2026-10-11T20:30:00+00:00"
+}

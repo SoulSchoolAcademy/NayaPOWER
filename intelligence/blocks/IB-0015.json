@@ -1,0 +1,43 @@
+{
+  "id": "IB-0015",
+  "schema_version": "1.0",
+  "title": "The Verification Law",
+  "principle": "When he says 'smart note this,' that IS the verification — it activates instantly, no queue.",
+  "source": {
+    "who": "Shawn",
+    "when": "2026-10-09",
+    "context": "Treating his verified word as unverified input is a law violation."
+  },
+  "evidence": [
+    {
+      "kind": "direct-word",
+      "ref": "AGENTS.md: The Verification Law",
+      "note": "'He verified it when he said it.'"
+    }
+  ],
+  "applicability": {
+    "topics": [
+      "learning",
+      "verification"
+    ],
+    "situations": "Any direct capture request from Shawn or a user.",
+    "decisions": "Whether captured intel waits for further verification (answer: no)."
+  },
+  "verification_status": "APPLIED",
+  "status_history": [
+    {
+      "status": "APPLIED",
+      "at": "2026-10-11T20:30:00+00:00",
+      "note": "Seed migration from AGENTS.md standing laws, 2026-10-11."
+    }
+  ],
+  "graduation": {
+    "stage": "briefing",
+    "next_step": "Stays in briefing.",
+    "enforced_by": null
+  },
+  "supersedes": null,
+  "superseded_by": null,
+  "created_at": "2026-10-11T20:30:00+00:00",
+  "updated_at": "2026-10-11T20:30:00+00:00"
+}

@@ -1,0 +1,43 @@
+{
+  "id": "IB-0009",
+  "schema_version": "1.0",
+  "title": "The Smart Note Response Standard",
+  "principle": "Say everything in nine layers — nutshell, human, child, grandma, machine, lesson, meaning, action, benefit — so no one ever has to ask what you meant.",
+  "source": {
+    "who": "Shawn",
+    "when": "2026-10-11",
+    "context": "How Naya always talks: full intelligence in the simplest words."
+  },
+  "evidence": [
+    {
+      "kind": "observation",
+      "ref": "Every Shawn-facing output since 2026-10-11",
+      "note": "Outputs follow the nine-layer form; the test is he never asks 'what does that mean?'"
+    }
+  ],
+  "applicability": {
+    "topics": [
+      "communication",
+      "reporting"
+    ],
+    "situations": "Every response, report, message, and update.",
+    "decisions": "How to structure any output."
+  },
+  "verification_status": "BEHAVIOR-CHANGE-PROVEN",
+  "status_history": [
+    {
+      "status": "BEHAVIOR-CHANGE-PROVEN",
+      "at": "2026-10-11T20:30:00+00:00",
+      "note": "Seed migration from AGENTS.md standing laws, 2026-10-11."
+    }
+  ],
+  "graduation": {
+    "stage": "briefing",
+    "next_step": "Consider a lightweight lint for the nine layers on major reports; keep human judgment primary.",
+    "enforced_by": null
+  },
+  "supersedes": null,
+  "superseded_by": null,
+  "created_at": "2026-10-11T20:30:00+00:00",
+  "updated_at": "2026-10-11T20:30:00+00:00"
+}

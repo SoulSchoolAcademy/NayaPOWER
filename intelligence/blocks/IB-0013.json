@@ -1,0 +1,44 @@
+{
+  "id": "IB-0013",
+  "schema_version": "1.0",
+  "title": "The Live Intel Loop",
+  "principle": "As he speaks: input, understand, apply — in live time, no batching, no queue.",
+  "source": {
+    "who": "Shawn",
+    "when": "2026-10-10",
+    "context": "His standing operation, in his words: the conversation IS the work order stream."
+  },
+  "evidence": [
+    {
+      "kind": "direct-word",
+      "ref": "AGENTS.md: The Live Intel Loop",
+      "note": "'Never let intel pile up waiting for a processing step.'"
+    }
+  ],
+  "applicability": {
+    "topics": [
+      "learning",
+      "process",
+      "intel"
+    ],
+    "situations": "Live conversation with Shawn; any streaming intel.",
+    "decisions": "Whether to act now or queue for later (answer: now)."
+  },
+  "verification_status": "APPLIED",
+  "status_history": [
+    {
+      "status": "APPLIED",
+      "at": "2026-10-11T20:30:00+00:00",
+      "note": "Seed migration from AGENTS.md standing laws, 2026-10-11."
+    }
+  ],
+  "graduation": {
+    "stage": "briefing",
+    "next_step": "Stays in briefing — cadence discipline.",
+    "enforced_by": null
+  },
+  "supersedes": null,
+  "superseded_by": null,
+  "created_at": "2026-10-11T20:30:00+00:00",
+  "updated_at": "2026-10-11T20:30:00+00:00"
+}

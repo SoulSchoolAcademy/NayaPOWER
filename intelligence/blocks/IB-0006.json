@@ -1,0 +1,49 @@
+{
+  "id": "IB-0006",
+  "schema_version": "1.0",
+  "title": "The Builder-Scorer Loop",
+  "principle": "Build, score honestly, fix everything, score again — three rounds minimum, then ship.",
+  "source": {
+    "who": "Shawn",
+    "when": "2026-10-11",
+    "context": "The permanent process: no waiting, no bottlenecks, no gating on feedback."
+  },
+  "evidence": [
+    {
+      "kind": "receipt",
+      "ref": "PR #2368 merge",
+      "note": "Triple self-scorecard 9.2, 30/30 tests, receipt present."
+    },
+    {
+      "kind": "receipt",
+      "ref": "PRs #2371/#2372/#2373 merges 2026-10-11",
+      "note": "All merged through the loop with scorecards 9.0–9.7."
+    }
+  ],
+  "applicability": {
+    "topics": [
+      "process",
+      "quality",
+      "merging"
+    ],
+    "situations": "Producing any work product: code, docs, decisions.",
+    "decisions": "Whether work is ready to merge; how to improve it."
+  },
+  "verification_status": "BEHAVIOR-CHANGE-PROVEN",
+  "status_history": [
+    {
+      "status": "BEHAVIOR-CHANGE-PROVEN",
+      "at": "2026-10-11T20:30:00+00:00",
+      "note": "Seed migration from AGENTS.md standing laws, 2026-10-11."
+    }
+  ],
+  "graduation": {
+    "stage": "code-gate",
+    "next_step": "Mechanical enforcement gate merged (#2368); extend to non-code work products.",
+    "enforced_by": "builder-scorer enforcement gate (#2368)"
+  },
+  "supersedes": null,
+  "superseded_by": null,
+  "created_at": "2026-10-11T20:30:00+00:00",
+  "updated_at": "2026-10-11T20:30:00+00:00"
+}
