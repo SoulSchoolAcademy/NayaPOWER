@@ -11,6 +11,7 @@ Stored information is not learned information.
 | File | Purpose |
 |---|---|
 | [0001-LEARNING-CONTRACT-V1.md](./0001-LEARNING-CONTRACT-V1.md) | Core learning rules and lifecycle |
+| [0002-COMPOUNDING-EXPERIMENT-SPEC-V1.md](./0002-COMPOUNDING-EXPERIMENT-SPEC-V1.md) | Four-arm compounding experiment: control / treatment / adversarial / successor — behavioral measures |
 
 ## Key Principles
 
