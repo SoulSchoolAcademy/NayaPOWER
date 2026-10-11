@@ -910,6 +910,10 @@ def execute_plan(plan: ActionPlan,
     # responsibility. Close, don't widen: no new None-producing seam.
     if plan.law12_proof is not None:
         proof_ctx = ProofContext(
+            actor_id=actor_id,
+            operation=_infer_operation(plan.chosen.action),
+            environment=environment,
+            resource=plan.authority.scope,
             source_sha=source_sha if source_sha is not None else UNBOUND,
             policy_version=LAW_POLICY_VERSION,
             policy_hash=UNBOUND,

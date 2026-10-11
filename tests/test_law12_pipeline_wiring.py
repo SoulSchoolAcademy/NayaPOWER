@@ -62,7 +62,8 @@ def _plan(**kw):
 
 
 def _execute(plan, now=NOW, source_sha="sha-aaa",
-             resource_state_digest="rs-1", calls=None, authority=None):
+             resource_state_digest="rs-1", calls=None, authority=None,
+             environment="development"):
     calls = calls if calls is not None else []
     auth = authority or _authority(decided_at=now - 60)
     receipt = ap.execute_plan(
@@ -71,6 +72,7 @@ def _execute(plan, now=NOW, source_sha="sha-aaa",
         re_resolve=lambda: auth,
         now=now,
         profile=_profile(),
+        environment=environment,
         source_sha=source_sha,
         resource_state_digest=resource_state_digest,
     )
@@ -129,13 +131,16 @@ def test_execute_refuses_on_expired_proof_window():
 
 
 def test_execute_refuses_on_unbound_sha_when_execute_binds():
-    # T-19 Evidence Binding Law: plan never bound a SHA, but "write"
-    # requires source_sha as a mandatory binding. The proof cannot be
-    # honored — UNBOUND on a mandatory field is MISSING_BINDING, even
+    # T-19 Evidence Binding Law: plan never bound a SHA, but a production
+    # "write" requires source_sha as a mandatory binding. The proof cannot
+    # be honored — UNBOUND on a mandatory field is MISSING_BINDING, even
     # when the execute-time context binds a SHA. The plan must pin what
     # the operation requires; execute cannot backfill it.
-    plan, _ = ap.plan_action(_authority(), [_candidate()], _profile(), now=NOW)
-    receipt, calls = _execute(plan, now=NOW + 5, source_sha="sha-aaa")
+    plan, _ = ap.plan_action(
+        _authority(), [_candidate()], _profile(), now=NOW,
+        environment="production")
+    receipt, calls = _execute(plan, now=NOW + 5, source_sha="sha-aaa",
+                              environment="production")
     assert receipt.phase == "EXECUTION_REFUSED" and not calls
 
 

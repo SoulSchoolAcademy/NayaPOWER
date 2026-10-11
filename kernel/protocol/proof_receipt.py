@@ -62,6 +62,10 @@ INTEGRITY_TAMPERED = "INTEGRITY_TAMPERED"
 # assumption set that changed since the proof was issued.
 MISSING_BINDING = "MISSING_BINDING"
 ASSUMPTION_CHANGED = "ASSUMPTION_CHANGED"
+# T-19 GAP 2: the receipt's bound identity (who/what/where/on-what) does not
+# match the current execution context. A staging proof never validates a
+# production action, even when every digest matches.
+IDENTITY_MISMATCH = "IDENTITY_MISMATCH"
 
 # REQUIRED_BINDINGS — which receipt fields are MANDATORY for each operation.
 # A mandatory field left UNBOUND fails validation outright (MISSING_BINDING):
@@ -98,6 +102,31 @@ def required_bindings_for(operation: str) -> tuple[str, ...]:
     """The mandatory binding fields for an operation. Unknown operations
     fall back to the "*" default — never to an empty set."""
     return REQUIRED_BINDINGS.get(operation, REQUIRED_BINDINGS["*"])
+
+
+def mandatory_bindings(operation: str, environment: str) -> tuple[str, ...]:
+    """Mandatory binding fields for an operation in an environment.
+
+    Production (and staging) consequential operations must pin their
+    exact source, governing policy, and authority scope. Development,
+    test, and read-only operations carry no mandatory bindings — the
+    honest-UNBOUND design is preserved where the action type does not
+    demand strictness.
+    """
+    if environment not in ("production", "staging"):
+        return ()
+    if operation in ("deploy", "migrate", "delete", "grant", "merge", "write"):
+        return ("source_sha", "policy_version", "scope")
+    return ()
+
+
+def missing_mandatory_bindings(receipt: ProofReceipt) -> tuple[str, ...]:
+    """Which mandatory fields are UNBOUND on this receipt, for its own
+    operation and environment. Empty tuple means the receipt is complete."""
+    required = mandatory_bindings(receipt.operation, receipt.environment)
+    return tuple(
+        f for f in required if getattr(receipt, f, UNBOUND) == UNBOUND
+    )
 
 # Re-verification outcomes.
 STILL_VALID = "STILL_VALID"
@@ -235,6 +264,10 @@ def issue_proof_receipt(
 @dataclass(frozen=True)
 class ProofContext:
     """The current world, against which a receipt's bound world is checked."""
+    actor_id: str = UNBOUND
+    operation: str = UNBOUND
+    environment: str = UNBOUND
+    resource: str = UNBOUND
     source_sha: str = UNBOUND
     policy_version: str = UNBOUND
     policy_hash: str = UNBOUND
@@ -256,6 +289,9 @@ def check_proof_validity(
       0. MISSING_BINDING — a MANDATORY binding field was left UNBOUND.
          Unknown never becomes valid: if the proof does not pin what it
          must pin, it cannot be honored. (T-19 Evidence Binding Law.)
+      0b. IDENTITY_MISMATCH — the receipt's bound identity (actor, operation,
+         environment, resource) differs from the current execution context.
+         A staging proof never validates a production action. (T-19 GAP 2.)
       1. INTEGRITY_TAMPERED — the receipt itself was altered. Never trusted.
       2. REVOKED — the bound revocation reference was exercised.
       3. EXPIRED — the validity window passed.
@@ -275,14 +311,32 @@ def check_proof_validity(
     """
     # 0. Mandatory bindings: UNBOUND on a required field is a hard fail.
     #    A proof that does not pin what it must pin proves nothing.
+    #    Environment-aware: development/test/read-only operations carry no
+    #    mandatory bindings — the honest-UNBOUND design is preserved where
+    #    the action type does not demand strictness.
     required = (
         required_bindings
         if required_bindings is not None
-        else required_bindings_for(receipt.operation)
+        else mandatory_bindings(receipt.operation, receipt.environment)
     )
     for field_name in required:
         if getattr(receipt, field_name, UNBOUND) == UNBOUND:
             return False, MISSING_BINDING
+    # 0b. Identity match (T-19 GAP 2): the receipt's bound identity must
+    #     match the current execution context. A staging proof never
+    #     validates a production action, even when every digest matches.
+    #     Only compared when BOTH sides are bound — UNBOUND on either side
+    #     means "not pinned," which the mandatory check above already
+    #     handled for required fields.
+    for field_name in ("actor_id", "operation", "environment", "resource"):
+        receipt_val = getattr(receipt, field_name, UNBOUND)
+        context_val = getattr(context, field_name, UNBOUND)
+        if (
+            receipt_val != UNBOUND
+            and context_val != UNBOUND
+            and receipt_val != context_val
+        ):
+            return False, IDENTITY_MISMATCH
     # 1. Tamper: a receipt that does not match its own digest is unusable.
     if not receipt.integrity_ok():
         return False, INTEGRITY_TAMPERED

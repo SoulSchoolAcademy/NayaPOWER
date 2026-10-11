@@ -145,9 +145,10 @@ def test_unbound_fields_neither_validate_nor_invalidate():
 
 def test_missing_mandatory_binding_fails():
     # T-19 Evidence Binding Law: a mandatory binding left UNBOUND fails
-    # validation outright. "write" requires source_sha; a receipt that
-    # never pinned it cannot be honored, no matter what the context says.
-    r = _receipt(source_sha=UNBOUND)
+    # validation outright. A production "write" requires source_sha; a
+    # receipt that never pinned it cannot be honored, no matter what the
+    # context says.
+    r = _receipt(environment="production", source_sha=UNBOUND)
     valid, event = check_proof_validity(r, _ctx())
     assert not valid and event == MISSING_BINDING
 
@@ -156,7 +157,7 @@ def test_missing_mandatory_binding_fails_even_when_context_unbound():
     # The failure is about the receipt's incompleteness, not a mismatch:
     # even if the context also leaves the field unbound, a mandatory
     # UNBOUND on the receipt is still MISSING_BINDING.
-    r = _receipt(source_sha=UNBOUND)
+    r = _receipt(environment="production", source_sha=UNBOUND)
     valid, event = check_proof_validity(r, _ctx(source_sha=UNBOUND))
     assert not valid and event == MISSING_BINDING
 

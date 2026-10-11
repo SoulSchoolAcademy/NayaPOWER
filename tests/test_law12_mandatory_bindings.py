@@ -14,8 +14,9 @@ import pytest
 
 from kernel import act_pipeline as ap
 from kernel.protocol.proof_receipt import (
+    IDENTITY_MISMATCH,
     LAW_POLICY_VERSION,
-    MANDATORY_BINDING_MISSING,
+    MISSING_BINDING,
     REVERIFY,
     STILL_VALID,
     UNBOUND,
@@ -90,21 +91,21 @@ def test_production_deploy_missing_sha_fails():
     assert missing_mandatory_bindings(r) == ("source_sha",)
     valid, event = check_proof_validity(r, _ctx())
     assert not valid
-    assert event == MANDATORY_BINDING_MISSING
+    assert event == MISSING_BINDING
 
 
 def test_production_deploy_missing_policy_version_fails():
     r = _receipt(policy_version=UNBOUND)
     valid, event = check_proof_validity(r, _ctx())
     assert not valid
-    assert event == MANDATORY_BINDING_MISSING
+    assert event == MISSING_BINDING
 
 
 def test_production_deploy_missing_scope_fails():
     r = _receipt(scope=UNBOUND)
     valid, event = check_proof_validity(r, _ctx())
     assert not valid
-    assert event == MANDATORY_BINDING_MISSING
+    assert event == MISSING_BINDING
 
 
 def test_production_deploy_complete_stays_valid():
@@ -134,7 +135,7 @@ def test_mandatory_check_runs_before_world_comparison():
     r = _receipt(source_sha=UNBOUND)
     valid, event = check_proof_validity(r, _ctx(source_sha="sha-moved"))
     assert not valid
-    assert event == MANDATORY_BINDING_MISSING
+    assert event == MISSING_BINDING
 
 
 def test_reverify_maps_missing_binding_to_reverify():
@@ -189,7 +190,7 @@ def _candidate(cid="p1", **kw):
 def test_execute_refuses_production_deploy_with_unbound_sha():
     # The acceptance test: a production deploy proof with UNBOUND
     # source_sha cannot execute — PLAN_PROOF_STALE names the
-    # MANDATORY_BINDING_MISSING event.
+    # MISSING_BINDING event.
     proof = _receipt(source_sha=UNBOUND, scope="service_deploy")
     candidate = _candidate()
     plan = ap.ActionPlan(
@@ -209,12 +210,21 @@ def test_execute_refuses_production_deploy_with_unbound_sha():
     )
     assert receipt.phase == "EXECUTION_REFUSED"
     assert ap.PLAN_PROOF_STALE in receipt.codes
-    assert MANDATORY_BINDING_MISSING in receipt.evidence[0]
+    assert MISSING_BINDING in receipt.evidence[0]
     assert calls == []
 
 
 def test_execute_allows_production_deploy_with_complete_bindings():
-    proof = _receipt(scope="service_deploy")
+    # Proof identity must match the execution context (T-19 GAP 2).
+    # Note: execute_plan infers the canonical operation from the action,
+    # so the proof must use the inferred form ("deploy", not "service_deploy").
+    proof = _receipt(
+        operation="deploy",
+        actor_id="act_pipeline",
+        environment="production",
+        resource="service_deploy",
+        scope="service_deploy",
+    )
     candidate = _candidate()
     plan = ap.ActionPlan(
         plan_id="prod-deploy-2", action="service_deploy", chosen=candidate,
@@ -233,3 +243,40 @@ def test_execute_allows_production_deploy_with_complete_bindings():
     )
     assert receipt.phase == "EXECUTION_COMPLETED"
     assert calls == ["prod-deploy-2"]
+
+
+# --- T-19 GAP 2: identity fields compared ---
+
+def test_staging_receipt_fails_against_production_context():
+    """A staging proof never validates a production action, even when every
+    digest matches. This is the GAP 2 regression test."""
+    r = _receipt(environment="staging")
+    ctx = _ctx(environment="production")
+    valid, event = check_proof_validity(r, ctx)
+    assert not valid
+    assert event == IDENTITY_MISMATCH
+
+
+def test_identity_match_passes_when_all_fields_agree():
+    r = _receipt(environment="staging", actor_id="naya-2",
+                operation="deploy", resource="service")
+    ctx = _ctx(environment="staging", actor_id="naya-2",
+               operation="deploy", resource="service")
+    valid, event = check_proof_validity(r, ctx)
+    assert valid, event
+    assert event is None
+
+
+def test_identity_mismatch_each_field():
+    """Each of the four identity fields independently triggers the mismatch."""
+    for field, receipt_val, ctx_val in [
+        ("actor_id", "naya-2", "naya-4"),
+        ("operation", "deploy", "write"),
+        ("environment", "staging", "production"),
+        ("resource", "service", "other-service"),
+    ]:
+        r = _receipt(**{field: receipt_val})
+        ctx = _ctx(**{field: ctx_val})
+        valid, event = check_proof_validity(r, ctx)
+        assert not valid, field
+        assert event == IDENTITY_MISMATCH, field

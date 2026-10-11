@@ -202,6 +202,10 @@ def execute_checked(
 
     # 2. Law 12: the plan-time proof must still be valid in the fresh world.
     proof_ctx = ProofContext(
+        actor_id=typed_action.actor_id,
+        operation=typed_action.operation,
+        environment=typed_action.environment,
+        resource=planned_resource,
         source_sha=fresh_context.source_sha,
         policy_version=fresh_context.policy_version,
         policy_hash=fresh_context.policy_hash,
