@@ -1,0 +1,57 @@
+"""Directive Register Sync gate.
+
+Wires the machine-readable directive register into the PR merge path.
+
+Every PR that changes a governance document (BRAIN/01-GOVERNANCE/**) gets
+every master-directive reference (D<n>) validated against
+BRAIN/01-GOVERNANCE/directive-register.json — the single source of truth.
+
+  - Reference to an unregistered directive (D66+, or D8-D65 missing from
+    the register) -> check RED. Stale/phantom references cannot merge.
+  - Register unloadable (missing/corrupt) -> check RED (fail-closed).
+  - D1-D7 references are out of scope (meta-governance, excluded per
+    Shawn's scoping) and never fail the check.
+
+This is an ENFORCEMENT gate, not a suggestion. If it is red, the PR does
+not merge.
+"""
+name: Directive Register Sync
+
+on:
+  pull_request:
+    paths:
+      - 'BRAIN/01-GOVERNANCE/**'
+      - 'tools/directive_register.py'
+      - 'tools/directive_register_sync.py'
+      - 'tools/tests/test_directive_register_sync.py'
+      - '.github/workflows/directive-register-sync.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'BRAIN/01-GOVERNANCE/directive-register.json'
+      - 'tools/directive_register.py'
+      - 'tools/directive_register_sync.py'
+
+jobs:
+  directive-register-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Validate directive references in changed governance docs
+        run: |
+          BASE="${{ github.base_ref }}"
+          BASE="${BASE:-main}"
+          python3 tools/directive_register_sync.py --repo . --diff-base "origin/$BASE"
+
+      - name: Run sync gate test suite
+        run: |
+          python3 -m pytest tools/tests/test_directive_register_sync.py -v -p no:cacheprovider
