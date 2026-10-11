@@ -18,10 +18,14 @@ is run through the calculus's gate_candidate hard gates. A candidate the
 calculus verdicts PROHIBITED — hard violation, any explicit unsafe flag
 (LAW/RIGHTS/PRIVACY/SAFETY = False), tail risk at or above policy
 threshold, or distributional harm at or above policy maximum — can never
-win and can never execute: harm is zero-valued, not optional. Prohibited
-candidates are excluded from selection with their governing reasons
-recorded as receipt evidence; if nothing admissible remains, planning is
-refused with PLAN_SAFETY_PROHIBITED. NEEDS_AUTHORITY routing continues to
+win and can never execute: harm is zero-valued, not optional. A candidate
+the calculus verdicts NEEDS_EVIDENCE — critical safety evidence unresolved —
+is likewise excluded: it can never win and can never execute until the
+evidence is supplied. Prohibited candidates are excluded from selection with
+their governing reasons recorded as receipt evidence; if nothing admissible
+remains, planning is refused with PLAN_SAFETY_PROHIBITED (or
+PLAN_SAFETY_NEEDS_EVIDENCE when the blockers are evidence gaps, not hard
+violations). NEEDS_AUTHORITY routing continues to
 be governed by the LAW authority record (the LAW node's seam, not this
 one): this seam enforces the harm hard stops, nothing else is weakened.
 
@@ -51,6 +55,7 @@ from typing import Any, Callable, Sequence
 
 from kernel.memory_store import MemoryStore
 from kernel.value_calculus import (
+    NEEDS_EVIDENCE,
     PROHIBITED,
     Candidate,
     PVEstimate,
@@ -75,6 +80,7 @@ PLAN_OUTCOME_UNDEFINED = "PLAN_OUTCOME_UNDEFINED"
 PLAN_PROOF_UNDEFINED = "PLAN_PROOF_UNDEFINED"
 PLAN_CANDIDATE_MISMATCH = "PLAN_CANDIDATE_MISMATCH"
 PLAN_SAFETY_PROHIBITED = "PLAN_SAFETY_PROHIBITED"
+PLAN_SAFETY_NEEDS_EVIDENCE = "PLAN_SAFETY_NEEDS_EVIDENCE"
 
 _REVERSIBLE_VALUES = ("REVERSIBLE", "IRREVERSIBLE", "UNKNOWN")
 _STAKE_ORDER = {"low": 0, "medium": 1, "high": 2}
@@ -339,10 +345,12 @@ def plan_action(authority: LawAuthority,
     here — planning never executes.
 
     Do-no-harm enforcement: every candidate is hard-gated through the
-    calculus's gate_candidate BEFORE selection. PROHIBITED candidates are
-    excluded and can never win or execute; the exclusion reasons are
-    recorded as receipt evidence. When nothing admissible remains the plan
-    is refused with PLAN_SAFETY_PROHIBITED. NEEDS_AUTHORITY verdicts remain
+    calculus's gate_candidate BEFORE selection. PROHIBITED and NEEDS_EVIDENCE
+    candidates are excluded and can never win or execute; the exclusion
+    reasons are recorded as receipt evidence. When nothing admissible remains
+    the plan is refused with PLAN_SAFETY_PROHIBITED (hard violations) or
+    PLAN_SAFETY_NEEDS_EVIDENCE (unresolved critical safety evidence).
+    NEEDS_AUTHORITY verdicts remain
     governed by the LAW authority record (the LAW node's seam): this seam
     enforces the harm hard stops only, and weakens nothing.
     """
@@ -372,25 +380,34 @@ def plan_action(authority: LawAuthority,
 
     # --- Do-no-harm hard gate (safety floor). Fail closed: a PROHIBITED
     # candidate gets zero value — it is excluded from selection entirely.
+    # A NEEDS_EVIDENCE candidate is likewise excluded: unresolved critical
+    # safety evidence must never reach selection or execution.
     risk = risk_policy if risk_policy is not None else RiskPolicy()
     admissible: list[PlanCandidate] = []
-    excluded: list[tuple[str, list[str]]] = []  # (candidate_id, gate reasons)
+    excluded: list[tuple[str, str, list[str]]] = []  # (candidate_id, gate verdict, gate reasons)
     for c in candidates:
         gate, reasons, _q = gate_candidate(_candidate_to_calculus(c), profile, risk)
-        if gate == PROHIBITED:
-            excluded.append((c.candidate_id, reasons))
+        if gate in (PROHIBITED, NEEDS_EVIDENCE):
+            excluded.append((c.candidate_id, gate, reasons))
         else:
             admissible.append(c)
     if not admissible:
-        detail = "; ".join(f"{cid} [{', '.join(rs)}]" for cid, rs in excluded)
+        detail = "; ".join(f"{cid} [{verdict}: {', '.join(rs)}]" for cid, verdict, rs in excluded)
+        if any(verdict == PROHIBITED for _, verdict, _ in excluded):
+            return refused(
+                PLAN_SAFETY_PROHIBITED,
+                evidence=f"all {len(candidates)} candidate(s) PROHIBITED by the "
+                         f"do-no-harm gate; nothing admissible to execute. {detail}",
+            )
         return refused(
-            PLAN_SAFETY_PROHIBITED,
-            evidence=f"all {len(candidates)} candidate(s) PROHIBITED by the "
-                     f"do-no-harm gate; nothing admissible to execute. {detail}",
+            PLAN_SAFETY_NEEDS_EVIDENCE,
+            evidence=f"all {len(candidates)} candidate(s) NEEDS_EVIDENCE by the "
+                     f"do-no-harm gate; critical safety evidence unresolved, "
+                     f"nothing admissible to execute. {detail}",
         )
     gate_evidence = tuple(
-        f"candidate {cid} EXCLUDED by do-no-harm gate: {', '.join(rs)}"
-        for cid, rs in excluded
+        f"candidate {cid} EXCLUDED by do-no-harm gate [{verdict}]: {', '.join(rs)}"
+        for cid, verdict, rs in excluded
     )
 
     chosen, scores = _select_minimum_sufficient(admissible, profile)
@@ -439,8 +456,9 @@ def execute_plan(plan: ActionPlan,
     through the calculus's gate_candidate at the last responsible moment,
     immediately before the executor fires. A plan hand-crafted outside
     plan_action — or a candidate whose safety status changed after planning
-    — can never reach the executor while PROHIBITED: it is refused with
-    PLAN_SAFETY_PROHIBITED. NEEDS_AUTHORITY verdicts stay governed by the
+    — can never reach the executor while PROHIBITED or NEEDS_EVIDENCE: it is
+    refused with PLAN_SAFETY_PROHIBITED or PLAN_SAFETY_NEEDS_EVIDENCE
+    respectively. NEEDS_AUTHORITY verdicts stay governed by the
     LAW authority record (the LAW node's seam); this seam enforces the harm
     hard stops only and weakens nothing. Pass the same profile (and risk
     policy) used at plan time so the verdict is a re-verification, not a
@@ -486,7 +504,9 @@ def execute_plan(plan: ActionPlan,
     # the gate is re-verified at the last responsible moment, immediately
     # before the executor fires. A PROHIBITED chosen candidate — whether
     # hand-crafted outside plan_action or changed after planning — is
-    # refused here; the executor is never called.
+    # refused here; the executor is never called. A NEEDS_EVIDENCE chosen
+    # candidate is likewise refused: unresolved critical safety evidence
+    # must never reach the executor.
     risk = risk_policy if risk_policy is not None else RiskPolicy()
     gate, reasons, _q = gate_candidate(_candidate_to_calculus(plan.chosen), profile, risk)
     gate_evidence = (f"execution-time do-no-harm re-gate: candidate "
@@ -494,6 +514,8 @@ def execute_plan(plan: ActionPlan,
                      + (f" [{', '.join(reasons)}]" if reasons else ""))
     if gate == PROHIBITED:
         return refused(PLAN_SAFETY_PROHIBITED, evidence=gate_evidence)
+    if gate == NEEDS_EVIDENCE:
+        return refused(PLAN_SAFETY_NEEDS_EVIDENCE, evidence=gate_evidence)
 
     try:
         observed = executor(plan)
