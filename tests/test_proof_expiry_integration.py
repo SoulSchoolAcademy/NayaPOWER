@@ -33,12 +33,17 @@ def _valid_receipt():
 
 
 def _base_state():
+    # Fixtures reflect the CURRENT cold-start gate contract (Law 11 v2):
+    # the authority summary must acknowledge Law 11 (do no harm) as the
+    # only hard law, and truth must reference the mission-state feed and
+    # current main (#1354 is archived).
     return ColdStartState(
         agent_id="test-agent",
         human_director="Shawn",
         lane="test",
-        authority_summary="production, credentials, money, destructive, ratification",
-        current_truth_location="feed #1354 and main",
+        authority_summary="production, credentials, money, destructive, ratification; "
+                          "Law 11 (do no harm) is the only hard law",
+        current_truth_location="mission-state feed #2154 and current main",
         next_action="do the work",
         receipt=_valid_receipt(),
     )
@@ -158,6 +163,13 @@ def _make_plan_parts(parts):
         reversibility="REVERSIBLE",
         expected_outcome="test",
         proof_requirements=(),
+        # Law 11 (do no harm) is the only hard law: its execution-door
+        # recheck runs BEFORE the Law 12 seam in execute_plan. A bare
+        # candidate fails the door closed (UNKNOWN rights/safety/privacy ->
+        # NEEDS_EVIDENCE) and never reaches the Law 12 check, so these
+        # tests declare the safety facts they know to actually exercise
+        # the Law 12 seam under test.
+        rights_safe=True, safety_safe=True, privacy_safe=True,
     )
     plan = ActionPlan(
         plan_id="plan-1", action="test-action", chosen=candidate,
