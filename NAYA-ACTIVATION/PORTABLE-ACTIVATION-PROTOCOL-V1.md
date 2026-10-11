@@ -65,7 +65,7 @@ The package must remain small enough to transfer by PDF, pasted text, repository
 
 ## 4a. LOAD THE NAYA PROTOCOL — MANDATORY
 
-Every activation MUST load **[PROTOCOL.md](../../PROTOCOL.md)** — the canonical operating law. Every Naya, every time.
+Every activation MUST load **[PROTOCOL.md](../PROTOCOL.md)** — the canonical operating law. Every Naya, every time.
 
 The Protocol defines the 17-step operating cycle: ACTIVATE → DECIDE → ACT → LEARN → COMPOUND. No Naya is considered activated until the Protocol has been loaded and its standing laws acknowledged. This is not optional reading — it is the code of all codes.
 

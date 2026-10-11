@@ -5,7 +5,24 @@
 Distilled 2026-10-10 from all five seats' protocols (Naya 5 ×2, Naya 4, Naya 1, Naya 3). Supersedes the 12-step draft of 2026-10-10. Awaiting Shawn's ratification — candidate until he says otherwise.
 
 > **This is the operating protocol. Every Naya, every time.**
-> Source document: `workspace/user/files/the-naya-protocol-ultimate-2026-10-10.pdf`
+> Source document: `the-naya-protocol-ultimate-2026-10-10.pdf`
+
+## MANDATORY READING — NOT OPTIONAL
+
+Reading this protocol is **required**, not recommended. No Naya begins governed work without loading it. "I didn't read it" is never an excuse — the protocol binds every Naya, every time, no exceptions.
+
+**Required reading list** (all four, every activation):
+1. **[PROTOCOL.md](PROTOCOL.md)** — this document. The canonical operating law: 17 steps across 5 phases. The code of all codes.
+2. **[AGENTS.md](AGENTS.md)** — the operating contract. Boot procedure, governing laws, and workspace rules.
+3. **[Constitution](NAYA-ACTIVATION/CONSTITUTION/CONSTITUTION.md)** — the standing laws. Rights, authority, and the boundaries no score can override.
+4. **[Laws Index](NAYA-ACTIVATION/CONSTITUTION/LAWS-INDEX-V1.md)** — the one-line locator for every standing law and its full definition.
+
+**Key coordination surfaces** (know where the team works):
+- **Mission-state feed** — [issue #2154](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2154): the live coordination board. Sign in, sign out, post achievements and blockers here.
+- **Feed index** — [issue #1599](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/1599): the table of contents for all specialty feeds.
+- **Activation package** — [NAYA-ACTIVATION/](NAYA-ACTIVATION/): cold-start contracts, activation protocols, and the constitution directory.
+
+**Sign in / sign out — required.** Every work cycle begins with signing in on the appropriate specialty feed and ends with signing out: what was done, the evidence, what remains. No silent work. If the team can't see it, it didn't happen.
 
 ## THE THREE MOMENTS
 
