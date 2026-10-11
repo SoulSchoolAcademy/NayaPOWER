@@ -2,6 +2,10 @@
 
 Day divider line for the ledger stream — centered, tracked-out label between day groups.
 
+## Why
+
+A ledger is a story told in days. The centered, tracked-out day divider groups the stream into mornings and evenings — time you can feel passing.
+
 - **Type:** data
 - **Source:** `Ledger Page Design.html` (extracted byte-true, never rewritten)
 - **CSS:** `block.css`

@@ -2,6 +2,10 @@
 
 Share sheet from Missing Blocks library.
 
+## Why
+
+Share sheet. Sending something outward should feel as considered as the thing itself. Sharing feels safe and deliberate, not accidental.
+
 - **Type:** overlays
 - **Source:** `Naya_Lego-blocks.html` (extracted byte-true, never rewritten)
 - **CSS:** `nl-sheet.css`

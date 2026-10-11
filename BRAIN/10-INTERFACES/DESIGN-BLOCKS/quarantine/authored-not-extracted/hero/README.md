@@ -2,6 +2,10 @@
 
 The page opening. Large editorial headline with eyebrow kicker, sub-line, and CTA row.
 
+## Why
+
+The first three seconds of a page decide whether anyone stays. Voice serif at editorial scale, a purple kicker, and a staggered entrance give the opening the weight of a cover, not a header.
+
 - **Type:** type
 - **Source:** authored 2026-10-09 for the Smart Blocks library (composition layer)
 - **CSS:** `hero.css`

@@ -5,6 +5,10 @@ of the Calculator. The arc sweeps in on light with orbit-btn DNA (colored
 trail, white-hot head, rest gap); the number sits at the center in white
 tabular numerals.
 
+## Why
+
+A score needs a face. The jewel ring gauge from 0–10 gives the Calculator’s output a physical presence — you see where you stand before you read the number.
+
 - **Type:** graphs
 - **Source:** authored 2026-10-09 from orbit-btn conic-ring DNA
 - **CSS:** `orbit-dial.css`

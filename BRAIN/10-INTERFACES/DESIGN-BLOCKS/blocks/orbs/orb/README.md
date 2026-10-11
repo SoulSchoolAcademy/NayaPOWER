@@ -2,6 +2,10 @@
 
 Sphere of light. Triple radial-gradient body, orbiting conic ring, light pool beneath.
 
+## Why
+
+Sphere of light — triple radial-gradient body, orbiting conic ring, light pool beneath. Naya's visual soul in a single element: presence made visible. The interface feels alive and watched-over, not mechanical.
+
 - **Type:** orbs
 - **Source:** `Naya_5_Jewel_Library.html` (extracted byte-true, never rewritten)
 - **CSS:** `orb.css`

@@ -4,6 +4,10 @@ Layered spectrum bands showing the composition of a whole over time — a river,
 not a stack of bars. Each band is one series; its thickness at any point is its
 share. The bands drift slowly: the flow never freezes, because the data doesn't.
 
+## Why
+
+Composition is hard to read as numbers. Layered spectrum bands flowing like a river let the eye watch parts become a whole over time — proportion you can feel, not compute.
+
 - **Type:** graphs
 - **Source:** authored 2026-10-09 for the Smart Graphs visual language
 - **CSS:** `spectrum-flow.css`

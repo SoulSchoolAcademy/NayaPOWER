@@ -2,6 +2,10 @@
 
 Truth-state grid: orb + label + explanation per epistemic state. Honesty made visible.
 
+## Why
+
+Epistemic honesty, made visible. Orb plus label plus explanation per truth state — the user sees not just what we know, but how well we know it.
+
 - **Type:** data
 - **Source:** `Naya Design Element Set N4.html` (extracted byte-true, never rewritten)
 - **CSS:** `block.css`

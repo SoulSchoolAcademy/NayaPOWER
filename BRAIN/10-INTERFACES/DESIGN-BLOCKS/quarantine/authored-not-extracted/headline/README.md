@@ -2,6 +2,10 @@
 
 Section titles. 24px per the type scale, white, confident — with optional kicker and jewel marker.
 
+## Why
+
+Section titles are signposts; weak ones leave people lost. The type scale keeps every title in the family, and the diamond jewel marker says ‘this is Naya speaking’ without a word.
+
 - **Type:** type
 - **Source:** authored 2026-10-09 for the Smart Blocks library (composition layer)
 - **CSS:** `headline.css`

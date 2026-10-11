@@ -2,6 +2,10 @@
 
 The page chassis. Full-width black ground — no max-width caps, per the full-width law. Every Smart App page starts here.
 
+## Why
+
+Every page starts here because every page must feel like one product, not a pile of screens. The black ground, focus rings, and motion defaults are decided once, so no surface ever ships on a wrong background or with a hostile focus state.
+
 - **Type:** layout
 - **Source:** authored 2026-10-09 for the Smart Blocks library (composition layer)
 - **CSS:** `page-shell.css`

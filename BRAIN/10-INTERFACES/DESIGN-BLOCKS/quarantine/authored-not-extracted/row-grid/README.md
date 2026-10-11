@@ -2,6 +2,10 @@
 
 Responsive layout. Mobile-first grids, rows, and splits that collapse cleanly.
 
+## Why
+
+Content has to survive the phone in your pocket. Mobile-first grids that collapse cleanly in pure CSS mean the layout never breaks on a small screen — and it costs nothing at runtime to be right.
+
 - **Type:** layout
 - **Source:** authored 2026-10-09 for the Smart Blocks library (composition layer)
 - **CSS:** `row-grid.css`

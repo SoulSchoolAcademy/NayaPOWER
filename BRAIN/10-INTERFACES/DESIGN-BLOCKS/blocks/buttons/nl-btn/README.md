@@ -2,6 +2,10 @@
 
 Generic elevated button from the Missing Blocks library. --tone themable.
 
+## Why
+
+Generic elevated button, --tone themable. The utility player — a solid elevated button in any tone without reaching for the canonical system. Speed: drop it in, set --tone, done.
+
 - **Type:** buttons
 - **Source:** `Naya_Lego-blocks.html` (extracted byte-true, never rewritten)
 - **CSS:** `nl-btn.css`

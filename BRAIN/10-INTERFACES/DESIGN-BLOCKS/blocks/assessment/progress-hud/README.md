@@ -2,6 +2,10 @@
 
 Assessment progress HUD: pill bar with location dot + label, animated track fill, and percent readout.
 
+## Why
+
+Nobody finishes what they can’t see ending. The pill bar with its traveling dot and animated fill answers the only question that matters mid-assessment: am I almost done?
+
 - **Type:** assessment
 - **Source:** `Maxis App Design.html` (extracted byte-true, never rewritten)
 - **CSS:** `block.css`

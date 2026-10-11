@@ -2,6 +2,10 @@
 
 Standard workhorse button. Disciplined, no idle animation. Spectrum theme classes.
 
+## Why
+
+The everyday workhorse — themed glow variants per spectrum color, disciplined, no idle animation. Most actions in an app are ordinary, and ordinary actions deserve a button that doesn't perform. Use for standard actions throughout any app.
+
 - **Type:** buttons
 - **Source:** `Naya_5_Beautiful_Button_set.html` (extracted byte-true, never rewritten)
 - **CSS:** `primo.css`

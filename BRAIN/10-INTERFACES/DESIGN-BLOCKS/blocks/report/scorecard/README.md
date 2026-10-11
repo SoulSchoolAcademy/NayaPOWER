@@ -2,6 +2,10 @@
 
 Scorecard: score rows with dimension label, big glowing Cormorant number, and note. The Calculator's output face.
 
+## Why
+
+The Calculator’s output face. Dimension rows with big glowing Cormorant numbers and honest notes — the score you can read, and the reason beside it.
+
 - **Type:** report
 - **Source:** `Naya Design Elements N2.html` (extracted byte-true, never rewritten)
 - **CSS:** `block.css`

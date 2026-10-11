@@ -2,6 +2,10 @@
 
 9-dimension orb grid (5-col): ring gauge + score + name + status per dimension. The mastery signature.
 
+## Why
+
+Nine dimensions is too many to hold in your head. The orb grid compresses the whole mastery signature into one glance — ring, score, name, status — the shape of how you think.
+
 - **Type:** assessment
 - **Source:** `Maxis App Design.html` (extracted byte-true, never rewritten)
 - **CSS:** `block.css`

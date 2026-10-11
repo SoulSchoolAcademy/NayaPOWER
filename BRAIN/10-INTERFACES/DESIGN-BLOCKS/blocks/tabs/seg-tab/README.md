@@ -2,6 +2,10 @@
 
 Segmented tab from room controls.
 
+## Why
+
+Segmented tab from room controls. When views are siblings, tabs beat navigation — one tap, no journey. Switching contexts feels weightless.
+
 - **Type:** tabs
 - **Source:** `Naya_5_Beautiful_Button_set.html` (extracted byte-true, never rewritten)
 - **CSS:** `seg-tab.css`

@@ -2,6 +2,10 @@
 
 Interest picker: intro block, selectable interest cards with orb + check states, selected pills, skip action.
 
+## Why
+
+Asking what someone cares about should feel like an invitation, not a form. Orb-and-check interest cards with selected pills make choosing feel personal — and the skip action respects ‘not now.’
+
 - **Type:** assessment
 - **Source:** `Maxis App Design.html` (extracted byte-true, never rewritten)
 - **CSS:** `block.css`

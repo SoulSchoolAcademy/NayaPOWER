@@ -2,6 +2,10 @@
 
 Key/value about rows — the About-tab card from the space detail view.
 
+## Why
+
+About is facts, and facts want a clean ledger. Key/value rows give the space’s identity a scannable shape — no prose to wade through, just the record.
+
 - **Type:** lists
 - **Source:** `Smart Spaces Page Design.html` (extracted byte-true, never rewritten)
 - **CSS:** `block.css`

@@ -2,6 +2,10 @@
 
 Toast notification from Missing Blocks library.
 
+## Why
+
+Toast notification. Confirmations shouldn't interrupt — they should arrive, glow, and leave. The user stays in flow and still knows it worked.
+
 - **Type:** overlays
 - **Source:** `Naya_Lego-blocks.html` (extracted byte-true, never rewritten)
 - **CSS:** `nl-toast.css`

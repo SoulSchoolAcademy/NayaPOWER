@@ -2,6 +2,10 @@
 
 The stat ribbon: auto-fit grid, 1px hairline gaps, one stat per cell. The `.unknown` variant renders honest "not yet" states. Also covers the Ledger li-card stat pattern (same grammar).
 
+## Why
+
+Stats want to be read side by side. The auto-fit grid with hairline gaps keeps numbers comparable, and the honest ‘not yet’ variant means an unknown metric admits it instead of faking one.
+
 - **Type:** feed
 - **Source:** `Naya Smart Hub Design.html` (extracted verbatim, never rewritten)
 - **CSS:** `metric-ribbon.css`

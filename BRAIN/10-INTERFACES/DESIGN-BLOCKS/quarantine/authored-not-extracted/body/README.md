@@ -2,6 +2,10 @@
 
 Reading text. 18px minimum per the reading floor, generous leading, high contrast — never gray-on-black.
 
+## Why
+
+Reading is the product’s cheapest interaction and its most abused. An 18px floor, 1.65 leading, and a 68ch measure are the settings that keep long text readable instead of tiring.
+
 - **Type:** type
 - **Source:** authored 2026-10-09 for the Smart Blocks library (composition layer)
 - **CSS:** `body.css`

@@ -3,6 +3,10 @@
 A living orb that breathes with the data. The number sits inside the orb; the
 value drives its diameter and glow. Bigger value = more light, never more ink.
 
+## Why
+
+Numbers lie still; this one breathes. When a value drives the orb’s diameter and glow, the user feels the data before reading it — magnitude you can see at a glance.
+
 - **Type:** graphs
 - **Source:** authored 2026-10-09 from the orb block DNA (`Naya_5_Jewel_Library.html`)
 - **CSS:** `pulse-orb.css`

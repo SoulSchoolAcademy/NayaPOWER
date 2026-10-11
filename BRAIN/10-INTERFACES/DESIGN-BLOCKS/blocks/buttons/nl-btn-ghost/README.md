@@ -2,6 +2,10 @@
 
 Ghost variant button. Minimal chrome.
 
+## Why
+
+Ghost variant, minimal chrome. Secondary actions shouldn't compete with the primary — this one whispers. A quiet alternative that doesn't punish the user for not choosing it.
+
 - **Type:** buttons
 - **Source:** `Naya_Lego-blocks.html` (extracted byte-true, never rewritten)
 - **CSS:** `nl-btn-ghost.css`

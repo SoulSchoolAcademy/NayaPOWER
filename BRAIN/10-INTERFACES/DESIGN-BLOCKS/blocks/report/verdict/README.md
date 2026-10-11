@@ -2,6 +2,10 @@
 
 Verdict display: Cormorant voice serif, centered, 24px/600. The judgment, spoken plainly.
 
+## Why
+
+Judgment should be spoken plainly. Centered voice serif at 24px/600 — the verdict gets the typographic authority of a sentence, not a badge.
+
 - **Type:** report
 - **Source:** `Naya Design Element Set N4.html` (extracted byte-true, never rewritten)
 - **CSS:** `block.css`

@@ -2,6 +2,10 @@
 
 Toggle row with label from Missing Blocks library.
 
+## Why
+
+Toggle row with label. A switch plus its meaning in one row — the standard pattern for settings lists. The user reads once, decides once.
+
 - **Type:** toggles
 - **Source:** `Naya_Lego-blocks.html` (extracted byte-true, never rewritten)
 - **CSS:** `nl-toggle-row.css`

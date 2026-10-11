@@ -2,6 +2,10 @@
 
 Search field from Missing Blocks library.
 
+## Why
+
+Search field. Finding things is the most common intent in any app, and it deserves its own tuned instrument. The question gets asked faster, the answer arrives sooner.
+
 - **Type:** inputs
 - **Source:** `Naya_Lego-blocks.html` (extracted byte-true, never rewritten)
 - **CSS:** `nl-search.css`

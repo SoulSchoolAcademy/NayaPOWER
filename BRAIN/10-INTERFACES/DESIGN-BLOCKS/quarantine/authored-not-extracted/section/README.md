@@ -2,6 +2,10 @@
 
 Content rhythm. Generous vertical spacing with full-width gutters that breathe on mobile and expand on desktop.
 
+## Why
+
+Pages are read in breaths, and this block sets the rhythm of each breath. Generous fluid spacing plus the glowing divider with its diamond break means long pages stay scannable instead of collapsing into walls.
+
 - **Type:** layout
 - **Source:** authored 2026-10-09 for the Smart Blocks library (composition layer)
 - **CSS:** `section.css`

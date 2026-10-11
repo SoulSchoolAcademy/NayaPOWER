@@ -2,6 +2,10 @@
 
 Underline tabs with count badges — active tab gets the accent underline and glow, badges render the accent chip.
 
+## Why
+
+Tabs should show their weight. Underline tabs with count badges and accent glow — the active tab is unmistakable, and the counts tell you where the conversation is.
+
 - **Type:** tabs
 - **Source:** `Smart Spaces Page Design.html` (extracted byte-true, never rewritten)
 - **CSS:** `block.css`
