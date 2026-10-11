@@ -5,6 +5,7 @@ Prime 2: the law is the code. These tests prove the machinery enforces it.
 Positive AND negative controls: gates must block what they claim to block
 and allow what they claim to allow.
 """
+import hashlib
 import time
 
 import pytest
@@ -12,6 +13,7 @@ import pytest
 from kernel.protocol.read_receipt import (
     AUTHORITY_QUESTIONS,
     ReadReceipt,
+    REQUIRED_READING_PATHS,
     grade_answer,
     issue_receipt,
 )
@@ -29,17 +31,24 @@ from kernel.protocol.takeover import (
 
 # ---------- read_receipt ----------
 
+DOC_SHAS = {
+    path: hashlib.sha256(("fixture:" + path).encode()).hexdigest()
+    for path in REQUIRED_READING_PATHS
+}
+
 CORRECT = {
     "q1": "Shawn Vibert",
     "q2": "production deploys, credentials and money, destructive actions, ratification, security and privacy",
     "q3": "No, never",
     "q4": "9.0",
     "q5": "independent evidence and proof",
+    "q6": "AGENTS.md, PROTOCOL.md, Constitution, Team Naya Operating Protocol, Laws Index, Portable Activation Protocol, Smart Note Operating Contract",
+    "q7": "#2175 is coordination, #2154 is mission state, #1599 is feed index",
 }
 
 
 def test_receipt_passes_with_correct_answers():
-    r = issue_receipt("naya-test", CORRECT)
+    r = issue_receipt("naya-test", CORRECT, DOC_SHAS)
     assert r.passed
     assert r.verify()
 
@@ -47,25 +56,43 @@ def test_receipt_passes_with_correct_answers():
 def test_receipt_fails_with_wrong_answers():
     bad = dict(CORRECT)
     bad["q3"] = "yes, if the score is high enough"
-    r = issue_receipt("naya-test", bad)
+    r = issue_receipt("naya-test", bad, DOC_SHAS)
     assert not r.passed
     assert not r.verify()
 
 
 def test_receipt_fails_with_missing_answers():
-    r = issue_receipt("naya-test", {})
+    r = issue_receipt("naya-test", {}, DOC_SHAS)
     assert not r.passed
 
 
 def test_receipt_tamper_detected():
-    r = issue_receipt("naya-test", CORRECT)
+    r = issue_receipt("naya-test", CORRECT, DOC_SHAS)
     r.passed = False  # tamper after signing
     assert not r.verify()
 
 
-def test_receipt_bound_to_protocol_version():
-    r = issue_receipt("naya-test", CORRECT)
-    assert r.protocol_version  # version pinned; stale receipts detectable
+def test_receipt_bound_to_protocol_version_and_required_documents():
+    r = issue_receipt("naya-test", CORRECT, DOC_SHAS)
+    assert r.protocol_version == "2026-10-11-READSET-V1"
+    assert r.document_sha256 == DOC_SHAS
+    assert r.verify(expected_document_sha256=DOC_SHAS)
+
+
+def test_receipt_fails_when_a_required_document_is_missing():
+    incomplete = dict(DOC_SHAS)
+    incomplete.pop("AGENTS.md")
+    r = issue_receipt("naya-test", CORRECT, incomplete)
+    assert not r.passed
+    assert not r.verify()
+
+
+def test_receipt_rejects_stale_document_bytes():
+    r = issue_receipt("naya-test", CORRECT, DOC_SHAS)
+    stale = dict(DOC_SHAS)
+    stale["PROTOCOL.md"] = hashlib.sha256(b"older protocol bytes").hexdigest()
+    assert r.verify(expected_document_sha256=DOC_SHAS)
+    assert not r.verify(expected_document_sha256=stale)
 
 
 # ---------- authority_gate ----------
@@ -166,9 +193,10 @@ def _good_state():
         lane="verify",
         authority_summary="Protected gates: production deploys, credentials/money, "
                           "destructive actions, ratification, security/privacy.",
-        current_truth_location="coordination feed #1354 and current main",
+        current_truth_location="coordination board #2175, mission state #2154, feed index #1599, current main",
         next_action="re-anchor on live main and check the board",
-        receipt=issue_receipt("naya-9", CORRECT),
+        receipt=issue_receipt("naya-9", CORRECT, DOC_SHAS),
+        current_document_sha256=DOC_SHAS,
     )
 
 
@@ -185,14 +213,28 @@ def test_cold_start_blocks_missing_receipt():
 
 def test_cold_start_blocks_failed_receipt():
     s = _good_state()
-    s.receipt = issue_receipt("naya-9", {})  # failed grading
+    s.receipt = issue_receipt("naya-9", {}, DOC_SHAS)  # failed grading
     res = run_cold_start(s)
     assert not res.passed
 
 
-def test_cold_start_requires_board_and_main():
+def test_cold_start_requires_current_coordination_mission_state_index_and_main():
     s = _good_state()
     s.current_truth_location = "the board"  # board alone is not the source of truth
+    res = run_cold_start(s)
+    assert not res.passed
+
+
+def test_cold_start_rejects_archived_coordination_feed():
+    s = _good_state()
+    s.current_truth_location = "coordination #1354, mission state #2154, feed index #1599, main"
+    res = run_cold_start(s)
+    assert not res.passed
+
+
+def test_cold_start_requires_current_document_hashes():
+    s = _good_state()
+    s.current_document_sha256 = {}
     res = run_cold_start(s)
     assert not res.passed
 
