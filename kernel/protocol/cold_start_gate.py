@@ -37,7 +37,9 @@ class ColdStartResult:
 REQUIRED_TRUTH_MARKERS = ["#2154", "main"]
 
 
-def run_cold_start(state: ColdStartState) -> ColdStartResult:
+def run_cold_start(state: ColdStartState,
+                   current_protocol_version: str | None = None,
+                   current_source_sha: str | None = None) -> ColdStartResult:
     failures: list[str] = []
 
     # 1. Read receipt must exist and verify.
@@ -45,6 +47,29 @@ def run_cold_start(state: ColdStartState) -> ColdStartResult:
         failures.append("No protocol read receipt. Read the protocol, answer the authority questions.")
     elif not state.receipt.verify():
         failures.append("Read receipt invalid or failed grading. Re-read the protocol.")
+    else:
+        # Law 12 (ACTIVE): a cryptographically valid receipt is not enough —
+        # it must be fresh. Current world state auto-resolves when the
+        # caller does not supply it, so this check fires on every boot, not
+        # only for callers that opt in. If the protocol version moved since
+        # the receipt was issued, the agent read a different protocol:
+        # re-read required. (The receipt does not record the read-time tip,
+        # so no tip dependency is fabricated — the version check is the
+        # precise, honest signal.)
+        from .proof_expiry import (
+            proof_from_read_receipt, validate_proof, resolve_current_state,
+        )
+        current_state = resolve_current_state()
+        if current_protocol_version is not None:
+            current_state["policy_ref"] = current_protocol_version
+        if current_source_sha is not None:
+            current_state["source_sha"] = current_source_sha
+        proof = proof_from_read_receipt(state.receipt)
+        validation = validate_proof(proof, current_state)
+        if not validation.is_current:
+            failures.append(
+                f"Read receipt stale (Law 12): {validation.reason()}. "
+                "Re-read the current protocol.")
 
     # 2. Identity.
     if not state.agent_id.strip():
