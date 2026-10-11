@@ -76,6 +76,24 @@ AUTHORITY_QUESTIONS = [
         "acceptable_keywords": ["#2175", "#2154", "#1599"],
         "min_keywords": 3,
     },
+    {
+        "id": "q8",
+        "question": "Name the five operating phases in order.",
+        "acceptable_keywords": ["activate", "decide", "act", "learn", "compound"],
+        "min_keywords": 5,
+    },
+    {
+        "id": "q9",
+        "question": "What happens when a gate fails or evidence is missing?",
+        "acceptable_keywords": ["prohibit", "refuse", "evidence", "investigate", "authority", "admissible"],
+        "min_keywords": 5,
+    },
+    {
+        "id": "q10",
+        "question": "What is required for a verified result and a learned lesson?",
+        "acceptable_keywords": ["independent", "verifier", "evidence", "sign in", "sign out", "cold successor", "behavior"],
+        "min_keywords": 5,
+    },
 ]
 
 
