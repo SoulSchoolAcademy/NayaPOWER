@@ -215,7 +215,46 @@ def test_non_checkout_repo_root_fails_closed(w, tmp_path):
     assert res["details"]["fail_closed"] == "repo_root"
 
 
-# ---- end-to-end: the script as the workflow runs it ----
+# ---- three-dot scope: the PR is not blamed for the base's newer changes ----
+
+def test_old_pr_not_blamed_for_base_brain_changes(w, tmp_path):
+    """The exact bug CI caught on the first push: base.sha is the base
+    branch's CURRENT tip, which may carry BRAIN/ changes that landed
+    after the PR forked. Scope must use the PR's own changeset
+    (`base...head`, three-dot) — a PR that itself touches no BRAIN/
+    files is NOT_APPLICABLE even when the base moved under it. Two-dot
+    would have routed FULL_CHECK and failed the PR on drift it never
+    introduced."""
+    repo = tmp_path / "fork"
+    repo.mkdir()
+    git(repo, "init", "-q")
+    git(repo, "config", "user.email", "test@naya.local")
+    git(repo, "config", "user.name", "naya-test")
+    trunk = subprocess.run(
+        ["git", "-C", str(repo), "branch", "--show-current"],
+        capture_output=True, text=True, check=True).stdout.strip()
+    (repo / "BRAIN").mkdir()
+    (repo / "BRAIN" / "REAL-TREE.json").write_text("{}\n")
+    (repo / "docs").mkdir()
+    (repo / "docs" / "note.md").write_text("v1\n")
+    git(repo, "add", ".")
+    git(repo, "commit", "-qm", "fork point")
+    # the PR branch: one non-BRAIN change
+    git(repo, "checkout", "-qb", "pr")
+    (repo / "docs" / "note.md").write_text("v2\n")
+    git(repo, "commit", "-qam", "pr: docs only")
+    pr_head = _head_sha(repo)
+    # the base branch advances with a BRAIN/ change AFTER the fork
+    git(repo, "checkout", "-q", trunk)
+    (repo / "BRAIN" / "REAL-TREE.json").write_text('{"drift": true}\n')
+    git(repo, "commit", "-qam", "base: BRAIN change after fork")
+    base_tip = _head_sha(repo)
+
+    res = w.decide({"repo_root": str(repo),
+                    "base_sha": base_tip, "head_sha": pr_head})
+    assert res["pass"] is True
+    assert res["details"]["verdict"] == "NOT_APPLICABLE", res["reasons"]
+    assert res["details"]["brain_touched_paths"] == []
 
 def test_cli_non_brain_exits_zero_on_real_bytes(mini_repo):
     """Exact CI invocation shape: BASE_SHA/HEAD_SHA env + --json, exit 0

@@ -9,7 +9,9 @@ workflow does not run on. So the workflow trigger is UNCONDITIONAL (every
 pull_request); the BRAIN-scope decision happens INSIDE the job, cheaply:
 
   - PR touches nothing under BRAIN/ -> NOT_APPLICABLE, cheap success
-    (exit 0; no regen run, no heavy work).
+    (exit 0; no regen run, no heavy work). "Touches" means the PR's own
+    changeset (`base...head`, three-dot): the base branch's newer
+    BRAIN/ changes are not the PR's doing and must not block it.
   - PR touches BRAIN/            -> run the full freshness gate on the
     checked-out tree; its verdict decides the job.
   - anything unknown (missing/invalid SHAs, git diff failure, bad record,
@@ -84,15 +86,20 @@ def _resolve_shas(record: dict) -> tuple[str | None, str | None]:
 
 
 def _changed_paths(repo_root: Path, base: str, head: str) -> list[str]:
-    """NUL-separated, rename-free name list of what the PR changed.
+    """NUL-separated, rename-free name list of what the PR itself changed.
 
+    Uses three-dot `base...head` (merge-base..head): the PR's own
+    changeset. Two-dot `base head` would also include everything that
+    landed on the base branch after the PR forked — an old PR would then
+    see the base's newer BRAIN/ changes as its own, routing FULL_CHECK
+    (and failing) on drift the PR never introduced and cannot fix.
     -z avoids quoting ambiguity for unusual filenames; --no-renames makes
     every touched path appear individually. Raises on any git failure so
     the caller can fail closed.
     """
     proc = subprocess.run(
         ["git", "-C", str(repo_root), "diff", "-z", "--no-renames",
-         "--name-only", base, head],
+         "--name-only", f"{base}...{head}"],
         capture_output=True,
         check=True,
     )
