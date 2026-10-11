@@ -1,0 +1,56 @@
+name: Unbounded-Debt Bounds Gate (D61 wire)
+
+# Wires the D61 unbounded-debt engine onto the fairness path. Every
+# compliance claim in tools/d61_unbounded_debt_manifest.json is cold-judged
+# by the REAL engine (drift_canary/unbounded_debt_bounds.py): the interval,
+# contract, and finite limit are rebuilt from the claim's own bytes,
+# cold-assessed by UnboundedDebtEngine.assess, and the claim's asserted
+# verdict is run through the independent verifier verify_compliance_claim.
+# A claim the law refuses — final-debt-only NO_BREACH (AER-LIVE-006), a
+# NO_BREACH against an unbounded peak, a circular finite limit (the SLA
+# under test as its own evidence), an inadmissible limit source, or a
+# receipt-inconsistent claim — BLOCKS (exit 1). Empty manifest = explicit
+# DORMANT (exit 0), never a false green. Corrupt manifest, unknown
+# assertions, or a broken engine = fail-closed (exit 2).
+#
+# OPERATING PATH: the fairness CI path. Trigger: this check on
+# pull_request / push-to-main for the paths below. Block: check red blocks
+# the merge path. Defect class: compliance claims over unbounded missing
+# intervals that the D61 law refuses. Verify-still-connected: this file
+# exists and the check is required on the fairness path; `python
+# tools/d61_unbounded_debt_gate.py --json` exits 0 DORMANT on a claim-free
+# tree.
+
+on:
+  pull_request:
+    paths:
+      - "drift_canary/unbounded_debt_bounds.py"
+      - "drift_canary/fairness.py"
+      - "tools/d61_unbounded_debt_gate.py"
+      - "tools/d61_unbounded_debt_manifest.json"
+      - "tests/test_d61_unbounded_debt_gate.py"
+      - ".github/workflows/d61-unbounded-debt.yml"
+  push:
+    branches: ["main"]
+    paths:
+      - "drift_canary/unbounded_debt_bounds.py"
+      - "drift_canary/fairness.py"
+      - "tools/d61_unbounded_debt_gate.py"
+      - "tools/d61_unbounded_debt_manifest.json"
+      - "tests/test_d61_unbounded_debt_gate.py"
+      - ".github/workflows/d61-unbounded-debt.yml"
+
+jobs:
+  unbounded-debt-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      # Bare setup-python images do not always carry pytest; install it
+      # explicitly (same lesson as the D55/D56/D58/D59/D62 mechanism and
+      # wire gates and the directive-register gates).
+      - run: python -m pip install pytest
+      - run: python -m pytest tests/test_d61_unbounded_debt_gate.py -q -p no:cacheprovider
+      - run: python tools/d61_unbounded_debt_gate.py --json
