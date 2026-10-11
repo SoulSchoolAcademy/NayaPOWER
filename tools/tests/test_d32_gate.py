@@ -202,6 +202,77 @@ We shipped 99 features. It is verified awesome.
 
 
 # ---------------------------------------------------------------------------
+# R1 flagship fix (verify scorecard 6106372666): bare decimals and
+# sentence-final integers are quantitative claims; only marked versions
+# (v2.1, 2.0.1, "version 2.0") and dates/times are excluded.
+# ---------------------------------------------------------------------------
+
+def test_fail_sentence_final_integer():
+    """'We completed 42.' — a sentence-terminating period must not hide the number."""
+    doc = """# Report
+
+We completed 42.
+
+## WHAT THIS DOES NOT CLAIM
+
+Nothing further.
+"""
+    result = check_document(doc)
+    assert result["verdict"] == "FAIL", result["violations"]
+    r1 = [v for v in result["violations"] if v["rule"] == "R1"]
+    assert r1, result["violations"]
+    assert r1[0]["line"] == 3
+    assert "42" in r1[0]["text"]
+
+
+def test_fail_bare_decimals():
+    """Bare decimals are quantitative claims: 8.44 / 0.58 / 1.5s must fail R1."""
+    for sentence in ("We scored 8.44.", "Effect size 0.58.", "Latency 1.5s in prod."):
+        doc = f"""# Report
+
+{sentence}
+
+## WHAT THIS DOES NOT CLAIM
+
+Nothing further.
+"""
+        result = check_document(doc)
+        assert result["verdict"] == "FAIL", (sentence, result["violations"])
+        assert any(v["rule"] == "R1" for v in result["violations"]), (sentence, result["violations"])
+
+
+def test_fail_flagship_fifty_nine():
+    """The '59 vs 58' class: 'We scored 59.' MUST fail — this is the gate's core claim."""
+    doc = """# Report
+
+We scored 59.
+
+## WHAT THIS DOES NOT CLAIM
+
+Nothing further.
+"""
+    result = check_document(doc)
+    assert result["verdict"] == "FAIL", result["violations"]
+    assert any(v["rule"] == "R1" for v in result["violations"]), result["violations"]
+
+
+def test_pass_marked_versions_and_dates():
+    """Marked versions (v2.1, 2.0.1, 'version 2.0') and dates stay non-claims."""
+    doc = """# Timeline
+
+On 2026-10-11 we shipped v2.1 of the report.
+Release 2.0.1 followed; see version 2.0 notes for the diff.
+
+## What this does not claim
+
+This does not claim completeness.
+"""
+    result = check_document(doc)
+    assert result["verdict"] == "PASS", result["violations"]
+    assert result["violations"] == []
+
+
+# ---------------------------------------------------------------------------
 # Gate integrity — the tests themselves must be able to fail.
 # ---------------------------------------------------------------------------
 

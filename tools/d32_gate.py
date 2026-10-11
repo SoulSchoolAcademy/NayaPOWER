@@ -44,13 +44,26 @@ import sys
 # ---------------------------------------------------------------------------
 
 # Quantitative claim: a standalone number (integer or decimal), optionally
-# followed by %, x, or a unit word. Dates, times, versions excluded below.
-_NUMBER_RE = re.compile(r"(?<![\w#])\d[\d,]*(?:\.\d+)?%?(?![\w.])")
+# followed by %, x, or a unit word. Dates, times, and marked versions are
+# excluded by the strip pass below. The trailing lookahead excludes word
+# characters only — a sentence-terminating period must NOT hide the number.
+# (The version strip already handles real versions, so excluding "." here
+# was redundant and made "We completed 42." invisible to R1.)
+_NUMBER_RE = re.compile(r"(?<![\w#])\d[\d,]*(?:\.\d+)?%?(?!\w)")
 
 # Things that look like numbers but are NOT quantitative claims.
 _DATE_RE = re.compile(r"\d{4}-\d{2}-\d{2}")          # 2026-10-11
 _TIME_RE = re.compile(r"\d{1,2}:\d{2}")              # 23:44
-_VERSION_RE = re.compile(r"[vV]?\d+\.\d+(?:\.\d+)*")  # v1.2, 2.0.1
+# Versions are NOT claims — but only when MARKED. A bare decimal like 8.44
+# IS a quantitative claim (the gate's flagship rule); stripping every X.Y
+# as a "version" blinded R1 to exactly the claims it exists to catch.
+# Honest limit: bare decimals survive even when they are section refs
+# ("see 1.2") — fail-closed by design; the author adds a source or rewords.
+_VERSION_RE = re.compile(
+    r"[vV]\d+\.\d+(?:\.\d+)*"            # v1.2, V2.0.1 — explicitly marked
+    r"|\d+(?:\.\d+){2,}"                 # 2.0.1 — 3+ components
+    r"|[Vv]ersion\s+\d+\.\d+(?:\.\d+)*"  # version 2.0 — word-marked
+)
 _HEX_LONG_RE = re.compile(r"\b[0-9a-f]{7,40}\b")      # SHAs (handled as sources)
 
 # Source references: URL, #issue/PR, commit SHA, explicit citation.
