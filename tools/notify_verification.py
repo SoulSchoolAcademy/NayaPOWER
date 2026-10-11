@@ -50,7 +50,7 @@ FEED_ISSUE = 2154
 MARKER_PREFIX = "<!-- vn:"
 UA = "naya-verify-notify/1.0"
 
-SEAT_RE = re.compile(r"naya[\s\-]*([2345])\b", re.I)
+SEAT_RE = re.compile(r"seat:\s*naya[\s\-]*([2345])\b", re.I)
 REVIEW_RE = re.compile(r"\[NAYA\s*([2345])\s*[-\xb7.]\s*REVIEW\]", re.I)
 SCORECARD_HEAD_RE = re.compile(r"\[NAYA\s*([2345])\s*[-\xb7.]\s*SCORECARD\]", re.I)
 VERDICT_RE = re.compile(r"\b(APPROVED|CHANGES[_\s]REQUESTED)\b", re.I)
@@ -58,10 +58,13 @@ ASSIGN_RE = re.compile(r"assigned to verify", re.I)
 START_RE = re.compile(r"\bnow verifying\b", re.I)
 SCORECARD_RE = re.compile(r"##\s*SCORECARD|\bSCORECARD\b", re.I)
 SCORE_RE = re.compile(r"score\s*[*_:=\s]*(\d+(?:\.\d+)?)", re.I)
+VERDICT_SCORE_RE = re.compile(r"verdict\s*[*_:=\s]*(\d+(?:\.\d+)?)", re.I)
 PRNUM_RE = re.compile(r"(?:PR|pull request)\s*#?\s*(\d{3,5})", re.I)
 SHA40_RE = re.compile(r"\b([0-9a-f]{40})\b")
 SHA_CTX_RE = re.compile(r"(?:head(?:\s+sha)?|sha(?:\s+tested)?)\s*[:=]?\s*`?([0-9a-f]{7,40})`?", re.I)
 PR_SECTION_RE = re.compile(r"^###\s+PR\s*#(\d+)\b([^\n]*)$", re.I | re.M)
+SCORECARD_BLOCK_RE = re.compile(r"^##\s*SCORECARD\b", re.I | re.M)
+PR_FIELD_RE = re.compile(r"PR\s*:?\s*#(\d{3,5})\b", re.I)
 
 
 def rest(path, token, method="GET", data=None):
@@ -88,8 +91,13 @@ def feed_comments(token, repo, pages=3):
     return out
 
 
+def _strip_md(text):
+    """Remove bold markers and backticks so field regexes see plain labels."""
+    return (text or "").replace("**", "").replace("`", "")
+
+
 def seat_of(text):
-    m = SEAT_RE.search(text or "")
+    m = SEAT_RE.search(_strip_md(text))
     return f"Naya {m.group(1)}" if m else None
 
 
@@ -110,15 +118,58 @@ def short(sha):
     return sha[:7] if sha else "unknown-sha"
 
 
-def parse_scorecard_sections(body):
+def _parse_hash_hash_scorecard(block, default_pr):
+    """Parse one '## SCORECARD' block into {pr, verdict, sha, score}.
+
+    Real formats in use (PR #2223 scorecards):
+      ## SCORECARD
+      Seat: Naya 4
+      PR: #2223
+      Head SHA: <sha>
+      verdict: 9.5
+      merge: APPROVED
+    and bullet/bold variants (- **Head:** `<sha>`, **verdict: 9.5**, etc.).
+    Returns None when no PR number can be determined.
+    """
+    clean = _strip_md(block)
+    m = PR_FIELD_RE.search(clean)
+    pr = m.group(1) if m else default_pr
+    if not pr:
+        return None
+    verdict_m = VERDICT_RE.search(clean)
+    verdict = verdict_m.group(1).upper().replace(" ", "_") if verdict_m else None
+    sha = extract_sha(clean)
+    sm = VERDICT_SCORE_RE.search(clean)
+    if not sm:
+        sm = SCORE_RE.search(clean)
+    score = sm.group(1) if sm else None
+    return {"pr": str(pr), "verdict": verdict, "sha": sha, "score": score}
+
+
+def parse_scorecard_sections(body, default_pr=None):
     """Split a scorecard into per-PR sections.
 
-    Returns [{pr, verdict, sha, score}]. Handles both the independent
-    format ('### PR #2201 (LIVE-3, SN-0809) - APPROVED' + '**Head SHA:**'
-    + '**Score:** 9.2/10') and looser author formats (best effort).
+    Returns [{pr, verdict, sha, score}]. Handles two formats:
+    (1) '### PR #2201 ...' sections (legacy/independent format), and
+    (2) '## SCORECARD' blocks with PR:/Head SHA:/verdict:/merge: fields
+        (the format actually in use on real scorecards).
+    default_pr fills in when a '## SCORECARD' block names no PR —
+    typically the issue/PR number the comment itself sits on.
     """
     sections = []
-    matches = list(PR_SECTION_RE.finditer(body or ""))
+    seen = set()
+    body = body or ""
+
+    def add(sec):
+        if not sec:
+            return
+        key = (sec["pr"], sec["sha"], sec["verdict"])
+        if key not in seen:
+            seen.add(key)
+            sections.append(sec)
+
+    # Format 1: '### PR #NNNN' sections (backward compatible).
+    matches = list(PR_SECTION_RE.finditer(body))
     for i, m in enumerate(matches):
         pr = m.group(1)
         start = m.end()
@@ -126,12 +177,19 @@ def parse_scorecard_sections(body):
         chunk = body[m.start():end]
         verdict_m = VERDICT_RE.search(m.group(2) + " " + chunk[:200])
         verdict = verdict_m.group(1).upper().replace(" ", "_") if verdict_m else None
-        sections.append({
+        add({
             "pr": pr,
             "verdict": verdict,
             "sha": extract_sha(chunk),
             "score": extract_score(chunk),
         })
+
+    # Format 2: '## SCORECARD' blocks (real format in use).
+    starts = [m.start() for m in SCORECARD_BLOCK_RE.finditer(body)]
+    for i, s in enumerate(starts):
+        end = starts[i + 1] if i + 1 < len(starts) else len(body)
+        add(_parse_hash_hash_scorecard(body[s:end], default_pr))
+
     return sections
 
 
@@ -178,9 +236,11 @@ def detect_events(body, issue_number, is_pr):
                     })
 
     # Scorecards live on the team feed (#2154) but we detect them anywhere
-    # except inside our own notifications.
+    # except inside our own notifications. When a scorecard block names no
+    # PR explicitly, it belongs to the PR the comment sits on.
     if SCORECARD_RE.search(body) or SCORECARD_HEAD_RE.search(body):
-        for sec in parse_scorecard_sections(body):
+        default_pr = str(issue_number) if is_pr else None
+        for sec in parse_scorecard_sections(body, default_pr=default_pr):
             if not sec["verdict"] and not sec["score"]:
                 continue
             scorer_m = SCORECARD_HEAD_RE.search(body)
