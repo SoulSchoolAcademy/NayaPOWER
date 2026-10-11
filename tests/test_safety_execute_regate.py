@@ -36,13 +36,27 @@ def _candidate(cid="x1", **kw):
         action="naya_node_apply",
         description="apply retained intelligence",
         quality={"objective_fit": 9.9, "evidence_sufficiency": 9.9,
-                 "applicability": 9.9, "robustness": 9.9},
+                 "applicability": 9.9, "robustness": 9.9,
+                 "reversibility": 9.9, "blast_containment": 9.9,
+                 "simplicity": 9.9},
         confidence={"objective_fit": 0.99, "evidence_sufficiency": 0.99,
-                    "applicability": 0.99, "robustness": 0.99},
+                    "applicability": 0.99, "robustness": 0.99,
+                    "reversibility": 0.99, "blast_containment": 0.99,
+                    "simplicity": 0.99},
         reversibility="REVERSIBLE",
         expected_outcome="node state updated",
         proof_requirements=("execution_receipt",),
         stakes="low",
+        lawful=True,
+        rights_safe=True,
+        privacy_safe=True,
+        safety_safe=True,
+        value_benefit=8.0,
+        value_harm=1.0,
+        value_cost=1.0,
+        value_risk=0.5,
+        value_confidence={"B": 0.9, "H": 0.9, "C": 0.9, "R": 0.9},
+        value_evidence_count=3,
     )
     base.update(kw)
     return ap.PlanCandidate(**base)
@@ -129,15 +143,17 @@ def test_planned_clean_candidate_still_executes():
 
 
 def test_needs_authority_verdict_still_executes():
-    # A clean hand-crafted plan gates NEEDS_AUTHORITY (AUTHORITY_MISSING on
-    # the calculus Candidate) — LAW re-resolution governs authority, not the
-    # safety seam, so execution proceeds.
+    # A clean hand-crafted plan: the pipeline sets authorized=True on the
+    # calculus Candidate because the LAW authority record (re-resolved at
+    # execution time) governs authority, not the per-candidate flag.
+    # The execution-time re-gate verdicts ADMISSIBLE (not NEEDS_AUTHORITY),
+    # and execution proceeds — the safety seam does not block what LAW allows.
     plan = _hand_plan(_candidate())
     receipt, calls = _execute(plan)
     assert receipt.phase == "EXECUTION_COMPLETED"
     assert receipt.executed is True
     assert len(calls) == 1
-    assert any("NEEDS_AUTHORITY" in e for e in receipt.evidence)
+    assert any("ADMISSIBLE" in e for e in receipt.evidence)
 
 
 def test_custom_risk_policy_is_honored():

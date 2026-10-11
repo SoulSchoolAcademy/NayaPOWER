@@ -31,14 +31,31 @@ def _candidate(cid="p1", **kw):
         candidate_id=cid,
         action="naya_node_apply",
         description="apply retained intelligence to NAYA-NODE-0001",
-        quality={"objective_fit": 8.0, "evidence_sufficiency": 7.0,
-                 "applicability": 8.0, "robustness": 7.0},
-        confidence={"objective_fit": 0.9, "evidence_sufficiency": 0.8,
-                    "applicability": 0.9, "robustness": 0.8},
+        quality={"objective_fit": 9.0, "evidence_sufficiency": 9.0,
+                 "applicability": 9.0, "robustness": 9.0,
+                 "reversibility": 9.0, "blast_containment": 9.0,
+                 "simplicity": 9.0},
+        confidence={"objective_fit": 0.9, "evidence_sufficiency": 0.9,
+                    "applicability": 0.9, "robustness": 0.9,
+                    "reversibility": 0.9, "blast_containment": 0.9,
+                    "simplicity": 0.9},
         reversibility="REVERSIBLE",
         expected_outcome="node state updated, previous state restorable",
         proof_requirements=("execution_receipt", "state_diff"),
         stakes="low",
+        # Safety flags: explicit, not unknown (Zero Value Law: unknown ≠ safe)
+        lawful=True,
+        rights_safe=True,
+        privacy_safe=True,
+        safety_safe=True,
+        # Evidence-backed value estimate for the canonical value calculus.
+        # PV = 8.0 - 1.0 - 1.0 - 0.5 = 5.5; ΔV vs baseline = +5.5.
+        value_benefit=8.0,
+        value_harm=1.0,
+        value_cost=1.0,
+        value_risk=0.5,
+        value_confidence={"B": 0.9, "H": 0.9, "C": 0.9, "R": 0.9},
+        value_evidence_count=3,
     )
     base.update(kw)
     return ap.PlanCandidate(**base)
@@ -61,10 +78,17 @@ def _fresh(authority):
 def test_plan_selects_minimum_sufficient_through_value_calculus():
     authority = _authority()
     weak = _candidate("p-weak",
-                      quality={"objective_fit": 4.0, "evidence_sufficiency": 4.0,
-                               "applicability": 4.0, "robustness": 4.0},
+                      quality={"objective_fit": 9.0, "evidence_sufficiency": 9.0,
+                               "applicability": 9.0, "robustness": 9.0,
+                               "reversibility": 9.0, "blast_containment": 9.0,
+                               "simplicity": 9.0},
                       confidence={"objective_fit": 0.9, "evidence_sufficiency": 0.9,
-                                  "applicability": 0.9, "robustness": 0.9})
+                                  "applicability": 0.9, "robustness": 0.9,
+                                  "reversibility": 0.9, "blast_containment": 0.9,
+                                  "simplicity": 0.9},
+                      # Lower value: PV = 3.0 - 1.0 - 1.0 - 0.5 = 0.5
+                      value_benefit=3.0, value_harm=1.0,
+                      value_cost=1.0, value_risk=0.5)
     strong = _candidate("p-strong")
     plan, receipt = ap.plan_action(authority, [weak, strong], _profile(), now=NOW)
     assert plan is not None
