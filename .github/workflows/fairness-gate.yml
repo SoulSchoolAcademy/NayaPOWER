@@ -4,8 +4,14 @@ name: fairness-gate
 # D26's three-link standard: opportunity, fair service, verified progress.
 # This workflow runs the gate's own test suite on every PR touching it.
 # If the gate's tests fail, the PR is blocked. The gate must prove
-# itself before it judges anything else. Includes the negative control:
-# sabotage the classifier and the suite must fail (no theater).
+# itself before it judges anything else. Includes the negative controls:
+# sabotage a predicate or the ledger and the suite must fail (no theater).
+#
+# WIRE LANE (2026-10-11): the gate is now wired to the real merge queue.
+# tools/merge_queue_fairness.py runs the REAL EligibilityProver and
+# FairnessDebtLedger over a queue snapshot; the fixture scan below proves
+# the wiring executes end-to-end in CI (the fixture contains a starving PR
+# BY DESIGN, so exit 1 is the expected, asserted outcome).
 
 on:
   pull_request:
@@ -13,15 +19,24 @@ on:
       - 'tools/fairness_eligibility.py'
       - 'tools/fairness_debt.py'
       - 'tools/fairness_invariants.py'
+      - 'tools/merge_queue_fairness.py'
+      - 'tools/snapshot_merge_queue.py'
       - 'tools/tests/test_fairness.py'
+      - 'tools/tests/test_merge_queue_fairness.py'
+      - 'tools/tests/fixtures/merge_queue_fixture.json'
       - '.github/workflows/fairness-gate.yml'
+      - '.github/workflows/fairness-queue-live.yml'
   push:
     branches: [main]
     paths:
       - 'tools/fairness_eligibility.py'
       - 'tools/fairness_debt.py'
       - 'tools/fairness_invariants.py'
+      - 'tools/merge_queue_fairness.py'
+      - 'tools/snapshot_merge_queue.py'
       - 'tools/tests/test_fairness.py'
+      - 'tools/tests/test_merge_queue_fairness.py'
+      - 'tools/tests/fixtures/merge_queue_fixture.json'
 
 jobs:
   fairness-gate-tests:
@@ -36,4 +51,27 @@ jobs:
       - name: Install pytest
         run: python3 -m pip install pytest
       - name: Run Fairness & Liveness gate test suite (real asserts, no theater)
-        run: python3 -m pytest tools/tests/test_fairness.py -v -p no:cacheprovider
+        run: python3 -m pytest tools/tests/test_fairness.py tools/tests/test_merge_queue_fairness.py -v -p no:cacheprovider
+      - name: End-to-end wiring proof -- scanner judges the fixture queue
+        # The fixture's PR 9001 is eligible and starving BY DESIGN.
+        # Exit 1 with a witness naming PR-9001 proves the gate fires in CI.
+        # Any other outcome (exit 0, exit 2, wrong witness) fails this step.
+        run: |
+          cd tools
+          # NOTE (wire lane 2026-10-11): GitHub runs this block under 'bash -e'.
+          # The scanner exits 1 BY DESIGN on the starving fixture, so capture
+          # with '||' — a bare '; code=$?' never runs because -e kills the
+          # script at the designed nonzero exit (CI red 05:33Z + 06:38Z).
+          code=0
+          python3 merge_queue_fairness.py --queue tests/fixtures/merge_queue_fixture.json --json > /tmp/fixture-scan.json || code=$?
+          python3 - <<'PYEOF'
+          import json, sys
+          d = json.load(open('/tmp/fixture-scan.json'))
+          vs = {v['pr_number']: v for v in d['verdicts']}
+          assert vs[9001]['violated'] is True, "fixture PR 9001 must violate"
+          assert vs[9001]['witness']['item_id'] == 'PR-9001'
+          assert vs[9002]['violated'] is False, "ineligible PR 9002 must not violate"
+          assert vs[9003]['violated'] is False, "blocked PR 9003 must not violate"
+          print("wiring proof OK: starved PR-9001 witnessed; 9002/9003 correctly quiet")
+          PYEOF
+          test $code -eq 1
