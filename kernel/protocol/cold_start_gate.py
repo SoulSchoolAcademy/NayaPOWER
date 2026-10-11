@@ -34,7 +34,7 @@ class ColdStartResult:
     failures: list = field(default_factory=list)
 
 
-REQUIRED_TRUTH_MARKERS = ["#1354", "main"]
+REQUIRED_TRUTH_MARKERS = ["#2154", "main"]
 
 
 def run_cold_start(state: ColdStartState) -> ColdStartResult:
@@ -52,18 +52,25 @@ def run_cold_start(state: ColdStartState) -> ColdStartResult:
     if "shawn" not in state.human_director.lower():
         failures.append("Human director not identified as Shawn.")
 
-    # 3. Authority summary must name at least one protected gate.
+    # 3. Authority summary must name at least one protected gate and
+    # acknowledge Law 11 (do no harm) as the only hard law.
     auth = state.authority_summary.lower()
     if not any(k in auth for k in ["production", "credential", "money",
                                     "destructive", "ratif", "privacy", "security"]):
         failures.append("Authority summary does not name protected gates.")
+    if "do no harm" not in auth and "law 11" not in auth:
+        failures.append(
+            "Authority summary does not acknowledge Law 11 (do no harm) "
+            "as the only hard law."
+        )
 
-    # 4. Navigation: must reference the coordination surface and current main.
+    # 4. Navigation: must reference the mission-state feed and current main.
     nav = state.current_truth_location.lower()
     if not all(m in nav for m in REQUIRED_TRUTH_MARKERS):
         failures.append(
-            "Truth location must reference the coordination feed (#1354) "
-            "and current main — the board alone is not the entire source of truth."
+            "Truth location must reference the mission-state feed (#2154) "
+            "and current main — the board alone is not the entire source of truth. "
+            "(#1354 is archived; sign in/out on #1713/#1714/#1715.)"
         )
 
     # 5. Exactly one next action.

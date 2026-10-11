@@ -165,8 +165,9 @@ def _good_state():
         human_director="Shawn Vibert",
         lane="verify",
         authority_summary="Protected gates: production deploys, credentials/money, "
-                          "destructive actions, ratification, security/privacy.",
-        current_truth_location="coordination feed #1354 and current main",
+                          "destructive actions, ratification, security/privacy. "
+                          "Law 11 (do no harm) is the only hard law.",
+        current_truth_location="mission-state feed #2154 and current main",
         next_action="re-anchor on live main and check the board",
         receipt=issue_receipt("naya-9", CORRECT),
     )

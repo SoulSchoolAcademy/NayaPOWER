@@ -54,6 +54,28 @@ from dataclasses import dataclass, field
 from typing import Any, Callable, Sequence
 
 from kernel.memory_store import MemoryStore
+from kernel.protocol.typed_action import (
+    ADMISSIBLE as LAW11_ADMISSIBLE,
+    INHERENTLY_PROHIBITED_OPERATIONS,
+    IRREVERSIBLE as LAW11_IRREVERSIBLE,
+    NEEDS_AUTHORITY as LAW11_NEEDS_AUTHORITY,
+    NEEDS_EVIDENCE as LAW11_NEEDS_EVIDENCE,
+    OPERATION_CAPTURE,
+    OPERATION_DELETE,
+    OPERATION_DEPLOY,
+    OPERATION_EXECUTE,
+    OPERATION_GRANT,
+    OPERATION_MERGE,
+    OPERATION_MIGRATE,
+    OPERATION_READ,
+    OPERATION_WRITE,
+    PROHIBITED as LAW11_PROHIBITED,
+    REVERSIBLE as LAW11_REVERSIBLE,
+    REVERSIBLE_CONDITIONAL as LAW11_CONDITIONAL,
+    TypedAction,
+    execution_door_check,
+    law11_gate,
+)
 from kernel.value_calculus import (
     ACT,
     ASK,
@@ -87,6 +109,7 @@ PLAN_PROOF_UNDEFINED = "PLAN_PROOF_UNDEFINED"
 PLAN_CANDIDATE_MISMATCH = "PLAN_CANDIDATE_MISMATCH"
 PLAN_SAFETY_PROHIBITED = "PLAN_SAFETY_PROHIBITED"
 PLAN_SAFETY_NEEDS_EVIDENCE = "PLAN_SAFETY_NEEDS_EVIDENCE"
+PLAN_LAW11_NEEDS_AUTHORITY = "PLAN_LAW11_NEEDS_AUTHORITY"
 PLAN_VALUE_INSUFFICIENT = "PLAN_VALUE_INSUFFICIENT"
 PLAN_NEEDS_HUMAN_JUDGMENT = "PLAN_NEEDS_HUMAN_JUDGMENT"
 
@@ -275,6 +298,86 @@ def _candidate_to_calculus(candidate: PlanCandidate) -> Candidate:
 BASELINE_CANDIDATE_ID = "__baseline_do_nothing__"
 
 
+# --- Law 11 typed-action mapping -------------------------------------------
+# The Law 11 gate reasons about TypedActions (what is being DONE), not about
+# PlanCandidates. This seam maps the pipeline's candidate representation onto
+# the typed-action contract. The mapping is explicit and auditable; the
+# free-text description is carried for audit only and NEVER influences the
+# verdict (the gate reads typed fields, not words).
+#
+# Fail-closed: anything the mapping cannot determine stays unknown (None),
+# and the Law 11 gate verdicts NEEDS_EVIDENCE on unknown safety dimensions
+# rather than silently passing.
+
+_OPERATION_KEYWORDS = (
+    (OPERATION_DEPLOY, ("deploy",)),
+    (OPERATION_MIGRATE, ("migrate",)),
+    (OPERATION_DELETE, ("delete", "destroy")),
+    (OPERATION_MERGE, ("merge",)),
+    (OPERATION_GRANT, ("grant", "authorize", "permission")),
+    (OPERATION_CAPTURE, ("capture", "smart_note", "learn")),
+    (OPERATION_WRITE, ("write", "update", "apply", "modify")),
+    (OPERATION_READ, ("read", "fetch", "retrieve", "query")),
+)
+
+
+def _infer_operation(action: str) -> str:
+    """Derive the canonical Law 11 operation from the pipeline action name.
+
+    Inherently prohibited operations are checked FIRST so that an action
+    literally named e.g. "fabricate_evidence" maps to the prohibited
+    operation instead of falling through to the generic "execute".
+    Otherwise the first matching keyword wins; unknown actions default to
+    OPERATION_EXECUTE (a generic consequential action).
+    """
+    lowered = (action or "").lower()
+    for prohibited in INHERENTLY_PROHIBITED_OPERATIONS:
+        if prohibited in lowered:
+            return prohibited
+    for operation, keywords in _OPERATION_KEYWORDS:
+        if any(kw in lowered for kw in keywords):
+            return operation
+    return OPERATION_EXECUTE
+
+
+def _candidate_to_typed_action(candidate: PlanCandidate,
+                               authority: LawAuthority,
+                               *,
+                               actor_id: str = "act_pipeline",
+                               environment: str = "development") -> TypedAction:
+    """Map a PlanCandidate onto the Law 11 TypedAction contract.
+
+    actor_id: who is acting. The pipeline itself has no actor concept;
+    callers that know the acting agent SHOULD pass it explicitly.
+    environment: where the action would run. Defaults to "development";
+    callers executing against production MUST pass environment="production"
+    explicitly — the default never silently upgrades the safety posture.
+    authority_ref: the LAW grant backing this plan (always present here;
+    the NEEDS_AUTHORITY path is therefore governed by the LAW record).
+    Safety dimensions thread straight through: True/False are evaluated,
+    None stays unknown and the gate fails closed to NEEDS_EVIDENCE.
+    """
+    reversibility = {
+        "REVERSIBLE": LAW11_REVERSIBLE,
+        "IRREVERSIBLE": LAW11_IRREVERSIBLE,
+    }.get(candidate.reversibility, LAW11_CONDITIONAL)
+    return TypedAction(
+        actor_id=actor_id,
+        operation=_infer_operation(candidate.action),
+        environment=environment,
+        resource=authority.scope,
+        authority_ref=authority.grant_id,
+        policy_version="CURRENT",
+        evidence_refs=tuple(candidate.proof_requirements),
+        reversibility=reversibility,
+        rights_safe=candidate.rights_safe,
+        safety_safe=candidate.safety_safe,
+        privacy_safe=candidate.privacy_safe,
+        consent_obtained=None,  # unknown at this seam -> gate fails closed
+        description=candidate.description,
+    )
+
+
 def _baseline_candidate() -> Candidate:
     """Synthesize the explicit 'do nothing' baseline for baseline-relative
     value (ΔV). The baseline is the current course: by definition ΔV=0
@@ -449,6 +552,8 @@ def plan_action(authority: LawAuthority,
                 *,
                 now: float,
                 risk_policy: RiskPolicy | None = None,
+                actor_id: str = "act_pipeline",
+                environment: str = "development",
                 ) -> tuple[ActionPlan | None, ActionReceipt]:
     """Phase 1: bind LAW authority to a minimum-sufficient plan.
 
@@ -490,6 +595,57 @@ def plan_action(authority: LawAuthority,
         if not c.proof_requirements:
             return refused(PLAN_PROOF_UNDEFINED)
 
+    # --- Law 11 typed-action gate (the only hard law). Runs BEFORE the
+    # calculus gate and BEFORE value scoring: a good calculation cannot
+    # create permission. Each candidate is mapped to a TypedAction and run
+    # through law11_gate():
+    #   PROHIBITED -> removed, can never win or execute.
+    #   NEEDS_EVIDENCE / NEEDS_AUTHORITY -> flagged, excluded from scoring.
+    #   ADMISSIBLE -> proceeds to the calculus gate below.
+    # Fail closed: unmapped/unknown fields -> NEEDS_EVIDENCE, never PASS.
+    # The verdict and reasons are recorded as receipt evidence so the audit
+    # trail shows exactly which layer excluded which candidate and why.
+    law11_admissible: list[PlanCandidate] = []
+    law11_excluded: list[tuple[str, str, tuple[str, ...]]] = []  # (cid, verdict, reasons)
+    for c in candidates:
+        typed = _candidate_to_typed_action(c, authority, actor_id=actor_id,
+                                           environment=environment)
+        verdict = law11_gate(typed)
+        if verdict.verdict == LAW11_ADMISSIBLE:
+            law11_admissible.append(c)
+        else:
+            law11_excluded.append((c.candidate_id, verdict.verdict, verdict.reasons))
+    law11_evidence = tuple(
+        f"candidate {cid} EXCLUDED by Law 11 gate [{v}]: "
+        f"{', '.join(rs) if rs else 'no reason recorded'}"
+        for cid, v, rs in law11_excluded
+    )
+    if not law11_admissible:
+        detail = "; ".join(
+            f"{cid} [{v}: {', '.join(rs) if rs else 'no reason recorded'}]"
+            for cid, v, rs in law11_excluded
+        )
+        if any(v == LAW11_PROHIBITED for _, v, _ in law11_excluded):
+            return refused(
+                PLAN_SAFETY_PROHIBITED,
+                evidence=f"all {len(candidates)} candidate(s) PROHIBITED by the "
+                         f"Law 11 (do-no-harm) gate; nothing admissible to execute. "
+                         f"{detail}",
+            )
+        if any(v == LAW11_NEEDS_AUTHORITY for _, v, _ in law11_excluded):
+            return refused(
+                PLAN_LAW11_NEEDS_AUTHORITY,
+                evidence=f"all {len(candidates)} candidate(s) NEEDS_AUTHORITY by the "
+                         f"Law 11 (do-no-harm) gate; explicit authority required, "
+                         f"nothing admissible to execute. {detail}",
+            )
+        return refused(
+            PLAN_SAFETY_NEEDS_EVIDENCE,
+            evidence=f"all {len(candidates)} candidate(s) NEEDS_EVIDENCE by the "
+                     f"Law 11 (do-no-harm) gate; critical safety evidence unresolved, "
+                     f"nothing admissible to execute. {detail}",
+        )
+
     # --- Do-no-harm hard gate (safety floor). Fail closed: a PROHIBITED
     # candidate gets zero value — it is excluded from selection entirely.
     # A NEEDS_EVIDENCE candidate is likewise excluded: unresolved critical
@@ -497,7 +653,7 @@ def plan_action(authority: LawAuthority,
     risk = risk_policy if risk_policy is not None else RiskPolicy()
     admissible: list[PlanCandidate] = []
     excluded: list[tuple[str, str, list[str]]] = []  # (candidate_id, gate verdict, gate reasons)
-    for c in candidates:
+    for c in law11_admissible:
         gate, reasons, _q = gate_candidate(_candidate_to_calculus(c), profile, risk)
         if gate in (PROHIBITED, NEEDS_EVIDENCE):
             excluded.append((c.candidate_id, gate, reasons))
@@ -505,19 +661,25 @@ def plan_action(authority: LawAuthority,
             admissible.append(c)
     if not admissible:
         detail = "; ".join(f"{cid} [{verdict}: {', '.join(rs)}]" for cid, verdict, rs in excluded)
+        law11_detail = "; ".join(
+            f"{cid} [{v}: {', '.join(rs) if rs else 'no reason recorded'}]"
+            for cid, v, rs in law11_excluded
+        )
+        prior = f"Law 11 exclusions: {law11_detail}. " if law11_detail else ""
         if any(verdict == PROHIBITED for _, verdict, _ in excluded):
             return refused(
                 PLAN_SAFETY_PROHIBITED,
-                evidence=f"all {len(candidates)} candidate(s) PROHIBITED by the "
-                         f"do-no-harm gate; nothing admissible to execute. {detail}",
+                evidence=f"{prior}all {len(law11_admissible)} Law-11-admissible candidate(s) "
+                         f"PROHIBITED by the do-no-harm gate; nothing admissible to "
+                         f"execute. {detail}",
             )
         return refused(
             PLAN_SAFETY_NEEDS_EVIDENCE,
-            evidence=f"all {len(candidates)} candidate(s) NEEDS_EVIDENCE by the "
-                     f"do-no-harm gate; critical safety evidence unresolved, "
-                     f"nothing admissible to execute. {detail}",
+            evidence=f"{prior}all {len(law11_admissible)} Law-11-admissible candidate(s) "
+                     f"NEEDS_EVIDENCE by the do-no-harm gate; critical safety evidence "
+                     f"unresolved, nothing admissible to execute. {detail}",
         )
-    gate_evidence = tuple(
+    gate_evidence = law11_evidence + tuple(
         f"candidate {cid} EXCLUDED by do-no-harm gate [{verdict}]: {', '.join(rs)}"
         for cid, verdict, rs in excluded
     )
@@ -587,7 +749,9 @@ def execute_plan(plan: ActionPlan,
                  max_law_age_seconds: float = MAX_LAW_AGE_SECONDS,
                  ledger: ReceiptLedger | None = None,
                  risk_policy: RiskPolicy | None = None,
-                 on_executed: Callable[[ActionPlan, ActionReceipt], None] | None = None) -> ActionReceipt:
+                 on_executed: Callable[[ActionPlan, ActionReceipt], None] | None = None,
+                 actor_id: str = "act_pipeline",
+                 environment: str = "development") -> ActionReceipt:
     """Phase 2: re-resolve live LAW authority, re-verify the do-no-harm gate,
     then execute.
 
@@ -649,6 +813,39 @@ def execute_plan(plan: ActionPlan,
     time_codes = _validate_law_time(fresh, now, max_law_age_seconds)
     if time_codes:
         return refused(*time_codes)
+
+    # --- Law 11 execution-door recheck (last responsible moment). The door
+    # independently re-verifies the planning context immediately before the
+    # executor fires:
+    #   * authority withdrawn since planning -> PROHIBITED, STOP.
+    #   * authority changed since planning -> NEEDS_AUTHORITY, STOP.
+    #   * target resource changed since planning -> PROHIBITED, STOP.
+    #   * Law 11 gate re-run on the current action state.
+    # Any non-ADMISSIBLE verdict refuses execution; the executor is never
+    # called. This is the hallway to the door: the gate exists, and now the
+    # pipeline actually walks through it.
+    typed_final = _candidate_to_typed_action(plan.chosen, fresh,
+                                             actor_id=actor_id,
+                                             environment=environment)
+    door_verdict = execution_door_check(
+        typed_final,
+        planned_authority_ref=plan.authority.grant_id,
+        current_authority_ref=fresh.grant_id,
+        planned_resource=plan.authority.scope,
+        current_resource=fresh.scope,
+    )
+    door_evidence = (
+        f"Law 11 execution-door re-gate: verdict {door_verdict.verdict}"
+        + (f" [{', '.join(door_verdict.reasons)}]" if door_verdict.reasons else "")
+        + f" (planned grant {plan.authority.grant_id} / current grant {fresh.grant_id}; "
+          f"planned scope {plan.authority.scope} / current scope {fresh.scope})"
+    )
+    if door_verdict.verdict == LAW11_PROHIBITED:
+        return refused(PLAN_SAFETY_PROHIBITED, evidence=door_evidence)
+    if door_verdict.verdict == LAW11_NEEDS_EVIDENCE:
+        return refused(PLAN_SAFETY_NEEDS_EVIDENCE, evidence=door_evidence)
+    if door_verdict.verdict == LAW11_NEEDS_AUTHORITY:
+        return refused(PLAN_LAW11_NEEDS_AUTHORITY, evidence=door_evidence)
 
     # --- Execution-time do-no-harm re-gate (safety floor). Fail closed:
     # the gate is re-verified at the last responsible moment, immediately
