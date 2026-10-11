@@ -1,0 +1,95 @@
+name: Brain index auto-stamp
+
+# Enforcement for the brain-index drift (11 occurrences; diagnosed 2026-10-11
+# from PR #2230): an unstamped BRAIN/ change is HEALED before it can land.
+#
+# Why healing, not blocking: kernel-tests already runs
+# `regenerate_brain_index.py --check` and it correctly FAILED on #2230's head.
+# The PR merged anyway via owner self-merge override (four red checks ignored).
+# Another red check cannot close that bypass -- the owner can always run the
+# light. So this workflow repaves the road: it commits the official
+# generator's receipt files onto the PR head (pull_request trigger) or onto
+# main itself (push trigger, covering direct pushes and self-merges -- the
+# actual 11-occurrence path). Whatever merges or lands is stamped.
+#
+# Design constraints (hard):
+# - The ONLY writer is the official generator (tools/regenerate_brain_index.py).
+#   The orchestrator (tools/brain_index_auto_stamp.py) never hand-edits.
+# - Receipt files ONLY: BRAIN/REAL-TREE.json, BRAIN/REAL-TREE.md,
+#   BRAIN/NAYAPOWER-BRAIN-INDEX.json. Anything else touched -> fail closed.
+# - SN-0327: regen runs on a clean checkout at the exact tree to stamp.
+# - No branch-protection or repo-setting changes (activation is Shawn's word).
+# - No Actions re-triggers beyond the PR's own push CI: pushes made with
+#   GITHUB_TOKEN do not trigger new workflow runs, so the stamp commit cannot
+#   loop this workflow, and the in-job "prove" step is the proof artifact.
+# - Fork PRs: the push-back fails -> the job fails LOUDLY (fail closed, never
+#   silent). Same-repo branches are the supported path.
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  push:
+    branches: ["main"]
+
+jobs:
+  auto-stamp:
+    name: Stamp the brain index
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # push the stamp commit back to the head branch / main
+    steps:
+      - name: Check out the exact tree to stamp
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          # pull_request: the HEAD commit, not the merge commit -- the stamp
+          # must land on the author's branch. push: the pushed commit.
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Decide whether a stamp could be needed
+        id: gate
+        run: |
+          set -u
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            RANGE="${{ github.event.pull_request.base.sha }}...${{ github.event.pull_request.head.sha }}"
+          else
+            RANGE="${{ github.event.before }}...${{ github.sha }}"
+          fi
+          CHANGED=""
+          if CHANGED=$(git diff --name-only "$RANGE" -- BRAIN/ 2>/dev/null); then
+            :
+          else
+            # Unresolvable range (e.g. branch creation): fail toward healing.
+            echo "stamp=yes" >> "$GITHUB_OUTPUT"
+            echo "unresolvable diff range; defaulting to stamp=yes"
+            exit 0
+          fi
+          # Any changed BRAIN/ *.md outside the three receipt files needs a
+          # stamp. (Pathspec is the whole BRAIN/ dir + grep: git treats **
+          # as * in pathspecs, so a 'BRAIN/**/*.md' pathspec would miss
+          # top-level files like BRAIN/CURRENT-MISSION-STATE.md.)
+          if printf '%s\n' "$CHANGED" | grep -E '\.md$' \
+              | grep -qvE '^BRAIN/(REAL-TREE\.json|REAL-TREE\.md|NAYAPOWER-BRAIN-INDEX\.json)$'; then
+            echo "stamp=yes" >> "$GITHUB_OUTPUT"
+          else
+            echo "stamp=no" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Auto-stamp the brain index
+        if: steps.gate.outputs.stamp == 'yes'
+        run: |
+          set -u
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            PUSH_TO="${{ github.event.pull_request.head.ref }}"
+          else
+            PUSH_TO="main"
+          fi
+          python3 tools/brain_index_auto_stamp.py --push-to "$PUSH_TO"
+
+      - name: Prove the stamped tree is clean
+        if: steps.gate.outputs.stamp == 'yes'
+        run: |
+          # Local HEAD is the stamp commit (the orchestrator committed it
+          # before pushing). --check must be green on it, in this same job:
+          # zero extra Actions runs, the proof rides the stamp.
+          python3 tools/regenerate_brain_index.py --check
