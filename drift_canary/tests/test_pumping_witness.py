@@ -333,3 +333,82 @@ def test_rejection_verdict_invariants(fixtures):
         assert v.breach_verdict == UNRESOLVED
         assert v.failure
         assert v.demonstrated == ()
+
+
+def test_minimization_preserves_resource_constrained_cycle_step():
+    """Finding 1 (medium): minimize_certificate dropped zero-debt cycle
+    steps even when they carried resource costs — erasing the fuel
+    constraint and letting a bounded cycle verify as unbounded. The
+    minimizer must keep resource-constrained steps; the verifier must
+    then REJECT on fuel exhaustion, not ACCEPT."""
+    fuel_step = PumpingStep(name="F", debt_delta=0,
+                            resource_costs=(("fuel", 1),))
+    cert = PumpingWitnessCertificate(
+        obligation_id="fuel",
+        boundary_ref="b",
+        entry_debt=0,
+        entry_path=(),
+        cycle=(PumpingStep(name="U", debt_delta=1), fuel_step),
+        exit_path=(PumpingStep(name="S", debt_delta=0, clears_debt=True),),
+        initial_resources=(("fuel", 2),),
+        model_assumptions=("test",),
+    )
+    minimized = minimize_certificate(cert)
+    assert len(minimized.cycle) == 2  # the fuel step is load-bearing
+    assert minimized.cycle[1] == fuel_step
+    assert is_minimal(minimized) == (True, "minimized")
+    v = verify_pumping_witness(minimized)
+    assert not v.accepted
+    assert v.peak_status == WITNESS_REJECTED
+    # Supply 2, cost 1/traversal: traversals 1-2 complete, #3 exhausts.
+    assert "repetition 3" in v.failure
+    assert "fuel" in v.failure
+
+
+def test_entry_consumption_shifts_minimal_counterexample():
+    """Finding 2: the minimal counterexample used pre-entry supplies.
+    Entry consumes 1 of 2 tokens and the cycle costs 1/traversal — the
+    true first-failing repetition is 2 (post-entry supply 1), not 3."""
+    cert = PumpingWitnessCertificate(
+        obligation_id="entry-consumes",
+        boundary_ref="b",
+        entry_debt=0,
+        entry_path=(PumpingStep(name="E", debt_delta=0,
+                                resource_costs=(("tok", 1),)),),
+        cycle=(PumpingStep(name="U", debt_delta=1,
+                           resource_costs=(("tok", 1),)),),
+        exit_path=(PumpingStep(name="S", debt_delta=0, clears_debt=True),),
+        initial_resources=(("tok", 2),),
+        model_assumptions=("test",),
+    )
+    assert is_minimal(cert) == (True, "minimized")
+    v = verify_pumping_witness(cert)
+    assert not v.accepted
+    assert v.peak_status == WITNESS_REJECTED
+    assert "repetition 2" in v.failure
+    assert "tok" in v.failure
+
+
+def test_demonstrated_peak_tracks_exit_debt():
+    """Finding 4: `demonstrated` peak was debt-before-exit. An exit with
+    positive-debt steps pushes the true peak above it — the reported peak
+    must say so (probe: reported 0, true 5)."""
+    cert = PumpingWitnessCertificate(
+        obligation_id="exit-debt",
+        boundary_ref="b",
+        entry_debt=0,
+        entry_path=(),
+        cycle=(PumpingStep(name="U", debt_delta=1),),
+        exit_path=(PumpingStep(name="X", debt_delta=5),),
+        initial_resources=(),
+        model_assumptions=("test",),
+    )
+    assert is_minimal(cert) == (True, "minimized")
+    v = verify_pumping_witness(cert)
+    assert v.accepted
+    assert v.peak_status == PROVEN_UNBOUNDED
+    # k=0: pre-exit debt 0, exit adds 5 → peak 5, final 5.
+    assert v.demonstrated[0] == (0, 5, 5)
+    # Peaks still strictly grow with the repetition count.
+    peaks = [p for _, p, _ in v.demonstrated]
+    assert peaks == sorted(peaks) and len(set(peaks)) == len(peaks)

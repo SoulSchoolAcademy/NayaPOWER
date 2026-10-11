@@ -31,10 +31,12 @@ accusation — the verdict answers UNRESOLVED even when the peak is proven
 unbounded, and any attempt to upgrade the witness to a BREACH fails closed.
 
 Minimization: the verifier accepts ONLY minimized certificates — every
-cycle step positively debt-producing, every entry step load-bearing, every
-resource claim consumed somewhere. `minimize_certificate` produces the
-minimal form; a non-minimal certificate is refused with the redundant part
-named, never silently repaired.
+cycle step debt-producing or resource-constraining (a zero-debt step that
+carries resource costs is load-bearing for repeatability and is kept),
+every entry step load-bearing, every resource claim consumed somewhere.
+`minimize_certificate` produces the minimal form; a non-minimal
+certificate is refused with the redundant part named, never silently
+repaired.
 
 The independent (cold) verifier reconstructs the certificate from its
 serialized bytes alone and re-runs every check — the AER-LIVE-007 valid
@@ -56,8 +58,9 @@ AER-LIVE-007 fixtures (the case that makes it real):
 
 SPEC + deterministic machinery. NOT wired into kernel/, KNOW, LAW, ACT, or
 any live path. Composes with D61's unbounded-debt engine when both merge
-(D61 not on main yet — identical verdict strings, no import coupling).
-Wiring needs Shawn's word.
+(D61 not on main yet — shared verdict strings PROVEN_UNBOUNDED /
+UNRESOLVED / BREACH / NO_BREACH; WITNESS_REJECTED is D62's own; no import
+coupling). Wiring needs Shawn's word.
 """
 from __future__ import annotations
 
@@ -66,9 +69,10 @@ import json
 from dataclasses import dataclass, field
 
 # ---------------------------------------------------------------------------
-# Vocabulary. Identical strings to the D58/D59/D60/D61 line so the directives
+# Vocabulary. Shared strings with the D58/D59/D60/D61 line
+# (PROVEN_UNBOUNDED, UNRESOLVED, BREACH, NO_BREACH) so the directives
 # compose when their PRs merge — no import coupling (none of them are on
-# main yet).
+# main yet). WITNESS_REJECTED is D62's own verdict string.
 # ---------------------------------------------------------------------------
 BREACH = "BREACH"
 NO_BREACH = "NO_BREACH"
@@ -217,10 +221,11 @@ _MODEL_ASSUMPTIONS = (
     "traversal starts and ends in the same scheduler state, adds a fixed "
     "positive debt delta, and consumes a fixed per-traversal resource cost. "
     "Full-state closure or it doesn't count.",
-    "Resource supplies are finite unless named infinite by absence from "
-    "initial_resources. Any positive per-traversal cost on a finite supply "
-    "bounds the repetitions — the minimal counterexample names the first "
-    "repetition that cannot complete.",
+    "Resource supplies are finite; a resource absent from "
+    "initial_resources has zero supply — any positive per-traversal cost "
+    "on it fails at the first repetition. Any positive per-traversal cost "
+    "on a finite supply bounds the repetitions — the minimal counterexample "
+    "names the first repetition that cannot complete.",
     "Every history constructed here is a defensible hypothesis WITHIN THESE "
     "ASSUMPTIONS for bound computation — never an asserted fact, never a "
     "starvation accusation. Model-level possibility is kept distinct from "
@@ -238,13 +243,15 @@ def _resources_dict(pairs: tuple) -> dict:
     return out
 
 
-def _replay_path(debt: int, resources: dict, path: tuple) -> tuple[int, dict]:
-    """Replay a path. Returns (final_debt, remaining_resources).
+def _replay_path_tracked(debt: int, resources: dict, path: tuple) -> tuple[int, int, dict]:
+    """Replay a path, tracking the maximum debt attained. Returns
+    (final_debt, peak_debt, remaining_resources).
 
     Fail-closed: a mandatory reset inside a replayed path, or a resource
     cost the supply cannot cover, raises — the path is not traversable.
     """
     resources = dict(resources)
+    peak = debt
     for step in path:
         if step.is_mandatory_reset:
             raise MandatoryResetError(
@@ -263,7 +270,19 @@ def _replay_path(debt: int, resources: dict, path: tuple) -> tuple[int, dict]:
         if debt < 0:
             raise CertificateShapeError(
                 f"step {step.name!r} drove debt negative — not a debt model")
-    return debt, resources
+        if debt > peak:
+            peak = debt
+    return debt, peak, resources
+
+
+def _replay_path(debt: int, resources: dict, path: tuple) -> tuple[int, dict]:
+    """Replay a path. Returns (final_debt, remaining_resources).
+
+    Fail-closed: a mandatory reset inside a replayed path, or a resource
+    cost the supply cannot cover, raises — the path is not traversable.
+    """
+    final_debt, _, remaining = _replay_path_tracked(debt, resources, path)
+    return final_debt, remaining
 
 
 def _cycle_traversal_cost(cycle: tuple) -> dict:
@@ -280,20 +299,25 @@ def _cycle_debt_gain(cycle: tuple) -> int:
 
 # ---------------------------------------------------------------------------
 # Minimization. Accepted certificates must be fixed points of this function:
-# every cycle step positively debt-producing, every entry step load-bearing,
-# every resource claim consumed somewhere. Minimization preserves every
-# constraint the proof depends on — it drops only redundant parts, and a
-# certificate that minimizes to an empty cycle is defective, not minimal.
+# every cycle step debt-producing or resource-constraining, every entry step
+# load-bearing, every resource claim consumed somewhere. Minimization
+# preserves every constraint the proof depends on — it drops only redundant
+# parts, and a certificate that minimizes to an empty cycle is defective,
+# not minimal.
 # ---------------------------------------------------------------------------
 def minimize_certificate(cert: PumpingWitnessCertificate) -> PumpingWitnessCertificate:
-    """Drop redundant parts: zero-debt cycle steps, identity entry steps,
-    unconsumed resource claims. Minimization preserves defects — a
+    """Drop redundant parts: zero-debt cost-free cycle steps, identity
+    entry steps, unconsumed resource claims. Minimization preserves every
+    constraint the proof depends on — a zero-debt cycle step that carries
+    resource costs is load-bearing for repeatability (dropping it would
+    erase a fuel/token constraint and let a bounded cycle verify as
+    unbounded), so it is kept. Minimization preserves defects — a
     mandatory-reset step is never dropped (it is a defect to be rejected,
     not redundancy to be repaired). Raises CertificateShapeError when no
     debt-producing step remains."""
     cycle = tuple(
         s for s in cert.cycle
-        if s.debt_delta > 0 or s.is_mandatory_reset
+        if s.debt_delta > 0 or s.is_mandatory_reset or s.resource_costs
     )
     if not cycle:
         raise CertificateShapeError(
@@ -336,7 +360,7 @@ def is_minimal(cert: PumpingWitnessCertificate) -> tuple[bool, str]:
     if minimized != cert:
         if len(minimized.cycle) != len(cert.cycle):
             return False, (f"cycle carries {len(cert.cycle) - len(minimized.cycle)} "
-                           f"non-debt-producing step(s)")
+                           f"redundant (zero-debt, cost-free) step(s)")
         if len(minimized.entry_path) != len(cert.entry_path):
             return False, "entry_path carries identity step(s)"
         if len(minimized.initial_resources) != len(cert.initial_resources):
@@ -372,7 +396,9 @@ class PumpingWitnessVerdict:
     proven violation (every history breaches it). It can coexist with an
     undetermined verdict and is never a starvation accusation.
     demonstrated carries sampled (repetitions, peak, final) triples —
-    constructed and replayed, not trusted.
+    constructed and replayed, not trusted. peak is the maximum debt
+    attained across the cycle traversals and the exit replay at that
+    sample count.
     """
     obligation_id: str
     accepted: bool
@@ -475,11 +501,13 @@ def verify_pumping_witness(cert: PumpingWitnessCertificate) -> PumpingWitnessVer
 
     # 4. Arbitrarily repeatable: no finite resource exhausted at any finite
     #    repetition. The first uncompletable repetition is the minimal
-    #    counterexample.
+    #    counterexample. The cycle traverses on the resources remaining
+    #    AFTER the entry path ran (after_entry) — not the pre-entry
+    #    supplies, which overstate when the entry itself consumes.
     per_traversal = _cycle_traversal_cost(cert.cycle)
     for res, cost in sorted(per_traversal.items()):
         if cost > 0:
-            supply = supplies.get(res, 0)
+            supply = after_entry.get(res, 0)
             if supply < cost:
                 first_failing = 1
             else:
@@ -493,13 +521,17 @@ def verify_pumping_witness(cert: PumpingWitnessCertificate) -> PumpingWitnessVer
     # 6. Exit valid after every finite repetition — replayed at sampled
     #    counts. The cycle consumes nothing (proven above), so the exit
     #    faces the same resources at every count; only the debt varies.
+    #    demonstrated carries the TRUE peak: the maximum debt attained
+    #    across the cycle traversals and the exit replay at that sample
+    #    (an exit with positive-debt steps can push the peak above the
+    #    pre-exit debt).
     demonstrated: list = []
     try:
         for k in _EXIT_SAMPLE_KS:
             debt_k = entry_debt + k * gain
-            final_debt, _ = _replay_path(debt_k, dict(after_entry), cert.exit_path)
-            peak = debt_k  # debt only rises through the cycle; exit clears
-            demonstrated.append((k, peak, final_debt))
+            final_debt, peak_k, _ = _replay_path_tracked(
+                debt_k, dict(after_entry), cert.exit_path)
+            demonstrated.append((k, peak_k, final_debt))
     except PumpingWitnessError as e:
         return reject(f"exit not valid after every finite repetition: {e}")
 

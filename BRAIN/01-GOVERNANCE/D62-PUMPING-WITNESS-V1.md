@@ -15,7 +15,7 @@ Assert an unbounded debt upper bound **only** from a minimized entry–cycle–e
 
 ## Minimization preserves every constraint the proof depends on
 
-Only minimized certificates are accepted — every cycle step positively debt-producing, every entry step load-bearing, every resource claim consumed somewhere. `minimize_certificate` produces the minimal form; a non-minimal certificate is **refused with the redundant part named**, never silently repaired. Minimization never drops a defect: a mandatory-reset step is rejected as a defect, not repaired away.
+Only minimized certificates are accepted — every cycle step debt-producing or resource-constraining (a zero-debt step carrying resource costs is load-bearing for repeatability and is kept by the minimizer), every entry step load-bearing, every resource claim consumed somewhere. `minimize_certificate` produces the minimal form; a non-minimal certificate is **refused with the redundant part named**, never silently repaired. Minimization never drops a defect: a mandatory-reset step is rejected as a defect, not repaired away.
 
 ## The independent verifier
 
@@ -38,7 +38,7 @@ The naive checker's wrong answer on the two-token fixture is exactly the defect 
 
 ## Composition
 
-- **From D61:** D61's unbounded-debt engine exhibits a constructive U*S witness; D62 is the general certificate + verifier any such witness must survive. D61's module is not on main yet — identical verdict strings, no import coupling.
+- **From D61:** D61's unbounded-debt engine exhibits a constructive U*S witness; D62 is the general certificate + verifier any such witness must survive. D61's module is not on main yet — shared verdict strings are PROVEN_UNBOUNDED / UNRESOLVED / BREACH / NO_BREACH (WITNESS_REJECTED is D62's own); no import coupling.
 - **To D63/D64:** D63 (full-state invariants for repeatable cycle proofs) and D64 (dependency-ordered invariant verification) build on the certificate the D62 verifier accepts.
 - **Witnesses are hypotheses:** every constructed history is defensible *within the stated model assumptions* — a hypothesis for bound computation, never an asserted fact, never an accusation.
 
