@@ -14,12 +14,18 @@ Reads from env:
 Usage:
     python3 tools/snapshot_merge_queue.py [--out queue.json] [--mission-state 2154]
 
-The mission state's "Merge queue" section names the queue as arrow-chains of
-PR numbers (e.g. "#2188 (needs his word) -> #2201 (blocked on #2188)"). The
-parenthetical after each PR carries its annotation:
-  - "needs his word" / "his word" -> parked (human gate, not starvation)
-  - "blocked on #NNNN" / "queued behind #NNNN" -> blocked_by
-  - "SUPERSEDED" / "close-unmerged" -> terminal, excluded from the queue
+The mission state's "Right now (in order)" section names the queue as a
+numbered list of PR items plus the morning merge order as an arrow-chain
+(e.g. "#2293 → #2270 → #2188 (his word) → #2201 queues"). Annotations:
+  - "his word" / "needs Shawn's word" / "Shawn pulls the trigger" -> parked
+    (human gate, not starvation)
+  - "blocked on #NNNN" / "queued behind #NNNN" / "sequencing after #NNNN"
+    -> blocked_by
+  - "SUPERSEDED" / "recommend close-unmerged" -> terminal, excluded
+  - "(draft ...)" -> parked as draft (not mergeable)
+
+If the section is missing or yields zero PR refs, the snapshot FAILS LOUD
+(exit 2) -- an empty queue must never scan green (L216).
 
 Known-red check exclusions come from the mission state's own standing notes
 (e.g. "receipt-gate RED = the exact depth-1 bug #2188 fixes"); each exclusion
@@ -53,10 +59,17 @@ MERGE_APPROVED_RE = re.compile(r"merge\s*:\s*APPROVED", re.I)
 REVIEW_APPROVED_RE = re.compile(r"\[NAYA[^\]]*REVIEW[^\]]*\].*APPROVED", re.I | re.S)
 FULL_SHA_RE = re.compile(r"\b[0-9a-f]{40}\b")
 BRANCH_SEAT_RE = re.compile(r"^naya(\d+)/", re.I)
-BLOCKED_RE = re.compile(r"(?:blocked on|blocked behind|queued behind)\s+#(\d+)", re.I)
-PARKED_RE = re.compile(r"(?:needs\s+)?his word", re.I)
+BLOCKED_RE = re.compile(
+    r"(?:blocked on|blocked behind|queued behind|sequencing after)\s+#(\d+)",
+    re.I)
+PARKED_RE = re.compile(r"(?:needs\s+)?(?:his|shawn'?s)\s+word|pulls the trigger",
+                       re.I)
 TERMINAL_RE = re.compile(r"SUPERSEDED|close-unmerged", re.I)
+DRAFT_RE = re.compile(r"\(draft\b|\bdraft\s+PR\b", re.I)
 CHAIN_SPLIT_RE = re.compile(r"\s*(?:->|→)\s*")
+RIGHT_NOW_RE = re.compile(r"##\s*right now", re.I)
+LEAD_PR_RE = re.compile(r"\s*\*\*PR\s+#(\d+)", re.I)
+VS_RE = re.compile(r"\bvs\.?\b", re.I)
 
 
 def api_get(path: str, token: str):
@@ -77,55 +90,113 @@ def seat_of(text: str):
     return f"Naya {m.group(1)}" if m else None
 
 
-def extract_queue_chains(body: str):
-    """Find arrow-chains of PR numbers in the 'Merge queue' section.
+def right_now_section(body: str):
+    """Slice the mission state's '## Right now (in order)' section.
 
-    Returns [(pr_number, annotation_text), ...] in queue order.
+    Returns the section text, or None when the heading is absent -- that is
+    format drift and the caller must fail loud (L216), never scan empty.
     """
-    m = re.search(r"merge queue.{0,80}", body, re.I)
-    section = body[m.start():] if m else body
-    # Stop at the next section header or the "Merge needs:" rule sentence.
-    end = re.search(r"\n#{1,3}\s|\nMerge needs:", section, re.I)
+    m = RIGHT_NOW_RE.search(body or "")
+    if not m:
+        return None
+    section = body[m.start():]
+    end = re.search(r"\n##\s", section)
     if end:
         section = section[:end.start()]
-    items = []
-    # Split into candidate chains on sentence boundaries, then split chains
-    # on arrows.
-    for chunk in re.split(r"[.\n]", section):
-        if "->" not in chunk and "→" not in chunk:
-            continue
-        parts = CHAIN_SPLIT_RE.split(chunk)
-        chain = []
-        for part in parts:
-            pm = PR_REF_RE.search(part)
-            if not pm:
+    return section
+
+
+def extract_queue_chains(body: str):
+    """Parse the merge queue from '## Right now (in order)'.
+
+    Sources, in first-seen order:
+      1. arrow-chains anywhere in the section (the morning merge order,
+         e.g. "#2293 → #2270 → #2188 (his word) → #2201 queues");
+      2. each numbered item's lead PR ("N. **PR #NNNN ...**") with the item's
+         full text as its annotation;
+      3. subordinate PR refs whose own clause carries an explicit queue-state
+         signal (blocked / parked / terminal / draft). For "A vs B" comparison
+         clauses the signal belongs to A (the subject); B is the baseline and
+         is skipped.
+
+    Returns [(pr_number, annotation_text), ...] in queue order, annotations
+    merged per PR. Empty list = unparseable; callers must fail LOUD.
+    """
+    section = right_now_section(body)
+    if section is None:
+        return []
+    items = []  # (pr, annot)
+    parts = re.split(r"(?m)^\s*\d+\.\s+", section)
+    for part in parts[1:]:  # parts[0] is the section header preamble
+        lead = None
+        lm = LEAD_PR_RE.match(part)
+        if lm:
+            lead = int(lm.group(1))
+        # 1) arrow-chains anywhere in the item (morning merge order)
+        for chunk in re.split(r"[.\n]", part):
+            if "->" not in chunk and "→" not in chunk:
                 continue
-            pr = int(pm.group(1))
-            annot = part[pm.end():]
-            # Annotation runs to the next PR ref or end of part.
-            chain.append((pr, annot))
-        items.extend(chain)
-    # De-duplicate, keep order.
-    seen = set()
-    out = []
+            for sub in CHAIN_SPLIT_RE.split(chunk):
+                pm = PR_REF_RE.search(sub)
+                if not pm:
+                    continue
+                items.append((int(pm.group(1)), sub[pm.end():]))
+        # 3) subordinate refs with an explicit queue-state clause.
+        #    Collected before the lead so the lead's annotation can be cut
+        #    at the first subordinate -- subordinate terminal/parked signals
+        #    must never misattribute to the lead (e.g. item 5's lead #2296
+        #    is MERGE-READY; "close-unmerged" belongs to #2280, not #2296).
+        sub_items = []  # (pos_in_part, pr, annot)
+        for cm in re.finditer(r"[^.;\n]+", part):
+            clause = cm.group(0)
+            if "->" in clause or "→" in clause:
+                continue  # arrow-chains handled precisely in (1); their
+                          # annotations belong to the ref they follow
+            for sm in PR_REF_RE.finditer(clause):
+                pr = int(sm.group(1))
+                if pr == lead:
+                    continue  # lead already carries the item text
+                before, after = clause[:sm.start()], clause[sm.end():]
+                if VS_RE.search(before[-14:]):
+                    continue  # "A vs B": B is the comparison baseline
+                if (TERMINAL_RE.search(after) or PARKED_RE.search(after)
+                        or BLOCKED_RE.search(after) or DRAFT_RE.search(after)):
+                    sub_items.append((cm.start() + sm.start(), pr, after))
+        # 2) the item's lead PR: its OWN clause only (up to the first
+        #    subordinate queue item).
+        if lead is not None:
+            cut = min([pos for pos, _, _ in sub_items], default=len(part))
+            items.append((lead, part[:cut]))
+        items.extend((pr, annot) for _, pr, annot in sub_items)
+    # Merge annotations per PR, keep first-seen order.
+    merged = {}
     for pr, annot in items:
-        if pr not in seen:
-            seen.add(pr)
-            out.append((pr, annot))
-    # Second pass: the "Parked" section names PRs awaiting Shawn's word in
-    # prose outside the arrow-chains (e.g. "#2280/#2279/#2283 merges (his
-    # word)"). Those are parked even without a chain-local annotation.
-    parked_extra = set()
-    pm = re.search(r"parked.{0,400}", body, re.I | re.S)
-    if pm:
-        parked_section = body[pm.start():pm.start() + 1200]
-        for line in parked_section.split("\n"):
-            if PARKED_RE.search(line):
-                for num in PR_REF_RE.findall(line):
-                    parked_extra.add(int(num))
-    out = [(pr, annot + (" [parked: his word]" if pr in parked_extra and
-                         "his word" not in annot.lower() else ""))
-           for pr, annot in out]
+        annot = (annot or "").strip()
+        if pr in merged:
+            if annot and annot not in merged[pr]:
+                merged[pr] += " | " + annot
+        else:
+            merged[pr] = annot
+    return [(pr, merged[pr]) for pr in merged]
+
+
+def parked_from_parked_section(body: str):
+    """PRs the mission state's '## Parked' section names as awaiting Shawn.
+
+    Those PRs are parked even without a chain-local annotation (e.g.
+    "#2293 / #2270 merges (his word — morning order above)").
+    """
+    m = re.search(r"##\s*parked", body or "", re.I)
+    if not m:
+        return set()
+    section = body[m.start():]
+    end = re.search(r"\n##\s", section)
+    if end:
+        section = section[:end.start()]
+    out = set()
+    for line in section.split("\n"):
+        if PARKED_RE.search(line):
+            out.update(int(n) for n in PR_REF_RE.findall(line))
     return out
 
 
@@ -187,7 +258,19 @@ def main(argv=None) -> int:
     issue = api_get(f"/repos/{REPO}/issues/{args.mission_state}", token)
     body = issue.get("body") or ""
     tip_note = f"mission-state updated {issue.get('updated_at')}"
-    chains = extract_queue_chains(body)
+    chains = [(p, a) for p, a in extract_queue_chains(body)
+              if p != args.mission_state]  # the mission state is never its own queue item
+    if not chains:
+        # L216: an empty parse is an alarm, never a clean scan.
+        if right_now_section(body) is None:
+            print("SNAPSHOT ERROR: queue parsed empty from #2154 -- "
+                  "'Right now (in order)' section not found; format changed?",
+                  file=sys.stderr)
+        else:
+            print("SNAPSHOT ERROR: queue parsed empty from #2154 -- section "
+                  "present but zero PR refs; format changed?", file=sys.stderr)
+        return 2
+    parked_extra = parked_from_parked_section(body)
     print(f"queue chains from #2154: {[p for p, _ in chains]}", file=sys.stderr)
 
     # Known-red exclusions grounded in the mission state's own standing notes.
@@ -229,10 +312,12 @@ def main(argv=None) -> int:
 
         evidence = parse_evidence(pr_number, head_sha, comments, check_runs,
                                    known_red)
-        blocked_by = [int(x) for x in BLOCKED_RE.findall(annot)]
+        blocked_by = list(dict.fromkeys(int(x) for x in BLOCKED_RE.findall(annot)))
         parked = None
-        if PARKED_RE.search(annot):
+        if PARKED_RE.search(annot) or pr_number in parked_extra:
             parked = {"reason": "awaiting Shawn's word (human gate) -- not starvation"}
+        elif DRAFT_RE.search(annot):
+            parked = {"reason": "draft PR -- not mergeable; parked until ready for review"}
         assumptions = []
         if not author_seat:
             assumptions.append("author seat undeclared; branch prefix fallback used")

@@ -428,3 +428,92 @@ def test_18_latest_run_failing_still_blocks():
     v = scan_queue(_queue([_item(evidence=ev)]), now=FIXED_NOW)[0]
     assert v.eligible is False
     assert "checks_green_on_head" in v.missing
+
+
+# ---------------------------------------------------------------------------
+# Snapshot: live-format anchoring + fail loud on empty parse (L216)
+# ---------------------------------------------------------------------------
+
+import snapshot_merge_queue as smq
+
+# Faithful miniature of the live #2154 "Right now (in order)" format
+# (2026-10-11): numbered PR items + arrow-chain merge order + Parked section.
+LIVE_SHAPE_BODY = """# CURRENT MISSION STATE — live
+
+## Right now (in order)
+1. **Tip `57e935c1` — red pending one merge.** Morning merge order: **#2293 → #2270 → #2188 (his word) → #2201 queues.**
+2. **PR #2270 (Zero Value Law) — MERGE-READY, sequencing after #2293.**
+3. **PR #2188 (receipt-gate fix) — VERIFICATION-COMPLETE, needs Shawn's word.** The gate re-ran on the review → FAILURE (stale).
+4. **PR #2201 (spec/aer-live-3) — CONSENSUS-GREEN, queued behind #2188.**
+5. **PR #2296 — MERGE-READY.** NO MERGE — Shawn pulls the trigger. **#2280 vs #2293 — recommend close-unmerged (his call).** #2279 + #2283 — merge-protocol conditions pending (his word). #2102 SUPERSEDED — recommend close-unmerged. PR #2231 (draft: failure-learning gate).
+
+## Parked — Shawn's word only
+- #2293 / #2270 merges (his word — morning order above). #2188 merge (8.44 < 9.0).
+"""
+
+
+def test_19_live_shape_parses_queue_with_annotations():
+    chains = smq.extract_queue_chains(LIVE_SHAPE_BODY)
+    prs = [p for p, _ in chains]
+    assert prs == [2293, 2270, 2188, 2201, 2296, 2280, 2279, 2283, 2102, 2231], prs
+    by_pr = dict(chains)
+    assert "sequencing after #2293" in by_pr[2270]
+    assert "his word" in by_pr[2188].lower()
+    assert "queued behind #2188" in by_pr[2201]
+    assert "pulls the trigger" in by_pr[2296]
+    assert "close-unmerged" in by_pr[2280]      # subject of the "vs" clause
+    assert "close-unmerged" not in by_pr[2293]  # comparison baseline untouched
+    assert "SUPERSEDED" in by_pr[2102]
+    assert "draft" in by_pr[2231].lower()
+    # Prose arrows without PR refs ("review → FAILURE") contribute nothing.
+    assert 2154 not in prs
+    # The Parked section names its own (line granularity, like the old pass).
+    assert smq.parked_from_parked_section(LIVE_SHAPE_BODY) == {2293, 2270, 2188}
+
+
+def test_20_missing_section_fails_loud_not_silent(tmp_path, monkeypatch, capsys):
+    # A #2154 body with no "Right now" section: the snapshot must exit 2 and
+    # write NO file -- nothing downstream may scan an empty queue green.
+    monkeypatch.setenv("GH_TOKEN", "test-token")
+    monkeypatch.setattr(smq, "api_get", lambda path, token: {
+        "body": "# CURRENT MISSION STATE\n## North Star\nNothing queued here.\n",
+        "updated_at": "2026-10-11T06:13:19Z"})
+    out = tmp_path / "q.json"
+    rc = smq.main(["--out", str(out), "--mission-state", "2154"])
+    assert rc == 2
+    assert "queue parsed empty from #2154" in capsys.readouterr().err
+    assert not out.exists()
+
+
+def test_21_section_without_refs_fails_loud(tmp_path, monkeypatch, capsys):
+    # Section present but zero PR refs: still an alarm, not a clean scan.
+    monkeypatch.setenv("GH_TOKEN", "test-token")
+    monkeypatch.setattr(smq, "api_get", lambda path, token: {
+        "body": ("# CURRENT MISSION STATE\n## Right now (in order)\n"
+                 "Nothing to merge today.\n\n## Parked\nNone.\n"),
+        "updated_at": "2026-10-11T06:13:19Z"})
+    out = tmp_path / "q.json"
+    rc = smq.main(["--out", str(out), "--mission-state", "2154"])
+    assert rc == 2
+    assert "queue parsed empty from #2154" in capsys.readouterr().err
+    assert not out.exists()
+
+
+def test_22_lead_keeps_own_clause_subordinate_signals_do_not_leak():
+    # Regression from the live proof: item 5's lead #2296 is MERGE-READY but
+    # its item text mentions #2280/#2102 terminal subordinates. The lead's
+    # annotation must be its own clause only -- "close-unmerged" belongs to
+    # the subordinates, never to the lead.
+    body = ("# MISSION\n## Right now (in order)\n"
+            "5. **PR #2296 — MERGE-READY.** NO MERGE — Shawn pulls the trigger. "
+            "**#2280 vs #2293 — recommend close-unmerged (his call).** "
+            "#2102 SUPERSEDED — recommend close-unmerged.\n"
+            "\n## Parked\nNone.\n")
+    chains = smq.extract_queue_chains(body)
+    by_pr = dict(chains)
+    assert [p for p, _ in chains] == [2296, 2280, 2102]
+    assert "pulls the trigger" in by_pr[2296]
+    assert "close-unmerged" not in by_pr[2296]
+    assert not smq.TERMINAL_RE.search(by_pr[2296])
+    assert smq.TERMINAL_RE.search(by_pr[2280])
+    assert smq.TERMINAL_RE.search(by_pr[2102])
