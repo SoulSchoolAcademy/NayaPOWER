@@ -74,7 +74,7 @@
       "evidence": "tests/test_smart_link_generator.py; tests/test_private_smart_link_viewer.py",
       "frozen": "2026-10-10",
       "id": "SP-005",
-      "problem": "Proof of receipt for captured intelligence: distinguishing 'a note was received, saved, and stamped' from 'the lesson was learned'. Solved by the Smart Link coat-check ticket — a receipt token that proves capture only, never learning."
+      "problem": "Proof of receipt for captured intelligence: distinguishing 'a note was received, saved, and stamped' from 'the lesson was learned'. Solved by the Smart Link coat-check ticket \u2014 a receipt token that proves capture only, never learning."
     },
     {
       "aliases": [
@@ -113,12 +113,99 @@
       "evidence": "tests/test_learning_evidence_ladder.py; tools/learning_evidence_ladder.json",
       "frozen": "2026-10-10",
       "id": "SP-008",
-      "problem": "Learning promotion proof: a captured lesson is not a learned lesson. Solved by the learning evidence ladder — a behavioral proof ladder that promotes a lesson only when it measurably changes behavior on a held-out task, with control/treatment arms and an adversarial wrong-memory arm for high-value claims."
+      "problem": "Learning promotion proof: a captured lesson is not a learned lesson. Solved by the learning evidence ladder \u2014 a behavioral proof ladder that promotes a lesson only when it measurably changes behavior on a held-out task, with control/treatment arms and an adversarial wrong-memory arm for high-value claims."
+    },
+    {
+      "id": "SP-009",
+      "problem": "Multi-node liveness and guaranteed progress: proving the work actually completes, not just that nothing wrong happened. Solved by the canonical liveness seam with deadlock detection over the live wait graph, livelock detection (activity without obligation reduction), starvation detection (eligible work unserved while other work progresses), genuine-progress classification (heartbeats, log lines, retries, status rewrites are not progress), waiting-state honesty (WAITING_AUTHORITY only leaves via a real authorization, never reclassified as completed), and the hard rule that liveness never creates permission across an authority boundary.",
+      "canonical": "drift_canary/liveness.py",
+      "evidence": "On main at 57e935c1; 623 lines SPEC + deterministic machinery (assess_liveness, detect_deadlock, detect_livelock, detect_starvation, is_genuine_progress, LivenessObligation, LivenessReceipt); CODE-ONLY, unwired \u2014 extend this seam, do not rebuild it elsewhere. D22 directive (#1354 comment 6100845704).",
+      "frozen": "2026-10-11",
+      "aliases": [
+        "multi-node liveness",
+        "guaranteed progress",
+        "liveness qualifier",
+        "deadlock detection",
+        "livelock detection",
+        "starvation detection",
+        "genuine progress",
+        "waiting-state honesty",
+        "liveness never creates permission",
+        "progress witness",
+        "assess liveness"
+      ]
+    },
+    {
+      "id": "SP-010",
+      "problem": "Well-founded measure of real progress: activity is not progress \u2014 only a verified reduction in outstanding obligations counts. Solved by the canonical progress seam with two non-gameable measures (proof progress: a required obligation independently discharged with acceptable evidence; termination progress: movement toward a finite resolution including bounded failure recovery), budgets bound to the obligation rather than the agent, no invented progress, and escalation never completing the original objective.",
+      "canonical": "drift_canary/progress.py",
+      "evidence": "On main at 57e935c1; 413 lines SPEC + deterministic machinery (ProgressAccount); CODE-ONLY, unwired \u2014 extend this seam, do not rebuild it elsewhere. D23 directive (#1354).",
+      "frozen": "2026-10-11",
+      "aliases": [
+        "well-founded measure",
+        "real progress",
+        "proof progress",
+        "termination progress",
+        "obligation reduction",
+        "progress accounting",
+        "no invented progress",
+        "progress account"
+      ]
+    },
+    {
+      "id": "SP-011",
+      "problem": "Fair scheduling without false progress: fairness guarantees opportunity, execution creates observations, and only qualifying evidence proves progress \u2014 three separate proofs composing into one liveness claim. Solved by the canonical fairness seam with FairnessContract, SchedulingEvent adequacy checks, FairnessLedger, and no-debt-reset plus service-not-assertion checks.",
+      "canonical": "drift_canary/fairness.py",
+      "evidence": "On main at 57e935c1; 483 lines SPEC + deterministic machinery (FairnessContract, FairnessLedger, check_no_debt_reset); CODE-ONLY \u2014 extend this seam, do not rebuild it elsewhere. D24 directive (#1354).",
+      "frozen": "2026-10-11",
+      "aliases": [
+        "fair scheduling",
+        "false progress",
+        "fairness contract",
+        "fairness ledger",
+        "fair service",
+        "scheduling event",
+        "no debt reset",
+        "opportunity execution evidence"
+      ]
+    },
+    {
+      "id": "SP-012",
+      "problem": "Strong fairness where weak fairness is not enough: weak fairness protects work that stays eligible; strong fairness prevents starvation of work that flickers in and out of eligibility. Solved by the canonical strong-fairness seam with the situation-to-standard recommender, explicit assumption checks, three-sub-proof composition into strong termination, and the FlickerLedger duty-owed computation.",
+      "canonical": "drift_canary/strong_fairness.py",
+      "evidence": "On main at 57e935c1; 548 lines SPEC + deterministic machinery (recommend_standard, ThreeSubProofs, FlickerLedger); CODE-ONLY \u2014 extend this seam, do not rebuild it elsewhere. D25 directive (#1354).",
+      "frozen": "2026-10-11",
+      "aliases": [
+        "strong fairness",
+        "weak fairness",
+        "starvation prevention",
+        "flicker ledger",
+        "fairness standard",
+        "three sub-proofs",
+        "duty owed"
+      ]
+    },
+    {
+      "id": "SP-013",
+      "problem": "Fairness verification by proving the three links separately: every liveness qualification must independently establish opportunity, fair service, and verified progress \u2014 component success plus component success is not system success unless the interactions are proven. Solved by the canonical fairness-verification seam with lasso classification over obligation observations (cycle enabled/serviced patterns, rank decrease, terminal states, awaiting-authority).",
+      "canonical": "drift_canary/fairness_verify.py",
+      "evidence": "On main at 57e935c1; 1408 lines SPEC + deterministic machinery (classify_lasso, ObligationObservation); CODE-ONLY \u2014 extend this seam, do not rebuild it elsewhere. D26 directive (#1354).",
+      "frozen": "2026-10-11",
+      "aliases": [
+        "fairness verification",
+        "three links",
+        "liveness qualification",
+        "lasso classification",
+        "model checker",
+        "runtime harness",
+        "prove the three links separately",
+        "obligation observation"
+      ]
     }
   ],
-  "purpose": "Operating Code V2 — Gate 7 (Duplicate Detector). Machine-readable list of problems already solved at 10 and FROZEN. Before building anything new, run tools/duplicate_detector.py against this registry. A FLAG means the problem is already solved at the canonical location: consolidate or extend that seam — never rebuild. The flag is mandatory; the human director decides the consolidation.",
+  "purpose": "Operating Code V2 \u2014 Gate 7 (Duplicate Detector). Machine-readable list of problems already solved at 10 and FROZEN. Before building anything new, run tools/duplicate_detector.py against this registry. A FLAG means the problem is already solved at the canonical location: consolidate or extend that seam \u2014 never rebuild. The flag is mandatory; the human director decides the consolidation.",
   "registry": "solved_problem_registry",
   "seed_note": "Seeded 2026-10-10 by Gate 7 construction. The 'frozen' date on seed entries is the date the entry was verified into this registry: the repo checkout is shallow so original authorship dates are unrecoverable. Canonical paths were verified present at live main tip. A seat claiming an earlier freeze date should attach the evidence (merged PR / test receipt) to that entry.",
-  "updated": "2026-10-10",
-  "version": 1
+  "updated": "2026-10-11",
+  "version": 2
 }
