@@ -19,5 +19,5 @@ jobs:
           python-version: "3.12"
       - run: python -m pip install pytest pyyaml pglast
       - run: python -m pytest -q
-      - name: Verify generated Brain index has no drift
-        run: python tools/regenerate_brain_index.py --check
+      - name: Brain index freshness gate (protocol law BRAIN-INDEX-FRESHNESS)
+        run: python tools/protocol/checks/brain_index_freshness.py --record '{}'
