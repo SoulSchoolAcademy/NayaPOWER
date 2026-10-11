@@ -189,6 +189,18 @@ def test_load_fewer_than_nine_nodes_fails_closed(tmp_path):
 # ---------------------------------------------------------------------------
 
 
+def test_non_iterable_nodes_value_fails_closed_as_runtime_error(tmp_path):
+    """A non-iterable 'nodes' value must raise RuntimeError (the fail-closed
+    contract), never escape as TypeError. None stays exempt: it rides the
+    `nodes or ()` path and is refused by the identity/order check."""
+    for bad in (42, 3.14, True):
+        manifest = make_manifest()
+        manifest["nodes"] = bad
+        root = write_repo(tmp_path, manifest)
+        with pytest.raises(RuntimeError, match="not a list of node entries"):
+            runtime_boot.load_runtime_manifest(root)
+
+
 def test_non_dict_node_entry_fails_closed(tmp_path):
     """A non-dict node entry must not escape as AttributeError: the
     fail-closed contract covers malformed node shapes too."""

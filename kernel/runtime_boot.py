@@ -8,6 +8,7 @@ production, or successor proof.
 from __future__ import annotations
 
 import json
+from collections.abc import Iterable
 from pathlib import Path
 
 
@@ -70,6 +71,15 @@ def load_runtime_manifest(root: Path | None = None) -> dict:
     # .get() and would otherwise escape the RuntimeError path as
     # AttributeError, violating the fail-closed contract.
     nodes = manifest.get("nodes")
+    # Fail closed on shape, not just content: a non-iterable `nodes` value
+    # (e.g. 42) would otherwise escape the RuntimeError path as TypeError,
+    # violating the fail-closed contract. None stays on the `or ()` path and
+    # is refused by the node identity/order check below.
+    if nodes is not None and not isinstance(nodes, Iterable):
+        raise RuntimeError(
+            "BRAIN manifest 'nodes' is not a list of node entries; "
+            "runtime boot fails closed"
+        )
     if any(not isinstance(node, dict) for node in nodes or ()):
         raise RuntimeError(
             "BRAIN manifest contains a non-object node entry; "
