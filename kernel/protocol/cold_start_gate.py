@@ -7,8 +7,9 @@ human authority, correct current navigation, and exactly one next action.
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+from pathlib import Path
 
-from .read_receipt import ReadReceipt, REQUIRED_READING_PATHS
+from .read_receipt import ReadReceipt, REQUIRED_READING_PATHS, current_document_sha256
 
 
 @dataclass
@@ -20,7 +21,6 @@ class ColdStartState:
     current_truth_location: str
     next_action: str
     receipt: ReadReceipt | None = None
-    current_document_sha256: dict[str, str] = field(default_factory=dict)
 
 
 @dataclass
@@ -35,13 +35,19 @@ REQUIRED_TRUTH_MARKERS = ["#2175", "#2154", "#1599", "main"]
 def run_cold_start(state: ColdStartState) -> ColdStartResult:
     failures: list[str] = []
 
-    # 1. Receipt must bind every required reading to the bytes in current state.
-    if state.receipt is None:
-        failures.append("No protocol read receipt. Read the required sources and answer the comprehension questions.")
-    elif set(state.current_document_sha256) != set(REQUIRED_READING_PATHS):
-        failures.append("Current hashes for every mandatory reading were not supplied; activation fails closed.")
-    elif not state.receipt.verify(expected_document_sha256=state.current_document_sha256):
-        failures.append("Read receipt failed comprehension, completeness, integrity, or current-source binding.")
+    # 1. Receipt must bind every required reading to the exact current checkout bytes.
+    try:
+        repo_root = Path(__file__).resolve().parents[2]
+        expected_hashes = current_document_sha256(repo_root)
+    except OSError as exc:
+        failures.append(f"Required onboarding source missing or unreadable; activation fails closed: {exc}")
+    else:
+        if state.receipt is None:
+            failures.append("No protocol read receipt. Read the required sources and answer the comprehension questions.")
+        elif set(expected_hashes) != set(REQUIRED_READING_PATHS):
+            failures.append("Current hashes for every mandatory reading could not be established; activation fails closed.")
+        elif not state.receipt.verify(expected_document_sha256=expected_hashes):
+            failures.append("Read receipt failed comprehension, completeness, integrity, or current-source binding.")
 
     # 2. Identity.
     if not state.agent_id.strip():
