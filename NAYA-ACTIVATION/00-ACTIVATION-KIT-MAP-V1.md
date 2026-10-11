@@ -34,9 +34,9 @@ First read the mandatory boot packet in root [PROTOCOL.md](../PROTOCOL.md) and t
 
 ## Mandatory operating protocol and work-cycle gate
 
-The canonical operating-protocol entry point is root [`PROTOCOL.md`](../PROTOCOL.md). Every Naya must read and understand it and the complete mandatory packet linked there before governed work. The packet includes `AGENTS.md`, the Constitution, Laws Index, Portable Activation Protocol, Smart Note Operating Contract, Portable Activation Manifest, this map, Nonstop Loop AI/machine forms, newest source-precedence reconciliation, and current mission state.
+The canonical operating-protocol entry point is root [`PROTOCOL.md`](../PROTOCOL.md). Every Naya must read and understand it and the complete mandatory packet linked there before governed work. The packet includes `AGENTS.md`, the Constitution, Laws Index, the [ratified Team Naya Operating Protocol](../BRAIN/01-GOVERNANCE/TEAM-NAYA-OPERATING-PROTOCOL-V1.md), Portable Activation Protocol, Smart Note Operating Contract, Portable Activation Manifest, this map, Nonstop Loop AI/machine forms, newest source-precedence reconciliation, and current mission state.
 
-Do not treat this map or protocol as an alternate law source. The Constitution and already-ratified laws retain their precedence; the consolidated protocol remains a candidate pending explicit Director ratification.
+Do not treat this map or protocol as an alternate law source. Shawn ratified the root protocol through the explicit receipt [#2175 comment 6105641681](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6105641681). The Constitution and other higher-precedence ratified laws retain their precedence; this map is not a parallel law source.
 
 **Before governed work:** post structured SIGN_IN on the assigned current specialist feed, then run the executable gate in [`PROTOCOL.md`](../PROTOCOL.md). **At cycle close:** post SIGN_OUT on that same feed and run `tools/protocol/cold_start_gate.py --mode close`. A missing/failed receipt holds activation or leaves the cycle open.
 
