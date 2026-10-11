@@ -1,0 +1,59 @@
+name: Revocation Gate (D33 wire)
+
+# Wires the D33 selective-revocation engine onto the drift-canary
+# governance-verification path. Every revocation scenario in
+# tools/d33_revocation_manifest.json is cold-executed against the REAL
+# engine (drift_canary/d33_revocation.RevocationEngine): the scenario
+# (sources, derivation edges, claims with explicit AND/OR support
+# sets, one revocation event) is rebuilt from the claim's own model
+# bytes and the claimant's asserted post-revocation verdicts must
+# match the engine's recomputed verdicts exactly — verdict AND
+# covered scope. A scenario the law refuses — a masquerading
+# derivation certified as independent, revoked evidence still
+# supporting claims, a blanket revocation destroying an
+# independently-sufficient conclusion — BLOCKS (exit 1). Before
+# judging, a fixed canary probe (the masquerade fixture) must come
+# back DOWNGRADED-over-staging or the gate fails closed (exit 2):
+# the gate never certifies through a blind engine. Empty manifest =
+# explicit DORMANT (exit 0), never a false green. Corrupt manifest,
+# unknown verdict/scope/assessment values, or a broken engine =
+# fail-closed (exit 2).
+#
+# OPERATING PATH: the drift-canary governance-verification CI path.
+# Trigger: this check on pull_request / push-to-main for the paths
+# below. Block: check red blocks the merge path. Defect class: stale
+# or inflated qualifications surviving an evidence revocation.
+# Verify-still-connected: this file exists and the check runs on the
+# drift-canary path; `python tools/d33_revocation_gate.py --json`
+# exits 0 DORMANT on a claim-free tree.
+
+on:
+  pull_request:
+    paths:
+      - "drift_canary/d33_revocation.py"
+      - "tools/d33_revocation_gate.py"
+      - "tools/d33_revocation_manifest.json"
+      - "tests/test_d33_revocation_gate.py"
+      - ".github/workflows/d33-revocation-gate.yml"
+  push:
+    branches: ["main"]
+    paths:
+      - "drift_canary/d33_revocation.py"
+      - "tools/d33_revocation_gate.py"
+      - "tools/d33_revocation_manifest.json"
+      - "tests/test_d33_revocation_gate.py"
+      - ".github/workflows/d33-revocation-gate.yml"
+
+jobs:
+  revocation-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      # Bare setup-python images do not always carry pytest; install it
+      # explicitly (same lesson as the sibling mechanism and wire gates).
+      - run: python -m pip install pytest
+      - run: python -m pytest tests/test_d33_revocation_gate.py -q -p no:cacheprovider
+      - run: python tools/d33_revocation_gate.py --json
