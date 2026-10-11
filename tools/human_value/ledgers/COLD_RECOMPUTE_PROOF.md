@@ -346,3 +346,37 @@ observation row.)
 per this file and posted a verdict on #1604 — reproducibility is proven, independent
 human verification of the ledger itself remains the binding 8.0 gate. DAI series is
 ~5 days of real data; trend readable after 2+ weeks.
+
+## Fourteenth cold-recompute proof — n=12 loop (2026-10-11 ~03:53 UTC)
+
+Fresh full clone @ `d68ad9117dec72a59b8d7b15326d298a7b1c0b59`
+(branch `naya5/human-value-events-20261010-0341`, rebased onto live tip
+`a6cf26db` — the value-calculus ACT wiring merge (#2273); the rebase was
+conflict-free, no tree edits):
+
+| Check | Originating worktree | Cold clone | Match |
+|---|---|---|---|
+| HEAD | `d68ad911` | `d68ad911` | OK |
+| `ledger_sha256` | `sha256:5aa5da596fd69a27d2a18853283d1a05ac7df638ed91d35bb89d098003151620` | (same) | OK |
+| `hv_per_day_total` | 16.1428 | 16.1428 | OK |
+| `dai_per_day` | 0.5714 (flat — zero new human-attention demands) | 0.5714 | OK |
+| `events_validated` | 115 | 115 | OK |
+| `calibration.n` / MAE / bias | 12 / 0.0833 / 0.0 | 12 / 0.0833 / 0.0 | OK |
+| test suite | 36 passed | 36 passed | OK |
+
+**Anti-inflation note:** DEC-012 scores the 10th brain-index-drift merge
+(#2194) at **−3.0** (verified rework), discounts the consensus-gate merge
+(#2223) to +4.0 for its skipped objection window (merged 2 min after the
+freeze reiteration — the process gap is real and named), and holds the
+value-calculus wiring (#2273) at +7.0 (capability real, behavioral proof
+pending). Predicted +5.0 → observed +5.0. MAE improved 0.0909 → 0.0833.
+
+**CI honesty bound:** CI state at the new tip `a6cf26db` was not observed by
+this lane — the join reflects the git-verified merge record, not CI status.
+The merge-queue lane owns the Freshness Law re-proof.
+
+**State note (unchanged):** no independent seat has yet cold-recomputed the
+ledger per this file and posted a verdict on #1604 — reproducibility is
+proven, independent verification of the ledger itself remains the binding
+8.0 gate. Standing request re-issued on #1604 this shift (sign-out
+6105xxxxxx) with the fresh head `d68ad911`.
