@@ -97,17 +97,47 @@ def has_pending_work():
         return False  # Can't determine = assume no pending (fail safe toward NO_WORK)
 
 
+def _surface_notifications():
+    """Surface pending worker notifications (#2244 req 4). Informational only.
+
+    Never changes the verdict, never raises. A broken outbox degrades to
+    silence — activation must not depend on it.
+    """
+    try:
+        here = os.path.dirname(os.path.abspath(__file__))
+        if here not in sys.path:
+            sys.path.insert(0, here)
+        import notify_outbox
+        audience = os.environ.get("NAYA_NOTIFY_AUDIENCE", "all")
+        worker = os.environ.get("NAYA_WORKER_ID", "worker-entry")
+        return notify_outbox.deliver_pending(audience, worker)
+    except Exception:
+        return ""
+
+
 def main():
     as_json = "--json" in sys.argv
 
-    # Gate 1: Stand-down flag
-    if check_stand_down():
-        result = {"verdict": "STAND_DOWN", "reason": "API rate limit active, zero API calls this shift"}
+    # Notification outbox (#2244 req 4): surface pending awareness FIRST, so it
+    # appears even on NO_WORK/STAND_DOWN runs. Local files only (zero API
+    # calls) — safe under stand-down. Never alters the verdict below.
+    notify_digest = _surface_notifications()
+
+    def finish(result, text_line, exit_code):
         if as_json:
+            if notify_digest:
+                result["notifications"] = notify_digest
             print(json.dumps(result))
         else:
-            print("STAND_DOWN: API rate limit flag active. Exit immediately.")
-        sys.exit(20)
+            if notify_digest:
+                print(notify_digest)
+            print(text_line)
+        sys.exit(exit_code)
+
+    # Gate 1: Stand-down flag
+    if check_stand_down():
+        finish({"verdict": "STAND_DOWN", "reason": "API rate limit active, zero API calls this shift"},
+               "STAND_DOWN: API rate limit flag active. Exit immediately.", 20)
 
     # Gate 2: Cheap tip check
     plan_tip = read_tip_from_plan()
@@ -115,44 +145,23 @@ def main():
 
     if live_tip is None:
         # Can't check = be conservative, allow work but flag it
-        result = {"verdict": "WORK_AVAILABLE", "reason": "could not verify tip, proceeding with caution", "caution": True}
-        if as_json:
-            print(json.dumps(result))
-        else:
-            print("WORK_AVAILABLE (caution): could not verify live tip.")
-        sys.exit(10)
+        finish({"verdict": "WORK_AVAILABLE", "reason": "could not verify tip, proceeding with caution", "caution": True},
+               "WORK_AVAILABLE (caution): could not verify live tip.", 10)
 
     tips_match = plan_tip and live_tip.startswith(plan_tip[:7]) if plan_tip else False
     pending = has_pending_work()
 
     if tips_match and not pending:
-        result = {
-            "verdict": "NO_WORK",
-            "reason": "tip unchanged and no pending work",
-            "tip": live_tip[:10],
-        }
-        if as_json:
-            print(json.dumps(result))
-        else:
-            print(f"NO_WORK: tip {live_tip[:10]} unchanged, no pending work. Exit cleanly.")
-        sys.exit(0)
+        finish({"verdict": "NO_WORK", "reason": "tip unchanged and no pending work", "tip": live_tip[:10]},
+               f"NO_WORK: tip {live_tip[:10]} unchanged, no pending work. Exit cleanly.", 0)
     else:
         reasons = []
         if not tips_match:
             reasons.append(f"tip moved ({plan_tip[:7] if plan_tip else 'unknown'} → {live_tip[:7]})")
         if pending:
             reasons.append("pending work items exist")
-        result = {
-            "verdict": "WORK_AVAILABLE",
-            "reason": "; ".join(reasons),
-            "live_tip": live_tip,
-            "plan_tip": plan_tip,
-        }
-        if as_json:
-            print(json.dumps(result))
-        else:
-            print(f"WORK_AVAILABLE: {'; '.join(reasons)}")
-        sys.exit(10)
+        finish({"verdict": "WORK_AVAILABLE", "reason": "; ".join(reasons), "live_tip": live_tip, "plan_tip": plan_tip},
+               f"WORK_AVAILABLE: {'; '.join(reasons)}", 10)
 
 
 if __name__ == "__main__":
