@@ -107,6 +107,16 @@ def main():
             print(json.dumps(result))
         else:
             print("STAND_DOWN: API rate limit flag active. Exit immediately.")
+        # #2244-D: a stand-down is a material blocker -> DETECTED event.
+        # Best-effort, never raises, never changes this verdict or exit code.
+        try:
+            from worker_event_wire import emit_stand_down_event
+            _plan_tip = read_tip_from_plan()
+            _tip40 = _plan_tip if (_plan_tip and len(_plan_tip) == 40
+                                  and all(c in "0123456789abcdef" for c in _plan_tip.lower())) else None
+            print("EVENT_WIRE: " + json.dumps(emit_stand_down_event(result["reason"], source_sha=_tip40)))
+        except Exception:
+            pass  # the wire never breaks the gate
         sys.exit(20)
 
     # Gate 2: Cheap tip check
