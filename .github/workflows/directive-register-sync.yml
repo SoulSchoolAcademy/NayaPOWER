@@ -45,6 +45,10 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Install pytest
+        run: python3 -m pip install pytest
+
+
       - name: Validate directive references in changed governance docs
         run: |
           BASE="${{ github.base_ref }}"
