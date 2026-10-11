@@ -2,6 +2,7 @@
 from ..revocation import (
     PartialCompromiseRecord, Recomputation, VERDICTS, REVOCATION_FORMS,
     COMPROMISE_UNITS, RECOMPUTATION_STEPS, PARTIAL_COMPROMISE_RULES,
+    contain_dependence,
 )
 from ..exposure import qualification_is_usable
 
@@ -93,3 +94,29 @@ def test_first_acceptance_scenario():
     # cold successor gets updated state: stale certificate unusable
     usable, _ = qualification_is_usable(True, True, False, True)
     assert not usable
+
+
+def test_contain_dependence_svg_scenario():
+    """Naya_pro_process.svg: A suspect; B blocked (depends only on A);
+    C requalifies (has independent evidence X). Contain dependence,
+    not the entire graph."""
+    deps = {"B": ("A",), "C": ("A", "X")}
+    r = contain_dependence("A", deps)
+    assert r["B"] == "BLOCKED"
+    assert r["C"] == "REQUALIFY"
+
+
+def test_contain_dependence_transitive():
+    """A dependent of a BLOCKED node is also blocked."""
+    deps = {"B": ("A",), "D": ("B",)}
+    r = contain_dependence("A", deps)
+    assert r["B"] == "BLOCKED"
+    assert r["D"] == "BLOCKED"
+
+
+def test_contain_dependence_unaffected_excluded():
+    """Nodes not depending on the suspect claim are untouched."""
+    deps = {"B": ("A",), "E": ("Z",)}
+    r = contain_dependence("A", deps)
+    assert "E" not in r
+    assert "A" not in r
