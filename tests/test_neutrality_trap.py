@@ -201,17 +201,65 @@ def test_delayed_without_window_blocks():
 
 
 def test_delayed_with_window_is_admissible_with_advisory():
-    """R5: DELAYED with a named T-07 window -> admissible-with-window; the
-    window rides the verdict as advisory, never as a block."""
+    """R5: DELAYED with a VERIFIED T-07 window -> admissible-with-window; the
+    window rides the verdict as advisory, never as a block.
+
+    The window reference is checked against the registry (Gap 1): the test
+    wires a verifier that knows this window, proving the advisory path
+    fires only for real windows.
+    """
+    a = severity_assessment(
+        "g1",
+        finding=nf.DELAYED,
+        observation_window_ref="obs-window/2026-11-30:latency-regression",
+    )
+    known_windows = {"obs-window/2026-11-30:latency-regression"}
+    verdict = law11_gate(
+        clean_action(negligible_profile("g1"), a),
+        window_exists=lambda ref: ref in known_windows,
+    )
+    assert verdict.verdict == ADMISSIBLE, verdict.reasons
+    assert any("NEUTRALITY_DELAYED_WINDOW" in r for r in verdict.reasons)
+    assert any("obs-window/2026-11-30" in r for r in verdict.reasons)
+
+
+def test_delayed_with_fake_window_name_is_rejected():
+    """Gap 1 (safety-critical): a DELAYED claim naming a window the
+    registry does not know MUST be rejected — a made-up window name is
+    not a real observation window."""
+    a = severity_assessment(
+        "g1",
+        finding=nf.DELAYED,
+        observation_window_ref="made-up-window-123",
+    )
+    known_windows = {"obs-window/2026-11-30:latency-regression"}
+    # Via the consult directly: the registry says unknown -> rejected.
+    consult = nf.consult_neutrality(
+        negligible_profile("g1"), (a,),
+        window_exists=lambda ref: ref in known_windows,
+    )
+    assert consult.blocks_admission
+    assert any("DELAYED_WINDOW_UNKNOWN" in r for r in consult.needs_evidence_reasons)
+    # Via the full gate: the claim blocks admission.
+    verdict = law11_gate(
+        clean_action(negligible_profile("g1"), a),
+        window_exists=lambda ref: ref in known_windows,
+    )
+    assert verdict.verdict == NEEDS_EVIDENCE, verdict.reasons
+    assert any("DELAYED_WINDOW_UNKNOWN" in r for r in verdict.reasons)
+
+
+def test_delayed_with_window_but_no_registry_fails_closed():
+    """Gap 1: when no window registry is wired, a named window is
+    unverifiable — and unverifiable is not admissible. Fail closed."""
     a = severity_assessment(
         "g1",
         finding=nf.DELAYED,
         observation_window_ref="obs-window/2026-11-30:latency-regression",
     )
     verdict = law11_gate(clean_action(negligible_profile("g1"), a))
-    assert verdict.verdict == ADMISSIBLE, verdict.reasons
-    assert any("NEUTRALITY_DELAYED_WINDOW" in r for r in verdict.reasons)
-    assert any("obs-window/2026-11-30" in r for r in verdict.reasons)
+    assert verdict.verdict == NEEDS_EVIDENCE, verdict.reasons
+    assert any("DELAYED_WINDOW_UNVERIFIED" in r for r in verdict.reasons)
 
 
 def test_unknown_unmeasured_inconclusive_fail_closed():
@@ -337,3 +385,38 @@ def test_neutrality_reasons_carry_group_and_dimension():
         assert r.startswith("NEUTRALITY_"), r
         assert "group=g1" in r, r
         assert "dimension=severity" in r, r
+
+
+def test_gate_affected_interests_carry_blocked_groups():
+    """Gap 3: the gate's final verdict must name the blocked groups as
+    direct data in affected_interests — never parsed out of reason
+    strings. Two groups blocked, one cleared: only the blocked two appear."""
+    # g1 and g2 make unevidenced claims (blocked); g3 clears with TRUE_ZERO.
+    a1 = severity_assessment("g1", finding=nf.UNKNOWN)
+    a2 = severity_assessment("g2", finding=nf.INCONCLUSIVE)
+    a3 = severity_assessment(
+        "g3",
+        finding=nf.TRUE_ZERO,
+        zero_by_mechanism=True,
+        zero_by_mechanism_ref="code-path-unreachable:proof-123",
+    )
+    profile = negligible_profile("g1", "g2", "g3")
+    verdict = law11_gate(clean_action(profile, a1, a2, a3))
+    assert verdict.verdict == NEEDS_EVIDENCE, verdict.reasons
+    # Direct data, not string parsing: exactly the blocked groups.
+    assert verdict.affected_interests == ("g1", "g2"), verdict.affected_interests
+    # And the consult itself carries the same list.
+    consult = nf.consult_neutrality(profile, (a1, a2, a3))
+    assert consult.affected_groups == ("g1", "g2"), consult.affected_groups
+
+
+def test_gate_affected_interests_empty_when_admissible():
+    """The admissible path carries no blocked groups."""
+    a = severity_assessment(
+        "g1",
+        finding=nf.TRUE_ZERO,
+        zero_by_mechanism=True,
+        zero_by_mechanism_ref="code-path-unreachable:proof-123",
+    )
+    verdict = law11_gate(clean_action(negligible_profile("g1"), a))
+    assert verdict.verdict == ADMISSIBLE, verdict.reasons

@@ -53,6 +53,7 @@ required window reference.
 """
 from __future__ import annotations
 
+from collections.abc import Callable
 from dataclasses import dataclass, field
 
 from kernel.protocol import harm_profile as _hp
@@ -180,12 +181,22 @@ def _rid(kind: str, group: str, dimension: str) -> str:
     return f"NEUTRALITY_{kind}:group={group}:dimension={dimension}"
 
 
-def classify_finding(a: NeutralityAssessment) -> NeutralityVerdict:
+def classify_finding(
+    a: NeutralityAssessment,
+    window_exists: Callable[[str], bool] | None = None,
+) -> NeutralityVerdict:
     """Validate one claimed finding state against its attached evidence.
 
     The machine never upgrades a claim — it accepts it or downgrades it to
     a fail-closed state. Every downgrade names its exact cause in
     reason_ids.
+
+    window_exists: optional verifier for T-07 observation window references.
+        When a DELAYED claim names a window, the reference is checked
+        against the real registry (Gap 1 fix, 2026-10-11 — a fake window
+        name must never pass as a real observation window). If the verifier
+        is absent, the window is unverifiable and the claim fails closed;
+        if the verifier reports the window unknown, the claim is rejected.
     """
     g, d = a.group, a.dimension
 
@@ -270,20 +281,35 @@ def classify_finding(a: NeutralityAssessment) -> NeutralityVerdict:
             reason_ids=(_rid(a.finding, g, d),),
         )
 
-    # --- DELAYED: accepted; admissibility needs a named window (R5). ---
+    # --- DELAYED: accepted; admissibility needs a named window (R5), and
+    #     the named window must exist in T-07's registry (Gap 1). ---
     if a.finding == DELAYED:
-        if a.observation_window_ref.strip():
+        ref = a.observation_window_ref.strip()
+        if not ref:
             return NeutralityVerdict(
                 dimension=d, group=g, accepted_finding=DELAYED, clears=False,
-                reason_ids=(_rid("DELAYED_WITH_WINDOW", g, d),),
-                advisory=(
-                    f"NEUTRALITY_DELAYED_WINDOW:group={g}:dimension={d}"
-                    f":window={a.observation_window_ref.strip()}",
-                ),
+                reason_ids=(_rid("DELAYED_NO_WINDOW", g, d),),
+            )
+        if window_exists is None:
+            # No registry wired: the window reference is unverifiable.
+            # Fail closed — an unverifiable name is not a real window.
+            return NeutralityVerdict(
+                dimension=d, group=g, accepted_finding=DELAYED, clears=False,
+                reason_ids=(_rid("DELAYED_WINDOW_UNVERIFIED", g, d),),
+            )
+        if not window_exists(ref):
+            # The registry says this window does not exist. Reject.
+            return NeutralityVerdict(
+                dimension=d, group=g, accepted_finding=DELAYED, clears=False,
+                reason_ids=(_rid("DELAYED_WINDOW_UNKNOWN", g, d),),
             )
         return NeutralityVerdict(
             dimension=d, group=g, accepted_finding=DELAYED, clears=False,
-            reason_ids=(_rid("DELAYED_NO_WINDOW", g, d),),
+            reason_ids=(_rid("DELAYED_WITH_WINDOW", g, d),),
+            advisory=(
+                f"NEUTRALITY_DELAYED_WINDOW:group={g}:dimension={d}"
+                f":window={ref}",
+            ),
         )
 
     # Unreachable (constructor rejects non-canonical findings), kept as a
@@ -336,16 +362,21 @@ class NeutralityConsult:
         admissible verdict (advisory, like T-05's delay_note).
     verdicts: the per-(group, dimension) validated outcomes, preserved for
         audit.
+    affected_groups: the group_ids whose claims block admission, as direct
+        data — the gate must use this list, never parse group names out of
+        reason strings (Gap 2 fix, 2026-10-11).
     """
     blocks_admission: bool
     needs_evidence_reasons: tuple[str, ...] = ()
     delayed_advisory: tuple[str, ...] = ()
     verdicts: tuple[NeutralityVerdict, ...] = ()
+    affected_groups: tuple[str, ...] = ()
 
 
 def consult_neutrality(
     profile: _hp.HarmProfile,
     assessments: tuple[NeutralityAssessment, ...] = (),
+    window_exists: Callable[[str], bool] | None = None,
 ) -> NeutralityConsult:
     """Validate the neutrality claims of a harm profile.
 
@@ -355,6 +386,10 @@ def consult_neutrality(
     without-window -> the gate must demand evidence; TRUE_ZERO /
     PRACTICALLY_NEUTRAL -> the dimension clears; DELAYED-with-window ->
     admissible-with-window advisory.
+
+    window_exists: optional T-07 registry verifier, threaded through to
+        classify_finding for DELAYED claims (Gap 1). When absent, named
+        windows fail closed as unverifiable.
     """
     by_key: dict[tuple[str, str], NeutralityAssessment] = {}
     for a in assessments:
@@ -369,6 +404,7 @@ def consult_neutrality(
     verdicts: list[NeutralityVerdict] = []
     reasons: list[str] = []
     advisory: list[str] = []
+    blocking_groups: list[str] = []
 
     # Required claims first: missing state = UNKNOWN (R1).
     for group, dimension in required_finding_keys(profile):
@@ -382,27 +418,31 @@ def consult_neutrality(
                 )
             )
         else:
-            verdicts.append(classify_finding(by_key[key]))
+            verdicts.append(classify_finding(by_key[key], window_exists))
 
     # Voluntary assessments on other pairs are validated too — the gate
     # never ignores supplied evidence.
     required = set(required_finding_keys(profile))
     for key, a in by_key.items():
         if key not in required:
-            verdicts.append(classify_finding(a))
+            verdicts.append(classify_finding(a, window_exists))
 
     for v in verdicts:
         if v.clears:
             continue
         if v.accepted_finding == DELAYED and v.advisory:
-            # R5: DELAYED with a named window -> admissible-with-window.
+            # R5: DELAYED with a verified named window -> admissible-with-
+            # window. (The window was checked against the registry inside
+            # classify_finding; advisory only fires for verified windows.)
             advisory.extend(v.advisory)
             continue
         reasons.extend(v.reason_ids)
+        blocking_groups.append(v.group)
 
     return NeutralityConsult(
         blocks_admission=bool(reasons),
         needs_evidence_reasons=tuple(reasons),
         delayed_advisory=tuple(advisory),
         verdicts=tuple(verdicts),
+        affected_groups=tuple(sorted(set(blocking_groups))),
     )

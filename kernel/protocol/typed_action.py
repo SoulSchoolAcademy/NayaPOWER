@@ -37,6 +37,7 @@ All layers fail closed. A PROHIBITED verdict at any layer is final.
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+from collections.abc import Callable
 
 from kernel.protocol import harm_profile as _hp
 from kernel.protocol import neutrality_finding as _nf
@@ -162,8 +163,16 @@ def _is_production_write(action: TypedAction) -> bool:
     )
 
 
-def law11_gate(action: TypedAction) -> Law11Verdict:
+def law11_gate(
+    action: TypedAction,
+    window_exists: Callable[[str], bool] | None = None,
+) -> Law11Verdict:
     """Law 11 (Do No Harm) gate. Runs BEFORE Value Calculus scoring.
+
+    window_exists: optional T-07 observation-window registry verifier,
+        threaded through to the neutrality consult (T-06). When absent,
+        DELAYED claims naming a window fail closed as unverifiable —
+        a fake window name never passes as a real observation window.
 
     Order of checks (fail-closed, most severe first):
       1. Inherently prohibited operations -> PROHIBITED (no override)
@@ -279,15 +288,16 @@ def law11_gate(action: TypedAction) -> Law11Verdict:
     # DELAYED with a named T-07 window rides delay_note as advisory (R5).
     if action.harm_profile is not None:
         nconsult = _nf.consult_neutrality(
-            action.harm_profile, action.neutrality_assessments
+            action.harm_profile, action.neutrality_assessments,
+            window_exists=window_exists,
         )
         if nconsult.blocks_admission:
             return Law11Verdict(
                 verdict=NEEDS_EVIDENCE,
                 reasons=nconsult.needs_evidence_reasons,
-                affected_interests=tuple(
-                    sorted({r.split(":")[1].split("=")[1] for r in nconsult.needs_evidence_reasons})
-                ),
+                # Gap 2 fix: groups as direct data from the consult, never
+                # parsed out of reason strings.
+                affected_interests=nconsult.affected_groups,
                 policy_version=policy,
             )
         if nconsult.delayed_advisory:
