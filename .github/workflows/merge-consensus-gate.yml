@@ -4,6 +4,12 @@ name: Merge consensus gate
 # seat other than the author, and (2) a scorecard receipt naming the exact
 # head SHA. Until branch protection requires this check, it reports but does
 # not block — the freeze directive on the board is the interim enforcement.
+#
+# Scope note: the seat-receipt convention started 2026-10-11T16:30:00Z
+# (PR #2352). PRs opened before that are SKIPPED with a clear message —
+# enforcing the convention retroactively is a stale assertion. API failures
+# fail closed with plain words ("unable to verify consensus"), never a
+# traceback: a red check with a stack trace trains everyone to ignore red.
 
 on:
   pull_request:
@@ -13,6 +19,14 @@ on:
     types: [submitted, dismissed]
   issue_comment:
     types: [created, edited]
+
+# Least privilege: the gate only reads PRs, reviews, and PR comments
+# (served by the issues API). Declared explicitly so a future default
+# restriction cannot silently 403 the gate into permanent red.
+permissions:
+  contents: read
+  pull-requests: read
+  issues: read
 
 jobs:
   consensus:
@@ -32,17 +46,20 @@ jobs:
           if [ "${{ github.event_name }}" = "issue_comment" ]; then
             PR_NUM="${{ github.event.issue.number }}"
             echo "pr_number=$PR_NUM" >> $GITHUB_OUTPUT
-            # Retry the API call up to 3 times with backoff (rate-limit resilience)
+            # Retry the API call up to 5 times with backoff (rate-limit
+            # resilience: comment events fire during merge bursts when the
+            # shared token quota is exhausted; a hard fail here is the same
+            # chronic-red family as the consensus step itself)
             HEAD_SHA=""
-            for attempt in 1 2 3; do
+            for attempt in 1 2 3 4 5; do
               if HEAD_SHA=$(gh api "repos/${{ github.repository }}/pulls/$PR_NUM" --jq .head.sha 2>/dev/null) && [ -n "$HEAD_SHA" ]; then
                 break
               fi
               echo "gh api attempt $attempt failed, retrying..." >&2
-              sleep $((attempt * 5))
+              sleep $((attempt * 10))
             done
             if [ -z "$HEAD_SHA" ]; then
-              echo "ERROR: could not resolve head SHA for PR $PR_NUM after 3 attempts" >&2
+              echo "ERROR: could not resolve head SHA for PR $PR_NUM after 5 attempts (API unavailable, not a consensus verdict)" >&2
               exit 1
             fi
             echo "head_sha=$HEAD_SHA" >> $GITHUB_OUTPUT
