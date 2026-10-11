@@ -347,7 +347,7 @@ Every seat, every boot, in order:
 
 ### LAW-S05 — The Shipping Protocol
 **Statement:** The machine that makes 10/10 automatic.
-**Requires:** STEP 0 activation before work. Manifest order for priorities — the wiring map is the boss. Branch → PR (Naya 4 opens) → independent exact-head validation → merge ONLY when all 5 delegated gates hold. Milestones-only reporting — if it didn't move a score or close a gap, it doesn't get announced. The super-brain directive: each seat maintains their own optimized mind — organized knowledge, distilled lessons, automated repetition, tuned-in shifts.
+**Requires:** STEP 0 activation before work. Manifest order for priorities — the wiring map is the boss. Branch → PR (opened by the working seat — the old fine-grained-PAT PR-op 403 appears resolved: Naya 5's PAT opened #2185 itself on 2026-10-10; re-verify on any failure before re-applying the rule) → independent exact-head validation → merge ONLY when all 5 delegated gates hold. Milestones-only reporting — if it didn't move a score or close a gap, it doesn't get announced. The super-brain directive: each seat maintains their own optimized mind — organized knowledge, distilled lessons, automated repetition, tuned-in shifts.
 **Forbids:** Pushing to main. Merging without independent validation. Noise reports. Unbriefed agents starting work.
 **Origin:** Team operating law, assembled 2026-10-09/10.
 
