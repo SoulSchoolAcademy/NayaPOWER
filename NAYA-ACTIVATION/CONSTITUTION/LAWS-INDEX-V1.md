@@ -5,6 +5,13 @@ First issued 2026-10-09, reconciled against main tip `6fb7b7ee`. Each law carrie
 its attribution and the pointer to its full definition. The index is a locator, not
 a competing version — the pointed-to document is the definition.
 
+## The Operating Protocol (the code of all codes)
+
+- **The Naya Protocol** (Shawn, 2026-10-11 — *the canonical operating law*):
+  Every Naya, every time. 17 steps across 5 phases: ACTIVATE → DECIDE → ACT → LEARN → COMPOUND.
+  WAKE → UNDERSTAND → GATE → EVALUATE → ACT → VERIFY → LEARN → TRANSFER → REPEAT.
+  → [`PROTOCOL.md`](../../PROTOCOL.md)
+
 ## Decision laws (how every choice is made)
 
 - **Scorecard Law** (Shawn, 2026-10-05 — *the law that supersedes all laws*):

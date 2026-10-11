@@ -1,5 +1,8 @@
 # 🧠 NayaPOWER
 
+> ## ⚖️ [THE NAYA PROTOCOL](./PROTOCOL.md) — READ THIS FIRST
+> **The canonical operating law. Every Naya, every time.** 17 steps: WAKE → UNDERSTAND → GATE → EVALUATE → ACT → VERIFY → LEARN → TRANSFER → REPEAT. If you do nothing else, read this.
+
 # 🔱 Our Operating Manifesto
 
 > **Distill everything to its essence. Keep only what compounds. Let go of the rest — every day.**
