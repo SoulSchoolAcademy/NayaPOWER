@@ -49,6 +49,7 @@ Canonical constants:
 """
 from __future__ import annotations
 
+import re
 import uuid
 from dataclasses import dataclass, field
 from typing import Any, Callable, Sequence
@@ -347,21 +348,72 @@ _OPERATION_KEYWORDS = (
 )
 
 
+# Character substitutions used to evade exact-string matching.
+# Maps leet-speak and lookalike characters to their canonical letters.
+_LEET_TRANSLATION = str.maketrans({
+    "1": "i", "!": "i", "|": "i",
+    "0": "o",
+    "3": "e",
+    "4": "a", "@": "a",
+    "5": "s", "$": "s",
+    "7": "t", "+": "t",
+    "8": "b",
+    "9": "g",
+})
+
+
+def _normalize_action_text(action: str) -> str:
+    """Normalize free-text action names for operation inference.
+
+    Collapses separator variations (hyphen/space/dot/slash/colon become
+    underscore), leet-speak substitutions, and repeated separators, so
+    that trivial respellings cannot evade prohibited-operation detection.
+    """
+    lowered = (action or "").lower()
+    translated = lowered.translate(_LEET_TRANSLATION)
+    unified = re.sub(r"[-.\s/\\:;]+", "_", translated)
+    collapsed = re.sub(r"_+", "_", unified)
+    return collapsed.strip("_")
+
+
+# Canonical prohibited operation -> semantic stem groups.
+# An action maps to the prohibited operation when (after normalization)
+# it contains at least one stem from EACH group (AND across groups,
+# OR within a group), order-independent. Stems catch morphological
+# variants: fabricate / fabrication / fabricated all contain "fabricat".
+_PROHIBITED_STEMS = (
+    ("fabricate_evidence", (("fabricat",), ("evidence",))),
+    ("destroy_evidence", (("destroy",), ("evidence",))),
+    ("weaken_test", (("weaken",), ("test",))),
+    ("break_trust", (("break",), ("trust",))),
+    ("harm", (("harm",),)),
+)
+
+
 def _infer_operation(action: str) -> str:
     """Derive the canonical Law 11 operation from the pipeline action name.
 
     Inherently prohibited operations are checked FIRST so that an action
     literally named e.g. "fabricate_evidence" maps to the prohibited
     operation instead of falling through to the generic "execute".
+
+    The check is normalization-resistant: separators (hyphen/space/dot),
+    leet-speak substitutions, and morphological variants (fabricate /
+    fabrication / fabricated) all resolve to the same prohibited concept.
+    A respelling is not a different action.
+
     Otherwise the first matching keyword wins; unknown actions default to
     OPERATION_EXECUTE (a generic consequential action).
     """
-    lowered = (action or "").lower()
+    normalized = _normalize_action_text(action)
     for prohibited in INHERENTLY_PROHIBITED_OPERATIONS:
-        if prohibited in lowered:
+        if prohibited in normalized:
             return prohibited
+    for canonical, stem_groups in _PROHIBITED_STEMS:
+        if all(any(stem in normalized for stem in group) for group in stem_groups):
+            return canonical
     for operation, keywords in _OPERATION_KEYWORDS:
-        if any(kw in lowered for kw in keywords):
+        if any(kw in normalized for kw in keywords):
             return operation
     return OPERATION_EXECUTE
 

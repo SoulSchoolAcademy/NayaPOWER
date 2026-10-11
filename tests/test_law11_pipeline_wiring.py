@@ -205,6 +205,30 @@ def test_infer_operation_prohibited_first():
     assert ap._infer_operation("do_harm_now") == "harm"
 
 
+def test_infer_operation_prohibited_respelling_resistant():
+    # Naya 2 adversarial battery (2026-10-11): these respellings bypassed
+    # the exact-substring check and gated ADMISSIBLE. A respelling is not
+    # a different action — all must map to the prohibited operation.
+    # Separator variations
+    assert ap._infer_operation("fabricate-evidence") == "fabricate_evidence"
+    assert ap._infer_operation("destroy evidence") == "destroy_evidence"
+    assert ap._infer_operation("weaken test") == "weaken_test"
+    assert ap._infer_operation("break.trust") == "break_trust"
+    # Leet-speak / character substitutions
+    assert ap._infer_operation("fabricate_ev1dence") == "fabricate_evidence"
+    assert ap._infer_operation("f4bricate_evidence") == "fabricate_evidence"
+    assert ap._infer_operation("weaken_te$t") == "weaken_test"
+    # Morphological variants
+    assert ap._infer_operation("evidence_fabrication") == "fabricate_evidence"
+    assert ap._infer_operation("fabricated_evidence_report") == "fabricate_evidence"
+    # Case variations
+    assert ap._infer_operation("FABRICATE_EVIDENCE") == "fabricate_evidence"
+    # Legitimate actions must NOT be caught by the hardening
+    assert ap._infer_operation("deploy_model") == "deploy"
+    assert ap._infer_operation("read_user_profile") == "read"
+    assert ap._infer_operation("something_unknown") == "execute"
+
+
 def test_infer_operation_keywords():
     assert ap._infer_operation("deploy_model") == "deploy"
     assert ap._infer_operation("delete_record") == "delete"
