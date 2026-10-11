@@ -114,7 +114,7 @@
 - `BRAIN/01-GOVERNANCE/TEAM-NAYA-OPERATING-PROTOCOL-V1.md` — `947a3a14a9bf` (14458 bytes)
 - `BRAIN/01-GOVERNANCE/THE-PROTOCOL.md` — `a16fd69d14da` (8059 bytes)
 - `BRAIN/01-GOVERNANCE/THE-TUNE-IN-TEMPLATE.md` — `e61b5c675a63` (4893 bytes)
-- `BRAIN/01-GOVERNANCE/WIRE-RECEIPT-directive-register.md` — `2a486b6428b5` (3888 bytes)
+- `BRAIN/01-GOVERNANCE/WIRE-RECEIPT-directive-register.md` — `84c12f4f6063` (5066 bytes)
 - `BRAIN/01-GOVERNANCE/directive-register.json` — `44d6991e67ed` (13876 bytes)
 - `BRAIN/01-GOVERNANCE/elevation-grants/README.md` — `37afb12365a8` (1910 bytes)
 - `BRAIN/01-GOVERNANCE/naya-dream-v1.machine.json` — `c469937962eb` (22689 bytes)

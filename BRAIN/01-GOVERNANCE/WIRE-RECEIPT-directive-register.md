@@ -33,7 +33,7 @@ number outside the registered set is caught before merge, with a file:line witne
 Local (mechanism):
 - Live fire on the real tree: 42 governance docs scanned → 0 violations,
   11 out-of-scope refs (D1–D7), 58 register entries. Clean, honestly reported.
-- Negative control: fixture doc referencing unregistered D99 →
+- Negative control: fixture doc referencing an unregistered directive number →
   1 violation naming file:line, exit 1. The scanner blocks.
 - Sabotage: missing register → exit 2; malformed register → exit 2 FAIL-CLOSED.
   The gate refuses rather than passing blind.
@@ -50,7 +50,8 @@ Live path (enforcement) — independently re-verified 2026-10-11 ~06:00Z:
   pip install step to both workflows.
 - **Gate green on clean tree:** run 38116175188 (Directive Register Sync,
   pull_request) → success; run 38116175184 (Directive Register Check) → success.
-- **Gate RED on real violation:** temporary commit citing unregistered D99 in
+- **Gate RED on real violation:** temporary commit citing an unregistered
+  directive number (above the D65 ceiling) in
   `BRAIN/01-GOVERNANCE/__WIRE_TEST_VIOLATION__.md` → run 38116336113 failed at
   step "Validate directive references in changed governance docs". Reverted
   immediately after; tree clean.
