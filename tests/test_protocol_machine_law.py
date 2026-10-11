@@ -327,11 +327,13 @@ def _good_state():
         agent_id="naya-9",
         human_director="Shawn Vibert",
         lane="verify",
-        authority_summary="Protected gates: production deploys, credentials/money, "
-                          "destructive actions, ratification, security/privacy.",
-        current_truth_location="coordination feed #1354 and current main",
-        next_action="re-anchor on live main and check the board",
-        receipt=issue_receipt("naya-9", CORRECT),
+        authority_summary="Protected gates include production, credentials/money, destructive actions, ratification, security/privacy/consent.",
+        current_truth_location="mission issue #2154, current coordination board #2175, and current main",
+        next_action="run the boot receipt acceptance tests",
+        receipt=issue_receipt("naya-9", CORRECT, SOURCE_REVISIONS, CURRENT_MAIN_SHA),
+        current_main_sha=CURRENT_MAIN_SHA,
+        sign_in_record=_good_sign_in(),
+        live_feed_issues=[1867, 2175],
     )
 
 
@@ -340,37 +342,53 @@ def test_cold_start_passes_complete_state():
 
 
 def test_cold_start_blocks_missing_receipt():
-    s = _good_state()
-    s.receipt = None
-    res = run_cold_start(s)
-    assert not res.passed
+    state = _good_state()
+    state.receipt = None
+    assert not run_cold_start(state).passed
 
 
 def test_cold_start_blocks_failed_receipt():
-    s = _good_state()
-    s.receipt = issue_receipt("naya-9", {})  # failed grading
-    res = run_cold_start(s)
-    assert not res.passed
+    state = _good_state()
+    state.receipt = issue_receipt("naya-9", {}, SOURCE_REVISIONS, CURRENT_MAIN_SHA)
+    assert not run_cold_start(state).passed
 
 
-def test_cold_start_requires_board_and_main():
-    s = _good_state()
-    s.current_truth_location = "the board"  # board alone is not the source of truth
-    res = run_cold_start(s)
-    assert not res.passed
+def test_cold_start_requires_mission_coordination_and_main():
+    state = _good_state()
+    state.current_truth_location = "only historical archive #1354 and main"
+    result = run_cold_start(state)
+    assert not result.passed
+    assert any("#2154" in failure or "#2175" in failure for failure in result.failures)
+
+
+def test_cold_start_blocks_missing_live_sign_in():
+    state = _good_state()
+    state.sign_in_record = None
+    assert not run_cold_start(state).passed
+
+
+def test_cold_start_rejects_receipt_from_different_agent():
+    state = _good_state()
+    state.receipt = issue_receipt("another-seat", CORRECT, SOURCE_REVISIONS, CURRENT_MAIN_SHA)
+    assert not run_cold_start(state).passed
 
 
 # ---------- cold_successor_test ----------
 
 def _good_handoff():
+    sign_in = _good_sign_in()
     return Handoff(
-        what_happened="repaired the registry drift",
-        what_is_true="main is green at abc123",
-        authority_used="standing merge authority under Scorecard Law",
-        proof="PR #1800, tests 1056 passed, commit abc123",
-        what_is_open="cold-graph gap still open",
-        what_is_blocked="none",
-        next_action="re-anchor and run the battery",
+        what_happened="added source-bound boot checks",
+        what_is_true="candidate branch contains protocol receipt changes",
+        authority_used="documentation and reversible branch changes only",
+        proof="PR branch and exact source/test paths; CI still pending",
+        what_is_open="exact-head CI and independent review",
+        what_is_blocked="no live CI proof yet",
+        next_action="run exact-head acceptance tests",
+        sign_in_receipt=sign_in,
+        sign_out_receipt=_good_sign_out(sign_in),
+        current_main_sha=CURRENT_MAIN_SHA,
+        live_feed_issues=[1867, 2175],
     )
 
 
@@ -379,15 +397,35 @@ def test_handoff_passes_complete():
 
 
 def test_handoff_fails_missing_proof():
-    h = _good_handoff()
-    h.proof = ""
-    assert not check_handoff(h).passed
+    handoff = _good_handoff()
+    handoff.proof = ""
+    assert not check_handoff(handoff).passed
 
 
 def test_handoff_fails_unstated_blockers():
-    h = _good_handoff()
-    h.what_is_blocked = ""
-    assert not check_handoff(h).passed
+    handoff = _good_handoff()
+    handoff.what_is_blocked = ""
+    assert not check_handoff(handoff).passed
+
+
+def test_handoff_fails_without_sign_out_receipt():
+    handoff = _good_handoff()
+    handoff.sign_out_receipt = None
+    assert not check_handoff(handoff).passed
+
+
+def test_handoff_fails_when_sign_out_uses_different_feed():
+    handoff = _good_handoff()
+    sign_out = handoff.sign_out_receipt
+    sign_out["feed_issue"] = 2175
+    sign_out["comment_url"] = f"https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-{sign_out['comment_id']}"
+    payload_start = sign_out["comment_body"].index(RECEIPT_START) + len(RECEIPT_START)
+    payload_end = sign_out["comment_body"].index(RECEIPT_END)
+    payload = json.loads(sign_out["comment_body"][payload_start:payload_end])
+    payload["feed_issue"] = 2175
+    sign_out["comment_body"] = _comment_body(payload)
+    sign_out["comment_body_sha256"] = hashlib.sha256(sign_out["comment_body"].encode("utf-8")).hexdigest()
+    assert not check_handoff(handoff).passed
 
 
 # ---------- takeover ----------
