@@ -3,31 +3,35 @@
 # Makes brain-index drift MECHANICALLY BLOCK merges. The check
 # (tools/protocol/checks/brain_index_freshness.py, protocol law
 # BRAIN-INDEX-FRESHNESS) fails when a BRAIN/ change lands without a
-# matching index regen. Eleven drift recurrences proved detection is not
+# matching index regen. Twelve drift recurrences proved detection is not
 # prevention — this workflow exists so the drift cannot merge.
 #
-# ENFORCEMENT: this workflow alone does not block. Shawn must mark the
-# `brain-index-freshness` check as REQUIRED in branch protection for main
-# (see docs/branch-protection-brain-index.md). Until that click, this runs
-# advisory-only.
+# REQUIRED-CHECK SAFETY (the P0 repair, 2026-10-11): this workflow runs on
+# EVERY pull request (unconditional trigger). GitHub documents that a
+# check marked REQUIRED which is skipped by a paths-filtered workflow
+# stays Pending forever — blocking every PR the workflow does not run on.
+# The BRAIN-scope decision therefore happens INSIDE the job, cheaply:
+# non-BRAIN PRs report success as NOT_APPLICABLE; BRAIN-touching PRs run
+# the full freshness gate. Unknown scope fails closed to the full gate.
 #
-# Scope: pull_request events touching BRAIN/** only. Additive — does not
-# modify kernel-tests.yml or any existing workflow.
+# The job name is exactly `brain-index-freshness` — that is the check name
+# Shawn marks REQUIRED in branch protection for main (administrators
+# included). Until that click, this runs advisory-only.
+#
+# Additive: does not modify kernel-tests.yml or any existing workflow.
 
 name: Brain Index Freshness Gate
 
 on:
   pull_request:
-    paths:
-      - "BRAIN/**"
 
 jobs:
   brain-index-freshness:
     name: brain-index-freshness
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
     steps:
-      - name: Checkout (full history — check reads the committed tree)
+      - name: Checkout (full history — scope detection diffs committed SHAs)
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -37,5 +41,8 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Run brain-index freshness gate
-        run: python3 tools/protocol/checks/brain_index_freshness.py --record '{}'
+      - name: Run brain-index freshness gate (PR-scoped)
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: python3 tools/protocol/checks/brain_index_freshness_pr.py --json
