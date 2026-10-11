@@ -1,0 +1,55 @@
+name: d51-living-ledger-gate
+
+# D51 living-ledger contract gate - Naya 2 WIRE LANE, 2026-10-11.
+#
+# Wires the D51 first-slice mechanism (living_ledger/receipt.py +
+# living_ledger/chain.py, PR #2333) onto the governance path: every PR that
+# touches the living_ledger package must preserve the mechanism's own
+# contract - fail-closed receipt construction (no evidence / bad actor /
+# bad scope / bad timestamp must raise) and hash-chain verification
+# (verify_chain must name HASH_MISMATCH / LINK_BROKEN / SEQ_REGRESSION /
+# EMPTY_CHAIN, never let a break pass). A broken contract BLOCKS the PR
+# (exit 1). A missing/unimportable mechanism or corrupt harness fails
+# closed (exit 2), never a silent pass. Mechanism absent (pre-merge) is
+# explicit DORMANT, never a false green.
+#
+# Boundary: CI governance path only. This gate judges the mechanism's
+# contract; it authorizes nothing. Database writes stay behind the
+# human-only gate per the mechanism's own docstring.
+
+on:
+  pull_request:
+    paths:
+      - 'living_ledger/**'
+      - 'tools/d51_living_ledger_gate.py'
+      - 'tests/test_d51_living_ledger_gate.py'
+      - '.github/workflows/d51-living-ledger-gate.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'living_ledger/**'
+      - 'tools/d51_living_ledger_gate.py'
+      - 'tests/test_d51_living_ledger_gate.py'
+      - '.github/workflows/d51-living-ledger-gate.yml'
+
+jobs:
+  d51-living-ledger-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Prove the living-ledger contract on the live tree
+        run: python3 tools/d51_living_ledger_gate.py
+      - name: Run the gate's own test suite (real asserts, no theater)
+        run: |
+          python3 -m pip install -q pytest
+          python3 -m pytest tests/test_d51_living_ledger_gate.py -q -p no:cacheprovider
+      - name: Run the mechanism's own tests when present (dogfood)
+        run: |
+          if [ -d living_ledger/tests ]; then
+            python3 -m pytest living_ledger/tests -q -p no:cacheprovider
+          else
+            echo "mechanism tests absent (DORMANT - pre-merge tree)"
+          fi
