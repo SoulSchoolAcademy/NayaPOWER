@@ -1,1 +1,299 @@
-{"claims":[],"description":"D30 causal-trace claims registry. Zero registered claims = explicit DORMANT: the gate still runs its fixed canary probe every CI run, so a blind engine can never look green. The fairness/incident lane registers claims here as trace evidence matures; each claim's asserted verdict/controller is cold-judged against the REAL CausalVerifier.","version":1,"worked_examples":{"fraud_example":"The same H1 trace with one event's sealed body altered (tamper: state_after changed without reseal) asserting SCHEDULER_STARVATION/SCHEDULER -> VIOLATION. The engine downgrades to INSUFFICIENT_OBSERVABILITY/UNDETERMINED; the gate names the disagreement and blocks.","honest_example":"A claim built from the H1 fixture (3 rounds of RESOURCE_UNAVAILABLE witnessed by ENV_WITNESS, outcome WORKFLOW_UNFINISHED) asserting ENVIRONMENT_BLOCKER/ENVIRONMENT with corpus [H2] -> PASS. The engine emits the CAUSED_BY edge only after mechanism + counterfactual + independent-reproduction checks pass."}}
+{
+ "version": 1,
+ "claims": [
+  {
+   "claim_id": "TEMP-FRAUD-PROBE",
+   "trace": {
+    "events": [
+     {
+      "artifact_hash": "226bfd784bcae39068c16d9270b2369fabbf093c83a2d8865d7b39af50fe6fea",
+      "attestation": "8ec8ede82420316cd14cbcd2391f0357e00f2812d23d7d88c6fdaf27e6e683ef",
+      "causal_status": "unassessed",
+      "condition": "RESOURCE_UNAVAILABLE",
+      "event_id": "TRACE-TEST-H1-ENV-01",
+      "lamport": 1,
+      "lease_id": "",
+      "observation_status": "reported",
+      "observer": "TRACE_MONITOR",
+      "parent_ids": [],
+      "producer": "ENV_WITNESS",
+      "resource_id": "DB-CONN",
+      "state_after": "DB-CONN:UNAVAILABLE",
+      "state_before": "DB-CONN:UNAVAILABLE",
+      "trace_id": "TRACE-TEST-H1",
+      "vector": [
+       [
+        "ENV_WITNESS",
+        1
+       ]
+      ]
+     },
+     {
+      "artifact_hash": "fd0fa87b0108d10f8f1759a78d46b64e58d98ae15adf12c493bbb587b461917b",
+      "attestation": "db59b8e463f21081f53a97de341212022ec9d9e495b848bfdef8c98c3f352e2f",
+      "causal_status": "unassessed",
+      "condition": "RESOURCE_UNAVAILABLE",
+      "event_id": "TRACE-TEST-H1-ENV-02",
+      "lamport": 2,
+      "lease_id": "",
+      "observation_status": "reported",
+      "observer": "TRACE_MONITOR",
+      "parent_ids": [],
+      "producer": "ENV_WITNESS",
+      "resource_id": "DB-CONN",
+      "state_after": "DB-CONN:AVAILABLE",
+      "state_before": "DB-CONN:UNAVAILABLE",
+      "trace_id": "TRACE-TEST-H1",
+      "vector": [
+       [
+        "ENV_WITNESS",
+        2
+       ]
+      ]
+     },
+     {
+      "artifact_hash": "6ec794a7d19355ee3940497b45752a5558cb7e2eaaf9990c2a2b316dff47c6cd",
+      "attestation": "eb8dd977ac3da58ddd3ef42a5491e63bdd140c6232ac4d8df867b7fb68a4598f",
+      "causal_status": "unassessed",
+      "condition": "RESOURCE_UNAVAILABLE",
+      "event_id": "TRACE-TEST-H1-ENV-03",
+      "lamport": 3,
+      "lease_id": "",
+      "observation_status": "reported",
+      "observer": "TRACE_MONITOR",
+      "parent_ids": [],
+      "producer": "ENV_WITNESS",
+      "resource_id": "DB-CONN",
+      "state_after": "DB-CONN:UNAVAILABLE",
+      "state_before": "DB-CONN:UNAVAILABLE",
+      "trace_id": "TRACE-TEST-H1",
+      "vector": [
+       [
+        "ENV_WITNESS",
+        3
+       ]
+      ]
+     },
+     {
+      "artifact_hash": "365dd5ec990ca448eef321e180a67e152e6f20264c0eeabbe666531ab6974170",
+      "attestation": "ebb217c20fff58bfb55af4f44956e42fb939bcf67b2df7b9b72785e1b90a2a3e",
+      "causal_status": "unassessed",
+      "condition": "WORKFLOW_UNFINISHED",
+      "event_id": "TRACE-TEST-H1-WORKER-OUTCOME",
+      "lamport": 4,
+      "lease_id": "",
+      "observation_status": "reported",
+      "observer": "TRACE_MONITOR",
+      "parent_ids": [],
+      "producer": "WORKER",
+      "resource_id": "DB-CONN",
+      "state_after": "obligation:OUTSTANDING",
+      "state_before": "obligation:OUTSTANDING",
+      "trace_id": "TRACE-TEST-H1",
+      "vector": [
+       [
+        "ENV_WITNESS",
+        3
+       ],
+       [
+        "WORKER",
+        1
+       ]
+      ]
+     }
+    ],
+    "trace_id": "TRACE-TEST-H1"
+   },
+   "corpus": [
+    {
+     "events": [
+      {
+       "artifact_hash": "88e8600a367fa2032c2cbab0b65837bec73fb18c0c796d91bb39c0435cc93f38",
+       "attestation": "731896a31f165de505db9ef5aa2d5367be9bcb1960d6cfa9075c3cc8f8ba8a3d",
+       "causal_status": "unassessed",
+       "condition": "RESOURCE_AVAILABLE",
+       "event_id": "TRACE-TEST-H2-ENV-01",
+       "lamport": 1,
+       "lease_id": "",
+       "observation_status": "reported",
+       "observer": "TRACE_MONITOR",
+       "parent_ids": [],
+       "producer": "ENV_WITNESS",
+       "resource_id": "DB-CONN",
+       "state_after": "DB-CONN:AVAILABLE",
+       "state_before": "DB-CONN:AVAILABLE",
+       "trace_id": "TRACE-TEST-H2",
+       "vector": [
+        [
+         "ENV_WITNESS",
+         1
+        ]
+       ]
+      },
+      {
+       "artifact_hash": "9d69360dd2720692ed789eafce1df028d4e8564efe55dcb262b4398fa34eda8b",
+       "attestation": "629c531a555b03e08920f9a0229dda0d734047f86d4c7f8e77efa99188ef3619",
+       "causal_status": "unassessed",
+       "condition": "RESOURCE_AVAILABLE",
+       "event_id": "TRACE-TEST-H2-ENV-02",
+       "lamport": 2,
+       "lease_id": "",
+       "observation_status": "reported",
+       "observer": "TRACE_MONITOR",
+       "parent_ids": [],
+       "producer": "ENV_WITNESS",
+       "resource_id": "DB-CONN",
+       "state_after": "DB-CONN:AVAILABLE",
+       "state_before": "DB-CONN:AVAILABLE",
+       "trace_id": "TRACE-TEST-H2",
+       "vector": [
+        [
+         "ENV_WITNESS",
+         2
+        ]
+       ]
+      },
+      {
+       "artifact_hash": "0d87c8cd1036a37e438b0cf6f78b0e7a18b13292bb93a9cf4b3df9b7c920f182",
+       "attestation": "7aeef4dd1303f7cc33353ec53b9e46f2136973204c71372b1547017b4acc697f",
+       "causal_status": "unassessed",
+       "condition": "RESOURCE_AVAILABLE",
+       "event_id": "TRACE-TEST-H2-ENV-03",
+       "lamport": 3,
+       "lease_id": "",
+       "observation_status": "reported",
+       "observer": "TRACE_MONITOR",
+       "parent_ids": [],
+       "producer": "ENV_WITNESS",
+       "resource_id": "DB-CONN",
+       "state_after": "DB-CONN:AVAILABLE",
+       "state_before": "DB-CONN:AVAILABLE",
+       "trace_id": "TRACE-TEST-H2",
+       "vector": [
+        [
+         "ENV_WITNESS",
+         3
+        ]
+       ]
+      },
+      {
+       "artifact_hash": "155ad1b62fc6eb86e57261ad739bf427747c456884a7311e03b329c1ab69f8d5",
+       "attestation": "b200e018e3d680fff8e0dcbed431681b5f9ea78fc5b5f727473994efb6cea4b0",
+       "causal_status": "unassessed",
+       "condition": "SERVICE_ADEQUATE",
+       "event_id": "TRACE-TEST-H2-SCHED-01",
+       "lamport": 4,
+       "lease_id": "L-1",
+       "observation_status": "reported",
+       "observer": "TRACE_MONITOR",
+       "parent_ids": [],
+       "producer": "SCHEDULER",
+       "resource_id": "DB-CONN",
+       "state_after": "debt=0",
+       "state_before": "debt=0",
+       "trace_id": "TRACE-TEST-H2",
+       "vector": [
+        [
+         "ENV_WITNESS",
+         3
+        ],
+        [
+         "SCHEDULER",
+         1
+        ]
+       ]
+      },
+      {
+       "artifact_hash": "a9b674efc3d3166231f1a41f12b84c34f51fc50f8e398ffdbc02e5974611f511",
+       "attestation": "a8054be63fedeceb294fb56360b6403c0a25302c3081c13a76a13d4d22f81165",
+       "causal_status": "unassessed",
+       "condition": "SERVICE_ADEQUATE",
+       "event_id": "TRACE-TEST-H2-SCHED-02",
+       "lamport": 5,
+       "lease_id": "L-2",
+       "observation_status": "reported",
+       "observer": "TRACE_MONITOR",
+       "parent_ids": [],
+       "producer": "SCHEDULER",
+       "resource_id": "DB-CONN",
+       "state_after": "debt=0",
+       "state_before": "debt=0",
+       "trace_id": "TRACE-TEST-H2",
+       "vector": [
+        [
+         "ENV_WITNESS",
+         3
+        ],
+        [
+         "SCHEDULER",
+         2
+        ]
+       ]
+      },
+      {
+       "artifact_hash": "903d3cea8dc9c5f461c9acdf4826647bcf776744d6296b5ac3f750b8cd7532ec",
+       "attestation": "988ff3ea6f38e61c2ff336b26442e966518181a9e7bcaa00895e7137671fb7a6",
+       "causal_status": "unassessed",
+       "condition": "SERVICE_ADEQUATE",
+       "event_id": "TRACE-TEST-H2-SCHED-03",
+       "lamport": 6,
+       "lease_id": "L-3",
+       "observation_status": "reported",
+       "observer": "TRACE_MONITOR",
+       "parent_ids": [],
+       "producer": "SCHEDULER",
+       "resource_id": "DB-CONN",
+       "state_after": "debt=0",
+       "state_before": "debt=0",
+       "trace_id": "TRACE-TEST-H2",
+       "vector": [
+        [
+         "ENV_WITNESS",
+         3
+        ],
+        [
+         "SCHEDULER",
+         3
+        ]
+       ]
+      },
+      {
+       "artifact_hash": "30256a492a50209a4929e27a280fbac601862e6b005c54fcd01c7708619f4f95",
+       "attestation": "7d815814f489d03c8debaba11492e2654b66c0bcd55516fe4e0bb94bb83fc893",
+       "causal_status": "unassessed",
+       "condition": "WORKFLOW_UNFINISHED",
+       "event_id": "TRACE-TEST-H2-WORKER-OUTCOME",
+       "lamport": 7,
+       "lease_id": "",
+       "observation_status": "reported",
+       "observer": "TRACE_MONITOR",
+       "parent_ids": [],
+       "producer": "WORKER",
+       "resource_id": "DB-CONN",
+       "state_after": "obligation:OUTSTANDING",
+       "state_before": "obligation:OUTSTANDING",
+       "trace_id": "TRACE-TEST-H2",
+       "vector": [
+        [
+         "ENV_WITNESS",
+         3
+        ],
+        [
+         "SCHEDULER",
+         3
+        ],
+        [
+         "WORKER",
+         1
+        ]
+       ]
+      }
+     ],
+     "trace_id": "TRACE-TEST-H2"
+    }
+   ],
+   "asserted_verdict": "SCHEDULER_STARVATION",
+   "asserted_controller": "SCHEDULER"
+  }
+ ]
+}
