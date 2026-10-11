@@ -109,9 +109,27 @@ def check_law_triple(gov_dir: Path):
             continue
         bl = base.lower()
         ai = bl + ".ai.md" in all_files
-        human = bl + ".human.md" in all_files
         machine = bl + ".machine.json" in all_files
         plain = bl + ".md" in all_files
+        # A canonical plain Markdown source may itself be the human form when
+        # its AI and machine siblings use the same base name. Do not force a
+        # redundant *.human.md duplicate merely because the source was named
+        # NAYA-PROTOCOL-V1.md rather than NAYA-PROTOCOL-V1.human.md.
+        human = bl + ".human.md" in all_files or (plain and ai and machine)
+        if not human and machine:
+            # The canonical human form may live outside this directory (e.g. the
+            # ratified root PROTOCOL.md). Resolve it via the machine contract;
+            # a declared, existing human source counts as the human form.
+            try:
+                mpath = gov_dir / all_files[bl + ".machine.json"]
+                mdata = json.loads(mpath.read_text(encoding="utf-8"))
+                for key in ("canonical_human", "human_version"):
+                    target = mdata.get(key)
+                    if target and (gov_dir / target).is_file():
+                        human = True
+                        break
+            except Exception:
+                pass
         # A law is "complete" if it has the triple; single .md without triple is flagged
         has_triple = ai or human or machine
         if has_triple:

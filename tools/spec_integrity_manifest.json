@@ -48,7 +48,11 @@
     },
     {
       "path": "BRAIN/01-GOVERNANCE/0008-operating-code-v2.machine.json",
-      "reason": "DRAFT \u2014 Operating Code V2 not yet ratified by the Human Director (PR #2087 open, awaiting ratification). Pin here upon ratification with the DIRECTOR-RATIFIED envelope."
+      "reason": "DRAFT — Operating Code V2 not yet ratified by the Human Director (PR #2087 open, awaiting ratification). Pin here upon ratification with the DIRECTOR-RATIFIED envelope."
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/naya-protocol-v1.machine.json",
+      "reason": "Operational Naya Protocol projection introduced by PR #2281. It is structurally JSON-valid and covered by the protocol gate/test path, but it does not yet conform to this checker’s DIRECTOR-RATIFIED machine-law envelope/phase schema (schema/status/ratified_by/ratified_date, numbered phases, invariants). Explicitly excluded instead of silently pinning an incompatible envelope. Revisit when protocol metadata, human authorization status, and checker schema are reconciled in an independently reviewed change."
     }
   ],
   "note": "Pins are git blob SHAs of the ratified projections as they existed on live main at establishment. Any deliberate spec change must update the pins in the same (reviewed) PR. A pin mismatch is spec drift until proven otherwise. This manifest is a drift detector anchored at a known-good point, not a re-proof of the original ratification.",
