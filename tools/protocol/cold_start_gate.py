@@ -273,6 +273,151 @@ def _append_check(checks: list, name: str, passed: bool, detail: str) -> None:
     checks.append({"name": name, "pass": bool(passed), "detail": detail})
 
 
+def resolve_current_main_sha() -> str:
+    result = subprocess.run(
+        ["git", "ls-remote", "origin", "main"],
+        capture_output=True, text=True, timeout=30, cwd=ROOT,
+    )
+    if result.returncode != 0 or not result.stdout.strip():
+        raise RuntimeError("cannot resolve current origin/main")
+    sha = result.stdout.split()[0]
+    if not re.fullmatch(r"[0-9a-f]{40}", sha):
+        raise RuntimeError(f"origin/main returned invalid SHA: {sha!r}")
+    return sha
+
+
+def git_blob_sha(path: Path) -> str:
+    data = path.read_bytes()
+    return hashlib.sha1(b"blob " + str(len(data)).encode("ascii") + b"\0" + data).hexdigest()
+
+
+def current_source_revisions() -> dict:
+    revisions = {}
+    for relative in REQUIRED_SOURCE_PATHS:
+        full = ROOT / relative
+        if not full.is_file():
+            raise FileNotFoundError(f"mandatory boot source missing: {relative}")
+        revisions[relative] = git_blob_sha(full)
+    directory = ROOT / "NAYA-ACTIVATION" / "CURRENT-REALITY"
+    candidates = sorted(
+        p for p in directory.glob("SOURCE-PRECEDENCE-AND-NAVIGATION-RECONCILIATION-*.md")
+        if RECONCILIATION_RE.fullmatch(p.relative_to(ROOT).as_posix())
+    )
+    if not candidates:
+        raise FileNotFoundError("newest dated source-precedence/navigation reconciliation is missing")
+    newest = candidates[-1]
+    revisions[newest.relative_to(ROOT).as_posix()] = git_blob_sha(newest)
+    return revisions
+
+
+def load_json_record(path: str | None, label: str) -> dict:
+    if not path:
+        raise ValueError(f"{label} path is required")
+    with open(path, "r", encoding="utf-8") as handle:
+        record = json.load(handle)
+    if not isinstance(record, dict):
+        raise ValueError(f"{label} must be a JSON object")
+    return record
+
+
+def mint_read_receipt(answers_path: str, output_path: str, agent_id: str, main_sha: str) -> ReadReceipt:
+    answers = load_json_record(answers_path, "comprehension answers")
+    receipt = issue_receipt(agent_id, answers, current_source_revisions(), main_sha)
+    if not receipt.verify():
+        raise ValueError("comprehension answers or source-revision requirements failed")
+    serialized = {
+        "agent_id": receipt.agent_id,
+        "protocol_version": receipt.protocol_version,
+        "answers": receipt.answers,
+        "answer_text": receipt.answer_text,
+        "passed": receipt.passed,
+        "source_revisions": receipt.source_revisions,
+        "current_main_sha": receipt.current_main_sha,
+        "issued_at": receipt.issued_at,
+        "receipt_hash": receipt.receipt_hash,
+    }
+    with open(output_path, "w", encoding="utf-8") as handle:
+        json.dump(serialized, handle, ensure_ascii=False, sort_keys=True, indent=2)
+        handle.write("\n")
+    return receipt
+
+
+def load_read_receipt(path: str, expected_agent: str, main_sha: str) -> ReadReceipt:
+    raw = load_json_record(path, "read receipt")
+    receipt = ReadReceipt(
+        agent_id=raw.get("agent_id", ""),
+        protocol_version=raw.get("protocol_version", ""),
+        answers=raw.get("answers", {}),
+        answer_text=raw.get("answer_text", {}),
+        passed=raw.get("passed") is True,
+        source_revisions=raw.get("source_revisions", {}),
+        current_main_sha=raw.get("current_main_sha", ""),
+        issued_at=raw.get("issued_at", 0.0),
+        receipt_hash=raw.get("receipt_hash", ""),
+    )
+    if receipt.agent_id != expected_agent:
+        raise ValueError("receipt agent ID does not match the activating seat")
+    if receipt.current_main_sha != main_sha:
+        raise ValueError("receipt is stale relative to current origin/main")
+    if receipt.source_revisions != current_source_revisions():
+        raise ValueError("receipt source SHAs do not match the actual checkout")
+    if not receipt.verify():
+        raise ValueError("receipt version, answers, source revisions, or integrity digest invalid")
+    return receipt
+
+
+def fetch_actual_github_comment(record: dict, token: str) -> dict:
+    issue = record.get("feed_issue")
+    comment_id = str(record.get("comment_id", ""))
+    if not isinstance(issue, int) or not comment_id.isdigit():
+        raise ValueError("numeric feed_issue and comment_id are required")
+    request = urllib.request.Request(
+        f"https://api.github.com/repos/SoulSchoolAcademy/NayaPOWER/issues/comments/{comment_id}",
+        headers={
+            "Authorization": "Bearer " + token,
+            "Accept": "application/vnd.github+json",
+            "X-GitHub-Api-Version": "2022-11-28",
+            "User-Agent": "NayaPOWER-Protocol-Gate",
+        },
+    )
+    try:
+        with urllib.request.urlopen(request, timeout=20) as response:
+            actual = json.loads(response.read().decode("utf-8"))
+    except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError) as exc:
+        raise RuntimeError(f"cannot fetch the actual GitHub feed comment: {exc}") from exc
+
+    expected_url = f"https://github.com/SoulSchoolAcademy/NayaPOWER/issues/{issue}#issuecomment-{comment_id}"
+    if actual.get("html_url") != expected_url:
+        raise ValueError("GitHub returned a different comment URL")
+    if not str(actual.get("issue_url", "")).endswith(f"/issues/{issue}"):
+        raise ValueError("GitHub comment belongs to a different feed")
+    if not isinstance(actual.get("body"), str):
+        raise ValueError("GitHub comment has no textual body")
+    if record.get("comment_body") != actual["body"]:
+        raise ValueError("recorded body differs from the actual GitHub post")
+    actual_digest = hashlib.sha256(actual["body"].encode("utf-8")).hexdigest()
+    if record.get("comment_body_sha256") != actual_digest:
+        raise ValueError("recorded body SHA-256 differs from the actual GitHub post")
+    verified = dict(record)
+    verified["github_comment_observed"] = True
+    return verified
+
+
+def configured_live_feeds() -> set[int]:
+    protocol = (ROOT / "PROTOCOL.md").read_text(encoding="utf-8")
+    issues = {int(value) for value in re.findall(
+        r"https://github\.com/SoulSchoolAcademy/NayaPOWER/issues/(\d+)", protocol
+    )}
+    issues.update({1865, 1866, 1867, 1868, 1869, 1870, 1871, 1872, 1873, 2175})
+    # #2154 is a mission record; #1599 is the feed index; #1354 is archived.
+    issues.difference_update({1354, 1599, 2154})
+    return issues
+
+
+def _append_check(checks: list, name: str, passed: bool, detail: str) -> None:
+    checks.append({"name": name, "pass": bool(passed), "detail": detail})
+
+
 def run_gate(
     agent_id: str = "",
     mode: str = "activate",
@@ -312,10 +457,24 @@ def run_gate(
         main_sha = ""
         _append_check(checks, "current_main_sha", False, str(exc))
 
+    if mode == "inspect":
+        failures = [item for item in checks if not item["pass"]]
+        return {
+            "gate": "protocol_integrity_inspect",
+            "agent_id": agent_id or "ci",
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+            "pass": not failures,
+            "checks": checks,
+            "failures": failures,
+            "note": "Inspect mode checks manifest and source-tip availability only. It does not activate an agent or authorize work."
+        }
+
     token = github_token or os.environ.get("GH_TOKEN") or os.environ.get("GITHUB_TOKEN") or ""
     if not isinstance(agent_id, str) or not agent_id.strip():
         _append_check(checks, "agent_identity", False, "--agent-id is required")
+
     if mode == "activate":
+        receipt = None
         if answers_path and write_receipt_path and main_sha:
             try:
                 minted = mint_read_receipt(answers_path, write_receipt_path, agent_id, main_sha)
@@ -324,10 +483,9 @@ def run_gate(
             except Exception as exc:
                 _append_check(checks, "read_receipt_minted", False, str(exc))
 
-        receipt = None
         if not read_receipt_path:
             _append_check(checks, "read_comprehension_receipt", False,
-                          "provide --read-receipt, or both --answers-json and --write-read-receipt")
+                          "provide --read-receipt or both --answers-json and --write-read-receipt")
         elif main_sha:
             try:
                 receipt = load_read_receipt(read_receipt_path, agent_id, main_sha)
@@ -387,11 +545,11 @@ def run_gate(
             if not result.passed:
                 raise ValueError("; ".join(result.failures))
             _append_check(checks, "cycle_sign_out", True,
-                          f"actual same-feed SIGN_OUT verified on feed #{sign_out['feed_issue']}")
+                          f"actual same-feed SIGN_OUT verified on live feed #{sign_out['feed_issue']}")
         except Exception as exc:
             _append_check(checks, "cycle_sign_out", False, str(exc))
     else:
-        _append_check(checks, "mode", False, "supported modes are activate and close")
+        _append_check(checks, "mode", False, "supported modes are activate, close, and inspect")
 
     failures = [item for item in checks if not item["pass"]]
     return {
@@ -407,13 +565,13 @@ def run_gate(
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Fail-closed Naya protocol activation and cycle-close gate")
-    parser.add_argument("--agent-id", required=True, help="Canonical Naya seat/agent identifier")
-    parser.add_argument("--mode", choices=("activate", "close"), default="activate")
+    parser.add_argument("--agent-id", default="", help="Canonical Naya seat/agent identifier")
+    parser.add_argument("--mode", choices=("activate", "close", "inspect"), default="activate")
     parser.add_argument("--read-receipt", help="Existing serialized read/comprehension receipt JSON")
     parser.add_argument("--answers-json", help="JSON object with free-text answers q1...q13")
     parser.add_argument("--write-read-receipt", help="Output path for a newly checked receipt")
-    parser.add_argument("--sign-in-record", help="Local record containing exact metadata/body of the posted SIGN_IN comment")
-    parser.add_argument("--sign-out-record", help="Local record containing exact metadata/body of the posted SIGN_OUT comment")
+    parser.add_argument("--sign-in-record", help="Local record of actual posted SIGN_IN metadata/body/hash")
+    parser.add_argument("--sign-out-record", help="Local record of actual posted SIGN_OUT metadata/body/hash")
     parser.add_argument("--github-token", help="Prefer GH_TOKEN or GITHUB_TOKEN environment variables")
     parser.add_argument("--json", action="store_true", help="Emit machine-readable JSON")
     args = parser.parse_args()
