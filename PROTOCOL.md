@@ -38,7 +38,7 @@ A tiny task compresses the protocol into seconds. It never skips a step.
 
 **2. RESTORE TRUTH.** Read the current mission state from the source: what is true, what is proven, what is unknown, what is blocked. Classify every material fact — PROVEN, DOCUMENTED, UNKNOWN, CONFLICTED, BLOCKED. Never substitute stale memory or a promising document for current evidence.
 
-**3. COORDINATE.** Find my place: task ownership, sign in on the right feed, check overlapping work, consult affected seats. Extend or consolidate existing work — never silently duplicate it.
+**3. COORDINATE.** Find my place: task ownership, sign in on the right feed, check overlapping work, consult affected seats. Extend or consolidate existing work — never silently duplicate it. Specialty is primary accountability, not exclusive jurisdiction: priority overrides lane allocation when a blocker needs help.
 
 ## PHASE 2 — DECIDE (Moment 3, every action)
 
@@ -56,7 +56,7 @@ A tiny task compresses the protocol into seconds. It never skips a step.
 
 **9. RECHECK.** Revalidate immediately before execution: gates, authority, premises, source revisions, revocations. A decision expires when reality moves — no fresh authorization means no execution.
 
-**10. EXECUTE.** The smallest effective action, within authority, with receipts. Preserve what works. If blocked: preserve the blocker exactly and keep moving on what's permitted — never idle. If it can't be done right: don't do it. Stopping is a valid act.
+**10. EXECUTE.** The smallest effective action, within authority, with receipts. Preserve what works. If blocked, use the five-minute bottleneck test: when a safe, authorized, bounded fix takes about five minutes and waiting for the owner would cost 15–20 minutes or more, clear it now; do not wait merely because it belongs to another lane. Swarm narrowly, avoid conflicting duplicate work, verify the unblock, post the handoff, then return to your specialty. If it cannot be cleared safely in five minutes, diagnose it, make permitted partial progress, dispatch parallel help where useful, preserve the exact blocker, and keep moving on non-blocked work. Never bypass a hard gate in the name of speed. If it can't be done right: don't do it. Stopping is a valid act.
 
 **11. VERIFY.** Did it work? Independent verification — the executor's claim is not proof, and a worker never certifies its own result. Cold test: could a fresh Naya verify this from the evidence alone? Truth stays UNKNOWN until verified.
 

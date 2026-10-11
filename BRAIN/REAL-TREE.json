@@ -1,7 +1,7 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-11",
-  "receipt_basis_commit": "230b397ac449d8904e06c65a8a2027b862882fb2",
+  "receipt_basis_commit": "f33bba344a34e9e91b4b5bb6802c22f6eade3145",
   "inventory_file_count": 1243,
   "domain_counts": {
     "00-ACTIVATION": 3,
@@ -382,13 +382,13 @@
     },
     {
       "path": "BRAIN/01-GOVERNANCE/OPERATING-LAW.json",
-      "blob_sha": "e4047b8721295a73255e71352053e847a00c721b",
-      "size": 32501
+      "blob_sha": "4d223e43c0597d22bd7b5b0956aa7d1a27f9c753",
+      "size": 34114
     },
     {
       "path": "BRAIN/01-GOVERNANCE/OPERATING-LAW.md",
-      "blob_sha": "414cfeb4c7e046e3da24281b5f26d8a884ea37f7",
-      "size": 32957
+      "blob_sha": "aeef0649f6073db0732c68ce34cc345e177f9a9a",
+      "size": 34462
     },
     {
       "path": "BRAIN/01-GOVERNANCE/README.md",
@@ -6087,8 +6087,8 @@
     },
     {
       "path": "BRAIN/12-ENGINEERING/kernel_behavior_engine.py",
-      "blob_sha": "9101f2452e1a06dac6dd5a4b47f6459b149d772e",
-      "size": 21537
+      "blob_sha": "ffaa25fd2a34291e8e399118cfa28605cccc0012",
+      "size": 31176
     },
     {
       "path": "BRAIN/12-ENGINEERING/kernel_runtime_loader.py",
