@@ -12,12 +12,17 @@ Reads from env:
 
 Seat identity: the team shares one GitHub account, so GitHub logins cannot
 distinguish seats. Seats are identified by signed tags instead:
-  - PR body must declare:  Seat: Naya N
+  - PR body must declare:  Seat: Naya N  (or Seat: Coda N)
   - Reviewer posts a comment:  [NAYA M · REVIEW] ... APPROVED ...
+    (Coda reviewers post [CODA M · REVIEW] ... APPROVED ...)
   - Scorecard receipt:  ## SCORECARD ... head: <sha> ... Seat: Naya K ...
 Author seat, reviewer seat, and scorer seat must be three pairwise-distinct
 seats? No — reviewer and scorer may be the same seat, but BOTH must differ
 from the author seat. (The author cannot review or score their own work.)
+
+Recognized seats: Naya 1-5 and the active Coda seats (1, 3, 4). Coda 2's
+lane is voided (off the team 2026-10-04), so a "Coda 2" tag is not a valid
+seat — fail-closed.
 
 Native GitHub APPROVED reviews from a *different login* than the PR author
 also satisfy the review requirement (future-proof for distinct seat accounts).
@@ -34,7 +39,22 @@ import urllib.error
 import urllib.request
 
 API = "https://api.github.com"
-SEAT_RE = re.compile(r"naya\s*([2345])\b", re.I)
+# F1 fix: was r"naya\s*([2345])" — Naya 1 authored PRs could never pass and
+# the Coda seats were excluded entirely. Now: Naya 1-5 + Coda seats.
+SEAT_RE = re.compile(r"(naya|coda)\s*([12345])\b", re.I)
+
+# Coda 2's lane is voided — a tag claiming it confers no seat (fail-closed).
+_VOIDED_SEATS = {("coda", "2")}
+
+# F2 fix: the old substring check ("APPROVED" in body.upper()) counted
+# "NOT APPROVED" / "DISAPPROVED" as an approving review — fail-open.
+# Strip negated approvals before looking for a positive one.
+_NEGATED_APPROVAL_RES = (
+    re.compile(r"\bnot\s+approved\b", re.I),
+    re.compile(r"\bnever\s+approved\b", re.I),
+    re.compile(r"\bdisapproved\b", re.I),
+)
+_POSITIVE_APPROVAL_RE = re.compile(r"\bapproved\b", re.I)
 
 # Retry tuning for rate-limit resilience: GitHub answers 403 (secondary rate
 # limit) or 429 when the API is under pressure. Each page fetch gets up to 3
@@ -98,9 +118,43 @@ def api_get(path, token):
 
 
 def seat_of(text):
-    """Extract 'Naya N' seat tag from text, or None."""
+    """Extract 'Naya N' / 'Coda N' seat tag from text, or None.
+
+    Recognizes Naya 1-5 and the active Coda seats. Voided seats (Coda 2)
+    are never recognized — fail-closed.
+    """
     m = SEAT_RE.search(text or "")
-    return f"Naya {m.group(1)}" if m else None
+    if not m:
+        return None
+    kind, num = m.group(1).lower(), m.group(2)
+    if (kind, num) in _VOIDED_SEATS:
+        return None
+    return f"{kind.capitalize()} {num}"
+
+
+def _has_positive_approval(text):
+    """True iff text contains a non-negated APPROVED.
+
+    Closes the F2 fail-open hole: "NOT APPROVED", "NEVER APPROVED", and
+    "DISAPPROVED" no longer satisfy the approval check.
+    """
+    t = text or ""
+    for rx in _NEGATED_APPROVAL_RES:
+        t = rx.sub("", t)
+    return bool(_POSITIVE_APPROVAL_RE.search(t))
+
+
+def is_review_approval_comment(body):
+    """Path-B review comment: a recognized seat's '[SEAT · REVIEW] APPROVED'.
+
+    Requires a parseable seat tag (so Coda reviewers' '[CODA 1 · REVIEW]'
+    counts — the F1 gap closed for Path B too), the REVIEW marker, and a
+    non-negated APPROVED (F2 fix).
+    """
+    b = body or ""
+    return (seat_of(b) is not None
+            and "REVIEW" in b.upper()
+            and _has_positive_approval(b))
 
 
 def main():
@@ -115,8 +169,8 @@ def main():
     pr_author_login = (pr["user"]["login"] or "").lower()
     author_seat = seat_of(pr.get("body"))
     if not author_seat:
-        fail("PR body must declare the authoring seat ('Seat: Naya N'). "
-             "Unattributed work cannot be reviewed.")
+        fail("PR body must declare the authoring seat ('Seat: Naya N' or "
+             "'Seat: Coda N'). Unattributed work cannot be reviewed.")
 
     # --- Requirement 1: cross-seat review ---
     reviews = api_get(f"/repos/{repo}/pulls/{pr_number}/reviews", token)
@@ -133,12 +187,12 @@ def main():
     if not reviewer_seat:
         for c in comments:
             body = c.get("body") or ""
-            if "[NAYA" in body.upper() and "REVIEW" in body.upper() \
-                    and "APPROVED" in body.upper():
-                s = seat_of(body)
-                if s and s != author_seat:
-                    reviewer_seat = s
-                    break
+            if not is_review_approval_comment(body):
+                continue
+            s = seat_of(body)
+            if s and s != author_seat:
+                reviewer_seat = s
+                break
     if not reviewer_seat:
         fail(f"no review from a seat other than the author ({author_seat}). "
              f"Post '[NAYA M · REVIEW] APPROVED' as a PR comment, or submit a "
