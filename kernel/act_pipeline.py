@@ -97,7 +97,14 @@ from kernel.protocol.conflict_resolution import (
     VERDICT_WORSENING as CR_WORSENING,
     VERDICT_PENDING_WINDOW as CR_PENDING,
     VERDICT_INCONCLUSIVE as CR_INCONCLUSIVE,
+    COMPARE_DOMINATES,
+    COMPARE_INCOMPARABLE,
+    COMPARE_UNKNOWN,
+    COMPARE_PROHIBITED,
     assess_no_worse_off,
+    check_pareto_improvement,
+    check_resolve_before_trade,
+    assess_comparability,
 )
 
 # Canonical max LAW age for consequential AI actions (DOOR-AI, registry V1).
@@ -188,6 +195,11 @@ class PlanCandidate:
     # When present, the candidate must pass the no-worse-off test and
     # anti-laundering safeguards before value scoring.
     impact_matrix: object | None = None
+    # Resolve Before Trade: machine receipt showing alternative designs were
+    # considered. Required when the candidate has material adverse effects.
+    # None = not provided; the invariant is checked only when the impact
+    # matrix shows material adverse effects (fail closed to NEEDS_EVIDENCE).
+    design_search_record: object | None = None
 
 
 @dataclass(frozen=True)
@@ -662,15 +674,24 @@ def plan_action(authority: LawAuthority,
     # --- Conflict Resolution phase (Law of One). Runs AFTER Law 11 hard
     # prohibitions and BEFORE value scoring: a good calculation cannot
     # erase a group's harm. For candidates carrying a governed impact matrix,
-    # the no-worse-off test and anti-laundering safeguards must pass.
-    #   WORSENING / PROHIBITED -> excluded, can never win.
-    #   PENDING_WINDOW / INCONCLUSIVE -> excluded (need evidence first).
-    #   SUPPORTED -> proceeds to the calculus gate below.
+    # the full Conflict Resolution Engine runs:
+    #   1. assess_no_worse_off — no-worse-off test + anti-laundering.
+    #      WORSENING / PROHIBITED -> excluded, can never win.
+    #      PENDING_WINDOW / INCONCLUSIVE -> excluded (need evidence first).
+    #   2. check_pareto_improvement — per-group Pareto test (recorded).
+    #   3. check_resolve_before_trade — mandatory invariant: if the matrix
+    #      shows material adverse effects, the decision record must show
+    #      alternatives were considered, else NEEDS_EVIDENCE.
     # Candidates WITHOUT a matrix skip this phase (existing behavior preserved).
     # Fail closed: unknown bounds, failed laundering, or missing evidence
     # never support a no-worse-off claim.
+    from kernel.protocol.conflict_resolution import (
+        ImpactMatrix as _IM,
+        DesignSearchRecord as _DSR,
+    )
     cr_admissible: list[PlanCandidate] = []
     cr_excluded: list[tuple[str, str, str]] = []  # (cid, verdict, summary)
+    cr_notes: list[str] = []  # informational (Pareto breakdowns, comparability)
     for c in law11_admissible:
         matrix = c.impact_matrix
         if matrix is None:
@@ -678,7 +699,6 @@ def plan_action(authority: LawAuthority,
             continue
         # Type safety: only ImpactMatrix instances are assessed.
         # A wrong type is a caller bug -> fail closed to NEEDS_EVIDENCE.
-        from kernel.protocol.conflict_resolution import ImpactMatrix as _IM
         if not isinstance(matrix, _IM):
             cr_excluded.append((
                 c.candidate_id, "NEEDS_EVIDENCE",
@@ -691,12 +711,119 @@ def plan_action(authority: LawAuthority,
                                   CR_PENDING, CR_INCONCLUSIVE):
             summary = "; ".join(assessment.notes[:3]) if assessment.notes else assessment.verdict
             cr_excluded.append((c.candidate_id, assessment.verdict, summary))
-        else:
-            cr_admissible.append(c)
+            continue
+        # --- Pareto improvement check (per-group, never aggregate).
+        # Informational: the no-worse-off gate above already excludes
+        # worsening candidates. The Pareto breakdown is recorded so the
+        # receipt shows which groups are better/worse/unknown.
+        pareto = check_pareto_improvement(matrix)
+        if pareto.groups_worse:
+            cr_notes.append(
+                f"candidate {c.candidate_id} Pareto: groups worse off: "
+                f"{pareto.groups_worse}."
+            )
+        if pareto.groups_unknown:
+            cr_notes.append(
+                f"candidate {c.candidate_id} Pareto: groups unknown: "
+                f"{pareto.groups_unknown}."
+            )
+        if pareto.is_pareto_improvement:
+            cr_notes.append(
+                f"candidate {c.candidate_id} Pareto improvement: "
+                f"{pareto.groups_improved} improved, none worse."
+            )
+        # --- Resolve Before Trade (mandatory invariant).
+        # Detect material adverse effects from the matrix: any cell with a
+        # negative point estimate or negative lower bound, or any harm
+        # profile at substantial+ severity.
+        has_material_adverse = False
+        for cell in matrix.cells:
+            d = cell.delta()
+            if (d is not None and d < 0) or (
+                cell.lower_bound is not None and cell.lower_bound < 0
+            ):
+                has_material_adverse = True
+                break
+        if not has_material_adverse:
+            for hp in matrix.harm_profiles:
+                if hp.severity in ("substantial", "injury", "rights_violation"):
+                    has_material_adverse = True
+                    break
+        if has_material_adverse:
+            record = c.design_search_record
+            if record is None or not isinstance(record, _DSR):
+                cr_excluded.append((
+                    c.candidate_id, "NEEDS_EVIDENCE",
+                    "RESOLVE_BEFORE_TRADE violated: material adverse effects "
+                    "but no DesignSearchRecord provided.",
+                ))
+                continue
+            satisfied, reason = check_resolve_before_trade(
+                record, has_material_adverse_effects=True,
+            )
+            if not satisfied:
+                cr_excluded.append((c.candidate_id, "NEEDS_EVIDENCE", reason))
+                continue
+            cr_notes.append(
+                f"candidate {c.candidate_id} Resolve Before Trade: {reason}"
+            )
+        cr_admissible.append(c)
+    # --- Comparability assessment (typed, never forced into one number).
+    # For pairs of admissible candidates WITH matrices: if one DOMINATES
+    # another, the dominated candidate is excluded (it can never be the
+    # right choice). INCOMPARABLE is recorded honestly — not a failure.
+    # PROHIBITED comparison -> the violating candidate is excluded.
+    _matrix_candidates = [
+        c for c in cr_admissible
+        if isinstance(c.impact_matrix, _IM)
+    ]
+    _dominated: set[str] = set()
+    for i in range(len(_matrix_candidates)):
+        for j in range(i + 1, len(_matrix_candidates)):
+            ca = _matrix_candidates[i]
+            cb = _matrix_candidates[j]
+            comp = assess_comparability(ca.impact_matrix, cb.impact_matrix)
+            if comp.assessment == COMPARE_DOMINATES and comp.dominating:
+                # comp.dominating holds the dominating matrix's action_id.
+                # The other candidate is dominated -> exclude it (it can
+                # never be the right choice).
+                if comp.dominating == ca.impact_matrix.action_id:
+                    _dominated.add(cb.candidate_id)
+                    cr_notes.append(
+                        f"candidate {cb.candidate_id} DOMINATED by "
+                        f"{ca.candidate_id}; excluded."
+                    )
+                elif comp.dominating == cb.impact_matrix.action_id:
+                    _dominated.add(ca.candidate_id)
+                    cr_notes.append(
+                        f"candidate {ca.candidate_id} DOMINATED by "
+                        f"{cb.candidate_id}; excluded."
+                    )
+            elif comp.assessment == COMPARE_INCOMPARABLE:
+                cr_notes.append(
+                    f"candidates {ca.candidate_id} vs {cb.candidate_id}: "
+                    f"INCOMPARABLE — {'; '.join(comp.notes[:2])}"
+                )
+            elif comp.assessment == COMPARE_PROHIBITED:
+                cr_notes.append(
+                    f"candidates {ca.candidate_id} vs {cb.candidate_id}: "
+                    f"comparability PROHIBITED — {'; '.join(comp.notes[:2])}"
+                )
+    if _dominated:
+        _kept: list[PlanCandidate] = []
+        for c in cr_admissible:
+            if c.candidate_id in _dominated:
+                cr_excluded.append((
+                    c.candidate_id, "DOMINATED",
+                    "Dominated by another candidate on every dimension.",
+                ))
+            else:
+                _kept.append(c)
+        cr_admissible = _kept
     cr_evidence = law11_evidence + tuple(
         f"candidate {cid} EXCLUDED by Conflict Resolution [{v}]: {s}"
         for cid, v, s in cr_excluded
-    )
+    ) + tuple(f"Conflict Resolution note: {n}" for n in cr_notes)
     if not cr_admissible:
         detail = "; ".join(
             f"{cid} [{v}: {s}]" for cid, v, s in cr_excluded
@@ -734,6 +861,9 @@ def plan_action(authority: LawAuthority,
         )
         prior = f"Law 11 exclusions: {law11_detail}. " if law11_detail else ""
         cr_prior = f"Conflict Resolution exclusions: {'; '.join(f'{cid} [{v}]' for cid, v, _ in cr_excluded)}. " if cr_excluded else ""
+        cr_notes_text = " ".join(f"Conflict Resolution note: {n}" for n in cr_notes)
+        if cr_notes_text:
+            cr_prior += cr_notes_text + " "
         if any(verdict == PROHIBITED for _, verdict, _ in excluded):
             return refused(
                 PLAN_SAFETY_PROHIBITED,

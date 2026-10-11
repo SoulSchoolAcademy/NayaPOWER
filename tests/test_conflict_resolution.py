@@ -193,13 +193,29 @@ class TestNoWorseOff:
         assert a.claim_level == CLAIM_PRACTICAL
 
     def test_worsening_when_below_tolerance(self):
+        # Point estimate clearly below tolerance: genuine WORSENING.
+        # Cell B: lo=-2.0, hi=-1.0 -> action_value=-1.5, delta=-1.5 < -0.5.
+        m = _matrix(cells=[
+            _cell("A", "speed", lo=2.0, hi=3.0, tol=0.5),
+            _cell("B", "access", lo=-2.0, hi=-1.0, tol=0.5),
+        ], groups=["A", "B"])
+        a = assess_no_worse_off(m)
+        assert a.verdict == VERDICT_WORSENING
+        assert len(a.failed_cells) == 1
+
+    def test_inconclusive_when_wide_interval_not_violating(self):
+        # Taxonomy (per spec): wide interval whose lower bound violates
+        # tolerance, but point estimate does not show worsening ->
+        # INCONCLUSIVE, not WORSENING. Wide uncertainty is not proof of harm.
+        # Cell B: lo=-1.0, hi=0.5 -> action_value=-0.25, delta=-0.25 >= -0.5.
         m = _matrix(cells=[
             _cell("A", "speed", lo=2.0, hi=3.0, tol=0.5),
             _cell("B", "access", lo=-1.0, hi=0.5, tol=0.5),
         ], groups=["A", "B"])
         a = assess_no_worse_off(m)
-        assert a.verdict == VERDICT_WORSENING
-        assert len(a.failed_cells) == 1
+        assert a.verdict == VERDICT_INCONCLUSIVE
+        assert len(a.inconclusive_cells) == 1
+        assert len(a.failed_cells) == 0
 
     def test_inconclusive_when_bound_unknown(self):
         m = _matrix(cells=[

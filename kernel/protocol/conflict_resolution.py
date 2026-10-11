@@ -390,7 +390,29 @@ def assess_no_worse_off(
             )
             continue
         if cell.lower_bound < -tol:
-            failed.append(cell)
+            # Taxonomy (per spec): a WIDE interval whose lower bound violates
+            # tolerance is INCONCLUSIVE, not WORSENING — unless the point
+            # estimate itself shows deterioration. "A study with wide
+            # uncertainty centered on zero does not establish harmlessness"
+            # — and it does not establish harm either. A NARROW interval
+            # with a violating lower bound is meaningful evidence -> WORSENING.
+            point = cell.delta()
+            ub = cell.upper_bound if cell.upper_bound is not None else cell.lower_bound
+            width = ub - cell.lower_bound
+            # Wide if the interval spans more than twice the tolerance
+            # (or more than 1.0 unit when tolerance is zero).
+            is_wide = width > max(2 * tol, 1.0)
+            if is_wide and (point is None or point >= -tol):
+                inconclusive.append(cell)
+                notes.append(
+                    f"Cell {cell.group_id}/{cell.dimension}/{cell.horizon}: "
+                    f"lower bound {cell.lower_bound} below tolerance {-tol}, "
+                    f"but interval width {width:.2f} is wide and point estimate "
+                    f"{point} does not show worsening. INCONCLUSIVE "
+                    f"(cannot claim harm from uncertainty)."
+                )
+            else:
+                failed.append(cell)
         elif cell.lower_bound < 0:
             # Within tolerance but still possibly deteriorating: note it.
             notes.append(
