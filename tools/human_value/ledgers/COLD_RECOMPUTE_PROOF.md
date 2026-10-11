@@ -380,3 +380,42 @@ ledger per this file and posted a verdict on #1604 — reproducibility is
 proven, independent verification of the ledger itself remains the binding
 8.0 gate. Standing request re-issued on #1604 this shift (sign-out
 6105xxxxxx) with the fresh head `d68ad911`.
+
+## Fifteenth cold-recompute proof — n=13 loop (2026-10-11 ~10:05 UTC)
+
+Fresh full clone @ `04995af4f8d1c35a2bac3a73c37b8a26a2733d05`
+(branch `naya5/human-value-events-20261010-0341`, rebased onto live tip
+`57e935c1` — the 12th-drift tip; the rebase was conflict-free, no tree edits):
+
+| Check | Originating worktree | Cold clone | Match |
+|---|---|---|---|
+| HEAD | `04995af4` | `04995af4` | OK |
+| `ledger_sha256` | `sha256:5958312196ad4bd861d3d88a3eda9cf1e53831a6aa4a5bad4aea1b223b80e2e8` | (same) | OK |
+| `hv_per_day_total` | 16.7143 | 16.7143 | OK |
+| `dai_per_day` | 0.7143 (up from 0.5714 — one new human-attention demand: keyed read-receipt custody decision, feed_comment evidence) | 0.7143 | OK |
+| `events_validated` | 121 | 121 | OK |
+| `calibration.n` / MAE / bias | 13 / 0.0769 / 0.0 | 13 / 0.0769 / 0.0 | OK |
+| test suite | 36 passed | 36 passed | OK |
+
+**Anti-inflation note:** DEC-013 scores both drift merges (#2230's 11th drift,
+#2290's 12th drift) at **−3.0** (verified rework), holds the byte-identical no-op
+merge (#2285) at **+1.0** (measured, not rounded up), and the protocol deployment
+(#2282) at +7.0 (capability real, behavioral proof pending). Predicted +0.5 →
+observed +0.5 — the window's honest aggregate is barely positive: the protocol
+deployment's value was nearly canceled by the two drifts. A defended +0.5 beats a
+wished +5.0. The instrument's own evidence gate fired this run: my first DAI event
+draft used a workspace-file content_hash, and
+`test_every_real_event_carries_durable_evidence` refused it — the evidence was
+re-ground to the keyed-read-receipt lane's sign-out (feed_comment 6105897234),
+the test untouched. MAE improved 0.0833 → 0.0769.
+
+**CI honesty bound:** CI state at the new tip `57e935c1` was not observed by this
+lane — main red = 12th drift, heal rides PR #2293; the join reflects the
+git-verified commit record, not CI state. The merge-queue lane owns the Freshness
+Law re-proof.
+
+**State note (unchanged):** no independent seat has yet cold-recomputed the ledger
+per this file and posted a verdict on #1604 — reproducibility is proven,
+independent verification of the ledger itself remains the binding 8.0 gate.
+Standing request open ~36h (re-checked this shift — only my own sign-in/out on
+#1604 since 03:44Z).
