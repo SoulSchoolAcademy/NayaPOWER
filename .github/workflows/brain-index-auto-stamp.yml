@@ -57,26 +57,28 @@ jobs:
           fi
           CHANGED=""
           if CHANGED=$(git diff --name-only "$RANGE" -- BRAIN/ 2>/dev/null); then
-            :
+            # ANY change under BRAIN/ needs the stamp decision -- including
+            # receipt-only changes. A hand-edited receipt (not via the official
+            # generator) is exactly the drift this workflow heals; the old
+            # .md-only filter let receipt-only changes sail through unstamped
+            # (reviewer defect on #2283: "trigger on any BRAIN/ change").
+            # The orchestrator is idempotent: on an already-canonical tree it
+            # reports NO-STAMP and commits nothing, so over-firing costs one
+            # workflow run, never a bad commit. Matches the "fail toward
+            # healing" default for unresolvable ranges below.
+            if [ -n "$CHANGED" ]; then
+              echo "stamp=yes" >> "$GITHUB_OUTPUT"
+            else
+              echo "stamp=no" >> "$GITHUB_OUTPUT"
+            fi
           else
             # Unresolvable range (e.g. branch creation): fail toward healing.
+            # No bare exit 0 here: repo law (tests/test_ci_enforcement_can_fail.py)
+            # requires every workflow step to let its last real command decide
+            # the outcome, so the decision falls out of the branch structure
+            # instead of forcing success. The step still exits 0 via the last echo.
             echo "stamp=yes" >> "$GITHUB_OUTPUT"
             echo "unresolvable diff range; defaulting to stamp=yes"
-            exit 0
-          fi
-          # ANY change under BRAIN/ needs the stamp decision -- including
-          # receipt-only changes. A hand-edited receipt (not via the official
-          # generator) is exactly the drift this workflow heals; the old
-          # .md-only filter let receipt-only changes sail through unstamped
-          # (reviewer defect on #2283: "trigger on any BRAIN/ change").
-          # The orchestrator is idempotent: on an already-canonical tree it
-          # reports NO-STAMP and commits nothing, so over-firing costs one
-          # workflow run, never a bad commit. Matches the "fail toward
-          # healing" default for unresolvable ranges above.
-          if [ -n "$CHANGED" ]; then
-            echo "stamp=yes" >> "$GITHUB_OUTPUT"
-          else
-            echo "stamp=no" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Auto-stamp the brain index
