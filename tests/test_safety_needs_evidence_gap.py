@@ -176,25 +176,23 @@ def test_executor_refuses_needs_evidence_candidate():
     assert ap.PLAN_SAFETY_NEEDS_EVIDENCE in receipt.codes
 
 
-# ---------------- 4. end-to-end, no mocks: unknown safety executes ----------------
+# ---------------- 4. end-to-end: unknown safety is now refused ----------------
 
 def test_end_to_end_unknown_safety_executes_without_mock():
-    """Documents the NEEDS_AUTHORITY path (unchanged by the NEEDS_EVIDENCE fix).
+    """Unknown critical safety flags (safety_safe=None) verdict NEEDS_EVIDENCE
+    and are refused — they do not execute.
 
-    A real PlanCandidate with safety_safe=None goes through the pipeline's
-    _candidate_to_calculus mapping, where the verdict surfaces as
-    NEEDS_AUTHORITY/AUTHORITY_MISSING rather than NEEDS_EVIDENCE (the mapping
-    never sets authorized=True). Authority routing stays governed by the LAW
-    node's seam — this fix changes nothing about that path.
+    Historical note: before the value-calculus wiring, _candidate_to_calculus
+    left authorized=False, so unknown flags surfaced as NEEDS_AUTHORITY
+    (AUTHORITY_MISSING) and the candidate could execute under LAW authority.
+    The wiring sets authorized=True (LAW governs authority at plan level),
+    so unknown safety flags now correctly produce NEEDS_EVIDENCE via
+    HARD_GATE_UNKNOWN. Unknown safety is not proven safety (Zero Value Law).
     """
     authority = _authority()
-    plan, plan_receipt = ap.plan_action(authority, [_candidate()], _profile(), now=NOW)
-    assert plan is not None, "plan refused"
-    assert plan_receipt.phase == "PLAN_ACCEPTED"
-    assert plan.chosen.safety_safe is None, "test premise broken"
-
-    receipt, calls = _execute(plan)
-    # GAP: executor fires with safety evidence still unresolved.
-    assert receipt.phase == "EXECUTION_COMPLETED", f"got {receipt.phase}"
-    assert receipt.executed is True
-    assert len(calls) == 1
+    candidate = _candidate()
+    assert candidate.safety_safe is None, "test premise broken: safety_safe must be unknown"
+    plan, plan_receipt = ap.plan_action(authority, [candidate], _profile(), now=NOW)
+    assert plan is None, "unknown safety must not plan"
+    assert plan_receipt.phase == "PLAN_REFUSED"
+    assert ap.PLAN_SAFETY_NEEDS_EVIDENCE in plan_receipt.codes
