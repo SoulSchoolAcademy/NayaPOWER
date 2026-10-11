@@ -11,18 +11,50 @@ Distilled 2026-10-10 from all five seats' protocols (Naya 5 ×2, Naya 4, Naya 1,
 
 Reading this protocol is **required**, not recommended. No Naya begins governed work without loading it. "I didn't read it" is never an excuse — the protocol binds every Naya, every time, no exceptions.
 
-**Required reading list** (all four, every activation):
-1. **[PROTOCOL.md](PROTOCOL.md)** — this document. The canonical operating law: 17 steps across 5 phases. The code of all codes.
-2. **[AGENTS.md](AGENTS.md)** — the operating contract. Boot procedure, governing laws, and workspace rules.
-3. **[Constitution](NAYA-ACTIVATION/CONSTITUTION/CONSTITUTION.md)** — the standing laws. Rights, authority, and the boundaries no score can override.
-4. **[Laws Index](NAYA-ACTIVATION/CONSTITUTION/LAWS-INDEX-V1.md)** — the one-line locator for every standing law and its full definition.
+**Mandatory boot packet — every activation, without exception**
 
-**Key coordination surfaces** (know where the team works):
-- **Mission-state feed** — [issue #2154](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2154): the live coordination board. Sign in, sign out, post achievements and blockers here.
-- **Feed index** — [issue #1599](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/1599): the table of contents for all specialty feeds.
-- **Activation package** — [NAYA-ACTIVATION/](NAYA-ACTIVATION/): cold-start contracts, activation protocols, and the constitution directory.
+Read these complete sources in this order. This is a curated mandatory packet, not a requirement to read every file in the repository. Follow the task-relevant canonical links from these sources and the activation map.
 
-**Sign in / sign out — required.** Every work cycle begins with signing in on the appropriate specialty feed and ends with signing out: what was done, the evidence, what remains. No silent work. If the team can't see it, it didn't happen.
+1. **[PROTOCOL.md](PROTOCOL.md)** — this canonical operating-protocol candidate.
+2. **[AGENTS.md](AGENTS.md)** — repository boot contract and workspace rules.
+3. **[Founding Constitution](NAYA-ACTIVATION/CONSTITUTION/CONSTITUTION.md)** — human authority, rights, privacy and constitutional boundaries.
+4. **[Laws Index](NAYA-ACTIVATION/CONSTITUTION/LAWS-INDEX-V1.md)** — index to standing laws and their canonical definitions.
+5. **[Portable Activation Protocol](NAYA-ACTIVATION/PORTABLE-ACTIVATION-PROTOCOL-V1.md)**.
+6. **[Smart Note Operating Contract](NAYA-ACTIVATION/SMART-NOTE-OPERATING-CONTRACT-V1.md)**.
+7. **[Portable Activation Manifest](NAYA-ACTIVATION/PORTABLE-ACTIVATION-MANIFEST-V1.json)**.
+8. **[Activation Kit Map](NAYA-ACTIVATION/00-ACTIVATION-KIT-MAP-V1.md)**.
+9. **[Nonstop Loop — AI form](BRAIN/01-GOVERNANCE/0004-NONSTOP-LOOP-V1.ai.md)** and [machine form](BRAIN/01-GOVERNANCE/0004-nonstop-loop-v1.machine.json).
+10. The newest dated **Source Precedence and Navigation Reconciliation** under `NAYA-ACTIVATION/CURRENT-REALITY/`.
+11. **[Current Mission State](BRAIN/CURRENT-MISSION-STATE.md)**, then the relevant task-specific leaf contracts, existing solution, proof, and specialist feed.
+
+The required-reading gate means reading the **contents**, not merely clicking links or checking that paths exist. Each Naya must complete the protocol comprehension check and leave a source-revision-bound receipt. Missing, inaccessible or conflicting required sources mean `HELD`, not PASS. A receipt digest is tamper evidence, not proof of authorship or comprehension by itself.
+
+**Current navigation and feeds — refresh on every shift**
+
+- **[Current mission record #2154](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2154)** — Director's mission record; not the shared coordination board.
+- **[Current shared coordination board #2175](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175)** — ownership, cross-team coordination, blockers and handoffs.
+- **[Feed index / table of contents #1599](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/1599)** — navigation to specialty feeds; refresh the actual destination from current mission state.
+- **[Current main branch](https://github.com/SoulSchoolAcademy/NayaPOWER/tree/main)** · [open pull requests](https://github.com/SoulSchoolAcademy/NayaPOWER/pulls) · [current mission snapshot](BRAIN/CURRENT-MISSION-STATE.md) · [activation map](NAYA-ACTIVATION/00-ACTIVATION-KIT-MAP-V1.md) · [kernel protocol](kernel/protocol/) · [protocol tests](tests/).
+
+Specialty feeds: [Learning #1865](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/1865) · [Brain/Memory #1866](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/1866) · [Law/Governance #1867](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/1867) · [Architecture/Engineering/Operations #1868](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/1868) · [Evolution/Succession #1869](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/1869) · [Interfaces/Hub #1870](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/1870) · [Knowledge/Intelligence #1871](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/1871) · [Proving/Verifying #1872](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/1872) · [Innovation #1873](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/1873).
+
+**Sign in / sign out — required and evidence-bound.** Every work cycle starts by posting a structured `SIGN_IN` on the assigned current specialty feed **before substantive governed work**. At cycle end, post `SIGN_OUT` on the same feed. The sign-out must report actual outcome, exact tested revision, evidence and its limits, honest score, failures/unknowns, lesson or `NO_CAPTURE`, next owner and exactly one next action. A missing or unverifiable sign-in blocks governed work; a missing sign-out leaves the cycle OPEN. #1354 is historical/read-only and must never be used as a current sign-in/out destination.
+
+**Receipt format.** The actual GitHub comment body must contain a JSON receipt between `<!-- NAYA-WORK-CYCLE-RECEIPT:START -->` and `<!-- NAYA-WORK-CYCLE-RECEIPT:END -->`. The local validation record must identify the exact comment ID/URL/body and SHA-256; the executable gate fetches the comment and compares the posted payload rather than trusting a separate caller-supplied claim. SHA-256 detects content changes; it does not authenticate the author. GitHub remains the canonical work log—no second ledger.
+
+**Executable gate.** After preparing the thirteen free-text comprehension answers and posting SIGN_IN, run:
+
+```bash
+python tools/protocol/cold_start_gate.py --agent-id <seat-id> --answers-json <answers.json> --write-read-receipt <temporary-receipt.json> --sign-in-record <sign-in.json> --json
+```
+
+Proceed only if it exits 0 and reports `pass: true`. At cycle close, post SIGN_OUT to the same feed and run:
+
+```bash
+python tools/protocol/cold_start_gate.py --agent-id <seat-id> --mode close --sign-in-record <sign-in.json> --sign-out-record <sign-out.json> --json
+```
+
+The gate must check source blob revisions against the actual checkout, pin to current `origin/main`, independently fetch the actual GitHub comment using `GH_TOKEN` or `GITHUB_TOKEN`, and fail closed on any missing source, invalid answer, stale revision, bad comment, wrong feed, absent proof or unavailable verification. If the command cannot run or fails, report `ACTIVATION_HELD` / `CYCLE_OPEN`; safe read-only investigation may continue, but do not claim successful activation, substantive governed work, or completed handoff.
 
 ## THE THREE MOMENTS
 
