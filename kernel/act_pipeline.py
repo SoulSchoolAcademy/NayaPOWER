@@ -78,6 +78,7 @@ from kernel.protocol.typed_action import (
 )
 from kernel.protocol.proof_receipt import (
     UNBOUND,
+    LAW_POLICY_VERSION,
     ProofContext,
     check_proof_validity,
     issue_proof_receipt,
@@ -379,7 +380,7 @@ def _candidate_to_typed_action(candidate: PlanCandidate,
         environment=environment,
         resource=authority.scope,
         authority_ref=authority.grant_id,
-        policy_version="CURRENT",
+        policy_version=LAW_POLICY_VERSION,
         evidence_refs=tuple(candidate.proof_requirements),
         reversibility=reversibility,
         rights_safe=candidate.rights_safe,
@@ -750,7 +751,7 @@ def plan_action(authority: LawAuthority,
         resource=authority.scope,
         law_verdict=LAW11_ADMISSIBLE,
         reason_ids=(),
-        policy_version="CURRENT",
+        policy_version=LAW_POLICY_VERSION,
         policy_hash=UNBOUND,
         source_sha=source_sha if source_sha is not None else UNBOUND,
         resource_state_digest=(resource_state_digest
@@ -895,10 +896,22 @@ def execute_plan(plan: ActionPlan,
     # re-plan against the current world instead of executing on a stale
     # verdict. Unbound plan-time fields are non-comparable (never silently
     # valid); immaterial change never invalidates.
+    #
+    # TRUST BOUNDARY (finding: hand-crafted law12_proof=None). A plan whose
+    # law12_proof is None SKIPS this Law 12 revalidation — the seam is
+    # intentional back-compat for plans constructed outside plan_action
+    # (tests, future unified-API plans carrying their own receipt), NOT a
+    # bypass of the safety floor: the Law 11 execution-door re-gate and the
+    # execution-time do-no-harm re-gate below run on EVERY plan, proof or no
+    # proof, and a hand-crafted PROHIBITED/NEEDS_EVIDENCE candidate is still
+    # refused there. plan_action ALWAYS issues a proof (pinned by test), so
+    # in the pipeline's own flow this branch never fires — it exists only
+    # for externally-constructed plans, whose constructors own the staleness
+    # responsibility. Close, don't widen: no new None-producing seam.
     if plan.law12_proof is not None:
         proof_ctx = ProofContext(
             source_sha=source_sha if source_sha is not None else UNBOUND,
-            policy_version="CURRENT",
+            policy_version=LAW_POLICY_VERSION,
             policy_hash=UNBOUND,
             resource_state_digest=(resource_state_digest
                                    if resource_state_digest is not None else UNBOUND),

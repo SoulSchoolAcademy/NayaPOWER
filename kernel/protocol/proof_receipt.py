@@ -38,6 +38,17 @@ from dataclasses import dataclass, field
 # silently-valid.
 UNBOUND = "UNBOUND"
 
+# LAW_POLICY_VERSION — the canonical version of the governing law/policy
+# bound into every Law 12 proof receipt. The machine twin of the Twelve
+# Laws as pinned by the director (canonical: #2154 comment 6110527301,
+# 2026-10-11). It is a version STRING, not "CURRENT": "CURRENT" can never
+# change, so a proof bound to it could never expire on a law change.
+# Bump this string whenever the governing law/policy text changes —
+# outstanding proofs issued under the old version invalidate on
+# revalidation (Law 12: proofs expire when the world changes, and the
+# law is part of the world).
+LAW_POLICY_VERSION = "2026-10-11-twelve-laws"
+
 # Invalidation events.
 SOURCE_SHA_MOVED = "SOURCE_SHA_MOVED"
 POLICY_VERSION_CHANGED = "POLICY_VERSION_CHANGED"

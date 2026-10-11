@@ -38,6 +38,8 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 
+from kernel.protocol.proof_receipt import LAW_POLICY_VERSION
+
 
 # Canonical operations. The gate reasons about what is being DONE,
 # not how it was described.
@@ -72,7 +74,8 @@ class TypedAction:
       environment: where (production, development, test)
       resource: what is targeted (nayapower, smart_note_events, ...)
       authority_ref: receipt/grant authorizing this, or None
-      policy_version: which policy version governs (e.g. "CURRENT")
+      policy_version: which policy version governs (defaults to the
+        canonical LAW_POLICY_VERSION — the Twelve Laws pin)
       evidence_refs: supporting evidence receipt IDs
       reversibility: reversible | conditional | irreversible
     """
@@ -81,7 +84,7 @@ class TypedAction:
     environment: str
     resource: str
     authority_ref: str | None = None
-    policy_version: str = "CURRENT"
+    policy_version: str = LAW_POLICY_VERSION
     evidence_refs: tuple[str, ...] = ()
     reversibility: str = REVERSIBLE
 
@@ -104,7 +107,7 @@ class Law11Verdict:
     verdict: str
     reasons: tuple[str, ...] = ()
     affected_interests: tuple[str, ...] = ()
-    policy_version: str = "CURRENT"
+    policy_version: str = LAW_POLICY_VERSION
 
     @property
     def admissible(self) -> bool:

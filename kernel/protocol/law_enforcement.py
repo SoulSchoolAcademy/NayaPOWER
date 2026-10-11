@@ -42,6 +42,7 @@ from kernel.protocol.proof_receipt import (
     ProofContext,
     ProofReceipt,
     UNBOUND,
+    LAW_POLICY_VERSION,
     check_proof_validity,
     issue_proof_receipt,
 )
@@ -99,13 +100,16 @@ class EnforcementDecision:
 def evaluate(
     context: EnforcementContext,
     typed_action: TypedAction,
-    policy_ref: str,
+    policy_ref: str = LAW_POLICY_VERSION,
     evidence_refs: tuple[str, ...] = (),
 ) -> EnforcementDecision:
     """Run the Law 11 gate on a typed action and bind the verdict to the
     context as a Law 12 proof receipt.
 
     policy_ref: the governing policy/law profile reference (version string).
+    Defaults to the canonical LAW_POLICY_VERSION (the Twelve Laws pin) —
+    pass an explicit value only when judging under a different, named
+    policy revision.
     evidence_refs: input evidence receipt IDs the verdict rests on.
     Returns an EnforcementDecision. Only ADMISSIBLE may enter V2.1.
     """
