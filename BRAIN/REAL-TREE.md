@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-11  
-**Receipt basis commit:** `f33bba344a34e9e91b4b5bb6802c22f6eade3145`  
-**Inventory file count:** 1243  
+**Receipt basis commit:** `1b6f72defa9b7eea98acc822fe80ab307db1aff2`  
+**Inventory file count:** 1246  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -16,7 +16,7 @@
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 25 |
 | 05-MEMORY | 646 |
-| 06-PROOF | 13 |
+| 06-PROOF | 16 |
 | 07-LEARNING | 8 |
 | 08-SUCCESSION | 2 |
 | 09-EVOLUTION | 2 |
@@ -844,6 +844,9 @@
 - `BRAIN/06-PROOF/2026-10-07-SELF-IDENTITY-TRIAL-V1.json` — `99d6d6530ac6` (7200 bytes)
 - `BRAIN/06-PROOF/2026-10-07-SELF-IDENTITY-TRIAL-V1.md` — `8ff81e55ac32` (3862 bytes)
 - `BRAIN/06-PROOF/2026-10-07-SELF-IDENTITY-TRIAL-V1.rival.json` — `a15b54465e50` (430 bytes)
+- `BRAIN/06-PROOF/2026-10-08-SELF-IDENTITY-TRIAL-V2.json` — `7d1a193a9009` (58182 bytes)
+- `BRAIN/06-PROOF/2026-10-08-SELF-IDENTITY-TRIAL-V2.md` — `b49d810349a4` (6739 bytes)
+- `BRAIN/06-PROOF/2026-10-08-SELF-IDENTITY-TRIAL-V2.rival.json` — `d2e281a8a2fa` (419 bytes)
 - `BRAIN/06-PROOF/README.md` — `6e90dab1006f` (2315 bytes)
 ### 07-LEARNING — Learning
 
