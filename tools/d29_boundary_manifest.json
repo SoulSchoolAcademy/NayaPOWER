@@ -32,21 +32,5 @@
   "rounds": 6
  },
  "_note": "D29 boundary-claims manifest (WIRE lane, night shift 2026-10-11). Each claim asserts that a D29 fault-injection scenario classifies to the claimed verdict/controller. The gate (tools/d29_boundary_gate.py) cold-judges every claim against the REAL D29 mechanism (drift_canary/d29_boundary.py): a mismatch is a VIOLATION and blocks the PR. Empty claims -> the gate reports DORMANT (explicit, never a silent pass). The first registered claim activates enforcement. _example / _example_honest are worked, inert documentation - they are never judged as claims.",
- "claims": [
-  {
-   "case": "A",
-   "claimed_controller": "SCHEDULER",
-   "claimed_verdict": "SCHEDULER_STARVATION",
-   "false_blame": [
-    {
-     "component": "SCHEDULER",
-     "label": "DATABASE_UNAVAILABLE",
-     "seq": 1
-    }
-   ],
-   "id": "d29-temp-red-proof",
-   "note": "TEMP-PROOF (revert pending): registers the worked fraud as a live claim to prove the wire blocks a real violation in CI.",
-   "rounds": 6
-  }
- ]
+ "claims": []
 }
