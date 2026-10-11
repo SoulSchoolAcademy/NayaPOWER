@@ -131,6 +131,13 @@ def test_fail_nonpositive_lag_budget():
     assert res["pass"] is False
 
 
+def test_fail_wrong_field_types():
+    rec = _record(lesson=["not", "a", "string"])
+    res = proactive_doc.check(rec)
+    assert res["pass"] is False
+    assert "malformed" in " ".join(res["reasons"])
+
+
 # ---- manifest binding ----
 
 def test_manifest_registers_proactive_doc_with_real_check():

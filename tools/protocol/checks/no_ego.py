@@ -59,7 +59,8 @@ from checks import emit, fail, load_record, result  # noqa: E402
 
 # First-person preference signals: the decider's want stated as the basis.
 # Tight by design — honest uncertainty ("in my opinion", "I believe the
-# evidence shows") is NOT here; only want-as-basis phrasing is.
+# evidence shows") is NOT here; only want-as-basis phrasing is. Diligence
+# phrasing ("I want to verify") is excluded in find_ego_markers, not here.
 EGO_MARKERS = [
     "i prefer",
     "i want",
@@ -81,11 +82,25 @@ EGO_MARKERS = [
 
 _EGO_PATTERNS = [re.compile(r"\b" + re.escape(m) + r"\b") for m in EGO_MARKERS]
 
+# Wanting an ACTION that serves the math ("I want to verify the numbers")
+# is diligence, not ego — only wanting an OUTCOME trips. These markers are
+# therefore ignored when directly followed by "to ".
+_DILIGENCE_OK = ("i prefer", "i want", "i'd rather", "i would rather")
+
 
 def find_ego_markers(text: str) -> list[str]:
     """Return the ego markers present in text (word-boundary matched)."""
     lowered = text.lower()
-    return [m for m, p in zip(EGO_MARKERS, _EGO_PATTERNS) if p.search(lowered)]
+    found: list[str] = []
+    for marker, pattern in zip(EGO_MARKERS, _EGO_PATTERNS):
+        for match in pattern.finditer(lowered):
+            if marker in _DILIGENCE_OK:
+                rest = lowered[match.end():].lstrip()
+                if rest.startswith("to "):
+                    continue  # diligence phrasing, not preference
+            found.append(marker)
+            break
+    return found
 
 
 def _nonempty(value) -> bool:

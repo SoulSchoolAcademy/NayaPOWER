@@ -111,6 +111,14 @@ def check(record: dict) -> dict:
                     f"described work cannot be checked for capture", details)
     reasons.append("work described")
 
+    # Fail-closed on wrong types: a non-string lesson/excuse/provenance/
+    # destination is malformed, not absent.
+    for field in ("lesson", "no_lesson_reason", "provenance", "destination"):
+        value = record.get(field)
+        if value is not None and not isinstance(value, str):
+            return fail(f"{subject}: {field} must be a string, got "
+                        f"{type(value).__name__} — malformed record", details)
+
     lesson = record.get("lesson")
     if _nonempty(lesson):
         details["lesson_chars"] = len(lesson.strip())

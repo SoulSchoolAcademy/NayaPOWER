@@ -66,7 +66,11 @@ def test_dead_check_binding_fails_naming_law_and_file(tmp_path, manifest):
 
 
 def test_dead_machine_check_binding_fails(tmp_path, manifest):
+    # SN-NO-EGO now binds via check (tools/protocol/checks/no_ego.py), so a
+    # dead machine_check alone is masked by _check_bindings' check-first
+    # resolution. Plant both dead to exercise the dead-binding path.
     law = next(l for l in manifest["laws"] if l["id"] == "SN-NO-EGO")
+    law["check"] = "tools/protocol/checks/gone.py"
     law["machine_check"] = "kernel/protocol/checks/gone.py"
     reasons, _ = auto_brain._check_bindings(ROOT, manifest["laws"])
     assert reasons

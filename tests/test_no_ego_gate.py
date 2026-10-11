@@ -121,6 +121,15 @@ def test_find_ego_markers_word_boundaries():
     assert "trust me" in no_ego.find_ego_markers("Trust me, ship it")
 
 
+def test_diligence_phrasing_does_not_trip():
+    # Wanting an action that serves the math is diligence, not ego.
+    assert no_ego.find_ego_markers("I want to verify the numbers first") == []
+    assert no_ego.find_ego_markers("I prefer to double-check the totals") == []
+    # ...but wanting an outcome still trips.
+    assert "i want" in no_ego.find_ego_markers("I want option B")
+    assert "i prefer" in no_ego.find_ego_markers("I prefer option B, my call")
+
+
 # ---- manifest binding ----
 
 def test_manifest_registers_no_ego_with_real_check():
