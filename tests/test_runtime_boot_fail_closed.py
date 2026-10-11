@@ -7,8 +7,10 @@ Scope: this module's fail-closed claim is exactly two checks —
      with ids NAYA-KERNEL-<name>, otherwise RuntimeError.
 
 Every refusal path in the code gets at least one negative control below.
-Anything the code does NOT check (SHA pinning, receipts, tip freshness,
-schema/kernel_id fields) is documented in the boundary tests, not asserted.
+The two boundaries documented in PR #2298 (non-dict node entries escaping as
+AttributeError; unknown top-level fields ignored) are CLOSED by this change:
+they now assert RuntimeError. Anything the code still does NOT check (SHA
+pinning, receipts, tip freshness) remains documented, not asserted.
 
 Conventions: manifests are written into tmp_path fixtures, so these tests
 never depend on the checked-out repo state.
@@ -183,25 +185,49 @@ def test_load_fewer_than_nine_nodes_fails_closed(tmp_path):
 
 
 # ---------------------------------------------------------------------------
-# Documented boundary: what the code does NOT check
+# Boundary hardening: previously documented gaps are now closed
 # ---------------------------------------------------------------------------
 
 
-def test_non_dict_node_entry_is_not_a_runtime_error_boundary(tmp_path):
-    """Documented boundary: a non-dict node entry escapes the fail-closed
-    RuntimeError path and raises AttributeError instead. The fail-closed
-    claim holds only for dict-shaped node entries."""
+def test_non_dict_node_entry_fails_closed(tmp_path):
+    """A non-dict node entry must not escape as AttributeError: the
+    fail-closed contract covers malformed node shapes too."""
     manifest = make_manifest()
     manifest["nodes"][4] = "PROVE"  # not a dict; .get() does not exist
     root = write_repo(tmp_path, manifest)
-    with pytest.raises(AttributeError):
+    with pytest.raises(RuntimeError, match="non-object node entry"):
         runtime_boot.load_runtime_manifest(root)
 
 
-def test_extra_top_level_fields_are_ignored_boundary(tmp_path):
-    """Documented boundary: the loader checks node identity only. Extra or
-    unexpected top-level fields (e.g. a spoofed status) do not cause refusal."""
+def test_non_dict_node_entry_variants_fail_closed(tmp_path):
+    """None, int, and list entries are all non-object node entries."""
+    for bad in (None, 42, ["PROVE"]):
+        manifest = make_manifest()
+        manifest["nodes"][4] = bad
+        root = write_repo(tmp_path, manifest)
+        with pytest.raises(RuntimeError, match="non-object node entry"):
+            runtime_boot.load_runtime_manifest(root)
+
+
+def test_unknown_top_level_field_fails_closed(tmp_path):
+    """The kernel stores and exposes the manifest dict verbatim, so an
+    unknown extra field would ride along unverified inside "the verified
+    manifest". Unknown fields are refused, not ignored."""
     manifest = make_manifest()
-    manifest["status"] = "SPOOFED-STATUS"
+    manifest["admin_note"] = "spoofed by an unverified writer"
     root = write_repo(tmp_path, manifest)
-    assert runtime_boot.load_runtime_manifest(root)["status"] == "SPOOFED-STATUS"
+    with pytest.raises(RuntimeError, match="unexpected top-level fields"):
+        runtime_boot.load_runtime_manifest(root)
+
+
+def test_real_manifest_top_level_shape_is_accepted(tmp_path):
+    """The canonical manifest's own top-level fields (kernel_id, schema,
+    nodes, node_identity_law, runtime_binding, status) must keep booting."""
+    manifest = make_manifest()
+    manifest["node_identity_law"] = "NAYA-LAW-9"
+    manifest["runtime_binding"] = "boot"
+    manifest["status"] = "CANONICAL"
+    root = write_repo(tmp_path, manifest)
+    loaded = runtime_boot.load_runtime_manifest(root)
+    assert loaded["status"] == "CANONICAL"
+    assert len(loaded["nodes"]) == 9
