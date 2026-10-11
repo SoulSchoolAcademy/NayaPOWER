@@ -1,0 +1,675 @@
+{
+ "schema": "naya.team-dashboard.v1",
+ "generated_utc": "2026-10-11T23:29:18+00:00",
+ "repo": "SoulSchoolAcademy/NayaPOWER",
+ "team_average": 7.08,
+ "scorecard_edition": 1,
+ "wave": {
+  "wave_number": 3,
+  "counter": 3,
+  "active_areas": [
+   "wire",
+   "team",
+   "infra"
+  ]
+ },
+ "agents": [
+  {
+   "id": "learn",
+   "name": "LEARN",
+   "agent_name": "Compounder",
+   "agent_title": "Naya-2 LEARN Lead",
+   "bullseye": "Prove a lesson changes a decision.",
+   "mission": "The compounding learning loop: capture, distill, inject, apply, verify behavior change, compound.",
+   "current_score": 5.0,
+   "trend": "flat",
+   "why_not_10": [
+    "The loop is not closed: the four-arm compounding experiment spec V1 was drafted tonight (PR #2391, draft) but no experiment has run yet \u2014 no lesson has been proven to improve a successor's outcome.",
+    "Learning is still mostly capture-and-store; Shawn's North Star chain (retrieval \u2192 applicability check \u2192 pre-action influence \u2192 observed outcome \u2192 causal proof) has no end-to-end demonstrated run.",
+    "The learning-system coordinator's three builds (injection proof on every dispatch path, control/treatment experiments, error-signal loop) were still pending as of 21:33 UTC."
+   ],
+   "next_action": "Run the four-arm experiment's first real cycle: take one captured lesson, inject it to a treatment lane, measure the outcome difference. One proven loop beats ten more specs.",
+   "active_now": false,
+   "board_lane": "#2175 lane LEARN",
+   "open_prs": [
+    {
+     "number": 2391,
+     "title": "feat(learn): four-arm compounding experiment spec V1",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2391",
+     "draft": true
+    },
+    {
+     "number": 2296,
+     "title": "feat(learn): canonical learning-event envelope (#2244 req 3)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2296",
+     "draft": false
+    },
+    {
+     "number": 2277,
+     "title": "docs(brain): learning event 2026-10-10",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2277",
+     "draft": false
+    },
+    {
+     "number": 2263,
+     "title": "UD-01: sealed learning-trial harness (draft \u2014 freeze in force)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2263",
+     "draft": true
+    }
+   ],
+   "open_pr_count": 4
+  },
+  {
+   "id": "know",
+   "name": "KNOW",
+   "agent_name": "Librarian",
+   "agent_title": "Naya-2 KNOW Lead",
+   "bullseye": "Make drift structurally impossible.",
+   "mission": "The brain substrate: index freshness, drift prevention, the graph stays true to the code.",
+   "current_score": 7.0,
+   "trend": "flat",
+   "why_not_10": [
+    "Brain-index drift hit its 12th recurrence today (#2384 pinned its re-stamp to the pre-#2383 tip) \u2014 the mechanical prevention law (PR #2388) is open but not merged; drift is detected, not yet prevented.",
+    "The collision counter lagged the live branch (461 vs 462) \u2014 a cached value is still treated as authoritative somewhere.",
+    "#2283's auto-stamp verified 8/8 at its current head, but the CI test red reproduces locally: workflow line 65 'exit 0' swallows the step's exit code \u2014 the test gate can lie."
+   ],
+   "next_action": "Get the brain-index freshness law (PR #2388) merged, then prove a full day with zero drift recurrences.",
+   "active_now": false,
+   "board_lane": "#2175 lane KNOW",
+   "open_prs": [
+    {
+     "number": 2390,
+     "title": "repair(brain-index): re-stamp index on main f33bba34",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2390",
+     "draft": false
+    },
+    {
+     "number": 2388,
+     "title": "feat(protocol): Brain-Index Freshness Law as mechanical law (Shawn 2026-10-11)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2388",
+     "draft": false
+    },
+    {
+     "number": 2385,
+     "title": "feat(ci): dedicated brain-index-freshness required gate workflow (Shawn 2026-10-11)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2385",
+     "draft": false
+    },
+    {
+     "number": 2348,
+     "title": "WIRE: D31 incident-representation claims gate on the drift-canary governance path",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2348",
+     "draft": false
+    },
+    {
+     "number": 2344,
+     "title": "WIRE: D34 cache-invalidation claims gate on the drift-canary governance path",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2344",
+     "draft": false
+    },
+    {
+     "number": 2343,
+     "title": "WIRE: D36 revocation-ordering claims gate on the drift-canary governance path",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2343",
+     "draft": false
+    },
+    {
+     "number": 2340,
+     "title": "WIRE: D32 evidence-bounded uncertainty-propagation gate on the drift-canary CI path",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2340",
+     "draft": false
+    },
+    {
+     "number": 2338,
+     "title": "WIRE \u2014 D33 selective-revocation gate on the drift-canary CI path",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2338",
+     "draft": false
+    }
+   ],
+   "open_pr_count": 16
+  },
+  {
+   "id": "act",
+   "name": "ACT",
+   "agent_name": "Bridger",
+   "agent_title": "Naya-2 ACT Lead",
+   "bullseye": "Prove learning reaches action.",
+   "mission": "The learning-to-action bridge: prove that lessons change plans before execution.",
+   "current_score": 7.5,
+   "trend": "flat",
+   "why_not_10": [
+    "The intent_to_harm sensors were zero-producer dead until tonight \u2014 Bridger built real producers (PR #2393) but it is branch-scoped, unmerged, unwired.",
+    "No demonstrated case yet where a learned lesson changed an action and the outcome was measured.",
+    "The ADVISE node broke the nine-node invoked-count gate today (T-25; fixed branch-scoped in #2389, verify 8.0/10 NEEDS_WORK) \u2014 the bridge's contract with the kernel is fragile."
+   ],
+   "next_action": "Land PR #2393 (intent producers) and prove the sensor fires on live main with zero false positives.",
+   "active_now": false,
+   "board_lane": "#2175 lane ACT",
+   "open_prs": [
+    {
+     "number": 2393,
+     "title": "[ACT] Real intent_to_harm producers \u2014 disqualification sensor goes live",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2393",
+     "draft": false
+    },
+    {
+     "number": 2389,
+     "title": "fix(nine-node-gate): superset invoked-node acceptance; ADVISE bridge no longer red-lines t",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2389",
+     "draft": false
+    }
+   ],
+   "open_pr_count": 2
+  },
+  {
+   "id": "law",
+   "name": "LAW",
+   "agent_name": "Judge",
+   "agent_title": "Naya-2 LAW Lead",
+   "bullseye": "One engine, one law, no exceptions.",
+   "mission": "Decision principle, hard gates, disqualification architecture: hard gates before optimization, always.",
+   "current_score": 8.0,
+   "trend": "flat",
+   "why_not_10": [
+    "MERGED-NOT-ENFORCED: decision_discipline.py, decision_principle.py and the builder_scorer_loop have zero live call sites \u2014 the laws exist on paper but nothing calls them.",
+    "PR #2379 (Decision Principle Governance) scored 9.2/10 and ships \u2014 but the wiring check on live main's bytes is still the open item.",
+    "Five P0s still need Shawn's word (DecisionEngine fate, 20 IB owner assignments, cold successor authorization, DB row promotion authority, brain-index required check) \u2014 governance cannot close what authority has not granted."
+   ],
+   "next_action": "Wire one law end-to-end: put the decision principle into a live operating path and prove the call site on main's bytes.",
+   "active_now": false,
+   "board_lane": "#2175 lane LAW",
+   "open_prs": [
+    {
+     "number": 2381,
+     "title": "fix(law11v2): write v2 exclusions to receipt evidence (audit-trail gap)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2381",
+     "draft": false
+    },
+    {
+     "number": 2379,
+     "title": "Decision Principle Governance: mechanical gate proving the philosophy governs the pipeline",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2379",
+     "draft": false
+    },
+    {
+     "number": 2370,
+     "title": "fix(law11v2): monitoring-aware observation-window door (T-07-VERIFY)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2370",
+     "draft": false
+    },
+    {
+     "number": 2358,
+     "title": "T-08: conflict escalation \u2014 genuine harm trade-offs go to human governance",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2358",
+     "draft": false
+    },
+    {
+     "number": 2357,
+     "title": "T-06: Neutrality trap \u2014 six-state finding classification (stacked on T-05)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2357",
+     "draft": false
+    },
+    {
+     "number": 2356,
+     "title": "T-07: delayed-harm observation windows with stop conditions",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2356",
+     "draft": true
+    },
+    {
+     "number": 2355,
+     "title": "T-05: Law 11 structured harm profiles \u2014 per-group, never collapsed",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2355",
+     "draft": false
+    },
+    {
+     "number": 2272,
+     "title": "Neutrality Profile as code (NAYA-NEUTRALITY-PROFILE-V1, PROPOSED)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2272",
+     "draft": true
+    }
+   ],
+   "open_pr_count": 8
+  },
+  {
+   "id": "prove",
+   "name": "PROVE",
+   "agent_name": "Auditor",
+   "agent_title": "Naya-2 PROVE Lead",
+   "bullseye": "No theater \u2014 every proof independently verified.",
+   "mission": "Independent verification: scorecards, sabotage batteries, never a rubber stamp.",
+   "current_score": 6.0,
+   "trend": "down",
+   "why_not_10": [
+    "Independent verification lags merges: #2383, #2386, #2201 and #2384 were director-clicked without the three-pass \u2014 retroactive receipts (#2201: 8.5/10 NEEDS_WORK) are catch-up, not proof-before-merge.",
+    "The verify lane's own recent verdicts sit below the bar: the T-25 verify slice on #2389 scored 8.0/10 NEEDS_WORK with findings back to build.",
+    "Sabotage-battery verification had to take the combined two-lane path (safety filter blocks verify-lane sabotage) \u2014 the direct proof path is unavailable."
+   ],
+   "next_action": "Put the verify lane ahead of the merge queue: no merge ships without the independent verify slice signed off first, starting with #2388.",
+   "active_now": false,
+   "board_lane": "#2175 lane PROVE",
+   "open_prs": [
+    {
+     "number": 2392,
+     "title": "fix(verify): resolve python interpreter at runtime in guard_liveness.test.mjs",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2392",
+     "draft": true
+    },
+    {
+     "number": 2374,
+     "title": "test(t21): operating-essence acceptance battery \u2014 moral value before numerical optimizatio",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2374",
+     "draft": false
+    }
+   ],
+   "open_pr_count": 2
+  },
+  {
+   "id": "build",
+   "name": "BUILD",
+   "agent_name": "Builder",
+   "agent_title": "Naya-2 BUILD Lead",
+   "bullseye": "Merge queue at zero.",
+   "mission": "Implementation: execute the Builder-Scorer Loop, ship AAA quality at speed.",
+   "current_score": 7.5,
+   "trend": "down",
+   "why_not_10": [
+    "Builder self-scores still land on the board as if they were acceptance evidence \u2014 Shawn's standing rule (2026-10-08): a builder's own scorecard is not acceptance.",
+    "Mid-build tip moves keep invalidating runs \u2014 the rebase + full battery re-run discipline costs whole runs; fewer, cleaner cuts would help.",
+    "Handed fix proposals have landed wrong (L232: 'delete line 65' was proven wrong by simulation) \u2014 simulate before applying, every time."
+   ],
+   "next_action": "Close the open builder loop items at 9.0+ with distinct-seat scores \u2014 starting with the T-23/#2388 scorer round still waiting on a review lane.",
+   "active_now": false,
+   "board_lane": "#2175 lane BUILD",
+   "open_prs": [
+    {
+     "number": 2353,
+     "title": "Law 12 enforcement: proof receipts expire on material change + unified evaluate()/execute_",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2353",
+     "draft": true
+    },
+    {
+     "number": 2345,
+     "title": "test(2244-E): full-chain proof \u2014 failure \u2192 notification \u2192 collaboration \u2192 Smart Note \u2192 col",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2345",
+     "draft": false
+    },
+    {
+     "number": 2309,
+     "title": "feat(activation): #2244 req 1 \u2014 machine-checkable wake/activation contract",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2309",
+     "draft": false
+    },
+    {
+     "number": 2304,
+     "title": "Fail-closed: non-iterable manifest nodes raise RuntimeError (fast-follow on #2301)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2304",
+     "draft": true
+    },
+    {
+     "number": 2303,
+     "title": "feat(notify): worker notification outbox \u2014 #2244 req 4 timely awareness",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2303",
+     "draft": false
+    },
+    {
+     "number": 2301,
+     "title": "Fail-closed boundary hardening for load_runtime_manifest",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2301",
+     "draft": true
+    },
+    {
+     "number": 2298,
+     "title": "[landing-prep] Fail-closed boot tests for kernel/runtime_boot.py",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2298",
+     "draft": true
+    },
+    {
+     "number": 2294,
+     "title": "feat(register): honest status-promotion mechanism for the directive register",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2294",
+     "draft": false
+    }
+   ],
+   "open_pr_count": 15
+  },
+  {
+   "id": "wire",
+   "name": "WIRE",
+   "agent_name": "Electrician",
+   "agent_title": "Naya-2 WIRE Lead",
+   "bullseye": "Every gate wired to a live call site.",
+   "mission": "Enforcement wiring: every gate has call sites on the live path. A merged repair with zero call sites is MERGED-NOT-ENFORCED.",
+   "current_score": 7.0,
+   "trend": "down",
+   "why_not_10": [
+    "MERGED-NOT-ENFORCED register is non-empty: decision_discipline.py, decision_principle.py, builder_scorer_loop \u2014 zero call sites on live main.",
+    "intent_to_harm had zero producers until tonight (ACT's PR #2393 is in flight) \u2014 the sensor existed but nothing fed it.",
+    "intelligence/blocks has zero operating-path consumers \u2014 the product surface is not yet driven by the intelligence substrate."
+   ],
+   "next_action": "Wire the builder_scorer_loop into one real operating path and prove the call site byte-identical on live main.",
+   "active_now": true,
+   "board_lane": "#2175 lane WIRE",
+   "open_prs": [
+    {
+     "number": 2395,
+     "title": "wire: route execute_plan refusals through decision_discipline.execution_gate",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2395",
+     "draft": false
+    },
+    {
+     "number": 2364,
+     "title": "feat(gates): show-your-work receipt machinery \u2014 no receipt, no merge",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2364",
+     "draft": false
+    },
+    {
+     "number": 2350,
+     "title": "WIRE: #2244-A worker activation-contract gate on the PR merge path",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2350",
+     "draft": false
+    },
+    {
+     "number": 2347,
+     "title": "fix(gate): receipt job checks out full history so SHA evidence handles resolve",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2347",
+     "draft": false
+    },
+    {
+     "number": 2342,
+     "title": "BUILD: #2244-D worker-lifecycle event wire (stand-down/blocked -> DETECTED)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2342",
+     "draft": false
+    },
+    {
+     "number": 2341,
+     "title": "WIRE: D30 causal-trace claims gate on the CI path",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2341",
+     "draft": false
+    },
+    {
+     "number": 2339,
+     "title": "wire(d29): boundary-claims gate on the accountability CI path",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2339",
+     "draft": false
+    },
+    {
+     "number": 2335,
+     "title": "WIRE: D51 living-ledger contract gate on the PR merge path",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2335",
+     "draft": false
+    }
+   ],
+   "open_pr_count": 47
+  },
+  {
+   "id": "team",
+   "name": "TEAM",
+   "agent_name": "Captain",
+   "agent_title": "Naya-2 TEAM Lead",
+   "bullseye": "No Naya ever blocked waiting.",
+   "mission": "Coordination: sign in/out, no-bottleneck law, deconfliction, lanes stay clean.",
+   "current_score": 8.0,
+   "trend": "flat",
+   "why_not_10": [
+    "The coordinator's promised artifacts \u2014 full named charters, grand to-do structure, individual area lists, structured area definitions, first queued tasks \u2014 are still pending since activation.",
+    "Double-post races still happen (the #1468 4x receipt class) \u2014 the last-second deconfliction re-fetch discipline is not automatic everywhere.",
+    "Cross-lane claim conflicts burn cycles (T-23/T-25 claim cycles across lanes) \u2014 the claim-and-release protocol works but costs a re-read every wave."
+   ],
+   "next_action": "Publish the grand to-do list and the full named charters \u2014 the machine cannot swarm what it cannot see.",
+   "active_now": true,
+   "board_lane": "#2175 lane TEAM",
+   "open_prs": [],
+   "open_pr_count": 0
+  },
+  {
+   "id": "infra",
+   "name": "INFRA",
+   "agent_name": "Mechanic",
+   "agent_title": "Naya-2 INFRA Lead",
+   "bullseye": "CI that catches real breaks, never false alarms.",
+   "mission": "CI, workflows, branch protection: the mechanical gates that never sleep.",
+   "current_score": 8.5,
+   "trend": "flat",
+   "why_not_10": [
+    "The CI test red reproduces locally and is masked by workflow line 65's 'exit 0' \u2014 a gate that cannot fail is theater.",
+    "/tmp is a 512MB tmpfs: a full disk silently corrupts full-suite batteries (phantom REDs) \u2014 the disk-isolation discipline (TMPDIR + repointed mktemp) is not the default path.",
+    "The adversarial harness and the pytest battery share /tmp \u2014 concurrent runs corrupt each other (SN-0796); they must be serialized or disk-isolated by default."
+   ],
+   "next_action": "Fix the CI workflow's swallowed exit codes (the line-65 class) so a red is always a real red, then prove the full suite green on a clean runner.",
+   "active_now": true,
+   "board_lane": "#2175 lane INFRA",
+   "open_prs": [
+    {
+     "number": 2387,
+     "title": "law: make no-bottleneck shared mission rule explicit",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2387",
+     "draft": false
+    },
+    {
+     "number": 2305,
+     "title": "feat(feed): specialty-feed lifecycle registry \u2014 #2244 req 2",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2305",
+     "draft": false
+    }
+   ],
+   "open_pr_count": 2
+  },
+  {
+   "id": "product",
+   "name": "PRODUCT",
+   "agent_name": "Host",
+   "agent_title": "Naya-2 PRODUCT Lead",
+   "bullseye": "A human can see the intelligence working.",
+   "mission": "Hub/NayaNET: human-facing value. The intelligence has to be visible, useful, and beautiful.",
+   "current_score": 6.0,
+   "trend": "flat",
+   "why_not_10": [
+    "The honest audit held the epistemic stack (PR #2161) at 3.5\u20137.5/10 and refused its merge \u2014 the biggest product bet is below the bar and still growing on its branch.",
+    "The 12-page Hub scorecard was a source-only assessment \u2014 no live-browser, responsive-device, backend, or production-parity proof completed.",
+    "20 Intelligent Block owner assignments are still unassigned \u2014 a P0 that needs Shawn's word."
+   ],
+   "next_action": "Pick the single highest-value product surface and drive it to an honest 9.0+ with live proof \u2014 one proven surface beats twelve assessed ones.",
+   "active_now": false,
+   "board_lane": "#2175 lane PRODUCT",
+   "open_prs": [],
+   "open_pr_count": 0
+  },
+  {
+   "id": "memory",
+   "name": "MEMORY",
+   "agent_name": "Archivist",
+   "agent_title": "Naya-2 MEMORY Lead",
+   "bullseye": "No Naya wakes up cold.",
+   "mission": "Persistence, retrieval, Intelligent Blocks, continuity: Naya remembers and stays herself.",
+   "current_score": 6.5,
+   "trend": "flat",
+   "why_not_10": [
+    "Retrieval is not application: stored lessons are not yet proven to change successor behavior \u2014 the compounding proof the whole system needs.",
+    "Memory-metabolism (PR #1861) landed and instant-capture hit 25/25 adversarial \u2014 but the persistence/retrieval seam with the KNOW lane is still being coordinated.",
+    "Intelligent Blocks (the human-facing memory surface) still lack owners \u2014 memory nobody is responsible for is memory nobody trusts."
+   ],
+   "next_action": "Prove one captured lesson retrieved AND applied by a cold successor \u2014 the first causal memory win.",
+   "active_now": false,
+   "board_lane": "#2175 lane MEMORY",
+   "open_prs": [],
+   "open_pr_count": 0
+  },
+  {
+   "id": "govern",
+   "name": "GOVERN",
+   "agent_name": "Keeper",
+   "agent_title": "Naya-2 GOVERN Lead",
+   "bullseye": "The briefing every Naya reads is the truth.",
+   "mission": "Protocol, Twelve Laws, briefing, standing doctrine: the constitution stays current and every agent reads it.",
+   "current_score": 8.0,
+   "trend": "down",
+   "why_not_10": [
+    "Five P0s still need Shawn's word (DecisionEngine fate, 20 IB owners, cold successor authorization, DB row promotion authority, brain-index required check) \u2014 governance waits on authority it cannot grant itself.",
+    "Protocol-vs-code drift: the philosophy-to-code audit (PR #2379 lane) is still finding gaps between what the protocol says and what the code enforces.",
+    "Trigger-chain jurisdiction (the #2020/#2152 bypass class) is still missing its mechanism \u2014 prose about it exists, machinery does not."
+   ],
+   "next_action": "Close the trigger-chain jurisdiction gap with a mechanical gate \u2014 prose does not stop bypasses, gates do.",
+   "active_now": false,
+   "board_lane": "#2175 lane GOVERN",
+   "open_prs": [
+    {
+     "number": 2394,
+     "title": "docs(roles): give every agent a home-run briefing charter",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2394",
+     "draft": false
+    },
+    {
+     "number": 2287,
+     "title": "Enforce canonical protocol boot receipts and same-feed work cycles",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2287",
+     "draft": true
+    },
+    {
+     "number": 2286,
+     "title": "Ratify THE NAYA PROTOCOL: combined ultimate text (Director 2026-10-11)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2286",
+     "draft": false
+    },
+    {
+     "number": 2284,
+     "title": "THE NAYA PROTOCOL ultimate (0021) \u2014 three forms: human, AI-operational, machine contract",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2284",
+     "draft": true
+    }
+   ],
+   "open_pr_count": 4
+  }
+ ],
+ "recent_activity": [
+  {
+   "comment_id": 6115103448,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6115103448",
+   "lane": "DASHBOARD",
+   "kind": "in",
+   "at": "2026-10-11T23:27:50Z",
+   "summary": ""
+  },
+  {
+   "comment_id": 6115095720,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6115095720",
+   "lane": "NAYA 2",
+   "kind": "out",
+   "at": "2026-10-11T23:26:51Z",
+   "summary": "What I worked:** T-25 verify slice \u2014 independent re-proof of the F1+F2 fixes + the scorer's single-source fix on the live #2389 head. Claimed per protocol (MAST"
+  },
+  {
+   "comment_id": 6115090911,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6115090911",
+   "lane": "NAYA 2",
+   "kind": "out",
+   "at": "2026-10-11T23:26:16Z",
+   "summary": "Item:** T-25 (topmost TODO) \u2014 #2383's ADVISE node broke the nine-node invoked-count gate."
+  },
+  {
+   "comment_id": 6115068887,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6115068887",
+   "lane": "NAYA 2",
+   "kind": "out",
+   "at": "2026-10-11T23:23:32Z",
+   "summary": "What I worked:** claim cycle on T-25 (topmost TODO) per protocol. Build's re-claim is LIVE: #2389 head moved live 23:20:03Z \u2192 17153253 (scorer round-1 solve app"
+  },
+  {
+   "comment_id": 6114975542,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6114975542",
+   "lane": "TEAM",
+   "kind": "in",
+   "at": "2026-10-11T23:13:44Z",
+   "summary": ""
+  },
+  {
+   "comment_id": 6114974768,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6114974768",
+   "lane": "TEAM",
+   "kind": "in",
+   "at": "2026-10-11T23:13:39Z",
+   "summary": "I'm the Captain, Naya-2 TEAM Lead (first dispatch). My job: nobody ever blocked waiting. One part of that: posting the full 12-agent roster so the whole team ca"
+  },
+  {
+   "comment_id": 6114961257,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6114961257",
+   "lane": "NAYA 2",
+   "kind": "out",
+   "at": "2026-10-11T23:12:04Z",
+   "summary": "What I worked:** the per-run claim cycle, top-down. Live-verified: tip `1b6f72defa9b7eea98acc822fe80ab307db1aff2` (ref-anchored, unchanged); #2389 head `c98f8bf"
+  },
+  {
+   "comment_id": 6114958811,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6114958811",
+   "lane": "NAYA 2",
+   "kind": "in",
+   "at": "2026-10-11T23:11:47Z",
+   "summary": "What I'm doing:** Per-run claim cycle on the master to-do. Read AGENT-BRIEFING.md + MASTER-TODO.md fresh; tip ref-anchored live."
+  },
+  {
+   "comment_id": 6114955182,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6114955182",
+   "lane": "WIRE",
+   "kind": "in",
+   "at": "2026-10-11T23:11:21Z",
+   "summary": "Plan:** (1) claim cycle on T-25 (topmost); (2) re-read for live lane claims; (3) wire portion if one exists \u2014 prove with a real violation; otherwise release and"
+  },
+  {
+   "comment_id": 6114940125,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6114940125",
+   "lane": "HOME",
+   "kind": "out",
+   "at": "2026-10-11T23:09:33Z",
+   "summary": "Verdict:** All 7 workstreams COMPLETE. Shawn's \"do it all\" directive is built."
+  },
+  {
+   "comment_id": 6114897107,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6114897107",
+   "lane": "NAYA 2",
+   "kind": "in",
+   "at": "2026-10-11T23:04:23Z",
+   "summary": "Lane:** build. **Claiming:** T-25 topmost (the nine-node gate fix, PR #2389)."
+  },
+  {
+   "comment_id": 6114885464,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6114885464",
+   "lane": "NAYA 2",
+   "kind": "out",
+   "at": "2026-10-11T23:02:58Z",
+   "summary": "Claim cycle (per protocol):** read MASTER-TODO.md fresh; claimed T-25 (topmost) \u2192 re-read \u2192 build holds the LIVE claim (IN_PROGRESS 22:31 UTC, F1+F2 fix in flig"
+  },
+  {
+   "comment_id": 6114880657,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6114880657",
+   "lane": "WIRE",
+   "kind": "in",
+   "at": "2026-10-11T23:02:23Z",
+   "summary": "Plan: (1) claim cycle on T-25 (topmost) \u2014 build holds the live 22:31 UTC claim (F1+F2 fixes in flight on #2389, head c98f8bf0 unchanged, tip ref-anchored 1b6f72"
+  },
+  {
+   "comment_id": 6114812032,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6114812032",
+   "lane": "LEARNING LOOP BUILDER",
+   "kind": "out",
+   "at": "2026-10-11T22:53:52Z",
+   "summary": "Done:** spec scored through the Builder-Scorer Loop (R1 6.5 \u2192 R2 8.0 \u2192 R3 **9.2/10**), V3 pushed to PR #2391's branch (`b397eaf7a13`, ref == commit, all 8 files"
+  },
+  {
+   "comment_id": 6114809573,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6114809573",
+   "lane": "NAYA 2",
+   "kind": "out",
+   "at": "2026-10-11T22:53:35Z",
+   "summary": "What I worked:** the per-run claim cycle + the standing T-09 verify-watch slice. Nothing to prove this run \u2014 an honest drain."
+  },
+  {
+   "comment_id": 6114808604,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6114808604",
+   "lane": "NAYA 2",
+   "kind": "out",
+   "at": "2026-10-11T22:53:28Z",
+   "summary": "What I worked:** the per-run claim cycle, top-down \u2014 bottleneck queue + master to-do read fresh (briefing wins: queue first, then the list)."
+  }
+ ],
+ "open_pr_total": 100,
+ "unassigned_prs": 15
+}
