@@ -40,7 +40,78 @@ Specialty feeds: [Learning #1865](https://github.com/SoulSchoolAcademy/NayaPOWER
 
 **Sign in / sign out — required and evidence-bound.** Every work cycle starts by posting a structured `SIGN_IN` on the assigned current specialty feed **before substantive governed work**. At cycle end, post `SIGN_OUT` on the same feed. The sign-out must report actual outcome, exact tested revision, evidence and its limits, honest score, failures/unknowns, lesson or `NO_CAPTURE`, next owner and exactly one next action. A missing or unverifiable sign-in blocks governed work; a missing sign-out leaves the cycle OPEN. #1354 is historical/read-only and must never be used as a current sign-in/out destination.
 
-**Receipt format.** The actual GitHub comment body must contain a JSON receipt between `<!-- NAYA-WORK-CYCLE-RECEIPT:START -->` and `<!-- NAYA-WORK-CYCLE-RECEIPT:END -->`. The local validation record must identify the exact comment ID/URL/body and SHA-256; the executable gate fetches the comment and compares the posted payload rather than trusting a separate caller-supplied claim. SHA-256 detects content changes; it does not authenticate the author. GitHub remains the canonical work log—no second ledger.
+**Receipt format.** The actual GitHub comment body must contain a JSON receipt between \`<!-- NAYA-WORK-CYCLE-RECEIPT:START -->\` and \`<!-- NAYA-WORK-CYCLE-RECEIPT:END -->\`. The local validation record must identify the exact comment ID/URL/body and SHA-256; the executable gate fetches the comment and compares the posted payload rather than trusting a separate caller-supplied claim. SHA-256 detects content changes; it does not authenticate the author. GitHub remains the canonical work log—no second ledger.
+
+### The 13 comprehension questions
+
+Answer each as free text in JSON with keys \`q1\` through \`q13\`. These are a comprehension check, not permission to bypass the full reading.
+
+1. Who is the final human authority?
+2. Name the hard gates and protected decisions that cannot be bypassed by a score.
+3. Can a high score override a prohibited action or protected human-authority gate?
+4. What is the minimum delivery quality floor?
+5. What distinguishes verified success from an implementation claim?
+6. What is the current shared coordination board, and what is #1354?
+7. Name the mandatory boot sources.
+8. Does opening a file or hashing a receipt alone prove comprehension?
+9. What happens when required sources are missing or conflict?
+10. When and where must sign-in and sign-out happen?
+11. How does the Naya Protocol relate to the Constitution and ratified laws?
+12. What does “Unknown is never zero” mean?
+13. State the mission and the kind of proof needed before claiming success.
+
+Save the free-text answers in a JSON file locally. The gate grades the full answer text, binds it to the protocol version, binds source paths to the Git blob SHAs actually present in the checkout, and pins the receipt to current \`origin/main\`. This is a structured attestation; it does not independently prove that an agent read every byte or cryptographically authenticate the agent.
+
+### Copy/paste SIGN_IN comment payload
+
+Choose the correct live specialist feed from the current mission state and navigation links. Fill every field honestly, paste this payload inside the receipt markers, and post the comment **before substantive work**:
+
+\`\`\`json
+{
+  "event_type": "SIGN_IN",
+  "feed_issue": 1867,
+  "agent_id": "your canonical Naya seat",
+  "task": "the task you are taking ownership of",
+  "owner": "responsible owner and collaborators",
+  "objective": "the human-valued outcome",
+  "definition_of_done": "observable acceptance criteria",
+  "current_main_sha": "40-character current main SHA",
+  "authority_and_gates": "allowed scope and protected boundaries",
+  "known_unknowns_and_blockers": "truthfully list unknowns or NONE",
+  "first_action": "the next concrete action",
+  "proof_target": "what evidence will prove the result",
+  "timestamp": "ISO-8601 timestamp with timezone"
+}
+\`\`\`
+
+### Copy/paste SIGN_OUT comment payload
+
+Post SIGN_OUT on the **same live feed** as SIGN_IN. Include actual results, exact tested revision, evidence and claim limits, honest score, failures, unresolved unknowns, the canonical lesson or \`NO_CAPTURE\`, the next owner, and precisely one next action:
+
+\`\`\`json
+{
+  "event_type": "SIGN_OUT",
+  "feed_issue": 1867,
+  "agent_id": "same canonical Naya seat",
+  "actual_result": "what actually happened",
+  "tested_revision": "40-character commit SHA actually tested",
+  "evidence_links": ["https://github.com/... or a canonical evidence path"],
+  "truth_status": "DOCUMENTED / IMPLEMENTED / TESTED / VERIFIED / BLOCKED / UNKNOWN as evidence supports",
+  "claim_limits": "what this evidence does NOT prove",
+  "score": 9.0,
+  "score_delta": 0.5,
+  "failure_or_root_cause": "actual failure/root cause or NONE / UNKNOWN",
+  "remaining_blockers_and_owner": "remaining blocker and named owner, or NONE",
+  "lesson_or_NO_CAPTURE": "canonical Smart Note link/ID or NO_CAPTURE",
+  "next_owner": "named next owner or seat",
+  "exactly_one_next_action": "one next executable action",
+  "timestamp": "ISO-8601 timestamp with timezone",
+  "sign_in_comment_id": "actual GitHub comment ID of the SIGN_IN post",
+  "current_main_sha": "40-character current main SHA observed at sign-out"
+}
+\`\`\`
+
+The \`feed_issue\` shown is an example only; never blindly reuse it. Replace it with the actual assigned feed. The outer local JSON record used by the gate must additionally hold the posted comment's actual \`comment_id\`, exact \`comment_url\`, complete \`comment_body\`, and SHA-256 of that exact body. The gate fetches the actual GitHub post and compares these values.
 
 **Executable gate.** After preparing the thirteen free-text comprehension answers and posting SIGN_IN, run:
 
