@@ -95,10 +95,8 @@ def test_shipped_manifest_dormant(gate):
     # tripwire, not a failure.
     assert MANIFEST_PATH.exists()
     data = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
-    # TEMP-L215-NEGATIVE-CONTROL (reverted before merge): the AE-EXAMPLE
-    # claim is registered as the live violation probe, so the tripwire
-    # stands down for this commit only and the gate must block (exit 1).
-    assert gate.main([]) == 1
+    assert data["claims"] == []
+    assert gate.main([]) == 0
 
 
 # ---------------------------------------------------------------------------
