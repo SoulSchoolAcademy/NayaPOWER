@@ -49,20 +49,29 @@ def _live(manifest, scenario):
     return m
 
 
-# -- shipped manifest: well-formed, honest, DORMANT ---------------------------
+# -- shipped manifest: well-formed and honest (never pinned to DORMANT) --------
 
-def test_shipped_manifest_is_wellformed_and_dormant():
+def test_shipped_manifest_is_wellformed_and_honest():
+    """The owning lane registers real scenarios without editing tests: the
+    shipped manifest must be well-formed and judge to the engine's honest
+    word (DORMANT/PASS/VIOLATION) — never BROKEN. A test pinning
+    scenarios==[] would fail the moment the first real claim lands and
+    would make the TEST step, not the gate step, the thing that blocks."""
     manifest = _shipped_manifest()
-    assert manifest["scenarios"] == []
+    assert isinstance(manifest.get("scenarios", []), list)
     d34 = gate._import_mechanism()
-    verdict, _ = gate.judge_manifest(d34, manifest)
-    assert verdict == "DORMANT"
+    try:
+        verdict, _ = gate.judge_manifest(d34, manifest)
+    except gate.Violation:
+        verdict = "VIOLATION"
+    assert verdict in ("DORMANT", "PASS", "VIOLATION"), verdict
 
 
-def test_shipped_manifest_gate_exits_dormant_zero(tmp_path):
+def test_shipped_manifest_gate_reports_honest_verdict():
     proc = _run_gate(MANIFEST)
-    assert proc.returncode == 0, proc.stdout + proc.stderr
-    assert "DORMANT" in proc.stdout
+    assert proc.returncode in (0, 1), proc.stdout + proc.stderr
+    assert any(w in proc.stdout for w in ("DORMANT", "PASS", "VIOLATION"))
+    assert "BROKEN" not in proc.stdout
 
 
 def test_worked_fraud_example_is_a_real_violation():
