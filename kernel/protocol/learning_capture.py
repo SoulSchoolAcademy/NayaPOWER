@@ -36,18 +36,28 @@ class LearningCaptureResult:
     reasons: list = field(default_factory=list)
 
 
+def _is_blank(value: object) -> bool:
+    """Fail-closed presence check.
+
+    A field is blank when it is not a string or holds only whitespace.
+    Malformed (non-string) input must fail the gate with a reason — a
+    fail-closed validator never crashes on a malformed receipt.
+    """
+    return not isinstance(value, str) or not value.strip()
+
+
 def check_lesson(cycle: CycleLesson) -> LearningCaptureResult:
     reasons: list[str] = []
-    if not cycle.work_description.strip():
+    if _is_blank(cycle.work_description):
         reasons.append("No work described.")
 
-    if not cycle.lesson.strip():
-        if not cycle.no_lesson_reason.strip():
+    if _is_blank(cycle.lesson):
+        if _is_blank(cycle.no_lesson_reason):
             reasons.append(
                 "No lesson captured and no reason given. "
                 "State the lesson or state why there is none."
             )
-    elif not cycle.provenance.strip():
+    elif _is_blank(cycle.provenance):
         reasons.append("Lesson captured without provenance — evidence required.")
 
     if cycle.failure_detected:
@@ -60,12 +70,12 @@ def check_lesson(cycle: CycleLesson) -> LearningCaptureResult:
             "canonical_lesson_ref": cycle.canonical_lesson_ref,
         }
         for field_name, value in required.items():
-            if not value.strip():
+            if _is_blank(value):
                 reasons.append(
                     f"Failure-learning gate: missing {field_name}; "
                     "failure cycles cannot silently pass."
                 )
-        if cycle.lesson.strip() and not cycle.smart_note_id.strip():
+        if not _is_blank(cycle.lesson) and _is_blank(cycle.smart_note_id):
             reasons.append(
                 "Failure-learning gate: reusable failure lesson requires a "
                 "canonical Smart Note ID."

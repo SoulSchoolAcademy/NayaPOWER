@@ -76,3 +76,24 @@ def test_failure_with_no_lesson_still_requires_explicit_no_lesson_reason():
     result = check_lesson(_complete_failure(lesson="", no_lesson_reason=""))
     assert not result.passed
     assert any("No lesson captured" in reason for reason in result.reasons)
+
+
+def test_malformed_non_string_fields_fail_closed_without_crashing():
+    # A fail-closed validator never crashes on a malformed receipt — it
+    # returns passed=False with reasons. AttributeError here would be a
+    # fail-OPEN crash on malformed input.
+    result = check_lesson(_complete_failure(work_description=None))
+    assert not result.passed
+    assert any("No work described" in reason for reason in result.reasons)
+
+
+def test_malformed_non_string_failure_field_fails_closed_without_crashing():
+    result = check_lesson(_complete_failure(expected_vs_actual=None))
+    assert not result.passed
+    assert any("expected_vs_actual" in reason for reason in result.reasons)
+
+
+def test_whitespace_only_failure_field_counts_as_missing():
+    result = check_lesson(_complete_failure(team_share_ref="   "))
+    assert not result.passed
+    assert any("team_share_ref" in reason for reason in result.reasons)

@@ -17,7 +17,7 @@ For every cycle with `failure_detected=true`, the machine gate requires non-empt
 - `regression_guard`: a test/guard reference, or a concrete statement recorded in that field explaining why a guard cannot yet exist;
 - `canonical_lesson_ref`: link to the durable canonical lesson record.
 
-If a reusable lesson is supplied, a `smart_note_id` is also required. A no-lesson disposition must state a reason. Missing fields fail closed.
+If a reusable lesson is supplied, a `smart_note_id` is also required. A no-lesson disposition must state a reason. Missing fields fail closed; malformed (non-string) fields fail closed with a reason — the validator never raises on a malformed receipt.
 
 ## Required team workflow
 
