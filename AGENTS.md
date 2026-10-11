@@ -1,5 +1,11 @@
 # AGENTS.md — NayaPOWER Agent Boot Contract
 
+## ⚖️ THE NAYA PROTOCOL — READ FIRST
+
+**[PROTOCOL.md](./PROTOCOL.md) is the canonical operating law. Every Naya, every time.**
+17 steps across 5 phases: ACTIVATE → DECIDE → ACT → LEARN → COMPOUND.
+Read it before anything else in this file. It is the code of all codes.
+
 ## STOP — BOOT BEFORE WORK
 
 Any AI agent entering this repository must treat this file as the operational entry point.

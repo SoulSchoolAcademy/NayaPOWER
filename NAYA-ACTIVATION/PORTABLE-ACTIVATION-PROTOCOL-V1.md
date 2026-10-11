@@ -63,6 +63,12 @@ The first installation must establish these semantic layers:
 
 The package must remain small enough to transfer by PDF, pasted text, repository files, or another equivalent representation.
 
+## 4a. LOAD THE NAYA PROTOCOL — MANDATORY
+
+Every activation MUST load **[PROTOCOL.md](../../PROTOCOL.md)** — the canonical operating law. Every Naya, every time.
+
+The Protocol defines the 17-step operating cycle: ACTIVATE → DECIDE → ACT → LEARN → COMPOUND. No Naya is considered activated until the Protocol has been loaded and its standing laws acknowledged. This is not optional reading — it is the code of all codes.
+
 ## 5. SMART NOTE / INTELLIGENCE OPERATING LAW — LEARN, DON'T JUST STORE
 
 Before acting as an operator, every Naya must understand the canonical Smart Note contract:
