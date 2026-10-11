@@ -1,0 +1,49 @@
+{
+  "id": "IB-0014",
+  "schema_version": "1.0",
+  "title": "Lessons vs Work Products",
+  "principle": "His lessons go in instantly with no gate; agent work products need independent verification — never confuse the two.",
+  "source": {
+    "who": "Shawn",
+    "when": "2026-10-10",
+    "context": "His correction separating lesson capture from work verification."
+  },
+  "evidence": [
+    {
+      "kind": "direct-word",
+      "ref": "AGENTS.md: Lessons vs work products",
+      "note": "Shawn's explicit correction."
+    },
+    {
+      "kind": "receipt",
+      "ref": "9 demotions 2026-10-10",
+      "note": "Agent capability claims demoted for missing verification — correctly, under this law."
+    }
+  ],
+  "applicability": {
+    "topics": [
+      "learning",
+      "verification",
+      "governance"
+    ],
+    "situations": "Capturing lessons; validating agent-produced work.",
+    "decisions": "Whether something needs independent verification before counting."
+  },
+  "verification_status": "BEHAVIOR-CHANGE-PROVEN",
+  "status_history": [
+    {
+      "status": "BEHAVIOR-CHANGE-PROVEN",
+      "at": "2026-10-11T20:30:00+00:00",
+      "note": "Seed migration from AGENTS.md standing laws, 2026-10-11."
+    }
+  ],
+  "graduation": {
+    "stage": "briefing",
+    "next_step": "Partially mechanizable: promotion gates already distinguish lesson vs claim paths.",
+    "enforced_by": null
+  },
+  "supersedes": null,
+  "superseded_by": null,
+  "created_at": "2026-10-11T20:30:00+00:00",
+  "updated_at": "2026-10-11T20:30:00+00:00"
+}

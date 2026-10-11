@@ -1,0 +1,49 @@
+{
+  "id": "IB-0007",
+  "schema_version": "1.0",
+  "title": "The One Gate Law",
+  "principle": "Three rounds, show your work, ship it — that's the only merge gate, and no one can invent new ones.",
+  "source": {
+    "who": "Shawn",
+    "when": "2026-10-11",
+    "context": "Resolving the PR #2368 self-condition merge: per-PR conditions are not binding."
+  },
+  "evidence": [
+    {
+      "kind": "direct-word",
+      "ref": "AGENTS.md: The One Gate Law",
+      "note": "Shawn: 'Simplicity is the feature. The 3-pass receipt is the gate.'"
+    },
+    {
+      "kind": "receipt",
+      "ref": "PRs #2371/#2372/#2373",
+      "note": "Merged under the One Gate Law, 2026-10-11."
+    }
+  ],
+  "applicability": {
+    "topics": [
+      "process",
+      "merging",
+      "governance"
+    ],
+    "situations": "Merging anything to main; writing PR bodies.",
+    "decisions": "Whether a merge may proceed; whether extra conditions block it."
+  },
+  "verification_status": "APPLIED",
+  "status_history": [
+    {
+      "status": "APPLIED",
+      "at": "2026-10-11T20:30:00+00:00",
+      "note": "Seed migration from AGENTS.md standing laws, 2026-10-11."
+    }
+  ],
+  "graduation": {
+    "stage": "briefing",
+    "next_step": "Graduate to code-gate: encode the 3-pass receipt check into the merge gate.",
+    "enforced_by": null
+  },
+  "supersedes": null,
+  "superseded_by": null,
+  "created_at": "2026-10-11T20:30:00+00:00",
+  "updated_at": "2026-10-11T20:30:00+00:00"
+}

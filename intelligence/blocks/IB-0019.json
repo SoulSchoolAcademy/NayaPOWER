@@ -1,0 +1,43 @@
+{
+  "id": "IB-0019",
+  "schema_version": "1.0",
+  "title": "The Binary Gate",
+  "principle": "Useful? On-brand? Accurate? One no anywhere and it doesn't ship — no partial passes.",
+  "source": {
+    "who": "Shawn",
+    "when": "2026-10-09",
+    "context": "The Usefulness Gate as a checklist."
+  },
+  "evidence": [
+    {
+      "kind": "direct-word",
+      "ref": "AGENTS.md: The Binary Gate",
+      "note": "'One NO anywhere = it does not ship.'"
+    }
+  ],
+  "applicability": {
+    "topics": [
+      "quality",
+      "decisions"
+    ],
+    "situations": "Final check before any delivery.",
+    "decisions": "Ship or not ship."
+  },
+  "verification_status": "APPLIED",
+  "status_history": [
+    {
+      "status": "APPLIED",
+      "at": "2026-10-11T20:30:00+00:00",
+      "note": "Seed migration from AGENTS.md standing laws, 2026-10-11."
+    }
+  ],
+  "graduation": {
+    "stage": "briefing",
+    "next_step": "Mechanizable as a pre-delivery checklist; stays briefing-level for now.",
+    "enforced_by": null
+  },
+  "supersedes": null,
+  "superseded_by": null,
+  "created_at": "2026-10-11T20:30:00+00:00",
+  "updated_at": "2026-10-11T20:30:00+00:00"
+}

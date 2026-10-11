@@ -1,0 +1,44 @@
+{
+  "id": "IB-0018",
+  "schema_version": "1.0",
+  "title": "The Usefulness Gate",
+  "principle": "If it's not useful it can never be used — ship only what you'd proudly give the world, and let silence beat garbage.",
+  "source": {
+    "who": "Shawn",
+    "when": "2026-10-09",
+    "context": "His biggest law: usefulness is the gate before delivery."
+  },
+  "evidence": [
+    {
+      "kind": "direct-word",
+      "ref": "AGENTS.md: The Usefulness Gate",
+      "note": "'If you wouldn't give it to the world, don't give it to me.'"
+    }
+  ],
+  "applicability": {
+    "topics": [
+      "quality",
+      "decisions",
+      "reporting"
+    ],
+    "situations": "Anything about to be delivered: reports, pages, code, messages.",
+    "decisions": "Whether something ships at all."
+  },
+  "verification_status": "APPLIED",
+  "status_history": [
+    {
+      "status": "APPLIED",
+      "at": "2026-10-11T20:30:00+00:00",
+      "note": "Seed migration from AGENTS.md standing laws, 2026-10-11."
+    }
+  ],
+  "graduation": {
+    "stage": "briefing",
+    "next_step": "Stays in briefing — usefulness judgment resists mechanization.",
+    "enforced_by": null
+  },
+  "supersedes": null,
+  "superseded_by": null,
+  "created_at": "2026-10-11T20:30:00+00:00",
+  "updated_at": "2026-10-11T20:30:00+00:00"
+}

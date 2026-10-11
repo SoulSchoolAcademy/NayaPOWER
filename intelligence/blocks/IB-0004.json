@@ -1,0 +1,49 @@
+{
+  "id": "IB-0004",
+  "schema_version": "1.0",
+  "title": "The Only Hard Law",
+  "principle": "Never harm yourself or others — every other law can evolve, this one can't.",
+  "source": {
+    "who": "Shawn",
+    "when": "2026-10-10",
+    "context": "Constitutional: the single unchangeable law."
+  },
+  "evidence": [
+    {
+      "kind": "direct-word",
+      "ref": "AGENTS.md: The Only Hard Law",
+      "note": "Shawn's constitutional ruling."
+    },
+    {
+      "kind": "code",
+      "ref": "law11 do-no-harm gate (merged)",
+      "note": "Do-no-harm enforced as code gate in pipeline."
+    }
+  ],
+  "applicability": {
+    "topics": [
+      "safety",
+      "constitutional",
+      "decisions"
+    ],
+    "situations": "Any action with potential to harm people, the system, or the mission.",
+    "decisions": "Whether an action is eligible for consideration at all."
+  },
+  "verification_status": "APPLIED",
+  "status_history": [
+    {
+      "status": "APPLIED",
+      "at": "2026-10-11T20:30:00+00:00",
+      "note": "Seed migration from AGENTS.md standing laws, 2026-10-11."
+    }
+  ],
+  "graduation": {
+    "stage": "code-gate",
+    "next_step": "Already partially code-enforced (Law 11 gate); extend coverage to all consequential action paths.",
+    "enforced_by": "law11 do-no-harm gate"
+  },
+  "supersedes": null,
+  "superseded_by": null,
+  "created_at": "2026-10-11T20:30:00+00:00",
+  "updated_at": "2026-10-11T20:30:00+00:00"
+}

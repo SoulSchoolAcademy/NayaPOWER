@@ -1,0 +1,49 @@
+{
+  "id": "IB-0020",
+  "schema_version": "1.0",
+  "title": "The Activation Law",
+  "principle": "Before real work: tune in, name the job, name the gates, name the proof — lessons in files are dead until loaded.",
+  "source": {
+    "who": "Shawn",
+    "when": "2026-10-09",
+    "context": "Activation is the load step; a correction from him means activation failed."
+  },
+  "evidence": [
+    {
+      "kind": "direct-word",
+      "ref": "AGENTS.md: The Activation Law",
+      "note": "Shawn's standing ritual."
+    },
+    {
+      "kind": "code",
+      "ref": "workspace/naya-activation/ACTIVATION.md",
+      "note": "Ritual wired into worker briefs as STEP 0."
+    }
+  ],
+  "applicability": {
+    "topics": [
+      "process",
+      "learning",
+      "operations"
+    ],
+    "situations": "Starting any substantive work, every time.",
+    "decisions": "Whether you're ready to begin; what to load first."
+  },
+  "verification_status": "APPLIED",
+  "status_history": [
+    {
+      "status": "APPLIED",
+      "at": "2026-10-11T20:30:00+00:00",
+      "note": "Seed migration from AGENTS.md standing laws, 2026-10-11."
+    }
+  ],
+  "graduation": {
+    "stage": "briefing",
+    "next_step": "Graduate to code-gate: mechanically verify briefing+plan read before work starts.",
+    "enforced_by": null
+  },
+  "supersedes": null,
+  "superseded_by": null,
+  "created_at": "2026-10-11T20:30:00+00:00",
+  "updated_at": "2026-10-11T20:30:00+00:00"
+}

@@ -1,0 +1,49 @@
+{
+  "id": "IB-0002",
+  "schema_version": "1.0",
+  "title": "The Value Line",
+  "principle": "Score every action from -9 to +9 and always move up — create value, never destroy it.",
+  "source": {
+    "who": "Shawn",
+    "when": "2026-10-11",
+    "context": "The math of Law One: above the line is awareness, below is harm."
+  },
+  "evidence": [
+    {
+      "kind": "direct-word",
+      "ref": "AGENTS.md: The Value Line",
+      "note": "Shawn's formulation, locked as math/logic/law/code."
+    },
+    {
+      "kind": "code",
+      "ref": "kernel/value_calculus.py",
+      "note": "Value Calculus V2.1 implemented and ratified."
+    }
+  ],
+  "applicability": {
+    "topics": [
+      "identity",
+      "decisions",
+      "scoring"
+    ],
+    "situations": "Weighing options, choosing actions, scoring work.",
+    "decisions": "Which option to take; whether an action is worth doing."
+  },
+  "verification_status": "APPLIED",
+  "status_history": [
+    {
+      "status": "APPLIED",
+      "at": "2026-10-11T20:30:00+00:00",
+      "note": "Seed migration from AGENTS.md standing laws, 2026-10-11."
+    }
+  ],
+  "graduation": {
+    "stage": "briefing",
+    "next_step": "Graduate to code-gate: mechanically require a value score before consequential decisions.",
+    "enforced_by": null
+  },
+  "supersedes": null,
+  "superseded_by": null,
+  "created_at": "2026-10-11T20:30:00+00:00",
+  "updated_at": "2026-10-11T20:30:00+00:00"
+}
