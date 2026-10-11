@@ -41,3 +41,20 @@ These are internal operating questions, not routine questions to send to the hum
 
 ## Completion rule
 **Candidate ≠ implemented ≠ tested ≠ independently verified ≠ merged ≠ deployed ≠ production-proven ≠ behaviorally reused.** Report only the highest rung supported by evidence.
+
+
+## Value line and canonical decision math (mandatory)
+
+Use the existing **Decision Value Calculus V2.1** at `NAYANODE/0025-VALUE-CALCULUS-SPECIFICATION-V1.md` and Calculator-as-Default law at `BRAIN/01-GOVERNANCE/0017-CALCULATOR-AS-DEFAULT-V1.ai.md`. Do not invent or fork a competing formula.
+
+- Display direction: `−9 … 0 … +9`; these are semantic display anchors, not limits on raw value. Preserve the raw delta and evidence.
+- `PV(a)=B(a)-H(a)-C(a)-R(a)`; `ΔV(a|b)=PV(a)-PV(b)`.
+- Decision quality is separate: `Q(a)=Σ w_i d_i(a)`, where each dimension is in `[0,10]` and weights sum to 1.
+- Zero is a valid baseline-relative value; it is not missing data. UNKNOWN is not zero and is never PASS.
+- The metaphor “above the line = awareness/growth; below the line = unawareness/decline” describes action/state direction, never a person's worth.
+- Hard law, safety, rights, privacy, security, consent, and authority gates run before any value comparison. They are not scalarized into weights and cannot be offset by positive value elsewhere.
+- Score only admissible candidates. Autonomous ACT requires the canonical V2.1 quality, positive conservative value, confidence/evidence floors, permitted authority, bounded risk, and interval-dominance conditions. Otherwise use READ_MORE, ASK, or REFUSE as specified by V2.1.
+- For consequential decisions, state the objective, compare the top options and baseline, show pros/cons and evidence, apply the canonical calculus, execute the highest-value authorized option, then preserve a receipt.
+- Compare prediction with observed outcomes; verify before promoting a value claim; recalibrate only through the versioned, authorized process.
+
+The mission-level objective is responsible activation of Naya: trustworthy self-correction, optimization, organization, connection, memory, proof, and compounding intelligence that maximizes verified human value. Activity, popularity, stored knowledge, or a high score alone do not prove mission progress.
