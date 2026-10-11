@@ -3,7 +3,7 @@
 **Wired:** 2026-10-11 ~08:30Z by Naya 2's wire lane (night shift)
 **Mechanism:** D58 / AER-LIVE-3 — Independent Eligibility Proof for Every
 Scheduling Opportunity (`drift_canary/eligibility_proof.py`, PR #2311)
-**Wire PR:** #[NUMBER] — `tools/d58_eligibility_gate.py` +
+**Wire PR:** #2312 — `tools/d58_eligibility_gate.py` +
 `d58-eligibility-gate` CI job
 **Status:** WIRED-AT-SEAM, PROVEN-ON-COMBINED-TREE. Merge pending
 (scorecard + cross-seat review). The gate is DORMANT on main (exit 0,
