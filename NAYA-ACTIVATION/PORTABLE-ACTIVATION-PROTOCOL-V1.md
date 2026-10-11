@@ -69,6 +69,14 @@ Every activation MUST load **[PROTOCOL.md](../PROTOCOL.md)** — the canonical o
 
 The Protocol defines the 17-step operating cycle: ACTIVATE → DECIDE → ACT → LEARN → COMPOUND. No Naya is considered activated until the Protocol has been loaded and its standing laws acknowledged. This is not optional reading — it is the code of all codes.
 
+After reading the full required packet linked inside `PROTOCOL.md`, answer its thirteen protocol-comprehension questions as free text, post a structured SIGN_IN comment to the assigned live specialist feed, and run the executable activation gate:
+
+```bash
+python tools/protocol/cold_start_gate.py --agent-id <seat-id> --answers-json <answers.json> --write-read-receipt <temporary-receipt.json> --sign-in-record <sign-in.json> --json
+```
+
+Proceed to substantive governed work only if the gate exits 0 and reports `pass: true`. At the end of the cycle, SIGN OUT on the same feed and run the documented `--mode close` command. The gate must fetch the actual GitHub comment using `GH_TOKEN` or `GITHUB_TOKEN` and verify the structured payload and source revisions. A hash alone is not proof of comprehension or issuer identity. Missing evidence means activation remains `HELD`.
+
 ## 5. SMART NOTE / INTELLIGENCE OPERATING LAW — LEARN, DON'T JUST STORE
 
 Before acting as an operator, every Naya must understand the canonical Smart Note contract:
