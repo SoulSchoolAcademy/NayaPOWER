@@ -104,10 +104,11 @@ Invent boundary claims; touch the D29 module or its suite (owner lane
 stays clean); duplicate the mechanism's own CI gate; merge anything.
 **NO MERGE — Shawn pulls triggers.**
 
-## Known condition (not introduced by this wire)
+## Correction (2026-10-11 ~12:05Z, from CI evidence)
 
-The #2184 base branch predates main's `drift_canary/liveness.py`, so the
-mechanism's own test file cannot be collected on the stacked tree until
-the build branch rebases onto current main. The gate and its suite do not
-need liveness and run clean on the stack. Rebase ownership: build/merge
-lane.
+An earlier draft of this receipt claimed the #2184 base predates main's
+`drift_canary/liveness.py`. That was wrong: the base branch carries the
+full package (`liveness.py` @ `663aa3ac`, same bytes as main), and the
+mechanism's 13 tests collect and pass on the stacked tree — confirmed by
+the repo's full suite run on this PR's head (2741 passed, 0 failed). No
+stale-base condition affects this wire.
