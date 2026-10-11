@@ -206,6 +206,11 @@ class HarmJudgment:
         machinery must be engaged before execution.
     worst_*: worst observed ordinal per dimension (UNKNOWN sorts worst so
         uncertainty is surfaced, not hidden).
+    blocking_group_ids: group_ids that triggered blocking harm, as structured
+        data — never parsed out of reason strings (group_ids may contain
+        ":" and "=").
+    evidence_group_ids: group_ids with at least one unknown dimension, as
+        structured data.
     groups: the full per-group assessment, preserved for audit.
     """
     blocks: bool
@@ -218,6 +223,8 @@ class HarmJudgment:
     worst_distribution: str
     block_reasons: tuple[str, ...] = ()
     evidence_reasons: tuple[str, ...] = ()
+    blocking_group_ids: tuple[str, ...] = ()
+    evidence_group_ids: tuple[str, ...] = ()
     groups: tuple[GroupHarm, ...] = ()
 
 
@@ -236,6 +243,8 @@ def judge(profile: HarmProfile) -> HarmJudgment:
     """
     block_reasons: list[str] = []
     evidence_reasons: list[str] = []
+    blocking_ids: list[str] = []
+    evidence_ids: list[str] = []
     delayed = False
 
     for g in profile.groups:
@@ -246,11 +255,16 @@ def judge(profile: HarmProfile) -> HarmJudgment:
             block_reasons.append(
                 f"BLOCK:group={g.group_id}:severity=catastrophic"
             )
+            blocking_ids.append(g.group_id)
         elif g.severity == SEVERITY_MAJOR and g.reversibility == REV_IRREVERSIBLE:
             block_reasons.append(
                 f"BLOCK:group={g.group_id}:severity=major:reversibility=irreversible"
             )
-        for dim in g.unknown_dimensions():
+            blocking_ids.append(g.group_id)
+        unknowns = g.unknown_dimensions()
+        if unknowns:
+            evidence_ids.append(g.group_id)
+        for dim in unknowns:
             evidence_reasons.append(f"UNKNOWN:group={g.group_id}:dimension={dim}")
         if g.timing == TIME_DELAYED:
             delayed = True
@@ -266,6 +280,8 @@ def judge(profile: HarmProfile) -> HarmJudgment:
         worst_distribution=_worst(tuple(g.distribution for g in profile.groups), _DIST_RANK),
         block_reasons=tuple(block_reasons),
         evidence_reasons=tuple(evidence_reasons),
+        blocking_group_ids=tuple(sorted(set(blocking_ids))),
+        evidence_group_ids=tuple(sorted(set(evidence_ids))),
         groups=profile.groups,
     )
 

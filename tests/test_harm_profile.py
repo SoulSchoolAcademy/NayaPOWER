@@ -233,3 +233,52 @@ def test_digest_deterministic_and_order_independent():
     assert len(hp.profile_digest(p1)) == 64
     p3 = _profile(_group("a", severity=hp.SEVERITY_MAJOR), _group("b"))
     assert hp.profile_digest(p3) != hp.profile_digest(p1)
+
+
+# ---------------------------------------------------------------------------
+# 9. Verify round-1 gap fixes (2026-10-11): structured group ids, delay-note
+#    carried on non-admissible verdicts, affected_interests populated.
+# ---------------------------------------------------------------------------
+
+def test_group_id_with_separators_survives_structured_fields():
+    """A group_id containing ':' and '=' must reach affected_interests intact —
+    the old code split reason strings and mangled 'team:alpha=x' to 'team'."""
+    profile = _profile(_group("team:alpha=x",
+                              severity=hp.SEVERITY_CATASTROPHIC))
+    v = law11_gate(_action(profile))
+    assert v.verdict == PROHIBITED
+    assert "team:alpha=x" in v.affected_interests
+
+
+def test_delayed_profile_protected_op_keeps_delay_flag():
+    """Delayed harm + missing authority -> NEEDS_AUTHORITY, but the human
+    must still see that observation windows are required."""
+    profile = _profile(_group("g1", severity=hp.SEVERITY_MINOR,
+                              timing=hp.TIME_DELAYED))
+    v = law11_gate(_action(profile, operation="deploy",
+                           environment="production", authority_ref=None))
+    assert v.verdict == NEEDS_AUTHORITY
+    assert any(r == "HARM_PROFILE_DELAYED_OBSERVATION_REQUIRED:g1"
+               for r in v.reasons)
+
+
+def test_delayed_profile_unknown_dim_keeps_delay_flag():
+    """Delayed harm + unknown dimension -> NEEDS_EVIDENCE, but the delayed
+    flag must not vanish: the eventual authorized action still needs the
+    observation window."""
+    profile = _profile(_group("g1", severity=hp.SEVERITY_UNKNOWN,
+                              timing=hp.TIME_DELAYED))
+    v = law11_gate(_action(profile))
+    assert v.verdict == NEEDS_EVIDENCE
+    assert any(r == "HARM_PROFILE_DELAYED_OBSERVATION_REQUIRED:g1"
+               for r in v.reasons)
+
+
+def test_admissible_with_delay_populates_affected_interests():
+    """ADMISSIBLE with a delay note must name the affected groups — the
+    audit record cannot show 'delayed harm was seen' with empty interests."""
+    profile = _profile(_group("g1", severity=hp.SEVERITY_MINOR,
+                              timing=hp.TIME_DELAYED))
+    v = law11_gate(_action(profile))
+    assert v.verdict == ADMISSIBLE
+    assert "g1" in v.affected_interests
