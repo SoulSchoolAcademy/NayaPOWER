@@ -58,7 +58,12 @@ jobs:
         # Any other outcome (exit 0, exit 2, wrong witness) fails this step.
         run: |
           cd tools
-          python3 merge_queue_fairness.py --queue tests/fixtures/merge_queue_fixture.json --json > /tmp/fixture-scan.json; code=$?
+          # NOTE (wire lane 2026-10-11): GitHub runs this block under 'bash -e'.
+          # The scanner exits 1 BY DESIGN on the starving fixture, so capture
+          # with '||' — a bare '; code=$?' never runs because -e kills the
+          # script at the designed nonzero exit (CI red 05:33Z + 06:38Z).
+          code=0
+          python3 merge_queue_fairness.py --queue tests/fixtures/merge_queue_fixture.json --json > /tmp/fixture-scan.json || code=$?
           python3 - <<'PYEOF'
           import json, sys
           d = json.load(open('/tmp/fixture-scan.json'))
