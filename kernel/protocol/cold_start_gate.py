@@ -26,6 +26,12 @@ class ColdStartState:
     current_truth_location: str
     next_action: str
     receipt: ReadReceipt | None = None
+    # Run-attested issuance (option C): the trusted mint workflow's envelope.
+    # When present, run_cold_start_attested() verifies issuance via the live
+    # API. The plain receipt above proves integrity; the envelope proves
+    # the trusted runner minted these exact bytes.
+    receipt_envelope: dict | None = None
+    receipt_envelope_bytes: bytes | None = None
 
 
 @dataclass
@@ -69,5 +75,38 @@ def run_cold_start(state: ColdStartState) -> ColdStartResult:
     # 5. Exactly one next action.
     if not state.next_action.strip():
         failures.append("No next executable action declared.")
+
+    return ColdStartResult(passed=not failures, failures=failures)
+
+
+def run_cold_start_attested(state: ColdStartState, token: str,
+                            repo: str = "SoulSchoolAcademy/NayaPOWER"
+                            ) -> ColdStartResult:
+    """Boot gate with run-attested read-receipt issuance (option C).
+
+    Runs the standard 6 checks, then additionally requires the receipt to
+    carry a trusted-issuance attestation verified via the live GitHub API
+    (see kernel/protocol/read_receipt_issuance.py). A self-minted receipt —
+    however plausible, with correct answers and a valid hash — FAILS here.
+
+    HONEST CAVEAT: attestation proves the trusted runner ran and graded these
+    answers, not which agent it ran for. The agent_id is caller-supplied.
+    """
+    from .read_receipt_issuance import verify_issuance
+
+    result = run_cold_start(state)
+    failures = list(result.failures)
+
+    if state.receipt_envelope is None or state.receipt_envelope_bytes is None:
+        failures.append(
+            "Read receipt carries no trusted-issuance attestation. "
+            "Mint via the read-receipt-mint workflow; self-minted receipts "
+            "are forgeries by construction at this boundary."
+        )
+    else:
+        for v in verify_issuance(state.receipt_envelope,
+                                 state.receipt_envelope_bytes,
+                                 token, repo):
+            failures.append(v)
 
     return ColdStartResult(passed=not failures, failures=failures)
