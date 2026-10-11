@@ -1,0 +1,57 @@
+name: Dependency-Order Verification Gate (D64 wire)
+
+# Wires the D64 dependency-ordered verification engine onto the
+# drift-canary governance-verification path. Every verification claim in
+# tools/d64_dependency_order_manifest.json is cold-judged by the REAL
+# engine (drift_canary/dependency_ordered_verification.py): the
+# certificate is rebuilt from the claim's own bytes and cold-verified by
+# independent_verify, and the claimant's asserted verdict summary
+# (primary/dependent failures, per-invariant verdicts) must match the
+# engine's recomputed judgment exactly. A claim the law refuses —
+# invented topological ordering, wrong-order diagnosis, UNDETERMINED
+# collapsed to FALSE, unsound TRUE, unproven FALSE, failed witness,
+# uncovered cycle, malformed or cross-obligation certificate — BLOCKS
+# (exit 1). Empty manifest = explicit DORMANT (exit 0), never a false
+# green. Corrupt manifest, unknown assertions, or a broken engine =
+# fail-closed (exit 2).
+#
+# OPERATING PATH: the drift-canary governance-verification CI path.
+# Trigger: this check on pull_request / push-to-main for the paths
+# below. Block: check red blocks the merge path. Defect class:
+# verification claims over dependency-order certificates that the D64
+# law refuses. Verify-still-connected: this file exists and the check
+# is required on the drift-canary path; `python
+# tools/d64_dependency_order_gate.py --json` exits 0 DORMANT on a
+# claim-free tree.
+
+on:
+  pull_request:
+    paths:
+      - "drift_canary/dependency_ordered_verification.py"
+      - "tools/d64_dependency_order_gate.py"
+      - "tools/d64_dependency_order_manifest.json"
+      - "tests/test_d64_dependency_order_gate.py"
+      - ".github/workflows/d64-dependency-order-verification.yml"
+  push:
+    branches: ["main"]
+    paths:
+      - "drift_canary/dependency_ordered_verification.py"
+      - "tools/d64_dependency_order_gate.py"
+      - "tools/d64_dependency_order_manifest.json"
+      - "tests/test_d64_dependency_order_gate.py"
+      - ".github/workflows/d64-dependency-order-verification.yml"
+
+jobs:
+  dependency-order-verification:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      # Bare setup-python images do not always carry pytest; install it
+      # explicitly (same lesson as the D55/D56/D58/D59/D61/D62/D63
+      # mechanism and wire gates and the directive-register gates).
+      - run: python -m pip install pytest
+      - run: python -m pytest tests/test_d64_dependency_order_gate.py -q -p no:cacheprovider
+      - run: python tools/d64_dependency_order_gate.py --json
