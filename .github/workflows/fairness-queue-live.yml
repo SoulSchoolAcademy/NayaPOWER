@@ -1,0 +1,46 @@
+name: fairness-queue-live
+
+# Merge-queue fairness -- LIVE scan (Naya 2 WIRE LANE, 2026-10-11).
+#
+# D26's three-link standard wired to the team's real scheduling path: every
+# day this builds a snapshot of the live merge queue (from mission state
+# #2154) and runs the fairness gate's EligibilityProver + FairnessDebtLedger
+# over it. An eligible-but-unmerged PR past the starvation bound (3 windows
+# x 24h = 72h) fails this check -- the red check IS the alarm.
+#
+# Advisory ONLY: this workflow never posts, never merges, never mutates
+# anything. It reads the queue (GH_TOKEN read-only is enough) and judges.
+# A red run names its witness with full evidence in the run log; the fix is
+# a human/merge action, not a code change. Silence (green) means no eligible
+# work is starving.
+#
+# Bound, window, and requirement definitions live in
+# tools/merge_queue_fairness.py. Known-red check exclusions are recorded in
+# the snapshot WITH their mission-state source -- never hand-waved.
+
+on:
+  schedule:
+    - cron: '0 6 * * *'  # 06:00 UTC daily -- the queue moves on a daily cadence
+  workflow_dispatch:
+
+jobs:
+  live-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the scanner
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            tools/merge_queue_fairness.py
+            tools/snapshot_merge_queue.py
+            tools/fairness_eligibility.py
+            tools/fairness_debt.py
+          sparse-checkout-cone-mode: false
+      - name: Build live queue snapshot and scan
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: SoulSchoolAcademy/NayaPOWER
+        run: |
+          cd tools
+          python3 snapshot_merge_queue.py --out /tmp/live-queue.json
+          python3 merge_queue_fairness.py --queue /tmp/live-queue.json
