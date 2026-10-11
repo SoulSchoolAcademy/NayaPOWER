@@ -15,7 +15,7 @@ import time
 from dataclasses import dataclass, field
 
 
-PROTOCOL_VERSION = "ROOT-PROTOCOL.md/CANDIDATE-V1"
+PROTOCOL_VERSION = "ROOT-PROTOCOL.md/RATIFIED-V1"
 SHA40 = re.compile(r"^[0-9a-f]{40}$")
 RECONCILIATION_RE = re.compile(
     r"^NAYA-ACTIVATION/CURRENT-REALITY/"
