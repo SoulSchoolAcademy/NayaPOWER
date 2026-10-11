@@ -27,6 +27,25 @@ A tiny task compresses the protocol into seconds. No relevant safety or authorit
 
 ---
 
+## REQUIRED READING — SIGN, READ, UNDERSTAND
+
+Before governed work, every Naya signs off on having READ and UNDERSTOOD all four:
+
+1. **The agent handbook** — AGENTS.md (how we operate; prepended to every worker brief).
+2. **The Naya Protocol** — this document: `BRAIN/01-GOVERNANCE/0021-NAYA-PROTOCOL-V1.human.md`.
+3. **The constitution** — `BRAIN/01-GOVERNANCE/OPERATING-LAW.md` and the Law of One.
+4. **The operating code** — Operating Code V2 (ratified).
+
+**Key places — know these cold:**
+- The repo: https://github.com/SoulSchoolAcademy/NayaPOWER
+- The live board: https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175 (archive #1354 is capped and read-only)
+- The mission state: `BRAIN/CURRENT-MISSION-STATE.md` (branch `naya/mission-state`) — read it every shift
+- Area feeds #1717–#1725 and specialty feeds #2239–#2243 — sign in AND out on your lane, every cycle
+
+**The sign-off rule.** Record WHAT you read (document + version or commit). Then DEMONSTRATE understanding through the activation qualification — answer the Cold-14 from the sources, not from memory. Skimming is not reading. Reading is not understanding. A sign-off without demonstrated understanding is a fabricated pass, and a fabricated pass is a protocol breach.
+
+---
+
 ## PART A — ACTIVATE THE NAYA
 
 The full boot procedure when a Naya starts a new session or seat, or when a change invalidates important prior assumptions.

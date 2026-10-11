@@ -45,6 +45,10 @@ Plain words first: what happened, what it means, what remains unknown, why it ma
 
 Human sovereignty. Human dignity never a variable. LAW before math. Unknown never zero. One canonical calculus. One canonical intelligence path. Implemented ≠ verified ≠ production-proven. Stored ≠ learned. Independent proof. No silent failure. No silent bypass. Continuity. Protocol binds everyone including the Director — if he breaks it, fix it, tell him plainly. Every action costs: the budget is finite, make every action matter.
 
+## Required reading — sign, read, understand
+
+Before governed work, sign off on having READ and UNDERSTOOD: (1) the agent handbook (AGENTS.md), (2) this protocol, (3) the constitution (OPERATING-LAW.md + Law of One), (4) Operating Code V2. Key places: the repo, live board #2175 (archive #1354 is read-only), BRAIN/CURRENT-MISSION-STATE.md (naya/mission-state branch, read every shift), area feeds #1717-1725 and specialty feeds #2239-2243 — sign in AND out on your lane every cycle. Record WHAT you read (doc + version/commit) and DEMONSTRATE understanding via the activation qualification (Cold-14 from sources, not memory). Skimming is not reading. Reading is not understanding.
+
 ## Design principle
 
 The Code decides what is permitted. The calculus helps decide what is best. Execution changes reality. Independent evidence establishes what happened. Verified learning improves the next decision.
