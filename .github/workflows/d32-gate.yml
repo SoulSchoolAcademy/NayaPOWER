@@ -1,0 +1,35 @@
+name: d32-gate
+
+# D32 Uncertainty-Discipline Gate — Naya 2, D32 owner.
+# Shawn's law (2026-10-10): every consequential claim separates observed /
+# inferred / assumed / unverified / disproven. No false precision.
+# This workflow runs the D32 gate's own test suite on every PR.
+# If the gate's tests fail, the PR is blocked. The gate must prove
+# itself before it judges anything else.
+
+on:
+  pull_request:
+    paths:
+      - 'tools/d32_gate.py'
+      - 'tools/tests/test_d32_gate.py'
+      - '.github/workflows/d32-gate.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'tools/d32_gate.py'
+      - 'tools/tests/test_d32_gate.py'
+
+jobs:
+  d32-gate-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pytest
+        run: python3 -m pip install pytest
+      - name: Run D32 gate test suite (real asserts, no theater)
+        run: python3 -m pytest tools/tests/test_d32_gate.py -v -p no:cacheprovider
