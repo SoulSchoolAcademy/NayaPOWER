@@ -1,0 +1,582 @@
+[
+  {
+    "id": "D8",
+    "title": "Calibration Drift Detection",
+    "source_issue": 1354,
+    "source_comment": "6100512641",
+    "owner": "naya5",
+    "status": "NOT_STARTED",
+    "evidence_pr": null,
+    "wave": 6
+  },
+  {
+    "id": "D9",
+    "title": "Contamination-Resistant Canaries",
+    "source_issue": 1354,
+    "source_comment": "6100512641",
+    "owner": "naya5",
+    "status": "NOT_STARTED",
+    "evidence_pr": null,
+    "wave": 6
+  },
+  {
+    "id": "D10",
+    "title": "Canary Compromise & Recovery",
+    "source_issue": 1354,
+    "source_comment": "6100529701",
+    "owner": "naya5",
+    "status": "NOT_STARTED",
+    "evidence_pr": null,
+    "wave": 6
+  },
+  {
+    "id": "D11",
+    "title": "Partial Compromise & Selective Revocation",
+    "source_issue": 1354,
+    "source_comment": "6100546775",
+    "owner": "naya5",
+    "status": "NOT_STARTED",
+    "evidence_pr": null,
+    "wave": 6
+  },
+  {
+    "id": "D12",
+    "title": "Uncertain Compromise Scope",
+    "source_issue": 1354,
+    "source_comment": "6100562137",
+    "owner": "naya5",
+    "status": "NOT_STARTED",
+    "evidence_pr": null,
+    "wave": 6
+  },
+  {
+    "id": "D13",
+    "title": "Purpose-Bound Evidence Governance",
+    "source_issue": 1354,
+    "source_comment": "6100573433",
+    "owner": "naya5",
+    "status": "NOT_STARTED",
+    "evidence_pr": null,
+    "wave": 6
+  },
+  {
+    "id": "D14",
+    "title": "Independence-Aware Propagation",
+    "source_issue": 1354,
+    "source_comment": "6100599570",
+    "owner": "naya5",
+    "status": "NOT_STARTED",
+    "evidence_pr": null,
+    "wave": 6
+  },
+  {
+    "id": "D15",
+    "title": "Partial Evidence & Scope-Limited Truth",
+    "source_issue": 1354,
+    "source_comment": "6100623817",
+    "owner": "naya4",
+    "status": "NOT_STARTED",
+    "evidence_pr": null,
+    "wave": 6
+  },
+  {
+    "id": "D16",
+    "title": "Combining Partial Evidence",
+    "source_issue": 1354,
+    "source_comment": "6100668512",
+    "owner": "naya4",
+    "status": "NOT_STARTED",
+    "evidence_pr": null,
+    "wave": 6
+  },
+  {
+    "id": "D17",
+    "title": "Composite Qualification Audit",
+    "source_issue": 1354,
+    "source_comment": "6100689657",
+    "owner": "naya4",
+    "status": "NOT_STARTED",
+    "evidence_pr": null,
+    "wave": 6
+  },
+  {
+    "id": "D18",
+    "title": "Versioned Proof Obligations",
+    "source_issue": 1354,
+    "source_comment": "6100717738",
+    "owner": "naya4",
+    "status": "NOT_STARTED",
+    "evidence_pr": null,
+    "wave": 6
+  },
+  {
+    "id": "D19",
+    "title": "Split/Merge Proof Migration",
+    "source_issue": 1354,
+    "source_comment": "6100757579",
+    "owner": "naya4",
+    "status": "NOT_STARTED",
+    "evidence_pr": null,
+    "wave": 6
+  },
+  {
+    "id": "D20",
+    "title": "New Cross-Obligation Interaction Proof",
+    "source_issue": 1354,
+    "source_comment": "6100782419",
+    "owner": "naya4",
+    "status": "NOT_STARTED",
+    "evidence_pr": null,
+    "wave": 6
+  },
+  {
+    "id": "D21",
+    "title": "Multi-Obligation Interaction Invariants",
+    "source_issue": 1354,
+    "source_comment": "6100814153",
+    "owner": "naya4",
+    "status": "NOT_STARTED",
+    "evidence_pr": null,
+    "wave": 6
+  },
+  {
+    "id": "D22",
+    "title": "Multi-Node Liveness & Guaranteed Progress",
+    "source_issue": 1354,
+    "source_comment": "6100845704",
+    "owner": "naya2",
+    "status": "NOT_STARTED",
+    "evidence_pr": null,
+    "wave": 6
+  },
+  {
+    "id": "D23",
+    "title": "Well-Founded Measure of Real Progress",
+    "source_issue": 1354,
+    "source_comment": "6100882054",
+    "owner": "naya2",
+    "status": "NOT_STARTED",
+    "evidence_pr": null,
+    "wave": 6
+  },
+  {
+    "id": "D24",
+    "title": "Fair Scheduling Without False Progress",
+    "source_issue": 1354,
+    "source_comment": "6100914533",
+    "owner": "naya2",
+    "status": "NOT_STARTED",
+    "evidence_pr": null,
+    "wave": 6
+  },
+  {
+    "id": "D25",
+    "title": "When Strong Fairness Is Required",
+    "source_issue": 1354,
+    "source_comment": "6100972607",
+    "owner": "naya2",
+    "status": "NOT_STARTED",
+    "evidence_pr": null,
+    "wave": 6
+  },
+  {
+    "id": "D26",
+    "title": "Fairness Verification \u2014 Model Checker + Runtime Harness",
+    "source_issue": 1354,
+    "source_comment": "6101001729",
+    "owner": "naya2",
+    "status": "NOT_STARTED",
+    "evidence_pr": null,
+    "wave": 6
+  },
+  {
+    "id": "D27",
+    "title": "Assumption-Guarantee Boundary for Fairness",
+    "source_issue": 1354,
+    "source_comment": "6101029463",
+    "owner": "naya2",
+    "status": "NOT_STARTED",
+    "evidence_pr": null,
+    "wave": 6
+  },
+  {
+    "id": "D28",
+    "title": "Independent Fairness Assumption Audit Protocol",
+    "source_issue": 1354,
+    "source_comment": "6101230756",
+    "owner": "naya2",
+    "status": "NOT_STARTED",
+    "evidence_pr": null,
+    "wave": 6
+  },
+  {
+    "id": "D29",
+    "title": "Environment\u2013Scheduler\u2013Worker Responsibility Boundary",
+    "source_issue": 2175,
+    "source_comment": "6101275288",
+    "owner": "naya4",
+    "status": "BUILT_AS_CODE",
+    "evidence_pr": 2184,
+    "wave": 1
+  },
+  {
+    "id": "D30",
+    "title": "Verifiable Causal Trace Across Environment, Scheduler and Worker",
+    "source_issue": 2175,
+    "source_comment": "6101303129",
+    "owner": "naya4",
+    "status": "BUILT_AS_CODE",
+    "evidence_pr": 2202,
+    "wave": 1
+  },
+  {
+    "id": "D31",
+    "title": "Causal Uncertainty Without False Blame",
+    "source_issue": 2175,
+    "source_comment": "6101333306",
+    "owner": "naya4",
+    "status": "BUILT_AS_CODE",
+    "evidence_pr": 2211,
+    "wave": 1
+  },
+  {
+    "id": "D32",
+    "title": "Evidence-Bounded Uncertainty Propagation",
+    "source_issue": 2175,
+    "source_comment": "6101361594",
+    "owner": "naya2",
+    "status": "BUILT_AS_CODE",
+    "evidence_pr": 2213,
+    "wave": 1
+  },
+  {
+    "id": "D33",
+    "title": "Selective Evidence Revocation and Claim Requalification",
+    "source_issue": 2175,
+    "source_comment": "6101388567",
+    "owner": "naya4",
+    "status": "BUILT_AS_CODE",
+    "evidence_pr": 2212,
+    "wave": 1
+  },
+  {
+    "id": "D34",
+    "title": "Selective Cache Invalidation and Intelligence Preservation",
+    "source_issue": 2175,
+    "source_comment": "6101422708",
+    "owner": "naya5",
+    "status": "BUILT_AS_CODE",
+    "evidence_pr": 2217,
+    "wave": 2
+  },
+  {
+    "id": "D35",
+    "title": "Preventing Stale Qualifications From Being Republished",
+    "source_issue": 2175,
+    "source_comment": "6101449710",
+    "owner": "naya4",
+    "status": "BUILT_AS_CODE",
+    "evidence_pr": 2215,
+    "wave": 2
+  },
+  {
+    "id": "D36",
+    "title": "Exact Revocation Ordering and Stale-Proof Prevention",
+    "source_issue": 2175,
+    "source_comment": "6101486606",
+    "owner": "naya5",
+    "status": "BUILT_AS_CODE",
+    "evidence_pr": 2216,
+    "wave": 2
+  },
+  {
+    "id": "D37",
+    "title": "Model-Checking the Revocation Linearization Law",
+    "source_issue": 2175,
+    "source_comment": "6101525813",
+    "owner": "naya5",
+    "status": "NOT_STARTED",
+    "evidence_pr": null,
+    "wave": 3
+  },
+  {
+    "id": "D38",
+    "title": "Adversarial Mutation Testing for Revocation Linearization",
+    "source_issue": 2175,
+    "source_comment": "6101559134",
+    "owner": "naya5",
+    "status": "NOT_STARTED",
+    "evidence_pr": null,
+    "wave": 3
+  },
+  {
+    "id": "D39",
+    "title": "Proving the Real System Implements the Formal Model",
+    "source_issue": 2175,
+    "source_comment": "6101653104",
+    "owner": "naya5",
+    "status": "NOT_STARTED",
+    "evidence_pr": null,
+    "wave": 3
+  },
+  {
+    "id": "D40",
+    "title": "Diagnosing Failed Refinement Checks",
+    "source_issue": 2175,
+    "source_comment": "6101690180",
+    "owner": "naya5",
+    "status": "NOT_STARTED",
+    "evidence_pr": null,
+    "wave": 3
+  },
+  {
+    "id": "D41",
+    "title": "Preventing False Refinement Diagnoses",
+    "source_issue": 2175,
+    "source_comment": "6101722716",
+    "owner": "naya5",
+    "status": "NOT_STARTED",
+    "evidence_pr": null,
+    "wave": 3
+  },
+  {
+    "id": "D42",
+    "title": "Verification Under Missing Commit Evidence",
+    "source_issue": 2175,
+    "source_comment": "6101749967",
+    "owner": "naya5",
+    "status": "NOT_STARTED",
+    "evidence_pr": null,
+    "wave": 3
+  },
+  {
+    "id": "D43",
+    "title": "Safe Recovery When an External Effect May Already Have Committed",
+    "source_issue": 2175,
+    "source_comment": "6101779161",
+    "owner": "naya4",
+    "status": "NOT_STARTED",
+    "evidence_pr": null,
+    "wave": 5
+  },
+  {
+    "id": "D44",
+    "title": "Provider Deduplication Qualification",
+    "source_issue": 2175,
+    "source_comment": "6101820009",
+    "owner": "naya4",
+    "status": "NOT_STARTED",
+    "evidence_pr": null,
+    "wave": 5
+  },
+  {
+    "id": "D45",
+    "title": "Detecting Silent Provider Contract Drift",
+    "source_issue": 2175,
+    "source_comment": "6101849389",
+    "owner": "naya4",
+    "status": "NOT_STARTED",
+    "evidence_pr": null,
+    "wave": 5
+  },
+  {
+    "id": "D46",
+    "title": "Alert Thresholds and Evidence for Provider Contract Drift",
+    "source_issue": 2175,
+    "source_comment": "6101881563",
+    "owner": "naya4",
+    "status": "NOT_STARTED",
+    "evidence_pr": null,
+    "wave": 5
+  },
+  {
+    "id": "D47",
+    "title": "Calibrating Provider Alerts Across Different Traffic Volumes",
+    "source_issue": 2175,
+    "source_comment": "6101907667",
+    "owner": "naya4",
+    "status": "NOT_STARTED",
+    "evidence_pr": null,
+    "wave": 5
+  },
+  {
+    "id": "D48",
+    "title": "Separating Provider Drift from Seasonality and Maintenance",
+    "source_issue": 2175,
+    "source_comment": "6101959816",
+    "owner": "naya4",
+    "status": "NOT_STARTED",
+    "evidence_pr": null,
+    "wave": 5
+  },
+  {
+    "id": "D49",
+    "title": "Governing Adaptive Baselines Without Learning Regressions",
+    "source_issue": 2175,
+    "source_comment": "6101991252",
+    "owner": "naya4",
+    "status": "NOT_STARTED",
+    "evidence_pr": null,
+    "wave": 5
+  },
+  {
+    "id": "D50",
+    "title": "Scope-Isolated Adaptive Baselines",
+    "source_issue": 2175,
+    "source_comment": "6102018704",
+    "owner": "naya4",
+    "status": "NOT_STARTED",
+    "evidence_pr": null,
+    "wave": 5
+  },
+  {
+    "id": "D51",
+    "title": "The Living Ledger / Smart Net",
+    "source_issue": 2175,
+    "source_comment": "6102054179",
+    "owner": "naya2",
+    "status": "NOT_STARTED",
+    "evidence_pr": null,
+    "wave": 5
+  },
+  {
+    "id": "D52",
+    "title": "Safe Baseline Merging, Splitting, and Statistical Pooling",
+    "source_issue": 2175,
+    "source_comment": "6102126913",
+    "owner": "naya4",
+    "status": "NOT_STARTED",
+    "evidence_pr": null,
+    "wave": 5
+  },
+  {
+    "id": "D53",
+    "title": "Race-Safe Governance for Scope Changes",
+    "source_issue": 2175,
+    "source_comment": "6102157548",
+    "owner": "naya4",
+    "status": "NOT_STARTED",
+    "evidence_pr": null,
+    "wave": 5
+  },
+  {
+    "id": "D54",
+    "title": "Crash-Safe Recovery for Governance Changes",
+    "source_issue": 2175,
+    "source_comment": "6102185402",
+    "owner": "naya4",
+    "status": "NOT_STARTED",
+    "evidence_pr": null,
+    "wave": 5
+  },
+  {
+    "id": "D55",
+    "title": "Safe Recovery Holds vs. Liveness Failures",
+    "source_issue": 2175,
+    "source_comment": "6102257048",
+    "owner": "naya2",
+    "status": "NOT_STARTED",
+    "evidence_pr": null,
+    "wave": 5
+  },
+  {
+    "id": "D56",
+    "title": "Proving Bounded Recovery Liveness",
+    "source_issue": 2175,
+    "source_comment": "6102289345",
+    "owner": "naya2",
+    "status": "NOT_STARTED",
+    "evidence_pr": null,
+    "wave": 5
+  },
+  {
+    "id": "D57",
+    "title": "The No-Ego Merge \u2014 Duplicate Work Resolution Doctrine",
+    "source_issue": 2175,
+    "source_comment": "6102331087",
+    "owner": "all",
+    "status": "NOT_STARTED",
+    "evidence_pr": null,
+    "wave": 5
+  },
+  {
+    "id": "D58",
+    "title": "Independent Eligibility Proof for Every Scheduling Opportunity",
+    "source_issue": 2175,
+    "source_comment": "6102339440",
+    "owner": "naya2",
+    "status": "NOT_STARTED",
+    "evidence_pr": null,
+    "wave": 4
+  },
+  {
+    "id": "D59",
+    "title": "Governing Unresolved Eligibility Evidence",
+    "source_issue": 2175,
+    "source_comment": "6102368579",
+    "owner": "naya2",
+    "status": "NOT_STARTED",
+    "evidence_pr": null,
+    "wave": 4
+  },
+  {
+    "id": "D60",
+    "title": "Computing Fairness-Debt Bounds Under Missing Evidence",
+    "source_issue": 2175,
+    "source_comment": "6102397311",
+    "owner": "naya2",
+    "status": "NOT_STARTED",
+    "evidence_pr": null,
+    "wave": 4
+  },
+  {
+    "id": "D61",
+    "title": "Fairness-Debt Bounds for Unbounded Missing Intervals",
+    "source_issue": 2175,
+    "source_comment": "6102429215",
+    "owner": "naya2",
+    "status": "NOT_STARTED",
+    "evidence_pr": null,
+    "wave": 4
+  },
+  {
+    "id": "D62",
+    "title": "Minimal, Independently Verified Unbounded-Cycle Witnesses",
+    "source_issue": 2175,
+    "source_comment": "6102470813",
+    "owner": "naya2",
+    "status": "NOT_STARTED",
+    "evidence_pr": null,
+    "wave": 4
+  },
+  {
+    "id": "D63",
+    "title": "Full-State Invariants for Repeatable Cycle Proofs",
+    "source_issue": 2175,
+    "source_comment": "6102503850",
+    "owner": "naya2",
+    "status": "NOT_STARTED",
+    "evidence_pr": null,
+    "wave": 4
+  },
+  {
+    "id": "D64",
+    "title": "Dependency-Ordered Invariant Verification",
+    "source_issue": 2175,
+    "source_comment": "6102689568",
+    "owner": "naya2",
+    "status": "NOT_STARTED",
+    "evidence_pr": null,
+    "wave": 4
+  },
+  {
+    "id": "D65",
+    "title": "Strongly Connected Invariant Groups and Joint Proof Qualification",
+    "source_issue": 2175,
+    "source_comment": "6102747029",
+    "owner": "naya2",
+    "status": "NOT_STARTED",
+    "evidence_pr": null,
+    "wave": 4
+  }
+]
