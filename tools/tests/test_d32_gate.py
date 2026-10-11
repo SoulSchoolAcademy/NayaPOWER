@@ -272,6 +272,73 @@ This does not claim completeness.
     assert result["violations"] == []
 
 
+def test_pass_fenced_code_blocks_not_claims():
+    """Numbers inside fenced code blocks are commands, not claims — no R1."""
+    doc = """# Runbook
+
+Run the sync (see https://example.com/docs for the timeout policy).
+
+```bash
+sleep 30
+./sync.sh --retries 3 --timeout 60
+```
+
+```python
+backoff = [1, 2, 4, 8]
+```
+
+## What this does not claim
+
+This does not claim the sync is fast.
+"""
+    result = check_document(doc)
+    assert result["verdict"] == "PASS", result["violations"]
+    assert result["violations"] == []
+
+
+def test_pass_inline_code_spans_not_claims():
+    """Numbers inside `inline code spans` are not claims — no R1.
+
+    No source anywhere near: without span-stripping, R1 would flag 60 and 3.
+    """
+    doc = """# Notes
+
+Use `timeout 60` for the slow step.
+The `retry 3` flag helps too.
+
+Consult the operations manual for the authoritative timeout policy.
+It lives in the shared drive under runbooks.
+
+## What this does not claim
+
+This does not claim reliability.
+"""
+    result = check_document(doc)
+    assert result["verdict"] == "PASS", result["violations"]
+    assert result["violations"] == []
+
+
+def test_fail_prose_numbers_near_code_still_flagged():
+    """R1 still catches unsourced prose numbers next to code (not blinded)."""
+    doc = """# Runbook
+
+We improved throughput by 40 percent.
+
+```bash
+sleep 30
+```
+
+## What this does not claim
+
+This does not claim perfection.
+"""
+    result = check_document(doc)
+    assert result["verdict"] == "FAIL"
+    r1_lines = [v["line"] for v in result["violations"] if v["rule"] == "R1"]
+    assert 3 in r1_lines, result["violations"]  # prose claim caught
+    assert 6 not in r1_lines, result["violations"]  # code number ignored
+
+
 # ---------------------------------------------------------------------------
 # Gate integrity — the tests themselves must be able to fail.
 # ---------------------------------------------------------------------------

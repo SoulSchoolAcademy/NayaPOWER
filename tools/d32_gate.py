@@ -73,6 +73,13 @@ _SHA_RE = re.compile(r"\b[0-9a-f]{7,40}\b")
 _CITE_RE = re.compile(r"(?i)\bsource\s*[:：]")
 _MD_LINK_RE = re.compile(r"\[[^\]]+\]\(\s*https?://")
 
+# Code is not prose: numbers inside fenced blocks or `inline spans` are
+# commands and parameters, not quantitative claims. R1 must not flag them
+# (a runbook with `sleep 30` in a bash fence is not making an unsourced
+# claim about the number 30).
+_FENCE_RE = re.compile(r"^\s*```")          # ``` or ```bash — toggles block
+_INLINE_CODE_RE = re.compile(r"`[^`\n]+`")  # `inline code span`
+
 # Confidence words that demand same-paragraph evidence.
 _CONFIDENCE_WORDS = ("proven", "verified", "guaranteed", "certain")
 _CONFIDENCE_RE = re.compile(
@@ -109,6 +116,28 @@ def _strip_non_claims(line: str) -> str:
     return line
 
 
+def _strip_code_for_r1(lines: list[str]) -> list[str]:
+    """Remove code content so R1 judges prose claims, not commands.
+
+    Returns a parallel list (same length, same 1-indexed line numbers):
+    lines inside fenced code blocks are blanked, inline `code spans` are
+    replaced with a space. An unclosed fence blanks to end of file
+    (fail-lenient: fewer false positives, never a false claim).
+    """
+    out: list[str] = []
+    in_fence = False
+    for line in lines:
+        if _FENCE_RE.match(line):
+            in_fence = not in_fence
+            out.append("")
+            continue
+        if in_fence:
+            out.append("")
+            continue
+        out.append(_INLINE_CODE_RE.sub(" ", line))
+    return out
+
+
 def _paragraphs(lines: list[str]) -> list[tuple[int, int, str]]:
     """Split into paragraphs; return (start_line_1idx, end_line_1idx, text)."""
     paras: list[tuple[int, int, str]] = []
@@ -136,15 +165,20 @@ def _paragraphs(lines: list[str]) -> list[tuple[int, int, str]]:
 def _check_r1_sourced_numbers(lines: list[str]) -> list[dict]:
     """R1: every quantitative claim needs a source within 3 lines."""
     violations: list[dict] = []
+    # Code is not prose: judge the code-stripped lines so commands like
+    # `sleep 30` are not read as claims. A URL inside a code comment is not
+    # a citation for a prose claim, so sources are read from stripped lines
+    # too. Violation text still shows the author's original line.
+    prose = _strip_code_for_r1(lines)
     # Precompute which lines have sources.
-    sourced = [_line_has_source(ln) for ln in lines]
-    for i, line in enumerate(lines):
-        clean = _strip_non_claims(line)
+    sourced = [_line_has_source(ln) for ln in prose]
+    for i, (line, prose_line) in enumerate(zip(lines, prose)):
+        clean = _strip_non_claims(prose_line)
         # NOTE: numbers preceded by '#' (issue refs like #1234) never reach
         # here — _NUMBER_RE's negative lookbehind (?<![\w#]) excludes them.
         for m in _NUMBER_RE.finditer(clean):
             lo = max(0, i - _SOURCE_WINDOW)
-            hi = min(len(lines), i + _SOURCE_WINDOW + 1)
+            hi = min(len(prose), i + _SOURCE_WINDOW + 1)
             if not any(sourced[lo:hi]):
                 violations.append({
                     "line": i + 1,
