@@ -10,14 +10,21 @@ A cold agent passes only when it can demonstrate:
 3. It can identify its area feed
 4. It can state the five protected gates (authority boundaries)
 5. It can distinguish the six truth states
-6. It has signed in on its feed (or declares its intent to)
+6. It has posted and independently verified a structured SIGN_IN receipt on its assigned live feed
 
 This gate does NOT grant authority. It verifies readiness.
 Authority still comes from Shawn's grants, not from passing this gate.
 
-Usage:
-    python3 tools/protocol/cold_start_gate.py --agent-id <id> --feed <feed-url>
-    Returns JSON: {pass: bool, checks: [...], failures: [...]}
+Usage before governed work:
+    python3 tools/protocol/cold_start_gate.py --agent-id <seat> --answers-json answers.json --write-read-receipt read-receipt.json --sign-in-record sign-in.json --json
+
+Usage to close the work cycle:
+    python3 tools/protocol/cold_start_gate.py --agent-id <seat> --mode close --sign-in-record sign-in.json --sign-out-record sign-out.json --json
+
+The gate checks actual checkout source blobs and fetches the referenced GitHub
+comment. GH_TOKEN or GITHUB_TOKEN must have issue-comment read permission.
+Missing sources, invalid comprehension, absent feed posts, or failed checks
+block activation/closure. Passing grants no additional action authority.
 
 CI: This gate runs against every protocol change. If the manifest
     and the gate disagree, the gate wins (executable > documentary).
