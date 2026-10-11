@@ -3,21 +3,23 @@ name: d32-gate
 # D32 Uncertainty-Discipline Gate — Naya 2, D32 owner.
 # Shawn's law (2026-10-10): every consequential claim separates observed /
 # inferred / assumed / unverified / disproven. No false precision.
-# This workflow runs the D32 gate's own test suite on every PR.
-# If the gate's tests fail, the PR is blocked. The gate must prove
-# itself before it judges anything else.
+#
+# Two jobs, one contract:
+#   1. d32-gate-tests — the gate proves ITSELF first (12 real asserts).
+#      If the gate's own tests fail, nothing it says can be trusted.
+#   2. d32-doc-scan — THE WIRING (2026-10-11): every pull request's
+#      added/changed markdown documents are judged by the gate.
+#      A single FAIL turns this check red. The gate is no longer
+#      code sitting in tools/ — it fires on the live merge path.
 
 on:
   pull_request:
-    paths:
-      - 'tools/d32_gate.py'
-      - 'tools/tests/test_d32_gate.py'
-      - '.github/workflows/d32-gate.yml'
   push:
     branches: [main]
     paths:
       - 'tools/d32_gate.py'
       - 'tools/tests/test_d32_gate.py'
+      - 'tools/d32_scan_pr.py'
 
 jobs:
   d32-gate-tests:
@@ -33,3 +35,21 @@ jobs:
         run: python3 -m pip install pytest
       - name: Run D32 gate test suite (real asserts, no theater)
         run: python3 -m pytest tools/tests/test_d32_gate.py -v -p no:cacheprovider
+
+  d32-doc-scan:
+    # PRs only: on push there is no pull_request context to diff against.
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    needs: d32-gate-tests
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Scan PR documents with the D32 gate (violations block)
+        run: |
+          python3 tools/d32_scan_pr.py \
+            --base "${{ github.event.pull_request.base.sha }}" \
+            --head "${{ github.sha }}"
