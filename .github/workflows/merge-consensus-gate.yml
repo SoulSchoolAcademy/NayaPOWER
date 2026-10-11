@@ -27,16 +27,29 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # For issue_comment events, get PR number from issue; for pull_request events, use directly
+          # For pull_request events, use the event payload directly (no API call needed).
+          # Only issue_comment events need the API lookup for the head SHA.
           if [ "${{ github.event_name }}" = "issue_comment" ]; then
             PR_NUM="${{ github.event.issue.number }}"
+            echo "pr_number=$PR_NUM" >> $GITHUB_OUTPUT
+            # Retry the API call up to 3 times with backoff (rate-limit resilience)
+            HEAD_SHA=""
+            for attempt in 1 2 3; do
+              if HEAD_SHA=$(gh api "repos/${{ github.repository }}/pulls/$PR_NUM" --jq .head.sha 2>/dev/null) && [ -n "$HEAD_SHA" ]; then
+                break
+              fi
+              echo "gh api attempt $attempt failed, retrying..." >&2
+              sleep $((attempt * 5))
+            done
+            if [ -z "$HEAD_SHA" ]; then
+              echo "ERROR: could not resolve head SHA for PR $PR_NUM after 3 attempts" >&2
+              exit 1
+            fi
+            echo "head_sha=$HEAD_SHA" >> $GITHUB_OUTPUT
           else
-            PR_NUM="${{ github.event.pull_request.number }}"
+            echo "pr_number=${{ github.event.pull_request.number }}" >> $GITHUB_OUTPUT
+            echo "head_sha=${{ github.event.pull_request.head.sha }}" >> $GITHUB_OUTPUT
           fi
-          echo "pr_number=$PR_NUM" >> $GITHUB_OUTPUT
-          # Get head SHA via API (works for both event types)
-          HEAD_SHA=$(gh api repos/${{ github.repository }}/pulls/$PR_NUM --jq .head.sha)
-          echo "head_sha=$HEAD_SHA" >> $GITHUB_OUTPUT
       - name: Check merge consensus
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

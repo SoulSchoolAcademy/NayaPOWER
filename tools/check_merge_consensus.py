@@ -41,13 +41,31 @@ def fail(msg):
 
 
 def api_get(path, token):
-    req = urllib.request.Request(
-        API + path,
-        headers={"Authorization": f"Bearer {token}",
-                 "Accept": "application/vnd.github+json",
-                 "User-Agent": "naya-consensus-gate/2.0"})
-    with urllib.request.urlopen(req, timeout=20) as r:
-        return json.load(r)
+    # Follow pagination: list endpoints return up to 30 items per page by
+    # default, so gate-invisible reviews/scorecards on busy PRs (>30 comments)
+    # would silently fail the gate. Single-object endpoints return a dict
+    # and are returned as-is.
+    sep = "&" if "?" in path else "?"
+    url = API + path + sep + "per_page=100"
+    headers = {"Authorization": f"Bearer {token}",
+               "Accept": "application/vnd.github+json",
+               "User-Agent": "naya-consensus-gate/2.0"}
+    items = None
+    while url:
+        req = urllib.request.Request(url, headers=headers)
+        with urllib.request.urlopen(req, timeout=20) as r:
+            data = json.load(r)
+            link = r.headers.get("Link", "")
+        if isinstance(data, list):
+            items = (items or []) + data
+        else:
+            return data
+        url = None
+        for part in link.split(","):
+            if 'rel="next"' in part:
+                url = part.split(";")[0].strip().strip("<>")
+                break
+    return items if items is not None else []
 
 
 def seat_of(text):
