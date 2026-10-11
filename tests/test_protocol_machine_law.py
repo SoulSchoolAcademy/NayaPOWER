@@ -8,6 +8,7 @@ and allow what they claim to allow.
 import hashlib
 import json
 import time
+from pathlib import Path
 
 import pytest
 
@@ -321,6 +322,38 @@ def test_quality_gate_rejects_bad_weights():
 
 
 # ---------- cold_start_gate ----------
+
+def test_canonical_boot_packet_requires_protocol_constitution_and_team_operating_law():
+    root = Path(__file__).resolve().parents[1]
+    protocol = (root / "PROTOCOL.md").read_text(encoding="utf-8")
+    agents = (root / "AGENTS.md").read_text(encoding="utf-8")
+
+    required_protocol_links = (
+        "[PROTOCOL.md](PROTOCOL.md)",
+        "[AGENTS.md](AGENTS.md)",
+        "[Founding Constitution](",
+        "[Laws Index](",
+        "[Ratified Team Naya Operating Protocol](BRAIN/01-GOVERNANCE/TEAM-NAYA-OPERATING-PROTOCOL-V1.md)",
+        "[Portable Activation Protocol](",
+        "[Smart Note Operating Contract](",
+        "[Portable Activation Manifest](",
+        "[Activation Kit Map](",
+        "[Nonstop Loop",
+        "[Current Mission State](",
+    )
+    for link in required_protocol_links:
+        assert link in protocol, f"mandatory boot packet link missing: {link}"
+
+    assert "ratified Team Naya Operating Protocol" in agents
+    assert "TEAM-NAYA-OPERATING-PROTOCOL-V1.md" in REQUIRED_SOURCE_PATHS
+    assert "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2154" in protocol
+    assert "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175" in protocol
+    assert "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/1599" in protocol
+    assert "#1354 is historical/read-only" in protocol
+    assert 'PROTOCOL_VERSION = "ROOT-PROTOCOL.md/RATIFIED-V1"' in (
+        root / "kernel/protocol/read_receipt.py"
+    ).read_text(encoding="utf-8")
+
 
 def _good_state():
     return ColdStartState(
