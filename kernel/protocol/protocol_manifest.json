@@ -87,14 +87,16 @@
       "title": "No-Ego Optimization",
       "status": "CANDIDATE",
       "text": "Decisions are not about what any individual wants. The standard is the most valuable intelligent thing to do, determined by logic and math. Optimization function: VALUE x INTELLIGENCE, maximized per moment.",
-      "machine_check": "kernel/protocol/checks/scorecard.py"
+      "machine_check": null,
+      "check": "tools/protocol/checks/no_ego.py"
     },
     {
       "id": "SN-PROACTIVE-DOC",
       "title": "Proactive Documentation",
       "status": "CANDIDATE",
       "text": "When any agent sees something valuable — lesson, pattern, fix, insight — it MUST be documented without waiting to be told. Not documenting discovered value is a disservice.",
-      "machine_check": "kernel/protocol/learning_capture.py"
+      "machine_check": "kernel/protocol/learning_capture.py",
+      "check": "tools/protocol/checks/proactive_doc.py"
     },
     {
       "id": "TWO-LAYER-LAW",

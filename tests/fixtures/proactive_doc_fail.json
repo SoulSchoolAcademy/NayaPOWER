@@ -1,0 +1,8 @@
+{
+  "work_description": "fixed the retry bug",
+  "lesson": "exponential backoff beats fixed retry under bursty load",
+  "provenance": "",
+  "captured_at": "2026-10-11T22:30:00Z",
+  "work_completed_at": "2026-10-11T21:30:00Z",
+  "destination": ""
+}

@@ -41,9 +41,25 @@ jobs:
       - name: Install test dependencies
         run: python -m pip install pytest
       - name: Run protocol gate tests
-        run: python -m pytest tests/test_protocol_machine_law.py -q
+        run: python -m pytest tests/test_protocol_machine_law.py tests/test_no_ego_gate.py tests/test_proactive_doc_gate.py -q
       - name: Auto-brain boot-surface gate (protocol law SN-AUTO-BRAIN)
         run: python tools/protocol/checks/auto_brain.py --record '{}'
+      - name: No-ego gate (protocol law SN-NO-EGO)
+        run: python tools/protocol/checks/no_ego.py --record @tests/fixtures/no_ego_pass.json
+      - name: No-ego gate bites on ego (negative probe — must FAIL)
+        run: |
+          if python tools/protocol/checks/no_ego.py --record @tests/fixtures/no_ego_fail.json; then
+            echo "GATE FAIL-OPEN: ego fixture passed" >&2
+            exit 1
+          fi
+      - name: Proactive-doc gate (protocol law SN-PROACTIVE-DOC)
+        run: python tools/protocol/checks/proactive_doc.py --record @tests/fixtures/proactive_doc_pass.json
+      - name: Proactive-doc gate bites on undocumented lesson (negative probe — must FAIL)
+        run: |
+          if python tools/protocol/checks/proactive_doc.py --record @tests/fixtures/proactive_doc_fail.json; then
+            echo "GATE FAIL-OPEN: undocumented-lesson fixture passed" >&2
+            exit 1
+          fi
       - name: Verify governance documents exist
         run: |
           test -f BRAIN/01-GOVERNANCE/TEAM-NAYA-OPERATING-PROTOCOL-V1.md

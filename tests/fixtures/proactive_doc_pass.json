@@ -1,0 +1,8 @@
+{
+  "work_description": "built the SN-NO-EGO gate module",
+  "lesson": "Ego markers are checkable: first-person preference phrasing in a rationale is a mechanical signal.",
+  "provenance": "tests/test_no_ego_gate.py \u2014 4 planted ego phrases tripped the scan, 0 false positives",
+  "captured_at": "2026-10-11T22:30:00Z",
+  "work_completed_at": "2026-10-11T21:30:00Z",
+  "destination": "memory/2026-10-11.md"
+}

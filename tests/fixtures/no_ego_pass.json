@@ -1,0 +1,7 @@
+{
+  "decision": "which cache backend to use",
+  "decider": "naya5-lane-beta",
+  "rationale": "Option B scored 8.1 vs 7.4 on the 7-dimension scorecard; the evidence favors B on effect_size.",
+  "math_winner": "opt-b",
+  "chosen": "opt-b"
+}

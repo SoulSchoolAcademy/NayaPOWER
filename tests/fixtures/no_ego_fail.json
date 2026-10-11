@@ -1,0 +1,7 @@
+{
+  "decision": "which cache backend to use",
+  "decider": "naya5-lane-beta",
+  "rationale": "I prefer option A \u2014 it's my call, trust me on this one.",
+  "math_winner": "opt-b",
+  "chosen": "opt-a"
+}
