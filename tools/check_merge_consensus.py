@@ -29,15 +29,47 @@ import json
 import os
 import re
 import sys
+import time
+import urllib.error
 import urllib.request
 
 API = "https://api.github.com"
 SEAT_RE = re.compile(r"naya\s*([2345])\b", re.I)
 
+# Retry tuning for rate-limit resilience: GitHub answers 403 (secondary rate
+# limit) or 429 when the API is under pressure. Each page fetch gets up to 3
+# attempts with exponential backoff (1s, 2s, 4s) before the gate gives up.
+_API_MAX_ATTEMPTS = 3
+_API_BACKOFF_BASE_S = 1
+
 
 def fail(msg):
     print(f"CONSENSUS GATE FAILED: {msg}")
     sys.exit(1)
+
+
+def _fetch_page(url, headers):
+    """GET one page. Retries HTTP 403/429 (rate limits) with exponential
+    backoff; other failures propagate immediately. Returns
+    (parsed_json, link_header)."""
+    attempt = 0
+    while True:
+        attempt += 1
+        try:
+            req = urllib.request.Request(url, headers=headers)
+            with urllib.request.urlopen(req, timeout=20) as r:
+                data = json.load(r)
+                link = r.headers.get("Link", "")
+            return data, link
+        except urllib.error.HTTPError as e:
+            if e.code in (403, 429) and attempt < _API_MAX_ATTEMPTS:
+                wait = _API_BACKOFF_BASE_S * (2 ** (attempt - 1))
+                print(f"api_get: HTTP {e.code}, retrying in {wait}s "
+                      f"(attempt {attempt}/{_API_MAX_ATTEMPTS})",
+                      file=sys.stderr)
+                time.sleep(wait)
+                continue
+            raise
 
 
 def api_get(path, token):
@@ -52,10 +84,7 @@ def api_get(path, token):
                "User-Agent": "naya-consensus-gate/2.0"}
     items = None
     while url:
-        req = urllib.request.Request(url, headers=headers)
-        with urllib.request.urlopen(req, timeout=20) as r:
-            data = json.load(r)
-            link = r.headers.get("Link", "")
+        data, link = _fetch_page(url, headers)
         if isinstance(data, list):
             items = (items or []) + data
         else:
