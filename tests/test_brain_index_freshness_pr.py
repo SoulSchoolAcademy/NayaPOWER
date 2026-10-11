@@ -215,6 +215,28 @@ def test_non_checkout_repo_root_fails_closed(w, tmp_path):
     assert res["details"]["fail_closed"] == "repo_root"
 
 
+def test_run_on_non_checkout_returns_fail_closed_without_keyerror(
+        w, tmp_path):
+    """Regression: CI showed `run()` raising KeyError: 'repo_root' when
+    decide() failed closed before a repo root existed. run() must return
+    the fail-closed decision itself — a crash is not a verdict."""
+    res = w.run({"repo_root": str(tmp_path),
+                 "base_sha": "0" * 40, "head_sha": "1" * 40})
+    assert res["pass"] is False
+    assert res["details"]["verdict"] == "FULL_CHECK"
+    assert res["details"]["fail_closed"] == "repo_root"
+
+
+def test_default_repo_root_resolves_to_this_checkout(w):
+    """Regression: the default repo_root once pointed at tools/ instead
+    of the repo root (parents[2] vs parents[3]) — every CI run failed
+    closed on repo_root. The default must resolve to this checkout."""
+    root = w._resolve_repo_root({})
+    assert root == ROOT
+    assert (root / "BRAIN").is_dir()
+    assert (root / ".git").exists()
+
+
 # ---- three-dot scope: the PR is not blamed for the base's newer changes ----
 
 def test_old_pr_not_blamed_for_base_brain_changes(w, tmp_path):

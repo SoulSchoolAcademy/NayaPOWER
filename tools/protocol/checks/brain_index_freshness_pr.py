@@ -63,8 +63,9 @@ def _resolve_repo_root(record: dict) -> Path:
     if raw:
         root = Path(raw)
     else:
-        # tools/protocol/checks/ -> repo root is three levels up
-        root = Path(__file__).resolve().parents[2]
+        # tools/protocol/checks/<file> -> parents[3] is the repo root
+        # (file -> checks -> protocol -> tools -> repo root)
+        root = Path(__file__).resolve().parents[3]
     if not (root / "BRAIN").is_dir() or not (root / ".git").exists():
         raise ValueError(
             f"repo_root is not a NayaPOWER checkout: {root}"
@@ -188,6 +189,11 @@ def run(record: dict) -> dict:
     """
     decision = decide(record)
     if decision["details"].get("verdict") != "FULL_CHECK":
+        return decision
+    if "repo_root" not in decision["details"]:
+        # Scope failed closed before a repo root existed (not a NayaPOWER
+        # checkout): there is no tree the gate could verify. Return the
+        # fail-closed decision itself — never KeyError into a fake pass.
         return decision
     gate = _load_gate_module()
     gate_result = gate.check(
