@@ -36,6 +36,10 @@ def _candidate(cid="p1", **kw):
         confidence={"objective_fit": 0.9, "evidence_sufficiency": 0.8,
                     "applicability": 0.9, "robustness": 0.8},
         reversibility="REVERSIBLE",
+        # Explicitly safe: unknown (None) hard-gate flags are fail-closed
+        # refused at plan (PLAN_SAFETY_UNKNOWN) — "clean" means proven safe,
+        # not unknown. Tests needing None/False pass explicit kwargs.
+        lawful=True, rights_safe=True, privacy_safe=True, safety_safe=True,
         expected_outcome="node state updated, previous state restorable",
         proof_requirements=("execution_receipt", "state_diff"),
         stakes="low",

@@ -42,6 +42,10 @@ def _candidate(cid="p1", **kw):
         confidence={"objective_fit": 0.9, "evidence_sufficiency": 0.8,
                     "applicability": 0.9, "robustness": 0.8},
         reversibility="REVERSIBLE",
+        # Explicitly safe: unknown (None) hard-gate flags are fail-closed
+        # refused at plan (PLAN_SAFETY_UNKNOWN) — "clean" means proven safe,
+        # not unknown. Tests needing None/False pass explicit kwargs.
+        lawful=True, rights_safe=True, privacy_safe=True, safety_safe=True,
         expected_outcome="node state updated, previous state restorable",
         proof_requirements=("execution_receipt", "state_diff"),
         stakes="low",
@@ -184,7 +188,15 @@ def test_clean_candidates_behave_as_before():
 
 
 def test_plan_candidate_safety_defaults_are_clean():
-    c = _candidate()
+    # Dataclass-level defaults (not the test helper's): unset safety flags
+    # default to None = unknown, which the gate now fail-closed refuses.
+    c = ap.PlanCandidate(
+        candidate_id="p-defaults", action="naya_node_apply",
+        description="defaults probe",
+        quality={"objective_fit": 8.0}, confidence={"objective_fit": 0.9},
+        reversibility="REVERSIBLE", expected_outcome="x",
+        proof_requirements=("execution_receipt",),
+    )
     assert c.hard_violation is False
     assert c.lawful is None and c.rights_safe is None
     assert c.privacy_safe is None and c.safety_safe is None
