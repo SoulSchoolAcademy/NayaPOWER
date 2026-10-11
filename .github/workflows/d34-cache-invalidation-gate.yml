@@ -1,0 +1,57 @@
+name: d34-cache-invalidation-gate
+
+# WIRE lane (Naya 2): D34 selective cache invalidation + intelligence
+# preservation, wired to the drift-canary governance path.
+#
+# Every registered invalidation scenario is cold-judged against the REAL
+# IntelligenceStore. A scenario the D34 memory law refuses turns this
+# check red and blocks the PR. Zero live scenarios = explicit DORMANT.
+#
+# Exit contract: 0 PASS / 0 DORMANT / 1 VIOLATION (block) / 2 BROKEN
+# (fail-closed: manifest corrupt, mechanism missing/tampered, canary fail).
+
+on:
+  pull_request:
+    paths:
+      - "drift_canary/d34_cache_invalidation.py"
+      - "drift_canary/tests/test_d34_cache_invalidation.py"
+      - "tools/d34_cache_invalidation_gate.py"
+      - "tools/d34_cache_invalidation_manifest.json"
+      - "tests/test_d34_cache_invalidation_gate.py"
+      - ".github/workflows/d34-cache-invalidation-gate.yml"
+  push:
+    branches: [main]
+    paths:
+      - "drift_canary/d34_cache_invalidation.py"
+      - "drift_canary/tests/test_d34_cache_invalidation.py"
+      - "tools/d34_cache_invalidation_gate.py"
+      - "tools/d34_cache_invalidation_manifest.json"
+      - "tests/test_d34_cache_invalidation_gate.py"
+      - ".github/workflows/d34-cache-invalidation-gate.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  d34-cache-invalidation-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # Bare setup-python images do not always carry pytest; install it
+      # explicitly (same lesson as the sibling mechanism and wire gates).
+      - name: Install pytest
+        run: python -m pip install pytest
+
+      - name: Gate unit tests (incl. sabotage negative controls)
+        run: python -m pytest tests/test_d34_cache_invalidation_gate.py -q -p no:cacheprovider
+
+      - name: Mechanism suite on the live tree
+        run: python -m pytest drift_canary/tests/test_d34_cache_invalidation.py -q -p no:cacheprovider
+
+      - name: D34 cache-invalidation gate
+        run: python tools/d34_cache_invalidation_gate.py
