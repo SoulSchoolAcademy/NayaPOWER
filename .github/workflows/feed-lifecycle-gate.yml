@@ -1,0 +1,29 @@
+name: Feed Lifecycle Gate
+
+# #2244 req 2: the specialty-feed lifecycle registry must keep working.
+# Runs only when the registry, its tests, or this workflow change.
+
+on:
+  pull_request:
+    paths:
+      - "tools/feed_lifecycle.py"
+      - "tests/test_feed_lifecycle.py"
+      - ".naya/feeds/README.md"
+      - ".github/workflows/feed-lifecycle-gate.yml"
+  push:
+    branches: ["main"]
+    paths:
+      - "tools/feed_lifecycle.py"
+      - "tests/test_feed_lifecycle.py"
+      - ".naya/feeds/README.md"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install pytest
+      - run: python -m pytest tests/test_feed_lifecycle.py -q -p no:cacheprovider
