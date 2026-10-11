@@ -64,12 +64,16 @@ jobs:
             echo "unresolvable diff range; defaulting to stamp=yes"
             exit 0
           fi
-          # Any changed BRAIN/ *.md outside the three receipt files needs a
-          # stamp. (Pathspec is the whole BRAIN/ dir + grep: git treats **
-          # as * in pathspecs, so a 'BRAIN/**/*.md' pathspec would miss
-          # top-level files like BRAIN/CURRENT-MISSION-STATE.md.)
-          if printf '%s\n' "$CHANGED" | grep -E '\.md$' \
-              | grep -qvE '^BRAIN/(REAL-TREE\.json|REAL-TREE\.md|NAYAPOWER-BRAIN-INDEX\.json)$'; then
+          # ANY change under BRAIN/ needs the stamp decision -- including
+          # receipt-only changes. A hand-edited receipt (not via the official
+          # generator) is exactly the drift this workflow heals; the old
+          # .md-only filter let receipt-only changes sail through unstamped
+          # (reviewer defect on #2283: "trigger on any BRAIN/ change").
+          # The orchestrator is idempotent: on an already-canonical tree it
+          # reports NO-STAMP and commits nothing, so over-firing costs one
+          # workflow run, never a bad commit. Matches the "fail toward
+          # healing" default for unresolvable ranges above.
+          if [ -n "$CHANGED" ]; then
             echo "stamp=yes" >> "$GITHUB_OUTPUT"
           else
             echo "stamp=no" >> "$GITHUB_OUTPUT"
