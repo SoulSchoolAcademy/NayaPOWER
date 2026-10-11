@@ -8,6 +8,14 @@ on:
       - 'tests/test_d36_revocation_ordering_gate.py'
       - 'drift_canary/revocation_linearization.py'
       - '.github/workflows/d36-revocation-ordering-gate.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'tools/d36_revocation_ordering_gate.py'
+      - 'tools/d36_revocation_ordering_manifest.json'
+      - 'tests/test_d36_revocation_ordering_gate.py'
+      - 'drift_canary/revocation_linearization.py'
+      - '.github/workflows/d36-revocation-ordering-gate.yml'
 
 jobs:
   d36-revocation-ordering-gate:
