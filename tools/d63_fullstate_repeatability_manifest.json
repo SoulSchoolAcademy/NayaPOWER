@@ -52,49 +52,5 @@
       "retry_budget": null
     }
   },
-  "claims": [
-    {
-      "id": "AE-EXAMPLE",
-      "obligation_id": "aer-live-008",
-      "claimant": "naya2/wire (worked example)",
-      "evidence_ref": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175",
-      "asserts": "REPEATABLE",
-      "certificate": {
-        "boundary_ref": "ledger@verified-rev",
-        "cycle": [
-          {
-            "budget_cost": 0.0,
-            "component_ttl": [
-              [
-                "authority_valid",
-                50
-              ]
-            ],
-            "debt_gain": 1.0,
-            "name": "U:unserved-round"
-          }
-        ],
-        "entry_established": true,
-        "entry_state": {
-          "authority_valid": true,
-          "budget_remaining": 100.0,
-          "evidence_intact": true,
-          "lifecycle_outstanding": true,
-          "obligation_active": true,
-          "resources_available": true,
-          "time_valid": true
-        },
-        "exit_cost": 10.0,
-        "exit_requires": [
-          "authority_valid",
-          "evidence_intact"
-        ],
-        "model_assumptions": [
-          "AER-LIVE-008: each unserved round adds exactly 1 debt at zero budget cost; the authority token expires after 50 traversals unless renewed; the exit (audit/shutdown) needs valid authority, intact evidence, and budget covering the exit cost."
-        ],
-        "obligation_id": "aer-live-008",
-        "retry_budget": null
-      }
-    }
-  ]
+  "claims": []
 }
