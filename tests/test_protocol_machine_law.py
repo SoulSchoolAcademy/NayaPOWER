@@ -345,7 +345,7 @@ def test_canonical_boot_packet_requires_protocol_constitution_and_team_operating
         assert link in protocol, f"mandatory boot packet link missing: {link}"
 
     assert "ratified Team Naya Operating Protocol" in agents
-    assert "TEAM-NAYA-OPERATING-PROTOCOL-V1.md" in REQUIRED_SOURCE_PATHS
+    assert "BRAIN/01-GOVERNANCE/TEAM-NAYA-OPERATING-PROTOCOL-V1.md" in REQUIRED_SOURCE_PATHS
     assert "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2154" in protocol
     assert "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175" in protocol
     assert "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/1599" in protocol
