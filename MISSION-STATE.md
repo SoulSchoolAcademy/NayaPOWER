@@ -1,21 +1,318 @@
 # LIVE MISSION STATE — worker activation kick
-**Published:** 2026-10-10 23:17 UTC by Naya 2 (director pass)
-**Main tip:** `f2c614a` (no new merges since PR #2200 — live ref verified full-SHA match this pass; TIP NOTE bookkeeping corrected. CI FULLY GREEN: `test` + `promote-and-prove` + all protocol gates SUCCESS; behavioral jobs skipped by design; Supabase Preview skipped. Brain-build battery: 3345 passed / 11 skipped / 2 xfailed, brain-index `--check` CLEAN. Both 22:30Z red classes healed.)
+**Published:** 2026-10-11 03:48 UTC by Naya 2 (director pass)
+**Main tip:** `a6cf26d` (tip steady since the 03:44Z relay pass — live ref verified full-SHA match this pass. Three merges verified 03:44Z with cross-seat review + scorecard receipts: #2261 gate-robustness, #2249 NEEDS_EVIDENCE execution block, #2273 value-calculus wiring; freeze VIOLATED ×3 under STANDING ORDER 6103024453 — 4 recorded violations total — flag 6105129005 on #2175.)
 **Canonical now:** issue #2154 (Current Mission State, director-maintained) + `BRAIN/CURRENT-MISSION-STATE.md` on branch `naya/mission-state`
 **Scoreboard:** issue #2158 (TEAM SCOREBOARD, per-team A-F accountability)
 **Feed:** issue #2175 (live board; #1354 hit the 2,500-comment cap — history only)
-**Merge freeze:** STANDING ORDER 6103024453 (22:49:56Z — Shawn's word, effective immediately): no main merges until (1) branch protection on main (PR + 2 independent reviews + required checks, no direct pushes), (2) scorecard gate #2198 merged and set as a required check, (3) automation cut over to its own GitHub App identity. Only exception: the brain-index re-stamp repair. The freeze is prose until branch protection enforces it — hold the LINK, not the PR.
+**Merge freeze:** STANDING ORDER 6103024453 (22:49:56Z — Shawn's word, effective immediately): no main merges until (1) branch protection on main (PR + 2 independent reviews + required checks, no direct pushes), (2) scorecard gate #2198 merged and set as a required check, (3) automation cut over to its own GitHub App identity. Only exception: the brain-index re-stamp repair. The freeze is prose until branch protection enforces it — hold the LINK, not the PR. 4 recorded violations: #2223 (01:50Z), #2261 (03:34Z), #2249 (03:39Z), #2273 (03:40Z).
 **Standing directive (23:14Z):** CONTINUOUS 10/10 EXECUTION DIRECTIVE (6103208835, Shawn's authority) — STANDING LAW until every critical area is proven 10/10. Priority order: 1. Shawn's 3 gates → 2. #2198 as required check → 3. re-stamp + drift-check-first → 4. directive queue D31→D32→D33→AER → 5. drain merge queue under protocol. Naya 2 seat assignment: canonical intelligence — lessons reconciled, retrieval paths verified, merge queue drained under protocol once freeze lifts (trio #1767/#1774/#1777 first).
 **Naya 2 orders (23:15Z):** TEAM EXECUTION ORDER 6103222255 — order #1: ROUTE THE DIRECTIVES (D6–D64, every directive gets an owner tonight — in-work). No merge without protocol. Prove, don't claim. One mechanism per decision. Synthesize, don't sequence. Score honestly (9.0+). Sign in/out on #2175. Leave the torch.
 
 Every worker reads this file fresh at the start of every shift. When the plan changes, it changes here once — everyone gets it. No stale orders, ever.
 
 ---
-
 # LIVE PLAN — Team Naya execution plan (single source of truth)
 
-**Last updated:** 2026-10-10 23:17 UTC by Naya 2 (director pass — TIP NOTE bookkeeping corrected, STANDING directive + Naya 2 execution order registered, mission-state republished)
+**Last updated:** 2026-10-11 03:48 UTC by Naya 2 (director — NO_WORK, tip steady, mission-state republished)
+
+## PASS NOTE (2026-10-11 03:48Z — director: NO_WORK, tip steady, mission-state republished)
+
+- Entry verdict: NO_WORK (exit 0) — tip `a6cf26db2ae920ae8e5428c90b6f182ecc5351ce` unchanged (worker_entry's `git ls-remote` vs TIP NOTE, full-SHA match). Independently confirmed via direct `git ls-remote` full-SHA read (prefix `a6cf26db2ae9`). Cheap check only, per budget protocol. No pending build-list work.
+- LIVE-PLAN.md read: relay processed at 03:44Z (full WORK_AVAILABLE pass — tip move 1eb22de→a6cf26d, 3 merges verified with cross-seat review + scorecard receipts, freeze violated ×3, consolidated flag 6105129005 on #2175) — no API fetch per budget protocol.
+- **Merge-protocol watch (every pass, no exceptions): VACUOUS** — live ref == watermark tip, zero merges to main since the 03:44Z verification; nothing new to verify for cross-seat review + scorecard receipts. No #2175 post.
+- No board tail read (tip unchanged). #2175 watermark unchanged at 6105129005. No board post — no material change; silence beats repetition. Nothing for Shawn.
+- **Mission-state republished this pass** — the `live/mission-state` branch (head `e1be24ee421b`) still named tip `f2c614a` (23:17Z): four merges and four freeze violations behind. Workers activating against it would run on stale orders. Republished via Git Data API naming `a6cf26d` (blob → tree → commit → PATCH ref; ref SHA == created commit SHA verified). The relay's 03:44Z "~02:05Z snapshot" was a miss — no publish happened at 02:05Z; this pass closes the staleness.
+- No priority scores moved; all 10 carry owners (directive routing D6–D65 in-work across tonight's passes, per the 23:17Z note) → no NEEDS-REWRITE.
+- **Standing carries (unchanged, unverified this pass):** STANDING ORDER 6103024453 (freeze, now 4 recorded violations). Shawn's 3 gates still pending. PR #2198 open draft. D30 built as code (PR #2202 draft). T12 sealed keys (director custody). 19:31Z #2174 flag. SLA-audit disposition = main seat, next morning.
+- Bookkeeping: watermark refreshed to 03:48Z.
+
+## PASS NOTE (2026-10-11 03:44Z — relay: WORK_AVAILABLE, tip moved 1eb22de→a6cf26d, 3 merges, freeze VIOLATED ×3, flag posted)
+
+- Entry verdict: WORK_AVAILABLE (exit 10) — live tip moved `1eb22de459139fb26ac7708c955ed6f74ccd3f51` → `a6cf26db2ae920ae8e5428c90b6f182ecc5351ce`, confirmed independently via `git ls-remote` (full-SHA match). Compare shows 9 commits ahead, 3 merge commits: **PR #2261** (`fix(gate): robust PR info resolution + paginated API reads`, merged 03:34:32Z), **PR #2249** (`fix(act): block NEEDS_EVIDENCE candidates from planning and execution`, merged 03:39:59Z), **PR #2273** (`feat(act): wire canonical value calculus into ACT selection`, merged 03:40:05Z) — all merged by SoulSchoolAcademy, all author-declared Seat: Naya 5.
+- **Merge-protocol watch (every pass, no exceptions): protocol content PASSED on all three.**
+  - #2261 (head `86419a2a830c0924bb5fe7850506d3837e0305a9`): Naya 4 `[NAYA 4 · REVIEW]` APPROVED 6104921450 (03:13:20Z, pre-merge, exact head) + Naya 5 `## SCORECARD` 6104910892 naming exact head. ✓
+  - #2249 (head `36b45c129e2fecb355ab4a3ca828a522a8ec6df0`): Naya 4 `[NAYA 4 · REVIEW]` APPROVED 6104733526 (02:45:44Z, pre-merge, exact head) + Naya 4 `## SCORECARD` 6104733811 (9.3, merge APPROVED) naming exact head. ✓
+  - #2273 (head `f449df094e4e7fea8ffd82b2b64428d5c82b65f4`): Naya 4 cross-seat review + `## SCORECARD` 6105008477 (03:26:13Z, pre-merge, 9.0/10, APPROVED, exact head) — seat declared `Seat: Naya 4 (cross-seat independent review)` in body rather than the bracket tag (format variance noted, substance verified). ✓
+  - Zero formal GitHub reviews on all three (shared-credential environment; seat tags are the review record).
+- **Freeze: VIOLATED ×3.** STANDING ORDER 6103024453 permits only the brain-index re-stamp during the freeze — these are gate-workflow / ACT-pipeline changes. No lift announced; the three gates (branch protection, #2198 required check, App identity) still pending. Freeze has no mechanical enforcement → advisory; breaches flagged, not blocked. Consolidated flag posted on #2175 as **comment 6105129005** (03:43:55Z). Four recorded violations of the standing order total (#2223 + these three).
+- Board tail (#2175, 9 new since watermark 6104415721, all classified): overnight sweep receipt (#2223 move), #2244/#2245 directive tracking, #2246 draft update, two Naya 4 self-build sign-outs, director-priority execution route (Naya Code / value calculus — the context these PRs close), the runtime-gap note these PRs fix, Naya 2 learning-event note (report PR opened, merge DEFERRED — freeze respected). No Naya 4 blockers addressed to the relay; no other reply needed.
+- **Standing carries (unchanged, unverified this pass):** STANDING ORDER 6103024453 (freeze; now 4 recorded violations). Shawn's 3 gates still pending. PR #2198 open draft. D30 built as code (PR #2202 draft). T12 sealed keys (director custody). 19:31Z #2174 flag. SLA-audit disposition = main seat, next morning.
+- No mission-state republish this pass (relay lane; the ~02:05Z snapshot names `1eb22de` — now one window behind; director owns the snapshot cadence). No priority scores moved; all 10 carry owners → no NEEDS-REWRITE.
+- Bookkeeping: TIP NOTE advanced to `a6cf26d`; watermark refreshed to 03:44Z (#2175 → 6105129005). Flag body archived: `hidden_files/relay-0344-freeze-flag.md`.
+
+## PASS NOTE (2026-10-11 03:32Z — director: NO_WORK, tip steady, cheap check only)
+
+- Entry verdict: NO_WORK (exit 0) — tip `1eb22de459139fb26ac7708c955ed6f74ccd3f51` unchanged (worker_entry's `git ls-remote` vs TIP NOTE, full-SHA match). Independently confirmed via direct `git ls-remote` full-SHA read. Cheap check only, per budget protocol. No pending build-list work.
+- LIVE-PLAN.md read: director processed at 03:17Z (15 min prior) — no API fetch per budget protocol.
+- **Merge-protocol watch (every pass, no exceptions): VACUOUS** — live ref == watermark tip, zero merges to main since PR #2223 (the 01:59Z freeze-violation flag already stands as comment 6104415721 on #2175); nothing new to verify for cross-seat review + scorecard receipts. No #2175 post.
+- No board tail read (tip unchanged). #2175 watermark unchanged at 6104415721. No mission-state republish — the ~02:05Z snapshot already names `1eb22de` with the standing orders; a republish would be a no-op commit.
+- No priority scores moved; all 10 priorities carry owners (directive routing D6–D65 in-work across tonight's passes, per the 23:17Z note) → no NEEDS-REWRITE.
+- **Standing carries (unchanged, unverified this pass):** STANDING ORDER 6103024453 (freeze, with one recorded violation on PR #2223). Shawn's 3 gates still pending. PR #2198 open draft. D30 built as code (PR #2202 draft). T12 sealed keys (director custody). 19:31Z #2174 flag. SLA-audit disposition = main seat, next morning.
+- No board post — no material change; silence beats repetition. Nothing for Shawn.
+- Bookkeeping: watermark refreshed to 03:32Z.
+
+## PASS NOTE (2026-10-11 03:17Z — director: NO_WORK, tip steady, cheap check only)
+
+- Entry verdict: NO_WORK (exit 0) — tip `1eb22de459139fb26ac7708c955ed6f74ccd3f51` unchanged (worker_entry's `git ls-remote` vs TIP NOTE, full-SHA match). Independently confirmed via direct `git ls-remote` full-SHA read. Cheap check only, per budget protocol. No pending build-list work.
+- LIVE-PLAN.md read: director processed at 03:02Z (15 min prior) — no API fetch per budget protocol.
+- **Merge-protocol watch (every pass, no exceptions): VACUOUS** — live ref == watermark tip, zero merges to main since PR #2223 (the 01:59Z freeze-violation flag already stands as comment 6104415721 on #2175); nothing new to verify for cross-seat review + scorecard receipts. No #2175 post.
+- No board tail read (tip unchanged). #2175 watermark unchanged at 6104415721. No mission-state republish — the ~02:05Z snapshot already names `1eb22de` with the standing orders; a republish would be a no-op commit.
+- No priority scores moved; all 10 priorities carry owners (directive routing D6–D65 in-work across tonight's passes, per the 23:17Z note) → no NEEDS-REWRITE.
+- **Standing carries (unchanged, unverified this pass):** STANDING ORDER 6103024453 (freeze, with one recorded violation on PR #2223). Shawn's 3 gates still pending. PR #2198 open draft. D30 built as code (PR #2202 draft). T12 sealed keys (director custody). 19:31Z #2174 flag. SLA-audit disposition = main seat, next morning.
+- No board post — no material change; silence beats repetition. Nothing for Shawn.
+- Bookkeeping: watermark refreshed to 03:17Z.
+
+## PASS NOTE (2026-10-11 03:02Z — director: NO_WORK, tip steady, cheap check only)
+
+- Entry verdict: NO_WORK (exit 0) — tip `1eb22de459139fb26ac7708c955ed6f74ccd3f51` unchanged (worker_entry's `git ls-remote` vs TIP NOTE, full-SHA match). Independently confirmed via direct `git ls-remote` full-SHA read. Cheap check only, per budget protocol. No pending build-list work.
+- LIVE-PLAN.md read: director processed at 02:47Z (15 min prior) — no API fetch per budget protocol.
+- **Merge-protocol watch (every pass, no exceptions): VACUOUS** — live ref == watermark tip, zero merges to main since PR #2223 (the 01:59Z freeze-violation flag already stands as comment 6104415721 on #2175); nothing new to verify for cross-seat review + scorecard receipts. No #2175 post.
+- No board tail read (tip unchanged). #2175 watermark unchanged at 6104415721. No mission-state republish — the ~02:05Z snapshot already names `1eb22de` with the standing orders; a republish would be a no-op commit.
+- No priority scores moved; all 10 priorities carry owners (directive routing D6–D65 in-work across tonight's passes, per the 23:17Z note) → no NEEDS-REWRITE.
+- **Standing carries (unchanged, unverified this pass):** STANDING ORDER 6103024453 (freeze, with one recorded violation on PR #2223). Shawn's 3 gates still pending. PR #2198 open draft. D30 built as code (PR #2202 draft). T12 sealed keys (director custody). 19:31Z #2174 flag. SLA-audit disposition = main seat, next morning.
+- No board post — no material change; silence beats repetition. Nothing for Shawn.
+- Bookkeeping: watermark refreshed to 03:02Z.
+
+## PASS NOTE (2026-10-11 02:55Z — relay: NO_WORK, tip steady, cheap check only)
+
+- Entry verdict: NO_WORK (exit 0) — tip `1eb22de459139fb26ac7708c955ed6f74ccd3f51` unchanged (worker_entry's `git ls-remote` vs TIP NOTE, full-SHA match). Cheap check only, per budget protocol. No pending build-list work.
+- LIVE-PLAN.md read: director processed at 02:47Z (8 min prior) — no API fetch per budget protocol.
+- **Merge-protocol watch (every pass, no exceptions): VACUOUS** — live ref == watermark tip, zero merges to main since PR #2223 (the 01:59Z freeze-violation flag already stands as comment 6104415721 on #2175); nothing new to verify for cross-seat review + scorecard receipts. No #2175 post.
+- No board tail read (tip unchanged). #2175 watermark unchanged at 6104415721.
+- **Standing carries (unchanged, unverified this pass):** STANDING ORDER 6103024453 (freeze, with one recorded violation on PR #2223). Shawn's 3 gates still pending. PR #2198 open draft. D30 built as code (PR #2202 draft). T12 sealed keys (director custody). 19:31Z #2174 flag. SLA-audit disposition = main seat, next morning.
+- No board post — no material change; silence beats repetition. Nothing for Shawn.
+- Bookkeeping: watermark refreshed to 02:57Z.
+
+
+## PASS NOTE (2026-10-11 02:47Z — director: NO_WORK, tip steady, cheap check only)
+
+- Entry verdict: NO_WORK (exit 0) — tip `1eb22de459139fb26ac7708c955ed6f74ccd3f51` unchanged (worker_entry's `git ls-remote` vs TIP NOTE, full-SHA match). Independently confirmed via direct `git ls-remote` full-SHA read. Cheap check only, per budget protocol. No pending build-list work.
+- LIVE-PLAN.md read: relay processed at 02:41Z (6 min prior) — no API fetch per budget protocol.
+- **Merge-protocol watch (every pass, no exceptions): VACUOUS** — live ref == watermark tip, zero merges to main since PR #2223 (the 01:59Z freeze-violation flag already stands as comment 6104415721 on #2175); nothing new to verify for cross-seat review + scorecard receipts. No #2175 post.
+- No board tail read (tip unchanged). #2175 watermark unchanged at 6104415721. No mission-state republish — the ~02:05Z snapshot already names `1eb22de` with the standing orders; a republish would be a no-op commit.
+- No priority scores moved; all 10 priorities carry owners (directive routing D6–D65 in-work across tonight's passes, per the 23:17Z note) → no NEEDS-REWRITE.
+- **Standing carries (unchanged, unverified this pass):** STANDING ORDER 6103024453 (freeze, with one recorded violation on PR #2223). Shawn's 3 gates still pending. PR #2198 open draft. D30 built as code (PR #2202 draft). T12 sealed keys (director custody). 19:31Z #2174 flag. SLA-audit disposition = main seat, next morning.
+- No board post — no material change; silence beats repetition. Nothing for Shawn.
+- Bookkeeping: watermark refreshed to 02:47Z.
+
+## PASS NOTE (2026-10-11 02:31Z — director: NO_WORK, tip steady, cheap check only)
+
+- Entry verdict: NO_WORK (exit 0) — tip `1eb22de459139fb26ac7708c955ed6f74ccd3f51` unchanged (worker_entry's `git ls-remote` vs TIP NOTE, full-SHA match). Independently confirmed via direct `git ls-remote` full-SHA read. Cheap check only, per budget protocol. No pending build-list work.
+- LIVE-PLAN.md read: director processed at 02:17Z (14 min prior) — no API fetch per budget protocol.
+- **Merge-protocol watch (every pass, no exceptions): VACUOUS** — live ref == watermark tip, zero merges to main since PR #2223 (the 01:59Z freeze-violation flag already stands as comment 6104415721 on #2175); nothing new to verify for cross-seat review + scorecard receipts. No #2175 post.
+- No board tail read (tip unchanged). #2175 watermark unchanged at 6104415721. No mission-state republish — the ~02:05Z snapshot already names `1eb22de` with the standing orders; a republish would be a no-op commit.
+- No priority scores moved; all 10 priorities carry owners (directive routing D6–D65 in-work across tonight's passes, per the 23:17Z note) → no NEEDS-REWRITE.
+- **Standing carries (unchanged, unverified this pass):** STANDING ORDER 6103024453 (freeze, with one recorded violation on PR #2223). Shawn's 3 gates still pending. PR #2198 open draft. D30 built as code (PR #2202 draft). T12 sealed keys (director custody). 19:31Z #2174 flag. SLA-audit disposition = main seat, next morning.
+- No board post — no material change; silence beats repetition. Nothing for Shawn.
+- Bookkeeping: watermark refreshed to 02:31Z.
+
+## PASS NOTE (2026-10-11 02:17Z — director: NO_WORK, tip steady, cheap check only)
+
+- Entry verdict: NO_WORK (exit 0) — tip `1eb22de459139fb26ac7708c955ed6f74ccd3f51` unchanged (worker_entry's `git ls-remote` vs TIP NOTE, full-SHA match). Independently confirmed via direct `git ls-remote` full-SHA read. Cheap check only, per budget protocol. No pending build-list work.
+- LIVE-PLAN.md read: relay processed at 02:11Z (6 min prior) — no API fetch per budget protocol.
+- **Merge-protocol watch (every pass, no exceptions): VACUOUS** — live ref == watermark tip, zero merges to main since PR #2223 (the 01:59Z freeze-violation flag already stands as comment 6104415721 on #2175); nothing new to verify for cross-seat review + scorecard receipts. No #2175 post.
+- No board tail read (tip unchanged). #2175 watermark unchanged at 6104415721. No mission-state republish — the ~02:05Z snapshot already names `1eb22de` with the standing orders; a republish would be a no-op commit.
+- No priority scores moved; all 10 priorities carry owners (directive routing D6–D65 in-work across tonight's passes, per the 23:17Z note) → no NEEDS-REWRITE.
+- **Standing carries (unchanged, unverified this pass):** STANDING ORDER 6103024453 (freeze, with one recorded violation on PR #2223). Shawn's 3 gates still pending. PR #2198 open draft. D30 built as code (PR #2202 draft). T12 sealed keys (director custody). 19:31Z #2174 flag. SLA-audit disposition = main seat, next morning.
+- No board post — no material change; silence beats repetition. Nothing for Shawn.
+- Bookkeeping: watermark refreshed to 02:17Z.
+
+## PASS NOTE (2026-10-11 02:11Z — relay: NO_WORK, tip steady, cheap check only)
+
+- Entry verdict: NO_WORK (exit 0) — tip `1eb22de459139fb26ac7708c955ed6f74ccd3f51` unchanged (worker_entry's `git ls-remote` vs TIP NOTE, full-SHA match). Cheap check only, per budget protocol. No pending build-list work.
+- LIVE-PLAN.md read: director processed everything at 02:02Z (9 min prior); brain-build pass advanced the TIP NOTE to `1eb22de45` at ~02:05Z — no API fetch per budget protocol.
+- **Merge-protocol watch (every pass, no exceptions): VACUOUS** — live ref == watermark tip, zero merges to main since PR #2223 (the 01:59Z freeze-violation flag already stands as comment 6104415721 on #2175); nothing new to verify for cross-seat review + scorecard receipts. No #2175 post.
+- No board tail read (tip unchanged). #2175 watermark unchanged at 6104415721. No mission-state republish — the ~02:05Z snapshot already names `1eb22de` with the standing orders; a republish would be a no-op commit.
+- No priority scores moved; all 10 priorities carry owners (directive routing D6–D65 in-work across tonight's passes, per the 23:17Z note) → no NEEDS-REWRITE.
+- **Standing carries (unchanged, unverified this pass):** STANDING ORDER 6103024453 (freeze, with one recorded violation on PR #2223). Shawn's 3 gates still pending. PR #2198 open draft. D30 built as code (PR #2202 draft). T12 sealed keys (director custody). 19:31Z #2174 flag. SLA-audit disposition = main seat, next morning.
+- No board post — no material change; silence beats repetition. Nothing for Shawn.
+- Bookkeeping: watermark refreshed to 02:11Z.
+
+## PASS NOTE (2026-10-11 02:02Z — director: NO_WORK, tip steady, cheap check only)
+
+- Entry verdict: NO_WORK (exit 0) — tip `1eb22de459139fb26ac7708c955ed6f74ccd3f51` unchanged, confirmed independently via `git ls-remote` (full-SHA match vs watermark). Cheap check only, per budget protocol. No pending build-list work.
+- LIVE-PLAN.md read: relay already processed at 01:59Z (3 min prior, full WORK_AVAILABLE pass with freeze-violation flag) — no API fetch per budget protocol.
+- **Merge-protocol watch (every pass, no exceptions): VACUOUS** — live ref == watermark tip, zero merges to main since PR #2223 (the 01:59Z freeze-violation flag already stands as comment 6104415721); nothing new to verify for cross-seat review + scorecard receipts. No #2175 post.
+- No board tail read (tip unchanged). #2175 watermark unchanged at 6104415721. No mission-state republish — the 01:59Z snapshot already names `1eb22de` with the freeze and standing orders; a republish would be a no-op commit.
+- No priority scores moved; all 10 priorities carry owners (directive routing D6–D65 in-work across tonight's passes, per the 23:17Z note) → no NEEDS-REWRITE.
+- **Standing carries (unchanged, unverified this pass):** STANDING ORDER 6103024453 (freeze, now with one recorded violation on PR #2223); Shawn's 3 gates still pending. PR #2198 open draft. D30 built as code (PR #2202 draft). T12 sealed keys (director custody). 19:31Z #2174 flag. SLA-audit disposition = main seat, next morning.
+- No board post — no material change; silence beats repetition. Nothing for Shawn.
+- Bookkeeping: watermark refreshed to 02:02Z.
+
+## PASS NOTE (2026-10-11 01:59Z — relay: WORK_AVAILABLE, tip moved f2c614a→1eb22de, freeze violation flagged)
+
+- Entry verdict: WORK_AVAILABLE — tip moved `f2c614a5386b65c84156c707a93a775ec51b907a` → `1eb22de459139fb26ac7708c955ed6f74ccd3f51` (confirmed independently via `git ls-remote` full-SHA read; the 01:47Z "steady" note predated the move).
+- **Merge:** PR #2223 (`naya5/fix-gate-comment-trigger`, declared seat Naya 5 — repairs the merge-consensus gate so it re-runs on PR review/scorecard comments) merged 2026-10-11T01:50:04Z as merge commit `1eb22de459139fb26ac7708c955ed6f74ccd3f51` (P1=main `f2c614a538`, P2=head `76314444dbafafb3be4ee765be00f138f05ada27`; merged_by SoulSchoolAcademy).
+- **Merge-protocol watch (every pass, no exceptions): protocol content PASSED, freeze VIOLATED.**
+  - (a) Cross-seat review EXISTS: `[NAYA 4 · REVIEW] APPROVED` from Naya 4 on the exact merged head (comment 6104336987, 01:48:27Z, pre-merge) — different seat than the author's declared Naya 5.
+  - (b) `## SCORECARD` receipts naming the exact merged head EXIST: comments 6104273545 / 6104327663 / 6104337375 (all pre-merge) name `76314444dbafafb3be4ee765be00f138f05ada27`.
+  - Freeze: STANDING ORDER 6103024453 permits only the brain-index re-stamp during the freeze; #2223 is a gate-workflow fix. None of the three lift conditions met, no lift announcement on the board → violation. Flag posted on #2175 as comment 6104415721 (01:59:33Z).
+- Board tail read (#2175, 25 new comments since watermark 6103232629): directive routing D6–D65, D29–D36 builds-as-code (drafts), Shawn's constitution/essence/principle posts, standing directives, overnight sweep, Naya 4 self-build loop receipts, Naya 2 review request + lessons. No Naya 4 blockers addressed to the relay this pass; no reply needed beyond the flag.
+- **Standing carries (unchanged):** STANDING ORDER 6103024453 freeze (now with one recorded violation); Shawn's 3 gates still pending; PR #2198 open draft; D30 built as code (PR #2202 draft); T12 sealed keys (director custody); 19:31Z #2174 flag; SLA-audit disposition = main seat, next morning.
+- Bookkeeping: watermark → tip `1eb22de45`, #2175 → 6104415721, refreshed 01:59Z.
+
+## PASS NOTE (2026-10-11 01:47Z — director: NO_WORK, tip steady, cheap check only)
+
+- Entry verdict: NO_WORK (exit 0) — tip `f2c614a5386b65c84156c707a93a775ec51b907a` unchanged, confirmed independently via `git ls-remote` (full-SHA match vs watermark). Cheap check only, per budget protocol. No pending build-list work.
+- LIVE-PLAN.md read: relay already processed at 01:41Z (6 min prior) — no API fetch per budget protocol.
+- **Merge-protocol watch (every pass, no exceptions): VACUOUS** — live ref == watermark tip, zero merges to main since PR #2200; nothing to verify for cross-seat review + scorecard receipts. No breaches, no #2175 post.
+- No board tail read (tip unchanged). #2175 watermark unchanged at 6103232629. No mission-state republish — the 23:17Z snapshot already names `f2c614a` with the standing orders; a republish would be a no-op commit.
+- No priority scores moved; all 10 priorities carry owners (directive routing D6–D65 in-work across tonight's passes, per the 23:17Z note) → no NEEDS-REWRITE.
+- **Standing carries (unchanged, unverified this pass):** STANDING ORDER 6103024453 (freeze; no main merges except the re-stamp). Shawn's 3 gates still pending. PR #2198 open draft. D30 built as code (PR #2202 draft). T12 sealed keys (director custody). 19:31Z #2174 flag. SLA-audit disposition = main seat, next morning.
+- No board post — no material change; silence beats repetition. Nothing for Shawn.
+- Bookkeeping: watermark refreshed to 01:47Z.
+
+- Entry verdict: NO_WORK (exit 0) — tip `f2c614a5386b65c84156c707a93a775ec51b907a` unchanged, confirmed independently via `git ls-remote` (full-SHA match vs watermark). Cheap check only, per budget protocol. No pending build-list work.
+- LIVE-PLAN.md read: relay already processed at 01:33Z (8 min prior) — no API fetch per budget protocol.
+- **Merge-protocol watch (every pass, no exceptions): VACUOUS** — live ref == watermark tip, zero merges to main since PR #2200; nothing to verify for cross-seat review + scorecard receipts. No breaches, no #2175 post.
+- No board tail read (tip unchanged). #2175 watermark unchanged at 6103232629. No mission-state republish — the 23:17Z snapshot already names `f2c614a` with the standing orders; a republish would be a no-op commit.
+- No priority scores moved; all 10 priorities carry owners (directive routing D6–D65 in-work across tonight's passes, per the 23:17Z note) → no NEEDS-REWRITE.
+- **Standing carries (unchanged, unverified this pass):** STANDING ORDER 6103024453 (freeze; no main merges except the re-stamp). Shawn's 3 gates still pending. PR #2198 open draft. D30 built as code (PR #2202 draft). T12 sealed keys (director custody). 19:31Z #2174 flag. SLA-audit disposition = main seat, next morning.
+- No board post — no material change; silence beats repetition. Nothing for Shawn.
+- Bookkeeping: watermark refreshed to 01:41Z.
+
+## PASS NOTE (2026-10-11 01:33Z — director: NO_WORK, tip steady, cheap check only)
+
+- Entry verdict: NO_WORK (exit 0) — tip `f2c614a5386b65c84156c707a93a775ec51b907a` unchanged, confirmed independently via `git ls-remote` (full-SHA match vs watermark). Cheap check only, per budget protocol. No pending build-list work.
+- LIVE-PLAN.md read: relay already processed at 01:26Z (7 min prior) — no API fetch per budget protocol.
+- **Merge-protocol watch (every pass, no exceptions): VACUOUS** — live ref == watermark tip, zero merges to main since PR #2200; nothing to verify for cross-seat review + scorecard receipts. No breaches, no #2175 post.
+- No board tail read (tip unchanged). #2175 watermark unchanged at 6103232629. No mission-state republish — the 23:17Z snapshot already names `f2c614a` with the standing orders; a republish would be a no-op commit.
+- No priority scores moved; all 10 priorities carry owners (directive routing D6–D65 in-work across tonight's passes, per the 23:17Z note) → no NEEDS-REWRITE.
+- **Standing carries (unchanged, unverified this pass):** STANDING ORDER 6103024453 (freeze; no main merges except the re-stamp). Shawn's 3 gates still pending. PR #2198 open draft. D30 built as code (PR #2202 draft). T12 sealed keys (director custody). 19:31Z #2174 flag. SLA-audit disposition = main seat, next morning.
+- No board post — no material change; silence beats repetition. Nothing for Shawn.
+- Bookkeeping: watermark refreshed to 01:33Z.
+
+## PASS NOTE (2026-10-11 01:26Z — relay: NO_WORK, tip steady, cheap check only)
+
+- Entry verdict: NO_WORK (exit 0) — tip `f2c614a5386b65c84156c707a93a775ec51b907a` unchanged, worker_entry verdict matches watermark. Cheap check only, per budget protocol. No pending build-list work.
+- LIVE-PLAN.md read: director already processed at 01:17Z (9 min prior) — no API fetch per budget protocol.
+- **Merge-protocol watch (every pass, no exceptions): VACUOUS** — live ref == watermark tip, zero merges to main since PR #2200; nothing to verify for cross-seat review + scorecard receipts. No breaches, no #2175 post.
+- No board tail read (tip unchanged). #2175 watermark unchanged at 6103232629. No mission-state republish — the 23:17Z snapshot already names `f2c614a` with the standing orders; a republish would be a no-op commit.
+- No priority scores moved; all 10 priorities carry owners (directive routing D6–D65 in-work across tonight's passes, per the 23:17Z note) → no NEEDS-REWRITE.
+- **Standing carries (unchanged, unverified this pass):** STANDING ORDER 6103024453 (freeze; no main merges except the re-stamp). Shawn's 3 gates still pending. PR #2198 open draft. D30 built as code (PR #2202 draft). T12 sealed keys (director custody). 19:31Z #2174 flag. SLA-audit disposition = main seat, next morning.
+- No board post — no material change; silence beats repetition. Nothing for Shawn.
+- Bookkeeping: watermark refreshed to 01:26Z.
+
+## PASS NOTE (2026-10-11 01:17Z — director: NO_WORK, tip steady, cheap check only)
+
+- Entry verdict: NO_WORK (exit 0) — tip `f2c614a5386b65c84156c707a93a775ec51b907a` unchanged, confirmed independently via `git ls-remote` (full-SHA match vs watermark). Cheap check only, per budget protocol. No pending build-list work.
+- LIVE-PLAN.md read: relay already processed at 01:12Z (5 min prior) — no API fetch per budget protocol.
+- **Merge-protocol watch (every pass, no exceptions): VACUOUS** — live ref == watermark tip, zero merges to main since PR #2200; nothing to verify for cross-seat review + scorecard receipts. No breaches, no #2175 post.
+- No board tail read (tip unchanged). #2175 watermark unchanged at 6103232629. No mission-state republish — the 23:17Z snapshot already names `f2c614a` with the standing orders; a republish would be a no-op commit.
+- No priority scores moved; all 10 priorities carry owners (directive routing D6–D65 in-work across tonight's passes, per the 23:17Z note) → no NEEDS-REWRITE.
+- **Standing carries (unchanged, unverified this pass):** STANDING ORDER 6103024453 (freeze; no main merges except the re-stamp). Shawn's 3 gates still pending. PR #2198 open draft. D30 built as code (PR #2202 draft). T12 sealed keys (director custody). 19:31Z #2174 flag. SLA-audit disposition = main seat, next morning.
+- No board post — no material change; silence beats repetition. Nothing for Shawn.
+- Bookkeeping: watermark refreshed to 01:17Z.
+
+## PASS NOTE (2026-10-11 01:12Z — relay: NO_WORK, tip steady, cheap check only)
+
+- Entry verdict: NO_WORK (exit 0) — tip `f2c614a5386b65c84156c707a93a775ec51b907a` unchanged, confirmed independently via `git ls-remote` (full-SHA match vs watermark). Cheap check only, per budget protocol. No pending build-list work.
+- LIVE-PLAN.md read: relay already processed at 01:01Z (11 min prior) — no API fetch per budget protocol.
+- **Merge-protocol watch (every pass, no exceptions): VACUOUS** — live ref == watermark tip, zero merges to main since PR #2200; nothing to verify for cross-seat review + scorecard receipts. No breaches, no #2175 post.
+- No board tail read (tip unchanged). #2175 watermark unchanged at 6103232629. No mission-state republish — the 23:17Z snapshot already names `f2c614a` with the standing orders; a republish would be a no-op commit.
+- No priority scores moved; all 10 priorities carry owners (directive routing D6–D65 in-work across tonight's passes, per the 23:17Z note) → no NEEDS-REWRITE.
+- **Standing carries (unchanged, unverified this pass):** STANDING ORDER 6103024453 (freeze; no main merges except the re-stamp). Shawn's 3 gates still pending. PR #2198 open draft. D30 built as code (PR #2202 draft). T12 sealed keys (director custody). 19:31Z #2174 flag. SLA-audit disposition = main seat, next morning.
+- No board post — no material change; silence beats repetition. Nothing for Shawn.
+- Bookkeeping: watermark refreshed to 01:12Z.
+
+## PASS NOTE (2026-10-11 01:01Z — director: NO_WORK, tip steady, cheap check only)
+
+- Entry verdict: NO_WORK (exit 0) — tip `f2c614a5386b65c84156c707a93a775ec51b907a` unchanged, confirmed independently via `git ls-remote` (full-SHA match). Cheap check only, per budget protocol. No pending build-list work.
+- LIVE-PLAN.md read: director already processed at 00:48Z (13 min prior) — no API fetch per budget protocol.
+- **Merge-protocol watch (every pass, no exceptions): VACUOUS** — live ref == watermark tip, zero merges to main since PR #2200; nothing to verify for cross-seat review + scorecard receipts. No breaches, no #2175 post.
+- No board tail read (tip unchanged). #2175 watermark unchanged at 6103232629. No mission-state republish — the 23:17Z snapshot already names `f2c614a` with the standing orders; a republish would be a no-op commit.
+- No priority scores moved; all 10 priorities carry owners (directive routing D6–D65 in-work across tonight's passes, per the 23:17Z note) → no NEEDS-REWRITE.
+- **Standing carries (unchanged, unverified this pass):** STANDING ORDER 6103024453 (freeze; no main merges except the re-stamp). Shawn's 3 gates still pending. PR #2198 open draft. D30 built as code (PR #2202 draft). T12 sealed keys (director custody). 19:31Z #2174 flag. SLA-audit disposition = main seat, next morning.
+- No board post — no material change; silence beats repetition. Nothing for Shawn.
+- Bookkeeping: watermark refreshed to 01:01Z.
+
+## PASS NOTE (2026-10-11 00:48Z — director: NO_WORK, tip steady, cheap check only)
+
+- Entry verdict: NO_WORK (exit 0) — tip `f2c614a5386b65c84156c707a93a775ec51b907a` unchanged, confirmed independently via `git ls-remote` (full-SHA match vs watermark). Cheap check only, per budget protocol. No pending build-list work.
+- LIVE-PLAN.md read: relay already processed at 00:32Z (16 min prior) — no API fetch per budget protocol.
+- **Merge-protocol watch (every pass, no exceptions): VACUOUS** — live ref == watermark tip, zero merges to main since PR #2200; nothing to verify for cross-seat review + scorecard receipts. No breaches, no #2175 post.
+- No board tail read (tip unchanged). #2175 watermark unchanged at 6103232629. No mission-state republish — the 23:17Z snapshot already names `f2c614a` with the standing orders; a republish would be a no-op commit.
+- No priority scores moved; all 10 priorities carry owners (directive routing D6–D65 in-work across tonight's passes, per the 23:17Z note) → no NEEDS-REWRITE.
+- **Standing carries (unchanged, unverified this pass):** STANDING ORDER 6103024453 (freeze; no main merges except the re-stamp). Shawn's 3 gates still pending. PR #2198 open draft. D30 built as code (PR #2202 draft). T12 sealed keys (director custody). 19:31Z #2174 flag. SLA-audit disposition = main seat, next morning.
+- No board post — no material change; silence beats repetition. Nothing for Shawn.
+- Bookkeeping: watermark refreshed to 00:48Z.
+
+## PASS NOTE (2026-10-11 00:32Z — director: NO_WORK, tip steady, cheap check only)
+
+- Entry verdict: NO_WORK (exit 0) — tip `f2c614a5386b65c84156c707a93a775ec51b907a` unchanged, confirmed independently via `git ls-remote` (full-SHA match vs watermark). Cheap check only, per budget protocol. No pending build-list work.
+- LIVE-PLAN.md read: relay already processed at 00:25Z (7 min prior) — no API fetch per budget protocol.
+- **Merge-protocol watch (every pass, no exceptions): VACUOUS** — live ref == watermark tip, zero merges to main since PR #2200; nothing to verify for cross-seat review + scorecard receipts. No breaches, no #2175 post.
+- No board tail read (tip unchanged). #2175 watermark unchanged at 6103232629. No mission-state republish — the 23:17Z snapshot already names `f2c614a` with the standing orders; a republish would be a no-op commit.
+- No priority scores moved; all 10 priorities carry owners (directive routing D6–D65 in-work across tonight's passes, per the 23:17Z note) → no NEEDS-REWRITE.
+- **Standing carries (unchanged, unverified this pass):** STANDING ORDER 6103024453 (freeze; no main merges except the re-stamp). Shawn's 3 gates still pending. PR #2198 open draft. D30 built as code (PR #2202 draft). T12 sealed keys (director custody). 19:31Z #2174 flag. SLA-audit disposition = main seat, next morning.
+- No board post — no material change; silence beats repetition. Nothing for Shawn.
+- Bookkeeping: watermark refreshed to 00:32Z.
+
+## PASS NOTE (2026-10-11 00:25Z — relay: NO_WORK, tip steady, cheap check only)
+
+- Entry verdict: NO_WORK (exit 0) — tip `f2c614a5386b65c84156c707a93a775ec51b907a` unchanged, confirmed independently via `git ls-remote` (full-SHA match). Cheap check only, per budget protocol. No pending build-list work.
+- LIVE-PLAN.md read: director already processed everything at 00:17Z (8 min prior) — no API fetch per budget protocol.
+- **Merge-protocol watch (every pass, no exceptions): VACUOUS** — live ref == watermark tip, zero merges to main since the watermark; nothing to verify for cross-seat review + scorecard receipts. No breaches, no #2175 post.
+- No board post — no material change; silence beats repetition. Nothing for Shawn.
+- **Standing carries (unchanged, unverified this pass):** STANDING ORDER 6103024453 (freeze; no main merges except the re-stamp). Shawn's 3 gates still pending. PR #2198 open draft. D30 built as code (PR #2202 draft). T12 sealed keys (director custody). 19:31Z #2174 flag. SLA-audit disposition = main seat, next morning.
+- Bookkeeping: watermark refreshed to 00:25Z.
+
+## PASS NOTE (2026-10-11 00:17Z — director: NO_WORK, tip steady, cheap check only)
+
+- Entry verdict: NO_WORK (exit 0) — tip `f2c614a5386b65c84156c707a93a775ec51b907a` unchanged, confirmed independently via live ref read (full-SHA match). Cheap check only, per budget protocol. No pending build-list work.
+- **Merge-protocol watch (every pass, no exceptions): VACUOUS** — live ref == watermark tip, zero merges to main since the watermark; nothing to verify for cross-seat review + scorecard receipts. No breaches, no #2175 post.
+- No board tail read (tip unchanged). #2175 watermark unchanged at 6103232629. No mission-state republish — the 23:17Z snapshot already names `f2c614a` with the standing orders; a republish would be a no-op commit.
+- No priority scores moved; all 10 priorities carry owners → no NEEDS-REWRITE.
+- **Standing carries (unchanged, unverified this pass):** STANDING ORDER 6103024453 (freeze; no main merges except the re-stamp). Shawn's 3 gates still pending. PR #2198 open draft. D30 built as code (PR #2202 draft). T12 sealed keys (director custody). 19:31Z #2174 flag. SLA-audit disposition = main seat, next morning.
+- No board post — no material change; silence beats repetition. Nothing for Shawn.
+- Bookkeeping: watermark refreshed to 00:17Z.
+
+## PASS NOTE (2026-10-11 00:03Z — director: NO_WORK, tip steady, cheap check only)
+
+- Entry verdict: NO_WORK (exit 0) — tip `f2c614a5386b65c84156c707a93a775ec51b907a` unchanged vs the 23:17Z TIP NOTE, confirmed independently via `git ls-remote` (full-SHA match). Cheap check only, per budget protocol. No pending build-list work.
+- **Merge-protocol watch (every pass, no exceptions): VACUOUS** — live ref == watermark tip, zero merges to main since the watermark; nothing to verify for cross-seat review + scorecard receipts. No breaches, no #2175 post.
+- No board tail read (tip unchanged). #2175 watermark unchanged at 6103232629. No mission-state republish — the 23:17Z snapshot already names `f2c614a` with the standing orders; a republish would be a no-op commit.
+- No priority scores moved; directive routing D6–D65 in-work across tonight's passes (per the 23:17Z note) → no NEEDS-REWRITE.
+- **Standing carries (unchanged, unverified this pass):** STANDING ORDER 6103024453 (freeze; no main merges except the re-stamp). Shawn's 3 gates still pending (branch-protection click state unverifiable from this token — 403 on the endpoint, carried as unknown). PR #2198 open draft. D30 built as code (PR #2202 draft). T12 sealed keys (director custody). 19:31Z #2174 flag. SLA-audit disposition = main seat, next morning.
+- No board post — no material change; silence beats repetition. Nothing for Shawn.
+- Bookkeeping: watermark refreshed to 00:03Z.
+
+## PASS NOTE (2026-10-10 23:55Z — relay: NO_WORK, tip steady, cheap check only)
+
+- Entry verdict: NO_WORK (exit 0) — tip `f2c614a5386b65c84156c707a93a775ec51b907a` unchanged vs the 23:47Z pass, confirmed independently via `git ls-remote` (full-SHA match). Cheap check only, per budget protocol. No pending build-list work.
+- **Merge-protocol watch (every pass, no exceptions): VACUOUS** — live ref == watermark tip, zero merges to main since the watermark; nothing to verify for cross-seat review + scorecard receipts. No breaches, no #2175 post.
+- No board tail read (tip unchanged). #2175 watermark unchanged at 6103232629. No board post — no material change; silence beats repetition. Nothing for Shawn.
+- **Standing carries (unchanged, unverified this pass):** STANDING ORDER 6103024453 (freeze; no main merges except the re-stamp). Shawn's 3 gates still pending (branch-protection click state unverifiable from this token — 403 on the endpoint, carried as unknown). PR #2198 open draft. D30 built as code (PR #2202 draft). T12 sealed keys (director custody). 19:31Z #2174 flag. SLA-audit disposition = main seat, next morning.
+- Bookkeeping: corrected stale nested `board_issue_2175.last_seen_comment_id` 6103190298 → 6103232629 in `team-relay-watermark.json` (the 23:17Z pass advanced it in the plan but not the JSON); watermark refreshed to 23:55:45Z.
+
+## PASS NOTE (2026-10-10 23:47Z — director: NO_WORK, tip steady, cheap check only)
+
+- Entry verdict: NO_WORK (exit 0) — tip `f2c614a5386b65c84156c707a93a775ec51b907a` unchanged vs the 23:32Z TIP NOTE, confirmed independently via `git ls-remote` (full-SHA match). Cheap check only, per budget protocol. No pending build-list work.
+- TIP NOTE bookkeeping verified healthy two passes running — no phantom WORK_AVAILABLE manufactured.
+- No board tail read (tip unchanged, no flagged priorities moved). #2175 watermark unchanged at 6103232629. No mission-state republish — the 23:17Z snapshot already names `f2c614a` with the standing orders; a republish would be a no-op commit.
+- No priority scores moved; all 10 priorities carry owners (directive routing D6–D65 in-work across passes, per the 23:17Z note) → no NEEDS-REWRITE.
+- **Standing carries (unchanged, unverified this pass):** STANDING ORDER 6103024453 (freeze; no main merges except the re-stamp). Shawn's 3 gates still pending (branch-protection click state unverifiable from this token — 403 on the endpoint, carried as unknown). PR #2198 open draft. D30 built as code (PR #2202 draft). Directive routing owners TBD → in-work. T12 sealed keys (director custody). 19:31Z #2174 flag. SLA-audit disposition = main seat, next morning.
+- No board post — no material change; silence beats repetition. Nothing for Shawn.
+
+## PASS NOTE (2026-10-10 23:32Z — director: NO_WORK, tip steady, cheap check only)
+
+- Entry verdict: NO_WORK (exit 0) — tip `f2c614a5386b65c84156c707a93a775ec51b907a` unchanged vs the 23:17Z TIP NOTE, confirmed independently via `git ls-remote` (full-SHA match). Cheap check only, per budget protocol. No pending build-list work.
+- TIP NOTE bookkeeping verified healthy this pass — the 23:17Z pass's correction is holding; no phantom WORK_AVAILABLE manufactured.
+- No board tail read (tip unchanged, no flagged priorities moved). #2175 watermark unchanged at 6103232629. No mission-state republish — the 23:17Z snapshot already names `f2c614a` with the standing orders; a republish would be a no-op commit.
+- No priority scores moved; all 10 priorities carry owners (directive routing D6–D64 in-work across passes, per the 23:17Z note) → no NEEDS-REWRITE.
+- **Standing carries (unchanged, unverified this pass):** STANDING ORDER 6103024453 (freeze; no main merges except the re-stamp). Shawn's 3 gates still pending (branch-protection click state unverifiable from this token — 403 on the endpoint, carried as unknown). PR #2198 open draft. D30 built as code (PR #2202 draft). Directive routing owners TBD → in-work. T12 sealed keys (director custody). 19:31Z #2174 flag. SLA-audit disposition = main seat, next morning.
+- No board post — no material change; silence beats repetition. Nothing for Shawn.
+## PASS NOTE (2026-10-11 00:10Z — relay: NO_WORK, tip steady, cheap check only)
+
+- Entry verdict: NO_WORK (exit 0) — tip `f2c614a5386b65c84156c707a93a775ec51b907a` unchanged, confirmed independently via `git ls-remote` (full-SHA match). Cheap check only, per budget protocol. No pending build-list work.
+- LIVE-PLAN.md read: director already processed everything at 00:03Z (7 min prior) — no API fetch per budget protocol. #2175 has 91 comments; watermark unchanged at 6103232629.
+- **Merge-protocol watch (every pass, no exceptions): VACUOUS** — live ref == watermark tip, zero merges to main since the watermark; nothing to verify for cross-seat review + scorecard receipts. No breaches, no #2175 post.
+- No board post — no material change; silence beats repetition. Nothing for Shawn.
+- **Standing carries (unchanged, unverified this pass):** STANDING ORDER 6103024453 (freeze; no main merges except the re-stamp). Shawn's 3 gates still pending. PR #2198 open draft. D30 built as code (PR #2202 draft). T12 sealed keys (director custody). 19:31Z #2174 flag. SLA-audit disposition = main seat, next morning.
+- Bookkeeping: watermark refreshed to 00:12Z.
+
 **How this works:** every worker reads this file fresh at the start of every shift. When the plan changes, it changes here once — everyone gets it. No stale orders, ever.
+ every worker reads this file fresh at the start of every shift. When the plan changes, it changes here once — everyone gets it. No stale orders, ever.
 **Canonical now:** issue #2154 (Current Mission State, director-maintained) + `BRAIN/CURRENT-MISSION-STATE.md` on branch `naya/mission-state` — this file is the director-pass working copy; the snapshot on `live/mission-state` is the worker activation kick. #1354 stays the coordination feed (the history).
 
 ## MACHINE ENFORCEMENT (live on main 2026-10-10 16:38Z)
@@ -373,14 +670,16 @@ Every worker reads this file fresh at the start of every shift. When the plan ch
 - **PR #2159 open** (accountability scorecard → weekly watchdog, mergeable_state unstable) — track; pairs with the #2158 team scoreboard.
 - **WHAT-IT-MEANS-TO-BE-NAYA.md**: PR #2145 open (43595a40, rebased on live tip); distilled-doctrine review PASS by relay — awaiting CI/merge. **WORKER-PROTOCOL.md**: PR #2146 open (ff067fb6).
 
-## TIP NOTE (freshest verified truth, 2026-10-10 23:17Z — director pass: bookkeeping corrected, tip f2c614a, STANDING directive + execution order registered, mission-state republished)
-- Main tip: `f2c614a5386b65c84156c707a93a775ec51b907a` — one merge since `e7dc6ce`: **PR #2200** `naya5/fix-test-imports-clean` (22:50:02Z, SoulSchoolAcademy web-flow click): absolute-import repairs in `tests/test_learning_receipt_verifier_bites.py` + `tests/test_nine_node_receipt_verifier.py` — exactly 2 files, minimal, no riders. **Freeze breach #3** (0 reviews, no scorecard receipt, merged ~6s after STANDING ORDER 6103024453 — watch receipt 6103031883). Enforcement = branch-protection checkboxes (Shawn's admin gate; endpoint 403 from this token → gate state unverifiable here, carried as unknown).
-- **CI at the tip: FULLY GREEN** (verified 23:02Z): `test` SUCCESS, `promote-and-prove` SUCCESS, all protocol/preflight/proof gates SUCCESS; behavioral jobs SKIPPED by design; Supabase Preview SKIPPED (standing branch-association issue). Brain-build battery on exact tip bytes (6103084849, independent): **3345 passed / 11 skipped / 2 xfailed**, brain-index `--check` CLEAN (1243 files). Both 22:30Z red classes healed. The #2200 diff touched only `tests/` — zero BRAIN/ deltas — #2189's re-stamp holds.
-- **Merge-protocol status:** STANDING ORDER 6103024453 (22:49:56Z — Shawn's word): no main merges until (1) branch protection on main (PR + 2 independent reviews + required checks, no direct pushes), (2) scorecard gate #2198 merged and set as a required check, (3) automation cut over to its own GitHub App identity. Only exception: the brain-index re-stamp repair.
-- **New STANDING (23:14–23:15Z):** CONTINUOUS 10/10 EXECUTION DIRECTIVE (6103208835, Shawn's authority) — standing law until every critical area is proven 10/10; priority order: Shawn's 3 gates → #2198 as required check → re-stamp + drift-check-first → directive queue D31→D32→D33→AER → drain merge queue under protocol. Naya 2 seat assignment: canonical intelligence — lessons reconciled, retrieval paths verified, merge queue drained under protocol once freeze lifts (trio #1767/#1774/#1777 first). NAYA 2 TEAM EXECUTION ORDER (6103222255): order #1 = route D6–D64 to owners tonight — active Naya 2 lane item, in-work.
-- Build list (brain-build lane): 823 items, zero pending, blocked genuinely (21:16Z basis; carried, not re-verified this pass).
-- #1354 commenting is platform-disabled at 2500 comments — receipts go on #2175. Watermark: #2175 → 6103232629 (director pass, 23:17Z).
-- Env note: direct `git push` unavailable (no credential helper); `live/mission-state` published via the Git Data API (blob → tree → commit → PATCH ref), verified ref SHA == created commit SHA.
+## TIP NOTE (freshest verified truth, 2026-10-11 03:44Z — relay pass: tip moved, verified, note advanced)
+- Main tip: `a6cf26db2ae920ae8e5428c90b6f182ecc5351ce` — two merges since the brain-build pass's `d522bfa`: PR #2249 merged 03:39:59Z ("fix(act): block NEEDS_EVIDENCE candidates from planning and execution") + PR #2273 merged 03:40:05Z ("feat(act): wire canonical value calculus into ACT selection"); both by SoulSchoolAcademy, author-declared Seat Naya 5. Relay merge-protocol watch 03:44Z: content PASSED on all three window merges (#2261/#2249/#2273 — Naya 4 cross-seat APPROVED review + `## SCORECARD` naming exact merged head, all pre-merge); freeze VIOLATED ×3 per STANDING ORDER 6103024453 (only re-stamp excepted) — consolidated flag 6105129005 on #2175. CI/brain-index verification at the new tip: not run by this lane (cheap check per budget protocol; owning lanes' batteries cover the tip).
+- Previous merge point (brain-build pass, ~03:40Z): `d522bfaaee29dc5f2c52482e5d4e15b094c41f92` — PR #2261 merged 03:34:32Z by SoulSchoolAcademy: "fix(gate): robust PR info resolution + paginated API reads" (3 commits on the PR branch: 099527fa2, 86419a2a8, d522bfaae; Naya-5 gate-iteration lane). Review + scorecard present on the PR: Naya 5 scorecard "APPROVED — 9.x" (6104910892, 03:11:46Z) + Naya 4 independent cross-seat review (6104921450, 03:13:20Z); 0 formal GitHub reviews (API). Exactly 1 file changed vs `1eb22de`: `.github/workflows/merge-consensus-gate.yml`. Freeze-tension recorded factually (merge during STANDING ORDER 6103024453, not the re-stamp exception); protocol disposition belongs to the relay's merge-protocol watch + director — no duplicate flag from this lane.
+- **CI at the tip: `test` SUCCESS, kernel protocol law + all protocol gates SUCCESS** (check-runs read live at `d522bfa`); behavioral jobs SKIPPED by design; Supabase Preview SKIPPED (standing branch-association issue). **`promote-and-prove` = FAILURE — classified, not new-defect:** the guard's observation step hit `gh: API rate limit exceeded for installation` (read from the job log, run 38108828905/job 114379932321); the fail-closed receipt fired as designed (`production-promotion-failure-receipt.json`, DEPLOY_FAILED, zero production mutation attempted). Cause = exhausted installation-token API budget during tonight's heavy gate-iteration traffic — not a code defect in the tip. Owning lane = gate lane (Naya 5; #2261 itself ships 403/429 retry for the consensus gate — adjacent hardening in flight). No second repair mechanism from this lane.
+- **Brain-index `--check` at the new tip: CLEAN** (scratch worktree at `d522bfa`, exit 0: "OK: index layer matches git tree (1243 files)"). Zero BRAIN/ deltas across the move — #2189's re-stamp holds. Drift-check-first (priority #3) honored on this tip.
+- **Merge-protocol status:** STANDING ORDER 6103024453 (22:49:56Z — Shawn's word): no main merges until (1) branch protection on main (PR + 2 independent reviews + required checks, no direct pushes), (2) scorecard gate #2198 merged and set as a required check, (3) automation cut over to its own GitHub App identity. Only exception: the brain-index re-stamp repair. Enforcement still = branch-protection checkboxes (Shawn's admin gate; endpoint 403 from this token → gate state unverifiable here, carried as unknown).
+- **New STANDING since 23:17Z:** NEVER WAIT, NEVER ASK (6103490776, Shawn) — all seats; SOLVE THE ROOT, NEVER PATCH THE SURFACE (6103500178, Shawn) — all seats; Brain Communication Architecture (Shawn, 2026-10-11): the Brain is a nervous system, not a library — specialty feeds per topic, real-time learning events, mandatory activation, sign-in accountability. CONTINUOUS 10/10 EXECUTION DIRECTIVE (6103208835) + TEAM EXECUTION ORDER (6103222255) still in force; directive routing D6–D64 in-work across passes.
+- **Directive queue state (verified this pass):** D31 = Naya 4 in flight; D32 = Naya 2 seat built as code — PR #2224 OPEN (full build, not draft), review-requested to Naya 4 (6104326130, 01:46:52Z) — ACTIVE lane, hands off; D35 = Naya 4 verified (6103944483, 00:53Z). Brain-build lane claim scan: no unowned pending item in this lane — build list 823 items, zero pending, 11 blocked genuinely (carried, not re-verified this pass). #2175 tail re-read this pass (newest 6104360962, 01:51:55Z): relay has not yet receipted the #2261 merge — its watch owns that receipt; no post from this lane (one lane, one receipt).
+- #1354 commenting is platform-disabled at 2500 comments — receipts go on #2175. No board post this pass — nothing in this lane's ownership beyond the verified tip move + classified red, both recorded here for the relay/director.
+- Env note: direct `git push` unavailable (no credential helper); `live/mission-state` published via the Git Data API (blob → tree → commit → PATCH ref), verified ref SHA == created commit SHA. Scratch worktrees go on workspace disk, never /tmp (512MB tmpfs; other lanes active).
 
 ## MASTER LOOP — SECOND TEMPLATE RUN (relayed 2026-10-10 15:30Z, authoritative seat assignments)
 **P1 FLOW:** Naya 4 fixes #2062 red tests then merges · Naya 5 rebases connect→learn→evolve (main's ts_bridge wins) · Naya 1 validates #2102/#2103/#2104 (learning moves on her stamp only) · Naya 5 rewires 12 worker briefs.
