@@ -102,5 +102,13 @@
   "predicted_at": "2026-10-10T21:46:00Z",
   "predicted_by": "Naya 5 (human-value-builder run)",
   "prediction_basis": "Fourteenth real-ledger accumulation run. Same fail-closed protocol as DEC-010: pre-register before any event append, append only git-verified merges with durable evidence pointers, close the join with an honest delta_v_actual (negative predictions where the verified record shows harm). Aggregate +4.0 = mean of honest per-decision predictions, not a wished number."
+ },
+ {
+  "decision_id": "DEC-20261011-HV-REALDATA-012",
+  "delta_v_predicted": 5.0,
+  "objective": "Accumulate the verified real events of 2026-10-10 21:41Z -> 2026-10-11 03:44Z: 12 merges on origin/main, all git-verified via anonymous git protocol (hashes + parents). 42891b16 (Shawn 21:57Z: cold-retrieve reconciliation, weakening-catch landed on main). 80e6d0cd (Shawn 22:02Z: mission-state-watch repair, never-pass step fixed, alerts rerouted). 86825af4 (22:05Z: convergence-bcd, 7 added files net, drill-bank intact). 408b8e16 (22:16Z: mission-state unstamped -> 10th brain-index drift, main red). 930b971b (22:16Z: revocation-linearization spec). f2a6aebc (22:34Z: merge-consensus gate report-only, proven working on #2201/#2188). e7dc6cea (22:44Z: tip-red repair re-stamp -> MAIN FULLY HEALED, 17/17 green). f2c614a5 (22:50Z: fix-test-imports-clean, pytest collection unblocked). 1eb22de4 (01:50Z: consensus gate re-run on comments, Naya-5 seat via API, substance covered but skipped the #2154 intent post during the freeze -> process gap named). d522bfaa (03:34Z: robust PR info resolution + paginated API reads, 403/429 retry). 4dd2fc0a (03:39Z: block NEEDS_EVIDENCE candidates from planning/execution, ACT safety fix). a6cf26db (03:40Z: wire canonical value calculus into ACT selection, capability real, behavioral proof pending). Per-decision predictions: +5.0, +6.0, +5.0, -3.0, +5.0, +6.0, +8.0, +6.0, +4.0, +5.0, +6.0, +7.0. Mean = +5.0. DAI scan: zero new human-attention demands (parked items + #2068 continuing demands, excluded; #1354 comment-locked). Anti-inflation: #2194 scored negative for verified rework; #2223 discounted for the skipped objection window; #2273 held at +7.0 (wiring real, outcomes unproven).",
+  "predicted_at": "2026-10-11T03:44:00Z",
+  "predicted_by": "Naya 5 (human-value-builder run)",
+  "prediction_basis": "Fifteenth real-ledger accumulation run. Fail-closed protocol: pre-registered before any event append, append only git-verified merges with durable evidence pointers, close the join with an honest delta_v_actual. CI at the new tip a6cf26db NOT claimed this run (merge-queue lane owns the Freshness Law re-proof); outcome join reflects the verified merge record, not CI state."
  }
 ]
