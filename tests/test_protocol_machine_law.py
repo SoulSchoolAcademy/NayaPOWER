@@ -7,6 +7,7 @@ and allow what they claim to allow.
 """
 import hashlib
 import time
+from pathlib import Path
 
 import pytest
 
@@ -14,6 +15,7 @@ from kernel.protocol.read_receipt import (
     AUTHORITY_QUESTIONS,
     ReadReceipt,
     REQUIRED_READING_PATHS,
+    current_document_sha256,
     grade_answer,
     issue_receipt,
 )
@@ -31,10 +33,7 @@ from kernel.protocol.takeover import (
 
 # ---------- read_receipt ----------
 
-DOC_SHAS = {
-    path: hashlib.sha256(("fixture:" + path).encode()).hexdigest()
-    for path in REQUIRED_READING_PATHS
-}
+DOC_SHAS = current_document_sha256(Path(__file__).resolve().parents[1])
 
 CORRECT = {
     "q1": "Shawn Vibert",
@@ -77,6 +76,11 @@ def test_receipt_bound_to_protocol_version_and_required_documents():
     assert r.protocol_version == "2026-10-11-READSET-V1"
     assert r.document_sha256 == DOC_SHAS
     assert r.verify(expected_document_sha256=DOC_SHAS)
+
+
+def test_required_document_hashes_cover_every_mandatory_source():
+    assert set(DOC_SHAS) == set(REQUIRED_READING_PATHS)
+    assert all(len(value) == 64 for value in DOC_SHAS.values())
 
 
 def test_receipt_fails_when_a_required_document_is_missing():
@@ -196,7 +200,6 @@ def _good_state():
         current_truth_location="coordination board #2175, mission state #2154, feed index #1599, current main",
         next_action="re-anchor on live main and check the board",
         receipt=issue_receipt("naya-9", CORRECT, DOC_SHAS),
-        current_document_sha256=DOC_SHAS,
     )
 
 
@@ -232,9 +235,9 @@ def test_cold_start_rejects_archived_coordination_feed():
     assert not res.passed
 
 
-def test_cold_start_requires_current_document_hashes():
+def test_cold_start_requires_complete_current_document_attestations():
     s = _good_state()
-    s.current_document_sha256 = {}
+    s.receipt = issue_receipt("naya-9", CORRECT, {})
     res = run_cold_start(s)
     assert not res.passed
 
