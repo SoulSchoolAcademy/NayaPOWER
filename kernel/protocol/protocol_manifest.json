@@ -3,6 +3,7 @@
     "read_root_protocol_md_in_full",
     "read_agents_md_in_full",
     "read_constitution_and_laws_index_in_full",
+    "read_ratified_team_naya_operating_protocol_in_full",
     "read_portable_activation_protocol_smart_note_contract_and_activation_manifest",
     "read_activation_kit_map_and_current_source_precedence_reconciliation",
     "read_nonstop_loop_ai_and_machine_forms",
