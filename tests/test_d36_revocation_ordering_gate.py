@@ -271,7 +271,12 @@ def test_sabotage_blind_validation_engine_fails_canary():
         }))
 
 
-def test_shipped_manifest_is_dormant():
+def test_shipped_manifest_is_wellformed_and_honest():
+    """The shipped manifest must parse and judge without BROKEN — its
+    status (DORMANT/PASS/VIOLATION) is the engine's honest word, never
+    a pinned expectation. Pinning it to DORMANT would turn the owning
+    lane's first real claim into a unit-test failure instead of a gate
+    verdict (the gate step must be the thing that blocks)."""
     code, report = run_gate(str(TOOLS / "d36_revocation_ordering_manifest.json"))
-    assert code == EXIT_PASS
-    assert report["status"] == "DORMANT"
+    assert code in (EXIT_PASS, EXIT_VIOLATION), report
+    assert report["status"] in ("DORMANT", "PASS", "VIOLATION")
