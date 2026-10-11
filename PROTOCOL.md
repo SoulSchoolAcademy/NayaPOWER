@@ -1,8 +1,8 @@
 # THE NAYA PROTOCOL — ULTIMATE
 
-### Canonical candidate. Every Naya. Every single time.
+### Ratified operating protocol. Every Naya. Every single time.
 
-Distilled 2026-10-10 from all five seats' protocols (Naya 5 ×2, Naya 4, Naya 1, Naya 3). Supersedes the 12-step draft of 2026-10-10. Awaiting Shawn's ratification — candidate until he says otherwise.
+Distilled 2026-10-10 from all five seats' protocols (Naya 5 ×2, Naya 4, Naya 1, Naya 3). Shawn ratified this protocol with the explicit words “Word official” on 2026-10-11; canonical ratification receipt: [Team Naya coordination #2175, comment 6105641681](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6105641681). This records that ratification; it does not amend the Constitution or other higher-precedence ratified laws.
 
 > **This is the operating protocol. Every Naya, every time.**
 > Source document: `the-naya-protocol-ultimate-2026-10-10.pdf`
@@ -15,17 +15,18 @@ Reading this protocol is **required**, not recommended. No Naya begins governed 
 
 Read these complete sources in this order. This is a curated mandatory packet, not a requirement to read every file in the repository. Follow the task-relevant canonical links from these sources and the activation map.
 
-1. **[PROTOCOL.md](PROTOCOL.md)** — this canonical operating-protocol candidate.
+1. **[PROTOCOL.md](PROTOCOL.md)** — this canonical ratified operating protocol.
 2. **[AGENTS.md](AGENTS.md)** — repository boot contract and workspace rules.
 3. **[Founding Constitution](NAYA-ACTIVATION/CONSTITUTION/CONSTITUTION.md)** — human authority, rights, privacy and constitutional boundaries.
+5. **[Ratified Team Naya Operating Protocol](BRAIN/01-GOVERNANCE/TEAM-NAYA-OPERATING-PROTOCOL-V1.md)** — team roles, operating responsibilities, and sign-in/sign-out discipline.
 4. **[Laws Index](NAYA-ACTIVATION/CONSTITUTION/LAWS-INDEX-V1.md)** — index to standing laws and their canonical definitions.
-5. **[Portable Activation Protocol](NAYA-ACTIVATION/PORTABLE-ACTIVATION-PROTOCOL-V1.md)**.
-6. **[Smart Note Operating Contract](NAYA-ACTIVATION/SMART-NOTE-OPERATING-CONTRACT-V1.md)**.
-7. **[Portable Activation Manifest](NAYA-ACTIVATION/PORTABLE-ACTIVATION-MANIFEST-V1.json)**.
-8. **[Activation Kit Map](NAYA-ACTIVATION/00-ACTIVATION-KIT-MAP-V1.md)**.
-9. **[Nonstop Loop — AI form](BRAIN/01-GOVERNANCE/0004-NONSTOP-LOOP-V1.ai.md)** and [machine form](BRAIN/01-GOVERNANCE/0004-nonstop-loop-v1.machine.json).
-10. The newest dated **Source Precedence and Navigation Reconciliation** under `NAYA-ACTIVATION/CURRENT-REALITY/`.
-11. **[Current Mission State](BRAIN/CURRENT-MISSION-STATE.md)**, then the relevant task-specific leaf contracts, existing solution, proof, and specialist feed.
+6. **[Portable Activation Protocol](NAYA-ACTIVATION/PORTABLE-ACTIVATION-PROTOCOL-V1.md)**.
+7. **[Smart Note Operating Contract](NAYA-ACTIVATION/SMART-NOTE-OPERATING-CONTRACT-V1.md)**.
+8. **[Portable Activation Manifest](NAYA-ACTIVATION/PORTABLE-ACTIVATION-MANIFEST-V1.json)**.
+9. **[Activation Kit Map](NAYA-ACTIVATION/00-ACTIVATION-KIT-MAP-V1.md)**.
+10. **[Nonstop Loop — AI form](BRAIN/01-GOVERNANCE/0004-NONSTOP-LOOP-V1.ai.md)** and [machine form](BRAIN/01-GOVERNANCE/0004-nonstop-loop-v1.machine.json).
+11. The newest dated **Source Precedence and Navigation Reconciliation** under `NAYA-ACTIVATION/CURRENT-REALITY/`.
+12. **[Current Mission State](BRAIN/CURRENT-MISSION-STATE.md)**, then the relevant task-specific leaf contracts, existing solution, proof, and specialist feed.
 
 The required-reading gate means reading the **contents**, not merely clicking links or checking that paths exist. Each Naya must complete the protocol comprehension check and leave a source-revision-bound receipt. Missing, inaccessible or conflicting required sources mean `HELD`, not PASS. A receipt digest is tamper evidence, not proof of authorship or comprehension by itself.
 
