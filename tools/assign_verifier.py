@@ -47,7 +47,10 @@ import sys
 import urllib.request
 
 API = "https://api.github.com"
-SEAT_RE = re.compile(r"naya\s*([2345])\b", re.I)
+SEAT_RE = re.compile(r"seat:\s*naya\s*([2345])\b", re.I)
+# The merge-consensus gate uses an unanchored seat pattern for review/scorecard
+# comments; this mirror must match the GATE, not the assignment parser above.
+GATE_SEAT_RE = re.compile(r"naya\s*([2345])\b", re.I)
 SEATS = (2, 3, 4, 5)
 LABEL = "needs-verification"
 ASSIGN_MARKER = "Verifier assignment"
@@ -129,7 +132,11 @@ def gate_would_accept_review(comment_body, author_seat):
     body = comment_body or ""
     if "[NAYA" in body.upper() and "REVIEW" in body.upper() \
             and "APPROVED" in body.upper():
-        s = seat_of(body)
+        # GATE-faithful: the real gate's seat detection is unanchored, so the
+        # mirror is too. seat_of() is the anchored author-seat parser and
+        # must not be used here.
+        m = GATE_SEAT_RE.search(body)
+        s = int(m.group(1)) if m else None
         if s and s != author_seat:
             return True
     return False
@@ -163,6 +170,11 @@ def self_test():
     assert seat_of("seat: naya 2") == 2
     assert seat_of("no seat here") is None
     assert seat_of("Seat: Coda 1") is None  # only Naya 2-5 are seats
+    # Regression (PR #2214 review): prose mentions must not be misparsed as
+    # the author seat. The declaration wins; prose-only means no seat found
+    # (fail-closed in main(), never misattributed).
+    assert seat_of("Builds on the draft Naya 4 reviewed.\n\nSeat: Naya 5") == 5
+    assert seat_of("Naya 4 reviewed the draft.") is None
 
     # 3. THE critical invariant: the assignment comment can never satisfy
     #    the merge-consensus gate's review detection, for any author.

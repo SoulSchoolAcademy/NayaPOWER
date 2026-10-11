@@ -16,6 +16,9 @@ jobs:
   assign:
     name: Assign independent verifier
     runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
     # On label events, only act when the needs-verification label is added
     # (the action itself adds that label; idempotency in the script prevents
     # a loop).
