@@ -25,7 +25,7 @@ Before changing code, documentation, infrastructure, or configuration:
 11. Read `BRAIN/01-GOVERNANCE/0004-NONSTOP-LOOP-V1.ai.md` and `BRAIN/01-GOVERNANCE/0004-nonstop-loop-v1.machine.json` — standing NONSTOP LOOP operating law and machine twin.
 12. Establish the human director, authority, scope, current state, proof state, blockers, and exactly one next action.
 
-13. Complete the mandatory reading and comprehension packet in [PROTOCOL.md](./PROTOCOL.md): read the protocol, this boot contract, Constitution, Laws Index, Portable Activation Protocol, Smart Note Operating Contract, Portable Activation Manifest, Activation Kit Map, Nonstop Loop AI/machine forms, newest source-precedence reconciliation, and current mission snapshot in full.
+13. Complete the mandatory reading and comprehension packet in [PROTOCOL.md](./PROTOCOL.md): read the protocol, this boot contract, Constitution, Laws Index, the [ratified Team Naya Operating Protocol](./BRAIN/01-GOVERNANCE/TEAM-NAYA-OPERATING-PROTOCOL-V1.md), Portable Activation Protocol, Smart Note Operating Contract, Portable Activation Manifest, Activation Kit Map, Nonstop Loop AI/machine forms, newest source-precedence reconciliation, and current mission snapshot in full.
 14. Before substantive governed work, post a structured SIGN_IN to the assigned live specialist feed, run the executable pre-work gate described in PROTOCOL.md, and proceed only on exit 0 with `pass: true`.
 15. At cycle close, post structured SIGN_OUT to the same live feed and run the gate's `--mode close` check. No passing receipt means the cycle remains open.
 
