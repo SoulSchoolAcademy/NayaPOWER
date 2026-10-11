@@ -196,3 +196,131 @@ def test_adapter_authority_tracks_grant():
                            DEP_SOURCE_SHA: "s1",
                            DEP_POLICY_REF: "pol1"})
     assert v.is_current
+
+
+# --- validator gaps: empty-deps fail closed ----------------------------------
+
+def test_empty_dependencies_fail_closed_needs_evidence():
+    """A proof with no dependencies is NEEDS_EVIDENCE, not a vacuous pass."""
+    p = _proof(dependencies=[])
+    v = validate_proof(p, {DEP_SOURCE_SHA: "aaa", DEP_POLICY_REF: "v1"})
+    assert v.status == ProofStatus.NEEDS_EVIDENCE
+    assert not v.is_current
+    assert "NEEDS_EVIDENCE" in v.reason()
+
+
+def test_boundary_blocks_proof_needing_evidence():
+    b = check_execution_boundary(
+        [_proof(dependencies=[])],
+        {DEP_SOURCE_SHA: "aaa", DEP_POLICY_REF: "v1"})
+    assert not b.proceed
+    assert any("NEEDS_EVIDENCE" in x for x in b.blockers())
+
+
+def test_reverify_refuses_to_refresh_evidence_free_proof():
+    """NEEDS_EVIDENCE cannot be laundered into current via reverify."""
+    p = _proof(dependencies=[])
+    v = validate_proof(p, {})
+    assert v.status == ProofStatus.NEEDS_EVIDENCE
+    v2 = reverify(p, {DEP_SOURCE_SHA: "x"})
+    assert v2.status == ProofStatus.NEEDS_EVIDENCE
+
+
+# --- validator gaps: scope-based invalidation ---------------------------------
+
+def test_material_scopes_skips_immaterial_scoped_dependency():
+    """A tip change is immaterial when only protocol_text is material."""
+    p = ProofRecord(
+        proof_id="p-scope", proof_type="test",
+        dependencies=[
+            ProofDependency(DEP_POLICY_REF, "v1", scope="protocol_text"),
+            ProofDependency(DEP_SOURCE_SHA, "tip-old", scope="protocol_files"),
+        ],
+    )
+    # Tip moved, but caller declares only protocol_text material -> current.
+    v = validate_proof(
+        p,
+        {DEP_POLICY_REF: "v1", DEP_SOURCE_SHA: "tip-new"},
+        material_scopes={"protocol_text"},
+    )
+    assert v.is_current, f"unexpected: {v.reason()}"
+    # Without the scope filter, the same tip move stales the proof.
+    v2 = validate_proof(
+        p, {DEP_POLICY_REF: "v1", DEP_SOURCE_SHA: "tip-new"})
+    assert not v2.is_current
+
+
+def test_material_scopes_empty_scope_always_checked():
+    """Dependencies with empty scope are global: always checked."""
+    p = _proof(dependencies=[
+        ProofDependency(DEP_SOURCE_SHA, "aaa"),  # empty scope
+        ProofDependency(DEP_POLICY_REF, "v1", scope="rubric"),
+    ])
+    v = validate_proof(
+        p, {DEP_SOURCE_SHA: "bbb", DEP_POLICY_REF: "v1"},
+        material_scopes={"rubric"})
+    assert not v.is_current
+    assert v.stale_dependencies[0].kind == DEP_SOURCE_SHA
+
+
+def test_material_scopes_none_preserves_old_behavior():
+    """material_scopes=None checks every dependency (backward compatible)."""
+    p = ProofRecord(
+        proof_id="p-scope2", proof_type="test",
+        dependencies=[
+            ProofDependency(DEP_POLICY_REF, "v1", scope="protocol_text"),
+            ProofDependency(DEP_SOURCE_SHA, "tip-old", scope="protocol_files"),
+        ],
+    )
+    v = validate_proof(p, {DEP_POLICY_REF: "v1", DEP_SOURCE_SHA: "tip-new"})
+    assert not v.is_current
+
+
+# --- adapters: no fabricated dependencies --------------------------------------
+
+def test_adapter_read_receipt_omits_tip_when_unknown():
+    """Without a known read-time tip, no tip dep is fabricated."""
+    p = proof_from_read_receipt(_FakeReceipt())
+    kinds = p.dependency_kinds()
+    assert kinds == [DEP_POLICY_REF], f"unexpected deps: {kinds}"
+    # A version-only proof validates against version alone.
+    v = validate_proof(p, {DEP_POLICY_REF: _FakeReceipt.protocol_version,
+                           DEP_SOURCE_SHA: "any-tip"})
+    assert v.is_current
+
+
+def test_adapter_scorecard_skips_empty_values():
+    s = _FakeScorecard()
+    p = proof_from_scorecard(s, source_sha="", policy_ref="")
+    assert p.dependency_kinds() == []
+    v = validate_proof(p, {DEP_SOURCE_SHA: "x"})
+    assert v.status == ProofStatus.NEEDS_EVIDENCE
+
+
+def test_resolve_current_state_reports_live_world():
+    from proof_expiry import resolve_current_state
+    state = resolve_current_state()
+    # Policy ref is a module constant: always resolves.
+    assert state.get("policy_ref"), "policy_ref must always resolve"
+    # Tip resolves inside a git checkout; best-effort otherwise.
+    tip = state.get("source_sha", "")
+    assert tip == "" or (len(tip) == 40 and all(
+        c in "0123456789abcdef" for c in tip)), \
+        f"malformed tip: {tip!r}"
+
+
+def test_resolve_current_state_never_raises():
+    from proof_expiry import resolve_current_state
+    # A bogus root must not raise: fail-closed downstream, not here.
+    state = resolve_current_state(repo_root="/nonexistent-path-xyz")
+    assert isinstance(state, dict)
+
+
+def test_validate_does_not_resurrect_invalid_proof():
+    """INVALID is terminal: validate_proof must not clear it."""
+    p = _proof()
+    mark_invalid(p, "grant revoked")
+    v = validate_proof(p, {DEP_SOURCE_SHA: "aaa", DEP_POLICY_REF: "v1"})
+    assert v.status == ProofStatus.INVALID
+    assert not v.is_current
+    assert p.status == ProofStatus.INVALID

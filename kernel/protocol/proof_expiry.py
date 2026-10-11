@@ -19,28 +19,32 @@ Statuses:
   CURRENT_UNTIL_RECHECK — all dependencies match current state. Usable.
   STALE                 — a dependency changed. Recheck/reverify required.
   INVALID               — proof was wrong at issue, or a dependency was revoked.
+  NEEDS_EVIDENCE        — the proof declares no dependencies, so freshness
+                          cannot be established. Fail closed: do not proceed.
 
 This module extends the existing engine (read_receipt, cold_start_gate,
 quality_gate, act_pipeline). It does not replace them.
 
 INTEGRATION POINTS (Law 12 enforcement at execution boundaries):
-  1. cold_start_gate.run_cold_start(..., current_protocol_version=...,
-     current_source_sha=...) — boot boundary. A cryptographically valid
-     read receipt is refused if the protocol version moved since it was
-     issued. Backward compatible: without the optional params, behavior
-     is unchanged.
-  2. act_pipeline.execute_plan(..., law12_state=..., law12_proof_time=...)
-     — execution boundary. After the existing time-based check, the fresh
-     authority grant is validated as a ProofRecord. Stale grant refuses
-     with LAW_AUTHORITY_PROOF_STALE. Backward compatible: without both
-     params, the check is skipped.
-  3. quality_gate.check_delivery(..., law12_state=..., law12_proof_time=...)
-     — delivery boundary. A scorecard whose scored code moved is refused
-     as stale. Backward compatible: without both params, behavior unchanged.
+  1. cold_start_gate.run_cold_start(...) — boot boundary. Current world
+     state auto-resolves (resolve_current_state); explicit params override.
+     A cryptographically valid read receipt is refused if the protocol
+     version moved since it was issued. Fires on every boot.
+  2. act_pipeline.execute_plan(..., law12_proof_time=...) — execution
+     boundary. The PLAN's authority grant is validated as a ProofRecord
+     against auto-resolved current state (plus the fresh re-resolution's
+     grant standing). Stale grant refuses with LAW_AUTHORITY_PROOF_STALE.
+     Without law12_proof_time the check is skipped (staleness cannot be
+     established without proof-time values — precise, never speculative).
+  3. quality_gate.check_delivery(..., law12_proof_time=...) — delivery
+     boundary. A scorecard whose scored code moved is refused as stale.
+     Current state auto-resolves; without law12_proof_time the check is
+     skipped.
 
-All three integrations are opt-in and precise: they only fire when the
-caller supplies both proof-time and current values, and they only
-invalidate on the dependencies the proof actually declared.
+Scope-based precision: each dependency may carry a scope; validate_proof
+accepts material_scopes to skip dependencies immaterial to a given
+decision (e.g. a tip change is immaterial when the protocol text is
+byte-identical). Dependencies with empty scope are always checked.
 """
 from __future__ import annotations
 
@@ -53,6 +57,7 @@ class ProofStatus(Enum):
     CURRENT_UNTIL_RECHECK = "CURRENT_UNTIL_RECHECK"
     STALE = "STALE"
     INVALID = "INVALID"
+    NEEDS_EVIDENCE = "NEEDS_EVIDENCE"
 
 
 # Well-known dependency kinds. Custom kinds are allowed — the validator
@@ -109,6 +114,10 @@ class ProofValidation:
     def reason(self) -> str:
         if self.status == ProofStatus.CURRENT_UNTIL_RECHECK:
             return "All dependencies match current state."
+        if self.status == ProofStatus.NEEDS_EVIDENCE:
+            return ("NEEDS_EVIDENCE: proof declares no dependencies — "
+                    "freshness cannot be established. Supply proof-time "
+                    "dependencies or re-issue the proof.")
         parts = []
         for d in self.stale_dependencies:
             parts.append(f"{d.kind} changed (was {d.value[:12]})")
@@ -118,7 +127,9 @@ class ProofValidation:
 
 
 def validate_proof(proof: ProofRecord,
-                   current_state: dict[str, str]) -> ProofValidation:
+                   current_state: dict[str, str],
+                   material_scopes: set[str] | frozenset[str] | None = None
+                   ) -> ProofValidation:
     """Check each dependency against current state.
 
     current_state maps dependency kind -> current value.
@@ -126,14 +137,47 @@ def validate_proof(proof: ProofRecord,
     A dependency with no current value is missing (cannot confirm) — the
     proof is STALE, not current, because freshness cannot be established.
 
-    Precise invalidation: only the dependencies listed on the proof are
-    checked. An unrelated world change (a kind not in the proof's list)
-    cannot invalidate this proof.
+    A proof with NO dependencies is NEEDS_EVIDENCE (fail closed): a
+    dependency-free proof is a vacuous pass — freshness cannot be
+    established from nothing, so the boundary must not proceed on it.
+
+    Precise invalidation, two levels:
+    1. Kind level: only the dependencies listed on the proof are checked.
+       An unrelated world change (a kind not in the proof's list) cannot
+       invalidate this proof.
+    2. Scope level: when material_scopes is given, dependencies carrying a
+       non-empty scope outside that set are skipped — the caller declares
+       which scopes are material to THIS decision (e.g. a tip change is
+       immaterial when the protocol text is byte-identical). Dependencies
+       with empty scope are always checked (global to the proof).
+       material_scopes=None (default) checks every dependency.
     """
+    if proof.status == ProofStatus.INVALID:
+        # INVALID is terminal: mark_invalid means the proof was wrong at
+        # issue or a dependency was revoked. Re-validation must not
+        # resurrect it — issue a new proof instead.
+        return ProofValidation(
+            proof_id=proof.proof_id,
+            status=ProofStatus.INVALID,
+        )
+
+    if not proof.dependencies:
+        proof.status = ProofStatus.NEEDS_EVIDENCE
+        proof.invalidated_by = ["NEEDS_EVIDENCE: no dependencies declared"]
+        return ProofValidation(
+            proof_id=proof.proof_id,
+            status=ProofStatus.NEEDS_EVIDENCE,
+        )
+
     stale: list[ProofDependency] = []
     missing: list[str] = []
+    skipped_scopes: list[str] = []
 
     for dep in proof.dependencies:
+        if (material_scopes is not None and dep.scope
+                and dep.scope not in material_scopes):
+            skipped_scopes.append(f"{dep.kind}:{dep.scope}")
+            continue
         current = current_state.get(dep.kind)
         if current is None:
             missing.append(dep.kind)
@@ -194,40 +238,49 @@ def reverify(proof: ProofRecord, current_state: dict[str, str],
 # Adapters: build ProofRecords from existing proof types.
 # ---------------------------------------------------------------------------
 
-def proof_from_read_receipt(receipt, source_sha: str) -> ProofRecord:
+def proof_from_read_receipt(receipt, source_sha: str | None = None) -> ProofRecord:
     """A read receipt is valid for the protocol version and tip it was read at.
 
     If the protocol version changes, the receipt is stale (re-read required).
     If the tip moves, the receipt is NOT automatically stale — the protocol
     text the agent read may be unchanged. Tip staleness is scoped: only
     invalidate on tip change if the protocol files themselves changed.
-    Here we record the tip as a dependency with scope "protocol_files" so
-    callers can decide materiality.
+    The tip dependency is recorded with scope "protocol_files" (so callers
+    can declare it immaterial via material_scopes) and ONLY when the caller
+    actually knows the read-time tip — a fabricated "" would make the check
+    vacuous (self-referential match) or spuriously stale.
     """
+    deps = [
+        ProofDependency(DEP_POLICY_REF, receipt.protocol_version,
+                        scope="protocol_text"),
+    ]
+    if source_sha:
+        deps.append(ProofDependency(DEP_SOURCE_SHA, source_sha,
+                                    scope="protocol_files"))
     return ProofRecord(
         proof_id=f"read-receipt:{receipt.agent_id}:{receipt.receipt_hash[:12]}",
         proof_type="read_receipt",
-        dependencies=[
-            ProofDependency(DEP_POLICY_REF, receipt.protocol_version,
-                            scope="protocol_text"),
-            ProofDependency(DEP_SOURCE_SHA, source_sha,
-                            scope="protocol_files"),
-        ],
+        dependencies=deps,
         issued_at=receipt.issued_at,
     )
 
 
-def proof_from_scorecard(scorecard, source_sha: str,
+def proof_from_scorecard(scorecard, source_sha: str = "",
                          policy_ref: str = "") -> ProofRecord:
     """A scorecard is valid for the code it scored and the policy in force.
+
+    Empty values are skipped, not recorded: a dependency on "" can never
+    honestly match. A proof left with no dependencies validates as
+    NEEDS_EVIDENCE (fail closed).
 
     Evidence refs (test runs, artifacts) are recorded when present in the
     evidence field; callers may add DEP_EVIDENCE_REF dependencies for
     specific run IDs they can re-resolve.
     """
-    deps = [
-        ProofDependency(DEP_SOURCE_SHA, source_sha, scope="scored_code"),
-    ]
+    deps = []
+    if source_sha:
+        deps.append(ProofDependency(DEP_SOURCE_SHA, source_sha,
+                                    scope="scored_code"))
     if policy_ref:
         deps.append(ProofDependency(DEP_POLICY_REF, policy_ref,
                                     scope="scoring_rubric"))
@@ -238,23 +291,30 @@ def proof_from_scorecard(scorecard, source_sha: str,
     )
 
 
-def proof_from_authority(authority_receipt_id: str, source_sha: str,
-                         policy_ref: str) -> ProofRecord:
+def proof_from_authority(authority_receipt_id: str, source_sha: str = "",
+                         policy_ref: str = "") -> ProofRecord:
     """An authority grant is valid while the grant stands and policy holds.
 
     Revocation is modeled as INVALID (not STALE): mark_invalid when the
     grant is revoked. The execution door must check revocation at execution
     time, not just at planning time.
+
+    Empty source_sha/policy_ref are skipped (see proof_from_scorecard).
     """
+    deps = [
+        ProofDependency(DEP_AUTHORITY_RECEIPT, authority_receipt_id,
+                        scope="grant"),
+    ]
+    if source_sha:
+        deps.append(ProofDependency(DEP_SOURCE_SHA, source_sha,
+                                    scope="grant_scope"))
+    if policy_ref:
+        deps.append(ProofDependency(DEP_POLICY_REF, policy_ref,
+                                    scope="grant_policy"))
     return ProofRecord(
         proof_id=f"authority:{authority_receipt_id}",
         proof_type="authority",
-        dependencies=[
-            ProofDependency(DEP_AUTHORITY_RECEIPT, authority_receipt_id,
-                            scope="grant"),
-            ProofDependency(DEP_SOURCE_SHA, source_sha, scope="grant_scope"),
-            ProofDependency(DEP_POLICY_REF, policy_ref, scope="grant_policy"),
-        ],
+        dependencies=deps,
     )
 
 
@@ -277,15 +337,90 @@ class BoundaryCheck:
 
 
 def check_execution_boundary(proofs: list[ProofRecord],
-                             current_state: dict[str, str]) -> BoundaryCheck:
+                             current_state: dict[str, str],
+                             material_scopes: set[str] | frozenset[str] | None = None
+                             ) -> BoundaryCheck:
     """Law 12 enforcement at a consequential execution boundary.
 
-    Validate every proof the action depends on. If ANY is stale or invalid,
-    do not proceed on the old proof — recheck or reverify first.
+    Validate every proof the action depends on. If ANY is stale, invalid,
+    or needs evidence, do not proceed on the old proof — recheck or
+    reverify first.
 
     This is the check the spec requires "at every consequential execution
     boundary": plan → execute, merge, deploy, promote, authorize.
     """
-    validations = [validate_proof(p, current_state) for p in proofs]
+    validations = [validate_proof(p, current_state, material_scopes)
+                   for p in proofs]
     proceed = all(v.is_current for v in validations)
     return BoundaryCheck(proceed=proceed, validations=validations)
+
+
+def resolve_current_state(repo_root: str | None = None) -> dict[str, str]:
+    """Best-effort resolution of the current world state for Law 12 checks.
+
+    Returns {"source_sha": <git HEAD or "">, "policy_ref": <PROTOCOL_VERSION>}.
+    The policy ref is a module constant and always resolves; the tip needs
+    a git checkout and is best-effort. Never raises: on git failure the tip
+    is "" (callers then treat source_sha deps as missing -> STALE, fail
+    closed — honest, never a silent pass).
+    """
+    state: dict[str, str] = {}
+    state["policy_ref"] = _current_protocol_version()
+    tip = _git_head(repo_root)
+    if tip:
+        state["source_sha"] = tip
+    return state
+
+
+def _current_protocol_version() -> str:
+    """Current PROTOCOL_VERSION, robust to however this module was imported.
+
+    proof_expiry is imported both as kernel.protocol.proof_expiry and as a
+    top-level module (tests insert kernel/protocol on sys.path), so the
+    read_receipt module is located by relative import first, then by
+    absolute module name. Returns "" only if every path fails.
+    """
+    import importlib
+    for name in (
+            __package__ + ".read_receipt" if __package__ else "",
+            "read_receipt",
+            "kernel.protocol.read_receipt",
+    ):
+        if not name:
+            continue
+        try:
+            mod = importlib.import_module(name)
+            v = getattr(mod, "PROTOCOL_VERSION", "")
+            if isinstance(v, str) and v:
+                return v
+        except Exception:
+            continue
+    return ""
+
+
+def _git_head(repo_root: str | None = None) -> str:
+    """Best-effort `git rev-parse HEAD`. Returns "" on any failure."""
+    import subprocess
+    from pathlib import Path
+    candidates: list[str] = []
+    if repo_root:
+        candidates.append(repo_root)
+    # The repo containing this file: kernel/protocol/proof_expiry.py -> up 3.
+    try:
+        candidates.append(str(Path(__file__).resolve().parents[2]))
+    except Exception:
+        pass
+    candidates.append(".")
+    for cwd in candidates:
+        try:
+            r = subprocess.run(
+                ["git", "rev-parse", "HEAD"],
+                cwd=cwd, capture_output=True, text=True, timeout=10,
+            )
+            head = (r.stdout or "").strip()
+            if r.returncode == 0 and len(head) == 40 and all(
+                    c in "0123456789abcdef" for c in head):
+                return head
+        except Exception:
+            continue
+    return ""

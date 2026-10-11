@@ -49,14 +49,20 @@ def check_delivery(scorecard: Scorecard | None, builder_id: str,
     if scorecard is None:
         return QualityResult(False, 0.0, DELIVERY_FLOOR,
                              ["No scorecard. No receipt, no delivery."])
-    # Law 12: a scorecard is a proof about specific code under a specific
-    # rubric. law12_proof_time holds the world values when the scorecard was
-    # made; law12_state holds current values. If the scored code moved, the
-    # scorecard is STALE — rescore, don't deliver on history.
-    # (law12_state without law12_proof_time cannot establish staleness, so
-    # the check is skipped — precise, never speculative.)
-    if law12_state is not None and law12_proof_time is not None:
-        from .proof_expiry import proof_from_scorecard, validate_proof
+    # Law 12 (ACTIVE): a scorecard is a proof about specific code under a
+    # specific rubric. law12_proof_time holds the world values when the
+    # scorecard was made (supplied by whoever scored). Current state
+    # auto-resolves when not supplied, so the check fires with proof-time
+    # alone — no second opt-in. If the scored code moved, the scorecard is
+    # STALE — rescore, don't deliver on history.
+    # (Without law12_proof_time, staleness cannot be established — the check
+    # is skipped. Precise, never speculative.)
+    if law12_proof_time is not None:
+        from .proof_expiry import (
+            proof_from_scorecard, validate_proof, resolve_current_state,
+        )
+        if law12_state is None:
+            law12_state = resolve_current_state()
         proof = proof_from_scorecard(
             scorecard,
             source_sha=law12_proof_time.get("source_sha", ""),

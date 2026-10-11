@@ -639,7 +639,8 @@ def check_protected_gates(action_text: str) -> AdapterResult:
 
 
 def check_quality_gate(
-    scores: dict, weights: dict | None = None
+    scores: dict, weights: dict | None = None,
+    scored_sha: str | None = None, scored_policy: str | None = None,
 ) -> AdapterResult:
     """Enforce the 9.0 delivery floor, per area, never averaged.
 
@@ -647,6 +648,13 @@ def check_quality_gate(
     (PR #1807 — canonical). The local fallback enforces the floor rule only;
     the full delivery-scorecard checks (evidence, weakest point, independent
     verifier) live in the canonical module.
+
+    Law 12 (ACTIVE): pass scored_sha (the tip the scores were earned
+    against) and/or scored_policy (the rubric version in force) to have the
+    scorecard validated as a ProofRecord against current state. A scorecard
+    whose code moved is refused as STALE — rescore, don't deliver on
+    history. When neither is given, the Law 12 check is skipped (staleness
+    cannot be established without proof-time values).
     """
     check_delivery = _try_kernel_attr("quality_gate", "check_delivery")
     Scorecard = _try_kernel_attr("quality_gate", "Scorecard")
@@ -657,7 +665,14 @@ def check_quality_gate(
                 scores=dict(scores), weights=dict(weights or {}),
                 weakest_point="adapter-call", verified_by="adapter",
             )
-            r = check_delivery(sc, builder_id="protocol_gates-adapter")
+            law12_kw: dict = {}
+            if scored_sha is not None or scored_policy is not None:
+                law12_kw["law12_proof_time"] = {
+                    "source_sha": scored_sha or "",
+                    "policy_ref": scored_policy or "",
+                }
+            r = check_delivery(sc, builder_id="protocol_gates-adapter",
+                               **law12_kw)
             return AdapterResult(
                 passed=r.passed, verdict="PASS" if r.passed else "FAIL",
                 reasons=list(r.reasons),

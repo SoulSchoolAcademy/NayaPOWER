@@ -653,23 +653,32 @@ def execute_plan(plan: ActionPlan,
     if time_codes:
         return refused(*time_codes)
 
-    # --- Law 12: change-based proof expiry. The time check above catches
-    # old proofs; this catches proofs whose world changed. law12_proof_time
-    # holds the world values when the authority grant was established;
-    # law12_state holds current values. A grant whose policy or code basis
-    # moved is STALE — re-resolve, don't execute on history.
-    # (law12_state without law12_proof_time cannot establish staleness, so
-    # the check is skipped — precise, never speculative.)
-    if law12_state is not None and law12_proof_time is not None:
+    # --- Law 12: change-based proof expiry (ACTIVE). The time check above
+    # catches old proofs; this catches proofs whose world changed. The proof
+    # being relied on is the PLAN's authority grant (plan.authority) — not
+    # the fresh one. law12_proof_time holds the world values when that
+    # grant was established (supplied by the caller: whoever established the
+    # grant knows its world). Current state auto-resolves when not supplied,
+    # so the check fires with proof-time alone — no second opt-in needed.
+    # The fresh re-resolution supplies current grant standing: if the grant
+    # id changed since plan time, the plan's authority basis changed.
+    # (Without law12_proof_time, staleness cannot be established — the
+    # check is skipped. Precise, never speculative.)
+    if law12_proof_time is not None:
         from .protocol.proof_expiry import (
             proof_from_authority, validate_proof, ProofStatus,
+            resolve_current_state, DEP_AUTHORITY_RECEIPT,
         )
+        state = dict(law12_state) if law12_state is not None \
+            else resolve_current_state()
+        # The freshly re-resolved authority IS current grant standing.
+        state.setdefault(DEP_AUTHORITY_RECEIPT, fresh.grant_id)
         grant_proof = proof_from_authority(
-            fresh.grant_id,
+            plan.authority.grant_id,
             source_sha=law12_proof_time.get("source_sha", ""),
             policy_ref=law12_proof_time.get("policy_ref", ""),
         )
-        validation = validate_proof(grant_proof, law12_state)
+        validation = validate_proof(grant_proof, state)
         if validation.status != ProofStatus.CURRENT_UNTIL_RECHECK:
             return refused(LAW_AUTHORITY_PROOF_STALE,
                            evidence=f"Law 12: authority grant proof stale: "
