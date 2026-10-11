@@ -110,5 +110,13 @@
   "predicted_at": "2026-10-11T03:44:00Z",
   "predicted_by": "Naya 5 (human-value-builder run)",
   "prediction_basis": "Fifteenth real-ledger accumulation run. Fail-closed protocol: pre-registered before any event append, append only git-verified merges with durable evidence pointers, close the join with an honest delta_v_actual. CI at the new tip a6cf26db NOT claimed this run (merge-queue lane owns the Freshness Law re-proof); outcome join reflects the verified merge record, not CI state."
+ },
+ {
+  "decision_id": "DEC-20261011-HV-REALDATA-013",
+  "delta_v_predicted": 0.5,
+  "objective": "Accumulate the verified real events of 2026-10-11 03:44Z -> 2026-10-11 09:41Z: 4 main commits on origin/main, all git-verified via anonymous git protocol (hashes + parents + tree deltas). 640a5fb4 (Shawn 04:02:52Z: merge PR #2230 mission-state snapshot +97/-38, merged unstamped -> 11th brain-index drift, main red; verified rework). b461609b (Shawn 04:46Z direct commit: Deploy THE NAYA PROTOCOL to all entry surfaces, 9 files +135/-11 incl. PROTOCOL.md +99; the same tree re-stamped the brain index -> 11th drift healed at this tip, Kernel Tests SUCCESS). 62e59713 (Shawn 05:31Z: merge PR #2285 Naya-4 selfbuild re-stamp; tree byte-identical to parent b461609b -> pure no-op merge, zero marginal value, harmless). 57e935c1 (Shawn 05:37:35Z: merge PR #2290 mission-state snapshot +28/-20, merged unstamped -> 12th brain-index drift, --check exit 1 PROVEN at the exact tip, main red pending PR #2293; verified rework). Per-decision predictions: -3.0, +7.0, +1.0, -3.0. Mean = +0.5. DAI scan: ONE new human-attention demand (keyed read-receipt custody decision packet, 05:40Z, options A/B/C/D need his word; recorded as HV-20261011-101 with content_hash evidence; parked items otherwise unchanged, #2068 continuing demands excluded). Anti-inflation: both drift merges scored -3.0 (verified rework, not hidden); #2285 held at +1.0 (measured no-op, not rounded up); #2282 at +7.0 (protocol real + incidental heal, behavioral proof of the protocol's effect pending).",
+  "predicted_at": "2026-10-11T09:49:35Z",
+  "predicted_by": "Naya 5 (human-value-builder run)",
+  "prediction_basis": "Sixteenth real-ledger accumulation run. Fail-closed protocol: pre-registered before any event append, append only git-verified commits with durable evidence pointers, close the join with an honest delta_v_actual. CI at the new tip 57e935c1 NOT claimed this run (main red = 12th drift, heal rides PR #2293; merge-queue lane owns the Freshness Law re-proof); the join reflects the verified commit record, not CI state."
  }
 ]
