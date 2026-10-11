@@ -115,6 +115,7 @@ LAW_RECEIPT_TIME_INVALID = "LAW_RECEIPT_TIME_INVALID"
 LAW_AUTHORITY_TIME_INVALID = "LAW_AUTHORITY_TIME_INVALID"
 LAW_AUTHORITY_EXPIRED = "LAW_AUTHORITY_EXPIRED"
 LAW_AUTHORITY_STALE = "LAW_AUTHORITY_STALE"
+LAW_AUTHORITY_PROOF_STALE = "LAW_AUTHORITY_PROOF_STALE"  # Law 12: change-based expiry
 LAW_RE_RESOLUTION_UNAVAILABLE = "LAW_RE_RESOLUTION_UNAVAILABLE"
 PLAN_UNAUTHORIZED_SCOPE = "PLAN_UNAUTHORIZED_SCOPE"
 PLAN_NO_CANDIDATES = "PLAN_NO_CANDIDATES"
@@ -949,7 +950,9 @@ def execute_plan(plan: ActionPlan,
                  risk_policy: RiskPolicy | None = None,
                  on_executed: Callable[[ActionPlan, ActionReceipt], None] | None = None,
                  actor_id: str = "act_pipeline",
-                 environment: str = "development") -> ActionReceipt:
+                 environment: str = "development",
+                 law12_state: dict | None = None,
+                 law12_proof_time: dict | None = None) -> ActionReceipt:
     """Phase 2: re-resolve live LAW authority, re-verify the do-no-harm gate,
     then execute.
 
@@ -1044,6 +1047,38 @@ def execute_plan(plan: ActionPlan,
         return refused(PLAN_SAFETY_NEEDS_EVIDENCE, evidence=door_evidence)
     if door_verdict.verdict == LAW11_NEEDS_AUTHORITY:
         return refused(PLAN_LAW11_NEEDS_AUTHORITY, evidence=door_evidence)
+
+    # --- Law 12: change-based proof expiry (ACTIVE). The time check above
+    # catches old proofs; this catches proofs whose world changed. The proof
+    # being relied on is the PLAN's authority grant (plan.authority) — not
+    # the fresh one. law12_proof_time holds the world values when that
+    # grant was established (supplied by the caller: whoever established the
+    # grant knows its world). Current state auto-resolves when not supplied,
+    # so the check fires with proof-time alone — no second opt-in needed.
+    # The fresh re-resolution supplies current grant standing: if the grant
+    # id changed since plan time, the plan's authority basis changed.
+    # (Without law12_proof_time, staleness cannot be established — the
+    # check is skipped. Precise, never speculative.)
+    if law12_proof_time is not None:
+        from .protocol.proof_expiry import (
+            proof_from_authority, validate_proof, ProofStatus,
+            resolve_current_state, DEP_AUTHORITY_RECEIPT,
+        )
+        state = dict(law12_state) if law12_state is not None \
+            else resolve_current_state()
+        # The freshly re-resolved authority IS current grant standing.
+        state.setdefault(DEP_AUTHORITY_RECEIPT, fresh.grant_id)
+        grant_proof = proof_from_authority(
+            plan.authority.grant_id,
+            source_sha=law12_proof_time.get("source_sha", ""),
+            policy_ref=law12_proof_time.get("policy_ref", ""),
+        )
+        validation = validate_proof(grant_proof, state)
+        if validation.status != ProofStatus.CURRENT_UNTIL_RECHECK:
+            return refused(LAW_AUTHORITY_PROOF_STALE,
+                           evidence=f"Law 12: authority grant proof stale: "
+                                    f"{validation.reason()}. Re-resolve authority; "
+                                    f"do not execute on expired proof.")
 
     # --- Execution-time do-no-harm re-gate (safety floor). Fail closed:
     # the gate is re-verified at the last responsible moment, immediately
