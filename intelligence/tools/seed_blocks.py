@@ -3,10 +3,22 @@
 
 Run once from the repo root: python3 intelligence/tools/seed_blocks.py
 Idempotent: refuses to overwrite existing block files.
+
+v1.1 (P0-A): seed blocks are normalized through the canonical contract
+(ib_reconcile.normalize_file_block) so they carry every field the persisted
+envelope requires. Owner identity is NOT invented — seeds get TEAM scope with
+owner_assignment_pending provenance; assign owners before persisting.
 """
 import json
 import os
 import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+try:
+    from ib_reconcile import normalize_file_block
+    _V11 = True
+except ImportError:
+    _V11 = False
 
 BLOCKS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "blocks")
 TS = "2026-10-11T20:30:00+00:00"
@@ -302,6 +314,17 @@ def main():
         print(f"REFUSING: {len(existing)} block files already exist: {sorted(existing)[:3]}...")
         sys.exit(1)
     for bid, data in SEED:
+        if _V11:
+            # Upgrade to the canonical v1.1 contract before writing.
+            data = normalize_file_block(data, default_owner_id="",
+                                        default_owner_scope="TEAM")
+            data["owner_scope"] = "TEAM"
+            prov = data.get("provenance") or {}
+            prov["owner_assignment_pending"] = True
+            prov["aliases"] = [bid]
+            data["provenance"] = prov
+            if not data.get("purpose"):
+                data["purpose"] = f"Standing team law: {data.get('title', '')}"
         path = os.path.join(BLOCKS_DIR, f"{bid}.json")
         with open(path, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=2, ensure_ascii=False)

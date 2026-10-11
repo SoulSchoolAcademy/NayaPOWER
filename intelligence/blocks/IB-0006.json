@@ -1,6 +1,5 @@
 {
-  "id": "IB-0006",
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "title": "The Builder-Scorer Loop",
   "principle": "Build, score honestly, fix everything, score again — three rounds minimum, then ship.",
   "source": {
@@ -42,8 +41,32 @@
     "next_step": "Mechanical enforcement gate merged (#2368); extend to non-code work products.",
     "enforced_by": "builder-scorer enforcement gate (#2368)"
   },
-  "supersedes": null,
-  "superseded_by": null,
   "created_at": "2026-10-11T20:30:00+00:00",
-  "updated_at": "2026-10-11T20:30:00+00:00"
+  "updated_at": "2026-10-11T20:30:00+00:00",
+  "intelligent_block_id": "IB-0006",
+  "supersedes_block_id": null,
+  "superseded_by_block_id": null,
+  "block_id": null,
+  "owner_id": "",
+  "owner_scope": "TEAM",
+  "block_type": "GOVERNED_INTELLIGENCE",
+  "source_event_ids": [],
+  "provenance": {
+    "authored_via": "intelligence/blocks file form",
+    "source_who": "Shawn",
+    "source_when": "2026-10-11",
+    "source_context": "The permanent process: no waiting, no bottlenecks, no gating on feedback.",
+    "owner_assignment_pending": true,
+    "migration": "v1.0 -> v1.1 canonical contract (P0-A, 2026-10-11)",
+    "aliases": [
+      "IB-0006"
+    ]
+  },
+  "purpose": "Standing team law: The Builder-Scorer Loop",
+  "authority_implications": "",
+  "conflicts": [],
+  "understanding_state": "VERIFIED",
+  "status": "DURABLE",
+  "version": 1,
+  "applicable_scope": ""
 }

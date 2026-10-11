@@ -24,20 +24,40 @@ import re
 import sys
 from datetime import datetime, timezone
 
+# Canonical contract v1.1 (P0-A reconciliation). The file form carries every
+# field the persisted envelope requires, so file-authored blocks round-trip
+# into persistence without loss.
+try:
+    from ib_reconcile import (
+        FILE_REQUIRED_V11,
+        normalize_file_block,
+        validate_v11,
+    )
+    SCHEMA_VERSION = "1.1"
+    _RECONCILE_AVAILABLE = True
+except ImportError:
+    _RECONCILE_AVAILABLE = False
+    SCHEMA_VERSION = "1.1"
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BLOCKS_DIR = os.path.join(ROOT, "blocks")
 REGISTRY_PATH = os.path.join(BLOCKS_DIR, "REGISTRY.json")
-SCHEMA_VERSION = "1.0"
 
+# v1.1 accepts legacy sequential IDs and persisted-style IDs.
 ID_RE = re.compile(r"^IB-(\d{4})$")
+ID_RE_V11 = re.compile(r"^IB-[A-Z0-9][A-Z0-9\-]*$")
 STATUSES = ["UNVERIFIED", "APPLIED", "BEHAVIOR-CHANGE-PROVEN", "COMPOUNDED"]
 STAGES = ["text", "briefing", "code-gate"]
 EVIDENCE_KINDS = ["receipt", "observation", "code", "test", "direct-word"]
+OWNER_SCOPES = ["PRIVATE", "TEAM", "COLLECTIVE", "PUBLIC"]
 
-REQUIRED_TOP = ["id", "schema_version", "title", "principle", "source",
-                "evidence", "applicability", "verification_status",
-                "status_history", "graduation", "supersedes",
-                "superseded_by", "created_at", "updated_at"]
+# v1.1: required fields are defined by the canonical contract in
+# ib_reconcile.py (FILE_REQUIRED_V11). No local duplicate.
+
+
+def _block_id(b):
+    """v1.1-aware block ID accessor (intelligent_block_id preferred)."""
+    return b.get("intelligent_block_id") or b.get("id", "")
 
 
 def now_iso():
@@ -50,15 +70,31 @@ def blocks_dir():
 
 
 def load_block(bid):
-    path = os.path.join(blocks_dir(), f"{bid}.json")
-    if not os.path.exists(path):
-        return None, path
-    with open(path, encoding="utf-8") as f:
-        return json.load(f), path
+    """v1.1: find by filename, legacy id, or intelligent_block_id."""
+    bid_up = bid.upper()
+    # fast path: exact filename
+    for candidate in (f"{bid_up}.json", f"{bid}.json"):
+        path = os.path.join(blocks_dir(), candidate)
+        if os.path.exists(path):
+            with open(path, encoding="utf-8") as f:
+                return json.load(f), path
+    # slow path: scan for matching intelligent_block_id / legacy id
+    for b in all_blocks():
+        if _block_id(b).upper() == bid_up:
+            path = os.path.join(blocks_dir(), f"{_block_id(b)}.json")
+            return b, path
+    return None, os.path.join(blocks_dir(), f"{bid_up}.json")
+
+
+def _id_matches(name):
+    """v1.1: accept legacy IB-NNNN and persisted-style IB-... filenames."""
+    stem = name[:-5] if name.endswith(".json") else name
+    return bool(ID_RE.match(stem) or ID_RE_V11.match(stem))
 
 
 def save_block(data):
-    path = os.path.join(blocks_dir(), f"{data['id']}.json")
+    bid = _block_id(data)
+    path = os.path.join(blocks_dir(), f"{bid}.json")
     data["updated_at"] = now_iso()
     with open(path, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
@@ -69,7 +105,7 @@ def save_block(data):
 def all_blocks():
     out = []
     for name in sorted(os.listdir(blocks_dir())):
-        if name.endswith(".json") and name != "REGISTRY.json" and ID_RE.match(name[:-5]):
+        if name.endswith(".json") and name != "REGISTRY.json" and _id_matches(name):
             with open(os.path.join(blocks_dir(), name), encoding="utf-8") as f:
                 out.append(json.load(f))
     return out
@@ -78,60 +114,24 @@ def all_blocks():
 def next_id():
     top = 0
     for b in all_blocks():
-        m = ID_RE.match(b["id"])
+        m = ID_RE.match(_block_id(b))
         if m:
             top = max(top, int(m.group(1)))
     return f"IB-{top + 1:04d}"
 
 
 def validate_block(data):
-    """Return a list of error strings; empty means valid."""
-    errors = []
-    for field in REQUIRED_TOP:
-        if field not in data:
-            errors.append(f"missing required field: {field}")
-    if errors:
-        return errors
-    if not ID_RE.match(str(data.get("id", ""))):
-        errors.append(f"bad id format (want IB-NNNN): {data.get('id')}")
-    if data.get("schema_version") != SCHEMA_VERSION:
-        errors.append(f"bad schema_version: {data.get('schema_version')}")
-    principle = data.get("principle", "")
-    if not principle or "\n" in principle.strip():
-        errors.append("principle must be a single sentence (one line)")
-    if len(principle) > 400:
-        errors.append(f"principle too long ({len(principle)} chars) — distill it")
-    src = data.get("source", {})
-    for k in ["who", "when", "context"]:
-        if k not in src or not src[k]:
-            errors.append(f"source.{k} missing or empty")
-    for i, e in enumerate(data.get("evidence", [])):
-        if e.get("kind") not in EVIDENCE_KINDS:
-            errors.append(f"evidence[{i}].kind invalid: {e.get('kind')}")
-        if not e.get("ref"):
-            errors.append(f"evidence[{i}].ref missing")
-    app = data.get("applicability", {})
-    if not app.get("topics"):
-        errors.append("applicability.topics must be a non-empty list")
-    for k in ["situations", "decisions"]:
-        if k not in app or not app[k]:
-            errors.append(f"applicability.{k} missing or empty")
-    status = data.get("verification_status")
-    if status not in STATUSES:
-        errors.append(f"bad verification_status: {status}")
-    if status != "UNVERIFIED" and not data.get("evidence"):
-        errors.append(f"status {status} requires non-empty evidence")
-    hist = data.get("status_history", [])
-    if not hist or hist[-1].get("status") != status:
-        errors.append("status_history must end with the current verification_status")
-    grad = data.get("graduation", {})
-    if grad.get("stage") not in STAGES:
-        errors.append(f"bad graduation.stage: {grad.get('stage')}")
-    if not grad.get("next_step"):
-        errors.append("graduation.next_step missing")
-    if "enforced_by" not in grad:
-        errors.append("graduation.enforced_by missing (use null)")
-    return errors
+    """Return a list of error strings; empty means valid.
+
+    v1.1: delegates to the canonical contract validator in ib_reconcile.py,
+    which enforces the persisted envelope's requirements (owner, scope,
+    provenance) plus the file-form additions. ib_reconcile.py is a required
+    sibling — there is no v1.0 fallback path.
+    """
+    if not _RECONCILE_AVAILABLE:
+        return ["FATAL: ib_reconcile.py (canonical v1.1 contract) not found "
+                "next to ib.py — refusing to validate against a stale schema"]
+    return validate_v11(data)
 
 
 def cmd_create(args):
@@ -142,7 +142,7 @@ def cmd_create(args):
                          "note": "Captured at creation."})
     data = {
         "id": bid,
-        "schema_version": SCHEMA_VERSION,
+        "schema_version": "1.0",  # normalized to 1.1 below
         "title": args.title,
         "principle": args.principle,
         "source": {"who": args.who, "when": args.when, "context": args.context},
@@ -162,6 +162,18 @@ def cmd_create(args):
         "created_at": now_iso(),
         "updated_at": now_iso(),
     }
+    # Upgrade to the canonical v1.1 contract. Owner is REQUIRED by the
+    # persisted envelope — the CLI takes it explicitly, never invents it.
+    if _RECONCILE_AVAILABLE:
+        data = normalize_file_block(
+            data,
+            default_owner_id=getattr(args, "owner_id", "") or "",
+            default_owner_scope=getattr(args, "owner_scope", "") or "PRIVATE",
+        )
+        if getattr(args, "purpose", ""):
+            data["purpose"] = args.purpose
+        if getattr(args, "block_type", ""):
+            data["block_type"] = args.block_type
     errs = validate_block(data)
     if errs:
         print("VALIDATION FAILED:")
@@ -169,7 +181,7 @@ def cmd_create(args):
             print(f"  - {e}")
         sys.exit(1)
     path = save_block(data)
-    print(f"created {bid} -> {path}")
+    print(f"created {data.get('intelligent_block_id', bid)} -> {path}")
     return 0
 
 
@@ -189,11 +201,11 @@ def cmd_list(args):
     if args.status:
         blocks = [b for b in blocks if b["verification_status"] == args.status.upper()]
     key = {"newest": lambda b: b["created_at"], "oldest": lambda b: b["created_at"],
-           "id": lambda b: b["id"]}[args.sort]
+           "id": lambda b: _block_id(b)}[args.sort]
     blocks.sort(key=key, reverse=(args.sort == "newest"))
     if args.format == "json":
         print(json.dumps([
-            {"id": b["id"], "title": b["title"], "principle": b["principle"],
+            {"id": _block_id(b), "title": b["title"], "principle": b["principle"],
              "topics": b["applicability"]["topics"],
              "verification_status": b["verification_status"],
              "graduation_stage": b["graduation"]["stage"]}
@@ -201,7 +213,7 @@ def cmd_list(args):
         return 0
     print(f"{'ID':<10}{'STATUS':<24}{'STAGE':<10}TITLE")
     for b in blocks:
-        print(f"{b['id']:<10}{b['verification_status']:<24}"
+        print(f"{_block_id(b):<10}{b['verification_status']:<24}"
               f"{b['graduation']['stage']:<10}{b['title']}")
     print(f"\n{len(blocks)} block(s)")
     return 0
@@ -294,12 +306,12 @@ def cmd_validate(_args):
     failed = 0
     for b in blocks:
         errs = validate_block(b)
-        if b["id"] in seen:
-            errs.append(f"duplicate id: {b['id']}")
-        seen.add(b["id"])
+        if _block_id(b) in seen:
+            errs.append(f"duplicate id: {_block_id(b)}")
+        seen.add(_block_id(b))
         if errs:
             failed += 1
-            print(f"{b['id']}: FAIL")
+            print(f"{_block_id(b)}: FAIL")
             for e in errs:
                 print(f"    - {e}")
     print(f"\n{len(blocks) - failed}/{len(blocks)} blocks valid")
@@ -310,7 +322,7 @@ def cmd_reindex(_args):
     blocks = all_blocks()
     entries = [
         {
-            "id": b["id"],
+            "id": _block_id(b),
             "title": b["title"],
             "principle": b["principle"],
             "topics": b["applicability"]["topics"],
@@ -318,9 +330,9 @@ def cmd_reindex(_args):
             "graduation_stage": b["graduation"]["stage"],
             "created_at": b["created_at"],
             "updated_at": b["updated_at"],
-            "path": f"intelligence/blocks/{b['id']}.json",
+            "path": f"intelligence/blocks/{_block_id(b)}.json",
         }
-        for b in sorted(blocks, key=lambda x: x["id"])
+        for b in sorted(blocks, key=lambda x: _block_id(x))
     ]
     # Idempotent: if the entries are unchanged, keep the old file untouched
     # (including its generated_at) so a no-op reindex is git-clean.
@@ -328,7 +340,8 @@ def cmd_reindex(_args):
     if os.path.exists(REGISTRY_PATH):
         with open(REGISTRY_PATH, encoding="utf-8") as f:
             old = json.load(f)
-        if old.get("blocks") == entries and old.get("count") == len(blocks):
+        if (old.get("blocks") == entries and old.get("count") == len(blocks)
+                and old.get("schema_version") == SCHEMA_VERSION):
             print(f"registry unchanged ({len(blocks)} blocks) - {REGISTRY_PATH}")
             return 0
         generated_at = old.get("generated_at", generated_at)
@@ -359,6 +372,12 @@ def main(argv=None):
     c.add_argument("--situations", default="")
     c.add_argument("--decisions", default="")
     c.add_argument("--evidence-note", default="")
+    c.add_argument("--owner-id", default="",
+                   help="REQUIRED for persistence; never invented — pass the real owner UUID")
+    c.add_argument("--owner-scope", default="PRIVATE",
+                   choices=["PRIVATE", "TEAM", "COLLECTIVE", "PUBLIC"])
+    c.add_argument("--purpose", default="", help="why preserve this (protocol §6)")
+    c.add_argument("--block-type", default="GOVERNED_INTELLIGENCE")
 
     g = sub.add_parser("get", help="print one block")
     g.add_argument("id")
