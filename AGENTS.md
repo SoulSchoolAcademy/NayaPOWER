@@ -25,6 +25,24 @@ Before changing code, documentation, infrastructure, or configuration:
 11. Read `BRAIN/01-GOVERNANCE/0004-NONSTOP-LOOP-V1.ai.md` and `BRAIN/01-GOVERNANCE/0004-nonstop-loop-v1.machine.json` — standing NONSTOP LOOP operating law and machine twin.
 12. Establish the human director, authority, scope, current state, proof state, blockers, and exactly one next action.
 
+13. Complete the mandatory reading and comprehension packet in [PROTOCOL.md](./PROTOCOL.md): read the protocol, this boot contract, Constitution, Laws Index, Portable Activation Protocol, Smart Note Operating Contract, Portable Activation Manifest, Activation Kit Map, Nonstop Loop AI/machine forms, newest source-precedence reconciliation, and current mission snapshot in full.
+14. Before substantive governed work, post a structured SIGN_IN to the assigned live specialist feed, run the executable pre-work gate described in PROTOCOL.md, and proceed only on exit 0 with `pass: true`.
+15. At cycle close, post structured SIGN_OUT to the same live feed and run the gate's `--mode close` check. No passing receipt means the cycle remains open.
+
+The mission record is [#2154](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2154); the current shared coordination board is [#2175](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175); [#1599](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/1599) is a feed index/TOC. Feed IDs and ownership must be refreshed from current mission state. #1354 is historical/read-only.
+
+Executable pre-work gate:
+```bash
+python tools/protocol/cold_start_gate.py --agent-id <seat-id> --answers-json <answers.json> --write-read-receipt <temporary-receipt.json> --sign-in-record <sign-in.json> --json
+```
+
+Executable cycle-close gate:
+```bash
+python tools/protocol/cold_start_gate.py --agent-id <seat-id> --mode close --sign-in-record <sign-in.json> --sign-out-record <sign-out.json> --json
+```
+
+Use `GH_TOKEN` or `GITHUB_TOKEN` with issue-comment read access. The gate validates the actual checkout revisions and fetches posted GitHub comments. If a required source, current main, feed post, credential, or proof is missing, hold governed work; never convert missing evidence into a pass. Safe read-only work may continue.
+
 Do not rely on hidden conversation memory. Do not infer project truth from this file when stronger current evidence says otherwise.
 
 ## CONTINUOUS DISTILLATION / OPTIMIZATION
