@@ -206,3 +206,54 @@ def test_violation_shape():
         assert isinstance(v["line"], int)
         assert v["rule"] in ("R1", "R2", "R3")
         assert isinstance(v["text"], str) and v["text"]
+
+
+# ---------------------------------------------------------------------------
+# R1 structural exclusions — headings, list markers, ordinal labels, years,
+# version labels are not quantitative claims (2026-10-11 wiring fixes).
+# ---------------------------------------------------------------------------
+
+def _r1_violations(doc: str) -> list:
+    """Helper: R1 violations only, so tests isolate the number rule."""
+    return [v for v in check_document(doc)["violations"] if v["rule"] == "R1"]
+
+
+def test_r1_skips_heading_numbers():
+    """Numbers in markdown headings are structural, not claims."""
+    doc = "## DOMAIN 1: Decisions\n\n## 10 root causes\n"
+    assert _r1_violations(doc) == []
+
+
+def test_r1_skips_list_markers():
+    """An ordered-list marker is structural; quantities later on the line still count."""
+    doc = "5. Quality before speed.\n"
+    assert _r1_violations(doc) == []
+    # But a real quantity on the same line is still flagged.
+    doc2 = "5. We shipped 99 units.\n"
+    vs = _r1_violations(doc2)
+    assert len(vs) == 1 and "'99'" in vs[0]["text"]
+
+
+def test_r1_skips_ordinal_labels():
+    """PRIME 1, Step 2, Law 5, Phase 3 identify sections; they assert no quantity."""
+    doc = "**PRIME 1 — JUDGMENT.**\n\nComplete Step 2, then Law 5, then Phase 3.\n"
+    assert _r1_violations(doc) == []
+
+
+def test_r1_skips_years_and_version_labels():
+    """Bare years and version labels (V2) are not quantitative claims."""
+    doc = "In 2026 we ship Operating Code V2.\n"
+    assert _r1_violations(doc) == []
+
+
+def test_r1_still_flags_bare_quantities():
+    """Guard against over-exclusion: real unsourced quantities must still fail."""
+    doc = "We have 58 directives and 9 lives.\n"
+    vs = _r1_violations(doc)
+    assert len(vs) == 1, vs
+
+
+def test_r1_skips_metadata_labels():
+    """**Version:** 1 and Amendment 0002 are identifiers, not quantities."""
+    doc = "**Version:** 1\n\nAmendment 0002 ratified.\n"
+    assert _r1_violations(doc) == []

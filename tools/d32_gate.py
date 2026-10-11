@@ -46,7 +46,25 @@ _NUMBER_RE = re.compile(r"(?<![\w#])\d[\d,]*(?:\.\d+)?%?(?![\w.])")
 _DATE_RE = re.compile(r"\d{4}-\d{2}-\d{2}")          # 2026-10-11
 _TIME_RE = re.compile(r"\d{1,2}:\d{2}")              # 23:44
 _VERSION_RE = re.compile(r"[vV]?\d+\.\d+(?:\.\d+)*")  # v1.2, 2.0.1
+_VERSION_LABEL_RE = re.compile(r"\b[vV]\d+\b")       # V2, v3 (version labels)
+_YEAR_RE = re.compile(r"\b(?:19|20)\d{2}\b")          # bare years: 2026
 _HEX_LONG_RE = re.compile(r"\b[0-9a-f]{7,40}\b")      # SHAs (handled as sources)
+
+# Structural numbering that is NOT a quantitative claim. Markdown headings
+# ("## DOMAIN 1:"), ordered-list markers ("5. ..."), and ordinal labels
+# ("PRIME 1", "Step 2", "Phase 3") identify sections; they assert no quantity.
+# The body text must still source its real quantitative claims.
+_HEADING_RE = re.compile(r"^\s*#{1,6}\s")
+_LIST_MARKER_RE = re.compile(r"^\s*\d+[.)]\s")
+# Ordinal labels identify sections ("PRIME 1", "Step 2", "**Version:** 1");
+# they assert no quantity. The separator class tolerates markdown
+# formatting (bold/italic markers, colons) between label and number.
+_ORDINAL_LABEL_RE = re.compile(
+    r"(?i)\b(prime|domain|step|phase|stage|level|part|rule|principle|"
+    r"wave|group|lesson|test|case|arm|layer|pillar|family|section|"
+    r"chapter|item|point|behavior|behaviour|system|scenario|round|"
+    r"law|directive|version|amendment|protocol|contract)[\s*:*_~-]*$"
+)
 
 # Source references: URL, #issue/PR, commit SHA, explicit citation.
 _URL_RE = re.compile(r"https?://\S+")
@@ -83,10 +101,16 @@ def _line_has_source(line: str) -> bool:
 
 
 def _strip_non_claims(line: str) -> str:
-    """Remove dates, times, versions, SHAs so they are not read as claims."""
+    """Remove dates, times, versions, version labels, years, SHAs.
+
+    None of these are quantitative claims in the D32 sense: a bare year
+    ("in 2026") or a version label ("Operating Code V2") asserts no quantity.
+    """
     line = _DATE_RE.sub(" ", line)
     line = _TIME_RE.sub(" ", line)
     line = _VERSION_RE.sub(" ", line)
+    line = _VERSION_LABEL_RE.sub(" ", line)
+    line = _YEAR_RE.sub(" ", line)
     line = _HEX_LONG_RE.sub(" ", line)
     return line
 
@@ -116,16 +140,37 @@ def _paragraphs(lines: list[str]) -> list[tuple[int, int, str]]:
 # ---------------------------------------------------------------------------
 
 def _check_r1_sourced_numbers(lines: list[str]) -> list[dict]:
-    """R1: every quantitative claim needs a source within 3 lines."""
+    """R1: every quantitative claim needs a source within 3 lines.
+
+    Structural numbering is not a claim: markdown headings organize text,
+    ordered-list markers enumerate points, and ordinal labels ("PRIME 1",
+    "Step 2") identify sections. Only numbers that assert a quantity —
+    counts, scores, measurements — must be sourced.
+    """
     violations: list[dict] = []
     # Precompute which lines have sources.
     sourced = [_line_has_source(ln) for ln in lines]
     for i, line in enumerate(lines):
+        # Headings organize; they assert no quantity. Body claims are
+        # still checked.
+        if _HEADING_RE.match(line):
+            continue
         clean = _strip_non_claims(line)
+        # An ordered-list marker ("5. ...") is structural; a quantity
+        # later on the same line is still a claim.
+        marker_end = 0
+        mm = _LIST_MARKER_RE.match(clean)
+        if mm:
+            marker_end = mm.end()
         for m in _NUMBER_RE.finditer(clean):
+            if m.start() < marker_end:
+                continue  # the list marker itself
             # Skip numbers that ARE issue references (#1234) — they are sources.
             before = clean[max(0, m.start() - 1):m.start()]
             if before.endswith("#"):
+                continue
+            # Skip ordinal labels: "PRIME 1", "DOMAIN 2", "Step 3".
+            if _ORDINAL_LABEL_RE.search(clean[:m.start()]):
                 continue
             lo = max(0, i - _SOURCE_WINDOW)
             hi = min(len(lines), i + _SOURCE_WINDOW + 1)

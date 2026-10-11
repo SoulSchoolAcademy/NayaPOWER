@@ -10,14 +10,19 @@ name: d32-gate
 on:
   pull_request:
     paths:
+      - 'BRAIN/**/*.md'
       - 'tools/d32_gate.py'
+      - 'tools/d32_scan.py'
       - 'tools/tests/test_d32_gate.py'
+      - 'tools/tests/test_d32_scan.py'
       - '.github/workflows/d32-gate.yml'
   push:
     branches: [main]
     paths:
       - 'tools/d32_gate.py'
+      - 'tools/d32_scan.py'
       - 'tools/tests/test_d32_gate.py'
+      - 'tools/tests/test_d32_scan.py'
 
 jobs:
   d32-gate-tests:
@@ -33,3 +38,23 @@ jobs:
         run: python3 -m pip install pytest
       - name: Run D32 gate test suite (real asserts, no theater)
         run: python3 -m pytest tools/tests/test_d32_gate.py -v -p no:cacheprovider
+
+  # Live wiring: the gate scans real governance documents changed in the PR.
+  # New files must fully comply. Modified files: new unsourced numbers or
+  # unevidenced confidence on ADDED lines block; pre-existing violations
+  # are reported as warnings (grandfathered, never blocking).
+  d32-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Scan changed BRAIN/ documents with the D32 gate
+        run: |
+          python3 tools/d32_scan.py \
+            --base "${{ github.event.pull_request.base.sha }}" \
+            --head "${{ github.event.pull_request.head.sha }}" \
+            --scope BRAIN/
