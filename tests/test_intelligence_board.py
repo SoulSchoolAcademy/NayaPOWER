@@ -114,7 +114,7 @@ class BoardTest(unittest.TestCase):
 
     def test_first_visible_priority_is_not_a_complete_mission(self):
         m = valid_model()
-        full_mission = "## Right now\\n1. First task\\n" + ("x" * 2000) + "\\n2. Another task"
+        full_mission = ("## Right now" + chr(10) + "1. First task" + chr(10) + ("x" * 2000) + chr(10) + "2. Another task")
         m["sections"]["mission"]["body_preview"] = full_mission[:2000]
         b = build_board(m)
         self.assertTrue(b["freshness"]["mission"]["usable"])
