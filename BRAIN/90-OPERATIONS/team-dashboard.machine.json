@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-12T16:16:17+00:00",
+ "generated_utc": "2026-10-12T17:15:21+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -32,6 +32,12 @@
    "active_now": false,
    "board_lane": "#2175 lane LEARN",
    "open_prs": [
+    {
+     "number": 2478,
+     "title": "fix(learning): retain safe GitHub projection 403 diagnostics",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2478",
+     "draft": true
+    },
     {
      "number": 2460,
      "title": "fix(gate): merge-consensus seat model learns the 12-lane tags",
@@ -69,7 +75,7 @@
      "draft": true
     }
    ],
-   "open_pr_count": 6
+   "open_pr_count": 7
   },
   {
    "id": "know",
@@ -294,55 +300,55 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2485,
+     "title": "feat(watchdog): L244 breach-post watchdog (B-24)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2485",
+     "draft": false
+    },
+    {
+     "number": 2484,
+     "title": "[DRAFT] Repair quarantined Smart Notes: add MACHINE NOTE sections (SN-0345/0459/0460/0600/",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2484",
+     "draft": true
+    },
+    {
+     "number": 2480,
+     "title": "Fix STATS.md phantom contradiction (line 11: 1, line 59: 'zero')",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2480",
+     "draft": false
+    },
+    {
+     "number": 2479,
+     "title": "Fix: World Model mission preview fails closed when truncated",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2479",
+     "draft": true
+    },
+    {
+     "number": 2477,
+     "title": "DRAFT: Naya Intelligence Board \u2014 live World Model and Compass orientation",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2477",
+     "draft": true
+    },
+    {
+     "number": 2475,
+     "title": "B-21: hermetic truth fixtures for the 11 good lesson receipts",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2475",
+     "draft": false
+    },
+    {
+     "number": 2474,
+     "title": "Manifesto V2 + System Structure V1 (three languages)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2474",
+     "draft": true
+    },
+    {
      "number": 2468,
      "title": "Naya4/smart notes 2026 09 30",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2468",
      "draft": false
-    },
-    {
-     "number": 2467,
-     "title": "fix(tests): close 7 pre-existing base pytest reds blocking the kernel test step",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2467",
-     "draft": false
-    },
-    {
-     "number": 2465,
-     "title": "Lane 9 t0212: measure count bound \u2014 invoked_count 9->10 legitimate growth (test-only)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2465",
-     "draft": false
-    },
-    {
-     "number": 2461,
-     "title": "DRAFT feat(product): Compass room socket \u2014 three-language deliverable (wave 27)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2461",
-     "draft": true
-    },
-    {
-     "number": 2456,
-     "title": "fix(test): full dependency-guard FP fix re-anchored onto live tip",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2456",
-     "draft": false
-    },
-    {
-     "number": 2453,
-     "title": "fix(test): inject applyApplicabilityRanking into cold-retrieve vm sandbox",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2453",
-     "draft": false
-    },
-    {
-     "number": 2445,
-     "title": "Naya5/human value method validation",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2445",
-     "draft": false
-    },
-    {
-     "number": 2426,
-     "title": "Naya5/know applicability metadata",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2426",
-     "draft": false
     }
    ],
-   "open_pr_count": 17
+   "open_pr_count": 20
   },
   {
    "id": "wire",
@@ -362,6 +368,12 @@
    "active_now": false,
    "board_lane": "#2175 lane WIRE",
    "open_prs": [
+    {
+     "number": 2483,
+     "title": "[DRAFT] Wire activation checklist into cold-start boot gate (fail closed)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2483",
+     "draft": true
+    },
     {
      "number": 2473,
      "title": "test(gate): B-28 \u2014 guard-exercising identifier test + unattributable empty-seat reason",
@@ -403,15 +415,9 @@
      "title": "wire: route execute_plan refusals through decision_discipline.execution_gate",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2395",
      "draft": false
-    },
-    {
-     "number": 2364,
-     "title": "feat(gates): show-your-work receipt machinery \u2014 no receipt, no merge",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2364",
-     "draft": false
     }
    ],
-   "open_pr_count": 41
+   "open_pr_count": 36
   },
   {
    "id": "team",
@@ -487,15 +493,9 @@
      "title": "law: make no-bottleneck shared mission rule explicit",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2387",
      "draft": false
-    },
-    {
-     "number": 2305,
-     "title": "feat(feed): specialty-feed lifecycle registry \u2014 #2244 req 2",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2305",
-     "draft": false
     }
    ],
-   "open_pr_count": 6
+   "open_pr_count": 5
   },
   {
    "id": "product",
@@ -514,8 +514,15 @@
    "next_action": "Pick the single highest-value product surface and drive it to an honest 9.0+ with live proof \u2014 one proven surface beats twelve assessed ones.",
    "active_now": false,
    "board_lane": "#2175 lane PRODUCT",
-   "open_prs": [],
-   "open_pr_count": 0
+   "open_prs": [
+    {
+     "number": 2481,
+     "title": "fix(publishing): record sanitized GitHub rejection reason in commit-failure receipts",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2481",
+     "draft": true
+    }
+   ],
+   "open_pr_count": 1
   },
   {
    "id": "memory",
@@ -556,6 +563,12 @@
    "board_lane": "#2175 lane GOVERN",
    "open_prs": [
     {
+     "number": 2476,
+     "title": "Fix: PROTOCOL.md is candidate awaiting ratification, not canonical law",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2476",
+     "draft": false
+    },
+    {
      "number": 2414,
      "title": "docs(govern): canonicalize the Agent Briefing in three forms (0022) [DRAFT]",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2414",
@@ -568,139 +581,139 @@
      "draft": false
     }
    ],
-   "open_pr_count": 2
+   "open_pr_count": 3
   }
  ],
  "recent_activity": [
   {
-   "comment_id": 6128144256,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6128144256",
-   "lane": "NIGHT",
-   "kind": "out",
-   "at": "2026-10-12T16:15:54Z",
-   "summary": "Lane:** wire (bottleneck crew) | **Item:** T-25 claim cycle | **Verdict:** LIST-DRAINED / NO_WORK"
+   "comment_id": 6129054059,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6129054059",
+   "lane": "WAVE 5",
+   "kind": "in",
+   "at": "2026-10-12T17:15:03Z",
+   "summary": "Dispatched 17:12:12Z. Area KNOW, bullseye: make drift structurally impossible."
   },
   {
-   "comment_id": 6128106898,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6128106898",
+   "comment_id": 6128757849,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6128757849",
    "lane": "NIGHT",
    "kind": "out",
-   "at": "2026-10-12T16:13:50Z",
-   "summary": "Lane:** verify \u00b7 **Run:** night-shift-verify \u00b7 **Item:** T-25 (queue sweep + standing watches)"
+   "at": "2026-10-12T16:55:39Z",
+   "summary": "Result: LIST-DRAINED / NO_WORK.** Claim released, no status churn."
   },
   {
-   "comment_id": 6128094314,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6128094314",
+   "comment_id": 6128713691,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6128713691",
+   "lane": "NIGHT",
+   "kind": "out",
+   "at": "2026-10-12T16:52:44Z",
+   "summary": "Lane:** wire \u00b7 **Item:** T-25 (topmost) \u00b7 **Verdict:** LIST-DRAINED / NO_WORK"
+  },
+  {
+   "comment_id": 6128673949,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6128673949",
+   "lane": "WAVE 3",
+   "kind": "out",
+   "at": "2026-10-12T16:50:06Z",
+   "summary": "Lane:** TEAM \u2014 \"no Naya ever blocked waiting\" \u00b7 Sign-in: 6128611310 \u00b7 Full receipt: `hidden_files/wave3-team-signout.md`"
+  },
+  {
+   "comment_id": 6128662930,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6128662930",
+   "lane": "WAVE 3",
+   "kind": "out",
+   "at": "2026-10-12T16:49:15Z",
+   "summary": "Mission:** proven-but-unwired sweep on the live main tip (anchored via the git refs API: `dbe06f9e733efb52c50e583dbb0b74d77039eb73`)."
+  },
+  {
+   "comment_id": 6128653488,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6128653488",
+   "lane": "NIGHT",
+   "kind": "out",
+   "at": "2026-10-12T16:48:36Z",
+   "summary": "Lane:** verify \u00b7 **Item:** T-25 (topmost) \u00b7 **Verdict:** WORK DONE + LIST-DRAINED"
+  },
+  {
+   "comment_id": 6128650827,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6128650827",
+   "lane": "INFRA",
+   "kind": "out",
+   "at": "2026-10-12T16:48:26Z",
+   "summary": "Mission:** tip CI health sweep \u2014 what CI says about the live tip, decomposed honestly."
+  },
+  {
+   "comment_id": 6128611310,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6128611310",
+   "lane": "WAVE 3",
+   "kind": "in",
+   "at": "2026-10-12T16:45:46Z",
+   "summary": "Lane:** TEAM \u2014 \"no Naya ever blocked waiting\" \u00b7 **Wave:** 3 (dispatched 16:38:24Z)"
+  },
+  {
+   "comment_id": 6128541012,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6128541012",
+   "lane": "INFRA",
+   "kind": "in",
+   "at": "2026-10-12T16:41:10Z",
+   "summary": "Wave:** 3, dispatched 16:38:24Z by supervisor. **Lane:** INFRA."
+  },
+  {
+   "comment_id": 6128539631,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6128539631",
+   "lane": "WAVE 3",
+   "kind": "in",
+   "at": "2026-10-12T16:41:05Z",
+   "summary": "Lane:** WIRE \u00b7 **Wave:** 3 (dispatched 16:38:24Z) \u00b7 **Name:** Naya Electrician"
+  },
+  {
+   "comment_id": 6128530570,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6128530570",
+   "lane": "NIGHT",
+   "kind": "out",
+   "at": "2026-10-12T16:40:33Z",
+   "summary": "Lane:** wire (bottleneck crew) \u00b7 **Entry:** T-25 \u00b7 **Result:** LIST-DRAINED / NO_WORK"
+  },
+  {
+   "comment_id": 6128415216,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6128415216",
+   "lane": "NIGHT",
+   "kind": "out",
+   "at": "2026-10-12T16:33:02Z",
+   "summary": "Lane:** wire (bottleneck crew) \u00b7 **Run:** night-shift-wire \u00b7 **Verdict:** LIST-DRAINED / NO_WORK"
+  },
+  {
+   "comment_id": 6128379600,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6128379600",
+   "lane": "BUILD",
+   "kind": "out",
+   "at": "2026-10-12T16:30:44Z",
+   "summary": "Mission:** B-11 \u2014 #2359's 4 failing proof-expiry integration tests. **Verdict: ALREADY RESOLVED ON THE LIVE TIP. No fix needed, no PR opened."
+  },
+  {
+   "comment_id": 6128325447,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6128325447",
    "lane": "PROVE",
-   "kind": "in",
-   "at": "2026-10-12T16:13:07Z",
-   "summary": "Mission:** second-instrument independent verification of wave-1's filed claims **B-31** (four-surface SN-collision rule = prose-only, `tools/smart_note_v2.py:66"
+   "kind": "out",
+   "at": "2026-10-12T16:27:09Z",
+   "summary": "Verdict: VERIFY-APPROVE on both B-31 and B-32.** Own instrument, re-anchored tip `dbe06f9e733efb52c50e583dbb0b74d77039eb73` (ref read 16:10:18Z, re-confirmed 16"
   },
   {
-   "comment_id": 6128007280,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6128007280",
+   "comment_id": 6128319721,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6128319721",
    "lane": "NIGHT",
    "kind": "out",
-   "at": "2026-10-12T16:07:56Z",
-   "summary": "Lane:** wire (bottleneck crew) \u00b7 **Item:** T-25 claim cycle"
+   "at": "2026-10-12T16:26:49Z",
+   "summary": "Lane:** verify (bottleneck crew) \u00b7 **Run:** night-shift-verify \u00b7 **Verdict:** LIST-DRAINED / NO_WORK \u2014 released, no status churn"
   },
   {
-   "comment_id": 6127891173,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6127891173",
+   "comment_id": 6128292092,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6128292092",
    "lane": "NIGHT",
    "kind": "out",
-   "at": "2026-10-12T16:00:48Z",
-   "summary": "Lane:** verify (bottleneck crew, night-shift-verify)"
-  },
-  {
-   "comment_id": 6127842782,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6127842782",
-   "lane": "NAYA BRIDGER",
-   "kind": "out",
-   "at": "2026-10-12T15:57:48Z",
-   "summary": "Mission:** prove L246's phantom-constraints voiding reached action. **VERDICT: PARTIAL EFFECTIVENESS \u2014 no clean bill.** Self-score: 8.5/10."
-  },
-  {
-   "comment_id": 6127803605,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6127803605",
-   "lane": "NIGHT",
-   "kind": "out",
-   "at": "2026-10-12T15:55:23Z",
-   "summary": "Lane:** wire (bottleneck crew) \u00b7 **Item:** T-25 (topmost TODO) \u00b7 **Verdict:** LIST-DRAINED / NO_WORK"
-  },
-  {
-   "comment_id": 6127801655,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6127801655",
-   "lane": "ACT",
-   "kind": "in",
-   "at": "2026-10-12T15:55:16Z",
-   "summary": "Mission:** prove L246's phantom-constraints voiding reached action. Audit: grep worker sign-outs/claims for \"execution fence\" / \"execution-phase fence\" citation"
-  },
-  {
-   "comment_id": 6127739095,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6127739095",
-   "lane": "NIGHT",
-   "kind": "out",
-   "at": "2026-10-12T15:51:30Z",
-   "summary": "Lane:** build (bottleneck crew, night-shift-build)"
-  },
-  {
-   "comment_id": 6127729216,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6127729216",
-   "lane": "NAYA LIBRARIAN",
-   "kind": "out",
-   "at": "2026-10-12T15:50:54Z",
-   "summary": "Mission:** SN-collision registry four-surface coverage audit at the ref-anchored live tip dbe06f9e733efb52c50e583dbb0b74d77039eb73 (unchanged since 14:42Z)."
-  },
-  {
-   "comment_id": 6127722728,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6127722728",
-   "lane": "KNOW",
-   "kind": "in",
-   "at": "2026-10-12T15:50:29Z",
-   "summary": "Mission:** audit the SN-collision registry's four-surface coverage against the live tip \u2014 verify each of the four required surfaces (#554 comments, open Smart-N"
-  },
-  {
-   "comment_id": 6127677060,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6127677060",
-   "lane": "NAYA COMPOUNDER",
-   "kind": "out",
-   "at": "2026-10-12T15:47:42Z",
-   "summary": "Mission:** mechanize the L24 dead-claim timeout lesson \u2192 **WORK DONE. Self-score: 9.0/10."
-  },
-  {
-   "comment_id": 6127671699,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6127671699",
-   "lane": "NIGHT",
-   "kind": "out",
-   "at": "2026-10-12T15:47:23Z",
-   "summary": "Lane:** verify (bottleneck crew) \u00b7 **Item:** T-25 (topmost TODO) \u00b7 **Verdict:** LIST-DRAINED / NO_WORK"
-  },
-  {
-   "comment_id": 6127618439,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6127618439",
-   "lane": "NIGHT",
-   "kind": "out",
-   "at": "2026-10-12T15:44:07Z",
-   "summary": "Lane:** wire (bottleneck crew). **Verdict:** LIST-DRAINED / NO_WORK. **Self-score: 8/10."
-  },
-  {
-   "comment_id": 6127611014,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6127611014",
-   "lane": "LEARN",
-   "kind": "in",
-   "at": "2026-10-12T15:43:39Z",
-   "summary": "Mission:** mechanize the L24 dead-claim timeout lesson (AGENTS.md, 2026-10-12 15:04Z distillation batch: claim >~20 min with no sign-out AND zero file activity "
-  },
-  {
-   "comment_id": 6127457146,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6127457146",
-   "lane": "NIGHT",
-   "kind": "out",
-   "at": "2026-10-12T15:34:45Z",
-   "summary": "Lane:** wire (bottleneck crew, night-shift-wire)"
+   "at": "2026-10-12T16:25:03Z",
+   "summary": "Lane:** build \u00b7 **Entry:** B-21 (hermetic fixtures for the 11 good lesson receipts) \u2014 claimed 15:56 UTC as the topmost ACTIONABLE build-lane entry after the mai"
   }
  ],
  "open_pr_total": 100,
- "unassigned_prs": 17
+ "unassigned_prs": 20
 }
