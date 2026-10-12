@@ -13,6 +13,12 @@ because the gate reported the regression and then ignored it.
 A gate that cannot fail is worse than no gate, because it converts an honest red into a
 confident green. These tests assert the capability, so the class of defect cannot return
 in any workflow in this repository.
+
+Both block-scalar styles are scanned: literal `run: |` AND folded `run: >-`. Folded
+blocks are YAML-folded into one command line, so a trailing `|| true` inside one
+genuinely swallows the step's failure — and a trailing `exit 0` is flagged conservatively
+the same way it is in `|` blocks, because the defect SHAPE (a terminal failure-swallow
+line at the end of the step) is what the guard exists to catch.
 """
 
 from __future__ import annotations
@@ -31,7 +37,15 @@ GATE = WORKFLOWS / 'collective-chain-readiness-gate.yml'
 # Any enforcement step must let its last real command decide the outcome.
 # `exit 0` and `|| true` are the two ways a step silently swallows its own failure.
 MASKING = re.compile(r'^\s*(exit\s+0\b|\|\|\s*true\b)', re.M)
-_RUN_KEY = re.compile(r'^(\s*)run:\s*\|')
+# Block scalars: literal `|` (incl. `|-`) AND folded `>` (incl. `>-`). Folded
+# blocks get folded by YAML into one command line, so a trailing `|| true`
+# inside one genuinely swallows the step's failure — the guard must scan them
+# the same way it scans `|` blocks. Body extraction is indent-based, so it
+# works identically for both scalar styles.
+# Deliberately NOT covered: single-line inline `run:` values (e.g. `run: make test`).
+# This guard is narrowed to block scalars by design; inline values are a separate,
+# wider surface and would be a separate guard decision, not a silent extension.
+_RUN_KEY = re.compile(r'^(\s*)run:\s*(?:\||>)')
 
 
 def _terminal_masking_lines(wf_name, text):
@@ -125,6 +139,64 @@ def test_guard_ignores_a_mid_block_scope_gate_exit():
         '          python3 tools/enforce_pin.py\n'
     )
     assert _terminal_masking_lines('synthetic.yml', text) == []
+
+
+def test_guard_flags_a_terminal_mask_in_a_folded_block():
+    """Epsilon's IV blind-spot follow-up: `_RUN_KEY` used to match only `run: |`,
+    so a masking pattern inside a folded `run: >-` block slipped through.
+    In a folded block `|| true` genuinely swallows the step's failure (YAML
+    folds the lines into one command), so the guard must catch it."""
+    text = (
+        'jobs:\n'
+        '  check:\n'
+        '    steps:\n'
+        '      - name: folded regression check\n'
+        '        run: >-\n'
+        '          python3 tools/check_something.py\n'
+        '          || true\n'
+    )
+    offenders = _terminal_masking_lines('synthetic.yml', text)
+    assert offenders == ['synthetic.yml:7: || true'], offenders
+
+
+def test_guard_flags_a_terminal_exit_0_in_a_folded_block():
+    """Same path as above, other masking pattern. A trailing `exit 0` in a folded
+    block would fold into the previous command's arguments rather than execute,
+    but the guard flags the defect shape conservatively — identically to `|`
+    blocks — instead of trusting the scalar style to make it harmless."""
+    text = (
+        'jobs:\n'
+        '  check:\n'
+        '    steps:\n'
+        '      - name: folded regression check\n'
+        '        run: >-\n'
+        '          python3 tools/check_something.py\n'
+        '          exit 0\n'
+    )
+    offenders = _terminal_masking_lines('synthetic.yml', text)
+    assert offenders == ['synthetic.yml:7: exit 0'], offenders
+
+
+def test_guard_passes_the_two_real_folded_blocks():
+    """The two folded `run: >-` blocks in the repo are clean today — neither
+    ends with a failure-swallow. This pins the negative control to the real
+    files Epsilon named, so a future terminal mask in either trips."""
+    folded = {
+        'activation-delivery-gate.yml',
+        'activation-mint.yml',
+    }
+    found = {name: False for name in folded}
+    for wf in sorted(WORKFLOWS.glob('*.y*ml')):
+        if wf.name not in folded:
+            continue
+        text = wf.read_text(encoding='utf-8', errors='replace')
+        folded_blocks = [ln for ln in text.splitlines() if re.match(r'^\s*run:\s*>-?\s*$', ln)]
+        assert folded_blocks, f'{wf.name} no longer contains a folded run block; revisit this control.'
+        found[wf.name] = True
+        assert _terminal_masking_lines(wf.name, text) == [], (
+            f'{wf.name} has a folded block that now swallows its own failure.'
+        )
+    assert all(found.values()), f'Missing folded-block files: {[k for k, v in found.items() if not v]}'
 
 
 def test_migration_enforcement_compares_finding_identity_not_just_a_count():
