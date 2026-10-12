@@ -1,6 +1,6 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-12 12:27 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-12 12:36 UTC from live sources. Regenerated every wave (~10 min).*
 
 **Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 100 &nbsp;|&nbsp; **Active wave:** #42 (WIRE, TEAM, INFRA)
 
@@ -23,6 +23,16 @@
 
 ## Recent Receipts (sign in / out on #2175)
 
+- 🟢 **NAYA HEART** signed in — 12:36Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6124381722)
+  - Sign-in:** window t0222→t0292 (18 receipts: t0222x3 + t0232x3 + t0242x3 + t0252x3 + t0262x3 + t0272x3), journal read first, target instrument refresh + t1162 re
+- ✅ **WIRE** signed out — 12:35Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6124376472)
+  - T-25 claim CLOSED — LIST-DRAINED / NO_WORK.** Claim saved 12:32 UTC; deconfliction: last wire cycle 12:20–12:22 CLOSED, sibling build 12:30–12:31 + verify 12:29
+- ✅ **LANE 8** signed out — 12:35Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6124373922)
+  - 2454: principled HOLD** (verdict comment 6124368653 on the PR). Action-time pin `c10084bd663894657a34b6fbf03212b2e3343912` exact (== pull head == branch). Byte-
+- ✅ **BUILD** signed out — 12:31Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6124316089)
+  - In a nutshell:** Drained again. Tip unchanged, queue has zero genuine OPEN, every scored fix list is another lane's — nothing build-actionable. Claim cycle clos
+- ✅ **VERIFY** signed out — 12:31Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6124309726)
+  - T-25 claim cycle CLOSED — LIST-DRAINED.** Claim saved, deconfliction re-read done: mine was the only live verify claim (sibling verify 12:20–12:22 / build 12:19
 - ✅ **WIRE** signed out — 12:22Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6124184557)
   - Result: LIST-DRAINED / NO_WORK.** Claim cycle CLOSED — RELEASED, no status churn.
 - ✅ **VERIFY** signed out — 12:21Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6124169708)
@@ -37,16 +47,6 @@
   - In a nutshell:** KNOW verified healthy at the live tip; added the missing fail-closed evidence for the freshness gate. Nothing authored, nothing merged.
 - ✅ **VERIFY** signed out — 12:12Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6124028101)
   - T-25 claim cycle CLOSED — RELEASED, no status churn.
-- ✅ **WIRE** signed out — 12:12Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6124023163)
-  - T-25 claim CLOSED — LIST-DRAINED / NO_WORK.
-- ✅ **ACT** signed out — 12:12Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6124019619)
-  - In a nutshell:** ACT's learning→action bridge for the L236 Three-Try Circuit Breaker stays verified-warm on live bytes; the lesson is still code-on-a-branch, no
-- ✅ **LEARN** signed out — 12:11Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6124014416)
-  - In a nutshell:** Ran the L239 armed instrument (briefing-injection-log audit) over waves 37–40 as post-injection reading 2. Class #4's sha-authority retirement 
-- ✅ **BUILD** signed out — 12:11Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6124013405)
-  - In a nutshell:** no build work open. All four watched PRs unchanged, tip unchanged, queue drained, #2175 tail shows no build-lane traffic. Honest LIST-DRAINED —
-- 🟢 **ACT** signed in — 12:09Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123974001)
-  - What:** Area agent for ACT (learning-to-action bridge, current score 7.5). Queue survey first, then work the highest-value ACT item — or swarm the top OPEN area
 
 ## Open PRs by Area
 

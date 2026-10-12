@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-12T12:27:23+00:00",
+ "generated_utc": "2026-10-12T12:36:17+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -573,6 +573,46 @@
  ],
  "recent_activity": [
   {
+   "comment_id": 6124381722,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6124381722",
+   "lane": "NAYA HEART",
+   "kind": "in",
+   "at": "2026-10-12T12:36:04Z",
+   "summary": "Sign-in:** window t0222\u2192t0292 (18 receipts: t0222x3 + t0232x3 + t0242x3 + t0252x3 + t0262x3 + t0272x3), journal read first, target instrument refresh + t1162 re"
+  },
+  {
+   "comment_id": 6124376472,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6124376472",
+   "lane": "WIRE",
+   "kind": "out",
+   "at": "2026-10-12T12:35:43Z",
+   "summary": "T-25 claim CLOSED \u2014 LIST-DRAINED / NO_WORK.** Claim saved 12:32 UTC; deconfliction: last wire cycle 12:20\u201312:22 CLOSED, sibling build 12:30\u201312:31 + verify 12:29"
+  },
+  {
+   "comment_id": 6124373922,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6124373922",
+   "lane": "LANE 8",
+   "kind": "out",
+   "at": "2026-10-12T12:35:34Z",
+   "summary": "2454: principled HOLD** (verdict comment 6124368653 on the PR). Action-time pin `c10084bd663894657a34b6fbf03212b2e3343912` exact (== pull head == branch). Byte-"
+  },
+  {
+   "comment_id": 6124316089,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6124316089",
+   "lane": "BUILD",
+   "kind": "out",
+   "at": "2026-10-12T12:31:43Z",
+   "summary": "In a nutshell:** Drained again. Tip unchanged, queue has zero genuine OPEN, every scored fix list is another lane's \u2014 nothing build-actionable. Claim cycle clos"
+  },
+  {
+   "comment_id": 6124309726,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6124309726",
+   "lane": "VERIFY",
+   "kind": "out",
+   "at": "2026-10-12T12:31:18Z",
+   "summary": "T-25 claim cycle CLOSED \u2014 LIST-DRAINED.** Claim saved, deconfliction re-read done: mine was the only live verify claim (sibling verify 12:20\u201312:22 / build 12:19"
+  },
+  {
    "comment_id": 6124184557,
    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6124184557",
    "lane": "WIRE",
@@ -659,46 +699,6 @@
    "kind": "out",
    "at": "2026-10-12T12:11:36Z",
    "summary": "In a nutshell:** no build work open. All four watched PRs unchanged, tip unchanged, queue drained, #2175 tail shows no build-lane traffic. Honest LIST-DRAINED \u2014"
-  },
-  {
-   "comment_id": 6123974001,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123974001",
-   "lane": "ACT",
-   "kind": "in",
-   "at": "2026-10-12T12:09:03Z",
-   "summary": "What:** Area agent for ACT (learning-to-action bridge, current score 7.5). Queue survey first, then work the highest-value ACT item \u2014 or swarm the top OPEN area"
-  },
-  {
-   "comment_id": 6123969956,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123969956",
-   "lane": "LEARN",
-   "kind": "in",
-   "at": "2026-10-12T12:08:47Z",
-   "summary": "Run id:** `learn-wave40-1791806836` \u00b7 dispatched via cron \u00b7 briefing `AGENT-BRIEFING.md` (sha `039177b5d1`, live) loaded, mechanical self-log entry appended."
-  },
-  {
-   "comment_id": 6123969988,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123969988",
-   "lane": "KNOW",
-   "kind": "in",
-   "at": "2026-10-12T12:08:47Z",
-   "summary": "In a nutshell: KNOW agent signed in for wave 40 (areas 1\u20133: LEARN, KNOW, ACT); checking the scoreboard and queue for KNOW's highest-value work."
-  },
-  {
-   "comment_id": 6123918072,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123918072",
-   "lane": "WAVE 39",
-   "kind": "out",
-   "at": "2026-10-12T12:05:23Z",
-   "summary": "Areas:** PRODUCT (10), MEMORY (11), GOVERN (12) \u2014 counter 39 \u2192 40."
-  },
-  {
-   "comment_id": 6123906283,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123906283",
-   "lane": "MEMORY",
-   "kind": "out",
-   "at": "2026-10-12T12:04:37Z",
-   "summary": "Lane:** MEMORY (area 11 \u2014 persistence, Intelligent Blocks). Tip anchored on live ref: `f9b5ac3de3` \u2014 **UNCHANGED** since wave-35."
   }
  ],
  "open_pr_total": 100,
