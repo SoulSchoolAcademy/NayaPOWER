@@ -32,21 +32,56 @@ GATE = WORKFLOWS / 'collective-chain-readiness-gate.yml'
 # `exit 0` and `|| true` are the two ways a step silently swallows its own failure.
 MASKING = re.compile(r'^\s*(exit\s+0\b|\|\|\s*true\b)', re.M)
 
+# A deliberate out-of-scope PASS is NOT masking, but only when the step says so
+# in plain words: a scope gate that documents its decision (e.g. receipt-gate's
+# "Scope gate ... PASS by decision") is auditable, which is the opposite of the
+# silent-masking failure mode this guard exists to catch. The carve-out is
+# per-step and requires BOTH markers — an unmarked `exit 0` still fails the guard.
+STEP_BOUNDARY = re.compile(r'(?m)^\s*-\s+(?:name|uses):')
+SCOPE_DECISION_MARKERS = ('Scope gate', 'PASS by decision')
+
 
 def test_migration_coherence_gate_workflow_exists():
     assert GATE.is_file(), f'{GATE.name} is missing, so chain and migration readiness are unmeasured in CI.'
+
+
+def _step_spans(text):
+    """(start, end) spans of each top-level step in a workflow file.
+
+    A step runs from its `- name:`/`- uses:` line to the next step's line.
+    Text before the first step (triggers, env) is span 0 — it gets no carve-out.
+    """
+    bounds = [m.start() for m in STEP_BOUNDARY.finditer(text)]
+    spans = []
+    if bounds and bounds[0] > 0:
+        spans.append((0, bounds[0]))
+    for i, start in enumerate(bounds):
+        end = bounds[i + 1] if i + 1 < len(bounds) else len(text)
+        spans.append((start, end))
+    return spans
 
 
 def test_no_workflow_step_swallows_its_own_failure():
     offenders = []
     for wf in sorted(WORKFLOWS.glob('*.y*ml')):
         text = wf.read_text(encoding='utf-8', errors='replace')
-        for m in MASKING.finditer(text):
-            line = text[:m.start()].count('\n') + 1
-            offenders.append(f'{wf.name}:{line}: {m.group(1).strip()}')
+        for start, end in _step_spans(text):
+            chunk = text[start:end]
+            # Explicit scope decisions are documented, not silent — see the note
+            # above. Only the `exit 0` form can be a scope decision; `|| true`
+            # never is, so it is never exempted.
+            scope_decision = all(marker in chunk for marker in SCOPE_DECISION_MARKERS)
+            for m in MASKING.finditer(chunk):
+                kind = m.group(1).strip()
+                if scope_decision and kind.startswith('exit 0'):
+                    continue
+                line = text[:start + m.start()].count('\n') + 1
+                offenders.append(f'{wf.name}:{line}: {kind}')
     assert not offenders, (
         'These workflow lines discard the exit status of the step containing them, so the '
-        'step cannot fail. A regression check that cannot fail is not a check:\n  '
+        'step cannot fail. A regression check that cannot fail is not a check. '
+        '(An `exit 0` is only allowed inside a step that documents it as a scope '
+        'decision with both Scope gate + PASS by decision markers):\n  '
         + '\n  '.join(offenders)
     )
 
