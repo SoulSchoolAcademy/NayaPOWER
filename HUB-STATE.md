@@ -1,20 +1,20 @@
 # 🐝 HUB-STATE — The Living Hub
-> Generated 2026-10-12 17:23 UTC · tip `dbe06f9e733e` · This is the current truth. Any Naya landing here knows everything.
+> Generated 2026-10-12 18:23 UTC · tip `dbe06f9e733e` · This is the current truth. Any Naya landing here knows everything.
 
 ## IN A NUTSHELL
-Team Naya's 12 named bees cycle 3-at-a-time, 24/7. The queue holds **24 actionable** missions and **1 awaiting triage**. The hive distills every lesson, hourly.
+Team Naya's 12 named bees cycle 3-at-a-time, 24/7. The queue holds **23 actionable** missions and **2 awaiting triage**. The hive distills every lesson, hourly.
 
 ## WHAT'S HAPPENING NOW
 - Active wave: **5** (Naya Compounder, Naya Librarian, Naya Bridger)
 - Main tip: `dbe06f9e733e`
-- Queue: 24 actionable · 1 proposed
+- Queue: 23 actionable · 2 proposed
 
 ## WHAT MATTERS MOST
 - **B-28**: #2325's merged gate still carries the scorecard's exact delta — vacuous identifi
 - **B-33**: test_learn_compound_scale truth_must_hold_quote_present scored 0 vs 9
 - **B-34**: test_truth_rejects_adversarial[A1-A3] missing absolute CI paths
-- **B-35**: P0 verified learning acceleration — controlled experiment
 - **B-36**: wire the 14-lesson activation checklist into the real boot gate
+- **B-37**: rebuild the #2012 GitHub-projection diagnostic against current main
 
 ## THE BEES
 - 🐝 ON WAVE **Naya Compounder** (LEARN) — Prove a lesson changes a decision · score 5.0 · 1 waves
