@@ -17,6 +17,13 @@ Rules:
   - Every option cites its source. An option without a source is not an option.
   - Options the world model doesn't know about are NOT offered. If the cache
     is stale or missing, say so — never mine from imagination.
+  - FRESHNESS IS THE FEATURE (Layer 1's contract, enforced here): a section
+    is usable only when its status is OK *and* its as_of_ts is younger than
+    Layer 1's FRESHNESS_LIMITS for that section. A needed section that is
+    stale/partial/missing refuses the whole run — UNKNOWN + READ_MORE,
+    exit 2 — never a mined option set with a warning footnote. This is the
+    exact false-confidence failure Layer 1's P0-F1 was built to kill;
+    the seam must not reintroduce it.
   - Zero network calls. Local cache only.
   - Duplicate options (same branch, same work) are collapsed with a note.
 
@@ -28,7 +35,9 @@ Usage:
 
 Exit codes:
   0 — options mined (possibly an empty list with an honest note)
-  2 — cannot mine: no world model, intent unclear, or unknown intent type
+  2 — cannot mine: no world model, intent unclear, unknown intent type,
+      or a needed world-model section is stale (UNKNOWN + READ_MORE —
+      Layer 1's freshness contract, enforced at this seam)
 """
 
 import json
@@ -49,13 +58,103 @@ GRAND_TODO_PATH = Path(os.path.expanduser(
 # Sections the miner knows how to read from the world model cache.
 KNOWN_SECTIONS = ("tip", "prs", "lanes", "ledger", "mission", "laws")
 
+# ---------------------------------------------------------------------------
+# Freshness contract — Layer 1's staleness logic, reused not reinvented.
+#
+# Layer 1 (tools/world_model.py) refuses stale data with UNKNOWN + READ_MORE
+# (P0-F1). This miner reads the SAME cache file, so it must honor the SAME
+# age-based contract: status "OK" alone is not enough — a 3-hour-old "OK"
+# section is STALE and mining from it is the exact false-confidence failure
+# P0-F1 was built to kill. We import Layer 1's logic so the two layers can
+# never disagree about what "stale" means.
+# ---------------------------------------------------------------------------
+
+try:
+    from world_model import (
+        FRESHNESS_LIMITS,
+        section_usable,
+        utc_now_ts,
+    )
+    _FRESHNESS_SOURCE = "tools/world_model.py (imported — single source of truth)"
+except ImportError:  # pragma: no cover — defensive fallback only
+    # If world_model.py cannot be imported (moved/renamed), fall back to a
+    # duplicated TTL table so the miner stays fail-closed instead of silently
+    # mining from stale data. Source of truth remains
+    # tools/world_model.py::FRESHNESS_LIMITS; test_freshness_ttl_agreement
+    # fails loudly if the two drift while the import succeeds.
+    import time as _time
+
+    FRESHNESS_LIMITS = {
+        "tip": 300,        # 5 min — tip moves fast
+        "prs": 600,        # 10 min
+        "lanes": 300,      # 5 min — lanes change fast
+        "ledger": 1800,    # 30 min
+        "mission": 1800,   # 30 min
+        "laws": 86400,     # 24 h — laws change rarely
+    }
+
+    def utc_now_ts():
+        return _time.time()
+
+    def section_usable(name, sections):
+        section = sections.get(name, {})
+        if section.get("status") == "PARTIAL":
+            return False, "PARTIAL"
+        if section.get("status") != "OK":
+            return False, section.get("status", "UNKNOWN") or "UNKNOWN"
+        ts = section.get("as_of_ts")
+        limit = FRESHNESS_LIMITS.get(name, 600)
+        if ts is None:
+            return False, "UNKNOWN"
+        if utc_now_ts() - ts <= limit:
+            return True, "FRESH"
+        return False, "STALE"
+
+    _FRESHNESS_SOURCE = ("fallback TTL table — world_model import failed; "
+                         "see comment above")
+
+# Sections each intent type mines from. A needed section that is not FRESH
+# (Layer 1's contract) refuses the whole run — presenting a partial or
+# outdated option set as "the options" would be a positive answer from
+# stale data, which P0-F1 forbids.
+NEEDED_SECTIONS = {
+    "what_next": ("prs", "lanes", "mission"),
+    "should_merge": ("prs",),
+    "which_option": ("prs",),
+    "what_blocking": ("prs", "lanes"),
+}
+
+
+def stale_refusal_notes(problems):
+    """Build UNKNOWN + READ_MORE notes for stale sections.
+
+    Mirrors Layer 1's unknown_with_directive (tools/world_model.py):
+    name the stale sections with their ages, then direct a refresh.
+    Never a mined option set with a warning footnote.
+    problems: list of (section_name, state, age_str, reason).
+    """
+    lines = []
+    for name, state, age_s, reason in problems:
+        extra = f" Reason: {reason}" if reason else ""
+        lines.append(f"UNKNOWN — {name} data is {state} (age: {age_s}).{extra}")
+    lines.append("READ_MORE: run `refresh` (or `snapshot`), then re-mine. "
+                 "No options can be mined from stale data.")
+    return lines
+
 
 # ---------------------------------------------------------------------------
 # World model reading (local cache only — no network)
 # ---------------------------------------------------------------------------
 
 def load_world_model():
-    """Load the world model from local cache. Returns (model, warnings)."""
+    """Load the world model from local cache. Returns (model, warnings).
+
+    Warnings are age-aware: a section whose status is "OK" but whose
+    as_of_ts is older than Layer 1's FRESHNESS_LIMITS is STALE — the old
+    check (status string only) could never fire, because Layer 1 computes
+    staleness from age at query time and never writes status "STALE" into
+    the snapshot.
+    """
     warnings = []
     if not WORLD_MODEL_PATH.exists():
         return None, ["world model not found — run tools/world_model.py snapshot first"]
@@ -63,10 +162,14 @@ def load_world_model():
         model = json.loads(WORLD_MODEL_PATH.read_text())
     except (json.JSONDecodeError, OSError) as e:
         return None, [f"world model unreadable: {e}"]
-    for name, section in model.get("sections", {}).items():
-        status = section.get("status", "UNKNOWN")
-        if status in ("STALE", "UNKNOWN"):
-            warnings.append(f"world model section '{name}' is {status}")
+    sections = model.get("sections", {})
+    for name in sections:
+        usable, state = section_usable(name, sections)
+        if not usable:
+            warnings.append(
+                f"world model section '{name}' is {state} — "
+                f"too stale to mine from (limit {FRESHNESS_LIMITS.get(name, 600)}s)"
+            )
     return model, warnings
 
 
@@ -604,6 +707,31 @@ def mine_options(intent, user_options=None):
     if miner is None:
         options, notes = no_options_applicable(intent_type)
     else:
+        # FRESHNESS GATE (the L1→L3 seam fix): every section this intent
+        # type mines from must satisfy Layer 1's freshness contract
+        # (status OK *and* as_of_ts within FRESHNESS_LIMITS). A stale
+        # needed section refuses the run — UNKNOWN + READ_MORE, exit 2 —
+        # exactly Layer 1's semantics. Mining a partial/outdated option
+        # set and presenting it as "the options" would be a positive
+        # answer from stale data (P0-F1).
+        sections = model.get("sections", {})
+        now = utc_now_ts()
+        problems = []
+        for name in NEEDED_SECTIONS.get(intent_type, ()):
+            usable, state = section_usable(name, sections)
+            if not usable:
+                sec = sections.get(name, {})
+                ts = sec.get("as_of_ts")
+                age_s = f"{int(now - ts)}s" if ts else "never fetched"
+                problems.append((name, state, age_s, sec.get("reason", "")))
+        if problems:
+            return {
+                "ok": False,
+                "exit_hint": 2,
+                "options": [],
+                "notes": stale_refusal_notes(problems),
+                "warnings": warnings,
+            }
         options, notes = miner(model, intent, todo_items)
 
     # Duplicate detection
@@ -628,10 +756,12 @@ def mine_options(intent, user_options=None):
         notes.append(f"{added} user-added option(s) appended — "
                      "marked user_added, unscored.")
 
-    # Freshness flag: tip section drives overall freshness
-    _, tip_status = section(model, "tip")
-    if tip_status != "OK":
-        warnings.append(f"live tip is {tip_status} — options may be stale")
+    # Freshness flag: tip section drives overall freshness. Age-aware:
+    # a tip whose as_of_ts is older than Layer 1's tip TTL warns loudly
+    # even though tip staleness alone does not refuse the run.
+    tip_usable, tip_state = section_usable("tip", model.get("sections", {}))
+    if not tip_usable:
+        warnings.append(f"live tip is {tip_state} — options may be stale")
 
     strip_internal(deduped)
 
