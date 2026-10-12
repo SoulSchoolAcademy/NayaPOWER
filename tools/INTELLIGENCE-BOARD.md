@@ -14,22 +14,22 @@ Live GitHub / mission #2154 / team #2175 / ledger #2396
 → existing [Compass](../tools/nayas_guide.py), [value calculus](../kernel/value_calculus.py), current LAW gate for a consequential action
 → independently verified outcomes / existing Smart Note and successor loops.
 
-The Board reports the mission text as **SOURCE_REPORTED**, not proven. A section must pass the *existing* World Model \`section_usable\` gate; stale, partial or missing data becomes UNKNOWN/READ_MORE. The cached law/briefing section NEVER creates permission. An issue-comment lane state is an observation, not a mutex or authoritative lease. Ledger metadata does NOT prove causality. One snapshot does NOT prove what changed.
+The Board reports the mission text as **SOURCE_REPORTED**, not proven. A section must pass the *existing* World Model `section_usable` gate; stale, partial or missing data becomes UNKNOWN/READ_MORE. The cached law/briefing section NEVER creates permission. An issue-comment lane state is an observation, not a mutex or authoritative lease. Ledger metadata does NOT prove causality. One snapshot does NOT prove what changed.
 
 ## Use
 
 After the already-existing World Model refresh (do not invent a second poller):
 
-\`\`\`sh
+```sh
 python3 tools/world_model.py refresh
 python3 tools/intelligence_board.py --format markdown
 python3 tools/intelligence_board.py --format json
 python3 -m unittest discover -s tests -p 'test_intelligence_board.py' -v
-\`\`\`
+```
 
-World Model cache default: \`~/.naya/world-model.json\`. Supply \`--world-model PATH\` for local fixtures or nondefault machines.
+World Model cache default: `~/.naya/world-model.json`. Supply `--world-model PATH` for local fixtures or nondefault machines.
 
-Exit 0 = mission + exact main tip usable as current *orientation*. Exit 2 = READ_MORE. **Neither means authorized or safe to ACT**. Other sections can independently remain UNKNOWN/PARTIAL; inspect the \`freshness\` map before using them.
+Exit 0 = mission + exact main tip usable as current *orientation*. Exit 2 = READ_MORE. **Neither means authorized or safe to ACT**. Other sections can independently remain UNKNOWN/PARTIAL; inspect the `freshness` map before using them.
 
 ## What this first slice DOES
 
