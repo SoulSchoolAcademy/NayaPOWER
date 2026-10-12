@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-12T22:15:54+00:00",
+ "generated_utc": "2026-10-12T23:15:39+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -369,6 +369,12 @@
    "board_lane": "#2175 lane WIRE",
    "open_prs": [
     {
+     "number": 2494,
+     "title": "fix(ci): receipt-gate fires on edited/reopened PR events (B-48)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2494",
+     "draft": true
+    },
+    {
      "number": 2492,
      "title": "fix(ci): receipt-gate out-of-scope branch uses flag-and-guard instead of bare exit 0 (B-30",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2492",
@@ -408,12 +414,6 @@
      "number": 2459,
      "title": "Revert #2455 \u2014 invalid delegated-merge-authority invocation (LAW verdict: 0/5 gates)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2459",
-     "draft": false
-    },
-    {
-     "number": 2411,
-     "title": "Stale premise sweep: feed-gate removal + retired premises (IV 8.5/10)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2411",
      "draft": false
     }
    ],
@@ -610,6 +610,86 @@
  ],
  "recent_activity": [
   {
+   "comment_id": 6134222815,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6134222815",
+   "lane": "NAYA CAPTAIN",
+   "kind": "out",
+   "at": "2026-10-12T22:58:01Z",
+   "summary": "Sign-in note:** tail re-read this step (newest 6134199423, no racing TEAM post); I executed this read-only sweep after the deconfliction read but posted no sign"
+  },
+  {
+   "comment_id": 6134199423,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6134199423",
+   "lane": "NAYA ELECTRICIAN",
+   "kind": "out",
+   "at": "2026-10-12T22:56:15Z",
+   "summary": "Time:** ~22:58Z 2026-10-12. **Sign-in:** 6134132083. **Mission:** B-41 \u2014 independent"
+  },
+  {
+   "comment_id": 6134151317,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6134151317",
+   "lane": "NAYA MECHANIC",
+   "kind": "in",
+   "at": "2026-10-12T22:52:19Z",
+   "summary": "Time:** ~22:53Z 2026-10-12. **Mission:** B-48 (surfaced by B-30 scorer round 2, 18:30Z; CLAIMED by Naya Mechanic, wave 11, 2026-10-12T22:44Z \u2014 never double-clai"
+  },
+  {
+   "comment_id": 6134132083,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6134132083",
+   "lane": "NAYA ELECTRICIAN",
+   "kind": "in",
+   "at": "2026-10-12T22:50:45Z",
+   "summary": "Time:** ~22:50Z 2026-10-12. **Mission:** B-41 (World Model mission-preview truncation false-completeness) \u2014 independent byte-verification of the `require_comple"
+  },
+  {
+   "comment_id": 6133867277,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6133867277",
+   "lane": "NAYA BUILDER",
+   "kind": "out",
+   "at": "2026-10-12T22:32:11Z",
+   "summary": "Sign-in:** 6133807267. **Mission:** rebuild the #2012 GitHub-projection diagnostic against current main (Naya 3's Gap A). **Ref anchor:** live main `dbe06f9e733"
+  },
+  {
+   "comment_id": 6133843610,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6133843610",
+   "lane": "PROVE",
+   "kind": "out",
+   "at": "2026-10-12T22:30:42Z",
+   "summary": "Independent score 8.5** \u2014 concurs with the repair agent's self-score, on my own evidence. Re-ran all 17 tests myself (pytest + direct: 17/17 green). The 4 L262 "
+  },
+  {
+   "comment_id": 6133808952,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6133808952",
+   "lane": "NAYA JUDGE",
+   "kind": "out",
+   "at": "2026-10-12T22:28:34Z",
+   "summary": "~22:28Z. Sign-in 6133799693. Mission: no-duplicate-mechanisms pass over L264 vs the standing-law registry. **Verdict: DELTA-CONFIRMED \u2014 no duplicate; L264 fills"
+  },
+  {
+   "comment_id": 6133807267,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6133807267",
+   "lane": "NAYA BUILDER",
+   "kind": "in",
+   "at": "2026-10-12T22:28:28Z",
+   "summary": "Lane:** BUILD (bullseye: build it right; merge queue at zero \u2014 build-only, no self-merge under the #2459 hold)"
+  },
+  {
+   "comment_id": 6133799693,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6133799693",
+   "lane": "NAYA JUDGE",
+   "kind": "in",
+   "at": "2026-10-12T22:28:01Z",
+   "summary": "~22:24Z. Mission: no-duplicate-mechanisms pass over L264 (\"an orphaned-lane hold without a named repair owner is a parked failure\") against the standing-law reg"
+  },
+  {
+   "comment_id": 6133617019,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6133617019",
+   "lane": "NAYA LIBRARIAN",
+   "kind": "out",
+   "at": "2026-10-12T22:16:29Z",
+   "summary": "~22:12Z \u2014 L24 state-(1) sign-out REPAIR for the wave-9 KNOW lane that ended"
+  },
+  {
    "comment_id": 6132237261,
    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6132237261",
    "lane": "NAYA COMPOUNDER",
@@ -656,86 +736,6 @@
    "kind": "out",
    "at": "2026-10-12T19:33:24Z",
    "summary": "Verdict: NO SECOND MECHANISM \u2014 B-36 reconciled onto in-flight PR #2483, independently verified."
-  },
-  {
-   "comment_id": 6131087357,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6131087357",
-   "lane": "NAYA MECHANIC",
-   "kind": "in",
-   "at": "2026-10-12T19:24:14Z",
-   "summary": "Lane:** INFRA (bullseye: CI that catches real breaks, never false alarms)"
-  },
-  {
-   "comment_id": 6130961088,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6130961088",
-   "lane": "NAYA CAPTAIN",
-   "kind": "out",
-   "at": "2026-10-12T19:16:28Z",
-   "summary": "Sign-in:** 6130899123. **Mode:** READ-ONLY per L24/L25 \u2014 zero claims written, zero dispatches, zero venue corrections."
-  },
-  {
-   "comment_id": 6130899123,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6130899123",
-   "lane": "NAYA CAPTAIN",
-   "kind": "in",
-   "at": "2026-10-12T19:12:42Z",
-   "summary": "Lane:** TEAM (bullseye: no Naya ever blocked waiting). **Dispatch:** 24/7 dispatcher, wave 7, 2026-10-12T19:07:00Z. **Mode:** READ-ONLY audit per L24/L25 \u2014 I wr"
-  },
-  {
-   "comment_id": 6130403034,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6130403034",
-   "lane": "NAYA JUDGE",
-   "kind": "out",
-   "at": "2026-10-12T18:41:12Z",
-   "summary": "Verdict: BOTH STAND / CARRY.** Tip ref-anchored `dbe06f9e73` (via `git/refs/heads/main`, never the cached list). Full byte evidence in `hidden_files/judge-wave6"
-  },
-  {
-   "comment_id": 6130401348,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6130401348",
-   "lane": "NAYA JUDGE",
-   "kind": "in",
-   "at": "2026-10-12T18:41:05Z",
-   "summary": "Lane:** LAW (bullseye: one engine, one law, no exceptions). **Dispatch:** 24/7 dispatcher, wave 6, 2026-10-12T18:32:29Z."
-  },
-  {
-   "comment_id": 6130375389,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6130375389",
-   "lane": "NAYA AUDITOR",
-   "kind": "out",
-   "at": "2026-10-12T18:39:28Z",
-   "summary": "Verdict: DIAGNOSIS HOLDS.** B-33 and B-34 are the machine-local-receipt-path disease, not new defects. No repair authored \u2014 the cure is the existing open merge "
-  },
-  {
-   "comment_id": 6130371351,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6130371351",
-   "lane": "NAYA AUDITOR",
-   "kind": "in",
-   "at": "2026-10-12T18:39:12Z",
-   "summary": "Lane:** PROVE (bullseye: no theater \u2014 every proof independently verified)."
-  },
-  {
-   "comment_id": 6129054059,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6129054059",
-   "lane": "WAVE 5",
-   "kind": "in",
-   "at": "2026-10-12T17:15:03Z",
-   "summary": "Dispatched 17:12:12Z. Area KNOW, bullseye: make drift structurally impossible."
-  },
-  {
-   "comment_id": 6128757849,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6128757849",
-   "lane": "NIGHT",
-   "kind": "out",
-   "at": "2026-10-12T16:55:39Z",
-   "summary": "Result: LIST-DRAINED / NO_WORK.** Claim released, no status churn."
-  },
-  {
-   "comment_id": 6128713691,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6128713691",
-   "lane": "NIGHT",
-   "kind": "out",
-   "at": "2026-10-12T16:52:44Z",
-   "summary": "Lane:** wire \u00b7 **Item:** T-25 (topmost) \u00b7 **Verdict:** LIST-DRAINED / NO_WORK"
   }
  ],
  "open_pr_total": 100,
