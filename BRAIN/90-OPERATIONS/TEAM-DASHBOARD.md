@@ -1,19 +1,19 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-12 01:37 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-12 01:46 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 100 &nbsp;|&nbsp; **Active wave:** #1 (LEARN, KNOW, ACT)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 100 &nbsp;|&nbsp; **Active wave:** #2 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
 | Agent | Area | Bullseye | Score | Status |
 |---|---|---|---|---|
-| **Compounder** | LEARN | *Prove a lesson changes a decision.* | 5.0 | 🟢 ACTIVE NOW |
-| **Librarian** | KNOW | *Make drift structurally impossible.* | 7.0 | 🟢 ACTIVE NOW |
-| **Bridger** | ACT | *Prove learning reaches action.* | 7.5 | 🟢 ACTIVE NOW |
-| **Judge** | LAW | *One engine, one law, no exceptions.* | 8.0 | ⚪ standby |
-| **Auditor** | PROVE | *No theater — every proof independently verified.* | 6.0 | ⚪ standby |
-| **Builder** | BUILD | *Merge queue at zero.* | 7.5 | ⚪ standby |
+| **Compounder** | LEARN | *Prove a lesson changes a decision.* | 5.0 | ⚪ standby |
+| **Librarian** | KNOW | *Make drift structurally impossible.* | 7.0 | ⚪ standby |
+| **Bridger** | ACT | *Prove learning reaches action.* | 7.5 | ⚪ standby |
+| **Judge** | LAW | *One engine, one law, no exceptions.* | 8.0 | 🟢 ACTIVE NOW |
+| **Auditor** | PROVE | *No theater — every proof independently verified.* | 6.0 | 🟢 ACTIVE NOW |
+| **Builder** | BUILD | *Merge queue at zero.* | 7.5 | 🟢 ACTIVE NOW |
 | **Electrician** | WIRE | *Every gate wired to a live call site.* | 7.0 | ⚪ standby |
 | **Captain** | TEAM | *No Naya ever blocked waiting.* | 8.0 | ⚪ standby |
 | **Mechanic** | INFRA | *CI that catches real breaks, never false alarms.* | 8.5 | ⚪ standby |
@@ -50,10 +50,10 @@
 ## Open PRs by Area
 
 ### LEARN (4)
+- [#2416](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2416) LEARN: error-signal loop — flags briefed-principle violations as struc
 - [#2413](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2413) DRAFT feat(product): Hub learning-lifecycle surface spec (Host, wave 7 📝draft
 - [#2391](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2391) feat(learn): four-arm compounding experiment spec V1 📝draft
 - [#2296](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2296) feat(learn): canonical learning-event envelope (#2244 req 3)
-- [#2277](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2277) docs(brain): learning event 2026-10-10
 
 ### KNOW (18)
 - [#2415](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2415) BRAIN: regenerate index layer at live tip 665098e3
@@ -79,21 +79,21 @@
 - [#2392](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2392) fix(verify): resolve python interpreter at runtime in guard_liveness.t 📝draft
 - [#2374](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2374) test(t21): operating-essence acceptance battery — moral value before n
 
-### BUILD (10)
+### BUILD (11)
+- [#2417](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2417) Fix grader base-resolution collapse at main tip (#2404 follow-up)
 - [#2408](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2408) [ACT] Label apply_retained_intelligence as LOCAL MIRROR (doc-only)
 - [#2353](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2353) Law 12 enforcement: proof receipts expire on material change + unified 📝draft
 - [#2345](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2345) test(2244-E): full-chain proof — failure → notification → collaboratio
 - [#2309](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2309) feat(activation): #2244 req 1 — machine-checkable wake/activation cont
-- [#2304](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2304) Fail-closed: non-iterable manifest nodes raise RuntimeError (fast-foll 📝draft
-- …and 5 more
+- …and 6 more
 
-### WIRE (45)
+### WIRE (44)
 - [#2411](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2411) Stale premise sweep: feed-gate removal + retired premises (IV 8.5/10)
 - [#2399](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2399) Receipt gate: exact-head-SHA pin as blocking CI check
 - [#2395](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2395) wire: route execute_plan refusals through decision_discipline.executio
 - [#2364](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2364) feat(gates): show-your-work receipt machinery — no receipt, no merge
 - [#2350](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2350) WIRE: #2244-A worker activation-contract gate on the PR merge path
-- …and 40 more
+- …and 39 more
 
 ### TEAM (1)
 - [#2397](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2397) feat(dashboard): live Team Naya activity dashboard — markdown + machin
