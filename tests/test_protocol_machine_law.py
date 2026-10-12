@@ -5,7 +5,10 @@ Prime 2: the law is the code. These tests prove the machinery enforces it.
 Positive AND negative controls: gates must block what they claim to block
 and allow what they claim to allow.
 """
+import importlib.util
 import time
+
+from pathlib import Path
 
 import pytest
 
@@ -159,6 +162,27 @@ def test_quality_gate_rejects_bad_weights():
 
 # ---------- cold_start_gate ----------
 
+REPO_ROOT = str(Path(__file__).resolve().parents[1])
+
+
+def _honest_claim():
+    """Build a byte-faithful checklist claim from the canonical artifacts
+    via the REAL gate-1 tool (no hand-computed hashes — the gate recomputes
+    them anyway)."""
+    tool_path = Path(REPO_ROOT) / "tools" / "activation_checklist.py"
+    spec = importlib.util.spec_from_file_location(
+        "naya_activation_checklist_test", str(tool_path))
+    ac = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(ac)
+    canonical, err = ac.load_canonical(REPO_ROOT, REPO_ROOT)
+    assert canonical is not None, err
+    return {
+        "lessons": [{"lesson_id": lid, "sha256": h}
+                    for lid, h in sorted(canonical["lesson_hashes"].items())],
+        "v2": dict(canonical["v2_hashes"]),
+    }
+
+
 def _good_state():
     return ColdStartState(
         agent_id="naya-9",
@@ -170,6 +194,8 @@ def _good_state():
         current_truth_location="mission-state feed #2154 and current main",
         next_action="re-anchor on live main and check the board",
         receipt=issue_receipt("naya-9", CORRECT),
+        repo_root=REPO_ROOT,
+        checklist_claim=_honest_claim(),
     )
 
 
@@ -196,6 +222,63 @@ def test_cold_start_requires_board_and_main():
     s.current_truth_location = "the board"  # board alone is not the source of truth
     res = run_cold_start(s)
     assert not res.passed
+
+
+def test_cold_start_rejects_forged_lesson_hash():
+    """GRAND-TODO P0: a forged pass must be rejected. One flipped hash =
+    the gate recomputes from canonical bytes and fails closed."""
+    s = _good_state()
+    s.checklist_claim["lessons"][0] = {
+        "lesson_id": "L1",
+        "sha256": "0" * 64,  # forged
+    }
+    res = run_cold_start(s)
+    assert not res.passed
+    assert any("ACTIVATION_CHECKLIST_REJECTED" in f for f in res.failures)
+    assert any("LESSON_FINGERPRINT_MISMATCH" in f for f in res.failures)
+
+
+def test_cold_start_rejects_short_claim():
+    """13 of 14 lessons is partial loading, not activation."""
+    s = _good_state()
+    s.checklist_claim["lessons"] = s.checklist_claim["lessons"][:-1]
+    res = run_cold_start(s)
+    assert not res.passed
+    assert any("LESSON_MISSING" in f for f in res.failures)
+
+
+def test_cold_start_rejects_self_asserted_pass():
+    """A builder cannot establish authenticity by asserting a verdict.
+    The claim carries a self-minted 'pass' with wrong hashes — the gate
+    ignores the assertion and recomputes."""
+    s = _good_state()
+    s.checklist_claim = {
+        "verdict": "CHECKLIST-VERIFIED",  # self-asserted, untrusted
+        "status": "ACTIVATED",            # self-asserted, untrusted
+        "lessons": [{"lesson_id": "L%d" % i, "sha256": "f" * 64}
+                    for i in range(1, 15)],
+        "v2": {rel: "e" * 64 for rel in s.checklist_claim["v2"]},
+    }
+    res = run_cold_start(s)
+    assert not res.passed
+    assert any("ACTIVATION_CHECKLIST_REJECTED" in f for f in res.failures)
+
+
+def test_cold_start_fails_closed_without_repo_root():
+    """No checkout to verify against = no start. Not advisory."""
+    s = _good_state()
+    s.repo_root = ""
+    res = run_cold_start(s)
+    assert not res.passed
+    assert any("ACTIVATION_CHECKLIST_UNVERIFIED" in f for f in res.failures)
+
+
+def test_cold_start_fails_closed_missing_checkout():
+    s = _good_state()
+    s.repo_root = "/nonexistent-checkout-xyz"
+    res = run_cold_start(s)
+    assert not res.passed
+    assert any("ACTIVATION_CHECKLIST_UNVERIFIED" in f for f in res.failures)
 
 
 # ---------- cold_successor_test ----------

@@ -118,19 +118,24 @@ CURRICULUM_LESSON_PINS = {
 # Pinned 2026-10-10 from origin/brain-build/operating-code-v2 @
 # 22b84419ed500f91d677679c153c0599e60ca33c (PR #2087, OPEN/unmerged).
 # Re-pinned: branch moved 8a933551 -> 22b84419 (V2 files changed).
-# Until #2087 merges, run with --v2-root pointing at a checkout of that
-# branch (or pass --v2-expect to re-pin deliberately). After merge, re-pin
-# to the main-tip bytes — the pin source string must name the new ref.
+# Re-pinned 2026-10-12 by Naya Gamma (activation-checklist wiring wave):
+# PR #2087 MERGED 2026-10-10T14:51:53Z (merge 26f28c5276); the live main
+# bytes ARE the ratified V2 (machine.json: status RATIFIED, ratified_by
+# Shawn, 2026-10-10). All three V2 blob SHAs verified identical between
+# local main f2c614a5 and origin main dbe06f9e — content is canonical main,
+# not a fork. Until the next deliberate change, main-tip bytes are the pin.
 V2_PIN_SOURCE = (
-    "origin/brain-build/operating-code-v2 @ "
-    "22b84419ed500f91d677679c153c0599e60ca33c (PR #2087, unmerged 2026-10-10)")
+    "main @ f2c614a5386b65c84156c707a93a775ec51b907a / origin main "
+    "@ dbe06f9e733efb52c50e583dbb0b74d77039eb73 (PR #2087 merged "
+    "2026-10-10T14:51:53Z; V2 status RATIFIED by Shawn 2026-10-10; "
+    "blob SHAs verified identical on both tips 2026-10-12)")
 V2_FILE_PINS = {
     "BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2.human.md":
-        "f2a5f81e6d10b9749e3159267411c615c65353845b2d02aa88e98c8115d13537",
+        "d856dc13ae5d31695a94ba97aa52850ea1d0cfb5d4740eb4ff71ffd67967259a",
     "BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2.ai.md":
-        "e4489a40016f05932cfaeee2217b7349ce45277897b79d971e10df0b098fddec",
+        "8e9f53929f0bbc9af3bfd1da3c7f60454a2c9f1769162ec0bb4e48023be187a9",
     "BRAIN/01-GOVERNANCE/0008-operating-code-v2.machine.json":
-        "c1bdf12ad21b990b34329a2a2809c8be4488e9fe6d87539a0f1508b2c9f8ce8b",
+        "a4af89b3c8b3db07e0c289c4906381870952096f282202e0de98a48511a7e2b1",
 }
 
 

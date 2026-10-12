@@ -7,10 +7,16 @@ A fresh agent may not begin governed work until it can demonstrate:
 3. Authority: what it may and may not do
 4. Navigation: where current truth lives
 5. Next action: exactly one executable next step
+6. Activation checklist (Gate 1): all 14 thinking lessons + Operating Code
+   V2 machine-verified from canonical bytes (tools/activation_checklist.py).
+   The claim is UNTRUSTED — the gate recomputes the verdict. No checklist
+   pass = no start (fail closed).
 
 This is the machine twin of the ACTIVATION ACCEPTANCE contract.
 """
 from __future__ import annotations
+
+import os
 
 from dataclasses import dataclass, field
 
@@ -26,6 +32,14 @@ class ColdStartState:
     current_truth_location: str
     next_action: str
     receipt: ReadReceipt | None = None
+    # Checkout whose canonical activation artifacts get verified.
+    # Empty or nonexistent => the checklist cannot be verified => REJECT.
+    repo_root: str = ""
+    # The agent's activation checklist claim: {"lessons": [{"lesson_id",
+    # "sha256"}], "v2": {rel_path: sha256}}. UNTRUSTED input — ids must be
+    # canonical and hashes must equal recomputed canonical bytes. None =
+    # self-audit of the canonical artifacts only (still machine-verified).
+    checklist_claim: dict | None = None
 
 
 @dataclass
@@ -102,4 +116,67 @@ def run_cold_start(state: ColdStartState,
     if not state.next_action.strip():
         failures.append("No next executable action declared.")
 
+    # 6. Activation checklist (Gate 1, GRAND-TODO P0): all 14 thinking
+    #    lessons + Operating Code V2 machine-verified from canonical
+    #    bytes. The claim is UNTRUSTED — the gate recomputes the verdict,
+    #    so a self-asserted "passed" buys nothing. No checklist pass =
+    #    no start (fail closed).
+    ok, checklist_msgs = _run_activation_checklist(
+        state.repo_root, state.checklist_claim)
+    if not ok:
+        failures.extend(checklist_msgs)
+
     return ColdStartResult(passed=not failures, failures=failures)
+
+
+def _load_checklist_tool(repo_root):
+    """Import tools/activation_checklist.py by path (tools/ is not a
+    package). Raises on failure — the caller fails closed."""
+    import importlib.util
+    tool_path = os.path.join(repo_root, "tools", "activation_checklist.py")
+    spec = importlib.util.spec_from_file_location(
+        "naya_activation_checklist", tool_path)
+    if spec is None or spec.loader is None:
+        raise ImportError(
+            "cannot locate tools/activation_checklist.py under %r" % repo_root)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
+def _run_activation_checklist(repo_root, claim):
+    """Fold Gate 1 into the boot decision. Returns (ok, messages).
+
+    Fail-closed on EVERY path: missing repo root, unimportable tool,
+    unreadable canonical artifacts, tool errors, or a REJECT verdict all
+    mean "not activated". There is no advisory mode and no way to assert
+    a pass by supplying a claim — the predicate recomputes from the
+    canonical bytes.
+    """
+    if not repo_root or not os.path.isdir(repo_root):
+        return False, ["ACTIVATION_CHECKLIST_UNVERIFIED: no checkout root "
+                       "supplied to verify the activation checklist against "
+                       "— refusing to start (fail closed)"]
+    try:
+        ac = _load_checklist_tool(repo_root)
+    except Exception as e:
+        return False, ["ACTIVATION_CHECKLIST_UNAVAILABLE: gate-1 tool "
+                       "unimportable (%s) — refusing to start "
+                       "(fail closed)" % e]
+    try:
+        canonical, err = ac.load_canonical(repo_root, repo_root)
+    except Exception as e:
+        return False, ["ACTIVATION_CHECKLIST_TOOL_ERROR: load_canonical "
+                       "raised (%s) — refusing to start (fail closed)" % e]
+    if canonical is None:
+        return False, ["ACTIVATION_CHECKLIST_TOOL_ERROR: %s — refusing to "
+                       "start (fail closed)" % err]
+    try:
+        verdict, violations = ac.check_checklist(canonical, claim)
+    except Exception as e:
+        return False, ["ACTIVATION_CHECKLIST_TOOL_ERROR: check raised (%s) "
+                       "— refusing to start (fail closed)" % e]
+    if verdict != "CHECKLIST-VERIFIED":
+        return False, ["ACTIVATION_CHECKLIST_REJECTED: "
+                       + "; ".join(violations)]
+    return True, []
