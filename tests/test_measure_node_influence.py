@@ -26,7 +26,16 @@ def test_measurement_is_deterministic_and_all_nine_nodes_influence_observable_be
     assert first["report"] == second["report"]
 
     stats = first["report"]["BRAIN.Engineering.kernel_behavior_engine.KernelBehaviorEngine"]
-    assert stats["invoked_count"] == 9
+    # The engine LEGITIMATELY grew: ADVISE (the 10th node, an intentional P0-B
+    # feature) invokes alongside the canonical nine. Count equality is
+    # drift-bait; assert the lower bound plus per-node membership instead.
+    # The gate keeps its teeth: every canonical-nine node must be invoked,
+    # and the influence assertions below (9/9, per-node) stay strict.
+    assert stats["invoked_count"] >= 9
+    assert set(ORDER) <= set(stats["invoked_nodes"]), (
+        "canonical nine must all be invoked; "
+        f"missing: {sorted(set(ORDER) - set(stats['invoked_nodes']))}"
+    )
     assert stats["influence_demonstrated_count"] == 9
     assert stats["influence_demonstrated_for"] == sorted(ORDER)
     assert set(stats["changed_scenarios"]) == {

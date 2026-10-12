@@ -42,25 +42,30 @@ jobs:
 
           # Scope gate: lane branches only. Out-of-scope PRs get an explicit
           # PASS decision (a decision, not a skip — the check stays green).
+          # NOTE: no `exit 0` here by design — test_ci_enforcement_can_fail.py
+          # forbids masking lines repo-wide; the step exits naturally.
+          IN_SCOPE=1
           case "$HEAD_REF" in
             naya/*) echo "in scope: lane PR '$HEAD_REF' @ ${HEAD_SHA:0:12} — enforcing exact-head pin" ;;
             *)
               echo "out of scope: head branch '$HEAD_REF' is not a lane branch (naya/*) — PASS by decision"
-              exit 0
+              IN_SCOPE=0
               ;;
           esac
 
-          # Rung 1 — PR body: the receipt must pin the exact PR head SHA.
-          # Missing block -> MISSING, malformed fields -> TAMPERED,
-          # pin != head SHA -> STALE. Any of those FAILS this check.
-          printf '%s' "$PR_BODY" > /tmp/pr-body.md
-          python3 tools/check_scorecard_receipt_pin.py \
-            "$HEAD_SHA" /tmp/pr-body.md \
-            --pr-state-out /tmp/pr-state.json
+          if [ "$IN_SCOPE" = "1" ]; then
+            # Rung 1 — PR body: the receipt must pin the exact PR head SHA.
+            # Missing block -> MISSING, malformed fields -> TAMPERED,
+            # pin != head SHA -> STALE. Any of those FAILS this check.
+            printf '%s' "$PR_BODY" > /tmp/pr-body.md
+            python3 tools/check_scorecard_receipt_pin.py \
+              "$HEAD_SHA" /tmp/pr-body.md \
+              --pr-state-out /tmp/pr-state.json
 
-          # Rung 2 — gate: P12 precondition of the auto-merge gate re-verifies
-          # the pin in pr_state. Two rungs, same rule: the receipt must certify
-          # the exact head being merged.
-          python3 tools/auto_merge_gate.py --p12-only /tmp/pr-state.json
+            # Rung 2 — gate: P12 precondition of the auto-merge gate re-verifies
+            # the pin in pr_state. Two rungs, same rule: the receipt must certify
+            # the exact head being merged.
+            python3 tools/auto_merge_gate.py --p12-only /tmp/pr-state.json
 
-          echo "receipt pin valid: scorecard receipt certifies exact head ${HEAD_SHA:0:12}"
+            echo "receipt pin valid: scorecard receipt certifies exact head ${HEAD_SHA:0:12}"
+          fi
