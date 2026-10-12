@@ -245,22 +245,27 @@ def build_lanes_section(cached=None):
             }
             continue
 
-        # Determine state from most recent sign-in/sign-out
+        # Determine state from most recent sign-in/sign-out.
+        # Sign-in takes precedence over sign-out when both words appear in one
+        # body: a worker's sign-in comment routinely cites the prior sign-out
+        # ("lane free — last sign-out 01:31Z"), so the body's intent is a
+        # sign-in. Checking "sign-out" first misreported a lane as FREE while
+        # a worker was in flight (IV, 2026-10-12).
         state = "UNKNOWN"
         occupant = ""
         last_activity = ""
         for c in reversed(comments):
             body = (c.get("body") or "").lower()
             created = c.get("created_at", "")
-            if "sign-out" in body or "signout" in body:
-                state = "FREE"
-                last_activity = created
-                break
-            elif "sign-in" in body or "signin" in body:
+            if "sign-in" in body or "signin" in body:
                 state = "OCCUPIED"
                 # Extract who's in flight from the body
                 first_line = (c.get("body") or "").split("\n")[0][:120]
                 occupant = first_line
+                last_activity = created
+                break
+            elif "sign-out" in body or "signout" in body:
+                state = "FREE"
                 last_activity = created
                 break
 
