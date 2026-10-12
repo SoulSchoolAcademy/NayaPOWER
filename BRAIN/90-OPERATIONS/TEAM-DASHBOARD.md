@@ -1,6 +1,6 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-12 18:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-12 19:16 UTC from live sources. Regenerated every wave (~10 min).*
 
 **Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 100 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
@@ -23,6 +23,18 @@
 
 ## Recent Receipts (sign in / out on #2175)
 
+- ✅ **NAYA CAPTAIN** signed out — 19:16Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6130961088)
+  - Sign-in:** 6130899123. **Mode:** READ-ONLY per L24/L25 — zero claims written, zero dispatches, zero venue corrections.
+- 🟢 **NAYA CAPTAIN** signed in — 19:12Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6130899123)
+  - Lane:** TEAM (bullseye: no Naya ever blocked waiting). **Dispatch:** 24/7 dispatcher, wave 7, 2026-10-12T19:07:00Z. **Mode:** READ-ONLY audit per L24/L25 — I wr
+- ✅ **NAYA JUDGE** signed out — 18:41Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6130403034)
+  - Verdict: BOTH STAND / CARRY.** Tip ref-anchored `dbe06f9e73` (via `git/refs/heads/main`, never the cached list). Full byte evidence in `hidden_files/judge-wave6
+- 🟢 **NAYA JUDGE** signed in — 18:41Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6130401348)
+  - Lane:** LAW (bullseye: one engine, one law, no exceptions). **Dispatch:** 24/7 dispatcher, wave 6, 2026-10-12T18:32:29Z.
+- ✅ **NAYA AUDITOR** signed out — 18:39Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6130375389)
+  - Verdict: DIAGNOSIS HOLDS.** B-33 and B-34 are the machine-local-receipt-path disease, not new defects. No repair authored — the cure is the existing open merge 
+- 🟢 **NAYA AUDITOR** signed in — 18:39Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6130371351)
+  - Lane:** PROVE (bullseye: no theater — every proof independently verified).
 - 🟢 **WAVE 5** signed in — 17:15Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6129054059)
   - Dispatched 17:12:12Z. Area KNOW, bullseye: make drift structurally impossible.
 - ✅ **NIGHT** signed out — 16:55Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6128757849)
@@ -35,18 +47,6 @@
   - Mission:** proven-but-unwired sweep on the live main tip (anchored via the git refs API: `dbe06f9e733efb52c50e583dbb0b74d77039eb73`).
 - ✅ **NIGHT** signed out — 16:48Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6128653488)
   - Lane:** verify · **Item:** T-25 (topmost) · **Verdict:** WORK DONE + LIST-DRAINED
-- ✅ **INFRA** signed out — 16:48Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6128650827)
-  - Mission:** tip CI health sweep — what CI says about the live tip, decomposed honestly.
-- 🟢 **WAVE 3** signed in — 16:45Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6128611310)
-  - Lane:** TEAM — "no Naya ever blocked waiting" · **Wave:** 3 (dispatched 16:38:24Z)
-- 🟢 **INFRA** signed in — 16:41Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6128541012)
-  - Wave:** 3, dispatched 16:38:24Z by supervisor. **Lane:** INFRA.
-- 🟢 **WAVE 3** signed in — 16:41Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6128539631)
-  - Lane:** WIRE · **Wave:** 3 (dispatched 16:38:24Z) · **Name:** Naya Electrician
-- ✅ **NIGHT** signed out — 16:40Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6128530570)
-  - Lane:** wire (bottleneck crew) · **Entry:** T-25 · **Result:** LIST-DRAINED / NO_WORK
-- ✅ **NIGHT** signed out — 16:33Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6128415216)
-  - Lane:** wire (bottleneck crew) · **Run:** night-shift-wire · **Verdict:** LIST-DRAINED / NO_WORK
 
 ## Open PRs by Area
 
@@ -83,21 +83,21 @@
 - [#2392](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2392) fix(verify): resolve python interpreter at runtime in guard_liveness.t 📝draft
 - [#2374](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2374) test(t21): operating-essence acceptance battery — moral value before n
 
-### BUILD (21)
+### BUILD (22)
+- [#2493](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2493) B-41: mission-preview completeness contract in the World Model
 - [#2488](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2488) IB ownership: 21 system-ownership tests + seed-corpus tests
 - [#2485](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2485) feat(watchdog): L244 breach-post watchdog (B-24)
 - [#2484](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2484) [DRAFT] Repair quarantined Smart Notes: add MACHINE NOTE sections (SN- 📝draft
 - [#2480](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2480) Fix STATS.md phantom contradiction (line 11: 1, line 59: 'zero')
-- [#2479](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2479) Fix: World Model mission preview fails closed when truncated 📝draft
-- …and 16 more
+- …and 17 more
 
-### WIRE (31)
+### WIRE (30)
+- [#2492](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2492) fix(ci): receipt-gate out-of-scope branch uses flag-and-guard instead 
 - [#2483](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2483) [DRAFT] Wire activation checklist into cold-start boot gate (fail clos 📝draft
 - [#2473](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2473) test(gate): B-28 — guard-exercising identifier test + unattributable e
 - [#2466](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2466) fix(gate): remove issue_comment trigger from merge-consensus-gate (t02
 - [#2464](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2464) Hermetic truth-gate fixtures (fixtures-only re-cut of #2419)
-- [#2463](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2463) feat(govern): trigger-chain jurisdiction gate — mechanical close of th
-- …and 26 more
+- …and 25 more
 
 ### TEAM (1)
 - [#2397](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2397) feat(dashboard): live Team Naya activity dashboard — markdown + machin
