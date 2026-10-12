@@ -103,13 +103,17 @@ def current_wave():
 def recent_board_activity(limit_pages=2, per_page=100):
     """Most recent sign in/out style comments on #2175 (fetches the LAST pages)."""
     events = []
-    # find the last page first
+    # resolve the TRUE tail every run: /issues/2175 returns the live comment count,
+    # and the last pages are derived from it. Never inherit "page N of N" from a
+    # prior run — the venue grows every wave and hardcoded pages go stale, silently
+    # dropping the wave's own events (observed: hardcoded [4,5] missed page 6,
+    # the entire wave-11 sign-in/out set). Wave-11 fix (dispatcher).
     try:
-        first = gh_api(f"/repos/{REPO}/issues/2175/comments?per_page=1&page=1")
-        # GitHub doesn't give total directly; probe pages from the tail estimate
-        # #2175 is large; fetch pages 4 and 5 which hold the newest (per worker convention)
-        pages = [4, 5]
-    except RuntimeError:
+        issue = gh_api(f"/repos/{REPO}/issues/2175")
+        total = int(issue.get("comments", 0) or 0)
+        last_page = max(1, -(-total // per_page))
+        pages = list(range(max(1, last_page - limit_pages + 1), last_page + 1))
+    except (RuntimeError, ValueError):
         pages = [4]
     for page in pages:
         try:
