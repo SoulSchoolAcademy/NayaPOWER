@@ -13,7 +13,7 @@ import pytest
 
 from kernel import decision_principle as dp
 from kernel.decision_principle import (
-    Action, DecisionEngine,
+    Action, DecisionPrinciple,
     ADMISSIBLE, DISQUALIFIED, DEFERRED,
     ACT, ABSTAIN, REFUSE, ASK,
     gate_protect_people, gate_tell_truth, gate_respect_authority,
@@ -31,7 +31,7 @@ def _clean(aid="a", **kw):
     return Action(**d)
 
 
-ENGINE = DecisionEngine()
+ENGINE = DecisionPrinciple()
 
 
 # ---------------------------------------------------------------------------

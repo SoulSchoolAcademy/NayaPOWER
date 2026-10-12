@@ -103,6 +103,27 @@ LEGACY_ALIASES = {
 FILE_STATUSES = ("UNVERIFIED", "APPLIED", "BEHAVIOR-CHANGE-PROVEN", "COMPOUNDED")
 FILE_STAGES = ("text", "briefing", "code-gate")
 
+# Rich-detail provenance keys the exporter stamps (t922, #2386).
+DETAIL_KEYS = ("evidence_detail", "applicability_detail", "file_status_history")
+# Honest marker for fallback-derived detail (t982 legacy-row re-export heal).
+# Meaning: "the emitted rich-detail keys were populated from ref-only
+# fallback content, not from authored rich detail." Absent on modern rows.
+DETAIL_SOURCE_KEY = "detail_source"
+LEGACY_FALLBACK = "legacy-fallback"
+
+
+def _is_ref_only(evidence):
+    """True when every evidence entry carries nothing but a ref.
+
+    This is exactly the shape from_persisted_row produces for legacy rows
+    (kind "ref", empty note) — i.e. content equivalent to a pre-#2386 row,
+    with no authored kind/note detail to preserve.
+    """
+    return all(
+        isinstance(e, dict) and e.get("kind") == "ref" and not e.get("note")
+        for e in (evidence or [])
+    )
+
 # ---------------------------------------------------------------------------
 # Epistemic state mapping (lossless both directions)
 # ---------------------------------------------------------------------------
@@ -192,6 +213,22 @@ def to_persisted_row(block):
 
     Raises ValueError on the same conditions from_row enforces:
     missing owner_id / owner_scope / provenance.
+
+    Lossless guarantee (#2386): the persisted envelope is authoritative for
+    identity/owner/scope/provenance/epistemic-state/type/version, but the
+    FILE FORM is authoritative for rich detail — evidence kind + per-item
+    explanatory notes, detailed applicability, status history. That detail is
+    carried verbatim inside provenance (namespaced keys) so
+    from_persisted_row reconstructs the file form byte-exact. The caller's
+    provenance dict is never mutated.
+
+    Legacy-row re-export heal (t982): when the rich-detail keys were NOT in
+    the source block's provenance AND the evidence is ref-only fallback
+    content, the emitted detail is reconstructed, not authored — it is
+    marked provenance["detail_source"] = "legacy-fallback" so no consumer
+    mistakes it for authored rich detail. Modern rows (keys present) get no
+    marker; a marker already present is carried verbatim, never recomputed.
+    Hand-authored rich detail on first export is never mislabeled.
     """
     b = normalize_file_block(block)
     for field in REQUIRED_PERSISTED:
@@ -201,6 +238,20 @@ def to_persisted_row(block):
                 f"(empty {field})"
             )
     evidence = b.get("evidence") or []
+    # Rich file-form detail rides in provenance (carried verbatim through
+    # persistence) so the round-trip is lossless. Keys match what
+    # from_persisted_row expects; legacy rows without them still import via
+    # the documented ref/empty fallbacks.
+    src_provenance = b.get("provenance") or {}
+    provenance = dict(src_provenance)
+    provenance["evidence_detail"] = evidence
+    provenance["applicability_detail"] = b.get("applicability") or {
+        "topics": [], "situations": "", "decisions": ""}
+    provenance["file_status_history"] = b.get("status_history") or []
+    if DETAIL_SOURCE_KEY not in src_provenance:
+        if (not all(k in src_provenance for k in DETAIL_KEYS)
+                and _is_ref_only(evidence)):
+            provenance[DETAIL_SOURCE_KEY] = LEGACY_FALLBACK
     content = {
         "lesson": b.get("principle", ""),
         "title": b.get("title", ""),
@@ -226,7 +277,7 @@ def to_persisted_row(block):
             e.get("ref") for e in evidence
             if isinstance(e, dict) and e.get("ref")
         ],
-        "provenance": b["provenance"],
+        "provenance": provenance,
         "applicable_scope": b.get("applicable_scope", ""),
         "content": content,
         "supersedes_block_id": b.get("supersedes_block_id"),
@@ -249,17 +300,43 @@ def from_persisted_row(row):
 
     Nothing is dropped: B-only fields are carried verbatim; rich A-fields
     are reconstructed from content/provenance where the export placed them.
+    Malformed rich-detail keys fail CLOSED (ValueError) — never silently
+    degraded. Rows persisted before #2386 (no detail keys) still import via
+    the documented ref/empty fallbacks; rich fields are not invented.
+    A non-string provenance.detail_source also fails closed.
     """
     missing = [f for f in CANONICAL_BLOCK_FIELDS if f not in row]
     if missing:
         raise ValueError(f"canonical Intelligent Block is missing fields: {missing}")
     content = row.get("content") or {}
     provenance = row.get("provenance") or {}
-    # reconstruct rich evidence array from refs + provenance detail
+    # Fail closed on tampered detail: wrong types mean a corrupted or
+    # adversarial row, not something to paper over.
     ev_detail = provenance.get("evidence_detail", [])
+    if not isinstance(ev_detail, list):
+        raise ValueError(
+            "canonical Intelligent Block has corrupted provenance.evidence_detail "
+            "(must be a list)")
+    app_detail = provenance.get("applicability_detail")
+    if app_detail is not None and not isinstance(app_detail, dict):
+        raise ValueError(
+            "canonical Intelligent Block has corrupted provenance.applicability_detail "
+            "(must be an object)")
+    hist = provenance.get("file_status_history", [])
+    if not isinstance(hist, list):
+        raise ValueError(
+            "canonical Intelligent Block has corrupted provenance.file_status_history "
+            "(must be a list)")
+    detail_source = provenance.get(DETAIL_SOURCE_KEY)
+    if detail_source is not None and not isinstance(detail_source, str):
+        raise ValueError(
+            "canonical Intelligent Block has corrupted provenance.detail_source "
+            "(must be a string)")
+    # reconstruct rich evidence array from refs + provenance detail
     if ev_detail:
         evidence = ev_detail
     else:
+        # Legacy row (pre-#2386): refs survive, kind/note are NOT invented.
         evidence = [{"kind": "ref", "ref": r, "note": ""} for r in (row.get("evidence_refs") or [])]
     block = {
         "intelligent_block_id": row["intelligent_block_id"],
@@ -279,11 +356,11 @@ def from_persisted_row(row):
         "provenance": provenance,
         "source_event_ids": row.get("source_event_ids", []),
         "evidence": evidence,
-        "applicability": provenance.get("applicability_detail", {
+        "applicability": app_detail or {
             "topics": [],
             "situations": "",
             "decisions": "",
-        }),
+        },
         "applicable_scope": row.get("applicable_scope", ""),
         "understanding_state": row.get("understanding_state", "CANDIDATE"),
         "status": row.get("status", "DRAFT"),
@@ -292,7 +369,7 @@ def from_persisted_row(row):
             row.get("status", "DRAFT"),
             provenance,
         ),
-        "status_history": provenance.get("file_status_history", []),
+        "status_history": hist,
         "graduation": content.get("graduation", {"stage": "text", "next_step": "", "enforced_by": None}),
         "authority_implications": content.get("authority_implications", ""),
         "conflicts": content.get("conflicts", []),
