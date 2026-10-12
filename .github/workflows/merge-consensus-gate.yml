@@ -10,6 +10,17 @@ name: Merge consensus gate
 # enforcing the convention retroactively is a stale assertion. API failures
 # fail closed with plain words ("unable to verify consensus"), never a
 # traceback: a red check with a stack trace trains everyone to ignore red.
+#
+# 2026-10-12 (t0252, Lane 8 — Naya Sentinel): the `issue_comment` trigger is
+# REMOVED. It fired on every comment repo-wide, including the #2175 lane
+# coordination feed (~130 runs/hr on the tip, all skipped at the job gate:
+# 0 runner minutes, but pure noise on the tip's check list — 143 runs on
+# f9b5ac3d, 127 of them skipped). Verdict comments posted on PRs no longer
+# auto-refresh this gate; re-request it explicitly after posting a verdict:
+#   bin/gh-api POST /repos/<owner>/<repo>/actions/runs/<run-id>/rerun
+# pull_request (opened/synchronize/reopened/edited) and pull_request_review
+# (submitted/dismissed) still trigger automatically. The gate script still
+# reads PR comments via the issues API — only the trigger is gone.
 
 on:
   pull_request:
@@ -17,8 +28,6 @@ on:
     types: [opened, synchronize, reopened, edited]
   pull_request_review:
     types: [submitted, dismissed]
-  issue_comment:
-    types: [created, edited]
 
 # Least privilege: the gate only reads PRs, reviews, and PR comments
 # (served by the issues API). Declared explicitly so a future default
@@ -32,41 +41,15 @@ jobs:
   consensus:
     name: Team review + scorecard receipt
     runs-on: ubuntu-latest
-    # Only run for PR comments, not issue comments
-    if: github.event_name != 'issue_comment' || github.event.issue.pull_request
     steps:
       - uses: actions/checkout@v4
       - name: Get PR info
         id: pr
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # For pull_request events, use the event payload directly (no API call needed).
-          # Only issue_comment events need the API lookup for the head SHA.
-          if [ "${{ github.event_name }}" = "issue_comment" ]; then
-            PR_NUM="${{ github.event.issue.number }}"
-            echo "pr_number=$PR_NUM" >> $GITHUB_OUTPUT
-            # Retry the API call up to 5 times with backoff (rate-limit
-            # resilience: comment events fire during merge bursts when the
-            # shared token quota is exhausted; a hard fail here is the same
-            # chronic-red family as the consensus step itself)
-            HEAD_SHA=""
-            for attempt in 1 2 3 4 5; do
-              if HEAD_SHA=$(gh api "repos/${{ github.repository }}/pulls/$PR_NUM" --jq .head.sha 2>/dev/null) && [ -n "$HEAD_SHA" ]; then
-                break
-              fi
-              echo "gh api attempt $attempt failed, retrying..." >&2
-              sleep $((attempt * 10))
-            done
-            if [ -z "$HEAD_SHA" ]; then
-              echo "ERROR: could not resolve head SHA for PR $PR_NUM after 5 attempts (API unavailable, not a consensus verdict)" >&2
-              exit 1
-            fi
-            echo "head_sha=$HEAD_SHA" >> $GITHUB_OUTPUT
-          else
-            echo "pr_number=${{ github.event.pull_request.number }}" >> $GITHUB_OUTPUT
-            echo "head_sha=${{ github.event.pull_request.head.sha }}" >> $GITHUB_OUTPUT
-          fi
+          # Both remaining triggers (pull_request, pull_request_review) carry
+          # the PR object in the event payload — no API call needed.
+          echo "pr_number=${{ github.event.pull_request.number }}" >> $GITHUB_OUTPUT
+          echo "head_sha=${{ github.event.pull_request.head.sha }}" >> $GITHUB_OUTPUT
       - name: Check merge consensus
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
