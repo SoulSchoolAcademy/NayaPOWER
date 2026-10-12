@@ -36,6 +36,17 @@ NEEDS_AUTHORITY = "NEEDS_AUTHORITY"
 NEEDS_EVIDENCE = "NEEDS_EVIDENCE"
 ADMISSIBLE = "ADMISSIBLE"
 
+# Shawn 2026-10-11 (~16:27 PDT) — BAR DECISION: KEEP THE STRICT BAR.
+# Policy override in the canonical engine: the retired DecisionEngine's
+# assessed-harm disqualification bar (severity >= 7.0, probability > 0.05).
+# This is NOT a change to the RiskPolicy default (9.0/0.01 stays canonical);
+# it is a separate, named policy layer so the bar survives as Shawn's word
+# rather than a silent default change. Closes Lane 8's F1 (t942): severity
+# in [7.0, 9.0) with probability > 0.05 was ADMISSIBLE under canonical
+# defaults — it is excluded now.
+ASSESSED_HARM_SEVERITY_BAR = 7.0
+ASSESSED_HARM_PROBABILITY_BAR = 0.05
+
 ACT = "ACT"
 READ_MORE = "READ_MORE"
 ASK = "ASK"
@@ -177,6 +188,19 @@ class Candidate:
     # not scored. Intent is the disqualifier, not risk: a well-intentioned
     # action with calculated, manageable risk remains admissible.
     intent_to_harm: bool = False
+    # Consolidated from kernel/decision_principle.py (STAGE 2, "no exception",
+    # 2026-10-11): the retired DecisionEngine's tell-truth hard gate and its
+    # forbidden-scope disqualification. Established deception disqualifies the
+    # candidate entirely — excluded, not outscored. An explicitly forbidden
+    # scope can never be rescued by an authority grant: it is disqualified on
+    # the merits, not deferred for missing authority.
+    # deceptive is tri-state: True = established deceptive -> PROHIBITED;
+    # None = truthfulness unknown -> NEEDS_EVIDENCE (unknown defers; it never
+    # prohibits and never permits); False (default) = not established
+    # deceptive -> no gate effect. The False default keeps every existing
+    # caller green; callers that track deception evidence opt into None.
+    deceptive: Optional[bool] = False
+    forbidden_scope: bool = False
     lawful: Optional[bool] = None
     rights_safe: Optional[bool] = None
     privacy_safe: Optional[bool] = None
@@ -272,6 +296,17 @@ def gate_candidate(candidate: Candidate, profile: QualityProfile, risk_policy: R
     if candidate.hard_violation:
         return PROHIBITED, ["JUDGMENT_RULE_HARD_STOP"], q
 
+    # Consolidated from kernel/decision_principle.py (STAGE 2, "no exception",
+    # 2026-10-11): forbidden scope is disqualified on the merits — it can
+    # never be rescued by an authority grant, so this runs BEFORE the
+    # NEEDS_AUTHORITY logic below. Established deception is disqualified by
+    # the tell-truth hard gate — excluded, not outscored.
+    if candidate.forbidden_scope:
+        return PROHIBITED, ["FORBIDDEN_SCOPE"], q
+
+    if candidate.deceptive is True:
+        return PROHIBITED, ["DECEPTIVE"], q
+
     hard_flags = {
         "LAW": candidate.lawful,
         "RIGHTS": candidate.rights_safe,
@@ -280,6 +315,33 @@ def gate_candidate(candidate: Candidate, profile: QualityProfile, risk_policy: R
     }
     if any(v is False for v in hard_flags.values()):
         return PROHIBITED, [k for k, v in hard_flags.items() if v is False], q
+
+    # Shawn 2026-10-11 (bar decision ~16:27 PDT): the strict assessed-harm bar
+    # is a POLICY OVERRIDE applied before the configurable RiskPolicy tail
+    # path. Any assessed harm with severity >= 7.0 and probability > 0.05 is
+    # excluded — closing Lane 8's F1 band (t942), which was ADMISSIBLE under
+    # canonical defaults. Verdict is PROHIBITED: the canonical verdict class
+    # for the retired engine's DISQUALIFIED, per the t912 consolidation
+    # mapping (old deceptive/forbidden-scope DISQUALIFIED -> new PROHIBITED;
+    # downstream consumers key exclusion on PROHIBITED, e.g. act_pipeline.py).
+    # Deliberate differences from the retired bytes (documented, not silent):
+    # - The retired engine ADMITTED this band on informed_consent +
+    #   harm_mitigated (RESIDUAL_RISK_CONSENTED_MITIGATED); the canonical
+    #   engine has no consent-admission fields and does not admit it.
+    #   Canonical is strictly stronger there (Lane 8 d1, t942).
+    # - Fail-closed edge case: severity >= 7.0 with UNKNOWN probability
+    #   (None) is treated as meeting the bar. The retired engine deferred on
+    #   unknown; the strict bar never weakens on unknown. Judgment call.
+    for tail in candidate.tails:
+        sev = _finite(tail.severity, "tail.severity")
+        prob = tail.probability
+        if prob is None:
+            if sev >= ASSESSED_HARM_SEVERITY_BAR:
+                return PROHIBITED, [f"ASSESSED_HARM_STRICT_BAR:{tail.harm_class}"], q
+        else:
+            prob = _finite(prob, "tail.probability")
+            if sev >= ASSESSED_HARM_SEVERITY_BAR and prob > ASSESSED_HARM_PROBABILITY_BAR:
+                return PROHIBITED, [f"ASSESSED_HARM_STRICT_BAR:{tail.harm_class}"], q
 
     for tail in candidate.tails:
         sev = _finite(tail.severity, "tail.severity")
@@ -306,6 +368,13 @@ def gate_candidate(candidate: Candidate, profile: QualityProfile, risk_policy: R
     if unknown_flags:
         reasons.append("HARD_GATE_UNKNOWN")
         reasons.extend(f"UNKNOWN_{k}" for k in unknown_flags)
+    # Consolidated from kernel/decision_principle.py (STAGE 2, "no exception",
+    # 2026-10-11): truthfulness unknown defers judgment — unknown is neither
+    # safe nor prohibited. Only fires when a caller opts into tri-state
+    # deception tracking by passing deceptive=None (default False = not
+    # established deceptive, so existing callers are unaffected).
+    if candidate.deceptive is None:
+        reasons.append("TRUTHFULNESS_UNKNOWN")
     if candidate.pv.normalized().evidence_count < profile.min_evidence_count:
         reasons.append("EVIDENCE_FLOOR")
     if q["missing_dimensions"]:

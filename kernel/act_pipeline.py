@@ -180,6 +180,12 @@ class PlanCandidate:
     safety_safe: bool | None = None
     tails: tuple = ()
     stakeholder_harms: dict = field(default_factory=dict)
+    # Consolidated from kernel/decision_principle.py (STAGE 2, "no exception",
+    # 2026-10-11): the retired DecisionEngine's tell-truth gate and
+    # forbidden-scope disqualification. deceptive=True excludes the candidate
+    # entirely; forbidden_scope=True excludes it even when authorized.
+    deceptive: bool | None = False
+    forbidden_scope: bool = False
     # Value estimate fields (Zero Value Law): evidence-backed benefit, harm,
     # cost, risk for the canonical value calculus. All default to None/empty,
     # meaning UNMEASURED — not zero. A candidate without value evidence cannot
@@ -325,6 +331,8 @@ def _candidate_to_calculus(candidate: PlanCandidate) -> Candidate:
         safety_safe=candidate.safety_safe,
         tails=tuple(candidate.tails),
         stakeholder_harms=dict(candidate.stakeholder_harms),
+        deceptive=candidate.deceptive,
+        forbidden_scope=candidate.forbidden_scope,
         authorized=True,  # LAW record governs authority at plan level
     )
 
