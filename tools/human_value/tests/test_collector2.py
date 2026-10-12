@@ -389,3 +389,126 @@ def test_independence_block_present_in_scan(tmp_path, monkeypatch):
     scan = json.loads(Path(tmp_path / "scan.json").read_text())
     assert scan["independence"]["sources"] == "C1 team feeds + C3 API actions only; C2 refused by construction"
     assert scan["collector"] == "collector2"
+
+
+# ---------------------------------------------------------------------------
+# Agreement interpretation semantics (the 0.0-Jaccard honesty seam)
+#
+# A raw `pass: false` on a meaningless target reads as a defect. The
+# interpretation layer below is the instrument's honest reading: when the
+# evidence universes are disjoint by construction, there is no pass/fail —
+# the verdict is non_overlap_by_construction.
+# ---------------------------------------------------------------------------
+
+
+def _not_observable_verdicts(n: int = 7) -> list[dict]:
+    return [{"event_id": f"OBS-20261012-00{i}", "verdict": "not_observable"} for i in range(1, n + 1)]
+
+
+def test_agreement_interpretation_disjoint_universes_not_a_failure():
+    # The Window-A case Epsilon IV'd: Jaccard 0.0, all baseline verdicts
+    # not_observable -> the instrument must NOT emit a pass/fail verdict.
+    interp = collector2.interpret_agreement(
+        {"sweep_a": 6, "sweep_b": 0, "intersection": 0, "union": 6, "jaccard": 0.0,
+         "target": 0.8, "pass": False},
+        _not_observable_verdicts(),
+    )
+    assert interp["verdict"] == "non_overlap_by_construction"
+    assert interp["pass_fail_applicable"] is False
+
+
+def test_agreement_interpretation_overlap_above_target_passes():
+    interp = collector2.interpret_agreement(
+        {"sweep_a": 5, "sweep_b": 5, "intersection": 5, "union": 5, "jaccard": 1.0,
+         "target": 0.8, "pass": True},
+        [{"event_id": "e1", "verdict": "corroborated"}],
+    )
+    assert interp["verdict"] == "agreement_pass"
+    assert interp["pass_fail_applicable"] is True
+
+
+def test_agreement_interpretation_overlap_below_target_needs_review():
+    # Overlapping universes with real disagreement: neither a silent pass nor
+    # a silent fail — a human must review before any reliance.
+    interp = collector2.interpret_agreement(
+        {"sweep_a": 4, "sweep_b": 4, "intersection": 1, "union": 7, "jaccard": 0.1429,
+         "target": 0.8, "pass": False},
+        [{"event_id": "e1", "verdict": "contradicted"}],
+    )
+    assert interp["verdict"] == "disagreement_review"
+    assert interp["pass_fail_applicable"] is True
+
+
+def test_agreement_constants_are_single_source_of_truth():
+    # The reading and D32 shipped in the report come from one code constant —
+    # nothing is hand-assembled into the artifact afterwards.
+    assert isinstance(collector2.AGREEMENT_READING, str) and collector2.AGREEMENT_READING
+    assert isinstance(collector2.AGREEMENT_D32, list) and len(collector2.AGREEMENT_D32) >= 5
+    assert any("pass/fail" in line.lower() or "pass_fail" in line.lower() for line in collector2.AGREEMENT_D32)
+
+
+# ---------------------------------------------------------------------------
+# Pending-candidate re-probe bookkeeping (pending is a live state)
+# ---------------------------------------------------------------------------
+
+
+def test_candidate_pending_stamps_window_not_counter():
+    # No per-run counter: a counter recomputed from a stateless registry
+    # would reset every run and lie about history. The stamped window is the
+    # fact; the chain of verdict artifacts across windows is the history.
+    sweep = {"sweep_id": "SWEEP-C2-TEST", "observations": []}
+    (verdict,) = collector2.grade_candidates(sweep, [{"candidate_id": "CAND-T", "pr": 9999}])
+    assert verdict["verdict"] == "remains_pending"
+    assert verdict["window_checked"] == "SWEEP-C2-TEST"
+    assert "reprobe_count" not in verdict
+
+
+def test_candidate_promote_proposed_stamps_window():
+    sweep = {
+        "sweep_id": "SWEEP-C2-TEST",
+        "observations": [
+            {
+                "event_id": "OBS-C2-1",
+                "collector_inference": "direct human trace about PR 9999",
+                "evidence": [{"kind": "feed_comment", "ref": "https://x/issues/9999"}],
+            }
+        ],
+    }
+    (verdict,) = collector2.grade_candidates(sweep, [{"candidate_id": "CAND-T", "pr": 9999}])
+    assert verdict["verdict"] == "promote_proposed"
+    assert verdict["window_checked"] == "SWEEP-C2-TEST"
+
+
+# ---------------------------------------------------------------------------
+# Epsilon's IV control: framing words make a marker reported speech
+# ---------------------------------------------------------------------------
+
+
+def test_framing_words_per_shawn_quoting_is_inferred():
+    # Epsilon's IV control set: a marker wrapped in framing words ("Per Shawn,
+    # quoting his words") is reported speech -> inferred -> excluded.
+    marker, authorship, _ = classify_comment(
+        'Per Shawn, quoting his words from the briefing: "Make it so" is the standard.', MARKERS
+    )
+    assert marker == "Make it so"
+    assert authorship == "inferred"
+
+
+def test_trailing_dash_attribution_is_reported_speech():
+    # A marker followed by a signed dash-attribution ("Make it so — Shawn")
+    # is someone quoting him, not his own first-person speech act.
+    # Fail-closed direction: exclusion, never fabrication.
+    marker, authorship, _ = classify_comment(
+        "The standard is clear: Make it so \u2014 Shawn", MARKERS
+    )
+    assert marker == "Make it so"
+    assert authorship == "inferred"
+
+
+def test_trailing_dash_without_shawn_stays_direct():
+    # A dash alone is not an attribution — no overreach.
+    marker, authorship, _ = classify_comment(
+        "WORD! Merging tonight \u2014 delegated authority path.", MARKERS
+    )
+    assert marker == "WORD!"
+    assert authorship == "direct"

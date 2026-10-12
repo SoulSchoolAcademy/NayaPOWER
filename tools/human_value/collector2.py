@@ -102,8 +102,13 @@ def _marker_spans(body: str, phrase: str) -> list[tuple[int, int]]:
     return spans
 
 
+# Trailing dash-attribution: `Make it so — Shawn` — someone quoting him and
+# signing the quote. A first-person speech act never signs itself.
+TRAILING_ATTRIBUTION_RE = re.compile(r"(?i)[\u2014\u2013-]\s*shawn\b")
+
+
 def _is_reported(body: str, span: tuple[int, int]) -> bool:
-    start, _ = span
+    start, end = span
     # Marker inside a double-quoted span -> someone else's words being quoted.
     for m in QUOTED_SPAN_RE.finditer(body):
         if m.start() <= start < m.end():
@@ -112,7 +117,70 @@ def _is_reported(body: str, span: tuple[int, int]) -> bool:
     window = body[max(0, start - 80):start + 40]
     if ATTRIBUTION_RE.search(window) or REPORT_FRAME_RE.search(window):
         return True
+    # Trailing dash-attribution after the marker -> signed quotation.
+    post = body[end:end + 40]
+    if TRAILING_ATTRIBUTION_RE.search(post):
+        return True
     return False
+
+
+# The agreement reading and D32 live in code so the agreement report is
+# reproducible byte-for-byte from the CLI — never hand-assembled.
+AGREEMENT_READING = (
+    "Agreement is measured, not assumed. A low Jaccard with all "
+    "'not_observable' verdicts means NON-OVERLAPPING EVIDENCE "
+    "UNIVERSES, not disagreement. The second path's independent value "
+    "is its own sweep and candidate verdicts."
+)
+
+AGREEMENT_D32 = [
+    "Does NOT claim the baseline events are wrong — they are C2-sourced and outside collector2 reach.",
+    "Does NOT claim seat independence — collector1 and the collector2 operator share a seat; independence rests on method+source separation and mechanical reproducibility.",
+    "Does NOT claim the candidates lack human value — only that no C1/C3 direct human trace exists in-window.",
+    "Does NOT claim C3 was searched for human actions — the v1 allowlist is empty, so C3 authorship is unresolvable by design.",
+    "The 0.0 Jaccard is a non-overlap measurement, not a disagreement score.",
+    "A pass/fail verdict is emitted ONLY when the evidence universes overlap; "
+    "when they are disjoint by construction, the verdict is non_overlap_by_construction "
+    "and pass/fail does not apply (no target is meaningful there).",
+]
+
+
+def interpret_agreement(mechanical: dict, verdicts: list[dict]) -> dict:
+    """Honest interpretation of the mechanical Jaccard triple.
+
+    The raw triple is a fact; pass/fail on it is meaningful ONLY when the two
+    collectors' evidence universes overlap. When every baseline verdict is
+    `not_observable` (collector1's events are C2-sourced; collector2's universe
+    is C1/C3 by construction), emitting `pass: false` would read as a defect.
+    It is not one — so no pass/fail is emitted at all.
+    """
+    all_non_observable = bool(verdicts) and all(
+        v.get("verdict") == "not_observable" for v in verdicts
+    )
+    if all_non_observable and mechanical.get("intersection", 0) == 0:
+        return {
+            "verdict": "non_overlap_by_construction",
+            "pass_fail_applicable": False,
+            "note": (
+                "Evidence universes are disjoint by construction (C2 vs C1/C3). "
+                "Jaccard is a non-overlap measurement, not a failure score; "
+                "no target is meaningful here."
+            ),
+        }
+    if mechanical.get("jaccard", 0) >= 0.8:
+        return {
+            "verdict": "agreement_pass",
+            "pass_fail_applicable": True,
+            "note": "Mechanical agreement at or above the 0.8 target.",
+        }
+    return {
+        "verdict": "disagreement_review",
+        "pass_fail_applicable": True,
+        "note": (
+            "Below the 0.8 target with overlapping universes — "
+            "a human must review the disagreement before any reliance."
+        ),
+    }
 
 
 class Collector2Error(RuntimeError):
@@ -402,6 +470,12 @@ def grade_candidates(
     trace about its artifact: a collector2 observation whose evidence or
     inference references the PR/issue number. Otherwise it remains pending
     with the reason recorded.
+
+    Pending is a LIVE state, not a dead end: every grading pass stamps the
+    window it was re-probed in. The pending HISTORY of a candidate is the
+    chain of these verdict artifacts across windows — no per-run counter is
+    emitted, because a counter recomputed from a stateless registry would
+    reset every run and lie about history. The stamped windows are the facts.
     """
     verdicts = []
     for cand in candidates:
@@ -420,6 +494,7 @@ def grade_candidates(
                     "pr": cand.get("pr"),
                     "verdict": "promote_proposed",
                     "basis": [o["event_id"] for o in hits],
+                    "window_checked": sweep.get("sweep_id"),
                     "note": "PROPOSAL ONLY — promotion is a deliberate, signed act (observe.py promote).",
                 }
             )
@@ -433,6 +508,7 @@ def grade_candidates(
                         "no C1/C3 direct human trace about this artifact in collector2's "
                         "window; grader's prior is not evidence"
                     ),
+                    "window_checked": sweep.get("sweep_id"),
                 }
             )
     return verdicts
@@ -499,40 +575,65 @@ def cmd_rejudge_baseline(args: argparse.Namespace) -> int:
 
 
 def cmd_agreement(args: argparse.Namespace) -> int:
-    """Full inter-collector agreement: mechanical triples + verdict table."""
+    """Full inter-collector agreement: mechanical triples + verdict table.
+
+    The report is generated ENTIRELY from code inputs (--scan, --baseline,
+    --candidates): mechanical measure, interpretation, verdicts, candidate
+    grading, reading, D32. Nothing is hand-assembled afterwards; the
+    checked-in artifact must be reproducible byte-for-byte from this command.
+    """
     sys.path.insert(0, str(REPO_ROOT))
-    from tools.human_value.observe import observation_triples, run_agreement_measure
+    from tools.human_value.observe import run_agreement_measure
 
     scan = json.loads(Path(args.scan).read_text(encoding="utf-8"))
     baseline = json.loads(Path(args.baseline).read_text(encoding="utf-8"))
-    c1_events = baseline.get("promoted", [])
+    c1_events = baseline.get("promoted", []) + baseline.get("dropped_as_observations", [])
     if not c1_events and isinstance(baseline, list):
         c1_events = baseline
     c2_obs = scan["observations"]
 
-    triples = run_agreement_measure(c1_events, c2_obs)
+    # Mechanical measure runs over hash-bearing events only (observation_triples
+    # keys on verbatim_hash); the dropped event without a hash is still
+    # verdict-graded below — verdicts cover ALL c1_events.
+    mechanical = run_agreement_measure(
+        [e for e in c1_events if e.get("verbatim_hash")], c2_obs
+    )
+    # The raw §5 triple is a fact about the shared seam; it is NOT the verdict.
+    # `target`/`pass` inside it are meaningful only when the evidence universes
+    # overlap — read agreement_interpretation for the instrument's verdict.
+    mechanical["note"] = (
+        "raw section-5 measure from observe.run_agreement_measure; "
+        "read agreement_interpretation for the verdict — pass/fail is only "
+        "meaningful when the evidence universes overlap."
+    )
     verdicts = rejudge_baseline(scan, c1_events)
     counts = {}
     for v in verdicts:
         counts[v["verdict"]] = counts.get(v["verdict"], 0) + 1
 
+    candidate_verdicts = []
+    if args.candidates:
+        candidates = read_jsonl(Path(args.candidates))
+        candidate_verdicts = grade_candidates(scan, candidates)
+
     report = {
         "instrument": INSTRUMENT,
         "collector_a": "collector1 (interpretive agent, C2)",
         "collector_b": "collector2 (deterministic code, C1+C3)",
-        "mechanical_jaccard": triples,
+        "scan_id": scan.get("sweep_id"),
+        "mechanical_jaccard": mechanical,
+        "agreement_interpretation": interpret_agreement(mechanical, verdicts),
         "baseline_verdicts": verdicts,
         "verdict_counts": counts,
-        "reading": (
-            "Agreement is measured, not assumed. A low Jaccard with all "
-            "'not_observable' verdicts means NON-OVERLAPPING EVIDENCE "
-            "UNIVERSES, not disagreement. The second path's independent value "
-            "is its own sweep and candidate verdicts."
-        ),
+        "candidate_verdicts": candidate_verdicts,
+        "reading": AGREEMENT_READING,
+        "d32": AGREEMENT_D32,
     }
-    print(json.dumps(report, indent=2))
+    print(json.dumps(report, indent=2, ensure_ascii=False))
     if args.out:
-        Path(args.out).write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+        Path(args.out).write_text(
+            json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
+        )
     return 0
 
 
@@ -572,6 +673,7 @@ def build_parser() -> argparse.ArgumentParser:
     s = sub.add_parser("agreement", help="full inter-collector agreement report")
     s.add_argument("--scan", required=True)
     s.add_argument("--baseline", required=True)
+    s.add_argument("--candidates", default=None, help="jsonl of pending candidates")
     s.add_argument("--out", default=None)
     s.set_defaults(func=cmd_agreement)
 

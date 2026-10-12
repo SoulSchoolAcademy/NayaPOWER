@@ -6,19 +6,22 @@
       "candidate_id": "CAND-20261012-001",
       "pr": 2188,
       "verdict": "remains_pending",
-      "reason": "no C1/C3 direct human trace about this artifact in collector2's window; grader's prior is not evidence"
+      "reason": "no C1/C3 direct human trace about this artifact in collector2's window; grader's prior is not evidence",
+      "window_checked": "SWEEP-C2-20261012-A"
     },
     {
       "candidate_id": "CAND-20261012-002",
       "pr": 2375,
       "verdict": "remains_pending",
-      "reason": "no C1/C3 direct human trace about this artifact in collector2's window; grader's prior is not evidence"
+      "reason": "no C1/C3 direct human trace about this artifact in collector2's window; grader's prior is not evidence",
+      "window_checked": "SWEEP-C2-20261012-A"
     },
     {
       "candidate_id": "CAND-20261012-003",
       "pr": 2383,
       "verdict": "remains_pending",
-      "reason": "no C1/C3 direct human trace about this artifact in collector2's window; grader's prior is not evidence"
+      "reason": "no C1/C3 direct human trace about this artifact in collector2's window; grader's prior is not evidence",
+      "window_checked": "SWEEP-C2-20261012-A"
     }
   ]
 }
