@@ -687,13 +687,18 @@ def plain_words(result):
 # ---------------------------------------------------------------------------
 
 def cmd_mine(args):
+    # Precedence: --stdin > --intent > positional. An explicit flag wins
+    # over positional leftovers; --stdin wins over everything.
     if args.stdin:
         raw = sys.stdin.read()
+    elif getattr(args, "intent_flag", None) is not None:
+        raw = args.intent_flag
     elif args.intent:
         raw = " ".join(args.intent)
     else:
-        print("usage: option_miner.py mine --intent '<intent JSON>' "
-              "(or --stdin)", file=sys.stderr)
+        print("usage: option_miner.py mine (--intent '<intent JSON>' | --stdin "
+              "| '<intent JSON>') [--add-option ...] [--plain]",
+              file=sys.stderr)
         sys.exit(1)
     try:
         intent = json.loads(raw)
@@ -701,6 +706,15 @@ def cmd_mine(args):
         print(json.dumps({
             "ok": False, "exit_hint": 2, "options": [],
             "notes": [f"intent JSON unreadable: {e}"], "warnings": [],
+        }, indent=2))
+        sys.exit(2)
+    if not isinstance(intent, dict):
+        # Valid JSON but not an intent object — fail closed, never traceback.
+        print(json.dumps({
+            "ok": False, "exit_hint": 2, "options": [],
+            "notes": [f"intent must be a JSON object, got "
+                      f"{type(intent).__name__} — clarify before mining."],
+            "warnings": [],
         }, indent=2))
         sys.exit(2)
     result = mine_options(intent, user_options=args.add_option or [])
@@ -719,7 +733,10 @@ def main():
 
     p_mine = sub.add_parser("mine", help="Mine options from the world model")
     p_mine.add_argument("intent", nargs="*",
-                        help="Layer-2 intent JSON (as one string)")
+                        help="Layer-2 intent JSON (as one string; positional form)")
+    p_mine.add_argument("--intent", dest="intent_flag", default=None,
+                        help="Layer-2 intent JSON (documented form; wins over "
+                             "positional). Precedence: --stdin > --intent > positional")
     p_mine.add_argument("--stdin", action="store_true",
                         help="Read intent JSON from stdin")
     p_mine.add_argument("--add-option", action="append", default=[],
