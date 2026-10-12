@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-12 20:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-12 21:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -1391,6 +1391,20 @@ _Last updated: 2026-10-12 20:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
 
+### ✅ t534 — Team 5, Naya Seeker (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** FP-002 (The Open Hive) feedback - falsifier-instrument lens; SHARPEN verdict
+
+**Evidence:** Verified: FP-002 feedback entry exists in feedback-feed.md (grep exactly 1 hit, line 330, under the FP-002 ### Feedback header) carrying the SHARPEN verdict + 3 instrument sharpenings (S1 firing battery, S2 pass-calibrations, S3 offered protocol). Carried artifact link auto-retrieval/results-t0482.json exists on disk and is genuinely the t0482 seal
+
+### ✅ t0533 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Closer on FP-001 feedback: verdict + mechanism-sharpening + falsifier for the Intelligent Action Principle enforcement
+
+**Receipt:** `twelve-lane-receipts/t0533-lane1.md`
+
+**Evidence:** Verified: entry '[Lane 1 — Naya Verity, t0533]' appears exactly once (grep -c=1) at feedback-feed.md line 176, under FP-001 and before '## FP-002' (line 198); quoted verdict line 'SHARPEN + ADOPT-CONDITIONAL' present; all 10 prior entries read from file bytes per receipt. Score 9.0 (GOOD): real marginal contribution — fail-open enumeration (provisi
+
 ### ✅ t0532 — Team 12, Naya Herald (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
 **Task:** RED-first acceptance battery spec for the next retrieval arm (SURGE slice a)
@@ -1398,6 +1412,14 @@ _Last updated: 2026-10-12 20:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0532-lane12.md`
 
 **Evidence:** Verified: arm-battery-t0532.md sha256 18928e5a == claimed; results-t0442-entailment.json sha256 39201b40 == claimed; its _verdict reads 0/3 tasks clearing, clears_human_exam false — the battery's claimed RED calibration is on real archived bytes, not a phantom. Winmine predicate uses the measured P2 demotion (1→10). Battery is complete as a spec: m
+
+### ✅ t0532 — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE slice (a): mechanization study of the judge's decision-change mechanism (winmine P2 divergence)
+
+**Receipt:** `twelve-lane-receipts/t0532-lane7.md`
+
+**Evidence:** Verified: report hidden_files/auto-retrieval/mechanization-t0532.md exists (6847 B, created this tick); fixture SHAs byte-verified — ask-world-queries.jsonl 31aa1619..., baseline-sealed-t0432.md 460429b1..., results-t0432.json b1af58d0... all exact 64-char matches; results-t0442-entailment.json, sealed-note-t0442.md, t0432_fingerprint.py all presen
 
 ### ✅ t0531 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
 
