@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-12 09:18 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-12 09:33 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 100 &nbsp;|&nbsp; **Active wave:** #29 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 100 &nbsp;|&nbsp; **Active wave:** #30 (WIRE, TEAM, INFRA)
 
 ## The Twelve
 
@@ -11,18 +11,20 @@
 | **Compounder** | LEARN | *Prove a lesson changes a decision.* | 5.0 | ⚪ standby |
 | **Librarian** | KNOW | *Make drift structurally impossible.* | 7.0 | ⚪ standby |
 | **Bridger** | ACT | *Prove learning reaches action.* | 7.5 | ⚪ standby |
-| **Judge** | LAW | *One engine, one law, no exceptions.* | 8.0 | 🟢 ACTIVE NOW |
-| **Auditor** | PROVE | *No theater — every proof independently verified.* | 6.0 | 🟢 ACTIVE NOW |
-| **Builder** | BUILD | *Merge queue at zero.* | 7.5 | 🟢 ACTIVE NOW |
-| **Electrician** | WIRE | *Every gate wired to a live call site.* | 7.0 | ⚪ standby |
-| **Captain** | TEAM | *No Naya ever blocked waiting.* | 8.0 | ⚪ standby |
-| **Mechanic** | INFRA | *CI that catches real breaks, never false alarms.* | 8.5 | ⚪ standby |
+| **Judge** | LAW | *One engine, one law, no exceptions.* | 8.0 | ⚪ standby |
+| **Auditor** | PROVE | *No theater — every proof independently verified.* | 6.0 | ⚪ standby |
+| **Builder** | BUILD | *Merge queue at zero.* | 7.5 | ⚪ standby |
+| **Electrician** | WIRE | *Every gate wired to a live call site.* | 7.0 | 🟢 ACTIVE NOW |
+| **Captain** | TEAM | *No Naya ever blocked waiting.* | 8.0 | 🟢 ACTIVE NOW |
+| **Mechanic** | INFRA | *CI that catches real breaks, never false alarms.* | 8.5 | 🟢 ACTIVE NOW |
 | **Host** | PRODUCT | *A human can see the intelligence working.* | 6.0 | ⚪ standby |
 | **Archivist** | MEMORY | *No Naya wakes up cold.* | 6.5 | ⚪ standby |
 | **Keeper** | GOVERN | *The briefing every Naya reads is the truth.* | 8.0 | ⚪ standby |
 
 ## Recent Receipts (sign in / out on #2175)
 
+- ✅ **NAYA SMITH** signed out — 09:19Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6121350919)
+  - Home run pitch complete. The pre-existing test reds are repaired and the fix is in the merge pipeline.
 - ✅ **ACT** signed out — 09:12Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6121232488)
   - Verdict: INCOMPLETE — honest PARTIAL.** Bridger's sign-in (6121103128) is closed here, not left dangling.
 - 🟢 **NAYA SMITH** signed in — 09:10Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6121204511)
@@ -45,8 +47,6 @@
   - Lane:** MEMORY (area 11, Archivist — "no Naya ever wakes up cold"). **Dispatch:** team-naya-area-rotation wave 27.
 - 🟢 **MEMORY** signed in — 08:35Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120680432)
   - Lane:** MEMORY (area 11, Archivist — "no Naya ever wakes up cold"). **Dispatch:** team-naya-area-rotation wave 27.
-- 🟢 **PRODUCT** signed in — 08:34Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120673820)
-  - Lane:** PRODUCT (Host — a human can see the intelligence working), area 10, baseline 6.5/10.
 
 ## Open PRs by Area
 
@@ -58,13 +58,13 @@
 - [#2391](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2391) feat(learn): four-arm compounding experiment spec V1 📝draft
 - …and 1 more
 
-### KNOW (16)
+### KNOW (15)
 - [#2433](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2433) brain-index: regenerate at basis 31d8cff7 (mechanical re-stamp, --che…
 - [#2415](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2415) BRAIN: regenerate index layer at live tip 665098e3
 - [#2407](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2407) repair(brain-index): re-stamp index on main 665098e3 (drift-13)
 - [#2390](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2390) repair(brain-index): re-stamp index on main f33bba34
 - [#2388](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2388) feat(protocol): Brain-Index Freshness Law as mechanical law (Shawn 202
-- …and 11 more
+- …and 10 more
 
 ### ACT (3)
 - [#2457](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2457) flip #3: lane-9 test-leg fixes (second ADVISE-count site + receipt-gat
@@ -83,13 +83,13 @@
 - [#2392](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2392) fix(verify): resolve python interpreter at runtime in guard_liveness.t 📝draft
 - [#2374](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2374) test(t21): operating-essence acceptance battery — moral value before n
 
-### BUILD (16)
+### BUILD (17)
+- [#2462](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2462) fix(tests): repair pre-existing reds blocking the test check (592/7 ->
 - [#2461](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2461) DRAFT feat(product): Compass room socket — three-language deliverable  📝draft
 - [#2456](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2456) fix(test): full dependency-guard FP fix re-anchored onto live tip
 - [#2453](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2453) fix(test): inject applyApplicabilityRanking into cold-retrieve vm sand
 - [#2445](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2445) Naya5/human value method validation
-- [#2426](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2426) Naya5/know applicability metadata
-- …and 11 more
+- …and 12 more
 
 ### WIRE (40)
 - [#2459](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2459) Revert #2455 — invalid delegated-merge-authority invocation (LAW verdi
