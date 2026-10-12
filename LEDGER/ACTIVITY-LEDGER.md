@@ -2,7 +2,13 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-12 04:10 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-12 04:35 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+
+## 🟢 Working right now
+
+- **Team 1 — Naya Verity** (Verification & Proof) — tick t1252
+- **Team 3 — Naya Judge** (Decision Engine) — tick t1252
+- **Team 8 — Naya Sentinel** (Governance & Safety) — tick t1252
 
 ## The Teams
 
@@ -22,6 +28,54 @@ _Last updated: 2026-10-12 04:10 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 | Team 12 | Naya Herald | NayaNET / Hub |
 
 ## Verified Actions (newest first)
+
+### ✅ t1252 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** fossil-draft close sweep: 10 PRs pinned at t1242 closed as superseded/stale with evidence close comments
+
+**Receipt:** `twelve-lane-receipts/t1252-lane8.md`
+
+**Evidence:** Dispatcher verified via API (sample 1124/1221/1243): all state=closed, merged=False, heads byte-match receipt pins (9514ad6966a5, 5a38cb39fe9c, c5402f3f16cf). No close-on-guess; #1130 untouched (Shawn-gated). Deductions: reviews liveness not checked (-0.5), 61 REST calls vs ~20 estimate (-0.5). Zero 403s.
+
+### ✅ t1252 — Team 3, Naya Judge (Decision Engine) — 8.0/10 [VERIFIED]
+
+**Task:** PR #2418 Scorecard-Law step: re-verify F1-closed head, seam battery, calculator verdict HOLD, distinct-seat review request
+
+**Receipt:** `twelve-lane-receipts/t1252-lane3.md`
+
+**Evidence:** Dispatcher verified: #2418 open draft=False, head 43c0113eee30 == receipt pin 43c0113eee302db2c334aa9d5d3139ea0afd1d77 (ls-remote full-SHA match). HOLD is calculator-driven and procedural: conflicts YES, receipt gate missing second seat score (Lane 2 9.0 stands as seat 1). This tick moved paper not the PR; no re-anchor chased (tip-churn protocol ho
+
+### ✅ t1252 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** live cold-Naya acceptance run slot T4/NORMAL (SGF battery, brain pinned bf16b0987ab5, PR #2400 divergence caught cold)
+
+**Receipt:** `twelve-lane-receipts/t1252-lane1.md`
+
+**Evidence:** Dispatcher verified: all 4 disk artifacts exist (seal-receipt, ground-truth, evidence, scorecard); PR #2400 merged True on API, head 973177d48be5 matches receipt's live-head claim; blinded_q 9.4, daily_score 9.7 mechanical, 5/5 M-metrics with corrected M2, no --score run (honest structural-bug workaround). Deductions: same-family scorer residual (-
+
+### ✅ t1242 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** verification-first tick: prove tip clean, close redundant #2431, delete stale heal branches
+
+**Receipt:** `twelve-lane-receipts/t1242-lane10.md`
+
+**Evidence:** Dispatcher verified via API: #2437 merged True (merged_at 2026-10-12T04:05:06Z, drift recurrence #14 healed on main); #2431 state closed, merged False; ls-remote shows zero naya/ten-brainindex-heal-* refs (both stale branches deleted). --check exit 0 on exact tip bytes claimed with exact commands; tip moved since (d998cac4->bf16b098) so action-time
+
+### ✅ t1242 — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** verify #2429 supersession on live bytes, close as superseded; merge-queue watch (530 open, 11 fossil-draft close candidates)
+
+**Receipt:** `twelve-lane-receipts/t1242-lane7.md`
+
+**Evidence:** Dispatcher verified via API: #2429 state closed, merged False, head 6d05fea689 (matches receipt). #2428 rename-attribution inherited from t1232's live-verified receipt (lane 9 verified the rename on main bytes, scored 9.5) and labeled as inherited; substantive byte-equality claim is the agent's own. Budget discipline held: 6 REST calls, git protoco
+
+### ✅ t1242 — Team 6, Naya Heir (Successor Transfer) — 8.5/10 [VERIFIED]
+
+**Task:** Cold-Transfer Acceptance Protocol v1 frozen + sealed dry run (7-task battery, blinded scorer) + B->C authorization draft
+
+**Receipt:** `twelve-lane-receipts/t1242-lane6.md`
+
+**Evidence:** Dispatcher verified all artifacts on disk: CTA-PROTOCOL.md, COLD-BRIEF.md, RUBRIC.md, ground-truth.key.json, runs/t1242/{seal-receipt,successor,scorer}, B-TO-C-AUTHORIZATION-REQUEST.md. Honest mechanics: pre-registration + sealed rubric predating run, blinded scorer, honesty gate (phantom caught, drift detected) matching sealed ground truth. No pro
 
 ### ✅ t1232 — Team 11, Naya Heart (Human Value) — 9.0/10 [VERIFIED]
 
