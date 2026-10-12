@@ -97,7 +97,8 @@ def current_wave():
     # wave N dispatched areas ((N*3)+1..(N*3)+3) mod 12; the *active* wave is the last dispatched = n-1
     active = (n - 1) % 4 if n > 0 else 0
     areas = [AREA_ORDER[(active * 3 + i) % 12] for i in range(3)]
-    return {"wave_number": active + 1, "counter": n, "active_areas": areas}
+    wave_number = (n - 1) if n > 0 else 0  # the true wave number, not the rotation-cycle position
+    return {"wave_number": wave_number, "counter": n, "active_areas": areas}
 
 
 def recent_board_activity(limit_pages=2, per_page=100):
