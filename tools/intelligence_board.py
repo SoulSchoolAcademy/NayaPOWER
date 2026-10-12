@@ -76,13 +76,20 @@ def build_board(model: Any) -> dict[str, Any]:
     if not isinstance(verified_tip, str) or len(verified_tip) != 40:
         verified_tip, ready = None, False
 
-    priorities = (_briefing_rows(mission.get("body_preview"))
-                  if freshness["mission"]["usable"] else [])
+    # World Model captures only body[:2000]. A fresh section timestamp does
+    # NOT imply its source-reported priority list is complete. A 2000-char
+    # preview may have omitted critical later mission priorities: fail closed
+    # rather than issue a misleading "current orientation" verdict.
+    preview = mission.get("body_preview")
     preview_partial = bool(
         freshness["mission"]["usable"]
-        and isinstance(mission.get("body_preview"), str)
-        and len(mission["body_preview"]) >= 2000
+        and isinstance(preview, str)
+        and len(preview) >= 2000
     )
+    if preview_partial:
+        ready = False
+    priorities = (_briefing_rows(preview)
+                  if freshness["mission"]["usable"] and not preview_partial else [])
 
     lane_view = {}
     if freshness["lanes"]["usable"] and isinstance(lanes.get("lanes"), dict):
@@ -112,7 +119,9 @@ def build_board(model: Any) -> dict[str, Any]:
         "current_reality": {
             "main_sha": verified_tip,
             "mission": {
-                "status": "SOURCE_REPORTED" if freshness["mission"]["usable"] else "UNKNOWN",
+                "status": ("PARTIAL_PREVIEW" if preview_partial else
+                           "SOURCE_REPORTED" if freshness["mission"]["usable"] else
+                           "UNKNOWN"),
                 "title": mission.get("title") if freshness["mission"]["usable"] else None,
                 "priorities": priorities,
                 "preview_may_be_truncated": preview_partial,
@@ -147,6 +156,9 @@ def build_board(model: Any) -> dict[str, Any]:
         "what_next": {
             "verdict": "READ_MORE",
             "action": (
+                "Read the COMPLETE live mission issue #2154 before choosing work; "
+                "its cached 2000-character preview cannot prove priority completeness."
+                if preview_partial else
                 "Refresh missing or stale World Model sections first."
                 if not ready else
                 "Review the highest current mission priority with Compass; "
@@ -200,6 +212,7 @@ def render_markdown(board: dict[str, Any]) -> str:
         lines.append("- UNKNOWN / READ_MORE — refresh mission state.")
     if reality["mission"]["preview_may_be_truncated"]:
         lines.append("- PARTIAL PREVIEW: read the complete mission issue before choosing work.")
+        lines.append("- Missing priorities are not filled by simply refreshing this truncated cache.")
     lines.extend([
         "", "## What changed?",
         "- NOT MEASURED by a single snapshot. See " + board["what_changed"]["source"],
