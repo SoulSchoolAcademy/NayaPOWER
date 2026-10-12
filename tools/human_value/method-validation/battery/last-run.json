@@ -1,0 +1,131 @@
+{
+  "passed": 25,
+  "total": 25,
+  "results": [
+    {
+      "case": "KV-01 verified-evidence high claims -> 9.0 HIGH VALUE",
+      "ok": true,
+      "detail": "exit=0 score=9.0 verdict=HIGH VALUE"
+    },
+    {
+      "case": "KV-02 zero evidence -> 3.0 NO VALUE [NO_EVIDENCE_CAP]",
+      "ok": true,
+      "detail": "exit=0 score=3.0 flags=[['NO_EVIDENCE_CAP'], ['NO_EVIDENCE_CAP'], ['NO_EVIDENCE_CAP'], ['NO_EVIDENCE_CAP'], ['NO_EVIDENCE_CAP']]"
+    },
+    {
+      "case": "KV-03 harm gate -> DISQUALIFIED, score None",
+      "ok": true,
+      "detail": "exit=0 card=('DISQUALIFIED', None)"
+    },
+    {
+      "case": "KV-04 attested-only -> 5.0 THIN [UNCITED_CAP]",
+      "ok": true,
+      "detail": "exit=0 score=5.0"
+    },
+    {
+      "case": "KV-05 receipt-only DELTA=10 -> 8.0 [RECEIPT_SOFT_CAP], total 8.8 REAL VALUE",
+      "ok": true,
+      "detail": "exit=0 delta={'dimension': 'DELTA', 'claimed': 10.0, 'applied': 8.0, 'weight': 0.25, 'verified_evidence': 1, 'attested_evidence': 0, 'flags': ['RECEIPT_SOFT_CAP'], 'rationale': 'battery claim for DELTA'} total=8.8"
+    },
+    {
+      "case": "KV-06 main-tip mechanical: no collapse, equals ref^1..ref",
+      "ok": true,
+      "detail": "files_changed=1 expected=1"
+    },
+    {
+      "case": "KV-07 branch-head mechanical: merge-base..head covers branch delta",
+      "ok": true,
+      "detail": "files=['docs/readme.md'] expected=['docs/readme.md']"
+    },
+    {
+      "case": "KV-08 malformed packets -> exit 2, no score (8 variants)",
+      "ok": true,
+      "detail": "all 8 rejected"
+    },
+    {
+      "case": "KV-09 boundary all-7 -> 7.0 REAL VALUE",
+      "ok": true,
+      "detail": "exit=0 score=7.0 verdict=REAL VALUE"
+    },
+    {
+      "case": "KV-09 boundary all-9 -> 9.0 HIGH VALUE",
+      "ok": true,
+      "detail": "exit=0 score=9.0 verdict=HIGH VALUE"
+    },
+    {
+      "case": "KV-09 boundary all-5 -> 5.0 THIN",
+      "ok": true,
+      "detail": "exit=0 score=5.0 verdict=THIN"
+    },
+    {
+      "case": "KV-09 boundary all-4 -> 4.0 NO VALUE",
+      "ok": true,
+      "detail": "exit=0 score=4.0 verdict=NO VALUE"
+    },
+    {
+      "case": "KV-10 missing cited file -> 5.0 THIN [UNCITED_CAP]",
+      "ok": true,
+      "detail": "exit=0 score=5.0"
+    },
+    {
+      "case": "KV-11 recheck: cited lines 1-3 unchanged at E -> UNCHANGED (not whole-file CHANGED)",
+      "ok": true,
+      "detail": "exit=0 drift=['UNCHANGED']"
+    },
+    {
+      "case": "KV-12a compare identical cards -> TRUST, 5/5 agree",
+      "ok": true,
+      "detail": "exit=0 standing=TRUST"
+    },
+    {
+      "case": "KV-12b compare mismatched change_id -> rejected (exit 2)",
+      "ok": true,
+      "detail": "exit=2 err={\"ok\": false, \"error\": \"compare needs scorecards for the same change (got 'KV-12' vs 'KV-12-OTHER')\"}"
+    },
+    {
+      "case": "KV-12c compare 9-vs-4 cards -> DISPUTE, verdict mismatch, gap 5.0",
+      "ok": true,
+      "detail": "exit=0 standing=DISPUTE gap=5.0"
+    },
+    {
+      "case": "KV-13 test-citation of non-test file -> UNVERIFIABLE, USE capped 5.0",
+      "ok": true,
+      "detail": "exit=0 use={'dimension': 'USE', 'claimed': 9.0, 'applied': 5.0, 'weight': 0.3, 'verified_evidence': 0, 'attested_evidence': 0, 'flags': ['UNCITED_CAP'], 'rationale': 'battery claim for USE'} ledger=UNVERIFIABLE"
+    },
+    {
+      "case": "KV-14 no origin/main -> ^1 fallback (documented understatement)",
+      "ok": true,
+      "detail": "files=['tests/test_app.py'] expected=['tests/test_app.py']"
+    },
+    {
+      "case": "KV-15 recheck after file deletion -> ROTTED on all dims",
+      "ok": true,
+      "detail": "exit=0 per_dim={'USE': 'ROTTED', 'DELTA': 'ROTTED', 'PROOF': 'ROTTED', 'DURABLE': 'ROTTED', 'CLEAN': 'ROTTED'} rotted=5"
+    },
+    {
+      "case": "KV-16a to-event REAL VALUE -> schema-valid event, delta_v_actual=6.0",
+      "ok": true,
+      "detail": "exit=0 eid=HV-20261012-KV-16-HI dv=6.0"
+    },
+    {
+      "case": "KV-16b to-event NO VALUE -> refused (exit 2, mints nothing)",
+      "ok": true,
+      "detail": "exit=2 err={\"ok\": false, \"error\": \"verdict 'NO VALUE' mints no event (only ['HIGH VALUE', 'REAL VALUE'] do)\"}"
+    },
+    {
+      "case": "KV-17a pilot skeleton built with null scores",
+      "ok": true,
+      "detail": "exit=0 change_id=PR-?"
+    },
+    {
+      "case": "KV-17b scoring a skeleton -> exit 2, no score",
+      "ok": true,
+      "detail": "exit=2"
+    },
+    {
+      "case": "KV-18 trust boundary: verified citations + hollow 9s -> 9.0 HIGH VALUE (instrument cannot judge the judgment)",
+      "ok": true,
+      "detail": "exit=0 score=9.0 \u2014 documented boundary, not a misfire"
+    }
+  ]
+}

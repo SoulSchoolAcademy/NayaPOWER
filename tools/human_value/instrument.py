@@ -252,8 +252,17 @@ def verify_evidence(item, repo, ref):
     if n is None:
         return "UNVERIFIABLE", f"{path} not present at {ref[:12]}"
     if kind == "test":
+        # A test citation must name an actual test file: under a tests/
+        # directory, or a test-named file (test_*.py, *_test.py, *.test.mjs).
+        # A bare "test" substring is not enough — "contest_notes.md" is not a
+        # test file. (KV-13.)
         base = path.split("/")[-1].lower()
-        if not (path.startswith("tests/") or "test" in base):
+        looks_like_test = (
+            path.startswith("tests/") or "/tests/" in path
+            or re.match(r"^test[_.]", base) is not None
+            or ".test." in base or re.search(r"_test\.", base) is not None
+        )
+        if not looks_like_test:
             return "UNVERIFIABLE", f"{path} does not look like a test file"
     if "lines" in item:
         try:
@@ -478,6 +487,14 @@ def compare_scorecards(a, b):
     for key in ("change_id", "score", "verdict", "judgments"):
         if key not in a or key not in b:
             raise InstrumentError(f"compare needs scorecards with {key!r}")
+    # Second-seat grading compares two seats' grades of the SAME change.
+    # Comparing different changes and reporting "agreement" would be a
+    # manufactured consensus — fail closed. (KV-12b.)
+    if a.get("change_id") != b.get("change_id"):
+        raise InstrumentError(
+            f"compare needs scorecards for the same change "
+            f"(got {a.get('change_id')!r} vs {b.get('change_id')!r})"
+        )
     da = {j["dimension"]: j["applied"] for j in a["judgments"]}
     db = {j["dimension"]: j["applied"] for j in b["judgments"]}
     if set(da) != set(db):
@@ -535,7 +552,12 @@ def recheck_scorecard(scorecard, repo, ref):
             results.append({**item, "recheck": "NOT_RECHECKABLE",
                             "recheck_detail": "attested evidence cannot be re-run"})
             continue
-        citation = ({"kind": kind, "path": item["citation"]}
+        # Carry the cited line range through: content-drift must compare the
+        # lines the grader actually cited, not the whole file. (KV-11:
+        # dropping "lines" here made whole-file drift masquerade as drift in
+        # the cited range.)
+        citation = ({"kind": kind, "path": item["citation"],
+                     "lines": item.get("lines")}
                     if kind in ("file", "test", "receipt")
                     else {"kind": kind, "sha": item["citation"]})
         status, detail = verify_evidence(citation, repo, ref)
