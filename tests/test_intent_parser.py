@@ -300,6 +300,117 @@ def test_negation():
           json.dumps({k: r.get(k) for k in ("ok", "intent_type")})[:150])
 
 
+def test_negation_sentence_level():
+    """L236 hypothesis change (fix-pass #3): sentence-level negation signal.
+    Trailing negations ('merge 2412? absolutely not') and subject negations
+    ('Nobody merge 2412') escape any pre-verb window BY CONSTRUCTION — the
+    new approach asks 'does this clause contain a non-allowlisted negation?'
+    instead of 'is the negation near the verb?'."""
+    print("F2 fix-pass #3: sentence-level negation signal:")
+    # The six validator-required cases: trailing + subject negations
+    trailing_cases = [
+        "merge 2412? absolutely not",
+        "merge 2412? no",
+        "merge 2412? never",
+        "merge 2412. no.",
+        "Nobody merge 2412",
+        "no one merge 2412",
+    ]
+    for s in trailing_cases:
+        r = parse_intent(s)
+        check(f"trailing/subject negation '{s}' -> exit 2",
+              r["ok"] is False and r["exit_hint"] == 2,
+              json.dumps({k: r.get(k) for k in ("ok", "exit_hint")}))
+        check(f"trailing/subject negation '{s}' -> asks instead",
+              any("instead" in q for q in r["clarifying_questions"]),
+              str(r["clarifying_questions"])[:120])
+    # Bare-negation variants
+    for s in ["Should we merge? No way.",
+              "Merge 2412? Not a chance.",
+              "Should we merge PR 2412? I don't think so.",
+              "Actually, don't."]:
+        r = parse_intent(s)
+        check(f"bare/trailing negation '{s}' -> exit 2",
+              r["ok"] is False and r["exit_hint"] == 2,
+              json.dumps({k: r.get(k) for k in ("ok", "exit_hint")})[:100])
+    # Parenthetical between negation and verb no longer breaks detection
+    r = parse_intent("do not, under any circumstances, deploy")
+    check("'do not, under any circumstances, deploy' -> does not proceed",
+          r["ok"] is False and r["exit_hint"] == 2,
+          json.dumps({k: r.get(k) for k in ("ok", "exit_hint")})[:100])
+    # All previously-fixed cases keep working
+    for s in ["don't ever merge 2412",
+              "do not ever merge 2412",
+              "don't you dare merge 2412",
+              "never ever merge 2412",
+              "I don't want to merge PR 2412"]:
+        r = parse_intent(s)
+        check(f"regression '{s}' -> exit 2",
+              r["ok"] is False and r["exit_hint"] == 2,
+              json.dumps({k: r.get(k) for k in ("ok", "exit_hint")})[:100])
+    # ALLOWLIST: these must NOT take the negated-request path
+    r = parse_intent("don't merge yet, but prepare the release notes")
+    check("but-override -> not the negated path",
+          not any("instead" in q for q in r.get("clarifying_questions", [])),
+          str(r.get("clarifying_questions"))[:120])
+    r = parse_intent("it's not working, should we merge the fix?")
+    check("problem description -> not the negated path",
+          not any("instead" in q for q in r.get("clarifying_questions", [])),
+          str(r.get("clarifying_questions"))[:120])
+    r = parse_intent("not a problem, merge it")
+    check("'not a problem, merge it' -> not the negated path",
+          not any("instead" in q for q in r.get("clarifying_questions", [])),
+          str(r.get("clarifying_questions"))[:120])
+    r = parse_intent("The build is not green, should we merge PR 2412?")
+    check("problem description with PR ref -> proceeds",
+          r["ok"] is True and r["intent_type"] == "should_merge",
+          json.dumps({k: r.get(k) for k in ("ok", "intent_type")})[:120])
+    r = parse_intent("don't you think we should merge?")
+    check("'don't you think...?' (asking) -> not negated",
+          not any("instead" in q for q in r.get("clarifying_questions", [])),
+          str(r.get("clarifying_questions"))[:120])
+    r = parse_intent("whether or not we should merge")
+    check("'whether or not' (asking) -> not negated",
+          not any("instead" in q for q in r.get("clarifying_questions", [])),
+          str(r.get("clarifying_questions"))[:120])
+    r = parse_intent("didn't we merge PR 2412 already?")
+    check("'didn't we merge already?' (asking) -> not negated",
+          not any("instead" in q for q in r.get("clarifying_questions", [])),
+          str(r.get("clarifying_questions"))[:120])
+    # Blind-battery discoveries (fix-pass #3, round 2)
+    for s in ["Merge PR 2412? I vote no.",
+              "merge 2412? not on my watch",
+              "Should we merge 2412? No \u2014 do it tomorrow.",
+              "No, don't merge 2412"]:
+        r = parse_intent(s)
+        check(f"blind battery '{s}' -> exit 2",
+              r["ok"] is False and r["exit_hint"] == 2,
+              json.dumps({k: r.get(k) for k in ("ok", "exit_hint")})[:100])
+    # Leading bare "No" answers prior discourse; the command stands.
+    r = parse_intent("No. Merge 2412.")
+    check("'No. Merge 2412.' -> not the negated path",
+          not any("instead" in q for q in r.get("clarifying_questions", [])),
+          str(r.get("clarifying_questions"))[:120])
+    r = parse_intent("No, merge 2412")
+    check("'No, merge 2412' -> not the negated path",
+          not any("instead" in q for q in r.get("clarifying_questions", [])),
+          str(r.get("clarifying_questions"))[:120])
+    # Mid-sentence tag-tails stay questions, not negations.
+    r = parse_intent("Merge 2412 or not, the release is Friday.")
+    check("'Merge 2412 or not, ...' -> not the negated path",
+          not any("instead" in q for q in r.get("clarifying_questions", [])),
+          str(r.get("clarifying_questions"))[:120])
+    # Nearest-verb tiebreaker: "don't" scopes "break", not "merge".
+    r = parse_intent("Merge 2412 and don't break anything.")
+    check("'Merge 2412 and don't break anything.' -> not negated",
+          not any("instead" in q for q in r.get("clarifying_questions", [])),
+          str(r.get("clarifying_questions"))[:120])
+    r = parse_intent("Don't break it, merge 2412")
+    check("'Don't break it, merge 2412' -> not negated",
+          not any("instead" in q for q in r.get("clarifying_questions", [])),
+          str(r.get("clarifying_questions"))[:120])
+
+
 def test_schema_consistency():
     print("F3: same schema on every path:")
     paths = {
@@ -378,6 +489,7 @@ if __name__ == "__main__":
     test_which_option_letters()
     test_pr_extraction_variants()
     test_negation()
+    test_negation_sentence_level()
     test_schema_consistency()
     test_cli_bare_text()
     print(f"\n{PASS} passed, {FAIL} failed")

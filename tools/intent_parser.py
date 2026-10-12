@@ -309,80 +309,366 @@ def ground_references(refs, world_ctx):
 
 
 # ---------------------------------------------------------------------------
+# ---------------------------------------------------------------------------
 # Negation detection (F2) — a negated ACTION intent must never be silently
 # executed. Recommending the opposite of what the user asked is a correctness
 # defect, so negated intents always become clarifying questions (exit 2).
 #
-# Design (fix-pass #2, validator-prescribed): a negation word within
-# NEGATION_WINDOW tokens BEFORE an action verb counts, provided no other
-# action verb intervenes between them. This closes the whole filler-word
-# class ("don't ever merge", "don't you dare merge", "do not, under any
-# circumstances, deploy") instead of patching one filler at a time — the
-# first fix-pass patched adjacency and a filler broke it; a class-level fix
-# cannot be re-broken by a new filler word.
+# L236 HYPOTHESIS CHANGE (fix-pass #3 — validator-written reframe):
+#   TRIED: negation within N tokens before the intent's action verb
+#     (adjacency regex -> token-window matcher). Three attempts, all below
+#     9.0 on independent validation.
+#   WHY IT FAILED: negation isn't always pre-verbal. Trailing negations
+#     ("merge 2412? absolutely not") and subject negations ("Nobody merge
+#     2412") escape any pre-verb window BY CONSTRUCTION — no window size
+#     fixes this.
+#   TRY INSTEAD: sentence-level negation signal. ANY negation token in a
+#     clause flips the intent to a clarifying question (exit 2), with an
+#     EXPLICIT ALLOWLIST of non-negating uses. Verb proximity is not the
+#     gate; clause-level scoping + bare-negation cover the space, which
+#     also closes the old documented boundary ("do not, under absolutely
+#     any circumstances whatsoever, deploy" now flips — no window limit).
+#   WHY DIFFERENT AT THE ROOT: stops anchoring on verb position entirely.
+#     The old approach asked "is the negation near the verb?"; the new
+#     approach asks "does this clause contain a negation that isn't
+#     allowlisted?" Fail-closed by design; the allowlist is enumerated,
+#     not heuristic.
 #
-# Precision rules:
-# - Backward window only: "should we merge or not?" has the negation AFTER
-#   the verb — a tag question, still decides. Never flagged.
-# - "not" inside problem descriptions doesn't flip because this check only
-#   runs for ACTION_INTENTS (should_merge/should_build); a problem-
-#   description sentence classifies as what_blocking.
-# - An intervening action verb re-scopes the negation: in "don't merge,
-#   just build it", the negation scopes the merge, not the build — a
-#   should_build intent is not flipped by it.
-# - Known trade-off (fail closed): a negation scoping a DIFFERENT clause
-#   before the verb ("the tests are not passing, should we merge?") will
-#   ask instead of deciding. A false question is safe; a false proceed is
-#   a correctness defect.
-# - Hedged negations ("I don't think we should merge X") are treated as
-#   negated and asked, not silently evaluated. DOCUMENTED DECISION: the
-#   user expressed doubt about the action; evaluating it as a straight
-#   request could recommend the opposite of their leaning. Asking costs a
-#   sentence; being wrong costs trust.
+# How it works, per clause (clauses split on . ! ? ; , and "but"):
+#   1. Tag/ask questions are allowlisted ("Shouldn't we merge?",
+#      "merge or not?", "whether or not", "don't you think we should
+#      merge?") — asking, not negating.
+#   2. "but"-override: only the clause after the last "but" is read
+#      ("don't merge yet, but prepare the notes" — the notes govern).
+#   3. Bare negations flip ("no", "absolutely not", "never ever",
+#      "not a chance", "no way") — a trailing answer to the previous
+#      clause's action. Trailing opinion-answers ("I don't think so")
+#      flip too.
+#   4. Otherwise the negation must scope the intent's OWN action verb
+#      ("don't merge" flips should_merge, never should_build).
+#   5. A clause with negation but no action verb at all is a problem
+#      description ("it's not working", "nothing is ready") — not flipped.
+# Known trade-off (fail closed): contradictory multi-clause input
+# ("Don't merge. Actually, merge it.") asks instead of deciding. A false
+# question is safe; a false proceed is a correctness defect.
+# Hedged negations ("I don't think we should merge X") are asked, not
+# silently evaluated — the user expressed doubt; evaluating as a straight
+# request could recommend the opposite of their leaning. Asking costs a
+# sentence; being wrong costs trust.
 # ---------------------------------------------------------------------------
 
 ACTION_INTENTS = ("should_merge", "should_build")
 
+# Any of these tokens is a negation signal: no / not / never / none /
+# nobody / no one / neither / n't-contractions. Fail-closed: presence
+# flips the intent unless explicitly allowlisted below.
 NEGATION_WORDS = frozenset({
-    "not", "never", "don't", "dont", "doesn't", "doesnt", "shouldn't",
-    "shouldnt", "won't", "wont", "can't", "cant", "cannot",
-    "avoid", "against", "neither", "nor",
+    "no", "not", "never", "none", "nobody", "neither", "nor", "nope",
+    "don't", "dont", "doesn't", "doesnt", "didn't", "didnt",
+    "won't", "wont", "wouldn't", "wouldnt", "can't", "cant",
+    "cannot", "shouldn't", "shouldnt", "couldn't", "couldnt",
+    "isn't", "isnt", "aren't", "arent", "wasn't", "wasnt",
+    "weren't", "werent", "hasn't", "hasnt", "haven't", "havent",
+    "hadn't", "hadnt", "ain't", "aint",
+    "avoid", "against",
+})
+
+# Words that can accompany a bare negation without adding propositional
+# content: "absolutely not", "never ever", "not a chance", "no way",
+# "actually, don't". Articles are transparent; refusal nouns and discourse
+# markers are unambiguous.
+_NEGATION_BARE_OK = frozenset({
+    "absolutely", "definitely", "certainly", "really", "ever",
+    "at", "all", "whatsoever",
+    "a", "an", "the",
+    "way", "chance", "deal", "dice",
+    "actually", "well", "oh", "um", "uh", "hmm",
+    # idiomatic rejections: "not on my watch"
+    "on", "my", "your", "his", "her", "our", "their", "watch",
 })
 
 ACTION_VERBS = frozenset({
-    "merge", "merging", "ship", "shipping", "build", "building",
-    "deploy", "deploying", "release", "releasing", "launch", "launching",
+    "merge", "merges", "merging", "merged",
+    "ship", "ships", "shipping", "shipped",
+    "build", "builds", "building", "built",
+    "deploy", "deploys", "deploying", "deployed",
+    "release", "releases", "releasing", "released",
+    "launch", "launches", "launching", "launched",
 })
 
 # The action verbs each action-intent is actually about. The negation must
 # scope the intent's OWN verb — "don't merge, just build it" negates the
 # merge, not the build, so a should_build intent must not flip on it.
 INTENT_VERBS = {
-    "should_merge": frozenset({"merge", "merging"}),
+    "should_merge": frozenset({"merge", "merges", "merging", "merged"}),
     "should_build": frozenset({
-        "build", "building", "ship", "shipping", "deploy", "deploying",
-        "release", "releasing", "launch", "launching",
+        "build", "builds", "building", "built",
+        "ship", "ships", "shipping", "shipped",
+        "deploy", "deploys", "deploying", "deployed",
+        "release", "releases", "releasing", "released",
+        "launch", "launches", "launching", "launched",
     }),
 }
 
-# Max tokens between a negation word and the action verb it scopes.
-# Covers "don't ever merge", "don't you dare merge", "do not, under any
-# circumstances, deploy" (not/under/any/circumstances = 4 back from deploy).
-NEGATION_WINDOW = 4
+# Ask-forms: a leading contracted negation + pronoun/determiner
+# ("Shouldn't we merge?", "Can't we ship Friday?", "Won't it merge?") is
+# ASKING, not negating. NOTE: "don't"/"didn't" are NOT here — they get
+# their own narrower patterns below, because "don't you dare merge" is a
+# command (must flip) while "don't you think...?" is asking.
+_ASK_LEAD = re.compile(
+    r"^(?:shouldn't|should\s+not|won't|will\s+not|can't|cannot|"
+    r"isn't|is\s+not|aren't|are\s+not|wasn't|was\s+not|"
+    r"weren't|were\s+not|haven't|have\s+not|hasn't|has\s+not|"
+    r"hadn't|had\s+not)\s+"
+    r"(?:i|we|you|they|he|she|it|this|that|these|those|the)\b"
+)
+# "don't you think/agree/feel...?" asks for an opinion — not a negation.
+# Narrow: "don't you DARE merge" / "don't ever merge" still flip.
+_ASK_DONT_OPINION = re.compile(
+    r"^(?:don't|do\s+not)\s+(?:you|we)\s+"
+    r"(?:think|agree|feel|believe|reckon|suppose|need|want|know)\b"
+)
+# "didn't we merge already?" asks about the past — not a negation.
+# (Mid-sentence "we didn't merge it" still flips: fail-closed.)
+_ASK_DID = re.compile(
+    r"^(?:didn't|did\s+not)\s+(?:i|we|you|they|he|she|it)\b"
+)
+# Trailing tag ("merge or not?", "should we ship or not") and the
+# "whether or not" ask-form — all asking, not negating.
+_TAG_TAIL = re.compile(r"\bor\s+not\??\s*$")
+_WHETHER = re.compile(r"\bwhether\s+or\s+not\b")
+# Trailing opinion-answer ("I don't think so", "I don't believe it") —
+# an anaphoric no to the previous clause's action. Distinct from
+# _ASK_OPINION ("don't YOU think...?"), which asks.
+_TRAILING_NO = re.compile(
+    r"^(?:i|we)\s+(?:do\s+not|don't|doesn't|wouldn't|can't)\s+"
+    r"(?:think|believe|feel|reckon|suppose)\s+(?:so|it|that)\.?$"
+)
+
+
+# Common verbs (beyond ACTION_VERBS) for detecting whether a
+# comma-fragment is a verbless parenthetical.
+_COMMON_VERBS = frozenset({
+    "is", "are", "was", "were", "be", "been", "being",
+    "have", "has", "had", "do", "does", "did",
+    "will", "would", "shall", "can", "could", "should",
+    "may", "might", "must",
+})
+
+# Fragment-initial words marking a parenthetical ("under any
+# circumstances", "in my opinion", "really").
+_PAREN_START = frozenset({
+    "under", "in", "on", "at", "by", "with", "without", "for",
+    "from", "of", "over", "through", "during", "between", "among",
+    "against", "about", "into", "upon", "within", "across",
+    "along", "despite",
+    "absolutely", "definitely", "certainly", "really", "ever",
+})
+
+
+def _has_verb(tokens):
+    return any(t in ACTION_VERBS or t in _COMMON_VERBS for t in tokens)
+
+
+# Standalone discourse particles: "No, merge 2412" answers prior
+# discourse, then commands. Unlike verbal negators ("don't,", "never,")
+# they do not dangle-attach to the next comma-fragment.
+_DISCOURSE_NO = frozenset({"no", "nope", "nah"})
+
+
+def _negation_dangling(tokens):
+    """True when the chunk's last negation has nothing after it but
+    parenthetical material — 'do not', or 'do not, under any
+    circumstances'. The negation is still looking for its verb, so the
+    next comma-fragment belongs with this chunk. A complete negated
+    proposition ('not a problem', "it's not working") is NOT dangling:
+    its negation is followed by real content."""
+    last_neg = -1
+    for i, t in enumerate(tokens):
+        if t in NEGATION_WORDS:
+            last_neg = i
+    if last_neg == -1:
+        return False
+    rest = tokens[last_neg + 1:]
+    if not rest:
+        # A tag-tail ("merge or not") is asking, not negating.
+        if len(tokens) >= 2 and tokens[-2:] == ["or", "not"]:
+            return False
+        # A lone discourse particle ("No, ...") answers prior discourse;
+        # it is not a verbal negator looking for its verb.
+        if len(tokens) == 1 and tokens[0] in _DISCOURSE_NO:
+            return False
+        return True  # ends with the negation: 'do not'
+    return (not any(t in NEGATION_WORDS for t in rest)
+            and not _has_verb(rest)
+            and rest[0] in _PAREN_START)
+
+
+def _split_clauses(text):
+    """Split into clauses on hard boundaries (. ! ? ;) and 'but', then
+    soft-split on commas, re-attaching comma-fragments whose negation is
+    still dangling ('do not, under any circumstances, deploy' stays
+    together; "it's not working, should we merge?" stays apart).
+    Returns (clauses, has_but)."""
+    has_but = bool(re.search(r"\bbut\b", text, re.IGNORECASE))
+    text = text.replace("\u2014", ",").replace("\u2013", ",")
+    hard = [p.strip()
+            for p in re.split(r"[.!?;]+|\bbut\b", text, flags=re.IGNORECASE)
+            if p.strip()]
+    clauses = []
+    for h in hard:
+        frags = [f.strip() for f in h.split(",") if f.strip()]
+        i = 0
+        while i < len(frags):
+            cur = frags[i]
+            toks = re.findall(r"[a-z']+", cur.lower())
+            while i + 1 < len(frags) and _negation_dangling(toks):
+                i += 1
+                cur = cur + ", " + frags[i]
+                toks = re.findall(r"[a-z']+", cur.lower())
+            clauses.append(cur)
+            i += 1
+    return clauses, has_but
+
+
+_VOTE_VERBS = frozenset({"vote", "votes", "voted", "voting"})
+_SUBJECTS = frozenset({"i", "we", "you", "they", "he", "she"})
+
+
+def _is_bare_negation(tokens):
+    """True when the clause is ONLY a negation (+ intensifiers / articles /
+    refusal nouns): 'no', 'absolutely not', 'never ever', 'not a chance',
+    'no way'. A trailing answer to the previous clause's action.
+    'I vote no' counts: voting 'no' IS the rejection."""
+    toks = list(tokens)
+    if len(toks) >= 2 and toks[0] in _SUBJECTS and toks[1] in _VOTE_VERBS:
+        toks = toks[2:]
+    return (bool(toks)
+            and any(t in NEGATION_WORDS for t in toks)
+            and all(t in NEGATION_WORDS or t in _NEGATION_BARE_OK
+                    for t in toks))
+
+
+def _is_tag_question(clause):
+    """Ask-forms that contain negation words but aren't negating."""
+    c = clause.strip().lower()
+    return bool(_ASK_LEAD.match(c) or _ASK_DONT_OPINION.match(c)
+                or _ASK_DID.match(c) or _TAG_TAIL.search(c)
+                or _WHETHER.search(c))
+
+
+# Heavy, concrete action verbs for the nearest-verb tiebreaker. Light
+# "transmission" verbs (want, think, dare, try, need, worry) are DELIBERATELY
+# absent: they pass the negation through to the main verb ("I don't want
+# to merge" negates the merge, not the wanting), so the tiebreaker must
+# see through them.
+_GENERAL_VERBS = frozenset({
+    "break", "breaks", "breaking", "broke", "broken",
+    "fix", "fixes", "fixing", "fixed",
+    "stop", "stops", "stopping", "stopped",
+    "start", "starts", "starting", "started",
+    "run", "runs", "running", "ran",
+    "test", "tests", "testing", "tested",
+    "check", "checks", "checking", "checked",
+    "update", "updates", "updating", "updated",
+    "change", "changes", "changing", "changed",
+    "remove", "removes", "removing", "removed",
+    "delete", "deletes", "deleting", "deleted",
+    "add", "adds", "adding", "added",
+    "create", "creates", "creating", "created",
+    "close", "closes", "closing", "closed",
+    "open", "opens", "opening", "opened",
+    "push", "pushes", "pushing", "pushed",
+    "pull", "pulls", "pulling", "pulled",
+    "revert", "reverts", "reverting", "reverted",
+    "block", "blocks", "blocking", "blocked",
+    "touch", "touches", "touching", "touched",
+    "modify", "modifies", "modifying", "modified",
+    "edit", "edits", "editing", "edited",
+    "write", "writes", "writing", "wrote", "written",
+    "send", "sends", "sending", "sent",
+    "publish", "publishes", "publishing", "published",
+    "approve", "approves", "approving", "approved",
+    "cancel", "cancels", "cancelling", "cancelled",
+    "pause", "pauses", "pausing", "paused",
+    "restart", "restarts", "restarting", "restarted",
+    "disable", "disables", "disabling", "disabled",
+    "enable", "enables", "enabling", "enabled",
+})
+_TIEBREAK_VERBS = ACTION_VERBS | _GENERAL_VERBS
 
 
 def is_negated_action(text, intent_type):
-    """True when a negation word scopes the intent's own action verb."""
+    """Sentence-level negation signal (fix-pass #3, L236 hypothesis change).
+
+    ANY negation token in a clause flips the intent to a clarifying
+    question, unless explicitly allowlisted: tag/ask questions, the
+    "but"-override (only the post-"but" clause is read), and problem
+    descriptions (negation in a clause with no action verb at all).
+    The negation must scope the intent's OWN verb family, via the nearest
+    heavy action verb (light verbs like want/think/dare are transparent:
+    "I don't want to merge" negates the merge).
+    Bare negations ("no", "absolutely not", "no way", "I vote no") flip
+    when they trail the action or stand alone; a LEADING bare "no"
+    ("No. Merge 2412.") answers prior discourse and the command stands.
+    Standalone discourse particles ("No,", "Nah,") never dangle-attach
+    across commas; verbal negators ("don't,", "never,") do, as do
+    parentheticals ("do not, under any circumstances, deploy").
+    Tag-tails ("merge or not") never dangle. Em/en-dashes split like
+    commas. Verb proximity is a tiebreaker for ambiguous clauses, not
+    the gate.
+    """
     verbs = INTENT_VERBS.get(intent_type, ACTION_VERBS)
-    tokens = re.findall(r"[a-z']+", text.lower())
-    for i, tok in enumerate(tokens):
-        if tok not in verbs:
+    clauses, has_but = _split_clauses(text)
+    # "but"-override: the clause after the last "but" governs.
+    if has_but and len(clauses) > 1:
+        clauses = [clauses[-1]]
+    # Clause order matters for bare negations: a trailing bare "no"
+    # ("merge 2412? absolutely not") rejects the input's own action, but
+    # a leading one ("No. Merge 2412.") answers prior discourse and the
+    # command stands. Track whether an intent-verb clause precedes each
+    # clause; with no verb clause at all ("Actually, don't.") the bare
+    # negation still flips, fail-closed.
+    clause_tokens = [re.findall(r"[a-z']+", c.strip().lower())
+                     for c in clauses]
+    verb_before = []
+    seen_verb = False
+    for toks in clause_tokens:
+        verb_before.append(seen_verb)
+        if any(t in verbs for t in toks):
+            seen_verb = True
+    any_verb = seen_verb
+    for clause, tokens, vb in zip(clauses, clause_tokens, verb_before):
+        c = clause.strip().lower()
+        if _is_tag_question(c):
             continue
-        start = max(0, i - NEGATION_WINDOW)
-        for j in range(start, i):
-            if tokens[j] in NEGATION_WORDS:
-                if any(t in ACTION_VERBS for t in tokens[j + 1:i]):
-                    continue
+        # Trailing opinion-answer ("I don't think so") is an anaphoric
+        # no to the previous clause's action.
+        if _TRAILING_NO.match(c):
+            return True
+        if not any(t in NEGATION_WORDS for t in tokens):
+            continue
+        # Bare negation answers the previous clause's action — unless it
+        # leads the input, where it answers prior discourse instead.
+        if _is_bare_negation(tokens):
+            if vb or not any_verb:
+                return True
+            continue
+        # Otherwise the negation must scope the intent's own action verb.
+        # A clause with no action verb at all is a problem description
+        # ("it's not working", "nothing is ready") — not a negated request.
+        # Tiebreaker for ambiguous clauses: the negation scopes its NEAREST
+        # action verb ("Merge 2412 and don't break anything" must not flip —
+        # the "don't" scopes "break", not "merge"). Light verbs (want,
+        # think, dare) are invisible to the tiebreaker so "I don't want
+        # to merge" still scopes "merge".
+        neg_idx = [i for i, t in enumerate(tokens) if t in NEGATION_WORDS]
+        verb_idx = [i for i, t in enumerate(tokens) if t in _TIEBREAK_VERBS]
+        for ni in neg_idx:
+            if not verb_idx:
+                continue
+            nearest = min(verb_idx, key=lambda vi: abs(vi - ni))
+            if tokens[nearest] in verbs:
                 return True
     return False
 
