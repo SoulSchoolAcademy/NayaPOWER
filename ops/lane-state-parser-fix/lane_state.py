@@ -245,8 +245,14 @@ def determine_state(comments, now=None, lease_minutes=LEASE_DEFAULT_MIN):
     occupant is the earliest (Kappa §6: earliest valid sign-in wins).
     A sign-out closes the signer's OWN most-recent open claim with the
     matching seat header (2026-10-12 defect 3: closing the earliest
-    seat-match closed someone else's claim). A sign-out that names no
-    seat closes the earliest open claim (releases the lane).
+    seat-match closed someone else's claim). A sign-out whose seat is
+    unattributable — seatless, or naming a seat with no open claim —
+    attributes to the NEWEST open claim: a sign-out ends the session it
+    belongs to, sessions end LIFO, and the comment's posted time decides
+    (2026-10-12 defects 4, 4b: the old code closed the EARLIEST open
+    claim, stealing Alpha's 6121713676 for the exercise's seatless
+    sign-out 6121753742, and dethroning the occupant on any
+    named-but-unmatched sign-out).
     """
     now = now or datetime.now(timezone.utc)
     ordered = sorted(comments, key=lambda c: c.get("created_at", ""))
@@ -269,18 +275,38 @@ def determine_state(comments, now=None, lease_minutes=LEASE_DEFAULT_MIN):
                     f"sign-out {c.get('id')} with no open sign-in — ignored")
                 continue
             seat = normalize_seat(header_seat(c.get("body", "")))
-            # The signer's OWN most-recent open claim with the matching
-            # seat: a sign-out ends the session it belongs to, which is
-            # the signer's newest still-open claim — never the earliest
-            # claim that happens to share the seat.
-            target = next((o for o in reversed(open_claims)
-                           if normalize_seat(o.get("seat")) == seat),
-                          None) if seat else None
+            if seat:
+                # The signer's OWN most-recent open claim with the matching
+                # seat: a sign-out ends the session it belongs to, which is
+                # the signer's newest still-open claim — never the earliest
+                # claim that happens to share the seat (defect 3).
+                target = next((o for o in reversed(open_claims)
+                               if normalize_seat(o.get("seat")) == seat),
+                              None)
+            else:
+                target = None
             if target is None:
-                target = open_claims[0]
+                # Fail-closed inference from context (defects 4, 4b): the
+                # sign-out's seat is unattributable — either it names no
+                # seat, or it names a seat with no open claim. A sign-out
+                # ends the session it belongs to, and sessions end LIFO —
+                # so attribute to the NEWEST open claim (the sign-out was
+                # posted after it; the comment's posted time decides).
+                # This can never close the §6 earliest-wins occupant while
+                # rivals stand; with a single open claim the attribution is
+                # unambiguous (e.g. 6120647358 legitimately releasing
+                # 6120277769, whose header style carries no matchable seat).
+                # The old code closed the EARLIEST open claim here —
+                # dethroning the occupant on someone else's sign-out.
+                # Closing nothing instead would strand legitimate
+                # headerless-style sign-outs and ghost their claims until
+                # the lease dies.
+                target = open_claims[-1]
                 evidence.append(
-                    f"sign-out {c.get('id')} names no matching seat "
-                    f"({seat}) — closes earliest open claim")
+                    f"sign-out {c.get('id')} unattributable "
+                    f"(seat={seat!r}) — attributes to most-recent open "
+                    f"claim (LIFO session end), never the §6 occupant "
+                    f"unless it is also the newest claim")
             evidence.append(close_claim(target, c))
             freed_at = c.get("created_at")
             continue

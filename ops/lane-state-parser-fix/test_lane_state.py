@@ -297,17 +297,77 @@ def test_defect3_no_false_occupied_on_repaired_path():
     assert "closes sign-in 6118180575" in " ".join(res["evidence"])
 
 
-def test_seatless_signout_releases_lane():
-    # A sign-out that names no seat at all cannot identify its signer;
-    # it reads as "the lane is released" and closes the earliest open
-    # claim (the §6 occupant). Sibling behavior of defect 3, unchanged.
+def test_seatless_signout_closes_newest_not_earliest():
+    # 2026-10-12 defect 4 SUPERSEDES the old "releases the lane" rule this
+    # test used to pin: closing the earliest open claim on a seatless
+    # sign-out stole the §6 occupant's claim (real misfire: seatless
+    # sign-out 6121753742 closed Alpha's 6121713676 instead of the
+    # exercise's own 6121747521). New rule: a seatless sign-out ends the
+    # session it belongs to — sessions end LIFO — so it attributes to the
+    # NEWEST open claim and can never dethrone the §6 occupant while
+    # rivals stand.
     a_in = ("# [naya5-a | SIGN-IN 2026-10-12 04:13 UTC] | **Mission:** work a")
     b_in = ("# [naya5-b | SIGN-IN 2026-10-12 04:14 UTC] | **Mission:** work b")
     out = "signing out \u2014 mission complete, lane released"
     comments = [C(1, 20, a_in), C(2, 15, b_in), C(3, 5, out)]
     res = determine_state(comments, now=NOW)
+    ev = " ".join(res["evidence"])
+    assert "closes sign-in 2" in ev, res["evidence"]
+    assert "closes sign-in 1" not in ev, res["evidence"]
+    assert res["occupant"]["sign_in_id"] == 1, res  # earliest still occupant
+
+
+def test_seatless_signout_single_claim_frees():
+    # One open claim + a seatless sign-out: attribution is unambiguous —
+    # the only session that could be ending — so the lane is released.
+    a_in = ("## Lane #1713 sign-in \u2014 Naya Alpha (LEARN)\n"
+            "Mission: compound observation pass")
+    out = "## Lane #1713 sign-out \u2014 Naya Alpha (LEARN)\nMission done"
+    res = determine_state([C(1, 20, a_in), C(2, 5, out)], now=NOW)
+    assert res["state"] == "FREE", res
     assert "closes sign-in 1" in " ".join(res["evidence"]), res["evidence"]
-    assert res["occupant"]["sign_in_id"] == 2, res
+
+
+def test_named_signout_without_open_claim_closes_newest():
+    # Defect 4b: a sign-out naming a seat with NO open claim is
+    # unattributable — same rule as a seatless sign-out (defect 4):
+    # sessions end LIFO, so it closes the NEWEST open claim, never the
+    # §6 earliest-wins occupant while rivals stand. The pre-fix code
+    # closed the EARLIEST open claim here, dethroning the occupant on
+    # someone else's sign-out (same misfire shape as defect 4).
+    # Real instance: 6120647358 (**[Naya Epsilon \u2014 VERIFY] SIGN-OUT**,
+    # seat 'naya epsilon \u2014 verify') legitimately released 6120277769
+    # (header style carries no matchable seat) — closing nothing would
+    # have ghosted it into a false STALE-SUSPECT.
+    a_in = ("# [naya5-a | SIGN-IN 2026-10-12 04:13 UTC] | **Mission:** work a")
+    b_in = ("# [naya5-b | SIGN-IN 2026-10-12 04:14 UTC] | **Mission:** work b")
+    out = ("# [naya5-z | SIGN-OUT 2026-10-12 04:15 UTC] \u2014 done, "
+           "releasing")
+    res = determine_state([C(1, 20, a_in), C(2, 15, b_in), C(3, 5, out)],
+                          now=NOW)
+    ev = " ".join(res["evidence"])
+    assert "unattributable" in ev, res["evidence"]
+    assert "closes sign-in 2" in ev, res["evidence"]
+    assert "closes sign-in 1" not in ev, res["evidence"]
+    assert res["state"] == "OCCUPIED", res
+    assert res["occupant"]["sign_in_id"] == 1, res  # a still occupant
+
+
+def test_defect4_real_fixture_seatless_closes_signers_own_claim():
+    # The 6121753742 / 6121713676 / 6121747521 case as a real-data
+    # fixture: the exercise's seatless sign-out ([SIGN-OUT] header holds
+    # only the role marker, normalize_seat -> None) must close the
+    # exercise's own 09:44:49Z sign-in — never Alpha's 09:42:32Z claim.
+    # Mis-close proven by repro_20261012_1115.py before the fix.
+    now = datetime(2026, 10, 12, 11, 10, tzinfo=timezone.utc)
+    comments = [_real_comment(6121713676), _real_comment(6121747521),
+                _real_comment(6121753742)]
+    res = determine_state(comments, now=now, lease_minutes=120)
+    ev = " ".join(res["evidence"])
+    assert "closes sign-in 6121747521" in ev, res["evidence"]
+    assert "closes sign-in 6121713676" not in ev, res["evidence"]
+    assert res["occupant"]["sign_in_id"] == 6121713676, res["occupant"]
+    assert res["state"] == "OCCUPIED", res["state"]
 
 
 if __name__ == "__main__":
