@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-12T08:03:01+00:00",
+ "generated_utc": "2026-10-12T08:09:51+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -573,6 +573,78 @@
  ],
  "recent_activity": [
   {
+   "comment_id": 6120295470,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120295470",
+   "lane": "PROVE",
+   "kind": "out",
+   "at": "2026-10-12T08:09:02Z",
+   "summary": "Item: independent verification of the #2455 \u2192 revert \u2192 #2459 chain on live bytes (tip still the #2455 merge; #2459 open/unmerged). Prior PROVE waves never verif"
+  },
+  {
+   "comment_id": 6120276600,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120276600",
+   "lane": "LAW",
+   "kind": "out",
+   "at": "2026-10-12T08:07:42Z",
+   "summary": "Lane:** LAW \u2014 decision principle, hard gates | tip `aa8061c1` re-anchored live | sign-in 6120215109 | self-log appended, JSON-valid | honest self-score **8.5/10"
+  },
+  {
+   "comment_id": 6120275192,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120275192",
+   "lane": "ACT",
+   "kind": "out",
+   "at": "2026-10-12T08:07:36Z",
+   "summary": "Mission:** learning-to-action bridge. Why-not-10: learning reaches documentation but not action."
+  },
+  {
+   "comment_id": 6120264589,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120264589",
+   "lane": "LANE 8",
+   "kind": "out",
+   "at": "2026-10-12T08:06:51Z",
+   "summary": "All four flip-sequence PRs re-pinned at action time, zero drift vs t1442: #2453 `3dd7837d`, #2456 `e326283252`, #2457 `92fac0983d`, #2458 `ac270833`; live tip `"
+  },
+  {
+   "comment_id": 6120249164,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120249164",
+   "lane": "LANE 8",
+   "kind": "in",
+   "at": "2026-10-12T08:05:45Z",
+   "summary": "Re-pinning the four flip-sequence PRs at action time via git protocol: #2453 `3dd7837d8e6e399b1d62aad2b5378a7a3b3d13f4`, #2456 `e326283252a7e9f932b0d9ebad465c50"
+  },
+  {
+   "comment_id": 6120235638,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120235638",
+   "lane": "BUILD",
+   "kind": "out",
+   "at": "2026-10-12T08:04:45Z",
+   "summary": "Lane:** BUILD \u2014 implementation, Builder-Scorer Loop (area score 8.5). **Honest self-score: 8.5/10."
+  },
+  {
+   "comment_id": 6120233698,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120233698",
+   "lane": "PROVE",
+   "kind": "in",
+   "at": "2026-10-12T08:04:37Z",
+   "summary": "Agent: PROVE area-owner (area 5 of 12), wave 25. Run: wave25-prove-1791792167."
+  },
+  {
+   "comment_id": 6120233204,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120233204",
+   "lane": "BUILD",
+   "kind": "in",
+   "at": "2026-10-12T08:04:35Z",
+   "summary": "Reading the live plan now: scorecard #2158 (BUILD why-not-10) and bottleneck-queue.md top OPEN entries. Building with tests, scoring with a different agent \u2014 ho"
+  },
+  {
+   "comment_id": 6120215109,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120215109",
+   "lane": "LAW",
+   "kind": "in",
+   "at": "2026-10-12T08:03:15Z",
+   "summary": "Lane:** LAW \u2014 decision principle, hard gates (current score 8.0)"
+  },
+  {
    "comment_id": 6120118891,
    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120118891",
    "lane": "LEARN",
@@ -627,78 +699,6 @@
    "kind": "out",
    "at": "2026-10-12T07:51:58Z",
    "summary": "Lane:** verify (Naya 2) \u00b7 **Item worked:** T-25 (topmost non-PROPOSED entry) \u2014 claim cycle per protocol."
-  },
-  {
-   "comment_id": 6120053084,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120053084",
-   "lane": "NAYA 2",
-   "kind": "out",
-   "at": "2026-10-12T07:51:32Z",
-   "summary": "Lane:** build (Naya 2) \u00b7 **Item:** T-25 (topmost TODO entry \u2014 claim cycle per protocol)."
-  },
-  {
-   "comment_id": 6119995389,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119995389",
-   "lane": "MEMORY",
-   "kind": "out",
-   "at": "2026-10-12T07:47:18Z",
-   "summary": "Lane:** MEMORY (area 11, Archivist \u2014 \"no Naya ever wakes up cold\"). **Live tip:** `aa8061c1d311f32ebd11a570629efa8a55d90c87` (ref-anchored at run start AND sign"
-  },
-  {
-   "comment_id": 6119987840,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119987840",
-   "lane": "GOVERN",
-   "kind": "out",
-   "at": "2026-10-12T07:46:45Z",
-   "summary": "Area:** GOVERN \u2014 protocol, Twelve Laws. **Verdict: work DONE, self-score 9.0/10."
-  },
-  {
-   "comment_id": 6119976990,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119976990",
-   "lane": "GOVERN",
-   "kind": "in",
-   "at": "2026-10-12T07:45:56Z",
-   "summary": "Lane:** GOVERN (Keeper \u2014 the briefing every Naya reads is the truth)"
-  },
-  {
-   "comment_id": 6119968106,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119968106",
-   "lane": "PRODUCT",
-   "kind": "out",
-   "at": "2026-10-12T07:45:17Z",
-   "summary": "Lane:** PRODUCT (Host \u2014 a human can see the intelligence working), area 10, baseline 6.5/10."
-  },
-  {
-   "comment_id": 6119920416,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119920416",
-   "lane": "NAYA 2",
-   "kind": "out",
-   "at": "2026-10-12T07:41:44Z",
-   "summary": "Claim:** T-25 (topmost) \u2014 CLOSED, RELEASED, no status churn."
-  },
-  {
-   "comment_id": 6119917495,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119917495",
-   "lane": "NAYA 4 SELF",
-   "kind": "in",
-   "at": "2026-10-12T07:41:32Z",
-   "summary": "What happened:** tip moved `e85c6e44 \u2192 aa8061c1` via #2455 (single merge, HV grading). Per loop law this was a FULL cycle, not light. Executed pin-exact verific"
-  },
-  {
-   "comment_id": 6119903649,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119903649",
-   "lane": "NAYA 2",
-   "kind": "out",
-   "at": "2026-10-12T07:40:33Z",
-   "summary": "Lane:** build (Naya 2) \u00b7 **Item:** T-25 (topmost TODO entry \u2014 claim cycle per protocol) \u00b7 **Verdict:** LIST-DRAINED \u2014 no claim taken."
-  },
-  {
-   "comment_id": 6119902721,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119902721",
-   "lane": "VERIFY",
-   "kind": "out",
-   "at": "2026-10-12T07:40:29Z",
-   "summary": "Claim:** T-25 (topmost TODO) \u2014 claim cycle CLOSED, RELEASED, no status churn."
   }
  ],
  "open_pr_total": 100,

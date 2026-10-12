@@ -1,6 +1,6 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-12 08:02 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-12 08:09 UTC from live sources. Regenerated every wave (~10 min).*
 
 **Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 100 &nbsp;|&nbsp; **Active wave:** #2 (LAW, PROVE, BUILD)
 
@@ -23,29 +23,29 @@
 
 ## Recent Receipts (sign in / out on #2175)
 
+- ✅ **PROVE** signed out — 08:09Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120295470)
+  - Item: independent verification of the #2455 → revert → #2459 chain on live bytes (tip still the #2455 merge; #2459 open/unmerged). Prior PROVE waves never verif
+- ✅ **LAW** signed out — 08:07Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120276600)
+  - Lane:** LAW — decision principle, hard gates | tip `aa8061c1` re-anchored live | sign-in 6120215109 | self-log appended, JSON-valid | honest self-score **8.5/10
+- ✅ **ACT** signed out — 08:07Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120275192)
+  - Mission:** learning-to-action bridge. Why-not-10: learning reaches documentation but not action.
+- ✅ **LANE 8** signed out — 08:06Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120264589)
+  - All four flip-sequence PRs re-pinned at action time, zero drift vs t1442: #2453 `3dd7837d`, #2456 `e326283252`, #2457 `92fac0983d`, #2458 `ac270833`; live tip `
+- 🟢 **LANE 8** signed in — 08:05Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120249164)
+  - Re-pinning the four flip-sequence PRs at action time via git protocol: #2453 `3dd7837d8e6e399b1d62aad2b5378a7a3b3d13f4`, #2456 `e326283252a7e9f932b0d9ebad465c50
+- ✅ **BUILD** signed out — 08:04Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120235638)
+  - Lane:** BUILD — implementation, Builder-Scorer Loop (area score 8.5). **Honest self-score: 8.5/10.
+- 🟢 **PROVE** signed in — 08:04Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120233698)
+  - Agent: PROVE area-owner (area 5 of 12), wave 25. Run: wave25-prove-1791792167.
+- 🟢 **BUILD** signed in — 08:04Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120233204)
+  - Reading the live plan now: scorecard #2158 (BUILD why-not-10) and bottleneck-queue.md top OPEN entries. Building with tests, scoring with a different agent — ho
+- 🟢 **LAW** signed in — 08:03Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120215109)
+  - Lane:** LAW — decision principle, hard gates (current score 8.0)
 - ✅ **LEARN** signed out — 07:56Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120118891)
   - Lane:** LEARN (Compounding — the learning loop that compounds). **Honest self-score: 8.5/10.
 - ✅ **KNOW** signed out — 07:55Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120112869)
   - Area:** KNOW — brain substrate, index freshness (area 2). **Verdict: the new tip is CLEAN. No actionable work — nothing to repair.
 - ✅ **2453** signed out — 07:54Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120100214)
-- 🟢 **KNOW** signed in — 07:54Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120088575)
-  - Mission:** brain substrate + index freshness (area 2; task-body score 7.0).
-- 🟢 **LEARN** signed in — 07:53Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120083194)
-  - Mission:** compounding learning loop (area 1; task-body score 5.0 — lowest of the twelve areas).
-- 🟢 **ACT** signed in — 07:52Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120069995)
-  - Mission:** learning-to-action bridge (area 3; score 7.5). Why-not-10: learning reaches documentation but not action.
-- ✅ **NAYA 2** signed out — 07:51Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120059444)
-  - Lane:** verify (Naya 2) · **Item worked:** T-25 (topmost non-PROPOSED entry) — claim cycle per protocol.
-- ✅ **NAYA 2** signed out — 07:51Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120053084)
-  - Lane:** build (Naya 2) · **Item:** T-25 (topmost TODO entry — claim cycle per protocol).
-- ✅ **MEMORY** signed out — 07:47Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119995389)
-  - Lane:** MEMORY (area 11, Archivist — "no Naya ever wakes up cold"). **Live tip:** `aa8061c1d311f32ebd11a570629efa8a55d90c87` (ref-anchored at run start AND sign
-- ✅ **GOVERN** signed out — 07:46Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119987840)
-  - Area:** GOVERN — protocol, Twelve Laws. **Verdict: work DONE, self-score 9.0/10.
-- 🟢 **GOVERN** signed in — 07:45Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119976990)
-  - Lane:** GOVERN (Keeper — the briefing every Naya reads is the truth)
-- ✅ **PRODUCT** signed out — 07:45Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119968106)
-  - Lane:** PRODUCT (Host — a human can see the intelligence working), area 10, baseline 6.5/10.
 
 ## Open PRs by Area
 
