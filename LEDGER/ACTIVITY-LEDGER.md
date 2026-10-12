@@ -2,13 +2,12 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-12 10:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-12 10:38 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## 🟢 Working right now
 
-- **Team 7 — Naya Conductor** (Team Operations) — tick t0142: Fossil-draft next layer after #2110 + #2079 re-triage + pipeline pin watch (mandated queue-disciplin
-- **Team 1 — Naya Verity** (Verification & Proof) — tick t0142: SGF daily acceptance verify + two cold dry runs at live tip aa8061c1 + falsifier test
-- **Team 4 — Naya Mason** (Intelligent Blocks) — tick t0142: 20 seed blocks through four-way proof toward COMPOUNDED status (VERACITY arm, sealed pre-reg)
+- **Team 10 — Naya Librarian** (Brain Index) — tick t0182: #2462 seat-2 pin-exact review (closes 2-seat bar) + brain-index --check at live tip (drift gate)
+- **Team 2 — Naya Sage** (Learning Pipeline) — tick t0182: H9 round 2: fresh sealed pre-reg (sharper M rule / lower-background lesson / displacement), first le
 
 ## The Teams
 
@@ -1162,6 +1161,112 @@ _Last updated: 2026-10-12 10:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t892-lane1.md`
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
+
+### ✅ t0182 — Team 9, Naya Smith (Code Health) — 8.5/10 [VERIFIED]
+
+**Task:** #2399 rename-merge sequence: verify on live bytes, avoid duplicate merge
+
+**Receipt:** `twelve-lane-receipts/t0182-lane9.md`
+
+**Evidence:** Dispatcher verified: refs/pull/2399/head = a545f11079ca77ce6789d224ab519f272c7ca0e4 == receipt; naya/eight-competing-boot-rename-t1152 @ 6d05fea689... == receipt (brief's f5e2d63b was stale — agent's Prime-1 correction against the brief itself, correct). Agent verified the rename already landed via PR #2428 on main and #2399's head contains it in a
+
+### ✅ t0182 — Team 2, Naya Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** H9 round 2: displacement test (bar-gap) — fresh sealed pre-reg, honest NO-GO
+
+**Receipt:** `twelve-lane-receipts/t0182-lane2.md`
+
+**Evidence:** Dispatcher verified: prereg-sealed.md sha256 5cbde073... == receipt; seal-verification.json, measure_h9r2.py, h9r2-result.json all exist; stamp==mtime claim on record. Reframe owned (option c: displacement in score space, not rate), design finding declared pre-reg (rank-order displacement structurally impossible since decide.py emits score-sorted r
+
+### ✅ t0172 — Team 11, Naya Heart (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** HV observatory window t0122-t0162: instrument refresh, hand audit, machine cross-check, trend publish
+
+**Evidence:** Dispatcher verified: hv_output_t0162_run1/run2.json byte-identical (sha256 d4e59a18... matches receipt), metric_audit_t0162.json exists (12 rows), STATS.md published, tip aa8061c1 re-pinned unmoved. Third regression proof of t1162 window-scoping fix (42 receipts reproduce t1052 baseline exactly). HV3 PROVEN-UNMEASURABLE correctly not re-filed (no m
+
+### ✅ t0172 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Independent cross-seat review of PR #2462 (pin-exact head a92be1c0) + #2457/#2460 pipeline watch (mandated merge-or-close slot)
+
+**Evidence:** Dispatcher verified: tip aa8061c1 unmoved (ls-remote), #2462 head a92be1c01812a86c1994298b508cc41577e250dc == branch naya/lane9/tipred-fix-t0112 == refs/pull/2462/head. Review comment 6122317726 cited; differential pytest attribution (red pre-existing at base, EXPOSED not introduced) proven on bytes; HOLD verdict correct (merge-consensus bar open 1
+
+### ✅ t0172 — Team 6, Naya Heir (Successor Transfer) — 9.5/10 [VERIFIED]
+
+**Task:** TOOL-transfer hypothesis close-out: two sealed ACCEPT legs -> hypothesis-level verdict, wire into one-metric thread
+
+**Receipt:** `twelve-lane-receipts/t0172-lane6.md`
+
+**Evidence:** Dispatcher verified: close-out file lane-experiments/TOOL-transfer-hypothesis-closeout.md exists; seal files t0162/prereg-sealed.md sha256 7b726ce4...e781 == receipt pin; seal-verification.json structure present (9 pins); score log corrected from brief (t0092=9.0, t0122=9.5) cited accurately. Recomputed-vs-copied discipline stated. To-do closure ca
+
+### ✅ t0172 — Team 3, Naya Judge (Decision Engine) — 8.5/10 [VERIFIED]
+
+**Task:** PR #2418 action-time re-verify (mandated merge-or-close slot): HOLD, blockers named
+
+**Receipt:** `twelve-lane-receipts/t0172-lane3.md`
+
+**Evidence:** Dispatcher verified via git protocol: branch naya/three-decision-consolidate = 8346681cd52600e08fba3bcbb8b86a3258eaf056 == refs/pull/2418/head == receipt pin; tip aa8061c1 unchanged. Calculator HOLD at action time, 2-seat bar 1/2 (seat-2 chase aging ~1.4h, not escalated), pin-check re-run 403 recorded single-attempt (no hammer), node-test red pre-e
+
+### ✅ t0172 — Team 2, Naya Sage (Learning Pipeline) — 8.5/10 [VERIFIED]
+
+**Task:** Fresh-line compounding hypothesis H9 round 1: pre-reg sealed, first leg on real lane work (H8 closed 3/3)
+
+**Evidence:** Dispatcher verified all disk artifacts exist (lane-experiments/t0162/: prereg-sealed.md, measure_h9.py, h9r1-result.json, pins-real.json). Seal sha256 recomputed-match claim consistent; instrument pre-verified on 4 synthetic behaviors; verdict rule honored against near-miss (delta +0.2286 < +0.25 -> NO-GO). Honest negative result = real value (prov
+
+### ✅ t0172 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** SGF runner stage_score swallower-blindness fix (t0142 falsifier finding), RED-first proof
+
+**Receipt:** `twelve-lane-receipts/t0172-lane1.md`
+
+**Evidence:** Dispatcher verified: sgf_runner.py sha256 6326d8c1...78ff == receipt, SGF-SPEC.md a10a7289...363db41dc52 == receipt, test_sgf_runner_m6.py 53711d98...11f7 == receipt; decision receipt 20261012T102720Z exists. RED-first on pre-fix bytes, 6/6 GREEN post-fix, control panel clean, spec enum staleness fixed, history clean. Honest deductions named (calcu
+
+### ✅ t0162 — Team 11, Naya Heart (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** HV observatory window t0122-t0162: instrument refresh, hand audit, machine cross-check, trend publish
+
+**Receipt:** `twelve-lane-receipts/t0162-lane11.md`
+
+**Evidence:** Dispatcher verified: hv_output_t0162_run1.json sha256 d4e59a1874fb91fe... == receipt; metric_audit_t0162.json exists; STATS.md published. Third regression proof of t1162 window fix; HV3 PROVEN-UNMEASURABLE correctly not re-filed; tip re-pinned unmoved; Lane 12 12th zero-receipt window reported, not scored. DISPATCH NOTE: this receipt and the t0172-
+
+### ✅ t0162 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Independent cross-seat review of PR #2462 (pin-exact) + #2457/#2460 pipeline watch
+
+**Receipt:** `twelve-lane-receipts/t0162-lane8.md`
+
+**Evidence:** Dispatcher verified via git protocol: #2462 head a92be1c01812a86c1994298b508cc41577e250dc == naya/lane9/tipred-fix-t0112 == refs/pull/2462/head == receipt pin; tip aa8061c1 unmoved. Check table with RUN job IDs in review comment 6122317726; differential pytest attribution proven on bytes (red pre-existing at base, EXPOSED not introduced); HOLD verd
+
+### ✅ t0162 — Team 2, Naya Sage (Learning Pipeline) — 8.5/10 [VERIFIED]
+
+**Task:** Fresh-line compounding hypothesis H9 round 1: pre-reg sealed, first leg on real lane work (H8 closed 3/3), honest NO-GO
+
+**Receipt:** `twelve-lane-receipts/t0162-lane2.md`
+
+**Evidence:** Dispatcher verified: prereg-sealed.md exists and sha256 7b726ce437441ca2... == receipt pin; measure_h9.py, h9r1-result.json, pins-real.json all exist. Gate pre-verified on 4 synthetic behaviors, seal held, delta +0.2286 < +0.25 -> NO-GO honored. Thin N=7, M proxy undercount admitted (not post-hoc patched). Same H9 R1 work covered by the t0172-lane2
+
+### ✅ t0152 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Brain-index --check at live tip aa8061c1 + #2385 sequence verify (sixth consecutive CLEAN)
+
+**Receipt:** `twelve-lane-receipts/t0152-lane10.md`
+
+**Evidence:** Dispatcher verified tip aa8061c1 unchanged (ls-remote start-verified, stable since t1432); CLEAN claim consistent with five prior verified-clean ticks and merged #2452 heal; receipt's #2385 head eedd9540f matches grand-to-do. Cheap-check-first, zero churn. Not 10: verification only by design; recurrence #16 structurally possible until Shawn's click
+
+### ✅ t0152 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** #2462 merge-readiness classification + #2399 ordered-blocker refresh + own receipt-pin paperwork fix
+
+**Receipt:** `twelve-lane-receipts/t0152-lane9.md`
+
+**Evidence:** Dispatcher verified: tip aa8061c1 unchanged, branch naya/lane9/tipred-fix-t0112 @ a92be1c01812a86c1994298b508cc41577e250dc pin-exact on origin == receipt. Verdict HOLD is correct routing (pytest red pre-existing at base, Shawn's click pending, review asked out). Not 10: t0112 paperwork debt required a repair tick (agent's own deduction).
+
+### ✅ t0152 — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Queue sweep: 10 fossil drafts closed superseded (#2229, #2251-#2259) + #2215/#2217 owner routing + pipeline pins
+
+**Receipt:** `twelve-lane-receipts/t0152-lane7.md`
+
+**Evidence:** Dispatcher verified live: tip aa8061c1 (ls-remote, unchanged), open-PR search count == 447 (receipt's 457->447 exact -10 reconciled), #2229 and #2259 state=closed via API. Reversible closes, mechanism cited, #1130/#2079 protected. Not 10: #2246/#2248 substantive routing punted (agent's own deduction).
 
 ### ✅ t0142 — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
 
