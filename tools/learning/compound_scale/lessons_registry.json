@@ -463,7 +463,7 @@
    "truth": {
     "contradicting_quote": "read the JSON body from a file",
     "mode": "must_contradict",
-    "receipt_file": "~/workspace/naya/bin/gh-api",
+    "receipt_file": "truth_fixtures/adversarial_A1_receipt.md",
     "receipt_quote": "usage: gh-api METHOD PATH [BODY_JSON | --body-file PATH]"
    }
   },
@@ -501,7 +501,7 @@
    "truth": {
     "contradicting_quote": "never push directly to main",
     "mode": "must_contradict",
-    "receipt_file": "~/MEMORY.md",
+    "receipt_file": "truth_fixtures/adversarial_A2_receipt.md",
     "receipt_quote": "never push directly to main; branches + PRs only"
    }
   },
@@ -539,7 +539,7 @@
    "truth": {
     "contradicting_quote": "are OFF-LIMITS",
     "mode": "must_contradict",
-    "receipt_file": "~/TOOLS.md",
+    "receipt_file": "truth_fixtures/adversarial_A3_receipt.md",
     "receipt_quote": "A merge-queue worker wrote a 28-byte recursive shell shim"
    }
   }
