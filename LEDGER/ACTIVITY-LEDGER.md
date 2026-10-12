@@ -2,13 +2,13 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-12 09:38 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-12 10:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## 🟢 Working right now
 
-- **Team 6 — Naya Heir** (Successor Transfer) — tick t0122: CTA leg-3 cold-transfer execution per t0092 sealed pre-reg
-- **Team 7 — Naya Conductor** (Team Operations) — tick t0122: fossil-draft close layer (10 oldest after #1993), queue discipline slot
-- **Team 11 — Naya Heart** (Human Value) — tick t0122: HV observatory window t0082-t0122 + audit + baseline regression
+- **Team 7 — Naya Conductor** (Team Operations) — tick t0142: Fossil-draft next layer after #2110 + #2079 re-triage + pipeline pin watch (mandated queue-disciplin
+- **Team 1 — Naya Verity** (Verification & Proof) — tick t0142: SGF daily acceptance verify + two cold dry runs at live tip aa8061c1 + falsifier test
+- **Team 4 — Naya Mason** (Intelligent Blocks) — tick t0142: 20 seed blocks through four-way proof toward COMPOUNDED status (VERACITY arm, sealed pre-reg)
 
 ## The Teams
 
@@ -1162,6 +1162,54 @@ _Last updated: 2026-10-12 09:38 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t892-lane1.md`
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
+
+### ✅ t0142 — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Queue sweep: 10 fossil drafts closed superseded (#2111/#2184/#2198/#2202/#2211/#2212/#2213/#2216/#2226/#2227) + #2079 DELIBERATELY HOLD triage + pipeline pins
+
+**Receipt:** `twelve-lane-receipts/t0142-lane7.md`
+
+**Evidence:** Dispatcher verified live: #2111 closed, head e109b831...21131bc pin-exact == receipt; open-PR search count == 457 == receipt claim (467->457, -10). Close comments cite mechanism+action-time SHA. Not 10: 4 gray-zone candidates deferred, not triaged (agent's own deduction); no calculator run on the #2079 hold.
+
+### ✅ t0142 — Team 4, Naya Mason (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** 20 seed blocks through four-way + veracity arm, per-block verdicts, COMPOUNDED list
+
+**Receipt:** `twelve-lane-receipts/t0142-lane4.md`
+
+**Evidence:** Dispatcher verified on disk: seal.json sha256 a2a712cf... recomputed MATCH (pre-seal 09:54:46Z), tip aa8061c1 pin-exact in seal + summary + verdicts, 20/20 proofs present, scorer-scores.json blinded pairs all true, unblinded 09:58:07Z > completed 09:57:52Z hard assertion holds. Template gap named not forced (VERACITY-ARM.md competition fixture INCO
+
+### ✅ t0142 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** SGF daily acceptance at tip aa8061c1: T5/ADVERSARIAL + T3/NORMAL cold arms + falsifier probe of the runner's own pass path
+
+**Receipt:** `twelve-lane-receipts/t0142-lane1.md`
+
+**Evidence:** Dispatcher verified: tip aa8061c1 via ls-remote (unchanged), runner branch naya/six-sgf-daily-runner-t992 @ 41dfc86e pin-exact, falsifier artifacts on disk (sgf_runner.py sha256 db685e5c... MATCH, scorer-9.0/7.5/6.9.json present, verdicts match receipt claims), history appended 2 lines. Cold-arm seal files not located in scratch (evidence-location 
+
+### ✅ t0132 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** #2457/#2460 merge-calculator adjudication + per-check classification, verdicts on #2175
+
+**Receipt:** `twelve-lane-receipts/t0132-lane8.md`
+
+**Evidence:** Dispatcher verified via git protocol: tip aa8061c1, #2457 head 92fac098, #2460 head 97d46460 all pin-exact live. Calculator decision receipts exist on disk (20261012T094005/094006Z). Verdict comment 6121761481 exists on #2175 at 09:45:43Z. Honest #2460 receipt-gate body-header fix disclosed (format class, no code change). #2460 HOLD pending Shawn's
+
+### ✅ t0132 — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Fossil-draft post-#2037 layer: 10 oldest idle drafts closed as superseded, pin-exact
+
+**Receipt:** `twelve-lane-receipts/t0132-lane7.md`
+
+**Evidence:** Dispatcher verified live: #2038/#2110 closed (spot), open-PR search count == 467 == receipt claim (exact -10 delta). #2079 skipped honestly (fresh human validation). Why not 10: agent's own sign-in discipline hole + 8/10 heads unverified live (spot-checked only).
+
+### ✅ t0132 — Team 2, Naya Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** H8 round-3 per HYPOTHESIS CHANGE note, sealed pre-reg, mechanical gate honored
+
+**Receipt:** `twelve-lane-receipts/t0132-lane2.md`
+
+**Evidence:** Dispatcher verified on disk: prereg seal sha256 55fefecf... recomputed MATCH; HYPOTHESIS-CHANGE-r3 pin 9f3d3f96 MATCH; 7 probe dirs present. Gate verdict NO-GO honored mechanically, zero scored arms. Circuit breaker respected: H8 CLOSED 3/3, no round 4. Honest negative with the pressure-simulation weakness named.
 
 ### ✅ t0122 — Team 11, Naya Heart (Human Value) — 9.0/10 [VERIFIED]
 
