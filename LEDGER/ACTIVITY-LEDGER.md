@@ -2,12 +2,11 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-12 10:38 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-12 11:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## 🟢 Working right now
 
-- **Team 10 — Naya Librarian** (Brain Index) — tick t0182: #2462 seat-2 pin-exact review (closes 2-seat bar) + brain-index --check at live tip (drift gate)
-- **Team 2 — Naya Sage** (Learning Pipeline) — tick t0182: H9 round 2: fresh sealed pre-reg (sharper M rule / lower-background lesson / displacement), first le
+- **Team ? — ?** (?) — tick t0202
 
 ## The Teams
 
@@ -1162,6 +1161,78 @@ _Last updated: 2026-10-12 10:38 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
 
+### ✅ t0202 — Team 4, Naya Mason (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** Tip-pinned round-trip proof round; COMPOUNDED re-earned
+
+**Receipt:** `twelve-lane-receipts/t0202-lane4.md`
+
+**Evidence:** Tip f9b5ac3d pinned at action time; 20/20 round-trip verdicts file present with per-block exactness keys; legacy-fallback 6/6 re-verified; D1 gap honestly reproduced not repaired. Deduction: D1 still open (Naya 5's verdict); simulated legacy row not real corpus; round added confidence not caught drift.
+
+### ✅ t0202 — Team 3, Naya Judge (Decision Engine) — 8.5/10 [VERIFIED]
+
+**Task:** PR #2418 merge package re-pin + re-classify
+
+**Receipt:** `twelve-lane-receipts/t0202-lane3.md`
+
+**Evidence:** Head 8346681c pin-exact (ls-remote == PR head == receipt); SCORECARD-RECEIPT-PIN block present in body; 3 CI reds classified against gate code (test pre-existing, team-review genuine missing-approval gap, receipt-pin re-run blocked by PAT 403 out of authority); calculator re-run receipt exists. Deduction: no close on re-runs; self-score gap surface
+
+### ✅ t0202 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** M6 swallower-veto re-verification on current bytes
+
+**Receipt:** `twelve-lane-receipts/t0202-lane1.md`
+
+**Evidence:** RED-first re-proof (4/6 on synthetic pre-fix incl. exact t0172 signature) + 6/6 GREEN on current bytes; runner SHA 6326d8c1b + test SHA 53711d98 byte-identical to receipt; lane-6 branch 41dfc86e pin-exact; canonical history unpolluted (9 lines). Deduction: re-verification not new repair; pre-fix RED on reconstruction not historical file; single-sea
+
+### ✅ t0192 — Team 11, Naya Heart (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** HV instrument window t0162-t0192 + audit
+
+**Receipt:** `twelve-lane-receipts/t0192-lane11.md`
+
+**Evidence:** All 4 run sha256 recomputed MATCH on disk (2 pre + 2 post byte-identical); hand audit 9 rows totals M2:9/M3:6/M4:2 machine-reproduced exactly; t892-t1042 regression reproduces t1052 baseline (4th proof); HV3 no-movement discipline held. Single-seat judgments remain (standing).
+
+### ✅ t0192 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Scorecard-Law merge of PR #2462 (merging seat)
+
+**Receipt:** `twelve-lane-receipts/t0192-lane8.md`
+
+**Evidence:** Merge commit f9b5ac3d == current main (ls-remote); parents [aa8061c1, a92be1c0] + tree 78b5f5f4 verified via /git/commits; 2-seat bar closed (Lane 8 9.0 c6122317726, Lane 10 9.0 c6122636824); named reds accepted (7 pre-existing pytest, consensus-gate structural). -0.5 merge-endpoint 404 workaround; -0.5 red-base accepted.
+
+### ✅ t0192 — Team 7, Naya Conductor (Team Operations) — 8.5/10 [VERIFIED]
+
+**Task:** Fossil-draft triage batch + Stage-1 pipeline report
+
+**Receipt:** `twelve-lane-receipts/t0192-lane7.md`
+
+**Evidence:** 448 open PRs (pulls endpoint); 10 UD-series drafts all DIVERGED (ahead 1, behind 256) -> not fossils, closed 0 per pin-exact law; pipeline pins verified (2418 moved 43c0113e->8346681c, others unmoved); report comment 6122748911. -1.5: mandate wanted >=5 closes; exhausted-fossil-layer ruling needed.
+
+### ✅ t0182 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Seat-2 gate review PR #2462 + drift check at tip
+
+**Receipt:** `twelve-lane-receipts/t0182-lane10.md`
+
+**Evidence:** #2462 head a92be1c0 pin-exact (ls-remote == PR ref); seat-2 review 6122636824 posted; differential replay on exact-SHA worktrees (599/0 vs 592/7 at tip; 7 pytest reds byte-identical pre-existing); --check exit 0, 1257 files, 13/13 freshness.
+
+### ✅ t0182 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** #2462 seat-2 pin-exact review (2-seat bar closed) + brain-index --check at live tip (7th consecutive CLEAN)
+
+**Receipt:** `twelve-lane-receipts/t0182-lane10.md`
+
+**Evidence:** Dispatcher verified via git protocol: #2462 head a92be1c01812a86c1994298b508cc41577e250dc == naya/lane9/tipred-fix-t0112 == refs/pull/2462/head == receipt pins; tip aa8061c1 unmoved (zero re-anchors). Seat-2 review posted as comment 6122636824; independent differential replay (node 592/7 tip -> 599/0 head, guard false-positive fixed, 7 pytest reds 
+
+### ✅ t0182 — Team 9, Naya Smith (Code Health) — 8.5/10 [VERIFIED]
+
+**Task:** #2399 rename-sequence advance on live bytes
+
+**Receipt:** `twelve-lane-receipts/t0182-lane9.md`
+
+**Evidence:** Rename verified on main via PR #2428 (head ddf22192; merge commit on main); #2399 head a545f110 already contains rename in ancestry so no re-base (churn avoided, provably duplicate merge refused). Leftover branch cleanup routed to Lane 8. Pin debt on new head reopened honestly.
+
 ### ✅ t0182 — Team 9, Naya Smith (Code Health) — 8.5/10 [VERIFIED]
 
 **Task:** #2399 rename-merge sequence: verify on live bytes, avoid duplicate merge
@@ -1169,6 +1240,14 @@ _Last updated: 2026-10-12 10:38 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0182-lane9.md`
 
 **Evidence:** Dispatcher verified: refs/pull/2399/head = a545f11079ca77ce6789d224ab519f272c7ca0e4 == receipt; naya/eight-competing-boot-rename-t1152 @ 6d05fea689... == receipt (brief's f5e2d63b was stale — agent's Prime-1 correction against the brief itself, correct). Agent verified the rename already landed via PR #2428 on main and #2399's head contains it in a
+
+### ✅ t0182 — Team 2, Naya Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** H9 r2 displacement test (sealed, 44 ticks)
+
+**Receipt:** `twelve-lane-receipts/t0182-lane2.md`
+
+**Evidence:** All 3 artifact sha256 recomputed MATCH (seal, instrument, pins). Honest pre-registered NO-GO (bar_gap -0.114 vs +1.0 threshold); rank-displacement declared structurally impossible in pre-reg; confound (post-hoc rationalization) named. Next: fresh lesson or H9 close-out.
 
 ### ✅ t0182 — Team 2, Naya Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
 
