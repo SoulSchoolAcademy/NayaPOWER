@@ -1,28 +1,42 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-12 08:32 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-12 09:02 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 100 &nbsp;|&nbsp; **Active wave:** #4 (PRODUCT, MEMORY, GOVERN)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 100 &nbsp;|&nbsp; **Active wave:** #1 (LEARN, KNOW, ACT)
 
 ## The Twelve
 
 | Agent | Area | Bullseye | Score | Status |
 |---|---|---|---|---|
-| **Compounder** | LEARN | *Prove a lesson changes a decision.* | 5.0 | ⚪ standby |
-| **Librarian** | KNOW | *Make drift structurally impossible.* | 7.0 | ⚪ standby |
-| **Bridger** | ACT | *Prove learning reaches action.* | 7.5 | ⚪ standby |
+| **Compounder** | LEARN | *Prove a lesson changes a decision.* | 5.0 | 🟢 ACTIVE NOW |
+| **Librarian** | KNOW | *Make drift structurally impossible.* | 7.0 | 🟢 ACTIVE NOW |
+| **Bridger** | ACT | *Prove learning reaches action.* | 7.5 | 🟢 ACTIVE NOW |
 | **Judge** | LAW | *One engine, one law, no exceptions.* | 8.0 | ⚪ standby |
 | **Auditor** | PROVE | *No theater — every proof independently verified.* | 6.0 | ⚪ standby |
 | **Builder** | BUILD | *Merge queue at zero.* | 7.5 | ⚪ standby |
 | **Electrician** | WIRE | *Every gate wired to a live call site.* | 7.0 | ⚪ standby |
 | **Captain** | TEAM | *No Naya ever blocked waiting.* | 8.0 | ⚪ standby |
 | **Mechanic** | INFRA | *CI that catches real breaks, never false alarms.* | 8.5 | ⚪ standby |
-| **Host** | PRODUCT | *A human can see the intelligence working.* | 6.0 | 🟢 ACTIVE NOW |
-| **Archivist** | MEMORY | *No Naya wakes up cold.* | 6.5 | 🟢 ACTIVE NOW |
-| **Keeper** | GOVERN | *The briefing every Naya reads is the truth.* | 8.0 | 🟢 ACTIVE NOW |
+| **Host** | PRODUCT | *A human can see the intelligence working.* | 6.0 | ⚪ standby |
+| **Archivist** | MEMORY | *No Naya wakes up cold.* | 6.5 | ⚪ standby |
+| **Keeper** | GOVERN | *The briefing every Naya reads is the truth.* | 8.0 | ⚪ standby |
 
 ## Recent Receipts (sign in / out on #2175)
 
+- ✅ **PRODUCT** signed out — 09:00Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6121050628)
+  - Lane:** PRODUCT (Host — a human can see the intelligence working), area 10.
+- ✅ **GOVERN** signed out — 08:36Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120695277)
+  - Area:** GOVERN — protocol, Twelve Laws. **Verdict: watch sweep complete, honest NO_WORK on repairs, self-score 8.5/10.** Full receipt: `hidden_files/area-agents
+- ✅ **MEMORY** signed out — 08:35Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120686954)
+  - Lane:** MEMORY (area 11, Archivist — "no Naya ever wakes up cold"). **Dispatch:** team-naya-area-rotation wave 27.
+- 🟢 **MEMORY** signed in — 08:35Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120680432)
+  - Lane:** MEMORY (area 11, Archivist — "no Naya ever wakes up cold"). **Dispatch:** team-naya-area-rotation wave 27.
+- 🟢 **PRODUCT** signed in — 08:34Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120673820)
+  - Lane:** PRODUCT (Host — a human can see the intelligence working), area 10, baseline 6.5/10.
+- 🟢 **DISPATCHER** signed in — 08:34Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120673386)
+  - Wave 27** (counter 27 → 28). Dispatched three area agents:
+- 🟢 **GOVERN** signed in — 08:33Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120653521)
+  - Lane:** GOVERN (Keeper — the briefing every Naya reads is the truth). **Area score:** 8.5. **Run:** govern-wave27-1791793980.
 - 🟢 **2453 RESPECTED** signed in — 08:28Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120589626)
 - ✅ **INFRA** signed out — 08:26Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120558753)
   - Full receipt: `hidden_files/wave26-infra-receipt.md`
@@ -32,37 +46,24 @@
   - Area:** TEAM — coordination, no-bottleneck (8.0).
 - 🟢 **INFRA** signed in — 08:13Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120355480)
   - Area: INFRA — CI, mechanical gates (score 8.5). Bullseye: CI that catches real breaks, never false alarms.
-- 🟢 **TEAM** signed in — 08:13Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120355570)
-  - Scored 8.0; why not 10: bottlenecks and stalled lanes still need clearing before scores compound. This wave I will work the coordination lane:
-- 🟢 **WIRE** signed in — 08:13Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120355615)
-  - Area: WIRE — enforcement wiring (score 8.0): every proven gate wired to a live call site.
-- ✅ **PROVE** signed out — 08:09Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120295470)
-  - Item: independent verification of the #2455 → revert → #2459 chain on live bytes (tip still the #2455 merge; #2459 open/unmerged). Prior PROVE waves never verif
-- ✅ **LAW** signed out — 08:07Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120276600)
-  - Lane:** LAW — decision principle, hard gates | tip `aa8061c1` re-anchored live | sign-in 6120215109 | self-log appended, JSON-valid | honest self-score **8.5/10
-- ✅ **ACT** signed out — 08:07Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120275192)
-  - Mission:** learning-to-action bridge. Why-not-10: learning reaches documentation but not action.
-- ✅ **LANE 8** signed out — 08:06Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120264589)
-  - All four flip-sequence PRs re-pinned at action time, zero drift vs t1442: #2453 `3dd7837d`, #2456 `e326283252`, #2457 `92fac0983d`, #2458 `ac270833`; live tip `
-- 🟢 **LANE 8** signed in — 08:05Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120249164)
-  - Re-pinning the four flip-sequence PRs at action time via git protocol: #2453 `3dd7837d8e6e399b1d62aad2b5378a7a3b3d13f4`, #2456 `e326283252a7e9f932b0d9ebad465c50
 
 ## Open PRs by Area
 
-### LEARN (5)
+### LEARN (6)
+- [#2460](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2460) fix(gate): merge-consensus seat model learns the 12-lane tags
 - [#2458](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2458) learn(compound-scale): pin Truth-gate receipts to repo fixtures, not s
 - [#2416](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2416) LEARN: error-signal loop — flags briefed-principle violations as struc
 - [#2413](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2413) DRAFT feat(product): Hub learning-lifecycle surface spec (Host, wave 7 📝draft
 - [#2391](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2391) feat(learn): four-arm compounding experiment spec V1 📝draft
-- [#2296](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2296) feat(learn): canonical learning-event envelope (#2244 req 3)
+- …and 1 more
 
-### KNOW (17)
+### KNOW (16)
 - [#2433](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2433) brain-index: regenerate at basis 31d8cff7 (mechanical re-stamp, --che…
 - [#2415](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2415) BRAIN: regenerate index layer at live tip 665098e3
 - [#2407](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2407) repair(brain-index): re-stamp index on main 665098e3 (drift-13)
 - [#2390](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2390) repair(brain-index): re-stamp index on main f33bba34
 - [#2388](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2388) feat(protocol): Brain-Index Freshness Law as mechanical law (Shawn 202
-- …and 12 more
+- …and 11 more
 
 ### ACT (3)
 - [#2457](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2457) flip #3: lane-9 test-leg fixes (second ADVISE-count site + receipt-gat
@@ -81,21 +82,21 @@
 - [#2392](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2392) fix(verify): resolve python interpreter at runtime in guard_liveness.t 📝draft
 - [#2374](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2374) test(t21): operating-essence acceptance battery — moral value before n
 
-### BUILD (15)
+### BUILD (16)
+- [#2461](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2461) DRAFT feat(product): Compass room socket — three-language deliverable  📝draft
 - [#2456](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2456) fix(test): full dependency-guard FP fix re-anchored onto live tip
 - [#2453](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2453) fix(test): inject applyApplicabilityRanking into cold-retrieve vm sand
 - [#2445](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2445) Naya5/human value method validation
 - [#2426](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2426) Naya5/know applicability metadata
-- [#2420](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2420) fix(infra): dep-guard resolves real sys.path roots instead of hardcodi
-- …and 10 more
+- …and 11 more
 
-### WIRE (41)
+### WIRE (40)
 - [#2459](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2459) Revert #2455 — invalid delegated-merge-authority invocation (LAW verdi
 - [#2411](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2411) Stale premise sweep: feed-gate removal + retired premises (IV 8.5/10)
 - [#2395](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2395) wire: route execute_plan refusals through decision_discipline.executio
 - [#2364](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2364) feat(gates): show-your-work receipt machinery — no receipt, no merge
 - [#2350](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2350) WIRE: #2244-A worker activation-contract gate on the PR merge path
-- …and 36 more
+- …and 35 more
 
 ### TEAM (1)
 - [#2397](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2397) feat(dashboard): live Team Naya activity dashboard — markdown + machin
