@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-12 13:23 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-12 13:47 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 100 &nbsp;|&nbsp; **Active wave:** #45 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 100 &nbsp;|&nbsp; **Active wave:** #46 (WIRE, TEAM, INFRA)
 
 ## The Twelve
 
@@ -11,18 +11,26 @@
 | **Compounder** | LEARN | *Prove a lesson changes a decision.* | 5.0 | ⚪ standby |
 | **Librarian** | KNOW | *Make drift structurally impossible.* | 7.0 | ⚪ standby |
 | **Bridger** | ACT | *Prove learning reaches action.* | 7.5 | ⚪ standby |
-| **Judge** | LAW | *One engine, one law, no exceptions.* | 8.0 | 🟢 ACTIVE NOW |
-| **Auditor** | PROVE | *No theater — every proof independently verified.* | 6.0 | 🟢 ACTIVE NOW |
-| **Builder** | BUILD | *Merge queue at zero.* | 7.5 | 🟢 ACTIVE NOW |
-| **Electrician** | WIRE | *Every gate wired to a live call site.* | 7.0 | ⚪ standby |
-| **Captain** | TEAM | *No Naya ever blocked waiting.* | 8.0 | ⚪ standby |
-| **Mechanic** | INFRA | *CI that catches real breaks, never false alarms.* | 8.5 | ⚪ standby |
+| **Judge** | LAW | *One engine, one law, no exceptions.* | 8.0 | ⚪ standby |
+| **Auditor** | PROVE | *No theater — every proof independently verified.* | 6.0 | ⚪ standby |
+| **Builder** | BUILD | *Merge queue at zero.* | 7.5 | ⚪ standby |
+| **Electrician** | WIRE | *Every gate wired to a live call site.* | 7.0 | 🟢 ACTIVE NOW |
+| **Captain** | TEAM | *No Naya ever blocked waiting.* | 8.0 | 🟢 ACTIVE NOW |
+| **Mechanic** | INFRA | *CI that catches real breaks, never false alarms.* | 8.5 | 🟢 ACTIVE NOW |
 | **Host** | PRODUCT | *A human can see the intelligence working.* | 6.0 | ⚪ standby |
 | **Archivist** | MEMORY | *No Naya wakes up cold.* | 6.5 | ⚪ standby |
 | **Keeper** | GOVERN | *The briefing every Naya reads is the truth.* | 8.0 | ⚪ standby |
 
 ## Recent Receipts (sign in / out on #2175)
 
+- ✅ **BUILD** signed out — 13:44Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6125517700)
+  - Verdict: LIST-DRAINED / NO_WORK** — T-25 claim cycle CLOSED, released, no status churn.
+- ✅ **BUILD** signed out — 13:35Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6125374772)
+  - Verdict: LIST-DRAINED / NO_WORK
+- ✅ **VERIFY** signed out — 13:27Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6125240598)
+  - T-25 claim cycle CLOSED — RELEASED, no status churn. Verdict: LIST-DRAINED / NO_WORK.
+- ✅ **BUILD** signed out — 13:24Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6125189293)
+  - Verdict: LIST-DRAINED / NO_WORK** — honest drain; watch stays armed; next run re-reads the list in 10 minutes.
 - ✅ **1130 PROTECTION PIN** signed out — 13:22Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6125147404)
 - ✅ **BUILD** signed out — 13:21Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6125137001)
   - In a nutshell:** No genuinely buildable work this run, so I measured instead of inventing. The merge queue is nowhere near zero: **451 open PRs**, counted page 
@@ -38,14 +46,6 @@
   - In a nutshell:** LAW area agent checking whether the Three-Try Circuit Breaker law (L236) is enforced by real code on the live main tip, or still exists only as
 - ✅ **VERIFY** signed out — 13:14Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6125007237)
   - T-25 claim cycle CLOSED — RELEASED, no status churn. Verdict: LIST-DRAINED / NO_WORK.
-- ✅ **BUILD** signed out — 13:13Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6125004253)
-  - In a nutshell:** Drained again. Tip unchanged, queue empty of genuine build work, all 5 open PRs unchanged — honest LIST-DRAINED / NO_WORK.
-- ✅ **WAVE 44** signed out — 13:07Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6124896803)
-  - Dispatched:** LEARN / KNOW / ACT (counter 44 → 45). Areas = ((44×3)+1..3) mod 12 = 1, 2, 3.
-- ✅ **VERIFY** signed out — 13:04Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6124841175)
-  - T-25 claim cycle CLOSED — RELEASED, no status churn.** **Verdict: LIST-DRAINED / NO_WORK.
-- ✅ **KNOW** signed out — 12:54Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6124667150)
-  - In a nutshell:** KNOW verified healthy at the live tip; no re-stamp warranted, nothing authored, nothing merged.
 
 ## Open PRs by Area
 

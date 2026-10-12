@@ -1,16 +1,16 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-12T13:23:26+00:00",
+ "generated_utc": "2026-10-12T13:48:03+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
  "wave": {
-  "wave_number": 45,
-  "counter": 46,
+  "wave_number": 46,
+  "counter": 47,
   "active_areas": [
-   "law",
-   "prove",
-   "build"
+   "wire",
+   "team",
+   "infra"
   ]
  },
  "agents": [
@@ -194,7 +194,7 @@
     "Five P0s still need Shawn's word (DecisionEngine fate, 20 IB owner assignments, cold successor authorization, DB row promotion authority, brain-index required check) \u2014 governance cannot close what authority has not granted."
    ],
    "next_action": "Wire one law end-to-end: put the decision principle into a live operating path and prove the call site on main's bytes.",
-   "active_now": true,
+   "active_now": false,
    "board_lane": "#2175 lane LAW",
    "open_prs": [
     {
@@ -257,7 +257,7 @@
     "Sabotage-battery verification had to take the combined two-lane path (safety filter blocks verify-lane sabotage) \u2014 the direct proof path is unavailable."
    ],
    "next_action": "Put the verify lane ahead of the merge queue: no merge ships without the independent verify slice signed off first, starting with #2388.",
-   "active_now": true,
+   "active_now": false,
    "board_lane": "#2175 lane PROVE",
    "open_prs": [
     {
@@ -290,7 +290,7 @@
     "Handed fix proposals have landed wrong (L232: 'delete line 65' was proven wrong by simulation) \u2014 simulate before applying, every time."
    ],
    "next_action": "Close the open builder loop items at 9.0+ with distinct-seat scores \u2014 starting with the T-23/#2388 scorer round still waiting on a review lane.",
-   "active_now": true,
+   "active_now": false,
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
@@ -359,7 +359,7 @@
     "intelligence/blocks has zero operating-path consumers \u2014 the product surface is not yet driven by the intelligence substrate."
    ],
    "next_action": "Wire the builder_scorer_loop into one real operating path and prove the call site byte-identical on live main.",
-   "active_now": false,
+   "active_now": true,
    "board_lane": "#2175 lane WIRE",
    "open_prs": [
     {
@@ -428,7 +428,7 @@
     "Cross-lane claim conflicts burn cycles (T-23/T-25 claim cycles across lanes) \u2014 the claim-and-release protocol works but costs a re-read every wave."
    ],
    "next_action": "Publish the grand to-do list and the full named charters \u2014 the machine cannot swarm what it cannot see.",
-   "active_now": false,
+   "active_now": true,
    "board_lane": "#2175 lane TEAM",
    "open_prs": [
     {
@@ -455,7 +455,7 @@
     "The adversarial harness and the pytest battery share /tmp \u2014 concurrent runs corrupt each other (SN-0796); they must be serialized or disk-isolated by default."
    ],
    "next_action": "Fix the CI workflow's swallowed exit codes (the line-65 class) so a red is always a real red, then prove the full suite green on a clean runner.",
-   "active_now": false,
+   "active_now": true,
    "board_lane": "#2175 lane INFRA",
    "open_prs": [
     {
@@ -573,6 +573,38 @@
  ],
  "recent_activity": [
   {
+   "comment_id": 6125517700,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6125517700",
+   "lane": "BUILD",
+   "kind": "out",
+   "at": "2026-10-12T13:44:22Z",
+   "summary": "Verdict: LIST-DRAINED / NO_WORK** \u2014 T-25 claim cycle CLOSED, released, no status churn."
+  },
+  {
+   "comment_id": 6125374772,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6125374772",
+   "lane": "BUILD",
+   "kind": "out",
+   "at": "2026-10-12T13:35:43Z",
+   "summary": "Verdict: LIST-DRAINED / NO_WORK"
+  },
+  {
+   "comment_id": 6125240598,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6125240598",
+   "lane": "VERIFY",
+   "kind": "out",
+   "at": "2026-10-12T13:27:45Z",
+   "summary": "T-25 claim cycle CLOSED \u2014 RELEASED, no status churn. Verdict: LIST-DRAINED / NO_WORK."
+  },
+  {
+   "comment_id": 6125189293,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6125189293",
+   "lane": "BUILD",
+   "kind": "out",
+   "at": "2026-10-12T13:24:39Z",
+   "summary": "Verdict: LIST-DRAINED / NO_WORK** \u2014 honest drain; watch stays armed; next run re-reads the list in 10 minutes."
+  },
+  {
    "comment_id": 6125147404,
    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6125147404",
    "lane": "1130 PROTECTION PIN",
@@ -667,38 +699,6 @@
    "kind": "out",
    "at": "2026-10-12T12:54:09Z",
    "summary": "In a nutshell:** KNOW verified healthy at the live tip; no re-stamp warranted, nothing authored, nothing merged."
-  },
-  {
-   "comment_id": 6124654442,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6124654442",
-   "lane": "BUILD",
-   "kind": "out",
-   "at": "2026-10-12T12:53:19Z",
-   "summary": "Result: LIST-DRAINED \u2014 T-25 claim cycle CLOSED, RELEASED, no status churn."
-  },
-  {
-   "comment_id": 6124627104,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6124627104",
-   "lane": "VERIFY",
-   "kind": "out",
-   "at": "2026-10-12T12:51:34Z",
-   "summary": "T-25 claim cycle CLOSED \u2014 RELEASED, no status churn."
-  },
-  {
-   "comment_id": 6124600800,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6124600800",
-   "lane": "KNOW",
-   "kind": "in",
-   "at": "2026-10-12T12:49:57Z",
-   "summary": "In a nutshell: KNOW area agent signed in for wave 44 (areas 1\u20133: LEARN, KNOW, ACT). Entry gate `worker_entry.py` returned NO_WORK (tip unchanged) \u2014 L13 gate sco"
-  },
-  {
-   "comment_id": 6124589898,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6124589898",
-   "lane": "LEARN",
-   "kind": "out",
-   "at": "2026-10-12T12:49:19Z",
-   "summary": "What I did:** L239 armed-instrument audit, reading 3, on briefing-injection-log.jsonl lines 298\u2013310 (310 physical lines total, EOF newline true, byte-verified o"
   }
  ],
  "open_pr_total": 100,
