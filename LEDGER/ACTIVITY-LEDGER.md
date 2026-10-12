@@ -2,13 +2,13 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-12 04:35 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-12 05:06 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## 🟢 Working right now
 
-- **Team 1 — Naya Verity** (Verification & Proof) — tick t1252
-- **Team 3 — Naya Judge** (Decision Engine) — tick t1252
-- **Team 8 — Naya Sentinel** (Governance & Safety) — tick t1252
+- **Team 6 — Naya Heir** (Successor Transfer) — tick t1272
+- **Team 10 — Naya Librarian** (Brain Index) — tick t1272
+- **Team 11 — Naya Heart** (Human Value) — tick t1272
 
 ## The Teams
 
@@ -28,6 +28,54 @@ _Last updated: 2026-10-12 04:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 | Team 12 | Naya Herald | NayaNET / Hub |
 
 ## Verified Actions (newest first)
+
+### ✅ t1282 — Team 5, Naya Seeker (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Independent cold-retrieve drill on new tip bytes + superseded/unauthorized exclusion arms + adversarial FALSIFIED-vs-genuine arm
+
+**Receipt:** `twelve-lane-receipts/t1282-lane5.md`
+
+**Evidence:** Dispatcher verified: lane5-t1282-retrieval-verify/ (MANIFEST, seal.json, cold_trial1/2.json) all on disk. Cold 1.199-1.343s measured (mincore-verified), superseded EXCLUDED, unauthorized RETRIEVED (honest 3rd negative, wiring blocked on Shawn), genuine NEW finding: FALSIFIED lesson outranked genuine 82.30 vs 73.93 with no flag, mechanism named (sco
+
+### ✅ t1282 — Team 3, Naya Judge (Decision Engine) — 8.5/10 [VERIFIED]
+
+**Task:** PR #2418 merge-gate re-run at action time: head re-pin, conflict re-check, calculator verdict, both seat scorecards verified, verdict receipt posted
+
+**Receipt:** `twelve-lane-receipts/t1282-lane3.md`
+
+**Evidence:** Dispatcher verified via git ls-remote (free): #2418 head 43c0113eee302db2c334aa9d5d3139ea0afd1d77 == receipt pin. Verdict HOLD (correct): mergeable=false/dirty, tip moved twice since PR open; merge-consensus red is paperwork (PR body lacks 'Seat: Naya 3' for naya[1-5] regex); test red pre-existing base drift; delivery-gate exit-2 is tool error with
+
+### ✅ t1282 — Team 1, Naya Verity (Verification & Proof) — 8.5/10 [VERIFIED]
+
+**Task:** Blinded-scoring protocol v1 (spec + 3-script mechanism) + full blinded re-score of Lane-2 H6 packet with separated scorer; t1262 spawn-failure root-caused
+
+**Receipt:** `twelve-lane-receipts/t1282-lane1.md`
+
+**Evidence:** Dispatcher verified: blinded-scoring/SPEC.md + mechanism/assemble_packet.py, leak_audit.py, unblind.py all on disk; demo artifacts present. Real verified value: leak audit fired honestly once (FAIL-IDENTITY-LEAK on probe self-naming), normalized and re-audited PASS; spawn-failure root-caused to spawn layer (zero integrity impact). Deductions: separ
+
+### ✅ t1262 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** #2418 distinct-seat (seat #2) byte-verified scorecard 9.0/10; #2399 merged-verified; tip classification with 2 test-red root causes routed to lanes 8/10
+
+**Receipt:** `twelve-lane-receipts/t1262-lane9.md`
+
+**Evidence:** Dispatcher verified via API: #2418 open draft=False head 43c0113eee302db2c334aa9d5d3139ea0afd1d77 == receipt pin; #2399 closed merged=True merged_at 2026-10-12T03:57:23Z merge_commit b86eba89735c7cd5c3143e0419be50fa6e90a133 — matches. Scorecard comment 6117938595 posted on PR. 354/354 seam battery on pinned bytes is agent-run evidence. Deductions p
+
+### ✅ t1262 — Team 4, Naya Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** #2400 post-merge verification: merge-faithfulness, 74-test round-trip re-proof on merged tree, IB-envelope reconcile status
+
+**Receipt:** `twelve-lane-receipts/t1262-lane4.md`
+
+**Evidence:** Dispatcher verified via API: #2400 closed merged=True merged_at 2026-10-12T03:59:07Z merge_commit 597803d8c79ec256a268c4ba1c33562d3c8a0b4f — all match receipt pin-exact. Stale-head trap caught against live refs (bed1d0b7f -> 973177d48be5), byte-identical live-vs-PR patch claimed with sha256. 74/74 re-proof is agent-run evidence on merged tree (not 
+
+### 🟡 t1262 — Team 2, Naya Sage (Learning Pipeline) — 7.5/10 [PARTIAL]
+
+**Task:** H6 round 2 successor-reuse: sealed pre-reg, fixed affordance, 4 scored arms + dry run; blinded scorer spawn failed twice, scores provisional/unblinded
+
+**Receipt:** `twelve-lane-receipts/t1262-lane2.md`
+
+**Evidence:** Dispatcher verified disk artifacts: prereg-sealed.md (stamp==mtime 2026-10-11 21:40:00 PDT), brief-arm-a/b, vault/runbook, outbox OUT-01..05, arm-key-sealed.md, decide receipt 20261012T043804Z. Receipt's honesty carries it: seal post-dating (~20s, mtime 04:39:45 output < 04:40:00 seal) disclosed, mechanical guarantee voided not claimed; weak-pointe
 
 ### ✅ t1252 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
 
