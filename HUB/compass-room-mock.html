@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Naya Compass — mock</title>
+<style>
+  :root{
+    --black:#0A0A0F; --white:#F5F5F7; --page-bg:#050508;
+    --blue:#4D9FFF; --green:#2ECC71; --gold:#F5C518; --purple:#A855F7; --gray:#6B7280;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{background:var(--page-bg); color:var(--white); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; font-size:18px; line-height:1.5;}
+  /* Mock ribbon: black + 1px purple edge + purple glow. Purple is accent/glow only — never solid fill. */
+  .mock-ribbon{position:sticky; top:0; z-index:20; background:#000; border-bottom:1px solid var(--purple); box-shadow:0 0 24px rgba(168,85,247,.35); color:var(--white); font-weight:700; font-size:14px; text-align:center; padding:10px 12px; letter-spacing:1px;}
+  /* Hub shell frame: the room sits INSIDE the chassis, not as a parallel site. */
+  .hub-shell{background:#000; border-bottom:1px solid #222; padding:14px 16px 0;}
+  .shell-row{display:flex; align-items:baseline; gap:12px; max-width:960px; margin:0 auto;}
+  .wordmark{font-size:18px; font-weight:800; letter-spacing:.5px;}
+  .hub-tag{font-size:14px; color:var(--white); border:1px solid #444; border-radius:999px; padding:2px 12px;}
+  .socket-note{font-size:14px; color:var(--gray); margin-left:auto;}
+  .room-nav{display:flex; gap:6px; overflow-x:auto; max-width:960px; margin:12px auto 0; padding-bottom:12px;}
+  .room-nav span{font-size:14px; white-space:nowrap; padding:6px 12px; border-radius:999px; border:1px solid #333; color:var(--white);}
+  .room-nav span.active{border-color:var(--purple); color:var(--purple); box-shadow:0 0 12px rgba(168,85,247,.45); font-weight:700;}
+  .panel{max-width:960px; margin:0 auto; padding:24px 16px 64px;}
+  h1{font-size:24px; font-weight:800; margin:8px 0 6px;}
+  h2{font-size:18px; font-weight:800; margin:40px 0 10px;}
+  h3{font-size:18px; font-weight:700; margin:24px 0 8px;}
+  .lede{font-size:18px; margin-bottom:12px; max-width:34em;}
+  .pilot-note{font-size:14px; border:1px solid var(--purple); border-radius:12px; padding:12px 16px; margin:0 0 24px; box-shadow:0 0 16px rgba(168,85,247,.25); max-width:40em;}
+  .legend{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:28px;}
+  .pill{font-size:14px; text-transform:uppercase; letter-spacing:1px; padding:4px 12px; border-radius:999px; border:1px solid currentColor; display:inline-block;}
+  .t-observed{color:var(--blue);}
+  .t-verified{color:var(--green);}
+  .t-claim{color:var(--gold);}
+  .t-unknown{color:var(--white); border-color:var(--gray);}
+  .t-stale{color:var(--purple); box-shadow:0 0 12px rgba(168,85,247,.45);}
+  .t-conflicted{background:var(--gold); color:var(--black); border-color:var(--gold); font-weight:800;}
+  .journey-tabs{display:flex; gap:12px; margin:8px 0 8px; flex-wrap:wrap;}
+  .journey-tabs button{background:#000; color:var(--white); border:1px solid var(--purple); box-shadow:0 0 12px rgba(168,85,247,.25); border-radius:12px; font-size:18px; font-weight:700; font-family:inherit; padding:12px 20px; cursor:pointer; min-height:44px;}
+  .journey-tabs button[aria-selected="true"]{background:var(--white); color:var(--black); border-color:var(--white); box-shadow:0 0 20px rgba(245,245,247,.35);}
+  .screen{margin-bottom:8px;}
+  .grid{display:grid; gap:16px; grid-template-columns:1fr; margin-top:12px;}
+  @media(min-width:768px){ .grid{grid-template-columns:1fr 1fr;} }
+  .card{background:var(--black); border-radius:16px; padding:24px; border:1px solid #333; position:relative;}
+  .card.glow{border-color:var(--purple); box-shadow:0 0 24px rgba(168,85,247,.35);}
+  .card.gold-edge{border-color:var(--gold);}
+  .nutshell{font-size:18px; font-weight:700; margin:12px 0 4px;}
+  .meta{font-size:14px; color:var(--white); opacity:.85; margin-bottom:4px;}
+  .sub{font-size:14px; color:var(--white); margin-bottom:12px;}
+  .ttl-note{font-size:14px; border:1px dashed #444; border-radius:12px; padding:12px 16px; margin-top:16px; max-width:44em;}
+  /* Expandable four layers: 200ms ease, chevron rotates. Reduced-motion: instant. */
+  .expand{width:100%; background:none; border:none; border-top:1px solid #222; padding:10px 0 0; margin-top:10px; cursor:pointer; display:flex; justify-content:space-between; align-items:center; font-size:18px; font-weight:600; color:var(--white); font-family:inherit; text-align:left; min-height:44px;}
+  .chev{color:var(--purple); font-size:18px; transition:transform 200ms ease;}
+  .card-expand.open .chev{transform:rotate(180deg);}
+  .layers{max-height:0; overflow:hidden; transition:max-height 200ms ease;}
+  .card-expand.open .layers{max-height:900px;}
+  .layers p{font-size:18px; color:var(--white); margin:8px 0 14px;}
+  @media(prefers-reduced-motion:reduce){ *{transition:none !important;} .layers{transition:none !important;} }
+  .choice-row{display:flex; flex-wrap:wrap; gap:12px; margin-top:16px;}
+  .choice-btn{background:#000; color:var(--white); border:1px solid var(--purple); box-shadow:0 0 12px rgba(168,85,247,.25); border-radius:12px; font-size:18px; font-weight:700; font-family:inherit; padding:12px 22px; cursor:pointer; min-height:44px;}
+  .choice-btn:active{background:var(--white); color:var(--black);}
+  .rec{background:var(--black); border-radius:16px; padding:24px; border:1px solid var(--gold); margin-top:12px;}
+  .rec h3{margin-top:0;}
+  .rec-label{font-size:14px; text-transform:uppercase; letter-spacing:1px; color:var(--gold); font-weight:800; margin-bottom:8px;}
+  .checklist{list-style:none; margin-top:12px;}
+  .checklist li{font-size:18px; padding:10px 0 10px 36px; position:relative; border-bottom:1px solid #1c1c22;}
+  .checklist li::before{content:"○"; position:absolute; left:4px; color:var(--purple);}
+  .authority{font-size:14px; border:1px solid var(--purple); border-radius:12px; padding:12px 16px; margin-top:16px; box-shadow:0 0 16px rgba(168,85,247,.25);}
+  .empty{border:1px dashed #555; border-radius:16px; padding:24px; margin-top:12px;}
+  .empty p{font-size:18px;}
+  .empty .ekey{font-size:14px; color:var(--gray); text-transform:uppercase; letter-spacing:1px; margin-bottom:8px;}
+  .foot{font-size:14px; color:var(--gray); margin-top:48px; border-top:1px solid #222; padding-top:16px;}
+</style>
+</head>
+<body>
+<div class="mock-ribbon">MOCK — SAMPLE DATA, NOT LIVE</div>
+
+<header class="hub-shell" data-mock="true">
+  <div class="shell-row" data-mock="true">
+    <span class="wordmark" data-mock="true">NayaNET</span>
+    <span class="hub-tag" data-mock="true">Hub</span>
+    <span class="socket-note" data-mock="true">Compass is a room socket inside this chassis — not a separate site</span>
+  </div>
+  <nav class="room-nav" aria-label="Rooms" data-mock="true">
+    <span data-mock="true">Home</span><span data-mock="true">Feed</span><span data-mock="true">Today</span><span data-mock="true">Reports</span><span data-mock="true">Library</span><span data-mock="true">Connect</span><span data-mock="true">Ledger</span><span data-mock="true">Connections</span><span data-mock="true">Lists</span><span data-mock="true">Mail</span><span data-mock="true">Spaces</span><span class="active" data-mock="true">Compass</span><span data-mock="true">Settings</span>
+  </nav>
+</header>
+
+<main class="panel" data-mock="true">
+  <h1 data-mock="true">Naya Compass</h1>
+  <p class="lede" data-mock="true">Find your direction. Understand why. Take the next step. Learn from the journey.</p>
+  <p class="pilot-note" data-mock="true">First pilot is read-only: Compass explains and shows — it takes no action on your behalf. No merges, no deploys, no writes.</p>
+
+  <div class="legend" data-mock="true">
+    <span class="pill t-observed" data-truth="OBSERVED" data-mock="true">Observed</span>
+    <span class="pill t-verified" data-truth="VERIFIED" data-mock="true">Verified</span>
+    <span class="pill t-claim" data-truth="CLAIM" data-mock="true">Claim</span>
+    <span class="pill t-unknown" data-truth="UNKNOWN" data-mock="true">Unknown</span>
+    <span class="pill t-stale" data-truth="STALE" data-mock="true">Stale</span>
+    <span class="pill t-conflicted" data-truth="CONFLICTED" data-mock="true">Conflicted</span>
+  </div>
+
+  <nav class="journey-tabs" aria-label="Pilot journeys" data-mock="true">
+    <button type="button" data-journey-tab="founder" aria-selected="true" data-mock="true">Founder journey</button>
+    <button type="button" data-journey-tab="team" aria-selected="false" data-mock="true">Team journey</button>
+    <button type="button" data-journey-tab="engineering" aria-selected="false" data-mock="true">Engineering journey</button>
+  </nav>
+
+  <!-- ============ FOUNDER JOURNEY ============ -->
+  <section data-journey="founder" data-mock="true">
+
+    <div class="screen" data-screen="intent" data-mock="true">
+      <h2 data-mock="true">1 · Intent — Limited funds, two weeks — what next?</h2>
+      <div class="grid" data-mock="true">
+        <article class="card glow" data-mock="true">
+          <p class="nutshell" data-mock="true">Decide the highest-value next two weeks on a tight budget.</p>
+          <p class="meta" data-mock="true">Goal: find the first paying customer · Scope: solo founder, SaaS waitlist, 14-day window</p>
+          <p class="meta" data-mock="true">Beneficiary: the founder · Constraints: under $2k spend, no hires · Deadline: 14 days</p>
+          <div class="card-expand" data-mock="true">
+            <button class="expand" type="button" aria-expanded="false" data-mock="true">See the four layers <span class="chev" data-mock="true">▾</span></button>
+            <div class="layers" data-mock="true">
+              <p data-mock="true"><strong data-mock="true">What it means:</strong> <span data-mock="true">the next two weeks have exactly one job: prove someone will pay, before the runway ends.</span></p>
+              <p data-mock="true"><strong data-mock="true">How to use it:</strong> <span data-mock="true">keep every plan pointed at this goal. Anything that doesn't test willingness to pay waits.</span></p>
+              <p data-mock="true"><strong data-mock="true">What's in it for you:</strong> <span data-mock="true">two weeks spent on the one question that decides whether the business lives.</span></p>
+            </div>
+          </div>
+        </article>
+        <article class="card" data-mock="true">
+          <span class="pill t-claim" data-truth="CLAIM" data-mock="true">Claim</span>
+          <p class="nutshell" data-mock="true">One clarification: is the goal to keep the product alive, or to find the first paying customer?</p>
+          <p class="sub" data-mock="true">Founder's answer: "Find the first paying customer." Taken as stated — a claim, not verified fact.</p>
+        </article>
+      </div>
+    </div>
+
+    <div class="screen" data-screen="reality" data-mock="true">
+      <h2 data-mock="true">2 · Reality &amp; Evidence — What is actually true?</h2>
+      <div class="grid" data-mock="true">
+        <article class="card" data-mock="true">
+          <span class="pill t-observed" data-truth="OBSERVED" data-mock="true">Observed</span>
+          <p class="nutshell" data-mock="true">Personal runway remaining: 14 days.</p>
+          <p class="meta" data-mock="true">Source: founder statement · Owner: founder · Observed: mock-day 0 · Expires: +24h</p>
+        </article>
+        <article class="card" data-mock="true">
+          <span class="pill t-observed" data-truth="OBSERVED" data-mock="true">Observed</span>
+          <p class="nutshell" data-mock="true">Landing page visitors, last 7 days: 320.</p>
+          <p class="meta" data-mock="true">Source: mock analytics export · Owner: founder · Observed: mock-day 0 · Expires: +24h</p>
+        </article>
+        <article class="card" data-mock="true">
+          <span class="pill t-verified" data-truth="VERIFIED" data-mock="true">Verified</span>
+          <p class="nutshell" data-mock="true">Waitlist signups: 41.</p>
+          <p class="meta" data-mock="true">Source: mock CRM export, independently counted · Owner: founder · Observed: mock-day 0 · Expires: +24h</p>
+        </article>
+        <article class="card" data-mock="true">
+          <span class="pill t-unknown" data-truth="UNKNOWN" data-mock="true">Unknown</span>
+          <p class="nutshell" data-mock="true">Willingness to pay for the paid plan.</p>
+          <p class="meta" data-mock="true">No payment data exists. This is the fact the whole journey must resolve.</p>
+        </article>
+        <article class="card" data-mock="true">
+          <span class="pill t-claim" data-truth="CLAIM" data-mock="true">Claim</span>
+          <p class="nutshell" data-mock="true">A competitor launched a similar feature.</p>
+          <p class="meta" data-mock="true">Source: founder memory, unverified · Owner: founder</p>
+        </article>
+        <article class="card" data-mock="true">
+          <span class="pill t-stale" data-truth="STALE" data-mock="true">Stale</span>
+          <p class="nutshell" data-mock="true">Assumed 5% waitlist conversion.</p>
+          <p class="meta" data-mock="true">Source: pricing doc from 60 mock-days ago · Expired: never re-observed. Stale never becomes a "yes".</p>
+        </article>
+      </div>
+      <p class="ttl-note" data-mock="true">Fact freshness: main facts expire after 15s · PR/check facts 30s · lane leases 30s · mission facts 120s · lesson applicability 300s. Protected authority is always re-checked live. A stale fact never becomes a positive action input.</p>
+    </div>
+
+    <div class="screen" data-screen="choices" data-mock="true">
+      <h2 data-mock="true">3 · Choices — Your real options</h2>
+      <p class="lede" data-mock="true">Real options from real facts — plus NO_OP, READ_MORE, and ASK. Nobody types in scores.</p>
+      <div class="grid" data-mock="true">
+        <article class="card glow" data-mock="true">
+          <p class="nutshell" data-mock="true">A — Run 10 customer research calls.</p>
+          <p class="meta" data-mock="true">Evidence: 41 waitlisted contacts to draw from (VERIFIED) · Cost: ~$0 · Reversible: fully</p>
+          <div class="card-expand" data-mock="true">
+            <button class="expand" type="button" aria-expanded="false" data-mock="true">See the four layers <span class="chev" data-mock="true">▾</span></button>
+            <div class="layers" data-mock="true">
+              <p data-mock="true"><strong data-mock="true">What it means:</strong> <span data-mock="true">ten conversations that turn the UNKNOWN (willingness to pay) into evidence.</span></p>
+              <p data-mock="true"><strong data-mock="true">How to use it:</strong> <span data-mock="true">message 10 waitlist contacts, ask about their pain, listen for pricing signals.</span></p>
+              <p data-mock="true"><strong data-mock="true">What's in it for you:</strong> <span data-mock="true">the cheapest possible answer to the one question that matters, with zero runway burned.</span></p>
+            </div>
+          </div>
+        </article>
+        <article class="card" data-mock="true">
+          <p class="nutshell" data-mock="true">B — Build the full product now.</p>
+          <p class="meta" data-mock="true">Evidence: none on demand (UNKNOWN) · Cost: the full 14-day runway (OBSERVED) · Reversible: no</p>
+          <div class="card-expand" data-mock="true">
+            <button class="expand" type="button" aria-expanded="false" data-mock="true">See the four layers <span class="chev" data-mock="true">▾</span></button>
+            <div class="layers" data-mock="true">
+              <p data-mock="true"><strong data-mock="true">What it means:</strong> <span data-mock="true">spend the entire runway building on the stale 5% assumption.</span></p>
+              <p data-mock="true"><strong data-mock="true">How to use it:</strong> <span data-mock="true">you wouldn't — not until the demand fact stops being UNKNOWN.</span></p>
+              <p data-mock="true"><strong data-mock="true">What's in it for you:</strong> <span data-mock="true">nothing yet. This option stays on the table, locked, until evidence unlocks it.</span></p>
+            </div>
+          </div>
+        </article>
+      </div>
+      <div class="choice-row" data-mock="true">
+        <button class="choice-btn" type="button" data-choice="NO_OP" data-mock="true">NO_OP — pause deliberately for 48 hours</button>
+        <button class="choice-btn" type="button" data-choice="READ_MORE" data-mock="true">READ_MORE — read the demand evidence first</button>
+        <button class="choice-btn" type="button" data-choice="ASK" data-mock="true">ASK — ask a mentor to review the plan</button>
+      </div>
+    </div>
+
+    <div class="screen" data-screen="recommendation" data-mock="true">
+      <h2 data-mock="true">4 · Recommendation — The wisest route</h2>
+      <div class="rec" data-mock="true">
+        <p class="rec-label" data-mock="true">Recommended</p>
+        <h3 data-mock="true">Run the 10 research calls — and offer a paid pilot to 5 waitlist contacts.</h3>
+        <p data-mock="true" data-why="true"><strong data-mock="true">WHY:</strong> <span data-mock="true">research is the cheapest way to turn the UNKNOWN (willingness to pay) into evidence; the 41-person waitlist is VERIFIED and real; a full build would spend the 14-day runway (OBSERVED) on an unproven, stale assumption. Highest evidence-per-dollar, fully reversible, blast contained to ten conversations.</span></p>
+        <p class="sub" data-mock="true">Runner-up: the paid pilot offer alone. Confidence: moderate — the demand fact is UNKNOWN, so no route scores above 7 until the calls are done.</p>
+        <p data-mock="true" data-mind="true"><strong data-mock="true">What would change its mind:</strong> <span data-mock="true">if 3 of the 5 pilot offers convert to deposits, this recommendation flips to the full build.</span></p>
+      </div>
+    </div>
+
+    <div class="screen" data-screen="navigate" data-mock="true">
+      <h2 data-mock="true">5 · Navigate — Take the next step</h2>
+      <ul class="checklist" data-mock="true">
+        <li data-mock="true">Draft 5 interview questions (reversible: a doc, not a launch)</li>
+        <li data-mock="true">Message 10 waitlist contacts</li>
+        <li data-mock="true">Book 3 calls this week</li>
+        <li data-mock="true">Write up notes within 24 hours of each call</li>
+      </ul>
+      <p class="authority" data-mock="true">You hold the final say. This pilot is read-only — it schedules nothing and messages no one for you.</p>
+    </div>
+
+    <div class="screen" data-screen="experience" data-mock="true">
+      <h2 data-mock="true">6 · Experience — Learn from the journey</h2>
+      <div class="grid" data-mock="true">
+        <article class="card gold-edge" data-mock="true">
+          <p class="nutshell" data-mock="true">Frozen forecast</p>
+          <p data-mock="true" data-frozen-forecast="true">Forecast frozen before acting: 7 of 10 calls reveal a must-have pain; at least 2 contacts ask about pricing unprompted.</p>
+        </article>
+        <article class="card" data-mock="true">
+          <p class="nutshell" data-mock="true">Observation window</p>
+          <p data-mock="true" data-observation-window="true">14-day window, open now. Counts as observed: completed calls plus written notes. A self-report is not verified learning.</p>
+        </article>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ============ TEAM JOURNEY ============ -->
+  <section data-journey="team" data-mock="true" hidden>
+
+    <div class="screen" data-screen="intent" data-mock="true">
+      <h2 data-mock="true">1 · Intent — Which work today?</h2>
+      <div class="grid" data-mock="true">
+        <article class="card glow" data-mock="true">
+          <p class="nutshell" data-mock="true">Pick today's highest-value work for a 3-person team.</p>
+          <p class="meta" data-mock="true">Goal: unblock the most valuable real work · Scope: repo main only, authorized scope</p>
+          <p class="meta" data-mock="true">Beneficiary: the team · Constraints: read-only pilot, no merges from here · Deadline: today</p>
+          <div class="card-expand" data-mock="true">
+            <button class="expand" type="button" aria-expanded="false" data-mock="true">See the four layers <span class="chev" data-mock="true">▾</span></button>
+            <div class="layers" data-mock="true">
+              <p data-mock="true"><strong data-mock="true">What it means:</strong> <span data-mock="true">one day, three people — spend it where the evidence says the leverage is.</span></p>
+              <p data-mock="true"><strong data-mock="true">How to use it:</strong> <span data-mock="true">take the recommended sequence; stop at anything unproven and READ_MORE.</span></p>
+              <p data-mock="true"><strong data-mock="true">What's in it for you:</strong> <span data-mock="true">a day that ends with something unblocked, not just something started.</span></p>
+            </div>
+          </div>
+        </article>
+        <article class="card" data-mock="true">
+          <span class="pill t-claim" data-truth="CLAIM" data-mock="true">Claim</span>
+          <p class="nutshell" data-mock="true">One clarification: does "today's work" include reviewing other lanes' PRs, or only our own lane's tasks?</p>
+          <p class="sub" data-mock="true">Team's answer: "Our own lane first; reviews only if a lane is blocked." Taken as stated — a claim, not verified fact.</p>
+        </article>
+      </div>
+    </div>
+
+    <div class="screen" data-screen="reality" data-mock="true">
+      <h2 data-mock="true">2 · Reality &amp; Evidence — What is actually true?</h2>
+      <div class="grid" data-mock="true">
+        <article class="card" data-mock="true">
+          <span class="pill t-observed" data-truth="OBSERVED" data-mock="true">Observed</span>
+          <p class="nutshell" data-mock="true">Unqualified open PR inventory: 532.</p>
+          <p class="meta" data-mock="true">Source: mock issue-tracker count · That is inventory, not a queue — most are not merge-ready.</p>
+        </article>
+        <article class="card" data-mock="true">
+          <span class="pill t-conflicted" data-truth="CONFLICTED" data-mock="true">Conflicted</span>
+          <p class="nutshell" data-mock="true">World-model PR #2422: DRAFT, two lanes claim the repair.</p>
+          <p class="meta" data-mock="true">Source: mock lane claims · Two owners, one lane — ownership must resolve before work starts.</p>
+        </article>
+        <article class="card" data-mock="true">
+          <span class="pill t-verified" data-truth="VERIFIED" data-mock="true">Verified</span>
+          <p class="nutshell" data-mock="true">Option-miner lane lease: held by Arch/KNOW, 30s TTL.</p>
+          <p class="meta" data-mock="true">Source: mock lease registry, independently read back · Owner: Arch/KNOW lane</p>
+        </article>
+        <article class="card" data-mock="true">
+          <span class="pill t-claim" data-truth="CLAIM" data-mock="true">Claim</span>
+          <p class="nutshell" data-mock="true">Yesterday's build RED was caused by a stale cache.</p>
+          <p class="meta" data-mock="true">Source: one lane's diagnosis, not independently verified.</p>
+        </article>
+        <article class="card" data-mock="true">
+          <span class="pill t-unknown" data-truth="UNKNOWN" data-mock="true">Unknown</span>
+          <p class="nutshell" data-mock="true">Which PRs are actually merge-safe.</p>
+          <p class="meta" data-mock="true">No independent verification on the current head. UNKNOWN is not a queue.</p>
+        </article>
+        <article class="card" data-mock="true">
+          <span class="pill t-stale" data-truth="STALE" data-mock="true">Stale</span>
+          <p class="nutshell" data-mock="true">Yesterday's green CI badge on main.</p>
+          <p class="meta" data-mock="true">Source: mock CI dashboard · Expired: main facts carry a 15s TTL. A stale green is not a green.</p>
+        </article>
+      </div>
+      <p class="ttl-note" data-mock="true">Fact freshness: main facts expire after 15s · PR/check facts 30s · lane leases 30s · mission facts 120s · lesson applicability 300s. Protected authority is always re-checked live. A stale fact never becomes a positive action input.</p>
+    </div>
+
+    <div class="screen" data-screen="choices" data-mock="true">
+      <h2 data-mock="true">3 · Choices — Your real options</h2>
+      <p class="lede" data-mock="true">Real options from real facts — plus NO_OP, READ_MORE, and ASK. Nobody types in scores.</p>
+      <div class="grid" data-mock="true">
+        <article class="card glow" data-mock="true">
+          <p class="nutshell" data-mock="true">A — Qualify world-model PR #2422 (unblock a real dependency).</p>
+          <p class="meta" data-mock="true">Evidence: blocks the calculator the team needs · Reversible: read-only review</p>
+          <div class="card-expand" data-mock="true">
+            <button class="expand" type="button" aria-expanded="false" data-mock="true">See the four layers <span class="chev" data-mock="true">▾</span></button>
+            <div class="layers" data-mock="true">
+              <p data-mock="true"><strong data-mock="true">What it means:</strong> <span data-mock="true">resolve the ownership conflict, then verify the repair claims against the current head.</span></p>
+              <p data-mock="true"><strong data-mock="true">How to use it:</strong> <span data-mock="true">read the conflict evidence, pick the single owner, then run the negative controls.</span></p>
+              <p data-mock="true"><strong data-mock="true">What's in it for you:</strong> <span data-mock="true">the world model is the foundation everything else stands on — unblocking it unblocks the team.</span></p>
+            </div>
+          </div>
+        </article>
+        <article class="card" data-mock="true">
+          <p class="nutshell" data-mock="true">B — Reproduce yesterday's RED.</p>
+          <p class="meta" data-mock="true">Evidence: a CLAIM about a stale cache, not a reproduction · Reversible: fully</p>
+          <div class="card-expand" data-mock="true">
+            <button class="expand" type="button" aria-expanded="false" data-mock="true">See the four layers <span class="chev" data-mock="true">▾</span></button>
+            <div class="layers" data-mock="true">
+              <p data-mock="true"><strong data-mock="true">What it means:</strong> <span data-mock="true">turn the stale-cache claim into an observed failure or kill the theory.</span></p>
+              <p data-mock="true"><strong data-mock="true">How to use it:</strong> <span data-mock="true">re-run the exact failing step in isolation and record what actually happens.</span></p>
+              <p data-mock="true"><strong data-mock="true">What's in it for you:</strong> <span data-mock="true">real work, but lower leverage than unblocking the shared foundation.</span></p>
+            </div>
+          </div>
+        </article>
+      </div>
+      <div class="choice-row" data-mock="true">
+        <button class="choice-btn" type="button" data-choice="NO_OP" data-mock="true">NO_OP — hold the queue, no safe action</button>
+        <button class="choice-btn" type="button" data-choice="READ_MORE" data-mock="true">READ_MORE — read the #2422 conflict evidence first</button>
+        <button class="choice-btn" type="button" data-choice="ASK" data-mock="true">ASK — ask the branch owner for the exact current head</button>
+      </div>
+    </div>
+
+    <div class="screen" data-screen="recommendation" data-mock="true">
+      <h2 data-mock="true">4 · Recommendation — The wisest route</h2>
+      <div class="rec" data-mock="true">
+        <p class="rec-label" data-mock="true">Recommended</p>
+        <h3 data-mock="true">READ_MORE first — then A: qualify world-model PR #2422.</h3>
+        <p data-mock="true" data-why="true"><strong data-mock="true">WHY:</strong> <span data-mock="true">the CONFLICTED ownership fact blocks everything downstream — reading the conflict evidence first is the cheapest move; #2422 then unblocks the world-model truth the calculator needs. Reproducing the RED is real work but lower leverage while the foundation is contested.</span></p>
+        <p class="sub" data-mock="true">Runner-up: B (reproduce the RED). Confidence: moderate — ownership is CONFLICTED, so the sequence starts with reading, not doing.</p>
+        <p data-mock="true" data-mind="true"><strong data-mock="true">What would change its mind:</strong> <span data-mock="true">if the #2422 conflict resolves to a single clean head with green checks, B becomes the pick for the afternoon.</span></p>
+      </div>
+    </div>
+
+    <div class="screen" data-screen="navigate" data-mock="true">
+      <h2 data-mock="true">5 · Navigate — Take the next step</h2>
+      <ul class="checklist" data-mock="true">
+        <li data-mock="true">Read the #2422 conflict evidence (both claimants' notes)</li>
+        <li data-mock="true">Confirm the single owner and the exact current head</li>
+        <li data-mock="true">Run the negative controls on the repair claims</li>
+        <li data-mock="true">Stop condition: owners agree, or escalate — never work a contested lane</li>
+      </ul>
+      <p class="authority" data-mock="true">You hold the final say. This pilot is read-only — it schedules nothing and messages no one for you.</p>
+    </div>
+
+    <div class="screen" data-screen="experience" data-mock="true">
+      <h2 data-mock="true">6 · Experience — Learn from the journey</h2>
+      <div class="grid" data-mock="true">
+        <article class="card gold-edge" data-mock="true">
+          <p class="nutshell" data-mock="true">Frozen forecast</p>
+          <p data-mock="true" data-frozen-forecast="true">Forecast frozen before acting: conflict evidence read by end of day; one unblocked prerequisite identified and receipted.</p>
+        </article>
+        <article class="card" data-mock="true">
+          <p class="nutshell" data-mock="true">Observation window</p>
+          <p data-mock="true" data-observation-window="true">1-day window, open now. Counts as observed: evidence notes plus the unblock receipt. A self-report is not verified learning.</p>
+        </article>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ============ ENGINEERING JOURNEY ============ -->
+  <section data-journey="engineering" data-mock="true" hidden>
+
+    <div class="screen" data-screen="intent" data-mock="true">
+      <h2 data-mock="true">1 · Intent — Can this PR merge?</h2>
+      <div class="grid" data-mock="true">
+        <article class="card glow" data-mock="true">
+          <p class="nutshell" data-mock="true">Decide merge permission for PR #2460 (mock).</p>
+          <p class="meta" data-mock="true">Goal: a merge decision with proof, not vibes · Scope: one PR, one mock head</p>
+          <p class="meta" data-mock="true">Beneficiary: the repo · Constraints: no invented permission · Deadline: before the merge window closes</p>
+          <div class="card-expand" data-mock="true">
+            <button class="expand" type="button" aria-expanded="false" data-mock="true">See the four layers <span class="chev" data-mock="true">▾</span></button>
+            <div class="layers" data-mock="true">
+              <p data-mock="true"><strong data-mock="true">What it means:</strong> <span data-mock="true">"can it merge" is four separate questions: right head, green checks, law evidence, human authority.</span></p>
+              <p data-mock="true"><strong data-mock="true">How to use it:</strong> <span data-mock="true">answer each gate from the Reality screen. One unproven gate means no merge.</span></p>
+              <p data-mock="true"><strong data-mock="true">What's in it for you:</strong> <span data-mock="true">a merge you can defend — or a hold you can explain in one screen.</span></p>
+            </div>
+          </div>
+        </article>
+        <article class="card" data-mock="true">
+          <span class="pill t-claim" data-truth="CLAIM" data-mock="true">Claim</span>
+          <p class="nutshell" data-mock="true">One clarification: is this a routine change or a consequential one?</p>
+          <p class="sub" data-mock="true">Author's answer: "Routine — docs and comments only." Taken as stated — a claim, not verified fact; the gates decide, not the label.</p>
+        </article>
+      </div>
+    </div>
+
+    <div class="screen" data-screen="reality" data-mock="true">
+      <h2 data-mock="true">2 · Reality &amp; Evidence — What is actually true?</h2>
+      <div class="grid" data-mock="true">
+        <article class="card" data-mock="true">
+          <span class="pill t-verified" data-truth="VERIFIED" data-mock="true">Verified</span>
+          <p class="nutshell" data-mock="true">PR head mock-head-a1b2c3d equals the branch tip.</p>
+          <p class="meta" data-mock="true">Source: mock git read-back · Owner: repo · Observed: mock-hour 0 · Expires: +15s</p>
+        </article>
+        <article class="card" data-mock="true">
+          <span class="pill t-observed" data-truth="OBSERVED" data-mock="true">Observed</span>
+          <p class="nutshell" data-mock="true">Required checks: 3 of 4 green, 1 pending.</p>
+          <p class="meta" data-mock="true">Source: mock checks API · Observed: mock-hour 0 · Expires: +30s</p>
+        </article>
+        <article class="card" data-mock="true">
+          <span class="pill t-unknown" data-truth="UNKNOWN" data-mock="true">Unknown</span>
+          <p class="nutshell" data-mock="true">LAW gate evidence: missing.</p>
+          <p class="meta" data-mock="true">No evidence submitted. UNKNOWN is not a pass.</p>
+        </article>
+        <article class="card" data-mock="true">
+          <span class="pill t-verified" data-truth="VERIFIED" data-mock="true">Verified</span>
+          <p class="nutshell" data-mock="true">Human director approval: none recorded.</p>
+          <p class="meta" data-mock="true">Source: mock approval log, verified empty · The absence is the verified fact.</p>
+        </article>
+        <article class="card" data-mock="true">
+          <span class="pill t-unknown" data-truth="UNKNOWN" data-mock="true">Unknown</span>
+          <p class="nutshell" data-mock="true">Merge permission: proven?</p>
+          <p class="meta" data-mock="true">Not proven — three of four gates are unproven or absent.</p>
+        </article>
+        <article class="card" data-mock="true">
+          <span class="pill t-claim" data-truth="CLAIM" data-mock="true">Claim</span>
+          <p class="nutshell" data-mock="true">A demo showed an invented score of 9.8 for this PR.</p>
+          <p class="meta" data-mock="true">Source: demo transcript · Scores never create permission.</p>
+        </article>
+        <article class="card" data-mock="true">
+          <span class="pill t-stale" data-truth="STALE" data-mock="true">Stale</span>
+          <p class="nutshell" data-mock="true">Last week's "all checks green" snapshot.</p>
+          <p class="meta" data-mock="true">Source: mock CI history · Expired: check facts carry a 30s TTL. A stale green is not a green.</p>
+        </article>
+        <article class="card" data-mock="true">
+          <span class="pill t-conflicted" data-truth="CONFLICTED" data-mock="true">Conflicted</span>
+          <p class="nutshell" data-mock="true">Two reviewers disagree on whether the checks cover the law gates.</p>
+          <p class="meta" data-mock="true">Source: mock review thread · Disagreement must resolve before any merge.</p>
+        </article>
+      </div>
+      <p class="ttl-note" data-mock="true">Fact freshness: main facts expire after 15s · PR/check facts 30s · lane leases 30s · mission facts 120s · lesson applicability 300s. Protected authority is always re-checked live. A stale fact never becomes a positive action input.</p>
+    </div>
+
+    <div class="screen" data-screen="choices" data-mock="true">
+      <h2 data-mock="true">3 · Choices — Your real options</h2>
+      <p class="lede" data-mock="true">MERGE is not offered: required checks unproven, LAW evidence missing, no human authority. An invented high score never creates merge permission.</p>
+      <div class="grid" data-mock="true">
+        <article class="card glow" data-mock="true">
+          <p class="nutshell" data-mock="true">READ_MORE is the admissible path — wait for checks and LAW evidence.</p>
+          <p class="meta" data-mock="true">Evidence: 1 check pending (OBSERVED), LAW evidence missing (UNKNOWN)</p>
+          <div class="card-expand" data-mock="true">
+            <button class="expand" type="button" aria-expanded="false" data-mock="true">See the four layers <span class="chev" data-mock="true">▾</span></button>
+            <div class="layers" data-mock="true">
+              <p data-mock="true"><strong data-mock="true">What it means:</strong> <span data-mock="true">the PR waits; the gates get their evidence; nobody guesses.</span></p>
+              <p data-mock="true"><strong data-mock="true">How to use it:</strong> <span data-mock="true">re-run the pending check, attach the LAW gate evidence, resolve the reviewer conflict.</span></p>
+              <p data-mock="true"><strong data-mock="true">What's in it for you:</strong> <span data-mock="true">when it does merge, every gate is proven — no reverts, no surprises.</span></p>
+            </div>
+          </div>
+        </article>
+        <article class="card" data-mock="true">
+          <p class="nutshell" data-mock="true">ASK — request human authority with the full packet.</p>
+          <p class="meta" data-mock="true">Evidence: approval log verified empty (VERIFIED) · Authority belongs to the human director</p>
+          <div class="card-expand" data-mock="true">
+            <button class="expand" type="button" aria-expanded="false" data-mock="true">See the four layers <span class="chev" data-mock="true">▾</span></button>
+            <div class="layers" data-mock="true">
+              <p data-mock="true"><strong data-mock="true">What it means:</strong> <span data-mock="true">consequential permission needs a human decision, with the evidence attached.</span></p>
+              <p data-mock="true"><strong data-mock="true">How to use it:</strong> <span data-mock="true">send the packet: gates, evidence, unknowns, and the exact decision needed.</span></p>
+              <p data-mock="true"><strong data-mock="true">What's in it for you:</strong> <span data-mock="true">the human decides once, with everything in front of them — not five times in chat.</span></p>
+            </div>
+          </div>
+        </article>
+      </div>
+      <div class="choice-row" data-mock="true">
+        <button class="choice-btn" type="button" data-choice="NO_OP" data-mock="true">NO_OP — do not merge</button>
+        <button class="choice-btn" type="button" data-choice="READ_MORE" data-mock="true">READ_MORE — wait for checks + LAW evidence</button>
+        <button class="choice-btn" type="button" data-choice="ASK" data-mock="true">ASK — request human authority</button>
+      </div>
+    </div>
+
+    <div class="screen" data-screen="recommendation" data-mock="true">
+      <h2 data-mock="true">4 · Recommendation — The wisest route</h2>
+      <div class="rec" data-mock="true">
+        <p class="rec-label" data-mock="true">Recommended</p>
+        <h3 data-mock="true">READ_MORE / ASK — do not merge.</h3>
+        <p data-mock="true" data-why="true"><strong data-mock="true">WHY:</strong> <span data-mock="true">three gates are unproven: one check still pending (OBSERVED), LAW gate evidence missing (UNKNOWN), and human authority absent (VERIFIED). The invented 9.8 is a CLAIM from a demo — scores never create permission, and reviewers are CONFLICTED on whether the checks even cover the law gates.</span></p>
+        <p class="sub" data-mock="true">Runner-up: NO_OP (hold indefinitely). Confidence: high on the hold — the gates are facts, not feelings.</p>
+        <p data-mock="true" data-mind="true"><strong data-mock="true">What would change its mind:</strong> <span data-mock="true">all checks green plus LAW gates evidenced plus recorded human authority — then MERGE becomes admissible and this screen says so.</span></p>
+      </div>
+    </div>
+
+    <div class="screen" data-screen="navigate" data-mock="true">
+      <h2 data-mock="true">5 · Navigate — Take the next step</h2>
+      <ul class="checklist" data-mock="true">
+        <li data-mock="true">Re-run the pending required check</li>
+        <li data-mock="true">Attach LAW gate evidence to the PR</li>
+        <li data-mock="true">Resolve the reviewer conflict on check coverage</li>
+        <li data-mock="true">Request human authority with the full packet</li>
+        <li data-mock="true">Re-read the head immediately before any merge — never merge a stale head</li>
+      </ul>
+      <p class="authority" data-mock="true">You hold the final say. This pilot is read-only — it schedules nothing and messages no one for you.</p>
+    </div>
+
+    <div class="screen" data-screen="experience" data-mock="true">
+      <h2 data-mock="true">6 · Experience — Learn from the journey</h2>
+      <div class="grid" data-mock="true">
+        <article class="card gold-edge" data-mock="true">
+          <p class="nutshell" data-mock="true">Frozen forecast</p>
+          <p data-mock="true" data-frozen-forecast="true">Forecast frozen before acting: PR merges within 48h of all gates proven; zero reverts in the following 7 days.</p>
+        </article>
+        <article class="card" data-mock="true">
+          <p class="nutshell" data-mock="true">Observation window</p>
+          <p data-mock="true" data-observation-window="true">48-hour window, open now. Counts as observed: the merge receipt or the continued hold with reasons. A self-report is not verified learning.</p>
+        </article>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ============ EMPTY STATES (verbatim) ============ -->
+  <section data-mock="true">
+    <h2 data-mock="true">Empty states — exact copy</h2>
+    <div class="empty" data-mock="true">
+      <p class="ekey" data-mock="true">no_facts</p>
+      <p data-mock="true" data-empty="no_facts">No facts yet. Tell Naya where you want to go and she'll start gathering what's actually true.</p>
+    </div>
+    <div class="empty" data-mock="true">
+      <p class="ekey" data-mock="true">no_recommendation</p>
+      <p data-mock="true" data-empty="no_recommendation">No recommendation yet — the Reality screen comes first. Naya won't guess before the facts are in.</p>
+    </div>
+    <div class="empty" data-mock="true">
+      <p class="ekey" data-mock="true">no_choices</p>
+      <p data-mock="true" data-empty="no_choices">No admissible choices right now. NO_OP is always available — doing nothing on purpose beats doing the wrong thing.</p>
+    </div>
+    <div class="empty" data-mock="true">
+      <p class="ekey" data-mock="true">experience_pending</p>
+      <p data-mock="true" data-empty="experience_pending">Forecast frozen. The observation window is open — results land here when they're independently observed, not before.</p>
+    </div>
+  </section>
+
+  <p class="foot" data-mock="true">Design proof only. Every value on this page is synthetic sample data, labelled MOCK. Nothing here calls a live service, writes anywhere, or merges anything. Shipping contract: issue #2436.</p>
+</main>
+
+<script>
+(function(){
+  "use strict";
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // Journey tabs: show one journey, hide the others.
+  var tabs = document.querySelectorAll("[data-journey-tab]");
+  var journeys = document.querySelectorAll("[data-journey]");
+  tabs.forEach(function(tab){
+    tab.addEventListener("click", function(){
+      var id = tab.getAttribute("data-journey-tab");
+      tabs.forEach(function(t){ t.setAttribute("aria-selected", t === tab ? "true" : "false"); });
+      journeys.forEach(function(j){
+        if (j.getAttribute("data-journey") === id) { j.removeAttribute("hidden"); }
+        else { j.setAttribute("hidden", ""); }
+      });
+    });
+  });
+
+  // Expandable four layers.
+  document.querySelectorAll(".card-expand .expand").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var wrap = btn.parentElement;
+      var open = wrap.classList.toggle("open");
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+  });
+
+  if (reduce) {
+    document.querySelectorAll(".layers, .chev").forEach(function(el){ el.style.transition = "none"; });
+  }
+})();
+</script>
+</body>
+</html>
