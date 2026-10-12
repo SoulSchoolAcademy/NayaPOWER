@@ -85,6 +85,21 @@ class TestEmptyModel(unittest.TestCase):
         self.assertEqual(m["sections"], {})
 
 
+class TestAtomicSave(unittest.TestCase):
+    def test_save_is_atomic(self):
+        # save_model must write via temp + os.replace so a concurrent
+        # reader never sees a half-written file.
+        import tempfile
+        with tempfile.TemporaryDirectory() as d:
+            target = Path(d) / "world-model.json"
+            with patch.object(wm, "MODEL_PATH", target):
+                wm.save_model({"version": 1, "sections": {}})
+                self.assertTrue(target.exists())
+                self.assertEqual(json.loads(target.read_text())["version"], 1)
+                # No temp file left behind
+                self.assertEqual(list(Path(d).glob("*.tmp")), [])
+
+
 class TestPRPagination(unittest.TestCase):
     def test_pagination_fetches_all_pages(self):
         """PR builder must paginate beyond 100."""
@@ -122,7 +137,8 @@ class TestCIStatusQuery(unittest.TestCase):
     def test_ci_query_needs_pr_number(self):
         import io
         from contextlib import redirect_stdout
-        fake_model = {"sections": {"prs": {"status": "OK", "prs": []}}}
+        fake_model = {"sections": {"prs": {"status": "OK", "prs": [],
+                                          "as_of_ts": time.time()}}}
         with patch.object(wm, "load_model", return_value=fake_model):
             buf = io.StringIO()
             args = type("Args", (), {"question": ["ci", "status"]})()
@@ -133,7 +149,8 @@ class TestCIStatusQuery(unittest.TestCase):
     def test_ci_query_unknown_pr(self):
         import io
         from contextlib import redirect_stdout
-        fake_model = {"sections": {"prs": {"status": "OK", "prs": []}}}
+        fake_model = {"sections": {"prs": {"status": "OK", "prs": [],
+                                          "as_of_ts": time.time()}}}
         with patch.object(wm, "load_model", return_value=fake_model):
             buf = io.StringIO()
             args = type("Args", (), {"question": ["ci", "status", "#9999"]})()
@@ -152,6 +169,7 @@ class TestCIStatusQuery(unittest.TestCase):
                              "head_branch": "b", "mergeable": True,
                              "draft": False, "created_at": "",
                              "user": "x"}],
+                    "as_of_ts": time.time(),
                 }
             }
         }
@@ -178,10 +196,9 @@ class TestCIStatusQuery(unittest.TestCase):
             self.assertIn("test-gate", out)
 
 
-class TestQueryRouting(unittest.TestCase):
-    def setUp(self):
-        # Build a fake cached model
-        self.fake_model = {
+def make_fresh_model():
+    """Fresh (FRESH-timestamped) fake world-model for query tests."""
+    return {
             "version": 1,
             "sections": {
                 "tip": {
@@ -221,6 +238,7 @@ class TestQueryRouting(unittest.TestCase):
                 },
                 "lanes": {
                     "status": "OK",
+                    "lease_note": "OBSERVED coordination only — not a mutex.",
                     "lanes": {
                         "alpha": {
                             "status": "OK", "issue": 1713, "state": "FREE",
@@ -271,6 +289,11 @@ class TestQueryRouting(unittest.TestCase):
             },
         }
 
+
+class TestQueryRouting(unittest.TestCase):
+    def setUp(self):
+        self.fake_model = make_fresh_model()
+
     def _run_query(self, question):
         import io
         from contextlib import redirect_stdout
@@ -281,16 +304,24 @@ class TestQueryRouting(unittest.TestCase):
                 wm.cmd_query(args)
             return buf.getvalue()
 
-    def test_query_mergeable_prs(self):
+    def test_query_mergeable_prs_directive(self):
+        # P0-F2: mergeability can never be claimed from the PR list — even
+        # fresh list data must refuse and point at the evidence path.
+        # (Old code printed "N mergeable PRs" from list data; that claim is
+        #  false because GitHub's list API never returns `mergeable`.)
         out = self._run_query("what PRs are mergeable?")
-        self.assertIn("#2410", out)
-        self.assertIn("1 mergeable", out)
+        self.assertIn("READ_MORE", out)
+        self.assertIn("merge check #", out)
+        self.assertNotIn("mergeable PRs:", out)
 
     def test_query_free_lanes(self):
         out = self._run_query("which lanes are free?")
         self.assertIn("alpha", out)
         self.assertIn("FREE", out)
         self.assertIn("OCCUPIED", out)
+        # Lane feed is observed coordination, not a mutex — the note must
+        # travel with every lane answer (reviewer minimum-test 5).
+        self.assertIn("not a mutex", out)
 
     def test_query_tip(self):
         out = self._run_query("what is the live tip?")
@@ -444,3 +475,265 @@ class TestLaneSignInPrecedence(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
+
+
+# ---------------------------------------------------------------------------
+# P0 regression tests — independent source review (issue #1869, 2026-10-12)
+#
+# Each test below FAILS on the pre-fix code and PASSES on the fixed code.
+# They prove the four false-confidence paths are closed behaviorally.
+# ---------------------------------------------------------------------------
+
+
+class TestP0F1StaleRefused(unittest.TestCase):
+    """P0-F1: stale data must be REFUSED, not warned-and-answered.
+
+    Falsifier from the review: seed cached prs status OK with a timestamp
+    older than FRESHNESS_LIMITS, mock upstream 403, ask "ready to merge".
+    Old code claimed a mergeable PR. Fixed code answers UNKNOWN/READ_MORE.
+    """
+
+    def _stale_model(self, section):
+        import copy
+        model = copy.deepcopy(make_fresh_model())
+        model["sections"][section]["as_of_ts"] = time.time() - 3600  # stale
+        return model
+
+    def _run_query(self, model, question):
+        import io
+        from contextlib import redirect_stdout
+        with patch.object(wm, "load_model", return_value=model):
+            buf = io.StringIO()
+            args = type("Args", (), {"question": question.split()})()
+            rc = None
+            with redirect_stdout(buf):
+                rc = wm.cmd_query(args)
+            return buf.getvalue(), rc
+
+    def test_stale_prs_count_refused(self):
+        out, rc = self._run_query(self._stale_model("prs"), "how many PRs are open?")
+        self.assertIn("UNKNOWN", out)
+        self.assertIn("READ_MORE", out)
+        self.assertNotIn("open PRs:", out.replace("OBSERVED — ", "").replace("UNKNOWN", ""))
+        self.assertEqual(rc, 2)
+
+    def test_stale_prs_mergeable_refused(self):
+        out, rc = self._run_query(self._stale_model("prs"), "what PRs are mergeable?")
+        self.assertIn("UNKNOWN", out)
+        self.assertNotIn("mergeable PRs:", out)
+        self.assertEqual(rc, 2)
+
+    def test_stale_tip_refused_with_historical_only(self):
+        out, rc = self._run_query(self._stale_model("tip"), "what is the live tip?")
+        self.assertIn("UNKNOWN", out)
+        self.assertNotIn("Live tip:", out)
+        # Last-known data may appear ONLY in a clearly HISTORICAL field.
+        self.assertIn("HISTORICAL", out)
+        self.assertEqual(rc, 2)
+
+    def test_stale_lanes_refused(self):
+        out, rc = self._run_query(self._stale_model("lanes"), "which lanes are free?")
+        self.assertIn("UNKNOWN", out)
+        self.assertNotIn("Lane states:", out)
+        self.assertEqual(rc, 2)
+
+    def test_fresh_data_still_answers(self):
+        import io
+        from contextlib import redirect_stdout
+        model = make_fresh_model()
+        with patch.object(wm, "load_model", return_value=model):
+            buf = io.StringIO()
+            args = type("Args", (), {"question": "how many PRs are open?".split()})()
+            with redirect_stdout(buf):
+                rc = wm.cmd_query(args)
+        out = buf.getvalue()
+        self.assertIn("OBSERVED", out)
+        self.assertIn("#2410", out)
+        self.assertEqual(rc, 0)
+
+
+class TestP0F2MergeabilityEvidence(unittest.TestCase):
+    """P0-F2: the PR LIST never knows `mergeable` (verified live by the
+    reviewer). The model must never assert readiness from list data; only a
+    per-PR detail fetch (/pulls/{n}) qualifies as evidence."""
+
+    def _page(self, with_mergeable_field=False):
+        prs = []
+        for i in (1, 2):
+            pr = {"number": 2400 + i, "title": f"PR {i}",
+                  "head": {"sha": "abc", "ref": "b"},
+                  "draft": False, "created_at": "",
+                  "user": {"login": "x"}}
+            if with_mergeable_field:
+                pr["mergeable"] = True  # some proxies inject this; ignore it
+            prs.append(pr)
+        return prs
+
+    def test_list_data_mergeable_never_claimed(self):
+        # Even if a response smuggles a mergeable field, the builder must
+        # not record it as a readiness claim.
+        def fake_gh(method, path, body_file=None):
+            import re
+            m = re.search(r"[?&]page=(\d+)", path)
+            return (True, self._page(with_mergeable_field=True)) if (m and int(m.group(1)) == 1) else (True, [])
+
+        with patch.object(wm, "gh_api", side_effect=fake_gh):
+            section = wm.build_prs_section()
+        self.assertEqual(section["status"], "OK")
+        for pr in section["prs"]:
+            self.assertIsNone(pr["mergeable"])
+            self.assertEqual(pr["mergeable_source"], "list-data-never-knows")
+
+    def test_merge_check_verdict_from_detail(self):
+        # A per-PR detail fetch returning mergeable=true is evidence.
+        import io
+        from contextlib import redirect_stdout
+        fake_model = {"sections": {"prs": {"status": "OK", "count": 1,
+                                           "prs": [{"number": 2410}],
+                                           "as_of_ts": time.time()}}}
+
+        def fake_gh(method, path, body_file=None):
+            if "/pulls/2410" in path:
+                return True, {"number": 2410, "title": "Consolidation",
+                              "mergeable": True, "mergeable_state": "clean",
+                              "head": {"sha": "8de2ac16"}}
+            return False, "unexpected"
+
+        with patch.object(wm, "load_model", return_value=fake_model), \
+             patch.object(wm, "gh_api", side_effect=fake_gh):
+            buf = io.StringIO()
+            args = type("Args", (), {"question": "merge check #2410".split()})()
+            with redirect_stdout(buf):
+                rc = wm.cmd_query(args)
+        out = buf.getvalue()
+        self.assertIn("mergeability: TRUE", out)
+        self.assertIn("NOT a", out)  # not-a-merge-authorization note
+        self.assertEqual(rc, 0)
+
+    def test_merge_check_null_is_unknown(self):
+        import io
+        from contextlib import redirect_stdout
+        fake_model = {"sections": {"prs": {"status": "OK", "count": 1,
+                                           "prs": [{"number": 2410}],
+                                           "as_of_ts": time.time()}}}
+
+        def fake_gh(method, path, body_file=None):
+            if "/pulls/2410" in path:
+                return True, {"number": 2410, "title": "X",
+                              "mergeable": None,
+                              "head": {"sha": "abc"}}
+            return False, "unexpected"
+
+        with patch.object(wm, "load_model", return_value=fake_model), \
+             patch.object(wm, "gh_api", side_effect=fake_gh):
+            buf = io.StringIO()
+            args = type("Args", (), {"question": "merge check #2410".split()})()
+            with redirect_stdout(buf):
+                rc = wm.cmd_query(args)
+        out = buf.getvalue()
+        self.assertIn("UNKNOWN", out)
+        self.assertEqual(rc, 2)
+
+
+class TestP0F3PartialPagination(unittest.TestCase):
+    """P0-F3: a page-2 failure after first-page success must mark the
+    section PARTIAL and refuse completeness claims (no totals, no
+    'all PRs' language)."""
+
+    def test_page2_failure_marks_partial(self):
+        page1 = [{"number": i, "title": f"PR {i}", "head": {"sha": "abc", "ref": "b"},
+                  "draft": False, "created_at": "", "user": {"login": "x"}}
+                 for i in range(100)]
+
+        def fake_gh(method, path, body_file=None):
+            import re
+            m = re.search(r"[?&]page=(\d+)", path)
+            page = int(m.group(1)) if m else 1
+            if page == 1:
+                return True, page1
+            return False, "403 on page 2"
+
+        with patch.object(wm, "gh_api", side_effect=fake_gh):
+            section = wm.build_prs_section()
+        self.assertEqual(section["status"], "PARTIAL")
+        self.assertEqual(section["fetch_failed_page"], 2)
+        self.assertEqual(section["pr_count_lower_bound"], 100)
+        self.assertNotIn("count", section)  # no exact total claim
+
+    def test_partial_query_refuses_total(self):
+        import io
+        from contextlib import redirect_stdout
+        fake_model = {"sections": {"prs": {"status": "PARTIAL",
+                                           "reason": "API failed on page 2",
+                                           "fetch_failed_page": 2,
+                                           "pr_count_lower_bound": 100,
+                                           "prs": [],
+                                           "as_of_ts": time.time()}}}
+        with patch.object(wm, "load_model", return_value=fake_model):
+            buf = io.StringIO()
+            args = type("Args", (), {"question": "how many PRs are open?".split()})()
+            with redirect_stdout(buf):
+                rc = wm.cmd_query(args)
+        out = buf.getvalue()
+        self.assertIn("PARTIAL", out)
+        self.assertIn("At least 100", out)
+        self.assertNotIn("100 open PRs:", out)
+        self.assertEqual(rc, 2)
+
+    def test_safety_cap_marks_partial(self):
+        # 10 full pages then the cap — old code said OK + "truncated".
+        def fake_gh(method, path, body_file=None):
+            import re
+            m = re.search(r"[?&]page=(\d+)", path)
+            page = int(m.group(1)) if m else 1
+            return True, [{"number": page * 100 + i, "title": "x",
+                           "head": {"sha": "a", "ref": "b"}, "draft": False,
+                           "created_at": "", "user": {"login": "u"}}
+                          for i in range(100)]
+
+        with patch.object(wm, "gh_api", side_effect=fake_gh):
+            section = wm.build_prs_section()
+        self.assertEqual(section["status"], "PARTIAL")
+        self.assertTrue(section["truncated"])
+        self.assertEqual(section["pr_count_lower_bound"], 1000)
+
+
+class TestP0F4BriefingNotLaw(unittest.TestCase):
+    """P0-F4: cached briefing headings are ORIENTATION, not law. Any output
+    touching permission/authority/consent must live re-read authoritative
+    state or carry an explicit 'cached — verify before acting' marker."""
+
+    def test_laws_section_marked_orientation(self):
+        section = wm.build_laws_section()
+        if section.get("status") != "OK":
+            self.skipTest("briefing file not present in this environment")
+        self.assertEqual(section.get("source_kind"), "BRIEFING_ORIENTATION")
+        self.assertFalse(section.get("permission_evidence"))
+        self.assertIn("verify before acting", section.get("cached_note", ""))
+
+    def _run_query(self, question):
+        import io
+        from contextlib import redirect_stdout
+        model = make_fresh_model()
+        with patch.object(wm, "load_model", return_value=model):
+            buf = io.StringIO()
+            args = type("Args", (), {"question": question.split()})()
+            with redirect_stdout(buf):
+                rc = wm.cmd_query(args)
+            return buf.getvalue(), rc
+
+    def test_permission_question_refuses_cached_answer(self):
+        for q in ["am I allowed to merge this?",
+                  "do I have permission to deploy?",
+                  "can I delete the branch?"]:
+            out, rc = self._run_query(q)
+            self.assertIn("UNKNOWN", out, f"question: {q}")
+            self.assertIn("cached", out.lower(), f"question: {q}")
+            self.assertIn("permission", out.lower(), f"question: {q}")
+            self.assertEqual(rc, 2, f"question: {q}")
+
+    def test_law_listing_carries_cached_marker(self):
+        out, rc = self._run_query("what are the standing laws?")
+        self.assertIn("CACHED", out)
+        self.assertIn("verify before acting", out)
+        self.assertEqual(rc, 0)

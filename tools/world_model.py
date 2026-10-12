@@ -16,8 +16,16 @@ Tracks:
 Commands:
   snapshot          Write full JSON snapshot to the model file
   refresh           Incremental update — only fetch what changed
-  query <question>  Ask about reality: "mergeable PRs?", "free lanes?", etc.
+  query <question>  Ask about reality: "which lanes are free?", "merge check #2410"
   status            Show freshness of each section
+
+Query answer contract: factual answers only from FRESH sections (see
+FRESHNESS_LIMITS); stale/partial/missing data → UNKNOWN + READ_MORE,
+never a positive answer with a warning. Mergeability is never claimed
+from the PR list (the list API cannot supply it); "merge check #N"
+fetches the per-PR detail endpoint for an evidence-backed verdict.
+Briefing headings are cached orientation (BRIEFING_ORIENTATION), never
+proof of permission. Exit 0 = answered from fresh data; exit 2 = UNKNOWN.
 
 Design principles:
   - Freshness is the feature. Stale data = wrong decisions.
@@ -44,7 +52,7 @@ from pathlib import Path
 # ---------------------------------------------------------------------------
 
 REPO = "SoulSchoolAcademy/NayaPOWER"
-GH_API = os.path.expanduser("~/workspace/skills/github/bin/gh-api")
+GH_API = os.path.expanduser("~/workspace/naya/bin/gh-api")
 
 MODEL_PATH = Path(os.path.expanduser("~/.naya/world-model.json"))
 BRIEFING_PATH = Path(os.path.expanduser("~/workspace/agent-briefing-master.md"))
@@ -116,8 +124,12 @@ def empty_model():
 
 
 def save_model(model):
+    # Atomic write: temp file + os.replace, so concurrent scheduled
+    # writers can never leave a half-written model behind.
     MODEL_PATH.parent.mkdir(parents=True, exist_ok=True)
-    MODEL_PATH.write_text(json.dumps(model, indent=2))
+    tmp = MODEL_PATH.with_suffix(".json.tmp")
+    tmp.write_text(json.dumps(model, indent=2))
+    os.replace(tmp, MODEL_PATH)
     return str(MODEL_PATH)
 
 
@@ -167,9 +179,19 @@ def build_tip_section(cached=None):
 
 
 def build_prs_section(cached=None):
-    """Open PRs — number, title, mergeability, age. Handles pagination."""
+    """Open PRs — number, title, age. Handles pagination.
+
+    GitHub's PR LIST endpoint never returns `mergeable` — it is only computed
+    on the per-PR detail endpoint. This builder therefore records
+    mergeable=None for every PR from list data (P0-F2: never assert readiness
+    from list data). Mergeability verdicts come from the on-demand
+    `query "merge check #N"` path, which fetches /pulls/{n}.
+    """
     prs = []
     page = 1
+    partial_reason = None
+    failed_page = None
+    truncated = False
     while True:
         ok, data = gh_api(
             "GET",
@@ -178,7 +200,9 @@ def build_prs_section(cached=None):
         if not ok:
             if page == 1:
                 return mark_unknown("prs", f"API failed: {data}")
-            # Pagination failed mid-way — return what we have, marked partial
+            # P0-F3: pagination failed mid-way — PARTIAL, never OK.
+            partial_reason = f"API failed on page {page}: {data}"
+            failed_page = page
             break
         if not data:
             break
@@ -188,7 +212,10 @@ def build_prs_section(cached=None):
                 "title": pr.get("title", "")[:120],
                 "head_sha": (pr.get("head") or {}).get("sha", "")[:8],
                 "head_branch": (pr.get("head") or {}).get("ref", ""),
-                "mergeable": pr.get("mergeable"),
+                # P0-F2: the list response has no mergeable field. Record None
+                # and never let it read as a readiness claim.
+                "mergeable": None,
+                "mergeable_source": "list-data-never-knows",
                 "draft": pr.get("draft", False),
                 "created_at": pr.get("created_at", ""),
                 "user": (pr.get("user") or {}).get("login", ""),
@@ -197,19 +224,30 @@ def build_prs_section(cached=None):
             break
         page += 1
         if page > 10:  # safety cap: 1000 PRs max
+            truncated = True
             break
 
-    result = {
+    if partial_reason or truncated:
+        # P0-F3: partial data is PARTIAL. Counts are LOWER BOUNDS, never
+        # totals. No closed-world conclusions ("only X PRs") may be drawn.
+        return {
+            "status": "PARTIAL",
+            "reason": partial_reason or "capped at 1000 PRs",
+            "fetch_failed_page": failed_page,
+            "truncated": truncated,
+            "pr_count_lower_bound": len(prs),
+            "prs": prs,
+            "as_of_utc": now_utc(),
+            "as_of_ts": utc_now_ts(),
+        }
+
+    return {
         "status": "OK",
         "count": len(prs),
         "prs": prs,
         "as_of_utc": now_utc(),
         "as_of_ts": utc_now_ts(),
     }
-    if page > 10:
-        result["truncated"] = True
-        result["note"] = "capped at 1000 PRs"
-    return result
 
 
 def build_lanes_section(cached=None):
@@ -283,6 +321,10 @@ def build_lanes_section(cached=None):
     return {
         "status": "OK",
         "lanes": lanes,
+        "lease_note": "OBSERVED coordination only — not a mutex. Two workers can "
+                      "claim a lane simultaneously; FREE is a reading of the last "
+                      "comment, not dispatch authorization. Re-read the live "
+                      "feed before acting.",
         "as_of_utc": now_utc(),
         "as_of_ts": utc_now_ts(),
     }
@@ -329,7 +371,14 @@ def build_mission_section(cached=None):
 
 
 def build_laws_section(cached=None):
-    """Standing laws — from the briefing file (local, no API)."""
+    """Standing laws — from the briefing file (local, no API).
+
+    P0-F4: briefing headings are ORIENTATION, not law. They do not prove
+    permission, ratification, or grant freshness. The section is marked
+    BRIEFING_ORIENTATION, and any query touching permission/authority/consent
+    must live re-read the authoritative source or carry an explicit
+    "cached — verify before acting" marker.
+    """
     if not BRIEFING_PATH.exists():
         return mark_unknown("laws", "briefing file not found")
 
@@ -353,10 +402,14 @@ def build_laws_section(cached=None):
 
     return {
         "status": "OK",
+        "source_kind": "BRIEFING_ORIENTATION",
         "source": str(BRIEFING_PATH),
         "sha12": sha,
         "line_count": len(content.split("\n")),
         "headers": [l["header"] for l in laws if "header" in l][:30],
+        "cached_note": "CACHED — verify before acting. Headings are orientation, "
+                       "not proof of permission, ratification, or grant.",
+        "permission_evidence": False,
         "as_of_utc": now_utc(),
         "as_of_ts": utc_now_ts(),
     }
@@ -491,154 +544,309 @@ def cmd_status(args):
     return 0
 
 
+def section_usable(name, sections):
+    """Can this section support positive factual answers?
+
+    P0-F1: a section is usable only when status == "OK" AND it is FRESH
+    (younger than FRESHNESS_LIMITS[name]). PARTIAL sections carry a lower
+    bound, never a total. STALE/UNKNOWN sections can never satisfy a
+    scoring predicate — the answer must be UNKNOWN with a READ_MORE
+    directive (e.g. run `refresh`), never a positive answer with a
+    warning footnote.
+
+    Returns (usable: bool, state: str) where state is one of
+    FRESH / STALE / UNKNOWN / PARTIAL.
+    """
+    section = sections.get(name, {})
+    if section.get("status") == "PARTIAL":
+        return False, "PARTIAL"
+    if section.get("status") != "OK":
+        return False, section.get("status", "UNKNOWN") or "UNKNOWN"
+    ts = section.get("as_of_ts")
+    limit = FRESHNESS_LIMITS.get(name, 600)
+    freshness = section_status(ts, limit)
+    if freshness != "FRESH":
+        return False, freshness  # STALE or UNKNOWN
+    return True, "FRESH"
+
+
+def unknown_with_directive(section_name, state, sections):
+    """Standard UNKNOWN answer with a READ_MORE directive."""
+    section = sections.get(section_name, {})
+    ts = section.get("as_of_ts")
+    age = f"{int(utc_now_ts() - ts)}s" if ts else "never fetched"
+    reason = section.get("reason", "")
+    extra = f" Reason: {reason}" if reason else ""
+    return (
+        f"UNKNOWN — {section_name} data is {state} (age: {age}).{extra}\n"
+        f"READ_MORE: run `refresh` (or `snapshot`), then re-query. "
+        f"No positive answer can be given from {state} data."
+    )
+
+
 def cmd_query(args):
-    """Answer questions about reality."""
+    """Answer questions about reality.
+
+    QUERY ANSWER CONTRACT (P0-F1..F4):
+    - A section answers factual questions only while FRESH (see
+      FRESHNESS_LIMITS, documented below). STALE/UNKNOWN/PARTIAL data
+      yields UNKNOWN + a READ_MORE directive — never a positive answer
+      with a warning footnote.
+    - Mergeability is NEVER claimed from PR list data (P0-F2). Use
+      `query "merge check #N"` for a per-PR detail verdict with evidence.
+    - Totals are never stated from PARTIAL data (P0-F3) — only lower bounds.
+    - Permission/authority/consent questions are never answered from cached
+      briefing headings (P0-F4) — they need live authority state.
+    - Verdicts in answers: OBSERVED (fresh data), HISTORICAL (last-known,
+      explicitly not current), UNKNOWN, READ_MORE.
+    - Exit codes: 0 = answered from fresh data; 2 = UNKNOWN or READ_MORE.
+
+    FRESHNESS THRESHOLDS (FRESHNESS_LIMITS, seconds) — honest by design:
+      tip 300 (tip moves fast) · prs 600 · lanes 300 (lanes change fast) ·
+      ledger 1800 · mission 1800 · laws 86400 (rarely changes).
+    """
     question = " ".join(args.question).lower()
     model = load_model()
     sections = model.get("sections", {})
     if not sections:
         print("No snapshot. Run `snapshot` first.")
-        return 1
+        return 2
 
-    # Check freshness — warn if stale
-    now = utc_now_ts()
-    stale_warnings = []
-    for name in SECTION_BUILDERS:
-        ts = sections.get(name, {}).get("as_of_ts")
-        limit = FRESHNESS_LIMITS.get(name, 600)
-        if section_status(ts, limit) != "FRESH":
-            stale_warnings.append(name)
-
-    # Route the question
     answer = None
+    unknown = False
 
-    if any(w in question for w in ["mergeable", "can merge", "ready to merge"]):
-        prs = sections.get("prs", {})
-        if prs.get("status") != "OK":
-            answer = "UNKNOWN — PR data not available."
+    def mark_unknown_answer(text):
+        nonlocal answer, unknown
+        answer = text
+        unknown = True
+
+    # P0-F2: mergeability from the LIST is a lie the API cannot tell.
+    # Only a per-PR detail fetch qualifies as evidence.
+    if "merge check" in question:
+        import re
+        m = re.search(r"#?(\d+)", question)
+        if not m:
+            mark_unknown_answer('READ_MORE: specify a PR — query "merge check #2410"')
         else:
-            mergeable = [p for p in prs.get("prs", []) if p.get("mergeable") is True]
-            unknown_m = [p for p in prs.get("prs", []) if p.get("mergeable") is None]
-            lines = [f"{len(mergeable)} mergeable PRs:"]
-            for p in mergeable:
-                lines.append(f"  #{p['number']} — {p['title'][:60]}")
-            if unknown_m:
-                lines.append(f"  ({len(unknown_m)} with mergeability not yet computed)")
-            answer = "\n".join(lines)
+            pr_num = m.group(1)
+            usable, state = section_usable("prs", sections)
+            if not usable:
+                mark_unknown_answer(
+                    f"UNKNOWN — cannot verify PR #{pr_num} is even open: "
+                    f"prs data is {state}.\n"
+                    f"READ_MORE: run `refresh`, then re-query."
+                )
+            else:
+                ok, pr_data = gh_api("GET", f"/repos/{REPO}/pulls/{pr_num}")
+                if not ok:
+                    mark_unknown_answer(
+                        f"UNKNOWN — per-PR detail fetch failed for #{pr_num}: "
+                        f"{pr_data}\nREAD_MORE: retry the fetch; no verdict "
+                        f"without evidence."
+                    )
+                else:
+                    mergeable = pr_data.get("mergeable")
+                    mstate = pr_data.get("mergeable_state", "?")
+                    full_sha = (pr_data.get("head") or {}).get("sha", "")
+                    fetched = now_utc()
+                    title = pr_data.get("title", "")[:80]
+                    if mergeable is True:
+                        answer = (
+                            f"OBSERVED — PR #{pr_num} ({title}):\n"
+                            f"  GitHub mergeability: TRUE (mergeable_state: {mstate})\n"
+                            f"  head: {full_sha[:8]} — evidence fetched {fetched}\n"
+                            f"  NOTE: this is GitHub's mechanical computation, NOT a "
+                            f"merge authorization. CI status + team gates still decide."
+                        )
+                    elif mergeable is False:
+                        answer = (
+                            f"OBSERVED — PR #{pr_num} ({title}):\n"
+                            f"  GitHub mergeability: FALSE (mergeable_state: {mstate})\n"
+                            f"  head: {full_sha[:8]} — evidence fetched {fetched}\n"
+                            f"  NOTE: this is GitHub's mechanical computation, NOT a "
+                            f"merge authorization."
+                        )
+                    else:
+                        mark_unknown_answer(
+                            f"UNKNOWN — GitHub has not computed mergeability for "
+                            f"PR #{pr_num} yet (mergeable: null).\n"
+                            f"READ_MORE: retry later; do not treat as mergeable."
+                        )
+
+    elif any(w in question for w in ["mergeable", "can merge", "ready to merge"]):
+        # P0-F2: the list can never answer this. Say so, point at the
+        # evidence path. Even fresh list data → READ_MORE.
+        usable, state = section_usable("prs", sections)
+        if not usable:
+            mark_unknown_answer(unknown_with_directive("prs", state, sections))
+        else:
+            mark_unknown_answer(
+                'READ_MORE — mergeability is not knowable from the PR list '
+                "(GitHub's list API never returns `mergeable`).\n"
+                'Ask: query "merge check #N" for a per-PR verdict with evidence.'
+            )
 
     elif any(w in question for w in ["free lane", "lanes free", "which lanes", "lane state", "lanes are"]):
-        lanes = sections.get("lanes", {})
-        if lanes.get("status") != "OK":
-            answer = "UNKNOWN — lane data not available."
+        usable, state = section_usable("lanes", sections)
+        if not usable:
+            mark_unknown_answer(unknown_with_directive("lanes", state, sections))
         else:
-            lines = []
+            lanes = sections.get("lanes", {})
+            lines = ["OBSERVED — lane states:"]
             for name, lane in lanes.get("lanes", {}).items():
-                state = lane.get("state", "?")
-                extra = f" ({lane.get('occupant', '')[:60]})" if state == "OCCUPIED" else ""
-                lines.append(f"  #{name} ({lane.get('issue', '?')}): {state}{extra}")
-            answer = "Lane states:\n" + "\n".join(lines)
+                if lane.get("status") != "OK":
+                    lines.append(f"  #{name}: UNKNOWN ({lane.get('reason', 'no data')})")
+                    continue
+                lstate = lane.get("state", "?")
+                extra = f" ({lane.get('occupant', '')[:60]})" if lstate == "OCCUPIED" else ""
+                lines.append(f"  #{name} ({lane.get('issue', '?')}): {lstate}{extra}")
+            if lanes.get("lease_note"):
+                lines.append(f"  NOTE: {lanes['lease_note']}")
+            answer = "\n".join(lines)
 
     elif any(w in question for w in ["open pr", "how many pr", "pr count", "prs open"]):
         prs = sections.get("prs", {})
-        if prs.get("status") != "OK":
-            answer = "UNKNOWN — PR data not available."
+        usable, state = section_usable("prs", sections)
+        if state == "PARTIAL":
+            # P0-F3: lower bound only, never a total.
+            lb = prs.get("pr_count_lower_bound", len(prs.get("prs", [])))
+            mark_unknown_answer(
+                f"UNKNOWN — PR data is PARTIAL ({prs.get('reason', 'pagination failed')}).\n"
+                f"At least {lb} PRs seen (lower bound, not a total).\n"
+                f"READ_MORE: run `snapshot` again for a complete count."
+            )
+        elif not usable:
+            mark_unknown_answer(unknown_with_directive("prs", state, sections))
         else:
-            lines = [f"{prs.get('count', 0)} open PRs:"]
+            lines = [f"OBSERVED — {prs.get('count', 0)} open PRs:"]
             for p in prs.get("prs", [])[:20]:
                 lines.append(f"  #{p['number']} — {p['title'][:60]} ({p.get('head_branch', '')})")
             answer = "\n".join(lines)
 
     elif any(w in question for w in ["tip", "main sha", "current main", "latest"]):
+        usable, state = section_usable("tip", sections)
         tip = sections.get("tip", {})
-        if tip.get("status") != "OK":
-            answer = f"UNKNOWN — tip data not available. {tip.get('reason', '')}"
-            if tip.get("last_known_sha"):
-                answer += f" Last known: {tip['last_known_sha'][:8]} ({tip.get('last_known_utc', '?')})"
+        if not usable:
+            # P0-F1: stale tip → UNKNOWN. Last-known data goes in a clearly
+            # HISTORICAL field, never as the answer.
+            ts = tip.get("as_of_ts")
+            age = f"{int(utc_now_ts() - ts)}s" if ts else "never fetched"
+            msg = (f"UNKNOWN — live tip is {state} (age: {age}). "
+                   f"Run `refresh` for the current tip.")
+            if tip.get("last_known_sha") or tip.get("sha"):
+                known = (tip.get("last_known_sha") or tip.get("sha", ""))[:8]
+                known_utc = tip.get("last_known_utc") or tip.get("as_of_utc", "?")
+                msg += (f"\nHISTORICAL (not current): {known} seen at {known_utc}.")
+            mark_unknown_answer(msg)
         else:
-            answer = f"Live tip: {tip.get('sha', '')} (as of {tip.get('as_of_utc', '?')})"
+            answer = (f"OBSERVED — live tip: {tip.get('sha', '')} "
+                      f"(as of {tip.get('as_of_utc', '?')})")
+
+    elif any(w in question for w in ["allowed", "permission", "authorized", "consent",
+                                     "do i have", "can i ", "may i "]):
+        # P0-F4: permission/authority/consent questions are never answered
+        # from cached briefing headings. Live authority state or nothing.
+        mark_unknown_answer(
+            "UNKNOWN — the world model does not hold live authority state.\n"
+            "Briefing headings are cached orientation (BRIEFING_ORIENTATION), "
+            "not grants, ratifications, or permissions.\n"
+            "READ_MORE: check the live authority source before acting. "
+            "Never treat a cached heading as permission."
+        )
 
     elif any(w in question for w in ["mission", "priorit", "blocker", "parked"]):
-        mission = sections.get("mission", {})
-        if mission.get("status") != "OK":
-            answer = "UNKNOWN — mission data not available."
+        usable, state = section_usable("mission", sections)
+        if not usable:
+            mark_unknown_answer(unknown_with_directive("mission", state, sections))
         else:
+            mission = sections.get("mission", {})
             answer = (
-                f"Mission state (#{mission.get('issue')}):\n"
+                f"OBSERVED — mission state (#{mission.get('issue')}):\n"
                 f"  Title: {mission.get('title', '')}\n"
                 f"  Updated: {mission.get('updated_at', '')}\n"
                 f"  Preview:\n{mission.get('body_preview', '')[:1000]}"
             )
 
     elif any(w in question for w in ["ledger", "proven"]):
-        ledger = sections.get("ledger", {})
-        if ledger.get("status") != "OK":
-            answer = "UNKNOWN — ledger data not available."
+        usable, state = section_usable("ledger", sections)
+        if not usable:
+            mark_unknown_answer(unknown_with_directive("ledger", state, sections))
         else:
+            ledger = sections.get("ledger", {})
             answer = (
-                f"Ledger (#{ledger.get('issue')}):\n"
+                f"OBSERVED — ledger (#{ledger.get('issue')}):\n"
                 f"  Title: {ledger.get('title', '')}\n"
                 f"  Comments: {ledger.get('comment_count', 0)}\n"
                 f"  Updated: {ledger.get('updated_at', '')}\n"
                 f"  URL: {ledger.get('url', '')}"
             )
 
-    elif any(w in question for w in ["law", "allowed", "protected", "gate"]):
-        laws = sections.get("laws", {})
-        if laws.get("status") != "OK":
-            answer = "UNKNOWN — law data not available."
+    elif any(w in question for w in ["law", "protected", "gate"]):
+        usable, state = section_usable("laws", sections)
+        if not usable:
+            mark_unknown_answer(unknown_with_directive("laws", state, sections))
         else:
+            laws = sections.get("laws", {})
             headers = laws.get("headers", [])[:15]
-            answer = "Standing laws (from briefing):\n" + "\n".join(f"  - {h}" for h in headers)
+            # P0-F4: every law answer carries the cached marker.
+            answer = (
+                "CACHED ORIENTATION — verify before acting. These headings are "
+                "not proof of permission, ratification, or grant.\n"
+                "Standing laws (from briefing):\n"
+                + "\n".join(f"  - {h}" for h in headers)
+            )
 
     elif "ci status" in question or "check status" in question:
         # On-demand CI status for a specific PR — avoids bulk API cost
         import re
         m = re.search(r"#?(\d+)", question)
         if not m:
-            answer = 'Specify a PR: query "ci status #2410"'
+            mark_unknown_answer('READ_MORE: Specify a PR — query "ci status #2410"')
         else:
             pr_num = m.group(1)
-            prs = sections.get("prs", {})
-            target = None
-            if prs.get("status") == "OK":
+            usable, state = section_usable("prs", sections)
+            if not usable:
+                mark_unknown_answer(unknown_with_directive("prs", state, sections))
+            else:
+                prs = sections.get("prs", {})
+                target = None
                 for p in prs.get("prs", []):
                     if str(p.get("number")) == pr_num:
                         target = p
                         break
-            if not target:
-                answer = f"UNKNOWN — PR #{pr_num} not in model."
-            else:
-                sha = target.get("head_sha", "")
-                # Need full SHA for check-runs API — fetch PR details
-                ok, pr_data = gh_api("GET", f"/repos/{REPO}/pulls/{pr_num}")
-                if not ok:
-                    answer = f"UNKNOWN — could not fetch PR #{pr_num}: {pr_data}"
+                if not target:
+                    mark_unknown_answer(f"UNKNOWN — PR #{pr_num} not in model.")
                 else:
-                    full_sha = (pr_data.get("head") or {}).get("sha", "")
-                    ok, checks = gh_api(
-                        "GET",
-                        f"/repos/{REPO}/commits/{full_sha}/check-runs?per_page=100",
-                    )
+                    ok, pr_data = gh_api("GET", f"/repos/{REPO}/pulls/{pr_num}")
                     if not ok:
-                        answer = f"UNKNOWN — could not fetch checks: {checks}"
+                        mark_unknown_answer(f"UNKNOWN — could not fetch PR #{pr_num}: {pr_data}")
                     else:
-                        runs = checks.get("check_runs", [])
-                        if not runs:
-                            answer = f"PR #{pr_num}: no check runs found."
+                        full_sha = (pr_data.get("head") or {}).get("sha", "")
+                        ok, checks = gh_api(
+                            "GET",
+                            f"/repos/{REPO}/commits/{full_sha}/check-runs?per_page=100",
+                        )
+                        if not ok:
+                            mark_unknown_answer(f"UNKNOWN — could not fetch checks: {checks}")
                         else:
-                            lines = [f"PR #{pr_num} CI status ({len(runs)} checks):"]
-                            for r in runs[:20]:
-                                name = r.get("name", "?")[:50]
-                                status = r.get("status", "?")
-                                conclusion = r.get("conclusion", "")
-                                icon = "✅" if conclusion == "success" else "❌" if conclusion in ("failure", "timed_out") else "⏳"
-                                lines.append(f"  {icon} {name}: {status}/{conclusion}")
-                            answer = "\n".join(lines)
+                            runs = checks.get("check_runs", [])
+                            if not runs:
+                                answer = f"PR #{pr_num}: no check runs found."
+                            else:
+                                lines = [f"OBSERVED — PR #{pr_num} CI status ({len(runs)} checks):"]
+                                for r in runs[:20]:
+                                    name = r.get("name", "?")[:50]
+                                    status = r.get("status", "?")
+                                    conclusion = r.get("conclusion", "")
+                                    icon = "✅" if conclusion == "success" else "❌" if conclusion in ("failure", "timed_out") else "⏳"
+                                    lines.append(f"  {icon} {name}: {status}/{conclusion}")
+                                answer = "\n".join(lines)
 
     else:
-        answer = (
-            "I don't know how to answer that yet. Try:\n"
+        mark_unknown_answer(
+            "UNKNOWN — I don't know how to answer that yet. Try:\n"
             '  query "what PRs are mergeable?"\n'
+            '  query "merge check #2410"\n'
             '  query "which lanes are free?"\n'
             '  query "how many PRs are open?"\n'
             '  query "what is the live tip?"\n'
@@ -648,9 +856,7 @@ def cmd_query(args):
         )
 
     print(answer)
-    if stale_warnings:
-        print(f"\n⚠ Stale sections: {', '.join(stale_warnings)} — run `refresh` for current data.", file=sys.stderr)
-    return 0
+    return 2 if unknown else 0
 
 
 # ---------------------------------------------------------------------------
