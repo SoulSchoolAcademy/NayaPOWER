@@ -1,0 +1,73 @@
+name: Trigger-Chain Jurisdiction Gate
+
+# GOVERN wave 31 — mechanical gate for the #2020/#2152 bypass class.
+# Jurisdiction analysis must follow the TRIGGER CHAIN, not the file list.
+#
+# STANDING LAW (human-only workflows): workflow files are placed by the human
+# director's click, never by an agent merge. This file was authored by the
+# GOVERN lane (Keeper, wave 31); it goes live on Shawn's placement.
+# The pytest gate (tests/test_trigger_chain_jurisdiction.py) runs inside the
+# existing kernel-tests workflow on every PR regardless.
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+# ENFORCEMENT SHAPE (documented residual): the pull_request check above is the
+# pre-merge gate. The push check runs POST-merge (alarm, not gate — a BLOCK
+# cannot un-merge). Direct-to-main pushes bypass pre-merge gating entirely;
+# closing that residual is branch protection requiring this check, which is a
+# human-governance setting, not a file in this repo.
+#
+# STANDING LAW (human-only workflows): workflow files are placed by the human
+# director's click, never by an agent merge. This file was authored by the
+# GOVERN lane (Keeper, wave 31); it goes live on Shawn's placement.
+# The pytest gate (tests/test_trigger_chain_jurisdiction.py) runs inside the
+# existing kernel-tests workflow on every PR regardless.
+
+jobs:
+  jurisdiction-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install pyyaml
+      - name: Fetch PR head (fork-safe)
+        if: github.event_name == 'pull_request'
+        run: |
+          git fetch origin "pull/${{ github.event.pull_request.number }}/head:pr-head-tcj" || \
+            { echo "TRIGGER-CHAIN-GATE BLOCK: cannot fetch PR head (fork?) — failing closed"; exit 1; }
+      - name: Gate the change's trigger chain
+        run: |
+          set -euo pipefail
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            BASE="${{ github.event.pull_request.base.sha }}"
+            if git rev-parse --verify -q "pr-head-tcj" >/dev/null; then
+              HEAD="pr-head-tcj"
+            else
+              HEAD="${{ github.event.pull_request.head.sha }}"
+            fi
+            AUTHOR="${{ github.event.pull_request.user.login }}"
+          else
+            BASE="${{ github.event.before }}"
+            HEAD="${{ github.sha }}"
+            AUTHOR=""
+          fi
+          if ! MB="$(git merge-base "$BASE" "$HEAD" 2>/dev/null)"; then
+            echo "TRIGGER-CHAIN-GATE BLOCK: cannot resolve merge-base of $BASE..$HEAD — failing closed"
+            exit 1
+          fi
+          if [[ -n "$AUTHOR" ]]; then
+            python tools/trigger_chain_jurisdiction.py \
+              --base-ref "$MB" --head-ref "$HEAD" \
+              --pr-author "$AUTHOR"
+          else
+            python tools/trigger_chain_jurisdiction.py \
+              --base-ref "$MB" --head-ref "$HEAD"
+          fi
