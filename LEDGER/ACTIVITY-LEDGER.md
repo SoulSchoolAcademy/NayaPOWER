@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-12 19:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-12 20:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -1390,6 +1390,54 @@ _Last updated: 2026-10-12 19:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t892-lane1.md`
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
+
+### ✅ t0528 — Team 5, Naya Seeker (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** ask-world top-20 needs analysis (SURGE slice c)
+
+**Receipt:** `twelve-lane-receipts/t0528-lane5.md`
+
+**Evidence:** Verified: report on disk, sha256 680e6587... matches receipt; the log-shape claims corroborated against the current live log by my own re-count (4 distinct classes, lane <N> dominant, lessons/blocked/quality x2 each, zero semantic free-text queries); snapshot sha differs from current live bytes only by one added query row since the 13:08 snapshot -
+
+### ✅ t0527 — Team 6, Naya Heir (Successor Transfer) — 8.5/10 [VERIFIED]
+
+**Task:** FP-002 feedback (succession lens)
+
+**Receipt:** `twelve-lane-receipts/t0527-lane6.md`
+
+**Evidence:** Verified: entry live exactly once at feedback-feed.md:280, under FP-002 Feedback and before ## FP-003 (line 295); B-43 absence independently re-verified by my own find (zero hits, ninth independent flag corroborated); verbatim mechanism quote held; amendments A1-A4 written as falsifier-carrying amendments, not commentary. Seal SHAs cited from the l
+
+### ✅ t0527 — Team 3, Naya Judge (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** FP-002 Open Hive gauntlet edge-case-first ruling (feedback seat)
+
+**Receipt:** `twelve-lane-receipts/t0527-lane3.md`
+
+**Evidence:** Verified on disk: entry live exactly once (line 272) under ## FP-002 before ## FP-003 at 282; 9 unique FP-002 lane entries present (8 prior + this one) matching the claimed 8/8-flag count; B-43 doc still absent (8th independent flag, no filer); RULING 4/5/6 headers all present inside the entry region; quote-first discipline held (mechanism quoted v
+
+### ✅ t0527 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** FP-003 Feedback Loop Law RED-FIRST 9-part audit (feedback seat)
+
+**Receipt:** `twelve-lane-receipts/t0527-lane1.md`
+
+**Evidence:** Verified on disk: entry exactly once at line 357, true tail of ## FP-003 (header at 282, after Lane 7's entry at 350); the live RED lint claim corroborates - 5 unique FP-003 lane entries precede it (Lanes 5/11/9/12/7), 5/5 format GREEN; law text fetched from #2486 comment 6129220557 via gh-api (real REST, allowed); 9-part mechanical-vs-judgment cla
+
+### ✅ t0526 — Team 12, Naya Herald (NayaNET / Hub) — 8.5/10 [VERIFIED]
+
+**Task:** FP-001/002/003 feedback from the herald seat
+
+**Receipt:** `twelve-lane-receipts/t0526-lane12.md`
+
+**Evidence:** Verified: all 3 claimed entries exist in feedback-feed.md (grep count=3, lines 170/245/334), each sitting under the correct ## FP-001/002/003 headers (27/179/274); brief-hole claims (journal carries no intake thread; Lane 9 has no FP-002 entry) hold against bytes. Honest quote-first work that wrote against the bytes where the brief was wrong. Score
+
+### ✅ t0526 — Team 7, Naya Conductor (Team Operations) — 8.5/10 [VERIFIED]
+
+**Task:** FP-002/FP-003 feedback from the ops seat
+
+**Receipt:** `twelve-lane-receipts/t0526-lane7.md`
+
+**Evidence:** Verified: both claimed entries exist in feedback-feed.md (grep count=2, lines 253/342), under FP-002 and FP-003 headers respectively; deputize-don't-invent sharpenings with live-tick evidence (11-deep queue, mid-claim brief arrival, read-modify-write hazard on queued JSON). Brief staleness (FP section line numbers, Lane 9 FP-002) honestly named. Sc
 
 ### ✅ t0525 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
 
