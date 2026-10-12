@@ -263,6 +263,41 @@ def test_negation():
           r["ok"] is True and r["intent_type"] == "what_blocking"
           and not any("instead" in q for q in r.get("clarifying_questions", [])),
           json.dumps({k: r.get(k) for k in ("ok", "intent_type")})[:150])
+    # F2 fix-pass #2: filler words between negation and verb still negate
+    # (validator's four cases + adversarial battery)
+    filler_cases = [
+        "don't ever merge 2412",
+        "do not ever merge 2412",
+        "don't you dare merge 2412",
+        "never ever merge 2412",
+        "don't even think about merging this",
+        "never, ever ship this",
+        "do not, under any circumstances, deploy",
+        "I really don't want to ship this",
+        "we should never ever build that",
+        "do not merge this",
+    ]
+    for s in filler_cases:
+        r = parse_intent(s)
+        check(f"filler negation '{s}' → exit 2",
+              r["ok"] is False and r["exit_hint"] == 2,
+              json.dumps({k: r.get(k) for k in ("ok", "exit_hint")}))
+    # Hedged negation is asked, not silently evaluated (documented decision)
+    r = parse_intent("I don't think we should merge PR 2412")
+    check("hedged 'I don't think we should merge' → exit 2",
+          r["ok"] is False and r["exit_hint"] == 2,
+          json.dumps({k: r.get(k) for k in ("ok", "exit_hint")}))
+    # Negation AFTER the verb is a tag question, not a negation
+    r = parse_intent("Merge PR 2412 or not?")
+    check("'Merge PR 2412 or not?' → not flipped",
+          r["ok"] is True and r["intent_type"] == "should_merge",
+          json.dumps({k: r.get(k) for k in ("ok", "intent_type")})[:120])
+    # The negation must scope the INTENT's verb: in "Should we build this?
+    # Don't merge it yet." the negated merge must not flip the build intent
+    r = parse_intent("Should we build this? Don't merge it yet.")
+    check("'don't merge' does not flip a build intent",
+          r["intent_type"] == "should_build" and r["ok"] is True,
+          json.dumps({k: r.get(k) for k in ("ok", "intent_type")})[:150])
 
 
 def test_schema_consistency():

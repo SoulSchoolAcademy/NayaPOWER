@@ -313,21 +313,78 @@ def ground_references(refs, world_ctx):
 # executed. Recommending the opposite of what the user asked is a correctness
 # defect, so negated intents always become clarifying questions (exit 2).
 #
-# Precision matters: "should we NOT ship this" is a negation; "should this
-# merge or not?" is a plain question (the "or not" tag asks, it doesn't
-# negate). Only a negation word directly scoping an action verb counts.
+# Design (fix-pass #2, validator-prescribed): a negation word within
+# NEGATION_WINDOW tokens BEFORE an action verb counts, provided no other
+# action verb intervenes between them. This closes the whole filler-word
+# class ("don't ever merge", "don't you dare merge", "do not, under any
+# circumstances, deploy") instead of patching one filler at a time — the
+# first fix-pass patched adjacency and a filler broke it; a class-level fix
+# cannot be re-broken by a new filler word.
+#
+# Precision rules:
+# - Backward window only: "should we merge or not?" has the negation AFTER
+#   the verb — a tag question, still decides. Never flagged.
+# - "not" inside problem descriptions doesn't flip because this check only
+#   runs for ACTION_INTENTS (should_merge/should_build); a problem-
+#   description sentence classifies as what_blocking.
+# - An intervening action verb re-scopes the negation: in "don't merge,
+#   just build it", the negation scopes the merge, not the build — a
+#   should_build intent is not flipped by it.
+# - Known trade-off (fail closed): a negation scoping a DIFFERENT clause
+#   before the verb ("the tests are not passing, should we merge?") will
+#   ask instead of deciding. A false question is safe; a false proceed is
+#   a correctness defect.
+# - Hedged negations ("I don't think we should merge X") are treated as
+#   negated and asked, not silently evaluated. DOCUMENTED DECISION: the
+#   user expressed doubt about the action; evaluating it as a straight
+#   request could recommend the opposite of their leaning. Asking costs a
+#   sentence; being wrong costs trust.
 # ---------------------------------------------------------------------------
 
 ACTION_INTENTS = ("should_merge", "should_build")
 
-NEGATED_ACTION = re.compile(
-    r"(?:\bnot\s+|\bnever\s+|\bdon'?t\s+(?:want\s+to\s+)?|\bdoesn'?t\s+"
-    r"|\bshouldn'?t\s+(?:we\s+|i\s+)?|\bdo\s+not\s+(?:want\s+to\s+)?"
-    r"|\bavoid\s+|\bagainst\s+)"
-    r"(?:merge|merging|ship|shipping|build|building|deploy|deploying|"
-    r"release|releasing|launch|launching)\b",
-    re.IGNORECASE,
-)
+NEGATION_WORDS = frozenset({
+    "not", "never", "don't", "dont", "doesn't", "doesnt", "shouldn't",
+    "shouldnt", "won't", "wont", "can't", "cant", "cannot",
+    "avoid", "against", "neither", "nor",
+})
+
+ACTION_VERBS = frozenset({
+    "merge", "merging", "ship", "shipping", "build", "building",
+    "deploy", "deploying", "release", "releasing", "launch", "launching",
+})
+
+# The action verbs each action-intent is actually about. The negation must
+# scope the intent's OWN verb — "don't merge, just build it" negates the
+# merge, not the build, so a should_build intent must not flip on it.
+INTENT_VERBS = {
+    "should_merge": frozenset({"merge", "merging"}),
+    "should_build": frozenset({
+        "build", "building", "ship", "shipping", "deploy", "deploying",
+        "release", "releasing", "launch", "launching",
+    }),
+}
+
+# Max tokens between a negation word and the action verb it scopes.
+# Covers "don't ever merge", "don't you dare merge", "do not, under any
+# circumstances, deploy" (not/under/any/circumstances = 4 back from deploy).
+NEGATION_WINDOW = 4
+
+
+def is_negated_action(text, intent_type):
+    """True when a negation word scopes the intent's own action verb."""
+    verbs = INTENT_VERBS.get(intent_type, ACTION_VERBS)
+    tokens = re.findall(r"[a-z']+", text.lower())
+    for i, tok in enumerate(tokens):
+        if tok not in verbs:
+            continue
+        start = max(0, i - NEGATION_WINDOW)
+        for j in range(start, i):
+            if tokens[j] in NEGATION_WORDS:
+                if any(t in ACTION_VERBS for t in tokens[j + 1:i]):
+                    continue
+                return True
+    return False
 
 
 def describe_target(refs):
@@ -596,7 +653,7 @@ def parse_intent(text):
 
     # 5. Negated action intent — never silently proceed (correctness hazard).
     #    "I don't want to merge PR 2412" must not become a merge evaluation.
-    if intent_type in ACTION_INTENTS and NEGATED_ACTION.search(text):
+    if intent_type in ACTION_INTENTS and is_negated_action(text, intent_type):
         action_word = "merge" if intent_type == "should_merge" else "build or ship"
         target = describe_target(refs)
         questions = [
