@@ -17,8 +17,17 @@ import re
 from pathlib import Path
 
 
+# t1432: receipt paths that are machine-local (~/...) broke the Truth gate
+# everywhere except the fixture author's seat. Relative paths now resolve
+# against THIS package directory (repo-pinned bytes), never the CWD.
+_PKG_DIR = Path(__file__).resolve().parent
+
+
 def _read_receipt(path_str: str) -> str | None:
-    p = Path(path_str).expanduser()
+    if path_str.startswith("~") or Path(path_str).is_absolute():
+        p = Path(path_str).expanduser()
+    else:
+        p = _PKG_DIR / path_str
     if not p.is_file():
         return None
     try:

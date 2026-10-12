@@ -79,6 +79,26 @@ def test_truth_rejects_unearned_contradiction():
     assert score <= 2  # rejection unearned: contradiction not in source
 
 
+# ----------------- environment independence (t1432: RED-first regression)
+# The 5 truth-gate failures at t1352/t1422/t1432 were machine-local fixture
+# paths (~/workspace/naya/bin/gh-api, ~/MEMORY.md, ~/TOOLS.md): green on the
+# fixture author's seat, red everywhere else (CI included). The gate must be
+# reproducible from repo-pinned bytes alone — independent of HOME and CWD.
+@pytest.mark.parametrize("lesson", REGISTRY["lessons"], ids=lambda l: l["id"])
+def test_truth_gate_is_home_independent(lesson, tmp_path, monkeypatch):
+    monkeypatch.setenv("HOME", str(tmp_path))  # no seat-local files visible
+    score, detail = gates.gate_truth(lesson)
+    assert score == 9, f"{lesson['id']}: {detail}"
+    if lesson.get("adversarial"):
+        assert "REJECT" in detail
+
+
+def test_truth_gate_is_cwd_independent(tmp_path, monkeypatch):
+    monkeypatch.chdir(tmp_path)  # far from any repo checkout
+    score, _ = gates.gate_truth(_lesson("L1"))
+    assert score == 9
+
+
 # ------------------------------------------------------- comprehension
 @pytest.mark.parametrize("lesson", GOOD, ids=lambda l: l["id"])
 def test_comprehension_probe_passes_on_distilled(lesson):
