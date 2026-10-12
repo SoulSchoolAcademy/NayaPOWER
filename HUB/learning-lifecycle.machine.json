@@ -1,0 +1,108 @@
+{
+ "answer_structure": [
+  "nutshell",
+  "what_it_means",
+  "how_to_use_it",
+  "whats_in_it_for_you"
+ ],
+ "canonical_event_source": "tools/learning_event_envelope.py (#2244 req 3 / PR #2296)",
+ "card_fields": {
+  "optional": [
+   "evidence_ref",
+   "detected_at",
+   "lane"
+  ],
+  "required": [
+   "event_id",
+   "rung",
+   "nutshell",
+   "what_it_means",
+   "how_to_use_it",
+   "whats_in_it_for_you"
+  ]
+ },
+ "empty_states": {
+  "no_events": "No learning events yet. When Naya detects something worth keeping, it will appear here — with its proof tag attached.",
+  "nothing_proven": "Nothing proven yet. The system is still learning — here is what is being watched:"
+ },
+ "mock_rules": {
+  "deployable": false,
+  "mock_page": "HUB/learning-lifecycle-mock.html",
+  "ribbon_text": "MOCK — SAMPLE DATA, NOT LIVE",
+  "sample_attr": "data-mock=\"true\"",
+  "ribbon_style": "black background, 1px purple bottom edge, purple glow shadow, white 14px caps — purple accent/glow only, never solid fill",
+  "sections": "populated-feed (one sample card per rung) + nothing-proven section (verbatim empty_states.nothing_proven, LEARNING-rung cards only)",
+  "expand": "tap toggles layers with 200ms ease max-height + chevron rotate 180deg; prefers-reduced-motion => instant"
+ },
+ "note": "This surface is a read-only projection of the canonical learning-event envelope. The envelope lives on the open, unmerged PR #2296 branch — not on main. The surface is blocked on #2296's merge or a re-stack behind it; rung_mapping is pinned to the envelope contract as published on that branch. It defines no event schema of its own.",
+ "palette": {
+  "black": "#0A0A0F",
+  "blue": "#4D9FFF",
+  "forbidden": [
+   "amber",
+   "rose-pink"
+  ],
+  "gold": "#F5C518",
+  "green": "#2ECC71",
+  "order": [
+   "black",
+   "white",
+   "purple",
+   "blues",
+   "green",
+   "gold"
+  ],
+  "purple_accent": "#A855F7",
+  "white": "#F5F5F7",
+  "page_bg": "#050508"
+ },
+ "proof_rungs": {
+  "BUILT": {
+   "hex": "#4D9FFF",
+   "label": "Built",
+   "means": "Made, not yet checked.",
+   "token": "blue"
+  },
+  "CHECKED": {
+   "hex": "#2ECC71",
+   "label": "Checked",
+   "means": "Verified by tests or a different Naya seat. Not on live production.",
+   "token": "green"
+  },
+  "LEARNING": {
+   "hex": "#A855F7",
+   "label": "Still learning",
+   "means": "In progress; we're watching, not claiming.",
+   "render_rule": "accent/glow only, never solid fill",
+   "token": "purple-glow"
+  },
+  "PROVEN_LIVE": {
+   "hex": "#F5C518",
+   "label": "Proven live",
+   "means": "Proven on live production bytes.",
+   "token": "gold"
+  }
+ },
+ "rung_mapping": {
+  "from_envelope_lifecycle": {
+   "ACKNOWLEDGED": "BUILT",
+   "BEHAVIORALLY_VERIFIED": "PROVEN_LIVE",
+   "DETECTED": "BUILT",
+   "PRESERVED": "CHECKED",
+   "RESOLVED": "BUILT",
+   "REUSED": "CHECKED",
+   "SHARED": "BUILT"
+  },
+  "learning_override": "Any event whose mapped rung is BUILT and whose age from the envelope's issued_at is < 24h renders as LEARNING. Events at CHECKED or PROVEN_LIVE always render their true rung regardless of age. There is no LEARN-lane in-flight trigger: the envelope has no in-flight field.",
+  "upgrade_rule": "Rung upgrades only via the underlying envelope transition. The surface never upgrades a rung on its own."
+ },
+ "schema": "naya.hub.learning-lifecycle.v1",
+ "status": "DRAFT",
+ "typography": {
+  "big_headline_px": 24,
+  "body_px": 18,
+  "headline_px": 18,
+  "sub_headline_px": 14
+ },
+ "canonical_event_source_status": "open-pr-2296-unmerged"
+}
