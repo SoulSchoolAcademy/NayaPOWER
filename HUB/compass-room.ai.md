@@ -38,6 +38,7 @@ Order: black, white, purple, blues, green, gold. Forbidden: amber, rose pink.
 - `--green: #2ECC71`
 - `--gold: #F5C518`
 - `--neutral-gray: #6B7280` — chrome/outlines for UNKNOWN only; not a data color
+- `--chrome-grays: #1c1c22 / #222222 / #333333 / #444444 / #555555` — chrome borders and dividers (machine.json: `chrome_gray_*`)
 
 Rules: buttons are black with a 1px purple edge glow and light up white on interaction. Purple is glow/accent — never a solid fill. Cards ignite on hover with a subtle glow. One clear visual hierarchy.
 
@@ -69,8 +70,8 @@ Global: every screen shows the truth-state legend on first view; every fact show
 
 **Screen 2 — Reality & Evidence** (`reality`)
 - H1: "What is actually true?"
-- Lede: "Every fact carries a truth label, a source, an owner, and an expiry. Tap a label to see why."
-- Required blocks: fact cards — each with value, truth label, source, owner, observed_at, expires_at. A fact-freshness note carrying the TTL table. Empty state `no_facts` when there are zero facts.
+- Lede: "Every fact carries a truth label, and its source, owner, and expiry where applicable. Tap a label to see why. UNKNOWN facts state the absence explicitly."
+- Required blocks: fact cards — each with value, truth label, and source, owner, observed_at, expires_at where applicable — UNKNOWN facts show the absence explicitly. A fact-freshness note carrying the TTL table. Empty state `no_facts` when there are zero facts.
 
 **Screen 3 — Choices** (`choices`)
 - H1: "Your real options"
@@ -115,7 +116,7 @@ main 15 · pr_checks 30 · lane_lease 30 · mission 120 · lesson_applicability 
 ## Evidence
 
 - Shipping contract: https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2436 (product architecture, exact customer screens, canonical technical contract, three pilot journeys, ten execution directives)
-- Sibling surface conventions converged: PR #2413 branch files `HUB/learning-lifecycle-mock.html`, `HUB/learning-lifecycle.human.md`, `HUB/learning-lifecycle.ai.md`, `HUB/learning-lifecycle.machine.json` (ribbon text, data-mock attribute, expandable four-layer pattern, palette, typography)
+- Sibling surface conventions converged: PR #2413 branch files `HUB/learning-lifecycle-mock.html`, `HUB/learning-lifecycle.human.md`, `HUB/learning-lifecycle.ai.md`, `HUB/learning-lifecycle.machine.json` (ribbon text, data-mock attribute, expandable four-layer pattern, palette)
 - Machine tokens: `HUB/compass-room.machine.json`, schema `naya.hub.compass-room.v1`
 - No-duplicate-mechanisms survey at author time: zero Compass/room/socket open PRs, zero Compass files in `HUB/` at the anchored tip, no racing claim on the coordination board's newest comments
 - Wave-27 builder receipt: `~/workspace/goals/nayapower-10-10-completion-drive/hidden_files/wave27-product-compass-builder-receipt.md`

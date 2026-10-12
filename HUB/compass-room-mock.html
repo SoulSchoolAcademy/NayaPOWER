@@ -12,9 +12,9 @@
   *{box-sizing:border-box; margin:0; padding:0;}
   body{background:var(--page-bg); color:var(--white); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; font-size:18px; line-height:1.5;}
   /* Mock ribbon: black + 1px purple edge + purple glow. Purple is accent/glow only — never solid fill. */
-  .mock-ribbon{position:sticky; top:0; z-index:20; background:#000; border-bottom:1px solid var(--purple); box-shadow:0 0 24px rgba(168,85,247,.35); color:var(--white); font-weight:700; font-size:14px; text-align:center; padding:10px 12px; letter-spacing:1px;}
+  .mock-ribbon{position:sticky; top:0; z-index:20; background:var(--black); border-bottom:1px solid var(--purple); box-shadow:0 0 24px rgba(168,85,247,.35); color:var(--white); font-weight:700; font-size:14px; text-align:center; padding:10px 12px; letter-spacing:1px;}
   /* Hub shell frame: the room sits INSIDE the chassis, not as a parallel site. */
-  .hub-shell{background:#000; border-bottom:1px solid #222; padding:14px 16px 0;}
+  .hub-shell{background:var(--black); border-bottom:1px solid #222; padding:14px 16px 0;}
   .shell-row{display:flex; align-items:baseline; gap:12px; max-width:960px; margin:0 auto;}
   .wordmark{font-size:18px; font-weight:800; letter-spacing:.5px;}
   .hub-tag{font-size:14px; color:var(--white); border:1px solid #444; border-radius:999px; padding:2px 12px;}
@@ -29,6 +29,8 @@
   .lede{font-size:18px; margin-bottom:12px; max-width:34em;}
   .pilot-note{font-size:14px; border:1px solid var(--purple); border-radius:12px; padding:12px 16px; margin:0 0 24px; box-shadow:0 0 16px rgba(168,85,247,.25); max-width:40em;}
   .legend{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:28px;}
+  .block-label{font-size:14px; letter-spacing:1px; text-transform:uppercase; color:var(--gray); margin:18px 0 6px; font-weight:700;}
+  .lineage{font-size:14px; color:var(--white); border-left:2px solid var(--blue); padding:4px 0 4px 12px; margin-top:12px;}
   .pill{font-size:14px; text-transform:uppercase; letter-spacing:1px; padding:4px 12px; border-radius:999px; border:1px solid currentColor; display:inline-block;}
   .t-observed{color:var(--blue);}
   .t-verified{color:var(--green);}
@@ -37,7 +39,7 @@
   .t-stale{color:var(--purple); box-shadow:0 0 12px rgba(168,85,247,.45);}
   .t-conflicted{background:var(--gold); color:var(--black); border-color:var(--gold); font-weight:800;}
   .journey-tabs{display:flex; gap:12px; margin:8px 0 8px; flex-wrap:wrap;}
-  .journey-tabs button{background:#000; color:var(--white); border:1px solid var(--purple); box-shadow:0 0 12px rgba(168,85,247,.25); border-radius:12px; font-size:18px; font-weight:700; font-family:inherit; padding:12px 20px; cursor:pointer; min-height:44px;}
+  .journey-tabs button{background:var(--black); color:var(--white); border:1px solid var(--purple); box-shadow:0 0 12px rgba(168,85,247,.25); border-radius:12px; font-size:18px; font-weight:700; font-family:inherit; padding:12px 20px; cursor:pointer; min-height:44px;}
   .journey-tabs button[aria-selected="true"]{background:var(--white); color:var(--black); border-color:var(--white); box-shadow:0 0 20px rgba(245,245,247,.35);}
   .screen{margin-bottom:8px;}
   .grid{display:grid; gap:16px; grid-template-columns:1fr; margin-top:12px;}
@@ -58,7 +60,7 @@
   .layers p{font-size:18px; color:var(--white); margin:8px 0 14px;}
   @media(prefers-reduced-motion:reduce){ *{transition:none !important;} .layers{transition:none !important;} }
   .choice-row{display:flex; flex-wrap:wrap; gap:12px; margin-top:16px;}
-  .choice-btn{background:#000; color:var(--white); border:1px solid var(--purple); box-shadow:0 0 12px rgba(168,85,247,.25); border-radius:12px; font-size:18px; font-weight:700; font-family:inherit; padding:12px 22px; cursor:pointer; min-height:44px;}
+  .choice-btn{background:var(--black); color:var(--white); border:1px solid var(--purple); box-shadow:0 0 12px rgba(168,85,247,.25); border-radius:12px; font-size:18px; font-weight:700; font-family:inherit; padding:12px 22px; cursor:pointer; min-height:44px;}
   .choice-btn:active{background:var(--white); color:var(--black);}
   .rec{background:var(--black); border-radius:16px; padding:24px; border:1px solid var(--gold); margin-top:12px;}
   .rec h3{margin-top:0;}
@@ -112,6 +114,14 @@
 
     <div class="screen" data-screen="intent" data-mock="true">
       <h2 data-mock="true">1 · Intent — Limited funds, two weeks — what next?</h2>
+      <div class="legend" data-mock="true">
+        <span class="pill t-observed" data-truth="OBSERVED" data-mock="true">Observed</span>
+        <span class="pill t-verified" data-truth="VERIFIED" data-mock="true">Verified</span>
+        <span class="pill t-claim" data-truth="CLAIM" data-mock="true">Claim</span>
+        <span class="pill t-unknown" data-truth="UNKNOWN" data-mock="true">Unknown</span>
+        <span class="pill t-stale" data-truth="STALE" data-mock="true">Stale</span>
+        <span class="pill t-conflicted" data-truth="CONFLICTED" data-mock="true">Conflicted</span>
+      </div>
       <div class="grid" data-mock="true">
         <article class="card glow" data-mock="true">
           <p class="nutshell" data-mock="true">Decide the highest-value next two weeks on a tight budget.</p>
@@ -136,6 +146,14 @@
 
     <div class="screen" data-screen="reality" data-mock="true">
       <h2 data-mock="true">2 · Reality &amp; Evidence — What is actually true?</h2>
+      <div class="legend" data-mock="true">
+        <span class="pill t-observed" data-truth="OBSERVED" data-mock="true">Observed</span>
+        <span class="pill t-verified" data-truth="VERIFIED" data-mock="true">Verified</span>
+        <span class="pill t-claim" data-truth="CLAIM" data-mock="true">Claim</span>
+        <span class="pill t-unknown" data-truth="UNKNOWN" data-mock="true">Unknown</span>
+        <span class="pill t-stale" data-truth="STALE" data-mock="true">Stale</span>
+        <span class="pill t-conflicted" data-truth="CONFLICTED" data-mock="true">Conflicted</span>
+      </div>
       <div class="grid" data-mock="true">
         <article class="card" data-mock="true">
           <span class="pill t-observed" data-truth="OBSERVED" data-mock="true">Observed</span>
@@ -173,6 +191,14 @@
 
     <div class="screen" data-screen="choices" data-mock="true">
       <h2 data-mock="true">3 · Choices — Your real options</h2>
+      <div class="legend" data-mock="true">
+        <span class="pill t-observed" data-truth="OBSERVED" data-mock="true">Observed</span>
+        <span class="pill t-verified" data-truth="VERIFIED" data-mock="true">Verified</span>
+        <span class="pill t-claim" data-truth="CLAIM" data-mock="true">Claim</span>
+        <span class="pill t-unknown" data-truth="UNKNOWN" data-mock="true">Unknown</span>
+        <span class="pill t-stale" data-truth="STALE" data-mock="true">Stale</span>
+        <span class="pill t-conflicted" data-truth="CONFLICTED" data-mock="true">Conflicted</span>
+      </div>
       <p class="lede" data-mock="true">Real options from real facts — plus NO_OP, READ_MORE, and ASK. Nobody types in scores.</p>
       <div class="grid" data-mock="true">
         <article class="card glow" data-mock="true">
@@ -209,9 +235,18 @@
 
     <div class="screen" data-screen="recommendation" data-mock="true">
       <h2 data-mock="true">4 · Recommendation — The wisest route</h2>
+      <div class="legend" data-mock="true">
+        <span class="pill t-observed" data-truth="OBSERVED" data-mock="true">Observed</span>
+        <span class="pill t-verified" data-truth="VERIFIED" data-mock="true">Verified</span>
+        <span class="pill t-claim" data-truth="CLAIM" data-mock="true">Claim</span>
+        <span class="pill t-unknown" data-truth="UNKNOWN" data-mock="true">Unknown</span>
+        <span class="pill t-stale" data-truth="STALE" data-mock="true">Stale</span>
+        <span class="pill t-conflicted" data-truth="CONFLICTED" data-mock="true">Conflicted</span>
+      </div>
       <div class="rec" data-mock="true">
         <p class="rec-label" data-mock="true">Recommended</p>
         <h3 data-mock="true">Run the 10 research calls — and offer a paid pilot to 5 waitlist contacts.</h3>
+        <p class="lineage" data-mock="true" data-lineage="true"><strong data-mock="true">Source lineage:</strong> <span data-mock="true">Reality-screen facts — willingness to pay for the paid plan (UNKNOWN: no payment data exists), waitlist signups 41 (VERIFIED: mock CRM export, independently counted), 14-day runway (OBSERVED: founder statement), 5% conversion assumption (STALE: pricing doc from 60 mock-days ago).</span></p>
         <p data-mock="true" data-why="true"><strong data-mock="true">WHY:</strong> <span data-mock="true">research is the cheapest way to turn the UNKNOWN (willingness to pay) into evidence; the 41-person waitlist is VERIFIED and real; a full build would spend the 14-day runway (OBSERVED) on an unproven, stale assumption. Highest evidence-per-dollar, fully reversible, blast contained to ten conversations.</span></p>
         <p class="sub" data-mock="true">Runner-up: the paid pilot offer alone. Confidence: moderate — the demand fact is UNKNOWN, so no route scores above 7 until the calls are done.</p>
         <p data-mock="true" data-mind="true"><strong data-mock="true">What would change its mind:</strong> <span data-mock="true">if 3 of the 5 pilot offers convert to deposits, this recommendation flips to the full build.</span></p>
@@ -220,6 +255,14 @@
 
     <div class="screen" data-screen="navigate" data-mock="true">
       <h2 data-mock="true">5 · Navigate — Take the next step</h2>
+      <div class="legend" data-mock="true">
+        <span class="pill t-observed" data-truth="OBSERVED" data-mock="true">Observed</span>
+        <span class="pill t-verified" data-truth="VERIFIED" data-mock="true">Verified</span>
+        <span class="pill t-claim" data-truth="CLAIM" data-mock="true">Claim</span>
+        <span class="pill t-unknown" data-truth="UNKNOWN" data-mock="true">Unknown</span>
+        <span class="pill t-stale" data-truth="STALE" data-mock="true">Stale</span>
+        <span class="pill t-conflicted" data-truth="CONFLICTED" data-mock="true">Conflicted</span>
+      </div>
       <ul class="checklist" data-mock="true">
         <li data-mock="true">Draft 5 interview questions (reversible: a doc, not a launch)</li>
         <li data-mock="true">Message 10 waitlist contacts</li>
@@ -231,6 +274,14 @@
 
     <div class="screen" data-screen="experience" data-mock="true">
       <h2 data-mock="true">6 · Experience — Learn from the journey</h2>
+      <div class="legend" data-mock="true">
+        <span class="pill t-observed" data-truth="OBSERVED" data-mock="true">Observed</span>
+        <span class="pill t-verified" data-truth="VERIFIED" data-mock="true">Verified</span>
+        <span class="pill t-claim" data-truth="CLAIM" data-mock="true">Claim</span>
+        <span class="pill t-unknown" data-truth="UNKNOWN" data-mock="true">Unknown</span>
+        <span class="pill t-stale" data-truth="STALE" data-mock="true">Stale</span>
+        <span class="pill t-conflicted" data-truth="CONFLICTED" data-mock="true">Conflicted</span>
+      </div>
       <div class="grid" data-mock="true">
         <article class="card gold-edge" data-mock="true">
           <p class="nutshell" data-mock="true">Frozen forecast</p>
@@ -238,7 +289,11 @@
         </article>
         <article class="card" data-mock="true">
           <p class="nutshell" data-mock="true">Observation window</p>
-          <p data-mock="true" data-observation-window="true">14-day window, open now. Counts as observed: completed calls plus written notes. A self-report is not verified learning.</p>
+          <p data-mock="true" data-observation-window="true">14-day window, open now.</p>
+          <p class="block-label" data-mock="true">Independently observed result</p>
+          <p data-mock="true" data-observed-result="true">Counts as observed: completed calls plus written notes.</p>
+          <p class="block-label" data-mock="true">Calibration</p>
+          <p data-mock="true">A self-report is not verified learning.</p>
         </article>
       </div>
     </div>
@@ -250,6 +305,14 @@
 
     <div class="screen" data-screen="intent" data-mock="true">
       <h2 data-mock="true">1 · Intent — Which work today?</h2>
+      <div class="legend" data-mock="true">
+        <span class="pill t-observed" data-truth="OBSERVED" data-mock="true">Observed</span>
+        <span class="pill t-verified" data-truth="VERIFIED" data-mock="true">Verified</span>
+        <span class="pill t-claim" data-truth="CLAIM" data-mock="true">Claim</span>
+        <span class="pill t-unknown" data-truth="UNKNOWN" data-mock="true">Unknown</span>
+        <span class="pill t-stale" data-truth="STALE" data-mock="true">Stale</span>
+        <span class="pill t-conflicted" data-truth="CONFLICTED" data-mock="true">Conflicted</span>
+      </div>
       <div class="grid" data-mock="true">
         <article class="card glow" data-mock="true">
           <p class="nutshell" data-mock="true">Pick today's highest-value work for a 3-person team.</p>
@@ -274,6 +337,14 @@
 
     <div class="screen" data-screen="reality" data-mock="true">
       <h2 data-mock="true">2 · Reality &amp; Evidence — What is actually true?</h2>
+      <div class="legend" data-mock="true">
+        <span class="pill t-observed" data-truth="OBSERVED" data-mock="true">Observed</span>
+        <span class="pill t-verified" data-truth="VERIFIED" data-mock="true">Verified</span>
+        <span class="pill t-claim" data-truth="CLAIM" data-mock="true">Claim</span>
+        <span class="pill t-unknown" data-truth="UNKNOWN" data-mock="true">Unknown</span>
+        <span class="pill t-stale" data-truth="STALE" data-mock="true">Stale</span>
+        <span class="pill t-conflicted" data-truth="CONFLICTED" data-mock="true">Conflicted</span>
+      </div>
       <div class="grid" data-mock="true">
         <article class="card" data-mock="true">
           <span class="pill t-observed" data-truth="OBSERVED" data-mock="true">Observed</span>
@@ -311,6 +382,14 @@
 
     <div class="screen" data-screen="choices" data-mock="true">
       <h2 data-mock="true">3 · Choices — Your real options</h2>
+      <div class="legend" data-mock="true">
+        <span class="pill t-observed" data-truth="OBSERVED" data-mock="true">Observed</span>
+        <span class="pill t-verified" data-truth="VERIFIED" data-mock="true">Verified</span>
+        <span class="pill t-claim" data-truth="CLAIM" data-mock="true">Claim</span>
+        <span class="pill t-unknown" data-truth="UNKNOWN" data-mock="true">Unknown</span>
+        <span class="pill t-stale" data-truth="STALE" data-mock="true">Stale</span>
+        <span class="pill t-conflicted" data-truth="CONFLICTED" data-mock="true">Conflicted</span>
+      </div>
       <p class="lede" data-mock="true">Real options from real facts — plus NO_OP, READ_MORE, and ASK. Nobody types in scores.</p>
       <div class="grid" data-mock="true">
         <article class="card glow" data-mock="true">
@@ -347,9 +426,18 @@
 
     <div class="screen" data-screen="recommendation" data-mock="true">
       <h2 data-mock="true">4 · Recommendation — The wisest route</h2>
+      <div class="legend" data-mock="true">
+        <span class="pill t-observed" data-truth="OBSERVED" data-mock="true">Observed</span>
+        <span class="pill t-verified" data-truth="VERIFIED" data-mock="true">Verified</span>
+        <span class="pill t-claim" data-truth="CLAIM" data-mock="true">Claim</span>
+        <span class="pill t-unknown" data-truth="UNKNOWN" data-mock="true">Unknown</span>
+        <span class="pill t-stale" data-truth="STALE" data-mock="true">Stale</span>
+        <span class="pill t-conflicted" data-truth="CONFLICTED" data-mock="true">Conflicted</span>
+      </div>
       <div class="rec" data-mock="true">
         <p class="rec-label" data-mock="true">Recommended</p>
         <h3 data-mock="true">READ_MORE first — then A: qualify world-model PR #2422.</h3>
+        <p class="lineage" data-mock="true" data-lineage="true"><strong data-mock="true">Source lineage:</strong> <span data-mock="true">Reality-screen facts — world-model PR #2422 ownership (CONFLICTED: two lanes claim the repair), build-RED diagnosis (CLAIM: one lane's diagnosis, not independently verified), merge-safe PRs (UNKNOWN: no independent verification on the current head).</span></p>
         <p data-mock="true" data-why="true"><strong data-mock="true">WHY:</strong> <span data-mock="true">the CONFLICTED ownership fact blocks everything downstream — reading the conflict evidence first is the cheapest move; #2422 then unblocks the world-model truth the calculator needs. Reproducing the RED is real work but lower leverage while the foundation is contested.</span></p>
         <p class="sub" data-mock="true">Runner-up: B (reproduce the RED). Confidence: moderate — ownership is CONFLICTED, so the sequence starts with reading, not doing.</p>
         <p data-mock="true" data-mind="true"><strong data-mock="true">What would change its mind:</strong> <span data-mock="true">if the #2422 conflict resolves to a single clean head with green checks, B becomes the pick for the afternoon.</span></p>
@@ -358,6 +446,14 @@
 
     <div class="screen" data-screen="navigate" data-mock="true">
       <h2 data-mock="true">5 · Navigate — Take the next step</h2>
+      <div class="legend" data-mock="true">
+        <span class="pill t-observed" data-truth="OBSERVED" data-mock="true">Observed</span>
+        <span class="pill t-verified" data-truth="VERIFIED" data-mock="true">Verified</span>
+        <span class="pill t-claim" data-truth="CLAIM" data-mock="true">Claim</span>
+        <span class="pill t-unknown" data-truth="UNKNOWN" data-mock="true">Unknown</span>
+        <span class="pill t-stale" data-truth="STALE" data-mock="true">Stale</span>
+        <span class="pill t-conflicted" data-truth="CONFLICTED" data-mock="true">Conflicted</span>
+      </div>
       <ul class="checklist" data-mock="true">
         <li data-mock="true">Read the #2422 conflict evidence (both claimants' notes)</li>
         <li data-mock="true">Confirm the single owner and the exact current head</li>
@@ -369,6 +465,14 @@
 
     <div class="screen" data-screen="experience" data-mock="true">
       <h2 data-mock="true">6 · Experience — Learn from the journey</h2>
+      <div class="legend" data-mock="true">
+        <span class="pill t-observed" data-truth="OBSERVED" data-mock="true">Observed</span>
+        <span class="pill t-verified" data-truth="VERIFIED" data-mock="true">Verified</span>
+        <span class="pill t-claim" data-truth="CLAIM" data-mock="true">Claim</span>
+        <span class="pill t-unknown" data-truth="UNKNOWN" data-mock="true">Unknown</span>
+        <span class="pill t-stale" data-truth="STALE" data-mock="true">Stale</span>
+        <span class="pill t-conflicted" data-truth="CONFLICTED" data-mock="true">Conflicted</span>
+      </div>
       <div class="grid" data-mock="true">
         <article class="card gold-edge" data-mock="true">
           <p class="nutshell" data-mock="true">Frozen forecast</p>
@@ -376,7 +480,11 @@
         </article>
         <article class="card" data-mock="true">
           <p class="nutshell" data-mock="true">Observation window</p>
-          <p data-mock="true" data-observation-window="true">1-day window, open now. Counts as observed: evidence notes plus the unblock receipt. A self-report is not verified learning.</p>
+          <p data-mock="true" data-observation-window="true">1-day window, open now.</p>
+          <p class="block-label" data-mock="true">Independently observed result</p>
+          <p data-mock="true" data-observed-result="true">Counts as observed: evidence notes plus the unblock receipt.</p>
+          <p class="block-label" data-mock="true">Calibration</p>
+          <p data-mock="true">A self-report is not verified learning.</p>
         </article>
       </div>
     </div>
@@ -388,6 +496,14 @@
 
     <div class="screen" data-screen="intent" data-mock="true">
       <h2 data-mock="true">1 · Intent — Can this PR merge?</h2>
+      <div class="legend" data-mock="true">
+        <span class="pill t-observed" data-truth="OBSERVED" data-mock="true">Observed</span>
+        <span class="pill t-verified" data-truth="VERIFIED" data-mock="true">Verified</span>
+        <span class="pill t-claim" data-truth="CLAIM" data-mock="true">Claim</span>
+        <span class="pill t-unknown" data-truth="UNKNOWN" data-mock="true">Unknown</span>
+        <span class="pill t-stale" data-truth="STALE" data-mock="true">Stale</span>
+        <span class="pill t-conflicted" data-truth="CONFLICTED" data-mock="true">Conflicted</span>
+      </div>
       <div class="grid" data-mock="true">
         <article class="card glow" data-mock="true">
           <p class="nutshell" data-mock="true">Decide merge permission for PR #2460 (mock).</p>
@@ -412,6 +528,14 @@
 
     <div class="screen" data-screen="reality" data-mock="true">
       <h2 data-mock="true">2 · Reality &amp; Evidence — What is actually true?</h2>
+      <div class="legend" data-mock="true">
+        <span class="pill t-observed" data-truth="OBSERVED" data-mock="true">Observed</span>
+        <span class="pill t-verified" data-truth="VERIFIED" data-mock="true">Verified</span>
+        <span class="pill t-claim" data-truth="CLAIM" data-mock="true">Claim</span>
+        <span class="pill t-unknown" data-truth="UNKNOWN" data-mock="true">Unknown</span>
+        <span class="pill t-stale" data-truth="STALE" data-mock="true">Stale</span>
+        <span class="pill t-conflicted" data-truth="CONFLICTED" data-mock="true">Conflicted</span>
+      </div>
       <div class="grid" data-mock="true">
         <article class="card" data-mock="true">
           <span class="pill t-verified" data-truth="VERIFIED" data-mock="true">Verified</span>
@@ -459,6 +583,14 @@
 
     <div class="screen" data-screen="choices" data-mock="true">
       <h2 data-mock="true">3 · Choices — Your real options</h2>
+      <div class="legend" data-mock="true">
+        <span class="pill t-observed" data-truth="OBSERVED" data-mock="true">Observed</span>
+        <span class="pill t-verified" data-truth="VERIFIED" data-mock="true">Verified</span>
+        <span class="pill t-claim" data-truth="CLAIM" data-mock="true">Claim</span>
+        <span class="pill t-unknown" data-truth="UNKNOWN" data-mock="true">Unknown</span>
+        <span class="pill t-stale" data-truth="STALE" data-mock="true">Stale</span>
+        <span class="pill t-conflicted" data-truth="CONFLICTED" data-mock="true">Conflicted</span>
+      </div>
       <p class="lede" data-mock="true">MERGE is not offered: required checks unproven, LAW evidence missing, no human authority. An invented high score never creates merge permission.</p>
       <div class="grid" data-mock="true">
         <article class="card glow" data-mock="true">
@@ -495,9 +627,18 @@
 
     <div class="screen" data-screen="recommendation" data-mock="true">
       <h2 data-mock="true">4 · Recommendation — The wisest route</h2>
+      <div class="legend" data-mock="true">
+        <span class="pill t-observed" data-truth="OBSERVED" data-mock="true">Observed</span>
+        <span class="pill t-verified" data-truth="VERIFIED" data-mock="true">Verified</span>
+        <span class="pill t-claim" data-truth="CLAIM" data-mock="true">Claim</span>
+        <span class="pill t-unknown" data-truth="UNKNOWN" data-mock="true">Unknown</span>
+        <span class="pill t-stale" data-truth="STALE" data-mock="true">Stale</span>
+        <span class="pill t-conflicted" data-truth="CONFLICTED" data-mock="true">Conflicted</span>
+      </div>
       <div class="rec" data-mock="true">
         <p class="rec-label" data-mock="true">Recommended</p>
         <h3 data-mock="true">READ_MORE / ASK — do not merge.</h3>
+        <p class="lineage" data-mock="true" data-lineage="true"><strong data-mock="true">Source lineage:</strong> <span data-mock="true">Reality-screen facts — required checks 3 of 4 green (OBSERVED: mock checks API), LAW gate evidence (UNKNOWN: none submitted), human director approval (VERIFIED: mock approval log, verified empty — the absence is the fact), demo 9.8 score (CLAIM: demo transcript, scores never create permission), reviewer disagreement (CONFLICTED: mock review thread).</span></p>
         <p data-mock="true" data-why="true"><strong data-mock="true">WHY:</strong> <span data-mock="true">three gates are unproven: one check still pending (OBSERVED), LAW gate evidence missing (UNKNOWN), and human authority absent (VERIFIED). The invented 9.8 is a CLAIM from a demo — scores never create permission, and reviewers are CONFLICTED on whether the checks even cover the law gates.</span></p>
         <p class="sub" data-mock="true">Runner-up: NO_OP (hold indefinitely). Confidence: high on the hold — the gates are facts, not feelings.</p>
         <p data-mock="true" data-mind="true"><strong data-mock="true">What would change its mind:</strong> <span data-mock="true">all checks green plus LAW gates evidenced plus recorded human authority — then MERGE becomes admissible and this screen says so.</span></p>
@@ -506,6 +647,14 @@
 
     <div class="screen" data-screen="navigate" data-mock="true">
       <h2 data-mock="true">5 · Navigate — Take the next step</h2>
+      <div class="legend" data-mock="true">
+        <span class="pill t-observed" data-truth="OBSERVED" data-mock="true">Observed</span>
+        <span class="pill t-verified" data-truth="VERIFIED" data-mock="true">Verified</span>
+        <span class="pill t-claim" data-truth="CLAIM" data-mock="true">Claim</span>
+        <span class="pill t-unknown" data-truth="UNKNOWN" data-mock="true">Unknown</span>
+        <span class="pill t-stale" data-truth="STALE" data-mock="true">Stale</span>
+        <span class="pill t-conflicted" data-truth="CONFLICTED" data-mock="true">Conflicted</span>
+      </div>
       <ul class="checklist" data-mock="true">
         <li data-mock="true">Re-run the pending required check</li>
         <li data-mock="true">Attach LAW gate evidence to the PR</li>
@@ -518,6 +667,14 @@
 
     <div class="screen" data-screen="experience" data-mock="true">
       <h2 data-mock="true">6 · Experience — Learn from the journey</h2>
+      <div class="legend" data-mock="true">
+        <span class="pill t-observed" data-truth="OBSERVED" data-mock="true">Observed</span>
+        <span class="pill t-verified" data-truth="VERIFIED" data-mock="true">Verified</span>
+        <span class="pill t-claim" data-truth="CLAIM" data-mock="true">Claim</span>
+        <span class="pill t-unknown" data-truth="UNKNOWN" data-mock="true">Unknown</span>
+        <span class="pill t-stale" data-truth="STALE" data-mock="true">Stale</span>
+        <span class="pill t-conflicted" data-truth="CONFLICTED" data-mock="true">Conflicted</span>
+      </div>
       <div class="grid" data-mock="true">
         <article class="card gold-edge" data-mock="true">
           <p class="nutshell" data-mock="true">Frozen forecast</p>
@@ -525,7 +682,11 @@
         </article>
         <article class="card" data-mock="true">
           <p class="nutshell" data-mock="true">Observation window</p>
-          <p data-mock="true" data-observation-window="true">48-hour window, open now. Counts as observed: the merge receipt or the continued hold with reasons. A self-report is not verified learning.</p>
+          <p data-mock="true" data-observation-window="true">48-hour window, open now.</p>
+          <p class="block-label" data-mock="true">Independently observed result</p>
+          <p data-mock="true" data-observed-result="true">Counts as observed: the merge receipt or the continued hold with reasons.</p>
+          <p class="block-label" data-mock="true">Calibration</p>
+          <p data-mock="true">A self-report is not verified learning.</p>
         </article>
       </div>
     </div>
