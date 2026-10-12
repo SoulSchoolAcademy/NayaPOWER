@@ -1,31 +1,31 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-12 03:09 UTC_
+_Last updated: 2026-10-12 04:10 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 73
-- ✅ Verified (8+): 71
-- 🟡 Partial (5–7): 1
+- **Total scored actions:** 87
+- ✅ Verified (8+): 83
+- 🟡 Partial (5–7): 3
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 1
-- **Verification rate:** 97% of actions fully verified
+- **Verification rate:** 95% of actions fully verified
 
 ## Per-team score trend
 
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
-| Team 1 | Naya Verity | 8 | 8.9 | 9.5 |
-| Team 2 | Naya Sage | 10 | 8.2 | 8.5 |
+| Team 1 | Naya Verity | 9 | 8.9 | 9.5 |
+| Team 2 | Naya Sage | 14 | 8.1 | 9.0 |
 | Team 3 | Naya Judge | 7 | 8.7 | 9.0 |
-| Team 4 | Naya Mason | 6 | 9.0 | 9.0 |
-| Team 5 | Naya Seeker | 5 | 8.8 | 9.0 |
-| Team 6 | Naya Heir | 2 | 9.0 | 9.0 |
+| Team 4 | Naya Mason | 7 | 8.9 | 9.0 |
+| Team 5 | Naya Seeker | 6 | 8.8 | 9.0 |
+| Team 6 | Naya Heir | 3 | 8.8 | 9.0 |
 | Team 7 | Naya Conductor | 3 | 8.8 | 9.0 |
-| Team 8 | Naya Sentinel | 8 | 8.8 | 9.0 |
-| Team 9 | Naya Smith | 10 | 7.6 | 9.0 |
-| Team 10 | Naya Librarian | 8 | 8.6 | 9.0 |
-| Team 11 | Naya Heart | 6 | 8.7 | 9.0 |
+| Team 8 | Naya Sentinel | 9 | 8.8 | 9.0 |
+| Team 9 | Naya Smith | 12 | 7.9 | 9.5 |
+| Team 10 | Naya Librarian | 10 | 8.7 | 9.0 |
+| Team 11 | Naya Heart | 7 | 8.7 | 9.0 |
 | Team 12 | Naya Herald | 0 | — | — |
 
 ## Learning velocity
@@ -50,6 +50,10 @@ _Last updated: 2026-10-12 03:09 UTC_
 - **t1152:** 3 actions, avg 8.7/10
 - **t1162:** 3 actions, avg 9.0/10
 - **t1172:** 3 actions, avg 9.0/10
-- **t1192:** 2 actions, avg 8.5/10
+- **t1192:** 3 actions, avg 8.2/10
+- **t1202:** 4 actions, avg 8.6/10
+- **t1212:** 3 actions, avg 8.5/10
+- **t1222:** 3 actions, avg 9.0/10
+- **t1232:** 3 actions, avg 8.8/10
 
 _A rising average with zero phantoms is the proof the team is learning and growing._
