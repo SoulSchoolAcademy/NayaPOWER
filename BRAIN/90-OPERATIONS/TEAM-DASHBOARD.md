@@ -1,6 +1,6 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-12 17:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-12 18:15 UTC from live sources. Regenerated every wave (~10 min).*
 
 **Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 100 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
@@ -83,36 +83,39 @@
 - [#2392](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2392) fix(verify): resolve python interpreter at runtime in guard_liveness.t 📝draft
 - [#2374](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2374) test(t21): operating-essence acceptance battery — moral value before n
 
-### BUILD (20)
+### BUILD (21)
+- [#2488](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2488) IB ownership: 21 system-ownership tests + seed-corpus tests
 - [#2485](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2485) feat(watchdog): L244 breach-post watchdog (B-24)
 - [#2484](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2484) [DRAFT] Repair quarantined Smart Notes: add MACHINE NOTE sections (SN- 📝draft
 - [#2480](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2480) Fix STATS.md phantom contradiction (line 11: 1, line 59: 'zero')
 - [#2479](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2479) Fix: World Model mission preview fails closed when truncated 📝draft
-- [#2477](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2477) DRAFT: Naya Intelligence Board — live World Model and Compass orientat 📝draft
-- …and 15 more
+- …and 16 more
 
-### WIRE (36)
+### WIRE (31)
 - [#2483](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2483) [DRAFT] Wire activation checklist into cold-start boot gate (fail clos 📝draft
 - [#2473](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2473) test(gate): B-28 — guard-exercising identifier test + unattributable e
 - [#2466](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2466) fix(gate): remove issue_comment trigger from merge-consensus-gate (t02
 - [#2464](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2464) Hermetic truth-gate fixtures (fixtures-only re-cut of #2419)
 - [#2463](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2463) feat(govern): trigger-chain jurisdiction gate — mechanical close of th
-- …and 31 more
+- …and 26 more
 
 ### TEAM (1)
 - [#2397](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2397) feat(dashboard): live Team Naya activity dashboard — markdown + machin
 
-### INFRA (5)
+### INFRA (7)
+- [#2491](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2491) DRAFT: Marty Leeds Septenary cipher — exact symbolic encoder and falsi 📝draft
+- [#2490](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2490) feat(intelligence): septenary gematria ciphers for value calculation 📝draft
 - [#2454](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2454) INFRA: heal tip-RED on Kernel Tests — three test/CI-config fixes
 - [#2418](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2418) Consolidation: retire competing DecisionEngine, strict 7.0/0.05 bar (L
 - [#2412](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2412) feat(decision): automatic decision calculator — the water itself
-- [#2409](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2409) feat(protocol): Three-Try Circuit Breaker — L236 standing law (Shawn 2
-- [#2387](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2387) law: make no-bottleneck shared mission rule explicit
+- …and 2 more
 
 ### PRODUCT (1)
 - [#2481](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2481) fix(publishing): record sanitized GitHub rejection reason in commit-fa 📝draft
 
-### GOVERN (3)
+### GOVERN (5)
+- [#2489](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2489) Fix: PROTOCOL.md reading list no longer calls itself ratified canonica 📝draft
+- [#2487](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2487) Fix: LAWS-INDEX-V1.md no longer calls PROTOCOL.md canonical law 📝draft
 - [#2476](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2476) Fix: PROTOCOL.md is candidate awaiting ratification, not canonical law
 - [#2414](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2414) docs(govern): canonicalize the Agent Briefing in three forms (0022) [D 📝draft
 - [#2394](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2394) docs(roles): give every agent a home-run briefing charter

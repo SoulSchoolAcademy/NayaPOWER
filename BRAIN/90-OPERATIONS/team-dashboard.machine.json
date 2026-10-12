@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-12T17:15:21+00:00",
+ "generated_utc": "2026-10-12T18:15:06+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -300,6 +300,12 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2488,
+     "title": "IB ownership: 21 system-ownership tests + seed-corpus tests",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2488",
+     "draft": false
+    },
+    {
      "number": 2485,
      "title": "feat(watchdog): L244 breach-post watchdog (B-24)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2485",
@@ -340,15 +346,9 @@
      "title": "Manifesto V2 + System Structure V1 (three languages)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2474",
      "draft": true
-    },
-    {
-     "number": 2468,
-     "title": "Naya4/smart notes 2026 09 30",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2468",
-     "draft": false
     }
    ],
-   "open_pr_count": 20
+   "open_pr_count": 21
   },
   {
    "id": "wire",
@@ -417,7 +417,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 36
+   "open_pr_count": 31
   },
   {
    "id": "team",
@@ -465,6 +465,18 @@
    "board_lane": "#2175 lane INFRA",
    "open_prs": [
     {
+     "number": 2491,
+     "title": "DRAFT: Marty Leeds Septenary cipher \u2014 exact symbolic encoder and falsifiers",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2491",
+     "draft": true
+    },
+    {
+     "number": 2490,
+     "title": "feat(intelligence): septenary gematria ciphers for value calculation",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2490",
+     "draft": true
+    },
+    {
      "number": 2454,
      "title": "INFRA: heal tip-RED on Kernel Tests \u2014 three test/CI-config fixes",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2454",
@@ -495,7 +507,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 5
+   "open_pr_count": 7
   },
   {
    "id": "product",
@@ -563,6 +575,18 @@
    "board_lane": "#2175 lane GOVERN",
    "open_prs": [
     {
+     "number": 2489,
+     "title": "Fix: PROTOCOL.md reading list no longer calls itself ratified canonical law",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2489",
+     "draft": true
+    },
+    {
+     "number": 2487,
+     "title": "Fix: LAWS-INDEX-V1.md no longer calls PROTOCOL.md canonical law",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2487",
+     "draft": true
+    },
+    {
      "number": 2476,
      "title": "Fix: PROTOCOL.md is candidate awaiting ratification, not canonical law",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2476",
@@ -581,7 +605,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 3
+   "open_pr_count": 5
   }
  ],
  "recent_activity": [
@@ -715,5 +739,5 @@
   }
  ],
  "open_pr_total": 100,
- "unassigned_prs": 20
+ "unassigned_prs": 21
 }
