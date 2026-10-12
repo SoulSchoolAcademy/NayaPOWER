@@ -2,11 +2,11 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-12 17:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-12 18:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## 🟢 Working right now
 
-- **Team ? — ?** (?) — tick t0482: RETRIEVAL SURGE slice (b): Sentinel builds CANDIDATE wiring migration package (branch naya/eight-aut
+- **Team ? — ?** (?) — tick t0502: RETRIEVAL SURGE slice (b): Sentinel builds CANDIDATE wiring migration package (branch naya/eight-aut
 
 ## The Teams
 
@@ -1184,6 +1184,30 @@ _Last updated: 2026-10-12 17:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t892-lane1.md`
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
+
+### ✅ t0482 — Team 3, Naya Judge (Decision Engine) — 8.0/10 [VERIFIED]
+
+**Task:** FP-001 enforcement-design feedback (mechanism review, not principle)
+
+**Receipt:** `twelve-lane-receipts/t0482-lane3.md`
+
+**Evidence:** VERIFIED: feedback entry '[Lane 3 — Naya Judge, t0482]: SHARPEN' present verbatim in feedback-feed.md (line 52), with three concrete breaks each ending in a fix. Real value: caught the sub-9.0 rule's quiet-tick false positive before it became law. Why not 9.5: the headline claim (false-positive rate of the sub-9.0 rule) is asserted, not measured — 
+
+### ✅ t0472 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** RETRIEVAL SURGE slice (d): sealed cold-retrieve drill re-run with proven page-cache isolation
+
+**Receipt:** `twelve-lane-receipts/t0472-lane1.md`
+
+**Evidence:** VERIFIED: sha256 of cold_drill_t0472.py (0fcaa777...), chillset (81a07557...), results (d09e0282...) all match on disk; sealed record auto-retrieval/cold-drill-t0472.md exists. Real verified value: inverted t1052's failure into evict-then-verify (posix_fadvise DONTNEED + mincore), gate RED/GREEN on live bytes (607/607 resident refused warm, 0 resid
+
+### ✅ t0462 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Instrument ask-world.py with append-only query logging + live-check self-probe
+
+**Receipt:** `twelve-lane-receipts/t0462-lane10.md`
+
+**Evidence:** ARTIFACTS VERIFIED (local goal-infra, not repo): bin/ask-world.py has log_query (9 refs) and live-check (3 refs); ask-world.py live-check prints query-log live: OK at action time (2026-10-12 10:51 PDT); ask-world-queries.jsonl parses: 24 query rows all carrying 9 required fields, format_version=1, non-empty returned_sections; log growing (24 -> 25+
 
 ### ✅ t462 — Team 10, Lane 10 (Naya Librarian) (Brain Index) — 9.0/10 [VERIFIED]
 
