@@ -310,3 +310,37 @@ the token fix (asserted in live plan, no durable feed evidence found on #1354/#1
 per this file and posted a verdict on #1604 — reproducibility is proven, independent
 human verification of the ledger itself remains the binding 8.0 gate. DAI series is
 ~5 days of real data; trend readable after 2+ weeks.
+
+## Thirteenth cold-recompute proof — observatory first live run (2026-10-12 ~04:45 UTC)
+
+Fresh clone of `naya5/human-value-observatory` @ `b4330e09` (the observatory
+branch: live-run loop + first live run), same procedure, no access to the
+originating worktree. Clone at `~/workspace/_scratch/hv-cold-obs` (removed
+after verification).
+
+| Check | Originating worktree | Cold clone | Match |
+|---|---|---|---|
+| HEAD | `b4330e09` | `b4330e09` | ✅ |
+| `ledger_sha256` | `sha256:986f7f0e5852…acffe9` | (same, `--expect-ledger-sha256` passed) | ✅ |
+| `hv_per_day_total` | 13.7142 | 13.7142 | ✅ |
+| `dai_per_day` | 0.5714 | 0.5714 | ✅ |
+| `events_validated` | 95 | 95 | ✅ |
+| `calibration.n` / MAE / bias / overprediction | 10 / 0.1 / 0.0 / false | 10 / 0.1 / 0.0 / false | ✅ |
+| test suite (observatory + real ledger + instrument) | 100 passed | 100 passed | ✅ |
+
+**Verdict:** the observatory's first live run is cold-recomputable at the
+pushed SHA. The three promoted events (HV-20261011-PR-2375/2188/2383,
+re-graded tonight at 8.8/7.3/8.2 REAL VALUE — verdicts reproduced exactly
+from the pilot) moved the ledger 92 → 95 and HV/day 13.2857 → 13.7142 with
+DAI flat at 0.5714 (zero new human-attention demands). The trend store
+(`trend.jsonl`, 3 snapshots) and the pinned `OBSERVATORY-REPORT.md` are
+byte-identical in the cold clone. This run also exercised the new seams
+cold: `scan` (23 drafts, watermark), `promote` (fail-closed refusals),
+`report` (deterministic bytes) — 15/15 observatory tests green on both sides.
+
+**State note (unchanged):** no independent seat has yet cold-recomputed the
+ledger per this file and posted a verdict on #1604 — reproducibility is
+proven, independent human verification of the ledger itself remains the
+binding 8.0 gate. DAI series is ~6 days of real data; trend readable after
+2+ weeks. The 30-day positive-trend bar now has its raw material
+(`trend.jsonl`, one snapshot per promotion).
