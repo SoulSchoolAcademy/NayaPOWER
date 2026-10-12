@@ -1,16 +1,16 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-12T01:05:30+00:00",
+ "generated_utc": "2026-10-12T01:37:30+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
  "wave": {
-  "wave_number": 4,
-  "counter": 8,
+  "wave_number": 1,
+  "counter": 9,
   "active_areas": [
-   "product",
-   "memory",
-   "govern"
+   "learn",
+   "know",
+   "act"
   ]
  },
  "agents": [
@@ -29,9 +29,15 @@
     "The learning-system coordinator's three builds (injection proof on every dispatch path, control/treatment experiments, error-signal loop) were still pending as of 21:33 UTC."
    ],
    "next_action": "Run the four-arm experiment's first real cycle: take one captured lesson, inject it to a treatment lane, measure the outcome difference. One proven loop beats ten more specs.",
-   "active_now": false,
+   "active_now": true,
    "board_lane": "#2175 lane LEARN",
    "open_prs": [
+    {
+     "number": 2413,
+     "title": "DRAFT feat(product): Hub learning-lifecycle surface spec (Host, wave 7)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2413",
+     "draft": true
+    },
     {
      "number": 2391,
      "title": "feat(learn): four-arm compounding experiment spec V1",
@@ -51,7 +57,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 3
+   "open_pr_count": 4
   },
   {
    "id": "know",
@@ -68,9 +74,15 @@
     "#2283's auto-stamp verified 8/8 at its current head, but the CI test red reproduces locally: workflow line 65 'exit 0' swallows the step's exit code \u2014 the test gate can lie."
    ],
    "next_action": "Get the brain-index freshness law (PR #2388) merged, then prove a full day with zero drift recurrences.",
-   "active_now": false,
+   "active_now": true,
    "board_lane": "#2175 lane KNOW",
    "open_prs": [
+    {
+     "number": 2415,
+     "title": "BRAIN: regenerate index layer at live tip 665098e3",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2415",
+     "draft": false
+    },
     {
      "number": 2407,
      "title": "repair(brain-index): re-stamp index on main 665098e3 (drift-13)",
@@ -112,15 +124,9 @@
      "title": "WIRE: D36 revocation-ordering claims gate on the drift-canary governance path",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2343",
      "draft": false
-    },
-    {
-     "number": 2340,
-     "title": "WIRE: D32 evidence-bounded uncertainty-propagation gate on the drift-canary CI path",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2340",
-     "draft": false
     }
    ],
-   "open_pr_count": 17
+   "open_pr_count": 18
   },
   {
    "id": "act",
@@ -137,7 +143,7 @@
     "The ADVISE node broke the nine-node invoked-count gate today (T-25; fixed branch-scoped in #2389, verify 8.0/10 NEEDS_WORK) \u2014 the bridge's contract with the kernel is fragile."
    ],
    "next_action": "Land PR #2393 (intent producers) and prove the sensor fires on live main with zero false positives.",
-   "active_now": false,
+   "active_now": true,
    "board_lane": "#2175 lane ACT",
    "open_prs": [
     {
@@ -214,15 +220,9 @@
      "title": "T-05: Law 11 structured harm profiles \u2014 per-group, never collapsed",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2355",
      "draft": false
-    },
-    {
-     "number": 2272,
-     "title": "Neutrality Profile as code (NAYA-NEUTRALITY-PROFILE-V1, PROPOSED)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2272",
-     "draft": true
     }
    ],
-   "open_pr_count": 8
+   "open_pr_count": 7
   },
   {
    "id": "prove",
@@ -324,7 +324,7 @@
      "draft": true
     }
    ],
-   "open_pr_count": 12
+   "open_pr_count": 10
   },
   {
    "id": "wire",
@@ -488,7 +488,7 @@
     "20 Intelligent Block owner assignments are still unassigned \u2014 a P0 that needs Shawn's word."
    ],
    "next_action": "Pick the single highest-value product surface and drive it to an honest 9.0+ with live proof \u2014 one proven surface beats twelve assessed ones.",
-   "active_now": true,
+   "active_now": false,
    "board_lane": "#2175 lane PRODUCT",
    "open_prs": [],
    "open_pr_count": 0
@@ -508,7 +508,7 @@
     "Intelligent Blocks (the human-facing memory surface) still lack owners \u2014 memory nobody is responsible for is memory nobody trusts."
    ],
    "next_action": "Prove one captured lesson retrieved AND applied by a cold successor \u2014 the first causal memory win.",
-   "active_now": true,
+   "active_now": false,
    "board_lane": "#2175 lane MEMORY",
    "open_prs": [
     {
@@ -535,9 +535,15 @@
     "Trigger-chain jurisdiction (the #2020/#2152 bypass class) is still missing its mechanism \u2014 prose about it exists, machinery does not."
    ],
    "next_action": "Close the trigger-chain jurisdiction gap with a mechanical gate \u2014 prose does not stop bypasses, gates do.",
-   "active_now": true,
+   "active_now": false,
    "board_lane": "#2175 lane GOVERN",
    "open_prs": [
+    {
+     "number": 2414,
+     "title": "docs(govern): canonicalize the Agent Briefing in three forms (0022) [DRAFT]",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2414",
+     "draft": true
+    },
     {
      "number": 2394,
      "title": "docs(roles): give every agent a home-run briefing charter",
@@ -563,10 +569,18 @@
      "draft": true
     }
    ],
-   "open_pr_count": 4
+   "open_pr_count": 5
   }
  ],
  "recent_activity": [
+  {
+   "comment_id": 6115977084,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6115977084",
+   "lane": "PRODUCT",
+   "kind": "out",
+   "at": "2026-10-12T01:10:26Z",
+   "summary": ""
+  },
   {
    "comment_id": 6115910380,
    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6115910380",
@@ -686,16 +700,8 @@
    "kind": "out",
    "at": "2026-10-12T00:37:27Z",
    "summary": "Lane:** verify. **What I worked:"
-  },
-  {
-   "comment_id": 6115654067,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6115654067",
-   "lane": "NAYA 2",
-   "kind": "out",
-   "at": "2026-10-12T00:34:00Z",
-   "summary": "Lane:** wire \u00b7 **What:** claim cycle per protocol + standing T-09 watch."
   }
  ],
  "open_pr_total": 100,
- "unassigned_prs": 12
+ "unassigned_prs": 10
 }
