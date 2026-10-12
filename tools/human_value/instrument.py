@@ -376,25 +376,44 @@ def mechanical_signals(repo, merge_sha):
     """Numbers straight from git — the machine's view of the change.
 
     Informational only: the score never depends on these. If the diff base
-    does not exist (e.g. a root commit), the section reports UNAVAILABLE
-    instead of failing the grade — a grader's evidenced judgment still counts.
+    cannot be resolved — a root commit, or a shallow (depth-1) checkout whose
+    parents were never fetched — the section reports UNAVAILABLE instead of a
+    lying zero. A grader's evidenced judgment still counts; the machine just
+    refuses to claim "0 files changed" when it cannot see the history.
 
-    For pre-merge branch heads (single-parent, not a merge commit), the true
-    change is merge-base(origin/main)..head, not head^1..head — the pilot's
-    full run showed ^1 understating branch deltas, so the base is resolved
-    that way when origin/main is available.
+    Base rules:
+    - Merge commits: the change is first-parent..merge, always. The
+      merge-base(origin/main) override is never applied here, because on
+      main-push checkouts origin/main IS the merge commit, so the override
+      collapses the base onto the commit itself and the diff comes out empty.
+    - Single-parent pre-merge heads: merge-base(origin/main)..head is the
+      true branch delta — the pilot's full run showed ^1 understating branch
+      deltas — applied only when the merge-base is a genuine ancestor that
+      is neither the head itself (a head already on origin/main, where the
+      old code collapsed to an empty diff) nor its first parent.
     """
-    base = f"{merge_sha}^1"
-    mb = _git(repo, "merge-base", "origin/main", merge_sha)
-    if mb.returncode == 0:
-        mb_sha = mb.stdout.strip()
-        first_parent = _git(repo, "rev-parse", f"{merge_sha}^1").stdout.strip()
-        if mb_sha and mb_sha != first_parent:
-            base = mb_sha
-    stat = _git(repo, "diff", "--numstat", base, merge_sha)
-    names = _git(repo, "diff", "--name-status", base, merge_sha)
+    resolved = _git(repo, "rev-parse", "--verify", merge_sha)
+    if resolved.returncode != 0:
+        return {"unavailable": f"ref {merge_sha!r} not found in repo"}
+    sha = resolved.stdout.strip()
+    first_parent = _git(repo, "rev-parse", f"{sha}^1")
+    if first_parent.returncode != 0:
+        return {"unavailable": f"no first parent for {sha[:12]} "
+                               "(shallow checkout or root commit)"}
+    first_parent_sha = first_parent.stdout.strip()
+    base = f"{sha}^1"
+    if not _git_ok(repo, "rev-parse", "--verify", f"{sha}^2"):
+        # Single-parent head: merge-base(origin/main) gives the branch delta,
+        # guarded against the main-push collapse (merge-base == the head).
+        mb = _git(repo, "merge-base", "origin/main", sha)
+        if mb.returncode == 0:
+            mb_sha = mb.stdout.strip()
+            if mb_sha and mb_sha != sha and mb_sha != first_parent_sha:
+                base = mb_sha
+    stat = _git(repo, "diff", "--numstat", base, sha)
+    names = _git(repo, "diff", "--name-status", base, sha)
     if stat.returncode != 0 or names.returncode != 0:
-        return {"unavailable": f"cannot diff {base}..{merge_sha}"}
+        return {"unavailable": f"cannot diff {base}..{sha}"}
     files, ins, dels, test_files, doc_files = [], 0, 0, 0, 0
     for line in stat.stdout.splitlines():
         a, d, path = line.split("\t")
@@ -425,7 +444,7 @@ def build_skeleton(repo, merge_sha, pr=None, title=None):
         raise InstrumentError(f"merge {merge_sha!r} not found in repo {repo}")
     mech = mechanical_signals(repo, merge_sha)
     if pr is None:
-        m = re.search(r"#(\d+)", mech["merge_subject"])
+        m = re.search(r"#(\d+)", mech.get("merge_subject", ""))
         pr = m.group(1) if m else "?"
     judgments = []
     for dim in DIMENSIONS:
@@ -443,7 +462,7 @@ def build_skeleton(repo, merge_sha, pr=None, title=None):
     return {
         "packet_version": PACKET_VERSION,
         "change_id": f"PR-{pr}",
-        "title": title or mech["merge_subject"],
+        "title": title or mech.get("merge_subject") or "(subject unavailable)",
         "merge_sha": merge_sha,
         "grader": "",
         "harm_check": {"found": False, "note": ""},
