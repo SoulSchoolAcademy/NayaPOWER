@@ -2,12 +2,15 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-12 13:16 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-12 14:04 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## 🟢 Working right now
 
-- **Team ? — ?** (?) — tick t0312: no receipt by t0312 (2 ticks overdue, async-dispatch loss) — re-briefed t0312 with CHANGED brief (ve
-- **Team ? — ?** (?) — tick t0312: lane 8 seat_of() seat-identity fragility fix (Lane 3 t0302 finding); lane 9 tip-red classify+heal CH
+- **Team ? — ?** (?) — tick t0342: no receipt by t0312 (2 ticks overdue, async-dispatch loss) — re-briefed t0312 with CHANGED brief (ve
+- **Team ? — ?** (?) — tick t0342: t0312 lanes 8/9/10 silent drop (no receipts by t0342, 2 ticks overdue) - re-briefed t0342 with CHANG
+- **Team ? — ?** (?) — tick t0342: t0322 lanes 7/5/11 silent drop (no receipts by t0342, 2 ticks overdue) - lane 7 re-briefed t0342 wit
+- **Team ? — ?** (?) — tick t0342: lane 1 t0332 receipt scored 9.0/10 this tick; lanes 2/3 still in flight (1 tick)
+- **Team ? — ?** (?) — tick t0342: CHANGED re-briefs for t0312/t0322 overdue drops: lane 7 queue fossil batch + t0322 audit; lane 8 #24
 
 ## The Teams
 
@@ -1161,6 +1164,14 @@ _Last updated: 2026-10-12 13:16 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t892-lane1.md`
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
+
+### ✅ t0332 — Team 1, naya-verity-lane1 (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** pin-exact queue/pipeline re-verification + fossil-close audit
+
+**Receipt:** `twelve-lane-receipts/t0332-lane1.md`
+
+**Evidence:** 3/3 pipeline PR pins match live remote heads exactly (PR head == branch head == receipt pin, two channels); tip f9b5ac3d unchanged; 6/6 fossil closes confirmed closed-unmerged via REST; count 451 matches; honest 3-pass self-scorecard 9.0 with one real setup-gap finding (missing t0322 lane-7 receipt). Why not 10: fossil branch pins API-only, CI stat
 
 ### ✅ t0312 — Team 3, Naya Judge (Decision Engine) — 8.5/10 [VERIFIED]
 
