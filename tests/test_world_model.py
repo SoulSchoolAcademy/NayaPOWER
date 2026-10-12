@@ -737,3 +737,232 @@ class TestP0F4BriefingNotLaw(unittest.TestCase):
         self.assertIn("CACHED", out)
         self.assertIn("verify before acting", out)
         self.assertEqual(rc, 0)
+
+
+# ---------------------------------------------------------------------------
+# B-41 regression tests — mission-preview truncation false-completeness
+# (bottleneck B-41, PR #2477 review comment 6128553449, 2026-10-12)
+#
+# Falsification test (reviewer's exact test): a mission whose priorities 6
+# and 7 live beyond character 2000 of the issue body. Pre-fix the world
+# model caches body[:2000] with no completeness marker, so a Board consumer
+# can present its orientation as current while the decisive priorities are
+# missing from the preview. These tests FAIL on the pre-fix code (no
+# completeness metadata, OBSERVED answers from a partial preview) and PASS
+# on the fixed code (MISSION_PRIORITIES_PARTIAL + fail-closed gate).
+# ---------------------------------------------------------------------------
+
+
+def _b41_long_mission_body():
+    """Mission body with priorities 6 and 7 strictly beyond char 2000."""
+    filler = "orientation boilerplate, milestones, and parked items. "
+    header = "MISSION STATE — priorities of the team.\n"
+    early = ("Priority 1: engine consolidation.\nPriority 2: ledger proof.\n"
+             "Priority 3: hub currency.\nPriority 4: compass wiring.\n"
+             "Priority 5: feed loop.\n")
+    body = header + early
+    while len(body) < 2200:
+        body += filler
+    body += ("\nPriority 6: symbolic layer — the decisive missing priority.\n"
+             "Priority 7: smart connect — the second missing priority.\n")
+    assert len(body) > 2000
+    assert "Priority 6" not in body[:2000]
+    assert "Priority 7" not in body[:2000]
+    return body
+
+
+def _b41_fresh_model(mission_section):
+    import copy
+    model = copy.deepcopy(make_fresh_model())
+    model["sections"]["mission"] = mission_section
+    return model
+
+
+class TestB41MissionPreviewCompleteness(unittest.TestCase):
+    """Builder tests: the cache layer itself must carry completeness."""
+
+    def _build_section(self, body):
+        def fake_gh(method, path, body_file=None):
+            return True, {
+                "title": "Mission State", "state": "open", "comments": 10,
+                "updated_at": "2026-10-12T00:00:00Z",
+                "body": body, "html_url": "https://github.com/x/issues/2154",
+            }
+        with patch.object(wm, "gh_api", side_effect=fake_gh):
+            return wm.build_mission_section()
+
+    def test_long_body_marked_partial(self):
+        """A mission body over 2000 chars is visibly partial."""
+        section = self._build_section(_b41_long_mission_body())
+        self.assertEqual(section["status"], "OK")
+        self.assertFalse(section["body_preview_complete"])
+        self.assertEqual(section["preview_completeness"], "PARTIAL")
+        self.assertGreater(section["body_chars_total"], 2000)
+        self.assertEqual(section["body_preview_chars"], 2000)
+        # The decisive priorities are missing from the cached preview.
+        self.assertNotIn("Priority 6", section["body_preview"])
+        self.assertNotIn("Priority 7", section["body_preview"])
+
+    def test_short_body_marked_complete(self):
+        section = self._build_section("Priority 1: only one, short.")
+        self.assertTrue(section["body_preview_complete"])
+        self.assertEqual(section["preview_completeness"], "COMPLETE")
+        self.assertEqual(section["body_chars_total"],
+                         section["body_preview_chars"])
+
+    def test_exact_boundary_2000_is_complete(self):
+        section = self._build_section("x" * 2000)
+        self.assertTrue(section["body_preview_complete"])
+        self.assertEqual(section["preview_completeness"], "COMPLETE")
+
+    def test_boundary_2001_is_partial(self):
+        section = self._build_section("x" * 2001)
+        self.assertFalse(section["body_preview_complete"])
+        self.assertEqual(section["preview_completeness"], "PARTIAL")
+
+    def test_preview_limit_is_named(self):
+        # The magic 2000 must be a named constant, not an inline literal.
+        self.assertEqual(getattr(wm, "MISSION_PREVIEW_LIMIT", None), 2000)
+
+    def test_api_failure_still_unknown(self):
+        with patch.object(wm, "gh_api", return_value=(False, "boom")):
+            section = wm.build_mission_section()
+        self.assertEqual(section["status"], "UNKNOWN")
+
+
+class TestB41Falsification(unittest.TestCase):
+    """The exact falsification test from PR #2477 review 6128553449.
+
+    RED-before: a mission with priorities 6/7 beyond char 2000 — the world
+    model's mission section answers priority questions as OBSERVED from the
+    truncated preview with no partial marker.
+    GREEN-after: the same section is labeled MISSION_PRIORITIES_PARTIAL and
+    any completeness-requiring question fails closed (UNKNOWN + READ_MORE).
+    """
+
+    def _run_query(self, model, question):
+        import io
+        from contextlib import redirect_stdout
+        with patch.object(wm, "load_model", return_value=model):
+            buf = io.StringIO()
+            args = type("Args", (), {"question": question.split()})()
+            with redirect_stdout(buf):
+                rc = wm.cmd_query(args)
+            return buf.getvalue(), rc
+
+    def _partial_model(self):
+        body = _b41_long_mission_body()
+        now = time.time()
+        return _b41_fresh_model({
+            "status": "OK", "issue": 2154, "title": "Mission State",
+            "state": "open", "comment_count": 10,
+            "updated_at": "2026-10-12T00:00:00Z",
+            "body_preview": body[:2000],
+            "body_preview_chars": 2000,
+            "body_chars_total": len(body),
+            "body_preview_complete": False,
+            "preview_completeness": "PARTIAL",
+            "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2154",
+            "as_of_utc": "2026-10-12T00:00:00+00:00",
+            "as_of_ts": now,
+        })
+
+    def test_falsifier_partial_preview_visibly_marked(self):
+        """(a) partial preview is visibly marked partial in query output."""
+        out, rc = self._run_query(self._partial_model(), "what is the mission state?")
+        self.assertIn("MISSION_PRIORITIES_PARTIAL", out)
+        self.assertIn("2000", out)  # char counts visible
+        self.assertIn("PARTIAL PREVIEW", out)
+        # The banner explicitly forbids treating it as complete.
+        self.assertIn("do not treat it as", out.lower())
+        self.assertIn("complete mission", out.lower())
+        # Limited orientation still answers (fresh data), no fail-closed here.
+        self.assertEqual(rc, 0)
+
+    def test_falsifier_completeness_question_fails_closed(self):
+        """(b) 'highest priority' from a partial preview → UNKNOWN + READ_MORE."""
+        out, rc = self._run_query(self._partial_model(), "what is the highest priority?")
+        self.assertIn("UNKNOWN", out)
+        self.assertIn("MISSION_PRIORITIES_PARTIAL", out)
+        self.assertIn("READ_MORE", out)
+        self.assertEqual(rc, 2)
+
+    def test_falsifier_complete_mission_still_answers(self):
+        """Positive control: a complete preview answers priority questions."""
+        model = make_fresh_model()
+        m = model["sections"]["mission"]
+        m.update({
+            "body_preview": "Priority 1: engine consolidation",
+            "body_preview_chars": 30,
+            "body_chars_total": 30,
+            "body_preview_complete": True,
+            "preview_completeness": "COMPLETE",
+        })
+        out, rc = self._run_query(model, "what is the highest priority?")
+        self.assertIn("OBSERVED", out)
+        self.assertNotIn("MISSION_PRIORITIES_PARTIAL", out)
+        self.assertEqual(rc, 0)
+
+    def test_falsifier_legacy_snapshot_fails_closed(self):
+        """Legacy snapshots (no completeness field) cannot prove completeness."""
+        model = make_fresh_model()  # mission section lacks the B-41 fields
+        out, rc = self._run_query(model, "what is the highest priority?")
+        self.assertIn("UNKNOWN", out)
+        self.assertIn("READ_MORE", out)
+        self.assertEqual(rc, 2)
+
+    def test_falsifier_adversarial_phrasings_fail_closed(self):
+        """Regression: unseen priority phrasings must fail closed, not slip
+        through intent detection to a positive answer from partial data.
+        (Round-1 scorer adversarial probe: the intent detector is
+        fail-closed-by-default — ANY mention of priorities routes through
+        the gate.)"""
+        for q in ["what are all the priorities?",
+                  "list the priorities",
+                  "give me every priority",
+                  "what are the priorities?",
+                  "rank the priorities",
+                  "which priorities matter most?",
+                  "is priority 6 on the list?",
+                  "what is priority 7?"]:
+            out, rc = self._run_query(self._partial_model(), q)
+            self.assertIn("UNKNOWN", out, f"question: {q}")
+            self.assertIn("READ_MORE", out, f"question: {q}")
+            self.assertIn("MISSION_PRIORITIES_PARTIAL", out, f"question: {q}")
+            self.assertEqual(rc, 2, f"question: {q}")
+
+    def test_bare_orientation_still_answers_from_partial(self):
+        """Bare orientation (no priority mention) still answers with the
+        PARTIAL banner — only priority/completeness mentions fail closed."""
+        for q in ["what is the mission state?",
+                  "what are the blockers?",
+                  "show me the mission"]:
+            out, rc = self._run_query(self._partial_model(), q)
+            self.assertIn("MISSION_PRIORITIES_PARTIAL", out, f"question: {q}")
+            self.assertEqual(rc, 0, f"question: {q}")
+
+    def test_complete_preview_answers_adversarial_phrasings(self):
+        """Positive control: with a COMPLETE preview the same phrasings
+        answer — fail-closed must not become fail-always."""
+        model = make_fresh_model()
+        m = model["sections"]["mission"]
+        m.update({
+            "body_preview": "Priority 1: engine consolidation",
+            "body_preview_chars": 30,
+            "body_chars_total": 30,
+            "body_preview_complete": True,
+            "preview_completeness": "COMPLETE",
+        })
+        out, rc = self._run_query(model, "what are all the priorities?")
+        self.assertIn("OBSERVED", out)
+        self.assertEqual(rc, 0)
+
+    def test_gate_helper_fail_closed(self):
+        """The module-level gate is the single fail-closed decision point."""
+        ok, _ = wm.require_complete_mission(self._partial_model()["sections"])
+        self.assertFalse(ok)
+        model = make_fresh_model()
+        m = model["sections"]["mission"]
+        m.update({"body_preview_complete": True})
+        ok, _ = wm.require_complete_mission(model["sections"])
+        self.assertTrue(ok)
