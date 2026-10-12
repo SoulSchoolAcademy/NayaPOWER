@@ -67,8 +67,21 @@ def _first_party_modules() -> set:
     # before `import smart_link`) are first-party as well: those modules resolve from the
     # checkout itself, so CI needs no pip install for them. Without this the guard cries wolf
     # about project modules and gets ignored — the exact failure mode its docstring warns of.
+    #
+    # Each root below corresponds to a real sys.path.insert pattern in the suite:
+    #   tools/                          -> many tests (test_check_merge_consensus.py, ...)
+    #   tools/protocol/                 -> test_pipeline_health.py (import pipeline_health)
+    #   kernel/protocol/                -> test_engineering_gates.py, test_proof_expiry.py
+    #   tools/human_value/              -> test_human_value_change_grader.py,
+    #                                      test_human_value_hardening_v2.py (import instrument)
+    #   tools/learning/compound_scale/  -> test_learn_compound_scale.py
+    #                                      (import fixtures, gates, pipeline, subjects)
+    # When a new test adds a NEW sys.path root, add it here — or this guard
+    # will false-positive on the next CI run.
     for import_root in (REPO / "tools", REPO / "tools" / "protocol",
-                        REPO / "kernel" / "protocol"):
+                        REPO / "kernel" / "protocol",
+                        REPO / "tools" / "human_value",
+                        REPO / "tools" / "learning" / "compound_scale"):
         if import_root.is_dir():
             names.update(p.stem for p in import_root.glob("*.py"))
             # package directories (e.g. tools/protocol/checks/) are importable
