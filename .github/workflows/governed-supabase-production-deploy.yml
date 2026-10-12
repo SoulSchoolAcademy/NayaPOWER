@@ -89,6 +89,10 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          # Transient-tolerant GitHub API reads (bounded retry on HTTP 403
+          # rate limit / 429 / 5xx / transport failures). Genuine failures
+          # surface immediately — see .github/gh-api-retry.sh.
+          source "${GITHUB_WORKSPACE:-.}/.github/gh-api-retry.sh"
           echo "allowed=false" >> "$GITHUB_OUTPUT"
           python - <<'PY'
           import json
@@ -124,7 +128,7 @@ jobs:
           json.dump(paths,open("standing-changed-paths.json","w"))
           PYCODE
 
-          blocker_state="$(gh api "repos/$REPO/issues/978" --jq .state)"
+          blocker_state="$(gh_api_retry "repos/$REPO/issues/978" --jq .state)"
           if [ "$blocker_state" != "closed" ]; then
             echo "FAIL CLOSED: production blocker #978 is $blocker_state."
             exit 1
@@ -135,12 +139,37 @@ jobs:
           required={"kernel-tests.yml","collective-chain-readiness-gate.yml"}
           repo=os.environ["REPO"]
           sha=os.environ["GITHUB_SHA"]
+          # Substrings marking a TRANSIENT GitHub API failure (safe to keep
+          # polling through). Anything else (401, 404, 403 permission, 422)
+          # is genuine and re-raised immediately — never masked.
+          _TRANSIENT_MARKERS=("rate limit","http 429","http 502","http 503","http 504",
+                              "connection refused","connection reset","timed out",
+                              "no such host","network is unreachable","dial tcp")
+          def fetch_runs(workflow, attempt):
+              """GET workflow runs; tolerate transient API failures.
+
+              A transient failure (e.g. HTTP 403 rate limit) returns None so
+              the poll loop treats the workflow as 'not yet observed' and keeps
+              polling. The loop's existing fail-closed at attempt 89 still
+              applies, so a persistent API outage can never read as success.
+              """
+              try:
+                  return json.loads(subprocess.check_output([
+                      "gh","api",f"repos/{repo}/actions/workflows/{workflow}/runs?head_sha={sha}&event=push&per_page=100"
+                  ],text=True,stderr=subprocess.PIPE))
+              except subprocess.CalledProcessError as e:
+                  err=(e.stderr or "").lower()
+                  if not any(m in err for m in _TRANSIENT_MARKERS):
+                      raise
+                  print(f"::warning::gh api transient failure polling {workflow} "
+                        f"(attempt {attempt+1}/90): {(e.stderr or '')[:200]}")
+                  return None
           for attempt in range(90):
               found={}
               for workflow in required:
-                  data=json.loads(subprocess.check_output([
-                      "gh","api",f"repos/{repo}/actions/workflows/{workflow}/runs?head_sha={sha}&event=push&per_page=100"
-                  ],text=True))
+                  data=fetch_runs(workflow, attempt)
+                  if data is None:
+                      break
                   matches=[r for r in data.get("workflow_runs",[]) if
                       r.get("head_sha")==sha and r.get("head_branch")=="main" and r.get("event")=="push" and
                       str(r.get("path","")).split("@",1)[0]==".github/workflows/"+workflow]
@@ -229,6 +258,10 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          # Transient-tolerant GitHub API reads (bounded retry on HTTP 403
+          # rate limit / 429 / 5xx / transport failures). Genuine failures
+          # surface immediately — see .github/gh-api-retry.sh.
+          source "${GITHUB_WORKSPACE:-.}/.github/gh-api-retry.sh"
           python - <<'PY'
           from pathlib import Path
           import os
@@ -246,8 +279,8 @@ jobs:
               print("stamped", p, "with source revision", os.environ["GITHUB_SHA"])
           PY
 
-          source_tree="$(gh api "repos/$GITHUB_REPOSITORY/git/commits/$GITHUB_SHA" --jq .tree.sha)"
-          if gh api "repos/$GITHUB_REPOSITORY/git/ref/heads/$PRODUCTION_BRANCH" > production-ref.json 2>/dev/null; then
+          source_tree="$(gh_api_retry "repos/$GITHUB_REPOSITORY/git/commits/$GITHUB_SHA" --jq .tree.sha)"
+          if gh_api_retry "repos/$GITHUB_REPOSITORY/git/ref/heads/$PRODUCTION_BRANCH" > production-ref.json 2>/dev/null; then
             production_parent="$(python -c 'import json; print(json.load(open("production-ref.json"))["object"]["sha"])')"
           else
             production_parent="$GITHUB_SHA"
@@ -295,7 +328,7 @@ jobs:
             echo "DEPLOYMENT_TREE_SHA=$deployment_tree"
           } >> "$GITHUB_ENV"
 
-          gh api -H "Accept: application/vnd.github+json" \
+          gh_api_retry -H "Accept: application/vnd.github+json" \
             "repos/$GITHUB_REPOSITORY/commits/$deployment_sha/check-runs?per_page=100" > checks-before.json
           python - <<'PY'
           import json
@@ -317,9 +350,11 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          # Transient-tolerant GitHub API reads — see .github/gh-api-retry.sh.
+          source "${GITHUB_WORKSPACE:-.}/.github/gh-api-retry.sh"
           git fetch origin main
           test "$(git rev-parse origin/main)" = "$GITHUB_SHA"
-          if gh api "repos/$GITHUB_REPOSITORY/git/ref/heads/$PRODUCTION_BRANCH" > production-ref-before.json 2>/dev/null; then
+          if gh_api_retry "repos/$GITHUB_REPOSITORY/git/ref/heads/$PRODUCTION_BRANCH" > production-ref-before.json 2>/dev/null; then
             current="$(python -c 'import json; print(json.load(open("production-ref-before.json"))["object"]["sha"])')"
             parent="$(python -c 'import json; print(json.load(open("deployment-commit.json"))["parents"][0]["sha"])')"
             test "$current" = "$parent"
@@ -341,12 +376,14 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          # Transient-tolerant GitHub API reads — see .github/gh-api-retry.sh.
+          source "${GITHUB_WORKSPACE:-.}/.github/gh-api-retry.sh"
           python - <<'PY'
           import json
           print("baseline Supabase check ids:", json.load(open("supabase-check-ids-before.json")))
           PY
           for i in $(seq 1 90); do
-            gh api -H "Accept: application/vnd.github+json"               "repos/$GITHUB_REPOSITORY/commits/$DEPLOYMENT_SHA/check-runs?per_page=100" > checks-now.json
+            gh_api_retry -H "Accept: application/vnd.github+json"               "repos/$GITHUB_REPOSITORY/commits/$DEPLOYMENT_SHA/check-runs?per_page=100" > checks-now.json
             status="$(python - <<'PY'
           import json
           before=set(json.load(open("supabase-check-ids-before.json")))
@@ -406,9 +443,11 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          # Transient-tolerant GitHub API reads — see .github/gh-api-retry.sh.
+          source "${GITHUB_WORKSPACE:-.}/.github/gh-api-retry.sh"
           git fetch origin main
           test "$(git rev-parse origin/main)" = "$GITHUB_SHA"
-          production_now="$(gh api "repos/$GITHUB_REPOSITORY/git/ref/heads/$PRODUCTION_BRANCH" --jq .object.sha)"
+          production_now="$(gh_api_retry "repos/$GITHUB_REPOSITORY/git/ref/heads/$PRODUCTION_BRANCH" --jq .object.sha)"
           test "$production_now" = "$DEPLOYMENT_SHA"
 
       - name: Dispatch canonical fresh-intelligence producer after deployment
