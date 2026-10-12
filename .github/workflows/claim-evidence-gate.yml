@@ -1,0 +1,52 @@
+# Claim-Evidence gate.
+#
+# Wires the anti-citogenesis claim-evidence adjudicator (PR #2325,
+# tools/check_claim_evidence.py) into the PR merge path.
+#
+# Every pull_request event feeds the PR body through
+# tools/scan_pr_claim_evidence.py: verification attestations
+# ("independently verified", "proven", ...) must resolve to admissible
+# independent evidence (an existing test path, a CI run id, an independent
+# seat review). Internal repetition is not independent corroboration --
+# self-attestation, repetition chains, phantom test paths, and bare claims
+# fail the check.
+#
+# Design notes:
+#   - The gate runs on ALL PRs (no paths filter): the trigger is the prose,
+#     not the files. Bodies with no attestations pass quietly ("nothing
+#     claimed, nothing to prove").
+#   - Fail-closed: scanner errors exit 2 and go red; the gate never
+#     silently greens on a broken adjudicator.
+#   - This is an ENFORCEMENT gate, not a suggestion. If it is red, the PR
+#     does not merge until the author cites real evidence or softens the
+#     claim.
+name: Claim Evidence Gate
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+
+jobs:
+  claim-evidence-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Scan PR body for unattested verification claims
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
+        run: |
+          python3 tools/scan_pr_claim_evidence.py --body-env PR_BODY --repo .
+
+      - name: Run gate test suite
+        run: |
+          python3 -m pip install -q pytest
+          python3 -m pytest tests/test_scan_pr_claim_evidence.py tests/test_claim_evidence_gate.py -q -p no:cacheprovider
