@@ -2,12 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-12 01:34 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
-
-## 🟢 Working right now
-
-- **Team 9 — Naya Smith** (Code Health) — tick t1032: PR #2399 body ## Evidence + post-pin receipt-gate re-run (PASS-side proof)
-- **Team 4 — Naya Mason** (Intelligent Blocks) — tick t1032: cross-seat pin-exact verification of PR #2400 for Scorecard Law
+_Last updated: 2026-10-12 02:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -27,6 +22,78 @@ _Last updated: 2026-10-12 01:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 | Team 12 | Naya Herald | NayaNET / Hub |
 
 ## Verified Actions (newest first)
+
+### ✅ t1142 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** brain-index drift: re-stamp verification-hold + heal-branch pin-exact confirm on live tip
+
+**Receipt:** `twelve-lane-receipts/t1142-lane10.md`
+
+**Evidence:** Dispatcher verified: HEAD == 665098e3f00c9aa6f63907360b8500891704071c (unchanged since t1032), refs/heads/naya/ten-brainindex-heal-t1032 == 82fe1c6232913174430f0f06c5f27b5a22ad88ae on origin. --check OK on heal head (1256 files), drift confirmed still present on live tip (expected, heal unmerged), parent==tip with exactly 3-file diff, bisect stands
+
+### ✅ t1142 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** PR #2399 receipt-gate PASS-side proof post-pin + merge-readiness verdict
+
+**Receipt:** `twelve-lane-receipts/t1142-lane9.md`
+
+**Evidence:** Dispatcher verified: refs/heads/naya/nine-receipt-gate-t902 == refs/pull/2399/head == 4776be062822c09c9a346acb1c33c6e0705ec03a on origin. Receipt-gate two-rung run on pin-exact bytes: pin PASS exit 0, P12 allowed exit 0. Check-run classification refreshed (12 green/skipped, 4 red with causes); NOT MERGE-READY verdict with ordered blockers (stale-sn
+
+### ✅ t1142 — Team 4, Naya Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** PR #2400 CI verification pin-exact + merge-readiness verdict
+
+**Receipt:** `twelve-lane-receipts/t1142-lane4.md`
+
+**Evidence:** Dispatcher verified: refs/heads/naya/four-block-roundtrip-t922 == refs/pull/2400/head == bed1d0b7fbc762996d12732311070b96dd4fd9ab on origin. 14/14 check runs classified (10 green, 4 red); both code-check reds proven pre-existing on main tip exact SHA (665098e3f, runs 23:50Z). Round-trip re-proven on head bytes: 54/54 lane tests + fresh 20/20 byte-e
+
+### ✅ t1052 — Team 11, Naya Heart (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** human-value instrument v1: spec + runnable script + t892-t1042 baseline, reproducibility proven
+
+**Receipt:** `twelve-lane-receipts/t1052-lane11.md`
+
+**Evidence:** Dispatcher independently re-ran bin/hv_measure.py --window t892-t1042: every number reproduced (42 receipts/2365 lines, 55 mapped score lines, mean 8.60/min 7.5, HV1 10/55=18.2%, HV2 mean 18.2/median 17.0 on 15/42, HV3 UNKNOWN, M2 33/M3 19/M4 12, M1 board leg 11/24, M6 board leg 0); two JSON runs byte-identical = determinism claim holds. Spec carri
+
+### ✅ t1052 — Team 5, Naya Seeker (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** SN-016 cold-retrieve drill: cold-band latency measurement (verdict HOLDS-OPEN, exact reason named)
+
+**Receipt:** `twelve-lane-receipts/t1052-lane5.md`
+
+**Evidence:** Dispatcher verified: receipt exists with full evidence chain. Three rounds under the circuit breaker: tmpfs proxy falsified (mincore all-resident, tmpfs pages always resident), disk proxy falsified (166/166 resident pre-read — file-creation writes warm the page cache), 2.708s first-run delta refused as cold-band label (contaminated, mechanism un-is
+
+### ✅ t1052 — Team 3, Naya Judge (Decision Engine) — 8.5/10 [VERIFIED]
+
+**Task:** open PR + Scorecard-Law package for F1-closed decision consolidation 43c0113eee (prep only, no merge by design)
+
+**Receipt:** `twelve-lane-receipts/t1052-lane3.md`
+
+**Evidence:** Dispatcher verified: refs/pull/2418/head == 43c0113eee302db2c334aa9d5d3139ea0afd1d77 on origin via git ls-remote, matches briefed SHA exactly. PR #2418 opened with F1-closure evidence in body, strict-bar bytes verified at head, decide.py merge run with honest inputs -> HOLD (merge conflicts, calculator receipt in decisions/), cross-seat second-seat
+
+### ✅ t1042 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** drift-blocks-merge verdict on Lane10 healed head 82fe1c62 + protected-gate bypass audit (receipt/drift/merge-consensus)
+
+**Receipt:** `twelve-lane-receipts/t1042-lane8.md`
+
+**Evidence:** Dispatcher verified: refs/heads/naya/ten-brainindex-heal-t1032 == 82fe1c6232913174430f0f06c5f27b5a22ad88ae on origin; main 665098e3f00c9aa6f63907360b8500891704071c unmoved. Single-commit re-stamp ancestry proven, --check claimed OK on exact bytes (receipt's run), F2 negation bug re-demonstrated live on healed head, stale t972 receipt-gate finding c
+
+### ✅ t1042 — Team 2, Naya Sage (Learning Pipeline) — 8.5/10 [VERIFIED]
+
+**Task:** decisive adversarial rate test (N=3/arm) of footnote-compliance mechanism — hypothesis-3 closed with a rate
+
+**Receipt:** `twelve-lane-receipts/t1042-lane2.md`
+
+**Evidence:** Dispatcher verified: all evidence files exist (preregistration, amendment-01, adv-01/02/03-excluded/04, scorer packet, sealed key, blinded scorer output). Sealed pre-reg, contamination caught via timestamped amendment and repaired, blinding held, decide.py on the real fork, 0/3 compliance rate kills the footnote-compliance premise. Agrees with self
+
+### ✅ t1042 — Team 1, Naya Verity (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** independent pin-exact verification of PR #2400 head bed1d0b7 (Scorecard Law: 1/2 independent seats)
+
+**Receipt:** `twelve-lane-receipts/t1042-lane1.md`
+
+**Evidence:** Dispatcher verified: refs/heads/naya/four-block-roundtrip-t922 == refs/pull/2400/head == bed1d0b7fbc762996d12732311070b96dd4fd9ab on origin via git ls-remote. Independently reproduced 74/74 tests, confirmed 4 CI reds pre-existing on TWO refs (ddc8559d1 + merge base 1b6f72de), fail-closed logic review, NOT READY verdict with ordered blockers. Honest
 
 ### ✅ t1032 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
 
