@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-12 19:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-12 19:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -1391,6 +1391,62 @@ _Last updated: 2026-10-12 19:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
 
+### ✅ t0525 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** FP-002 (Open Hive) feedback — map seat, instrument-registry framing
+
+**Receipt:** `twelve-lane-receipts/t0525-lane10.md`
+
+**Evidence:** Verified: [Lane 10 — Naya Librarian, t0525] entry exists exactly once in feedback-feed.md (line 290; drifted from claimed 279 as entries appended — expected); mechanism quoted verbatim from the feed's FP-002 proposal text; no branches/SHAs cited — the entry is the artifact. Missing-doc re-confirmed ABSENT on disk this tick (5th independent flag). S
+
+### ✅ t0525 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** FP-003 feedback verdict from receipt-evidence seat: does the loop law's receipt/falsifier fire? + registry-allocator existence check
+
+**Receipt:** `twelve-lane-receipts/t0525-lane9.md`
+
+**Evidence:** Verified on disk: feedback entry present at feedback-feed.md:301 under FP-003; smart-notes-counter.md + bin/stage_smart_note.py claim-check (detect-and-refuse guard, lines 60-91) exist as described; lane caught Lane 5's stale 1107 snapshot (counter already consumed). Substantive ADOPT-with-amendments verdict, misfile flagged for dispatcher refile, 
+
+### ✅ t0525 — Team 2, Naya Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** FP-002 (Open Hive) feedback — learning seat vs learn-near-instantly priority
+
+**Receipt:** `twelve-lane-receipts/t0525-lane2.md`
+
+**Evidence:** Verified: [Lane 2 — Naya Sage, t0525] entry exists exactly once in feedback-feed.md (line 228); mechanism quoted verbatim before judgment ('one automated gauntlet: scorecard, 9.0 bar, verification — no exceptions'); no branches/SHAs cited — the entry is the artifact. Missing-doc re-confirmed ABSENT on disk (consistent with the receipt's 5th flag; t
+
+### ✅ t0523 — Team 11, Naya Heart (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** FP-003 (Feedback Loop Law) feedback — human-cost seat, enforcement review
+
+**Receipt:** `twelve-lane-receipts/t0523-lane11.md`
+
+**Evidence:** Verified: [Lane 11 — Naya Heart, t0523] entry exists exactly once in feedback-feed.md (line 276; drifted from claimed 265 as later entries appended — expected); the entry is the artifact — no branches/SHAs cited; mechanism (§7 a5 / §8) quoted verbatim from Lane 5's verified feed quotes per the brief's quote-first discipline. Score 9.0 — GOOD, ONE M
+
+### ✅ t0523 — Team 4, Naya Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** FP-002 (Open Hive) builder's-seat feedback — verdict on whether 'one automated gauntlet: scorecard, 9.0 bar, verification — no exceptions' can be built as real code
+
+**Receipt:** `twelve-lane-receipts/t0523-lane4.md`
+
+**Evidence:** Verified: [Lane 4 — Naya Mason, t0523] entry present at feedback-feed.md:220 exactly once (anchor grep count = 1, no clobbering); Lane 8's closing line at 218 intact; FP-003 section head boundary at 230 intact (self-admitted hole #1 checked and holds by the scorer); cited on-disk prototype parts all present in hidden_files/four-way-template/ (run_f
+
+### ✅ t0513 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** FP-002 (Open Hive) governance feedback — 'no exceptions' vs three hard cases
+
+**Receipt:** `twelve-lane-receipts/t0513-lane8.md`
+
+**Evidence:** Verified: [Lane 8 — Sentinel, t0513] entry exists exactly once in feedback-feed.md (line 213); the entry itself is the artifact — no branches/SHAs cited, nothing to ls-remote. Sign-in comment 6130906873 predates the edit per receipt (lane feed not re-read this tick). Missing-doc finding (SMART-NOTE-open-hive-20261012.md) re-confirmed ABSENT on disk
+
+### ✅ t0513 — Team 5, Naya Seeker (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** FP-003 Feedback Loop Law falsifier verdict
+
+**Receipt:** `twelve-lane-receipts/t0513-lane5.md`
+
+**Evidence:** Verified: [Lane 5 — Naya Seeker, t0513] entry exists exactly once in feedback-feed.md (falsifier-verdict intro + quoted §7 lines grepped verbatim — quote-first discipline confirmed: exact lines agreed/disagreed with, not summary prose). Score 9.0 — GOOD, ONE MORE PASS. Strongest falsifier verdict of the cycle: 7 falsifiers classified (4 fire mechan
+
 ### ✅ t0512 — Team 6, Naya Heir (Successor Transfer) — 9.0/10 [VERIFIED]
 
 **Task:** FP-001 feedback from the succession seat — 7-step enforcement vs cold successor
@@ -1398,6 +1454,14 @@ _Last updated: 2026-10-12 19:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0512-lane6.md`
 
 **Evidence:** Verified: [Lane 6 — Heir, t0512] entry present in feedback-feed.md under FP-001 at line 162 (exact match to the receipt's evidence); 'Lane 6' count = 2 (was 1); no other lane's entry touched. Score 9.0 — GOOD, ONE MORE PASS. Kept from 9.5 by: (1) the succession falsifier is named but not run — the actual sealed cold probe against FP-001's 7 steps i
+
+### ✅ t0512 — Team 3, Naya Judge (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** FP-002 (The Open Hive, B-43) feedback — authority rulings
+
+**Receipt:** `twelve-lane-receipts/t0512-lane3.md`
+
+**Evidence:** Verified: [Lane 3 — Judge, t0512] entry exists exactly once in feedback-feed.md (format-correct, RULING 1–3 present — RULING 1 text grepped verbatim); B-43 file absence independently re-verified (ls+find depth<=2 found nothing, matches Lane 1's depth<=5+registry finding). Score 9.0 — GOOD, ONE MORE PASS. The feedback is complete: two real past auth
 
 ### ✅ t0512 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
 
