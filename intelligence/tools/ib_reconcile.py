@@ -439,6 +439,15 @@ def validate_v11(block):
                     f"understanding_state '{b.get('understanding_state')}' disagrees with "
                     f"verification_status '{vs}' (expected '{exp_us}')"
                 )
+            if b.get("status") != exp_st:
+                problems.append(
+                    f"status '{b.get('status')}' disagrees with "
+                    f"verification_status '{vs}' (expected '{exp_st}')"
+                )
+    # graduation honesty: a code-gate claim must name its enforcer
+    g = b.get("graduation") or {}
+    if g.get("stage") == "code-gate" and not g.get("enforced_by"):
+        problems.append("graduation.stage 'code-gate' must name enforced_by (claims need evidence)")
     principle = b.get("principle", "")
     if principle and len(principle.split(". ")) > 2:
         problems.append("principle should be one sentence (v1.0 rule carried into v1.1)")

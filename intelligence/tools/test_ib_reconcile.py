@@ -388,3 +388,18 @@ class TestNegativeControls(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
+
+    def test_code_gate_requires_enforcer(self):
+        # A code-gate graduation claim must name its enforcer (receipts, not claims).
+        b = make_v11()
+        b["graduation"] = {"stage": "code-gate", "next_step": "x", "enforced_by": None}
+        problems = validate_v11(b)
+        self.assertTrue(any("enforced_by" in p for p in problems))
+        b["graduation"]["enforced_by"] = "intelligence/tools/ib.py::_require_gate"
+        self.assertEqual(validate_v11(b), [])
+
+    def test_status_pair_must_agree_with_ladder(self):
+        b = make_v11(verification_status="APPLIED")
+        b["status"] = "DRAFT"  # APPLIED maps to DURABLE
+        problems = validate_v11(b)
+        self.assertTrue(any("status" in p and "disagrees" in p for p in problems))
