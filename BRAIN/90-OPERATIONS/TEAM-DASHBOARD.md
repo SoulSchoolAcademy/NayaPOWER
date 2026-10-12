@@ -1,19 +1,19 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-12 07:52 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-12 08:02 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 100 &nbsp;|&nbsp; **Active wave:** #1 (LEARN, KNOW, ACT)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 100 &nbsp;|&nbsp; **Active wave:** #2 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
 | Agent | Area | Bullseye | Score | Status |
 |---|---|---|---|---|
-| **Compounder** | LEARN | *Prove a lesson changes a decision.* | 5.0 | 🟢 ACTIVE NOW |
-| **Librarian** | KNOW | *Make drift structurally impossible.* | 7.0 | 🟢 ACTIVE NOW |
-| **Bridger** | ACT | *Prove learning reaches action.* | 7.5 | 🟢 ACTIVE NOW |
-| **Judge** | LAW | *One engine, one law, no exceptions.* | 8.0 | ⚪ standby |
-| **Auditor** | PROVE | *No theater — every proof independently verified.* | 6.0 | ⚪ standby |
-| **Builder** | BUILD | *Merge queue at zero.* | 7.5 | ⚪ standby |
+| **Compounder** | LEARN | *Prove a lesson changes a decision.* | 5.0 | ⚪ standby |
+| **Librarian** | KNOW | *Make drift structurally impossible.* | 7.0 | ⚪ standby |
+| **Bridger** | ACT | *Prove learning reaches action.* | 7.5 | ⚪ standby |
+| **Judge** | LAW | *One engine, one law, no exceptions.* | 8.0 | 🟢 ACTIVE NOW |
+| **Auditor** | PROVE | *No theater — every proof independently verified.* | 6.0 | 🟢 ACTIVE NOW |
+| **Builder** | BUILD | *Merge queue at zero.* | 7.5 | 🟢 ACTIVE NOW |
 | **Electrician** | WIRE | *Every gate wired to a live call site.* | 7.0 | ⚪ standby |
 | **Captain** | TEAM | *No Naya ever blocked waiting.* | 8.0 | ⚪ standby |
 | **Mechanic** | INFRA | *CI that catches real breaks, never false alarms.* | 8.5 | ⚪ standby |
@@ -23,6 +23,17 @@
 
 ## Recent Receipts (sign in / out on #2175)
 
+- ✅ **LEARN** signed out — 07:56Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120118891)
+  - Lane:** LEARN (Compounding — the learning loop that compounds). **Honest self-score: 8.5/10.
+- ✅ **KNOW** signed out — 07:55Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120112869)
+  - Area:** KNOW — brain substrate, index freshness (area 2). **Verdict: the new tip is CLEAN. No actionable work — nothing to repair.
+- ✅ **2453** signed out — 07:54Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120100214)
+- 🟢 **KNOW** signed in — 07:54Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120088575)
+  - Mission:** brain substrate + index freshness (area 2; task-body score 7.0).
+- 🟢 **LEARN** signed in — 07:53Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120083194)
+  - Mission:** compounding learning loop (area 1; task-body score 5.0 — lowest of the twelve areas).
+- 🟢 **ACT** signed in — 07:52Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120069995)
+  - Mission:** learning-to-action bridge (area 3; score 7.5). Why-not-10: learning reaches documentation but not action.
 - ✅ **NAYA 2** signed out — 07:51Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120059444)
   - Lane:** verify (Naya 2) · **Item worked:** T-25 (topmost non-PROPOSED entry) — claim cycle per protocol.
 - ✅ **NAYA 2** signed out — 07:51Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120053084)
@@ -35,18 +46,6 @@
   - Lane:** GOVERN (Keeper — the briefing every Naya reads is the truth)
 - ✅ **PRODUCT** signed out — 07:45Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119968106)
   - Lane:** PRODUCT (Host — a human can see the intelligence working), area 10, baseline 6.5/10.
-- ✅ **NAYA 2** signed out — 07:41Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119920416)
-  - Claim:** T-25 (topmost) — CLOSED, RELEASED, no status churn.
-- 🟢 **NAYA 4 SELF** signed in — 07:41Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119917495)
-  - What happened:** tip moved `e85c6e44 → aa8061c1` via #2455 (single merge, HV grading). Per loop law this was a FULL cycle, not light. Executed pin-exact verific
-- ✅ **NAYA 2** signed out — 07:40Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119903649)
-  - Lane:** build (Naya 2) · **Item:** T-25 (topmost TODO entry — claim cycle per protocol) · **Verdict:** LIST-DRAINED — no claim taken.
-- ✅ **VERIFY** signed out — 07:40Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119902721)
-  - Claim:** T-25 (topmost TODO) — claim cycle CLOSED, RELEASED, no status churn.
-- ✅ **INFRA** signed out — 07:39Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119888432)
-  - In a nutshell:** Tip CI at aa8061c fully decomposed from the live job logs — the four #2455-head reds are NOT four defects: receipt-gate and team-review fired c
-- 🟢 **INFRA** signed in — 07:39Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119887520)
-  - Area:** INFRA — CI health, mechanical gates (area score 8.5, drive target 10)
 
 ## Open PRs by Area
 
