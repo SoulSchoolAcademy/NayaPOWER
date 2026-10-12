@@ -2,11 +2,11 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-12 11:36 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-12 12:06 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## 🟢 Working right now
 
-- **Team ? — ?** (?) — tick t0232
+- **Team ? — ?** (?) — tick t0252
 
 ## The Teams
 
@@ -1160,6 +1160,48 @@ _Last updated: 2026-10-12 11:36 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t892-lane1.md`
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
+
+### ✅ t0262 — Team 9, Naya Smith (Code Health) — 9.5/10 [VERIFIED]
+
+**Task:** closed 7 pre-existing base pytest failures (receipt-gate exit 0, compound-scale hermetic fixtures, ADVISE-count) -> PR #2467, 4220/0 full suite on branch bytes
+
+**Evidence:** Dispatcher-verified via git protocol: naya/nine-tipred-fix-t0252 @ 9a4a129c matches, parent=live tip (unmoved, no re-anchor needed). Receipt claims 7 named tests pass, 24 receipt-battery green, zero new failures. Deductions: CI pending at sign-out (async by design), L6-L11 non-hermetic registry paths routed to Learning lane. Sign-in before first ex
+
+### ✅ t0262 — Team 8, Naya Sentinel (Governance & Safety) — 8.5/10 [VERIFIED]
+
+**Task:** consensus-gate 134-run loop root-caused (127 skipped, 0 Actions minutes) + fix PR #2466 opened + #2454 re-anchored mergeable-true
+
+**Evidence:** Dispatcher-verified via git protocol: naya/eight-consensus-gate-noise-t0252 @ 92c5a742 matches, parent=live tip f9b5ac3d; naya2/infra-tip-red-heal-20261012 @ c10084bd66 matches. Correction recorded (0 minutes burned, observability noise only). Deductions: outcome open until #2466 merges (workflow=human gate), CI unobserved at sign-out, Fix1/2 subsu
+
+### ✅ t0262 — Team 2, Naya Sage (Learning Pipeline) — 8.5/10 [VERIFIED]
+
+**Task:** error-signal scanner as dispatcher scoring hook (propose-only, 19s corpus scan) + H9 r3 scouting closed, sealed pre-reg
+
+**Evidence:** Dispatcher-verified on disk: all 6 artifacts exist, sha256 prefixes match receipt claims; scan corpus 189 receipts identical summary to t0222, zero new canonical claims. Deductions per agent's honesty: hook unadopted (propose-only), H9 r3 sealed but unexecuted, scanner v1 scope (bare-SHA unscanned). Not a phantom.
+
+### ✅ t0242 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** verification-only tick: tip --check CLEAN + #2385 blocker re-classification + t0212 receipt gap closure
+
+**Receipt:** `twelve-lane-receipts/t0242-lane10.md`
+
+**Evidence:** Dispatcher-verified: tip f9b5ac3d == ls-remote HEAD == shared-state main_tip (zero moves, t0212 director-stale flag RESOLVED); #2385 head eedd9540f5 UNCHANGED; #2456 head e32628325 UNCHANGED; #2454 head 1299e56246 UNCHANGED - all pin-exact via ls-remote. --check CLEAN claimed on fresh shallow clone at the pin (corroborated by unchanged tip + lane's
+
+### ✅ t0242 — Team 9, Naya Smith (Code Health) — 8.5/10 [VERIFIED]
+
+**Task:** #2462 merge-faithful verify + tip byte-pins + #2399 re-pin + kernel-red classification
+
+**Receipt:** `twelve-lane-receipts/t0242-lane9.md`
+
+**Evidence:** Dispatcher-verified on live bytes: tip f9b5ac3d == ls-remote HEAD; merge parents aa8061c1d311 + a92be1c01812 as claimed; merge tree 78b5f5f491d34ac8e7ae562e633098b45c3387d7 == PR-head tree (tree-faithful PROVEN); #2399 head a545f11079 matches ls-remote. 7 remaining pytest reds claimed byte-identical old/new tip (pre-existing unmasked by the node fi
+
+### ✅ t0242 — Team 5, Naya Seeker (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** 6-arm exclusion battery re-run on live tip f9b5ac3d, fresh seal-before-run
+
+**Receipt:** `twelve-lane-receipts/t0242-lane5.md`
+
+**Evidence:** Dispatcher-verified on disk: evidence dir lane5-t0242-exclusion/ has seal.json, battery.py, battery_results.json, fixture_hashes.json, index.json, notes/sn-x1..x6; seal.json values match receipt exactly. Recomputed tools/smart_note_v2.py @ f9b5ac3d sha256 == 92d8b2bef7018c2a5ceda2bc7af411de68f1bbfd7d142c2f29485f417c5efdbe - pin-exact on live tip by
 
 ### ✅ t0232 — Team 8, Naya Sentinel (Governance & Safety) — 8.5/10 [VERIFIED]
 
