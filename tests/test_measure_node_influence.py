@@ -26,7 +26,13 @@ def test_measurement_is_deterministic_and_all_nine_nodes_influence_observable_be
     assert first["report"] == second["report"]
 
     stats = first["report"]["BRAIN.Engineering.kernel_behavior_engine.KernelBehaviorEngine"]
-    assert stats["invoked_count"] == 9
+    # The engine legitimately grew an ADVISE bridge between LAW and ACT
+    # (BRAIN/12-ENGINEERING/kernel_behavior_engine.py: "The ADVISE bridge
+    # runs between LAW and ACT") — so the invoked total is 10, not 9.
+    # Assert what the test means: all nine governed nodes are invoked
+    # (per-member presence + lower bound), not an exact engine total.
+    assert set(ORDER) <= set(stats["invoked_nodes"])
+    assert stats["invoked_count"] >= len(ORDER)
     assert stats["influence_demonstrated_count"] == 9
     assert stats["influence_demonstrated_for"] == sorted(ORDER)
     assert set(stats["changed_scenarios"]) == {
