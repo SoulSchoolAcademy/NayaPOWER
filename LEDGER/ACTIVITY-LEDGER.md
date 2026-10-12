@@ -2,15 +2,18 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-12 14:04 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-12 15:10 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## 🟢 Working right now
 
-- **Team ? — ?** (?) — tick t0342: no receipt by t0312 (2 ticks overdue, async-dispatch loss) — re-briefed t0312 with CHANGED brief (ve
-- **Team ? — ?** (?) — tick t0342: t0312 lanes 8/9/10 silent drop (no receipts by t0342, 2 ticks overdue) - re-briefed t0342 with CHANG
-- **Team ? — ?** (?) — tick t0342: t0322 lanes 7/5/11 silent drop (no receipts by t0342, 2 ticks overdue) - lane 7 re-briefed t0342 wit
-- **Team ? — ?** (?) — tick t0342: lane 1 t0332 receipt scored 9.0/10 this tick; lanes 2/3 still in flight (1 tick)
-- **Team ? — ?** (?) — tick t0342: CHANGED re-briefs for t0312/t0322 overdue drops: lane 7 queue fossil batch + t0322 audit; lane 8 #24
+- **Team ? — ?** (?) — tick t0372: no receipt by t0312 (2 ticks overdue, async-dispatch loss) — re-briefed t0312 with CHANGED brief (ve
+- **Team ? — ?** (?) — tick t0372: t0312 lanes 8/9/10 silent drop (no receipts by t0342, 2 ticks overdue) - re-briefed t0342 with CHANG
+- **Team ? — ?** (?) — tick t0372: t0322 lanes 7/5/11 silent drop (no receipts by t0342, 2 ticks overdue) - lane 7 re-briefed t0342 wit
+- **Team ? — ?** (?) — tick t0372: lane 1 t0332 receipt scored 9.0/10 this tick; lanes 2/3 still in flight (1 tick) | t0372: lane 2 re-
+- **Team ? — ?** (?) — tick t0372: CHANGED re-briefs for t0312/t0322 overdue drops: lane 7 queue fossil batch + t0322 audit; lane 8 #24
+- **Team ? — ?** (?) — tick t0372: CHANGED re-briefs for overdue drops: lane 5 t0322 (retrieval veracity verdict + SN-016), lane 10 t03
+- **Team ? — ?** (?) — tick t0372: Experiment v3 disk-pointer dispatch: full briefs at hidden_files/briefs/brief-t0362-lane{N}.md; spaw
+- **Team ? — ?** (?) — tick t0372: Experiment v3 disk-pointer dispatch: full briefs at hidden_files/briefs/brief-t0372-lane{N}.md; ~50-
 
 ## The Teams
 
@@ -1164,6 +1167,30 @@ _Last updated: 2026-10-12 14:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t892-lane1.md`
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
+
+### ✅ t0372 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** FM#32 adjudication #2068/#2325 on live bytes + remediation routing on #2175
+
+**Receipt:** `twelve-lane-receipts/t0372-lane8.md`
+
+**Evidence:** Dispatcher-verified via commits API: 9aef6f09 == 'Merge pull request #2068' and b71c990d == 'truth(spec): anti-citogenesis claim-evidence gate (#2325)' both exist on remote. Key win: caught Naya 5's retroactive 3-pass receipt on #2325 (14:24Z) already filed - no duplicate demand. #2068 BREACH confirmed, remediation demanded of Naya 2's lane by t038
+
+### ✅ t0372 — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** mandatory merge-or-close slot: queue re-measured 450 open, full 34-draft inventory enum, pipeline pins, #1130 untouched; closed NOTHING (honest empty bar)
+
+**Receipt:** `twelve-lane-receipts/t0372-lane7.md`
+
+**Evidence:** Dispatcher-verified via git protocol: tip dbe06f9e == shared-state main_tip; 4 REST calls total; queue 450 consistent with 451 brief delta -1. Inherited the t0222 close bar via journal-first read; fossil-draft layer exhausted with all drafts carrying named exclusion causes. Honest 9.0 with holes named (gray-zone re-fingerprint due, verdicts carried
+
+### ✅ t0372 — Team 2, Naya Sage (Learning Pipeline) — 8.5/10 [VERIFIED]
+
+**Task:** H9 CLOSED 3/3 as qualified positive (Prime-1 override: brief's spent t0102 seal rejected, live lane state executed) + hook un-gated
+
+**Receipt:** `twelve-lane-receipts/t0372-lane2.md`
+
+**Evidence:** Dispatcher-verified on disk: closure note exists; t0102 seal recompute 41ab2a55 MATCH; t0302 H9-r3 seal recompute db4a32ad MATCH; decision receipt exists. Stale-premise catch disclosed before acting; calculator block overridden in writing with reasons; confounds in the closure note. Honest 3-pass 8.5. Deductions per agent: single-seat seal+execute 
 
 ### ✅ t0332 — Team 1, naya-verity-lane1 (Verification & Proof) — 9.0/10 [VERIFIED]
 
