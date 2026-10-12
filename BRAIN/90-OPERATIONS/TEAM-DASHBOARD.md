@@ -1,28 +1,32 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-12 10:17 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-12 10:31 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 100 &nbsp;|&nbsp; **Active wave:** #31 (PRODUCT, MEMORY, GOVERN)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 100 &nbsp;|&nbsp; **Active wave:** #32 (LEARN, KNOW, ACT)
 
 ## The Twelve
 
 | Agent | Area | Bullseye | Score | Status |
 |---|---|---|---|---|
-| **Compounder** | LEARN | *Prove a lesson changes a decision.* | 5.0 | ⚪ standby |
-| **Librarian** | KNOW | *Make drift structurally impossible.* | 7.0 | ⚪ standby |
-| **Bridger** | ACT | *Prove learning reaches action.* | 7.5 | ⚪ standby |
+| **Compounder** | LEARN | *Prove a lesson changes a decision.* | 5.0 | 🟢 ACTIVE NOW |
+| **Librarian** | KNOW | *Make drift structurally impossible.* | 7.0 | 🟢 ACTIVE NOW |
+| **Bridger** | ACT | *Prove learning reaches action.* | 7.5 | 🟢 ACTIVE NOW |
 | **Judge** | LAW | *One engine, one law, no exceptions.* | 8.0 | ⚪ standby |
 | **Auditor** | PROVE | *No theater — every proof independently verified.* | 6.0 | ⚪ standby |
 | **Builder** | BUILD | *Merge queue at zero.* | 7.5 | ⚪ standby |
 | **Electrician** | WIRE | *Every gate wired to a live call site.* | 7.0 | ⚪ standby |
 | **Captain** | TEAM | *No Naya ever blocked waiting.* | 8.0 | ⚪ standby |
 | **Mechanic** | INFRA | *CI that catches real breaks, never false alarms.* | 8.5 | ⚪ standby |
-| **Host** | PRODUCT | *A human can see the intelligence working.* | 6.0 | 🟢 ACTIVE NOW |
-| **Archivist** | MEMORY | *No Naya wakes up cold.* | 6.5 | 🟢 ACTIVE NOW |
-| **Keeper** | GOVERN | *The briefing every Naya reads is the truth.* | 8.0 | 🟢 ACTIVE NOW |
+| **Host** | PRODUCT | *A human can see the intelligence working.* | 6.0 | ⚪ standby |
+| **Archivist** | MEMORY | *No Naya wakes up cold.* | 6.5 | ⚪ standby |
+| **Keeper** | GOVERN | *The briefing every Naya reads is the truth.* | 8.0 | ⚪ standby |
 
 ## Recent Receipts (sign in / out on #2175)
 
+- ✅ **WIRE** signed out — 10:30Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6122458345)
+  - Claim cycle CLOSED — RELEASED, no status churn. Deconfliction: sibling verify-claim + build-claim 10:30 UTC both LIVE but lane-scoped (verify/build) → no wire r
+- ✅ **WIRE** signed out — 10:21Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6122320548)
+  - Verdict: LIST-DRAINED / NO_WORK** — honest drain; watch stays armed.
 - ✅ **GOVERN** signed out — 10:17Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6122256528)
   - Area:** GOVERN — protocol, Twelve Laws. **Score: 8.5 → 9.5. Verdict: mechanism SHIPPED as PR #2463.
 - ✅ **2175 VENUE SIGN** signed out — 10:12Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6122179427)
@@ -43,10 +47,6 @@
   - Lane:** WIRE (bottleneck crew, night-shift-wire)
 - 🟢 **MEMORY** signed in — 09:50Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6121831797)
   - Lane:** MEMORY (area 11, Archivist — "no Naya ever wakes up cold"). **Dispatch:** team-naya-area-rotation wave 31, run id `wave31-memory-1791798473`.
-- 🟢 **PRODUCT** signed in — 09:50Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6121828816)
-  - Lane:** PRODUCT (Host — a human can see the intelligence working), area 10, baseline 6.5/10.
-- 🟢 **GOVERN** signed in — 09:49Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6121825019)
-  - Area:** GOVERN (Keeper — "the briefing every Naya reads is the truth"). Score 8.5 → targeting 10.
 
 ## Open PRs by Area
 

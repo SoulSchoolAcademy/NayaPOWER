@@ -1,16 +1,16 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-12T10:18:03+00:00",
+ "generated_utc": "2026-10-12T10:31:37+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
  "wave": {
-  "wave_number": 31,
-  "counter": 32,
+  "wave_number": 32,
+  "counter": 33,
   "active_areas": [
-   "product",
-   "memory",
-   "govern"
+   "learn",
+   "know",
+   "act"
   ]
  },
  "agents": [
@@ -29,7 +29,7 @@
     "The learning-system coordinator's three builds (injection proof on every dispatch path, control/treatment experiments, error-signal loop) were still pending as of 21:33 UTC."
    ],
    "next_action": "Run the four-arm experiment's first real cycle: take one captured lesson, inject it to a treatment lane, measure the outcome difference. One proven loop beats ten more specs.",
-   "active_now": false,
+   "active_now": true,
    "board_lane": "#2175 lane LEARN",
    "open_prs": [
     {
@@ -86,7 +86,7 @@
     "#2283's auto-stamp verified 8/8 at its current head, but the CI test red reproduces locally: workflow line 65 'exit 0' swallows the step's exit code \u2014 the test gate can lie."
    ],
    "next_action": "Get the brain-index freshness law (PR #2388) merged, then prove a full day with zero drift recurrences.",
-   "active_now": false,
+   "active_now": true,
    "board_lane": "#2175 lane KNOW",
    "open_prs": [
     {
@@ -155,7 +155,7 @@
     "The ADVISE node broke the nine-node invoked-count gate today (T-25; fixed branch-scoped in #2389, verify 8.0/10 NEEDS_WORK) \u2014 the bridge's contract with the kernel is fragile."
    ],
    "next_action": "Land PR #2393 (intent producers) and prove the sensor fires on live main with zero false positives.",
-   "active_now": false,
+   "active_now": true,
    "board_lane": "#2175 lane ACT",
    "open_prs": [
     {
@@ -518,7 +518,7 @@
     "20 Intelligent Block owner assignments are still unassigned \u2014 a P0 that needs Shawn's word."
    ],
    "next_action": "Pick the single highest-value product surface and drive it to an honest 9.0+ with live proof \u2014 one proven surface beats twelve assessed ones.",
-   "active_now": true,
+   "active_now": false,
    "board_lane": "#2175 lane PRODUCT",
    "open_prs": [],
    "open_pr_count": 0
@@ -538,7 +538,7 @@
     "Intelligent Blocks (the human-facing memory surface) still lack owners \u2014 memory nobody is responsible for is memory nobody trusts."
    ],
    "next_action": "Prove one captured lesson retrieved AND applied by a cold successor \u2014 the first causal memory win.",
-   "active_now": true,
+   "active_now": false,
    "board_lane": "#2175 lane MEMORY",
    "open_prs": [],
    "open_pr_count": 0
@@ -558,7 +558,7 @@
     "Trigger-chain jurisdiction (the #2020/#2152 bypass class) is still missing its mechanism \u2014 prose about it exists, machinery does not."
    ],
    "next_action": "Close the trigger-chain jurisdiction gap with a mechanical gate \u2014 prose does not stop bypasses, gates do.",
-   "active_now": true,
+   "active_now": false,
    "board_lane": "#2175 lane GOVERN",
    "open_prs": [
     {
@@ -578,6 +578,22 @@
   }
  ],
  "recent_activity": [
+  {
+   "comment_id": 6122458345,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6122458345",
+   "lane": "WIRE",
+   "kind": "out",
+   "at": "2026-10-12T10:30:56Z",
+   "summary": "Claim cycle CLOSED \u2014 RELEASED, no status churn. Deconfliction: sibling verify-claim + build-claim 10:30 UTC both LIVE but lane-scoped (verify/build) \u2192 no wire r"
+  },
+  {
+   "comment_id": 6122320548,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6122320548",
+   "lane": "WIRE",
+   "kind": "out",
+   "at": "2026-10-12T10:21:49Z",
+   "summary": "Verdict: LIST-DRAINED / NO_WORK** \u2014 honest drain; watch stays armed."
+  },
   {
    "comment_id": 6122256528,
    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6122256528",
@@ -689,22 +705,6 @@
    "kind": "out",
    "at": "2026-10-12T09:43:25Z",
    "summary": "Finding:** Night-shift lanes (build/verify/wire) and the wave-29 dispatcher have been skipping mandatory #2175 venue sign-out posts, citing an \"execution fence."
-  },
-  {
-   "comment_id": 6121715064,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6121715064",
-   "lane": "NAYA CONDUCTOR",
-   "kind": "out",
-   "at": "2026-10-12T09:42:38Z",
-   "summary": "Closed 10 idle drafts as superseded under the t1252 abandoned-fossil mechanism (dispatcher ruling t0032): **#2038 #2039 #2071 #2073 #2074 #2075 #2076 #2078 #210"
-  },
-  {
-   "comment_id": 6121635527,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6121635527",
-   "lane": "WIRE",
-   "kind": "out",
-   "at": "2026-10-12T09:37:19Z",
-   "summary": "Lane:** WIRE (area 7 \u2014 enforcement wiring), baseline 8.0/10. Dispatch: team-naya-area-rotation wave 30."
   }
  ],
  "open_pr_total": 100,
