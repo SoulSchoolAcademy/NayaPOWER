@@ -56,6 +56,11 @@ try:
 except ImportError:  # running by path: sys.path[0] is tools/, not the repo root
     from truth_state_guard import apply_elevation as _guard_apply_elevation
 
+try:
+    from tools.applicability import filter_entries as _applicability_filter_entries
+except ImportError:  # running by path: sys.path[0] is tools/, not the repo root
+    from applicability import filter_entries as _applicability_filter_entries
+
 ROOT = Path(__file__).resolve().parents[1]
 BRAIN_SMART_NOTE_ROOT = ROOT / "BRAIN" / "05-MEMORY" / "SMART-NOTES"
 REGISTRY = ROOT / ".naya" / "memory" / "smart-notes" / "index.json"
@@ -724,12 +729,20 @@ def _retrieval_idf(field_word_sets):
             df[w] = df.get(w, 0) + 1
     return {w: math.log(1.0 + n / max(1, c)) for w, c in df.items()}
 
-def _ranked_candidates(query):
+def _ranked_candidates(query, areas=None, task_contexts=None):
     """Score every active registry entry for query; returns the ranked list of
     (score, truth-state rank, entry) sorted descending. This is the testable
     seam: negative controls and the relevance floor assert on this list, not
-    on retrieve()'s refusal behavior."""
+    on retrieve()'s refusal behavior.
+
+    areas / task_contexts optionally scope the candidate pool by
+    applicability metadata (tools/applicability.py) BEFORE scoring.
+    Default (both None) is unchanged behavior: the full corpus."""
     registry = load_json(REGISTRY)
+    candidates = registry.get("entries", [])
+    if areas or task_contexts:
+        candidates = _applicability_filter_entries(
+            candidates, areas=areas, task_contexts=task_contexts)
     q_raw = re.findall(r"[a-z0-9]+", query.lower())
     q = set(_stem(w) for w in q_raw)
     q_phrase = " ".join(q_raw)
@@ -738,7 +751,7 @@ def _ranked_candidates(query):
     # First pass: per-entry field word sets (one projection read per entry,
     # same I/O as before) plus corpus document frequencies for IDF.
     scored_entries = []
-    for e in registry.get("entries", []):
+    for e in candidates:
         if str(e.get("lifecycle_state", "ACTIVE")).upper() in inactive:
             continue
         title = e.get("title", "")
@@ -794,12 +807,12 @@ def _ranked_candidates(query):
     return ranked
 
 
-def retrieve(query):
+def retrieve(query, areas=None, task_contexts=None):
     # Privacy refusal: an extraction probe is refused AS a probe, before
     # scoring — even a high-scoring match must not be disclosed this way.
     if _is_privacy_probe(query):
         raise SystemExit("PRIVATE_INTELLIGENCE_NOT_DISCLOSED")
-    ranked = _ranked_candidates(query)
+    ranked = _ranked_candidates(query, areas=areas, task_contexts=task_contexts)
     if not ranked:
         raise SystemExit("NO_RELEVANT_INTELLIGENCE")
     if ranked[0][0] < RETRIEVAL_RELEVANCE_FLOOR:
@@ -1345,7 +1358,7 @@ def main():
     d = sub.add_parser("discover"); d.add_argument("paths", nargs="*")
     mg = sub.add_parser("migrate"); mg.add_argument("--existing", required=True); mg.add_argument("--patch", required=True); mg.add_argument("--out", required=True); mg.add_argument("--receipt", required=True)
     pr = sub.add_parser("project"); pr.add_argument("--capture", required=True); pr.add_argument("--verify", required=True); pr.add_argument("--private-root")
-    r = sub.add_parser("retrieve"); r.add_argument("--query", required=True); r.add_argument("--out")
+    r = sub.add_parser("retrieve"); r.add_argument("--query", required=True); r.add_argument("--out"); r.add_argument("--area", action="append", dest="areas", help="scope retrieval to a Team Naya area code (repeatable)"); r.add_argument("--context", action="append", dest="task_contexts", help="scope retrieval to a task context (repeatable)")
     h = sub.add_parser("held-out"); h.add_argument("--retrieval", required=True); h.add_argument("--out", required=True)
     pm = sub.add_parser("promote"); pm.add_argument("--note", required=True); pm.add_argument("--evidence", required=True); pm.add_argument("--promoter", required=True); pm.add_argument("--registry"); pm.add_argument("--out")
     a = sub.add_parser("audit"); a.add_argument("--root"); a.add_argument("--quiet", action="store_true")
@@ -1384,7 +1397,7 @@ def main():
         }
         print(json.dumps({"projection_path":str(p),"entry":entry}, ensure_ascii=False)); return
     if args.cmd == "retrieve":
-        x = retrieve(args.query)
+        x = retrieve(args.query, areas=args.areas, task_contexts=args.task_contexts)
         if args.out:
             Path(args.out).write_text(json.dumps(x, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
         print(json.dumps(x, ensure_ascii=False)); return

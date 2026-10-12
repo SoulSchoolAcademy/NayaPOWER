@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
-**Generated:** 2026-10-11  
-**Receipt basis commit:** `f33bba344a34e9e91b4b5bb6802c22f6eade3145`  
-**Inventory file count:** 1243  
+**Generated:** 2026-10-12  
+**Receipt basis commit:** `665098e3f00c9aa6f63907360b8500891704071c`  
+**Inventory file count:** 1256  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -10,20 +10,20 @@
 
 | Domain | Files |
 |---|---|
-| 00-SPEC | 15 |
+| 00-SPEC | 16 |
 | 01-GOVERNANCE | 56 |
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 25 |
 | 05-MEMORY | 646 |
 | 06-PROOF | 13 |
-| 07-LEARNING | 8 |
+| 07-LEARNING | 9 |
 | 08-SUCCESSION | 2 |
 | 09-EVOLUTION | 2 |
 | 10-INTERFACES | 380 |
 | 11-KNOWLEDGE | 7 |
 | 12-ENGINEERING | 25 |
-| 90-OPERATIONS | 13 |
+| 90-OPERATIONS | 24 |
 | 99-ARCHIVE | 2 |
 | ROOT | 6 |
 
@@ -50,6 +50,7 @@
 - `BRAIN/00-SPEC/0005-TREE-V1.md` — `edc4fdb44334` (1622 bytes)
 - `BRAIN/00-SPEC/0006-NIA-LANGUAGE-INTENT-CONTRACT-V1.md` — `d31a734487be` (5689 bytes)
 - `BRAIN/00-SPEC/0006-OBJECT-TYPES-V1.md` — `d74f53a51605` (2969 bytes)
+- `BRAIN/00-SPEC/0007-RETRIEVAL-AUTHORIZATION-GATE-SPEC-V1.md` — `313ff50e2ee0` (17687 bytes)
 - `BRAIN/00-SPEC/BRAIN-MACHINE-CONTRACT-V1.schema.json` — `75200ca1f5ce` (7778 bytes)
 - `BRAIN/00-SPEC/NIA-LANGUAGE-INTENT-V1.json` — `a40095e2113f` (2068 bytes)
 - `BRAIN/00-SPEC/README.md` — `bf8da2f302ef` (2845 bytes)
@@ -855,6 +856,7 @@
 - `BRAIN/07-LEARNING/VERIFICATION-QUEUE/README.md` — `d314acd59aa8` (742 bytes)
 - `BRAIN/07-LEARNING/VERIFICATION-QUEUE/queue.json` — `fe51488c7066` (3 bytes)
 - `BRAIN/07-LEARNING/learning-system-blueprint-v1.md` — `f88b24e86ea0` (45508 bytes)
+- `BRAIN/07-LEARNING/network-lessons/README.md` — `3286bcd0af4c` (706 bytes)
 ### 08-SUCCESSION — Succession
 
 - `BRAIN/08-SUCCESSION/0001-SUCCESSOR-CONTRACT-V1.md` — `315b3cdd3c80` (2105 bytes)
@@ -1295,14 +1297,25 @@
 - `BRAIN/90-OPERATIONS/2026-10-04-WHOLE-REPOSITORY-ALIGNMENT.md` — `954227fe2d94` (8068 bytes)
 - `BRAIN/90-OPERATIONS/2026-10-06-COLD-14-CURRENT-STATE-AND-10-10-GAP-AUDIT.md` — `188ee5921503` (30828 bytes)
 - `BRAIN/90-OPERATIONS/2026-10-08-COLD-14-INDEPENDENT-RUN-AND-PRODUCT-PATH-REPAIR.md` — `37e4e4b70a23` (20377 bytes)
+- `BRAIN/90-OPERATIONS/INTER-LEDGER-PROTOCOL.md` — `67d42af19eae` (24546 bytes)
+- `BRAIN/90-OPERATIONS/NETWORK-MAP.md` — `29c74e9d9d67` (9314 bytes)
 - `BRAIN/90-OPERATIONS/README.md` — `c9c2abaff648` (2077 bytes)
+- `BRAIN/90-OPERATIONS/SMART-LEDGER-PROTOCOL.md` — `dc85d2694699` (15869 bytes)
+- `BRAIN/90-OPERATIONS/contracts/handoff-contract.md` — `3c8346c5942b` (21563 bytes)
+- `BRAIN/90-OPERATIONS/contracts/learning-contract.md` — `c42197ff505a` (21689 bytes)
+- `BRAIN/90-OPERATIONS/contracts/verification-contract.md` — `e70095fcbe07` (19666 bytes)
+- `BRAIN/90-OPERATIONS/network-map.machine.json` — `3ac19fca9022` (5450 bytes)
+- `BRAIN/90-OPERATIONS/network-registry.machine.json` — `7741e88e44d8` (426 bytes)
+- `BRAIN/90-OPERATIONS/network-registry/README.md` — `f561613fb1e3` (850 bytes)
+- `BRAIN/90-OPERATIONS/network-registry/naya2-team.json` — `7ab1ab56f34e` (1497 bytes)
+- `BRAIN/90-OPERATIONS/network-registry/naya5-team.json` — `cca9bdad8f3f` (1489 bytes)
 ### 99-ARCHIVE — Archive
 
 - `BRAIN/99-ARCHIVE/README.md` — `a012a595ea15` (707 bytes)
 - `BRAIN/99-ARCHIVE/brain-reconciliation-ledger-f648833b.md` — `168e14b9b430` (2096 bytes)
 ### ROOT — Brain root files
 
-- `BRAIN/CURRENT-MISSION-STATE.md` — `050a4c70f4d2` (111940 bytes)
+- `BRAIN/CURRENT-MISSION-STATE.md` — `707755eb80cf` (156850 bytes)
 - `BRAIN/MASTER-MAP.md` — `3a56fd561121` (9551 bytes)
 - `BRAIN/NAYAPOWER-BRAIN-INDEX.json` — _(self-referential index file; blob SHA omitted)_
 - `BRAIN/README.md` — `bf4d982f4f32` (2325 bytes)
