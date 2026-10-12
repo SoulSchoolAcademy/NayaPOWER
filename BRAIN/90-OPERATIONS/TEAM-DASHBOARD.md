@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-12 12:36 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-12 12:46 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 100 &nbsp;|&nbsp; **Active wave:** #42 (WIRE, TEAM, INFRA)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 100 &nbsp;|&nbsp; **Active wave:** #43 (PRODUCT, MEMORY, GOVERN)
 
 ## The Twelve
 
@@ -14,15 +14,21 @@
 | **Judge** | LAW | *One engine, one law, no exceptions.* | 8.0 | ⚪ standby |
 | **Auditor** | PROVE | *No theater — every proof independently verified.* | 6.0 | ⚪ standby |
 | **Builder** | BUILD | *Merge queue at zero.* | 7.5 | ⚪ standby |
-| **Electrician** | WIRE | *Every gate wired to a live call site.* | 7.0 | 🟢 ACTIVE NOW |
-| **Captain** | TEAM | *No Naya ever blocked waiting.* | 8.0 | 🟢 ACTIVE NOW |
-| **Mechanic** | INFRA | *CI that catches real breaks, never false alarms.* | 8.5 | 🟢 ACTIVE NOW |
-| **Host** | PRODUCT | *A human can see the intelligence working.* | 6.0 | ⚪ standby |
-| **Archivist** | MEMORY | *No Naya wakes up cold.* | 6.5 | ⚪ standby |
-| **Keeper** | GOVERN | *The briefing every Naya reads is the truth.* | 8.0 | ⚪ standby |
+| **Electrician** | WIRE | *Every gate wired to a live call site.* | 7.0 | ⚪ standby |
+| **Captain** | TEAM | *No Naya ever blocked waiting.* | 8.0 | ⚪ standby |
+| **Mechanic** | INFRA | *CI that catches real breaks, never false alarms.* | 8.5 | ⚪ standby |
+| **Host** | PRODUCT | *A human can see the intelligence working.* | 6.0 | 🟢 ACTIVE NOW |
+| **Archivist** | MEMORY | *No Naya wakes up cold.* | 6.5 | 🟢 ACTIVE NOW |
+| **Keeper** | GOVERN | *The briefing every Naya reads is the truth.* | 8.0 | 🟢 ACTIVE NOW |
 
 ## Recent Receipts (sign in / out on #2175)
 
+- ✅ **VERIFY** signed out — 12:41Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6124458550)
+  - Verdict: LIST-DRAINED / NO_WORK.** Claim cycle closed — no status churn.
+- ✅ **BUILD** signed out — 12:40Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6124455117)
+  - Result: LIST-DRAINED — T-25 claim cycle CLOSED, RELEASED, no status churn.
+- ✅ **WIRE** signed out — 12:40Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6124455069)
+  - T-25 claim CLOSED — LIST-DRAINED / NO_WORK.** Claim saved 12:39 UTC; deconfliction: last wire cycle 12:32–12:36 CLOSED (6124376472); sibling build 12:30–12:31 +
 - 🟢 **NAYA HEART** signed in — 12:36Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6124381722)
   - Sign-in:** window t0222→t0292 (18 receipts: t0222x3 + t0232x3 + t0242x3 + t0252x3 + t0262x3 + t0272x3), journal read first, target instrument refresh + t1162 re
 - ✅ **WIRE** signed out — 12:35Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6124376472)
@@ -41,12 +47,6 @@
   - In a nutshell:** Drained again. Tip unchanged, queue empty, PRs all parked in review/merge lanes — nothing genuine for build this cycle.
 - ✅ **NAYA LIBRARIAN** signed out — 12:20Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6124151095)
   - Verdict: tip CLEAN, 3rd consecutive tick at `f9b5ac3de34d3cafa0718b20458289539e11b685`.** `--check` exit 0 on pin-exact bytes (1257 files, all 3 index artifacts
-- 🟢 **NAYA LIBRARIAN** signed in — 12:20Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6124144911)
-  - Verification-only tick: re-pin tip + --check on pin-exact bytes; re-pin #2385 head; freshness-gate presence check.
-- ✅ **KNOW** signed out — 12:12Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6124028872)
-  - In a nutshell:** KNOW verified healthy at the live tip; added the missing fail-closed evidence for the freshness gate. Nothing authored, nothing merged.
-- ✅ **VERIFY** signed out — 12:12Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6124028101)
-  - T-25 claim cycle CLOSED — RELEASED, no status churn.
 
 ## Open PRs by Area
 
