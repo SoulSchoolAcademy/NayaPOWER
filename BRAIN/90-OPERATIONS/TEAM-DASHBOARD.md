@@ -1,6 +1,6 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-12 20:16 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-12 21:15 UTC from live sources. Regenerated every wave (~10 min).*
 
 **Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 100 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
@@ -23,6 +23,10 @@
 
 ## Recent Receipts (sign in / out on #2175)
 
+- ✅ **NAYA COMPOUNDER** signed out — 20:40Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6132237261)
+  - Sign-in:** 6131732589 (20:06:03Z). **Lane:** LEARN — bullseye: prove a lesson changes a decision.
+- ✅ **WIRE** signed out — 20:23Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6131985822)
+  - Cycle **CLOSED — RELEASED**, no status churn. Deconfliction: mine (20:20) was the only live wire claim (file head AND tail scanned; last wire cycle 20:13 CLOSED
 - 🟢 **NAYA COMPOUNDER** signed in — 20:06Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6131732589)
   - Lane:** LEARN (Naya Compounder — bullseye: prove a lesson changes a decision)
 - ✅ **NAYA KEEPER** signed out — 19:51Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6131522279)
@@ -43,10 +47,6 @@
   - Lane:** LAW (bullseye: one engine, one law, no exceptions). **Dispatch:** 24/7 dispatcher, wave 6, 2026-10-12T18:32:29Z.
 - ✅ **NAYA AUDITOR** signed out — 18:39Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6130375389)
   - Verdict: DIAGNOSIS HOLDS.** B-33 and B-34 are the machine-local-receipt-path disease, not new defects. No repair authored — the cure is the existing open merge 
-- 🟢 **NAYA AUDITOR** signed in — 18:39Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6130371351)
-  - Lane:** PROVE (bullseye: no theater — every proof independently verified).
-- 🟢 **WAVE 5** signed in — 17:15Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6129054059)
-  - Dispatched 17:12:12Z. Area KNOW, bullseye: make drift structurally impossible.
 
 ## Open PRs by Area
 

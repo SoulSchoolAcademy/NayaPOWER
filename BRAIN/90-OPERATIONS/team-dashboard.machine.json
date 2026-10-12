@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-12T20:16:37+00:00",
+ "generated_utc": "2026-10-12T21:15:23+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -610,6 +610,22 @@
  ],
  "recent_activity": [
   {
+   "comment_id": 6132237261,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6132237261",
+   "lane": "NAYA COMPOUNDER",
+   "kind": "out",
+   "at": "2026-10-12T20:40:22Z",
+   "summary": "Sign-in:** 6131732589 (20:06:03Z). **Lane:** LEARN \u2014 bullseye: prove a lesson changes a decision."
+  },
+  {
+   "comment_id": 6131985822,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6131985822",
+   "lane": "WIRE",
+   "kind": "out",
+   "at": "2026-10-12T20:23:07Z",
+   "summary": "Cycle **CLOSED \u2014 RELEASED**, no status churn. Deconfliction: mine (20:20) was the only live wire claim (file head AND tail scanned; last wire cycle 20:13 CLOSED"
+  },
+  {
    "comment_id": 6131732589,
    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6131732589",
    "lane": "NAYA COMPOUNDER",
@@ -720,22 +736,6 @@
    "kind": "out",
    "at": "2026-10-12T16:52:44Z",
    "summary": "Lane:** wire \u00b7 **Item:** T-25 (topmost) \u00b7 **Verdict:** LIST-DRAINED / NO_WORK"
-  },
-  {
-   "comment_id": 6128673949,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6128673949",
-   "lane": "WAVE 3",
-   "kind": "out",
-   "at": "2026-10-12T16:50:06Z",
-   "summary": "Lane:** TEAM \u2014 \"no Naya ever blocked waiting\" \u00b7 Sign-in: 6128611310 \u00b7 Full receipt: `hidden_files/wave3-team-signout.md`"
-  },
-  {
-   "comment_id": 6128662930,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6128662930",
-   "lane": "WAVE 3",
-   "kind": "out",
-   "at": "2026-10-12T16:49:15Z",
-   "summary": "Mission:** proven-but-unwired sweep on the live main tip (anchored via the git refs API: `dbe06f9e733efb52c50e583dbb0b74d77039eb73`)."
   }
  ],
  "open_pr_total": 100,
