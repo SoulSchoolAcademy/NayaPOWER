@@ -1184,18 +1184,23 @@ def execute_plan(plan: ActionPlan,
         return refused(PLAN_SAFETY_NEEDS_EVIDENCE, evidence=gate_evidence)
 
     # --- Decision-discipline execution gate (Shawn's Naya Code intel
-    # 2026-10-11 as executable machine law): the ONE adjudication at the
-    # point of action, immediately before the executor fires. Every refusal
-    # above is an early return, so reaching here means authority granted,
-    # evidence sufficient, Law-11 door ADMISSIBLE, and do-no-harm cleared.
-    # The gate re-adjudicates from live status: it re-runs the Law 11 gate
-    # on the CURRENT typed action (not the captured door verdict), so a
-    # state mutated between the door check and the executor still cannot
-    # slip through — and it requires both independent requirements:
-    # sufficient evidence AND granted authority. Evidence never creates
-    # authority; authority never replaces evidence. Any non-ADMISSIBLE
-    # state refuses fail-closed. The executor never fires without the
-    # gate's ADMISSIBLE verdict.
+    # 2026-10-11 as executable machine law): the final consolidated
+    # re-adjudication at the point of action, immediately before the
+    # executor fires. Defense in depth at a safety door: the Law-11 door
+    # check and the do-no-harm re-gate already adjudicated above; this
+    # gate re-adjudicates the same door through decision_discipline.
+    # The evidence/authority legs are control-flow-derived assertions,
+    # not fresh measurements: every refusal above is an early return, so
+    # reaching here means live authority re-resolved clean and the
+    # evidence-bearing checks passed. The gate's MECHANICAL re-adjudication
+    # here is the Law-11 leg: it re-runs law11_gate on the CURRENT typed
+    # action (not the captured door verdict), so a compromised earlier
+    # check — or a mutated action object — still cannot slip an
+    # inadmissible action through to the executor. Gate states map to the
+    # pipeline's refusal codes so the wire stays correct if the statuses
+    # ever become live measurements. Any non-ADMISSIBLE state refuses
+    # fail-closed. The executor never fires without the gate's ADMISSIBLE
+    # verdict.
     dd_assessment = decision_discipline.execution_gate(
         evidence_status=decision_discipline.EVIDENCE_SUFFICIENT,
         authority_status=decision_discipline.AUTHORITY_GRANTED,
@@ -1206,7 +1211,12 @@ def execute_plan(plan: ActionPlan,
         + (f" [{', '.join(dd_assessment.reasons)}]" if dd_assessment.reasons else "")
     )
     if dd_assessment.state != decision_discipline.ADMISSIBLE:
-        return refused(PLAN_SAFETY_PROHIBITED, evidence=dd_evidence)
+        dd_code = {
+            decision_discipline.NEEDS_EVIDENCE: PLAN_SAFETY_NEEDS_EVIDENCE,
+            decision_discipline.NEEDS_AUTHORITY: PLAN_LAW11_NEEDS_AUTHORITY,
+            decision_discipline.NEEDS_BOTH: PLAN_SAFETY_NEEDS_EVIDENCE,
+        }.get(dd_assessment.state, PLAN_SAFETY_PROHIBITED)
+        return refused(dd_code, evidence=dd_evidence)
 
     try:
         observed = executor(plan)

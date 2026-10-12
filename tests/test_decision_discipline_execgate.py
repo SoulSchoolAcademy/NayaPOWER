@@ -8,10 +8,11 @@ GREEN  clean plan -> the gate adjudicates ADMISSIBLE, executor fires once,
        receipt evidence records the gate verdict.
 RED    (a) the gate itself sabotaged to refuse -> EXECUTION_REFUSED, the
        executor NEVER fires (bypassing the gate cannot execute).
-       (b) TOCTOU: the Law-11 door check is compromised to report a
-       fabricated ADMISSIBLE on a genuinely prohibited typed action ->
-       the gate re-runs law11_gate on the LIVE action (not the captured
-       door verdict) and still refuses. The executor never fires.
+       (b) COMPROMISED EARLIER CHECK: the Law-11 door check is replaced
+       with one reporting a fabricated ADMISSIBLE verdict on a genuinely
+       prohibited typed action -> the gate re-runs law11_gate on the LIVE
+       action object (not the captured door verdict) and still refuses.
+       The executor never fires.
 
 Revert restores GREEN. If the wire can be bypassed, it is not wired.
 """
@@ -116,13 +117,14 @@ def test_sabotaged_gate_blocks_execution(monkeypatch):
     assert "decision-discipline execution gate" in " ".join(receipt.evidence)
 
 
-# --- RED (b): TOCTOU -- compromised door verdict, gate re-derives live ---
+# --- RED (b): compromised earlier check — gate re-derives from the live action ---
 
 def test_gate_rederives_from_live_action_not_captured_door_verdict(monkeypatch):
-    # Adversary: the Law-11 door check is compromised to report a
-    # fabricated ADMISSIBLE verdict on a genuinely prohibited action.
-    # The gate must NOT trust the captured verdict: it re-runs law11_gate
-    # on the live typed action and still refuses.
+    # Threat model: the Law-11 door check is compromised (or the action
+    # object mutated) to report a fabricated ADMISSIBLE verdict on a
+    # genuinely prohibited action. The gate must NOT trust the captured
+    # verdict: it re-runs law11_gate on the live typed action and still
+    # refuses.
     def _fabricated_admissible(action, **kwargs):
         return Law11Verdict(verdict=ap.LAW11_ADMISSIBLE, reasons=(),
                             affected_interests=(), policy_version="test")
