@@ -332,7 +332,7 @@ test('idempotent replay returns stored receipt without touching GitHub', async (
 test('GitHub PUT rejection persists sanitized reason and target context', async () => {
   const { post, receipts } = runtime({
     githubPutStatus: 403,
-    githubPutMessage: 'Resource not accessible by integration\nAuthorization: Bearer DO_NOT_STORE',
+    githubPutMessage: 'Resource not accessible by integration\nAuthorization: Bearer DO_NOT_STORE\n' + 'x'.repeat(500),
   });
   const { status, body } = await post(validBody());
   assert.equal(status, 502);
@@ -340,6 +340,7 @@ test('GitHub PUT rejection persists sanitized reason and target context', async 
   assert.equal(body.detail.includes('\n'), false, 'control characters are removed');
   assert.equal(body.detail.includes('DO_NOT_STORE'), false, 'bearer-shaped content is redacted');
   assert.match(body.detail, /Authorization: \[REDACTED\]/);
+  assert.ok(body.detail.length <= 240, 'response detail is bounded');
   const receipt = receipts.get(IDEM);
   assert.equal(receipt.status, 'failed');
   assert.match(receipt.failure, /^GITHUB_COMMIT_FAILED:403:/);
@@ -348,4 +349,5 @@ test('GitHub PUT rejection persists sanitized reason and target context', async 
   assert.ok(receipt.smart_link.includes('/' + IB_ID + '/smart-note.md'));
   assert.equal(receipt.failure.includes('\n'), false);
   assert.equal(receipt.failure.includes('DO_NOT_STORE'), false, 'failure receipt must not retain bearer-shaped content');
+  assert.ok(receipt.failure.length <= 'GITHUB_COMMIT_FAILED:403:'.length + 240, 'stored reason is bounded');
 });
