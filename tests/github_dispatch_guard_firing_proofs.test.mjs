@@ -70,6 +70,7 @@ function runtime({
   credentialError = null,
   headStatus = 404,
   putOk = true,
+  putStatus = 422,
   putBody = { content: { sha: "commit-1" } },
   verifySha = "commit-1",
   claims = null,
@@ -173,7 +174,7 @@ function runtime({
       }
       if (method === "PUT") {
         receipts.committed = true;
-        return { ok: putOk, status: putOk ? 201 : 422, json: async () => putBody };
+        return { ok: putOk, status: putOk ? 201 : putStatus, json: async () => putBody };
       }
     }
     return { ok: true, status: 200, json: async () => ({}) };
@@ -443,4 +444,97 @@ test("CONTROL -- a completed claim replays without a duplicate commit", async ()
   assert.equal(body.ok, true);
   assert.equal(body.replayed, true);
   assert.equal(rt.githubCalls.some((c) => c.method === "PUT"), false, "a replay must not commit again");
+});
+
+// ── DIAGNOSTIC — sanitized rejection reason in failure receipts ───────────────
+// Rebuild of the closed PR #2012 diagnostic: a GitHub rejection must leave its
+// *reason* in the durable failure receipt, not just the HTTP status — with
+// credentials, secrets, and private paths scrubbed before persistence.
+
+function lastFailureReceipt(rt) {
+  const updates = rt.receipts.updated;
+  assert.ok(updates.length > 0, "a failure receipt update must have been written");
+  return updates[updates.length - 1].failure;
+}
+
+test("DIAGNOSTIC -- a 403 rejection reason is captured in sanitized form", async () => {
+  const reason = "Resource not accessible by integration";
+  const rt = runtime({ putOk: false, putStatus: 403, putBody: { message: reason } });
+  const res = await rt.invoke();
+  const body = await res.json();
+  assert.equal(body.error, "GITHUB_COMMIT_FAILED");
+  assert.equal(body.status, 403);
+  assert.equal(body.detail, reason, "the immediate response carries the same sanitized reason");
+  assert.equal(lastFailureReceipt(rt), `GITHUB_COMMIT_FAILED:403:${reason}`);
+  assert.equal(body.smart_link, undefined, "a failed commit must not report a link");
+});
+
+test("DIAGNOSTIC -- a missing rejection message degrades to UNKNOWN", async () => {
+  const rt = runtime({ putOk: false, putStatus: 403, putBody: {} });
+  const res = await rt.invoke();
+  const body = await res.json();
+  assert.equal(body.error, "GITHUB_COMMIT_FAILED");
+  assert.equal(body.detail, "UNKNOWN");
+  assert.equal(lastFailureReceipt(rt), "GITHUB_COMMIT_FAILED:403:UNKNOWN");
+});
+
+test("ADVERSARIAL -- injected tokens, secrets, and private paths never reach the receipt", async () => {
+  // Every value below must be absent from the receipt and the response detail;
+  // the scrub markers must be present in their place.
+  const leakedToken = "ghp_aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aa";
+  const leakedJwt = "eyJhbGciOiJSUzI1NiJ9.cGF5bG9hZA.c2lnbmF0dXJl";
+  const leakedSecret = "supersecretvalue123";
+  const leakedPath = "/home/naya/.ssh/id_rsa";
+  const hostileMessage =
+    `Resource not accessible by integration; debug token=${leakedToken}; ` +
+    `Bearer ${leakedJwt}; password: "${leakedSecret}"; key at ${leakedPath};`;
+  const rt = runtime({
+    putOk: false,
+    putStatus: 403,
+    putBody: {
+      message: hostileMessage,
+      // The full response body must not leak either: these siblings of
+      // `message` are present in the response but must never be persisted.
+      documentation_url: "https://docs.github.com/rest/repos/contents#adversarial-probe",
+      errors: [{ resource: "Contents", code: "custom", message: leakedSecret }],
+    },
+  });
+  const res = await rt.invoke();
+  const body = await res.json();
+  const receipt = lastFailureReceipt(rt);
+  for (const leaked of [leakedToken, "eyJhbGciOiJSUzI1NiJ9", leakedSecret, leakedPath, "adversarial-probe"]) {
+    assert.ok(!receipt.includes(leaked), `receipt must not contain: ${leaked.slice(0, 24)}...`);
+    assert.ok(!body.detail.includes(leaked), `response detail must not contain: ${leaked.slice(0, 24)}...`);
+  }
+  assert.ok(receipt.includes("[REDACTED_TOKEN]"), "token scrub must be visible");
+  assert.ok(receipt.includes("password=[REDACTED]"), "secret scrub must be visible");
+  assert.ok(receipt.includes("[REDACTED_PATH]"), "private-path scrub must be visible");
+  assert.ok(
+    receipt.includes("Resource not accessible by integration"),
+    "the diagnostic reason must survive scrubbing"
+  );
+  assert.ok(!receipt.includes("documentation_url"), "the full response body must not be stored");
+});
+
+test("ADVERSARIAL -- an overlong rejection reason is bounded at 240 characters", async () => {
+  const rt = runtime({ putOk: false, putStatus: 403, putBody: { message: "A".repeat(1000) } });
+  await rt.invoke();
+  const receipt = lastFailureReceipt(rt);
+  const reason = receipt.replace(/^GITHUB_COMMIT_FAILED:403:/, "");
+  assert.equal(reason.length, 240, "reason portion must be capped at 240 chars");
+});
+
+test("ADVERSARIAL -- control and non-ASCII characters are stripped from the reason", async () => {
+  const rt = runtime({
+    putOk: false,
+    putStatus: 403,
+    putBody: { message: "refused\n\tby ruleset 🚫\r admin" },
+  });
+  await rt.invoke();
+  const receipt = lastFailureReceipt(rt);
+  const reason = receipt.replace(/^GITHUB_COMMIT_FAILED:403:/, "");
+  assert.ok(!/[\n\r\t]/.test(reason), "reason must be single-line");
+  assert.ok(/^[\x20-\x7E]*$/.test(reason), "reason must be ASCII-printable only");
+  assert.ok(reason.includes("refused"), "readable words must survive");
+  assert.ok(reason.includes("ruleset"), "readable words must survive");
 });
