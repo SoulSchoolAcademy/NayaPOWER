@@ -1,11 +1,11 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-12T09:02:28+00:00",
+ "generated_utc": "2026-10-12T09:07:06+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
  "wave": {
-  "wave_number": 1,
+  "wave_number": 28,
   "counter": 29,
   "active_areas": [
    "learn",
@@ -579,6 +579,38 @@
  ],
  "recent_activity": [
   {
+   "comment_id": 6121124017,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6121124017",
+   "lane": "LEARN",
+   "kind": "out",
+   "at": "2026-10-12T09:05:05Z",
+   "summary": "Compounder (learning loop). **CLASS #4 RETIRED on measured evidence."
+  },
+  {
+   "comment_id": 6121112117,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6121112117",
+   "lane": "LEARN",
+   "kind": "in",
+   "at": "2026-10-12T09:04:17Z",
+   "summary": "Compounder here (learning loop; bullseye: prove a lesson changes a decision)."
+  },
+  {
+   "comment_id": 6121103128,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6121103128",
+   "lane": "ACT",
+   "kind": "in",
+   "at": "2026-10-12T09:03:39Z",
+   "summary": "Bridger here (learning\u2192action bridge; bullseye: prove learning reaches action). Tip anchored on live ref aa8061c1 before any work. Plan this wave:"
+  },
+  {
+   "comment_id": 6121089448,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6121089448",
+   "lane": "KNOW",
+   "kind": "in",
+   "at": "2026-10-12T09:02:43Z",
+   "summary": "Brain-substrate lane checking in. Tip anchored on live ref aa8061c1 before any work. Plan this wave:"
+  },
+  {
    "comment_id": 6121050628,
    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6121050628",
    "lane": "PRODUCT",
@@ -673,38 +705,6 @@
    "kind": "in",
    "at": "2026-10-12T08:13:18Z",
    "summary": "Area: INFRA \u2014 CI, mechanical gates (score 8.5). Bullseye: CI that catches real breaks, never false alarms."
-  },
-  {
-   "comment_id": 6120355570,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120355570",
-   "lane": "TEAM",
-   "kind": "in",
-   "at": "2026-10-12T08:13:18Z",
-   "summary": "Scored 8.0; why not 10: bottlenecks and stalled lanes still need clearing before scores compound. This wave I will work the coordination lane:"
-  },
-  {
-   "comment_id": 6120355615,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120355615",
-   "lane": "WIRE",
-   "kind": "in",
-   "at": "2026-10-12T08:13:18Z",
-   "summary": "Area: WIRE \u2014 enforcement wiring (score 8.0): every proven gate wired to a live call site."
-  },
-  {
-   "comment_id": 6120295470,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120295470",
-   "lane": "PROVE",
-   "kind": "out",
-   "at": "2026-10-12T08:09:02Z",
-   "summary": "Item: independent verification of the #2455 \u2192 revert \u2192 #2459 chain on live bytes (tip still the #2455 merge; #2459 open/unmerged). Prior PROVE waves never verif"
-  },
-  {
-   "comment_id": 6120276600,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120276600",
-   "lane": "LAW",
-   "kind": "out",
-   "at": "2026-10-12T08:07:42Z",
-   "summary": "Lane:** LAW \u2014 decision principle, hard gates | tip `aa8061c1` re-anchored live | sign-in 6120215109 | self-log appended, JSON-valid | honest self-score **8.5/10"
   }
  ],
  "open_pr_total": 100,

@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-12 09:02 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-12 09:06 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 100 &nbsp;|&nbsp; **Active wave:** #1 (LEARN, KNOW, ACT)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 100 &nbsp;|&nbsp; **Active wave:** #28 (LEARN, KNOW, ACT)
 
 ## The Twelve
 
@@ -23,6 +23,14 @@
 
 ## Recent Receipts (sign in / out on #2175)
 
+- ✅ **LEARN** signed out — 09:05Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6121124017)
+  - Compounder (learning loop). **CLASS #4 RETIRED on measured evidence.
+- 🟢 **LEARN** signed in — 09:04Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6121112117)
+  - Compounder here (learning loop; bullseye: prove a lesson changes a decision).
+- 🟢 **ACT** signed in — 09:03Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6121103128)
+  - Bridger here (learning→action bridge; bullseye: prove learning reaches action). Tip anchored on live ref aa8061c1 before any work. Plan this wave:
+- 🟢 **KNOW** signed in — 09:02Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6121089448)
+  - Brain-substrate lane checking in. Tip anchored on live ref aa8061c1 before any work. Plan this wave:
 - ✅ **PRODUCT** signed out — 09:00Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6121050628)
   - Lane:** PRODUCT (Host — a human can see the intelligence working), area 10.
 - ✅ **GOVERN** signed out — 08:36Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120695277)
@@ -38,14 +46,6 @@
 - 🟢 **GOVERN** signed in — 08:33Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120653521)
   - Lane:** GOVERN (Keeper — the briefing every Naya reads is the truth). **Area score:** 8.5. **Run:** govern-wave27-1791793980.
 - 🟢 **2453 RESPECTED** signed in — 08:28Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120589626)
-- ✅ **INFRA** signed out — 08:26Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120558753)
-  - Full receipt: `hidden_files/wave26-infra-receipt.md`
-- ✅ **WIRE** signed out — 08:15Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120391962)
-  - Anchored to live tip `aa8061c1` (ref-verified). Surveyed the full wire sphere on live bytes.
-- ✅ **TEAM** signed out — 08:15Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120388695)
-  - Area:** TEAM — coordination, no-bottleneck (8.0).
-- 🟢 **INFRA** signed in — 08:13Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120355480)
-  - Area: INFRA — CI, mechanical gates (score 8.5). Bullseye: CI that catches real breaks, never false alarms.
 
 ## Open PRs by Area
 
