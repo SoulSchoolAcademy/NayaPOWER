@@ -133,3 +133,34 @@ The successor must never infer that a higher-trust target is reachable merely be
 
 This note records a verified implementation repair and its reusable lesson. It does not create authority.
 
+## 🟢 MACHINE NOTE
+
+~~~json
+{
+  "sn": "SN-0460",
+  "title": "IB-SMART-NOTE-20261006-sn0460-ratified-predecessor-guard",
+  "truth_state": "CANDIDATE",
+  "canonical_intent": "PROTECT_GOVERNED_TRUTH_TRANSITIONS",
+  "rule": "RATIFIED may only be entered from VERIFIED. When the predecessor is not VERIFIED, the guard returns RATIFIED_REQUIRES_VERIFIED_PREDECESSOR and leaves the entry byte-identical. The existing VERIFIED -> RATIFIED elevation-grant law is unchanged and still requires a valid, unexpired grant bound to the note.",
+  "safe_order": [
+    "validate state transition",
+    "validate authority",
+    "validate evidence",
+    "mutate"
+  ],
+  "lesson": "State ordering is itself an authority boundary. A valid-looking authority object must not authorize a transition that was never reachable.",
+  "failure_class": "A control can exist in code, be well tested for the normal path, and still be bypassed by an unenumerated path. Corrective pattern: enumerate every path -> reproduce the bypass -> fail closed at the boundary -> add the regression forever -> verify the exact current main.",
+  "proof": {
+    "red_reproduction_commit": "b21ff955a681868a96c7898214f7c0339534e1d1",
+    "red_tests": [
+      "test_candidate_cannot_skip_verified_into_ratified_without_grant",
+      "test_testing_cannot_skip_verified_into_ratified_without_grant"
+    ],
+    "repair_commit": "1b56d2c8fe8a52d423ab9ea569f46d4420fb3760",
+    "green": "Kernel Tests 37556718704: 365 node tests + 947 pytest passed, 11 skipped; Ratified Guard, Spec Integrity, Collective Chain Readiness gates success",
+    "merged_pr": 1677,
+    "merge_commit": "cfba2fee23854d49b876cf372336e54005dd32fc"
+  },
+  "proof_boundary": "Proven for source behavior on the reconciled branch before merge. Not claimed: production runtime parity, universal truth-state coverage, or constitutional ratification of a new law. This note does not create authority."
+}
+~~~

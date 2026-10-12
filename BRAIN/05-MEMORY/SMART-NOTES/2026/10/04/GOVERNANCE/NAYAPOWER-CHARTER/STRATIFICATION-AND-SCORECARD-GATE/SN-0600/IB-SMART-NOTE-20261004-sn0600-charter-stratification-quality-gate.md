@@ -57,3 +57,30 @@ Maxis is not a generic score for everything. Its core domain is **human empowerm
 This Smart Note is **CANDIDATE**. The charter structure is organized as the proposed source set; constitutional authority still requires the Human Director's ratification.
 
 *Machine capture is canonical; this Markdown is the human-readable derived projection.*
+
+## 🟢 MACHINE NOTE
+
+~~~json
+{
+  "sn": "SN-0600",
+  "title": "NayaPOWER Charter Stratification & Quality Gate",
+  "truth_state": "CANDIDATE",
+  "strata": {
+    "THESIS": "Manifesto: What are we?",
+    "LAW": "Constitutional Code: How do we behave?",
+    "MISSION": "Mission Contract: What are we accomplishing, and what does winning mean?",
+    "MECHANISM": "Systems Contract: How does the system turn the mission into proven reality?"
+  },
+  "strata_rule": "The four layers must form one coherent charter, not four competing doctrines.",
+  "quality_loop": "MAKE → SCORE → IDENTIFY THE HIGHEST-VALUE GAPS → IMPROVE → RESCORE → VERIFY → COMPOUND. Do not wonder whether something is good. Measure it.",
+  "score_thresholds": {
+    "target": "10/10",
+    "preferred_acceptance": "9.5+",
+    "minimum_acceptable": "9.0+",
+    "below_9": "keep working unless a real evidence or authority boundary prevents improvement"
+  },
+  "preliminary_score": "9.2/10 — preliminary internal score, not final team score. Independent team scorecard is required before calling this 10/10.",
+  "maxis_direction": "Maxis measurement system core domain: human empowerment and AI empowerment — baseline, highest-value gaps, learn/teach toward the next level, reassess, measure progress.",
+  "governance_boundary": "This Smart Note is CANDIDATE. Constitutional authority still requires the Human Director's ratification."
+}
+~~~

@@ -40,3 +40,33 @@ Encoded normatively in `BRAIN/01-GOVERNANCE/0003-SYSTEM-SCORECARD-V1.md` (RATIFI
 - This note does not set any area's score — scores live in the dated re-run receipts.
 - This note does not authorize any seat to change weights — only Shawn's word does.
 - The method is CANDIDATE until the first full re-run executes it end-to-end and the spot-audit passes.
+
+## 🟢 MACHINE NOTE
+
+~~~json
+{
+  "sn": "SN-0345",
+  "title": "The System Scorecard Method — How We Properly Scorecard NayaPOWER",
+  "truth_state": "CANDIDATE",
+  "essence": "Scoring the whole system is a different discipline from scoring a deliverable. Ten fixed areas with fixed weights (ratified 2026-10-05, weighted total 6.8/10). Weights change only on Shawn Vibert's explicit word. Scores move only on fresh evidence with proof attached. Re-runs on cadence, spot-audited. No score is ever declared — a 10 is earned by demonstration.",
+  "delta_rules": [
+    "Fixed areas, fixed weights: ten areas, weights summing to 100, set by the Human Director. A seat that reweights on its own authority is moving the goalposts.",
+    "Weight-change authority: only Shawn's explicit word changes an area or a weight, recorded with date and his verbatim direction.",
+    "Evidence-gated score movement: a score changes only on new measured evidence; every change carries its proof. Re-runs recompute from fresh evidence — never copy-forward a prior score.",
+    "The loop around the score: every area under 9.0 gets the miss named, the highest-value corrective action, an owner, and a re-score date. An unscored claim or a score with no follow-up action is rejected by the machine.",
+    "Spot-audit discipline: re-runs are independently spot-audited; every claim carries its resolving ref; lanes cite actor+lane from board/API, never display names.",
+    "No declared scores: 'We are a 10' is a claim requiring demonstration at every area. Below 9.0 is not acceptable and is never shipped as 'done.'"
+  ],
+  "cousins": [
+    "SN-035",
+    "SN-038",
+    "SN-0343"
+  ],
+  "standing_law": "BRAIN/01-GOVERNANCE/0003-SYSTEM-SCORECARD-V1.md (RATIFIED 2026-10-05); ratified instance reading is SN-0343 (weighted total 6.8/10)",
+  "non_claims": [
+    "Does not set any area's score — scores live in the dated re-run receipts.",
+    "Does not authorize any seat to change weights — only Shawn's word does.",
+    "Method is CANDIDATE until the first full re-run executes it end-to-end and the spot-audit passes."
+  ]
+}
+~~~
