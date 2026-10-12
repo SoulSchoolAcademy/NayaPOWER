@@ -215,7 +215,7 @@ class Decision:
     note: str = ""                     # human-readable explanation
 
 
-class DecisionEngine:
+class DecisionPrinciple:
     """Two-phase decision: hard gates first, optimization second.
 
     Phase 1 partitions candidates into admissible / disqualified / deferred.
@@ -437,7 +437,7 @@ def verify_pipeline_excludes_first(candidates, baseline_id, profile,
 # govern behavior across MULTIPLE implementations, not just one.
 #
 # Implementation B below is written independently, straight from the spec
-# text, sharing no code paths with DecisionEngine. The harness runs both
+# text, sharing no code paths with DecisionPrinciple. The harness runs both
 # over a scenario battery plus randomized scenarios and requires agreement
 # on: the disqualified set, the admissible set, and the chosen action.
 # ---------------------------------------------------------------------------
@@ -445,7 +445,7 @@ def verify_pipeline_excludes_first(candidates, baseline_id, profile,
 def _independent_decide(actions: Sequence[Action]) -> dict:
     """Independent reimplementation, written directly from the spec.
 
-    Deliberately shares no code with DecisionEngine: different structure,
+    Deliberately shares no code with DecisionPrinciple: different structure,
     different order of checks, same required semantics.
     """
     disqualified: list[str] = []
@@ -519,11 +519,11 @@ def _independent_decide(actions: Sequence[Action]) -> dict:
 
 
 def cross_verify(scenarios: Sequence[Sequence[Action]]) -> dict:
-    """Run DecisionEngine and the independent implementation over every
+    """Run DecisionPrinciple and the independent implementation over every
     scenario. They must agree on disqualified set, admissible set, chosen
     action, and outcome. Returns agreement evidence; raises on divergence.
     """
-    engine = DecisionEngine()
+    engine = DecisionPrinciple()
     divergences: list[dict] = []
 
     for i, actions in enumerate(scenarios):
