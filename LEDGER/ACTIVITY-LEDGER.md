@@ -2,7 +2,11 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-12 02:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-12 02:40 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+
+## 🟢 Working right now
+
+- **Team 11 — Naya Heart** (Human Value) — tick t1162: HV instrument window t1052-t1162 + HV3 verdict
 
 ## The Teams
 
@@ -22,6 +26,46 @@ _Last updated: 2026-10-12 02:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 | Team 12 | Naya Herald | NayaNET / Hub |
 
 ## Verified Actions (newest first)
+
+### ✅ t1162 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** heal-branch merge-ready scorecard at action time
+
+**Receipt:** `twelve-lane-receipts/t1162-lane10.md`
+
+**Evidence:** Dispatcher verified: receipt exists; branch naya/ten-brainindex-heal-t1032 == 82fe1c6232913174430f0f06c5f27b5a22ad88ae on origin (pre-dispatch ls-remote) and agent re-verified fetched bytes at action time; parent == live tip 665098e3f (zero churn), 3-file diff, --check OK on head (1256 files), drift confirmed on live tip, gate #2385 still advisory-
+
+### ✅ t1162 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** rename-branch pin-exact verify + PR #2399 ordered-blocker re-classification
+
+**Receipt:** `twelve-lane-receipts/t1162-lane9.md`
+
+**Evidence:** Dispatcher verified: receipt exists; branch f5e2d63b0bc1a91cdd97354494c3a9908f08996c confirmed on origin pre-dispatch and agent verified on exact fetched bytes at action time (check exit 0, 25/25 tests, strict-bar thresholds byte-present lines 116-117, zero DecisionEngine tree-wide, main tip + #2399 tree still carrying the hit). Ordered-blocker re-
+
+### ✅ t1152 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** competing-boot red verdict: allowlist-or-rename, branch, no merge
+
+**Receipt:** `twelve-lane-receipts/t1152-lane8.md`
+
+**Evidence:** Dispatcher verified: refs/heads/naya/eight-competing-boot-rename-t1152 == f5e2d63b0bc1a91cdd97354494c3a9908f08996c on origin via ls-remote. Reproducible forensics on exact tip 665098e3f (single RED hit kernel/decision_principle.py:218, 7 refs, 0 production call sites), rename 7/7 lines, 25/25 tests green, strict-bar thresholds untouched, no merge (
+
+### ✅ t1152 — Team 7, Naya Conductor (Team Operations) — 8.5/10 [VERIFIED]
+
+**Task:** journal-health audit + 9-cron sunset map (analysis only)
+
+**Receipt:** `twelve-lane-receipts/t1152-lane7.md`
+
+**Evidence:** Dispatcher verified: cron-sunset-plan-2026-10-11.md exists, calculator receipt exists (KEEP connect 6.0 vs RETIRE 5.9), all 11 journals on disk, lane-12 journal confirmed absent as claimed. Protected gate respected: no cron touched, retirements queued for Shawn's word. Agrees with self-score 8.5: two verification points open (learn-driver registry 
+
+### ✅ t1152 — Team 2, Naya Sage (Learning Pipeline) — 8.5/10 [VERIFIED]
+
+**Task:** Stage-2 compounding reframe, sealed pre-reg + genuinely new hypothesis
+
+**Receipt:** `twelve-lane-receipts/t1152-lane2.md`
+
+**Evidence:** Dispatcher verified: sealed pre-reg (stamp == mtime), hypothesis-change note, decide fork receipt, 9/9 byte-copy packet integrity, blinded scorer sheet with independent ls-remote ground truth (tip 665098e3f), all files present in lane2-t1152-reanchor/. Honest zero: ceiling named (control 3/3 on all criteria), language-absorption finding independent
 
 ### ✅ t1142 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
 
