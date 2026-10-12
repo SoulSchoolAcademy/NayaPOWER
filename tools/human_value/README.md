@@ -110,3 +110,53 @@ Append one JSON object per line to the ledger:
 Human Value lane (Naya 5). Feed: #1604. The Decision Value Calculus
 (`kernel/value_calculus.py`) remains the single decision/selection seam —
 this instrument is its observed-outcome evidence supplier, not a competitor.
+
+## The observed-experience instrument (schema v2)
+
+The contract above credits seat-graded shipped-change value. The
+observed-experience instrument (`observation_schema.py`, `observe.py`) closes
+the hole: **seat-graded value is a hypothesis; observed human experience is
+the evidence; the instrument only credits evidence.**
+
+- Observation classes: `stated` (his words), `revealed` (his actions),
+  `corrected` (his overrides — always `attention_demanded`).
+- A grader's scorecard creates a *candidate* (a prior, 21-day expiry).
+  Only a direct human trace promotes it to a *measured event*. Expired
+  candidates are reported as UNOBSERVED — never silently zeroed.
+- Validation fails closed on: uncertain authorship with a promotion,
+  assessor == builder == collector, self-observation (the observatory's own
+  activity is never human value), and non-count units.
+
+```bash
+# Run the known-answer calibration battery (§5.1)
+python3 tools/human_value/tests/fixtures/build_fixtures.py
+python3 tools/human_value/observe.py calibrate pin \
+  --key tools/human_value/tests/fixtures/known_answer_key.json \
+  --key-id OBS-CAL-KEY-20261012 --who <seat> --out /tmp/key.pin.json
+python3 tools/human_value/observe.py calibrate run \
+  --key tools/human_value/tests/fixtures/known_answer_key.json \
+  --pin /tmp/key.pin.json \
+  --raw tools/human_value/tests/fixtures/known_answer_raw.jsonl \
+  --candidates tools/human_value/tests/fixtures/known_answer_candidates.jsonl
+
+# Weekly sweep proposal (the machine proposes; promotion is a deliberate act)
+python3 tools/human_value/observe.py sweep \
+  --raw <raw-observations.jsonl> --ledgers tools/human_value/ledgers \
+  --since 2026-10-05 --channels c1,c2,c3
+
+# Promote / expire / report
+python3 tools/human_value/observe.py promote --ledgers <dir> \
+  --candidate <id> --observation <event.json>
+python3 tools/human_value/observe.py expire --ledgers <dir> --as-of 2026-10-12
+python3 tools/human_value/observe.py report --ledgers <dir> --week 2026-10-12
+
+# Adversarial self-checks (Coda 1's independent review still pending)
+python3 tools/human_value/observe.py attack --kind graded_phantom
+python3 tools/human_value/observe.py attack --kind uncertain_authorship
+python3 tools/human_value/observe.py attack --kind self_observation
+```
+
+**Calibration status: FORMATIVE.** The known-answer battery passes (6/6,
+zero phantoms); the two-independent-seat agreement check and Coda 1's
+adversarial review are pending. Until all three §5 checks pass, no number
+from this instrument is cited as an established metric.

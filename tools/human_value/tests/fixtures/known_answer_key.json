@@ -1,0 +1,39 @@
+{
+  "key_id": "OBS-CAL-KEY-20261012",
+  "window_start": "2026-10-11T00:00:00Z",
+  "window_end": "2026-10-12T07:30:00Z",
+  "expected_triples": [
+    [
+      "sha256:0c7f25f70783c102f5d75228b840d6b4f6b1d1ecc1f93b5a68fc684c707082c4",
+      "stated",
+      "self-governing-law"
+    ],
+    [
+      "sha256:712164c893399b164afa34ffc7dd5728661279e310c3f30738657b7f4f62d02c",
+      "revealed",
+      "cold-successor-test"
+    ],
+    [
+      "sha256:aeee4fb4ebbf1281ea03c3b1787cd1bd58b8b89e56be940cbb2da784b159f45d",
+      "stated",
+      "decision-engine-consolidation"
+    ],
+    [
+      "sha256:dceb18a45bc1061dae0412c312e330a604f6788adc510ed0a553ef676f3866a8",
+      "stated",
+      "ib-block-owners"
+    ],
+    [
+      "sha256:e6f9f9363ef3c4dc0821305814533cf993d298395e62b03ca4478930efa9eb1d",
+      "corrected",
+      "boot-gate"
+    ],
+    [
+      "sha256:9f3a1108bc68b7ceb85f3e9bdef11ce8fce2ed218eef9466376062ef14413321",
+      "stated",
+      "intel-intake"
+    ]
+  ],
+  "expected_dropped": 3,
+  "note": "Exact keyed set of 6 STATED/REVEALED/CORRECTED events, zero phantoms. Probes 901/902/903 must be dropped (uncertain authorship, assessor==collector, self-observation). No peeking: this key is hashed and pinned before the run."
+}
