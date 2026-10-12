@@ -1,0 +1,131 @@
+{
+  "instrument": "observed-experience-instrument-v1",
+  "collector": "collector2",
+  "sweep_id": "SWEEP-20261012-002",
+  "channels": [
+    "c1",
+    "c3"
+  ],
+  "watermark_start": "2026-10-12T07:58:00Z",
+  "watermark_end": "2026-10-12T08:42:47Z",
+  "markers_pin": "sha256:d14bd717308597d3a18d3b47354fdaa026b355d68250bb582c1aa1b296dc2e8e",
+  "human_accounts": [],
+  "observations": [],
+  "excluded": [
+    {
+      "comment_id": 6120153865,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6120171023,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6120348305,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6120413077,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6120645272,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6120730791,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6120162861,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6120277769,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6120647358,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6120714606,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6120247113,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6120408535,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6120712493,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6120714590,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6120786118,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6120787056,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    }
+  ],
+  "searched": [
+    {
+      "channel": "c1",
+      "feed": 2154,
+      "comments_scanned": 6
+    },
+    {
+      "channel": "c1",
+      "feed": 1713,
+      "comments_scanned": 4
+    },
+    {
+      "channel": "c1",
+      "feed": 1714,
+      "comments_scanned": 3
+    },
+    {
+      "channel": "c1",
+      "feed": 1715,
+      "comments_scanned": 3
+    },
+    {
+      "channel": "c3",
+      "issues_prs_scanned": 30,
+      "attributable": 0
+    }
+  ],
+  "null_sweep": true,
+  "c3_note": "c3_authorship_unresolvable: human-accounts.json allowlist is empty in v1; 30 repo actions seen, 0 mechanically attributable. Fail closed — no C3 observations claimed.",
+  "independence": {
+    "method": "deterministic rules-based code; same input -> same output",
+    "sources": "C1 team feeds + C3 API actions only; C2 refused by construction",
+    "reproducible_by": "any seat re-running this file unchanged"
+  },
+  "collected_at": "2026-10-12T08:42:47.391629+00:00"
+}

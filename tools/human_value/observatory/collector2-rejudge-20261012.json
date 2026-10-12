@@ -1,0 +1,41 @@
+{
+  "collector": "collector2",
+  "scan": "SWEEP-C2-20261012-A",
+  "verdicts": [
+    {
+      "event_id": "OBS-20261012-001",
+      "verdict": "not_observable",
+      "reason": "collector1's event is C2-sourced (private chat logs); collector2's universe is C1/C3 only. Byte-exact verbatim not re-found in feeds/API in-window. Not a disagreement \u2014 a non-overlapping evidence universe."
+    },
+    {
+      "event_id": "OBS-20261012-002",
+      "verdict": "not_observable",
+      "reason": "collector1's event is C2-sourced (private chat logs); collector2's universe is C1/C3 only. Byte-exact verbatim not re-found in feeds/API in-window. Not a disagreement \u2014 a non-overlapping evidence universe."
+    },
+    {
+      "event_id": "OBS-20261012-003",
+      "verdict": "not_observable",
+      "reason": "collector1's event is C2-sourced (private chat logs); collector2's universe is C1/C3 only. Byte-exact verbatim not re-found in feeds/API in-window. Not a disagreement \u2014 a non-overlapping evidence universe."
+    },
+    {
+      "event_id": "OBS-20261012-004",
+      "verdict": "not_observable",
+      "reason": "collector1's event is C2-sourced (private chat logs); collector2's universe is C1/C3 only. Byte-exact verbatim not re-found in feeds/API in-window. Not a disagreement \u2014 a non-overlapping evidence universe."
+    },
+    {
+      "event_id": "OBS-20261012-005",
+      "verdict": "not_observable",
+      "reason": "collector1's event is C2-sourced (private chat logs); collector2's universe is C1/C3 only. Byte-exact verbatim not re-found in feeds/API in-window. Not a disagreement \u2014 a non-overlapping evidence universe."
+    },
+    {
+      "event_id": "OBS-20261012-006",
+      "verdict": "not_observable",
+      "reason": "collector1's event is C2-sourced (private chat logs); collector2's universe is C1/C3 only. Byte-exact verbatim not re-found in feeds/API in-window. Not a disagreement \u2014 a non-overlapping evidence universe."
+    },
+    {
+      "event_id": "OBS-20261012-007",
+      "verdict": "not_observable",
+      "reason": "collector1's event is C2-sourced (private chat logs); collector2's universe is C1/C3 only. Byte-exact verbatim not re-found in feeds/API in-window. Not a disagreement \u2014 a non-overlapping evidence universe."
+    }
+  ]
+}

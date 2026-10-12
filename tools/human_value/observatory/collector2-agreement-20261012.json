@@ -1,0 +1,82 @@
+{
+  "instrument": "observed-experience-instrument-v1",
+  "collector_a": "collector1 (interpretive agent, C2)",
+  "collector_b": "collector2 (deterministic code, C1+C3)",
+  "mechanical_jaccard": {
+    "sweep_a": 6,
+    "sweep_b": 0,
+    "intersection": 0,
+    "union": 6,
+    "jaccard": 0.0,
+    "target": 0.8,
+    "pass": false
+  },
+  "baseline_verdicts": [
+    {
+      "event_id": "OBS-20261012-001",
+      "verdict": "not_observable",
+      "reason": "collector1's event is C2-sourced (private chat logs); collector2's universe is C1/C3 only. Byte-exact verbatim not re-found in feeds/API in-window. Not a disagreement \u2014 a non-overlapping evidence universe."
+    },
+    {
+      "event_id": "OBS-20261012-002",
+      "verdict": "not_observable",
+      "reason": "collector1's event is C2-sourced (private chat logs); collector2's universe is C1/C3 only. Byte-exact verbatim not re-found in feeds/API in-window. Not a disagreement \u2014 a non-overlapping evidence universe."
+    },
+    {
+      "event_id": "OBS-20261012-003",
+      "verdict": "not_observable",
+      "reason": "collector1's event is C2-sourced (private chat logs); collector2's universe is C1/C3 only. Byte-exact verbatim not re-found in feeds/API in-window. Not a disagreement \u2014 a non-overlapping evidence universe."
+    },
+    {
+      "event_id": "OBS-20261012-004",
+      "verdict": "not_observable",
+      "reason": "collector1's event is C2-sourced (private chat logs); collector2's universe is C1/C3 only. Byte-exact verbatim not re-found in feeds/API in-window. Not a disagreement \u2014 a non-overlapping evidence universe."
+    },
+    {
+      "event_id": "OBS-20261012-005",
+      "verdict": "not_observable",
+      "reason": "collector1's event is C2-sourced (private chat logs); collector2's universe is C1/C3 only. Byte-exact verbatim not re-found in feeds/API in-window. Not a disagreement \u2014 a non-overlapping evidence universe."
+    },
+    {
+      "event_id": "OBS-20261012-006",
+      "verdict": "not_observable",
+      "reason": "collector1's event is C2-sourced (private chat logs); collector2's universe is C1/C3 only. Byte-exact verbatim not re-found in feeds/API in-window. Not a disagreement \u2014 a non-overlapping evidence universe."
+    },
+    {
+      "event_id": "OBS-20261012-007",
+      "verdict": "not_observable",
+      "reason": "collector1's event is C2-sourced (private chat logs); collector2's universe is C1/C3 only. Byte-exact verbatim not re-found in feeds/API in-window. Not a disagreement \u2014 a non-overlapping evidence universe."
+    }
+  ],
+  "verdict_counts": {
+    "not_observable": 7
+  },
+  "reading": "Agreement is measured, not assumed. A low Jaccard with all 'not_observable' verdicts means NON-OVERLAPPING EVIDENCE UNIVERSES, not disagreement. The second path's independent value is its own sweep and candidate verdicts.",
+  "candidate_verdicts": [
+    {
+      "candidate_id": "CAND-20261012-001",
+      "pr": 2188,
+      "verdict": "remains_pending",
+      "reason": "no C1/C3 direct human trace about this artifact in collector2's window; grader's prior is not evidence"
+    },
+    {
+      "candidate_id": "CAND-20261012-002",
+      "pr": 2375,
+      "verdict": "remains_pending",
+      "reason": "no C1/C3 direct human trace about this artifact in collector2's window; grader's prior is not evidence"
+    },
+    {
+      "candidate_id": "CAND-20261012-003",
+      "pr": 2383,
+      "verdict": "remains_pending",
+      "reason": "no C1/C3 direct human trace about this artifact in collector2's window; grader's prior is not evidence"
+    }
+  ],
+  "d32": [
+    "Does NOT claim the 6 baseline events are wrong \u2014 they are C2-sourced and outside collector2 reach.",
+    "Does NOT claim seat independence \u2014 collector1 and the collector2 operator are both Naya Mu; independence rests on method+source separation and mechanical reproducibility.",
+    "Does NOT claim the 3 candidates lack human value \u2014 only that no C1/C3 direct human trace exists in-window.",
+    "Does NOT claim C3 was searched for human actions \u2014 the v1 allowlist is empty, so C3 authorship is unresolvable by design.",
+    "The 0.0 Jaccard is a non-overlap measurement, not a disagreement score."
+  ]
+}

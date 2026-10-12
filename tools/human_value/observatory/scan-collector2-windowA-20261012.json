@@ -1,0 +1,4910 @@
+{
+  "instrument": "observed-experience-instrument-v1",
+  "collector": "collector2",
+  "sweep_id": "SWEEP-C2-20261012-A",
+  "channels": [
+    "c1",
+    "c3"
+  ],
+  "watermark_start": "2026-10-07T00:00:00Z",
+  "watermark_end": "2026-10-12T07:58:00Z",
+  "markers_pin": "sha256:d14bd717308597d3a18d3b47354fdaa026b355d68250bb582c1aa1b296dc2e8e",
+  "human_accounts": [],
+  "observations": [],
+  "excluded": [
+    {
+      "comment_id": 6099939632,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6100016916,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6100053021,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6101243092,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6101249297,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6101287286,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6101289007,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6101296926,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6101303464,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6101307104,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6101318734,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6101326605,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6101363950,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6101385248,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6101397598,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6101421896,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6101450079,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6101465440,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6101475946,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6102101176,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6102335248,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6102980526,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6103005750,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6103080106,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6103138144,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6103194657,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6103228782,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6103308530,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6103313887,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6103314913,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6103341587,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6103342937,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6103343659,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6103374167,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6103574656,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6103818737,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6104334617,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6104348428,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6104354822,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6104827140,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6104948192,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6105433846,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6105537356,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6105557907,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6106046707,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6110527301,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6110944426,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111136789,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111165992,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111325173,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111661540,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111979827,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6112039650,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6112046657,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6112112694,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6112131560,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6112152769,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6112487401,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6112738360,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6112761757,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6113179798,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6113228448,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6113250829,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6113381312,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6113406715,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6113557446,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6113629822,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6113777220,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6113796004,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6113878953,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6114084033,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6114183036,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6114210787,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6114216302,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6114702495,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6114716072,
+      "feed": 2154,
+      "reason": "reported_speech_marker_not_first_person",
+      "marker": "WORD!"
+    },
+    {
+      "comment_id": 6114801572,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6114827076,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115239558,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115393030,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115416050,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115616137,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115648076,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115707355,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115795319,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115814123,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115923115,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116028779,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116037979,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116083308,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116128189,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116227814,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116228359,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116250430,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116387146,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116390969,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116397235,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116501805,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116522213,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116563208,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116842579,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116957081,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117030543,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117061309,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117329301,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117369587,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117375321,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117388490,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117390866,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117491835,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117561925,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117668599,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117670579,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117696121,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117892837,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117938663,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117962334,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117988509,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118112847,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118210013,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118233659,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118265804,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118305447,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118347808,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118388322,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118431344,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118611753,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118664023,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118677501,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118679050,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118736750,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118786381,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118799241,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118912198,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118916174,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118956502,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118995088,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119015274,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119079043,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119096965,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119176328,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119189686,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119192096,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119200877,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119209823,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119302941,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119341246,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119450806,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119509292,
+      "feed": 2154,
+      "reason": "reported_speech_marker_not_first_person",
+      "marker": "Make it so"
+    },
+    {
+      "comment_id": 6119529184,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119651307,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119755924,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119893375,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119916432,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119923638,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6120021241,
+      "feed": 2154,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6120124807,
+      "feed": 2154,
+      "reason": "reported_speech_marker_not_first_person",
+      "marker": "Make it so"
+    },
+    {
+      "comment_id": 6041273652,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6042667203,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6042669847,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6043494746,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6043584454,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6044415477,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6044417435,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6044715645,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6044735530,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6046470739,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6046542364,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6046567282,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6048312341,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6048319835,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6048910176,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6049388863,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6049494312,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6049550183,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6049657725,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6049683558,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6049739334,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6049754537,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6049833874,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6049836509,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6049971291,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6049987745,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6051070404,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6051072146,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6051082243,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6051113940,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6051709491,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6051754709,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6054020343,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6054078758,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6056116438,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6056167623,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6057113701,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6057152922,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6058046448,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6058048932,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6062287031,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6062327637,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6062544349,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6062743775,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6063589541,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6063675246,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6066658192,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6066670045,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6068703570,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6068842227,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6069612991,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6069763630,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6070483992,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6070486287,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6073132195,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6073147047,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6073160486,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6073228353,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6073813101,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6073843964,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6075772271,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6075781368,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6077524576,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6077557364,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6078413975,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6078461782,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6079237707,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6079239597,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6083135052,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6083163693,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6083196773,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6083330617,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6084254393,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6084323429,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6084555427,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6084558789,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6085875263,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6086017692,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6086170550,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6086203334,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6086637078,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6087025991,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6087134104,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6087173600,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6088898166,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6088993579,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6089761385,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6089913170,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6090509740,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6090517812,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6092909389,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6092934972,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6092998610,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6093073952,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6093409216,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6093546484,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6096052610,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6096074669,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6096280711,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6096347766,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6096350140,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6096372086,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6096380338,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6096645823,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6096647691,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6098661243,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6098665898,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6098671795,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6098721117,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6098723319,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6100101431,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6100123265,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6100130711,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6100153182,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6100901504,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6100921187,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6101981231,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6102089329,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6102349426,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6102492284,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6102903018,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6102950912,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6102956035,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6102960612,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6103138544,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6103183181,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6103245852,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6103302522,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6103561080,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6103634235,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6103707790,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6103796458,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6104687208,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6104689292,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6104720263,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6104726560,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6104828645,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6104831578,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6104833575,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6105115981,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6105118838,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6105330335,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6105370034,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6105642884,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6105653384,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6105793172,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6105794727,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6105803725,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6105808377,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6105896051,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6105897234,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6105980019,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6106005742,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6106089331,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6106105665,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6106119462,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6106135194,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6106314595,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6106315951,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6106570002,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6106661633,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6107231163,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6107235856,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6107245450,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6107285265,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6107687392,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6107690174,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6108151288,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6108152779,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6108860467,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6108897144,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6109841816,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6110145083,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6110154323,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6110168837,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6110174475,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6110240023,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6110241746,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6110728452,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6110733164,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6110794414,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6110818975,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6110930870,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6110946885,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6110991238,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111013648,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111028435,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111034747,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111074913,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111092456,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111104992,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111132481,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111133156,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111169204,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111236704,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111302306,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111615804,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111815399,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111829940,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111868268,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111872633,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111886736,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111921607,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111924633,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111949522,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111952381,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111964879,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6112012650,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6112016964,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6112036871,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6112123859,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6112184211,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6112224247,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6112250260,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6112293304,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6112293823,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6112377006,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6112378036,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6112402320,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6112531675,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6112643996,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6112713370,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6112788787,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6112848722,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6113101071,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6113157964,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6113252449,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6113317917,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6113327173,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6113365276,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6113368158,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6113409584,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6113470119,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6113512185,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6113544579,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6113550115,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6113633229,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6113711505,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6113779661,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6113816012,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6113913849,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6113996215,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6114081234,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6114125324,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6114183451,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6114412145,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6114426343,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6114476892,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6114624869,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6114663005,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6114702270,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6114702542,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6114704831,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6114711969,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6114717078,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6114725935,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115027540,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115238497,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115315008,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115412919,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115459142,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115490069,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115516889,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115536672,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115558883,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115614285,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115625800,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115626210,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115649864,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115677895,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115708344,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115713344,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115893249,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115926206,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115994533,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116031142,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116071732,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116125660,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116211864,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116229871,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116323958,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116389235,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116460800,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116522067,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116628755,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116731328,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116734081,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116754365,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116755930,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116799868,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116802028,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116802727,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116844560,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116848889,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116869659,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116880541,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116883850,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116892826,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116960228,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116985210,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117030758,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117049673,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117051103,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117062387,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117086133,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117242638,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117343664,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117345544,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117377335,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117392256,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117395275,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117415166,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117449755,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117451994,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117489373,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117519962,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117522102,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117543450,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117545054,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117565118,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117566350,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117576678,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117581876,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117597308,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117599374,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117605126,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117654266,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117665921,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117698206,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117725170,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117740935,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117766531,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117766942,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117767338,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117776720,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117781697,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117790911,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117804157,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117820612,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117821928,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117924808,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117956880,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118073828,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118133539,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118200993,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118219306,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118267610,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118288666,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118306647,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118323329,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118389656,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118431420,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118840039,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118840261,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118959297,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118995209,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119080351,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119121155,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119121909,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119145067,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119191479,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119193222,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119263222,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119340991,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119360508,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119452659,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119632026,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119653645,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119831300,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119925926,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119992027,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6120017911,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6120022604,
+      "feed": 1713,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6046440267,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6046503676,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6051096108,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6051143361,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6056281868,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6056340917,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6062735710,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6063019968,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6068667826,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6068830238,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6073158198,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6073193806,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6077497734,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6077589226,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6083283813,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6083418281,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6089234988,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6089366406,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6092909440,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6092995153,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6095774724,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6095858525,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6098663935,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6098783713,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6101258326,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6101296249,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6101420555,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6101522694,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6101639372,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6101642867,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6101990607,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6102013844,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6102044747,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6102251405,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6102353448,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6102406069,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6102598423,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6102753460,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6102760891,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6103043353,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6103111753,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6104709416,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6105195233,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6105240966,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6105388308,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6105439497,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6105644199,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6105646986,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6105648575,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6105651633,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6105794723,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6105851662,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6105889536,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6105901473,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6105932117,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6105933821,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6106061565,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6106092488,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6106168042,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6107021089,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6107231379,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6110169464,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6110820326,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6110912991,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6110942668,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6110959985,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6110991336,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111021477,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111022740,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111044163,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111088355,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111128650,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111137241,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111160161,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111160818,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111217313,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111242523,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111350337,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111824515,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111901348,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111906047,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111931092,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111932217,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111945721,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111995393,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6112000529,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6112043307,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6112044169,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6112186359,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6112218100,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6112248754,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6112281913,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6112287902,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6112489943,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6112532808,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6112601325,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6112747638,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6112842887,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6112960762,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6113169944,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6113182026,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6113321409,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6113338984,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6113427914,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6113544420,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6113561108,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6113576149,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6113701532,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6113798363,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6113818008,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6113865104,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6114003128,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6114208538,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6114430471,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6114436951,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6114631068,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6114715315,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6114738652,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6114799152,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115026769,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115197854,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115206442,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115241648,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115342059,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115392847,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115459036,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115485395,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115560817,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115606185,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115644032,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115645703,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115702739,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115704666,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115743643,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115759352,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115816100,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115890950,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115916922,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115996344,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116040234,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116202585,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116251882,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116333122,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116389015,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116492071,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116499878,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116503850,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116649695,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116741922,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116784583,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116805817,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116817477,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116823570,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117000803,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117061646,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117089660,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117242398,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117330695,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117362294,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117392248,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117396197,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117401395,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117429413,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117430812,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117430992,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117436835,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117465452,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117477496,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117521456,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117531828,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117533351,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117534727,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117540256,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117589984,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117622023,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117622742,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117625562,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117626259,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117656701,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117659396,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117663504,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117671742,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117706567,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117711612,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117755984,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117767714,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117773328,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117834942,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117836820,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117846107,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117864326,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117913444,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117915433,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117937943,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117941538,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117981138,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118020179,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118023283,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118050975,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118051131,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118075404,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118114623,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118139359,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118147241,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118157941,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118168448,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118184169,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118186511,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118201263,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118202011,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118211103,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118264385,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118330967,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118344517,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118376638,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118430722,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118632875,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118675553,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118696194,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118738854,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118739077,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118766009,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118787726,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118891502,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118913787,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118956172,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118992712,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119075850,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119083030,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119142707,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119165829,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119211625,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119454208,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119531229,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119609890,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119616936,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119823710,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119889614,
+      "feed": 1714,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6046460871,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6046509343,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6047084710,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6047090650,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6047096382,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6047141990,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6047146886,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6047154748,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6051076503,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6051250224,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6051509293,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6056145101,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6056205594,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6056223353,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6056454678,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6056678574,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6056853230,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6062380184,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6062641053,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6062790689,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6068718588,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6068720987,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6068723779,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6068727363,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6073153794,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6073172667,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6077515506,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6077530887,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6077534248,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6083226003,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6083328468,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6088953096,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6089026663,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6092919218,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6092942546,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6095777704,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6095794405,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6098668410,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6098710578,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6102001801,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6102404632,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6102470728,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6102729062,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6102789673,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6104714632,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6104719126,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6105273412,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6105307485,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6105329817,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6105362545,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6105886455,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6105926601,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6105932113,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6105962922,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6107227284,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6107230580,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6110041234,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6110097782,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6110183858,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6110187815,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6110817136,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6110922561,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111321017,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111427240,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111575260,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111824517,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111866846,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111890414,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111927128,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111959522,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6111973565,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6112184696,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6112210826,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6112278439,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6112334508,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6112386701,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6112416238,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6112531183,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6112659009,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6112716011,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6112781288,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6112847923,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6112897777,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6113164234,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6113228725,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6113321497,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6113344334,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6113372553,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6113384172,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6113549167,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6113555903,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6113709012,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6113830763,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6113860798,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6113885772,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6113964476,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6114106522,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6114313006,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6114498101,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6114605399,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6114707076,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6114712746,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6114713618,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6114720540,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6114724469,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6114746745,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6114840699,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6114847241,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6114876685,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6114922225,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6114948874,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115039661,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115053867,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115195148,
+      "feed": 1715,
+      "reason": "reported_speech_marker_not_first_person",
+      "marker": "Make it so"
+    },
+    {
+      "comment_id": 6115217996,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115488920,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115562334,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115654278,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115665964,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115706477,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115706905,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115711039,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115730702,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115747336,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115798614,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6115881768,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116005341,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116068522,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116129681,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116209262,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116230450,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116394367,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116397068,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116447771,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116561391,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116630029,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116735366,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116784207,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116825763,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116837806,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6116841701,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117041223,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117182821,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117243880,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117297678,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117324818,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117347046,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117390029,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117403175,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117426270,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117439674,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117447844,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117450409,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117492776,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117520876,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117554105,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117554270,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117606897,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117613662,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117646559,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117761106,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117829250,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117860694,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117884246,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117945693,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117957142,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117958252,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6117980071,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118028896,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118043193,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118129535,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118131585,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118180575,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118197320,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118213708,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118228444,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118229540,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118259617,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118275124,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118276262,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118465159,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118609200,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118639703,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118677145,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118766006,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118800609,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118894278,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118918134,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6118958256,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119016859,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119072153,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119099203,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119147782,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119320912,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119458257,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119513045,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119630252,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119753896,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119826779,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119914246,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6119996605,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6120002032,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    },
+    {
+      "comment_id": 6120122244,
+      "feed": 1715,
+      "reason": "no_authorship_marker"
+    }
+  ],
+  "searched": [
+    {
+      "channel": "c1",
+      "feed": 2154,
+      "comments_scanned": 157
+    },
+    {
+      "channel": "c1",
+      "feed": 1713,
+      "comments_scanned": 373
+    },
+    {
+      "channel": "c1",
+      "feed": 1714,
+      "comments_scanned": 238
+    },
+    {
+      "channel": "c1",
+      "feed": 1715,
+      "comments_scanned": 203
+    },
+    {
+      "channel": "c3",
+      "issues_prs_scanned": 100,
+      "attributable": 0
+    }
+  ],
+  "null_sweep": true,
+  "c3_note": "c3_authorship_unresolvable: human-accounts.json allowlist is empty in v1; 100 repo actions seen, 0 mechanically attributable. Fail closed — no C3 observations claimed.",
+  "independence": {
+    "method": "deterministic rules-based code; same input -> same output",
+    "sources": "C1 team feeds + C3 API actions only; C2 refused by construction",
+    "reproducible_by": "any seat re-running this file unchanged"
+  },
+  "collected_at": "2026-10-12T08:42:04.861576+00:00"
+}
