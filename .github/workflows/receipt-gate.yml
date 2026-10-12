@@ -30,6 +30,8 @@ jobs:
     name: Receipt pin — exact head SHA
     runs-on: ubuntu-latest
     steps:
+      - name: Record trigger activity (B-48 observability)
+        run: echo "trigger_activity=${{ github.event.action }}"
       - uses: actions/checkout@v4
 
       - name: Enforce exact-head receipt pin (fail-closed)
