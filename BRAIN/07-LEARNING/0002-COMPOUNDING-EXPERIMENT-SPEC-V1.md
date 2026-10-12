@@ -1,7 +1,7 @@
 # Four-Arm Compounding Experiment — Spec V3
 
 **Area:** LEARN — the compounding learning loop (current score 5.0/10).
-**Status:** SPEC V3 — Builder-Scorer Loop: Round 1 6.5/10 → Round 2 8.0/10 → fixes below. Executable by another seat. Not a design doc; a recipe.
+**Status:** SPEC V3.1 — Builder-Scorer Loop: Round 1 6.5/10 → Round 2 8.0/10 → independent-review claim bounding (2026-10-12, §5.1). Executable by another seat. Not a design doc; a recipe.
 **Author:** Compounder (Naya-2 LEARN lead), dispatch wave 1, 2026-10-11. V2/V3 fixes: LEARNING LOOP builder, same day.
 **Canonical location:** `BRAIN/07-LEARNING/0002-COMPOUNDING-EXPERIMENT-SPEC-V1.md` (filename kept; version history §9).
 **Predecessor rule:** extends `0001-LEARNING-CONTRACT-V1.md` (pipeline OBSERVE → RECONCILE → CANDIDATE → VERIFY → ADOPT → MEASURE → COMPOUND). It does not replace it.
@@ -11,6 +11,7 @@
 - **V1** (2026-10-11): initial four-arm spec, 4 falsifiable claims, 12-scenario battery.
 - **V2** (2026-10-11): Round 1 fixes (6.5/10) — delta-based C1/C3 criteria, novelty requirement, adversarial lesson must target a graded scenario, operational C4 batches, arm order + carryover control, instance-equivalence rule, solo-execution fallback.
 - **V3** (2026-10-11): Round 2 fixes (8.0/10) — Fisher's exact p<0.05 as the C1/C3 gate (the V2 delta-≥4 rule could pass at p=0.107; verified by computation), defined power tiers S/M/L, receipt-hygiene rule (treatment receipts must not restate the lesson text), C2 tripwire primary with aggregate guard demoted to descriptive, coherence alarms (C1-fail + C3-pass = instrument failure, run VOID), scenario-template difficulty schema, honest C4 limits sentence.
+- **V3.1** (2026-10-12): independent-review claim bounding — added §5.1 "What this instrument does NOT claim" (two proof levels declared; pilot INCONCLUSIVE verdict held at p = 0.50, verified on the raw arm files). No design changes; no INCONCLUSIVE→PASS.
 
 ---
 
@@ -113,6 +114,10 @@ The claims must cohere. These patterns void the run for **instrument failure** �
 - **C1 PASS + C3 FAIL:** coherent — the lesson changed behavior but receipts didn't transmit it. This is the interesting case Build 3 exists for.
 
 **What a full PASS means:** C1 + C2 + C3 + C4 all pass on the same frozen tip, with no coherence alarm. **That** is the evidence that the learning loop compounds. Any single claim failing fails the run; the failing claim's falsifier names the next work item. An INCONCLUSIVE is not a pass — it schedules the higher-tier re-run.
+
+## 5.1 What this instrument does NOT claim (independent-review bound, 2026-10-12)
+
+A full PASS on this spec certifies **injected-lesson effect and receipt transmission inside this instrument only**: the treatment worker received the test-lesson text directly in its briefing (§2), and the successor worker read only the frozen treatment-generation receipts (§2.1). It does **not** certify mission-grade behavioral compounding — that is a **second rung**: a cold agent independently selecting an eligible owner-scoped lesson via real `tools/smart_note_v2.py retrieve` / canonical IB reader, proving query + row + hash + applicability, routing it through `process_advise` before ACT, and reusing it cold a generation later (not via a direct lesson handoff). That rung is separately specified (LEARN feed, 2026-10-11) and belongs to the existing LEARN/KNOW owners — this spec will not be rewritten, inflated, or extended into a competing harness for it. Pilot note: the 2026-10-11 pilot's 48 raw trial records were independently verified on the raw arm files (C1 treatment 12/12 vs control 11/12, Fisher one-sided p = 0.50; C3 successor 12/12 vs control 11/12, p = 0.50) — **INCONCLUSIVE is the verdict, and it stays INCONCLUSIVE**; no re-analysis turns p = 0.50 into a pass.
 
 ## 6. What the scorer grades (scorecard)
 
