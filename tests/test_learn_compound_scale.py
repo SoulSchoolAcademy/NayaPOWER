@@ -79,6 +79,16 @@ def test_truth_rejects_unearned_contradiction():
     assert score <= 2  # rejection unearned: contradiction not in source
 
 
+def test_truth_falls_back_to_committed_fixture(monkeypatch, tmp_path):
+    # Simulate a machine without the operator-VM receipt files (CI runner):
+    # the gate must still verify against the committed verbatim excerpt.
+    monkeypatch.setenv("HOME", str(tmp_path))
+    score, detail = gates.gate_truth(_lesson("L1"))
+    assert score == 9, detail
+    score, detail = gates.gate_truth(_lesson("A2"))
+    assert score == 9 and "REJECT" in detail, detail
+
+
 # ------------------------------------------------------- comprehension
 @pytest.mark.parametrize("lesson", GOOD, ids=lambda l: l["id"])
 def test_comprehension_probe_passes_on_distilled(lesson):
