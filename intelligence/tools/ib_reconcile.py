@@ -432,3 +432,157 @@ def validate_v11(block):
 
 def now_iso():
     return datetime.now(timezone.utc).isoformat(timespec="seconds")
+
+
+# ---------------------------------------------------------------------------
+# System ownership — Shawn's locked decision (2026-10-11 ~22:34Z)
+# ---------------------------------------------------------------------------
+# "Naya is locking that in for owner." Naya — the collective system — owns the
+# 20 seed Intelligent Blocks and all future blocks. No per-block human owner:
+# a per-block owner recreates the bottleneck the system exists to remove.
+# Operational authority flows through the verification/promotion gates of
+# OWNERSHIP_AUTHORITY_PATH below — executable checks, not prose. Each gate is
+# a real function exercised by tests (positive + negative); the path is the
+# machine-readable record of HOW Naya exercises ownership.
+OWNER_NAYA = "NAYA"
+
+SYSTEM_OWNERSHIP_DECISION = {
+    "owner_id": OWNER_NAYA,
+    "decided_by": "Shawn",
+    "decided_at": "2026-10-11T22:34:00+00:00",
+    "decision": (
+        "Naya (the collective system) owns the 20 seed Intelligent Blocks and "
+        "all future blocks. No per-block human owner (bottleneck). Operational "
+        "authority flows through the system's verification/promotion gates."
+    ),
+    "recorded_in": "intelligence/tools/ib_reconcile.py (this module)",
+}
+
+
+def validate_system_owned(block):
+    """Seed-corpus ownership rule. Returns a problem string, or None if clean.
+
+    Every block authored under intelligence/blocks/ is system-owned: owner_id
+    must be exactly OWNER_NAYA. Empty fails loudly (never invent, never leave
+    pending); any other value fails as a per-block-owner bottleneck.
+    """
+    owner = (block or {}).get("owner_id")
+    if not owner:
+        return (
+            "owner_id is empty: system-owned blocks must declare "
+            f"owner_id='{OWNER_NAYA}' (never invent, never leave pending)"
+        )
+    if owner != OWNER_NAYA:
+        return (
+            f"owner_id '{owner}' is a per-block owner: only '{OWNER_NAYA}' may own "
+            "seed-corpus blocks (Shawn 2026-10-11 — per-block owners are bottlenecks)"
+        )
+    return None
+
+
+# ---------------------------------------------------------------------------
+# Ownership authority path — how Naya (the system) exercises ownership
+# ---------------------------------------------------------------------------
+# Each entry: (gate_name, check_function, what_it_exercises).
+# A check takes (block, ctx=None) and returns None (pass) or a problem string.
+# ctx carries cross-file state the check needs, e.g. {"registry": REGISTRY.json}.
+def check_ownership_locked(block, ctx=None):
+    "Gate 1: the block declares the system as its owner, exactly."
+    return validate_system_owned(block)
+
+
+def check_envelope_identity(block, ctx=None):
+    "Gate 2: the block round-trips through the persisted envelope with owner + identity intact."
+    try:
+        row = to_persisted_row(block)
+        back = from_persisted_row(row)
+    except ValueError as e:
+        return f"envelope round-trip raised: {e}"
+    if back.get("owner_id") != OWNER_NAYA:
+        return f"round-trip lost system owner: {back.get('owner_id')!r}"
+    if back.get("intelligent_block_id") != block.get("intelligent_block_id"):
+        return "round-trip lost block identity"
+    return None
+
+
+def check_epistemic_consistency(block, ctx=None):
+    "Gate 3: verification_status ladder position agrees with understanding_state + status."
+    vs = block.get("verification_status")
+    if vs not in FILE_TO_PERSISTED_STATE:
+        return f"verification_status {vs!r} is not on the ladder"
+    if block.get("status") == "SUPERSEDED":
+        return None  # supersession overrides the mapping
+    exp_us, exp_st, _ = FILE_TO_PERSISTED_STATE[vs]
+    if block.get("understanding_state") != exp_us:
+        return (
+            f"understanding_state {block.get('understanding_state')!r} disagrees with "
+            f"verification_status {vs!r} (expected {exp_us!r})"
+        )
+    if block.get("status") != exp_st:
+        return (
+            f"status {block.get('status')!r} disagrees with "
+            f"verification_status {vs!r} (expected {exp_st!r})"
+        )
+    return None
+
+
+def check_ladder_evidence(block, ctx=None):
+    "Gate 4: any ladder rung above UNVERIFIED is backed by evidence (receipts, not claims)."
+    if block.get("verification_status") != "UNVERIFIED" and not block.get("evidence"):
+        return "verification ladder requires non-empty evidence above UNVERIFIED"
+    return None
+
+
+def check_graduation(block, ctx=None):
+    "Gate 5: the block sits on the text->briefing->code-gate path; code-gate names its enforcer."
+    g = block.get("graduation") or {}
+    stage = g.get("stage")
+    if stage not in FILE_STAGES:
+        return f"graduation.stage {stage!r} not in {FILE_STAGES}"
+    if stage == "code-gate" and not g.get("enforced_by"):
+        return "code-gate graduation claims must name enforced_by"
+    return None
+
+
+def check_registry_consistency(block, ctx=None):
+    "Gate 6: REGISTRY.json indexes the block with matching state and the system owner."
+    reg = (ctx or {}).get("registry") or {}
+    entries = {e.get("id"): e for e in reg.get("blocks", [])}
+    bid = block.get("intelligent_block_id") or block.get("id")
+    entry = entries.get(bid)
+    if entry is None:
+        return f"block {bid!r} missing from REGISTRY.json"
+    if entry.get("title") != block.get("title"):
+        return f"registry title {entry.get('title')!r} != block {block.get('title')!r}"
+    if entry.get("verification_status") != block.get("verification_status"):
+        return "registry verification_status disagrees with block"
+    if entry.get("graduation_stage") != (block.get("graduation") or {}).get("stage"):
+        return "registry graduation_stage disagrees with block"
+    if entry.get("owner_id") != OWNER_NAYA:
+        return f"registry owner_id {entry.get('owner_id')!r} != '{OWNER_NAYA}'"
+    return None
+
+
+OWNERSHIP_AUTHORITY_PATH = (
+    ("ownership-locked", check_ownership_locked,
+     "owner_id is exactly NAYA — the system owns the block; no per-block human owner"),
+    ("envelope-identity", check_envelope_identity,
+     "file block round-trips through the persisted envelope with owner + identity intact"),
+    ("epistemic-consistency", check_epistemic_consistency,
+     "verification_status ladder position agrees with understanding_state + status"),
+    ("verification-ladder-evidence", check_ladder_evidence,
+     "any rung above UNVERIFIED is backed by evidence"),
+    ("graduation-path", check_graduation,
+     "block sits on the text->briefing->code-gate path; code-gate names its enforcer"),
+    ("registry-integrity", check_registry_consistency,
+     "REGISTRY.json indexes the block with matching state and the system owner"),
+)
+
+
+def run_authority_path(block, ctx=None):
+    """Exercise the full ownership authority path.
+
+    Returns [(gate_name, problem_or_None), ...]. All None = the system
+    exercises ownership cleanly through every gate.
+    """
+    return [(name, check(block, ctx)) for name, check, _ in OWNERSHIP_AUTHORITY_PATH]
