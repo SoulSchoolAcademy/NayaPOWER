@@ -2,7 +2,7 @@
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-12",
   "receipt_basis_commit": "665098e3f00c9aa6f63907360b8500891704071c",
-  "inventory_file_count": 1256,
+  "inventory_file_count": 1257,
   "domain_counts": {
     "00-ACTIVATION": 3,
     "00-ARCHITECTURE": 5,
@@ -17,7 +17,7 @@
     "08-SUCCESSION": 2,
     "09-EVOLUTION": 2,
     "10-INTERFACES": 380,
-    "11-KNOWLEDGE": 7,
+    "11-KNOWLEDGE": 8,
     "12-ENGINEERING": 25,
     "90-OPERATIONS": 24,
     "99-ARCHIVE": 2,
@@ -6014,6 +6014,11 @@
       "path": "BRAIN/11-KNOWLEDGE/0004-HUMAN-AI-MACHINE-REPRESENTATION-V1.md",
       "blob_sha": "ad8585a8996c023a5d445d24936b51d93279a579",
       "size": 1955
+    },
+    {
+      "path": "BRAIN/11-KNOWLEDGE/0005-APPLICABILITY-CONSUMER-CONTRACT-V1.md",
+      "blob_sha": "208068c452a6b620ff34e10411e9a0ae6a121691",
+      "size": 7572
     },
     {
       "path": "BRAIN/11-KNOWLEDGE/README.md",

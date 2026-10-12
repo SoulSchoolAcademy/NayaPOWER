@@ -2,7 +2,7 @@
 
 **Generated:** 2026-10-12  
 **Receipt basis commit:** `665098e3f00c9aa6f63907360b8500891704071c`  
-**Inventory file count:** 1256  
+**Inventory file count:** 1257  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -21,7 +21,7 @@
 | 08-SUCCESSION | 2 |
 | 09-EVOLUTION | 2 |
 | 10-INTERFACES | 380 |
-| 11-KNOWLEDGE | 7 |
+| 11-KNOWLEDGE | 8 |
 | 12-ENGINEERING | 25 |
 | 90-OPERATIONS | 24 |
 | 99-ARCHIVE | 2 |
@@ -1255,6 +1255,7 @@
 - `BRAIN/11-KNOWLEDGE/0003-KNOWLEDGE-POPULATION-MAP-V1.json` — `f2d3a6f7f935` (4159 bytes)
 - `BRAIN/11-KNOWLEDGE/0004-CONCEPT-TO-NODE-PROTOCOL-V1.md` — `cc2d643761e3` (1985 bytes)
 - `BRAIN/11-KNOWLEDGE/0004-HUMAN-AI-MACHINE-REPRESENTATION-V1.md` — `ad8585a8996c` (1955 bytes)
+- `BRAIN/11-KNOWLEDGE/0005-APPLICABILITY-CONSUMER-CONTRACT-V1.md` — `208068c452a6` (7572 bytes)
 - `BRAIN/11-KNOWLEDGE/README.md` — `c5f0af063d18` (1410 bytes)
 ### 12-ENGINEERING — Engineering
 
