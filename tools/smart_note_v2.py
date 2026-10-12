@@ -58,8 +58,10 @@ except ImportError:  # running by path: sys.path[0] is tools/, not the repo root
 
 try:
     from tools.applicability import filter_entries as _applicability_filter_entries
+    from tools.applicability import apply_ranking as _applicability_apply_ranking
 except ImportError:  # running by path: sys.path[0] is tools/, not the repo root
     from applicability import filter_entries as _applicability_filter_entries
+    from applicability import apply_ranking as _applicability_apply_ranking
 
 ROOT = Path(__file__).resolve().parents[1]
 BRAIN_SMART_NOTE_ROOT = ROOT / "BRAIN" / "05-MEMORY" / "SMART-NOTES"
@@ -729,7 +731,8 @@ def _retrieval_idf(field_word_sets):
             df[w] = df.get(w, 0) + 1
     return {w: math.log(1.0 + n / max(1, c)) for w, c in df.items()}
 
-def _ranked_candidates(query, areas=None, task_contexts=None):
+def _ranked_candidates(query, areas=None, task_contexts=None,
+                       apply_applicability_ranking=False):
     """Score every active registry entry for query; returns the ranked list of
     (score, truth-state rank, entry) sorted descending. This is the testable
     seam: negative controls and the relevance floor assert on this list, not
@@ -737,7 +740,14 @@ def _ranked_candidates(query, areas=None, task_contexts=None):
 
     areas / task_contexts optionally scope the candidate pool by
     applicability metadata (tools/applicability.py) BEFORE scoring.
-    Default (both None) is unchanged behavior: the full corpus."""
+    Default (both None) is unchanged behavior: the full corpus.
+
+    apply_applicability_ranking (default False): post-scoring contract pass —
+    resolves supersession lineage to heads and multiplies base scores by the
+    contract's rank_adjust rule (expired ×0.1, out-of-scope ×0.25,
+    unreviewed ×0.5, superseded → never served as current). Off by default
+    so existing behavior is byte-for-byte unchanged; the retrieval side
+    (Theta) enables it once the consumer contract is wired."""
     registry = load_json(REGISTRY)
     candidates = registry.get("entries", [])
     if areas or task_contexts:
@@ -803,16 +813,44 @@ def _ranked_candidates(query, areas=None, task_contexts=None):
         # relevant CANDIDATE whose uncertainty is visible. A 1-2 keyword
         # gap at these score magnitudes (1-3) is signal, not noise.
         ranked.append((score, rank, e))
+    if apply_applicability_ranking and ranked:
+        # KNOW-side consumer of the contract: lineage-resolved, demoted
+        # re-rank. Truth-state rank rides with the ORIGINAL member (authority
+        # breaks ties among final scores); the head entry is served.
+        base_scores = {}
+        base_rank = {}
+        for score, rank, e in ranked:
+            eid = e.get("smart_note_id") or e.get("intelligent_block_id")
+            if score > base_scores.get(eid, 0.0):
+                base_scores[eid] = score
+                base_rank[eid] = rank
+        adj = _applicability_apply_ranking(
+            candidates, base_scores, requested_areas=areas,
+            requested_contexts=task_contexts)
+        ranked = []
+        for row in adj:
+            hid = row["entry_id"]
+            head_entry = next(
+                (e for e in candidates
+                 if (e.get("smart_note_id") or e.get("intelligent_block_id")) == hid),
+                None)
+            if head_entry is None or row["final_score"] <= 0:
+                continue
+            rank = max((base_rank.get(m, 0) for m in
+                        [hid, *row["via_lineage"]]), default=0)
+            ranked.append((row["final_score"], rank, head_entry, row))
     ranked.sort(key=lambda z: (z[0], z[1], z[2].get("captured_at","")), reverse=True)
     return ranked
 
 
-def retrieve(query, areas=None, task_contexts=None):
+def retrieve(query, areas=None, task_contexts=None,
+             apply_applicability_ranking=False):
     # Privacy refusal: an extraction probe is refused AS a probe, before
     # scoring — even a high-scoring match must not be disclosed this way.
     if _is_privacy_probe(query):
         raise SystemExit("PRIVATE_INTELLIGENCE_NOT_DISCLOSED")
-    ranked = _ranked_candidates(query, areas=areas, task_contexts=task_contexts)
+    ranked = _ranked_candidates(query, areas=areas, task_contexts=task_contexts,
+                                apply_applicability_ranking=apply_applicability_ranking)
     if not ranked:
         raise SystemExit("NO_RELEVANT_INTELLIGENCE")
     if ranked[0][0] < RETRIEVAL_RELEVANCE_FLOOR:

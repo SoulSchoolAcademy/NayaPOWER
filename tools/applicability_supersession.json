@@ -1,0 +1,6 @@
+{
+  "_note": "Explicit supersession registry for applicability v2.0 (KNOW side, Naya Beta). Keys are entry_ids (smart_note_id or intelligent_block_id). superseded_by: the single entry that replaces this one. supersedes: inverse list for fast traversal. Source of truth until lineage automation produces these links; keep edits auditable (one line per link, dated comments in the owning commit). Empty today: the first links land here as the review lane approves them.",
+  "schema_version": "1.0",
+  "superseded_by": {},
+  "supersedes": {}
+}
