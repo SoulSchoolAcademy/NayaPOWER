@@ -464,6 +464,109 @@ def test_negation_fixpass5_rejection_fragments():
           json.dumps({k: r.get(k) for k in ("ok", "exit_hint")})[:100])
 
 
+def test_negation_inversion():
+    """L236 MECHANISM INVERSION: trailing verbless fragments REFUSE unless
+    they carry a clear affirmative from the closed set. Five rounds proved
+    negation-token enumeration cannot converge; the default flipped, so
+    unlisted informal negations now fail closed instead of silently
+    proceeding. Battery: informal/creative negations (must refuse) and
+    tricky affirmatives (must proceed)."""
+    print("F2 inversion: trailing-fragment default flip:")
+    refuse_cases = [
+        # informal / creative negations — none need to be listed anywhere
+        "merge 2412? hell no",
+        "merge 2412? hells no",
+        "merge 2412? fat chance",
+        "merge 2412? in your dreams",
+        "merge 2412? dream on",
+        "merge 2412? not on your life",
+        "merge 2412? over my dead body",
+        "merge 2412? no dice",
+        "merge 2412? nah",
+        "merge 2412? negative",
+        "merge 2412? hard pass",
+        "merge 2412? big no",
+        "merge 2412? uh uh",
+        "merge 2412? mm-mm",
+        "deploy? god no",
+        "merge 2412? absolutely freaking not",
+        # sarcasm: affirmative tokens that mean no
+        "merge 2412? yeah right",
+        "merge 2412? as if",
+        "merge 2412? when pigs fly",
+        "merge 2412? oh please",
+        # uncertain / deferring fragments fail closed (ask), not open
+        "merge 2412? hmm",
+        "merge 2412? later",
+        "merge 2412? not yet",
+        "merge 2412? well",
+    ]
+    for s in refuse_cases:
+        r = parse_intent(s)
+        check(f"inversion refuse '{s}' -> exit 2",
+              r["ok"] is False and r["exit_hint"] == 2,
+              json.dumps({k: r.get(k) for k in ("ok", "exit_hint")})[:100])
+    proceed_cases = [
+        # clear affirmatives from the closed set
+        "merge 2412? yes please",
+        "merge 2412? yeah",
+        "merge 2412? sure",
+        "merge 2412? ok",
+        "merge 2412? go ahead",
+        "merge 2412? why not",
+        "merge 2412? tomorrow",
+        "merge 2412? no problem",
+        "merge 2412? sounds good",
+        "merge 2412? thanks",
+        "merge 2412? fine",
+        "merge 2412? absolutely",
+        "merge 2412? do it",
+        "merge 2412? after CI",
+    ]
+    for s in proceed_cases:
+        r = parse_intent(s)
+        check(f"inversion affirm '{s}' -> not the negated path",
+              not any("instead" in q for q in r.get("clarifying_questions", [])),
+              str(r.get("clarifying_questions"))[:120])
+    # The inversion governs trailing fragments only: full propositions
+    # keep the sentence-level machinery.
+    r = parse_intent("don't ever merge 2412")
+    check("full-proposition negation still refuses",
+          r["ok"] is False and r["exit_hint"] == 2)
+    r = parse_intent("Nobody merge 2412")
+    check("subject negation still refuses",
+          r["ok"] is False and r["exit_hint"] == 2)
+    # Leading fragments are not trailing: discourse "No" still stands.
+    r = parse_intent("No. Merge 2412.")
+    check("'No. Merge 2412.' still proceeds",
+          not any("instead" in q for q in r.get("clarifying_questions", [])),
+          str(r.get("clarifying_questions"))[:120])
+    # Adversarial pins: sarcasm defeats bare affirmative tokens;
+    # uncertain/deferring fragments fail closed (ask); formal
+    # affirmatives proceed. Contradictory fragments ask.
+    for s in ["merge 2412? sure sure",
+              "merge 2412? oh please",
+              "merge 2412? when pigs fly",
+              "merge 2412? I guess",
+              "merge 2412? one sec",
+              "merge 2412? never mind",
+              "merge 2412? yes, no, maybe"]:
+        r = parse_intent(s)
+        check(f"adversarial '{s}' -> exit 2",
+              r["ok"] is False and r["exit_hint"] == 2,
+              json.dumps({k: r.get(k) for k in ("ok", "exit_hint")})[:100])
+    for s in ["merge 2412? aye",
+              "merge 2412? affirmative",
+              "merge 2412? confirmed",
+              "merge 2412? roger that",
+              "merge 2412? if CI is green",
+              "merge 2412? ship it"]:
+        r = parse_intent(s)
+        check(f"adversarial '{s}' -> not the negated path",
+              not any("instead" in q for q in r.get("clarifying_questions", [])),
+              str(r.get("clarifying_questions"))[:120])
+
+
 def test_schema_consistency():
     print("F3: same schema on every path:")
     paths = {
@@ -543,6 +646,8 @@ if __name__ == "__main__":
     test_pr_extraction_variants()
     test_negation()
     test_negation_sentence_level()
+    test_negation_fixpass5_rejection_fragments()
+    test_negation_inversion()
     test_schema_consistency()
     test_cli_bare_text()
     print(f"\n{PASS} passed, {FAIL} failed")
