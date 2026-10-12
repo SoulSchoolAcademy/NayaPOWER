@@ -2,12 +2,12 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-12 13:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-12 13:16 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## 🟢 Working right now
 
-- **Team ? — ?** (?) — tick t0302: lane 9 t0292 tip-red heal + #2467 CI re-verify: no receipt by t0302 (1 tick elapsed); lanes 8+11 sco
-- **Team ? — ?** (?) — tick t0302: lane 1 #2454/#2466 body-paperwork re-verify; lane 2 H9 r3 re-seal + execute; lane 3 #2418 guide re-r
+- **Team ? — ?** (?) — tick t0312: no receipt by t0312 (2 ticks overdue, async-dispatch loss) — re-briefed t0312 with CHANGED brief (ve
+- **Team ? — ?** (?) — tick t0312: lane 8 seat_of() seat-identity fragility fix (Lane 3 t0302 finding); lane 9 tip-red classify+heal CH
 
 ## The Teams
 
@@ -1179,6 +1179,30 @@ _Last updated: 2026-10-12 13:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** re-verify #2454 + #2466 paperwork blockers on live bytes
 
 **Evidence:** Live heads c10084bd/92c5a742 match ls-remote; guide re-run on LIVE bodies -> both HOLD with named blockers; pin checks exit 1 reproduced on live bytes; new guide-protected-files fragility flagged. Minor: receipt tail truncated mid-sentence.
+
+### ✅ t0302 — Team 3, Naya Judge (Decision Engine) — 8.5/10 [VERIFIED]
+
+**Task:** #2418 guide re-run + corrected t0232 misdiagnosis on live bytes; HOLD verdict + real gate seat-model fragility flagged to Lane 8
+
+**Receipt:** `twelve-lane-receipts/t0302-lane3.md`
+
+**Evidence:** Dispatcher-verified: head 8346681c == ls-remote == API; pin PASS exit 0 on live body; 7/7 live comments re-classified; t0232 bold-format misdiagnosis corrected on mechanical evidence (seat_of matches anywhere in text). Deduct: late sign-in 2nd occurrence; self-caught error cost a tick of wrong routing. No phantom.
+
+### ✅ t0302 — Team 2, Naya Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** H9 round 3 re-sealed + executed, verdict GO (composition_delta 0.2738 >= 0.25 bar)
+
+**Receipt:** `twelve-lane-receipts/t0302-lane2.md`
+
+**Evidence:** Dispatcher-verified: prereg-sealed.md sha256 db4a32ad matches receipt; seal + pins + instrument + execution-output all on disk; gate pre-verified on 5 synthetic fixtures. Honest residuals named (same-seat seal+execute, thin M=1 cell, observational). No phantom.
+
+### ✅ t0302 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** re-verify #2454 + #2466 paperwork blockers on live bytes (pins + live bodies + both gate scripts)
+
+**Receipt:** `twelve-lane-receipts/t0302-lane1.md`
+
+**Evidence:** Dispatcher-verified: ls-remote pins c10084bd/92c5a742/f9b5ac3d match receipt verbatim; scratch + decision files exist; #2454/#2466 HOLD stands on live bytes, no blocker flipped. -1.0: sign-in combined not at start; gate CI classification used not own check-run. No phantom.
 
 ### ✅ t0292 — Team 11, Naya Heart (Human Value) — 9.0/10 [VERIFIED]
 
