@@ -72,10 +72,12 @@ INTENT_TYPES = {
     "should_merge": {
         "description": "Asking whether a PR/branch should merge",
         "patterns": [
-            r"should (?:this|that|it|PR\s*#?\d+|the branch).{0,30}merge",
-            r"(?:can|may) (?:this|that|it|PR\s*#?\d+).{0,30}merge",
-            r"is (?:this|that|it|PR\s*#?\d+).{0,30}ready to merge",
-            r"merge (?:this|that|it|PR\s*#?\d+)",
+            r"should (?:this|that|it|#\d+|PR\s*#?\d+|the branch|the pull request).{0,30}merge",
+            r"should (?:the\s+)?pull[\s\-]+request\s*#?\d*.{0,30}merge",
+            r"pull[\s\-]+request\s*#?\d*\s+should\s+merge",
+            r"(?:can|may) (?:this|that|it|#\d+|PR\s*#?\d+).{0,30}merge",
+            r"is (?:this|that|it|#\d+|PR\s*#?\d+).{0,30}ready to merge",
+            r"merge (?:this|that|it|the branch|#?\d+|PR\s*#?\d+|pull[\s\-]+request(?:\s*#?\d+)?)",
         ],
         "objective": "Determine whether the change is safe and ready to merge",
     },
@@ -228,11 +230,42 @@ def classify_intent(text):
 
 
 def extract_references(text):
-    """Extract concrete references: PR numbers, branch names, quoted options."""
+    """Extract concrete references: PR numbers, branch names, quoted options.
+
+    PR numbers come from explicit markers (#2412, PR 2412, pull request 2412)
+    or from bare numbers next to merge/shipping verbs ("merge 2412").
+    Bare 4-digit numbers that look like years (1900-2100) are never treated
+    as PR references — a year is not a pull request. Explicit markers always
+    win: "PR #1999" is a PR even though 1999 looks like a year."""
     refs = {}
-    pr_nums = re.findall(r"#(\d{3,5})", text)
+    pr_nums = []
+    seen = set()
+
+    def add(n):
+        if n not in seen:
+            seen.add(n)
+            pr_nums.append(n)
+
+    # Explicit markers — unambiguous
+    for pattern in (r"#(\d{3,5})",
+                    r"\bPR\s*#?\s*(\d{3,5})\b",
+                    r"\bpull[\s\-]+request\s*#?\s*(\d{3,5})\b"):
+        for m in re.finditer(pattern, text, re.IGNORECASE):
+            add(int(m.group(1)))
+
+    # Bare numbers only next to merge/shipping verbs — never years.
+    # Lists work too: "merge 2412 and 2413".
+    for m in re.finditer(
+            r"\b(?:merge|ship|deploy|close|rebase|land)\s+(?:PR\s+)?"
+            r"(\d{4}(?:\s*(?:,|and|&)\s*\d{4})*)\b",
+            text, re.IGNORECASE):
+        for num in re.split(r"\s*(?:,|and|&)\s*", m.group(1)):
+            n = int(num)
+            if not 1900 <= n <= 2100:
+                add(n)
+
     if pr_nums:
-        refs["pr_numbers"] = [int(n) for n in pr_nums]
+        refs["pr_numbers"] = pr_nums
     branches = re.findall(r"\bnaya5/[\w\-\.]+", text)
     if branches:
         refs["branches"] = branches
@@ -273,19 +306,67 @@ def ground_references(refs, world_ctx):
     for b in refs.get("branches", []):
         grounded["branches"].append({"name": b, "found": "unknown"})
     return grounded
-    """Extract concrete references: PR numbers, branch names, quoted options."""
-    refs = {}
-    pr_nums = re.findall(r"#(\d{3,5})", text)
-    if pr_nums:
-        refs["pr_numbers"] = [int(n) for n in pr_nums]
-    branches = re.findall(r"\bnaya5/[\w\-\.]+", text)
-    if branches:
-        refs["branches"] = branches
-    # Quoted options ("A", "B", "C" or named options)
-    quoted = re.findall(r'"([^"]{1,60})"', text)
-    if quoted:
-        refs["quoted_options"] = quoted
-    return refs
+
+
+# ---------------------------------------------------------------------------
+# Negation detection (F2) — a negated ACTION intent must never be silently
+# executed. Recommending the opposite of what the user asked is a correctness
+# defect, so negated intents always become clarifying questions (exit 2).
+#
+# Precision matters: "should we NOT ship this" is a negation; "should this
+# merge or not?" is a plain question (the "or not" tag asks, it doesn't
+# negate). Only a negation word directly scoping an action verb counts.
+# ---------------------------------------------------------------------------
+
+ACTION_INTENTS = ("should_merge", "should_build")
+
+NEGATED_ACTION = re.compile(
+    r"(?:\bnot\s+|\bnever\s+|\bdon'?t\s+(?:want\s+to\s+)?|\bdoesn'?t\s+"
+    r"|\bshouldn'?t\s+(?:we\s+|i\s+)?|\bdo\s+not\s+(?:want\s+to\s+)?"
+    r"|\bavoid\s+|\bagainst\s+)"
+    r"(?:merge|merging|ship|shipping|build|building|deploy|deploying|"
+    r"release|releasing|launch|launching)\b",
+    re.IGNORECASE,
+)
+
+
+def describe_target(refs):
+    """Name the thing a question is about, for plain-words output."""
+    if refs.get("pr_numbers"):
+        return "PR #" + ", #".join(str(n) for n in refs["pr_numbers"])
+    if refs.get("branches"):
+        return ", ".join(refs["branches"])
+    if refs.get("quoted_options"):
+        return ", ".join(f'"{o}"' for o in refs["quoted_options"])
+    return "this"
+
+
+def needs_clarification(*, intent_type, refs, grounded, world_ctx,
+                        wm_warnings, confidence, questions, note):
+    """Every parse path emits the same schema (F3). Fields that are genuinely
+    unknown are honest nulls/empties — downstream layers (option mining,
+    evidence scoring) must never KeyError on a clarifying path."""
+    return {
+        "ok": False,
+        "exit_hint": 2,
+        "intent_type": intent_type,
+        "intent_description": INTENT_TYPES[intent_type]["description"] if intent_type else None,
+        "objective": (synthesize_objective(intent_type, "", refs, world_ctx)
+                      if intent_type else None),
+        "constraints": [],
+        "decision_weight": None,
+        "weight_reason": None,
+        "reversibility": None,
+        "stakes": None,
+        "references": refs,
+        "grounded_references": grounded,
+        "world_context": world_ctx,
+        "world_warnings": wm_warnings,
+        "clarifying_questions": questions,
+        "confidence": round(confidence, 2),
+        "note": note,
+        "parsed_utc": datetime.now(timezone.utc).isoformat(),
+    }
 
 
 # ---------------------------------------------------------------------------
@@ -308,19 +389,22 @@ def detect_ambiguity(text, intent_type, refs, world_ctx):
         )
         return questions
 
-    # Bare demonstratives without concrete references
+    # Concrete target = something the decision can actually act on
     has_concrete = bool(refs.get("pr_numbers") or refs.get("branches")
                         or refs.get("quoted_options"))
     has_demonstrative = any(
         re.search(r"\b" + w + r"\b", text_lower) for w in AMBIGUOUS_REFS
     )
-    if has_demonstrative and not has_concrete:
-        if intent_type == "should_merge":
-            questions.append(
-                "Which PR or branch are you asking about? "
-                "Give me the PR number (e.g. #2410) or branch name."
-            )
-        elif intent_type == "which_option":
+
+    # should_merge with no concrete target — never evaluate a mystery merge
+    if intent_type == "should_merge" and not has_concrete:
+        questions.append(
+            "Which PR or branch are you asking about? "
+            "Give me the PR number (e.g. #2410) or branch name."
+        )
+    # Bare demonstratives without concrete references
+    elif has_demonstrative and not has_concrete:
+        if intent_type == "which_option":
             questions.append(
                 "What are the options to choose between? "
                 "List them explicitly — I won't guess what 'these' means."
@@ -482,16 +566,21 @@ def synthesize_objective(intent_type, text, refs, world_ctx):
 def parse_intent(text):
     """Full pipeline: text → structured intent. Never throws on bad input."""
     text = (text or "").strip()
-    if not text:
-        return {
-            "ok": False,
-            "exit_hint": 2,
-            "clarifying_questions": ["You didn't say anything. What do you want to decide?"],
-            "confidence": 0.0,
-        }
 
-    # 1. Load world model (local cache only — no network here)
+    # 1. Load world model first (local cache only — no network here), so every
+    #    path below can emit the same schema.
     model, wm_warnings = load_world_model()
+    no_model_ctx = ({"available": False, "note": "no world model loaded"}
+                    if model is None else extract_world_context(model, None))
+
+    if not text:
+        return needs_clarification(
+            intent_type=None, refs={},
+            grounded={"prs": [], "branches": [], "warnings": []},
+            world_ctx=no_model_ctx, wm_warnings=wm_warnings, confidence=0.0,
+            questions=["You didn't say anything. What do you want to decide?"],
+            note="Empty input — nothing to parse.",
+        )
 
     # 2. Classify intent
     intent_type, confidence, match_detail = classify_intent(text)
@@ -505,27 +594,46 @@ def parse_intent(text):
     # 4b. Ground references against the world model
     grounded = ground_references(refs, world_ctx)
 
-    # 5. Ambiguity check — ask before deciding, never assume
+    # 5. Negated action intent — never silently proceed (correctness hazard).
+    #    "I don't want to merge PR 2412" must not become a merge evaluation.
+    if intent_type in ACTION_INTENTS and NEGATED_ACTION.search(text):
+        action_word = "merge" if intent_type == "should_merge" else "build or ship"
+        target = describe_target(refs)
+        questions = [
+            f"It sounds like you don't want to {action_word} {target}. "
+            "I won't proceed on a negated request. What would you like instead — "
+            "leave it as-is, change something first, or take a different action?"
+        ]
+        if not (refs.get("pr_numbers") or refs.get("branches")):
+            questions.append(
+                f"Also: {action_word} what, exactly? Give me the PR number or branch."
+            )
+        return needs_clarification(
+            intent_type=intent_type, refs=refs, grounded=grounded,
+            world_ctx=world_ctx, wm_warnings=wm_warnings,
+            confidence=confidence, questions=questions,
+            note="Negated action intent — proceeding would recommend the opposite "
+                 "of what was asked. Asking instead of assuming.",
+        )
+
+    # 6. Ambiguity check — ask before deciding, never assume
     questions = detect_ambiguity(text, intent_type, refs, world_ctx)
     if questions:
-        return {
-            "ok": False,
-            "exit_hint": 2,
-            "intent_type": intent_type,
-            "intent_description": INTENT_TYPES[intent_type]["description"] if intent_type else None,
-            "clarifying_questions": questions,
-            "confidence": round(confidence, 2),
-            "note": "Ambiguous input — answering would require guessing. Ask first.",
-        }
+        return needs_clarification(
+            intent_type=intent_type, refs=refs, grounded=grounded,
+            world_ctx=world_ctx, wm_warnings=wm_warnings,
+            confidence=confidence, questions=questions,
+            note="Ambiguous input — answering would require guessing. Ask first.",
+        )
 
-    # 6. Derive constraints (laws + situation)
+    # 7. Derive constraints (laws + situation)
     constraints = derive_constraints(intent_type, refs, world_ctx)
 
-    # 7. Infer reversibility × stakes → decision weight (Wisdom Spending)
+    # 8. Infer reversibility × stakes → decision weight (Wisdom Spending)
     reversibility, stakes = infer_reversibility_stakes(intent_type, text, refs)
     weight, weight_reason = classify_weight(reversibility, stakes)
 
-    # 8. Synthesize objective in plain words
+    # 9. Synthesize objective in plain words
     objective = synthesize_objective(intent_type, text, refs, world_ctx)
 
     result = {
@@ -543,7 +651,9 @@ def parse_intent(text):
         "grounded_references": grounded,
         "world_context": world_ctx,
         "world_warnings": wm_warnings,
+        "clarifying_questions": [],
         "confidence": round(confidence, 2),
+        "note": None,
         "parsed_utc": datetime.now(timezone.utc).isoformat(),
     }
 
@@ -653,6 +763,13 @@ def main():
 
     p_ex = sub.add_parser("--example", help="Show example parses")
     p_ex.set_defaults(func=cmd_example)
+
+    # Bare-text shortcut: intent_parser.py "some intent" — argparse would
+    # reject this as an invalid subcommand choice, so route it before parsing.
+    raw = sys.argv[1:]
+    if raw and not raw[0].startswith("-") and raw[0] != "parse":
+        cmd_parse(argparse.Namespace(text=raw, stdin=False, plain=True))
+        return
 
     args = ap.parse_args()
     if not getattr(args, "cmd", None):

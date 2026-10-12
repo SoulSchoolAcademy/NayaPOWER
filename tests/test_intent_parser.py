@@ -112,7 +112,7 @@ def test_ambiguity():
     # Concrete reference → no ambiguity
     r = parse_intent("Should PR #2410 merge?")
     check("'Should PR #2410 merge?' → ok", r["ok"] is True, json.dumps(r)[:200])
-    check("  no questions", "clarifying_questions" not in r)
+    check("  no questions asked", r.get("clarifying_questions") == [])
 
 
 def test_full_parse():
@@ -189,6 +189,133 @@ def test_grounding():
     check("no model → not found=False alarm", g["prs"][0]["found"] is False)
 
 
+def test_pr_extraction_variants():
+    print("F1: PR extraction without '#':")
+    check("'merge PR 2412' → [2412]",
+          extract_references("merge PR 2412").get("pr_numbers") == [2412],
+          str(extract_references("merge PR 2412")))
+    check("'merge pull request 2412' → [2412]",
+          extract_references("merge pull request 2412").get("pr_numbers") == [2412])
+    check("bare 'should we merge 2412?' → [2412]",
+          extract_references("should we merge 2412?").get("pr_numbers") == [2412])
+    check("'ship 2412 now' → [2412]",
+          extract_references("ship 2412 now").get("pr_numbers") == [2412])
+    check("year not grabbed: 'ship 2026 plan' → no PR numbers",
+          extract_references("ship 2026 plan").get("pr_numbers") in (None, []),
+          str(extract_references("ship 2026 plan")))
+    check("year not grabbed: 'merge the 2026 roadmap' → no PR numbers",
+          extract_references("merge the 2026 roadmap").get("pr_numbers") in (None, []))
+    check("explicit marker wins: 'merge PR #1999' → [1999] even though year-like",
+          extract_references("merge PR #1999").get("pr_numbers") == [1999])
+    check("deduped: 'merge PR #2412' → [2412] once",
+          extract_references("merge PR #2412").get("pr_numbers") == [2412])
+    # End-to-end: the IV's headline case — the ref must survive to grounding
+    r = parse_intent("merge PR 2412")
+    check("end-to-end 'merge PR 2412' keeps the ref",
+          r["references"].get("pr_numbers") == [2412],
+          json.dumps(r["references"]))
+    check("end-to-end 'merge PR 2412' → should_merge ok",
+          r["ok"] is True and r["intent_type"] == "should_merge")
+    r = parse_intent("merge pull request 2412")
+    check("end-to-end 'merge pull request 2412' → should_merge ok",
+          r["ok"] is True and r["intent_type"] == "should_merge"
+          and r["references"].get("pr_numbers") == [2412],
+          json.dumps({k: r.get(k) for k in ("ok", "intent_type", "references")}))
+    r = parse_intent("pull-request 2412 should merge")
+    check("end-to-end 'pull-request 2412 should merge' → should_merge",
+          r["ok"] is True and r["intent_type"] == "should_merge")
+    check("'merge 2412 and 2413' → both numbers",
+          extract_references("merge 2412 and 2413").get("pr_numbers") == [2412, 2413])
+    r = parse_intent("merge 2412 and 2413")
+    check("end-to-end 'merge 2412 and 2413' → should_merge ok, both refs",
+          r["ok"] is True and r["intent_type"] == "should_merge"
+          and r["references"].get("pr_numbers") == [2412, 2413])
+    r = parse_intent("merge 2026")
+    check("'merge 2026' (year, no ref) → asks which PR, doesn't proceed",
+          r["ok"] is False and r["exit_hint"] == 2
+          and any("PR" in q for q in r["clarifying_questions"]))
+
+
+def test_negation():
+    print("F2: negation → clarifying question, never silent proceed:")
+    r = parse_intent("I don't want to merge PR 2412")
+    check("negated merge → not ok", r["ok"] is False)
+    check("negated merge → exit 2", r["exit_hint"] == 2)
+    check("negated merge → asks what instead",
+          any("instead" in q for q in r["clarifying_questions"]),
+          str(r["clarifying_questions"]))
+    check("negated merge → names the PR",
+          any("2412" in q for q in r["clarifying_questions"]),
+          str(r["clarifying_questions"]))
+    r = parse_intent("should we NOT ship this")
+    check("'should we NOT ship this' → not ok", r["ok"] is False)
+    check("'should we NOT ship this' → exit 2", r["exit_hint"] == 2)
+    r = parse_intent("should we not build the dashboard")
+    check("'should we not build the dashboard' → not ok", r["ok"] is False)
+    # The 'or not' tag question is NOT a negation — it still decides
+    r = parse_intent("Should PR #2410 merge or not?")
+    check("'merge or not?' → still should_merge ok",
+          r["ok"] is True and r["intent_type"] == "should_merge",
+          json.dumps({k: r.get(k) for k in ("ok", "intent_type")}))
+    # 'not' inside a problem description is not intent negation
+    r = parse_intent("What's blocking the team? Nothing is moving.")
+    check("'not' in problem description → not flipped",
+          r["ok"] is True and r["intent_type"] == "what_blocking"
+          and not any("instead" in q for q in r.get("clarifying_questions", [])),
+          json.dumps({k: r.get(k) for k in ("ok", "intent_type")})[:150])
+
+
+def test_schema_consistency():
+    print("F3: same schema on every path:")
+    paths = {
+        "empty": parse_intent(""),
+        "unknown": parse_intent("flibberty gibbet"),
+        "ambiguous": parse_intent("should this merge?"),
+        "negated": parse_intent("I don't want to merge PR 2412"),
+        "ok": parse_intent("Should PR #2410 merge?"),
+    }
+    required = {"ok", "exit_hint", "intent_type", "intent_description",
+                "objective", "constraints", "decision_weight", "weight_reason",
+                "reversibility", "stakes", "references", "grounded_references",
+                "world_context", "world_warnings", "clarifying_questions",
+                "confidence", "note", "parsed_utc"}
+    for name, r in paths.items():
+        missing = required - set(r.keys())
+        check(f"{name} path has all schema keys", not missing,
+              f"missing: {sorted(missing)}")
+        try:
+            json.dumps(r)
+            serializable = True
+        except (TypeError, ValueError):
+            serializable = False
+        check(f"{name} path is JSON-serializable (Layer 4/5 safe)", serializable)
+    # Honest nulls, not fabricated values, on the ambiguous path
+    r = paths["ambiguous"]
+    check("ambiguous → decision_weight is null (unknown, not guessed)",
+          r["decision_weight"] is None)
+    check("ambiguous → constraints empty (unknown, not fabricated)",
+          r["constraints"] == [])
+    check("ambiguous → refs still carried (known info kept)",
+          r["references"] == {} or isinstance(r["references"], dict))
+
+
+def test_cli_bare_text():
+    print("CLI: bare-text shortcut and exit codes:")
+    import subprocess
+    tool = str(Path(__file__).resolve().parent.parent / "tools" / "intent_parser.py")
+    p = subprocess.run([sys.executable, tool, "I don't want to merge PR 2412"],
+                       capture_output=True, text=True)
+    check("bare negated text → exit 2", p.returncode == 2, f"exit {p.returncode}")
+    check("bare negated text → asks instead",
+          "instead" in p.stdout, p.stdout[:120])
+    p = subprocess.run([sys.executable, tool, "parse", "Should PR #2410 merge?"],
+                       capture_output=True, text=True)
+    check("parse subcommand → exit 0", p.returncode == 0, f"exit {p.returncode}")
+    r = json.loads(p.stdout)
+    check("parse subcommand → valid intent JSON",
+          r["ok"] is True and r["intent_type"] == "should_merge")
+
+
 def test_which_option_letters():
     print("which_option letter handling:")
     r = parse_intent('Should we pick A vs B?')
@@ -214,5 +341,9 @@ if __name__ == "__main__":
     test_no_network()
     test_grounding()
     test_which_option_letters()
+    test_pr_extraction_variants()
+    test_negation()
+    test_schema_consistency()
+    test_cli_bare_text()
     print(f"\n{PASS} passed, {FAIL} failed")
     sys.exit(1 if FAIL else 0)
