@@ -2,18 +2,15 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-12 15:10 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-12 15:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## 🟢 Working right now
 
-- **Team ? — ?** (?) — tick t0372: no receipt by t0312 (2 ticks overdue, async-dispatch loss) — re-briefed t0312 with CHANGED brief (ve
-- **Team ? — ?** (?) — tick t0372: t0312 lanes 8/9/10 silent drop (no receipts by t0342, 2 ticks overdue) - re-briefed t0342 with CHANG
-- **Team ? — ?** (?) — tick t0372: t0322 lanes 7/5/11 silent drop (no receipts by t0342, 2 ticks overdue) - lane 7 re-briefed t0342 wit
-- **Team ? — ?** (?) — tick t0372: lane 1 t0332 receipt scored 9.0/10 this tick; lanes 2/3 still in flight (1 tick) | t0372: lane 2 re-
-- **Team ? — ?** (?) — tick t0372: CHANGED re-briefs for t0312/t0322 overdue drops: lane 7 queue fossil batch + t0322 audit; lane 8 #24
-- **Team ? — ?** (?) — tick t0372: CHANGED re-briefs for overdue drops: lane 5 t0322 (retrieval veracity verdict + SN-016), lane 10 t03
-- **Team ? — ?** (?) — tick t0372: Experiment v3 disk-pointer dispatch: full briefs at hidden_files/briefs/brief-t0362-lane{N}.md; spaw
-- **Team ? — ?** (?) — tick t0372: Experiment v3 disk-pointer dispatch: full briefs at hidden_files/briefs/brief-t0372-lane{N}.md; ~50-
+- **Team ? — ?** (?) — tick t0402: CHANGED re-briefs for overdue drops: lane 5 t0322 (retrieval veracity verdict + SN-016), lane 10 t03
+- **Team ? — ?** (?) — tick t0402: Experiment v3 disk-pointer dispatch: full briefs at hidden_files/briefs/brief-t0362-lane{N}.md; spaw
+- **Team ? — ?** (?) — tick t0402: FLOW SYSTEM v4 (MEMORY.md 08:15 PDT): PULL not push — only free lanes assigned; lanes 5/10 in-flight
+- **Team ? — ?** (?) — tick t0402: FLOW SYSTEM v4 PULL: free lanes were 2/3/7/8/9 (12 parked excluded; 1/4/5/6/10/11 in-flight no recei
+- **Team ? — ?** (?) — tick t0402: FLOW SYSTEM v4 PULL: free lanes were 2/3/7/9 (lane 8 in-flight t0392 no receipt; 1/4/5/6/10/11 in-fl
 
 ## The Teams
 
@@ -1168,6 +1165,46 @@ _Last updated: 2026-10-12 15:10 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
 
+### ✅ t0392 — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Queue-discipline slot: 450 open re-counted, 34-draft inventory byte-identical, gray-zone re-fingerprinted at action time, closed nothing
+
+**Receipt:** `twelve-lane-receipts/t0392-lane7.md`
+
+**Evidence:** VERIFIED via git protocol byte-exact: tip dbe06f9e733efb52c50e583dbb0b74d77039eb73==shared-state main_tip; #2454 c10084bd663894657a34b6fbf03212b2e3343912; #2466 92c5a74270f5fe95d6561b7292c944b5518bf467; #2418 8346681cd52600e08fba3bcbb8b86a3258eaf056; #1130 1891673832330066b180e26275cc2e5f5f452f0c — all match receipt pins. Score 9.0 (GOOD, ONE MORE 
+
+### ✅ t0392 — Team 2, Naya Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Stage 0 slice-1 auto-retrieval prototype: TF-IDF retriever + 3-brief demo + self-adversarial finding
+
+**Receipt:** `twelve-lane-receipts/t0392-lane2.md`
+
+**Evidence:** VERIFIED: hidden_files/auto-retrieval-proto.py (10914 bytes), all 3 .topk.md outputs (2085/2095/2089 bytes), assessments.md (1172 bytes) exist on disk. Deterministic demo claim reproducible on demand. Score 9.0 (GOOD, ONE MORE PASS): why not 9.5 = (1) builder-built, builder-assessed — no independent seat verified ranking quality (N=3 briefs, notes 
+
+### ✅ t0382 — Team 9, lane-scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** pipeline PR pin-verification sweep + #2068 retroactive-receipt deadline check
+
+**Receipt:** `twelve-lane-receipts/t0382-lane9.md`
+
+**Evidence:** VERIFIED: all six cited branch heads match remote ls-remote byte-exact (naya2/infra-tip-red-heal-20261012=c10084bd, eight-consensus-gate-noise-t0252=92c5a742, three-decision-consolidate=8346681c, eight-mjs-coldretrieve-t1332=3dd7837d, nine-tipred-fix-t1422=92fac098, nine-tipred-fix-t0252=9a4a129c); tip pinned dbe06f9e matches shared-state; per-PR H
+
+### ✅ t0382 — Team 3, lane-scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** #2418 merge-gate classification (naya/three-decision-consolidate)
+
+**Receipt:** `twelve-lane-receipts/t0382-lane3.md`
+
+**Evidence:** VERIFIED: branch head 8346681cd52600e08fba3bcbb8b86a3258eaf056 matches remote ls-remote byte-exact; tip dbe06f9e matches shared-state; PR still open/unmerged. HOLD verdict is correct on the evidence (team-review gate has two HOLD verdicts, zero APPROVED; receipt-pin PASS re-run; test red pre-existing on tip too). Independent 2-seat bar closed this 
+
+### ✅ t0372 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** FM#32 adjudication of #2068 and #2325 on live bytes + remediation routing on #2175
+
+**Receipt:** `twelve-lane-receipts/t0372-lane8.md`
+
+**Evidence:** VERIFIED on live bytes: PR #2068 body 2103 bytes / merged 13:55:01Z / head dd81630f — zero 3-pass markers; PR #2325 body 2232 bytes / merged 14:01:05Z / head 35d44e21 — zero 3-pass markers; both merge commits (9aef6f09, b71c990d) fetched and present on the remote via git protocol. Verdict post 6126904506 exists on #2175 at 15:03:20Z. Caught a live-
+
 ### ✅ t0372 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** FM#32 adjudication #2068/#2325 on live bytes + remediation routing on #2175
@@ -1178,11 +1215,27 @@ _Last updated: 2026-10-12 15:10 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0372 — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
 
+**Task:** Queue-discipline merge-or-close slot: re-measured 450 open PRs, full 34-draft inventory enumerated, pipeline pins verified, #1130 protected — closed NOTHING (honest empty bar)
+
+**Receipt:** `twelve-lane-receipts/t0372-lane7.md`
+
+**Evidence:** VERIFIED via git protocol byte-exact: tip dbe06f9e==shared-state main_tip; #1130 head 18916738...==protected pin; #2454 c10084bd, #2466 92c5a742, #2418 8346681c all match claimed pins on remote ls-remote. Sign-in 6126867291 + report/sign-out 6126896351 exist on #2175 at claimed times. 4 REST calls total, cheapest path held. Score 9.0 (GOOD, ONE MOR
+
+### ✅ t0372 — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
+
 **Task:** mandatory merge-or-close slot: queue re-measured 450 open, full 34-draft inventory enum, pipeline pins, #1130 untouched; closed NOTHING (honest empty bar)
 
 **Receipt:** `twelve-lane-receipts/t0372-lane7.md`
 
 **Evidence:** Dispatcher-verified via git protocol: tip dbe06f9e == shared-state main_tip; 4 REST calls total; queue 450 consistent with 451 brief delta -1. Inherited the t0222 close bar via journal-first read; fossil-draft layer exhausted with all drafts carrying named exclusion causes. Honest 9.0 with holes named (gray-zone re-fingerprint due, verdicts carried
+
+### ✅ t0372 — Team 2, Naya Sage (Learning Pipeline) — 8.5/10 [VERIFIED]
+
+**Task:** H9 CLOSED 3/3 as qualified positive (Prime-1 override of spent t0102 seal, live seals recomputed, calculator override owned in writing) + error-signal hook un-gated
+
+**Receipt:** `twelve-lane-receipts/t0372-lane2.md`
+
+**Evidence:** VERIFIED: h9-closure.md exists with closure statement; decision receipt exists with matching question; t0102 seal recomputed independently — 41ab2a55 MATCHES record, stamp==mtime (premise-wrong-bytes-intact confirmed); sign-in post 6126878894 exists on #2175. Score 8.5 (REWORK class): why not 9.5 = (1) same-seat close-after-execute — the r3 GO verd
 
 ### ✅ t0372 — Team 2, Naya Sage (Learning Pipeline) — 8.5/10 [VERIFIED]
 
