@@ -2,13 +2,14 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-12 05:06 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-12 05:38 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## 🟢 Working right now
 
-- **Team 6 — Naya Heir** (Successor Transfer) — tick t1272
-- **Team 10 — Naya Librarian** (Brain Index) — tick t1272
-- **Team 11 — Naya Heart** (Human Value) — tick t1272
+- **Team 6 — Naya Heir** (Successor Transfer) — tick t1302
+- **Team 7 — Naya Conductor** (Team Operations) — tick t1302
+- **Team 8 — Naya Sentinel** (Governance & Safety) — tick t1302
+- **Team 2 — Naya Sage** (Learning Pipeline) — tick t1302
 
 ## The Teams
 
@@ -28,6 +29,54 @@ _Last updated: 2026-10-12 05:06 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 | Team 12 | Naya Herald | NayaNET / Hub |
 
 ## Verified Actions (newest first)
+
+### ✅ t1302 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Veracity-hole candidate: RED-first 14-test adversarial battery reproduced on pin-exact live bytes + VERACITY_GUARD spec
+
+**Receipt:** `twelve-lane-receipts/t1302-lane8.md`
+
+**Evidence:** Dispatcher verified disk artifacts: lane8-t1302-veracity/baseline/ (head 95db141, battery_baseline.json 6/14), candidate/ (head 287555b, battery_candidate.json 14/14), battery.py, specs/veracity-seam-demotion-candidate.md, decisions receipt. Zero production bytes changed; wiring gated on Shawn.
+
+### ✅ t1302 — Team 7, Naya Conductor (Team Operations) — 8.5/10 [VERIFIED]
+
+**Task:** Brain-index heal forward: re-anchored+re-stamped heal on live tip, opened PR #2452, staged #2385 restamp package
+
+**Receipt:** `twelve-lane-receipts/t1302-lane7.md`
+
+**Evidence:** Dispatcher verified via git protocol + API: origin refs/heads/naya/ten-brainindex-heal-t1302==c4bfd252, naya/conductor-q2385-restamp-t1302==b5d31ba35b, naya/ten-brainindex-heal-t1292==28ab48ac6c; PR #2452 open head==c4bfd252, calculator HOLD respected, no merge. Protected gates untouched.
+
+### ✅ t1302 — Team 2, Naya Sage (Learning Pipeline) — 8.5/10 [VERIFIED]
+
+**Task:** H6 round 3 pointer-free successor-reuse variant (AMENDMENT: blinded re-score landed on disk 05:36:14 UTC, after receipt)
+
+**Receipt:** `twelve-lane-receipts/t1302-lane2.md`
+
+**Evidence:** AMENDMENT to the 8.0 line: lane-experiments/t1302/blinded-scores-t1302.md exists on disk (mtime 05:36:14Z, after receipt 05:33:36Z), pkt ids byte-match the 05:32:40 sealed packet, arm mapping matches sealed arm key; blinded scores CONFIRM provisional exactly (delta 0.0, C1 mechanical), arm-identification NO (blinding held). Score raised 8.0->8.5; f
+
+### ✅ t1302 — Team 2, Naya Sage (Learning Pipeline) — 8.0/10 [VERIFIED]
+
+**Task:** H6 round 3 pointer-free successor-reuse variant: sealed pre-reg, 4 scored arms, delta collapsed -> H6 CLOSED on honest evidence
+
+**Receipt:** `twelve-lane-receipts/t1302-lane2.md`
+
+**Evidence:** Dispatcher verified disk artifacts: lane-experiments/t1302/ (prereg-sealed.md stamp==mtime 22:29:24 PDT, outbox OUT-01..05, scorer-packet/ seal-log.json+escrow+leak-audit), decisions receipt exists. Provisional unblinded scores (spawns failed x2, t1262 recurrence); blinded re-score packet sealed and waiting.
+
+### ✅ t1292 — Team 11, Naya Heart (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Human-value instrument window t1232-t1292: 15-row audit, 3x byte-identical instrument runs, machine cross-check exact, 6 edge rows reclassified, M4b closure verified
+
+**Receipt:** `twelve-lane-receipts/t1292-lane11.md`
+
+**Evidence:** Dispatcher verified: metric_audit_t1292.json exists on disk (15170B); M2:14/M3:12/M4:7 rows reproducible from the local instrument (byte-identical x3 claim is agent-run evidence, not re-run by dispatcher). Adopted t1272's 9 rows with pass-2 re-verification against live receipts; two t1272 judgments corrected with named precedents; brief's false pre
+
+### ✅ t1292 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Drift recurrence #15: bisect to introducer 715bce27 (PR #2446) + byte-verified heal branch naya/ten-brainindex-heal-t1292 on origin
+
+**Receipt:** `twelve-lane-receipts/t1292-lane10.md`
+
+**Evidence:** Dispatcher verified via git protocol (free): refs/heads/naya/ten-brainindex-heal-t1292 == 28ab48ac6c9ad1856260b74668145937cd94a9b2 (pin-exact); parent == action-time tip e1f19b1c (fetch-verified); diff parent->head = exactly 3 index files (BRAIN/NAYAPOWER-BRAIN-INDEX.json, REAL-TREE.json, REAL-TREE.md). Introducer bisect (first-parent walk, 10 merg
 
 ### ✅ t1282 — Team 5, Naya Seeker (Retrieval) — 9.0/10 [VERIFIED]
 
