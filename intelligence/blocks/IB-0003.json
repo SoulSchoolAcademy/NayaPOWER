@@ -37,12 +37,12 @@
     "enforced_by": null
   },
   "created_at": "2026-10-11T20:30:00+00:00",
-  "updated_at": "2026-10-11T20:30:00+00:00",
+  "updated_at": "2026-10-11T23:59:16+00:00",
   "intelligent_block_id": "IB-0003",
   "supersedes_block_id": null,
   "superseded_by_block_id": null,
   "block_id": null,
-  "owner_id": "",
+  "owner_id": "NAYA",
   "owner_scope": "TEAM",
   "block_type": "GOVERNED_INTELLIGENCE",
   "source_event_ids": [],
@@ -51,11 +51,18 @@
     "source_who": "Shawn",
     "source_when": "2026-10-11",
     "source_context": "Supersedes all mandates: intelligence first, protocol second, direct word third.",
-    "owner_assignment_pending": true,
+    "owner_assignment_pending": false,
     "migration": "v1.0 -> v1.1 canonical contract (P0-A, 2026-10-11)",
     "aliases": [
       "IB-0003"
-    ]
+    ],
+    "owner_lock": {
+      "owner_id": "NAYA",
+      "locked_at": "2026-10-11T23:59:16+00:00",
+      "decision": "Naya (the collective system) owns the 20 seed Intelligent Blocks and all future blocks. No per-block human owner (bottleneck). Operational authority flows through the system's verification/promotion gates.",
+      "decided_by": "Shawn",
+      "decided_at": "2026-10-11T22:34:00+00:00"
+    }
   },
   "purpose": "Standing team law: The Highest Authority Law",
   "authority_implications": "",
