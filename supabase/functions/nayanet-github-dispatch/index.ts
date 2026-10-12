@@ -388,14 +388,14 @@ Deno.serve(async (req) => {
     const putJson: any = await putRes.json().catch(() => ({}));
     const commitSha: string | null = typeof putJson?.content?.sha === "string" ? putJson.content.sha : null;
     if (!putRes.ok || !commitSha) {
-      // Preserve the actionable GitHub rejection reason and target context.
-      // Status alone cannot distinguish installation scope, Contents permission,
-      // SSO/policy, or branch/ruleset denial. Never persist headers, tokens, or
-      // the response body wholesale.
+      // Preserve the sanitized GitHub reason in the durable receipt. A status
+      // code alone cannot distinguish missing Contents permission, repository
+      // installation scope, SSO policy, or branch/ruleset denial. Never store
+      // request headers, tokens, or the response body wholesale.
       const githubReason = normalizedText(putJson?.message)
-        .replace(/[\\r\\n\\t]+/g, " ")
-        .replace(/[^\\x20-\\x7E]/g, "")
-        .replace(/Authorization:\\s*Bearer\\s+\\S+/gi, "Authorization: [REDACTED]")
+        .replace(/[\r\n\t]+/g, " ")
+        .replace(/[^\x20-\x7E]/g, "")
+        .replace(/Authorization:\s*Bearer\s+\S+/gi, "Authorization: [REDACTED]")
         .slice(0, 240) || "UNKNOWN";
       const failureUpdate = await receipts
         .update({
@@ -419,6 +419,7 @@ Deno.serve(async (req) => {
         502
       );
     }
+
     // Verify: read back and confirm the blob at the expected path.
     const verifyRes = await fetch(apiUrl + "?ref=main", { headers: ghHeaders(githubToken) });
     const verifyJson: any = await verifyRes.json().catch(() => ({}));
