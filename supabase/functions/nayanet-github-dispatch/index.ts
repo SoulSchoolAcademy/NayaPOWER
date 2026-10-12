@@ -46,6 +46,42 @@ function normalizedText(value: unknown): string {
   return typeof value === "string" ? value.trim() : "";
 }
 
+// DIAGNOSTIC-ONLY helper: turn a raw GitHub API rejection message into a
+// bounded, scrubbed reason string that is safe to persist in a failure
+// receipt and echo in an immediate response. It reads ONLY the `message`
+// field of the rejection — the full response body, request headers, and any
+// tokens are never stored. Anything that looks like a credential, a secret
+// value, or a private key path is redacted before persistence. This changes
+// no write path, no branch protection, and no retry behavior.
+function sanitizeRejectionReason(value: unknown): string {
+  let text = normalizedText(value);
+  if (!text) return "UNKNOWN";
+  // Unambiguous credential shapes: GitHub token prefixes, JWTs, Bearer tokens,
+  // AWS access-key ids, Slack-style tokens.
+  text = text
+    .replace(/(gh[pousr]_[A-Za-z0-9]{10,}|github_pat_[A-Za-z0-9_]{10,})/g, "[REDACTED_TOKEN]")
+    .replace(/eyJ[A-Za-z0-9_-]{20,}\.[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}/g, "[REDACTED_TOKEN]")
+    .replace(/Bearer\s+[A-Za-z0-9\-._~+/=]{8,}/gi, "Bearer [REDACTED_TOKEN]")
+    .replace(/\bAKIA[0-9A-Z]{16}\b/g, "[REDACTED_TOKEN]")
+    .replace(/\bxox[bpas]-[A-Za-z0-9-]{10,}/gi, "[REDACTED_TOKEN]");
+  // Keyword-attached secret values (long, secret-shaped; short plain words like
+  // "expired" are diagnostic and are left alone).
+  text = text.replace(
+    /(password|passwd|pwd|secret|token|api[_-]?key|access[_-]?key|private[_-]?key|client[_-]?secret)\s*[:=]\s*["']?[A-Za-z0-9\-_~+/=]{12,}["']?/gi,
+    "$1=[REDACTED]"
+  );
+  // Private filesystem paths that could leak where secrets live.
+  text = text.replace(
+    /(?:~|\/home\/[^\s\/]+|\/root)\/(?:\.ssh|\.aws|\.gnupg|\.config|\.netrc)[^\s"'`]*/gi,
+    "[REDACTED_PATH]"
+  );
+  // Strip control characters and non-ASCII, collapse to one line.
+  text = text.replace(/[^\x20-\x7E]+/g, "").replace(/\s+/g, " ").trim();
+  if (!text) return "UNKNOWN";
+  // Bounded: the durable receipt stays small and single-line.
+  return text.slice(0, 240);
+}
+
 function slugify(value: string, max: number): string {
   return value
     .toLowerCase()
@@ -388,14 +424,19 @@ Deno.serve(async (req) => {
     const putJson: any = await putRes.json().catch(() => ({}));
     const commitSha: string | null = typeof putJson?.content?.sha === "string" ? putJson.content.sha : null;
     if (!putRes.ok || !commitSha) {
-      await failReceipt("GITHUB_COMMIT_FAILED:" + putRes.status);
+      // DIAGNOSTIC ONLY: persist the sanitized GitHub rejection reason
+      // alongside the status, so the team can tell installation scope,
+      // Contents permission, SSO/policy, and branch/ruleset denial apart.
+      // This changes no write path, branch protection, or retry behavior.
+      const rejectionReason = sanitizeRejectionReason(putJson?.message);
+      await failReceipt(`GITHUB_COMMIT_FAILED:${putRes.status}:${rejectionReason}`);
       return json(
         {
           ok: false,
           pipeline: "PROJECTION_FAILED",
           error: "GITHUB_COMMIT_FAILED",
           status: putRes.status,
-          detail: normalizedText(putJson?.message).slice(0, 300) || "UNKNOWN",
+          detail: rejectionReason,
         },
         502
       );
