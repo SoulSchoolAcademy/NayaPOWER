@@ -1,0 +1,179 @@
+{
+  "packet_version": 1,
+  "change_id": "HV-20261012-EPSILON-PR-2383",
+  "title": "P0-B ADVISE influence bridge (retrieved lessons change real ACTs)",
+  "merge_sha": "b5007fd8d21a550930761b74f31c6ce9026296b7",
+  "grader": "Naya Epsilon (independent grading pass)",
+  "graded_at_utc": "2026-10-12T06:48:31.057520+00:00",
+  "durable_check_due_utc": "2026-10-19T06:48:31.057543+00:00",
+  "disqualified": false,
+  "score": 6.9,
+  "verdict": "THIN",
+  "judgments": [
+    {
+      "dimension": "USE",
+      "claimed": 6.0,
+      "applied": 6.0,
+      "weight": 0.3,
+      "verified_evidence": 3,
+      "attested_evidence": 0,
+      "flags": [],
+      "rationale": "The ADVISE bridge is wired into the engine's execute_cycle between LAW and ACT, so the reference engine's cycles can now act on retrieved lessons. But the module's own docstring says 'runtime production proof remains separate': no live production consumer exists at the merge tip; today's users are the test suite and future integrators, not a real someone doing real work."
+    },
+    {
+      "dimension": "DELTA",
+      "claimed": 6.0,
+      "applied": 6.0,
+      "weight": 0.25,
+      "verified_evidence": 1,
+      "attested_evidence": 0,
+      "flags": [],
+      "rationale": "A real capability moved from absent to present (retrieved lessons can now change authorized action plans), and 13 mechanism tests prove the gates. But no number moved UP in a measured sense: no in-repo receipt, no before/after metric (lesson-application rate, proof-requirement density, or similar). The delta rests on feature existence, not an observed outcome."
+    },
+    {
+      "dimension": "PROOF",
+      "claimed": 8.0,
+      "applied": 8.0,
+      "weight": 0.2,
+      "verified_evidence": 2,
+      "attested_evidence": 1,
+      "flags": [],
+      "rationale": "Every behavioral claim checkable: 318-line test file with 13 gate tests at the ref, wiring visible at the ref, and the grader re-ran both suites herself (20/20 pass, worktree left clean). Proof is unit-level only; the module itself flags that production proof is a separate job - hence not a 10."
+    },
+    {
+      "dimension": "DURABLE",
+      "claimed": 8.0,
+      "applied": 8.0,
+      "weight": 0.15,
+      "verified_evidence": 2,
+      "attested_evidence": 0,
+      "flags": [],
+      "rationale": "Pure stdlib Python, no external dependencies; 13 tests pin all five gates (applicable, authorized, trusted, allowlist, well-typed). Fail-closed defaults mean it stays safe even as callers change. Residual risk: the gate definitions only survive if later engine refactors keep the tests green - no in-repo CI pin seen for this file beyond the test suite."
+    },
+    {
+      "dimension": "CLEAN",
+      "claimed": 8.0,
+      "applied": 8.0,
+      "weight": 0.1,
+      "verified_evidence": 2,
+      "attested_evidence": 0,
+      "flags": [],
+      "rationale": "Three-file change (+487/-3). The only modification to existing code is 5 lines in tests/test_kernel_behavior_engine.py (reader-call count 1->2, with an explanatory comment) because ADVISE now shares the same reader. No deletions of substance, consistent with the module's fail-closed style."
+    }
+  ],
+  "evidence_ledger": [
+    {
+      "dimension": "USE",
+      "index": 0,
+      "kind": "file",
+      "status": "VERIFIED",
+      "detail": "BRAIN/12-ENGINEERING/kernel_behavior_engine.py:193-211 of 589 lines at b5007fd8d21a",
+      "citation": "BRAIN/12-ENGINEERING/kernel_behavior_engine.py",
+      "lines": "193-211"
+    },
+    {
+      "dimension": "USE",
+      "index": 1,
+      "kind": "test",
+      "status": "VERIFIED",
+      "detail": "tests/test_advise_influence_bridge.py present at b5007fd8d21a (318 lines)",
+      "citation": "tests/test_advise_influence_bridge.py",
+      "lines": null
+    },
+    {
+      "dimension": "USE",
+      "index": 2,
+      "kind": "file",
+      "status": "VERIFIED",
+      "detail": "BRAIN/12-ENGINEERING/kernel_behavior_engine.py:551-554 of 589 lines at b5007fd8d21a",
+      "citation": "BRAIN/12-ENGINEERING/kernel_behavior_engine.py",
+      "lines": "551-554"
+    },
+    {
+      "dimension": "DELTA",
+      "index": 0,
+      "kind": "test",
+      "status": "VERIFIED",
+      "detail": "tests/test_advise_influence_bridge.py present at b5007fd8d21a (318 lines)",
+      "citation": "tests/test_advise_influence_bridge.py",
+      "lines": null
+    },
+    {
+      "dimension": "PROOF",
+      "index": 0,
+      "kind": "test",
+      "status": "VERIFIED",
+      "detail": "tests/test_advise_influence_bridge.py present at b5007fd8d21a (318 lines)",
+      "citation": "tests/test_advise_influence_bridge.py",
+      "lines": null
+    },
+    {
+      "dimension": "PROOF",
+      "index": 1,
+      "kind": "command",
+      "status": "ATTESTED",
+      "detail": "command evidence rests on the grader's word",
+      "citation": "python3 -m pytest tests/test_advise_influence_bridge.py tests/test_kernel_behavior_engine.py (20 passed, run 2026-10-12 by the grader against the merge tree)",
+      "lines": null
+    },
+    {
+      "dimension": "PROOF",
+      "index": 2,
+      "kind": "file",
+      "status": "VERIFIED",
+      "detail": "BRAIN/12-ENGINEERING/kernel_behavior_engine.py:336-350 of 589 lines at b5007fd8d21a",
+      "citation": "BRAIN/12-ENGINEERING/kernel_behavior_engine.py",
+      "lines": "336-350"
+    },
+    {
+      "dimension": "DURABLE",
+      "index": 0,
+      "kind": "test",
+      "status": "VERIFIED",
+      "detail": "tests/test_advise_influence_bridge.py present at b5007fd8d21a (318 lines)",
+      "citation": "tests/test_advise_influence_bridge.py",
+      "lines": null
+    },
+    {
+      "dimension": "DURABLE",
+      "index": 1,
+      "kind": "file",
+      "status": "VERIFIED",
+      "detail": "BRAIN/12-ENGINEERING/kernel_behavior_engine.py:28-45 of 589 lines at b5007fd8d21a",
+      "citation": "BRAIN/12-ENGINEERING/kernel_behavior_engine.py",
+      "lines": "28-45"
+    },
+    {
+      "dimension": "CLEAN",
+      "index": 0,
+      "kind": "file",
+      "status": "VERIFIED",
+      "detail": "BRAIN/12-ENGINEERING/kernel_behavior_engine.py:193-230 of 589 lines at b5007fd8d21a",
+      "citation": "BRAIN/12-ENGINEERING/kernel_behavior_engine.py",
+      "lines": "193-230"
+    },
+    {
+      "dimension": "CLEAN",
+      "index": 1,
+      "kind": "test",
+      "status": "VERIFIED",
+      "detail": "tests/test_advise_influence_bridge.py present at b5007fd8d21a (318 lines)",
+      "citation": "tests/test_advise_influence_bridge.py",
+      "lines": null
+    }
+  ],
+  "mechanical": {
+    "merge_subject": "Merge pull request #2383 from SoulSchoolAcademy/p0b/influence-bridge",
+    "files_changed": 3,
+    "files": [
+      "BRAIN/12-ENGINEERING/kernel_behavior_engine.py",
+      "tests/test_advise_influence_bridge.py",
+      "tests/test_kernel_behavior_engine.py"
+    ],
+    "insertions": 487,
+    "deletions": 3,
+    "test_files": 2,
+    "doc_files": 0
+  },
+  "why_not_10": "USE=6.0 \u2014 The ADVISE bridge is wired into the engine's execute_cycle between LAW and ACT, so the reference engine's cycles can now act on retrieved lessons. But the module's own docstring says 'runtime production proof remains separate': no live production consumer exists at the merge tip; today's users are the test suite and future integrators, not a real someone doing real work.; DELTA=6.0 \u2014 A real capability moved from absent to present (retrieved lessons can now change authorized action plans), and 13 mechanism tests prove the gates. But no number moved UP in a measured sense: no in-repo receipt, no before/after metric (lesson-application rate, proof-requirement density, or similar). The delta rests on feature existence, not an observed outcome."
+}

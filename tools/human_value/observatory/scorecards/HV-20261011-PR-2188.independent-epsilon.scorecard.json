@@ -1,0 +1,178 @@
+{
+  "packet_version": 1,
+  "change_id": "HV-20261012-EPSILON-PR-2188",
+  "title": "Receipt-gate fetch-depth repair (worker-protocol-gates.yml)",
+  "merge_sha": "312e1fd3b4f049a2ba50b29fb30e3f509cc22afa",
+  "grader": "Naya Epsilon (independent grading pass)",
+  "graded_at_utc": "2026-10-12T06:47:45.072939+00:00",
+  "durable_check_due_utc": "2026-10-19T06:47:45.072967+00:00",
+  "disqualified": false,
+  "score": 7.5,
+  "verdict": "REAL VALUE",
+  "judgments": [
+    {
+      "dimension": "USE",
+      "claimed": 7.0,
+      "applied": 7.0,
+      "weight": 0.3,
+      "verified_evidence": 2,
+      "attested_evidence": 0,
+      "flags": [],
+      "rationale": "The receipt-gate CI job now fetches full history, so check_pr_receipt.py's git cat-file -e validation works on real PR head SHAs. Direct users: every lane worker whose PR body cites head SHAs under ## Evidence - previously a CORRECT head SHA always failed the gate. Internal-to-the-team, not end-user facing."
+    },
+    {
+      "dimension": "DELTA",
+      "claimed": 7.0,
+      "applied": 7.0,
+      "weight": 0.25,
+      "verified_evidence": 2,
+      "attested_evidence": 0,
+      "flags": [],
+      "rationale": "Before: correct head SHAs always failed the gate (false-negative 100% on the affected case, proved by the mechanism tests). After: the gate validates correctly. No in-repo receipt with real before/after CI numbers; delta rests on the miniature proof, so above the middle but not higher."
+    },
+    {
+      "dimension": "PROOF",
+      "claimed": 8.0,
+      "applied": 8.0,
+      "weight": 0.2,
+      "verified_evidence": 2,
+      "attested_evidence": 1,
+      "flags": [],
+      "rationale": "Every claim checkable: 140-line test file at ref with 5 tests, workflow diff visible at ref, and the grader re-ran the 5 tests herself against the merge tree (5/5 pass, worktree left clean). Mechanism proved on a faithful miniature of the real CI failure, not on the live CI job itself - hence not a 10."
+    },
+    {
+      "dimension": "DURABLE",
+      "claimed": 8.0,
+      "applied": 8.0,
+      "weight": 0.15,
+      "verified_evidence": 2,
+      "attested_evidence": 0,
+      "flags": [],
+      "rationale": "A committed regression-guard test pins fetch-depth: 0 in the workflow file itself. fetch-depth: 0 semantics in actions/checkout@v4 are stable; the guard fails loudly if anyone reverts it. Residual risk: a future actions/checkout default change or gate-script rewrite could obsolete the comment/test."
+    },
+    {
+      "dimension": "CLEAN",
+      "claimed": 8.0,
+      "applied": 8.0,
+      "weight": 0.1,
+      "verified_evidence": 2,
+      "attested_evidence": 0,
+      "flags": [],
+      "rationale": "Purely additive at the merge (7 workflow lines + new test file; the branch's deletions of kernel/value_calculus.py and test_intent_disqualification.py were resolved away and both files still exist at the tip). Consistent with sibling jobs that already fetch full history. No new breakage; merge --stat clean."
+    }
+  ],
+  "evidence_ledger": [
+    {
+      "dimension": "USE",
+      "index": 0,
+      "kind": "file",
+      "status": "VERIFIED",
+      "detail": ".github/workflows/worker-protocol-gates.yml:32-39 of 73 lines at 312e1fd3b4f0",
+      "citation": ".github/workflows/worker-protocol-gates.yml",
+      "lines": "32-39"
+    },
+    {
+      "dimension": "USE",
+      "index": 1,
+      "kind": "test",
+      "status": "VERIFIED",
+      "detail": "tests/test_receipt_gate_checkout_depth.py present at 312e1fd3b4f0 (140 lines)",
+      "citation": "tests/test_receipt_gate_checkout_depth.py",
+      "lines": null
+    },
+    {
+      "dimension": "DELTA",
+      "index": 0,
+      "kind": "test",
+      "status": "VERIFIED",
+      "detail": "tests/test_receipt_gate_checkout_depth.py present at 312e1fd3b4f0 (140 lines)",
+      "citation": "tests/test_receipt_gate_checkout_depth.py",
+      "lines": null
+    },
+    {
+      "dimension": "DELTA",
+      "index": 1,
+      "kind": "file",
+      "status": "VERIFIED",
+      "detail": ".github/workflows/worker-protocol-gates.yml:33-38 of 73 lines at 312e1fd3b4f0",
+      "citation": ".github/workflows/worker-protocol-gates.yml",
+      "lines": "33-38"
+    },
+    {
+      "dimension": "PROOF",
+      "index": 0,
+      "kind": "test",
+      "status": "VERIFIED",
+      "detail": "tests/test_receipt_gate_checkout_depth.py present at 312e1fd3b4f0 (140 lines)",
+      "citation": "tests/test_receipt_gate_checkout_depth.py",
+      "lines": null
+    },
+    {
+      "dimension": "PROOF",
+      "index": 1,
+      "kind": "command",
+      "status": "ATTESTED",
+      "detail": "command evidence rests on the grader's word",
+      "citation": "python3 -m pytest tests/test_receipt_gate_checkout_depth.py (5 passed in 0.57s, run 2026-10-12 by the grader against the merge tree)",
+      "lines": null
+    },
+    {
+      "dimension": "PROOF",
+      "index": 2,
+      "kind": "file",
+      "status": "VERIFIED",
+      "detail": ".github/workflows/worker-protocol-gates.yml:32-39 of 73 lines at 312e1fd3b4f0",
+      "citation": ".github/workflows/worker-protocol-gates.yml",
+      "lines": "32-39"
+    },
+    {
+      "dimension": "DURABLE",
+      "index": 0,
+      "kind": "test",
+      "status": "VERIFIED",
+      "detail": "tests/test_receipt_gate_checkout_depth.py present at 312e1fd3b4f0 (140 lines)",
+      "citation": "tests/test_receipt_gate_checkout_depth.py",
+      "lines": null
+    },
+    {
+      "dimension": "DURABLE",
+      "index": 1,
+      "kind": "file",
+      "status": "VERIFIED",
+      "detail": ".github/workflows/worker-protocol-gates.yml:32-39 of 73 lines at 312e1fd3b4f0",
+      "citation": ".github/workflows/worker-protocol-gates.yml",
+      "lines": "32-39"
+    },
+    {
+      "dimension": "CLEAN",
+      "index": 0,
+      "kind": "file",
+      "status": "VERIFIED",
+      "detail": ".github/workflows/worker-protocol-gates.yml:32-39 of 73 lines at 312e1fd3b4f0",
+      "citation": ".github/workflows/worker-protocol-gates.yml",
+      "lines": "32-39"
+    },
+    {
+      "dimension": "CLEAN",
+      "index": 1,
+      "kind": "test",
+      "status": "VERIFIED",
+      "detail": "tests/test_receipt_gate_checkout_depth.py present at 312e1fd3b4f0 (140 lines)",
+      "citation": "tests/test_receipt_gate_checkout_depth.py",
+      "lines": null
+    }
+  ],
+  "mechanical": {
+    "merge_subject": "Merge pull request #2188 from SoulSchoolAcademy/naya5/receipt-gate-fetch-depth-fix",
+    "files_changed": 2,
+    "files": [
+      ".github/workflows/worker-protocol-gates.yml",
+      "tests/test_receipt_gate_checkout_depth.py"
+    ],
+    "insertions": 147,
+    "deletions": 0,
+    "test_files": 1,
+    "doc_files": 0
+  },
+  "why_not_10": "USE=7.0 \u2014 The receipt-gate CI job now fetches full history, so check_pr_receipt.py's git cat-file -e validation works on real PR head SHAs. Direct users: every lane worker whose PR body cites head SHAs under ## Evidence - previously a CORRECT head SHA always failed the gate. Internal-to-the-team, not end-user facing.; DELTA=7.0 \u2014 Before: correct head SHAs always failed the gate (false-negative 100% on the affected case, proved by the mechanism tests). After: the gate validates correctly. No in-repo receipt with real before/after CI numbers; delta rests on the miniature proof, so above the middle but not higher."
+}

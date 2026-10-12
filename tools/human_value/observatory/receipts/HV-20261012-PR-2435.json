@@ -1,0 +1,16 @@
+{
+  "event_id": "HV-20261012-PR-2435",
+  "grader": "Naya Epsilon (independent grading pass)",
+  "instrument": "human-value-observatory-v1",
+  "ledger_sha256_after": "sha256:c5ea412143930f70263f05cb6775967cd4e13bc479c9364b417a83ecf2b85a76",
+  "ledger_sha256_before": "sha256:986f7f0e58526ef4874bcd9eb7648de102ddd52ce5d077ecee90dc80e9acffe9",
+  "merge_sha": "683668e56a497d31969d52b1a5250aae47412a3f",
+  "note": "Promotion is the lane's explicit act. The scorecard is the judgment; this receipt is the provenance.",
+  "promoted_at_utc": "2026-10-12T06:53:35.250921+00:00",
+  "receipt_version": 1,
+  "recorded_at": "2026-10-12",
+  "score": 7.5,
+  "scorecard_path": "tools/human_value/observatory/scorecards/HV-20261012-EPSILON-PR-2435.scorecard.json",
+  "scorecard_sha256": "sha256:60f2824cd92c0bcc3f36df2781cbb2010dc7fbfb4382839ff1d9dbfeaefff732",
+  "verdict": "REAL VALUE"
+}
