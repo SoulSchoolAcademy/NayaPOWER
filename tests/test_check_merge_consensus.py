@@ -27,6 +27,7 @@ sys.path.insert(0, str(ROOT / "tools"))
 
 from check_merge_consensus import (  # noqa: E402
     GateAPIError,
+    _MAX_TREE_CANDIDATES,
     _looks_like_review,
     _looks_like_scorecard,
     _score_of,
@@ -333,3 +334,140 @@ def test_api_error_becomes_plain_words_not_traceback(capsys, monkeypatch):
     err = capsys.readouterr().err
     assert "CONSENSUS GATE FAILED: unable to verify consensus" in out
     assert "Traceback" not in out + err
+
+
+# ---------------------------------------------------------------------------
+# R5: the scorecard binds to the verified tree, not the head label
+# (Authority ruling 2026-10-12: the security property is content-verification.
+# The exact-head rule is the fast path; a named head whose tree is
+# byte-identical to the head under test also satisfies the binding — an
+# empty commit or content-identical rebase is not a new thing for the judge
+# to verify. Lookup failures fail closed.)
+# ---------------------------------------------------------------------------
+
+OLD_HEAD = "a" * 40
+OTHER_HEAD = "b" * 40
+HEAD_TREE = "t" * 40
+OTHER_TREE = "u" * 40
+
+
+def _tree_map(mapping):
+    """tree_of fake: sha -> tree sha (None = unreadable)."""
+    def _of(sha):
+        if sha not in mapping:
+            raise AssertionError(f"unexpected tree lookup for {sha[:10]}")
+        return mapping[sha]
+    return _of
+
+
+def _scorecard_naming(sha):
+    return f"## SCORECARD\nhead: {sha}\nverdict: 9.5\nSeat: Naya 3"
+
+
+def test_tree_identical_head_satisfies_scorecard_binding():
+    tree_of = _tree_map({HEAD: HEAD_TREE, OLD_HEAD: HEAD_TREE})
+    assert _looks_like_scorecard(_scorecard_naming(OLD_HEAD), HEAD, tree_of)
+
+
+def test_different_tree_head_does_not_satisfy_binding():
+    tree_of = _tree_map({HEAD: HEAD_TREE, OTHER_HEAD: OTHER_TREE})
+    assert not _looks_like_scorecard(_scorecard_naming(OTHER_HEAD), HEAD,
+                                     tree_of)
+
+
+def test_tree_path_requires_full_sha_not_abbreviation():
+    # An 8-char prefix can name several commits; the comparison must be
+    # unambiguous, so abbreviated SHAs are never candidates.
+    body = "## SCORECARD\nhead: aaaaaaaa\nverdict: 9.5\nSeat: Naya 3"
+    tree_of = _tree_map({HEAD: HEAD_TREE})
+    assert not _looks_like_scorecard(body, HEAD, tree_of)
+
+
+def test_unreadable_tree_fails_closed():
+    tree_of = _tree_map({HEAD: None, OLD_HEAD: HEAD_TREE})
+    assert not _looks_like_scorecard(_scorecard_naming(OLD_HEAD), HEAD,
+                                     tree_of)
+
+
+def test_tree_lookup_error_fails_closed():
+    def _boom(sha):
+        raise GateAPIError("GitHub API error (HTTP 500): boom")
+    assert not _looks_like_scorecard(_scorecard_naming(OLD_HEAD), HEAD,
+                                     _boom)
+
+
+def test_second_candidate_matching_tree_is_accepted():
+    tree_of = _tree_map({HEAD: HEAD_TREE, OTHER_HEAD: OTHER_TREE,
+                         OLD_HEAD: HEAD_TREE})
+    body = (f"## SCORECARD\nre-scored from {OTHER_HEAD}, still {OLD_HEAD}\n"
+            f"verdict: 9.5\nSeat: Naya 3")
+    assert _looks_like_scorecard(body, HEAD, tree_of)
+
+
+def test_candidate_list_is_bounded():
+    calls = []
+
+    def _counting(sha):
+        calls.append(sha)
+        return HEAD_TREE if sha == HEAD else OTHER_TREE
+    many = " ".join(f"{i:040x}" for i in range(20))
+    body = f"## SCORECARD\n{many}\nverdict: 9.5\nSeat: Naya 3"
+    assert not _looks_like_scorecard(body, HEAD, _counting)
+    # 1 head-tree lookup + at most _MAX_TREE_CANDIDATES candidates
+    assert len(calls) <= 1 + _MAX_TREE_CANDIDATES
+
+
+def test_exact_head_still_needs_no_resolver():
+    # Backward compatibility: two-arg calls keep exact-head-only behavior.
+    assert _looks_like_scorecard(_scorecard_naming(HEAD), HEAD)
+    assert not _looks_like_scorecard(_scorecard_naming(OLD_HEAD), HEAD)
+
+
+def test_run_gate_accepts_tree_identical_scorecard(capsys):
+    """End to end: scorecard names an older head whose tree is byte-identical
+    to the head under test -> PASSED (tree lookups memoized, one per SHA)."""
+    review = "[NAYA 2 · REVIEW] APPROVED"
+    scorecard = _scorecard_naming(OLD_HEAD)
+
+    def fake_api_get(path, token):
+        if path.endswith("/pulls/2368"):
+            return _pr_response("2026-10-11T18:00:00Z", "Seat: Naya 5\nbody")
+        if path.endswith("/reviews"):
+            return []
+        if "/issues/2368/comments" in path:
+            return [{"body": review}, {"body": scorecard}]
+        if path.endswith(f"/git/commits/{HEAD}"):
+            return {"sha": HEAD, "tree": {"sha": HEAD_TREE}}
+        if path.endswith(f"/git/commits/{OLD_HEAD}"):
+            return {"sha": OLD_HEAD, "tree": {"sha": HEAD_TREE}}
+        raise AssertionError(f"unexpected API path {path}")
+
+    with patch("check_merge_consensus.api_get", side_effect=fake_api_get):
+        run_gate("tok", "o/r", "2368", HEAD)
+    out = capsys.readouterr().out
+    assert "CONSENSUS GATE PASSED" in out
+
+
+def test_run_gate_rejects_different_tree_scorecard():
+    """End to end: scorecard names an older head with DIFFERENT content ->
+    FAILED with the actionable message (the security property holds)."""
+    review = "[NAYA 2 · REVIEW] APPROVED"
+    scorecard = _scorecard_naming(OTHER_HEAD)
+
+    def fake_api_get(path, token):
+        if path.endswith("/pulls/2368"):
+            return _pr_response("2026-10-11T18:00:00Z", "Seat: Naya 5\nbody")
+        if path.endswith("/reviews"):
+            return []
+        if "/issues/2368/comments" in path:
+            return [{"body": review}, {"body": scorecard}]
+        if path.endswith(f"/git/commits/{HEAD}"):
+            return {"sha": HEAD, "tree": {"sha": HEAD_TREE}}
+        if path.endswith(f"/git/commits/{OTHER_HEAD}"):
+            return {"sha": OTHER_HEAD, "tree": {"sha": OTHER_TREE}}
+        raise AssertionError(f"unexpected API path {path}")
+
+    with patch("check_merge_consensus.api_get", side_effect=fake_api_get):
+        with pytest.raises(SystemExit) as exc:
+            run_gate("tok", "o/r", "2368", HEAD)
+    assert exc.value.code == 1

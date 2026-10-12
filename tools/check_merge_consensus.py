@@ -18,7 +18,8 @@ distinguish seats. Seats are identified by signed tags instead:
     with a seat tag — is also accepted as a review)
   - Scorecard receipt:  ## SCORECARD ... head: <sha> ... Seat: Naya K ...
     (the team's "Honest scorecard: 9.4/10" format is also accepted,
-    provided it names the exact head SHA and a seat tag)
+    provided it names the head SHA — or the SHA of a tree-identical head —
+    and a seat tag)
 Author seat, reviewer seat, and scorer seat: reviewer and scorer may be the
 same seat, but BOTH must differ from the author seat. (The author cannot
 review or score their own work.)
@@ -214,16 +215,84 @@ def _score_of(body):
     return None
 
 
-def _looks_like_scorecard(body, head_sha):
-    """True if the comment is a scorecard receipt for this exact head SHA:
-    it must name the head SHA, say 'scorecard' or 'verdict', and carry either
-    a merge-approval phrase or a numeric score >= 9.0. The exact-head rule is
-    the security property — a receipt for an older head must not green-light
-    a newer one — so it is never relaxed."""
+_SHA_RE = re.compile(r"\b[0-9a-f]{40}\b")
+# The tree-identity slow path compares at most this many named SHAs: a
+# comment is not a SHA dump, and the bound keeps a hostile comment from
+# turning the gate into an API fan-out.
+_MAX_TREE_CANDIDATES = 6
+
+
+def _candidate_heads(body):
+    """Full 40-hex SHAs named in a comment, in order, deduplicated.
+    Abbreviated SHAs are never candidates: a 7- or 8-char prefix can name
+    several commits, and the tree comparison must be unambiguous."""
+    seen = []
+    for m in _SHA_RE.finditer(body or ""):
+        sha = m.group(0)
+        if sha not in seen:
+            seen.append(sha)
+    return seen[:_MAX_TREE_CANDIDATES]
+
+
+def _tree_of_commit(repo, sha, token):
+    """Tree SHA for a commit, or None when it cannot be read. An unreadable
+    tree is never treated as identical — the caller fails closed."""
+    try:
+        commit = api_get(f"/repos/{repo}/git/commits/{sha}", token)
+    except GateAPIError:
+        return None
+    if not isinstance(commit, dict):
+        return None
+    return (commit.get("tree") or {}).get("sha")
+
+
+def _names_tree_identical_head(body, head_sha, tree_of):
+    """True when the comment names a full SHA whose tree is byte-identical
+    to head_sha's tree. The judge verified the exact bytes the check would
+    test; a head-label change with no content change (empty commit, rebase,
+    content-identical conflict resolution) is not a new thing to verify.
+    Any lookup failure fails closed to False."""
+    try:
+        head_tree = tree_of(head_sha)
+    except Exception:
+        return False
+    if not head_tree:
+        return False
+    for cand in _candidate_heads(body):
+        if cand == head_sha:
+            continue  # the exact-head fast path already missed; skip
+        try:
+            cand_tree = tree_of(cand)
+        except Exception:
+            continue
+        if cand_tree and cand_tree == head_tree:
+            return True
+    return False
+
+
+def _looks_like_scorecard(body, head_sha, tree_of=None):
+    """True if the comment is a scorecard receipt for this head's CONTENT:
+    it must name the head SHA (or the SHA of a tree-identical head), say
+    'scorecard' or 'verdict', and carry either a merge-approval phrase or a
+    numeric score >= 9.0.
+
+    The security property is content-verification, not label-matching: a
+    receipt for an older head must not green-light newer CONTENT. The
+    exact-head substring is the fast path (zero API calls). When tree_of is
+    supplied, a named head whose tree is byte-identical to this head's tree
+    also satisfies the binding — the judge verified the exact bytes under
+    test. tree_of(sha) returns the tree SHA or None; without it the matcher
+    is exact-head-only (backward compatible)."""
     low = (body or "").lower()
     if "scorecard" not in low and "verdict" not in low:
         return False
-    if head_sha not in (body or ""):
+    if head_sha in (body or ""):
+        head_ok = True
+    elif tree_of is not None:
+        head_ok = _names_tree_identical_head(body, head_sha, tree_of)
+    else:
+        head_ok = False
+    if not head_ok:
         return False
     approved = bool(re.search(r"merge\s*:\s*approved|merge\s+recommended",
                              low))
@@ -277,22 +346,42 @@ def run_gate(token, repo, pr_number, head_sha):
              f"with your seat tag) as a PR comment, or submit a GitHub "
              f"approving review from a different account.")
 
-    # --- Requirement 2: scorecard receipt naming this exact head SHA ---
+    # --- Requirement 2: scorecard receipt for this head's content ---
+    # The binding is to the verified tree, not the head label. The exact
+    # head SHA is the fast path (zero extra API calls); a named head whose
+    # tree is byte-identical to this head's tree is accepted via a
+    # lazily-armed, memoized tree lookup. This coheres with the rest of the
+    # law: Delta's merge-law ruling binds intent to the branch, Req 1 binds
+    # review to the branch with no head pin — all three now agree the head
+    # label is not the thing being verified. The security property is
+    # preserved: a receipt for different CONTENT still fails.
     scorer_seat = None
+    _tree_cache = {}
+
+    def _tree_cached(sha):
+        if sha not in _tree_cache:
+            _tree_cache[sha] = _tree_of_commit(repo, sha, token)
+        return _tree_cache[sha]
+
+    tree_of = None
     for c in comments:
         body = c.get("body") or ""
         if not _looks_like_scorecard(body, head_sha):
-            continue
+            if tree_of is None:
+                tree_of = _tree_cached
+            if not _looks_like_scorecard(body, head_sha, tree_of):
+                continue
         s = seat_of(body)
         if s and s != author_seat:
             scorer_seat = s
             break
     if not scorer_seat:
-        fail(f"no scorecard receipt naming head SHA {head_sha[:10]} from a seat "
-             f"other than the author ({author_seat}). Post '## SCORECARD' (or "
-             f"'Honest scorecard: <score>/10') with the exact head SHA, a "
-             f"merge verdict or score >= 9.0, and your seat tag, as a PR "
-             f"comment.")
+        fail(f"no scorecard receipt for head {head_sha[:10]} (or a "
+             f"tree-identical head) from a seat other than the author "
+             f"({author_seat}). Post '## SCORECARD' (or 'Honest scorecard: "
+             f"<score>/10') with the head SHA — or the SHA of a head whose "
+             f"tree is byte-identical — a merge verdict or score >= 9.0, "
+             f"and your seat tag, as a PR comment.")
 
     print(f"CONSENSUS GATE PASSED: author {author_seat}, "
           f"reviewer {reviewer_seat}, scorer {scorer_seat}, head {head_sha[:10]}.")
