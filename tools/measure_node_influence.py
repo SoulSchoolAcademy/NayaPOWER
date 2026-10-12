@@ -37,7 +37,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-ORDER = ["SELF", "LAW", "ACT", "KNOW", "PROVE", "CONNECT", "VERIFY", "LEARN", "EVOLVE"]
+# Single-source discipline: the constitutional nine-node set lives in exactly one
+# place (tests/verify_nine_node_behavioral_acceptance.py). This tool, its test,
+# the JS regression claim, and the workflow all resolve to that one source —
+# never pin a second literal that can drift.
+from tests.verify_nine_node_behavioral_acceptance import ORDER
 EPHEMERAL_KEYS = {
     "execution_id",
     "candidate_id",

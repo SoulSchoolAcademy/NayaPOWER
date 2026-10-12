@@ -3,7 +3,8 @@ import subprocess
 import sys
 from pathlib import Path
 
-from tools.measure_node_influence import ORDER, influence_report, measure_behavior_engine
+from tests.verify_nine_node_behavioral_acceptance import ORDER
+from tools.measure_node_influence import influence_report, measure_behavior_engine
 
 ROOT = Path(__file__).resolve().parents[1]
 PROBE = ROOT / "tools" / "measure_node_influence.py"
