@@ -66,6 +66,21 @@ Input record:
         "posted": true,
         "venue": "<where the learning note went — issue link, feed ref>",
         "content": "<the learning, for the team>"
+      },
+      "hypothesis": {                   # optional for 3-round records
+        "hypothesis_id": "<stable id for the hypothesis under test>",
+        "hypothesis_change": null,      # or the accepted reframe receipt:
+        # {
+        #   "prior_hypothesis_id": "<the exhausted hypothesis>",
+        #   "new_hypothesis_id": "<the new hypothesis — must differ>",
+        #   "why_failed": "<what the three tries attempted>",
+        #   "failing_evidence": "<the failing evidence / failure fingerprint>",
+        #   "new_root_claim": "<falsifiable root-cause claim of the new try>",
+        #   "why_different_at_root": "<why this is different at the ROOT, not a variation>",
+        #   "scorer_seat": "<a DIFFERENT seat than the builder>",
+        #   "scorer_verdict": "REFRAME_ACCEPTED",
+        #   "source_pointer": "<where the scorer wrote the verdict>"
+        # }
       }
     }
 
@@ -90,22 +105,44 @@ Checks:
   8. No two rounds may say the same thing: the normalized text of
      what_changed and why_score_moved must be pairwise distinct across
      all rounds. Copy-paste rounds fail as theater.
-  9. The final round's score is >= 9.0. Below 9, the loop continues —
-     more rounds, more fixing, until it is 9+.
+  9. The final round's score is >= 9.0. Below 9.0 after the third round, the
+     budget is exhausted — the loop does NOT continue with more rounds on
+     the same hypothesis. It returns REFRAME_REQUIRED (check 11): the
+     builder writes the hypothesis-change note, a different seat's scorer
+     judges the reframe, and only an accepted reframe opens a new budget.
   10. post, if present, names the venue and carries content. If absent,
       the check PASSES with the post pending noted — the feed is for
       learning, never for gating.
+  11. THREE-TRY CIRCUIT BREAKER (Shawn, 2026-10-12 — STANDING): one
+      hypothesis gets a budget of exactly three completed tries. A fourth
+      round on the same hypothesis is not permitted — even with a
+      fabricated 9.5. Below 9.0 after round 3, the verdict is
+      REFRAME_REQUIRED: the builder writes the hypothesis-change note
+      (what was tried / why it failed / what is tried instead / why it
+      is different at the ROOT), a DIFFERENT seat's scorer judges whether
+      the reframe is genuine, and only an accepted reframe
+      ("REFRAME_ACCEPTED" with the scorer's identity and source pointer)
+      opens one new three-round budget. A cosmetic rename without a
+      scorer's acceptance fails. Unknown or malformed hypothesis state on
+      a fourth attempt fails closed.
 
 The check verifies compliance; it never grants authority.
 
 Usage:
     python3 tools/protocol/checks/builder_scorer_loop.py \
         --record '{"work_product": "...", "seat": "...", "rounds": [...]}' [--json]
+
+    # Preflight: consult the persisted loop receipt BEFORE running attempt N
+    # (exit 0 = allowed, 2 = BLOCKED / unknown state — fail closed).
+    python3 tools/protocol/checks/builder_scorer_loop.py \
+        --preflight --record-file loop-receipt.json --attempt 4 \
+        --hypothesis-id h2 [--json]
 """
 
 from __future__ import annotations
 
 import argparse
+import json
 import math
 import re
 import sys
@@ -120,6 +157,12 @@ MIN_SCORE_FOR_MERGE = 9.0
 MAX_SCORE = 10.0
 MIN_TEXT_CHARS = 20
 MIN_TEXT_WORDS = 3
+# THREE-TRY CIRCUIT BREAKER (Shawn, 2026-10-12 — STANDING): one hypothesis
+# gets a budget of exactly three completed tries. No fourth attempt on the
+# same hypothesis — even with a 9.5. A new budget opens only on an accepted
+# hypothesis-change receipt from a different seat's scorer.
+MAX_ROUNDS_PER_HYPOTHESIS = 3
+REFRAME_ACCEPTED = "REFRAME_ACCEPTED"
 
 
 def _nonempty_str(value) -> str:
@@ -154,6 +197,51 @@ def _has_substance(text: str) -> bool:
     if len(t) < MIN_TEXT_CHARS:
         return False
     return len(t.split()) >= MIN_TEXT_WORDS
+
+
+def _validate_hypothesis_change(hc, seat: str, hyp_id: str) -> str | None:
+    """Strictly validate a hypothesis-change receipt.
+
+    Returns None when the receipt is valid, else the rejection reason.
+    The proof of a genuine reframe is the DIFFERENT seat's scorer verdict —
+    never a new text label.
+    """
+    if not isinstance(hc, dict):
+        return ("hypothesis_change is not a record object — a malformed "
+                "receipt fails closed")
+    required = ["prior_hypothesis_id", "new_hypothesis_id", "why_failed",
+                "failing_evidence", "new_root_claim", "why_different_at_root",
+                "scorer_seat", "scorer_verdict", "source_pointer"]
+    for key in required:
+        if not _nonempty_str(hc.get(key)):
+            return (f"hypothesis_change is missing '{key}' — the reframe "
+                    "note must carry all four sections (what was tried, "
+                    "why it failed, what is tried instead, why it is "
+                    "different at the ROOT) plus the scorer's verdict "
+                    "and source pointer")
+    prior = _nonempty_str(hc.get("prior_hypothesis_id"))
+    new = _nonempty_str(hc.get("new_hypothesis_id"))
+    if new == prior:
+        return ("hypothesis_change renames nothing — new_hypothesis_id "
+                "equals prior_hypothesis_id. A reframe must be a different "
+                "hypothesis, not a relabel")
+    if new != hyp_id:
+        return ("hypothesis_change.new_hypothesis_id does not match the "
+                "record's hypothesis_id — the record must stand on the "
+                "hypothesis the receipt opened")
+    scorer = _nonempty_str(hc.get("scorer_seat"))
+    if not scorer:
+        return "hypothesis_change names no scorer_seat"
+    if scorer == seat:
+        return ("hypothesis_change.scorer_seat is the builder's own seat — "
+                "the reframe judge must be a DIFFERENT seat than the "
+                "builder")
+    verdict = _nonempty_str(hc.get("scorer_verdict")).upper()
+    if verdict != REFRAME_ACCEPTED:
+        return (f"hypothesis_change.scorer_verdict is "
+                f"{hc.get('scorer_verdict')!r} — only an explicit "
+                "REFRAME_ACCEPTED from the scorer opens a new budget")
+    return None
 
 
 def check(record: dict) -> dict:
@@ -360,10 +448,16 @@ def check(record: dict) -> dict:
     if final_score < MIN_SCORE_FOR_MERGE:
         return fail(
             f"{work_product}: final round scored {final_score} < "
-            f"{MIN_SCORE_FOR_MERGE} — the law says: if work scores below 9, "
-            "do the triple self-validation until it is 9+. The loop "
-            "continues — more rounds, more fixing — or the merge still "
-            "needs Shawn's word",
+            f"{MIN_SCORE_FOR_MERGE} — after three tries the budget is "
+            "exhausted. The loop does NOT continue with more rounds on the "
+            "same hypothesis. REFRAME_REQUIRED: write the hypothesis-change "
+            "note (what was tried, why it failed, what is tried instead, "
+            "why it is different at the ROOT), have a DIFFERENT seat's "
+            "scorer judge the reframe, and only then open a new three-round "
+            "budget. If no genuine reframe exists, the work stops or hands "
+            "off. A merge below the bar still needs Shawn's word — his "
+            "protected gates are unchanged; what is not permitted is a "
+            "fourth attempt on the same wall.",
             details,
         )
     reasons.append(f"final round score {final_score} >= "
@@ -410,6 +504,92 @@ def check(record: dict) -> dict:
         reasons.append(f"post recorded ({venue}) — the team learns from "
                        "this loop")
 
+    # 11. THREE-TRY CIRCUIT BREAKER (Shawn, 2026-10-12 — STANDING).
+    # One hypothesis: exactly three tries, no more. A fourth round on the
+    # same hypothesis is not permitted — even with a fabricated 9.5.
+    n_rounds = len(rounds)
+    hyp_block = record.get("hypothesis")
+    hyp_id: str | None = None
+    change = None
+    if hyp_block is not None:
+        if not isinstance(hyp_block, dict):
+            return fail(
+                f"{work_product}: hypothesis block is not a record object "
+                "— a malformed block fails closed",
+                details,
+            )
+        hyp_id = _nonempty_str(hyp_block.get("hypothesis_id"))
+        if not hyp_id:
+            return fail(
+                f"{work_product}: hypothesis block names no hypothesis_id "
+                "— the budget is bound to a stable work/failure identity, "
+                "not to unlabeled text",
+                details,
+            )
+        hc_raw = hyp_block.get("hypothesis_change")
+        if hc_raw is not None:
+            hc_err = _validate_hypothesis_change(hc_raw, seat, hyp_id)
+            if hc_err is not None:
+                return fail(
+                    f"{work_product}: hypothesis_change rejected — "
+                    f"{hc_err}",
+                    details,
+                )
+            change = hc_raw
+    details["hypothesis_id"] = hyp_id or "(unlabeled)"
+    details["max_rounds_per_hypothesis"] = MAX_ROUNDS_PER_HYPOTHESIS
+
+    allowed = MAX_ROUNDS_PER_HYPOTHESIS * (2 if change is not None else 1)
+    if change is not None:
+        new_id = _nonempty_str(change.get("new_hypothesis_id"))
+        prior_id = _nonempty_str(change.get("prior_hypothesis_id"))
+        if n_rounds <= MAX_ROUNDS_PER_HYPOTHESIS:
+            return fail(
+                f"{work_product}: hypothesis_change claims a reframe, but "
+                f"only {n_rounds} round(s) are recorded — a reframe receipt "
+                "must correspond to real extra attempts after an exhausted "
+                "three-try budget, not to a paper change",
+                details,
+            )
+        details["prior_budget"] = {
+            "hypothesis_id": prior_id,
+            "rounds_exhausted": MAX_ROUNDS_PER_HYPOTHESIS,
+            "status": "EXHAUSTED",
+        }
+        details["hypothesis_change"] = {
+            "to": new_id,
+            "scorer": _nonempty_str(change.get("scorer_seat")),
+            "verdict": REFRAME_ACCEPTED,
+        }
+        reasons.append(
+            f"hypothesis reframe accepted (scorer "
+            f"{_nonempty_str(change.get('scorer_seat'))}): new three-round "
+            f"budget for '{new_id}'; prior budget of 3 on '{prior_id}' "
+            "retained on the record"
+        )
+    if n_rounds > allowed:
+        if change is None:
+            return fail(
+                f"{work_product}: {n_rounds} rounds recorded on hypothesis "
+                f"'{hyp_id or 'unlabeled'}' — the three-try budget is "
+                f"exhausted at {MAX_ROUNDS_PER_HYPOTHESIS} tries. "
+                "REFRAME_REQUIRED: write the hypothesis-change note (what "
+                "was tried, why it failed, what is tried instead, why it "
+                "is different at the ROOT), have a DIFFERENT seat's scorer "
+                "judge the reframe, and only then open a new three-round "
+                "budget. A fourth attempt on the same hypothesis — even "
+                "with a 9.5 — is not permitted.",
+                details,
+            )
+        return fail(
+            f"{work_product}: {n_rounds} rounds recorded — the reframe "
+            "budget is also exhausted (3 on the prior hypothesis + 3 on "
+            "the reframe). STOP_OR_HANDOFF: write a further genuine "
+            "reframe, or stop and hand off. No more same-wall attempts.",
+            details,
+        )
+
+
     reasons.append(
         f"{work_product}: the Builder-Scorer Loop is complete — BUILD -> "
         "SCORE -> FIX -> SCORE -> FIX -> SCORE is on the record, the bar is "
@@ -418,12 +598,142 @@ def check(record: dict) -> dict:
     return result(True, reasons, details)
 
 
+def preflight(record_path: str, attempt, hypothesis_id: str) -> tuple[int, dict]:
+    """Consult the persisted loop receipt BEFORE running another attempt.
+
+    The fourth same-hypothesis attempt must not run without an accepted
+    reframe — the worker consults this boundary, not just the merge gate.
+    Returns (exit_code, report): 0 = attempt allowed; 2 = BLOCKED or
+    unknown state (fail closed); 1 = usage error.
+    """
+    try:
+        raw = Path(record_path).read_text()
+    except OSError as e:
+        return 2, {
+            "pass": False,
+            "reasons": [f"preflight fail-closed: cannot read the loop "
+                        f"receipt at {record_path}: {e} — unknown state, "
+                        "no attempt permitted"],
+        }
+    try:
+        record = json.loads(raw)
+    except json.JSONDecodeError as e:
+        return 2, {
+            "pass": False,
+            "reasons": [f"preflight fail-closed: the loop receipt at "
+                        f"{record_path} is not valid JSON: {e}"],
+        }
+    if not isinstance(record, dict) or not isinstance(record.get("rounds"), list):
+        return 2, {
+            "pass": False,
+            "reasons": ["preflight fail-closed: the loop receipt has no "
+                        "rounds list — unknown state, no attempt permitted"],
+        }
+    completed = len(record["rounds"])
+    if type(attempt) is not int or attempt < 1 or attempt != completed + 1:
+        return 1, {
+            "pass": False,
+            "reasons": [f"preflight usage error: attempt must be the NEXT "
+                        f"attempt after {completed} completed round(s) "
+                        f"(got {attempt!r})"],
+        }
+    if attempt <= MAX_ROUNDS_PER_HYPOTHESIS:
+        return 0, {
+            "pass": True,
+            "reasons": [f"attempt {attempt} of {MAX_ROUNDS_PER_HYPOTHESIS} "
+                        "allowed on this hypothesis budget"],
+        }
+    # Attempt 4+: the ceiling. Only an accepted reframe to a NEW hypothesis
+    # opens the next budget. Everything else fails closed.
+    hyp_id = _nonempty_str(hypothesis_id)
+    if not hyp_id:
+        return 2, {
+            "pass": False,
+            "reasons": [f"preflight fail-closed: no hypothesis_id supplied "
+                        f"for attempt {attempt} — unknown state, no attempt "
+                        "permitted"],
+        }
+    seat = _nonempty_str(record.get("seat"))
+    hyp_block = record.get("hypothesis") if isinstance(
+        record.get("hypothesis"), dict) else None
+    current_id = _nonempty_str(hyp_block.get("hypothesis_id")) \
+        if hyp_block else ""
+    hc_raw = hyp_block.get("hypothesis_change") if hyp_block else None
+    if hc_raw is None:
+        return 2, {
+            "pass": False,
+            "reasons": [f"preflight BLOCKED: three-try budget exhausted "
+                        f"(attempt {attempt} on hypothesis "
+                        f"'{current_id or 'unlabeled'}'). REFRAME_REQUIRED "
+                        "— no accepted hypothesis_change receipt on the "
+                        "record. Write the reframe note and get a "
+                        "different seat's scorer verdict before any "
+                        "further attempt."],
+        }
+    hc_err = _validate_hypothesis_change(hc_raw, seat, current_id)
+    if hc_err is not None:
+        return 2, {
+            "pass": False,
+            "reasons": [f"preflight BLOCKED: the hypothesis_change receipt "
+                        f"is invalid — {hc_err}"],
+        }
+    new_id = _nonempty_str(hc_raw.get("new_hypothesis_id"))
+    if hyp_id != new_id:
+        return 2, {
+            "pass": False,
+            "reasons": [f"preflight BLOCKED: attempt {attempt} names "
+                        f"hypothesis '{hyp_id}' but the accepted reframe "
+                        f"opened '{new_id}' — a fourth attempt on the "
+                        "same wall is not permitted"],
+        }
+    return 0, {
+        "pass": True,
+        "reasons": [f"attempt {attempt} allowed: accepted reframe from "
+                    f"'{_nonempty_str(hc_raw.get('prior_hypothesis_id'))}' "
+                    f"to '{new_id}' (scorer "
+                    f"{_nonempty_str(hc_raw.get('scorer_seat'))}); the "
+                    "prior budget of 3 stays on the record"],
+    }
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Builder-Scorer Loop check")
-    parser.add_argument("--record", required=True,
+    parser.add_argument("--record", required=False,
                         help="JSON loop receipt (or @file)")
     parser.add_argument("--json", action="store_true", help="Output raw JSON")
+    parser.add_argument("--preflight", action="store_true",
+                        help="Consult the persisted loop receipt before "
+                             "running another attempt (exit 0 allowed, "
+                             "2 blocked/unknown, 1 usage error)")
+    parser.add_argument("--record-file",
+                        help="Path to the persisted loop-receipt JSON "
+                             "(for --preflight)")
+    parser.add_argument("--attempt", type=int,
+                        help="The attempt number about to run (for "
+                             "--preflight)")
+    parser.add_argument("--hypothesis-id",
+                        help="The hypothesis the attempt will test (for "
+                             "--preflight)")
     args = parser.parse_args()
+    if args.preflight:
+        if not args.record_file or not args.attempt:
+            print("preflight usage: --preflight --record-file PATH "
+                  "--attempt N [--hypothesis-id ID]", file=sys.stderr)
+            return 1
+        code, report = preflight(args.record_file, args.attempt,
+                                 args.hypothesis_id or "")
+        if args.json:
+            print(json.dumps(report, indent=2))
+        else:
+            print("ALLOWED" if code == 0 else
+                  ("BLOCKED" if code == 2 else "USAGE ERROR"))
+            for r in report.get("reasons", []):
+                print(f"  - {r}")
+        return code
+    if not args.record:
+        print("usage: --record JSON (or @file), or --preflight mode",
+              file=sys.stderr)
+        return 1
     try:
         record = load_record(args.record)
     except Exception as e:

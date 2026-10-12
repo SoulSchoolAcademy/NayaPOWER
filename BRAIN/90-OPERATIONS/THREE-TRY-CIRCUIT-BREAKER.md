@@ -82,5 +82,40 @@ Solve at the root, or let the water find another path.
 
 ---
 
+---
+
+## Machine enforcement (wired 2026-10-12 — [LANE ACT] wave 24)
+
+The prose above is the law. This section records how it is enforced in code,
+so the law is never doc-only:
+
+- **Canonical gate:** `tools/protocol/checks/builder_scorer_loop.py::check`
+  (the existing Builder-Scorer Loop check — amended, no second mechanism).
+  One hypothesis gets a budget of exactly three completed tries. A fourth
+  round on the same hypothesis is rejected with `REFRAME_REQUIRED` — even
+  with a fabricated 9.5. Below 9.0 after round 3, the old failure message
+  ("the loop continues — more rounds, more fixing") is replaced by the
+  ceiling: write the hypothesis-change note, get a DIFFERENT seat's scorer
+  to accept the reframe, and only then open a new three-round budget.
+- **Reframe receipt:** an optional `hypothesis` block on the loop record
+  carrying a stable `hypothesis_id` plus a `hypothesis_change` receipt —
+  prior/new hypothesis ids, why the three tries failed, the failing
+  evidence, the new falsifiable root-cause claim, why it is different at
+  the ROOT, a different-seat `scorer_seat`, an explicit
+  `REFRAME_ACCEPTED` verdict, and a source pointer. A new text label is
+  never accepted as proof of a genuine change; a missing field, a
+  same-seat scorer, or a rejected verdict fails closed.
+- **Worker boundary:** `--preflight --record-file ... --attempt N
+  --hypothesis-id ID` consults the persisted loop receipt BEFORE the
+  attempt runs. Attempt 4+ on the same hypothesis without an accepted
+  reframe exits BLOCKED; unknown or malformed state fails closed
+  (nothing about a 4th attempt is guessed).
+- **Proof:** `tests/test_builder_scorer_loop_circuit_breaker.py` (15 tests)
+  encodes the false-pass matrix on the real gate: the exact 7.2 / 7.8 /
+  8.3 / 9.5 fourth-round case PASSED the pre-repair gate (negative control
+  on original bytes) and FAILS the repaired gate with REFRAME_REQUIRED
+  (positive control on fixed bytes). All 30 pre-existing
+  `test_builder_scorer_loop.py` tests still pass — backward compatible.
+
 *Canonical: AGENTS.md L236. Briefing: AGENT-BRIEFING.md (Builder-Scorer Loop section).*
 *Schema: naya.three-try-circuit-breaker.v1 (this document is the v1 spec).*
