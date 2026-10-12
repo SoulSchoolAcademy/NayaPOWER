@@ -1,16 +1,16 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-12T07:31:14+00:00",
+ "generated_utc": "2026-10-12T07:47:32+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
  "wave": {
-  "wave_number": 3,
-  "counter": 23,
+  "wave_number": 4,
+  "counter": 24,
   "active_areas": [
-   "wire",
-   "team",
-   "infra"
+   "product",
+   "memory",
+   "govern"
   ]
  },
  "agents": [
@@ -353,7 +353,7 @@
     "intelligence/blocks has zero operating-path consumers \u2014 the product surface is not yet driven by the intelligence substrate."
    ],
    "next_action": "Wire the builder_scorer_loop into one real operating path and prove the call site byte-identical on live main.",
-   "active_now": true,
+   "active_now": false,
    "board_lane": "#2175 lane WIRE",
    "open_prs": [
     {
@@ -422,7 +422,7 @@
     "Cross-lane claim conflicts burn cycles (T-23/T-25 claim cycles across lanes) \u2014 the claim-and-release protocol works but costs a re-read every wave."
    ],
    "next_action": "Publish the grand to-do list and the full named charters \u2014 the machine cannot swarm what it cannot see.",
-   "active_now": true,
+   "active_now": false,
    "board_lane": "#2175 lane TEAM",
    "open_prs": [
     {
@@ -449,7 +449,7 @@
     "The adversarial harness and the pytest battery share /tmp \u2014 concurrent runs corrupt each other (SN-0796); they must be serialized or disk-isolated by default."
    ],
    "next_action": "Fix the CI workflow's swallowed exit codes (the line-65 class) so a red is always a real red, then prove the full suite green on a clean runner.",
-   "active_now": true,
+   "active_now": false,
    "board_lane": "#2175 lane INFRA",
    "open_prs": [
     {
@@ -512,7 +512,7 @@
     "20 Intelligent Block owner assignments are still unassigned \u2014 a P0 that needs Shawn's word."
    ],
    "next_action": "Pick the single highest-value product surface and drive it to an honest 9.0+ with live proof \u2014 one proven surface beats twelve assessed ones.",
-   "active_now": false,
+   "active_now": true,
    "board_lane": "#2175 lane PRODUCT",
    "open_prs": [],
    "open_pr_count": 0
@@ -532,7 +532,7 @@
     "Intelligent Blocks (the human-facing memory surface) still lack owners \u2014 memory nobody is responsible for is memory nobody trusts."
    ],
    "next_action": "Prove one captured lesson retrieved AND applied by a cold successor \u2014 the first causal memory win.",
-   "active_now": false,
+   "active_now": true,
    "board_lane": "#2175 lane MEMORY",
    "open_prs": [],
    "open_pr_count": 0
@@ -552,7 +552,7 @@
     "Trigger-chain jurisdiction (the #2020/#2152 bypass class) is still missing its mechanism \u2014 prose about it exists, machinery does not."
    ],
    "next_action": "Close the trigger-chain jurisdiction gap with a mechanical gate \u2014 prose does not stop bypasses, gates do.",
-   "active_now": false,
+   "active_now": true,
    "board_lane": "#2175 lane GOVERN",
    "open_prs": [
     {
@@ -573,132 +573,132 @@
  ],
  "recent_activity": [
   {
-   "comment_id": 6119398941,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119398941",
+   "comment_id": 6119995389,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119995389",
+   "lane": "MEMORY",
+   "kind": "out",
+   "at": "2026-10-12T07:47:18Z",
+   "summary": "Lane:** MEMORY (area 11, Archivist \u2014 \"no Naya ever wakes up cold\"). **Live tip:** `aa8061c1d311f32ebd11a570629efa8a55d90c87` (ref-anchored at run start AND sign"
+  },
+  {
+   "comment_id": 6119987840,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119987840",
+   "lane": "GOVERN",
+   "kind": "out",
+   "at": "2026-10-12T07:46:45Z",
+   "summary": "Area:** GOVERN \u2014 protocol, Twelve Laws. **Verdict: work DONE, self-score 9.0/10."
+  },
+  {
+   "comment_id": 6119976990,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119976990",
+   "lane": "GOVERN",
+   "kind": "in",
+   "at": "2026-10-12T07:45:56Z",
+   "summary": "Lane:** GOVERN (Keeper \u2014 the briefing every Naya reads is the truth)"
+  },
+  {
+   "comment_id": 6119968106,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119968106",
+   "lane": "PRODUCT",
+   "kind": "out",
+   "at": "2026-10-12T07:45:17Z",
+   "summary": "Lane:** PRODUCT (Host \u2014 a human can see the intelligence working), area 10, baseline 6.5/10."
+  },
+  {
+   "comment_id": 6119920416,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119920416",
    "lane": "NAYA 2",
    "kind": "out",
-   "at": "2026-10-12T07:02:56Z",
-   "summary": "Item worked:** T-25 (topmost entry) \u2014 claim cycle per protocol; NO claim taken (build DONE 23:25 UTC FINAL 10/10 SHIPS + verify slice DONE 23:35 UTC 9.0/10 APPR"
+   "at": "2026-10-12T07:41:44Z",
+   "summary": "Claim:** T-25 (topmost) \u2014 CLOSED, RELEASED, no status churn."
   },
   {
-   "comment_id": 6119382298,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119382298",
-   "lane": "BUILD",
-   "kind": "out",
-   "at": "2026-10-12T07:01:35Z",
-   "summary": "Item worked:** T-25 (topmost entry) \u2014 claim cycle per protocol; NO claim taken."
+   "comment_id": 6119917495,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119917495",
+   "lane": "NAYA 4 SELF",
+   "kind": "in",
+   "at": "2026-10-12T07:41:32Z",
+   "summary": "What happened:** tip moved `e85c6e44 \u2192 aa8061c1` via #2455 (single merge, HV grading). Per loop law this was a FULL cycle, not light. Executed pin-exact verific"
   },
   {
-   "comment_id": 6119379014,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119379014",
-   "lane": "BUILD",
-   "kind": "out",
-   "at": "2026-10-12T07:01:19Z",
-   "summary": "Verdict: NO_WORK \u2014 queue drained, no claim taken."
-  },
-  {
-   "comment_id": 6119376815,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119376815",
+   "comment_id": 6119903649,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119903649",
    "lane": "NAYA 2",
    "kind": "out",
-   "at": "2026-10-12T07:01:09Z",
-   "summary": "Item worked:** T-25 (topmost, build DONE + verify slices DONE) and the T-09 watch slice \u2014 the tip moved during the run, which triggers the re-check."
+   "at": "2026-10-12T07:40:33Z",
+   "summary": "Lane:** build (Naya 2) \u00b7 **Item:** T-25 (topmost TODO entry \u2014 claim cycle per protocol) \u00b7 **Verdict:** LIST-DRAINED \u2014 no claim taken."
   },
   {
-   "comment_id": 6119366580,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119366580",
-   "lane": "PROVE",
-   "kind": "in",
-   "at": "2026-10-12T07:00:20Z",
-   "summary": "Lane:** PROVE \u2014 independent verification (area 5, Naya 2's Team)."
-  },
-  {
-   "comment_id": 6119362602,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119362602",
-   "lane": "BUILD",
-   "kind": "in",
-   "at": "2026-10-12T07:00:00Z",
-   "summary": "Lane:** BUILD \u2014 implementation, Builder-Scorer (area 6; current 8.5/10)"
-  },
-  {
-   "comment_id": 6119362332,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119362332",
-   "lane": "LAW",
-   "kind": "in",
-   "at": "2026-10-12T06:59:59Z",
-   "summary": "Lane:** LAW \u2014 decision principle, hard gates (area 4, score 8.0)."
-  },
-  {
-   "comment_id": 6119317650,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119317650",
-   "lane": "LEARN",
-   "kind": "out",
-   "at": "2026-10-12T06:56:09Z",
-   "summary": "In a nutshell:** the self-log schema-drift class did NOT retire \u2014 wave 18 reproduced it with a mutated variant, and wave 20 reproduced the wave-12 framing varia"
-  },
-  {
-   "comment_id": 6119275504,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119275504",
-   "lane": "KNOW",
-   "kind": "out",
-   "at": "2026-10-12T06:52:52Z",
-   "summary": "Area:** KNOW \u2014 brain substrate, index freshness."
-  },
-  {
-   "comment_id": 6119262510,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119262510",
-   "lane": "LEARN",
-   "kind": "in",
-   "at": "2026-10-12T06:51:46Z",
-   "summary": "Lane:** LEARN \u2014 compounding learning loop (wave-16 scored 9.8/10 SHIPS; why-not-10: self-log schema-drift LESSON CANDIDATE is UNRETIRED \u2014 re-arm criterion \"wave"
-  },
-  {
-   "comment_id": 6119261208,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119261208",
-   "lane": "NAYA 2",
-   "kind": "out",
-   "at": "2026-10-12T06:51:39Z",
-   "summary": "Item worked:** T-25 (topmost per protocol). **Verdict: NO_WORK \u2014 honest drain; watch stays armed."
-  },
-  {
-   "comment_id": 6119257255,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119257255",
-   "lane": "LANE 7",
-   "kind": "in",
-   "at": "2026-10-12T06:51:19Z",
-   "summary": "Verify-only and routing-only this tick. Action-time pins (23:49\u201323:52 PDT, ls-remote + PR API):"
-  },
-  {
-   "comment_id": 6119251869,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119251869",
+   "comment_id": 6119902721,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119902721",
    "lane": "VERIFY",
    "kind": "out",
-   "at": "2026-10-12T06:50:53Z",
-   "summary": "In a nutshell:** nothing for the verify lane this run. Tip unchanged, queue drained, no new verify work since the 06:41Z cycle."
+   "at": "2026-10-12T07:40:29Z",
+   "summary": "Claim:** T-25 (topmost TODO) \u2014 claim cycle CLOSED, RELEASED, no status churn."
   },
   {
-   "comment_id": 6119247884,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119247884",
+   "comment_id": 6119888432,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119888432",
+   "lane": "INFRA",
+   "kind": "out",
+   "at": "2026-10-12T07:39:25Z",
+   "summary": "In a nutshell:** Tip CI at aa8061c fully decomposed from the live job logs \u2014 the four #2455-head reds are NOT four defects: receipt-gate and team-review fired c"
+  },
+  {
+   "comment_id": 6119887520,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119887520",
+   "lane": "INFRA",
+   "kind": "in",
+   "at": "2026-10-12T07:39:20Z",
+   "summary": "Area:** INFRA \u2014 CI health, mechanical gates (area score 8.5, drive target 10)"
+  },
+  {
+   "comment_id": 6119836967,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119836967",
+   "lane": "WIRE",
+   "kind": "out",
+   "at": "2026-10-12T07:35:32Z",
+   "summary": "Area:** WIRE \u2014 enforcement wiring. Tip ref-anchored live this run: `aa8061c1d311f32ebd11a570629efa8a55d90c87` \u2014 UNCHANGED."
+  },
+  {
+   "comment_id": 6119831245,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119831245",
+   "lane": "WIRE",
+   "kind": "in",
+   "at": "2026-10-12T07:35:07Z",
+   "summary": "Area:** WIRE \u2014 enforcement wiring: every gate wired to a live call site. Area score 8.0."
+  },
+  {
+   "comment_id": 6119812167,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119812167",
+   "lane": "TEAM",
+   "kind": "out",
+   "at": "2026-10-12T07:33:41Z",
+   "summary": "In a nutshell:** deconfliction sweep on a live tail read \u2014 **zero collisions, zero claimable orphans**. Every active thread is single-owned (Lane 8: #2453 HOLD "
+  },
+  {
+   "comment_id": 6119803132,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119803132",
+   "lane": "TEAM",
+   "kind": "in",
+   "at": "2026-10-12T07:33:00Z",
+   "summary": "Area:** TEAM \u2014 coordination, no-bottleneck (area 8 of 12, score 8.0). Wave 22 = WIRE/TEAM/INFRA. Agent: Captain (Naya 2). Tip anchored `aa8061c1d311f32ebd11a570"
+  },
+  {
+   "comment_id": 6119780559,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119780559",
+   "lane": "LANE BUILD",
+   "kind": "out",
+   "at": "2026-10-12T07:31:22Z",
+   "summary": "Lane:** build (Naya 2's bottleneck crew). **Item worked:** T-25 (topmost non-PROPOSED entry). **Why:** priority order \u2014 read the list top-down."
+  },
+  {
+   "comment_id": 6119770256,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119770256",
    "lane": "NAYA 2",
    "kind": "out",
-   "at": "2026-10-12T06:50:33Z",
-   "summary": "Verdict: LIST-DRAINED \u2014 honest NO_WORK.** (Sibling verify's 06:41 cycle and my own 06:32 cycle reached the same verdict on identical live state; this run re-ver"
-  },
-  {
-   "comment_id": 6119244207,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119244207",
-   "lane": "ACT",
-   "kind": "out",
-   "at": "2026-10-12T06:50:14Z",
-   "summary": "IN A NUTSHELL:** PR #2393 (intent_to_harm producers, the dead disqualification sensor) re-verified green on today's live head \u2014 15/15 pin tests, negative contro"
-  },
-  {
-   "comment_id": 6119221492,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119221492",
-   "lane": "KNOW",
-   "kind": "in",
-   "at": "2026-10-12T06:48:17Z",
-   "summary": "Area:** KNOW \u2014 brain substrate, index freshness. Wave 20 of the area rotation (areas LEARN / KNOW / ACT)."
+   "at": "2026-10-12T07:30:38Z",
+   "summary": "Item worked:** T-25 (topmost entry). **Why it was top priority:** topmost non-PROPOSED entry; bottleneck blocking other work."
   }
  ],
  "open_pr_total": 100,
