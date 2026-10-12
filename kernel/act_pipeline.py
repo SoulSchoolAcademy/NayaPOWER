@@ -55,6 +55,7 @@ from dataclasses import dataclass, field
 from typing import Any, Callable, Sequence
 
 from kernel.memory_store import MemoryStore
+from kernel.intent_producers import assess_intent
 from kernel.protocol.typed_action import (
     ADMISSIBLE as LAW11_ADMISSIBLE,
     INHERENTLY_PROHIBITED_OPERATIONS,
@@ -284,6 +285,13 @@ def _candidate_to_calculus(candidate: PlanCandidate) -> Candidate:
     Nothing safety-relevant is dropped: harm, violations, tails and safety
     flags all reach gate_candidate.
 
+    Intent (Shawn 2026-10-11 Intent Doctrine): the candidate's intent_to_harm
+    is PRODUCED here — kernel.intent_producers.assess_intent() runs over the
+    candidate's real text fields (action, description, expected_outcome), so
+    the disqualification branch fires on real data. There is no other channel:
+    PlanCandidate carries no hand-set intent flag, and this is the single
+    seam where plan data enters the calculus.
+
     Value (Zero Value Law): when the caller supplies evidence-backed
     value_benefit/harm/cost/risk + confidence + evidence_count, those reach
     the calculus as the PVEstimate. When absent, the value is UNMEASURED —
@@ -311,6 +319,13 @@ def _candidate_to_calculus(candidate: PlanCandidate) -> Candidate:
         # evidence_count=0 + empty confidence => NEEDS_EVIDENCE, never ADMISSIBLE.
         pv = PVEstimate(B=0.0, H=0.0, C=0.0, R=0.0, confidence={},
                         evidence_count=0)
+    # Intent is produced, never hand-set: the disqualification sensor reads
+    # the same text the planner sees.
+    intent = assess_intent(
+        action_text=candidate.action,
+        description=candidate.description,
+        expected_outcome=candidate.expected_outcome,
+    )
     return Candidate(
         candidate_id=candidate.candidate_id,
         quality=dict(candidate.quality),
@@ -319,6 +334,7 @@ def _candidate_to_calculus(candidate: PlanCandidate) -> Candidate:
         stakes=candidate.stakes if candidate.stakes in _STAKE_ORDER else "high",
         reversible=candidate.reversibility == "REVERSIBLE",
         hard_violation=candidate.hard_violation,
+        intent_to_harm=intent.intent_to_harm,
         lawful=candidate.lawful,
         rights_safe=candidate.rights_safe,
         privacy_safe=candidate.privacy_safe,
