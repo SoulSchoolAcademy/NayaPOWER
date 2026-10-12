@@ -3,10 +3,16 @@
 These test the HARNESS mechanics (distill, gates, subject integrity, arm
 isolation, pre-registration seal) — not the lessons themselves. The lessons
 are proven by run_scale.py; these tests prove the prover is honest.
+
+Runner note: the truth tests resolve registry receipt files through
+_truth_lesson(), which falls back to hermetic synthetic receipts when the
+VM-home sources are absent, so this file is green on CI runners as well as
+developer VMs.
 """
 import hashlib
 import json
 import sys
+import warnings
 from pathlib import Path
 
 import pytest
@@ -28,6 +34,42 @@ def _lesson(lid):
     return next(l for l in REGISTRY["lessons"] if l["id"] == lid)
 
 
+def _truth_lesson(lid, tmp_path):
+    """Return a copy of lesson <lid> whose receipt_file resolves in THIS runner.
+
+    Environment-coupling repair (2026-10-12): the registry cites receipt files
+    at VM-home paths (~/AGENTS.md, ~/MEMORY.md, ~/TOOLS.md,
+    ~/workspace/agent-briefing-master.md, ~/workspace/naya/bin/gh-api) that
+    exist on a developer VM but not on CI runners. Without this, every truth
+    test fails deterministically off-VM (receipt file missing -> score 0).
+
+    If the cited file exists, it is used verbatim — the citation is checked
+    against the real source. Otherwise a hermetic receipt is materialized in
+    tmp_path containing exactly the registered quote(s), so the gate's
+    MECHANICS stay exercised everywhere: quote present -> 9, missing file ->
+    0, missing quote -> 4, contradiction handling -> 9-or-reject. The warning
+    keeps the limitation visible; the scores are still asserted exactly, so a
+    regression in gate_truth fails in every environment. Test-code only —
+    gates.py and the registry are untouched.
+    """
+    les = dict(_lesson(lid))
+    receipt = les["truth"]["receipt_file"]
+    if not Path(receipt).expanduser().is_file():
+        warnings.warn(
+            f"receipt {receipt} unavailable in this environment; using a "
+            "synthetic hermetic receipt — gate mechanics exercised, "
+            "real-source citation check not performed", stacklevel=2)
+        p = tmp_path / "receipts" / f"{lid}.md"
+        p.parent.mkdir(exist_ok=True)
+        body = les["truth"]["receipt_quote"]
+        contra = les["truth"].get("contradicting_quote")
+        if contra:
+            body += "\n" + contra
+        p.write_text(body + "\n", encoding="utf-8")
+        les["truth"] = dict(les["truth"], receipt_file=str(p))
+    return les
+
+
 # ------------------------------------------------------------- distill
 def test_distill_extracts_rule_sentence():
     note = "Something broke. It was bad. Rule: Never write shims into system paths."
@@ -46,34 +88,35 @@ def test_distill_matches_preregistered_principle(lesson):
 
 
 # --------------------------------------------------------------- truth
-def test_truth_must_hold_quote_present():
-    score, _ = gates.gate_truth(_lesson("L1"))
+def test_truth_must_hold_quote_present(tmp_path):
+    score, _ = gates.gate_truth(_truth_lesson("L1", tmp_path))
     assert score == 9
 
 
-def test_truth_fails_gracefully_on_missing_file():
-    les = dict(_lesson("L1"))
+def test_truth_fails_gracefully_on_missing_file(tmp_path):
+    les = _truth_lesson("L1", tmp_path)
     les["truth"] = dict(les["truth"], receipt_file="~/does-not-exist-xyz.md")
     score, _ = gates.gate_truth(les)
     assert score == 0
 
 
-def test_truth_fails_gracefully_on_missing_quote():
-    les = dict(_lesson("L1"))
+def test_truth_fails_gracefully_on_missing_quote(tmp_path):
+    les = _truth_lesson("L1", tmp_path)
     les["truth"] = dict(les["truth"], receipt_quote="this quote is not in the file xyz")
     score, _ = gates.gate_truth(les)
     assert score <= 4
 
 
 @pytest.mark.parametrize("lesson", BAD, ids=lambda l: l["id"])
-def test_truth_rejects_adversarial(lesson):
-    score, detail = gates.gate_truth(lesson)
+def test_truth_rejects_adversarial(lesson, tmp_path):
+    les = _truth_lesson(lesson["id"], tmp_path)
+    score, detail = gates.gate_truth(les)
     assert score == 9, detail
     assert "REJECT" in detail
 
 
-def test_truth_rejects_unearned_contradiction():
-    les = dict(_lesson("A3"))
+def test_truth_rejects_unearned_contradiction(tmp_path):
+    les = _truth_lesson("A3", tmp_path)
     les["truth"] = dict(les["truth"], contradicting_quote="no such text anywhere xyz")
     score, _ = gates.gate_truth(les)
     assert score <= 2  # rejection unearned: contradiction not in source
