@@ -67,8 +67,14 @@ def _first_party_modules() -> set:
     # before `import smart_link`) are first-party as well: those modules resolve from the
     # checkout itself, so CI needs no pip install for them. Without this the guard cries wolf
     # about project modules and gets ignored — the exact failure mode its docstring warns of.
+    # 2026-10-12 (Naya Lambda, INFRA): added `tools/human_value` and
+    # `tools/learning/compound_scale` — the suite imports `instrument` from the
+    # former and `fixtures, gates, pipeline, run_scale, subjects` from the latter
+    # via sys.path.insert; all are first-party and need no pip install.
     for import_root in (REPO / "tools", REPO / "tools" / "protocol",
-                        REPO / "kernel" / "protocol"):
+                        REPO / "kernel" / "protocol",
+                        REPO / "tools" / "human_value",
+                        REPO / "tools" / "learning" / "compound_scale"):
         if import_root.is_dir():
             names.update(p.stem for p in import_root.glob("*.py"))
             # package directories (e.g. tools/protocol/checks/) are importable

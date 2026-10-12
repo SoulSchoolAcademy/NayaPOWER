@@ -26,7 +26,13 @@ def test_measurement_is_deterministic_and_all_nine_nodes_influence_observable_be
     assert first["report"] == second["report"]
 
     stats = first["report"]["BRAIN.Engineering.kernel_behavior_engine.KernelBehaviorEngine"]
-    assert stats["invoked_count"] == 9
+    # All nine canonical nodes must be invoked. The engine also runs the
+    # documented ADVISE bridge stage (kernel_behavior_engine.py: the LAW->ACT
+    # lesson-influence bridge), so the total may exceed nine — what matters
+    # is that no canonical node is decoration.
+    assert set(ORDER) <= set(stats["invoked_nodes"]), (
+        f"expected all nine canonical nodes invoked; got {stats['invoked_nodes']}"
+    )
     assert stats["influence_demonstrated_count"] == 9
     assert stats["influence_demonstrated_for"] == sorted(ORDER)
     assert set(stats["changed_scenarios"]) == {

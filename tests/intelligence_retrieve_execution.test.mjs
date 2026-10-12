@@ -8,6 +8,9 @@ import {
   expandBlock,
   expandRanked,
 } from "../supabase/functions/nayanet-intelligence-retrieve/retrieve.ts";
+import {
+  applyApplicabilityRanking,
+} from "../supabase/functions/nayanet-intelligence-retrieve/retrieve_applicability.ts";
 
 // Executed coverage for nayanet-intelligence-retrieve.
 // The cold-retrieve handler is an authority-adjacent read surface: it must run,
@@ -92,6 +95,7 @@ function handlerRuntime({
     jwtVerify: async () => ({ payload }),
     createClient: () => admin,
     expandRanked,
+    applyApplicabilityRanking,
   });
 
   const invoke = (body, headers = {}, method = "POST") =>
