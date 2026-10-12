@@ -6,11 +6,12 @@ each case is a synthetic scenario whose correct outcome is derived FIRST,
 from the instrument's documented contract, and the instrument's output is
 then compared against that known answer. A different seat re-verifies.
 
-Cases KV-01..KV-17 cover: evidence verification + caps, verdict boundaries,
+Cases KV-01..KV-19 cover: evidence verification + caps, verdict boundaries,
 the harm gate, fail-safe input rejection, merge-base resolution at main tip /
 branch head / missing origin (the #2404/#2417 fix), recheck durability +
 content-drift, compare agreement semantics, to-event minting rules, and the
-test-file evidence heuristic.
+test-file evidence heuristic. KV-19 pins the F1 regression: whole-file
+evidence (lines=None) rechecks HELD/UNCHANGED, not false-ROTTED.
 
 Run: python3 run_battery.py [--keep]
 Exit 0 = every known answer matched. Exit 1 = at least one misfire.
@@ -471,6 +472,36 @@ def main():
     note("KV-18 trust boundary: verified citations + hollow 9s -> 9.0 HIGH VALUE "
          "(instrument cannot judge the judgment)", ok,
          f"exit={code} score={card and card.get('score')} — documented boundary, not a misfire")
+
+    # KV-19 (F1 regression): whole-file evidence (no lines) rechecked at the
+    # grade ref itself must stay HELD/UNCHANGED — not false-ROT. The KV-11 fix
+    # carried `"lines": None` through the recheck citation as an always-present
+    # key, and `verify_evidence`'s `if "lines" in item` fired on the None ->
+    # `_parse_lines(None)` raised -> item marked ROTTED ("bad lines spec:
+    # None"). The normal default (grade_packet itself emits lines=None in the
+    # ledger) must verify whole-file. Known answer: HELD + UNCHANGED.
+    ev = {d: [file_ev("app.py")] for d in DIMS}
+    code, card, _ = grade(packet("KV-19", C, {}, ev), R, C)
+    led = [i for i in card.get("evidence_ledger", []) if i["dimension"] == "USE"] if card else []
+    none_lines = code == 0 and led and led[0].get("lines") is None
+    cp = os.path.join(FIX, "kv19-card.json")
+    json.dump(card, open(cp, "w"))
+    rp = os.path.join(FIX, "kv19-recheck.json")
+    p = subprocess.run(
+        INST + ["recheck", "--scorecard", cp, "--repo", R, "--ref", C, "--out", rp],
+        capture_output=True, text=True, timeout=60)
+    rep = json.load(open(rp)) if os.path.exists(rp) else None
+    items = [i for i in rep["items"] if i["dimension"] == "USE"] if rep else []
+    ok = (p.returncode == 0 and rep is not None and none_lines and items
+          and items[0]["recheck"] == "HELD"
+          and items[0].get("content_drift") == "UNCHANGED"
+          and "bad lines spec" not in items[0].get("recheck_detail", ""))
+    note("KV-19 whole-file (lines=None) recheck at grade ref -> HELD/UNCHANGED "
+         "(F1: no false ROTTED)",
+         ok, f"exit={p.returncode} ledger_lines_none={none_lines} "
+              f"recheck={[i.get('recheck') for i in items]} "
+              f"drift={[i.get('content_drift') for i in items]} "
+              f"detail={items and items[0].get('recheck_detail')}")
 
     # ---- summary
     fails = [r for r in RESULTS if not r[1]]

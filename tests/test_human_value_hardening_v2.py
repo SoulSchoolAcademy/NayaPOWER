@@ -298,10 +298,17 @@ def test_recheck_detects_content_drift(repo):
     d, sha = repo
     card = instrument.grade_packet(
         _full_card(sha, [_test_ev()]), d, sha)
-    with open(os.path.join(d, "tests", "test_widget.py"), "a") as f:
-        f.write("\ndef test_also():\n    assert True\n")
+    # Mutate a CITED line (lines 1-2), not the appended tail: drift compares
+    # the cited range, so the fixture must change that range. (KV-11: appending
+    # outside 1-2 is correctly UNCHANGED now; the regen-rot intent is a change
+    # *inside* the cited lines.)
+    p = os.path.join(d, "tests", "test_widget.py")
+    with open(p) as f:
+        body = f.read()
+    with open(p, "w") as f:
+        f.write(body.replace("assert True", "assert 1 == 1"))
     _git(d, "add", "-A")
-    _git(d, "commit", "-qm", "extend the test file")
+    _git(d, "commit", "-qm", "reword the cited assertion")
     later = _git(d, "rev-parse", "HEAD")
     r = instrument.recheck_scorecard(card, d, later)
     assert r["per_dimension"]["USE"] == "HELD"

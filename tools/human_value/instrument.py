@@ -555,11 +555,15 @@ def recheck_scorecard(scorecard, repo, ref):
         # Carry the cited line range through: content-drift must compare the
         # lines the grader actually cited, not the whole file. (KV-11:
         # dropping "lines" here made whole-file drift masquerade as drift in
-        # the cited range.)
-        citation = ({"kind": kind, "path": item["citation"],
-                     "lines": item.get("lines")}
+        # the cited range.) Omit the key when None: the whole-file default
+        # (grade_packet emits lines=None in the ledger) must recheck whole-
+        # file — carrying an always-present "lines": None fired
+        # `if "lines" in item` in verify_evidence and false-ROTTED it (F1).
+        citation = ({"kind": kind, "path": item["citation"]}
                     if kind in ("file", "test", "receipt")
                     else {"kind": kind, "sha": item["citation"]})
+        if item.get("lines") is not None:
+            citation["lines"] = item["lines"]
         status, detail = verify_evidence(citation, repo, ref)
         state = "HELD" if status == "VERIFIED" else "ROTTED"
         # Content drift: does the cited content still SAY the same thing?

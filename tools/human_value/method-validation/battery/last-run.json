@@ -1,6 +1,6 @@
 {
-  "passed": 25,
-  "total": 25,
+  "passed": 26,
+  "total": 26,
   "results": [
     {
       "case": "KV-01 verified-evidence high claims -> 9.0 HIGH VALUE",
@@ -126,6 +126,11 @@
       "case": "KV-18 trust boundary: verified citations + hollow 9s -> 9.0 HIGH VALUE (instrument cannot judge the judgment)",
       "ok": true,
       "detail": "exit=0 score=9.0 \u2014 documented boundary, not a misfire"
+    },
+    {
+      "case": "KV-19 whole-file (lines=None) recheck at grade ref -> HELD/UNCHANGED (F1: no false ROTTED)",
+      "ok": true,
+      "detail": "exit=0 ledger_lines_none=True recheck=['HELD'] drift=['UNCHANGED'] detail=app.py present at 8b61fba9c925 (9 lines)"
     }
   ]
 }
