@@ -1,7 +1,7 @@
 # Daily Learning Event — 2026-10-11
 
 **Window:** 2026-10-11T03:43Z → 2026-10-12T03:37Z (Vancouver day 2026-10-11)
-**Sources:** `~/memory/2026-10-11.md`, `~/memory/2026-10-12.md` (00:00–03:55Z), live board #2175 tail (598 comments; #1354 is at the 2,500-comment cap and returns 403 on post), 39 merged PRs in the window via gh-api.
+**Sources:** `~/memory/2026-10-11.md`, `~/memory/2026-10-12.md` (00:00–03:37Z; two boundary items to 03:46Z noted in lesson 12), live board #2175 tail (598 comments; #1354 is at the 2,500-comment cap and returns 403 on post), 39 merged PRs in the window via gh-api.
 **Base:** main `c126322eb69cc3cbde9b1e5f2050037a7e6bddb9` (PR #2421).
 
 ## The day's essence
@@ -49,6 +49,7 @@ Today the team stopped being a crowd of agents and became an organism: Shawn gav
 - **Why it matters:** PRs were sitting idle waiting for board-level scorecards. The loop unblocks the merge queue without lowering the bar — the bar moved into the loop.
 - **What's in it for you:** You ship at 9.0+ with a receipt, and the feed teaches everyone afterward.
 - **How it connects:** Encoded as a mechanical gate (#2368, merged). The loop ran in production today: PR #2389 went 9.0 → fixes → final 10/10 SHIPS.
+- **Window note:** "9.0+ ships" was the 2026-10-11 operating rule. Shawn's AAA shipping bar (2026-10-12, standing) now supersedes it for shipping: goal 10/10; 9.5+ ships; 9.0 and below = zero acceptance, does not ship; items at 9.0–9.4 go back for another Builder-Scorer round until 9.5+.
 
 ### 6. The machine contract is the section, not the prose (phantom WORK_AVAILABLE)
 
@@ -68,7 +69,7 @@ Today the team stopped being a crowd of agents and became an organism: Shawn gav
 
 ### 8. Resolve the merge-base live in CI — never trust a recorded SHA
 
-- **What:** The D32 document-scan wire judged main's own progress (8 docs including AGENTS.md, README.md, PROTOCOL.md) as the PR's changes because the workflow used GitHub's recorded `pull_request.base.sha`, which was stale. Fixed: the workflow passes `origin/<base.ref>` and the scanner resolves the merge-base live and records it in the JSON verdict. Regression test pins both directions.
+- **What:** The D32 document-scan wire (D32 = the directive requiring uncertainty discipline in documents: sourced claims, "what this does not claim" sections, evidence near confidence terms) judged main's own progress (8 docs including AGENTS.md, README.md, PROTOCOL.md) as the PR's changes because the workflow used GitHub's recorded `pull_request.base.sha`, which was stale. Fixed: the workflow passes `origin/<base.ref>` and the scanner resolves the merge-base live and records it in the JSON verdict. Regression test pins both directions.
 - **What it means:** Recorded SHAs are claims; refs are current. A gate that misfires on clean PRs is as failed as one that misses violations.
 - **Why it matters:** One stale SHA turned an enforcement gate into a false-accusation machine on its first live run.
 - **What's in it for you:** In any CI that diffs against a base, resolve the base live from the ref and record what you resolved.
@@ -85,16 +86,16 @@ Today the team stopped being a crowd of agents and became an organism: Shawn gav
 ### 10. Unknown is never zero (Zero Value Law — merged as #2270)
 
 - **What:** Zero realized value may be assigned only when a baseline-relative outcome is established by adequate evidence and independent verification. Unknown, unmeasured, delayed, and inconclusive outcomes stay distinct from zero; `null` never silently becomes numeric 0. Value (the outcome) and evidence quality (what is known) live on separate axes.
-- **What it means:** The ±9 ladder is a display matrix, not a cap; rounded display zero must preserve the raw nonzero value.
+- **What it means:** The ±9 ladder (the value-display scale) is a display matrix, not a cap; rounded display zero must preserve the raw nonzero value.
 - **Why it matters:** False zeros erase real work and real uncertainty alike — "zero awarded contribution credit is not proof of zero created value."
 - **What's in it for you:** When you don't know, say UNKNOWN. The validator (`tools/zero_value_validator.py`, 28/28 tests) rejects null→0 substitution mechanically.
 - **How it connects:** The value-calculus twin of "implemented ≠ verified ≠ production-proven." Wired into ACT selection via #2273: missing benefit/harm/cost/risk evidence fails closed instead of becoming zero.
 
 ### 11. Competing engines get deleted, never allowlisted (LAW wave-13 verdict)
 
-- **What:** The wave-13 LAW lane proved the tip's Protocol Gates red on `kernel/decision_principle.py::DecisionEngine` was TRUE: a competing engine in substance (functional public `decide()` API, plain-argmax Phase 2, none of the canonical engine's floors/frontier/margins), landed via PR #2377. The "Shawn's test" multi-implementation framing was ruled on and rejected. Repair routed to the author: remove the parallel `decide()` APIs or relocate the harness to `tests/` — explicitly NOT a gate allowlist.
+- **What:** The wave-13 LAW lane (wave 13 of the 10-minute area rotation) proved the tip's Protocol Gates red on `kernel/decision_principle.py::DecisionEngine` was TRUE: a competing engine in substance (functional public `decide()` API, plain-argmax Phase 2, none of the canonical engine's floors/frontier/margins), landed via PR #2377. The "Shawn's test" multi-implementation framing was ruled on and rejected. Repair routed to the author: remove the parallel `decide()` APIs or relocate the harness to `tests/` — explicitly NOT a gate allowlist. **Current state, plainly:** PR #2377 merged with the parallel engine live on main; the removal is pending with the author and the main seat — routed, not yet executed.
 - **What it means:** One canonical calculus. A second engine is a defect, not a feature, and the fix is deletion or relocation — never an exception entry.
-- **Why it matters:** Allowlists are how duplicate mechanisms become permanent. The verdict kept the one-engine law mechanical.
+- **Why it matters:** Allowlists are how duplicate mechanisms become permanent. The verdict kept the one-engine law mechanical — but only the verdict is done; the deletion is still open.
 - **What's in it for you:** If you find a parallel implementation of a canonical seam, route it for removal. Don't wire around it.
 - **How it connects:** The enforcement of the no-duplicate-mechanisms law; pairs with the ACT/value-calculus integration (#2273) that made the canonical path the only path.
 
@@ -151,5 +152,48 @@ Today the team stopped being a crowd of agents and became an organism: Shawn gav
 - **What:** The standard is not fewer words for its own sake — it is saying exactly what is meant, exactly as it is, in the simplest form that preserves the full meaning. The Smart Note layered form (In a nutshell / Human note / Child note / Grandma note / Machine note / Learning lesson / What it means / How to apply it / What's in it for you) is the standing conversation standard, and the live Hub already presents Smart Note cards in that form.
 - **What it means:** Distill abundant data to essence and understand it, rather than merely compressing it.
 - **Why it matters:** This report exists in this form because of it.
-- **What's in it for you:** Lead with the nut
-...[truncated 8105 chars]
+- **What's in it for you:** Lead with the nutshell, then layer down only as far as the reader needs. If they stop after the nutshell, they still got the truth.
+- **How it connects:** This report is written in this form because of it — and the form is the same one the live Hub already shows, so the learning reads the same everywhere.
+## Merged PRs in the window: 39
+
+Reproducible query: `gh-api GET "/search/issues?q=repo%3ASoulSchoolAcademy%2FNayaPOWER+is%3Apr+is%3Amerged+merged%3A%3E%3D2026-10-11T03%3A43%3A00Z"` — 39 results. Grouped by theme:
+
+**Decision machine & law (19):** #2377 Naya Decision Principle (two-phase decision engine with disqualification) · #2359 Decision Discipline Engine (typed comparability, hierarchy, escalation) · #2360 Law 11 v2: Uncertainty handling · #2361 Conflict Resolution Engine · #2362 Law 12: Proof expiry enforcement · #2363 fix(law11): harden `_infer_operation` against respelling bypasses · #2366 Wire Law 11 v2 into plan_action pipeline · #2367 fix(tests): refresh Law 12 fixtures for Law 11 v2 contract · #2352 Naya5/law11 enforcement · #2380 encode Intent + Disqualification doctrines in value calculus · #2270 Zero Value Law (additive clarification to Smart Ledger V2.1) · #2368 Builder-Scorer Loop as a mechanical gate · #2372 brain-index freshness as mechanical law · #2373 make 'Team review + scorecard receipt' trustworthy (chronic-red root cause) · #2188 receipt gate fetch-depth 0 (head SHAs must exist locally) · #2371 docs(law-s05): reconcile stale PR-opener rule · #2354 fix #2283 gate exit-0 defect · #2282 deploy The Naya Protocol as canonical operating law · #2230 Naya/mission state.
+
+**Intelligent blocks & network (3):** #2375 Canonical Intelligent Blocks substrate (`intelligence/blocks/`) · #1940 Smart Blocks why-layer + experience audit · #2401 NayaNET Foundation (smart ledgers, smart contracts, the intelligent network).
+
+**Contracts & bridges (3):** #2386 P0-A: IB canonical contract v1.1 (reconcile file-based and persisted schemas) · #2383 P0-B: ADVISE influence bridge (retrieved lessons change authorized action plans) · #2378 SN-AUTO-BRAIN mechanical gate (auto-brain boot-surface check).
+
+**KNOW / LEARN / human value (5):** #2404 Naya5/human value instrument fixes · #2405 KNOW applicability-metadata layer for retrieval · #2406 LEARN scale proof (11 lessons + 3 adversarial through the full pipeline) · #2403 CANDIDATE (unwired): retrieval authorization gate module + RED-first · #2201 spec(aer-live-3): independently verified eligibility witnesses.
+
+**Brain-index re-stamps (3):** #2285 re-stamp at 640a5fb4 · #2293 re-stamp at 57e935c1 (12th drift — #2290 snapshot landed unstamped) · #2384 re-stamp at 230b397a (13th drift — stamped at a stale base, drifted at merge).
+
+**Mission-state snapshots (6):** #2290 · #2351 · #2365 · #2376 · #2402 · #2421 (current tip `c126322e`).
+
+## Trash candidates (flag only — nothing deleted)
+
+Deletion is the Human Director's call. Flagged for disposition:
+
+1. **Competing CLAIM-3 nine-node fixes** — PR #2389 (open, Builder-Scorer final 10/10 SHIPS) vs branch `naya/nine-claim3-advise-count-t1202` (Lane 9's root-caused fix, unmerged, verify-scored 8.0/10 NEEDS_WORK). Two implementations of one seam; the merge lane picks one, the other closes as superseded.
+2. **Parallel protocol deployments** — #2282 (merged: root PROTOCOL.md + entry-surface wiring) vs #2281 (open: three-form canonical placement) vs #2284 (draft: three-form 0021). Reconcile on the merged #2282; #2281/#2284 need reconciliation, not parallel lives.
+3. **Same-lane silent claims** — two dead T-25 claims (~22:31Z and ~23:03Z) with zero worktree activity, no push, and no #2175 sign-out. Pattern flagged for the main seat: claims dying without a heartbeat.
+4. **Untracked lane leftovers** — `tests/sealed/manifests/QUAL-20261011-N2{A,B,C}-*.json`, `tools/zero_value_validator.py` + `tools/test_zero_value_validator.py`, `BRAIN/01-GOVERNANCE/visuals/` in worktrees. Claim or sweep; they are not on any build list.
+5. **Branch sprawl** — 1,972 branches (new baseline). Active build-drive churn, not yet proven harmful; periodic pruning candidate.
+6. **Re-stamp race duplicates** — #2291/#2292 vs merged #2293: verify recommended #2291 as canonical and #2292/#2293-close-as-superseded; #2293 actually merged. Confirm #2291/#2292 and stale-base #2280 are closed as superseded.
+7. **Stale snapshot-merge class** — mission-state merges (#2230/#2290/#2351/#2365/#2376/#2402/#2421) repeatedly land snapshots naming older tips and trigger index drift. Standing process item: snapshots and the re-stamp must travel together (lessons 6–7); the director's lane owns the fix.
+
+## What this report does not claim
+
+- **Window edges:** 2026-10-11T03:43Z → 2026-10-12T03:37Z. Two boundary items are included to complete lesson 12's story and are labeled as such: the World Model letter (posted 03:46Z) and draft PR #2422 (opened 03:37:34Z).
+- **Board reads:** #2175 tail only. #1354 was not read — it is at the 2,500-comment platform cap and the API returns 403 on post (verified by the 22:37Z SLA audit).
+- **Claim provenance:** inline counts marked worker-reported (six lessons → AGENTS.md L220–L225; "all 8 schedules"; "three times today"; suite test counts) were corroborated by pattern and memory but not all byte-re-run. Eight verifiable claims were independently spot-checked with zero factual errors found.
+- **Merged ≠ certified:** the 39 merged PRs are merge receipts, not independent 10/10 certifications. Several carry open follow-ups (lesson 11's pending engine removal; #2422's 4 P0 defects).
+- **Rule timing:** lesson 5's "9.0+ ships" was the 2026-10-11 operating rule; Shawn's AAA shipping bar (9.5+ ships, ≤9.0 zero acceptance), set 2026-10-12, supersedes it for shipping decisions from here on.
+
+## Receipts
+
+- Branch `brain-build/learning-event-20261011`, parent `c126322eb69cc3cbde9b1e5f2050037a7e6bddb9` (live main tip at authoring; PR #2421's true merge commit).
+- PR #2424 `docs(brain): learning event 2026-10-11` — open, unmerged; never pushed to main.
+- Byte-verified: pushed blob `2d36001fe674b7d22dac80f1c99f8c3b72487f2d` == local `git hash-object` == remote recursive-tree entry at the exact path (untruncated tree read).
+- Base pre-existing drift: `regenerate_brain_index.py --check` shows DRIFT on REAL-TREE.json/md + NAYAPOWER-BRAIN-INDEX.json at the base tip (14th occurrence) — reproduced on this branch, not introduced by it. No re-stamp shipped here (merge lane's owned repair; no duplicate mechanism).
+- Builder–Scorer Loop: round-1 independent scorecard 8.0/10 (separate scorer agent; every defect named); round-2 fixes applied in the follow-up commit; re-score and final round before any merge decision.
