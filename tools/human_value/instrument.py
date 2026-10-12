@@ -382,14 +382,21 @@ def mechanical_signals(repo, merge_sha):
     For pre-merge branch heads (single-parent, not a merge commit), the true
     change is merge-base(origin/main)..head, not head^1..head — the pilot's
     full run showed ^1 understating branch deltas, so the base is resolved
-    that way when origin/main is available.
+    that way when origin/main is available. At a main tip the ref is already
+    on origin/main, so merge-base resolves to the ref itself — taking it would
+    collapse the diff to empty, and the plain head^1..head diff is used
+    instead.
     """
     base = f"{merge_sha}^1"
     mb = _git(repo, "merge-base", "origin/main", merge_sha)
     if mb.returncode == 0:
         mb_sha = mb.stdout.strip()
+        head_sha = _git(repo, "rev-parse", merge_sha).stdout.strip()
         first_parent = _git(repo, "rev-parse", f"{merge_sha}^1").stdout.strip()
-        if mb_sha and mb_sha != first_parent:
+        # merge-base applies only to pre-merge branch heads: when the ref is
+        # already on origin/main, the merge-base IS the ref itself, and taking
+        # it would collapse the diff to empty. (#2404 post-merge IV.)
+        if mb_sha and head_sha and mb_sha != head_sha and mb_sha != first_parent:
             base = mb_sha
     stat = _git(repo, "diff", "--numstat", base, merge_sha)
     names = _git(repo, "diff", "--name-status", base, merge_sha)
