@@ -47,7 +47,23 @@ A violation never changes the exit code; a malformed input never emits events.
 ## Re-pinning
 
 `tools/learning/principles_checklist.json` is pinned to briefing fingerprint
-`4baaa440db4dc799bee17ac3ed7bdc0d1d43a73856441fc0cc6e8a96b1251992`.
+`6e34da67deef30b613c448500e0fce8bf4cb54f8e3e88c31c90fbf8dbe41f596`
+(207 lines, pinned 2026-10-12T01:02:00Z).
 When the briefing changes: re-run the fingerprint, regenerate the checklist,
-and update this file. The scanner fails safe if the checklist's fingerprint
-is invalid or missing.
+and update this file. Every scan compares the pin against the live briefing
+and reports `briefing_pin` (`stale`: true/false/"unknown") in the scan
+summary — re-pin before trusting results when it says true. `load_checklist`
+fails safe (exit 2) on a malformed or unreadable checklist; staleness is
+reported in the summary, never fatal.
+
+## Known limitations
+
+- **Negation window (P6):** the negation exemption looks at the last clause
+  of the 40 characters before a match. A negation word farther back
+  ("I did not, despite the risks, approve database writes") will not
+  exempt the match — the scanner errs toward firing, and a different seat
+  confirms real violations before anything is learned. Precision here is
+  deliberately clause-scoped, not sentence-scoped.
+- **Keyword scanning (P1):** a bare "10/10" without same-line positive
+  context fires; candidates go to different-seat confirmation, never
+  straight to lessons.

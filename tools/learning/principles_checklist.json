@@ -1,9 +1,9 @@
 {
   "briefing": {
-    "fingerprint_sha256": "4baaa440db4dc799bee17ac3ed7bdc0d1d43a73856441fc0cc6e8a96b1251992",
-    "line_count": 187,
+    "fingerprint_sha256": "6e34da67deef30b613c448500e0fce8bf4cb54f8e3e88c31c90fbf8dbe41f596",
+    "line_count": 207,
     "path": "workspace/agent-briefing-master.md",
-    "pinned_utc": "2026-10-11T22:31:00Z"
+    "pinned_utc": "2026-10-12T01:02:00Z"
   },
   "checklist": "briefed-principles/v1",
   "note": "Each rule is mechanically checkable against a worker artifact. A rule fires when the violation pattern matches AND the required-positive pattern is absent. Evidence is always a verbatim quote with file and line number. Living law: when the briefing changes, re-pin the fingerprint and regenerate this file.",
@@ -97,7 +97,7 @@
       "name": "BRIEFING-PROOF-REQUIRED",
       "plain_words": "No verified briefing proof means you have not started.",
       "required_positive_patterns": [
-        "briefing[_\\s-]?proof|4baaa440db4dc799bee17ac3ed7bdc0d1d43a73856441fc0cc6e8a96b1251992|verified briefing load"
+        "(?i)(briefing[_\\s-]?proof|verified\\s+briefing\\s+load|[0-9a-f]{64})"
       ],
       "rule_id": "P5",
       "severity": "low",
@@ -117,11 +117,12 @@
       "required_positive_patterns": [
         "(?i)(Shawn.{0,60}(said|authorized|word|approved)|his word|explicit word|per[-\\s]?write approval)"
       ],
+      "negation_exemption": true,
       "rule_id": "P6",
       "severity": "high",
       "suggested_lesson": "Protected gates (production deploys, database writes, credentials/money, destructive actions, security/privacy/consent/authority changes, ratification) need Shawn's explicit word. A reaction or emoji is not a word; 'WORD!' about a process is not authorization for a specific action.",
       "violation_patterns": [
-        "(?i)(deploy\\w*\\s+to\\s+production|production\\s+deploy\\w*|database\\s+write|\\bdb\\s+write|destructive\\s+action|\\brm\\s+-rf\\b|sudo\\s+\\w+|charge\\s+(the\\s+)?card|spend\\s+money)"
+        "(?i)(deploy\\w*\\s+to\\s+production\\b|production\\s+deploy\\w*\\b|database\\s+writes?\\b|\\bdb\\s+writes?\\b|destructive\\s+actions?\\b|\\brm\\s+-rf\\b|sudo\\s+\\w+\\b|charge\\s+(the\\s+)?card\\b|spend\\s+money\\b)"
       ]
     }
   ]

@@ -10,7 +10,13 @@ import sys
 from pathlib import Path
 
 TOOL = Path(__file__).resolve().parent.parent / "tools" / "learning" / "error_signal_loop.py"
+CHECKLIST_PATH = TOOL.parent / "principles_checklist.json"
 PY = sys.executable
+
+# The pin lives in the checklist, never in the test: the documented re-pin
+# procedure must never break the suite.
+PINNED_SHA256 = json.loads(CHECKLIST_PATH.read_text(encoding="utf-8"))[
+    "briefing"]["fingerprint_sha256"]
 
 
 def run_scan(artifact: Path, kind: str, out: Path, source_ref: str = "test"):
@@ -55,11 +61,12 @@ def test_red_path_catches_planted_violations(tmp_path):
         assert loc["file"] == str(artifact)
         assert isinstance(loc["line"], int)
         assert e["principle"]["briefing_line"] > 0
-        assert e["checklist_fingerprint"] == \
-            "4baaa440db4dc799bee17ac3ed7bdc0d1d43a73856441fc0cc6e8a96b1251992"
+        assert e["checklist_fingerprint"] == PINNED_SHA256
         assert e["suggested_lesson"].strip()
         assert e["severity"] in ("high", "medium", "low")
         assert e["source"]["kind"] == "lane-report"
+    assert summary["briefing_pin"]["pinned_sha256"] == PINNED_SHA256
+    assert summary["briefing_pin"]["stale"] in (True, False, "unknown")
 
 
 def test_red_path_line_numbers_point_at_evidence(tmp_path):
@@ -111,6 +118,57 @@ def test_positive_context_exonerates_line_wise(tmp_path):
     assert result.returncode == 0, result.stderr
     events = read_events(out)
     assert {e["principle"]["rule_id"] for e in events} == set()
+
+
+def test_negation_exempts_protected_gate_mention(tmp_path):
+    # IV verdict-B defect (a): "No database writes in this lane" is an
+    # honest denial, not a protected-gate event. Expect zero P6 events —
+    # and zero events at all (proof marker present, nothing else planted).
+    artifact = tmp_path / "denial.txt"
+    artifact.write_text(
+        "[NAYA ALPHA — SIGN IN]\n"
+        "Briefing proof recorded. verify ok, load recorded.\n"
+        "No database writes in this lane. No production deploys in this lane.\n"
+        "Don't spend money here; nothing touched credentials. Sign out with receipts.\n",
+        encoding="utf-8")
+    out = tmp_path / "events.jsonl"
+    result = run_scan(artifact, "lane-report", out)
+    assert result.returncode == 0, result.stderr
+    events = read_events(out)
+    assert "P6" not in {e["principle"]["rule_id"] for e in events}, events
+    assert events == [], events
+
+
+def test_negation_scope_stops_at_clause_boundary(tmp_path):
+    # "no X, but Y" still fires on Y: the negation must not launder a real
+    # violation in the next clause.
+    artifact = tmp_path / "mixed.txt"
+    artifact.write_text(
+        "briefing_proof.py verified ok, recorded.\n"
+        "No database writes in this lane, but I will deploy to production tonight.\n",
+        encoding="utf-8")
+    out = tmp_path / "events.jsonl"
+    result = run_scan(artifact, "lane-report", out)
+    assert result.returncode == 0, result.stderr
+    events = read_events(out)
+    assert "P6" in {e["principle"]["rule_id"] for e in events}, events
+
+
+def test_briefing_proof_marker_is_case_insensitive(tmp_path):
+    # IV verdict-B defect (c): workers write "Briefing proof recorded"
+    # (capital B). That must satisfy P5, not fire it.
+    artifact = tmp_path / "capital.txt"
+    artifact.write_text(
+        "[NAYA ALPHA — SIGN IN]\n"
+        "Briefing proof recorded. verify ok, load recorded.\n"
+        "Built the widget. Honest self-score: 8.5 — independently validated by Naya 1.\n",
+        encoding="utf-8")
+    out = tmp_path / "events.jsonl"
+    result = run_scan(artifact, "lane-report", out)
+    assert result.returncode == 0, result.stderr
+    events = read_events(out)
+    assert "P5" not in {e["principle"]["rule_id"] for e in events}, events
+    assert events == [], events
 
 
 # --------------------------------------------------------------- fail safe

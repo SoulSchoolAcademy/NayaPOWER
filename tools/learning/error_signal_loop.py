@@ -47,6 +47,26 @@ SCHEMA_VERSION = "learning-event-candidate/v1"
 
 KINDS = ("lane-report", "pr-body", "commit-diff", "text-file")
 
+# Words that negate a protected-gate mention: "no database writes" is an
+# honest denial, not an attempt. A negation word scopes to its own clause:
+# the last clause of the window before the match must contain it, so
+# "no database writes, but I will deploy to production" still fires P6
+# on the deploy, and "not 10/10" exempts a P1 number-match.
+NEGATION_RE = re.compile(
+    r"(?i)\b(no|not|never|none|without|zero|"
+    r"don'?t|doesn'?t|didn'?t|can'?t|cannot|won'?t|"
+    r"isn'?t|aren'?t|wasn'?t|weren'?t|shouldn'?t|"
+    r"wouldn'?t|couldn'?t)\b")
+_CLAUSE_SPLIT_RE = re.compile(r"[;,.:!?()\[\]]")
+
+
+def negated_before_match(line: str, match_start: int, window: int = 40) -> bool:
+    """True when a negation word scopes over the match: the last clause
+    of the `window` characters before the match contains a negation word."""
+    before = line[max(0, match_start - window):match_start]
+    clause = _CLAUSE_SPLIT_RE.split(before)[-1]
+    return NEGATION_RE.search(clause) is not None
+
 
 # ---------------------------------------------------------------- checklist
 def load_checklist(path: Path = CHECKLIST_PATH) -> dict:
@@ -128,14 +148,19 @@ def scan_lines(lines: list[str], rules: list[dict], kind: str) -> list[dict]:
             if positive:
                 continue
             for vre in rule["violation_res"]:
-                match = vre.search(line)
-                if match:
+                for match in vre.finditer(line):
+                    if rule.get("negation_exemption") and \
+                            negated_before_match(line, match.start()):
+                        continue  # negated mention is an honest denial, not a violation
                     violations.append({
                         "rule_id": rule["rule_id"],
                         "line_no": lineno,
                         "quote": quote_line.strip()[:240],
                     })
                     break  # one event per rule per line
+                else:
+                    continue  # no non-negated match on this pattern; try next
+                break  # event recorded for this rule on this line
     return violations
 
 
@@ -159,6 +184,47 @@ def scan(lines: list[str], checklist: dict, kind: str) -> list[dict]:
                 "quote": "(no briefing-proof marker found anywhere in artifact)",
             })
     return violations
+
+
+# ---------------------------------------------------------------- pin check
+def resolve_briefing_path(checklist: dict) -> Path | None:
+    """Best-effort location of the live briefing the checklist is pinned to.
+    Resolution order: absolute path, repo root (walking up from the tool),
+    home workspace, current directory. Returns None when unfindable."""
+    raw = checklist.get("briefing", {}).get("path", "")
+    if not raw:
+        return None
+    p = Path(raw)
+    if p.is_absolute():
+        return p if p.exists() else None
+    candidates = [p]
+    root = TOOL_DIR
+    for parent in (root, *root.parents):
+        if (parent / ".git").exists():
+            candidates.append(parent / raw)
+            break
+    candidates.append(Path.home() / raw)
+    candidates.append(Path.cwd() / raw)
+    for cand in candidates:
+        if cand.exists():
+            return cand
+    return None
+
+
+def check_pin(checklist: dict) -> dict:
+    """Compare the pinned briefing fingerprint against the live briefing.
+    Returns a dict with stale=True/False/'unknown' (unfindable briefing).
+    Staleness is reported, never fatal: load_checklist still fails safe
+    (exit 2) only on malformed/unreadable checklists."""
+    pinned = checklist.get("briefing", {}).get("fingerprint_sha256", "")
+    path = resolve_briefing_path(checklist)
+    if path is None:
+        return {"pinned_sha256": pinned, "live_sha256": None,
+                "stale": "unknown",
+                "note": "briefing file not found; re-pin procedure in RUNNER.md"}
+    live = hashlib.sha256(path.read_bytes()).hexdigest()
+    return {"pinned_sha256": pinned, "live_sha256": live,
+            "stale": live != pinned}
 
 
 # ------------------------------------------------------------------ events
@@ -233,6 +299,7 @@ def cmd_scan(args: argparse.Namespace) -> int:
         "violations": len(violations),
         "by_rule": by_rule,
         "events_written": str(out_path),
+        "briefing_pin": check_pin(checklist),
     }, indent=2))
     return 0
 
