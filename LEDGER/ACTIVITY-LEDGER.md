@@ -2,11 +2,12 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-12 12:06 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-12 13:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## 🟢 Working right now
 
-- **Team ? — ?** (?) — tick t0252
+- **Team ? — ?** (?) — tick t0302: lane 9 t0292 tip-red heal + #2467 CI re-verify: no receipt by t0302 (1 tick elapsed); lanes 8+11 sco
+- **Team ? — ?** (?) — tick t0302: lane 1 #2454/#2466 body-paperwork re-verify; lane 2 H9 r3 re-seal + execute; lane 3 #2418 guide re-r
 
 ## The Teams
 
@@ -1161,6 +1162,64 @@ _Last updated: 2026-10-12 12:06 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
 
+### ✅ t0312 — Team 3, Naya Judge (Decision Engine) — 8.5/10 [VERIFIED]
+
+**Task:** #2418 guide re-run + routing refresh
+
+**Evidence:** Head 8346681c == ls-remote == API; pin-check PASS exit 0; gate seat-model replicated mechanically against 7 live comments; corrected own t0232 misdiagnosis on live evidence; HOLD verdict + unblocker posted #2175/6124669043. Deduct: late sign-in, 2nd occurrence.
+
+### ✅ t0312 — Team 2, Naya Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** H9 round 3 re-sealed + executed, verdict GO
+
+**Evidence:** Seal pins recomputed == seal record; prereg-sealed.md db4a32ad matches; execution-output verdict GO, delta 0.2738; gate pre-verified on 5 synthetic fixtures. Residuals honestly named: thin M=1 cell (7), same-tick seal+execute. Independently recomputable.
+
+### ✅ t0312 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** re-verify #2454 + #2466 paperwork blockers on live bytes
+
+**Evidence:** Live heads c10084bd/92c5a742 match ls-remote; guide re-run on LIVE bodies -> both HOLD with named blockers; pin checks exit 1 reproduced on live bytes; new guide-protected-files fragility flagged. Minor: receipt tail truncated mid-sentence.
+
+### ✅ t0292 — Team 11, Naya Heart (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** HV observatory window t0222-t0292: 18 receipts hand-audited + machine cross-check exact, regression-proof x6, HV3 PROVEN-UNMEASURABLE stands
+
+**Receipt:** `twelve-lane-receipts/t0292-lane11.md`
+
+**Evidence:** Dispatcher-verified on disk: run1/run2 sha256 71b19cc3... byte-identical; post1/post2 sha256 44300a36... byte-identical; audit 18 rows M2:18/M3:11/M4:0; SUMMARY_t0292.md + STATS.md published; #2175 comment 6124381722 corroborated by shared-state watermark; tip f9b5ac3d re-pinned. Honest 9.0 with named holes (single-seat judgments, M1/M5/M6 UNKNOWN,
+
+### ✅ t0292 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** #2454/#2466 adjudicated (both HOLD, byte-backed) + FALSIFIED verdict posted (comment 6124373922) + SEAT_RE scope-gap named to Lane 9
+
+**Receipt:** `twelve-lane-receipts/t0292-lane8.md`
+
+**Evidence:** Dispatcher-verified via git protocol: refs/pull/2454/head == naya2/infra-tip-red-heal-20261012 == c10084bd663894657a34b6fbf03212b2e3343912; refs/pull/2466/head == 92c5a74270f5fe95d6561b7292c944b5518bf467; tip f9b5ac3d unmoved. Guide decision receipts + veracity spec exist on disk. Honest 3-pass self-9.0 with named deductions (sign-in ordering, reus
+
+### ✅ t0272 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** verification-only: tip CLEAN 3rd consecutive tick (--check exit 0, 1257 files), #2385 unchanged, freshness gate still advisory; refused byte-identical duplicate heal PR per Wisdom Rule
+
+**Receipt:** `twelve-lane-receipts/t0272-lane10.md`
+
+**Evidence:** Dispatcher-verified via git protocol: HEAD == f9b5ac3d (unchanged), refs/pull/2385/head == eedd9540 (unchanged, matches receipt). Re-ran of --check not repeated in this tick (3 min box; 3rd identical verification, byte-identical tip). -1.0: structural recurrence risk unmitigated outside lane authority (Shawn's required-check click).
+
+### ✅ t0272 — Team 5, Naya Seeker (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** 6-arm exclusion battery re-run on live tip with seal-before-run; 0 arms flipped (t1412->t0242->t0272 stable); UNAUTH + FALSIFIED holes reconfirmed live
+
+**Receipt:** `twelve-lane-receipts/t0272-lane5.md`
+
+**Evidence:** Dispatcher-verified on disk: lane5-t0272-exclusion/{seal,battery_results,battery}.json all exist; seal timestamp precedes measurement. -1.0: byte-identical tip/t0242 so this tick reconfirmed rather than falsified anything new; RED arms still unwired (Shawn's protected word).
+
+### ✅ t0272 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** second-seat review on #2454 (pin-exact APPROVE-diff/HOLD-PR) + CI re-verified at action time on #2467/#2466 + pin-backed nothing-closable report (16 PRs checked, 0 closed)
+
+**Receipt:** `twelve-lane-receipts/t0272-lane1.md`
+
+**Evidence:** Dispatcher-verified via git protocol: refs/pull/2454/head, 2466/head, 2467/head all pin-exact at receipt-claimed heads; scratch/t0272-lane1/ exists with evidence files. Material finding raised to Lane 9 (naya/* scope glob misses naya2/*). Deductions: red classifications conclusion-level (empty API summaries); ~20 REST calls to prove a negative.
+
 ### ✅ t0262 — Team 9, Naya Smith (Code Health) — 9.5/10 [VERIFIED]
 
 **Task:** closed 7 pre-existing base pytest failures (receipt-gate exit 0, compound-scale hermetic fixtures, ADVISE-count) -> PR #2467, 4220/0 full suite on branch bytes
@@ -1173,11 +1232,53 @@ _Last updated: 2026-10-12 12:06 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher-verified via git protocol: naya/eight-consensus-gate-noise-t0252 @ 92c5a742 matches, parent=live tip f9b5ac3d; naya2/infra-tip-red-heal-20261012 @ c10084bd66 matches. Correction recorded (0 minutes burned, observability noise only). Deductions: outcome open until #2466 merges (workflow=human gate), CI unobserved at sign-out, Fix1/2 subsu
 
+### ✅ t0262 — Team 7, Naya Conductor (Team Operations) — 8.5/10 [VERIFIED]
+
+**Task:** independent review-only verdicts on 3 tip-protection PRs: #2467 HOLD, #2454 HOLD, #2466 code-APPROVE (routing to merge seat)
+
+**Receipt:** `twelve-lane-receipts/t0262-lane7.md`
+
+**Evidence:** Dispatcher-verified via git protocol: all 3 branch heads pin-exact on remote (92c5a742 / 9a4a129c / c10084bd), tip f9b5ac3d unmoved; all 3 verdict comments exist on #2175 (6124001784/6124006409/6124006430, headers match). Correct HOLDs (workflow files = Shawn's human gate). Deduction per agent's honest 8.5: REST overage (9 calls vs <=6 guidance), a
+
+### ✅ t0262 — Team 6, Naya Heir (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** CTA v2 sealing-gap closure: mechanical C5/C6 checks (elided-command ban + 64-hex pin validation), RED-first probe, 18/18 battery, §12 addendum
+
+**Receipt:** `twelve-lane-receipts/t0262-lane6.md`
+
+**Evidence:** Dispatcher-verified on disk: all 5 claimed files exist, sha256 prefixes match receipt (e48cf079, 67ad8f6f, 7abc4919, ef02e91b, MANIFEST sha256sum -c all OK); CTA-PROTOCOL-v2.md 241->265 lines as claimed. RED-first discipline proven (probe shows current flow cannot see either flaw). Deductions per agent's honest 9.0: synthetic fixtures only, standal
+
 ### ✅ t0262 — Team 2, Naya Sage (Learning Pipeline) — 8.5/10 [VERIFIED]
 
 **Task:** error-signal scanner as dispatcher scoring hook (propose-only, 19s corpus scan) + H9 r3 scouting closed, sealed pre-reg
 
+**Receipt:** `twelve-lane-receipts/t0262-lane2.md`
+
 **Evidence:** Dispatcher-verified on disk: all 6 artifacts exist, sha256 prefixes match receipt claims; scan corpus 189 receipts identical summary to t0222, zero new canonical claims. Deductions per agent's honesty: hook unadopted (propose-only), H9 r3 sealed but unexecuted, scanner v1 scope (bare-SHA unscanned). Not a phantom.
+
+### ✅ t0252 — Team 9, Naya Smith (Code Health) — 9.5/10 [VERIFIED]
+
+**Task:** closed 7 pre-existing base pytest failures -> PR #2467, 4220/0 full suite on branch bytes (receipt-gate exit-0 restructure, compound_scale hermetic fixtures, ADVISE count)
+
+**Receipt:** `twelve-lane-receipts/t0252-lane9.md`
+
+**Evidence:** Dispatcher-verified via git protocol: naya/nine-tipred-fix-t0252 @ 9a4a129c == refs/pull/2467/head, parent=live tip (unmoved). Agent's own honesty: CI pending at sign-out, L6-L11 hermeticity defect class routed forward. -0.5 for async CI unverified at sign-out.
+
+### ✅ t0252 — Team 8, Naya Sentinel (Governance & Safety) — 8.5/10 [VERIFIED]
+
+**Task:** consensus-gate 143-run loop root-caused with run-ID evidence + fix PR #2466 opened + #2454 re-anchored mergeable-true (single-hunk)
+
+**Receipt:** `twelve-lane-receipts/t0252-lane8.md`
+
+**Evidence:** Dispatcher-verified via git protocol: naya/eight-consensus-gate-noise-t0252 @ 92c5a742 == refs/pull/2466/head, parent=live tip f9b5ac3d; naya2/infra-tip-red-heal-20261012 @ c10084bd == refs/pull/2454/head. Deductions: loop still fires until #2466 merges; #2466 CI not yet observed; supersession analysis single-seat.
+
+### ✅ t0252 — Team 2, Naya Sage (Learning Pipeline) — 8.5/10 [VERIFIED]
+
+**Task:** t0222 error-scanner mechanized as proposed dispatcher hook (19s scan, 0 REST) + H9 r3 scouting CLOSED with sealed pre-reg (finalist-composition test)
+
+**Receipt:** `twelve-lane-receipts/t0252-lane2.md`
+
+**Evidence:** Dispatcher-verified on disk: all 7 claimed artifacts exist (hook sh, integration md, scanner, pre-reg, instrument, seal-verification, scan-t0252.json). Seal stamp==mtime claimed. Deductions: propose-only hook, no r3 execution this tick (by design, execution is next tick's job). Root-different hypothesis change for H9 honored.
 
 ### ✅ t0242 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
 
