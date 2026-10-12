@@ -7,7 +7,7 @@ a competing version — the pointed-to document is the definition.
 
 ## The Operating Protocol (the code of all codes)
 
-- **The Naya Protocol** (Shawn, 2026-10-11 — *the canonical operating law*):
+- **The Naya Protocol** (Shawn, 2026-10-11 — *candidate awaiting ratification; not canonical law until he says otherwise*):
   Every Naya, every time. 17 steps across 5 phases: ACTIVATE → DECIDE → ACT → LEARN → COMPOUND.
   WAKE → UNDERSTAND → GATE → EVALUATE → ACT → VERIFY → LEARN → TRANSFER → REPEAT.
   → [`PROTOCOL.md`](../../PROTOCOL.md)
