@@ -16,9 +16,18 @@ import json
 import re
 from pathlib import Path
 
+_PKG_DIR = Path(__file__).resolve().parent
+
 
 def _read_receipt(path_str: str) -> str | None:
-    p = Path(path_str).expanduser()
+    # Hermetic receipt scheme (t0292): `pkg:<relpath>` resolves against the
+    # compound_scale package directory, so pinned receipt fixtures ship with
+    # the repo instead of depending on the author's mutable home files.
+    # Legacy `~/...` paths keep expanduser semantics for backward compat.
+    if path_str.startswith("pkg:"):
+        p = _PKG_DIR / path_str[len("pkg:"):]
+    else:
+        p = Path(path_str).expanduser()
     if not p.is_file():
         return None
     try:

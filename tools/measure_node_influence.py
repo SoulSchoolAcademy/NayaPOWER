@@ -217,6 +217,11 @@ def influence_report(measurements: list[dict]) -> dict:
             "invoked_nodes": sorted(invoked),
             "invoked_count": len(invoked),
             "of_total": len(ORDER),
+            # Nodes the engine actually ran that are not part of the nine-node
+            # constitutional set (e.g. the ADVISE bridge). They
+            # are recorded honestly, not rejected: the nine-node gate asserts
+            # the nine are all present, not that nothing else ran.
+            "additional_invoked_nodes": sorted(n for n in invoked if n not in ORDER),
             "influence_demonstrated_for": sorted(influential) or ["NONE"],
             "influence_demonstrated_count": len(influential),
             "changed_scenarios": changed_scenarios,
@@ -244,8 +249,9 @@ def main() -> int:
     print("-" * 78)
     for name, r in report.items():
         print(f"\n{name}")
-        print(f"  nodes invoked            : {r['invoked_count']}/{r['of_total']}")
+        print(f"  nodes invoked            : {r['invoked_count']} ({len(ORDER)} constitutional + {len(r['additional_invoked_nodes'])} additional)")
         print(f"  invoked                  : {', '.join(r['invoked_nodes']) or 'NONE'}")
+        print(f"  beyond the nine          : {', '.join(r['additional_invoked_nodes']) or 'NONE'}")
         never = [n for n in ORDER if n not in r["invoked_nodes"]]
         print(f"  NEVER invoked            : {', '.join(never) or 'NONE'}")
         print(f"  influence demonstrated   : {', '.join(r['influence_demonstrated_for'])}")

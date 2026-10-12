@@ -13,3 +13,10 @@
 No seal was ever re-issued after arm outcomes were used to move a bar.
 Each re-seal fixed the registration's evidence pointers, never the
 pass/fail thresholds.
+- **v4** `30f7a6e9c` sealed 2026-10-12 12:38:03Z — hermeticity fix (t0292):
+  all 14 `receipt_file` paths moved from the author's mutable home files
+  (`~/MEMORY.md`, `~/AGENTS.md`, `~/TOOLS.md`,
+  `~/workspace/agent-briefing-master.md`, `~/workspace/naya/bin/gh-api`)
+  to pinned in-repo fixtures (`fixtures/receipts/*.md`) via the new `pkg:`
+  scheme; quotes captured verbatim. Citation fix only; no expectation
+  changed. (`gates._read_receipt` learned `pkg:`; legacy `~/` unchanged.)
