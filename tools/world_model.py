@@ -356,14 +356,19 @@ def build_mission_section(cached=None):
         return mark_unknown("mission", f"API failed: {issue}")
 
     body = issue.get("body") or ""
+    truncated = len(body) > 2000
     return {
-        "status": "OK",
+        # A 2000-char preview is PARTIAL, never the complete mission.
+        # Consumers must not treat body_preview as the full priority list.
+        "status": "PARTIAL" if truncated else "OK",
         "issue": MISSION_ISSUE,
         "title": issue.get("title", ""),
         "state": issue.get("state", ""),
         "comment_count": issue.get("comments", 0),
         "updated_at": issue.get("updated_at", ""),
         "body_preview": body[:2000],
+        "body_truncated": truncated,
+        "body_full_length": len(body),
         "url": issue.get("html_url", ""),
         "as_of_utc": now_utc(),
         "as_of_ts": utc_now_ts(),
