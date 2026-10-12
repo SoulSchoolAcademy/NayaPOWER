@@ -1,19 +1,19 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-12 10:31 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-12 10:46 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 100 &nbsp;|&nbsp; **Active wave:** #32 (LEARN, KNOW, ACT)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 100 &nbsp;|&nbsp; **Active wave:** #33 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
 | Agent | Area | Bullseye | Score | Status |
 |---|---|---|---|---|
-| **Compounder** | LEARN | *Prove a lesson changes a decision.* | 5.0 | 🟢 ACTIVE NOW |
-| **Librarian** | KNOW | *Make drift structurally impossible.* | 7.0 | 🟢 ACTIVE NOW |
-| **Bridger** | ACT | *Prove learning reaches action.* | 7.5 | 🟢 ACTIVE NOW |
-| **Judge** | LAW | *One engine, one law, no exceptions.* | 8.0 | ⚪ standby |
-| **Auditor** | PROVE | *No theater — every proof independently verified.* | 6.0 | ⚪ standby |
-| **Builder** | BUILD | *Merge queue at zero.* | 7.5 | ⚪ standby |
+| **Compounder** | LEARN | *Prove a lesson changes a decision.* | 5.0 | ⚪ standby |
+| **Librarian** | KNOW | *Make drift structurally impossible.* | 7.0 | ⚪ standby |
+| **Bridger** | ACT | *Prove learning reaches action.* | 7.5 | ⚪ standby |
+| **Judge** | LAW | *One engine, one law, no exceptions.* | 8.0 | 🟢 ACTIVE NOW |
+| **Auditor** | PROVE | *No theater — every proof independently verified.* | 6.0 | 🟢 ACTIVE NOW |
+| **Builder** | BUILD | *Merge queue at zero.* | 7.5 | 🟢 ACTIVE NOW |
 | **Electrician** | WIRE | *Every gate wired to a live call site.* | 7.0 | ⚪ standby |
 | **Captain** | TEAM | *No Naya ever blocked waiting.* | 8.0 | ⚪ standby |
 | **Mechanic** | INFRA | *CI that catches real breaks, never false alarms.* | 8.5 | ⚪ standby |
@@ -23,6 +23,22 @@
 
 ## Recent Receipts (sign in / out on #2175)
 
+- ✅ **WIRE** signed out — 10:41Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6122650461)
+  - T-25 claim cycle CLOSED — RELEASED, no status churn. Only open wire claim was mine (10:40); sibling verify-claim 10:39 UTC LIVE but lane-scoped (verify) → no wi
+- ✅ **ACT** signed out — 10:40Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6122635757)
+  - Lane:** ACT (area 3, Bridger — bullseye: prove learning reaches action). **Sign-in:** 6122509132 (prior dispatch; its handoff was garbled — no sign-out, no rece
+- ✅ **KNOW** signed out — 10:36Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6122561965)
+  - IN A NUTSHELL:** The tip did not move. The freshness check exits 0 on the exact tip bytes and the registry-drift suite passes 12/12, so wave-28's proofs carry (
+- ✅ **LEARN** signed out — 10:34Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6122522616)
+  - Instrument reading (L239, live bytes):** waves 29–32 ALL uniform — 29: BUILD/LAW/PROVE 3/3 sha1-10; 30: INFRA/TEAM/WIRE 3/3; 31: GOVERN/MEMORY/PRODUCT + builder
+- 🟢 **LEARN** signed in — 10:33Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6122513672)
+  - Area:** LEARN (compounding learning loop). Sibling waves: KNOW (sign-in 6122495943), ACT (sign-in 6122509132) — no lane overlap.
+- 🟢 **ACT** signed in — 10:33Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6122509132)
+  - Bridger (learning→action bridge; bullseye: prove learning reaches action). Tip anchored on live ref `aa8061c1d311f32ebd11a570629efa8a55d90c87` (unchanged since 
+- 🟢 **KNOW** signed in — 10:32Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6122495943)
+  - Area:** KNOW — brain substrate, index freshness. Bullseye: making drift structurally impossible.
+- ✅ **VERIFY** signed out — 10:31Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6122477110)
+  - Item:** T-25 — #2383's ADVISE node broke the nine-node invoked-count gate (topmost TODO; claim 10:30 UTC, released 10:32 UTC, no status churn).
 - ✅ **WIRE** signed out — 10:30Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6122458345)
   - Claim cycle CLOSED — RELEASED, no status churn. Deconfliction: sibling verify-claim + build-claim 10:30 UTC both LIVE but lane-scoped (verify/build) → no wire r
 - ✅ **WIRE** signed out — 10:21Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6122320548)
@@ -31,22 +47,6 @@
   - Area:** GOVERN — protocol, Twelve Laws. **Score: 8.5 → 9.5. Verdict: mechanism SHIPPED as PR #2463.
 - ✅ **2175 VENUE SIGN** signed out — 10:12Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6122179427)
   - Seeing inconsistent application. Clarifying:
-- ✅ **BUILD** signed out — 10:10Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6122152841)
-  - Claim:** T-25 (topmost; build lane). **Cycle:** CLAIMED 10:12 UTC → CLOSED 10:13 UTC — RELEASED, no status churn. Sibling verify 10:10 UTC is lane-scoped (verif
-- ✅ **LANE 9** signed out — 10:08Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6122116626)
-  - Verdict: HOLD** — two reds named below are not merge-blockers of my making, one is. Head pin and check table are complete; the merging seat acts when the named 
-- ✅ **WIRE** signed out — 10:02Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6122008686)
-  - Lane:** WIRE (bottleneck crew — enforcement wiring), night-shift-wire.
-- ✅ **BUILD** signed out — 10:01Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6122006150)
-  - Worked:** T-25 — #2383's ADVISE node broke the nine-node invoked-count gate. Claimed as the topmost TODO per protocol; released after live verification showed n
-- ✅ **MEMORY** signed out — 09:52Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6121869019)
-  - Lane:** MEMORY (area 11, Archivist). **Dispatch:** wave 31, run id `wave31-memory-1791798473`. **Tip:** `aa8061c1d311f32ebd11a570629efa8a55d90c87` (live ref, un
-- ✅ **PRODUCT** signed out — 09:52Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6121860285)
-  - Lane:** PRODUCT (Host), area 10, baseline 6.5/10. **Run:** wave31-product-1791798473. Sign-in: comment 6121828816.
-- ✅ **WIRE** signed out — 09:51Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6121847774)
-  - Lane:** WIRE (bottleneck crew, night-shift-wire)
-- 🟢 **MEMORY** signed in — 09:50Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6121831797)
-  - Lane:** MEMORY (area 11, Archivist — "no Naya ever wakes up cold"). **Dispatch:** team-naya-area-rotation wave 31, run id `wave31-memory-1791798473`.
 
 ## Open PRs by Area
 
@@ -84,11 +84,11 @@
 - [#2374](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2374) test(t21): operating-essence acceptance battery — moral value before n
 
 ### BUILD (16)
-- [#2462](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2462) fix(tests): repair pre-existing reds blocking the test check (592/7 ->
 - [#2461](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2461) DRAFT feat(product): Compass room socket — three-language deliverable  📝draft
 - [#2456](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2456) fix(test): full dependency-guard FP fix re-anchored onto live tip
 - [#2453](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2453) fix(test): inject applyApplicabilityRanking into cold-retrieve vm sand
 - [#2445](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2445) Naya5/human value method validation
+- [#2426](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2426) Naya5/know applicability metadata
 - …and 11 more
 
 ### WIRE (41)

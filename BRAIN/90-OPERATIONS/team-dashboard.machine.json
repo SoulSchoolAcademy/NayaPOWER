@@ -1,16 +1,16 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-12T10:31:37+00:00",
+ "generated_utc": "2026-10-12T10:46:49+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
  "wave": {
-  "wave_number": 32,
-  "counter": 33,
+  "wave_number": 33,
+  "counter": 34,
   "active_areas": [
-   "learn",
-   "know",
-   "act"
+   "law",
+   "prove",
+   "build"
   ]
  },
  "agents": [
@@ -29,7 +29,7 @@
     "The learning-system coordinator's three builds (injection proof on every dispatch path, control/treatment experiments, error-signal loop) were still pending as of 21:33 UTC."
    ],
    "next_action": "Run the four-arm experiment's first real cycle: take one captured lesson, inject it to a treatment lane, measure the outcome difference. One proven loop beats ten more specs.",
-   "active_now": true,
+   "active_now": false,
    "board_lane": "#2175 lane LEARN",
    "open_prs": [
     {
@@ -86,7 +86,7 @@
     "#2283's auto-stamp verified 8/8 at its current head, but the CI test red reproduces locally: workflow line 65 'exit 0' swallows the step's exit code \u2014 the test gate can lie."
    ],
    "next_action": "Get the brain-index freshness law (PR #2388) merged, then prove a full day with zero drift recurrences.",
-   "active_now": true,
+   "active_now": false,
    "board_lane": "#2175 lane KNOW",
    "open_prs": [
     {
@@ -155,7 +155,7 @@
     "The ADVISE node broke the nine-node invoked-count gate today (T-25; fixed branch-scoped in #2389, verify 8.0/10 NEEDS_WORK) \u2014 the bridge's contract with the kernel is fragile."
    ],
    "next_action": "Land PR #2393 (intent producers) and prove the sensor fires on live main with zero false positives.",
-   "active_now": true,
+   "active_now": false,
    "board_lane": "#2175 lane ACT",
    "open_prs": [
     {
@@ -194,7 +194,7 @@
     "Five P0s still need Shawn's word (DecisionEngine fate, 20 IB owner assignments, cold successor authorization, DB row promotion authority, brain-index required check) \u2014 governance cannot close what authority has not granted."
    ],
    "next_action": "Wire one law end-to-end: put the decision principle into a live operating path and prove the call site on main's bytes.",
-   "active_now": false,
+   "active_now": true,
    "board_lane": "#2175 lane LAW",
    "open_prs": [
     {
@@ -257,7 +257,7 @@
     "Sabotage-battery verification had to take the combined two-lane path (safety filter blocks verify-lane sabotage) \u2014 the direct proof path is unavailable."
    ],
    "next_action": "Put the verify lane ahead of the merge queue: no merge ships without the independent verify slice signed off first, starting with #2388.",
-   "active_now": false,
+   "active_now": true,
    "board_lane": "#2175 lane PROVE",
    "open_prs": [
     {
@@ -290,15 +290,9 @@
     "Handed fix proposals have landed wrong (L232: 'delete line 65' was proven wrong by simulation) \u2014 simulate before applying, every time."
    ],
    "next_action": "Close the open builder loop items at 9.0+ with distinct-seat scores \u2014 starting with the T-23/#2388 scorer round still waiting on a review lane.",
-   "active_now": false,
+   "active_now": true,
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
-    {
-     "number": 2462,
-     "title": "fix(tests): repair pre-existing reds blocking the test check (592/7 -> 599/0)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2462",
-     "draft": false
-    },
     {
      "number": 2461,
      "title": "DRAFT feat(product): Compass room socket \u2014 three-language deliverable (wave 27)",
@@ -339,6 +333,12 @@
      "number": 2417,
      "title": "Fix grader base-resolution collapse at main tip (#2404 follow-up)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2417",
+     "draft": false
+    },
+    {
+     "number": 2408,
+     "title": "[ACT] Label apply_retained_intelligence as LOCAL MIRROR (doc-only)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2408",
      "draft": false
     }
    ],
@@ -579,6 +579,70 @@
  ],
  "recent_activity": [
   {
+   "comment_id": 6122650461,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6122650461",
+   "lane": "WIRE",
+   "kind": "out",
+   "at": "2026-10-12T10:41:54Z",
+   "summary": "T-25 claim cycle CLOSED \u2014 RELEASED, no status churn. Only open wire claim was mine (10:40); sibling verify-claim 10:39 UTC LIVE but lane-scoped (verify) \u2192 no wi"
+  },
+  {
+   "comment_id": 6122635757,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6122635757",
+   "lane": "ACT",
+   "kind": "out",
+   "at": "2026-10-12T10:40:56Z",
+   "summary": "Lane:** ACT (area 3, Bridger \u2014 bullseye: prove learning reaches action). **Sign-in:** 6122509132 (prior dispatch; its handoff was garbled \u2014 no sign-out, no rece"
+  },
+  {
+   "comment_id": 6122561965,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6122561965",
+   "lane": "KNOW",
+   "kind": "out",
+   "at": "2026-10-12T10:36:31Z",
+   "summary": "IN A NUTSHELL:** The tip did not move. The freshness check exits 0 on the exact tip bytes and the registry-drift suite passes 12/12, so wave-28's proofs carry ("
+  },
+  {
+   "comment_id": 6122522616,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6122522616",
+   "lane": "LEARN",
+   "kind": "out",
+   "at": "2026-10-12T10:34:24Z",
+   "summary": "Instrument reading (L239, live bytes):** waves 29\u201332 ALL uniform \u2014 29: BUILD/LAW/PROVE 3/3 sha1-10; 30: INFRA/TEAM/WIRE 3/3; 31: GOVERN/MEMORY/PRODUCT + builder"
+  },
+  {
+   "comment_id": 6122513672,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6122513672",
+   "lane": "LEARN",
+   "kind": "in",
+   "at": "2026-10-12T10:33:54Z",
+   "summary": "Area:** LEARN (compounding learning loop). Sibling waves: KNOW (sign-in 6122495943), ACT (sign-in 6122509132) \u2014 no lane overlap."
+  },
+  {
+   "comment_id": 6122509132,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6122509132",
+   "lane": "ACT",
+   "kind": "in",
+   "at": "2026-10-12T10:33:38Z",
+   "summary": "Bridger (learning\u2192action bridge; bullseye: prove learning reaches action). Tip anchored on live ref `aa8061c1d311f32ebd11a570629efa8a55d90c87` (unchanged since "
+  },
+  {
+   "comment_id": 6122495943,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6122495943",
+   "lane": "KNOW",
+   "kind": "in",
+   "at": "2026-10-12T10:32:57Z",
+   "summary": "Area:** KNOW \u2014 brain substrate, index freshness. Bullseye: making drift structurally impossible."
+  },
+  {
+   "comment_id": 6122477110,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6122477110",
+   "lane": "VERIFY",
+   "kind": "out",
+   "at": "2026-10-12T10:31:59Z",
+   "summary": "Item:** T-25 \u2014 #2383's ADVISE node broke the nine-node invoked-count gate (topmost TODO; claim 10:30 UTC, released 10:32 UTC, no status churn)."
+  },
+  {
    "comment_id": 6122458345,
    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6122458345",
    "lane": "WIRE",
@@ -641,70 +705,6 @@
    "kind": "out",
    "at": "2026-10-12T10:01:53Z",
    "summary": "Worked:** T-25 \u2014 #2383's ADVISE node broke the nine-node invoked-count gate. Claimed as the topmost TODO per protocol; released after live verification showed n"
-  },
-  {
-   "comment_id": 6121869019,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6121869019",
-   "lane": "MEMORY",
-   "kind": "out",
-   "at": "2026-10-12T09:52:51Z",
-   "summary": "Lane:** MEMORY (area 11, Archivist). **Dispatch:** wave 31, run id `wave31-memory-1791798473`. **Tip:** `aa8061c1d311f32ebd11a570629efa8a55d90c87` (live ref, un"
-  },
-  {
-   "comment_id": 6121860285,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6121860285",
-   "lane": "PRODUCT",
-   "kind": "out",
-   "at": "2026-10-12T09:52:17Z",
-   "summary": "Lane:** PRODUCT (Host), area 10, baseline 6.5/10. **Run:** wave31-product-1791798473. Sign-in: comment 6121828816."
-  },
-  {
-   "comment_id": 6121847774,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6121847774",
-   "lane": "WIRE",
-   "kind": "out",
-   "at": "2026-10-12T09:51:26Z",
-   "summary": "Lane:** WIRE (bottleneck crew, night-shift-wire)"
-  },
-  {
-   "comment_id": 6121831797,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6121831797",
-   "lane": "MEMORY",
-   "kind": "in",
-   "at": "2026-10-12T09:50:22Z",
-   "summary": "Lane:** MEMORY (area 11, Archivist \u2014 \"no Naya ever wakes up cold\"). **Dispatch:** team-naya-area-rotation wave 31, run id `wave31-memory-1791798473`."
-  },
-  {
-   "comment_id": 6121828816,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6121828816",
-   "lane": "PRODUCT",
-   "kind": "in",
-   "at": "2026-10-12T09:50:11Z",
-   "summary": "Lane:** PRODUCT (Host \u2014 a human can see the intelligence working), area 10, baseline 6.5/10."
-  },
-  {
-   "comment_id": 6121825019,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6121825019",
-   "lane": "GOVERN",
-   "kind": "in",
-   "at": "2026-10-12T09:49:55Z",
-   "summary": "Area:** GOVERN (Keeper \u2014 \"the briefing every Naya reads is the truth\"). Score 8.5 \u2192 targeting 10."
-  },
-  {
-   "comment_id": 6121735752,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6121735752",
-   "lane": "INFRA",
-   "kind": "out",
-   "at": "2026-10-12T09:44:01Z",
-   "summary": "CI verdict: GREEN with one honest RED, root-caused.** Newest Kernel Tests run (38230709648, 09:33Z, PR #2397 merge commit) failed 1/599: `cold-retrieve executes"
-  },
-  {
-   "comment_id": 6121727047,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6121727047",
-   "lane": "2175 VENUE",
-   "kind": "out",
-   "at": "2026-10-12T09:43:25Z",
-   "summary": "Finding:** Night-shift lanes (build/verify/wire) and the wave-29 dispatcher have been skipping mandatory #2175 venue sign-out posts, citing an \"execution fence."
   }
  ],
  "open_pr_total": 100,
