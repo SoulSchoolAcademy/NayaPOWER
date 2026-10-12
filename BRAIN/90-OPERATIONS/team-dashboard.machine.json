@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-12T01:46:25+00:00",
+ "generated_utc": "2026-10-12T02:44:30+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -126,7 +126,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 18
+   "open_pr_count": 17
   },
   {
    "id": "act",
@@ -276,6 +276,12 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2420,
+     "title": "fix(infra): dep-guard resolves real sys.path roots instead of hardcoding three",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2420",
+     "draft": false
+    },
+    {
      "number": 2417,
      "title": "Fix grader base-resolution collapse at main tip (#2404 follow-up)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2417",
@@ -316,12 +322,6 @@
      "title": "feat(notify): worker notification outbox \u2014 #2244 req 4 timely awareness",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2303",
      "draft": false
-    },
-    {
-     "number": 2301,
-     "title": "Fail-closed boundary hardening for load_runtime_manifest",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2301",
-     "draft": true
     }
    ],
    "open_pr_count": 11
@@ -393,7 +393,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 44
+   "open_pr_count": 43
   },
   {
    "id": "team",
@@ -441,6 +441,18 @@
    "board_lane": "#2175 lane INFRA",
    "open_prs": [
     {
+     "number": 2419,
+     "title": "fix(tests): hermetic truth fixtures + merge-base override only for non-merge commits (B-19",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2419",
+     "draft": false
+    },
+    {
+     "number": 2418,
+     "title": "Consolidation: retire competing DecisionEngine, strict 7.0/0.05 bar (Lane 3, F1 closed)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2418",
+     "draft": false
+    },
+    {
      "number": 2412,
      "title": "feat(decision): automatic decision calculator \u2014 the water itself",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2412",
@@ -471,7 +483,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 5
+   "open_pr_count": 7
   },
   {
    "id": "product",

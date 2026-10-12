@@ -1,6 +1,6 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-12 01:46 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-12 02:44 UTC from live sources. Regenerated every wave (~10 min).*
 
 **Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 100 &nbsp;|&nbsp; **Active wave:** #2 (LAW, PROVE, BUILD)
 
@@ -55,13 +55,13 @@
 - [#2391](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2391) feat(learn): four-arm compounding experiment spec V1 📝draft
 - [#2296](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2296) feat(learn): canonical learning-event envelope (#2244 req 3)
 
-### KNOW (18)
+### KNOW (17)
 - [#2415](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2415) BRAIN: regenerate index layer at live tip 665098e3
 - [#2407](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2407) repair(brain-index): re-stamp index on main 665098e3 (drift-13)
 - [#2390](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2390) repair(brain-index): re-stamp index on main f33bba34
 - [#2388](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2388) feat(protocol): Brain-Index Freshness Law as mechanical law (Shawn 202
 - [#2385](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2385) feat(ci): dedicated brain-index-freshness required gate workflow (Shaw
-- …and 13 more
+- …and 12 more
 
 ### ACT (2)
 - [#2393](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2393) [ACT] Real intent_to_harm producers — disqualification sensor goes liv
@@ -80,30 +80,31 @@
 - [#2374](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2374) test(t21): operating-essence acceptance battery — moral value before n
 
 ### BUILD (11)
+- [#2420](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2420) fix(infra): dep-guard resolves real sys.path roots instead of hardcodi
 - [#2417](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2417) Fix grader base-resolution collapse at main tip (#2404 follow-up)
 - [#2408](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2408) [ACT] Label apply_retained_intelligence as LOCAL MIRROR (doc-only)
 - [#2353](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2353) Law 12 enforcement: proof receipts expire on material change + unified 📝draft
 - [#2345](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2345) test(2244-E): full-chain proof — failure → notification → collaboratio
-- [#2309](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2309) feat(activation): #2244 req 1 — machine-checkable wake/activation cont
 - …and 6 more
 
-### WIRE (44)
+### WIRE (43)
 - [#2411](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2411) Stale premise sweep: feed-gate removal + retired premises (IV 8.5/10)
 - [#2399](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2399) Receipt gate: exact-head-SHA pin as blocking CI check
 - [#2395](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2395) wire: route execute_plan refusals through decision_discipline.executio
 - [#2364](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2364) feat(gates): show-your-work receipt machinery — no receipt, no merge
 - [#2350](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2350) WIRE: #2244-A worker activation-contract gate on the PR merge path
-- …and 39 more
+- …and 38 more
 
 ### TEAM (1)
 - [#2397](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2397) feat(dashboard): live Team Naya activity dashboard — markdown + machin
 
-### INFRA (5)
+### INFRA (7)
+- [#2419](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2419) fix(tests): hermetic truth fixtures + merge-base override only for non
+- [#2418](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2418) Consolidation: retire competing DecisionEngine, strict 7.0/0.05 bar (L
 - [#2412](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2412) feat(decision): automatic decision calculator — the water itself
 - [#2410](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2410) Consolidate decision engines into one ultimate engine (Shawn 2026-10-1
 - [#2409](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2409) feat(protocol): Three-Try Circuit Breaker — L236 standing law (Shawn 2
-- [#2387](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2387) law: make no-bottleneck shared mission rule explicit
-- [#2305](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2305) feat(feed): specialty-feed lifecycle registry — #2244 req 2
+- …and 2 more
 
 ### MEMORY (1)
 - [#2400](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2400) Fix #2386: Intelligent Block exporter round-trip gap
