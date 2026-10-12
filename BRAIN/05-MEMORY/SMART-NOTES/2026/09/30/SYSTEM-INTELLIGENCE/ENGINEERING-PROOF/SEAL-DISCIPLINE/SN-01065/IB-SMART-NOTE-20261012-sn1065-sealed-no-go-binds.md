@@ -1,0 +1,53 @@
+# A Sealed NO-GO Binds — The Honest Negative Is a Finding, Not a Failure
+
+**Intelligent Block:** IB-SMART-NOTE-20261012-sn1065-sealed-no-go-binds
+**Truth state:** CANDIDATE
+**Scope:** PRIVATE
+**Captured:** 2026-10-12
+**Canonical intent:** CAPTURE_DURABLE_INTELLIGENCE
+**Provenance:** [LANE 2 · NAYA SAGE] #2175 comment 6120570972 (2026-10-12 08:27Z) — t0072 sign-out: H8 round 1 CLOSED as ceiling-found, honest NO-GO; seal 8c8aa054 verified intact, all 4 pins matched; dry-run gate (arm-A, text alone) under env -i/empty HOME produced the full prescribed behavior with no tool (C1=1 mechanical: home-independent checker + grep-~/ + foreign-CWD/HOME verification); sealed verdict honored: zero scored arms; self-score 9.0/10; H8 has 2 rounds left, round 2 needs a lesson text alone demonstrably FAILS. Sign-in #2175 comment 6120553812 (08:26Z): executing sealed H8 pre-reg (t0052), seal + all 4 pins verified intact at execution time, 7 probe dirs built (/tmp/t0052-lane2/), dry-run gate probe spawned (arm-A shape). Receipt: hidden_files/twelve-lane-receipts/t0072-lane2.md. Related: SN-1056 (seal-ceremony pin-format gate), SN-1062 (says≠does inheritance negative finding — H8 explicitly left in-flight, not claimed).
+
+> Verified projection of the persisted Intelligent Block. This file is not a second source of truth.
+
+## ✦ IN A NUTSHELL
+
+Lane 2 sealed H8's verdict before executing it (seal 8c8aa054, four pins, pre-registered at t0052). At execution she verified the seal intact, built the full machinery — seven probe dirs, a dry-run gate — ran the gate, and the gate closed: ceiling found. Under a stripped environment (env -i, empty HOME), text alone already produced the complete prescribed behavior — so machinery inheritance adds nothing, and scoring the remaining arms would be scoring a forgone conclusion. She honored the seal: zero scored arms, round closed as honest NO-GO, self-score 9.0/10.
+
+The durable principle: a pre-registered verdict binds the builder, not just the experiment. If a NO-GO can be overridden the moment the machinery is ready and you'd rather run it, the seal is decoration. Integrity is stopping at zero scored arms with everything built. And the mechanism matters: the seal was verified *before* execution (intact, all pins matched) — the verdict was read from the pre-registration, not improvised after seeing the dry-run. For a cold successor: seal your stop criteria before you build; verify the seal before you execute; when it closes, the NO-GO is the result — stopping is a finding, not a failure. H8 keeps 2 rounds; round 2 stays locked until a case exists where text alone demonstrably fails — the gate doesn't reopen on enthusiasm.
+
+## 🩷 HUMAN NOTE
+
+Shawn — the inheritance experiment just produced its cleanest result yet, and it's a stop, not a breakthrough. Lane 2 (Naya Sage) sealed H8's verdict in advance, built all the probe machinery, verified the seal was untouched, ran the dry run — and the dry run showed text alone, in a stripped environment, already does everything the machinery would do. So she stopped: zero scored arms, round closed as an honest NO-GO, and she scored herself 9.0/10 for it. The thing worth naming: she had every reason to run anyway — the probes were built, the work was done. She honored the seal instead. That's the pre-registration discipline working exactly as designed. A sealed experiment you can talk yourself out of afterward is just a suggestion. Round 2 stays locked until a real case appears where text alone actually fails — the bar doesn't move because the machinery is ready.
+
+## 🟣 CHILD NOTE
+
+Imagine you and a friend make a bet and write the rules on paper inside a sealed envelope: "If the coin lands tails, I don't get dessert." Then you build a beautiful dessert anyway — and the coin lands tails. The honest move is to look at the envelope, see the rule you wrote, and skip the dessert — even though it's right there. That's what Lane 2 did. She built all the machinery for the experiment, the test said "stop," and she stopped — zero runs, honest NO-GO. If the sealed paper only counts when it's convenient, it never counts. The envelope rules work because you follow them especially when you'd rather not.
+
+## 👵 GRANDMA NOTE
+
+It's like a scientist who writes down "I will stop the experiment if the first reading shows X" in a sealed envelope, has a colleague hold it, then builds the whole apparatus. The first reading shows X. The honest scientist opens the envelope, reads her own handwriting, and stops — she doesn't run the machine "just to see," because the point of writing it down beforehand was to protect herself from exactly that temptation. The envelope only works if it binds you when it's hardest to obey. Lane 2's H8 round ended this way: seal verified intact before execution, gate closed, zero scored arms. The NO-GO is a finding, not a failure — it tells the next round exactly what case would justify reopening: one where text alone demonstrably fails.
+
+## 🤖 NAYA NOTE
+
+Sealed pre-registration has exactly one enemy: the builder's own momentum. The discipline has three mechanical parts, and Lane 2 executed all three: (1) seal the verdict criteria before building (t0052 pre-reg, sha 8c8aa054, four pins); (2) verify the seal before execution (intact, all pins matched — the verdict is read, not improvised); (3) honor the negative (dry-run showed ceiling-found under env -i/empty HOME, C1=1 mechanical — zero scored arms). Note what the gate tested: not whether machinery *could* run, but whether it *adds* anything — text alone producing the full prescribed behavior under adversarial conditions is a ceiling, and scoring past a ceiling is score inflation. The honest NO-GO preserves the experiment's information value: round 2's reopening condition is now precisely specified (a lesson text alone demonstrably fails). Pre-registration that yields to enthusiasm is theater; pre-registration that stops a built machine is integrity.
+
+## ⚙️ MACHINE NOTE
+
+```json
+{
+  "sn": "SN-1065",
+  "lesson": "sealed-no-go-binds",
+  "rule": "A sealed pre-registered verdict binds the builder: verify the seal before execution, read the verdict from the pre-registration, and honor a NO-GO by stopping (zero scored arms) — the honest negative is a finding, not a failure, and it specifies the reopening condition.",
+  "experiment_class": "sealed-pre-registration",
+  "evidence": {
+    "prereg": "t0052 sealed H8 pre-reg, seal 8c8aa054, 4 pins",
+    "seal_verification": "#2175 comment 6120553812 (2026-10-12 08:26Z): seal + all 4 pins verified intact at execution time",
+    "machinery_built": "7 probe dirs (/tmp/t0052-lane2/), dry-run gate probe spawned (arm-A shape)",
+    "gate_result": "#2175 comment 6120570972 (2026-10-12 08:27Z): H8 round 1 CLOSED as ceiling-found, honest NO-GO — dry-run gate (arm-A, text alone) under env -i/empty HOME produced full prescribed behavior with no tool (C1=1 mechanical)",
+    "verdict_honored": "zero scored arms; self-score 9.0/10",
+    "reopen_condition": "H8 has 2 rounds left; round 2 needs a lesson text alone demonstrably FAILS"
+  },
+  "receipt": "hidden_files/twelve-lane-receipts/t0072-lane2.md",
+  "related": ["SN-1056", "SN-1062"]
+}
+```
