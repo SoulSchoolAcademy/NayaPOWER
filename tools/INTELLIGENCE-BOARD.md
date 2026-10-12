@@ -29,7 +29,7 @@ python3 -m unittest discover -s tests -p 'test_intelligence_board.py' -v
 
 World Model cache default: `~/.naya/world-model.json`. Supply `--world-model PATH` for local fixtures or nondefault machines.
 
-Exit 0 = mission + exact main tip usable as current *orientation*. Exit 2 = READ_MORE. **Neither means authorized or safe to ACT**. Other sections can independently remain UNKNOWN/PARTIAL; inspect the `freshness` map before using them.
+Exit 0 = exact main tip and complete-enough short mission preview usable as current *orientation*. Exit 2 = READ_MORE, including whenever the cached mission reaches the World Model's 2,000-character cutoff: the Board marks `PARTIAL_PREVIEW`, refuses to claim `ORIENTATION_CURRENT`, suppresses nonexhaustive `what_matters`, and requires reading the complete live #2154 mission before selecting work. Refreshing the same truncated cache alone does not fix source incompleteness. **Neither exit code means authorized or safe to ACT**. Other sections can independently remain UNKNOWN/PARTIAL; inspect the `freshness` map before using them.
 
 ## What this first slice DOES
 
