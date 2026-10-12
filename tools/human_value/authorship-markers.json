@@ -1,0 +1,39 @@
+{
+    "bar": "Markers are first-person directive phrases attested in the durable record \u2014 his characteristic speech acts, not generic praise words. The bar for adding a marker never lowers over time. This file is append-only and versioned: markers are added, never edited or removed; a marker that stops being characteristic is superseded by a new version, not deleted.",
+    "created_utc": "2026-10-12T08:00:00+00:00",
+    "maintained_by": "naya-mu",
+    "markers": [
+        {
+            "added_utc": "2026-10-12T08:00:00+00:00",
+            "attested_in": "~/memory/2026-10-07.md:205 (SN-0522 ratification: 'Make it so. Word.')",
+            "marker": "Make it so",
+            "note": "Ratification speech act. Strongest marker: an explicit authorization."
+        },
+        {
+            "added_utc": "2026-10-12T08:00:00+00:00",
+            "attested_in": "briefing (Lane Claim Arbitration Law: his 'word' ratifies law; 'WORD!' about a process)",
+            "marker": "WORD!",
+            "note": "Ratification/authorization speech act. Case-sensitive."
+        },
+        {
+            "added_utc": "2026-10-12T08:00:00+00:00",
+            "attested_in": "AGENTS.md (The Intel Intake Law, 2026-10-11 \u2014 his words)",
+            "marker": "do your job right",
+            "note": "Corrective directive speech act."
+        },
+        {
+            "added_utc": "2026-10-12T08:00:00+00:00",
+            "attested_in": "~/memory/2026-10-11.md:138 (Shawn's quality boundary)",
+            "marker": "real deal or no deal",
+            "note": "Corrective standard speech act."
+        },
+        {
+            "added_utc": "2026-10-12T08:00:00+00:00",
+            "attested_in": "~/MEMORY.md (The Experiment Law, 2026-10-12 ~04:11 UTC)",
+            "marker": "acknowledge it and make it right",
+            "note": "Corrective directive after a real failure."
+        }
+    ],
+    "purpose": "C1 channel (team feeds) authorship attribution for the observed-experience instrument. A feed comment posting under the shared account is attributed to Shawn only if it carries one of these markers (or quotes his words explicitly per the design).",
+    "version": 1
+}

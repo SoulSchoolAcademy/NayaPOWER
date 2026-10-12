@@ -311,6 +311,11 @@ def validate_event_v2(raw: Any, candidate: Mapping[str, Any] | None = None) -> d
             raise SchemaError("promote: builder == collector or assessor — fail closed")
 
     event = dict(base)
+    # The v1 seam stamps schema_version "1" on `base`; the ledger holds v2
+    # events, so restore the version this event was validated against.
+    # Without this, promote -> append -> re-validate fails closed on a record
+    # the instrument itself just wrote (found by the first-light sweep).
+    event["schema_version"] = SCHEMA_V2_VERSION
     for field in REQUIRED_V2_FIELDS + OPTIONAL_V2_FIELDS:
         if field in raw:
             event[field] = raw[field]

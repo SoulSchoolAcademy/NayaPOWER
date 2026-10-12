@@ -1,0 +1,122 @@
+{
+  "baseline_id": "HV-BASELINE-20261012",
+  "generated_at": "2026-10-12T07:55:26.948727+00:00",
+  "window": {
+    "start": "2026-10-07T00:00:00+00:00",
+    "end": "2026-10-12T08:00:00+00:00"
+  },
+  "method": {
+    "instrument": "observed-experience-instrument-v1",
+    "instrument_head": "3014c7dbd2",
+    "calibration_banner": "FORMATIVE — calibration incomplete. Pending: two_seat_agreement. Do not cite these numbers as established metrics."
+  },
+  "observed": {
+    "units_by_value_type": {
+      "useful_outcome": 4,
+      "attention_demanded": 2
+    },
+    "event_count": 6,
+    "events": [
+      {
+        "event_id": "OBS-20261012-001",
+        "observation_kind": "stated",
+        "value_type": "useful_outcome",
+        "value_units": 1,
+        "verbatim_hash": "sha256:0c7f25f70783c102f5d75228b840d6b4f6b1d1ecc1f93b5a68fc684c707082c4",
+        "observed_at": "2026-10-07T00:00:00+00:00",
+        "authorship": "direct"
+      },
+      {
+        "event_id": "OBS-20261012-002",
+        "observation_kind": "stated",
+        "value_type": "useful_outcome",
+        "value_units": 1,
+        "verbatim_hash": "sha256:aeee4fb4ebbf1281ea03c3b1787cd1bd58b8b89e56be940cbb2da784b159f45d",
+        "observed_at": "2026-10-11T22:34:00+00:00",
+        "authorship": "direct"
+      },
+      {
+        "event_id": "OBS-20261012-003",
+        "observation_kind": "stated",
+        "value_type": "useful_outcome",
+        "value_units": 1,
+        "verbatim_hash": "sha256:dceb18a45bc1061dae0412c312e330a604f6788adc510ed0a553ef676f3866a8",
+        "observed_at": "2026-10-11T22:34:00+00:00",
+        "authorship": "direct"
+      },
+      {
+        "event_id": "OBS-20261012-004",
+        "observation_kind": "revealed",
+        "value_type": "useful_outcome",
+        "value_units": 1,
+        "verbatim_hash": "sha256:712164c893399b164afa34ffc7dd5728661279e310c3f30738657b7f4f62d02c",
+        "observed_at": "2026-10-11T22:34:00+00:00",
+        "authorship": "direct"
+      },
+      {
+        "event_id": "OBS-20261012-005",
+        "observation_kind": "corrected",
+        "value_type": "attention_demanded",
+        "value_units": 1,
+        "verbatim_hash": "sha256:44b4d59c7e0e887f8f24903eda15606085a774ba5664d6eedf0a5ecab37c1cc7",
+        "observed_at": "2026-10-12T04:11:00+00:00",
+        "authorship": "direct"
+      },
+      {
+        "event_id": "OBS-20261012-006",
+        "observation_kind": "corrected",
+        "value_type": "attention_demanded",
+        "value_units": 1,
+        "verbatim_hash": "sha256:3dddf5223af5d83176966d8016c704ac8d2dd55d964d26ec72a663f528fa0542",
+        "observed_at": "2026-10-11T01:54:00+00:00",
+        "authorship": "direct"
+      }
+    ]
+  },
+  "candidates": {
+    "pending": 3,
+    "unobserved": 0,
+    "expiry_days": 21,
+    "pending_ids": [
+      "CAND-20261012-001",
+      "CAND-20261012-002",
+      "CAND-20261012-003"
+    ]
+  },
+  "sweeps": [
+    {
+      "sweep_id": "SWEEP-20261012-001",
+      "watermark": [
+        "2026-10-07T00:00:00+00:00",
+        "2026-10-12T07:58:00+00:00"
+      ],
+      "observations_found": 7,
+      "promotions_proposed": 6,
+      "null_sweep": false
+    }
+  ],
+  "open_questions": [
+    {
+      "id": "Q1",
+      "question": "The 3 pending candidates were graded by naya-mu, the same seat that collected this sweep. A different seat must run the next sweep's promotion step for them (assessor != collector). Who takes it?",
+      "owner": "human-value lead (next sweep)"
+    },
+    {
+      "id": "Q2",
+      "question": "The counterfactual value types (cognitive_load_reduced, rework_avoided, error_prevented) are candidate-heavy by design — a prevented error is only real if the human confirms it was real. What does 'better' look like for these, in Shawn's judgment?",
+      "owner": "Shawn (charter escalation: instrument designed first, input requested now)"
+    },
+    {
+      "id": "Q3",
+      "question": "All 6 observed events are C2 (durable chat log as recorded by the main agent). API-grounded authorship (his own comment under his own account, or an explicit relay protocol) would strengthen every future observation.",
+      "owner": "Shawn / human-value lead"
+    }
+  ],
+  "honesty_notes": [
+    "All numbers are FORMATIVE until the instrument's §5 calibration completes (two_seat_agreement and Coda 1 adversarial review still pending).",
+    "UNOBSERVED is not zero value — it is 'no human observation exists.'",
+    "The 21-day candidate expiry clock started 2026-10-12 for the 3 pending candidates.",
+    "useful_outcome units are counts of observed experiences/actions, never ratings.",
+    "attention_demanded counts corrective interventions; its trend target is DOWN."
+  ]
+}

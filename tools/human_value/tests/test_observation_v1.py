@@ -31,6 +31,7 @@ from tools.human_value.observation_schema import (  # noqa: E402
     project_to_schema,
     validate_candidate,
     validate_event_v2,
+    validate_observation_ledger,
     validate_sweep,
 )
 from tools.human_value.observe import (  # noqa: E402
@@ -493,3 +494,50 @@ class TestKnownAnswerBattery:
             assert json.loads(r.stdout)["pass"] is True
         finally:
             a_path.unlink(missing_ok=True)
+
+
+class TestPromoteRevalidateRoundTrip:
+    """Regression: the first-light sweep (2026-10-12) found that `promote`
+    validated the INPUT event but stored it with schema_version '1' (the v1
+    seam's stamp leaking through `dict(base)`). The ledger then failed its own
+    re-validation — the instrument could not read back what it had just
+    written. The stored event must carry the version it was validated against.
+    """
+
+    def test_promote_stores_schema_version_2(self, tmp_path):
+        ledgers = tmp_path / "ledgers"
+        ledgers.mkdir()
+        r = run_observe("promote", "--ledgers", str(ledgers),
+                        "--observation", json.dumps(good_event(event_id="OBS-RT-001")))
+        assert r.returncode == 0, r.stderr
+        stored = read_jsonl(ledgers / "observed-events.jsonl")
+        assert len(stored) == 1
+        assert stored[0]["schema_version"] == "2", (
+            f"stored schema_version is {stored[0]['schema_version']!r}, not '2'"
+        )
+
+    def test_promoted_ledger_revalidates(self, tmp_path):
+        ledgers = tmp_path / "ledgers"
+        ledgers.mkdir()
+        for i in (1, 2):
+            r = run_observe("promote", "--ledgers", str(ledgers),
+                            "--observation",
+                            json.dumps(good_event(event_id=f"OBS-RT-00{i}")))
+            assert r.returncode == 0, r.stderr
+        stored = read_jsonl(ledgers / "observed-events.jsonl")
+        # This is the exact call the first-light sweep tripped on: it must not raise.
+        validated = validate_observation_ledger(stored)
+        assert len(validated) == 2
+        assert all(e["schema_version"] == "2" for e in validated)
+
+    def test_report_reads_promoted_ledger(self, tmp_path):
+        ledgers = tmp_path / "ledgers"
+        ledgers.mkdir()
+        r = run_observe("promote", "--ledgers", str(ledgers),
+                        "--observation", json.dumps(good_event(event_id="OBS-RT-009")))
+        assert r.returncode == 0, r.stderr
+        r2 = run_observe("report", "--ledgers", str(ledgers), "--week", "2026-10-12")
+        assert r2.returncode == 0, r2.stderr
+        report = json.loads(r2.stdout)
+        assert report["metrics"]["hv_observed_units"] == 1
+        assert report["buckets"]["OBSERVED"][0]["event_id"] == "OBS-RT-009"
