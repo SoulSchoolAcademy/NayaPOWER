@@ -388,14 +388,33 @@ Deno.serve(async (req) => {
     const putJson: any = await putRes.json().catch(() => ({}));
     const commitSha: string | null = typeof putJson?.content?.sha === "string" ? putJson.content.sha : null;
     if (!putRes.ok || !commitSha) {
-      await failReceipt("GITHUB_COMMIT_FAILED:" + putRes.status);
+      // Preserve the sanitized GitHub reason in the durable receipt. A status
+      // code alone cannot distinguish missing Contents permission, repository
+      // installation scope, SSO policy, or branch/ruleset denial. Never store
+      // request headers, tokens, or the response body wholesale.
+      const githubReason = normalizedText(putJson?.message)
+        .replace(/[\r\n\t]+/g, " ")
+        .replace(/[^\x20-\x7E]/g, "")
+        .replace(/Authorization:\s*Bearer\s+\S+/gi, "Authorization: [REDACTED]")
+        .slice(0, 240) || "UNKNOWN";
+      const failureUpdate = await receipts
+        .update({
+          status: "failed",
+          failure: "GITHUB_COMMIT_FAILED:" + putRes.status + ":" + githubReason,
+          authority_grant_id: grantId,
+          intelligent_block_id: ibId,
+          repo_path: repoPath,
+          smart_link: smartLink,
+        })
+        .eq("idempotency_key", idempotencyKey);
+      if (failureUpdate.error) throw failureUpdate.error;
       return json(
         {
           ok: false,
           pipeline: "PROJECTION_FAILED",
           error: "GITHUB_COMMIT_FAILED",
           status: putRes.status,
-          detail: normalizedText(putJson?.message).slice(0, 300) || "UNKNOWN",
+          detail: githubReason,
         },
         502
       );

@@ -48,6 +48,8 @@ function runtime(opts = {}) {
     grant = GRANT_ROW,
     tx = TX_ROW,
     receipt = null,
+    githubPutStatus = 201,
+    githubPutMessage = 'Resource not accessible by integration',
   } = opts;
   let handler;
   const receipts = new Map();
@@ -185,6 +187,9 @@ function runtime(opts = {}) {
       if (u.startsWith('https://api.github.com/repos/SoulSchoolAcademy/NayaPOWER/contents/')) {
         const path = u.split('/contents/')[1].split('?')[0];
         if ((init.method || 'GET') === 'PUT') {
+          if (githubPutStatus !== 201) {
+            return new Response(JSON.stringify({ message: githubPutMessage }), { status: githubPutStatus });
+          }
           blobs.set(path, 'blobsha123');
           return new Response(JSON.stringify({ content: { sha: 'blobsha123' } }), { status: 201 });
         }
@@ -323,4 +328,26 @@ test('idempotent replay returns stored receipt without touching GitHub', async (
   assert.equal(body.smart_link, stored.smart_link);
   assert.equal(body.replayed, true);
   assert.equal(githubCalls.length, 0, 'no GitHub call on replay');
+});
+test('GitHub PUT rejection persists sanitized reason and target context', async () => {
+  const { post, receipts } = runtime({
+    githubPutStatus: 403,
+    githubPutMessage: 'Resource not accessible by integration\nAuthorization: Bearer DO_NOT_STORE\n' + 'x'.repeat(500),
+  });
+  const { status, body } = await post(validBody());
+  assert.equal(status, 502);
+  assert.equal(body.error, 'GITHUB_COMMIT_FAILED');
+  assert.equal(body.detail.includes('\n'), false, 'control characters are removed');
+  assert.equal(body.detail.includes('DO_NOT_STORE'), false, 'bearer-shaped content is redacted');
+  assert.match(body.detail, /Authorization: \[REDACTED\]/);
+  assert.ok(body.detail.length <= 240, 'response detail is bounded');
+  const receipt = receipts.get(IDEM);
+  assert.equal(receipt.status, 'failed');
+  assert.match(receipt.failure, /^GITHUB_COMMIT_FAILED:403:/);
+  assert.equal(receipt.intelligent_block_id, IB_ID);
+  assert.match(receipt.repo_path, /IB-000042\/smart-note\.md$/);
+  assert.ok(receipt.smart_link.includes('/' + IB_ID + '/smart-note.md'));
+  assert.equal(receipt.failure.includes('\n'), false);
+  assert.equal(receipt.failure.includes('DO_NOT_STORE'), false, 'failure receipt must not retain bearer-shaped content');
+  assert.ok(receipt.failure.length <= 'GITHUB_COMMIT_FAILED:403:'.length + 240, 'stored reason is bounded');
 });
