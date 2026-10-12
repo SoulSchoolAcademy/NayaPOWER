@@ -78,16 +78,33 @@ SECTION_TTL = {
 }
 
 # Protected gates — Shawn's explicit-word list. A match is a WALL, not a score.
+#
+# HEURISTIC BOUNDARY (honest, by design): these are keyword tripwires, not
+# a completeness proof. Novel phrasings ("wipe the table", "rotate the
+# keys", "pay the vendor") can miss the wall — a keyword list can never
+# enumerate every way a human can describe a protected action. The wall
+# is layered with: (1) these patterns fail closed on what they know,
+# (2) prohibition-scoping keeps law-listings from misfiring, (3) misses
+# feed the Layer 6 learning loop, which proposes new patterns from
+# decided/predicted/actual receipts. Never claim the wall is complete.
 PROTECTED_PATTERNS = [
     r"production\s+deploy",
     r"\bdeploy\b.{0,20}\bproduction\b",
     r"database\s+write",
+    r"write.{0,20}\bdatabase\b",
     r"\bdb\s+write\b",
+    # fail-closed on real writes, but don't trip on docs ABOUT the db
+    # ("write the db schema docs" is documentation, not a database write)
+    r"write.{0,20}\bdb\b(?!\s+(schema\s+)?docs?\b)",
     r"credential",
     r"\bmoney\b",
     r"payment",
     r"destruct",
-    r"delete\s+(branch|repo|database)",
+    r"\bnuke\b",
+    r"delete\s+(?:(?:the|a|an|our|their|this|that)\s+)?(branch|repo|database)",
+    r"drop\s+(?:(?:the|a|an|our|their|this|that)\s+)?(production\s+)?(database|table|repo|branch)",
+    r"ship.{0,15}\bprod(uction)?\b",
+    r"\bpush\b.{0,15}\bprod(uction)?\b",
     r"constitutional",
     r"ratif",
     r"force.?push",
@@ -574,6 +591,18 @@ def score_options(intent, options, model):
                                    if d["value"] is None],
         })
 
+    # F5: total_confidence renormalizes over known dimensions only, so a
+    # 1.0 can hide UNKNOWN dimensions. Name them explicitly in the
+    # top-level notes — Layer 5 (and humans) must see the gap, not
+    # just the confidence number.
+    unknown_notes = []
+    for s in scored:
+        if s["unknown_dimensions"]:
+            unknown_notes.append(
+                f"Option {s['id']}: UNKNOWN dimensions "
+                f"[{', '.join(s['unknown_dimensions'])}] — total "
+                "confidence renormalized over known dimensions only; "
+                "treat as partial evidence.")
     # Ranking: gated and UNKNOWN-total options never win. Rank is
     # positional (not id lookup) so duplicate/None ids can't collide.
     rankable = [s for s in scored if not s["gated"] and s["total"] is not None]
@@ -602,6 +631,7 @@ def score_options(intent, options, model):
     if gated_any:
         notes.append("One or more options hit a HARD GATE (protected action) — "
                      "flagged REQUIRES_SHAWN, excluded from ranking.")
+    notes.extend(unknown_notes)
 
     return {
         "ok": True,

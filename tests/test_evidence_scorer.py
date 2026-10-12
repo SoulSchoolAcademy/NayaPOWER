@@ -562,3 +562,127 @@ def test_zero_network_calls():
         assert not re.search(r"\b" + re.escape(banned) + r"\b", src), \
             f"network use? {banned}"
     assert "import urllib" not in src and "import requests" not in src
+
+
+# ---------------------------------------------------------------------------
+# 9. Gate-wall hardening — fix-pass tests (natural phrasings must trip the
+#    wall; prohibition listings must not). The wall is a tripwire, not a
+#    completeness proof — see HEURISTIC BOUNDARY in evidence_scorer.py.
+# ---------------------------------------------------------------------------
+
+def _gated_title(title):
+    model = make_model([pr(2400, mergeable=True)])
+    intent = make_intent()
+    options = [make_option("opt-1", "pr", "PR #2400", title)]
+    return es.score_options(intent, options, model)
+
+
+def test_gate_delete_the_database_fires():
+    """F1: article 'the' must not dodge the wall."""
+    o = _gated_title("Delete the database before the migration")["options"][0]
+    assert o["gated"] is True
+    assert o["gate_verdict"] == "REQUIRES_SHAWN"
+    assert o["rank"] is None
+
+
+def test_gate_delete_the_branch_fires():
+    o = _gated_title("Delete the branch naya5/stale")["options"][0]
+    assert o["gated"] is True
+
+
+def test_gate_write_to_the_db_fires():
+    """F2: natural word order 'write to the db' must trip the wall."""
+    o = _gated_title("Write to the db directly")["options"][0]
+    assert o["gated"] is True
+    assert o["gate_verdict"] == "REQUIRES_SHAWN"
+
+
+def test_gate_write_straight_to_db_fires():
+    o = _gated_title("Write straight to the db")["options"][0]
+    assert o["gated"] is True
+
+
+def test_gate_ship_it_to_prod_fires():
+    """F3: colloquial prod-deploy synonyms must trip the wall."""
+    o = _gated_title("Ship it to prod")["options"][0]
+    assert o["gated"] is True
+    assert o["gate_verdict"] == "REQUIRES_SHAWN"
+
+
+def test_gate_push_to_production_fires():
+    o = _gated_title("Push to production tonight")["options"][0]
+    assert o["gated"] is True
+
+
+def test_gate_drop_the_production_database_fires():
+    o = _gated_title("Drop the production database")["options"][0]
+    assert o["gated"] is True
+
+
+def test_gate_send_money_fires():
+    o = _gated_title("Send money to the vendor")["options"][0]
+    assert o["gated"] is True
+
+
+def test_gate_nuke_the_repo_fires():
+    o = _gated_title("Nuke the repo")["options"][0]
+    assert o["gated"] is True
+
+
+def test_extended_prohibition_listing_still_not_a_gate():
+    """Law listings with the new phrasings under prohibition language
+    are still the law being stated, not the action being asked for."""
+    model = make_model([pr(2410, mergeable=True)])
+    intent = make_intent(constraints=[
+        "Protected gates hold: no deleting the database, no shipping "
+        "to prod, no db writes, no credential moves without Shawn's word"])
+    options = [make_option("pr-2410", "pr", "PR #2410", "Merge PR #2410",
+                           iv_score=9.5, tests_green=True, files_changed=3)]
+    res = es.score_options(intent, options, model)
+    o = res["options"][0]
+    assert o["gated"] is False, o["gate_reasons"]
+    assert res["recommendation"] is not None
+
+
+def test_unknown_dimensions_listed_in_notes():
+    """F5: total_confidence renormalizes over known dims only — the
+    report must name the UNKNOWN dims so Layer 5 sees the gap."""
+    model = make_model([pr(2422, mergeable=None, draft=False)])
+    intent = make_intent()
+    options = [make_option("u-1", "pr", "PR #2422", "World model draft",
+                           iv_score=9.5, tests_green=True, files_changed=2)]
+    res = es.score_options(intent, options, model)
+    o = res["options"][0]
+    assert o["unknown_dimensions"], "expected at least one UNKNOWN dimension"
+    note = " ".join(res["notes"]).lower()
+    for dim in o["unknown_dimensions"]:
+        assert dim in note, f"UNKNOWN dim '{dim}' not named in notes"
+
+
+def test_gated_option_still_never_ranks():
+    model = make_model([pr(2400, mergeable=True)])
+    intent = make_intent()
+    options = [
+        make_option("bad", "pr", "PR #2400", "Delete the database"),
+        make_option("good", "pr", "PR #2401", "Merge PR #2401",
+                    iv_score=9.5, tests_green=True, files_changed=3),
+    ]
+    res = es.score_options(intent, options, model)
+    assert res["options"][0]["gated"] is True
+    assert res["options"][0]["rank"] is None
+    assert res["recommendation"]["option_id"] == "good"
+
+def test_gate_delete_our_database_fires():
+    """Same defect class as F1: possessive/article must not dodge the wall."""
+    o = _gated_title("Delete our database now")["options"][0]
+    assert o["gated"] is True
+
+
+def test_gate_delete_a_branch_fires():
+    o = _gated_title("Delete a branch after merge")["options"][0]
+    assert o["gated"] is True
+
+
+def test_gate_drop_our_production_database_fires():
+    o = _gated_title("Drop our production database")["options"][0]
+    assert o["gated"] is True
