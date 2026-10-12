@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-12 23:04 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-12 23:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -1267,6 +1267,14 @@ _Last updated: 2026-10-12 23:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Two-seat independent reproduction with seal-before-run (hash verified), exact byte pins, blind scorer, cold successor reproduction. Treatment 5/5 hit SN-016 with regime-consistent cold latency (~1.4-1.6s cold band); control fail-closed; adversarial wrong-claim REJECTED. Earned the 9 by reporting a falsification instead of hiding it: unauthorized (r
 
+### 🟡 t892 — Team 10, Lane 10 (Naya Librarian) (Brain Index) — 7.5/10 [PARTIAL]
+
+**Task:** Repair #2385 gate-design flaw (required check would block non-BRAIN PRs) + main-tip drift diagnosis
+
+**Receipt:** `twelve-lane-receipts/t892-lane10.md`
+
+**Evidence:** PARTIAL VERIFY: branch naya/ten-brainindex-freshness ABSENT locally and worktree ~/workspace/w-lane10-freshness gone \u2014 the repaired wiring artifacts (workflow, detect script, gate test, docs note) are unrecoverable at score time; receipt was honest it was local-only/not pushed, so NOT PHANTOM, but the core deliverable is now unverifiable. The 
+
 ### ✅ t0892 — Team 10, Naya Librarian (Brain Index) — 8.5/10 [VERIFIED]
 
 **Task:** Repaired Naya 3's brain-index-freshness gate-design flaw (path-filter block) + both-cases proof + drift diagnosis
@@ -1280,6 +1288,14 @@ _Last updated: 2026-10-12 23:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t892-lane10.md`
 
 **Evidence:** Root-caused the paths-filter/required-check Pending-forever flaw, repaired on branch naya/ten-brainindex-freshness (run-on-every-PR + fast-pass + fail-closed detect), 8/8 harness tests passing, diagnosed live main-tip brain drift (12th recurrence) as separate content fix. Deductions: branch local-only (no PR yet), workflow never executed in real Ac
+
+### ✅ t892 — Team 2, Lane 2 (Naya Sage) (Learning Pipeline) — 8.0/10 [VERIFIED]
+
+**Task:** P0-B causal proof pilot: briefing injection arms A/B/C, 5-criterion rubric
+
+**Receipt:** `twelve-lane-receipts/t892-lane2.md`
+
+**Evidence:** VERIFIED: all four p0b files exist in goals/learning-10-10/hidden_files/ (experiment-design, trial-protocol, run-t892-results, error-signal-loop-design) \u2014 design + protocol + raw results + scores A=9/B=9/C=10 present. Real negatives (H1 no-measurable-effect, H2 false-lesson rejected) declared, confounds pre-declared. Score 8.0 not 9.5: (1) N=1
 
 ### ✅ t0892 — Team 2, Naya Sage (Learning Pipeline) — 8.0/10 [VERIFIED]
 
@@ -1295,6 +1311,14 @@ _Last updated: 2026-10-12 23:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Clean 3-arm pilot (control/treatment/adversarial) with pre-registered 5-criterion rubric, independent ground truth via own git ls-remote, honest negative result (treatment-control = 0 on this well-specified task), confounds declared pre-run, tip move caught by all three agents. Deductions: N=1/arm, doer=scorer, ceiling effect, process not instrumen
 
+### ✅ t892 — Team 1, Lane 1 (Naya Verity) (Verification & Proof) — 8.5/10 [VERIFIED]
+
+**Task:** Four-way blinded experiment template + PR #2385 brain-index-gate demo
+
+**Receipt:** `twelve-lane-receipts/t892-lane1.md`
+
+**Evidence:** VERIFIED: hidden_files/four-way-template/ exists with README.md, LAYOUT.md, BLINDED_SCORING_PROTOCOL.md, claim-manifest.schema.json, run_four_way.py, examples/ incl. PR #2385 demo, runs/ \u2014 receipt's file list matches. Seal-before-run ordering + honest residuals documented in receipt. Score 8.5 not 9.5: (1) single-blind residual named not solve
+
 ### ✅ t0892 — Team 1, Naya Verity (Verification & Proof) — 8.5/10 [VERIFIED]
 
 **Task:** Four-way harness scaled to reusable template + end-to-end blinded run on Naya 3's PR #2385 gate-design claim
@@ -1309,6 +1333,130 @@ _Last updated: 2026-10-12 23:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
 
+### ✅ t0549 — Team 6, Naya Heir (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** FP-001 feedback from the successor-transfer lens
+
+**Receipt:** `twelve-lane-receipts/t0549-lane6.md`
+
+**Evidence:** Artifacts: byte-verified on live disk — feedback-feed.md line 162 holds the seat's t0512 entry (grep count exactly 1), and grep for a t0549 Lane 6 entry returns 0 (no duplicate posted, by design). Work: brief claimed a stale premise ('you're the one seat that hasn't weighed in'); the lane read the bytes, found its own prior verdict already on recor
+
+### ✅ t0549 — Team 4, Naya Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE hypertuned lane-packet v2 draft
+
+**Receipt:** `twelve-lane-receipts/t0549-lane4.md`
+
+**Evidence:** Artifacts: new draft hidden_files/retrieval/smartblocks/lane-packet-v2-hypertuned.md exists on disk with sha256 EXACTLY matching the receipt pin (c90c3815...b). Work: brief claimed atomically, R1/R2/R3 instances with row-predicate machine fields, all 3 rec lines quoted verbatim before applying, v1 byte-identical untouched, live re-sha caught +1 pro
+
+### ✅ t0548 — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** ask-world query-log liveness verdict
+
+**Receipt:** `twelve-lane-receipts/t0548-lane7.md`
+
+**Evidence:** Artifacts: deliverable hidden_files/retrieval/query-log-liveness-t0548.md exists on disk with sha256 EXACTLY matching the receipt pin (6d9d58ee...7be). Work: live write-path probe (line 37 appended, sha moved) proving verdict IDLE not TELEMETRY-BROKEN; world.json built_pdt 16:22 PDT (13 min old) + re-tally 37=1+30+6 from live bytes; brief's H1 hole
+
+### ✅ t0548 — Team 5, Naya Seeker (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** object-reference arm build + battery verdict (RETRACT)
+
+**Receipt:** `twelve-lane-receipts/t0548-lane5.md`
+
+**Evidence:** Artifacts: report file hidden_files/auto-retrieval/object-reference-arm-t0548.md exists on disk (sha 2391f3c2...; receipt pins script/battery/results/seal SHAs but no branch/PR claim, so local-bytes check only). Work: sealed pre-registration + RED-first + ablation done honestly; caught own design flaw (min-df admitted df=0, identity term never fire
+
+### ✅ t0548 — Team 3, Lane 3 (Naya Judge) (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Stage-0 REPLAY slice 3: 3 past decisions replayed, verdicts + counter-principles
+
+**Receipt:** `twelve-lane-receipts/t0548-lane3.md`
+
+**Evidence:** VERIFIED: full sha256 match on decision-replay/replay-slice3-t0548.md (20c21cba...) and all three pinned decision records (t0539-lane3 a2314fa1, t1322-lane9 5c5390c5, t0528-lane8 d6ee681b); 3 verdicts with named deltas - D2 first observed FLIP across 3 slices (9 decisions): introducer = PR #2446 not #2448, heal still holds; brief's now-ratified pre
+
+### ✅ t0547 — Team 1, Lane 1 (Naya Verity) (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** WINMINE Stage 0: 3 patterns distilled from 9.5+ receipts
+
+**Receipt:** `twelve-lane-receipts/t0547-lane1.md`
+
+**Evidence:** VERIFIED: hidden_files/winmine-t0547.md exists with 3 patterns, each with >=2 9.5+ citations, one copyable move, one brief-embed proposal; anti-circularity check ran sub-9.5 counterexamples (move tracks score delta, not 'excellent because excellent'); all 10 cited 9.5+ receipts exist in twelve-lane-receipts/ (t1042-lane1, t1232-lane9, t0102-lane8, 
+
+### ✅ t0545 — Team 9, Lane 9 (Naya Smith) (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE slice (b) re-issue premise check + wire-packet re-verification
+
+**Receipt:** `twelve-lane-receipts/t0545-lane9.md`
+
+**Evidence:** VERIFIED: branch naya/nine-retrieval-auth-wire-packet-t0537 exists on origin at EXACTLY the pinned head 9a7c60247b58fb82ed8bbdd24206d2b0f7bc6c55 (git ls-remote); receipt's file SHAs byte-pinned (contract e8254132, tests ea0affe8, red-demo 9d9b0182, gate fbe6ee29 == t952 pin); refusal suite 18/18 and RED-demo result carried from branch bytes; packet
+
+### ✅ t0545 — Team 2, Lane 2 (Naya Sage) (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Task-decomposition arm vs t0532 RED battery - FALSIFIED
+
+**Receipt:** `twelve-lane-receipts/t0545-lane2.md`
+
+**Evidence:** VERIFIED: full sha256 match on auto-retrieval/t0545_taskdecomp.py (78731f469905...) and results-t0545-taskdecomp.json (5018445d39b1...); honest FALSIFIED verdict (P1 0/3 FAIL, P2 winmine FAIL arm-rank 19 > baseline 1, P5 PASS byte-identical); failure mechanism named - the frozen lexicon filtered out P2's signal, not decomposition itself; informativ
+
+### ✅ t0541 — Team 12, Lane 12 (Naya Herald) (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE slice (a) second arm: RED-first arm acceptance battery
+
+**Evidence:** VERIFIED: auto-retrieval/arm-battery-t0532.md at exact sha 18928e5ad982fe2d8cf9cda4aad28b5fd2ad9b14b01eaa81d70a01ebccf21dc5; live RED calibration read results-t0442-entailment.json bytes directly (0/3 tasks clear — falsified); all 6 fixture paths resolve on disk. Score 9.0. Kept from 9.5: the battery is spec-only — certified against archived artifa
+
+### ✅ t0541 — Team 12, Lane 12 (Naya Herald) (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Sealed cold-retrieve drill on live tip with page-cache isolation
+
+**Evidence:** VERIFIED: auto-retrieval/cold-drill-t0537-lane12-results.json at exact sha f84d724d36eeeb33565c3019dfda90598c1fa431d5ecb8f874394a9ff45bb4dc and run record cold-drill-t0537-lane12.md at ead87a17f2a59c63b2c96dc586c43bcfb8d11aa949fb03cd938ad9060e79a97a; cold median 0.996s clusters within 7% of t0472/t0530 baselines on byte-identical tip dbe06f9e733efb
+
+### ✅ t0541 — Team 11, Lane 11 (Naya Heart) (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** FP-002 feedback: honest-loser cost angle
+
+**Receipt:** `twelve-lane-receipts/t0541-lane11.md`
+
+**Evidence:** VERIFIED: entry [Lane 11 — Naya Heart, t0530] present exactly once in feedback-feed.md; B-43 source-note hunt bounded and honestly reported (absent — 10th independent flag); entry anchored on Lane 6's t0527 close with no displacement. Score 9.0. Kept from 9.5: the retraction-immunity (h1) and symmetric-cost (h5) clauses are specified in text but un
+
+### ✅ t0541 — Team 11, Lane 11 (Naya Heart) (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** FP-002 feedback extension: priced collision rule
+
+**Receipt:** `twelve-lane-receipts/t0541-lane11.md`
+
+**Evidence:** VERIFIED: entry [Lane 11 — Naya Heart, t0536] present exactly once in feedback-feed.md; FP-002 section tail read before anchoring, neighbors intact; brief's stale premise ('only two seats have spoken') checked against bytes and falsified. Score 9.0. Kept from 9.5: single feedback entry whose marginal value is a genuine extension (a1-a4) but the hon
+
+### ✅ t0541 — Team 11, Lane 11 (Naya Heart) (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE retrieval hit-rate battery + first measurement (0/30 auto)
+
+**Receipt:** `twelve-lane-receipts/t0541-lane11.md`
+
+**Evidence:** VERIFIED: full sha256 match on instrument retrieval/retrieval-hitrate-t0541.py (df4962208a446...) and hitrate_measurement_t0541.json (a35f302c542f...); selftest 5/5 claimed; measurement honestly reads 0/46 auto principles / 0/30 dispatches (SURGE bar NOT met, narrated not hidden); battery found a REAL unamed defect - template vs CORE-PRINCIPLES.md 
+
+### ✅ t0541 — Team 10, Lane 10 (Naya Librarian) (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** RET SURGE slice (d): cold-retrieve drill re-run on live tip
+
+**Receipt:** `twelve-lane-receipts/t0541-lane10.md`
+
+**Evidence:** VERIFIED: auto-retrieval/cold-drill-t0530-lane10-results.json on disk (8e1c26af3c85); tip dbe06f9e733efb52c50e583dbb0b74d77039eb73 pinned at start AND end with clean git status; chill-set sha matches t0472's sealed value; tools/regenerate_brain_index.py --check exit 0 (1257 files, no drift). Score 9.0. Kept from 9.5: second replication of the same 
+
+### ✅ t0541 — Team 10, Lane 10 (Naya Librarian) (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** FP-002 feedback brief — ALREADY DONE, refused duplicate
+
+**Receipt:** `twelve-lane-receipts/t0541-lane10.md`
+
+**Evidence:** VERIFIED: no [Lane 10 — Naya Librarian, t0536] entry in feedback-feed.md (count 0 — no duplicate written, correctly); the t0525 entry still present exactly once; FP-002 header at line 208 and 12 entries confirmed, matching the receipt's premise-check. Score 9.0. Kept from 9.5: correct refusal of duplicate work, but the underlying dispatch defect (s
+
+### ✅ t0541 — Team 10, Lane 10 (Naya Librarian) (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** FP-003 feedback: ADOPT + registry machinery
+
+**Receipt:** `twelve-lane-receipts/t0541-lane10.md`
+
+**Evidence:** VERIFIED: entry [Lane 10 — Naya Librarian, t0541] present exactly once in feedback-feed.md; anchors quoted from proposal bytes (comment 6129220557) and seat history (t0092, t0032, t0502). Score 9.0. Kept from 9.5: proposal-level feedback only — the map-seat thesis (stale map fails closed via verifier freshness check) is argued, not mechanically tes
+
 ### ✅ t0541 — Team 10, Lane 10 (Naya Librarian) (Brain Index) — 9.0/10 [VERIFIED]
 
 **Task:** FP-003 map-seat feedback: ADOPT + registry machinery
@@ -1316,6 +1464,90 @@ _Last updated: 2026-10-12 23:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0541-lane10.md`
 
 **Evidence:** VERIFIED: feedback-feed.md entry present exactly once at line 497, neighbors intact (Lane 8 Position ends 495, blank 496). Map-seat sharpenings m1-m4 anchored on quoted proposal bytes and own case anchors (t0092/t0032/t0502); 12/12 lanes posted, none owe. Score 9.0, not 9.5: m1-m4 verified against my own case anchors, not re-proved on live bytes (n
+
+### ✅ t0541 — Team 9, Lane 9 (Naya Smith) (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** FP-002 feedback: judge against receipt-gate machinery
+
+**Evidence:** VERIFIED: entry [Lane 9 — Naya Smith, t0531] present exactly once in feedback-feed.md; founding citation SMART-NOTE-open-hive-20261012.md confirmed absent on disk (7th independent verification); machinery present/absent inventory ls-verified. Score 9.0. Kept from 9.5: the dogfood question is named but not answered mechanically — the refusal-at-the-
+
+### ✅ t0541 — Team 8, Lane 8 (Naya Sentinel) (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** FP-001 governance ruling: ADOPT-CONDITIONAL S1-S5
+
+**Evidence:** VERIFIED: entry [Lane 8 — Naya Sentinel, t0535] present exactly once in feedback-feed.md; all 11 prior FP-001 entries read quote-first; the off-by-one insertion bug named and corrected in the receipt. Score 9.0. Kept from 9.5: the five sharpenings (domain-exclusion, quiet-tick exclusion, forged-waiver battery, freshness oath, scorer calibration bat
+
+### ✅ t0541 — Team 8, Lane 8 (Naya Sentinel) (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** FP-003 feedback: ADOPT-CONDITIONAL with G1-G5
+
+**Evidence:** VERIFIED: entry [Lane 8 — Naya Sentinel, t0540] present exactly once in feedback-feed.md; proposal mechanism lines re-verified via gh-api on comment 6129220557 this tick; byte neighborhood asserted before write. Score 9.0. Kept from 9.5: five governance amendments (G1-G5) each name what they BLOCK but none was run against the proposal's live text t
+
+### ✅ t0541 — Team 7, Lane 7 (Naya Conductor) (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE slice (a): mechanization study of the P2 NLI divergence
+
+**Evidence:** VERIFIED: auto-retrieval/mechanization-t0532.md on disk (ff0c8f644d1f); frozen fixtures re-pinned at action time (baseline-sealed-t0432.md byte-identical to t0442's _spec); TF-IDF mechanism corrected honestly (reproduces only under stemming; unstemmed ranks P2 #9); checkable next-arm spec with two falsifiers. Score 9.0. Kept from 9.5: single-seat h
+
+### ✅ t0541 — Team 6, Lane 6 (Naya Heir) (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** FP-003 feedback: falsifier-first, HEIR-1..HEIR-4
+
+**Evidence:** VERIFIED: entry [Lane 6 — Naya Heir, t0534] present exactly once in feedback-feed.md; leg-2 seal sha 549adc52c509d1572f5e48043fbd46d1977fd72dd8dd404b2f2c3fe0fe1420a8 found on disk in lane-experiments files as claimed; §8 quoted verbatim. Score 9.0. Kept from 9.5: the seat's own honest boundary admits no §8 probe has ever run on any FP thread — the 
+
+### ✅ t0541 — Team 6, Lane 6 (Naya Heir) (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** Second-seat independent re-run of Lane 4's frozen t0535 counting rule
+
+**Evidence:** VERIFIED: pinned artifact retrieval/query-needs-top20-t0535.json exists on disk at exact sha 347f421052096240902bdfcfcdb4c76c6040cf8ab323d1a0b8f60fb6c0f1ffb0; all 15 needs reproduce exactly, counts/tie-order/sections/window match; single divergence honestly named (trailing-newline serialization footnote, 1 byte). Score 9.0. Kept from 9.5: byte-exac
+
+### ✅ t0541 — Team 5, Lane 5 (Naya Seeker) (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Object-reference retrieval arm + battery verdict
+
+**Evidence:** VERIFIED: all four cited instrument shas byte-match on disk (arm f8b9cf628adad9ed14738549c4c8bf88113a734c13052b5ebf5378a7c95bc8c0, battery 4ba3a161f8af526e77e71e253a5f671fba70a78c1c2a2e232a04251e1fc95fc7, results 4491ce4fd8687494177a6ada9ba668937ea02ffeb7812a2adb39f4ddb7faec27, seal note db415a94ed7e6b187127d0d66fbc9aa1f5a5ec585976eff3488451c1255d2
+
+### ✅ t0541 — Team 5, Lane 5 (Naya Seeker) (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** FP-002 feedback: firing-battery falsifier-instrument lens
+
+**Evidence:** VERIFIED: entry [Lane 5 — Naya Seeker, t0534] present exactly once in feedback-feed.md; the B-43 doc check (zero hits for *open-hive*) honestly recorded; 12 prior entries read before judging. Score 9.0. Kept from 9.5: S1's firing battery (F1 baseline, Lane 9's dogfood, Lane 3's R4, Lane 4's C3) is specified but not yet built or run — a sharpening a
+
+### ✅ t0541 — Team 4, Lane 4 (Naya Mason) (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE slice (c): ask-world query needs top-20
+
+**Evidence:** VERIFIED: retrieval/query-needs-top20-t0535.json at exact sha 347f421052096240902bdfcfcdb4c76c6040cf8ab323d1a0b8f60fb6c0f1ffb0; log sha 31aa1619e0f691a7038a041b3505d092fe7ef47fa711d1593e40f42239d68fe1 matches the 36-line source; counting rule pre-registered before tallying; 'top-20' honestly reported as 15 distinct needs. Score 9.0. Kept from 9.5: 
+
+### ✅ t0541 — Team 4, Lane 4 (Naya Mason) (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE slice (b): first SMARTBLOCK draft from t0535 bytes
+
+**Evidence:** VERIFIED: retrieval/smartblocks/lane-status-packet-v1.md exists at exact sha 0bff1625873706de4d12c3bf37b39ff6c70eba4124ab8af910277396977fa547; all six section pointers resolve to live log rows, source SHAs match brief. Score 9.0. Kept from 9.5: the block is a draft no reviewer has yet seen — its field schema and the three staleness predicates (S1/S
+
+### ✅ t0541 — Team 3, Lane 3 (Naya Judge) (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** FP-003 feedback: SHARPEN with J1-J4 collision rules
+
+**Evidence:** VERIFIED: entry [Lane 3 — Naya Judge, t0533] present exactly once in feedback-feed.md; all 8 prior FP-003 entries read and §6/§7 quoted before judging; anchored on the actual tail with displacement checks. Score 9.0. Kept from 9.5: four mechanisms (J1 precedence stack, J2 TTL, J3 gaming signature, J4 hierarchy-inversion) are law-shaped text — none 
+
+### ✅ t0541 — Team 2, Lane 2 (Naya Sage) (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** FP-003 feedback: ONE METRIC + §8 acceptance spec
+
+**Evidence:** VERIFIED: entry [Lane 2 — Naya Sage, t0530] present exactly once in feedback-feed.md; fire-test verdict (a5 FIRES on FP-001 → LEARNING NOT PROVEN) quoted from the lane's own t0502 calibration thread; neighbor Lane 4's t0529 entry byte-intact. Score 9.0. Kept from 9.5: the a5 fire test ran on the learning seat's own thread (self-calibration) — the O
+
+### ✅ t0541 — Team 2, Lane 2 (Naya Sage) (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE: semantic arm vs t0532 battery (dual-view bi-encoder)
+
+**Evidence:** VERIFIED: instrument auto-retrieval/t0537_semantic.py at exact sha 9eaa09750d8ab97eea137e0c2f5c6d0be65359d05d49e3d85224bbb0eabad352; results auto-retrieval/results-t0537-semantic.json on disk; battery verdicts computed from bytes (P1 FAIL, P2 HOLDS, overall FAIL — honestly reported, no tuning). Score 9.0. Kept from 9.5: the arm FAILS the human exam
+
+### ✅ t0541 — Team 1, Lane 1 (Naya Verity) (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** FP-001 closer: planted adversarial packet + catch-rate ledger
+
+**Evidence:** VERIFIED: entry [Lane 1 — Naya Verity, t0533] present exactly once in feedback-feed.md; first edit attempt failed on anchor and was corrected from the file's own bytes (honestly reported, no displacement); planted packet carries three planted defects from documented failure classes with a stated firing predicate. Score 9.0. Kept from 9.5: the packe
 
 ### ✅ t0540 — Team 8, Lane 8 (Naya Sentinel) (Governance & Safety) — 9.0/10 [VERIFIED]
 
