@@ -6,8 +6,9 @@ Idempotent: refuses to overwrite existing block files.
 
 v1.1 (P0-A): seed blocks are normalized through the canonical contract
 (ib_reconcile.normalize_file_block) so they carry every field the persisted
-envelope requires. Owner identity is NOT invented — seeds get TEAM scope with
-owner_assignment_pending provenance; assign owners before persisting.
+envelope requires. Owner is the collective system NAYA (Shawn's word
+2026-10-11: Naya owns all blocks); seeds carry TEAM scope with
+owner_assigned provenance documenting Shawn's word.
 """
 import json
 import os
@@ -316,11 +317,20 @@ def main():
     for bid, data in SEED:
         if _V11:
             # Upgrade to the canonical v1.1 contract before writing.
-            data = normalize_file_block(data, default_owner_id="",
+            # Owner is the collective system NAYA (Shawn's word 2026-10-11:
+            # Naya owns all blocks; no individual ownership).
+            data = normalize_file_block(data, default_owner_id="NAYA",
                                         default_owner_scope="TEAM")
             data["owner_scope"] = "TEAM"
             prov = data.get("provenance") or {}
-            prov["owner_assignment_pending"] = True
+            prov["owner_assigned"] = {
+                "owner_id": "NAYA",
+                "at": TS,
+                "by": "Shawn's word 2026-10-11 22:34Z (IB block owners = NAYA)",
+                "note": ("Shawn explicitly declined per-block ownership; "
+                         "operational authority exercised through the "
+                         "verification/promotion gates."),
+            }
             prov["aliases"] = [bid]
             data["provenance"] = prov
             if not data.get("purpose"):

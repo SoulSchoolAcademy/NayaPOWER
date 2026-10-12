@@ -49,7 +49,7 @@ def make_v11(**over):
     raw = copy.deepcopy(V10_BLOCK)
     raw.update(over)  # overrides apply BEFORE normalize so state derives correctly
     b = normalize_file_block(raw,
-                             default_owner_id="owner-uuid-1234",
+                             default_owner_id="NAYA",
                              default_owner_scope="PRIVATE")
     b["intelligent_block_id"] = "IB-TEAM-20261011-law-one-divine-oneness"
     b["purpose"] = "Root identity law governing all decisions."
@@ -79,11 +79,26 @@ class TestNormalize(unittest.TestCase):
         self.assertEqual(b["schema_version"], "1.1")
 
     def test_empty_owner_preserved_for_loud_failure(self):
-        # Must NOT invent an owner — validation must fail loudly.
+        # An explicitly-passed empty owner is preserved — validation must
+        # fail loudly; the machine never substitutes a different owner.
         b = normalize_file_block(copy.deepcopy(V10_BLOCK), default_owner_id="")
         self.assertEqual(b["owner_id"], "")
         problems = validate_v11(b)
         self.assertTrue(any("owner_id" in p for p in problems))
+
+    def test_default_owner_is_naya(self):
+        # Shawn's word 2026-10-11: Naya owns all blocks — the canonical
+        # default, not an invention.
+        b = normalize_file_block(copy.deepcopy(V10_BLOCK))
+        self.assertEqual(b["owner_id"], "NAYA")
+        self.assertEqual(validate_v11(b), [])
+
+    def test_non_naya_owner_rejected(self):
+        # No individual may own a block — fails closed.
+        b = normalize_file_block(copy.deepcopy(V10_BLOCK))
+        b["owner_id"] = "someone-else"
+        problems = validate_v11(b)
+        self.assertTrue(any("NAYA" in p and "owner_id" in p for p in problems))
 
 
 class TestToPersisted(unittest.TestCase):
@@ -94,7 +109,7 @@ class TestToPersisted(unittest.TestCase):
 
     def test_owner_privacy_provenance_survive(self):
         row = to_persisted_row(make_v11())
-        self.assertEqual(row["owner_id"], "owner-uuid-1234")
+        self.assertEqual(row["owner_id"], "NAYA")  # canonical system owner
         self.assertEqual(row["owner_scope"], "PRIVATE")
         self.assertTrue(row["provenance"])
         self.assertEqual(row["provenance"]["source_who"], "Shawn")

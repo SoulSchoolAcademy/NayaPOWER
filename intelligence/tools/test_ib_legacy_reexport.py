@@ -44,7 +44,7 @@ def make_legacy_row(seed):
     b = normalize_file_block(copy.deepcopy(raw),
                              default_owner_id="",
                              default_owner_scope="TEAM")
-    b["owner_id"] = "shawn"
+    b["owner_id"] = "NAYA"  # canonical system owner (Shawn's word 2026-10-11)
     modern = to_persisted_row(b)
     legacy = json.loads(json.dumps(modern))
     for k in DETAIL_KEYS:
@@ -124,7 +124,7 @@ class TestLegacyReexportHeal(unittest.TestCase):
             b = normalize_file_block(copy.deepcopy(raw),
                                      default_owner_id="",
                                      default_owner_scope="TEAM")
-            b["owner_id"] = "shawn"
+            b["owner_id"] = "NAYA"  # canonical system owner (Shawn's word 2026-10-11)
             row1 = to_persisted_row(b)
             self.assertNotIn("detail_source", row1["provenance"], bid)
             row2 = to_persisted_row(from_persisted_row(row1))
@@ -138,7 +138,7 @@ class TestLegacyReexportHeal(unittest.TestCase):
         b = normalize_file_block(copy.deepcopy(seed_blocks.SEED[0][1]),
                                  default_owner_id="",
                                  default_owner_scope="TEAM")
-        b["owner_id"] = "shawn"
+        b["owner_id"] = "NAYA"  # canonical system owner (Shawn's word 2026-10-11)
         assert "evidence_detail" not in b["provenance"]
         assert b["evidence"][0]["kind"] != "ref"  # real authored detail
         row = to_persisted_row(b)

@@ -30,7 +30,7 @@ IDs are accepted on read (normalized from `id`) and recorded in
 | `title` | string | yes | shared | Short human name |
 | `purpose` | string | yes | new (§6) | Why preserve this? May be empty for legacy, but new blocks should fill it |
 | `principle` | string | yes | file | **One sentence, plain words.** Maps to `content.lesson` on export |
-| `owner_id` | string | yes | persisted | **REQUIRED.** Empty fails validation loudly — never invent |
+| `owner_id` | string | yes | persisted | **Must be `NAYA`** (Shawn's word 2026-10-11: Naya owns all blocks). Empty or any other value fails validation loudly |
 | `owner_scope` | string | yes | persisted | **REQUIRED.** One of `PRIVATE`/`TEAM`/`COLLECTIVE`/`PUBLIC` |
 | `block_type` | string | yes | persisted | e.g. `GOVERNED_INTELLIGENCE`, `PRINCIPLE`, `LESSON` |
 | `source` | object | yes | file | Human-readable `who`/`when`/`context`; seeds provenance |
@@ -79,13 +79,46 @@ A block moves up only with evidence. Never moves down except by supersession.
 2. **`briefing`** — injected into every agent's briefing at wake.
 3. **`code-gate`** — enforced by code.
 
+## Owner semantics (Shawn's word, 2026-10-11 22:34Z — GRAND-TODO P0)
+
+- `owner_id` is **`NAYA`** on every block. NAYA is the collective system.
+- No individual owns a block — not Shawn (he explicitly declined per-block
+  ownership), not any seat, not any human. Validation fails closed on any
+  other `owner_id` value.
+- `owner_id` is immutable for a block's life; superseding blocks also carry `NAYA`.
+- Ownership is **operational, not titular**: NAYA's authority is exercised
+  only through the verification/promotion gates below. No single agent may
+  mutate a block's standing on their own authority.
+- Provenance carries the receipt: `provenance.owner_assigned` records who
+  said it (Shawn's word, 2026-10-11 22:34Z), when, and the declination of
+  per-block ownership.
+
+## Promotion gate
+
+Because the owner is the collective (never an individual), promotion actions
+— advancing `verification_status` (`ib update`) or advancing the graduation
+stage (`ib graduate`) — require a **gate receipt**:
+
+1. A receipt is attached as evidence first (`ib evidence ...` — capture is
+   always open and ungated).
+2. The promotion cites that receipt's `ref` with `--gate <ref>`.
+3. The cited `ref` must match an evidence item already on the block.
+
+Without a matching gate receipt the action **fails closed**: nonzero exit,
+block file untouched. The gate receipt is recorded in the status-history
+entry as `gate_receipt`. Downgrades stay refused (supersede instead).
+
+Machine-enforced in `intelligence/tools/ib.py::_require_gate`; contract
+semantics in `intelligence/tools/ib_reconcile.py` (`SYSTEM_OWNER`).
+
 ## Rules
 
 - IDs are never reused. Deleted blocks are forbidden — supersede instead.
 - `principle` is one sentence. No jargon.
 - Evidence is receipts, not claims.
-- `owner_id`, `owner_scope`, `provenance` are REQUIRED — export raises without them,
-  mirroring `kernel/supabase_intelligent_blocks.py::from_row`.
+- `owner_id` must be `NAYA`; `owner_scope`, `provenance` are REQUIRED —
+  export raises without them, mirroring
+  `kernel/supabase_intelligent_blocks.py::from_row`.
 - `REGISTRY.json` is generated (`ib reindex`), never hand-edited.
 - Validate with `ib validate`, `pytest tests/test_intelligent_blocks.py`,
   and `pytest intelligence/tools/test_ib_reconcile.py`.

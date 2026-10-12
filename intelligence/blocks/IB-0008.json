@@ -37,12 +37,12 @@
     "enforced_by": null
   },
   "created_at": "2026-10-11T20:30:00+00:00",
-  "updated_at": "2026-10-11T20:30:00+00:00",
+  "updated_at": "2026-10-12T04:58:36+00:00",
   "intelligent_block_id": "IB-0008",
   "supersedes_block_id": null,
   "superseded_by_block_id": null,
   "block_id": null,
-  "owner_id": "",
+  "owner_id": "NAYA",
   "owner_scope": "TEAM",
   "block_type": "GOVERNED_INTELLIGENCE",
   "source_event_ids": [],
@@ -51,11 +51,16 @@
     "source_who": "Shawn",
     "source_when": "2026-10-11",
     "source_context": "Refining the Builder-Scorer Loop: mindset, not just process.",
-    "owner_assignment_pending": true,
     "migration": "v1.0 -> v1.1 canonical contract (P0-A, 2026-10-11)",
     "aliases": [
       "IB-0008"
-    ]
+    ],
+    "owner_assigned": {
+      "owner_id": "NAYA",
+      "at": "2026-10-12T04:58:36+00:00",
+      "by": "Shawn's word 2026-10-11 22:34Z (IB block owners = NAYA; GRAND-TODO P0)",
+      "note": "Shawn explicitly declined per-block ownership. NAYA (the collective system) owns all blocks; operational authority is exercised only through the verification/promotion gates."
+    }
   },
   "purpose": "Standing team law: Shoot for the 10",
   "authority_implications": "",

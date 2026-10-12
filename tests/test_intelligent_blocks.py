@@ -226,7 +226,7 @@ def test_cli_full_lifecycle():
                  "--who", "tester", "--when", "2026-10-11",
                  "--context", "cli test", "--topics", "test",
                  "--situations", "s", "--decisions", "d",
-                 "--owner-id", "owner-uuid-test", "--owner-scope", "TEAM")
+                 "--owner-id", "NAYA", "--owner-scope", "TEAM")
         assert r.returncode == 0, r.stderr
         assert "IB-0001" in r.stdout
 
@@ -234,11 +234,13 @@ def test_cli_full_lifecycle():
                  "--ref", "cli-test", "--note", "n")
         assert r.returncode == 0, r.stderr
 
-        r = _run(tmp, "update", "IB-0001", "--status", "APPLIED", "--note", "n")
+        # Promotion gate: update/graduate require --gate citing a receipt.
+        r = _run(tmp, "update", "IB-0001", "--status", "APPLIED", "--note", "n",
+                 "--gate", "cli-test")
         assert r.returncode == 0, r.stderr
 
         r = _run(tmp, "graduate", "IB-0001", "--stage", "briefing",
-                 "--next", "n")
+                 "--next", "n", "--gate", "cli-test")
         assert r.returncode == 0, r.stderr
 
         r = _run(tmp, "get", "IB-0001")
@@ -247,6 +249,7 @@ def test_cli_full_lifecycle():
         assert got["verification_status"] == "APPLIED"
         assert got["graduation"]["stage"] == "briefing"
         assert len(got["evidence"]) == 1
+        assert got["status_history"][-1]["gate_receipt"] == "cli-test"
 
         r = _run(tmp, "list", "--topic", "test")
         assert r.returncode == 0 and "IB-0001" in r.stdout
@@ -260,7 +263,9 @@ def test_cli_full_lifecycle():
         shutil.rmtree(tmp, ignore_errors=True)
 
 
-def test_cli_refuses_status_without_evidence():
+def test_cli_refuses_status_without_gate():
+    # Promotion gate negative control: a promotion without gate approval
+    # fails closed — nonzero exit, block file untouched.
     tmp = _cli_tree()
     try:
         r = _run(tmp, "create", "--title", "T", "--principle",
@@ -268,12 +273,45 @@ def test_cli_refuses_status_without_evidence():
                  "--who", "tester", "--when", "2026-10-11",
                  "--context", "cli test", "--topics", "test",
                  "--situations", "s", "--decisions", "d",
-                 "--owner-id", "owner-uuid-test", "--owner-scope", "TEAM")
+                 "--owner-id", "NAYA", "--owner-scope", "TEAM")
         assert r.returncode == 0, r.stderr
+        path = os.path.join(tmp, "intelligence", "blocks", "IB-0001.json")
+        with open(path, "rb") as f:
+            before = f.read()
         r = _run(tmp, "update", "IB-0001", "--status", "APPLIED",
                  "--note", "should fail")
         assert r.returncode != 0
-        assert "requires non-empty evidence" in r.stdout
+        assert "REFUSED" in r.stdout and "gate" in r.stdout
+        with open(path, "rb") as f:
+            assert f.read() == before, "failed promotion must not touch the block"
+
+        # A gate ref that matches no attached evidence also fails closed.
+        r = _run(tmp, "update", "IB-0001", "--status", "APPLIED",
+                 "--note", "should fail", "--gate", "no-such-receipt")
+        assert r.returncode != 0
+        assert "REFUSED" in r.stdout
+        with open(path, "rb") as f:
+            assert f.read() == before, "failed promotion must not touch the block"
+
+        # Positive control: attach the receipt, cite it, promotion lands.
+        r = _run(tmp, "evidence", "IB-0001", "--kind", "receipt",
+                 "--ref", "gate-test-receipt", "--note", "n")
+        assert r.returncode == 0, r.stderr
+        r = _run(tmp, "update", "IB-0001", "--status", "APPLIED",
+                 "--note", "gated", "--gate", "gate-test-receipt")
+        assert r.returncode == 0, r.stderr + r.stdout
+        r = _run(tmp, "get", "IB-0001")
+        got = json.loads(r.stdout)
+        assert got["verification_status"] == "APPLIED"
+        assert got["status_history"][-1]["gate_receipt"] == "gate-test-receipt"
+
+        # Graduation without a gate fails closed too.
+        r = _run(tmp, "graduate", "IB-0001", "--stage", "briefing", "--next", "n")
+        assert r.returncode != 0
+        assert "REFUSED" in r.stdout
+        r = _run(tmp, "graduate", "IB-0001", "--stage", "briefing", "--next", "n",
+                 "--gate", "gate-test-receipt")
+        assert r.returncode == 0, r.stderr + r.stdout
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
 
@@ -286,11 +324,12 @@ def test_cli_refuses_downgrade():
                  "--who", "tester", "--when", "2026-10-11",
                  "--context", "cli test", "--topics", "test",
                  "--situations", "s", "--decisions", "d",
-                 "--owner-id", "owner-uuid-test", "--owner-scope", "TEAM")
+                 "--owner-id", "NAYA", "--owner-scope", "TEAM")
         assert r.returncode == 0, r.stderr
         _run(tmp, "evidence", "IB-0001", "--kind", "receipt",
              "--ref", "x", "--note", "n")
-        _run(tmp, "update", "IB-0001", "--status", "APPLIED", "--note", "n")
+        _run(tmp, "update", "IB-0001", "--status", "APPLIED", "--note", "n",
+             "--gate", "x")
         r = _run(tmp, "update", "IB-0001", "--status", "UNVERIFIED",
                  "--note", "downgrade")
         assert r.returncode != 0
@@ -307,7 +346,7 @@ def test_cli_list_json_format():
                  "--who", "tester", "--when", "2026-10-11",
                  "--context", "cli test", "--topics", "alpha,beta",
                  "--situations", "s", "--decisions", "d",
-                 "--owner-id", "owner-uuid-test", "--owner-scope", "TEAM")
+                 "--owner-id", "NAYA", "--owner-scope", "TEAM")
         assert r.returncode == 0, r.stderr
         r = _run(tmp, "list", "--format", "json")
         assert r.returncode == 0, r.stderr
@@ -328,7 +367,7 @@ def test_cli_reindex_idempotent():
                  "--who", "tester", "--when", "2026-10-11",
                  "--context", "cli test", "--topics", "test",
                  "--situations", "s", "--decisions", "d",
-                 "--owner-id", "owner-uuid-test", "--owner-scope", "TEAM")
+                 "--owner-id", "NAYA", "--owner-scope", "TEAM")
         assert r.returncode == 0, r.stderr
         _run(tmp, "reindex")
         reg_path = os.path.join(tmp, "intelligence", "blocks", "REGISTRY.json")
@@ -342,3 +381,54 @@ def test_cli_reindex_idempotent():
         assert first == second, "no-op reindex must be byte-identical"
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
+
+
+# Owner = NAYA (Shawn's word, 2026-10-11): the collective system owns every
+# Intelligent Block; no individual may. Machine-enforced below.
+# ---------------------------------------------------------------------------
+
+def _create_minimal(tmp, *extra):
+    return _run(tmp, "create", "--title", "T", "--principle",
+                "One plain sentence for the owner semantics test case.",
+                "--who", "tester", "--when", "2026-10-11",
+                "--context", "owner test", "--topics", "test",
+                "--situations", "s", "--decisions", "d", *extra)
+
+
+def test_create_defaults_owner_to_naya():
+    tmp = _cli_tree()
+    try:
+        r = _create_minimal(tmp)  # no --owner-id passed
+        assert r.returncode == 0, r.stderr + r.stdout
+        r = _run(tmp, "get", "IB-0001")
+        got = json.loads(r.stdout)
+        assert got["owner_id"] == "NAYA"
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+
+
+def test_create_rejects_non_naya_owner():
+    tmp = _cli_tree()
+    try:
+        r = _create_minimal(tmp, "--owner-id", "someone-else")
+        assert r.returncode != 0
+        assert "NAYA" in r.stdout
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+
+
+def test_seed_blocks_all_owned_by_naya():
+    # Regression guard on the repo's canonical blocks: every seed block
+    # carries owner NAYA with the provenance receipt of Shawn's word.
+    blocks_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                              "..", "intelligence", "blocks")
+    files = sorted(f for f in os.listdir(blocks_dir)
+                   if f.startswith("IB-") and f.endswith(".json"))
+    assert len(files) >= 20, f"expected 20 seed blocks, found {len(files)}"
+    for name in files:
+        with open(os.path.join(blocks_dir, name), encoding="utf-8") as f:
+            b = json.load(f)
+        assert b.get("owner_id") == "NAYA", f"{name}: owner_id must be NAYA"
+        assigned = (b.get("provenance") or {}).get("owner_assigned") or {}
+        assert assigned.get("owner_id") == "NAYA", \
+            f"{name}: provenance.owner_assigned receipt missing"

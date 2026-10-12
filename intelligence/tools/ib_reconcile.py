@@ -54,6 +54,14 @@ CANONICAL_BLOCK_FIELDS = (
 REQUIRED_PERSISTED = ("owner_id", "owner_scope", "provenance")
 # (from_row raises if any of these are empty)
 
+# Canonical system owner of every Intelligent Block (Shawn's word,
+# 2026-10-11 22:34Z; GRAND-TODO P0 "IB Block Owners"): owner = NAYA, the
+# collective system. Shawn explicitly does NOT want to be the per-block
+# owner, and no individual seat may own a block either — ownership is
+# operational: NAYA's authority is exercised ONLY through the
+# verification/promotion gates, never by a single agent's say-so.
+SYSTEM_OWNER = "NAYA"
+
 OWNER_SCOPES = ("PRIVATE", "TEAM", "COLLECTIVE", "PUBLIC")
 BLOCK_TYPES = ("GOVERNED_INTELLIGENCE", "PRINCIPLE", "PROCEDURE", "LESSON",
                "CONSTRAINT", "DECISION", "STATE")
@@ -158,12 +166,14 @@ def persisted_to_file_state(understanding_state, status, provenance):
 # ---------------------------------------------------------------------------
 # Normalization: v1.0 file block -> v1.1 canonical file block
 # ---------------------------------------------------------------------------
-def normalize_file_block(block, default_owner_id="", default_owner_scope="PRIVATE"):
+def normalize_file_block(block, default_owner_id=SYSTEM_OWNER, default_owner_scope="PRIVATE"):
     """Upgrade a v1.0 (or partial v1.1) file block to full v1.1.
 
-    Fills B-authoritative fields with explicit defaults where the author
-    must confirm them; never silently invents owner identity — an empty
-    owner_id is preserved as empty so validation fails loudly.
+    Fills B-authoritative fields with explicit defaults. Owner defaults to
+    SYSTEM_OWNER ("NAYA", Shawn's word 2026-10-11: Naya owns all blocks).
+    An explicitly-passed empty owner_id is preserved as empty so
+    validation fails loudly — the machine never substitutes a different
+    owner; the only canonical owner is NAYA.
     """
     b = dict(block)
     # legacy aliases
@@ -397,6 +407,11 @@ def validate_v11(block):
             problems.append(f"missing required field: {field}")
     if not b.get("owner_id"):
         problems.append("owner_id is required (persisted envelope raises without it)")
+    elif b.get("owner_id") != SYSTEM_OWNER:
+        problems.append(
+            f"owner_id must be '{SYSTEM_OWNER}' (Shawn's word 2026-10-11: Naya owns "
+            f"all blocks; no individual may own a block — got '{b.get('owner_id')}')"
+        )
     if not b.get("owner_scope"):
         problems.append("owner_scope is required (persisted envelope raises without it)")
     elif b["owner_scope"] not in OWNER_SCOPES:

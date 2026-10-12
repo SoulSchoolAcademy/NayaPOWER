@@ -9,11 +9,18 @@ Usage:
             [--topics a,b] [--situations S] [--decisions D2] [--evidence-note N]
   ib get IB-0001
   ib list [--topic T] [--status S] [--sort newest|oldest|id]
-  ib update IB-0001 --status APPLIED --note "why"
+  ib update IB-0001 --status APPLIED --note "why" --gate <evidence-ref>
   ib evidence IB-0001 --kind receipt --ref "PR #1234" --note "merged with receipt"
-  ib graduate IB-0001 --stage code-gate [--enforced-by path] --next "what moves it up"
+  ib graduate IB-0001 --stage code-gate [--enforced-by path] --next "..." --gate <evidence-ref>
   ib validate
   ib reindex
+
+Promotion gate (Shawn's word 2026-10-11: owner = NAYA, the collective
+system): no single agent may promote a block on their own authority.
+`update` and `graduate` require --gate <evidence-ref> citing a receipt
+already attached to the block (attach first with `ib evidence`, which
+stays ungated — capture is always open). Without a gate receipt the
+action fails closed: the block file is untouched.
 """
 from __future__ import annotations
 
@@ -30,6 +37,7 @@ from datetime import datetime, timezone
 try:
     from ib_reconcile import (
         FILE_REQUIRED_V11,
+        SYSTEM_OWNER,
         normalize_file_block,
         validate_v11,
     )
@@ -38,6 +46,7 @@ try:
 except ImportError:
     _RECONCILE_AVAILABLE = False
     SCHEMA_VERSION = "1.1"
+    SYSTEM_OWNER = "NAYA"  # canonical system owner (Shawn's word 2026-10-11)
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BLOCKS_DIR = os.path.join(ROOT, "blocks")
@@ -162,18 +171,31 @@ def cmd_create(args):
         "created_at": now_iso(),
         "updated_at": now_iso(),
     }
-    # Upgrade to the canonical v1.1 contract. Owner is REQUIRED by the
-    # persisted envelope — the CLI takes it explicitly, never invents it.
+    # Upgrade to the canonical v1.1 contract. Owner is the collective
+    # system NAYA (Shawn's word 2026-10-11: Naya owns all blocks) — the
+    # canonical default; validation fails closed on any other owner.
     if _RECONCILE_AVAILABLE:
         data = normalize_file_block(
             data,
-            default_owner_id=getattr(args, "owner_id", "") or "",
+            default_owner_id=getattr(args, "owner_id", "") or SYSTEM_OWNER,
             default_owner_scope=getattr(args, "owner_scope", "") or "PRIVATE",
         )
         if getattr(args, "purpose", ""):
             data["purpose"] = args.purpose
         if getattr(args, "block_type", ""):
             data["block_type"] = args.block_type
+        # Owner receipt: every block carries the provenance of Shawn's word.
+        if data.get("owner_id") == SYSTEM_OWNER:
+            prov = data.get("provenance") or {}
+            prov.setdefault("owner_assigned", {
+                "owner_id": SYSTEM_OWNER,
+                "at": now_iso(),
+                "by": "Shawn's word 2026-10-11 22:34Z (IB block owners = NAYA)",
+                "note": ("NAYA (the collective system) owns all blocks; "
+                         "operational authority exercised only through the "
+                         "verification/promotion gates."),
+            })
+            data["provenance"] = prov
     errs = validate_block(data)
     if errs:
         print("VALIDATION FAILED:")
@@ -241,6 +263,26 @@ def cmd_evidence(args):
     return 0
 
 
+def _require_gate(data, gate_ref):
+    """Promotion gate: NAYA (the collective system) owns every block, so no
+    single agent may promote a block on their own authority. A promotion
+    must cite a gate receipt — an evidence item already attached to the
+    block — via --gate <ref>. Fails closed: without a matching receipt the
+    block file is untouched."""
+    if not gate_ref:
+        print("REFUSED: promotion requires gate approval. Attach the gate "
+              "receipt first (ib evidence IB-0001 --kind receipt --ref <ref> ...), "
+              "then cite it with --gate <ref>. No promotion happened.")
+        return False
+    refs = {e.get("ref") for e in (data.get("evidence") or [])
+            if isinstance(e, dict) and e.get("ref")}
+    if gate_ref not in refs:
+        print(f"REFUSED: no evidence item with ref '{gate_ref}' on this block. "
+              "Attach the gate receipt first (ib evidence ...). No promotion happened.")
+        return False
+    return True
+
+
 def cmd_update(args):
     bid = args.id.upper()
     data, _ = load_block(bid)
@@ -257,9 +299,24 @@ def cmd_update(args):
         print(f"refusing downgrade {data['verification_status']} -> {status} "
               f"(supersede instead)")
         return 1
+    if not _require_gate(data, getattr(args, "gate", "")):
+        return 1
     data["verification_status"] = status
+    # Re-derive the persisted pair from the file ladder (v1.1 mapping);
+    # SUPERSEDED stays the override (recovered from file_status_history).
+    try:
+        from ib_reconcile import FILE_TO_PERSISTED_STATE as _M
+        if data.get("status") != "SUPERSEDED" and status in _M:
+            _us, _st, _flags = _M[status]
+            data["understanding_state"] = _us
+            data["status"] = _st
+            if _flags:
+                data["provenance"] = {**(data.get("provenance") or {}), **_flags}
+    except ImportError:
+        pass
     data["status_history"].append({"status": status, "at": now_iso(),
-                                   "note": args.note or ""})
+                                   "note": args.note or "",
+                                   "gate_receipt": args.gate})
     errs = validate_block(data)
     if errs:
         print("VALIDATION FAILED:")
@@ -267,7 +324,7 @@ def cmd_update(args):
             print(f"  - {e}")
         return 1
     save_block(data)
-    print(f"updated {bid} -> {status}")
+    print(f"updated {bid} -> {status} (gate: {args.gate})")
     return 0
 
 
@@ -286,6 +343,8 @@ def cmd_graduate(args):
         print(f"refusing graduation downgrade "
               f"{data['graduation']['stage']} -> {args.stage}")
         return 1
+    if not _require_gate(data, getattr(args, "gate", "")):
+        return 1
     data["graduation"]["stage"] = args.stage
     data["graduation"]["enforced_by"] = args.enforced_by
     data["graduation"]["next_step"] = args.next
@@ -296,7 +355,7 @@ def cmd_graduate(args):
             print(f"  - {e}")
         return 1
     save_block(data)
-    print(f"graduated {bid} -> {args.stage}")
+    print(f"graduated {bid} -> {args.stage} (gate: {args.gate})")
     return 0
 
 
@@ -372,8 +431,9 @@ def main(argv=None):
     c.add_argument("--situations", default="")
     c.add_argument("--decisions", default="")
     c.add_argument("--evidence-note", default="")
-    c.add_argument("--owner-id", default="",
-                   help="REQUIRED for persistence; never invented — pass the real owner UUID")
+    c.add_argument("--owner-id", default=SYSTEM_OWNER,
+                   help=f"block owner; canonical value is '{SYSTEM_OWNER}' "
+                        f"(Shawn's word 2026-10-11: Naya owns all blocks)")
     c.add_argument("--owner-scope", default="PRIVATE",
                    choices=["PRIVATE", "TEAM", "COLLECTIVE", "PUBLIC"])
     c.add_argument("--purpose", default="", help="why preserve this (protocol §6)")
@@ -389,10 +449,13 @@ def main(argv=None):
     l.add_argument("--format", default="table", choices=["table", "json"],
                    help="table for humans, json for agents")
 
-    u = sub.add_parser("update", help="advance verification status")
+    u = sub.add_parser("update", help="advance verification status (gated)")
     u.add_argument("id")
     u.add_argument("--status", required=True)
     u.add_argument("--note", default="")
+    u.add_argument("--gate", default="",
+                   help="gate receipt: ref of an evidence item already attached "
+                        "to the block (required — promotions fail closed without it)")
 
     e = sub.add_parser("evidence", help="attach evidence to a block")
     e.add_argument("id")
@@ -400,11 +463,14 @@ def main(argv=None):
     e.add_argument("--ref", required=True)
     e.add_argument("--note", default="")
 
-    gr = sub.add_parser("graduate", help="move up the graduation path")
+    gr = sub.add_parser("graduate", help="move up the graduation path (gated)")
     gr.add_argument("id")
     gr.add_argument("--stage", required=True, choices=STAGES)
     gr.add_argument("--enforced-by", default=None)
     gr.add_argument("--next", required=True)
+    gr.add_argument("--gate", default="",
+                    help="gate receipt: ref of an evidence item already attached "
+                         "to the block (required — promotions fail closed without it)")
 
     sub.add_parser("validate", help="validate all blocks")
     sub.add_parser("reindex", help="rebuild REGISTRY.json")

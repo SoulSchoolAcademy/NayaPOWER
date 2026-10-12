@@ -23,13 +23,20 @@ BLOCKS_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file
 
 def migrate_block(block):
     b = normalize_file_block(copy.deepcopy(block),
-                             default_owner_id="",
+                             default_owner_id="NAYA",
                              default_owner_scope="TEAM")
     # Seed blocks are team standing laws from AGENTS.md -> TEAM scope.
-    # Owner identity is a human decision; flag it loudly, don't invent it.
+    # Owner is the collective system NAYA (Shawn's word 2026-10-11).
     b["owner_scope"] = "TEAM"
     prov = b.get("provenance") or {}
-    prov["owner_assignment_pending"] = True
+    prov["owner_assigned"] = {
+        "owner_id": "NAYA",
+        "at": "2026-10-11T20:30:00+00:00",
+        "by": "Shawn's word 2026-10-11 22:34Z (IB block owners = NAYA)",
+        "note": ("Shawn explicitly declined per-block ownership; "
+                 "operational authority exercised through the "
+                 "verification/promotion gates."),
+    }
     prov["migration"] = "v1.0 -> v1.1 canonical contract (P0-A, 2026-10-11)"
     prov["aliases"] = [block.get("id")] if block.get("id") else []
     b["provenance"] = prov

@@ -20,6 +20,7 @@ from ib_reconcile import (  # noqa: E402
     from_persisted_row,
     normalize_file_block,
     to_persisted_row,
+    validate_v11,
 )
 from kernel.supabase_intelligent_blocks import IntelligentBlock  # noqa: E402
 
@@ -30,7 +31,8 @@ class TestKernelIntegration(unittest.TestCase):
     def _owned_block(self, fname="IB-0001.json"):
         with open(os.path.join(BLOCKS_DIR, fname)) as f:
             b = json.load(f)
-        b["owner_id"] = "test-owner-uuid-integration"
+        # Canonical system owner (Shawn's word 2026-10-11: Naya owns all blocks)
+        b["owner_id"] = "NAYA"
         return b
 
     def test_export_passes_real_from_row(self):
@@ -38,18 +40,18 @@ class TestKernelIntegration(unittest.TestCase):
         row = to_persisted_row(self._owned_block())
         block = IntelligentBlock.from_row(row)  # raises on any violation
         self.assertEqual(block.intelligent_block_id, "IB-0001")
-        self.assertEqual(block.owner_id, "test-owner-uuid-integration")
+        self.assertEqual(block.owner_id, "NAYA")
         self.assertEqual(block.owner_scope, "TEAM")
         self.assertTrue(block.provenance)
 
     def test_all_seed_blocks_exportable_once_owned(self):
-        """Every migrated seed block exports cleanly when given an owner."""
+        """Every seed block exports cleanly — all carry owner NAYA."""
         for fname in sorted(os.listdir(BLOCKS_DIR)):
             if not (fname.startswith("IB-") and fname.endswith(".json")):
                 continue
             with open(os.path.join(BLOCKS_DIR, fname)) as f:
                 b = json.load(f)
-            b["owner_id"] = "test-owner-uuid-integration"
+            self.assertEqual(b.get("owner_id"), "NAYA", fname)
             row = to_persisted_row(b)
             # Must satisfy the real kernel validator
             IntelligentBlock.from_row(row)
@@ -64,9 +66,19 @@ class TestKernelIntegration(unittest.TestCase):
         """An unowned block must fail OUR validator AND the kernel's."""
         with open(os.path.join(BLOCKS_DIR, "IB-0001.json")) as f:
             b = json.load(f)
-        # b has empty owner_id (pending human assignment)
+        # Strip the canonical owner: an explicitly empty owner fails loudly
+        # (the machine never substitutes a different owner).
+        b["owner_id"] = ""
         with self.assertRaises(ValueError):
             to_persisted_row(b)  # our validator raises first
+
+    def test_non_naya_owner_fails_our_validator(self):
+        """No individual may own a block — fails closed."""
+        with open(os.path.join(BLOCKS_DIR, "IB-0001.json")) as f:
+            b = json.load(f)
+        b["owner_id"] = "someone-else"
+        problems = validate_v11(b)
+        self.assertTrue(any("owner_id" in p and "NAYA" in p for p in problems))
 
 
 if __name__ == "__main__":
