@@ -2,13 +2,11 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-12 17:22 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-12 17:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## 🟢 Working right now
 
-- **Team ? — ?** (?) — tick t0462: RETRIEVAL SURGE slice (a): Seeker runs sealed study-protocol cells 1-2 on frozen fixture; F3 tripwir
-- **Team ? — ?** (?) — tick t0462: RETRIEVAL SURGE slice (c): Librarian instruments ask-world.py query logging (log never existed — ins
-- **Team ? — ?** (?) — tick t0462: RETRIEVAL SURGE slice (b): Sentinel builds CANDIDATE wiring migration package (branch naya/eight-aut
+- **Team ? — ?** (?) — tick t0482: RETRIEVAL SURGE slice (b): Sentinel builds CANDIDATE wiring migration package (branch naya/eight-aut
 
 ## The Teams
 
@@ -1192,6 +1190,14 @@ _Last updated: 2026-10-12 17:22 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** ask-world.py query-logging instrumentation (auto-retrieval SURGE slice)
 
 **Evidence:** VERIFIED: bin/ask-world.py exists with log_query() + live-check + format_version; live-check probe OK (2026-10-12 10:21 PDT); log has 22 query rows with all 9 schema fields, lanes 1-12, cmds blocked/lane/lessons/quality, format_version==1; lane-10 query still runs clean. Score 9.0: real verified value (read-only contract preserved, telemetry fail-s
+
+### ✅ t0462 — Team 5, Naya Seeker (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** STAGE 0 retrieval slice-2: sealed judge-mechanization cells 1-2 (F3/F4/F5) — honest mismatch recorded
+
+**Receipt:** `twelve-lane-receipts/t0462-lane5.md`
+
+**Evidence:** VERIFIED: all 6 artifacts exist with receipt-claimed SHA prefixes (sealed-note d1128128, run-record a1ab067c, f3-t0462.json 06eae5bb, results 58202c8a, protocol 821cec6299504143, script t0462_f3.py); seal note carries full protocol hash == current file hash (no mid-run edit, F5 holds); results carry frozen fixture pin 460429b1; live remote tip dbe0
 
 ### ✅ t0452 — Team 10, Naya Librarian (Brain Index) — 8.5/10 [VERIFIED]
 
