@@ -26,7 +26,13 @@ def test_measurement_is_deterministic_and_all_nine_nodes_influence_observable_be
     assert first["report"] == second["report"]
 
     stats = first["report"]["BRAIN.Engineering.kernel_behavior_engine.KernelBehaviorEngine"]
-    assert stats["invoked_count"] == 9
+    # The kernel now runs an ADVISE bridge (lesson-to-action influence gate,
+    # see BRAIN/12-ENGINEERING/kernel_behavior_engine.py) between LAW and ACT,
+    # so a full cycle invokes 10 nodes. ORDER stays the canonical nine: ADVISE
+    # is a bridge, not an eleventh master node.
+    assert stats["invoked_count"] == 10
+    assert "ADVISE" in stats["invoked_nodes"]
+    assert sorted(stats["invoked_nodes"]) == sorted(ORDER + ["ADVISE"])
     assert stats["influence_demonstrated_count"] == 9
     assert stats["influence_demonstrated_for"] == sorted(ORDER)
     assert set(stats["changed_scenarios"]) == {

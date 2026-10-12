@@ -68,7 +68,9 @@ def _first_party_modules() -> set:
     # checkout itself, so CI needs no pip install for them. Without this the guard cries wolf
     # about project modules and gets ignored — the exact failure mode its docstring warns of.
     for import_root in (REPO / "tools", REPO / "tools" / "protocol",
-                        REPO / "kernel" / "protocol"):
+                        REPO / "kernel" / "protocol",
+                        REPO / "tools" / "learning" / "compound_scale",
+                        REPO / "tools" / "human_value"):
         if import_root.is_dir():
             names.update(p.stem for p in import_root.glob("*.py"))
             # package directories (e.g. tools/protocol/checks/) are importable
