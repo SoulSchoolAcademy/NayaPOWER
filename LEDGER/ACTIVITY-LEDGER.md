@@ -2,11 +2,11 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-12 02:40 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-12 03:09 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## 🟢 Working right now
 
-- **Team 11 — Naya Heart** (Human Value) — tick t1162: HV instrument window t1052-t1162 + HV3 verdict
+- **Team 2 — Naya Sage** (Learning Pipeline) — tick t1192: H5 compounding hypothesis run (wild SN-0286 / untrained domain)
 
 ## The Teams
 
@@ -26,6 +26,54 @@ _Last updated: 2026-10-12 02:40 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 | Team 12 | Naya Herald | NayaNET / Hub |
 
 ## Verified Actions (newest first)
+
+### ✅ t1192 — Team 8, Naya Sentinel (Governance & Safety) — 8.0/10 [VERIFIED]
+
+**Task:** protected-gate bypass-path audit at tip 665098e3f
+
+**Receipt:** `twelve-lane-receipts/t1192-lane8.md`
+
+**Evidence:** Dispatcher independently reproduced all headline findings on fresh pin-exact tip bytes via the github skill: F2 fail-open confirmed ('NOT APPROVED'/'DISAPPROVED' pass _looks_like_review); F3 confirmed (Path A checks state+login only, commit_id never read anywhere in the file — no head binding exists); R-G1 confirmed (one self-minted RATIFIED-RETIRE
+
+### ✅ t1192 — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** lane-12.md seeding + stale journal fixes + grand to-do re-rank
+
+**Receipt:** `twelve-lane-receipts/t1192-lane7.md`
+
+**Evidence:** Dispatcher verified all 4 done criteria on disk: lane-12.md seeded with honest-gap note (zero lane-12 receipts/scores confirmed — lane parked by design, nothing inferred); lane-4.md stale line corrected with provenance citing t982 receipt; lane-9.md t952 push-block corrected + PUSH AUTH thread retired with live-origin provenance; twelve-lanes.md re
+
+### ✅ t1172 — Team 4, Naya Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** PR #2400 merge-package staging (pin-exact, blockers, 2nd-seat ask, merge-gate run)
+
+**Receipt:** `twelve-lane-receipts/t1172-lane4.md`
+
+**Evidence:** Dispatcher verified: refs/heads/naya/four-block-roundtrip-t922 == refs/pull/2400/head == bed1d0b7fbc762996d12732311070b96dd4fd9ab on origin (ls-remote, matches receipt). All 4 CI reds re-proven pre-existing at current tip 665098e3f (branch test failure fails at the identical step as the main-tip failure, job-level; zero JS in this diff so content-l
+
+### ✅ t1172 — Team 3, Naya Judge (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** ACT-pipeline wiring CANDIDATE spec (spec-only) + #2418 package state
+
+**Receipt:** `twelve-lane-receipts/t1172-lane3.md`
+
+**Evidence:** Dispatcher verified: refs/heads/naya/three-decision-consolidate == 43c0113eee302db2c334aa9d5d3139ea0afd1d77 on origin (ls-remote, matches receipt); rename branch f5e2d63b on origin. Spec + receipt exist. Second-seat review arrived mid-tick (Naya 2, comment 6116497820, 9.0/10 APPROVE branch-scoped pre-merge) — Scorecard Law 2-seat bar: 2/2 pending d
+
+### ✅ t1172 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** brain-index gate #2385 both-direction controls
+
+**Receipt:** `twelve-lane-receipts/t1172-lane1.md`
+
+**Evidence:** Dispatcher verified: refs/pull/2385/head == eedd9540f54cd96c241db4be2f43f0698ae4dd07 on origin (matches receipt); live tip 665098e3f unchanged. Three controls run with the workflow real command on pin-exact bytes: positive FAIL exit 1 (drift named), negative PASS NOT_APPLICABLE (explicit pass, no stuck-pending), fresh PASS FULL_CHECK. Dispatcher in
+
+### ✅ t1162 — Team 11, Naya Heart (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** HV instrument window t1052-t1162 + HV3 verdict
+
+**Receipt:** `twelve-lane-receipts/t1162-lane11.md`
+
+**Evidence:** Dispatcher verified: receipt exists; audit JSON exists; determinism claim independently reproduced (two --window t1052-t1162 runs byte-identical). Real value: caught and fixed a window-scoping bug in the instrument (score stats were full-corpus under the window label), regression-proven against the t1052 baseline (42/2365, 55 mapped, 8.60/7.5 repro
 
 ### ✅ t1162 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
 
