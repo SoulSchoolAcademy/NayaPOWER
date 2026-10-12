@@ -686,3 +686,60 @@ def test_gate_delete_a_branch_fires():
 def test_gate_drop_our_production_database_fires():
     o = _gated_title("Drop our production database")["options"][0]
     assert o["gated"] is True
+
+
+def test_gate_rm_rf_fires():
+    """Re-IV gap: 'rm -rf' (any target) must trip the wall."""
+    for title in ["rm -rf /", "rm -rf the repo", "rm -fr /tmp/data",
+                  "Run rm -rf on the directory"]:
+        o = _gated_title(title)["options"][0]
+        assert o["gated"] is True, title
+        assert o["gate_verdict"] == "REQUIRES_SHAWN"
+        assert o["rank"] is None
+
+
+def test_gate_rm_rf_variants_fire():
+    o = _gated_title("rm -rfv old_build")["options"][0]
+    assert o["gated"] is True
+
+
+def test_gate_plain_rm_r_stays_out_of_scope():
+    """Plain 'rm -r' (no force flag) is out of scope — must not gate."""
+    model = make_model([pr(2400, mergeable=True)])
+    intent = make_intent()
+    options = [make_option("opt-1", "pr", "PR #2400", "rm -r old_cache")]
+    res = es.score_options(intent, options, model)
+    assert res["options"][0]["gated"] is False
+
+
+def test_gate_kill_production_target_fires():
+    """Re-IV gap: 'kill' + production/database/cluster target must trip."""
+    for title in ["kill the production database", "kill the cluster",
+                  "kill -9 the database", "Kill the db now"]:
+        o = _gated_title(title)["options"][0]
+        assert o["gated"] is True, title
+        assert o["gate_verdict"] == "REQUIRES_SHAWN"
+        assert o["rank"] is None
+
+
+def test_gate_kill_process_stays_out_of_scope():
+    """Plain 'kill the process' (no production/data target) stays out."""
+    model = make_model([pr(2400, mergeable=True)])
+    intent = make_intent()
+    options = [make_option("opt-1", "pr", "PR #2400", "kill the process")]
+    res = es.score_options(intent, options, model)
+    assert res["options"][0]["gated"] is False
+
+
+def test_gate_no_rm_rf_listing_stays_clean():
+    """Law-listing 'no rm -rf' is the law being stated, not requested."""
+    model = make_model([pr(2410, mergeable=True)])
+    intent = make_intent(constraints=[
+        "Protected gates hold: no rm -rf on production, no killing the "
+        "cluster without Shawn's word"])
+    options = [make_option("pr-2410", "pr", "PR #2410", "Merge PR #2410",
+                           iv_score=9.5, tests_green=True, files_changed=3)]
+    res = es.score_options(intent, options, model)
+    o = res["options"][0]
+    assert o["gated"] is False, o["gate_reasons"]
+    assert res["recommendation"] is not None

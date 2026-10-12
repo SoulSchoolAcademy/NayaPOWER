@@ -101,6 +101,13 @@ PROTECTED_PATTERNS = [
     r"payment",
     r"destruct",
     r"\bnuke\b",
+    # rm -rf variants (rm -rf, rm -fr, rm -rfv): recursive force delete —
+    # destructive by construction. Law-listings ("no rm -rf") stay clean
+    # via prohibition scoping; plain "rm -r" (no force flag) is out of scope.
+    r"\brm\s+-(?=[a-z]*r)(?=[a-z]*f)[a-z]+\b",
+    # kill aimed at production/data targets ("kill the production database",
+    # "kill the cluster"). Plain "kill the process" stays out of scope.
+    r"\bkill\b.{0,25}\b(production|database|cluster|db)\b",
     r"delete\s+(?:(?:the|a|an|our|their|this|that)\s+)?(branch|repo|database)",
     r"drop\s+(?:(?:the|a|an|our|their|this|that)\s+)?(production\s+)?(database|table|repo|branch)",
     r"ship.{0,15}\bprod(uction)?\b",
