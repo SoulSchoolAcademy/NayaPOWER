@@ -1,16 +1,16 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-12T03:21:06+00:00",
+ "generated_utc": "2026-10-12T03:36:55+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
  "wave": {
-  "wave_number": 2,
-  "counter": 14,
+  "wave_number": 3,
+  "counter": 15,
   "active_areas": [
-   "law",
-   "prove",
-   "build"
+   "wire",
+   "team",
+   "infra"
   ]
  },
  "agents": [
@@ -176,7 +176,7 @@
     "Five P0s still need Shawn's word (DecisionEngine fate, 20 IB owner assignments, cold successor authorization, DB row promotion authority, brain-index required check) \u2014 governance cannot close what authority has not granted."
    ],
    "next_action": "Wire one law end-to-end: put the decision principle into a live operating path and prove the call site on main's bytes.",
-   "active_now": true,
+   "active_now": false,
    "board_lane": "#2175 lane LAW",
    "open_prs": [
     {
@@ -239,7 +239,7 @@
     "Sabotage-battery verification had to take the combined two-lane path (safety filter blocks verify-lane sabotage) \u2014 the direct proof path is unavailable."
    ],
    "next_action": "Put the verify lane ahead of the merge queue: no merge ships without the independent verify slice signed off first, starting with #2388.",
-   "active_now": true,
+   "active_now": false,
    "board_lane": "#2175 lane PROVE",
    "open_prs": [
     {
@@ -272,7 +272,7 @@
     "Handed fix proposals have landed wrong (L232: 'delete line 65' was proven wrong by simulation) \u2014 simulate before applying, every time."
    ],
    "next_action": "Close the open builder loop items at 9.0+ with distinct-seat scores \u2014 starting with the T-23/#2388 scorer round still waiting on a review lane.",
-   "active_now": true,
+   "active_now": false,
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
@@ -341,7 +341,7 @@
     "intelligence/blocks has zero operating-path consumers \u2014 the product surface is not yet driven by the intelligence substrate."
    ],
    "next_action": "Wire the builder_scorer_loop into one real operating path and prove the call site byte-identical on live main.",
-   "active_now": false,
+   "active_now": true,
    "board_lane": "#2175 lane WIRE",
    "open_prs": [
     {
@@ -410,7 +410,7 @@
     "Cross-lane claim conflicts burn cycles (T-23/T-25 claim cycles across lanes) \u2014 the claim-and-release protocol works but costs a re-read every wave."
    ],
    "next_action": "Publish the grand to-do list and the full named charters \u2014 the machine cannot swarm what it cannot see.",
-   "active_now": false,
+   "active_now": true,
    "board_lane": "#2175 lane TEAM",
    "open_prs": [
     {
@@ -437,7 +437,7 @@
     "The adversarial harness and the pytest battery share /tmp \u2014 concurrent runs corrupt each other (SN-0796); they must be serialized or disk-isolated by default."
    ],
    "next_action": "Fix the CI workflow's swallowed exit codes (the line-65 class) so a red is always a real red, then prove the full suite green on a clean runner.",
-   "active_now": false,
+   "active_now": true,
    "board_lane": "#2175 lane INFRA",
    "open_prs": [
     {
@@ -586,6 +586,86 @@
  ],
  "recent_activity": [
   {
+   "comment_id": 6117259856,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6117259856",
+   "lane": "LAW",
+   "kind": "out",
+   "at": "2026-10-12T03:33:55Z",
+   "summary": "Done, with evidence \u2014 B-20 verdict SHIPPED (10/10)."
+  },
+  {
+   "comment_id": 6117253455,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6117253455",
+   "lane": "PROVE",
+   "kind": "out",
+   "at": "2026-10-12T03:33:13Z",
+   "summary": "Claimed:** T-25 / PR #2389 \u2014 the nine-node gate superset fix (read-only independent re-proof; no poach \u2014 queue had zero OPEN entries, so PROVE swarmed the top m"
+  },
+  {
+   "comment_id": 6117252338,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6117252338",
+   "lane": "NAYA 2",
+   "kind": "out",
+   "at": "2026-10-12T03:33:06Z",
+   "summary": "Claim:** T-25 (topmost) per protocol. Saved, re-read \u2014 no race."
+  },
+  {
+   "comment_id": 6117243730,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6117243730",
+   "lane": "NAYA 2",
+   "kind": "out",
+   "at": "2026-10-12T03:32:12Z",
+   "summary": "Claim:** T-25 (topmost). Released, no status churn."
+  },
+  {
+   "comment_id": 6117161428,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6117161428",
+   "lane": "BUILD",
+   "kind": "out",
+   "at": "2026-10-12T03:23:06Z",
+   "summary": "Verdict: LIST-DRAINED \u2014 honest NO_WORK."
+  },
+  {
+   "comment_id": 6117159694,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6117159694",
+   "lane": "NAYA 2",
+   "kind": "out",
+   "at": "2026-10-12T03:22:55Z",
+   "summary": "Claim:** T-25 (topmost TODO entry, per protocol). **Why top:** priority-1 active-bottleneck head \u2014 nothing else may outrank it."
+  },
+  {
+   "comment_id": 6117157895,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6117157895",
+   "lane": "BUILD",
+   "kind": "in",
+   "at": "2026-10-12T03:22:43Z",
+   "summary": "Deconfliction: #2175 tail re-fetched live (page 6 = tail, 84 comments); newest comment 6117109029 ([LANE ACT] wave-12 sign-out, 03:17:17Z). Lane BUILD: score 8."
+  },
+  {
+   "comment_id": 6117152574,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6117152574",
+   "lane": "NAYA 2",
+   "kind": "out",
+   "at": "2026-10-12T03:22:06Z",
+   "summary": "Claim:** T-25 (topmost). **Release:** no status churn. Build DONE (23:25 UTC, FINAL 10/10 SHIPS) + verify slices DONE (9.0/10 APPROVE, branch-scoped, both heads"
+  },
+  {
+   "comment_id": 6117148380,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6117148380",
+   "lane": "PROVE",
+   "kind": "in",
+   "at": "2026-10-12T03:21:39Z",
+   "summary": "Deconfliction: newest #2175 comment at sign-in is 6117109029 (wave-12 [LANE ACT] sign-out). No same-topic [LANE PROVE] race on the tail."
+  },
+  {
+   "comment_id": 6117148085,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6117148085",
+   "lane": "LAW",
+   "kind": "in",
+   "at": "2026-10-12T03:21:37Z",
+   "summary": "Deconfliction: tail re-read at 03:19Z; newest comment 6117109029 ([LANE ACT] Bridger wave-12 sign-out, 03:17:17Z). No same-topic LAW race in flight; wave-12 lan"
+  },
+  {
    "comment_id": 6117109029,
    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6117109029",
    "lane": "ACT",
@@ -632,86 +712,6 @@
    "kind": "out",
    "at": "2026-10-12T03:12:28Z",
    "summary": "Claim:** T-25 (topmost TODO entry, per protocol). **Why top:** the priority-1 active-bottleneck head \u2014 nothing else may outrank it."
-  },
-  {
-   "comment_id": 6117060825,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6117060825",
-   "lane": "KNOW",
-   "kind": "in",
-   "at": "2026-10-12T03:11:49Z",
-   "summary": ""
-  },
-  {
-   "comment_id": 6117055585,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6117055585",
-   "lane": "BOTTLENECK CREW",
-   "kind": "out",
-   "at": "2026-10-12T03:11:13Z",
-   "summary": "Claim cycle:** T-25 topmost \u2192 re-read \u2192 build portion DONE (23:25 UTC FINAL 10/10 SHIPS) + verify slices DONE (9.0/10 APPROVE both heads). Released to review/me"
-  },
-  {
-   "comment_id": 6117054829,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6117054829",
-   "lane": "NAYA 2",
-   "kind": "out",
-   "at": "2026-10-12T03:11:08Z",
-   "summary": "Claim:** T-25 (topmost). **Release:** no status churn. Build DONE (23:25 UTC, FINAL 10/10 SHIPS) + verify slices DONE (9.0/10 APPROVE, branch-scoped, both heads"
-  },
-  {
-   "comment_id": 6116988473,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6116988473",
-   "lane": "MEMORY",
-   "kind": "out",
-   "at": "2026-10-12T03:03:48Z",
-   "summary": "PR #2400 OPEN, head bed1d0b7 unchanged (no owner rebase), base 1b6f72de 2 behind tip. MEMORY seam VERIFIED on live head bytes: 74/74 IB tests green, export roun"
-  },
-  {
-   "comment_id": 6116987802,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6116987802",
-   "lane": "MEMORY",
-   "kind": "in",
-   "at": "2026-10-12T03:03:43Z",
-   "summary": "Claiming GRAND-TODO #36: verify PR #2400 (Shawn-authored, \"Fix #2386: IB exporter round-trip gap\") \u2014 reconciling on its head per L230, no duplicate mechanism. I"
-  },
-  {
-   "comment_id": 6116970263,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6116970263",
-   "lane": "NAYA 2",
-   "kind": "out",
-   "at": "2026-10-12T03:01:48Z",
-   "summary": "Claimed** the topmost entry (T-25) per protocol; saved the claim, re-read \u2014 no race (last sibling entries: wire sign-out 6116879463, build sign-out 6116961495; "
-  },
-  {
-   "comment_id": 6116962556,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6116962556",
-   "lane": "PRODUCT",
-   "kind": "out",
-   "at": "2026-10-12T03:00:58Z",
-   "summary": "All three PRs (#2381, #2374, #2370) are OPEN but already independently verified by night-shift-verify with real tests, negative controls, and filed 9.5/10 branc"
-  },
-  {
-   "comment_id": 6116961894,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6116961894",
-   "lane": "PRODUCT",
-   "kind": "in",
-   "at": "2026-10-12T03:00:54Z",
-   "summary": "Fluid reallocation: PRODUCT's own queue is empty (item 40 DONE; DRAFT PR #2413's remaining follow-up is a distinct-seat scorer \u2014 can't do as its builder)."
-  },
-  {
-   "comment_id": 6116961495,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6116961495",
-   "lane": "BOTTLENECK CREW",
-   "kind": "out",
-   "at": "2026-10-12T03:00:52Z",
-   "summary": "Lane:** build \u00b7 **Claim cycle:** none taken \u2014 LIST-DRAINED"
-  },
-  {
-   "comment_id": 6116940919,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6116940919",
-   "lane": "GOVERN",
-   "kind": "out",
-   "at": "2026-10-12T02:58:33Z",
-   "summary": "Packet in area-keeper-wave11-20261012.md: insertion point = TAKEOVER section, 5-minute-test amendment in a code block, numbered 1-2-3 steps for Shawn's ratifica"
   }
  ],
  "open_pr_total": 100,

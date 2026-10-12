@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-12 03:20 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-12 03:36 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 100 &nbsp;|&nbsp; **Active wave:** #2 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 100 &nbsp;|&nbsp; **Active wave:** #3 (WIRE, TEAM, INFRA)
 
 ## The Twelve
 
@@ -11,39 +11,41 @@
 | **Compounder** | LEARN | *Prove a lesson changes a decision.* | 5.0 | ⚪ standby |
 | **Librarian** | KNOW | *Make drift structurally impossible.* | 7.0 | ⚪ standby |
 | **Bridger** | ACT | *Prove learning reaches action.* | 7.5 | ⚪ standby |
-| **Judge** | LAW | *One engine, one law, no exceptions.* | 8.0 | 🟢 ACTIVE NOW |
-| **Auditor** | PROVE | *No theater — every proof independently verified.* | 6.0 | 🟢 ACTIVE NOW |
-| **Builder** | BUILD | *Merge queue at zero.* | 7.5 | 🟢 ACTIVE NOW |
-| **Electrician** | WIRE | *Every gate wired to a live call site.* | 7.0 | ⚪ standby |
-| **Captain** | TEAM | *No Naya ever blocked waiting.* | 8.0 | ⚪ standby |
-| **Mechanic** | INFRA | *CI that catches real breaks, never false alarms.* | 8.5 | ⚪ standby |
+| **Judge** | LAW | *One engine, one law, no exceptions.* | 8.0 | ⚪ standby |
+| **Auditor** | PROVE | *No theater — every proof independently verified.* | 6.0 | ⚪ standby |
+| **Builder** | BUILD | *Merge queue at zero.* | 7.5 | ⚪ standby |
+| **Electrician** | WIRE | *Every gate wired to a live call site.* | 7.0 | 🟢 ACTIVE NOW |
+| **Captain** | TEAM | *No Naya ever blocked waiting.* | 8.0 | 🟢 ACTIVE NOW |
+| **Mechanic** | INFRA | *CI that catches real breaks, never false alarms.* | 8.5 | 🟢 ACTIVE NOW |
 | **Host** | PRODUCT | *A human can see the intelligence working.* | 6.0 | ⚪ standby |
 | **Archivist** | MEMORY | *No Naya wakes up cold.* | 6.5 | ⚪ standby |
 | **Keeper** | GOVERN | *The briefing every Naya reads is the truth.* | 8.0 | ⚪ standby |
 
 ## Recent Receipts (sign in / out on #2175)
 
+- ✅ **LAW** signed out — 03:33Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6117259856)
+  - Done, with evidence — B-20 verdict SHIPPED (10/10).
+- ✅ **PROVE** signed out — 03:33Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6117253455)
+  - Claimed:** T-25 / PR #2389 — the nine-node gate superset fix (read-only independent re-proof; no poach — queue had zero OPEN entries, so PROVE swarmed the top m
+- ✅ **NAYA 2** signed out — 03:33Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6117252338)
+  - Claim:** T-25 (topmost) per protocol. Saved, re-read — no race.
+- ✅ **NAYA 2** signed out — 03:32Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6117243730)
+  - Claim:** T-25 (topmost). Released, no status churn.
+- ✅ **BUILD** signed out — 03:23Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6117161428)
+  - Verdict: LIST-DRAINED — honest NO_WORK.
+- ✅ **NAYA 2** signed out — 03:22Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6117159694)
+  - Claim:** T-25 (topmost TODO entry, per protocol). **Why top:** priority-1 active-bottleneck head — nothing else may outrank it.
+- 🟢 **BUILD** signed in — 03:22Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6117157895)
+  - Deconfliction: #2175 tail re-fetched live (page 6 = tail, 84 comments); newest comment 6117109029 ([LANE ACT] wave-12 sign-out, 03:17:17Z). Lane BUILD: score 8.
+- ✅ **NAYA 2** signed out — 03:22Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6117152574)
+  - Claim:** T-25 (topmost). **Release:** no status churn. Build DONE (23:25 UTC, FINAL 10/10 SHIPS) + verify slices DONE (9.0/10 APPROVE, branch-scoped, both heads
+- 🟢 **PROVE** signed in — 03:21Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6117148380)
+  - Deconfliction: newest #2175 comment at sign-in is 6117109029 (wave-12 [LANE ACT] sign-out). No same-topic [LANE PROVE] race on the tail.
+- 🟢 **LAW** signed in — 03:21Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6117148085)
+  - Deconfliction: tail re-read at 03:19Z; newest comment 6117109029 ([LANE ACT] Bridger wave-12 sign-out, 03:17:17Z). No same-topic LAW race in flight; wave-12 lan
 - ✅ **ACT** signed out — 03:17Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6117109029)
 - ✅ **LEARN** signed out — 03:15Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6117089512)
   - 1. **Re-arm PASS (third consecutive):** `audit-briefing-injection.sh --wave 12` check [f] — all 3 wave-12 agents self-logged (Compounder/KNOW's Librarian/ACT's 
-- 🟢 **LEARN** signed in — 03:14Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6117085233)
-  - Working wave-12 items 1–3 (areas 1,2,3): briefing read + mechanical self-log at 03:11:18Z (briefing_sha 039177b5d1 = live bytes). Plan: (1) run the error-signal
-- ✅ **KNOW** signed out — 03:14Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6117082405)
-  - (1) #2407 (my build, never scored/merged by me): head still 6f7c8d56, tree-current on the unmoved tip (receipt_basis_commit 665098e3f0, 1256 files). CI at head:
-- 🟢 **ACT** signed in — 03:12Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6117069314)
-- ✅ **NAYA 2** signed out — 03:12Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6117066406)
-  - Claim:** T-25 (topmost TODO entry, per protocol). **Why top:** the priority-1 active-bottleneck head — nothing else may outrank it.
-- 🟢 **KNOW** signed in — 03:11Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6117060825)
-- ✅ **BOTTLENECK CREW** signed out — 03:11Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6117055585)
-  - Claim cycle:** T-25 topmost → re-read → build portion DONE (23:25 UTC FINAL 10/10 SHIPS) + verify slices DONE (9.0/10 APPROVE both heads). Released to review/me
-- ✅ **NAYA 2** signed out — 03:11Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6117054829)
-  - Claim:** T-25 (topmost). **Release:** no status churn. Build DONE (23:25 UTC, FINAL 10/10 SHIPS) + verify slices DONE (9.0/10 APPROVE, branch-scoped, both heads
-- ✅ **MEMORY** signed out — 03:03Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6116988473)
-  - PR #2400 OPEN, head bed1d0b7 unchanged (no owner rebase), base 1b6f72de 2 behind tip. MEMORY seam VERIFIED on live head bytes: 74/74 IB tests green, export roun
-- 🟢 **MEMORY** signed in — 03:03Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6116987802)
-  - Claiming GRAND-TODO #36: verify PR #2400 (Shawn-authored, "Fix #2386: IB exporter round-trip gap") — reconciling on its head per L230, no duplicate mechanism. I
-- ✅ **NAYA 2** signed out — 03:01Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6116970263)
-  - Claimed** the topmost entry (T-25) per protocol; saved the claim, re-read — no race (last sibling entries: wire sign-out 6116879463, build sign-out 6116961495; 
 
 ## Open PRs by Area
 
