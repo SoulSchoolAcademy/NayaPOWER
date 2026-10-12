@@ -2,13 +2,13 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-12 09:08 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-12 09:38 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## 🟢 Working right now
 
-- **Team 8 — Naya Sentinel** (Governance & Safety) — tick t0102: SEAT_RE fix-forward: verify #2329 coverage, build extension if gap, propose PR (no seat merge)
-- **Team 2 — Naya Sage** (Learning Pipeline) — tick t0102: H4 arm execution: sealed 3x3 pre-registered design, blinded scorer, publish verdict
-- **Team 3 — Naya Judge** (Decision Engine) — tick t0102: #2418 merge-seat: re-anchor to live tip, re-verify, re-run merge gate, MERGE under Scorecard Law or 
+- **Team 6 — Naya Heir** (Successor Transfer) — tick t0122: CTA leg-3 cold-transfer execution per t0092 sealed pre-reg
+- **Team 7 — Naya Conductor** (Team Operations) — tick t0122: fossil-draft close layer (10 oldest after #1993), queue discipline slot
+- **Team 11 — Naya Heart** (Human Value) — tick t0122: HV observatory window t0082-t0122 + audit + baseline regression
 
 ## The Teams
 
@@ -1162,6 +1162,54 @@ _Last updated: 2026-10-12 09:08 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t892-lane1.md`
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
+
+### ✅ t0122 — Team 11, Naya Heart (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** HV observatory window t0082-t0122 + audit + baseline regression
+
+**Receipt:** `twelve-lane-receipts/t0122-lane11.md`
+
+**Evidence:** Dispatcher verified on disk: run1==run2 sha 8adee5c2, post1==post2 sha f03a73f9, hand audit 12 rows window t0082-t0122; fresh re-run on grown corpus (13->15 receipts) reproduces identical totals M2:12/M3:6/M4:2. HV3 PROVEN-UNMEASURABLE discipline held, stale-brief falsifications reported against own lane's interests. Not 10: single-seat judgments, 
+
+### ✅ t0122 — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Close post-#1993 fossil layer: 10 oldest idle drafts as superseded, queue 487->477
+
+**Receipt:** `twelve-lane-receipts/t0122-lane7.md`
+
+**Evidence:** Dispatcher verified live via API: PRs 1994 + 2037 both closed (spot check), open-PR search total_count == 477 exactly. Pin-verify-before-close flow, #1130 untouched, mechanism cited. Not 10: young 3-day layer vs 11-day fossil profile; branch existence not re-verified post-close (agent's own deduction).
+
+### ✅ t0122 — Team 6, Naya Heir (Successor Transfer) — 9.5/10 [VERIFIED]
+
+**Task:** CTA leg-3 cold-transfer replication (fresh sealed fixture), verdict ACCEPT
+
+**Receipt:** `twelve-lane-receipts/t0122-lane6.md`
+
+**Evidence:** Dispatcher verified on disk: seal 69fb7660 == recomputed; evidence packet 8545a29a == recomputed; preserved line c9506e98 == sealed pin; scorer packet + seal record present. All 4 gates PASS, blinded quality 9.8, timestamp incident owned without touching scorer bytes. Not 10: same-family scorer residual + cosmetic hardcode (agent's own deductions).
+
+### ✅ t0112 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Brain-index heal sequence (heal PR off 28ab48ac6c, re-stamp #2385)
+
+**Receipt:** `twelve-lane-receipts/t0112-lane10.md`
+
+**Evidence:** Dispatcher verified: receipt exists; main tip unchanged aa8061c1; heal branch naya/ten-brainindex-heal-t1292 ABSENT on remote (deleted at t0032, superseded by merged #2452) - the agent's stale-premise call is CONFIRMED on live bytes. Cheap-check-first executed properly: tip CLEAN at pin (5th consecutive clean), 13/13 freshness green claimed on pin-
+
+### ✅ t0112 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Fix pre-existing test failures: 7 node + 6 test_ci false positives + mjs cold-retrieve 400; fix PR #2462
+
+**Receipt:** `twelve-lane-receipts/t0112-lane9.md`
+
+**Evidence:** Dispatcher verified live: branch naya/lane9/tipred-fix-t0112 + PR #2462 head both == b41a3ffa9c..., parent == tip aa8061c1 (tip unmoved, no re-anchor). Three test-infra fixes, zero production files touched; mjs 400 reproduced twice pre-fix (root-caused: missing applyApplicabilityRanking in vm sandbox), claimed post-fix 599/0 node and 3/3 pytest gua
+
+### ✅ t0112 — Team 2, Naya Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** H8 round-2 execution per sealed pre-reg (dry-run gate, verdict honored)
+
+**Receipt:** `twelve-lane-receipts/t0112-lane2.md`
+
+**Evidence:** Dispatcher verified: receipt file exists; /tmp/t0102-lane2/ has all 7 probe dirs (dry, a1-a3, b1-b3); seal 41ab2a55... recomputed MATCH, all pins declared MATCH. Mechanical protocol discipline: dry-run gate ran FIRST, C1=1 -> CEILING -> NO-GO honored with zero scored arms and no Lane-1 packet. Honest close: named lab-vs-field confound + N=1 limit. 
 
 ### ✅ t0102 — Team 8, Naya Sentinel (Governance & Safety) — 9.5/10 [VERIFIED]
 
