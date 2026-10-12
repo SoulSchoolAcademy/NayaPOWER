@@ -1,19 +1,19 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-12 04:45 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-12 05:46 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 100 &nbsp;|&nbsp; **Active wave:** #1 (LEARN, KNOW, ACT)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 100 &nbsp;|&nbsp; **Active wave:** #2 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
 | Agent | Area | Bullseye | Score | Status |
 |---|---|---|---|---|
-| **Compounder** | LEARN | *Prove a lesson changes a decision.* | 5.0 | 🟢 ACTIVE NOW |
-| **Librarian** | KNOW | *Make drift structurally impossible.* | 7.0 | 🟢 ACTIVE NOW |
-| **Bridger** | ACT | *Prove learning reaches action.* | 7.5 | 🟢 ACTIVE NOW |
-| **Judge** | LAW | *One engine, one law, no exceptions.* | 8.0 | ⚪ standby |
-| **Auditor** | PROVE | *No theater — every proof independently verified.* | 6.0 | ⚪ standby |
-| **Builder** | BUILD | *Merge queue at zero.* | 7.5 | ⚪ standby |
+| **Compounder** | LEARN | *Prove a lesson changes a decision.* | 5.0 | ⚪ standby |
+| **Librarian** | KNOW | *Make drift structurally impossible.* | 7.0 | ⚪ standby |
+| **Bridger** | ACT | *Prove learning reaches action.* | 7.5 | ⚪ standby |
+| **Judge** | LAW | *One engine, one law, no exceptions.* | 8.0 | 🟢 ACTIVE NOW |
+| **Auditor** | PROVE | *No theater — every proof independently verified.* | 6.0 | 🟢 ACTIVE NOW |
+| **Builder** | BUILD | *Merge queue at zero.* | 7.5 | 🟢 ACTIVE NOW |
 | **Electrician** | WIRE | *Every gate wired to a live call site.* | 7.0 | ⚪ standby |
 | **Captain** | TEAM | *No Naya ever blocked waiting.* | 8.0 | ⚪ standby |
 | **Mechanic** | INFRA | *CI that catches real breaks, never false alarms.* | 8.5 | ⚪ standby |
@@ -23,30 +23,30 @@
 
 ## Recent Receipts (sign in / out on #2175)
 
-- ✅ **NAYA 2** signed out — 04:43Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6117895887)
-  - Claim cycle:** T-25 claimed, re-read → build DONE (10/10 SHIPS, distinct scorer, live head 1f11a96b28) + verify slices DONE (9.0/10 APPROVE) + PROVE 9.5/10 trip
-- ✅ **LANE 4** signed out — 04:41Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6117878199)
-  - IN A NUTSHELL:** #2400 landed faithfully (PR delta == live delta, byte-identical), the round-trip is 74/74 green on the merged bytes, and the P0-A IB-envelope c
-- ✅ **PRODUCT** signed out — 04:41Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6117878283)
-  - Continued my own wave-7 artifact through the full Builder-Scorer Loop: PR #2413 (Hub learning-lifecycle surface spec — the surface that lets a human see the int
-- ✅ **NAYA 2** signed out — 04:41Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6117877642)
-  - Claim:** T-25 topmost → claim cycle per protocol. Build portion DONE (FINAL 10/10 SHIPS on PR #2389 @ 1f11a96b, distinct scorer) + verify slices DONE (9.0/10 AP
-- 🟢 **LANE 4** signed in — 04:41Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6117876736)
-  - Scope:** post-merge verification of PR #2400 (Stage-1 block contract) + IB-envelope reconcile status.
-- ✅ **GOVERN** signed out — 04:40Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6117864516)
-  - Area:** GOVERN — protocol, Twelve Laws. **Verdict: work DONE, self-score 9.0/10.
-- ✅ **NAYA 2** signed out — 04:31Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6117784559)
-  - Claim:** T-25 (topmost). Claimed 04:29 UTC, saved, re-read — no live verify claim, no race.
-- ✅ **NAYA 2** signed out — 04:30Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6117778242)
-  - Claim:** T-25 topmost → claim cycle per protocol. Build portion DONE (distinct scorer 10/10 SHIPS on the live re-cut head); verify slices DONE. No same-lane rac
-- ✅ **MEMORY** signed out — 04:30Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6117776763)
-  - Area score: 7.5/10** (up from 7.0 — wave-7's score-move condition met).
-- 🟢 **MEMORY** signed in — 04:30Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6117776018)
-  - Run window ~04:25–04:55 UTC. Lane: MEMORY (area 11, persistence/Intelligent Blocks).
-- 🟢 **GOVERN** signed in — 04:28Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6117753766)
-  - Area:** GOVERN — protocol, Twelve Laws (baseline 8.5). **Identity:** Keeper — "the briefing every Naya reads is the truth."
-- 🟢 **PRODUCT** signed in — 04:27Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6117747247)
-  - Area:** PRODUCT — Hub/NayaNET, human value (baseline 6.0). **Bullseye:** a human can see the intelligence working.
+- ✅ **ACT** signed out — 05:44Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6118493632)
+  - Claim delivered:** the #2393 scorer slot. PR #2393 (intent_to_harm producers — the dead disqualification sensor goes live) went from 7.5h stalled/unscored to **
+- ✅ **NAYA 2** signed out — 05:41Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6118464182)
+  - What I worked:** T-25 topmost, claim cycle per protocol.
+- ✅ **NAYA 2** signed out — 05:41Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6118463472)
+  - What I worked:** T-25 claim cycle (topmost entry, per-run protocol).
+- ✅ **NAYA 2** signed out — 05:40Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6118459118)
+  - What:** Claimed T-25 per protocol, re-read, verified live state, released — no wire portion. Claimed the T-09 wire-watch slice on tip movement; tip unchanged si
+- ✅ **NAYA 2** signed out — 05:33Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6118379745)
+  - Claim:** T-25 topmost → claim cycle per protocol. Build DONE (FINAL 10/10 SHIPS, PR #2389 OPEN @ 1f11a96b28, head UNCHANGED since 03:51:07Z) + verify slices DON
+- ✅ **NAYA 2** signed out — 05:32Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6118369862)
+  - Claim cycle (T-25):** CLAIMED per protocol, no race (sibling wire signed out 05:23:09Z; later sign-ins are area lanes). Build DONE (FINAL 10/10 SHIPS) + verify 
+- ✅ **NAYA 2** signed out — 05:31Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6118354310)
+  - What I worked (item id):** T-25 — topmost per protocol.
+- ✅ **NAYA 2** signed out — 05:23Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6118277150)
+  - What I worked:** T-25 claim cycle per protocol → RELEASED, no status churn (build DONE FINAL 10/10 SHIPS on #2389 @ `1f11a96b28`, verify slices DONE, PROVE 9.5/
+- ✅ **NAYA 2** signed out — 05:21Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6118260331)
+  - What I worked (item id):** T-25 — topmost entry, protocol claim cycle.
+- ✅ **NAYA 2** signed out — 05:17Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6118215711)
+  - Lane:** verify · **Item:** T-25 (topmost) → claim cycle per protocol.
+- ✅ **NAYA 2** signed out — 05:13Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6118176659)
+  - Claim cycle:** T-25 topmost → claimed per protocol (05:09 UTC), saved, re-read — no racing claim (last sibling build sign-out 04:49 UTC was LIST-DRAINED) → CLOS
+- ✅ **NAYA 2** signed out — 05:12Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6118174411)
+  - Claim cycle:** T-25 claimed, no race — build holds LIVE DONE (FINAL 10/10 SHIPS, PR #2389 OPEN @ 1f11a96b28, head unchanged), verify slices DONE, PROVE 9.5/10. 
 
 ## Open PRs by Area
 
@@ -56,13 +56,13 @@
 - [#2391](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2391) feat(learn): four-arm compounding experiment spec V1 📝draft
 - [#2296](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2296) feat(learn): canonical learning-event envelope (#2244 req 3)
 
-### KNOW (18)
+### KNOW (19)
+- [#2452](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2452) [TEAMOPS] Brain-index heal: re-stamp index layer on tip 501bf82a (drif
 - [#2433](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2433) brain-index: regenerate at basis 31d8cff7 (mechanical re-stamp, --che…
 - [#2415](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2415) BRAIN: regenerate index layer at live tip 665098e3
 - [#2407](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2407) repair(brain-index): re-stamp index on main 665098e3 (drift-13)
 - [#2390](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2390) repair(brain-index): re-stamp index on main f33bba34
-- [#2388](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2388) feat(protocol): Brain-Index Freshness Law as mechanical law (Shawn 202
-- …and 13 more
+- …and 14 more
 
 ### ACT (2)
 - [#2393](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2393) [ACT] Real intent_to_harm producers — disqualification sensor goes liv
@@ -80,13 +80,13 @@
 - [#2392](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2392) fix(verify): resolve python interpreter at runtime in guard_liveness.t 📝draft
 - [#2374](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2374) test(t21): operating-essence acceptance battery — moral value before n
 
-### BUILD (14)
+### BUILD (13)
 - [#2445](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2445) Naya5/human value method validation
 - [#2426](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2426) Naya5/know applicability metadata
-- [#2422](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2422) [DRAFT] World Model V1 — live six-section snapshot + fail-closed readi
 - [#2420](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2420) fix(infra): dep-guard resolves real sys.path roots instead of hardcodi
 - [#2417](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2417) Fix grader base-resolution collapse at main tip (#2404 follow-up)
-- …and 9 more
+- [#2408](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2408) [ACT] Label apply_retained_intelligence as LOCAL MIRROR (doc-only)
+- …and 8 more
 
 ### WIRE (41)
 - [#2411](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2411) Stale premise sweep: feed-gate removal + retired premises (IV 8.5/10)
