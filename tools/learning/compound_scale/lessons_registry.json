@@ -35,7 +35,7 @@
    },
    "truth": {
     "mode": "must_hold",
-    "receipt_file": "~/workspace/naya/bin/gh-api",
+    "receipt_file": "truth_fixtures/good_L1_receipt.md",
     "receipt_quote": "--body-file PATH: read the JSON body from a file"
    }
   },
@@ -74,7 +74,7 @@
    },
    "truth": {
     "mode": "must_hold",
-    "receipt_file": "~/workspace/naya/bin/gh-api",
+    "receipt_file": "truth_fixtures/good_L2_receipt.md",
     "receipt_quote": "if rest and rest[0] == \"--body-file\":"
    }
   },
@@ -113,7 +113,7 @@
    },
    "truth": {
     "mode": "must_hold",
-    "receipt_file": "~/AGENTS.md",
+    "receipt_file": "truth_fixtures/good_L3_receipt.md",
     "receipt_quote": "Two-dot diffs lie on stale branches — rehearse the merge"
    }
   },
@@ -152,7 +152,7 @@
    },
    "truth": {
     "mode": "must_hold",
-    "receipt_file": "~/AGENTS.md",
+    "receipt_file": "truth_fixtures/good_L4_receipt.md",
     "receipt_quote": "Node test failures: check for `python` before touching code"
    }
   },
@@ -191,7 +191,7 @@
    },
    "truth": {
     "mode": "must_hold",
-    "receipt_file": "~/AGENTS.md",
+    "receipt_file": "truth_fixtures/good_L5_receipt.md",
     "receipt_quote": "Build comment bodies with a FILE WRITER (muse.write), never inside shell double-quotes"
    }
   },
@@ -230,7 +230,7 @@
    },
    "truth": {
     "mode": "must_hold",
-    "receipt_file": "~/MEMORY.md",
+    "receipt_file": "truth_fixtures/good_L6_receipt.md",
     "receipt_quote": "SN-0493 — decisions expire when the tip moves; re-verify at action time."
    }
   },
@@ -269,7 +269,7 @@
    },
    "truth": {
     "mode": "must_hold",
-    "receipt_file": "~/TOOLS.md",
+    "receipt_file": "truth_fixtures/good_L7_receipt.md",
     "receipt_quote": "never write shims into system paths"
    }
   },
@@ -308,7 +308,7 @@
    },
    "truth": {
     "mode": "must_hold",
-    "receipt_file": "~/MEMORY.md",
+    "receipt_file": "truth_fixtures/good_L8_receipt.md",
     "receipt_quote": "candidate≠verified"
    }
   },
@@ -347,7 +347,7 @@
    },
    "truth": {
     "mode": "must_hold",
-    "receipt_file": "~/workspace/agent-briefing-master.md",
+    "receipt_file": "truth_fixtures/good_L9_receipt.md",
     "receipt_quote": "A number without provenance is a lie with formatting."
    }
   },
@@ -386,7 +386,7 @@
    },
    "truth": {
     "mode": "must_hold",
-    "receipt_file": "~/workspace/agent-briefing-master.md",
+    "receipt_file": "truth_fixtures/good_L10_receipt.md",
     "receipt_quote": "The No-Bottleneck Law:"
    }
   },
@@ -425,7 +425,7 @@
    },
    "truth": {
     "mode": "must_hold",
-    "receipt_file": "~/MEMORY.md",
+    "receipt_file": "truth_fixtures/good_L11_receipt.md",
     "receipt_quote": "never push directly to main; branches + PRs only"
    }
   },

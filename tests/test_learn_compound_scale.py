@@ -89,6 +89,15 @@ def test_truth_rejects_adversarial_regardless_of_cwd(tmp_path, monkeypatch):
         assert "REJECT" in detail
 
 
+@pytest.mark.parametrize("lesson", GOOD, ids=lambda l: l["id"])
+def test_truth_must_hold_regardless_of_cwd(lesson, tmp_path, monkeypatch):
+    """Hermetic fixtures: the good-lesson Truth probes must not depend on
+    the process working directory (receipt paths anchor to the package)."""
+    monkeypatch.chdir(tmp_path)
+    score, detail = gates.gate_truth(lesson)
+    assert score == 9, (lesson["id"], detail)
+
+
 # ------------------------------------------------------- comprehension
 @pytest.mark.parametrize("lesson", GOOD, ids=lambda l: l["id"])
 def test_comprehension_probe_passes_on_distilled(lesson):
