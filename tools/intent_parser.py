@@ -381,7 +381,7 @@ NEGATION_WORDS = frozenset({
 # "actually, don't". Articles are transparent; refusal nouns and discourse
 # markers are unambiguous.
 _NEGATION_BARE_OK = frozenset({
-    "absolutely", "definitely", "certainly", "really", "ever",
+    "absolutely", "absolute", "definitely", "certainly", "really", "ever",
     "at", "all", "whatsoever",
     "a", "an", "the",
     "way", "chance", "deal", "dice",
@@ -392,6 +392,21 @@ _NEGATION_BARE_OK = frozenset({
     # auxiliary of an elided "do not <verb>"; without it the standalone
     # "do not" is not recognized as a bare negation (fix-pass #4).
     "do",
+    # fix-pass #5: companions for the validator's four misses —
+    # "hard no", "under no circumstances", "not happening". "under" is a
+    # bare preposition here: it can only matter inside a clause that
+    # already contains a negation word, so it cannot create a flip alone.
+    "hard", "under", "circumstances", "happening",
+})
+
+# Rejection nouns: a verbless trailing fragment like "merge 2412? veto"
+# IS the rejection — no negation word needed. Kept tight on purpose:
+# only the noun forms, only as bare fragments. The verb forms
+# ("veto the merge", "I veto the merge") are a known boundary, not
+# handled here (fix-pass #5).
+_REJECTION_NOUNS = frozenset({
+    "veto", "vetoes",
+    "rejection", "denial",
 })
 
 ACTION_VERBS = frozenset({
@@ -546,14 +561,19 @@ def _is_bare_negation(tokens):
     """True when the clause is ONLY a negation (+ intensifiers / articles /
     refusal nouns): 'no', 'absolutely not', 'never ever', 'not a chance',
     'no way'. A trailing answer to the previous clause's action.
-    'I vote no' counts: voting 'no' IS the rejection."""
+    'I vote no' counts: voting 'no' IS the rejection.
+    Fix-pass #5: a clause of ONLY rejection nouns ('veto', 'my veto',
+    'absolute veto') also counts — a verbless trailing fragment naming the
+    rejection IS the rejection."""
     toks = list(tokens)
     if len(toks) >= 2 and toks[0] in _SUBJECTS and toks[1] in _VOTE_VERBS:
         toks = toks[2:]
+    has_neg = any(t in NEGATION_WORDS for t in toks)
+    has_rejection = any(t in _REJECTION_NOUNS for t in toks)
     return (bool(toks)
-            and any(t in NEGATION_WORDS for t in toks)
+            and (has_neg or has_rejection)
             and all(t in NEGATION_WORDS or t in _NEGATION_BARE_OK
-                    for t in toks))
+                    or t in _REJECTION_NOUNS for t in toks))
 
 
 def _is_tag_question(clause):
@@ -653,7 +673,10 @@ def is_negated_action(text, intent_type):
         # no to the previous clause's action.
         if _TRAILING_NO.match(c):
             return True
-        if not any(t in NEGATION_WORDS for t in tokens):
+        # Rejection-noun fragments ("merge 2412? veto") carry no negation
+        # word but still reach the bare-negation check below (fix-pass #5).
+        if (not any(t in NEGATION_WORDS for t in tokens)
+                and not any(t in _REJECTION_NOUNS for t in tokens)):
             continue
         # Bare negation answers the previous clause's action — unless it
         # leads the input, where it answers prior discourse instead.

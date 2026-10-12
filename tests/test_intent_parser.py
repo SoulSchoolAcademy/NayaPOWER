@@ -426,6 +426,44 @@ def test_negation_sentence_level():
           str(r.get("clarifying_questions"))[:120])
 
 
+def test_negation_fixpass5_rejection_fragments():
+    """Fix-pass #5: the validator's four misses — verbless trailing
+    rejection fragments that silently proceeded. 'hard no' / 'not
+    happening' / 'under no circumstances' are bare-negation companions;
+    'veto' (and tight siblings) is a rejection noun: a fragment naming
+    the rejection IS the rejection."""
+    print("F2 fix-pass #5: rejection fragments:")
+    for s, itype in [("merge 2412? hard no", "should_merge"),
+                     ("merge 2412? veto", "should_merge"),
+                     ("merge 2412? under no circumstances", "should_merge"),
+                     ("merge 2412? not happening", "should_merge"),
+                     # token-class variants within the prescribed scope
+                     ("merge 2412? absolute veto", "should_merge"),
+                     ("merge 2412? my veto", "should_merge"),
+                     ("merge 2412? a hard no", "should_merge"),
+                     ("deploy? hard no", "should_build"),
+                     ("deploy? veto", "should_build")]:
+        r = parse_intent(s)
+        check(f"rejection fragment '{s}' -> exit 2",
+              r["ok"] is False and r["exit_hint"] == 2,
+              json.dumps({k: r.get(k) for k in ("ok", "exit_hint")})[:100])
+    # The rejection noun must not misfire on full propositions: "the veto
+    # was about something else" is a statement, not a rejection fragment.
+    r = parse_intent("the veto was about something else, merge 2412")
+    check("'the veto was about something else, ...' -> not the negated path",
+          not any("instead" in q for q in r.get("clarifying_questions", [])),
+          str(r.get("clarifying_questions"))[:120])
+    # KNOWN BOUNDARY (documented, not fixed): the verb forms
+    # ("veto the merge", "I veto the merge") are not recognized as
+    # negations — but they fail closed via generic ambiguity (exit 2),
+    # so they never silently proceed. Pinned so a future change notices
+    # if this moves.
+    r = parse_intent("veto the merge")
+    check("KNOWN BOUNDARY 'veto the merge' (verb form) -> fails closed, exit 2",
+          r["ok"] is False and r["exit_hint"] == 2,
+          json.dumps({k: r.get(k) for k in ("ok", "exit_hint")})[:100])
+
+
 def test_schema_consistency():
     print("F3: same schema on every path:")
     paths = {
