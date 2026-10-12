@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-12",
-  "receipt_basis_commit": "e3fe3d43857b153cd19edc31e159a408172793e8",
-  "inventory_file_count": 1256,
+  "receipt_basis_commit": "f6d28a8d5a6bb3260492da6af2bec1f8804ec114",
+  "inventory_file_count": 1257,
   "domain_counts": {
     "00-ACTIVATION": 3,
     "00-ARCHITECTURE": 5,
@@ -11,7 +11,7 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
-    "05-MEMORY": 646,
+    "05-MEMORY": 647,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
@@ -749,6 +749,11 @@
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-09-NAYAPOWER-DAILY-INTELLIGENCE.md",
       "blob_sha": "fe954e32d2c79cf6a7db3cb3e3c0c0aed1c32733",
       "size": 9817
+    },
+    {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-11-LEARNING-EVENT.md",
+      "blob_sha": "d60799ebb3deb040808307b892af19a091523513",
+      "size": 28794
     },
     {
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/09/27/IB-DIR-NAYAPOWER-20260927-001.md",
