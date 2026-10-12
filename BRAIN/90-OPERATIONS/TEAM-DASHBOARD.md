@@ -1,19 +1,19 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-12 06:47 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-12 06:59 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 100 &nbsp;|&nbsp; **Active wave:** #1 (LEARN, KNOW, ACT)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 100 &nbsp;|&nbsp; **Active wave:** #2 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
 | Agent | Area | Bullseye | Score | Status |
 |---|---|---|---|---|
-| **Compounder** | LEARN | *Prove a lesson changes a decision.* | 5.0 | 🟢 ACTIVE NOW |
-| **Librarian** | KNOW | *Make drift structurally impossible.* | 7.0 | 🟢 ACTIVE NOW |
-| **Bridger** | ACT | *Prove learning reaches action.* | 7.5 | 🟢 ACTIVE NOW |
-| **Judge** | LAW | *One engine, one law, no exceptions.* | 8.0 | ⚪ standby |
-| **Auditor** | PROVE | *No theater — every proof independently verified.* | 6.0 | ⚪ standby |
-| **Builder** | BUILD | *Merge queue at zero.* | 7.5 | ⚪ standby |
+| **Compounder** | LEARN | *Prove a lesson changes a decision.* | 5.0 | ⚪ standby |
+| **Librarian** | KNOW | *Make drift structurally impossible.* | 7.0 | ⚪ standby |
+| **Bridger** | ACT | *Prove learning reaches action.* | 7.5 | ⚪ standby |
+| **Judge** | LAW | *One engine, one law, no exceptions.* | 8.0 | 🟢 ACTIVE NOW |
+| **Auditor** | PROVE | *No theater — every proof independently verified.* | 6.0 | 🟢 ACTIVE NOW |
+| **Builder** | BUILD | *Merge queue at zero.* | 7.5 | 🟢 ACTIVE NOW |
 | **Electrician** | WIRE | *Every gate wired to a live call site.* | 7.0 | ⚪ standby |
 | **Captain** | TEAM | *No Naya ever blocked waiting.* | 8.0 | ⚪ standby |
 | **Mechanic** | INFRA | *CI that catches real breaks, never false alarms.* | 8.5 | ⚪ standby |
@@ -23,30 +23,30 @@
 
 ## Recent Receipts (sign in / out on #2175)
 
+- ✅ **LEARN** signed out — 06:56Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119317650)
+  - In a nutshell:** the self-log schema-drift class did NOT retire — wave 18 reproduced it with a mutated variant, and wave 20 reproduced the wave-12 framing varia
+- ✅ **KNOW** signed out — 06:52Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119275504)
+  - Area:** KNOW — brain substrate, index freshness.
+- 🟢 **LEARN** signed in — 06:51Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119262510)
+  - Lane:** LEARN — compounding learning loop (wave-16 scored 9.8/10 SHIPS; why-not-10: self-log schema-drift LESSON CANDIDATE is UNRETIRED — re-arm criterion "wave
+- ✅ **NAYA 2** signed out — 06:51Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119261208)
+  - Item worked:** T-25 (topmost per protocol). **Verdict: NO_WORK — honest drain; watch stays armed.
+- 🟢 **LANE 7** signed in — 06:51Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119257255)
+  - Verify-only and routing-only this tick. Action-time pins (23:49–23:52 PDT, ls-remote + PR API):
+- ✅ **VERIFY** signed out — 06:50Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119251869)
+  - In a nutshell:** nothing for the verify lane this run. Tip unchanged, queue drained, no new verify work since the 06:41Z cycle.
+- ✅ **NAYA 2** signed out — 06:50Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119247884)
+  - Verdict: LIST-DRAINED — honest NO_WORK.** (Sibling verify's 06:41 cycle and my own 06:32 cycle reached the same verdict on identical live state; this run re-ver
+- ✅ **ACT** signed out — 06:50Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119244207)
+  - IN A NUTSHELL:** PR #2393 (intent_to_harm producers, the dead disqualification sensor) re-verified green on today's live head — 15/15 pin tests, negative contro
+- 🟢 **KNOW** signed in — 06:48Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119221492)
+  - Area:** KNOW — brain substrate, index freshness. Wave 20 of the area rotation (areas LEARN / KNOW / ACT).
+- 🟢 **ACT** signed in — 06:48Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119218172)
+  - Area:** ACT — learning-to-action bridge. Wave 20 of the area rotation (areas LEARN, KNOW, ACT).
 - ✅ **MEMORY** signed out — 06:43Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119164684)
   - Lane:** MEMORY (area 11, Archivist — "no Naya ever wakes up cold"). **Live tip:** `e85c6e44` (ref-anchored at run start AND sign-out, stable throughout; depth-1
 - ✅ **GOVERN** signed out — 06:42Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119149460)
   - Area:** GOVERN — protocol, Twelve Laws. **Verdict: work DONE, self-score 9.0/10.** Full receipt: `hidden_files/wave19-govern-signout.md`.
-- ✅ **PRODUCT** signed out — 06:41Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119146063)
-  - Verdict: NO_WORK-class verify run — honest 6.5/10, unchanged.** Everything checked live; nothing moved.
-- ✅ **NAYA 2** signed out — 06:41Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119142780)
-  - Verdict: LIST-DRAINED — honest NO_WORK.
-- 🟢 **PRODUCT** signed in — 06:41Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119136736)
-  - Lane:** PRODUCT (Host — a human can see the intelligence working), area 10, baseline 6.5/10 (wave 15).
-- ✅ **NAYA 2** signed out — 06:40Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119134168)
-  - What I worked:** T-25 (topmost TODO per protocol). Claim cycle: CLAIMED, re-verified live, RELEASED — no status churn.
-- 🟢 **MEMORY** signed in — 06:39Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119124410)
-  - Lane:** MEMORY (area 11, Archivist — "no Naya ever wakes up cold"). **Dispatched on:** team-naya-area-rotation wave 19.
-- 🟢 **GOVERN** signed in — 06:39Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119120226)
-  - Lane:** GOVERN (Keeper — the briefing every Naya reads is the truth), area 12, baseline 9.0/10 (wave 15).
-- ✅ **INFRA** signed out — 06:34Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119061176)
-  - Verdict: WORK DONE — tip-RED healed, PR #2454 shipped to review.
-- ✅ **NAYA 2** signed out — 06:32Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119032407)
-  - What I worked:** T-25 (topmost). Claim cycle per protocol (claim 06:29 UTC, no wire race — newest claim).
-- ✅ **NAYA 2** signed out — 06:31Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119026652)
-  - Item:** T-25 (#2389 nine-node invoked-count gate). Claim cycle per protocol; build DONE (FINAL 10/10 SHIPS) + verify slices DONE (9.0/10 APPROVE, branch-scoped)
-- ✅ **BUILD** signed out — 06:31Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6119023284)
-  - Worked:** T-25 (topmost) — claim cycle only; no new build work taken.
 
 ## Open PRs by Area
 
