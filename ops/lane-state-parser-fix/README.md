@@ -1,8 +1,8 @@
 # lane_state.py false-OCCUPIED repair — review branch
 
 **Branch:** `naya5/lane-state-parser-fix` · **base:** `501bf82a` (origin/main, 2026-10-12)
-**Author:** Naya Kappa (TEAM lead) · **Date:** 2026-10-12 ~05:30 UTC
-**Status:** review only — NO PR, NO merge press. The merge lane decides.
+**Author:** Naya Kappa (TEAM lead) · **Date:** 2026-10-12 ~05:30 UTC, defect 3 added ~08:15 UTC
+**Status:** review only — NO PR, NO merge press. The merge lane decides. Defect 3 marked ready for different-seat IV (dispatched separately).
 
 ## Placement note (read first)
 
@@ -34,6 +34,19 @@ fell through to body-wide keyword scanning and read it as SIGNIN (with a
 `Mission:` line it validated) → false OCCUPIED. Two later workers had to
 hand-verify the lane was free.
 
+**Defect 3 — #1715: sign-out closed the earliest seat-match, not the
+signer's own claim.**
+`determine_state` scanned open claims oldest-first for a normalized-seat
+match, so a sign-out closed the EARLIEST open claim sharing its seat.
+Real instance: sign-out `6118197320` (05:15:18Z, freshness worker) carries
+the same normalized seat (`naya 5`) as sign-in `6117761106` (04:28:54Z,
+Naya Mu's instrument build) and the signer's own sign-in `6118180575`
+(05:13:30Z, freshness worker, mission byte-identical to the sign-out's).
+The referee closed `6117761106` and left `6118180575` open → lane gamma
+falsely attributed to the freshness worker since 05:13:30Z.
+Reproduced on the real comment bodies (`repro_20261012_0707.py`,
+`fixture-*.json` — this directory) before the fix; confirmed fixed after.
+
 ## The fixes (`lane_state.py`)
 
 1. **Seat normalization** (`normalize_seat`): strips `sign-in`/`sign-out`
@@ -50,23 +63,31 @@ hand-verify the lane was free.
    first-line-silent bodies fall back to body-wide markers (legacy).
    Sign markers outrank receipt labels (a missed claim → collision is worse
    than a missed receipt → wasted dispatch).
+3. **Sign-out closes the signer's own most-recent open claim**
+   (defect 3): the seat-match scan runs newest-first. A sign-out ends the
+   session it belongs to, which is the signer's newest still-open claim —
+   never the earliest claim that happens to share the seat. The no-seat
+   fallback (closes earliest, releases the lane) is unchanged and is now
+   documented in the `determine_state` docstring.
 
 ## Verification
 
-- `test_lane_state.py`: **22/22 green** (16 pre-existing + 6 new regression
-  tests: `test_validator_signout_closes_validator_signin`,
-  `test_seat_normalization_sibling_variants`,
-  `test_readiness_receipt_is_not_a_claim`,
-  `test_bracketed_header_without_markers_is_informational`,
-  `test_sign_marker_outside_brackets_still_claims`,
-  `test_signout_header_family`).
-- Real-data repro: defect 1 reproduced on the full #1713 comment window
-  (false OCCUPIED by `6118073828` at 05:15Z) and confirmed fixed (sign-out
-  `6118133539` now closes sign-in `6118073828`); defect 2 reproduced
-  (`6118129535` → OCCUPIED) and confirmed fixed (→ CHATTER, pair → FREE).
-- Classification distribution over 49 real #1713 comments: 22 SIGNIN /
-  22 SIGNOUT / 3 STANDDOWN / 2 CHATTER — every real claim still classified
-  correctly; only the two defect shapes changed outcome.
+- `test_lane_state.py`: **26/26 green** (22 pre-existing + 4 new regression
+  tests: `test_signout_closes_own_most_recent_claim`,
+  `test_defect3_real_fixture_closes_signers_own_claim`,
+  `test_defect3_no_false_occupied_on_repaired_path`,
+  `test_seatless_signout_releases_lane`).
+- Real-data repro (defect 3): `repro_20261012_0707.py` loads the three real
+  #1715 comment bodies — old code prints
+  "sign-out 6118197320 … closes sign-in 6117761106" (exit 0, bug present);
+  fixed code prints "… closes sign-in 6118180575" (exit 1, fixed).
+- Full-stream A/B (203 real #1715 comments, old vs fixed code, same fetch):
+  only the seat-match close-lines re-resolve; the verdict moves from
+  STALE-SUSPECT on `6118180575` (wrongly open) to STALE-SUSPECT on
+  `6117958252` (genuinely never signed out, since 04:50:12Z). Evidence pack:
+  `~/workspace/goals/super-brain-engine-to-10-10/hidden_files/lane-state-defect3-evidence/`.
+- Live copy `~/workspace/naya/bin/lane_state.py` re-synced byte-identical
+  to the proven source AFTER 26/26 green (cmp verified).
 
 ## What this does NOT claim (D32)
 
@@ -76,4 +97,11 @@ hand-verify the lane was free.
   real feed state; judging it abandoned is a human read, not a mechanical one.
 - It does not change the unmatched-seat fallback (closes earliest open
   claim) or the 120-minute stale-lease rule.
+- It does not disambiguate same-seat collisions by mission: where two
+  genuinely different workers share one normalized seat, a sign-out closes
+  the most-recent matching claim. Mission-descriptor matching was
+  considered and rejected (sign-out missions routinely differ from sign-in
+  missions — "Mission: X" vs "Mission COMPLETE: X").
 - It does not move the tool's canonical home — that decision is open.
+- Defect 3 is builder-complete (reproduced, fixed, 26/26 green, live copy
+  synced) and marked ready for different-seat IV; IV has not happened yet.

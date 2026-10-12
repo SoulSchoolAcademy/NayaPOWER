@@ -243,8 +243,10 @@ def determine_state(comments, now=None, lease_minutes=LEASE_DEFAULT_MIN):
 
     Walked OLDEST-first. All unclosed valid sign-ins are tracked; the
     occupant is the earliest (Kappa §6: earliest valid sign-in wins).
-    A sign-out closes the open claim with the matching seat header, else
-    the earliest open claim.
+    A sign-out closes the signer's OWN most-recent open claim with the
+    matching seat header (2026-10-12 defect 3: closing the earliest
+    seat-match closed someone else's claim). A sign-out that names no
+    seat closes the earliest open claim (releases the lane).
     """
     now = now or datetime.now(timezone.utc)
     ordered = sorted(comments, key=lambda c: c.get("created_at", ""))
@@ -267,7 +269,11 @@ def determine_state(comments, now=None, lease_minutes=LEASE_DEFAULT_MIN):
                     f"sign-out {c.get('id')} with no open sign-in — ignored")
                 continue
             seat = normalize_seat(header_seat(c.get("body", "")))
-            target = next((o for o in open_claims
+            # The signer's OWN most-recent open claim with the matching
+            # seat: a sign-out ends the session it belongs to, which is
+            # the signer's newest still-open claim — never the earliest
+            # claim that happens to share the seat.
+            target = next((o for o in reversed(open_claims)
                            if normalize_seat(o.get("seat")) == seat),
                           None) if seat else None
             if target is None:

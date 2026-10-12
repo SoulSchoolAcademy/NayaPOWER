@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Tests for lane_state.py — Kappa §7 as code. Pure-function fixtures only."""
 
+import json
+import os
 import sys
 from datetime import datetime, timezone, timedelta
 
@@ -239,6 +241,73 @@ def test_signout_header_family():
                  "# [ops | signing in] start",
                  "SIGN-IN \u2014 Naya Epsilon (VERIFY) \u2014 Lane Beta #1714"):
         assert classify(body) == "SIGNIN", (body, classify(body))
+
+
+def test_signout_closes_own_most_recent_claim():
+    # 2026-10-12 defect 3: same normalized seat holds two open claims.
+    # A sign-out ends the session it belongs to — the signer's OWN
+    # most-recent open claim — never the earliest claim that happens
+    # to share the seat.
+    in1 = ("**[NAYA 5 \u2014 alpha worker | SIGN-IN \u2014 Lane Gamma #1715]**\n"
+           "Mission: alpha work at the live tip")
+    in2 = ("**[NAYA 5 \u2014 beta worker | SIGN-IN \u2014 Lane Gamma #1715]**\n"
+           "Mission: beta work at the live tip")
+    out = ("**[NAYA 5 \u2014 beta worker | SIGN-OUT \u2014 "
+           "Lane Gamma #1715 released FREE]**\nMission: beta work \u2014 done")
+    comments = [C(1, 20, in1), C(2, 15, in2), C(3, 5, out)]
+    res = determine_state(comments, now=NOW)
+    assert res["state"] == "OCCUPIED", res
+    assert res["occupant"]["sign_in_id"] == 1, res  # alpha still open
+    assert "closes sign-in 2" in " ".join(res["evidence"]), res["evidence"]
+    assert "closes sign-in 1" not in " ".join(res["evidence"]), res["evidence"]
+
+
+def _real_comment(cid):
+    here = os.path.dirname(os.path.abspath(__file__))
+    d = json.load(open(os.path.join(here, f"fixture-{cid}.json")))
+    return {"id": d["id"], "created_at": d["created_at"],
+            "body": d["body"] or ""}
+
+
+def test_defect3_real_fixture_closes_signers_own_claim():
+    # The 6118197320 / 6117761106 / 6118180575 case as a real-data fixture:
+    # the freshness worker's sign-out closed its own 05:13:30Z sign-in.
+    # The buggy referee closed Naya Mu's 04:28:54Z sign-in instead (same
+    # normalized seat "naya 5", earliest-match) — mis-close proven by
+    # repro_20261012_0707.py before the fix.
+    now = datetime(2026, 10, 12, 8, 5, tzinfo=timezone.utc)
+    comments = [_real_comment(6117761106), _real_comment(6118180575),
+                _real_comment(6118197320)]
+    res = determine_state(comments, now=now, lease_minutes=120)
+    ev = " ".join(res["evidence"])
+    assert "closes sign-in 6118180575" in ev, res["evidence"]
+    assert "closes sign-in 6117761106" not in ev, res["evidence"]
+
+
+def test_defect3_no_false_occupied_on_repaired_path():
+    # After the repair, the signer's own claim is closed — the occupant
+    # must be the genuinely open claim (Mu's instrument build), never the
+    # signer's already-signed-out session.
+    now = datetime(2026, 10, 12, 8, 5, tzinfo=timezone.utc)
+    comments = [_real_comment(6117761106), _real_comment(6118180575),
+                _real_comment(6118197320)]
+    res = determine_state(comments, now=now, lease_minutes=120)
+    assert res["occupant"]["sign_in_id"] == 6117761106, res["occupant"]
+    assert res["state"] == "STALE-SUSPECT", res["state"]
+    assert "closes sign-in 6118180575" in " ".join(res["evidence"])
+
+
+def test_seatless_signout_releases_lane():
+    # A sign-out that names no seat at all cannot identify its signer;
+    # it reads as "the lane is released" and closes the earliest open
+    # claim (the §6 occupant). Sibling behavior of defect 3, unchanged.
+    a_in = ("# [naya5-a | SIGN-IN 2026-10-12 04:13 UTC] | **Mission:** work a")
+    b_in = ("# [naya5-b | SIGN-IN 2026-10-12 04:14 UTC] | **Mission:** work b")
+    out = "signing out \u2014 mission complete, lane released"
+    comments = [C(1, 20, a_in), C(2, 15, b_in), C(3, 5, out)]
+    res = determine_state(comments, now=NOW)
+    assert "closes sign-in 1" in " ".join(res["evidence"]), res["evidence"]
+    assert res["occupant"]["sign_in_id"] == 2, res
 
 
 if __name__ == "__main__":
