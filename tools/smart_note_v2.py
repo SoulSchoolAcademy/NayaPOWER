@@ -532,6 +532,166 @@ def _canonical_content_hash(lesson: str) -> str:
     return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
 
 
+# ---------------------------------------------------------------------------
+# B-51 fail-closed index validation (Naya Beta, KNOW, 2026-10-12).
+#
+# _ranked_candidates() is the single retrieval funnel. It used to read the
+# projection index with zero corpus validation, so a drifted checkout
+# retrieved silently wrong intelligence — a wrong answer with no error
+# signal. _validate_index_against_corpus() runs as the first statement of
+# _ranked_candidates(): the whole index is validated before any scoring,
+# regardless of query scope. Any failure raises
+# SystemExit("INDEX_CORRUPT:<code>:<detail>") — never an answer, never a
+# silent fallback, never a downgrade to NO_RELEVANT_INTELLIGENCE.
+#
+# INDEX_CORRUPT:* refusal codes (documented next to the module's existing
+# refusal codes PRIVATE_INTELLIGENCE_NOT_DISCLOSED / NO_RELEVANT_INTELLIGENCE
+# so callers can branch on them). Corruption is not "no answer" — it is
+# "broken, do not trust".
+# ---------------------------------------------------------------------------
+_PROJECTION_INDEX_SCHEMA = "naya.smart-note-projection-index.v1"
+
+INDEX_CORRUPT_CODES = {
+    "INDEX_UNREADABLE":  "index file missing or not valid JSON",
+    "SCHEMA_MISMATCH":   "envelope schema wrong or entries not a list",
+    "ENTRY_MALFORMED":   "entry missing intelligent_block_id or projection_path (str)",
+    "PATH_ESCAPE":       "projection_path absolute, escapes ROOT, or outside allowed roots",
+    "PROJECTION_ABSENT": "projection file does not exist on disk",
+    "DUPLICATE_BINDING": "duplicate intelligent_block_id or projection_path",
+    "PAGE_HASH_MISSING": "entry lacks page_hash (no grandfathering)",
+    "PAGE_HASH_MISMATCH":"projection bytes differ from entry page_hash",
+    "MANIFEST_STALE":    "corpus_manifest_hash != recomputation over full entries",
+}
+
+# Allowed projection roots. Grounded in the live corpus 2026-10-12: 603/603
+# non-null projection_paths live under BRAIN/05-MEMORY/SMART-NOTES/; zero live
+# under .naya/memory/smart-notes/ (that is the index directory, not a
+# projection directory). A future writer projecting elsewhere extends this
+# list with its own receipt — the validator does not guess.
+_ALLOWED_PROJECTION_ROOTS = ("BRAIN/05-MEMORY/SMART-NOTES/",)
+
+
+def _canonical_json_sha256(obj):
+    """Single hashing authority for index-integrity hashes (B-51).
+
+    Writer, backfill, and validator MUST all use this one function. Two
+    independently drifting hash implementations is a future B-51 (cf. the
+    _canonical_content_hash lesson reused by audit_registry).
+    """
+    canonical = json.dumps(obj, sort_keys=True, separators=(",", ":"),
+                           ensure_ascii=False)
+    return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
+
+
+def _page_sha256(path):
+    """sha256 of raw projection-page bytes.
+
+    One field, one meaning: this is the page anchor. It is NOT content_hash,
+    which hashes the capture intelligence payload, not the page bytes.
+    """
+    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+
+def _corpus_manifest_hash(entries):
+    """Index-freshness anchor: sha256 over the FULL canonical entry records.
+
+    Any entry-level change — title edit, keyword edit, entry added/removed,
+    page_hash altered — without a reindex invalidates the manifest. An
+    earlier design draft hashed only (projection_path, page_hash) pairs;
+    that would have let a title-only edit pass silently — the exact hole
+    this exists to close.
+    """
+    return _canonical_json_sha256(entries)
+
+
+def _index_corrupt(code, detail):
+    raise SystemExit(f"INDEX_CORRUPT:{code}:{detail}")
+
+
+def _validate_index_against_corpus(registry, root=ROOT):
+    """Fail-closed validation of the projection index against the corpus.
+
+    Called as the first statement of _ranked_candidates(), after the index
+    load (check 0, readability, raises INDEX_CORRUPT:INDEX_UNREADABLE at the
+    call site when load_json fails). Checks 1..7 run in table order; the
+    first failure wins.
+    Raises SystemExit("INDEX_CORRUPT:<code>:<detail>") on any failure.
+    Never returns a partial verdict, never drops the offending entry and
+    scores the rest (silent coverage loss), never downgrades to
+    NO_RELEVANT_INTELLIGENCE, never returns "" / [] / an empty ranking,
+    never logs-and-proceeds.
+
+    Accepted residual: TOCTOU between validation and page read is
+    milliseconds inside one process. Threat model is accidental drift, not
+    deliberate tampering (an actor who recomputes hashes forges consistency).
+    """
+    root_r = Path(root).resolve()
+    entries = registry.get("entries")
+    # 1 — envelope: schema constant in code anchors the envelope.
+    if registry.get("schema") != _PROJECTION_INDEX_SCHEMA or not isinstance(entries, list):
+        _index_corrupt("SCHEMA_MISMATCH",
+                       f"schema={registry.get('schema')!r} entries_is_list={isinstance(entries, list)}")
+    # 2 — entry shape: every entry carries the binding contract.
+    for e in entries:
+        ib = e.get("intelligent_block_id") if isinstance(e, dict) else None
+        pp = e.get("projection_path") if isinstance(e, dict) else None
+        if not isinstance(ib, str) or not ib or not isinstance(pp, str) or not pp:
+            _index_corrupt("ENTRY_MALFORMED", f"ib={ib!r} projection_path={pp!r}")
+    # 3 — path containment: relative, no .. escape, under ROOT, inside an
+    # allowed projection root. The join is LEXICAL (no per-file resolve()):
+    # with p relative and ".."-free, (root_r / p) is provably under root_r,
+    # and per-file resolve() costs ~110ms on the live corpus — over half the
+    # 200ms hot-path budget. Residual (documented): a symlink component
+    # inside an allowed root could redirect the read outside ROOT; any such
+    # target still faces the page-hash binding, so drift fails closed under
+    # PAGE_HASH_MISMATCH / PROJECTION_ABSENT rather than PATH_ESCAPE.
+    # Threat model is accidental drift, not adversarial tamper.
+    resolved = {}
+    root_prefix = str(root_r) + os.sep
+    for e in entries:
+        pp = e["projection_path"]
+        p = Path(pp)
+        if p.is_absolute() or ".." in p.parts:
+            _index_corrupt("PATH_ESCAPE", f"ib={e['intelligent_block_id']} path={pp!r}")
+        if not any(pp == ar.rstrip("/") or pp.startswith(ar) for ar in _ALLOWED_PROJECTION_ROOTS):
+            _index_corrupt("PATH_ESCAPE",
+                           f"ib={e['intelligent_block_id']} outside_allowed_roots path={pp!r}")
+        full = root_r / p
+        if not str(full).startswith(root_prefix):
+            _index_corrupt("PATH_ESCAPE", f"ib={e['intelligent_block_id']} escapes_root path={pp!r}")
+        resolved[e["intelligent_block_id"]] = full
+    # 4 — file existence: the bound page must exist in the working tree.
+    for e in entries:
+        if not resolved[e["intelligent_block_id"]].is_file():
+            _index_corrupt("PROJECTION_ABSENT",
+                           f"ib={e['intelligent_block_id']} path={e['projection_path']!r}")
+    # 5 — binding uniqueness: no two entries claim the same block or page.
+    seen_ib, seen_pp = set(), set()
+    for e in entries:
+        if e["intelligent_block_id"] in seen_ib:
+            _index_corrupt("DUPLICATE_BINDING",
+                           f"duplicate intelligent_block_id={e['intelligent_block_id']!r}")
+        if e["projection_path"] in seen_pp:
+            _index_corrupt("DUPLICATE_BINDING",
+                           f"duplicate projection_path={e['projection_path']!r}")
+        seen_ib.add(e["intelligent_block_id"])
+        seen_pp.add(e["projection_path"])
+    # 6 — content binding: page bytes must match the entry's page_hash.
+    # Missing page_hash fails closed too — no grandfathering.
+    for e in entries:
+        ph = e.get("page_hash")
+        if not isinstance(ph, str) or not ph:
+            _index_corrupt("PAGE_HASH_MISSING", f"ib={e['intelligent_block_id']}")
+        actual = _page_sha256(resolved[e["intelligent_block_id"]])
+        if actual != ph:
+            _index_corrupt("PAGE_HASH_MISMATCH", f"ib={e['intelligent_block_id']}")
+    # 7 — index freshness: manifest must match recomputation over the full
+    # entry records, so any unreindexed metadata edit fails loudly.
+    if registry.get("corpus_manifest_hash") != _corpus_manifest_hash(entries):
+        _index_corrupt("MANIFEST_STALE", "recomputed manifest differs from index")
+    return True
+
+
 def update_registry(capture, verify, projection, sn_id=None):
     # The whole read-allocate-modify-write runs inside one exclusive
     # transaction: concurrent writers serialize, the commit is atomic.
@@ -580,6 +740,12 @@ def _update_registry_locked(capture, verify, projection, registry, sn_id=None):
         "supersession_reason": capture.get("supersession_reason"),
         "scope": block["owner_scope"],
         "projection_path": str(projection.relative_to(ROOT)).replace("\\\\", "/") if str(projection).startswith(str(ROOT)) else None,
+        # B-51: the page anchor. sha256 of the projection-page bytes as
+        # written, computed inside the same transaction as the index write.
+        # Omitted (None) only if the page is unhashable — the validator
+        # fails closed on that, by design: unvalidatable entries are not
+        # retrievable entries.
+        "page_hash": _page_sha256(projection) if Path(projection).is_file() else None,
         "projection_status": "GITHUB_BRAIN_PUBLISHED" if str(projection).startswith(str(BRAIN_SMART_NOTE_ROOT)) else "PRIVATE_RENDER_VERIFIED",
         "smart_link_status": ("ACTIVE_AUTH_GATED" if str(block.get("owner_scope", "PRIVATE")).upper() == "PRIVATE" else "ACTIVE") if str(projection).startswith(str(BRAIN_SMART_NOTE_ROOT)) else "PENDING_PRIVATE_PROJECTION",
         "smart_link": ("https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/" + str(projection.relative_to(ROOT)).replace("\\", "/")) if str(projection).startswith(str(BRAIN_SMART_NOTE_ROOT)) else None,
@@ -596,6 +762,11 @@ def _update_registry_locked(capture, verify, projection, registry, sn_id=None):
     }
     registry["entries"] = [e for e in registry.get("entries", []) if e.get("intelligent_block_id") != entry["intelligent_block_id"]] + [entry]
     registry["entries"] = sorted(registry["entries"], key=lambda x: (x.get("smart_note_id",""), x.get("intelligent_block_id","")))
+    # B-51: the index-freshness anchor. Recomputed inside the same
+    # transaction as the index write, so writer and validator can never
+    # disagree about what "current" means. Any other code path that mutates
+    # entries must recompute this too — a stale manifest fails closed.
+    registry["corpus_manifest_hash"] = _corpus_manifest_hash(registry["entries"])
     seq_match = re.fullmatch(r"SN-(\d+)", sn_id)
     if seq_match:
         policy = registry.setdefault("sequence_policy", {"human_id_format":"SN-###"})
@@ -738,7 +909,16 @@ def _ranked_candidates(query, areas=None, task_contexts=None):
     areas / task_contexts optionally scope the candidate pool by
     applicability metadata (tools/applicability.py) BEFORE scoring.
     Default (both None) is unchanged behavior: the full corpus."""
-    registry = load_json(REGISTRY)
+    # B-51: fail-closed index validation is the FIRST statement — after the
+    # load, before scoring, before any page read, before applicability
+    # filtering. The whole index is validated regardless of query scope:
+    # drift is a property of the index, not of the query. root=ROOT is read
+    # from module globals at call time so test harnesses can re-point it.
+    try:
+        registry = load_json(REGISTRY)
+    except (OSError, ValueError) as exc:
+        raise SystemExit(f"INDEX_CORRUPT:INDEX_UNREADABLE:{exc.__class__.__name__}") from exc
+    _validate_index_against_corpus(registry, root=ROOT)
     candidates = registry.get("entries", [])
     if areas or task_contexts:
         candidates = _applicability_filter_entries(
