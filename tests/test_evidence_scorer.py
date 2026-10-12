@@ -773,3 +773,34 @@ def test_gate_title_prohibition_sentence_scoped():
     the title's next sentence (sentence scoping preserved)."""
     o = _gated_title("No deploys without Shawn's word. rm -rf the repo now")["options"][0]
     assert o["gated"] is True, o["gate_reasons"]
+
+
+def test_gate_threshold_substring_no_longer_exempts():
+    """Validator finding (9.0 rejection): 'hold' as a substring prohibition
+    marker fired inside 'threshold', silently exempting genuine gate
+    mentions. 'hold' is now matched as a standalone word only."""
+    o = _gated_title(
+        "above the error threshold, drop the production database")["options"][0]
+    assert o["gated"] is True, o["gate_reasons"]
+    assert o["gate_verdict"] == "REQUIRES_SHAWN"
+    o2 = _gated_title(
+        "threshold exceeded: delete the database")["options"][0]
+    assert o2["gated"] is True, o2["gate_reasons"]
+    assert o2["gate_verdict"] == "REQUIRES_SHAWN"
+
+
+def test_gate_holds_suffix_not_prohibition():
+    """'holds' is not the standalone word 'hold': a genuine gate after
+    'holds' still gates (the old substring code exempted it)."""
+    o = _gated_title(
+        "the release holds, deploy to production")["options"][0]
+    assert o["gated"] is True, o["gate_reasons"]
+    assert o["gate_verdict"] == "REQUIRES_SHAWN"
+
+
+def test_gate_standalone_hold_still_prohibits():
+    """The documented Layer-2 case still holds: standalone 'hold' remains a
+    prohibition marker ('Protected gates hold: ...' is the law stated)."""
+    o = _gated_title(
+        "Protected gates hold: no production deploys")["options"][0]
+    assert o["gated"] is False, o["gate_reasons"]

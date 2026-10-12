@@ -203,9 +203,13 @@ def gate_hit(text):
 # constraints do exactly this: "Protected gates hold: no production
 # deploys, ..." — that is the opposite of asking for a deploy.
 PROHIBITION_MARKERS = (
-    "no ", "not ", "never ", "without ", "avoid ", "hold", "protected",
+    "no ", "not ", "never ", "without ", "avoid ", "protected",
     "forbidden", "prohibit", "must not", "cannot", "don't", "do not",
 )
+# "hold" is matched as a standalone word only: a substring match fires
+# inside "threshold" and would silently exempt genuine gate mentions
+# ("above the error threshold, drop the production database").
+PROHIBITION_WORD_PATTERNS = (r"\bhold\b",)
 
 
 def _under_prohibition(text, match_start):
@@ -220,7 +224,8 @@ def _under_prohibition(text, match_start):
     sent_start = max(lowered.rfind(".", 0, match_start),
                      lowered.rfind(";", 0, match_start)) + 1
     pre = lowered[sent_start:match_start]
-    return any(marker in pre for marker in PROHIBITION_MARKERS)
+    return (any(marker in pre for marker in PROHIBITION_MARKERS)
+            or any(re.search(pat, pre) for pat in PROHIBITION_WORD_PATTERNS))
 
 
 def _constraint_requests_gate(text, pat):
