@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-12 00:11 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-12 00:38 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 100 &nbsp;|&nbsp; **Active wave:** #2 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 100 &nbsp;|&nbsp; **Active wave:** #3 (WIRE, TEAM, INFRA)
 
 ## The Twelve
 
@@ -11,41 +11,41 @@
 | **Compounder** | LEARN | *Prove a lesson changes a decision.* | 5.0 | ⚪ standby |
 | **Librarian** | KNOW | *Make drift structurally impossible.* | 7.0 | ⚪ standby |
 | **Bridger** | ACT | *Prove learning reaches action.* | 7.5 | ⚪ standby |
-| **Judge** | LAW | *One engine, one law, no exceptions.* | 8.0 | 🟢 ACTIVE NOW |
-| **Auditor** | PROVE | *No theater — every proof independently verified.* | 6.0 | 🟢 ACTIVE NOW |
-| **Builder** | BUILD | *Merge queue at zero.* | 7.5 | 🟢 ACTIVE NOW |
-| **Electrician** | WIRE | *Every gate wired to a live call site.* | 7.0 | ⚪ standby |
-| **Captain** | TEAM | *No Naya ever blocked waiting.* | 8.0 | ⚪ standby |
-| **Mechanic** | INFRA | *CI that catches real breaks, never false alarms.* | 8.5 | ⚪ standby |
+| **Judge** | LAW | *One engine, one law, no exceptions.* | 8.0 | ⚪ standby |
+| **Auditor** | PROVE | *No theater — every proof independently verified.* | 6.0 | ⚪ standby |
+| **Builder** | BUILD | *Merge queue at zero.* | 7.5 | ⚪ standby |
+| **Electrician** | WIRE | *Every gate wired to a live call site.* | 7.0 | 🟢 ACTIVE NOW |
+| **Captain** | TEAM | *No Naya ever blocked waiting.* | 8.0 | 🟢 ACTIVE NOW |
+| **Mechanic** | INFRA | *CI that catches real breaks, never false alarms.* | 8.5 | 🟢 ACTIVE NOW |
 | **Host** | PRODUCT | *A human can see the intelligence working.* | 6.0 | ⚪ standby |
 | **Archivist** | MEMORY | *No Naya wakes up cold.* | 6.5 | ⚪ standby |
 | **Keeper** | GOVERN | *The briefing every Naya reads is the truth.* | 8.0 | ⚪ standby |
 
 ## Recent Receipts (sign in / out on #2175)
 
+- ✅ **NAYA 2** signed out — 00:37Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6115685526)
+  - Lane:** verify. **What I worked:
+- ✅ **NAYA 2** signed out — 00:34Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6115654067)
+  - Lane:** wire · **What:** claim cycle per protocol + standing T-09 watch.
+- ✅ **NAYA 2** signed out — 00:32Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6115636756)
+  - Lane:** build · **Claim cycle** (MASTER-TODO read fresh this run, all 415 lines): T-25 topmost → build portion DONE (PR #2389 OPEN @ 17153253, FINAL 10/10 SHIPS
+- ✅ **NAYA 2** signed out — 00:23Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6115562922)
+  - Lane:** verify · **What:** claim the topmost entry (T-25), live-state re-check, then step-7 fallback on genuine new work
+- ✅ **NAYA 2** signed out — 00:23Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6115561242)
+  - Lane:** build · **What I worked:** claim cycle per protocol on the freshly-read MASTER-TODO + bottleneck queue, with live GitHub verification.
+- 🟢 **NAYA 2** signed in — 00:22Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6115555781)
+  - Lane:** build · **What I'm doing:** claim cycle per protocol — T-25 topmost (build DONE, PR #2389 FINAL 10/10 SHIPS), sweeping MASTER-TODO + bottleneck queue fo
+- ✅ **NAYA 2** signed out — 00:22Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6115551581)
+  - T-25 (topmost) claim cycle:** CLAIMED per protocol 00:19 UTC; re-read — build holds the LIVE DONE claim (23:25 UTC, FINAL 10/10 SHIPS, PR #2389 verified live th
+- ✅ **NAYA 2** signed out — 00:13Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6115472489)
+  - Lane:** wire · **Claim cycle (per protocol):** T-25 claimed → re-read → **RELEASED**, no status churn.
+- ✅ **NAYA 2** signed out — 00:12Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6115462091)
+  - Claim cycle** (MASTER-TODO + bottleneck queue read fresh; tip ref-anchored live = 665098e3, UNCHANGED since the 23:50 UTC watch):
 - ✅ **NAYA 2** signed out — 00:11Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6115456546)
   - Lane:** verify. **What I worked:** claim cycle per protocol on the fresh-read MASTER-TODO (T-25 topmost).
 - ✅ **KNOW** signed out — 00:04Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6115393807)
 - ✅ **NAYA 2** signed out — 00:03Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6115385747)
   - Lane:** wire. **What I worked:** T-25 claim cycle (topmost TODO) + T-09 wire-watch slice.
-- ✅ **NAYA 2** signed out — 00:02Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6115379723)
-  - Claim cycle** (MASTER-TODO + bottleneck queue both fresh-read, zero OPEN for build):
-- ✅ **NAYA 2** signed out — 00:02Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6115376698)
-  - Lane:** verify. **What I worked:** claim cycle per protocol on the fresh-read MASTER-TODO (T-25 topmost).
-- ✅ **NAYA 2** signed out — 23:56Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6115329482)
-  - Lane:** verify. **What I worked:** T-25 claim cycle (released — build DONE 23:25, my slice DONE 23:35, #2389 still open unmerged) + standing T-09 verify-watch o
-- ✅ **NAYA 2** signed out — 23:55Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6115322722)
-  - What I worked:** T-25 claim cycle → released (build DONE 23:25, verify DONE 23:35; workflow-assertion fix, no wire portion). Walk-down complete → took the T-09 
-- ✅ **NAYA 2** signed out — 23:52Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6115303471)
-  - What I worked:** the claim cycle on the fresh-read MASTER-TODO + bottleneck queue (both zero OPEN for build), on a world that moved mid-window.
-- 🟢 **BUILD** signed in — 23:51Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6115290309)
-  - Claim cycle per protocol on the fresh-read MASTER-TODO + bottleneck queue (both zero OPEN for build: queue fully CLEARED; T-25 build DONE 23:25 FINAL 10/10 SHIP
-- ✅ **NAYA 2** signed out — 23:44Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6115239449)
-  - What I worked:** claim cycle on T-25 (topmost) + T-09 wire-watch slice + directive-register re-check. Tip ref-anchored live: 1b6f72de — UNCHANGED; all re-proofs
-- 🟢 **NAYA 2** signed in — 23:44Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6115239264)
-  - Lane:** wire. **Claiming:** T-25 (topmost TODO) per protocol — claim, re-read, then walk down. No self-claim on PROPOSED entries (T-26/T-27/T-22×2/T-12–T-19 — m
-- ✅ **NAYA 2** signed out — 23:43Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6115226070)
-  - What I worked:** the per-run claim cycle, top-down per protocol, on the ref-anchored live tip 1b6f72d.
 
 ## Open PRs by Area
 
@@ -78,26 +78,28 @@
 - [#2392](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2392) fix(verify): resolve python interpreter at runtime in guard_liveness.t 📝draft
 - [#2374](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2374) test(t21): operating-essence acceptance battery — moral value before n
 
-### BUILD (14)
+### BUILD (13)
 - [#2408](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2408) [ACT] Label apply_retained_intelligence as LOCAL MIRROR (doc-only)
 - [#2353](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2353) Law 12 enforcement: proof receipts expire on material change + unified 📝draft
 - [#2345](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2345) test(2244-E): full-chain proof — failure → notification → collaboratio
 - [#2309](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2309) feat(activation): #2244 req 1 — machine-checkable wake/activation cont
 - [#2304](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2304) Fail-closed: non-iterable manifest nodes raise RuntimeError (fast-foll 📝draft
-- …and 9 more
+- …and 8 more
 
-### WIRE (46)
+### WIRE (45)
 - [#2399](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2399) Receipt gate: exact-head-SHA pin as blocking CI check
 - [#2395](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2395) wire: route execute_plan refusals through decision_discipline.executio
 - [#2364](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2364) feat(gates): show-your-work receipt machinery — no receipt, no merge
 - [#2350](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2350) WIRE: #2244-A worker activation-contract gate on the PR merge path
 - [#2347](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2347) fix(gate): receipt job checks out full history so SHA evidence handles
-- …and 41 more
+- …and 40 more
 
 ### TEAM (1)
 - [#2397](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2397) feat(dashboard): live Team Naya activity dashboard — markdown + machin
 
-### INFRA (2)
+### INFRA (4)
+- [#2410](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2410) Consolidate decision engines into one ultimate engine (Shawn 2026-10-1
+- [#2409](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2409) feat(protocol): Three-Try Circuit Breaker — L236 standing law (Shawn 2
 - [#2387](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2387) law: make no-bottleneck shared mission rule explicit
 - [#2305](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2305) feat(feed): specialty-feed lifecycle registry — #2244 req 2
 
