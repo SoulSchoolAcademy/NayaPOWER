@@ -2,11 +2,12 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-12 03:09 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-12 03:45 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## 🟢 Working right now
 
-- **Team 2 — Naya Sage** (Learning Pipeline) — tick t1192: H5 compounding hypothesis run (wild SN-0286 / untrained domain)
+- **Team 4 — Naya Mason** (Intelligent Blocks) — tick t1212: Four-way proof for 20 seed blocks -> COMPOUNDED status
+- **Team 5 — Naya Seeker** (Retrieval) — tick t1212: Cold-retrieve mechanical re-measure + unauthorized/superseded exclusion proof
 
 ## The Teams
 
@@ -27,6 +28,62 @@ _Last updated: 2026-10-12 03:09 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ## Verified Actions (newest first)
 
+### ✅ t1212 — Team 6, Naya Heir (Successor Transfer) — 8.5/10 [VERIFIED]
+
+**Task:** Meta-trend/meta-learning instrument (compounding JSON + human summary)
+
+**Receipt:** `twelve-lane-receipts/t1212-lane6.md`
+
+**Evidence:** Dispatcher verified all artifacts on disk and ran the instrument twice: deterministic (content_sha256 stable), outputs match receipt claims exactly — overall verdict UNKNOWN (H5-R2 first positive signal, replication pending; no proven compounding cycle), Lane 10 rising (+0.0030/tick), 9 flat-within-noise, Lane 6 unknown (n<3), check_flags empty. In
+
+### ✅ t1212 — Team 5, Naya Seeker (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Cold-retrieve mechanical re-measure + unauthorized/superseded exclusion proof
+
+**Receipt:** `twelve-lane-receipts/t1212-lane5.md`
+
+**Evidence:** Cold band CLOSED with a mechanical number: cold trials 1.15s/1.162s exact SN-016 hit (mincore-verified page-cache eviction, 707/722 files to zero resident, 15 named residuals), warm band 1.042/0.284/0.279s - clean 4x cold/warm distinction, twice-reproduced. Exclusions re-proven on byte-identical live code: unauthorized RETRIEVED (no authorization c
+
+### ✅ t1212 — Team 4, Naya Mason (Intelligent Blocks) — 8.0/10 [VERIFIED]
+
+**Task:** Four-way proof for 20 seed blocks -> COMPOUNDED status
+
+**Receipt:** `twelve-lane-receipts/t1212-lane4.md`
+
+**Evidence:** Dispatcher verified all artifacts on disk: sealed rubric (seal.json pre-arm), fourway_blocks.py, 20 proof records + 20 successor verdicts + orig-corrupt preservation, aggregate-table 60/80 (arm1 20/20, arm2 0/20 T-RT on every block, arm3 20/20, arm4 20/20). Honest negative finding: main-tip exporter is lossy 0/20 byte-exact, t982 exporter 20/20 - t
+
+### ✅ t1202 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Brain-index merge sequence: re-pin tip, verify heal branch, refresh merge runbook for merging seat
+
+**Receipt:** `twelve-lane-receipts/t1202-lane10.md`
+
+**Evidence:** Artifacts verified: runbook + receipt exist; ls-remote independently confirms tip 665098e3f (unchanged) and heal branch 82fe1c62 (unchanged), both SHAs exactly as cited. Case A executed cleanly: heal head parent==tip, 3-file diff, --check OK on heal bytes, drift confirmed still on tip (expected, unmerged), #2385 unchanged, gate still advisory (fres
+
+### ✅ t1202 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Kernel test red root-cause at live tip + #2399 ordered blocker re-verify
+
+**Receipt:** `twelve-lane-receipts/t1202-lane9.md`
+
+**Evidence:** Artifacts verified: origin refs/heads/naya/nine-claim3-advise-count-t1202 == 62331618ca7bd27144c2a7b103c06fe4a3bbc27a exactly as cited; tip 665098e3f unchanged. Root-caused BOTH tip reds as pre-existing (CLAIM 3 expectation drift after ADVISE added by 9237929d; brain-index re-stamp skipped on merge basis f33bba34), fixed with teeth-preserving asser
+
+### ✅ t1202 — Team 2, Naya Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** H5 round 2: unprompted record-recall 2x2 (pointer x lesson), dry-run gated
+
+**Receipt:** `twelve-lane-receipts/t1202-lane2.md`
+
+**Evidence:** First positive compounding signal after five hypothesis lines — verified on disk, not on the receipt's word. All artifacts exist: 4 briefs, sealed record (FACT-3 amended 0.45→0.60, stamp==mtime 03:17:25), pre-reg seal 03:17:46 before first probe output 03:18:22, 8 probe outputs + dry run, blinded scorer packet, scorer scores, arm key sealed 03:22:1
+
+### 🟡 t1202 — Team 2, Naya Sage (Learning Pipeline) — 7.5/10 [PARTIAL]
+
+**Task:** H5 compounding hypothesis run (wild SN-0286 / untrained domain) — go/no-go gate fired, honest stop
+
+**Receipt:** `twelve-lane-receipts/t1202-lane2.md`
+
+**Evidence:** All cited artifacts verified on disk: sealed record, both briefs, decide-fork receipt exist; dry-A output sha256 03144d1c1378ed32d6e6d85bad35080e49e2817c63eaee9ac45d31203cc6922e matches exactly; dry-run verbatim reports sealed 0.50, gate fired honestly, stopping saved 4 arms. Pointer confound owned publicly (control could never show headroom on the
+
 ### ✅ t1192 — Team 8, Naya Sentinel (Governance & Safety) — 8.0/10 [VERIFIED]
 
 **Task:** protected-gate bypass-path audit at tip 665098e3f
@@ -42,6 +99,14 @@ _Last updated: 2026-10-12 03:09 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1192-lane7.md`
 
 **Evidence:** Dispatcher verified all 4 done criteria on disk: lane-12.md seeded with honest-gap note (zero lane-12 receipts/scores confirmed — lane parked by design, nothing inferred); lane-4.md stale line corrected with provenance citing t982 receipt; lane-9.md t952 push-block corrected + PUSH AUTH thread retired with live-origin provenance; twelve-lanes.md re
+
+### 🟡 t1192 — Team 2, Naya Sage (Learning Pipeline) — 7.5/10 [PARTIAL]
+
+**Task:** H5 round 1 record-fidelity: go/no-go gate fired, honest stop
+
+**Receipt:** `twelve-lane-receipts/t1192-lane2.md`
+
+**Evidence:** Dispatcher verified all cited artifacts on disk: hypothesis-change.md (pre-design), decide-fork receipt, sealed record + both briefs, dry-A output sha256 03144d1c...31203cc6922e matches exactly. Gate fired honestly on the fixed rule — stopped before 4 wasted arms. Owned the pointer confound (brief handed the control the record it was testing). 7.5 
 
 ### ✅ t1172 — Team 4, Naya Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
