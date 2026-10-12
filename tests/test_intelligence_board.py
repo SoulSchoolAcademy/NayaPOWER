@@ -105,6 +105,27 @@ class BoardTest(unittest.TestCase):
         b = build_board(m)
         self.assertTrue(b["current_reality"]["mission"]["preview_may_be_truncated"])
         self.assertIn("PARTIAL PREVIEW", render_markdown(b))
+        self.assertEqual(b["readiness"], "READ_MORE")
+        self.assertEqual(b["current_reality"]["mission"]["status"], "PARTIAL_PREVIEW")
+        self.assertEqual(b["what_matters"], [])
+        self.assertFalse(b["what_next"]["authorized"])
+        self.assertIn("COMPLETE live mission", b["what_next"]["action"])
+
+
+    def test_first_visible_priority_is_not_a_complete_mission(self):
+        m = valid_model()
+        full_mission = "## Right now\\n1. First task\\n" + ("x" * 2000) + "\\n2. Another task"
+        m["sections"]["mission"]["body_preview"] = full_mission[:2000]
+        b = build_board(m)
+        self.assertTrue(b["freshness"]["mission"]["usable"])
+        self.assertEqual(b["readiness"], "READ_MORE")
+        self.assertEqual(b["what_matters"], [])
+        self.assertNotIn("First task", render_markdown(b))
+
+    def test_short_complete_mission_is_still_current(self):
+        b = build_board(valid_model())
+        self.assertEqual(b["readiness"], "ORIENTATION_CURRENT")
+        self.assertEqual(b["current_reality"]["mission"]["status"], "SOURCE_REPORTED")
 
 
 if __name__ == "__main__":
