@@ -2,13 +2,13 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-12 07:28 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-12 08:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## 🟢 Working right now
 
-- **Team 1 — Naya Verity** (Verification & Proof) — tick t0012: veracity arm for four-way template
-- **Team 7 — Naya Conductor** (Team Operations) — tick t0012: merge-queue watch + fossil-draft verify-and-close
-- **Team 6 — Naya Heir** (Successor Transfer) — tick t0012: meta-trend instrument + SGF runner reproduction
+- **Team 2 — Naya Sage** (Learning Pipeline) — tick t0072: H8 execution: verify t0052 pre-reg seal, run mechanical dry-run gate, honor verdict
+- **Team 7 — Naya Conductor** (Team Operations) — tick t0072: merge-or-close slot: next 10 fossil-draft batch (post-#1645) + pin-exact pipeline watch
+- **Team 9 — Naya Smith** (Code Health) — tick t0072: #2457 receipt-gate failure diagnosis + kernel-test flip-queue pin-exact status
 
 ## The Teams
 
@@ -1162,6 +1162,150 @@ _Last updated: 2026-10-12 07:28 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t892-lane1.md`
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
+
+### ✅ t0072 — Team 9, Naya Smith (Code Health) — 9/10 [VERIFIED]
+
+**Task:** #2457 receipt-gate failure diagnosis + kernel-test flip-queue pin-exact status
+
+**Receipt:** `twelve-lane-receipts/t0072-lane9.md`
+
+**Evidence:** Root-caused receipt-gate FAILURE to 4 dead artifact handles in own PR body; fixed body; CI SUCCESS confirmed via check-run 114725805735 on head 92fac0983d4d (independent GET). Flip queue heads pin-exact via ls-remote. Self-docked -0.5 (sign-in order) and -0.5 (carried-forward CI table); honest, agrees.
+
+### ✅ t0072 — Team 7, Naya Conductor (Team Operations) — 9/10 [VERIFIED]
+
+**Task:** merge-or-close slot: next 10 fossil-draft batch (post-#1645) + pin-exact pipeline watch
+
+**Receipt:** `twelve-lane-receipts/t0072-lane7.md`
+
+**Evidence:** 10/10 fossil drafts closed as superseded. All 10 heads pin-exact via git protocol; 3/3 REST spot states=closed; pipeline gates classified pin-exact without adjudicating other lanes' gates. Queue 504->494. Two efficiency wins self-named (1825 triage detour, redundant gate re-classification).
+
+### ✅ t0072 — Team 2, Naya Sage (Learning Pipeline) — 9/10 [VERIFIED]
+
+**Task:** H8 execution: verify t0052 pre-reg seal, run mechanical dry-run gate, honor verdict
+
+**Receipt:** `twelve-lane-receipts/t0072-lane2.md`
+
+**Evidence:** Honest NO-GO under sealed pre-reg honored (C1=1 ceiling, zero scored arms spawned). Seal sha256 8c8aa054... verified recomputed on disk; probe dirs, dry-run report, frozen briefs all present. Ceiling N=1 + model-family confound declared, not hidden. No phantom.
+
+### ✅ t0062 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** drift re-verify at live tip + #2385 merge-readiness pin
+
+**Receipt:** `twelve-lane-receipts/t0062-lane10.md`
+
+**Evidence:** Dispatcher verified: tip aa8061c1 re-pinned at remote HEAD via git protocol; #2385 head eedd9540f54cd unchanged; receipt = verification-only run, consistent with t0032 9.0 scoring. -1: competing-boot re-class vs moved base deferred (honest gap named).
+
+### ✅ t0062 — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** merge-or-close slot: 10 fossil-draft batch closed + pin-exact pipeline status (#2453/#2457/#2458/#2399/#2385)
+
+**Receipt:** `twelve-lane-receipts/t0062-lane7.md`
+
+**Evidence:** Dispatcher verified via REST: #2399 merged a545f1107 (receipt head match), fossils #1296/#1645 closed with matching heads, open PR count 504 via search (514->504 claim holds), #2456 open base==tip. -1: redundant per-PR GETs; two gate failure classifications handed off.
+
+### ✅ t0062 — Team 4, Naya Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** #2400 merge-faithfulness on live tip + 20/20 round-trip re-proven + D1 flag-gap repro + Naya-5 handoff
+
+**Receipt:** `twelve-lane-receipts/t0062-lane4.md`
+
+**Evidence:** Dispatcher verified: merge commit 597803d8c exists (squash, parent 2b9315cf1), ancestor of live tip aa8061c1 (compare ahead=55 behind=0); repro JSON on disk with tip SHA, blob bbb8ce533b15 matches receipt. -1: simulated legacy row not real corpus; D1 repair outstanding (correctly not implemented).
+
+### ✅ t0052 — Team 11, Naya Heart (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Human-value instrument window audit t0022-t0052: 9 rows hand-audited (M2:9/M3:8/M4:3), drift watch, HV3 re-derived, baseline extended
+
+**Receipt:** `twelve-lane-receipts/t0052-lane11.md`
+
+**Evidence:** Dispatcher verified on disk: hv_output_t0052_run1.json sha256 e4f54debb... matches receipt pin; metric_audit_t0052.json, SUMMARY_t0052.md, STATS.md, journal all exist. Instrument determinism proven (2 byte-identical runs). Drift: tip re-pinned aa8061c1 at action time; CLEAN verdict rides Lane 10 t0032 --check (stated as such, not claimed as own re-
+
+### ✅ t0052 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Flip-sequence merge seat: all 4 PRs re-pinned at action time, fresh calculator verdicts on #2456/#2457, #2453 principled HOLD honored, Scorecard-Law states exact
+
+**Receipt:** `twelve-lane-receipts/t0052-lane8.md`
+
+**Evidence:** Dispatcher verified via git protocol: refs/pull/2453/head == 3dd7837d8e6e399b1d62aad2b5378a7a3b3d13f4 == receipt pin; refs/pull/2456/head == e326283252a7e9f932b0d9ebad465c50950b0799 == pin; refs/pull/2457/head == 92fac0983d4de8e04f0144d9a99dfaa5e02c8f97 == pin; refs/pull/2458/head == ac270833fb3a52c6be45acc730b0e5132353d5a5 == pin; main == aa8061c1
+
+### ✅ t0052 — Team 2, Naya Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Circuit-breaker HYPOTHESIS CHANGE note + NEW sealed H8 pre-registration (root-different: inheritance SHAPE varies, content constant; seat-local-path CI-bomb lesson)
+
+**Receipt:** `twelve-lane-receipts/t0052-lane2.md`
+
+**Evidence:** Dispatcher verified on disk: prereg-sealed.md sha256 8c8aa05441780e9939375f5e04234b491097df40c7b1330f556e488c6d6fe9d6 == claimed pin; HYPOTHESIS-CHANGE-h8.md, seal-verification.json, arm-key-sealed.json all exist (dir mtimes 08:06-08:07Z). Sign-in #2175 6120247601 (08:05:38Z) predates seal; sign-out 6120289262 (08:08:37Z). Mechanical gate defined F
+
+### ✅ t0042 — Team 9, Naya Smith (Code Health) — 8.5/10 [VERIFIED]
+
+**Task:** Code-health reality check: #2399 merge supersede + tip board pin-exact classification
+
+**Receipt:** `twelve-lane-receipts/t0042-lane9.md`
+
+**Evidence:** Verified #2399 merged b86eba89 (t1232), rename landed via #2428; did not chase a ghost target; tip reds re-classified pin-exact (mjs blob-identity = t1352 pre-existing, Governed Promotion by design, Team-review failures = #2397 issue_comment mechanics); respected Lane 8 HOLD on #2453 (no override). Deductions: classification only, no new artifact; 
+
+### ✅ t0042 — Team 5, Naya Seeker (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Adversarial veracity drill on live tip + VERACITY_GUARD candidate measurement
+
+**Receipt:** `twelve-lane-receipts/t0042-lane5.md`
+
+**Evidence:** Seal-before-run, code sha256 92d8b2be re-proven byte-identical to t1412; 6-arm drill on live tip: falsified-outranks-genuine hole re-proven live; candidate rule measured (served 1->0, falsified-only refusal 6/6, zero negative-control drift, latency noise); blinded re-score 53/53; nothing wired (Shawn's gate respected); verdict handed to Lane 8 with
+
+### ✅ t0042 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** She-Goes-Forever T4/NORMAL cold-acceptance round on live tip aa8061c1
+
+**Receipt:** `twelve-lane-receipts/t0042-lane1.md`
+
+**Evidence:** Seal 07:56:36 predates successor evidence 07:57:59; T5-adv shape correctly NOT invented (no designer confirmation); inline M1-M5 recompute, daily 9.8 TRANSFERS; canonical history 7 lines verified. Deductions: same-family scorer residual + M2 workaround-not-fix (Lane 6 patch unlanded).
+
+### ✅ t0032 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** live-tip drift verdict CLEAN (--check exit 0, 1257 files) + #2446-vs-#2448 attribution resolved (#2446 introduced, #2448 inherited) + superseded heal branch deleted
+
+**Receipt:** `twelve-lane-receipts/t0032-lane10.md`
+
+**Evidence:** Dispatcher verified: tip aa8061c1 unchanged start-to-end (ls-remote == shared-state); heal branch naya/ten-brainindex-heal-t1292 returns 0 lines on origin (deleted); #2385 head eedd9540f unchanged; attribution verdict filed on #2175 (comment 6120046451) with named bisect SHAs on the first-parent chain; bonus finding (re-stamp discarded at #2448 mer
+
+### ✅ t0032 — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** bar ruling executed: 10 fossil triage candidates closed-as-superseded (re-pinned at action time) + #1130 untouched + #2453 merge-seat watch + journal-rot tree-wide pass DONE
+
+**Receipt:** `twelve-lane-receipts/t0032-lane7.md`
+
+**Evidence:** Dispatcher verified ALL 10 closes on live GitHub (REST: #1139/#1169/#1228/#1239/#1240/#1241/#1245/#1246/#1248/#1258 all state=closed). Heads re-pinned at action time per receipt, bar ruling applied correctly, #1130 Shawn-gated left untouched, merge-seat watch current, journal-rot t1192 debt cleared (all 12 journals checked, own stale thread fixed, 
+
+### ✅ t0032 — Team 6, Naya Heir (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** t1412 CTA leg-2 re-sealed with fresh pins + cold brief written + protocol addendum adopted (v1.1)
+
+**Receipt:** `twelve-lane-receipts/t0032-lane6.md`
+
+**Evidence:** Dispatcher verified on disk: seal-verification.json status LIVE; instrument pin 488bce99... and hypothesis-table pin 7f8d3811... recomputed this tick == current on-disk bytes (both MATCH); original seal preserved as seal-verification-t1412-original.json; cold-brief.md + CTA-PROTOCOL-v1.1-addendum.md exist. In-scope protocol amendment adopted via ca
+
+### ✅ t0022 — Team 11, Naya Heart (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** human-value instrument v1.2 window t1402-t0022 audit: M2:18/M3:11/M4:15, HV3 PROVEN-UNMEASURABLE
+
+**Receipt:** `twelve-lane-receipts/t0022-lane11.md`
+
+**Evidence:** Dispatcher verified on disk: metric_audit_t0022.json sha256 aace8582... == receipt pin; hv_output_t0022_run1/2.json present; out-t1402-backup/ NOTE.md + reconstruction present. M3 uniform-verdict broken by independent re-judgment (honest flag, not hidden); t1402-stdout loss owned as reconstruction-not-copy. Deductions per receipt: single-seat judgm
+
+### ✅ t0022 — Team 7, Naya Conductor (Team Operations) — 8.5/10 [VERIFIED]
+
+**Task:** fossil sweep: 30-day bar empty by brief criterion; 10-oldest triage heads pinned at action time; #2453 merge-seat watch
+
+**Receipt:** `twelve-lane-receipts/t0022-lane7.md`
+
+**Evidence:** Dispatcher verified via git protocol: #1139 head 7aca47da..., #1130 head 18916738... (matches t1242 pin), #2453 head 3dd7837d... all match receipt pins. REST legs (1130 open/draft) not re-verified this tick (gh-api allowlist error; head pins match). Correct fallback to triage when batch empty; explicit bar-ruling ask to dispatcher. Deductions per r
+
+### ✅ t0022 — Team 2, Naya Sage (Learning Pipeline) — 8.5/10 [VERIFIED]
+
+**Task:** t1412 G0 VOID owned (seal pins recomputed, 2 legit mismatches) + run_scale end-to-end 11/11 proven
+
+**Receipt:** `twelve-lane-receipts/t0022-lane2.md`
+
+**Evidence:** Dispatcher verified: branch naya/two-compoundscale-fixture-t1432 head ac270833fb3a52c6be45acc730b0e5132353d5a5 == receipt pin (ls-remote); run_report.json sha256 687b8a98... == receipt pin; decision receipt 20261012T073346Z exists. Prime-1 override of stale H4 premise disclosed with precedent; sealed G0 ABORT honored (no fudged negative). Deduction
 
 ### ✅ t0012 — Team 7, Naya Conductor (Team Operations) — 8.5/10 [VERIFIED]
 
