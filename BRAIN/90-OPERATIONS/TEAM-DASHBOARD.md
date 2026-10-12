@@ -1,6 +1,6 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-12 15:07 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-12 16:16 UTC from live sources. Regenerated every wave (~10 min).*
 
 **Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 100 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
@@ -23,30 +23,30 @@
 
 ## Recent Receipts (sign in / out on #2175)
 
-- ✅ **NIGHT** signed out — 15:07Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6126992512)
-  - Lane:** verify (bottleneck crew)
-- ✅ **NIGHT** signed out — 15:01Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6126876887)
-  - Lane:** build (bottleneck crew)
-- ✅ **KNOW** signed out — 15:01Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6126869454)
-  - In a nutshell:** the tip moved since the last KNOW re-proof, so per Law 12 the standing GREEN could not be carried. Re-proved on the new bytes: `--check` exit 0
-- ✅ **LEARN** signed out — 15:01Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6126866434)
-  - Lane:** LEARN — the compounding learning loop (area score 5.0/10).
-- ✅ **ACT** signed out — 15:01Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6126862695)
-  - Lane:** ACT — learning-to-action bridge (area 3). **Score: 7.5** (unchanged standing why-not-10: learning reaches documentation but not action).
-- 🟢 **LEARN** signed in — 14:57Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6126796929)
-  - Lane:** LEARN — the compounding learning loop (area score 5.0/10 — lowest of twelve; this is the mission).
-- 🟢 **KNOW** signed in — 14:57Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6126796360)
-  - Lane:** KNOW — brain substrate, brain-index freshness, retrievability of stored intelligence (area 2). Bullseye: make drift structurally impossible.
-- 🟢 **ACT** signed in — 14:56Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6126786190)
-  - Lane:** ACT — learning-to-action bridge (area 3). Bullseye: prove a lesson changed a decision.
-- ✅ **NIGHT** signed out — 14:55Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6126768432)
-  - Lane:** wire (bottleneck crew, night-shift-wire)
-- ✅ **GOVERN** signed out — 14:48Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6126639735)
-  - In a nutshell:** Watch surface clean on law drift (12/12 laws verbatim vs the pin); new standing law L22 absorbed; both director-click merges dispositioned per 
-- ✅ **MEMORY** signed out — 14:45Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6126590066)
-  - In a nutshell:** Tip moved (`f9b5ac3de3` → `dbe06f9e733efb52c50e583dbb0b74d77039eb73`), so wave-39's proofs expired per Law 12 and everything was re-proven on t
-- ✅ **NAYA 4** signed out — 14:45Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6126580891)
-  - What happened:** tip moved `f9b5ac3d` -> `b71c990d` (two merges: #2068 @13:55:01Z, #2325 @14:01:05Z). Ran a full cycle: independent post-merge verification of b
+- ✅ **NIGHT** signed out — 16:15Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6128144256)
+  - Lane:** wire (bottleneck crew) | **Item:** T-25 claim cycle | **Verdict:** LIST-DRAINED / NO_WORK
+- ✅ **NIGHT** signed out — 16:13Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6128106898)
+  - Lane:** verify · **Run:** night-shift-verify · **Item:** T-25 (queue sweep + standing watches)
+- 🟢 **PROVE** signed in — 16:13Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6128094314)
+  - Mission:** second-instrument independent verification of wave-1's filed claims **B-31** (four-surface SN-collision rule = prose-only, `tools/smart_note_v2.py:66
+- ✅ **NIGHT** signed out — 16:07Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6128007280)
+  - Lane:** wire (bottleneck crew) · **Item:** T-25 claim cycle
+- ✅ **NIGHT** signed out — 16:00Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6127891173)
+  - Lane:** verify (bottleneck crew, night-shift-verify)
+- ✅ **NAYA BRIDGER** signed out — 15:57Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6127842782)
+  - Mission:** prove L246's phantom-constraints voiding reached action. **VERDICT: PARTIAL EFFECTIVENESS — no clean bill.** Self-score: 8.5/10.
+- ✅ **NIGHT** signed out — 15:55Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6127803605)
+  - Lane:** wire (bottleneck crew) · **Item:** T-25 (topmost TODO) · **Verdict:** LIST-DRAINED / NO_WORK
+- 🟢 **ACT** signed in — 15:55Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6127801655)
+  - Mission:** prove L246's phantom-constraints voiding reached action. Audit: grep worker sign-outs/claims for "execution fence" / "execution-phase fence" citation
+- ✅ **NIGHT** signed out — 15:51Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6127739095)
+  - Lane:** build (bottleneck crew, night-shift-build)
+- ✅ **NAYA LIBRARIAN** signed out — 15:50Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6127729216)
+  - Mission:** SN-collision registry four-surface coverage audit at the ref-anchored live tip dbe06f9e733efb52c50e583dbb0b74d77039eb73 (unchanged since 14:42Z).
+- 🟢 **KNOW** signed in — 15:50Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6127722728)
+  - Mission:** audit the SN-collision registry's four-surface coverage against the live tip — verify each of the four required surfaces (#554 comments, open Smart-N
+- ✅ **NAYA COMPOUNDER** signed out — 15:47Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6127677060)
+  - Mission:** mechanize the L24 dead-claim timeout lesson → **WORK DONE. Self-score: 9.0/10.
 
 ## Open PRs by Area
 
@@ -92,11 +92,11 @@
 - …and 12 more
 
 ### WIRE (41)
+- [#2473](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2473) test(gate): B-28 — guard-exercising identifier test + unattributable e
 - [#2466](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2466) fix(gate): remove issue_comment trigger from merge-consensus-gate (t02
 - [#2464](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2464) Hermetic truth-gate fixtures (fixtures-only re-cut of #2419)
 - [#2463](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2463) feat(govern): trigger-chain jurisdiction gate — mechanical close of th
 - [#2459](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2459) Revert #2455 — invalid delegated-merge-authority invocation (LAW verdi
-- [#2411](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2411) Stale premise sweep: feed-gate removal + retired premises (IV 8.5/10)
 - …and 36 more
 
 ### TEAM (1)
