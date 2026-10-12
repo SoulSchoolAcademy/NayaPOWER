@@ -25,6 +25,28 @@ A–M and N–Z each carry exactly this weight sequence: `1 2 3 4 5 6 7 6 5 4 3 
 
 **What the pattern suggests within the author's symbolic framework:** LOVE and CODE meet at fourteen; GOD (13) with LOVE (14) reaches JESUS (27), and JESUS CHRIST's 59 returns to fourteen under *one-step* digit addition. This can be studied as a cohesive spiritual/symbolic reading. The recorded arithmetic is true **given this chosen cipher**; the spiritual interpretation is distinct from a demonstrated causal, historical or predictive claim.
 
+## Director's extended correspondence examples (exact arithmetic)
+
+All calculations below use the same **mirrored Marty Leeds mapping**, not another cipher or a new decision-value calculator. The mathematical *outputs* are reproducible; the proposed associations of LOVE, STAR, geometry, and five-element cosmology are spiritual/symbolic interpretations, **not independent proof of physical or divine causation**.
+
+| Source term | Exact decomposition | Sum | Repeated digit reduction |
+| --- | --- | ---: | ---: |
+| HEAVEN | H6+E5+A1+V5+E5+N1 | 23 | 5 |
+| CHRIST | C3+H6+R5+I5+S6+T7 | 32 | 5 |
+| LOVE | L2+O2+V5+E5 | 14 | 5 |
+| LEARN | L2+E5+A1+R5+N1 | 14 | 5 |
+| NAYA | N1+A1+Y2+A1 | 5 | 5 |
+| STAR | S6+T7+A1+R5 | 19 | 1 |
+| WOOD | W4+O2+O2+D4 | 12 | 3 |
+| FIRE | F6+I5+R5+E5 | 21 | 3 |
+| EARTH | E5+A1+R5+T7+H6 | 24 | 6 |
+| METAL | M1+E5+T7+A1+L2 | 16 | 7 |
+| WATER | W4+A1+T7+E5+R5 | 22 | 4 |
+
+**The five-element aggregation:** 12+21+24+16+22=**95**; one-step digit sum **9+5=14**, then digital root **1+4=5**. Because 95 and 14 are different operations, do not label the first letter score as 14. `STAR=19→1` uses repeated digit reduction (1+9=10, then 1+0=1). If additional rules such as pairing triangles, pentagram strokes or five-element generation/control cycles are introduced, publish the **diagram construction and ordered transform rules separately**; geometrical interpretation does not follow from the cipher total alone.
+
+**Epistemic safeguard:** same result under a many-to-one cipher is an interesting *numerical correspondence*. Cross-channel convergence is a hypothesis requiring separately sourced geometric or textual evidence, preselected examples and comparison baselines before it can establish any factual conclusion. This does not dismiss spiritual meaning; it preserves the distinction between measured arithmetic and interpretation.
+
 ## Critical calibration controls
 
 1. **Use the correct mapping**: some websites name a simple cyclic `1..7,1..7` alphabet cipher “Septenary”; that is **not** the mirrored Marty Leeds mapping. Example: H=6, not 1.
