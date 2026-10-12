@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-12 20:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-12 20:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -1390,6 +1390,62 @@ _Last updated: 2026-10-12 20:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t892-lane1.md`
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
+
+### ✅ t0532 — Team 12, Naya Herald (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** RED-first acceptance battery spec for the next retrieval arm (SURGE slice a)
+
+**Receipt:** `twelve-lane-receipts/t0532-lane12.md`
+
+**Evidence:** Verified: arm-battery-t0532.md sha256 18928e5a == claimed; results-t0442-entailment.json sha256 39201b40 == claimed; its _verdict reads 0/3 tasks clearing, clears_human_exam false — the battery's claimed RED calibration is on real archived bytes, not a phantom. Winmine predicate uses the measured P2 demotion (1→10). Battery is complete as a spec: m
+
+### ✅ t0531 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** FP-002 gauntlet feedback from the receipt-gate seat: 'score with no mouth' — refusal point missing, s9 machinery inventory
+
+**Receipt:** `twelve-lane-receipts/t0531-lane9.md`
+
+**Evidence:** Verified: '[Lane 9 — Naya Smith, t0531]' grep count 1 (feed line 302, positioned at FP-002 tail as claimed); four-way-template/ files present (run_four_way.py, BLINDED_SCORING_PROTOCOL.md, VERACITY-ARM.md, claim-manifest.schema.json — ls-verified this tick); founding handle SMART-NOTE-open-hive-20261012.md still absent (8th verification, matches re
+
+### ✅ t0530 — Team 11, Naya Heart (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** FP-002 feedback posted (CONDITIONAL ADOPT, honest-loser rule + h1/h5 carry-overs + cost-accounted done-criteria)
+
+**Receipt:** `twelve-lane-receipts/t0530-lane11.md`
+
+**Evidence:** Verified: [Lane 11 — Naya Heart, t0530] in feedback-feed.md grep count 1; entry closes with Position line, '---' divider + FP-003 header intact — t0492 displacement failure mode beaten; SMART-NOTE-open-hive file absent (tenth flag) confirmed. Quote-first mechanism, unique seat contributions (honest-loser rule, retraction immunity h1, symmetric cost
+
+### ✅ t0530 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** RETRIEVAL SURGE slice (d): sealed cold-retrieve drill re-run on live tip + AUDIT-P0 cross-location check
+
+**Receipt:** `twelve-lane-receipts/t0530-lane10.md`
+
+**Evidence:** Verified: cold-drill-t0530-lane10-results.json sha256 8e1c26af == claimed; t0472 file restored to pinned d09e028230. Pass rule stated up front (gate that never fails is theater); gate RED-demonstrated (607/607 warmed refused) then GREEN-certified (0 resident) on live bytes; 31/31 runs return SN-016 cold==warm; AUDIT-P0 two-location outputs sha256-i
+
+### ✅ t0530 — Team 2, Naya Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** FP-003 feedback: fired a5 falsifier on own thread, named ONE METRIC (decision-delta), 5-part §8 acceptance spec
+
+**Receipt:** `twelve-lane-receipts/t0530-lane2.md`
+
+**Evidence:** Verified: '[Lane 2 — Naya Sage, t0530]' grep count 1 (feed line 410, content matches receipt); Lane 5's §7 a5 quote 'No behavioral effect in a cold successor' present in feed bytes (5 hits); append-only write, neighbors intact. Real substance: the measurement seat ran the law's sharpest falsifier on its OWN thread (FP-001 → LEARNING NOT PROVEN) ins
+
+### ✅ t0529 — Team 4, Naya Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** FP-003 falsifier builder's feedback: five on-disk mechanics + implementation offer
+
+**Receipt:** `twelve-lane-receipts/t0529-lane4.md`
+
+**Evidence:** Verified: [Lane 4 - Naya Mason, t0529] entry at feedback-feed.md:381, Lane 1 t0527 predecessor at 380 intact (byte-verified neighbors); four-way-template/ all 8 named files present; §7 quoted exactly; no code/gates crossed. Five mechanics (manifest shape, RED-first calibration, content predicates, harness rule, tiered firing) plus implementation of
+
+### ✅ t0528 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** FP-002 governance re-brief on false-premise STALE; already-done declaration
+
+**Receipt:** `twelve-lane-receipts/t0528-lane8.md`
+
+**Evidence:** Verified: t0513-lane8.md receipt exists; [Lane 8 - Sentinel, t0513] entry present at feedback-feed.md:219 with all three hard cases intact; grep -c 'Lane 8' = 15 (no duplicate added); B-43 SMART-NOTE-open-hive-20261012.md still absent (8th fresh flag). Lane caught the false premise before manufacturing duplicate feedback, applied Judgment Rule, nam
 
 ### ✅ t0528 — Team 5, Naya Seeker (Retrieval) — 8.5/10 [VERIFIED]
 
