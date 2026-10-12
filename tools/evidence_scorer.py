@@ -518,7 +518,15 @@ def score_urgency(option, intent, model, pr, conf):
 
 def combine(dimensions):
     """Weighted total. UNKNOWN dimensions are excluded; total degrades
-    honestly instead of pretending. Returns (total, total_confidence)."""
+    honestly instead of pretending. Returns (total, total_confidence).
+
+    CONSOLIDATION NOTE (2026-10-12, Shawn's one-engine word): combine() is
+    evidence reporting, not a ranking authority. The canonical decision
+    engine (kernel/decision_engine.py) performs the ONLY ranking, via
+    kernel.value_calculus.evaluate_candidates. New decision work must flow
+    through the canonical engine; do not build new ranking paths on this
+    function.
+    """
     total = 0.0
     wsum = 0.0
     conf_num = 0.0

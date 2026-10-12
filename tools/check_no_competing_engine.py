@@ -1,9 +1,13 @@
 #!/usr/bin/env python3
 """Fail if a competing decision/scoring engine is defined in kernel/.
 
-Prime 2: THE LAW IS THE CODE. The Decision Value Calculus
-(kernel/value_calculus.py) is the one decision engine. The activation chain
-is the one boot path.
+Prime 2: THE LAW IS THE CODE. The canonical decision engine is
+kernel/decision_engine.py (NAYA-DECISION-ENGINE-V1): it composes the two
+proven layers — kernel/decision_principle.py (two-phase hard gates,
+Shawn's principle as code) and kernel/value_calculus.py (the decision
+math: quality scoring, conservative value, receipts, recalibration).
+The engine's own verdict-mapping and adapter helpers live there; that is
+the ONE engine, not a second one.
 
 This check uses the AST, so it sees only actual definitions — imports,
 comments, docstrings, and string mentions can never trip it. (The previous
@@ -19,11 +23,13 @@ A file fails the check when, outside the canonical locations, it DEFINES
     (decision_engine, scoring_engine, score_action, evaluate_decision, ...).
 
 Canonical locations (never flagged):
-  - kernel/value_calculus.py        — the one decision engine
-  - kernel/protocol/                — machine-law protocol code (domain
-                                      evaluators like evaluate_takeover,
-                                      which are protocol gates, not a
-                                      second decision engine)
+  - kernel/decision_engine.py    — the ONE canonical decision engine
+  - kernel/value_calculus.py     — the engine's math core
+  - kernel/decision_principle.py — the engine's gate layer
+  - kernel/protocol/             — machine-law protocol code (domain
+                                    evaluators like evaluate_takeover,
+                                    which are protocol gates, not a
+                                    second decision engine)
 
 Usage: python3 tools/check_no_competing_engine.py [--root PATH]
 Exit 0: no competing engine. Exit 1: competing engine defined (lists it).
@@ -64,7 +70,11 @@ ENGINE_NAME_RES = [
     re.compile(r"^decisionvalue$"),
 ]
 
-ALLOWLIST_FILES = {"kernel/value_calculus.py"}
+ALLOWLIST_FILES = {
+    "kernel/value_calculus.py",
+    "kernel/decision_principle.py",
+    "kernel/decision_engine.py",
+}
 ALLOWLIST_PREFIXES = ("kernel/protocol/",)
 
 
@@ -120,7 +130,7 @@ def main() -> int:
             print(f"  {h}")
         print("The Decision Value Calculus (kernel/value_calculus.py) is the one decision engine.")
         return 1
-    print("OK: one decision engine (kernel/value_calculus.py), one boot path")
+    print("OK: one decision engine (kernel/decision_engine.py), one boot path")
     return 0
 
 

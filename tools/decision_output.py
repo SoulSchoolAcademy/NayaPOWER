@@ -219,6 +219,13 @@ def decide(norm):
     verdict_dict keys: verdict, best, runner_up, gated, questions,
     notes, sub_verdict (for the gated branch's non-gated section).
     Mode renderers only translate — they never re-decide.
+
+    CONSOLIDATION NOTE (2026-10-12, Shawn's one-engine word): this is the
+    UDM's legacy standalone ranker, kept for its validated tests. The
+    canonical decision engine (kernel/decision_engine.py) performs the ONLY
+    ranking for new decision work, via
+    kernel.value_calculus.evaluate_candidates. Do not build new ranking
+    paths on this function.
     """
     base = {
         "verdict": None, "best": None, "runner_up": None,
