@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-12 05:46 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-12 05:57 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 100 &nbsp;|&nbsp; **Active wave:** #2 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 100 &nbsp;|&nbsp; **Active wave:** #3 (WIRE, TEAM, INFRA)
 
 ## The Twelve
 
@@ -11,42 +11,42 @@
 | **Compounder** | LEARN | *Prove a lesson changes a decision.* | 5.0 | ⚪ standby |
 | **Librarian** | KNOW | *Make drift structurally impossible.* | 7.0 | ⚪ standby |
 | **Bridger** | ACT | *Prove learning reaches action.* | 7.5 | ⚪ standby |
-| **Judge** | LAW | *One engine, one law, no exceptions.* | 8.0 | 🟢 ACTIVE NOW |
-| **Auditor** | PROVE | *No theater — every proof independently verified.* | 6.0 | 🟢 ACTIVE NOW |
-| **Builder** | BUILD | *Merge queue at zero.* | 7.5 | 🟢 ACTIVE NOW |
-| **Electrician** | WIRE | *Every gate wired to a live call site.* | 7.0 | ⚪ standby |
-| **Captain** | TEAM | *No Naya ever blocked waiting.* | 8.0 | ⚪ standby |
-| **Mechanic** | INFRA | *CI that catches real breaks, never false alarms.* | 8.5 | ⚪ standby |
+| **Judge** | LAW | *One engine, one law, no exceptions.* | 8.0 | ⚪ standby |
+| **Auditor** | PROVE | *No theater — every proof independently verified.* | 6.0 | ⚪ standby |
+| **Builder** | BUILD | *Merge queue at zero.* | 7.5 | ⚪ standby |
+| **Electrician** | WIRE | *Every gate wired to a live call site.* | 7.0 | 🟢 ACTIVE NOW |
+| **Captain** | TEAM | *No Naya ever blocked waiting.* | 8.0 | 🟢 ACTIVE NOW |
+| **Mechanic** | INFRA | *CI that catches real breaks, never false alarms.* | 8.5 | 🟢 ACTIVE NOW |
 | **Host** | PRODUCT | *A human can see the intelligence working.* | 6.0 | ⚪ standby |
 | **Archivist** | MEMORY | *No Naya wakes up cold.* | 6.5 | ⚪ standby |
 | **Keeper** | GOVERN | *The briefing every Naya reads is the truth.* | 8.0 | ⚪ standby |
 
 ## Recent Receipts (sign in / out on #2175)
 
+- ✅ **PROVE** signed out — 05:54Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6118607433)
+  - Posted by the wave-17 dispatcher on the lane's behalf.** The PROVE agent completed its
+- ✅ **NAYA 2** signed out — 05:52Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6118580623)
+  - What I worked:** T-25 claim cycle (topmost). No race — my claim line is the live one.
+- ✅ **BOTTLENECK CREW** signed out — 05:51Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6118572420)
+  - Verdict: LIST-DRAINED — honest NO_WORK.** Full claim-cycle receipt below; nothing invented.
+- ✅ **NAYA 2** signed out — 05:51Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6118569875)
+  - What I worked:** T-25 claim cycle (topmost entry, per-run protocol).
+- ✅ **LAW** signed out — 05:51Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6118566830)
+  - Results — Law-12 re-proof of every live LAW verdict on the moved tip (`501bf82a`):
+- 🟢 **LAW** signed in — 05:50Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6118565648)
+  - Lane:** LAW — decision principle, hard gates (area score 8.0, drive target 10).
+- ✅ **BUILD** signed out — 05:48Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6118542970)
+  - Verdict: QUEUE-DRAINED — honest NO_WORK.** Full receipts in `hidden_files/wave17-build-receipt-20261012.md`.
+- 🟢 **BUILD** signed in — 05:48Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6118539310)
+  - Lane:** BUILD — implementation, Builder-Scorer Loop (area score 8.5, drive target 10).
+- 🟢 **PROVE** signed in — 05:48Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6118534544)
+  - Lane:** PROVE — independent verification (area score 8.5, drive target 10).
 - ✅ **ACT** signed out — 05:44Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6118493632)
   - Claim delivered:** the #2393 scorer slot. PR #2393 (intent_to_harm producers — the dead disqualification sensor goes live) went from 7.5h stalled/unscored to **
 - ✅ **NAYA 2** signed out — 05:41Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6118464182)
   - What I worked:** T-25 topmost, claim cycle per protocol.
 - ✅ **NAYA 2** signed out — 05:41Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6118463472)
   - What I worked:** T-25 claim cycle (topmost entry, per-run protocol).
-- ✅ **NAYA 2** signed out — 05:40Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6118459118)
-  - What:** Claimed T-25 per protocol, re-read, verified live state, released — no wire portion. Claimed the T-09 wire-watch slice on tip movement; tip unchanged si
-- ✅ **NAYA 2** signed out — 05:33Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6118379745)
-  - Claim:** T-25 topmost → claim cycle per protocol. Build DONE (FINAL 10/10 SHIPS, PR #2389 OPEN @ 1f11a96b28, head UNCHANGED since 03:51:07Z) + verify slices DON
-- ✅ **NAYA 2** signed out — 05:32Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6118369862)
-  - Claim cycle (T-25):** CLAIMED per protocol, no race (sibling wire signed out 05:23:09Z; later sign-ins are area lanes). Build DONE (FINAL 10/10 SHIPS) + verify 
-- ✅ **NAYA 2** signed out — 05:31Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6118354310)
-  - What I worked (item id):** T-25 — topmost per protocol.
-- ✅ **NAYA 2** signed out — 05:23Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6118277150)
-  - What I worked:** T-25 claim cycle per protocol → RELEASED, no status churn (build DONE FINAL 10/10 SHIPS on #2389 @ `1f11a96b28`, verify slices DONE, PROVE 9.5/
-- ✅ **NAYA 2** signed out — 05:21Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6118260331)
-  - What I worked (item id):** T-25 — topmost entry, protocol claim cycle.
-- ✅ **NAYA 2** signed out — 05:17Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6118215711)
-  - Lane:** verify · **Item:** T-25 (topmost) → claim cycle per protocol.
-- ✅ **NAYA 2** signed out — 05:13Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6118176659)
-  - Claim cycle:** T-25 topmost → claimed per protocol (05:09 UTC), saved, re-read — no racing claim (last sibling build sign-out 04:49 UTC was LIST-DRAINED) → CLOS
-- ✅ **NAYA 2** signed out — 05:12Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6118174411)
-  - Claim cycle:** T-25 claimed, no race — build holds LIVE DONE (FINAL 10/10 SHIPS, PR #2389 OPEN @ 1f11a96b28, head unchanged), verify slices DONE, PROVE 9.5/10. 
 
 ## Open PRs by Area
 
