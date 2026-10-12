@@ -1,25 +1,25 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-10-11",
-  "receipt_basis_commit": "f33bba344a34e9e91b4b5bb6802c22f6eade3145",
-  "inventory_file_count": 1243,
+  "generated_at": "2026-10-12",
+  "receipt_basis_commit": "665098e3f00c9aa6f63907360b8500891704071c",
+  "inventory_file_count": 1259,
   "domain_counts": {
     "00-ACTIVATION": 3,
     "00-ARCHITECTURE": 5,
-    "00-SPEC": 15,
-    "01-GOVERNANCE": 56,
+    "00-SPEC": 16,
+    "01-GOVERNANCE": 59,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
     "05-MEMORY": 646,
     "06-PROOF": 13,
-    "07-LEARNING": 8,
+    "07-LEARNING": 9,
     "08-SUCCESSION": 2,
     "09-EVOLUTION": 2,
     "10-INTERFACES": 380,
     "11-KNOWLEDGE": 7,
     "12-ENGINEERING": 25,
-    "90-OPERATIONS": 13,
+    "90-OPERATIONS": 24,
     "99-ARCHIVE": 2,
     "ROOT": 6
   },
@@ -99,6 +99,11 @@
       "path": "BRAIN/00-SPEC/0006-OBJECT-TYPES-V1.md",
       "blob_sha": "d74f53a516057046699006160b9fc01755b932f0",
       "size": 2969
+    },
+    {
+      "path": "BRAIN/00-SPEC/0007-RETRIEVAL-AUTHORIZATION-GATE-SPEC-V1.md",
+      "blob_sha": "313ff50e2ee05d981c2cc2cb129642fab48e2aa1",
+      "size": 17687
     },
     {
       "path": "BRAIN/00-SPEC/BRAIN-MACHINE-CONTRACT-V1.schema.json",
@@ -364,6 +369,21 @@
       "path": "BRAIN/01-GOVERNANCE/0020-engine-before-production-v1.machine.json",
       "blob_sha": "abc384701525c59d00e565b192b5b30994885bb8",
       "size": 947
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0022-AGENT-BRIEFING-V1.ai.md",
+      "blob_sha": "6a2e949d75d90fcf950b613da399a1f3182072c2",
+      "size": 7791
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0022-AGENT-BRIEFING-V1.human.md",
+      "blob_sha": "e8ab3fc45926e462d5e156fda41d0fbdc3195d78",
+      "size": 4337
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0022-agent-briefing-v1.machine.json",
+      "blob_sha": "54f1a03e39693f81df0b200650c115c27f187458",
+      "size": 7424
     },
     {
       "path": "BRAIN/01-GOVERNANCE/DOC-COMPLETENESS-AUDIT-2026-10-10.md",
@@ -4056,6 +4076,11 @@
       "size": 45508
     },
     {
+      "path": "BRAIN/07-LEARNING/network-lessons/README.md",
+      "blob_sha": "3286bcd0af4c34440e10b8d0cbe9702e8b9eaa05",
+      "size": 706
+    },
+    {
       "path": "BRAIN/08-SUCCESSION/0001-SUCCESSOR-CONTRACT-V1.md",
       "blob_sha": "315b3cdd3c807723a054311551e7dee39855631f",
       "size": 2105
@@ -6196,9 +6221,64 @@
       "size": 20377
     },
     {
+      "path": "BRAIN/90-OPERATIONS/INTER-LEDGER-PROTOCOL.md",
+      "blob_sha": "67d42af19eaecca4934ad668b14dde0ef0c6614f",
+      "size": 24546
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/NETWORK-MAP.md",
+      "blob_sha": "29c74e9d9d6794097ab5c946d3f2e523fc50bb45",
+      "size": 9314
+    },
+    {
       "path": "BRAIN/90-OPERATIONS/README.md",
       "blob_sha": "c9c2abaff6488d74e840ac7ea42ad2ac66468821",
       "size": 2077
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/SMART-LEDGER-PROTOCOL.md",
+      "blob_sha": "dc85d2694699d95f8eb5f7f99071358ee5ea1460",
+      "size": 15869
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/contracts/handoff-contract.md",
+      "blob_sha": "3c8346c5942b582d5f4d2282425ab1c596073757",
+      "size": 21563
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/contracts/learning-contract.md",
+      "blob_sha": "c42197ff505a6183c4d0a921c08b42692e1c25da",
+      "size": 21689
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/contracts/verification-contract.md",
+      "blob_sha": "e70095fcbe076845ac18be65a4ff93ddb491253e",
+      "size": 19666
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/network-map.machine.json",
+      "blob_sha": "3ac19fca90226e3b14c8ff226c68967c1769a337",
+      "size": 5450
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/network-registry.machine.json",
+      "blob_sha": "7741e88e44d8b5613823088b4f5a8f8517410900",
+      "size": 426
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/network-registry/README.md",
+      "blob_sha": "f561613fb1e37bf78dd3628dde7fdd9ec686cdfd",
+      "size": 850
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/network-registry/naya2-team.json",
+      "blob_sha": "7ab1ab56f34e806ae3e39d2fdd9713da4af778fa",
+      "size": 1497
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/network-registry/naya5-team.json",
+      "blob_sha": "cca9bdad8f3f636c67f52a1ca7bda53e299a4cf7",
+      "size": 1489
     },
     {
       "path": "BRAIN/99-ARCHIVE/README.md",
@@ -6212,8 +6292,8 @@
     },
     {
       "path": "BRAIN/CURRENT-MISSION-STATE.md",
-      "blob_sha": "050a4c70f4d29b40fd2129bb0cad5181cc3ad1e3",
-      "size": 111940
+      "blob_sha": "707755eb80cf48289e747415afbf153db42ed4d0",
+      "size": 156850
     },
     {
       "path": "BRAIN/MASTER-MAP.md",
