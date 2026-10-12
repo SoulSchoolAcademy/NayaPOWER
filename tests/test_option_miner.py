@@ -8,7 +8,9 @@ option is traceable to a fixture source (world model section or user text).
 import json
 import os
 import sys
+import time
 import unittest
+from datetime import datetime, timezone
 from pathlib import Path
 from unittest import mock
 
@@ -20,14 +22,23 @@ import option_miner as om
 # Fixtures — a realistic cached world model (controlled, local, no network)
 # ---------------------------------------------------------------------------
 
-def fixture_model():
+def fixture_model(as_of_ts=None):
+    """A realistic cached world model (controlled, local, no network).
+
+    Sections carry as_of_ts stamped fresh by default — Layer 1's freshness
+    contract (status OK *and* age within FRESHNESS_LIMITS) requires it;
+    without as_of_ts every section reads UNKNOWN and mining refuses.
+    Pass as_of_ts explicitly to build stale/aged fixtures.
+    """
+    ts = time.time() if as_of_ts is None else as_of_ts
+    utc = datetime.now(timezone.utc).isoformat()
     return {
         "version": 1,
         "created_utc": "2026-10-12T03:50:00+00:00",
         "sections": {
             "tip": {"status": "OK", "sha": "abc123def456",
-                    "as_of_utc": "2026-10-12T03:50:00+00:00"},
-            "prs": {"status": "OK", "count": 5, "as_of_utc": "2026-10-12T03:50:00+00:00",
+                    "as_of_utc": utc, "as_of_ts": ts},
+            "prs": {"status": "OK", "count": 5, "as_of_utc": utc, "as_of_ts": ts,
                      "prs": [
                          {"number": 2410, "title": "Consolidation: one decision engine",
                           "head_sha": "8de2ac16", "head_branch": "naya5/decision-engine-consolidation",
@@ -50,21 +61,34 @@ def fixture_model():
                           "mergeable": True, "draft": False,
                           "created_at": "2026-10-11T01:05:00Z"},
                      ]},
-            "lanes": {"status": "OK", "as_of_utc": "2026-10-12T03:50:00+00:00",
+            "lanes": {"status": "OK", "as_of_utc": utc, "as_of_ts": ts,
                       "lanes": {"alpha": {"state": "FREE"},
                                 "beta": {"state": "OCCUPIED"},
                                 "gamma": {"state": "FREE"}}},
-            "mission": {"status": "OK", "as_of_utc": "2026-10-12T03:50:00+00:00",
+            "mission": {"status": "OK", "as_of_utc": utc, "as_of_ts": ts,
                         "priorities": ["Close the merge queue", "Validate layer 2"]},
         },
     }
 
 
-def run_mine(intent, model, user_options=None, todo_items=None):
+def run_mine(intent, model, user_options=None, todo_items=None, warnings=None):
     """Run mine_options with the world-model loader patched to a fixture."""
-    with mock.patch.object(om, "load_world_model", return_value=(model, [])), \
+    if warnings is None:
+        warnings = []
+    with mock.patch.object(om, "load_world_model", return_value=(model, warnings)), \
          mock.patch.object(om, "load_grand_todo", return_value=(todo_items or [], [])):
         return om.mine_options(intent, user_options=user_options)
+
+
+def warnings_for(model):
+    """Compute the age-aware warnings load_world_model would produce."""
+    sections = model.get("sections", {})
+    out = []
+    for name in sections:
+        usable, state = om.section_usable(name, sections)
+        if not usable:
+            out.append(f"world model section '{name}' is {state} — too stale")
+    return out
 
 
 # ---------------------------------------------------------------------------
@@ -276,8 +300,13 @@ class TestHonesty(unittest.TestCase):
         finally:
             os.unlink(tmp)
         self.assertTrue(any("STALE" in w for w in r["warnings"]))
-        # Still mines, but notes the PR options are unavailable
-        self.assertTrue(any("PR options unavailable" in n for n in r["notes"]))
+        # Stale NEEDED section refuses the run — UNKNOWN + READ_MORE,
+        # exit 2. Mining a partial option set with a warning footnote is
+        # the false-confidence failure P0-F1 forbids.
+        self.assertEqual(r["exit_hint"], 2)
+        self.assertEqual(r["options"], [])
+        self.assertTrue(any("UNKNOWN" in n for n in r["notes"]))
+        self.assertTrue(any("READ_MORE" in n for n in r["notes"]))
 
     def test_stale_tip_warns(self):
         model = fixture_model()
@@ -289,7 +318,14 @@ class TestHonesty(unittest.TestCase):
         model = fixture_model()
         del model["sections"]["mission"]
         r = run_mine(intent_what_next(), model)
-        self.assertTrue(any("mission section is UNKNOWN" in n for n in r["notes"]))
+        # Missing NEEDED section refuses — UNKNOWN + READ_MORE, exit 2.
+        # A "mission options unavailable" footnote on a mined set would be
+        # a positive answer from incomplete data.
+        self.assertEqual(r["exit_hint"], 2)
+        self.assertEqual(r["options"], [])
+        self.assertTrue(any("UNKNOWN" in n and "mission" in n
+                            for n in r["notes"]))
+        self.assertTrue(any("READ_MORE" in n for n in r["notes"]))
 
 
 class TestDuplicates(unittest.TestCase):
@@ -333,6 +369,175 @@ class TestUserAdded(unittest.TestCase):
                      user_options=["what about a third engine?"])
         user_opts = [o for o in r["options"] if o["source_type"] == "user_added"]
         self.assertEqual(len(user_opts), 1)
+
+
+class TestFreshnessSeam(unittest.TestCase):
+    """The L1→L3 freshness seam: the miner reads the SAME cache file Layer 1
+    refuses to answer from when stale. A section whose status is "OK" but
+    whose as_of_ts is older than Layer 1's FRESHNESS_LIMITS is STALE — the
+    miner must refuse (UNKNOWN + READ_MORE, exit 2), never mine confidently
+    from stale bytes. That confident mining is the exact false-confidence
+    failure Layer 1's P0-F1 was built to kill."""
+
+    def aged_model(self, section_name, age_seconds, status="OK"):
+        m = fixture_model()
+        sec = m["sections"][section_name]
+        sec["as_of_ts"] = time.time() - age_seconds
+        sec["status"] = status
+        return m
+
+    def test_stale_prs_refuses(self):
+        # 3h-aged prs (limit 600s): the rehearsal's exact defect.
+        r = run_mine(intent_what_next(), self.aged_model("prs", 3 * 3600))
+        self.assertFalse(r["ok"])
+        self.assertEqual(r["exit_hint"], 2)
+        self.assertEqual(r["options"], [])
+        notes = "\n".join(r["notes"])
+        self.assertIn("UNKNOWN", notes)
+        self.assertIn("READ_MORE", notes)
+        self.assertIn("prs", notes)
+
+    def test_stale_lanes_refuses_what_blocking(self):
+        r = run_mine(
+            {"ok": True, "intent_type": "what_blocking", "references": {},
+             "grounded_references": {"prs": []}},
+            self.aged_model("lanes", 3600))
+        self.assertFalse(r["ok"])
+        self.assertEqual(r["exit_hint"], 2)
+        self.assertIn("lanes", "\n".join(r["notes"]))
+
+    def test_stale_mission_refuses_what_next(self):
+        r = run_mine(intent_what_next(), self.aged_model("mission", 7200))
+        self.assertFalse(r["ok"])
+        self.assertEqual(r["exit_hint"], 2)
+
+    def test_should_merge_needs_only_prs(self):
+        # lanes stale but prs fresh: should_merge doesn't mine lanes,
+        # so it proceeds (with a loud warning, not a refusal).
+        m = self.aged_model("lanes", 3600)
+        r = run_mine(intent_should_merge(), m, warnings=warnings_for(m))
+        self.assertEqual(r["exit_hint"], 0)
+        self.assertTrue(any("lanes" in w and "STALE" in w
+                            for w in r["warnings"]))
+
+    def test_ttl_boundary(self):
+        # prs limit is 600s: 590s old mines, 610s old refuses.
+        r_fresh = run_mine(intent_what_next(), self.aged_model("prs", 590))
+        self.assertEqual(r_fresh["exit_hint"], 0, r_fresh["notes"])
+        r_stale = run_mine(intent_what_next(), self.aged_model("prs", 610))
+        self.assertEqual(r_stale["exit_hint"], 2)
+
+    def test_partial_prs_refuses(self):
+        m = self.aged_model("prs", 0, status="PARTIAL")
+        m["sections"]["prs"]["pr_count_lower_bound"] = 100
+        r = run_mine(intent_should_merge(), m)
+        self.assertFalse(r["ok"])
+        self.assertEqual(r["exit_hint"], 2)
+        self.assertIn("PARTIAL", "\n".join(r["notes"]))
+
+    def test_missing_section_refuses(self):
+        m = fixture_model()
+        del m["sections"]["prs"]
+        r = run_mine(intent_should_merge(), m)
+        self.assertFalse(r["ok"])
+        self.assertEqual(r["exit_hint"], 2)
+        self.assertIn("UNKNOWN", "\n".join(r["notes"]))
+
+    def test_section_without_timestamp_refuses(self):
+        # as_of_ts missing entirely: Layer 1 reads it as UNKNOWN.
+        m = fixture_model()
+        del m["sections"]["prs"]["as_of_ts"]
+        r = run_mine(intent_should_merge(), m)
+        self.assertFalse(r["ok"])
+        self.assertEqual(r["exit_hint"], 2)
+
+    def test_unneeded_stale_section_warns_not_refuses(self):
+        # ledger is not mined by what_next: stale ledger warns loudly,
+        # mining proceeds from the fresh needed sections.
+        m = fixture_model()
+        m["sections"]["ledger"] = {"status": "OK",
+                                   "as_of_ts": time.time() - 7200}
+        r = run_mine(intent_what_next(), m, warnings=warnings_for(m))
+        self.assertEqual(r["exit_hint"], 0)
+        self.assertTrue(any("ledger" in w and "STALE" in w
+                            for w in r["warnings"]))
+
+    def test_stale_tip_warns_not_refuses(self):
+        m = self.aged_model("tip", 3600)
+        r = run_mine(intent_what_next(), m, warnings=warnings_for(m))
+        self.assertEqual(r["exit_hint"], 0)
+        self.assertTrue(any("tip" in w and "STALE" in w
+                            for w in r["warnings"]))
+
+    def test_fresh_fixture_mines_normally(self):
+        r = run_mine(intent_what_next(), fixture_model())
+        self.assertEqual(r["exit_hint"], 0)
+        self.assertTrue(r["options"])
+
+    def test_ttl_agreement_with_layer1(self):
+        # The miner must never disagree with Layer 1 about "stale".
+        from world_model import FRESHNESS_LIMITS as L1_LIMITS
+        from world_model import section_usable as l1_usable
+        self.assertEqual(om.FRESHNESS_LIMITS, L1_LIMITS)
+        now = time.time()
+        for name, limit in L1_LIMITS.items():
+            sections = {name: {"status": "OK", "as_of_ts": now - limit - 1}}
+            self.assertEqual(l1_usable(name, sections), (False, "STALE"))
+            mine_usable, _ = om.section_usable(name, sections)
+            self.assertFalse(mine_usable, f"miner disagrees with L1 on {name}")
+            sections[name]["as_of_ts"] = now
+            self.assertEqual(l1_usable(name, sections), (True, "FRESH"))
+
+    def test_cli_stale_cache_exit_2(self):
+        # End-to-end through the real CLI: a 3h-stale cache on disk
+        # refuses with exit 2 and UNKNOWN + READ_MORE, never options.
+        import subprocess
+        import tempfile
+        tmp = tempfile.TemporaryDirectory()
+        home = Path(tmp.name)
+        (home / ".naya").mkdir()
+        (home / ".naya" / "world-model.json").write_text(
+            json.dumps(fixture_model(as_of_ts=time.time() - 3 * 3600)))
+        script = str(Path(__file__).resolve().parents[1]
+                     / "tools" / "option_miner.py")
+        env = dict(os.environ, HOME=str(home))
+        try:
+            p = subprocess.run(
+                [sys.executable, script, "mine", "--intent",
+                 json.dumps(intent_what_next())],
+                capture_output=True, text=True, env=env)
+            self.assertEqual(p.returncode, 2, p.stderr)
+            r = json.loads(p.stdout)
+            self.assertFalse(r["ok"])
+            self.assertEqual(r["options"], [])
+            notes = "\n".join(r["notes"])
+            self.assertIn("UNKNOWN", notes)
+            self.assertIn("READ_MORE", notes)
+        finally:
+            tmp.cleanup()
+
+    def test_cli_fresh_cache_exit_0(self):
+        import subprocess
+        import tempfile
+        tmp = tempfile.TemporaryDirectory()
+        home = Path(tmp.name)
+        (home / ".naya").mkdir()
+        (home / ".naya" / "world-model.json").write_text(
+            json.dumps(fixture_model()))
+        script = str(Path(__file__).resolve().parents[1]
+                     / "tools" / "option_miner.py")
+        env = dict(os.environ, HOME=str(home))
+        try:
+            p = subprocess.run(
+                [sys.executable, script, "mine", "--intent",
+                 json.dumps(intent_what_next())],
+                capture_output=True, text=True, env=env)
+            self.assertEqual(p.returncode, 0, p.stderr)
+            r = json.loads(p.stdout)
+            self.assertTrue(r["ok"])
+            self.assertTrue(r["options"])
+        finally:
+            tmp.cleanup()
 
 
 class TestCLI(unittest.TestCase):
