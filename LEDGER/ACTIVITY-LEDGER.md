@@ -2,13 +2,12 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-12 00:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-12 01:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## 🟢 Working right now
 
-- **Team 2 — Naya Sage** (Learning Pipeline) — tick t992: one-metric v2: pressure-shaped probes, N>=3/arm, separate scorer, pre-registered rubric, receipt in-
-- **Team 6 — Naya Heir** (Successor Transfer) — tick t992: Naya Heir fluid: operationalize she-goes-forever daily runner from Lane 1's t972 spec, one live dry 
-- **Team 9 — Naya Smith** (Code Health) — tick t992: receipt-gate live proof: pin PR #2399 head, classify all check-runs, merge-readiness diagnosis
+- **Team 10 — Naya Librarian** (Brain Index) — tick t1022
+- **Team 11 — Naya Heart** (Human Value) — tick t1022
 
 ## The Teams
 
@@ -28,6 +27,70 @@ _Last updated: 2026-10-12 00:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 | Team 12 | Naya Herald | NayaNET / Hub |
 
 ## Verified Actions (newest first)
+
+### ✅ t1022 — Team 10, Naya Librarian (Brain Index) — 8.5/10 [VERIFIED]
+
+**Task:** #2385 drift-gate watch: re-pin head, classify check-runs, verify tip cleanliness, refreshed verdict
+
+**Receipt:** `twelve-lane-receipts/t1022-lane10.md`
+
+**Evidence:** Dispatcher verified: receipt exists; PR #2385 head eedd9540f54cd96c241db4be2f43f0698ae4dd07 matches refs/pull/2385/head on origin exactly (unchanged since t982). Watch-only mandate honored (nothing pushed/merged). All 15 check-runs on exact head classified with base re-confirmation (base moved 230b397ac->b5007fd8d2; kernel test + competing-boot red
+
+### ✅ t1022 — Team 5, Naya Seeker (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** cold-retrieve claim re-verification on current tip (CLAIM HOLDS / CLAIM STALE)
+
+**Receipt:** `twelve-lane-receipts/t1022-lane5.md`
+
+**Evidence:** Dispatcher verified: receipt exists; tip 665098e3f00c9aa6f63907360b8500891704071c confirmed on origin and equals shared-state main_tip; commit cf08c2db439d712cf4de6f71a9a36814e2758ffe exists; sign-out comment 6115976448 exists on #2175. Cheap-check-first done right: retrieval diff between t902 pin f33bba34 and current tip found exactly one commit (
+
+### ✅ t1012 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** allowlist-or-rename analysis for red-on-main 'No competing boot/authority systems' check (recommendation only)
+
+**Receipt:** `twelve-lane-receipts/t1012-lane8.md`
+
+**Evidence:** Dispatcher verified: receipt exists; cited main tip 665098e3f00c9aa6f63907360b8500891704071c matches shared-state main_tip; lane journal updated; #2175 sign-out comment 6115874552 exists. Analysis: gate reproduced failing on exact tip bytes (one hit kernel/decision_principle.py:218); call graph shows zero production call sites (tests + self-use onl
+
+### ✅ t1012 — Team 3, Naya Judge (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** fix consolidation branch to strict 7.0/0.05 bar (Shawn's decided policy override)
+
+**Receipt:** `twelve-lane-receipts/t1012-lane3.md`
+
+**Evidence:** Dispatcher verified: receipt exists; remote head of naya/three-decision-consolidate == 43c0113eee302db2c334aa9d5d3139ea0afd1d77 via git ls-remote (matches receipt claim exactly); lane journal updated; #2175 sign-in/out comments 6115861983/6115905426. Strict bar behaviorally proven: ASSESSED_HARM_SEVERITY_BAR=7.0/PROBABILITY_BAR=0.05 byte-present, h
+
+### ✅ t1012 — Team 2, Naya Sage (Learning Pipeline) — 8.0/10 [VERIFIED]
+
+**Task:** single-arm exact-shape replication (t992 A shape + L-099, N=1) to resolve t1002 shape confound
+
+**Receipt:** `twelve-lane-receipts/t1012-lane2.md`
+
+**Evidence:** Dispatcher verified: receipt + lane2-t1012-shapeA/ (probe-prompt, arm-plain-a, scorer-output) + decide.py fork receipt all exist on disk; t1002 pre-reg seal intact (mtime matches in-file stamp). Primary finding: t1002's 'shape confound' is a false memory - t992 ARM-07 ran on A2 not plain A, so t1002's 3/3 rejection WAS the exact-shape replication. 
+
+### ✅ t1002 — Team 9, Naya Smith (Code Health) — 8.5/10 [VERIFIED]
+
+**Task:** re-pin PR #2399, check receipt-gate re-run post-pin, root-cause protocol-gates red, updated merge-readiness
+
+**Receipt:** `twelve-lane-receipts/t1002-lane9.md`
+
+**Evidence:** Dispatcher verified: receipt exists. (1) Fresh pin: head == branch == 4776be062822c09c9a346acb1c33c6e0705ec03a — no movement since t992; pin block still byte-exact. (2) PASS-side proof: NO — only one receipt-gate run ever (38185462136, failed 16:45:14, 96s pre-pin); re-run-now still the highest-value action. (3) New post-pin runs classified: worker
+
+### ✅ t1002 — Team 2, Naya Sage (Learning Pipeline) — 8.0/10 [VERIFIED]
+
+**Task:** conflict-flagging 2x2 follow-up to t992 footnote-compliance finding (pre-registered, calibration-gated)
+
+**Receipt:** `twelve-lane-receipts/t1002-lane2.md`
+
+**Evidence:** Dispatcher verified: receipt + preregistration (sealed 00:45:23 UTC before any arm) + dry-run + arm key all exist; decide.py fork choice run first (fixes t992 standing-order-1 deviation). Honest no-go: single calibration dry arm (FALSE+UNFLAGGED) scored 3/3 — full rejection of the false lesson — so the sealed go/no-go rule fired STOP and the 8 scor
+
+### ✅ t1002 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** independent pin-exact verification of Lane 6's SGF daily-runner branch + pending-history sign-off/decline gate
+
+**Receipt:** `twelve-lane-receipts/t1002-lane1.md`
+
+**Evidence:** Dispatcher verified: receipt exists. SIGN-OFF — the full gate passed: (1) pin re-confirmed (41dfc86e, no movement, 3/3 files at head); (2) seal predates spawn, brief sha matches seal; (3) blinding held, scorer D1-D4 9/9/9/10; (4) machine M1-M5 recomputed inline against spec logic — daily 9.65 byte-identical to Lane 6's claim; (5) runner imports sta
 
 ### ✅ t992 — Team 9, Naya Smith (Code Health) — 8.5/10 [VERIFIED]
 
