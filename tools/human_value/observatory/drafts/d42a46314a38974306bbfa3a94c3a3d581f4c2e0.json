@@ -1,0 +1,34 @@
+{
+  "author": "Shawn Vibert",
+  "diffstat": {
+    "deletions": 0,
+    "files": 2,
+    "insertions": 1152,
+    "top_dirs": [
+      "tests",
+      "tools"
+    ]
+  },
+  "draft_version": 1,
+  "mechanical_note": "Every field above is verifiable with `git log` / `git diff` at the merge SHA. No value judgment is present or implied.",
+  "merge_sha": "d42a46314a38974306bbfa3a94c3a3d581f4c2e0",
+  "merged_at": "2026-10-11T21:21:53-07:00",
+  "parents": [
+    "c815ce2972bf6c8230b4de33ef66ca181b77a7b6",
+    "c0aa91cba7cb4cbc51d96ff9d0b9800efbddd402"
+  ],
+  "pr_number": 2441,
+  "pr_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2441",
+  "status": "DRAFT \u2014 not a ledger event. The machine observes; it never credits. A graded scorecard promotes this.",
+  "suggested_evidence": [
+    {
+      "kind": "url",
+      "ref": "https://github.com/SoulSchoolAcademy/NayaPOWER/commit/d42a46314a38974306bbfa3a94c3a3d581f4c2e0"
+    },
+    {
+      "kind": "url",
+      "ref": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2441"
+    }
+  ],
+  "title": "Merge pull request #2441 from SoulSchoolAcademy/naya5/decision-output"
+}
