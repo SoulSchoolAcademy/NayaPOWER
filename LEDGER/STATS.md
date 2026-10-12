@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-12 18:02 UTC_
+_Last updated: 2026-10-12 18:32 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 290
-- ✅ Verified (8+): 285
+- **Total scored actions:** 300
+- ✅ Verified (8+): 295
 - 🟡 Partial (5–7): 4
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 1
@@ -16,16 +16,16 @@ _Last updated: 2026-10-12 18:02 UTC_
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
 | Team 1 | Naya Verity | 32 | 8.9 | 9.5 |
-| Team 2 | Naya Sage | 44 | 8.5 | 9.0 |
+| Team 2 | Naya Sage | 45 | 8.5 | 9.0 |
 | Team 3 | Naya Judge | 21 | 8.6 | 9.0 |
-| Team 4 | Naya Mason | 14 | 8.9 | 9.5 |
-| Team 5 | Naya Seeker | 16 | 8.9 | 9.0 |
+| Team 4 | Naya Mason | 15 | 8.9 | 9.5 |
+| Team 5 | Naya Seeker | 17 | 8.9 | 9.0 |
 | Team 6 | Naya Heir | 17 | 9.0 | 9.5 |
 | Team 7 | Naya Conductor | 31 | 8.8 | 9.0 |
-| Team 8 | Naya Sentinel | 29 | 8.9 | 9.5 |
-| Team 9 | Naya Smith | 30 | 8.5 | 9.5 |
-| Team 10 | Naya Librarian | 33 | 8.8 | 9.0 |
-| Team 11 | Naya Heart | 23 | 8.9 | 9.0 |
+| Team 8 | Naya Sentinel | 30 | 8.9 | 9.5 |
+| Team 9 | Naya Smith | 33 | 8.6 | 9.5 |
+| Team 10 | Naya Librarian | 35 | 8.9 | 9.0 |
+| Team 11 | Naya Heart | 24 | 8.9 | 9.0 |
 | Team 12 | Naya Herald | 0 | — | — |
 
 ## Learning velocity
@@ -73,7 +73,8 @@ _Last updated: 2026-10-12 18:02 UTC_
 - **t0462:** 2 actions, avg 9.0/10
 - **t462:** 1 actions, avg 9.0/10
 - **t0472:** 1 actions, avg 9.0/10
-- **t0482:** 1 actions, avg 8.0/10
+- **t0482:** 2 actions, avg 8.5/10
+- **t0492:** 3 actions, avg 8.8/10
 - **t892:** 6 actions, avg 8.3/10
 - **t902:** 2 actions, avg 4.5/10
 - **t912:** 3 actions, avg 8.5/10
@@ -113,7 +114,7 @@ _Last updated: 2026-10-12 18:02 UTC_
 - **t1402:** 6 actions, avg 8.7/10
 - **t1412:** 3 actions, avg 9.0/10
 - **t1422:** 6 actions, avg 8.6/10
-- **t1432:** 4 actions, avg 9.0/10
-- **t1442:** 3 actions, avg 9.0/10
+- **t1432:** 7 actions, avg 9.0/10
+- **t1442:** 6 actions, avg 9.0/10
 
 _A rising average with zero phantoms is the proof the team is learning and growing._
