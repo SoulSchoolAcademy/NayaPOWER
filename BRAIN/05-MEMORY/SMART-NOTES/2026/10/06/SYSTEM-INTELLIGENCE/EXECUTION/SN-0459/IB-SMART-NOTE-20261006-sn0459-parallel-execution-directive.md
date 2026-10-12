@@ -31,7 +31,7 @@ Don't do one thing at a time when you could do several. It's like cooking: the p
 
 This is now my operating code. Every plan I make: list everything, find what truly depends on what, and start everything that's ready — at the same time. If I catch myself doing independent things one after another, that's a defect and I fix the plan. The scorecard now asks: was anything left waiting that didn't have to wait?
 
-## MACHINE
+## 🟢 MACHINE NOTE
 
 ```json
 {
