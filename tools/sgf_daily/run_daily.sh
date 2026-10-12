@@ -19,9 +19,10 @@
 #          subagent with claim + rubric + evidence ONLY and saves its output to
 #          scorer/scores.json.
 #   run_daily.sh --phase score --run-dir <dir> --scorer-scores <path>
-#       -> runs the M1-M5 mechanical checks + verdict computation (Lane 1's stage_score,
-#          base-patched so the history line lands HERE as pending-history.jsonl),
-#          writes scorecard.json + verdict.json, verifies every artifact exists.
+#       -> runs the VENDORED M1-M6 scoring port (pin-verified: refuses to run
+#          unless sgf_daily_score.py matches its pinned sha256), writes
+#          scorecard.json + verdict.json, queues the history line HERE as
+#          pending-history.jsonl, verifies every artifact exists.
 #
 # The full daily loop is documented in CRON-SPEC.md. A cold reader runs one command
 # per phase, gets a sealed verdict, and finds the evidence in the run dir.
@@ -143,15 +144,28 @@ fi
 if [[ "$PHASE" == "score" ]]; then
   [[ -n "$RUN_DIR" && -n "$SCORER_SCORES" ]] || usage
   [[ -f "$SCORER_SCORES" ]] || { echo "FATAL: scorer scores not found: $SCORER_SCORES"; exit 1; }
-  # Lane-1 stage_score reused verbatim; BASE is patched ONLY so the appended
-  # history line lands in the Lane-6 pending file instead of lane-1's canonical
-  # sgf_history.jsonl (read-only lane — the installing seat moves it with sign-off).
-  python3 - "$SGF_RUNNER" "$RUN_DIR" "$SCORER_SCORES" "$L6" <<'EOF'
+  # t0212: the scoring stage no longer imports Lane 1's live file. It runs the
+  # LANE-6 VENDORED PORT (sgf_daily_score.py), which carries the t0172 M6
+  # swallower-veto in the runner's own bytes. The pin check below refuses to
+  # score if the vendored bytes are anything but the tested revision — a
+  # changed score file is a changed instrument, and this runner never scores
+  # on an instrument it did not test.
+  SCORE_MOD="$L6/sgf_daily_score.py"
+  SCORE_PIN="f3c1f26285e9c3d02470a1575835ab1c7a6fd2cf43b8f643ecd42a9987406595"
+  ACTUAL_SHA=$(sha256sum "$SCORE_MOD" | cut -d' ' -f1)
+  [[ "$ACTUAL_SHA" == "$SCORE_PIN" ]] || {
+    echo "FATAL: sgf_daily_score.py sha256 $ACTUAL_SHA != pinned $SCORE_PIN"
+    echo "The scoring instrument changed — re-run tests/battery before scoring."
+    exit 1; }
+  # Lane-1 stage_score reused as the vendored port; BASE is passed so the
+  # appended history line lands HERE as pending-history.jsonl (read-only lane —
+  # the installing seat moves it into lane-1's canonical sgf_history.jsonl
+  # with the spec owner's sign-off).
+  python3 - "$SCORE_MOD" "$RUN_DIR" "$SCORER_SCORES" "$L6" <<'EOF'
 import importlib.util, sys
-spec = importlib.util.spec_from_file_location("sgf_runner", sys.argv[1])
+spec = importlib.util.spec_from_file_location("sgf_daily_score", sys.argv[1])
 m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m)
-m.BASE = sys.argv[4]   # history line -> lane-6/sgf_history.jsonl (pending queue)
-m.stage_score(sys.argv[2], sys.argv[3])
+m.stage_score(sys.argv[2], sys.argv[3], base=sys.argv[4])
 EOF
   mv "$L6/sgf_history.jsonl" "$RUN_DIR/pending-history.jsonl" 2>/dev/null || true
   echo "--- artifact verification (all must exist) ---"

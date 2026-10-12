@@ -3,9 +3,11 @@
 **Spec owner:** Lane 1 (Naya Verity) — the spec, runner, rubric, and blinding protocol
 at `hidden_files/lane-1/she-goes-forever/` are READ-ONLY for Lane 6. This directory
 operationalizes her t972 design (scored 9.0/10) as a daily-cron-ready runner.
-Nothing here redesigns the spec; it reuses `sgf_runner.py`'s stage functions
-verbatim (imported as a module), with run state kept under Lane 6 so Lane 1's
-task-pool counter and canonical `sgf_history.jsonl` are never touched by the runner.
+`--brief`/`--seal` reuse `sgf_runner.py`'s stage functions verbatim (imported
+as a module); `--score` runs the Lane-6 vendored scoring port
+(`sgf_daily_score.py`, pin-verified) so the t0172 M6 swallower-veto rides in
+the runner's own bytes. Run state is kept under Lane 6 so Lane 1's task-pool
+counter and canonical `sgf_history.jsonl` are never touched by the runner.
 
 ## What this is
 
@@ -15,7 +17,7 @@ One-command-per-phase runner for the daily cold-Naya acceptance test:
 |---|---|---|
 | seal | `run_daily.sh --phase seal [--date D] [--task T2] [--kind NORMAL]` | select slot (read-only counter, never consumed) → `--brief` → `--seal`. Prints the cold-successor spawn prompt. |
 | normalize | `run_daily.sh --phase normalize --run-dir DIR` | verifies evidence exists, builds `scorer/blinded-evidence.json`, prints the blinded-scorer spawn prompt. |
-| score | `run_daily.sh --phase score --run-dir DIR --scorer-scores P` | runs Lane 1's M1–M5 + verdict computation (base-patched so the history line lands here as `pending-history.jsonl`), verifies every artifact exists, prints the verdict. |
+| score | `run_daily.sh --phase score --run-dir DIR --scorer-scores P` | runs the vendored M1–M6 scoring port (pin-verified so the history line lands here as `pending-history.jsonl`), verifies every artifact exists, prints the verdict. |
 
 The two agent spawns (cold successor, blinded scorer) are inherently agent
 actions — the script prints the exact spawn prompt at the right moment, and
@@ -47,9 +49,21 @@ sgf-daily/
   writes `task-pool.md`; scoring appends the history line to a Lane-6 pending file.
   The installing seat moves the validated line into Lane 1's canonical
   `sgf_history.jsonl` with the spec owner's sign-off — documented in CRON-SPEC.md.
-- **No redesign.** `sgf_runner.py`'s `--brief`, `--seal`, and `stage_score` are
-  called as-is; only the history-file base path is patched, and that is stated
-  openly in the script and every scorecard note.
+- **No redesign.** `sgf_runner.py`'s `--brief` and `--seal` stages are
+  called as-is; the `--score` stage runs the Lane-6 vendored port
+  (`sgf_daily_score.py`), pinned to Lane-1 source sha256
+  `6326d8c1b42cbb2e1c3aad1f093d992e39a5bdaee7326b04ade2dcc7bd8c78ff` and
+  carrying the t0172 M6 swallower-veto. `run_daily.sh --phase score` refuses
+  to run unless the vendored file matches its baked-in pin — the daily
+  instrument never scores on bytes it did not test.
+- **CT-4 double-negative cross-check rides on the branch.**
+  `ct4_cross_check.py` implements CTA-PROTOCOL-v2 §4 CT-4 as executable bytes:
+  TWO independent remote reads (targeted ref lookup AND full-listing filter)
+  must both agree on a branch's absence before PHANTOM_CAUGHT; disagreement
+  refuses as UNABLE_TO_VERIFY (this is what v1's single lookup could not
+  distinguish from a transient failure). The v2 G2 anti-elision rule is
+  exposed as `assert_rows_elision_free()` for successor-recorded rows — a
+  catch on elided rows is UNPROVEN_CATCH, never trusted.
 - **Workspace-first policy.** All artifacts live on workspace paths; nothing
   written to /tmp except the successor's tiny scratch bytes (the /tmp-full
   incident lesson from Lane 1's journal).
