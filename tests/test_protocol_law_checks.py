@@ -21,7 +21,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CHECKS = ROOT / "tools" / "protocol" / "checks"
 sys.path.insert(0, str(CHECKS.parent))
 
-from checks import tip_freshness, quality_gate, decision_log, scorecard, action_log  # noqa: E402
+from checks import tip_freshness, quality_gate, decision_log, scorecard, action_log, forward_header_gate  # noqa: E402
 
 
 def _dims(weight=1 / 7):
@@ -315,6 +315,149 @@ def test_action_log_passes_clean_takeover():
         kind="takeover", original_owner="naya4", owner_notified=True,
         stall_evidence="no feed activity in 48h; blocker flagged with no response"))
     assert r["pass"] is True, r["reasons"]
+
+
+# ---------------------------------------------------------------- forward_header_gate
+# Fixtures are VERBATIM tonight headers with real comment IDs (the 04:40Z
+# compounding audit's NOT-COMPOUNDED class: ~71 forward-dated headers since
+# 00:00Z, 8 post-law).
+
+def _header(claim_text, posted_at, source_ref="lane-fixture"):
+    return forward_header_gate.check(
+        {"claim_text": claim_text, "posted_at": posted_at,
+         "source_ref": source_ref})
+
+
+def test_forward_header_gate_rejects_2min_forward_dated_scorecard():
+    # comment 6117821928: "## [Naya 5 | BUILDER | scorecard 2026-10-12 04:38 UTC]"
+    # posted 2026-10-12T04:35:28Z (~152s early)
+    r = _header("## [Naya 5 | BUILDER | scorecard 2026-10-12 04:38 UTC]\nLayer 4 final fix",
+                "2026-10-12T04:35:28Z", "lane-1713:6117821928")
+    assert r["pass"] is False, r["reasons"]
+    assert r["details"]["offenders"][0]["drift_seconds"] == 152
+
+
+def test_forward_header_gate_rejects_10min_forward_dated_signout():
+    # comment 6117884246: "[NAYA 5] SIGN-OUT ... Naya Mu (Human Value) -
+    # 2026-10-12 ~04:52 UTC" posted 2026-10-12T04:42:18Z (~582s early)
+    r = _header("[NAYA 5] SIGN-OUT - gamma lane #1715 - Naya Mu (Human Value) - "
+                "2026-10-12 ~04:52 UTC",
+                "2026-10-12T04:42:18Z", "lane-1715:6117884246")
+    assert r["pass"] is False, r["reasons"]
+    assert r["details"]["offenders"][0]["drift_seconds"] == 582
+
+
+def test_forward_header_gate_rejects_12min_forward_dated_signout():
+    # comment 6117864326: "## [Naya 5 · VALIDATOR | sign-out 2026-10-12 04:52 UTC]"
+    # posted 2026-10-12T04:40:06Z (~714s early)
+    r = _header("## [Naya 5 · VALIDATOR | sign-out 2026-10-12 04:52 UTC] "
+                "Layer 2 fix-pass #4",
+                "2026-10-12T04:40:06Z", "lane-1714:6117864326")
+    assert r["pass"] is False, r["reasons"]
+    assert r["details"]["offenders"][0]["drift_seconds"] == 714
+
+
+def test_forward_header_gate_rejects_no_date_prefix_time():
+    # "04:42 UTC" header posted at 04:33:33Z (5th/6th instance, 04:42Z pass)
+    # -> ~507s early. No date prefix: anchored to the post's date.
+    r = _header("[naya5-iv2-intent-parser | SIGN-OUT 04:42 UTC] Layer 2 fix-pass",
+                "2026-10-12T04:33:33Z")
+    assert r["pass"] is False, r["reasons"]
+    assert r["details"]["offenders"][0]["drift_seconds"] == 507
+
+
+def test_forward_header_gate_rejects_z_suffixed_time():
+    # "~03:10Z" posted 02:36:16Z -> ~2024s early
+    r = _header("## [SIGN-OUT ~03:10Z] freshness check complete",
+                "2026-10-12T02:36:16Z")
+    assert r["pass"] is False, r["reasons"]
+
+
+def test_forward_header_gate_accepts_honest_second_level_roundup():
+    # comment 6117945693: "**[NAYA · VALIDATOR | sign-in 2026-10-12 04:49 UTC]**"
+    # posted 2026-10-12T04:48:48Z — 12s early, within the 60s grace -> PASS
+    r = _header("**[NAYA · VALIDATOR | sign-in 2026-10-12 04:49 UTC]** Final IV",
+                "2026-10-12T04:48:48Z", "lane-1715:6117945693")
+    assert r["pass"] is True, r["reasons"]
+
+
+def test_forward_header_gate_accepts_same_minute_header():
+    # comment 6117829250: "~04:36 UTC" posted 04:36:15Z — header minute is in
+    # the past relative to posting -> PASS (past-dating is out of scope)
+    r = _header("**[NAYA · VALIDATOR | sign-in 2026-10-12 ~04:36 UTC]** Final delta",
+                "2026-10-12T04:36:15Z", "lane-1715:6117829250")
+    assert r["pass"] is True, r["reasons"]
+
+
+def test_forward_header_gate_accepts_header_without_timestamp():
+    r = _header("[STAND-DOWN] superseded mission, no further work",
+                "2026-10-12T04:50:05Z")
+    assert r["pass"] is True, r["reasons"]
+    assert "does not apply" in r["reasons"][0]
+
+
+def test_forward_header_gate_ignores_bare_time_without_tz_marker():
+    # "04:52" with no UTC/Z marker: timezone unknown, gate refuses to guess.
+    r = _header("[sign-in 04:52] starting work", "2026-10-12T04:50:05Z")
+    assert r["pass"] is True, r["reasons"]
+
+
+def test_forward_header_gate_midnight_boundary_wrap():
+    # "23:58 UTC" posted at 00:03Z is yesterday's 23:58, not a future claim.
+    r = _header("## SIGN-OUT 23:58 UTC — work complete", "2026-10-12T00:03:00Z")
+    assert r["pass"] is True, r["reasons"]
+
+
+def test_forward_header_gate_grace_boundary_60s_passes():
+    r = _header("[SIGN-IN 04:53 UTC]", "2026-10-12T04:52:00Z")
+    assert r["pass"] is True, r["reasons"]
+
+
+def test_forward_header_gate_grace_boundary_61s_fails():
+    r = _header("[SIGN-IN 04:53 UTC]", "2026-10-12T04:51:59Z")
+    assert r["pass"] is False, r["reasons"]
+    assert r["details"]["offenders"][0]["drift_seconds"] == 61
+
+
+def test_forward_header_gate_ignores_timestamp_beyond_five_lines():
+    # A future time mentioned deeper in the body is not a header claim
+    # (documented limit).
+    body = "\n".join(["[SIGN-OUT] done"] + [""] * 5 +
+                     ["The next check runs at 2026-10-12 09:00 UTC."])
+    r = _header(body, "2026-10-12T04:50:05Z")
+    assert r["pass"] is True, r["reasons"]
+
+
+def test_forward_header_gate_quotes_offender_in_details():
+    r = _header("## [Naya 5 | BUILDER | scorecard 2026-10-12 04:38 UTC]",
+                "2026-10-12T04:35:28Z", "lane-1713:6117821928")
+    assert r["pass"] is False
+    assert r["details"]["offenders"][0]["line"] == 1
+    assert "04:38 UTC" in r["details"]["offenders"][0]["quote"]
+    assert "152" in r["reasons"][0]
+
+
+def test_forward_header_gate_fail_closed_on_missing_posted_at():
+    r = forward_header_gate.check({"claim_text": "[SIGN-IN 04:52 UTC]"})
+    assert r["pass"] is False
+    assert "posted_at" in r["reasons"][0]
+
+
+def test_forward_header_gate_fail_closed_on_empty_claim():
+    r = forward_header_gate.check({"claim_text": "  ",
+                                   "posted_at": "2026-10-12T04:52:00Z"})
+    assert r["pass"] is False
+
+
+def test_forward_header_gate_fail_closed_on_nul_bytes():
+    r = _header("[SIGN-IN 04:52 UTC]\x00hidden", "2026-10-12T04:52:00Z")
+    assert r["pass"] is False
+
+
+def test_forward_header_gate_fail_closed_on_bad_posted_at():
+    r = _header("[SIGN-IN 04:52 UTC]", "not-a-timestamp")
+    assert r["pass"] is False
+    assert "posted_at" in r["reasons"][0]
 
 
 # ---------------------------------------------------------------- runner

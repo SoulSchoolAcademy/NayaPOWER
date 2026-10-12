@@ -24,6 +24,8 @@ Law checks (checks/):
 - scorecard: 7 dimensions, weights sum to 1.0, totals recomputed (SN-0523)
 - action_log: fix verified + reported, no gate crossed without approval (SN-0575)
 - delivery_evidence_gate: build + verification evidence, scorecard >=9.0 (SN-0526)
+- forward_header_gate: lane-feed headers must not claim a future timestamp
+  (LEARN-FORWARD-HEADER; the 04:40Z compounding audit's NOT-COMPOUNDED finding)
 
 Prime 2: THE LAW IS THE CODE.
 """
