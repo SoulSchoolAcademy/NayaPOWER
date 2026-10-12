@@ -409,6 +409,106 @@ _REJECTION_NOUNS = frozenset({
     "rejection", "denial",
 })
 
+# ---------------------------------------------------------------------------
+# L236 MECHANISM INVERSION — trailing-fragment default flip
+# ---------------------------------------------------------------------------
+# HYPOTHESIS CHANGE (mechanism inversion):
+#   OLD (dead after five rounds): enumerate negation tokens; flip when a
+#     listed token scopes the verb. Every independent battery found new
+#     informal negations ("hard no", "veto", "under no circumstances",
+#     "not happening", "hell no", ...) because informal negation is an
+#     OPEN set — and the old default was PROCEED, so every uncovered
+#     form silently did the opposite of what was asked. Enumeration
+#     cannot converge: completeness was required for safety.
+#   NEW (inversion): for a TRAILING VERBLESS FRAGMENT — a clause after
+#     the action clause with no verb of its own — the default is REFUSE.
+#     The fragment proceeds only if it carries a clear affirmative from
+#     a small CLOSED set. Affirmatives are conventional and few
+#     (yes/yeah/sure/ok/please/thanks/go ahead/why not/...); anything
+#     unrecognized now fails closed (one clarifying question) instead of
+#     failing open. Safety no longer depends on enumeration
+#     completeness — that is the inversion, and why it converges where
+#     enumeration could not.
+#   The existing sentence-level machinery stays for full-proposition
+#   negation ("don't ever merge", "Nobody merge 2412", "I don't want to
+#   merge"): the inversion governs trailing fragments only.
+#
+# FALSE-POSITIVE DESIGN (the primary enemy): the affirmative set is
+# deliberately small and the checks run in this order —
+#   1. affirmative collocations ("no problem", "sounds good") — these
+#      contain "no" but are unambiguously affirmative;
+#   2. negation words — any negation in the fragment refuses;
+#   3. sarcasm collocations ("yeah right") — affirmative tokens that
+#      mean no;
+#   4. affirmative tokens;
+#   5. otherwise REFUSE (fail closed).
+# When in doubt the fragment refuses: a refused legitimate request costs
+# one clarifying question; a proceeded negated request does the opposite
+# of what was asked. Sarcasm/pragmatics beyond the listed collocations
+# ("yeah, sure, whatever") is a systematic boundary for Layer 6's
+# semantic classification — documented, not chased with more tokens.
+
+# Affirmative tokens: the small closed set. A trailing verbless fragment
+# containing one of these (and no negation, no sarcasm) affirms.
+_AFFIRMATIVE_TOKENS = frozenset({
+    "yes", "yeah", "yep", "yup", "sure", "ok", "okay",
+    "please", "thanks", "fine", "agreed", "good",
+    "absolutely", "definitely", "certainly",
+    "soon", "now", "today", "tomorrow", "when", "after",
+    # unambiguous formal affirmatives
+    "aye", "affirmative", "confirmed",
+})
+
+# Multi-word affirmatives, matched on the token-joined fragment text.
+# Includes the "no X" forms that read as affirmation ("no problem" =
+# "no problem with merging" = yes).
+_AFFIRMATIVE_PHRASES = (
+    "go ahead",
+    "do it",
+    "why not",
+    "thank you",
+    "no problem",
+    "not a problem",
+    "no worries",
+    "no objection",
+    "no objections",
+    "sounds good",
+    "looks good",
+    "roger that",
+)
+
+# Sarcasm collocations: affirmative tokens that mean NO. Checked before
+# the affirmative set. ("as if" would refuse by default anyway — it is
+# listed for explicitness.)
+_SARCASM_PHRASES = (
+    "yeah right",
+    "sure sure",
+    "as if",
+    "oh please",
+    "pigs fly",
+)
+
+
+def _fragment_verbless(tokens):
+    """True when the fragment has no verb of its own — no action verb,
+    no general verb, no auxiliary. Only such fragments fall under the
+    inversion; anything with a verb keeps the sentence-level machinery."""
+    return not any(t in _TIEBREAK_VERBS or t in _COMMON_VERBS
+                   for t in tokens)
+
+
+def _fragment_affirms(frag_text, tokens):
+    """True when a trailing verbless fragment clearly affirms: an
+    affirmative collocation, else no negation and no sarcasm and an
+    affirmative token. Anything else refuses (fail closed)."""
+    if any(p in frag_text for p in _AFFIRMATIVE_PHRASES):
+        return True
+    if any(t in NEGATION_WORDS for t in tokens):
+        return False
+    if any(p in frag_text for p in _SARCASM_PHRASES):
+        return False
+    return any(t in _AFFIRMATIVE_TOKENS for t in tokens)
+
 ACTION_VERBS = frozenset({
     "merge", "merges", "merging", "merged",
     "ship", "ships", "shipping", "shipped",
@@ -673,6 +773,17 @@ def is_negated_action(text, intent_type):
         # no to the previous clause's action.
         if _TRAILING_NO.match(c):
             return True
+        # INVERSION (L236 mechanism inversion): a trailing verbless
+        # fragment — after the action clause, no verb of its own —
+        # REFUSES unless it clearly affirms. This replaces negation-token
+        # enumeration for the trailing case: "merge 2412? hell no",
+        # "veto", "fat chance" all refuse without being listed, because
+        # the default flipped. Affirmatives ("yes please", "go ahead")
+        # proceed; everything unrecognized fails closed.
+        if vb and _fragment_verbless(tokens):
+            if not _fragment_affirms(" ".join(tokens), tokens):
+                return True
+            continue
         # Rejection-noun fragments ("merge 2412? veto") carry no negation
         # word but still reach the bare-negation check below (fix-pass #5).
         if (not any(t in NEGATION_WORDS for t in tokens)
