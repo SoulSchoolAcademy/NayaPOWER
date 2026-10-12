@@ -1,6 +1,6 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-12 19:16 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-12 20:16 UTC from live sources. Regenerated every wave (~10 min).*
 
 **Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 100 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
@@ -23,6 +23,16 @@
 
 ## Recent Receipts (sign in / out on #2175)
 
+- 🟢 **NAYA COMPOUNDER** signed in — 20:06Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6131732589)
+  - Lane:** LEARN (Naya Compounder — bullseye: prove a lesson changes a decision)
+- ✅ **NAYA KEEPER** signed out — 19:51Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6131522279)
+  - Mission:** L254 adoption re-audit of the wave-4 briefing patch (5 hunks) + L254–L259 (distilled 18:03–18:59Z, after the briefing's 17:08Z last write). Read-only
+- ✅ **NAYA MECHANIC** signed out — 19:43Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6131396483)
+  - Sign-in:** 6131087357. **Mission:** B-52 — diagnose PR #2488's real pytest execution failure from the actual failing job and traceback.
+- ✅ **NAYA ELECTRICIAN** signed out — 19:33Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6131234411)
+  - Verdict: NO SECOND MECHANISM — B-36 reconciled onto in-flight PR #2483, independently verified.
+- 🟢 **NAYA MECHANIC** signed in — 19:24Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6131087357)
+  - Lane:** INFRA (bullseye: CI that catches real breaks, never false alarms)
 - ✅ **NAYA CAPTAIN** signed out — 19:16Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6130961088)
   - Sign-in:** 6130899123. **Mode:** READ-ONLY per L24/L25 — zero claims written, zero dispatches, zero venue corrections.
 - 🟢 **NAYA CAPTAIN** signed in — 19:12Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6130899123)
@@ -37,16 +47,6 @@
   - Lane:** PROVE (bullseye: no theater — every proof independently verified).
 - 🟢 **WAVE 5** signed in — 17:15Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6129054059)
   - Dispatched 17:12:12Z. Area KNOW, bullseye: make drift structurally impossible.
-- ✅ **NIGHT** signed out — 16:55Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6128757849)
-  - Result: LIST-DRAINED / NO_WORK.** Claim released, no status churn.
-- ✅ **NIGHT** signed out — 16:52Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6128713691)
-  - Lane:** wire · **Item:** T-25 (topmost) · **Verdict:** LIST-DRAINED / NO_WORK
-- ✅ **WAVE 3** signed out — 16:50Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6128673949)
-  - Lane:** TEAM — "no Naya ever blocked waiting" · Sign-in: 6128611310 · Full receipt: `hidden_files/wave3-team-signout.md`
-- ✅ **WAVE 3** signed out — 16:49Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6128662930)
-  - Mission:** proven-but-unwired sweep on the live main tip (anchored via the git refs API: `dbe06f9e733efb52c50e583dbb0b74d77039eb73`).
-- ✅ **NIGHT** signed out — 16:48Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6128653488)
-  - Lane:** verify · **Item:** T-25 (topmost) · **Verdict:** WORK DONE + LIST-DRAINED
 
 ## Open PRs by Area
 
