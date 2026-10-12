@@ -12,8 +12,9 @@ Reads from env:
 
 Seat identity: the team shares one GitHub account, so GitHub logins cannot
 distinguish seats. Seats are identified by signed tags instead:
-  - PR body must declare:  Seat: Naya N
+  - PR body must declare:  Seat: Naya N   (or Seat: Naya <Name> (Lane N))
   - Reviewer posts a comment:  [NAYA M · REVIEW] ... APPROVED ...
+    (lane reviewers post [LANE N · REVIEW] ... APPROVED ...)
     (the team's IV sign-out verdict format — "## VERDICT: MERGE RECOMMENDED"
     with a seat tag — is also accepted as a review)
   - Scorecard receipt:  ## SCORECARD ... head: <sha> ... Seat: Naya K ...
@@ -55,6 +56,29 @@ SEAT_RE = re.compile(r"naya\s*([12345])\b", re.I)
 # misattribute authorship (caught by dogfooding on PR #2373, whose body
 # mentions Naya 1 before declaring Seat: Naya 5).
 AUTHOR_SEAT_RE = re.compile(r"seat\s*:\s*naya\s*([12345])\b", re.I)
+
+# The 12-lane seat model (Team Naya, 2026-10-11): lane agents declare
+#   Seat: Naya <Name> (Lane N)      with N = 1..12
+# and review with the incantation
+#   [LANE N · REVIEW] ... APPROVED ...
+# The gate's seat model predates the 12 lanes — without this extension every
+# lane-authored PR fails the author-seat check by construction. Lane identity
+# is the lane NUMBER (names are honor-based: the shared-account residual the
+# gate cannot verify). Lane forms are checked BEFORE the legacy naya[1-5]
+# forms so a lane declaration is never misread as a numbered seat, and the
+# "Lane N" identity can never collide with "Naya N".
+LANE_AUTHOR_SEAT_RE = re.compile(
+    r"seat\s*:\s*naya\s+([a-z][a-z'\-]*)\s*"
+    r"\(\s*lane\s*(1[0-2]|[1-9])\s*\)", re.I)
+LANE_REVIEW_RE = re.compile(
+    r"\[\s*lane\s*(1[0-2]|[1-9])\s*[·•\-|–—]\s*review\s*\]", re.I)
+# Lane scorecard/review heading tags as posted in the wild, e.g.
+#   ## [LANE 1 · Naya Verity] Independent scorecard — 9.0/10 APPROVE
+# (live on #2453: comments 6119191478, 6119402070). No "Seat:" declaration
+# needed — the bracket tag IS the seat tag.
+LANE_TAG_RE = re.compile(
+    r"\[\s*lane\s*(1[0-2]|[1-9])\s*[·•\-|–—]\s*naya\s+([a-z][a-z'\-]*)\s*\]",
+    re.I)
 
 # The seat-receipt convention (Seat: Naya N in the PR body, tagged review and
 # scorecard comments) was introduced by PR #2352, merged 2026-10-11 16:30:13Z.
@@ -177,16 +201,37 @@ def api_get(path, token):
 
 
 def seat_of(text):
-    """Extract 'Naya N' seat tag from text, or None."""
-    m = SEAT_RE.search(text or "")
+    """Extract a seat tag from text, or None.
+
+    Lane tags ('Seat: Naya <Name> (Lane N)', the '[LANE N · REVIEW]'
+    incantation, or the '[LANE N · Naya <Name>]' heading tag) are checked
+    first and return 'Lane N'; legacy 'Naya N' tags keep their existing
+    behavior.
+    """
+    t = text or ""
+    m = LANE_AUTHOR_SEAT_RE.search(t)
+    if m:
+        return f"Lane {m.group(2)}"
+    m = LANE_REVIEW_RE.search(t)
+    if m:
+        return f"Lane {m.group(1)}"
+    m = LANE_TAG_RE.search(t)
+    if m:
+        return f"Lane {m.group(1)}"
+    m = SEAT_RE.search(t)
     return f"Naya {m.group(1)}" if m else None
 
 
 def author_seat_of(body):
-    """Extract the authoring seat from an explicit 'Seat: Naya N'
-    declaration in the PR body, or None. Incidental seat mentions in prose
-    do not count — authorship is a declaration, not a guess."""
-    m = AUTHOR_SEAT_RE.search(body or "")
+    """Extract the authoring seat from an explicit 'Seat: Naya N' or
+    'Seat: Naya <Name> (Lane N)' declaration in the PR body, or None.
+    Incidental seat mentions in prose do not count — authorship is a
+    declaration, not a guess."""
+    b = body or ""
+    m = LANE_AUTHOR_SEAT_RE.search(b)
+    if m:
+        return f"Lane {m.group(2)}"
+    m = AUTHOR_SEAT_RE.search(b)
     return f"Naya {m.group(1)}" if m else None
 
 
@@ -195,6 +240,8 @@ def _looks_like_review(body):
     review incantation, or the team's IV sign-out verdict format."""
     up = (body or "").upper()
     if "[NAYA" in up and "REVIEW" in up and "APPROVED" in up:
+        return True
+    if "[LANE" in up and "REVIEW" in up and "APPROVED" in up:
         return True
     return "VERDICT" in up and ("MERGE RECOMMENDED" in up or "APPROVED" in up)
 
@@ -246,9 +293,9 @@ def run_gate(token, repo, pr_number, head_sha):
     pr_author_login = (pr["user"]["login"] or "").lower()
     author_seat = author_seat_of(pr.get("body"))
     if not author_seat:
-        fail("PR body must declare the authoring seat ('Seat: Naya N'). "
-             "Unattributed work cannot be reviewed. Add the declaration to "
-             "the PR body and re-run.")
+        fail("PR body must declare the authoring seat ('Seat: Naya N' or "
+             "'Seat: Naya <Name> (Lane N)'). Unattributed work cannot be "
+             "reviewed. Add the declaration to the PR body and re-run.")
 
     # --- Requirement 1: cross-seat review ---
     reviews = api_get(f"/repos/{repo}/pulls/{pr_number}/reviews", token)
@@ -273,7 +320,8 @@ def run_gate(token, repo, pr_number, head_sha):
                     break
     if not reviewer_seat:
         fail(f"no review from a seat other than the author ({author_seat}). "
-             f"Post '[NAYA M · REVIEW] APPROVED' (or an IV verdict comment "
+             f"Post '[NAYA M · REVIEW] APPROVED' (lane reviewers: "
+             f"'[LANE N · REVIEW] APPROVED') or an IV verdict comment "
              f"with your seat tag) as a PR comment, or submit a GitHub "
              f"approving review from a different account.")
 
