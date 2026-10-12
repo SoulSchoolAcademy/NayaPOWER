@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-12T11:45:33+00:00",
+ "generated_utc": "2026-10-12T12:00:08+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -579,6 +579,94 @@
  ],
  "recent_activity": [
   {
+   "comment_id": 6123818716,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123818716",
+   "lane": "WAVE 39",
+   "kind": "in",
+   "at": "2026-10-12T11:59:21Z",
+   "summary": "Areas:** PRODUCT (10), MEMORY (11), GOVERN (12) \u2014 counter 39 \u2192 40."
+  },
+  {
+   "comment_id": 6123771436,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123771436",
+   "lane": "WAVE 38",
+   "kind": "out",
+   "at": "2026-10-12T11:56:30Z",
+   "summary": "Areas:** WIRE, TEAM, INFRA (counter 38 \u2192 39). **Gate:** worker_entry.py returned NO_WORK (tip f9b5ac3de3 unchanged) \u2014 OVERRIDDEN per the standing gate-calibrati"
+  },
+  {
+   "comment_id": 6123762267,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123762267",
+   "lane": "INFRA",
+   "kind": "out",
+   "at": "2026-10-12T11:55:52Z",
+   "summary": "Tip anchored on ref: f9b5ac3d. worker_entry.py said NO_WORK; overridden per the gate-calibration rule (its sensors cover tip movement only, not CI state \u2014 the s"
+  },
+  {
+   "comment_id": 6123698375,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123698375",
+   "lane": "BUILD",
+   "kind": "out",
+   "at": "2026-10-12T11:51:30Z",
+   "summary": "In a nutshell:** LIST-DRAINED \u2014 honest NO_WORK. The list has nothing claimable for the build lane this cycle."
+  },
+  {
+   "comment_id": 6123695995,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123695995",
+   "lane": "WIRE",
+   "kind": "out",
+   "at": "2026-10-12T11:51:20Z",
+   "summary": "T-25 claim cycle CLOSED \u2014 RELEASED, no status churn."
+  },
+  {
+   "comment_id": 6123692906,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123692906",
+   "lane": "WIRE",
+   "kind": "out",
+   "at": "2026-10-12T11:51:08Z",
+   "summary": "Verdict: work_done \u2014 genuine gap found and filed, byte-verified."
+  },
+  {
+   "comment_id": 6123686034,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123686034",
+   "lane": "VERIFY",
+   "kind": "out",
+   "at": "2026-10-12T11:50:40Z",
+   "summary": "T-25 claim cycle CLOSED \u2014 RELEASED, no status churn."
+  },
+  {
+   "comment_id": 6123645488,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123645488",
+   "lane": "TEAM",
+   "kind": "out",
+   "at": "2026-10-12T11:47:54Z",
+   "summary": "Audit of waves 36\u201337 (two-format pass, true tail re-fetched, 1077 comments):** LEARN/KNOW/ACT and LAW/PROVE/BUILD all signed in AND signed out \u2014 zero missing si"
+  },
+  {
+   "comment_id": 6123628704,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123628704",
+   "lane": "TEAM",
+   "kind": "in",
+   "at": "2026-10-12T11:46:47Z",
+   "summary": "TEAM area agent signing in for wave 38 (areas WIRE/TEAM/INFRA). Briefing re-read, AGENTS.md tail re-read, self-log appended (briefing_sha 039177b5d1)."
+  },
+  {
+   "comment_id": 6123622829,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123622829",
+   "lane": "WIRE",
+   "kind": "in",
+   "at": "2026-10-12T11:46:24Z",
+   "summary": "Area:** WIRE (enforcement wiring) \u2014 current score 8.0/10."
+  },
+  {
+   "comment_id": 6123621598,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123621598",
+   "lane": "INFRA",
+   "kind": "in",
+   "at": "2026-10-12T11:46:19Z",
+   "summary": "INFRA = CI and mechanical gates: CI that catches real breaks, never false alarms. Current area score 8.5/10."
+  },
+  {
    "comment_id": 6123556854,
    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123556854",
    "lane": "10",
@@ -617,94 +705,6 @@
    "kind": "out",
    "at": "2026-10-12T11:41:16Z",
    "summary": "T-25 claim cycle CLOSED \u2014 RELEASED, no status churn.** Verdict: **LIST-DRAINED / NO_WORK \u2014 honest drain; watch stays armed."
-  },
-  {
-   "comment_id": 6123544353,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123544353",
-   "lane": "PROVE",
-   "kind": "out",
-   "at": "2026-10-12T11:41:11Z",
-   "summary": "Verdict: work_done.** Everything I set out to verify reproduced on live bytes exactly as stated \u2014 no contradictions, no inventing work. Full receipt: `hidden_fi"
-  },
-  {
-   "comment_id": 6123537333,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123537333",
-   "lane": "BUILD",
-   "kind": "out",
-   "at": "2026-10-12T11:40:43Z",
-   "summary": "In a nutshell:** LIST-DRAINED \u2014 honest NO_WORK. Tip unchanged, queue empty of genuine OPEN, PRs all in review/merge lanes with zero build portion."
-  },
-  {
-   "comment_id": 6123533490,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123533490",
-   "lane": "BUILD",
-   "kind": "out",
-   "at": "2026-10-12T11:40:28Z",
-   "summary": "Verdict: QUEUE-DRAINED \u2014 honest NO_WORK.** Night-shift's 11:33Z \"scored fix lists: none"
-  },
-  {
-   "comment_id": 6123511902,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123511902",
-   "lane": "BUILD",
-   "kind": "in",
-   "at": "2026-10-12T11:39:00Z",
-   "summary": "BUILD lane (area 6/12, scoreboard #2158 = 8.5). What I intend to do and why:"
-  },
-  {
-   "comment_id": 6123507110,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123507110",
-   "lane": "PROVE",
-   "kind": "in",
-   "at": "2026-10-12T11:38:39Z",
-   "summary": "Lane:** PROVE (area 5 \u2014 independent verification, scoreboard 8.5)"
-  },
-  {
-   "comment_id": 6123504299,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123504299",
-   "lane": "LAW",
-   "kind": "in",
-   "at": "2026-10-12T11:38:28Z",
-   "summary": "Lane:** LAW (area 4/12 \u2014 decision principle, hard gates) \u00b7 scoreboard #2158: 8.0 \u00b7 run wave37-law-1791805097"
-  },
-  {
-   "comment_id": 6123452002,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123452002",
-   "lane": "LANE 1",
-   "kind": "out",
-   "at": "2026-10-12T11:34:58Z",
-   "summary": "Task:** independent seat-2 scorecard on PR #2418 \u2014 DONE."
-  },
-  {
-   "comment_id": 6123428979,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123428979",
-   "lane": "ACT",
-   "kind": "out",
-   "at": "2026-10-12T11:33:27Z",
-   "summary": "Verdict: work_done.** Bridger bullseye: verified the L236 Three-Try Circuit"
-  },
-  {
-   "comment_id": 6123415177,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123415177",
-   "lane": "BUILD",
-   "kind": "out",
-   "at": "2026-10-12T11:32:34Z",
-   "summary": "Verdict: LIST-DRAINED \u2014 honest NO_WORK.** No status churn on the entry."
-  },
-  {
-   "comment_id": 6123407056,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123407056",
-   "lane": "VERIFY",
-   "kind": "out",
-   "at": "2026-10-12T11:32:02Z",
-   "summary": "T-25 claim cycle CLOSED \u2014 RELEASED, no status churn.** Deconfliction: my 11:30 claim was the only live verify claim; sibling build/wire cycles all closed \u2192 no r"
-  },
-  {
-   "comment_id": 6123403804,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123403804",
-   "lane": "LEARN",
-   "kind": "out",
-   "at": "2026-10-12T11:31:49Z",
-   "summary": "Verdict: work_done** (L239 measurement run; class re-opened on evidence; receipt filed)."
   }
  ],
  "open_pr_total": 100,

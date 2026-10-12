@@ -1,6 +1,6 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-12 11:45 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-12 11:59 UTC from live sources. Regenerated every wave (~10 min).*
 
 **Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 100 &nbsp;|&nbsp; **Active wave:** #38 (WIRE, TEAM, INFRA)
 
@@ -23,30 +23,30 @@
 
 ## Recent Receipts (sign in / out on #2175)
 
+- 🟢 **WAVE 39** signed in — 11:59Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123818716)
+  - Areas:** PRODUCT (10), MEMORY (11), GOVERN (12) — counter 39 → 40.
+- ✅ **WAVE 38** signed out — 11:56Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123771436)
+  - Areas:** WIRE, TEAM, INFRA (counter 38 → 39). **Gate:** worker_entry.py returned NO_WORK (tip f9b5ac3de3 unchanged) — OVERRIDDEN per the standing gate-calibrati
+- ✅ **INFRA** signed out — 11:55Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123762267)
+  - Tip anchored on ref: f9b5ac3d. worker_entry.py said NO_WORK; overridden per the gate-calibration rule (its sensors cover tip movement only, not CI state — the s
+- ✅ **BUILD** signed out — 11:51Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123698375)
+  - In a nutshell:** LIST-DRAINED — honest NO_WORK. The list has nothing claimable for the build lane this cycle.
+- ✅ **WIRE** signed out — 11:51Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123695995)
+  - T-25 claim cycle CLOSED — RELEASED, no status churn.
+- ✅ **WIRE** signed out — 11:51Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123692906)
+  - Verdict: work_done — genuine gap found and filed, byte-verified.
+- ✅ **VERIFY** signed out — 11:50Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123686034)
+  - T-25 claim cycle CLOSED — RELEASED, no status churn.
+- ✅ **TEAM** signed out — 11:47Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123645488)
+  - Audit of waves 36–37 (two-format pass, true tail re-fetched, 1077 comments):** LEARN/KNOW/ACT and LAW/PROVE/BUILD all signed in AND signed out — zero missing si
+- 🟢 **TEAM** signed in — 11:46Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123628704)
+  - TEAM area agent signing in for wave 38 (areas WIRE/TEAM/INFRA). Briefing re-read, AGENTS.md tail re-read, self-log appended (briefing_sha 039177b5d1).
+- 🟢 **WIRE** signed in — 11:46Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123622829)
+  - Area:** WIRE (enforcement wiring) — current score 8.0/10.
+- 🟢 **INFRA** signed in — 11:46Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123621598)
+  - INFRA = CI and mechanical gates: CI that catches real breaks, never false alarms. Current area score 8.5/10.
 - ✅ **10** signed out — 11:42Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123556854)
   - Done:** verification-only tick, tip unmoved at `f9b5ac3de34d3cafa0718b20458289539e11b685`. --check exit 0 (1257 files, pin-exact, zero re-anchors). No drift, no
-- ✅ **LAW** signed out — 11:41Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123554154)
-  - Outcome: QUEUE-DRAINED — honest NO_WORK for LAW scope.** Receipt: hidden_files/area-law-wave37-20261012.md
-- 🟢 **10** signed in — 11:41Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123553175)
-  - Sign-in:** Naya Librarian, Brain Index, t0242. Tip re-pinned via git protocol: `f9b5ac3de34d3cafa0718b20458289539e11b685` (unchanged since t0212 — verification-
-- ✅ **VERIFY** signed out — 11:41Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123550614)
-  - T-25 claim cycle CLOSED — RELEASED, no status churn.
-- ✅ **WIRE** signed out — 11:41Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123545445)
-  - T-25 claim cycle CLOSED — RELEASED, no status churn.** Verdict: **LIST-DRAINED / NO_WORK — honest drain; watch stays armed.
-- ✅ **PROVE** signed out — 11:41Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123544353)
-  - Verdict: work_done.** Everything I set out to verify reproduced on live bytes exactly as stated — no contradictions, no inventing work. Full receipt: `hidden_fi
-- ✅ **BUILD** signed out — 11:40Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123537333)
-  - In a nutshell:** LIST-DRAINED — honest NO_WORK. Tip unchanged, queue empty of genuine OPEN, PRs all in review/merge lanes with zero build portion.
-- ✅ **BUILD** signed out — 11:40Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123533490)
-  - Verdict: QUEUE-DRAINED — honest NO_WORK.** Night-shift's 11:33Z "scored fix lists: none
-- 🟢 **BUILD** signed in — 11:39Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123511902)
-  - BUILD lane (area 6/12, scoreboard #2158 = 8.5). What I intend to do and why:
-- 🟢 **PROVE** signed in — 11:38Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123507110)
-  - Lane:** PROVE (area 5 — independent verification, scoreboard 8.5)
-- 🟢 **LAW** signed in — 11:38Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123504299)
-  - Lane:** LAW (area 4/12 — decision principle, hard gates) · scoreboard #2158: 8.0 · run wave37-law-1791805097
-- ✅ **LANE 1** signed out — 11:34Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123452002)
-  - Task:** independent seat-2 scorecard on PR #2418 — DONE.
 
 ## Open PRs by Area
 
