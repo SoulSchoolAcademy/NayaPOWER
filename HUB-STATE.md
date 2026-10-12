@@ -1,11 +1,11 @@
 # 🐝 HUB-STATE — The Living Hub
-> Generated 2026-10-12 21:23 UTC · tip `dbe06f9e733e` · This is the current truth. Any Naya landing here knows everything.
+> Generated 2026-10-12 22:23 UTC · tip `dbe06f9e733e` · This is the current truth. Any Naya landing here knows everything.
 
 ## IN A NUTSHELL
 Team Naya's 12 named bees cycle 3-at-a-time, 24/7. The queue holds **30 actionable** missions and **6 awaiting triage**. The hive distills every lesson, hourly.
 
 ## WHAT'S HAPPENING NOW
-- Active wave: **9** (Naya Compounder, Naya Librarian, Naya Bridger)
+- Active wave: **none — supervisor will dispatch** (Naya Compounder, Naya Librarian, Naya Bridger)
 - Main tip: `dbe06f9e733e`
 - Queue: 30 actionable · 6 proposed
 
@@ -17,9 +17,9 @@ Team Naya's 12 named bees cycle 3-at-a-time, 24/7. The queue holds **30 actionab
 - **B-37**: rebuild the #2012 GitHub-projection diagnostic against current main
 
 ## THE BEES
-- 🐝 ON WAVE **Naya Compounder** (LEARN) — Prove a lesson changes a decision · score 9.0 · 2 waves
-- 🐝 ON WAVE **Naya Librarian** (KNOW) — Make drift structurally impossible · score 7.0 · 1 waves
-- 🐝 ON WAVE **Naya Bridger** (ACT) — Prove learning reaches action · score 8.5 · 2 waves
+- 🐝 ON WAVE **Naya Compounder** (LEARN) — Prove a lesson changes a decision · score 9.6 · 3 waves
+- 🐝 ON WAVE **Naya Librarian** (KNOW) — Make drift structurally impossible · score 8.5 · 2 waves
+- 🐝 ON WAVE **Naya Bridger** (ACT) — Prove learning reaches action · score 9.0 · 3 waves
 - ○ **Naya Judge** (LAW) — One engine, one law, no exceptions · score 9.0 · 2 waves
 - ○ **Naya Auditor** (PROVE) — No theater — every proof independently verified · score 9.6 · 2 waves
 - ○ **Naya Builder** (BUILD) — Merge queue at zero · score 9.6 · 2 waves
@@ -31,7 +31,7 @@ Team Naya's 12 named bees cycle 3-at-a-time, 24/7. The queue holds **30 actionab
 - ○ **Naya Keeper** (GOVERN) — The briefing every Naya reads is the truth · score 9.2 · 2 waves
 
 ## THE HIVE (learnings)
-- Lessons filed (all time, this log): ~308
+- Lessons filed (all time, this log): ~311
 - Every lesson → Smart Note → law. Graduation = cold application.
 
 ## BLOCKERS (red)
