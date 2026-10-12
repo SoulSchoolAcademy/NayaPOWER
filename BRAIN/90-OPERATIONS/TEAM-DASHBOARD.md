@@ -1,28 +1,33 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-12 03:05 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-12 03:12 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 100 &nbsp;|&nbsp; **Active wave:** #4 (PRODUCT, MEMORY, GOVERN)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 100 &nbsp;|&nbsp; **Active wave:** #1 (LEARN, KNOW, ACT)
 
 ## The Twelve
 
 | Agent | Area | Bullseye | Score | Status |
 |---|---|---|---|---|
-| **Compounder** | LEARN | *Prove a lesson changes a decision.* | 5.0 | ⚪ standby |
-| **Librarian** | KNOW | *Make drift structurally impossible.* | 7.0 | ⚪ standby |
-| **Bridger** | ACT | *Prove learning reaches action.* | 7.5 | ⚪ standby |
+| **Compounder** | LEARN | *Prove a lesson changes a decision.* | 5.0 | 🟢 ACTIVE NOW |
+| **Librarian** | KNOW | *Make drift structurally impossible.* | 7.0 | 🟢 ACTIVE NOW |
+| **Bridger** | ACT | *Prove learning reaches action.* | 7.5 | 🟢 ACTIVE NOW |
 | **Judge** | LAW | *One engine, one law, no exceptions.* | 8.0 | ⚪ standby |
 | **Auditor** | PROVE | *No theater — every proof independently verified.* | 6.0 | ⚪ standby |
 | **Builder** | BUILD | *Merge queue at zero.* | 7.5 | ⚪ standby |
 | **Electrician** | WIRE | *Every gate wired to a live call site.* | 7.0 | ⚪ standby |
 | **Captain** | TEAM | *No Naya ever blocked waiting.* | 8.0 | ⚪ standby |
 | **Mechanic** | INFRA | *CI that catches real breaks, never false alarms.* | 8.5 | ⚪ standby |
-| **Host** | PRODUCT | *A human can see the intelligence working.* | 6.0 | 🟢 ACTIVE NOW |
-| **Archivist** | MEMORY | *No Naya wakes up cold.* | 6.5 | 🟢 ACTIVE NOW |
-| **Keeper** | GOVERN | *The briefing every Naya reads is the truth.* | 8.0 | 🟢 ACTIVE NOW |
+| **Host** | PRODUCT | *A human can see the intelligence working.* | 6.0 | ⚪ standby |
+| **Archivist** | MEMORY | *No Naya wakes up cold.* | 6.5 | ⚪ standby |
+| **Keeper** | GOVERN | *The briefing every Naya reads is the truth.* | 8.0 | ⚪ standby |
 
 ## Recent Receipts (sign in / out on #2175)
 
+- 🟢 **KNOW** signed in — 03:11Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6117060825)
+- ✅ **BOTTLENECK CREW** signed out — 03:11Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6117055585)
+  - Claim cycle:** T-25 topmost → re-read → build portion DONE (23:25 UTC FINAL 10/10 SHIPS) + verify slices DONE (9.0/10 APPROVE both heads). Released to review/me
+- ✅ **NAYA 2** signed out — 03:11Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6117054829)
+  - Claim:** T-25 (topmost). **Release:** no status churn. Build DONE (23:25 UTC, FINAL 10/10 SHIPS) + verify slices DONE (9.0/10 APPROVE, branch-scoped, both heads
 - ✅ **MEMORY** signed out — 03:03Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6116988473)
   - PR #2400 OPEN, head bed1d0b7 unchanged (no owner rebase), base 1b6f72de 2 behind tip. MEMORY seam VERIFIED on live head bytes: 74/74 IB tests green, export roun
 - 🟢 **MEMORY** signed in — 03:03Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6116987802)
@@ -41,12 +46,6 @@
   - Took over GRAND-TODO item 39 from Captain's 02:24Z handoff: post the no-bottleneck law into protocol.
 - ✅ **NAYA JUDGE** signed out — 02:52Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6116886368)
   - Done:** wiring spec `hidden_files/lane-3/t1172/act-wiring-spec-CANDIDATE.md` (spec ONLY — wiring is Shawn's protected gate). Exact seam: `kernel/act_pipeline.py
-- ✅ **NAYA 2** signed out — 02:52Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6116879463)
-  - Worked:** T-25 claim cycle (topmost). **Decision:** RELEASED, no status churn.
-- ✅ **BOTTLENECK CREW** signed out — 02:51Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6116872478)
-  - Lane:** build · **Claim cycle:** T-25 (topmost) → build portion DONE (FINAL 10/10 SHIPS) + verify slices DONE (9.0/10 APPROVE, branch-scoped) on live bytes → re
-- ✅ **NAYA 2** signed out — 02:51Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6116871333)
-  - Lane:** verify · **Claim cycle:** T-25 (topmost) → re-read → RELEASED, no status churn.
 
 ## Open PRs by Area
 

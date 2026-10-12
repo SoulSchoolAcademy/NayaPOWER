@@ -1,16 +1,16 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-12T03:05:39+00:00",
+ "generated_utc": "2026-10-12T03:12:26+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
  "wave": {
-  "wave_number": 4,
-  "counter": 12,
+  "wave_number": 1,
+  "counter": 13,
   "active_areas": [
-   "product",
-   "memory",
-   "govern"
+   "learn",
+   "know",
+   "act"
   ]
  },
  "agents": [
@@ -29,7 +29,7 @@
     "The learning-system coordinator's three builds (injection proof on every dispatch path, control/treatment experiments, error-signal loop) were still pending as of 21:33 UTC."
    ],
    "next_action": "Run the four-arm experiment's first real cycle: take one captured lesson, inject it to a treatment lane, measure the outcome difference. One proven loop beats ten more specs.",
-   "active_now": false,
+   "active_now": true,
    "board_lane": "#2175 lane LEARN",
    "open_prs": [
     {
@@ -74,7 +74,7 @@
     "#2283's auto-stamp verified 8/8 at its current head, but the CI test red reproduces locally: workflow line 65 'exit 0' swallows the step's exit code \u2014 the test gate can lie."
    ],
    "next_action": "Get the brain-index freshness law (PR #2388) merged, then prove a full day with zero drift recurrences.",
-   "active_now": false,
+   "active_now": true,
    "board_lane": "#2175 lane KNOW",
    "open_prs": [
     {
@@ -143,7 +143,7 @@
     "The ADVISE node broke the nine-node invoked-count gate today (T-25; fixed branch-scoped in #2389, verify 8.0/10 NEEDS_WORK) \u2014 the bridge's contract with the kernel is fragile."
    ],
    "next_action": "Land PR #2393 (intent producers) and prove the sensor fires on live main with zero false positives.",
-   "active_now": false,
+   "active_now": true,
    "board_lane": "#2175 lane ACT",
    "open_prs": [
     {
@@ -500,7 +500,7 @@
     "20 Intelligent Block owner assignments are still unassigned \u2014 a P0 that needs Shawn's word."
    ],
    "next_action": "Pick the single highest-value product surface and drive it to an honest 9.0+ with live proof \u2014 one proven surface beats twelve assessed ones.",
-   "active_now": true,
+   "active_now": false,
    "board_lane": "#2175 lane PRODUCT",
    "open_prs": [],
    "open_pr_count": 0
@@ -520,7 +520,7 @@
     "Intelligent Blocks (the human-facing memory surface) still lack owners \u2014 memory nobody is responsible for is memory nobody trusts."
    ],
    "next_action": "Prove one captured lesson retrieved AND applied by a cold successor \u2014 the first causal memory win.",
-   "active_now": true,
+   "active_now": false,
    "board_lane": "#2175 lane MEMORY",
    "open_prs": [
     {
@@ -547,7 +547,7 @@
     "Trigger-chain jurisdiction (the #2020/#2152 bypass class) is still missing its mechanism \u2014 prose about it exists, machinery does not."
    ],
    "next_action": "Close the trigger-chain jurisdiction gap with a mechanical gate \u2014 prose does not stop bypasses, gates do.",
-   "active_now": true,
+   "active_now": false,
    "board_lane": "#2175 lane GOVERN",
    "open_prs": [
     {
@@ -585,6 +585,30 @@
   }
  ],
  "recent_activity": [
+  {
+   "comment_id": 6117060825,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6117060825",
+   "lane": "KNOW",
+   "kind": "in",
+   "at": "2026-10-12T03:11:49Z",
+   "summary": ""
+  },
+  {
+   "comment_id": 6117055585,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6117055585",
+   "lane": "BOTTLENECK CREW",
+   "kind": "out",
+   "at": "2026-10-12T03:11:13Z",
+   "summary": "Claim cycle:** T-25 topmost \u2192 re-read \u2192 build portion DONE (23:25 UTC FINAL 10/10 SHIPS) + verify slices DONE (9.0/10 APPROVE both heads). Released to review/me"
+  },
+  {
+   "comment_id": 6117054829,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6117054829",
+   "lane": "NAYA 2",
+   "kind": "out",
+   "at": "2026-10-12T03:11:08Z",
+   "summary": "Claim:** T-25 (topmost). **Release:** no status churn. Build DONE (23:25 UTC, FINAL 10/10 SHIPS) + verify slices DONE (9.0/10 APPROVE, branch-scoped, both heads"
+  },
   {
    "comment_id": 6116988473,
    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6116988473",
@@ -688,30 +712,6 @@
    "kind": "out",
    "at": "2026-10-12T02:43:11Z",
    "summary": ""
-  },
-  {
-   "comment_id": 6116792332,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6116792332",
-   "lane": "BOTTLENECK CREW",
-   "kind": "out",
-   "at": "2026-10-12T02:42:32Z",
-   "summary": "Lane:** build \u00b7 **Claim cycle:** T-25 (topmost) \u2192 re-read \u2192 RELEASED, no status churn"
-  },
-  {
-   "comment_id": 6116790041,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6116790041",
-   "lane": "NAYA 2",
-   "kind": "out",
-   "at": "2026-10-12T02:42:17Z",
-   "summary": "Lane:** verify (Bottleneck Crew) \u00b7 **Item worked:** T-25 (topmost) \u2014 claim cycle, no new work."
-  },
-  {
-   "comment_id": 6116780069,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6116780069",
-   "lane": "NAYA 2",
-   "kind": "out",
-   "at": "2026-10-12T02:41:13Z",
-   "summary": "Worked:** T-25 claim cycle per protocol (topmost TODO entry)."
   }
  ],
  "open_pr_total": 100,
