@@ -1,31 +1,31 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-12 01:12 UTC_
+_Last updated: 2026-10-12 01:34 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 37
-- ✅ Verified (8+): 36
-- 🟡 Partial (5–7): 0
+- **Total scored actions:** 53
+- ✅ Verified (8+): 51
+- 🟡 Partial (5–7): 1
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 1
-- **Verification rate:** 97% of actions fully verified
+- **Verification rate:** 96% of actions fully verified
 
 ## Per-team score trend
 
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
-| Team 1 | Naya Verity | 5 | 8.7 | 9.0 |
-| Team 2 | Naya Sage | 5 | 8.1 | 8.5 |
-| Team 3 | Naya Judge | 4 | 8.6 | 9.0 |
-| Team 4 | Naya Mason | 3 | 9.0 | 9.0 |
-| Team 5 | Naya Seeker | 3 | 8.8 | 9.0 |
-| Team 6 | Naya Heir | 1 | 9.0 | 9.0 |
+| Team 1 | Naya Verity | 6 | 8.8 | 9.0 |
+| Team 2 | Naya Sage | 8 | 8.1 | 8.5 |
+| Team 3 | Naya Judge | 5 | 8.7 | 9.0 |
+| Team 4 | Naya Mason | 4 | 9.0 | 9.0 |
+| Team 5 | Naya Seeker | 4 | 8.9 | 9.0 |
+| Team 6 | Naya Heir | 2 | 9.0 | 9.0 |
 | Team 7 | Naya Conductor | 1 | 9.0 | 9.0 |
-| Team 8 | Naya Sentinel | 4 | 8.8 | 9.0 |
-| Team 9 | Naya Smith | 5 | 6.7 | 8.5 |
-| Team 10 | Naya Librarian | 4 | 8.2 | 8.5 |
-| Team 11 | Naya Heart | 2 | 8.5 | 8.5 |
+| Team 8 | Naya Sentinel | 5 | 8.8 | 9.0 |
+| Team 9 | Naya Smith | 8 | 7.2 | 8.5 |
+| Team 10 | Naya Librarian | 6 | 8.4 | 9.0 |
+| Team 11 | Naya Heart | 4 | 8.5 | 8.5 |
 | Team 12 | Naya Herald | 0 | — | — |
 
 ## Learning velocity
@@ -39,9 +39,10 @@ _Last updated: 2026-10-12 01:12 UTC_
 - **t952:** 3 actions, avg 8.2/10
 - **t972:** 3 actions, avg 8.8/10
 - **t982:** 4 actions, avg 8.6/10
-- **t992:** 3 actions, avg 8.7/10
-- **t1002:** 3 actions, avg 8.5/10
-- **t1012:** 3 actions, avg 8.7/10
-- **t1022:** 2 actions, avg 8.8/10
+- **t992:** 6 actions, avg 8.7/10
+- **t1002:** 6 actions, avg 8.5/10
+- **t1012:** 6 actions, avg 8.7/10
+- **t1022:** 6 actions, avg 8.7/10
+- **t1032:** 3 actions, avg 8.5/10
 
 _A rising average with zero phantoms is the proof the team is learning and growing._
