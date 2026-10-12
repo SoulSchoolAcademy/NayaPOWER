@@ -29,6 +29,7 @@ distribution named.
 """
 
 import ast
+import os
 import re
 import sys
 from pathlib import Path
@@ -49,6 +50,159 @@ DISTRIBUTION = {
 }
 
 STDLIB = set(sys.stdlib_module_names)
+
+
+def _resolve_path_expr(node, env, file_dir):
+    """Best-effort resolve an AST expression to an absolute directory path.
+
+    Handles the sys.path.insert idioms used across the suite:
+      str constants, os.path.join(...), Path(...), X / "seg", str(X),
+      X.resolve(), X.parent, X.parents[N], os.path.dirname(X),
+      os.path.abspath(X), and Name lookups into `env` (__file__ included).
+    Returns an absolute path string, or None when it cannot be resolved.
+    Conservative: anything unresolvable is skipped, never guessed.
+    """
+    if isinstance(node, ast.Constant) and isinstance(node.value, str):
+        p = Path(node.value)
+        return str(p if p.is_absolute() else (file_dir / p))
+    if isinstance(node, ast.Name):
+        return env.get(node.id)
+    if isinstance(node, ast.Call):
+        func = node.func
+        fname = ""
+        if isinstance(func, ast.Attribute):
+            fname = func.attr
+        elif isinstance(func, ast.Name):
+            fname = func.id
+        args = node.args
+        if fname == "join":
+            parts = []
+            for a in args:
+                if isinstance(a, ast.Constant) and isinstance(a.value, str):
+                    parts.append(a.value)  # join segment: literal, never file-relative
+                else:
+                    r = _resolve_path_expr(a, env, file_dir)
+                    if not r:
+                        return None
+                    parts.append(r)
+            return os.path.join(*parts) if parts else None
+        if fname == "str" and len(args) == 1:
+            return _resolve_path_expr(args[0], env, file_dir)
+        if fname in ("Path",) and len(args) == 1:
+            return _resolve_path_expr(args[0], env, file_dir)
+        if fname == "resolve" and len(args) == 0 and isinstance(func, ast.Attribute):
+            return _resolve_path_expr(func.value, env, file_dir)
+        if fname == "dirname" and len(args) == 1:
+            base = _resolve_path_expr(args[0], env, file_dir)
+            return str(Path(base).parent) if base else None
+        if fname == "abspath" and len(args) == 1:
+            base = _resolve_path_expr(args[0], env, file_dir)
+            return str(Path(base)) if base else None
+        return None
+    if isinstance(node, ast.BinOp) and isinstance(node.op, ast.Div):
+        # A multi-segment constant ("a/b") is a guess, never a skip: the
+        # resolver only honors single-segment joins. Check the RAW constant,
+        # not the resolved path (absolute paths always contain separators).
+        right_node = node.right
+        if (isinstance(right_node, ast.Constant)
+                and isinstance(right_node.value, str)
+                and ("/" in right_node.value or "\\" in right_node.value)):
+            return None
+        left = _resolve_path_expr(node.left, env, file_dir)
+        right = _resolve_path_expr(node.right, env, file_dir)
+        if left and right:
+            seg = Path(right).name
+            if not seg:
+                return None
+            return str(Path(left) / seg)
+        return None
+    if isinstance(node, ast.Attribute):
+        base = _resolve_path_expr(node.value, env, file_dir)
+        if base is None:
+            return None
+        if node.attr == "parent":
+            return str(Path(base).parent)
+        if node.attr == "parents":
+            return base  # handled with Subscript below
+        return None
+    if isinstance(node, ast.Subscript):
+        base = _resolve_path_expr(node.value, env, file_dir)
+        if base is None:
+            return None
+        sl = node.slice
+        n = sl.value if isinstance(sl, ast.Constant) else (sl.n if hasattr(sl, "n") else None)
+        if isinstance(n, int):
+            if n < 0:
+                return None  # negative index is a guess, never resolved
+            p = Path(base)
+            for _ in range(n + 1):  # parents[N] is N+1 levels up from the file
+                p = p.parent
+            return str(p)
+        return None
+    return None
+
+
+def _module_names_in(root):
+    """Importable module names provided by an in-repo sys.path root."""
+    names = set()
+    try:
+        rp = Path(root)
+        if not rp.is_dir():
+            return names
+        names.update(p.stem for p in rp.glob("*.py"))
+        names.update(
+            p.name for p in rp.iterdir()
+            if p.is_dir() and p.name.isidentifier()
+            and not p.name.startswith((".", "__"))
+            and (p / "__init__.py").exists()
+        )
+    except OSError:
+        pass
+    return names
+
+
+def _syspath_roots(path):
+    """Resolve the directories a test file adds to sys.path (best-effort).
+
+    The guard previously hardcoded three import roots; suites keep adding new
+    ones (tools/human_value, tools/learning/compound_scale, ...) and every
+    new root turned into a false alarm. Resolving the actual insert targets
+    keeps the guard honest: a module is first-party only when the importing
+    file really puts its directory on sys.path.
+    """
+    roots = set()
+    try:
+        tree = ast.parse(path.read_text(encoding="utf-8"))
+    except (SyntaxError, OSError):
+        return roots
+    file_dir = path.parent
+    env = {"__file__": str(path)}
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Assign) and len(node.targets) == 1 and isinstance(node.targets[0], ast.Name):
+            val = _resolve_path_expr(node.value, env, file_dir)
+            if val:
+                env[node.targets[0].id] = val
+    for node in ast.walk(tree):
+        if not isinstance(node, ast.Call):
+            continue
+        func = node.func
+        is_insert = (
+            isinstance(func, ast.Attribute)
+            and func.attr in ("insert", "append")
+            and isinstance(func.value, ast.Attribute)
+            and func.value.attr == "path"
+            and isinstance(func.value.value, ast.Name)
+            and func.value.value.id == "sys"
+        )
+        if not is_insert:
+            continue
+        arg = node.args[-1] if node.args else None
+        if arg is None:
+            continue
+        resolved = _resolve_path_expr(arg, env, file_dir)
+        if resolved and Path(resolved).is_absolute() and Path(resolved).is_dir():
+            roots.add(str(Path(resolved)))
+    return roots
 
 
 def _first_party_modules() -> set:
@@ -102,7 +256,7 @@ def _installed_distributions() -> set:
 
 
 def _third_party_imports() -> set:
-    found = set()
+    found = {}
     for path in sorted(TESTS.glob("*.py")):
         try:
             tree = ast.parse(path.read_text(encoding="utf-8"))
@@ -111,11 +265,29 @@ def _third_party_imports() -> set:
         for node in ast.walk(tree):
             if isinstance(node, ast.Import):
                 for alias in node.names:
-                    found.add(alias.name.split(".")[0])
+                    found.setdefault(alias.name.split(".")[0], set()).add(path)
             elif isinstance(node, ast.ImportFrom):
                 if node.level == 0 and node.module:
-                    found.add(node.module.split(".")[0])
-    return {m for m in found if m not in STDLIB and m not in _first_party_modules() and m != "__future__"}
+                    found.setdefault(node.module.split(".")[0], set()).add(path)
+    global_first_party = _first_party_modules()
+    third = set()
+    for mod, importers in found.items():
+        if mod in STDLIB or mod in global_first_party or mod == "__future__":
+            continue
+        # A module is first-party when an importing file puts its directory on
+        # sys.path itself. This is what the old hardcoded-roots list tried to
+        # approximate and got wrong for every new root (the false alarm).
+        first_party = False
+        for importer in importers:
+            for root in _syspath_roots(importer):
+                if mod in _module_names_in(root):
+                    first_party = True
+                    break
+            if first_party:
+                break
+        if not first_party:
+            third.add(mod)
+    return third
 
 
 def test_ci_installs_every_third_party_module_the_suite_imports():
