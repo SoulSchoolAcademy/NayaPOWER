@@ -259,7 +259,48 @@ def test_pilot_skeleton_builds_from_real_merge():
     assert skel["change_id"] == "PR-0"
     assert len(skel["judgments"]) == 5
     assert all(j["score"] is None for j in skel["judgments"])
-    assert skel["_mechanical_preview"]["files_changed"] >= 1
+    mech = skel["_mechanical_preview"]
+    if "unavailable" in mech:
+        # depth-1 (main-push) checkout: parents were never fetched, so the
+        # file count is genuinely unknowable. The contract is honesty:
+        # UNAVAILABLE with a shallow-checkout reason — never a lying 0.
+        assert "shallow" in mech["unavailable"]
+    else:
+        # Full checkout: the merge's real delta. The old base-collapse
+        # misfire (files_changed=0 on main-push tips) must never recur.
+        assert mech["files_changed"] >= 1
+
+
+def test_mechanical_merge_on_main_tip_does_not_collapse(tmp_path):
+    """Regression: a main-push checkout has origin/main == the merge commit.
+    The old merge-base override collapsed the base onto the commit itself and
+    reported files_changed=0. A merge commit always diffs first-parent..merge.
+    """
+    d = str(tmp_path / "mainpush")
+    os.makedirs(d, exist_ok=True)
+    _git(d, "init", "-q")
+    _git(d, "config", "user.email", "test@naya.local")
+    _git(d, "config", "user.name", "hvmp-test")
+    _git(d, "commit", "-q", "--allow-empty", "-m", "root")
+    _git(d, "checkout", "-qb", "main")
+    with open(os.path.join(d, "a.py"), "w") as f:
+        f.write("x = 1\n")
+    _git(d, "add", "-A")
+    _git(d, "commit", "-qm", "main work")
+    _git(d, "checkout", "-qb", "feat")
+    with open(os.path.join(d, "b.py"), "w") as f:
+        f.write("y = 2\n")
+    _git(d, "add", "-A")
+    _git(d, "commit", "-qm", "branch work")
+    _git(d, "checkout", "-q", "main")
+    _git(d, "merge", "-q", "--no-ff", "feat", "-m", "Merge branch feat")
+    msha = _git(d, "rev-parse", "HEAD")
+    # origin/main == the merge commit, exactly like a main-push checkout
+    _git(d, "update-ref", "refs/remotes/origin/main", msha)
+    mech = instrument.mechanical_signals(d, msha)
+    assert "unavailable" not in mech
+    assert mech["files_changed"] >= 1, f"base collapsed: {mech}"
+    assert set(mech["files"]) == {"b.py"}
 
 
 # ---------------------------------------------------------------- to-event bridge
