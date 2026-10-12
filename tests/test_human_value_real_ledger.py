@@ -49,9 +49,20 @@ def test_every_real_event_carries_durable_evidence():
         assert e["evidence"], f"{e['event_id']}: no evidence = no credit"
         for item in e["evidence"]:
             ref = item["ref"]
-            assert ref.startswith("https://github.com/SoulSchoolAcademy/NayaPOWER/"), (
-                f"{e['event_id']}: evidence ref is not a durable repo pointer: {ref}"
-            )
+            if item["kind"] == "receipt":
+                # schema: a receipt ref is a repo-relative path to a
+                # receipt/artifact file. Durable iff it resolves to a real
+                # file in the canonical checkout (checked here, not assumed).
+                assert not ref.startswith("http"), (
+                    f"{e['event_id']}: receipt ref must be a repo-relative "
+                    f"path, not a URL: {ref}")
+                assert (REPO_ROOT / ref).is_file(), (
+                    f"{e['event_id']}: receipt evidence file missing from "
+                    f"the checkout: {ref}")
+            else:
+                assert ref.startswith("https://github.com/SoulSchoolAcademy/NayaPOWER/"), (
+                    f"{e['event_id']}: evidence ref is not a durable repo pointer: {ref}"
+                )
 
 
 def test_real_ledger_recomputes_deterministically():

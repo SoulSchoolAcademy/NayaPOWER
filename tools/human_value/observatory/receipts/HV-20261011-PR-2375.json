@@ -1,0 +1,16 @@
+{
+  "event_id": "HV-20261011-PR-2375",
+  "grader": "Naya Mu",
+  "instrument": "human-value-observatory-v1",
+  "ledger_sha256_after": "sha256:b67fa8cbc1370da613bc431413689373f4bdec307ed2dcbabdabb2f8c932076b",
+  "ledger_sha256_before": "sha256:1953a48b3297d9d2db049652386fb1789f09a10512536831e8f3bb23e5eb7b28",
+  "merge_sha": "09d9b71a313012320eb25c21aa92863884678633",
+  "note": "Promotion is the lane's explicit act. The scorecard is the judgment; this receipt is the provenance.",
+  "promoted_at_utc": "2026-10-12T04:36:16.448607+00:00",
+  "receipt_version": 1,
+  "recorded_at": "2026-10-11",
+  "score": 8.8,
+  "scorecard_path": "tools/human_value/observatory/scorecards/HV-20261011-PR-2375.scorecard.json",
+  "scorecard_sha256": "sha256:c3349cf7731cd6eac700f72199e5b9f172760ad49ebdbc0cd38dffa1708d98cc",
+  "verdict": "REAL VALUE"
+}

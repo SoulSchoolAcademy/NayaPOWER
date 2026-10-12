@@ -1,0 +1,135 @@
+{
+  "packet_version": 1,
+  "change_id": "PR-2188",
+  "title": "Receipt-gate fetch-depth repair (worker-protocol-gates.yml)",
+  "merge_sha": "312e1fd3b4f049a2ba50b29fb30e3f509cc22afa",
+  "grader": "Naya Mu",
+  "graded_at_utc": "2026-10-12T04:36:05.162368+00:00",
+  "durable_check_due_utc": "2026-10-19T04:36:05.162405+00:00",
+  "disqualified": false,
+  "score": 7.3,
+  "verdict": "REAL VALUE",
+  "judgments": [
+    {
+      "dimension": "USE",
+      "claimed": 8.0,
+      "applied": 8.0,
+      "weight": 0.3,
+      "verified_evidence": 2,
+      "attested_evidence": 0,
+      "flags": [],
+      "rationale": "Fixed receipt gates failing on UI merges \u2014 the exact pain blocking the merge lane. The workflow runs on every push; the test runs in CI."
+    },
+    {
+      "dimension": "DELTA",
+      "claimed": 8.0,
+      "applied": 5.0,
+      "weight": 0.25,
+      "verified_evidence": 0,
+      "attested_evidence": 1,
+      "flags": [
+        "UNCITED_CAP"
+      ],
+      "rationale": "Receipt gate went FAILURE -> SUCCESS live at 20:49:02Z. A red gate turned green: the number moved."
+    },
+    {
+      "dimension": "PROOF",
+      "claimed": 8.0,
+      "applied": 8.0,
+      "weight": 0.2,
+      "verified_evidence": 1,
+      "attested_evidence": 0,
+      "flags": [],
+      "rationale": "Live FAILURE->SUCCESS receipt plus a dedicated regression test in-repo. The 'before' state is attested, not captured in-repo."
+    },
+    {
+      "dimension": "DURABLE",
+      "claimed": 8.0,
+      "applied": 8.0,
+      "weight": 0.15,
+      "verified_evidence": 1,
+      "attested_evidence": 0,
+      "flags": [],
+      "rationale": "Dedicated test file means the fetch-depth regression is caught mechanically if it ever recurs."
+    },
+    {
+      "dimension": "CLEAN",
+      "claimed": 9.0,
+      "applied": 9.0,
+      "weight": 0.1,
+      "verified_evidence": 1,
+      "attested_evidence": 0,
+      "flags": [],
+      "rationale": "Two files, +147 lines, surgical. No collateral changes."
+    }
+  ],
+  "evidence_ledger": [
+    {
+      "dimension": "USE",
+      "index": 0,
+      "kind": "file",
+      "status": "VERIFIED",
+      "detail": ".github/workflows/worker-protocol-gates.yml:1-40 of 73 lines at 312e1fd3b4f0",
+      "citation": ".github/workflows/worker-protocol-gates.yml",
+      "lines": "1-40"
+    },
+    {
+      "dimension": "USE",
+      "index": 1,
+      "kind": "test",
+      "status": "VERIFIED",
+      "detail": "tests/test_receipt_gate_checkout_depth.py:1-40 of 140 lines at 312e1fd3b4f0",
+      "citation": "tests/test_receipt_gate_checkout_depth.py",
+      "lines": "1-40"
+    },
+    {
+      "dimension": "DELTA",
+      "index": 0,
+      "kind": "command",
+      "status": "ATTESTED",
+      "detail": "command evidence rests on the grader's word",
+      "citation": "command",
+      "lines": null
+    },
+    {
+      "dimension": "PROOF",
+      "index": 0,
+      "kind": "test",
+      "status": "VERIFIED",
+      "detail": "tests/test_receipt_gate_checkout_depth.py present at 312e1fd3b4f0 (140 lines)",
+      "citation": "tests/test_receipt_gate_checkout_depth.py",
+      "lines": null
+    },
+    {
+      "dimension": "DURABLE",
+      "index": 0,
+      "kind": "test",
+      "status": "VERIFIED",
+      "detail": "tests/test_receipt_gate_checkout_depth.py:100-140 of 140 lines at 312e1fd3b4f0",
+      "citation": "tests/test_receipt_gate_checkout_depth.py",
+      "lines": "100-140"
+    },
+    {
+      "dimension": "CLEAN",
+      "index": 0,
+      "kind": "sha",
+      "status": "VERIFIED",
+      "detail": "object 312e1fd3b4f049a2ba50b29fb30e3f509cc22afa exists",
+      "citation": "312e1fd3b4f049a2ba50b29fb30e3f509cc22afa",
+      "lines": null
+    }
+  ],
+  "mechanical": {
+    "merge_subject": "Merge pull request #2188 from SoulSchoolAcademy/naya5/receipt-gate-fetch-depth-fix",
+    "files_changed": 2,
+    "files": [
+      ".github/workflows/worker-protocol-gates.yml",
+      "tests/test_receipt_gate_checkout_depth.py"
+    ],
+    "insertions": 147,
+    "deletions": 0,
+    "test_files": 1,
+    "doc_files": 0
+  },
+  "why_not_10": "DELTA=5.0 [UNCITED_CAP] \u2014 Receipt gate went FAILURE -> SUCCESS live at 20:49:02Z. A red gate turned green: the number moved.; USE=8.0 \u2014 Fixed receipt gates failing on UI merges \u2014 the exact pain blocking the merge lane. The workflow runs on every push; the test runs in CI. | flags: DELTA:UNCITED_CAP"
+}

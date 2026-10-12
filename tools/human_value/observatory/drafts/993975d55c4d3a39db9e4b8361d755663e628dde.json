@@ -1,0 +1,34 @@
+{
+  "author": "Shawn Vibert",
+  "diffstat": {
+    "deletions": 0,
+    "files": 4,
+    "insertions": 700,
+    "top_dirs": [
+      "tools",
+      "BRAIN"
+    ]
+  },
+  "draft_version": 1,
+  "mechanical_note": "Every field above is verifiable with `git log` / `git diff` at the merge SHA. No value judgment is present or implied.",
+  "merge_sha": "993975d55c4d3a39db9e4b8361d755663e628dde",
+  "merged_at": "2026-10-11T16:49:23-07:00",
+  "parents": [
+    "bc22abbcd20a39ae935be5ccbe17c8a604526ac3",
+    "e654f16e8a49e9a26309fd852695a0bef202673d"
+  ],
+  "pr_number": 2403,
+  "pr_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2403",
+  "status": "DRAFT \u2014 not a ledger event. The machine observes; it never credits. A graded scorecard promotes this.",
+  "suggested_evidence": [
+    {
+      "kind": "url",
+      "ref": "https://github.com/SoulSchoolAcademy/NayaPOWER/commit/993975d55c4d3a39db9e4b8361d755663e628dde"
+    },
+    {
+      "kind": "url",
+      "ref": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2403"
+    }
+  ],
+  "title": "Merge pull request #2403 from SoulSchoolAcademy/naya/five-retrieval-auth-gate-t942"
+}

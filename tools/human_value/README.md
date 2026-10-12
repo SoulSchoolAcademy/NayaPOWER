@@ -46,6 +46,44 @@ python3 tools/human_value/compute_hv.py \
   --receipts tools/human_value/ledgers/decision-predictions.json
 ```
 
+## Observatory — the live loop (`observatory.py`)
+
+The ledger grows by observation, not by hand-editing. The observatory is the
+loop that keeps measurement running live:
+
+```bash
+# 1. SCAN — draft every merge since the watermark (mechanical only: SHAs,
+#    diffstats, PR links). Drafts are deliberately NOT ledgerable — the
+#    machine observes, it never credits.
+python3 tools/human_value/observatory.py scan --repo . --base <LAST_MERGE> \
+  --watermark-out tools/human_value/observatory/watermark.json
+
+# 2. GRADE — a seat grades a draft's change with instrument.py (judgment
+#    with cited evidence; this is the human/seat step, never automated).
+
+# 3. PROMOTE — the explicit lane act. A REAL VALUE+ scorecard becomes one
+#    ledger event; the ledger recomputes deterministically, a trend snapshot
+#    is appended, a promotion receipt is written. THIN / NO VALUE /
+#    DISQUALIFIED and duplicate event_ids are refused, fail closed.
+python3 tools/human_value/observatory.py promote \
+  --ledger tools/human_value/ledgers/real-events.jsonl \
+  --scorecard <SCORECARD.json> --event-id HV-20261012-PR-9001 \
+  --recorded-at 2026-10-12 --confirm
+
+# 4. REPORT — regenerate the pinned live report (deterministic bytes).
+python3 tools/human_value/observatory.py report \
+  --ledger tools/human_value/ledgers/real-events.jsonl \
+  --receipts tools/human_value/ledgers/decision-predictions.json \
+  --out tools/human_value/OBSERVATORY-REPORT.md
+```
+
+`observatory/drafts/` (grading queue), `observatory/receipts/` (promotion
+provenance), `observatory/scorecards/` (graded scorecards),
+`observatory/watermark.json` (observation cursor — operational, not a
+measurement), `ledgers/trend.jsonl` (one snapshot per promotion — the raw
+material of the 30-day trend), `OBSERVATORY-REPORT.md` (the pinned live
+report, regenerated — never hand-edited).
+
 ## Recording a real event
 
 **Ledger placement law** (learned 2026-10-08 from the dead-workspace failure):
