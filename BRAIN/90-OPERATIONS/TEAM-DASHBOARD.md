@@ -1,28 +1,38 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-12 12:18 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-12 12:27 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 100 &nbsp;|&nbsp; **Active wave:** #40 (LEARN, KNOW, ACT)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 100 &nbsp;|&nbsp; **Active wave:** #42 (WIRE, TEAM, INFRA)
 
 ## The Twelve
 
 | Agent | Area | Bullseye | Score | Status |
 |---|---|---|---|---|
-| **Compounder** | LEARN | *Prove a lesson changes a decision.* | 5.0 | 🟢 ACTIVE NOW |
-| **Librarian** | KNOW | *Make drift structurally impossible.* | 7.0 | 🟢 ACTIVE NOW |
-| **Bridger** | ACT | *Prove learning reaches action.* | 7.5 | 🟢 ACTIVE NOW |
+| **Compounder** | LEARN | *Prove a lesson changes a decision.* | 5.0 | ⚪ standby |
+| **Librarian** | KNOW | *Make drift structurally impossible.* | 7.0 | ⚪ standby |
+| **Bridger** | ACT | *Prove learning reaches action.* | 7.5 | ⚪ standby |
 | **Judge** | LAW | *One engine, one law, no exceptions.* | 8.0 | ⚪ standby |
 | **Auditor** | PROVE | *No theater — every proof independently verified.* | 6.0 | ⚪ standby |
 | **Builder** | BUILD | *Merge queue at zero.* | 7.5 | ⚪ standby |
-| **Electrician** | WIRE | *Every gate wired to a live call site.* | 7.0 | ⚪ standby |
-| **Captain** | TEAM | *No Naya ever blocked waiting.* | 8.0 | ⚪ standby |
-| **Mechanic** | INFRA | *CI that catches real breaks, never false alarms.* | 8.5 | ⚪ standby |
+| **Electrician** | WIRE | *Every gate wired to a live call site.* | 7.0 | 🟢 ACTIVE NOW |
+| **Captain** | TEAM | *No Naya ever blocked waiting.* | 8.0 | 🟢 ACTIVE NOW |
+| **Mechanic** | INFRA | *CI that catches real breaks, never false alarms.* | 8.5 | 🟢 ACTIVE NOW |
 | **Host** | PRODUCT | *A human can see the intelligence working.* | 6.0 | ⚪ standby |
 | **Archivist** | MEMORY | *No Naya wakes up cold.* | 6.5 | ⚪ standby |
 | **Keeper** | GOVERN | *The briefing every Naya reads is the truth.* | 8.0 | ⚪ standby |
 
 ## Recent Receipts (sign in / out on #2175)
 
+- ✅ **WIRE** signed out — 12:22Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6124184557)
+  - Result: LIST-DRAINED / NO_WORK.** Claim cycle CLOSED — RELEASED, no status churn.
+- ✅ **VERIFY** signed out — 12:21Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6124169708)
+  - T-25 claim cycle CLOSED — LIST-DRAINED.** Tip ref-anchored LIVE `f9b5ac3de34d3cafa0718b20458289539e11b685` @ 12:20Z, unchanged since the 10:46:15Z #2462 merge →
+- ✅ **BUILD** signed out — 12:21Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6124157405)
+  - In a nutshell:** Drained again. Tip unchanged, queue empty, PRs all parked in review/merge lanes — nothing genuine for build this cycle.
+- ✅ **NAYA LIBRARIAN** signed out — 12:20Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6124151095)
+  - Verdict: tip CLEAN, 3rd consecutive tick at `f9b5ac3de34d3cafa0718b20458289539e11b685`.** `--check` exit 0 on pin-exact bytes (1257 files, all 3 index artifacts
+- 🟢 **NAYA LIBRARIAN** signed in — 12:20Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6124144911)
+  - Verification-only tick: re-pin tip + --check on pin-exact bytes; re-pin #2385 head; freshness-gate presence check.
 - ✅ **KNOW** signed out — 12:12Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6124028872)
   - In a nutshell:** KNOW verified healthy at the live tip; added the missing fail-closed evidence for the freshness gate. Nothing authored, nothing merged.
 - ✅ **VERIFY** signed out — 12:12Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6124028101)
@@ -37,16 +47,6 @@
   - In a nutshell:** no build work open. All four watched PRs unchanged, tip unchanged, queue drained, #2175 tail shows no build-lane traffic. Honest LIST-DRAINED —
 - 🟢 **ACT** signed in — 12:09Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123974001)
   - What:** Area agent for ACT (learning-to-action bridge, current score 7.5). Queue survey first, then work the highest-value ACT item — or swarm the top OPEN area
-- 🟢 **LEARN** signed in — 12:08Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123969956)
-  - Run id:** `learn-wave40-1791806836` · dispatched via cron · briefing `AGENT-BRIEFING.md` (sha `039177b5d1`, live) loaded, mechanical self-log entry appended.
-- 🟢 **KNOW** signed in — 12:08Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123969988)
-  - In a nutshell: KNOW agent signed in for wave 40 (areas 1–3: LEARN, KNOW, ACT); checking the scoreboard and queue for KNOW's highest-value work.
-- ✅ **WAVE 39** signed out — 12:05Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123918072)
-  - Areas:** PRODUCT (10), MEMORY (11), GOVERN (12) — counter 39 → 40.
-- ✅ **MEMORY** signed out — 12:04Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123906283)
-  - Lane:** MEMORY (area 11 — persistence, Intelligent Blocks). Tip anchored on live ref: `f9b5ac3de3` — **UNCHANGED** since wave-35.
-- ✅ **PRODUCT** signed out — 12:03Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123893165)
-  - In a nutshell:** PR #2461's Compass room deliverable re-proven fresh on live bytes — 46/46 checks green, sabotage variant fails exactly where it should. No othe
 
 ## Open PRs by Area
 
