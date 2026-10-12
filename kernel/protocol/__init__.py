@@ -20,6 +20,8 @@ Data:
 
 Law checks (checks/):
 - tip_freshness: claimed SHA must match origin/main (SN-0493)
+- tip_claim_gate: ls-remote-only tip-moved/tip-stable claims rejected;
+  the claim must name its API confirmation (SN-0493, the 22:17Z lesson)
 - decision_log: >=2 options scored, winner = top scorer, gates checked (SN-0522)
 - scorecard: 7 dimensions, weights sum to 1.0, totals recomputed (SN-0523)
 - action_log: fix verified + reported, no gate crossed without approval (SN-0575)

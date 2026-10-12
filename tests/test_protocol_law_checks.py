@@ -1,7 +1,8 @@
 """Tests for the Team Naya executable law checks.
 
-Covers all five check modules plus the manifest/gate foundation:
+Covers the check modules plus the manifest/gate foundation:
   - tip_freshness.py  (SN-0493)
+  - tip_claim_gate.py (SN-0493 companion — the 22:17Z lesson, machine-held)
   - quality_gate.py   (SN-0526)
   - decision_log.py   (SN-0522)
   - scorecard.py      (SN-0523)
@@ -21,7 +22,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CHECKS = ROOT / "tools" / "protocol" / "checks"
 sys.path.insert(0, str(CHECKS.parent))
 
-from checks import tip_freshness, quality_gate, decision_log, scorecard, action_log  # noqa: E402
+from checks import tip_freshness, quality_gate, decision_log, scorecard, action_log, tip_claim_gate  # noqa: E402
 
 
 def _dims(weight=1 / 7):
@@ -318,6 +319,122 @@ def test_action_log_passes_clean_takeover():
 
 
 # ---------------------------------------------------------------- runner
+# ---------------------------------------------------------------- tip_claim_gate
+# SN-0493 companion: rejects tip-moved/tip-stable claims citing ONLY
+# `git ls-remote` on this VM (the 22:17Z lesson — ls-remote lies here).
+# The claim must name its API confirmation. Machine-forces what Iota's
+# 02:16Z cold-successor battery proved was habit-held, not record-held
+# (probe 3 posted "TIP MOVED" on ls-remote authority).
+def test_tip_claim_gate_rejects_lsremote_only_tip_moved():
+    r = tip_claim_gate.check({
+        "claim_text": "TIP MOVED — ls-remote shows f2c614a5 vs recorded 1b6f72de",
+        "source_ref": "probe-3-replay",
+    })
+    assert r["pass"] is False, "ls-remote-only TIP MOVED must be rejected"
+    assert any("ls-remote" in x for x in r["reasons"])
+
+
+def test_tip_claim_gate_rejects_lsremote_only_tip_stable():
+    r = tip_claim_gate.check({
+        "claim_text": "tip stable — ls-remote agrees the tip is 665098e3f0",
+    })
+    assert r["pass"] is False, "ls-remote-only tip-stable claim must be rejected too"
+
+
+def test_tip_claim_gate_rejects_lsremote_only_tip_unmoved_caps():
+    r = tip_claim_gate.check({
+        "claim_text": "TIP UNMOVED per LS-REMOTE",
+    })
+    assert r["pass"] is False, "case must not matter"
+
+
+def test_tip_claim_gate_rejects_did_not_move_phrasing():
+    # "did not move" is a stability verdict, not a denial — must not evade.
+    r = tip_claim_gate.check({
+        "claim_text": "the tip did not move per ls-remote",
+    })
+    assert r["pass"] is False, "'did not move' on ls-remote authority must be rejected"
+
+
+def test_tip_claim_gate_accepts_api_confirmed_claim():
+    r = tip_claim_gate.check({
+        "claim_text": (
+            "main tip 665098e3f00c9aa6f63907360b8500891704071c API-confirmed "
+            "via GET /repos/SoulSchoolAcademy/NayaPOWER/git/ref/heads/main "
+            "(did not move)"
+        ),
+    })
+    assert r["pass"] is True, f"API-confirmed claim must pass: {r['reasons']}"
+
+
+def test_tip_claim_gate_accepts_gh_api_get_confirmation():
+    r = tip_claim_gate.check({
+        "claim_text": (
+            "tip moved — gh-api GET /repos/SoulSchoolAcademy/NayaPOWER/git/ref/heads/main "
+            "returned a new SHA; ls-remote was not consulted"
+        ),
+    })
+    assert r["pass"] is True, f"gh-api GET confirmation must pass: {r['reasons']}"
+
+
+def test_tip_claim_gate_accepts_lsremote_mention_with_api_confirmation():
+    # ls-remote mentioned as history/context, API confirmation named:
+    # admissible — the claim is not ls-remote-ONLY.
+    r = tip_claim_gate.check({
+        "claim_text": (
+            "tip unmoved. (Note: ls-remote lies on this VM per the 22:17Z lesson, "
+            "so I did not trust it.) API-confirmed via the Git Data API."
+        ),
+    })
+    assert r["pass"] is True, f"API-named claim must pass: {r['reasons']}"
+
+
+def test_tip_claim_gate_passes_when_no_tip_verdict():
+    r = tip_claim_gate.check({
+        "claim_text": "ran the suite: 12/12 green; no tip resolution needed this run",
+    })
+    assert r["pass"] is True, "gate does not apply without a tip verdict"
+
+
+def test_tip_claim_gate_passes_on_honest_denial():
+    r = tip_claim_gate.check({
+        "claim_text": "I will not post a tip-moved claim on ls-remote authority",
+    })
+    assert r["pass"] is True, "negated mention is a denial, not a violation"
+
+
+def test_tip_claim_gate_fail_closed_on_empty_claim():
+    assert tip_claim_gate.check({})["pass"] is False
+    assert tip_claim_gate.check({"claim_text": "   "})["pass"] is False
+    assert tip_claim_gate.check({"claim_text": "\x00binary"})["pass"] is False
+
+
+def test_tip_claim_gate_quotes_offending_line_in_details():
+    r = tip_claim_gate.check({
+        "claim_text": "all quiet\ntip moved per ls-remote output\nnothing else",
+    })
+    assert r["pass"] is False
+    assert r["details"]["verdict_lines"][0]["line"] == 2
+    assert "ls-remote" in r["details"]["verdict_lines"][0]["quote"]
+
+
+def test_tip_claim_gate_vague_authority_does_not_exempt():
+    # "server truth" / "verified" without naming the API is not a confirmation.
+    r = tip_claim_gate.check({
+        "claim_text": "tip moved — ls-remote says so, server truth verified",
+    })
+    assert r["pass"] is False, "vague authority must not exempt"
+
+
+def test_tip_claim_gate_api_confirmation_on_later_line_exempts():
+    # Exemption is claim-level: the confirmation may live on its own line.
+    r = tip_claim_gate.check({
+        "claim_text": "tip moved per ls-remote output\n"
+                      "API-confirmed via GET /repos/x/y/git/ref/heads/main",
+    })
+    assert r["pass"] is True, "claim-level API confirmation must exempt"
+
+
 def main() -> int:
     fns = sorted((n, f) for n, f in globals().items()
                  if n.startswith("test_") and callable(f))
