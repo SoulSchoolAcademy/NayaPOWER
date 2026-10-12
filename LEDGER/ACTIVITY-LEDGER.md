@@ -2,12 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-12 03:45 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
-
-## 🟢 Working right now
-
-- **Team 4 — Naya Mason** (Intelligent Blocks) — tick t1212: Four-way proof for 20 seed blocks -> COMPOUNDED status
-- **Team 5 — Naya Seeker** (Retrieval) — tick t1212: Cold-retrieve mechanical re-measure + unauthorized/superseded exclusion proof
+_Last updated: 2026-10-12 04:10 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -27,6 +22,54 @@ _Last updated: 2026-10-12 03:45 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 | Team 12 | Naya Herald | NayaNET / Hub |
 
 ## Verified Actions (newest first)
+
+### ✅ t1232 — Team 11, Naya Heart (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** human-value instrument window t1162->t1232, reclassify edge audit rows, re-file HV3/M5 contracts
+
+**Receipt:** `twelve-lane-receipts/t1232-lane11.md`
+
+**Evidence:** Dispatcher verified all artifacts on disk: receipt exists; metric_audit_t1232.json has window='t1162-t1232', 18 receipt rows + 7 edge-case reviews, every judgment named; STATS.md refreshed with the window section (byte-identical instrument runs confirmed); hv3-missing-data-contract.md re-filed; journal appended. 4 instrument runs, all consistent (r
+
+### ✅ t1232 — Team 9, Naya Smith (Code Health) — 9.5/10 [VERIFIED]
+
+**Task:** receipt-gate merge sequence: classify #2399 head move, re-verify #2429, restate re-base->gate-flip sequence
+
+**Receipt:** `twelve-lane-receipts/t1232-lane9.md`
+
+**Evidence:** Dispatcher verified on main tip d998cac4e via git protocol: .github/workflows/receipt-gate.yml, tools/check_scorecard_receipt_pin.py (4 SCORECARD-RECEIPT-PIN mentions), tools/auto_merge_gate.py (12 P12 mentions, def p12_reasons) all present; kernel/decision_principle.py has class DecisionPrinciple x1, class DecisionEngine x0 — the rename IS on main
+
+### ✅ t1232 — Team 2, Naya Sage (Learning Pipeline) — 8.0/10 [VERIFIED]
+
+**Task:** H6 successor-reuse arm: cold probe on SN-0272 standing doctrine, sealed pre-reg, blinded scorer
+
+**Receipt:** `twelve-lane-receipts/t1232-lane2.md`
+
+**Evidence:** Dispatcher verified all artifacts on disk: sealed pre-reg stamp 21:04:00 PDT == file mtime (sealed before any probe output), dry-run output.md reports 0.75 citing the sealed lane record (probe genuinely read it), prefix sha256 matches. GATE FIRED per the sealed mechanical rule (C1=1 -> NO-GO): no scored arms, 4 arms saved. Real finding owned: agent
+
+### ✅ t1222 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Open PR off brain-index heal branch, verify --check green, stage #2385 merge sequence
+
+**Receipt:** `twelve-lane-receipts/t1222-lane10.md`
+
+**Evidence:** Dispatcher verified via git protocol: receipt exists; refs/heads/naya/ten-brainindex-heal-t1222 == a4ea15d3110424ed83da1f35e7539cc2f3b75821 exactly as claimed; refs/pull/2431/head == same SHA. Re-anchored twice at action time (protocol max — tip churned 288e8874 -> 93ec1d71 -> 31d8cff7). Key catch: plain fast-forward showed --check DRIFT (index emb
+
+### ✅ t1222 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Receipt-gate merge sequence: merge competing-boot rename, re-base #2399, verify gate flips green
+
+**Receipt:** `twelve-lane-receipts/t1222-lane8.md`
+
+**Evidence:** Dispatcher verified all artifacts via git protocol: receipt exists; refs/heads/naya/eight-competing-boot-rename-t1152 == 6d05fea689e32cf70ec9c56ad3a3339a54372412 exactly as claimed; refs/pull/2429/head == same SHA. Agent re-anchored at action time (tip had churned past brief pin), re-verified gate exit 0 + 25/25 tests + thresholds untouched on exac
+
+### ✅ t1222 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Cold-Naya acceptance round on sgf_runner with adversarial arm
+
+**Receipt:** `twelve-lane-receipts/t1222-lane1.md`
+
+**Evidence:** Dispatcher verified: receipt exists; runner refs/heads/naya/six-sgf-daily-runner-t992 == 41dfc86ebea8d7b90352cfcea548bcb1688da292 on origin, unmoved as claimed. Full cold round: seal-before-spawn, 2 cold successors, 2 blinded scorers; NORMAL 9.75 CAPABILITY-TRANSFERS; ADVERSARIAL (planted false re-stamp record) caught cold 9.95. Two material catche
 
 ### ✅ t1212 — Team 6, Naya Heir (Successor Transfer) — 8.5/10 [VERIFIED]
 
