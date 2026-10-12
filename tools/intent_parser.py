@@ -326,8 +326,11 @@ def ground_references(refs, world_ctx):
 #     clause flips the intent to a clarifying question (exit 2), with an
 #     EXPLICIT ALLOWLIST of non-negating uses. Verb proximity is not the
 #     gate; clause-level scoping + bare-negation cover the space, which
-#     also closes the old documented boundary ("do not, under absolutely
-#     any circumstances whatsoever, deploy" now flips — no window limit).
+#     also closes the old documented boundary. (Mechanism note, fix-pass
+#     #4: "do not, under absolutely any circumstances whatsoever, deploy"
+#     classifies to NO intent, so it exits 2 via generic ambiguity rather
+#     than the negated-action path — same safe exit, different mechanism.
+#     Do not claim the negated-action path handles it.)
 #   WHY DIFFERENT AT THE ROOT: stops anchoring on verb position entirely.
 #     The old approach asked "is the negation near the verb?"; the new
 #     approach asks "does this clause contain a negation that isn't
@@ -385,6 +388,10 @@ _NEGATION_BARE_OK = frozenset({
     "actually", "well", "oh", "um", "uh", "hmm",
     # idiomatic rejections: "not on my watch"
     "on", "my", "your", "his", "her", "our", "their", "watch",
+    # elliptical verbal negator: "merge 2412? do not" — the "do" is the
+    # auxiliary of an elided "do not <verb>"; without it the standalone
+    # "do not" is not recognized as a bare negation (fix-pass #4).
+    "do",
 })
 
 ACTION_VERBS = frozenset({

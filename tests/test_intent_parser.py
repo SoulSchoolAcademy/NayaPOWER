@@ -338,6 +338,21 @@ def test_negation_sentence_level():
     check("'do not, under any circumstances, deploy' -> does not proceed",
           r["ok"] is False and r["exit_hint"] == 2,
           json.dumps({k: r.get(k) for k in ("ok", "exit_hint")})[:100])
+    # Fix-pass #4: elliptical standalone "do not" — the validator's miss.
+    # "do" was missing from the bare-negation set, so the dangling "do not"
+    # was recognized but never flipped. Regression + token-class variants.
+    for s, itype in [("merge 2412? do not", "should_merge"),
+                     ("merge 2412? don't", "should_merge"),
+                     ("deploy? do not", "should_build")]:
+        r = parse_intent(s)
+        check(f"elliptical negation '{s}' -> exit 2",
+              r["ok"] is False and r["exit_hint"] == 2,
+              json.dumps({k: r.get(k) for k in ("ok", "exit_hint")})[:100])
+    # The uncontracted "do not" must not swallow genuine ask-forms
+    r = parse_intent("do not you think we should merge?")
+    check("'do not you think...?' (asking) -> not negated",
+          not any("instead" in q for q in r.get("clarifying_questions", [])),
+          str(r.get("clarifying_questions"))[:120])
     # All previously-fixed cases keep working
     for s in ["don't ever merge 2412",
               "do not ever merge 2412",
