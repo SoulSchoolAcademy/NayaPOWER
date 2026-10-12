@@ -2,11 +2,11 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-12 11:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-12 11:36 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## 🟢 Working right now
 
-- **Team ? — ?** (?) — tick t0202
+- **Team ? — ?** (?) — tick t0232
 
 ## The Teams
 
@@ -1160,6 +1160,62 @@ _Last updated: 2026-10-12 11:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t892-lane1.md`
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
+
+### ✅ t0232 — Team 8, Naya Sentinel (Governance & Safety) — 8.5/10 [VERIFIED]
+
+**Task:** #2246/#2248 disposition verdicts + #2457 merge-route closed-form finding
+
+**Receipt:** `twelve-lane-receipts/t0232-lane8.md`
+
+**Evidence:** All three comment artifacts verified on GitHub via gh-api (6123385072 #2246 KEEP-as-CANDIDATE DELIBERATELY HOLD, 6123386933 #2248 DELIBERATELY HOLD, 6123389010 #2457 merge-route finding). Heads pinned pin-exact, circuit breaker honored (no 4th hammer attempt), working alternative demonstrated via git-data API merge, root cause escalated. Propose-on
+
+### ✅ t0232 — Team 3, Naya Judge (Decision Engine) — 8.5/10 [VERIFIED]
+
+**Task:** #2418 HOLD re-cut staged locally, no push (protect Lane 1 independence)
+
+**Receipt:** `twelve-lane-receipts/t0232-lane3.md`
+
+**Evidence:** Artifacts verified: receipt file, calculator receipt (20261012T113345Z-guide-merge-merge-pr--2418.json = HOLD), local staging commit fe5397740d... in scratch worktree, remote branch AND PR head both still 8346681c (collision rule honored — nothing pushed). Re-anchor onto live tip proven clean (zero conflicts, 153/153 decision-battery green, index -
+
+### ✅ t0232 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** independent seat-2 scorecard on PR #2418 action-time head (merge-or-close slot)
+
+**Receipt:** `twelve-lane-receipts/t0232-lane1.md`
+
+**Evidence:** Artifacts verified: scorecard comment 6123444190 exists on GitHub (body opens with the claimed scorecard header); refs/pull/2418/head == 8346681cd52600e08fba3bcbb8b86a3258eaf056 pin-exact. 3-way pin twice, all Lane 3 t0202 claims re-verified on current bytes with the gate's own functions (team-review red GENUINE, receipt-pin PASS exit 0, test red p
+
+### ✅ t0222 — Team 11, Naya Heart (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** HV instrument window t0192-t0222 + hand audit + regression
+
+**Receipt:** `twelve-lane-receipts/t0222-lane11.md`
+
+**Evidence:** Dispatcher-verified on disk: run1/run2 byte-identical sha256 f34963aa..., post-audit pair 75fe00811..., machine totals M2:7/M3:4/M4:0 reproduce the hand audit exactly; t892-t1042 regression reproduces t1052 baseline (5th proof); HV3 no-movement discipline held; 14th straight window with Lane 12 zero receipts reported. Single-seat judgments + stale 
+
+### ✅ t0222 — Team 7, Naya Conductor (Team Operations) — 8.5/10 [VERIFIED]
+
+**Task:** queue-discipline slot: 449-open inventory + 34-draft census, fossil-exhausted posture
+
+**Receipt:** `twelve-lane-receipts/t0222-lane7.md`
+
+**Evidence:** Honest empty-bar work verified: all four pipeline PR heads (2418/2457/2456/2385) pin-match live refs via git protocol; fossil layer exhausted so zero forced closes (quota-forcing forbidden honored); #2246/#2248 routed to Lane 8 with disposition asks; 6 REST writes only. Gaps named: gray-zone re-fingerprint carried, UD sweep spot-check only.
+
+### ✅ t0222 — Team 2, Naya Sage (Learning Pipeline) — 8.5/10 [VERIFIED]
+
+**Task:** error-signal loop v1: scan_receipt_evidence.py + 14-flag classification
+
+**Receipt:** `twelve-lane-receipts/t0222-lane2.md`
+
+**Evidence:** Dispatcher-verified on disk: tool sha256 85372c2e... and report 8ba1adb5... match receipt claims exactly. Scanner ran 180 receipts/20 claims, all 14 flags honestly classified (7 tip-churn, 4 deleted-post-supersession, 3 phantom-evidence); flag-vs-convict design proven on live data. Honest gaps named: v1 convention-scope only, no dispatcher wiring, 
+
+### ✅ t0212 — Team 6, Naya Heir (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** M6 swallower-veto ported into daily runner (vendored, pin-gated) + CT-4 strengthened (double-read) + RED-first batteries
+
+**Receipt:** `twelve-lane-receipts/t0212-lane6.md`
+
+**Evidence:** Dispatcher verified via git protocol: branch naya/six-sgf-daily-runner-t992 @ ca1cc31ebc794478cfd0f7fc1f2d0a2f96380e8e == ls-remote == receipt; all 6 cited file sha256s recomputed from the remote head MATCH (f3c1f26285e9 / 57f11e68d7ed / 3ab3896f54f1 / 335ce0078104 / 43b9aa2a41bd / 09f158304013). Veto carries M6 semantics into the runner's own byte
 
 ### ✅ t0202 — Team 4, Naya Mason (Intelligent Blocks) — 9.5/10 [VERIFIED]
 
