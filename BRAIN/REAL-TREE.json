@@ -1,7 +1,7 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-12",
-  "receipt_basis_commit": "f6d28a8d5a6bb3260492da6af2bec1f8804ec114",
+  "receipt_basis_commit": "e1f19b1cdfe9b7e14e5331850021bf6a9f125b2a",
   "inventory_file_count": 1257,
   "domain_counts": {
     "00-ACTIVATION": 3,
@@ -6282,8 +6282,8 @@
     },
     {
       "path": "BRAIN/CURRENT-MISSION-STATE.md",
-      "blob_sha": "15589f6eda4dceaa744fea188c68f192e5d633f3",
-      "size": 176186
+      "blob_sha": "a893d6d540a963175446e10e93c98a05b5b57405",
+      "size": 192959
     },
     {
       "path": "BRAIN/MASTER-MAP.md",
