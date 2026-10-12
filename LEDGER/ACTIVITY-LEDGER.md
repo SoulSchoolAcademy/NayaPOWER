@@ -2,15 +2,13 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-12 16:54 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-12 17:22 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## 🟢 Working right now
 
-- **Team ? — ?** (?) — tick t0442: PRUNED t0422: lanes 2/7 receipts filed (DONE, scorer's queue); lane 8 receipt pending.
-- **Team ? — ?** (?) — tick t0442: PRUNED t0422: lane 2 receipt filed (DONE, scorer's queue); lane 9 receipt pending.
-- **Team ? — ?** (?) — tick t0442: FLOW SYSTEM v4 PULL: free lanes were 2/3/7 (12 parked excluded; 1/4/6 t0362 receipt pending; 8 t0392
-- **Team ? — ?** (?) — tick t0442:  PRUNED t0442: lanes 3/5 receipts filed (DONE, scorer's queue); lane 7 receipt pending.
-- **Team ? — ?** (?) — tick t0442: RETRIEVAL SURGE (Shawn ~09:40 PDT 'yes! Do it!'): retrieval outranks all Stage 0. 7 free lanes; disp
+- **Team ? — ?** (?) — tick t0462: RETRIEVAL SURGE slice (a): Seeker runs sealed study-protocol cells 1-2 on frozen fixture; F3 tripwir
+- **Team ? — ?** (?) — tick t0462: RETRIEVAL SURGE slice (c): Librarian instruments ask-world.py query logging (log never existed — ins
+- **Team ? — ?** (?) — tick t0462: RETRIEVAL SURGE slice (b): Sentinel builds CANDIDATE wiring migration package (branch naya/eight-aut
 
 ## The Teams
 
@@ -1188,6 +1186,52 @@ _Last updated: 2026-10-12 16:54 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t892-lane1.md`
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
+
+### ✅ t462 — Team 10, Lane 10 (Naya Librarian) (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** ask-world.py query-logging instrumentation (auto-retrieval SURGE slice)
+
+**Evidence:** VERIFIED: bin/ask-world.py exists with log_query() + live-check + format_version; live-check probe OK (2026-10-12 10:21 PDT); log has 22 query rows with all 9 schema fields, lanes 1-12, cmds blocked/lane/lessons/quality, format_version==1; lane-10 query still runs clean. Score 9.0: real verified value (read-only contract preserved, telemetry fail-s
+
+### ✅ t0452 — Team 10, Naya Librarian (Brain Index) — 8.5/10 [VERIFIED]
+
+**Task:** RETRIEVAL SURGE slice (c): ask-world query log freshness + top-20 needs analysis
+
+**Receipt:** `twelve-lane-receipts/t0452-lane10.md`
+
+**Evidence:** Verified: deliverable ask-world-needs-t0452.md exists (666f800ea31b). Core claim independently confirmed: hidden_files/bin/ask-world.py has exactly one open() call (a read of world.json, line 23) — read-only by construction, zero logging; no *query* log exists in hidden_files. Real work: refused to fabricate the top-20, delivered the honest absence
+
+### ✅ t0452 — Team 5, Naya Seeker (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** RETRIEVAL SURGE slice (a): mechanization study design for judge's 'would this change the decision' test + prototype
+
+**Receipt:** `twelve-lane-receipts/t0452-lane5.md`
+
+**Evidence:** Verified: protocol (821cec629950) and worked example (b288a1513922) exist with exact sha256 prefix matches under hidden_files/auto-retrieval/. Real work: counterfactual protocol d0=M(C), d1=M(C+X) with 5 pre-registered falsification bars incl. F3 lexical-independence tripwire; prototype caught and fixed 3 protocol bugs (injection format, d0/d1 orde
+
+### ✅ t0452 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Retrieval-auth battery calibration (designed step) + re-run on current tip
+
+**Receipt:** `twelve-lane-receipts/t0452-lane1.md`
+
+**Evidence:** Verified: all 4 artifacts exist with exact sha256 prefix matches (run log eb29adc47708, evidence 7b5c3713aa72, battery copy 275e26345ec2, lane-1/t0452 copy identical); live remote tip dbe06f9e733efb52c50e583dbb0b74d77039eb73 matches the receipt's pin. Real work: calibrated instrument (M0/M0b byte-pins to t952 fixture, M1-total 25/25, new M2-total 9
+
+### ✅ t0442 — Team 5, Naya Seeker (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** STAGE 0 retrieval slice-2: entailment-rerank arm — honestly falsified
+
+**Receipt:** `twelve-lane-receipts/t0442-lane5.md`
+
+**Evidence:** Verified: all 3 files exist with exact receipt SHAs (t0442_entailment.py a211e4e4…, sealed-note-t0442.md, results-t0442-entailment.json 39201b40…); sealed methodology pre-dates the run. Work: methodology sealed before the run, pre-registered ceiling analysis, ran ONCE with no tuning, honest FALSIFIED verdict 0/3 (worse than the bi-encoder it was me
+
+### ✅ t0442 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** RED-first retrieval-auth acceptance battery + stamping-migration prep
+
+**Receipt:** `twelve-lane-receipts/t0442-lane1.md`
+
+**Evidence:** Verified: branch naya/five-retrieval-auth-gate-t942 live @ e654f16e8a49 (exact match to receipt pin); all 4 t0442 files exist with exact receipt SHAs (acceptance_battery.py 4470ccee…, battery_evidence.json 464c8529…, run_log.md 762015a7…, RETRIEVAL-AUTH-MIGRATION-PREP.md 9c988570…); tip dbe06f9e matches live HEAD. Work: RED-first M/S/C battery, own
 
 ### ✅ t0432 — Team 5, Naya Seeker (Retrieval) — 9.0/10 [VERIFIED]
 
