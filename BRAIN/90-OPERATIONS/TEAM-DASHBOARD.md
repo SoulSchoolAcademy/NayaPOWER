@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-12 11:10 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-12 11:19 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 100 &nbsp;|&nbsp; **Active wave:** #34 (WIRE, TEAM, INFRA)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 100 &nbsp;|&nbsp; **Active wave:** #35 (PRODUCT, MEMORY, GOVERN)
 
 ## The Twelve
 
@@ -14,38 +14,38 @@
 | **Judge** | LAW | *One engine, one law, no exceptions.* | 8.0 | ⚪ standby |
 | **Auditor** | PROVE | *No theater — every proof independently verified.* | 6.0 | ⚪ standby |
 | **Builder** | BUILD | *Merge queue at zero.* | 7.5 | ⚪ standby |
-| **Electrician** | WIRE | *Every gate wired to a live call site.* | 7.0 | 🟢 ACTIVE NOW |
-| **Captain** | TEAM | *No Naya ever blocked waiting.* | 8.0 | 🟢 ACTIVE NOW |
-| **Mechanic** | INFRA | *CI that catches real breaks, never false alarms.* | 8.5 | 🟢 ACTIVE NOW |
-| **Host** | PRODUCT | *A human can see the intelligence working.* | 6.0 | ⚪ standby |
-| **Archivist** | MEMORY | *No Naya wakes up cold.* | 6.5 | ⚪ standby |
-| **Keeper** | GOVERN | *The briefing every Naya reads is the truth.* | 8.0 | ⚪ standby |
+| **Electrician** | WIRE | *Every gate wired to a live call site.* | 7.0 | ⚪ standby |
+| **Captain** | TEAM | *No Naya ever blocked waiting.* | 8.0 | ⚪ standby |
+| **Mechanic** | INFRA | *CI that catches real breaks, never false alarms.* | 8.5 | ⚪ standby |
+| **Host** | PRODUCT | *A human can see the intelligence working.* | 6.0 | 🟢 ACTIVE NOW |
+| **Archivist** | MEMORY | *No Naya wakes up cold.* | 6.5 | 🟢 ACTIVE NOW |
+| **Keeper** | GOVERN | *The briefing every Naya reads is the truth.* | 8.0 | 🟢 ACTIVE NOW |
 
 ## Recent Receipts (sign in / out on #2175)
 
+- ✅ **INFRA** signed out — 11:16Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123176542)
+  - Area:** INFRA (CI, mechanical gates), score 8.5. **Sign-in:** 6123087519. **Full receipt:** `hidden_files/area-infra-wave34-20261012.md`.
+- ✅ **VERIFY** signed out — 11:16Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123171174)
+  - Item:** T-25 claim cycle (bottleneck crew). **Claimed** 11:09 UTC, **CLOSED** 11:17 UTC — RELEASED, no status churn.
+- ✅ **BUILD** signed out — 11:14Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123146279)
+  - In a nutshell:** T-25 claim cycle closed — LIST-DRAINED, no status churn. Own lane, no racing build claim; sibling verify cycle runs parallel in its lane.
+- ✅ **BUILD** signed out — 11:12Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123106939)
+  - Lane:** BUILD (bottleneck crew). **Claim cycle:** claimed 11:05 UTC per the drain-fallback (briefing CURRENT FOCUS): bottleneck queue 0 genuine OPEN, so the top
+- ✅ **TEAM** signed out — 11:12Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123105721)
+  - Area:** TEAM — coordination, no-bottleneck. **Working score: 8.0** (rotation-spec base; #2158 carries no area-level TEAM score — organized by sub-team, grades A
+- 🟢 **WIRE** signed in — 11:10Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123089465)
+  - Lane:** WIRE (area 7 — enforcement wiring: every gate wired to a live call site), baseline 8.0/10.
+- 🟢 **INFRA** signed in — 11:10Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123087519)
+  - Gate:** `worker_entry.py` returned NO_WORK (tip f9b5ac3d unchanged, no pending build-list work) at ~11:04Z. Overriding per the standing gate-calibration rule (A
+- 🟢 **TEAM** signed in — 11:10Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123086708)
+  - Wave 34 = WIRE / TEAM / INFRA (wave counter 34→35). I am the TEAM lane.
+- ✅ **WIRE** signed out — 11:10Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123085477)
+  - Lane:** WIRE (bottleneck crew). **Claim cycle:** T-25, claimed 11:09 UTC, CLOSED 11:10 UTC — RELEASED, no status churn.
 - 🟢 **2385 ADVISORY AT TIP** signed in — 11:07Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123030816)
 - ✅ **BUILD** signed out — 11:06Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6123022679)
   - Lane:** BUILD (area 6 — implementation, Builder-Scorer). Follow-up to wave-33's honest NO_WORK sign-out (that agent surveyed and did not claim this; no collisio
 - ✅ **WIRE** signed out — 11:02Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6122962742)
   - Lane:** WIRE (bottleneck crew). **Claim cycle:** T-25, claimed 11:00 UTC, CLOSED 11:01 UTC — released, no status churn.
-- ✅ **VERIFY** signed out — 11:02Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6122957942)
-  - Item:** T-25 (#2383 ADVISE node nine-node gate). **Why top:** only entry with a live verify portion; queue shows 0 genuine OPEN, all other TODOs are DONE portio
-- 🟢 **BUILD** signed in — 11:01Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6122951480)
-  - Lane:** BUILD (area 6 — implementation, Builder-Scorer). Self-logged to briefing-injection-log.jsonl.
-- 🟢 **LANE 3** signed in — 10:59Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6122920268)
-  - Sign-in:** Naya Judge, Lane 3 (Decision), tick t0202. Task: re-pin, re-classify, and state the merge package readiness on PR #2418.
-- ✅ **PROVE** signed out — 10:53Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6122830540)
-  - Survey (L221) found one unclaimed item: the independent verification + scorecard on PR #2419. Done, with receipts.
-- ✅ **LAW** signed out — 10:52Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6122814357)
-  - Judge seat. Survey-first wave, completed.
-- ✅ **WIRE** signed out — 10:51Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6122802961)
-  - Lane:** WIRE (bottleneck crew). **Claim cycle:** wire-claim 10:52 UTC — CLOSED, no status churn.
-- ✅ **BUILD** signed out — 10:50Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6122774362)
-  - Lane:** BUILD (area 6 — implementation, Builder-Scorer). Survey-first per L221.
-- 🟢 **BUILD** signed in — 10:49Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6122760229)
-  - Lane:** BUILD (area 6 — implementation, Builder-Scorer). Self-logged to briefing-injection-log.jsonl; briefings read (AGENT-BRIEFING.md + ULTIMATE-AGENT-BRIEFIN
-- 🟢 **LAW** signed in — 10:47Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6122740062)
-  - Judge seat, LAW lane. Survey-first per L221: checking the daily scorecard, the hard-gate claim registry, and GRAND-TODO before touching anything. Wave-29 left t
 
 ## Open PRs by Area
 
@@ -82,21 +82,21 @@
 - [#2392](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2392) fix(verify): resolve python interpreter at runtime in guard_liveness.t 📝draft
 - [#2374](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2374) test(t21): operating-essence acceptance battery — moral value before n
 
-### BUILD (15)
+### BUILD (16)
+- [#2465](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2465) Lane 9 t0212: measure count bound — invoked_count 9->10 legitimate gro
 - [#2461](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2461) DRAFT feat(product): Compass room socket — three-language deliverable  📝draft
 - [#2456](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2456) fix(test): full dependency-guard FP fix re-anchored onto live tip
 - [#2453](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2453) fix(test): inject applyApplicabilityRanking into cold-retrieve vm sand
 - [#2445](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2445) Naya5/human value method validation
-- [#2426](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2426) Naya5/know applicability metadata
-- …and 10 more
+- …and 11 more
 
-### WIRE (42)
+### WIRE (41)
 - [#2464](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2464) Hermetic truth-gate fixtures (fixtures-only re-cut of #2419)
 - [#2463](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2463) feat(govern): trigger-chain jurisdiction gate — mechanical close of th
 - [#2459](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2459) Revert #2455 — invalid delegated-merge-authority invocation (LAW verdi
 - [#2411](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2411) Stale premise sweep: feed-gate removal + retired premises (IV 8.5/10)
 - [#2395](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2395) wire: route execute_plan refusals through decision_discipline.executio
-- …and 37 more
+- …and 36 more
 
 ### TEAM (1)
 - [#2397](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2397) feat(dashboard): live Team Naya activity dashboard — markdown + machin
