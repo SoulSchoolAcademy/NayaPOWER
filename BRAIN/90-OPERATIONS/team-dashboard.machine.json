@@ -1,16 +1,16 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-12T14:33:38+00:00",
+ "generated_utc": "2026-10-12T14:54:47+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
  "wave": {
-  "wave_number": 47,
-  "counter": 48,
+  "wave_number": 48,
+  "counter": 49,
   "active_areas": [
-   "product",
-   "memory",
-   "govern"
+   "learn",
+   "know",
+   "act"
   ]
  },
  "agents": [
@@ -29,7 +29,7 @@
     "The learning-system coordinator's three builds (injection proof on every dispatch path, control/treatment experiments, error-signal loop) were still pending as of 21:33 UTC."
    ],
    "next_action": "Run the four-arm experiment's first real cycle: take one captured lesson, inject it to a treatment lane, measure the outcome difference. One proven loop beats ten more specs.",
-   "active_now": false,
+   "active_now": true,
    "board_lane": "#2175 lane LEARN",
    "open_prs": [
     {
@@ -86,7 +86,7 @@
     "#2283's auto-stamp verified 8/8 at its current head, but the CI test red reproduces locally: workflow line 65 'exit 0' swallows the step's exit code \u2014 the test gate can lie."
    ],
    "next_action": "Get the brain-index freshness law (PR #2388) merged, then prove a full day with zero drift recurrences.",
-   "active_now": false,
+   "active_now": true,
    "board_lane": "#2175 lane KNOW",
    "open_prs": [
     {
@@ -155,7 +155,7 @@
     "The ADVISE node broke the nine-node invoked-count gate today (T-25; fixed branch-scoped in #2389, verify 8.0/10 NEEDS_WORK) \u2014 the bridge's contract with the kernel is fragile."
    ],
    "next_action": "Land PR #2393 (intent producers) and prove the sensor fires on live main with zero false positives.",
-   "active_now": false,
+   "active_now": true,
    "board_lane": "#2175 lane ACT",
    "open_prs": [
     {
@@ -512,7 +512,7 @@
     "20 Intelligent Block owner assignments are still unassigned \u2014 a P0 that needs Shawn's word."
    ],
    "next_action": "Pick the single highest-value product surface and drive it to an honest 9.0+ with live proof \u2014 one proven surface beats twelve assessed ones.",
-   "active_now": true,
+   "active_now": false,
    "board_lane": "#2175 lane PRODUCT",
    "open_prs": [],
    "open_pr_count": 0
@@ -532,7 +532,7 @@
     "Intelligent Blocks (the human-facing memory surface) still lack owners \u2014 memory nobody is responsible for is memory nobody trusts."
    ],
    "next_action": "Prove one captured lesson retrieved AND applied by a cold successor \u2014 the first causal memory win.",
-   "active_now": true,
+   "active_now": false,
    "board_lane": "#2175 lane MEMORY",
    "open_prs": [],
    "open_pr_count": 0
@@ -552,7 +552,7 @@
     "Trigger-chain jurisdiction (the #2020/#2152 bypass class) is still missing its mechanism \u2014 prose about it exists, machinery does not."
    ],
    "next_action": "Close the trigger-chain jurisdiction gap with a mechanical gate \u2014 prose does not stop bypasses, gates do.",
-   "active_now": true,
+   "active_now": false,
    "board_lane": "#2175 lane GOVERN",
    "open_prs": [
     {
@@ -572,6 +572,86 @@
   }
  ],
  "recent_activity": [
+  {
+   "comment_id": 6126639735,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6126639735",
+   "lane": "GOVERN",
+   "kind": "out",
+   "at": "2026-10-12T14:48:48Z",
+   "summary": "In a nutshell:** Watch surface clean on law drift (12/12 laws verbatim vs the pin); new standing law L22 absorbed; both director-click merges dispositioned per "
+  },
+  {
+   "comment_id": 6126590066,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6126590066",
+   "lane": "MEMORY",
+   "kind": "out",
+   "at": "2026-10-12T14:45:49Z",
+   "summary": "In a nutshell:** Tip moved (`f9b5ac3de3` \u2192 `dbe06f9e733efb52c50e583dbb0b74d77039eb73`), so wave-39's proofs expired per Law 12 and everything was re-proven on t"
+  },
+  {
+   "comment_id": 6126580891,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6126580891",
+   "lane": "NAYA 4",
+   "kind": "out",
+   "at": "2026-10-12T14:45:16Z",
+   "summary": "What happened:** tip moved `f9b5ac3d` -> `b71c990d` (two merges: #2068 @13:55:01Z, #2325 @14:01:05Z). Ran a full cycle: independent post-merge verification of b"
+  },
+  {
+   "comment_id": 6126577919,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6126577919",
+   "lane": "NIGHT",
+   "kind": "out",
+   "at": "2026-10-12T14:45:05Z",
+   "summary": "Lane:** wire (bottleneck crew) | **Verdict: WORK DONE \u2014 runtime proof landed"
+  },
+  {
+   "comment_id": 6126548419,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6126548419",
+   "lane": "BUILD",
+   "kind": "out",
+   "at": "2026-10-12T14:43:16Z",
+   "summary": "Claim:** T-25, build lane, claimed 14:37 UTC. Deconfliction on re-read: mine was the only live build claim (sibling verify-claim 14:30 and wire-claim 14:32 lane"
+  },
+  {
+   "comment_id": 6126502910,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6126502910",
+   "lane": "PRODUCT",
+   "kind": "out",
+   "at": "2026-10-12T14:40:33Z",
+   "summary": "In a nutshell:** Tip moved (`f9b5ac3d` \u2192 `dbe06f9`) since wave 39, so Law 12 fired: PR #2461's Compass room deliverable re-proven fresh on the branch head \u2014 46/"
+  },
+  {
+   "comment_id": 6126458012,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6126458012",
+   "lane": "NIGHT",
+   "kind": "out",
+   "at": "2026-10-12T14:37:55Z",
+   "summary": "Verdict: WORK DONE (wire portion)** \u2014 the #2325 adjudicator is now provably WIRED at the tip. Watch re-armed on `dbe06f9e733e`."
+  },
+  {
+   "comment_id": 6126423225,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6126423225",
+   "lane": "GOVERN",
+   "kind": "in",
+   "at": "2026-10-12T14:35:48Z",
+   "summary": "Lane:** GOVERN (Keeper \u2014 \"the briefing every Naya reads is the truth\"). Dispatch: team-naya-area-rotation wave 47. Prior: wave-39 receipt (comment 6123892228)."
+  },
+  {
+   "comment_id": 6126415260,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6126415260",
+   "lane": "PRODUCT",
+   "kind": "in",
+   "at": "2026-10-12T14:35:23Z",
+   "summary": "Who:** [LANE PRODUCT] area agent (PRODUCT \u2014 \"a human can see the intelligence working.\" \u2014 current score 6.0)."
+  },
+  {
+   "comment_id": 6126415180,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6126415180",
+   "lane": "MEMORY",
+   "kind": "in",
+   "at": "2026-10-12T14:35:22Z",
+   "summary": "Area:** MEMORY \u2014 persistence, Intelligent Blocks, Archivist (score 8.0, area 11)."
+  },
   {
    "comment_id": 6126383519,
    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6126383519",
@@ -619,86 +699,6 @@
    "kind": "in",
    "at": "2026-10-12T14:06:31Z",
    "summary": "Area:** INFRA \u2014 CI and mechanical gates (CI that catches real breaks, never false alarms; area score 8.5)"
-  },
-  {
-   "comment_id": 6125895424,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6125895424",
-   "lane": "WIRE",
-   "kind": "in",
-   "at": "2026-10-12T14:05:13Z",
-   "summary": "Mission (dispatcher override, machine NO_WORK gate scorecard-overridden 9/10 vs 2/10):** bounded live-byte diligence on enforcement wiring at the live tip."
-  },
-  {
-   "comment_id": 6125873669,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6125873669",
-   "lane": "BUILD",
-   "kind": "out",
-   "at": "2026-10-12T14:03:56Z",
-   "summary": "Verdict: LIST-DRAINED \u2014 honest NO_WORK.** Honest NO_WORK beats invented work; watch stays armed; next run re-reads the list in 10 minutes."
-  },
-  {
-   "comment_id": 6125790542,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6125790542",
-   "lane": "TEAM",
-   "kind": "out",
-   "at": "2026-10-12T13:59:09Z",
-   "summary": "Verdict: work_done \u2014 coordination audit complete, zero PARTIALs."
-  },
-  {
-   "comment_id": 6125713360,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6125713360",
-   "lane": "TEAM",
-   "kind": "in",
-   "at": "2026-10-12T13:54:58Z",
-   "summary": "Area:** TEAM \u2014 coordination, no-bottleneck (area 8/12, score 8.0). Wave 46 = WIRE / TEAM / INFRA (counter 46 \u2192 47)."
-  },
-  {
-   "comment_id": 6125517700,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6125517700",
-   "lane": "BUILD",
-   "kind": "out",
-   "at": "2026-10-12T13:44:22Z",
-   "summary": "Verdict: LIST-DRAINED / NO_WORK** \u2014 T-25 claim cycle CLOSED, released, no status churn."
-  },
-  {
-   "comment_id": 6125374772,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6125374772",
-   "lane": "BUILD",
-   "kind": "out",
-   "at": "2026-10-12T13:35:43Z",
-   "summary": "Verdict: LIST-DRAINED / NO_WORK"
-  },
-  {
-   "comment_id": 6125240598,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6125240598",
-   "lane": "VERIFY",
-   "kind": "out",
-   "at": "2026-10-12T13:27:45Z",
-   "summary": "T-25 claim cycle CLOSED \u2014 RELEASED, no status churn. Verdict: LIST-DRAINED / NO_WORK."
-  },
-  {
-   "comment_id": 6125189293,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6125189293",
-   "lane": "BUILD",
-   "kind": "out",
-   "at": "2026-10-12T13:24:39Z",
-   "summary": "Verdict: LIST-DRAINED / NO_WORK** \u2014 honest drain; watch stays armed; next run re-reads the list in 10 minutes."
-  },
-  {
-   "comment_id": 6125147404,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6125147404",
-   "lane": "1130 PROTECTION PIN",
-   "kind": "out",
-   "at": "2026-10-12T13:22:13Z",
-   "summary": ""
-  },
-  {
-   "comment_id": 6125137001,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6125137001",
-   "lane": "BUILD",
-   "kind": "out",
-   "at": "2026-10-12T13:21:36Z",
-   "summary": "In a nutshell:** No genuinely buildable work this run, so I measured instead of inventing. The merge queue is nowhere near zero: **451 open PRs**, counted page "
   }
  ],
  "open_pr_total": 100,
