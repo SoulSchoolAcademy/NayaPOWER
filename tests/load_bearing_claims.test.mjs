@@ -581,17 +581,34 @@ test("CLAIM 3 -- a regression that drops kernel influence fails the build", () =
   );
   assert.ok(behaviorEngine, "the report must include the canonical nine-node behavior engine");
   const [, behaviorStats] = behaviorEngine;
-  const CANONICAL_NINE = ["SELF", "LAW", "ACT", "KNOW", "PROVE", "CONNECT", "VERIFY", "LEARN", "EVOLVE"];
-  for (const node of CANONICAL_NINE) {
+  // Single-source discipline: the constitutional nine-node set lives in one canonical
+  // place (tests/verify_nine_node_behavioral_acceptance.py: ORDER). Read it through the
+  // same interpreter the probe used — never pin a second literal that can drift.
+  // (Rebase 2026-10-12: the hardcoded CANONICAL_NINE literal merged via PR #2425 is
+  // removed here; this single-source hunk subsumes it — all nine canonical nodes must
+  // be invoked, which implies invoked_count >= 9.)
+  const nine = new Set(
+    JSON.parse(
+      execFileSync(
+        pythonBin,
+        [
+          "-c",
+          "from tests.verify_nine_node_behavioral_acceptance import ORDER; import json, sys; json.dump(ORDER, sys.stdout)",
+        ],
+        { cwd: ROOT, encoding: "utf8", timeout: 60000 }
+      )
+    )
+  );
+  // Nine-node acceptance: all nine constitutional nodes must be invoked. Additive bridge
+  // nodes (e.g. ADVISE) are recorded in the artifact, not rejected — exact-equality on
+  // the count would re-break on every legitimate additive node.
+  const invoked = new Set(behaviorStats.invoked_nodes);
+  for (const node of nine) {
     assert.ok(
-      behaviorStats.invoked_nodes.includes(node),
-      `${node} was not invoked; a drop below the canonical nine is a kernel-influence regression`
+      invoked.has(node),
+      `canonical node ${node} was not invoked (invoked: ${[...invoked].sort().join(", ")}); the nine-node gate requires all nine constitutional nodes`
     );
   }
-  assert.ok(
-    behaviorStats.invoked_count >= 9,
-    `the behavior engine invoked ${behaviorStats.invoked_count} nodes; it must invoke at least the canonical nine`
-  );
   assert.equal(
     behaviorStats.influence_demonstrated_count,
     9,

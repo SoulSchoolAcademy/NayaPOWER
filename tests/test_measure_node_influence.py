@@ -3,7 +3,8 @@ import subprocess
 import sys
 from pathlib import Path
 
-from tools.measure_node_influence import ORDER, influence_report, measure_behavior_engine
+from tests.verify_nine_node_behavioral_acceptance import ORDER
+from tools.measure_node_influence import influence_report, measure_behavior_engine
 
 ROOT = Path(__file__).resolve().parents[1]
 PROBE = ROOT / "tools" / "measure_node_influence.py"
@@ -26,7 +27,13 @@ def test_measurement_is_deterministic_and_all_nine_nodes_influence_observable_be
     assert first["report"] == second["report"]
 
     stats = first["report"]["BRAIN.Engineering.kernel_behavior_engine.KernelBehaviorEngine"]
-    assert stats["invoked_count"] == 9
+    # Nine-node acceptance: all nine constitutional nodes invoked; additive
+    # bridge nodes (e.g. ADVISE) are permitted and recorded.
+    # The additional-nodes assertion is self-consistency (field == derivation),
+    # deliberately NOT a literal pin: the workflow gate tolerates additive
+    # nodes, and this test must not reintroduce the brittleness the fix removes.
+    assert set(ORDER) <= set(stats["invoked_nodes"])
+    assert stats["additional_invoked_nodes"] == sorted(set(stats["invoked_nodes"]) - set(ORDER))
     assert stats["influence_demonstrated_count"] == 9
     assert stats["influence_demonstrated_for"] == sorted(ORDER)
     assert set(stats["changed_scenarios"]) == {

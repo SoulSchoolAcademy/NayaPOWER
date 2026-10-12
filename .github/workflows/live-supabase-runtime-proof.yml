@@ -1213,6 +1213,7 @@ jobs:
           import json
           import os
           import subprocess
+          from tests.verify_nine_node_behavioral_acceptance import ORDER
 
           raw = subprocess.check_output(
             ["python", "tools/measure_node_influence.py", "--json"],
@@ -1221,11 +1222,14 @@ jobs:
           measurement = json.loads(raw)
           key = "BRAIN.Engineering.kernel_behavior_engine.KernelBehaviorEngine"
           stats = measurement["report"][key]
-          expected = {
-            "SELF", "LAW", "ACT", "KNOW", "PROVE",
-            "CONNECT", "VERIFY", "LEARN", "EVOLVE",
-          }
-          assert stats["invoked_count"] == 9, stats
+          # The constitutional nine-node set lives in one canonical place
+          # (tests/verify_nine_node_behavioral_acceptance.py: ORDER).
+          expected = set(ORDER)
+          # Nine-node acceptance: all nine constitutional nodes must be invoked.
+          # Additive bridge nodes (e.g. ADVISE) are recorded in the
+          # artifact, not rejected — exact-equality on the count would re-break
+          # on every legitimate additive node.
+          assert expected <= set(stats["invoked_nodes"]), stats
           assert stats["influence_demonstrated_count"] == 9, stats
           assert set(stats["influence_demonstrated_for"]) == expected, stats
 
@@ -1249,6 +1253,8 @@ jobs:
           export SOURCE_SHA="${{ env.SOURCE_SHA }}"
           python - <<'PY'
           import json, os
+          from tests.verify_nine_node_behavioral_acceptance import ORDER
+          nine = set(ORDER)  # canonical constitutional nine-node set
           cold=json.load(open("evidence/self/cold-runtime-1.json"))
           graph=json.load(open("evidence/connect/cold-graph-behavior-pair.json"))
           graph_verify=json.load(open("evidence/verify-connect/cold-graph-independent-verification.json"))
@@ -1270,11 +1276,9 @@ jobs:
           assert influence["source_revision"] == source, influence
           influence_engine="BRAIN.Engineering.kernel_behavior_engine.KernelBehaviorEngine"
           influence_stats=influence["measurement"]["report"][influence_engine]
-          assert influence_stats["invoked_count"] == 9, influence_stats
+          assert nine <= set(influence_stats["invoked_nodes"]), influence_stats
           assert influence_stats["influence_demonstrated_count"] == 9, influence_stats
-          assert set(influence_stats["influence_demonstrated_for"]) == set(
-            ["SELF","LAW","ACT","KNOW","PROVE","CONNECT","VERIFY","LEARN","EVOLVE"]
-          ), influence_stats
+          assert set(influence_stats["influence_demonstrated_for"]) == nine, influence_stats
           engine_measurement=next(
             item for item in influence["measurement"]["measurements"]
             if item["kernel"] == influence_engine
@@ -1423,7 +1427,10 @@ jobs:
           key="BRAIN.Engineering.kernel_behavior_engine.KernelBehaviorEngine"
           measured=influence["measurement"]["report"][key]
           assert receipt["node_influence"]["method"] == influence["method"], receipt
-          assert receipt["node_influence"]["invoked_count"] == 9, receipt
+          # Nine-node acceptance on the receipt: all nine constitutional nodes
+          # invoked (additive bridge nodes permitted, recorded in the artifact).
+          assert set(ORDER) <= set(measured["invoked_nodes"]), receipt
+          assert receipt["node_influence"]["invoked_count"] == measured["invoked_count"], receipt
           assert receipt["node_influence"]["influence_demonstrated_count"] == 9, receipt
           assert set(receipt["node_influence"]["nodes"]) == set(ORDER), receipt
           engine=next(item for item in influence["measurement"]["measurements"] if item["kernel"] == key)
