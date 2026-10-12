@@ -8,6 +8,9 @@ import {
   expandBlock,
   expandRanked,
 } from "../supabase/functions/nayanet-intelligence-retrieve/retrieve.ts";
+import {
+  applyApplicabilityRanking,
+} from "../supabase/functions/nayanet-intelligence-retrieve/retrieve_applicability.ts";
 
 // Executed coverage for nayanet-intelligence-retrieve.
 // The cold-retrieve handler is an authority-adjacent read surface: it must run,
@@ -92,6 +95,12 @@ function handlerRuntime({
     jwtVerify: async () => ({ payload }),
     createClient: () => admin,
     expandRanked,
+    // The handler gained applyApplicabilityRanking via THETA-NEXT-1..4
+    // (supabase/functions/nayanet-intelligence-retrieve/index.ts imports it
+    // from ./retrieve_applicability.ts). The vm strips the handler's imports,
+    // so the sandbox must provide the real function or the cold-retrieve
+    // path throws ReferenceError -> 400. (t0112: the 400!=200 at line 151.)
+    applyApplicabilityRanking,
   });
 
   const invoke = (body, headers = {}, method = "POST") =>
