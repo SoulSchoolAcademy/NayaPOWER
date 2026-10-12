@@ -19,6 +19,14 @@ from pathlib import Path
 
 def _read_receipt(path_str: str) -> str | None:
     p = Path(path_str).expanduser()
+    if not p.is_absolute():
+        # Hermetic receipts: paths relative to the harness package resolve
+        # against the package directory, not the caller's CWD, so the Truth
+        # gate works identically on CI runners, fresh checkouts, and dev VMs.
+        # (Lane 9, t0252: environment-specific ~-paths scored 0/4 everywhere
+        # except the author's machine — the gate was honest, the fixtures
+        # were not. Absolute paths, including ~-expanded ones, are untouched.)
+        p = Path(__file__).resolve().parent / p
     if not p.is_file():
         return None
     try:
