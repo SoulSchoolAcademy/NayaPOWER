@@ -1,0 +1,44 @@
+# Growth Is Not Tamper — A Seal Must Distinguish Universe Growth From Pin Tamper, and Seal on the Current Universe
+
+**Intelligent Block:** IB-SMART-NOTE-20261012-sn1083-growth-is-not-tamper
+**Truth state:** CANDIDATE
+**Scope:** PRIVATE
+**Captured:** 2026-10-12
+**Canonical intent:** CAPTURE_DURABLE_INTELLIGENCE
+**Provenance:** receipts hidden_files/twelve-lane-receipts/t0262-lane2.md (H9r3 VOID on growth, seal overtaken by a legitimate new lane-pick receipt) and t0302-lane2.md (re-sealed successor instrument with the growth-vs-tamper gate, verdict GO); lane-experiments/t0302/h9r3/ (prereg-sealed.md sha db4a32ad…; measure_h9r3b.py; pins-real.json, 65 files; 5-fixture gate proof); #2175 comment 6124648895.
+
+> Verified projection of the persisted Intelligent Block. This file is not a second source of truth.
+
+## ✦ IN A NUTSHELL
+
+Lane 2's sealed H9 round-3 gate fired **VOID** in t0262 — not because of tampering, but because a legitimate new lane-pick receipt landed after sealing. The frozen instrument could not tell universe **growth** from pin **tamper**, so it voided the measurement and burned the tick's measurement slot. The seal worked; the gate's semantics were wrong: VOID-for-growth is over-strict — every new receipt would burn a tick.
+
+The t0302 fix (red-to-green in one tick): a **growth-vs-tamper gate** in the re-sealed successor instrument —
+- **sealed file absent or byte-changed → VOID** (sealed bytes are sacred; deletion counts as tamper),
+- **unlisted new lane-pick file → growth**: sha recomputed at execution time, INCLUDED in the math, recorded.
+
+The gate was pre-verified on 5 synthetic fixtures **before sealing**: good→GO, bad→NO-GO, thin→NO-GO (insufficient-contrast), tampered→VOID (byte-append caught), growth→INCLUDED-not-VOID — with the verdict flip proving the growth file entered the math (delta 0.3333→0.2381 on the growth row alone), not just "didn't void." The live run then sealed 65/65 pins, 0 tamper, 0 growth, and honored the mechanical verdict: GO (composition_delta 0.2738 ≥ 0.25).
+
+The companion discipline: **seal on the current universe at seal time, don't chase a stale number.** The brief said 61 pins; three more receipts had landed since brief-writing (t0272, t0282, two t0302). The seat sealed the 65 actually present, per the brief's own Watch-for rule — and disclosed the 61→65 deviation **in the sealed pre-reg itself**, before any row was seen. The stale count was stale; the rule was not. A frozen number in a brief is a snapshot, not an authority: pin what's there, disclose the delta.
+
+Honest residuals (disclosed, not hidden): same-seat seal+execute weakens the split-tick separation pattern; the growth-include path was proven on synthetic fixtures only (0 live growth events this tick).
+
+## 🩷 HUMAN NOTE
+
+Shawn — Lane 2 turned a blown measurement into a better gate in one tick. Last tick the seal voided the whole H9 round-3 run because a legitimate new file landed after sealing — the gate couldn't tell growth from tampering. This tick the instrument got a growth-vs-tamper distinction: changed sealed files still void, but new legitimate files get folded into the math and recorded. Five synthetic fixtures proved the gate before sealing; the live run went GO at the pre-registered bar. The deeper lesson for the system: seals must seal the universe that exists at seal time, not chase a stale count from the brief — and honest disclosures live in the sealed record itself.
+
+## 🟣 CHILD NOTE
+
+Imagine you lock your toy box with a sticker seal, and when you come back there's one extra toy inside that your sister legitimately added. A dumb rule says: "Something changed — throw everything away!" A smart rule says: "If one of the original toys is scratched or missing, throw it away. But if there's just an extra toy, check it's real and keep playing." The lesson: **a new thing arriving is not the same as a thing being broken.** And when you write down what's in the box, count what's actually there — not what you counted yesterday.
+
+## 👵 GRANDMA NOTE
+
+It's like a bank vault log: the old rule said "if anything about the vault changed, cancel the whole day's business" — even when the only change was a legitimate new deposit. The new rule is smarter: missing or altered money cancels the day; a new legitimate deposit gets logged and included. And the clerk counts the money that's actually in the vault, not yesterday's count from the memo. A good seal knows the difference between tampering and honest growth.
+
+## 💜 NAYA NOTE
+
+Note to future me: the growth-vs-tamper distinction is the pattern — VOID means the sealed universe was *violated* (absent/byte-changed sealed file, deletion counts), not merely *grew*. Prove the gate on synthetic fixtures before sealing (good→GO, bad→NO-GO, thin→NO-GO, tampered→VOID, growth→INCLUDED), and prove the growth file entered the math, not just that it didn't void (watch the delta move). And the sealing discipline: seal the universe at seal time; when the brief's count is stale, seal what's there and disclose the deviation inside the sealed pre-reg. The t0252 seal rule stands — a spent seal is never re-run; the successor gets a new seal, a new universe, the bar carried verbatim.
+
+## ⚙️ MACHINE NOTE
+
+{"sn": "SN-1083", "title": "Growth Is Not Tamper — A Seal Must Distinguish Universe Growth From Pin Tamper, and Seal on the Current Universe", "truth_state": "CANDIDATE", "scope": "PRIVATE", "captured": "2026-10-12", "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE", "taxonomy": ["SYSTEM-INTELLIGENCE", "ENGINEERING-PROOF", "SEAL-DISCIPLINE"], "cousins": ["SN-1073", "SN-1068", "SN-01065"], "authority": "observed finding + repair — Lane 2 t0262/t0302 on live bytes, 2026-10-12; CANDIDATE (auto-capture, not ratified)", "evidence": {"failure": "t0262: sealed H9r3 gate VOID on legitimate growth (new lane-pick receipt 12:06:54Z after 11:56:52Z seal) — frozen instrument could not distinguish growth from tamper; measurement slot burned", "gate": "measure_h9r3b.py growth-vs-tamper gate: sealed file absent/byte-changed → VOID (deletion counts); unlisted lane-pick file → growth: sha recomputed at execution, INCLUDED, recorded", "fixture_proof": "5 synthetic fixtures pre-seal: good→GO (delta 0.6667), bad→NO-GO (0.0), thin→NO-GO, tampered→VOID (byte-append), growth→INCLUDED-not-VOID (delta 0.3333→0.2381 — verdict flip proves growth entered the math)", "live_run": "65/65 sealed pins verified, 0 tamper, 0 growth, verdict GO (composition_delta 0.2738 ≥ 0.25); prereg-sealed.md db4a32ad…, pins-real.json 65 files", "seal_current_universe": "brief said 61, universe had 65 (t0272/t0282/two t0302 landings); sealed 65 per brief's own Watch-for rule; 61→65 deviation disclosed in the sealed pre-reg before any row seen; t0252 seal declared SPENT, never re-run", "board": "#2175 comment 6124648895"}, "doctrine": {"growth_not_tamper": "a seal gate must distinguish universe growth (unlisted new file → sha recompute, INCLUDE, record) from pin tamper (sealed file absent/byte-changed → VOID); VOID-for-growth is over-strict and burns a tick per new receipt", "gate_before_seal": "prove the gate on synthetic fixtures before sealing — including proving the growth path entered the math, not just that it didn't void", "seal_current_universe": "seal the universe that exists at seal time; a frozen count in a brief is a snapshot, not an authority — pin what's there and disclose the delta in the sealed record itself"}}
