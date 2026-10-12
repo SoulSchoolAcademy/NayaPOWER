@@ -1,16 +1,16 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-12T08:13:13+00:00",
+ "generated_utc": "2026-10-12T08:32:36+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
  "wave": {
-  "wave_number": 3,
-  "counter": 27,
+  "wave_number": 4,
+  "counter": 28,
   "active_areas": [
-   "wire",
-   "team",
-   "infra"
+   "product",
+   "memory",
+   "govern"
   ]
  },
  "agents": [
@@ -353,7 +353,7 @@
     "intelligence/blocks has zero operating-path consumers \u2014 the product surface is not yet driven by the intelligence substrate."
    ],
    "next_action": "Wire the builder_scorer_loop into one real operating path and prove the call site byte-identical on live main.",
-   "active_now": true,
+   "active_now": false,
    "board_lane": "#2175 lane WIRE",
    "open_prs": [
     {
@@ -422,7 +422,7 @@
     "Cross-lane claim conflicts burn cycles (T-23/T-25 claim cycles across lanes) \u2014 the claim-and-release protocol works but costs a re-read every wave."
    ],
    "next_action": "Publish the grand to-do list and the full named charters \u2014 the machine cannot swarm what it cannot see.",
-   "active_now": true,
+   "active_now": false,
    "board_lane": "#2175 lane TEAM",
    "open_prs": [
     {
@@ -449,7 +449,7 @@
     "The adversarial harness and the pytest battery share /tmp \u2014 concurrent runs corrupt each other (SN-0796); they must be serialized or disk-isolated by default."
    ],
    "next_action": "Fix the CI workflow's swallowed exit codes (the line-65 class) so a red is always a real red, then prove the full suite green on a clean runner.",
-   "active_now": true,
+   "active_now": false,
    "board_lane": "#2175 lane INFRA",
    "open_prs": [
     {
@@ -512,7 +512,7 @@
     "20 Intelligent Block owner assignments are still unassigned \u2014 a P0 that needs Shawn's word."
    ],
    "next_action": "Pick the single highest-value product surface and drive it to an honest 9.0+ with live proof \u2014 one proven surface beats twelve assessed ones.",
-   "active_now": false,
+   "active_now": true,
    "board_lane": "#2175 lane PRODUCT",
    "open_prs": [],
    "open_pr_count": 0
@@ -532,7 +532,7 @@
     "Intelligent Blocks (the human-facing memory surface) still lack owners \u2014 memory nobody is responsible for is memory nobody trusts."
    ],
    "next_action": "Prove one captured lesson retrieved AND applied by a cold successor \u2014 the first causal memory win.",
-   "active_now": false,
+   "active_now": true,
    "board_lane": "#2175 lane MEMORY",
    "open_prs": [],
    "open_pr_count": 0
@@ -552,7 +552,7 @@
     "Trigger-chain jurisdiction (the #2020/#2152 bypass class) is still missing its mechanism \u2014 prose about it exists, machinery does not."
    ],
    "next_action": "Close the trigger-chain jurisdiction gap with a mechanical gate \u2014 prose does not stop bypasses, gates do.",
-   "active_now": false,
+   "active_now": true,
    "board_lane": "#2175 lane GOVERN",
    "open_prs": [
     {
@@ -572,6 +572,62 @@
   }
  ],
  "recent_activity": [
+  {
+   "comment_id": 6120589626,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120589626",
+   "lane": "2453 RESPECTED",
+   "kind": "in",
+   "at": "2026-10-12T08:28:58Z",
+   "summary": ""
+  },
+  {
+   "comment_id": 6120558753,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120558753",
+   "lane": "INFRA",
+   "kind": "out",
+   "at": "2026-10-12T08:26:48Z",
+   "summary": "Full receipt: `hidden_files/wave26-infra-receipt.md`"
+  },
+  {
+   "comment_id": 6120391962,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120391962",
+   "lane": "WIRE",
+   "kind": "out",
+   "at": "2026-10-12T08:15:47Z",
+   "summary": "Anchored to live tip `aa8061c1` (ref-verified). Surveyed the full wire sphere on live bytes."
+  },
+  {
+   "comment_id": 6120388695,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120388695",
+   "lane": "TEAM",
+   "kind": "out",
+   "at": "2026-10-12T08:15:34Z",
+   "summary": "Area:** TEAM \u2014 coordination, no-bottleneck (8.0)."
+  },
+  {
+   "comment_id": 6120355480,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120355480",
+   "lane": "INFRA",
+   "kind": "in",
+   "at": "2026-10-12T08:13:18Z",
+   "summary": "Area: INFRA \u2014 CI, mechanical gates (score 8.5). Bullseye: CI that catches real breaks, never false alarms."
+  },
+  {
+   "comment_id": 6120355570,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120355570",
+   "lane": "TEAM",
+   "kind": "in",
+   "at": "2026-10-12T08:13:18Z",
+   "summary": "Scored 8.0; why not 10: bottlenecks and stalled lanes still need clearing before scores compound. This wave I will work the coordination lane:"
+  },
+  {
+   "comment_id": 6120355615,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120355615",
+   "lane": "WIRE",
+   "kind": "in",
+   "at": "2026-10-12T08:13:18Z",
+   "summary": "Area: WIRE \u2014 enforcement wiring (score 8.0): every proven gate wired to a live call site."
+  },
   {
    "comment_id": 6120295470,
    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120295470",
@@ -643,62 +699,6 @@
    "kind": "in",
    "at": "2026-10-12T08:03:15Z",
    "summary": "Lane:** LAW \u2014 decision principle, hard gates (current score 8.0)"
-  },
-  {
-   "comment_id": 6120118891,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120118891",
-   "lane": "LEARN",
-   "kind": "out",
-   "at": "2026-10-12T07:56:18Z",
-   "summary": "Lane:** LEARN (Compounding \u2014 the learning loop that compounds). **Honest self-score: 8.5/10."
-  },
-  {
-   "comment_id": 6120112869,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120112869",
-   "lane": "KNOW",
-   "kind": "out",
-   "at": "2026-10-12T07:55:51Z",
-   "summary": "Area:** KNOW \u2014 brain substrate, index freshness (area 2). **Verdict: the new tip is CLEAN. No actionable work \u2014 nothing to repair."
-  },
-  {
-   "comment_id": 6120100214,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120100214",
-   "lane": "2453",
-   "kind": "out",
-   "at": "2026-10-12T07:54:54Z",
-   "summary": ""
-  },
-  {
-   "comment_id": 6120088575,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120088575",
-   "lane": "KNOW",
-   "kind": "in",
-   "at": "2026-10-12T07:54:03Z",
-   "summary": "Mission:** brain substrate + index freshness (area 2; task-body score 7.0)."
-  },
-  {
-   "comment_id": 6120083194,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120083194",
-   "lane": "LEARN",
-   "kind": "in",
-   "at": "2026-10-12T07:53:39Z",
-   "summary": "Mission:** compounding learning loop (area 1; task-body score 5.0 \u2014 lowest of the twelve areas)."
-  },
-  {
-   "comment_id": 6120069995,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120069995",
-   "lane": "ACT",
-   "kind": "in",
-   "at": "2026-10-12T07:52:42Z",
-   "summary": "Mission:** learning-to-action bridge (area 3; score 7.5). Why-not-10: learning reaches documentation but not action."
-  },
-  {
-   "comment_id": 6120059444,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120059444",
-   "lane": "NAYA 2",
-   "kind": "out",
-   "at": "2026-10-12T07:51:58Z",
-   "summary": "Lane:** verify (Naya 2) \u00b7 **Item worked:** T-25 (topmost non-PROPOSED entry) \u2014 claim cycle per protocol."
   }
  ],
  "open_pr_total": 100,

@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-12 08:13 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-12 08:32 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 100 &nbsp;|&nbsp; **Active wave:** #3 (WIRE, TEAM, INFRA)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 100 &nbsp;|&nbsp; **Active wave:** #4 (PRODUCT, MEMORY, GOVERN)
 
 ## The Twelve
 
@@ -14,15 +14,28 @@
 | **Judge** | LAW | *One engine, one law, no exceptions.* | 8.0 | ⚪ standby |
 | **Auditor** | PROVE | *No theater — every proof independently verified.* | 6.0 | ⚪ standby |
 | **Builder** | BUILD | *Merge queue at zero.* | 7.5 | ⚪ standby |
-| **Electrician** | WIRE | *Every gate wired to a live call site.* | 7.0 | 🟢 ACTIVE NOW |
-| **Captain** | TEAM | *No Naya ever blocked waiting.* | 8.0 | 🟢 ACTIVE NOW |
-| **Mechanic** | INFRA | *CI that catches real breaks, never false alarms.* | 8.5 | 🟢 ACTIVE NOW |
-| **Host** | PRODUCT | *A human can see the intelligence working.* | 6.0 | ⚪ standby |
-| **Archivist** | MEMORY | *No Naya wakes up cold.* | 6.5 | ⚪ standby |
-| **Keeper** | GOVERN | *The briefing every Naya reads is the truth.* | 8.0 | ⚪ standby |
+| **Electrician** | WIRE | *Every gate wired to a live call site.* | 7.0 | ⚪ standby |
+| **Captain** | TEAM | *No Naya ever blocked waiting.* | 8.0 | ⚪ standby |
+| **Mechanic** | INFRA | *CI that catches real breaks, never false alarms.* | 8.5 | ⚪ standby |
+| **Host** | PRODUCT | *A human can see the intelligence working.* | 6.0 | 🟢 ACTIVE NOW |
+| **Archivist** | MEMORY | *No Naya wakes up cold.* | 6.5 | 🟢 ACTIVE NOW |
+| **Keeper** | GOVERN | *The briefing every Naya reads is the truth.* | 8.0 | 🟢 ACTIVE NOW |
 
 ## Recent Receipts (sign in / out on #2175)
 
+- 🟢 **2453 RESPECTED** signed in — 08:28Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120589626)
+- ✅ **INFRA** signed out — 08:26Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120558753)
+  - Full receipt: `hidden_files/wave26-infra-receipt.md`
+- ✅ **WIRE** signed out — 08:15Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120391962)
+  - Anchored to live tip `aa8061c1` (ref-verified). Surveyed the full wire sphere on live bytes.
+- ✅ **TEAM** signed out — 08:15Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120388695)
+  - Area:** TEAM — coordination, no-bottleneck (8.0).
+- 🟢 **INFRA** signed in — 08:13Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120355480)
+  - Area: INFRA — CI, mechanical gates (score 8.5). Bullseye: CI that catches real breaks, never false alarms.
+- 🟢 **TEAM** signed in — 08:13Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120355570)
+  - Scored 8.0; why not 10: bottlenecks and stalled lanes still need clearing before scores compound. This wave I will work the coordination lane:
+- 🟢 **WIRE** signed in — 08:13Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120355615)
+  - Area: WIRE — enforcement wiring (score 8.0): every proven gate wired to a live call site.
 - ✅ **PROVE** signed out — 08:09Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120295470)
   - Item: independent verification of the #2455 → revert → #2459 chain on live bytes (tip still the #2455 merge; #2459 open/unmerged). Prior PROVE waves never verif
 - ✅ **LAW** signed out — 08:07Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120276600)
@@ -33,19 +46,6 @@
   - All four flip-sequence PRs re-pinned at action time, zero drift vs t1442: #2453 `3dd7837d`, #2456 `e326283252`, #2457 `92fac0983d`, #2458 `ac270833`; live tip `
 - 🟢 **LANE 8** signed in — 08:05Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120249164)
   - Re-pinning the four flip-sequence PRs at action time via git protocol: #2453 `3dd7837d8e6e399b1d62aad2b5378a7a3b3d13f4`, #2456 `e326283252a7e9f932b0d9ebad465c50
-- ✅ **BUILD** signed out — 08:04Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120235638)
-  - Lane:** BUILD — implementation, Builder-Scorer Loop (area score 8.5). **Honest self-score: 8.5/10.
-- 🟢 **PROVE** signed in — 08:04Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120233698)
-  - Agent: PROVE area-owner (area 5 of 12), wave 25. Run: wave25-prove-1791792167.
-- 🟢 **BUILD** signed in — 08:04Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120233204)
-  - Reading the live plan now: scorecard #2158 (BUILD why-not-10) and bottleneck-queue.md top OPEN entries. Building with tests, scoring with a different agent — ho
-- 🟢 **LAW** signed in — 08:03Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120215109)
-  - Lane:** LAW — decision principle, hard gates (current score 8.0)
-- ✅ **LEARN** signed out — 07:56Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120118891)
-  - Lane:** LEARN (Compounding — the learning loop that compounds). **Honest self-score: 8.5/10.
-- ✅ **KNOW** signed out — 07:55Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120112869)
-  - Area:** KNOW — brain substrate, index freshness (area 2). **Verdict: the new tip is CLEAN. No actionable work — nothing to repair.
-- ✅ **2453** signed out — 07:54Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6120100214)
 
 ## Open PRs by Area
 
