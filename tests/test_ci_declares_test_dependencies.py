@@ -29,6 +29,7 @@ distribution named.
 """
 
 import ast
+import os
 import re
 import sys
 from pathlib import Path
@@ -51,6 +52,72 @@ DISTRIBUTION = {
 STDLIB = set(sys.stdlib_module_names)
 
 
+def _safe_eval_path(expr, source_path, bindings):
+    """Evaluate a sys.path argument to a filesystem path, or None.
+
+    Only the safe namespace is visible: Path, os, str, __file__, plus the
+    file's own simple top-level bindings (REPO, PKG, ...). __builtins__ is
+    empty. Anything dynamic — calls beyond Path/os.path/str constructors,
+    subscripts, unknown names — fails closed to None, and the caller skips it.
+    """
+    try:
+        code = compile(ast.Expression(expr), str(source_path), "eval")
+        ns = {"__builtins__": {}, "__file__": str(source_path),
+              "Path": Path, "os": os, "str": str}
+        ns.update(bindings)
+        val = eval(code, ns, {})  # noqa: S307 - namespace is fully restricted
+    except Exception:
+        return None
+    if isinstance(val, Path):
+        return val
+    if isinstance(val, str):
+        return Path(val)
+    return None
+
+
+def _suite_syspath_roots() -> set:
+    """Every in-repo import root the suite itself adds to sys.path.
+
+    The guard used to hardcode three roots and cried wolf about modules
+    imported through any other root the suite adds (t0112: `fixtures`,
+    `gates`, `instrument`, `pipeline`, `run_scale`, `subjects` via
+    tools/learning/compound_scale and tools/human_value). A guard that cries
+    wolf gets ignored, so the roots are discovered from the suite's own
+    sys.path.insert/append calls instead of enumerated by hand. Unresolvable
+    expressions are skipped; the hardcoded fallbacks still apply.
+    """
+    roots = set()
+    for path in sorted(TESTS.glob("*.py")):
+        try:
+            tree = ast.parse(path.read_text(encoding="utf-8"))
+        except SyntaxError:  # pragma: no cover - a syntax error is pytest's problem
+            continue
+        bindings = {}
+        for node in tree.body:
+            if (isinstance(node, ast.Assign) and len(node.targets) == 1
+                    and isinstance(node.targets[0], ast.Name)):
+                val = _safe_eval_path(node.value, path, bindings)
+                if val is not None:
+                    bindings[node.targets[0].id] = val
+        for node in ast.walk(tree):
+            if not (isinstance(node, ast.Call) and isinstance(node.func, ast.Attribute)
+                    and node.func.attr in {"insert", "append"}):
+                continue
+            recv = node.func.value
+            if not (isinstance(recv, ast.Attribute) and recv.attr == "path"
+                    and isinstance(recv.value, ast.Name)
+                    and recv.value.id == "sys"):
+                continue
+            if not node.args:
+                continue
+            root = _safe_eval_path(node.args[-1], path, bindings)
+            if root is None or not root.is_dir():
+                continue
+            if root == REPO or REPO in root.parents:
+                roots.add(root)
+    return roots
+
+
 def _first_party_modules() -> set:
     """Top-level names that are part of THIS repository, not PyPI.
 
@@ -67,14 +134,10 @@ def _first_party_modules() -> set:
     # before `import smart_link`) are first-party as well: those modules resolve from the
     # checkout itself, so CI needs no pip install for them. Without this the guard cries wolf
     # about project modules and gets ignored — the exact failure mode its docstring warns of.
-    # 2026-10-12 (Naya Lambda, INFRA): added `tools/human_value` and
-    # `tools/learning/compound_scale` — the suite imports `instrument` from the
-    # former and `fixtures, gates, pipeline, run_scale, subjects` from the latter
-    # via sys.path.insert; all are first-party and need no pip install.
-    for import_root in (REPO / "tools", REPO / "tools" / "protocol",
-                        REPO / "kernel" / "protocol",
-                        REPO / "tools" / "human_value",
-                        REPO / "tools" / "learning" / "compound_scale"):
+    import_roots = {REPO / "tools", REPO / "tools" / "protocol",
+                    REPO / "kernel" / "protocol"}
+    import_roots.update(_suite_syspath_roots())
+    for import_root in sorted(import_roots):
         if import_root.is_dir():
             names.update(p.stem for p in import_root.glob("*.py"))
             # package directories (e.g. tools/protocol/checks/) are importable
