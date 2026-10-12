@@ -336,18 +336,141 @@ class TestUserAdded(unittest.TestCase):
 
 
 class TestCLI(unittest.TestCase):
-    def test_cli_end_to_end(self):
-        import subprocess
-        script = str(Path(__file__).resolve().parents[1] / "tools" / "option_miner.py")
+    """Regression tests for every documented CLI form.
+
+    F1 lesson: the builder's tests never touched the CLI, so the documented
+    `mine --intent '<json>'` form died with argparse's "unrecognized
+    arguments". Every documented form gets a subprocess test here.
+    """
+
+    def test_plain_words_renders_mined_options(self):
+        # (Was the old "test_cli_end_to_end": it never touched the CLI.
+        # Kept as a plain-words rendering check; real CLI coverage is below.)
         with mock.patch.object(om, "load_world_model",
                                return_value=(fixture_model(), [])), \
              mock.patch.object(om, "load_grand_todo", return_value=([], [])):
-            # Patch at import time via env is complex; instead call mine_options
-            # directly and verify plain_words renders.
             r = om.mine_options(intent_what_next())
         out = om.plain_words(r)
         self.assertIn("Mined", out)
         self.assertIn("[pr-2410]", out)
+
+    def setUp(self):
+        import tempfile, subprocess  # noqa: F401 (used by helpers)
+        self._tmp = tempfile.TemporaryDirectory()
+        self.home = Path(self._tmp.name)
+        (self.home / ".naya").mkdir()
+        (self.home / ".naya" / "world-model.json").write_text(
+            json.dumps(fixture_model()))
+        self.script = str(Path(__file__).resolve().parents[1]
+                          / "tools" / "option_miner.py")
+        self.env = dict(os.environ, HOME=str(self.home))
+
+    def tearDown(self):
+        self._tmp.cleanup()
+
+    def run_cli(self, *argv, stdin_text=None):
+        import subprocess
+        p = subprocess.run(
+            [sys.executable, self.script, *argv],
+            input=stdin_text, capture_output=True, text=True, env=self.env)
+        return p
+
+    def intent(self):
+        return json.dumps(intent_what_next())
+
+    def test_documented_intent_flag_form(self):
+        p = self.run_cli("mine", "--intent", self.intent())
+        self.assertEqual(p.returncode, 0, p.stderr)
+        r = json.loads(p.stdout)
+        self.assertTrue(r["ok"])
+        self.assertTrue(all(o["source"] for o in r["options"]))
+
+    def test_positional_form(self):
+        p = self.run_cli("mine", self.intent())
+        self.assertEqual(p.returncode, 0, p.stderr)
+        r = json.loads(p.stdout)
+        self.assertTrue(r["ok"])
+
+    def test_stdin_form(self):
+        p = self.run_cli("mine", "--stdin", stdin_text=self.intent())
+        self.assertEqual(p.returncode, 0, p.stderr)
+        r = json.loads(p.stdout)
+        self.assertTrue(r["ok"])
+
+    def test_all_three_forms_agree(self):
+        outs = []
+        outs.append(self.run_cli("mine", "--intent", self.intent()).stdout)
+        outs.append(self.run_cli("mine", self.intent()).stdout)
+        outs.append(self.run_cli("mine", "--stdin",
+                                 stdin_text=self.intent()).stdout)
+        ids = [sorted(o["id"] for o in json.loads(o)["options"]) for o in outs]
+        self.assertEqual(ids[0], ids[1])
+        self.assertEqual(ids[1], ids[2])
+
+    def test_intent_flag_wins_over_positional(self):
+        p = self.run_cli("mine", "--intent", self.intent(),
+                         json.dumps(intent_should_merge()))
+        self.assertEqual(p.returncode, 0, p.stderr)
+        r = json.loads(p.stdout)
+        self.assertEqual(r["intent_type"], "what_next")
+
+    def test_add_option_via_cli(self):
+        p = self.run_cli("mine", "--intent", self.intent(),
+                         "--add-option", "what about a merge queue?")
+        self.assertEqual(p.returncode, 0, p.stderr)
+        r = json.loads(p.stdout)
+        user_opts = [o for o in r["options"]
+                     if o.get("source_type") == "user_added"]
+        self.assertEqual(len(user_opts), 1)
+        self.assertIn("merge queue", user_opts[0]["title"])
+
+    def test_plain_flag_via_cli(self):
+        p = self.run_cli("mine", "--intent", self.intent(), "--plain")
+        self.assertEqual(p.returncode, 0, p.stderr)
+        self.assertIn("Mined", p.stdout)
+
+    def test_bad_json_exit_2(self):
+        p = self.run_cli("mine", "--intent", "this is not json")
+        self.assertEqual(p.returncode, 2)
+        r = json.loads(p.stdout)
+        self.assertFalse(r["ok"])
+        self.assertEqual(r["exit_hint"], 2)
+
+    def test_non_object_intent_exit_2(self):
+        # Valid JSON but not an intent object: fail closed, never traceback.
+        for raw in ('[1, 2]', '"hello"', '42'):
+            p = self.run_cli("mine", "--intent", raw)
+            self.assertEqual(p.returncode, 2, raw)
+            self.assertNotIn("Traceback", p.stderr, raw)
+            r = json.loads(p.stdout)
+            self.assertFalse(r["ok"])
+            self.assertEqual(r["exit_hint"], 2)
+
+    def test_stdin_wins_over_intent_flag(self):
+        p = self.run_cli("mine", "--stdin", "--intent", self.intent(),
+                         stdin_text=json.dumps(intent_should_merge()))
+        self.assertEqual(p.returncode, 0, p.stderr)
+        r = json.loads(p.stdout)
+        self.assertEqual(r["intent_type"], "should_merge")
+
+    def test_no_intent_exit_1(self):
+        p = self.run_cli("mine")
+        self.assertEqual(p.returncode, 1)
+
+    def test_missing_cache_exit_2(self):
+        import tempfile
+        bare = tempfile.TemporaryDirectory()
+        env = dict(os.environ, HOME=bare.name)
+        import subprocess
+        p = subprocess.run([sys.executable, self.script, "mine", "--intent",
+                            self.intent()],
+                           capture_output=True, text=True, env=env)
+        bare.cleanup()
+        self.assertEqual(p.returncode, 2)
+        r = json.loads(p.stdout)
+        self.assertFalse(r["ok"])
+        self.assertTrue(any("world model" in n.lower()
+                            for n in r.get("notes", [])))
 
 
 if __name__ == "__main__":
