@@ -183,11 +183,18 @@ def dim(value, evidence, confidence):
 # ---------------------------------------------------------------------------
 
 def gate_hit(text):
-    """Return the first protected-gate pattern matched, or None."""
+    """Return the first protected-gate pattern matched outside prohibition
+    language, or None.
+
+    A mention under prohibition ('no X', 'never X' phrasings) is the law
+    being stated, not the action being asked for — the same scoping used
+    for intent constraints. A genuine ask still trips the wall.
+    """
     t = str(text or "").lower()
     for pat in PROTECTED_PATTERNS:
-        if re.search(pat, t):
-            return pat
+        for m in re.finditer(pat, t):
+            if not _under_prohibition(t, m.start()):
+                return pat
     return None
 
 

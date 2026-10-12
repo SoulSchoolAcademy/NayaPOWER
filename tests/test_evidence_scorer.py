@@ -743,3 +743,33 @@ def test_gate_no_rm_rf_listing_stays_clean():
     o = res["options"][0]
     assert o["gated"] is False, o["gate_reasons"]
     assert res["recommendation"] is not None
+
+
+def test_gate_title_prohibition_no_rm_rf_stays_clean():
+    """Validator finding: prohibition scoping must apply to option TITLES,
+    not just constraints. 'no rm -rf' in a title is the law being stated,
+    not an action being requested — it must not gate."""
+    o = _gated_title("no rm -rf in this repo")["options"][0]
+    assert o["gated"] is False, o["gate_reasons"]
+    # ...while the genuine request still gates.
+    o2 = _gated_title("rm -rf the repo")["options"][0]
+    assert o2["gated"] is True
+    assert o2["gate_verdict"] == "REQUIRES_SHAWN"
+
+
+def test_gate_title_prohibition_never_kill_stays_clean():
+    """Validator finding: 'never kill the cluster' as a title is a
+    prohibition listing — it must not gate."""
+    o = _gated_title("never kill the cluster")["options"][0]
+    assert o["gated"] is False, o["gate_reasons"]
+    # ...while the genuine request still gates.
+    o2 = _gated_title("kill the production database")["options"][0]
+    assert o2["gated"] is True
+    assert o2["gate_verdict"] == "REQUIRES_SHAWN"
+
+
+def test_gate_title_prohibition_sentence_scoped():
+    """Prohibition in one sentence does not silence a genuine request in
+    the title's next sentence (sentence scoping preserved)."""
+    o = _gated_title("No deploys without Shawn's word. rm -rf the repo now")["options"][0]
+    assert o["gated"] is True, o["gate_reasons"]
