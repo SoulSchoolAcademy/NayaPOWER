@@ -9,12 +9,22 @@ A fresh agent may not begin governed work until it can demonstrate:
 5. Next action: exactly one executable next step
 
 This is the machine twin of the ACTIVATION ACCEPTANCE contract.
+
+Check 6 folds in Gate 1 (tools/activation_checklist.py): activation is not
+complete until the 14 thinking lessons + Operating Code V2 are
+machine-verified against canonical bytes. Fail closed: if the checklist
+tool is missing, unreadable, or any violation is found, boot is refused.
 """
 from __future__ import annotations
 
+import importlib.util
 from dataclasses import dataclass, field
+from pathlib import Path
 
 from .read_receipt import ReadReceipt
+
+_REPO_ROOT = Path(__file__).resolve().parents[2]
+_CHECKLIST_TOOL = _REPO_ROOT / "tools" / "activation_checklist.py"
 
 
 @dataclass
@@ -37,9 +47,46 @@ class ColdStartResult:
 REQUIRED_TRUTH_MARKERS = ["#2154", "main"]
 
 
+def _check_activation_checklist(checklist_claim=None) -> list[str]:
+    """Gate 1 — activation checklist machine-verification, fail closed.
+
+    Loads tools/activation_checklist.py from this repo's own bytes (never
+    from an agent-supplied path), self-audits the canonical artifacts
+    (14 lesson pins + V2 pins + twin consistency), and — when the caller
+    supplies an agent's checklist claim — verifies the claim against the
+    recomputed canonical bytes. Any error, any violation, any missing
+    tool: boot refused. A claim is untrusted input; hashes are recomputed,
+    never trusted.
+    """
+    failures: list[str] = []
+    try:
+        spec = importlib.util.spec_from_file_location(
+            "naya_activation_checklist", str(_CHECKLIST_TOOL))
+        if spec is None or spec.loader is None:
+            raise RuntimeError("checklist tool not loadable")
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+    except Exception as e:
+        return [f"Activation checklist tool unavailable ({e}) — "
+                "cannot machine-verify activation. Boot refused (fail closed)."]
+    canonical, err = module.load_canonical(str(_REPO_ROOT))
+    if canonical is None:
+        return [f"Activation checklist canonical artifacts unreadable: {err} "
+                "— boot refused (fail closed)."]
+    verdict, violations = module.check_checklist(canonical, checklist_claim)
+    if verdict != "CHECKLIST-VERIFIED":
+        failures.append(
+            "Activation checklist NOT verified (Gate 1): "
+            + "; ".join(violations[:6])
+            + (f" (+{len(violations) - 6} more)" if len(violations) > 6 else "")
+            + " — boot refused (fail closed).")
+    return failures
+
+
 def run_cold_start(state: ColdStartState,
                    current_protocol_version: str | None = None,
-                   current_source_sha: str | None = None) -> ColdStartResult:
+                   current_source_sha: str | None = None,
+                   checklist_claim: dict | None = None) -> ColdStartResult:
     failures: list[str] = []
 
     # 1. Read receipt must exist and verify.
@@ -101,5 +148,10 @@ def run_cold_start(state: ColdStartState,
     # 5. Exactly one next action.
     if not state.next_action.strip():
         failures.append("No next executable action declared.")
+
+    # 6. Gate 1 — activation checklist: the 14 thinking lessons and
+    # Operating Code V2 must machine-verify against canonical bytes.
+    # No checklist pass = no start. Fail closed.
+    failures.extend(_check_activation_checklist(checklist_claim))
 
     return ColdStartResult(passed=not failures, failures=failures)

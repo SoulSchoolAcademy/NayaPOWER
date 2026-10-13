@@ -11,13 +11,16 @@ A cold agent passes only when it can demonstrate:
 4. It can state the five protected gates (authority boundaries)
 5. It can distinguish the six truth states
 6. It has signed in on its feed (or declares its intent to)
+7. The activation checklist (14 thinking lessons + Operating Code V2)
+   machine-verifies against canonical bytes (Gate 1, fail closed)
 
 This gate does NOT grant authority. It verifies readiness.
 Authority still comes from Shawn's grants, not from passing this gate.
 
 Usage:
-    python3 kernel/protocol/cold_start_gate.py --agent-id <id> --feed <feed-url>
+    python3 kernel/protocol/protocol_integrity_gate.py --agent-id <id> --json
     Returns JSON: {pass: bool, checks: [...], failures: [...]}
+    Exit 0 = pass (boot allowed); exit 1 = fail (boot refused, fail closed).
 
 CI: This gate runs against every protocol change. If the manifest
     and the gate disagree, the gate wins (executable > documentary).
@@ -109,6 +112,44 @@ def check_never_do_nonempty(manifest: dict) -> tuple[bool, str]:
     return True, f"{len(never)} prohibitions defined"
 
 
+def check_activation_checklist() -> tuple[bool, str]:
+    """Gate 1 — the activation checklist must machine-verify at boot.
+
+    Wires tools/activation_checklist.py into this boot gate: the 14
+    thinking lessons + Operating Code V2 are re-hashed from the repo's
+    own canonical bytes and compared to the pinned fingerprints.
+    Anything missing, tampered, stale, or unreadable fails the gate —
+    no checklist pass = no start (fail closed). The check never crashes
+    the gate: every error becomes a failed check, not an exception.
+    """
+    import importlib.util
+    tool = ROOT / "tools" / "activation_checklist.py"
+    try:
+        spec = importlib.util.spec_from_file_location(
+            "naya_activation_checklist", str(tool))
+        if spec is None or spec.loader is None:
+            return False, "checklist tool not loadable — boot refused (fail closed)"
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+    except Exception as e:
+        return False, f"checklist tool failed to load ({e}) — boot refused (fail closed)"
+    try:
+        canonical, err = module.load_canonical(str(ROOT))
+    except Exception as e:
+        return False, f"checklist canonical read failed ({e}) — boot refused (fail closed)"
+    if canonical is None:
+        return False, f"checklist canonical artifacts unreadable: {err} — boot refused (fail closed)"
+    try:
+        verdict, violations = module.check_checklist(canonical)
+    except Exception as e:
+        return False, f"checklist verdict computation failed ({e}) — boot refused (fail closed)"
+    if verdict != "CHECKLIST-VERIFIED":
+        shown = "; ".join(violations[:4])
+        more = f" (+{len(violations) - 4} more)" if len(violations) > 4 else ""
+        return False, f"activation checklist REJECT: {shown}{more} — boot refused (fail closed)"
+    return True, "activation checklist verified: 14 lessons + Operating Code V2 match pinned canonical bytes"
+
+
 def run_gate(agent_id: str = "unknown") -> dict:
     manifest = load_manifest()
     checks = []
@@ -120,6 +161,7 @@ def run_gate(agent_id: str = "unknown") -> dict:
         ("conflict_hierarchy", lambda: check_conflict_hierarchy_complete(manifest)),
         ("truth_states_distinct", lambda: check_truth_states_distinct(manifest)),
         ("never_do_complete", lambda: check_never_do_nonempty(manifest)),
+        ("activation_checklist", check_activation_checklist),
     ]
 
     all_pass = True
