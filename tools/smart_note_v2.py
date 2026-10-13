@@ -979,9 +979,20 @@ def retrieve(query, areas=None, task_contexts=None):
         # present as an answer. Refuse rather than misdirect.
         raise SystemExit("NO_RELEVANT_INTELLIGENCE")
     e = ranked[0][2]
-    note = (ROOT / e["projection_path"]).read_text(encoding="utf-8")
+    try:
+        note = (ROOT / e["projection_path"]).read_text(encoding="utf-8")
+    except OSError:
+        # B-58 (2026-10-13): a winning projection the registry names but the
+        # tree does not contain is corpus drift, not an answer. Fail closed
+        # with an explicit miss code — never an unhandled crash.
+        raise SystemExit("WINNER_PROJECTION_UNREADABLE")
     m = re.search(r"##(?:\s+[^\n]*)?IN A NUTSHELL\n\n(.+?)(?:\n\n##|$)", note, re.S | re.I)
     explanation = m.group(1).strip() if m else ""
+    if not explanation:
+        # B-49 (2026-10-13): a winner with no extractable lesson content is a
+        # title-only positive. Returning it as an answer is silent admission
+        # of unsubstantiated intelligence. Fail closed: explicit miss.
+        raise SystemExit("WINNER_EXPLANATION_EMPTY")
     return {"query":query,"retrieved":e,"explanation":explanation,"source":"repository_projection_index","original_conversation_supplied":False}
 
 def held_out(retrieved):

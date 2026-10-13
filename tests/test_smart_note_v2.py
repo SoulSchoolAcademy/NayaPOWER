@@ -1467,3 +1467,61 @@ def test_writer_second_write_refreshes_manifest(tmp_path):
     assert len(reg["entries"]) == 2
     assert reg["corpus_manifest_hash"] == m._corpus_manifest_hash(reg["entries"])
     m._validate_index_against_corpus(reg)
+
+# --- Winner-read fail-closed (B-49/B-58, 2026-10-13, Naya 4) ---
+def _winner_read_registry(tmp_path, entry):
+    rp = tmp_path / "index.json"
+    rp.write_text(json.dumps({"entries": [entry]}), encoding="utf-8")
+    return rp
+
+
+def _winner_read_entry(projection_path):
+    return {
+        "smart_note_id": "SN-W",
+        "title": "Deep tunnel maintenance protocol",
+        "category": "C",
+        "topic": "T",
+        "subtopic": "S",
+        "captured_at": "2026-10-01T00:00:00Z",
+        "projection_path": projection_path,
+        "lifecycle_state": "ACTIVE",
+        "truth_state": "CANDIDATE",
+        "keywords": ["deep", "tunnel"],
+    }
+
+
+def test_retrieve_winner_missing_projection_fails_closed(tmp_path, monkeypatch):
+    """B-58: the winning projection file does not exist on disk. Pre-repair
+    this raised an unhandled FileNotFoundError; the repair fails closed with
+    an explicit miss code. Non-vacuous: the entry wins on title matches."""
+    rp = _winner_read_registry(tmp_path, _winner_read_entry("gone.md"))
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    monkeypatch.setattr(mod, "REGISTRY", rp)
+    monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 0)  # ranking pin: the floor is live-corpus calibrated, not for synthetic corpora
+    try:
+        mod.retrieve("deep tunnel maintenance protocol")
+    except SystemExit as exc:
+        assert str(exc) == "WINNER_PROJECTION_UNREADABLE"
+    else:
+        raise AssertionError("missing winner projection must fail closed, not crash or answer")
+
+
+def test_retrieve_winner_without_nutshell_fails_closed(tmp_path, monkeypatch):
+    """B-49: the winner's projection is readable but carries no IN A NUTSHELL
+    section (deep-path degradation). Pre-repair this returned a positive
+    answer with explanation ""; the repair fails closed with an explicit miss
+    code. Non-vacuous: the entry wins on title matches."""
+    (tmp_path / "degraded.md").write_text(
+        "# Deep tunnel maintenance protocol\n\n## Background\n\nLong-form text, no nutshell section.\n",
+        encoding="utf-8",
+    )
+    rp = _winner_read_registry(tmp_path, _winner_read_entry("degraded.md"))
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    monkeypatch.setattr(mod, "REGISTRY", rp)
+    monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 0)  # ranking pin: the floor is live-corpus calibrated, not for synthetic corpora
+    try:
+        mod.retrieve("deep tunnel maintenance protocol")
+    except SystemExit as exc:
+        assert str(exc) == "WINNER_EXPLANATION_EMPTY"
+    else:
+        raise AssertionError("title-only winner must fail closed, not be admitted silently")
