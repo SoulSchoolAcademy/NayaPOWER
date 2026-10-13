@@ -70,6 +70,7 @@ function runtime({
   credentialError = null,
   headStatus = 404,
   putOk = true,
+  putStatus = null,
   putBody = { content: { sha: "commit-1" } },
   verifySha = "commit-1",
   claims = null,
@@ -173,7 +174,7 @@ function runtime({
       }
       if (method === "PUT") {
         receipts.committed = true;
-        return { ok: putOk, status: putOk ? 201 : 422, json: async () => putBody };
+        return { ok: putOk, status: putStatus ?? (putOk ? 201 : 422), json: async () => putBody };
       }
     }
     return { ok: true, status: 200, json: async () => ({}) };
@@ -417,6 +418,35 @@ test("GUARD -- PROJECTION_UNVERIFIED fires when read-back does not match the com
   const body = await res.json();
   assert.equal(body.error, "PROJECTION_UNVERIFIED");
   assert.equal(body.pipeline, "PROJECTION_FAILED");
+});
+
+test("GUARD -- failure receipt preserves the sanitized GitHub rejection reason", async () => {
+  // PR #2012 (closed unmerged, revived by Naya Beta 2026-10-13): the durable
+  // receipt stored only the HTTP status ("GITHUB_COMMIT_FAILED:403"), dropping
+  // GitHub's own explanation and leaving the team guessing between installation
+  // scope, Contents permission, SSO/policy, and branch/ruleset denial. A
+  // controlled 403 with a hostile message must land sanitized in the receipt,
+  // and the receipt reason must match the immediate response's detail.
+  const rt = runtime({
+    putOk: false,
+    putStatus: 403,
+    putBody: { message: "Resource not accessible by integration \r\n\tcaf\u00e9 " + "x".repeat(400) },
+  });
+  const res = await rt.invoke();
+  const body = await res.json();
+  assert.equal(body.error, "GITHUB_COMMIT_FAILED");
+  assert.equal(body.status, 403);
+  const failures = rt.receipts.updated.filter((u) => u.status === "failed");
+  assert.equal(failures.length, 1, "exactly one failure receipt must be written");
+  const failure = failures[0].failure;
+  const prefix = "GITHUB_COMMIT_FAILED:403:";
+  assert.ok(failure.startsWith(prefix), "receipt must carry status + reason, got: " + failure);
+  const reason = failure.slice(prefix.length);
+  assert.ok(reason.includes("Resource not accessible by integration"), "the GitHub reason must survive");
+  assert.ok(!/[\x00-\x1F\x7F-\x9F]/.test(reason), "no control characters may be persisted");
+  assert.ok(!/[^\x20-\x7E]/.test(reason), "no non-ASCII may be persisted");
+  assert.ok(reason.length <= 240, "reason must be capped at 240 chars, got " + reason.length);
+  assert.equal(body.detail, reason, "immediate response detail must be the same sanitized reason");
 });
 
 // ── Positive control. Without this the suite could pass by refusing everything. ──

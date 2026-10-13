@@ -46,6 +46,22 @@ function normalizedText(value: unknown): string {
   return typeof value === "string" ? value.trim() : "";
 }
 
+// PR #2012 revival: preserve the GitHub API's own rejection reason in the
+// failure receipt. The receipt previously stored only the HTTP status
+// ("GITHUB_COMMIT_FAILED:403"), leaving the team guessing between
+// installation scope, Contents permission, SSO/policy, and branch/ruleset
+// denial. Sanitize (strip control + non-ASCII, collapse whitespace, cap at
+// 240 chars) so no credentials or full response payload are ever persisted.
+function sanitizeGitHubReason(value: unknown): string {
+  if (typeof value !== "string") return "";
+  return value
+    .replace(/[\x00-\x1F\x7F-\x9F]/g, " ")
+    .replace(/[^\x20-\x7E]/g, "")
+    .replace(/\s+/g, " ")
+    .trim()
+    .slice(0, 240);
+}
+
 function slugify(value: string, max: number): string {
   return value
     .toLowerCase()
@@ -388,14 +404,19 @@ Deno.serve(async (req) => {
     const putJson: any = await putRes.json().catch(() => ({}));
     const commitSha: string | null = typeof putJson?.content?.sha === "string" ? putJson.content.sha : null;
     if (!putRes.ok || !commitSha) {
-      await failReceipt("GITHUB_COMMIT_FAILED:" + putRes.status);
+      const commitReason = sanitizeGitHubReason(putJson?.message);
+      await failReceipt(
+        commitReason
+          ? "GITHUB_COMMIT_FAILED:" + putRes.status + ":" + commitReason
+          : "GITHUB_COMMIT_FAILED:" + putRes.status
+      );
       return json(
         {
           ok: false,
           pipeline: "PROJECTION_FAILED",
           error: "GITHUB_COMMIT_FAILED",
           status: putRes.status,
-          detail: normalizedText(putJson?.message).slice(0, 300) || "UNKNOWN",
+          detail: commitReason || "UNKNOWN",
         },
         502
       );
