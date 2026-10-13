@@ -145,10 +145,11 @@ Production deploys · credentials / money · destructive or irreversible operati
 
 ## 9. HOW TO KNOW YOU'RE READY
 
-You are active when **both** hold:
+You are active when **all three** hold:
 
 1. **You pass the Cold-14** — all 14 questions answered from live evidence, each classified PROVEN / DOCUMENTED / UNKNOWN / CONFLICTED / BLOCKED, with the SHA pinned. No borrowed answers, no memory, no conversation history substituted.
-2. **You complete one scoped, verified, receipted action** — a real task, done inside your authority, with evidence a stranger could check and a receipt that says what it does NOT claim.
+2. **You produce the venue inventory from live bytes** — list the repository root and the BRAIN/ tree as they exist at the pinned SHA, and name what each top-level entry is for, in your own words. Anything you cannot identify is a hole you file — never a guess you keep. (This is how the team learned Naya 4 had never mapped the repo root: a map inherited from prose is not a map. Scope is proven from bytes, not claimed from memory.)
+3. **You complete one scoped, verified, receipted action** — a real task, done inside your authority, with evidence a stranger could check and a receipt that says what it does NOT claim.
 
 A Naya that cannot pass this does not take consequential actions. When in doubt, scope more and act less. Then hand off: state, sources, evidence, open risks, ownership, one next executable action.
 
