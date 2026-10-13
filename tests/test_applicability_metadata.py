@@ -33,19 +33,22 @@ def _registry_entries():
 
 
 # index -> expected (areas, confidence). Hand-labeled from the real corpus.
+# Index keys re-pinned 2026-10-12 (Naya 1, B-51 backfill): the 28-entry
+# retirement shifted positions; keys identify the SAME units by
+# intelligent_block_id (verified by title match), not new samples.
 GROUND_TRUTH = {
     0:   ({"LEARN", "KNOW"}, 0.7),             # Official Smart Note Format & Lifecycle (topic SMART_NOTE_SYSTEM; generic capture stamps are not signal)
     2:   ({"SUCCESSOR", "KNOW"}, 0.7),          # Naya Continuation Engine
     4:   ({"LAW", "HUMAN_VALUE"}, 0.7),         # Internal Morality
     7:   ({"HUMAN_VALUE"}, 0.7),                # Human Reconstruction Is an Architectural Failure
     50:  ({"LAW", "TEAM"}, 0.9),                # Iteration Law (subtopic GOVERNANCE)
-    120: ({"TEAM"}, 0.9),                       # Lane-seam reporting (subtopic OPERATING-MODE)
-    300: ({"INFRA"}, 0.9),                      # Sibling-gap hardening (subtopic CI-TRIAGE)
-    396: ({"SUCCESSOR", "KNOW"}, 0.9),          # Canonical persistence (subtopic INTELLIGENCE-CONTINUITY)
-    413: ({"KNOW", "LEARN"}, 0.9),             # Direct-commit capture bypass (subtopic MEMORY-DISCIPLINE; title is about the capture pipeline)
-    600: ({"VERIFY", "KNOW"}, 0.9),             # Retain the UNKNOWN (subtopic ENGINEERING-PROOF)
-    620: ({"INFRA"}, 0.9),                      # Byte-identical CI green (subtopic CI-TRIAGE)
-    247: ({"ACT", "KNOW"}, 0.9),                # Canary learning-loop proof (subtopic ACTIVE-INTELLIGENCE)
+    116: ({"TEAM"}, 0.9),                       # Lane-seam reporting (subtopic OPERATING-MODE)
+    287: ({"INFRA"}, 0.9),                      # Sibling-gap hardening (subtopic CI-TRIAGE)
+    381: ({"SUCCESSOR", "KNOW"}, 0.9),          # Canonical persistence (subtopic INTELLIGENCE-CONTINUITY)
+    398: ({"KNOW", "LEARN"}, 0.9),             # Direct-commit capture bypass (subtopic MEMORY-DISCIPLINE; title is about the capture pipeline)
+    573: ({"VERIFY", "KNOW"}, 0.9),             # Retain the UNKNOWN (subtopic ENGINEERING-PROOF)
+    593: ({"INFRA"}, 0.9),                      # Byte-identical CI green (subtopic CI-TRIAGE)
+    241: ({"ACT", "KNOW"}, 0.9),                # Canary learning-loop proof (subtopic ACTIVE-INTELLIGENCE)
 }
 
 

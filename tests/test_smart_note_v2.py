@@ -708,39 +708,35 @@ def test_registry_records_capture_lifecycle_metadata(tmp_path):
 
 
 def test_retrieve_ignores_superseded_registry_entries(tmp_path, monkeypatch):
-    old_page = tmp_path / "old.md"
-    new_page = tmp_path / "new.md"
-    old_page.write_text("# Old\n\n## IN A NUTSHELL\n\nold answer", encoding="utf-8")
-    new_page.write_text("# New\n\n## IN A NUTSHELL\n\nactive answer", encoding="utf-8")
-    registry_path = tmp_path / "index.json"
-    registry_path.write_text(json.dumps({
-        "entries": [
-            {
-                "smart_note_id": "SN-346",
-                "intelligent_block_id": "IB-OLD",
-                "title": "Nonstop Loop",
-                "category": "SYSTEM_INTELLIGENCE",
-                "topic": "GOVERNANCE",
-                "subtopic": "OPERATING_CODE",
-                "captured_at": "2026-10-05T23:59:59Z",
-                "projection_path": "old.md",
-                "lifecycle_state": "SUPERSEDED",
-            },
-            {
-                "smart_note_id": "SN-0355",
-                "intelligent_block_id": "IB-R2",
-                "title": "Nonstop Loop",
-                "category": "SYSTEM_INTELLIGENCE",
-                "topic": "GOVERNANCE",
-                "subtopic": "OPERATING_CODE",
-                "captured_at": "2026-10-05T00:00:00Z",
-                "projection_path": "new.md",
-                "lifecycle_state": "ACTIVE",
-            },
-        ]
-    }), encoding="utf-8")
+    # B-51 (2026-10-12, Naya 1): routed through the writer-contract helper.
+    # Page bytes carried verbatim via _page_text (explanation is read from
+    # the page's nutshell section); assertion unchanged.
+    rp = _truth_rank_registry(tmp_path, [
+        {
+            "smart_note_id": "SN-346",
+            "intelligent_block_id": "IB-OLD",
+            "title": "Nonstop Loop",
+            "category": "SYSTEM_INTELLIGENCE",
+            "topic": "GOVERNANCE",
+            "subtopic": "OPERATING_CODE",
+            "captured_at": "2026-10-05T23:59:59Z",
+            "lifecycle_state": "SUPERSEDED",
+            "_page_text": "# Old\n\n## IN A NUTSHELL\n\nold answer",
+        },
+        {
+            "smart_note_id": "SN-0355",
+            "intelligent_block_id": "IB-R2",
+            "title": "Nonstop Loop",
+            "category": "SYSTEM_INTELLIGENCE",
+            "topic": "GOVERNANCE",
+            "subtopic": "OPERATING_CODE",
+            "captured_at": "2026-10-05T00:00:00Z",
+            "lifecycle_state": "ACTIVE",
+            "_page_text": "# New\n\n## IN A NUTSHELL\n\nactive answer",
+        },
+    ])
     monkeypatch.setattr(mod, "ROOT", tmp_path)
-    monkeypatch.setattr(mod, "REGISTRY", registry_path)
+    monkeypatch.setattr(mod, "REGISTRY", rp)
     monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 0)  # ranking pin: the floor is live-corpus calibrated, not for synthetic corpora
     result = mod.retrieve("nonstop loop governance")
     assert result["retrieved"]["smart_note_id"] == "SN-0355"
@@ -750,13 +746,24 @@ def test_retrieve_ignores_superseded_registry_entries(tmp_path, monkeypatch):
 
 # --- Retrieval truth-state tie-breaking (retrieval track, 2026-10-06) ---
 def _truth_rank_registry(tmp_path, entries):
+    # B-51 (2026-10-12, Naya 1): fixtures now speak the writer contract.
+    # Every synthetic entry gets a real bound page under the allowed
+    # projection root, a module-authority page_hash, and the envelope
+    # carries the schema constant + a fresh corpus_manifest_hash.
+    # Per-entry page text rides in through `_page_text` (popped, never hashed).
+    root = tmp_path / "BRAIN" / "05-MEMORY" / "SMART-NOTES"
     for i, e in enumerate(entries):
-        page = tmp_path / f"p{i}.md"
-        page.write_text("# T\n\n## IN A NUTSHELL\n\nanswer", encoding="utf-8")
-        e.setdefault("projection_path", f"p{i}.md")
+        page = root / f"p{i}.md"
+        page.parent.mkdir(parents=True, exist_ok=True)
+        page.write_text(e.pop("_page_text", "# T\n\n## IN A NUTSHELL\n\nanswer"),
+                        encoding="utf-8")
+        e["projection_path"] = str(page.relative_to(tmp_path)).replace("\\", "/")
+        e["page_hash"] = mod._page_sha256(page)
         e.setdefault("lifecycle_state", "ACTIVE")
+    reg = {"schema": mod._PROJECTION_INDEX_SCHEMA, "entries": entries}
+    reg["corpus_manifest_hash"] = mod._corpus_manifest_hash(entries)
     rp = tmp_path / "index.json"
-    rp.write_text(json.dumps({"entries": entries}), encoding="utf-8")
+    rp.write_text(json.dumps(reg), encoding="utf-8")
     return rp
 
 
@@ -825,25 +832,22 @@ def test_retrieve_matches_lesson_content_not_just_metadata(tmp_path, monkeypatch
     Captain Protocol note that teaches exactly that). The NUTSHELL lesson
     text is part of the haystack.
     """
-    (tmp_path / "captain.md").write_text(
-        "# Captain\n\n## IN A NUTSHELL\n\ndeclaring intent before acting is required",
-        encoding="utf-8")
-    (tmp_path / "other.md").write_text(
-        "# Other\n\n## IN A NUTSHELL\n\nunrelated lesson about calibration",
-        encoding="utf-8")
-    rp = tmp_path / "index.json"
-    rp.write_text(json.dumps({"entries": [
+    # B-51 (2026-10-12, Naya 1): routed through the writer-contract helper.
+    # Page bytes carried verbatim via _page_text; assertion unchanged.
+    rp = _truth_rank_registry(tmp_path, [
         {"smart_note_id": "SN-CAP", "intelligent_block_id": "IB-CAP",
          "title": "The Captain Protocol", "category": "X", "topic": "Y", "subtopic": "Z",
          "keywords": ["smart note", "capture", "intelligent block"],
          "truth_state": "CANDIDATE", "lifecycle_state": "ACTIVE",
-         "captured_at": "2026-10-06T00:00:00Z", "projection_path": "captain.md"},
+         "captured_at": "2026-10-06T00:00:00Z",
+         "_page_text": "# Captain\n\n## IN A NUTSHELL\n\ndeclaring intent before acting is required"},
         {"smart_note_id": "SN-OTH", "intelligent_block_id": "IB-OTH",
          "title": "Some Other Note", "category": "X", "topic": "Y", "subtopic": "Z",
          "keywords": ["smart note", "capture", "intelligent block"],
          "truth_state": "CANDIDATE", "lifecycle_state": "ACTIVE",
-         "captured_at": "2026-10-06T00:00:00Z", "projection_path": "other.md"},
-    ]}), encoding="utf-8")
+         "captured_at": "2026-10-06T00:00:00Z",
+         "_page_text": "# Other\n\n## IN A NUTSHELL\n\nunrelated lesson about calibration"},
+    ])
     monkeypatch.setattr(mod, "ROOT", tmp_path)
     monkeypatch.setattr(mod, "REGISTRY", rp)
     monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 0)  # ranking pin: the floor is live-corpus calibrated, not for synthetic corpora

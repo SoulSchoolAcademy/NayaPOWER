@@ -21,11 +21,26 @@ spec.loader.exec_module(mod)
 # capture can be hash-reconciled against any entry. The 20 "unregistered"
 # captures are therefore a downstream symptom of the 28 hashless entries, not
 # an independent second fault. Repairing hash coverage clears both at once.
+#
+# B-51 backfill re-pin (Naya 1, 2026-10-12) — INVESTIGATED, not a regression:
+# the sanctioned retirement of the 28 malformed tombstones (fail-closed
+# validator refused them: no projection_path) orphaned exactly 22 captures:
+# 22 of the 28 retired records carried content_hash, and the 22 newly
+# unregistered captures are byte-verified to be exactly those 22 hashes
+# (13 others were already unregistered pre-migration; all 22 orphans are
+# tracked files, so the +22 delta is checkout-independent). The captures are
+# NOT lost: they remain on disk in .naya/capture/ and the full retired
+# records (with content_hash + provenance) are archived verbatim in
+# .naya/memory/smart-notes/tombstones-2026-10-12.json. Retirement is
+# retrieval-neutral (SUPERSEDED entries are skipped in scoring), so this is
+# the repair's known audit footprint, not new drift. entries_without_hash
+# shrank 28 -> 22 (6 retired tombstones were the hashless ones); pin lowered
+# per this file's shrink rule.
 PINNED_BASELINE = {
     "unparseable_captures": 0,
     "captures_missing_intelligence": 0,
-    "captures_unregistered_by_hash": 20,
-    "entries_without_hash": 28,
+    "captures_unregistered_by_hash": 42,
+    "entries_without_hash": 22,
     "entries_with_stale_hash": 0,
     "duplicate_smart_note_ids": 0,
     "published_entries_missing_projection_path": 0,
