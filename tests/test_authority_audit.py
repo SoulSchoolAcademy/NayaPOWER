@@ -4,8 +4,9 @@ tools/authority_audit.py re-checks every first-parent main commit in the
 window (merges, squash merges, direct pushes — a merges-only enumeration
 would be fail-open on the exact class L245 exists for). Verdicts:
   PACKET_VALID        - authority check green on the exact merged head
-  EXERCISED_AUTHORITY - merged by the director's own click: recorded, never
-                        flagged, never reverted
+  EXERCISED_AUTHORITY - the merge commit's author identity is the
+                        director's own click: recorded, never flagged,
+                        never reverted
   INVALID             - neither: revert PR proposed (dry-run here), venue
                         receipt planned
   SKIP                - the tool's own revert PR, or an already-open revert
@@ -13,7 +14,12 @@ would be fail-open on the exact class L245 exists for). Verdicts:
 Negative-control matrix (B-25 repair spec):
   invalid-authority post-merge (synthetic) -> revert planned, tree
       byte-identical to the pre-commit base (real temp git repo)
-  exercised authority                       -> no revert, recorded not flagged
+  lane merge with the LIVE merged_by distribution (org login) + no
+      packet -> INVALID, revert planned (B-25 repair round, 2026-10-13:
+      the old default fake used merged_by="SomeLane", a world that
+      doesn't exist on the live repo)
+  exercised authority (director merge-commit author identity) -> no
+      revert, recorded not flagged
   packet valid                              -> no revert
   existing open revert PR                   -> skipped, never double-filed
   own revert PR (revert/* + marker)         -> skipped, no ping-pong
@@ -36,7 +42,8 @@ sys.path.insert(0, str(ROOT / "tools"))
 
 from authority_audit import (  # noqa: E402
     AUTHORITY_CHECK_NAME,
-    DIRECTOR_LOGIN,
+    DIRECTOR_AUTHOR_EMAIL,
+    DIRECTOR_AUTHOR_NAME,
     GitHubClient,
     GitHubError,
     audit_commit,
@@ -48,13 +55,31 @@ MERGE_SHA = "5cc6d3aa34a951b2e184f1b96b057e2dcc4fee9d"
 FIRST_PARENT = "d0d970a5451238e08cff35e2eba6c9aafa606b74"
 HEAD_SHA = "ea762857554091a3f9a70f3f98b90d0ebbbc9a9d"
 
+# Live `merged_by` distribution (B-25 repair round, 2026-10-13): the API
+# reports the ORG login on merges of both classes — never a lane login.
+LIVE_MERGED_BY = {"login": "SoulSchoolAcademy"}
+# Lane merge-commit author identity (live evidence: Naya 4 review 5500983723).
+LANE_AUTHOR_NAME = "Naya 5"
+LANE_AUTHOR_EMAIL = "naya5@soulschool.academy"
+
 
 def _commit(**over):
     d = {"sha": MERGE_SHA,
          "message": "Merge pull request #2508 from naya5/learn-artifacts-mechanization\n",
          "parents": [FIRST_PARENT, HEAD_SHA],
          "author_login": "SomeLane",
+         "author_name": LANE_AUTHOR_NAME,
+         "author_email": LANE_AUTHOR_EMAIL,
          "date": "2026-10-13T06:48:10Z"}
+    d.update(over)
+    return d
+
+
+def _director_commit(**over):
+    """A commit whose git author identity is the director's own merge."""
+    d = _commit(author_login="ShawnDirector",
+                author_name=DIRECTOR_AUTHOR_NAME,
+                author_email=DIRECTOR_AUTHOR_EMAIL)
     d.update(over)
     return d
 
@@ -65,7 +90,10 @@ class FakeAuditGitHub:
             "number": 2508,
             "head": {"sha": HEAD_SHA, "ref": "naya5/learn-artifacts-mechanization"},
             "body": "some body",
-            "merged_by": {"login": "SomeLane"},
+            # The live `merged_by` distribution: the org login on merges of
+            # BOTH classes (B-25 repair round, 2026-10-13). The old default
+            # ("SomeLane") was a world that doesn't exist on the live repo.
+            "merged_by": dict(LIVE_MERGED_BY),
         }
         self._authority_ok = authority_ok
         self._existing = existing_revert
@@ -153,14 +181,41 @@ def test_packet_valid_needs_no_revert(tmp_path):
 
 
 def test_exercised_authority_recorded_never_reverted(tmp_path):
+    """The director's own merge click: merge-COMMIT author identity is the
+    discriminator — `merged_by` is the org login even here (live bytes)."""
     pr = {"number": 2508, "head": {"sha": HEAD_SHA, "ref": "naya5/x"},
-          "body": "b", "merged_by": {"login": DIRECTOR_LOGIN}}
+          "body": "b", "merged_by": dict(LIVE_MERGED_BY)}
     client = FakeAuditGitHub(pr=pr, authority_ok=False)
-    v = audit_commit(client, _commit(), tmp_path, 2175, dry_run=True)
+    v = audit_commit(client, _director_commit(), tmp_path, 2175,
+                     dry_run=True)
     assert v["verdict"] == "EXERCISED_AUTHORITY"
+    assert v["authority_basis"] == "exercised"
     assert v["evidence_complete"] is False
     assert client.opened_prs == []
     assert client.venue_posts == []
+
+
+def test_lane_merge_with_live_merged_by_is_invalid(temp_repo):
+    """Naya 4's named regression test (review 5500983723): with the LIVE
+    `merged_by` distribution (org login) and no authority packet, a lane
+    merge MUST be INVALID with a revert planned — the old discriminator
+    read this exact case as the director's own click."""
+    repo, merge_sha, first_parent = temp_repo
+    pr = {"number": 2508, "head": {"sha": HEAD_SHA, "ref": "naya5/x"},
+          "body": "b", "merged_by": dict(LIVE_MERGED_BY)}
+    client = FakeAuditGitHub(pr=pr, authority_ok=False)
+    commit = {"sha": merge_sha,
+              "message": "Merge pull request #2508 from naya5/x\n",
+              "parents": [first_parent, "f" * 40],
+              "author_login": "SomeLane",
+              "author_name": LANE_AUTHOR_NAME,
+              "author_email": LANE_AUTHOR_EMAIL,
+              "date": "2026-10-13T06:48:10Z"}
+    v = audit_commit(client, commit, repo, 2175, dry_run=True)
+    assert v["verdict"] == "INVALID"
+    assert v["authority_basis"] == "none"
+    assert v["revert_pr"] is None  # dry-run: planned, not opened
+    assert client.opened_prs == []
 
 
 def test_invalid_merge_plans_revert_in_dry_run(temp_repo):
@@ -170,6 +225,8 @@ def test_invalid_merge_plans_revert_in_dry_run(temp_repo):
               "message": "Merge pull request #9999 from feature\n",
               "parents": [first_parent, "f" * 40],
               "author_login": "SomeLane",
+              "author_name": LANE_AUTHOR_NAME,
+              "author_email": LANE_AUTHOR_EMAIL,
               "date": "2026-10-13T06:48:10Z"}
     v = audit_commit(client, commit, repo, 2175, dry_run=True)
     assert v["verdict"] == "INVALID"
@@ -186,6 +243,8 @@ def test_invalid_merge_opens_revert_pr_live(temp_repo):
               "message": "Merge pull request #9999 from feature\n",
               "parents": [first_parent, "f" * 40],
               "author_login": "SomeLane",
+              "author_name": LANE_AUTHOR_NAME,
+              "author_email": LANE_AUTHOR_EMAIL,
               "date": "2026-10-13T06:48:10Z"}
     v = audit_commit(client, commit, repo, 2175, dry_run=False)
     assert v["verdict"] == "INVALID"
@@ -268,6 +327,8 @@ def test_direct_push_without_pr_is_invalid(temp_repo):
     client = FakeAuditGitHub(authority_ok=False)
     commit = {"sha": sha, "message": "direct push to main\n",
               "parents": [parent], "author_login": "SomeLane",
+              "author_name": LANE_AUTHOR_NAME,
+              "author_email": LANE_AUTHOR_EMAIL,
               "date": "2026-10-13T06:48:10Z"}
     v = audit_commit(client, commit, repo, 2175, dry_run=True)
     assert v["verdict"] == "INVALID"
@@ -277,8 +338,8 @@ def test_direct_push_without_pr_is_invalid(temp_repo):
 
 def test_direct_push_by_director_is_exercised_authority(tmp_path):
     client = FakeAuditGitHub(authority_ok=False)
-    commit = _commit(message="direct push to main\n", parents=["a" * 40],
-                     author_login=DIRECTOR_LOGIN)
+    commit = _director_commit(message="direct push to main\n",
+                              parents=["a" * 40])
     v = audit_commit(client, commit, tmp_path, 2175, dry_run=True)
     assert v["verdict"] == "EXERCISED_AUTHORITY"
     assert client.opened_prs == []
@@ -371,10 +432,12 @@ def test_real_workflow_defines_the_authority_job():
 
 # --- first-parent walk: branch heads are never audited ----------------------
 
-def _canned_commit(sha, parents, date, login="A"):
+def _canned_commit(sha, parents, date, login="A",
+                   name="Lane Author", email="lane@example.com"):
     return {"sha": sha,
             "parents": [{"sha": p} for p in parents],
-            "commit": {"committer": {"date": date}},
+            "commit": {"committer": {"date": date},
+                       "author": {"name": name, "email": email}},
             "author": {"login": login}}
 
 
@@ -383,7 +446,8 @@ def test_list_main_commits_walks_first_parent_only():
         "tip": _canned_commit("tip", ["mid", "branchhead"],
                              "2026-10-13T07:00:00Z"),
         "mid": _canned_commit("mid", ["old"], "2026-10-13T06:00:00Z",
-                              login="B"),
+                              login="B", name="Mid Author",
+                              email="mid@example.com"),
         "old": _canned_commit("old", [], "2026-10-13T05:00:00Z",
                               login="C"),
     }
@@ -401,6 +465,10 @@ def test_list_main_commits_walks_first_parent_only():
     # branchhead (second parent) never appears: it was never a main tip
     assert [c["sha"] for c in got] == ["tip", "mid", "old"]
     assert got[1]["author_login"] == "B"
+    # the exercised-authority identity fields are captured, not just the
+    # linked login (B-25 repair round, 2026-10-13)
+    assert got[1]["author_name"] == "Mid Author"
+    assert got[1]["author_email"] == "mid@example.com"
 
 
 def test_list_main_commits_stops_at_window_edge():
@@ -430,3 +498,4 @@ def test_revert_of_missing_sha_raises_not_conflict(temp_repo):
     # repo left on main, clean — no half-applied state
     assert _git(["rev-parse", "--abbrev-ref", "HEAD"], repo) == "main"
     assert _git(["status", "--porcelain"], repo) == ""
+

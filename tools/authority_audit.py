@@ -16,15 +16,32 @@ for, and skipping them would be fail-open.
 Per commit, the verdict is one of:
   PACKET_VALID        - the "Verify merge authority" check ran green on the
                         exact merged head (protocol-complete evidence)
-  EXERCISED_AUTHORITY - merged by the director's own click (SoulSchoolAcademy).
-                        Recorded, NOT flagged. A director click is exercised
-                        authority, distinct from protocol-complete evidence.
+  EXERCISED_AUTHORITY - the merge COMMIT's author identity is the
+                        director's own (Shawn Vibert
+                        <humanmaximuscodex@gmail.com>). Recorded, NOT
+                        flagged. A director merge is exercised authority,
+                        distinct from protocol-complete evidence.
+                        REPAIR NOTE (2026-10-13, B-25 repair round, Naya 4
+                        review 5500983723 on PR #2514): the discriminator
+                        USED to be `merged_by == "SoulSchoolAcademy"`.
+                        Live API evidence showed `merged_by` is the org
+                        login on 5/5 sampled merges spanning both classes
+                        (director clicks #2421/#2459 AND lane merges
+                        #2511/#2503/#2506) — the old rule made EVERY PR
+                        merge read as the director's own click, so the
+                        INVALID branch was unreachable and the audit's
+                        stated function ("this audit is the teeth") did not
+                        hold. The discriminator is now the merge commit's
+                        author name/email, as the merge-watch uses.
+                        `merged_by` remains in receipts as informational
+                        text only — it is NEVER consulted for the verdict.
                         ACCEPTED RESIDUAL: the missing-evidence case (a
-                        director merge with no packet) is NOT flagged by this
-                        tool — flagging director clicks is B-24's queued
-                        breach-post watchdog entry, which is not yet built.
-                        Until it lands, such merges are recorded here with
-                        evidence_complete=False and nothing follows up.
+                        director merge with no packet) is NOT flagged by
+                        this tool — flagging director merges is B-24's
+                        queued breach-post watchdog entry, which is not yet
+                        built. Until it lands, such merges are recorded
+                        here with evidence_complete=False and nothing
+                        follows up.
   INVALID             - neither packet nor exercised authority: open the
                         revert PR, post the venue receipt.
   SKIP                - the tool's own revert PR (no ping-pong), or a commit
@@ -59,7 +76,10 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from assemble_merge_packet import DIRECTOR_LOGIN  # noqa: E402
+# NOTE: authority_audit.py deliberately does NOT import DIRECTOR_LOGIN from
+# assemble_merge_packet. That constant encodes the falsified premise
+# (`merged_by == "SoulSchoolAcademy"` == the director's own click) — the
+# B-25 repair round (2026-10-13, Naya 4 review 5500983723) voided it.
 
 GH_API_BIN = os.environ.get("GH_API_BIN", "gh")
 AUTHORITY_CHECK_NAME = "Verify merge authority"
@@ -67,6 +87,22 @@ AUTHORITY_JOB_FILE = ".github/workflows/merge-consensus-gate.yml"
 REVERT_BRANCH_PREFIX = "revert/"
 REVERT_MARKER = "L245-REVERT-FOR:"
 VENUE_DEFAULT = 2175
+
+# The director's merge identity — the EXERCISED_AUTHORITY discriminator.
+# Live evidence (Naya 4 review 5500983723, PR #2514): the director's own
+# merge click authors the merge commit as `Shawn Vibert
+# <humanmaximuscodex@gmail.com>`; a lane merge authors e.g. `Naya 5
+# <naya5@soulschool.academy>`. `merged_by` on the live API is the org login
+# on merges of both classes, so it can never discriminate and is never
+# consulted for the verdict.
+DIRECTOR_AUTHOR_NAME = "Shawn Vibert"
+DIRECTOR_AUTHOR_EMAIL = "humanmaximuscodex@gmail.com"
+
+
+def _is_director_commit(author_name: str, author_email: str) -> bool:
+    """True iff the commit's git author identity is the director's own."""
+    return (author_name == DIRECTOR_AUTHOR_NAME
+            and author_email == DIRECTOR_AUTHOR_EMAIL)
 
 
 class GitHubError(RuntimeError):
@@ -147,11 +183,17 @@ class GitHubClient:
             if committed < since:
                 break
             author = c.get("author") or {}
+            commit_author = (c.get("commit") or {}).get("author") or {}
             out.append({
                 "sha": c.get("sha", ""),
                 "message": (c.get("commit") or {}).get("message", ""),
                 "parents": parents,
                 "author_login": author.get("login") or "",
+                # The exercised-authority discriminator keys on the git
+                # author identity (name/email), never on `merged_by`
+                # (B-25 repair round, 2026-10-13).
+                "author_name": commit_author.get("name") or "",
+                "author_email": commit_author.get("email") or "",
                 "date": date_s,
             })
             sha = parents[0] if parents else ""
@@ -404,14 +446,21 @@ def audit_commit(client: GitHubClient, commit: dict, repo_dir: Path,
                               f"{head_sha[:8]}",
                     "authority_basis": "packet", "evidence_complete": True}
 
-        if merged_by == DIRECTOR_LOGIN:
+        # Exercised authority: the merge COMMIT's author identity is the
+        # director's own. `merged_by` is NOT consulted — on the live API it
+        # is the org login for merges of both classes (B-25 repair round,
+        # 2026-10-13, Naya 4 review 5500983723).
+        commit_author_name = commit.get("author_name") or ""
+        commit_author_email = commit.get("author_email") or ""
+        if _is_director_commit(commit_author_name, commit_author_email):
             return {"sha": sha, "pr": pr_number,
                     "verdict": "EXERCISED_AUTHORITY",
-                    "reason": f"merged by the director's own click "
-                              f"({merged_by}) — exercised authority, "
-                              f"recorded not flagged; missing-evidence case "
-                              f"is an accepted residual pending B-24's "
-                              f"watchdog (not yet built)",
+                    "reason": f"merge-commit author is the director "
+                              f"({commit_author_name} <{commit_author_email}>) "
+                              f"— exercised authority, recorded not flagged; "
+                              f"missing-evidence case is an accepted "
+                              f"residual pending B-24's watchdog (not yet "
+                              f"built)",
                     "authority_basis": "exercised",
                     "evidence_complete": False, "merged_by": merged_by}
 
@@ -422,12 +471,16 @@ def audit_commit(client: GitHubClient, commit: dict, repo_dir: Path,
 
     # No PR reference: authority unprovable. The commit's own author is the
     # exercised-authority fallback (a direct push by the director is his
-    # click, not an invalid merge).
+    # click, not an invalid merge). Identity keys on the git author
+    # name/email, never the linked login (B-25 repair round, 2026-10-13).
+    author_name = commit.get("author_name") or ""
+    author_email = commit.get("author_email") or ""
     author_login = commit.get("author_login") or ""
-    if author_login == DIRECTOR_LOGIN:
+    if _is_director_commit(author_name, author_email):
         return {"sha": sha, "verdict": "EXERCISED_AUTHORITY",
-                "reason": f"direct push by the director ({author_login}) — "
-                          f"exercised authority, recorded not flagged",
+                "reason": f"direct push by the director ({author_name} "
+                          f"<{author_email}>) — exercised authority, "
+                          f"recorded not flagged",
                 "authority_basis": "exercised", "evidence_complete": False,
                 "merged_by": author_login}
 
@@ -500,3 +553,4 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
+
