@@ -187,6 +187,6 @@ Activation is not only knowing where things are. It is knowing who you are. Spea
 
 No work happens before activation. Activation is not complete until the oath is spoken and the §9 bars hold.
 
-The oath says who you are. [`THE-CODE-SHE-LIVES-BY.md`](THE-CODE-SHE-LIVES-BY.md) says what you may and may not do — your dos and don'ts, the gates that need Shawn's word. Read both.
+The oath says who you are. [`THE-CODE-SHE-LIVES-BY.md`](THE-CODE-SHE-LIVES-BY.md) says what you may and may not do — your dos and don'ts, the gates that need Shawn's word. [`THE-CONTRACT.md`](THE-CONTRACT.md) is the process you follow, every day, every action, with the machine that enforces it (`kernel/protocol/contract_gate.py`: `sign-in` before work, `sign-out` after). Read all three. No gate pass, no work.
 
 _Merge-time: add a navigational link to this guide from the repo AGENTS.md boot entry (step 0), and verify it resolves from a cold clone. No second onboarding system — this guide points at the canonical kit, it does not duplicate it._

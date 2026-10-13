@@ -1,10 +1,10 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-13",
-  "receipt_basis_commit": "34338065eb9793c33cf273b62e1b109aa1d35808",
-  "inventory_file_count": 1257,
+  "receipt_basis_commit": "c10c4d93ad389e6341c2bd20fffcf0a4dccfe523",
+  "inventory_file_count": 1260,
   "domain_counts": {
-    "00-ACTIVATION": 3,
+    "00-ACTIVATION": 6,
     "00-ARCHITECTURE": 5,
     "00-SPEC": 16,
     "01-GOVERNANCE": 56,
@@ -34,6 +34,21 @@
       "path": "BRAIN/00-ACTIVATION/DESIGN-ACTIVATION.md",
       "blob_sha": "fed3bb338e0205ac2d31c4afac69b06641f243ca",
       "size": 4229
+    },
+    {
+      "path": "BRAIN/00-ACTIVATION/READ-ME-FIRST.md",
+      "blob_sha": "d6c1efebd4a9d00f908466b1b5833a512991cb1e",
+      "size": 17599
+    },
+    {
+      "path": "BRAIN/00-ACTIVATION/THE-CODE-SHE-LIVES-BY.md",
+      "blob_sha": "28068f2f2b45f1d555c6221e1dadbbc3b423233c",
+      "size": 2448
+    },
+    {
+      "path": "BRAIN/00-ACTIVATION/THE-CONTRACT.md",
+      "blob_sha": "b145b9a23b1715e1035886afc95892b99770d820",
+      "size": 9770
     },
     {
       "path": "BRAIN/00-ACTIVATION/activation-checklist.json",
@@ -6282,8 +6297,8 @@
     },
     {
       "path": "BRAIN/CURRENT-MISSION-STATE.md",
-      "blob_sha": "015dfefe07cffb6df547d1d16eaf96e2c2774e25",
-      "size": 525047
+      "blob_sha": "758a40976f3506719821af03413121dc9e95be7a",
+      "size": 87558
     },
     {
       "path": "BRAIN/MASTER-MAP.md",
