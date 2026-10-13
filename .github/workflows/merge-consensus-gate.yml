@@ -20,13 +20,14 @@ on:
   issue_comment:
     types: [created, edited]
 
-# Least privilege: the gate only reads PRs, reviews, and PR comments
-# (served by the issues API). Declared explicitly so a future default
-# restriction cannot silently 403 the gate into permanent red.
+# Least privilege: the gate reads PRs, reviews, PR comments (issues API), and
+# workflow runs for the PR-scoped merge-authority check. actions: read is
+# required for that read-only Actions API call; write access is not needed.
 permissions:
   contents: read
   pull-requests: read
   issues: read
+  actions: read
 
 jobs:
   consensus:
