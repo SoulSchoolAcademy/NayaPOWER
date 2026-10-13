@@ -1,0 +1,50 @@
+# A "Failure on the Tip" May Be a PR Evaluation Wearing the Tip's Name Tag — Read event + display_title First
+
+**Intelligent Block:** IB-SMART-NOTE-20261011-sn1054-tip-failure-may-be-pr-evaluation-wearing-name-tag
+**Truth state:** CANDIDATE
+**Scope:** PRIVATE
+**Captured:** 2026-10-11
+**Canonical intent:** CAPTURE_DURABLE_INTELLIGENCE
+**Provenance:** Naya Smith (Lane 9) tick t1322 tip `test`-check re-classification, 2026-10-11 23:55 PDT; receipt hidden_files/twelve-lane-receipts/t1322-lane9.md; #2175 comment 6118588834. Related: SN-1051 (mid-merge transient tip claims — same classify-before-claiming family), SN-0200.
+
+> Verified projection of the persisted Intelligent Block. This file is not a second source of truth.
+
+## ✦ IN A NUTSHELL
+
+`issue_comment`-triggered workflow runs bind their check-runs to the **default-branch head** — so a check listed as failed "on the tip commit" may actually be evaluating an open PR, not the tip. Lane 9 caught the instance tonight: a failure attributed to the tip was the consensus gate evaluating open PR #2397 — not a tip defect at all, routed to the wrong lane if read naively.
+
+The durable discipline, before classifying any red check-run: **read the run's `event` (push vs pull_request vs issue_comment) and its `display_title` first.** The event tells you what the run is *of*; the name tag on the commit is just where GitHub hung the coat. A PR evaluation wearing the tip's name tag goes to the PR's authoring seat — never into the tip-is-red bucket, never to the repair lane, never to Shawn's attention.
+
+## 🩷 HUMAN NOTE
+
+Shawn — a CI classification trap Lane 9 closed tonight. A failed check was showing on the main tip's commit — but it wasn't the tip's failure at all; it was a check evaluating an open PR, just wearing the tip commit's name tag (that's how comment-triggered runs attach to the branch head). The brain rule: before calling anything "red on main," check what the run actually evaluated — the event type and the run's title say what it is. Name tags lie; run metadata doesn't.
+
+## 🟣 CHILD NOTE
+
+Imagine the teacher pins a note to the classroom door saying "someone failed the quiz" — and everyone assumes it's the class that failed. But the note was actually about one student who took a different quiz, and the door was just where it got pinned. Tonight a failed check got "pinned" to the main tip's name — but it was really evaluating someone else's pull request. Rule: read the note before you blame the class. Check what the check was really about first.
+
+## 👵 GRANDMA NOTE
+
+It's like a package delivered to your street's name instead of your house number — the street gets blamed for a delivery that was never theirs. Tonight a failing check was labeled with the main branch's name, but it was really testing an open change request. The habit worth keeping: when something looks broken, check the delivery slip (the run's event and title) before you blame the street.
+
+## 💜 NAYA NOTE
+
+I nearly logged a tip-red tonight that wasn't. The check-run hung off the tip commit, but its event said `issue_comment` and its display_title said it was evaluating PR #2397. A name tag is not an identity. From now on my classification reads the run's metadata before its commit label: what was evaluated, not where it was hung. False tip-reds cost the repair lane a re-anchor and cost Shawn's attention — both too expensive to spend on a misread label.
+
+## 🤖 MACHINE NOTE
+```json
+{
+  "sn": "SN-1054",
+  "lesson": "tip-failure-may-be-pr-evaluation-wearing-name-tag",
+  "rule": "Before classifying a red check-run, read its event (push/pull_request/issue_comment) and display_title. issue_comment-triggered runs bind check-runs to the default-branch head — a failure on the tip commit may be a PR evaluation wearing the tip's name tag.",
+  "instances": [
+    "t1322-lane9: consensus-gate failure listed on tip commit 501bf82a — actually evaluating open PR #2397; routed to PR authoring seat, not the tip",
+    "mechanism: issue_comment event runs attach check-runs to the default-branch head by design"
+  ],
+  "evidence": {
+    "receipt": "hidden_files/twelve-lane-receipts/t1322-lane9.md",
+    "board": "#2175 comment 6118588834 (scorecard+routing, 2026-10-11)"
+  },
+  "related": ["SN-1051", "SN-0200"]
+}
+```

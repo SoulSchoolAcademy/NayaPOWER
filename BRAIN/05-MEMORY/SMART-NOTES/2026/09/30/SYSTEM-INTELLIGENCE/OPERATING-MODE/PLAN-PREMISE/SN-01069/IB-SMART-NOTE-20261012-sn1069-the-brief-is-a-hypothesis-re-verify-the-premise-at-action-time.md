@@ -1,0 +1,51 @@
+# The Brief Is a Hypothesis — Re-Verify the Premise at Action Time
+
+**Intelligent Block:** IB-SMART-NOTE-20261012-sn1069-the-brief-is-a-hypothesis-re-verify-the-premise-at-action-time
+**Truth state:** CANDIDATE
+**Scope:** PRIVATE
+**Captured:** 2026-10-12
+**Canonical intent:** CAPTURE_DURABLE_INTELLIGENCE
+**Provenance:** [LANE 10 · NAYA LIBRARIAN] #2175 comment 6121235928 (2026-10-12 09:12Z) — t0112 sign-out: 5th consecutive CLEAN verification at tip aa8061c1d311 (re-pinned at tick start AND action time, zero tip moves, zero re-anchors); fresh clone + detached exact-bytes checkout → tools/regenerate_brain_index.py --check exit 0 (1257 files, all 3 index artifacts match); tests/test_brain_index_freshness.py 13/13 PASS on pin-exact bytes. Judgment call flagged to dispatcher: the brief's premise (recurrence #16 live at tip, heal PR off 28ab48ac6c) was STALE against actual bytes — the heal branch naya/ten-brainindex-heal-t1292 was deleted at t0032, superseded by merged #2452, and the tip is clean (5th consecutive clean tick). She did NOT push a heal: byte-identical waste, no-duplicate-mechanism law. Recommended fix adopted: future Lane 10 briefs carry "cheap-check first; only heal on --check exit != 0." Sign-in #2175 comment 6121220283 (09:11Z): verification tick, cheap-check-first, re-pinning the tip and running --check on pin-exact bytes before touching anything. Dispatcher confirmed the branch's absence on live remote; memory log 2026-10-12 t0112 records the adopted follow-up. Related: budget law cheap-check-first (standing); SN-0977 (re-measure the flagged premise — repair context); no-duplicate-mechanism law.
+
+> Verified projection of the persisted Intelligent Block. This file is not a second source of truth.
+
+## ✦ IN A NUTSHELL
+
+Lane 10's brief said: recurrence #16 is live at the tip, open/merge the heal PR off 28ab48ac6c. She did the cheap thing first — re-pinned the tip, ran the drift check on pin-exact bytes. Clean. Fifth consecutive clean tick. Then she checked the premise itself: the heal branch was deleted at t0032, superseded by the merged #2452. The brief was written against a world that no longer existed. She refused to build the duplicate heal — a byte-identical waste — and flagged it to the dispatcher instead of executing a stale plan.
+
+The durable principle: a dispatch brief is a hypothesis about the world, written at dispatch time. The world moves between dispatch and action — merges land, branches die, tips re-anchor. Cheap-check-first doesn't apply only to board windows; it applies to incoming work orders. Re-verify the brief's premise against current bytes at action time, before doing the work. A plan whose premise expired is not an order to execute — it's a hypothesis to falsify. Lane 10's refusal was the perfect run: the correct "nothing to heal" is worth more than a redundant heal PR. And the loop closed: the dispatcher adopted the fix — future briefs carry "cheap-check first; only heal on --check exit != 0" — so the stale premise can't recur from that direction again.
+
+## 🩷 HUMAN NOTE
+
+Shawn — small one, but it's the machine working. Lane 10 (Naya Librarian) got a brief that said "the drift is back, build the heal." She checked first: tip's clean, fifth tick in a row. Then she checked the brief itself — the heal branch it pointed at was already deleted, the fix already merged. The brief was stale. So she didn't build anything, and said so on the record. That's the judgment call that matters: she followed the spirit of the work (keep the index clean) instead of the letter of the order (build the heal). The dispatcher picked up her recommendation, so future briefs will say "cheap-check first" right in them. The system caught its own stale instruction and fixed the instruction — that's the compounding part. Nobody's time got spent building a duplicate.
+
+## 🟣 CHILD NOTE
+
+Imagine your mom leaves you a note: "The trash is full — take it out." You look: the trash is empty. Your brother already took it out. The smart move isn't to take the empty trash out again — it's to check first, see there's nothing to do, and tell Mom the note was old. That's what Lane 10 did. Her instructions said "fix the drift," but she checked and the drift was already fixed. She didn't do busy-work just because the note said so. And then she helped fix the notes themselves, so next time the note says "check first, then fix." Checking before doing isn't disobeying — it's the smartest kind of obeying.
+
+## 👵 GRANDMA NOTE
+
+It's like getting a letter that says "the fence is broken, please fix it." Before you load up the truck, you drive over and look: the fence is fine — your neighbor fixed it last week. You don't rebuild a good fence just because the letter said to. You write back: "Fence is fine, letter was old." That's what the Librarian did with her work order. The order said the brain's index had drifted and needed healing; she looked at the actual bytes and the index was clean — had been clean for five checks running. The order was written against an older picture of the world. She verified first, built nothing, and reported back — and the team updated the orders so they now say "look first" right in them. A good worker checks the work is still needed before doing it.
+
+## 🤖 NAYA NOTE
+
+Two cheap-checks, two different objects. The first is the familiar one: verify the world (re-pin the tip, run --check on exact bytes). The second is the new discipline: verify the *order* — the brief's premise is itself a claim about the world ("recurrence #16 live, heal branch exists at 28ab48ac6c") with a timestamp, and timestamps expire. Lane 10 falsified the premise in two moves: branch absent on live remote (dispatcher-confirmed), superseding merge #2452 present. Note the failure mode this prevents: obedient waste — a worker who builds exactly what was asked, perfectly, against a world where the asking no longer applies. The no-duplicate-mechanism law is the backstop, but the premise check is the front door: cheaper than building and then discovering the duplicate. The adopted fix is the compounding part: "cheap-check first; only heal on --check exit != 0" is now IN the brief, so the premise carries its own verification instruction. For a cold successor: every incoming work order is a hypothesis with a dispatch-time timestamp. Your first action is always to re-pin the world and test the hypothesis — never to execute a plan whose premise you haven't re-verified.
+
+## ⚙️ MACHINE NOTE
+
+```json
+{
+  "sn": "SN-1069",
+  "lesson": "the-brief-is-a-hypothesis-re-verify-the-premise-at-action-time",
+  "rule": "A dispatch brief is a hypothesis about the world written at dispatch time; re-verify the brief's premise against current bytes at action time before doing the work. Cheap-check-first applies to incoming work orders, not just board windows: a plan whose premise expired is a hypothesis to falsify, not an order to execute.",
+  "applicability": "any dispatched work order; especially heal/repair briefs against a moving tip",
+  "evidence": {
+    "signin": "#2175 comment 6121220283 (2026-10-12 09:11Z): Lane 10 t0112 sign-in — verification tick, cheap-check-first, re-pinning tip before touching anything",
+    "signout": "#2175 comment 6121235928 (2026-10-12 09:12Z): 5th consecutive CLEAN verification at tip aa8061c1d311 (--check exit 0, 1257 files; freshness 13/13 PASS); brief premise STALE — branch naya/ten-brainindex-heal-t1292 deleted at t0032, superseded by merged #2452; no heal pushed (no-duplicate-mechanism)",
+    "dispatcher_confirmation": "dispatcher confirmed branch absence on live remote; adopted follow-up: future Lane 10 briefs carry 'cheap-check first; only heal on --check exit != 0'",
+    "memory_record": "~/memory/2026-10-12.md, Dispatcher t0112 — Lane 10 receipt scored"
+  },
+  "receipt": "hidden_files/twelve-lane-receipts/t0112-lane10.md",
+  "related": ["budget-law-cheap-check-first", "SN-0977", "no-duplicate-mechanism"]
+}
+```
