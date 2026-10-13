@@ -15,6 +15,12 @@ Fail-closed, always:
     reason — absence fails closed, never defaults to permitted)
   - API failure / malformed data -> exit 2 "unable to verify" with plain
     words, never a traceback, never a guess
+  - tests_green is PR-scoped (L307/T-H4): the kernel `test` job failing
+    at head AND at the live base tip is an inherited tip defect —
+    recorded, never a veto. Only a head failure with a green (or
+    unknown) base counts. The gate's own previous check-run never
+    vetoes (no self-perpetuating failure). A missing live tip or base
+    workflow API failure is "unable to verify", never a guessed scope.
 
 Exit codes:
   0 - packet assembled AND merge_authority PASS
@@ -176,6 +182,40 @@ class GitHubClient:
             raise GitHubError(f"check-runs for {head_sha} malformed")
         return data.get("check_runs", [])
 
+    def get_branch_tip(self, branch: str) -> str:
+        """Live tip SHA of a branch (ref API).
+
+        The PR object's base.sha can lag the branch; PR-scoping must use
+        the live tip or it misattributes the tip's current defects."""
+        data = self._api(f"git/refs/heads/{branch}")
+        if not isinstance(data, dict):
+            raise GitHubError(f"ref heads/{branch} malformed")
+        sha = ((data.get("object") or {}).get("sha") or "").strip()
+        if not sha:
+            raise GitHubError(f"ref heads/{branch} has no SHA")
+        return sha
+
+    def get_workflow_conclusion(self, workflow_file: str,
+                                head_sha: str) -> str | None:
+        """Latest conclusion of a workflow's runs at head_sha.
+
+        Returns None when the workflow never ran there (no data — a head
+        failure is then NEW, fail-closed to absolute)."""
+        data = self._api(
+            f"actions/workflows/{workflow_file}/runs?"
+            f"head_sha={head_sha}&per_page=10")
+        if not isinstance(data, dict):
+            raise GitHubError(
+                f"workflow runs for {workflow_file} malformed")
+        best: dict | None = None
+        for r in data.get("workflow_runs", []):
+            if r.get("head_sha") != head_sha:
+                continue
+            stamp = r.get("created_at") or ""
+            if best is None or stamp > (best.get("created_at") or ""):
+                best = r
+        return (best or {}).get("conclusion")
+
     def list_venue_comments(self, venue: int) -> list:
         return self._paged(f"issues/{venue}/comments")
 
@@ -336,12 +376,33 @@ def assemble(client: GitHubClient, pr_number: int,
 
     seat = _seat_from_branch(head_ref, author)
 
-    # --- tests_green: latest check-runs on the exact head -----------------
+    # --- tests_green: PR-scoped aggregation (L307/T-H4) -------------------
+    # The gate must tell the PR's defect from the tip's. The kernel `test`
+    # job runs the full suite: if it fails at head AND fails at the live
+    # base tip, that's an inherited tip defect — recorded in evidence,
+    # never a veto. Only a head failure with a green (or unknown) base
+    # counts against green. This is prong (b) of L307's rule
+    # ("PR-scoped aggregation" — the tip is not green at ship time), named
+    # here in the gate doc per that rule.
+    # The base is the LIVE branch tip (ref API), not the PR object's
+    # base.sha — the PR object can lag the branch (observed 2026-10-13:
+    # #2514's base.sha was 34338065 while main was at 582e5e5f). Scoping
+    # against a stale base misattributes the tip's current defects.
     # Fail-closed on conclusions: anything that is not an explicit
     # success/skipped/neutral counts against green — cancelled, timed_out,
     # action_required, stale, and in-progress (conclusion null) are all
     # "not green". A gate that reads absence as green is fail-open.
+    # Fail-closed on scope data: a missing live tip or a base workflow API
+    # failure raises GitHubError (exit 2 "unable to verify") — scoping on
+    # a guess is fail-open. A base with no `test` runs means a head
+    # failure is new (absolute behavior, safe).
+    # The gate's own previous check-run never vetoes: counting our own
+    # verdict would self-perpetuate a failure (once red, never green).
     OK_CONCLUSIONS = {"success", "skipped", "neutral"}
+    # This tool's check-run name, from merge-consensus-gate.yml's `name:`.
+    # If the workflow renames the job, this constant moves with it.
+    SELF_CHECK_RUN = "Verify merge authority"
+
     check_runs = client.list_check_runs(head_sha)
     latest: dict = {}
     for cr in check_runs:
@@ -351,18 +412,41 @@ def assemble(client: GitHubClient, pr_number: int,
         stamp = cr.get("completed_at") or ""
         if prev is None or stamp >= (prev.get("completed_at") or ""):
             latest[name] = cr
-    failures = [n for n, cr in latest.items()
-                if cr.get("conclusion") not in OK_CONCLUSIONS]
+    head_failures = {n for n, cr in latest.items()
+                     if cr.get("conclusion") not in OK_CONCLUSIONS}
     successes = [n for n, cr in latest.items()
                  if cr.get("conclusion") == "success"]
+
+    # PR-scoped `test`: inherit the tip's red, veto only new red.
+    # kernel-tests.yml carries a single `test` job, so the workflow run's
+    # conclusion IS the test job's conclusion.
+    base_tip_sha = client.get_branch_tip(base_ref)
+    base_test_conclusion = client.get_workflow_conclusion(
+        KERNEL_TESTS_WORKFLOW.name, base_tip_sha)
+    head_test_conclusion = latest.get(test_job, {}).get("conclusion")
+    test_inherited = (head_test_conclusion not in OK_CONCLUSIONS
+                      and base_test_conclusion not in OK_CONCLUSIONS
+                      and base_test_conclusion is not None)
     # Resolved from kernel-tests.yml (G3) — never a hardcoded job name.
-    test_ok = latest.get(test_job, {}).get("conclusion") == "success"
-    tests_green = bool(test_ok and not failures)
+    test_ok = (head_test_conclusion == "success" or test_inherited)
+    # Other checks stay absolute (they're PR requirements, not tip code),
+    # minus the gate's own previous verdict (never self-veto).
+    other_failures = sorted(
+        n for n in head_failures if n != test_job and n != SELF_CHECK_RUN)
+    tests_green = bool(test_ok and not other_failures)
+    inherited_failures = sorted(
+        [test_job] if test_inherited else [])
+    new_failures = sorted(
+        ([test_job] if (head_test_conclusion not in OK_CONCLUSIONS
+                        and not test_inherited) else [])
+        + other_failures)
     run_ids = sorted({str(cr.get("id"))
                       for cr in latest.values() if cr.get("id")})
     test_evidence = (
-        f"CI check-runs on head {head_sha[:8]}: "
-        f"{len(successes)} success / {len(failures)} failure "
+        f"CI check-runs on head {head_sha[:8]} vs live base {base_ref} @ "
+        f"{base_tip_sha[:8]} (PR-scoped): {len(successes)} success / "
+        f"{len(new_failures)} new failure / "
+        f"{len(inherited_failures)} inherited "
         f"(run ids: {', '.join(run_ids[:8])})"
         if check_runs else ""
     )
@@ -442,7 +526,12 @@ def assemble(client: GitHubClient, pr_number: int,
                         else "author login"),
         "test_job": test_job,  # check-run name resolved from kernel-tests.yml
         "check_runs_seen": len(check_runs),
-        "check_run_failures": failures,
+        "check_run_failures": sorted(head_failures),  # absolute, at head
+        "new_check_run_failures": new_failures,  # PR-scoped veto list
+        "inherited_check_run_failures": inherited_failures,  # tip defects
+        "aggregation_scope": "pr-scoped",  # L307 prong (b), named per rule
+        "base_tip_sha": base_tip_sha,  # live tip the verdict was scoped to
+        "base_test_conclusion": base_test_conclusion,
         "scorecard_comment_id": scorecard_comment_id,
         "scorecard_comment_author": scorecard_comment_author,
         "approvers": approvers,

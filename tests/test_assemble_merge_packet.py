@@ -34,13 +34,15 @@ from assemble_merge_packet import (  # noqa: E402
 
 HEAD = "ea762857554091a3f9a70f3f98b90d0ebbbc9a9d"
 SHORT = HEAD[:8]
+BASE = "d0d970a5b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f"
+BASE_SHORT = BASE[:8]
 
 
 def _pr(**over):
     d = {
         "number": 2510,
         "head": {"sha": HEAD, "ref": "naya5/learn-artifacts-mechanization"},
-        "base": {"ref": "main"},
+        "base": {"ref": "main", "sha": BASE},
         "user": {"login": "SomeUser"},
     }
     d.update(over)
@@ -84,11 +86,15 @@ def _venue_signin_no_score(**over):
 
 
 class FakeGitHub:
-    """Fixture provider. api_down=True makes every read raise."""
+    """Fixture provider. api_down=True makes every read raise.
+
+    check_runs may be a list (served for the head SHA). base_tip_sha and
+    base_test_conclusion drive the PR-scoped `test` verdict."""
 
     def __init__(self, pr=None, reviews=None, comments=None,
                  check_runs=None, venue_comments=None, venue_by_number=None,
-                 api_down=False):
+                 api_down=False, base_tip_sha=None,
+                 base_test_conclusion="success"):
         self._pr = pr if pr is not None else _pr()
         self._reviews = reviews if reviews is not None else [
             {"user": {"login": "Naya Kappa"}, "state": "APPROVED",
@@ -105,6 +111,8 @@ class FakeGitHub:
                        else [_venue_comment()])
         self._venue_by_number = venue_by_number
         self._down = api_down
+        self._base_tip = base_tip_sha if base_tip_sha is not None else BASE
+        self._base_test = base_test_conclusion
 
     def _maybe_down(self):
         if self._down:
@@ -122,9 +130,19 @@ class FakeGitHub:
         self._maybe_down()
         return self._comments
 
-    def list_check_runs(self, head_sha):
+    def list_check_runs(self, sha):
         self._maybe_down()
+        if isinstance(self._check_runs, dict):
+            return self._check_runs.get(sha, [])
         return self._check_runs
+
+    def get_branch_tip(self, branch):
+        self._maybe_down()
+        return self._base_tip
+
+    def get_workflow_conclusion(self, workflow_file, head_sha):
+        self._maybe_down()
+        return self._base_test if head_sha == self._base_tip else None
 
     def list_venue_comments(self, venue):
         self._maybe_down()
@@ -238,14 +256,105 @@ def test_no_approving_review_fails_validator_unnamed():
 
 
 def test_red_test_check_run_fails_tests_green():
+    # head failure + green base: a NEW failure -> still vetoes
     runs = [{"name": "test", "conclusion": "failure",
              "completed_at": "2026-10-13T06:13:04Z", "id": 1149000001}]
-    packet, evidence = _packet(check_runs=runs)
+    packet, evidence = _packet(check_runs=runs,
+                               base_test_conclusion="success")
     assert packet["tests_green"] is False
     assert evidence["check_run_failures"] == ["test"]
+    assert evidence["new_check_run_failures"] == ["test"]
+    assert evidence["inherited_check_run_failures"] == []
     verdict = _check(packet)
     assert verdict["pass"] is False
     assert any("tests_green is not true" in r for r in verdict["reasons"])
+
+
+# --- PR-scoped aggregation (L307/T-H4) -------------------------------------
+
+def _runs(conclusion):
+    return [{"name": "test", "conclusion": conclusion,
+             "completed_at": "2026-10-13T06:13:04Z", "id": 1149000001}]
+
+
+def test_inherited_test_failure_does_not_veto():
+    """L307's core: the kernel `test` job fails at head AND at the live
+    base tip (tip defect) — the gate must not veto the PR for a defect it
+    doesn't own. Under the old absolute aggregation this packet was
+    tests_green=False (the dam)."""
+    packet, evidence = _packet(check_runs=_runs("failure"),
+                               base_test_conclusion="failure")
+    assert packet["tests_green"] is True
+    assert evidence["check_run_failures"] == ["test"]  # absolute, visible
+    assert evidence["new_check_run_failures"] == []
+    assert evidence["inherited_check_run_failures"] == ["test"]
+    assert evidence["aggregation_scope"] == "pr-scoped"
+    assert evidence["base_tip_sha"] == BASE
+    assert evidence["base_test_conclusion"] == "failure"
+    verdict = _check(packet)
+    assert verdict["pass"] is True, verdict["reasons"]
+
+
+def test_test_failure_with_no_base_data_vetoes():
+    """Base never ran the workflow (no data): fail-closed — the head
+    failure counts as new."""
+    packet, evidence = _packet(check_runs=_runs("failure"),
+                               base_test_conclusion=None)
+    assert packet["tests_green"] is False
+    assert evidence["new_check_run_failures"] == ["test"]
+    assert evidence["inherited_check_run_failures"] == []
+
+
+def test_inherited_test_plus_new_check_failure_still_vetoes():
+    """Mixed: inherited `test` red + a new `guard` red -> veto on the new
+    one; the inherited one is recorded, not hidden."""
+    runs = _runs("failure") + [
+        {"name": "guard", "conclusion": "failure",
+         "completed_at": "2026-10-13T06:13:05Z", "id": 1149000002}]
+    packet, evidence = _packet(check_runs=runs,
+                               base_test_conclusion="failure")
+    assert packet["tests_green"] is False
+    assert evidence["new_check_run_failures"] == ["guard"]
+    assert evidence["inherited_check_run_failures"] == ["test"]
+
+
+def test_other_check_failure_still_vetoes():
+    """Non-`test` checks stay absolute: they're PR requirements, not tip
+    code. A red `guard` with a green base vetoes."""
+    runs = _runs("success") + [
+        {"name": "guard", "conclusion": "failure",
+         "completed_at": "2026-10-13T06:13:05Z", "id": 1149000002}]
+    packet, evidence = _packet(check_runs=runs,
+                               base_test_conclusion="success")
+    assert packet["tests_green"] is False
+    assert evidence["new_check_run_failures"] == ["guard"]
+    verdict = _check(packet)
+    assert verdict["pass"] is False
+    assert any("tests_green is not true" in r for r in verdict["reasons"])
+
+
+def test_self_check_run_never_self_vetoes():
+    """The gate's own previous check-run ('Verify merge authority') must
+    not veto: counting our own verdict would self-perpetuate a failure
+    (once red, never green)."""
+    runs = _runs("success") + [
+        {"name": "Verify merge authority", "conclusion": "failure",
+         "completed_at": "2026-10-13T06:13:05Z", "id": 1149000002}]
+    packet, evidence = _packet(check_runs=runs,
+                               base_test_conclusion="success")
+    assert packet["tests_green"] is True
+    assert evidence["check_run_failures"] == ["Verify merge authority"]
+    assert evidence["new_check_run_failures"] == []
+    verdict = _check(packet)
+    assert verdict["pass"] is True, verdict["reasons"]
+
+
+def test_base_tip_api_failure_fails_closed():
+    """Live tip unresolvable: GitHubError, exit 2 — never a guessed
+    scope."""
+    client = FakeGitHub(api_down=True)
+    with pytest.raises(GitHubError):
+        assemble(client, 2510, DEFAULT_VENUE, test_job="test")
 
 
 def test_missing_venue_post_fails_posted():
@@ -392,6 +501,15 @@ def _replay_run(cmd, **kwargs):
         body = page_file("venue_2175")
     elif base == "issues/1354/comments":
         body = b"[]"  # not reached in this replay (live venue hit first)
+    elif base == "git/refs/heads/main":
+        # PR-scoped aggregation resolves the live base tip via the ref.
+        body = (b'{"ref": "refs/heads/main", "object": {"sha": '
+                b'"d0d970a5451238e08cff35e2eba6c9aafa606b74", '
+                b'"type": "commit"}}')
+    elif base.startswith("actions/workflows/kernel-tests.yml/runs"):
+        # No captured base workflow runs: empty -> head failures are new
+        # (fail-closed on missing scope data).
+        body = b'{"workflow_runs": []}'
     else:
         raise AssertionError(f"unexpected API path in replay: {path}")
 
