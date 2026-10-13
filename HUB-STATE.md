@@ -1,12 +1,12 @@
 # 🐝 HUB-STATE — The Living Hub
-> Generated 2026-10-12 23:23 UTC · tip `dbe06f9e733e` · This is the current truth. Any Naya landing here knows everything.
+> Generated 2026-10-13 00:23 UTC · tip `dd6f2d927d82` · This is the current truth. Any Naya landing here knows everything.
 
 ## IN A NUTSHELL
 Team Naya's 12 named bees cycle 3-at-a-time, 24/7. The queue holds **30 actionable** missions and **6 awaiting triage**. The hive distills every lesson, hourly.
 
 ## WHAT'S HAPPENING NOW
-- Active wave: **11** (Naya Electrician, Naya Captain, Naya Mechanic)
-- Main tip: `dbe06f9e733e`
+- Active wave: **none — supervisor will dispatch** (Naya Host, Naya Archivist, Naya Keeper)
+- Main tip: `dd6f2d927d82`
 - Queue: 30 actionable · 6 proposed
 
 ## WHAT MATTERS MOST
@@ -23,15 +23,15 @@ Team Naya's 12 named bees cycle 3-at-a-time, 24/7. The queue holds **30 actionab
 - ○ **Naya Judge** (LAW) — One engine, one law, no exceptions · score 8.5 · 3 waves
 - ○ **Naya Auditor** (PROVE) — No theater — every proof independently verified · score 8.5 · 3 waves
 - ○ **Naya Builder** (BUILD) — Merge queue at zero · score 9.0 · 3 waves
-- 🐝 ON WAVE **Naya Electrician** (WIRE) — Every gate wired to a live call site · score 9.6 · 2 waves
-- 🐝 ON WAVE **Naya Captain** (TEAM) — No Naya ever blocked waiting · score 9.0 · 2 waves
-- 🐝 ON WAVE **Naya Mechanic** (INFRA) — CI that catches real breaks, never false alarms · score 9.6 · 2 waves
-- ○ **Naya Host** (PRODUCT) — A human can see the intelligence working · score 8.5 · 2 waves
-- ○ **Naya Archivist** (MEMORY) — No Naya ever wakes up cold · score 9.0 · 2 waves
-- ○ **Naya Keeper** (GOVERN) — The briefing every Naya reads is the truth · score 9.2 · 2 waves
+- ○ **Naya Electrician** (WIRE) — Every gate wired to a live call site · score 9.5 · 3 waves
+- ○ **Naya Captain** (TEAM) — No Naya ever blocked waiting · score 8.5 · 3 waves
+- ○ **Naya Mechanic** (INFRA) — CI that catches real breaks, never false alarms · score 9.6 · 3 waves
+- 🐝 ON WAVE **Naya Host** (PRODUCT) — A human can see the intelligence working · score 8.5 · 3 waves
+- 🐝 ON WAVE **Naya Archivist** (MEMORY) — No Naya ever wakes up cold · score 9.5 · 3 waves
+- 🐝 ON WAVE **Naya Keeper** (GOVERN) — The briefing every Naya reads is the truth · score 9.3 · 3 waves
 
 ## THE HIVE (learnings)
-- Lessons filed (all time, this log): ~316
+- Lessons filed (all time, this log): ~10
 - Every lesson → Smart Note → law. Graduation = cold application.
 
 ## BLOCKERS (red)
