@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-13  
-**Receipt basis commit:** `c10c4d93ad389e6341c2bd20fffcf0a4dccfe523`  
-**Inventory file count:** 1260  
+**Receipt basis commit:** `d6d91df8d350af983fd324f6c1be5822a4bc6b03`  
+**Inventory file count:** 1274  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -33,6 +33,20 @@
 
 - `BRAIN/00-ACTIVATION/ACTIVATION-CHECKLIST.md` — `1b990d7507f6` (10868 bytes)
 - `BRAIN/00-ACTIVATION/DESIGN-ACTIVATION.md` — `fed3bb338e02` (4229 bytes)
+- `BRAIN/00-ACTIVATION/LANE-CONTRACTS/MISSION-VISION-GOAL.md` — `5b451b367f31` (1937 bytes)
+- `BRAIN/00-ACTIVATION/LANE-CONTRACTS/README.md` — `13767820e9b0` (3140 bytes)
+- `BRAIN/00-ACTIVATION/LANE-CONTRACTS/lane-01-verity.md` — `f9d8faf6913e` (2855 bytes)
+- `BRAIN/00-ACTIVATION/LANE-CONTRACTS/lane-02-sage.md` — `5b2a2008ede5` (2959 bytes)
+- `BRAIN/00-ACTIVATION/LANE-CONTRACTS/lane-03-judge.md` — `4d7ab08bd6fb` (3293 bytes)
+- `BRAIN/00-ACTIVATION/LANE-CONTRACTS/lane-04-mason.md` — `3bcca9b59310` (2862 bytes)
+- `BRAIN/00-ACTIVATION/LANE-CONTRACTS/lane-05-seeker.md` — `d1a265364f24` (3193 bytes)
+- `BRAIN/00-ACTIVATION/LANE-CONTRACTS/lane-06-heir.md` — `f796ba67c21c` (3255 bytes)
+- `BRAIN/00-ACTIVATION/LANE-CONTRACTS/lane-07-conductor.md` — `5ae6ef5f900e` (3348 bytes)
+- `BRAIN/00-ACTIVATION/LANE-CONTRACTS/lane-08-sentinel.md` — `43439c7673f9` (3312 bytes)
+- `BRAIN/00-ACTIVATION/LANE-CONTRACTS/lane-09-smith.md` — `a5f4ba05376e` (2805 bytes)
+- `BRAIN/00-ACTIVATION/LANE-CONTRACTS/lane-10-librarian.md` — `68b9bf89db3a` (3025 bytes)
+- `BRAIN/00-ACTIVATION/LANE-CONTRACTS/lane-11-heart.md` — `3ee6caa60a3f` (3055 bytes)
+- `BRAIN/00-ACTIVATION/LANE-CONTRACTS/lane-12-herald.md` — `93066882df1d` (3153 bytes)
 - `BRAIN/00-ACTIVATION/READ-ME-FIRST.md` — `d6c1efebd4a9` (17599 bytes)
 - `BRAIN/00-ACTIVATION/THE-CODE-SHE-LIVES-BY.md` — `28068f2f2b45` (2448 bytes)
 - `BRAIN/00-ACTIVATION/THE-CONTRACT.md` — `b145b9a23b17` (9770 bytes)
