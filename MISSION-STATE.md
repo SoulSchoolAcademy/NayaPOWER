@@ -1,8 +1,8 @@
 # MISSION-STATE — canonical mission state
-> Generated 2026-10-13 10:23 UTC · tip `e47a650e2f05` · This is the current truth. Any Naya landing here knows where to go.
+> Generated 2026-10-13 11:23 UTC · tip `d254379b5f09` · This is the current truth. Any Naya landing here knows where to go.
 
 ## TIP
-- Main tip: `e47a650e2f05` (ref-anchored, same-step verified)
+- Main tip: `d254379b5f09` (ref-anchored, same-step verified)
 
 ## PRIORITIES (FLOW LIKE WATER)
 1. Prove learning: #1602/#1741, retrieval B-48/B-49/B-51, cold exam ≥95.
@@ -22,7 +22,7 @@
 - **B-38**: reconcile PROTOCOL.md candidate status vs AGENTS.md canonical-law framing
 
 ## ACTIVE WAVE
-- none — supervisor will dispatch (Naya Electrician, Naya Captain, Naya Mechanic)
+- 54 (Naya Host, Naya Archivist, Naya Keeper)
 
 ## VENUE
 - Team venue: https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175
