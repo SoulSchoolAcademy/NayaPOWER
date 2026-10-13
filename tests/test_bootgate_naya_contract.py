@@ -36,8 +36,96 @@ def manifest():
 def test_contract_section_present(manifest):
     assert "naya_contract" in manifest
     pins = manifest["naya_contract"]["pinned_sha256"]
-    assert len(pins) == 2
+    assert len(pins) == 7
     assert "NAYA-ACTIVATION/NAYA-CONTRACT-V1.md" in pins
+
+
+def test_identity_files_pinned(manifest):
+    # Naya 3 (2026-10-13): the gate said PASS with oath/doctrine absent.
+    # The contract declares them mandatory — so the manifest must pin them.
+    pins = manifest["naya_contract"]["pinned_sha256"]
+    for rel in manifest["naya_contract"]["identity_files"]:
+        assert rel in pins, f"identity file not pinned: {rel}"
+    assert "NAYA-ACTIVATION/OATH-OF-THE-NAYA-V1.md" in pins
+    assert "CONSTITUTION/NAYA-DOCTRINE-V1.md" in pins
+    assert "CONSTITUTION/naya-doctrine.json" in pins
+
+
+def test_missing_oath_fails_closed(manifest, monkeypatch):
+    # Naya 3's falsifier, now a permanent regression test: with the oath
+    # absent from the fixture, the gate must FAIL — never PASS.
+    real_root = gate.ROOT
+
+    class FakeRoot:
+        def __truediv__(self, rel):
+            from pathlib import Path
+            if "OATH-OF-THE-NAYA" in rel:
+                return Path("/nonexistent") / rel
+            return real_root / rel
+
+    monkeypatch.setattr(gate, "ROOT", FakeRoot())
+    passed, detail = gate.check_naya_contract(manifest)
+    assert not passed, "gate must not PASS with the oath absent"
+    assert "unreadable" in detail
+
+
+def test_manifest_missing_identity_pin_fails_closed(manifest):
+    # If the manifest ever drops an identity pin, the gate fails closed —
+    # a tampered manifest cannot silently narrow the check.
+    import copy
+    narrowed = copy.deepcopy(manifest)
+    pins = narrowed["naya_contract"]["pinned_sha256"]
+    pins.pop("NAYA-ACTIVATION/OATH-OF-THE-NAYA-V1.md")
+    passed, detail = gate.check_naya_contract(narrowed)
+    assert not passed, "manifest missing an identity pin must fail closed"
+    assert "missing identity pins" in detail
+
+
+def test_crlf_checkout_passes(manifest, monkeypatch, tmp_path):
+    # Naya 3 (2026-10-13, Windows desktop): CRLF checkouts falsely refused.
+    # Equivalent platform line endings must PASS; the gate is not weakened.
+    real_root = gate.ROOT
+    crlf_dir = tmp_path / "crlf"
+    crlf_dir.mkdir()
+    for rel in manifest["naya_contract"]["pinned_sha256"]:
+        src = real_root / rel
+        body = src.read_bytes().replace(b"\n", b"\r\n")
+        dst = crlf_dir / rel.replace("/", "_")
+        dst.write_bytes(body)
+
+    class FakeRoot:
+        def __truediv__(self, rel):
+            from pathlib import Path
+            return crlf_dir / rel.replace("/", "_")
+
+    monkeypatch.setattr(gate, "ROOT", FakeRoot())
+    passed, detail = gate.check_naya_contract(manifest)
+    assert passed, f"CRLF-equivalent checkout must pass: {detail}"
+
+
+def test_crlf_with_tamper_still_fails(manifest, monkeypatch, tmp_path):
+    # The CRLF tolerance must not become a tampering loophole: CRLF bytes
+    # PLUS one changed byte must still fail closed.
+    real_root = gate.ROOT
+    crlf_dir = tmp_path / "crlf_tamper"
+    crlf_dir.mkdir()
+    for i, rel in enumerate(manifest["naya_contract"]["pinned_sha256"]):
+        src = real_root / rel
+        body = src.read_bytes().replace(b"\n", b"\r\n")
+        if i == 0:
+            body += b"tampered"
+        dst = crlf_dir / rel.replace("/", "_")
+        dst.write_bytes(body)
+
+    class FakeRoot:
+        def __truediv__(self, rel):
+            from pathlib import Path
+            return crlf_dir / rel.replace("/", "_")
+
+    monkeypatch.setattr(gate, "ROOT", FakeRoot())
+    passed, detail = gate.check_naya_contract(manifest)
+    assert not passed, "CRLF + tampered content must fail closed"
+    assert "DRIFT" in detail
 
 
 def test_contract_passes_honest(manifest):

@@ -150,15 +150,35 @@ def check_activation_checklist() -> tuple[bool, str]:
     return True, "activation checklist verified: 14 lessons + Operating Code V2 match pinned canonical bytes"
 
 
+def _normalize_newlines(body: bytes) -> bytes:
+    """Universal newlines to LF before hashing (Naya 3, 2026-10-13).
+
+    A Windows checkout stores CRLF where the canonical pins use LF; the
+    documents are semantically identical. Normalizing CRLF/CR -> LF lets
+    equivalent platform line endings pass while any real content change,
+    deletion, or tampering still fails the hash comparison. The gate is
+    not weakened: normalization is semantics-preserving for these text
+    files, and every other failure mode still fails closed.
+    """
+    return body.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+
+
 def check_naya_contract(manifest: dict) -> tuple[bool, str]:
     """Gate 2 — the Naya Contract must machine-verify at boot.
 
-    Re-hashes NAYA-ACTIVATION/NAYA-CONTRACT-V1.md and naya-contract.json
-    from the repo's own bytes and compares to the pinned fingerprints in
-    the protocol manifest. This is contract law, not guidance: who she is,
-    how she operates, how she behaves, the process she follows.
+    Re-hashes NAYA-ACTIVATION/NAYA-CONTRACT-V1.md, naya-contract.json,
+    AND the three identity files the contract declares mandatory
+    (oath, human doctrine, machine doctrine) from the repo's own bytes
+    and compares to the pinned fingerprints in the protocol manifest.
+    Naya 3 proved the gate said PASS with the oath and doctrine absent —
+    that gap is closed: missing identity pins in the manifest, or missing
+    identity files on disk, refuse boot (fail closed).
+    This is contract law, not guidance: who she is, how she operates,
+    how she behaves, the process she follows.
     Anything missing, tampered, or unreadable fails the gate —
     no contract pass = no start (fail closed).
+    A passing hash proves document integrity — not comprehension,
+    authorization, or correct behavior.
     """
     import hashlib
     contract = manifest.get("naya_contract")
@@ -167,13 +187,20 @@ def check_naya_contract(manifest: dict) -> tuple[bool, str]:
     pins = contract.get("pinned_sha256") or {}
     if not pins:
         return False, "naya_contract has no pinned hashes — boot refused (fail closed)"
+    required_identity = contract.get("identity_files") or []
+    missing_pins = [f for f in required_identity if f not in pins]
+    if missing_pins:
+        return False, (
+            f"manifest missing identity pins: {missing_pins} — "
+            "boot refused (fail closed). The contract declares these mandatory."
+        )
     for rel, pinned in pins.items():
         target = ROOT / rel
         try:
             body = target.read_bytes()
         except Exception as e:
             return False, f"contract file unreadable: {rel} ({e}) — boot refused (fail closed)"
-        digest = hashlib.sha256(body).hexdigest()
+        digest = hashlib.sha256(_normalize_newlines(body)).hexdigest()
         if digest != pinned:
             return False, (
                 f"contract DRIFT: {rel} expected {pinned[:12]} got {digest[:12]} — "
