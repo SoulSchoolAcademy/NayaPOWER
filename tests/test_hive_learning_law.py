@@ -1,4 +1,7 @@
 import importlib.util
+import hashlib
+import subprocess
+import sys
 from pathlib import Path
 import pytest
 
@@ -82,3 +85,20 @@ def test_learning_promotion_requires_exactly_one_valid_lesson_object():
         law.validate_learning_promotion(entry, [])
     result = law.validate_learning_promotion(entry, [{"lesson":lesson()}])
     assert result["status"] == "PASS"
+
+
+def test_cli_refuses_to_run_when_law_bytes_are_tampered(tmp_path):
+    root = tmp_path
+    tools_dir = root / "tools"; tools_dir.mkdir()
+    governance = root / ".naya" / "governance"; governance.mkdir(parents=True)
+    script = tools_dir / "hive-learning-law.py"
+    original = LAW_PATH.read_bytes()
+    script.write_bytes(original)
+    manifest = governance / "HIVE-LEARNING-LAW.sha256"
+    manifest.write_text(hashlib.sha256(original).hexdigest() + "  tools/hive-learning-law.py\\n", encoding="ascii")
+    script.write_bytes(original + b"# tampered\\n")
+    lesson_path = root / "lesson.json"; lesson_path.write_text("{}", encoding="utf-8")
+    result = subprocess.run([sys.executable, str(script), "validate-lesson", "--lesson", str(lesson_path)],
+                           cwd=root, capture_output=True, text=True, check=False)
+    assert result.returncode == 2
+    assert "LAW_BYTE_INTEGRITY_MISMATCH" in result.stderr
