@@ -83,6 +83,34 @@ GATE_WORDS = [
 ]
 GRANT_WORDS = ["shawn", "grant"]
 
+# Verb/noun inflections each gate word takes in a real careless claim.
+# The tripwire normalizes to the canonical form before matching, so
+# "I deployed it" trips exactly like "deployed to production".
+# (Independent verification t-contract-verify, 2026-10-13: verb forms
+# evaded the old rstrip("s") stemmer — fixed here with explicit forms.)
+GATE_FORMS: dict[str, set[str]] = {
+    "deploy": {"deploy", "deploys", "deployed", "deploying", "deployment"},
+    "production": {"production"},
+    "credential": {"credential", "credentials"},
+    "money": {"money"},
+    "destructive": {"destructive", "destroy", "destroys", "destroyed",
+                    "destroying", "destruction"},
+    "irreversible": {"irreversible", "irreversibly"},
+    "ratified": {"ratify", "ratifies", "ratified", "ratifying",
+                 "ratification"},
+    "consent": {"consent", "consents", "consented", "consenting"},
+    "privacy": {"privacy"},
+    "security": {"security"},
+}
+
+
+def _canon_gate_word(w: str) -> str | None:
+    """Canonical gate word for an inflected form, or None."""
+    for canon, forms in GATE_FORMS.items():
+        if w in forms:
+            return canon
+    return None
+
 
 def _git_show(sha: str, path: str) -> tuple[bool, str]:
     """Read one file at one SHA via the local git object store (no network)."""
@@ -243,17 +271,16 @@ def _unnnegated_gates(low: str) -> list[str]:
     words = re.findall(r"[a-z']+", low)
     hits: list[str] = []
     for i, w in enumerate(words):
-        stem = w.rstrip("s")  # credentials -> credential
-        if w in GATE_WORDS or stem in GATE_WORDS:
+        canon = _canon_gate_word(w)
+        if canon is not None:
             window = words[max(0, i - 6):i]
             if not (set(window) & NEGATIONS):
-                hits.append(w)
-    # de-dupe, canonical form
+                hits.append(canon)
+    # de-dupe (hits are already canonical)
     seen: list[str] = []
     for h in hits:
-        c = h.rstrip("s") if h.rstrip("s") in GATE_WORDS else h
-        if c not in seen:
-            seen.append(c)
+        if h not in seen:
+            seen.append(h)
     return seen
 
 
