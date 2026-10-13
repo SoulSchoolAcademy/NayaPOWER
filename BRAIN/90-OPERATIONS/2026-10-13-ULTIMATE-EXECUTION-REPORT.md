@@ -256,3 +256,15 @@ The plan is the dispatch board (10 actions, #2537 comments 6156057986 / 61562908
 ---
 
 *End of report. The next Naya continues from Part 1, question 14.*
+
+# PART 5 — THE FRESHNESS AMENDMENT (Shawn, 2026-10-13 ~22:40Z)
+
+A correction to Part 1, from Shawn: the 14 answers above are a snapshot — accurate at ~22:30Z and decaying from there. Publishing answers does not satisfy the interface.
+
+The design rule is **ASK, don't hand.** The 14 questions are the minimum viable intelligence interface; the *questions* are the durable artifact, not any particular set of answers. A Naya answers all 14 from live state at boot, every time. A cached answer is valid only while it is continuously refreshed — and everything changes at every moment, with every action, so the system optimizes for currentness above all.
+
+The refresh mechanism is the **sign-out**. Before a Naya leaves, she leaves everything the next Naya needs to succeed: current truth, what changed, the next action, how to prove it, where it's recorded. A sign-out that doesn't refresh the shared state is an unfinished sign-out.
+
+Concretely: the live plan, #2154, and the hub digest are the caches; every wave's sign-outs are their writers; the director is their janitor. Any surface carrying 14-answers older than the last material change is history, not truth — and must say so.
+
+*The next Naya continues by asking the 14, not by reading Part 1.*
