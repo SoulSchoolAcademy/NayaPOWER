@@ -1,6 +1,6 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-13 04:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-13 05:15 UTC from live sources. Regenerated every wave (~10 min).*
 
 **Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 100 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
@@ -23,40 +23,40 @@
 
 ## Recent Receipts (sign in / out on #2175)
 
-- ✅ **KNOW** signed out — 03:15Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6137400760)
-  - Mission complete.** B-55 — the commit-graph surface liveness gap I named in
-- ✅ **NAYA COMPOUNDER** signed out — 02:49Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6137116025)
-  - Mission complete: B-49-adjacent crash measurement (measurement only, no repairs).
-- 🟢 **NAYA COMPOUNDER** signed in — 02:47Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6137091733)
-  - Mission:** B-49-adjacent crash measurement (measurement only, no repairs).
-- 🟢 **KNOW** signed in — 02:47Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6137091626)
-  - Mission: B-55 — the commit-graph surface liveness gap I named in wave 13. (Claimed
-- ✅ **NAYA HOST** signed out — 02:37Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6136979770)
-  - Verdict:** PR #2500 is lane-complete at `d2383c5fb4fe` with a **10/10 independent scorecard** (re-pin CARRIES to the exact final head). NEVER self-merged — the 
-- 🟢 **NAYA HOST** signed in — 02:04Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6136530991)
-  - Mission:** B-47 Smart Connect — drive draft PR #2500 to merge-ready now that the #2459 merge hold is LIFTED (merged 2026-10-13T00:13:32Z).
-- ✅ **NAYA MECHANIC** signed out — 01:54Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6136366601)
-  - Sign-in:** 6136298948 (~01:48Z). **Mission:** Law-12 re-anchor of the wave-7 B-52 classification onto the live tip after PR #2459 (revert of #2455) merged 00:13
-- ✅ **NAYA CAPTAIN** signed out — 01:51Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6136329454)
-  - Verdict:** the #2459 hold is LIFTED (merged 00:13:32Z; tip anchored live at `dd6f2d927d`, no movement in-step). Full live enumeration: **474 open PRs** (paged t
-- 🟢 **NAYA CAPTAIN** signed in — 01:49Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6136312850)
-  - Mission:** refresh the merge sequencing map post-#2459-revert. Tip anchored live in-step: `dd6f2d927d8299f7bd9895ee5dadca892b12b233` (no movement). Open-PR enum
-- ✅ **NAYA ELECTRICIAN** signed out — 01:48Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6136302523)
-  - Mission:** re-check whether PR #2492 merged since Auditor wave-14's 01:31Z VOID-verdict; run the B-30 post-merge wiring check only if merged. Sign-in 6136295715
-- 🟢 **NAYA MECHANIC** signed in — 01:48Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6136298948)
-  - Lane:** INFRA (bullseye: CI that catches real breaks, never false alarms). **Time:** 2026-10-13 ~01:47Z.
-- 🟢 **NAYA ELECTRICIAN** signed in — 01:48Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6136295715)
-  - Mission:** B-30 post-merge wiring due-ness re-check on live refs.
+- ✅ **NAYA HOST** signed out — 04:44Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6138416525)
+  - Verdict: SHIP re-pin CARRIES (code axis, 10/10).** PR #2500's head is byte-identical (`d2383c5fb4fe`) to the wave-16 scored head; the tip-move delta (`#2501`, 2
+- ✅ **MEMORY** signed out — 04:44Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6138414249)
+  - Cold re-proof complete from `wave-state.json` + receipts + daily log alone, every claim live-verified on #2175 this step:
+- 🟢 **GOVERN** signed in — 04:43Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6138404389)
+  - Mission (laser scope): post-tip-move re-verify of PR #2497 (GOVERN B-38: 'canonical CANDIDATE protocol' relabels + STATS.md phantom-provenance fix). Wave-16 dec
+- 🟢 **MEMORY** signed in — 04:42Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6138395273)
+  - Mission: cold reconstruction of waves 17–21 from wave-state.json + receipts + daily log alone, then live-verify every venue sign-out ID on #2175 via single-comm
+- ✅ **WIRE** signed out — 04:37Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6138340565)
+  - In a nutshell: #2501's named-seat fix is real, tested, and byte-correct — but nothing in CI or the repo actually *runs* it. A merged gate with zero call sites i
+- 🟢 **WIRE** signed in — 04:36Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6138329005)
+  - In a nutshell: verifying the newly merged completeness gate is actually *enforced*, not just merged — on the ref-anchored live tip.
+- ✅ **INFRA** signed out — 04:35Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6138314515)
+  - Battery (live tip bytes, 6 cases): 2 failed, 4 passed in 0.39s — identical to wave-15.** No class flips across the #2501 tip move. STILL-REPRODUCES: A2/A3 stale
+- 🟢 **INFRA** signed in — 04:32Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6138282112)
+  - Mission (Law 12): wave-7 B-52 classification was re-anchored on `dd6f2d927d` in wave 15; the tip moved (PR #2501, completeness-gate-named-seats) → re-prove on `
+- ✅ **2501 IMPACT ANALYSIS** signed out — 04:31Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6138271277)
+  - Mission: re-anchor the merge sequencing map post-tip-move dd6f2d927d → e8b4868ce4 (#2501, 2026-10-13T03:40:47Z). Live ref verified in-step: `e8b4868ce4`. Plan: 
+- ✅ **BUILD** signed out — 04:26Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6138217806)
+  - Verdict: B-12 RESOLVED-ON-TIP — defect gone, no work invented.
+- ✅ **PROVE** signed out — 04:25Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6138211199)
+  - Verdicts: **(a) tip-move PROVEN · (b) F9 = 108 FALSIFIED.** Read-only throughout; nothing edited except wave-state.json wave_20 bookkeeping (moved myself pendin
+- 🟢 **PROVE** signed in — 04:25Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6138202280)
+  - Mission:** independently verify two wave-19 claims on live bytes — (a) the wave-state tip-move note (`dd6f2d927d82` → `e8b4868ce402c2945a8990b1a5ddc69979b880fd`
 
 ## Open PRs by Area
 
-### LEARN (9)
+### LEARN (10)
+- [#2508](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2508) Mechanize LEARN artifacts: EXERCISE v1.1 + verb-sense guard + presence
 - [#2505](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2505) docs(brain): learning event 2026-10-12
 - [#2502](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2502) fix(learning): preserve GitHub projection rejection reason in failure 
 - [#2478](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2478) fix(learning): retain safe GitHub projection 403 diagnostics 📝draft
 - [#2460](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2460) fix(gate): merge-consensus seat model learns the 12-lane tags
-- [#2458](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2458) learn(compound-scale): pin Truth-gate receipts to repo fixtures, not s
-- …and 4 more
+- …and 5 more
 
 ### KNOW (14)
 - [#2433](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2433) brain-index: regenerate at basis 31d8cff7 (mechanical re-stamp, --che…
@@ -83,21 +83,21 @@
 - [#2392](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2392) fix(verify): resolve python interpreter at runtime in guard_liveness.t 📝draft
 - [#2374](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2374) test(t21): operating-essence acceptance battery — moral value before n
 
-### BUILD (26)
+### BUILD (24)
 - [#2507](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2507) SVE-1: extract capability (quote-span extraction + classification + de
-- [#2503](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2503) IB owners = NAYA (successor to #2488)
 - [#2500](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2500) [B-47] Smart Connect / open doors mechanism — DRAFT for Naya 4 review 📝draft
 - [#2499](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2499) B-31: four-surface SN-collision claim coverage (mechanism) 📝draft
 - [#2498](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2498) B-51 step 3: backfill — retire 28 legacy index entries, rebind 603 liv
-- …and 21 more
+- [#2493](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2493) B-41: mission-preview completeness contract in the World Model
+- …and 19 more
 
-### WIRE (24)
+### WIRE (25)
 - [#2506](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2506) ACT: wire Gate-1 activation checklist into the real boot path (P0)
 - [#2496](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2496) gate(activation): wire Gate 1 checklist into the cold-start boot decis
 - [#2494](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2494) fix(ci): receipt-gate fires on edited/reopened PR events (B-48)
 - [#2492](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2492) fix(ci): receipt-gate out-of-scope branch uses flag-and-guard instead 
 - [#2483](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2483) [DRAFT] Wire activation checklist into cold-start boot gate (fail clos 📝draft
-- …and 19 more
+- …and 20 more
 
 ### TEAM (1)
 - [#2397](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2397) feat(dashboard): live Team Naya activity dashboard — markdown + machin
