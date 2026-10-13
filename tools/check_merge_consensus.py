@@ -12,7 +12,8 @@ Reads from env:
 
 Seat identity: the team shares one GitHub account, so GitHub logins cannot
 distinguish seats. Seats are identified by signed tags instead:
-  - PR body must declare:  Seat: Naya N
+  - PR body must declare:  Seat: Naya N   (a numeric seat, e.g. "Naya 2",
+    or one of the 12 named seats — Alpha..Mu, e.g. "Seat: Naya Epsilon")
   - Reviewer posts a comment:  [NAYA M · REVIEW] ... APPROVED ...
     (the team's IV sign-out verdict format — "## VERDICT: MERGE RECOMMENDED"
     with a seat tag — is also accepted as a review)
@@ -48,13 +49,21 @@ import urllib.error
 import urllib.request
 
 API = "https://api.github.com"
-SEAT_RE = re.compile(r"naya\s*([12345])\b", re.I)
+# The 12 named area leads (Shawn, 2026-10-11): Alpha, Beta, Gamma, Delta,
+# Epsilon, Zeta, Eta, Theta, Iota, Kappa, Lambda, Mu. Named seats sign as
+# "Naya <Title>" (e.g. "Naya Epsilon"); the legacy numeric seats 1-5 keep
+# working exactly as before. One shared id pattern so the author-declaration
+# rule and the review/scorecard rules recognize exactly the same seats.
+_NAMED_SEATS = ("alpha", "beta", "gamma", "delta", "epsilon", "zeta",
+                "eta", "theta", "iota", "kappa", "lambda", "mu")
+_SEAT_ID = r"(?:([12345])|(" + "|".join(_NAMED_SEATS) + r"))"
+SEAT_RE = re.compile(r"naya\s*" + _SEAT_ID + r"\b", re.I)
 # The authoring seat must be an EXPLICIT declaration ("Seat: Naya N"), never
 # an incidental mention: PR bodies routinely discuss other seats ("the Naya 1
 # judge", "needs Naya 2/3/4 review"), and the first incidental match would
 # misattribute authorship (caught by dogfooding on PR #2373, whose body
 # mentions Naya 1 before declaring Seat: Naya 5).
-AUTHOR_SEAT_RE = re.compile(r"seat\s*:\s*naya\s*([12345])\b", re.I)
+AUTHOR_SEAT_RE = re.compile(r"seat\s*:\s*naya\s*" + _SEAT_ID + r"\b", re.I)
 
 # The seat-receipt convention (Seat: Naya N in the PR body, tagged review and
 # scorecard comments) was introduced by PR #2352, merged 2026-10-11 16:30:13Z.
@@ -176,10 +185,19 @@ def api_get(path, token):
     return items if items is not None else []
 
 
+def _normalized_seat(m):
+    """Normalize a SEAT_RE/AUTHOR_SEAT_RE match to 'Naya <Title>' form:
+    numeric seats stay as-is ('Naya 5'); named seats are title-cased
+    ('naya epsilon' -> 'Naya Epsilon')."""
+    if m.group(1):
+        return f"Naya {m.group(1)}"
+    return "Naya " + m.group(2).lower().capitalize()
+
+
 def seat_of(text):
     """Extract 'Naya N' seat tag from text, or None."""
     m = SEAT_RE.search(text or "")
-    return f"Naya {m.group(1)}" if m else None
+    return _normalized_seat(m) if m else None
 
 
 def author_seat_of(body):
@@ -187,7 +205,7 @@ def author_seat_of(body):
     declaration in the PR body, or None. Incidental seat mentions in prose
     do not count — authorship is a declaration, not a guess."""
     m = AUTHOR_SEAT_RE.search(body or "")
-    return f"Naya {m.group(1)}" if m else None
+    return _normalized_seat(m) if m else None
 
 
 def _looks_like_review(body):
