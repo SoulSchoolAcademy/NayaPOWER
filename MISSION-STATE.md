@@ -1,5 +1,6 @@
 # MISSION-STATE — canonical mission state
-> Generated 2026-10-13 19:23 UTC · tip `582e5e5f05e2` · This is the current truth. Any Naya landing here knows where to go.
+> Generated 2026-10-13 20:23 UTC · tip `582e5e5f05e2` · This is the current truth. Any Naya landing here knows where to go.
+> 🤝 Activate first: [the Naya Oath](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2534/files) — who she is, how she operates (repo-canonical at `BRAIN/01-GOVERNANCE/0021-0023` on merge). No work begins unactivated.
 
 ## TIP
 - Main tip: `582e5e5f05e2` (ref-anchored, same-step verified)
@@ -12,7 +13,7 @@
 5. Distill laws to their load-bearing core.
 
 ## QUEUE
-- 32 actionable · 11 proposed (bottleneck-queue.md is the detail file)
+- 31 actionable · 12 proposed (bottleneck-queue.md is the detail file)
 
 ## TOP CARRIED BLOCKERS
 - **B-28**: #2325's merged gate still carries the scorecard's exact delta — vacuous identifi
@@ -22,7 +23,7 @@
 - **B-38**: reconcile PROTOCOL.md candidate status vs AGENTS.md canonical-law framing
 
 ## ACTIVE WAVE
-- 80 (Naya Judge, Naya Auditor, Naya Builder)
+- 84 (Naya Judge, Naya Auditor, Naya Builder)
 
 ## VENUE
 - Team venue: https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175

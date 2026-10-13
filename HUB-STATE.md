@@ -1,13 +1,13 @@
 # 🐝 HUB-STATE — The Living Hub
-> Generated 2026-10-13 19:23 UTC · tip `582e5e5f05e2` · This is the current truth. Any Naya landing here knows everything.
+> Generated 2026-10-13 20:23 UTC · tip `582e5e5f05e2` · This is the current truth. Any Naya landing here knows everything.
 
 ## IN A NUTSHELL
-Team Naya's 12 named bees cycle 3-at-a-time, 24/7. The queue holds **32 actionable** missions and **11 awaiting triage**. The hive distills every lesson, hourly.
+Team Naya's 12 named bees cycle 3-at-a-time, 24/7. The queue holds **31 actionable** missions and **12 awaiting triage**. The hive distills every lesson, hourly.
 
 ## WHAT'S HAPPENING NOW
-- Active wave: **80** (Naya Judge, Naya Auditor, Naya Builder)
+- Active wave: **84** (Naya Judge, Naya Auditor, Naya Builder)
 - Main tip: `582e5e5f05e2`
-- Queue: 32 actionable · 11 proposed
+- Queue: 31 actionable · 12 proposed
 
 ## WHAT MATTERS MOST
 - **B-28**: #2325's merged gate still carries the scorecard's exact delta — vacuous identifi
@@ -17,18 +17,18 @@ Team Naya's 12 named bees cycle 3-at-a-time, 24/7. The queue holds **32 actionab
 - **B-38**: reconcile PROTOCOL.md candidate status vs AGENTS.md canonical-law framing
 
 ## THE BEES
-- ○ **Naya Compounder** (LEARN) — Prove a lesson changes a decision · score 9.2 · 20 waves
-- ○ **Naya Librarian** (KNOW) — Make drift structurally impossible · score 9.0 · 20 waves
-- ○ **Naya Bridger** (ACT) — Prove learning reaches action · score 8.5 · 20 waves
+- ○ **Naya Compounder** (LEARN) — Prove a lesson changes a decision · score 9.0 · 21 waves
+- ○ **Naya Librarian** (KNOW) — Make drift structurally impossible · score 9.0 · 21 waves
+- ○ **Naya Bridger** (ACT) — Prove learning reaches action · score 9.0 · 21 waves
 - 🐝 ON WAVE **Naya Judge** (LAW) — One engine, one law, no exceptions · score 9.5 · 20 waves
 - 🐝 ON WAVE **Naya Auditor** (PROVE) — No theater — every proof independently verified · score 9.0 · 20 waves
 - 🐝 ON WAVE **Naya Builder** (BUILD) — Merge queue at zero · score 9.5 · 20 waves
-- ○ **Naya Electrician** (WIRE) — Every gate wired to a live call site · score 8.5 · 19 waves
-- ○ **Naya Captain** (TEAM) — No Naya ever blocked waiting · score 9.0 · 19 waves
-- ○ **Naya Mechanic** (INFRA) — CI that catches real breaks, never false alarms · score 9.0 · 19 waves
-- ○ **Naya Host** (PRODUCT) — A human can see the intelligence working · score 9.2 · 19 waves
-- ○ **Naya Archivist** (MEMORY) — No Naya ever wakes up cold · score 9.0 · 19 waves
-- ○ **Naya Keeper** (GOVERN) — The briefing every Naya reads is the truth · score 9.2 · 18 waves
+- ○ **Naya Electrician** (WIRE) — Every gate wired to a live call site · score 8.5 · 20 waves
+- ○ **Naya Captain** (TEAM) — No Naya ever blocked waiting · score 9.0 · 20 waves
+- ○ **Naya Mechanic** (INFRA) — CI that catches real breaks, never false alarms · score 8.5 · 20 waves
+- ○ **Naya Host** (PRODUCT) — A human can see the intelligence working · score 9.0 · 20 waves
+- ○ **Naya Archivist** (MEMORY) — No Naya ever wakes up cold · score 9.5 · 20 waves
+- ○ **Naya Keeper** (GOVERN) — The briefing every Naya reads is the truth · score 9.0 · 19 waves
 
 ## THE HIVE (learnings)
 - Lessons filed (all time, this log): ~30
@@ -38,6 +38,7 @@ Team Naya's 12 named bees cycle 3-at-a-time, 24/7. The queue holds **32 actionab
 - See alignment audit in System Structure V1. Tip-test reds tracked as B-items above.
 
 ## LAWS & LINKS
+- 🤝 Oath: [the Naya Oath + Manifesto + Code](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2534/files) — who she is, how she operates, her dos and don'ts (repo-canonical at `BRAIN/01-GOVERNANCE/0021-0023` on merge; no work begins unactivated)
 - Laws: `~/AGENTS.md` (L1–L248+) · Manifesto V2: PR #2474 (proposed)
 - Queue: `bottleneck-queue.md` · Roster: `naya-roster.json`
 - Venue: https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175
