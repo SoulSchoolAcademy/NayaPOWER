@@ -64,7 +64,11 @@ class TestKernelIntegration(unittest.TestCase):
         """An unowned block must fail OUR validator AND the kernel's."""
         with open(os.path.join(BLOCKS_DIR, "IB-0001.json")) as f:
             b = json.load(f)
-        # b has empty owner_id (pending human assignment)
+        # IB-0001 is now system-owned (Shawn 2026-10-11): it exports cleanly.
+        row = to_persisted_row(b)
+        self.assertEqual(row["owner_id"], "NAYA")
+        # The loud failure still stands for a block with no owner at all.
+        b["owner_id"] = ""
         with self.assertRaises(ValueError):
             to_persisted_row(b)  # our validator raises first
 

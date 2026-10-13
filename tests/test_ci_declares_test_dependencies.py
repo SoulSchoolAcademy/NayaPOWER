@@ -135,7 +135,9 @@ def _first_party_modules() -> set:
     # checkout itself, so CI needs no pip install for them. Without this the guard cries wolf
     # about project modules and gets ignored — the exact failure mode its docstring warns of.
     import_roots = {REPO / "tools", REPO / "tools" / "protocol",
-                    REPO / "kernel" / "protocol"}
+                    REPO / "kernel" / "protocol",
+                    REPO / "tools" / "learning" / "compound_scale",
+                    REPO / "tools" / "human_value"}
     import_roots.update(_suite_syspath_roots())
     for import_root in sorted(import_roots):
         if import_root.is_dir():
