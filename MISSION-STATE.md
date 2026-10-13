@@ -1,5 +1,5 @@
 # MISSION-STATE — canonical mission state
-> Generated 2026-10-13 16:23 UTC · tip `4f0c9aa8072e` · This is the current truth. Any Naya landing here knows where to go.
+> Generated 2026-10-13 17:23 UTC · tip `4f0c9aa8072e` · This is the current truth. Any Naya landing here knows where to go.
 
 ## TIP
 - Main tip: `4f0c9aa8072e` (ref-anchored, same-step verified)
@@ -22,7 +22,7 @@
 - **B-38**: reconcile PROTOCOL.md candidate status vs AGENTS.md canonical-law framing
 
 ## ACTIVE WAVE
-- 70 (Naya Host, Naya Archivist, Naya Keeper)
+- 73 (Naya Judge, Naya Auditor, Naya Builder)
 
 ## VENUE
 - Team venue: https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175
