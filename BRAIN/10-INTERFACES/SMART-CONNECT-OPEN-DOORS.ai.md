@@ -62,11 +62,11 @@ cycle:       {cycle_id: "cyc-NNN", at, intake_processed, merged, elevated,
 
 ## GUARANTEE ↔ PROOF-CASE MAP
 
-- G1 open doors → `test_g1_open_doors` (registration returns conn id on declared door; reroute from closed door)
+- G1 open doors → `test_g1_open_doors` (registration returns conn id on declared door; reroute from closed door), `test_closed_door_survives_reregister` (re-register never reopens a harm-closed door), `test_reopen_door_explicit` (`reopen_door()` is the only, recorded reopen path)
 - G2 instant capture → `test_g2_instant_capture`
-- G3 no free compound → `test_g3_compound_recorded` + `test_g3_negative_no_free_compound`
+- G3 no free compound → `test_g3_compound_recorded` + `test_g3_negative_no_free_compound` + `test_compound_count_matches_compounds` (`compound_count` always agrees with the compounds list)
 - G4 visible in one cycle → `test_g4_visible_in_one_cycle`
-- Polarity (dedupe, no fake merge, no double compound) → `test_polarity_dedupe_no_double_compound`, `test_polarity_lesson_survives`
+- Polarity (dedupe, no fake merge, no double compound) → `test_polarity_dedupe_no_double_compound`, `test_polarity_lesson_survives`, `test_duplicate_flag_initialized` (first-append record carries `duplicate: false`)
 - Corrupted-state fail-closed → `test_fail_closed_corrupted_merge` (the Builder hardening; regression-proven against Host's wave-12 version), `test_fail_closed_dangling_canonical` (round-2 hardening: dangling canonical never mints a compound)
 - Unknown-connection fail-closed → `test_fail_closed_unknown_connection`
 
