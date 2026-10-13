@@ -653,10 +653,14 @@ def _nutshell_text(projection_path):
     Unreadable projection files yield '' during matching so one broken path
     cannot poison ranking for the whole corpus. (The winner's explanation
     read below stays strict: a broken winning path surfaces loudly.)
+    G5r (law L300): UnicodeDecodeError is a ValueError subclass, NOT an
+    OSError/TypeError — before this fix it escaped _ranked_candidates on
+    every query when any single projection carried non-UTF-8 bytes
+    (whole-corpus poison), contradicting the contract above.
     """
     try:
         note = (ROOT / str(projection_path)).read_text(encoding="utf-8")
-    except (OSError, TypeError):
+    except (OSError, TypeError, UnicodeDecodeError):
         return ""
     m = re.search(r"##(?:\s+[^\n]*)?IN A NUTSHELL\n\n(.+?)(?:\n\n##|$)", note, re.S | re.I)
     return m.group(1).strip() if m else ""
