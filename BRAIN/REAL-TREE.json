@@ -1,10 +1,10 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-13",
-  "receipt_basis_commit": "34338065eb9793c33cf273b62e1b109aa1d35808",
-  "inventory_file_count": 1257,
+  "receipt_basis_commit": "d6d91df8d350af983fd324f6c1be5822a4bc6b03",
+  "inventory_file_count": 1274,
   "domain_counts": {
-    "00-ACTIVATION": 3,
+    "00-ACTIVATION": 20,
     "00-ARCHITECTURE": 5,
     "00-SPEC": 16,
     "01-GOVERNANCE": 56,
@@ -34,6 +34,91 @@
       "path": "BRAIN/00-ACTIVATION/DESIGN-ACTIVATION.md",
       "blob_sha": "fed3bb338e0205ac2d31c4afac69b06641f243ca",
       "size": 4229
+    },
+    {
+      "path": "BRAIN/00-ACTIVATION/LANE-CONTRACTS/MISSION-VISION-GOAL.md",
+      "blob_sha": "5b451b367f31feb977febb842097d5f2d86c6ad5",
+      "size": 1937
+    },
+    {
+      "path": "BRAIN/00-ACTIVATION/LANE-CONTRACTS/README.md",
+      "blob_sha": "13767820e9b00b1e043a7bd6359bca7ddfb910c3",
+      "size": 3140
+    },
+    {
+      "path": "BRAIN/00-ACTIVATION/LANE-CONTRACTS/lane-01-verity.md",
+      "blob_sha": "f9d8faf6913e3f6f39aab183b9005dccd7decb3b",
+      "size": 2855
+    },
+    {
+      "path": "BRAIN/00-ACTIVATION/LANE-CONTRACTS/lane-02-sage.md",
+      "blob_sha": "5b2a2008ede530dab415e4dd44f92d86c65f0314",
+      "size": 2959
+    },
+    {
+      "path": "BRAIN/00-ACTIVATION/LANE-CONTRACTS/lane-03-judge.md",
+      "blob_sha": "4d7ab08bd6fbfe4c33dd0bfd8f6d3481c40a0ae9",
+      "size": 3293
+    },
+    {
+      "path": "BRAIN/00-ACTIVATION/LANE-CONTRACTS/lane-04-mason.md",
+      "blob_sha": "3bcca9b593104be65b40d4dd7c01935d743dee8c",
+      "size": 2862
+    },
+    {
+      "path": "BRAIN/00-ACTIVATION/LANE-CONTRACTS/lane-05-seeker.md",
+      "blob_sha": "d1a265364f24f622ea60f231457a75fe095fd1d7",
+      "size": 3193
+    },
+    {
+      "path": "BRAIN/00-ACTIVATION/LANE-CONTRACTS/lane-06-heir.md",
+      "blob_sha": "f796ba67c21c8057cbdda9b639ea636cbf740e05",
+      "size": 3255
+    },
+    {
+      "path": "BRAIN/00-ACTIVATION/LANE-CONTRACTS/lane-07-conductor.md",
+      "blob_sha": "5ae6ef5f900e894647c59af2f50df1ed3502ea0d",
+      "size": 3348
+    },
+    {
+      "path": "BRAIN/00-ACTIVATION/LANE-CONTRACTS/lane-08-sentinel.md",
+      "blob_sha": "43439c7673f9cbfef9dd884f8d87dc8a03ca23be",
+      "size": 3312
+    },
+    {
+      "path": "BRAIN/00-ACTIVATION/LANE-CONTRACTS/lane-09-smith.md",
+      "blob_sha": "a5f4ba05376e2c1888751afc1824a7bbb0e5a6b5",
+      "size": 2805
+    },
+    {
+      "path": "BRAIN/00-ACTIVATION/LANE-CONTRACTS/lane-10-librarian.md",
+      "blob_sha": "68b9bf89db3a23bbb481963519e4c433cb1a1331",
+      "size": 3025
+    },
+    {
+      "path": "BRAIN/00-ACTIVATION/LANE-CONTRACTS/lane-11-heart.md",
+      "blob_sha": "3ee6caa60a3f3736f000c9c02a356d1a45d688da",
+      "size": 3055
+    },
+    {
+      "path": "BRAIN/00-ACTIVATION/LANE-CONTRACTS/lane-12-herald.md",
+      "blob_sha": "93066882df1d122610cddd3da93e358c170ff4e2",
+      "size": 3153
+    },
+    {
+      "path": "BRAIN/00-ACTIVATION/READ-ME-FIRST.md",
+      "blob_sha": "d6c1efebd4a9d00f908466b1b5833a512991cb1e",
+      "size": 17599
+    },
+    {
+      "path": "BRAIN/00-ACTIVATION/THE-CODE-SHE-LIVES-BY.md",
+      "blob_sha": "28068f2f2b45f1d555c6221e1dadbbc3b423233c",
+      "size": 2448
+    },
+    {
+      "path": "BRAIN/00-ACTIVATION/THE-CONTRACT.md",
+      "blob_sha": "b145b9a23b1715e1035886afc95892b99770d820",
+      "size": 9770
     },
     {
       "path": "BRAIN/00-ACTIVATION/activation-checklist.json",
@@ -6282,8 +6367,8 @@
     },
     {
       "path": "BRAIN/CURRENT-MISSION-STATE.md",
-      "blob_sha": "015dfefe07cffb6df547d1d16eaf96e2c2774e25",
-      "size": 525047
+      "blob_sha": "758a40976f3506719821af03413121dc9e95be7a",
+      "size": 87558
     },
     {
       "path": "BRAIN/MASTER-MAP.md",
