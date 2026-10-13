@@ -172,6 +172,66 @@ class TestFourSurfaces(unittest.TestCase):
         self.assertEqual(rc, 0, v)
         self.assertEqual(v["mentions"][0]["surface"], "commit_graph")
 
+    def test_graph_surface_never_walks_full_history_diff(self):
+        # B-55 liveness pin: the wave-13 collector found graph commits via
+        # `git log --all -G` -- a walk over every diff in history that never
+        # finishes on the live repo (>460s measured, 600s budget blown ->
+        # SURFACE_ERROR on all 1,109 registry ids; the allocation gate
+        # would refuse every claim). The repaired collector is path-scoped
+        # (message metadata + path-limited log + path-limited tree grep).
+        # This test FAILS on the old implementation (it records -G in the
+        # git argv) and PASSES on the repaired one -- a genuine
+        # fail-without / pass-with guard against reintroducing the dead
+        # gate.
+        import check_sn_claim_coverage as c
+        from unittest import mock
+        repo = make_repo()
+        seen = []
+        real_git = c._git
+
+        def recording_git(r, *args, **kw):
+            seen.append(list(args))
+            return real_git(r, *args, **kw)
+
+        with mock.patch.object(c, "_git", recording_git):
+            c.collect_graph(str(repo))
+        walks = [a for a in seen if "-G" in a]
+        self.assertEqual(walks, [],
+                         f"full-history -G diff walk reintroduced: {walks}")
+
+    def test_graph_surface_polarity_on_fixture_repo(self):
+        # Polarity probe for the repaired collector on a controlled repo:
+        # a note file added on a SN-bearing path, claiming the id with a
+        # FOREIGN intelligent_block_id, is a claim-class graph hit; the
+        # same shape with the requester's own ib is self-class (non-
+        # refusing). Proves the path-scoped collector refuses and clears
+        # on the right inputs, not just quickly.
+        import check_sn_claim_coverage as c
+        repo = make_repo()
+        p = repo / "BRAIN" / "05-MEMORY" / "SMART-NOTES" / "2026" / "10" \
+            / "13" / "PROBE" / "SN-0798"
+        p.mkdir(parents=True)
+        (p / "ib-foreign.md").write_text(
+            "---\nintelligent_block_id: IB-FOREIGN\n"
+            "smart_note_id: SN-0798\n---\n")
+        subprocess.run(["git", "-C", str(repo), "add", "."], check=True)
+        subprocess.run(["git", "-C", str(repo), "commit", "-qm",
+                        "probe"], check=True)
+        by_num = c.collect_graph(str(repo))
+        hits = by_num.get(798, [])
+        claims = [h for h in hits if h.get("pre_class") == "claim"]
+        self.assertTrue(claims,
+                        f"no claim-class graph hit for the planted note: {hits}")
+        # Requester's own ib on the same placement is self-attributed,
+        # not a foreign claim: classify() puts it in self_hits.
+        own = [dict(h, _num=798) for h in hits]
+        _, self_hits, _ = c.classify(own, ["IB-FOREIGN", "Naya Librarian"],
+                                     "IB-FOREIGN")
+        self.assertTrue(self_hits, "owner-attributed hit misclassified")
+        _, self_hits2, _ = c.classify(own, ["Naya Librarian"], "IB-OTHER")
+        self.assertFalse(self_hits2,
+                         "foreign-attributed hit self-classified")
+
 
 def _load_smart_note_v2():
     import sys as _sys

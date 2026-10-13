@@ -438,53 +438,80 @@ def _resolve_owner_ibs(repo, attrib_keys):
 def collect_graph(repo):
     """Surface 3: commit graph, tokenized by SN id.
 
-    Bounded design (no per-commit full diffs -- those OOM on large
-    histories): one `git log -G` pass finds commits whose diffs touch any SN
-    token (with --name-status file lists); added SN-bearing paths carrying
-    the token are claims; one batched `git grep` over the SN-touching
-    commits' trees finds content placements without assembling diffs.
-    Structural placements are claims; pure prose mentions in messages are
-    mention-class (advisory).
+    Bounded design (B-55): the full-history `git log --all -G` diff walk
+    the wave-13 mechanism used never finishes on this history (>460s
+    measured, 600s budget blown) -- the surface fails closed on every id,
+    so the allocation gate refuses everything: safe but dead. This
+    collector is path-scoped instead. Claim-class graph claims are, by
+    definition (module docstring), (a) token placements on
+    smart-note-bearing paths, (b) tokens in added smart-note-bearing
+    file paths, or (c) claim-verbs + tokens in commit messages. All three
+    are enumerable without walking every diff in history:
+
+    1) messages: `git log --all --grep "SN-"` -- metadata walk only, no
+       diffs (measured 0.17s on 13,568 commits);
+    2) added note paths: `git log --all --diff-filter=A --name-status`
+       limited to the two SN-bearing trees -- path-scoped, no diff
+       content (measured 0.5s);
+    3) content placements: `git log --all -- <paths>` enumerates every
+       revision whose tree can carry a note (1,503 revisions measured);
+       one batched STREAMED `git grep` reads the token lines (~4s for
+       ~110MB streamed, never materialized -- the wave-13 OOM fix).
+
+    The narrowed scope loses no claim-class detection: the old -G walk's
+    breadth reached non-SN-bearing paths, but hits there were never
+    claim-class under the definition above. The content set is in fact a
+    superset (every revision touching the trees, not just
+    diff-content-touching ones). Budgets stay fail-closed: any timeout
+    raises RuntimeError inside _git, which scan_all converts to
+    SURFACE_ERROR.
     """
     by_num = {}
-    commits = {}  # sha -> [an, ae, subj, body, [(status, path)]]
+    commits = {}  # sha -> (an, ae, subj, body)
+    SN_PATHS = ("BRAIN/05-MEMORY/SMART-NOTES", ".naya/memory/smart-notes")
 
-    def _meta(extra, timeout=180):
-        out = _git(repo, "log", "--all",
-                   "--format=%H%x00%an%x00%ae%x00%s%x00%b%x1e", *extra,
-                   timeout=timeout)
-        for rec in out.split("\x1e"):
-            rec = rec.strip("\n")
-            if not rec.strip():
-                continue
-            parts = rec.split("\x00")
-            if len(parts) >= 5 and parts[0] not in commits:
-                commits[parts[0]] = [parts[1], parts[2], parts[3], parts[4], []]
+    # 1) message claims/mentions: metadata walk, no diffs.
+    out = _git(repo, "log", "--all",
+               "--format=%H%x00%an%x00%ae%x00%s%x00%b%x1e",
+               "--grep", "SN-", timeout=120)
+    for rec in out.split("\x1e"):
+        rec = rec.strip("\n")
+        if not rec.strip():
+            continue
+        parts = rec.split("\x00")
+        if len(parts) >= 5 and parts[0] not in commits:
+            commits[parts[0]] = (parts[1], parts[2], parts[3], parts[4])
 
-    # The -G pass walks every diff in history: multi-minute on this repo
-    # (measured >120s, 2026-10-13), so it gets a 600s budget. A timeout
-    # still fails the surface closed via _git's RuntimeError conversion.
-    _meta(["-G", r"SN-[0-9][0-9]*"], timeout=600)
-    _meta(["--grep", "SN-"])
-
-    # File lists for the -G set (message-only commits cannot place content).
-    out = _git(repo, "log", "--all", "--format=COMMIT %H",
-               "--name-status", "-G", r"SN-[0-9][0-9]*", timeout=600)
+    # 2) + 3) one path-scoped pass: added note paths (staging class) and
+    # the full tree-revision set (content grep below). Commits appear here
+    # iff they touch the SN-bearing trees -- no diff walk.
+    out = _git(repo, "log", "--all",
+               "--format=COMMIT %H%x00%an%x00%ae",
+               "--name-status", "--", *SN_PATHS, timeout=120)
+    path_shas = []   # every revision whose tree can carry a note
+    added_files = {}  # sha -> [(status, path)] for adds only
     cur = None
     for line in out.splitlines():
         if line.startswith("COMMIT "):
-            cur = line[7:].strip()
+            bits = line[7:].split("\x00")
+            cur = bits[0].strip()
+            if cur not in commits:
+                commits[cur] = (bits[1] if len(bits) > 1 else "",
+                                bits[2] if len(bits) > 2 else "", "", "")
+            path_shas.append(cur)
             continue
         if cur is None or not line.strip():
             continue
         parts = line.split("\t")
         if len(parts) >= 2 and cur in commits:
             # Renames: parts = [R100, old, new] -- the new path carries it.
-            path = parts[2] if parts[0].startswith("R") and len(parts) >= 3 else parts[1]
-            commits[cur][4].append((parts[0], path))
+            status = parts[0]
+            path = parts[2] if status.startswith("R") and len(parts) >= 3 \
+                else parts[1]
+            if status.startswith("A"):
+                added_files.setdefault(cur, []).append((status, path))
 
-    # 1) added SN-bearing paths whose NAME carries the token (staging class)
-    # 2) message claim-verb -> claim, else message token -> mention
+    # 4) structural hits: added SN-bearing paths + message claims.
     #
     # Attribution: hits on note files resolve owner_ib from the file's
     # front matter at that commit (_resolve_owner_ibs below). The registry
@@ -515,8 +542,8 @@ def collect_graph(repo):
         by_num.setdefault(num, []).append(hit)
         attrib_keys.append((sha, path, hit))
 
-    for sha, (an, ae, subj, body) in [(k, v[:4]) for k, v in commits.items()]:
-        files = commits[sha][4]
+    for sha, (an, ae, subj, body) in commits.items():
+        files = added_files.get(sha, [])
         msg = subj + "\n" + body
         sig_text = f"{an}\n{ae}\n{msg[:800]}"
         added_claims = set()
@@ -526,6 +553,8 @@ def collect_graph(repo):
                     added_claims.add(num)
                     _note_hit(num, sha, path, f"added path {path}",
                               an, ae, sig_text, path)
+        if not msg.strip():
+            continue
         for num in all_token_nums(msg):
             if num in added_claims:
                 continue
@@ -539,22 +568,19 @@ def collect_graph(repo):
                 "sig_text": sig_text, "text": msg,
             })
 
-    # 3) content placements: one batched grep over SN-touching commits.
-    # STREAMED, never materialized: the batched grep over ~926 revisions
-    # emits ~450MB / 818K lines on this history. capture_output=True holds
-    # it all in RAM -> the OOM-killer (observed exit 137). Popen +
+    # 5) content placements: one batched grep over SN-touching revisions.
+    # STREAMED, never materialized: the batched grep over the tree set
+    # emits ~110MB / ~370K lines on this history. capture_output=True
+    # holds it all in RAM -> the OOM-killer (observed exit 137). Popen +
     # incremental parse keeps memory flat. Hits dedup on (path, num): the
     # same claim recurring across revisions is one claim with an exemplar
     # sha, not N claims -- the verdict signal is "claimed at this path",
     # not "claimed in this many revisions".
-    sn_shas = [sha for sha, c in commits.items()
-               if any(SN_BEARING_RE.search(p) for _, p in c[4])]
-    if sn_shas:
+    if path_shas:
         import time as _time
         proc = subprocess.Popen(
             ["git", "-C", str(repo), "grep", "-n", "--no-color",
-             "-e", r"SN-[0-9][0-9]*"] + sn_shas
-            + ["--", "BRAIN/05-MEMORY/SMART-NOTES", ".naya/memory/smart-notes"],
+             "-e", r"SN-[0-9][0-9]*"] + path_shas + ["--"] + list(SN_PATHS),
             stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         _deadline = _time.monotonic() + 240
         try:
@@ -584,9 +610,9 @@ def collect_graph(repo):
                 raise RuntimeError(
                     f"git grep commit graph: exit {proc.returncode}: "
                     f"{err.decode('utf-8', errors='replace').strip()[:200]}")
-    # 4) front-matter attribution for every structural note-file hit.
+    # 6) front-matter attribution for every structural note-file hit.
     _resolve_owner_ibs(repo, attrib_keys)
-    # 5) claim vs cross-reference: a token inside ANOTHER note's content
+    # 7) claim vs cross-reference: a token inside ANOTHER note's content
     # (DEPENDS_ON / SUPPORTS / REFINES edges -- the intelligence graph) is
     # a reference, not a claim. Only a file asserting its OWN id
     # (file_sn == num) or carrying the token in its path is structural.
