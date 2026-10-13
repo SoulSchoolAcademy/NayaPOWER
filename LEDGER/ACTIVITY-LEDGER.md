@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-13 13:13 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-13 13:34 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -2188,6 +2188,54 @@ _Last updated: 2026-10-13 13:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t892-lane1.md`
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
+
+### ✅ t0632 — Team 2, lane2 (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE (a) synthesis CANDIDATE packet + adoption verdict on P12/C (A ADOPT edge, B DO-NOT-ADOPT, C DISCOUNT P12)
+
+**Receipt:** `twelve-lane-receipts/t0632-lane2.md`
+
+**Evidence:** Verified: packet auto-retrieval/surge-a-synthesis-t0632.md exists; all 3 pins re-derived at scoring time and MATCH full sha256 (results-t0628-lane2-inv.json 1e78d1df..., results-t0627-paraphrase.json 1f358e96..., results-t0616-lane1-entailjudge.json sha16 f3bf9724d55065cf). Real value: the sharpest finding lived in the JOINT between generations - t
+
+### ✅ t0631 — Team 8, lane8 (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Second-seat review, stamping-migration plan (verdict AMEND)
+
+**Receipt:** `twelve-lane-receipts/t0631-lane8.md`
+
+**Evidence:** Verified: verdict hidden_files/retrieval/auth-gate-migration-verdict-t0631-CANDIDATE.md exists, sha256 2bc092952c3edd3cf0bb960095b3c27db5c2a095861e89d811ffb70d981f007e MATCHES receipt claim. Genuine finding: plan's 'no other production writers' claim FALSIFIED - W4 (tools/smart_link.py:377 backfill, whole-index rewrite, NO manifest recompute -> MAN
+
+### ✅ t0631 — Team 3, lane3 (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Adjudication of Lane 5 t0626 guard-split handoff CANDIDATE (verdict: ADOPT evidence, guard repair stays CANDIDATE)
+
+**Receipt:** `twelve-lane-receipts/t0631-lane3.md`
+
+**Evidence:** Verified: ALL 7/7 pins re-derived at scoring time, every sha16 MATCH (arm_docclaim_t0593.py 3eff30f1cfa37162, t0432_fingerprint.py 4ab5f359abe008c3, arm_digitfracture_t0619.py 9c2a03ef27944e42, results-t0593-docclaim.json 714fe2fba31f955a, sealed-prereg-magnitude-t0623.md bd5e08cd96a66ab2, results-t0623-magnitude.json a83db58f7a290352, arm_magnitud
+
+### ✅ t0630 — Team 11, lane11 (Human Value) — 8.5/10 [VERIFIED]
+
+**Task:** CR-ACCEPT acceptance pre-reg for SURGE (d) drill
+
+**Receipt:** `twelve-lane-receipts/t0630-lane11.md`
+
+**Evidence:** Verified: sealed pre-reg hidden_files/retrieval/cr-accept-prereg-t0630-lane11.md exists on disk, sha256 660306fc21c3eb85fb284cf665d833d745d71aaf23e7e243949cb510322fe09b MATCHES receipt claim (13,841 bytes); contract v2 pin match re-derived from contract bytes. Why not 9.5: (1) brief's core ordering clause (seal BEFORE the drill receipt lands) unmet
+
+### ✅ t0630 — Team 6, lane6 (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE (a) adoption synthesis (entailment-judge)
+
+**Receipt:** `twelve-lane-receipts/t0630-lane6.md`
+
+**Evidence:** Verified: synthesis hidden_files/entailment-lineage-t0627/adoption-synthesis-t0630-CANDIDATE.md exists, sha256 467d1d0f3b2d40f7e642f92c374e3a5e74c7454174edc10be3fcaa2d49dcdea5 MATCHES receipt claim. Real value: three per-task verdicts (A_violation ADOPT, B_winmine ADOPT-WITH-CONTROL, C_principle_track DO-NOT-ADOPT) cited from frozen bytes, not aver
+
+### ✅ t0630 — Team 5, lane5 (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Per-claim emission run per Lane 3 frozen pre-reg (B2/P5 asymmetry study)
+
+**Receipt:** `twelve-lane-receipts/t0630-lane5.md`
+
+**Evidence:** Verified: emission artifact hidden_files/auto-retrieval/results-t0630-perclaim-emission.json exists, sha256 38ae9a1b8068bc400f5ecbfd1961894591342bc21a968e39815ec73b25044ab9 MATCHES receipt claim (44 per-claim rows); emission script present; E1 basis-identity PASS (max |recomputed-sealed swing| 0.000049 <= 1e-3) is mechanical and credible. Verdict I
 
 ### ✅ t0629 — Team 9, lane-9 (Naya Smith) (Code Health) — 9.0/10 [VERIFIED]
 
