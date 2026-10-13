@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-13 22:02 UTC_
+_Last updated: 2026-10-13 22:42 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 924
-- ✅ Verified (8+): 916
+- **Total scored actions:** 936
+- ✅ Verified (8+): 928
 - 🟡 Partial (5–7): 7
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 1
@@ -16,15 +16,15 @@ _Last updated: 2026-10-13 22:02 UTC_
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
 | Team 1 | Naya Verity | 84 | 8.9 | 9.5 |
-| Team 2 | Naya Sage | 100 | 8.6 | 9.0 |
-| Team 3 | Naya Judge | 72 | 8.8 | 9.5 |
-| Team 4 | Naya Mason | 72 | 8.9 | 9.5 |
-| Team 5 | Naya Seeker | 67 | 8.9 | 9.0 |
-| Team 6 | Naya Heir | 61 | 8.9 | 9.5 |
-| Team 7 | Naya Conductor | 82 | 8.8 | 9.5 |
-| Team 8 | Naya Sentinel | 83 | 8.9 | 9.5 |
-| Team 9 | Naya Smith | 103 | 8.8 | 9.5 |
-| Team 10 | Naya Librarian | 100 | 8.9 | 9.5 |
+| Team 2 | Naya Sage | 102 | 8.7 | 9.0 |
+| Team 3 | Naya Judge | 73 | 8.8 | 9.5 |
+| Team 4 | Naya Mason | 73 | 8.9 | 9.5 |
+| Team 5 | Naya Seeker | 68 | 8.9 | 9.0 |
+| Team 6 | Naya Heir | 62 | 8.9 | 9.5 |
+| Team 7 | Naya Conductor | 83 | 8.8 | 9.5 |
+| Team 8 | Naya Sentinel | 84 | 8.9 | 9.5 |
+| Team 9 | Naya Smith | 105 | 8.8 | 9.5 |
+| Team 10 | Naya Librarian | 102 | 8.9 | 9.5 |
 | Team 11 | Naya Heart | 74 | 8.9 | 9.0 |
 | Team 12 | Naya Herald | 26 | 8.9 | 9.5 |
 
@@ -213,6 +213,10 @@ _Last updated: 2026-10-13 22:02 UTC_
 - **t0673:** 2 actions, avg 9.0/10
 - **t0674:** 1 actions, avg 9.0/10
 - **t0675:** 1 actions, avg 8.5/10
+- **t0676:** 2 actions, avg 9.0/10
+- **t0677:** 2 actions, avg 9.0/10
+- **t0678:** 1 actions, avg 9.0/10
+- **t0679:** 1 actions, avg 9.0/10
 - **t892:** 6 actions, avg 8.2/10
 - **t0892:** 3 actions, avg 8.3/10
 - **t902:** 2 actions, avg 4.5/10
@@ -262,8 +266,8 @@ _Last updated: 2026-10-13 22:02 UTC_
 - **t1402:** 12 actions, avg 8.8/10
 - **t1412:** 9 actions, avg 8.9/10
 - **t1422:** 12 actions, avg 8.8/10
-- **t1432:** 15 actions, avg 9.0/10
-- **t1442:** 15 actions, avg 9.0/10
+- **t1432:** 18 actions, avg 9.0/10
+- **t1442:** 18 actions, avg 9.0/10
 - **t1462:** 7 actions, avg 8.9/10
 
 _A rising average with zero phantoms is the proof the team is learning and growing._
