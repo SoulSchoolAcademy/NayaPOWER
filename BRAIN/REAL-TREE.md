@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
-**Generated:** 2026-10-12  
-**Receipt basis commit:** `501bf82a3c6095b8834ef0bff6abec3b9a645c74`  
-**Inventory file count:** 1257  
+**Generated:** 2026-10-13  
+**Receipt basis commit:** `dd6f2d927d8299f7bd9895ee5dadca892b12b233`  
+**Inventory file count:** 1260  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -20,7 +20,7 @@
 | 07-LEARNING | 9 |
 | 08-SUCCESSION | 2 |
 | 09-EVOLUTION | 2 |
-| 10-INTERFACES | 380 |
+| 10-INTERFACES | 383 |
 | 11-KNOWLEDGE | 7 |
 | 12-ENGINEERING | 25 |
 | 90-OPERATIONS | 24 |
@@ -1235,6 +1235,9 @@
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/ultimate-design-system/tokens.css` — `caac347591eb` (925 bytes)
 - `BRAIN/10-INTERFACES/NAYA-DESIGN-CONTRACT-V1.md` — `10d0d9e27133` (6827 bytes)
 - `BRAIN/10-INTERFACES/README.md` — `7093bf121d66` (1226 bytes)
+- `BRAIN/10-INTERFACES/SMART-CONNECT-OPEN-DOORS.ai.md` — `1fc4bc67f390` (6925 bytes)
+- `BRAIN/10-INTERFACES/SMART-CONNECT-OPEN-DOORS.human.md` — `4d6206ccdd04` (4682 bytes)
+- `BRAIN/10-INTERFACES/SMART-CONNECT-OPEN-DOORS.machine.json` — `54833a1766d2` (5128 bytes)
 - `BRAIN/10-INTERFACES/SMART-GRAPHS/README.md` — `aeaa4f0b9255` (2224 bytes)
 - `BRAIN/10-INTERFACES/SMART-GRAPHS/SMART-GRAPHS-SPEC.ai.md` — `bf68e6ff9a1d` (5530 bytes)
 - `BRAIN/10-INTERFACES/SMART-GRAPHS/SMART-GRAPHS-SPEC.human.md` — `7326d11973dd` (7631 bytes)
