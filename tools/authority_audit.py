@@ -100,9 +100,32 @@ DIRECTOR_AUTHOR_EMAIL = "humanmaximuscodex@gmail.com"
 
 
 def _is_director_commit(author_name: str, author_email: str) -> bool:
-    """True iff the commit's git author identity is the director's own."""
-    return (author_name == DIRECTOR_AUTHOR_NAME
-            and author_email == DIRECTOR_AUTHOR_EMAIL)
+    """True iff the commit's git author identity is the director's own.
+
+    Name and email are casefolded and stripped: GitHub display names are
+    not case-stable, and a "shawn vibert" merge must not fail closed
+    against the director's own click.
+
+    NAMED RESIDUAL (forgeability): git author identity is UNAUTHENTICATED —
+    anyone with push access can set user.name/user.email to the director's
+    pair, and this discriminator will then return True (EXERCISED_AUTHORITY,
+    recorded-not-flagged, nothing follows up until B-24's watchdog lands).
+    The repair trades the old vacuous signal (merged_by, wrong on 100% of
+    live merges) for a forgeable one (git author, right on 6/6 live merges
+    but spoofable by a malicious pusher). The audit cannot mint trust the
+    platform didn't sign. Live-byte check 2026-10-13: the commits API
+    returns NO `verification` payload on any sampled merge commit, so
+    signature-gating is unavailable — requiring verified==True would
+    INVALID the director's own clicks.
+    NAMED RISK (false INVALID): a director merge authored from a device
+    using a ...@users.noreply.github.com variant address fails closed to
+    INVALID. Unobserved on live bytes (6/6 use the canonical address), so
+    no invented variants list — the risk is named, not guessed.
+    """
+    return (author_name.strip().casefold()
+            == DIRECTOR_AUTHOR_NAME.casefold()
+            and (author_email or "").strip().casefold()
+            == DIRECTOR_AUTHOR_EMAIL.casefold())
 
 
 class GitHubError(RuntimeError):
@@ -348,8 +371,14 @@ def _open_invalid_revert(client: GitHubClient, sha: str, base_sha: str,
                          is_merge: bool, pr_number: int | None,
                          merged_by: str, head_sha: str, repo_dir: Path,
                          venue: int, dry_run: bool,
-                         reason: str) -> dict:
-    """INVALID path: propose + report, never auto-merge."""
+                         reason: str, actor_key: str = "merged_by") -> dict:
+    """INVALID path: propose + report, never auto-merge.
+
+    actor_key names the record field for who acted: "merged_by" on the PR
+    path (the PR's merged_by value, informational only — never the
+    discriminator), "actor" on the no-PR path (a direct push has no
+    merged_by; mislabeling it would smuggle a PR field where none exists).
+    """
     revert = build_revert(repo_dir, sha, base_sha, is_merge)
     pr_ref = f"PR #{pr_number}" if pr_number else "no PR"
     if revert["conflict"]:
@@ -363,7 +392,7 @@ def _open_invalid_revert(client: GitHubClient, sha: str, base_sha: str,
                 f"required; re-invocation lane owns the gated follow-up.")
         return {"verdict": "INVALID", "reason": reason,
                 "authority_basis": "none", "evidence_complete": False,
-                "merged_by": merged_by, "conflict": True,
+                actor_key: merged_by, "conflict": True,
                 "revert_pr": None, "dry_run": dry_run}
 
     title = (f"Revert \"{sha[:8]}\" (L245 authority audit)")
@@ -406,7 +435,7 @@ def _open_invalid_revert(client: GitHubClient, sha: str, base_sha: str,
             f"Re-invocation lane owns the gated follow-up.")
     return {"verdict": "INVALID", "reason": reason,
             "authority_basis": "none", "evidence_complete": False,
-            "merged_by": merged_by, "conflict": False,
+            actor_key: merged_by, "conflict": False,
             "tree_verified": revert["tree_verified"],
             "revert_branch": revert["branch"],
             "revert_pr": pr_number_out, "dry_run": dry_run}
@@ -432,14 +461,26 @@ def audit_commit(client: GitHubClient, commit: dict, repo_dir: Path,
                 and REVERT_MARKER in pr_body):
             return {"sha": sha, "pr": pr_number, "verdict": "SKIP",
                     "reason": "own L245 revert PR — not audited"}
+    else:
+        head_sha = ""
+        merged_by = ""
 
-        # Dedup: a commit that already carries an open revert PR.
-        existing = client.find_open_revert_pr(sha)
-        if existing:
-            return {"sha": sha, "pr": pr_number, "verdict": "SKIP",
-                    "reason": f"revert PR already open: "
-                              f"#{existing.get('number')}"}
+    # Dedup, hoisted above the PR/no-PR fork: a commit that already carries
+    # an open revert PR is skipped, never double-filed — the module's
+    # documented guarantee. Previously this ran only on the PR branch, so a
+    # direct-push INVALID opened a fresh revert PR on every audit run (and
+    # build_revert's `checkout -B` resets the branch each time, so run N+1
+    # opened PR #2, #3, ...).
+    existing = client.find_open_revert_pr(sha)
+    if existing:
+        record = {"sha": sha, "verdict": "SKIP",
+                  "reason": f"revert PR already open: "
+                            f"#{existing.get('number')}"}
+        if pr_number is not None:
+            record["pr"] = pr_number
+        return record
 
+    if pr_number is not None:
         if head_sha and client.authority_check_passed(head_sha):
             return {"sha": sha, "pr": pr_number, "verdict": "PACKET_VALID",
                     "reason": f"'{AUTHORITY_CHECK_NAME}' green on head "
@@ -482,12 +523,12 @@ def audit_commit(client: GitHubClient, commit: dict, repo_dir: Path,
                           f"<{author_email}>) — exercised authority, "
                           f"recorded not flagged",
                 "authority_basis": "exercised", "evidence_complete": False,
-                "merged_by": author_login}
+                "actor": author_login}
 
     return {"sha": sha, **_open_invalid_revert(
         client, sha, base_sha, is_merge, None,
         author_login or "unknown", "", repo_dir, venue, dry_run,
-        reason="names no PR — authority unprovable")}
+        reason="names no PR — authority unprovable", actor_key="actor")}
 
 
 def main() -> int:

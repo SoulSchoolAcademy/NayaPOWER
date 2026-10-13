@@ -22,9 +22,11 @@ Negative-control matrix (B-25 repair spec):
       revert, recorded not flagged
   packet valid                              -> no revert
   existing open revert PR                   -> skipped, never double-filed
+      (PR path AND no-PR path — the dedup is hoisted above the fork)
   own revert PR (revert/* + marker)         -> skipped, no ping-pong
   commit naming no PR (direct push)         -> INVALID, authority unprovable
   direct push by the director               -> EXERCISED_AUTHORITY
+  director identity matching is case/space-tolerant (casefold+strip)
   workflow without the authority job        -> audit refuses (exit 2), never
                                              reads absence as guilt
 """
@@ -46,6 +48,7 @@ from authority_audit import (  # noqa: E402
     DIRECTOR_AUTHOR_NAME,
     GitHubClient,
     GitHubError,
+    _is_director_commit,
     audit_commit,
     authority_job_present,
     build_revert,
@@ -267,6 +270,50 @@ def test_existing_revert_pr_skips_never_double_files(tmp_path):
     v = audit_commit(client, _commit(), tmp_path, 2175, dry_run=False)
     assert v["verdict"] == "SKIP"
     assert client.opened_prs == []
+
+
+def test_existing_revert_pr_skips_on_no_pr_path(temp_repo):
+    """The dedup guarantee ("never double-filed") must hold on the no-PR
+    path too — before the hoist, a direct-push INVALID opened a FRESH
+    revert PR on every audit run, contradicting the module docstring."""
+    repo, _, _ = temp_repo
+    (repo / "e.txt").write_text("direct\n")
+    _git(["add", "e.txt"], repo)
+    _git(["commit", "-m", "direct push to main"], repo)
+    sha = _git(["rev-parse", "HEAD"], repo)
+    parent = _git(["rev-parse", "HEAD^"], repo)
+    _git(["push", "origin", "main"], repo)
+    client = FakeAuditGitHub(
+        authority_ok=False,
+        existing_revert={"number": 2501, "title": "Revert ... (L245)"})
+    commit = {"sha": sha, "message": "direct push to main\n",
+              "parents": [parent], "author_login": None,
+              "author_name": LANE_AUTHOR_NAME,
+              "author_email": LANE_AUTHOR_EMAIL,
+              "date": "2026-10-13T06:48:10Z"}
+    v = audit_commit(client, commit, repo, 2175, dry_run=False)
+    assert v["verdict"] == "SKIP", v
+    assert "already open" in v["reason"]
+    assert "pr" not in v  # no-PR record carries no PR field
+    assert client.opened_prs == []
+
+
+def test_director_identity_matching_is_case_and_space_tolerant():
+    """Display names are not case-stable: these must all read as the
+    director, never fail closed into INVALID against his own merge."""
+    assert _is_director_commit(DIRECTOR_AUTHOR_NAME,
+                              DIRECTOR_AUTHOR_EMAIL) is True
+    assert _is_director_commit("shawn vibert",
+                              DIRECTOR_AUTHOR_EMAIL) is True
+    assert _is_director_commit("SHAWN VIBERT",
+                              DIRECTOR_AUTHOR_EMAIL) is True
+    assert _is_director_commit("  Shawn Vibert ",
+                              " HumanMaximusCodex@Gmail.Com ") is True
+    assert _is_director_commit("someone else",
+                              DIRECTOR_AUTHOR_EMAIL) is False
+    assert _is_director_commit(DIRECTOR_AUTHOR_NAME,
+                              "wrong@example.com") is False
+    assert _is_director_commit("", "") is False
 
 
 def test_own_revert_pr_skipped_no_ping_pong(tmp_path):
