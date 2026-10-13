@@ -87,9 +87,12 @@
     ]
   },
   "bound_files": {
+    "NAYA-ACTIVATION/OATH-OF-THE-NAYA-V1.md": "a342963aa423b32aee73c152701a9c5ecbb7c2856bba30767fcb405996f2a920",
+    "BRAIN/01-GOVERNANCE/0021-NAYA-OATH-V1.human.md": "b1d25be9261a78e1841c07724b78b3dd6d216100eb0dc97948ea90d196850593",
+    "NAYA-ACTIVATION/NAYA-CONTRACT-V1.md": "ff931442c34859e609564f2ee7e6ccb646639d16884fb076811947ab606925e0",
+    "NAYA-ACTIVATION/naya-contract.py": "275e5a43f1d874abb93166447bfaa1c4f825af3dfefc4733c3418a4637e21dc7",
     "CONSTITUTION/NAYA-DOCTRINE-V1.md": "3196514104365dafbed09b000fe3ceb085d45e3becb5b554c08750db96391958",
-    "CONSTITUTION/naya-doctrine.json": "ece56b147338ed9b4606d88bbf2a32659f3b3dd6c1746040103519638afb4b0c",
-    "NAYA-ACTIVATION/OATH-OF-THE-NAYA-V1.md": "2f944ed99811de5cf506c5c78d1927b6b3bbbcf14be6e435a9260fb6cf75d9a0"
+    "CONSTITUTION/naya-doctrine.json": "ece56b147338ed9b4606d88bbf2a32659f3b3dd6c1746040103519638afb4b0c"
   },
   "contract": "NAYA-CONTRACT-V1",
   "human_twin": "NAYA-ACTIVATION/NAYA-CONTRACT-V1.md",
@@ -108,9 +111,10 @@
       "human over metric"
     ],
     "oath_file": "NAYA-ACTIVATION/OATH-OF-THE-NAYA-V1.md",
-    "oath_sha256": "2f944ed99811de5cf506c5c78d1927b6b3bbbcf14be6e435a9260fb6cf75d9a0",
-    "spoken_form": "This is who I am. This is how I operate. This is the way I behave, and I don't waver from this. This is written. I stand by the code. This is Naya's code, and I live and die by the code.",
-    "note": "One oath, two forms: the full text is canonical; the spoken form is its voice."
+    "oath_sha256": "a342963aa423b32aee73c152701a9c5ecbb7c2856bba30767fcb405996f2a920",
+    "spoken_form": "Attunement voice only (ATTUNEMENT-PROTOCOL-V1.md). Serves the canonical oath; never replaces it. Judge ruling #2537/6154475772.",
+    "note": "One oath, two forms: the full text is canonical; the spoken form is its voice.",
+    "provenance": "Dictated by Shawn Vibert 2026-10-13; registry BRAIN/01-GOVERNANCE/0021-NAYA-OATH-V1.*"
   },
   "machine_verification": {
     "gate": "kernel/protocol/protocol_integrity_gate.py",
@@ -142,5 +146,7 @@
   "ratified_at": "2026-10-13",
   "ratified_by": "Shawn",
   "status": "contract-law",
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "runtime_enforcer": "NAYA-ACTIVATION/naya-contract.py",
+  "convergence": "Judge ruling #2537/6154475772 (2026-10-13): one contract (THE NAYA CONTRACT v1, universal law, Part 0 of the Twelve), one oath (0021 dictated text). Naya 5 enforcement table carried as the enforcement annex; boot gate is the machine-enforcement layer."
 }

@@ -27,8 +27,15 @@ OWNER, REPO = "SoulSchoolAcademy", "NayaPOWER"
 
 # Pinned at PR #2535 merge (Shawn's word, 2026-10-13). Re-pin ONLY on his word.
 CANONICAL = {
+    # The oath — both mirrors pinned; the registry is canonical, the activation
+    # file is its byte-faithful mirror. One oath, one wording (Judge ruling #2537/6154475772).
     "NAYA-ACTIVATION/OATH-OF-THE-NAYA-V1.md":
-        "2f944ed99811de5cf506c5c78d1927b6b3bbbcf14be6e435a9260fb6cf75d9a0",
+        "a342963aa423b32aee73c152701a9c5ecbb7c2856bba30767fcb405996f2a920",
+    "BRAIN/01-GOVERNANCE/0021-NAYA-OATH-V1.human.md":
+        "b1d25be9261a78e1841c07724b78b3dd6d216100eb0dc97948ea90d196850593",
+    # The contract — converged universal law (Part 0 of the Twelve).
+    "NAYA-ACTIVATION/NAYA-CONTRACT-V1.md":
+        "ff931442c34859e609564f2ee7e6ccb646639d16884fb076811947ab606925e0",
     "CONSTITUTION/NAYA-DOCTRINE-V1.md":
         "3196514104365dafbed09b000fe3ceb085d45e3becb5b554c08750db96391958",
     "CONSTITUTION/naya-doctrine.json":

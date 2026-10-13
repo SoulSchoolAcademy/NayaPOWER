@@ -264,9 +264,13 @@
     "human": "NAYA-ACTIVATION/NAYA-CONTRACT-V1.md",
     "machine": "NAYA-ACTIVATION/naya-contract.json",
     "pinned_sha256": {
-      "NAYA-ACTIVATION/NAYA-CONTRACT-V1.md": "ecda28417075208504853f68e4b604e05e25d08d2218ae425a8d88da64a006f9",
-      "NAYA-ACTIVATION/naya-contract.json": "61d8420439e7183a5d7e05d2db7eecbb1fa82a8e043ec7e0c30fcefdf3986725"
+      "NAYA-ACTIVATION/NAYA-CONTRACT-V1.md": "ff931442c34859e609564f2ee7e6ccb646639d16884fb076811947ab606925e0",
+      "NAYA-ACTIVATION/naya-contract.json": "95518e51277cb3df3080c6dd20c4fda497a43f054e06cc168e0b0364bd8ff4c3",
+      "NAYA-ACTIVATION/naya-contract.py": "275e5a43f1d874abb93166447bfaa1c4f825af3dfefc4733c3418a4637e21dc7",
+      "NAYA-ACTIVATION/OATH-OF-THE-NAYA-V1.md": "a342963aa423b32aee73c152701a9c5ecbb7c2856bba30767fcb405996f2a920",
+      "BRAIN/01-GOVERNANCE/0021-NAYA-OATH-V1.human.md": "b1d25be9261a78e1841c07724b78b3dd6d216100eb0dc97948ea90d196850593"
     },
-    "amendment": "Only by Shawn's explicit word."
+    "amendment": "Only by Shawn's explicit word.",
+    "convergence": "Judge ruling #2537/6154475772 (2026-10-13)"
   }
 }
