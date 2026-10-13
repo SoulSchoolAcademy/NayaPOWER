@@ -110,7 +110,10 @@ def test_handcrafted_tail_risk_refused():
     plan = _hand_plan(_candidate(tails=tails))
     receipt, calls = _execute(plan)
     _assert_refused(receipt, calls, ap.PLAN_SAFETY_PROHIBITED)
-    assert any("TAIL_RISK" in e for e in receipt.evidence)
+    # Shawn's 16:27 PDT strict-bar decision: the 7.0/0.05 policy override fires
+    # before the configurable tail path, so the reason is now
+    # ASSESSED_HARM_STRICT_BAR (was TAIL_RISK under the 9.0/0.01 default).
+    assert any("ASSESSED_HARM_STRICT_BAR" in e for e in receipt.evidence)
 
 
 def test_handcrafted_distributional_harm_refused():
@@ -156,13 +159,40 @@ def test_needs_authority_verdict_still_executes():
     assert any("ADMISSIBLE" in e for e in receipt.evidence)
 
 
-def test_custom_risk_policy_is_honored():
-    # A tail below a custom policy's thresholds is not prohibited.
+def test_strict_bar_is_a_floor_over_lenient_custom_policy():
+    # Shawn's 16:27 PDT strict-bar decision: the 7.0/0.05 bar is a POLICY
+    # OVERRIDE — it fires before the configurable tail path and is not
+    # weakened by a lenient custom RiskPolicy. (9.5, 0.5) is excluded even
+    # with severity_threshold=10.0. The retired engine's hard gates were
+    # likewise not configurable; the port is faithful.
+    # (Was test_custom_risk_policy_is_honored: a lenient custom policy can no
+    # longer admit what the strict bar excludes.)
     tails = (TailRisk(severity=9.5, probability=0.5, harm_class="test"),)
     plan = _hand_plan(_candidate(tails=tails))
     receipt, calls = _execute(plan, risk_policy=RiskPolicy(severity_threshold=10.0))
-    assert receipt.phase == "EXECUTION_COMPLETED"
-    assert receipt.executed is True
+    assert receipt.phase == "EXECUTION_REFUSED"
+    assert receipt.executed is False
+    assert calls == [], "executor must never fire on a refused plan"
+    assert any("ASSESSED_HARM_STRICT_BAR" in e for e in receipt.evidence)
+
+
+def test_stricter_custom_policy_honored_below_strict_bar():
+    # Custom RiskPolicy configurability survives where the strict bar does not
+    # reach: a stricter custom policy still prohibits what the default would
+    # admit. (6.0, 0.5) is below the strict bar (sev < 7.0) but above the
+    # custom severity_threshold=5.0 -> refused via the configurable TAIL_RISK
+    # path, not the strict bar.
+    tails = (TailRisk(severity=6.0, probability=0.5, harm_class="test"),)
+    plan = _hand_plan(_candidate(tails=tails))
+    receipt, calls = _execute(plan, risk_policy=RiskPolicy(severity_threshold=5.0))
+    _assert_refused(receipt, calls, ap.PLAN_SAFETY_PROHIBITED)
+    assert any("TAIL_RISK" in e for e in receipt.evidence)
+    # Sanity: the same tail under the DEFAULT policy is admitted (strict bar
+    # does not fire, configurable 9.0/0.01 does not fire).
+    plan2 = _hand_plan(_candidate(tails=tails))
+    receipt2, calls2 = _execute(plan2)
+    assert receipt2.phase == "EXECUTION_COMPLETED"
+    assert receipt2.executed is True
 
 
 def test_law_refusals_still_take_law_codes():

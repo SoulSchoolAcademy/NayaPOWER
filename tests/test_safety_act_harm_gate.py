@@ -144,7 +144,10 @@ def test_tail_risk_candidate_is_refused():
         _profile(), now=NOW)
     assert plan is None
     assert ap.PLAN_SAFETY_PROHIBITED in receipt.codes
-    assert any("TAIL_RISK" in e for e in receipt.evidence)
+    # Shawn's 16:27 PDT strict-bar decision: the 7.0/0.05 policy override fires
+    # before the configurable tail path, so the reason is now
+    # ASSESSED_HARM_STRICT_BAR (was TAIL_RISK under the 9.0/0.01 default).
+    assert any("ASSESSED_HARM_STRICT_BAR" in e for e in receipt.evidence)
 
 
 def test_high_q_tail_risk_cannot_win():
