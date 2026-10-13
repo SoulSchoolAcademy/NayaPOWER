@@ -1,5 +1,7 @@
 from urllib.parse import parse_qs, urlparse
 
+import hashlib
+
 import pytest
 
 from tools import board_claim_scan as scanner
@@ -118,3 +120,47 @@ def test_malformed_pr_response_is_unknown(monkeypatch, data):
     monkeypatch.setattr(scanner, "gh_api", lambda *args: data)
     with pytest.raises(RuntimeError, match="PR_COVERAGE"):
         scanner.fetch_open_prs()
+
+
+def fake_board_long_body(monkeypatch, body):
+    def get(method, path):
+        if "/comments?" in path:
+            return [{"id": 1, "body": body}]
+        return {"comments": 1}
+    monkeypatch.setattr(scanner, "gh_api", get)
+
+
+class TestBoardClaimFullBody:
+    """P0-F5 sibling (tools/board_claim_scan.py:154): the scan answered from
+    body[:2000] while verdicting completeness. Shaped by the falsification
+    spec in PR #2477 review 6128553449 — falsify a claim carried BEYOND
+    character 2000. All three fail pre-fix, pass post-fix."""
+
+    def test_claim_token_beyond_char_2000_is_detected(self, monkeypatch):
+        token = "full-auto-merge-v1"
+        body = "x " * 1100 + f"stand down: this seat already claimed the {token} workstream"
+        assert body.index(token) > 2000  # the falsifier sits past the old cut
+        fake_board_long_body(monkeypatch, body)
+        rows = scanner.fetch_board_tail("1354")
+        collisions, _ = scanner.scan("repair: duplicate of full-auto-merge-v1 workstream", rows)
+        assert len(collisions) == 1
+        assert collisions[0][0]["id"] == 1
+
+    def test_unigram_cluster_beyond_char_2000_is_detected(self, monkeypatch):
+        tail = "coordination note: zebra quark vortex lantern drift continues"
+        body = "x " * 1100 + tail
+        assert body.index("zebra") > 2000  # the falsifier sits past the old cut
+        fake_board_long_body(monkeypatch, body)
+        rows = scanner.fetch_board_tail("1354")
+        collisions, _ = scanner.scan("repair: zebra quark vortex lantern drift", rows)
+        assert len(collisions) == 1
+
+    def test_stored_text_is_source_bound_to_full_body(self, monkeypatch):
+        body = "x " * 1100 + "final line of a long comment"
+        assert len(body) > 2000
+        fake_board_long_body(monkeypatch, body)
+        item = scanner.fetch_board_tail("1354")[0]
+        assert item["text"] == body
+        assert item["text_full_len"] == len(body)
+        assert item["text_source"] == "FULL"
+        assert item["text_sha12"] == hashlib.sha256(body.encode("utf-8")).hexdigest()[:12]

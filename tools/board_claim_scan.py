@@ -32,6 +32,7 @@ accept --prs-json / --board-json for offline testing.
 """
 
 import argparse
+import hashlib
 import json
 import re
 import subprocess
@@ -115,6 +116,12 @@ def fetch_board_tail(board, pages=2):
     GitHub's issue-comment endpoint orders by ascending ID, so pages 1..2
     are the oldest comments, not the tail. Counts locate the final window;
     a changed count requires a fresh scan rather than a false CLEAR.
+
+    Completeness: each item stores the FULL comment body ("text") — scan
+    answers from the whole body. A truncated slice would let a claim past
+    the cut report CLEAR (the P0-F5 false-completeness shape). text_full_len
+    and text_full_sha12 bind the stored text to the source body; title is a
+    display preview only and never feeds the verdict.
     """
     if type(pages) is not int or pages < 1:
         raise ValueError("pages must be a positive integer")
@@ -151,7 +158,13 @@ def fetch_board_tail(board, pages=2):
                     "id": c["id"],
                     "title": c["body"][:80].replace("\n", " "),
                     "ref": "",
-                    "text": c["body"][:2000],
+                    # FULL body — the scan answers from the whole body.
+                    # text_full_len/text_full_sha12 bind it to the source;
+                    # text_source marks the completeness contract explicitly.
+                    "text": c["body"],
+                    "text_full_len": len(c["body"]),
+                    "text_sha12": hashlib.sha256(c["body"].encode("utf-8")).hexdigest()[:12],
+                    "text_source": "FULL",
                 }
             )
     if comment_count() != count:
