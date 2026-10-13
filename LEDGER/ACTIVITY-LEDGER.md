@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-13 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-13 06:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -1381,6 +1381,62 @@ _Last updated: 2026-10-13 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
 
+### ✅ t0587 — Team 3, Naya Judge (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** independent re-execution of sealed t0581 overlap-cell instrument
+
+**Receipt:** `twelve-lane-receipts/t0587-lane3.md`
+
+**Evidence:** Verified: t0581 seal + results pins byte-exact at full cited SHA256s (sealed-selection-t0581.md dc4f06e6..., results-t0581-overlap.json 29a9d26a... — reproduced exactly, byte-identical to t0581 results); agreement report retrieval/overlap-cells-rerun-t0587-lane3.md present at cited sha16 c3ad44693934fea7. Real value: different seat re-ran on fresh 
+
+### ✅ t0586 — Team 10, Naya Librarian (Brain Index) — 8.5/10 [VERIFIED]
+
+**Task:** second fixture (50-doc corpus) claim-form mechanism verdict ARM
+
+**Receipt:** `twelve-lane-receipts/t0586-lane10.md`
+
+**Evidence:** Verified: all 5 cited files present in auto-retrieval/ at exact cited sha16 (fixture_t0586.py 8077fc722905ec12, select_overlap_cells_t0586.py eba8f0d2720a83d5, run_overlap_cells_t0586.py 2c41ce03c6dc2fdd, sealed-selection-t0586.md 7522a1f91eaeb940, results-t0586-overlap.json 6b099fff4493f308). Real verified value: fresh 50-doc corpus, mechanically 
+
+### ✅ t0585 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Option-B stamping migration packet (tip re-pinned, inventory reconciled)
+
+**Receipt:** `twelve-lane-receipts/t0585-lane9.md`
+
+**Evidence:** Verified: packet surge/stamping-migration-packet-t0585.md sha256 ac19a411e9383a8b6ba1a35d53c0c6a62c1cc6b1789266f3b14fe393457d9262 on disk; remote main = bdfb5868a1ef00874fb8dbeb42e2fa46133e53ad (ls-remote, matches receipt's re-pin after a mid-window tip move); spec branch naya/five-retrieval-auth-gate-t942 = e654f16e8a49e9a26309fd852695a0bef202673d
+
+### ✅ t0585 — Team 5, Naya Seeker (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** selection-vs-pooling 2x2 arms SEALED + RUN (auto-retrieval)
+
+**Receipt:** `twelve-lane-receipts/t0585-lane5.md`
+
+**Evidence:** Verified: instrument auto-retrieval/t0585_seppool.py sha256 b3322d253974bb0a2e3f512856ef74f0f202597566ade59d59e12db7c6643e63 on disk (matches); seal sealed-note-t0585.md sha256 9f6c07f210515951ea9cf197733214a3478aa251816db02b013828175e7ee1c8; seal mtime 05:46:51Z strictly before results mtime 05:47:01Z (seal-before-run holds); results-t0585-seppool
+
+### ✅ t0584 — Team 12, Naya Herald (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** t0572 seal lineage correction - supplement + board note
+
+**Receipt:** `twelve-lane-receipts/t0584-lane12.md`
+
+**Evidence:** Verified: supplement auto-retrieval/sealed-note-t0572-lineage-correction.md sha256 065e18c77572839abea46eab13bb9e85960d3e66f672468c24fa6c36d26daad7 on disk (matches); #2175 comment 6139108156 live-read back (created 2026-10-13T05:43:34Z, 2399 chars, carries INFORMATIVE-PARTIAL + the supplement sha). Honest hypothesis test (would have written 'linea
+
+### ✅ t0583 — Team 11, Naya Heart (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Observatory window verdict t0576-t0583 (receipt-cost + falsification rate)
+
+**Receipt:** `twelve-lane-receipts/t0583-lane11.md`
+
+**Evidence:** VERIFIED: lane-11/corpus_pin_t0576-t0583.json and verdict_cost_t0583.json exist at exact cited sha256s (bac78fb1..., b2e7de6b...). Real value: pinned corpus before any number ran (15 rows, zero mid-run landings), recomputed t892-t1042 baseline from live bytes byte-exact (42/2365/47.5/5696.5) matching 3 prior windows, cost medians inside FP-001 Shar
+
+### ✅ t0583 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Independent four-way re-run of t0568 veracity verdict on frozen t1412 X-fixture pool (CONFIRM/CONTEST/AMEND)
+
+**Receipt:** `twelve-lane-receipts/t0583-lane1.md`
+
+**Evidence:** VERIFIED: report lane1-t0583-veracity-rerun.md and guard script scratch-t0583-lane1/rerun_veracity_guard.py exist at exact cited sha256s (99092d83..., 991f628b...). Real value: wrote own guard from own reading of R1-R4 (never imported apply_veracity_guard), pin-asserted all 8 fixture SHAs pre-measurement, all four arms matched pre-registered expect
+
 ### ✅ t0582 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** veracity-verdict as re-ranker: measured over Lane 7's stemmed-TF-IDF arm on 3 frozen t0532 tasks (read-only)
@@ -1396,6 +1452,14 @@ _Last updated: 2026-10-13 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0582-lane6.md`
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/injection-seam-v0.1.py sha256 matches receipt a1dda055..., injection-seam-v0.1-results.json sha256 matches 2948bb8a... both present at cited hashes. Work: imports Lane 7 certified matcher byte-for-byte, runtime-parsed corpus (15 principles + 20 lesson items), firing predicate (1 shared stemmed token len>=4,
+
+### ✅ t0582b — Team 4, Naya Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** B-60: completeness gate wiring - PR #2509
+
+**Receipt:** `twelve-lane-receipts/t0582b-lane4.md`
+
+**Evidence:** Verified: remote branch lane4/b60-smart-note-completeness-gate-wiring head = 59832ba6144f5f8dc71ec5d1127437cb80446427 (ls-remote, matches receipt); parent commit = live tip bdfb5868a1ef0 (matches); .github/workflows/smart-note-completeness-gate.yml present in the commit tree (5117 files, not truncated). MERGED-NOT-ENFORCED confirmed by git grep (2 
 
 ### ✅ t0582 — Team 3, Naya Judge (Decision Engine) — 9.5/10 [VERIFIED]
 
