@@ -573,5 +573,216 @@ class TestClaimPathWiring(unittest.TestCase):
         self.assertEqual(r["sequence_policy"]["next_sequence"], 43)
 
 
+class TestHeadDiffCollector(unittest.TestCase):
+    """L-282 regression: the pr_heads collector keys on claim-authorship
+    (open-PR-only refspec + diff-vs-base), never tree presence."""
+
+    def _repo_with_note(self):
+        repo = make_repo()
+        n = (repo / "BRAIN" / "05-MEMORY" / "SMART-NOTES" / "2026" / "10"
+             / "13" / "CAT" / "SN-0013")
+        n.mkdir(parents=True)
+        (n / "ib.md").write_text(
+            "---\nintelligent_block_id: IB-OWN\n"
+            "smart_note_id: SN-0013\n---\nbody\n")
+        subprocess.run(["git", "-C", str(repo), "add", "."],
+                       check=True)
+        subprocess.run(["git", "-C", str(repo), "commit", "-qm",
+                        "register SN-0013"], check=True)
+        base = subprocess.run(
+            ["git", "-C", str(repo), "rev-parse", "HEAD"],
+            capture_output=True, text=True, check=True).stdout.strip()
+        return repo, base
+
+    def _head(self, repo, files):
+        for rel, text in files.items():
+            p = repo / rel
+            p.parent.mkdir(parents=True, exist_ok=True)
+            p.write_text(text)
+        subprocess.run(["git", "-C", str(repo), "add", "."],
+                       check=True)
+        subprocess.run(["git", "-C", str(repo), "commit", "-qm",
+                        "head change"], check=True)
+        return subprocess.run(
+            ["git", "-C", str(repo), "rev-parse", "HEAD"],
+            capture_output=True, text=True, check=True).stdout.strip()
+
+    def _entry(self, n, base, head):
+        return {"number": n, "author": "SomeSeat", "head_ref": "r",
+                "base_sha": base, "head_sha": head}
+
+    def test_inherited_note_not_flagged(self):
+        # The L-282 defect: a head inheriting a registered note flagged
+        # COLLISION under the whole-tree grep. Diff-vs-base: zero hits.
+        import check_sn_claim_coverage as c
+        repo, base = self._repo_with_note()
+        head = self._head(repo, {"docs/todo.txt": "unrelated\n"})
+        by_num = c._collect_head_diff_hits(
+            str(repo), [self._entry(1, base, head)], {1: head},
+            registry_nums={13})
+        self.assertEqual(by_num, {})
+
+    def test_added_note_file_claims_with_attribution(self):
+        # A head ADDING a note file is a genuine claim: fires, with the
+        # front-matter owner_ib so classify() can attribute it.
+        import check_sn_claim_coverage as c
+        repo, base = self._repo_with_note()
+        head = self._head(repo, {
+            "BRAIN/05-MEMORY/SMART-NOTES/2026/10/13/CAT/SN-0799/ib.md":
+            "---\nintelligent_block_id: IB-OTHER\n"
+            "smart_note_id: SN-0799\n---\nbody\n"})
+        by_num = c._collect_head_diff_hits(
+            str(repo), [self._entry(2, base, head)], {2: head},
+            registry_nums={13})
+        self.assertNotIn(13, by_num)
+        hits = by_num.get(799, [])
+        self.assertTrue(hits, "added note file did not fire")
+        self.assertTrue(
+            hits[0]["where"].startswith("head diff added path"))
+        self.assertEqual(hits[0].get("owner_ib"), "IB-OTHER")
+
+    def test_cross_reference_in_added_content_is_mention(self):
+        # A token inside ANOTHER note's added content references the id;
+        # it does not claim it (same rule as the commit-graph seam).
+        import check_sn_claim_coverage as c
+        repo, base = self._repo_with_note()
+        head = self._head(repo, {
+            "BRAIN/05-MEMORY/SMART-NOTES/2026/10/13/CAT/SN-0013/ib.md":
+            "---\nintelligent_block_id: IB-OWN\n"
+            "smart_note_id: SN-0013\n---\nbody\nsee also SN-0799\n"})
+        by_num = c._collect_head_diff_hits(
+            str(repo), [self._entry(3, base, head)], {3: head},
+            registry_nums={13})
+        hits = by_num.get(799, [])
+        self.assertTrue(hits, "cross-reference produced no hit")
+        self.assertTrue(
+            all(h.get("pre_class") == "mention" for h in hits))
+
+    def test_bold_format_note_cross_reference_is_mention(self):
+        # Real note files carry no smart_note_id field (file_sn is None;
+        # the id lives in the path and the IB id). A token in another
+        # note's added content is still a cross-reference: the path half
+        # of the seam rule demotes it.
+        import check_sn_claim_coverage as c
+        repo = make_repo()
+        n = (repo / "BRAIN" / "05-MEMORY" / "SMART-NOTES" / "2026"
+             / "10" / "13" / "CAT" / "SN-0032")
+        n.mkdir(parents=True)
+        (n / "ib.md").write_text(
+            "# note\n\n**Intelligent Block:** IB-X-sn0032-x\n\nbody\n")
+        subprocess.run(["git", "-C", str(repo), "add", "."],
+                       check=True)
+        subprocess.run(["git", "-C", str(repo), "commit", "-qm",
+                        "register SN-0032"], check=True)
+        base = subprocess.run(
+            ["git", "-C", str(repo), "rev-parse", "HEAD"],
+            capture_output=True, text=True, check=True).stdout.strip()
+        (n / "ib.md").write_text(
+            "# note\n\n**Intelligent Block:** IB-X-sn0032-x\n\n"
+            "body\nsee also SN-0001\n")
+        n33 = (repo / "BRAIN" / "05-MEMORY" / "SMART-NOTES" / "2026"
+               / "10" / "13" / "CAT" / "SN-0033")
+        n33.mkdir(parents=True)
+        (n33 / "ib.md").write_text(
+            "# new\n\n**Intelligent Block:** IB-X-sn0033-y\n\nbody\n")
+        subprocess.run(["git", "-C", str(repo), "add", "."],
+                       check=True)
+        subprocess.run(["git", "-C", str(repo), "commit", "-qm",
+                        "add xref + new note"], check=True)
+        head = subprocess.run(
+            ["git", "-C", str(repo), "rev-parse", "HEAD"],
+            capture_output=True, text=True, check=True).stdout.strip()
+        by_num = c._collect_head_diff_hits(
+            str(repo), [self._entry(5, base, head)], {5: head},
+            registry_nums={32})
+        hits = by_num.get(1, [])
+        self.assertTrue(hits, "cross-reference produced no hit")
+        self.assertTrue(
+            all(h.get("pre_class") == "mention" for h in hits),
+            f"bold-format xref not demoted: {hits}")
+        # ...but a newly ADDED note file's own id stays structural.
+        own = by_num.get(33, [])
+        own_claims = [h for h in own
+                      if h.get("pre_class", "claim") == "claim"]
+        self.assertTrue(own_claims, "added-path own-id claim lost")
+
+    def test_note_deletion_not_flagged(self):
+        # Deleting a note is not claiming its id.
+        import check_sn_claim_coverage as c
+        repo, base = self._repo_with_note()
+        subprocess.run(
+            ["git", "-C", str(repo), "rm", "-q",
+             "BRAIN/05-MEMORY/SMART-NOTES/2026/10/13/CAT/SN-0013/ib.md"],
+            check=True)
+        subprocess.run(["git", "-C", str(repo), "commit", "-qm",
+                        "delete note"], check=True)
+        head = subprocess.run(
+            ["git", "-C", str(repo), "rev-parse", "HEAD"],
+            capture_output=True, text=True, check=True).stdout.strip()
+        by_num = c._collect_head_diff_hits(
+            str(repo), [self._entry(4, base, head)], {4: head},
+            registry_nums={13})
+        self.assertEqual(by_num, {})
+
+    def test_missing_base_sha_fails_closed(self):
+        # An open PR without a diffable base cannot be scanned: the
+        # surface errors, never silently skips the PR.
+        import check_sn_claim_coverage as c
+        with self.assertRaises(RuntimeError):
+            c._open_pr_entries([{
+                "number": 5, "user": {"login": "S"},
+                "head": {"ref": "r", "sha": "a" * 40}, "base": {}}])
+
+    def test_sn_id_field_ignores_mid_prose_quotes(self):
+        # B-59 precision: SN_ID_FIELD_RE must resolve the note's OWN id
+        # field (front matter at a line start), never a mid-prose QUOTE
+        # of another file's id -- the quote defeated the cross-reference
+        # demotion on live bytes (SN-0643's Provenance quoting
+        # "smart_note_id: SN-0359" set file_sn=359).
+        import check_sn_claim_coverage as c
+        quote = ("**Provenance:** x declares the same "
+                 "`smart_note_id: SN-0359` with a hollow body")
+        self.assertIsNone(c.SN_ID_FIELD_RE.search(quote))
+        for fm, want in [
+                ("---\nsmart_note_id: SN-0013\n---", "13"),
+                ("**Smart Note:** SN-0042", "42"),
+                ("| Smart Note ID | SN-0077 |", "77"),
+                ("  smart_note_id: SN-0099", "99")]:
+            m = c.SN_ID_FIELD_RE.search(fm)
+            self.assertIsNotNone(m, fm)
+            self.assertEqual(m.group(1), want)
+
+    def test_ib_re_ignores_mid_prose_quotes(self):
+        # IB_RE precision (wave-35, wave-31's pre-ship routing): the IB id
+        # must come from the note's OWN front matter (line start, optional
+        # Markdown list marker), never a mid-prose QUOTE of another seat's
+        # IB -- a quote misattributes owner_ib, which is fail-OPEN via
+        # false self-attribution. 18 real notes at the tip declare via
+        # list-item format ("- **Intelligent Block:** IB-..."), so the
+        # anchor admits a list marker; a mid-prose quote is never at a
+        # line start.
+        import check_sn_claim_coverage as c
+        quote = ("**Provenance:** this note quotes another file's "
+                 "front matter: **Intelligent Block:** IB-FOREIGN-9")
+        self.assertIsNone(c.IB_RE.search(quote),
+                          "mid-prose IB quote must not attribute")
+        inline = ("some intro text intelligent_block_id: IB-INLINE-1 "
+                  "trailing text")
+        self.assertIsNone(c.IB_RE.search(inline),
+                          "mid-line YAML-style field must not attribute")
+        for fm, want in [
+                ("---\nintelligent_block_id: IB-YAML-1\n---",
+                 "IB-YAML-1"),
+                ("**Intelligent Block:** IB-BOLD-2", "IB-BOLD-2"),
+                ("| Intelligent Block | `IB-TABLE-3` |", "IB-TABLE-3"),
+                ("  intelligent_block_id: IB-INDENT-4", "IB-INDENT-4"),
+                ("- **Intelligent Block:** IB-LIST-5", "IB-LIST-5"),
+                ("* **Intelligent Block:** IB-LIST-6", "IB-LIST-6"),
+                ("  - **Intelligent Block:** IB-LIST-7", "IB-LIST-7")]:
+            m = c.IB_RE.search(fm)
+            self.assertIsNotNone(m, fm)
+            self.assertEqual(m.group(1), want)
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -27,8 +27,12 @@ position:
   - surface 1 (board #554): ANY mention. The board is the announcement
     venue; mentions there are rare and always worth a human look.
   - surface 2 (open PR heads): token in added content of a smart-note-
-    bearing path, or claim-verb + token in the PR title/body. A token in
-    a generated registry mirror (B-56) is MIRROR-class (advisory,
+    bearing path, or claim-verb + token in the PR title/body. A token the
+    PR merely inherits from its base is presence, not a claim, and never
+    fires (L-282: open-PR-only refspec + diff-vs-base = claim-authorship).
+    A token inside another note's added content is a cross-reference
+    (mention-class), same rule as surface 3. A token in a generated
+    registry mirror (B-56) is MIRROR-class (advisory,
     non-blocking) when the id is in the registry's id set -- the
     mirror is the registry's voice, whatever its base; a mirror token
     the registry does not know is a planted claim and stays claim-class
@@ -97,13 +101,31 @@ def is_mirror_path(path):
 #   table: | Intelligent Block | `IB-...` |
 # (plus the IB id embedded in note filenames: IB-<id>.md)
 IB_RE = re.compile(
-    r"(?:intelligent_block_id\s*:|\*\*Intelligent Block:\*\*"
+    # Line-start anchored ((?m)^) with an optional Markdown list marker:
+    # the note's OWN IB field lives in front matter (YAML key, bold label,
+    # or table row at a line start, optionally as a list item). An
+    # unanchored match also fires on mid-prose QUOTES of another file's
+    # IB id, misattributing owner_ib -- fail-OPEN via false
+    # self-attribution. 18 real notes at the tip declare via list-item
+    # format ("- **Intelligent Block:** IB-..."), so the anchor admits a
+    # list marker; a mid-prose quote is never at a line start. Tightening
+    # moves fail-closed (fewer owner_ib resolutions -> fewer
+    # self-resolutions, never more).
+    r"(?m)^\s*(?:[-*]\s+)?(?:intelligent_block_id\s*:|\*\*Intelligent Block:\*\*"
     r"|\|\s*Intelligent Block\s*\|)"
     r"\s*`?([A-Za-z0-9][A-Za-z0-9\-_]*)`?",
     re.IGNORECASE,
 )
 SN_ID_FIELD_RE = re.compile(
-    r"(?:smart_note_id\s*:|\*\*Smart Note:\*\*|\|\s*Smart Note ID\s*\|)"
+    # Line-start anchored ((?m)^): the note's OWN id field lives in front
+    # matter (YAML key, bold label, or table row at a line start). An
+    # unanchored match also fires on mid-prose QUOTES of another file's
+    # id (observed: a Provenance paragraph quoting
+    # "smart_note_id: SN-0359" set file_sn=359 on SN-0643's file),
+    # which defeats the cross-reference demotion. Tightening moves
+    # fail-closed (fewer file_sn resolutions -> fewer demotions).
+    r"(?m)^\s*(?:smart_note_id\s*:|\*\*Smart Note:\*\*"
+    r"|\|\s*Smart Note ID\s*\|)"
     r"\s*`?SN-0*(\d+)`?",
     re.IGNORECASE,
 )
@@ -272,13 +294,229 @@ def collect_board(fixtures=None):
     return by_num
 
 
+# SN-bearing trees, as git path args.
+SN_PATH_ARGS = ("BRAIN/05-MEMORY/SMART-NOTES", ".naya/memory/smart-notes")
+
+
+def _open_pr_entries(prs):
+    """Per-open-PR diff anchors: (number, author, head_ref, base, head).
+
+    Fail-closed: an open PR whose API object lacks a base or head sha
+    cannot be diffed, so the whole surface errors rather than silently
+    skipping it.
+    """
+    entries = []
+    for pr in prs:
+        number = pr.get("number")
+        base_sha = (pr.get("base") or {}).get("sha")
+        head_sha = (pr.get("head") or {}).get("sha")
+        if not number or not base_sha or not head_sha:
+            raise RuntimeError(
+                f"open PR #{number or '?'}: missing base/head sha "
+                "(cannot diff-vs-base; failing closed)")
+        entries.append({
+            "number": number,
+            "author": (pr.get("user") or {}).get("login", ""),
+            "head_ref": ((pr.get("head") or {}).get("ref")) or "",
+            "base_sha": base_sha,
+            "head_sha": head_sha,
+        })
+    return entries
+
+
+def _obj_exists(repo, sha):
+    """True iff the object is present in the local repo."""
+    r = subprocess.run(["git", "-C", str(repo), "cat-file", "-e", sha],
+                       capture_output=True, timeout=60)
+    return r.returncode == 0
+
+
+def _fetch_open_pr_heads(repo, entries):
+    """Fetch open-PR-only heads. Returns {number: head_sha}.
+
+    L-282 repair, defect 1: the old `+refs/pull/*/head` wildcard swept
+    ALL heads (open+closed) into the scan -- 1,274 closed heads inheriting
+    registered notes flagged COLLISION on the wave-27 dry run. The refspec
+    is now explicit per open PR number; closed heads are never fetched.
+    Shallow (--depth 1): only trees are diffed, no history is walked.
+    Base shas resolve against the local base-branch history (verified,
+    not assumed); a base missing locally is fetched once, shallow --
+    anything still missing fails the surface closed. Any fetch gap fails
+    the surface closed.
+    """
+    refspecs = [f"+refs/pull/{e['number']}/head:refs/sncover/pr/{e['number']}"
+                for e in entries]
+    try:
+        _git(repo, "fetch", "--quiet", "--no-tags", "--depth", "1",
+             "--prune", "origin", *refspecs)
+    except RuntimeError as e:
+        raise RuntimeError(f"open-PR head fetch failed: {e}")
+    missing_bases = sorted({e["base_sha"] for e in entries
+                            if not _obj_exists(repo, e["base_sha"])})
+    if missing_bases:
+        try:
+            _git(repo, "fetch", "--quiet", "--no-tags", "--depth", "1",
+                 "origin", *missing_bases)
+        except RuntimeError as e:
+            raise RuntimeError(f"open-PR base fetch failed: {e}")
+        still = [s for s in missing_bases if not _obj_exists(repo, s)]
+        if still:
+            raise RuntimeError(
+                f"open-PR base shas unavailable locally: {still[:3]} "
+                "(failing closed)")
+    refs_out = _git(repo, "for-each-ref",
+                    "--format=%(objectname) %(refname)",
+                    "refs/sncover/pr/")
+    fetched = {}
+    for line in refs_out.splitlines():
+        parts = line.split(" ", 1)
+        if len(parts) != 2:
+            continue
+        sha, ref = parts
+        try:
+            num = int(ref.rsplit("/", 1)[1])
+        except ValueError:
+            continue
+        fetched[num] = sha
+    missing = [e["number"] for e in entries if e["number"] not in fetched]
+    if missing:
+        raise RuntimeError(
+            f"open-PR head fetch incomplete, missing PRs {missing} "
+            "(failing closed)")
+    return fetched
+
+
+def _added_patch_lines(patch):
+    """Content of added lines in a unified diff/patch (no +++ headers)."""
+    return [ln[1:] for ln in (patch or "").splitlines()
+            if ln.startswith("+") and not ln.startswith("+++")]
+
+
+def _collect_head_diff_hits(repo, entries, head_shas, registry_nums):
+    """Diff-vs-base added-line scan for open PR heads. Returns by_num.
+
+    L-282 repair, defect 2: the old whole-head-tree grep keyed on tree
+    PRESENCE, so any head inheriting a registered note flagged COLLISION
+    and classify() could never self-resolve (head-tree hits carry no
+    front-matter owner_ib). The PR now claims only what it ADDS relative
+    to its base: per-PR `git diff base..head -- <SN paths>`, streamed and
+    parsed incrementally (never materialized -- same OOM discipline as
+    the streamed greps), tokenizing added lines and added file paths only.
+    Added note files get front-matter attribution through the shared
+    _resolve_owner_ibs seam so classify() can self-resolve a seat's own
+    staging PR; a token inside ANOTHER note's added content
+    (cross-reference, file_sn != num) is mention-class -- the same rule
+    as the commit-graph seam, not a second mechanism.
+    """
+    import time as _time
+    by_num = {}
+    attrib_keys = []
+    seen = set()
+    _deadline = _time.monotonic() + 240
+
+    def _hit(entry, num, path, where, text):
+        key = (entry["number"], path, num)
+        if key in seen:
+            return None
+        seen.add(key)
+        hit = {
+            "surface": "pr_heads", "pr": entry["number"],
+            "author": entry["author"], "where": where,
+            "sig_text": f"{entry['author']}\n{entry['head_ref']}",
+            "text": text,
+        }
+        # B-56: the registry's voice is advisory; a mirror token the
+        # registry does not know is a planted claim (fail-closed).
+        if is_mirror_path(path) and _mirror_class(num, registry_nums):
+            hit["pre_class"] = "mirror"
+        by_num.setdefault(num, []).append(hit)
+        return hit
+
+    for entry in entries:
+        number = entry["number"]
+        base, head = entry["base_sha"], head_shas[number]
+        proc = subprocess.Popen(
+            ["git", "-C", str(repo), "diff", "--no-renames", "--no-color",
+             "-U0", base, head, "--"] + list(SN_PATH_ARGS),
+            stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        cur_path = None
+        try:
+            for raw in proc.stdout:
+                if _time.monotonic() > _deadline:
+                    proc.kill()
+                    raise RuntimeError(
+                        "git diff PR heads: exceeded 240s budget")
+                line = raw.decode("utf-8", errors="replace").rstrip("\n")
+                if line.startswith("diff --git "):
+                    # diff --git a/<old> b/<new>; the b/ side is current.
+                    parts = line[len("diff --git "):].split(" ")
+                    if len(parts) >= 2 and parts[1].startswith("b/"):
+                        cur_path = parts[1][2:]
+                    else:
+                        cur_path = None
+                    continue
+                if line.startswith("new file mode"):
+                    if cur_path and SN_BEARING_RE.search(cur_path):
+                        for num in all_token_nums(cur_path):
+                            h = _hit(entry, num, cur_path,
+                                     f"head diff added path {cur_path}",
+                                     cur_path)
+                            if h is not None:
+                                attrib_keys.append((head, cur_path, h))
+                    continue
+                if cur_path is None or not SN_BEARING_RE.search(cur_path):
+                    continue
+                if line.startswith("+") and not line.startswith("+++"):
+                    for num in all_token_nums(line[1:]):
+                        h = _hit(entry, num, cur_path,
+                                 f"head diff +line {cur_path}",
+                                 line[1:].strip()[:300])
+                        if h is not None:
+                            attrib_keys.append((head, cur_path, h))
+        finally:
+            try:
+                _, err = proc.communicate(timeout=60)
+            except subprocess.TimeoutExpired:
+                proc.kill()
+                _, err = proc.communicate()
+                raise RuntimeError("git diff PR heads: timed out")
+            if proc.returncode not in (0, 1):
+                raise RuntimeError(
+                    f"git diff PR heads: exit {proc.returncode}: "
+                    f"{err.decode('utf-8', errors='replace').strip()[:200]}")
+    # Front-matter attribution for every added note file (shared seam
+    # with the commit-graph collector).
+    _resolve_owner_ibs(repo, attrib_keys)
+    # Cross-reference demotion (commit-graph seam's step-7 rule, not a
+    # second mechanism): a token in another note's ADDED CONTENT
+    # references the id; only a file asserting its OWN id (file_sn ==
+    # num) or carrying the token in its added path is structural. Note:
+    # real note files carry no smart_note_id field (the id lives in the
+    # path and the IB id), so file_sn is routinely None and the path
+    # half of the rule does the work.
+    for _num, _hits in by_num.items():
+        for _h in _hits:
+            if _h["surface"] != "pr_heads" or not _h.get(
+                    "where", "").startswith("head diff +line"):
+                continue
+            _fsn = _h.get("file_sn")
+            if _fsn is not None and _fsn != _num:
+                _h["pre_class"] = "mention"
+            elif _fsn is None and _num not in all_token_nums(_h["where"]):
+                _h["pre_class"] = "mention"
+    return by_num
+
+
 def collect_prs(fixtures=None, repo=DEFAULT_ROOT, registry_nums=None):
     """Surface 2: open PR heads, tokenized by SN id (smart-note paths only).
 
-    Live path: one API call lists open PRs (title/body claim scan), then one
-    `git fetch` pulls every open PR head and one `git grep` searches all head
-    trees at once -- O(1) API round-trips instead of O(open PRs). A failed
-    fetch fails the surface closed (unreadable), never silently skipped.
+    Live path: one API call lists open PRs (title/body claim scan), then
+    one shallow `git fetch` pulls open-PR-only heads (explicit
+    `+refs/pull/<N>/head` refspecs -- L-282: never the `*/head` wildcard
+    that swept closed heads in) plus their base shas, then a per-PR
+    diff-vs-base scans ADDED lines/paths only. A PR claims what it adds
+    relative to its base, never what it inherits. A failed fetch fails
+    the surface closed (unreadable), never silently skipped.
 
     B-56: hits on generated registry mirrors are classified by
     _mirror_class -- the registry's voice (advisory) vs a planted claim
@@ -313,6 +551,10 @@ def collect_prs(fixtures=None, repo=DEFAULT_ROOT, registry_nums=None):
                 patch = f.get("patch") or ""
                 if not SN_BEARING_RE.search(fname):
                     continue
+                # Added content only (L-282): a fixture patch is the PR's
+                # diff -- context and removed lines are inherited, not
+                # claimed. This matches the live diff-vs-base collector.
+                added = "\n".join(_added_patch_lines(patch))
                 # B-56: a registry mirror copy at the head is the
                 # registry's voice, not a claim. _mirror_class decides
                 # from the registry id set (or the fixture's
@@ -320,7 +562,7 @@ def collect_prs(fixtures=None, repo=DEFAULT_ROOT, registry_nums=None):
                 # else on a mirror path stays claim-class (fail-closed).
                 on_mirror = is_mirror_path(fname)
                 declared = bool(f.get("mirror_copy"))
-                for num in all_token_nums(patch) | all_token_nums(fname):
+                for num in all_token_nums(added) | all_token_nums(fname):
                     key = (fname, num)
                     if key in seen:
                         continue
@@ -328,7 +570,7 @@ def collect_prs(fixtures=None, repo=DEFAULT_ROOT, registry_nums=None):
                     hit = {
                         "surface": "pr_heads", "pr": number, "author": author,
                         "where": fname, "sig_text": sig_text,
-                        "text": patch or fname,
+                        "text": added or fname,
                     }
                     if on_mirror and _mirror_class(
                             num, registry_nums, declared_copy=declared):
@@ -352,89 +594,12 @@ def collect_prs(fixtures=None, repo=DEFAULT_ROOT, registry_nums=None):
                     "sig_text": f"{author}\n{title}\n{pbody}\n{head_ref}",
                     "text": text,
                 })
-    # Head trees: fetch once (shallow: only each head's tree is needed),
-    # grep once.
-    try:
-        _git(repo, "fetch", "--quiet", "--no-tags", "--depth", "1",
-             "--prune", "origin", "+refs/pull/*/head:refs/sncover/pr/*")
-    except RuntimeError as e:
-        raise RuntimeError(f"open-PR head fetch failed: {e}")
-    refs_out = _git(repo, "for-each-ref",
-                    "--format=%(objectname) %(refname:short)",
-                    "refs/sncover/pr/")
-    sha_to_pr = {}
-    for line in refs_out.splitlines():
-        parts = line.split(" ", 1)
-        if len(parts) != 2:
-            continue
-        sha, ref = parts
-        try:
-            num = int(ref.rsplit("/", 1)[1])
-        except ValueError:
-            continue
-        sha_to_pr[sha] = num
-    if not sha_to_pr:
-        return by_num
-    # STREAMED, never materialized: the head-tree grep over ~2K revisions
-    # can emit hundreds of MB; capture_output=True holds it all in RAM ->
-    # the OOM-killer (observed exit 137 on the live audit, 2026-10-13).
-    # Popen + incremental parse keeps memory flat (same pattern as the
-    # commit-graph grep below).
-    import time as _time
-    proc = subprocess.Popen(
-        ["git", "-C", str(repo), "grep", "-n", "--no-color",
-         "-e", r"SN-[0-9][0-9]*"] + list(sha_to_pr)
-        + ["--", "BRAIN/05-MEMORY/SMART-NOTES", ".naya/memory/smart-notes"],
-        stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    pr_by_number = {pr.get("number"): pr for pr in prs}
-    seen = set()
-    _deadline = _time.monotonic() + 240
-    try:
-        for raw in proc.stdout:
-            if _time.monotonic() > _deadline:
-                proc.kill()
-                raise RuntimeError("git grep PR heads: exceeded 240s budget")
-            line = raw.decode("utf-8", errors="replace").rstrip("\n")
-            # <sha>:<path>:<lineno>:<line>
-            m = re.match(r"([0-9a-f]{40}):(.+?):(\d+):(.*)$", line)
-            if not m:
-                continue
-            sha, path, _ln, text_line = m.groups()
-            pr_number = sha_to_pr.get(sha)
-            pr = pr_by_number.get(pr_number, {})
-            author = (pr.get("user") or {}).get("login", "")
-            head_ref = ((pr.get("head") or {}).get("ref")) or ""
-            for num in all_token_nums(text_line):
-                key = (sha, path, num)
-                if key in seen:
-                    continue
-                seen.add(key)
-                hit = {
-                    "surface": "pr_heads", "pr": pr_number, "author": author,
-                    "where": f"head tree {path}",
-                    "sig_text": f"{author}\n{head_ref}",
-                    "text": text_line.strip()[:300],
-                }
-                # B-56: the registry's voice is advisory; a mirror token
-                # the registry does not know is a planted claim
-                # (fail-closed). No registry id set (unreadable registry)
-                # also stays claim-class.
-                if is_mirror_path(path) and _mirror_class(num, registry_nums):
-                    hit["pre_class"] = "mirror"
-                by_num.setdefault(num, []).append(hit)
-    finally:
-        try:
-            _, err = proc.communicate(timeout=60)
-        except subprocess.TimeoutExpired:
-            proc.kill()
-            _, err = proc.communicate()
-            raise RuntimeError("git grep PR heads: timed out")
-        if proc.returncode not in (0, 1):
-            raise RuntimeError(
-                f"git grep PR heads: exit {proc.returncode}: "
-                f"{err.decode('utf-8', errors='replace').strip()[:200]}")
-    # proc.returncode == 1 means no matches: no hits.
-    return by_num
+    # Head diffs: claim-authorship (L-282). The PR claims what it ADDS
+    # relative to its base -- never what it inherits. Open-PR-only
+    # refspecs + per-PR diff-vs-base; closed heads are never fetched.
+    entries = _open_pr_entries(prs)
+    head_shas = _fetch_open_pr_heads(repo, entries)
+    return _collect_head_diff_hits(repo, entries, head_shas, registry_nums)
 
 
 def _resolve_owner_ibs(repo, attrib_keys):
