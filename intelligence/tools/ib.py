@@ -31,6 +31,7 @@ try:
     from ib_reconcile import (
         FILE_REQUIRED_V11,
         normalize_file_block,
+        run_authority_path,
         validate_v11,
     )
     SCHEMA_VERSION = "1.1"
@@ -305,20 +306,48 @@ def cmd_graduate(args):
     return 0
 
 
+def _load_registry_ctx():
+    """Registry context for the ownership authority path (gate 6: registry-integrity).
+
+    Fail-closed: an unreadable REGISTRY.json is itself a reconcile defect, so
+    the gate fires loudly per block instead of being silently skipped.
+    """
+    try:
+        with open(REGISTRY_PATH, encoding="utf-8") as f:
+            return {"registry": json.load(f)}
+    except (OSError, ValueError) as e:
+        print(f"WARNING: REGISTRY.json unreadable ({e}); "
+              f"registry-integrity gate will fail")
+        return {"registry": {}}
+
+
 def cmd_validate(_args):
     blocks = all_blocks()
     seen = set()
     failed = 0
+    # B-61 entry gate: the ownership authority path (OWNERSHIP_AUTHORITY_PATH,
+    # merged #2503) runs on this live operating command, not only in tests.
+    # A planted non-NAYA owner fails loudly: non-zero exit + explicit
+    # AUTHORITY message naming the block, the gate, and the violation.
+    # (validate_block() stays the pinned general-schema validator per
+    # test_ib_validate_is_general_schema; the authority path is enforced here.)
+    ctx = _load_registry_ctx()
     for b in blocks:
         errs = validate_block(b)
+        authority = []
+        if _RECONCILE_AVAILABLE:
+            authority = [(name, prob)
+                         for name, prob in run_authority_path(b, ctx) if prob]
         if _block_id(b) in seen:
             errs.append(f"duplicate id: {_block_id(b)}")
         seen.add(_block_id(b))
-        if errs:
+        if errs or authority:
             failed += 1
             print(f"{_block_id(b)}: FAIL")
             for e in errs:
                 print(f"    - {e}")
+            for name, prob in authority:
+                print(f"    - AUTHORITY [{name}]: {prob}")
     print(f"\n{len(blocks) - failed}/{len(blocks)} blocks valid")
     return 1 if failed else 0
 
