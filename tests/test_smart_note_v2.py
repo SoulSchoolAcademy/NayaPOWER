@@ -498,7 +498,8 @@ def _problem_b_inputs(m, tmp_path, ib_id):
               "relationship": {"relationship_id": "r1"},
               "index": {"id": "i1"}, "checkpoint": {"id": "c1"},
               "receipt": {"id": "rc1"}}}
-    proj = tmp_path / "proj.md"
+    proj = tmp_path / "BRAIN" / "05-MEMORY" / "SMART-NOTES" / "proj.md"
+    proj.parent.mkdir(parents=True, exist_ok=True)
     proj.write_text("# test", encoding="utf-8")
     return capture, verify, proj
 
@@ -708,13 +709,14 @@ def test_registry_records_capture_lifecycle_metadata(tmp_path):
 
 
 def test_retrieve_ignores_superseded_registry_entries(tmp_path, monkeypatch):
-    old_page = tmp_path / "old.md"
-    new_page = tmp_path / "new.md"
+    brain = tmp_path / "BRAIN" / "05-MEMORY" / "SMART-NOTES"
+    brain.mkdir(parents=True, exist_ok=True)
+    old_page = brain / "old.md"
+    new_page = brain / "new.md"
     old_page.write_text("# Old\n\n## IN A NUTSHELL\n\nold answer", encoding="utf-8")
     new_page.write_text("# New\n\n## IN A NUTSHELL\n\nactive answer", encoding="utf-8")
     registry_path = tmp_path / "index.json"
-    registry_path.write_text(json.dumps({
-        "entries": [
+    registry_path.write_text(json.dumps(_sealed_registry([
             {
                 "smart_note_id": "SN-346",
                 "intelligent_block_id": "IB-OLD",
@@ -723,7 +725,7 @@ def test_retrieve_ignores_superseded_registry_entries(tmp_path, monkeypatch):
                 "topic": "GOVERNANCE",
                 "subtopic": "OPERATING_CODE",
                 "captured_at": "2026-10-05T23:59:59Z",
-                "projection_path": "old.md",
+                "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/old.md",
                 "lifecycle_state": "SUPERSEDED",
             },
             {
@@ -734,11 +736,10 @@ def test_retrieve_ignores_superseded_registry_entries(tmp_path, monkeypatch):
                 "topic": "GOVERNANCE",
                 "subtopic": "OPERATING_CODE",
                 "captured_at": "2026-10-05T00:00:00Z",
-                "projection_path": "new.md",
+                "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/new.md",
                 "lifecycle_state": "ACTIVE",
             },
-        ]
-    }), encoding="utf-8")
+        ], tmp_path)), encoding="utf-8")
     monkeypatch.setattr(mod, "ROOT", tmp_path)
     monkeypatch.setattr(mod, "REGISTRY", registry_path)
     monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 0)  # ranking pin: the floor is live-corpus calibrated, not for synthetic corpora
@@ -749,14 +750,40 @@ def test_retrieve_ignores_superseded_registry_entries(tmp_path, monkeypatch):
 
 
 # --- Retrieval truth-state tie-breaking (retrieval track, 2026-10-06) ---
+def _sealed_registry(entries, root):
+    """Return a validator-clean registry dict for synthetic test corpora.
+
+    The fail-closed validator (B-51 step 3) runs on EVERY retrieve(), including
+    synthetic test registries: page_hash per eligible entry (from the actual
+    page bytes under root) + corpus_manifest_hash over the full entry list.
+    Uses the module's own hash functions — the single hashing authority.
+    Inactive-lifecycle entries are skipped by the validator (like the
+    backfill's retired entries) and carry no page_hash.
+    """
+    inactive = {"SUPERSEDED", "ARCHIVED", "REVOKED", "RETIRED"}
+    for e in entries:
+        if str(e.get("lifecycle_state", "ACTIVE")).upper() in inactive:
+            continue
+        pp = e.get("projection_path")
+        if pp:
+            e["page_hash"] = mod._page_file_hash(root / pp)
+    return {"schema": "naya.smart-note-projection-index.v1",
+            "entries": entries,
+            "corpus_manifest_hash": mod._corpus_manifest_hash(entries)}
+
+
 def _truth_rank_registry(tmp_path, entries):
+    # Pages live under the allowed projection root: the validator (B-51 step 3)
+    # requires every eligible projection_path to stay inside an allowed root.
+    brain = tmp_path / "BRAIN" / "05-MEMORY" / "SMART-NOTES"
+    brain.mkdir(parents=True, exist_ok=True)
     for i, e in enumerate(entries):
-        page = tmp_path / f"p{i}.md"
+        page = brain / f"p{i}.md"
         page.write_text("# T\n\n## IN A NUTSHELL\n\nanswer", encoding="utf-8")
-        e.setdefault("projection_path", f"p{i}.md")
+        e.setdefault("projection_path", f"BRAIN/05-MEMORY/SMART-NOTES/p{i}.md")
         e.setdefault("lifecycle_state", "ACTIVE")
     rp = tmp_path / "index.json"
-    rp.write_text(json.dumps({"entries": entries}), encoding="utf-8")
+    rp.write_text(json.dumps(_sealed_registry(entries, tmp_path)), encoding="utf-8")
     return rp
 
 
@@ -825,25 +852,27 @@ def test_retrieve_matches_lesson_content_not_just_metadata(tmp_path, monkeypatch
     Captain Protocol note that teaches exactly that). The NUTSHELL lesson
     text is part of the haystack.
     """
-    (tmp_path / "captain.md").write_text(
+    brain = tmp_path / "BRAIN" / "05-MEMORY" / "SMART-NOTES"
+    brain.mkdir(parents=True, exist_ok=True)
+    (brain / "captain.md").write_text(
         "# Captain\n\n## IN A NUTSHELL\n\ndeclaring intent before acting is required",
         encoding="utf-8")
-    (tmp_path / "other.md").write_text(
+    (brain / "other.md").write_text(
         "# Other\n\n## IN A NUTSHELL\n\nunrelated lesson about calibration",
         encoding="utf-8")
     rp = tmp_path / "index.json"
-    rp.write_text(json.dumps({"entries": [
+    rp.write_text(json.dumps(_sealed_registry([
         {"smart_note_id": "SN-CAP", "intelligent_block_id": "IB-CAP",
          "title": "The Captain Protocol", "category": "X", "topic": "Y", "subtopic": "Z",
          "keywords": ["smart note", "capture", "intelligent block"],
          "truth_state": "CANDIDATE", "lifecycle_state": "ACTIVE",
-         "captured_at": "2026-10-06T00:00:00Z", "projection_path": "captain.md"},
+         "captured_at": "2026-10-06T00:00:00Z", "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/captain.md"},
         {"smart_note_id": "SN-OTH", "intelligent_block_id": "IB-OTH",
          "title": "Some Other Note", "category": "X", "topic": "Y", "subtopic": "Z",
          "keywords": ["smart note", "capture", "intelligent block"],
          "truth_state": "CANDIDATE", "lifecycle_state": "ACTIVE",
-         "captured_at": "2026-10-06T00:00:00Z", "projection_path": "other.md"},
-    ]}), encoding="utf-8")
+         "captured_at": "2026-10-06T00:00:00Z", "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/other.md"},
+    ], tmp_path)), encoding="utf-8")
     monkeypatch.setattr(mod, "ROOT", tmp_path)
     monkeypatch.setattr(mod, "REGISTRY", rp)
     monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 0)  # ranking pin: the floor is live-corpus calibrated, not for synthetic corpora
@@ -1274,3 +1303,167 @@ def test_retrieval_relevance_floor_value_is_live_calibrated():
     representative live-corpus probes — unit tests alone cannot re-justify
     it."""
     assert mod.RETRIEVAL_RELEVANCE_FLOOR == 40.0
+
+
+# --- Fail-closed index validation (B-51 step 3; Naya Beta design 2026-10-12) ---
+# Each drill tampers ONE thing and asserts the exact INDEX_CORRUPT code
+# surfaces through retrieve() — never a ranking, never an explanation string.
+# (The else-branch proves propagation: nothing is returned on corruption.)
+
+def _validator_registry(tmp_path, n=2):
+    brain = tmp_path / "BRAIN" / "05-MEMORY" / "SMART-NOTES"
+    brain.mkdir(parents=True, exist_ok=True)
+    entries = []
+    for i in range(n):
+        page = brain / f"v{i}.md"
+        page.write_text(f"# V{i}\n\n## IN A NUTSHELL\n\nvalidation drill page {i}",
+                        encoding="utf-8")
+        entries.append({
+            "smart_note_id": f"SN-V{i}",
+            "intelligent_block_id": f"IB-V{i}",
+            "title": f"Validation {i}",
+            "category": "X", "topic": "Y", "subtopic": "Z",
+            "keywords": ["validation", "drill"],
+            "truth_state": "CANDIDATE", "lifecycle_state": "ACTIVE",
+            "captured_at": "2026-10-06T00:00:00Z",
+            "projection_path": f"BRAIN/05-MEMORY/SMART-NOTES/v{i}.md",
+        })
+    rp = tmp_path / "index.json"
+    rp.write_text(json.dumps(_sealed_registry(entries, tmp_path)), encoding="utf-8")
+    return rp
+
+
+def _assert_index_corrupt(tmp_path, monkeypatch, rp, code):
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    monkeypatch.setattr(mod, "REGISTRY", rp)
+    try:
+        mod.retrieve("validation drill")
+    except SystemExit as exc:
+        assert str(exc).startswith(f"INDEX_CORRUPT:{code}:"), str(exc)
+    else:
+        raise AssertionError(f"expected INDEX_CORRUPT:{code}, retrieve() returned")
+
+
+def test_validator_content_edit_raises_page_hash_mismatch(tmp_path, monkeypatch):
+    rp = _validator_registry(tmp_path)
+    (tmp_path / "BRAIN" / "05-MEMORY" / "SMART-NOTES" / "v0.md").write_text(
+        "# V0\n\n## IN A NUTSHELL\n\nTAMPERED", encoding="utf-8")
+    _assert_index_corrupt(tmp_path, monkeypatch, rp, "PAGE_HASH_MISMATCH")
+
+
+def test_validator_deleted_page_raises_projection_absent(tmp_path, monkeypatch):
+    rp = _validator_registry(tmp_path)
+    (tmp_path / "BRAIN" / "05-MEMORY" / "SMART-NOTES" / "v0.md").unlink()
+    _assert_index_corrupt(tmp_path, monkeypatch, rp, "PROJECTION_ABSENT")
+
+
+def test_validator_stale_title_raises_manifest_stale(tmp_path, monkeypatch):
+    """A title edit without reindexing changes entries but not the manifest."""
+    rp = _validator_registry(tmp_path)
+    reg = json.loads(rp.read_text(encoding="utf-8"))
+    reg["entries"][0]["title"] = "Silently edited title"
+    rp.write_text(json.dumps(reg), encoding="utf-8")
+    _assert_index_corrupt(tmp_path, monkeypatch, rp, "MANIFEST_STALE")
+
+
+def test_validator_stripped_hash_raises_page_hash_missing(tmp_path, monkeypatch):
+    """No grandfathering: an entry without page_hash fails closed. This drill
+    also detects a no-op validator — one that always returns True cannot pass."""
+    rp = _validator_registry(tmp_path)
+    reg = json.loads(rp.read_text(encoding="utf-8"))
+    del reg["entries"][0]["page_hash"]
+    reg["corpus_manifest_hash"] = mod._corpus_manifest_hash(reg["entries"])
+    rp.write_text(json.dumps(reg), encoding="utf-8")
+    _assert_index_corrupt(tmp_path, monkeypatch, rp, "PAGE_HASH_MISSING")
+
+
+def test_validator_path_escape_raises(tmp_path, monkeypatch):
+    rp = _validator_registry(tmp_path)
+    reg = json.loads(rp.read_text(encoding="utf-8"))
+    reg["entries"][0]["projection_path"] = "../../README.md"
+    rp.write_text(json.dumps(reg), encoding="utf-8")
+    _assert_index_corrupt(tmp_path, monkeypatch, rp, "PATH_ESCAPE")
+
+
+def test_validator_envelope_corruption_raises_schema_mismatch(tmp_path, monkeypatch):
+    rp = _validator_registry(tmp_path)
+    reg = json.loads(rp.read_text(encoding="utf-8"))
+    reg["schema"] = "naya.smart-note-projection-index.v0-legacy"
+    rp.write_text(json.dumps(reg), encoding="utf-8")
+    _assert_index_corrupt(tmp_path, monkeypatch, rp, "SCHEMA_MISMATCH")
+
+
+def test_validator_unreadable_index_raises(tmp_path, monkeypatch):
+    rp = _validator_registry(tmp_path)
+    rp.write_text("{not valid json", encoding="utf-8")
+    _assert_index_corrupt(tmp_path, monkeypatch, rp, "INDEX_UNREADABLE")
+
+
+def test_validator_duplicate_binding_raises(tmp_path, monkeypatch):
+    rp = _validator_registry(tmp_path)
+    reg = json.loads(rp.read_text(encoding="utf-8"))
+    dup = dict(reg["entries"][0])
+    dup["smart_note_id"] = "SN-DUP"
+    reg["entries"].append(dup)
+    rp.write_text(json.dumps(reg), encoding="utf-8")
+    _assert_index_corrupt(tmp_path, monkeypatch, rp, "DUPLICATE_BINDING")
+
+
+def test_validator_malformed_entry_raises(tmp_path, monkeypatch):
+    rp = _validator_registry(tmp_path)
+    reg = json.loads(rp.read_text(encoding="utf-8"))
+    del reg["entries"][0]["projection_path"]
+    rp.write_text(json.dumps(reg), encoding="utf-8")
+    _assert_index_corrupt(tmp_path, monkeypatch, rp, "ENTRY_MALFORMED")
+
+
+def test_validator_missing_manifest_raises_manifest_stale(tmp_path, monkeypatch):
+    rp = _validator_registry(tmp_path)
+    reg = json.loads(rp.read_text(encoding="utf-8"))
+    del reg["corpus_manifest_hash"]
+    rp.write_text(json.dumps(reg), encoding="utf-8")
+    _assert_index_corrupt(tmp_path, monkeypatch, rp, "MANIFEST_STALE")
+
+
+def test_validator_skips_terminal_lifecycle_entries(tmp_path, monkeypatch):
+    """SUPERSEDED entries are unscored, so their drift cannot produce an
+    answer: the validator skips them (the backfill retires unvalidatable
+    entries into this set instead of deleting them)."""
+    rp = _validator_registry(tmp_path)
+    reg = json.loads(rp.read_text(encoding="utf-8"))
+    reg["entries"][0]["lifecycle_state"] = "SUPERSEDED"
+    del reg["entries"][0]["page_hash"]
+    reg["corpus_manifest_hash"] = mod._corpus_manifest_hash(reg["entries"])
+    rp.write_text(json.dumps(reg), encoding="utf-8")
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    monkeypatch.setattr(mod, "REGISTRY", rp)
+    monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 0)
+    result = mod.retrieve("validation drill")
+    assert result["retrieved"]["smart_note_id"] == "SN-V1"
+
+
+def test_writer_emits_page_hash_and_manifest(tmp_path):
+    """Writer contract: page_hash binds the entry to its page bytes, and the
+    manifest anchors the full entry list — both inside one transaction."""
+    m = _problem_b_fresh_module(tmp_path)
+    cap, ver, proj = _problem_b_inputs(m, tmp_path, "IB-WRITER-1")
+    entry = m.update_registry(cap, ver, proj)
+    assert entry["page_hash"] == m._page_file_hash(proj)
+    reg = json.loads(m.REGISTRY.read_text(encoding="utf-8"))
+    assert reg["corpus_manifest_hash"] == m._corpus_manifest_hash(reg["entries"])
+    # The written registry validates clean through the hot path.
+    m._validate_index_against_corpus(reg)
+
+
+def test_writer_second_write_refreshes_manifest(tmp_path):
+    """Two sequential captures: the manifest covers both entries."""
+    m = _problem_b_fresh_module(tmp_path)
+    for ib in ("IB-WRITER-A", "IB-WRITER-B"):
+        cap, ver, _ = _problem_b_inputs(m, tmp_path, ib)
+        proj = tmp_path / "BRAIN" / "05-MEMORY" / "SMART-NOTES" / f"{ib}.md"
+        proj.write_text(f"# {ib}", encoding="utf-8")
+        m.update_registry(cap, ver, proj)
+    reg = json.loads(m.REGISTRY.read_text(encoding="utf-8"))
+    assert len(reg["entries"]) == 2
+    assert reg["corpus_manifest_hash"] == m._corpus_manifest_hash(reg["entries"])
+    m._validate_index_against_corpus(reg)

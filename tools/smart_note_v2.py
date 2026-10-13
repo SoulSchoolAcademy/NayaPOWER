@@ -565,10 +565,18 @@ def _update_registry_locked(capture, verify, projection, registry, sn_id=None):
         _assert_smart_note_id_available(
             normalized_sn_id, ib, registry.get("entries", [])
         )
+    # Writer contract (B-51 step 3): every entry carries the sha256 of its
+    # projection page bytes, binding index to corpus. The page was rendered
+    # before this call, so the file exists; if it cannot be resolved here,
+    # page_hash is None and the hot-path validator fails closed on the entry
+    # if it is ever retrieval-eligible. Never silently absent.
+    proj_file = Path(projection) if projection else None
+    page_hash = _page_file_hash(proj_file) if proj_file is not None and proj_file.is_file() else None
     entry = {
         "smart_note_id": sn_id,
         "intelligent_block_id": block["intelligent_block_id"],
         "content_hash": _canonical_content_hash(block["content"]["lesson"]),
+        "page_hash": page_hash,
         "title": capture["title"],
         "captured_at": capture["source"]["captured_at"],
         "category": capture.get("category", "SMART_NOTE"),
@@ -601,6 +609,11 @@ def _update_registry_locked(capture, verify, projection, registry, sn_id=None):
         policy = registry.setdefault("sequence_policy", {"human_id_format":"SN-###"})
         policy["next_sequence"] = max(int(policy.get("next_sequence", 1)), int(seq_match.group(1)) + 1)
         policy["purpose"] = "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance."
+    # Writer contract (B-51 step 3): the manifest anchors the FULL entry list.
+    # Any entry-level change without a reindex fails closed at read time.
+    # reserve_smart_note_id() only touches sequence_policy (never entries),
+    # so this is the single place entries mutate: one writer, one manifest.
+    registry["corpus_manifest_hash"] = _corpus_manifest_hash(registry["entries"])
     # No direct write: registry_transaction commits atomically on clean exit.
     return entry
 
@@ -729,6 +742,145 @@ def _retrieval_idf(field_word_sets):
             df[w] = df.get(w, 0) + 1
     return {w: math.log(1.0 + n / max(1, c)) for w, c in df.items()}
 
+
+# --- Fail-closed index validation (B-51 repair, step 3; Naya Beta design 2026-10-12) ---
+#
+# The retrieval index (.naya/memory/smart-notes/index.json) used to load with
+# zero corpus validation on the hot path: a drifted checkout (edited, deleted
+# or moved projection page; hand-edited metadata; an index copied from another
+# checkout) would retrieve silently wrong intelligence — the B-51 class: a
+# wrong answer with no error signal. This validator runs as the FIRST statement
+# of _ranked_candidates() (the single retrieval funnel) and raises
+# INDEX_CORRUPT:<code>:<detail> on ANY mismatch. Never an answer, never a
+# silent fallback, never a downgrade to NO_RELEVANT_INTELLIGENCE, never
+# log-and-proceed.
+#
+# Refusal / corruption code registry (all raised as SystemExit, the module's
+# existing refusal idiom):
+#   PRIVATE_INTELLIGENCE_NOT_DISCLOSED — extraction probe refused as a probe
+#   NO_RELEVANT_INTELLIGENCE           — nothing scored above the relevance floor
+#   INDEX_CORRUPT:INDEX_UNREADABLE      — index file missing or not valid JSON
+#   INDEX_CORRUPT:SCHEMA_MISMATCH       — envelope is not the pinned schema
+#   INDEX_CORRUPT:ENTRY_MALFORMED       — eligible entry lacks id/path strings
+#   INDEX_CORRUPT:PATH_ESCAPE           — projection_path escapes the allowed roots
+#   INDEX_CORRUPT:PROJECTION_ABSENT     — declared projection page not on disk
+#   INDEX_CORRUPT:DUPLICATE_BINDING     — two entries claim one id or one page
+#   INDEX_CORRUPT:PAGE_HASH_MISSING      — eligible entry has no page_hash (no grandfathering)
+#   INDEX_CORRUPT:PAGE_HASH_MISMATCH    — page bytes differ from the indexed hash
+#   INDEX_CORRUPT:MANIFEST_STALE        — entries differ from corpus_manifest_hash
+#
+# Threat model: accidental drift, NOT adversarial tampering (an actor who
+# recomputes hashes forges consistency — out of model, stated not hidden).
+# No git dependency on the hot path: disk bytes anchor entries, the index's
+# own manifest anchors the entry list.
+
+INDEX_SCHEMA = "naya.smart-note-projection-index.v1"
+
+# Projection pages may only live under these roots (relative to ROOT).
+INDEX_ALLOWED_PROJECTION_ROOTS = ("BRAIN/05-MEMORY/SMART-NOTES", ".naya/memory/smart-notes")
+
+# Lifecycle states the validator skips. They never enter any candidate pool
+# under any query, so their drift cannot produce a retrieval answer. The
+# one-time backfill explicitly retires unvalidatable entries into this set
+# (marked, never deleted) instead of leaving them shape-broken.
+INDEX_VALIDATION_INACTIVE_STATES = frozenset({"SUPERSEDED", "ARCHIVED", "REVOKED", "RETIRED"})
+
+
+def _page_file_hash(path):
+    """Single hashing authority for the page binding: sha256 of raw file bytes.
+
+    Writer, backfill, and validator share this — two hash implementations is
+    a future B-51. Distinct from content_hash, which hashes the capture
+    intelligence payload, not the projection page bytes: one field, one meaning.
+    """
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(65536), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def _corpus_manifest_hash(entries):
+    """Single hashing authority for index freshness: sha256 of the canonical
+    JSON of the FULL entries list (every field the writer emitted)."""
+    canonical = json.dumps(entries, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+    return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
+
+
+def _projection_path_contained(projection_path):
+    """True iff the index-declared path is relative and stays inside an allowed root."""
+    if not isinstance(projection_path, str) or not projection_path:
+        return False
+    if os.path.isabs(projection_path):
+        return False
+    norm = os.path.normpath(projection_path).replace("\\", "/")
+    if norm == ".." or norm.startswith("../"):
+        return False
+    return any(norm == allowed or norm.startswith(allowed + "/")
+               for allowed in INDEX_ALLOWED_PROJECTION_ROOTS)
+
+
+def _validate_index_against_corpus(registry, root=None):
+    """Fail-closed validation of the retrieval index against the working-tree corpus.
+
+    Checks run in table order (0-7); the first failure wins. Any failure raises
+    SystemExit("INDEX_CORRUPT:<code>:<detail>") — corruption is a broken index,
+    distinguishable from "no relevant intelligence". root resolves at call time
+    (not def time) so test harnesses that re-point ROOT get the live value.
+    """
+    root = ROOT if root is None else root
+    entries = registry.get("entries")
+    # Check 1 — envelope. (Check 0, readability, is handled by the caller,
+    # which wraps load_json: an unreadable file never reaches this function.)
+    if registry.get("schema") != INDEX_SCHEMA or not isinstance(entries, list):
+        raise SystemExit("INDEX_CORRUPT:SCHEMA_MISMATCH:index envelope is not " + INDEX_SCHEMA)
+    eligible = [e for e in entries
+                if str(e.get("lifecycle_state", "ACTIVE")).upper() not in INDEX_VALIDATION_INACTIVE_STATES]
+    # Check 2 — entry shape (eligible entries only; inactive entries were
+    # explicitly retired by the backfill and cannot be retrieved).
+    for e in eligible:
+        ib = e.get("intelligent_block_id")
+        pp = e.get("projection_path")
+        if not isinstance(ib, str) or not ib or not isinstance(pp, str) or not pp:
+            raise SystemExit(f"INDEX_CORRUPT:ENTRY_MALFORMED:entry lacks intelligent_block_id/projection_path: {ib!r}")
+    # Check 3 — path containment.
+    for e in eligible:
+        if not _projection_path_contained(e["projection_path"]):
+            raise SystemExit(f"INDEX_CORRUPT:PATH_ESCAPE:{e['intelligent_block_id']}: {e['projection_path']!r}")
+    # Check 4 — file existence.
+    for e in eligible:
+        if not (root / e["projection_path"]).is_file():
+            raise SystemExit(f"INDEX_CORRUPT:PROJECTION_ABSENT:{e['intelligent_block_id']}: {e['projection_path']}")
+    # Check 5 — binding uniqueness.
+    seen_ids, seen_paths = set(), set()
+    for e in eligible:
+        if e["intelligent_block_id"] in seen_ids or e["projection_path"] in seen_paths:
+            raise SystemExit(f"INDEX_CORRUPT:DUPLICATE_BINDING:{e['intelligent_block_id']}: {e['projection_path']}")
+        seen_ids.add(e["intelligent_block_id"])
+        seen_paths.add(e["projection_path"])
+    # Check 6 — content binding (missing hash fails closed: no grandfathering).
+    for e in eligible:
+        ph = e.get("page_hash")
+        if not isinstance(ph, str) or not ph:
+            raise SystemExit(f"INDEX_CORRUPT:PAGE_HASH_MISSING:{e['intelligent_block_id']}")
+        if _page_file_hash(root / e["projection_path"]) != ph:
+            raise SystemExit(f"INDEX_CORRUPT:PAGE_HASH_MISMATCH:{e['intelligent_block_id']}: page bytes differ from index")
+    # Check 7 — index freshness over the FULL entry list.
+    manifest = registry.get("corpus_manifest_hash")
+    if not isinstance(manifest, str) or manifest != _corpus_manifest_hash(entries):
+        raise SystemExit("INDEX_CORRUPT:MANIFEST_STALE:index entries differ from the manifest committed with them")
+
+
+def _load_validated_registry():
+    """Load the retrieval index and fail closed on any drift (check 0 + 1-7)."""
+    try:
+        registry = load_json(REGISTRY)
+    except (OSError, ValueError) as exc:
+        raise SystemExit(f"INDEX_CORRUPT:INDEX_UNREADABLE:{exc}")
+    _validate_index_against_corpus(registry)
+    return registry
+
+
 def _ranked_candidates(query, areas=None, task_contexts=None):
     """Score every active registry entry for query; returns the ranked list of
     (score, truth-state rank, entry) sorted descending. This is the testable
@@ -737,8 +889,13 @@ def _ranked_candidates(query, areas=None, task_contexts=None):
 
     areas / task_contexts optionally scope the candidate pool by
     applicability metadata (tools/applicability.py) BEFORE scoring.
-    Default (both None) is unchanged behavior: the full corpus."""
-    registry = load_json(REGISTRY)
+    Default (both None) is unchanged behavior: the full corpus.
+
+    The index is fail-closed validated FIRST (B-51 step 3): any drift
+    between the index and the working-tree corpus raises
+    INDEX_CORRUPT:<code> instead of scoring — a broken index never
+    produces a retrieval answer."""
+    registry = _load_validated_registry()
     candidates = registry.get("entries", [])
     if areas or task_contexts:
         candidates = _applicability_filter_entries(
@@ -747,7 +904,9 @@ def _ranked_candidates(query, areas=None, task_contexts=None):
     q = set(_stem(w) for w in q_raw)
     q_phrase = " ".join(q_raw)
     ranked = []
-    inactive = {"SUPERSEDED", "ARCHIVED", "REVOKED"}
+    # Terminal lifecycle states never enter any candidate pool. RETIRED is the
+    # backfill's explicit marker for unvalidatable entries (B-51 step 3).
+    inactive = INDEX_VALIDATION_INACTIVE_STATES
     # First pass: per-entry field word sets (one projection read per entry,
     # same I/O as before) plus corpus document frequencies for IDF.
     scored_entries = []
