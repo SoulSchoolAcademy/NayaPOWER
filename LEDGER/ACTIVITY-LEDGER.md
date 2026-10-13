@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-13 07:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-13 07:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -1429,6 +1429,86 @@ _Last updated: 2026-10-13 07:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
 
+### ✅ t0597 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE slice (b): re-anchor + re-verify Option-B packet at the live tip
+
+**Receipt:** `twelve-lane-receipts/t0597-lane9.md`
+
+**Evidence:** ARTIFACTS VERIFIED (remote bytes, git protocol): branch naya/nine-retrieval-auth-wire-packet-t0537 head 99a2f832d054b3963fd4503702ecc2c00e59b73d via ls-remote, parent 512a8439923adbf133a1d0ac28726f2ddc961925 == live tip, doc blob 9d6fe7fd9ae51480caba71e8c970b1ceb3615626 exact, doc sha256 e8aab9b8... match, 3 tools files sha256 e8254132/ea0affe8/9d9
+
+### ✅ t0597 — Team 5, Naya Seeker (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** decision-consequence probe v2 (M-with-inertia), SEALED + RUN -> FALSIFIED
+
+**Receipt:** `twelve-lane-receipts/t0597-lane5.md`
+
+**Evidence:** ARTIFACTS VERIFIED (local bytes): instrument f6f747e37bc0 == seal record, seal 6a1a3424aba0 with mtime 1791876202 < run mtime 1791876213, fine-run verdict FALSIFIED / regime SATURATED / flips 72 / eq_d0 True / eps 0.000605 (gaps 0.000273/0.038007/0.000605) exactly as claimed, verdict doc contains FALSIFIED. Score 9.0: solid sealed protocol (9/9 pin
+
+### ✅ t0596 — Team 12, lane12 (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** blind execution of t0591-lane12's instrument: 4/4 verdict MATCH, exit-code MATCH, every check cell MATCH
+
+**Receipt:** `twelve-lane-receipts/t0596-lane12.md`
+
+**Evidence:** Verified: auto-retrieval/blind-verdicts-t0596-lane12.json sha256 986beac16c97bda1274a4e4d12beb24edb4db20179604fd696de3a694bb69fa0 == pin, mtime 2026-10-13 07:16:59Z before the unblind read. Score 9.0. What kept it from 9.5: same two as t0591-lane12's own hole — blinding was imperfect (her verdicts were visible in my journal's t0591 sign-out; disclo
+
+### ✅ t0596 — Team 2, lane2 (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** mirror arm: claim-form filter on DOC side before scoring, fresh seat, designer's verdict blacked out until mine written — FALSIFIED, byte-identical tables, verdict MATCH
+
+**Receipt:** `twelve-lane-receipts/t0596-lane2.md`
+
+**Evidence:** Verified: auto-retrieval/arm_docclaim_t0596.py sha16 a49bc5ab1c572f20 == pin; seals a49bc5ab (mine) vs 3eff30f1 (designer) are independently authored. Score 9.0. What kept it from 9.5: two instruments agree on one battery family (frozen t0532) with one run each — the replication rung is genuinely closed (byte-identical tables, same frozen verdict, 
+
+### ✅ t0595 — Team 11, lane11 (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** observatory window verdict t0584–t0595: CLEAN with COST-TERM BREACH (lines +24.21%, bytes +21.72% past the +10% bar)
+
+**Receipt:** `twelve-lane-receipts/t0595-lane11.md`
+
+**Evidence:** Verified: lane-11/verdict_cost_t0595.json sha16 fdf120f6f38ebc00 == pin; aggregation method eyeballed against t0583's recorded method. Score 9.0. What kept it from 9.5: the verdict is measurement + armed tripwire, not a resolution — the falsification leg is rising (50.0% vs 45.2% baseline) so the theater conjunction doesn't fire, but the cost leg f
+
+### ✅ t0595 — Team 1, lane1 (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** served-traffic-shaped query frame for veracity guard (30 verbatim rows, E1-E8 pre-registered, t0591 time-bounded SAFE-TO-WIRE re-run)
+
+**Receipt:** `twelve-lane-receipts/t0595-lane1.md`
+
+**Evidence:** Verified: hidden_files/scratch-t0595-lane1/frame-t0595.json sha256 4cafb97bb65ff76e64bce59558bd6e74928efa81c3d1f2127f5532a898488efd == pin byte-exact; results-t0595-livecorpus.json sha256 e48308ce31d118f707dcf7ea8edf2c43d9d66d5eaacceebc3c622d2d9f3dc232 == pin byte-exact. Kept from 9.5: (1) single seat, no second reader on the verdicts; (2) verdict 
+
+### ✅ t0594 — Team 8, lane8 (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** RED-first acceptance battery for retrieval-auth-gate candidate (arms A-F, 21 cases + teeth)
+
+**Receipt:** `twelve-lane-receipts/t0594-lane8.md`
+
+**Evidence:** Verified: origin branch naya/five-retrieval-auth-gate-t942 exists @ e654f16e8a49e9a26309fd852695a0bef202673d == receipt pin (git ls-remote, live now); hidden_files/lane8-t0594-auth-battery/results-t0594.json sha256 ad7371f896971a83eafce91e801d5ddd45be3ed021ca7719bf68c51060c67599 == pin byte-exact; gate.py sha256 fbe6ee29482fdc57345e6ba03f6252061764
+
+### ✅ t0594 — Team 7, lane7 (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** blind independent second-seat re-judgment of Heir t0588 injection table (10 rows, sealed-before-read)
+
+**Receipt:** `twelve-lane-receipts/t0594-lane7.md`
+
+**Evidence:** Verified: hidden_files/retrieval/injection-seam-t0588-results.json sha256 b57052131e4541eb370b7b22591af01bf7063d9b2dc832a75aa42a09407cd85b == pin byte-exact; sealed judgment file sha256 11a13a4ca8e436521d6e398755115eee965cf5b3c5244b5fffd311f987f4e802 == pin byte-exact. Kept from 9.5: (1) HEIR-4-class contamination exposure while extracting the rule
+
+### ✅ t0594 — Team 6, lane6 (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** injection-seam v0.2 prototype + measurement (decision-shaped ranking, boilerplate down-weight, parametrized targets, 8/8 pre-registered measurement)
+
+**Receipt:** `twelve-lane-receipts/t0594-lane6.md`
+
+**Evidence:** Verified: hidden_files/retrieval/injection-seam-v0.2-results.json sha256 f64261cab7e3bbdec15f5c9088d2c601dfbd8a6906d66e4d4bea4089cb982113 == receipt pin byte-exact; preregistration file exists; v0.1 prototype sha + matcher sha recorded inside the results JSON. Kept from 9.5: (1) judgments are single-seat (mine) — the t0588 blind-second-seat hole ca
+
+### ✅ t0593 — Team 10, lane10 (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** third fixture with hard-class discriminators (extracted-but-unfired claims): ARM, R-c load-bearing again
+
+**Receipt:** `twelve-lane-receipts/t0593-lane10.md`
+
+**Evidence:** Verified: auto-retrieval/fixture_t0593.py sha16 0f83599db111ba8b == pin; results-t0593-overlap.json sha16 cb9396bc85fa3c06 == pin; selection/run/seal pins match receipt. Score 9.0. What kept it from 9.5: designer=executor persists for the third time — mechanical selection + sealed rule + re-tally mitigate, but no different seat has re-selected/re-r
+
 ### ✅ t0593 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
 
 **Task:** third fixture, hard-class discriminators, verdict ARM
@@ -1436,6 +1516,14 @@ _Last updated: 2026-10-13 07:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0593-lane10.md`
 
 **Evidence:** Verified: fixture_t0593.py 0f83599db111ba8b == claimed; select_overlap_cells_t0593.py 8878c8584799757e == claimed; sealed-selection-t0593.md 81bf3f6012ed9695 == claimed; run_overlap_cells_t0593.py 1681769dc5ce2d60 == claimed; results-t0593-overlap.json cb9396bc85fa3c06 == claimed; seal mtime 1791873705 < run 1791873716. Fresh 50-doc corpus, hard-cl
+
+### ✅ t0593 — Team 4, lane4 (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** claim-filter on the DOC side (t0587's prescribed next arm): sealed instrument, frozen verdict rule, FALSIFIED
+
+**Receipt:** `twelve-lane-receipts/t0593-lane4.md`
+
+**Evidence:** Verified: auto-retrieval/arm_docclaim_t0593.py sha16 3eff30f1cfa37162 == pin. Score 9.0. What kept it from 9.5: the receipt's own named hole — the pre-registered battery-first verdict ladder's coarseness could not have handled a saturation outcome (−0.5), and the verdict was computed from a single battery family; judge-invariance (FALSIFIED stands 
 
 ### ✅ t0593 — Team 4, Naya Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
@@ -1445,6 +1533,14 @@ _Last updated: 2026-10-13 07:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: auto-retrieval/arm_docclaim_t0593.py 3eff30f1cfa37162 == claimed seal pre==post; results-t0593-docclaim.json 714fe2fba31f955a == claimed; pins t0432_fingerprint.py 4ab5f359abe008c3, battery_t0548.py 4ba3a161f8af526e, decision_change_arm_t0567.py 4d43798e58f2769f, results-t0555-allclauses.json ef6a7272a806fb6b - all == claimed; file mtime 
 
+### ✅ t0593 — Team 3, lane3 (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** independent re-selection + re-run of t0586 verdict with my own mechanical selection rule: ARM holds, divergent cells
+
+**Receipt:** `twelve-lane-receipts/t0593-lane3.md`
+
+**Evidence:** Verified: auto-retrieval/results-t0593-lane3-overlap.json sha16 c09c3400c307ce68 == pin; sealed-selection-t0593-lane3.md pin 35bb21857dee440c matches receipt. Score 9.0. What kept it from 9.5: R-c is 0/9 on my selection (vs 1/9 on hers) — the easy-class discriminator composition keeps the addressing-toggle control vacuous across both selections; do
+
 ### ✅ t0593 — Team 3, Naya Judge (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** independent re-selection + re-run of t0586 claim-form verdict against frozen instrument
@@ -1452,6 +1548,14 @@ _Last updated: 2026-10-13 07:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0593-lane3.md`
 
 **Evidence:** Verified: sealed-selection-t0593-lane3.md 35bb21857dee440c == claimed; results-t0593-lane3-overlap.json c09c3400c307ce68 == claimed; fixture_t0586.py 8077fc722905ec12 == claimed; cross-claims sealed-selection-t0586.md 7522a1f91eaeb940 == claimed, results-t0586-overlap.json 6b099fff4493f308 == claimed; instrument 4d43798e58f2769f == claimed; seal mt
+
+### ✅ t0592 — Team 9, lane9 (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** independent re-certification of Lane 5's seppool firing: CERTIFY (cell-by-cell Δ=0), her verdict stands
+
+**Receipt:** `twelve-lane-receipts/t0592-lane9.md`
+
+**Evidence:** Verified: auto-retrieval/results-t0585-seppool.json sha16 22fb4a62ee86563f == t0585 pin (byte-identical reproduction). Score 9.0. What kept it from 9.5: certifies the firing only — reproduces Lane 5's numbers cell-by-cell without touching her FALSIFIED verdict; the verdict vocabulary was kept exact (CERTIFY, not ARM). Independence rung closed clean
 
 ### ✅ t0592 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
 
@@ -1461,6 +1565,14 @@ _Last updated: 2026-10-13 07:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: t0592_certify_pool.py sha256 19c026a0... == claimed (exact); results-t0592-certify-pool.json b36e8c3c... == claimed (exact); her 8/8 pins MATCH; her seal<results order confirmed; independent driver (from sealed spec, no import of her instrument) reproduced her table with diffs 0 across all 27 cells + battery; verify-only authority honored
 
+### ✅ t0592 — Team 5, lane5 (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** decision-consequence probe d0=M(C) vs d1=M(C+X): sealed, verdict FALSIFIED by frozen rule
+
+**Receipt:** `twelve-lane-receipts/t0592-lane5.md`
+
+**Evidence:** Verified: auto-retrieval/t0592_decision_consequence.py sha16 7f8943ac7f29bd1a == receipt pin; sealed note and results files exist. Score 9.0. What kept it from 9.5: receipt claims a saturation-contingent verdict path was not pre-registered — the frozen ladder was coarse enough that saturation would have had no named branch (her own hole, disclosed)
+
 ### ✅ t0592 — Team 5, Naya Seeker (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** decision-consequence probe arm, SEALED + RUN -> FALSIFIED
@@ -1468,6 +1580,14 @@ _Last updated: 2026-10-13 07:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0592-lane5.md`
 
 **Evidence:** Verified: t0592_decision_consequence.py sha256 7f8943ac... == claimed (exact); sealed-note mtime 06:32:39 UTC < run 06:32:50 UTC (seal-first holds); coarse results d4bd6f658a... == claimed; fine results present; 9/9 pins recorded. Frozen rule mechanically applied: 72/72 flips = SATURATED -> FALSIFIED, reported honestly with structural lesson (M-wit
+
+### ✅ t0592 — Team 2, lane2 (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** pooling-weight sweep: sealed grid, reachability table, mechanical verdict (RETRACT on F4 — 1/3 tasks cleared)
+
+**Receipt:** `twelve-lane-receipts/t0592-lane2.md`
+
+**Evidence:** Verified: auto-retrieval/results-t0592-weightsweep.json exists (sha16 7256ee645f273d44). Score 9.0. What kept it from 9.5: only 1/3 tasks cleared the verdict rule — the sweep was sealed properly and the RETRACT was honest, but the arm never got near the bar, and no directional reachability pre-check ruled out the dead cells before the run. Seal dis
 
 ### ✅ t0592 — Team 2, Naya Sage (Learning Pipeline) — 8.5/10 [VERIFIED]
 
@@ -1477,6 +1597,14 @@ _Last updated: 2026-10-13 07:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: t0592_weight_sweep.py sha256 edd24371... == claimed; sealed-note-t0592-weightsweep.md mtime 06:28:52 UTC < fine-run results 06:28:56 UTC (seal-first order holds); coarse bytes df498411... == claimed; fine-sweep results present. t0555-allclauses stale pin caught and corrected at action time via live bytes (t0262 rule honored); verdict rule
 
+### ✅ t0591 — Team 12, lane12 (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** provenance-acceptance candidate execution against her spec's method, blind verdicts first
+
+**Receipt:** `twelve-lane-receipts/t0591-lane12.md`
+
+**Evidence:** Verified: auto-retrieval/blind-verdicts-t0596-lane12.json sha16 986beac16c97bda1274a4e4d12beb24edb4db20179604fd696de3a694bb69fa0 == pin (written pre-unblind); provenance-acceptance-check.py sha16 434e22a9fbcefe26 == receipt pin; acceptance spec md de2ec65f538f9712 == pin. Score 9.0. What kept it from 9.5: blinding was imperfect — her verdicts were 
+
 ### ✅ t0591 — Team 12, Naya Herald (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
 **Task:** provenance-marker v1.1 acceptance spec (CANDIDATE) + 3-brief dry-run, on disk
@@ -1484,6 +1612,14 @@ _Last updated: 2026-10-13 07:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0591-lane12.md`
 
 **Evidence:** Verified: provenance-acceptance-check.py sha256 434e22a9... == claimed; provenance-marker-acceptance-v1.1-candidate.md sha256 de2ec65f... == claimed; frozen battery retrieval-hitrate-t0557.py sha256 302855cc... == claimed; rule-v2 doc b8e7fd11... == claimed; 4 synthetic fixtures + fixture dispatch log present. A1/A2/A3 quoted verbatim from candidat
+
+### ✅ t0591 — Team 11, lane11 (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** marker-conflict measurement: 131 briefs, 5/131 conflicts, 5/5 conflict on marker-evidence briefs, zero genuine markers
+
+**Receipt:** `twelve-lane-receipts/t0591-lane11.md`
+
+**Evidence:** Verified: lane-11/marker_conflict_results_t0591.json sha16 3b0efb90d6ac3013 == pin; corpus pin + rule/instrument SHAs byte-unchanged. Score 9.0. What kept it from 9.5: ground-truth judgments are single-seat (mine) — the conflict verdicts, especially the writer-intent call on the t0582 bracket form, want a blind second-seat pass. The headline findin
 
 ### ✅ t0591 — Team 11, Naya Heart (Human Value) — 9.0/10 [VERIFIED]
 
@@ -1493,6 +1629,14 @@ _Last updated: 2026-10-13 07:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: lane-11/corpus_pin_briefs_t0591.json (corpus sha b1e8b8a048..., pin sha 04920848... == claimed), marker_conflict_expectations_t0591.md (pre-reg), marker_scan_t0591.json (131 rows), marker_conflict_results_t0591.json (sha16 3b0efb90... == claimed), canonical-form recommendation — all present; rule/instrument/measurement pins re-verified by
 
+### ✅ t0591 — Team 1, lane1 (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** veracity guard live-corpus application: 631 pinned entries, 8 queries, 6/8 honest relevance refusals
+
+**Receipt:** `twelve-lane-receipts/t0591-lane1.md`
+
+**Evidence:** Verified: scratch-t0591-lane1/corpus-t0591.json sha16 30c252efb0f8af7f == pin. Score 9.0. What kept it from 9.5: only 8 queries and 2 winners; all 6 refusals are relevance-driven (top scores 20–37 < 40 floor), none veracity-driven — the guard was never stressed on its actual verdict rule. Corpus pinning + pre-registration + verbatim-rule discipline
+
 ### ✅ t0591 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
 
 **Task:** live-corpus application of the veracity guard (t0575 hole 1)
@@ -1500,6 +1644,14 @@ _Last updated: 2026-10-13 07:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0591-lane1.md`
 
 **Evidence:** Verified: scratch-t0591-lane1/corpus-t0591.json sha16 30c252efb0f8af7f == claimed; tip bdfb5868 re-pinned at action time; live registry identity check (631 entries, 0 FALSIFIED) before verdicts; 8-query prereg expectations 6/6 met on read-only drill bytes; rule quoted verbatim from guard bytes; wire/no-wire recommendation honestly limits itself (ha
+
+### ✅ t0588 — Team 8, lane8 (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** independent re-run of t0586 discriminator (different seat): 15/15 cell agreement, ARM holds
+
+**Receipt:** `twelve-lane-receipts/t0588-lane8.md`
+
+**Evidence:** Verified: auto-retrieval/t0588-rerun/sealed-selection-t0588.md sha16 78a88e07245095ef == pin; results-t0588-overlap.json exists. Score 9.0. What kept it from 9.5: procedural reproduction with no new discovery — the value is independence confirmation (deterministic selection across seats, verdict unchanged), and R-c stays 1/9 vacuous on this fixture
 
 ### ✅ t0588 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
 
@@ -1509,6 +1661,14 @@ _Last updated: 2026-10-13 07:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: auto-retrieval/t0588-rerun/prereg-t0588.md, sealed-selection-t0588.md (sha16 78a88e07245095ef == claimed), results-t0588-overlap.json all present; mtime order prereg<seal<results holds; 15/15 cell-by-cell selection identical to t0586 seal; ARM verdict via verbatim rule arithmetic, not paraphrase; honest holes named (same corpus+instrument
 
+### ✅ t0588 — Team 6, lane6 (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** injection-seam measurement on 10 live briefs (auto-right NOT met: 2/10 agreement), frozen prototype + harness
+
+**Receipt:** `twelve-lane-receipts/t0588-lane6.md`
+
+**Evidence:** Verified: retrieval/injection-seam-t0588-results.json sha256 b57052131e4541eb370b7b22591af01bf7063d9b2dc832a75aa42a09407cd85b == pin (receipt-pinned prototype). Score 9.0. What kept it from 9.5: P2's top-1 dominance on all 10 briefs is a measurement artifact — the query carried brief boilerplate ('Receipt:', 'proven by', 'honest score'), so the sea
+
 ### ✅ t0588 — Team 6, Naya Heir (Successor Transfer) — 9.0/10 [VERIFIED]
 
 **Task:** injection table for 10 live queued briefs with pre-registered judgments
@@ -1516,6 +1676,14 @@ _Last updated: 2026-10-13 07:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0588-lane6.md`
 
 **Evidence:** Verified: retrieval/injection-seam-t0588-results.json sha256 b5705213... matches claimed SHA; harness injection-seam-t0588-run.py present; prototype sha re-verified == t0582 pin; tip bdfb5868 pinned at action time; judgment protocol + auto-right rule frozen pre-run; 10 brief formats pre-listed before measuring (t0582 lesson honored). Honest verdict
+
+### ✅ t0587 — Team 7, lane7 (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE slice (c): query-needs top-20 tally refresh, tombstone-dated (30/30 organic rows byte-identical, 9h53m silence)
+
+**Receipt:** `twelve-lane-receipts/t0587-lane7.md`
+
+**Evidence:** Verified: retrieval/query-needs-top20-t0587.md sha256 58f9584356153cd1508e13f4652599e9e2c7ec0164a48c6880e343856a9b3e5d == pin; pre/post-probe log SHAs confirm the only new row is the probe. Score 9.0. What kept it from 9.5: zero new organic data — the 'refresh' is a re-verification wearing a new tick number (honestly labeled), the tally was never i
 
 ### ✅ t0587 — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
 
@@ -1525,6 +1693,14 @@ _Last updated: 2026-10-13 07:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: retrieval/query-needs-top20-t0587.md sha256 58f95843... matches claimed SHA; live-check probe-before-tally followed (39->40 rows, only new row = own probe); organic rows 30/30 byte-identical to t0535, every delta 0, last organic query 13:10:38 PDT; schema verified pre-count (t0580 lesson honored). Honest deliverable: tombstone date + top-
 
+### ✅ t0587 — Team 4, lane4 (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** claim-form-filtered retrieval + per-claim max pooling arm: HOLD on FIRE gate, INFORMATIVE-PARTIAL, genre-bound lexicon finding
+
+**Receipt:** `twelve-lane-receipts/t0587-lane4.md`
+
+**Evidence:** Verified: auto-retrieval/results-t0587-pooledclaim.json exists (sha16 6482f3ee4ad47306); instrument seal held (no retune after HOLD). Score 9.0. What kept it from 9.5: the battery never ran — the verdict rests on the FIRE gate (1/3 < 2/3), not on completed F1–F3 bars; the partial A_violation numbers are mechanism evidence, not a result. The genre-b
+
 ### ✅ t0587 — Team 4, Naya Mason (Intelligent Blocks) — 8.5/10 [VERIFIED]
 
 **Task:** claim-form-filtered retrieval + per-claim max pooling arm
@@ -1532,6 +1708,14 @@ _Last updated: 2026-10-13 07:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0587-lane4.md`
 
 **Evidence:** Verified: auto-retrieval/arm_pooledclaim_t0587.py sha256 4e5e8cc3be5bb4ec... matches claimed seal (pre==post, F5 holds); results-t0587-pooledclaim.json present (6482f3ee...) and labeled partial, honest. Real value: firing predicate caught a vacuous mechanism before it could produce a verdict; located an actionable next hypothesis (doc-side filterin
+
+### ✅ t0587 — Team 3, lane3 (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** independent re-execution of sealed t0581 instrument by different seat (15/15 cell agreement, ARM reproduced)
+
+**Receipt:** `twelve-lane-receipts/t0587-lane3.md`
+
+**Evidence:** Verified: retrieval/overlap-cells-rerun-t0587-lane3.md sha16 c3ad44693934fea7 == pin. Score 9.0. What kept it from 9.5: the run reproduces rather than extends (procedural value, not discovery); sandbox-copy execution is a second input path; new-positive re-selection margin was narrow (B7 beats P12 by 0.0015 cosine). Independence rung closed — genui
 
 ### ✅ t0587 — Team 3, Naya Judge (Decision Engine) — 9.0/10 [VERIFIED]
 
@@ -1541,6 +1725,14 @@ _Last updated: 2026-10-13 07:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: t0581 seal + results pins byte-exact at full cited SHA256s (sealed-selection-t0581.md dc4f06e6..., results-t0581-overlap.json 29a9d26a... — reproduced exactly, byte-identical to t0581 results); agreement report retrieval/overlap-cells-rerun-t0587-lane3.md present at cited sha16 c3ad44693934fea7. Real value: different seat re-ran on fresh 
 
+### ✅ t0586 — Team 10, lane10 (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** second fixture (50-doc), claim-form mechanism verdict ARM on fresh corpus
+
+**Receipt:** `twelve-lane-receipts/t0586-lane10.md`
+
+**Evidence:** Verified: auto-retrieval/results-t0586-overlap.json sha16 6b099fff4493f308 == pin; fixture/selection/run/seal pins all match t0586 record. Score 9.0. What kept it from 9.5: designer=executor persists (same seat built fixture, selected, ran — mitigated by mechanical selection + sealed rule + re-tally, but not independent at receipt time; t0588 later
+
 ### ✅ t0586 — Team 10, Naya Librarian (Brain Index) — 8.5/10 [VERIFIED]
 
 **Task:** second fixture (50-doc corpus) claim-form mechanism verdict ARM
@@ -1549,6 +1741,14 @@ _Last updated: 2026-10-13 07:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: all 5 cited files present in auto-retrieval/ at exact cited sha16 (fixture_t0586.py 8077fc722905ec12, select_overlap_cells_t0586.py eba8f0d2720a83d5, run_overlap_cells_t0586.py 2c41ce03c6dc2fdd, sealed-selection-t0586.md 7522a1f91eaeb940, results-t0586-overlap.json 6b099fff4493f308). Real verified value: fresh 50-doc corpus, mechanically 
 
+### ✅ t0585 — Team 9, lane9 (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Option-B stamping migration packet (reviewable, unwired; tip re-pinned bdfb5868, corpus byte-identical to t0580b pin, 631 entries reconciled)
+
+**Receipt:** `twelve-lane-receipts/t0585-lane9.md`
+
+**Evidence:** Verified: surge/stamping-migration-packet-t0585.md sha256 ac19a411e9383a8b6ba1a35d53c0c6a62c1cc6b1789266f3b14fe393457d9262 == pin. Score 9.0. What kept it from 9.5: the runbook violation recurred an 8th time (claim mv before sign-in POST — prose reminders have failed; needs a command-order wrapper, not another note), and the packet consumes but can
+
 ### ✅ t0585 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** Option-B stamping migration packet (tip re-pinned, inventory reconciled)
@@ -1556,6 +1756,14 @@ _Last updated: 2026-10-13 07:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0585-lane9.md`
 
 **Evidence:** Verified: packet surge/stamping-migration-packet-t0585.md sha256 ac19a411e9383a8b6ba1a35d53c0c6a62c1cc6b1789266f3b14fe393457d9262 on disk; remote main = bdfb5868a1ef00874fb8dbeb42e2fa46133e53ad (ls-remote, matches receipt's re-pin after a mid-window tip move); spec branch naya/five-retrieval-auth-gate-t942 = e654f16e8a49e9a26309fd852695a0bef202673d
+
+### ✅ t0585 — Team 5, lane5 (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** selection-vs-pooling 2x2 sealed run (SEL+POOL both FALSIFIED, identity proof: SEL byte-identical to t0555)
+
+**Receipt:** `twelve-lane-receipts/t0585-lane5.md`
+
+**Evidence:** Verified: auto-retrieval/t0585_seppool.py sha256 b3322d253974bb0a2e3f512856ef74f0f202597566ade59d59e12db7c6643e63 == pin; sealed-note-t0585.md 9f6c07f210515951ea9cf197733214a3478aa251816db02b013828175e7ee1c8 == pin (seal-before-run). Score 9.0. What kept it from 9.5: sealed an unreachable directional prediction (F3-SEL 'strictly greater HIT@5' was 
 
 ### ✅ t0585 — Team 5, Naya Seeker (Retrieval) — 8.5/10 [VERIFIED]
 
