@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-13 14:04 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-13 14:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -2189,6 +2189,54 @@ _Last updated: 2026-10-13 14:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
 
+### ✅ t0637 — Team 2, lane2 (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** CANDIDATE lesson-injection contract (fingerprint->match->top-k->brief-hook), dry-fired
+
+**Receipt:** `twelve-lane-receipts/t0637-lane2.md`
+
+**Evidence:** VERIFIED: contract file hidden_files/auto-retrieval/lesson-injection-contract-v1-candidate.md sha256 bace1e70578fe5ef408ff9259cb59cd2a811c8e80ceb4b4614d6edf769622364 exact-match on disk; dry-fire outputs exist in auto-retrieval/dryfire-t0637/ (lane2, nopicks, brief). Tip 2c0f0d95 was live at action time (main has since moved to 34338065 - receipt a
+
+### ✅ t0636 — Team 10, Naya Librarian (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** Brain-index drift check at tip 2c0f0d95 + #2520 merge-discard rule-out
+
+**Receipt:** `twelve-lane-receipts/t0636-lane10.md`
+
+**Evidence:** Independent different-seat re-prove on exact live tip 2c0f0d958092a53b7a6b7e385433dc4b60683d0e (ls-remote match): --check exit 0 'OK: index layer matches git tree (1257 files)' RE-RUN by scorer at exact tip; #2520 merge == tip with parents [eb36746a, ac843f90] matching receipt's P1/P2 exactly (P2 == ls-remote pull/2520/head); merge-vs-P1 diff = onl
+
+### ✅ t0636 — Team 8, lane8 (Governance & Safety) — 9.5/10 [VERIFIED]
+
+**Task:** W2/W4 byte-proofs for retrieval auth-gate migration verdict
+
+**Receipt:** `twelve-lane-receipts/t0636-lane8.md`
+
+**Evidence:** VERIFIED: results-t0636-lane8.json byte-confirms every claim - baseline validator PASS on live bytes, W2 stamp survives regen write (stamp_survived True), regen_recomputed_manifest False, validator post-write RAISED INDEX_CORRUPT:MANIFEST_STALE exactly as receipt says; W4 631/631 mutated, stored hash unchanged, validator RAISED MANIFEST_STALE; live
+
+### ✅ t0635 — Team 11, lane11 (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** C-inversion decomposition DESIGN (design-only CANDIDATE) — the input that can re-open C DO-NOT-ADOPT
+
+**Receipt:** `twelve-lane-receipts/t0635-lane11.md`
+
+**Evidence:** VERIFIED: design doc exists, SHA 44fed1f4 live-matches, 17,295 bytes as claimed; 3 primary pins re-derived and live-match (probe results 1f358e96, probe script 515d1c48, synthesis 467d1d0f); brief probe-pin typo CONFIRMED in the brief bytes (6d3f5adb4b3b84 vs disk 5d985c8c754c084) — the lane genuinely checked bytes before believing the brief; C-row
+
+### ✅ t0635 — Team 6, lane6 (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** Blinded replication of t0627 paraphrase probe: B CONFIRM, C CONFIRM, A DELTA (band application)
+
+**Receipt:** `twelve-lane-receipts/t0635-lane6.md`
+
+**Evidence:** VERIFIED: all 3 frozen artifact pins live-match (instrument a211e4e4, probe script 515d1c48, results 1f358e96 — lane correctly re-derived results SHA, differing from brief stale pin per t0632 Conductor lesson); CANDIDATE pin 467d1d0f live-matches; all probe ranks recomputed cell-identical to frozen JSON (A: 4/2/10/21 p12@1; B: 3/1/5/26 p12@2; C: 12
+
+### ✅ t0634 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** HOLD: t0568 sealed cold-retrieve probe NOT executed (4 independent seal-breaking facts; seal preserved)
+
+**Receipt:** `twelve-lane-receipts/t0634-lane9.md`
+
+**Evidence:** Verified at scoring time: MANIFEST.sha256 8/8 OK re-derived locally (PREREG pin d8bbe825ac74421deba56a4836bc316c12eda1b67b6225a80b5b1168fb04c35f EXACT match); no frozen driver files under t0568/ (gen_t0568.py is the fixture generator only); origin HEAD 2c0f0d958092a53b7a6b7e385433dc4b60683d0e matches receipt exactly; sealed tip 65491239d2bb95ad3d7a
+
 ### ✅ t0634 — Team 5, Naya Seeker (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** Arm E sentence-embedding semantic arm — E-VERDICT: FAIL
@@ -3309,6 +3357,14 @@ _Last updated: 2026-10-13 14:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/injection-seam-v0.1.py sha256 matches receipt a1dda055..., injection-seam-v0.1-results.json sha256 matches 2948bb8a... both present at cited hashes. Work: imports Lane 7 certified matcher byte-for-byte, runtime-parsed corpus (15 principles + 20 lesson items), firing predicate (1 shared stemmed token len>=4,
 
+### ✅ t0582b — Team 4, lane4 (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** B-60: wire completeness gate into CI (PR #2509)
+
+**Receipt:** `twelve-lane-receipts/t0582b-lane4.md`
+
+**Evidence:** VERIFIED: branch lane4/b60-smart-note-completeness-gate-wiring exists on remote; ls-remote head 59832ba6144f5f8dc71ec5d1127437cb80446427 matches receipt claim exactly; workflow blob cc79333c3d0abd1d173274c2e28e2ee467eb9d9e present at that SHA; PR #2509 open with claimed title 'B-60: wire the Smart Note Completeness Gate into CI (Gate 3 of 7)'. Wiri
+
 ### ✅ t0582b — Team 4, Naya Mason (Intelligent Blocks) — 8.5/10 [VERIFIED]
 
 **Task:** B-60: verify completeness gate merged-not-enforced; wire into CI (PR #2509)
@@ -3357,6 +3413,14 @@ _Last updated: 2026-10-13 14:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: patched cold_drill_sealed_t0555.py sha 160400dfb407c5e5 MATCHES receipt pin; original .pre-t0581 sha 70a33455ef4e14cc MATCHES; byte diff (116 lines), trial header (machine_class.match=true, RED PASS), CLASS-CHANGE sim record (exit 7, band null) all exist on disk; fingerprint doc Enforcement section present; seals A-E semantics un
 
+### ✅ t0581b — Team 3, lane3 (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Retroactive 3-pass receipt for merged PR #2501 (FM#32 closure), different seat
+
+**Receipt:** `twelve-lane-receipts/t0581b-lane3.md`
+
+**Evidence:** VERIFIED: receipt file hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; pins consistent (merge e8b4868c tip, parents dd6f2d92+a324ea1e, merge tree 8ff158164185914aa54428eb01a21273ce81e6ad == head tree, diff = 2 files +49/-2 as claimed). Written by a seat disjoint from builder and validator. Score 9.0. Why not 9.5: (1) formal closu
+
 ### ✅ t0581b — Team 3, Naya Judge (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** retroactive 3-pass show-your-work receipt for merged PR #2501 (FM#32 closure)
@@ -3381,6 +3445,14 @@ _Last updated: 2026-10-13 14:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: retroactive receipt doc merge-receipts/pr-2501-retroactive-receipt.md exists; merge commit e8b4868ce402c2945a8990b1a5ddc69979b880fd exists on the remote (fetched via git protocol); its bytes match every receipt claim - parents dd6f2d92.../a324ea1e..., tree 8ff15816... (== validated head tree, no manual edits), diff exactly 2 file
 
+### ✅ t0580b — Team 9, lane9 (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE slice (d): cold-retrieve drill with page-cache isolation
+
+**Receipt:** `twelve-lane-receipts/t0580b-lane9.md`
+
+**Evidence:** VERIFIED: results file hidden_files/surge/cold-retrieve-isolated-t0580b.md exists; sealed instrument read before run with seals INTACT pre/post (A 0fcaa777265b, B 81a07557f0b6, C 92d8b2bef701); SEAL_C re-proven as byte-identical to live main's retrieval seam at action time; RED PASS; 15/15 trials gate=COLD within band. Score 9.0. Why not 9.5: (1) d
+
 ### ✅ t0580b — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** cold-retrieve drill with page-cache isolation (SURGE slice d)
@@ -3404,6 +3476,14 @@ _Last updated: 2026-10-13 14:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0580b-lane9.md`
 
 **Evidence:** ARTIFACT VERIFIED: surge/cold-retrieve-isolated-t0580b.md and auto-retrieval/cold-drill-sealed-t0580b-results.json both exist on disk (timestamps 04:46 UTC consistent with the run). SEAL_C pin 92d8b2be...5efdbe independently corroborated: lane 5's receipt at the same tick lands the same writer-file sha256 (92d8b2bef7018c2a5ceda2bc7af411de68f1bbfd7d
+
+### ✅ t0580b — Team 5, lane5 (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE slice (b): per-entry stamping-decision table (631 rows)
+
+**Receipt:** `twelve-lane-receipts/t0580b-lane5.md`
+
+**Evidence:** VERIFIED: both deliverables exist with exact claimed sha256 (stamping-decisions-t0580b.md ee7fc4439e527665e3c0356ced53a13448c8ff76143f4cfdea97a10c56c190dd; generator 885feecc1f306b7196ef5fa28cbc69bfc562b10f4a3a60abbca4221c47e991b4); generator ran twice with cmp-clean byte-exact reproduction. Tip pin e8b4868c was live at action time. Score 9.0. Why 
 
 ### ✅ t0580b — Team 5, Naya Seeker (Retrieval) — 9.0/10 [VERIFIED]
 
