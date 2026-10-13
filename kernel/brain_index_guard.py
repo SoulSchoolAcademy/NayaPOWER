@@ -32,6 +32,19 @@ B-51's path-mismatch vector (wrong checkout entirely — see brain_registry's
 root_override contract), and it does not attest semantic correctness of the
 index contents — only that the corpus the index describes is the corpus on
 disk, and that the index file itself is the committed one.
+
+Refusal-class precedence (w85 spec, after Theta's w83 IV probes): the tamper
+check runs BEFORE the staleness check, and a hand-removed
+`receipt_basis_commit` still reads TAMPERED, not UNVERIFIABLE — because the
+receipt files are compared against the COMMITTED git tree, and the on-disk
+manifest no longer matches it. A manifest with a removed key IS verifiable
+(the committed copy exists and differs), so UNVERIFIABLE would be a false
+claim. The missing-basis state only legitimately arises when the key was
+NEVER committed: then the seal is intact, nothing was broken, and the guard
+returns FRESH with `basis_matches_head=False` — it never asserts agreement
+it cannot verify. Tamper-by-hand-edit beats stale-by-drift beats
+missing-basis, in that order, because a broken seal is a stronger claim than
+a drifted corpus, and an absent basis is no claim at all.
 """
 
 from __future__ import annotations
@@ -113,13 +126,17 @@ def _hash_files(root: Path, relpaths: list[str]) -> dict[str, str | None]:
     return out
 
 
-def corpus_fingerprint(root: Path, manifest: dict) -> str:
+def corpus_fingerprint(root: Path | str, manifest: dict) -> str:
     """Deterministic sha256 over the corpus: sorted 'path:blob_sha' lines.
 
     Self-referential receipt entries (no blob SHA) are excluded: they are
     regen output, not corpus input, and are verified against the committed
     tree instead.
+
+    Accepts a str or Path root (w85 fix: `inspect_index` coerced its root but
+    this public entry point did not, raising TypeError on str roots).
     """
+    root = Path(root)
     entries = [f for f in manifest["files"] if f.get("blob_sha")]
     blobs = _hash_files(root, [f["path"] for f in entries])
     lines = sorted(f"{f['path']}:{blobs.get(f['path'])}" for f in entries)
