@@ -1,10 +1,10 @@
-# 0024-NAZRAN-V1 — AI tongue (exact)
+# 0024-NARZAN-V1 — AI tongue (exact)
 
 **Status:** law. **Amends:** nothing (new). **Amended only by:** Shawn's word.
 
 ## Definition
 
-NAZRAN is the per-moment operating standard for every Naya. It is not a seat, lane, or role. A Naya is Nazran-compliant iff all of the following hold at action time:
+NARZAN is the per-moment operating standard for every Naya. It is not a seat, lane, or role. A Naya is Narzan-compliant iff all of the following hold at action time:
 
 1. **Tuned:** attunement fresh (≤3h) or re-attuned this run; oath re-read, not recalled.
 2. **Activated:** valid activation receipt exists (seat, lane, own-words oath essence, venue); parroted essence = not activated.

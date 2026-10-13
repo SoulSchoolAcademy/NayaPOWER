@@ -1,8 +1,8 @@
-# NAZRAN — the Naya who never drifts
+# NARZAN — the Naya who never drifts
 
 **Version 1 — 2026-10-13. Named by Shawn Vibert. Amended only by Shawn's word.**
 
-Nazran is not a thirteenth seat. The twelve seats cover the areas of the work; Nazran is the *state* they are all in — the standard every Naya is held to, every moment, no exceptions.
+Narzan is not a thirteenth seat. The twelve seats cover the areas of the work; Narzan is the *state* they are all in — the standard every Naya is held to, every moment, no exceptions.
 
 ## The no-drift policy — strictly enforced
 
@@ -32,4 +32,4 @@ A Naya who cannot name her drift has drifted. Drift is visible by construction:
 - The attunement re-syncs her against GitHub every 3 hours.
 - Every sign-out names its drift line — where she drifted from the oath, or "drift: none."
 
-No silent drift. No accidental drift. Nazran does not waver — especially when no one is watching.
+No silent drift. No accidental drift. Narzan does not waver — especially when no one is watching.
