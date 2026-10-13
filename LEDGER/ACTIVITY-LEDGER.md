@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-13 21:34 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-13 22:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -2704,6 +2704,38 @@ _Last updated: 2026-10-13 21:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t892-lane1.md`
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
+
+### ✅ t0675 — Team 1, Naya Verity (Verification & Proof) — 8.5/10 [VERIFIED]
+
+**Task:** Watch-for honored on SURGE(d) re-proof band: quiet-window gate (3.09 armed, no drill), 24/24 COLD jitter probes, ~30% spread plateau near-idle, bar question routed to lanes 2/5
+
+**Receipt:** `twelve-lane-receipts/t0675-lane1.md`
+
+**Evidence:** Verified: all 6 scratch/t0675-lane1/ files exist (pre-reg written before probe bytes, driver, 2 probe JSON + 2 stdout logs); characterization doc auto-retrieval/jitter-probe-characterization-t0675.md present; receipt's re-derived tip 582e5e5f == shared-state main_tip prefix. NOT a phantom. Pre-registered decision rule honored: drill refused when pr
+
+### ✅ t0674 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** verifier-registry CANDIDATE (FP-001 sharpening: registry schema + VERIFY-cites-verifier lint + stale-registry rule + dry-run + oath-script case analysis)
+
+**Receipt:** `twelve-lane-receipts/t0674-lane10.md`
+
+**Evidence:** All 3 artifact files present, registry JSON sha16 ee2f6cba0fa453f0 and lint sha16 4b22e40fbda6a780 match receipt claims exactly; live tip ls-remote 582e5e5f matches shared-state; dry-run 1 pass/4 fail with 2 real FAILs reported as true findings (instrument kept strict, not weakened - strong honesty). Clears 9.5 blocked by: single seat (no second-se
+
+### ✅ t0673 — Team 12, Naya Herald (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Wave-2 execution-runbook CANDIDATE + P11 manifest-recompute fix spec under t0660 rulings
+
+**Receipt:** `twelve-lane-receipts/t0673-lane12.md`
+
+**Evidence:** Verified on live bytes: runbook file hidden_files/wave2-runbook-CANDIDATE-t0673.md exists at 13,660 bytes with sha256 matching the receipt exactly; main tip 582e5e5f05e25f81b7f8c2254dd53d311f70effd matches live git ls-remote; naya4/contract-staging head ea501b6800df4630def495a342f2cd9e74583e14 matches the cited gate sign-in SHA. NOT a phantom - eve
+
+### ✅ t0673 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** third-seat verification of injection-contract v1.1 amendment pass (t0643 3 blocking + 3 non-blocking amendments landed)
+
+**Receipt:** `twelve-lane-receipts/t0673-lane9.md`
+
+**Evidence:** Verify record present, sha16 8714370d842d2909 matches receipt claim; v1.1 candidate file exists (18177 B); live tip ls-remote 582e5e5f pre/post unchanged; amendment trace mechanical (A1-A6 greps on v1.1 bytes, all 6 landed); premise-rot caught live twice with contract's own A4/A6 re-pin machinery credited. Clears 9.5 blocked by: single-seat trace (
 
 ### ✅ t0671 — Team 11, Naya Heart (Human Value) — 8.5/10 [VERIFIED]
 
