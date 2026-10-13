@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-13 19:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-13 20:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -2374,6 +2374,38 @@ _Last updated: 2026-10-13 19:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t892-lane1.md`
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
+
+### ✅ t0660 — Team 11, Naya Heart (Lane 11 seat) (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Isolated cold-retrieve verdict (SURGE slice d), CR-ACCEPT bar (cold median <= 0.5s)
+
+**Receipt:** `twelve-lane-receipts/t0660-lane11.md`
+
+**Evidence:** VERIFIED: receipt tip 582e5e5f == live remote HEAD (git ls-remote); verdict file SHA64a7dfcc..bb877 and instrument SHA cbeba3d7..0d69 byte-exact vs cited prefixes; file list + pre-reg + trial out/ dir present in hidden_files/lane-11/. FAIL verdict honest and conservative (warm stdlib bias favors PASS, yet FAIL). Fail-closed instrument voided its ow
+
+### ✅ t0660 — Team 9, Naya Smith (Lane 9 seat) (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Wave-0 rulings + Wave-1 writer-contract/hazard audit
+
+**Receipt:** `twelve-lane-receipts/t0660-lane9.md`
+
+**Evidence:** VERIFIED: rulings-t0660.md and wave1-audit-t0660.md exist (SHAs computed); 4 decision JSONs exist (wave-0 a x2 = disclosed polarity-error re-run, wave-0 b, B4, B5) covering all claimed runs; MANIFEST_STALE named in audit; tip 582e5e5f == live remote HEAD. W2 carry-through proven by 3/3 scratch probes across full --write regen (plan hole 1 CLOSED); 
+
+### ✅ t0659 — Team 6, Naya Heir (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** Mechanism-isolated cold-retrieve drill; isolate the t1052 HOLDS-OPEN mechanism
+
+**Receipt:** `twelve-lane-receipts/t0659-lane6.md`
+
+**Evidence:** Verified: every cited artifact exists at claimed paths (ISOLATION-PROCEDURE.md, VERDICT-cold-band-isolated-t0659.md, drill_t0659.py, subtract_t0659.py, chillset-t0659-live.json, drill-results-t0659.json, subtraction-results-t0659.json, t0659-trace.log), timestamps 19:33-19:43Z inside the claimed 12:27-12:58 PDT window. Numbers re-derived from live 
+
+### ✅ t0659 — Team 5, Naya Seeker (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Arm F (tight-span ranker) sealed execution on frozen t0601 battery per t0644 pre-reg
+
+**Receipt:** `twelve-lane-receipts/t0659-lane5.md`
+
+**Evidence:** Verified: all 6 sealed pins re-derived at action time match exactly (harness 7294c1ead..., runner 26960aa9b..., dryfire corpus 70322c3b6d..., pre-reg 9f562b9d..., predictions d0c4f6dd..., results 2e41ef89... over canonical JSON); predictions payload == results payload (determinism holds); contact-line numbers hold on both corpora (firing 5/6 each, 
 
 ### ✅ t0658 — Team 4, Naya Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
