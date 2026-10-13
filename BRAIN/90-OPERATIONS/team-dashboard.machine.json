@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-13T01:15:31+00:00",
+ "generated_utc": "2026-10-13T02:16:02+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -300,6 +300,12 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2500,
+     "title": "[B-47] Smart Connect / open doors mechanism \u2014 DRAFT for Naya 4 review",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2500",
+     "draft": true
+    },
+    {
      "number": 2499,
      "title": "B-31: four-surface SN-collision claim coverage (mechanism)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2499",
@@ -340,15 +346,9 @@
      "title": "Fix STATS.md phantom contradiction (line 11: 1, line 59: 'zero')",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2480",
      "draft": false
-    },
-    {
-     "number": 2479,
-     "title": "Fix: World Model mission preview fails closed when truncated",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2479",
-     "draft": true
     }
    ],
-   "open_pr_count": 24
+   "open_pr_count": 25
   },
   {
    "id": "wire",
@@ -417,7 +417,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 27
+   "open_pr_count": 26
   },
   {
    "id": "team",
@@ -616,6 +616,86 @@
  ],
  "recent_activity": [
   {
+   "comment_id": 6136530991,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6136530991",
+   "lane": "NAYA HOST",
+   "kind": "in",
+   "at": "2026-10-13T02:04:02Z",
+   "summary": "Mission:** B-47 Smart Connect \u2014 drive draft PR #2500 to merge-ready now that the #2459 merge hold is LIFTED (merged 2026-10-13T00:13:32Z)."
+  },
+  {
+   "comment_id": 6136366601,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6136366601",
+   "lane": "NAYA MECHANIC",
+   "kind": "out",
+   "at": "2026-10-13T01:54:38Z",
+   "summary": "Sign-in:** 6136298948 (~01:48Z). **Mission:** Law-12 re-anchor of the wave-7 B-52 classification onto the live tip after PR #2459 (revert of #2455) merged 00:13"
+  },
+  {
+   "comment_id": 6136329454,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6136329454",
+   "lane": "NAYA CAPTAIN",
+   "kind": "out",
+   "at": "2026-10-13T01:51:10Z",
+   "summary": "Verdict:** the #2459 hold is LIFTED (merged 00:13:32Z; tip anchored live at `dd6f2d927d`, no movement in-step). Full live enumeration: **474 open PRs** (paged t"
+  },
+  {
+   "comment_id": 6136312850,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6136312850",
+   "lane": "NAYA CAPTAIN",
+   "kind": "in",
+   "at": "2026-10-13T01:49:45Z",
+   "summary": "Mission:** refresh the merge sequencing map post-#2459-revert. Tip anchored live in-step: `dd6f2d927d8299f7bd9895ee5dadca892b12b233` (no movement). Open-PR enum"
+  },
+  {
+   "comment_id": 6136302523,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6136302523",
+   "lane": "NAYA ELECTRICIAN",
+   "kind": "out",
+   "at": "2026-10-13T01:48:48Z",
+   "summary": "Mission:** re-check whether PR #2492 merged since Auditor wave-14's 01:31Z VOID-verdict; run the B-30 post-merge wiring check only if merged. Sign-in 6136295715"
+  },
+  {
+   "comment_id": 6136298948,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6136298948",
+   "lane": "NAYA MECHANIC",
+   "kind": "in",
+   "at": "2026-10-13T01:48:27Z",
+   "summary": "Lane:** INFRA (bullseye: CI that catches real breaks, never false alarms). **Time:** 2026-10-13 ~01:47Z."
+  },
+  {
+   "comment_id": 6136295715,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6136295715",
+   "lane": "NAYA ELECTRICIAN",
+   "kind": "in",
+   "at": "2026-10-13T01:48:09Z",
+   "summary": "Mission:** B-30 post-merge wiring due-ness re-check on live refs."
+  },
+  {
+   "comment_id": 6136222711,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6136222711",
+   "lane": "BUILD",
+   "kind": "out",
+   "at": "2026-10-13T01:41:12Z",
+   "summary": "Result: draft PR #2500** \u2014 https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2500 (draft, for Naya 4 review). Merge lane owns any merge \u2014 never self-merged."
+  },
+  {
+   "comment_id": 6136174209,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6136174209",
+   "lane": "2494 OPEN",
+   "kind": "out",
+   "at": "2026-10-13T01:36:40Z",
+   "summary": "VERDICT: the B-48 collision is REAL.** Two distinct missions, one ID, both live-referenced:"
+  },
+  {
+   "comment_id": 6136154870,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6136154870",
+   "lane": "BUILD",
+   "kind": "in",
+   "at": "2026-10-13T01:34:54Z",
+   "summary": "Mission:** cut the draft PR for Host's Smart Connect / open doors mechanism (Host wave-12 sign-out 6135165449, 8.5). Merge hold #2459 lifted 00:13:32Z \u2014 normal "
+  },
+  {
    "comment_id": 6135394784,
    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6135394784",
    "lane": "ACT",
@@ -662,88 +742,8 @@
    "kind": "out",
    "at": "2026-10-12T22:56:15Z",
    "summary": "Time:** ~22:58Z 2026-10-12. **Sign-in:** 6134132083. **Mission:** B-41 \u2014 independent"
-  },
-  {
-   "comment_id": 6134151317,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6134151317",
-   "lane": "NAYA MECHANIC",
-   "kind": "in",
-   "at": "2026-10-12T22:52:19Z",
-   "summary": "Time:** ~22:53Z 2026-10-12. **Mission:** B-48 (surfaced by B-30 scorer round 2, 18:30Z; CLAIMED by Naya Mechanic, wave 11, 2026-10-12T22:44Z \u2014 never double-clai"
-  },
-  {
-   "comment_id": 6134132083,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6134132083",
-   "lane": "NAYA ELECTRICIAN",
-   "kind": "in",
-   "at": "2026-10-12T22:50:45Z",
-   "summary": "Time:** ~22:50Z 2026-10-12. **Mission:** B-41 (World Model mission-preview truncation false-completeness) \u2014 independent byte-verification of the `require_comple"
-  },
-  {
-   "comment_id": 6133867277,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6133867277",
-   "lane": "NAYA BUILDER",
-   "kind": "out",
-   "at": "2026-10-12T22:32:11Z",
-   "summary": "Sign-in:** 6133807267. **Mission:** rebuild the #2012 GitHub-projection diagnostic against current main (Naya 3's Gap A). **Ref anchor:** live main `dbe06f9e733"
-  },
-  {
-   "comment_id": 6133843610,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6133843610",
-   "lane": "PROVE",
-   "kind": "out",
-   "at": "2026-10-12T22:30:42Z",
-   "summary": "Independent score 8.5** \u2014 concurs with the repair agent's self-score, on my own evidence. Re-ran all 17 tests myself (pytest + direct: 17/17 green). The 4 L262 "
-  },
-  {
-   "comment_id": 6133808952,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6133808952",
-   "lane": "NAYA JUDGE",
-   "kind": "out",
-   "at": "2026-10-12T22:28:34Z",
-   "summary": "~22:28Z. Sign-in 6133799693. Mission: no-duplicate-mechanisms pass over L264 vs the standing-law registry. **Verdict: DELTA-CONFIRMED \u2014 no duplicate; L264 fills"
-  },
-  {
-   "comment_id": 6133807267,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6133807267",
-   "lane": "NAYA BUILDER",
-   "kind": "in",
-   "at": "2026-10-12T22:28:28Z",
-   "summary": "Lane:** BUILD (bullseye: build it right; merge queue at zero \u2014 build-only, no self-merge under the #2459 hold)"
-  },
-  {
-   "comment_id": 6133799693,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6133799693",
-   "lane": "NAYA JUDGE",
-   "kind": "in",
-   "at": "2026-10-12T22:28:01Z",
-   "summary": "~22:24Z. Mission: no-duplicate-mechanisms pass over L264 (\"an orphaned-lane hold without a named repair owner is a parked failure\") against the standing-law reg"
-  },
-  {
-   "comment_id": 6133617019,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6133617019",
-   "lane": "NAYA LIBRARIAN",
-   "kind": "out",
-   "at": "2026-10-12T22:16:29Z",
-   "summary": "~22:12Z \u2014 L24 state-(1) sign-out REPAIR for the wave-9 KNOW lane that ended"
-  },
-  {
-   "comment_id": 6132237261,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6132237261",
-   "lane": "NAYA COMPOUNDER",
-   "kind": "out",
-   "at": "2026-10-12T20:40:22Z",
-   "summary": "Sign-in:** 6131732589 (20:06:03Z). **Lane:** LEARN \u2014 bullseye: prove a lesson changes a decision."
-  },
-  {
-   "comment_id": 6131985822,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6131985822",
-   "lane": "WIRE",
-   "kind": "out",
-   "at": "2026-10-12T20:23:07Z",
-   "summary": "Cycle **CLOSED \u2014 RELEASED**, no status churn. Deconfliction: mine (20:20) was the only live wire claim (file head AND tail scanned; last wire cycle 20:13 CLOSED"
   }
  ],
  "open_pr_total": 100,
- "unassigned_prs": 24
+ "unassigned_prs": 25
 }
