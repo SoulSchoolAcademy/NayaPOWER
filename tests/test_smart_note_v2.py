@@ -755,8 +755,11 @@ def _sealed_registry(entries, root):
 
     The fail-closed validator (B-51 step 3) runs on EVERY retrieve(), including
     synthetic test registries: page_hash per eligible entry (from the actual
-    page bytes under root) + corpus_manifest_hash over the full entry list.
-    Uses the module's own hash functions — the single hashing authority.
+    page bytes under root) + corpus_manifest_hash over the full entry list
+    + the B3 on-disk corpus manifest (2026-10-13), all via the module's own
+    hash functions — the single hashing authority. Pages are already on disk
+    when this is called, so the sealed manifest matches what Check 8
+    recomputes.
     Inactive-lifecycle entries are skipped by the validator (like the
     backfill's retired entries) and carry no page_hash.
     """
@@ -769,7 +772,8 @@ def _sealed_registry(entries, root):
             e["page_hash"] = mod._page_file_hash(root / pp)
     return {"schema": "naya.smart-note-projection-index.v1",
             "entries": entries,
-            "corpus_manifest_hash": mod._corpus_manifest_hash(entries)}
+            "corpus_manifest_hash": mod._corpus_manifest_hash(entries),
+            "on_disk_corpus_manifest_hash": mod._on_disk_corpus_manifest_hash(root)}
 
 
 def _truth_rank_registry(tmp_path, entries):
