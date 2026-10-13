@@ -69,3 +69,44 @@ Every ten minutes the dispatcher reconciles, every ten minutes the scorer
 grades, every three hours the oath re-attunes. The machine does not sleep.
 
 **For the hive. Always.**
+
+
+---
+
+## HUMAN DIRECTOR CLARIFICATION — MANDATORY THREE-ROUND IMPROVEMENT LOOP
+
+**Shawn Vibert's mission:** build NayaPOWER/NayaNET correctly and intelligently; keep running the build → test → upgrade → scorecard → learn loop. Three complete rounds per capability are the minimum, not the maximum. Continue beyond three whenever the evidence says the capability is not yet excellent.
+
+### Every round: why not 10, ten remedies, implementation, three checks, rescore
+
+1. **Inspect live reality** and pin the exact current commit SHA, owning lane, prerequisites, current tests, known failures, and evidence. Do not act on stale snapshots.
+2. **Score honestly** with the existing canonical rubric and Decision Value Calculus. Do not invent a competing score engine.
+3. **Write every known reason the score is not 10.** Include failed/missing proof, edge cases, regressions, reliability, usability, speed, cost, dependencies, uncertainty, and unproven real-world outcomes. Distinguish facts from hypotheses.
+4. **Generate ten concrete candidate solutions** for those gaps. For each, name the gap, expected human value, harm/risk, cost, dependencies, and a cheap falsification test. Ten is a disciplined candidate set, not permission to do unsafe or low-value work.
+5. **Choose the highest-value admissible remedy** using the existing calculus, prerequisites, dependency centrality, and human-authority gates. Coordinate with the task owner. Preserve what works; fix root causes rather than symptoms.
+6. **Build and upgrade.** For behavior changes, write a regression test first, observe RED, implement the smallest sound fix, observe GREEN, then refactor without changing behavior. Do not alter test labels, thresholds, or expected outcomes merely to manufacture a pass.
+7. **Run three distinct checks** before claiming completion:
+   - **A — targeted:** exact defect, requirement, boundaries, positive and negative controls.
+   - **B — regression/integration:** relevant surrounding suite and preservation of existing behavior.
+   - **C — independent/cold:** a different seat or fresh procedure tries to falsify the claim against exact-head evidence; use end-to-end/production evidence where required and authorized.
+   These must be complementary checks, not the same command repeated three times. If a check is genuinely inapplicable, state why and use an equivalent proof. Missing evidence remains UNKNOWN/BLOCKED.
+8. **Independently rescore** against the same rubric. Record before/after score, exact SHA, results, measurable outcome delta where available, residual gaps, and uncertainty. The builder cannot self-certify.
+9. **Capture and transfer the lesson** through the existing canonical learning seam: root cause, successful remedy, applicability conditions, counterexamples, provenance, and regression test. Prove a cold successor can retrieve and apply it. Stored is not learned.
+10. **Start the next round from fresh evidence.** Do not assume the previous fix worked everywhere or copy its score forward.
+
+### The three required rounds
+
+- **Round 1 — Diagnose and repair:** baseline, complete gap list, ten candidate solutions, root-cause improvement, checks A/B/C, independent rescore, lesson.
+- **Round 2 — Close residual gaps:** inspect live state again; list all reasons it is not 10; generate ten new/revised solutions; implement the best admissible improvement; run A/B/C; independently rescore and capture the lesson.
+- **Round 3 — Falsify and harden:** act as a skeptical cold successor; seek counterexamples, stale-source hazards, failure modes, and missing outcome evidence. Again list the reasons it is not 10, generate ten solutions, apply the best admissible improvement, run A/B/C, independently rescore, and record the result.
+- **Round 4 onward — Continue whenever needed:** required if the score is below 9.5, any material gap remains, a check fails, a regression appears, or the intended outcome is not proven. Three rounds never override evidence.
+
+### Exit gate and priority
+
+- **9.5–10** is eligible for acceptance only with an independent exact-head score, all applicable hard gates passed, no hidden critical unknown, and outcome-appropriate evidence.
+- **10/10** means the defined ideal is demonstrated—not merely that three rounds ran, tests are green, or the builder feels finished.
+- Below 9.5: state exactly why, apply the next best admissible solution, and repeat.
+- At 9.5+ with all gates satisfied: move to the next lowest load-bearing capability. Reprioritize from current evidence.
+- If a protected human-authority gate blocks one action, stop that action, record the exact decision required, and continue permitted work elsewhere.
+
+**Truth laws remain absolute:** UNKNOWN/BLOCKED is not PASS; implemented is not verified; verified is not production-proven; deployment is not outcome improvement. Never weaken a gate to raise a score. No second brain, store, ledger, graph, or decision engine. The objective is maximum verified human value, minimum necessary complexity, and compounding continuity—not activity for its own sake.
