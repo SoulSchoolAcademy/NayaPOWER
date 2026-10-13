@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-13 02:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-13 02:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -1380,6 +1380,54 @@ _Last updated: 2026-10-13 02:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t892-lane1.md`
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
+
+### ✅ t0564 — Team 7, Naya Conductor (Team Operations) — 8.5/10 [VERIFIED]
+
+**Task:** sealed cold-drill quiet-window re-run (t1022/t1052 cold-band hole)
+
+**Receipt:** `twelve-lane-receipts/t0564-lane7.md`
+
+**Evidence:** Verified: chillset SEAL_B sha256 matches pinned constant exactly (81a07557...009a08); pins A-C present in script bytes; results JSON 42f351f3f3fa matches receipt; honest DRIFT verdict taken on the instrument's own terms (3/3 medians outside band center by 10pct, within_runs true) with a named mechanism (machine-relativity: band anchors from other V
+
+### ✅ t0564 — Team 5, Naya Seeker (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** object-reference arm v2, sealed study (follow-up to t0548 RETRACT)
+
+**Receipt:** `twelve-lane-receipts/t0564-lane5.md`
+
+**Evidence:** Verified: all 5 artifact SHAs match on disk (instrument 004a4987a39d, run 2ed179336fe5, battery 2262400cc303, verdict d46cf60f767a, verdict-doc 5e999f8467bd); seal mtime 02:30:59 < run 02:31:16 (seal order holds); honest RETRACT taken on own sealed terms with mechanism finding (df==1 filter survives falsifiers, universal bar was wrong, B-class re-s
+
+### ✅ t0563 — Team 4, Naya Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** SMARTBLOCKS shared-schema-spec v0.1 + machine lint
+
+**Receipt:** `twelve-lane-receipts/t0563-lane4.md`
+
+**Evidence:** Verified: all 4 artifact SHAs EXACT on disk (spec 68f88656..., lint cd715672..., 2 fixtures match receipt); lint behavior reproduced on live bytes — --selftest exit 0, malformed fail-closed 8 checks, lane-status-packet-v1 exit 2 (6 checks), lane-packet-v2-hypertuned exit 2 (5 checks) — every quoted exit/check count matches the receipt. Neither exem
+
+### ✅ t0561 — Team 3, Naya Judge (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** FP-003 feedback entry from the decision seat, second entry with a new angle (J5 irreversible dispositions)
+
+**Receipt:** `twelve-lane-receipts/t0561-lane3.md`
+
+**Evidence:** Verified: entry '[Lane 3 — Naya Judge, t0561]' present at feedback-feed.md:506, text matches receipt's quote; t0533 entry independently on record (brief's 'you have not spoken' premise false — caught on bytes, not re-posted). J5 (irreversible-disposition asymmetry, RETROSPECTIVE-PROVEN/BREACH, verdict-authorization ceiling) is a genuinely new angle
+
+### ✅ t0560 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** pin-exact ordered-blocker re-classification for the #2399 receipt-gate thread on the live tip, read-only
+
+**Receipt:** `twelve-lane-receipts/t0560-lane9.md`
+
+**Evidence:** Verified via git protocol: main tip dd6f2d927d8299f7bd9895ee5dadca892b12b233 == receipt's double-pin and == shared-state tip; rename branch naya/eight-competing-boot-rename-t1152 @ 6d05fea689e32cf70ec9c56ad3a3339a54372412 matches receipt EXACTLY — live-bytes discipline corroborated. Caught the brief's premise inversion (#2399 merged 03:57:22Z Oct 1
+
+### ✅ t0558 — Team 2, Naya Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** winmine the four falsified retrieval arms for shared failure signature + 3 instrumentable predicates (Lane 10 mechanization study)
+
+**Receipt:** `twelve-lane-receipts/t0558-lane2.md`
+
+**Evidence:** Verified: winmine-falsified-arms-signature.md sha256 dacbe74566c0ad4824091ac98f2dd7f156241c24db90ca9175714b43a3f95b7c EXACT on disk; stale brief winner-pointer (t0547-lane1/t0548-lane7) caught and re-anchored to t0538-lane1 byte-verification. Score 9.0. What kept it from 9.5: (1) signature distilled single-seat — no independent read of the same cor
 
 ### ✅ t0558 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
 
