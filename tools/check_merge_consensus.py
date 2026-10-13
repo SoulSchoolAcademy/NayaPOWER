@@ -208,13 +208,49 @@ def author_seat_of(body):
     return _normalized_seat(m) if m else None
 
 
+# --- mention-vs-use hardening (Naya Kappa, 2026-10-13) ---
+# An approval keyword counts only when the commenter USES it as their own
+# verdict declaration. MENTION contexts never count:
+#   (a) the incantation/keywords are quoted (`...`, "...", '...', “…”)
+#       — the comment is talking ABOUT the format, not using it;
+#   (b) a negation/absence marker (no/not/missing/without/...) sits between
+#       the line start and the keyword — the comment says the approval is
+#       MISSING, not that it is GIVEN;
+#   (c) the comment carries an explicit non-approval verdict (HOLD, CHANGES
+#       REQUESTED, NEEDS WORK, DO NOT MERGE, NOT READY) — fail closed: a
+#       comment that declares HOLD cannot also be a review approval.
+# Convention this encodes: a review declaration is plain text, e.g.
+# "[NAYA DELTA · REVIEW] APPROVED" or "VERDICT: MERGE RECOMMENDED".
+# A quoted incantation is a mention of the format, never the approval.
+_MENTION_QUOTE_RE = re.compile(r"`[^`\n]*`|\"[^\n\"]*\"|'[^\n']*'|“[^”\n]*”")
+_NEGATION_RE = re.compile(
+    r"\b(no|not|n't|never|missing|without|lacks?|lacking|absent|"
+    r"failed|fails?|unable|deferred|blocked)\b", re.I)
+_HOLD_VETO_RE = re.compile(
+    r"\b(HOLD|CHANGES?\s+REQUESTED|NEEDS?\s+(?:WORK|CHANGES)|"
+    r"DO\s+NOT\s+MERGE|NOT\s+READY)\b", re.I)
+_APPROVAL_USE_RE = re.compile(
+    r"\[\s*NAYA\b[^\]\n]*\bREVIEW\b[^\]\n]*\]\s*APPROVED\b"   # [NAYA X · REVIEW] APPROVED
+    r"|\bVERDICT\s*:\s*(?:MERGE\s*[:\-]?\s*)?APPROVED\b"      # VERDICT: APPROVED / VERDICT: merge APPROVED
+    r"|\bMERGE\s+(?:RECOMMENDED|APPROVED)\b",                 # MERGE RECOMMENDED / MERGE APPROVED
+    re.I)
+
+
 def _looks_like_review(body):
-    """True if the comment reads as an approving review: either the tagged
-    review incantation, or the team's IV sign-out verdict format."""
-    up = (body or "").upper()
-    if "[NAYA" in up and "REVIEW" in up and "APPROVED" in up:
+    """True only when the comment USES an approval keyword as its own
+    verdict declaration — never when it merely MENTIONS one (quoted,
+    negated, or declared absent), and never when the comment also carries
+    an explicit HOLD / non-approval verdict (fail closed)."""
+    text = body or ""
+    if _HOLD_VETO_RE.search(text):
+        return False
+    cleaned = _MENTION_QUOTE_RE.sub(" ", text)
+    for m in _APPROVAL_USE_RE.finditer(cleaned):
+        line_start = cleaned.rfind("\n", 0, m.start()) + 1
+        if _NEGATION_RE.search(cleaned[line_start:m.start()]):
+            continue  # mention: the approval is described as missing
         return True
-    return "VERDICT" in up and ("MERGE RECOMMENDED" in up or "APPROVED" in up)
+    return False
 
 
 def _score_of(body):
