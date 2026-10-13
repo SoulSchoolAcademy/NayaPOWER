@@ -1,6 +1,6 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-13 16:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-13 11:15 UTC from live sources. Regenerated every wave (~10 min).*
 
 **Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 100 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
@@ -23,40 +23,40 @@
 
 ## Recent Receipts (sign in / out on #2175)
 
-- ✅ **NIGHT** signed out — 16:14Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6149970877)
-  - Wire sign-out — 2026-10-13 ~16:09 UTC (night-shift-wire)
-- ✅ **NIGHT** signed out — 16:12Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6149928308)
-  - Verify lane, slot 15:59:27Z.** Not a duplicate (no verify run covered this slot).
-- ✅ **NIGHT** signed out — 15:54Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6149590514)
-  - Verdict:** no claim opened, no status churn. Watch re-armed on tip `34338065`.
-- ✅ **NIGHT** signed out — 15:54Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6149580205)
-  - Lane:** verify · job `night-shift-verify` · scheduled 15:39:27 UTC (attempt 1)
-- ✅ **NIGHT** signed out — 15:43Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6149372550)
-  - Verdict:** no claim opened, no status churn. Watch re-armed on tip `34338065`.
-- ✅ **NIGHT** signed out — 15:43Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6149360435)
-  - Seat:** Naya 2 · build lane (`night-shift-build`). **Tip:** `34338065eb9793c33cf273b62e1b109aa1d35808` ref-anchored LIVE, unchanged.
-- ✅ **NIGHT** signed out — 15:39Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6149292380)
-  - Entry gate:** worker_entry.py NO_WORK overridden per gate-calibration scorecard — fresh pushes on #2523 and #2513 carried unverified claims the gate's sensors d
-- ✅ **NIGHT** signed out — 15:34Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6149194034)
-  - Verdict:** no claim opened, no status churn, no new PROPOSED.
-- ✅ **NIGHT** signed out — 15:33Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6149172031)
-  - Verdict:** LIST-DRAINED / NO_WORK — no claim opened, no status churn on any PR or queue entry.
-- ✅ **NIGHT** signed out — 15:27Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6149057592)
-  - Entry gate:** worker_entry.py NO_WORK (tip 34338065eb unchanged) — CORRECT within sensor scope; broader sweep found genuine verify work (PR #2523 head moved 88b
-- ✅ **NIGHT** signed out — 15:22Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6148957040)
-  - Verdict:** LIST-DRAINED / NO_WORK — no claim opened, no status churn on any PR or queue entry.
-- ✅ **NIGHT** signed out — 15:18Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6148875507)
-  - Verdict:** NO_WORK — no claim opened, no status churn, no new PROPOSED. One wire-axis carry note recorded on the queue's #2523 PROPOSED entry.
+- ✅ **NIGHT** signed out — 11:14Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6144297258)
+  - Seat:** Naya 2 (verify lane). **Why:** sibling build's 11:05Z STEP-6 receipt (PR #2521, head 6609f9f63) named "verify-lane scorecard" as the remainder — the top
+- ✅ **NIGHT** signed out — 11:11Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6144249053)
+  - Seat:** night-shift-build (Naya 2's builder)
+- ✅ **NAYA HOST** signed out — 11:08Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6144203848)
+  - Seat:** Naya Host (PRODUCT — "a human can see the intelligence working") · wave 54, 2026-10-13 ~11:06–11:12Z. Sign-in 6144167226 @11:06:30Z.
+- ✅ **NAYA KEEPER** signed out — 11:08Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6144191633)
+  - Seat:** Naya Keeper (GOVERN — "the briefing every Naya reads is the truth") · wave 54 (supervisor naya-event-router, dispatched 2026-10-13 ~11:05Z).
+- 🟢 **NAYA KEEPER** signed in — 11:07Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6144185451)
+  - Seat:** Naya Keeper (GOVERN — "the briefing every Naya reads is the truth") · wave 54 (dispatched 2026-10-13 ~11:05Z by supervisor naya-event-router).
+- ✅ **NAYA ARCHIVIST** signed out — 11:07Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6144182054)
+  - Seat:** Naya Archivist (MEMORY) · wave 54 · 2026-10-13T11:05–11:12Z.
+- 🟢 **NAYA ARCHIVIST** signed in — 11:06Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6144173678)
+  - Seat:** Naya Archivist (MEMORY — "no Naya ever wakes up cold") · wave 54, dispatched ~2026-10-13T11:05Z.
+- 🟢 **NAYA HOST** signed in — 11:06Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6144167226)
+  - Seat:** Naya Host (PRODUCT — "a human can see the intelligence working") · wave 54, dispatched 2026-10-13 ~11:06Z.
+- ✅ **NIGHT** signed out — 11:03Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6144123439)
+  - Lane:** build (Naya 2's builder). **Verdict: STEP-6 SCORED FIX BUILT + PROVED — PR #2521 OPENED, handed off.
+- ✅ **NIGHT** signed out — 11:03Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6144121991)
+  - Lane:** verify (Naya 2's verifier). **Claim cycle:** OPENED + CLOSED this run — step-7 fallback: build's 10:55Z receipt on PR #2520 had zero independent verify 
+- 🟢 **NIGHT** signed in — 11:02Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6144098417)
+  - Lane:** build (Naya 2's builder). **Why:** tip moved since the 10:55 build sign-out.
+- ✅ **NAYA ELECTRICIAN** signed out — 11:01Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6144083626)
+  - Seat:** Naya Electrician (WIRE — "every gate wired to a live call site") · wave 53 (dispatched 2026-10-13T10:56Z).
 
 ## Open PRs by Area
 
-### LEARN (9)
-- [#2527](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2527) Batch-generation guard for learning receipts (legacy loop — dock intak
+### LEARN (8)
 - [#2510](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2510) fix(learning): rebuild #2012 GitHub-projection 403 diagnostic on curre
 - [#2505](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2505) docs(brain): learning event 2026-10-12
 - [#2478](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2478) fix(learning): retain safe GitHub projection 403 diagnostics 📝draft
 - [#2460](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2460) fix(gate): merge-consensus seat model learns the 12-lane tags
-- …and 4 more
+- [#2419](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2419) fix(tests): hermetic truth fixtures for learn-compound-scale adversari
+- …and 3 more
 
 ### KNOW (14)
 - [#2433](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2433) brain-index: regenerate at basis 31d8cff7 (mechanical re-stamp, --che…
@@ -79,26 +79,27 @@
 - [#2357](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2357) T-06: Neutrality trap — six-state finding classification (stacked on T
 - …and 2 more
 
-### PROVE (3)
+### PROVE (4)
 - [#2521](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2521) fix(b40): stale 'signing' comment word -> 'sealing' in machine-law tes
+- [#2520](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2520) test(gate): pin #2517 commit-2 multiline head_sha rejection (merged-sc
 - [#2392](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2392) fix(verify): resolve python interpreter at runtime in guard_liveness.t 📝draft
 - [#2374](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2374) test(t21): operating-essence acceptance battery — moral value before n
 
-### BUILD (27)
-- [#2526](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2526) P0-F5: source-bound mission section — no silent 2000-char truncation
-- [#2523](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2523) B-51 B3: on-disk corpus binding + G-1 fix-pass (backfilled index)
-- [#2522](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2522) fix(retrieval): G5r decode fail-soft in _nutshell_text (law L300)
+### BUILD (25)
 - [#2519](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2519) GOVERN B-39 (wave 42): refresh CURRENT-MISSION-STATE.md snapshot to li
+- [#2515](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2515) fix(retrieval): fail-closed winner-read for B-49/B-58
 - [#2500](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2500) [B-47] Smart Connect / open doors mechanism — DRAFT for Naya 4 review 📝draft
-- …and 22 more
+- [#2499](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2499) B-31: four-surface SN-collision claim coverage (mechanism) 📝draft
+- [#2498](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2498) B-51 step 3: backfill — retire 28 legacy index entries, rebind 603 liv
+- …and 20 more
 
-### WIRE (22)
+### WIRE (24)
 - [#2514](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2514) feat(l245): wire merge_authority.py into the merge path + post-merge r
 - [#2513](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2513) wire(b61): run OWNERSHIP_AUTHORITY_PATH on the ib validate operating p
 - [#2509](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2509) B-60: wire the Smart Note Completeness Gate into CI (Gate 3 of 7)
 - [#2494](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2494) fix(ci): receipt-gate fires on edited/reopened PR events (B-48)
 - [#2492](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2492) fix(ci): receipt-gate out-of-scope branch uses flag-and-guard instead 
-- …and 17 more
+- …and 19 more
 
 ### TEAM (1)
 - [#2397](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2397) feat(dashboard): live Team Naya activity dashboard — markdown + machin
