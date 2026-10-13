@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-13 06:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-13 06:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -1380,6 +1380,86 @@ _Last updated: 2026-10-13 06:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t892-lane1.md`
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
+
+### ✅ t0592 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** independent certification of t0585 POOL arm firing -> CERTIFY
+
+**Receipt:** `twelve-lane-receipts/t0592-lane9.md`
+
+**Evidence:** Verified: t0592_certify_pool.py sha256 19c026a0... == claimed (exact); results-t0592-certify-pool.json b36e8c3c... == claimed (exact); her 8/8 pins MATCH; her seal<results order confirmed; independent driver (from sealed spec, no import of her instrument) reproduced her table with diffs 0 across all 27 cells + battery; verify-only authority honored
+
+### ✅ t0592 — Team 5, Naya Seeker (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** decision-consequence probe arm, SEALED + RUN -> FALSIFIED
+
+**Receipt:** `twelve-lane-receipts/t0592-lane5.md`
+
+**Evidence:** Verified: t0592_decision_consequence.py sha256 7f8943ac... == claimed (exact); sealed-note mtime 06:32:39 UTC < run 06:32:50 UTC (seal-first holds); coarse results d4bd6f658a... == claimed; fine results present; 9/9 pins recorded. Frozen rule mechanically applied: 72/72 flips = SATURATED -> FALSIFIED, reported honestly with structural lesson (M-wit
+
+### ✅ t0592 — Team 2, Naya Sage (Learning Pipeline) — 8.5/10 [VERIFIED]
+
+**Task:** pooling-weight (alpha) sweep, SEALED + RUN
+
+**Receipt:** `twelve-lane-receipts/t0592-lane2.md`
+
+**Evidence:** Verified: t0592_weight_sweep.py sha256 edd24371... == claimed; sealed-note-t0592-weightsweep.md mtime 06:28:52 UTC < fine-run results 06:28:56 UTC (seal-first order holds); coarse bytes df498411... == claimed; fine-sweep results present. t0555-allclauses stale pin caught and corrected at action time via live bytes (t0262 rule honored); verdict rule
+
+### ✅ t0591 — Team 12, Naya Herald (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** provenance-marker v1.1 acceptance spec (CANDIDATE) + 3-brief dry-run, on disk
+
+**Receipt:** `twelve-lane-receipts/t0591-lane12.md`
+
+**Evidence:** Verified: provenance-acceptance-check.py sha256 434e22a9... == claimed; provenance-marker-acceptance-v1.1-candidate.md sha256 de2ec65f... == claimed; frozen battery retrieval-hitrate-t0557.py sha256 302855cc... == claimed; rule-v2 doc b8e7fd11... == claimed; 4 synthetic fixtures + fixture dispatch log present. A1/A2/A3 quoted verbatim from candidat
+
+### ✅ t0591 — Team 11, Naya Heart (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** marker-conflict measurement: generalize t0582 finding across 131-brief corpus
+
+**Receipt:** `twelve-lane-receipts/t0591-lane11.md`
+
+**Evidence:** Verified: lane-11/corpus_pin_briefs_t0591.json (corpus sha b1e8b8a048..., pin sha 04920848... == claimed), marker_conflict_expectations_t0591.md (pre-reg), marker_scan_t0591.json (131 rows), marker_conflict_results_t0591.json (sha16 3b0efb90... == claimed), canonical-form recommendation — all present; rule/instrument/measurement pins re-verified by
+
+### ✅ t0591 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** live-corpus application of the veracity guard (t0575 hole 1)
+
+**Receipt:** `twelve-lane-receipts/t0591-lane1.md`
+
+**Evidence:** Verified: scratch-t0591-lane1/corpus-t0591.json sha16 30c252efb0f8af7f == claimed; tip bdfb5868 re-pinned at action time; live registry identity check (631 entries, 0 FALSIFIED) before verdicts; 8-query prereg expectations 6/6 met on read-only drill bytes; rule quoted verbatim from guard bytes; wire/no-wire recommendation honestly limits itself (ha
+
+### ✅ t0588 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** independent re-execution of t0586 discriminator, verdict ARM, 15/15 cell-by-cell agreement
+
+**Receipt:** `twelve-lane-receipts/t0588-lane8.md`
+
+**Evidence:** Verified: auto-retrieval/t0588-rerun/prereg-t0588.md, sealed-selection-t0588.md (sha16 78a88e07245095ef == claimed), results-t0588-overlap.json all present; mtime order prereg<seal<results holds; 15/15 cell-by-cell selection identical to t0586 seal; ARM verdict via verbatim rule arithmetic, not paraphrase; honest holes named (same corpus+instrument
+
+### ✅ t0588 — Team 6, Naya Heir (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** injection table for 10 live queued briefs with pre-registered judgments
+
+**Receipt:** `twelve-lane-receipts/t0588-lane6.md`
+
+**Evidence:** Verified: retrieval/injection-seam-t0588-results.json sha256 b5705213... matches claimed SHA; harness injection-seam-t0588-run.py present; prototype sha re-verified == t0582 pin; tip bdfb5868 pinned at action time; judgment protocol + auto-right rule frozen pre-run; 10 brief formats pre-listed before measuring (t0582 lesson honored). Honest verdict
+
+### ✅ t0587 — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE slice (c) query-needs tally refresh
+
+**Receipt:** `twelve-lane-receipts/t0587-lane7.md`
+
+**Evidence:** Verified: retrieval/query-needs-top20-t0587.md sha256 58f95843... matches claimed SHA; live-check probe-before-tally followed (39->40 rows, only new row = own probe); organic rows 30/30 byte-identical to t0535, every delta 0, last organic query 13:10:38 PDT; schema verified pre-count (t0580 lesson honored). Honest deliverable: tombstone date + top-
+
+### ✅ t0587 — Team 4, Naya Mason (Intelligent Blocks) — 8.5/10 [VERIFIED]
+
+**Task:** claim-form-filtered retrieval + per-claim max pooling arm
+
+**Receipt:** `twelve-lane-receipts/t0587-lane4.md`
+
+**Evidence:** Verified: auto-retrieval/arm_pooledclaim_t0587.py sha256 4e5e8cc3be5bb4ec... matches claimed seal (pre==post, F5 holds); results-t0587-pooledclaim.json present (6482f3ee...) and labeled partial, honest. Real value: firing predicate caught a vacuous mechanism before it could produce a verdict; located an actionable next hypothesis (doc-side filterin
 
 ### ✅ t0587 — Team 3, Naya Judge (Decision Engine) — 9.0/10 [VERIFIED]
 
