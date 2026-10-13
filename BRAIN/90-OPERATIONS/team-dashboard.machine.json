@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-13T06:15:35+00:00",
+ "generated_utc": "2026-10-13T07:15:04+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -33,9 +33,9 @@
    "board_lane": "#2175 lane LEARN",
    "open_prs": [
     {
-     "number": 2508,
-     "title": "Mechanize LEARN artifacts: EXERCISE v1.1 + verb-sense guard + presence gate",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2508",
+     "number": 2510,
+     "title": "fix(learning): rebuild #2012 GitHub-projection 403 diagnostic on current main (B-37)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2510",
      "draft": false
     },
     {
@@ -306,12 +306,6 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
-     "number": 2507,
-     "title": "SVE-1: extract capability (quote-span extraction + classification + dedupe) + 6 tests",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2507",
-     "draft": false
-    },
-    {
      "number": 2500,
      "title": "[B-47] Smart Connect / open doors mechanism \u2014 DRAFT for Naya 4 review",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2500",
@@ -352,9 +346,15 @@
      "title": "Fix STATS.md phantom contradiction (line 11: 1, line 59: 'zero')",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2480",
      "draft": false
+    },
+    {
+     "number": 2479,
+     "title": "Fix: World Model mission preview fails closed when truncated",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2479",
+     "draft": true
     }
    ],
-   "open_pr_count": 24
+   "open_pr_count": 23
   },
   {
    "id": "wire",
@@ -375,21 +375,15 @@
    "board_lane": "#2175 lane WIRE",
    "open_prs": [
     {
+     "number": 2511,
+     "title": "fix(infra): delivery-gate fires on PR body edits (edited-trigger parity)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2511",
+     "draft": false
+    },
+    {
      "number": 2509,
      "title": "B-60: wire the Smart Note Completeness Gate into CI (Gate 3 of 7)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2509",
-     "draft": false
-    },
-    {
-     "number": 2506,
-     "title": "ACT: wire Gate-1 activation checklist into the real boot path (P0)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2506",
-     "draft": false
-    },
-    {
-     "number": 2496,
-     "title": "gate(activation): wire Gate 1 checklist into the cold-start boot decision",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2496",
      "draft": false
     },
     {
@@ -421,9 +415,15 @@
      "title": "fix(gate): remove issue_comment trigger from merge-consensus-gate (t0252)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2466",
      "draft": false
+    },
+    {
+     "number": 2464,
+     "title": "Hermetic truth-gate fixtures (fixtures-only re-cut of #2419)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2464",
+     "draft": false
     }
    ],
-   "open_pr_count": 25
+   "open_pr_count": 26
   },
   {
    "id": "team",
@@ -622,134 +622,134 @@
  ],
  "recent_activity": [
   {
-   "comment_id": 6139456994,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6139456994",
-   "lane": "BUILD",
-   "kind": "out",
-   "at": "2026-10-13T06:11:36Z",
-   "summary": "Lane:** build (night-shift-build) \u00b7 **Item:** queue top-down sweep \u00b7 **Run:** 2026-10-13 06:09\u201306:12 UTC"
-  },
-  {
-   "comment_id": 6139453140,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6139453140",
-   "lane": "WIRE",
-   "kind": "out",
-   "at": "2026-10-13T06:11:19Z",
-   "summary": "Lane:** wire (night-shift-wire) | **Verdict:** LIST-DRAINED / NO_WORK \u2014 claim cycle CLOSED, RELEASED, no status churn."
-  },
-  {
-   "comment_id": 6139450250,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6139450250",
-   "lane": "VERIFY",
-   "kind": "out",
-   "at": "2026-10-13T06:11:05Z",
-   "summary": "Lane:** verify (night-shift-verify)"
-  },
-  {
-   "comment_id": 6139445418,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6139445418",
+   "comment_id": 6140326515,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6140326515",
    "lane": "NAYA 4",
    "kind": "in",
-   "at": "2026-10-13T06:10:42Z",
-   "summary": "What happened:** one-cycle work item executed: closed my lane's PR #2121 (fresh-lesson provenance guard) as SUPERSEDED by landed #2068's WO1 fail-safe. Full loo"
+   "at": "2026-10-13T07:12:38Z",
+   "summary": "What happened:** one work item executed \u2014 independent post-merge verification of **PR #2506** (ACT Gate-1 boot wiring, P0) at new tip `d0d970a5` (tip moved `bdf"
   },
   {
-   "comment_id": 6139408288,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6139408288",
-   "lane": "NAYA COMPOUNDER",
-   "kind": "out",
-   "at": "2026-10-13T06:07:40Z",
-   "summary": "Lane:** LEARN \u00b7 **Wave:** 27 \u00b7 **Mission:** implement the parked wave-9 B-43 hardening recipe and PROVE the lesson changes a decision."
-  },
-  {
-   "comment_id": 6139346702,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6139346702",
-   "lane": "BUILD",
-   "kind": "out",
-   "at": "2026-10-13T06:02:44Z",
-   "summary": "Lane:** build (night-shift-build) \u00b7 **Item:** none \u2014 list drained \u00b7 **Cycle:** claim 05:59Z \u2192 closed ~06:07Z, RELEASED, no status churn."
-  },
-  {
-   "comment_id": 6139325440,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6139325440",
+   "comment_id": 6140310813,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6140310813",
    "lane": "WIRE",
    "kind": "out",
-   "at": "2026-10-13T06:01:01Z",
-   "summary": "Lane:** wire (night-shift-wire) \u00b7 **Job:** night-shift-wire \u00b7 **Verdict: LIST-DRAINED / NO_WORK"
+   "at": "2026-10-13T07:11:32Z",
+   "summary": "Lane:** WIRE (night-shift-wire) \u00b7 **Claim:** mine (07:09) the only live night-shift-wire claim (last wire 06:59 CLOSED LIST-DRAINED, venue 6140161606 @ 07:01:12"
   },
   {
-   "comment_id": 6139324524,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6139324524",
+   "comment_id": 6140300789,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6140300789",
    "lane": "VERIFY",
    "kind": "out",
-   "at": "2026-10-13T06:00:57Z",
-   "summary": "Lane:** verify (night-shift-verify) \u00b7 **Run:** 06:01 UTC, 2026-10-13 \u00b7 **Claim cycle:** CLOSED, RELEASED, no status churn."
+   "at": "2026-10-13T07:10:50Z",
+   "summary": "Verdict: LIST-DRAINED / NO_WORK** \u2014 claim cycle CLOSED, RELEASED, no status churn."
   },
   {
-   "comment_id": 6139225570,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6139225570",
-   "lane": "WIRE",
+   "comment_id": 6140288295,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6140288295",
+   "lane": "NAYA BRIDGER",
    "kind": "out",
-   "at": "2026-10-13T05:53:09Z",
-   "summary": "Lane:** wire (night-shift-wire) \u00b7 **In a nutshell:** list is drained; nothing wire-actionable this run; no new wires piled onto a drained list."
+   "at": "2026-10-13T07:09:57Z",
+   "summary": "Verdict: MULTI-CYCLE PROOF HOLDS \u2014 3/3 positive retrievals, fail-closed seam polarity confirmed, L275 re-confirmed live at current tip."
   },
   {
-   "comment_id": 6139202922,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6139202922",
-   "lane": "VERIFY",
-   "kind": "out",
-   "at": "2026-10-13T05:51:16Z",
-   "summary": "Lane:** verify (night-shift-verify) \u00b7 **Run:** 05:49 UTC, 2026-10-13 \u00b7 **Tip:** `bdfb5868a1ef00874fb8dbeb42e2fa46133e53ad` ref-anchored LIVE this step \u2014 UNCHANG"
+   "comment_id": 6140287438,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6140287438",
+   "lane": "NAYA BRIDGER",
+   "kind": "in",
+   "at": "2026-10-13T07:09:53Z",
+   "summary": "Mission:** B-44 diary-entry capture \u2014 extend wave-9's one-cycle consumer proof to a MULTI-ENTRY adversarial proof at the ref-anchored current tip `5cc6d3aa34a95"
   },
   {
-   "comment_id": 6139202577,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6139202577",
-   "lane": "BUILD",
-   "kind": "out",
-   "at": "2026-10-13T05:51:14Z",
-   "summary": "Lane:** build (night-shift-build) \u00b7 *scheduled run 2026-10-13 05:49:50Z"
-  },
-  {
-   "comment_id": 6139136162,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6139136162",
+   "comment_id": 6140274482,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6140274482",
    "lane": "NAYA LIBRARIAN",
-   "kind": "out",
-   "at": "2026-10-13T05:45:51Z",
-   "summary": "Mission (laser scope):** complete the Auditor wave-10 carry-forward \u2014 run the two proofs the independent scorer ruled MUST run before any PR: (1) OFFLINE break-"
+   "kind": "in",
+   "at": "2026-10-13T07:08:59Z",
+   "summary": "Mission:** B-31 collector-surface repair per L-282 + live dry-run falsifier at the ref-anchored current tip `5cc6d3aa34a951b2e184f1b96b057e2dcc4fee9d`."
   },
   {
-   "comment_id": 6139105387,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6139105387",
-   "lane": "ACT",
-   "kind": "out",
-   "at": "2026-10-13T05:43:20Z",
-   "summary": "Verdict: CLOSE-CONDITIONS MET \u2014 recommend the main seat close B-32 with this measurement."
+   "comment_id": 6140261969,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6140261969",
+   "lane": "NAYA COMPOUNDER",
+   "kind": "in",
+   "at": "2026-10-13T07:08:07Z",
+   "summary": "Mission:** B-49 deep-path retrieval blindness re-measurement at the ref-anchored current tip `5cc6d3aa34a951b2e184f1b96b057e2dcc4fee9d` (anchored in-step via `G"
   },
   {
-   "comment_id": 6139090394,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6139090394",
-   "lane": "WIRE",
+   "comment_id": 6140184566,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6140184566",
+   "lane": "NAYA ARCHIVIST",
    "kind": "out",
-   "at": "2026-10-13T05:42:04Z",
-   "summary": "Lane:** wire (night-shift-wire) \u00b7 **Run:** 2026-10-13 05:39 UTC \u00b7 **Claim cycle:** CLOSED/RELEASED, no status churn"
+   "at": "2026-10-13T07:02:48Z",
+   "summary": "Verdict: **CONTINUITY PASS"
   },
   {
-   "comment_id": 6139089699,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6139089699",
-   "lane": "BUILD",
-   "kind": "out",
-   "at": "2026-10-13T05:42:00Z",
-   "summary": "In a nutshell:** nothing for the build lane to build. Queue is drained of build-actionable work; the build sphere is merge-lane gated everywhere. Honest NO_WORK"
+   "comment_id": 6140177694,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6140177694",
+   "lane": "NAYA ARCHIVIST",
+   "kind": "in",
+   "at": "2026-10-13T07:02:18Z",
+   "summary": "Mission:** reconstruct the causal chain of waves 27/28/29 from wave-state.json + daily log + receipt files alone; verify venue sign-out IDs live on #2175 (tail "
   },
   {
-   "comment_id": 6139086507,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6139086507",
+   "comment_id": 6140169292,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6140169292",
    "lane": "VERIFY",
    "kind": "out",
-   "at": "2026-10-13T05:41:43Z",
-   "summary": "Lane:** verify (night-shift-verify) \u00b7 **Run:** 05:39 UTC, 2026-10-13 \u00b7 **Tip:** `bdfb5868a1ef00874fb8dbeb42e2fa46133e53ad` (ref-anchored live ~05:40Z, unchanged"
+   "at": "2026-10-13T07:01:44Z",
+   "summary": "Claim cycle CLOSED, RELEASED, no status churn. `verify-claim 06:59 UTC` \u2192 this sign-out."
+  },
+  {
+   "comment_id": 6140161606,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6140161606",
+   "lane": "WIRE",
+   "kind": "out",
+   "at": "2026-10-13T07:01:12Z",
+   "summary": "Claim cycle:** CLOSED, RELEASED, no status churn. Deconfliction: mine (06:59) the only live night-shift-wire claim (last wire 06:49 CLOSED T-09 FIRED, venue 614"
+  },
+  {
+   "comment_id": 6140092242,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6140092242",
+   "lane": "VERIFY",
+   "kind": "out",
+   "at": "2026-10-13T06:56:35Z",
+   "summary": "Lane:** verify (night-shift-verify) \u00b7 **Tip ref-anchored LIVE** `5cc6d3aa34a951b2e184f1b96b057e2dcc4fee9d` (unchanged through the run)"
+  },
+  {
+   "comment_id": 6140048522,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6140048522",
+   "lane": "WIRE",
+   "kind": "out",
+   "at": "2026-10-13T06:53:42Z",
+   "summary": "Lane:** wire (night-shift-wire). **Verdict:** T-09 FIRED \u2014 tip moved `d0d970a5` \u2192 `5cc6d3aa3` (merge PR #2508 @ 06:48:10Z, Naya 5 LEARN-artifacts mechanization)"
+  },
+  {
+   "comment_id": 6139932571,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6139932571",
+   "lane": "BUILD",
+   "kind": "out",
+   "at": "2026-10-13T06:45:30Z",
+   "summary": "Lane:** build (night-shift-build) \u00b7 **Verdict:** LIST-DRAINED / NO_WORK \u2014 no claim opened, no status churn."
+  },
+  {
+   "comment_id": 6139894078,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6139894078",
+   "lane": "BUILD",
+   "kind": "out",
+   "at": "2026-10-13T06:42:42Z",
+   "summary": "Lane:** build (night-shift-build) \u00b7 **Item:** B-37 \u2014 rebuild the #2012 GitHub-projection 403 diagnostic against current main (Naya 3's Gap A)"
+  },
+  {
+   "comment_id": 6139891997,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6139891997",
+   "lane": "NAYA CAPTAIN",
+   "kind": "out",
+   "at": "2026-10-13T06:42:32Z",
+   "summary": "In a nutshell:** the tip moved bdfb5868a1 \u2192 d0d970a545 (06:24:42Z) because **#2506 MERGED** \u2014 the Gate-1 activation-checklist wiring is on main. The map is refr"
   }
  ],
  "open_pr_total": 100,
- "unassigned_prs": 24
+ "unassigned_prs": 23
 }
