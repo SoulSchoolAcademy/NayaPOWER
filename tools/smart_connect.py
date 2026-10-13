@@ -21,6 +21,16 @@ Builder hardening (wave 14, from Host's wave-12 adversarial finding):
   - Re-submission of identical text resolves to the existing lesson
     (duplicate: true); it does not inflate lesson stats.
 
+Round-2 hardening (wave 16, from the independent scorer's adversarial probes):
+  - ELEVATE resolves canonical_id against the lesson registry and requires the
+    canonical to be MERGED/ELEVATED — a dangling canonical_id is flagged
+    (dangling_canonical_id), never minted into a compound.
+  - stats["compounds"] increments for ELEVATE compounds too, so
+    compound_count always agrees with the compounds list in feedback.
+  - register_door never reopens a harm-closed door (declaration refresh !=
+    reopen); reopen_door(door_id, reason) is the only reopen path, recorded.
+  - New lessons initialize duplicate: False (the seam shape is always complete).
+
 Spec: BRAIN/10-INTERFACES/SMART-CONNECT-OPEN-DOORS.ai.md
 """
 import hashlib
@@ -70,8 +80,26 @@ class OpenDoors:
 
     # ---- G1: doors ----
     def register_door(self, door_id, name, protocol):
+        existing = self.doors.get(door_id)
+        if existing is not None and not existing["open"]:
+            # Declaration refresh never reopens a harm-closed door: the closure
+            # and its recorded reason survive. Reopening is a decision taken
+            # explicitly via reopen_door(), never a side effect of re-declaring.
+            existing["name"] = name
+            existing["protocol"] = protocol
+            return existing
         self.doors[door_id] = {"door_id": door_id, "name": name,
                                "protocol": protocol, "open": True}
+        return self.doors[door_id]
+
+    def reopen_door(self, door_id, reason):
+        # The ONLY reopen path. A door closed for harm reopens only by an
+        # explicit, recorded decision — never by re-registration.
+        if door_id not in self.doors:
+            raise ValueError(f"unknown door: {door_id}")
+        self.doors[door_id]["open"] = True
+        self.doors[door_id].pop("closed_reason", None)
+        self.doors[door_id]["reopened_reason"] = reason
         return self.doors[door_id]
 
     def close_door(self, door_id, reason):
@@ -111,7 +139,8 @@ class OpenDoors:
             return lesson
         lesson = {"lesson_id": lesson_id, "connection_id": connection_id,
                   "text": text, "essence": essence, "captured_at": _now(),
-                  "status": "INTAKE", "door_id": door_id or self.connections[connection_id]["door_id"]}
+                  "status": "INTAKE", "door_id": door_id or self.connections[connection_id]["door_id"],
+                  "duplicate": False}
         self.lessons[lesson_id] = lesson
         self.connections[connection_id]["stats"]["lessons"] += 1
         self._log("lesson.captured", {"lesson_id": lesson_id, "status": "INTAKE"})
@@ -173,6 +202,17 @@ class OpenDoors:
                               "lesson_id": l["lesson_id"],
                               "detail": "MERGED lesson without canonical_id; skipped, no compound"})
                 continue
+            # Fail closed (hardened round 2): a canonical_id that dangles —
+            # points at no lesson, or at one that is not a live canonical —
+            # must never mint a compound. Resolve against the registry and
+            # require the canonical to be MERGED or ELEVATED.
+            canonical = self.lessons.get(canonical_id)
+            if canonical is None or canonical.get("status") not in ("MERGED", "ELEVATED"):
+                flags.append({"kind": "dangling_canonical_id",
+                              "lesson_id": l["lesson_id"],
+                              "detail": f"canonical_id {canonical_id} is dangling "
+                                        f"(missing or not MERGED/ELEVATED); skipped, no compound"})
+                continue
             canon_groups.setdefault(canonical_id, []).append(l)
         for canon_id, group in canon_groups.items():
             if len(group) >= ELEVATE_MIN_CLUSTER and not any(
@@ -189,6 +229,10 @@ class OpenDoors:
                 elevated += 1
                 for l in group:
                     l["status"] = "ELEVATED"
+                    # The ELEVATE compound is proven — it exists — so it counts.
+                    # compound_count must always agree with the compounds list
+                    # feedback_for() builds (Law 6: a number without proof is a lie).
+                    self.connections[l["connection_id"]]["stats"]["compounds"] += 1
                 self._log("compound.recorded", self.compounds[cmp_id])
 
         cycle = {"cycle_id": cycle_id, "at": at,

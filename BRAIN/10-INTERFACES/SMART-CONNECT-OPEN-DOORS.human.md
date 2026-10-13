@@ -12,7 +12,7 @@ Anyone who wants to connect gets an open door — no application, no approval, n
 
 **2. Connection — the registered opener.** A record of a name, a door, a moment, and running counts. Registration never refuses: if the chosen door is down, the registry routes to another open door. A door may close only for harm — and the closure is recorded, never silent.
 
-**3. Lesson — the contribution.** A captured text with its essence and a status: `INTAKE`, `MERGED`, `ELEVATED`, or `DUPLICATE`. Intake is instant — the word is the verification. Submitting the same lesson twice doesn't create two lessons; it lands on the one content-addressed record.
+**3. Lesson — the contribution.** A captured text with its essence and a status: `INTAKE`, `MERGED`, or `ELEVATED` — plus a `duplicate` flag (`false` on first capture; `true` when the same lesson is re-submitted and lands on the one content-addressed record). Intake is instant — the word is the verification. Submitting the same lesson twice doesn't create two lessons; it lands on the one content-addressed record.
 
 **4. Compound — the visible compounding event.** A recorded `MERGE` (duplicates distilled into one living note) or `ELEVATE` (a merged cluster proposed toward law). A compound is recorded only when a distillation actually ran. Contributing nothing compounds nothing — a number without proof is a lie.
 
@@ -38,9 +38,9 @@ Anyone who wants to connect gets an open door — no application, no approval, n
 B-44's intake UX calls:
 
 ```json
-POST lesson_intake.append
+POST lesson_intake.append            (module method: append_lesson)
 { "connection_id": "conn-…", "text": "…", "door_id": "sdk" }
-→ { "lesson_id": "les-…", "status": "INTAKE", "captured_at": "…" }
+→ { "lesson_id": "les-…", "status": "INTAKE", "duplicate": false, "captured_at": "…" }
 
 GET feedback.for_connection(connection_id)
 → { "connection_id": "…", "lessons": ["les-…"], "compounds": ["cmp-…"],

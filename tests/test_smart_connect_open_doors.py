@@ -10,6 +10,14 @@ Cases (mirrors the reference mechanism's guarantees):
               (content-addressed dedupe -> exactly one lesson, no second compound).
   FAIL-CLOSED — corrupted state (MERGED lesson without canonical_id) is flagged
               in cycle.flags; the cycle completes; no fake compound is recorded.
+  FAIL-CLOSED — a MERGED lesson whose canonical_id dangles (points at nothing,
+              or at a non-canonical) is flagged as dangling_canonical_id; no
+              compound is minted for the void canonical.
+  COUNT AGREEMENT — after a merge+elevate cycle, compound_count always equals
+              len(compounds) (Law 6: a number without proof is a lie).
+  DOOR INTEGRITY — re-registering a harm-closed door never reopens it and never
+              erases the recorded reason; reopen_door() is the only reopen path.
+  SEAM SHAPE — a first-append lesson record carries duplicate: False.
 
 Fail-closed: any assertion failure -> pytest non-zero exit.
 """
@@ -146,3 +154,65 @@ def test_fail_closed_unknown_connection(hub):
         hub.append_lesson("conn-nope", "text", "sdk")
     with pytest.raises(ValueError):
         hub.feedback_for("conn-nope")
+
+
+def test_fail_closed_dangling_canonical(hub):
+    # Adversarial: MERGED lessons whose canonical_id points at nothing.
+    # The ELEVATE stage must flag them (dangling_canonical_id) and mint zero
+    # compounds — a compound for a void canonical is a fake compound (G3).
+    _seed_corpus(hub)
+    c = hub.register_connection("synth-x", "sdk")
+    l1 = hub.append_lesson(c["connection_id"], "dangling canonical probe alpha", "sdk")
+    l2 = hub.append_lesson(c["connection_id"], "dangling canonical probe alpha beta", "sdk")
+    for l in (l1, l2):
+        hub.lessons[l["lesson_id"]]["status"] = "MERGED"
+        hub.lessons[l["lesson_id"]]["canonical_id"] = "les-dangling9999"
+    cycle = hub.run_cycle()  # must not raise
+    flagged = [f for f in cycle["flags"] if f["kind"] == "dangling_canonical_id"]
+    assert len(flagged) == 2, f"expected 2 dangling flags, got {cycle['flags']}"
+    assert not any(c_.get("canonical_id") == "les-dangling9999"
+                   for c_ in hub.compounds.values()), \
+        "compound minted for a dangling canonical"
+
+
+def test_compound_count_matches_compounds(hub):
+    # Law 6: the headline number must agree with the proof list.
+    _seed_corpus(hub)
+    c1 = hub.register_connection("synth-guest-001", "sdk")
+    hub.append_lesson(c1["connection_id"],
+                      "When duplicates merge into a single living note, lessons compound.",
+                      "sdk")
+    hub.run_cycle()  # MERGE + ELEVATE
+    fb = hub.feedback_for(c1["connection_id"])
+    assert fb["compound_count"] == len(fb["compounds"]), \
+        f"compound_count {fb['compound_count']} != len(compounds) {len(fb['compounds'])}"
+    assert fb["compound_count"] == 2, "expected one MERGE + one ELEVATE compound"
+
+
+def test_closed_door_survives_reregister(hub):
+    # G1 integrity: a declaration refresh never reopens a harm-closed door
+    # and never erases the recorded closure reason.
+    hub.close_door("sdk", "harm: test closure")
+    hub.register_door("sdk", "SDK", "python-sdk")
+    assert hub.doors["sdk"]["open"] is False, \
+        "re-register silently reopened a harm-closed door"
+    assert hub.doors["sdk"]["closed_reason"] == "harm: test closure", \
+        "closure reason erased by re-register"
+
+
+def test_reopen_door_explicit(hub):
+    hub.close_door("sdk", "harm: test closure")
+    hub.reopen_door("sdk", "reviewed: closure was a false alarm")
+    assert hub.doors["sdk"]["open"] is True
+    assert hub.doors["sdk"]["reopened_reason"] == "reviewed: closure was a false alarm"
+    assert "closed_reason" not in hub.doors["sdk"]
+    with pytest.raises(ValueError):
+        hub.reopen_door("nope", "reason")
+
+
+def test_duplicate_flag_initialized(hub):
+    # The seam shape is always complete: a first-append record carries
+    # duplicate: False, matching the documented seam contract.
+    c = hub.register_connection("synth-x", "sdk")
+    les = hub.append_lesson(c["connection_id"], "first append initializes the flag", "sdk")
+    assert les["duplicate"] is False, "new lesson record missing duplicate: False"

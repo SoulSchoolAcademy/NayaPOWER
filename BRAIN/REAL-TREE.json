@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-10-12",
-  "receipt_basis_commit": "501bf82a3c6095b8834ef0bff6abec3b9a645c74",
-  "inventory_file_count": 1257,
+  "generated_at": "2026-10-13",
+  "receipt_basis_commit": "dd6f2d927d8299f7bd9895ee5dadca892b12b233",
+  "inventory_file_count": 1260,
   "domain_counts": {
     "00-ACTIVATION": 3,
     "00-ARCHITECTURE": 5,
@@ -16,7 +16,7 @@
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
     "09-EVOLUTION": 2,
-    "10-INTERFACES": 380,
+    "10-INTERFACES": 383,
     "11-KNOWLEDGE": 7,
     "12-ENGINEERING": 25,
     "90-OPERATIONS": 24,
@@ -5924,6 +5924,21 @@
       "path": "BRAIN/10-INTERFACES/README.md",
       "blob_sha": "7093bf121d662cb6f8e88a0952e814a96dcb7cba",
       "size": 1226
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/SMART-CONNECT-OPEN-DOORS.ai.md",
+      "blob_sha": "2450a0e85d8711209b8ef11e2743c9c8eb2b989d",
+      "size": 5484
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/SMART-CONNECT-OPEN-DOORS.human.md",
+      "blob_sha": "0a9684a60ad0e9375ccd3c631ae085d1e80afdc6",
+      "size": 4487
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/SMART-CONNECT-OPEN-DOORS.machine.json",
+      "blob_sha": "c4082ad701ffd1022c7822f789797b998968a2c6",
+      "size": 3997
     },
     {
       "path": "BRAIN/10-INTERFACES/SMART-GRAPHS/README.md",
