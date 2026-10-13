@@ -739,6 +739,7 @@ def test_retrieve_ignores_superseded_registry_entries(tmp_path, monkeypatch):
             },
         ]
     }), encoding="utf-8")
+    mod.stamp_registry_file(registry_path)  # B-51: retrieval reads fail-loud; fixtures carry a valid fingerprint
     monkeypatch.setattr(mod, "ROOT", tmp_path)
     monkeypatch.setattr(mod, "REGISTRY", registry_path)
     monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 0)  # ranking pin: the floor is live-corpus calibrated, not for synthetic corpora
@@ -757,6 +758,7 @@ def _truth_rank_registry(tmp_path, entries):
         e.setdefault("lifecycle_state", "ACTIVE")
     rp = tmp_path / "index.json"
     rp.write_text(json.dumps({"entries": entries}), encoding="utf-8")
+    mod.stamp_registry_file(rp)  # B-51: retrieval reads fail-loud; fixtures carry a valid fingerprint
     return rp
 
 
@@ -844,6 +846,7 @@ def test_retrieve_matches_lesson_content_not_just_metadata(tmp_path, monkeypatch
          "truth_state": "CANDIDATE", "lifecycle_state": "ACTIVE",
          "captured_at": "2026-10-06T00:00:00Z", "projection_path": "other.md"},
     ]}), encoding="utf-8")
+    mod.stamp_registry_file(rp)  # B-51: retrieval reads fail-loud; fixtures carry a valid fingerprint
     monkeypatch.setattr(mod, "ROOT", tmp_path)
     monkeypatch.setattr(mod, "REGISTRY", rp)
     monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 0)  # ranking pin: the floor is live-corpus calibrated, not for synthetic corpora

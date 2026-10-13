@@ -72,6 +72,232 @@ def slug(s):
 def load_json(p):
     return json.loads(Path(p).read_text(encoding="utf-8"))
 
+
+# ---------------------------------------------------------------------------
+# B-51 fail-loud index validation (Naya Beta, 2026-10-13)
+#
+# Defect: the Smart Note registry (index.json) was read with bare json.loads
+# and NO checksum / count / freshness check, so a locally drifted or stale
+# index produced silently wrong retrieval answers (B-51: "a wrong answer with
+# no error signal is worse than no answer at all").
+#
+# Repair: the index carries a corpus fingerprint — the commit SHA it was
+# generated against plus the active-entry count — and load_registry()
+# verifies it at read time. ANY mismatch raises IndexDriftError with the
+# exact code B51_INDEX_DRIFT. A drifted index NEVER yields answers silently.
+#
+# What this does NOT claim (P-011):
+# - The commit check proves the index was generated from a commit ANCESTRAL
+#   to the reading checkout (git merge-base --is-ancestor). It does NOT
+#   prove the on-disk corpus directory is no newer than the index: if the
+#   corpus advances and the index is never re-stamped, that staleness needs
+#   the corpus-binding track (future work). The payload hash + count are the
+#   always-on guards; they catch the B-51 mechanism (local index mutation).
+# - When git metadata is unavailable (or the fingerprint has commit_sha None,
+#   e.g. synthetic test fixtures), the commit check is SKIPPED and recorded
+#   in details; hash + count are still enforced.
+# ---------------------------------------------------------------------------
+FINGERPRINT_KEY = "corpus_fingerprint"
+FINGERPRINT_SCHEMA = "naya.index.fingerprint.v1"
+INDEX_DRIFT_CODE = "B51_INDEX_DRIFT"
+
+# Lifecycle states excluded from retrieval scoring AND from the fingerprint's
+# active-entry count. Single source of truth; _ranked_candidates uses this.
+INACTIVE_LIFECYCLE_STATES = frozenset({"SUPERSEDED", "ARCHIVED", "REVOKED"})
+
+
+class IndexDriftError(ValueError):
+    """Fail LOUD: the registry failed corpus-fingerprint validation.
+
+    code is always INDEX_DRIFT_CODE ("B51_INDEX_DRIFT") so the refusal is
+    greppable in logs. details names the failed check and the expected vs
+    actual values. Never catch this to fall back to a silent answer.
+    """
+
+    def __init__(self, reason: str, details: dict | None = None):
+        self.code = INDEX_DRIFT_CODE
+        self.reason = reason
+        self.details = details or {}
+        super().__init__(
+            f"{INDEX_DRIFT_CODE}: {reason} "
+            + " ".join(f"{k}={v}" for k, v in self.details.items())
+        )
+
+
+def _count_active_entries(entries) -> int:
+    """Active-entry count, using retrieval's own definition of 'active'."""
+    return sum(
+        1
+        for e in entries
+        if str((e or {}).get("lifecycle_state", "ACTIVE")).upper()
+        not in INACTIVE_LIFECYCLE_STATES
+    )
+
+
+def _fingerprint_payload_bytes(registry: dict) -> bytes:
+    """Canonical bytes of everything EXCEPT the fingerprint block itself.
+
+    Canonical (sorted keys, compact separators, UTF-8) so formatting or key
+    order changes never trip the hash — only real content drift does.
+    The "_validation" key is load-time metadata, not index content, and is
+    excluded so a loaded-then-restamped registry keeps a stable hash.
+    """
+    payload = {
+        k: v
+        for k, v in registry.items()
+        if k not in (FINGERPRINT_KEY, "_validation")
+    }
+    return json.dumps(
+        payload, sort_keys=True, separators=(",", ":"), ensure_ascii=True
+    ).encode("utf-8")
+
+
+def _payload_sha256(registry: dict) -> str:
+    return hashlib.sha256(_fingerprint_payload_bytes(registry)).hexdigest()
+
+
+def _git_head_sha(near: Path) -> str | None:
+    """Current HEAD SHA of the repo enclosing `near`, or None if unavailable."""
+    import subprocess
+
+    try:
+        out = subprocess.run(
+            ["git", "-C", str(near), "rev-parse", "HEAD"],
+            capture_output=True, text=True, timeout=10,
+        )
+        return out.stdout.strip() or None if out.returncode == 0 else None
+    except Exception:
+        return None
+
+
+def _git_is_ancestor(commit: str, near: Path) -> bool | None:
+    """True if `commit` is an ancestor of HEAD; None if git can't answer."""
+    import subprocess
+
+    try:
+        out = subprocess.run(
+            ["git", "-C", str(near), "merge-base", "--is-ancestor", commit, "HEAD"],
+            capture_output=True, text=True, timeout=10,
+        )
+        return out.returncode == 0
+    except Exception:
+        return None
+
+
+def stamp_corpus_fingerprint(registry: dict, commit_sha: str | None = None) -> dict:
+    """Stamp (or re-stamp) the corpus fingerprint onto an in-memory registry.
+
+    Records the commit SHA the index was generated against plus the
+    active-entry count, and the payload hash that makes tampering detectable.
+    Mutates and returns the registry dict.
+    """
+    from datetime import datetime, timezone
+
+    fingerprint = {
+        "schema": FINGERPRINT_SCHEMA,
+        "commit_sha": commit_sha,
+        "active_entry_count": _count_active_entries(registry.get("entries", [])),
+        "payload_sha256": _payload_sha256(registry),
+        "generated_utc": datetime.now(timezone.utc).isoformat(),
+        "generator": "tools/smart_note_v2.py::stamp_corpus_fingerprint",
+    }
+    registry[FINGERPRINT_KEY] = fingerprint
+    return registry
+
+
+def stamp_registry_file(path=None, commit_sha: str | None = None) -> dict:
+    """Read a registry file, stamp its corpus fingerprint, write it back.
+
+    commit_sha defaults to the enclosing repo's HEAD (None when git is
+    unavailable, e.g. synthetic fixtures — the commit check is then skipped
+    at read time and the skip is recorded). Returns the fingerprint block.
+    """
+    rp = Path(path) if path else REGISTRY
+    if commit_sha is None:
+        commit_sha = _git_head_sha(rp.parent)
+    registry = json.loads(rp.read_text(encoding="utf-8"))
+    stamp_corpus_fingerprint(registry, commit_sha=commit_sha)
+    _atomic_write_json(rp, registry)
+    return registry[FINGERPRINT_KEY]
+
+
+def load_registry(path=None) -> dict:
+    """Fail-loud registry loader. THE canonical read path for the index.
+
+    Verifies the corpus fingerprint at read time:
+      1. fingerprint block present with the expected schema,
+      2. active-entry count matches the loaded entries,
+      3. payload hash matches the loaded content,
+      4. generation commit is an ancestor of the reading checkout's HEAD
+         (skipped, recorded, when git metadata is unavailable).
+    Any failure raises IndexDriftError with code B51_INDEX_DRIFT — never a
+    silently drifted index.
+    """
+    rp = Path(path) if path else REGISTRY
+    try:
+        raw = rp.read_text(encoding="utf-8")
+    except FileNotFoundError:
+        raise
+    try:
+        registry = json.loads(raw)
+    except json.JSONDecodeError as exc:
+        raise IndexDriftError(
+            "index JSON is corrupt",
+            {"reason": "json_corrupt", "path": str(rp), "error": str(exc)},
+        )
+    fp = registry.get(FINGERPRINT_KEY)
+    if not isinstance(fp, dict):
+        raise IndexDriftError(
+            "corpus fingerprint missing — index predates B-51 fail-loud validation",
+            {"reason": "fingerprint_missing", "path": str(rp)},
+        )
+    if fp.get("schema") != FINGERPRINT_SCHEMA:
+        raise IndexDriftError(
+            "corpus fingerprint schema mismatch",
+            {
+                "reason": "fingerprint_schema_mismatch",
+                "expected": FINGERPRINT_SCHEMA,
+                "actual": fp.get("schema"),
+            },
+        )
+    entries = registry.get("entries", [])
+    actual_count = _count_active_entries(entries)
+    if fp.get("active_entry_count") != actual_count:
+        raise IndexDriftError(
+            "active-entry count mismatch — index drifted relative to its fingerprint",
+            {
+                "reason": "active_count_mismatch",
+                "expected": fp.get("active_entry_count"),
+                "actual": actual_count,
+            },
+        )
+    if fp.get("payload_sha256") != _payload_sha256(registry):
+        raise IndexDriftError(
+            "payload hash mismatch — index content changed after stamping",
+            {"reason": "payload_hash_mismatch", "path": str(rp)},
+        )
+    gen = fp.get("commit_sha")
+    commit_check = "verified"
+    if gen:
+        ancestor = _git_is_ancestor(gen, rp.parent)
+        if ancestor is None:
+            commit_check = "skipped_no_git"
+        elif not ancestor:
+            raise IndexDriftError(
+                "generation commit is not an ancestor of this checkout — "
+                "index belongs to a foreign corpus state",
+                {
+                    "reason": "commit_mismatch",
+                    "generation_commit": gen,
+                    "checkout_head": _git_head_sha(rp.parent),
+                },
+            )
+    else:
+        commit_check = "skipped_no_provenance"
+    registry.setdefault("_validation", {})["corpus_fingerprint"] = commit_check
+    return registry
+
+
 class PreservationMigrationError(ValueError):
     """Raised when a Smart Note migration would destroy governed state."""
 
@@ -251,6 +477,10 @@ def registry_transaction(registry_path=None):
                             "source_of_truth": "runtime_intelligent_block",
                             "entries": []}
             yield registry
+            # B-51: every committed write re-stamps the corpus fingerprint, so
+            # the index can never be rewritten without a matching fingerprint.
+            # Readers (load_registry) fail LOUD on any mismatch.
+            stamp_corpus_fingerprint(registry, commit_sha=_git_head_sha(rp.parent))
             _atomic_write_json(rp, registry)
         finally:
             fcntl.flock(lf.fileno(), fcntl.LOCK_UN)
@@ -738,7 +968,10 @@ def _ranked_candidates(query, areas=None, task_contexts=None):
     areas / task_contexts optionally scope the candidate pool by
     applicability metadata (tools/applicability.py) BEFORE scoring.
     Default (both None) is unchanged behavior: the full corpus."""
-    registry = load_json(REGISTRY)
+    # B-51: the retrieval seam reads through the fail-loud loader. A drifted or
+    # stale index raises IndexDriftError (code B51_INDEX_DRIFT) instead of
+    # serving a silently wrong answer.
+    registry = load_registry(REGISTRY)
     candidates = registry.get("entries", [])
     if areas or task_contexts:
         candidates = _applicability_filter_entries(
@@ -747,7 +980,7 @@ def _ranked_candidates(query, areas=None, task_contexts=None):
     q = set(_stem(w) for w in q_raw)
     q_phrase = " ".join(q_raw)
     ranked = []
-    inactive = {"SUPERSEDED", "ARCHIVED", "REVOKED"}
+    inactive = INACTIVE_LIFECYCLE_STATES
     # First pass: per-entry field word sets (one projection read per entry,
     # same I/O as before) plus corpus document frequencies for IDF.
     scored_entries = []

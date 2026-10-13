@@ -12870,5 +12870,13 @@
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
     "next_sequence": 797,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
+  },
+  "corpus_fingerprint": {
+    "schema": "naya.index.fingerprint.v1",
+    "commit_sha": "e8b4868ce402c2945a8990b1a5ddc69979b880fd",
+    "active_entry_count": 603,
+    "payload_sha256": "92c441d4c53c123ab0927f933acbf9360d13002b69e521e7b2e4a98b83fc5fd9",
+    "generated_utc": "2026-10-13T03:51:52.009549+00:00",
+    "generator": "tools/smart_note_v2.py::stamp_corpus_fingerprint"
   }
 }
