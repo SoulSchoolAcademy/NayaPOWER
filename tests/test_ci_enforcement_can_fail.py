@@ -13,6 +13,12 @@ because the gate reported the regression and then ignored it.
 A gate that cannot fail is worse than no gate, because it converts an honest red into a
 confident green. These tests assert the capability, so the class of defect cannot return
 in any workflow in this repository.
+
+Both block-scalar styles are scanned: literal `run: |` AND folded `run: >-`. Folded
+blocks are YAML-folded into one command line, so a trailing `|| true` inside one
+genuinely swallows the step's failure — and a trailing `exit 0` is flagged conservatively
+the same way it is in `|` blocks, because the defect SHAPE (a terminal failure-swallow
+line at the end of the step) is what the guard exists to catch.
 """
 
 from __future__ import annotations
@@ -31,6 +37,55 @@ GATE = WORKFLOWS / 'collective-chain-readiness-gate.yml'
 # Any enforcement step must let its last real command decide the outcome.
 # `exit 0` and `|| true` are the two ways a step silently swallows its own failure.
 MASKING = re.compile(r'^\s*(exit\s+0\b|\|\|\s*true\b)', re.M)
+# Block scalars: literal `|` (incl. `|-`) AND folded `>` (incl. `>-`). Folded
+# blocks get folded by YAML into one command line, so a trailing `|| true`
+# inside one genuinely swallows the step's failure — the guard must scan them
+# the same way it scans `|` blocks. Body extraction is indent-based, so it
+# works identically for both scalar styles.
+# Deliberately NOT covered: single-line inline `run:` values (e.g. `run: make test`).
+# This guard is narrowed to block scalars by design; inline values are a separate,
+# wider surface and would be a separate guard decision, not a silent extension.
+_RUN_KEY = re.compile(r'^(\s*)run:\s*(?:\||>)')
+
+
+def _terminal_masking_lines(wf_name, text):
+    """Masking lines that are the last real command of their `run:` block.
+
+    A scope-gate `exit 0` early in a block — e.g. receipt-gate.yml's
+    out-of-scope PASS-by-decision, which runs before the enforcement —
+    does NOT swallow the step's failure: the step can still fail later.
+    Only a masking line after which nothing else runs makes the step
+    unable to fail, which is the defect class this guard exists for
+    (run 36501228953: the regression printed, then `exit 0`, job success).
+    """
+    offenders = []
+    lines = text.splitlines()
+    i = 0
+    while i < len(lines):
+        m = _RUN_KEY.match(lines[i])
+        if not m:
+            i += 1
+            continue
+        indent = len(m.group(1))
+        body = []
+        j = i + 1
+        while j < len(lines):
+            ln = lines[j]
+            if not ln.strip():
+                j += 1
+                continue
+            if len(ln) - len(ln.lstrip()) <= indent:
+                break
+            body.append((j + 1, ln))
+            j += 1
+        meaningful = [(n, ln) for n, ln in body if not ln.strip().startswith('#')]
+        if meaningful:
+            lineno, last = meaningful[-1]
+            mm = MASKING.search(last)
+            if mm:
+                offenders.append(f'{wf_name}:{lineno}: {mm.group(1).strip()}')
+        i = j
+    return offenders
 
 
 def test_migration_coherence_gate_workflow_exists():
@@ -41,14 +96,107 @@ def test_no_workflow_step_swallows_its_own_failure():
     offenders = []
     for wf in sorted(WORKFLOWS.glob('*.y*ml')):
         text = wf.read_text(encoding='utf-8', errors='replace')
-        for m in MASKING.finditer(text):
-            line = text[:m.start()].count('\n') + 1
-            offenders.append(f'{wf.name}:{line}: {m.group(1).strip()}')
+        offenders.extend(_terminal_masking_lines(wf.name, text))
     assert not offenders, (
-        'These workflow lines discard the exit status of the step containing them, so the '
+        'These workflow steps end with a line that discards the exit status, so the '
         'step cannot fail. A regression check that cannot fail is not a check:\n  '
         + '\n  '.join(offenders)
     )
+
+
+def test_guard_still_flags_a_terminal_exit_0():
+    """Positive control: a step whose LAST command is `exit 0` cannot fail —
+    the guard must bite. (receipt-gate.yml's scope-gate `exit 0` is mid-block,
+    before the enforcement runs, so it is intentionally not flagged.)"""
+    text = (
+        'jobs:\n'
+        '  check:\n'
+        '    steps:\n'
+        '      - name: regression check\n'
+        '        run: |\n'
+        '          set -euo pipefail\n'
+        '          python3 tools/check_something.py\n'
+        '          exit 0\n'
+    )
+    offenders = _terminal_masking_lines('synthetic.yml', text)
+    assert offenders == ['synthetic.yml:8: exit 0'], offenders
+
+
+def test_guard_ignores_a_mid_block_scope_gate_exit():
+    """The documented scope-gate shape — `exit 0` on the out-of-scope branch,
+    with enforcement after it — is not failure-swallowing."""
+    text = (
+        'jobs:\n'
+        '  check:\n'
+        '    steps:\n'
+        '      - name: enforce pin\n'
+        '        run: |\n'
+        '          set -euo pipefail\n'
+        '          case "$HEAD_REF" in\n'
+        '            naya/*) echo in-scope ;;\n'
+        '            *) echo out-of-scope; exit 0 ;;\n'
+        '          esac\n'
+        '          python3 tools/enforce_pin.py\n'
+    )
+    assert _terminal_masking_lines('synthetic.yml', text) == []
+
+
+def test_guard_flags_a_terminal_mask_in_a_folded_block():
+    """Epsilon's IV blind-spot follow-up: `_RUN_KEY` used to match only `run: |`,
+    so a masking pattern inside a folded `run: >-` block slipped through.
+    In a folded block `|| true` genuinely swallows the step's failure (YAML
+    folds the lines into one command), so the guard must catch it."""
+    text = (
+        'jobs:\n'
+        '  check:\n'
+        '    steps:\n'
+        '      - name: folded regression check\n'
+        '        run: >-\n'
+        '          python3 tools/check_something.py\n'
+        '          || true\n'
+    )
+    offenders = _terminal_masking_lines('synthetic.yml', text)
+    assert offenders == ['synthetic.yml:7: || true'], offenders
+
+
+def test_guard_flags_a_terminal_exit_0_in_a_folded_block():
+    """Same path as above, other masking pattern. A trailing `exit 0` in a folded
+    block would fold into the previous command's arguments rather than execute,
+    but the guard flags the defect shape conservatively — identically to `|`
+    blocks — instead of trusting the scalar style to make it harmless."""
+    text = (
+        'jobs:\n'
+        '  check:\n'
+        '    steps:\n'
+        '      - name: folded regression check\n'
+        '        run: >-\n'
+        '          python3 tools/check_something.py\n'
+        '          exit 0\n'
+    )
+    offenders = _terminal_masking_lines('synthetic.yml', text)
+    assert offenders == ['synthetic.yml:7: exit 0'], offenders
+
+
+def test_guard_passes_the_two_real_folded_blocks():
+    """The two folded `run: >-` blocks in the repo are clean today — neither
+    ends with a failure-swallow. This pins the negative control to the real
+    files Epsilon named, so a future terminal mask in either trips."""
+    folded = {
+        'activation-delivery-gate.yml',
+        'activation-mint.yml',
+    }
+    found = {name: False for name in folded}
+    for wf in sorted(WORKFLOWS.glob('*.y*ml')):
+        if wf.name not in folded:
+            continue
+        text = wf.read_text(encoding='utf-8', errors='replace')
+        folded_blocks = [ln for ln in text.splitlines() if re.match(r'^\s*run:\s*>-?\s*$', ln)]
+        assert folded_blocks, f'{wf.name} no longer contains a folded run block; revisit this control.'
+        found[wf.name] = True
+        assert _terminal_masking_lines(wf.name, text) == [], (
+            f'{wf.name} has a folded block that now swallows its own failure.'
+        )
+    assert all(found.values()), f'Missing folded-block files: {[k for k, v in found.items() if not v]}'
 
 
 def test_migration_enforcement_compares_finding_identity_not_just_a_count():

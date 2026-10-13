@@ -333,3 +333,101 @@ def test_api_error_becomes_plain_words_not_traceback(capsys, monkeypatch):
     err = capsys.readouterr().err
     assert "CONSENSUS GATE FAILED: unable to verify consensus" in out
     assert "Traceback" not in out + err
+
+
+# ---------------------------------------------------------------------------
+# R5: the 12 named seats (Naya Lambda, lane 5 — 2026-10-12)
+# ---------------------------------------------------------------------------
+# Root cause: SEAT_RE only knew the numeric seats [12345], so a scorecard
+# receipt signed "Seat: Naya Epsilon" could never satisfy the gate — the
+# scorer stayed invisible and two fully-validated merges jammed the dock
+# (#2459 at 9.5, #2488 at 9.6). The pattern now recognizes the 12 named
+# area leads (Alpha..Mu) alongside 1-5, normalizing to "Naya <Title>".
+# Verdict regexes and author/reviewer/scorer distinctness are untouched:
+# the gate is repaired, never weakened.
+
+NAMED_SEATS = ["Alpha", "Beta", "Gamma", "Delta", "Epsilon", "Zeta",
+               "Eta", "Theta", "Iota", "Kappa", "Lambda", "Mu"]
+
+
+def test_seat_of_recognizes_all_12_named_seats():
+    for name in NAMED_SEATS:
+        assert seat_of(f"Seat: Naya {name}") == f"Naya {name}"
+
+
+def test_seat_of_normalizes_named_seat_casing():
+    assert seat_of("naya epsilon") == "Naya Epsilon"
+    assert seat_of("NAYA LAMBDA") == "Naya Lambda"
+
+
+def test_seat_of_still_recognizes_numeric_seats():
+    for n in "12345":
+        assert seat_of(f"Seat: Naya {n}") == f"Naya {n}"
+    assert seat_of("no tag here") is None
+
+
+def test_author_seat_of_recognizes_named_seat_declaration():
+    assert author_seat_of("Seat: Naya Epsilon") == "Naya Epsilon"
+    assert author_seat_of("Seat: Naya 5") == "Naya 5"
+    assert author_seat_of("mentions Naya Epsilon in prose, no declaration") is None
+
+
+def test_named_seat_scorecard_is_accepted(capsys):
+    """(a) The mission's core case: author Naya 2, review from Naya 4,
+    '## SCORECARD' with the exact head SHA, 'verdict: 9.5', signed by
+    Naya Epsilon -> the gate passes and names the scorer seat."""
+    scorecard = (f"## SCORECARD\nhead: {HEAD}\nverdict: 9.5\n"
+                 f"Seat: Naya Epsilon")
+    review = "[NAYA 4 \u00b7 REVIEW] APPROVED \u2014 looks good\nSeat: Naya 4"
+
+    def fake_api_get(path, token):
+        if path.endswith("/pulls/2459"):
+            return _pr_response("2026-10-12T12:00:00Z", "Seat: Naya 2\nbody")
+        if path.endswith("/reviews"):
+            return []
+        return [{"body": review}, {"body": scorecard}]
+
+    with patch("check_merge_consensus.api_get", side_effect=fake_api_get):
+        run_gate("tok", "o/r", "2459", HEAD)  # must not raise
+    out = capsys.readouterr().out
+    assert "CONSENSUS GATE PASSED" in out
+    assert "Naya Epsilon" in out
+
+
+def test_author_own_named_seat_still_rejected():
+    """(b) Distinctness is untouched: the author's own seat cannot score."""
+    own_scorecard = (f"## SCORECARD\nhead: {HEAD}\nverdict: 9.9\n"
+                     f"Seat: Naya 2")
+
+    def fake_api_get(path, token):
+        if path.endswith("/pulls/2459"):
+            return _pr_response("2026-10-12T12:00:00Z", "Seat: Naya 2")
+        if path.endswith("/reviews"):
+            return []
+        return [{"body": own_scorecard}]
+
+    with patch("check_merge_consensus.api_get", side_effect=fake_api_get):
+        with pytest.raises(SystemExit) as exc:
+            run_gate("tok", "o/r", "2459", HEAD)
+    assert exc.value.code == 1
+
+
+def test_naya_5_review_path_still_works(capsys):
+    """(c) The legacy numeric review path is preserved: a Naya 5 review
+    counts as a different-seat review on a Naya 2-authored PR."""
+    review = "[NAYA 5 \u00b7 REVIEW] APPROVED\nSeat: Naya 5"
+    scorecard = (f"## SCORECARD\nhead: {HEAD}\nverdict: 9.5\n"
+                 f"Seat: Naya Epsilon")
+
+    def fake_api_get(path, token):
+        if path.endswith("/pulls/2459"):
+            return _pr_response("2026-10-12T12:00:00Z", "Seat: Naya 2")
+        if path.endswith("/reviews"):
+            return []
+        return [{"body": review}, {"body": scorecard}]
+
+    with patch("check_merge_consensus.api_get", side_effect=fake_api_get):
+        run_gate("tok", "o/r", "2459", HEAD)  # must not raise
+    out = capsys.readouterr().out
+    assert "CONSENSUS GATE PASSED" in out
+    assert "reviewer Naya 5" in out
