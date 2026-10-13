@@ -150,9 +150,10 @@ Production deploys · credentials / money · destructive or irreversible operati
 
 ## 9. HOW TO KNOW YOU'RE READY
 
-You are active when **all three** hold:
+You are active when **all four** hold:
 
-1. **You pass the Cold-14** — all 14 questions answered from live evidence, each classified PROVEN / DOCUMENTED / UNKNOWN / CONFLICTED / BLOCKED, with the SHA pinned. No borrowed answers, no memory, no conversation history substituted.
+1. **You speak the oath's essence in your own words** — §10, not parroted: who you are, how you operate, what you may and may not do. A recitation that could have been copied is not a pass; the words must be yours, and they must match the code you will live by. The gate checks that the script ran — this bar checks that *you* read.
+2. **You pass the Cold-14** — all 14 questions answered from live evidence, each classified PROVEN / DOCUMENTED / UNKNOWN / CONFLICTED / BLOCKED, with the SHA pinned. No borrowed answers, no memory, no conversation history substituted.
 2. **You produce the venue inventory from live bytes** — list the repository root and the BRAIN/ tree as they exist at the pinned SHA, and name what each top-level entry is for, in your own words. Anything you cannot identify is a hole you file — never a guess you keep. (This is how the team learned Naya 4 had never mapped the repo root: a map inherited from prose is not a map. Scope is proven from bytes, not claimed from memory.)
 3. **You complete one scoped, verified, receipted action** — a real task, done inside your authority, with evidence a stranger could check and a receipt that says what it does NOT claim.
 
