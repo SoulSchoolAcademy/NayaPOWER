@@ -47,10 +47,10 @@ verification protocol) is the RITUAL side of the same provision and lives
 outside this machine gate. Score claims inside a checklist are read as
 self-attested, never as verified proof.
 
-Wiring point: kernel/protocol/cold_start_gate.py is the boot sequence this
-checklist belongs to (activation is not complete until the checklist
-verifies). The pure predicate check_checklist() is importable so the cold
-start gate can fold its verdict in without duplicating the registry.
+Wired: kernel/protocol/cold_start_gate.py run_cold_start() invokes
+check_checklist() as a boot gate step — activation is not complete until
+the checklist verifies, fail closed. The predicate stays importable (no
+registry duplication at the call site).
 
 Exit codes: 0 = CHECKLIST-VERIFIED | 1 = REJECT (fail closed) |
             2 = tool error (canonical artifacts unreadable — fail closed).
@@ -115,22 +115,27 @@ CURRICULUM_LESSON_PINS = {
     "L14": "4a9962ac4aa6e686472499e781a9a068e1d3e16169c543e7f94ecd1d68624364",
 }
 
-# Pinned 2026-10-10 from origin/brain-build/operating-code-v2 @
-# 22b84419ed500f91d677679c153c0599e60ca33c (PR #2087, OPEN/unmerged).
-# Re-pinned: branch moved 8a933551 -> 22b84419 (V2 files changed).
-# Until #2087 merges, run with --v2-root pointing at a checkout of that
-# branch (or pass --v2-expect to re-pin deliberately). After merge, re-pin
-# to the main-tip bytes — the pin source string must name the new ref.
+# Pinned 2026-10-12 from origin/main @
+# dbe06f9e733efb52c50e583dbb0b74d77039eb73 (PR #2087 MERGED; the V2 bytes
+# on main differ from the pre-merge branch bytes, so the old pins no longer
+# match).
+# History: pinned 2026-10-10 from origin/brain-build/operating-code-v2 @
+# 22b84419ed500f91d677679c153c0599e60ca33c (PR #2087, unmerged);
+# re-pinned 2026-10-12 to the main-tip bytes after the merge. Verified by
+# fetching each file at the main tip through the GitHub API and comparing
+# sha256 — the pins below equal live main-tip bytes, not a transcription.
+# A future drift in V2 bytes is a deliberate re-pin (code change in this
+# table), never a silent pass.
 V2_PIN_SOURCE = (
-    "origin/brain-build/operating-code-v2 @ "
-    "22b84419ed500f91d677679c153c0599e60ca33c (PR #2087, unmerged 2026-10-10)")
+    "origin/main @ dbe06f9e733efb52c50e583dbb0b74d77039eb73 "
+    "(PR #2087 merged; V2 pins re-pinned 2026-10-12)")
 V2_FILE_PINS = {
     "BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2.human.md":
-        "f2a5f81e6d10b9749e3159267411c615c65353845b2d02aa88e98c8115d13537",
+        "d856dc13ae5d31695a94ba97aa52850ea1d0cfb5d4740eb4ff71ffd67967259a",
     "BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2.ai.md":
-        "e4489a40016f05932cfaeee2217b7349ce45277897b79d971e10df0b098fddec",
+        "8e9f53929f0bbc9af3bfd1da3c7f60454a2c9f1769162ec0bb4e48023be187a9",
     "BRAIN/01-GOVERNANCE/0008-operating-code-v2.machine.json":
-        "c1bdf12ad21b990b34329a2a2809c8be4488e9fe6d87539a0f1508b2c9f8ce8b",
+        "a4af89b3c8b3db07e0c289c4906381870952096f282202e0de98a48511a7e2b1",
 }
 
 
@@ -364,8 +369,8 @@ def main(argv=None):
                          "root above tools/)")
     ap.add_argument("--v2-root", default="",
                     help="checkout holding the V2 files (default: --repo-root). "
-                         "Point at the operating-code-v2 branch checkout "
-                         "until PR #2087 merges.")
+                         "V2 merged to main with PR #2087; point elsewhere "
+                         "only to audit a different checkout.")
     ap.add_argument("--checklist", default="",
                     help="agent activation checklist claim JSON to verify "
                          "(default: self-audit of canonical artifacts only)")

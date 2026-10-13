@@ -8,18 +8,18 @@ Proves the predicate logic, including adversarial cases:
   - stale V2 bytes                      -> REJECT
   - missing V2 file                     -> TOOL-ERROR (fail closed)
 
-Fixtures are the REAL canonical artifacts (curriculum from the repo
-checkout, V2 files from origin/brain-build/operating-code-v2 via git show),
-so a pass means the embedded pins match live bytes — the meta-test
-test_embedded_pins_match_live_canonical guards the pins against
-transcription error.
+Fixtures are the REAL canonical artifacts (curriculum AND V2 files from
+the local main-tip repo checkout), so a pass means the embedded pins match
+live bytes — the meta-test test_embedded_pins_match_live_canonical guards
+the pins against transcription error. (V2 was re-pinned 2026-10-12 to the
+main-tip bytes after PR #2087 merged; the old fixture source,
+origin/brain-build/operating-code-v2, is retired.)
 """
 
 import copy
 import json
 import os
 import shutil
-import subprocess
 import sys
 import tempfile
 import unittest
@@ -28,32 +28,8 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import activation_checklist as ac  # noqa: E402
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-V2_BRANCH = "origin/brain-build/operating-code-v2"
 
 ALL_IDS = ["L%d" % i for i in range(1, 15)]
-
-
-def _ensure_ref(ref):
-    """Make sure a remote ref exists locally, fetching it when the clone
-    lacks it. CI checks out a shallow single ref, so origin/* branches for
-    the V2 trust root are absent unless fetched. The gate still verifies
-    live bytes — this only ensures they are reachable."""
-    branch = ref.split(":", 1)[0]
-    name = branch[7:] if branch.startswith("origin/") else branch
-    v = subprocess.run(["git", "rev-parse", "--verify", "--quiet", branch],
-                       cwd=REPO_ROOT, capture_output=True, timeout=60)
-    if v.returncode != 0:
-        f = subprocess.run(["git", "fetch", "origin", name],
-                           cwd=REPO_ROOT, capture_output=True, timeout=120)
-        assert f.returncode == 0, "git fetch failed for %s" % name
-
-
-def _git_show(rev_path):
-    _ensure_ref(rev_path)
-    p = subprocess.run(["git", "show", rev_path], cwd=REPO_ROOT,
-                       capture_output=True, timeout=60)
-    assert p.returncode == 0, "git show failed: %s" % rev_path
-    return p.stdout
 
 
 def _materialize_tree(mutate=None):
@@ -71,9 +47,8 @@ def _materialize_tree(mutate=None):
     shutil.copy(os.path.join(REPO_ROOT, ac.CURRICULUM_HUMAN_MD),
                 os.path.join(naya, "THINKING-CURRICULUM-V1.md"))
     for rel in ac.V2_FILES:
-        blob = _git_show("%s:%s" % (V2_BRANCH, rel))
-        with open(os.path.join(tmp, *rel.split("/")), "wb") as f:
-            f.write(blob)
+        shutil.copy(os.path.join(REPO_ROOT, *rel.split("/")),
+                    os.path.join(tmp, *rel.split("/")))
     canonical, err = ac.load_canonical(tmp)
     assert err == "", err
     if mutate:
