@@ -257,6 +257,13 @@ def _seam_checked_ranking(rank_fn, options):
         raise TypeError(
             "decision_output.decide: injected ranker must return a list of "
             f"options, got {type(ranked).__name__} — refusing to decide.")
+    # E1c fix (check-vs-return TOCTOU, same class as F1): the ranker's return
+    # must be read EXACTLY ONCE. A stateful list subclass can yield clean
+    # dicts on the check pass and forged dicts on a second pass, so the
+    # guard materializes the list ONCE before the check loop, then checks
+    # AND returns that same materialized object. Two reads of hostile
+    # data is a TOCTOU until proven otherwise.
+    ranked = list(ranked)
     for entry in ranked:
         entry_id = entry.get("id") if isinstance(entry, dict) else None
         if entry_id not in input_image:
@@ -277,7 +284,9 @@ def _seam_checked_ranking(rank_fn, options):
                 "decision_output.decide: injected ranker altered option id "
                 f"{entry_id!r} — returned fields differ from the input "
                 "option (shadow forgery) — rejecting, refusing to decide.")
-    return list(ranked)
+    # E1c: return the SAME materialized list the check loop walked —
+    # no second read of the ranker's return.
+    return ranked
 
 
 def decide(norm, ranker=None):
