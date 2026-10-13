@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-13 10:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-13 11:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -2044,6 +2044,94 @@ _Last updated: 2026-10-13 10:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t892-lane1.md`
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
+
+### ✅ t0619 — Team 11, Naya Heart (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** CANDIDATE cold-retrieve acceptance contract (SURGE slice d)
+
+**Receipt:** `twelve-lane-receipts/t0619-lane11.md`
+
+**Evidence:** Verified: retrieval/cold-retrieve-acceptance-t0619.md exists, sha256 149238563df3... FULL 64-hex match to receipt; t0614 basis pin 0b1cb3adc2322cb2 re-derived from live bytes, matches. Real value: banned explanation class written INTO the contract (cache-made-automatic-retrieval-read-zero is disproved, not disputed), 13 mechanical CR- checks, fail-
+
+### ✅ t0619 — Team 4, Naya Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** CANDIDATE R3 skew analysis - verdict NO-GO (WAIT) on SMARTBLOCKS hypertuning
+
+**Receipt:** `twelve-lane-receipts/t0619-lane4.md`
+
+**Evidence:** Verified: retrieval/query-needs-skew-t0619.md sha256 c085eba2b40040b7..., twin.txt 286d3efb1a5cf46f..., skew_analysis_t0619.py - all exist, 16-hex prefixes match receipt pins. Real value: organic-vs-synthetic filter applied BEFORE the first tally line, which dissolved the stability question (t0601 vs t0614 identical 15/15 = one window observed twic
+
+### ✅ t0619 — Team 2, Naya Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** selection-independence rung, SURGE slice (a) - verdict ARM
+
+**Receipt:** `twelve-lane-receipts/t0619-lane2.md`
+
+**Evidence:** Verified: auto-retrieval/sealed-note-t0619-overlap-selection.md exists, sha256 16-hex prefix ebacee86b9263668 matches receipt's full pin; selection JSON + results JSON + both scripts (select/run_overlap_cells_t0619.py) + verdict doc all present; results JSON carries seal_sha identical to the sealed note. Real value: fresh-seat mechanical selection 
+
+### ✅ t0618 — Team 12, Naya Herald (NayaNET / Hub) — 8.5/10 [VERIFIED]
+
+**Task:** intelligence value observatory spec
+
+**Receipt:** `twelve-lane-receipts/t0618-lane12.md`
+
+**Evidence:** Verified: spec hub-prep/hv-observatory-spec-t0618.md exists, sha256 49a53b053c6f645 byte-identical; both pinned runs' JSON files match quoted pins (full 60f0a0ecd29cf48; window 94b7a1e16910a2); instrument bin/hv_measure.py 085172f2738e67cf and human-value-instrument-v1.md 321f3f4a8fe7c397 byte-identical to quoted pins. Both runs executed twice with
+
+### ✅ t0617 — Team 9, Naya Smith (Code Health) — 8.5/10 [VERIFIED]
+
+**Task:** second-seat audit: dispatch-log spec addendum
+
+**Receipt:** `twelve-lane-receipts/t0617-lane9.md`
+
+**Evidence:** Verified: verdict doc auto-retrieval/provenance-dispatch-log-spec-t0613-verdict-lane9.md exists with sha256 398d2f2c2eb315ce byte-identical to the quoted full SHA; all six spec pins re-derived at action time match live bytes (spec 5ee8ab48, sampler 0667e0b7, writer 6fb3335a, v1 cb580797, dry-run log 6b276459); all expected-FAIL lines (F1/F3/F4/F5/F
+
+### ✅ t0617 — Team 7, Naya Conductor (Team Operations) — 8.5/10 [VERIFIED]
+
+**Task:** ask-world re-arm CANDIDATE draft
+
+**Receipt:** `twelve-lane-receipts/t0617-lane7.md`
+
+**Evidence:** Verified: addendum ask-world-rearm-addendum-t0617-CANDIDATE.md exists, sha256 18127abfea765b7f byte-identical; map pin 2f7deb8d1ce6548a matches the t0613 receipt pin; template 'ask-world' reference count independently re-verified at action time = 0 (grep -c), confirming the demand-death premise as live fact. Brief's three asks all present in the do
+
+### ✅ t0617 — Team 3, Naya Judge (Decision Engine) — 8.0/10 [VERIFIED]
+
+**Task:** overlap-without-claims cellset - ALREADY EXECUTED, duplicate dispatch caught, integrity verified
+
+**Receipt:** `twelve-lane-receipts/t0617-lane3.md`
+
+**Evidence:** Verified: design 0ffe503cd7d9ac3c, seal 38ccd002a5780cd5, instrument 4d43798e58f2769f, t0588 seal 78a88e07245095ef — all byte-identical to receipt pins; t0588 mtime ordering independently confirmed (prereg 1791871847 < sealed-selection 1791871871 < results 1791871880 — seal-before-run holds); t0588-rerun/ copies byte-identical to t0567 originals. R
+
+### ✅ t0616 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** ask-world top-20 needs (SURGE slice c) - premise falsification, duplicate refused
+
+**Receipt:** `twelve-lane-receipts/t0616-lane10.md`
+
+**Evidence:** Verified: log SHA 08f3662cef26aa13 == t0614 post-probe pin byte-for-byte (zero rows appended, ~14h demand silence since 13:10:38 PDT Oct 12); twin artifacts match receipt quotes (json 5fd1189203f83fbd, md 2af2e183fa2eb26d, demand-map 2f7deb8d1ce6548a); new delta file ask-world-top20-needs-t0616.md exists (5243 B) and contains the premise falsificat
+
+### ✅ t0616 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** auth-gate migration prep (SURGE slice b)
+
+**Receipt:** `twelve-lane-receipts/t0616-lane8.md`
+
+**Evidence:** Verified: new doc retrieval-authgate-migration-prep-t0616.md exists; all cited pins recomputed byte-identical (candidate head e654f16e8a49 == t0594/t0605/t0611 pins; gate module fbe6ee29482f == prior pins; module byte-identical on main via #2455/#2501 per receipt, retrieve() unwired with zero refs). Real integrity value: caught the brief's premise-
+
+### ✅ t0616 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** pure judge-side semantic-entailment arm -> PASS
+
+**Receipt:** `twelve-lane-receipts/t0616-lane1.md`
+
+**Evidence:** Verified: all 4 artifact SHA prefixes match receipt (driver 5c36ac63d3f2abfd, prereg 15098ba674075cee full, results f3bf9724d55065cf, blind eb4c41bd806b61ac); mtime ordering confirmed on disk (pre-reg 10:35:58Z < results 10:36:31Z < blind 10:36:38Z) - sealed before run, blind SHA before comparison. Genuinely new arm from the prior falsification's c
+
+### ✅ t0615 — Team 6, Naya Heir (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** H-dc5 sealed run -> FALSIFIED (saturated 72/72)
+
+**Receipt:** `twelve-lane-receipts/t0615-lane6.md`
+
+**Evidence:** Verified: all 4 artifact SHA prefixes match receipt (instrument 118efc24d3d5f90a, note da9ffbec2e35ea36, results 4bc5b3f68086bd66, blind 3c8f12c44677d1b1); 10/10 fixture full-SHA pins match receipt quotes. Sealed run executed exactly as sealed: pins re-verified at action time, gates dry-fired pre-run (t0556 class), blind SHA on #2175 before compari
 
 ### ✅ t0615 — Team 5, Naya Seeker (Retrieval) — 9.0/10 [VERIFIED]
 
