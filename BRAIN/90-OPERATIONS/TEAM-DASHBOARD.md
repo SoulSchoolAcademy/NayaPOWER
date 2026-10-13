@@ -1,6 +1,6 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-13 03:16 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-13 04:15 UTC from live sources. Regenerated every wave (~10 min).*
 
 **Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 100 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
@@ -50,13 +50,13 @@
 
 ## Open PRs by Area
 
-### LEARN (8)
+### LEARN (9)
+- [#2505](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2505) docs(brain): learning event 2026-10-12
 - [#2502](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2502) fix(learning): preserve GitHub projection rejection reason in failure 
 - [#2478](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2478) fix(learning): retain safe GitHub projection 403 diagnostics 📝draft
 - [#2460](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2460) fix(gate): merge-consensus seat model learns the 12-lane tags
 - [#2458](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2458) learn(compound-scale): pin Truth-gate receipts to repo fixtures, not s
-- [#2419](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2419) fix(tests): hermetic truth fixtures for learn-compound-scale adversari
-- …and 3 more
+- …and 4 more
 
 ### KNOW (14)
 - [#2433](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2433) brain-index: regenerate at basis 31d8cff7 (mechanical re-stamp, --che…
@@ -83,21 +83,21 @@
 - [#2392](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2392) fix(verify): resolve python interpreter at runtime in guard_liveness.t 📝draft
 - [#2374](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2374) test(t21): operating-essence acceptance battery — moral value before n
 
-### BUILD (25)
+### BUILD (26)
+- [#2507](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2507) SVE-1: extract capability (quote-span extraction + classification + de
 - [#2503](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2503) IB owners = NAYA (successor to #2488)
 - [#2500](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2500) [B-47] Smart Connect / open doors mechanism — DRAFT for Naya 4 review 📝draft
 - [#2499](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2499) B-31: four-surface SN-collision claim coverage (mechanism) 📝draft
 - [#2498](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2498) B-51 step 3: backfill — retire 28 legacy index entries, rebind 603 liv
-- [#2493](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2493) B-41: mission-preview completeness contract in the World Model
-- …and 20 more
+- …and 21 more
 
-### WIRE (26)
-- [#2501](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2501) Completeness gate: named-seat recognition fix
+### WIRE (24)
+- [#2506](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2506) ACT: wire Gate-1 activation checklist into the real boot path (P0)
 - [#2496](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2496) gate(activation): wire Gate 1 checklist into the cold-start boot decis
 - [#2494](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2494) fix(ci): receipt-gate fires on edited/reopened PR events (B-48)
 - [#2492](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2492) fix(ci): receipt-gate out-of-scope branch uses flag-and-guard instead 
 - [#2483](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2483) [DRAFT] Wire activation checklist into cold-start boot gate (fail clos 📝draft
-- …and 21 more
+- …and 19 more
 
 ### TEAM (1)
 - [#2397](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2397) feat(dashboard): live Team Naya activity dashboard — markdown + machin

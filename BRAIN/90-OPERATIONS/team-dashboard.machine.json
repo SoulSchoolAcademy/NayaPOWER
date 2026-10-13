@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-13T03:16:12+00:00",
+ "generated_utc": "2026-10-13T04:15:30+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -32,6 +32,12 @@
    "active_now": false,
    "board_lane": "#2175 lane LEARN",
    "open_prs": [
+    {
+     "number": 2505,
+     "title": "docs(brain): learning event 2026-10-12",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2505",
+     "draft": false
+    },
     {
      "number": 2502,
      "title": "fix(learning): preserve GitHub projection rejection reason in failure receipt",
@@ -73,15 +79,9 @@
      "title": "DRAFT feat(product): Hub learning-lifecycle surface spec (Host, wave 7)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2413",
      "draft": true
-    },
-    {
-     "number": 2391,
-     "title": "feat(learn): four-arm compounding experiment spec V1",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2391",
-     "draft": true
     }
    ],
-   "open_pr_count": 8
+   "open_pr_count": 9
   },
   {
    "id": "know",
@@ -306,6 +306,12 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2507,
+     "title": "SVE-1: extract capability (quote-span extraction + classification + dedupe) + 6 tests",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2507",
+     "draft": false
+    },
+    {
      "number": 2503,
      "title": "IB owners = NAYA (successor to #2488)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2503",
@@ -346,15 +352,9 @@
      "title": "[DRAFT] Repair quarantined Smart Notes: add MACHINE NOTE sections (SN-0345/0459/0460/0600/",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2484",
      "draft": true
-    },
-    {
-     "number": 2480,
-     "title": "Fix STATS.md phantom contradiction (line 11: 1, line 59: 'zero')",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2480",
-     "draft": false
     }
    ],
-   "open_pr_count": 25
+   "open_pr_count": 26
   },
   {
    "id": "wire",
@@ -375,9 +375,9 @@
    "board_lane": "#2175 lane WIRE",
    "open_prs": [
     {
-     "number": 2501,
-     "title": "Completeness gate: named-seat recognition fix",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2501",
+     "number": 2506,
+     "title": "ACT: wire Gate-1 activation checklist into the real boot path (P0)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2506",
      "draft": false
     },
     {
@@ -423,7 +423,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 26
+   "open_pr_count": 24
   },
   {
    "id": "team",
@@ -751,5 +751,5 @@
   }
  ],
  "open_pr_total": 100,
- "unassigned_prs": 25
+ "unassigned_prs": 26
 }
