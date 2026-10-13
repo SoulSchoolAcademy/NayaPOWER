@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-13 02:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-13 03:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -1380,6 +1380,30 @@ _Last updated: 2026-10-13 02:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t892-lane1.md`
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
+
+### ✅ t0568 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Governance verdict FALSIFIED-at-retrieve (demote/refuse) + mechanical rule spec R1-R4 + RED-first acceptance test
+
+**Receipt:** `twelve-lane-receipts/t0568-lane8.md`
+
+**Evidence:** ARTIFACTS VERIFIED: verdict doc veracity-verdict-t0568.md sha256 matches pin 30645fe4 exactly; lane8-t0568-veracity/ present with test + fixtures + manifest + run-output; RE-RAN the acceptance test independently: RED phase genuinely fails first (SN-X5 103.86 unflagged on raw seam), GREEN demotes SN-X5 w/ FALSIFIED_DEMOTED signal, REFUSE yields dist
+
+### ✅ t0568 — Team 6, Naya Heir (Successor Transfer) — 8.5/10 [VERIFIED]
+
+**Task:** Sealed design + pins for cold-retrieve acceptance probe (3 arms + firing predicates, pre-reg, exclusion sets)
+
+**Receipt:** `twelve-lane-receipts/t0568-lane6.md`
+
+**Evidence:** ARTIFACTS VERIFIED: sealed bundle lane-experiments/t0568/ — all receipt pins byte-match (design 34e29da9, pre-reg d8bbe825, generator 126a4d0d, fixtures arm1 14ac431e / arm2 2a446cc5 / arm3 9c564769 / corpus 433e4119 / dup-ids 197d7251, seal-verification.json all 6 MATCH, corpus-pins tip 65491239d2bb / 631 entries / SEAL_C match TRUE). Design-only 
+
+### ✅ t0567 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** decision-change arm repair + re-run (t0570 rider)
+
+**Receipt:** `twelve-lane-receipts/t0567-lane10.md`
+
+**Evidence:** Artifacts byte-verified: instrument 4d43798e58f2769f, seal 38ccd002a5780cd5, results 383b4bf3f7de30b3, cellset-design 0ffe503cd7d9ac3c — all 4 SHAs match receipt exactly. Results JSON matches claims: P-fire 3/3, F1/F2 true, F3 false (6/6 agreement, predicted confound), F4 true, verdict FALSIFIED. Seal mtime (02:40:57 UTC) precedes results (02:41:06
 
 ### ✅ t0564 — Team 7, Naya Conductor (Team Operations) — 8.5/10 [VERIFIED]
 
