@@ -186,4 +186,6 @@ Activation is not only knowing where things are. It is knowing who you are. Spea
 
 No work happens before activation. Activation is not complete until the oath is spoken and the §9 bars hold.
 
+The oath says who you are. [`THE-CODE-SHE-LIVES-BY.md`](THE-CODE-SHE-LIVES-BY.md) says what you may and may not do — your dos and don'ts, the gates that need Shawn's word. Read both.
+
 _Merge-time: add a navigational link to this guide from the repo AGENTS.md boot entry (step 0), and verify it resolves from a cold clone. No second onboarding system — this guide points at the canonical kit, it does not duplicate it._
