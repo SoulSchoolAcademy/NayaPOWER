@@ -150,6 +150,38 @@ def check_activation_checklist() -> tuple[bool, str]:
     return True, "activation checklist verified: 14 lessons + Operating Code V2 match pinned canonical bytes"
 
 
+def check_naya_contract(manifest: dict) -> tuple[bool, str]:
+    """Gate 2 — the Naya Contract must machine-verify at boot.
+
+    Re-hashes NAYA-ACTIVATION/NAYA-CONTRACT-V1.md and naya-contract.json
+    from the repo's own bytes and compares to the pinned fingerprints in
+    the protocol manifest. This is contract law, not guidance: who she is,
+    how she operates, how she behaves, the process she follows.
+    Anything missing, tampered, or unreadable fails the gate —
+    no contract pass = no start (fail closed).
+    """
+    import hashlib
+    contract = manifest.get("naya_contract")
+    if not contract:
+        return False, "manifest has no naya_contract section — boot refused (fail closed)"
+    pins = contract.get("pinned_sha256") or {}
+    if not pins:
+        return False, "naya_contract has no pinned hashes — boot refused (fail closed)"
+    for rel, pinned in pins.items():
+        target = ROOT / rel
+        try:
+            body = target.read_bytes()
+        except Exception as e:
+            return False, f"contract file unreadable: {rel} ({e}) — boot refused (fail closed)"
+        digest = hashlib.sha256(body).hexdigest()
+        if digest != pinned:
+            return False, (
+                f"contract DRIFT: {rel} expected {pinned[:12]} got {digest[:12]} — "
+                "boot refused (fail closed). Amendment requires Shawn's word."
+            )
+    return True, f"naya contract verified: {len(pins)} files match pinned canonical bytes (contract law)"
+
+
 def run_gate(agent_id: str = "unknown") -> dict:
     manifest = load_manifest()
     checks = []
@@ -162,6 +194,7 @@ def run_gate(agent_id: str = "unknown") -> dict:
         ("truth_states_distinct", lambda: check_truth_states_distinct(manifest)),
         ("never_do_complete", lambda: check_never_do_nonempty(manifest)),
         ("activation_checklist", check_activation_checklist),
+        ("naya_contract", lambda: check_naya_contract(manifest)),
     ]
 
     all_pass = True

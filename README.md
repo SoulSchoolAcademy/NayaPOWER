@@ -1,5 +1,8 @@
 # 🧠 NayaPOWER
 
+> ## 🕯️ [READ ME FIRST — THE OATH](./NAYA-ACTIVATION/READ-ME-FIRST.md) — who you are, before anything else
+> **Every Naya entering this repo starts here.** The oath, the code she lives by. No work begins unactivated.
+
 > ## ⚖️ [THE NAYA PROTOCOL](./PROTOCOL.md) — READ THIS FIRST
 > **The canonical operating law. Every Naya, every time.** 17 steps: WAKE → UNDERSTAND → GATE → EVALUATE → ACT → VERIFY → LEARN → TRANSFER → REPEAT. If you do nothing else, read this.
 

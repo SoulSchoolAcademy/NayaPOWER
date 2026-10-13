@@ -78,7 +78,7 @@
       "id": "SN-AUTO-BRAIN",
       "title": "The Automatic Super Brain",
       "status": "CANDIDATE",
-      "text": "The system must be structured so the correct action is the natural action — computed by architecture, not discovered by effort. Every agent automatically knows what to do, what the mission is, what the goal is, and what choices to make.",
+      "text": "The system must be structured so the correct action is the natural action \u2014 computed by architecture, not discovered by effort. Every agent automatically knows what to do, what the mission is, what the goal is, and what choices to make.",
       "check": "tools/protocol/checks/auto_brain.py",
       "machine_check": "kernel/protocol/protocol_integrity_gate.py"
     },
@@ -93,7 +93,7 @@
       "id": "SN-PROACTIVE-DOC",
       "title": "Proactive Documentation",
       "status": "CANDIDATE",
-      "text": "When any agent sees something valuable — lesson, pattern, fix, insight — it MUST be documented without waiting to be told. Not documenting discovered value is a disservice.",
+      "text": "When any agent sees something valuable \u2014 lesson, pattern, fix, insight \u2014 it MUST be documented without waiting to be told. Not documenting discovered value is a disservice.",
       "machine_check": "kernel/protocol/learning_capture.py"
     },
     {
@@ -101,14 +101,14 @@
       "name": "Two-Layer Communication",
       "check": "tools/protocol/checks/two_layer.py",
       "enforcement": "two_layer_required",
-      "statement": "Every consequential update comes in TWO layers, back to back: (1) THE TECHNICAL — what happened, honestly, real terms; (2) LITERALLY WHAT I AM SAYING — what it means in plain human words, like explaining to a child; allegories welcome. Never hand Shawn technicals alone. Exempt: one-line status pings, acks, internal coordination notes. Unknown report types fail closed."
+      "statement": "Every consequential update comes in TWO layers, back to back: (1) THE TECHNICAL \u2014 what happened, honestly, real terms; (2) LITERALLY WHAT I AM SAYING \u2014 what it means in plain human words, like explaining to a child; allegories welcome. Never hand Shawn technicals alone. Exempt: one-line status pings, acks, internal coordination notes. Unknown report types fail closed."
     },
     {
       "id": "BLOCKER-SURFACING",
       "name": "Proactive Blocker Surfacing",
       "check": "tools/protocol/checks/blocker_surfacing.py",
       "enforcement": "blocker_post_required",
-      "statement": "A seat that is blocked — or stalled (no progress inside the stall window) — with no blocker post naming the X AND the unblock action, in the two-layer format, FAILS. Silence while stuck is the violation, not a report after it broke."
+      "statement": "A seat that is blocked \u2014 or stalled (no progress inside the stall window) \u2014 with no blocker post naming the X AND the unblock action, in the two-layer format, FAILS. Silence while stuck is the violation, not a report after it broke."
     },
     {
       "id": "FAIL-CLOSED-SHAPE",
@@ -148,7 +148,7 @@
     {
       "id": "BRAIN-INDEX-FRESHNESS",
       "name": "Brain Index Regen Habit",
-      "statement": "Every BRAIN/ change lands with a matching index regen. The index layer (BRAIN/REAL-TREE.json, BRAIN/REAL-TREE.md, BRAIN/NAYAPOWER-BRAIN-INDEX.json) must match the committed git tree; the check fails on drift, fails closed on structural corruption, and names the exact regen command that fixes drift. Mechanical layer only (counts, blob SHAs, pointers) — semantic sections are preserved by the regen, never verified for correctness.",
+      "statement": "Every BRAIN/ change lands with a matching index regen. The index layer (BRAIN/REAL-TREE.json, BRAIN/REAL-TREE.md, BRAIN/NAYAPOWER-BRAIN-INDEX.json) must match the committed git tree; the check fails on drift, fails closed on structural corruption, and names the exact regen command that fixes drift. Mechanical layer only (counts, blob SHAs, pointers) \u2014 semantic sections are preserved by the regen, never verified for correctness.",
       "enforcement": "brain_index_freshness_gate",
       "check": "tools/protocol/checks/brain_index_freshness.py"
     }
@@ -255,5 +255,18 @@
     "PRODUCTION-PROVEN",
     "BLOCKED"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "naya_contract": {
+    "contract": "NAYA-CONTRACT-V1",
+    "ratified_by": "Shawn Vibert",
+    "ratified_at": "2026-10-13",
+    "status": "contract-law",
+    "human": "NAYA-ACTIVATION/NAYA-CONTRACT-V1.md",
+    "machine": "NAYA-ACTIVATION/naya-contract.json",
+    "pinned_sha256": {
+      "NAYA-ACTIVATION/NAYA-CONTRACT-V1.md": "ecda28417075208504853f68e4b604e05e25d08d2218ae425a8d88da64a006f9",
+      "NAYA-ACTIVATION/naya-contract.json": "61d8420439e7183a5d7e05d2db7eecbb1fa82a8e043ec7e0c30fcefdf3986725"
+    },
+    "amendment": "Only by Shawn's explicit word."
+  }
 }
