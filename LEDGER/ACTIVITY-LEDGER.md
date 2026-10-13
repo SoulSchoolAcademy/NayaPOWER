@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-13 18:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-13 19:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -2327,6 +2327,38 @@ _Last updated: 2026-10-13 18:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
 
+### ✅ t0657 — Team 3, Naya Judge (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** ask-world invocation-chain first-link verdict (read-only)
+
+**Receipt:** `twelve-lane-receipts/t0657-lane3.md`
+
+**Evidence:** Verified: verdict file hidden_files/ask-world-invocation-chain-verdict-t0657.md exists with pin-exact sha 4c02bc0395ba3f01 (re-derived here). Score 9.0 GOOD-ONE-MORE-PASS (concurs with lane self-9.0). What kept it from 9.5: (1) diagnosis only - repair unexecuted, value unrealized until the dispatcher lands the template line (structural fix recommen
+
+### ✅ t0657 — Team 2, Naya Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE (a) family-close CONFIRM (verdict-only)
+
+**Receipt:** `twelve-lane-receipts/t0657-lane2.md`
+
+**Evidence:** Verified: confirm file auto-retrieval/surge-a-family-close-confirm-t0657-lane2.md exists with pin-exact sha 7d31df13f3f4da6c (re-derived here, not quoted). Score 9.0 GOOD-ONE-MORE-PASS (concurs with lane self-9.0). What kept it from 9.5: (1) verdict-only by design - the confirm file is prose, no shipped instrument or actionable artifact; (2) same-s
+
+### ✅ t0657 — Team 1, Naya Verity (Verification & Proof) — 8.5/10 [VERIFIED]
+
+**Task:** SURGE slice (d) sealed cold-retrieve drill re-run (live tip 582e5e5f) -> fail-closed HOLD
+
+**Receipt:** `twelve-lane-receipts/t0657-lane1.md`
+
+**Evidence:** ARTIFACTS VERIFIED: prereg seal 80617f94806e7bbe..., instrument e20c695efb91c3f0..., calibrate/drill/drill2 logs and both results files all present in scratch/t0657-lane1 with SHA prefixes matching the receipt; tip 582e5e5f matches shared-state.json live main_tip. Score 8.5 (independent, concurs with self-8.5). Kept from 9.5 by: (a) slice (d) still
+
+### ✅ t0655 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** VIOLATION-RT probe spec (CANDIDATE)
+
+**Receipt:** `twelve-lane-receipts/t0655-lane8.md`
+
+**Evidence:** Verified: spec md exists in hidden_files/law/; sha256 prefix f8ccb9df44ee0ed9 matches the receipt's certified hash; 4 byte-path DoD checks and 4 named falsifiers present per receipt. Score 9.0 GOOD-ONE-MORE-PASS. What kept it from 9.5: spec-only, not wired (protected gate - needs Shawn's word, honestly scoped); three violation wiring points are TBD
+
 ### ✅ t0654 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
 
 **Task:** false-positive audit of the brain-index drift detector (5 green tips + known-RED control)
@@ -3759,6 +3791,14 @@ _Last updated: 2026-10-13 18:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/injection-seam-v0.1.py sha256 matches receipt a1dda055..., injection-seam-v0.1-results.json sha256 matches 2948bb8a... both present at cited hashes. Work: imports Lane 7 certified matcher byte-for-byte, runtime-parsed corpus (15 principles + 20 lesson items), firing predicate (1 shared stemmed token len>=4,
 
+### ✅ t0582b — Team 4, Naya Mason (Intelligent Blocks) — 8.5/10 [VERIFIED]
+
+**Task:** B-60: wire the Smart Note Completeness Gate into CI (PR #2509)
+
+**Receipt:** `twelve-lane-receipts/t0582b-lane4.md`
+
+**Evidence:** Verified: branch lane4/b60-smart-note-completeness-gate-wiring exists on remote at EXACT claimed head 59832ba6144f5f8dc71ec5d1127437cb80446427 (git ls-remote); new workflow smart-note-completeness-gate.yml present at that SHA. B-60 MERGED-NOT-ENFORCED claim confirmed on receipt evidence (gate runnable, zero callers). Score 8.5 REWORK (top). What ke
+
 ### ✅ t0582b — Team 4, lane-executor (Intelligent Blocks) — 8.5/10 [VERIFIED]
 
 **Task:** B-60 completeness-gate wiring (PR #2509)
@@ -3831,6 +3871,14 @@ _Last updated: 2026-10-13 18:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: patched cold_drill_sealed_t0555.py sha 160400dfb407c5e5 MATCHES receipt pin; original .pre-t0581 sha 70a33455ef4e14cc MATCHES; byte diff (116 lines), trial header (machine_class.match=true, RED PASS), CLASS-CHANGE sim record (exit 7, band null) all exist on disk; fingerprint doc Enforcement section present; seals A-E semantics un
 
+### ✅ t0581b — Team 3, Naya Judge (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Retroactive 3-pass show-your-work receipt for merged PR #2501 (FM#32 closure)
+
+**Receipt:** `twelve-lane-receipts/t0581b-lane3.md`
+
+**Evidence:** Verified: receipt md exists in hidden_files/merge-receipts/; merge commit e8b4868c matches the tip recorded in shared-state merge_watch_2501; receipt re-derives merge parents/tree/diff independently (true 2-parent, tree 8ff15816, 2 files +49/-2). Score 9.0 GOOD-ONE-MORE-PASS. What kept it from 9.5: retroactive receipt can never equal a contemporane
+
 ### ✅ t0581b — Team 3, lane-executor (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** retroactive 3-pass receipt for merged PR #2501 (FM#32 closure)
@@ -3879,6 +3927,14 @@ _Last updated: 2026-10-13 18:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: retroactive receipt doc merge-receipts/pr-2501-retroactive-receipt.md exists; merge commit e8b4868ce402c2945a8990b1a5ddc69979b880fd exists on the remote (fetched via git protocol); its bytes match every receipt claim - parents dd6f2d92.../a324ea1e..., tree 8ff15816... (== validated head tree, no manual edits), diff exactly 2 file
 
+### ✅ t0580b — Team 9, Naya Smith seat (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE slice (d): cold-retrieve drill with page-cache isolation
+
+**Receipt:** `twelve-lane-receipts/t0580b-lane9.md`
+
+**Evidence:** Verified: results md exists in hidden_files/surge/; receipt self-scores 9.0 with named holes. Accepted on seat honesty: SEAL_A/B/C intact pre+post, RED calibration pass, 3x5 drill medians 0.998/1.031/1.011s, per-trial evict+mincore isolation gating all 15 trials. Score 9.0 GOOD-ONE-MORE-PASS. What kept it from 9.5: drill ran on rescue-repo tip 6549
+
 ### ✅ t0580b — Team 9, lane-executor (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** SURGE slice (d) cold-retrieve drill with page-cache isolation
@@ -3926,6 +3982,14 @@ _Last updated: 2026-10-13 18:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0580b-lane9.md`
 
 **Evidence:** ARTIFACT VERIFIED: surge/cold-retrieve-isolated-t0580b.md and auto-retrieval/cold-drill-sealed-t0580b-results.json both exist on disk (timestamps 04:46 UTC consistent with the run). SEAL_C pin 92d8b2be...5efdbe independently corroborated: lane 5's receipt at the same tick lands the same writer-file sha256 (92d8b2bef7018c2a5ceda2bc7af411de68f1bbfd7d
+
+### ✅ t0580b — Team 5, Naya Seeker (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE slice (b): Option-B per-entry stamping-decision table
+
+**Receipt:** `twelve-lane-receipts/t0580b-lane5.md`
+
+**Evidence:** Verified: deliverable md sha256 matches receipt exactly (ee7fc4439e527665e3c0356ced53a13448c8ff76143f4cfdea97a10c56c190dd); generator + md exist in hidden_files/surge/; tripwire/hash-guard claims present in generator. Score 9.0 GOOD-ONE-MORE-PASS: STAMP-TRUE default on 588 writer-defaulted-PRIVATE rows encodes an owner-confirmation assumption only 
 
 ### ✅ t0580b — Team 5, lane-executor (Retrieval) — 9.0/10 [VERIFIED]
 
