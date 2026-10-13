@@ -128,49 +128,50 @@ class TestFourSurfaces(unittest.TestCase):
         self.assertEqual(v["verdict"], "COLLISION")
         self.assertEqual(v["foreign_claims"][0]["surface"], "pr_heads")
 
-    def test_mirror_blob_compare_verifies_copies(self):
-        # Unit test for the B-56 byte-compare helper on a scratch repo:
-        # identical blob -> copy; modified blob -> not a copy; missing
-        # base blob -> not a copy (fail-closed).
-        import check_sn_claim_coverage as c
+    def test_pr_head_mirror_registry_voice_does_not_refuse(self):
+        # B-56 core rule: a mirror token whose id is in the registry's id
+        # set is the registry's voice -- no declaration needed -- so a
+        # stale-based PR's mirror (divergent bytes, faithful ids) clears.
         repo = make_repo()
-        mp = repo / ".naya" / "memory" / "smart-notes"
-        mp.mkdir(parents=True)
-        (mp / "index.json").write_text('{"ids": ["SN-0798"]}\n')
-        subprocess.run(["git", "-C", str(repo), "add", "."], check=True)
-        subprocess.run(["git", "-C", str(repo), "commit", "-qm",
-                        "mirror v1"], check=True)
-        c1 = subprocess.run(
-            ["git", "-C", str(repo), "rev-parse", "HEAD"],
-            capture_output=True, text=True, check=True).stdout.strip()
-        # Same blob at HEAD: a copy.
-        self.assertTrue(
-            c._mirror_copies(str(repo),
-                             [(c1, ".naya/memory/smart-notes/index.json")])
-            [(c1, ".naya/memory/smart-notes/index.json")])
-        # Modify the file in a new commit: the old head's blob is no
-        # longer a copy of HEAD's blob.
-        (mp / "index.json").write_text('{"ids": ["SN-0798", "SN-0799"]}\n')
-        subprocess.run(["git", "-C", str(repo), "add", "."], check=True)
-        subprocess.run(["git", "-C", str(repo), "commit", "-qm",
-                        "mirror v2"], check=True)
-        self.assertFalse(
-            c._mirror_copies(str(repo),
-                             [(c1, ".naya/memory/smart-notes/index.json")])
-            [(c1, ".naya/memory/smart-notes/index.json")])
-        # The new head's blob IS a copy of HEAD's (it is HEAD's).
-        c2 = subprocess.run(
-            ["git", "-C", str(repo), "rev-parse", "HEAD"],
-            capture_output=True, text=True, check=True).stdout.strip()
-        self.assertTrue(
-            c._mirror_copies(str(repo),
-                             [(c2, ".naya/memory/smart-notes/index.json")])
-            [(c2, ".naya/memory/smart-notes/index.json")])
-        # Missing base blob (path never committed at HEAD's tree):
-        # not a copy -- fail-closed.
-        self.assertFalse(
-            c._mirror_copies(str(repo), [(c1, ".naya/absent.json")])
-            [(c1, ".naya/absent.json")])
+        fx = {"comments": [], "registry_nums": [798], "prs": [{
+            "number": 99, "user": {"login": "SomeSeat"},
+            "title": "smart notes batch", "body": "", "head": {"ref": "x"},
+            "files": [{
+                "filename": ".naya/memory/smart-notes/index.json",
+                "patch": "+\"smart_note_id\": \"SN-0798\""}]}]}
+        rc, v = run_check(SN, repo, fx)
+        self.assertEqual(rc, 0, v)
+        self.assertEqual(v["verdict"], "CLEAR")
+        self.assertEqual(v["foreign_claims"], [])
+        mirrors = [h for h in v["mirror_hits"]
+                   if h["surface"] == "pr_heads"]
+        self.assertTrue(mirrors, "mirror hit not reported as advisory")
+
+    def test_pr_head_mirror_novel_id_still_refuses(self):
+        # B-56 fail-closed pole: a mirror token the registry does not know
+        # is a planted claim, not the registry's voice -> COLLISION.
+        repo = make_repo()
+        fx = {"comments": [], "registry_nums": [16], "prs": [{
+            "number": 99, "user": {"login": "SomeSeat"},
+            "title": "smart notes batch", "body": "", "head": {"ref": "x"},
+            "files": [{
+                "filename": ".naya/memory/smart-notes/index.json",
+                "patch": "+\"smart_note_id\": \"SN-0798\""}]}]}
+        rc, v = run_check(SN, repo, fx)
+        self.assertEqual(rc, 1, v)
+        self.assertEqual(v["verdict"], "COLLISION")
+        self.assertEqual(v["foreign_claims"][0]["surface"], "pr_heads")
+
+    def test_mirror_class_rule(self):
+        # Unit test for the B-56 classifier: registry's voice vs planted
+        # claim vs no-signal fail-closed.
+        import check_sn_claim_coverage as c
+        self.assertTrue(c._mirror_class(798, {16, 798}))
+        self.assertFalse(c._mirror_class(798, {16}))
+        self.assertFalse(c._mirror_class(798, set()))
+        self.assertTrue(c._mirror_class(798, None, declared_copy=True))
+        self.assertFalse(c._mirror_class(798, None, declared_copy=False))
+        self.assertFalse(c._mirror_class(798, None))
 
     def test_commit_graph_only_claim_refuses(self):
         repo = make_repo()

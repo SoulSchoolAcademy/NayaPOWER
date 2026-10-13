@@ -29,9 +29,11 @@ position:
   - surface 2 (open PR heads): token in added content of a smart-note-
     bearing path, or claim-verb + token in the PR title/body. A token in
     a generated registry mirror (B-56) is MIRROR-class (advisory,
-    non-blocking) when the mirror's bytes are identical to the scan
-    base's; a divergent or unverifiable mirror stays claim-class
-    (fail-closed).
+    non-blocking) when the id is in the registry's id set -- the
+    mirror is the registry's voice, whatever its base; a mirror token
+    the registry does not know is a planted claim and stays claim-class
+    (fail-closed), as does any mirror hit when the registry itself is
+    unreadable.
   - surface 3 (commit graph): token added in a diff on a smart-note-
     bearing path, token in an added smart-note-bearing file path, or
     claim-verb + token in the commit message. Pure prose mentions in a
@@ -77,9 +79,10 @@ SN_BEARING_RE = re.compile(
     re.IGNORECASE,
 )
 # Generated registry mirrors (B-56): the registry's own serialization. A
-# token here is the registry's voice, not a claim -- UNLESS the mirror
-# itself diverges from base, which is claim-worthy (fail-closed). Exact
-# repo-relative paths; matched after stripping a leading "./".
+# token here is the registry's voice -- i.e. the token's id is in the
+# registry's id set -- not a claim. A mirror token the registry does not
+# know is a planted claim (fail-closed). Exact repo-relative paths;
+# matched after stripping a leading "./".
 MIRROR_PATHS = (
     ".naya/memory/smart-notes/index.json",
 )
@@ -230,47 +233,20 @@ def _git(repo, *args, timeout=180):
 # ---------------------------------------------------------------- collectors
 # Each collector scans its surface ONCE and returns {sn_num: [hit,...]}.
 
-def _mirror_copies(repo, pairs):
-    """Map (head_sha, path) -> True iff head's blob equals HEAD's blob.
+def _mirror_class(num, registry_nums, declared_copy=False):
+    """B-56: mirror-class iff the id is the registry's voice.
 
-    B-56: a registry mirror copy (byte-identical to the scan base) is the
-    registry's own voice, not a claim. One batched `git cat-file
-    --batch-check` resolves every pair; any unreadable side (missing head
-    blob, missing base blob, short read, timeout) maps to False --
-    fail-closed: a mirror we cannot verify identical is treated as a
-    claim, never as a copy.
+    A generated registry mirror can only voice ids the registry knows:
+    a mirror token inside the registry's id set is the registry's own
+    serialization, not a claim. A mirror token outside the id set is a
+    planted claim (or drift) and stays claim-class -- fail-closed. When
+    no registry id set is available (fixture mode without one), the
+    fixture's "mirror_copy" declaration test-doubles the verification;
+    without either signal the hit stays claim-class.
     """
-    uniq = sorted({(sha, (path or "").removeprefix("./"))
-                   for sha, path in pairs if sha and path})
-    if not uniq:
-        return {}
-    revs = []
-    for sha, path in uniq:
-        revs.append(f"{sha}:{path}")
-        revs.append(f"HEAD:{path}")
-    proc = subprocess.Popen(
-        ["git", "-C", str(repo), "cat-file", "--batch-check=%(objectname)"],
-        stdin=subprocess.PIPE, stdout=subprocess.PIPE,
-        stderr=subprocess.DEVNULL)
-    try:
-        out, _ = proc.communicate(
-            "".join(r + "\n" for r in revs).encode("utf-8", "replace"),
-            timeout=120)
-    except subprocess.TimeoutExpired:
-        proc.kill()
-        raise RuntimeError("mirror blob compare: timed out")
-    if proc.returncode != 0:
-        raise RuntimeError(
-            f"mirror blob compare: exit {proc.returncode}")
-    lines = out.decode("utf-8", errors="replace").splitlines()
-    if len(lines) != len(revs):
-        raise RuntimeError("mirror blob compare: short read")
-    result = {}
-    for (sha, path), head_blob, base_blob in zip(
-            uniq, lines[0::2], lines[1::2]):
-        result[(sha, path)] = (
-            head_blob != "missing" and head_blob == base_blob)
-    return result
+    if registry_nums is not None:
+        return num in registry_nums
+    return bool(declared_copy)
 
 
 def collect_board(fixtures=None):
@@ -296,16 +272,25 @@ def collect_board(fixtures=None):
     return by_num
 
 
-def collect_prs(fixtures=None, repo=DEFAULT_ROOT):
+def collect_prs(fixtures=None, repo=DEFAULT_ROOT, registry_nums=None):
     """Surface 2: open PR heads, tokenized by SN id (smart-note paths only).
 
     Live path: one API call lists open PRs (title/body claim scan), then one
     `git fetch` pulls every open PR head and one `git grep` searches all head
     trees at once -- O(1) API round-trips instead of O(open PRs). A failed
     fetch fails the surface closed (unreadable), never silently skipped.
+
+    B-56: hits on generated registry mirrors are classified by
+    _mirror_class -- the registry's voice (advisory) vs a planted claim
+    (refusal). `registry_nums` is the id set of the loaded registry;
+    fixtures may declare it via the "registry_nums" key.
     """
     by_num = {}
     if fixtures is not None and "prs" in fixtures:
+        if registry_nums is None:
+            registry_nums = fixtures.get("registry_nums")
+            if registry_nums is not None:
+                registry_nums = set(registry_nums)
         prs = fixtures["prs"]
         for pr in prs:
             number = pr.get("number")
@@ -329,22 +314,26 @@ def collect_prs(fixtures=None, repo=DEFAULT_ROOT):
                 if not SN_BEARING_RE.search(fname):
                     continue
                 # B-56: a registry mirror copy at the head is the
-                # registry's voice, not a claim. In fixtures the copy is
-                # declared ("mirror_copy": true); a mirror-path entry
-                # WITHOUT the flag is a divergent/tampered mirror and
-                # stays claim-class (fail-closed).
-                mirror = is_mirror_path(fname) and bool(f.get("mirror_copy"))
+                # registry's voice, not a claim. _mirror_class decides
+                # from the registry id set (or the fixture's
+                # "mirror_copy" declaration as test double); anything
+                # else on a mirror path stays claim-class (fail-closed).
+                on_mirror = is_mirror_path(fname)
+                declared = bool(f.get("mirror_copy"))
                 for num in all_token_nums(patch) | all_token_nums(fname):
                     key = (fname, num)
                     if key in seen:
                         continue
                     seen.add(key)
-                    by_num.setdefault(num, []).append({
+                    hit = {
                         "surface": "pr_heads", "pr": number, "author": author,
                         "where": fname, "sig_text": sig_text,
                         "text": patch or fname,
-                        **({"pre_class": "mirror"} if mirror else {}),
-                    })
+                    }
+                    if on_mirror and _mirror_class(
+                            num, registry_nums, declared_copy=declared):
+                        hit["pre_class"] = "mirror"
+                    by_num.setdefault(num, []).append(hit)
         return by_num
 
     prs = list(paginate(f"/repos/{DEFAULT_REPO_SLUG}/pulls?state=open"))
@@ -399,8 +388,6 @@ def collect_prs(fixtures=None, repo=DEFAULT_ROOT):
         stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     pr_by_number = {pr.get("number"): pr for pr in prs}
     seen = set()
-    mirror_pairs = []  # (sha, path) candidates for the B-56 copy check
-    mirror_hits = {}   # (sha, normpath) -> [hit dicts on mirror paths]
     _deadline = _time.monotonic() + 240
     try:
         for raw in proc.stdout:
@@ -428,11 +415,13 @@ def collect_prs(fixtures=None, repo=DEFAULT_ROOT):
                     "sig_text": f"{author}\n{head_ref}",
                     "text": text_line.strip()[:300],
                 }
+                # B-56: the registry's voice is advisory; a mirror token
+                # the registry does not know is a planted claim
+                # (fail-closed). No registry id set (unreadable registry)
+                # also stays claim-class.
+                if is_mirror_path(path) and _mirror_class(num, registry_nums):
+                    hit["pre_class"] = "mirror"
                 by_num.setdefault(num, []).append(hit)
-                if is_mirror_path(path):
-                    np = path.removeprefix("./")
-                    mirror_pairs.append((sha, np))
-                    mirror_hits.setdefault((sha, np), []).append(hit)
     finally:
         try:
             _, err = proc.communicate(timeout=60)
@@ -444,15 +433,6 @@ def collect_prs(fixtures=None, repo=DEFAULT_ROOT):
             raise RuntimeError(
                 f"git grep PR heads: exit {proc.returncode}: "
                 f"{err.decode('utf-8', errors='replace').strip()[:200]}")
-    # B-56: verify which mirror-path hits are byte-identical copies of the
-    # scan base. Verified copies are mirror-class (advisory, non-blocking);
-    # divergent or unverifiable mirrors stay claim-class (fail-closed). A
-    # compare failure raises -> scan_all marks the surface unreadable.
-    copies = _mirror_copies(repo, mirror_pairs)
-    for key, hits in mirror_hits.items():
-        if copies.get(key):
-            for h in hits:
-                h["pre_class"] = "mirror"
     # proc.returncode == 1 means no matches: no hits.
     return by_num
 
@@ -824,7 +804,7 @@ def classify(raw_hits, names, requester_ib):
     return claims, self_hits, mentions, mirror_hits
 
 
-def scan_all(repo=DEFAULT_ROOT, fixtures=None):
+def scan_all(repo=DEFAULT_ROOT, fixtures=None, registry_nums=None):
     """Run all four collectors once. Returns (maps, unreadable)."""
     maps, unreadable = {}, []
     try:
@@ -833,7 +813,8 @@ def scan_all(repo=DEFAULT_ROOT, fixtures=None):
         unreadable.append("board_comments")
         maps["board_comments"] = {"_error": str(e)}
     try:
-        maps["pr_heads"] = collect_prs(fixtures, repo=repo)
+        maps["pr_heads"] = collect_prs(fixtures, repo=repo,
+                                       registry_nums=registry_nums)
     except RuntimeError as e:
         unreadable.append("pr_heads")
         maps["pr_heads"] = {"_error": str(e)}
@@ -882,6 +863,16 @@ def verdict_for(num, label, maps, unreadable, requester_ib, names, owned):
     }
 
 
+def _registry_nums(registry):
+    """Id set of the loaded registry (None when the registry is unreadable)."""
+    if not registry:
+        return None
+    nums = {sn_num(e.get("smart_note_id"))
+            for e in registry.get("entries", [])}
+    nums.discard(None)
+    return nums
+
+
 def check_sn(sn, requester_ib=None, requester_names=(), repo=DEFAULT_ROOT,
              fixtures=None):
     """Run the four-surface scan for candidate `sn`. Returns verdict dict."""
@@ -897,7 +888,8 @@ def check_sn(sn, requester_ib=None, requester_names=(), repo=DEFAULT_ROOT,
                     and e.get("intelligent_block_id") == requester_ib:
                 owned = True
                 break
-    maps, unreadable = scan_all(repo=repo, fixtures=fixtures)
+    maps, unreadable = scan_all(repo=repo, fixtures=fixtures,
+                                registry_nums=_registry_nums(registry))
     return verdict_for(num, label, maps, unreadable, requester_ib, names, owned)
 
 
@@ -925,7 +917,8 @@ def audit(repo=DEFAULT_ROOT, fixtures=None, limit=None):
             if n is not None:
                 ids.append((n, norm_sn(e["smart_note_id"])[1],
                             e.get("intelligent_block_id")))
-    maps, unreadable = scan_all(repo=repo, fixtures=fixtures)
+    maps, unreadable = scan_all(repo=repo, fixtures=fixtures,
+                                registry_nums=_registry_nums(registry))
     tree_nums = set()
     for by_num in maps.values():
         tree_nums |= {k for k in by_num if isinstance(k, int)}
