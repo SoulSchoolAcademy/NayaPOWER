@@ -18,10 +18,11 @@ name: Protocol Gates
 #      41-law OPERATING-LAW.md (which supersedes v1.0 in breadth).
 #
 # KNOWN WEAKNESS (tracked, not fixed here — needs a real crypto fix):
-#   kernel/protocol/read_receipt.py :: ReadReceipt.sign() uses an UNKEYED
+#   kernel/protocol/read_receipt.py :: ReadReceipt.seal() uses an UNKEYED
 #   SHA-256 over the payload. Anyone can recompute the hash, so receipts are
 #   forgeable. CI enforcement of the tests does not fix this; it needs a
 #   keyed signature (HMAC) or server-side issuance. Left as-is deliberately.
+#   (B-40, 2026-10-13: claim language corrected to integrity-seal; mechanism unchanged.)
 
 on:
   pull_request:

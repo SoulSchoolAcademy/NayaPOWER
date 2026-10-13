@@ -65,7 +65,7 @@ def test_cold_start_autoresolves_and_accepts_fresh_receipt():
 def test_cold_start_autofire_refuses_superseded_receipt_without_params():
     """Law 12 fires with ZERO caller params: the strongest active proof.
 
-    A cryptographically VALID receipt issued against an old protocol
+    An integrity-VALID receipt issued against an old protocol
     version is refused on a plain run_cold_start(state) call — the current
     version auto-resolves, no opt-in needed.
     """
@@ -77,12 +77,12 @@ def test_cold_start_autofire_refuses_superseded_receipt_without_params():
         "q4": "9.0",
         "q5": "independent evidence",
     })
-    assert old.verify(), "test setup: receipt must be cryptographically valid"
+    assert old.verify(), "test setup: receipt seal must verify"
     # Re-issue the same passing answers against an ancient protocol version.
     ancient = ReadReceipt(
         agent_id=old.agent_id, protocol_version="2000-01-01-ANCIENT",
         answers=old.answers, passed=old.passed, issued_at=old.issued_at,
-    ).sign()
+    ).seal()
     assert ancient.verify(), "test setup: ancient receipt must verify"
     state = _base_state()
     state.receipt = ancient

@@ -4,7 +4,19 @@ read_receipt.py — Machine law: prove the agent read and understood the protoco
 A protocol that cannot verify it was read is prose, not law.
 An agent may not begin governed work until it holds a valid read receipt.
 
-Receipt = signed attestation answering the authority questions correctly.
+TRUST BOUNDARY (B-40, 2026-10-13 — read this before calling anything "signed"):
+A receipt carries an INTEGRITY SEAL, not a signature. seal() computes an
+UNKEYED SHA-256 over the receipt fields; verify() recomputes it and compares.
+The seal proves the receipt's fields were not altered after sealing.
+It does NOT authenticate who issued the receipt — anyone holding these bytes
+can recompute the hash and mint a "valid" receipt without answering a single
+question (forgery demonstrated by adversarial probe, B-40: a forged receipt
+with a valid recomputed hash verifies identically to a genuine one).
+Never treat verify() == True as proof of a trusted issuer, or as
+authentication of the agent's comprehension. Real authentication would need
+a keyed signature (HMAC) or server-side issuance — tracked as a KNOWN
+WEAKNESS in .github/workflows/protocol-gates.yml, pending a genuine trust
+boundary. This module is honest about what it provides: tamper-evidence.
 """
 from __future__ import annotations
 
@@ -58,7 +70,12 @@ class ReadReceipt:
     issued_at: float = field(default_factory=time.time)
     receipt_hash: str = ""
 
-    def sign(self) -> "ReadReceipt":
+    def seal(self) -> "ReadReceipt":
+        """Compute the unkeyed integrity seal over the receipt fields.
+
+        This is tamper-evidence, not a signature: anyone can recompute it.
+        See the module trust boundary note.
+        """
         payload = json.dumps(
             {"agent_id": self.agent_id, "protocol_version": self.protocol_version,
              "answers": self.answers, "passed": self.passed,
@@ -69,10 +86,16 @@ class ReadReceipt:
         return self
 
     def verify(self) -> bool:
+        """Check the receipt's integrity seal and its passed flag.
+
+        Returns True only when the fields are unaltered since sealing AND
+        the receipt records a passing grade. This proves integrity, not
+        authorship — see the module trust boundary note.
+        """
         check = ReadReceipt(
             agent_id=self.agent_id, protocol_version=self.protocol_version,
             answers=self.answers, passed=self.passed, issued_at=self.issued_at,
-        ).sign()
+        ).seal()
         return check.receipt_hash == self.receipt_hash and self.passed
 
 
@@ -96,4 +119,4 @@ def issue_receipt(agent_id: str, answers: dict) -> ReadReceipt:
     return ReadReceipt(
         agent_id=agent_id, protocol_version=PROTOCOL_VERSION,
         answers=results, passed=passed,
-    ).sign()
+    ).seal()

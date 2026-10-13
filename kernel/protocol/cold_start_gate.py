@@ -95,8 +95,10 @@ def run_cold_start(state: ColdStartState,
     elif not state.receipt.verify():
         failures.append("Read receipt invalid or failed grading. Re-read the protocol.")
     else:
-        # Law 12 (ACTIVE): a cryptographically valid receipt is not enough —
-        # it must be fresh. Current world state auto-resolves when the
+        # Law 12 (ACTIVE): an integrity-valid receipt is not enough —
+        # it must be fresh. The seal proves the receipt was not altered; it
+        # does not authenticate the issuer (see read_receipt.py trust
+        # boundary, B-40). Current world state auto-resolves when the
         # caller does not supply it, so this check fires on every boot, not
         # only for callers that opt in. If the protocol version moved since
         # the receipt was issued, the agent read a different protocol:
