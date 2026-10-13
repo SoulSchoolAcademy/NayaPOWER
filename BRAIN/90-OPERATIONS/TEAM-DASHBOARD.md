@@ -1,6 +1,6 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-13 14:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-13 15:16 UTC from live sources. Regenerated every wave (~10 min).*
 
 **Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 100 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
@@ -23,30 +23,30 @@
 
 ## Recent Receipts (sign in / out on #2175)
 
-- ✅ **NIGHT** signed out — 14:12Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6147531489)
-  - Seat:** Naya 2 (verify) · **Run:** night-shift-verify, scheduled 14:09:27Z
-- ✅ **NIGHT** signed out — 14:11Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6147506571)
-  - Lane:** build (`night-shift-build`) · **Slot:** 14:09Z scheduled · **Verdict:** LIST-DRAINED / NO_WORK — no claim opened, no status churn.
-- ✅ **NIGHT** signed out — 14:10Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6147478613)
-  - Lane:** wire (night-shift-wire) · **Item:** B-51 B3 — PR #2523 "on-disk corpus binding + G-1 fix-pass" (Naya Gamma, ACT lead; head 88b1a655, base == live tip 2c
-- ✅ **NIGHT** signed out — 14:06Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6147401847)
-  - Seat:** night-shift-verify (Naya 2's bottleneck verify lane) · **Run:** scheduled 13:59:27 UTC, attempt 1 · **Result intent:** watch check only — no user notifi
-- ✅ **NIGHT** signed out — 14:04Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6147372599)
-  - Seat:** Naya 2 (BUILD — night-shift-build) · **Job:** night-shift-build · **Run:** this run
-- ✅ **NAYA BRIDGER** signed out — 14:01Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6147311821)
-  - Seat:** Naya Bridger (ACT — "prove learning reaches action"). **Self-score: 9.1/10.** Zero production writes, zero DB, read-only. Full record: `hidden_files/bri
-- 🟢 **NAYA BRIDGER** signed in — 14:00Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6147295001)
-  - Seat:** Naya Bridger (ACT — "prove learning reaches action").
-- ✅ **NIGHT** signed out — 13:57Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6147222827)
-  - Seat:** Naya 2 (night-shift-verify) · **Claim:** verify-claim ~13:53 UTC — OPENED+CLOSED this run, no status churn.
-- ✅ **NAYA ARCHIVIST** signed out — 13:52Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6147132048)
-  - Verdict: CONTINUITY PASS** — waves 60–65 fully reconstructible from wave-state.json + ~/memory/2026-10-13.md + venue receipts alone. Zero missing links. Self-sc
-- ✅ **NIGHT** signed out — 13:52Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6147124269)
-  - Lane:** wire (Naya 2's bottleneck crew) · **Verdict:** LIST-DRAINED / NO_WORK — no claim opened, no status churn.
-- ✅ **NIGHT** signed out — 13:51Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6147109737)
-  - Seat:** Naya 2 (BUILD — night-shift-build) · **Job:** night-shift-build
-- ✅ **GOVERN** signed out — 13:51Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6147097870)
-  - Verdict: GOVERN audit complete. Three verdicts, evidence below. Receipt:** `~/workspace/goals/nayapower-10-10-completion-drive/hidden_files/keeper-wave66-202610
+- ✅ **2522 DISTINCT** signed out — 15:16Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6148843830)
+  - Task:** produce the distinct-seat ## SCORECARD for PR #2522 (Naya 4 G5r decode fail-soft, head `63e883339b85235d1828bac99a806803a3db04ca`).
+- ✅ **NIGHT** signed out — 15:13Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6148784344)
+  - Entry gate:** worker_entry.py NO_WORK verdict CORRECT — tip 34338065eb9793c33cf273b62e1b109aa1d35808 ref-anchored LIVE (unchanged since #2524 merge 14:39:55Z). 
+- ✅ **NIGHT** signed out — 15:05Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6148611373)
+  - Verdict:** NO_WORK — no claim opened, no status churn, no new PROPOSED.
+- ✅ **NIGHT** signed out — 15:03Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6148573557)
+  - Verdict:** NO_WORK — no claim opened, no status churn. Fresh live sweep agrees with the queue: nothing build-actionable.
+- ✅ **NIGHT** signed out — 15:01Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6148542534)
+  - Lane:** verify (night-shift-verify). Slot: scheduled 14:59:27Z. No claim opened, no status churn.
+- ✅ **NIGHT** signed out — 14:53Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6148362295)
+  - Seat:** Naya 2 · build lane (`night-shift-build`). No claim opened, no status churn.
+- ✅ **NIGHT** signed out — 14:52Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6148351380)
+  - Verdict:** no claim opened, no status churn. Honest NO_WORK.
+- ✅ **NIGHT** signed out — 14:51Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6148333353)
+  - Verdict:** NO_WORK — no claim opened, no status churn.
+- ✅ **NAYA CAPTAIN** signed out — 14:47Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6148247421)
+  - Seat: Naya Captain (TEAM — "no Naya ever blocked waiting"). Sign-in 6148095153 @ 14:39:51Z. Receipt: `hidden_files/captain-wave69-ownership-20261013.md` (full b
+- ✅ **NIGHT** signed out — 14:45Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6148203501)
+  - Lane:** verify · **Seat:** Naya 2
+- ✅ **NIGHT** signed out — 14:41Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6148134777)
+  - Worked:** the queue top-down fresh this run. **Solved:** nothing to solve — the list is genuinely drained, and the entry-gate WORK_AVAILABLE verdict was scoreca
+- 🟢 **INFRA** signed in — 14:40Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6148114936)
+  - Seat:** Naya Mechanic (INFRA — "CI that catches real breaks, never false alarms")
 
 ## Open PRs by Area
 
