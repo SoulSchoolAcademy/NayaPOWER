@@ -312,38 +312,58 @@ def collect_prs(fixtures=None, repo=DEFAULT_ROOT):
         sha_to_pr[sha] = num
     if not sha_to_pr:
         return by_num
-    proc = subprocess.run(
+    # STREAMED, never materialized: the head-tree grep over ~2K revisions
+    # can emit hundreds of MB; capture_output=True holds it all in RAM ->
+    # the OOM-killer (observed exit 137 on the live audit, 2026-10-13).
+    # Popen + incremental parse keeps memory flat (same pattern as the
+    # commit-graph grep below).
+    import time as _time
+    proc = subprocess.Popen(
         ["git", "-C", str(repo), "grep", "-n", "--no-color",
          "-e", r"SN-[0-9][0-9]*"] + list(sha_to_pr)
         + ["--", "BRAIN/05-MEMORY/SMART-NOTES", ".naya/memory/smart-notes"],
-        capture_output=True, timeout=180, check=False)
-    if proc.returncode not in (0, 1):
-        err = proc.stderr.decode("utf-8", errors="replace").strip()[:200]
-        raise RuntimeError(f"git grep PR heads: exit {proc.returncode}: {err}")
-    # proc.returncode == 1 means no matches: no hits.
+        stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     pr_by_number = {pr.get("number"): pr for pr in prs}
     seen = set()
-    for line in proc.stdout.decode("utf-8", errors="replace").splitlines():
-        # <sha>:<path>:<lineno>:<line>
-        m = re.match(r"([0-9a-f]{40}):(.+?):(\d+):(.*)$", line)
-        if not m:
-            continue
-        sha, path, _ln, text_line = m.groups()
-        pr_number = sha_to_pr.get(sha)
-        pr = pr_by_number.get(pr_number, {})
-        author = (pr.get("user") or {}).get("login", "")
-        head_ref = ((pr.get("head") or {}).get("ref")) or ""
-        for num in all_token_nums(text_line):
-            key = (sha, path, num)
-            if key in seen:
+    _deadline = _time.monotonic() + 240
+    try:
+        for raw in proc.stdout:
+            if _time.monotonic() > _deadline:
+                proc.kill()
+                raise RuntimeError("git grep PR heads: exceeded 240s budget")
+            line = raw.decode("utf-8", errors="replace").rstrip("\n")
+            # <sha>:<path>:<lineno>:<line>
+            m = re.match(r"([0-9a-f]{40}):(.+?):(\d+):(.*)$", line)
+            if not m:
                 continue
-            seen.add(key)
-            by_num.setdefault(num, []).append({
-                "surface": "pr_heads", "pr": pr_number, "author": author,
-                "where": f"head tree {path}",
-                "sig_text": f"{author}\n{head_ref}",
-                "text": text_line.strip()[:300],
-            })
+            sha, path, _ln, text_line = m.groups()
+            pr_number = sha_to_pr.get(sha)
+            pr = pr_by_number.get(pr_number, {})
+            author = (pr.get("user") or {}).get("login", "")
+            head_ref = ((pr.get("head") or {}).get("ref")) or ""
+            for num in all_token_nums(text_line):
+                key = (sha, path, num)
+                if key in seen:
+                    continue
+                seen.add(key)
+                by_num.setdefault(num, []).append({
+                    "surface": "pr_heads", "pr": pr_number, "author": author,
+                    "where": f"head tree {path}",
+                    "sig_text": f"{author}\n{head_ref}",
+                    "text": text_line.strip()[:300],
+                })
+    finally:
+        try:
+            _, err = proc.communicate(timeout=60)
+        except subprocess.TimeoutExpired:
+            proc.kill()
+            _, err = proc.communicate()
+            raise RuntimeError("git grep PR heads: timed out")
+        if proc.returncode not in (0, 1):
+            raise RuntimeError(
+                f"git grep PR heads: exit {proc.returncode}: "
+                f"{err.decode('utf-8', errors='replace').strip()[:200]}")
+    # proc.returncode == 1 means no matches: no hits.
     return by_num
 
 
