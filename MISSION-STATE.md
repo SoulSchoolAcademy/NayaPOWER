@@ -1,5 +1,5 @@
 # MISSION-STATE — canonical mission state
-> Generated 2026-10-13 08:18 UTC · tip `e47a650e2f05` · This is the current truth. Any Naya landing here knows where to go.
+> Generated 2026-10-13 08:23 UTC · tip `e47a650e2f05` · This is the current truth. Any Naya landing here knows where to go.
 
 ## TIP
 - Main tip: `e47a650e2f05` (ref-anchored, same-step verified)
@@ -12,17 +12,17 @@
 5. Distill laws to their load-bearing core.
 
 ## QUEUE
-- 31 actionable · 9 proposed (bottleneck-queue.md is the detail file)
+- 30 actionable · 9 proposed (bottleneck-queue.md is the detail file)
 
 ## TOP CARRIED BLOCKERS
 - **B-28**: #2325's merged gate still carries the scorecard's exact delta — vacuous identifi
 - **B-33**: test_learn_compound_scale truth_must_hold_quote_present scored 0 vs 9
-- **B-34**: test_truth_rejects_adversarial[A1-A3] missing absolute CI paths
 - **B-36**: wire the 14-lesson activation checklist into the real boot gate
 - **B-37**: rebuild the #2012 GitHub-projection diagnostic against current main
+- **B-38**: reconcile PROTOCOL.md candidate status vs AGENTS.md canonical-law framing
 
 ## ACTIVE WAVE
-- 37 (Naya Electrician, Naya Captain, Naya Mechanic)
+- none — supervisor will dispatch (Naya Electrician, Naya Captain, Naya Mechanic)
 
 ## VENUE
 - Team venue: https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175
