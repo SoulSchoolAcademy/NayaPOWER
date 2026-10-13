@@ -1469,15 +1469,36 @@ def test_writer_second_write_refreshes_manifest(tmp_path):
     m._validate_index_against_corpus(reg)
 
 # --- Winner-read fail-closed (B-49/B-58, 2026-10-13, Naya 4) ---
+# Re-sealed 2026-10-13 (Naya Iota, #2515 rebase): main now runs the B-51
+# fail-closed index validator on EVERY retrieve(), so the fixtures must carry
+# a validator-clean envelope (schema + page_hash + corpus_manifest_hash).
+# Both tests still prove their original intent: fail closed with an explicit
+# code, never a crash, never silent admission.
 def _winner_read_registry(tmp_path, entry):
     rp = tmp_path / "index.json"
-    rp.write_text(json.dumps({"entries": [entry]}), encoding="utf-8")
+    rp.write_text(json.dumps(_sealed_registry([entry], tmp_path)), encoding="utf-8")
+    return rp
+
+
+def _winner_read_registry_missing_file(tmp_path, entry):
+    # Same seal as above, but the projection page stays missing: page_hash is a
+    # placeholder because Check 4 (PROJECTION_ABSENT) fires before Check 6
+    # ever reads it — the placeholder proves the failing code is the absence.
+    entry = dict(entry)
+    entry["page_hash"] = "0" * 64
+    rp = tmp_path / "index.json"
+    rp.write_text(json.dumps({
+        "schema": "naya.smart-note-projection-index.v1",
+        "entries": [entry],
+        "corpus_manifest_hash": mod._corpus_manifest_hash([entry]),
+    }), encoding="utf-8")
     return rp
 
 
 def _winner_read_entry(projection_path):
     return {
         "smart_note_id": "SN-W",
+        "intelligent_block_id": "IB-W",
         "title": "Deep tunnel maintenance protocol",
         "category": "C",
         "topic": "T",
@@ -1492,16 +1513,23 @@ def _winner_read_entry(projection_path):
 
 def test_retrieve_winner_missing_projection_fails_closed(tmp_path, monkeypatch):
     """B-58: the winning projection file does not exist on disk. Pre-repair
-    this raised an unhandled FileNotFoundError; the repair fails closed with
-    an explicit miss code. Non-vacuous: the entry wins on title matches."""
-    rp = _winner_read_registry(tmp_path, _winner_read_entry("gone.md"))
+    this raised an unhandled FileNotFoundError. On current main the B-51 index
+    gate (Check 4) catches the missing page first with INDEX_CORRUPT:
+    PROJECTION_ABSENT — still an explicit fail-closed miss code, still no
+    crash. The WINNER_PROJECTION_UNREADABLE guard in retrieve() stays behind
+    the gate as defense-in-depth. Non-vacuous: the entry wins on title
+    matches; the registry is sealed clean, so the failure is the missing page."""
+    brain = tmp_path / "BRAIN" / "05-MEMORY" / "SMART-NOTES"
+    brain.mkdir(parents=True, exist_ok=True)
+    rp = _winner_read_registry_missing_file(
+        tmp_path, _winner_read_entry("BRAIN/05-MEMORY/SMART-NOTES/gone.md"))
     monkeypatch.setattr(mod, "ROOT", tmp_path)
     monkeypatch.setattr(mod, "REGISTRY", rp)
     monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 0)  # ranking pin: the floor is live-corpus calibrated, not for synthetic corpora
     try:
         mod.retrieve("deep tunnel maintenance protocol")
     except SystemExit as exc:
-        assert str(exc) == "WINNER_PROJECTION_UNREADABLE"
+        assert str(exc).startswith("INDEX_CORRUPT:PROJECTION_ABSENT"), str(exc)
     else:
         raise AssertionError("missing winner projection must fail closed, not crash or answer")
 
@@ -1510,18 +1538,23 @@ def test_retrieve_winner_without_nutshell_fails_closed(tmp_path, monkeypatch):
     """B-49: the winner's projection is readable but carries no IN A NUTSHELL
     section (deep-path degradation). Pre-repair this returned a positive
     answer with explanation ""; the repair fails closed with an explicit miss
-    code. Non-vacuous: the entry wins on title matches."""
-    (tmp_path / "degraded.md").write_text(
+    code. Non-vacuous: the entry wins on title matches; the page is sealed
+    (valid envelope + matching page hash), so the failure is the missing
+    nutshell — the validator passes and the winner-read guard fires."""
+    brain = tmp_path / "BRAIN" / "05-MEMORY" / "SMART-NOTES"
+    brain.mkdir(parents=True, exist_ok=True)
+    (brain / "degraded.md").write_text(
         "# Deep tunnel maintenance protocol\n\n## Background\n\nLong-form text, no nutshell section.\n",
         encoding="utf-8",
     )
-    rp = _winner_read_registry(tmp_path, _winner_read_entry("degraded.md"))
+    rp = _winner_read_registry(
+        tmp_path, _winner_read_entry("BRAIN/05-MEMORY/SMART-NOTES/degraded.md"))
     monkeypatch.setattr(mod, "ROOT", tmp_path)
     monkeypatch.setattr(mod, "REGISTRY", rp)
     monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 0)  # ranking pin: the floor is live-corpus calibrated, not for synthetic corpora
     try:
         mod.retrieve("deep tunnel maintenance protocol")
     except SystemExit as exc:
-        assert str(exc) == "WINNER_EXPLANATION_EMPTY"
+        assert str(exc) == "WINNER_EXPLANATION_EMPTY", str(exc)
     else:
         raise AssertionError("title-only winner must fail closed, not be admitted silently")
