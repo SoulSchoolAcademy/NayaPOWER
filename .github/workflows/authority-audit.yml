@@ -1,0 +1,45 @@
+name: Merge authority audit (L245)
+
+# L245: "Invalid merge authority -> revert, then re-invoke." The pre-merge
+# authority gate (merge-consensus-gate.yml, the "Verify merge authority"
+# JOB — not a step; a step would be invisible to the post-merge audit)
+# is advisory until branch protection requires it — this audit is the
+# teeth. Every 6 hours it re-checks recent main merges:
+#   PACKET_VALID        - authority check green on the exact merged head
+#   EXERCISED_AUTHORITY - merged by the director's own click: recorded,
+#                         never flagged, never reverted
+#   INVALID             - neither: opens a revert PR (propose + report,
+#                         NEVER auto-merge) with a tree-verified revert and
+#                         posts the venue receipt
+# The re-invocation lane owns the gated follow-up PR (the #2455 -> #2459
+# pattern). API failures fail closed with plain words, never a traceback.
+
+on:
+  schedule:
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+
+# The audit proposes (pushes revert branches, opens revert PRs, posts venue
+# receipts) but never merges. Least privilege for exactly that.
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  audit:
+    name: Post-merge authority audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Run the authority audit
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          # Window overlaps the 6h cadence; dedup skips merges that already
+          # carry an open revert PR. Exit 1 = at least one INVALID merge
+          # found (revert PRs opened or planned); exit 2 = unable to audit.
+          python3 tools/authority_audit.py --window-hours 26

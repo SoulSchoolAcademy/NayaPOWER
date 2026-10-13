@@ -1,0 +1,83 @@
+{
+  "$id": "https://nayanet.technology/schemas/authority-packet-v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Machine twin of the DELEGATED-MERGE-AUTHORITY packet assembled by tools/assemble_merge_packet.py. Three-language standard: LAW-A03 manifest text (human), module docstrings (AI), this file (machine).",
+  "properties": {
+    "branch": {
+      "description": "Head branch of the PR; the seat convention is the prefix before '/'.",
+      "type": "string"
+    },
+    "independent_validator": {
+      "description": "Login of a different seat whose review/comment named the exact head SHA with a verdict; empty when none.",
+      "type": "string"
+    },
+    "post_merge_report_planned": {
+      "description": "Whether the merge plan includes a post-merge report.",
+      "type": "boolean"
+    },
+    "posted_to_1354": {
+      "description": "Legacy canonical field name. True when intent + scorecard + validation were posted on the coordination venue (live venue first, delegation-original venue as fallback).",
+      "type": "boolean"
+    },
+    "seat": {
+      "description": "Builder seat derived from the branch prefix (or author login).",
+      "type": "string"
+    },
+    "self_scorecard": {
+      "description": "False when no scorecard comment names the PR head; otherwise the builder's own scorecard: numeric score, whether it is evidence-backed (has a ## Evidence section), and whether the value calculus was run.",
+      "type": [
+        "boolean",
+        "object"
+      ],
+      "properties": {
+        "score": {
+          "type": "number"
+        },
+        "evidence_backed": {
+          "type": "boolean"
+        },
+        "value_calculus_run": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "score",
+        "evidence_backed",
+        "value_calculus_run"
+      ],
+      "additionalProperties": false
+    },
+    "target": {
+      "description": "Base branch the PR targets (must be 'main' for delegation).",
+      "type": "string"
+    },
+    "team_objections": {
+      "description": "Machine-countable objections: CHANGES_REQUESTED reviews.",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "test_evidence": {
+      "description": "Human-readable basis of tests_green (check-run names, conclusions, run ids).",
+      "type": "string"
+    },
+    "tests_green": {
+      "description": "Kernel-test check-run green on the exact head AND no failing check-runs.",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "target",
+    "branch",
+    "seat",
+    "tests_green",
+    "test_evidence",
+    "self_scorecard",
+    "independent_validator",
+    "posted_to_1354",
+    "team_objections",
+    "post_merge_report_planned"
+  ],
+  "title": "Delegated Merge Authority packet (LAW-A03)",
+  "type": "object"
+}

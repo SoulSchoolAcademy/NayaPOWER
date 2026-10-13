@@ -31,7 +31,11 @@ Input record:
         "value_calculus_run": true
       },
       "independent_validator": "<different seat id>",
-      "posted_to_1354": true,
+      "posted_to_1354": true,   # field name is the delegation's original
+                                # venue and stays for contract stability;
+                                # the live coordination venue is #2175 —
+                                # packet builders record WHICH venue in
+                                # their evidence
       "team_objections": 0,
       "post_merge_report_planned": true
     }
@@ -106,6 +110,15 @@ def _seat_key(seat: str) -> str:
     # by deletion. Erasing the unknown is never a comparison.
     key = re.sub(r"[^a-z0-9]", "", unicodedata.normalize("NFKC", seat).strip().lower())
     return KNOWN_SEAT_ALIASES.get(key, key)
+
+
+def seat_key(seat: str) -> str:
+    """Public alias for the seat-identity normalization.
+
+    Wiring code (packet assemblers, audit tools) must use this — never a
+    second normalizer. One seat, one normalization, no duplicates.
+    """
+    return _seat_key(seat)
 
 
 # test_evidence must be REFERENCE-SHAPED: it must name something an
