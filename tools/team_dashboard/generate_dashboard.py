@@ -102,15 +102,15 @@ def current_wave():
 
 
 def recent_board_activity(limit_pages=2, per_page=100):
-    """Most recent sign in/out style comments on #2175 (fetches the LAST pages)."""
+    """Most recent sign in/out style comments on #2537 (fetches the LAST pages)."""
     events = []
-    # resolve the TRUE tail every run: /issues/2175 returns the live comment count,
+    # resolve the TRUE tail every run: /issues/2537 returns the live comment count,
     # and the last pages are derived from it. Never inherit "page N of N" from a
     # prior run — the venue grows every wave and hardcoded pages go stale, silently
     # dropping the wave's own events (observed: hardcoded [4,5] missed page 6,
     # the entire wave-11 sign-in/out set). Wave-11 fix (dispatcher).
     try:
-        issue = gh_api(f"/repos/{REPO}/issues/2175")
+        issue = gh_api(f"/repos/{REPO}/issues/2537")
         total = int(issue.get("comments", 0) or 0)
         last_page = max(1, -(-total // per_page))
         pages = list(range(max(1, last_page - limit_pages + 1), last_page + 1))
@@ -118,7 +118,7 @@ def recent_board_activity(limit_pages=2, per_page=100):
         pages = [4]
     for page in pages:
         try:
-            comments = gh_api(f"/repos/{REPO}/issues/2175/comments?per_page={per_page}&page={page}")
+            comments = gh_api(f"/repos/{REPO}/issues/2537/comments?per_page={per_page}&page={page}")
         except RuntimeError:
             break
         if not comments:
@@ -167,10 +167,17 @@ def recent_board_activity(limit_pages=2, per_page=100):
 
 
 def open_prs():
+    prs = []
     try:
-        prs = gh_api(f"/repos/{REPO}/pulls?state=open&per_page=100")
+        for page in range(1, 11):  # 10 pages x 100 = 1000 ceiling
+            batch = gh_api(f"/repos/{REPO}/pulls?state=open&per_page=100&page={page}")
+            if not batch:
+                break
+            prs.extend(batch)
+            if len(batch) < 100:
+                break
     except RuntimeError:
-        return []
+        pass
     out = []
     for pr in prs:
         out.append({
@@ -283,7 +290,7 @@ def build_dashboard():
         score_s = f"{score:.1f}" if isinstance(score, (int, float)) else "—"
         A(f"| **{ag['agent_name']}** | {ag['name']} | *{ag['bullseye']}* | {score_s} | {status} |")
     A("")
-    A("## Recent Receipts (sign in / out on #2175)")
+    A("## Recent Receipts (sign in / out on #2537)")
     A("")
     if events:
         for e in events[:12]:

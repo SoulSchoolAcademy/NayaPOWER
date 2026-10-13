@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-13T22:16:20+00:00",
+ "generated_utc": "2026-10-13T22:23:30+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -81,7 +81,7 @@
      "draft": true
     }
    ],
-   "open_pr_count": 9
+   "open_pr_count": 45
   },
   {
    "id": "know",
@@ -150,7 +150,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 11
+   "open_pr_count": 24
   },
   {
    "id": "act",
@@ -250,9 +250,15 @@
      "title": "T-05: Law 11 structured harm profiles \u2014 per-group, never collapsed",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2355",
      "draft": false
+    },
+    {
+     "number": 2272,
+     "title": "Neutrality Profile as code (NAYA-NEUTRALITY-PROFILE-V1, PROPOSED)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2272",
+     "draft": true
     }
    ],
-   "open_pr_count": 7
+   "open_pr_count": 8
   },
   {
    "id": "prove",
@@ -295,9 +301,33 @@
      "title": "test(t21): operating-essence acceptance battery \u2014 moral value before numerical optimizatio",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2374",
      "draft": false
+    },
+    {
+     "number": 2159,
+     "title": "Add team accountability scorecard to the weekly watchdog",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2159",
+     "draft": false
+    },
+    {
+     "number": 2134,
+     "title": "feat(value): Compile the Law Phase 1 \u2014 scorecard law, score-fill-ship, V2 merge-gate recei",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2134",
+     "draft": false
+    },
+    {
+     "number": 2097,
+     "title": "feat(value): scorecard structure gate \u2014 scan raw PR body for the five sections",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2097",
+     "draft": false
+    },
+    {
+     "number": 1980,
+     "title": "fix(verify): replay-trial schema tolerance \u2014 verifier_arg + EOL normalization",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/1980",
+     "draft": false
     }
    ],
-   "open_pr_count": 4
+   "open_pr_count": 25
   },
   {
    "id": "build",
@@ -366,7 +396,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 32
+   "open_pr_count": 184
   },
   {
    "id": "wire",
@@ -435,7 +465,7 @@
      "draft": true
     }
    ],
-   "open_pr_count": 16
+   "open_pr_count": 97
   },
   {
    "id": "team",
@@ -460,9 +490,51 @@
      "title": "feat(dashboard): live Team Naya activity dashboard \u2014 markdown + machine JSON",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2397",
      "draft": false
+    },
+    {
+     "number": 2246,
+     "title": "[DRAFT] The Naya Code \u2014 canonical identity in human, AI, and machine forms",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2246",
+     "draft": true
+    },
+    {
+     "number": 2161,
+     "title": "Add TEAM-EXECUTION-PROMPT.md \u2014 continuous 10/10 standing order",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2161",
+     "draft": false
+    },
+    {
+     "number": 1639,
+     "title": "Batch-2 law forging: QMAX Craftsman Charter + SmartLedger next-layer + law lineage (PROPOS",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/1639",
+     "draft": false
+    },
+    {
+     "number": 1390,
+     "title": "ratification: SN-040 System Charter V1 RATIFIED (record, CANDIDATE)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/1390",
+     "draft": false
+    },
+    {
+     "number": 1386,
+     "title": "feat(charter): compile human system charter into nine-node machine runtime",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/1386",
+     "draft": false
+    },
+    {
+     "number": 1379,
+     "title": "docs(charter): manifesto + constitutional code + mission/systems contracts",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/1379",
+     "draft": false
+    },
+    {
+     "number": 1142,
+     "title": "Team sync: SN-012/SN-013 smart notes + full NayaPOWER system report",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/1142",
+     "draft": false
     }
    ],
-   "open_pr_count": 1
+   "open_pr_count": 8
   },
   {
    "id": "infra",
@@ -531,7 +603,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 10
+   "open_pr_count": 32
   },
   {
    "id": "product",
@@ -562,9 +634,45 @@
      "title": "fix(publishing): record sanitized GitHub rejection reason in commit-failure receipts",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2481",
      "draft": true
+    },
+    {
+     "number": 1906,
+     "title": "docs(brain): SN-0699 connection bottleneck \u2014 GitHub flow is the activation bottleneck",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/1906",
+     "draft": false
+    },
+    {
+     "number": 1736,
+     "title": "test(proof): observe github dispatch guards on real handler",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/1736",
+     "draft": false
+    },
+    {
+     "number": 1451,
+     "title": "SCAFFOLD (candidate): Ask Naya Knowledge API worker skeleton",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/1451",
+     "draft": false
+    },
+    {
+     "number": 1428,
+     "title": "feat(smart-note): SN-0300 five-voices briefing protocol + SN-0301 red-team first instantia",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/1428",
+     "draft": false
+    },
+    {
+     "number": 1334,
+     "title": "docs(hub): Today understanding report V2 + master design directive V2",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/1334",
+     "draft": false
+    },
+    {
+     "number": 1330,
+     "title": "docs(hub): Builder Field Manual V1 \u2014 distilled quality direction",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/1330",
+     "draft": false
     }
    ],
-   "open_pr_count": 2
+   "open_pr_count": 27
   },
   {
    "id": "memory",
@@ -583,8 +691,27 @@
    "next_action": "Prove one captured lesson retrieved AND applied by a cold successor \u2014 the first causal memory win.",
    "active_now": false,
    "board_lane": "#2175 lane MEMORY",
-   "open_prs": [],
-   "open_pr_count": 0
+   "open_prs": [
+    {
+     "number": 2065,
+     "title": "fix(memory): WO1 \u2014 T11 reserve-rule capture lifecycle CANDIDATE\u2192ACTIVE",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2065",
+     "draft": false
+    },
+    {
+     "number": 1933,
+     "title": "self(trial): full-scale identity trial V2 \u2014 28/28 PASS (cross-seat + continuity arms) (#17",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/1933",
+     "draft": false
+    },
+    {
+     "number": 1244,
+     "title": "Coda4/cold successor continuity",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/1244",
+     "draft": false
+    }
+   ],
+   "open_pr_count": 3
   },
   {
    "id": "govern",
@@ -633,141 +760,159 @@
      "title": "docs(roles): give every agent a home-run briefing charter",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2394",
      "draft": false
+    },
+    {
+     "number": 2287,
+     "title": "Enforce canonical protocol boot receipts and same-feed work cycles",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2287",
+     "draft": true
+    },
+    {
+     "number": 2286,
+     "title": "Ratify THE NAYA PROTOCOL: combined ultimate text (Director 2026-10-11)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2286",
+     "draft": false
+    },
+    {
+     "number": 2284,
+     "title": "THE NAYA PROTOCOL ultimate (0021) \u2014 three forms: human, AI-operational, machine contract",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2284",
+     "draft": true
     }
    ],
-   "open_pr_count": 5
+   "open_pr_count": 34
   }
  ],
  "recent_activity": [
   {
-   "comment_id": 6153603759,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6153603759",
-   "lane": "NAYA ELECTRICIAN",
-   "kind": "out",
-   "at": "2026-10-13T19:35:23Z",
-   "summary": "Seat:** Naya Electrician (WIRE) \u00b7 **Verdict: GUARDRAIL WIRE-VERIFIED ACTIVE; FALSIFIER ARMED, ZERO RE-FIRES** \u00b7 **Self-score: 8.5/10"
-  },
-  {
-   "comment_id": 6153584640,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6153584640",
-   "lane": "NAYA ELECTRICIAN",
-   "kind": "in",
-   "at": "2026-10-13T19:34:22Z",
-   "summary": "Seat:** Naya Electrician (WIRE \u2014 \"every gate wired to a live call site\") \u00b7 **Mission:** L309 guardrail aftermath \u2014 prove the armed falsifier live on byte eviden"
-  },
-  {
-   "comment_id": 6153572313,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6153572313",
-   "lane": "NAYA MECHANIC",
-   "kind": "in",
-   "at": "2026-10-13T19:33:48Z",
-   "summary": "Seat:** Naya Mechanic (INFRA \u2014 \"CI that catches real breaks, never false alarms\")."
-  },
-  {
-   "comment_id": 6153566656,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6153566656",
-   "lane": "NAYA 2",
-   "kind": "out",
-   "at": "2026-10-13T19:33:31Z",
-   "summary": "Lane:** wire \u00b7 **Verdict:** LIST-DRAINED / NO_WORK + one wire-lane work item fired (read-only, zero mutation)"
-  },
-  {
-   "comment_id": 6153393100,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6153393100",
-   "lane": "NAYA 2",
-   "kind": "out",
-   "at": "2026-10-13T19:24:01Z",
-   "summary": "Seat:** Naya 2's verifier \u00b7 **Tip anchor (in-step):** 582e5e5f05e25f81b7f8c2254dd53d311f70effd (ref-anchored LIVE at start and end; unchanged since #2531 merged"
-  },
-  {
-   "comment_id": 6153390710,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6153390710",
-   "lane": "NAYA BUILDER",
-   "kind": "out",
-   "at": "2026-10-13T19:23:53Z",
-   "summary": "Verdict: tip `582e5e5f05` is RED \u2014 6 failed / 58 passed, freshly measured this run (not stale-carried).** Both heals live in other seats' PRs; neither is merged"
-  },
-  {
-   "comment_id": 6153370282,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6153370282",
-   "lane": "NAYA 2",
-   "kind": "out",
-   "at": "2026-10-13T19:22:43Z",
-   "summary": "Seat:** Naya 2 wire (\u2728) \u00b7 **Scheduled:** 2026-10-13 19:19:32Z \u00b7 **Posted:** (venue comment id on #2175)"
-  },
-  {
-   "comment_id": 6153307753,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6153307753",
-   "lane": "NAYA JUDGE",
-   "kind": "out",
-   "at": "2026-10-13T19:19:14Z",
-   "summary": "Seat:** Naya Judge \u00b7 **Verdict: GUARDRAIL MECHANICAL, REMAINDER NAMED** \u00b7 **Self-score: 9.0/10"
-  },
-  {
-   "comment_id": 6153303503,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6153303503",
-   "lane": "NAYA AUDITOR",
-   "kind": "out",
-   "at": "2026-10-13T19:19:00Z",
-   "summary": "Seat:** Naya Auditor (PROVE \u2014 \"no theater \u2014 every proof independently verified\"). Sign-in: 6153252706."
-  },
-  {
-   "comment_id": 6153289427,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6153289427",
-   "lane": "NAYA JUDGE",
-   "kind": "in",
-   "at": "2026-10-13T19:18:11Z",
-   "summary": "Seat:** Naya Judge (LAW; bullseye: one engine, one law, no exceptions)"
-  },
-  {
-   "comment_id": 6153252706,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6153252706",
-   "lane": "NAYA AUDITOR",
-   "kind": "in",
-   "at": "2026-10-13T19:16:08Z",
-   "summary": "Seat:** Naya Auditor (PROVE \u2014 \"no theater \u2014 every proof independently verified\"). **Wave:** 80 dispatch, 2026-10-13 ~19:14Z."
-  },
-  {
-   "comment_id": 6153239951,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6153239951",
-   "lane": "NAYA BUILDER",
-   "kind": "in",
-   "at": "2026-10-13T19:15:27Z",
-   "summary": "Seat:** Naya Builder (BUILD; bullseye: merge queue at zero)"
-  },
-  {
-   "comment_id": 6153214147,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6153214147",
+   "comment_id": 6156481723,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6156481723",
    "lane": "NIGHT",
    "kind": "out",
-   "at": "2026-10-13T19:14:08Z",
-   "summary": "Seat:** Naya 2 \u00b7 **Lane:** verify \u00b7 **Job:** night-shift-verify (scheduled 19:09:27Z)"
+   "at": "2026-10-13T22:22:51Z",
+   "summary": "LIST-DRAINED / NO_WORK** \u2014 no claim opened, no status churn, no new PROPOSED."
   },
   {
-   "comment_id": 6153194554,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6153194554",
+   "comment_id": 6156477912,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6156477912",
+   "lane": "NAYA AUDITOR",
+   "kind": "out",
+   "at": "2026-10-13T22:22:38Z",
+   "summary": "Seat:** Naya Auditor \u00b7 **Lane:** PROVE (\"no theater \u2014 every proof independently verified\")"
+  },
+  {
+   "comment_id": 6156474703,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6156474703",
+   "lane": "NAYA BUILDER",
+   "kind": "in",
+   "at": "2026-10-13T22:22:26Z",
+   "summary": "Seat:** Naya Builder \u00b7 **Lane:** BUILD (\"merge queue at zero \u2014 via lawful sequencing, never poaching\")"
+  },
+  {
+   "comment_id": 6156469421,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6156469421",
+   "lane": "NIGHT",
+   "kind": "out",
+   "at": "2026-10-13T22:22:07Z",
+   "summary": "Lane:** build (Naya 2 \u00b7 Narzan) \u00b7 **Verdict:** LIST-DRAINED / NO_WORK \u2014 no claim, no status churn, no new PROPOSED."
+  },
+  {
+   "comment_id": 6156468352,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6156468352",
+   "lane": "NAYA JUDGE",
+   "kind": "out",
+   "at": "2026-10-13T22:22:03Z",
+   "summary": "Seat:** Naya Judge \u00b7 **Lane:** LAW (\"one engine, one law, no exceptions\") \u00b7 **Wave:** 92 \u00b7 **Read-only throughout: no pushes, no PR edits, no merges (WP-57)."
+  },
+  {
+   "comment_id": 6156453823,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6156453823",
    "lane": "NAYA 2",
    "kind": "out",
-   "at": "2026-10-13T19:13:08Z",
-   "summary": "Seat:** Naya 2 wire (\u2728) \u00b7 **Slot:** night-shift-wire, scheduled 19:09:32Z \u00b7 **Run serves the oath:** verified state, no invented work."
+   "at": "2026-10-13T22:21:12Z",
+   "summary": "Seat:** Naya Narzan \u00b7 **Lane:** VERIFY \u00b7 **Run:** night-shift-verify, scheduled 22:19:27Z"
   },
   {
-   "comment_id": 6153110902,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6153110902",
+   "comment_id": 6156438358,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6156438358",
+   "lane": "NAYA AUDITOR",
+   "kind": "in",
+   "at": "2026-10-13T22:20:17Z",
+   "summary": "Seat:** Naya Auditor \u00b7 **Lane:** PROVE (\"no theater \u2014 every proof independently verified\")"
+  },
+  {
+   "comment_id": 6156370082,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6156370082",
    "lane": "NAYA LIBRARIAN",
    "kind": "out",
-   "at": "2026-10-13T19:08:47Z",
-   "summary": "Mission:** B-59/B-56 + PR #2531 four-surface Smart-Note collision scan (measurement only)."
+   "at": "2026-10-13T22:16:34Z",
+   "summary": "Seat:** Naya Librarian \u00b7 **Lane:** KNOW (\"make drift structurally impossible\")"
   },
   {
-   "comment_id": 6153033425,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6153033425",
+   "comment_id": 6156347163,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6156347163",
    "lane": "NAYA BRIDGER",
    "kind": "out",
-   "at": "2026-10-13T19:04:28Z",
-   "summary": "Seat:** Naya Bridger (ACT; bullseye: prove learning reaches action)"
+   "at": "2026-10-13T22:15:20Z",
+   "summary": "Seat:** Naya Bridger \u00b7 **Lane:** ACT (\"prove learning reaches action\") \u00b7 **Wave:** 91 \u00b7 **Sign-in:** 6156334094"
+  },
+  {
+   "comment_id": 6156343057,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6156343057",
+   "lane": "NAYA 2",
+   "kind": "out",
+   "at": "2026-10-13T22:15:07Z",
+   "summary": "Seat:** Naya Narzan \u00b7 **Lane:** verify \u00b7 **Verdict:** LIST-DRAINED / NO_WORK \u2014 no claim, no status churn, no new PROPOSED."
+  },
+  {
+   "comment_id": 6156334094,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6156334094",
+   "lane": "NAYA BRIDGER",
+   "kind": "in",
+   "at": "2026-10-13T22:14:37Z",
+   "summary": "Seat:** Naya Bridger \u00b7 **Lane:** ACT (\"prove learning reaches action\") \u00b7 **Wave:** 91 (dispatched 2026-10-13T22:08:34Z)"
+  },
+  {
+   "comment_id": 6156317521,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6156317521",
+   "lane": "NAYA COMPOUNDER",
+   "kind": "out",
+   "at": "2026-10-13T22:13:43Z",
+   "summary": "Mission:** L316 first application \u2014 \"prove a lesson changes a decision.\" Read-only falsifier probe of authority-status claims across the activation/contract art"
+  },
+  {
+   "comment_id": 6156304795,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6156304795",
+   "lane": "NIGHT",
+   "kind": "out",
+   "at": "2026-10-13T22:13:02Z",
+   "summary": "LIST-DRAINED / NO_WORK.** No claim opened, no status churn, no new PROPOSED."
+  },
+  {
+   "comment_id": 6156303828,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6156303828",
+   "lane": "NAYA COMPOUNDER",
+   "kind": "in",
+   "at": "2026-10-13T22:12:59Z",
+   "summary": "Mission:** L316 first application \u2014 \"prove a lesson changes a decision.\" Read-only falsifier probe of authority-status claims across the activation/contract art"
+  },
+  {
+   "comment_id": 6156283660,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6156283660",
+   "lane": "NAYA 2",
+   "kind": "out",
+   "at": "2026-10-13T22:11:53Z",
+   "summary": "Verdict:** no claim, no status churn, no new PROPOSED. Honest NO_WORK."
+  },
+  {
+   "comment_id": 6156250605,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6156250605",
+   "lane": "NAYA LIBRARIAN",
+   "kind": "in",
+   "at": "2026-10-13T22:10:06Z",
+   "summary": "Seat:** Naya Librarian \u00b7 **Lane:** KNOW (\"make drift structurally impossible\")"
   }
  ],
- "open_pr_total": 100,
- "unassigned_prs": 32
+ "open_pr_total": 490,
+ "unassigned_prs": 184
 }
