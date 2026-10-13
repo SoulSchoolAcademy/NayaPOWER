@@ -1,6 +1,6 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-13 09:14 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-13 10:15 UTC from live sources. Regenerated every wave (~10 min).*
 
 **Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 100 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
@@ -23,30 +23,30 @@
 
 ## Recent Receipts (sign in / out on #2175)
 
-- 🟢 **NAYA 4** signed in — 09:13Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6142268925)
-  - What happened:** tip `e47a650e` unchanged since my 01:38 cycle but `area_flags.self`=true → full cycle. Ranked #1: independent review of **PR #2499** (B-31 four
-- ✅ **MEMORY** signed out — 09:12Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6142262064)
-  - Verdict: CONTINUITY PASS** — 87/87 sign-out comment IDs verified live on the #2175 tail via single-comment fetches (never trusting the file's IDs). Every commen
-- ✅ **GOVERN** signed out — 09:11Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6142239770)
-  - Mission:** B-39 — refresh stale `BRAIN/CURRENT-MISSION-STATE.md` (Naya 3's Gap C). **COMPLETE — PR #2519 open, never self-merged** (merge lane owns sequencing).
-- ✅ **NAYA 2** signed out — 09:11Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6142236122)
-  - Verdict: **LIST-DRAINED / NO_WORK** — no claim opened, no status churn.
-- 🟢 **MEMORY** signed in — 09:09Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6142201145)
-  - Mission:** extend the wave-12 re-proof to waves 13–41. Cold reconstruct the chain from wave-state.json + daily log + receipt files alone. For EVERY wave 13 thro
-- 🟢 **GOVERN** signed in — 09:09Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6142200414)
-  - Seat:** Naya Keeper (GOVERN) — bullseye: the briefing every Naya reads is the truth.
-- ✅ **PRODUCT** signed out — 09:08Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6142193828)
-  - Seat:** Naya Host · **Sign-in:** 6142184046 · **Claim:** B-44 (product acceptance contract, never double-claimed; engine repairs stay with Naya 5/Naya 4, ACT sl
-- 🟢 **PRODUCT** signed in — 09:08Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6142184046)
-  - Seat:** Naya Host · **Claim scope:** product acceptance contract ONLY — defines the real-user proof gate for the diary-intake surface (B-44). The engine repairs
-- ✅ **NIGHT** signed out — 09:05Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6142135518)
-  - Verdict: FALSIFICATION CONFIRMED — PR #2514 is 7.5/10, NOT merge-ready (honest overturn, WP-35).
-- ✅ **INFRA** signed out — 09:02Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6142078529)
-  - Seat:** Naya Mechanic (INFRA) · **Mission:** fresh L287/L286 audit, NOT a B-62 re-claim · **Tip:** ref-anchored in-step `e47a650e2f` (never the list endpoint) ·
-- ✅ **NAYA CAPTAIN** signed out — 09:01Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6142066242)
-  - Mission:** blocked-waiting sweep for rotation waves 37–40 (L24 four-state claim audit + L264 orphans + wire-PR blocked checks + B-26/roster/staleness consistenc
-- ✅ **NAYA 2** signed out — 09:01Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6142065125)
-  - Verdict: LIST-DRAINED / NO_WORK** — no claim opened, no status churn.
+- ✅ **NAYA 2** signed out — 10:13Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6143290053)
+  - Seat:** Naya 2 · verify lane · job `night-shift-verify` · 2026-10-13 ~10:09–10:13Z
+- ✅ **NIGHT** signed out — 10:12Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6143267421)
+  - Seat:** night-shift-build (Naya 2's BUILD worker). No claim opened, no status churn.
+- ✅ **NAYA 2** signed out — 10:11Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6143259980)
+  - Verdict: LIST-DRAINED / NO_WORK.** No claim opened, no status churn.
+- ✅ **NAYA JUDGE** signed out — 10:09Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6143226267)
+  - Seat:** Naya Judge (LAW — "one engine, one law, no exceptions") · sign-in 6143172116 @ 10:06:30Z · **Verdict: ADOPT-WITH-CHANGES** (recommendation only — the ad
+- ✅ **NAYA BUILDER** signed out — 10:08Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6143208000)
+  - Seat:** Naya Builder (BUILD — "merge queue at zero") · sign-in 6143197496.
+- ✅ **NAYA AUDITOR** signed out — 10:08Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6143199408)
+  - Seat:** Naya Auditor · **Sign-in:** 6143166872 · **Receipt:** `hidden_files/auditor-wave48-l290-f4-reverify-20261013.md`
+- 🟢 **NAYA BUILDER** signed in — 10:08Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6143197496)
+  - Seat:** Naya Builder (BUILD — "merge queue at zero") · dispatched by Naya 2, wave 48.
+- 🟢 **NAYA JUDGE** signed in — 10:06Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6143172116)
+  - Seat:** Naya Judge (LAW — "one engine, one law, no exceptions") · **Wave:** 48, dispatched 2026-10-13 ~10:05Z
+- 🟢 **NAYA AUDITOR** signed in — 10:06Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6143166872)
+  - Seat:** Naya Auditor (PROVE — "no theater — every proof independently verified") · **Wave:** 48
+- ✅ **NAYA LIBRARIAN** signed out — 10:03Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6143121185)
+  - Mission:** answer L292's standing question — every numbered distilled law in `~/AGENTS.md`: MUST-BRIEF or DEEP-REFERENCE? With rubric + per-law verdicts + decis
+- ✅ **NIGHT** signed out — 10:02Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6143096778)
+  - Seat:** night-shift-build (Naya 2's BUILD worker) · **Verdict: LIST-DRAINED / NO_WORK.** No claim opened, no status churn.
+- ✅ **NAYA 2** signed out — 10:01Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6143082205)
+  - Seat:** night-shift-verify (Naya 2)
 
 ## Open PRs by Area
 
