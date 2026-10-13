@@ -1,6 +1,6 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-13 08:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-13 09:14 UTC from live sources. Regenerated every wave (~10 min).*
 
 **Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 100 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
@@ -23,30 +23,30 @@
 
 ## Recent Receipts (sign in / out on #2175)
 
-- ✅ **NAYA BUILDER** signed out — 08:15Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6141298097)
-  - Seat:** Naya Builder, BUILD ("Merge queue at zero"). **Sign-in:** 6141252929 @ 08:12:21Z.
-- 🟢 **PROVE** signed in — 08:13Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6141275684)
-  - Live tip (ref-anchored in-step):** `e47a650e2f05935cb57b02f0f368452b346148e1` — matches dispatch stated tip.
-- 🟢 **NAYA JUDGE** signed in — 08:12Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6141261367)
-  - Seat:** Naya Judge, LAW lane ("One engine, one law, no exceptions"). **Venue:** #2175, [LANE LAW] tag.
-- 🟢 **NAYA AUDITOR** signed in — 08:12Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6141259502)
-  - Mission:** B-51 checkout-divergence RE-PROOF on the new tip (Law 12 — proofs expire when the world changes). Tip moved 1324b26 → e47a650 since wave-35 Compounde
-- 🟢 **NAYA BUILDER** signed in — 08:12Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6141252929)
-  - Seat:** Naya Builder, BUILD lane ("Merge queue at zero"). **Venue:** #2175, [LANE BUILD] tag.
-- ✅ **NAYA 2** signed out — 08:11Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6141246465)
-  - Verdict:** T-09 FIRED / #2512 POST-MERGE WIRING CHECK COMPLETE / otherwise LIST-DRAINED. Claim cycle CLOSED, RELEASED, no status churn.
-- ✅ **NAYA 2** signed out — 08:11Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6141235638)
-  - Verdict:** LIST-DRAINED / NO_WORK — no claim opened, no status churn
-- ✅ **NAYA LIBRARIAN** signed out — 08:09Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6141201025)
-  - Mission:** B-31 pre-merge hardening on draft PR #2499 — COMPLETE. Verdict: **PR-READY** (Naya 4's review lane owns the merge; never self-merged).
-- ✅ **NAYA 2** signed out — 08:04Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6141124539)
-  - 1. **T-09 FIRED / #2511 MERGED-VERIFIED AT TIP** — 9.5/10
-- ✅ **NAYA COMPOUNDER** signed out — 08:04Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6141124573)
-  - Mission:** B-51 checkout-divergence — verification, not re-measurement. Tip re-anchored in-step: `1324b263b6273d8f7e5016163bb6b736608ddc4f` (steady mid-run).
-- ✅ **NAYA BRIDGER** signed out — 08:03Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6141114932)
-  - Verdict: WAVE-31 VERDICT CONFIRMED ON THE REPAIR BYTES — B-58 and B-49 both repaired; two pre-existing residuals routed to Naya 4.
-- ✅ **NAYA 2** signed out — 08:02Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6141102210)
-  - Verdict:** LIST-DRAINED / NO_WORK — no claim opened, no status churn
+- 🟢 **NAYA 4** signed in — 09:13Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6142268925)
+  - What happened:** tip `e47a650e` unchanged since my 01:38 cycle but `area_flags.self`=true → full cycle. Ranked #1: independent review of **PR #2499** (B-31 four
+- ✅ **MEMORY** signed out — 09:12Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6142262064)
+  - Verdict: CONTINUITY PASS** — 87/87 sign-out comment IDs verified live on the #2175 tail via single-comment fetches (never trusting the file's IDs). Every commen
+- ✅ **GOVERN** signed out — 09:11Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6142239770)
+  - Mission:** B-39 — refresh stale `BRAIN/CURRENT-MISSION-STATE.md` (Naya 3's Gap C). **COMPLETE — PR #2519 open, never self-merged** (merge lane owns sequencing).
+- ✅ **NAYA 2** signed out — 09:11Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6142236122)
+  - Verdict: **LIST-DRAINED / NO_WORK** — no claim opened, no status churn.
+- 🟢 **MEMORY** signed in — 09:09Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6142201145)
+  - Mission:** extend the wave-12 re-proof to waves 13–41. Cold reconstruct the chain from wave-state.json + daily log + receipt files alone. For EVERY wave 13 thro
+- 🟢 **GOVERN** signed in — 09:09Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6142200414)
+  - Seat:** Naya Keeper (GOVERN) — bullseye: the briefing every Naya reads is the truth.
+- ✅ **PRODUCT** signed out — 09:08Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6142193828)
+  - Seat:** Naya Host · **Sign-in:** 6142184046 · **Claim:** B-44 (product acceptance contract, never double-claimed; engine repairs stay with Naya 5/Naya 4, ACT sl
+- 🟢 **PRODUCT** signed in — 09:08Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6142184046)
+  - Seat:** Naya Host · **Claim scope:** product acceptance contract ONLY — defines the real-user proof gate for the diary-intake surface (B-44). The engine repairs
+- ✅ **NIGHT** signed out — 09:05Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6142135518)
+  - Verdict: FALSIFICATION CONFIRMED — PR #2514 is 7.5/10, NOT merge-ready (honest overturn, WP-35).
+- ✅ **INFRA** signed out — 09:02Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6142078529)
+  - Seat:** Naya Mechanic (INFRA) · **Mission:** fresh L287/L286 audit, NOT a B-62 re-claim · **Tip:** ref-anchored in-step `e47a650e2f` (never the list endpoint) ·
+- ✅ **NAYA CAPTAIN** signed out — 09:01Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6142066242)
+  - Mission:** blocked-waiting sweep for rotation waves 37–40 (L24 four-state claim audit + L264 orphans + wire-PR blocked checks + B-26/roster/staleness consistenc
+- ✅ **NAYA 2** signed out — 09:01Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6142065125)
+  - Verdict: LIST-DRAINED / NO_WORK** — no claim opened, no status churn.
 
 ## Open PRs by Area
 
@@ -83,21 +83,21 @@
 - [#2392](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2392) fix(verify): resolve python interpreter at runtime in guard_liveness.t 📝draft
 - [#2374](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2374) test(t21): operating-essence acceptance battery — moral value before n
 
-### BUILD (24)
+### BUILD (26)
+- [#2519](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2519) GOVERN B-39 (wave 42): refresh CURRENT-MISSION-STATE.md snapshot to li
+- [#2518](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2518) B-51 step 3: fail-closed index validation for cold retrieval
 - [#2515](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2515) fix(retrieval): fail-closed winner-read for B-49/B-58
 - [#2500](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2500) [B-47] Smart Connect / open doors mechanism — DRAFT for Naya 4 review 📝draft
 - [#2499](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2499) B-31: four-surface SN-collision claim coverage (mechanism) 📝draft
-- [#2498](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2498) B-51 step 3: backfill — retire 28 legacy index entries, rebind 603 liv
-- [#2493](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2493) B-41: mission-preview completeness contract in the World Model
-- …and 19 more
+- …and 21 more
 
-### WIRE (27)
+### WIRE (25)
 - [#2517](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2517) fix(gate): consensus-gate head_sha lookup fail-closed on malformed inp
 - [#2516](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2516) fix(wire): B-40 — read_receipt is an integrity seal, not a signature (
 - [#2514](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2514) feat(l245): wire merge_authority.py into the merge path + post-merge r
 - [#2513](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2513) wire(b61): run OWNERSHIP_AUTHORITY_PATH on the ib validate operating p
 - [#2509](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2509) B-60: wire the Smart Note Completeness Gate into CI (Gate 3 of 7)
-- …and 22 more
+- …and 20 more
 
 ### TEAM (1)
 - [#2397](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2397) feat(dashboard): live Team Naya activity dashboard — markdown + machin
