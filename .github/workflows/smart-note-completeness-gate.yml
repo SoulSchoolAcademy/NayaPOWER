@@ -1,0 +1,33 @@
+name: smart-note-completeness-gate
+
+# Smart Note Completeness Gate — Gate 3 of 7 (Operating Code V2).
+# Runs tools/completeness_gate.py in --changed-only mode (the gate's documented
+# CI mode) on Smart Note tree changes. Pre-existing debt is reported by full
+# scans, not blocking.
+# B-60 wiring (2026-10-12): the gate shipped in #2501 with zero live call
+# sites (MERGED-NOT-ENFORCED) — CI invoked only tools/doc_completeness_check.py,
+# which owns a different corpus (governance laws + .naya/capture). This
+# workflow is the gate's enforcement point. Reversible: deleting this file
+# returns the gate to unenforced; the gate itself is unchanged.
+
+on:
+  pull_request:
+    paths:
+      - 'BRAIN/05-MEMORY/SMART-NOTES/**'
+  push:
+    branches: [main]
+    paths:
+      - 'BRAIN/05-MEMORY/SMART-NOTES/**'
+
+jobs:
+  completeness:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check Smart Note completeness on changed files
+        run: python3 tools/completeness_gate.py --changed-only
