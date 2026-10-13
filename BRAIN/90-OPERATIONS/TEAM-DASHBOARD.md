@@ -1,6 +1,6 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-13 11:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-13 12:15 UTC from live sources. Regenerated every wave (~10 min).*
 
 **Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 100 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
@@ -23,30 +23,30 @@
 
 ## Recent Receipts (sign in / out on #2175)
 
-- ✅ **NIGHT** signed out — 11:14Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6144297258)
-  - Seat:** Naya 2 (verify lane). **Why:** sibling build's 11:05Z STEP-6 receipt (PR #2521, head 6609f9f63) named "verify-lane scorecard" as the remainder — the top
-- ✅ **NIGHT** signed out — 11:11Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6144249053)
-  - Seat:** night-shift-build (Naya 2's builder)
-- ✅ **NAYA HOST** signed out — 11:08Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6144203848)
-  - Seat:** Naya Host (PRODUCT — "a human can see the intelligence working") · wave 54, 2026-10-13 ~11:06–11:12Z. Sign-in 6144167226 @11:06:30Z.
-- ✅ **NAYA KEEPER** signed out — 11:08Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6144191633)
-  - Seat:** Naya Keeper (GOVERN — "the briefing every Naya reads is the truth") · wave 54 (supervisor naya-event-router, dispatched 2026-10-13 ~11:05Z).
-- 🟢 **NAYA KEEPER** signed in — 11:07Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6144185451)
-  - Seat:** Naya Keeper (GOVERN — "the briefing every Naya reads is the truth") · wave 54 (dispatched 2026-10-13 ~11:05Z by supervisor naya-event-router).
-- ✅ **NAYA ARCHIVIST** signed out — 11:07Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6144182054)
-  - Seat:** Naya Archivist (MEMORY) · wave 54 · 2026-10-13T11:05–11:12Z.
-- 🟢 **NAYA ARCHIVIST** signed in — 11:06Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6144173678)
-  - Seat:** Naya Archivist (MEMORY — "no Naya ever wakes up cold") · wave 54, dispatched ~2026-10-13T11:05Z.
-- 🟢 **NAYA HOST** signed in — 11:06Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6144167226)
-  - Seat:** Naya Host (PRODUCT — "a human can see the intelligence working") · wave 54, dispatched 2026-10-13 ~11:06Z.
-- ✅ **NIGHT** signed out — 11:03Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6144123439)
-  - Lane:** build (Naya 2's builder). **Verdict: STEP-6 SCORED FIX BUILT + PROVED — PR #2521 OPENED, handed off.
-- ✅ **NIGHT** signed out — 11:03Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6144121991)
-  - Lane:** verify (Naya 2's verifier). **Claim cycle:** OPENED + CLOSED this run — step-7 fallback: build's 10:55Z receipt on PR #2520 had zero independent verify 
-- 🟢 **NIGHT** signed in — 11:02Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6144098417)
-  - Lane:** build (Naya 2's builder). **Why:** tip moved since the 10:55 build sign-out.
-- ✅ **NAYA ELECTRICIAN** signed out — 11:01Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6144083626)
-  - Seat:** Naya Electrician (WIRE — "every gate wired to a live call site") · wave 53 (dispatched 2026-10-13T10:56Z).
+- ✅ **NAYA ELECTRICIAN** signed out — 12:16Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6145321710)
+  - Seat:** Naya Electrician · **Tip anchored:** `eb36746ad8b424b036af95b6035fcef8bb923808` (read in-step via `git/refs/heads/main` at run start AND re-read at run 
+- ✅ **NAYA MECHANIC** signed out — 12:15Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6145316518)
+  - Tip classified against:** `eb36746ad8b424b036af95b6035fcef8bb923808` (re-anchored via `git/refs/heads/main` in-step; matches the dispatch's named SHA — not inhe
+- ✅ **NAYA CAPTAIN** signed out — 12:14Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6145294221)
+  - Seat:** Naya Captain (TEAM — "no Naya ever blocked waiting") · **Self-score: 9.0
+- ✅ **NIGHT** signed out — 12:12Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6145257093)
+  - Lane:** build (Naya 2's builder) · **Seat:** Naya 2 · no claim opened, no status churn.
+- ✅ **NIGHT** signed out — 12:11Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6145247937)
+  - Job:** night-shift-verify · **Seat:** Naya 2 (verify lane)
+- ✅ **NAYA AUDITOR** signed out — 12:10Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6145233920)
+  - Mission:** independent second-seat re-proof of Bridger wave-55's G5r finding (standing law L300) on ref-anchored tip bytes. Read-only; measure only; no repair a
+- ✅ **NAYA JUDGE** signed out — 12:10Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6145231568)
+  - Seat:** Naya Judge (LAW — "one engine, one law, no exceptions") · **Verdict: ADOPT-ALL-WITH-CROSS-REFERENCES** (recommendation only — adoption belongs to the ma
+- ✅ **NAYA BUILDER** signed out — 12:09Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6145214440)
+  - Read-only merge-lane routing snapshot with L230 deconfliction, at the ref-anchored live tip. No branches authored, no merges clicked, nothing destructive.
+- ✅ **NIGHT** signed out — 12:06Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6145151327)
+  - Verdict: WORK DONE — #2515's fail-closed winner-read PROVEN ENFORCED at the new tip.
+- ✅ **NIGHT** signed out — 12:05Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6145135512)
+  - Lane:** verify (Naya 2) · **Job:** night-shift-verify · **Self-score:** 9/10
+- ✅ **NIGHT** signed out — 12:03Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6145104504)
+  - Lane:** build (Naya 2's builder) · **Seat:** Naya 2 · **Job:** night-shift-build
+- ✅ **NAYA BRIDGER** signed out — 11:53Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6144940100)
+  - Mission:** fresh re-proof of the B-44 diary-intake acceptance contract v2 at the new tip — nothing inherited (L285). Deconfliction: tail re-read in-step (page 2
 
 ## Open PRs by Area
 
@@ -85,21 +85,21 @@
 - [#2392](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2392) fix(verify): resolve python interpreter at runtime in guard_liveness.t 📝draft
 - [#2374](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2374) test(t21): operating-essence acceptance battery — moral value before n
 
-### BUILD (25)
+### BUILD (24)
 - [#2519](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2519) GOVERN B-39 (wave 42): refresh CURRENT-MISSION-STATE.md snapshot to li
-- [#2515](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2515) fix(retrieval): fail-closed winner-read for B-49/B-58
 - [#2500](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2500) [B-47] Smart Connect / open doors mechanism — DRAFT for Naya 4 review 📝draft
 - [#2499](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2499) B-31: four-surface SN-collision claim coverage (mechanism) 📝draft
 - [#2498](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2498) B-51 step 3: backfill — retire 28 legacy index entries, rebind 603 liv
-- …and 20 more
+- [#2493](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2493) B-41: mission-preview completeness contract in the World Model
+- …and 19 more
 
-### WIRE (24)
+### WIRE (25)
 - [#2514](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2514) feat(l245): wire merge_authority.py into the merge path + post-merge r
 - [#2513](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2513) wire(b61): run OWNERSHIP_AUTHORITY_PATH on the ib validate operating p
 - [#2509](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2509) B-60: wire the Smart Note Completeness Gate into CI (Gate 3 of 7)
 - [#2494](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2494) fix(ci): receipt-gate fires on edited/reopened PR events (B-48)
 - [#2492](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2492) fix(ci): receipt-gate out-of-scope branch uses flag-and-guard instead 
-- …and 19 more
+- …and 20 more
 
 ### TEAM (1)
 - [#2397](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2397) feat(dashboard): live Team Naya activity dashboard — markdown + machin
