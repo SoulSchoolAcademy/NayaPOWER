@@ -372,6 +372,19 @@ class TestClaimPathWiring(unittest.TestCase):
         self.assertEqual(len(r["entries"]), 1)
 
 
+    def test_git_timeout_fails_closed_not_crash(self):
+        # B-31 wave-13: an unhandled TimeoutExpired in _git killed the whole
+        # live --audit with a traceback. Now it converts to RuntimeError so
+        # the caller fails the surface closed (SURFACE_ERROR), never crashes.
+        import check_sn_claim_coverage as c
+        from unittest import mock
+        with mock.patch.object(
+                c.subprocess, "run",
+                side_effect=c.subprocess.TimeoutExpired("git", 180)):
+            with self.assertRaises(RuntimeError) as cm:
+                c._git(".", "log", "--all", timeout=180)
+        self.assertIn("timed out", str(cm.exception))
+
     def test_update_registry_explicit_sn_id_refuses_foreign_claim(self):
         # B-31 wave-13 (probe P2): update_registry(sn_id=<explicit>) used to
         # trust caller provenance with no four-surface scan -- a hand-rolled

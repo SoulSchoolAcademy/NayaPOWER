@@ -189,14 +189,22 @@ def paginate(path, per_page=100):
         page += 1
 
 
-def _git(repo, *args):
+def _git(repo, *args, timeout=180):
     # Binary-safe: history contains non-UTF-8 blobs; decode with replacement
     # instead of crashing the scan (a crash here would fail the gate open
     # or closed for the wrong reason -- neither is acceptable).
-    out = subprocess.run(
-        ["git", "-C", str(repo)] + list(args),
-        capture_output=True, timeout=180, check=False,
-    )
+    # TimeoutExpired is converted to RuntimeError so the caller fails the
+    # surface closed (SURFACE_ERROR), never crashes the whole scan --
+    # observed 2026-10-13: `git log --all -G` over the full history exceeds
+    # 180s and killed the live --audit with an unhandled traceback.
+    try:
+        out = subprocess.run(
+            ["git", "-C", str(repo)] + list(args),
+            capture_output=True, timeout=timeout, check=False,
+        )
+    except subprocess.TimeoutExpired:
+        raise RuntimeError(
+            f"git {' '.join(args)}: timed out after {timeout}s")
     if out.returncode != 0:
         err = out.stderr.decode("utf-8", errors="replace").strip()[:200]
         raise RuntimeError(f"git {' '.join(args)}: {err}")
@@ -441,9 +449,10 @@ def collect_graph(repo):
     by_num = {}
     commits = {}  # sha -> [an, ae, subj, body, [(status, path)]]
 
-    def _meta(extra):
+    def _meta(extra, timeout=180):
         out = _git(repo, "log", "--all",
-                   "--format=%H%x00%an%x00%ae%x00%s%x00%b%x1e", *extra)
+                   "--format=%H%x00%an%x00%ae%x00%s%x00%b%x1e", *extra,
+                   timeout=timeout)
         for rec in out.split("\x1e"):
             rec = rec.strip("\n")
             if not rec.strip():
@@ -452,12 +461,15 @@ def collect_graph(repo):
             if len(parts) >= 5 and parts[0] not in commits:
                 commits[parts[0]] = [parts[1], parts[2], parts[3], parts[4], []]
 
-    _meta(["-G", r"SN-[0-9][0-9]*"])
+    # The -G pass walks every diff in history: multi-minute on this repo
+    # (measured >120s, 2026-10-13), so it gets a 600s budget. A timeout
+    # still fails the surface closed via _git's RuntimeError conversion.
+    _meta(["-G", r"SN-[0-9][0-9]*"], timeout=600)
     _meta(["--grep", "SN-"])
 
     # File lists for the -G set (message-only commits cannot place content).
     out = _git(repo, "log", "--all", "--format=COMMIT %H",
-               "--name-status", "-G", r"SN-[0-9][0-9]*")
+               "--name-status", "-G", r"SN-[0-9][0-9]*", timeout=600)
     cur = None
     for line in out.splitlines():
         if line.startswith("COMMIT "):
