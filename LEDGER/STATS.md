@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-13 14:04 UTC_
+_Last updated: 2026-10-13 14:43 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 750
-- ✅ Verified (8+): 742
+- **Total scored actions:** 760
+- ✅ Verified (8+): 752
 - 🟡 Partial (5–7): 7
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 1
@@ -16,16 +16,16 @@ _Last updated: 2026-10-13 14:04 UTC_
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
 | Team 1 | Naya Verity | 72 | 9.0 | 9.5 |
-| Team 2 | Naya Sage | 85 | 8.6 | 9.0 |
-| Team 3 | Naya Judge | 56 | 8.8 | 9.5 |
-| Team 4 | Naya Mason | 54 | 8.9 | 9.5 |
-| Team 5 | Naya Seeker | 53 | 8.9 | 9.0 |
-| Team 6 | Naya Heir | 50 | 8.9 | 9.5 |
+| Team 2 | Naya Sage | 86 | 8.6 | 9.0 |
+| Team 3 | Naya Judge | 57 | 8.8 | 9.5 |
+| Team 4 | Naya Mason | 55 | 8.9 | 9.5 |
+| Team 5 | Naya Seeker | 54 | 8.9 | 9.0 |
+| Team 6 | Naya Heir | 51 | 8.9 | 9.5 |
 | Team 7 | Naya Conductor | 67 | 8.8 | 9.5 |
-| Team 8 | Naya Sentinel | 70 | 8.9 | 9.5 |
-| Team 9 | Naya Smith | 81 | 8.8 | 9.5 |
-| Team 10 | Naya Librarian | 83 | 8.9 | 9.5 |
-| Team 11 | Naya Heart | 59 | 8.9 | 9.0 |
+| Team 8 | Naya Sentinel | 71 | 8.9 | 9.5 |
+| Team 9 | Naya Smith | 83 | 8.8 | 9.5 |
+| Team 10 | Naya Librarian | 84 | 8.9 | 9.5 |
+| Team 11 | Naya Heart | 60 | 8.9 | 9.0 |
 | Team 12 | Naya Herald | 20 | 8.9 | 9.5 |
 
 ## Learning velocity
@@ -123,11 +123,11 @@ _Last updated: 2026-10-13 14:04 UTC_
 - **t0578:** 3 actions, avg 9.0/10
 - **t0579:** 1 actions, avg 8.5/10
 - **t0580:** 1 actions, avg 8.5/10
-- **t0580b:** 6 actions, avg 9.0/10
-- **t0581b:** 3 actions, avg 9.0/10
+- **t0580b:** 8 actions, avg 9.0/10
+- **t0581b:** 4 actions, avg 9.0/10
 - **t0581:** 2 actions, avg 9.0/10
 - **t0582:** 3 actions, avg 9.0/10
-- **t0582b:** 3 actions, avg 8.8/10
+- **t0582b:** 4 actions, avg 8.9/10
 - **t0583:** 2 actions, avg 9.0/10
 - **t0584:** 1 actions, avg 9.0/10
 - **t0585:** 4 actions, avg 8.9/10
@@ -175,7 +175,10 @@ _Last updated: 2026-10-13 14:04 UTC_
 - **t0631:** 2 actions, avg 9.0/10
 - **t0632:** 3 actions, avg 9.0/10
 - **t0633:** 1 actions, avg 9.0/10
-- **t0634:** 1 actions, avg 9.0/10
+- **t0634:** 2 actions, avg 9.0/10
+- **t0635:** 2 actions, avg 9.0/10
+- **t0636:** 2 actions, avg 9.5/10
+- **t0637:** 1 actions, avg 9.0/10
 - **t892:** 6 actions, avg 8.2/10
 - **t0892:** 3 actions, avg 8.3/10
 - **t902:** 2 actions, avg 4.5/10
