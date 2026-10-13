@@ -1558,3 +1558,96 @@ def test_retrieve_winner_without_nutshell_fails_closed(tmp_path, monkeypatch):
         assert str(exc) == "WINNER_EXPLANATION_EMPTY", str(exc)
     else:
         raise AssertionError("title-only winner must fail closed, not be admitted silently")
+
+
+# --- Disavowal-scope phrase suppression (B-48 repair; Naya 5, 2026-10-13) ---
+# Defect: the exact-phrase channel clears the relevance floor BY CONSTRUCTION,
+# but nothing checked the lesson's stance toward the phrase. A note disavowing
+# the queried approach ("do not use X") received the phrase bonus, was
+# admitted, and could win — a warning presented as guidance. The guard
+# withholds the bonus when every phrase occurrence sits in disavowal scope.
+def test_phrase_disavowed_battery():
+    """20-case battery: 10 must-suppress, 10 must-not-fire (zero false fires)."""
+    suppress = [
+        ("connection pooling", "Do not use connection pooling",
+         "Do not use connection pooling in production."),
+        ("connection pooling", "Outage report",
+         "We found connection pooling is wrong for this workload."),
+        ("connection pooling", "T", "Avoid connection pooling entirely."),
+        ("connection pooling", "T", "Connection pooling failed in production last quarter."),
+        ("connection pooling", "T", "Never use connection pooling with SQLite."),
+        ("connection pooling", "T", "Instead of connection pooling, use direct connections."),
+        ("connection pooling", "T", "Connection pooling is deprecated as of v3."),
+        ("connection pooling", "T", "I reject connection pooling for this design."),
+        ("connection pooling", "T", "Don't use connection pooling here."),
+        ("connection pooling", "T", "Connection pooling is not recommended for SQLite."),
+    ]
+    for phrase, title, nutshell in suppress:
+        assert mod._phrase_disavowed(phrase, title, nutshell), (phrase, title, nutshell)
+    keep = [
+        ("connection pooling", "Connection pooling guide",
+         "Connection pooling improves throughput."),
+        ("connection pooling", "T", "Connection pooling is not just fast, it is reliable."),
+        ("connection pooling", "T", "Do not forget to use connection pooling for batch jobs."),
+        ("connection pooling", "T", "Connection pooling does not guarantee ordering."),
+        ("connection pooling", "T",
+         "Use connection pooling for reads. Do not use connection pooling for writes."),
+        ("connection pooling", "T", "We evaluated connection pooling and adopted it."),
+        ("caching", "T", "Connection pooling is wrong but caching is right."),
+        ("connection pooling", "T", "Connection pooling: lessons learned."),
+        ("connection pooling", "T", "Do not hesitate to use connection pooling."),
+        ("connection pooling", "T", "The team chose connection pooling after review."),
+    ]
+    for phrase, title, nutshell in keep:
+        assert not mod._phrase_disavowed(phrase, title, nutshell), (phrase, title, nutshell)
+
+
+def _disavowal_registry(tmp_path, entries):
+    brain = tmp_path / "BRAIN" / "05-MEMORY" / "SMART-NOTES"
+    brain.mkdir(parents=True, exist_ok=True)
+    regs = []
+    for i, (nid, title, nutshell) in enumerate(entries):
+        (brain / f"d{i}.md").write_text(
+            f"# T\n\n## IN A NUTSHELL\n\n{nutshell}", encoding="utf-8")
+        regs.append({"smart_note_id": nid, "intelligent_block_id": f"IB-{nid}",
+                     "title": title, "category": "X", "topic": "Y", "subtopic": "Z",
+                     "keywords": ["pooling"], "truth_state": "CANDIDATE",
+                     "lifecycle_state": "ACTIVE",
+                     "captured_at": "2026-10-06T00:00:00Z",
+                     "projection_path": f"BRAIN/05-MEMORY/SMART-NOTES/d{i}.md"})
+    rp = tmp_path / "index.json"
+    rp.write_text(json.dumps(_sealed_registry(regs, tmp_path)), encoding="utf-8")
+    return rp
+
+
+def test_retrieve_disavowed_phrase_loses_bonus_to_genuine(tmp_path, monkeypatch):
+    """B-48: a note disavowing the queried approach must not win on the phrase bonus."""
+    rp = _disavowal_registry(tmp_path, [
+        ("SN-DIS", "Do not use connection pooling",
+         "do not use connection pooling in production."),
+        ("SN-GEN", "Connection pooling guide",
+         "connection pooling improves throughput and reliability for batch jobs."),
+    ])
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    monkeypatch.setattr(mod, "REGISTRY", rp)
+    monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 0)  # ranking pin: the floor is live-corpus calibrated, not for synthetic corpora
+    result = mod.retrieve("connection pooling")
+    assert result["retrieved"]["smart_note_id"] == "SN-GEN"
+
+
+def test_retrieve_lone_disavowing_note_refused_at_live_floor(tmp_path, monkeypatch):
+    """B-48: with only a disavowing note present, retrieval refuses instead of admitting by construction."""
+    rp = _disavowal_registry(tmp_path, [
+        ("SN-DIS", "Do not use connection pooling",
+         "do not use connection pooling in production."),
+    ])
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    monkeypatch.setattr(mod, "REGISTRY", rp)
+    # Live floor value on purpose: this test IS the floor interaction.
+    monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 40.0)
+    try:
+        mod.retrieve("connection pooling")
+    except SystemExit as exc:
+        assert str(exc) == "NO_RELEVANT_INTELLIGENCE", str(exc)
+    else:
+        raise AssertionError("disavowing note must not clear the floor on the phrase bonus")
