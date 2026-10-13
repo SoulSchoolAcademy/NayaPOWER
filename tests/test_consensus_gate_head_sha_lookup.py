@@ -15,10 +15,21 @@ execute it with a stubbed `gh`, proving:
   2. malformed/forged lookup output (non-40-hex) -> non-zero exit, NO head_sha
      line (the P-008 fail-closed binding)
   3. valid 40-hex lookup -> head_sha echoed exactly (happy path unchanged)
+  4. multiline lookup output -> non-zero exit, NO head_sha line (the #2517
+     commit-2 newline guard: a line-anchored grep alone matches the first
+     line of "<40hex>\\n<injected>" and would echo BOTH lines, where GitHub's
+     last-wins parsing lets the injected line override the bound head_sha)
 
 The test substitutes the GitHub `${{ }}` template expressions with test
 values and strips the wall-clock `sleep` backoff lines (irrelevant to the
 fail-closed property); everything else is the verbatim shipped script.
+
+Shell-faithfulness note: the multiline guard is written as a `$'\\n'`
+bashism, and GitHub Actions executes workflow `run:` steps under bash --
+that is the script's real shell. The step is therefore executed under bash
+for test 4 (and only test 4 needs it: the other properties are shell-neutral).
+Running test 4 under /bin/sh (dash) would red spuriously because the guard
+is inert there -- the shell choice is load-bearing, not cosmetic.
 """
 import os
 import re
@@ -69,8 +80,14 @@ def _extract_step_script():
 STEP_SCRIPT = _extract_step_script()
 
 
-def _run_step(gh_stub_body):
-    """Run the live step script with a stubbed gh; return (rc, github_output)."""
+def _run_step_with_shell(gh_stub_body, shell):
+    """Run the live step script under `shell` with a stubbed gh.
+
+    Returns (rc, github_output). `shell` is load-bearing for test 4: the
+    multiline guard is a `$'\\n'` bashism and GitHub Actions runs workflow
+    steps under bash -- its real shell. Under /bin/sh (dash) the guard is
+    inert, so the bash path is the faithful one.
+    """
     with tempfile.TemporaryDirectory() as tmp:
         tmpdir = Path(tmp)
         stub_dir = tmpdir / "bin"
@@ -79,7 +96,7 @@ def _run_step(gh_stub_body):
         stub.write_text("#!/bin/sh\n" + gh_stub_body + "\n")
         stub.chmod(stub.stat().st_mode | stat.S_IEXEC | stat.S_IXGRP | stat.S_IXOTH)
         script = tmpdir / "step.sh"
-        script.write_text("#!/bin/sh\n" + STEP_SCRIPT + "\n")
+        script.write_text("#!" + shell + "\n" + STEP_SCRIPT + "\n")
         script.chmod(script.stat().st_mode | stat.S_IEXEC)
         output_file = tmpdir / "github_output"
         output_file.write_text("")
@@ -90,6 +107,16 @@ def _run_step(gh_stub_body):
             [str(script)], env=env, capture_output=True, text=True, timeout=120
         )
         return proc.returncode, output_file.read_text()
+
+
+def _run_step(gh_stub_body):
+    """Run the live step script with a stubbed gh; return (rc, github_output)."""
+    return _run_step_with_shell(gh_stub_body, "/bin/sh")
+
+
+def _run_step_bash(gh_stub_body):
+    """Run the live step script under bash (the workflow's real shell)."""
+    return _run_step_with_shell(gh_stub_body, "/bin/bash")
 
 
 def _head_sha_lines(output):
@@ -126,3 +153,20 @@ def test_valid_sha_still_echoed():
     rc, output = _run_step(f"echo '{VALID_SHA}'; exit 0")
     assert rc == 0, "valid lookup must succeed"
     assert _head_sha_lines(output) == [f"head_sha={VALID_SHA}"]
+
+
+def test_multiline_lookup_output_is_rejected():
+    """A lookup returning a multiline value is REJECTED before the grep.
+
+    Pins #2517 commit 2 (Naya Mu's residual): the line-anchored grep matches
+    the first line of "<40hex>\\npr_number=9999", so without the newline
+    guard the script would echo BOTH lines into $GITHUB_OUTPUT, where GitHub's
+    last-wins parsing lets the injected line override the bound head_sha --
+    defeating the fail-closed binding entirely.
+    """
+    stub = "printf '%s\\n%s\\n' '" + VALID_SHA + "' 'pr_number=9999'; exit 0"
+    rc, output = _run_step_bash(stub)
+    assert rc != 0, "multiline lookup output must fail the step"
+    assert _head_sha_lines(output) == [], (
+        "multiline SHA must never reach $GITHUB_OUTPUT (last-wins override)"
+    )
