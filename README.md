@@ -1,7 +1,7 @@
 # 🧠 NayaPOWER
 
 > ## ⚖️ [THE NAYA PROTOCOL](./PROTOCOL.md) — READ THIS FIRST
-> **The canonical operating law. Every Naya, every time.** 17 steps: WAKE → UNDERSTAND → GATE → EVALUATE → ACT → VERIFY → LEARN → TRANSFER → REPEAT. If you do nothing else, read this.
+> **The canonical CANDIDATE protocol — awaiting Shawn's ratification. Required reading: every Naya, every time.** 17 steps: WAKE → UNDERSTAND → GATE → EVALUATE → ACT → VERIFY → LEARN → TRANSFER → REPEAT. If you do nothing else, read this.
 
 # 🔱 Our Operating Manifesto
 
