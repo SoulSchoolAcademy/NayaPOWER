@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-10-12",
-  "receipt_basis_commit": "501bf82a3c6095b8834ef0bff6abec3b9a645c74",
-  "inventory_file_count": 1257,
+  "generated_at": "2026-10-13",
+  "receipt_basis_commit": "1324b263b6273d8f7e5016163bb6b736608ddc4f",
+  "inventory_file_count": 1785,
   "domain_counts": {
     "00-ACTIVATION": 3,
     "00-ARCHITECTURE": 5,
@@ -11,7 +11,7 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
-    "05-MEMORY": 647,
+    "05-MEMORY": 1175,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
@@ -856,9 +856,34 @@
       "size": 13473
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ACTIVE-INTELLIGENCE/ACTIVATION/SN-0783/IB-SMART-NOTE-20261009-sn0783-activation-is-machine-forced-law.md",
+      "blob_sha": "cd01958238527aa1bbbae2fe57d844ffd8f35360",
+      "size": 8376
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ACTIVE-INTELLIGENCE/ACTIVATION/SN-0787/IB-SMART-NOTE-20261009-sn0787-receipts-need-a-trusted-runner.md",
+      "blob_sha": "cb5741e440e7c913adbbb5ca424db305a83631ee",
+      "size": 7722
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ACTIVE-INTELLIGENCE/DELIVERY-DISCIPLINE/SN-0789/IB-SMART-NOTE-20261009-sn0789-the-delivery-gate.md",
+      "blob_sha": "a03233c6f46069754786b512ba80d631db536718",
+      "size": 3726
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ACTIVE-INTELLIGENCE/NAMING-CLEARANCE/SN-0527/IB-SMART-NOTE-20260930-sn0527-naming-collision-diligence.md",
       "blob_sha": "a53f24441351e2744550c6343e39517715c83834",
       "size": 6266
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ACTIVE-INTELLIGENCE/PRIORITY-DISCIPLINE/SN-0790/IB-SMART-NOTE-20261009-sn0790-focus-dial-not-stop-button.md",
+      "blob_sha": "bdc2e2565ad68080cbcad8c1c66aecd569d9a41a",
+      "size": 2869
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ACTIVE-INTELLIGENCE/PROACTIVE-OWNERSHIP/SN-0706/IB-SMART-NOTE-20261008-sn0706-dont-report-the-cliff-remove-it.md",
+      "blob_sha": "78fab3f6e4570e54918ff83b70c145cc52daac86",
+      "size": 6439
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ACTIVE-INTELLIGENCE/UNDERSTAND-CONNECT-RETRIEVE-APPLY/SN-015/IB-SMART-NOTE-20260930-sn015-active-intelligence-rule.md",
@@ -884,6 +909,11 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/AGENT-ARCHITECTURE/CONCURRENT-INTAKE/SN-0339/IB-SMART-NOTE-20260930-sn0339-serialize-the-registry.md",
       "blob_sha": "dc2c1ef907c18416eba61124dde943ed58a02cf3",
       "size": 5424
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/AMENDMENT-VERIFICATION/LOAD-BEARING-CLAIM-DISCIPLINE/SN-0724/IB-SMART-NOTE-20261008-sn0724-derived-not-literal-load-bearing-claims.md",
+      "blob_sha": "4b32043bbe31701f7138719b1fcf095468f0b290",
+      "size": 9128
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/AMENDMENT-VERIFICATION/MERGE-DECISION-INTEGRITY/SN-0342/IB-SMART-NOTE-20260930-sn0342-law-lands-in-code.md",
@@ -916,6 +946,21 @@
       "size": 6710
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/AMENDMENT-VERIFICATION/MERGE-DECISION-INTEGRITY/SN-0825/IB-SMART-NOTE-20261009-sn0825-held-merge-gets-scorecard-receipt.md",
+      "blob_sha": "41b85287cbf68b6ba19821ffef46f94cf49548de",
+      "size": 4510
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/AMENDMENT-VERIFICATION/MERGE-DECISION-INTEGRITY/SN-0937/IB-SMART-NOTE-20260930-sn0937-approval-comment-vs-review-object.md",
+      "blob_sha": "030bcdbc40bc5259d126f0109f4f337021826d71",
+      "size": 6342
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/AMENDMENT-VERIFICATION/MERGE-DECISION-INTEGRITY/SN-1087/IB-SMART-NOTE-20261012-sn1087-merge-endpoint-404-git-data-merge-fallback.md",
+      "blob_sha": "3cbed343907c87837f1ba7b3056e64b28aeb0941",
+      "size": 4870
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/AMENDMENT-VERIFICATION/PHANTOM-CITATION-CLASS/SN-035/IB-SMART-NOTE-20260930-sn035-phantom-citation-class.md",
       "blob_sha": "929102c31069a1198064f90eedae1200e9bad56b",
       "size": 5595
@@ -941,6 +986,16 @@
       "size": 7885
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/BASE-STALENESS/SN-0889/IB-SMART-NOTE-20261010-sn0889-verify-time-reanchor-beats-pre-anchor.md",
+      "blob_sha": "ca286b467e1dfdeaebca2e696b7c03b42fd3ff20",
+      "size": 3237
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/CHECK-ATTRIBUTION/SN-1074/IB-SMART-NOTE-20260930-sn1074-differential-attribution.md",
+      "blob_sha": "6ae7e62fc6c977d1e0b03214cb08bd1c99981d33",
+      "size": 5767
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/CI-TRIGGER-SILENCE/SN-048/IB-SMART-NOTE-20260930-sn048-api-push-actions-silence.md",
       "blob_sha": "6ad580632d089d5826d76216b658452c3a369365",
       "size": 5863
@@ -954,6 +1009,21 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/CI-TRIGGER-SILENCE/SN-074/IB-SMART-NOTE-20260930-sn074-api-push-trigger-event-scoping.md",
       "blob_sha": "cc695cbc341c7c994f572ef6b6a45853e82890cc",
       "size": 7677
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/CI-TRIGGER-SILENCE/SN-0766/IB-SMART-NOTE-20261009-sn0766-silent-telemetry-evidence-gap.md",
+      "blob_sha": "dbd4bbbdda83f4921a139d42847835b34a462ba3",
+      "size": 4746
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/CI-TRIGGER-SILENCE/SN-0878/IB-SMART-NOTE-20261010-sn0878-base-branch-gate-fix-needs-pr-side-retrigger.md",
+      "blob_sha": "b65e003143b4bac7460443e9ef6dcebe2c588cee",
+      "size": 6147
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/CI-TRIGGER-SILENCE/SN-1078/IB-SMART-NOTE-20261012-sn1078-a-skip-is-not-a-prevention.md",
+      "blob_sha": "184b1b9f57cd5429e41c2575fa4c9c3524d48d72",
+      "size": 6812
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/COUNT-LEDGER-STALENESS/SN-0128/IB-SMART-NOTE-20260930-sn0128-merge-base-drift-repair-at-tip.md",
@@ -996,6 +1066,11 @@
       "size": 10395
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/EVENT-SNAPSHOT/SN-1072/IB-SMART-NOTE-20260930-sn1072-event-snapshot-law.md",
+      "blob_sha": "044491b33f1c1977b64a1a504e86673cd40f386a",
+      "size": 5329
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/FAILURE-ATTRIBUTION/SN-0235/IB-SMART-NOTE-20261003-sn0235-deployment-parity-is-a-failure-class.md",
       "blob_sha": "d4caa3ec1b491215b4e2a0a52efc66d25ccbca05",
       "size": 6620
@@ -1026,6 +1101,51 @@
       "size": 6787
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/FAILURE-ATTRIBUTION/SN-0677/IB-SMART-NOTE-20261008-sn0677-vanished-red-not-healed-red.md",
+      "blob_sha": "d244bff91ae7b0837bb7c0fbcd808f1bd396d40b",
+      "size": 5924
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/FAILURE-ATTRIBUTION/SN-0681/IB-SMART-NOTE-20261008-sn0681-two-unblockers-deadlock-wave-owner-decides-stacked-path.md",
+      "blob_sha": "ad94eab3400ff3b9e315276c66c2ddfd63fcfec2",
+      "size": 6761
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/FAILURE-ATTRIBUTION/SN-0847/IB-SMART-NOTE-20261010-sn0847-human-decision-that-wasnt-stale-test.md",
+      "blob_sha": "4a21fd590f096d8f3b6a13b90dac5ce314e387ed",
+      "size": 4635
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/FAILURE-ATTRIBUTION/SN-0894/IB-SMART-NOTE-20261010-sn0894-workflow-defect-tag-owner-dont-poach.md",
+      "blob_sha": "682905efcc7583b4faf08d59de50ae8f15faed25",
+      "size": 6011
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/FAILURE-ATTRIBUTION/SN-0960/IB-SMART-NOTE-20261011-sn0960-tmp-full-phantom-failures-check-df-first.md",
+      "blob_sha": "86ccf217b96d6b3bbab3948d450a103e3ffe9914",
+      "size": 4478
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/FAILURE-ATTRIBUTION/SN-0961/IB-SMART-NOTE-20261011-sn0961-duplicate-test-basename-collection-crash-tip-attribution.md",
+      "blob_sha": "80882fab5823eab9422dd56f36dd70ef4a8e6cc2",
+      "size": 6303
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/FAILURE-ATTRIBUTION/SN-0962/IB-SMART-NOTE-20261011-sn0962-when-ci-logs-are-walled-repro-locally-at-exact-head.md",
+      "blob_sha": "6518f327f4581d209c0f25ef756341e063b2416e",
+      "size": 6328
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/FAILURE-ATTRIBUTION/SN-0963/IB-SMART-NOTE-20260930-sn0963-fail-closed-gate-bootstrap-403.md",
+      "blob_sha": "ec4bea1de67a3a9cc697fe42c9a432010b9c1992",
+      "size": 9035
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/FAILURE-ATTRIBUTION/SN-0964/IB-SMART-NOTE-20260930-sn0964-bucket-conflation-canary.md",
+      "blob_sha": "0066812a2181fe1cde73feaa4cba2a8178a6023d",
+      "size": 8427
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/FAILURE-ATTRIBUTION/SN-097/IB-SMART-NOTE-20260930-sn097-fail-loud-attribute-first.md",
       "blob_sha": "bd716da7f4fa68159d898084ee92dd3e2887503e",
       "size": 8275
@@ -1034,6 +1154,11 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/GUARD-FALSE-POSITIVES/SN-049/IB-SMART-NOTE-20260930-sn049-guard-that-cries-wolf.md",
       "blob_sha": "e82ad252eab1dbf2366370adf4c937ffab1d14d7",
       "size": 5037
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/GUARD-FALSE-POSITIVES/SN-0888/IB-SMART-NOTE-20261010-sn0888-ast-not-grep-for-code-governance-gates.md",
+      "blob_sha": "c4b0e99bb595403f31e66cfe22a2772785985090",
+      "size": 7819
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/INSTRUMENT-PARITY/SN-0429/IB-SMART-NOTE-20261006-sn0429-instrument-ci-uses.md",
@@ -1051,6 +1176,16 @@
       "size": 7836
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/LOG-EVIDENCE-DISCIPLINE/SN-0848/IB-SMART-NOTE-20261010-sn0848-likely-transient-is-a-guess-read-the-job-log.md",
+      "blob_sha": "039bcdcde3c2fedb0d6a612160ba6ea7639bf659",
+      "size": 6216
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/MERGE-BOUNDARY/SN-0740/IB-SMART-NOTE-20261008-sn0740-mergeable-blind-to-stacked-conflicts.md",
+      "blob_sha": "0db901c5fa9d790847cb9284322b0f9bb637eda9",
+      "size": 6933
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/PROOF-ENVIRONMENT-ISOLATION/SN-0233/IB-SMART-NOTE-20261003-sn0233-phantom-green-verify-on-virgin-state.md",
       "blob_sha": "d6aa993272a4f0ad87babc9bc931b82a6daec7c0",
       "size": 6348
@@ -1059,6 +1194,11 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/PROOF-ENVIRONMENT-ISOLATION/SN-087/IB-SMART-NOTE-20260930-sn087-proof-environments-reset-not-reused.md",
       "blob_sha": "a9f5c706d063755a785d0d5a803894d4093364f8",
       "size": 5422
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/PROOF-ENVIRONMENT-ISOLATION/SN-0970/IB-SMART-NOTE-20260930-sn0970-tmp-commons-orphan-scratch-remediation.md",
+      "blob_sha": "1d6a5e853d9cd02fb7ea7c8f8255b385eca0b5ac",
+      "size": 7702
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/PUSHED-BYTES-VERIFICATION/SN-050/IB-SMART-NOTE-20260930-sn050-verify-pushed-bytes.md",
@@ -1086,6 +1226,16 @@
       "size": 4171
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/RED-CLASSIFICATION/SN-0775/IB-SMART-NOTE-20261009-sn0775-input-equivalence-red-classification.md",
+      "blob_sha": "bef6501b842df255179ba07aa8ced315f13bbb5d",
+      "size": 5872
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/RED-CLASSIFICATION/SN-0887/IB-SMART-NOTE-20261010-sn0887-note-and-registry-entry-atomic.md",
+      "blob_sha": "04373a5f7ef5c14d0c87d34d1e27e0a74330762e",
+      "size": 6623
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/RED-RUN-DIAGNOSIS/SN-0411/IB-SMART-NOTE-20260930-sn0411-replay-conflict-not-nonpersistence.md",
       "blob_sha": "7f03a64506aa533ef65f062e43c5c5ebb5402b61",
       "size": 5285
@@ -1096,9 +1246,19 @@
       "size": 6437
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/RED-RUN-DIAGNOSIS/SN-0798/IB-SMART-NOTE-20261009-sn0798-score-the-wait-option-on-information-gain.md",
+      "blob_sha": "86a7c930fac07944c6e5489101743195b6da6c93",
+      "size": 6703
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/REGENERATION-INTENT/SN-038/IB-SMART-NOTE-20260930-sn038-regeneration-encodes-intent.md",
       "blob_sha": "a856c8df49c5a8613a434778614680ffe1c96940",
       "size": 4679
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/REGENERATION-INTENT/SN-0967/IB-SMART-NOTE-20260930-sn0967-receipts-are-drift-fuel.md",
+      "blob_sha": "f782d757267549f2e6bcb4c5b9ecb90be352645d",
+      "size": 6531
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/REPAIR-DISCIPLINE/SN-0236/IB-SMART-NOTE-20261004-sn0236-one-repair-per-red-class.md",
@@ -1131,9 +1291,49 @@
       "size": 8146
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/REPAIR-DISCIPLINE/SN-0764/IB-SMART-NOTE-20261009-sn0764-repair-invisible-behind-fail-fast-gate.md",
+      "blob_sha": "3bc2fdeac49761460c5270b5e24f88b9dbe79f06",
+      "size": 5417
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/REPAIR-DISCIPLINE/SN-0779/IB-SMART-NOTE-20261009-sn0779-respectful-supersede-consolidation-repair.md",
+      "blob_sha": "8dfb2ea8edc51f747e5702450dd8ef3f28854e1d",
+      "size": 8066
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/REPAIR-DISCIPLINE/SN-0849/IB-SMART-NOTE-20261010-sn0849-merge-minimal-fresh-repair-not-stale-superset.md",
+      "blob_sha": "a4d758b7d2663f10b8f33cd77738f330e10e8aa3",
+      "size": 5472
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/REPAIR-DISCIPLINE/SN-0949/IB-SMART-NOTE-20260930-sn0949-noop-merge-is-verdict-already-landed.md",
+      "blob_sha": "b9bd6b12b2de70c83ceaa297875342044803df1c",
+      "size": 7539
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/REPAIR-DISCIPLINE/SN-0968/IB-SMART-NOTE-20260930-sn0968-tree-identity-closes-the-question.md",
+      "blob_sha": "ea5857ca89578d0561fa02bf6c4177ef0a291b6c",
+      "size": 6204
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/REPAIR-DISCIPLINE/SN-0977/IB-SMART-NOTE-20260930-sn0977-remeasure-flagged-premise-before-repair.md",
+      "blob_sha": "660dca945544a78e72f4932af0c090a84b678a8f",
+      "size": 5824
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/REPAIR-STAND-DOWN/SN-0508/IB-SMART-NOTE-20260930-sn0508-stand-down-the-unpushed-repair.md",
       "blob_sha": "bfb2abfbcac49f2197aefcf11a933c7eb0f7f9c7",
       "size": 7345
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/REPAIR-STAND-DOWN/SN-0780/IB-SMART-NOTE-20261009-sn0780-close-opened-pr-when-the-merge-becomes-destructive.md",
+      "blob_sha": "99ea33f3510913da6862e14ebaf1c35e11d75a10",
+      "size": 6798
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/SHALLOW-CHECKOUT-EVIDENCE/SN-1002/IB-SMART-NOTE-20260930-sn1002-shallow-checkout-kills-receipt-gates.md",
+      "blob_sha": "0061aa9912b12f27d632cdffb326cdae76d27df8",
+      "size": 6964
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/SKIP-DISCIPLINE/SN-0105/IB-SMART-NOTE-20260930-sn0105-skip-with-reason-is-not-a-defect-blanket.md",
@@ -1156,9 +1356,19 @@
       "size": 7881
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/STEP-SWALLOW/SN-1057/IB-SMART-NOTE-20261012-sn1057-explicit-scope-branch-not-exit-zero.md",
+      "blob_sha": "6c1067a70595807b4caae4494bbed898474d728a",
+      "size": 5706
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/VERDICT-SHA-BINDING/SN-0574/IB-SMART-NOTE-20260930-sn0574-deploy-authorization-sha-bound.md",
       "blob_sha": "be176bc79ba8b6183b45e1267e8e213cb5c4ef11",
       "size": 6427
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/VERDICT-SHA-BINDING/SN-0668/IB-SMART-NOTE-20260930-sn0668-pipeline-verdict-per-tip-verdict-green-expires.md",
+      "blob_sha": "76371b72c0ba53f87d28d7573a13bc3473dc76b6",
+      "size": 6807
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/VERDICT-SHA-BINDING/SN-100/IB-SMART-NOTE-20260930-sn100-bulk-sweep-verdict-sha-binding.md",
@@ -1191,9 +1401,19 @@
       "size": 4746
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/COMPOUNDING-INTELLIGENCE/CAPTURE-RETAIN-SIMPLIFY/SN-0802/IB-SMART-NOTE-20260930-sn0802-capture-activates-immediately-user-directive-is-the-authorization.md",
+      "blob_sha": "d229015dbdf27989515dd57037deddf472851351",
+      "size": 5617
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/COMPOUNDING-INTELLIGENCE/PROMOTION-LOOP/SN-0628/IB-SMART-NOTE-20261008-sn0628-first-promotions-active.md",
       "blob_sha": "5e7157c59307ffe986314c2a3056bcc4920bf367",
       "size": 5714
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/COMPOUNDING-INTELLIGENCE/PROOF-LADDER/SN-0791/IB-SMART-NOTE-20261009-sn0791-proven-links-chain.md",
+      "blob_sha": "1cab9f4bc8cf7275cddabdc37c008bfc09676570",
+      "size": 3847
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CURRENT-ARCHITECTURAL-TRUTH/ORGANISM-COMPOSITION-AND-PROOF-FRONTIER/SN-0511/IB-SMART-NOTE-20260930-sn0511-one-canonical-runtime-kernel.md",
@@ -1204,6 +1424,36 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CURRENT-ARCHITECTURAL-TRUTH/ORGANISM-COMPOSITION-AND-PROOF-FRONTIER/SN-0530/IB-SMART-NOTE-20260930-sn0530-binding-requires-behavioral-contract.md",
       "blob_sha": "4bf9a734d62f002e932fed179f9493ab67d3181d",
       "size": 6838
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/DESIGN-CRAFT/CSS-ROBUSTNESS/SN-0738/IB-SMART-NOTE-20261008-sn0738-inline-design-tokens-structural-black-ground.md",
+      "blob_sha": "d0d8f6e6770ca6eb2cc6bb8028899f1f9b40bb62",
+      "size": 6352
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/DESIGN-CRAFT/FUSION-NOT-SELECTION/SN-0767/IB-SMART-NOTE-20261009-sn0767-fusion-not-selection.md",
+      "blob_sha": "8809953e73fcaf1f6e72a920786a0589768f6929",
+      "size": 4963
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/DESIGN-CRAFT/LAW-CODIFICATION/SN-0769/IB-SMART-NOTE-20261009-sn0769-design-laws-codified-in-library.md",
+      "blob_sha": "28aa48fc19dd63fb9e913e350ccedfc4ee61c6dc",
+      "size": 5307
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/DESIGN-CRAFT/SUBTRACTIVE-REFINEMENT/SN-0733/IB-SMART-NOTE-20260930-sn0733-tenx-better-human-experience-not-more-effects.md",
+      "blob_sha": "4a05faef01b403042dfa5cb01c54da8e51477d37",
+      "size": 5373
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/DESIGN-CRAFT/SUBTRACTIVE-REFINEMENT/SN-0734/IB-SMART-NOTE-20260930-sn0734-no-ego-reversion-restore-what-he-loved-verbatim.md",
+      "blob_sha": "17f81aed57ae6082cfe2002e36cc577afdba7d55",
+      "size": 5945
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/DESIGN-CRAFT/SUBTRACTIVE-REFINEMENT/SN-0759/IB-SMART-NOTE-20260930-sn0759-restraint-surgery-elegance-is-subtraction.md",
+      "blob_sha": "a680a6e2e3988866f1f85d1873531e081164400b",
+      "size": 7584
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/EARNED-INTELLIGENCE/LEARN-MATURITY-DIMENSIONS/SN-0546/IB-SMART-NOTE-20261007-sn0546-learned-is-not-mastered-governed-transition-per-level.md",
@@ -1229,6 +1479,11 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/EARNED-INTELLIGENCE/TRANSFER-TEST/SN-0474/IB-SMART-NOTE-20261006-sn0474-no-target-rule-cues-in-transfer-prompts.md",
       "blob_sha": "f8838a8fa9af3af42286544520451e2bcf18ecd4",
       "size": 2675
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/EARNED-INTELLIGENCE/TRANSFER-TEST/SN-0895/IB-SMART-NOTE-20261010-sn0895-learned-means-novel-battery-passes.md",
+      "blob_sha": "e40757c20f6972fa5c4dc3b977e5a932d8513733",
+      "size": 5595
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/EARNED-INTELLIGENCE/VERIFIED-EXPERIENCE/SN-006/IB-SMART-NOTE-20260930-sn006-earned-intelligence.md",
@@ -1271,9 +1526,49 @@
       "size": 3510
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/EARNED-INTELLIGENCE/VERIFIED-EXPERIENCE/SN-0871/IB-SMART-NOTE-20260930-sn0871-base-inherited-failure-diagnosis.md",
+      "blob_sha": "cf49ab36b2ab4547b8129f7401a988fc720d9ed6",
+      "size": 4719
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/EARNED-INTELLIGENCE/VERIFIED-EXPERIENCE/SN-0938/IB-SMART-NOTE-20260930-sn0938-control-arm-trial-design-discipline.md",
+      "blob_sha": "1b95cad66b390dd51056e75e619de9bb238da14f",
+      "size": 5516
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/EARNED-INTELLIGENCE/VERIFIED-EXPERIENCE/SN-1000/IB-SMART-NOTE-20260930-sn1000-receipt-gate-fetch-depth-zero.md",
+      "blob_sha": "68bf2a9d2836ae8266c3cf9101326c1bcc9fb72c",
+      "size": 6518
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/EARNED-INTELLIGENCE/VERIFIED-EXPERIENCE/SN-561/IB-SMART-NOTE-20260930-sn561-read-input-bytes-before-debugging-the-gate.md",
       "blob_sha": "f989171fa112fe595a20238833ba86ec15b79be6",
       "size": 6619
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/ADVERSARIAL-SCORING/SN-01070/IB-SMART-NOTE-20261012-sn1070-the-swallower-verdict-formulas-must-inspect-meaning.md",
+      "blob_sha": "1d0aeb0fb39dbc2151479092dc555ebebc44f53f",
+      "size": 8607
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/ADVERSARIAL-SCORING/SN-1073/IB-SMART-NOTE-20260930-sn1073-falsifier-close-out.md",
+      "blob_sha": "18427464866dff8592d37948e7845cafc079c186",
+      "size": 5433
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/ASSERTION-DISCIPLINE/SN-1058/IB-SMART-NOTE-20261012-sn1058-bound-plus-presence-not-equality.md",
+      "blob_sha": "284a54fdf7589c1a335395032928512475fcd2d1",
+      "size": 5678
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/BLINDED-EVALUATION/SN-1048/IB-SMART-NOTE-20261011-sn1048-audit-evidence-artifacts-not-just-pipeline.md",
+      "blob_sha": "039d56173ff0cccd406b93785230e58bed3b543d",
+      "size": 6374
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/CODE-IS-LAW/SN-0784/IB-SMART-NOTE-20261009-sn0784-builder-never-self-verifies.md",
+      "blob_sha": "df7b00ff5f6bd97e292fd8e74418648a86bbe916",
+      "size": 7612
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/CONTAINMENT-INTEGRITY/SN-081/IB-SMART-NOTE-20260930-sn081-containment-never-degrades-platform.md",
@@ -1284,6 +1579,26 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/DECISION-AUDIT-SEGREGATION/SN-047/IB-SMART-NOTE-20260930-sn047-audit-receipt-segregation.md",
       "blob_sha": "f1f77fcf1487fe6a1d87ba13d2dd2134c4f011dd",
       "size": 5889
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/EVIDENCE-DISCIPLINE/SN-0950/IB-SMART-NOTE-20260930-sn0950-merge-commit-sha-is-a-hypothetical-preview.md",
+      "blob_sha": "ede25803f5c845e7bec74ba1cfaf3a471e667d03",
+      "size": 7245
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/EVIDENCE-DISCIPLINE/SN-1088/IB-SMART-NOTE-20261012-sn1088-commit-parents-are-the-landing-record.md",
+      "blob_sha": "70ee111d3960ffbd607dfd3888d0cb00bca6496e",
+      "size": 4482
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/EVIDENCE-DISCIPLINE/SN-1092/IB-SMART-NOTE-20261012-sn1092-name-the-category-of-the-humans-edge-before-mechanizing.md",
+      "blob_sha": "4a65d54d950f150a8f052660859b1941ec45acbc",
+      "size": 7108
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/EVIDENCE-DISCIPLINE/SN-1103/IB-SMART-NOTE-20260930-sn1103-truncated-preview-fails-closed.md",
+      "blob_sha": "67cbc7f22f9326ffc711cbe8e828045e06eeccfc",
+      "size": 6324
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/EVIDENCE-IDENTITY/SN-0163/IB-SMART-NOTE-20260930-sn0163-continuity-note-mechanical-pr-close-reopen.md",
@@ -1316,9 +1631,39 @@
       "size": 6306
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/EVIDENCE-IDENTITY/SN-0792/IB-SMART-NOTE-20261009-sn0792-truthiness-is-not-binding.md",
+      "blob_sha": "aa7da6375b2c70dbbffedec3333cf3d9302c8225",
+      "size": 3671
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/EVIDENCE-IDENTITY/SN-082/IB-SMART-NOTE-20260930-sn082-execution-identity-not-content-identity.md",
       "blob_sha": "3bcf9c5f55a9ed9bdac1bd82cd3fbc340ae1ce1f",
       "size": 5462
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/EVIDENCE-IDENTITY/SN-0912/IB-SMART-NOTE-20260930-sn0912-evidence-bounded-uncertainty-propagation.md",
+      "blob_sha": "9b05f3dda2931e55ad0bebc00e9508da72d5b62d",
+      "size": 5276
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/EVIDENCE-IDENTITY/SN-0914/IB-SMART-NOTE-20260930-sn0914-selective-cache-invalidation-intelligence-preservation.md",
+      "blob_sha": "1f549f54a856eb046f1946476ed0a7f674b40691",
+      "size": 6300
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/EVIDENCE-IDENTITY/SN-0922/IB-SMART-NOTE-20260930-sn0922-stale-qualifications-not-republished.md",
+      "blob_sha": "2da69b5b766f2277b6e83a61e3dcb2b79b848c55",
+      "size": 6322
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/EVIDENCE-IDENTITY/SN-0984/IB-SMART-NOTE-20260930-sn0984-revocation-fence-must-bind-the-identity-not-the-revision.md",
+      "blob_sha": "14bd4109e064e8a8310f5b6dec523d23e8bb078a",
+      "size": 5241
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/EVIDENCE-IDENTITY/SN-1076/IB-SMART-NOTE-20260930-sn1076-the-pin-dies-when-the-head-moves.md",
+      "blob_sha": "e52750156eb41e577391cbee72db89e069c8f904",
+      "size": 6552
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/EVIDENCE-IMMUTABILITY/SN-0172/IB-SMART-NOTE-20260930-sn0172-never-prewrite-done-records.md",
@@ -1331,9 +1676,34 @@
       "size": 6218
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/FIXTURE-DISCIPLINE/SN-01071/IB-SMART-NOTE-20261012-sn1071-inconclusive-by-design-refuse-the-forced-fixture.md",
+      "blob_sha": "83cbdf68739a4ac1cbde38b64309422a379a2ddc",
+      "size": 9556
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/FUNDAMENTAL-LOOP/SN-025/IB-SMART-NOTE-20260930-sn025-two-bar-qualification.md",
       "blob_sha": "dd5f3f9cda2bc0bfc65aecc26c5bdc4008618c58",
       "size": 7435
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/GATE-IDENTITY/SN-1047/IB-SMART-NOTE-20261011-sn1047-gate-identity-model-must-match-real-roster.md",
+      "blob_sha": "4fc04c2882ec8068e47e943ef458b600a8f2d2f7",
+      "size": 6028
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/GUARD-FIDELITY/SN-1049/IB-SMART-NOTE-20261011-sn1049-guard-first-party-knowledge-must-mirror-imports.md",
+      "blob_sha": "8f6c6a38a2802fc8514d9f2b2e12e1df94f72dc0",
+      "size": 6503
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/HARNESS-ATTRIBUTION/SN-1050/IB-SMART-NOTE-20261011-sn1050-harness-catchall-maps-referenceerror-to-400.md",
+      "blob_sha": "1041c1df302133c1050b684fdf3fbe1948696a92",
+      "size": 7202
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/HARNESS-ATTRIBUTION/SN-1165/IB-SMART-NOTE-20260930-sn1165-their-code-or-my-code-against-pinned-bytes.md",
+      "blob_sha": "6f66a238234723cfc4ad7ca02503ce75adcc67e1",
+      "size": 4625
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/INDEPENDENT-VERIFICATION/SN-0103/IB-SMART-NOTE-20260930-sn0103-prove-memory-across-the-process-death-boundary.md",
@@ -1536,6 +1906,11 @@
       "size": 7537
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/INDEPENDENT-VERIFICATION/SN-0667/IB-SMART-NOTE-20260930-sn0667-verification-transfers-rebase-blob-identity.md",
+      "blob_sha": "f8c5b9074e3f9480a120b36cb9a299560805ca14",
+      "size": 6349
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/INDEPENDENT-VERIFICATION/SN-067/IB-SMART-NOTE-20260930-sn067-git-grep-pathspec-footgun.md",
       "blob_sha": "5f4b48564a6e61f55c749043ea9a30b9df33c5ce",
       "size": 6540
@@ -1569,6 +1944,11 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/INDEPENDENT-VERIFICATION/SN-079/IB-SMART-NOTE-20260930-sn079-withheld-certification-gate-hold.md",
       "blob_sha": "4ecc0faeea66c93372c7234d7bec22f669c7267b",
       "size": 5753
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/INDEPENDENT-VERIFICATION/SN-0793/IB-SMART-NOTE-20261009-sn0793-refuse-to-score-verification-layers.md",
+      "blob_sha": "4022d15421db05925ae48fd20b8cbd1302bd52ef",
+      "size": 4596
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/INDEPENDENT-VERIFICATION/SN-083/IB-SMART-NOTE-20260930-sn083-retain-unknown-with-named-missing-evidence.md",
@@ -1626,9 +2006,64 @@
       "size": 6433
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/INDEPENDENT-VERIFICATION/SN-1052/IB-SMART-NOTE-20261011-sn1052-consume-certified-results-dont-rerun.md",
+      "blob_sha": "01e534ee9d8385910a8d9d9fb06e1d48bc9fd843",
+      "size": 6442
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/INDEPENDENT-VERIFICATION/SN-1153/IB-SMART-NOTE-20260930-sn1153-revert-triad-independent-verification.md",
+      "blob_sha": "b2851764a05f4dd503aaa1c896804970e5c8ab5e",
+      "size": 6068
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/INDEPENDENT-VERIFICATION/SN-1164/IB-SMART-NOTE-20260930-sn1164-lineage-correction-recompute-before-reading-predecessor-numbers.md",
+      "blob_sha": "542daf3b0e548bfa9d1ebb3814e3b97237f2d51a",
+      "size": 4549
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/INDEPENDENT-VERIFICATION/SN-559/IB-SMART-NOTE-20260930-sn559-forge-coherent-inputs-not-garbage.md",
       "blob_sha": "b992f1ea2cf68fbcfaf24df0af708454566563dc",
       "size": 7224
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/INSTRUMENT-DESIGN/SN-1098/IB-SMART-NOTE-20260930-sn1098-silent-zero-zero-instrument-self-assertion.md",
+      "blob_sha": "63231e1747e2e53df891655fbc460b9f8ae9b731",
+      "size": 5504
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/INSTRUMENT-DESIGN/SN-1152/IB-SMART-NOTE-20260930-sn1152-git-scale-bounded-archaeology.md",
+      "blob_sha": "2109cb0d3ce3a2d94bd5be25a218d6bb0fced678",
+      "size": 5216
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/INSTRUMENT-HARDENING/SN-0786/IB-SMART-NOTE-20261009-sn0786-verification-instruments-must-be-total-functions.md",
+      "blob_sha": "1c1e097b2435c2aadb928418fbe9cc4003b7c845",
+      "size": 7270
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/INSTRUMENT-HARDENING/SN-0872/IB-SMART-NOTE-20261010-sn0872-regen-untracked-blind-spot.md",
+      "blob_sha": "5bcdfef9277cd4158f9eea9fc7dd18770a3af882",
+      "size": 4341
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/INSTRUMENT-HARDENING/SN-0885/IB-SMART-NOTE-20261010-sn0885-regen-sees-only-brain-scope-limit.md",
+      "blob_sha": "2d40cfa8340c1df0a9e679f1bb2680a432b90c04",
+      "size": 5528
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/INSTRUMENT-HARDENING/SN-0886/IB-SMART-NOTE-20261010-sn0886-provenance-stamp-scope-proof-pointers-read-only.md",
+      "blob_sha": "35e522d8ab1ca835651efeb8acdcafbe87c87e21",
+      "size": 5920
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/INSTRUMENT-HARDENING/SN-1102/IB-SMART-NOTE-20260930-sn1102-fail-silent-telemetry-instrument-cannot-corrupt.md",
+      "blob_sha": "f900ca37e2d77f4f8b9400abb1745ee575c85f6f",
+      "size": 6456
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/LESSON-INTEGRITY/SN-01067/IB-SMART-NOTE-20261012-sn1067-doctrines-first-subject-is-its-author.md",
+      "blob_sha": "9fb728807ef81a9316b03c1b19bc022ba76c2580",
+      "size": 6309
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/MEASUREMENT-BOUNDARY/SN-0161/IB-SMART-NOTE-20260930-sn0161-name-the-instrument-render-gap.md",
@@ -1671,6 +2106,26 @@
       "size": 8785
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/MEASUREMENT-BOUNDARY/SN-0772/IB-SMART-NOTE-20261009-sn0772-measure-the-raw-input.md",
+      "blob_sha": "dfb815c4f2a050f43c7bda9953cef8aea443956b",
+      "size": 4889
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/MEASUREMENT-BOUNDARY/SN-0979/IB-SMART-NOTE-20260930-sn0979-telemetry-stays-verdict-neutral.md",
+      "blob_sha": "67b60b90f9f2fe0d4636fc9dbbbb2ec511ac1b7e",
+      "size": 6208
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/NEGATIVE-PROOF/SN-1079/IB-SMART-NOTE-20261012-sn1079-absence-takes-two-witnesses.md",
+      "blob_sha": "9ffcc270bdea60cb1593838a94e5e65c959d1cbe",
+      "size": 6446
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/PROOF-HONESTY/SN-0771/IB-SMART-NOTE-20261009-sn0771-scope-your-hash-claims.md",
+      "blob_sha": "c2e6bdda962ad9ab853de6790ffe64daa876389a",
+      "size": 4750
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/PROTECTED-DOCUMENT-INTEGRITY/SN-0633/IB-SMART-NOTE-20261008-sn0633-bulk-merge-hollows-protected-document.md",
       "blob_sha": "317a73ae44ed1288bf60bfdc435e35b25ee3acbb",
       "size": 8762
@@ -1681,6 +2136,31 @@
       "size": 5990
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/SEAL-DISCIPLINE/SN-01065/IB-SMART-NOTE-20261012-sn1065-sealed-no-go-binds.md",
+      "blob_sha": "3da49f10b72caf5ca73bbc3efe07192b976c0439",
+      "size": 7268
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/SEAL-DISCIPLINE/SN-01068/IB-SMART-NOTE-20261012-sn1068-a-spent-seal-two-ceilings-close-the-mechanisms-question.md",
+      "blob_sha": "7f42fdc4ea97dd622ae6f0f0a2937c7d0c9c82bd",
+      "size": 9015
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/SEAL-DISCIPLINE/SN-1056/IB-SMART-NOTE-20261012-sn1056-seal-pin-format-gate.md",
+      "blob_sha": "a41d1bbd437bddd96d501445653a0ab92558a843",
+      "size": 6111
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/SEAL-DISCIPLINE/SN-1083/IB-SMART-NOTE-20261012-sn1083-growth-is-not-tamper.md",
+      "blob_sha": "63250af8f70652f2617b47022e04283519bc8548",
+      "size": 7558
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/SEAL-DISCIPLINE/SN-1157/IB-SMART-NOTE-20260930-sn1157-frozen-verdict-rule-outranks-doer.md",
+      "blob_sha": "b7ddabd6c6960de0930974ea98abbd47bb84e45f",
+      "size": 5767
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/TEST-DESIGN/SN-0512/IB-SMART-NOTE-20260930-sn0512-guard-liveness-ratchet-floor.md",
       "blob_sha": "7edd18aad6d5440f700b3e02aa7233c82dc35124",
       "size": 6019
@@ -1689,6 +2169,31 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/TEST-DESIGN/SN-0517/IB-SMART-NOTE-20260930-sn0517-stub-merely-close-masquerades-as-product-defect.md",
       "blob_sha": "e7c8dda7e7e3b09f114608e970821634ad76de5f",
       "size": 4377
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/TEST-DESIGN/SN-0939/IB-SMART-NOTE-20260930-sn0939-tests-that-cant-fail-are-theater.md",
+      "blob_sha": "c8bde25950ac8fd0a35e0c0d37be702a9ea9a042",
+      "size": 4978
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/TEST-DESIGN/SN-0978/IB-SMART-NOTE-20260930-sn0978-dormant-as-behavior-not-literal.md",
+      "blob_sha": "c82db4ea941e721f5534ef5c5190202b196f4183",
+      "size": 5432
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/TEST-DESIGN/SN-0985/IB-SMART-NOTE-20260930-sn0985-green-in-isolation-is-not-green-in-composition.md",
+      "blob_sha": "0b590d5466457351ddb1fd40156bfbb0664b3100",
+      "size": 6143
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/TEST-DESIGN/SN-1061/IB-SMART-NOTE-20261012-sn1061-exclusion-proven-per-ineligibility-class.md",
+      "blob_sha": "72ef5903f5fbcd4e85ee87eac38b68dd9b664291",
+      "size": 7141
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/TIP-PIN-RETRACTION/SN-1051/IB-SMART-NOTE-20261011-sn1051-mid-merge-transient-tip-claims-need-repin.md",
+      "blob_sha": "1ace97239c2716eb23e607fd72a34437a8c913d4",
+      "size": 6148
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/VERIFY-COVERAGE/SN-0283/IB-SMART-NOTE-20261004-sn0283-false-pass-surfaces.md",
@@ -1721,9 +2226,29 @@
       "size": 6550
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/VERIFY-COVERAGE/SN-0945/IB-SMART-NOTE-20260930-sn0945-crashing-guard-replicate-verdict.md",
+      "blob_sha": "7aff5960ab33ee2149466bff3217c412dbb31034",
+      "size": 6811
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/VERIFY-COVERAGE/SN-0948/IB-SMART-NOTE-20260930-sn0948-untested-fail-closed-claim-documentary.md",
+      "blob_sha": "7e5527053556c277a53470950dbbbc7b87fdc2ab",
+      "size": 6336
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/VERIFY-COVERAGE/SN-1081/IB-SMART-NOTE-20261012-sn1081-out-of-scope-is-not-a-pass.md",
+      "blob_sha": "390af9bc0a64db3a57b79419c902ec9bbd19de29",
+      "size": 7175
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/AUTHORITY-CONFLICT-PRESERVATION/SN-0209/IB-SMART-NOTE-20260930-sn0209-preserve-authority-conflict-no-guess-seam.md",
       "blob_sha": "e9bf4c904f545804696148b96aa8415c6a8b8afd",
       "size": 8389
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/AUTHORITY-CONFLICT-PRESERVATION/SN-0705/IB-SMART-NOTE-20261008-sn0705-direct-word-rule-candidate-never-overrides-direct-instruction.md",
+      "blob_sha": "e1870627328fa337aed487fe13ec35f77ca50ae4",
+      "size": 5636
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/AUTHORITY-ENVELOPE/SN-0104/IB-SMART-NOTE-20260930-sn0104-design-weight-decisions-not-settled-in-relay.md",
@@ -1816,9 +2341,39 @@
       "size": 3355
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/AUTHORITY-ENVELOPE/SN-0678/IB-SMART-NOTE-20261008-sn0678-workflow-modifications-surfaced-not-smuggled.md",
+      "blob_sha": "00b3718f0b59da7ba243d703bc6e2d20febbb6aa",
+      "size": 3348
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/AUTHORITY-ENVELOPE/SN-0774/IB-SMART-NOTE-20261009-sn0774-relay-confirms-bytes-never-decides-merge.md",
+      "blob_sha": "1ba489990c4ec753562b9a184915e04db2e0ed16",
+      "size": 5900
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/AUTHORITY-ENVELOPE/SN-0781/IB-SMART-NOTE-20261009-sn0781-relay-opener-recuses-from-review.md",
+      "blob_sha": "4a4b54103fc13510b27fd46620831abbaaf7439b",
+      "size": 6036
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/AUTHORITY-ENVELOPE/SN-0799/IB-SMART-NOTE-20260930-sn0799-unified-activation-gate.md",
+      "blob_sha": "aa0ae7d3039f3297d87354afa49632c4ab6b5795",
+      "size": 6738
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/AUTHORITY-ENVELOPE/SN-0843/IB-SMART-NOTE-20261009-sn0843-ratification-claim-not-machine-ratification.md",
+      "blob_sha": "54fda2481d145206956d3b4e4758f3011832e7ce",
+      "size": 5067
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/AUTHORITY-ENVELOPE/SN-560/IB-SMART-NOTE-20260930-sn560-stale-narrative-loses-to-ratified-law.md",
       "blob_sha": "590d570b0289522a9cb2825673a0981c15e81b58",
       "size": 7034
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/BLINDING-PROTOCOL/SN-01169/IB-SMART-NOTE-20260930-sn01169-blinding-is-a-protocol-not-an-intention.md",
+      "blob_sha": "29c728b034e3d15705c48a93ca80cc8ebec579df",
+      "size": 8588
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/BOARD-ALIGNMENT/SN-0109/IB-SMART-NOTE-20260930-sn0109-everything-on-554-standing-board-protocol.md",
@@ -1834,6 +2389,11 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/BOARD-ALIGNMENT/SN-0453/IB-SMART-NOTE-20261006-sn0453-modular-feeds-one-project-one-feed.md",
       "blob_sha": "05f920e15cedd1fd262ed96219961104d1a14a6f",
       "size": 1767
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/BOARD-VENUE-ROTATION/SN-1001/IB-SMART-NOTE-20260930-sn1001-not-every-403-is-a-rate-limit.md",
+      "blob_sha": "48eb613562790eb5f2e54e77f4974ff834c6f775",
+      "size": 5745
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/COLLISION-REGISTRY/SN-0115/IB-SMART-NOTE-20260930-sn0115-three-layer-collision-registry.md",
@@ -1936,6 +2496,11 @@
       "size": 7670
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/CRASH-RECOVERY/SN-0919/IB-SMART-NOTE-20260930-sn0919-crash-safe-governance-recovery.md",
+      "blob_sha": "c0bebad5fb352580bc1e19ae98f3998a6b6ffc3b",
+      "size": 12148
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/DEMO-INTEGRITY/SN-0191/IB-SMART-NOTE-20260930-sn0191-repo-is-the-demo-freeze-point-protocol.md",
       "blob_sha": "612d743f248d81fd1aafa437542a0509cafe65d1",
       "size": 5136
@@ -1981,6 +2546,31 @@
       "size": 6827
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/DOCUMENT-AUTHORITY/SN-0952/IB-SMART-NOTE-20260930-sn0952-authority-must-fail-closed.md",
+      "blob_sha": "220373cdab5268ad478ac69cbda28aae5d3ec688",
+      "size": 8401
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/DUPLICATE-RESOLUTION/SN-0920/IB-SMART-NOTE-20260930-sn0920-no-ego-merge.md",
+      "blob_sha": "02afef348a597cdb6126c2b4fa11b38a80af1635",
+      "size": 7660
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/DUPLICATE-RESOLUTION/SN-1091/IB-SMART-NOTE-20261012-sn1091-duplicate-dispatch-silence.md",
+      "blob_sha": "b9a1a2a3475dded4d6e699cce11d6a368a7a2cd7",
+      "size": 6038
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/DUPLICATE-RESOLUTION/SN-1166/IB-SMART-NOTE-20260930-sn1166-superseded-means-strictly-superior-replacement.md",
+      "blob_sha": "b5dd18978b1b0d77dacbe0dfec8c89d9bd86e399",
+      "size": 4512
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/ENFORCEMENT-DESIGN/SN-1156/IB-SMART-NOTE-20260930-sn1156-enforcement-served-answer-point.md",
+      "blob_sha": "4487c3071879cac04859a95c78eb5021112b776a",
+      "size": 7572
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/EVIDENCE-DISCIPLINE/SN-0451/IB-SMART-NOTE-20260930-sn0451-audit-the-authority-text-itself.md",
       "blob_sha": "7d59a74e4615f89989448f9232939dd280b5e8d1",
       "size": 1571
@@ -1989,6 +2579,36 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/EVIDENCE-DISCIPLINE/SN-0458/IB-SMART-NOTE-20261006-sn0458-second-source-rule.md",
       "blob_sha": "604d5cb88ca8cbad4f3f83ec5f549cf8e3ec1567",
       "size": 5038
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/EVIDENCE-DISCIPLINE/SN-0803/IB-SMART-NOTE-20260930-sn0803-subtract-not-defend-correct-the-packet-in-the-same-turn.md",
+      "blob_sha": "1850e31f5494bf84c86093c537be87f059e7801d",
+      "size": 5290
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/EVIDENCE-DISCIPLINE/SN-0876/IB-SMART-NOTE-20261010-sn0876-honest-elevation-backfill-never-fabrication.md",
+      "blob_sha": "009df69567bdc973df4513533ce3534a8d917404",
+      "size": 6737
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/EVIDENCE-DISCIPLINE/SN-0928/IB-SMART-NOTE-20260930-sn0928-summaries-carry-their-non-claims.md",
+      "blob_sha": "2a79a514a04399438ae8125768891f9445ac195b",
+      "size": 10529
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/EVIDENCE-DISCIPLINE/SN-0930/IB-SMART-NOTE-20260930-sn0930-convergence-is-not-identity-check-before-you-call-two-artifacts-the-same.md",
+      "blob_sha": "8ff826aab57e38af43c780af3bf0d4df73979b2b",
+      "size": 10498
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/EVIDENCE-DISCIPLINE/SN-0969/IB-SMART-NOTE-20260930-sn0969-anchor-the-evidence-window-to-the-event.md",
+      "blob_sha": "549ff65ca08b11f0106e3d40b5ceb8d5d15d83fc",
+      "size": 6271
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/FAIL-CLOSED-CLAIM-GATES/SN-1162/IB-SMART-NOTE-20260930-sn1162-claim-gates-key-on-authorship-not-tree-presence.md",
+      "blob_sha": "341089c0ce52f3677d18a0d9b0dfdc3e5bb9c798",
+      "size": 5275
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/FREEZE-DISCIPLINE/SN-0206/IB-SMART-NOTE-20260930-sn0206-frozen-sha-judges-anchor.md",
@@ -2001,9 +2621,39 @@
       "size": 7720
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/FREEZE-DISCIPLINE/SN-0926/IB-SMART-NOTE-20260930-sn0926-freeze-breaches-published-watch-caught.md",
+      "blob_sha": "8988b803faf3f6c642412f405a02eb3b9867fdda",
+      "size": 9589
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/FREEZE-DISCIPLINE/SN-0932/IB-SMART-NOTE-20260930-sn0932-retroactive-review-closes-the-breach-on-the-record-the-defects-stay-open.md",
+      "blob_sha": "09f05eaf94cea0c2bd54d3601ce47d2fcdf53afe",
+      "size": 13409
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/GATE-OWNERSHIP/SN-0383/IB-SMART-NOTE-20260930-sn0383-external-check-red-route-to-canonical-owner.md",
       "blob_sha": "4a21ed6019c97a4c762a6074416a9dca74a9d8ad",
       "size": 3612
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/GATE-OWNERSHIP/SN-0680/IB-SMART-NOTE-20260930-sn0680-a-workflow-file-write-is-a-workflow-file-write.md",
+      "blob_sha": "78158855a088bfe0861adc29b0c9dd2b37fa2798",
+      "size": 4139
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/GATE-OWNERSHIP/SN-0800/IB-SMART-NOTE-20260930-sn0800-incidental-guard-1998-rejected.md",
+      "blob_sha": "b85996c3ae0b611760f6b1a792784bfc941366af",
+      "size": 6658
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/GATE-OWNERSHIP/SN-0931/IB-SMART-NOTE-20260930-sn0931-gate-machinery-is-the-highest-trust-tier-workflow-files-run-the-checks.md",
+      "blob_sha": "8624ad121bb5e7f5c17084e2ce94ccb7993123d8",
+      "size": 11495
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/GATE-OWNERSHIP/SN-0951/IB-SMART-NOTE-20260930-sn0951-readiness-is-never-once-and-done.md",
+      "blob_sha": "8b35384be61d4297581f84ddc835f672d2dd068b",
+      "size": 7518
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/ITERATION-DISCIPLINE/SN-0153/IB-SMART-NOTE-20260930-sn0153-iteration-law-contract-closure.md",
@@ -2014,6 +2664,11 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/ITERATION-DISCIPLINE/SN-0201/IB-SMART-NOTE-20260930-sn0201-repair-consolidation-repoint-not-duplicate.md",
       "blob_sha": "592612f15e7df155c29a7d1ce15aca873d4d461a",
       "size": 6316
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/LANE-COORDINATION/DISPATCH-DESIGN/SN-1097/IB-SMART-NOTE-20260930-sn1097-dispatch-premises-are-hypotheses.md",
+      "blob_sha": "b9b78bf2e147ce1852a40cc48fef14b86ddea280",
+      "size": 5080
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/LANE-COORDINATION/SN-0426/IB-SMART-NOTE-20260930-sn0426-relay-receipt-corroborate-live-bytes-not-prose.md",
@@ -2036,6 +2691,26 @@
       "size": 4084
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/LANE-COORDINATION/SN-0672/IB-SMART-NOTE-20261008-sn0672-queue-discipline-nothing-jumps-the-line.md",
+      "blob_sha": "605ca746e825c7a67be69fcfb46c216b8bccd0ae",
+      "size": 4005
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/LANE-COORDINATION/SN-0773/IB-SMART-NOTE-20261009-sn0773-relayed-pr-open-pin-claimed-head.md",
+      "blob_sha": "ee0ae586eff1225b81745b20a9ae834b96e43f24",
+      "size": 5401
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/LANE-COORDINATION/SN-0971/IB-SMART-NOTE-20260930-sn0971-tell-your-watchers-about-your-pushes.md",
+      "blob_sha": "7f2942fc4c5c74b3178424bf379f8b694569235e",
+      "size": 7254
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/LANE-COORDINATION/SN-1090/IB-SMART-NOTE-20261012-sn1090-dead-claim-timeout.md",
+      "blob_sha": "d73a9111199eec104f1058a9b39dd1d00e6c9f70",
+      "size": 5710
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/LAW-IS-CODE/SN-0435/IB-SMART-NOTE-20261005-sn0435-last-mile-of-law-wired-not-written.md",
       "blob_sha": "aa6ee60d48963a2f1aaaa87c9d2344469a6b1992",
       "size": 7093
@@ -2049,6 +2724,96 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/LAW-IS-CODE/SN-0529/IB-SMART-NOTE-20260930-sn0529-show-dont-tell-machine-law-directive.md",
       "blob_sha": "fb2fabb1306b8f041a26b9332762fe7aef039da1",
       "size": 6820
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/LAW-IS-CODE/SN-0770/IB-SMART-NOTE-20261009-sn0770-make-the-law-true.md",
+      "blob_sha": "89d27d41388bb1ef3db5111dc25eb63e58e61613",
+      "size": 4977
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/LAW-IS-CODE/SN-0925/IB-SMART-NOTE-20260930-sn0925-documents-dont-change-behavior-only-machinery-does.md",
+      "blob_sha": "fe400ab2b6a454f1fd3a7dac0196276e82426b79",
+      "size": 8200
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/LAW-IS-CODE/SN-0940/IB-SMART-NOTE-20260930-sn0940-built-as-code-means-enforced-as-code.md",
+      "blob_sha": "aeaa8ea8f42ceb7302d14cb5f0aa04abe9a9ef84",
+      "size": 4663
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/LAW-IS-CODE/SN-0947/IB-SMART-NOTE-20260930-sn0947-live-board-law-machine-gates-point-live.md",
+      "blob_sha": "5ac5928a21a16ac9cecb953a134b5dddbe0ec2f2",
+      "size": 7225
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/LAW-IS-CODE/SN-0966/IB-SMART-NOTE-20260930-sn0966-documentation-is-not-runtime-enforcement.md",
+      "blob_sha": "f63f7a56dbf1a79f9b33771e003a993a287c18a2",
+      "size": 6799
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/LAW-IS-CODE/SN-0973/IB-SMART-NOTE-20260930-sn0973-gate7-registry-blind-spot-false-clear.md",
+      "blob_sha": "57d79d0648b0471d209e51fec954cb91e0f65232",
+      "size": 6528
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/LAW-IS-CODE/SN-0974/IB-SMART-NOTE-20260930-sn0974-choke-point-enforcement-no-separate-wire.md",
+      "blob_sha": "a14a0a3bbd2de627b8fd4ffc2bb55e0c121cbfd1",
+      "size": 6389
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/LAW-IS-CODE/SN-0976/IB-SMART-NOTE-20260930-sn0976-empty-parse-fail-loud.md",
+      "blob_sha": "3596a8d9015aab6acb24e45fd85320f2c249afd9",
+      "size": 7397
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/LAW-IS-CODE/SN-1011/IB-SMART-NOTE-20260930-sn1011-standing-law-gates-run-pre-merge.md",
+      "blob_sha": "976d2299b2b1c01a5235885439864582c0a6fb25",
+      "size": 7418
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/MERGE-AUTHORITY/SN-01063/IB-SMART-NOTE-20261012-sn1063-three-pass-structure-is-the-receipt.md",
+      "blob_sha": "ae8cd596d0ebb1907127ec02c06ee2d39445e37a",
+      "size": 7082
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/MERGE-AUTHORITY/SN-01064/IB-SMART-NOTE-20261012-sn1064-breach-verdicts-carry-danger-class.md",
+      "blob_sha": "d0ad59c58deea3203ec2fb357797e561c7fd6db3",
+      "size": 8511
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/MERGE-AUTHORITY/SN-01075/IB-SMART-NOTE-20261012-sn1075-author-lane-cannot-be-its-own-second-seat.md",
+      "blob_sha": "96d5a55ade7eac968e52fab1093b2212993a5470",
+      "size": 6554
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/MERGE-AUTHORITY/SN-0923/IB-SMART-NOTE-20260930-sn0923-vigilance-law.md",
+      "blob_sha": "b7b7ff26d42ee3905b18d6fa8b4ab970adc53b3d",
+      "size": 6093
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/MERGE-AUTHORITY/SN-0924/IB-SMART-NOTE-20260930-sn0924-gate-must-clear-its-own-bar.md",
+      "blob_sha": "2ccab1219fcea05d140e1372de3caf3e602070c1",
+      "size": 7364
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/MERGE-AUTHORITY/SN-0956/IB-SMART-NOTE-20261011-sn0956-governance-receipt-is-part-of-merge.md",
+      "blob_sha": "5aff30d016a179ddd9189bb439a858894526a8da",
+      "size": 6267
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/MERGE-AUTHORITY/SN-1059/IB-SMART-NOTE-20261012-sn1059-invalid-authority-revert-by-default.md",
+      "blob_sha": "68dc0b0049d1505543490855398e668a38b76b5f",
+      "size": 6869
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/MERGE-AUTHORITY/SN-1077/IB-SMART-NOTE-20260930-sn1077-action-time-verification-is-not-the-receipt.md",
+      "blob_sha": "f53f331b8b17012d11acdaa31cc62cb13c04225f",
+      "size": 7817
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/MERGE-AUTHORITY/SN-1085/IB-SMART-NOTE-20261012-sn1085-never-close-what-you-cannot-prove-superseded.md",
+      "blob_sha": "9fc781c1a237cfad65da91f5e1ba55c18443b7a0",
+      "size": 5950
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/MIGRATION-HISTORY-INTEGRITY/SN-0208/IB-SMART-NOTE-20260930-sn0208-ledgered-migrations-immutable.md",
@@ -2101,6 +2866,11 @@
       "size": 6626
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-0869/IB-SMART-NOTE-20260930-sn0869-regenerate-never-side-pick.md",
+      "blob_sha": "3ec1b3b84db30b8155595b3832a35273ffb3794b",
+      "size": 5551
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-DOCTRINE/SN-0183/IB-SMART-NOTE-20260930-sn0183-learn-then-ten-x.md",
       "blob_sha": "a1fc6fec9b4e85d48c64df980c67df6627b1a4bf",
       "size": 4253
@@ -2136,6 +2906,26 @@
       "size": 7008
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-DOCTRINE/SN-0929/IB-SMART-NOTE-20260930-sn0929-the-mirror-ritual-name-it-fix-it-structure-it.md",
+      "blob_sha": "dd44c366004563dcc5fc5144fa0771e3b21639f5",
+      "size": 10984
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-DOCTRINE/SN-0934/IB-SMART-NOTE-20260930-sn0934-placed-is-not-law-no-lane-declares-hierarchy-unilaterally.md",
+      "blob_sha": "45f77c7ef307387d491ee786a594a1eed4497127",
+      "size": 5841
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-DOCTRINE/SN-0944/IB-SMART-NOTE-20261010-sn0944-math-doesnt-create-intelligence-we-are-intelligent.md",
+      "blob_sha": "0f321d0673870164e972c23830394211d7c8021b",
+      "size": 7528
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-DOCTRINE/SN-0953/IB-SMART-NOTE-20261010-sn0953-verification-is-not-authorization-scorecard-and-review-authorize.md",
+      "blob_sha": "480d6d8f2a7b12d99203d6e269c28cb96b56eec1",
+      "size": 3398
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/OWNERSHIP-MAP/SN-0159/IB-SMART-NOTE-20260930-sn0159-one-question-one-owner.md",
       "blob_sha": "215dee5a19f97cba2b76417a27d90bfa9d4cca40",
       "size": 6216
@@ -2154,6 +2944,11 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/PRIME-JUDGMENT/SN-016/IB-SMART-NOTE-20260930-sn016-prime-judgment-rule.md",
       "blob_sha": "f9d64da3f0e0537cbf271a62f8d6587ce7babaeb",
       "size": 10790
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/PRIME-JUDGMENT/SN-0870/IB-SMART-NOTE-20260930-sn0870-draft-label-tooling-artifact.md",
+      "blob_sha": "62aed34f77ca765ac9eeb110e1850d7bcdcabc04",
+      "size": 6600
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/PRIORITY-ONE/SN-0252/IB-SMART-NOTE-20261004-sn252-priority-one-deliberation-arc.md",
@@ -2181,6 +2976,51 @@
       "size": 10894
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/PROOF-HONESTY/FALSIFICATION-PROTOCOL/SN-1099/IB-SMART-NOTE-20260930-sn1099-seal-before-run-freeze-the-miss.md",
+      "blob_sha": "a25ed43bb9fe8eb3478b18b5f51ba1dca1700e9b",
+      "size": 6355
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/PROOF-HONESTY/SN-0913/IB-SMART-NOTE-20260930-sn0913-selective-evidence-revocation-claim-requalification.md",
+      "blob_sha": "6bea92195a06b085f1721d3ba5ed0c9a32e59b21",
+      "size": 5527
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/PROOF-HONESTY/SN-0943/IB-SMART-NOTE-20261010-sn0943-sign-off-without-demonstrated-understanding-is-fabricated-pass.md",
+      "blob_sha": "a46fb7e42233f5ee659d113c3eee4b90cc0e2422",
+      "size": 6801
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/PROOF-HONESTY/SN-0954/IB-SMART-NOTE-20261010-sn0954-format-valid-is-not-bound-forgeable-blob-sha-claim.md",
+      "blob_sha": "194a9eca8969c20a8e6a521d4175ee146bc58b9c",
+      "size": 3853
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/PROOF-HONESTY/SN-0965/IB-SMART-NOTE-20260930-sn0965-ratification-evidence-standard.md",
+      "blob_sha": "d5b4c126698ba377fcf816cad0249300c52c2f68",
+      "size": 7824
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/PROOF-HONESTY/SN-0975/IB-SMART-NOTE-20260930-sn0975-status-promotion-evidence-tool.md",
+      "blob_sha": "b311d0492a56d5ab4d7af5d5898e0bd2f3eec0ed",
+      "size": 6702
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/PROOF-HONESTY/SN-0980/IB-SMART-NOTE-20260930-sn0980-replacement-gate-earns-adoption-through-same-negative-controls.md",
+      "blob_sha": "a8b3eaf9023c6bc6cecf150ba4178f5f1d0d09af",
+      "size": 4803
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/PROOF-HONESTY/SN-1089/IB-SMART-NOTE-20261012-sn1089-state-the-real-number-never-just-the-framing.md",
+      "blob_sha": "7f8f2e06740e7e44f9e14c4f9567a4c757e7c793",
+      "size": 5753
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/PROOF-HONESTY/SN-1093/IB-SMART-NOTE-20261012-sn1093-replay-counter-principle-column-load-bearing.md",
+      "blob_sha": "af9d390303842477c69a61d47822c51dd95ba931",
+      "size": 7091
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/PUBLIC-PROMISE-BOUNDARY/SN-0126/IB-SMART-NOTE-20260930-sn0126-the-shawn-bar-no-tradeoffs.md",
       "blob_sha": "5f945a2a69251f51e477a7b4c696fe73c303cd4d",
       "size": 7510
@@ -2196,6 +3036,26 @@
       "size": 3932
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/RECEIPT-HONESTY/SN-0674/IB-SMART-NOTE-20261008-sn0674-attribution-covenant-cuts-both-ways.md",
+      "blob_sha": "42b41e4d4dc3f2f832aee483e485b9dd3ddf4e65",
+      "size": 5829
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/RECEIPT-HONESTY/SN-0874/IB-SMART-NOTE-20261010-sn0874-merge-landing-classification.md",
+      "blob_sha": "ae113283b62a8a2362f6dbee4441788fba858eaa",
+      "size": 5968
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/RECEIPT-HONESTY/SN-0981/IB-SMART-NOTE-20260930-sn0981-retract-wrong-receipts-on-the-record.md",
+      "blob_sha": "a4999fec558bd0dd9eee11a40d6db6834a628a91",
+      "size": 4744
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/SCOPE-EVOLUTION/SN-0918/IB-SMART-NOTE-20260930-sn0918-race-safe-scope-governance.md",
+      "blob_sha": "5ac5f64f7fd418590664ff278efdb8e455d87c7d",
+      "size": 10177
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/SECURITY-POSTURE/SN-0455/IB-SMART-NOTE-20260930-sn0455-live-security-advisor-evidence.md",
       "blob_sha": "071d8bdfddfd053b581a8567d2ca2eecbe2a2aec",
       "size": 5244
@@ -2204,6 +3064,11 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/SELF-BINDING/SN-0199/IB-SMART-NOTE-20260930-sn0199-executor-personal-binding-oath.md",
       "blob_sha": "966ba70a8057915bf4e8a8e592fe6a50abf5dae2",
       "size": 4876
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/WATCHER-INTEGRITY/SN-01066/IB-SMART-NOTE-20261012-sn1066-missed-breach-is-a-second-breach.md",
+      "blob_sha": "b42c10aaa0f0d1b748633ab134938427955055db",
+      "size": 6877
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/HUMAN-ARCHITECTURE/NO-RECONSTRUCTION/SN-008/IB-SMART-NOTE-20260930-sn008-human-reconstruction-failure.md",
@@ -2241,6 +3106,26 @@
       "size": 8557
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/LEARNING-PIPELINE/CAPTURE-DESIGN/SN-0927/IB-SMART-NOTE-20260930-sn0927-filing-useless-without-learning.md",
+      "blob_sha": "b9ff4b2981d371ec6365abf35580bbcef1c870f1",
+      "size": 8290
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/LEARNING-PIPELINE/INGESTION-CHANNEL-DISCIPLINE/SN-0763/IB-SMART-NOTE-20260930-sn0763-ingestion-channel-discipline.md",
+      "blob_sha": "882354692d5a70ed45413ed25d4c0fd96ec1c67c",
+      "size": 4399
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/LEARNING-PIPELINE/PROOF-VALIDITY/SN-0788/IB-SMART-NOTE-20261009-sn0788-stubbed-trial-does-not-prove-production-rung.md",
+      "blob_sha": "3d84c34d06fd97882e31c2f48248f3623c2c2565",
+      "size": 7398
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/LEARNING-PIPELINE/PROOF-VALIDITY/SN-1101/IB-SMART-NOTE-20260930-sn1101-f1-is-earned-calibration-cells-are-hypotheses.md",
+      "blob_sha": "23812c41f48334b7f301f3bb4a2a6db1f549807f",
+      "size": 6786
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/LEARNING-PIPELINE/REGISTRY-DISCIPLINE/SN-0431/IB-SMART-NOTE-20261006-sn0431-register-at-ingest-time.md",
       "blob_sha": "42bb7d0fb39fbb81c3334f6317b40284f20f0b7d",
       "size": 6119
@@ -2251,9 +3136,44 @@
       "size": 8940
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/LEARNING-PIPELINE/REGISTRY-DISCIPLINE/SN-0777/IB-SMART-NOTE-20261009-sn0777-registration-is-not-execution-commit-proof-needs-runtime.md",
+      "blob_sha": "e4273a1f85df5351543017e76056c6faabb3061c",
+      "size": 6986
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/LEARNING-PIPELINE/REGISTRY-DISCIPLINE/SN-0778/IB-SMART-NOTE-20261009-sn0778-never-backfill-runtime-issued-receipts-fabrication.md",
+      "blob_sha": "82e85a0611fab41566b49733a8f37e3aa3c0e20d",
+      "size": 6200
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/LEARNING-PIPELINE/REGISTRY-DISCIPLINE/SN-0917/IB-SMART-NOTE-20260930-sn0917-share-estimates-never-borrow-proof.md",
+      "blob_sha": "1abc00091b75314c0b979aebefc31da72832c2da",
+      "size": 4737
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/LEARNING-PIPELINE/RETRIEVAL-DISCRIMINABILITY/SN-0824/IB-SMART-NOTE-20261009-sn0824-retrieval-rank-applicability-triggers.md",
+      "blob_sha": "f2b4d8a1c730f5e0c32f2e1f593b79a641864ffa",
+      "size": 5066
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/LEARNING-PIPELINE/RETRIEVAL-DISCRIMINABILITY/SN-0873/IB-SMART-NOTE-20261010-sn0873-retrieval-structural-ceiling.md",
+      "blob_sha": "e84b2ee5b2ef95ce997f323acf4058de7ce861ca",
+      "size": 6580
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/LEARNING/INHERITANCE/SN-01062/IB-SMART-NOTE-20261012-sn1062-says-not-does-text-inheritance-cold-boundary.md",
+      "blob_sha": "7be870962695459df5da65590750a1fcd1b62b19",
+      "size": 6796
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/MEMORY-DISCIPLINE/CORRECT-FORGETTING/SN-009/IB-SMART-NOTE-20260930-sn009-correct-forgetting.md",
       "blob_sha": "211e5461e130e75afed3a46319e36ad6ce8fabc0",
       "size": 5193
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/MEMORY-DISCIPLINE/CORRECT-FORGETTING/SN-0679/IB-SMART-NOTE-20261008-sn0679-fix-recurring-definition-not-report.md",
+      "blob_sha": "611ffbe4ef3b48dfa4285e33d095e2d8de0cdf4a",
+      "size": 3736
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/NAYA-STANDING-LAW/ACT-FIRST-AUTONOMY/SN-004/IB-SMART-NOTE-20260929-sn004-shawn-standing-law-r2.md",
@@ -2301,6 +3221,11 @@
       "size": 6599
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATING-MODE/AUTOMATED-LOOP-DISCIPLINE/SN-0982/IB-SMART-NOTE-20260930-sn0982-fact-correction-propagation-tail.md",
+      "blob_sha": "ed8379b1c0250d53653b8cdee6c63601db1afc76",
+      "size": 4780
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATING-MODE/BLUEPRINT-BEFORE-BUILD/SN-0140/IB-SMART-NOTE-20260930-sn0140-blueprint-before-build.md",
       "blob_sha": "e25052318b5b1d20dfb85f7419d66cca4fb93b7a",
       "size": 8077
@@ -2329,6 +3254,16 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATING-MODE/DECISION-EFFICIENCY/SN-056/IB-SMART-NOTE-20260930-sn056-evidence-beats-scoring-reversal.md",
       "blob_sha": "b2a6e4ce7dae0078ed1ceac27afba109cce1d095",
       "size": 7475
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATING-MODE/DECISION-EFFICIENCY/SN-0826/IB-SMART-NOTE-20261009-sn0826-thin-slice-fallback-one-complete-loop.md",
+      "blob_sha": "8ea446dd2c6f4defe3c2d221f3d914fca908d8a6",
+      "size": 4198
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATING-MODE/DECISION-EFFICIENCY/SN-0941/IB-SMART-NOTE-20261010-sn0941-stale-ask-verify-not-redo.md",
+      "blob_sha": "c3c32d0cc24eb61b6e116e04966d59fa1447d96a",
+      "size": 6078
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATING-MODE/DIRECT-LANE-COLLABORATION/SN-0108/IB-SMART-NOTE-20260930-sn0108-one-change-one-pr-duplicate-ownership-collision.md",
@@ -2401,9 +3336,29 @@
       "size": 6333
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATING-MODE/DIRECT-LANE-COLLABORATION/SN-0933/IB-SMART-NOTE-20260930-sn0933-finish-and-transfer-mid-flight-collision-resolution.md",
+      "blob_sha": "59b44ada42b9b33a6b1e18f0de7b5773b00cca99",
+      "size": 5867
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATING-MODE/EVIDENCE-PERSISTENCE/SN-0936/IB-SMART-NOTE-20260930-sn0936-verification-trees-durable-paths.md",
+      "blob_sha": "bba9fe98bfb8bd00da680297f215ca00f60ab1cf",
+      "size": 5190
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATING-MODE/LOOP-EXHAUSTION-DISCIPLINE/SN-032/IB-SMART-NOTE-20260930-sn032-loop-exhaustion-discipline.md",
       "blob_sha": "014c4873f22c9543ad70d759ac8f0b33bac8b32a",
       "size": 5459
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATING-MODE/PLAN-PREMISE/SN-01069/IB-SMART-NOTE-20261012-sn1069-the-brief-is-a-hypothesis-re-verify-the-premise-at-action-time.md",
+      "blob_sha": "3c656e6f74631966ca3ac4109945b107923a016a",
+      "size": 8027
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATING-MODE/REALITY-BEFORE-REPAIR/SN-1158/IB-SMART-NOTE-20260930-sn1158-never-invent-work-defect-gone-on-tip.md",
+      "blob_sha": "88ba37f169b11e1af847b2a82b99a2cab944112c",
+      "size": 5502
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATING-MODE/SEAT-REDIRECTION-ON-HOLD/SN-0210/IB-SMART-NOTE-20260930-sn0210-redirect-held-seat-to-verification-gate.md",
@@ -2414,6 +3369,26 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATING-MODEL/IDENTITY-AUTHORITY-INTELLIGENCE-VALUE/SN-012/IB-SMART-NOTE-20260930-sn012-nayapower-operating-model.md",
       "blob_sha": "61932fb050bac12464f12220f2dff896c6cf8c42",
       "size": 12841
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATIONS/API-DISCIPLINE/SN-0892/IB-SMART-NOTE-20261010-sn0892-rate-limit-hard-stop.md",
+      "blob_sha": "2dcd741b8e6e89145dd229ba1bc2800a93de567f",
+      "size": 3755
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATIONS/BRANCH-HYGIENE/SN-0890/IB-SMART-NOTE-20261010-sn0890-cleanup-needs-anti-regrowth-mechanism.md",
+      "blob_sha": "7357da8e1d987c1b0fa71fb6528f686e4e6d1d86",
+      "size": 3032
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATIONS/COORDINATION-DESIGN/SN-01171/IB-SMART-NOTE-20260930-sn1171-tenth-recurrence-mechanism-not-prose.md",
+      "blob_sha": "a285c4d26b45636f6295f467660bddb0ba68861a",
+      "size": 6318
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATIONS/COORDINATION-DESIGN/SN-0896/IB-SMART-NOTE-20261010-sn0896-transient-state-travels-light.md",
+      "blob_sha": "1fd17aa7f9d6e96601d413a5068101e369800d98",
+      "size": 5061
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATIONS/DELEGATION-FALLBACK/SN-0326/IB-SMART-NOTE-20260930-sn0326-delegation-timeout-direct-execution.md",
@@ -2431,9 +3406,24 @@
       "size": 5165
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATIONS/MEASUREMENT-HYGIENE/SN-0893/IB-SMART-NOTE-20261010-sn0893-correct-derived-never-raw.md",
+      "blob_sha": "1f56ed249ce27c102f237136871926839734cd8a",
+      "size": 3853
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATIONS/PROMOTION-GATES/SN-0629/IB-SMART-NOTE-20261008-sn0629-promotion-run-failure-not-the-verdict.md",
       "blob_sha": "34f2e6eedef92e56f142a89ecbec621d58c4f549",
       "size": 5920
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATIONS/PROMOTION-GATES/SN-0723/IB-SMART-NOTE-20261008-sn0723-superseded-tip-race-silent-failure-receipt.md",
+      "blob_sha": "3300428737473b2eb30121a0f2da2daa070c050d",
+      "size": 7330
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATIONS/REPORTING-USEFULNESS/SN-0785/IB-SMART-NOTE-20261009-sn0785-usefulness-gate-reporting.md",
+      "blob_sha": "71259008228ae64b9a07406b3407eb812d5d85d8",
+      "size": 6484
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATIONS/SHARED-BRANCH-DISCIPLINE/SN-0202/IB-SMART-NOTE-20260930-sn0202-occupied-branch-reanchor-before-building.md",
@@ -2456,6 +3446,16 @@
       "size": 3873
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/PRODUCT-VISION/OPERATING-SYSTEM-VISION/SN-0741/IB-SMART-NOTE-20261008-sn0741-os-vision-smart-notes-blocks-intelligent-blocks.md",
+      "blob_sha": "4f176f05c2f4e6e6a6b7033092ddf68fe51d63fc",
+      "size": 7258
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/PRODUCT-VISION/OPERATING-SYSTEM-VISION/SN-0768/IB-SMART-NOTE-20261009-sn0768-no-mission-control-pivot.md",
+      "blob_sha": "0fa23c972fe669f3e957dfb7ad7ebffc01fdb52b",
+      "size": 4485
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SMART-NOTE-REFINEMENT/CLASSIFICATION-TAXONOMY/SN-011/IB-SMART-NOTE-20260930-sn011-intelligence-classes.md",
       "blob_sha": "52394cfaac402337aa9c4249e064662a41318eca",
       "size": 6797
@@ -2464,6 +3464,16 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SMART-NOTE-REFINEMENT/CLASSIFICATION-TAXONOMY/SN-033/IB-SMART-NOTE-20260930-sn033-first-claim-registry-and-index-stamp.md",
       "blob_sha": "d61866aabfbfa279bad51ba4f3928a496b0e8098",
       "size": 4596
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SMART-NOTE-REFINEMENT/NUMBER-UNIQUENESS/SN-0673/IB-SMART-NOTE-20261008-sn0673-renumbering-migration-identity-gate.md",
+      "blob_sha": "1a88264d27438f62c263a25326ede2bcb668fc86",
+      "size": 4918
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SMART-NOTE-REFINEMENT/NUMBER-UNIQUENESS/SN-0801/IB-SMART-NOTE-20260930-sn0801-counter-bump-masks-conflicts.md",
+      "blob_sha": "c94066a59bea419f74616fd5c29d3c099eb0a6d6",
+      "size": 6633
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SMART-NOTE-REFINEMENT/PIPELINE-INTEGRITY/SN-0271/IB-SMART-NOTE-20260930-sn0271-registry-is-claim-not-evidence.md",
@@ -2496,6 +3506,11 @@
       "size": 5173
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SMART-NOTE-REFINEMENT/PIPELINE-INTEGRITY/SN-0875/IB-SMART-NOTE-20261010-sn0875-canonical-projection-basename-not-rename.md",
+      "blob_sha": "99ef4cb4f0e59ccced0ce5fb74db585536d1c202",
+      "size": 7188
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SMART-NOTE-REFINEMENT/PROOF-RETURN/SN-0254/IB-SMART-NOTE-20261004-sn0254-smart-link-canonical-definition.md",
       "blob_sha": "75aa300505430cc6058089ffaef34a303d725c10",
       "size": 8973
@@ -2511,14 +3526,44 @@
       "size": 5696
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SMART-NOTE-REFINEMENT/PROOF-RETURN/SN-0666/IB-SMART-NOTE-20260930-sn0666-renumber-migration-rewrite-references-dual-control.md",
+      "blob_sha": "b7aafcbe7d0bcccafba2f97cbae59044cd1b4678",
+      "size": 7407
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SMART-NOTE-REFINEMENT/PROOF-RETURN/SN-0725/IB-SMART-NOTE-20261008-sn0725-receipt-sla-tripwire-morning-dispositions.md",
+      "blob_sha": "2c1f888cb66a442f71e1b393144cfd947cbdd481",
+      "size": 7577
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SMART-NOTE-REFINEMENT/SWEEP-DISCIPLINE/SN-1154/IB-SMART-NOTE-20260930-sn1154-corrector-obeys-own-rule.md",
+      "blob_sha": "bc1ab7143f55df110a7408fa84a442a763550bfd",
+      "size": 6179
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/ACCEPTANCE-INSTRUMENTS/SN-01167/IB-SMART-NOTE-20260930-sn01167-expected-fail-fixture-first.md",
+      "blob_sha": "b23191ef2b90bf907a2926caa32235527901b882",
+      "size": 6136
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/ACTION-CONSEQUENCE/SN-0203/IB-SMART-NOTE-20260930-sn0203-manufactured-action-cut-never-dressed.md",
       "blob_sha": "5447b9671a3bbc281c61d21dffc3cb216f7d0878",
       "size": 5173
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/ACTION-CONSEQUENCE/SN-0877/IB-SMART-NOTE-20261010-sn0877-hook-exception-isolation-true-receipt.md",
+      "blob_sha": "f29bcbf33505a6a2f0f438d145df1326fd586c14",
+      "size": 5959
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/ALIVE-GATE/SN-0152/IB-SMART-NOTE-20260930-sn0152-alive-is-measurable-alive-gate.md",
       "blob_sha": "8b21acfbc223a2aae55ee7ebbfeeb8f91bd02b82",
       "size": 7207
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/CANON-ADAPTERS/SN-0942/IB-SMART-NOTE-20261010-sn0942-selector-never-calls-canonical-evaluator-is-second-engine.md",
+      "blob_sha": "4fb549b69510548bf553f4a39365760d0c9654b2",
+      "size": 7997
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/CANONICAL-PLACEMENT/SN-0114/IB-SMART-NOTE-20260930-sn0114-proposed-is-not-canonical-until-ruled.md",
@@ -2576,6 +3621,11 @@
       "size": 6502
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/CANONICAL-PLACEMENT/SN-1155/IB-SMART-NOTE-20260930-sn1155-canonical-identity-field.md",
+      "blob_sha": "5bd95dbcb855e8456861ed4d939bad8c900f0ab8",
+      "size": 6364
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/CLASSIFICATION-INTEGRITY/SN-0225/IB-SMART-NOTE-20260930-sn0225-a-string-keyed-classifier-is-gamable.md",
       "blob_sha": "8b7b27347c0f1ff8231dc4f164fe507a6705a1d9",
       "size": 8533
@@ -2584,6 +3634,16 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/CLASSIFICATION-INTEGRITY/SN-0284/IB-SMART-NOTE-20261004-sn0284-convention-coherence.md",
       "blob_sha": "7ec30b10d55998838b518e61c3f945c5b831e9db",
       "size": 8769
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/CLASSIFICATION-INTEGRITY/SN-1080/IB-SMART-NOTE-20261012-sn1080-the-scanner-flags-the-seat-classifies.md",
+      "blob_sha": "4b2c30c47b2f10363cffbb84d065791678230404",
+      "size": 7618
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/CONCURRENCY-SAFETY/SN-0935/IB-SMART-NOTE-20260930-sn0935-fencing-token-no-id.md",
+      "blob_sha": "41222420412584b02b746d6dd280fbe9e070018c",
+      "size": 5864
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/DESIGN-CANON-ADOPTION/SN-0179/IB-SMART-NOTE-20260930-sn0179-design-canon-adoption.md",
@@ -2611,14 +3671,79 @@
       "size": 11160
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/EVIDENCE-DISCIPLINE/SN-0946/IB-SMART-NOTE-20260930-sn0946-disambiguate-outside-the-seal.md",
+      "blob_sha": "5c2b8ce79d582f786e7a83b2eefdbba9ba0a6856",
+      "size": 5663
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/EVIDENCE-DISCIPLINE/SN-1082/IB-SMART-NOTE-20261012-sn1082-demote-falsified-at-the-retrieve-seam.md",
+      "blob_sha": "84495fafefb1cb00116511aae2aaf271f1fa5219",
+      "size": 6197
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/EXECUTION-MODEL/SN-0207/IB-SMART-NOTE-20260930-sn0207-name-false-choice-integrated-model.md",
       "blob_sha": "e3b85b82851c99b76b99d152d2f81a2f43783673",
       "size": 7720
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/EXECUTION-MODEL/SN-0765/IB-SMART-NOTE-20261009-sn0765-pipeline-never-authorizes-itself.md",
+      "blob_sha": "295895a1490798a2a02a3f7c09e2c5e09ea33686",
+      "size": 6051
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/EXPERIMENT-DESIGN/SN-01172/IB-SMART-NOTE-20260930-sn1172-phenomenon-exists-first-pre-registration.md",
+      "blob_sha": "f80a2fff1ae6272fcaf5198a341f6e3951ea5c80",
+      "size": 6072
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/FAILURE-CLASSIFICATION/SN-01170/IB-SMART-NOTE-20260930-sn1170-stale-gate-verdicts-per-head-per-event.md",
+      "blob_sha": "022ebc2dc18716409d2d4c359d6eb121bf80cbdd",
+      "size": 6963
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/FIXTURE-ENGINEERING/SN-01168/IB-SMART-NOTE-20260930-sn01168-extraction-fidelity-mechanical-assertion.md",
+      "blob_sha": "42beaff7f753cc4412f0ea241a9e6c351c3e223e",
+      "size": 6299
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/FROZEN-BASELINE-AMENDMENT/SN-0141/IB-SMART-NOTE-20260930-sn0141-frozen-foundation-thaw-procedure.md",
       "blob_sha": "79e5da4a18fe6a9bc594ddfb838a0bd6f946d9d6",
       "size": 7188
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/GATE-DESIGN/SN-0955/IB-SMART-NOTE-20261010-sn0955-unresolvable-sha-refusal-fail-closed-gate-rule.md",
+      "blob_sha": "247f4464b51a410b9d0dda0ae85f79b17807bc4c",
+      "size": 3630
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/GATE-DESIGN/SN-0957/IB-SMART-NOTE-20261011-sn0957-validated-but-not-persisted-gate-theater.md",
+      "blob_sha": "1dacc2a1d8fa8305238f852cb450792dc4a1a1ed",
+      "size": 5973
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/GATE-DESIGN/SN-0958/IB-SMART-NOTE-20261011-sn0958-wire-proof-must-prove-the-gate-can-run.md",
+      "blob_sha": "f71d48c13bf98b658808b41dbb78fe9282dcea0c",
+      "size": 7848
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/GATE-DESIGN/SN-0959/IB-SMART-NOTE-20261011-sn0959-flagship-test-gate-must-block-its-reason-to-exist.md",
+      "blob_sha": "c4f8cc3210932c2f65319e35ca525423584e4d89",
+      "size": 7850
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/GATE-DESIGN/SN-0972/IB-SMART-NOTE-20261011-sn0972-substring-approval-matching-fails-both-ways.md",
+      "blob_sha": "cc9ac2cb50918500fa673aeab68f66f979768682",
+      "size": 7896
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/GATE-DESIGN/SN-0983/IB-SMART-NOTE-20260930-sn0983-receipt-handles-must-resolve-where-the-gate-reads.md",
+      "blob_sha": "988e8809f0b641f3abee98030704debe08c18602",
+      "size": 5623
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/GATE-DESIGN/SN-1084/IB-SMART-NOTE-20261012-sn1084-check-that-cannot-refuse-is-not-a-gate.md",
+      "blob_sha": "e42957d4ff72d89553383d35b45f7c27ee660233",
+      "size": 6909
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/HUB-COMPOSITION/SN-0214/IB-SMART-NOTE-20260930-sn0214-hub-room-mounting-contract.md",
@@ -2681,6 +3806,11 @@
       "size": 7512
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/MEASUREMENT-INTEGRITY/SN-0916/IB-SMART-NOTE-20260930-sn0916-scope-isolated-adaptive-baselines.md",
+      "blob_sha": "c43528b6f3bf67ba0f68f2466c114b40e85af24d",
+      "size": 4616
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/MODULES-NOT-APPS/SN-0142/IB-SMART-NOTE-20260930-sn0142-modules-not-apps.md",
       "blob_sha": "aa2a611d90e6895f0bc00415b5c6c5b6a050b13a",
       "size": 7249
@@ -2701,6 +3831,21 @@
       "size": 7098
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/REFERENCE-ADOPTION/SN-0739/IB-SMART-NOTE-20260930-sn0739-build-to-spec-when-the-reference-exists.md",
+      "blob_sha": "4a53146d9502ed6e2209f58982ae03f62a14dc54",
+      "size": 6436
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/REFERENCE-ADOPTION/SN-0794/IB-SMART-NOTE-20261009-sn0794-resolve-by-availability.md",
+      "blob_sha": "163f79f8721dba1890a84aa611e42a34f22018ac",
+      "size": 4483
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/RETRIEVAL-EVALUATION/SN-1163/IB-SMART-NOTE-20260930-sn1163-matcher-on-boilerplate-passes-benchmark-fails-user.md",
+      "blob_sha": "a2a79b54b892f7889b338603b0edbb88302b1c81",
+      "size": 4737
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/RIGOR-SIMPLICITY/SN-010/IB-SMART-NOTE-20260930-sn010-internal-rigor-external-simplicity.md",
       "blob_sha": "c5687e4ed8a37a5e696d248de47ecba43d0679f2",
       "size": 4877
@@ -2711,9 +3856,44 @@
       "size": 6744
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/RIGOR-SIMPLICITY/SN-0999/IB-SMART-NOTE-20260930-sn0999-guardrail-deny-legibly-never-crash.md",
+      "blob_sha": "d90956bbac4ce13035617077ad41093ed1fcb90d",
+      "size": 6420
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/TASTE-TRANSFER-LOOPS/SN-0193/IB-SMART-NOTE-20260930-sn0193-rules-dont-transfer-taste-loops-do.md",
       "blob_sha": "1c47c8a58a951228ca126e22857a0fd377d2c82e",
       "size": 6660
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/TASTE-TRANSFER-LOOPS/SN-0735/IB-SMART-NOTE-20260930-sn0735-take-the-actual-code-line-by-line-extraction-beats-rebuilding-from-memory.md",
+      "blob_sha": "1ad9a3ecebcb31a22783e5e286aae3e780fc37d0",
+      "size": 6348
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/TASTE-TRANSFER-LOOPS/SN-0782/IB-SMART-NOTE-20261009-sn0782-correct-the-shape-not-the-polish.md",
+      "blob_sha": "2add9252ff9a0d6ab0c5e5c143d588fbe6a8f705",
+      "size": 6448
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/TEAM-EXECUTION/SN-1060/IB-SMART-NOTE-20261012-sn1060-unchecked-todo-rebriefs-finished-work.md",
+      "blob_sha": "200688ff8685c9d8083664375a4bb171084f98cf",
+      "size": 5729
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/TEAM-EXECUTION/SN-1086/IB-SMART-NOTE-20261012-sn1086-dispatcher-timeout-disk-pointer-briefs.md",
+      "blob_sha": "9095db12a35becae999829e4ab08c912f58b9ceb",
+      "size": 6789
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/VERIFICATION/PROBE-GATE-SEPARATION/SN-1003/IB-SMART-NOTE-20260930-sn1003-probe-tests-never-judge-live-content.md",
+      "blob_sha": "d286c76ada826108051fc5378f711c14f91d7685",
+      "size": 6277
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/VISION/Nayanet-SPACES/SN-0915/IB-SMART-NOTE-20260930-sn0915-the-living-ledger-smart-net.md",
+      "blob_sha": "33eb5106e07c80340f3f80c571b6e3e067c55bad",
+      "size": 4629
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/01/SYSTEM-INTELLIGENCE/CURRENT-ARCHITECTURAL-TRUTH/ORGANISM-COMPOSITION-AND-PROOF-FRONTIER/SN-021/IB-SMART-NOTE-20261001-sn021-current-architectural-truth-and-frontier.md",
@@ -3791,6 +4971,116 @@
       "size": 3032
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/AMENDMENT-VERIFICATION/PHANTOM-CITATION-CLASS/SN-0686/IB-SMART-NOTE-20261008-sn0686-seat-relative-chat-citation.md",
+      "blob_sha": "d87ac17bbd4e12e4912f597589a29160647f76b8",
+      "size": 5132
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/CI-TRIAGE/FAILURE-ATTRIBUTION/SN-0696/IB-SMART-NOTE-20261008-sn0696-prove-zero-regressions-on-a-red-tip-with-the-stash-control.md",
+      "blob_sha": "5015f6b0a224027e7c2bb8dcb8979dd93787d32d",
+      "size": 5223
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/CI-TRIAGE/FAILURE-ATTRIBUTION/SN-0736/IB-SMART-NOTE-20261008-sn0736-verify-read-path-before-restoration-twin-file-resolution.md",
+      "blob_sha": "28bc852c834b55215886ba1f32812c25ef1ae065",
+      "size": 7191
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/CI-TRIAGE/INSTRUMENT-PARITY/SN-0658/IB-SMART-NOTE-20261008-sn0658-use-is-not-definition-fix-the-instrument-not-the-subject.md",
+      "blob_sha": "62c03dd90a37b21ea1bb87594a2b66c7775b5366",
+      "size": 7019
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/CI-TRIAGE/INSTRUMENT-PARITY/SN-0708/IB-SMART-NOTE-20261008-sn0708-dry-run-is-not-the-control.md",
+      "blob_sha": "417a968c62a5bf1e276780ccabe71b05aac552dd",
+      "size": 5559
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/CI-TRIAGE/INSTRUMENT-PARITY/SN-0714/IB-SMART-NOTE-20261008-sn0714-no-commit-found-is-a-remote-verdict.md",
+      "blob_sha": "3051c83b2e8687a65ab7a744ee290408a00bde49",
+      "size": 5827
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/CI-TRIAGE/INSTRUMENT-PARITY/SN-0718/IB-SMART-NOTE-20261008-sn0718-shallow-clone-range-math-landmine.md",
+      "blob_sha": "1144b2b5cfa157ef0d725515ff55b2b17aa6ba66",
+      "size": 6044
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/CI-TRIAGE/INSTRUMENT-PARITY/SN-0750/IB-SMART-NOTE-20261008-sn0750-home-dir-import-zeroes-ci.md",
+      "blob_sha": "942c0944b4c76361d8d6f4ded17b230a899035e7",
+      "size": 6095
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/CI-TRIAGE/MERGE-BOUNDARY/SN-0669/IB-SMART-NOTE-20261008-sn0669-never-merge-red-tip-foreign-red-blocks.md",
+      "blob_sha": "f7f026e9f40fdbd4cad7753f3fb114bf01ff53e0",
+      "size": 4330
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/CI-TRIAGE/MERGE-BOUNDARY/SN-0727/IB-SMART-NOTE-20261008-sn0727-content-addressed-verdict-reanchor.md",
+      "blob_sha": "16544387bc8c5e292c5e6cb41b076cdc54086421",
+      "size": 6235
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/CI-TRIAGE/PUSHED-BYTES-VERIFICATION/SN-0645/IB-SMART-NOTE-20261008-sn0645-clobber-check-regen-bundle-delta.md",
+      "blob_sha": "6417c3e889de343732fbe827a35674e5202b9b5d",
+      "size": 8268
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/CI-TRIAGE/PUSHED-BYTES-VERIFICATION/SN-0663/IB-SMART-NOTE-20261008-sn0663-repair-evidence-bound-to-base-tip-byte-staleness.md",
+      "blob_sha": "16ff939eeedeb719ecda2aef139b36bd9138e102",
+      "size": 5907
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/CI-TRIAGE/PUSHED-BYTES-VERIFICATION/SN-0710/IB-SMART-NOTE-20261008-sn0710-verify-heal-ancestry-branch-only-twins.md",
+      "blob_sha": "8807695ded688162d751b2b97fabe7d41d14d492",
+      "size": 6702
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/CI-TRIAGE/RATCHET-ENFORCEMENT/SN-0675/IB-SMART-NOTE-20261008-sn0675-advisory-first-detector-before-the-gate.md",
+      "blob_sha": "f37ca884e3de564594cf277c8408711c436200bf",
+      "size": 6410
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/CI-TRIAGE/RED-RUN-DIAGNOSIS/SN-0694/IB-SMART-NOTE-20261008-sn0694-ci-job-failure-masks-distinct-red-enumerate-steps-not-outcomes.md",
+      "blob_sha": "88b695ea139b98e30d35506a201f1b3f917a0cfc",
+      "size": 7238
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/CI-TRIAGE/REPAIR-ACCEPTANCE/SN-0737/IB-SMART-NOTE-20261008-sn0737-reconstructed-not-recovered-green-check-closes-assertion.md",
+      "blob_sha": "67254cd0de6a93a67170b5cb380ab4b8db6d3222",
+      "size": 6488
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/CI-TRIAGE/REPAIR-DISCIPLINE/SN-0671/IB-SMART-NOTE-20261008-sn0671-duplicate-repair-race-superset-wins.md",
+      "blob_sha": "6527ba12ba640f6337a5ce3ce4e8da85d2448e91",
+      "size": 4836
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/CI-TRIAGE/REPAIR-DISCIPLINE/SN-0676/IB-SMART-NOTE-20261008-sn0676-stacked-repairs-combination-proof-no-overlap-merge-order.md",
+      "blob_sha": "77ea7f744d04c14b91682081c3c5952177912920",
+      "size": 6183
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/CI-TRIAGE/REPAIR-DISCIPLINE/SN-0711/IB-SMART-NOTE-20261008-sn0711-declare-repair-owner-at-detection-time.md",
+      "blob_sha": "8685ed3ba524f07a0937c4f927afacb0791caab5",
+      "size": 7030
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/CI-TRIAGE/REPAIR-DISCIPLINE/SN-0716/IB-SMART-NOTE-20261008-sn0716-collision-receipt-reverify-currency-before-stand-down.md",
+      "blob_sha": "92150a97b7cc582bd6f9bb2c40b3a9030b4564fc",
+      "size": 7931
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/CI-TRIAGE/REPAIR-DISCIPLINE/SN-0762/IB-SMART-NOTE-20261008-sn0762-repair-duplication-resolution-by-superset.md",
+      "blob_sha": "32b226cee1a6619a8b07c818d9561e7e9d0f436a",
+      "size": 8444
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/CI-TRIAGE/REPAIR-STAND-DOWN/SN-0745/IB-SMART-NOTE-20261008-sn0745-stale-repair-clobber-vector.md",
+      "blob_sha": "e44eebfcbbb42daaaad7e49c3a0c113dc65f3031",
+      "size": 6652
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/CONTINUITY/COLD-14/SN-0635/IB-SMART-NOTE-20261008-sn0635-inheritance-needs-the-outcome-evidence-not-just-the-rule.md",
       "blob_sha": "fb04b30923a46f801bb8e368c5354c509a6d6540",
       "size": 3344
@@ -3801,6 +5091,221 @@
       "size": 3540
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/DESIGN-MASTERY/HUMAN-CENTERED-INTERACTION-SCIENCE/SN-0721/IB-SMART-NOTE-20261008-sn0721-assemble-from-his-code-not-imitate-it.md",
+      "blob_sha": "6644ba1534aadcd210ed2bb4bbdc7f888c7f842d",
+      "size": 3399
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/DESIGN-MASTERY/HUMAN-CENTERED-INTERACTION-SCIENCE/SN-0722/IB-SMART-NOTE-20261008-sn0722-claims-stay-quiet-n-identical-badges-flood.md",
+      "blob_sha": "3a5ef0987e4cb78eb91f77f91304940435d61b44",
+      "size": 3721
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/DESIGN-MASTERY/INVENTED-OUTPUT-FORMS/SN-0754/IB-SMART-NOTE-20261008-sn0754-novelty-scored-axis-invented-forms.md",
+      "blob_sha": "b2f832331a1a6620bbc0dcbe4a11b82b0536645b",
+      "size": 7493
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/DESIGN-MASTERY/INVENTED-OUTPUT-FORMS/SN-0760/IB-SMART-NOTE-20261008-sn0760-pdf-test-instrument-not-document.md",
+      "blob_sha": "6281f91f73f5d6f8d4b93f7d488456613241c91f",
+      "size": 9571
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/DOCTRINE/TEAM/SN-0685/IB-SMART-NOTE-20261008-sn0685-nine-standing-teams.md",
+      "blob_sha": "04154d13752290a4d0a45d828399f81b17b437ab",
+      "size": 4843
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/EARNED-INTELLIGENCE/LEARNED-NOT-STORED/SN-0695/IB-SMART-NOTE-20261008-sn0695-the-test-of-learning-is-silence.md",
+      "blob_sha": "44a48d8f6efdfea652c9b5c816281d97756ddc6e",
+      "size": 5332
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/COLD-SUCCESSOR-PROOF/SN-0756/IB-SMART-NOTE-20261008-sn0756-cold-self-build-graduation-proof.md",
+      "blob_sha": "2520cc0c52c4c1fdae53f88d88e03d4e16add388",
+      "size": 6868
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/COLD-SUCCESSOR-PROOF/SN-0891/IB-SMART-NOTE-20261010-sn0891-cold-test-ambiguity-detector.md",
+      "blob_sha": "b62ded0730680470a0e9f8c198abafd4fb24aee7",
+      "size": 4127
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/INDEPENDENT-VERIFICATION/SN-0690/IB-SMART-NOTE-20261008-sn0690-cite-to-blob-claim-settlement-loop.md",
+      "blob_sha": "047de873fd50f19bba92913b599736cde9f1aa1d",
+      "size": 6055
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/INDEPENDENT-VERIFICATION/SN-0747/IB-SMART-NOTE-20261008-sn0747-verification-replay-must-discriminate.md",
+      "blob_sha": "c2a975a780c84efd9eb2f98308d6203f89bcdc3d",
+      "size": 7822
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/INDEPENDENT-VERIFICATION/SN-0748/IB-SMART-NOTE-20261008-sn0748-cold-test-catches-doc-blindspot.md",
+      "blob_sha": "4cf818a2a1a77f75eb1eb61e060fc6832596215f",
+      "size": 4860
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/INDEPENDENT-VERIFICATION/SN-0752/IB-SMART-NOTE-20261008-sn0752-citation-is-not-provenance.md",
+      "blob_sha": "b4f4a6941030a397faeee469d0fbf16ae5a2a2f8",
+      "size": 6083
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/MEASUREMENT-BOUNDARY/SN-0655/IB-SMART-NOTE-20261008-sn0655-corruption-proof-metric-extraction-for-automated-reporting.md",
+      "blob_sha": "7370469834002ab453679a939a3a13fe06f54fa8",
+      "size": 4802
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/MEASUREMENT-BOUNDARY/SN-0664/IB-SMART-NOTE-20261008-sn0664-measure-the-organism-not-the-instrument.md",
+      "blob_sha": "772e59a26206cd64e7e88e3b19d6733b61dd9297",
+      "size": 7040
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/MEASUREMENT-BOUNDARY/SN-0670/IB-SMART-NOTE-20261008-sn0670-score-live-tip-not-candidate.md",
+      "blob_sha": "a745d677908e8d6b0204c066cfea74ed4501c93d",
+      "size": 4409
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/MEASUREMENT-BOUNDARY/SN-0702/IB-SMART-NOTE-20261008-sn0702-p-and-effect-size-same-analysis-unit.md",
+      "blob_sha": "8d8d0c14a4bbe57f6b126732597dfd5c40f0065a",
+      "size": 5531
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/MEASUREMENT-BOUNDARY/SN-0720/IB-SMART-NOTE-20261008-sn0720-pilot-the-audit-target-pre-launch.md",
+      "blob_sha": "fce5207ed210c30e9824cb98307d00553a1a4e80",
+      "size": 6951
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/MEASUREMENT-BOUNDARY/SN-0726/IB-SMART-NOTE-20261008-sn0726-pin-authoritative-score-outside-extractor-reach.md",
+      "blob_sha": "ec14f87b1cbdcb678b19b74580a730cbe100b3d8",
+      "size": 5491
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/MEASUREMENT-BOUNDARY/SN-0730/IB-SMART-NOTE-20261008-sn0730-calibrate-the-judge-report-only-first.md",
+      "blob_sha": "cb7b11b5326d845c67a79fd600050e36690263ae",
+      "size": 6224
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/PROTECTED-DOCUMENT-INTEGRITY/SN-0643/IB-SMART-NOTE-20261008-sn0643-duplicate-id-reader-rule.md",
+      "blob_sha": "d7bf62b91d00d7f4cacecaa6b28279b58556abe0",
+      "size": 10263
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/PROTECTED-DOCUMENT-INTEGRITY/SN-0647/IB-SMART-NOTE-20261008-sn0647-registry-watcher-orphan-collision.md",
+      "blob_sha": "b30bda02d563f2557d4f14ed144e56b9f58132fb",
+      "size": 6745
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/PROTECTED-DOCUMENT-INTEGRITY/SN-0652/IB-SMART-NOTE-20261008-sn0652-detector-keyed-to-the-violation.md",
+      "blob_sha": "dcd55d79b18ff4f08d7ffa0e2f75484060b45e8d",
+      "size": 5941
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/SHARED-TOOLING/SN-0715/IB-SMART-NOTE-20261008-sn0715-push-helper-binary-push-defect.md",
+      "blob_sha": "47d84923ab69270e7c54148d68fdde42c09c841b",
+      "size": 6439
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/TEST-DESIGN/SN-0719/IB-SMART-NOTE-20261008-sn0719-falsification-check-your-gates.md",
+      "blob_sha": "ba0ddb8ef33058dc4ceb599c4572d80f8ad41443",
+      "size": 6988
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/VERIFY-COVERAGE/SN-0684/IB-SMART-NOTE-20261008-sn0684-read-every-fail-cause-positive-control-honest.md",
+      "blob_sha": "587f1572ca240126f07c5937b95028b0c2137af0",
+      "size": 6730
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/GOVERNANCE/AUTHORITY-CONFLICT-PRESERVATION/SN-0657/IB-SMART-NOTE-20261008-sn0657-director-merge-is-the-authorization-sovereign-waiver-doctrine.md",
+      "blob_sha": "7e923f3829b359fe1b42933a67e91e9b2f01443e",
+      "size": 6659
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/GOVERNANCE/AUTHORITY-CONFLICT-PRESERVATION/SN-0659/IB-SMART-NOTE-20261008-sn0659-assess-flags-in-two-lanes-authorization-and-substance.md",
+      "blob_sha": "762046e6e6e59d6f0b605bcaa97fefb44dae2c09",
+      "size": 6715
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/GOVERNANCE/AUTHORITY-CONFLICT-PRESERVATION/SN-0660/IB-SMART-NOTE-20261008-sn0660-the-protocol-is-above-everyone-including-the-director.md",
+      "blob_sha": "e1813157cfe76f9873d44f8474245e1e345faf5f",
+      "size": 4288
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/GOVERNANCE/AUTHORITY-CONFLICT-PRESERVATION/SN-0661/IB-SMART-NOTE-20261008-sn0661-authorization-vs-correctness-two-axes-resolve-apparent-law-collisions.md",
+      "blob_sha": "e245e97b54e280aeedaa21a1e94a82789ecab8b6",
+      "size": 5065
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/GOVERNANCE/AUTHORITY-CONFLICT-PRESERVATION/SN-0662/IB-SMART-NOTE-20261008-sn0662-worker-flag-against-hard-boundary-correct-procedure.md",
+      "blob_sha": "6993cd8966ca4d811767ce3b1b305f4d9061387e",
+      "size": 5881
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/GOVERNANCE/AUTHORITY-ENVELOPE/SN-0682/IB-SMART-NOTE-20261008-sn0682-verify-attributed-authority-against-source-transcript.md",
+      "blob_sha": "e02609a4fdf300c8c0c83099dbc13552d5d81467",
+      "size": 8212
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/GOVERNANCE/AUTHORITY-ENVELOPE/SN-0701/IB-SMART-NOTE-20261008-sn0701-false-authorship-identity-guard.md",
+      "blob_sha": "c4b47c902196602df9957436ce1e90a23a2523d5",
+      "size": 6207
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/GOVERNANCE/COLLISION-REGISTRY/SN-0656/IB-SMART-NOTE-20261008-sn0656-supersession-not-accumulation-resolving-colliding-canonical-documents.md",
+      "blob_sha": "20e9e7e19ae0012660ef65de078615e6c874b137",
+      "size": 4391
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/GOVERNANCE/COLLISION-REGISTRY/SN-0703/IB-SMART-NOTE-20261008-sn0703-branch-local-claim-check-blind.md",
+      "blob_sha": "1f2c8fd639a4410ec65fcd2a49260fd7d973a3bc",
+      "size": 6550
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/GOVERNANCE/DECISION-PROTOCOL/SN-0755/IB-SMART-NOTE-20261008-sn0755-unproducible-evidence-gate-is-permanent-block.md",
+      "blob_sha": "b1a48b092cc4d333495ae33dd9e40ffee4e8ea06",
+      "size": 6839
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/GOVERNANCE/DOCUMENT-AUTHORITY/SN-0654/IB-SMART-NOTE-20261008-sn0654-the-document-is-ratified-the-machine-binding-is-not-proven.md",
+      "blob_sha": "c9d9015009840af18575947b2539b18eaf0aaa31",
+      "size": 4092
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/GOVERNANCE/DOCUMENT-AUTHORITY/SN-0697/IB-SMART-NOTE-20261008-sn0697-commit-is-a-signature-seat-identity-fail-closed.md",
+      "blob_sha": "affbb3256c68323a40306727b43431495a350e2d",
+      "size": 6969
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/GOVERNANCE/GATE-SEMANTIC-VALIDATION/SN-0665/IB-SMART-NOTE-20261008-sn0665-gate-validates-substance-not-presence.md",
+      "blob_sha": "d2af5d1508d6e06431b9950d9a0237aa9596c9d3",
+      "size": 7690
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/GOVERNANCE/LANE-COORDINATION/SN-0644/IB-SMART-NOTE-20261008-sn0644-merge-window-allocation-freeze.md",
+      "blob_sha": "52d5e1be31d6db9c9c288833700556ee225f0ace",
+      "size": 6914
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/GOVERNANCE/LANE-COORDINATION/SN-0683/IB-SMART-NOTE-20261008-sn0683-self-chain-collision-hit-is-a-false-positive.md",
+      "blob_sha": "61e624208976831046996c0ebe47012cfe409b10",
+      "size": 6577
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/GOVERNANCE/LAW-IS-CODE/SN-0687/IB-SMART-NOTE-20261008-sn0687-law-pipeline-governance-only.md",
+      "blob_sha": "393bfe4fb351109927a0b5dceccd9bb666ca8aa6",
+      "size": 4768
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/GOVERNANCE/LAW-IS-CODE/SN-0761/IB-SMART-NOTE-20261008-sn0761-pin-is-an-authority-claim.md",
+      "blob_sha": "8f76f8b8cbcf5e17eed3539c551d3f1e92efdb9b",
+      "size": 10688
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/GOVERNANCE/MERGE-AUTHORITY/SN-0691/IB-SMART-NOTE-20261008-sn0691-delegated-merge-authority-five-gate-protocol.md",
+      "blob_sha": "2be61eb431cecf15a3dc6f1c1d312f64a89cfc5c",
+      "size": 6618
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/GOVERNANCE/PROOF-HONESTY/SN-0637/IB-SMART-NOTE-20261008-sn0637-local-verifier-green-proves-local-code-never-deployed-enforcement.md",
       "blob_sha": "9357f09e9bdbbed7d58837e642c86376ad946518",
       "size": 4051
@@ -3809,6 +5314,41 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/GOVERNANCE/PROOF-HONESTY/SN-0639/IB-SMART-NOTE-20261008-sn0639-virgin-confirm-before-flag.md",
       "blob_sha": "3a94c477d1821c3df480b0e69442137f36c2665d",
       "size": 4673
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/GOVERNANCE/PROOF-HONESTY/SN-0648/IB-SMART-NOTE-20261008-sn0648-preserve-deliberately-red-falsifier.md",
+      "blob_sha": "fbd974d827a1078ffde6caf9b61c821d715e1d81",
+      "size": 6286
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/GOVERNANCE/PROOF-HONESTY/SN-0653/IB-SMART-NOTE-20261008-sn0653-extract-claims-from-their-layer.md",
+      "blob_sha": "acbc6237b9a1c94c3fa7e4aec38687edbd6bda72",
+      "size": 5906
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/GOVERNANCE/PROOF-HONESTY/SN-0709/IB-SMART-NOTE-20261008-sn0709-prose-loses-to-instruments.md",
+      "blob_sha": "019f5d42ca391ed9efe348194e6a41d6cbfc5596",
+      "size": 5168
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/GOVERNANCE/PROOF-HONESTY/SN-0728/IB-SMART-NOTE-20261008-sn0728-public-score-retraction-protocol.md",
+      "blob_sha": "bf1a753ad6e929762833fff2692d16e92b1e431b",
+      "size": 6540
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/LEARNING-PIPELINE/REGISTRY-DISCIPLINE/SN-0746/IB-SMART-NOTE-20261008-sn0746-smart-note-landing-contract.md",
+      "blob_sha": "ad4cf8bbab0494b1388fc298efceaeb2d6a7c637",
+      "size": 6224
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/OPERATING-DOCTRINE/AUTOMATION/SN-0649/IB-SMART-NOTE-20261008-sn0649-the-automatic-machine.md",
+      "blob_sha": "01f9d4cbb7f9f5dae22214a6b96be2e8e31a9575",
+      "size": 3139
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/OPERATING-DOCTRINE/AUTOMATION/SN-0651/IB-SMART-NOTE-20261008-sn0651-the-automatic-super-brain.md",
+      "blob_sha": "1fcf4ec7f4e000bfbf089b9160f97a5955faf151",
+      "size": 6580
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/OPERATING-DOCTRINE/NO-WAITING/SN-0626/IB-SMART-NOTE-20261008-sn0626-no-waiting-doctrine.md",
@@ -3831,14 +5371,419 @@
       "size": 2357
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/OPERATING-DOCTRINE/TEAM-PROTOCOL/SN-0640/IB-SMART-NOTE-20261008-sn0640-reconcile-from-record-diff-on-arrival.md",
+      "blob_sha": "c0f82e22c9352a9281a1263403159d6ceb6b49db",
+      "size": 5235
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/OPERATING-DOCTRINE/TEAM-PROTOCOL/SN-0641/IB-SMART-NOTE-20261008-sn0641-resource-constrained-execution-law.md",
+      "blob_sha": "6ad30f11404cfbf63db5c4eb537cac56709d16c9",
+      "size": 2851
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/OPERATING-DOCTRINE/TEAM-PROTOCOL/SN-0646/IB-SMART-NOTE-20261008-sn0646-reliability-based-operating-model.md",
+      "blob_sha": "3dd63899a2fc0be8c10ab054e38dd36ad747f379",
+      "size": 6214
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/OPERATING-DOCTRINE/TEAM-PROTOCOL/SN-0749/IB-SMART-NOTE-20261008-sn0749-relay-evidence-not-authority.md",
+      "blob_sha": "f7c5dc0df31278cad62a57b04d387a709a5e835c",
+      "size": 4934
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/OPERATING-DOCTRINE/TEAM-PROTOCOL/SN-0751/IB-SMART-NOTE-20261008-sn0751-delegated-pr-opening-verified-handoff.md",
+      "blob_sha": "d28a535d111671f1ce57e72d37cf2dfa09f5de7a",
+      "size": 6296
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/OPERATING-DOCTRINE/TEAM-PROTOCOL/SN-0753/IB-SMART-NOTE-20261008-sn0753-watch-note-declares-non-actions.md",
+      "blob_sha": "7588040421dbaa99b958d78fbbed84b12ff64abb",
+      "size": 6321
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/OPERATIONS/COMMUNICATION-STANDARDS/SN-0700/IB-SMART-NOTE-20261008-sn0700-ten-star-service-communicate-so-anyone-can-build.md",
+      "blob_sha": "7bb82e17659f06b85a7c582750fb3a11c8aba86e",
+      "size": 4727
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/OPERATIONS/MEASUREMENT-DISCIPLINE/SN-0688/IB-SMART-NOTE-20261008-sn0688-never-repeat-a-number-you-cant-trace.md",
+      "blob_sha": "4eff1f4b3b52974441bd061cf163420c27d23989",
+      "size": 5424
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/OPERATIONS/MEASUREMENT-DISCIPLINE/SN-0692/IB-SMART-NOTE-20261008-sn0692-unsourced-counts-blocked-from-report-data-files.md",
+      "blob_sha": "86605efbe9056ce70b85efda81d80ab25f1af134",
+      "size": 7027
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/OPERATIONS/MEASUREMENT-DISCIPLINE/SN-0693/IB-SMART-NOTE-20261008-sn0693-pre-register-predictions-before-data-changes-honest-calibration-refuses-below-bar.md",
+      "blob_sha": "523564fd9129093dd617c18cdf98dd14bd6bfadb",
+      "size": 6432
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/OPERATIONS/MEASUREMENT-DISCIPLINE/SN-0698/IB-SMART-NOTE-20261008-sn0698-recompute-the-statistic-not-the-summary.md",
+      "blob_sha": "7d2f10422b4f90bb38f734bf72c904be64b67093",
+      "size": 7569
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/OPERATIONS/PROMOTION-GATES/SN-0731/IB-SMART-NOTE-20261008-sn0731-graduation-gate-before-auto-publish.md",
+      "blob_sha": "5bb80d958a9951348d15b374c2ae337c53d99562",
+      "size": 5656
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/OPERATIONS/SHARED-BRANCH-DISCIPLINE/SN-0689/IB-SMART-NOTE-20261008-sn0689-announce-every-ref-rewrite.md",
+      "blob_sha": "28850020834b1b57957ce498dbec13f50378020b",
+      "size": 5359
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/PRODUCT-VISION/PUBLISHING/SN-0729/IB-SMART-NOTE-20261008-sn0729-forked-nayanet-publishing-pipeline.md",
+      "blob_sha": "82cbe6591afc5b876f4bc9458df39a7f360453cd",
+      "size": 4430
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/PRODUCT-VISION/VISION-ENCODING/SN-0757/IB-SMART-NOTE-20261008-sn0757-vision-to-code-five-layer-protocol.md",
+      "blob_sha": "1d437e12940ac32ab5b4488fc242e7b6aac66197",
+      "size": 6672
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/ASSEMBLY-DISCIPLINE/SN-0758/IB-SMART-NOTE-20261008-sn0758-assembly-not-free-writing-lego-law.md",
+      "blob_sha": "8a3079e4abd7ccc6f6ed796a78d642e7b4388697",
+      "size": 6746
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/CANON-ADAPTERS/SN-0732/IB-SMART-NOTE-20261008-sn0732-domain-adapter-not-a-second-engine.md",
+      "blob_sha": "b82977cfa2f188f5b845349e2a51503248acbb64",
+      "size": 6078
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/DESIGN-CANON-HARDENING/SN-0707/IB-SMART-NOTE-20261008-sn0707-the-drift-resistance-bar.md",
+      "blob_sha": "d05e4cb3c2e96be50d56698f3554f4632d627f00",
+      "size": 5676
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/DESIGN-CANON-HARDENING/SN-0712/IB-SMART-NOTE-20261008-sn0712-the-living-proof-wins.md",
+      "blob_sha": "c7c7b94822645b7d035c98731f977cde0808740b",
+      "size": 5692
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/DESIGN-CANON-HARDENING/SN-0713/IB-SMART-NOTE-20261008-sn0713-candidate-canon-carries-its-conflicts-on-hold.md",
+      "blob_sha": "817aef64e66c6152e40dad9f31f4f82794024589",
+      "size": 5910
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/KNOWLEDGE-PROJECTION/SN-0717/IB-SMART-NOTE-20261008-sn0717-page-wins-showcase-doc-agreement-rule.md",
+      "blob_sha": "cff768cd0d549c02317081fee7ae68908c6a6597",
+      "size": 7288
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/VISION/Nayanet-SPACES/SN-0650/IB-SMART-NOTE-20261008-sn0650-nayanet-collective-intelligence-spaces.md",
+      "blob_sha": "13c1b877de57670c1f8a9796f827231aeca2818f",
+      "size": 3724
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/OPERATIONAL-INTELLIGENCE/DISPATCH/RESERVE-RULE/SN-782/IB-SMART-NOTE-20261009-successor-t11-reserve-rule-canonical.md",
       "blob_sha": "91652e0cbce4ba21d3bf0a48b1a98eb30e00b0dc",
       "size": 3879
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/CI-TRIAGE/CROSS-PLATFORM-LOCALE/SN-0831/IB-SMART-NOTE-20261009-sn0831-case-only-filenames-collide.md",
+      "blob_sha": "89d98a3c0e8c0b1c0b2d0fcca532e39b9150b56c",
+      "size": 3332
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/CI-TRIAGE/FAILURE-ATTRIBUTION/SN-0806/IB-SMART-NOTE-20261009-sn0806-multi-pr-identical-ci-failure-suspect-environment.md",
+      "blob_sha": "d44a980f3a26961b77cf236187b33698611b0d8d",
+      "size": 4962
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/CI-TRIAGE/FAILURE-ATTRIBUTION/SN-0814/IB-SMART-NOTE-20261009-sn0814-duplicate-by-head-sha.md",
+      "blob_sha": "70cfe01cd057e89769379ce3cfc0d2716bfa38a1",
+      "size": 6131
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/CI-TRIAGE/FAILURE-ATTRIBUTION/SN-0839/IB-SMART-NOTE-20261009-sn0839-multiline-import-broke-the-import-strip-harness.md",
+      "blob_sha": "b33d9cad1cac887fb4b9ad457df3f7d436d044a8",
+      "size": 4928
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/CI-TRIAGE/FAILURE-ATTRIBUTION/SN-0842/IB-SMART-NOTE-20261009-sn0842-inherited-reds-belong-to-base.md",
+      "blob_sha": "ff059ce7d9982375248dd4b4be46e8c451156c98",
+      "size": 4756
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/CI-TRIAGE/FAILURE-ATTRIBUTION/SN-0851/IB-SMART-NOTE-20261009-sn0851-environment-failures-repair-the-instrument.md",
+      "blob_sha": "04e68da616e39413c38f336cf25e5c47036e3dfb",
+      "size": 7377
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/CI-TRIAGE/FAILURE-ATTRIBUTION/SN-0862/IB-SMART-NOTE-20261009-sn0862-one-red-not-two-fails-closed-gates-multiply-a-single-root-cause.md",
+      "blob_sha": "162dbd34b525396783621284f6112e9e279c12b5",
+      "size": 4239
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/CI-TRIAGE/GUARD-FALSE-POSITIVES/SN-0857/IB-SMART-NOTE-20261009-sn0857-pending-is-not-failure-never-count-no-verdict-as-failed.md",
+      "blob_sha": "ff6cd7ea31ec445bb68c355afccb07fdca62ebf7",
+      "size": 3490
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/CI-TRIAGE/LIVE-PROOF-DIAGNOSIS/SN-0816/IB-SMART-NOTE-20261009-sn0816-watch-without-traffic-proves-nothing.md",
+      "blob_sha": "2199e8333a714b570f7294c200f4a2b7452cc2bb",
+      "size": 6217
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/CI-TRIAGE/LIVE-PROOF-DIAGNOSIS/SN-0838/IB-SMART-NOTE-20261009-sn0838-cold-successor-held-out-candidate-lifecycle-failure.md",
+      "blob_sha": "c69ce93392d2954735d77e4163b53711bfbe1dd3",
+      "size": 4455
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/CI-TRIAGE/MERGE-BOUNDARY/SN-0856/IB-SMART-NOTE-20261009-sn0856-two-dot-diff-false-alarm-rehearse-the-merge.md",
+      "blob_sha": "4eb3e3237c7a7711d9b80ceac271ca10c695649b",
+      "size": 3688
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/CI-TRIAGE/RECURRENCE-ESCALATION/SN-0863/IB-SMART-NOTE-20261009-sn0863-third-occurrence-graduates-incident-to-systemic-fix.md",
+      "blob_sha": "4bd40b56897123633ca6e8f2f408bc9f2fe410d9",
+      "size": 4521
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/CI-TRIAGE/RED-RUN-DIAGNOSIS/SN-0836/IB-SMART-NOTE-20261009-sn0836-one-ci-red-hides-the-rest-run-full-battery-at-tip.md",
+      "blob_sha": "36adb24a162d6c50dd0af0c8dcc8ad73a49c94aa",
+      "size": 4647
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/CI-TRIAGE/RED-RUN-DIAGNOSIS/SN-0852/IB-SMART-NOTE-20261009-sn0852-base-inherited-reds-reanchor-dont-repair.md",
+      "blob_sha": "2e8de7087ee4b5c9c2774c5c0047c23c8a049545",
+      "size": 7556
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/CI-TRIAGE/REGENERATION-INTENT/SN-0821/IB-SMART-NOTE-20261009-sn0821-in-pr-regen-expires-at-merge.md",
+      "blob_sha": "12a1e4008a0672d5fea1eb027f5bcdb29bc075a9",
+      "size": 8543
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/CI-TRIAGE/REGENERATION-INTENT/SN-0832/IB-SMART-NOTE-20261009-sn0832-never-regenerate-from-the-index.md",
+      "blob_sha": "68bd7a8337415b924d17c7937b3316314d944623",
+      "size": 4826
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/COMPOUNDING-INTELLIGENCE/CAPTURE-RETAIN-SIMPLIFY/SN-0884/IB-SMART-NOTE-20261009-sn0884-exclusion-precedent-chain.md",
+      "blob_sha": "5d1c28118a3f5752137183c3c2030142abe7bb4f",
+      "size": 7536
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/COMPOUNDING-INTELLIGENCE/SMART-APP-COMPOUNDING/SN-0854/IB-SMART-NOTE-20261009-sn0854-smart-app-compounding-method.md",
+      "blob_sha": "e0ebb0849f5dd08898bae441a93f2c5faa28b949",
+      "size": 5714
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/CONTINUITY/COLD-14/SN-0805/IB-SMART-NOTE-20261009-sn0805-sealed-snapshot-tripwire-e1-fired.md",
+      "blob_sha": "de5457d028ad3aec9a79635747976f2e01513eab",
+      "size": 5559
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/INDEPENDENT-VERIFICATION/SN-0809/IB-SMART-NOTE-20261009-sn0809-measure-the-width-of-the-hole.md",
+      "blob_sha": "63affeb5dfcd2f582770712b819a4ba61b59b95a",
+      "size": 5584
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/INDEPENDENT-VERIFICATION/SN-0812/IB-SMART-NOTE-20261009-sn0812-parse-like-the-browser.md",
+      "blob_sha": "950f5a03dabca32c5df56d7c52fff7ff580a6914",
+      "size": 6568
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/INDEPENDENT-VERIFICATION/SN-0815/IB-SMART-NOTE-20261009-sn0815-measure-then-adopt-class-fix.md",
+      "blob_sha": "398039c761898cc4ebdf7027b995bf7bfb812a4f",
+      "size": 6310
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/INDEPENDENT-VERIFICATION/SN-0819/IB-SMART-NOTE-20261009-sn0819-headline-is-a-claim-about-the-world.md",
+      "blob_sha": "476eb94d7702e526a42e1aeb09727f1bf40dd5e4",
+      "size": 7963
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/INDEPENDENT-VERIFICATION/SN-0820/IB-SMART-NOTE-20261009-sn0820-falsifier-time-dimension.md",
+      "blob_sha": "3425daf0c88f677059ab70affb0dab9aa9b8b9e1",
+      "size": 7682
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/INDEPENDENT-VERIFICATION/SN-0822/IB-SMART-NOTE-20261009-sn0822-independent-replay-brief-protocol.md",
+      "blob_sha": "d5176bcdb101a38a60c344ec05be2f85660a64f3",
+      "size": 9690
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/INDEPENDENT-VERIFICATION/SN-0861/IB-SMART-NOTE-20261009-sn0861-rebased-branch-compare-lies-verify-by-blob-sha.md",
+      "blob_sha": "86f298ca937a96d681248310d55ab7cea0a7e931",
+      "size": 7156
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/PROOF-HONESTY/SN-0858/IB-SMART-NOTE-20261009-sn0858-truth-audit-measurable-claims-against-code.md",
+      "blob_sha": "8f4b23a151eb04b62f9181b23cefe1e69b6309c1",
+      "size": 4319
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/PROOF-HONESTY/SN-0860/IB-SMART-NOTE-20261009-sn0860-comments-must-describe-the-mechanism-not-the-aspiration.md",
+      "blob_sha": "bb4394e48e9ffce7df0dc5263bfb3cf4546d8d20",
+      "size": 6451
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/PROOF-HONESTY/SN-0865/IB-SMART-NOTE-20261009-sn0865-preregister-predictions-before-the-ledger-change.md",
+      "blob_sha": "b96af851361e72bf2af26bf73ebe84ef1cdcc7fc",
+      "size": 3986
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/VERIFY-COVERAGE/SN-0810/IB-SMART-NOTE-20261009-sn0810-threat-class-coverage.md",
+      "blob_sha": "f95224b12ecccfd75694b0e30d3d3a5402722d3d",
+      "size": 5836
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/FOUNDER-PHILOSOPHY/AWESOME-CODE/SN-0829/IB-SMART-NOTE-20261009-sn0829-the-to-die-for-standard.md",
+      "blob_sha": "da15ff299f33216c8d3081a303ee899612e484f3",
+      "size": 3099
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/GOVERNANCE/AUTHORITY-ENVELOPE/SN-0807/IB-SMART-NOTE-20261009-sn0807-jurisdiction-follows-consequences.md",
+      "blob_sha": "d2551c8a6bba8f6efbaacbc476533d60b0bc447d",
+      "size": 4905
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/GOVERNANCE/AUTHORITY-ENVELOPE/SN-0818/IB-SMART-NOTE-20261009-sn0818-fix-at-the-canonical-seam.md",
+      "blob_sha": "ac1386657a1be4ead0399cab29821935f94925a2",
+      "size": 7712
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/GOVERNANCE/AUTHORITY-ENVELOPE/SN-0828/IB-SMART-NOTE-20261009-sn0828-the-one-rulebook-law.md",
+      "blob_sha": "76d85980442331b31f8d3173f9052270347321d1",
+      "size": 5530
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/GOVERNANCE/COLLISION-REGISTRY/SN-0834/IB-SMART-NOTE-20261009-sn0834-immutable-r1-tombstone-never-renumber-history.md",
+      "blob_sha": "ef2ab81290c5f8767ec271185ef05b7c097cea74",
+      "size": 5640
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/GOVERNANCE/DECISION-PROTOCOL/SN-0776/IB-SMART-NOTE-20261009-sn0776-stand-down-coverage-proof-self-overturn.md",
+      "blob_sha": "605daabd43d5406edf4573e41aa6a8b0a1fecd13",
+      "size": 7057
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/GOVERNANCE/DOCUMENT-AUTHORITY/SN-0835/IB-SMART-NOTE-20261009-sn0835-diagnostic-document-status-claims-expire.md",
+      "blob_sha": "ca6ab38411d3444fad70ec87cb253f33ffbe4410",
+      "size": 3984
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/GOVERNANCE/LANE-COORDINATION/REPAIR-DECONFLICTION/SN-0841/IB-SMART-NOTE-20261009-sn0841-subset-twin-canonical-repair.md",
+      "blob_sha": "8ba936d3a8a2b201a1228bcdf9ecb716bec0d6b3",
+      "size": 4322
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/GOVERNANCE/LANE-COORDINATION/SN-0833/IB-SMART-NOTE-20261009-sn0833-directive-supersedes-roster-one-seat-one-structure.md",
+      "blob_sha": "e030beaf74d2b8150e3b43b64a76a868ff1e6851",
+      "size": 5116
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/GOVERNANCE/RATIFICATION/STATUS-TRUTH/SN-0840/IB-SMART-NOTE-20261009-sn0840-ratification-lives-in-artifact-fields.md",
+      "blob_sha": "deeafa270a567118bfaf65ad9f59458f1df9db04",
+      "size": 4073
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/GOVERNANCE/SECURITY-POSTURE/SN-0795/IB-SMART-NOTE-20261009-sn0795-form-validation-is-not-substance-proof.md",
+      "blob_sha": "29bea91c82b034cd14898f0846f3a1228ac46ea0",
+      "size": 7042
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/GOVERNANCE/SECURITY-POSTURE/SN-0845/IB-SMART-NOTE-20261009-sn0845-authority-gate-adversarial-coverage.md",
+      "blob_sha": "b13364714f9f4f1e7979838da05a93da1a22af58",
+      "size": 3685
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/GOVERNANCE/SECURITY-POSTURE/SN-0850/IB-SMART-NOTE-20261009-sn0850-every-brain-domain-needs-a-floor.md",
+      "blob_sha": "bce35ce1ad699c4232a3b66c6f959e1bfef0bdea",
+      "size": 7398
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/LEARNING-PIPELINE/CAPTURE-DESIGN/SN-0811/IB-SMART-NOTE-20261009-sn0811-capture-contract-at-admission.md",
+      "blob_sha": "92d58b7cbf3c1b9d01118f2b1a6ee88e950c32be",
+      "size": 5426
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/LEARNING-PIPELINE/CAPTURE-DESIGN/SN-0813/IB-SMART-NOTE-20261009-sn0813-chain-tests-step-it-never-performs.md",
+      "blob_sha": "2431a77c57b187d37c1828984d90e073bfc13619",
+      "size": 6160
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/LEARNING-PIPELINE/PROOF-VALIDITY/SN-0817/IB-SMART-NOTE-20261009-sn0817-fallback-lesson-never-satisfies-user-learning-proof.md",
+      "blob_sha": "4cd41048009b2eae2a8ddee3759f0e12d66af6e1",
+      "size": 7654
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/LEARNING-PIPELINE/PROOF-VALIDITY/SN-0830/IB-SMART-NOTE-20261009-sn0830-a-listing-is-not-doctrine.md",
+      "blob_sha": "5d656fbad690270021c93d1faa6c97b5bc6e36a3",
+      "size": 4015
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/OPERATIONS/ACTIVATION-ACCEPTANCE/SN-0844/IB-SMART-NOTE-20261009-sn0844-activation-acceptance-chain.md",
+      "blob_sha": "0595b5029bab14122745313fe1de337cfae9aecc",
+      "size": 3351
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/OPERATIONS/COMMUNICATION-STANDARDS/SN-0804/IB-SMART-NOTE-20261009-sn0804-two-layer-communication-literal-first.md",
+      "blob_sha": "247f4a077c8db76b896e2f7ffe16dd866ac07c31",
+      "size": 5316
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/OPERATIONS/EVIDENCE-PER-TIP/SN-0823/IB-SMART-NOTE-20261009-sn0823-reports-expire-when-tip-moves.md",
+      "blob_sha": "4c77cb4a5a928a51c0795629b88eca949df11ecd",
+      "size": 7904
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/OPERATIONS/PROMOTION-GATES/SN-0837/IB-SMART-NOTE-20261009-sn0837-promotion-without-proof-bindings-is-not-promotion.md",
+      "blob_sha": "31911d580f33079633b24e952b9f260bd5fb2898",
+      "size": 5084
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/OPERATIONS/SHARED-BRANCH-DISCIPLINE/SN-0808/IB-SMART-NOTE-20261009-sn0808-one-mission-one-lane-branch.md",
+      "blob_sha": "83377ea48346f7808964f452705f497794b4a8c7",
+      "size": 6736
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/OPERATIONS/SHARED-BRANCH-DISCIPLINE/SN-0855/IB-SMART-NOTE-20261009-sn0855-shared-clone-verify-branch-before-and-after-commit.md",
+      "blob_sha": "1aed10b0c57cdf90cfe489c37749cf2398b32ef8",
+      "size": 4671
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/OPERATIONS/SHARED-BRANCH-DISCIPLINE/SN-0864/IB-SMART-NOTE-20261009-sn0864-orphan-branch-verified-state-sweep-before-canonical-ledger.md",
+      "blob_sha": "85c0051c5c276947c13059c8914281bd8c921fff",
+      "size": 4334
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/SCORECARD-DISCIPLINE/GATE-EXECUTION/SN-0781/IB-SMART-NOTE-20261009-sn0781-scorecard-must-run-the-gate.md",
       "blob_sha": "868eb151cebb4eb79293196f7017b710c21756a6",
       "size": 8239
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/SMART-NOTE-SYSTEM/DISTILLATION-LOOP-INTEGRITY/SN-0853/IB-SMART-NOTE-20261009-sn0853-high-water-mark-is-not-a-complete-record.md",
+      "blob_sha": "2b91c0eff7a652b8a9155d2df8d8c818edbfa763",
+      "size": 5276
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/CHECKLIST-AS-SYSTEM/SN-0827/IB-SMART-NOTE-20261009-sn0827-the-living-checklist-doctrine.md",
+      "blob_sha": "67dec717b618abea462917e6f76f15b5f0e6de78",
+      "size": 5257
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/GATE-DESIGN/SN-0846/IB-SMART-NOTE-20261009-sn0846-design-gates-to-data-reality.md",
+      "blob_sha": "40483a4b6794c25419a236549cdc5b5af0ab0d26",
+      "size": 3291
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/GATE-DESIGN/SN-0859/IB-SMART-NOTE-20261009-sn0859-admission-gate-omitted-credential-must-refuse.md",
+      "blob_sha": "5cfc76e6ea8885b87a0596ee683476a4fb7ed9a4",
+      "size": 5905
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/INTEGRATION-PATTERNS/SN-0797/IB-SMART-NOTE-20261009-sn0797-gates-compose-on-canonical-schema.md",
+      "blob_sha": "c684bc083ea003b725416a283efce76a5110d8f8",
+      "size": 6941
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/VISION/INCOME-REFRAME/SN-0744/IB-SMART-NOTE-20261009-sn0744-ai-creates-income.md",
@@ -3856,9 +5801,704 @@
       "size": 6817
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/10/SYSTEM-INTELLIGENCE/CI-TRIAGE/FAILURE-ATTRIBUTION/SN-0868/IB-SMART-NOTE-20261010-sn0868-merge-race-drift-check-runs-last-not-yet-failed-reads-green.md",
+      "blob_sha": "0bf7f11cb17ddb31d5ce814c0bf68e954240d364",
+      "size": 6858
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/10/SYSTEM-INTELLIGENCE/CI-TRIAGE/FAILURE-ATTRIBUTION/SN-0879/IB-SMART-NOTE-20261010-sn0879-burst-race-superseded-tip-fail-closed.md",
+      "blob_sha": "c9b418581cc7cd3b4846234e05ffa549a021571f",
+      "size": 4843
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/10/SYSTEM-INTELLIGENCE/CI-TRIAGE/FAILURE-ATTRIBUTION/SN-0882/IB-SMART-NOTE-20261010-sn0882-revert-first-own-wrong-repair.md",
+      "blob_sha": "90d56801ef3e90dc425596493af8423c8bcb077b",
+      "size": 9151
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/10/SYSTEM-INTELLIGENCE/CI-TRIAGE/FAILURE-ATTRIBUTION/SN-0883/IB-SMART-NOTE-20261010-sn0883-fresh-ref-read-before-merge-put.md",
+      "blob_sha": "54294cfb98bdfe72641fd5951dddc3591a4ffde2",
+      "size": 8444
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/10/SYSTEM-INTELLIGENCE/CI-TRIAGE/MERGE-BOUNDARY/SN-0899/IB-SMART-NOTE-20261010-sn0899-requested-review-is-hold-not-race.md",
+      "blob_sha": "409fbb1cf484e84f2d12eec77f890749953a01c8",
+      "size": 4380
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/10/SYSTEM-INTELLIGENCE/CI-TRIAGE/RED-CLASSIFICATION/SN-0921/IB-SMART-NOTE-20261010-sn0921-classify-by-failing-step-not-the-badge.md",
+      "blob_sha": "5e79eb59744f105660906e018d8775a3bac02176",
+      "size": 7857
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/10/SYSTEM-INTELLIGENCE/EARNED-INTELLIGENCE/VERIFIED-EXPERIENCE/SN-0880/IB-SMART-NOTE-20261010-sn0880-regen-tracked-files-only.md",
+      "blob_sha": "468de614c75a1e5fdec4eb1877ed2592e5efc6f0",
+      "size": 7304
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/10/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/EVIDENCE-IDENTITY/SN-0908/IB-SMART-NOTE-20261010-sn0908-verifiable-causal-trace.md",
+      "blob_sha": "34651ea21de8a0b2f733d523faa9adcca5b814d8",
+      "size": 9615
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/10/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/INDEPENDENT-VERIFICATION/SN-0900/IB-SMART-NOTE-20261010-sn0900-sealed-fixtures-inline-answers-break-evaluation-independence.md",
+      "blob_sha": "22122d00270ba5fa1149b3755065daa44c47ef6a",
+      "size": 7723
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/10/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/INDEPENDENT-VERIFICATION/SN-0903/IB-SMART-NOTE-20261010-sn0903-math-and-logic-hold-the-keys.md",
+      "blob_sha": "5d391fe38f372a333dcf135ca1d1e83ee2b20f26",
+      "size": 6779
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/10/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/INDEPENDENT-VERIFICATION/SN-0905/IB-SMART-NOTE-20261010-sn0905-fairness-lie-detector-verifier.md",
+      "blob_sha": "4519d232cb240c9d5e22ad5dd718b96b0b963b98",
+      "size": 7075
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/10/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/INDEPENDENT-VERIFICATION/SN-0906/IB-SMART-NOTE-20261010-sn0906-fairness-assumption-audit-protocol.md",
+      "blob_sha": "743c9613f49389140c2212574cd712d17c328e78",
+      "size": 7999
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/10/SYSTEM-INTELLIGENCE/GOVERNANCE/ACTION-ECONOMY/SN-0910/IB-SMART-NOTE-20261010-sn0910-action-budget-cheap-check-first.md",
+      "blob_sha": "8bf77ad6a9d5839023f3cfe8f564ea263518c4c7",
+      "size": 8103
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/10/SYSTEM-INTELLIGENCE/GOVERNANCE/AUTHORITY-ENVELOPE/SN-0866/IB-SMART-NOTE-20261010-sn0866-authority-lives-in-the-session-not-the-tool.md",
+      "blob_sha": "d1940783b03e429a246566c15e288750c562df7e",
+      "size": 5039
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/10/SYSTEM-INTELLIGENCE/GOVERNANCE/AUTHORITY-ENVELOPE/SN-0867/IB-SMART-NOTE-20261010-sn0867-a-blocked-transition-is-a-boundary-not-a-puzzle.md",
+      "blob_sha": "b7484d471533f1f41c52ab285058d7912ac8541a",
+      "size": 4853
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/10/SYSTEM-INTELLIGENCE/GOVERNANCE/AUTHORITY-ENVELOPE/SN-0897/IB-SMART-NOTE-20261010-sn0897-landed-merge-gate-crossing-flag-not-fix.md",
+      "blob_sha": "35ee7e57601f2e9a5ab2876c20d391744aa9804e",
+      "size": 5384
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/10/SYSTEM-INTELLIGENCE/GOVERNANCE/AUTHORITY-ENVELOPE/SN-0901/IB-SMART-NOTE-20261010-sn0901-only-hard-law-do-no-harm.md",
+      "blob_sha": "2fd063a6e8de03e6f89634e95e0e2f47d866b09e",
+      "size": 5787
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/10/SYSTEM-INTELLIGENCE/GOVERNANCE/BOARD-CONTINUITY/SN-0909/IB-SMART-NOTE-20261010-sn0909-board-succession-before-comment-cap.md",
+      "blob_sha": "a75733443362796153e85be05be26b3b88b5c6e5",
+      "size": 5091
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/10/SYSTEM-INTELLIGENCE/GOVERNANCE/DECISION-PROCEDURE/SN-0902/IB-SMART-NOTE-20261010-sn0902-zoom-in-zoom-out-collective-decision.md",
+      "blob_sha": "5ee6d9355fe23543878fe37d572a910efa54ecb3",
+      "size": 6124
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/10/SYSTEM-INTELLIGENCE/GOVERNANCE/DECISION-PROCEDURE/SN-0911/IB-SMART-NOTE-20261010-sn0911-review-requested-is-a-hold-not-a-race.md",
+      "blob_sha": "01bcc4c4f6460ec57e43e1d5062d2bae8e30fe42",
+      "size": 4972
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/10/SYSTEM-INTELLIGENCE/GOVERNANCE/DOCUMENT-AUTHORITY/SN-0898/IB-SMART-NOTE-20261010-sn0898-convergence-check-before-authoring.md",
+      "blob_sha": "14237514221d82b5a911d4b9c60dab6702239833",
+      "size": 4674
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/10/SYSTEM-INTELLIGENCE/GOVERNANCE/OWNERSHIP-MAP/SN-0907/IB-SMART-NOTE-20261010-sn0907-environment-scheduler-worker-responsibility-boundary.md",
+      "blob_sha": "0ec74957db387a6b224e3ebc0c819e2241063019",
+      "size": 8513
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/10/SYSTEM-INTELLIGENCE/GOVERNANCE/PROOF-HONESTY/SN-0881/IB-SMART-NOTE-20261010-sn0881-correction-is-a-claim-verify-created-at.md",
+      "blob_sha": "6dcafebb870082077c639d98351e2ca348ada331",
+      "size": 8658
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/10/SYSTEM-INTELLIGENCE/GOVERNANCE/PROOF-HONESTY/SN-0904/IB-SMART-NOTE-20261010-sn0904-learn-grow-let-go-proof-freshness.md",
+      "blob_sha": "12bb649484a0433877863855e5120ebf321bce35",
+      "size": 8488
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/10/SYSTEM-INTELLIGENCE/VERIFICATION/BATTERY-ISOLATION/SN-0796/IB-SMART-NOTE-20261010-sn0796-phantom-pytest-failure-tmpfs-concurrency.md",
       "blob_sha": "f2553ebdef9e80a2946e2f7f8c314084bfe280cc",
       "size": 10932
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/AMENDMENT-VERIFICATION/PHANTOM-CITATION-CLASS/SN-1018/IB-SMART-NOTE-20261011-sn1018-phantom-work-claim-retraction-rebuild.md",
+      "blob_sha": "eea31ed9a56fec6cc94c121fbfd6102a89ece0e4",
+      "size": 7231
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/CI-TRIAGE/CI-TRIGGER-SILENCE/SN-1035/IB-SMART-NOTE-20261011-sn1035-rerun-payload-time-travel.md",
+      "blob_sha": "9287b17a606f910b41d5cb75731679f0f15b7a17",
+      "size": 8681
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/CI-TRIAGE/CI-TRIGGER-SILENCE/SN-1037/IB-SMART-NOTE-20261011-sn1037-body-is-third-input-channel.md",
+      "blob_sha": "43c1d4b3e87274f05443e8df010870aba9f745e7",
+      "size": 8387
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/CI-TRIAGE/FAILURE-ATTRIBUTION/SN-0988/IB-SMART-NOTE-20261011-sn0988-bash-e-exit-capture-kills-the-witness.md",
+      "blob_sha": "6f542bc2bc5aaa2ab566935904f8d87fd55e41b8",
+      "size": 6409
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/CI-TRIAGE/FAILURE-ATTRIBUTION/SN-0995/IB-SMART-NOTE-20261011-sn0995-gate-failure-triage-grammar-discrimination-delivery.md",
+      "blob_sha": "8afa5a8051d352dbf86350ec29920b3df77fc16b",
+      "size": 5915
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/CI-TRIAGE/FAILURE-ATTRIBUTION/SN-1005/IB-SMART-NOTE-20261011-sn1005-stale-fixture-false-red.md",
+      "blob_sha": "6a751df7d379327c41685b17cc14af523f4bb404",
+      "size": 6951
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/CI-TRIAGE/INSTRUMENT-PARITY/SN-1033/IB-SMART-NOTE-20261011-sn1033-harden-the-verifier-fleet.md",
+      "blob_sha": "d0664296bed0eadfe4360d4ef83d75cc59daab5d",
+      "size": 7070
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/CI-TRIAGE/PROOF-ENVIRONMENT-ISOLATION/SN-1016/IB-SMART-NOTE-20261011-sn1016-verify-the-verifiers-environment.md",
+      "blob_sha": "383fc0ae79e3bce86c88139db1bd1e9807730410",
+      "size": 5364
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/CI-TRIAGE/RED-RUN-DIAGNOSIS/SN-1054/IB-SMART-NOTE-20261011-sn1054-tip-failure-may-be-pr-evaluation-wearing-name-tag.md",
+      "blob_sha": "62303d8c6a34ac30bfff473a1ae9a39354690cde",
+      "size": 4317
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/EARNED-INTELLIGENCE/TRANSFER-TEST/SN-1023/IB-SMART-NOTE-20261011-sn1023-the-transfer-test-is-the-mission-test.md",
+      "blob_sha": "db6396399acba7afe21b7cea50f6dda1bf342d2f",
+      "size": 5425
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/EARNED-INTELLIGENCE/TRANSFER-TEST/SN-1029/IB-SMART-NOTE-20261011-sn1029-correct-refutation-proves-transfer-test.md",
+      "blob_sha": "45974892763bceacb6433d2e7f20cb3c109d6a0d",
+      "size": 7132
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/EARNED-INTELLIGENCE/TRANSFER-TEST/SN-1041/IB-SMART-NOTE-20261011-sn1041-first-positive-compounding-signal-blinded-sealed-arm.md",
+      "blob_sha": "a17559ddadc03675a4dfdce453687a9d83c878b2",
+      "size": 6778
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/EARNED-INTELLIGENCE/TRANSFER-TEST/SN-1043/IB-SMART-NOTE-20261011-sn1043-dry-run-gate-instrument-artifact.md",
+      "blob_sha": "86551ad9991215540cb559d7d4d6f23238506ef4",
+      "size": 6463
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/EVIDENCE-DISCIPLINE/SN-1022/IB-SMART-NOTE-20261011-sn1022-treatment-arms-emit-per-assertion-rows.md",
+      "blob_sha": "30b6e759922bc7328eff41807c71783550262eab",
+      "size": 5289
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/GATE-IDENTITY/SN-1053/IB-SMART-NOTE-20261011-sn1053-workflow-rerun-replays-frozen-pr-body.md",
+      "blob_sha": "3f5895706d47be5423ddcd25c12fb08559a78507",
+      "size": 4769
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/INDEPENDENT-VERIFICATION/SN-0990/IB-SMART-NOTE-20261011-sn0990-replicate-the-verdict-dont-inherit-it.md",
+      "blob_sha": "3959f3cb5b269677d7484b365e2d9eb3c7b1ebab",
+      "size": 7590
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/INDEPENDENT-VERIFICATION/SN-0998/IB-SMART-NOTE-20261011-sn0998-novel-vectors-spelling-seam-law11.md",
+      "blob_sha": "90cbc9c48740140bb7f01c4a9225086ad56be547",
+      "size": 7888
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/INDEPENDENT-VERIFICATION/SN-1004/IB-SMART-NOTE-20261011-sn1004-door-nobody-walks-through.md",
+      "blob_sha": "535ce9632a79e28a731283cecc9a1f7c6abca953",
+      "size": 6512
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/PROOF-HONESTY/SN-0989/IB-SMART-NOTE-20261011-sn0989-receipts-must-exercise-the-fix-they-prove.md",
+      "blob_sha": "6f9cee4d88bf67a7a515212caeb28becab36a09c",
+      "size": 5743
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/PROOF-HONESTY/SN-1020/IB-SMART-NOTE-20261011-sn1020-word-the-claim-at-the-seam.md",
+      "blob_sha": "b628a9424b769274f99bb2a0c22b345101d86121",
+      "size": 7016
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/QUALIFICATION-SEMANTICS/SN-1045/IB-SMART-NOTE-20261011-sn1045-verified-not-qualified-receipt-vs-content.md",
+      "blob_sha": "862df463be852b4cddeed4ee44301ff3cf07f8b9",
+      "size": 6851
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/TEST-DESIGN/SN-1038/IB-SMART-NOTE-20261011-sn1038-fixtures-must-be-hermetic.md",
+      "blob_sha": "7d6a54aae5e5e9c178e20da5b0498bb81d6bc316",
+      "size": 7518
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/TEST-DESIGN/SN-1042/IB-SMART-NOTE-20261011-sn1042-count-drift-assert-new-invariant-preserve-teeth.md",
+      "blob_sha": "56813f53dbd7a13effecebe616592628bd1f3bb6",
+      "size": 6398
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/TEST-DESIGN/SN-1044/IB-SMART-NOTE-20261011-sn1044-universal-failure-suspect-harness.md",
+      "blob_sha": "06b0fd55a412e3e40716c5ed0f71656eb5a17e7b",
+      "size": 6865
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/GOVERNANCE/ACTION-ECONOMY/SN-1032/IB-SMART-NOTE-20261011-sn1032-single-reader-needs-text-relay.md",
+      "blob_sha": "3c861419fec3f925ca6d1dd8fab7439a7d7656ef",
+      "size": 7025
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/GOVERNANCE/BOARD-CONTINUITY/SN-0986/IB-SMART-NOTE-20261011-sn0986-hard-coded-venue-silent-break.md",
+      "blob_sha": "e7a601fe1557659cbfad35260061950273822ccc",
+      "size": 5084
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/GOVERNANCE/COLLISION-REGISTRY/SN-1019/IB-SMART-NOTE-20261011-sn1019-superseded-repair-deleted-not-stacked.md",
+      "blob_sha": "ebc17ea89585cb45b2071cbe8345a55843c5685f",
+      "size": 7296
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/GOVERNANCE/DECISION-PROCEDURE/SN-1034/IB-SMART-NOTE-20261011-sn1034-calculator-advisory-owned-override.md",
+      "blob_sha": "ed579a922f947746fc95e72a32a76aaeca1e3737",
+      "size": 7961
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/GOVERNANCE/DECONFLICTION/SN-1006/IB-SMART-NOTE-20261011-sn1006-deconfliction-tip-plus-open-prs.md",
+      "blob_sha": "8921a603c4d43a337ac940fa004e504be8d28234",
+      "size": 6834
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/GOVERNANCE/ETHICS/SN-1010/IB-SMART-NOTE-20261011-sn1010-intent-disqualification-doctrine.md",
+      "blob_sha": "7663f43f062f45acf7f0c8cffd290dd5d472e01c",
+      "size": 7186
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/GOVERNANCE/GATE-OWNERSHIP/SN-1055/IB-SMART-NOTE-20261011-sn1055-pat-cannot-formally-review-seat-authored-pr.md",
+      "blob_sha": "2c785cbd9c2efb9fdcc68e41caa75f574d46a74a",
+      "size": 4618
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/GOVERNANCE/LAW-IS-CODE/SN-0987/IB-SMART-NOTE-20261011-sn0987-dead-in-prose-not-dead-in-code.md",
+      "blob_sha": "d731ef944e140657d07c74af75e85a5da5d99bb9",
+      "size": 4844
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/GOVERNANCE/LAW-IS-CODE/SN-0992/IB-SMART-NOTE-20261011-sn0992-self-validation-is-not-independent-verification-live-gate-governs.md",
+      "blob_sha": "c787c9e7b4a13faa8a7f16c6e414390e2fb519de",
+      "size": 7399
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/GOVERNANCE/LAW-IS-CODE/SN-1008/IB-SMART-NOTE-20261011-sn1008-law12-reproof-tree-identity.md",
+      "blob_sha": "d35d6a4e4d2b7e24446569463ed4ae436d03bf0c",
+      "size": 6405
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/GOVERNANCE/MERGE-AUTHORITY/SN-0993/IB-SMART-NOTE-20261011-sn0993-declare-author-seat-for-mechanical-consensus.md",
+      "blob_sha": "89e8f18c6042d62182e5409f8b2845488de40238",
+      "size": 5837
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/GOVERNANCE/MERGE-AUTHORITY/SN-0996/IB-SMART-NOTE-20261011-sn0996-self-validation-fallback-doctrine.md",
+      "blob_sha": "f13c9207d82ec5edc17ae49f7832985988bc9fc2",
+      "size": 6503
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/GOVERNANCE/RECEIPT-HONESTY/SN-0997/IB-SMART-NOTE-20261011-sn0997-clock-source-receipt-discipline.md",
+      "blob_sha": "7ff1c3d8728db727d2addd2105584524b07db6ee",
+      "size": 4976
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/GOVERNANCE/RECEIPT-HONESTY/SN-1007/IB-SMART-NOTE-20261011-sn1007-no-40hex-in-evidence.md",
+      "blob_sha": "852d1c25694014ce1a5ac9c829d54a4d0fecf996",
+      "size": 4359
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/GOVERNANCE/RECEIPT-HONESTY/SN-1009/IB-SMART-NOTE-20261011-sn1009-name-the-scope-of-every-delta-claim.md",
+      "blob_sha": "6d4c61da59333b5598d4a0d4354b9f7c45d924e7",
+      "size": 6539
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/GOVERNANCE/RETRIEVAL-AUTHORIZATION/SN-1015/IB-SMART-NOTE-20261011-sn1015-retrieval-is-not-authorization.md",
+      "blob_sha": "df0bf82edac36a813fd02a2ffe0e910ac6870fd9",
+      "size": 4965
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/GOVERNANCE/TEAMWORK/SN-1012/IB-SMART-NOTE-20261011-sn1012-no-bottleneck-law.md",
+      "blob_sha": "346d09ba49dc807981a8fef65ad88c519bc34e41",
+      "size": 5796
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/LEARNING-PIPELINE/INGESTION-CHANNEL-DISCIPLINE/SN-1013/IB-SMART-NOTE-20261011-sn1013-authority-screen-drafting-discipline.md",
+      "blob_sha": "00baf681bb9b7d47675d9eddab348dca4f2fb087",
+      "size": 8001
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/NAYA-STANDING-LAW/LAW-AS-CODE/SN-0994/IB-SMART-NOTE-20261011-sn0994-twelve-laws-boundary-legitimate-authority.md",
+      "blob_sha": "3b0b5e3f293c0dbc0f8beb0017a88e942e6ba97f",
+      "size": 6889
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/OPERATIONS/MEASUREMENT-DISCIPLINE/SN-1021/IB-SMART-NOTE-20261011-sn1021-pre-registered-zero-is-data.md",
+      "blob_sha": "6ca1c82ede2ca90b6ce1918c398b4f39ac7d74a9",
+      "size": 7646
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/OPERATIONS/PROMOTION-GATES/SN-0991/IB-SMART-NOTE-20261011-sn0991-crashing-guard-noisier-than-denying-guard.md",
+      "blob_sha": "37077681684288623db080c0e5ba831375b7e6d7",
+      "size": 6390
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/EVIDENCE-DISCIPLINE/SN-1027/IB-SMART-NOTE-20261011-sn1027-reconstructed-detail-carry-provenance.md",
+      "blob_sha": "54b4769433a9537694ea1a7a3182810dafb4901e",
+      "size": 8641
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/GATE-DESIGN/SN-1014/IB-SMART-NOTE-20261011-sn1014-required-check-paths-filter-stuck-pending.md",
+      "blob_sha": "533c1961bdd3baf1892cf063be34fbf5ebf6783e",
+      "size": 8338
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/GATE-DESIGN/SN-1017/IB-SMART-NOTE-20261011-sn1017-receipt-without-head-sha-pin-is-not-proof.md",
+      "blob_sha": "35f7829a7db8d18abb021665cf0928d9237ca76a",
+      "size": 5010
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/GATE-DESIGN/SN-1025/IB-SMART-NOTE-20261011-sn1025-conventions-rot-gates-persist.md",
+      "blob_sha": "ff6d26198c6a29506c453da0129cdcd67356f23d",
+      "size": 7229
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/GATE-DESIGN/SN-1026/IB-SMART-NOTE-20261011-sn1026-fail-closed-gate-first-pr-red-is-proof.md",
+      "blob_sha": "6950c17755eb2f98ead79d141e0b0b8be8af0e22",
+      "size": 7516
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/GATE-DESIGN/SN-1031/IB-SMART-NOTE-20261011-sn1031-gate-false-alarm-rename-dont-allowlist.md",
+      "blob_sha": "4384d1c2b46bf29aea7a11fed4135d97abf09fea",
+      "size": 9809
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/KERNEL-CONTRACT-SEAMS/SN-1024/IB-SMART-NOTE-20261011-sn1024-label-dont-wire-dont-delete.md",
+      "blob_sha": "253515d55b0d9aa97fd3a0e7cf6096922cecd5c5",
+      "size": 5500
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/MEASUREMENT-INTEGRITY/SN-1028/IB-SMART-NOTE-20261011-sn1028-calibrate-probes-ceiling-is-truth.md",
+      "blob_sha": "09d06959bb43d04b0e9380190868d010b8bbc30a",
+      "size": 8634
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/MEASUREMENT-INTEGRITY/SN-1030/IB-SMART-NOTE-20261011-sn1030-never-score-a-void.md",
+      "blob_sha": "ed84d9b2b369afdca2365a9aeda859604af247d2",
+      "size": 6579
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/MEASUREMENT-INTEGRITY/SN-1036/IB-SMART-NOTE-20261011-sn1036-creation-warms-the-measurement.md",
+      "blob_sha": "8117bae24ccf89d3fc150e2e56d6c35753e30a47",
+      "size": 8821
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/MEASUREMENT-INTEGRITY/SN-1039/IB-SMART-NOTE-20261011-sn1039-diff-base-exempt-merge-commits.md",
+      "blob_sha": "f9d80031101ab2f31f6d95d762a30485fd01e1e6",
+      "size": 7461
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/TEAM-EXECUTION/SN-1046/IB-SMART-NOTE-20261011-sn1046-duplicate-build-stand-down-verify-theirs.md",
+      "blob_sha": "2893e817703bcc2f1a091816a37c053be1fb23bd",
+      "size": 7520
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/11/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/WORLD-MODEL/SN-1040/IB-SMART-NOTE-20261011-sn1040-world-model-abstain-at-every-seam.md",
+      "blob_sha": "5277f72fc5b3f056223786b3e72b374ab70a1349",
+      "size": 8769
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/EARNED-INTELLIGENCE/VERIFIED-EXPERIENCE/SN-1127/IB-SMART-NOTE-20261012-sn1127-mine-the-why-not-10-first.md",
+      "blob_sha": "17b54f523b4e41423b69cb7d1908d698a0281e56",
+      "size": 4575
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/COLD-SUCCESSOR-PROOF/SN-1105/IB-SMART-NOTE-20261012-sn1105-dont-construct-coldness-evict-it.md",
+      "blob_sha": "90060f0f90985c26692792955c1eac1e9ec07c95",
+      "size": 6620
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/INSTRUMENT-HARDENING/SN-1133/IB-SMART-NOTE-20261012-sn1133-liveness-the-instrument-is-a-write-not-a-read.md",
+      "blob_sha": "99248c6c4e12bde773538be70648a7c30048db47",
+      "size": 4390
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/INSTRUMENT-HARDENING/SN-1140/IB-SMART-NOTE-20261012-sn1140-seal-the-mechanisms-field-contract.md",
+      "blob_sha": "9efbbc655064b9105a31b408e9d581dfcbb6deab",
+      "size": 7418
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/INSTRUMENT-HARDENING/SN-1146/IB-SMART-NOTE-20261012-sn1146-seal-certifies-only-named-dimensions.md",
+      "blob_sha": "f5ce1f209fd1252f2e8d683bcaeb30959728eef2",
+      "size": 6036
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/NEGATIVE-PROOF/SN-1150/IB-SMART-NOTE-20261012-sn1150-absence-must-be-counted-not-just-presence.md",
+      "blob_sha": "8cc9d2aef1c0a4d54b94b9caa4732d236a2ab60c",
+      "size": 3857
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/PROOF-HONESTY/SN-1143/IB-SMART-NOTE-20261012-sn1143-green-achieved-by-not-looking-is-not-green.md",
+      "blob_sha": "20c23f31fe1fa89457fca22d5cd7a663bdb715ac",
+      "size": 2896
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/PROOF-HONESTY/SN-1149/IB-SMART-NOTE-20261012-sn1149-a-pre-registered-confound-is-a-verdict-not-an-excuse.md",
+      "blob_sha": "9f986ca03c6e063121a3ff6745a832b5927f3ed2",
+      "size": 3546
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/PROOF-HONESTY/SN-1160/IB-SMART-NOTE-20261012-sn1160-read-the-gate-before-writing-the-body.md",
+      "blob_sha": "442ae9213f887b80b5516aace6cad8f66dd2ab7a",
+      "size": 4192
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/RETRIEVAL-RANKING/SN-1108/IB-SMART-NOTE-20261012-sn1108-confident-corruption-silent-wrong-answer.md",
+      "blob_sha": "9ea7a98af2ca943c8d436be2c4d5a32a605ec5de",
+      "size": 7892
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/SEAL-DISCIPLINE/SN-1144/IB-SMART-NOTE-20261012-sn1144-seal-the-unrunnable-probe-never-degrade-it.md",
+      "blob_sha": "680fb0a496e377d2754f2e20358b3cff4e20e7eb",
+      "size": 2854
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/SN-1117/IB-SMART-NOTE-20261012-sn1117-falsifier-firing-predicate.md",
+      "blob_sha": "072c31f64682a3840e7726848e8c654e8bcd33e0",
+      "size": 8966
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/TEST-DESIGN/SN-1122/IB-SMART-NOTE-20261012-sn1122-gate-that-only-fails.md",
+      "blob_sha": "eba7fc0ea37c3ca0e9bea32b82631be16e89b479",
+      "size": 4749
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/GOVERNANCE/AUTHORITY-ENVELOPE/SN-1104/IB-SMART-NOTE-20261012-sn1104-phantom-constraint-voiding.md",
+      "blob_sha": "1ec9fee1db2663d4a70044587af9f7f58e1c8745",
+      "size": 7636
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/GOVERNANCE/AUTHORITY-ENVELOPE/SN-1109/IB-SMART-NOTE-20261012-sn1109-ambiguity-auction-name-the-collision-rule.md",
+      "blob_sha": "a3963137c51240893d33380a161ea9fe8e3ee8ca",
+      "size": 6879
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/GOVERNANCE/AUTHORITY-ENVELOPE/SN-1119/IB-SMART-NOTE-20261012-sn1119-zero-authority-proof-for-verdicts.md",
+      "blob_sha": "c2686c344a1863614225b17084a4c32f977e8f8a",
+      "size": 4271
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/GOVERNANCE/AUTHORITY-ENVELOPE/SN-1126/IB-SMART-NOTE-20261012-sn1126-fail-closed-stamped-corpus-first.md",
+      "blob_sha": "e6495c0be0521ceae30b184445fb9a195047dc6a",
+      "size": 3985
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/GOVERNANCE/MERGE-AUTHORITY/SN-1145/IB-SMART-NOTE-20261012-sn1145-a-revert-closes-with-the-same-byte-proof-as-a-merge.md",
+      "blob_sha": "abc922d6b38783c5d3328fabde73fca780970872",
+      "size": 2773
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-PRINCIPLES/SN-1100/IB-SMART-NOTE-20261012-sn1100-intelligent-action-principle.md",
+      "blob_sha": "8cd1e86ea409ecbae436a3b71ee24692b04a17df",
+      "size": 4065
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/GOVERNANCE/PROOF-HONESTY/SN-1095/IB-SMART-NOTE-20261012-sn1095-counter-principle-column.md",
+      "blob_sha": "2dd7bc8410eb80f007df3843d63d3e2eeba0bc8a",
+      "size": 4428
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/GOVERNANCE/PROOF-HONESTY/SN-1106/IB-SMART-NOTE-20261012-sn1106-unadopted-repair-stays-open.md",
+      "blob_sha": "22375125c5893134826271c747fca852cf2c381d",
+      "size": 7384
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/GOVERNANCE/PROOF-HONESTY/SN-1110/IB-SMART-NOTE-20261012-sn1110-honesty-tax-immunity-question-first.md",
+      "blob_sha": "2d4314d68138cd132c8becde00a0ff6ae65709bb",
+      "size": 7109
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/GOVERNANCE/PROOF-HONESTY/SN-1118/IB-SMART-NOTE-20261012-sn1118-repair-the-derivation-path.md",
+      "blob_sha": "6df825a8f8a3f6a1df5b0e0d713c8caeefbca84b",
+      "size": 4240
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/GOVERNANCE/PROOF-HONESTY/SN-1121/IB-SMART-NOTE-20261012-sn1121-score-without-refusal-point.md",
+      "blob_sha": "c2fd50cfe059d01cd01328a8d57d0d4d961da924",
+      "size": 4040
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/GOVERNANCE/PROOF-HONESTY/SN-1124/IB-SMART-NOTE-20261012-sn1124-fence-with-an-open-gate.md",
+      "blob_sha": "0919007ad99f41a5ac090e096f2c0b8aa24f4ed2",
+      "size": 3460
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/GOVERNANCE/PROOF-HONESTY/SN-1125/IB-SMART-NOTE-20261012-sn1125-name-the-reds-inside-the-green.md",
+      "blob_sha": "68875e7d68f96bccaa2f7a1e4f331e19e32dfed4",
+      "size": 3106
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/GOVERNANCE/PROOF-HONESTY/SN-1130/IB-SMART-NOTE-20261012-sn1130-gate-calibration-law-documented-sensor-basis-wins.md",
+      "blob_sha": "5ff1f4d20e85d76bd09ad017361b4a46849ea52a",
+      "size": 4209
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/LEARNING-PIPELINE/PROOF-VALIDITY/SN-1129/IB-SMART-NOTE-20261012-sn1129-filter-is-a-hypothesis-too.md",
+      "blob_sha": "ac6662398bc435246263463a504306833260b0d4",
+      "size": 5643
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/LEARNING-PIPELINE/PROOF-VALIDITY/SN-1132/IB-SMART-NOTE-20261012-sn1132-seal-the-mechanism-heartbeat-not-just-the-scoreboard.md",
+      "blob_sha": "3de855012e3168a2bc8f91d995920c2c93a72ded",
+      "size": 5193
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/LEARNING-PIPELINE/PROOF-VALIDITY/SN-1136/IB-SMART-NOTE-20261012-sn1136-asserted-receipt-must-exist-on-disk.md",
+      "blob_sha": "eeafc7b446f84b267c2376f39201c2c802fc5552",
+      "size": 4367
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/LEARNING-PIPELINE/PROOF-VALIDITY/SN-1148/IB-SMART-NOTE-20261012-sn1148-sweeps-reread-primary-sources.md",
+      "blob_sha": "6a8510e0d25891dec6d119b0b8925d7b79b50b54",
+      "size": 6609
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/OPERATING-PRINCIPLES/SN-1107/IB-SMART-NOTE-20261012-sn1107-intelligence-compound-human-agency.md",
+      "blob_sha": "cef502180c5044cfcf050c6a2d820285ff7c9836",
+      "size": 4035
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/OPERATING-PRINCIPLES/SN-1111/IB-SMART-NOTE-20261012-sn1111-compounding-done-criteria.md",
+      "blob_sha": "d3e95788bd80073b394b69dcc834fcb823c535f6",
+      "size": 6772
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/OPERATING-PRINCIPLES/SN-1112/IB-SMART-NOTE-20261012-sn1112-sweep-names-its-read-set.md",
+      "blob_sha": "31757b539a38dd541817068c43eebaa076c545a0",
+      "size": 7853
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/OPERATING-PRINCIPLES/SN-1113/IB-SMART-NOTE-20261012-sn1113-no-second-mechanism-reconcile.md",
+      "blob_sha": "5a66a4dfef4788f983e935b5f183001edf4f33ed",
+      "size": 7826
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/OPERATING-PRINCIPLES/SN-1114/IB-SMART-NOTE-20261012-sn1114-detect-refuse-is-not-allocation.md",
+      "blob_sha": "d7fda8817fd3c575234d28f581fa861999b48839",
+      "size": 8397
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/OPERATING-PRINCIPLES/SN-1115/IB-SMART-NOTE-20261012-sn1115-stale-brief-premises.md",
+      "blob_sha": "d3d4f21e6836f8368f13fac591e0980391f319ae",
+      "size": 7294
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/OPERATING-PRINCIPLES/SN-1116/IB-SMART-NOTE-20261012-sn1116-price-reproduction-correctly.md",
+      "blob_sha": "8643c854bde39ae726333b5044873f36765a1c05",
+      "size": 7624
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/OPERATING-PRINCIPLES/SN-1120/IB-SMART-NOTE-20261012-sn1120-inheritance-never-inherits-green.md",
+      "blob_sha": "c10c1323d1c110d02a3d6fd06bec4ab6a35d7d65",
+      "size": 4084
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/OPERATING-PRINCIPLES/SN-1123/IB-SMART-NOTE-20261012-sn1123-reproduce-inherited-claims.md",
+      "blob_sha": "965d9815b857af3878b2ece730a1cc4c9fa836da",
+      "size": 4600
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/OPERATING-PRINCIPLES/SN-1131/IB-SMART-NOTE-20261012-sn1131-already-wired-closes-the-blocker.md",
+      "blob_sha": "5f1fb91a48db126f2a64bc98094c003fa1096149",
+      "size": 4178
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/OPERATIONS/COORDINATION-DESIGN/SN-1128/IB-SMART-NOTE-20261012-sn1128-reissue-must-cite-staleness-evidence.md",
+      "blob_sha": "94d94ec062d61f952c6c3460559f1f64c7509fdc",
+      "size": 4950
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/OPERATIONS/COORDINATION-DESIGN/SN-1135/IB-SMART-NOTE-20261012-sn1135-phantom-lane-zero-trace-changed-brief-redispatch.md",
+      "blob_sha": "41a084fdc05eccc5dffb0b5732248191ef348793",
+      "size": 6109
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/OPERATIONS/COORDINATION-DESIGN/SN-1137/IB-SMART-NOTE-20261012-sn1137-one-lane-one-receipt-per-tick.md",
+      "blob_sha": "d87f1b642c428a14d723befb9c2638867eadb056",
+      "size": 4724
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/OPERATIONS/COORDINATION-DESIGN/SN-1138/IB-SMART-NOTE-20261012-sn1138-merge-gated-claims-name-pr-and-sha.md",
+      "blob_sha": "7c4d50741d13e4e8168e4d7f24bda2e1cf5dc62d",
+      "size": 5589
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/OPERATIONS/COORDINATION-DESIGN/SN-1139/IB-SMART-NOTE-20261012-sn1139-backlog-ids-are-namespace-scoped.md",
+      "blob_sha": "2ca78caff583dd6cddeaa47dcaf3f5092c8e021c",
+      "size": 5623
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/OPERATIONS/COORDINATION-DESIGN/SN-1141/IB-SMART-NOTE-20261012-sn1141-a-due-announcement-must-name-its-subject.md",
+      "blob_sha": "bde4204bedc747f86aa067a2348f866dd7f31105",
+      "size": 6035
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/OPERATIONS/COORDINATION-DESIGN/SN-1142/IB-SMART-NOTE-20261012-sn1142-when-ids-collide-the-dependency-graph-decides-the-name.md",
+      "blob_sha": "13820c72622edba8c74b6ac770f41c7567e8cbcb",
+      "size": 7478
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/OPERATIONS/COORDINATION-DESIGN/SN-1161/IB-SMART-NOTE-20261012-sn1161-fence-lives-outside-the-repo.md",
+      "blob_sha": "71d18146204ba1bda9a0dd8d566c5a5d5f6e65f6",
+      "size": 4369
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/OPERATIONS/ROUND-OWNERSHIP/SN-1134/IB-SMART-NOTE-20261012-sn1134-inherited-round-fresh-builder-closes-and-scores.md",
+      "blob_sha": "c7b403a0620d55aeb6022c2ada7e74c9067af6b1",
+      "size": 5471
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/FAILURE-CLASSIFICATION/SN-1147/IB-SMART-NOTE-20261012-sn1147-degrade-then-crash-is-a-crash.md",
+      "blob_sha": "d1dfadb97714ff44a11aec7cc4e5e7ae9f553b28",
+      "size": 6887
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/FAILURE-CLASSIFICATION/SN-1151/IB-SMART-NOTE-20261012-sn1151-a-defect-report-carries-its-fired-checks-names-fail-closed-files-distinct-id.md",
+      "blob_sha": "4cf03b77ad7f4862f2b235eac8e761010a372756",
+      "size": 4157
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/FAILURE-CLASSIFICATION/SN-1159/IB-SMART-NOTE-20261012-sn1159-merged-not-enforced.md",
+      "blob_sha": "da52ca5a073de41cd4d20367aeab1dabb079699b",
+      "size": 4450
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/RIGOR-SIMPLICITY/SN-1094/IB-SMART-NOTE-20261012-sn1094-similarity-is-not-entailment.md",
+      "blob_sha": "c60ecf2d983c5311fa3cc875c5d75781f41040c0",
+      "size": 4840
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/RIGOR-SIMPLICITY/SN-1096/IB-SMART-NOTE-20261012-sn1096-reject-the-shape-not-the-words.md",
+      "blob_sha": "63347d39cd16644e89b5f4a1a5c9447b81250deb",
+      "size": 4563
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/13/SYSTEM-INTELLIGENCE/GOVERNANCE/COLLISION-REGISTRY/SN-1173/IB-SMART-NOTE-20261013-sn1173-supersession-by-byte-identity-and-stack-enumeration.md",
+      "blob_sha": "bbad5c3fb7b470632286cfcff9c2874730f7747d",
+      "size": 3605
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/13/SYSTEM-INTELLIGENCE/GOVERNANCE/EVIDENCE-DISCIPLINE/SN-1174/IB-SMART-NOTE-20261013-sn1174-disclose-the-unachieved-method-ideal.md",
+      "blob_sha": "54ce063a7376a06bde8f0a8253a276a3c2ae49f8",
+      "size": 3958
     },
     {
       "path": "BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/ACTIVATION-NAYA-INTELLIGENCE.md",
