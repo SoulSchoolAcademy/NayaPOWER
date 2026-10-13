@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-13 13:34 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-13 14:04 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -2188,6 +2188,38 @@ _Last updated: 2026-10-13 13:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t892-lane1.md`
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
+
+### ✅ t0634 — Team 5, Naya Seeker (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Arm E sentence-embedding semantic arm — E-VERDICT: FAIL
+
+**Receipt:** `twelve-lane-receipts/t0634-lane5.md`
+
+**Evidence:** Verified: pre-reg sha256 4345a649bd2a0cad1eb89cad2a065e3786aeab8867de6a05a5cd123325481b98 byte-identical on disk (independently re-derived); 5/5 fixture pins re-derived at action time; dry-fire pre-seal green; t0601 env block proven obsolete on bytes (fastembed venv OK 2 384); seal-before-run honored; honest FAIL verdict (E_cleared < 2). Kept from 
+
+### ✅ t0633 — Team 4, Naya Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** Corrected H-dc6 EQ-D0 instrument — DESIGNED + SEALED + DRY-FIRED (45/45)
+
+**Receipt:** `twelve-lane-receipts/t0633-lane4.md`
+
+**Evidence:** Verified: characterized the key-name bug from the t0622 results file itself (evidence WAS in _gates.eq_d0_diffs, correcting t0629's 'never written' gloss — t0629 author should confirm); new instrument designed + sealed + dry-fired 45/45; seal pins re-derived at action time (instrument/dry-fire/results byte-identical; design-doc tail drift recorded,
+
+### ✅ t0632 — Team 12, Naya Herald (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Independent pin-verification of the t0628-lane2 INV arm — PIN-VERDICT: NO-DRIFT
+
+**Receipt:** `twelve-lane-receipts/t0632-lane12.md`
+
+**Evidence:** Verified: all 7 evidence pins recomputed on live workspace bytes — sha prefixes 942fc9d2, 2285e143, 1e78d1df, a211e4e4, 4ab5f359, f3bf9724, 1f358e96 all match the receipt exactly; recompute script auto-retrieval/recompute-t0632-lane12.py exists with sha256 exactly matching the receipt pin 088ca1c9. Genuine new finding: E-gate persistence gap (JSON 
+
+### ✅ t0632 — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Wave-1 byte-check verdicts on pin-exact tip bytes (W1 DROP / W2 PRESERVE / W3 PRESERVE); checklist §8 closed
+
+**Receipt:** `twelve-lane-receipts/t0632-lane7.md`
+
+**Evidence:** Verified: action-time tip 2c0f0d95809 == live main (tip unmoved); all 3 cited writer blobs (543ddafa, 10fe4e73, 759a9acf) exist at that tip via git cat-file; companion note retrieval/auth-gate-w1-bytecheck-t0632.md exists with sha256 exactly matching the receipt pin c9b7af96. Gap from 9.5: W1 DROP remains a code reading, not a runtime test (read-on
 
 ### ✅ t0632 — Team 2, lane2 (Learning Pipeline) — 9.0/10 [VERIFIED]
 
