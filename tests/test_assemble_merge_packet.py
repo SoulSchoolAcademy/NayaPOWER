@@ -162,7 +162,7 @@ def test_valid_pr_shape_assembles_passing_packet():
     assert evidence["validator_commit_id"] == HEAD
     assert evidence["stale_approvals_ignored"] == []
     # and the canonical check passes on it
-    sys.path.insert(0, str(ROOT / "tools" / "protocol"))
+    sys.path.insert(0, str(ROOT / "tools" / "protocol" / "checks"))
     import merge_authority
     verdict = merge_authority.check(packet)
     assert verdict["pass"] is True, verdict["reasons"]
@@ -178,7 +178,7 @@ def test_seat_falls_back_to_author_login_without_slash():
 # --- negative controls: each missing condition fails with its reason -------
 
 def _check(packet):
-    sys.path.insert(0, str(ROOT / "tools" / "protocol"))
+    sys.path.insert(0, str(ROOT / "tools" / "protocol" / "checks"))
     import merge_authority
     return merge_authority.check(packet)
 
