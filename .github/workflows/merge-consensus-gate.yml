@@ -62,6 +62,30 @@ jobs:
               echo "ERROR: could not resolve head SHA for PR $PR_NUM after 5 attempts (API unavailable, not a consensus verdict)" >&2
               exit 1
             fi
+            # Fail-closed SHA binding: only a well-formed 40-hex git SHA may
+            # leave this step as head_sha. An unverified, malformed, or
+            # hardcoded-looking value is rejected here — never echoed into
+            # $GITHUB_OUTPUT. A blind lookup failure must produce NO output,
+            # never a confident-looking SHA (P-008 defect class).
+            #
+            # The line-anchored grep below is NOT sufficient on its own
+            # (residual found in #2517 IV, Naya Mu): grep matches per line,
+            # so a value like "<40hex>\n<injected line>" passes on its first
+            # line and then writes BOTH lines into $GITHUB_OUTPUT, where the
+            # injected line (GitHub parses last-wins) silently overrides the
+            # bound head_sha — defeating the fail-closed binding entirely.
+            # Reject any newline first: a git SHA is exactly one line, so
+            # multiline values are never legitimate and always fail closed.
+            case "$HEAD_SHA" in
+              *$'\n'*)
+                echo "ERROR: head SHA lookup for PR $PR_NUM returned a multiline value; rejecting as fail-closed" >&2
+                exit 1
+                ;;
+            esac
+            if ! printf '%s' "$HEAD_SHA" | grep -Eq '^[0-9a-f]{40}$'; then
+              echo "ERROR: head SHA lookup for PR $PR_NUM returned an invalid value (not a 40-hex git SHA); rejecting as fail-closed" >&2
+              exit 1
+            fi
             echo "head_sha=$HEAD_SHA" >> $GITHUB_OUTPUT
           else
             echo "pr_number=${{ github.event.pull_request.number }}" >> $GITHUB_OUTPUT
