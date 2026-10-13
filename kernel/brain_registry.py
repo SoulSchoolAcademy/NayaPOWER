@@ -21,9 +21,34 @@ def _read_json(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-def load_and_validate_brain(root: Path, root_override: Path | None = None) -> dict:
+def load_and_validate_brain(root: Path, root_override: Path | None = None, fail_closed: bool = True) -> dict:
+    """Load and validate the materialized brain population.
+
+    fail_closed (default True): run kernel/brain_index_guard.inspect_index
+    first. If the local corpus no longer agrees with the committed index
+    manifest (STALE), or the index files were hand-edited instead of
+    regenerated-and-committed (TAMPERED), or the checkout cannot be verified
+    at all, the reader refuses with ok=False and a named guard error — never
+    a silently served stale index (B-51). Pass fail_closed=False only when the
+    caller has its own verification story and can name it.
+    """
     base = Path(root_override) if root_override is not None else Path(root)
     errors: list[str] = []
+    guard_verdict = "SKIPPED"
+    if fail_closed:
+        try:
+            from kernel.brain_index_guard import (
+                BrainIndexGuardError,
+                inspect_index,
+            )
+            guard_verdict = inspect_index(base)["verdict"]
+        except BrainIndexGuardError as exc:  # STALE / TAMPERED / UNVERIFIABLE
+            errors.append(f"brain_index_refused:{type(exc).__name__}:{exc}")
+            return {
+                "ok": False, "node_count": 0, "source_count": 0,
+                "graph_edge_count": 0, "errors": errors,
+                "guard_verdict": "REFUSED",
+            }
     required = [
         base / "BRAIN/03-KERNEL/MANIFEST.json",
         base / "BRAIN/03-KERNEL/0003-RUNTIME-REGISTRY-V1.json",
@@ -125,4 +150,5 @@ def load_and_validate_brain(root: Path, root_override: Path | None = None) -> di
         "source_count": len(population.get("source_mappings", [])),
         "graph_edge_count": len(edges),
         "errors": errors,
+        "guard_verdict": guard_verdict,
     }
