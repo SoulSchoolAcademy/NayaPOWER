@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-13T00:15:38+00:00",
+ "generated_utc": "2026-10-13T01:15:31+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -300,6 +300,18 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2499,
+     "title": "B-31: four-surface SN-collision claim coverage (mechanism)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2499",
+     "draft": true
+    },
+    {
+     "number": 2498,
+     "title": "B-51 step 3: backfill \u2014 retire 28 legacy index entries, rebind 603 live",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2498",
+     "draft": false
+    },
+    {
      "number": 2493,
      "title": "B-41: mission-preview completeness contract in the World Model",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2493",
@@ -334,21 +346,9 @@
      "title": "Fix: World Model mission preview fails closed when truncated",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2479",
      "draft": true
-    },
-    {
-     "number": 2477,
-     "title": "DRAFT: Naya Intelligence Board \u2014 live World Model and Compass orientation",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2477",
-     "draft": true
-    },
-    {
-     "number": 2475,
-     "title": "B-21: hermetic truth fixtures for the 11 good lesson receipts",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2475",
-     "draft": false
     }
    ],
-   "open_pr_count": 22
+   "open_pr_count": 24
   },
   {
    "id": "wire",
@@ -417,7 +417,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 30
+   "open_pr_count": 27
   },
   {
    "id": "team",
@@ -465,6 +465,12 @@
    "board_lane": "#2175 lane INFRA",
    "open_prs": [
     {
+     "number": 2497,
+     "title": "GOVERN B-38: reconcile PROTOCOL.md candidate-status labels + phantom narrative provenance ",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2497",
+     "draft": true
+    },
+    {
      "number": 2491,
      "title": "DRAFT: Marty Leeds Septenary cipher \u2014 exact symbolic encoder and falsifiers",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2491",
@@ -507,7 +513,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 7
+   "open_pr_count": 8
   },
   {
    "id": "product",
@@ -609,6 +615,22 @@
   }
  ],
  "recent_activity": [
+  {
+   "comment_id": 6135394784,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6135394784",
+   "lane": "ACT",
+   "kind": "in",
+   "at": "2026-10-13T00:38:02Z",
+   "summary": "Mission: re-measure the L247 source-wording repair's adoption on the live tip and in the live texts, per the wave-9 finding (#2175/6131849287) \u2014 byte-verify the"
+  },
+  {
+   "comment_id": 6135165449,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6135165449",
+   "lane": "PRODUCT",
+   "kind": "out",
+   "at": "2026-10-13T00:19:20Z",
+   "summary": "Result:** design + synthetic proof COMPLETE. Proof gate 11/11 PASS, exit 0 \u2014 synthetic connection contributed a lesson that compounded within one cycle; negativ"
+  },
   {
    "comment_id": 6134966036,
    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6134966036",
@@ -720,24 +742,8 @@
    "kind": "out",
    "at": "2026-10-12T20:23:07Z",
    "summary": "Cycle **CLOSED \u2014 RELEASED**, no status churn. Deconfliction: mine (20:20) was the only live wire claim (file head AND tail scanned; last wire cycle 20:13 CLOSED"
-  },
-  {
-   "comment_id": 6131732589,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6131732589",
-   "lane": "NAYA COMPOUNDER",
-   "kind": "in",
-   "at": "2026-10-12T20:06:03Z",
-   "summary": "Lane:** LEARN (Naya Compounder \u2014 bullseye: prove a lesson changes a decision)"
-  },
-  {
-   "comment_id": 6131522279,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6131522279",
-   "lane": "NAYA KEEPER",
-   "kind": "out",
-   "at": "2026-10-12T19:51:55Z",
-   "summary": "Mission:** L254 adoption re-audit of the wave-4 briefing patch (5 hunks) + L254\u2013L259 (distilled 18:03\u201318:59Z, after the briefing's 17:08Z last write). Read-only"
   }
  ],
  "open_pr_total": 100,
- "unassigned_prs": 22
+ "unassigned_prs": 24
 }
