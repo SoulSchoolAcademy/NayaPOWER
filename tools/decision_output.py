@@ -177,7 +177,15 @@ def normalize_scored(scored):
 # ---------------------------------------------------------------------------
 
 def rankable_options(options):
-    """Options the machine is allowed to recommend: not gated, total known."""
+    """Options the machine is allowed to recommend: not gated, total known.
+
+    Retirement-by-routing note (consolidation spec §3): this is the UDM
+    L5 ranking. New decision paths must NOT add new call sites here; they
+    route through the canonical seam on decide() (the `ranker` parameter)
+    or through kernel/value_calculus.evaluate_candidates. The reporting
+    serializer call site below is intentionally NOT seamed — it translates
+    an already-decided verdict, never re-decides.
+    """
     ranked = [o for o in options
               if not o["gated"] and o["total"] is not None]
     ranked.sort(key=lambda o: (
@@ -213,12 +221,77 @@ def driving_dimension(best, runner):
     return best_k, best_gap
 
 
-def decide(norm):
+def _seam_checked_ranking(rank_fn, options):
+    """Seam integrity guard (path 4, the decision seam).
+
+    An injected ranker may reorder or filter the input options — it may NOT
+    fabricate options and it may NOT alter them, and it must return a usable
+    ranked list. A forged admission (an option that was never in the input)
+    or a shadow (a returned option whose fields differ from the input option
+    with the same id — e.g. fabricated totals under a real id) or a malformed
+    return is rejected LOUDLY here, never admitted silently into the verdict:
+    a wrong answer with no error signal is worse than no answer.
+
+    The allowlist (ids) AND the per-option content images are snapshotted
+    BEFORE the untrusted ranker runs: a ranker that mutates the input list or
+    the input dicts after this point cannot smuggle its forgery past the
+    check, because the check reads the pre-call snapshot, never the
+    ranker-touched data.
+
+    Raises ValueError/TypeError — fail-closed by exception, never a
+    silent verdict.
+    """
+    # F1 fix (structural TOCTOU): snapshot the allowlist from `options`
+    # BEFORE calling the untrusted ranker. The old code computed known_ids
+    # from the same list object AFTER rank_fn(options) returned — a ranker
+    # that appends its forgery to the input allowlists its own forgery.
+    input_image = {}
+    for o in options:
+        input_image[o["id"]] = json.dumps(o, sort_keys=True, default=str)
+    ranked = rank_fn(options)
+    if ranked is None:
+        raise ValueError(
+            "decision_output.decide: injected ranker returned None — "
+            "refusing to decide on nothing.")
+    if not isinstance(ranked, (list, tuple)):
+        raise TypeError(
+            "decision_output.decide: injected ranker must return a list of "
+            f"options, got {type(ranked).__name__} — refusing to decide.")
+    for entry in ranked:
+        entry_id = entry.get("id") if isinstance(entry, dict) else None
+        if entry_id not in input_image:
+            raise ValueError(
+                "decision_output.decide: injected ranker admitted option id "
+                f"{entry_id!r}, which is not one of the input options — "
+                "forged admission rejected, refusing to decide.")
+        # F2 fix (contract gap): by-id membership is not enough. The returned
+        # option must be field-identical to the input option with that id.
+        # A shadow with fabricated fields under a real id (the B-51
+        # wrong-answer shape: silent, confident, wrong) is rejected loudly.
+        # Semantics decision (explicit): the ranker contract is reorder or
+        # filter ONLY. A ranker that rewrites fields — even adding an
+        # annotation — is outside the contract and fails LOUDLY, so its
+        # author learns immediately instead of the verdict drifting.
+        if json.dumps(entry, sort_keys=True, default=str) != input_image[entry_id]:
+            raise ValueError(
+                "decision_output.decide: injected ranker altered option id "
+                f"{entry_id!r} — returned fields differ from the input "
+                "option (shadow forgery) — rejecting, refusing to decide.")
+    return list(ranked)
+
+
+def decide(norm, ranker=None):
     """The decision. Returns (verdict_dict, exit_code).
 
     verdict_dict keys: verdict, best, runner_up, gated, questions,
     notes, sub_verdict (for the gated branch's non-gated section).
     Mode renderers only translate — they never re-decide.
+
+    `ranker` is the test seam for the UDM L5 ranking (consolidation
+    spec §3): an injected callable options -> ranked-list. None (the
+    production default) routes to rankable_options — today's behavior,
+    fail-closed. Test-only adapters (e.g. routing through the canonical
+    value calculus) must NEVER be passed in production.
     """
     base = {
         "verdict": None, "best": None, "runner_up": None,
@@ -241,7 +314,8 @@ def decide(norm):
     gated = [o for o in options if o["gated"]]
     base["gated"] = gated
 
-    ranked = rankable_options(options)
+    rank_fn = ranker if ranker is not None else rankable_options
+    ranked = _seam_checked_ranking(rank_fn, options)
     base["best"] = ranked[0] if ranked else None
     base["runner_up"] = ranked[1] if len(ranked) > 1 else None
 
