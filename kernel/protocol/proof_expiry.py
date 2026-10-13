@@ -28,7 +28,7 @@ quality_gate, act_pipeline). It does not replace them.
 INTEGRATION POINTS (Law 12 enforcement at execution boundaries):
   1. cold_start_gate.run_cold_start(...) — boot boundary. Current world
      state auto-resolves (resolve_current_state); explicit params override.
-     A cryptographically valid read receipt is refused if the protocol
+     A read receipt whose integrity seal verifies is refused if the protocol
      version moved since it was issued. Fires on every boot.
   2. act_pipeline.execute_plan(..., law12_proof_time=...) — execution
      boundary. The PLAN's authority grant is validated as a ProofRecord
