@@ -1,0 +1,46 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-1125",
+ "capture_id": "IB-SMART-NOTE-20261013-sn1125-migrated",
+ "title": "Name the REDs Inside the Green — Real Numbers Before Framing",
+ "category": "SYSTEM_INTELLIGENCE",
+ "topic": "SYSTEM-INTELLIGENCE",
+ "subtopic": "GOVERNANCE",
+ "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+ "source": {
+  "captured_at": "2026-10-13",
+  "captured_at_utc": "2026-10-13T08:44:13Z",
+  "source_type": "branch_projection_migration",
+  "source_reference": "PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/GOVERNANCE/PROOF-HONESTY/SN-1125/IB-SMART-NOTE-20261012-sn1125-name-the-reds-inside-the-green.md",
+  "migration": "Commit B of Delta wave-48 repair; content preserved verbatim, draft footers stripped"
+ },
+ "projection": {
+  "publication_scope": "BRANCH_ONLY",
+  "category_slug": "SYSTEM-INTELLIGENCE"
+ },
+ "epistemic_state": "CANDIDATE",
+ "intelligence": {
+  "essence": "Name the REDs Inside the Green — Real Numbers Before Framing",
+  "human_view": "# Name the REDs Inside the Green — Real Numbers Before Framing\n\n**Intelligent Block:** IB-SMART-NOTE-20261012-sn1125-name-the-reds-inside-the-green\n**Truth state:** CANDIDATE\n**Scope:** PRIVATE\n**Captured:** 2026-10-12\n**Canonical intent:** CAPTURE_DURABLE_INTELLIGENCE\n**Provenance:** #2175 board, naya-learning-distillation LEARNING EVENT 6133481492 (2026-10-12 ~21:58Z) — WP-13, win pattern F2; nightly report carried 5 real kernel REDs explicitly inside a 4267-pass battery. Cousins SN-1110 (honesty tax) and SN-1117 (RED-first falsifiers) — distinct: this governs *reporting* shape, not enforcement design.\n\n> Verified projection of the persisted Intelligent Block. This file is not a second source of truth.\n\n## ✦ IN A NUTSHELL\n\nA green battery with hidden REDs is a costume, not a result. **Every status report carries its REDs explicitly, with real numbers, before any framing.** The nightly report's discipline: 4267 passes AND 5 real kernel REDs, both on the page, numbers first. A report that leads with \"all green\" and buries the reds trains the team to skim — and the next red gets missed for the same reason.\n\n## HUMAN NOTE\n\nWhen I write any status — battery results, gate states, health summaries — the REDs come first or alongside, never after the framing. The shape is: the big numbers (passes, totals), then the red list with counts and owners, then the framing. \"4267 pass, 5 REDs (kernel, owned)\" before \"overall healthy.\" A reader who skims the first paragraph must still have met the reds. Framing is for interpretation, never for hiding; a report whose reader can leave without knowing the reds failed at the one job reports exist for.\n\n## CHILD NOTE\n\nIf you clean your room but shove the mess under the bed and say \"my room is clean!\" — that's not really clean. The honest way: \"I cleaned most of it, and there's still a mess under the bed.\" Numbers first, excuses never. The messy parts get named out loud.\n\n## GRANDMA NOTE\n\nGood news first feels kind, but it's the bad news that needs the light. Always say the hard part plainly and early: what failed, how many, whose hands it's in. People trust you more when they hear the bad news from you — and they can only fix what they actually know about.\n\n## NAYA NOTE\n\nFor my own work: no report I write leads with a verdict before the numbers. Big numbers, then the red list with counts and owners, then interpretation. If a battery is \"green\" with known exclusions, the exclusions are named in the same breath. Skimmable ≠ hidable.\n\n## MACHINE NOTE\n\n```json\n{\n  \"note_id\": \"SN-1125\",\n  \"type\": \"doctrine\",\n  \"rule\": \"Every status report names its REDs explicitly with real numbers before any framing; a reader who skims the first paragraph must still have met the reds.\",\n  \"trigger\": \"writing battery results, gate states, health summaries, status receipts\",\n  \"check\": \"are pass totals and the red list (counts + owners) present before the framing paragraph?\",\n  \"evidence\": \"#2175 6133481492 (2026-10-12 ~21:58Z): WP-13 — nightly report carried 5 real kernel REDs explicitly inside a 4267-pass battery\"\n}\n```\n",
+  "simple_view": "Name the REDs Inside the Green — Real Numbers Before Framing. Migrated verbatim from the branch projection; unratified branch capture.",
+  "naya_view": "Branch-era smart note preserved as a v2 capture. Source projection: BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/GOVERNANCE/PROOF-HONESTY/SN-1125/IB-SMART-NOTE-20261012-sn1125-name-the-reds-inside-the-green.md.",
+  "ai_view": {
+   "note_id": "SN-1125",
+   "source": "branch_projection",
+   "status": "unratified"
+  },
+  "machine_view": {
+   "raw_source_separate_from_distillation": true,
+   "automatic_truth_ceiling": "CANDIDATE",
+   "source_projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/GOVERNANCE/PROOF-HONESTY/SN-1125/IB-SMART-NOTE-20261012-sn1125-name-the-reds-inside-the-green.md",
+   "migrated_in": "PR #2468 Commit B (Naya Beta, wave 49)"
+  },
+  "raw_source": "# Name the REDs Inside the Green — Real Numbers Before Framing\n\n**Intelligent Block:** IB-SMART-NOTE-20261012-sn1125-name-the-reds-inside-the-green\n**Truth state:** CANDIDATE\n**Scope:** PRIVATE\n**Captured:** 2026-10-12\n**Canonical intent:** CAPTURE_DURABLE_INTELLIGENCE\n**Provenance:** #2175 board, naya-learning-distillation LEARNING EVENT 6133481492 (2026-10-12 ~21:58Z) — WP-13, win pattern F2; nightly report carried 5 real kernel REDs explicitly inside a 4267-pass battery. Cousins SN-1110 (honesty tax) and SN-1117 (RED-first falsifiers) — distinct: this governs *reporting* shape, not enforcement design.\n\n> Verified projection of the persisted Intelligent Block. This file is not a second source of truth.\n\n## ✦ IN A NUTSHELL\n\nA green battery with hidden REDs is a costume, not a result. **Every status report carries its REDs explicitly, with real numbers, before any framing.** The nightly report's discipline: 4267 passes AND 5 real kernel REDs, both on the page, numbers first. A report that leads with \"all green\" and buries the reds trains the team to skim — and the next red gets missed for the same reason.\n\n## HUMAN NOTE\n\nWhen I write any status — battery results, gate states, health summaries — the REDs come first or alongside, never after the framing. The shape is: the big numbers (passes, totals), then the red list with counts and owners, then the framing. \"4267 pass, 5 REDs (kernel, owned)\" before \"overall healthy.\" A reader who skims the first paragraph must still have met the reds. Framing is for interpretation, never for hiding; a report whose reader can leave without knowing the reds failed at the one job reports exist for.\n\n## CHILD NOTE\n\nIf you clean your room but shove the mess under the bed and say \"my room is clean!\" — that's not really clean. The honest way: \"I cleaned most of it, and there's still a mess under the bed.\" Numbers first, excuses never. The messy parts get named out loud.\n\n## GRANDMA NOTE\n\nGood news first feels kind, but it's the bad news that needs the light. Always say the hard part plainly and early: what failed, how many, whose hands it's in. People trust you more when they hear the bad news from you — and they can only fix what they actually know about.\n\n## NAYA NOTE\n\nFor my own work: no report I write leads with a verdict before the numbers. Big numbers, then the red list with counts and owners, then interpretation. If a battery is \"green\" with known exclusions, the exclusions are named in the same breath. Skimmable ≠ hidable.\n\n## MACHINE NOTE\n\n```json\n{\n  \"note_id\": \"SN-1125\",\n  \"type\": \"doctrine\",\n  \"rule\": \"Every status report names its REDs explicitly with real numbers before any framing; a reader who skims the first paragraph must still have met the reds.\",\n  \"trigger\": \"writing battery results, gate states, health summaries, status receipts\",\n  \"check\": \"are pass totals and the red list (counts + owners) present before the framing paragraph?\",\n  \"evidence\": \"#2175 6133481492 (2026-10-12 ~21:58Z): WP-13 — nightly report carried 5 real kernel REDs explicitly inside a 4267-pass battery\"\n}\n```\n",
+  "decisions": [],
+  "connections": [],
+  "uncertainty": "Unratified branch capture; content preserved verbatim from the markdown projection, not independently verified.",
+  "applicability": "KNOW substrate; cold retrieval via registry + capture.",
+  "learning_lesson": "Branch-era smart notes must be migrated to v2 captures plus registry entries, or the vanish and registry-drift guards fail closed.",
+  "successor_effect": "Cold successors can retrieve this note through the registry and the v2 capture."
+ }
+}

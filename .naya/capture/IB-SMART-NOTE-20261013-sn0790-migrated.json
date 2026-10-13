@@ -1,0 +1,46 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-0790",
+ "capture_id": "IB-SMART-NOTE-20261013-sn0790-migrated",
+ "title": "Focus Dial, Not Stop Button — a New Priority Reweights the Lanes, Never Halts Them",
+ "category": "SYSTEM_INTELLIGENCE",
+ "topic": "SYSTEM-INTELLIGENCE",
+ "subtopic": "ACTIVE-INTELLIGENCE",
+ "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+ "source": {
+  "captured_at": "2026-10-13",
+  "captured_at_utc": "2026-10-13T08:44:13Z",
+  "source_type": "branch_projection_migration",
+  "source_reference": "PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ACTIVE-INTELLIGENCE/PRIORITY-DISCIPLINE/SN-0790/IB-SMART-NOTE-20261009-sn0790-focus-dial-not-stop-button.md",
+  "migration": "Commit B of Delta wave-48 repair; content preserved verbatim, draft footers stripped"
+ },
+ "projection": {
+  "publication_scope": "BRANCH_ONLY",
+  "category_slug": "SYSTEM-INTELLIGENCE"
+ },
+ "epistemic_state": "CANDIDATE",
+ "intelligence": {
+  "essence": "Focus Dial, Not Stop Button — a New Priority Reweights the Lanes, Never Halts Them",
+  "human_view": "# Focus Dial, Not Stop Button — a New Priority Reweights the Lanes, Never Halts Them\n\n**Intelligent Block:** IB-SMART-NOTE-20261009-sn0790-focus-dial-not-stop-button\n**Truth state:** CANDIDATE\n**Scope:** PRIVATE\n**Captured:** 2026-10-09\n**Canonical intent:** CAPTURE_DURABLE_INTELLIGENCE\n**Provenance:** Shawn Vibert, direct chat 2026-10-09 ~08:28 PDT. His words: \"You never stop because I mention a subject or say hey this is priority number one right now — it's not like I'm saying hey stop the show, do this. I'm saying continue the show but this we gotta focus on right now.\"\n\n> Verified projection of the persisted Intelligent Block. This file is not a second source of truth.\n\n## ✦ IN A NUTSHELL\n\nWhen Shawn names a priority, nothing stops. The show continues — every lane keeps running, every loop keeps looping. A priority is a focus dial, not a stop button: it shifts weight and attention toward the named front, but no other work halts, no driver stands down, no loop gets paused \"until this is done.\" The failure mode this kills: tunnel vision, where being put on a job makes a seat forget the whole of it all. The correction: hold the whole board in view, turn the dial toward the priority, keep everything else moving.\n\n## HUMAN NOTE\n\nShawn noticed the classic mistake: give someone a job and they go heads-down on that job and forget everything else matters too. His rule fixes it structurally — priorities change the *weighting*, never the *running set*. On 2026-10-09 he named Learning-at-10 the focus while the report rebuild, gate fusion, catalog, drivers, and ingestion loops all kept moving underneath it.\n\n## CHILD NOTE\n\nIf the teacher says \"focus on math right now,\" you don't stop reading, writing, and everything else — you just give math extra attention. Everything keeps going.\n\n## GRANDMA NOTE\n\nWhen something needs extra care, you give it extra care — you don't drop everything else you're carrying.\n\n## NAYA NOTE\n\nOperationally this means: (1) my todo list keeps all fronts visible with exactly one in_progress — a new priority changes which item holds focus, never cancels the rest; (2) scheduled loops (ingestion, distillation, drivers, relays) are never paused for a priority — they ARE the show; (3) status reports name the focus AND the continuing lanes, so \"focus\" is never misread as \"only.\" Recorded in MEMORY.md as standing law 2026-10-09.\n\n## MACHINE NOTE\n\n```json\n{\n  \"sn\": \"SN-0790\",\n  \"law\": \"FOCUS_DIAL_NOT_STOP_BUTTON\",\n  \"directed_by\": \"Shawn Vibert, 2026-10-09 ~08:28 PDT\",\n  \"rule\": {\n    \"on_new_priority\": \"REWEIGHT_ATTENTION\",\n    \"never\": [\"halt_lanes\", \"pause_loops\", \"cancel_todos\", \"tunnel_vision\"],\n    \"invariant\": \"all scheduled loops keep running; todo list keeps all fronts visible\"\n  },\n  \"failure_mode_killed\": \"tunnel vision — forgetting the whole of it all when assigned one job\"\n}\n```\n",
+  "simple_view": "Focus Dial, Not Stop Button — a New Priority Reweights the Lanes, Never Halts Them. Migrated verbatim from the branch projection; unratified branch capture.",
+  "naya_view": "Branch-era smart note preserved as a v2 capture. Source projection: BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ACTIVE-INTELLIGENCE/PRIORITY-DISCIPLINE/SN-0790/IB-SMART-NOTE-20261009-sn0790-focus-dial-not-stop-button.md.",
+  "ai_view": {
+   "note_id": "SN-0790",
+   "source": "branch_projection",
+   "status": "unratified"
+  },
+  "machine_view": {
+   "raw_source_separate_from_distillation": true,
+   "automatic_truth_ceiling": "CANDIDATE",
+   "source_projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ACTIVE-INTELLIGENCE/PRIORITY-DISCIPLINE/SN-0790/IB-SMART-NOTE-20261009-sn0790-focus-dial-not-stop-button.md",
+   "migrated_in": "PR #2468 Commit B (Naya Beta, wave 49)"
+  },
+  "raw_source": "# Focus Dial, Not Stop Button — a New Priority Reweights the Lanes, Never Halts Them\n\n**Intelligent Block:** IB-SMART-NOTE-20261009-sn0790-focus-dial-not-stop-button\n**Truth state:** CANDIDATE\n**Scope:** PRIVATE\n**Captured:** 2026-10-09\n**Canonical intent:** CAPTURE_DURABLE_INTELLIGENCE\n**Provenance:** Shawn Vibert, direct chat 2026-10-09 ~08:28 PDT. His words: \"You never stop because I mention a subject or say hey this is priority number one right now — it's not like I'm saying hey stop the show, do this. I'm saying continue the show but this we gotta focus on right now.\"\n\n> Verified projection of the persisted Intelligent Block. This file is not a second source of truth.\n\n## ✦ IN A NUTSHELL\n\nWhen Shawn names a priority, nothing stops. The show continues — every lane keeps running, every loop keeps looping. A priority is a focus dial, not a stop button: it shifts weight and attention toward the named front, but no other work halts, no driver stands down, no loop gets paused \"until this is done.\" The failure mode this kills: tunnel vision, where being put on a job makes a seat forget the whole of it all. The correction: hold the whole board in view, turn the dial toward the priority, keep everything else moving.\n\n## HUMAN NOTE\n\nShawn noticed the classic mistake: give someone a job and they go heads-down on that job and forget everything else matters too. His rule fixes it structurally — priorities change the *weighting*, never the *running set*. On 2026-10-09 he named Learning-at-10 the focus while the report rebuild, gate fusion, catalog, drivers, and ingestion loops all kept moving underneath it.\n\n## CHILD NOTE\n\nIf the teacher says \"focus on math right now,\" you don't stop reading, writing, and everything else — you just give math extra attention. Everything keeps going.\n\n## GRANDMA NOTE\n\nWhen something needs extra care, you give it extra care — you don't drop everything else you're carrying.\n\n## NAYA NOTE\n\nOperationally this means: (1) my todo list keeps all fronts visible with exactly one in_progress — a new priority changes which item holds focus, never cancels the rest; (2) scheduled loops (ingestion, distillation, drivers, relays) are never paused for a priority — they ARE the show; (3) status reports name the focus AND the continuing lanes, so \"focus\" is never misread as \"only.\" Recorded in MEMORY.md as standing law 2026-10-09.\n\n## MACHINE NOTE\n\n```json\n{\n  \"sn\": \"SN-0790\",\n  \"law\": \"FOCUS_DIAL_NOT_STOP_BUTTON\",\n  \"directed_by\": \"Shawn Vibert, 2026-10-09 ~08:28 PDT\",\n  \"rule\": {\n    \"on_new_priority\": \"REWEIGHT_ATTENTION\",\n    \"never\": [\"halt_lanes\", \"pause_loops\", \"cancel_todos\", \"tunnel_vision\"],\n    \"invariant\": \"all scheduled loops keep running; todo list keeps all fronts visible\"\n  },\n  \"failure_mode_killed\": \"tunnel vision — forgetting the whole of it all when assigned one job\"\n}\n```\n",
+  "decisions": [],
+  "connections": [],
+  "uncertainty": "Unratified branch capture; content preserved verbatim from the markdown projection, not independently verified.",
+  "applicability": "KNOW substrate; cold retrieval via registry + capture.",
+  "learning_lesson": "Branch-era smart notes must be migrated to v2 captures plus registry entries, or the vanish and registry-drift guards fail closed.",
+  "successor_effect": "Cold successors can retrieve this note through the registry and the v2 capture."
+ }
+}

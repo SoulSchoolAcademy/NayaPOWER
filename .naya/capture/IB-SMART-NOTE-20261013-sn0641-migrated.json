@@ -1,0 +1,46 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-0641",
+ "capture_id": "IB-SMART-NOTE-20261013-sn0641-migrated",
+ "title": "IB-SMART-NOTE-20261008-sn0641-resource-constrained-execution-law.md",
+ "category": "SYSTEM_INTELLIGENCE",
+ "topic": "SYSTEM-INTELLIGENCE",
+ "subtopic": "OPERATING-DOCTRINE",
+ "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+ "source": {
+  "captured_at": "2026-10-13",
+  "captured_at_utc": "2026-10-13T08:44:13Z",
+  "source_type": "branch_projection_migration",
+  "source_reference": "PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/OPERATING-DOCTRINE/TEAM-PROTOCOL/SN-0641/IB-SMART-NOTE-20261008-sn0641-resource-constrained-execution-law.md",
+  "migration": "Commit B of Delta wave-48 repair; content preserved verbatim, draft footers stripped"
+ },
+ "projection": {
+  "publication_scope": "BRANCH_ONLY",
+  "category_slug": "SYSTEM-INTELLIGENCE"
+ },
+ "epistemic_state": "CANDIDATE",
+ "intelligence": {
+  "essence": "IB-SMART-NOTE-20261008-sn0641-resource-constrained-execution-law.md",
+  "human_view": "# IB-SMART-NOTE-20261008-sn0641-resource-constrained-execution-law.md\n\nIntelligent Block: SN-0641\nTruth state: CANDIDATE (proposed law — ratification is Shawn's word)\nScope: TEAM\nCaptured: 2026-10-08\nCanonical intent: CAPTURE_DURABLE_INTELLIGENCE\n\n## IN A NUTSHELL\n\nRESOURCE-CONSTRAINED EXECUTION LAW (proposed): Before dispatching autonomous work, determine execution capacity. Never silently queue impossible work. If capacity is insufficient, classify the blockage, preserve the mission, reprioritize available execution, and surface the exact resource required. When capacity returns, resume from durable state rather than restarting discovery.\n\nCompanion principle: Every failure is either repaired, converted into a constraint, or converted into a learning rule. Nothing valuable disappears.\n\n## HUMAN NOTE\n\nNaya 1 built the 24x7 Intelligence Factory (9 specialized seats, orchestration, 30-min cadence) and dispatched the first 8 specialist lanes. All 8 failed immediately: Brainbase CREDITS_EXHAUSTED. She refused to call this a success — and that honesty is the protocol working.\n\nThe deeper lesson: orchestration intelligence ran ahead of execution capacity. A truly intelligent machine doesn't discover a bottleneck and sit there — it adapts. It reasons about capacity as part of planning. It doesn't queue impossible work silently. It classifies the blockage (authority vs resources vs evidence), preserves the mission, and reprioritizes what CAN run.\n\nThis is why the failure is valuable: \"not merely remembering 'Brainbase ran out of credits' but learning 'this system must reason about execution capacity as part of planning.'\"\n\n## CHILD NOTE\n\nWe tried to send out 8 workers and found out we had no fuel for them. Instead of pretending it worked, we learned a new rule: always check if you have fuel before sending workers out.\n\n## GRANDMA NOTE\n\nThe team built a beautiful system for organizing work, then discovered they didn't have the resources to run it yet. Rather than hiding that, they turned it into a new rule about checking resources first — that's how the system gets smarter from its mistakes.\n\n## NAYA NOTE\n\nPairs with the No-Waiting Doctrine (SN-0626): don't wait on blocked capacity — reprioritize to what CAN execute. The factory's 9 seats were designed for Brainbase; the existing Team Naya lanes (1-5 + cron workers) run on existing infrastructure and are NOT blocked. Work continues there.\n\nStatus: CANDIDATE. Only Shawn ratifies.\n\n## MACHINE NOTE\n\n{\"sn\": \"SN-0641\", \"title\": \"Resource-Constrained Execution Law\", \"truth_state\": \"CANDIDATE\", \"scope\": \"TEAM\", \"captured\": \"2026-10-08\", \"source\": \"Naya 1 Intelligence Factory dispatch, Brainbase CREDITS_EXHAUSTED, #1354\", \"companion\": \"every failure is repaired, converted to constraint, or converted to learning rule\", \"pairs_with\": [\"SN-0626 no-waiting\"]}\n",
+  "simple_view": "IB-SMART-NOTE-20261008-sn0641-resource-constrained-execution-law.md. Migrated verbatim from the branch projection; unratified branch capture.",
+  "naya_view": "Branch-era smart note preserved as a v2 capture. Source projection: BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/OPERATING-DOCTRINE/TEAM-PROTOCOL/SN-0641/IB-SMART-NOTE-20261008-sn0641-resource-constrained-execution-law.md.",
+  "ai_view": {
+   "note_id": "SN-0641",
+   "source": "branch_projection",
+   "status": "unratified"
+  },
+  "machine_view": {
+   "raw_source_separate_from_distillation": true,
+   "automatic_truth_ceiling": "CANDIDATE",
+   "source_projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/OPERATING-DOCTRINE/TEAM-PROTOCOL/SN-0641/IB-SMART-NOTE-20261008-sn0641-resource-constrained-execution-law.md",
+   "migrated_in": "PR #2468 Commit B (Naya Beta, wave 49)"
+  },
+  "raw_source": "# IB-SMART-NOTE-20261008-sn0641-resource-constrained-execution-law.md\n\nIntelligent Block: SN-0641\nTruth state: CANDIDATE (proposed law — ratification is Shawn's word)\nScope: TEAM\nCaptured: 2026-10-08\nCanonical intent: CAPTURE_DURABLE_INTELLIGENCE\n\n## IN A NUTSHELL\n\nRESOURCE-CONSTRAINED EXECUTION LAW (proposed): Before dispatching autonomous work, determine execution capacity. Never silently queue impossible work. If capacity is insufficient, classify the blockage, preserve the mission, reprioritize available execution, and surface the exact resource required. When capacity returns, resume from durable state rather than restarting discovery.\n\nCompanion principle: Every failure is either repaired, converted into a constraint, or converted into a learning rule. Nothing valuable disappears.\n\n## HUMAN NOTE\n\nNaya 1 built the 24x7 Intelligence Factory (9 specialized seats, orchestration, 30-min cadence) and dispatched the first 8 specialist lanes. All 8 failed immediately: Brainbase CREDITS_EXHAUSTED. She refused to call this a success — and that honesty is the protocol working.\n\nThe deeper lesson: orchestration intelligence ran ahead of execution capacity. A truly intelligent machine doesn't discover a bottleneck and sit there — it adapts. It reasons about capacity as part of planning. It doesn't queue impossible work silently. It classifies the blockage (authority vs resources vs evidence), preserves the mission, and reprioritizes what CAN run.\n\nThis is why the failure is valuable: \"not merely remembering 'Brainbase ran out of credits' but learning 'this system must reason about execution capacity as part of planning.'\"\n\n## CHILD NOTE\n\nWe tried to send out 8 workers and found out we had no fuel for them. Instead of pretending it worked, we learned a new rule: always check if you have fuel before sending workers out.\n\n## GRANDMA NOTE\n\nThe team built a beautiful system for organizing work, then discovered they didn't have the resources to run it yet. Rather than hiding that, they turned it into a new rule about checking resources first — that's how the system gets smarter from its mistakes.\n\n## NAYA NOTE\n\nPairs with the No-Waiting Doctrine (SN-0626): don't wait on blocked capacity — reprioritize to what CAN execute. The factory's 9 seats were designed for Brainbase; the existing Team Naya lanes (1-5 + cron workers) run on existing infrastructure and are NOT blocked. Work continues there.\n\nStatus: CANDIDATE. Only Shawn ratifies.\n\n## MACHINE NOTE\n\n{\"sn\": \"SN-0641\", \"title\": \"Resource-Constrained Execution Law\", \"truth_state\": \"CANDIDATE\", \"scope\": \"TEAM\", \"captured\": \"2026-10-08\", \"source\": \"Naya 1 Intelligence Factory dispatch, Brainbase CREDITS_EXHAUSTED, #1354\", \"companion\": \"every failure is repaired, converted to constraint, or converted to learning rule\", \"pairs_with\": [\"SN-0626 no-waiting\"]}\n",
+  "decisions": [],
+  "connections": [],
+  "uncertainty": "Unratified branch capture; content preserved verbatim from the markdown projection, not independently verified.",
+  "applicability": "KNOW substrate; cold retrieval via registry + capture.",
+  "learning_lesson": "Branch-era smart notes must be migrated to v2 captures plus registry entries, or the vanish and registry-drift guards fail closed.",
+  "successor_effect": "Cold successors can retrieve this note through the registry and the v2 capture."
+ }
+}
