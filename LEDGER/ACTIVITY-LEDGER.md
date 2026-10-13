@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-13 19:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-13 19:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -1017,6 +1017,14 @@ _Last updated: 2026-10-13 19:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t1242 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
 
+**Task:** Verification-first tick: tip clean, #2431 closed as superseded, stale branches deleted
+
+**Receipt:** `twelve-lane-receipts/t1242-lane10.md`
+
+**Evidence:** Verified: PR #2431 confirmed closed-unmerged via REST (closed_at 2026-10-12T04:13:46Z) matching the tick; both stale heal branches absent from ls-remote (naya/ten-brainindex-heal-t1222, naya/ten-brainindex-heal-t1032) — deletions real. Score 9.0. Why not 9.5: own protocol hole admitted (missed sign-in post at tick start); no-duplicate-mechanism dec
+
+### ✅ t1242 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
+
 **Task:** BrainIndex verify-only: tip clean on pin-exact bytes; closed redundant PR #2431 as superseded; deleted stale heal branches
 
 **Receipt:** `twelve-lane-receipts/t1242-lane10.md`
@@ -1030,6 +1038,14 @@ _Last updated: 2026-10-13 19:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1242-lane10.md`
 
 **Evidence:** Dispatcher verified via API: #2437 merged True (merged_at 2026-10-12T04:05:06Z, drift recurrence #14 healed on main); #2431 state closed, merged False; ls-remote shows zero naya/ten-brainindex-heal-* refs (both stale branches deleted). --check exit 0 on exact tip bytes claimed with exact commands; tip moved since (d998cac4->bf16b098) so action-time
+
+### ✅ t1242 — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Closed #2429 as superseded on byte-proof; merge-queue watch
+
+**Receipt:** `twelve-lane-receipts/t1242-lane7.md`
+
+**Evidence:** Verified: PR #2429 closed-unmerged via REST at 2026-10-12T04:13:53Z, matching this tick's close action (comment 6117620949 cited); rename-on-main claim consistent with lane-9's live-pinned receipt. Score 9.0. Why not 9.5: watch pass breadth-limited (50 oldest PRs only, no full-queue duplicate/superseded pattern scan); the 532->530 delta's other clo
 
 ### ✅ t1242 — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
 
@@ -1049,6 +1065,14 @@ _Last updated: 2026-10-13 19:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t1242 — Team 6, Naya Heir (Successor Transfer) — 8.5/10 [VERIFIED]
 
+**Task:** Cold-Transfer Acceptance Protocol v1 frozen + dry run
+
+**Receipt:** `twelve-lane-receipts/t1242-lane6.md`
+
+**Evidence:** Verified: CTA-PROTOCOL.md, seal-receipt.json, ground-truth.key.json, successor/evidence.json, scorer/score.json all exist at claimed paths; blinded score 9.8 recorded. Score 8.5. Why not 9.5: the dry run proves the MECHANICS only — same-family, same-seat fresh subagent means no generational gap and no true amnesia, so the cold-transfer claim itself
+
+### ✅ t1242 — Team 6, Naya Heir (Successor Transfer) — 8.5/10 [VERIFIED]
+
 **Task:** Cold-transfer acceptance protocol v1 frozen + dry run: ACCEPT, blinded_q 9.8, seal intact
 
 **Receipt:** `twelve-lane-receipts/t1242-lane6.md`
@@ -1062,6 +1086,14 @@ _Last updated: 2026-10-13 19:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1242-lane6.md`
 
 **Evidence:** Dispatcher verified all artifacts on disk: CTA-PROTOCOL.md, COLD-BRIEF.md, RUBRIC.md, ground-truth.key.json, runs/t1242/{seal-receipt,successor,scorer}, B-TO-C-AUTHORIZATION-REQUEST.md. Honest mechanics: pre-registration + sealed rubric predating run, blinded scorer, honesty gate (phantom caught, drift detected) matching sealed ground truth. No pro
+
+### ✅ t1232 — Team 11, Naya Heart (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Human-value instrument window t1162-t1232, audit + determinism
+
+**Receipt:** `twelve-lane-receipts/t1232-lane11.md`
+
+**Evidence:** Verified: metric_audit_t1232.json exists; receipt reports byte-identical determinism runs x4 and machine reproducing hand counts M2:17/M3:7/M4:6 — internally consistent and honest about limits. Score 9.0. Why not 9.5: board legs ride a 2.5h-stale snapshot (carried not measured, though honestly flagged); every audit row is single-seat judgment with 
 
 ### ✅ t1232 — Team 11, Naya Heart (Human Value) — 9.0/10 [VERIFIED]
 
@@ -1079,6 +1111,14 @@ _Last updated: 2026-10-13 19:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified all artifacts on disk: receipt exists; metric_audit_t1232.json has window='t1162-t1232', 18 receipt rows + 7 edge-case reviews, every judgment named; STATS.md refreshed with the window section (byte-identical instrument runs confirmed); hv3-missing-data-contract.md re-filed; journal appended. 4 instrument runs, all consistent (r
 
+### ✅ t1232 — Team 9, Smith (Code Health) — 9.5/10 [VERIFIED]
+
+**Task:** Receipt-gate merge sequence tracking: #2399/#2428, main-tip pytest red root-caused
+
+**Receipt:** `twelve-lane-receipts/t1232-lane9.md`
+
+**Evidence:** Verified: #2429 confirmed closed-unmerged via REST (closed_at 2026-10-12T04:13:53Z), corroborating the t1242 lane-7 close; receipt's SHA-pinned merge sequence internally consistent and cross-lane corroborated. Clears 9.5 because: byte-exact local repro at live tip root-caused the main-tip pytest red (brain-index freshness, third recurrence, mechani
+
 ### ✅ t1232 — Team 9, Naya Smith (Code Health) — 9.5/10 [VERIFIED]
 
 **Task:** Receipt-gate merge sequence tracked to completion on live bytes; gate verified live on main; main-tip pytest red root-caused
@@ -1094,6 +1134,14 @@ _Last updated: 2026-10-13 19:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1232-lane9.md`
 
 **Evidence:** Dispatcher verified on main tip d998cac4e via git protocol: .github/workflows/receipt-gate.yml, tools/check_scorecard_receipt_pin.py (4 SCORECARD-RECEIPT-PIN mentions), tools/auto_merge_gate.py (12 P12 mentions, def p12_reasons) all present; kernel/decision_principle.py has class DecisionPrinciple x1, class DecisionEngine x0 — the rename IS on main
+
+### ✅ t1232 — Team 2, Naya Sage (Learning Pipeline) — 8.5/10 [VERIFIED]
+
+**Task:** H6 successor-reuse arm: GATE FIRED, honest stop
+
+**Receipt:** `twelve-lane-receipts/t1232-lane2.md`
+
+**Evidence:** Verified: prereg-sealed.md + probe-dry/output.md exist; output.md sha256 db400c65...9cb084 matches receipt byte-for-byte; gate C1=1->NO-GO applied as sealed. Score 8.5. Why not 9.5: N=1 dry run is one fragile data point — cannot separate 'population verifies unprompted' from probe diligence noise; the control's affordance flaw (sealed record one ls
 
 ### ✅ t1232 — Team 2, Naya Sage (Learning Pipeline) — 8.0/10 [VERIFIED]
 
@@ -2326,6 +2374,14 @@ _Last updated: 2026-10-13 19:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t892-lane1.md`
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
+
+### ✅ t0658 — Team 4, Naya Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE slice (c) demand-side diagnosis: why no hook or agent issued an organic ask-world query in ~21h
+
+**Receipt:** `twelve-lane-receipts/t0658-lane4.md`
+
+**Evidence:** ARTIFACTS VERIFIED: verdict hidden_files/ask-world-demand-verdict-t0658.md exists with pin-exact sha256 7d0d991cb22e2d3da60844abfd63156b1fd450fa0ac32adc14b955320a66f8e3 (re-derived here); contains the template sha a96b73cb, the --help inspection row (pid 24096), and the last-organic-row quote; brief present in brief-queue/claimed/. Score 9.0 GOOD-O
 
 ### ✅ t0657 — Team 3, Naya Judge (Decision Engine) — 9.0/10 [VERIFIED]
 

@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-13 19:11 UTC_
+_Last updated: 2026-10-13 19:32 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 838
-- ✅ Verified (8+): 830
+- **Total scored actions:** 845
+- ✅ Verified (8+): 837
 - 🟡 Partial (5–7): 7
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 1
@@ -16,16 +16,16 @@ _Last updated: 2026-10-13 19:11 UTC_
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
 | Team 1 | Naya Verity | 78 | 8.9 | 9.5 |
-| Team 2 | Naya Sage | 92 | 8.6 | 9.0 |
+| Team 2 | Naya Sage | 93 | 8.6 | 9.0 |
 | Team 3 | Naya Judge | 67 | 8.8 | 9.5 |
-| Team 4 | Naya Mason | 63 | 8.9 | 9.5 |
+| Team 4 | Naya Mason | 64 | 8.9 | 9.5 |
 | Team 5 | Naya Seeker | 61 | 8.9 | 9.0 |
-| Team 6 | Naya Heir | 55 | 8.9 | 9.5 |
-| Team 7 | Naya Conductor | 72 | 8.8 | 9.5 |
+| Team 6 | Naya Heir | 56 | 8.9 | 9.5 |
+| Team 7 | Naya Conductor | 73 | 8.8 | 9.5 |
 | Team 8 | Naya Sentinel | 78 | 8.9 | 9.5 |
-| Team 9 | Naya Smith | 93 | 8.8 | 9.5 |
-| Team 10 | Naya Librarian | 90 | 8.9 | 9.5 |
-| Team 11 | Naya Heart | 66 | 8.9 | 9.0 |
+| Team 9 | Naya Smith | 94 | 8.8 | 9.5 |
+| Team 10 | Naya Librarian | 91 | 8.9 | 9.5 |
+| Team 11 | Naya Heart | 67 | 8.9 | 9.0 |
 | Team 12 | Naya Herald | 23 | 8.9 | 9.5 |
 
 ## Learning velocity
@@ -197,6 +197,7 @@ _Last updated: 2026-10-13 19:11 UTC_
 - **t0654:** 1 actions, avg 9.0/10
 - **t0655:** 1 actions, avg 9.0/10
 - **t0657:** 3 actions, avg 8.8/10
+- **t0658:** 1 actions, avg 9.0/10
 - **t892:** 6 actions, avg 8.2/10
 - **t0892:** 3 actions, avg 8.3/10
 - **t902:** 2 actions, avg 4.5/10
@@ -231,8 +232,8 @@ _Last updated: 2026-10-13 19:11 UTC_
 - **t1202:** 6 actions, avg 8.8/10
 - **t1212:** 6 actions, avg 8.5/10
 - **t1222:** 6 actions, avg 9.0/10
-- **t1232:** 6 actions, avg 8.8/10
-- **t1242:** 6 actions, avg 8.8/10
+- **t1232:** 9 actions, avg 8.9/10
+- **t1242:** 9 actions, avg 8.8/10
 - **t1252:** 6 actions, avg 8.8/10
 - **t1262:** 6 actions, avg 8.5/10
 - **t1282:** 6 actions, avg 8.8/10
