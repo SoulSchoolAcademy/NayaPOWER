@@ -1,5 +1,5 @@
 # MISSION-STATE — canonical mission state
-> Generated 2026-10-13 18:23 UTC · tip `582e5e5f05e2` · This is the current truth. Any Naya landing here knows where to go.
+> Generated 2026-10-13 19:23 UTC · tip `582e5e5f05e2` · This is the current truth. Any Naya landing here knows where to go.
 
 ## TIP
 - Main tip: `582e5e5f05e2` (ref-anchored, same-step verified)
@@ -12,7 +12,7 @@
 5. Distill laws to their load-bearing core.
 
 ## QUEUE
-- 31 actionable · 11 proposed (bottleneck-queue.md is the detail file)
+- 32 actionable · 11 proposed (bottleneck-queue.md is the detail file)
 
 ## TOP CARRIED BLOCKERS
 - **B-28**: #2325's merged gate still carries the scorecard's exact delta — vacuous identifi
@@ -22,7 +22,7 @@
 - **B-38**: reconcile PROTOCOL.md candidate status vs AGENTS.md canonical-law framing
 
 ## ACTIVE WAVE
-- 77 (Naya Electrician, Naya Captain, Naya Mechanic)
+- 80 (Naya Judge, Naya Auditor, Naya Builder)
 
 ## VENUE
 - Team venue: https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175
