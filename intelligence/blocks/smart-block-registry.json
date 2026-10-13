@@ -1,0 +1,191 @@
+{
+  "blocks": [
+    {
+      "id": "IB-0001",
+      "meaning": "Who is acting, where, on what, and what happened.",
+      "name": "Lane sign-in / sign-out receipt",
+      "source_anchor": {
+        "comment_id": "6143987395",
+        "kind": "feed_comment",
+        "ref": "SoulSchoolAcademy/NayaPOWER issue #2472 comment 6143987395",
+        "verified": "GET 2026-10-13T11:26Z — comment exists on #2472"
+      },
+      "tip_sha": "eb36746ad8b424b036af95b6035fcef8bb923808",
+      "tongues": {
+        "ai": "{seat, lane, feed, direction: in|out, mission, receipt, briefing_proof}",
+        "human": "{seat} {started|finished} work on lane {lane} (feed {feed}): {mission}. {receipt}.",
+        "machine": "{\"type\":\"object\",\"required\":[\"ib\",\"v\",\"seat\",\"lane\",\"feed\",\"dir\",\"mission\",\"receipt\"],\"properties\":{\"ib\":{\"const\":\"IB-0001\"},\"v\":{\"const\":\"1.0.0\"},\"seat\":{\"type\":\"string\"},\"lane\":{\"type\":\"integer\"},\"feed\":{\"type\":\"integer\"},\"dir\":{\"enum\":[\"in\",\"out\"]},\"mission\":{\"type\":\"string\"},\"receipt\":{\"type\":\"string\"}}}"
+      },
+      "verified_at": "2026-10-13T12:48:12Z",
+      "version": "1.0.0"
+    },
+    {
+      "id": "IB-0002",
+      "meaning": "The full intelligence, from every angle, in the simplest words.",
+      "name": "Smart Note (9-part)",
+      "source_anchor": {
+        "also": "~/AGENTS.md section 'The Smart Note Response Standard'",
+        "kind": "file",
+        "ref": "~/workspace/agent-briefing-master.md",
+        "section": "HOW WE COMMUNICATE: THE SMART NOTE STANDARD"
+      },
+      "tip_sha": "eb36746ad8b424b036af95b6035fcef8bb923808",
+      "tongues": {
+        "ai": "{nutshell, human, child, grandma, machine, learning_lesson, what_it_means, how_to_apply, whats_in_it_for_you}",
+        "human": "{nutshell}. In plain words: {human}. Simple enough for a child: {child}. Warm and simple: {grandma}.",
+        "machine": "{\"type\":\"object\",\"required\":[\"ib\",\"v\",\"nutshell\",\"human\",\"child\",\"grandma\",\"machine\",\"lesson\",\"meaning\",\"application\",\"benefit\"],\"properties\":{\"ib\":{\"const\":\"IB-0002\"},\"v\":{\"const\":\"1.0.0\"},\"nutshell\":{\"type\":\"string\"},\"human\":{\"type\":\"string\"},\"child\":{\"type\":\"string\"},\"grandma\":{\"type\":\"string\"},\"machine\":{\"type\":\"string\"},\"lesson\":{\"type\":\"string\"},\"meaning\":{\"type\":\"string\"},\"application\":{\"type\":\"string\"},\"benefit\":{\"type\":\"string\"}}}"
+      },
+      "verified_at": "2026-10-13T12:48:12Z",
+      "version": "1.0.0"
+    },
+    {
+      "id": "IB-0003",
+      "meaning": "I chose X. I looked at A, B, C. X won because of evidence.",
+      "name": "Decision receipt",
+      "source_anchor": {
+        "kind": "file",
+        "ref": "~/AGENTS.md",
+        "section": "The Decision Receipt Law"
+      },
+      "tip_sha": "eb36746ad8b424b036af95b6035fcef8bb923808",
+      "tongues": {
+        "ai": "{choice, alternatives[], criterion, evidence, loser_disqualifier}",
+        "human": "I picked {choice} over {alternatives}. I weighed them: {tradeoff}. {choice} won because {winner_because}; the rest lost because {loser_because}.",
+        "machine": "{\"type\":\"object\",\"required\":[\"ib\",\"v\",\"choice\",\"alternatives\",\"winner_because\",\"loser_because\",\"verifier\"],\"properties\":{\"ib\":{\"const\":\"IB-0003\"},\"v\":{\"const\":\"1.0.0\"},\"choice\":{\"type\":\"string\"},\"alternatives\":{\"type\":\"array\",\"items\":{\"type\":\"string\"}},\"winner_because\":{\"type\":\"string\"},\"loser_because\":{\"type\":\"string\"},\"verifier\":{\"type\":\"string\"}}}"
+      },
+      "verified_at": "2026-10-13T12:48:12Z",
+      "version": "1.0.0"
+    },
+    {
+      "id": "IB-0004",
+      "meaning": "An honest score plus its gaps, checked by a different seat than the builder.",
+      "name": "Scorecard receipt",
+      "source_anchor": {
+        "also": "SoulSchoolAcademy/NayaPOWER PR #2459 comment 6133915682 (## SCORECARD)",
+        "kind": "file",
+        "ref": "~/workspace/goals/super-brain-engine-to-10-10/hidden_files/areas/kappa-2459-scorecard-20261012T2235.md",
+        "section": "scorecard"
+      },
+      "tip_sha": "eb36746ad8b424b036af95b6035fcef8bb923808",
+      "tongues": {
+        "ai": "{score, gaps[], fix_passes, builder, verifier, verifier_seat != builder_seat}",
+        "human": "I built it and scored it {score}/10. The gaps keeping it from 10: {gaps}. After {fix_passes} fix passes it is {score}/10. A different seat checked it: {verifier}.",
+        "machine": "{\"type\":\"object\",\"required\":[\"ib\",\"v\",\"score\",\"gaps\",\"fix_passes\",\"builder\",\"verifier\"],\"properties\":{\"ib\":{\"const\":\"IB-0004\"},\"v\":{\"const\":\"1.0.0\"},\"score\":{\"type\":\"number\",\"minimum\":0,\"maximum\":10},\"gaps\":{\"type\":\"array\",\"items\":{\"type\":\"string\"}},\"fix_passes\":{\"type\":\"integer\",\"minimum\":3},\"builder\":{\"type\":\"string\"},\"verifier\":{\"type\":\"string\"}}}"
+      },
+      "verified_at": "2026-10-13T12:48:12Z",
+      "version": "1.0.0"
+    },
+    {
+      "id": "IB-0005",
+      "meaning": "The merge really happened, lawfully: true merge commit, server ref verified, the five conditions named.",
+      "name": "Merge proof",
+      "source_anchor": {
+        "kind": "file",
+        "ref": "~/workspace/goals/super-brain-engine-to-10-10/hidden_files/areas/naya5-2501-merge-proof-20261013T0345.md",
+        "section": "merge"
+      },
+      "tip_sha": "eb36746ad8b424b036af95b6035fcef8bb923808",
+      "tongues": {
+        "ai": "{merge_sha, parents[2 sha], server_ref_verified, conditions: green_ci, score_ge_9_5, different_seat_validation, feed_post, no_objection}",
+        "human": "Merged as {merge_sha} with two parents, and I checked the server ref afterwards — it matches. The five conditions all held: {conditions}.",
+        "machine": "{\"type\":\"object\",\"required\":[\"ib\",\"v\",\"merge_sha\",\"parents\",\"server_ref_ok\",\"conditions\"],\"properties\":{\"ib\":{\"const\":\"IB-0005\"},\"v\":{\"const\":\"1.0.0\"},\"merge_sha\":{\"type\":\"string\",\"pattern\":\"^[0-9a-f]{40}$\"},\"parents\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"minItems\":2,\"maxItems\":2},\"server_ref_ok\":{\"type\":\"boolean\"},\"conditions\":{\"type\":\"object\",\"required\":[\"green_ci\",\"score_ge_9_5\",\"different_seat_validation\",\"feed_post\",\"no_objection\"],\"properties\":{\"green_ci\":{\"type\":\"boolean\"},\"score_ge_9_5\":{\"type\":\"boolean\"},\"different_seat_validation\":{\"type\":\"boolean\"},\"feed_post\":{\"type\":\"boolean\"},\"no_objection\":{\"type\":\"boolean\"}}}}}"
+      },
+      "verified_at": "2026-10-13T12:48:12Z",
+      "version": "1.0.0"
+    },
+    {
+      "id": "IB-0006",
+      "name": "Hub digest",
+      "meaning": "The hive's current state in one screen: tip, holds, fresh lessons, blocked.",
+      "source_anchor": {
+        "kind": "file",
+        "ref": "/home/hatch/workspace/goals/hyper-speed-learning-mastery/hidden_files/hub-digest.md",
+        "section": "Fresh from the hive"
+      },
+      "tip_sha": "eb36746ad8b424b036af95b6035fcef8bb923808",
+      "version": "1.0.0",
+      "verified_at": "2026-10-13T12:48:12Z",
+      "tongues": {
+        "human": "Right now the hive stands at tip {tip}. Holds: {holds}. Fresh from the team: {fresh_lessons}. Blocked: {blocked}.",
+        "ai": "{tip_sha, holds[], fresh_lessons[], blocked[], lane_state}",
+        "machine": "{\"type\":\"object\",\"required\":[\"ib\",\"v\",\"tip_sha\",\"holds\",\"fresh_lessons\",\"blocked\"],\"properties\":{\"ib\":{\"const\":\"IB-0006\"},\"v\":{\"const\":\"1.0.0\"},\"tip_sha\":{\"type\":\"string\"},\"holds\":{\"type\":\"array\",\"items\":{\"type\":\"string\"}},\"fresh_lessons\":{\"type\":\"array\",\"items\":{\"type\":\"string\"}},\"blocked\":{\"type\":\"array\",\"items\":{\"type\":\"string\"}}}}"
+      }
+    },
+    {
+      "id": "IB-0007",
+      "name": "Morning / nightly report shell",
+      "meaning": "Priorities, holes, achievements, intelligence learned - delivered 06:00 / 23:00 UTC, only on real change.",
+      "source_anchor": {
+        "kind": "file",
+        "ref": "/home/hatch/dreams/alignment/derived/ALIGNMENT_SYNTHESIS.md",
+        "section": "morning 06:00, nightly 23:00 UTC"
+      },
+      "tip_sha": "eb36746ad8b424b036af95b6035fcef8bb923808",
+      "version": "1.0.0",
+      "verified_at": "2026-10-13T12:48:12Z",
+      "tongues": {
+        "human": "For the 06:00 report: priorities {priorities}, holes {holes}, achievements {achievements}, what we learned {lessons}. Nothing changed since {last_delivery}, so nothing sent.",
+        "ai": "{priorities[], holes[], achievements[], lessons[], last_delivery, changed: bool}",
+        "machine": "{\"type\":\"object\",\"required\":[\"ib\",\"v\",\"priorities\",\"holes\",\"achievements\",\"lessons\",\"changed\"],\"properties\":{\"ib\":{\"const\":\"IB-0007\"},\"v\":{\"const\":\"1.0.0\"},\"priorities\":{\"type\":\"array\",\"items\":{\"type\":\"string\"}},\"holes\":{\"type\":\"array\",\"items\":{\"type\":\"string\"}},\"achievements\":{\"type\":\"array\",\"items\":{\"type\":\"string\"}},\"lessons\":{\"type\":\"array\",\"items\":{\"type\":\"string\"}},\"changed\":{\"type\":\"boolean\"}}}"
+      }
+    },
+    {
+      "id": "IB-0008",
+      "name": "Correction ledger entry",
+      "meaning": "A wrong past claim, its correction, and what the system now does differently.",
+      "source_anchor": {
+        "kind": "file",
+        "ref": "/home/hatch/workspace/goals/hyper-speed-learning-mastery/hidden_files/correction-ledger.json"
+      },
+      "tip_sha": "eb36746ad8b424b036af95b6035fcef8bb923808",
+      "version": "1.0.0",
+      "verified_at": "2026-10-13T12:48:12Z",
+      "tongues": {
+        "human": "We were wrong about {wrong_claim}. The correction: {correction}. What changed in the system: {system_change}.",
+        "ai": "{wrong_claim, evidence_against, correction, system_change, guard_added}",
+        "machine": "{\"type\":\"object\",\"required\":[\"ib\",\"v\",\"wrong_claim\",\"correction\",\"system_change\"],\"properties\":{\"ib\":{\"const\":\"IB-0008\"},\"v\":{\"const\":\"1.0.0\"},\"wrong_claim\":{\"type\":\"string\"},\"correction\":{\"type\":\"string\"},\"system_change\":{\"type\":\"string\"}}}"
+      }
+    },
+    {
+      "id": "IB-0009",
+      "name": "Behavior-change receipt",
+      "meaning": "One decision that changed because of a lesson - or nothing was learned.",
+      "source_anchor": {
+        "kind": "file",
+        "ref": "/home/hatch/workspace/goals/super-brain-engine-to-10-10/hidden_files/areas/alpha-retention-receipt-20261013T0400.md",
+        "section": "Retention Receipt",
+        "also": "hub-digest.md DRILL lines (P-015); hidden_files/briefing-load-log.jsonl"
+      },
+      "tip_sha": "eb36746ad8b424b036af95b6035fcef8bb923808",
+      "version": "1.0.0",
+      "verified_at": "2026-10-13T12:48:12Z",
+      "tongues": {
+        "human": "Because of {lesson}, I changed {decision} from {old_way} to {new_way}. Proof: {proof}. If I cannot name it, nothing was learned.",
+        "ai": "{lesson, decision_changed, old_way, new_way, proof}",
+        "machine": "{\"type\":\"object\",\"required\":[\"ib\",\"v\",\"lesson\",\"decision_changed\",\"proof\"],\"properties\":{\"ib\":{\"const\":\"IB-0009\"},\"v\":{\"const\":\"1.0.0\"},\"lesson\":{\"type\":\"string\"},\"decision_changed\":{\"type\":\"string\"},\"proof\":{\"type\":\"string\"}}}"
+      }
+    },
+    {
+      "id": "IB-0010",
+      "name": "CHANGE note (version handshake)",
+      "meaning": "A producer's answer when the requested version is unknown: the old-to-new meaning delta and the new envelope, never silent substitution.",
+      "source_anchor": {
+        "kind": "file",
+        "ref": "/home/hatch/workspace/goals/super-brain-engine-to-10-10/hidden_files/areas/smart-blocks-hypertune-scope.md",
+        "section": "Consumer handshake"
+      },
+      "tip_sha": "eb36746ad8b424b036af95b6035fcef8bb923808",
+      "version": "1.0.0",
+      "verified_at": "2026-10-13T12:48:12Z",
+      "tongues": {
+        "human": "You asked for {id} v{requested}; I can only give v{current}. What changed: {meaning_delta}. The current envelope: {envelope}. I will not silently substitute - here is the honest state.",
+        "ai": "{id, requested_version, current_version, meaning_delta, envelope}",
+        "machine": "{\"type\":\"object\",\"required\":[\"ib\",\"v\",\"id\",\"requested_version\",\"current_version\",\"meaning_delta\"],\"properties\":{\"ib\":{\"const\":\"IB-0010\"},\"v\":{\"const\":\"1.0.0\"},\"id\":{\"type\":\"string\"},\"requested_version\":{\"type\":\"string\"},\"current_version\":{\"type\":\"string\"},\"meaning_delta\":{\"type\":\"string\"}}}"
+      }
+    }
+  ],
+  "frozen_at": "2026-10-13T12:48:12Z",
+  "note": "Registry v1.1.0 re-pinned: tip_sha d254379b -> eb36746a (PR #2515 fail-closed winner-read for B-49/B-58 landed between pins; compare d254379b...eb36746a = ahead 4 / behind 0). Block content, meanings, tongues, anchors byte-identical to the wave-66 IV'd state; all file anchors re-verified on disk at re-pin time; IB-0001 feed-comment anchor re-verified via API. Merge-validation by a different seat is owed (Epsilon did the IV).",
+  "registry_version": "1.1.0",
+  "tip_sha": "eb36746ad8b424b036af95b6035fcef8bb923808"
+}
