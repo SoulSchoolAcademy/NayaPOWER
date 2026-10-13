@@ -755,15 +755,17 @@ def _is_privacy_probe(query):
 #   separate track; this changes no numbers, only the bonus's eligibility).
 # Verified by the 20-case battery in tests/test_smart_note_v2.py with zero
 # false fires on legitimate guidance.
-_DISAVOWAL_CONTRACTIONS = {
-    "don't": ("do", "not"), "doesn't": ("does", "not"),
-    "didn't": ("did", "not"), "won't": ("will", "not"),
-    "can't": ("can", "not"), "cannot": ("can", "not"),
-    "shouldn't": ("should", "not"), "mustn't": ("must", "not"),
-    "isn't": ("is", "not"), "aren't": ("are", "not"),
-    "wasn't": ("was", "not"), "weren't": ("were", "not"),
-    "couldn't": ("could", "not"), "wouldn't": ("would", "not"),
-}
+# Contraction normalization: "don't" -> ("do","not") etc., so disavowal
+# markers match regardless of contracted form. Generated, not hand-listed.
+def _build_disavowal_contractions():
+    bases = ("do", "does", "did", "can", "should", "must",
+             "is", "are", "was", "were", "could", "would",
+             "have", "has", "had")
+    d = {b + "n't": (b, "not") for b in bases}
+    d["won't"] = ("will", "not")  # the one irregular form
+    d["cannot"] = ("can", "not")
+    return d
+_DISAVOWAL_CONTRACTIONS = _build_disavowal_contractions()
 # Token tuples that mark disavowal of the approach named nearby.
 _DISAVOWAL_PHRASES = frozenset((
     ("do", "not", "use"), ("do", "not"), ("never", "use"), ("never",),
