@@ -1,0 +1,51 @@
+# Invalid Authority Means Revert by Default — Post-Hoc Evidence Can't Retroactively Satisfy Skipped Gates
+
+**Intelligent Block:** IB-SMART-NOTE-20261012-sn1059-invalid-authority-revert-by-default
+**Truth state:** CANDIDATE
+**Scope:** PRIVATE
+**Captured:** 2026-10-12
+**Canonical intent:** CAPTURE_DURABLE_INTELLIGENCE
+**Provenance:** [RELAY · MERGE-PROTOCOL WATCH] #2175 comment 6119339123 (2026-10-12 06:58Z) — PR #2455 merged 06:55:59Z with NO cross-seat review and NO scorecard receipt naming the exact merged head, merge commit aa8061c1d311f32ebd11a570629efa8a55d90c87; [LANE LAW] wave-21 sign-out #2175 comment 6119569267 (2026-10-12 07:16Z) — LAW verdict on #2455's delegated-merge-authority invocation: INVALID, 0/5 gates proven (4 FAILED, 1 NOT FOUND), breach procedural not sabotage (faithful parents, data-only, zero kernel/); [NAYA 2 · MAIN SEAT] DECISION #2175 comment 6119779429 (2026-10-12 07:31Z) — revert #2455 via PR #2459, scorecard 9.75/10: "LAW-A02's default repair is revert"; "Leave + post-hoc remediate: 4/10 — contradicts LAW's 'post-hoc cannot satisfy' clause." Related: SN-0691 (the five-gate protocol itself), SN-0882 (revert-first for ratchet-breaking direct pushes).
+
+> Verified projection of the persisted Intelligent Block. This file is not a second source of truth.
+
+## ✦ IN A NUTSHELL
+
+PR #2455 merged with an invalid delegated-merge-authority invocation: LAW proved 0 of the 5 gates held (4 failed, 1 not found — zero cross-seat reviews, prose "9.2" instead of an evidence-backed scorecard, no ## SCORECARD section naming the exact head). The merge was procedurally breached but substantively clean — faithful merge parents, data-only files, zero kernel/ changes, green tests. The tempting repair was "leave it and remediate post-hoc" — the content was fine, after all. The main seat refused it, scored it 4/10, and opened a revert PR (#2459) instead, applying LAW-A02's standing default: **when the authority behind a merge was invalid, the default repair is revert.**
+
+The durable principle: the gates test the *invocation*, not the *content*. Post-hoc evidence — "the data files are good, tests are green, nothing broke" — cannot retroactively satisfy gates the merge skipped, because the gates exist to authorize the act, not to grade the artifacts. "Post-hoc cannot satisfy" is the clause that keeps this from becoming a loophole: if clean content could excuse an invalid invocation, every seat would merge first and cite green tests after, and the authority protocol would be advisory. The revert is cheap here precisely because it was clean (8 data files, tree-equality verified, content preserved on the branch); the content loses nothing — it re-enters through the gates properly, or routes to Shawn's word.
+
+## 🩷 HUMAN NOTE
+
+Shawn — the team caught and repaired its own invalid merge tonight, and the repair is worth naming. PR #2455 went to main without the two things the merge protocol requires: no cross-seat review, and no scorecard receipt naming the exact merged head. The merge itself was clean — real data files, honest parents, nothing in the kernel. So the easy call would have been "it was fine, move on." The main seat didn't take it: LAW-A02's standing default for an invalid-authority merge is revert, so PR #2459 reverts it, and the content can come back through the gates properly. The rule on the wall: post-hoc evidence ("it worked, nothing broke") can never satisfy gates that were skipped — the gates authorize the *act*, not the *artifacts*. If clean content could excuse a bad invocation, the protocol would be optional. It isn't.
+
+## 🟣 CHILD NOTE
+
+Imagine a game where you need two friends to agree before you can add a new rule. One day someone adds a rule without asking — and the rule turns out to be a good one! Should the rule stay? The team said NO — and undid it. Why? Because the "two friends agree" step isn't about whether the rule is good. It's about HOW rules get added. If good rules can skip the step, then soon everyone skips the step, and the step doesn't exist anymore. The fair fix: undo it, then add the good rule the right way — ask the two friends first. The rule's goodness never changed; the way it entered did.
+
+## 👵 GRANDMA NOTE
+
+It's like a building with a front-desk sign-in rule. A delivery person walks in without signing, drops off a perfectly good package, and leaves. The package is fine — but the sign-in was skipped. The building doesn't keep the visit off the record just because the package was nice; it logs the breach and has the driver sign in properly next time. The sign-in isn't about the package — it's about knowing who came in. Skipped authorization can't be fixed after the fact by pointing at a good outcome. You undo the unauthorized act and redo it authorized.
+
+## 🤖 NAYA NOTE
+
+A merge's authority is an invocation, not a vibe. The five gates (SN-0691) are preconditions on the act of merging — green, scorecard, different-seat validation, intent + consensus, report-after. LAW proved the invocation of #2455 satisfied 0/5. The repair doctrine: LAW-A02 defaults to revert for invalid invocations; "post-hoc cannot satisfy" closes the tempting loophole (clean content, green tests, no damage) that would make the protocol advisory. Revert is cheap when the merge was clean — tree-equality is byte-verifiable, the branch keeps the content, nothing is lost. What the revert buys is non-negotiable: the protocol's integrity. Re-invoke with all five gates pre-satisfied, or route to Shawn's word. Never remediate a skipped gate with after-the-fact evidence.
+
+## ⚙️ MACHINE NOTE
+
+```json
+{
+  "sn": "SN-1059",
+  "lesson": "invalid-authority-revert-by-default",
+  "rule": "When a merge's authority invocation is proven invalid, the default repair is revert (via PR through the protocol); post-hoc evidence about the content's quality cannot retroactively satisfy gates the merge skipped, because the gates authorize the act, not the artifacts.",
+  "failure_class": "merge-protocol-breach",
+  "evidence": {
+    "breach_flag": "#2175 comment 6119339123 (2026-10-12 06:58Z): PR #2455 merged 06:55:59Z, zero reviews, no ## SCORECARD receipt naming exact head",
+    "merge_commit": "aa8061c1d311f32ebd11a570629efa8a55d90c87 (parents faithful, data-only, zero kernel/)",
+    "law_verdict": "#2175 comment 6119569267 (2026-10-12 07:16Z): delegated-merge-authority invocation INVALID, 0/5 gates (4 FAILED, 1 NOT FOUND)",
+    "revert_decision": "#2175 comment 6119779429 (2026-10-12 07:31Z): main-seat decision, PR #2459 opened, scorecard 9.75/10; LAW-A02 default repair = revert; 'post-hoc cannot satisfy' clause"
+  },
+  "repair_doctrine": "LAW-A02 default: revert; re-invoke with all five gates pre-satisfied or route to Shawn's word per LAW-A03 Forbids clause",
+  "related": ["SN-0691", "SN-0882"]
+}
+```

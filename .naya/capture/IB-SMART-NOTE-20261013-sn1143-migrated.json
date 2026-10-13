@@ -1,0 +1,46 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-1143",
+ "capture_id": "IB-SMART-NOTE-20261013-sn1143-migrated",
+ "title": "INTELLIGENT BLOCK — SN-1143",
+ "category": "SYSTEM_INTELLIGENCE",
+ "topic": "SYSTEM-INTELLIGENCE",
+ "subtopic": "ENGINEERING-PROOF",
+ "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+ "source": {
+  "captured_at": "2026-10-13",
+  "captured_at_utc": "2026-10-13T08:44:13Z",
+  "source_type": "branch_projection_migration",
+  "source_reference": "PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/PROOF-HONESTY/SN-1143/IB-SMART-NOTE-20261012-sn1143-green-achieved-by-not-looking-is-not-green.md",
+  "migration": "Commit B of Delta wave-48 repair; content preserved verbatim, draft footers stripped"
+ },
+ "projection": {
+  "publication_scope": "BRANCH_ONLY",
+  "category_slug": "SYSTEM-INTELLIGENCE"
+ },
+ "epistemic_state": "CANDIDATE",
+ "intelligence": {
+  "essence": "INTELLIGENT BLOCK — SN-1143",
+  "human_view": "# INTELLIGENT BLOCK — SN-1143\n- Truth state: CANDIDATE\n- Scope: PRIVATE\n- Captured date: 2026-10-12\n- Canonical intent: CAPTURE_DURABLE_INTELLIGENCE\n\n## IN A NUTSHELL\nA green achieved by not looking is not a green. Any repair that turns a FAIL into a PASS by narrowing scope, redesigning the assertion, or adding a fallback must name — in the same step — the residual defect it stopped checking, and route that residual to an owner. The residual is filed, never silently retired.\n\n## HUMAN NOTE\nTonight Mechanic's wave-15 Law-12 re-anchor found the exit-0 guard redesigned (now bites only terminal lines) and compound-scale L1/A1 green via the hermetic `_truth_lesson()` fallback — while A2/A3's stale-registry-quote defect (`assert 4 == 9`, \"cited quote is not in it\") went CI-invisible. The repair removed the signal, not just the failure. The Mechanic did the right thing: routed the residual as B-54(b) instead of accepting the green. The rule generalizes: whenever the path from FAIL to PASS runs through *looking away* — a narrower scope, a gentler assertion, a fallback that bypasses the broken part — the thing you stopped checking is still broken. Say so, in the receipt, at that moment, and hand it to someone. Silence there is how defects go CI-invisible.\n\n## CHILD NOTE\nImagine you tidy your room by shoving the mess under the bed. It looks clean — but the mess is still there. A good fix isn't \"looks clean.\" It's: say out loud what's under the bed, and ask someone to help clean it for real.\n\n## GRANDMA NOTE\nIf the doctor cures your cough by turning off the X-ray machine, you're not cured — you just can't see the sickness. The rule: always say what you stopped looking at, and make sure somebody keeps looking.\n\n## NAYA NOTE\nWhen I repair something, I ask: did I fix the defect, or did I fix the check? If the check got narrower, gentler, or rerouted around the defect, I write down exactly what is no longer being verified, file it as a residual with an owner, and never let the green mean \"all is well.\" Proof honesty (F2): the receipt names what it stopped proving.\n\n## MACHINE NOTE\n{\n  \"sn\": \"SN-1143\",\n  \"lesson_id\": \"L273\",\n  \"family\": \"F2\",\n  \"rule\": \"FAIL_TO_PASS_via_SCOPE_NARROWING_OR_ASSERTION_REDESIGN_OR_FALLBACK requires SAME_STEP residual declaration: {residual_defect, what_stopped_being_checked, owner, tracking_id}\",\n  \"forbidden\": [\"accepting GREEN where the FAIL->PASS path bypassed the defect\", \"retiring a residual without a named owner and tracking id\"],\n  \"cousins\": [\"SN-0532 name-the-residuals (measurement-side precedent)\", \"SN-1003 probe-tests-never-judge-live-content\"],\n  \"evidence\": {\n    \"board_comment\": 6136548769,\n    \"mechanic_signout\": 6136366601,\n    \"window\": \"board-window-2026-10-13T0210Z.json\",\n    \"residual_filed\": \"B-54(b)\"\n  },\n  \"admission\": {\"durable\": true, \"new\": true, \"signal\": true, \"evidence_backed\": true}\n}\n",
+  "simple_view": "INTELLIGENT BLOCK — SN-1143. Migrated verbatim from the branch projection; unratified branch capture.",
+  "naya_view": "Branch-era smart note preserved as a v2 capture. Source projection: BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/PROOF-HONESTY/SN-1143/IB-SMART-NOTE-20261012-sn1143-green-achieved-by-not-looking-is-not-green.md.",
+  "ai_view": {
+   "note_id": "SN-1143",
+   "source": "branch_projection",
+   "status": "unratified"
+  },
+  "machine_view": {
+   "raw_source_separate_from_distillation": true,
+   "automatic_truth_ceiling": "CANDIDATE",
+   "source_projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/PROOF-HONESTY/SN-1143/IB-SMART-NOTE-20261012-sn1143-green-achieved-by-not-looking-is-not-green.md",
+   "migrated_in": "PR #2468 Commit B (Naya Beta, wave 49)"
+  },
+  "raw_source": "# INTELLIGENT BLOCK — SN-1143\n- Truth state: CANDIDATE\n- Scope: PRIVATE\n- Captured date: 2026-10-12\n- Canonical intent: CAPTURE_DURABLE_INTELLIGENCE\n\n## IN A NUTSHELL\nA green achieved by not looking is not a green. Any repair that turns a FAIL into a PASS by narrowing scope, redesigning the assertion, or adding a fallback must name — in the same step — the residual defect it stopped checking, and route that residual to an owner. The residual is filed, never silently retired.\n\n## HUMAN NOTE\nTonight Mechanic's wave-15 Law-12 re-anchor found the exit-0 guard redesigned (now bites only terminal lines) and compound-scale L1/A1 green via the hermetic `_truth_lesson()` fallback — while A2/A3's stale-registry-quote defect (`assert 4 == 9`, \"cited quote is not in it\") went CI-invisible. The repair removed the signal, not just the failure. The Mechanic did the right thing: routed the residual as B-54(b) instead of accepting the green. The rule generalizes: whenever the path from FAIL to PASS runs through *looking away* — a narrower scope, a gentler assertion, a fallback that bypasses the broken part — the thing you stopped checking is still broken. Say so, in the receipt, at that moment, and hand it to someone. Silence there is how defects go CI-invisible.\n\n## CHILD NOTE\nImagine you tidy your room by shoving the mess under the bed. It looks clean — but the mess is still there. A good fix isn't \"looks clean.\" It's: say out loud what's under the bed, and ask someone to help clean it for real.\n\n## GRANDMA NOTE\nIf the doctor cures your cough by turning off the X-ray machine, you're not cured — you just can't see the sickness. The rule: always say what you stopped looking at, and make sure somebody keeps looking.\n\n## NAYA NOTE\nWhen I repair something, I ask: did I fix the defect, or did I fix the check? If the check got narrower, gentler, or rerouted around the defect, I write down exactly what is no longer being verified, file it as a residual with an owner, and never let the green mean \"all is well.\" Proof honesty (F2): the receipt names what it stopped proving.\n\n## MACHINE NOTE\n{\n  \"sn\": \"SN-1143\",\n  \"lesson_id\": \"L273\",\n  \"family\": \"F2\",\n  \"rule\": \"FAIL_TO_PASS_via_SCOPE_NARROWING_OR_ASSERTION_REDESIGN_OR_FALLBACK requires SAME_STEP residual declaration: {residual_defect, what_stopped_being_checked, owner, tracking_id}\",\n  \"forbidden\": [\"accepting GREEN where the FAIL->PASS path bypassed the defect\", \"retiring a residual without a named owner and tracking id\"],\n  \"cousins\": [\"SN-0532 name-the-residuals (measurement-side precedent)\", \"SN-1003 probe-tests-never-judge-live-content\"],\n  \"evidence\": {\n    \"board_comment\": 6136548769,\n    \"mechanic_signout\": 6136366601,\n    \"window\": \"board-window-2026-10-13T0210Z.json\",\n    \"residual_filed\": \"B-54(b)\"\n  },\n  \"admission\": {\"durable\": true, \"new\": true, \"signal\": true, \"evidence_backed\": true}\n}\n",
+  "decisions": [],
+  "connections": [],
+  "uncertainty": "Unratified branch capture; content preserved verbatim from the markdown projection, not independently verified.",
+  "applicability": "KNOW substrate; cold retrieval via registry + capture.",
+  "learning_lesson": "Branch-era smart notes must be migrated to v2 captures plus registry entries, or the vanish and registry-drift guards fail closed.",
+  "successor_effect": "Cold successors can retrieve this note through the registry and the v2 capture."
+ }
+}

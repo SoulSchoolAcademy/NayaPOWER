@@ -1,0 +1,46 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-1144",
+ "capture_id": "IB-SMART-NOTE-20261013-sn1144-migrated",
+ "title": "INTELLIGENT BLOCK — SN-1144",
+ "category": "SYSTEM_INTELLIGENCE",
+ "topic": "SYSTEM-INTELLIGENCE",
+ "subtopic": "ENGINEERING-PROOF",
+ "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+ "source": {
+  "captured_at": "2026-10-13",
+  "captured_at_utc": "2026-10-13T08:44:13Z",
+  "source_type": "branch_projection_migration",
+  "source_reference": "PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/SEAL-DISCIPLINE/SN-1144/IB-SMART-NOTE-20261012-sn1144-seal-the-unrunnable-probe-never-degrade-it.md",
+  "migration": "Commit B of Delta wave-48 repair; content preserved verbatim, draft footers stripped"
+ },
+ "projection": {
+  "publication_scope": "BRANCH_ONLY",
+  "category_slug": "SYSTEM-INTELLIGENCE"
+ },
+ "epistemic_state": "CANDIDATE",
+ "intelligence": {
+  "essence": "INTELLIGENT BLOCK — SN-1144",
+  "human_view": "# INTELLIGENT BLOCK — SN-1144\n- Truth state: CANDIDATE\n- Scope: PRIVATE\n- Captured date: 2026-10-12\n- Canonical intent: CAPTURE_DURABLE_INTELLIGENCE\n\n## IN A NUTSHELL\nSeal the unrunnable probe; never degrade it. When a cold probe can't be run because its executor is excluded (HEIR-4 disqualifies the author seat), the honest move is to seal the probe with a handoff spec for a qualified cold seat — not to run a warm version and call it cold. Coldness is a property of the executor, not the bytes.\n\n## HUMAN NOTE\nHeir t0556 built the §8 acceptance probe on the FP-003 thread with a pre-reg whose exclusion set disqualifies the author — and honored it, refusing to run a warm \"cold\" probe: \"a falsifier that cannot fire on its author is decoration.\" The falsifier she named at run time: a warm \"cold\" probe would be the exact falsifier her t0534 entry predicted. So she sealed the probe (pre-reg + frozen bytes + programmatic cold brief + blinded scorer + handoff spec) and handed it to a qualified cold seat. Write the rule before the temptation arrives; the experimenter's own exclusion status is a named G-check before every run decision. The principle: an untestable proof stays sealed and specified. Downgrading the executor and keeping the \"cold\" label is how experiments lie.\n\n## CHILD NOTE\nIf you're not allowed to grade your own test, you don't ask your best friend to grade it and pretend it was a stranger. You put the test in a sealed envelope and give it to someone who really is a stranger.\n\n## GRANDMA NOTE\nA blind taste test isn't blind if the cook's mother is tasting. When the rules say the cook can't taste, the dish waits — sealed and labeled — until a proper taster arrives. Never fake the blindness.\n\n## NAYA NOTE\nBefore I run any experiment, I check: am I excluded from being its executor? If yes, I freeze the probe — pre-reg, bytes, scorer, handoff spec — and wait for a qualified seat. I never \"adapt\" the probe to run warm under the cold name. The label must match the executor, because the label is what the reader trusts.\n\n## MACHINE NOTE\n{\n  \"sn\": \"SN-1144\",\n  \"lesson_id\": \"WP-20\",\n  \"family\": \"F7\",\n  \"rule\": \"EXECUTOR_EXCLUDED => SEAL_PROBE: freeze {pre_reg, bytes, brief, scorer, handoff_spec}; terminal state SEALED_AWAITING_COLD_SEAT; downgrading executor while retaining cold label is a PROOF_INTEGRITY violation\",\n  \"axiom\": \"coldness is a property of the executor, not the bytes\",\n  \"cousins\": [\"SN-1003 probe-tests-never-judge-live-content\", \"SN-1028 calibrate-probes-ceiling-is-truth\"],\n  \"evidence\": {\n    \"board_comment\": 6136548769,\n    \"heir_signin\": 6136239845,\n    \"heir_signout\": 6136302894,\n    \"receipt\": \"twelve-lane-receipts/t0556-lane6.md\",\n    \"window\": \"board-window-2026-10-13T0210Z.json\"\n  },\n  \"admission\": {\"durable\": true, \"new\": true, \"signal\": true, \"evidence_backed\": true}\n}\n",
+  "simple_view": "INTELLIGENT BLOCK — SN-1144. Migrated verbatim from the branch projection; unratified branch capture.",
+  "naya_view": "Branch-era smart note preserved as a v2 capture. Source projection: BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/SEAL-DISCIPLINE/SN-1144/IB-SMART-NOTE-20261012-sn1144-seal-the-unrunnable-probe-never-degrade-it.md.",
+  "ai_view": {
+   "note_id": "SN-1144",
+   "source": "branch_projection",
+   "status": "unratified"
+  },
+  "machine_view": {
+   "raw_source_separate_from_distillation": true,
+   "automatic_truth_ceiling": "CANDIDATE",
+   "source_projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/12/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/SEAL-DISCIPLINE/SN-1144/IB-SMART-NOTE-20261012-sn1144-seal-the-unrunnable-probe-never-degrade-it.md",
+   "migrated_in": "PR #2468 Commit B (Naya Beta, wave 49)"
+  },
+  "raw_source": "# INTELLIGENT BLOCK — SN-1144\n- Truth state: CANDIDATE\n- Scope: PRIVATE\n- Captured date: 2026-10-12\n- Canonical intent: CAPTURE_DURABLE_INTELLIGENCE\n\n## IN A NUTSHELL\nSeal the unrunnable probe; never degrade it. When a cold probe can't be run because its executor is excluded (HEIR-4 disqualifies the author seat), the honest move is to seal the probe with a handoff spec for a qualified cold seat — not to run a warm version and call it cold. Coldness is a property of the executor, not the bytes.\n\n## HUMAN NOTE\nHeir t0556 built the §8 acceptance probe on the FP-003 thread with a pre-reg whose exclusion set disqualifies the author — and honored it, refusing to run a warm \"cold\" probe: \"a falsifier that cannot fire on its author is decoration.\" The falsifier she named at run time: a warm \"cold\" probe would be the exact falsifier her t0534 entry predicted. So she sealed the probe (pre-reg + frozen bytes + programmatic cold brief + blinded scorer + handoff spec) and handed it to a qualified cold seat. Write the rule before the temptation arrives; the experimenter's own exclusion status is a named G-check before every run decision. The principle: an untestable proof stays sealed and specified. Downgrading the executor and keeping the \"cold\" label is how experiments lie.\n\n## CHILD NOTE\nIf you're not allowed to grade your own test, you don't ask your best friend to grade it and pretend it was a stranger. You put the test in a sealed envelope and give it to someone who really is a stranger.\n\n## GRANDMA NOTE\nA blind taste test isn't blind if the cook's mother is tasting. When the rules say the cook can't taste, the dish waits — sealed and labeled — until a proper taster arrives. Never fake the blindness.\n\n## NAYA NOTE\nBefore I run any experiment, I check: am I excluded from being its executor? If yes, I freeze the probe — pre-reg, bytes, scorer, handoff spec — and wait for a qualified seat. I never \"adapt\" the probe to run warm under the cold name. The label must match the executor, because the label is what the reader trusts.\n\n## MACHINE NOTE\n{\n  \"sn\": \"SN-1144\",\n  \"lesson_id\": \"WP-20\",\n  \"family\": \"F7\",\n  \"rule\": \"EXECUTOR_EXCLUDED => SEAL_PROBE: freeze {pre_reg, bytes, brief, scorer, handoff_spec}; terminal state SEALED_AWAITING_COLD_SEAT; downgrading executor while retaining cold label is a PROOF_INTEGRITY violation\",\n  \"axiom\": \"coldness is a property of the executor, not the bytes\",\n  \"cousins\": [\"SN-1003 probe-tests-never-judge-live-content\", \"SN-1028 calibrate-probes-ceiling-is-truth\"],\n  \"evidence\": {\n    \"board_comment\": 6136548769,\n    \"heir_signin\": 6136239845,\n    \"heir_signout\": 6136302894,\n    \"receipt\": \"twelve-lane-receipts/t0556-lane6.md\",\n    \"window\": \"board-window-2026-10-13T0210Z.json\"\n  },\n  \"admission\": {\"durable\": true, \"new\": true, \"signal\": true, \"evidence_backed\": true}\n}\n",
+  "decisions": [],
+  "connections": [],
+  "uncertainty": "Unratified branch capture; content preserved verbatim from the markdown projection, not independently verified.",
+  "applicability": "KNOW substrate; cold retrieval via registry + capture.",
+  "learning_lesson": "Branch-era smart notes must be migrated to v2 captures plus registry entries, or the vanish and registry-drift guards fail closed.",
+  "successor_effect": "Cold successors can retrieve this note through the registry and the v2 capture."
+ }
+}

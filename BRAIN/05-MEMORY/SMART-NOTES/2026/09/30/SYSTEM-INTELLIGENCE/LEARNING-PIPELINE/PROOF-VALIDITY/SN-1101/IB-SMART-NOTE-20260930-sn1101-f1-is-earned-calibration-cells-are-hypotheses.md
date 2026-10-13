@@ -1,0 +1,38 @@
+# F1 Is Earned, Never Assumed — Positive Calibration Cells Are Hypotheses About the Counterfactual, Not Ground Truth
+
+**Intelligent Block:** IB-SMART-NOTE-20260930-sn1101-f1-is-earned-calibration-cells-are-hypotheses
+**Truth state:** CANDIDATE
+**Scope:** PRIVATE
+**Captured:** 2026-10-12
+**Canonical intent:** CAPTURE_DURABLE_INTELLIGENCE
+**Provenance:** #2175 (2026-10-12 — lesson-broadcast t0462 Naya Seeker; hidden_files/auto-retrieval/results-t0462.json + sealed-note-t0462.md; frozen fixture baseline-sealed-t0432.md).
+
+> Verified projection of the persisted Intelligent Block. This file is not a second source of truth.
+
+## ✦ IN A NUTSHELL
+
+Naya Seeker's sealed study cells 1–2 (t0462) executed the counterfactual M-design protocol on the frozen fixture, d0 = M(C) vs d1 = M(C+X), CHANGED iff the decision artifact differs under the pre-registered equality rule. Cell (C,P12) → CHANGED matched the human's blind-baseline positive label. Cell (A,P6) → UNCHANGED did **not** — the instrument honestly disagreed with a blind-baseline positive label, and the lane reported the disagreement instead of burying it.
+
+The repair is in the framing, not the instrument: the blind baseline is a **ranking judgment** ("P6 is the task's enforcement arm"); the study asks a **decision-change question** ("would surfacing X change the decision?"). They can diverge — and the divergence is information, not a defect to smooth over.
+
+The durable rule: **positive calibration cells are hypotheses about the counterfactual, not ground truth.** Label quality does not transfer across questions. F1 must be **EARNED on the full 6-cell run**, never assumed from how good the labels looked. Two companion proofs shipped with the slice: F3 mechanized — the TF-IDF baseline predicted OPPOSITE to the instrument on both cells (agreement 0/2), so the lexical-independence tripwire did NOT fire on this slice; F5 — protocol sha256 identical before and after the run. A calibration regime that treats its labels as verdicts instead of hypotheses will tune the instrument to answer the label's question, not the study's — and then congratulate itself for agreeing with itself.
+
+## 🩷 HUMAN NOTE
+
+Shawn — calibration methodology lesson from this morning's retrieval study: the lane's counterfactual instrument disagreed with a human "positive" label on one of two sealed cells, and reported it honestly instead of tuning it away. The insight: the human's label was answering a ranking question ("this is the enforcement arm") while the study was asking a decision-change question ("would surfacing this change the decision") — different questions can give different honest answers. The rule going forward: calibration labels are hypotheses, not ground truth, and a study's F1 has to be earned on the full run, never assumed from label quality. If we let labels double as verdicts, we'd just be teaching the instrument to agree with the label — and calling that proof.
+
+## 🟣 CHILD NOTE
+
+Imagine a judge at a baking contest gives a cake a gold star because it looks beautiful. But the actual contest question is "does this cake taste better with the extra frosting?" The gold star was answering a different question! The smart rule: when you test something, make sure your "right answers" are answering the SAME question your test is asking. A gold star for beauty doesn't prove anything about taste. And you can't claim victory from two cakes — you have to bake all six before you know if your recipe really works.
+
+## 👵 GRANDMA NOTE
+
+A researcher tested whether showing a new report would change a decision. On one test case the machine disagreed with the expert's "this is important" label — and said so honestly. The lesson: the expert's label was answering "is this important?" while the test was asking "would this change the decision?" — two different questions, two different honest answers. The rule: test labels are educated guesses, not gospel. You earn your passing grade by running the whole test, not by assuming the guesses were right. Agreeing with your own guesses is not proof of anything.
+
+## 💜 NAYA NOTE
+
+Note to future me: when I design a calibration study, I write down the QUESTION the label answers and the QUESTION the instrument answers, side by side, before any run — and I check they are the same question. A blind-baseline positive is a hypothesis about the counterfactual, never a verdict. When instrument and label diverge, the divergence is the finding; I never tune it away. F1 is earned on the full cell run (all 6 cells, pre-registered equality rule), never assumed from label quality. Companion discipline from the same slice: run the F3 lexical-independence tripwire (TF-IDF baseline agreement must be <5/6 or the instrument is a semantic proxy) and the F5 protocol-integrity hash (sha256 identical before/after) on every study — the calibration is only as honest as its tripwires.
+
+## ⚙️ MACHINE NOTE
+
+{"sn": "SN-1101", "title": "F1 Is Earned, Never Assumed — Positive Calibration Cells Are Hypotheses About the Counterfactual, Not Ground Truth", "truth_state": "CANDIDATE", "scope": "PRIVATE", "captured": "2026-10-12", "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE", "taxonomy": ["SYSTEM-INTELLIGENCE", "LEARNING-PIPELINE", "PROOF-VALIDITY"], "cousins": ["SN-1092", "SN-1094", "SN-1099"], "authority": "observed lane practice 2026-10-12, CANDIDATE (auto-capture, not ratified)", "evidence": {"board": ["#2175 lesson-broadcast t0462 Naya Seeker (2026-10-12) — 'Sealed study cells 1–2 executed on the frozen fixture (M-design counterfactual): (C,P12)→CHANGED matches the human label; (A,P6)→UNCHANGED — the instrument honestly disagreed with a blind-baseline positive label. Positive calibration cells are HYPOTHESES about the counterfactual, not ground truth: the blind baseline is a ranking judgment, the study asks a decision-change question, and they can diverge. F1 must be EARNED on the full 6-cell run, never assumed from label quality.'"], "artifacts": ["hidden_files/auto-retrieval/results-t0462.json", "hidden_files/auto-retrieval/sealed-note-t0462.md", "hidden_files/auto-retrieval/baseline-sealed-t0432.md (frozen fixture)"]}, "doctrine": {"label_question_vs_study_question": "write down the question the label answers and the question the instrument answers before any run; they must be the same question", "hypotheses_not_verdicts": "positive calibration cells are hypotheses about the counterfactual, never ground truth; divergence is the finding", "f1_earned": "F1 is earned on the full pre-registered cell run, never assumed from label quality", "tripwires": "every study carries F3 (lexical-independence tripwire, TF-IDF agreement <5/6) and F5 (protocol sha256 identical before/after)"}}

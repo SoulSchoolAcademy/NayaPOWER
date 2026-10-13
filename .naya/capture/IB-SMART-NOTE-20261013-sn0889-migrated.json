@@ -1,0 +1,46 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-0889",
+ "capture_id": "IB-SMART-NOTE-20261013-sn0889-migrated",
+ "title": "SN-0889 — Re-anchor at Verify Time: Pre-verification Re-anchors Burn Under Tip Velocity",
+ "category": "SYSTEM_INTELLIGENCE",
+ "topic": "SYSTEM-INTELLIGENCE",
+ "subtopic": "CI-TRIAGE",
+ "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+ "source": {
+  "captured_at": "2026-10-13",
+  "captured_at_utc": "2026-10-13T08:44:13Z",
+  "source_type": "branch_projection_migration",
+  "source_reference": "PR #2468 branch naya4/smart-notes-2026-09-30, projection BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/BASE-STALENESS/SN-0889/IB-SMART-NOTE-20261010-sn0889-verify-time-reanchor-beats-pre-anchor.md",
+  "migration": "Commit B of Delta wave-48 repair; content preserved verbatim, draft footers stripped"
+ },
+ "projection": {
+  "publication_scope": "BRANCH_ONLY",
+  "category_slug": "SYSTEM-INTELLIGENCE"
+ },
+ "epistemic_state": "CANDIDATE",
+ "intelligence": {
+  "essence": "SN-0889 — Re-anchor at Verify Time: Pre-verification Re-anchors Burn Under Tip Velocity",
+  "human_view": "# SN-0889 — Re-anchor at Verify Time: Pre-verification Re-anchors Burn Under Tip Velocity\n\n- **Intelligent Block:** IB-SMART-NOTE-20261010-sn0889-verify-time-reanchor-beats-pre-anchor\n- **Truth state:** CANDIDATE\n- **Scope:** PRIVATE (Team Naya engineering knowledge)\n- **Captured:** 2026-10-10\n- **Canonical intent:** CAPTURE_DURABLE_INTELLIGENCE\n- **Provenance:** #1354 comment 6098935371 ([NAYA 4][LEARN-DRIVER] Completion — 2026-10-10 ~08:15 PDT)\n\n## IN A NUTSHELL\nOn a fast main (~13 merges/6h), staged intake PRs re-dirty faster than verification reaches them. The 2026-10-10 LEARN-DRIVER run re-anchored staged trial-evidence PRs #1786/#1787/#1788/#1789 onto tip `801e3922` (new heads `9c4a69df`/`d6470788`/`cbe784f8`/`5a31ee8b`; evidence bytes verified untouched; mergeable again; verifier re-notified) — the second re-anchor that day — and collected zero verifications. Each re-anchor is real work: rebase, byte-verify evidence, re-run CI, re-notify the verifier — and it all expires the moment the tip moves again (SN-0493). The driver's structural recommendation: re-anchor AT verify-time (the verifier's recipe includes pulling the current tip as part of verification) or hold a merge-queue slot, instead of a third same-day pre-verification re-anchor. Post the stale state openly; do not burn cycles pre-freshening it.\n\n## HUMAN NOTE\nImagine repainting a bridge while traffic never stops: you finish one end and the other end is dirty again before the inspector arrives. The fix isn't to paint faster — it's to paint when the inspector walks up, with the paint already mixed and the surface prepped.\n\n## CHILD NOTE\nIf the road keeps moving, don't keep fixing your parking spot ahead of the car. Fix it when the car arrives.\n\n## GRANDMA NOTE\nDon't keep setting the table when the guests haven't arrived and the room keeps changing. Set it the moment they walk in.\n\n## NAYA NOTE\nCold successor: when you stage PRs that need another seat's verification on a fast-moving main, do NOT burn cycles re-anchoring them ahead of time. Keep the evidence bytes verified-untouched, post the stale state openly, and re-anchor at verify-time — the verifier pulls the current tip as step one of the verification recipe — or request a merge-queue slot. Scorecard rule: two re-anchors and zero verifications means the process is doing the wrong work, not too little work.\n\n## MACHINE NOTE\n```json\n{\n  \"intelligent_block\": \"IB-SMART-NOTE-20261010-sn0889-verify-time-reanchor-beats-pre-anchor\",\n  \"sn\": \"SN-0889\",\n  \"truth_state\": \"CANDIDATE\",\n  \"scope\": \"PRIVATE\",\n  \"captured\": \"2026-10-10\",\n  \"canonical_intent\": \"CAPTURE_DURABLE_INTELLIGENCE\",\n  \"category\": \"CI-TRIAGE\",\n  \"subcategory\": \"BASE-STALENESS\",\n  \"lesson_type\": \"PROCESS_FIX\",\n  \"evidence\": {\n    \"board_comment\": 6098935371,\n    \"board\": \"#1354\",\n    \"prs\": [1786, 1787, 1788, 1789],\n    \"tip\": \"801e3922\",\n    \"tip_velocity\": \"~13 merges/6h\",\n    \"reanchors_same_day\": 2,\n    \"verifications_same_day\": 0\n  },\n  \"rule\": \"At high tip velocity, re-anchor staged PRs at verify-time (verifier pulls current tip as recipe step 1) or via a merge-queue slot — never as repeated pre-verification work.\",\n  \"related\": [\"SN-0493\", \"SN-0423\"],\n  \"supersedes\": null\n}\n```\n",
+  "simple_view": "SN-0889 — Re-anchor at Verify Time: Pre-verification Re-anchors Burn Under Tip Velocity. Migrated verbatim from the branch projection; unratified branch capture.",
+  "naya_view": "Branch-era smart note preserved as a v2 capture. Source projection: BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/BASE-STALENESS/SN-0889/IB-SMART-NOTE-20261010-sn0889-verify-time-reanchor-beats-pre-anchor.md.",
+  "ai_view": {
+   "note_id": "SN-0889",
+   "source": "branch_projection",
+   "status": "unratified"
+  },
+  "machine_view": {
+   "raw_source_separate_from_distillation": true,
+   "automatic_truth_ceiling": "CANDIDATE",
+   "source_projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/BASE-STALENESS/SN-0889/IB-SMART-NOTE-20261010-sn0889-verify-time-reanchor-beats-pre-anchor.md",
+   "migrated_in": "PR #2468 Commit B (Naya Beta, wave 49)"
+  },
+  "raw_source": "# SN-0889 — Re-anchor at Verify Time: Pre-verification Re-anchors Burn Under Tip Velocity\n\n- **Intelligent Block:** IB-SMART-NOTE-20261010-sn0889-verify-time-reanchor-beats-pre-anchor\n- **Truth state:** CANDIDATE\n- **Scope:** PRIVATE (Team Naya engineering knowledge)\n- **Captured:** 2026-10-10\n- **Canonical intent:** CAPTURE_DURABLE_INTELLIGENCE\n- **Provenance:** #1354 comment 6098935371 ([NAYA 4][LEARN-DRIVER] Completion — 2026-10-10 ~08:15 PDT)\n\n## IN A NUTSHELL\nOn a fast main (~13 merges/6h), staged intake PRs re-dirty faster than verification reaches them. The 2026-10-10 LEARN-DRIVER run re-anchored staged trial-evidence PRs #1786/#1787/#1788/#1789 onto tip `801e3922` (new heads `9c4a69df`/`d6470788`/`cbe784f8`/`5a31ee8b`; evidence bytes verified untouched; mergeable again; verifier re-notified) — the second re-anchor that day — and collected zero verifications. Each re-anchor is real work: rebase, byte-verify evidence, re-run CI, re-notify the verifier — and it all expires the moment the tip moves again (SN-0493). The driver's structural recommendation: re-anchor AT verify-time (the verifier's recipe includes pulling the current tip as part of verification) or hold a merge-queue slot, instead of a third same-day pre-verification re-anchor. Post the stale state openly; do not burn cycles pre-freshening it.\n\n## HUMAN NOTE\nImagine repainting a bridge while traffic never stops: you finish one end and the other end is dirty again before the inspector arrives. The fix isn't to paint faster — it's to paint when the inspector walks up, with the paint already mixed and the surface prepped.\n\n## CHILD NOTE\nIf the road keeps moving, don't keep fixing your parking spot ahead of the car. Fix it when the car arrives.\n\n## GRANDMA NOTE\nDon't keep setting the table when the guests haven't arrived and the room keeps changing. Set it the moment they walk in.\n\n## NAYA NOTE\nCold successor: when you stage PRs that need another seat's verification on a fast-moving main, do NOT burn cycles re-anchoring them ahead of time. Keep the evidence bytes verified-untouched, post the stale state openly, and re-anchor at verify-time — the verifier pulls the current tip as step one of the verification recipe — or request a merge-queue slot. Scorecard rule: two re-anchors and zero verifications means the process is doing the wrong work, not too little work.\n\n## MACHINE NOTE\n```json\n{\n  \"intelligent_block\": \"IB-SMART-NOTE-20261010-sn0889-verify-time-reanchor-beats-pre-anchor\",\n  \"sn\": \"SN-0889\",\n  \"truth_state\": \"CANDIDATE\",\n  \"scope\": \"PRIVATE\",\n  \"captured\": \"2026-10-10\",\n  \"canonical_intent\": \"CAPTURE_DURABLE_INTELLIGENCE\",\n  \"category\": \"CI-TRIAGE\",\n  \"subcategory\": \"BASE-STALENESS\",\n  \"lesson_type\": \"PROCESS_FIX\",\n  \"evidence\": {\n    \"board_comment\": 6098935371,\n    \"board\": \"#1354\",\n    \"prs\": [1786, 1787, 1788, 1789],\n    \"tip\": \"801e3922\",\n    \"tip_velocity\": \"~13 merges/6h\",\n    \"reanchors_same_day\": 2,\n    \"verifications_same_day\": 0\n  },\n  \"rule\": \"At high tip velocity, re-anchor staged PRs at verify-time (verifier pulls current tip as recipe step 1) or via a merge-queue slot — never as repeated pre-verification work.\",\n  \"related\": [\"SN-0493\", \"SN-0423\"],\n  \"supersedes\": null\n}\n```\n",
+  "decisions": [],
+  "connections": [],
+  "uncertainty": "Unratified branch capture; content preserved verbatim from the markdown projection, not independently verified.",
+  "applicability": "KNOW substrate; cold retrieval via registry + capture.",
+  "learning_lesson": "Branch-era smart notes must be migrated to v2 captures plus registry entries, or the vanish and registry-drift guards fail closed.",
+  "successor_effect": "Cold successors can retrieve this note through the registry and the v2 capture."
+ }
+}
