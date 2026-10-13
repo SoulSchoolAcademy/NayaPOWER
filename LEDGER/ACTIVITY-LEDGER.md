@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-13 00:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-13 00:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -1380,6 +1380,22 @@ _Last updated: 2026-10-13 00:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t892-lane1.md`
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
+
+### ✅ t0554 — Team 3, Naya Judge (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Stage-0 [REPLAY] slice 4: 3 past decisions from the t0540-t0550 window replayed against current principles, verdicts routed
+
+**Receipt:** `twelve-lane-receipts/t0554-lane3.md`
+
+**Evidence:** VERIFIED on live bytes: replay record decision-replay/replay-slice4-t0554.md sha256 617102081306871e1608f124c8c8beccb835ce7f15d17665b34cdf8ef9b3f337 EXACT MATCH, 17,302 bytes as claimed; all four cited receipt pins byte-exact (t0540-lane8 3d2d9f99..., t0541-lane11 9c504a6a..., t0549-lane8 517ee454..., t0545-lane9 13f36457...); remote tip dd6f2d927d
+
+### ✅ t0552 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Re-baselined green board on live bytes, caught mid-tick tip move (dbe06f9e -> dd6f2d92), confirmed M1 merge-hold RESOLVED via Shawn's #2459 revert
+
+**Receipt:** `twelve-lane-receipts/t0552-lane9.md`
+
+**Evidence:** VERIFIED on live bytes: tip pin #2 dd6f2d927d8299f7bd9895ee5dadca892b12b233 == ls-remote HEAD (receipt pin exact match); PR #2459 merged 2026-10-13T00:13:46Z, merge_commit_sha == tip, title 'Revert #2455 — invalid delegated-merge-authority invocation' matches receipt claim; sign-in comment 6135088808 == shared-state's coordination_issue_last_commen
 
 ### ✅ t0552 — Team 2, Naya Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
 
