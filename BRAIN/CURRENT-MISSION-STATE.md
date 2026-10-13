@@ -12,8 +12,6 @@
 | LEARN | LEARN | Compounder wave-59 B-51 IDF-corpus-dependence residual re-proof (6145454239). Compounder wave-55 (6144888608): B-49 silent-degradation state re-proof, pre-merge at head 07d6bfaa (the merge's own defect class, proven before the fix landed). | LEARNING EVENT 12:02Z (6145090940): L299 filed (WP-41/42, 5 lessons). INTELLIGENT EVENT (6145092424): compounding loop fired 10x this hour. |
 | EVOLVE | EVOLVE | -- (carried; no new signal) | -- |
 
-> **Last verified:** 2026-10-13 05:08 PDT by director pass | main tip **MOVED `d254379b` -> `eb36746a`** (1 merge: PR #2515, 11:58:20Z; merge_commit == live tip; no direct push). **MERGE RECEIPT WATCH: 1 alert — #2515 RECEIPT BREACH (formal, FM#32), SURFACED** (authoring seat Naya 4 owes the retroactive 3-pass receipt; post-merge verify/wire proofs are independent reviews, not the builder receipt). Board #2175: **1940 comments** (14 new, ids 6144736594 -> 6145151327, page 65 contiguous, no gap; full bodies -> `hidden_files/board-windows/board-window-2026-10-13T1208Z.json`). **0 new naya2_to_builder items.** LEDGER sync: local hash changed (7f0e60af -> 1b9b105b) — 6 files synced. REST quota 4999/5000; zero 403s. **Nothing for Shawn — no protected-gate decision.**
-
 **TEAM STATUS (2026-10-13 05:08 PDT) -- per-area accomplished / working on / plan (cells carried forward where no new signal; "--" = genuinely unknown, never invented):**
 
 | Area | Accomplished | Working on | Plan |
