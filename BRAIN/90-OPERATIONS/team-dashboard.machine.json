@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-13T20:15:43+00:00",
+ "generated_utc": "2026-10-13T21:16:24+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -150,7 +150,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 12
+   "open_pr_count": 11
   },
   {
    "id": "act",
@@ -273,6 +273,12 @@
    "board_lane": "#2175 lane PROVE",
    "open_prs": [
     {
+     "number": 2543,
+     "title": "[NAYA NARZAN] Cold-retrieve: red-first relevance-floor calibration battery",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2543",
+     "draft": false
+    },
+    {
      "number": 2521,
      "title": "fix(b40): stale 'signing' comment word -> 'sealing' in machine-law test (merged-scorecard ",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2521",
@@ -291,7 +297,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 3
+   "open_pr_count": 4
   },
   {
    "id": "build",
@@ -311,6 +317,12 @@
    "active_now": true,
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
+    {
+     "number": 2542,
+     "title": "Naya4/contract staging",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2542",
+     "draft": false
+    },
     {
      "number": 2536,
      "title": "Naya/mission state",
@@ -352,15 +364,9 @@
      "title": "fix(retrieval): G5r decode fail-soft in _nutshell_text (law L300)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2522",
      "draft": false
-    },
-    {
-     "number": 2519,
-     "title": "GOVERN B-39 (wave 42): refresh CURRENT-MISSION-STATE.md snapshot to live tip e47a650e2f05",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2519",
-     "draft": false
     }
    ],
-   "open_pr_count": 31
+   "open_pr_count": 32
   },
   {
    "id": "wire",
@@ -380,6 +386,12 @@
    "active_now": false,
    "board_lane": "#2175 lane WIRE",
    "open_prs": [
+    {
+     "number": 2544,
+     "title": "Fix check-runs flooding: remove issue_comment trigger from merge-consensus-gate",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2544",
+     "draft": false
+    },
     {
      "number": 2540,
      "title": "receipt-gate.yml: add reopened,edited triggers \u2014 close receipt-pin false-green hole (Delta",
@@ -421,15 +433,9 @@
      "title": "[DRAFT] Wire activation checklist into cold-start boot gate (fail closed)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2483",
      "draft": true
-    },
-    {
-     "number": 2473,
-     "title": "test(gate): B-28 \u2014 guard-exercising identifier test + unattributable empty-seat reason",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2473",
-     "draft": false
     }
    ],
-   "open_pr_count": 17
+   "open_pr_count": 16
   },
   {
    "id": "team",
@@ -763,5 +769,5 @@
   }
  ],
  "open_pr_total": 100,
- "unassigned_prs": 31
+ "unassigned_prs": 32
 }

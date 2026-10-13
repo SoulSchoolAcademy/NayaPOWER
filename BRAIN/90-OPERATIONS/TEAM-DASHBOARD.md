@@ -1,6 +1,6 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-13 20:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-13 21:16 UTC from live sources. Regenerated every wave (~10 min).*
 
 **Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 100 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
@@ -58,13 +58,13 @@
 - [#2460](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2460) fix(gate): merge-consensus seat model learns the 12-lane tags
 - …and 4 more
 
-### KNOW (12)
+### KNOW (11)
 - [#2541](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2541) brain-index regen at tip 582e5e5f — flips the 3 freshness failures
 - [#2532](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2532) repair(brain-index): re-stamp index on main tip 582e5e5f (law BRAIN-IN
 - [#2433](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2433) brain-index: regenerate at basis 31d8cff7 (mechanical re-stamp, --che…
 - [#2415](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2415) BRAIN: regenerate index layer at live tip 665098e3
 - [#2407](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2407) repair(brain-index): re-stamp index on main 665098e3 (drift-13)
-- …and 7 more
+- …and 6 more
 
 ### ACT (3)
 - [#2457](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2457) flip #3: lane-9 test-leg fixes (second ADVISE-count site + receipt-gat
@@ -79,26 +79,27 @@
 - [#2357](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2357) T-06: Neutrality trap — six-state finding classification (stacked on T
 - …and 2 more
 
-### PROVE (3)
+### PROVE (4)
+- [#2543](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2543) [NAYA NARZAN] Cold-retrieve: red-first relevance-floor calibration bat
 - [#2521](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2521) fix(b40): stale 'signing' comment word -> 'sealing' in machine-law tes
 - [#2392](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2392) fix(verify): resolve python interpreter at runtime in guard_liveness.t 📝draft
 - [#2374](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2374) test(t21): operating-essence acceptance battery — moral value before n
 
-### BUILD (31)
+### BUILD (32)
+- [#2542](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2542) Naya4/contract staging
 - [#2536](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2536) Naya/mission state
 - [#2534](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2534) The Naya Oath (0021) + Naya Manifesto (0022) — three tongues, repo-can
 - [#2533](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2533) [DRAFT] Activation: READ-ME-FIRST — ultimate new-Naya activation instr
 - [#2528](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2528) fix(connect): registry entrypoint names the CONNECT-owned selector mod
-- [#2526](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2526) P0-F5: source-bound mission section — no silent 2000-char truncation
-- …and 26 more
+- …and 27 more
 
-### WIRE (17)
+### WIRE (16)
+- [#2544](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2544) Fix check-runs flooding: remove issue_comment trigger from merge-conse
 - [#2540](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2540) receipt-gate.yml: add reopened,edited triggers — close receipt-pin fal
 - [#2514](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2514) feat(l245): wire merge_authority.py into the merge path + post-merge r
 - [#2513](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2513) wire(b61): run OWNERSHIP_AUTHORITY_PATH on the ib validate operating p
 - [#2509](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2509) B-60: wire the Smart Note Completeness Gate into CI (Gate 3 of 7)
-- [#2494](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2494) fix(ci): receipt-gate fires on edited/reopened PR events (B-48)
-- …and 12 more
+- …and 11 more
 
 ### TEAM (1)
 - [#2397](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2397) feat(dashboard): live Team Naya activity dashboard — markdown + machin
