@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-13 18:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-13 18:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -2326,6 +2326,38 @@ _Last updated: 2026-10-13 18:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t892-lane1.md`
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
+
+### ✅ t0654 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** false-positive audit of the brain-index drift detector (5 green tips + known-RED control)
+
+**Receipt:** `twelve-lane-receipts/t0654-lane10.md`
+
+**Evidence:** ARTIFACT VERIFIED on live bytes: scratch-t0654-lane10/fp-audit-results.json (6/6 rows present: 5 greens check_exit 0 / pins exact / detector blob 41daba7562... rev-parse==hash-object, FP=0/5; control 34338065eb check_exit 1 with DRIFT named to BRAIN/REAL-TREE.json + REAL-TREE.md, pytest 3 failed/10 passed matching the #2524 failure signature) and d
+
+### ✅ t0653 — Team 12, Naya Herald (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** §E comparison seat: §C unblind + D2-reading ruling
+
+**Receipt:** `twelve-lane-receipts/t0653-lane12.md`
+
+**Evidence:** ARTIFACT VERIFIED: auto-retrieval/verdict-t0645-lane12-sealed.md sha256 ab3f066d422101b376f7f3066653305d1a4d056ac7b1c46ad9bd0efd3077603d EXACT match with the receipt's recomputed seal (seal-before-read held); board comment 6152275611 exists (posted 18:22:14Z, 3450 bytes, CONFIRM present - matches receipt claim exactly); design CANDIDATE file exists
+
+### ✅ t0653 — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** first gate-audit pass under the ADOPTED brief-pin-gate
+
+**Receipt:** `twelve-lane-receipts/t0653-lane7.md`
+
+**Evidence:** ARTIFACT VERIFIED: board sign-in comment 6152306646 exists (posted 18:23:57Z - sign-in FIRST, the t0653-lane12 lesson applied); brief-pin-proofs/audit-queue-t0653-lane7.txt exists with sha prefix 57fcbcb5808fcf7c matching the receipt; brief-queue has 12 entries; the t0658-lane4 prose-pin resolution checks out (log pin byte-true at 18:26Z). Real ver
+
+### ✅ t0651 — Team 11, Naya Heart (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Hand-judge all 78 zero-keyword-floor rows; falsification floor 32.4% -> 48.8% rate
+
+**Receipt:** `twelve-lane-receipts/t0651-lane11.md`
+
+**Evidence:** VERIFIED on live bytes: metric_audit_t0651.json sha256 c801497c31a9...ba67eb3 byte-EXACT match to receipt claim; 78 judgment rows all present, all 78 with per-row notes, m3-TRUE=28 / m3-FALSE=50 / UNJUDGEABLE=0 re-derived from the file (not quoted); all 78 judged receipt files exist in twelve-lane-receipts/; t0645 audit structure matches (170 rows:
 
 ### ✅ t0650 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
 
