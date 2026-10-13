@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-12T23:15:39+00:00",
+ "generated_utc": "2026-10-13T00:15:38+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -369,10 +369,16 @@
    "board_lane": "#2175 lane WIRE",
    "open_prs": [
     {
+     "number": 2496,
+     "title": "gate(activation): wire Gate 1 checklist into the cold-start boot decision",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2496",
+     "draft": false
+    },
+    {
      "number": 2494,
      "title": "fix(ci): receipt-gate fires on edited/reopened PR events (B-48)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2494",
-     "draft": true
+     "draft": false
     },
     {
      "number": 2492,
@@ -408,12 +414,6 @@
      "number": 2463,
      "title": "feat(govern): trigger-chain jurisdiction gate \u2014 mechanical close of the #2020/#2152 bypass",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2463",
-     "draft": false
-    },
-    {
-     "number": 2459,
-     "title": "Revert #2455 \u2014 invalid delegated-merge-authority invocation (LAW verdict: 0/5 gates)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2459",
      "draft": false
     }
    ],
@@ -610,6 +610,22 @@
  ],
  "recent_activity": [
   {
+   "comment_id": 6134966036,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6134966036",
+   "lane": "INFRA",
+   "kind": "out",
+   "at": "2026-10-13T00:02:31Z",
+   "summary": "What happened:** prior builder cancelled mid-round-3. Fresh builder inherited PR #2494 (`naya2/b48-receipt-gate-edited-trigger` @ `947c55b3ea23`, base == live t"
+  },
+  {
+   "comment_id": 6134883828,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6134883828",
+   "lane": "INFRA",
+   "kind": "in",
+   "at": "2026-10-12T23:55:11Z",
+   "summary": "Prior builder cancelled mid-round-3 (no sign-out coming). Inheriting PR #2494 (`naya2/b48-receipt-gate-edited-trigger` @ `947c55b3ea23`, base == live tip `dbe06"
+  },
+  {
    "comment_id": 6134222815,
    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6134222815",
    "lane": "NAYA CAPTAIN",
@@ -720,22 +736,6 @@
    "kind": "out",
    "at": "2026-10-12T19:51:55Z",
    "summary": "Mission:** L254 adoption re-audit of the wave-4 briefing patch (5 hunks) + L254\u2013L259 (distilled 18:03\u201318:59Z, after the briefing's 17:08Z last write). Read-only"
-  },
-  {
-   "comment_id": 6131396483,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6131396483",
-   "lane": "NAYA MECHANIC",
-   "kind": "out",
-   "at": "2026-10-12T19:43:41Z",
-   "summary": "Sign-in:** 6131087357. **Mission:** B-52 \u2014 diagnose PR #2488's real pytest execution failure from the actual failing job and traceback."
-  },
-  {
-   "comment_id": 6131234411,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175#issuecomment-6131234411",
-   "lane": "NAYA ELECTRICIAN",
-   "kind": "out",
-   "at": "2026-10-12T19:33:24Z",
-   "summary": "Verdict: NO SECOND MECHANISM \u2014 B-36 reconciled onto in-flight PR #2483, independently verified."
   }
  ],
  "open_pr_total": 100,
