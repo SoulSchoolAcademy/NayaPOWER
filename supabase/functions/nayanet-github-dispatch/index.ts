@@ -46,6 +46,19 @@ function normalizedText(value: unknown): string {
   return typeof value === "string" ? value.trim() : "";
 }
 
+// Sanitize a GitHub API rejection message for the durable failure receipt and
+// the immediate response. Bounded (240 chars), printable-ASCII only, and
+// bearer-shaped secrets are redacted — the receipt must never persist a token,
+// request headers, or the full response body.
+function sanitizeGithubReason(value: unknown): string {
+  return normalizedText(value)
+    .replace(/[\r\n\t]+/g, " ")
+    .replace(/[^\x20-\x7E]/g, "")
+    .replace(/Authorization:\s*Bearer\s*\S+/gi, "Authorization: [REDACTED]")
+    .replace(/\b(ghp_|ghs_|github_pat_)[A-Za-z0-9_]+/g, "[REDACTED-TOKEN]")
+    .slice(0, 240) || "UNKNOWN";
+}
+
 function slugify(value: string, max: number): string {
   return value
     .toLowerCase()
@@ -388,14 +401,29 @@ Deno.serve(async (req) => {
     const putJson: any = await putRes.json().catch(() => ({}));
     const commitSha: string | null = typeof putJson?.content?.sha === "string" ? putJson.content.sha : null;
     if (!putRes.ok || !commitSha) {
-      await failReceipt("GITHUB_COMMIT_FAILED:" + putRes.status);
+      // Preserve the sanitized GitHub reason in the durable receipt. A status
+      // code alone cannot distinguish missing Contents permission, repository
+      // installation scope, SSO policy, or branch/ruleset denial. Never store
+      // request headers, tokens, or the response body wholesale.
+      const githubReason = sanitizeGithubReason(putJson?.message);
+      const commitFailure = await receipts
+        .update({
+          status: "failed",
+          failure: "GITHUB_COMMIT_FAILED:" + putRes.status + ":" + githubReason,
+          authority_grant_id: grantId,
+          intelligent_block_id: ibId,
+          repo_path: repoPath,
+          smart_link: smartLink,
+        })
+        .eq("idempotency_key", idempotencyKey);
+      if (commitFailure.error) throw commitFailure.error;
       return json(
         {
           ok: false,
           pipeline: "PROJECTION_FAILED",
           error: "GITHUB_COMMIT_FAILED",
           status: putRes.status,
-          detail: normalizedText(putJson?.message).slice(0, 300) || "UNKNOWN",
+          detail: githubReason,
         },
         502
       );

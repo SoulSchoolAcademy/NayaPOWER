@@ -48,6 +48,8 @@ function runtime(opts = {}) {
     grant = GRANT_ROW,
     tx = TX_ROW,
     receipt = null,
+    githubPutStatus = 201,
+    githubPutMessage = 'Resource not accessible by integration',
   } = opts;
   let handler;
   const receipts = new Map();
@@ -185,6 +187,9 @@ function runtime(opts = {}) {
       if (u.startsWith('https://api.github.com/repos/SoulSchoolAcademy/NayaPOWER/contents/')) {
         const path = u.split('/contents/')[1].split('?')[0];
         if ((init.method || 'GET') === 'PUT') {
+          if (githubPutStatus !== 201) {
+            return new Response(JSON.stringify({ message: githubPutMessage }), { status: githubPutStatus });
+          }
           blobs.set(path, 'blobsha123');
           return new Response(JSON.stringify({ content: { sha: 'blobsha123' } }), { status: 201 });
         }
@@ -304,6 +309,70 @@ test('happy path returns PROJECTION_VERIFIED with caller-compatible smart_link',
   assert.equal(puts.length, 1);
   assert.ok(puts[0].url.endsWith('/' + IB_ID + '/smart-note.md'), 'PUT targets the IB path');
   assert.equal(receipts.get(IDEM).status, 'completed');
+});
+
+test('GitHub PUT rejection persists sanitized reason and target context', async () => {
+  const { post, receipts } = runtime({
+    githubPutStatus: 403,
+    githubPutMessage: 'Resource not accessible by integration\nAuthorization: Bearer DO_NOT_STORE',
+  });
+  const { status, body } = await post(validBody());
+  assert.equal(status, 502);
+  assert.equal(body.error, 'GITHUB_COMMIT_FAILED');
+  assert.equal(body.detail.includes('\n'), false, 'control characters are removed');
+  assert.equal(body.detail.includes('DO_NOT_STORE'), false, 'bearer-shaped content is redacted');
+  assert.match(body.detail, /Authorization: \[REDACTED\]/);
+  const receipt = receipts.get(IDEM);
+  assert.equal(receipt.status, 'failed');
+  assert.match(receipt.failure, /^GITHUB_COMMIT_FAILED:403:/);
+  assert.equal(receipt.intelligent_block_id, IB_ID);
+  assert.match(receipt.repo_path, /IB-000042\/smart-note\.md$/);
+  assert.ok(receipt.smart_link.includes('/' + IB_ID + '/smart-note.md'));
+  assert.equal(receipt.failure.includes('\n'), false);
+  assert.equal(receipt.failure.includes('DO_NOT_STORE'), false, 'failure receipt must not retain bearer-shaped content');
+});
+
+test('GitHub rejection reason is bounded at 240 chars', async () => {
+  const { post, receipts } = runtime({ githubPutStatus: 403, githubPutMessage: 'x'.repeat(2000) });
+  const { status, body } = await post(validBody());
+  assert.equal(status, 502);
+  const reason = receipts.get(IDEM).failure.split(':').slice(2).join(':');
+  assert.ok(reason.length <= 240, 'reason bounded: ' + reason.length);
+  assert.ok(body.detail.length <= 240, 'detail bounded: ' + body.detail.length);
+});
+
+test('empty GitHub message falls back to UNKNOWN reason', async () => {
+  const { post, receipts } = runtime({ githubPutStatus: 403, githubPutMessage: '' });
+  const { status, body } = await post(validBody());
+  assert.equal(status, 502);
+  assert.ok(receipts.get(IDEM).failure.endsWith(':UNKNOWN'));
+  assert.equal(body.detail, 'UNKNOWN');
+});
+
+test('GitHub rejection redacts nospace bearer and raw token shapes', async () => {
+  const { post, receipts } = runtime({
+    githubPutStatus: 403,
+    githubPutMessage: 'Forbidden Authorization: BearerTOKEN_NOSPACE and ghp_abcDEF1234567890xyz',
+  });
+  const { status, body } = await post(validBody());
+  assert.equal(status, 502);
+  const receipt = receipts.get(IDEM);
+  for (const text of [body.detail, receipt.failure]) {
+    assert.equal(text.includes('TOKEN_NOSPACE'), false, 'nospace bearer token must not persist');
+    assert.equal(text.includes('ghp_abcDEF1234567890xyz'), false, 'raw token shape must not persist');
+    assert.match(text, /Authorization: \[REDACTED\]/);
+    assert.match(text, /\[REDACTED-TOKEN\]/);
+  }
+});
+
+test('GitHub rejection sanitizes unicode/control chars across statuses', async () => {
+  const { post, receipts } = runtime({ githubPutStatus: 422, githubPutMessage: 'Validation Failed \u{1F600}\x0b and \u00e9' });
+  const { status, body } = await post(validBody());
+  assert.equal(status, 502);
+  const receipt = receipts.get(IDEM);
+  assert.match(receipt.failure, /^GITHUB_COMMIT_FAILED:422:/);
+  assert.ok(/^[\x20-\x7E]*$/.test(receipt.failure), 'receipt failure is ASCII-only');
+  assert.equal(body.detail, receipt.failure.split(':').slice(2).join(':'));
 });
 
 test('idempotent replay returns stored receipt without touching GitHub', async () => {
