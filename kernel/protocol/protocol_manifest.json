@@ -167,6 +167,10 @@
     "machine": "NAYA-ACTIVATION/naya-contract.json",
     "pinned_sha256": {
       "BRAIN/01-GOVERNANCE/0021-NAYA-OATH-V1.human.md": "b1d25be9261a78e1841c07724b78b3dd6d216100eb0dc97948ea90d196850593",
+      "BRAIN/01-GOVERNANCE/0021-naya-oath-v1.machine.json": "25435800b65de53e7298b1512dffe29c8c88db1b3c7587bfb88cbdae9fb909b2",
+      "BRAIN/01-GOVERNANCE/0022-naya-manifesto-v1.machine.json": "73bc5ae90101566638dbeeafafe0951cd821a581c9f0b02127f5435979f4fefd",
+      "BRAIN/01-GOVERNANCE/0023-naya-code-v1.machine.json": "8fdd6c37554ea3cb1098bd26980628bd5bfceb3444611d833151e30c649972c4",
+      "BRAIN/01-GOVERNANCE/0024-narzan-v1.machine.json": "ffe0c32662beb9087e3a0fc41676bd374db8375f08e0a2f5032e0a4ef1d214c6",
       "CONSTITUTION/NAYA-DOCTRINE-V1.md": "3196514104365dafbed09b000fe3ceb085d45e3becb5b554c08750db96391958",
       "CONSTITUTION/naya-doctrine.json": "ece56b147338ed9b4606d88bbf2a32659f3b3dd6c1746040103519638afb4b0c",
       "NAYA-ACTIVATION/NAYA-CONTRACT-V1.md": "ff931442c34859e609564f2ee7e6ccb646639d16884fb076811947ab606925e0",
@@ -174,9 +178,8 @@
       "NAYA-ACTIVATION/naya-contract.json": "95518e51277cb3df3080c6dd20c4fda497a43f054e06cc168e0b0364bd8ff4c3",
       "NAYA-ACTIVATION/naya-contract.py": "275e5a43f1d874abb93166447bfaa1c4f825af3dfefc4733c3418a4637e21dc7"
     },
-    "ratified_at": "2026-10-13",
-    "ratified_by": "Shawn Vibert",
-    "status": "contract-law"
+    "ratification_note": "CANDIDATE until Shawn explicitly ratifies the reviewed converged text. Build authorization is not ratification.",
+    "status": "CANDIDATE"
   },
   "never_do": [
     "fabricate_evidence",

@@ -36,7 +36,7 @@ def manifest():
 def test_contract_section_present(manifest):
     assert "naya_contract" in manifest
     pins = manifest["naya_contract"]["pinned_sha256"]
-    assert len(pins) == 7
+    assert len(pins) == 11
     assert "NAYA-ACTIVATION/NAYA-CONTRACT-V1.md" in pins
 
 

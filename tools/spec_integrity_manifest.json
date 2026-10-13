@@ -49,6 +49,22 @@
     {
       "path": "BRAIN/01-GOVERNANCE/0008-operating-code-v2.machine.json",
       "reason": "DRAFT \u2014 Operating Code V2 not yet ratified by the Human Director (PR #2087 open, awaiting ratification). Pin here upon ratification with the DIRECTOR-RATIFIED envelope."
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0021-naya-oath-v1.machine.json",
+      "reason": "Status CANDIDATE (not DIRECTOR-RATIFIED): machine projection of the converged oath; no ratified envelope keys (status/ratified_by/ratified_date). Pin here when Shawn ratifies the converged identity text \u2014 same precedent as the 0006 exclusion. Added with PR #2535 unblock, 2026-10-13."
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0022-naya-manifesto-v1.machine.json",
+      "reason": "Status CANDIDATE (not DIRECTOR-RATIFIED): machine projection of the converged manifesto; no ratified envelope. Pin here when Shawn ratifies \u2014 same precedent as the 0006 exclusion. Added with PR #2535 unblock, 2026-10-13."
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0023-naya-code-v1.machine.json",
+      "reason": "Status CANDIDATE (not DIRECTOR-RATIFIED): machine projection of the converged code; no ratified envelope. Pin here when Shawn ratifies \u2014 same precedent as the 0006 exclusion. Added with PR #2535 unblock, 2026-10-13."
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0024-narzan-v1.machine.json",
+      "reason": "Status CANDIDATE (not DIRECTOR-RATIFIED): machine projection of Narzan; no ratified envelope. Pin here when Shawn ratifies \u2014 same precedent as the 0006 exclusion. Added with PR #2535 unblock, 2026-10-13."
     }
   ],
   "note": "Pins are git blob SHAs of the ratified projections as they existed on live main at establishment. Any deliberate spec change must update the pins in the same (reviewed) PR. A pin mismatch is spec drift until proven otherwise. This manifest is a drift detector anchored at a known-good point, not a re-proof of the original ratification.",
