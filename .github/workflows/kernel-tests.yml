@@ -21,3 +21,7 @@ jobs:
       - run: python -m pytest -q
       - name: Brain index freshness gate (protocol law BRAIN-INDEX-FRESHNESS)
         run: python tools/protocol/checks/brain_index_freshness.py --record '{}'
+      - name: LEARN artifact presence + verb-sense guard (P-013 mechanization)
+        run: |
+          python intelligence/tools/learn/check_learn_artifacts_present.py
+          python intelligence/tools/learn/test_verb_sense_guard.py
