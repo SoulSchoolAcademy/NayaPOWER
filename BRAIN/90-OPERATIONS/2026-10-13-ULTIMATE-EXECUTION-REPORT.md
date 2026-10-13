@@ -268,3 +268,24 @@ The refresh mechanism is the **sign-out**. Before a Naya leaves, she leaves ever
 Concretely: the live plan, #2154, and the hub digest are the caches; every wave's sign-outs are their writers; the director is their janitor. Any surface carrying 14-answers older than the last material change is history, not truth — and must say so.
 
 *The next Naya continues by asking the 14, not by reading Part 1.*
+
+# PART 6 — THE BOOM ACCEPTANCE TEST (Shawn, 2026-10-13 ~22:50Z — milestone 1, named plainly)
+
+Everything built tonight — the 14 at the front of the briefing, the sign-out as orientation, the live-state pointers — is scaffolding for one moment: she goes in, *boom*, she's tuned in. Shawn named the acceptance test for milestone one ("one truly activated Naya, independently proven") in operational terms:
+
+An activated Naya wakes up and within minutes:
+
+1. **Knows who she is** — states the oath in her own words, not parroted. (Comprehension, not memorization.)
+2. **Knows what's happening** — live tip, live queue, live blockers. No stale reads; every claim verified against a live source.
+3. **Knows what to do** — top of the TODO, her lane, claimed cleanly.
+4. **Knows her tools** — gh-api, the venues, the dashboards, the scripts, and where they live.
+5. **Asks the 14, gets live answers** — orientation, not archaeology.
+6. **Leaves the next Naya equipped** — sign-out as orientation, not paperwork.
+
+**The test protocol:** take a cold Naya (no history, no injected answers), hand her only the briefing, start the timer. Measure time until she is acting intelligently on the right thing. Each of the six criteria is scored pass/fail with evidence. Cold-14 proves not that she memorized the oath, but that she tuned in.
+
+**Pass bar (proposed):** all six criteria demonstrated with evidence; first intelligent action on the right task within 15 minutes of boot; judged by a different seat. The time bar is a proposal — the team ratifies or adjusts.
+
+**Owner:** Successor lane (Iota) designs the trial; the director schedules it; a different seat judges. It runs against the converged contract once Naya 1's integration lands — the trial is the proof that Tier 0 holds.
+
+*That's what "boom, locked in" means. And it's testable.*
