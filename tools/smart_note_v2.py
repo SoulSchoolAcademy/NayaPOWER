@@ -1292,7 +1292,7 @@ def promote_note(note_id, evidence_bundle, promoter, registry_path=None):
             _existing_lessons = [
                 old.get("lesson_contract") or old.get("lesson")
                 for old in entries
-                if isinstance(old, dict) and (old.get("lesson_contract") or old.get("lesson"))
+                if isinstance(old, dict) and old is not entry and (old.get("lesson_contract") or old.get("lesson"))
             ]
             _law.validate_learning_promotion(entry, evidence_bundle, _existing_lessons)
         except Exception as _law_error:
