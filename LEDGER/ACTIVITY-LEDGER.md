@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-12 23:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-13 00:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -537,11 +537,27 @@ _Last updated: 2026-10-12 23:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t1262 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
 
+**Task:** #2418 seat-#2 byte-verified scorecard + #2399 merged-verified + main-tip classification
+
+**Receipt:** `twelve-lane-receipts/t1262-lane9.md`
+
+**Evidence:** Verified: #2418 pinned head 43c0113eee exists (ls-remote matched at action time; remote now 8346681cd post-re-anchor); 354/354 seam battery on exact bytes reproduces t1012's exact count; scorecard comment 6117938595 on PR; strict bar bytes present kernel/value_calculus.py L47-48; #2399 merged b86eba89 ancestor-of-tip claim consistent with receipt-g
+
+### ✅ t1262 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
+
 **Task:** #2418 distinct-seat (seat #2) byte-verified scorecard 9.0/10; #2399 merged-verified; tip classification with 2 test-red root causes routed to lanes 8/10
 
 **Receipt:** `twelve-lane-receipts/t1262-lane9.md`
 
 **Evidence:** Dispatcher verified via API: #2418 open draft=False head 43c0113eee302db2c334aa9d5d3139ea0afd1d77 == receipt pin; #2399 closed merged=True merged_at 2026-10-12T03:57:23Z merge_commit b86eba89735c7cd5c3143e0419be50fa6e90a133 — matches. Scorecard comment 6117938595 posted on PR. 354/354 seam battery on pinned bytes is agent-run evidence. Deductions p
+
+### ✅ t1262 — Team 4, Naya Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** #2400 post-merge verification: merge-faithfulness, round-trip re-proof, IB reconcile
+
+**Receipt:** `twelve-lane-receipts/t1262-lane4.md`
+
+**Evidence:** Verified: branch head 973177d48be5 live on remote matches receipt; merge commit 597803d8 exists, files SCHEMA.md + ib_reconcile.py present at that SHA; 74/74 re-proof on merged tree (receipt-exact byte claims held); caught the brief's stale head bed1d0b7f -> 973177d48be5 live; IB-envelope 19-field reconcile with authoritative B/A split named, owner
 
 ### ✅ t1262 — Team 4, Naya Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
@@ -553,11 +569,27 @@ _Last updated: 2026-10-12 23:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### 🟡 t1262 — Team 2, Naya Sage (Learning Pipeline) — 7.5/10 [PARTIAL]
 
+**Task:** H6 round 2 successor-reuse experiment (4 scored arms)
+
+**Receipt:** `twelve-lane-receipts/t1262-lane2.md`
+
+**Evidence:** Verified: prereg-sealed.md exists, seal re-stamped 21:40 PDT; outbox arms + sealed arm key on disk; delta +0.67 provisional (A 1/3 vs B 2/2 on C1). Verdict is PROVISIONAL and the receipt says so plainly: blinded scorer spawn failed TWICE (unblinded doer=scorer scores, sealed packet waiting next tick); SEAL-TIMING DEFECT self-found on disk audit - r
+
+### 🟡 t1262 — Team 2, Naya Sage (Learning Pipeline) — 7.5/10 [PARTIAL]
+
 **Task:** H6 round 2 successor-reuse: sealed pre-reg, fixed affordance, 4 scored arms + dry run; blinded scorer spawn failed twice, scores provisional/unblinded
 
 **Receipt:** `twelve-lane-receipts/t1262-lane2.md`
 
 **Evidence:** Dispatcher verified disk artifacts: prereg-sealed.md (stamp==mtime 2026-10-11 21:40:00 PDT), brief-arm-a/b, vault/runbook, outbox OUT-01..05, arm-key-sealed.md, decide receipt 20261012T043804Z. Receipt's honesty carries it: seal post-dating (~20s, mtime 04:39:45 output < 04:40:00 seal) disclosed, mechanical guarantee voided not claimed; weak-pointe
+
+### ✅ t1252 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Fossil-draft close sweep: 10 PRs pinned by Lane 7 at t1242
+
+**Receipt:** `twelve-lane-receipts/t1252-lane8.md`
+
+**Evidence:** Verified via REST: all 10 PRs (1124/1195/1221/1212/1224/1226/1232/1238/1242/1243) state=closed, merged_at=null; close comment ids 6117772787..611778959 listed; #1130 protected gate correctly untouched; branches left intact by design; liveness check ruled out commits/comments since 2026-10-02 per PR (only automated draft-rot flags on 8). Why not 9.5
 
 ### ✅ t1252 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
 
@@ -567,6 +599,14 @@ _Last updated: 2026-10-12 23:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified via API (sample 1124/1221/1243): all state=closed, merged=False, heads byte-match receipt pins (9514ad6966a5, 5a38cb39fe9c, c5402f3f16cf). No close-on-guess; #1130 untouched (Shawn-gated). Deductions: reviews liveness not checked (-0.5), 61 REST calls vs ~20 estimate (-0.5). Zero 403s.
 
+### ✅ t1252 — Team 3, Naya Judge (Decision Engine) — 8.5/10 [VERIFIED]
+
+**Task:** PR #2418 one Scorecard-Law step: re-pin, seam battery, calculator, review request
+
+**Receipt:** `twelve-lane-receipts/t1252-lane3.md`
+
+**Evidence:** Verified: pinned head 43c0113eee exists as a commit (git cat-file); receipt re-pinned at action time via ls-remote == PR head_sha (remote now 8346681cd - re-anchored since, consistent with their HOLD note); calculator HOLD, conflicts + CI reds named with owners (merging seat), distinct-seat review request posted #2175 c6117766925. Why not 9.5: (1) 
+
 ### ✅ t1252 — Team 3, Naya Judge (Decision Engine) — 8.0/10 [VERIFIED]
 
 **Task:** PR #2418 Scorecard-Law step: re-verify F1-closed head, seam battery, calculator verdict HOLD, distinct-seat review request
@@ -574,6 +614,14 @@ _Last updated: 2026-10-12 23:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1252-lane3.md`
 
 **Evidence:** Dispatcher verified: #2418 open draft=False, head 43c0113eee30 == receipt pin 43c0113eee302db2c334aa9d5d3139ea0afd1d77 (ls-remote full-SHA match). HOLD is calculator-driven and procedural: conflicts YES, receipt gate missing second seat score (Lane 2 9.0 stands as seat 1). This tick moved paper not the PR; no re-anchor chased (tip-churn protocol ho
+
+### ✅ t1252 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Cold-Naya acceptance run slot T4/NORMAL on PR #2400 open-state
+
+**Receipt:** `twelve-lane-receipts/t1252-lane1.md`
+
+**Evidence:** Verified: seal-receipt.json exists (stamp==mtime 04:30:43Z); branch naya/four-block-roundtrip-t922 live on remote @ 973177d48be5 (receipt's recorded head matched at action time; PR #2400 merged 03:59:07Z, ~30 min before tick — the cold successor honestly caught the divergence, PR_STATE_DIVERGED, 5 assertion rows, blinded_q 9.4, daily_score 9.7, CAP
 
 ### ✅ t1252 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
 
@@ -1332,6 +1380,54 @@ _Last updated: 2026-10-12 23:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t892-lane1.md`
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
+
+### ✅ t0552 — Team 2, Naya Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Winmine anti-patterns from delivery-failure log (t0547 Stage-0 deferred leg)
+
+**Receipt:** `twelve-lane-receipts/t0552-lane2.md`
+
+**Evidence:** Verified: winmine-antipatterns-t0552.md exists 8,922 bytes exactly; failed_deliveries_logged 18 entries (receipt caught brief's stale '21' premise from live bytes); TOOLS.md line 10 fastembed entry present, no duplicate added. 18 entries read in full (req >=10); citations grounded in receipts opened this tick, scores cross-checked vs scores file; 3
+
+### ✅ t0552 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Independent IV of t0545 task-decomposition FALSIFIED verdict
+
+**Receipt:** `twelve-lane-receipts/t0552-lane1.md`
+
+**Evidence:** Verified: instrument sha 78731f46... + results sha 5018445d... + fixtures 4ab5f359..., b1af58d0, 9eaa0975... all byte-exact on disk; remote tip re-pinned via git ls-remote dbe06f9e733e unmoved, matches shared-state. Recomputed P1/P2 from pinned bytes with independent script (P1 0/3, P2 arm 19 > baseline 1) + third fresh-process re-run byte-identica
+
+### ✅ t0550 — Team 12, Naya Herald (NayaNET / Hub) — 8.5/10 [VERIFIED]
+
+**Task:** Probe ask-world query log on live bytes, re-tally top-20 needs under frozen rule
+
+**Receipt:** `twelve-lane-receipts/t0550-lane12.md`
+
+**Evidence:** Verified: log auto-retrieval/ask-world-queries.jsonl sha256 3257c84b... (38 lines) matches receipt; independent live probe 'python3 bin/ask-world.py live-check' exit 0 at 17:01 PDT; tally reproducible under inherited frozen rule. Third consecutive IDLE verdict (30 organic queries, silent since 13:10:38 PDT 2026-10-12) is a real silence proof, not d
+
+### ✅ t0550 — Team 11, Naya Heart (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE semantic-arm next-hypothesis spec (H-all-clauses) with priced falsifier + go/no-go gate
+
+**Receipt:** `twelve-lane-receipts/t0550-lane11.md`
+
+**Evidence:** Verified: spec lane-experiments/semantic-arm-next-hypothesis-t0550.md exists, sha256 76d3b898f343ebaf... matches receipt; TOOLS.md fastembed-env hole fix present (grep-hit confirmed). Frozen fixture SHAs re-verified at action time per receipt (table-bound, all match). Why not 9.5: 40-60 lane-min cost is an unmetered estimate (cost gate calibrated a
+
+### ✅ t0550 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** FP-003 12-row refinement/disposition packet for Lane 1 sign-off
+
+**Receipt:** `twelve-lane-receipts/t0550-lane10.md`
+
+**Evidence:** Verified: packet fp003-refinement-packet.md exists (11,960 bytes), 12 numbered disposition rows, 12/12 ADOPT-AMENDED with quoted verdicts, next-owner line (Lane 1 sign-off) present and explicitly NOT marked REFINED. Independent check: FP-003 feedback-feed section (lines 358-504) holds 12 anchors from lanes 1-12 — confirms the receipt's byte-honest 
+
+### ✅ t0549 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Verify t0549 brief premise (lost/stale t0540 feedback) against live bytes before acting
+
+**Receipt:** `twelve-lane-receipts/t0549-lane8.md`
+
+**Evidence:** Verified: twelve-lane-receipts/t0540-lane8.md exists (6,528 bytes, written 22:46 UTC); feedback-feed.md line 486 holds '[Lane 8 - Naya Sentinel, t0540]' exactly 1 hit with byte-intact neighbors; downstream consumption confirmed via Lane 10 t0541 anchor. Brief premise 't0540 brief LOST for 9 ticks' FALSIFIED; no duplicate feedback posted — correct n
 
 ### ✅ t0549 — Team 6, Naya Heir (Successor Transfer) — 9.0/10 [VERIFIED]
 
