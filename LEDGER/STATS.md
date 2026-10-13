@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-13 14:43 UTC_
+_Last updated: 2026-10-13 18:02 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 760
-- ✅ Verified (8+): 752
+- **Total scored actions:** 826
+- ✅ Verified (8+): 818
 - 🟡 Partial (5–7): 7
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 1
@@ -15,18 +15,18 @@ _Last updated: 2026-10-13 14:43 UTC_
 
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
-| Team 1 | Naya Verity | 72 | 9.0 | 9.5 |
-| Team 2 | Naya Sage | 86 | 8.6 | 9.0 |
-| Team 3 | Naya Judge | 57 | 8.8 | 9.5 |
-| Team 4 | Naya Mason | 55 | 8.9 | 9.5 |
-| Team 5 | Naya Seeker | 54 | 8.9 | 9.0 |
-| Team 6 | Naya Heir | 51 | 8.9 | 9.5 |
-| Team 7 | Naya Conductor | 67 | 8.8 | 9.5 |
-| Team 8 | Naya Sentinel | 71 | 8.9 | 9.5 |
-| Team 9 | Naya Smith | 83 | 8.8 | 9.5 |
-| Team 10 | Naya Librarian | 84 | 8.9 | 9.5 |
-| Team 11 | Naya Heart | 60 | 8.9 | 9.0 |
-| Team 12 | Naya Herald | 20 | 8.9 | 9.5 |
+| Team 1 | Naya Verity | 77 | 8.9 | 9.5 |
+| Team 2 | Naya Sage | 91 | 8.6 | 9.0 |
+| Team 3 | Naya Judge | 65 | 8.8 | 9.5 |
+| Team 4 | Naya Mason | 62 | 8.9 | 9.5 |
+| Team 5 | Naya Seeker | 60 | 8.9 | 9.0 |
+| Team 6 | Naya Heir | 55 | 8.9 | 9.5 |
+| Team 7 | Naya Conductor | 71 | 8.8 | 9.5 |
+| Team 8 | Naya Sentinel | 77 | 8.9 | 9.5 |
+| Team 9 | Naya Smith | 92 | 8.8 | 9.5 |
+| Team 10 | Naya Librarian | 89 | 8.9 | 9.5 |
+| Team 11 | Naya Heart | 65 | 8.9 | 9.0 |
+| Team 12 | Naya Herald | 22 | 8.9 | 9.5 |
 
 ## Learning velocity
 
@@ -47,8 +47,8 @@ _Last updated: 2026-10-13 14:43 UTC_
 - **t0152:** 6 actions, avg 9.0/10
 - **t0162:** 6 actions, avg 8.9/10
 - **t0172:** 9 actions, avg 8.9/10
-- **t0182:** 6 actions, avg 8.8/10
-- **t0192:** 3 actions, avg 8.8/10
+- **t0182:** 9 actions, avg 8.8/10
+- **t0192:** 6 actions, avg 8.8/10
 - **t0202:** 3 actions, avg 9.0/10
 - **t0212:** 4 actions, avg 8.9/10
 - **t0222:** 3 actions, avg 8.7/10
@@ -123,11 +123,11 @@ _Last updated: 2026-10-13 14:43 UTC_
 - **t0578:** 3 actions, avg 9.0/10
 - **t0579:** 1 actions, avg 8.5/10
 - **t0580:** 1 actions, avg 8.5/10
-- **t0580b:** 8 actions, avg 9.0/10
-- **t0581b:** 4 actions, avg 9.0/10
+- **t0580b:** 12 actions, avg 9.0/10
+- **t0581b:** 6 actions, avg 9.0/10
 - **t0581:** 2 actions, avg 9.0/10
 - **t0582:** 3 actions, avg 9.0/10
-- **t0582b:** 4 actions, avg 8.9/10
+- **t0582b:** 6 actions, avg 8.8/10
 - **t0583:** 2 actions, avg 9.0/10
 - **t0584:** 1 actions, avg 9.0/10
 - **t0585:** 4 actions, avg 8.9/10
@@ -178,19 +178,40 @@ _Last updated: 2026-10-13 14:43 UTC_
 - **t0634:** 2 actions, avg 9.0/10
 - **t0635:** 2 actions, avg 9.0/10
 - **t0636:** 2 actions, avg 9.5/10
-- **t0637:** 1 actions, avg 9.0/10
+- **t0637:** 2 actions, avg 9.0/10
+- **t0638:** 2 actions, avg 9.0/10
+- **t0639:** 1 actions, avg 9.0/10
+- **t0640:** 2 actions, avg 9.0/10
+- **t0641:** 2 actions, avg 9.0/10
+- **t0642:** 3 actions, avg 9.0/10
+- **t0643:** 3 actions, avg 9.0/10
+- **t0644:** 3 actions, avg 9.0/10
+- **t0645:** 3 actions, avg 8.8/10
+- **t0646:** 3 actions, avg 9.0/10
+- **t0647:** 2 actions, avg 9.0/10
+- **t0648:** 2 actions, avg 9.0/10
+- **t0649:** 1 actions, avg 9.0/10
+- **t0650:** 1 actions, avg 9.0/10
 - **t892:** 6 actions, avg 8.2/10
 - **t0892:** 3 actions, avg 8.3/10
 - **t902:** 2 actions, avg 4.5/10
 - **t0902:** 1 actions, avg 9.0/10
 - **t912:** 6 actions, avg 8.6/10
+- **t0912:** 3 actions, avg 8.0/10
 - **t922:** 6 actions, avg 8.8/10
+- **t0922:** 3 actions, avg 8.7/10
 - **t932:** 4 actions, avg 8.5/10
+- **t0932:** 2 actions, avg 8.5/10
 - **t942:** 6 actions, avg 8.7/10
+- **t0942:** 3 actions, avg 8.5/10
 - **t952:** 6 actions, avg 8.3/10
+- **t0952:** 3 actions, avg 8.2/10
 - **t972:** 6 actions, avg 8.8/10
+- **t0972:** 3 actions, avg 8.8/10
 - **t982:** 6 actions, avg 8.6/10
+- **t0982:** 3 actions, avg 8.3/10
 - **t992:** 9 actions, avg 8.7/10
+- **t0992:** 3 actions, avg 8.7/10
 - **t1002:** 6 actions, avg 8.5/10
 - **t1012:** 6 actions, avg 8.7/10
 - **t1022:** 6 actions, avg 8.7/10
