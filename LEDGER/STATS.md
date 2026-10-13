@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-13 07:32 UTC_
+_Last updated: 2026-10-13 08:03 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 549
-- ✅ Verified (8+): 542
+- **Total scored actions:** 578
+- ✅ Verified (8+): 571
 - 🟡 Partial (5–7): 6
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 1
@@ -15,17 +15,17 @@ _Last updated: 2026-10-13 07:32 UTC_
 
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
-| Team 1 | Naya Verity | 56 | 9.0 | 9.5 |
-| Team 2 | Naya Sage | 64 | 8.6 | 9.0 |
-| Team 3 | Naya Judge | 42 | 8.8 | 9.5 |
-| Team 4 | Naya Mason | 34 | 8.9 | 9.5 |
-| Team 5 | Naya Seeker | 38 | 8.9 | 9.0 |
-| Team 6 | Naya Heir | 37 | 8.9 | 9.5 |
-| Team 7 | Naya Conductor | 52 | 8.8 | 9.0 |
-| Team 8 | Naya Sentinel | 52 | 8.9 | 9.5 |
-| Team 9 | Naya Smith | 55 | 8.7 | 9.5 |
-| Team 10 | Naya Librarian | 60 | 8.9 | 9.0 |
-| Team 11 | Naya Heart | 45 | 8.9 | 9.0 |
+| Team 1 | Naya Verity | 59 | 9.0 | 9.5 |
+| Team 2 | Naya Sage | 67 | 8.6 | 9.0 |
+| Team 3 | Naya Judge | 43 | 8.8 | 9.5 |
+| Team 4 | Naya Mason | 37 | 8.9 | 9.5 |
+| Team 5 | Naya Seeker | 39 | 8.9 | 9.0 |
+| Team 6 | Naya Heir | 40 | 8.9 | 9.5 |
+| Team 7 | Naya Conductor | 54 | 8.8 | 9.0 |
+| Team 8 | Naya Sentinel | 55 | 8.9 | 9.5 |
+| Team 9 | Naya Smith | 59 | 8.8 | 9.5 |
+| Team 10 | Naya Librarian | 65 | 8.9 | 9.0 |
+| Team 11 | Naya Heart | 46 | 8.9 | 9.0 |
 | Team 12 | Naya Herald | 14 | 9.0 | 9.5 |
 
 ## Learning velocity
@@ -141,6 +141,8 @@ _Last updated: 2026-10-13 07:32 UTC_
 - **t0595:** 2 actions, avg 9.0/10
 - **t0596:** 2 actions, avg 9.0/10
 - **t0597:** 2 actions, avg 9.0/10
+- **t0598:** 3 actions, avg 8.8/10
+- **t0600:** 2 actions, avg 9.2/10
 - **t892:** 6 actions, avg 8.2/10
 - **t0892:** 3 actions, avg 8.3/10
 - **t902:** 2 actions, avg 4.5/10
@@ -176,13 +178,13 @@ _Last updated: 2026-10-13 07:32 UTC_
 - **t1302:** 6 actions, avg 8.8/10
 - **t1312:** 6 actions, avg 9.0/10
 - **t1322:** 6 actions, avg 9.0/10
-- **t1332:** 3 actions, avg 8.8/10
-- **t1342:** 3 actions, avg 8.8/10
-- **t1352:** 3 actions, avg 8.8/10
-- **t1402:** 6 actions, avg 8.8/10
-- **t1412:** 3 actions, avg 9.0/10
-- **t1422:** 6 actions, avg 8.8/10
-- **t1432:** 9 actions, avg 9.0/10
-- **t1442:** 9 actions, avg 9.0/10
+- **t1332:** 6 actions, avg 8.8/10
+- **t1342:** 6 actions, avg 8.8/10
+- **t1352:** 6 actions, avg 8.8/10
+- **t1402:** 9 actions, avg 8.7/10
+- **t1412:** 6 actions, avg 9.0/10
+- **t1422:** 9 actions, avg 8.8/10
+- **t1432:** 12 actions, avg 9.0/10
+- **t1442:** 12 actions, avg 9.0/10
 
 _A rising average with zero phantoms is the proof the team is learning and growing._
