@@ -5,6 +5,21 @@ name: Merge consensus gate
 # head SHA. Until branch protection requires this check, it reports but does
 # not block — the freeze directive on the board is the interim enforcement.
 #
+# TIERED REVIEW (Shawn, 2026-10-13 — RATIFIED protocol amendment): review
+# depth matches blast radius.
+#   Tier 1 (mechanical): docs/text/data-only or test-only additions. Author
+#     attests "Tier: 1" in the PR body; the gate verifies the file allowlist
+#     and that no completed check on the head SHA has failed. No independent
+#     review.
+#   Tier 2 (standard): default. One cross-seat review + scorecard >= 9.5.
+#   Tier 3 (critical): touches kernel/, BRAIN/01-GOVERNANCE/, auth/permissions,
+#     production workflows, or migrations — or any seat comments TIER-ESCALATE.
+#     Two cross-seat reviews (different seats, both different from the author)
+#     + scorecard >= 9.5 + no failing checks.
+# Tier determination is mechanical (declared tier, file-path auto-escalation,
+# TIER-ESCALATE comments); the highest wins. Implemented in
+# tools/check_merge_consensus.py as Requirement 0.
+#
 # Scope note: the seat-receipt convention started 2026-10-11T16:30:00Z
 # (PR #2352). PRs opened before that are SKIPPED with a clear message —
 # enforcing the convention retroactively is a stale assertion. API failures
@@ -20,13 +35,15 @@ on:
   issue_comment:
     types: [created, edited]
 
-# Least privilege: the gate only reads PRs, reviews, and PR comments
-# (served by the issues API). Declared explicitly so a future default
-# restriction cannot silently 403 the gate into permanent red.
+# Least privilege: the gate reads PRs, reviews, and PR comments (served by
+# the issues API), plus check-runs for the Tier 1/3 "CI green" verification.
+# Declared explicitly so a future default restriction cannot silently 403 the
+# gate into permanent red.
 permissions:
   contents: read
   pull-requests: read
   issues: read
+  checks: read
 
 jobs:
   consensus:

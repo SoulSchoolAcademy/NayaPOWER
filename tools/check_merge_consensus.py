@@ -4,6 +4,22 @@
 Shawn's doctrine: the protocol IS the authorization. No human click in the
 pipeline. This gate is the authorization.
 
+TIERED REVIEW (Shawn, 2026-10-13 — RATIFIED protocol amendment): review depth
+matches blast radius.
+  Tier 1 (mechanical): docs/text/data-only or test-only additions. Author
+    attests "Tier: 1" in the PR body; the gate verifies the file allowlist
+    and that no completed check on the head SHA has failed. No independent
+    review. Post-merge 1-in-10 audit; failed audit -> author loses Tier 1
+    privilege for 30 days (the audit mechanism is separate from this gate).
+  Tier 2 (standard): default. One cross-seat review + scorecard >= 9.5.
+  Tier 3 (critical): touches kernel/, BRAIN/01-GOVERNANCE/, auth/permissions,
+    production workflows, or migrations — or any seat escalates. Two
+    cross-seat reviews (different seats, both different from the author) +
+    scorecard >= 9.5 + no failing checks.
+Tier determination is mechanical: declared tier, file-path auto-escalation,
+and TIER-ESCALATE comments; the highest wins. A declared tier lower than the
+files require fails closed naming the offending files and the required tier.
+
 Reads from env:
   GH_TOKEN      - GitHub token (workflow secrets.GITHUB_TOKEN)
   REPO          - owner/repo
@@ -22,7 +38,8 @@ distinguish seats. Seats are identified by signed tags instead:
     provided it names the exact head SHA and a seat tag)
 Author seat, reviewer seat, and scorer seat: reviewer and scorer may be the
 same seat, but BOTH must differ from the author seat. (The author cannot
-review or score their own work.)
+review or score their own work.) Tier 3 additionally requires the two
+reviewers to be different seats from each other.
 
 Native GitHub APPROVED reviews from a *different login* than the PR author
 also satisfy the review requirement (future-proof for distinct seat accounts).
@@ -69,6 +86,30 @@ AUTHOR_SEAT_RE = re.compile(r"seat\s*:\s*naya\s*" + _SEAT_ID + r"\b", re.I)
 # scorecard comments) was introduced by PR #2352, merged 2026-10-11 16:30:13Z.
 # PRs opened before this instant predate the convention.
 SEAT_CONVENTION_CUTOFF = "2026-10-11T16:30:00Z"
+
+# --- Tiered review (Shawn, 2026-10-13 — RATIFIED) ---
+# Tier declaration: a line starting with "Tier: N" in the PR body. Default 2.
+TIER_RE = re.compile(r"^\s*tier\s*:\s*([123])\b", re.I | re.M)
+# Escalation: any seat comments TIER-ESCALATE (optionally with a tier number).
+TIER_ESCALATE_RE = re.compile(r"tier-escalate\s*:?\s*([123])?", re.I)
+# Score threshold for Tier 2/3 numeric scorecards (ratified policy: 9.5).
+TIER23_MIN_SCORE = 9.5
+# Tier 1 mechanical allowlist: these extensions are never executable content.
+_TIER1_EXTS = (".md", ".txt", ".json")
+# ...unless they live where bytes execute or govern: workflows run, the kernel
+# boots, migrations mutate production.
+_TIER1_CODE_DIRS = (".github/", "kernel/", "supabase/")
+# Any changed file under these paths (or matching the auth pattern) forces
+# Tier 3 no matter what the author declared.
+_TIER3_PREFIXES = ("kernel/", "BRAIN/01-GOVERNANCE/", ".github/workflows/",
+                   "supabase/migrations/")
+_TIER3_AUTH_RE = re.compile(r"(^|/)(auth|permissions?|grants?)(/|_|\.|$)", re.I)
+# Test-only additions: brand-new files on test paths, zero source changes.
+_TEST_PATH_RE = re.compile(r"(^|/)(tests?|test)/|_test\.|test_|\.test\.", re.I)
+# This gate's own check-run name (exact match — never a substring, so a
+# maliciously named "my-consensus-check" cannot exclude itself from the
+# Tier 1/3 CI-green verification).
+_GATE_CHECK_NAME = "team review + scorecard receipt"
 
 # Retry tuning: GitHub answers 403 (secondary rate limit) or 429 when the API
 # is under pressure — common during merge bursts when dozens of workflow runs
@@ -268,12 +309,12 @@ def _score_of(body):
     return None
 
 
-def _looks_like_scorecard(body, head_sha):
+def _looks_like_scorecard(body, head_sha, min_score=TIER23_MIN_SCORE):
     """True if the comment is a scorecard receipt for this exact head SHA:
     it must name the head SHA, say 'scorecard' or 'verdict', and carry either
-    a merge-approval phrase or a numeric score >= 9.0. The exact-head rule is
-    the security property — a receipt for an older head must not green-light
-    a newer one — so it is never relaxed."""
+    a merge-approval phrase or a numeric score >= min_score. The exact-head
+    rule is the security property — a receipt for an older head must not
+    green-light a newer one — so it is never relaxed."""
     low = (body or "").lower()
     if "scorecard" not in low and "verdict" not in low:
         return False
@@ -282,7 +323,136 @@ def _looks_like_scorecard(body, head_sha):
     approved = bool(re.search(r"merge\s*:\s*approved|merge\s+recommended",
                              low))
     score = _score_of(body)
-    return approved or (score is not None and score >= 9.0)
+    return approved or (score is not None and score >= min_score)
+
+
+# --- Tier determination (Shawn, 2026-10-13 — RATIFIED) ---
+# Mechanical, never judgment: declared tier, file-path auto-escalation, and
+# TIER-ESCALATE comments; the highest wins. Mention-hardening applies exactly
+# as for reviews — a quoted or negated "Tier: 1" is talk about the format,
+# never the author's attestation.
+
+def _declared_tier(pr_body):
+    """Parse the author's 'Tier: N' attestation from the PR body. Default 2:
+    a PR that does not attest Tier 1 gets full standard review. Quoted or
+    negated mentions do not count."""
+    cleaned = _MENTION_QUOTE_RE.sub(" ", pr_body or "")
+    for m in TIER_RE.finditer(cleaned):
+        line_start = cleaned.rfind("\n", 0, m.start()) + 1
+        if _NEGATION_RE.search(cleaned[line_start:m.start()]):
+            continue
+        n = int(m.group(1))
+        if 1 <= n <= 3:
+            return n
+    return 2
+
+
+def _escalated_tier(comments):
+    """Highest tier claimed by TIER-ESCALATE comments; 0 when none. A bare
+    TIER-ESCALATE (no number) means Tier 3 — escalation fails toward safety,
+    never toward leniency. Only upward: nothing here can lower a tier."""
+    best = 0
+    for c in comments:
+        cleaned = _MENTION_QUOTE_RE.sub(" ", c.get("body") or "")
+        for m in TIER_ESCALATE_RE.finditer(cleaned):
+            line_start = cleaned.rfind("\n", 0, m.start()) + 1
+            if _NEGATION_RE.search(cleaned[line_start:m.start()]):
+                continue
+            claimed = int(m.group(1)) if m.group(1) else 3
+            best = max(best, claimed)
+    return best
+
+
+def _tier1_file_ok(f):
+    """True if a single changed file is Tier-1 eligible: a mechanical
+    extension outside code-execution dirs, or a brand-new file on a test
+    path (test-only additions). Critical paths are never allowlisted here
+    (defense in depth — auto-escalation should have caught them first)."""
+    path = f.get("filename") or ""
+    if path.startswith(_TIER3_PREFIXES):
+        return False
+    ext = "." + path.rsplit(".", 1)[-1].lower() if "." in path else ""
+    if ext in _TIER1_EXTS and not path.startswith(_TIER1_CODE_DIRS):
+        return True
+    if (f.get("status") == "added" and _TEST_PATH_RE.search(path)
+            and not path.startswith(_TIER3_PREFIXES)):
+        return True
+    return False
+
+
+def determine_tier(pr_body, files, comments):
+    """Return (tier, explanation). Highest of: declared tier (default 2),
+    file-path auto-escalation to 3, comment escalation. Never lower than
+    declared."""
+    declared = _declared_tier(pr_body)
+    auto = declared
+    critical_hits = []
+    for f in files:
+        path = f.get("filename") or ""
+        if path.startswith(_TIER3_PREFIXES) or _TIER3_AUTH_RE.search(path):
+            auto = 3
+            critical_hits.append(path)
+    esc = _escalated_tier(comments)
+    tier = max(declared, auto, esc)
+    parts = [f"declared={declared}"]
+    if critical_hits:
+        shown = ", ".join(critical_hits[:5])
+        more = f" (+{len(critical_hits) - 5} more)" if len(critical_hits) > 5 else ""
+        parts.append(f"auto-escalated to 3 by critical path(s): {shown}{more}")
+    if esc:
+        parts.append(f"comment-escalated to {esc}")
+    parts.append(f"final TIER {tier}")
+    return tier, "; ".join(parts)
+
+
+def _collect_reviewers(reviews, comments, pr_author_login, author_seat):
+    """All reviewer seats distinct from the author (set). Native GitHub
+    approvals from a different login count; seat-tagged review comments
+    count when the seat differs from the author. Seats without tags collapse
+    into one 'external reviewer' bucket — two untagged approvals do NOT
+    count as two distinct seats (documented limitation; tag your seat)."""
+    reviewers = set()
+    for r in reviews:
+        if (r.get("state") == "APPROVED"
+                and (r.get("user") or {}).get("login", "").lower()
+                != pr_author_login):
+            reviewers.add(seat_of(r.get("body")) or "external reviewer")
+    for c in comments:
+        body = c.get("body") or ""
+        if _looks_like_review(body):
+            s = seat_of(body)
+            if s and s != author_seat:
+                reviewers.add(s)
+    reviewers.discard(author_seat)
+    return reviewers
+
+
+def check_ci_green(token, repo, head_sha, tier):
+    """Tier 1/3 'CI green' verification: no completed check on the head SHA
+    — other than this gate itself — may have concluded failure, timed_out,
+    cancelled, or action_required. Pending checks do not fail the gate:
+    branch protection still blocks the actual merge until required checks
+    pass, so there is no merge hole; this gate only refuses to bless a head
+    with *known-red* CI."""
+    try:
+        result = api_get(f"/repos/{repo}/commits/{head_sha}/check-runs",
+                         token)
+    except GateAPIError as e:
+        fail(f"TIER {tier}: unable to verify CI status: {e}")
+    runs = result.get("check_runs", []) if isinstance(result, dict) else []
+    bad = []
+    for cr in runs:
+        name = (cr.get("name") or "").strip().lower()
+        if name == _GATE_CHECK_NAME:
+            continue  # never deadlock on our own verdict
+        if cr.get("status") == "completed" and cr.get("conclusion") in (
+                "failure", "timed_out", "cancelled", "action_required"):
+            bad.append(f"{cr.get('name')} ({cr.get('conclusion')})")
+    if bad:
+        fail(f"TIER {tier}: CI is not green on head {head_sha[:10]}: "
+             f"{'; '.join(bad[:5])}. Fix the failures, then re-run this check.")
+    print(f"TIER {tier}: CI verification passed "
+          f"({len(runs)} check run(s), none failed).")
 
 
 def run_gate(token, repo, pr_number, head_sha):
@@ -298,58 +468,73 @@ def run_gate(token, repo, pr_number, head_sha):
         return
 
     pr_author_login = (pr["user"]["login"] or "").lower()
-    author_seat = author_seat_of(pr.get("body"))
+    pr_body = pr.get("body") or ""
+    author_seat = author_seat_of(pr_body)
     if not author_seat:
         fail("PR body must declare the authoring seat ('Seat: Naya N'). "
              "Unattributed work cannot be reviewed. Add the declaration to "
              "the PR body and re-run.")
 
-    # --- Requirement 1: cross-seat review ---
     reviews = api_get(f"/repos/{repo}/pulls/{pr_number}/reviews", token)
     comments = api_get(f"/repos/{repo}/issues/{pr_number}/comments", token)
+    files = api_get(f"/repos/{repo}/pulls/{pr_number}/files", token)
+    if not isinstance(files, list):
+        files = []
 
-    reviewer_seat = None
-    # Path A: native GitHub approval from a different login.
-    for r in reviews:
-        if (r.get("state") == "APPROVED"
-                and (r["user"]["login"] or "").lower() != pr_author_login):
-            reviewer_seat = seat_of(r.get("body")) or "external reviewer"
-            break
-    # Path B: seat-tagged review comment (incantation or IV verdict format)
-    # from a different seat.
-    if not reviewer_seat:
-        for c in comments:
-            body = c.get("body") or ""
-            if _looks_like_review(body):
-                s = seat_of(body)
-                if s and s != author_seat:
-                    reviewer_seat = s
-                    break
-    if not reviewer_seat:
-        fail(f"no review from a seat other than the author ({author_seat}). "
-             f"Post '[NAYA M · REVIEW] APPROVED' (or an IV verdict comment "
-             f"with your seat tag) as a PR comment, or submit a GitHub "
-             f"approving review from a different account.")
+    # --- Requirement 0: tier determination (mechanical; highest wins) ---
+    tier, tier_expl = determine_tier(pr_body, files, comments)
+    print(f"TIER DETERMINED: {tier} ({tier_expl})")
 
-    # --- Requirement 2: scorecard receipt naming this exact head SHA ---
+    # --- Tier 1: mechanical — allowlist + CI, no independent review ---
+    if tier == 1:
+        bad_files = [f.get("filename") for f in files
+                     if not _tier1_file_ok(f)]
+        if bad_files:
+            shown = ", ".join(bad_files[:10])
+            more = (f" (+{len(bad_files) - 10} more)"
+                    if len(bad_files) > 10 else "")
+            fail(f"TIER MISMATCH: declared Tier 1, but these files require a "
+                 f"higher tier: {shown}{more}. Re-declare as Tier 2/3 or split "
+                 f"the PR.")
+        check_ci_green(token, repo, head_sha, tier)
+        print(f"CONSENSUS GATE PASSED (Tier 1 mechanical): author {author_seat}, "
+              f"{len(files)} allowlisted file(s); no independent review "
+              f"required under the ratified tiered policy.")
+        return
+
+    # --- Tier 2/3: independent review(s) + scorecard ---
+    reviewers = _collect_reviewers(reviews, comments, pr_author_login,
+                                   author_seat)
+    need = 2 if tier == 3 else 1
+    if len(reviewers) < need:
+        fail(f"TIER {tier}: need {need} review(s) from seats other than the "
+             f"author ({author_seat}); have {len(reviewers)}. Post "
+             f"'[NAYA M · REVIEW] APPROVED' (or an IV verdict comment with "
+             f"your seat tag) as a PR comment, or submit a GitHub approving "
+             f"review from a different account.")
+
     scorer_seat = None
     for c in comments:
         body = c.get("body") or ""
-        if not _looks_like_scorecard(body, head_sha):
+        if not _looks_like_scorecard(body, head_sha, TIER23_MIN_SCORE):
             continue
         s = seat_of(body)
         if s and s != author_seat:
             scorer_seat = s
             break
     if not scorer_seat:
-        fail(f"no scorecard receipt naming head SHA {head_sha[:10]} from a seat "
-             f"other than the author ({author_seat}). Post '## SCORECARD' (or "
-             f"'Honest scorecard: <score>/10') with the exact head SHA, a "
-             f"merge verdict or score >= 9.0, and your seat tag, as a PR "
-             f"comment.")
+        fail(f"TIER {tier}: no scorecard receipt naming head SHA {head_sha[:10]} "
+             f"from a seat other than the author ({author_seat}), with score "
+             f">= {TIER23_MIN_SCORE}. Post '## SCORECARD' with the exact head "
+             f"SHA, a merge verdict or score >= {TIER23_MIN_SCORE}, and your "
+             f"seat tag, as a PR comment.")
 
-    print(f"CONSENSUS GATE PASSED: author {author_seat}, "
-          f"reviewer {reviewer_seat}, scorer {scorer_seat}, head {head_sha[:10]}.")
+    if tier == 3:
+        check_ci_green(token, repo, head_sha, tier)
+
+    print(f"CONSENSUS GATE PASSED (Tier {tier}): author {author_seat}, "
+          f"reviewer(s) {sorted(reviewers)}, scorer {scorer_seat}, "
+          f"head {head_sha[:10]}.")
 
 
 def main():
