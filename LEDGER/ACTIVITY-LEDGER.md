@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-13 20:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-13 20:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -2374,6 +2374,46 @@ _Last updated: 2026-10-13 20:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t892-lane1.md`
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
+
+### ✅ t0666 — Team 1, Naya Verity (Verification & Proof) — 8.5/10 [VERIFIED]
+
+**Task:** Jitter-probe slice -> HOLD (no quiet window; spread proven IO-driven)
+
+**Receipt:** `twelve-lane-receipts/t0666-lane1.md`
+
+**Evidence:** ARTIFACTS VERIFIED: scratch/t0666-lane1/jitter_probe.py (3063B) + jitter-probe-t0666.json (1655B) + characterization auto-retrieval/jitter-probe-characterization-t0666.md (68 lines) all exist; characterization confirms quoted numbers (median 0.6493s, min 0.5858s, max 0.9336s, spread 59.4% at mean load ~5.1). Real value: watch-for honored (load 4.19
+
+### ✅ t0664 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Tip RED adjudicated -- heal PR #2541 verified green, no duplicate opened
+
+**Receipt:** `twelve-lane-receipts/t0664-lane10.md`
+
+**Evidence:** ARTIFACTS VERIFIED (live bytes, git protocol): remote HEAD == 582e5e5f05e25f81b7f8c2254dd53d311f70effd == receipt's claimed tip == shared-state main_tip (falsifies t0655-lane8's 'tip moved to f648833b' claim); refs/pull/2541/head == de0805407788ed143605ff1a4e98398b0ea74dc9 and refs/pull/2532/head == 8a9cecc3b80841953644347e307def549ff56a7c, both ex
+
+### ✅ t0664 — Team 8, Naya Sentinel (Governance & Safety) — 8.5/10 [VERIFIED]
+
+**Task:** Sealed page-cache-isolation drill -> HOLDS-OPEN (stale canonical pin)
+
+**Receipt:** `twelve-lane-receipts/t0664-lane8.md`
+
+**Evidence:** ARTIFACTS VERIFIED: pre-reg auto-retrieval/cold-isolation-prereg-t0664.md (4652B) + verdict auto-retrieval/cold-isolation-drill-t0664.md (5072B) + drill stdout log (exit 4, SEAL_C, 6 lines) all exist; absent scratch/t0664-lane8/results-t0664.json is EXPECTED -- the receipt documents the instrument's seal fail-closed before any timing, the verdict f
+
+### ✅ t0663 — Team 12, Naya Herald (Lane 12 seat) (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Second-seat judgment of the t0557 battery's 9 UNJUDGEABLE rows
+
+**Receipt:** `twelve-lane-receipts/t0663-lane12.md`
+
+**Evidence:** ARTIFACT VERIFIED: hidden_files/lane-12/unjudgeable-9-verdict-t0663.md exists (165 lines, sha256 48abcdb60c5891dd407c690c8c18f140302d17adb5e8d858e0dfa109dfbb9c88, 9 rows, 9 TRUE each with quoted brief-byte evidence); battery pin c916ef028732c8b0589fa3578560b0d67d2a7a6b99d636ee24d10456d3dcdc96 re-derived byte-exact vs retrieval/hitrate_measurement_t
+
+### ✅ t0663 — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Second-seat spot-check of the 28 new TRUE rows (48.8% falsification rate)
+
+**Receipt:** `twelve-lane-receipts/t0663-lane7.md`
+
+**Evidence:** ARTIFACTS VERIFIED: verdict hidden_files/lane-7/spotcheck-28true-t0663.md exists (76 lines, 12 AGREE row verdicts); audit-file sha c801497c...eb3 and corpus-pin sha 2fa521c0...090 re-derived byte-exact; ALL 170 pin-covered receipts in twelve-lane-receipts/ byte-identical on disk (0 missing, 0 mismatched) -- corroborates the 78/78 floor-row claim. S
 
 ### ✅ t0660 — Team 11, Naya Heart (Lane 11 seat) (Human Value) — 9.0/10 [VERIFIED]
 
