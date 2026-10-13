@@ -151,6 +151,11 @@ def main(argv: list[str] | None = None) -> int:
     p = sub.add_parser("validate-surprise"); p.add_argument("--signal", required=True)
     args = ap.parse_args(argv)
     try:
+        # Every operational command verifies the law bytes before doing work.
+        # The explicit verify-integrity command is the diagnostic exception.
+        if args.command != "verify-integrity":
+            _root = Path(__file__).resolve().parents[1]
+            verify_byte_integrity(__file__, _root / ".naya" / "governance" / "HIVE-LEARNING-LAW.sha256")
         if args.command == "verify-integrity": result = verify_byte_integrity(args.law, args.manifest)
         elif args.command == "validate-lesson": result = validate_lesson(json.loads(Path(args.lesson).read_text(encoding="utf-8")), json.loads(Path(args.existing).read_text(encoding="utf-8")) if args.existing else [])
         elif args.command == "validate-adoption": result = validate_adoption(json.loads(Path(args.record).read_text(encoding="utf-8")))
