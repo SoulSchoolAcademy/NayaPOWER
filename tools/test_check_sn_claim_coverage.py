@@ -92,6 +92,86 @@ class TestFourSurfaces(unittest.TestCase):
         self.assertEqual(rc, 1, v)
         self.assertEqual(v["foreign_claims"][0]["surface"], "pr_heads")
 
+    def test_pr_head_mirror_copy_does_not_refuse(self):
+        # B-56 polarity pole 1: a registry index.json mirror at a PR head
+        # that is byte-identical to base (fixture declares "mirror_copy")
+        # is the registry's voice, not a claim -> CLEAR, advisory only.
+        repo = make_repo()
+        fx = {"comments": [], "prs": [{
+            "number": 99, "user": {"login": "SomeSeat"},
+            "title": "smart notes batch", "body": "", "head": {"ref": "x"},
+            "files": [{
+                "filename": ".naya/memory/smart-notes/index.json",
+                "patch": "+\"smart_note_id\": \"SN-0798\"",
+                "mirror_copy": True}]}]}
+        rc, v = run_check(SN, repo, fx)
+        self.assertEqual(rc, 0, v)
+        self.assertEqual(v["verdict"], "CLEAR")
+        self.assertEqual(v["foreign_claims"], [])
+        mirrors = [h for h in v["mirror_hits"]
+                   if h["surface"] == "pr_heads"]
+        self.assertTrue(mirrors, "mirror hit not reported as advisory")
+
+    def test_pr_head_divergent_mirror_still_refuses(self):
+        # B-56 polarity pole 2 (fail-closed): the same mirror path WITHOUT
+        # the byte-identical declaration is a divergent/tampered mirror ->
+        # stays claim-class -> COLLISION.
+        repo = make_repo()
+        fx = {"comments": [], "prs": [{
+            "number": 99, "user": {"login": "SomeSeat"},
+            "title": "smart notes batch", "body": "", "head": {"ref": "x"},
+            "files": [{
+                "filename": ".naya/memory/smart-notes/index.json",
+                "patch": "+\"smart_note_id\": \"SN-0798\""}]}]}
+        rc, v = run_check(SN, repo, fx)
+        self.assertEqual(rc, 1, v)
+        self.assertEqual(v["verdict"], "COLLISION")
+        self.assertEqual(v["foreign_claims"][0]["surface"], "pr_heads")
+
+    def test_mirror_blob_compare_verifies_copies(self):
+        # Unit test for the B-56 byte-compare helper on a scratch repo:
+        # identical blob -> copy; modified blob -> not a copy; missing
+        # base blob -> not a copy (fail-closed).
+        import check_sn_claim_coverage as c
+        repo = make_repo()
+        mp = repo / ".naya" / "memory" / "smart-notes"
+        mp.mkdir(parents=True)
+        (mp / "index.json").write_text('{"ids": ["SN-0798"]}\n')
+        subprocess.run(["git", "-C", str(repo), "add", "."], check=True)
+        subprocess.run(["git", "-C", str(repo), "commit", "-qm",
+                        "mirror v1"], check=True)
+        c1 = subprocess.run(
+            ["git", "-C", str(repo), "rev-parse", "HEAD"],
+            capture_output=True, text=True, check=True).stdout.strip()
+        # Same blob at HEAD: a copy.
+        self.assertTrue(
+            c._mirror_copies(str(repo),
+                             [(c1, ".naya/memory/smart-notes/index.json")])
+            [(c1, ".naya/memory/smart-notes/index.json")])
+        # Modify the file in a new commit: the old head's blob is no
+        # longer a copy of HEAD's blob.
+        (mp / "index.json").write_text('{"ids": ["SN-0798", "SN-0799"]}\n')
+        subprocess.run(["git", "-C", str(repo), "add", "."], check=True)
+        subprocess.run(["git", "-C", str(repo), "commit", "-qm",
+                        "mirror v2"], check=True)
+        self.assertFalse(
+            c._mirror_copies(str(repo),
+                             [(c1, ".naya/memory/smart-notes/index.json")])
+            [(c1, ".naya/memory/smart-notes/index.json")])
+        # The new head's blob IS a copy of HEAD's (it is HEAD's).
+        c2 = subprocess.run(
+            ["git", "-C", str(repo), "rev-parse", "HEAD"],
+            capture_output=True, text=True, check=True).stdout.strip()
+        self.assertTrue(
+            c._mirror_copies(str(repo),
+                             [(c2, ".naya/memory/smart-notes/index.json")])
+            [(c2, ".naya/memory/smart-notes/index.json")])
+        # Missing base blob (path never committed at HEAD's tree):
+        # not a copy -- fail-closed.
+        self.assertFalse(
+            c._mirror_copies(str(repo), [(c1, ".naya/absent.json")])
+            [(c1, ".naya/absent.json")])
+
     def test_commit_graph_only_claim_refuses(self):
         repo = make_repo()
         p = repo / "BRAIN" / "05-MEMORY" / "SMART-NOTES" / "2026" / "10" / "12" \
@@ -225,10 +305,10 @@ class TestFourSurfaces(unittest.TestCase):
         # Requester's own ib on the same placement is self-attributed,
         # not a foreign claim: classify() puts it in self_hits.
         own = [dict(h, _num=798) for h in hits]
-        _, self_hits, _ = c.classify(own, ["IB-FOREIGN", "Naya Librarian"],
-                                     "IB-FOREIGN")
+        _, self_hits, _, _ = c.classify(own, ["IB-FOREIGN", "Naya Librarian"],
+                                        "IB-FOREIGN")
         self.assertTrue(self_hits, "owner-attributed hit misclassified")
-        _, self_hits2, _ = c.classify(own, ["Naya Librarian"], "IB-OTHER")
+        _, self_hits2, _, _ = c.classify(own, ["Naya Librarian"], "IB-OTHER")
         self.assertFalse(self_hits2,
                          "foreign-attributed hit self-classified")
 
