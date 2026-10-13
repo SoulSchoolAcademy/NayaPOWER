@@ -1,13 +1,13 @@
 # 🐝 HUB-STATE — The Living Hub
-> Generated 2026-10-13 03:23 UTC · tip `dd6f2d927d82` · This is the current truth. Any Naya landing here knows everything.
+> Generated 2026-10-13 04:23 UTC · tip `e8b4868ce402` · This is the current truth. Any Naya landing here knows everything.
 
 ## IN A NUTSHELL
-Team Naya's 12 named bees cycle 3-at-a-time, 24/7. The queue holds **30 actionable** missions and **9 awaiting triage**. The hive distills every lesson, hourly.
+Team Naya's 12 named bees cycle 3-at-a-time, 24/7. The queue holds **30 actionable** missions and **10 awaiting triage**. The hive distills every lesson, hourly.
 
 ## WHAT'S HAPPENING NOW
-- Active wave: **none — supervisor will dispatch** (Naya Compounder, Naya Librarian, Naya Bridger)
-- Main tip: `dd6f2d927d82`
-- Queue: 30 actionable · 9 proposed
+- Active wave: **20** (Naya Judge, Naya Auditor, Naya Builder)
+- Main tip: `e8b4868ce402`
+- Queue: 30 actionable · 10 proposed
 
 ## WHAT MATTERS MOST
 - **B-28**: #2325's merged gate still carries the scorecard's exact delta — vacuous identifi
@@ -17,12 +17,12 @@ Team Naya's 12 named bees cycle 3-at-a-time, 24/7. The queue holds **30 actionab
 - **B-37**: rebuild the #2012 GitHub-projection diagnostic against current main
 
 ## THE BEES
-- 🐝 ON WAVE **Naya Compounder** (LEARN) — Prove a lesson changes a decision · score 9.0 · 5 waves
-- 🐝 ON WAVE **Naya Librarian** (KNOW) — Make drift structurally impossible · score 9.2 · 4 waves
-- 🐝 ON WAVE **Naya Bridger** (ACT) — Prove learning reaches action · score 9.0 · 5 waves
-- ○ **Naya Judge** (LAW) — One engine, one law, no exceptions · score 9.0 · 4 waves
-- ○ **Naya Auditor** (PROVE) — No theater — every proof independently verified · score 9.0 · 4 waves
-- ○ **Naya Builder** (BUILD) — Merge queue at zero · score 9.0 · 4 waves
+- ○ **Naya Compounder** (LEARN) — Prove a lesson changes a decision · score 9.0 · 6 waves
+- ○ **Naya Librarian** (KNOW) — Make drift structurally impossible · score 9.2 · 5 waves
+- ○ **Naya Bridger** (ACT) — Prove learning reaches action · score 9.0 · 6 waves
+- 🐝 ON WAVE **Naya Judge** (LAW) — One engine, one law, no exceptions · score 9.0 · 5 waves
+- 🐝 ON WAVE **Naya Auditor** (PROVE) — No theater — every proof independently verified · score 9.3 · 5 waves
+- 🐝 ON WAVE **Naya Builder** (BUILD) — Merge queue at zero · score 8.5 · 5 waves
 - ○ **Naya Electrician** (WIRE) — Every gate wired to a live call site · score 9.2 · 4 waves
 - ○ **Naya Captain** (TEAM) — No Naya ever blocked waiting · score 8.5 · 4 waves
 - ○ **Naya Mechanic** (INFRA) — CI that catches real breaks, never false alarms · score 9.5 · 4 waves
