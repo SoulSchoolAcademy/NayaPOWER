@@ -190,3 +190,40 @@ def test_contract_json_is_valid_machine_law():
     assert len(c["behavior"]["do_not"]) == 8
     assert c["process"]["loop"].startswith("attune")
     assert c["amendment"].startswith("Only by Shawn")
+
+
+def test_enforcer_live_passes():
+    # The runtime enforcer must self-verify as part of boot — one system.
+    passed, detail = gate.check_contract_enforcer_live()
+    assert passed, f"enforcer should be live on the honest tree: {detail}"
+    assert "one system" in detail
+
+
+def test_enforcer_missing_fails_closed(monkeypatch, tmp_path):
+    # No enforcer file = no boot. Fail closed, never silently skip.
+    from pathlib import Path
+
+    class FakeRoot:
+        def __truediv__(self, rel):
+            return Path("/nonexistent") / rel
+
+    monkeypatch.setattr(gate, "ROOT", FakeRoot())
+    passed, detail = gate.check_contract_enforcer_live()
+    assert not passed, "missing enforcer must fail closed"
+    assert "boot refused" in detail
+
+
+def test_enforcer_integrity_failure_fails_closed(monkeypatch):
+    # If the enforcer's own self-check fails, the gate must fail —
+    # a broken enforcer is not a live enforcer.
+    import subprocess as real_subprocess
+
+    class BadResult:
+        returncode = 1
+        stdout = ""
+        stderr = "VIOLATION: contract bytes changed"
+
+    monkeypatch.setattr(gate.subprocess, "run", lambda *a, **k: BadResult())
+    passed, detail = gate.check_contract_enforcer_live()
+    assert not passed, "failed enforcer integrity must fail the gate"
+    assert "boot refused" in detail

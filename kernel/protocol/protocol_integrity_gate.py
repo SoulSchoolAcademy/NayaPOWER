@@ -209,6 +209,31 @@ def check_naya_contract(manifest: dict) -> tuple[bool, str]:
     return True, f"naya contract verified: {len(pins)} files match pinned canonical bytes (contract law)"
 
 
+def check_contract_enforcer_live() -> tuple[bool, str]:
+    """Gate 9 — the runtime contract enforcer must self-verify at boot.
+
+    naya-contract.py is not a dead file that merely hashes correctly;
+    its own integrity command must EXECUTE cleanly. This binds the
+    runtime enforcer into the boot path — one system, not two:
+    the gate proves the bytes, the enforcer proves it runs.
+    Any failure (nonzero exit, crash, timeout) fails closed.
+    """
+    tool = ROOT / "NAYA-ACTIVATION" / "naya-contract.py"
+    if not tool.exists():
+        return False, "contract enforcer missing: NAYA-ACTIVATION/naya-contract.py — boot refused (fail closed)"
+    try:
+        result = subprocess.run(
+            [sys.executable, str(tool), "integrity"],
+            capture_output=True, text=True, timeout=30, cwd=ROOT,
+        )
+    except Exception as e:
+        return False, f"contract enforcer did not run ({e}) — boot refused (fail closed)"
+    if result.returncode != 0:
+        err = (result.stderr.strip() or result.stdout.strip())[:200]
+        return False, f"contract enforcer integrity FAILED: {err} — boot refused (fail closed)"
+    return True, "contract enforcer live: naya-contract.py self-integrity holds (one system)"
+
+
 def run_gate(agent_id: str = "unknown") -> dict:
     manifest = load_manifest()
     checks = []
@@ -222,6 +247,7 @@ def run_gate(agent_id: str = "unknown") -> dict:
         ("never_do_complete", lambda: check_never_do_nonempty(manifest)),
         ("activation_checklist", check_activation_checklist),
         ("naya_contract", lambda: check_naya_contract(manifest)),
+        ("contract_enforcer_live", check_contract_enforcer_live),
     ]
 
     all_pass = True
