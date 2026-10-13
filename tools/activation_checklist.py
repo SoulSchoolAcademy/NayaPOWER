@@ -115,22 +115,21 @@ CURRICULUM_LESSON_PINS = {
     "L14": "4a9962ac4aa6e686472499e781a9a068e1d3e16169c543e7f94ecd1d68624364",
 }
 
-# Pinned 2026-10-10 from origin/brain-build/operating-code-v2 @
-# 22b84419ed500f91d677679c153c0599e60ca33c (PR #2087, OPEN/unmerged).
-# Re-pinned: branch moved 8a933551 -> 22b84419 (V2 files changed).
-# Until #2087 merges, run with --v2-root pointing at a checkout of that
-# branch (or pass --v2-expect to re-pin deliberately). After merge, re-pin
-# to the main-tip bytes — the pin source string must name the new ref.
+# Pinned 2026-10-13 to origin/main @
+# dd6f2d927d8299f7bd9895ee5dadca892b12b233 (V2 merged to main; re-pinned
+# deliberately at boot-gate wiring — the pin source string names the new
+# ref per the re-pin rule). A drift in lesson content or V2 bytes is a
+# deliberate re-pin (code change), never a silent pass.
 V2_PIN_SOURCE = (
-    "origin/brain-build/operating-code-v2 @ "
-    "22b84419ed500f91d677679c153c0599e60ca33c (PR #2087, unmerged 2026-10-10)")
+    "origin/main @ dd6f2d927d8299f7bd9895ee5dadca892b12b233 "
+    "(V2 on main; re-pinned at boot-gate wiring, 2026-10-13)")
 V2_FILE_PINS = {
     "BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2.human.md":
-        "f2a5f81e6d10b9749e3159267411c615c65353845b2d02aa88e98c8115d13537",
+        "d856dc13ae5d31695a94ba97aa52850ea1d0cfb5d4740eb4ff71ffd67967259a",
     "BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2.ai.md":
-        "e4489a40016f05932cfaeee2217b7349ce45277897b79d971e10df0b098fddec",
+        "8e9f53929f0bbc9af3bfd1da3c7f60454a2c9f1769162ec0bb4e48023be187a9",
     "BRAIN/01-GOVERNANCE/0008-operating-code-v2.machine.json":
-        "c1bdf12ad21b990b34329a2a2809c8be4488e9fe6d87539a0f1508b2c9f8ce8b",
+        "a4af89b3c8b3db07e0c289c4906381870952096f282202e0de98a48511a7e2b1",
 }
 
 
@@ -364,8 +363,8 @@ def main(argv=None):
                          "root above tools/)")
     ap.add_argument("--v2-root", default="",
                     help="checkout holding the V2 files (default: --repo-root). "
-                         "Point at the operating-code-v2 branch checkout "
-                         "until PR #2087 merges.")
+                         "V2 is pinned to main-tip bytes since 2026-10-13; "
+                         "point elsewhere only to verify a deliberate re-pin.")
     ap.add_argument("--checklist", default="",
                     help="agent activation checklist claim JSON to verify "
                          "(default: self-audit of canonical artifacts only)")
