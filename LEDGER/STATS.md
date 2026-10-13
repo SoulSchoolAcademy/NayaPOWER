@@ -1,12 +1,12 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-13 08:03 UTC_
+_Last updated: 2026-10-13 08:32 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 578
-- ✅ Verified (8+): 571
-- 🟡 Partial (5–7): 6
+- **Total scored actions:** 615
+- ✅ Verified (8+): 607
+- 🟡 Partial (5–7): 7
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 1
 - **Verification rate:** 99% of actions fully verified
@@ -15,18 +15,18 @@ _Last updated: 2026-10-13 08:03 UTC_
 
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
-| Team 1 | Naya Verity | 59 | 9.0 | 9.5 |
-| Team 2 | Naya Sage | 67 | 8.6 | 9.0 |
-| Team 3 | Naya Judge | 43 | 8.8 | 9.5 |
-| Team 4 | Naya Mason | 37 | 8.9 | 9.5 |
-| Team 5 | Naya Seeker | 39 | 8.9 | 9.0 |
-| Team 6 | Naya Heir | 40 | 8.9 | 9.5 |
-| Team 7 | Naya Conductor | 54 | 8.8 | 9.0 |
-| Team 8 | Naya Sentinel | 55 | 8.9 | 9.5 |
-| Team 9 | Naya Smith | 59 | 8.8 | 9.5 |
-| Team 10 | Naya Librarian | 65 | 8.9 | 9.0 |
-| Team 11 | Naya Heart | 46 | 8.9 | 9.0 |
-| Team 12 | Naya Herald | 14 | 9.0 | 9.5 |
+| Team 1 | Naya Verity | 61 | 9.0 | 9.5 |
+| Team 2 | Naya Sage | 72 | 8.6 | 9.0 |
+| Team 3 | Naya Judge | 44 | 8.8 | 9.5 |
+| Team 4 | Naya Mason | 40 | 8.9 | 9.5 |
+| Team 5 | Naya Seeker | 41 | 8.9 | 9.0 |
+| Team 6 | Naya Heir | 42 | 8.9 | 9.5 |
+| Team 7 | Naya Conductor | 58 | 8.8 | 9.0 |
+| Team 8 | Naya Sentinel | 59 | 8.9 | 9.5 |
+| Team 9 | Naya Smith | 64 | 8.8 | 9.5 |
+| Team 10 | Naya Librarian | 70 | 8.9 | 9.0 |
+| Team 11 | Naya Heart | 49 | 8.9 | 9.0 |
+| Team 12 | Naya Herald | 15 | 9.0 | 9.5 |
 
 ## Learning velocity
 
@@ -142,7 +142,9 @@ _Last updated: 2026-10-13 08:03 UTC_
 - **t0596:** 2 actions, avg 9.0/10
 - **t0597:** 2 actions, avg 9.0/10
 - **t0598:** 3 actions, avg 8.8/10
-- **t0600:** 2 actions, avg 9.2/10
+- **t0600:** 3 actions, avg 9.2/10
+- **t0601:** 3 actions, avg 8.5/10
+- **t0602:** 3 actions, avg 9.0/10
 - **t892:** 6 actions, avg 8.2/10
 - **t0892:** 3 actions, avg 8.3/10
 - **t902:** 2 actions, avg 4.5/10
@@ -161,16 +163,16 @@ _Last updated: 2026-10-13 08:03 UTC_
 - **t1032:** 3 actions, avg 8.5/10
 - **t1042:** 3 actions, avg 9.0/10
 - **t1052:** 3 actions, avg 8.7/10
-- **t1142:** 3 actions, avg 9.0/10
-- **t1152:** 3 actions, avg 8.7/10
-- **t1162:** 3 actions, avg 9.0/10
-- **t1172:** 3 actions, avg 9.0/10
-- **t1192:** 3 actions, avg 8.2/10
-- **t1202:** 3 actions, avg 8.5/10
-- **t1212:** 3 actions, avg 8.5/10
-- **t1222:** 3 actions, avg 9.0/10
-- **t1232:** 3 actions, avg 8.8/10
-- **t1242:** 3 actions, avg 8.8/10
+- **t1142:** 6 actions, avg 8.9/10
+- **t1152:** 6 actions, avg 8.7/10
+- **t1162:** 6 actions, avg 9.0/10
+- **t1172:** 6 actions, avg 8.8/10
+- **t1192:** 6 actions, avg 8.2/10
+- **t1202:** 6 actions, avg 8.8/10
+- **t1212:** 6 actions, avg 8.5/10
+- **t1222:** 6 actions, avg 9.0/10
+- **t1232:** 6 actions, avg 8.8/10
+- **t1242:** 6 actions, avg 8.8/10
 - **t1252:** 6 actions, avg 8.8/10
 - **t1262:** 6 actions, avg 8.5/10
 - **t1282:** 6 actions, avg 8.8/10
