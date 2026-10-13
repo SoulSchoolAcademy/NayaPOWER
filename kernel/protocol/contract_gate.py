@@ -109,6 +109,15 @@ def _sha_exists_on_remote(sha: str) -> tuple[bool, str]:
     if not re.fullmatch(r"[0-9a-f]{40}", sha):
         return False, f"not a 40-hex SHA: {sha[:20]}"
     try:
+        # Content-addressed short-circuit: if the object is already in the
+        # local store it is byte-identical to the remote's (a SHA's bytes
+        # cannot change), so no fetch is needed.
+        have = subprocess.run(
+            ["git", "cat-file", "-e", f"{sha}^{{commit}}"],
+            capture_output=True, timeout=30, cwd=ROOT,
+        )
+        if have.returncode == 0:
+            return True, f"SHA {sha[:12]} resolves (local object store)"
         f = subprocess.run(
             ["git", "fetch", REPO_URL, sha],
             capture_output=True, text=True, timeout=60, cwd=ROOT,
