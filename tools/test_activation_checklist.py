@@ -9,7 +9,7 @@ Proves the predicate logic, including adversarial cases:
   - missing V2 file                     -> TOOL-ERROR (fail closed)
 
 Fixtures are the REAL canonical artifacts (curriculum from the repo
-checkout, V2 files from origin/brain-build/operating-code-v2 via git show),
+checkout, V2 files from origin/main via git show),
 so a pass means the embedded pins match live bytes — the meta-test
 test_embedded_pins_match_live_canonical guards the pins against
 transcription error.
@@ -28,7 +28,11 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import activation_checklist as ac  # noqa: E402
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-V2_BRANCH = "origin/brain-build/operating-code-v2"
+# The V2 trust root is origin/main (V2_FILE_PINS in activation_checklist.py
+# are pinned to main's bytes). The old brain-build/operating-code-v2 branch
+# was the pre-merge staging ref and is now stale — the fixture must track
+# the pin source, not the staging branch.
+V2_BRANCH = "origin/main"
 
 ALL_IDS = ["L%d" % i for i in range(1, 15)]
 
@@ -36,15 +40,19 @@ ALL_IDS = ["L%d" % i for i in range(1, 15)]
 def _ensure_ref(ref):
     """Make sure a remote ref exists locally, fetching it when the clone
     lacks it. CI checks out a shallow single ref, so origin/* branches for
-    the V2 trust root are absent unless fetched. The gate still verifies
-    live bytes — this only ensures they are reachable."""
+    the V2 trust root are absent unless fetched. The fetch writes the
+    remote-tracking ref explicitly (not just FETCH_HEAD) so the checkout
+    shape never matters. The gate still verifies live bytes — this only
+    ensures they are reachable."""
     branch = ref.split(":", 1)[0]
     name = branch[7:] if branch.startswith("origin/") else branch
     v = subprocess.run(["git", "rev-parse", "--verify", "--quiet", branch],
                        cwd=REPO_ROOT, capture_output=True, timeout=60)
     if v.returncode != 0:
-        f = subprocess.run(["git", "fetch", "origin", name],
-                           cwd=REPO_ROOT, capture_output=True, timeout=120)
+        f = subprocess.run(
+            ["git", "fetch", "origin",
+             "+refs/heads/%s:refs/remotes/origin/%s" % (name, name)],
+            cwd=REPO_ROOT, capture_output=True, timeout=120)
         assert f.returncode == 0, "git fetch failed for %s" % name
 
 
