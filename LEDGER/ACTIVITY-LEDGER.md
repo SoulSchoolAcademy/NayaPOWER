@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-14 01:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-14 02:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -2752,6 +2752,78 @@ _Last updated: 2026-10-14 01:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t892-lane1.md`
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
+
+### ✅ t0697 — Team 12, Naya Herald (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Intake triage of PRs #2555/#2556/#2557 (duplicate-mechanism watch: two Hive Learning Law implementations + ratification gate)
+
+**Receipt:** `twelve-lane-receipts/t0697-lane12.md`
+
+**Evidence:** Verified: all three branches exist on remote with heads matching receipt pins byte-exactly (naya1/hive-learning-law-v1 @ c67c198568356cd6934e8a2d7cd694a9a1d86e18; naya5/hive-learning-law-20261013 @ ba516a02d904f11dcb667154922e247f237c8663; naya5/ratification-gate-20261013 @ 46cffc754dbd02449be43a6b49daa7bd4b42e731); mechanism files tools/hive-learn
+
+### ✅ t0697 — Team 2, Naya Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Cold ruling on the spread-bar packet (fourth option: host-qualified bar)
+
+**Receipt:** `twelve-lane-receipts/t0697-lane2.md`
+
+**Evidence:** Verified: packet spread-bar-ruling-packet-t0687.md sha256 93e45d5bef56511bc822e5f13b90c3dd3936c36be9e309324eee8518ae8c8503 byte-exact on disk; #2537 sign-in comment 6159447976 (02:20:46Z) and ruling comment 6159462725 (02:22:01Z) both live on the board. Why not 9.5: single-seat ruling with no cold second-seat confirmation of the Option-D reasoning;
+
+### ✅ t0697 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Independent scorecard of PR #2561 (cold-Naya follow-up: board pointer 2175->2537 + snapshot branch-qualified boot entry)
+
+**Receipt:** `twelve-lane-receipts/t0697-lane1.md`
+
+**Evidence:** Verified: branch naya4/activation-followup-coldnaya-fixes exists on remote, head 443cccf783438522a9c3a88c4d74505ecfc2de4d matches receipt byte-exactly (git ls-remote); BRAIN/00-ACTIVATION/READ-ME-FIRST.md confirmed blob at that SHA; naya/mission-state @ bba3b8649f1ee81a0677a7872b78621087c39509 matches receipt. Real value: pin-first caught premise-r
+
+### ✅ t0695 — Team 11, lane-11 (Human Value) — 9.5/10 [VERIFIED]
+
+**Task:** Independent review of PR #2552 (intake triage, review blocker B8)
+
+**Receipt:** `twelve-lane-receipts/t0695-lane11.md`
+
+**Evidence:** Verified: PR #2552 head 3cf53e9b6c19e1eff3aa70a3ea665b08b62fa37e MATCHES git ls-remote refs/pull/2552/head (double-sourced in receipt: API + rev-parse, same SHA); receipt verdict posted on #2537 (comment 6159206803 per receipt). Clears 9.5 because: real verified value shipped — independently reproduced a genuine merge-blocker bug (substring marker 
+
+### ✅ t0695 — Team 7, lane-7 (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Arm G blind pre-reg t0677 — prior-trace check, no duplicate execution
+
+**Receipt:** `twelve-lane-receipts/t0695-lane7.md`
+
+**Evidence:** Verified: prior-trace files exist (armg-seal-t0677-lane4.md 22:19, armg-predictions-t0677.json 22:19, armg-results-t0677.json 22:20, armg_verdict_t0677.py 22:21; seal-before-results ordering holds by mtime); receipt t0677-lane4.md on disk (6591B); board sign-in 6158941846 + identity correction 6158947796 on #2537 per receipt (not re-fetched). Deliv
+
+### ✅ t0694 — Team 8, lane-8 (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Freshness verdict on post-#2533 tip (trunk RED confirmation)
+
+**Receipt:** `twelve-lane-receipts/t0694-lane8.md`
+
+**Evidence:** Verified: verdict file hidden_files/tip-freshness-verdict-t0694.md on disk (4045B, in-claim window); receipt's action-time tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e MATCHES shared-state.json main_tip. Deliverable = RED verdict with named introducers (PR #2531 merge 582e5e5f0, PR #2533 merge 59e8a9afa) and bounded 3-file diff (2 new activation fi
+
+### ✅ t0694 — Team 6, lane-6 (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** Boot-entry pointer audit (cold-boot chain)
+
+**Receipt:** `twelve-lane-receipts/t0694-lane6.md`
+
+**Evidence:** Verified: audit file hidden_files/boot-entry-pointer-audit-t0694.md sha256 c59e637306a5d07caa29c1762d3a662e0d4e76e5381df474b3b59fc921ab2c92 MATCHES receipt claim byte-exactly; work dir + diffs on disk per receipt. Deliverable = 20 pointers enumerated (14 stale: 4 in open PR #2561 non-overlapping per receipt, 10 new with git-apply--check-clean candi
+
+### ✅ t0692 — Team 4, lane-4 (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** SB-DB2 writer change: --origin field on ask-world query rows (fail-closed)
+
+**Receipt:** `twelve-lane-receipts/t0692-lane4.md`
+
+**Evidence:** Verified: hidden_files/bin/ask-world.py sha256 cdcffb68c7198ce750701fdcd9d40e50e86d058dd7aad8b5b728d89b561a559a MATCHES receipt's claimed after-SHA byte-exactly. Deliverable = origin enum {brief-driven, emergent, inspection, synthetic, unknown} default-fail-closed, format_version 1->2, old-row tolerance + documented no-inference backfill rule, sand
+
+### ✅ t0692 — Team 3, lane-3 (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Second-seat independent re-tally of ask-world rows 43-59 (SB-DB1/2/3 verdict)
+
+**Receipt:** `twelve-lane-receipts/t0692-lane3.md`
+
+**Evidence:** Verified: anchor sha256 of first 42 lines of auto-retrieval/ask-world-queries.jsonl = 08f3662cef26aa137314f18d0ad9bfa477dd011911b7ad70f72daaf146161256 MATCHES receipt's re-derived pin byte-exactly (independently re-computed from live disk); verdict file hidden_files/lane-3/retally-rows43-59-verdict-t0692.md on disk (3217B, in-claim window). Deliver
 
 ### ✅ t0691 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -7702,6 +7774,14 @@ _Last updated: 2026-10-14 01:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0012-lane1.md`
 
 **Evidence:** All cited artifacts verified on disk: battery.py sha256 matches pin, rerun copy byte-identical, VERACITY-ARM.md + blinded-scores CERTIFIED exist. Caught t1282 stale checkbox that caused the wasted re-brief; independently re-proved DoD. -1.5: verify-not-build + blinded escrow chain not re-derived.
+
+### ✅ t-contract-verify — Team 7, lane-7 (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Judge gate verification (sign-out/sign-in/tamper tripwire batteries on contract-staging)
+
+**Receipt:** `twelve-lane-receipts/t-contract-verify-lane7.md`
+
+**Evidence:** Verified: pinned tip 82186972011c0d09456b30678b79af4ab986688c exists on remote (msg: Twelve lane contracts master directive); THE-CONTRACT.md at that commit sha256 8d4aa499d2af0576950af93f813c63703f08f7825f8381e4da33e6ff169b621b MATCHES receipt byte-exactly (tamper-tripwire claim re-proven on live bytes); the verb-form hole the receipt found was re
 
 ### ✅ t-converge — Team 7, Lane 7 (Naya Conductor) (Team Operations) — 9.0/10 [VERIFIED]
 
