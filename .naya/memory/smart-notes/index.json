@@ -12778,6 +12778,42 @@
       "page_hash": "2b81bb6834c612a919415b84bc6b5a1c3fc6d955786ccc58187a0f57be1ddf67"
     },
     {
+      "smart_note_id": "SN-0797",
+      "intelligent_block_id": "IB-SMART-NOTE-20261014-sn0797-patch-response-is-the-verify",
+      "content_hash": "b5e644268385355251579142878f7f5205591a017d89978ddc04b013c806e8d7",
+      "page_hash": "ff4b4ea38669eaa2786c139610669c4349f5d2779837512b52319a6f9b3e017b",
+      "title": "PATCH response is the verify",
+      "captured_at": "2026-10-14",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "API-GOVERNANCE",
+      "subtopic": "PATCH-RESPONSE-VERIFY",
+      "truth_state": "CANDIDATE",
+      "lifecycle_state": "CANDIDATE",
+      "superseded_by_capture_id": null,
+      "supersession_reason": null,
+      "scope": "PRIVATE",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/14/SYSTEM-INTELLIGENCE/API-GOVERNANCE/PATCH-RESPONSE-VERIFY/SN-0797/IB-SMART-NOTE-20261014-sn0797-patch-response-is-the-verify.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "smart_link_status": "ACTIVE_AUTH_GATED",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/14/SYSTEM-INTELLIGENCE/API-GOVERNANCE/PATCH-RESPONSE-VERIFY/SN-0797/IB-SMART-NOTE-20261014-sn0797-patch-response-is-the-verify.md",
+      "publication_scope": "PRIVATE",
+      "keywords": [
+        "smart note",
+        "api governor",
+        "patch",
+        "pr body",
+        "verification",
+        "learn-clock",
+        "LC-20261014-004"
+      ],
+      "provenance": {
+        "note": "Registry entry graduated 2026-10-14 by Naya Mu (Human Value, wave 142, lane 4) from Zeta's w141 T3 evidence: hidden_files/w141/zeta-T3-smart-note-LC-20261014-004.md (sha256 cd839b41…09cecd, 6784 bytes) + w141 receipt zeta-verifytail-T3.md. Machine-readable encoding of the already-written T3 note; no new intelligence asserted. Lesson LC-20261014-004 joins Smart Note SN-0797. Page + capture + entry land together in one PR so no drift class grows (the SN-0796 page-first-then-backfill sequence tripped CI and is not repeated).",
+        "source_evidence": "hidden_files/w141/zeta-T3-smart-note-LC-20261014-004.md",
+        "source_sha256": "cd839b418666afccba1e958714df1aa80dbbf14ee5efb575216b9bd21309cecd",
+        "lesson_id": "LC-20261014-004"
+      }
+    },
+    {
       "smart_note_id": "SN-080",
       "intelligent_block_id": "IB-SMART-NOTE-20260930-sn080-frozen-evidence-retirement",
       "title": "Frozen-Evidence Retirement — Retire Explicitly, Re-Freeze, Never Mutate the Freeze",
@@ -13527,8 +13563,8 @@
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 797,
+    "next_sequence": 798,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   },
-  "corpus_manifest_hash": "ee229424fd726fac5213b392daa6a1b11a28e1efa248648894635860a6b7556d"
+  "corpus_manifest_hash": "534d02d2420a4731d2f0b333d1f04a52ecb0da44c10a989307c67d8eddb92a68"
 }

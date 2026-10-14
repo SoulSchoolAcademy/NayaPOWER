@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-14",
-  "receipt_basis_commit": "59e8a9afa22cf456565bfac0f2b52551f8a0dd6e",
-  "inventory_file_count": 1259,
+  "receipt_basis_commit": "92329c5795ef8a50d02adf94ee6c91c313c26daf",
+  "inventory_file_count": 1260,
   "domain_counts": {
     "00-ACTIVATION": 5,
     "00-ARCHITECTURE": 5,
@@ -11,7 +11,7 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
-    "05-MEMORY": 647,
+    "05-MEMORY": 648,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
@@ -3869,6 +3869,11 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/10/SYSTEM-INTELLIGENCE/VERIFICATION/BATTERY-ISOLATION/SN-0796/IB-SMART-NOTE-20261010-sn0796-phantom-pytest-failure-tmpfs-concurrency.md",
       "blob_sha": "f2553ebdef9e80a2946e2f7f8c314084bfe280cc",
       "size": 10932
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/14/SYSTEM-INTELLIGENCE/API-GOVERNANCE/PATCH-RESPONSE-VERIFY/SN-0797/IB-SMART-NOTE-20261014-sn0797-patch-response-is-the-verify.md",
+      "blob_sha": "9d393e7f8c48286bbe40946a0068be3aee41cf08",
+      "size": 9330
     },
     {
       "path": "BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/ACTIVATION-NAYA-INTELLIGENCE.md",

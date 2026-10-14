@@ -32,31 +32,47 @@ def _registry_entries():
     return reg["entries"]
 
 
-# index -> expected (areas, confidence). Hand-labeled from the real corpus.
+# smart_note_id -> expected (areas, confidence). Hand-labeled from the real corpus.
+# Keyed by stable registry identity, NOT by list position: insertions
+# (e.g. SN-0797 at 597) shift positions, so position keys silently re-point
+# at different notes. The tagger was correct; the test addressing was wrong.
 GROUND_TRUTH = {
-    0:   ({"LEARN", "KNOW"}, 0.7),             # Official Smart Note Format & Lifecycle (topic SMART_NOTE_SYSTEM; generic capture stamps are not signal)
-    2:   ({"SUCCESSOR", "KNOW"}, 0.7),          # Naya Continuation Engine
-    4:   ({"LAW", "HUMAN_VALUE"}, 0.7),         # Internal Morality
-    7:   ({"HUMAN_VALUE"}, 0.7),                # Human Reconstruction Is an Architectural Failure
-    50:  ({"LAW", "TEAM"}, 0.9),                # Iteration Law (subtopic GOVERNANCE)
-    120: ({"TEAM"}, 0.9),                       # Lane-seam reporting (subtopic OPERATING-MODE)
-    300: ({"INFRA"}, 0.9),                      # Sibling-gap hardening (subtopic CI-TRIAGE)
-    396: ({"SUCCESSOR", "KNOW"}, 0.9),          # Canonical persistence (subtopic INTELLIGENCE-CONTINUITY)
-    413: ({"KNOW", "LEARN"}, 0.9),             # Direct-commit capture bypass (subtopic MEMORY-DISCIPLINE; title is about the capture pipeline)
-    600: ({"VERIFY", "KNOW"}, 0.9),             # Retain the UNKNOWN (subtopic ENGINEERING-PROOF)
-    620: ({"INFRA"}, 0.9),                      # Byte-identical CI green (subtopic CI-TRIAGE)
-    247: ({"ACT", "KNOW"}, 0.9),                # Canary learning-loop proof (subtopic ACTIVE-INTELLIGENCE)
+    "SN-001":  ({"LEARN", "KNOW"}, 0.7),             # Official Smart Note Format & Lifecycle (topic SMART_NOTE_SYSTEM; generic capture stamps are not signal)
+    "SN-003":  ({"SUCCESSOR", "KNOW"}, 0.7),          # Naya Continuation Engine
+    "SN-005":  ({"LAW", "HUMAN_VALUE"}, 0.7),         # Internal Morality
+    "SN-008":  ({"HUMAN_VALUE"}, 0.7),                # Human Reconstruction Is an Architectural Failure
+    "SN-0153": ({"LAW", "TEAM"}, 0.9),                # Iteration Law (subtopic GOVERNANCE)
+    "SN-0222": ({"TEAM"}, 0.9),                       # Lane-seam reporting (subtopic OPERATING-MODE)
+    "SN-0390": ({"INFRA"}, 0.9),                      # Sibling-gap hardening (subtopic CI-TRIAGE)
+    "SN-0476": ({"SUCCESSOR", "KNOW"}, 0.9),          # Canonical persistence (subtopic INTELLIGENCE-CONTINUITY)
+    "SN-0491": ({"KNOW", "LEARN"}, 0.9),             # Direct-commit capture bypass (subtopic MEMORY-DISCIPLINE; title is about the capture pipeline)
+    "SN-083":  ({"VERIFY", "KNOW"}, 0.9),             # Retain the UNKNOWN (subtopic ENGINEERING-PROOF)
+    "SN-178":  ({"INFRA"}, 0.9),                      # Byte-identical CI green (subtopic CI-TRIAGE)
+    "SN-0348": ({"ACT", "KNOW"}, 0.9),                # Canary learning-loop proof (subtopic ACTIVE-INTELLIGENCE)
 }
 
 
+def _entry_by_smart_note_id(note_id):
+    """Resolve one registry entry by stable identity, never by position.
+
+    Fails loudly if the id is missing or ambiguous (the registry carries a
+    few pre-existing duplicate ids outside this table) — a silent pick-one
+    would re-introduce the exact mis-addressing this table was re-keyed to kill.
+    """
+    matches = [e for e in _registry_entries() if e.get("smart_note_id") == note_id]
+    assert len(matches) == 1, (
+        f"{note_id}: expected exactly 1 registry entry, found {len(matches)}")
+    return matches[0]
+
+
 class TestTaggerOnRealUnits:
-    @pytest.mark.parametrize("idx,expected", list(GROUND_TRUTH.items()))
-    def test_sample_tag_matches_hand_label(self, idx, expected):
+    @pytest.mark.parametrize("note_id,expected", list(GROUND_TRUTH.items()))
+    def test_sample_tag_matches_hand_label(self, note_id, expected):
         areas, confidence = expected
-        entry = _registry_entries()[idx]
+        entry = _entry_by_smart_note_id(note_id)
         tag = applicability.tag_entry(entry)
         assert set(tag["areas"]) == areas, (
-            f"entry {idx} ({entry.get('title','')[:50]}): "
+            f"entry {note_id} ({entry.get('title','')[:50]}): "
             f"got {tag['areas']}, want {sorted(areas)}")
         assert tag["confidence"] == confidence
         assert tag["source"] == "heuristic"
@@ -65,7 +81,7 @@ class TestTaggerOnRealUnits:
         # areas must come from the 12-area vocabulary
         assert set(tag["areas"]) <= set(applicability.AREAS)
         # every area must map to at least one task context
-        assert tag["task_contexts"], f"entry {idx}: no task contexts derived"
+        assert tag["task_contexts"], f"entry {note_id}: no task contexts derived"
 
 
 class TestSchemaContract:
