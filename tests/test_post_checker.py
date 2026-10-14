@@ -220,3 +220,109 @@ def test_markdown_who_and_signed_by_forms():
     assert ok and detail == "signed: Naya Delta", detail
     ok, detail = check_identity("**WHO:** Naya Verity Narzan")
     assert ok and detail == "signed: lead Naya Verity Narzan", detail
+
+
+# --- #2568 fix-pass (Naya Mu, w127): Theta's residuals R1–R5 + E2E ---
+
+def test_mention_before_who_does_not_steal_signature():
+    """R1: a mention line ABOVE the WHO line must not steal the
+    signature — explicit signature lines take precedence in any order."""
+    from post_checker import check_identity
+    ok, detail = check_identity(
+        "Naya Verity Narzan was quoted above.\nWHO: Naya Mu")
+    assert ok and detail == "signed: Naya Mu", detail
+    ok, detail = check_identity("Naya 5 did great work.\nWHO: Naya Kappa")
+    assert ok and detail == "signed: Naya Kappa", detail
+    ok, detail = check_identity(
+        "WHO: Naya Mu\nThanks to Naya Verity Narzan.")
+    assert ok and detail == "signed: Naya Mu", detail
+
+
+def test_explicit_line_with_no_name_leaves_identity_unbound():
+    """R1 guard: when a WHO line exists but names nobody, a bare
+    name-leading line below it must not override the WHO claim."""
+    from post_checker import check_identity
+    ok, detail = check_identity("WHO: TBD\nNaya Verity Narzan was quoted.")
+    assert not ok and "unbound" in detail, detail
+
+
+def test_bare_lead_plus_punctuation_flagged():
+    """R2: a bare lead name plus one punctuation mark is incomplete —
+    leads sign with the family name. The leader-prefix branch must run
+    before the roster loop, so no punctuation variant falls through."""
+    from post_checker import check_identity
+    for punct in (".", ";", "!", "?"):
+        ok, detail = check_identity(f"WHO: Naya Clarity{punct}\nMISSION: x")
+        assert not ok and "Narzan" in detail, (punct, detail)
+    # A comma-attached second name is not an agent named "Naya".
+    ok, detail = check_identity("WHO: Naya Clarity, Naya Mu\nMISSION: x")
+    assert not ok and "incomplete identity" in detail, detail
+
+
+def test_prose_sentences_with_colons_fail_pulse():
+    """R3: prose sentences that start with a field word plus a clause
+    plus a colon are prose, not fields — only the separator, an
+    `-> ...` suffix, or a `TO` suffix may intervene."""
+    from post_checker import check_level
+    prose = (
+        "WHO are we to judge this: nobody.\n"
+        "MISSION is what we do here: work.\n"
+        "STATUS of the day is fine: calm.\n"
+        "TRUTH is hard to find: still.\n"
+        "SCORE of the game was high: nine.\n"
+        "BLOCKER in the way was small: pebble.\n"
+        "NEXT in line is waiting: patient.\n"
+        "SOURCE of the story is old: legend."
+    )
+    ok, detail = check_level(prose, "PULSE")
+    assert not ok, detail
+    assert "WHO" in detail and "MISSION" in detail, detail
+
+
+def test_hyphenated_meaning_word_not_score_meaning():
+    """R4: a hyphen-joined meaning word ('held-out') is not score
+    meaning — the guard covers ASCII hyphen and Unicode dashes."""
+    from post_checker import check_score
+    ok, detail = check_score("SCORE: 8/10\nHeld-out test set used.")
+    assert not ok and "meaning unstated" in detail, detail
+    ok, detail = check_score("SCORE: 8/10\nHeld\u2013out test set used.")
+    assert not ok and "meaning unstated" in detail, detail
+    ok, detail = check_score("SCORE: 8/10 — ships after one more pass.")
+    assert ok, detail
+
+
+def test_overlong_issue_ref_not_evidence():
+    """R5: `#123456` is not a `#NNNNN` ref — REF_RE must not match a
+    5-digit prefix of a longer number."""
+    from post_checker import check_evidence
+    ok, detail = check_evidence("EVIDENCE: see #123456.")
+    assert not ok, detail
+    ok, detail = check_evidence("EVIDENCE: see #12345.")
+    assert ok, detail
+
+
+def test_adversarial_combo_flags():
+    """E2E: R1 + R3 + anchored tip + ships-verb combined must FLAG —
+    the residuals compound, so the fix must close them together."""
+    e2e = (
+        "Naya Verity Narzan was quoted above.\n"
+        "WHO are we to judge this: nobody.\n"
+        "MISSION is what we do here: work.\n"
+        "STATUS of the day is fine: calm.\n"
+        "TRUTH is hard to find: still.\n"
+        "SCORE of the game was high: nine.\n"
+        "BLOCKER in the way was small: pebble.\n"
+        "NEXT in line is waiting: patient.\n"
+        "SOURCE of the story is old: legend.\n"
+        "SOURCE: tip 1234567.\n"
+        "SCORE: 9/10 — the shipment ships tomorrow.\n"
+    )
+    v, findings = check_post(e2e, level="PULSE")
+    assert v == "FLAG", describe((v, findings))
+    # The FLAG comes from the level gate: the prose sentences are not
+    # fields. Identity binds the first name-leading line here because
+    # the post carries NO explicit WHO:/Signed:/By: line at all — the
+    # documented first-bare-line convention, not a bypass: with no
+    # explicit signature claim present there is nothing to take
+    # precedence. A post WITH a WHO line always resolves to it (R1).
+    assert any(n == "level" and not ok for n, ok, _ in findings)

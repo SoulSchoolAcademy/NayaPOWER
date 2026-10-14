@@ -27,23 +27,31 @@ SHA_RE = re.compile(
     r"(?:@\s*|\b(?:sha|commit|tree|tip|head|ref)\s*[:=]?\s*)"
     r"([0-9a-f]{7,40})\b",
     re.IGNORECASE)
-REF_RE = re.compile(r"#\d{3,5}")
+REF_RE = re.compile(r"#\d{3,5}(?!\d)")
 SCORE_RE = re.compile(r"(\d+(?:\.\d+)?)\s*/\s*10")
 
 # Score-meaning words match on word boundaries only: "relationships" must
 # not count as "ships", "meaningless" must not count as "meaning".
+# Hyphen-joined words do not count either: "held-out" is not "held".
+# The guard covers ASCII hyphen and Unicode dashes (U+2010–U+2015).
 MEANING_RE = re.compile(
-    r"\b(why not 10|why it is not|meaning|ships|one more pass|rework|"
-    r"backwards|held|blocked|verified)\b", re.IGNORECASE)
+    r"(?<![\-\u2010-\u2015])\b(why not 10|why it is not|meaning|ships|"
+    r"one more pass|rework|backwards|held|blocked|verified)"
+    r"\b(?![\-\u2010-\u2015])", re.IGNORECASE)
 
 
 def _labeled(body, field):
     """True when `field` heads a labeled line: `FIELD: ...`, `**FIELD:**`,
-    `**FIELD -> WHY:**`, `FIELD - ...`. Unlabeled prose never counts —
-    a paragraph that merely *mentions* every field word is not a field."""
+    `**FIELD -> WHY:**`, `FIELD - ...`, `CONNECTS TO: ...`. Unlabeled prose
+    never counts — a paragraph that merely *mentions* every field word is
+    not a field, and neither is a prose sentence that starts with a field
+    word plus a clause (`WHO are we to judge this: nobody.` is prose, not
+    a WHO field: only the separator, an `-> ...` suffix, or a `TO`
+    suffix may intervene between the field word and the separator."""
     pat = re.compile(
         r"(?im)^\s*(?:[-—–*•>]+\s*)?(?:\*\*)?" + re.escape(field)
-        + r"\b[^:\n]{0,24}[:\-–]")
+        + r"\b(?:\s*(?:\*\*)?\s*[:\-–]|\s+(?:->|→)\s*[^:\n]*[:\-–]"
+        + r"|\s+TO\s*(?:\*\*)?\s*[:\-–])")
     return bool(pat.search(body))
 
 
@@ -74,20 +82,29 @@ def _candidate_from_text(text, roster):
     'agent' (`Naya <Leader> <CapitalizedName>`), 'roster' (a roster seat),
     'leader_malformed' (a `Naya <Leader>` prefix with a non-conforming
     continuation — lowercase name, or no Narzan/agent name at all), or
-    'bare' (`Naya <Name>` with no leader prefix)."""
+    'bare' (`Naya <Name>` with no leader prefix).
+
+    The leader-prefix branch runs FIRST, before the roster loop: a
+    `Naya <Leader>` prefix must never fall through to the roster match,
+    or a bare lead plus one punctuation mark (`WHO: Naya Clarity.`)
+    would pass as a roster seat."""
     text = text.lstrip()
-    m = re.match(r"(Naya\s+(Clarity|Verity|Resolve))\s+(\S+)", text)
+    m = re.match(r"Naya\s+(Clarity|Verity|Resolve)(?![A-Za-z])", text)
     if m:
-        nxt = m.group(3).strip(".,;:·—–)]}*")
+        rest = text[m.end():].strip()
+        if not rest:
+            return ("leader_malformed", f"Naya {m.group(1)}")
+        # The continuation is the immediate next token: a punctuation-
+        # only token ("," after "Naya Clarity, Naya Mu") is NOT a name —
+        # it is the bare-lead case, never an agent named "Naya".
+        nxt = rest.split()[0].strip(".,;:·—–)]}*|!?\"'")
+        if not nxt:
+            return ("leader_malformed", f"Naya {m.group(1)}")
         if nxt == "Narzan":
-            return ("lead", f"Naya {m.group(2)} Narzan")
+            return ("lead", f"Naya {m.group(1)} Narzan")
         if re.fullmatch(r"[A-Z][a-zA-Z\-]*", nxt):
-            return ("agent", f"Naya {m.group(2)} {nxt}")
-        return ("leader_malformed", f"Naya {m.group(2)} {nxt}")
-    m = re.match(r"Naya\s+(Clarity|Verity|Resolve)"
-                 r"(?=\s*(?:[·—–,:|\)\]\}]|$))", text)
-    if m:
-        return ("leader_malformed", f"Naya {m.group(1)}")
+            return ("agent", f"Naya {m.group(1)} {nxt}")
+        return ("leader_malformed", f"Naya {m.group(1)} {nxt}")
     for seat in roster:
         if re.match(re.escape(seat) + r"(?![A-Za-z])", text):
             return ("roster", seat)
@@ -97,6 +114,33 @@ def _candidate_from_text(text, roster):
     return None
 
 
+_EXPLICIT_SIG_RE = re.compile(
+    r"(?i)(?:WHO\b\s*(?:\*\*)?\s*[:\-–]|Signed\s+by\b|By\b\s*(?:[:\-–]|Naya\b))")
+_SIG_PREFIX_RE = re.compile(
+    r"(?i)(?:WHO|Signed(?:\s+by)?|By)\b\s*(?:\*\*)?\s*[:\-–]?\s*\**")
+
+
+def _verdict_for(kind, name):
+    """Map a candidate kind to check_identity's (ok, detail)."""
+    if kind == "lead":
+        return True, f"signed: lead {name}"
+    if kind == "agent":
+        return True, f"signed: leader agent {name}"
+    if kind == "roster":
+        return True, f"signed: {name}"
+    if kind == "leader_malformed":
+        if name in (f"Naya {lead}" for lead in
+                    ("Clarity", "Verity", "Resolve")):
+            return False, (f"incomplete identity '{name}' — leads sign "
+                           f"with the family name: '{name} Narzan'")
+        return False, (f"malformed agent identity '{name}' — agent names "
+                       "are capitalized: "
+                       "'Naya <Clarity|Verity|Resolve> <Name>'")
+    return False, (f"incomplete identity '{name}' — "
+                   "Shawn's naming law needs the leader prefix: "
+                   "'Naya <Clarity|Verity|Resolve> <Name>'")
+
+
 def check_identity(body, roster=ROSTER):
     """Roster seats and leader-prefixed agents only. Returns (ok, detail).
 
@@ -104,32 +148,32 @@ def check_identity(body, roster=ROSTER):
     `WHO:`-labeled line, a `Signed:`/`By:` line, or a line that STARTS
     with the name (after markers). A name merely *mentioned* in the body
     never signs the post — a post signed 'Naya Alpha' that thanks
-    'Naya Verity Narzan' is signed by Naya Alpha."""
-    for line in body.splitlines():
-        text = _strip_markers(line)
-        m = re.match(r"(?i)(?:WHO|Signed(?:\s+by)?|By)\s*[:\-–]?\s*\**", text)
-        cand = (_candidate_from_text(text[m.end():], roster) if m
-                else _candidate_from_text(text, roster))
+    'Naya Verity Narzan' is signed by Naya Alpha.
+
+    Two-pass scan: explicit signature lines (`WHO:`/`Signed by`/`By:`)
+    take precedence over bare name-leading lines in ANY order — a
+    mention line above the WHO line must not steal the signature.
+    When an explicit signature line exists, it IS the signature claim:
+    bare lines never override it, and an explicit line with no
+    resolvable name leaves identity unbound."""
+    lines = [_strip_markers(line) for line in body.splitlines()]
+    explicit_seen = False
+    for text in lines:
+        if not _EXPLICIT_SIG_RE.match(text):
+            continue
+        explicit_seen = True
+        m = _SIG_PREFIX_RE.match(text)
+        cand = _candidate_from_text(text[m.end():], roster) if m else None
+        if cand is not None:
+            return _verdict_for(*cand)
+    if explicit_seen:
+        return False, ("explicit signature line present but no roster "
+                       "seat name found — identity unbound")
+    for text in lines:
+        cand = _candidate_from_text(text, roster)
         if cand is None:
             continue
-        kind, name = cand
-        if kind == "lead":
-            return True, f"signed: lead {name}"
-        if kind == "agent":
-            return True, f"signed: leader agent {name}"
-        if kind == "roster":
-            return True, f"signed: {name}"
-        if kind == "leader_malformed":
-            if name in (f"Naya {lead}" for lead in
-                        ("Clarity", "Verity", "Resolve")):
-                return False, (f"incomplete identity '{name}' — leads sign "
-                               f"with the family name: '{name} Narzan'")
-            return False, (f"malformed agent identity '{name}' — agent names "
-                           "are capitalized: "
-                           "'Naya <Clarity|Verity|Resolve> <Name>'")
-        return False, (f"incomplete identity '{name}' — "
-                       "Shawn's naming law needs the leader prefix: "
-                       "'Naya <Clarity|Verity|Resolve> <Name>'")
+        return _verdict_for(*cand)
     return False, "no roster seat name found — identity unbound"
 
 
