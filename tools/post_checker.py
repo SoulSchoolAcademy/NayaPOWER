@@ -23,81 +23,154 @@ RECEIPT_FIELDS = ["WHO", "NUTSHELL", "WHAT", "EVIDENCE", "SCORE",
 EVENT_QUESTIONS = ["discover", "evidence", "wrong", "falsif",
                    "updated", "behavior", "verifier", "successor"]
 
-SHA_RE = re.compile(r"\b[0-9a-f]{7,40}\b")
+SHA_RE = re.compile(
+    r"(?:@\s*|\b(?:sha|commit|tree|tip|head|ref)\s*[:=]?\s*)"
+    r"([0-9a-f]{7,40})\b",
+    re.IGNORECASE)
 REF_RE = re.compile(r"#\d{3,5}")
 SCORE_RE = re.compile(r"(\d+(?:\.\d+)?)\s*/\s*10")
 
+# Score-meaning words match on word boundaries only: "relationships" must
+# not count as "ships", "meaningless" must not count as "meaning".
+MEANING_RE = re.compile(
+    r"\b(why not 10|why it is not|meaning|ships|one more pass|rework|"
+    r"backwards|held|blocked|verified)\b", re.IGNORECASE)
 
-def _has(body, *needles):
-    low = body.lower()
-    return [n for n in needles if n.lower() not in low]
+
+def _labeled(body, field):
+    """True when `field` heads a labeled line: `FIELD: ...`, `**FIELD:**`,
+    `**FIELD -> WHY:**`, `FIELD - ...`. Unlabeled prose never counts —
+    a paragraph that merely *mentions* every field word is not a field."""
+    pat = re.compile(
+        r"(?im)^\s*(?:[-—–*•>]+\s*)?(?:\*\*)?" + re.escape(field)
+        + r"\b[^:\n]{0,24}[:\-–]")
+    return bool(pat.search(body))
 
 
-LEADERS = ["Naya Clarity", "Naya Verity", "Naya Resolve"]
+def _stem_present(body, stem):
+    """EVENT question stems match as a word prefix ('falsif' catches
+    'falsified'). Deliberate: EVENT questions are stems, not labels —
+    unlike PULSE/RECEIPT fields, which are label-anchored above."""
+    return bool(re.search(r"(?i)\b" + re.escape(stem) + r"\w*", body))
+
 
 # The three leads sign with the family name: Naya Clarity Narzan, etc.
 # Their agents sign "Naya <Leader> <Name>" — no Narzan. That asymmetry is
 # deliberate: it ends the name confusion between lead and agent for good.
-LEAD_FULL = ["Naya Clarity Narzan", "Naya Verity Narzan",
-             "Naya Resolve Narzan"]
+# Identity resolution lives in _candidate_from_text / check_identity:
+# signature lines only, mentions never bind.
 
-# Shawn's naming law (2026-10-14): a leader's agent signs
-# "Naya <Leader> <Name>" — the given name becomes the last name.
-# A bare "Naya <Name>" is incomplete, not wrong: it needs its leader prefix.
-AGENT_RE = re.compile(r"\bNaya\s+(Clarity|Verity|Resolve)\s+[A-Z][a-zA-Z\-]*\b")
-BARE_NAYA_RE = re.compile(r"\bNaya\s+[A-Z][a-zA-Z\-]*\b")
+
+def _strip_markers(line):
+    """Strip leading bullets/dashes/quotes/markdown so a signature line
+    like `**[Naya 5] ...` or `— Naya Delta` reads as `Naya 5 ...`."""
+    return re.sub(r"^[\s>•\-—–*\[\]]+", "", line.strip())
+
+
+def _candidate_from_text(text, roster):
+    """Classify the name a signature line starts with, or None.
+
+    Returns (kind, name): kind is 'lead' (full `Naya <Leader> Narzan`),
+    'agent' (`Naya <Leader> <CapitalizedName>`), 'roster' (a roster seat),
+    'leader_malformed' (a `Naya <Leader>` prefix with a non-conforming
+    continuation — lowercase name, or no Narzan/agent name at all), or
+    'bare' (`Naya <Name>` with no leader prefix)."""
+    text = text.lstrip()
+    m = re.match(r"(Naya\s+(Clarity|Verity|Resolve))\s+(\S+)", text)
+    if m:
+        nxt = m.group(3).strip(".,;:·—–)]}*")
+        if nxt == "Narzan":
+            return ("lead", f"Naya {m.group(2)} Narzan")
+        if re.fullmatch(r"[A-Z][a-zA-Z\-]*", nxt):
+            return ("agent", f"Naya {m.group(2)} {nxt}")
+        return ("leader_malformed", f"Naya {m.group(2)} {nxt}")
+    m = re.match(r"Naya\s+(Clarity|Verity|Resolve)"
+                 r"(?=\s*(?:[·—–,:|\)\]\}]|$))", text)
+    if m:
+        return ("leader_malformed", f"Naya {m.group(1)}")
+    for seat in roster:
+        if re.match(re.escape(seat) + r"(?![A-Za-z])", text):
+            return ("roster", seat)
+    m = re.match(r"Naya\s+[A-Z][a-zA-Z\-]*", text)
+    if m:
+        return ("bare", m.group(0))
+    return None
 
 
 def check_identity(body, roster=ROSTER):
-    """Roster seats and leader-prefixed agents only. Returns (ok, detail)."""
-    for lead in LEAD_FULL:
-        if lead.lower() in body.lower():
-            return True, f"signed: lead {lead}"
-    m = AGENT_RE.search(body)
-    if m:
-        return True, f"signed: leader agent {m.group(0)}"
-    for seat in roster:
-        if seat.lower() in body.lower():
-            return True, f"signed: {seat}"
-    bare = BARE_NAYA_RE.search(body)
-    if bare:
-        return False, (f"incomplete identity '{bare.group(0)}' — "
+    """Roster seats and leader-prefixed agents only. Returns (ok, detail).
+
+    The signer is resolved from an explicit signature line ONLY: a
+    `WHO:`-labeled line, a `Signed:`/`By:` line, or a line that STARTS
+    with the name (after markers). A name merely *mentioned* in the body
+    never signs the post — a post signed 'Naya Alpha' that thanks
+    'Naya Verity Narzan' is signed by Naya Alpha."""
+    for line in body.splitlines():
+        text = _strip_markers(line)
+        m = re.match(r"(?i)(?:WHO|Signed(?:\s+by)?|By)\s*[:\-–]?\s*\**", text)
+        cand = (_candidate_from_text(text[m.end():], roster) if m
+                else _candidate_from_text(text, roster))
+        if cand is None:
+            continue
+        kind, name = cand
+        if kind == "lead":
+            return True, f"signed: lead {name}"
+        if kind == "agent":
+            return True, f"signed: leader agent {name}"
+        if kind == "roster":
+            return True, f"signed: {name}"
+        if kind == "leader_malformed":
+            if name in (f"Naya {lead}" for lead in
+                        ("Clarity", "Verity", "Resolve")):
+                return False, (f"incomplete identity '{name}' — leads sign "
+                               f"with the family name: '{name} Narzan'")
+            return False, (f"malformed agent identity '{name}' — agent names "
+                           "are capitalized: "
+                           "'Naya <Clarity|Verity|Resolve> <Name>'")
+        return False, (f"incomplete identity '{name}' — "
                        "Shawn's naming law needs the leader prefix: "
                        "'Naya <Clarity|Verity|Resolve> <Name>'")
     return False, "no roster seat name found — identity unbound"
 
 
 def check_evidence(body):
-    """A SHA, a PR/issue ref, or a run id — or it didn't happen."""
+    """An anchored SHA, a PR/issue ref, or a run id — or it didn't happen.
+
+    A bare hex word is NOT evidence: 'deadbeef' in prose proves nothing.
+    A SHA counts only with an anchor — `@ <sha>`, `sha: <sha>`,
+    `commit <sha>`, `tip <sha>`, `head <sha>`, `tree <sha>`,
+    `ref <sha>` — or a `#NNNN` ref."""
     hits = SHA_RE.findall(body) + REF_RE.findall(body)
     if hits:
         return True, f"evidence anchors: {hits[:3]}"
-    return False, "no SHA, PR/issue ref, or run id found"
+    return False, "no anchored SHA, PR/issue ref, or run id found"
 
 
 def check_score(body):
-    """A score with meaning, not a bare number."""
+    """A score with meaning, not a bare number.
+
+    Meaning words match on word boundaries: 'relationships' is not
+    'ships', 'meaningless' is not 'meaning'."""
     m = SCORE_RE.search(body)
     if not m:
         return False, "no X/10 score found"
-    low = body.lower()
-    meaning = any(w in low for w in
-                  ["why not 10", "why it is not", "meaning", "ships",
-                   "one more pass", "rework", "backwards", "held",
-                   "blocked", "verified"])
-    if meaning:
+    if MEANING_RE.search(body):
         return True, f"score {m.group(0).strip()} with meaning"
     return False, f"score {m.group(0).strip()} present but meaning unstated"
 
 
 def check_level(body, level):
-    """Required fields for the post's level."""
+    """Required fields for the post's level.
+
+    PULSE/RECEIPT fields must head labeled lines (`FIELD: ...`) —
+    unlabeled prose that mentions every field word fails. EVENT
+    questions are stems matched as word prefixes."""
     if level == "PULSE":
-        missing = _has(body, *PULSE_FIELDS)
+        missing = [f for f in PULSE_FIELDS if not _labeled(body, f)]
     elif level == "RECEIPT":
-        missing = _has(body, *RECEIPT_FIELDS)
+        missing = [f for f in RECEIPT_FIELDS if not _labeled(body, f)]
     elif level == "EVENT":
-        missing = _has(body, *EVENT_QUESTIONS)
+        missing = [q for q in EVENT_QUESTIONS if not _stem_present(body, q)]
     else:
         return False, f"unknown level {level!r}"
     if missing:

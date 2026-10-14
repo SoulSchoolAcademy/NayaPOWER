@@ -135,3 +135,88 @@ def test_cli_pass_and_flag(tmp_path):
                        capture_output=True, text=True, cwd=str(Path(__file__).resolve().parents[1]))
     assert r.returncode == 1
     assert r.stdout.startswith("FLAG")
+
+
+# --- #2568 fix wave (Naya Delta, w125): Iota's 5 adversarial holes ---
+
+def test_mention_does_not_steal_signature():
+    """Hole 1: a post signed 'Naya Alpha' that mentions a lead is signed
+    by Naya Alpha — the mention never binds."""
+    from post_checker import check_identity
+    ok, detail = check_identity(
+        "WHO: Naya Alpha\nMISSION: x\nThanks to Naya Verity Narzan.")
+    assert ok and detail == "signed: Naya Alpha", detail
+    ok, detail = check_identity(
+        "— Naya Beta\nSaw Naya Clarity Narzan on the feed.")
+    assert ok and detail == "signed: Naya Beta", detail
+
+
+def test_lowercase_agent_name_does_not_bind_to_lead():
+    """Hole 2: 'Naya Clarity nina' (lowercase agent name) must not bind
+    to lead 'Naya Clarity' — the lead/agent asymmetry is enforced."""
+    from post_checker import check_identity
+    ok, detail = check_identity("WHO: Naya Clarity nina\nMISSION: x")
+    assert not ok and "malformed agent" in detail, detail
+
+
+def test_bare_lead_name_needs_narzan():
+    """Hole 2b: a bare 'Naya Clarity' with no Narzan and no agent name is
+    incomplete — leads sign with the family name."""
+    from post_checker import check_identity
+    ok, detail = check_identity("WHO: Naya Clarity\nMISSION: x")
+    assert not ok and "Narzan" in detail, detail
+
+
+def test_score_meaning_needs_word_boundaries():
+    """Hole 3: 'relationships' is not 'ships'; 'meaningless' is not
+    'meaning'. Bare scores on incidental English must FLAG."""
+    from post_checker import check_score
+    ok, detail = check_score("SCORE: 8/10\nThe relationships here are fine.")
+    assert not ok and "meaning unstated" in detail, detail
+    ok, detail = check_score("SCORE: 8/10\nThis is meaningless filler.")
+    assert not ok and "meaning unstated" in detail, detail
+    ok, detail = check_score("SCORE: 8/10 — ships after one more pass.")
+    assert ok, detail
+
+
+def test_unlabeled_prose_fails_pulse_fields():
+    """Hole 4: unlabeled casual prose that merely mentions every PULSE
+    field word must fail the field gate."""
+    from post_checker import check_level
+    ok, detail = check_level(
+        "Who knows what comes next. The scoreboard shows the mission "
+        "status and the truth of the blocker. Source: our next step "
+        "is score.", "PULSE")
+    assert not ok, detail
+    assert all(f in detail for f in
+               ("WHO", "MISSION", "STATUS", "TRUTH", "SCORE", "BLOCKER",
+                "NEXT", "SOURCE")), detail
+
+
+def test_bare_hex_word_is_not_evidence():
+    """Hole 5: a bare hex word in prose ('deadbeef') is not evidence."""
+    from post_checker import check_evidence
+    ok, detail = check_evidence("EVIDENCE: deadbeef in prose, trust me.")
+    assert not ok, detail
+
+
+def test_anchored_sha_counts_as_evidence():
+    """Hole 5b: the same hex word WITH an anchor (@/tip/sha:/commit)
+    counts — the fix anchors, it does not ban SHAs."""
+    from post_checker import check_evidence
+    for body in ("EVIDENCE: @ deadbeef.", "SOURCE: tip 59e8a9af.",
+                 "EVIDENCE: commit abc1234.", "EVIDENCE: sha: 46cffc75."):
+        ok, detail = check_evidence(body)
+        assert ok, (body, detail)
+
+
+def test_markdown_who_and_signed_by_forms():
+    """Signature-line forms the board actually uses: `**WHO:** X` and
+    `Signed by X` must both resolve."""
+    from post_checker import check_identity
+    ok, detail = check_identity("**WHO:** Naya Delta\nMISSION: x")
+    assert ok and detail == "signed: Naya Delta", detail
+    ok, detail = check_identity("Signed by Naya Delta")
+    assert ok and detail == "signed: Naya Delta", detail
+    ok, detail = check_identity("**WHO:** Naya Verity Narzan")
+    assert ok and detail == "signed: lead Naya Verity Narzan", detail
