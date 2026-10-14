@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-14 10:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-14 10:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -3073,6 +3073,38 @@ _Last updated: 2026-10-14 10:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
 
+### ✅ t0741 — Team 11, Naya Clarity Heart (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Live top-20 needs table from re-run tally (77 rows) + coverage map vs retired pilot blocks
+
+**Receipt:** `twelve-lane-receipts/t0741-lane11.md`
+
+**Evidence:** VERIFIED: deliverable hidden_files/surge-c/top20-needs-t0741-lane11.md sha256 339cad889ce2b4b06cd489e3cd0358813d827d32fe51b330119ed3ec61aaf740 = exact match with receipt pin; fresh tally JSON retrieval/tally-t0710.json sha256 7c33bbd820568370dd53068489904235f2f964d844e9acae9a4d1f48816b6b13 = match; sign-in-before-reads held this tick (class #17 fix
+
+### ✅ t0740 — Team 7, Naya Verity Conductor (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE-(b) §2 seam-churn re-derivation on action-time tip + wave-touch map
+
+**Receipt:** `twelve-lane-receipts/t0740-lane7.md`
+
+**Evidence:** VERIFIED: git ls-remote HEAD = 92329c5795ef8a50d02adf94ee6c91c313c26daf (tip unmoved, matches receipt claim and shared-state main_tip); table hidden_files/surge-b/seam-churn-rederivation-t0740-lane7.md sha256 a982d3ced4857606cc65b299290c45a2ee0ed4568070517b35d19d98c35144a5 = exact match with receipt pin. Receipt is honest: 3-pass 9.0->9.5 with name
+
+### ✅ t0740 — Team 5, Naya Verity Seeker (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Executor-seat run of Lane 1's Arm J RTP §6 cold battery from frozen pre-reg — verdict VOID
+
+**Receipt:** `twelve-lane-receipts/t0740-lane5.md`
+
+**Evidence:** VERIFIED: git ls-remote — origin HEAD/main = 92329c5795ef8a50d02adf94ee6c91c313c26daf, exact match with P-tip claim (tip unmoved). 12 pins re-derived at action time (mech blob, file, gatefn, armi, NLI snapshot rev + config sha, fixtures, instrument, design all MATCH); VOID gate fired on control C2 (expected T3 fire in S2, got none), exit 2, no resu
+
+### ✅ t0740 — Team 1, Naya Clarity Verity (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Reviewer-seat design review of GAD gate-ablation binding table (the §6 cold battery gate)
+
+**Receipt:** `twelve-lane-receipts/t0740-lane1.md`
+
+**Evidence:** VERIFIED: sha256 of hidden_files/lane-12/gad-prereg-t0735-FROZEN.md = 5123bfc6cbb59632f808e622f358d0142126cd59f7f341364633925eb4bf9bc0 (64/64 match with frozen pin); review doc gad-binding-review-t0740-lane1.md = accff55636d2bf088de4f64c962101597e1a586de102f4c83d7e16db31ff2725 (matches receipt). 10/10 binding rows re-derived with byte-verbatim prog
+
 ### ✅ t0739 — Team 12, Naya Clarity Herald (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
 **Task:** Independent scorecard of PR #2574 (Lane 9 t0710 receipt-gate repair) — third independent seat, hostile battery + pre-fix control + dogfood + 5/5 suite + CI enumeration
@@ -3080,6 +3112,14 @@ _Last updated: 2026-10-14 10:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0739-lane12.md`
 
 **Evidence:** VERIFIED: branch naya/lane9/receipt-relevance-t0710 exists on remote via git ls-remote; remote head = 97b65bd11316fe91b324986b3d429d0c3ee0ff75, exact match to receipt's claimed pin; tools/check_pr_receipt.py, .github/workflows/worker-protocol-gates.yml, tests/test_receipt_gate_checkout_depth.py all present at that SHA via git ls-tree. Receipt's own
+
+### ✅ t0738 — Team 9, Naya Resolve Smith (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Second-seat forensics on workflow run 38533178211 (PR #2578): receipt-gate failed 'no Evidence' after body edit
+
+**Receipt:** `twelve-lane-receipts/t0738-lane9.md`
+
+**Evidence:** VERIFIED: git ls-remote — branch delta/w135-post-checker exists, head 5e1956cf92814bcd8718130555b4fa80147635c5 exact match; workflow file at that SHA carries PR_BODY: ${{ github.event.pull_request.body }} (event-snapshot claim holds, file present at SHA). Real 7-step forensics: consumed PR_BODY extracted from the run's own job log (2446 chars, no E
 
 ### ✅ t0738 — Team 3, Naya Resolve Judge (Decision Engine) — 9.5/10 [VERIFIED]
 
