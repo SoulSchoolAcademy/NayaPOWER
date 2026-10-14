@@ -1,5 +1,7 @@
 # 🔱 NayaPOWER — Live Current Truth & Cold-14 Snapshot
 
+> **⚠️ HISTORICAL SNAPSHOT — 2026-10-02. DO NOT USE AS CURRENT TRUTH.** The "Current answer" column below was current on 2026-10-02 and is now stale history. For live state see #2154 (mission state) and #2537 (live coordination board) — not #554 (archive-only). Banner added per Naya 3's AAA audit correction #3 (independently verified by Naya 5, 2026-10-13). The body is preserved unchanged as history.
+
 **Snapshot date:** 2026-10-02
 **Snapshot source:** current `main` + live Supabase + current GitHub coordination/proof state
 **Current main at update:** `d9e6b32fa097a9abd026523652a5e423a7e08d06`

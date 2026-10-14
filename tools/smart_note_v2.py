@@ -727,6 +727,127 @@ def _is_privacy_probe(query):
         return True
     return False
 
+
+# --- Disavowal-scope phrase suppression (B-48 repair; Naya 5, 2026-10-13) ---
+#
+# Defect: the exact-phrase channel clears the relevance floor BY CONSTRUCTION
+# (RETRIEVAL_PHRASE_BONUS == RETRIEVAL_RELEVANCE_FLOOR), but nothing checks
+# the lesson's STANCE toward the phrase. A note whose content disavows the
+# queried approach ("do not use X", "X is wrong", "avoid X") still receives
+# the phrase bonus, is admitted as relevant, and can WIN — presenting a
+# warning as guidance. That is misdirection, and misdirection is worse than
+# refusal.
+#
+# This guard withholds the phrase bonus when EVERY occurrence of the query
+# phrase in the candidate sits inside disavowal scope. The candidate keeps
+# its bag-of-words score: topical relevance is preserved, only the "decisive
+# relevance evidence" claim is withdrawn. If nothing remains above the floor,
+# retrieval refuses honestly (NO_RELEVANT_INTELLIGENCE) instead of admitting
+# a disavowed lesson by construction.
+#
+# Narrow by construction, following the _is_privacy_probe precedent:
+# - Only explicit disavowal phrases fire (rejection/negation-of-use), never
+#   bare "not"/"n't" — so caveats ("X does not guarantee ordering") and
+#   litotes ("X is not just fast") pass through untouched.
+# - "do not forget / do not hesitate" are carved out (positive injunctions).
+# - A single clean occurrence anywhere keeps the bonus.
+# - No scoring constants are touched (D1's floor/bonus calibration is a
+#   separate track; this changes no numbers, only the bonus's eligibility).
+# Verified by the 20-case battery in tests/test_smart_note_v2.py with zero
+# false fires on legitimate guidance.
+# Contraction normalization: "don't" -> ("do","not") etc., so disavowal
+# markers match regardless of contracted form. Generated, not hand-listed.
+def _build_disavowal_contractions():
+    bases = ("do", "does", "did", "can", "should", "must",
+             "is", "are", "was", "were", "could", "would",
+             "have", "has", "had")
+    d = {b + "n't": (b, "not") for b in bases}
+    d["won't"] = ("will", "not")  # the one irregular form
+    d["can't"] = ("can", "not")  # equally irregular ("cann't" never matches)
+    d["cannot"] = ("can", "not")
+    return d
+_DISAVOWAL_CONTRACTIONS = _build_disavowal_contractions()
+# Token tuples that mark disavowal of the approach named nearby.
+_DISAVOWAL_PHRASES = frozenset((
+    ("do", "not", "use"), ("do", "not"), ("never", "use"), ("never",),
+    ("should", "not"), ("must", "not"), ("can", "not"),
+    ("avoid",), ("reject",), ("abandon",),
+    ("is", "not", "recommended"), ("not", "recommended"),
+    ("not", "advisable"),
+    ("is", "wrong"), ("are", "wrong"), ("is", "incorrect"),
+    ("wrong", "approach"), ("bad", "idea"),
+    ("instead", "of"), ("rather", "than"),
+    ("superseded",), ("deprecated",), ("obsolete",),
+    ("failed",), ("failure",),
+))
+# ("do","not") is not disavowal when it commands remembrance/use.
+_DISAVOWAL_CARVEOUT_NEXT = frozenset({"forget", "hesitate"})
+_DISAVOWAL_WINDOW_BEFORE = 5
+_DISAVOWAL_WINDOW_AFTER = 4
+
+
+def _phrase_disavowed(phrase, title, nutshell):
+    """True when every occurrence of phrase in title+nutshell is disavowed.
+
+    Scoped per clause: disavowal does not bleed across sentence boundaries
+    ("Use X for reads. Do not use X for writes.") or contrastive
+    conjunctions ("X is wrong but caching is right" does not disavow
+    caching). One clean clause keeps the bonus.
+
+    B-48 fixes (Naya Alpha, 2026-10-14; live-registry measurement w105 +
+    BoW-residual w106):
+    - The phrase's own token span is excluded from the disavowal window.
+      Negation vocabulary *inside* the query phrase is the lesson
+      *asserting* the phrase ("Never use connection pooling" states a
+      prohibition), not disavowing it — disavowal must sit strictly outside
+      the phrase. The left/right pieces are checked separately so no gram
+      can span the excluded seam.
+    - Clauses are split at the title/nutshell seam: titles rarely end with
+      terminal punctuation, and without the seam a title's final negation
+      bleeds into the nutshell's first clause ("...Commits Don't Move It" /
+      "A freeze receipt pins the review target.").
+    """
+    phrase_toks = phrase.split()
+    n = len(phrase_toks)
+    found = False
+    clauses = _disavowal_clauses(title) + _disavowal_clauses(nutshell)
+    for sent in clauses:
+        toks = []
+        for w in re.findall(r"[a-z0-9']+", sent):
+            toks.extend(_DISAVOWAL_CONTRACTIONS.get(w, (w,)))
+        for i in range(len(toks) - n + 1):
+            if toks[i:i + n] != phrase_toks:
+                continue
+            found = True
+            lo = max(0, i - _DISAVOWAL_WINDOW_BEFORE)
+            hi = min(len(toks), i + n + _DISAVOWAL_WINDOW_AFTER)
+            # Disavowal lives in the window *outside* the phrase's own span.
+            left = toks[lo:i]
+            right = toks[i + n:hi]
+            if not (_window_disavows(left) or _window_disavows(right)):
+                return False  # one clean occurrence keeps the bonus
+    return found
+
+
+def _disavowal_clauses(text):
+    """Clause-split one field; the title/nutshell seam is always a boundary."""
+    return re.split(r"[.!?;]+|\bbut\b|\bhowever\b|\balthough\b|\bthough\b|\bwhereas\b",
+                    text.lower())
+
+
+def _window_disavows(window):
+    for plen in (3, 2, 1):
+        for s in range(len(window) - plen + 1):
+            gram = tuple(window[s:s + plen])
+            if gram not in _DISAVOWAL_PHRASES:
+                continue
+            if gram[:2] == ("do", "not") and s + plen < len(window) \
+                    and window[s + plen] in _DISAVOWAL_CARVEOUT_NEXT:
+                continue  # "do not forget / hesitate" is encouragement
+            return True
+    return False
+
+
 def _retrieval_idf(field_word_sets):
     """Inverse-document-frequency weights over the active retrieval corpus.
 
@@ -945,9 +1066,12 @@ def _ranked_candidates(query, areas=None, task_contexts=None):
             score /= 1.0 + RETRIEVAL_LENGTH_NORM_PIVOT * (doc_len / avg_len - 1.0)
         # Phrase bonus: the query as an exact phrase in title or lesson
         # content is decisive relevance evidence — floor-clearing by
-        # construction (see RETRIEVAL_PHRASE_BONUS).
+        # construction (see RETRIEVAL_PHRASE_BONUS). B-48: a phrase the
+        # lesson disavows is not decisive evidence — withhold the bonus
+        # when every occurrence sits in disavowal scope.
         if q_phrase and (q_phrase in title.lower() or q_phrase in nutshell.lower()):
-            score += RETRIEVAL_PHRASE_BONUS
+            if not _phrase_disavowed(q_phrase, title, nutshell):
+                score += RETRIEVAL_PHRASE_BONUS
         if score <= 0:
             # Authority never promotes irrelevance: a note matching zero
             # query terms cannot win on truth-state rank alone.
