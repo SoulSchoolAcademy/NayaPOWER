@@ -62,6 +62,8 @@ import json
 import os
 import re
 import sys
+import time
+import urllib.error
 import urllib.request
 from pathlib import Path
 
@@ -198,9 +200,61 @@ def render_report(pr_number, head_sha, author_seat, attestations, evidence, resu
 
 _API = "https://api.github.com"
 
+# Retry parity with the consensus gate (packet 1, design infra-asks-t0754).
+# Same tuning constants as tools/check_merge_consensus.py — parity, not a new policy.
+_API_MAX_ATTEMPTS = 5
+_API_BACKOFF_BASE_S = 1
+_API_MAX_WAIT_S = 120
 
-def api_get(path: str, token: str):
-    """GET a GitHub API path. Raises GateBlind on any failure (fail closed)."""
+
+def _classify_http_error(e):
+    """Classify an HTTPError as ('rate_limit'|'permission'|'error', detail,
+    retry_after_seconds_or_None, header_dict). Semantics verbatim from
+    check_merge_consensus._classify_http_error; header snapshot is the
+    packet-1 addition (per-call x-ratelimit-*/Retry-After on every attempt)."""
+    try:
+        raw = e.read() or b""
+    except Exception:
+        raw = b""
+    try:
+        body_text = raw.decode("utf-8", "replace")
+    except Exception:
+        body_text = ""
+    try:
+        msg = json.loads(body_text).get("message", "") if body_text else ""
+    except Exception:
+        msg = body_text[:200]
+    headers = e.headers if e.headers else {}
+    retry_after = None
+    try:
+        ra = headers.get("Retry-After")
+        retry_after = int(ra) if ra else None
+    except (TypeError, ValueError):
+        retry_after = None
+    snap = {
+        "remaining": headers.get("X-RateLimit-Remaining", "none"),
+        "reset": headers.get("X-RateLimit-Reset", "none"),
+        "retry_after": headers.get("Retry-After", "none"),
+    }
+    low = f"{msg} {body_text}".lower()
+    if e.code == 429 or (e.code == 403
+                         and ("rate limit" in low or retry_after is not None)):
+        return "rate_limit", msg or "rate limited", retry_after, snap
+    if e.code == 403 and "resource not accessible" in low:
+        return "permission", msg or "forbidden", None, snap
+    return "error", msg or f"HTTP {e.code}", None, snap
+
+
+def _fetch_api(path: str, token: str):
+    """GET one API path with consensus-gate retry parity.
+
+    Transient rate limits (403/429) retry up to _API_MAX_ATTEMPTS: server's
+    Retry-After (capped at _API_MAX_WAIT_S) else exponential backoff
+    _API_BACKOFF_BASE_S * 2^(attempt-1). Permission 403s and other failures
+    raise immediately. Each retry logs its headers so the next adjudication
+    never has to guess rate-limit vs permission. Raises GateAPIError-style
+    tuple info bundled into the raised exceptions below.
+    """
     req = urllib.request.Request(
         _API + path,
         headers={
@@ -210,9 +264,62 @@ def api_get(path: str, token: str):
             "User-Agent": "nayapower-claim-evidence-gate",
         },
     )
+    attempt = 0
+    while True:
+        attempt += 1
+        try:
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                return json.load(resp)
+        except urllib.error.HTTPError as e:
+            kind, detail, retry_after, snap = _classify_http_error(e)
+            if kind == "rate_limit" and attempt < _API_MAX_ATTEMPTS:
+                wait = retry_after if retry_after else \
+                    _API_BACKOFF_BASE_S * (2 ** (attempt - 1))
+                wait = max(1, min(wait, _API_MAX_WAIT_S))
+                print(f"CLAIM-EVIDENCE GATE: api retry -- HTTP {e.code} "
+                      f"(rate-limited), waiting {wait}s "
+                      f"(attempt {attempt}/{_API_MAX_ATTEMPTS}) "
+                      f"[x-ratelimit-remaining={snap['remaining']}, "
+                      f"x-ratelimit-reset={snap['reset']}, "
+                      f"retry-after={snap['retry_after']}]",
+                      file=sys.stderr)
+                time.sleep(wait)
+                continue
+            # Exhausted or fail-fast: carry a structured blind cause upward.
+            raise _BlindCause(path, attempt, e.code, kind, detail, snap)
+
+
+class _BlindCause(Exception):
+    """Transport-blind failure after the retry policy ran its course.
+
+    NOT a packet-3 GATE_BLIND marker change: the vocabulary and exit-code
+    contract (packet 3) live on their own branch; this class only carries
+    the retry outcome so the existing GateBlind path can render it.
+    """
+    def __init__(self, path, attempts, code, kind, detail, snap):
+        super().__init__(path, attempts, code, kind, detail, snap)
+        self.path = path
+        self.attempts = attempts
+        self.code = code
+        self.kind = kind
+        self.detail = detail
+        self.snap = snap
+
+
+def api_get(path: str, token: str):
+    """GET a GitHub API path. Raises GateBlind on any failure (fail closed).
+
+    Retry parity with the consensus gate: transient 403/429 get 5 attempts;
+    the verdict after exhaustion is still fail-closed (exit code unchanged).
+    """
     try:
-        with urllib.request.urlopen(req, timeout=30) as resp:
-            return json.load(resp)
+        return _fetch_api(path, token)
+    except _BlindCause as bc:
+        raise GateBlind(
+            f"GET {bc.path} failed after {bc.attempts} attempts: "
+            f"{bc.kind} (HTTP {bc.code}, {bc.detail}, "
+            f"x-ratelimit-remaining={bc.snap['remaining']})"
+        ) from bc
     except Exception as exc:  # noqa: BLE001 -- any IO failure blinds the gate
         raise GateBlind(f"GET {path} failed: {exc}") from exc
 

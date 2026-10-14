@@ -168,6 +168,7 @@ import json
 import os
 import re
 import sys
+import time
 import urllib.request
 import urllib.error
 from datetime import datetime, timedelta, timezone
@@ -855,20 +856,97 @@ def check_delivery(receipt_bytes, pr_head_dir, changed, truth,
 # Protected truth provider
 # ---------------------------------------------------------------------------
 
+# Retry parity with the consensus gate (packet 1, design infra-asks-t0754).
+# Same tuning constants as tools/check_merge_consensus.py — parity, not a new policy.
+_API_MAX_ATTEMPTS = 5
+_API_BACKOFF_BASE_S = 1
+_API_MAX_WAIT_S = 120
+
+
+def _classify_http_error(e):
+    """Classify an HTTPError as ('rate_limit'|'permission'|'error', detail,
+    retry_after_seconds_or_None, header_dict). Semantics verbatim from
+    check_merge_consensus._classify_http_error; header snapshot is the
+    packet-1 addition (per-call x-ratelimit-*/Retry-After on every attempt)."""
+    try:
+        raw = e.read() or b""
+    except Exception:
+        raw = b""
+    try:
+        body_text = raw.decode("utf-8", "replace")
+    except Exception:
+        body_text = ""
+    try:
+        msg = json.loads(body_text).get("message", "") if body_text else ""
+    except Exception:
+        msg = body_text[:200]
+    headers = e.headers if e.headers else {}
+    retry_after = None
+    try:
+        ra = headers.get("Retry-After")
+        retry_after = int(ra) if ra else None
+    except (TypeError, ValueError):
+        retry_after = None
+    snap = {
+        "remaining": headers.get("X-RateLimit-Remaining", "none"),
+        "reset": headers.get("X-RateLimit-Reset", "none"),
+        "retry_after": headers.get("Retry-After", "none"),
+    }
+    low = f"{msg} {body_text}".lower()
+    if e.code == 429 or (e.code == 403
+                         and ("rate limit" in low or retry_after is not None)):
+        return "rate_limit", msg or "rate limited", retry_after, snap
+    if e.code == 403 and "resource not accessible" in low:
+        return "permission", msg or "forbidden", None, snap
+    return "error", msg or f"HTTP {e.code}", None, snap
+
+
 def _api(method, path, token, body=None):
+    """Protected truth provider API call, with consensus-gate retry parity.
+
+    Transient rate limits (403/429) retry up to _API_MAX_ATTEMPTS: server's
+    Retry-After (capped) else exponential backoff _API_BACKOFF_BASE_S *
+    2^(attempt-1); permission 403s and other failures raise immediately.
+    Non-retry failures keep the exact pre-existing RuntimeError message shape,
+    so every caller's handling is unchanged. Packet 1 only — no verdict or
+    exit-code semantics change (those are packet 3's, on its own branch).
+    """
     req = urllib.request.Request(
         API_HOST + path, data=json.dumps(body).encode() if body else None,
         method=method)
     req.add_header("Authorization", "Bearer " + token)
     req.add_header("Accept", "application/vnd.github+json")
     req.add_header("X-GitHub-Api-Version", "2022-11-28")
-    try:
-        with urllib.request.urlopen(req, timeout=30) as r:
-            raw = r.read().decode()
-            return json.loads(raw) if raw.strip() else {}
-    except urllib.error.HTTPError as e:
-        raise RuntimeError("GitHub API %s %s -> HTTP %s: %s"
-                           % (method, path, e.code, e.read().decode()[:300]))
+    attempt = 0
+    while True:
+        attempt += 1
+        try:
+            with urllib.request.urlopen(req, timeout=30) as r:
+                raw = r.read().decode()
+                return json.loads(raw) if raw.strip() else {}
+        except urllib.error.HTTPError as e:
+            kind, detail, retry_after, snap = _classify_http_error(e)
+            if kind == "rate_limit" and attempt < _API_MAX_ATTEMPTS:
+                wait = retry_after if retry_after else \
+                    _API_BACKOFF_BASE_S * (2 ** (attempt - 1))
+                wait = max(1, min(wait, _API_MAX_WAIT_S))
+                print("ACTIVATION-DELIVERY GATE: api retry -- HTTP %s "
+                      "(rate-limited), waiting %ss (attempt %s/%s) "
+                      "[x-ratelimit-remaining=%s, retry-after=%s]"
+                      % (e.code, wait, attempt, _API_MAX_ATTEMPTS,
+                         snap["remaining"], snap["retry_after"]),
+                      file=sys.stderr)
+                time.sleep(wait)
+                continue
+            if kind == "rate_limit":
+                raise RuntimeError(
+                    "GitHub API %s %s -> rate-limited after %s attempts: %s"
+                    " (HTTP %s, x-ratelimit-remaining=%s). Re-run; merge "
+                    "bursts exhaust the shared token quota."
+                    % (method, path, _API_MAX_ATTEMPTS, detail, e.code,
+                       snap["remaining"]))
+            raise RuntimeError("GitHub API %s %s -> HTTP %s: %s"
+                               % (method, path, e.code, detail[:300]))
 
 
 def resolve_truth():
