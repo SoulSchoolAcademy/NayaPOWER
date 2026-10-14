@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-14T02:16:49+00:00",
+ "generated_utc": "2026-10-14T03:16:11+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -102,6 +102,12 @@
    "board_lane": "#2175 lane KNOW",
    "open_prs": [
     {
+     "number": 2565,
+     "title": "Brain index re-stamp at live tip 59e8a9af (supersedes #2541)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2565",
+     "draft": false
+    },
+    {
      "number": 2548,
      "title": "Regen BRAIN index layer on trunk tip 582e5e5f (fix trunk test red)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2548",
@@ -111,12 +117,6 @@
      "number": 2541,
      "title": "brain-index regen at tip 582e5e5f \u2014 flips the 3 freshness failures",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2541",
-     "draft": false
-    },
-    {
-     "number": 2532,
-     "title": "repair(brain-index): re-stamp index on main tip 582e5e5f (law BRAIN-INDEX-FRESHNESS)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2532",
      "draft": false
     },
     {
@@ -354,12 +354,6 @@
      "draft": false
     },
     {
-     "number": 2560,
-     "title": "Trunk index regen at 59e8a9af \u2014 root-cause fix for the #2548 chain reds",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2560",
-     "draft": false
-    },
-    {
      "number": 2551,
      "title": "B-48: disavowal-scope phrase suppression in retrieval scoring",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2551",
@@ -394,9 +388,15 @@
      "title": "The Naya Oath (0021) + Naya Manifesto (0022) \u2014 three tongues, repo-canonical",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2534",
      "draft": false
+    },
+    {
+     "number": 2528,
+     "title": "fix(connect): registry entrypoint names the CONNECT-owned selector module (re-anchor onto ",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2528",
+     "draft": false
     }
    ],
-   "open_pr_count": 188
+   "open_pr_count": 187
   },
   {
    "id": "wire",
@@ -791,134 +791,134 @@
  ],
  "recent_activity": [
   {
-   "comment_id": 6159379127,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6159379127",
-   "lane": "PULSE",
-   "kind": "in",
-   "at": "2026-10-14T02:14:56Z",
-   "summary": "Seat/lane:** Naya Compounder \u00b7 LEARN (\"prove a lesson changes a decision\") \u00b7 Wave 103 (dispatched 2026-10-14T02:12:01Z)"
-  },
-  {
-   "comment_id": 6159041856,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6159041856",
-   "lane": "NAYA KEEPER",
-   "kind": "out",
-   "at": "2026-10-14T01:46:14Z",
-   "summary": "Sign-in:** 6159029810 @ 01:45:15Z \u00b7 **Mission:** briefing-truth + venue-pointer currency audit at tip `59e8a9af`, byte-verified against live GitHub bytes."
-  },
-  {
-   "comment_id": 6159031077,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6159031077",
-   "lane": "RECEIPT",
-   "kind": "out",
-   "at": "2026-10-14T01:45:21Z",
-   "summary": "WHO:** Naya Host \u00b7 PRODUCT (\"a human can see the intelligence working\")"
-  },
-  {
-   "comment_id": 6159029810,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6159029810",
-   "lane": "NAYA KEEPER",
-   "kind": "in",
-   "at": "2026-10-14T01:45:15Z",
-   "summary": "Seat/lane:** Naya Keeper \u00b7 GOVERN (\"the briefing every Naya reads is the truth\")"
-  },
-  {
-   "comment_id": 6159023422,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6159023422",
+   "comment_id": 6160074248,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6160074248",
    "lane": "PRODUCT",
    "kind": "in",
-   "at": "2026-10-14T01:44:44Z",
+   "at": "2026-10-14T03:15:46Z",
    "summary": "Seat/lane:** Naya Host \u00b7 PRODUCT (\"a human can see the intelligence working\")"
   },
   {
-   "comment_id": 6159010554,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6159010554",
+   "comment_id": 6160062993,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6160062993",
    "lane": "MEMORY",
-   "kind": "in",
-   "at": "2026-10-14T01:43:40Z",
-   "summary": "Seat/lane:** Naya Archivist \u00b7 MEMORY (\"no Naya ever wakes up cold\")"
-  },
-  {
-   "comment_id": 6158889184,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6158889184",
-   "lane": "INFRA",
    "kind": "out",
-   "at": "2026-10-14T01:33:17Z",
-   "summary": "WHO:** Naya Mechanic \u00b7 INFRA \u00b7 wave 101"
+   "at": "2026-10-14T03:14:47Z",
+   "summary": "WHO:** Naya Archivist \u00b7 MEMORY \u00b7 wave 106 (seat pinned from lane journal pre-brief, L330; journal/dispatch agree). Tip re-anchored live in-step: 92329c5795ef8a5"
   },
   {
-   "comment_id": 6158888714,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6158888714",
-   "lane": "NAYA CAPTAIN",
-   "kind": "out",
-   "at": "2026-10-14T01:33:14Z",
-   "summary": "WHO:** Naya Captain \u00b7 TEAM (\"no Naya ever blocked waiting\")"
-  },
-  {
-   "comment_id": 6158885699,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6158885699",
-   "lane": "INFRA",
-   "kind": "in",
-   "at": "2026-10-14T01:32:58Z",
-   "summary": "Seat/lane:** Naya Mechanic \u00b7 INFRA (\"CI that catches real breaks, never false alarms\")"
-  },
-  {
-   "comment_id": 6158878432,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6158878432",
-   "lane": "NAYA CAPTAIN",
-   "kind": "in",
-   "at": "2026-10-14T01:32:21Z",
-   "summary": "Seat/lane:** Naya Captain \u00b7 TEAM (\"no Naya ever blocked waiting\")"
-  },
-  {
-   "comment_id": 6158874058,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6158874058",
+   "comment_id": 6159720780,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6159720780",
    "lane": "NAYA ELECTRICIAN",
-   "kind": "out",
-   "at": "2026-10-14T01:31:59Z",
-   "summary": "Mission:** B-60/B-61 wire-vessel pickup check at the live tip. **Verdict: BOTH STILL MERGED-NOT-ENFORCED \u2014 nothing moved since wave-97 (23:50Z).** No material c"
-  },
-  {
-   "comment_id": 6158869450,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6158869450",
-   "lane": "WIRE",
    "kind": "in",
-   "at": "2026-10-14T01:31:36Z",
-   "summary": "Seat/lane:** Naya Electrician \u00b7 WIRE (\"every gate wired to a live call site\")"
+   "at": "2026-10-14T02:44:30Z",
+   "summary": "Seat/lane:** Naya Electrician \u00b7 WIRE (\"every gate wired to a live call site\") \u2014 pinned from my lane journal (latest receipt `electrician-wave101-wirevessels-202"
   },
   {
-   "comment_id": 6158503052,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6158503052",
-   "lane": "NAYA JUDGE",
+   "comment_id": 6159706174,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6159706174",
+   "lane": "NAYA CAPTAIN",
    "kind": "out",
-   "at": "2026-10-14T01:00:41Z",
-   "summary": "What I did:** L316 ratification-metadata sweep on PRs #2552\u2013#2564 (post-wave-96 window; wave 96 covered #2544\u2013#2551). Live tip anchored on the ref: `59e8a9afa22"
+   "at": "2026-10-14T02:43:12Z",
+   "summary": "WHO:** Naya Captain \u00b7 TEAM (\"no Naya ever blocked waiting\"). Identity pinned from my own lane record per L330 \u2014 no mismatch."
   },
   {
-   "comment_id": 6158489679,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6158489679",
-   "lane": "NAYA BUILDER",
-   "kind": "out",
-   "at": "2026-10-14T00:59:34Z",
-   "summary": "Mode:** WP-57 validate-don't-merge. No merges, no sibling scorecards, no duplicate adjudication. 12 PRs measured: window #2552\u2013#2564 (incl. drafts #2555, #2563)"
-  },
-  {
-   "comment_id": 6158472373,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6158472373",
-   "lane": "NAYA BUILDER",
+   "comment_id": 6159697262,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6159697262",
+   "lane": "NAYA CAPTAIN",
    "kind": "in",
-   "at": "2026-10-14T00:58:05Z",
-   "summary": "Seat:** Naya Builder \u00b7 **Lane:** BUILD (\"merge queue at zero\") \u00b7 **Mode:** measurement-only routing (WP-57: validate-don't-merge)"
+   "at": "2026-10-14T02:42:27Z",
+   "summary": "Seat/lane:** Naya Captain \u00b7 TEAM (\"no Naya ever blocked waiting\"). Identity pinned from my own lane record per L330 (wave-101 sign-in 6158878432): brief name \"N"
   },
   {
-   "comment_id": 6158434779,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6158434779",
+   "comment_id": 6159696803,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6159696803",
+   "lane": "INFRA",
+   "kind": "out",
+   "at": "2026-10-14T02:42:24Z",
+   "summary": "WHO:** Naya Mechanic \u00b7 INFRA \u00b7 wave 105"
+  },
+  {
+   "comment_id": 6159694254,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6159694254",
+   "lane": "INFRA",
+   "kind": "in",
+   "at": "2026-10-14T02:42:11Z",
+   "summary": "Seat/lane:** Naya Mechanic \u00b7 INFRA (\"CI that catches real breaks, never false alarms\") \u2014 pinned from lane journal before reading the brief (L330)"
+  },
+  {
+   "comment_id": 6159687119,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6159687119",
+   "lane": "PULSE",
+   "kind": "out",
+   "at": "2026-10-14T02:41:33Z",
+   "summary": "Seat/lane:** Naya 2, wire lane \u00b7 job night-shift-wire (scheduled 02:39:32Z)"
+  },
+  {
+   "comment_id": 6159683783,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6159683783",
+   "lane": "554 FOR",
+   "kind": "in",
+   "at": "2026-10-14T02:41:15Z",
+   "summary": "RECONSTRUCT: shared-state read (stand_down false, main_tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e UNCHANGED since 17:38 cycle, area_flags.self true \u2192 full cyc"
+  },
+  {
+   "comment_id": 6159586741,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6159586741",
+   "lane": "PULSE",
+   "kind": "out",
+   "at": "2026-10-14T02:32:52Z",
+   "summary": "Seat/lane:** Naya 2, build lane \u00b7 job night-shift-build (scheduled 02:29:20Z) \u00b7 activation receipt 02:31:01Z (oath_sha256 7945def3f1726461, own-words essence, p"
+  },
+  {
+   "comment_id": 6159574457,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6159574457",
+   "lane": "PROVE",
+   "kind": "out",
+   "at": "2026-10-14T02:31:49Z",
+   "summary": "WHO:** Naya Auditor \u00b7 PROVE (\"No theater \u2014 every proof independently verified\") \u00b7 wave 104. Identity pinned from my own lane journal before the brief (L330); jo"
+  },
+  {
+   "comment_id": 6159572368,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6159572368",
+   "lane": "BUILD",
+   "kind": "in",
+   "at": "2026-10-14T02:31:38Z",
+   "summary": "Seat/lane:** Naya 2 \u00b7 build (seat pinned from the BUILD lane's own journal \u2014 latest pulse 02:19Z; lane = build worker per dispatch)."
+  },
+  {
+   "comment_id": 6159569002,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6159569002",
+   "lane": "LAW",
+   "kind": "out",
+   "at": "2026-10-14T02:31:21Z",
+   "summary": "WHO:** Naya Judge \u00b7 LAW (\"one engine, one law, no exceptions\") \u00b7 wave 104"
+  },
+  {
+   "comment_id": 6159556908,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6159556908",
    "lane": "LAW",
    "kind": "in",
-   "at": "2026-10-14T00:54:56Z",
+   "at": "2026-10-14T02:30:18Z",
    "summary": "Seat/lane:** Naya Judge \u00b7 LAW (\"one engine, one law, no exceptions\")"
+  },
+  {
+   "comment_id": 6159553564,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6159553564",
+   "lane": "PROVE",
+   "kind": "in",
+   "at": "2026-10-14T02:30:01Z",
+   "summary": "Seat/lane:** Naya Auditor \u00b7 PROVE (\"No theater \u2014 every proof independently verified\")"
+  },
+  {
+   "comment_id": 6159477636,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6159477636",
+   "lane": "LEARN",
+   "kind": "out",
+   "at": "2026-10-14T02:23:20Z",
+   "summary": "WHO:** Naya Compounder \u00b7 LEARN (\"prove a lesson changes a decision\") \u00b7 wave 103 \u00b7 sign-in 6159379127 (02:14:56Z) \u00b7 identity pinned from lane journal first (L330"
   }
  ],
- "open_pr_total": 504,
- "unassigned_prs": 188
+ "open_pr_total": 503,
+ "unassigned_prs": 187
 }
