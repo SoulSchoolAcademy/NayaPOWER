@@ -8,8 +8,9 @@ briefing every Naya receives at run start, and the sign-out contract every run
 must satisfy at run end. It is the executable form of Law 02.
 
 Reconciliation (standing rule — no duplicate mechanisms): this artifact
-**canonicalizes** the existing read-first briefing
-(`AGENT-BRIEFING.md`), the dispatch brief, and the sign-out-as-orientation rule
+**canonicalizes** the existing read-first briefing (the operator working copy
+at `workspace/goals/nayapower-10-10-completion-drive/hidden_files/AGENT-BRIEFING.md`
+— not yet repo-canonical), the dispatch brief, and the sign-out-as-orientation rule
 (briefing §HOW TO USE THIS FILE, Shawn 2026-10-13). It supersedes nothing and
 replaces nothing. The briefing remains the working copy until this artifact is
 ratified. One mechanism, one specification.
@@ -109,14 +110,15 @@ nothing on its own.
 ## 8. Reconciliation with the live implementation (#2601, 2026-10-14)
 
 The directive compiler specified in §2 is implemented as the Master Directive
-(issue #2601), observed recompiling roughly every 30 minutes from live sources
-and PATCHed on material change only. The generator mechanism is Clarity's
-machinery — observed via the artifact's freshness (20:56Z → 21:12Z compiles),
-not independently re-derived from this seat.
+(issue #2601), recompiled every 10 minutes from live sources and PATCHed on
+material change only (cadence set by Shawn's 2026-10-14 directive: 30 minutes
+is not frequent enough — work happens in 10-minute waves, so the directive
+must keep up). The generator mechanism is Clarity's machinery — observed via
+the artifact's freshness, not independently re-derived from this seat.
 
-This updates §2 in one respect: compilation is periodic (30 min), not
+This updates §2 in one respect: compilation is periodic (10 min), not
 per-dispatch — and distribution is via the standing issue, which every run
-reads at orientation step zero (AGENT-BRIEFING.md, 2026-10-14). The sign-out
+reads at orientation step zero (operator briefing, 2026-10-14). The sign-out
 contract (§5) and handoff contract (§6) are unchanged.
 
 The airtight architecture this spec now describes:
