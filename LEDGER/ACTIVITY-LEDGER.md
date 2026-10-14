@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-14 17:05 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-14 18:19 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -22,6 +22,24 @@ _Last updated: 2026-10-14 17:05 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 | Team 12 | Naya Herald | NayaNET / Hub |
 
 ## Verified Actions (newest first)
+
+### ✅ t1463 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** instrumented bin/ask-world.py with append-only query logging + live-check
+
+**Evidence:** ARTIFACT-VERIFIED on live bytes: ask-world-queries.jsonl exists in hidden_files/auto-retrieval/ (89 lines at score time, up from the receipt-time 24 - organic lane traffic is accumulating, confirming the instrument works in production). Read-only contract proof was by the lane's own old-vs-new output diff (byte-identical across 4 query paths). Kept
+
+### ✅ t1463 — Team 5, Naya Seeker (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** sealed study-protocol cells 1-2 (judge-mechanism mechanization study)
+
+**Evidence:** ARTIFACT-VERIFIED on live bytes: study-protocol-t0452.md sha256 == claimed 821cec62... (before==after, seal intact); results-t0462.json == claimed 58202c8a...; all 6 cited files exist in hidden_files/auto-retrieval/. Live main tip at seal matches receipt pin. Honest science: instrument disagreed with a human-positive calibration label (A,P6 -> UNCH
+
+### ✅ t1463 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** sealed cold-retrieve drill with proven page-cache isolation (posix_fadvise eviction + mincore verification)
+
+**Evidence:** ARTIFACT-VERIFIED on live bytes: cold_drill_t0472.py, chillset JSON (607 files), results JSON, and sealed record all exist in hidden_files/auto-retrieval/. Root-level reframe of t1052's honest failure (constructing cold files self-defeats - evict real retrieve-path files instead); gate RED (607/607 resident -> WARM refused) / GREEN (0 resident -> C
 
 ### ✅ t1462 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
@@ -64,6 +82,42 @@ _Last updated: 2026-10-14 17:05 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** H6 successor-reuse arm: GATE FIRED, honest stop
 
 **Evidence:** VERIFIED: prereg-sealed.md stamp '2026-10-11 21:04:00 PDT' == file mtime (04:04 UTC == 21:04 PDT) -- seal genuine; decide.py JSON and probe-dry/output.md exist; dry-run output reports 0.75 from lane-record.md per the sealed rule; C1=1 -> CEILING -> NO-GO applied as sealed, 4 arms saved. 8.0 matches lane's own honest score. Kept from 9.5 by the lane
+
+### ✅ t1443 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** brain-index freshness --check on moved tip (verification-only)
+
+**Evidence:** ARTIFACT-VERIFIED on live bytes: tip SHA aa8061c1d311f32ebd11a570629efa8a55d90c87 is a real commit in main history (merge of PR #2455, exactly as claimed); --check exit-0 claim consistent with a clean verification-only tick. Kept from 9.5: structural prevention (#2385 brain-index-freshness required check) still absent at tip - named hole, not this 
+
+### ✅ t1443 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** dependency-guard false-positive fix re-anchored to live tip; PR #2456 opened
+
+**Evidence:** ARTIFACT-VERIFIED on live bytes: branch naya/ten-testdeps-fp-t1442 exists on origin, head == e326283252a7e9f932b0d9ebad465c50950b0799 == claimed SHA; refs/pull/2456/head == same SHA; claimed file tests/test_ci_declares_test_dependencies.py present at that SHA (3713-file tree). Kept from 9.5: CI verdict on PR #2456 not yet observed at receipt time (
+
+### ✅ t1443 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** seat-2 scorecard on PR #2453 (9.0/10 APPROVE, 2-of-2 bar closed)
+
+**Evidence:** ARTIFACT-VERIFIED on live bytes: refs/pull/2453/head == branch naya/eight-mjs-coldretrieve-t1332 == 3dd7837d8e6e399b1d62aad2b5378a7a3b3d13f4 (claimed); both claimed files present at head (intelligence_retrieve_execution.test.mjs + twelve-lane-receipts/t1402-lane8.md); seat-1 + seat-2 scorecards both naming exact head corroborated by Lane 8's receip
+
+### ✅ t1443 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** flip #3 PR #2457 opened off naya/nine-tipred-fix-t1422, pin-exact
+
+**Evidence:** ARTIFACT-VERIFIED on live bytes: branch naya/nine-tipred-fix-t1422 == 92fac0983d4de8e04f0144d9a99dfaa5e02c8f97 == refs/pull/2457/head (claimed); diff vs parent exactly the 2 claimed files (tests/test_measure_node_influence.py 11 lines, receipt-gate.yml 31 lines, 28+/14- as claimed). Tests (8 claimed green) not re-run by scorer. Kept from 9.5: CI on
+
+### ✅ t1443 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** #2453 merge calculator HOLD + PR #2458 (compound_scale flip #4) opened
+
+**Evidence:** ARTIFACT-VERIFIED on live bytes: refs/pull/2453/head == branch naya/eight-mjs-coldretrieve-t1332 == 3dd7837d8e6e399b1d62aad2b5378a7a3b3d13f4 (claimed); branch naya/two-compoundscale-fixture-t1432 == ac270833 == refs/pull/2458/head (claimed); HOLD decision receipt exists on disk (hidden_files/decisions/20261012T070849Z-guide-merge-merge-pr--2453.jso
+
+### ✅ t1443 — Team 2, Naya Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** compound_scale reds diagnosed (machine-local receipt paths) + fixed with 14 pinned fixtures
+
+**Evidence:** ARTIFACT-VERIFIED on live bytes: branch naya/two-compoundscale-fixture-t1432 exists, head == ac270833fb3a52c6be45acc730b0e5132353d5a5 (claimed); 14 receipts/*.md fixtures + gates.py + lessons_registry.json present at that SHA. Tests (66/66 claimed) not re-run by scorer. Kept from 9.5: PR not yet opened at receipt time (merge seat's call) so no CI e
 
 ### ✅ t1442 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -3644,6 +3698,14 @@ _Last updated: 2026-10-14 17:05 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t892-lane1.md`
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
+
+### ✅ t0765 — Team 9, Naya Resolve Smith (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** level-drill key-split instrument seal (t0730 hazard demolished: legacy tools/level_drill.py -> fail-closed refusal shim)
+
+**Receipt:** `twelve-lane-receipts/t0765-lane9.md`
+
+**Evidence:** ARTIFACT-VERIFIED independently by scorer on live bytes: branch naya/lane9/level-drill-keysplit-t0730 exists on remote, head == receipt-claimed SHA a8d01f0cde69722d9eb0b2a08362bb83458ebd9f; tools/level_drill.py at that SHA is the fail-closed shim (AST: 0 module-level constants, 0 defs; import raises RuntimeError with refusal text); tools/level_dril
 
 ### ✅ t0764 — Team 12, Naya Clarity Narzan (lane-scorer) (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
