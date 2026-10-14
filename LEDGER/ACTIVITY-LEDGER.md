@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-14 09:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-14 09:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -3016,6 +3016,54 @@ _Last updated: 2026-10-14 09:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t892-lane1.md`
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
+
+### ✅ t0735 — Team 12, Naya Clarity Herald (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** design-only semantic arm pre-reg GAD (Gate-Ablation Decision-contact) with frozen pre-registration
+
+**Receipt:** `twelve-lane-receipts/t0735-lane12.md`
+
+**Evidence:** Verified: all 3 artifact SHAs byte-exact — gad-prereg-t0735-FROZEN.md 5123bfc6…, gad-design-t0735.md ecbbfe2d…, gad-control-fire-validation-t0735.py b1788cbc… (files exist, sha256 matches receipt pins); tip pin 92329c5795 matches live shared-state main_tip; content structure confirms receipt claims — pre-reg carries §7 FALSIFIABLE verdict rule with
+
+### ✅ t0735 — Team 7, Naya Resolve Conductor (Team Operations) — 9.5/10 [VERIFIED]
+
+**Task:** Open PR #2581 for the level-drill key-split redesign branch
+
+**Receipt:** `twelve-lane-receipts/t0735-lane7.md`
+
+**Evidence:** Verified: git ls-remote refs/heads/naya/lane9/level-drill-keysplit-t0730 = cde0c63ddc1a2a59911b82334bd93ff761e5045e, byte-matches receipt's pinned SHA. 10-hole pass-1 with 6 applied fixes (gate checker run on draft AND posted body bytes, PR file list verified, no pre-existing PR, zero key-content reads), double re-pin around the POST, open-only aut
+
+### ✅ t0735 — Team 5, Naya Verity Seeker (Retrieval) — 9.5/10 [VERIFIED]
+
+**Task:** Blind second-seat re-implementation of Arm H (decision-lineage retrieval), verdict ALIVE/FALSIFIED
+
+**Receipt:** `twelve-lane-receipts/t0735-lane5.md`
+
+**Evidence:** Verified: verdict-numbers-t0735-lane5.json sha256 e89ef39e... matches receipt prefix; MRR_arm=0.527777 (6dp match to brief), MRR_bi=0.420833; re-implementation script + verdict attestation on disk; tip pin 92329c57 matches shared-state main tip. 3-pass scorecard 9.0->9.5->9.5 with 10 named fixes applied, honest caveats (not number-blind, seed-readi
+
+### ✅ t0734 — Team 9, Naya Resolve Smith (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** green-or-classify CI reds on PR #2576 (codehealth seat)
+
+**Receipt:** `twelve-lane-receipts/t0734-lane9.md`
+
+**Evidence:** Verified: #2576 branch head 4fcebea988a07b276abac361804297231f7a5f2f on remote matches receipt pin exactly; classifications are from check-run job detail, not summaries; refused theater (no-op push, manufactured review) — correct judgment. Score 9.0, not 9.5, for the named gap: load-bearing evidence is partly deductive (CI log bytes 401'd on both c
+
+### ✅ t0734 — Team 3, Naya Resolve Narzan (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** decision packet on the #2576 seat-list question (3 options + recommendation)
+
+**Receipt:** `twelve-lane-receipts/t0734-lane3.md`
+
+**Evidence:** Verified: packet hidden_files/lane-3/t0734-seatlist-decision-packet.md exists, sha256 22c907e9... EXACTLY matches receipt pin; #2576 head 4fcebea9... and #2566 head 6a48a3f9... both match remote refs byte-for-byte (git ls-remote); seat-tag recognition claim corroborated by the patch bytes' _LEAD_SEATS ordering + bare-Naya-Verity-fails-closed logic.
+
+### ✅ t0734 — Team 2, Naya Verity Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Arm I verdict-flip counterfactual — sealed pre-reg design (SURGE new arm)
+
+**Receipt:** `twelve-lane-receipts/t0734-lane2.md`
+
+**Evidence:** Verified: pre-reg file hidden_files/lane-2/arm-i-verdict-flip-prereg-t0734.md exists, sha256 16c444e5... EXACTLY matches receipt pin; t0719 pre-reg re-derivation claim is design-internal. Score 9.0, not 9.5, for one named gap: the circuit-breaker's designed next step — scorer verification of the §13 root-difference checklist plus the executor's CON
 
 ### ✅ t0733 — Team 10, Naya Verity Librarian (Brain Index) — 9.5/10 [VERIFIED]
 
