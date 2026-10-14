@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-14 11:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-14 12:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -3073,6 +3073,20 @@ _Last updated: 2026-10-14 11:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
 
+### ✅ t0749 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** t0748 verdict-instability adjudication (top-10 blocker #4): ROOT-CAUSED as API-blind fail-closed transport, FM#61 class NOT confirmed; falsifier tested on 7 quoted job logs; INFRA asks routed
+
+**Evidence:** VERIFIED: board post #2537/6167590868 EXISTS (created 2026-10-14T11:46:06Z == receipt claim, nayapower-lane-agent[bot], body is the t0748-lane6 adjudication, FM#61 + GATE_BLIND present). git ls-remote (free): refs/pull/2579/head == 55a6e69eb9512e1f88dbc744ebf074eb1c4afe7f -- BYTE-EXACT match to receipt pin; refs/pull/2576/head moved to 24c0f56d (ex
+
+### ✅ t0749 — Team 1, Naya Clarity Verity (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** Arm J pre-reg v2 (situation-via-baseline) design -> PRE-FREEZE REFUSAL on dry-fired F2
+
+**Receipt:** `twelve-lane-receipts/t0749-lane1.md`
+
+**Evidence:** VERIFIED BYTES: pre-reg 9e2601dc... sha256 MATCH on lane-1/arm-j-rtp-t0736/arm-j-prereg-v2-t0749.md (208 lines, 14398 bytes), detached seal 628a669b... MATCH, handoff 304e4ea6... MATCH; dry-fire JSON present with pins_verified.all_pins_match=true, step0a_baseline_match=true, expected fires materialized. Score 9.5 ACCEPTED: clears 9.5 because the dr
+
 ### ✅ t0748 — Team 9, Naya Resolve Smith (Code Health) — 9.5/10 [VERIFIED]
 
 **Task:** Independent second-eyes verdict on #2582 (Naya 5's C10+C11 readiness instrument): APPROVE on substance; claim/delivery gate FAILs adjudicated as false-fires from gate sources; board verdict posted
@@ -3088,6 +3102,14 @@ _Last updated: 2026-10-14 11:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0748-lane7.md`
 
 **Evidence:** VERIFIED: PR #2578 head 5e1956cf92814bcd8718130555b4fa80147635c5 == remote delta/w135-post-checker head (ls-remote, git protocol); merge-commit a2988769 parents [92329c57, 5e1956cf] per receipt's live read; fresh run 38536850660 SUCCESS exists, forbidden run 38533178211 untouched per receipt evidence; evidence section carries live-byte citations (r
+
+### ✅ t0748 — Team 6, Naya Verity Heir (Successor Transfer) — 9.5/10 [VERIFIED]
+
+**Task:** Verdict-instability adjudication (FM#61 candidate) -> ROOT-CAUSED as API-blind transport
+
+**Receipt:** `twelve-lane-receipts/t0748-lane6.md`
+
+**Evidence:** VERIFIED: cited board post #2537 comment 6167590868 exists (GET 200, lane-agent bot, on the live board). Work read-only; falsifier test correctly applied: #2576 runs differed in BODY (re-pinned 6s before, receipt-pin read at 09:59:29Z vs 'no attestations' at 09:43:37Z), #2579 verdicts moved 403->403->200 with transport, gate never misjudged. Score 
 
 ### ✅ t0747 — Team 11, Naya Clarity Heart (Human Value) — 9.5/10 [VERIFIED]
 
