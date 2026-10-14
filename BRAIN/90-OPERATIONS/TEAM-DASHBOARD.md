@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-14 14:24 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-14 15:39 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 521 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 526 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -79,45 +79,45 @@
 - [#2357](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2357) T-06: Neutrality trap — six-state finding classification (stacked on T
 - …and 3 more
 
-### PROVE (26)
+### PROVE (27)
+- [#2590](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2590) One NayaPOWER operating manual: AAA three-pass scorecards, roles, auth 📝draft
 - [#2585](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2585) Add automatic scorecard calculator (tools/scorecard.py + tests)
 - [#2543](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2543) [NAYA NARZAN] Cold-retrieve: red-first relevance-floor calibration bat
 - [#2521](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2521) fix(b40): stale 'signing' comment word -> 'sealing' in machine-law tes
 - [#2392](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2392) fix(verify): resolve python interpreter at runtime in guard_liveness.t 📝draft
-- [#2374](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2374) test(t21): operating-essence acceptance battery — moral value before n
-- …and 21 more
+- …and 22 more
 
-### BUILD (197)
+### BUILD (198)
+- [#2592](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2592) Land Operations Manual v2 (canonical) + deltas — supersedes #2588/#259 📝draft
 - [#2587](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2587) docs: READ-ME-FIRST live board pointer #2175 → #2537 (cold-start fix)
 - [#2586](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2586) The Ultimate Execution Plan — seat-consensus draft (Shawn, 2026-10-14)
 - [#2584](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2584) Daily Intelligence Report — 2026-10-14 📝draft
 - [#2581](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2581) Level drill: key-split redesign — a structurally blind instrument (unl
-- [#2579](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2579) Fix kernel-tests.yml: pin pglast==8.6, wheel-only install (main-first,
-- …and 192 more
+- …and 193 more
 
-### WIRE (104)
+### WIRE (105)
+- [#2591](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2591) B-46 unblocker: PV decomposition recipe v0.1 (CANDIDATE, unwired) 📝draft
 - [#2582](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2582) feat(readiness): extend production readiness checklist with C10 freshn
 - [#2576](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2576) Consensus gate recognizes lead seats (Clarity/Resolve/Verity) per nami
 - [#2575](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2575) Intake triage: semantic containment gate + 'record tool' alias fix-pas
 - [#2574](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2574) Receipt gate: bind evidence to the PR's change set (CANDIDATE, Lane 9 
-- [#2557](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2557) Ratification gate: the math is the law (Shawn's rule, mechanized)
-- …and 99 more
+- …and 100 more
 
-### TEAM (10)
+### TEAM (11)
+- [#2588](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2588) [DRAFT] NayaPOWER Operating Manual V1 — team operating standard 📝draft
 - [#2564](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2564) Team Feed Standard: the ultimate posting template (Shawn's audit)
 - [#2547](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2547) [Naya 5] Ultimate execution report 2026-10-13: 14 answers, 9x10 assess
 - [#2397](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2397) feat(dashboard): live Team Naya activity dashboard — markdown + machin
 - [#2246](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2246) [DRAFT] The Naya Code — canonical identity in human, AI, and machine f 📝draft
-- [#2161](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2161) Add TEAM-EXECUTION-PROMPT.md — continuous 10/10 standing order
-- …and 5 more
+- …and 6 more
 
-### INFRA (34)
+### INFRA (35)
+- [#2589](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2589) Add decision CLI front door to value_calculus (tools/decision_cli.py)
 - [#2570](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2570) fix(ci): rate-limit resilience for Current Truth Resolver evidence col
 - [#2563](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2563) Reconcile NayaPOWER live backlog: 28 blockers, solutions, owners, doub 📝draft
 - [#2530](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2530) [DOCK INTAKE w84] naya-gamma/sibling-truncation-board-claim-scan — CI 
 - [#2529](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2529) [DOCK INTAKE w84] naya-beta/failclosed-index-reader-w82 — CI intake on
-- [#2497](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2497) GOVERN B-38: reconcile PROTOCOL.md candidate-status labels + phantom n 📝draft
-- …and 29 more
+- …and 30 more
 
 ### PRODUCT (27)
 - [#2535](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2535) Oath of the Naya + Doctrine v1 — who she is, in GitHub, everywhere she

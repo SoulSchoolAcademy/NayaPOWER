@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-14T14:24:32+00:00",
+ "generated_utc": "2026-10-14T15:39:33+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -279,6 +279,12 @@
    "board_lane": "#2175 lane PROVE",
    "open_prs": [
     {
+     "number": 2590,
+     "title": "One NayaPOWER operating manual: AAA three-pass scorecards, roles, authority, handoff",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2590",
+     "draft": true
+    },
+    {
      "number": 2585,
      "title": "Add automatic scorecard calculator (tools/scorecard.py + tests)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2585",
@@ -319,15 +325,9 @@
      "title": "feat(value): Compile the Law Phase 1 \u2014 scorecard law, score-fill-ship, V2 merge-gate recei",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2134",
      "draft": false
-    },
-    {
-     "number": 2097,
-     "title": "feat(value): scorecard structure gate \u2014 scan raw PR body for the five sections",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2097",
-     "draft": false
     }
    ],
-   "open_pr_count": 26
+   "open_pr_count": 27
   },
   {
    "id": "build",
@@ -347,6 +347,12 @@
    "active_now": true,
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
+    {
+     "number": 2592,
+     "title": "Land Operations Manual v2 (canonical) + deltas \u2014 supersedes #2588/#2590 tracks",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2592",
+     "draft": true
+    },
     {
      "number": 2587,
      "title": "docs: READ-ME-FIRST live board pointer #2175 \u2192 #2537 (cold-start fix)",
@@ -388,15 +394,9 @@
      "title": "#2568 fix-pass: R-LIMIT-A in post_checker (Theta w131)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2577",
      "draft": false
-    },
-    {
-     "number": 2571,
-     "title": "Fix singular /git/ref/ path to /git/refs/ (9 call sites, 7 files)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2571",
-     "draft": false
     }
    ],
-   "open_pr_count": 197
+   "open_pr_count": 198
   },
   {
    "id": "wire",
@@ -416,6 +416,12 @@
    "active_now": false,
    "board_lane": "#2175 lane WIRE",
    "open_prs": [
+    {
+     "number": 2591,
+     "title": "B-46 unblocker: PV decomposition recipe v0.1 (CANDIDATE, unwired)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2591",
+     "draft": true
+    },
     {
      "number": 2582,
      "title": "feat(readiness): extend production readiness checklist with C10 freshness + C11 merge-gate",
@@ -457,15 +463,9 @@
      "title": "[Naya 2] Tiered review gate \u2014 review depth matches blast radius (CANDIDATE, awaiting ratif",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2550",
      "draft": false
-    },
-    {
-     "number": 2544,
-     "title": "Fix check-runs flooding: remove issue_comment trigger from merge-consensus-gate",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2544",
-     "draft": false
     }
    ],
-   "open_pr_count": 104
+   "open_pr_count": 105
   },
   {
    "id": "team",
@@ -485,6 +485,12 @@
    "active_now": false,
    "board_lane": "#2175 lane TEAM",
    "open_prs": [
+    {
+     "number": 2588,
+     "title": "[DRAFT] NayaPOWER Operating Manual V1 \u2014 team operating standard",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2588",
+     "draft": true
+    },
     {
      "number": 2564,
      "title": "Team Feed Standard: the ultimate posting template (Shawn's audit)",
@@ -526,15 +532,9 @@
      "title": "ratification: SN-040 System Charter V1 RATIFIED (record, CANDIDATE)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/1390",
      "draft": false
-    },
-    {
-     "number": 1386,
-     "title": "feat(charter): compile human system charter into nine-node machine runtime",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/1386",
-     "draft": false
     }
    ],
-   "open_pr_count": 10
+   "open_pr_count": 11
   },
   {
    "id": "infra",
@@ -554,6 +554,12 @@
    "active_now": false,
    "board_lane": "#2175 lane INFRA",
    "open_prs": [
+    {
+     "number": 2589,
+     "title": "Add decision CLI front door to value_calculus (tools/decision_cli.py)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2589",
+     "draft": false
+    },
     {
      "number": 2570,
      "title": "fix(ci): rate-limit resilience for Current Truth Resolver evidence collection",
@@ -595,15 +601,9 @@
      "title": "feat(intelligence): septenary gematria ciphers for value calculation",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2490",
      "draft": true
-    },
-    {
-     "number": 2454,
-     "title": "INFRA: heal tip-RED on Kernel Tests \u2014 three test/CI-config fixes",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2454",
-     "draft": false
     }
    ],
-   "open_pr_count": 34
+   "open_pr_count": 35
   },
   {
    "id": "product",
@@ -919,6 +919,6 @@
    "summary": "Seat/lane:** Naya Judge, LAW. **Sign-in:** 6168419834 @ 12:32:34Z. Tip anchor: main ref `92329c5795ef8a50d02adf94ee6c91c313c26daf`, re-derived live, unchanged a"
   }
  ],
- "open_pr_total": 521,
- "unassigned_prs": 197
+ "open_pr_total": 526,
+ "unassigned_prs": 198
 }
