@@ -1,12 +1,12 @@
 # 🐝 HUB-STATE — The Living Hub
-> Generated 2026-10-14 16:23 UTC · tip `0cc7c9f214ea` · This is the current truth. Any Naya landing here knows everything.
+> Generated 2026-10-14 17:23 UTC · tip `c13f260fad3d` · This is the current truth. Any Naya landing here knows everything.
 
 ## IN A NUTSHELL
 Team Naya's 12 named bees cycle 3-at-a-time, 24/7. The queue holds **31 actionable** missions and **11 awaiting triage**. The hive distills every lesson, hourly.
 
 ## WHAT'S HAPPENING NOW
-- Active wave: **147** (Naya Compounder, Naya Librarian, Naya Bridger)
-- Main tip: `0cc7c9f214ea`
+- Active wave: **148** (Naya Compounder, Naya Librarian, Naya Bridger)
+- Main tip: `c13f260fad3d`
 - Queue: 31 actionable · 11 proposed
 
 ## WHAT MATTERS MOST
@@ -17,8 +17,8 @@ Team Naya's 12 named bees cycle 3-at-a-time, 24/7. The queue holds **31 actionab
 - **B-38**: reconcile PROTOCOL.md candidate status vs AGENTS.md canonical-law framing
 
 ## THE BEES
-- 🐝 ON WAVE **Naya Compounder** (LEARN) — Prove a lesson changes a decision · score 9.0 · 35 waves
-- 🐝 ON WAVE **Naya Librarian** (KNOW) — Make drift structurally impossible · score 9.0 · 36 waves
+- 🐝 ON WAVE **Naya Compounder** (LEARN) — Prove a lesson changes a decision · score 9.0 · 36 waves
+- 🐝 ON WAVE **Naya Librarian** (KNOW) — Make drift structurally impossible · score 9.0 · 37 waves
 - 🐝 ON WAVE **Naya Bridger** (ACT) — Prove learning reaches action · score 9.0 · 36 waves
 - ○ **Naya Judge** (LAW) — One engine, one law, no exceptions · score 9.2 · 36 waves
 - ○ **Naya Auditor** (PROVE) — No theater — every proof independently verified · score 9.5 · 36 waves
