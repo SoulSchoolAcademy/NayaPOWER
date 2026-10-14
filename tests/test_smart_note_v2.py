@@ -1534,6 +1534,41 @@ def test_retrieve_winner_missing_projection_fails_closed(tmp_path, monkeypatch):
         raise AssertionError("missing winner projection must fail closed, not crash or answer")
 
 
+def test_retrieve_winner_vanishing_projection_fails_closed(tmp_path, monkeypatch):
+    """B-58 defense-in-depth: the winner's projection vanishes AFTER the index
+    gate passed (TOCTOU — e.g. a concurrent cleanup between validation and the
+    winner read). The gate path (INDEX_CORRUPT:PROJECTION_ABSENT) is covered by
+    test_retrieve_winner_missing_projection_fails_closed; THIS test covers
+    retrieve()'s own try/except OSError guard, which had no direct test.
+    Pre-guard this raised an unhandled FileNotFoundError — the crash class the
+    triage entry named. Non-vacuous: the registry is validator-clean at seal
+    time (page present, page_hash matches), the entry wins on title matches,
+    and the delete lands after sealing so the failing code is the vanished page."""
+    brain = tmp_path / "BRAIN" / "05-MEMORY" / "SMART-NOTES"
+    brain.mkdir(parents=True, exist_ok=True)
+    (brain / "gone.md").write_text(
+        "# Deep tunnel maintenance protocol\n\n## In a nutshell\n\nKeep tunnels dry.\n",
+        encoding="utf-8",
+    )
+    entry = _winner_read_entry("BRAIN/05-MEMORY/SMART-NOTES/gone.md")
+    rp = tmp_path / "index.json"
+    rp.write_text(json.dumps(_sealed_registry([entry], tmp_path)), encoding="utf-8")
+    # The page vanishes after the registry sealed validator-clean.
+    (brain / "gone.md").unlink()
+    sealed = json.loads(rp.read_text(encoding="utf-8"))
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 0)  # ranking pin: the floor is live-corpus calibrated, not for synthetic corpora
+    # Bypass re-validation: it passed at seal time; the scenario is a page
+    # lost between the gate and the winner read.
+    monkeypatch.setattr(mod, "_load_validated_registry", lambda: sealed)
+    try:
+        mod.retrieve("deep tunnel maintenance protocol")
+    except SystemExit as exc:
+        assert str(exc) == "WINNER_PROJECTION_UNREADABLE", str(exc)
+    else:
+        raise AssertionError("vanished winner projection must fail closed, not crash or answer")
+
+
 def test_retrieve_winner_without_nutshell_fails_closed(tmp_path, monkeypatch):
     """B-49: the winner's projection is readable but carries no IN A NUTSHELL
     section (deep-path degradation). Pre-repair this returned a positive
