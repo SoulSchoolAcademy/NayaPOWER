@@ -6,9 +6,10 @@ carried mint-time while the clock JSONL carried the true retroactive
 stamp. The fix: meta `ts` == the clock row's event `ts`
 (`event_ts=rec["ts"]`), with `written_ts` recording the append time.
 
-The pre-fix code fails test 1 and test 3 below: meta `ts` would be
-today's wall-clock time, not the retroactive event time. These tests pin
-the fix; they are the F-3 receipt.
+The pre-fix code fails all three ts tests below (tests 1–3): meta `ts`
+would be today's wall-clock time, not the retroactive event time (test 2
+fails because the clock row and the meta row stamp two separate `now()`
+calls). These tests pin the fix; they are the F-3 receipt.
 """
 
 import json

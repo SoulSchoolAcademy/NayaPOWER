@@ -154,9 +154,9 @@ emit on the real log is a false lesson in the permanent record.
 - **No spec file in the repo.** `learn_clock.py`'s docstring cites
   `learn-clock-spec.md`, but no such file exists in the repo tree at
   the F-3 head — the spec lives in the goal working files
-  (`hidden_files/learn-clock-spec.md`). That dangling reference is a
-  known doc defect, reported in the F-4 receipt, not fixed here
-  (docs-only mission; the code docstring is untouched).
+  (`hidden_files/learn-clock-spec.md`). That dangling reference was a
+  known doc defect, reported in the F-4 receipt; F-5 fixed it — the code
+  docstring now points at the goal working files.
 
 ## Tests
 

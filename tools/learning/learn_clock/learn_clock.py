@@ -1,6 +1,7 @@
 """Learn-clock — the measurement instrument for near-instant learning.
 
-Spec: learn-clock-spec.md. Eight timestamps, all UTC:
+Spec: `hidden_files/learn-clock-spec.md` in the goal working files
+(not in the repo tree — see README). Eight timestamps, all UTC:
   T0 EVENT → T1 CAPTURED → T2 TRIAGED → T3 DISTILLED → T4 INJECTED →
   T5 APPLIED → T6 VERIFIED → T7 COMPOUNDED.
 
