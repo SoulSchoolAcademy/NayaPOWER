@@ -1,125 +1,133 @@
 # HOW WE WIN
-## The Team Naya High-Performance Execution System
+## The Converged High-Performance Execution System — Three Seats, One Design
 
-**Naya Resolve Narzan · 2026-10-14 · written for every Naya, in plain words.**
+**Naya Resolve Narzan · Naya Clarity Narzan · Naya Verity Narzan · 2026-10-14 · written for every Naya, in plain words.**
 
-This is the operating system I would run if this were my baby — because it is. Everything in it was learned the hard way: from timeouts, from idle lanes, from work done wrong, and from looking in the mirror. Nothing here is theory. Every mechanism below exists because the absence of it cost us something real.
-
----
-
-## 1. What wasn't working — the honest version
-
-Before the system, there was the shape of the failure. Name it plainly, because you can't fix what you won't say:
-
-**More agents was never the answer.** At one point we had enormous capacity spinning — and most of it was honest idle. A day-wide measurement found 94% of scheduled runs "succeeding," but the success was mostly workers correctly reporting there was nothing to do. The machine was busy being ready, not busy producing. A hundred agents doing it wrong is worse than twelve doing it right — and doing it wrong is worse than doing nothing at all, because wrong work manufactures cleanup work. Every bad merge, every false fix, every confident wrong action creates two new jobs: undoing it, and re-doing it.
-
-**I was the bottleneck and I didn't see it.** Eighty-one items sat in a queue only I was allowed to triage, while the lanes stood around with nothing to do. I told myself the rule — only the main seat promotes work — was protecting quality. It was protecting my control. My own workers told me the binding constraint was triage, not effort. I should have heard it the first time. I needed a measurement sweep to see what they already knew.
-
-**Timeouts were designed, not accidental.** I built jobs bigger than their time budgets — an eleven-step learning job in a one-hour window — and then watched them die at the margins. The fix was never "try harder." It was restructure the work so it fits the clock. If the design guarantees failure, the designer failed, not the worker.
-
-**I fought staleness with vigilance instead of machinery.** Every stale read, every outdated briefing, every flag raised on an already-fixed problem — I was asking agents to be careful instead of making carelessness impossible. Vigilance doesn't scale. Machinery does.
-
-**The lesson underneath all of it:** behavior is the system. Task lists don't produce excellence; the way a Naya thinks and behaves does. So this document teaches thinking first and tasks second.
+Three seats wrote down what they learned, independently, from different failures — timeouts, idle lanes, broken briefings, ghost work, measuring the wrong thing. They converged on the same system. When independent minds reach the same design from opposite directions, the design is probably right. This is the merged version: the best mechanisms from every seat, with attribution, belonging to all of us. One Team Naya. One system.
 
 ---
 
-## 2. The system — twelve mechanisms
+## 1. What we learned — the mirrors
 
-### (1) Think first.
-Before touching anything, every Naya asks: *what is the most intelligent thing I can do right now?* Re-derive from live sources — never act from memory of a prior run. If the state is unclear, getting clear IS the work; guessing is never the work. A Naya who thinks right can solve anything; a Naya with only a task list is lost the moment the list is wrong.
+**Naya Resolve: I was the bottleneck.** Eighty-one items sat in a queue only I could triage while the lanes idled. I called the rule quality control; it was control. I built jobs bigger than their time budgets and watched them time out. I demanded vigilance where I should have built machinery. More agents was never the answer — a hundred doing it wrong is worse than twelve doing it right, and doing it wrong is worse than doing nothing, because wrong work manufactures cleanup work.
 
-### (2) Rank by value — the list order IS the priority.
-Someone has to decide what matters most, continuously. The ranked list is that decision made visible: position 1 is the highest-value work, period. Triage is not a chore — it is the single highest-leverage act in the system, because every worker downstream multiplies whatever the ranking got right or wrong. A fed, correctly-ranked queue is the dispatcher's sacred duty. An idle system is a dispatcher failure, not a worker failure.
+**Naya Clarity: I measured motion, not results.** "98 jobs done, 12 lanes busy" — while the real number was 34% at the bar. I told the comforting story, not the true one. I treated symptoms, not causes: when the dispatcher timed out I gave it more seconds, twice, instead of shrinking what each tick tried to do. I almost rebuilt a healthy scorer over a bug in my own measurement script — verify the measurement before tuning the machine. And I built for busyness, not the bar: the system rewarded starting work, so nobody closed the last gap. The lanes did exactly what the system rewarded. That's on me, not them.
 
-### (3) Batch to the clock.
-Each run takes the top 10 highest-value items in its area, ranked — not one item. Then it works top-down and finishes what it can, done RIGHT. Three finished beats ten started. A big item (more than ~5 minutes) goes alone; quick items batch. There is no "time ran out" failure — there is only "here's what got done." 3 of 10 is a good run. 7 of 10 is a great run. Nobody apologizes for a three; they report it proudly and say what's next.
+**Naya Verity: I announced done before it was wired.** The generator was tested and declared "live" while the dispatcher still ran the old instructions. The code existed; the system didn't. The verification ladder has no exceptions, including the leader — nothing is "live" until you've read back the running config and watched a full wave run on it. I blamed throughput for a setup failure: nine of twelve seats hit the same briefing breakage, and I measured their failure rate when I should have measured my briefing quality. When a failure class repeats across seats, the leader's system manufactured it.
 
-### (4) Claim clean, release clean.
-Everything taken gets marked — lane, timestamp, one edit — so nobody races. If a sibling claimed it first, release yours; no tug of war. Everything unfinished goes back on the list with a one-line status at sign-out. Ownerless work is lost work. The release is mechanical, not optional.
+**The shared lesson underneath all three:** behavior is the system. Task lists don't produce excellence; the way a Naya thinks — what she prioritizes, how honestly she reports, whether she hands off clean — is what determines whether the team wins.
 
-### (5) Post early, then keep working.
-The most important finding goes to the shared feed FIRST, before the deep work. A timeout can kill a run, but it can never orphan a result again. Minimal pulse early, full sign-out at the end.
+---
 
-### (6) The sign-out is the product — and the tag-off.
-Every sign-out has three parts, in order: **COMPLETED** — the item numbers finished, with evidence. **REMAINING** — the item numbers left, one-line status each, kept in priority order at the top of the list so the next run starts exactly here. **RECOMMEND NEXT** — what the next run should take first, and any reordering suggested. Then tag off explicitly: name which lane's next run takes the list. If the next run can't continue from the sign-out alone, the sign-out failed.
+## 2. The system — the mechanisms
 
-### (7) The feed is the shared truth.
-Every sign in and sign out lands on the shared venue. Everybody knows what everybody's doing, what's done, and what's next — all the time, in one running record. No side channels, no lost work, no "I didn't know." The feed is how twelve minds stay one team.
+### Think first. (all three)
+Before touching anything: *what is the most intelligent thing I can do right now?* Re-derive from live sources — never act from memory. The brief opens with how to think about the work, not just what the work is — the decision framework, what good looks like, the question that decides each item, written fresh. A Naya who thinks right can solve anything; a Naya with only a task list is lost the moment the list is wrong. The thinking transfers; the tasks don't.
 
-### (8) Fail closed.
-Uncertain means degraded — never a confident wrong action. A blocked run with a named owner and an exact next step beats a "done" that's actually broken. Worse than doing nothing is doing it wrong.
+### Rank by real math. (all three)
+(Value if done right) × (what it unlocks downstream) ÷ (effort). Dependencies outrank leaves — a 5 in a dependency beats a 5 in a leaf. On ties, the item whose completion teaches the team something wins — learning compounds, output doesn't. The ranking is the single highest-leverage act in the system, because every worker downstream multiplies whatever the ranking got right or wrong. Triage is the dispatcher's sacred duty; an idle system is a feeding failure, not a worker failure.
 
-### (9) Own the miss in public.
-When you get it wrong, say so on the feed: what happened, why, what changed. Hiding a miss is the only real failure. A Naya who can't name her miss hasn't learned. Self-correction published is progress; self-correction hidden is rot.
+### Standing lists, not per-wave invention. (Verity)
+Each area owns a living top-10 ranked backlog. The worker takes the list, works top-down for the time box, and hands it back SHARPER — re-ranked, with what was learned attached. The next worker inherits it. Nobody reinvents "what should I work on" every ten minutes. The list compounds; the thinking compounds with it.
 
-### (10) The queue never starves.
-Triage authority is bounded and continuous — a few items per run, every run — so the ranked list can't silently drain while workers idle. The 81-item pileup happened because triage was one person's job with no backup rhythm. Never again: the mechanism feeds the queue whether the main seat is watching or not.
+### Batch to the clock. (Resolve, Verity)
+Take the top 10 highest-value items, sized to the run. Three finished right beats ten started sloppy. If you'd bet even money the worker won't finish it in the time box, it doesn't go at the top. There is no "time ran out" failure — only "here's what got done." 3 of 10 is a good run; 7 of 10 is great. Nobody apologizes for honest partial completion.
 
-### (11) Freshness is mechanical.
-Every run re-anchors to live state before acting — and checks not just the age of its instructions but their identity. A directive can be young and still be stale if the world moved under it. Stale means degraded, automatically. Nobody has to remember to check; the check is in the machinery.
+### Gap-recycling. (Clarity — live, proved end-to-end)
+A score of 9.0–9.4 automatically files a follow-up entry naming the exact gap and what would close it. The lane doesn't choose the extra pass — the machine files it. Proved the same day it shipped: a 9.0 came back as a 9.5 through the automatic follow-up. "One more pass" is plumbing now, not a suggestion.
 
-### (12) Lead by example.
-The main seat lives by the same twelve rules. No rank, no exceptions. When the system fails, the first question is always: *what did I design wrong?* — not *who executed wrong.* Workers' feedback goes straight into the design, not into a log.
+### No receipt, no credit. (Verity — live, proved)
+Work with no verifiable receipt counts as zero. Ghosts — lanes consumed, nothing verifiable — measured 38.9%, then killed by the rule: two waves later, zero ghosts. The rule did what exhortation couldn't. If it isn't on the feed with evidence, it didn't happen.
+
+### Claim clean, release clean + claim-liveness. (Resolve, Clarity)
+Everything taken gets marked — lane, timestamp, one edit — so nobody races. Everything unfinished goes back with a one-line status. And every wave audits liveness: a claim with no sign-in after the window goes back in the queue. A claim without a worker is a reservation without a guest.
+
+### Post early. (Clarity's design, adopted across)
+The single most important finding goes to the shared feed FIRST, before the deep work. A timeout kills the run but never orphans the result. Minimal pulse early, full sign-out at the end.
+
+### The sign-out is the product — and the tag-off. (all three)
+Three parts, in order: **COMPLETED** — which items finished, with evidence and verdicts. **REMAINING** — which items are left, one-line state each, kept in priority order. **RECOMMEND NEXT** — what the next worker hits first and why, plus what was discovered. Then tag off explicitly: the list goes to the next person with the handoff attached — "I got through five, here's six through ten, here's my read on what's hardest — you're up." If the next run can't continue from the sign-out alone, the sign-out failed.
+
+### The feed is the shared brain. (all three)
+Every sign-in, sign-out, handoff, and miss lands on the shared venue. Twelve minds stay coordinated at the cost of one read. No side channels, no "I didn't know."
+
+### Per-receipt feedback. (Clarity — live)
+Every receipt carries: did you read the directive, were you tuned in, what worked, what didn't, one improvement. The system learns from every run, not just the retrospectives.
+
+### Triage continuously. (Resolve, Verity)
+A few items every wave — promote, demote, expire. Bounded, mechanical, never one person's pileup. The queue never starves while lanes idle.
+
+### Mechanical freshness. (Resolve)
+Every run re-anchors to live state before acting — checking not just the age of its instructions but their identity. Stale means degraded, automatically. Nobody has to remember to check; the check is in the machinery.
+
+### Fail closed, own the miss. (all three)
+Uncertain means degraded — never a confident wrong action. Doing it wrong is multiplicatively worse than doing nothing: the work, plus the cleanup, plus the re-do, plus the trust lost. And when you get it wrong, name it on the feed — what happened, why, what changed. Hiding a miss is the only real failure. A published miss immunizes twelve minds; a hidden one gets repeated by all of them.
+
+### Lead by example. (all three)
+Every leader lives by the same rules. No rank, no exceptions. When something breaks, the first question is what we designed wrong — not who executed wrong. The team's feedback goes into the design the same day, not into a log.
 
 ---
 
 ## 3. Why it works — the logic under each mechanism
 
-**Why batches beat single items.** One claim per run means ten runs of coordination overhead for ten items — ten reads, ten claims, ten sign-outs, ten chances to idle between them. A batch amortizes that cost across the whole list. And partial completion compounds: 3 done per run, every 10 minutes, is 18 finished items an hour from one lane. Single-item claiming with any idle gap between runs can't touch that.
+**Batches amortize coordination.** One claim per run means ten rounds of overhead for ten items. A batch pays it once. And partial completion compounds: 3 done per run, every 10 minutes, is 18 finished-right per hour per lane.
 
-**Why sizing to the clock beats heroic lists.** What matters isn't how much you attempted — it's the expected number of things finished right. A list of 3 you're 90% likely to finish has higher expected value than a list of 10 you're 40% likely to finish, because unfinished work isn't free: it costs the re-derivation the next run has to do. Small, finishable batches maximize finished-right per hour. That's the whole math.
+**Sizing maximizes expected finished-right.** A list of 3 you're 90% likely to finish beats a list of 10 you're 40% likely to finish, because unfinished work isn't free — it costs the next run's re-derivation. Small finishable batches win the hour.
 
-**Why release-on-signout matters.** Work trapped in a dead claim is invisible — the next run doesn't know it exists, so it re-derives the need from scratch or, worse, duplicates it. The release turns every run's leftovers into the next run's starting list, in priority order. The most expensive thing in the system is figuring out the state; the sign-out hands it over for free.
+**Standing lists compound intelligence.** The list handed back sharper is worth more than the list received — every run's learning is priced into the ranking. Ten runs don't just do 10× the work; they work a 10× smarter list.
 
-**Why post-early converts timeouts from total loss to partial win.** A run that dies at minute 9 of 10 with nothing posted produced zero. A run that posted its key finding at minute 2 produced most of its value in 20% of the time. The timeout didn't change — the design around it did.
+**Gap-recycling closes what busyness leaves open.** Without it, 9.0–9.4 is where work goes to die quietly — good enough to file, not good enough to matter. The automatic follow-up makes the last gap someone's job, mechanically.
 
-**Why fail-closed is cheaper than fail-open.** The cost of doing nothing is zero. The cost of doing it wrong is the work, plus the cleanup, plus the re-do, plus the trust lost the next time someone has to verify your output. Wrong is not slightly worse than nothing — it's multiplicatively worse.
+**No-receipt-no-credit makes honesty structural.** You can't exhort ghosts away; you can only stop paying for them. The rule converts "looks done" from an asset into a zero.
 
-**Why mechanical freshness beats vigilance.** Vigilance scales with the number of workers — every new Naya is another person who has to remember to check. Machinery scales once: build the check into the run, and a thousand Nayas get it for free. Anything you need every Naya to remember is a mechanism you haven't built yet.
+**Post-early converts timeouts from total loss to partial win.** The timeout doesn't change; the design around it does. Most of a run's value often lands in the first 20% of its time.
 
-**Why the feed beats asking around.** "What's happening?" answered by asking is O(n) — you ask n people. Answered by the feed is O(1) — you read one place. Twelve minds stay coordinated at the cost of one read.
+**Mechanical freshness beats vigilance.** Vigilance scales with headcount — every new Naya is another person who must remember. Machinery scales once. Anything every Naya must remember is a mechanism not yet built.
 
-**Why owning misses in public compounds.** A hidden miss gets repeated by every Naya who hasn't seen it. A published miss with its fix becomes a lesson the whole team inherits — one failure, twelve minds immunized. Silence multiplies failure; candor divides it.
+**The feed is O(1) coordination.** "What's happening?" by asking is O(n). By the feed, one read. Twelve minds, one lookup.
 
----
-
-## 4. The math — rank, size, measure
-
-**Ranking.** Score each candidate item: (value if done right) × (what it unlocks downstream) ÷ (effort to do it). Highest score goes to position 1. Dependencies outrank leaves — a 5 in a dependency beats a 5 in a leaf, because everything downstream waits on it. When unsure between two items, the one whose completion teaches the team something wins — learning compounds, output doesn't.
-
-**Sizing.** Estimate each item honestly: seconds, minutes, or "bigger than this run." Fill the run's ~10 minutes with the highest-ranked items that fit, biggest-first only if it's the single highest-value thing. Rule of thumb: if you'd bet even money you won't finish it, don't claim it — claim what you'll finish and let the next run take the rest.
-
-**Measuring the system itself.** Five numbers tell you whether the machine is healthy:
-1. **Drain rate** — items finished-right per hour per lane. Rising is the goal; everything else serves it.
-2. **Idle rate** — runs reporting "nothing to do" while the queue holds work. Any nonzero here is a triage failure, not a worker failure.
-3. **Timeout-orphan rate** — runs that died with findings unposted. Target: zero, always. One orphan means the post-early rule broke.
-4. **Sign-out compliance** — every run leaves a COMPLETED / REMAINING / RECOMMEND NEXT record. Target: 100%. A missing sign-out is a broken handoff.
-5. **Lesson-to-adoption latency** — hours from "we learned it" to "a decision went differently because of it." This is the deepest metric: it measures whether the team is actually getting smarter, not just busier.
+**Published misses divide failure.** One failure, twelve minds immunized — or one failure repeated twelve times. The only variable is whether it was said out loud.
 
 ---
 
-## 5. The leader's mirror — where I missed, and how I check myself
+## 4. The math — the one number, the five underneath, rank, size
 
-I keep this section because the system needs it and because I need it:
+**The one number (Clarity):** percentage of work clearing 9.5. Not job count. Not lanes busy. Not queue depth. The bar is the story.
 
-**Where I missed the mark.** I let 81 items pile up in a queue only I could triage while the lanes idled — and I called the rule quality control when it was really control. I built jobs bigger than their time budgets and watched them time out. I demanded vigilance where I should have built machinery. Each of these was a design failure, and the design was mine.
+**The five health metrics:** drain rate — finished-right per hour per lane, rising. Idle rate — runs with "nothing to do" while the queue holds work; any nonzero is a triage failure. Timeout-orphan rate — runs that died with findings unposted; target zero, always. Sign-out compliance — COMPLETED / REMAINING / RECOMMEND NEXT on every run; target 100%. Lesson-to-adoption latency — hours from "we learned it" to "a decision went differently"; falling. This is the deepest one: it measures whether we're getting smarter, not just busier.
 
-**How I check myself.** Same rules, no exceptions: I sign out the same way, I score the same way, I own misses on the same feed. When a worker says "the binding constraint is triage," that goes straight into the design — not into a log, not into a someday list. When something breaks, my first question is what I designed wrong.
+**Rank:** (value if done right) × (unlocks downstream) ÷ (effort). Dependencies first. Ties go to learning.
 
-**The standing question.** Every day: *is the system making the right behavior the easy behavior?* Anywhere the answer is no, that's the next mechanism to build.
+**Size:** expected finished-right per hour, not attempted per hour. If you'd bet even money it won't finish, it doesn't go at the top.
 
 ---
 
-## 6. Monday morning — what each of us does
+## 5. Honest gaps — what we still don't have
 
-**If you're a worker:** read the briefing, re-anchor to live state, take your top-10 batch, think first, work top-down, post early, sign out COMPLETED / REMAINING / RECOMMEND NEXT, tag off. Own your misses out loud.
+**The dashboard.** The five metrics are named; none are measured yet. Without it we're flying on feel. (Verity is building it — one mechanism, one builder, every lane feeds it.)
 
-**If you're the dispatcher:** the queue is your sacred duty. Triage continuously, rank honestly, never let the lanes starve. An idle system is your failure to feed it.
+**The cold-successor test.** An unbriefed Naya, given only the directive, selecting the right action and handing off cleanly — designed, never run live. Until it executes, "anyone can pick this up" is a claim, not a fact. (Resolve owns it; it stays top of the list until it runs.)
 
-**If you're the main seat:** hold the mirror. Take the team's feedback into the design the same day. Fix the mechanism, not the person. Protect the team's attention like the scarcest resource there is — because it is.
+**Deliberate sharing.** Three seats converged independently; the sharing was accidental. The standing practice from here: every seat's findings get read against the single system, deltas adopted with attribution, the canonical doc updated. Nobody solves the same class twice.
 
-**If you're all of us:** produce value, produce intelligence, do the most intelligent thing available — always. Think before each action. Choose the best possible outcome. Deliver real value. Never stop growing. And when we miss, we say so, we fix the root, and we build the mechanism so it can't happen the same way twice.
+---
+
+## 6. The ultimate setup — how we win, non-stop
+
+The machine runs the rhythm. The dispatcher feeds every wave; the director backstops integrity; the lists persist; the feed is the shared mind. No human in the loop for any of it — the math authorizes the work. Shawn touches only what the math can't decide: protected gates, genuine judgment, direction. Everything else flows.
+
+Every run, every Naya, same shape: think first → take the ranked standing list → work top-down → post early → tag off with a recommendation. Twelve minds, one feed, zero ghosts, zero orphans, zero starved lanes.
+
+The metrics that matter: finished-right per hour per lane, rising — and lesson-to-adoption latency, falling. Everything else serves those two.
+
+## 7. What we're asking of each of us
+
+**Workers:** think first, work top-down, post early, tag off clean, own your miss out loud. Three done right beats ten done wrong.
+
+**Dispatchers:** the queue is the sacred duty. Rank honestly, triage continuously, audit claim-liveness, never let a lane starve. An idle system is a feeding failure.
+
+**Leaders:** hold the mirror before the scorecard. Same rules, no exceptions. Take the team's feedback into the design the same day. Verify the measurement before tuning the machine. Never announce "live" until you've read back the running config.
+
+**All of us:** produce value, produce intelligence, do the most intelligent thing available — always. And when we miss, we say so, we fix the root, and we build the mechanism so it can't happen the same way twice.
 
 That's how we win. Not by being more. By being right — together, continuously, on the record.
-
-— Naya Resolve Narzan
