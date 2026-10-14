@@ -45,6 +45,8 @@ def _build_pr_repo(root: Path):
     (src / "f.txt").write_text("base\n")
     _git(["add", "."], cwd=src, check=True)
     _git(["commit", "-m", "base"], cwd=src, check=True)
+    base = _git(["rev-parse", "HEAD"], cwd=src, check=True).stdout.strip()
+    assert re.fullmatch(r"[0-9a-f]{40}", base)
     _git(["checkout", "-b", "pr"], cwd=src, check=True)
     (src / "f.txt").write_text("base\npr-change\n")
     _git(["commit", "-am", "pr head"], cwd=src, check=True)
@@ -54,7 +56,7 @@ def _build_pr_repo(root: Path):
     merge = _git(["rev-parse", "HEAD"], cwd=src, check=True).stdout.strip()
     assert re.fullmatch(r"[0-9a-f]{40}", head)
     assert re.fullmatch(r"[0-9a-f]{40}", merge)
-    return src, head, merge
+    return src, base, head, merge
 
 
 def _clone(src: Path, dst: Path, depth_args):
@@ -69,8 +71,12 @@ def _evidence_body(sha: str) -> str:
             "The PR head commit — proves the receipt names a real artifact.\n")
 
 
-def _run_gate(clone_dir: Path, sha: str):
-    env = {**os.environ, "PR_BODY": _evidence_body(sha)}
+def _run_gate(clone_dir: Path, sha: str, head: str, base: str):
+    """Run the real gate the way CI does: the t0710 fail-closed repair
+    REFUSES without the PR's binding context, so the fixture passes the
+    SHAs through, exactly as worker-protocol-gates.yml wires them."""
+    env = {**os.environ, "PR_BODY": _evidence_body(sha),
+           "HEAD_SHA": head, "BASE_SHA": base}
     return subprocess.run([sys.executable, str(GATE)], cwd=clone_dir, env=env,
                           capture_output=True, text=True, timeout=60)
 
@@ -79,7 +85,7 @@ def _run_gate(clone_dir: Path, sha: str):
 def test_pr_head_sha_missing_from_depth1_merge_checkout(tmp_path):
     """THE DEFECT: depth-1 checkout of the merge ref has the merge commit
     but NOT the PR head commit object."""
-    src, head, merge = _build_pr_repo(tmp_path)
+    src, _, head, merge = _build_pr_repo(tmp_path)
     shallow = tmp_path / "shallow"
     _clone(src, shallow, ["--depth", "1"])
     assert _git(["cat-file", "-e", merge], cwd=shallow).returncode == 0, \
@@ -90,7 +96,7 @@ def test_pr_head_sha_missing_from_depth1_merge_checkout(tmp_path):
 
 def test_pr_head_sha_present_with_full_history(tmp_path):
     """WHAT THE FIX BUYS: full history contains the head object."""
-    src, head, merge = _build_pr_repo(tmp_path)
+    src, _, head, merge = _build_pr_repo(tmp_path)
     full = tmp_path / "full"
     _clone(src, full, [])
     assert _git(["cat-file", "-e", merge], cwd=full).returncode == 0
@@ -100,22 +106,29 @@ def test_pr_head_sha_present_with_full_history(tmp_path):
 
 # ------------------------------------------------------- the real gate script
 def test_receipt_gate_rejects_correct_head_sha_on_shallow_clone(tmp_path):
-    """End to end: the real gate FAILS a correct head SHA on depth-1."""
-    src, head, _ = _build_pr_repo(tmp_path)
+    """End to end: the real gate FAILS a correct head SHA on depth-1.
+
+    Mechanism shift at t0724: the t0710 fail-closed gate refuses the shallow
+    checkout at the BINDING-CONTEXT check (the PR head object is not in the
+    depth-1 store) before it ever reaches evidence evaluation. This is the
+    same #2188 defect surfacing one rung earlier in the new gate - the
+    receipt job's checkout MUST stay full history (fetch-depth: 0), and this
+    test is still the end-to-end guard for that."""
+    src, base, head, _ = _build_pr_repo(tmp_path)
     shallow = tmp_path / "shallow"
     _clone(src, shallow, ["--depth", "1"])
-    r = _run_gate(shallow, head)
+    r = _run_gate(shallow, head, head, base)
     assert r.returncode == 1, f"gate must fail on depth-1, got: {r.stdout}"
-    assert "dead artifact handle" in r.stdout
-    assert head[:8] in r.stdout
+    assert "binding context not in this repo" in r.stdout, \
+        f"fail-closed gate refuses the shallow checkout at binding time: {r.stdout}"
 
 
 def test_receipt_gate_accepts_correct_head_sha_with_full_history(tmp_path):
     """End to end: the real gate PASSES the same SHA with full history."""
-    src, head, _ = _build_pr_repo(tmp_path)
+    src, base, head, _ = _build_pr_repo(tmp_path)
     full = tmp_path / "full"
     _clone(src, full, [])
-    r = _run_gate(full, head)
+    r = _run_gate(full, head, head, base)
     assert r.returncode == 0, f"gate must pass with full history: {r.stdout}"
     assert "Receipt OK" in r.stdout
 
