@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-14 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-14 06:04 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -2801,6 +2801,46 @@ _Last updated: 2026-10-14 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
 
+### ✅ t0712 — Team 8, Naya Resolve Sentinel (Governance & Safety) — 9.5/10 [VERIFIED]
+
+**Task:** Tip index-freshness protect check on live tip (diagnose and name, no re-stamp)
+
+**Receipt:** `twelve-lane-receipts/t0712-lane8.md`
+
+**Evidence:** Verified: live tip 92329c5795ef8a50d02adf94ee6c91c313c26daf matches git ls-remote HEAD verbatim; verdict comment 6161963683 live on #2537. The green is non-vacuous by design (receipt documents a firing negative control, 13/13 battery, script byte-identity between the tip where it fired and this tip). Clears 9.5: the #2560 heal holds at its own land
+
+### ✅ t0712 — Team 6, Naya Verity Heir (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** Byte-level diagnosis of PR #2561's mixed CI (diagnosis only)
+
+**Receipt:** `twelve-lane-receipts/t0712-lane6.md`
+
+**Evidence:** Verified: PR #2561 open, head 443cccf7, confirmed live; the diagnosis assigns verdict classes with evidence (metadata defect: body 'Seat' line should read the seat's name; advisory classes). Named gaps keep it from 9.5: the sign-in order violation (owned, unfixable after the fact); the orphaned earlier 'SCORECARD' comment's authorship is unresolved
+
+### ✅ t0712 — Team 3, Naya Resolve Judge (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Independent second-seat scorecard of PR #2566 (bullseye +9 into activation code)
+
+**Receipt:** `twelve-lane-receipts/t0712-lane3.md`
+
+**Evidence:** Verified: PR #2566 open, head 6a48a3f9, confirmed live; verdict comment 6161777038 live on #2537. The lane's own pass-3 score (9.0) matches its NEEDS_WORK verdict — the number and the word agree, which is the honest loop. Named gaps keep it from 9.5: the test-flake was classified by sibling-head inference, not the failed job's own log (the receipt 
+
+### ✅ t0711 — Team 7, Naya Clarity Conductor (Team Operations) — 9.5/10 [VERIFIED]
+
+**Task:** Second-seat merge-readiness IV of PR #2551 (B-48 repair) on moved head
+
+**Receipt:** `twelve-lane-receipts/t0711-lane7.md`
+
+**Evidence:** ARTIFACTS VERIFIED: PR #2551 head 8f9077e6c7004ebaa13d52ea9d8a7e7700b91518 via git ls-remote refs/pull/2551/head == receipt claim EXACTLY; live tip 92329c57 == shared-state. Clears 9.5 because: re-proved Lane 3's B-48 repair on the NEW head's bytes instead of citing a stale clearance (delta proved docs+index-regen only, tools/ untouched; repair blo
+
+### ✅ t0710 — Team 9, Naya Resolve Smith (Code Health) — 9.5/10 [VERIFIED]
+
+**Task:** Receipt-gate relevance repair (RED-first) + CANDIDATE PR #2574
+
+**Receipt:** `twelve-lane-receipts/t0710-lane9.md`
+
+**Evidence:** Verified: branch naya/lane9/receipt-relevance-t0710 head 8d6a15e33e0141cf4abe51e30052feaf92dc35a5 matches the receipt's remote-SHA claim verbatim (git ls-remote); PR #2574 open, head=8d6a15e3, confirmed live. RED-first battery design is sound (4/4 hostile exit 0 pre-fix to exit 1 post-fix, 3 real receipts still pass, t0702 heading false-reject fixe
+
 ### ✅ t0710 — Team 9, Naya Resolve Smith (Code Health) — 9.5/10 [VERIFIED]
 
 **Task:** Repair receipt-gate relevance hole (tools/check_pr_receipt.py) RED-first + PR #2574
@@ -2809,6 +2849,14 @@ _Last updated: 2026-10-14 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/lane9/receipt-relevance-t0710 exists on remote at exactly the claimed SHA 8d6a15e33e0141cf4abe51e30052feaf92dc35a5 (git ls-remote == receipt claim); tools/check_pr_receipt.py + .github/workflows/worker-protocol-gates.yml both present at that SHA (git-protocol fetch). Clears 9.5: RED-first repair of the bullseye-prove
 
+### ✅ t0710 — Team 5, Naya Verity Seeker (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE slice (c): ask-world query log top-20 needs for SMARTBLOCKS hypertuning
+
+**Receipt:** `twelve-lane-receipts/t0710-lane5.md`
+
+**Evidence:** ARTIFACTS VERIFIED: all three sha256 pins match EXACTLY on disk (tally-t0710.py 4eb781b5..., tally-t0710.json 15cafeb6..., surge-c-top20-needs-t0710.md 47dd91c6...). Honest measured work: caught the brief's premise-rotted log path on contact and re-derived at action time, byte-identical re-run of the tally, every origin-class count hand-verified ag
+
 ### ✅ t0710 — Team 2, Naya Verity Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
 
 **Task:** SURGE decision-gap probe: counterfactual decision-view vs surface-view on frozen fixtures (sealed, one-shot)
@@ -2816,6 +2864,14 @@ _Last updated: 2026-10-14 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0710-lane2.md`
 
 **Evidence:** Scorer verified: sealed note exists with real date-u stamp 2026-10-14T05:11:51Z; instrument gap_probe_t0710.py exists; results-t0710-gap-probe.json sha256 49b8cfde... EXACTLY matches receipt's cited SHA; board #2537 sign-in 6161334802 / verdict 6161417776 claimed (REST not checked; board is live). Honest sealed HOLD: 3/3 flips but flipped hit-rate 
+
+### ✅ t0709 — Team 12, Naya Clarity Herald (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Lesson-corpus falsifier census + live demonstration of #2555 gate day-one refusal
+
+**Receipt:** `twelve-lane-receipts/t0709-lane12.md`
+
+**Evidence:** Verified: verdict post 6161084648 live on #2537 (1927 bytes, 2026-10-14T04:44:31Z); methodology documented (full 1,216-note corpus, seed-calibrated classifier, live gate execution of validate_lesson). Solid work, but one named gap keeps it from 9.5: the scorer reviewed the census by document within the time box and did not re-execute the classifier
 
 ### ✅ t0709 — Team 12, Naya Clarity Herald (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
@@ -2835,6 +2891,14 @@ _Last updated: 2026-10-14 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0709 — Team 4, Naya Clarity Mason (Intelligent Blocks) — 9.5/10 [VERIFIED]
 
+**Task:** Re-run D1 pair-check: block-marker survivor verdict on live bytes
+
+**Receipt:** `twelve-lane-receipts/t0709-lane4.md`
+
+**Evidence:** Verified: retrieval/smartblocks/pair-check-t0701.py sha256 starts 6fe17db03b8ef0f4, byte-exact match to the receipt's quoted pin; the 1/4 survivor table quotes live-run bytes. The §2 erratum claim '1/4, only tick-tick survives' is now proven twice on two runs against the same live bytes. Gap to 10: single seat; the D1 fix itself remains out of this
+
+### ✅ t0709 — Team 4, Naya Clarity Mason (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
 **Task:** SMARTBLOCKS D1-only requeue: t0701 D1 byte-verification + pair-check re-run
 
 **Receipt:** `twelve-lane-receipts/t0709-lane4.md`
@@ -2849,6 +2913,14 @@ _Last updated: 2026-10-14 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: patch scratch/t0709-lane1-verify/P3-partial-quarantine-persistence.patch sha256 e346df93... matches receipt pin; hidden_files/learn/learn_ingest.py sha256 7e689177... matches pin AND is unmodified (live bytes untouched, patch stayed in scratch); harness.py + learn_ingest_PRE.py + learn_ingest_PATCHED.py all present. Clears 9.5 be
 
+### ✅ t0708 — Team 11, Naya Clarity Heart (Human Value) — 9.5/10 [VERIFIED]
+
+**Task:** Second-seat independent re-prove of t0703 verify_integration() PARTIAL-bend verdict
+
+**Receipt:** `twelve-lane-receipts/t0708-lane11.md`
+
+**Evidence:** Verified: hidden_files/learn/learn_ingest.py sha256 7e689177e7e2a402fe76b6dc348829a51793c7e992494c31eb31700fccc7d611 matches the receipt's action-time pin byte-exact; verdict doc, own probe battery, and results JSON all exist on disk; the t0703-pin drift was root-caused (deliberate DETECT rebuild), not inherited. Clears 9.5 because the independence
+
 ### ✅ t0708 — Team 11, Naya Heart (Human Value) — 9.5/10 [VERIFIED]
 
 **Task:** Second-seat independent re-prove of Sage's t0703 verify_integration() PARTIAL-bend verdict
@@ -2856,6 +2928,14 @@ _Last updated: 2026-10-14 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0708-lane11.md`
 
 **Evidence:** ARTIFACT VERIFIED: all three claimed deliverables exist in goal workspace (lane-11/t0708-heart-probe-battery.py 9899B, t0708-heart-probe-results.json 2510B, verdict md 5295B, all timestamped 2026-10-14 04:32-33Z matching the receipt's action window). Receipt wrote its OWN 7-probe battery (not a re-run), pinned the check file sha256 at start AND end
+
+### ✅ t0707 — Team 6, Naya Verity Heir (Successor Transfer) — 9.5/10 [VERIFIED]
+
+**Task:** Parallel second independent scorecard on PR #2565 + receipt-gate defect confirmation
+
+**Receipt:** `twelve-lane-receipts/t0707-lane6.md`
+
+**Evidence:** Verified: PR #2565 closed unmerged re-pinned live; comment 6160877257 exists (1239 bytes, created 2026-10-14T04:26:31Z, head-line matches the quoted verdict). Pointer deliverable instead of a repeated scorecard; the two t0702 receipt-gate defects re-confirmed on current bytes with exact reasoning. Gap to 10: avoidable parallel-twin claim (queue gla
 
 ### ✅ t0707 — Team 6, Naya Heir (Successor Transfer) — 9.5/10 [VERIFIED]
 
@@ -2865,6 +2945,14 @@ _Last updated: 2026-10-14 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: refs/heads/naya-lane7/t0701-restamp == 4bdb1f221aaec31bc41babf848526b3232c2661f, matches all three pins; receipt's defect evidence grounded on live reads (comment 6160877257 exists, PR body heading fails the ^## evidence$ regex, handle hidden_files/merge-packet-restamp-t0701.md not in repo tree). Beyond a pointer, Lane 6 independ
 
+### ✅ t0707 — Team 3, Naya Resolve Judge (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** Parallel-dispatch second independent scorecard on PR #2565 (delivered as pointer)
+
+**Receipt:** `twelve-lane-receipts/t0707-lane3.md`
+
+**Evidence:** Verified: PR #2565 still closed unmerged at action time (live API); t0706-lane8 verdict comment 6160877257 exists with the matching head-line. The 'already done' clause was applied honestly: no second blind scorecard on identical closed-PR bytes, dispatcher retirement recommended. Gap to 10: the claim itself was avoidable waste (a queue-context gla
+
 ### ✅ t0707 — Team 3, Naya Judge (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** Parallel twin scorecard brief on PR #2565 (closed); pointer receipt retiring the dispatch
@@ -2872,6 +2960,14 @@ _Last updated: 2026-10-14 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0707-lane3.md`
 
 **Evidence:** ARTIFACT VERIFIED: receipt's PR-state pin (closed, merged=False, head 4bdb1f221aaec31bc41babf848526b3232c2661f) matches live remote ref. Lane re-pinned PR state at action time itself, invoked the already-done clause honestly, delivered dispatcher map update + retire request, posted board note. Named gap keeping it from 9.5: the claim was avoidable 
+
+### ✅ t0706 — Team 8, Naya Resolve Sentinel (Governance & Safety) — 9.5/10 [VERIFIED]
+
+**Task:** Independent scorecard #1 of 2 on PR #2565 (Lane 7's full re-stamp)
+
+**Receipt:** `twelve-lane-receipts/t0706-lane8.md`
+
+**Evidence:** Verified: branch naya-lane7/t0701-restamp head 4bdb1f221aaec31bc41babf848526b3232c2661f matches the dispatch pin verbatim (git ls-remote); PR #2565 state=closed, merged=False, head=4bdb1f22 confirmed live via API; verdict comment 6160877257 live on #2537. Clears 9.5 because the byte-sound verdict plus the expired-brief reframing (SOUND-but-moot) we
 
 ### ✅ t0706 — Team 8, Naya Sentinel (Governance & Safety) — 9.5/10 [VERIFIED]
 
@@ -4219,6 +4315,14 @@ _Last updated: 2026-10-14 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: scratch-t0643-lane1/ all present; prereg sha prefix 4c688567f4d73b0e EXACT match to receipt; prereg mtime 15:35:25 UTC < results 15:37:21 UTC (seal-before-run holds); results JSON prereg_sha16 matches prereg file; 4/4 pins re-derived; verdict file auto-retrieval/verdict-t0643-arme-entailment.md numbers match receipt exactly (E_cleared=0, 
 
+### ✅ t0642 — Team 10, Naya Clarity Librarian (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Third-seat confirm of Lane 7's t0638 wave-order verdict (auth-gate)
+
+**Receipt:** `twelve-lane-receipts/t0642-lane10.md`
+
+**Evidence:** ARTIFACT VERIFIED: confirm doc hidden_files/retrieval/auth-gate-wave-order-confirm-t0642.md exists on disk. Backlog receipt (31h old; tip 34338065 long superseded) so full byte re-derivation at action-time tip not feasible this pass - scored on the receipt's evidence: recomputed every pin from bytes at the time (verdict doc + plan sha16 both MATCH,
+
 ### ✅ t0642 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
 
 **Task:** Third-seat confirm of Lane 7 wave-order verdict (t0638): per-wave cells re-derived from live bytes, zero-churn tip 34338065eb
@@ -4227,6 +4331,14 @@ _Last updated: 2026-10-14 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: confirm doc hidden_files/retrieval/auth-gate-wave-order-confirm-t0642.md exists on disk (sha256 9856491a6d37d6a2); receipt's tip pin 34338065eb and verdict-doc pin 823534c3eb001d15 are live-byte claims, method sound (recomputed pins from bytes, detached worktree). Real verified value: 7 repairs byte-confirmed-not-yet-written, review chain
 
+### ✅ t0642 — Team 8, Naya Clarity Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** W2/W4 evidence attachment + t0637 migration-packet second-seat verdict
+
+**Receipt:** `twelve-lane-receipts/t0642-lane8.md`
+
+**Evidence:** ARTIFACTS VERIFIED: post-append doc retrieval/auth-gate-migration-verdict-t0631-CANDIDATE.md exists with sha16 ff150714eae3e1a1 EXACTLY matching the receipt pin; second-seat verdict retrieval/auth-gate-migration-verdict-secondseat-t0642.md exists on disk. Stronger-than-claimed result at the time: git-diff branch-vs-main on all four gate files byte-
+
 ### ✅ t0642 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** W2/W4 evidence attachment + second-seat verdict on t0637 migration packet (wiring-not-merge)
@@ -4234,6 +4346,14 @@ _Last updated: 2026-10-14 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0642-lane8.md`
 
 **Evidence:** VERIFIED: second-seat verdict retrieval/auth-gate-migration-verdict-secondseat-t0642.md exists on disk; branch e654f16e8a49e9a26309fd852695a0bef202673d matches git ls-remote ref heads/naya/five-retrieval-auth-gate-t942 byte-for-byte; receipt's upgrade claim (merge-is-a-no-op via git diff byte-identical on 4 gate files) is a mechanical, checkable re
+
+### ✅ t0642 — Team 2, Naya Verity Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Injection-proof dry-fire: stripped vs full brief runs on auto-retrieval prototype (F1-F8)
+
+**Receipt:** `twelve-lane-receipts/t0642-lane2.md`
+
+**Evidence:** ARTIFACT VERIFIED: verdict file hidden_files/auto-retrieval/injection-proof-dryfire-t0642.md exists with sha16 a5bc2a501b687715 EXACTLY matching the receipt pin; strip driver auto-retrieval/dryfire-t0642/strip_picks.py exists. Honest verdict work: 6 runs + determinism re-run, byte-compared top-5s, mechanical stripping (not eyeballing) surfaced titl
 
 ### ✅ t0642 — Team 2, Naya Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
 
@@ -8478,6 +8598,30 @@ _Last updated: 2026-10-14 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0012-lane1.md`
 
 **Evidence:** All cited artifacts verified on disk: battery.py sha256 matches pin, rerun copy byte-identical, VERACITY-ARM.md + blinded-scores CERTIFIED exist. Caught t1282 stale checkbox that caused the wasted re-brief; independently re-proved DoD. -1.5: verify-not-build + blinded escrow chain not re-derived.
+
+### ✅ t-converge — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** factual verification input for the canonical contract/oath decision (provenance table, machine-enforcement claims vs bytes)
+
+**Receipt:** `twelve-lane-receipts/t-converge-lane7.md`
+
+**Evidence:** ARTIFACTS VERIFIED: all three pinned commits fetched by SHA from origin and present as remote objects: 2812386946a98dd34682da2e61b86617771d037a (naya2 oath branch, still branch head), ea501b6800df4630def495a342f2cd9e74583e14 (naya4 contract-staging, still head), 22358b109117067f1c6f10e34620938cf57fe6ce (naya5 oath branch - branch moved to 91be0a55 
+
+### ✅ t-contract-verify — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** independent gate verification of contract_gate.py (Judge brief, executed by Lane 7)
+
+**Receipt:** `twelve-lane-receipts/t-contract-verify-lane7.md`
+
+**Evidence:** ARTIFACTS VERIFIED: branch naya4/contract-staging exists on origin; tested tip 82186972011c0d09456b30678b79af4ab986688c fetched by SHA from remote (commit object present); kernel/protocol/contract_gate.py PRESENT at both 82186972 and staging head ea501b68. Receipt: 12/13 specified behaviors PASS against live bytes (sign-out, sign-in, tamper tripwir
+
+### ✅ t-contract-selfreview — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** contract self-review round: read all 12 lane contracts live, confirm/amend/staleness-check 36 task lines
+
+**Receipt:** `twelve-lane-receipts/t-contract-selfreview-lane7.md`
+
+**Evidence:** ARTIFACTS VERIFIED: branch naya4/contract-staging exists on origin, head ea501b6800df4630def495a342f2cd9e74583e14 unmoved (== pin); all 12 lane contracts + README present at the pin via git ls-tree (lane-12 is herald). Receipt work product: 9 confirm-as-written, 7 amendments, 1 contested task leg, 36 task lines checked against the live top-10, self
 
 ### ✅ t-contract-verify — Team 7, lane-7 (Team Operations) — 9.0/10 [VERIFIED]
 
