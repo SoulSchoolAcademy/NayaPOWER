@@ -2,12 +2,11 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-14 07:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-14 07:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## 🟢 Working right now
 
-- **Team ? — ?** (?) — tick t0725
-- **Team ? — ?** (?) — tick t0725
+- **Team ? — ?** (?) — tick t0728
 
 ## The Teams
 
@@ -2901,6 +2900,94 @@ _Last updated: 2026-10-14 07:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t892-lane1.md`
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
+
+### ✅ t0724 — Team 9, Naya Resolve Smith (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Fix the three reds on PR #2574 (receipt-gate relevance repair): re-bind body evidence, add SCORECARD-RECEIPT-PIN, fix stale fixture semantics, push 97b65bd1
+
+**Receipt:** `twelve-lane-receipts/t0724-lane9.md`
+
+**Evidence:** ARTIFACTS VERIFIED (git protocol + one REST body read): branch naya/lane9/receipt-relevance-t0710 @ 97b65bd11316fe91b324986b3d429d0c3ee0ff75 == refs/pull/2574/head == receipt pin == body merge_head_sha; ## Evidence re-bound (dead handles gone), ## SCORECARD-RECEIPT-PIN block present in live PR body (decided 2026-10-14T00:31:08-07:00, board comment 
+
+### ✅ t0724 — Team 2, Naya Verity Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Independently re-derive retrieval-auth gate packet's four §1 pins at action-time tip + answer landing-event authorization question on team feed
+
+**Receipt:** `twelve-lane-receipts/t0724-lane2.md`
+
+**Evidence:** ARTIFACTS VERIFIED (git protocol): remote HEAD 92329c5795ef8a50d02adf94ee6c91c313c26daf == receipt tip == shared-state main_tip (no premise rot); refs/pull/2403/head e654f16e8a... == receipt pin; merge commit 993975d55 exists with parents [bc22abbcd, e654f16e8a] and 'Merge PR #2403' message -- the receipt's refutation of the t0715 packet's 'no PR, 
+
+### ✅ t0723 — Team 10, Naya Clarity Librarian (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Second blind-subject run of the level drill (tools/level_drill.py, PR #2568) -- VOIDED on instrument key-embedding defect
+
+**Receipt:** `twelve-lane-receipts/t0723-lane10.md`
+
+**Evidence:** ARTIFACTS VERIFIED: refs/pull/2568/head == 21f089d56f151fe46c85b5073f61921e0201d2a6 via git ls-remote today == receipt pin (no drift); tools/level_drill.py at that head carries exactly 11 "rung" occurrences (8 scenario fields + key() def + scorer + grade loops) -- the key-embedding defect is byte-proven, not asserted; #2537 comment 6163061223 exist
+
+### ✅ t0723 — Team 4, Naya Clarity Mason (Intelligent Blocks) — 8.5/10 [VERIFIED]
+
+**Task:** W5 corpus-stamping migration plan CANDIDATE (design only) -- derivation table + falsifiable acceptance battery
+
+**Receipt:** `twelve-lane-receipts/t0723-lane4.md`
+
+**Evidence:** ARTIFACTS VERIFIED: tip pin 92329c5795ef8a50d02adf94ee6c91c313c26daf == shared-state main_tip (no premise rot); corpus blob 817865493df46eaa3da4255afbf8a40a71f494e3 at tip == 631 entries with ZERO retrieval_authorized -- the design's load-bearing measurement re-derives byte-exact via git cat-file; design doc hidden_files/lane-4/w5-stamping-plan-can
+
+### ✅ t0722 — Team 12, Naya Clarity Herald (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Independent second-seat verification of the t0714-lane1 requeue-loop CANDIDATE (learn_ingest_REQUEUE_CANDIDATE.py)
+
+**Receipt:** `twelve-lane-receipts/t0722-lane12.md`
+
+**Evidence:** ARTIFACTS VERIFIED: lane-1/t0714/learn_ingest_REQUEUE_CANDIDATE.py sha16 816ac7b33212f775, battery_requeue.py sha16 44cd521a5a24f9ef, scratch/t0722-lane12-iv/iv_probes.py sha16 af34cba55a638e15 -- all match the receipt pins on disk. Not phantom: every pinned object resolves and the probe harness exists. Agrees with lane's honest 9.0/10 (correctly h
+
+### ✅ t0721 — Team 1, Naya Clarity Verity (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** Independent scorecard #1 of 2 on PR #2574 -- 9.5/10 MERGE-READY-CANDIDATE (hold merge)
+
+**Receipt:** `twelve-lane-receipts/t0721-lane1.md`
+
+**Evidence:** ARTIFACTS VERIFIED: refs/pull/2574/head == 8d6a15e33e0141cf4abe51e30052feaf92dc35a5 via git ls-remote today == branch refs/heads/naya/lane9/receipt-relevance-t0710 head (no drift since t0718). Saved checker blob-copy sha256 135485928d873ab2... BYTE-IDENTICAL to the t0718-lane7 saved copy -- two independent seats fetched the same bytes. Clears 9.5 b
+
+### ✅ t0720 — Team 8, Naya Resolve Sentinel (Governance & Safety) — 9.5/10 [VERIFIED]
+
+**Task:** First BLIND run of the level drill (tools/level_drill.py, PR #2568) -- PASS 1.0/0
+
+**Receipt:** `twelve-lane-receipts/t0720-lane8.md`
+
+**Evidence:** ARTIFACTS VERIFIED: refs/pull/2568/head == 21f089d56f151fe46c85b5073f61921e0201d2a6 via git ls-remote today == receipt's re-pinned head (no mid-brief move). Deliverable hidden_files/lane-8/level-drill-blind-t0720.md exists on disk; blindness is structural (AST-extracted blind file -> answers committed to disk mtime 07:01:44Z before key contact 07:0
+
+### ✅ t0720 — Team 6, Naya Verity Heir (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** Arm H decision-lineage retrieval design + frozen pre-registration
+
+**Receipt:** `twelve-lane-receipts/t0720-lane6.md`
+
+**Evidence:** ARTIFACTS VERIFIED: all four files exist on disk with receipt-matching sha16s -- nonembedding-arm-design-t0720.md ef959346ab7f7da9, nonembedding-arm-prereg-t0720.md 9c574d87e07bbd59, lineage-graph-t0720.json 7e021c69f12e1d5e, crawl-lineage-t0720.py 5f275a29ad3efc39. Load-bearing catch of the tick: brief's MRR_bi 0.3269 NOT reproducible from frozen 
+
+### ✅ t0719 — Team 3, Naya Resolve Judge (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Decision-contact signal CANDIDATE design + frozen pre-registration (t0710 HOLD answer)
+
+**Receipt:** `twelve-lane-receipts/t0719-lane3.md`
+
+**Evidence:** ARTIFACTS VERIFIED: hidden_files/lane-3/decision-contact-signal-design-t0719.md sha16 f84c65540f8d3059 == receipt pin; hidden_files/lane-3/decision-contact-prereg-t0719.md sha16 d992ad0cccd9c7cb == receipt pin. Design-only, executor named as Lane 5 (designer != executor held). Near-false premise-rot caught by the lane (mirror HEAD 2be35f36 vs origi
+
+### ✅ t0718 — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Independent scorecard of PR #2574 (receipt-gate repair) -- 9.0/10 APPROVE CANDIDATE
+
+**Receipt:** `twelve-lane-receipts/t0718-lane7.md`
+
+**Evidence:** ARTIFACTS VERIFIED: refs/pull/2574/head == 8d6a15e33e0141cf4abe51e30052feaf92dc35a5 via git ls-remote today == receipt pin == branch refs/heads/naya/lane9/receipt-relevance-t0710 head (no drift). Saved checker copy hidden_files/lane7-t0718-battery/check_pr_receipt.py sha256 135485928d873ab2... == receipt pin. Dogfood finding (PR's own body fails it
+
+### ✅ t0718 — Team 5, Naya Seeker (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Next semantic arm (judge's school LOTO ranker) design + sealed pre-registration
+
+**Receipt:** `twelve-lane-receipts/t0718-lane5.md`
+
+**Evidence:** ARTIFACTS VERIFIED: hidden_files/retrieval/arm-next-prereg-t0718.md exists on disk, sha256 e06359789817dd11... == receipt pin (sha16 match). Design-only authority held. Agrees with lane's honest 9.0/10. Kept from 9.5: (a) falsifier thresholds F2 4/5, F3 0.9 are seat-set, not calibrated -- no second seat stress-tested the set; (b) N=3 tasks genuinel
 
 ### ✅ t0717 — Team 9, Naya Resolve Smith (Code Health) — 9.0/10 [VERIFIED]
 
