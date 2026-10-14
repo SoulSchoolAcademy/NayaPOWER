@@ -27,6 +27,14 @@ Exit codes: 0 = all PASS (WARN allowed), 1 = any FAIL, 2 = instrument error.
 GitHub API access: uses GITHUB_TOKEN env when present (CI). Otherwise delegates to
 the NAYA_GH_API helper script (default: ~/workspace/naya/bin/gh-api), which carries
 the credential without exposing it. With neither, C2/C3 report UNKNOWN.
+
+Run modes (API economy — every REST call spends from a monthly budget):
+  --local-only       zero REST API calls; C2/C3/C9 report UNKNOWN with an
+                     explicit "local-only" reason instead of spending.
+  --max-api-calls N  cap REST calls at N (default 10, the per-run budget);
+                     once the cap is hit, remaining API checks report UNKNOWN
+                     ("api budget exhausted") instead of spending silently.
+The report's "api_calls" field records how many REST calls the run made.
 """
 from __future__ import annotations
 
@@ -59,6 +67,51 @@ MIGRATION_NAME_RE = re.compile(r"^[0-9]{14}_[a-z0-9_]+\.sql$")
 STAMP_MSG_RE = re.compile(r"deploy: stamp Naya runtime source ([0-9a-f]{40})")
 
 SCHEMA = "NAYAPOWER_PRODUCTION_READINESS_CHECKLIST_V1"
+
+
+# ---- API economy (per-run budget) -------------------------------------------
+# Every REST call spends from a monthly budget that does not refill. gh_get is
+# the single REST choke point; _api_get wraps it with two guards:
+#   * --local-only: make zero REST calls (C2/C3/C9 report UNKNOWN, explicit).
+#   * --max-api-calls N: once N calls are spent, further API checks report
+#     UNKNOWN ("api budget exhausted") instead of spending silently.
+# git-protocol reads (C1 tip re-resolution) are NOT REST calls and are never
+# counted. Tests reset these globals via fixture; see test file.
+_LOCAL_ONLY: bool = False
+_MAX_API_CALLS: int = 10
+_api_call_count: int = 0
+
+
+class _ApiSkipped(Exception):
+    """Raised when a REST call is deliberately not made (flag or budget)."""
+
+    def __init__(self, check_id: str, reason: str):
+        super().__init__(reason)
+        self.check_id = check_id
+        self.reason = reason
+
+
+def _api_get(path: str):
+    """Budgeted REST GET: the single choke point for all GitHub API calls."""
+    global _api_call_count
+    if _LOCAL_ONLY:
+        raise _ApiSkipped("", "local-only run: REST skipped by --local-only")
+    if _api_call_count >= _MAX_API_CALLS:
+        raise _ApiSkipped("", f"REST budget exhausted "
+                              f"({_api_call_count}/{_MAX_API_CALLS} calls)")
+    _api_call_count += 1
+    return gh_get(path)
+
+
+def _api_unknown(check_id: str, skipped: _ApiSkipped,
+                 extra: dict | None = None) -> dict:
+    """UNKNOWN verdict for a check whose API reads were deliberately skipped."""
+    evidence = {"reason": ("local_only" if _LOCAL_ONLY else "api_budget_exhausted"),
+                "api_calls": _api_call_count}
+    if extra:
+        evidence.update(extra)
+    return check_result(check_id, "UNKNOWN",
+                        f"skipped: {skipped.reason}", evidence)
 
 
 # ---------------------------------------------------------------- utilities
@@ -122,7 +175,10 @@ def check_production_stamp(tip_sha: str | None) -> dict:
     if not tip_sha:
         return check_result("C2", "UNKNOWN", "no tip SHA to look for",
                             {"reason": "C1 did not produce a SHA"})
-    data = gh_get(f"/repos/{REPO}/branches/production")
+    try:
+        data = _api_get(f"/repos/{REPO}/branches/production")
+    except _ApiSkipped as skipped:
+        return _api_unknown("C2", skipped, {"wanted_sha": tip_sha})
     if data is None:
         return check_result("C2", "UNKNOWN", "GitHub API unreachable (no credential path)",
                             {"reason": "no_api"})
@@ -156,7 +212,15 @@ def check_workflow_health(recent: int = 12) -> dict:
     (the gate model cannot explain the failure). A working gate refusing is
     not a broken deploy path — the verdict names the true hole.
     """
-    data = gh_get(f"/repos/{REPO}/actions/workflows/{PROMOTION_WORKFLOW_FILE}/runs?per_page={recent}")
+    try:
+        return _check_workflow_health_impl(recent)
+    except _ApiSkipped as skipped:
+        return _api_unknown("C3", skipped)
+
+
+def _check_workflow_health_impl(recent: int = 12) -> dict:
+    """C3 implementation; _ApiSkipped propagates to the wrapper above."""
+    data = _api_get(f"/repos/{REPO}/actions/workflows/{PROMOTION_WORKFLOW_FILE}/runs?per_page={recent}")
     if data is None:
         return check_result("C3", "UNKNOWN", "GitHub API unreachable (no credential path)",
                             {"reason": "no_api"})
@@ -179,7 +243,7 @@ def check_workflow_health(recent: int = 12) -> dict:
                          "conclusion": conclusion, "created_at": r.get("created_at")})
         if latest_failed_sha is None and r.get("head_sha"):
             latest_failed_sha = r["head_sha"]
-        jobs = gh_get(f"/repos/{REPO}/actions/runs/{rid}/jobs?per_page=30")
+        jobs = _api_get(f"/repos/{REPO}/actions/runs/{rid}/jobs?per_page=30")
         steps = []
         if isinstance(jobs, dict):
             for j in jobs.get("jobs", []):
@@ -223,7 +287,7 @@ def failed_jobs_for_run(run_id: int | None) -> list[str] | None:
     """
     if not run_id:
         return None
-    jobs = gh_get(f"/repos/{REPO}/actions/runs/{run_id}/jobs?per_page=30")
+    jobs = _api_get(f"/repos/{REPO}/actions/runs/{run_id}/jobs?per_page=30")
     if not isinstance(jobs, dict):
         return None
     out = []
@@ -245,8 +309,8 @@ def required_ci_status(head_sha: str | None) -> dict:
         return {}
     out: dict[str, dict] = {}
     for wf in REQUIRED_CI_WORKFLOWS:
-        data = gh_get(f"/repos/{REPO}/actions/workflows/{wf}/runs"
-                      f"?head_sha={head_sha}&event=push&per_page=10")
+        data = _api_get(f"/repos/{REPO}/actions/workflows/{wf}/runs"
+                        f"?head_sha={head_sha}&event=push&per_page=10")
         if not isinstance(data, dict):
             out[wf] = {"status": "unknown", "conclusion": None, "reason": "no_api",
                        "failed_jobs": None}
@@ -401,8 +465,8 @@ def _paged_open_prs(max_pages: int = 3) -> list | None:
     """Fetch open PRs oldest-first across bounded pages (API caps at 100/page)."""
     out: list = []
     for page in range(1, max_pages + 1):
-        data = gh_get(f"/repos/{REPO}/pulls?state=open&per_page=100"
-                      f"&sort=created&direction=asc&page={page}")
+        data = _api_get(f"/repos/{REPO}/pulls?state=open&per_page=100"
+                        f"&sort=created&direction=asc&page={page}")
         if data is None:
             return None
         if not isinstance(data, list) or not data:
@@ -421,6 +485,14 @@ def check_branch_hygiene(dirty_scan_limit: int = 15) -> dict:
     ones — with bounded API cost. A healthy fast-moving repo can carry a large
     fresh pile; a stale or conflicted pile is integration debt.
     """
+    try:
+        return _check_branch_hygiene_impl(dirty_scan_limit)
+    except _ApiSkipped as skipped:
+        return _api_unknown("C9", skipped)
+
+
+def _check_branch_hygiene_impl(dirty_scan_limit: int = 15) -> dict:
+    """C9 implementation; _ApiSkipped propagates to the wrapper above."""
     data = _paged_open_prs()
     if data is None:
         return check_result("C9", "UNKNOWN", "GitHub API unreachable (no credential path)",
@@ -433,7 +505,7 @@ def check_branch_hygiene(dirty_scan_limit: int = 15) -> dict:
     # mergeable_state needs a per-PR fetch: scan only the oldest, bounded.
     dirty, blocked, scan_failures = [], [], 0
     for p in prs[:dirty_scan_limit]:
-        detail = gh_get(f"/repos/{REPO}/pulls/{p['number']}")
+        detail = _api_get(f"/repos/{REPO}/pulls/{p['number']}")
         state = detail.get("mergeable_state") if isinstance(detail, dict) else None
         if state == "dirty":
             dirty.append(p["number"])
@@ -441,7 +513,7 @@ def check_branch_hygiene(dirty_scan_limit: int = 15) -> dict:
             blocked.append(p["number"])
         elif state is None:
             scan_failures += 1
-    merged_data = gh_get(f"/repos/{REPO}/pulls?state=closed&per_page=100")
+    merged_data = _api_get(f"/repos/{REPO}/pulls?state=closed&per_page=100")
     merged_24h = 0
     if isinstance(merged_data, list):
         merged_24h = sum(
@@ -614,6 +686,8 @@ def run() -> tuple[dict, int]:
     verdict, exit_code = score(checks)
     report = {"schema": SCHEMA, "verdict": verdict,
               "checks": checks,
+              "api_calls": _api_call_count,
+              "local_only": _LOCAL_ONLY,
               "summary": {v: sum(1 for c in checks if c["verdict"] == v)
                           for v in ("PASS", "WARN", "FAIL", "UNKNOWN")}}
     return report, exit_code
@@ -621,6 +695,17 @@ def run() -> tuple[dict, int]:
 
 def main(argv: list[str] | None = None) -> int:
     args = sys.argv[1:] if argv is None else argv
+    global _LOCAL_ONLY, _MAX_API_CALLS, _api_call_count
+    _LOCAL_ONLY = "--local-only" in args
+    _api_call_count = 0
+    if "--max-api-calls" in args:
+        i = args.index("--max-api-calls")
+        try:
+            _MAX_API_CALLS = int(args[i + 1])
+        except (IndexError, ValueError):
+            print(json.dumps({"schema": SCHEMA, "verdict": "INSTRUMENT_ERROR",
+                              "error": "--max-api-calls needs an integer value"}))
+            return 2
     try:
         report, exit_code = run()
     except Exception as e:  # instrument must fail loudly, never silently
@@ -638,6 +723,8 @@ def main(argv: list[str] | None = None) -> int:
     print(f"\nverdict: {report['verdict']} "
           f"(PASS {report['summary']['PASS']}, WARN {report['summary']['WARN']}, "
           f"FAIL {report['summary']['FAIL']}, UNKNOWN {report['summary']['UNKNOWN']})")
+    print(f"api_calls: {report['api_calls']}"
+          + (" (local-only: zero REST calls)" if report["local_only"] else ""))
     return exit_code
 
 
