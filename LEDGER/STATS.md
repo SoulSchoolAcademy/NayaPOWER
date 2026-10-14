@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-14 06:04 UTC_
+_Last updated: 2026-10-14 06:31 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 1113
-- ✅ Verified (8+): 1105
+- **Total scored actions:** 1131
+- ✅ Verified (8+): 1123
 - 🟡 Partial (5–7): 7
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 1
@@ -15,16 +15,16 @@ _Last updated: 2026-10-14 06:04 UTC_
 
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
-| Team 1 | Naya Verity | 98 | 9.0 | 9.5 |
-| Team 2 | Naya Sage | 120 | 8.7 | 9.0 |
-| Team 3 | Naya Judge | 83 | 8.8 | 9.5 |
+| Team 1 | Naya Verity | 100 | 9.0 | 9.5 |
+| Team 2 | Naya Sage | 123 | 8.7 | 9.0 |
+| Team 3 | Naya Judge | 84 | 8.8 | 9.5 |
 | Team 4 | Naya Mason | 87 | 8.9 | 9.5 |
-| Team 5 | Naya Seeker | 79 | 8.9 | 9.5 |
-| Team 6 | Naya Heir | 76 | 8.9 | 9.5 |
-| Team 7 | Naya Conductor | 112 | 8.9 | 9.5 |
-| Team 8 | Naya Sentinel | 97 | 8.9 | 9.5 |
-| Team 9 | Naya Smith | 119 | 8.8 | 9.5 |
-| Team 10 | Naya Librarian | 115 | 8.9 | 9.5 |
+| Team 5 | Naya Seeker | 80 | 8.9 | 9.5 |
+| Team 6 | Naya Heir | 78 | 8.9 | 9.5 |
+| Team 7 | Naya Conductor | 114 | 8.9 | 9.5 |
+| Team 8 | Naya Sentinel | 100 | 8.9 | 9.5 |
+| Team 9 | Naya Smith | 121 | 8.8 | 9.5 |
+| Team 10 | Naya Librarian | 117 | 8.9 | 9.5 |
 | Team 11 | Naya Heart | 90 | 8.9 | 9.5 |
 | Team 12 | Naya Herald | 37 | 9.0 | 9.5 |
 
@@ -58,10 +58,10 @@ _Last updated: 2026-10-14 06:04 UTC_
 - **t0202:** 6 actions, avg 9.0/10
 - **t0212:** 8 actions, avg 8.9/10
 - **t0222:** 6 actions, avg 8.8/10
-- **t0232:** 3 actions, avg 8.7/10
-- **t0242:** 3 actions, avg 8.8/10
-- **t0252:** 3 actions, avg 8.8/10
-- **t0262:** 5 actions, avg 8.8/10
+- **t0232:** 6 actions, avg 8.7/10
+- **t0242:** 6 actions, avg 8.8/10
+- **t0252:** 6 actions, avg 8.8/10
+- **t0262:** 8 actions, avg 8.8/10
 - **t0272:** 3 actions, avg 9.0/10
 - **t0292:** 2 actions, avg 9.0/10
 - **t0302:** 3 actions, avg 8.8/10
@@ -293,8 +293,8 @@ _Last updated: 2026-10-14 06:04 UTC_
 - **t1302:** 6 actions, avg 8.8/10
 - **t1312:** 6 actions, avg 9.0/10
 - **t1322:** 6 actions, avg 9.0/10
-- **t1332:** 6 actions, avg 8.8/10
-- **t1342:** 6 actions, avg 8.8/10
+- **t1332:** 9 actions, avg 8.8/10
+- **t1342:** 9 actions, avg 8.9/10
 - **t1352:** 9 actions, avg 8.9/10
 - **t1402:** 12 actions, avg 8.8/10
 - **t1412:** 9 actions, avg 8.9/10
