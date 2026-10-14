@@ -113,6 +113,9 @@ def pre_action_readiness(expected_main, agent_id):
     def hold(reason):
         return {"verdict": "STAND_DOWN", "reason": reason, "phase": "pre_action"}
 
+    if check_stand_down():
+        return hold("active stand-down flag; no remote reads or governed actions")
+
     if not re.fullmatch(r"[0-9a-f]{40}", expected_main or ""):
         return hold("missing or malformed full expected main SHA")
     if not re.fullmatch(r"[a-zA-Z0-9_.:-]{3,80}", agent_id or ""):
@@ -149,6 +152,14 @@ def pre_action_readiness(expected_main, agent_id):
     except (OSError, subprocess.TimeoutExpired, ValueError, TypeError,
             AttributeError):
         return hold("could not independently prove checkout and boot readiness")
+
+    # Second remote observation is required: main may move while boot runs.
+    # A stale first read cannot authorize the next action.
+    if check_stand_down():
+        return hold("stand-down became active during pre-action verification")
+    final_tip = get_live_tip()
+    if final_tip != live_tip:
+        return hold("main changed or became unreachable during pre-action verification")
 
     return {
         "verdict": "PRE_ACTION_READY_FOR_LAW",

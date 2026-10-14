@@ -70,6 +70,34 @@ def test_pre_action_unknown_or_moved_main_refuses(monkeypatch, remote):
     runner.assert_not_called()
 
 
+def test_pre_action_main_moves_during_boot_refuses(monkeypatch):
+    remote = Mock(side_effect=[SHA, DIFFERENT])
+    monkeypatch.setattr(worker, "get_live_tip", remote)
+    monkeypatch.setattr(worker.subprocess, "run", Mock(side_effect=[
+        completed(), completed(stdout=boot_receipt())
+    ]))
+    result = worker.pre_action_readiness(SHA, IDENTITY)
+    assert result["verdict"] == "STAND_DOWN"
+    assert remote.call_count == 2
+
+
+def test_pre_action_remote_disappears_after_boot_refuses(monkeypatch):
+    remote = Mock(side_effect=[SHA, None])
+    monkeypatch.setattr(worker, "get_live_tip", remote)
+    monkeypatch.setattr(worker.subprocess, "run", Mock(side_effect=[
+        completed(), completed(stdout=boot_receipt())
+    ]))
+    assert worker.pre_action_readiness(SHA, IDENTITY)["verdict"] == "STAND_DOWN"
+
+
+def test_pre_action_obeys_api_stand_down_before_any_remote_read(monkeypatch):
+    monkeypatch.setattr(worker, "check_stand_down", lambda: True)
+    remote = Mock()
+    monkeypatch.setattr(worker, "get_live_tip", remote)
+    assert worker.pre_action_readiness(SHA, IDENTITY)["verdict"] == "STAND_DOWN"
+    remote.assert_not_called()
+
+
 def test_pre_action_stale_checkout_refuses_without_boot(monkeypatch):
     monkeypatch.setattr(worker, "get_live_tip", lambda: SHA)
     runner = Mock(return_value=completed(returncode=1))
