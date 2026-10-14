@@ -39,11 +39,23 @@ Cycle-2 upgrades (Naya Gamma, w110 — padding-resistance battery):
     Falsifier: a genuine PROMOTE-worthy lesson with marker density > 0.5.
     Does NOT stop adaptive stuffing diluted with filler nouns — that attack
     is pinned as a strict-xfail case, not hidden.
+Cycle-3 upgrades (Naya Gamma, w111 — reach wiring + embeddings seam):
+  * REACH WIRING: reach is no longer a bare word list. _AREA_KEYWORDS wires
+    every reach keyword to one of the twelve canonical areas (TEAM-STRUCTURE),
+    and reach_details() names WHICH areas a candidate touches. reach_score()
+    is derived from it — the 10/8/5/2 bands are byte-identical to cycle 2.
+    Matching stays substring shape-matching (documented roughness, not a
+    semantic router — see P-011).
+  * EMBEDDINGS SEAM: novelty_score() and triage() accept similarity=, an
+    injectable callable (text, corpus) -> float in [0,1] = "fraction of the
+    candidate's content already present in the corpus". Default is the token
+    _max_coverage; an embeddings provider wires in without touching triage().
+    Values are clamped to [0,1]; NaN raises ValueError (no silent certainty).
 Known gaps (strict-xfail in the adversarial battery, not theater):
-  * synonym-level paraphrase needs the embeddings seam (_max_coverage doc).
+  * an embeddings PROVIDER is still needed — the seam is the socket, not
+    the signal. The synonym-xfail now names the provider, not the seam.
   * semantic vacuity ("stuffed trivia") needs semantic judgment — shape
     scorers cannot read meaning.
-  * reach wiring is cycle 3 (w108 queue).
 """
 
 import re
@@ -84,12 +96,26 @@ _ENFORCEMENT_WORDS = frozenset((
     "abort", "aborts", "test",
 ))
 
-# Reach: area/seat/collective language.
-_AREA_WORDS = frozenset((
-    "learn", "know", "act", "law", "verify", "blocks", "decision",
-    "retrieval", "successor", "team", "infra", "human value", "naya",
-    "lane", "lanes", "seat", "seats",
-))
+# Reach: the twelve canonical areas (TEAM-STRUCTURE), wired to keywords.
+# Every keyword that counted toward the cycle-2 reach bands is still here —
+# wiring ADDS the area names, it does not change what matches. The extra
+# team-talk words (naya, lane(s), seat(s)) count as reach hits without
+# belonging to one area: they name the collective doing the work.
+_AREA_KEYWORDS = {
+    "LEARN": ("learn",),
+    "KNOW": ("know",),
+    "ACT": ("act",),
+    "LAW": ("law",),
+    "VERIFY": ("verify",),
+    "Intelligent Blocks": ("blocks",),
+    "Decision Engine": ("decision",),
+    "Retrieval": ("retrieval",),
+    "Successor": ("successor",),
+    "TEAM": ("team",),
+    "INFRA": ("infra",),
+    "Human Value": ("human value",),
+}
+_TEAM_TALK = ("naya", "lane", "lanes", "seat", "seats")
 _COLLECTIVE_RE = re.compile(r"\bevery\b|\ball\b|\bhive\b")
 
 
@@ -168,11 +194,35 @@ def _max_containment(text, existing_texts):
     return best
 
 
-def novelty_score(text, existing_lesson_texts=()):
-    """10 * (1 - max coverage). Empty corpus -> 10.0 (all is new)."""
+def novelty_score(text, existing_lesson_texts=(), similarity=None):
+    """10 * (1 - max coverage). Empty corpus -> 10.0 (all is new).
+
+    THE EMBEDDINGS SEAM (cycle 3): similarity is an injectable callable
+    (text, corpus) -> float in [0,1] = "fraction of the candidate's content
+    already present in the corpus". Default is the token _max_coverage; an
+    embeddings provider wires in here without touching triage().
+    The seam is the socket, not the signal — token coverage is the default
+    provider, and it cannot see synonym-level paraphrase (strict-xfail).
+
+    Contract: values are clamped to [0,1]; NaN raises ValueError instead of
+    manufacturing certainty; a non-callable similarity is a TypeError.
+
+    Boundary (named, not hidden): the seam drives NOVELTY only. The
+    padding check (_max_containment) stays token-based by design — a
+    coverage provider answers "how much of the candidate is already said",
+    not "how much of an old lesson sits inside the candidate". The
+    combined synonym+filler attack needs semantic containment too; that is
+    its own named fix, and its xfail stays strict.
+    """
     if not existing_lesson_texts:
         return 10.0
-    return round(10.0 * (1.0 - _max_coverage(text, existing_lesson_texts)), 2)
+    sim = similarity if similarity is not None else _max_coverage
+    coverage = float(sim(text, existing_lesson_texts))
+    if coverage != coverage:  # NaN
+        raise ValueError("similarity returned NaN: refusing to score "
+                         "novelty on an undefined value")
+    coverage = max(0.0, min(1.0, coverage))
+    return round(10.0 * (1.0 - coverage), 2)
 
 
 def durability_score(text):
@@ -204,12 +254,36 @@ def actionability_score(text):
     return round(min(10.0, score), 2)
 
 
-def reach_score(text):
-    """Who does this touch? Collective language scores highest."""
+def reach_details(text):
+    """Which areas does this candidate touch? (cycle-3 reach wiring)
+
+    Returns {"areas": [...], "team_talk": [...], "collective": bool}.
+    areas are the twelve canonical area names with at least one keyword
+    hit; team_talk are the extra collective-work words hit; collective is
+    the every/all/hive band.
+
+    P-011 honesty: matching is substring shape-matching on the lowercased
+    text ("act" matches "action", "lane" matches "lanes"). This names which
+    areas the WORDS point at — it does NOT claim semantic area routing.
+    """
     t = text.lower()
-    if _COLLECTIVE_RE.search(t):
+    areas = sorted(
+        name for name, kws in _AREA_KEYWORDS.items()
+        if any(k in t for k in kws))
+    team_talk = sorted(w for w in _TEAM_TALK if w in t)
+    return {"areas": areas, "team_talk": team_talk,
+            "collective": bool(_COLLECTIVE_RE.search(t))}
+
+
+def reach_score(text):
+    """Who does this touch? Collective language scores highest.
+
+    Derived from reach_details(); bands byte-identical to cycle 2:
+    collective 10.0, >=3 hits 8.0, >=1 hit 5.0, else 2.0."""
+    d = reach_details(text)
+    if d["collective"]:
         return 10.0
-    hits = sum(1 for w in _AREA_WORDS if w in t)
+    hits = len(d["areas"]) + len(d["team_talk"])
     if hits >= 3:
         return 8.0
     if hits >= 1:
@@ -217,14 +291,18 @@ def reach_score(text):
     return 2.0  # touches the author at least
 
 
-def triage(text, existing_lesson_texts=()):
+def triage(text, existing_lesson_texts=(), similarity=None):
     """Score a capture candidate; return verdict + scores + reasons.
 
     Verdicts: PROMOTE (Smart Note CANDIDATE), LOG (raw capture),
     DROP (dupe/noise, reason recorded).
+
+    similarity= threads the embeddings seam through novelty scoring; see
+    novelty_score() for the contract.
     """
     scores = {
-        "novelty": novelty_score(text, existing_lesson_texts),
+        "novelty": novelty_score(text, existing_lesson_texts,
+                                similarity=similarity),
         "durability": durability_score(text),
         "actionability": actionability_score(text),
         "reach": reach_score(text),
@@ -264,7 +342,11 @@ def triage(text, existing_lesson_texts=()):
     if capped:
         reasons.append("keyword-stuffed: actionability markers are the "
                        "content, not acting on content")
-    return {"verdict": verdict, "scores": scores, "reasons": reasons}
+    provider = (getattr(similarity, "__name__", "similarity")
+                if similarity is not None else "_max_coverage")
+    return {"verdict": verdict, "scores": scores, "reasons": reasons,
+            "novelty_provider": provider,
+            "reach": reach_details(text)}
 
 
 if __name__ == "__main__":

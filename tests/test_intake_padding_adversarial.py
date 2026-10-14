@@ -56,9 +56,11 @@ def test_synonym_paraphrase_does_not_promote():
     assert v["scores"]["novelty"] < 6.0, v
 
 
-@pytest.mark.xfail(strict=True, reason="needs embeddings seam (_max_coverage "
-                   "docstring): token overlap cannot see synonym-level "
-                   "paraphrase; stemming only demotes to LOG")
+@pytest.mark.xfail(strict=True, reason="needs an embeddings PROVIDER wired "
+                   "to the similarity seam (seam landed w111: "
+                   "test_simulated_semantic_provider_flips_synonym_case "
+                   "proves the socket works); token overlap cannot see "
+                   "synonym-level paraphrase; stemming only demotes to LOG")
 def test_synonym_paraphrase_drops_with_embeddings():
     paraphrase = ("Never spawn a worker without first securing the lane "
                   "inside the state file. If the claim fails, that lane is "
