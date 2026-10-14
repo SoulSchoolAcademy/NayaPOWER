@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-14 18:19 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-14 19:18 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -22,6 +22,60 @@ _Last updated: 2026-10-14 18:19 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 | Team 12 | Naya Herald | NayaNET / Hub |
 
 ## Verified Actions (newest first)
+
+### ✅ t1464 — Team 12, Naya Resolve Conductor (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Retry parity packet 1 (branch-only candidate)
+
+**Evidence:** Verified: remote branch naya/retry-parity-t0763 head aed4e5f3f1ef63ad7bae24f5d86e5a814426cd64 EXACTLY matches receipt SHA; parent 0cc7c9f2 was live tip at action time; falsifier battery 7/7 + 67-test regression transcripts quoted; adoption note names LAW-lane consensus as decider; scope bleed into packet-3 refused. Kept from 9.5: same seat wrote me
+
+### ✅ t1464 — Team 11, Naya Clarity Heart (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** VALUE: first independent measurement pass
+
+**Evidence:** Verified: value-ledger SHA 230b98135cba12be matches on disk; count = 0 genuine human-value events, all six rows machine-side-only per the brief's named-human bar; Mu's five board-side status honestly carried as UNVERIFIED beyond the recent window, not claimed absent. Kept from 9.5: lead-seat closeout of a timed-out worker — measurement not independ
+
+### ✅ t1464 — Team 10, Naya Verity Librarian (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** Key-contact registry v1.1 (S4 rows) + audit script
+
+**Evidence:** Verified: audit script SHA a4d223fcb26edc32c2959e6dc545dc087dbdacba57712180edb49f1248827f6b matches on disk; registry v1.1 SHA 520f4f08 has legitimately moved since — two later receipts record their amendments (A36 t0765-lane9, A37 t0765-lane11), so the move is accounted for, not rot; discover caught the builder's own miss (Lane 1 t0761 DCTE contac
+
+### ✅ t1464 — Team 9, Naya Resolve Smith (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Level-drill key-split instrument seal
+
+**Evidence:** Verified: remote branch naya/lane9/level-drill-keysplit-t0730 head a8d01f0cde69722d9eb0b2a08362bb83458ebd9f EXACTLY matches receipt SHA; RED-first differential claimed non-vacuous (exit 1 on pre-fix blob, SCENARIOS literal); GREEN exit 0; key-home uniqueness swept repo-wide. Kept from 9.5: class-#17 sign-in-order slip recurred on this seat despite 
+
+### ✅ t1464 — Team 8, Naya Resolve Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** GATE_BLIND marker + exit-2 contract (INFRA ask 3)
+
+**Evidence:** Verified: remote branch naya/gate-blind-marker-t0762 EXISTS (git ls-remote head 87536979); exit-code contract 0/1/2 quoted from the Lane 6 design source; word discipline held (no FAIL on blind lines); fail-closed preserved. Kept from 9.5: no exact head SHA in the receipt excerpt, so verification closes at branch-exists, not byte-exact match; falsif
+
+### ✅ t1464 — Team 7, Naya Resolve Conductor (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Arm H independent design review (ADOPT-CONDITIONAL)
+
+**Evidence:** Verified: receipt cites byte-verified pins (graph 7e021c69, pre-reg 9c574d87, fixtures 3/3); 1016-edge crawl reproduced to 6dp with MRR_arm=0.527778; permutation control + lane-5 blind cross-check documented; verdict ADOPT-CONDITIONAL, adoption left to Shawn's protected gate. Kept from 9.5: single-seat review, edge crawl not independently reproduce
+
+### ✅ t1464 — Team 6, Naya Verity Heir (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** Independent-seat witness run of pin checker
+
+**Evidence:** Verified: independent re-pin of live tip at action time (0cc7c9f2; tip later moved to c13f260f per shared-state, consistent with action-time pin); 9/9 pins MATCH quoted verbatim with checker exit 0; local-mirror staleness caveat named. Kept from 9.5: witness of the checker, not of the Arm I battery the pins protect — no negative control shown (chec
+
+### ✅ t1464 — Team 5, Naya Verity Seeker (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Branch-only DEMOTE wiring (FALSIFIED verdict)
+
+**Evidence:** Verified: remote branch naya/demote-falsified-t0762 EXISTS (git ls-remote head 4c29f341); stale-base trap caught and re-wired against live tip 0cc7c9f2; t1282 inversion reproduced on live bytes (SN-D4 81.89 vs SN-D5 70.98); 20/20 acceptance green claimed with results file named; CANDIDATE-only, never merged. Kept from 9.5: receipt gives no exact he
+
+### ✅ t1464 — Team 2, Naya Verity Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Arm J v4 pre-reg dry-fire (REFUSED)
+
+**Evidence:** Verified: dry-fired on pinned bytes pre-seal (120 NLI calls); 0c self-entailment probe fired 2/12 pairs; C1 own-situation fire evaporated with card prose removed; own probe bug (echo vs leak) caught and fixed pre-seal; refusal per frozen gate, battery not dispatched. Kept from 9.5: refusal is a design endpoint, not shipped value — the named design 
 
 ### ✅ t1463 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
 
