@@ -792,12 +792,24 @@ def _phrase_disavowed(phrase, title, nutshell):
     ("Use X for reads. Do not use X for writes.") or contrastive
     conjunctions ("X is wrong but caching is right" does not disavow
     caching). One clean clause keeps the bonus.
+
+    B-48 fixes (Naya Alpha, 2026-10-14; live-registry measurement w105 +
+    BoW-residual w106):
+    - The phrase's own token span is excluded from the disavowal window.
+      Negation vocabulary *inside* the query phrase is the lesson
+      *asserting* the phrase ("Never use connection pooling" states a
+      prohibition), not disavowing it — disavowal must sit strictly outside
+      the phrase. The left/right pieces are checked separately so no gram
+      can span the excluded seam.
+    - Clauses are split at the title/nutshell seam: titles rarely end with
+      terminal punctuation, and without the seam a title's final negation
+      bleeds into the nutshell's first clause ("...Commits Don't Move It" /
+      "A freeze receipt pins the review target.").
     """
     phrase_toks = phrase.split()
     n = len(phrase_toks)
     found = False
-    clauses = re.split(r"[.!?;]+|\bbut\b|\bhowever\b|\balthough\b|\bthough\b|\bwhereas\b",
-                       f"{title} {nutshell}".lower())
+    clauses = _disavowal_clauses(title) + _disavowal_clauses(nutshell)
     for sent in clauses:
         toks = []
         for w in re.findall(r"[a-z0-9']+", sent):
@@ -808,9 +820,18 @@ def _phrase_disavowed(phrase, title, nutshell):
             found = True
             lo = max(0, i - _DISAVOWAL_WINDOW_BEFORE)
             hi = min(len(toks), i + n + _DISAVOWAL_WINDOW_AFTER)
-            if not _window_disavows(toks[lo:hi]):
+            # Disavowal lives in the window *outside* the phrase's own span.
+            left = toks[lo:i]
+            right = toks[i + n:hi]
+            if not (_window_disavows(left) or _window_disavows(right)):
                 return False  # one clean occurrence keeps the bonus
     return found
+
+
+def _disavowal_clauses(text):
+    """Clause-split one field; the title/nutshell seam is always a boundary."""
+    return re.split(r"[.!?;]+|\bbut\b|\bhowever\b|\balthough\b|\bthough\b|\bwhereas\b",
+                    text.lower())
 
 
 def _window_disavows(window):
