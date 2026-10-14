@@ -1,5 +1,5 @@
 # MISSION-STATE — canonical mission state
-> Generated 2026-10-14 21:23 UTC · tip `c13f260fad3d` · This is the current truth. Any Naya landing here knows where to go.
+> Generated 2026-10-14 22:24 UTC · tip `ba6263870425` · This is the current truth. Any Naya landing here knows where to go.
 > 🤝 Activate first: [the Naya Oath](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2534/files) — who she is, how she operates (repo-canonical at `BRAIN/01-GOVERNANCE/0021-0023` on merge). No work begins unactivated.
 
 ## MANUAL — READ BEFORE YOUR SHIFT
@@ -7,7 +7,7 @@
 - Sign-in MUST carry `MANUAL-READ: <source> <version/hash> §0 <UTC>`. No receipt → no dispatch.
 
 ## TIP
-- Main tip: `c13f260fad3d` (ref-anchored, same-step verified)
+- Main tip: `ba6263870425` (ref-anchored, same-step verified)
 
 ## PRIORITIES (FLOW LIKE WATER)
 1. Prove learning: #1602/#1741, retrieval B-48/B-49/B-51, cold exam ≥95.
@@ -17,7 +17,7 @@
 5. Distill laws to their load-bearing core.
 
 ## QUEUE
-- 31 actionable · 11 proposed (bottleneck-queue.md is the detail file)
+- 31 actionable · 6 proposed (bottleneck-queue.md is the detail file)
 
 ## TOP CARRIED BLOCKERS
 - **B-28**: #2325's merged gate still carries the scorecard's exact delta — vacuous identifi
