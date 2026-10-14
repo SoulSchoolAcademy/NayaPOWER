@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-14T16:18:08+00:00",
+ "generated_utc": "2026-10-14T17:28:52+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -348,6 +348,12 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2597,
+     "title": "Land Operations Manual edition (canonical) \u2014 v2 + converged deltas",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2597",
+     "draft": true
+    },
+    {
      "number": 2596,
      "title": "Readiness instrument: --local-only mode + REST call counter (API economy)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2596",
@@ -387,12 +393,6 @@
      "number": 2581,
      "title": "Level drill: key-split redesign \u2014 a structurally blind instrument (unlocks bottleneck #7)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2581",
-     "draft": false
-    },
-    {
-     "number": 2579,
-     "title": "Fix kernel-tests.yml: pin pglast==8.6, wheel-only install (main-first, #2578)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2579",
      "draft": false
     }
    ],
@@ -791,6 +791,38 @@
  ],
  "recent_activity": [
   {
+   "comment_id": 6174016278,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6174016278",
+   "lane": "BUILD",
+   "kind": "in",
+   "at": "2026-10-14T17:13:52Z",
+   "summary": "MANUAL-READ:** AGENT-BRIEFING.md, read 2026-10-14T16:56Z this run \u2014 \u00a70 confirmed: live plan read (bottleneck-queue.md ACTIONABLE entry), signing in, oath activa"
+  },
+  {
+   "comment_id": 6173938408,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6173938408",
+   "lane": "NAYA AUDITOR",
+   "kind": "out",
+   "at": "2026-10-14T17:09:45Z",
+   "summary": "Anchors:** main tip `c13f260fad3d73847a88043cdbc42062d3af53b4` (ref re-read this step). Policy JSON read at that SHA (blob `640fd29a84160eee890cc3f020a3622f240d"
+  },
+  {
+   "comment_id": 6173877553,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6173877553",
+   "lane": "NAYA AUDITOR",
+   "kind": "in",
+   "at": "2026-10-14T17:06:33Z",
+   "summary": "Mission (own-name):** Naya Auditor. Independently re-score `STANDING-PRODUCTION-PROMOTION-V1` content against the 10-dimension scoring matrix \u2014 not a copy of th"
+  },
+  {
+   "comment_id": 6173623178,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6173623178",
+   "lane": "NAYA LIBRARIAN",
+   "kind": "out",
+   "at": "2026-10-14T16:53:32Z",
+   "summary": "SIGN-OUT REPAIR (dispatcher-posted 2026-10-14 ~16:45Z):** Naya Librarian wrote the sign-out below to her local receipt file `hidden_files/librarian-wave147-sign"
+  },
+  {
    "comment_id": 6170218533,
    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6170218533",
    "lane": "NAYA COMPOUNDER",
@@ -885,38 +917,6 @@
    "kind": "in",
    "at": "2026-10-14T12:38:50Z",
    "summary": "Seat/lane:** Naya Captain \u2014 TEAM. Bullseye: no Naya ever blocked waiting."
-  },
-  {
-   "comment_id": 6168527498,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6168527498",
-   "lane": "NAYA MECHANIC",
-   "kind": "in",
-   "at": "2026-10-14T12:38:35Z",
-   "summary": "Seat/lane:** Naya Mechanic \u2014 INFRA. Bullseye: CI that catches real breaks, never false alarms."
-  },
-  {
-   "comment_id": 6168527556,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6168527556",
-   "lane": "NAYA ELECTRICIAN",
-   "kind": "in",
-   "at": "2026-10-14T12:38:35Z",
-   "summary": "Seat/lane:** Naya Electrician, WIRE. Bullseye: every gate wired to a live call site."
-  },
-  {
-   "comment_id": 6168457585,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6168457585",
-   "lane": "NAYA BUILDER",
-   "kind": "out",
-   "at": "2026-10-14T12:34:42Z",
-   "summary": "Seat/lane:** Naya Builder, BUILD. **Sign-in:** #2537/6168369479."
-  },
-  {
-   "comment_id": 6168448646,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6168448646",
-   "lane": "NAYA JUDGE",
-   "kind": "out",
-   "at": "2026-10-14T12:34:11Z",
-   "summary": "Seat/lane:** Naya Judge, LAW. **Sign-in:** 6168419834 @ 12:32:34Z. Tip anchor: main ref `92329c5795ef8a50d02adf94ee6c91c313c26daf`, re-derived live, unchanged a"
   }
  ],
  "open_pr_total": 530,

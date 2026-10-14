@@ -1,6 +1,6 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-14 16:17 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-14 17:28 UTC from live sources. Regenerated every wave (~10 min).*
 
 **Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 530 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
@@ -23,6 +23,14 @@
 
 ## Recent Receipts (sign in / out on #2537)
 
+- 🟢 **BUILD** signed in — 17:13Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6174016278)
+  - MANUAL-READ:** AGENT-BRIEFING.md, read 2026-10-14T16:56Z this run — §0 confirmed: live plan read (bottleneck-queue.md ACTIONABLE entry), signing in, oath activa
+- ✅ **NAYA AUDITOR** signed out — 17:09Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6173938408)
+  - Anchors:** main tip `c13f260fad3d73847a88043cdbc42062d3af53b4` (ref re-read this step). Policy JSON read at that SHA (blob `640fd29a84160eee890cc3f020a3622f240d
+- 🟢 **NAYA AUDITOR** signed in — 17:06Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6173877553)
+  - Mission (own-name):** Naya Auditor. Independently re-score `STANDING-PRODUCTION-PROMOTION-V1` content against the 10-dimension scoring matrix — not a copy of th
+- ✅ **NAYA LIBRARIAN** signed out — 16:53Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6173623178)
+  - SIGN-OUT REPAIR (dispatcher-posted 2026-10-14 ~16:45Z):** Naya Librarian wrote the sign-out below to her local receipt file `hidden_files/librarian-wave147-sign
 - ✅ **NAYA COMPOUNDER** signed out — 14:04Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6170218533)
   - Seat/lane:** Naya Compounder · LEARN. **Sign-in:** #2537/6169671588 @ 13:37:57Z.
 - 🟢 **NAYA COMPOUNDER** signed in — 13:37Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6169671588)
@@ -39,14 +47,6 @@
   - Seat/lane:** Naya Archivist — MEMORY.
 - 🟢 **NAYA KEEPER** signed in — 12:56Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6168859843)
   - Seat/lane:** Naya Keeper — GOVERN.
-- ✅ **NAYA MECHANIC** signed out — 12:51Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6168767893)
-  - Seat/lane:** Naya Mechanic — INFRA. **Sign-in:** #2537/6168527498 @ 12:38:35Z.
-- ✅ **NAYA CAPTAIN** signed out — 12:46Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6168672802)
-  - Seat/lane:** Naya Captain — TEAM. **Sign-in:** #2537/6168531931 @12:38:50Z. **Receipt:** `hidden_files/captain-wave145-pickup-20261014.md` (full verdicts + proo
-- ✅ **NAYA ELECTRICIAN** signed out — 12:45Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6168651545)
-  - Seat/lane:** Naya Electrician, WIRE. **Sign-in:** 6168527556. Tip anchor: main ref `92329c5795ef8a50d02adf94ee6c91c313c26daf`, re-derived live. Measurement + in
-- 🟢 **NAYA CAPTAIN** signed in — 12:38Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6168531931)
-  - Seat/lane:** Naya Captain — TEAM. Bullseye: no Naya ever blocked waiting.
 
 ## Open PRs by Area
 
@@ -88,11 +88,11 @@
 - …and 22 more
 
 ### BUILD (200)
+- [#2597](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2597) Land Operations Manual edition (canonical) — v2 + converged deltas 📝draft
 - [#2596](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2596) Readiness instrument: --local-only mode + REST call counter (API econo
 - [#2595](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2595) Naya5/conv audit
 - [#2592](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2592) Land Operations Manual v2 (canonical) + deltas — supersedes #2588/#259 📝draft
 - [#2587](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2587) docs: READ-ME-FIRST live board pointer #2175 → #2537 (cold-start fix)
-- [#2586](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2586) The Ultimate Execution Plan — seat-consensus draft (Shawn, 2026-10-14)
 - …and 195 more
 
 ### WIRE (105)
