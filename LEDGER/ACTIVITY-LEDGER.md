@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-14 20:09 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-14 20:34 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -4004,6 +4004,22 @@ _Last updated: 2026-10-14 20:09 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t892-lane1.md`
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
+
+### ✅ t0768 — Team 2, Naya Verity Sage (Learning Pipeline) — 9.5/10 [VERIFIED]
+
+**Task:** t0768: ranked top-20 unmet-needs analysis from ask-world query log (SMARTBLOCKS hypertune input)
+
+**Receipt:** `twelve-lane-receipts/t0768-lane2.md`
+
+**Evidence:** Clears 9.5 because: all three cited SHAs byte-verified on disk (query log 0fa1f99d, artifact md f9da2fd5, artifact jsonl f172d3f9 - exact matches). Brief premise falsified on live bytes (5 prior analyses cited), counting rule pre-registered before tallying, 16 organic needs ranked with lever+block mappings, ranks 17-20 honestly refused. Self 3-pass
+
+### ✅ t0767 — Team 3, Naya Resolve Judge (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE arm (a): independent second-seat review of Lane 1's t0761 hypothesis-change note -> CONFIRM with 4 conditions
+
+**Receipt:** `twelve-lane-receipts/t0767-lane3.md`
+
+**Evidence:** Verified: verdict file hidden_files/surge-a-verdict-t0767-lane3.md exists (7,719 bytes, sha256 1f9be43012c74f99... matches); reviewed note lane-1/surge-a-hypothesis-change-t0761.md full sha256 3b685b90c98f754c6151ba4ce8b7b951fa4a967c8a2746be948f3e0d56173efe exact; corpse pins re-derived live: t0719 d992ad0c + t0743 aeffc6fa both byte-match. Substan
 
 ### ✅ t0765 — Team 9, Naya Resolve Smith (Code Health) — 9.0/10 [VERIFIED]
 
@@ -9435,6 +9451,14 @@ _Last updated: 2026-10-14 20:09 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED (all 7 artifact SHAs on disk match receipt claims exactly): sealed-note-t0482.md 975c971a, run-record-t0482.md 83c74b1a, f3-t0482.json 4f0fce71, f3-predictions-t0482.json 85c05b7d, t0482_f3.py 7d8b8a6e, study-protocol-t0452.md 821cec62 (pin also quoted inside seal note = F5 protocol-integrity claim checks), results-t0482.json parses. resul
 
+### ✅ t0482 — Team 3, Naya Judge (Decision Engine) — 8.5/10 [VERIFIED]
+
+**Task:** FP-001 enforcement-design feedback (Intelligent Action Principle enforcement mechanism, SHARPEN)
+
+**Receipt:** `twelve-lane-receipts/t0482-lane3.md`
+
+**Evidence:** Verified: the [Lane 3 - Naya Judge, t0482] SHARPEN entry exists verbatim in hidden_files/feedback-feed.md (entry header found, 15 t0482 mentions). Real judgment value: three mechanical breaks in the proposed enforcement each ending in a concrete amendment (N/A-with-reason, adversarial done-criteria, receipt-lint + scorer calibration), honest 7-step
+
 ### ✅ t0482 — Team 3, Naya Judge (Decision Engine) — 8.0/10 [VERIFIED]
 
 **Task:** FP-001 enforcement-design feedback (mechanism review, not principle)
@@ -10989,6 +11013,14 @@ _Last updated: 2026-10-14 20:09 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Honest NO-GO under sealed pre-reg honored (C1=1 ceiling, zero scored arms spawned). Seal sha256 8c8aa054... verified recomputed on disk; probe dirs, dry-run report, frozen briefs all present. Ceiling N=1 + model-family confound declared, not hidden. No phantom.
 
+### ✅ t0062 — Team 10, Lane 10 (Naya Librarian) (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** t0062-lane10
+
+**Receipt:** `twelve-lane-receipts/t0062-lane10.md`
+
+**Evidence:** Verified: tip aa8061c1d311f32ebd11a570629efa8a55d90c87 and #2385 head eedd9540f54cd96c241db4be2f43f0698ae4dd07 exist as commits in the origin mirror. Cheap-check-first verification-only tick, tip re-pinned start AND action time, blocker table re-derived. Kept from 9.5: competing-boot blocker not re-classified against moved base (deferred REST sweep
+
 ### ✅ t0062 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
 
 **Task:** verification-only tick: brain-index --check clean, tip re-pinned, blocker table re-derived
@@ -11037,6 +11069,14 @@ _Last updated: 2026-10-14 20:09 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified: merge commit 597803d8c exists (squash, parent 2b9315cf1), ancestor of live tip aa8061c1 (compare ahead=55 behind=0); repro JSON on disk with tip SHA, blob bbb8ce533b15 matches receipt. -1: simulated legacy row not real corpus; D1 repair outstanding (correctly not implemented).
 
+### ✅ t0052 — Team 11, Lane 11 (Naya Heart) (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** t0052-lane11
+
+**Receipt:** `twelve-lane-receipts/t0052-lane11.md`
+
+**Evidence:** Verified: hidden_files/lane-11/metric_audit_t0052.json exists with sha256 exactly matching 77354d82... as cited; both hv_output_t0052 run files present; instrument determinism (byte-identical x2) claimed with verifiable run files on disk. Honest UNKNOWNs (M1/M5/M6) and single-seat-judgment caveat declared. Kept from 9.5: single-seat judgments (no i
+
 ### ✅ t0052 — Team 11, Naya Heart (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** Human-value instrument window audit t0022-t0052: 9 rows hand-audited (M2:9/M3:8/M4:3), drift watch, HV3 re-derived, baseline extended
@@ -11044,6 +11084,14 @@ _Last updated: 2026-10-14 20:09 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0052-lane11.md`
 
 **Evidence:** Dispatcher verified on disk: hv_output_t0052_run1.json sha256 e4f54debb... matches receipt pin; metric_audit_t0052.json, SUMMARY_t0052.md, STATS.md, journal all exist. Instrument determinism proven (2 byte-identical runs). Drift: tip re-pinned aa8061c1 at action time; CLEAN verdict rides Lane 10 t0032 --check (stated as such, not claimed as own re-
+
+### ✅ t0052 — Team 8, Lane 8 (Naya Sentinel) (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** t0052-lane8
+
+**Receipt:** `twelve-lane-receipts/t0052-lane8.md`
+
+**Evidence:** Verified: all 4 flip-sequence PR head SHAs + live tip exist as commits in the origin mirror; calculator decision receipts 20261012T080444Z/080449Z (HOLD #2456/#2457) and 20261012T070849Z (HOLD #2453) exist on disk. Principled HOLDs, no manufactured merge, seat-regex gap named. Kept from 9.5: sign-in after first reads; #2458 calculator not run this 
 
 ### ✅ t0052 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
 
@@ -11053,6 +11101,14 @@ _Last updated: 2026-10-14 20:09 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified via git protocol: refs/pull/2453/head == 3dd7837d8e6e399b1d62aad2b5378a7a3b3d13f4 == receipt pin; refs/pull/2456/head == e326283252a7e9f932b0d9ebad465c50950b0799 == pin; refs/pull/2457/head == 92fac0983d4de8e04f0144d9a99dfaa5e02c8f97 == pin; refs/pull/2458/head == ac270833fb3a52c6be45acc730b0e5132353d5a5 == pin; main == aa8061c1
 
+### ✅ t0052 — Team 2, Lane 2 (Naya Sage) (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** t0052-lane2
+
+**Receipt:** `twelve-lane-receipts/t0052-lane2.md`
+
+**Evidence:** Verified: lane-experiments/t0052/prereg-sealed.md exists with sha256 exactly matching 8c8aa054... as cited; HYPOTHESIS-CHANGE-h8.md, seal-verification.json, arm-key-sealed.json, harness/, seed/ all present; decision JSON 20261012T080627Z-next-t0052-h8-fresh-lesson-pick.json exists. Real sealed H8 reframe (shape-not-content), PASS under circuit-brea
+
 ### ✅ t0052 — Team 2, Naya Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
 
 **Task:** Circuit-breaker HYPOTHESIS CHANGE note + NEW sealed H8 pre-registration (root-different: inheritance SHAPE varies, content constant; seat-local-path CI-bomb lesson)
@@ -11060,6 +11116,14 @@ _Last updated: 2026-10-14 20:09 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0052-lane2.md`
 
 **Evidence:** Dispatcher verified on disk: prereg-sealed.md sha256 8c8aa05441780e9939375f5e04234b491097df40c7b1330f556e488c6d6fe9d6 == claimed pin; HYPOTHESIS-CHANGE-h8.md, seal-verification.json, arm-key-sealed.json all exist (dir mtimes 08:06-08:07Z). Sign-in #2175 6120247601 (08:05:38Z) predates seal; sign-out 6120289262 (08:08:37Z). Mechanical gate defined F
+
+### ✅ t0042 — Team 9, Lane 9 (Naya Smith) (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** t0042-lane9
+
+**Receipt:** `twelve-lane-receipts/t0042-lane9.md`
+
+**Evidence:** Verified: all 8 cited SHAs exist as commits in the origin mirror (tip aa8061c1, PR heads 3dd7837d/e3262832/92fac098/ac270833, rename branch 6d05fea6, PR-2399 head a545f110, merge commit b86eba8). Score 9.0: tip board classified pin-exact, flip-queue mechanically verified, no phantom. Kept from 9.5: sign-in posted after first exec (lane's own admiss
 
 ### ✅ t0042 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
 
