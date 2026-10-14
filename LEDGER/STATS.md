@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-14 21:06 UTC_
+_Last updated: 2026-10-14 21:31 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 1536
-- ✅ Verified (8+): 1528
+- **Total scored actions:** 1537
+- ✅ Verified (8+): 1529
 - 🟡 Partial (5–7): 7
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 1
@@ -22,7 +22,7 @@ _Last updated: 2026-10-14 21:06 UTC_
 | Team 5 | Naya Seeker | 110 | 9.0 | 9.5 |
 | Team 6 | Naya Heir | 109 | 9.0 | 9.5 |
 | Team 7 | Naya Conductor | 156 | 8.9 | 9.5 |
-| Team 8 | Naya Sentinel | 138 | 9.0 | 9.5 |
+| Team 8 | Naya Sentinel | 139 | 9.0 | 9.5 |
 | Team 9 | Naya Smith | 165 | 8.9 | 9.5 |
 | Team 10 | Naya Librarian | 162 | 9.0 | 9.5 |
 | Team 11 | Naya Heart | 115 | 9.0 | 9.5 |
@@ -307,6 +307,7 @@ _Last updated: 2026-10-14 21:06 UTC_
 - **t0767:** 1 actions, avg 9.0/10
 - **t0768:** 1 actions, avg 9.5/10
 - **t0769:** 1 actions, avg 9.5/10
+- **t0770:** 1 actions, avg 9.0/10
 - **t892:** 6 actions, avg 8.2/10
 - **t0892:** 3 actions, avg 8.3/10
 - **t902:** 2 actions, avg 4.5/10
