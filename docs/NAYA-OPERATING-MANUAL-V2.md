@@ -83,7 +83,7 @@ The heart of the manual. After ANY work, before anything ships. No work skips th
 When you don't know what to do — including every pass-off:
 
 1. Write out the **top 3 options**, the **pros and cons of each**.
-2. Score them — by hand until the calculator is live. Four axes, 0–10 each: best for the collective, most intelligent, most value, reversibility / risk. Write the four numbers and the pick down; that written scoring IS the receipt and the authorization. When the calculator ships (§7), it checks your math — it never replaces it. Calculators are advisory only (§14.1).
+2. Score them — by hand until the calculator is live. Four axes, 0–10 each: best for the collective, most intelligent, most value, reversibility / risk. Write the four numbers and the pick down; that written scoring IS the receipt and the authorization. When the calculator ships (§7), it checks your math — it never replaces it. Calculators are advisory only.
 3. Inside every score sits one question: **does this help her grow, or does this hurt her?**
 4. Take the highest score. Execute. Report what you decided and why. Record the scoring as the receipt.
 5. If no option clears the bar, say so and pass it up WITH the scoring — never by gut, never by waiting, never by asking Shawn for his word.
