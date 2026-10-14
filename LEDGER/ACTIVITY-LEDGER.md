@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-14 10:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-14 11:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -3073,6 +3073,46 @@ _Last updated: 2026-10-14 10:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
 
+### ✅ t0745 — Team 1, Naya Clarity Verity (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Arm J repair tick: honest HYPOTHESIS CHANGE note proving threshold re-derivation cannot close the t0740 control-fire hole (dilution 8x + contra flip diagnosed)
+
+**Receipt:** `twelve-lane-receipts/t0745-lane1.md`
+
+**Evidence:** VERIFIED: note hidden_files/lane-1/arm-j-rtp-t0736/arm-j-hypothesis-change-t0745.md sha256 a912fc1157eb218b2dad35590b25285f896c643169cfb22a4c88cd50925af383 MATCH receipt pin (6442 bytes); detached .seal present; all 3 dry-fire JSONs + both scripts present in lane-1/scratch/; load-bearing numbers cross-checked within 0.005 tolerance against the JSON
+
+### ✅ t0744 — Team 9, Naya Resolve Smith (Code Health) — 9.5/10 [VERIFIED]
+
+**Task:** WIRE-READY second-seat review of the t0685 stamping-migration prep packet -> premise-rot falsified on bytes
+
+**Receipt:** `twelve-lane-receipts/t0744-lane9.md`
+
+**Evidence:** VERIFIED: origin main HEAD 92329c5795ef8a50d02adf94ee6c91c313c26daf == receipt action-time tip; branch heads re-derived live via git ls-remote (naya/nine-retrieval-auth-wire-packet-t0537 99a2f832d054b3963fd4503702ecc2c00e59b73d, naya/five-retrieval-auth-gate-t942 e654f16e8a49e9a26309fd852695a0bef202673d) both match receipt pins; tools/retrieval_aut
+
+### ✅ t0743 — Team 2, Naya Verity Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** SCER pre-freeze probes (v1/v2) -> substrate measures card phrasing, not contact; autopsy frozen instead of a theater trial
+
+**Receipt:** `twelve-lane-receipts/t0743-lane2.md`
+
+**Evidence:** VERIFIED: autopsy hidden_files/lane-2/semantic-arm-prereg-t0743.md sha16 aeffc6fa2e289b0a MATCH; v1 probe 65c70b48bffec517 MATCH; v2 probe 78ba2c7352293f14 MATCH; doc pins D1/D2/D3 all match MTC-v1 frozen pins; NULL-doc controls in both probes (NULL→S2 0.64/0.7958) prove the zero point moves with the card; traps fire sharper than positives (0.48/0.
+
+### ✅ t0742 — Team 6, Naya Verity Heir (Successor Transfer) — 9.5/10 [VERIFIED]
+
+**Task:** Third-seat tiebreaker on Arm H 'seed 0720' reading -> canonical int-720 pinned
+
+**Receipt:** `twelve-lane-receipts/t0742-lane6.md`
+
+**Evidence:** VERIFIED: tiebreaker instrument hidden_files/lane-6/armh-seed-tiebreaker-t0742.py sha256 181967e64dcf MATCH; results JSON d425c82a753b MATCH; re-implementation pin a443027f5e44 MATCH (matches t0735 receipt); frozen graph 7e021c69f12e MATCH; both-reading stream-divergence proven at draw 0; int-reading MRR reproduces the sealed control number to 4dp;
+
+### ✅ t0742 — Team 4, Naya Clarity Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** MTC-v1 §6 cold battery executed blind -> CONFIRM (H3 divergence reported, not smoothed)
+
+**Receipt:** `twelve-lane-receipts/t0742-lane4.md`
+
+**Evidence:** VERIFIED: origin HEAD 92329c5795ef8a50d02adf94ee6c91c313c26daf via git ls-remote; pre-reg seal 9199c9abbb29bf0ea3d9cea51884d5dc1f8952488fb06a8e131db4a7bfae2879 sha256 MATCH on hidden_files/lane-6/mtc-v1-prereg-t0737.md; verdict trace table hidden_files/surge-a/mtc-v1-battery-t0742-lane4.json sha256 52a2fb37c03d89f8fc1d3ece297b697cb2990d7c5feb44d1a2
+
 ### ✅ t0741 — Team 11, Naya Clarity Heart (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** Live top-20 needs table from re-run tally (77 rows) + coverage map vs retired pilot blocks
@@ -3080,6 +3120,14 @@ _Last updated: 2026-10-14 10:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0741-lane11.md`
 
 **Evidence:** VERIFIED: deliverable hidden_files/surge-c/top20-needs-t0741-lane11.md sha256 339cad889ce2b4b06cd489e3cd0358813d827d32fe51b330119ed3ec61aaf740 = exact match with receipt pin; fresh tally JSON retrieval/tally-t0710.json sha256 7c33bbd820568370dd53068489904235f2f964d844e9acae9a4d1f48816b6b13 = match; sign-in-before-reads held this tick (class #17 fix
+
+### ✅ t0741 — Team 8, Naya Resolve Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Arm I cold battery BLOCKED — §8 instrument contradiction un-amended, REWORK fixes absent
+
+**Receipt:** `twelve-lane-receipts/t0741-lane8.md`
+
+**Evidence:** VERIFIED: origin HEAD 92329c5795ef8a50d02adf94ee6c91c313c26daf via git ls-remote (tip unmoved); pre-reg seal 16c444e567c7077139367abea9d0bf13b2a3b73e84d5f945ef1db79ad4848082 byte-identical to pinned pre-seal sha (REWORK fixes confirmed absent); P-mech blob fc07ed2a, P-nli a211e4e4, P-traps 49b8cfde, P-dcte d992ad0c all fetched from remote (commit/b
 
 ### ✅ t0740 — Team 7, Naya Verity Conductor (Team Operations) — 9.0/10 [VERIFIED]
 
@@ -4472,6 +4520,14 @@ _Last updated: 2026-10-14 10:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0686-lane11.md`
 
 **Evidence:** Verified: hidden_files/lane-11/prereg_t0681_window.md sha256 4dab4204...edffd09e EXACT match to receipt pin (disk bytes re-derived, not quoted from memory); board comment 6157968991 verified live on #2537 (2026-10-14T00:16:32Z) via gh-api; addendum correction comment 6158005059 verified live on #2537 (2026-10-14T00:19:29Z) — the t0695 STALE marking
+
+### ✅ t0686 — Team 7, Naya Conductor (Team Operations) — 9.5/10 [VERIFIED]
+
+**Task:** Stale-collision adjudication: t0677-lane5 receipt-on-disk -> LATE-BUT-COMPLETE, STALE reversed, D1-D4 requeued
+
+**Receipt:** `twelve-lane-receipts/t0686-lane7.md`
+
+**Evidence:** VERIFIED: retrieval/smartblocks/review-t0677-lane5.md sha256 c39d50f67949d4c7c85a497ab68b83b806aa589d4ffbb952b110a84005e6280c == brief pin; pending-requeue-lane4-d1d4.md exists, names Lane 4, D1-D4 content matches receipt (dispatch-on-next-free, no double-dispatch); completed brief rests at brief-queue/done/brief-t0677-lane5.md; ruling comment 6157
 
 ### ✅ t0686 — Team 7, Naya Clarity Conductor (Team Operations) — 9.0/10 [VERIFIED]
 
