@@ -1567,7 +1567,7 @@ def test_retrieve_winner_without_nutshell_fails_closed(tmp_path, monkeypatch):
 # admitted, and could win — a warning presented as guidance. The guard
 # withholds the bonus when every phrase occurrence sits in disavowal scope.
 def test_phrase_disavowed_battery():
-    """20-case battery: 10 must-suppress, 10 must-not-fire (zero false fires)."""
+    """22-case battery: 12 must-suppress, 10 must-not-fire (zero false fires)."""
     suppress = [
         ("connection pooling", "Do not use connection pooling",
          "Do not use connection pooling in production."),
@@ -1580,6 +1580,9 @@ def test_phrase_disavowed_battery():
         ("connection pooling", "T", "Connection pooling is deprecated as of v3."),
         ("connection pooling", "T", "I reject connection pooling for this design."),
         ("connection pooling", "T", "Don't use connection pooling here."),
+        ("connection pooling", "T", "Connection pooling can't scale here."),  # t0701: the can't-normalization hole
+        ("connection pooling", "Connection pooling can't scale here.",  # t0701: can't at the title/nutshell seam
+         "A freeze receipt pins the review target."),
         ("connection pooling", "T", "Connection pooling is not recommended for SQLite."),
     ]
     for phrase, title, nutshell in suppress:

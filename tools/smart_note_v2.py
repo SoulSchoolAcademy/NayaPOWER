@@ -763,6 +763,7 @@ def _build_disavowal_contractions():
              "have", "has", "had")
     d = {b + "n't": (b, "not") for b in bases}
     d["won't"] = ("will", "not")  # the one irregular form
+    d["can't"] = ("can", "not")  # equally irregular ("cann't" never matches)
     d["cannot"] = ("can", "not")
     return d
 _DISAVOWAL_CONTRACTIONS = _build_disavowal_contractions()
