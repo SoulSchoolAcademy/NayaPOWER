@@ -96,8 +96,17 @@ OWNER_FIELD_RES = (
     re.compile(r"^\s*\|\s*Owner\s*\|\s*(.+?)\s*\|", re.M),
 )
 SEAT_RE = re.compile(
+    # The twelve named area leads (R5, 2026-10-12) plus the three standing
+    # leads (R6, Naya Lambda 2026-10-14): the team now signs under three
+    # standing lead tokens — Naya Clarity, Naya Resolve, Naya Verity
+    # (family name Narzan, e.g. "Naya Verity Narzan"). The old vocabulary
+    # parsed Alpha..Mu but dropped the lead tokens (find_owner -> None), so
+    # a note owned by a standing lead was invisible to the gate. Mirrors
+    # tools/check_merge_consensus.py _NAMED_SEATS (Lambda's R6 fix): the bare
+    # seat grammar is untouched — a seat still requires the "Naya" prefix,
+    # and unknown tokens still fail to match (fail closed).
     r"\b(?:Naya\s*[ _-]?(?:[1-5]|alpha|beta|gamma|delta|epsilon|zeta|eta"
-    r"|theta|iota|kappa|lambda|mu)"
+    r"|theta|iota|kappa|lambda|mu|clarity|resolve|verity)"
     r"|Coda\s*[ _-]?[1-5])\b|\bCodex\b|\bShawn(?:\s+Vibert)?\b"
     r"|\bHuman Director\b",
     re.I,
