@@ -111,6 +111,14 @@ jobs:
           print("standing policy identity and scope: PASS")
           PY
 
+          # NO-WORD RATIFICATION (2026-10-14): a status:RATIFIED governance
+          # JSON without scorecard pins (scorecard IDs + content hash +
+          # reviewer seats) is CLAIMED-UNVERIFIED, never ratified. Fail closed.
+          # Scoped seam (no duplicate mechanism): ratification_gate.py decides
+          # ratification FROM scores; ratified-guard.yml guards DELETION.
+          # This step scans STORED governance JSON for pin presence/validity.
+          python tools/validate_ratified_pins.py --governance-dir .naya/governance
+
           git fetch origin main
           # Compare the full undeployed delta, not merely the latest push.
           git fetch origin production:refs/remotes/origin/production
@@ -1045,3 +1053,4 @@ jobs:
             act-proof-run.json
             learning-act-proof-run.json
             connect-proof-run.json
+
