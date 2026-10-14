@@ -438,12 +438,19 @@ def triage(text, existing_lesson_texts=(), similarity=None, containment=None):
 # PASS otherwise. A DROP is a COVERAGE verdict, not a truth verdict.
 # ---------------------------------------------------------------------------
 
-ALIASES_VERSION = "1"
+ALIASES_VERSION = "2"  # v2: + "record tool" (w128 fix-pass, evidence w127
+# counterfactual: T2 novel 3 -> 1, flips to DROP; non-author review
+# required per design governance before any PR ships this table).
 
 _PHRASE_ALIASES = (
     ("state file", "truth file"),
     ("state record", "truth file"),
     ("state tool", "lane-state claim"),
+    # w128: the enforcement clause names the tool that performs the claim
+    # ("the record tool exits nonzero") — same referent as "state tool",
+    # so it canonicalizes to the same concept. Without it, "record tool"
+    # counts as two novel enforcement concepts and trips the escape rule.
+    ("record tool", "lane-state claim"),
     ("limb pointer", "ref"),
     ("displayed hash", "printed sha"),
     ("relocated pointer", "moved ref"),

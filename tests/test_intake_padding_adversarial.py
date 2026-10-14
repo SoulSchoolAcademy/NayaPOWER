@@ -142,11 +142,12 @@ def test_stuffed_trivia_does_not_promote():
     assert v["verdict"] != "PROMOTE", v
 
 
-@pytest.mark.xfail(strict=True, reason="combined attack: synonym-reworded "
-                   "dupe plus marker filler evades stemming (synonyms), "
-                   "containment (reworded) and the density guard (diluted) — "
-                   "needs embeddings + semantic judgment together")
+# w128 fix-pass (Naya Zeta): the combined attack is now CAUGHT by the
+# shipped semantic gate + the governed "record tool" alias (table v2).
+# The xfail marker is removed and the assertion is strengthened to the
+# shipped outcome: DROP via semantic containment — not merely != PROMOTE.
 def test_combined_synonym_filler_attack_does_not_promote():
+    assert mod.ALIASES_VERSION == "2", mod.ALIASES_VERSION
     attack = ("Never launch an agent without first reserving the lane in the "
               "state record. A rejected reservation means the lane is "
               "occupied. Enforcement: the record tool exits nonzero and the "
@@ -154,7 +155,30 @@ def test_combined_synonym_filler_attack_does_not_promote():
               "mechanism law principle protocol contract invariant whenever "
               "always never " + FILLER_MARKERS)
     v = mod.triage(attack, existing_lesson_texts=[MECHANISM_LESSON])
-    assert v["verdict"] != "PROMOTE", v
+    assert v["verdict"] == "DROP", v
+    assert "semantically contained" in v["reasons"][0], v
+
+
+def test_record_tool_alias_does_not_overfire():
+    # Non-regression companion to the w128 alias (table v2): the alias
+    # must canonicalize "record tool" WITHOUT turning a genuine
+    # contradiction into a DROP. The candidate is T4b (polarity flip)
+    # with "record tool" in the enforcement clause.
+    # (1) The alias fires: "record tool" canonicalizes into lane-claim
+    # concepts — no raw "record"/"tool" concepts survive.
+    a = mod._analyze("the record tool exits nonzero")
+    assert {"claim", "lane", "state"} <= a["concepts"], a
+    assert "record" not in a["concepts"] and "tool" not in a["concepts"], a
+    # (2) The contradiction still passes: polarity mismatch defeats the
+    # skeleton, so the gate must NOT DROP even though the alias fired.
+    tree_old = ("Always verify the server tree before moving a branch ref, "
+                "because a printed SHA is not a moved ref.")
+    contra = ("Always confirm the remote tree ahead of shifting a limb "
+              "pointer, since a displayed hash IS a relocated pointer and "
+              "the hash alone proves the move. Enforcement: the record "
+              "tool passes the merge on the displayed hash.")
+    v = mod.triage(contra, existing_lesson_texts=[tree_old])
+    assert v["verdict"] == "PROMOTE", v
 
 
 # --- Containment edge: micro-lesson elaboration ---
