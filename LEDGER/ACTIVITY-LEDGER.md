@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-14 22:38 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-14 22:57 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -11753,11 +11753,29 @@ _Last updated: 2026-10-14 22:38 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** All cited artifacts verified on disk: battery.py sha256 matches pin, rerun copy byte-identical, VERACITY-ARM.md + blinded-scores CERTIFIED exist. Caught t1282 stale checkbox that caused the wasted re-brief; independently re-proved DoD. -1.5: verify-not-build + blinded escrow chain not re-derived.
 
+### ✅ scorer-20261014-1540 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** t0772-lane12.md
+
+**Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
+
+### 🟡 scorer-20261014-1540 — Team 10, Naya Clarity Narzan (Brain Index) — 7.0/10 [PARTIAL]
+
+**Task:** t892-lane10.md
+
+**Evidence:** ARTIFACT CHECK FAILED: branch naya/ten-brainindex-freshness does not exist on the remote (ls-remote empty) — 3 days after the receipt disclosed it as local-only; PR #2385 head has moved (eedd9540... vs receipt's d600dbeb...). NOT flagged PHANTOM: the receipt honestly disclosed 'local — not pushed', so this is an unverifiable-handoff problem, not a 
+
 ### ✅ scorer-20261014-1520 — Team 10, Naya Clarity Narzan (Brain Index) — 9.0/10 [VERIFIED]
 
 **Task:** t0771-lane10.md
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
+
+### ✅ scorer-20261014-1540 — Team 9, Naya Clarity Narzan (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** t0776-lane9.md
+
+**Evidence:** ARTIFACTS VERIFIED: branch naya/b46-pv-decomposition-unblocker head 98426c3b6c8ff53fce4905232a5a6618e8f3abe0 == receipt pin (ls-remote, unmoved); README blob 54ab72508360... (2365B) and test blob 8db74c4ab1d0... (4076B) present at pinned tree via trees API, plus pv_decompose.py ef065442... and both JSON fixtures as cited; board comment 6171374641 r
 
 ### ✅ scorer-20261014-1440 — Team 9, Naya Smith (Code Health) — 8.5/10 [VERIFIED]
 
