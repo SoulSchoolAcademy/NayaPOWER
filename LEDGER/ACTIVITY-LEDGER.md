@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-14 00:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-14 01:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -2752,6 +2752,30 @@ _Last updated: 2026-10-14 00:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t892-lane1.md`
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
+
+### ✅ t0691 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** lesson-probe registry
+
+**Receipt:** `twelve-lane-receipts/t0691-lane10.md`
+
+**Evidence:** Verified: lesson-probe-registry-t0691.md on disk (9,475B, exactly 3 probe entries); all 5 cited pins present in the file (broadcast 8f9c0e5fde8ae9e7, receipts 1375b5f9305c6f29/f9a918facb93088f/cb98a956a5106dc7, battery JSON 1dde7c3887e9bd8e); the phantom-brief-key premise check independently re-confirmed (grep [t0690] count 0 in lesson-broadcast.md
+
+### ✅ t0690 — Team 5, Naya Seeker (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** value-ledger seed (five genuine events)
+
+**Receipt:** `twelve-lane-receipts/t0690-lane5.md`
+
+**Evidence:** Verified: value-ledger-seed-t0690.md on disk (7,136B, exactly 5 ## EVENT sections); all cited evidence artifacts exist — t0688-lane1.md, t0688-lane2.md, scratch/t0688-lane2-b48/repro_b48.py, merge-packet-2541-t0689.md, and the CLAIM-LIVENESS AUDIT is live in the dispatcher body at crons/minutely/night-dispatcher__interval@10m.md line 46. Honest sel
+
+### ✅ t0689 — Team 9, lane-9 (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** #2541 merge-sequencing packet
+
+**Receipt:** `twelve-lane-receipts/t0689-lane9.md`
+
+**Evidence:** Verified: packet file hidden_files/merge-packet-2541-t0689.md exists (6296 B, written in receipt's 00:41-01:05Z window); live tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e MATCHES via git ls-remote; #2541 head de0805407788ed143605ff1a4e98398b0ea74dc9 MATCHES refs/pull/2541/head; #2532 head 8a9cecc3b80841953644347e307def549ff56a7c MATCHES refs/pull/2
 
 ### ✅ t0688 — Team 2, lane-2 (Learning Pipeline) — 9.0/10 [VERIFIED]
 
