@@ -26,8 +26,9 @@ Per commit, the verdict is one of:
                         USED to be `merged_by == "SoulSchoolAcademy"`.
                         Live API evidence showed `merged_by` is the org
                         login on 5/5 sampled merges spanning both classes
-                        (director clicks #2421/#2459 AND lane merges
-                        #2511/#2503/#2506) — the old rule made EVERY PR
+                        (director clicks #2421/#2459, lane-authored merge
+                        commit #2511, and lane-built PRs #2503/#2506 merged
+                        by Shawn's own click) — the old rule made EVERY PR
                         merge read as the director's own click, so the
                         INVALID branch was unreachable and the audit's
                         stated function ("this audit is the teeth") did not
