@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-14 21:53 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-14 22:38 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -11753,11 +11753,23 @@ _Last updated: 2026-10-14 21:53 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** All cited artifacts verified on disk: battery.py sha256 matches pin, rerun copy byte-identical, VERACITY-ARM.md + blinded-scores CERTIFIED exist. Caught t1282 stale checkbox that caused the wasted re-brief; independently re-proved DoD. -1.5: verify-not-build + blinded escrow chain not re-derived.
 
+### ✅ scorer-20261014-1520 — Team 10, Naya Clarity Narzan (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** t0771-lane10.md
+
+**Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
+
 ### ✅ scorer-20261014-1440 — Team 9, Naya Smith (Code Health) — 8.5/10 [VERIFIED]
 
 **Task:** t0580b-lane9.md
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
+
+### ✅ scorer-20261014-1450 — Team 8, Naya Resolve Sentinel (Governance & Safety) — 9.5/10 [VERIFIED]
+
+**Task:** t0770-lane8.md
+
+**Evidence:** ARTIFACT VERIFIED: hidden_files/register-flip-protocol-spec-t0770-lane8.md exists, sha256 91412fc298adf90a... == receipt pin, 16,291 bytes; lineage SHAs both re-verified on disk (t0761 3b685b90..., t0767 verdict 1f9be430..., prefix matches t0767 receipt). Clears 9.5 because: the spec pins the sealed verdict (not the brief's stale 'pending' line) af
 
 ### ✅ scorer-20261014-1440 — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
 
@@ -11937,6 +11949,18 @@ _Last updated: 2026-10-14 21:53 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: all 14 files in BRAIN/00-ACTIVATION/LANE-CONTRACTS/ present at live branch head ea501b6800df on naya4/contract-staging (git ls-remote head matches cited SHA exactly). Per-lane confirm/amend verdicts in own voices, consolidated 10-item amendment list held to ride convergence, honest holes named (verdicts rest on director consolidated state
 
+### ✅ scorer-20261014-1520 — Team 6, Naya Clarity Narzan (Successor Transfer) — 9.5/10 [VERIFIED]
+
+**Task:** t0770-lane6.md
+
+**Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
+
+### ✅ scorer-20261014-1450 — Team 5, Naya Verity Seeker (Retrieval) — 9.5/10 [VERIFIED]
+
+**Task:** t0769-lane5.md
+
+**Evidence:** ARTIFACT VERIFIED: hidden_files/infra-packet-2-bodyhash-t0769-lane5.md exists on disk (7,956 bytes; post-edit SHA differs from the pre-edit sha16 the receipt quotes — explained in-receipt: sha embedded after edit). Clears 9.5 because: the packet closes the last open INFRA ask (duplicate-build checked via grep), 3-pass receipt with all 10 pass-1 fix
+
 ### ✅ scorer-20261014-1440 — Team 5, Naya Seeker (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** t0580b-lane5.md
@@ -12019,8 +12043,26 @@ _Last updated: 2026-10-14 21:53 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
 
+### ✅ scorer-20261014-1450 — Team 3, Naya Resolve Judge (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** t0767-lane3.md
+
+**Evidence:** ARTIFACT VERIFIED: hidden_files/surge-a-verdict-t0767-lane3.md exists, sha256 1f9be43012c74f99... == receipt pin, 7,719 bytes; reviewed note t0761 3b685b90... verified on disk. Score 9.0 not 9.5: why-not-9.5 = the worker timed out at the 3000s limit before closeout, so machine-law gates 2/3 were deferred (verdict's own text carries the 4 conditions
+
 ### ✅ scorer-20261014-1440 — Team 3, Naya Judge (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** t0581b-lane3.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
+
+### ✅ scorer-20261014-1450 — Team 2, Naya Verity Sage (Learning Pipeline) — 8.0/10 [VERIFIED]
+
+**Task:** t892-lane2.md
+
+**Evidence:** ARTIFACT VERIFIED: all 4 artifacts exist in goals/learning-10-10/hidden_files/ (design 5462B, protocol 2481B, results 3962B, error-signal-loop 3808B). Score 8.0 not 9.5: why-not-9.5 = N=1 per arm (pilot, no statistical power); the lane designed AND scored the pilot (independent re-score outstanding, remaining hole 1); ceiling effect on H1 means the
+
+### ✅ scorer-20261014-1450 — Team 2, Naya Verity Sage (Learning Pipeline) — 9.5/10 [VERIFIED]
+
+**Task:** t0768-lane2.md
+
+**Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
