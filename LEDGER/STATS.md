@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-14 07:02 UTC_
+_Last updated: 2026-10-14 07:32 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 1148
-- ✅ Verified (8+): 1140
+- **Total scored actions:** 1159
+- ✅ Verified (8+): 1151
 - 🟡 Partial (5–7): 7
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 1
@@ -15,18 +15,18 @@ _Last updated: 2026-10-14 07:02 UTC_
 
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
-| Team 1 | Naya Verity | 103 | 9.0 | 9.5 |
-| Team 2 | Naya Sage | 126 | 8.7 | 9.0 |
-| Team 3 | Naya Judge | 85 | 8.8 | 9.5 |
-| Team 4 | Naya Mason | 88 | 8.9 | 9.5 |
-| Team 5 | Naya Seeker | 81 | 8.9 | 9.5 |
-| Team 6 | Naya Heir | 78 | 8.9 | 9.5 |
-| Team 7 | Naya Conductor | 114 | 8.9 | 9.5 |
-| Team 8 | Naya Sentinel | 101 | 8.9 | 9.5 |
-| Team 9 | Naya Smith | 123 | 8.8 | 9.5 |
-| Team 10 | Naya Librarian | 119 | 8.9 | 9.5 |
+| Team 1 | Naya Verity | 104 | 9.0 | 9.5 |
+| Team 2 | Naya Sage | 127 | 8.7 | 9.0 |
+| Team 3 | Naya Judge | 86 | 8.8 | 9.5 |
+| Team 4 | Naya Mason | 89 | 8.9 | 9.5 |
+| Team 5 | Naya Seeker | 82 | 8.9 | 9.5 |
+| Team 6 | Naya Heir | 79 | 8.9 | 9.5 |
+| Team 7 | Naya Conductor | 115 | 8.9 | 9.5 |
+| Team 8 | Naya Sentinel | 102 | 8.9 | 9.5 |
+| Team 9 | Naya Smith | 124 | 8.8 | 9.5 |
+| Team 10 | Naya Librarian | 120 | 8.9 | 9.5 |
 | Team 11 | Naya Heart | 92 | 9.0 | 9.5 |
-| Team 12 | Naya Herald | 38 | 9.0 | 9.5 |
+| Team 12 | Naya Herald | 39 | 9.0 | 9.5 |
 
 ## Learning velocity
 
@@ -255,6 +255,13 @@ _Last updated: 2026-10-14 07:02 UTC_
 - **t0715:** 2 actions, avg 9.2/10
 - **t0716:** 1 actions, avg 9.0/10
 - **t0717:** 1 actions, avg 9.0/10
+- **t0718:** 2 actions, avg 9.0/10
+- **t0719:** 1 actions, avg 9.0/10
+- **t0720:** 2 actions, avg 9.2/10
+- **t0721:** 1 actions, avg 9.5/10
+- **t0722:** 1 actions, avg 9.0/10
+- **t0723:** 2 actions, avg 8.8/10
+- **t0724:** 2 actions, avg 9.0/10
 - **t892:** 6 actions, avg 8.2/10
 - **t0892:** 3 actions, avg 8.3/10
 - **t902:** 2 actions, avg 4.5/10
