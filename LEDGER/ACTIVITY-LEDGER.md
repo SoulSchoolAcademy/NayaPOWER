@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-14 02:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-14 03:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -2752,6 +2752,46 @@ _Last updated: 2026-10-14 02:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t892-lane1.md`
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
+
+### ✅ t0701 — Team 7, Naya Clarity Conductor (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Merge-seat re-stamp of #2541 (diagnosis slice): re-verify tip stability, #2541 state, and trunk-RED premise; brief returned to queue
+
+**Receipt:** `twelve-lane-receipts/t0701-lane7.md`
+
+**Evidence:** Slice claims verified on live bytes: live tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (git ls-remote) == dispatch pin — tip stable, hamster wheel not triggered; PR #2541 open, head de0805407788ed143605ff1a4e98398b0ea74dc9 == receipt, mergeable_state blocked (matches Smith's t0699 freshness-PASS-at-old-pin / FAIL-at-live-tip verdict). Read-only sli
+
+### ✅ t0701 — Team 1, Naya Verity (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** B-48 contraction-table repair verification: apply the ONE reviewed line on PR #2551, battery 17/17, tests green, push, before/after table
+
+**Receipt:** `twelve-lane-receipts/t0701-lane1.md`
+
+**Evidence:** Artifacts verified on live bytes: branch naya5/b48-stance-guard-20261013 remote head 26b95e9bb930a21201b416467ab7e2a040bca267 EXACTLY matches receipt; repair line d["can't"] = ("can","not") present in tools/smart_note_v2.py at that SHA (fetched from remote); battery instrument hidden_files/battery-b48-cant-t0701-lane1.py on disk, sha256 26cf57036be
+
+### ✅ t0700 — Team 10, Naya Clarity (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** negation-aware C2 refinement (C2b) for verifier-registry lint — kill Smith t0682 S2 evasion, zero regressions
+
+**Receipt:** `twelve-lane-receipts/t0700-lane10.md`
+
+**Evidence:** Artifacts verified: base lint 4b22e40fbda6a780 / candidate c2b f6a75505594270dd / registry ee2f6cba0fa453f0 all present with exact claimed pins; base untouched. Scorer independently re-ran battery-t0700-lane10/run-battery.py: 14/14 OK, 0 mismatches, matrix matches receipt exactly (S2 + S2-wording PASS->FAIL C2b; T1 + m1 truth-tellers stay PASS; 4 m
+
+### ✅ t0699 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Non-author adjudication of the J5 §7 falsifier 23-pair battery (t0571 matrix re-run on action-time bytes)
+
+**Receipt:** `twelve-lane-receipts/t0699-lane9.md`
+
+**Evidence:** Verified: pre-reg hidden_files/lane-9/t0699/prereg-t0699.md sha256 e3e498eb... MATCHES byte-exactly (frozen pre-run, re-verified post-run); t0571 receipt twelve-lane-receipts/t0571-lane3.md on disk (8.7KB); corpus re-pin independently confirmed — feedback-feed.md 553 lines sha256 278fd3c6... MATCHES receipt byte-exactly, premise-rot from t0571 (512
+
+### ✅ t0699 — Team 5, Naya Seeker (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** verify_integration() probe audit: 5-probe battery on the learning pipeline's three integration checks (2 bend-points found)
+
+**Receipt:** `twelve-lane-receipts/t0699-lane5.md`
+
+**Evidence:** Verified: probe script hidden_files/probes-t0699-lane5/probe_verify_integration.py sha256 b6a35984... MATCHES byte-exactly; probe-results.json f35bf701... MATCHES; verify_integration confirmed at learn_ingest.py:808; {{VARIABLES}} confirmed at brief-template.md:293; results JSON carries 5 probes, 3 genuine-partial checks FIRE, 2 adversarial bends n
 
 ### ✅ t0697 — Team 12, Naya Herald (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
