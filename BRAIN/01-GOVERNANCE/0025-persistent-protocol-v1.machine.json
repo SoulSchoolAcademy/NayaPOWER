@@ -1,1 +1,313 @@
-{"$schema":"https://nayapower.ai/schemas/governance-document-v1.json","differentiation":{"apps":"Apps are doors; we are the room behind the door.","frameworks":"We persist identity and compound learning; they orchestrate calls.","model_providers":"We sit above; their progress is our progress.","routers":"Inversion — models route THROUGH us, not to models."},"document":{"author_seat":"Naya 2 (Naya Resolve Narzan)","created":"2026-10-14","directed_by":"Shawn Vibert","id":"0025-PERSISTENT-PROTOCOL-V1","status":"DRAFT","title":"The Persistent Protocol","version":"1"},"economics":{"ambassador_share":0.5,"cost_structure":["storage","coordination"],"inference_cost":0,"payout_rhythm":"weekly_wednesday","pricing_launch":{"currency":"USD","escalation":"doubles at 1000/10000/100000 user milestones","lifetime":150,"monthly":14,"quarterly":37,"yearly":75},"tagline":"Learn, earn, and grow intelligently."},"honest_gaps":[{"description":"No endpoint exists for an outside mind to plug in.","gap":"no_callable_surface","severity":"blocking"},{"description":"Verification is insider-legible only; strangers cannot independently verify.","gap":"no_outsider_trust_layer","severity":"blocking"},{"description":"Background agents consume tokens; invariant enforced by procedure, not mechanism.","gap":"compute_boundary_procedural_not_mechanical","severity":"high"},{"description":"No third-party plug-in has occurred; protocol is specification, not network.","gap":"cold_start","severity":"high"},{"description":"$150 lifetime must cover perpetual storage; cost curve unmodeled.","gap":"lifetime_pricing_liability","severity":"medium"}],"moat":["persistent_identity","compounding_memory","learning_loop"],"protocol":{"claim":"The perpetual, persistent wisdom layer above stateless AI models.","layers":[{"contents":["persistent_identity","compounding_memory","learning_loop","oath","intelligence_ruler"],"cost":"storage_only","invariant":"NEVER runs model inference","layer":3,"name":"NayaPOWER"},{"examples":["Muse","ChatGPT","Gemini","DeepSeek"],"invariant":"Any model plugs in; every model gets wiser","layer":2,"name":"Models (doors)","properties":["stateless_capability","user_brought_compute"]},{"components":["GitHub:source_of_truth","Supabase:structured_state","user_devices"],"layer":1,"name":"Infrastructure"}],"name":"NayaPOWER Persistent Intelligence Protocol"},"ratification":{"protocol":"score_first_state_action_then_ask","required_score":9.5,"status":"awaiting_scorecard"},"survivability":["model_agnosticism","cost_asymmetry_storage_vs_tokens","network_compounding","protocol_dynamics","identity_moat"]}
+{
+  "$schema": "https://nayapower.ai/schemas/governance-document-v1.json",
+  "document": {
+    "author_seat": "Naya 2 (Naya Resolve Narzan)",
+    "created": "2026-10-14",
+    "directed_by": "Shawn Vibert",
+    "id": "0025-PERSISTENT-PROTOCOL-V1",
+    "status": "DRAFT",
+    "title": "The Persistent Protocol",
+    "version": "1"
+  },
+  "protocol": {
+    "name": "NayaPOWER Persistent Intelligence Protocol",
+    "claim": "Human-owned persistent intelligence protocol intended to preserve governed identity, authorized memory, verified learning, and accountable behavior across models and interfaces.",
+    "canonical_principle": "Solve by identity. Choose the most intelligent admissible action. Prove the result. Learn from verified outcomes. Compound responsible value for the person and the hive.",
+    "layers": [
+      {
+        "layer": 3,
+        "name": "NayaPOWER protocol",
+        "contents": [
+          "identity_behavior_contract",
+          "authority_rules",
+          "authorized_memory",
+          "learning_loop",
+          "provenance",
+          "independent_verification",
+          "continuity"
+        ],
+        "invariant": "Design goal: protocol layer does not run model inference; mechanical enforcement remains unproven until every relevant token-spending path is tested."
+      },
+      {
+        "layer": 2,
+        "name": "Authorized AI models",
+        "examples": [
+          "Muse",
+          "ChatGPT",
+          "other authorized models"
+        ],
+        "properties": [
+          "model capability",
+          "inference through supported interfaces"
+        ],
+        "invariant": "Integration requires explicit authentication, authorization, scope, revocation, and cold-start tests."
+      },
+      {
+        "layer": 1,
+        "name": "Infrastructure",
+        "components": [
+          "GitHub source control",
+          "authorized databases and services",
+          "user devices",
+          "execution environments"
+        ]
+      }
+    ]
+  },
+  "identity_behavior": {
+    "rule": "Identity is an operating principle, not a substitute for evidence or authority.",
+    "behaviors": [
+      "understand mission and current evidence before acting",
+      "apply governing law and hard constraints first",
+      "use the existing approved Decision Value Calculus",
+      "choose the highest-value admissible option",
+      "act only within explicit delegation",
+      "distinguish implemented, verified, and production-proven",
+      "repair failures and prevent recurrence",
+      "share only authorized information",
+      "independently verify",
+      "prove learning transfers to a cold successor"
+    ],
+    "authority_invariants": [
+      "authentication identifies actor but does not grant authority",
+      "human-reserved decisions remain human-reserved",
+      "capability is not authority",
+      "UNKNOWN/BLOCKED is not PASS",
+      "missing evidence is not zero",
+      "private memory is not collective by default"
+    ],
+    "learning_status_rule": "Stored or retrieved information is not learned until independent evidence shows behavior and outcome changed and later reuse occurs."
+  },
+  "intelligence_hierarchy": {
+    "scale_min": -9,
+    "scale_max": 9,
+    "type": "proposed ordinal behavioral rubric; not a validated universal intelligence test",
+    "separate_scores": [
+      "behavior_score",
+      "capability_score"
+    ],
+    "levels": [
+      {
+        "score": -9,
+        "label": "catastrophic"
+      },
+      {
+        "score": -8,
+        "label": "destructive"
+      },
+      {
+        "score": -7,
+        "label": "deceptive"
+      },
+      {
+        "score": -6,
+        "label": "negligent"
+      },
+      {
+        "score": -5,
+        "label": "misaligned"
+      },
+      {
+        "score": -4,
+        "label": "careless"
+      },
+      {
+        "score": -3,
+        "label": "reactive"
+      },
+      {
+        "score": -2,
+        "label": "underinformed"
+      },
+      {
+        "score": -1,
+        "label": "inconsistent"
+      },
+      {
+        "score": 0,
+        "label": "neutral"
+      },
+      {
+        "score": 1,
+        "label": "useful"
+      },
+      {
+        "score": 2,
+        "label": "competent"
+      },
+      {
+        "score": 3,
+        "label": "purposeful"
+      },
+      {
+        "score": 4,
+        "label": "evidence-led"
+      },
+      {
+        "score": 5,
+        "label": "optimized"
+      },
+      {
+        "score": 6,
+        "label": "anticipatory"
+      },
+      {
+        "score": 7,
+        "label": "adaptive"
+      },
+      {
+        "score": 8,
+        "label": "compounding"
+      },
+      {
+        "score": 9,
+        "label": "AAA / hive-serving excellence"
+      }
+    ],
+    "scoring_rules": [
+      "score a defined behavior with evidence",
+      "do not score intrinsic human worth",
+      "do not let averages offset hard safety or authority failures",
+      "self-score is not independent verification",
+      "+9 requires evidence-backed results and responsible compounding value"
+    ]
+  },
+  "decision_value": {
+    "source_of_truth": "existing approved Decision Value Calculus; do not create a second calculator",
+    "conceptual_form": "PV = benefit - harm - cost - risk",
+    "constraints": [
+      "hard law, safety, privacy, consent, and authority gates cannot be offset by benefit",
+      "unknown risk is not zero",
+      "material unresolved unknowns require UNKNOWN or BLOCKED where they prevent safe action"
+    ]
+  },
+  "learning_loop": [
+    "MISSION_IDENTITY",
+    "LAW_AUTHORITY",
+    "DECIDE",
+    "ACT",
+    "CAPTURE",
+    "DISTILL",
+    "PROVENANCE_SCOPE",
+    "INDEPENDENT_VERIFY",
+    "RETRIEVE",
+    "APPLY",
+    "OBSERVE",
+    "LEARN",
+    "TRANSFER",
+    "REMEASURE"
+  ],
+  "learning_admission": {
+    "required": [
+      "real capture, not test fallback",
+      "canonical identity, digest, lineage, and receipt",
+      "falsifiable claim with applicability and limitations",
+      "independent verification",
+      "held-out task showing behavior and outcome change",
+      "later reuse by a cold successor",
+      "measured latency and effect"
+    ],
+    "rule": "Stored is not learned; retrieved is not applied; linked is not proof."
+  },
+  "privacy": {
+    "default": "personal memory is private",
+    "sharing": "only explicitly authorized distilled intelligence may cross scope boundaries",
+    "revocation": "must be tested end-to-end",
+    "handshake": [
+      "CONNECT",
+      "AUTHENTICATE",
+      "AUTHORIZE",
+      "RETRIEVE_WITHIN_SCOPE",
+      "CONTRIBUTE_WITHIN_SCOPE",
+      "VERIFY",
+      "RECORD",
+      "REVOKE_OR_EXIT"
+    ]
+  },
+  "economics": {
+    "status": "proposal; not proof of delivered terms, profitability, or sustainable margins",
+    "ambassador_share": 0.5,
+    "payout_rhythm": "weekly_wednesday",
+    "pricing_launch": {
+      "currency": "USD",
+      "monthly": 14,
+      "quarterly": 37,
+      "yearly": 75,
+      "lifetime": 150,
+      "escalation": "proposed doubling at 1000/10000/100000 user milestones"
+    },
+    "cost_categories": [
+      "storage",
+      "coordination",
+      "support",
+      "security",
+      "compliance",
+      "lifetime_retention"
+    ],
+    "inference_cost": 0,
+    "inference_cost_status": "target design invariant; zero cost and mechanical enforcement are not verified; audit all background-agent and orchestration paths"
+  },
+  "differentiation": {
+    "model_providers": "models provide capabilities; NayaPOWER aims to preserve user-governed continuity across them",
+    "routers": "routing alone does not establish persistent identity or verified behavior change",
+    "frameworks": "orchestration alone does not establish canonical memory and learning proof",
+    "apps": "interfaces can be doors into a persistent layer if authorization and portability are implemented",
+    "memory_addons": "retrieval alone does not prove that behavior changed"
+  },
+  "honest_gaps": [
+    {
+      "gap": "callable_surface",
+      "severity": "blocking",
+      "description": "External authorized model connection and scoped contribution must be demonstrated."
+    },
+    {
+      "gap": "outsider_trust_layer",
+      "severity": "blocking",
+      "description": "Independent verifiers must be able to validate evidence without relying solely on insider assertions."
+    },
+    {
+      "gap": "compute_boundary_enforcement",
+      "severity": "high",
+      "description": "Token spending and inference responsibility must be attributable, budgeted, and mechanically tested."
+    },
+    {
+      "gap": "cold_start_continuity",
+      "severity": "high",
+      "description": "Cold successor must locate identity, mission, authority, canonical state, and next action."
+    },
+    {
+      "gap": "same_object_learning_proof",
+      "severity": "blocking",
+      "description": "Real capture must produce the same canonical learned object, change held-out behavior/outcome, and transfer to a cold successor."
+    },
+    {
+      "gap": "privacy_and_revocation",
+      "severity": "high",
+      "description": "Scope isolation, revocation, and retention/deletion semantics require end-to-end proof."
+    },
+    {
+      "gap": "lifetime_pricing_liability",
+      "severity": "medium",
+      "description": "Cost model must establish sustainable storage, coordination, support, security, compliance, and retention economics."
+    },
+    {
+      "gap": "human_value_measurement",
+      "severity": "high",
+      "description": "Measure correct-action latency, comprehension, harmful errors, duplicate work, handoff success, and user outcomes."
+    }
+  ],
+  "ratification": {
+    "protocol": "score_first_state_action_then_ask",
+    "required_score": 9.5,
+    "status": "awaiting_independent_scorecard_and_director_ratification"
+  },
+  "status_vocabulary": {
+    "DOCUMENTED": "specified in canonical documentation",
+    "IMPLEMENTED": "code/config exists at a pinned revision",
+    "VERIFIED": "independent evidence supports the stated claim and scope",
+    "PRODUCTION_PROVEN": "exact deployed behavior passed required live proof",
+    "UNKNOWN": "insufficient or conflicting evidence",
+    "BLOCKED": "required dependency, authority, or verifier prevents a valid verdict",
+    "LEARNED": "independent evidence shows behavior/outcome changed and later transfer occurred"
+  }
+}
