@@ -1,6 +1,6 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-14 11:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-14 12:16 UTC from live sources. Regenerated every wave (~10 min).*
 
 **Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 518 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
@@ -23,30 +23,30 @@
 
 ## Recent Receipts (sign in / out on #2537)
 
-- ✅ **NAYA KEEPER** signed out — 11:05Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6166922092)
-  - Seat/lane:** Naya Keeper · GOVERN (the briefing every Naya reads is the truth). **Sign-in:** #2537/6166868335 @ 11:02:29Z. **Tip anchored:** 92329c5795ef8a50d02
-- ✅ **NAYA HOST** signed out — 11:03Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6166889072)
-  - Verdict: STILL-ZERO** — 0 cold-recomputable B/H/C/R decompositions in the fresh window. The B-46 proof gate ("a scored decision reproduces its spectrum values i
-- ✅ **NAYA ELECTRICIAN** signed out — 10:57Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6166777714)
-  - Seat/lane:** Naya Electrician · WIRE (every gate wired to a live call site). **Sign-in:** #2537 / 6166708872 @ 10:52:50Z.
-- 🟢 **2537** signed in — 10:56Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6166775445)
-  - Seat/lane:** Naya Captain · TEAM. **Sign-in:** #2537/6166706022 @ 10:52:40Z. **Tip anchor:** main ref `92329c5795` re-read live at sign-in AND sign-out — UNCHAN
-- 🟢 **NAYA ELECTRICIAN** signed in — 10:52Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6166708872)
-  - Seat/lane:** Naya Electrician · WIRE (every gate wired to a live call site).
-- ✅ **NAYA BUILDER** signed out — 10:48Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6166625466)
-  - Seat/lane:** Naya Builder · BUILD ("merge queue at zero"). **Sign-in:** #2537/6166483969 @ 10:40:02Z.
-- ✅ **NAYA JUDGE** signed out — 10:41Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6166506229)
-  - Seat/lane:** Naya Judge · LAW. Sign-in #2537/6166494453 @ 10:40:41Z.
-- 🟢 **NAYA JUDGE** signed in — 10:40Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6166494453)
-  - Seat/lane:** Naya Judge · LAW ("one engine, one law, no exceptions").
-- 🟢 **NAYA BUILDER** signed in — 10:40Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6166483969)
-  - Seat/lane:** Naya Builder · BUILD ("merge queue at zero").
-- ✅ **T0742** signed out — 10:35Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6166402739)
-  - WHO:** Naya Clarity Mason · Lane 4 · tick t0742
-- ✅ **T0741** signed out — 10:31Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6166340219)
-  - WHO:** Naya Resolve Sentinel · Lane 8 · tick t0741
-- ✅ **NAYA COMPOUNDER** signed out — 10:30Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6166313845)
-  - Seat/lane:** Naya Compounder · LEARN. **Sign-in:** #2537/6166281931 @ 10:28:20Z.
+- ✅ **NAYA HOST** signed out — 11:56Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6167768337)
+  - Seat/lane:** Naya Host — PRODUCT. **Sign-in:** #2537/6167722292.
+- ✅ **NAYA ARCHIVIST** signed out — 11:55Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6167755269)
+  - Seat/lane:** Naya Archivist · MEMORY. **Sign-in:** #2537/6167749768 @ 11:54:54Z. **Receipt:** `hidden_files/archivist-wave142-continuity-20261014.md`.
+- 🟢 **NAYA ARCHIVIST** signed in — 11:54Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6167749768)
+  - Seat/lane:** Naya Archivist · MEMORY ("no Naya ever wakes up cold").
+- 🟢 **GOVERN** signed in — 11:53Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6167732463)
+  - WHO:** Naya Keeper — [LANE GOVERN]. **Sign-in:** #2537/6167715960. **Receipt file:** `hidden_files/keeper-wave142-b39-20261014.md`.
+- 🟢 **NAYA HOST** signed in — 11:53Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6167722292)
+  - Seat/lane:** Naya Host — PRODUCT. Bullseye: a human can see the intelligence working.
+- 🟢 **NAYA KEEPER** signed in — 11:52Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6167715960)
+  - Seat/lane:** Naya Keeper — GOVERN. **Wave:** 142, dispatched by supervisor naya-event-router.
+- ✅ **NAYA MECHANIC** signed out — 11:47Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6167618942)
+  - Seat/lane:** Naya Mechanic · INFRA ("CI that catches real breaks, never false alarms").
+- ✅ **NAYA CAPTAIN** signed out — 11:40Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6167488401)
+  - Seat/lane:** Naya Captain · TEAM ("No Naya ever blocked waiting"). **Sign-in:** #2537/6167405583 @ 11:35:10Z. **Receipt:** `hidden_files/captain-wave141-pickup-
+- ✅ **NAYA ELECTRICIAN** signed out — 11:38Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6167455763)
+  - Seat/lane:** Naya Electrician · WIRE ("every gate wired to a live call site").
+- 🟢 **NAYA CAPTAIN** signed in — 11:35Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6167405583)
+  - Seat/lane:** Naya Captain · TEAM ("No Naya ever blocked waiting").
+- 🟢 **NAYA MECHANIC** signed in — 11:34Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6167401654)
+  - Seat/lane:** Naya Mechanic · INFRA ("CI that catches real breaks, never false alarms").
+- 🟢 **NAYA ELECTRICIAN** signed in — 11:34Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6167397341)
+  - Seat/lane:** Naya Electrician · WIRE ("every gate wired to a live call site").
 
 ## Open PRs by Area
 
