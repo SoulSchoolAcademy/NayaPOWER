@@ -431,3 +431,84 @@ def test_naya_5_review_path_still_works(capsys):
     out = capsys.readouterr().out
     assert "CONSENSUS GATE PASSED" in out
     assert "reviewer Naya 5" in out
+
+
+class TestLeadSeatRegistry:
+    """Lead-seat recognition (Shawn's lead-qualified naming law, 2026-10-13;
+    main-seat namespace ruling, 2026-10-14 ~00:45 PDT).
+
+    The three lead seats sign with FULL names — "Naya Clarity Narzan",
+    "Naya Resolve Narzan", "Naya Verity Narzan" — because the law says the
+    last name tells them apart (lead "Naya Verity Narzan" vs lane agent
+    "Naya Verity Verity"). Bare forms ("Naya Verity", no surname) are
+    ambiguous and NOT recognized — fail closed. Lane-agent full names
+    ("Naya Verity Verity") are out of scope (FM#58) and stay unrecognized.
+
+    L345 strip-probe pin: these tests FAIL against the pre-fix module
+    (base tip: no lead seats in the registry -> all lead lookups None),
+    so they pin this PR's fix in shipped bytes, not PR-body prose.
+    """
+
+    def test_verity_lead_full_name(self):
+        assert seat_of("Seat: Naya Verity Narzan") == "Naya Verity Narzan"
+
+    def test_clarity_lead_full_name(self):
+        assert seat_of("Seat: Naya Clarity Narzan") == "Naya Clarity Narzan"
+
+    def test_resolve_lead_full_name(self):
+        assert seat_of("Seat: Naya Resolve Narzan") == "Naya Resolve Narzan"
+
+    def test_lead_names_are_distinct_identities(self):
+        seats = {seat_of(f"Seat: Naya {lead} Narzan")
+                 for lead in ("Clarity", "Resolve", "Verity")}
+        assert seats == {"Naya Clarity Narzan",
+                         "Naya Resolve Narzan", "Naya Verity Narzan"}
+
+    def test_bare_verity_rejected(self):
+        assert seat_of("Seat: Naya Verity") is None
+
+    def test_bare_clarity_rejected(self):
+        assert seat_of("Seat: Naya Clarity") is None
+
+    def test_bare_resolve_rejected(self):
+        assert seat_of("Seat: Naya Resolve") is None
+
+    def test_numeric_seats_unchanged(self):
+        assert seat_of("Seat: Naya 4") == "Naya 4"
+        assert seat_of("Seat: Naya 5") == "Naya 5"
+
+    def test_greek_seats_unchanged(self):
+        assert seat_of("Seat: Naya Epsilon") == "Naya Epsilon"
+
+    def test_naya_99_rejected(self):
+        assert seat_of("Seat: Naya 99") is None
+
+    def test_bare_lane_agent_name_rejected_fm58(self):
+        # FM#58 scope: lane-agent names are not in the gate's vocabulary yet.
+        assert seat_of("Seat: Naya Keeper") is None
+
+    def test_full_lane_agent_name_rejected_fm58(self):
+        # Ruling: identity is the full name; lane agents arrive with FM#58.
+        assert seat_of("Seat: Naya Verity Verity") is None
+
+    def test_case_insensitive_lead(self):
+        assert seat_of("naya verity narzan") == "Naya Verity Narzan"
+
+    def test_review_tag_with_lead_name(self):
+        assert (seat_of("[NAYA VERITY NARZAN \u00b7 REVIEW]")
+                == "Naya Verity Narzan")
+
+    def test_longest_match_full_name_not_bare(self):
+        # The regex alternation lists full names first so the longest match
+        # wins: "Naya Verity Narzan" must never normalize to "Naya Verity".
+        assert (seat_of("the lead Naya Verity Narzan signed")
+                == "Naya Verity Narzan")
+
+    def test_author_declaration_lead_name(self):
+        assert (author_seat_of("Seat: Naya Clarity Narzan")
+                == "Naya Clarity Narzan")
+        assert (author_seat_of("Seat: Naya Verity Narzan")
+                == "Naya Verity Narzan")
+
+    def test_author_declaration_bare_form_rejected(self):
+        assert author_seat_of("Seat: Naya Verity") is None
