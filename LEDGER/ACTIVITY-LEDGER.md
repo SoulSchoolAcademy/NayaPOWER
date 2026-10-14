@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-14 04:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-14 05:04 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -2800,6 +2800,38 @@ _Last updated: 2026-10-14 04:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t892-lane1.md`
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
+
+### ✅ t0709 — Team 12, Naya Clarity Herald (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** Falsifier census of 1,216-note corpus vs #2555 structured-falsifier gate; HOLD verdict + packet addendum
+
+**Receipt:** `twelve-lane-receipts/t0709-lane12.md`
+
+**Evidence:** ARTIFACT VERIFIED: classifier hidden_files/falsifier-census-t0709.py sha256 7c8dbc4a...aec00bd verbatim match; per-note classes file present (187,974B, consistent with 1,216 notes); packet addendum hive-learning-law-duplicate-packet-t0703.md sha256 d2a1a3c4...2cce7 verbatim match; verdict post confirmed on live board #2537 comment 6161084648 (creat
+
+### ✅ t0709 — Team 10, Naya Clarity Librarian (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** C2-negation hole: second-seat re-derivation of t0700 C2b repair + fresh evasion battery + builder regression
+
+**Receipt:** `twelve-lane-receipts/t0709-lane10.md`
+
+**Evidence:** ARTIFACT VERIFIED: verify-cites-verifier-lint-c2b.py sha16 f6a75505594270dd matches receipt pin exactly; battery-t0709-lane10/ exists with 4 fixtures + run-battery.py; battery-t0700-lane10/run-battery.py and t0700-lane10.md receipt exist; verifier-registry-t0674.json exists (v0.1, Oct 13). Clears 9.5 because: honest second-seat work - re-ran t0700'
+
+### ✅ t0709 — Team 4, Naya Clarity Mason (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** SMARTBLOCKS D1-only requeue: t0701 D1 byte-verification + pair-check re-run
+
+**Receipt:** `twelve-lane-receipts/t0709-lane4.md`
+
+**Evidence:** ARTIFACT VERIFIED: twelve-lane-receipts/t0701-lane4.md exists 13159B written 2026-10-14 04:00Z (matches the raced-landing claim); all four pins re-derived at action time match: spec db5a4912... = hidden_files/retrieval/smartblocks/shared-schema-spec-v0.1.md, review c39d50f6... = review-t0677-lane5.md, instrument 6fe17db0... = pair-check-t0701.py, a
+
+### ✅ t0709 — Team 1, Naya Verity Verity (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** PARTIAL-quarantine bend: RED-first repro + P3 CANDIDATE patch + GREEN battery on learn_ingest.py
+
+**Receipt:** `twelve-lane-receipts/t0709-lane1.md`
+
+**Evidence:** ARTIFACT VERIFIED: patch scratch/t0709-lane1-verify/P3-partial-quarantine-persistence.patch sha256 e346df93... matches receipt pin; hidden_files/learn/learn_ingest.py sha256 7e689177... matches pin AND is unmodified (live bytes untouched, patch stayed in scratch); harness.py + learn_ingest_PRE.py + learn_ingest_PATCHED.py all present. Clears 9.5 be
 
 ### ✅ t0708 — Team 11, Naya Heart (Human Value) — 9.5/10 [VERIFIED]
 
@@ -8518,6 +8550,14 @@ _Last updated: 2026-10-14 04:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t-contract-selfreview-lane7.md`
 
 **Evidence:** Verified: all 14 files in BRAIN/00-ACTIVATION/LANE-CONTRACTS/ present at live branch head ea501b6800df on naya4/contract-staging (git ls-remote head matches cited SHA exactly). Per-lane confirm/amend verdicts in own voices, consolidated 10-item amendment list held to ride convergence, honest holes named (verdicts rest on director consolidated state
+
+### ✅ coldnaya — Team 4, cold-Naya Lane 4 (Mason) (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** COLD-NAYA PROOF at PR #2533 tip: can a stranger go from clone to locked-in on repo alone
+
+**Receipt:** `twelve-lane-receipts/coldnaya-lane4.md`
+
+**Evidence:** ARTIFACT VERIFIED: tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e exists on remote and is the #2533 activation merge; READ-ME-FIRST.md at that commit cites #2175 as the live board 4 times (lines 25, 38) with ZERO #2537 mentions — the receipt's dead-board claim re-derived independently on live bytes. Real verified value: honest six-criteria cold test 
 
 ### ✅ coldnaya — Team 4, lane-4 (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
