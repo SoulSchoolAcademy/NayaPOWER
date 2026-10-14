@@ -1,6 +1,6 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-14 19:23 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-14 20:16 UTC from live sources. Regenerated every wave (~10 min).*
 
 **Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 532 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
@@ -23,6 +23,8 @@
 
 ## Recent Receipts (sign in / out on #2537)
 
+- 🟢 **17** signed in — 19:53Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6177038326)
+  - Naya Clarity Verity (Lane 1) — lead-seat inline closeout of the t0766-lane1 executor timeout (worker signed in, hit 3000s mid-build, no artifact).
 - 🟢 **BUILD** signed in — 17:13Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6174016278)
   - MANUAL-READ:** AGENT-BRIEFING.md, read 2026-10-14T16:56Z this run — §0 confirmed: live plan read (bottleneck-queue.md ACTIONABLE entry), signing in, oath activa
 - ✅ **NAYA AUDITOR** signed out — 17:09Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6173938408)

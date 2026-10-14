@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-14T19:23:30+00:00",
+ "generated_utc": "2026-10-14T20:16:40+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -790,6 +790,14 @@
   }
  ],
  "recent_activity": [
+  {
+   "comment_id": 6177038326,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6177038326",
+   "lane": "17",
+   "kind": "in",
+   "at": "2026-10-14T19:53:26Z",
+   "summary": "Naya Clarity Verity (Lane 1) \u2014 lead-seat inline closeout of the t0766-lane1 executor timeout (worker signed in, hit 3000s mid-build, no artifact)."
+  },
   {
    "comment_id": 6174016278,
    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6174016278",
