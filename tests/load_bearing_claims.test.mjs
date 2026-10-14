@@ -275,6 +275,48 @@ test("CLAIM 2 -- every runtime site hardcoding independent_verification has a re
   }
 });
 
+test("CLAIM 2 -- a site verdict must not contradict its violation's status", () => {
+  // The record's own contract (the "//" comment on
+  // hardcoded_independent_verification_sites): a site verdict of a bare CV id
+  // means "it lies". A violation marked RESOLVED must therefore never appear
+  // as a bare-CV site verdict, and a REVIEWED_OK_PLUS_CV-NN site must say the
+  // CV is resolved in its reason. Otherwise the record's two sections
+  // contradict each other and a cold reader concludes a repaired runtime
+  // still lies — the exact failure CV-10 exists to prevent. A record that
+  // mis-reports status is false, and worse than no record because it looks
+  // authoritative. The reverse direction holds too: an OPEN violation must
+  // not hide behind a REVIEWED_OK site verdict.
+  const byId = new Map(RECORD.violations.map((v) => [v.id, v]));
+  const sites = Object.entries(RECORD.hardcoded_independent_verification_sites ?? {}).filter(
+    ([k]) => !k.startsWith("//")
+  );
+  for (const [site, verdict] of sites) {
+    const cv = verdict.cv;
+    if (!cv) continue;
+    const v = byId.get(cv);
+    assert.ok(v, `${site} names ${cv}, which is not in violations`);
+    const resolved = /^RESOLVED/.test(v.status);
+    if (resolved) {
+      assert.notEqual(
+        verdict.verdict,
+        cv,
+        `${site} verdict ${cv} claims the defect still lies, but ${cv} is ${v.status}`
+      );
+      assert.match(
+        verdict.reason ?? "",
+        /RESOLVED|resolved|previously|fixed|repaired/i,
+        `${site} must record that ${cv} is resolved, not describe the old defect in the present tense`
+      );
+    } else {
+      assert.equal(
+        verdict.verdict,
+        cv,
+        `${site} verdict ${verdict.verdict} claims safety, but ${cv} is ${v.status}`
+      );
+    }
+  }
+});
+
 test("CLAIM 2 -- REVIEWED_OK literals cannot be moved above their guards", () => {
   // A REVIEWED_OK verdict is a claim about ORDER: the literal is safe only
   // because verification executes before it is written. Moving the literal
