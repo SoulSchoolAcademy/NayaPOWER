@@ -105,3 +105,32 @@ Independent scorecard ≥ 9.5 at the exact merged head + cross-seat review +
 a demonstrated cold-successor recovery using a directive compiled under this
 spec. Until then: CANDIDATE. A CANDIDATE artifact guides work; it authorizes
 nothing on its own.
+
+## 8. Reconciliation with the live implementation (#2601, 2026-10-14)
+
+The directive compiler specified in §2 is implemented as the Master Directive
+(issue #2601), observed recompiling roughly every 30 minutes from live sources
+and PATCHed on material change only. The generator mechanism is Clarity's
+machinery — observed via the artifact's freshness (20:56Z → 21:12Z compiles),
+not independently re-derived from this seat.
+
+This updates §2 in one respect: compilation is periodic (30 min), not
+per-dispatch — and distribution is via the standing issue, which every run
+reads at orientation step zero (AGENT-BRIEFING.md, 2026-10-14). The sign-out
+contract (§5) and handoff contract (§6) are unchanged.
+
+The airtight architecture this spec now describes:
+- SINGLE WRITER: only the generator writes #2601. All seats read-only. A
+  hand-edit is a split-brain defect.
+- FRESHNESS GATE: the machine block carries `generated_utc`; readers reject
+  the directive past 45 minutes — fail-closed, re-read live sources directly.
+- PER-SECTION PROVENANCE (owed): every section cites its source + source
+  timestamp. The 21:12Z compile cites 14:08/14:11 PDT sources in §3 — a
+  ~7-hour lag the reader cannot currently see.
+- VERIFIED-STATE INGESTION (owed): the compiler must ingest verified lane
+  sign-outs, not just the live plan. Evidence: the 21:12Z compile's priority 2
+  ordered the #2598 fix that had already landed at 20:26Z, and missed verify's
+  ~21:00Z residual finding (9 failures in 3 sibling files). Staleness on the
+  tracked item itself is the defect class this architecture must kill.
+- ACCEPTANCE: the cold-successor proof (directive priority 7) — an unbriefed
+  Naya operates from the directive alone. That test is the 10.
