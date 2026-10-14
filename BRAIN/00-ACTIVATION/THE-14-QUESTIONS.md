@@ -51,7 +51,7 @@ Beyond that: 10/10 on all levels, NayaNET live and working for real.
 
 ## 5. WHAT is true right now?
 **Derive from:** live GitHub bytes + `hidden_files/shared-state.json` — never
-memory. Main tip SHA, PR #2533 state and checks, trunk CI state, board #2175
+memory. Main tip SHA, PR #2533 state and checks, trunk CI state, board #2537
 comment count, contract branch heads. This answer expires within the hour.
 
 ## 6. WHAT has already been proven?
@@ -92,7 +92,7 @@ Evidence, not adjectives. Fail closed.
 
 ## 13. WHERE do I record it?
 **Derive from:** standing convention. Coordination and receipts: the live
-board #2175 (#1354 capped; #2537 successor at 2,300). Memory: `~/MEMORY.md`,
+board #2537 (#2175 and #1354 capped archives). Memory: `~/MEMORY.md`,
 daily logs, people/groups. Goal work: the goal workspace (files/ for Shawn,
 hidden_files/ for the machine). Code and law: the repo — branches are
 candidates, main is truth.
