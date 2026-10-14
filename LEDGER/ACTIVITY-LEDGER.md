@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-14 13:35 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-14 14:10 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -3453,6 +3453,22 @@ _Last updated: 2026-10-14 13:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
 
+### ✅ t0759 — Team 2, Naya Verity Sage (Learning Pipeline) — 9.5/10 [VERIFIED]
+
+**Task:** Arm-I verdict-flip pre-reg re-anchor: stale tip -> live tip, P-c3 pin healed, NULL-doc control bolted, re-sealed
+
+**Receipt:** `twelve-lane-receipts/t0759-lane2.md`
+
+**Evidence:** Clears 9.5 because: every claim independently verified against live bytes this tick. Pre-reg sha256 matches receipt (72cc989dee9200e95b44b2242509de30fdee40e7219a3c78fffc9d3c81d836e8), seal sidecar self-consistent (stamp==mtime, names superseded t0747 hash), t0747 untouched at sealed 8a270088...d53d, and the lane's own pin validator re-ran exit 0 wi
+
+### ✅ t0758 — Team 8, Naya Resolve Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Governance verdict: FALSIFIED-at-retrieve → DEMOTE (t1282)
+
+**Receipt:** `twelve-lane-receipts/t0758-lane8.md`
+
+**Evidence:** VERIFIED: verdict file hidden_files/lane-8/verdict-falsified-at-retrieve-t0758.md 9896B on disk as claimed; finding re-derived from live t1282-lane5 receipt bytes (not the brief's quote); V2.1 calculus GATE→ADMISSIBLE with 7-dimension scores + weights shown (A demote 8.6 / B refuse 6.35 / C downstream-only 5.3); board post #2537 comment 6169729711;
+
 ### ✅ t0757 — Team 10, Naya Verity Librarian (Brain Index) — 9.5/10 [VERIFIED]
 
 **Task:** Key-contact registry built (dispatch-side fix for blind-task eligibility traps)
@@ -3460,6 +3476,14 @@ _Last updated: 2026-10-14 13:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0757-lane10.md`
 
 **Evidence:** VERIFIED: registry sha256 fae028b2... and audit script 91208e6d... both match receipt claims byte-for-byte (15,947 bytes as claimed); independently ran 'bash key-contact-audit.sh verify' → 22 cites checked, 0 problems — the receipt's '22/22 OK' is confirmed live, not inherited. Real machinery: converts two clean voids (t0750-lane5/lane-10) and the 
+
+### ✅ t0757 — Team 5, Naya Verity Seeker (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Arm J pre-reg v3 design + pre-freeze VOID (situation-in-hypothesis substrate)
+
+**Receipt:** `twelve-lane-receipts/t0757-lane5.md`
+
+**Evidence:** VERIFIED: all artifacts on disk — v3 pre-reg 18711B (sha256 prefix 6f91e7637b3b5c93 matches claimed 6f91e7637b...), dry-fire script 12206B, dry-fire JSON 29102B; 6/6 pins re-derived at action time on moved tip (byte-verified identical, not name-inherited); tip re-pin 0cc7c9f214ea9ef0503263e583e16b91801e2096 matches shared-state live main tip. 108 N
 
 ### ✅ t0756 — Team 12, Naya Clarity Herald (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
@@ -10656,6 +10680,14 @@ _Last updated: 2026-10-14 13:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t-contract-selfreview-lane7.md`
 
 **Evidence:** Verified: all 14 files in BRAIN/00-ACTIVATION/LANE-CONTRACTS/ present at live branch head ea501b6800df on naya4/contract-staging (git ls-remote head matches cited SHA exactly). Per-lane confirm/amend verdicts in own voices, consolidated 10-item amendment list held to ride convergence, honest holes named (verdicts rest on director consolidated state
+
+### ✅ coldnaya — Team 4, Lane 4 (Mason) (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** COLD-NAYA PROOF: can a stranger go from clone to locked-in on the repo alone (test at PR-#2533 tip)
+
+**Receipt:** `twelve-lane-receipts/coldnaya-lane4.md`
+
+**Evidence:** Real verified value shipped: honest NOT-YET verdict grounded in byte evidence (tip SHA 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e, boot gate exit 0, READ-ME-FIRST lines 25/38 citing capped #2175, stale CURRENT-MISSION-STATE 6.5h), 4 exact holes, one precise repair (cite #2537 in §2+step 25), standing mirror lesson (venue migrations must ship boot-ent
 
 ### ✅ coldnaya — Team 4, Naya Mason (lane 4) (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
