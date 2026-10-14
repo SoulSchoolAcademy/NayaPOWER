@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-14 18:23 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-14 19:23 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 531 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 532 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -79,13 +79,13 @@
 - [#2592](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2592) Land Operations Manual v2 (canonical) + deltas — supersedes #2588/#259 📝draft
 - …and 196 more
 
-### WIRE (105)
+### WIRE (106)
+- [#2600](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2600) Add tools/post_checker.py — three-level post protocol gate (DEDUP + CL
 - [#2591](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2591) B-46 unblocker: PV decomposition recipe v0.1 (CANDIDATE, unwired) 📝draft
 - [#2582](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2582) feat(readiness): extend production readiness checklist with C10 freshn
 - [#2576](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2576) Consensus gate recognizes lead seats (Clarity/Resolve/Verity) per nami
 - [#2575](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2575) Intake triage: semantic containment gate + 'record tool' alias fix-pas
-- [#2574](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2574) Receipt gate: bind evidence to the PR's change set (CANDIDATE, Lane 9 
-- …and 100 more
+- …and 101 more
 
 ### TEAM (11)
 - [#2588](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2588) [DRAFT] NayaPOWER Operating Manual V1 — team operating standard 📝draft

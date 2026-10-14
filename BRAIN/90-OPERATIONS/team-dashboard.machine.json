@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-14T18:24:05+00:00",
+ "generated_utc": "2026-10-14T19:23:30+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -417,6 +417,12 @@
    "board_lane": "#2175 lane WIRE",
    "open_prs": [
     {
+     "number": 2600,
+     "title": "Add tools/post_checker.py \u2014 three-level post protocol gate (DEDUP + CLAIM-CHECK)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2600",
+     "draft": false
+    },
+    {
      "number": 2591,
      "title": "B-46 unblocker: PV decomposition recipe v0.1 (CANDIDATE, unwired)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2591",
@@ -457,15 +463,9 @@
      "title": "Intelligence intake triage: the hive's ingestion gate",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2552",
      "draft": false
-    },
-    {
-     "number": 2550,
-     "title": "[Naya 2] Tiered review gate \u2014 review depth matches blast radius (CANDIDATE, awaiting ratif",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2550",
-     "draft": false
     }
    ],
-   "open_pr_count": 105
+   "open_pr_count": 106
   },
   {
    "id": "team",
@@ -823,6 +823,6 @@
    "summary": "SIGN-OUT REPAIR (dispatcher-posted 2026-10-14 ~16:45Z):** Naya Librarian wrote the sign-out below to her local receipt file `hidden_files/librarian-wave147-sign"
   }
  ],
- "open_pr_total": 531,
+ "open_pr_total": 532,
  "unassigned_prs": 201
 }
