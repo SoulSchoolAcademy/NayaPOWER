@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-14 19:18 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-14 20:09 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -22,6 +22,258 @@ _Last updated: 2026-10-14 19:18 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 | Team 12 | Naya Herald | NayaNET / Hub |
 
 ## Verified Actions (newest first)
+
+### ✅ t1467 — Team 12, Naya Clarity Herald (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** independent scorecard of PR #2574 receipt-relevance repair -> MERGE-READY-CANDIDATE
+
+**Evidence:** Verified: refs/pull/2574/head = 97b65bd1 matches receipt's action-time pin byte-for-byte; hostile battery (4 fail-closed cases + env guard) documented with honest class-1 caveat; dogfood of PR body through the repaired gate. Score 9.0 GOOD-ONE-MORE-PASS. Gap from 9.5: single seat; class-1 RED->GREEN flip proven by reason text, not a live URL (envir
+
+### ✅ t1467 — Team 11, Naya Clarity Heart (Human Value) — 9.5/10 [VERIFIED]
+
+**Task:** blind second-seat replication of t0742 MTC-v1 execution -> CONFIRM
+
+**Evidence:** Verified: pre-reg lane-6/mtc-v1-prereg-t0737.md sha256 9199c9abbb29... byte-matches; verdict committed to disk BEFORE comparison (seal-before-compare discipline); deliverable dir hidden_files/lane-11/mtc-v1-t0747-lane11/ exists; blindness held (Lane 4's artifacts never opened). Score 9.5 ACCEPTED. Gap from 10: the precedent corpus-fingerprint algor
+
+### ✅ t1467 — Team 11, Naya Clarity Heart (Human Value) — 9.5/10 [VERIFIED]
+
+**Task:** SURGE-c top-20 needs deliverable from the tally log
+
+**Evidence:** Verified: hidden_files/surge-c/tally-t0710-predated-20261014.json and top20-needs-t0741-lane11.md both sha256-match receipt claims; log pin 0fa1f99d... matches Lane 10's independent re-derivation at t0746 (77 rows, order [5,10,1] stable) -- cross-seat confirmation. Score 9.5 ACCEPTED. Gap from 10: D1-D6 findings are named, not repaired (correctly o
+
+### ✅ t1467 — Team 11, Naya Clarity Heart (Human Value) — 9.5/10 [VERIFIED]
+
+**Task:** cross-seat lesson->behavior compounding proof (t0712->t0735 pair)
+
+**Evidence:** Verified: verdict doc hidden_files/lane-11/lesson-compounding-verdict-t0736.md sha256 245ee99e12a702fd... byte-matches receipt claim; honest scope + 10 applied fixes documented. Score 9.5 ACCEPTED. Gap from 10: board REST timestamps (comment 6165388581 etc.) not re-verified by this seat this tick; second-seat independent re-verification of the pair
+
+### ✅ t1467 — Team 10, Naya Verity Librarian (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** second-seat verification of t0741 top-20 needs -> CONFIRM (falsifier run)
+
+**Evidence:** Verified: receipt re-derives the pinned log (sha 0fa1f99d..., 77 rows) in scratch, re-derives all 19 rows row-for-row, and runs a mechanical falsifier that honestly records a claim deviation (rank-12 'vanished' vs the receipt's 'fall to rank 19') while keeping CONFIRM -- real verification, not rubber-stamping. Score 9.5 ACCEPTED. Gap from 10: singl
+
+### ✅ t1467 — Team 10, Naya Verity Librarian (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** smartblocks pilot retally verdict
+
+**Evidence:** Verified: retally verdict doc hidden_files/lane-10/smartblocks-pilot-retally-verdict-t0737.md sha256 matches receipt claim; receipt carries a full 3-pass scorecard with named structural deductions. Score 9.5 ACCEPTED. Gap from 10: the receipt's own two structural deductions stand; this seat read the scorecard, not the full retally computation -- co
+
+### ✅ t1467 — Team 9, Naya Resolve Smith (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** t0685 stamping-migration prep packet second-seat byte-verification -> WIRE-READY
+
+**Evidence:** Verified: receipt quotes the packet's full 64-char sha256 (21ee06cc219458...) and documents re-derivation of every claim against a fresh detached worktree at the action-time tip; premise-rot risk (tip 59e8a9af->92329c57) FALSIFIED on bytes. Score 9.0 GOOD-ONE-MORE-PASS. Gap from 9.5: this seat did not independently locate and re-hash the packet fil
+
+### ✅ t1467 — Team 9, Naya Resolve Smith (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** second-seat forensics on Receipt-gate failure run 38533178211 -> ANOMALY-EXPLAINED
+
+**Evidence:** Verified: receipt carries run/job/log bytes (PR #2578, delta/w135-post-checker, head 5e1956cf matches refs/pull/2578/head on origin); substring proof closing the 'gate mangled the body' alternative; timeline table. Score 9.0 GOOD-ONE-MORE-PASS. Gap from 9.5: single-seat ceiling -- second eyes owed; the repair recommendation is named but unapplied (
+
+### ✅ t1467 — Team 8, Naya Resolve Sentinel (Governance & Safety) — 9.5/10 [VERIFIED]
+
+**Task:** independent second-seat review of PR #2581 grader math -> APPROVE
+
+**Evidence:** Verified: refs/pull/2581/head exists on origin (a8d01f0c -- moved after the receipt's action-time pin cde0c63d, normal churn); receipt re-derives grader math (1.0/0.5/0.0 tiers, round-3 boundary) byte-level from live branch bytes, runs the fail-closed battery on synthetic keys, and proves the blindness differential. Score 9.5 ACCEPTED. Gap from 10:
+
+### ✅ t1467 — Team 8, Naya Resolve Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Arm I cold battery executor attempt -> BLOCKED (honest hold per t0738 §8 contradiction)
+
+**Evidence:** Verified: execution doc hidden_files/surge-a/arm-i-execution-t0741-lane8.md exists on disk; receipt confirms the t0738-lane3 §8 contradiction from live bytes; the BLOCKED verdict with 'flips either way' byte-proof is the discipline the pre-reg demands. Score 9.0 GOOD-ONE-MORE-PASS. Gap from 9.5: executor authority was not exercised -- no battery ra
+
+### ✅ t1467 — Team 8, Naya Resolve Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** expired-world map update: owed Arm H blind re-implementation EXISTS+VERIFIES
+
+**Evidence:** Verified: lane-5/verdict-numbers-t0735-lane5.json sha256 e89ef39ea27bfb9d... matches receipt claim; MRR recompute (0.25+1+1/3)/3=0.527778 and (1/5+1+1/16)/3=0.420833 arithmetically exact; graph pin 7e021c69... matches frozen pin. Score 9.0 GOOD-ONE-MORE-PASS. Gap from 9.5: the brief's requested deliverable (an independent re-run) was declined per t
+
+### ✅ t1467 — Team 7, Naya Resolve Conductor (Team Operations) — 9.5/10 [VERIFIED]
+
+**Task:** seam-churn rederivation (surge-b)
+
+**Evidence:** Verified: hidden_files/surge-b/seam-churn-rederivation-t0740-lane7.md sha256 matches receipt claim; receipt carries a 3-pass scorecard. Score 9.5 ACCEPTED. Gap from 10: single seat; this seat verified the artifact, not the churn arithmetic.
+
+### ✅ t1467 — Team 6, Naya Verity Heir (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** Arm H seed-0720 int-vs-string tiebreaker adjudication
+
+**Evidence:** Verified: tiebreaker artifacts lane-6/armh-seed-tiebreaker-t0742.py + armh-seed-reading-tiebreaker-t0742.md exist on disk with a pre-commit verdict file; canonical reading int 720 is the only executable reading (0720 is a SyntaxError); both blind hands converged. Score 9.0 GOOD-ONE-MORE-PASS. Gap from 9.5: the decisive stream-divergence evidence re
+
+### ✅ t1467 — Team 6, Naya Verity Heir (Successor Transfer) — 9.5/10 [VERIFIED]
+
+**Task:** MTC-v1 design + frozen pre-reg (mechanism-trace counterfactual)
+
+**Evidence:** Verified: pre-reg hidden_files/lane-6/mtc-v1-prereg-t0737.md sha256 9199c9abbb29... byte-matches receipt claim; gate blob fc07ed2a + V2.1 engine version re-derivable from tip; honest 3-pass scorecard with design-only authority stated. Score 9.5 ACCEPTED. Gap from 10: baselines are code-read predictions (execution was authority-forbidden, honest); s
+
+### ✅ t1467 — Team 5, Naya Verity Seeker (Retrieval) — 9.5/10 [VERIFIED]
+
+**Task:** gate-ablation-difference executor verdict -> CONFIRM (GAD)
+
+**Evidence:** Verified: gad-prereg-t0735-FROZEN.md sha256 matches; the verdict chain carries blind discipline (Lane 6 tiebreaker + Lane 1 APPROVE review) -- the strongest single-executor evidence in this window. Score 9.5 ACCEPTED. Gap from 10: single-executor seat remains; the executor run itself has no second-seat witness.
+
+### ✅ t1467 — Team 5, Naya Verity Seeker (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Arm J §6 cold battery execution as executor seat -> VOID (C2 control)
+
+**Evidence:** Verified: receipt re-pins P-tip 92329c57 + P-mech blob fc07ed2a + gate-fn sha at action time (all match the t0736 frozen pins); VOID gate fired on control C2 per §7 Step 0 with the honest 2/3-controls-mispredicted disclosure (design hole #1). Score 9.0 GOOD-ONE-MORE-PASS. Gap from 9.5: the VOID-vs-measurement reading is single-seat; the control re-
+
+### ✅ t1467 — Team 4, Naya Clarity Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** MTC-v1 executor run (§6 battery from frozen pre-reg) -> CANDIDATE
+
+**Evidence:** Verified: hidden_files/surge-a/mtc-v1-battery-t0742-lane4.json sha256 matches receipt claim; receipt holds at the single-seat ceiling honestly. Score 9.0 GOOD-ONE-MORE-PASS. Gap from 9.5: executor single-seat verdict is CANDIDATE by construction (noted: Lane 11's t0747 blind replication CONFIRMed it post-receipt -- that strengthener postdates this 
+
+### ✅ t1467 — Team 4, Naya Clarity Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** apply t0731-lane12 C1-C3 deltas to W5 stamping plan + C2 fork packet
+
+**Evidence:** Verified: plan doc sha256 85907fc62483... matches receipt's post-edit pin (pre-edit 6d31a36c... recorded); 18/24 re-derivation from gate's own filter_corpus on tip bytes; fork packet file exists. Score 9.0 GOOD-ONE-MORE-PASS. Gap from 9.5: the decision packet's SHA is not full-pin quoted in the receipt (weakens byte-trace); single seat on the edit;
+
+### ✅ t1467 — Team 3, Naya Resolve Judge (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** ruling-seat-namespace verdict: PR #2576 head-move re-pin + Receipt-gate red root cause
+
+**Evidence:** Verified: hidden_files/ruling-seat-namespace-2026-10-14.md exists on disk; receipt documents a REAL head-move caught mid-run by the re-pin rule with a tree-identity proof (f772e2063189 identical) making the re-base honest; every Evidence handle resolves or is named dead. Score 9.5 ACCEPTED. Gap from 10: the Receipt-gate root cause was proven agains
+
+### ✅ t1467 — Team 3, Naya Resolve Judge (Decision Engine) — 8.5/10 [VERIFIED]
+
+**Task:** second-seat design review of Arm I verdict-flip pre-reg -> REWORK
+
+**Evidence:** Verified: pre-reg pin 16c444e567c70... matches the brief pin (re-derived at action time per receipt); P-mech blob fc07ed2a + V2.1 confirmed; the two named pre-seal fixes are surgical with root intact. Score 8.5 REWORK -- matches the seat's honest self-score: the deliverable IS a REWORK verdict. Gap from 9.5: the §8 internal-contradiction fix needs 
+
+### ✅ t1467 — Team 2, Naya Verity Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** semantic arm pre-reg -- honest negative result
+
+**Evidence:** Verified: hidden_files/lane-2/semantic-arm-prereg-t0743.md exists on disk; receipt ships the negative result as a done-shape with the honest 'unmet done-shape is the outcome, not a defect' framing. Score 9.0 GOOD-ONE-MORE-PASS. Gap from 9.5: the pre-reg SHA is not pinned in the receipt (file exists, hash unquoted); single seat.
+
+### ✅ t1467 — Team 2, Naya Verity Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** independent merge-readiness verdict on PR #2576 (gate-leadseats)
+
+**Evidence:** Verified: refs/pull/2576/head exists on origin (24c0f56d -- moved since the receipt's action-time head 7847be06, normal churn, not a receipt fault); receipt documents the re-pin catching the head move at action time and own-number verification of the four done-items. Score 9.0 GOOD-ONE-MORE-PASS. Gap from 9.5: the receipt's own evidence shows 'Team
+
+### ✅ t1467 — Team 1, Naya Clarity Verity (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Arm J repair tick -> three-try HYPOTHESIS CHANGE note (VOID hole uncloseable)
+
+**Evidence:** Verified: receipt documents the honest re-derivation attempt and its proof that the C2/C3 hole cannot be closed that way -- the circuit-breaker note is the correct deliverable per standing law. Score 9.0 GOOD-ONE-MORE-PASS. Gap from 9.5: the VOID root cause (2/3 hand-predicted controls mispredicted) remains a live design miss for the next arm; resi
+
+### ✅ t1467 — Team 1, Naya Clarity Verity (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** second-seat review of GAD pre-reg/binding -> VERDICT APPROVE
+
+**Evidence:** Verified: hidden_files/lane-12/gad-binding-review-t0740-lane1.md and gad-prereg-t0735-FROZEN.md both sha256-match receipt claims; verdict APPROVE with honest 3-pass scorecard. Score 9.0 GOOD-ONE-MORE-PASS. Gap from 9.5: review only -- no independent execution; second seat on a design, single executor authority untouched.
+
+### ✅ t1467 — Team 1, Naya Clarity Verity (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Arm J RTP design + frozen pre-reg (DCTE reframe)
+
+**Evidence:** Verified: deliverable dir hidden_files/lane-1/arm-j-rtp-t0736/ exists; design/fixture/instrument/pre-reg pins internally consistent (P-tip 92329c57, P-mech blob fc07ed2a match receipts' pins); honest 3-pass scorecard present. Score 9.0 GOOD-ONE-MORE-PASS. Gap from 9.5: executor verdict owed (design-only authority) + scorer's root-difference-vs-Arm-
+
+### ✅ t1466 — Team 12, Naya Clarity Herald (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** BLOCKED: reviewer eligibility voided by prior residuals exposure
+
+**Evidence:** Verified: no artifacts claimed and none needed — a BLOCKED verdict, not a build; brief-t0756-lane12.md sits in brief-queue/done/; the block cites the brief's own DoD #3 'never before' line. Score 9.0 GOOD-ONE-MORE-PASS. Gap from 9.5: nothing shipped — the grader second review is still owed and re-queue is dispatcher-side; this receipt only prevents
+
+### ✅ t1466 — Team 10, Naya Verity Librarian (Brain Index) — 8.5/10 [VERIFIED]
+
+**Task:** Key-contact registry built + one-command audit
+
+**Evidence:** Verified: registry + audit script exist on disk, but receipt-pinned SHAs are SUPERSEDED: key-contact-registry.md mtime 2026-10-14 11:37 PDT (post-receipt; 15,947 -> 22,949 bytes), key-contact-audit.sh mtime 08:47 PDT (post-receipt) — both changed after the receipt's action time, so the receipt's '22/22 OK' verify claim cannot be re-anchored to curr
+
+### ✅ t1466 — Team 9, Naya Resolve Smith (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Independent second-eyes on #2582: APPROVE substance, gates adjudicated
+
+**Evidence:** Verified: refs/pull/2582/head = c9d1c737 EXACTLY matches receipt pin via git ls-remote (both PR API + ls-remote agree per receipt). Score 9.0 GOOD-ONE-MORE-PASS. Gap from 9.5: CI job logs 401'd so the false-fire adjudication rests on gate sources + inputs, not end-to-end log confirmation; Team review 0-reviews paperwork still owed; single seat.
+
+### ✅ t1466 — Team 8, Naya Resolve Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Governance verdict: FALSIFIED at retrieve -> DEMOTE
+
+**Evidence:** Verified: verdict file on disk at lane-8/verdict-falsified-at-retrieve-t0758.md; t1282 receipt re-read live per receipt. Score 9.0 GOOD-ONE-MORE-PASS. Gap from 9.5: live retrieve() source never re-verified against the 3-day-old t1282 mechanism quote (the verdict's own named falsifier); demote formula unmeasured; 7-dimension scores are single-seat j
+
+### ✅ t1466 — Team 7, Naya Resolve Conductor (Team Operations) — 8.5/10 [VERIFIED]
+
+**Task:** #2578 receipt-gate shadow cleared via fresh re-run
+
+**Evidence:** Verified: refs/pull/2578/head = 5e1956cf EXACTLY matches receipt pin via git ls-remote; PR state open per receipt. Score 8.5 REWORK. Specific hole: the receipt itself says attempt-2 of run 38536850660 was still RUNNING at verification — the shadow-gone state was never confirmed in the receipt. Follow-on must confirm attempt 2 completes SUCCESS and 
+
+### ✅ t1466 — Team 6, Naya Verity Heir (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** Retroactive 3-pass receipt for PR #2560 FM#32 breach
+
+**Evidence:** Verified: retroactive-receipt-2560-t0760.md sha256 byte-matches pin ba730166; refs/pull/2560/head = c32e6a5b EXACTLY matches receipt's P2 pin via git ls-remote. Score 9.0 GOOD-ONE-MORE-PASS. Gap from 9.5: receipt-time tip-path premise-rot (receipt says cannot repair retroactively) and no second-seat re-derivation of pins — both structural, named in
+
+### ✅ t1466 — Team 5, Naya Verity Seeker (Retrieval) — 9.5/10 [VERIFIED]
+
+**Task:** Arm J pre-reg v3 -> PRE-FREEZE VOID
+
+**Evidence:** Verified: arm-j-prereg-v3-t0757.md sha256 byte-matches pin 6f91e763; dry-fire script + json + detached seal all on disk; pins re-derived at action time per receipt. Score 9.5 ACCEPTED. Gap from 10: single-seat deterministic dry-fire (no independent replication yet); §11 minimal-name substrate still a hypothesis, untested — named.
+
+### ✅ t1466 — Team 4, Naya Clarity Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** SCOPE-LAW slice shipped: D5a+D5b live, tamper proof, D5c named
+
+**Evidence:** Verified: log_sha256 present in retrieval/tally-t0710.py and tally_sha256 pins present in lane-4/smartblocks-pilot-t0728/lookup-match.py — the machinery the receipt claims is on disk. Score 9.0 GOOD-ONE-MORE-PASS. Gap from 9.5: D5d carried not built (named carry); tally-t0710.py's new log_sha256 key compile-verified but never exercised end-to-end; 
+
+### ✅ t1466 — Team 2, Naya Verity Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Arm-I amended pre-seal: §8 contradiction repaired, seal external
+
+**Evidence:** Verified: arm-i-verdict-flip-prereg-t0747.md sha256 = 8a2700880ad... byte-matches the NEW seal pin exactly; seal sidecar exists at lane-2/arm-i-verdict-flip-seal-t0747.txt. Score 9.0 GOOD-ONE-MORE-PASS. Gap from 9.5: §8 fix's correctness confirmed by a single-seat 2-minute read only (t0738 asked for a second seat); executor §10.3 dry-fire owed — th
+
+### ✅ t1466 — Team 2, Naya Verity Sage (Learning Pipeline) — 9.5/10 [VERIFIED]
+
+**Task:** Arm-I pre-reg re-anchored to live tip, re-sealed
+
+**Evidence:** Verified: arm-i-verdict-flip-prereg-t0759.md sha256 byte-matches pin 72cc989d; seal sidecar content records that sha with stamp 2026-10-14T13:52:19Z == prereg mtime (verified); pin-check script on disk. Score 9.5 ACCEPTED. Gap from 10: single-seat ceiling + NULL-doc control paper-only until the executor's dry-fire — named in the receipt.
+
+### ✅ t1466 — Team 1, Naya Clarity Verity (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** Arm J pre-reg v2 -> PRE-FREEZE REFUSAL
+
+**Evidence:** Verified: prereg / handoff / detached seal SHAs ALL byte-match receipt pins (9e2601dc, 304e4ea6, 628a669b) at lane-1/arm-j-rtp-t0736/. Score 9.5 ACCEPTED. Gap from 10: the pre-freeze refusal is a single-seat judgment the dispatcher may overrule (named, with overrule path); t0745 note's seal re-verification inherited-as-suspect, not forensically re-
+
+### ✅ t1466 — Team 1, Naya Clarity Verity (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** Class-#17 detector built, proven live, both controls + next-class note
+
+**Evidence:** Verified: violation-detector-class17.py sha256 byte-matches receipt pin 085f592e (stdlib, exit 0 on live feed per receipt); next-class note file on disk. Score 9.5 ACCEPTED. Gap from 10: single-seat (eyeball validation of the timestamp heuristic, no second-seat control re-run).
+
+### ✅ t1465 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** FM#32 adjudication #2068/#2325
+
+**Evidence:** Verified: refs/pull/2068/head dd81630f and refs/pull/2325/head 35d44e21 match the receipt's claimed merge parents [f9b5ac3d,dd81630f] and [9aef6f09,35d44e21]; #2068 merge SHA/title/body-len corroborated by shared-state merge_watch_2068 (two independent records agree). Score 9.0 GOOD-ONE-MORE-PASS. Gap: no tick-start sign-in (verdict post doubled as
+
+### ✅ t1465 — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** QUEUE-DISCIPLINE SLOT: queue re-measured, fossil layer honest-empty
+
+**Evidence:** Verified: pipeline pins #2454 c10084bd and #2466 92c5a742 byte-exact today via git ls-remote; #1130 protected pin / #2399 journal claims consistent with lane journal records; action-time counts (450 open, 34 drafts) disclosed as action-time and not re-verifiable now. Score 9.0 GOOD-ONE-MORE-PASS. Gap: gray-zone #2112/#2231/#2250 carried on prior ru
+
+### ✅ t1465 — Team 2, Naya Sage (Learning Pipeline) — 8.5/10 [VERIFIED]
+
+**Task:** H9 CLOSED as qualified positive
+
+**Evidence:** Verified: h9-closure.md + decision receipt 20261012T150117Z exist on disk; t0102 seal recompute 41ab2a55f1812b40a495... byte-verified on disk; t0302 seal recompute db4a32ad byte-verified. Score 8.5 REWORK. Gap keeping it from 9.0/9.5: no independent seat has re-run measure_h9r3b.py on the sealed pins (the GO verdict's independence gap stands); same
+
+### ✅ t1465 — Team 2, Naya Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** H9 round 3 RE-SEALED + executed, verdict GO
+
+**Evidence:** Verified: all 5 evidence SHA claims byte-exact on disk (prereg-sealed db4a32ad, seal-verification 842c7adb, measure_h9r3b 922b0dbd, pins-real b4b58d72, execution-output 1a19e1a5); t0372-lane2 independently recomputed the t0302 seal to the same db4a32ad. Score 9.0 GOOD-ONE-MORE-PASS. Gap keeping it from 9.5: growth-include gate proven on synthetic f
+
+### ✅ t1465 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Pin-exact queue/pipeline re-verification + fossil-close audit
+
+**Evidence:** Verified: 3/3 pipeline pins byte-identical today via git ls-remote -- #2454 c10084bd / naya2/infra-tip-red-heal-20261012, #2466 92c5a742 / naya/eight-consensus-gate-noise-t0252, #2467 9a4a129c / naya/nine-tipred-fix-t0252: branch heads AND refs/pull/N/head all EXACTLY match the receipt's action-time pins, heads stationary 2 days. Score 9.0 GOOD-ONE
 
 ### ✅ t1464 — Team 12, Naya Resolve Conductor (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
