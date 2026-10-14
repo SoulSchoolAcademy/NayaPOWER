@@ -31,13 +31,15 @@ Scope: the seat-receipt convention started 2026-10-11T16:30:00Z (PR #2352).
 PRs opened before that cannot carry seat tags, so the gate SKIPS them with a
 clear message instead of failing on a convention that did not exist yet.
 
-Fail-closed, never a traceback: API or unexpected errors exit 1 through
-fail() with plain words ("unable to verify consensus: ..."), never a stack
-trace. A permanently-red check with a stack trace trains everyone to ignore
-red; an honest "unable to verify, re-run may resolve" does not.
+Fail-closed, never a traceback: API blindness exits 2 through fail_blind()
+with the GATE_BLIND marker (never a judged-fail token); judged-fails and
+unexpected errors exit 1 through fail() with plain words ("unable to
+verify consensus: ..."), never a stack trace. A permanently-red check with
+a stack trace trains everyone to ignore red; an honest "unable to verify,
+re-run may resolve" does not.
 
-Exit 0 = consensus present (or gate not applicable). Exit 1 = fail with a
-plain-words reason.
+Exit 0 = consensus present (or gate not applicable). Exit 1 = judged fail
+with a plain-words reason. Exit 2 = blind (transport), re-run advised.
 Stdlib only.
 """
 import json
@@ -89,6 +91,20 @@ class GateAPIError(Exception):
 def fail(msg):
     print(f"CONSENSUS GATE FAILED: {msg}")
     sys.exit(1)
+
+
+def fail_blind(msg):
+    """A blinded run: the gate never saw what it must judge. The verdict
+    token is GATE_BLIND (never FAIL/REJECT/FAILED), exit 2 (never 1).
+    Fail closed: a blind run still BLOCKS the merge. A builder seat may
+    map exit 2 -> "re-run advised" but NEVER -> pass."""
+    transport = ("rate-limited" if "rate-limited" in msg
+                 else "permission-denied" if "denied access" in msg
+                 else "io-error")
+    print(f"CONSENSUS GATE: GATE_BLIND -- unable to verify consensus: {msg} "
+          f"(transport: {transport}; verdict: BLOCKED-blind, re-run "
+          f"advised)")
+    sys.exit(2)
 
 
 def _classify_http_error(e):
@@ -363,8 +379,9 @@ def main():
         run_gate(token, repo, pr_number, head_sha)
     except GateAPIError as e:
         # Fail closed (unverified consensus == no consensus) but say so
-        # plainly: a transient API error is not a missing review.
-        fail(f"unable to verify consensus: {e}")
+        # plainly: a transient API error is not a missing review. Blind,
+        # not judged: GATE_BLIND token, exit 2.
+        fail_blind(f"{e}")
     except Exception as e:  # never a traceback on the check
         fail(f"unable to verify consensus: unexpected "
              f"{type(e).__name__}: {e}")

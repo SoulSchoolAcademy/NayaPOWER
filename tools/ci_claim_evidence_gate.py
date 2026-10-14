@@ -53,7 +53,11 @@ WHAT THIS DOES NOT DO (D32 honesty -- read before trusting this gate)
 7. Only the first 100 reviews and first 100 check runs are considered
    (API pagination cap). PRs beyond that are out of scope.
 8. Infrastructure failure (API unreachable, body unfetchable) fails CLOSED
-   (exit 1, GATE_BLIND). A gate that passes when blind is theater.
+   (exit 2, GATE_BLIND). A gate that passes when blind is theater.
+   Exit-code contract (packet 3, t0762): 0 = pass, 1 = judged-fail,
+   2 = blind. The word FAIL/REJECT/FAILED never appears on a blind line;
+   the word GATE_BLIND never appears on a judged line. A builder seat may
+   map exit 2 -> "re-run advised" but NEVER -> pass.
 """
 
 from __future__ import annotations
@@ -62,6 +66,7 @@ import json
 import os
 import re
 import sys
+import urllib.error
 import urllib.request
 from pathlib import Path
 
@@ -218,11 +223,46 @@ def api_get(path: str, token: str):
 
 
 class GateBlind(Exception):
-    """The gate could not see what it must judge. Fail closed."""
+    """The gate could not see what it must judge. Fail closed (exit 2)."""
+
+
+def _classify_transport(exc):
+    """Classify a blind cause: rate-limited | permission-denied | io-error.
+
+    Reads the wrapped HTTPError's response body (packet 1 will add
+    per-call header logging; until then the body text + code decide).
+    Never raises."""
+    cause = exc.__cause__
+    if isinstance(cause, urllib.error.HTTPError):
+        try:
+            raw = cause.read() or b""
+            text = raw.decode("utf-8", "replace").lower()
+        except Exception:
+            text = ""
+        headers = cause.headers or {}
+        retry_after = headers.get("Retry-After") if headers else None
+        if cause.code == 429 or (cause.code == 403 and
+                                 ("rate limit" in text or retry_after)):
+            return "rate-limited"
+        if "resource not accessible" in text:
+            return "permission-denied"
+    return "io-error"
+
+
+def _blind(origin, transport):
+    """Emit the GATE_BLIND marker line and return the exit code (2).
+
+    Blind is a distinct exit, never a judged-fail token: the word
+    FAIL/REJECT/FAILED never appears here, and GATE_BLIND never appears
+    on a judged line. Fail closed: a blind run still BLOCKS the merge."""
+    print(f"CLAIM-EVIDENCE GATE: GATE_BLIND -- {origin} "
+          f"(transport: {transport}; verdict: BLOCKED-blind, re-run advised)")
+    return 2
 
 
 def run_gate(repo: str, pr_number: str, head_sha: str, head_dir: str, token: str) -> int:
-    """Full gate run. Returns process exit code (0 pass, 1 fail)."""
+    """Full gate run. Returns 0 pass / 1 judged-fail; transport blindness
+    raises GateBlind and is reported by main() as exit 2."""
     pr = api_get(f"/repos/{repo}/pulls/{pr_number}", token)
     body = pr.get("body") or ""
     author_seat = parse_seat_tag(body)
@@ -255,13 +295,12 @@ def main() -> int:
         head_dir = os.environ.get("PR_HEAD_DIR", "pr-head")
         token = os.environ["GITHUB_TOKEN"]
     except KeyError as exc:
-        print(f"CLAIM-EVIDENCE GATE: FAIL -- missing env {exc} (GATE_BLIND)")
-        return 1
+        # No env = the gate cannot see its inputs: blind, not judged.
+        return _blind(f"missing env {exc}", "io-error")
     try:
         return run_gate(repo, pr_number, head_sha, head_dir, token)
     except GateBlind as exc:
-        print(f"CLAIM-EVIDENCE GATE: FAIL -- {exc} (GATE_BLIND)")
-        return 1
+        return _blind(f"{exc}", _classify_transport(exc))
 
 
 if __name__ == "__main__":

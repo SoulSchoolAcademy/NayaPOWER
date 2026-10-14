@@ -855,6 +855,14 @@ def check_delivery(receipt_bytes, pr_head_dir, changed, truth,
 # Protected truth provider
 # ---------------------------------------------------------------------------
 
+class TransportBlind(RuntimeError):
+    """The gate could not reach the transport it must judge from.
+
+    Subclasses RuntimeError so existing catch sites keep failing closed;
+    transport-specific sites catch this FIRST to emit the GATE_BLIND
+    marker (exit 2) instead of a generic TOOL-ERROR."""
+
+
 def _api(method, path, token, body=None):
     req = urllib.request.Request(
         API_HOST + path, data=json.dumps(body).encode() if body else None,
@@ -867,8 +875,43 @@ def _api(method, path, token, body=None):
             raw = r.read().decode()
             return json.loads(raw) if raw.strip() else {}
     except urllib.error.HTTPError as e:
-        raise RuntimeError("GitHub API %s %s -> HTTP %s: %s"
-                           % (method, path, e.code, e.read().decode()[:300]))
+        raise TransportBlind("GitHub API %s %s -> HTTP %s: %s"
+                             % (method, path, e.code, e.read().decode()[:300]))
+
+
+def _classify_transport(exc):
+    """Classify a TransportBlind cause: rate-limited | permission-denied |
+    io-error. Byte-faithful from the raised message's code + body text.
+    Never raises."""
+    low = str(exc).lower()
+    m = re.search(r"HTTP (\d+)", str(exc))
+    code = m.group(1) if m else ""
+    if code == "429" or (code == "403" and ("rate limit" in low
+                                            or "retry-after" in low)):
+        return "rate-limited"
+    if code == "403" and "resource not accessible" in low:
+        return "permission-denied"
+    return "io-error"
+
+
+def _emit_blind(args, origin, transport, local):
+    """Emit the GATE_BLIND marker line and return the exit code (2).
+
+    Exit-code contract (packet 3, t0762): 0 = pass, 1 = judged-fail,
+    2 = blind. The word FAIL/REJECT/FAILED never appears on a blind line;
+    the word GATE_BLIND never appears on a judged line. A blind run still
+    BLOCKS the merge (non-zero exit); a builder seat may map exit 2 ->
+    "re-run advised" but NEVER -> pass."""
+    if args.json:
+        print(json.dumps({"verdict": "GATE_BLIND", "violations": [origin],
+                          "transport": transport,
+                          "verdict_note": "BLOCKED-blind, re-run advised",
+                          "mode": "local" if local else "protected"}))
+    else:
+        print("ACTIVATION-DELIVERY GATE: GATE_BLIND -- %s "
+              "(transport: %s; verdict: BLOCKED-blind, re-run advised)"
+              % (origin, transport))
+    return 2
 
 
 def resolve_truth():
@@ -1054,6 +1097,8 @@ def main(argv=None):
             truth = load_local_truth(args.truth)
         else:
             truth = resolve_truth()
+    except TransportBlind as e:
+        return _emit_blind(args, str(e), _classify_transport(e), local=local)
     except RuntimeError as e:
         return _emit("TOOL-ERROR", [str(e)], args, 2, local=local)
 
@@ -1073,6 +1118,8 @@ def _run_delivery(args):
                      args, 2, local=False)
     try:
         truth = resolve_truth()
+    except TransportBlind as e:
+        return _emit_blind(args, str(e), _classify_transport(e), local=False)
     except RuntimeError as e:
         return _emit("TOOL-ERROR", [str(e)], args, 2, local=False)
 
@@ -1086,6 +1133,8 @@ def _run_delivery(args):
                              ["delivery mode needs --pr or --changed-files"],
                              args, 2, local=False)
             changed = pr_changed_files(truth["repository"], args.pr, token)
+    except TransportBlind as e:
+        return _emit_blind(args, str(e), _classify_transport(e), local=False)
     except RuntimeError as e:
         return _emit("TOOL-ERROR", [str(e)], args, 2, local=False)
 
