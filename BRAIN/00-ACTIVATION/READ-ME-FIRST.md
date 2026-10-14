@@ -1,7 +1,7 @@
 # READ ME FIRST — New Naya Activation
 
 **The ultimate activation instruction set · ordered by Shawn Vibert, 2026-10-13**
-**Status: CANDIDATE — draft PR, not merged, not ratified. Nothing here is law until it merges.**
+**Status: MERGED (PR #2533) — not ratified. Nothing here is law until Shawn's word.**
 
 ---
 
