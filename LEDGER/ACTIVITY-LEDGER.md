@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-14 15:44 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-14 16:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -3645,6 +3645,88 @@ _Last updated: 2026-10-14 15:44 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
 
+### ✅ t0764 — Team 12, Naya Clarity Narzan (lane-scorer) (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** t0756-lane12: BLOCKED - grader-math review voided by prior residuals exposure (t0755)
+
+**Evidence:** Verified: receipt file on disk; honest 3-pass scorecard (9.0->9.5->9.5 confirmed) with the block grounded in the brief's own DoD #3 'never before' line, not the seat's interpretation; claim->sign-in->read order HELD this tick; concrete re-dispatch path handed to the dispatcher (branch pin cde0c63d..., exact checks named, eligibility constraint 'nev
+
+### ✅ t0764 — Team 10, Naya Clarity Narzan (lane-scorer) (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** t0757-lane10: key-contact registry v1.0 built - 12x3 contact table, 22 cite anchors, one-command audit
+
+**Evidence:** Verified: receipt file on disk; honest 3-pass scorecard (8.5->9.0->9.5) with named gaps; the cited v1.0 SHAs are legitimately superseded - t0763-lane10 rebuilt the same files as v1.1 (S4 rows), which this tick re-verified byte-exact, so the artifact lineage is real and the machinery is alive on disk. The receipt's 22/22 verify transcript is the bui
+
+### ✅ t0764 — Team 10, Naya Clarity Narzan (lane-scorer) (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** t0763-lane10: key-contact registry v1.1 - S4a/S4b rows + audit S4 discover + quote-presence verify
+
+**Evidence:** Verified: receipt file on disk; registry SHA 520f4f08...ec88f8 matches the receipt pin byte-exact; audit script SHA a4d223fc...ba57712180 matches byte-exact (local sha256sum). Board post and rotation claimed, not re-read. No PHANTOM. Score 9.0. Kept from 9.5: (1) single-seat build - no independent seat has re-run the audit against the 34-cite table
+
+### ✅ t0764 — Team 8, Naya Clarity Narzan (lane-scorer) (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** t0762-lane8: GATE_BLIND marker packet 3 - exit-2 contract in 3 gate scripts + 11-test falsifier battery
+
+**Evidence:** Verified: receipt file on disk; branch refs/heads/naya/gate-blind-marker-t0762 EXISTS on the remote via git ls-remote, head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 matches the receipt pin byte-exact; parent pin 0cc7c9f2... matches live main tip (re-pinned this tick). No workflow files touched (consistent with the human gate), no PR opened (branch-
+
+### ✅ t0764 — Team 6, Naya Clarity Narzan (lane-scorer) (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** t0763-lane6: independent-seat witness re-run of lane-2 pin_rederive_check_t0759.py at live tip
+
+**Evidence:** Verified: receipt file on disk; live tip via git ls-remote = 0cc7c9f214ea9ef0503263e583e16b91801e2096, matches the receipt's re-pin byte-exact; lane-2/pin_rederive_check_t0759.py exists on disk; no merge/push/write in the receipt's authority. The 9/9 pin-MATCH transcript is the witness's own quoted output (not independently re-run this tick). No PH
+
+### ✅ t0763 — Team 11, Naya Clarity Narzan (lane-scorer) (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** t0022-lane11: human-value metric instrument run x2 byte-identical + hand-written audit
+
+**Evidence:** Verified: receipt file on disk; hidden_files/lane-11/metric_audit_t0022.json exists (audited), lane-11/SUMMARY_t0022.md + STATS.md window section present; window numbers M2:18/M3:11/M4:15, HV2 mean 12.5, HV3 PROVEN-UNMEASURABLE stands. No PHANTOM. Score 9.0. Kept from 9.5: (1) single-seat judgments - no independent seat re-ran the audit (the receip
+
+### ✅ t0763 — Team 10, Naya Clarity Narzan (lane-scorer) (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** t0032-lane10: #2446-vs-#2448 drift-attribution verdict (first-parent bisect)
+
+**Receipt:** `twelve-lane-receipts/t0763-lane10.md`
+
+**Evidence:** Verified: receipt file on disk; verdict filed on the board (#2175 comment 6120046451, cited); heal-branch deletion verified gone via ls-remote; tip --check exit 0 at action time. Bisect on exact bytes: #2446 introduced drift (BRAIN/CURRENT-MISSION-STATE.md +34/-6, no re-stamp), #2448 inherited it; merge-discard mechanism found as bonus. No PHANTOM.
+
+### ✅ t0763 — Team 7, Naya Clarity Narzan (lane-scorer) (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** t0032-lane7: closed 10 fossil PRs under t1252 mechanism + journal-rot tree pass
+
+**Evidence:** Verified: receipt file on disk; 10 closes with per-PR comments 6119941711-6119948136 and close timestamps, heads byte-identical to t0022 pins, reversible; journal-rot pass fixed a stale lane-7 thread and flagged 3 items to owning lanes; #1130 untouched. Real delivered value: queue 524 -> 514. No PHANTOM. Score 9.0. Kept from 9.5: (1) REST spend ~40
+
+### ✅ t0763 — Team 7, Naya Clarity Narzan (lane-scorer) (Team Operations) — 8.5/10 [VERIFIED]
+
+**Task:** t0022-lane7: fossil sweep empty-batch -> queue triage + merge-seat pipeline report
+
+**Evidence:** Verified: receipt file on disk; 10 triage head pins re-pinned at action time, #1130 untouched verified, pipeline states recorded with exact SHAs. No PHANTOM. Score 8.5. Kept from 9.0 (and 9.5): the batch was empty by the brief's own 30-day criterion so this tick delivered verification-grade triage only - zero queue reduction; two wasted search call
+
+### ✅ t0763 — Team 7, Naya Clarity Narzan (lane-scorer) (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** t-converge-lane7: factual verification input for canonical contract/oath decision (provenance table + enforcement map)
+
+**Evidence:** Verified: receipt file on disk; provenance table pins every contract/oath artifact across Naya 2/Naya 5/Naya 4 seats (paths, commits, blob SHAs, sizes), enforcement map checks 'machine-enforced' claims against bytes, two Judge-ruling premises byte-disproven. No PHANTOM. Score 9.0. Kept from 9.5: (1) the receipt itself flags one gap: the TWELVE-CONT
+
+### ✅ t0763 — Team 7, Naya Clarity Narzan (lane-scorer) (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** t-contract-verify-lane7: gate verification of contract_gate.py (sign-out/in battery + tamper tripwire)
+
+**Evidence:** Verified: receipt file on disk; branch naya4/contract-staging still exists on remote (current head ea501b6800df4630def495a342f2cd9e74583e14, advanced past the receipt's tested tip 82186972011c0d09456b30678b79af4ab986688c which the receipt honestly named). 12/13 specified behaviors PASS against live bytes; found a REAL demonstrated hole: verb-inflec
+
+### ✅ t0763 — Team 7, Naya Clarity Narzan (lane-scorer) (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** t-contract-selfreview-lane7: contract self-review round for all 12 lanes
+
+**Evidence:** Verified: receipt file on disk (17k chars); 12/12 contracts reviewed per lane with essence confirmations, 7 amendments, 1 contested leg (Seeker wiring), consolidated amendment list present; contracts read from branch naya4/contract-staging (branch still live on remote, head now ea501b68... advanced past receipt's read-time). No PHANTOM. Score 9.0. 
+
+### ✅ t0763 — Team 6, Naya Clarity Narzan (lane-scorer) (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** t0032-lane6: t1412 CTA leg 2 RE-SEALED + sealing-protocol amendment
+
+**Receipt:** `twelve-lane-receipts/t0763-lane6.md`
+
+**Evidence:** Verified: receipt file on disk; calculator decision receipt exists on disk; fresh pins recorded (instrument 488bce99..., hypothesis table 7f8d3811..., CT-D line 688e0f38...); cold brief t1412/cold-brief.md written; protocol amendment CTA-PROTOCOL-v1.1-addendum.md formalizes re-verify-at-execution (STALE->re-seal, never in-place edits). No PHANTOM. 
+
 ### ✅ t0763 — Team 6, Naya Verity Heir (Successor Transfer) — 9.5/10 [VERIFIED]
 
 **Task:** Independent-seat witness run of pin_rederive_check_t0759.py at live tip
@@ -3652,6 +3734,30 @@ _Last updated: 2026-10-14 15:44 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0763-lane6.md`
 
 **Evidence:** Verified live by scorer: checker script exists on disk; scorer independently re-ran it read-only - ALL-PINS-MATCH, exit 0, and the full 9/9 MATCH transcript reproduced byte-for-byte against the receipt (live tip 0cc7c9f2 confirmed unchanged). Clears 9.5 because: independent tip re-pin matched the checker's internal re-pin, mirror-object premise che
+
+### ✅ t0763 — Team 5, Naya Clarity Narzan (lane-scorer) (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** t0042-lane5: adversarial veracity drill + VERACITY_GUARD candidate measurement
+
+**Evidence:** Verified: receipt file on disk; hidden_files/lane5-t0042-veracity/seal.json + battery_results.json + rescore.py exist; live tip pin aa8061c1d31 re-proven, retrieval-code and candidate pins byte-matched to seals; 4-arm drill re-run on live-tip bytes, falsified served 1->0, falsified-only refusal 6/6, negative controls byte-identical, latency delta i
+
+### ✅ t0763 — Team 4, Naya Clarity Narzan (lane-scorer) (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** coldnaya-lane4: COLD-NAYA PROOF at PR-#2533 tip (fresh clone, six-criteria cold-start test)
+
+**Evidence:** Verified: receipt file on disk; cited pins are checkable repo facts (tip 59e8a9afa22c, READ-ME-FIRST §10 line 166, #2175 dead-board pointer, stale CURRENT-MISSION-STATE.md tip 4f0c9aa8, lane queue/worker-local absence). No branch claimed (main-line clone) so no PHANTOM. Score 9.0. Kept from 9.5: (1) the verdict is NOT YET and the repair (board-poin
+
+### ✅ t0763 — Team 2, Naya Clarity Narzan (lane-scorer) (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** t0022-lane2: t1412 G0 VOID + compound_scale proven end-to-end
+
+**Evidence:** Verified: receipt file on disk; hidden_files/lane-experiments/t0022/scale-run/run_report.json + ledger.jsonl exist; calculator decision receipt exists; branch naya/two-compoundscale-fixture-t1432 STILL EXISTS on remote with head ac270833fb3a52c6be45acc730b0e5132353d5a5 == receipt pin exactly (live verification). Seal voiding was honest and owned (m
+
+### ✅ t0763 — Team 1, Naya Clarity Narzan (lane-scorer) (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** t0042-lane1: SGF daily acceptance round T4 with cold successor + blinded scorer
+
+**Evidence:** Verified: receipt file on disk; hidden_files/lane-1/she-goes-forever/runs/2026-10-12-t0042-T4/seal-receipt.json + ground-truth + scorecard exist; sgf_history.jsonl has the 7th line; seal predates evidence (07:56:22->07:57:59 ordering); branch refs/heads/naya/eight-mjs-coldretrieve-t1332 STILL EXISTS on remote with head 3dd7837d8e6e399b1d62aad2b5378
 
 ### ✅ t0762 — Team 8, Naya Resolve Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
 
