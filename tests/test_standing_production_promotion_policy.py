@@ -4,6 +4,10 @@ from pathlib import Path
 
 import pytest
 
+# NO-WORD RATIFICATION (2026-10-14): the policy is CANDIDATE, not RATIFIED.
+# These assertions pin the honest fail-closed behavior (DENY / policy_not_ratified),
+# never the voided RATIFIED/ALLOW claim. See L391.
+
 from tools.standing_production_promotion_policy import evaluate_policy
 
 
@@ -18,7 +22,7 @@ def load_policy():
     return policy
 
 
-def test_valid_candidate_is_authorized_only_inside_policy_boundary():
+def test_candidate_policy_denies_even_with_valid_context():
     policy = load_policy()
     result = evaluate_policy(
         policy,
@@ -47,7 +51,8 @@ def test_valid_candidate_is_authorized_only_inside_policy_boundary():
             "canonical_runtime_proof_required": True,
         },
     )
-    assert result["decision"] == "ALLOW"
+    assert result["decision"] == "DENY"
+    assert result["reason"] == "policy_not_ratified"
 
 
 @pytest.mark.parametrize(
@@ -225,14 +230,14 @@ def _policy_with_bounds(review_after, expires_at):
     return policy
 
 
-def test_policy_allow_before_review_after():
+def test_policy_deny_before_review_after_when_candidate():
     now = datetime(2026, 10, 5, tzinfo=timezone.utc)
     policy = _policy_with_bounds(
         review_after=now + timedelta(days=10),
         expires_at=now + timedelta(days=24),
     )
     result = evaluate_policy(policy, _valid_context(), now=now)
-    assert result == {"decision": "ALLOW", "reason": "all_policy_gates_pass"}
+    assert result == {"decision": "DENY", "reason": "policy_not_ratified"}
 
 
 def test_policy_deny_when_review_after_passed():
@@ -243,7 +248,7 @@ def test_policy_deny_when_review_after_passed():
     )
     result = evaluate_policy(policy, _valid_context(), now=now)
     assert result["decision"] == "DENY"
-    assert result["reason"] == "policy_review_due"
+    assert result["reason"] == "policy_not_ratified"
 
 
 def test_policy_deny_when_expired():
@@ -254,7 +259,7 @@ def test_policy_deny_when_expired():
     )
     result = evaluate_policy(policy, _valid_context(), now=now)
     assert result["decision"] == "DENY"
-    assert result["reason"] == "policy_expired"
+    assert result["reason"] == "policy_not_ratified"
 
 
 def test_policy_does_not_trust_caller_expiry_assertion():
@@ -269,7 +274,7 @@ def test_policy_does_not_trust_caller_expiry_assertion():
     context["policy_not_expired"] = True
     result = evaluate_policy(policy, context, now=now)
     assert result["decision"] == "DENY"
-    assert result["reason"] == "policy_expired"
+    assert result["reason"] == "policy_not_ratified"
 
 
 @pytest.mark.parametrize(
@@ -293,15 +298,16 @@ def test_policy_time_not_bounded_fails_closed(expiry):
     policy["expiry"] = expiry
     result = evaluate_policy(policy, _valid_context())
     assert result["decision"] == "DENY", expiry
-    assert result["reason"] == "policy_time_not_bounded", expiry
+    # status gate fires before the time-bounds check on a CANDIDATE policy
+    assert result["reason"] == "policy_not_ratified", expiry
 
 
-def test_ratified_policy_document_has_bounded_time_window():
+def test_candidate_policy_document_has_bounded_time_window():
     # Document coherence only — no wall-clock coupling, so this test never
     # becomes a scheduled CI tripwire. Enforcement of the window is covered
     # by the injected-now tests above.
     policy = json.loads(POLICY_PATH.read_text(encoding="utf-8"))
-    assert policy["status"] == "RATIFIED"
+    assert policy["status"] == "CANDIDATE"
     expires_at = datetime.fromisoformat(policy["expiry"]["expires_at"].replace("Z", "+00:00"))
     review_after = datetime.fromisoformat(policy["expiry"]["review_after"].replace("Z", "+00:00"))
     assert expires_at.tzinfo is not None and review_after.tzinfo is not None
