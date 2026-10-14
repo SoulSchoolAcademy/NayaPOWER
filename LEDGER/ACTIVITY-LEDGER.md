@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-14 21:06 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-14 21:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -4196,6 +4196,14 @@ _Last updated: 2026-10-14 21:06 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t892-lane1.md`
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
+
+### ✅ t0770 — Team 8, lane8 (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** REGISTER-FLIP battery protocol spec (frozen spec, verifier-adapted to sealed t0767 verdict)
+
+**Receipt:** `twelve-lane-receipts/t0770-lane8.md`
+
+**Evidence:** Verified: all 3 cited artifacts byte-identical on disk — spec register-flip-protocol-spec-t0770-lane8.md sha256 91412fc2…, design doc 3b685b90…, verdict doc 1f9be430… — no PHANTOM. Real value: frozen K1-K4 protocol spec with C1-C4 verdict adaptation, fixture floors, fail-closed halts, the load-bearing find (brief's 'review pending' line was overtak
 
 ### ✅ t0769 — Team 5, Lane 5 (Naya Verity Seeker) (Retrieval) — 9.5/10 [VERIFIED]
 
