@@ -105,3 +105,39 @@ def test_cli_runs():
         capture_output=True, text=True, timeout=30)
     assert r.returncode == 0, r.stderr
     assert json.loads(r.stdout)["verdict"] == "PROMOTE"
+
+
+def test_padded_dupe_drops_not_promotes():
+    # Epsilon's padding attack (IV withhold, w106): dupe + filler scored
+    # PROMOTE (novelty 7.56 — filler diluted coverage). Containment catches
+    # the old lesson sitting inside the candidate almost whole.
+    filler = ("When the hive learns, every mechanism law principle protocol "
+              "contract invariant whenever always never enforce gate check "
+              "fail verify prove refuse block abort test claim use add remove "
+              "run build fix measure score dispatch")
+    attack = MECHANISM_LESSON + " " + filler
+    v = mod.triage(attack, existing_lesson_texts=[MECHANISM_LESSON])
+    assert v["verdict"] == "DROP", v
+    assert "padded duplicate" in v["reasons"][0]
+
+
+def test_padded_dupe_with_reordered_filler_drops():
+    filler = ("hive every mechanism law principle protocol contract invariant "
+              "whenever always never enforce gate check fail verify prove "
+              "refuse block abort test claim use add remove run build fix")
+    attack = filler + " " + MECHANISM_LESSON + " " + filler
+    v = mod.triage(attack, existing_lesson_texts=[MECHANISM_LESSON])
+    assert v["verdict"] == "DROP", v
+
+
+def test_genuine_lesson_quoting_old_phrase_survives():
+    # Containment must not nuke a real lesson that quotes a short phrase.
+    old = MECHANISM_LESSON
+    new = ("Building on lane discipline, here is the deeper mechanism: when "
+           "the dispatcher itself restarts mid-wave, in-flight claims persist "
+           "in the truth file and must be reaped by the incoming dispatcher "
+           "before any new spawn. Enforcement: the dispatcher boot sequence "
+           "runs lane-state.py reap-or-abort, and a spawn with unreaped "
+           "claims fails closed. This law governs every seat, every wave.")
+    v = mod.triage(new, existing_lesson_texts=[old])
+    assert v["verdict"] != "DROP" or "padded duplicate" not in v["reasons"][0], v

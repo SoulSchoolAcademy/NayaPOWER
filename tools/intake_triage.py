@@ -97,6 +97,27 @@ def _max_coverage(text, existing_texts):
     return best
 
 
+def _max_containment(text, existing_texts):
+    """Max fraction of an EXISTING lesson's tokens contained in the candidate.
+
+    The padding-attack dual of coverage: a dupe diluted with filler scores
+    high novelty (coverage = |candidate ∩ existing| / |candidate| shrinks as
+    filler grows), but the old lesson sits inside the candidate almost whole.
+    Containment = |candidate ∩ existing| / |existing| catches it. A genuine
+    lesson that merely quotes a phrase of an old one stays far below the bar.
+    """
+    s = set(_tokens(text))
+    if not s:
+        return 0.0
+    best = 0.0
+    for e in existing_texts:
+        o = set(_tokens(e))
+        if not o:
+            continue
+        best = max(best, len(s & o) / len(o))
+    return best
+
+
 def novelty_score(text, existing_lesson_texts=()):
     """10 * (1 - max coverage). Empty corpus -> 10.0 (all is new)."""
     if not existing_lesson_texts:
@@ -162,6 +183,12 @@ def triage(text, existing_lesson_texts=()):
     if n < 3.0:
         return {"verdict": "DROP", "scores": scores,
                 "reasons": [f"already known (novelty {n})"]}
+    if existing_lesson_texts:
+        containment = _max_containment(text, existing_lesson_texts)
+        if containment >= 0.8:
+            return {"verdict": "DROP", "scores": scores,
+                    "reasons": [f"padded duplicate: contains {containment:.0%} "
+                                "of an existing lesson's tokens"]}
     if a < 2.0 and d <= 5.0:
         return {"verdict": "DROP", "scores": scores,
                 "reasons": [f"noise: informs no decision (actionability {a}) "
