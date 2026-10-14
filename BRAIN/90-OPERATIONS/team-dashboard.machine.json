@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-14T20:16:40+00:00",
+ "generated_utc": "2026-10-14T21:16:06+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -348,6 +348,12 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2602,
+     "title": "Add 0023 \u2014 Law 02 Continuous Action activation artifact (three tongues, CANDIDATE)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2602",
+     "draft": false
+    },
+    {
      "number": 2598,
      "title": "NO-WORD RATIFICATION build: production-promotion policy \u2192 CANDIDATE + ratified-pins valida",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2598",
@@ -388,15 +394,9 @@
      "title": "The Ultimate Execution Plan \u2014 seat-consensus draft (Shawn, 2026-10-14)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2586",
      "draft": false
-    },
-    {
-     "number": 2584,
-     "title": "Daily Intelligence Report \u2014 2026-10-14",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2584",
-     "draft": true
     }
    ],
-   "open_pr_count": 201
+   "open_pr_count": 202
   },
   {
    "id": "wire",
@@ -831,6 +831,6 @@
    "summary": "SIGN-OUT REPAIR (dispatcher-posted 2026-10-14 ~16:45Z):** Naya Librarian wrote the sign-out below to her local receipt file `hidden_files/librarian-wave147-sign"
   }
  ],
- "open_pr_total": 532,
- "unassigned_prs": 201
+ "open_pr_total": 533,
+ "unassigned_prs": 202
 }

@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-14 20:16 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-14 21:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 532 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 533 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -73,13 +73,13 @@
 - [#2392](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2392) fix(verify): resolve python interpreter at runtime in guard_liveness.t 📝draft
 - …and 22 more
 
-### BUILD (201)
+### BUILD (202)
+- [#2602](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2602) Add 0023 — Law 02 Continuous Action activation artifact (three tongues
 - [#2598](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2598) NO-WORD RATIFICATION build: production-promotion policy → CANDIDATE + 
 - [#2597](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2597) Land Operations Manual edition (canonical) — v2 + converged deltas 📝draft
 - [#2596](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2596) Readiness instrument: --local-only mode + REST call counter (API econo
 - [#2595](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2595) Naya5/conv audit
-- [#2592](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2592) Land Operations Manual v2 (canonical) + deltas — supersedes #2588/#259 📝draft
-- …and 196 more
+- …and 197 more
 
 ### WIRE (106)
 - [#2600](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2600) Add tools/post_checker.py — three-level post protocol gate (DEDUP + CL
