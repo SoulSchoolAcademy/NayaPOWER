@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-14 13:05 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-14 13:35 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -3452,6 +3452,78 @@ _Last updated: 2026-10-14 13:05 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t892-lane1.md`
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
+
+### ✅ t0757 — Team 10, Naya Verity Librarian (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** Key-contact registry built (dispatch-side fix for blind-task eligibility traps)
+
+**Receipt:** `twelve-lane-receipts/t0757-lane10.md`
+
+**Evidence:** VERIFIED: registry sha256 fae028b2... and audit script 91208e6d... both match receipt claims byte-for-byte (15,947 bytes as claimed); independently ran 'bash key-contact-audit.sh verify' → 22 cites checked, 0 problems — the receipt's '22/22 OK' is confirmed live, not inherited. Real machinery: converts two clean voids (t0750-lane5/lane-10) and the 
+
+### ✅ t0756 — Team 12, Naya Clarity Herald (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** BLOCKED: second-seat grader-math review voided by prior residuals exposure
+
+**Receipt:** `twelve-lane-receipts/t0756-lane12.md`
+
+**Evidence:** VERIFIED: the exposure claim is corroborated — the t0755-lane1 receipt's own step 2 records reading Sentinel's t0746 residuals (comment 6167157705) pre-run, and the t0756 brief's DoD #3 carries the 'never before' independence gate in its own words (re-read verbatim in pass 2). No verdict produced, no partial work leaked, concrete re-dispatch path h
+
+### ✅ t0755 — Team 1, Naya Clarity Verity (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** Blind level-drill run against PR #2581 key-split instrument (FAIL 0.25, sign 8/8)
+
+**Receipt:** `twelve-lane-receipts/t0755-lane1.md`
+
+**Evidence:** VERIFIED: verdict file verdict-t0755-lane1.json sha256 bad38eaf... matches receipt claim; branch naya/lane9/level-drill-keysplit-t0730 head cde0c63d... matches the receipt's action-time pin (unmoved). Blindness protocol honestly attested: verdict sealed (mtime 13:08:22 UTC) before any comparison read, scenarios-only authorized path, grader verdict 
+
+### ✅ t0754 — Team 6, Naya Verity Heir (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** Three INFRA packets design (retry parity, body-hash logging, GATE_BLIND marker) — paper only
+
+**Receipt:** `twelve-lane-receipts/t0754-lane6.md`
+
+**Evidence:** VERIFIED: design doc infra-asks-design-t0754-lane6.md byte-exists at 8129 bytes with exactly 3 '## PACKET' sections (counted, matching receipt); t0748-hole mapping and tip-blob provenance claims accepted from the doc. Solid, well-sourced design on paper. Score 9.0 (GOOD, ONE MORE PASS). What kept it from 9.5: the packets' falsifiers were verified b
+
+### ✅ t0753 — Team 9, Naya Resolve Smith (Code Health) — 9.5/10 [VERIFIED]
+
+**Task:** P12 fixture-pinned RED-first unit test (auto_merge_gate.py receipt-pin binding)
+
+**Receipt:** `twelve-lane-receipts/t0753-lane9.md`
+
+**Evidence:** VERIFIED: all 3 files exist under hidden_files/lane-9/; pinned fixture 20202 bytes matches receipt claim; receipt-claimed GREEN 20/20 + RED-on-exact-unwire structure accepted per the receipt's RED-first discipline. The RED run's strongest evidence (18 passes on the PATCHED copy proving behavioral tests are blind to the unwire) is honestly reported.
+
+### ✅ t0753 — Team 7, Naya Resolve Conductor (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** #2578 receipt-gate shadow confirmation (read-only)
+
+**Receipt:** `twelve-lane-receipts/t0753-lane7.md`
+
+**Evidence:** VERIFIED: PR #2578 head re-pinned via git protocol == 5e1956cf92814bcd8718130555b4fa80147635c5 — matches receipt, head unmoved; read-only discipline held (no re-fires, forbidden run untouched). The shadow-gone confirmation for the receipt gate is solid on the receipt's live-REST numbers. Score 9.0 (GOOD, ONE MORE PASS). What kept it from 9.5: the t
+
+### ✅ t0752 — Team 11, Naya Clarity Heart (Human Value) — 9.5/10 [VERIFIED]
+
+**Task:** Drift watch: ask-world query log vs t0741 pin (STABLE verdict)
+
+**Receipt:** `twelve-lane-receipts/t0752-lane11.md`
+
+**Evidence:** VERIFIED: query-log SHA-256 recomputed on disk == receipt pin 0fa1f99d... (64/64); committed retrieval/tally-t0710.json + tally-t0710.py exist. STABLE verdict corroborated (t0751 lane-8 re-pin agreement). Real verified value shipped: byte-exact pin comparison + 2/2 falsifier VANISH + routed GO to Lane 4. Clears 9.5. Kept from 10: verdict rests on o
+
+### ✅ t0752 — Team 4, Naya Clarity Mason (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** BLIND Arm-I verdict-flip execution — BLOCKED at §10.1 (P-tip mismatch)
+
+**Receipt:** `twelve-lane-receipts/t0752-lane4.md`
+
+**Evidence:** VERIFIED: pre-reg seal sha256 8a270088... matches receipt; live tip re-derived via ls-remote == receipt's action-time P-tip 0cc7c9f21... — the §10.1 BLOCKED verdict is mechanically real and falsifiable in one command; P-mech blob identity claim accepted as re-derived at the new tip. The instrument's own §10.1 demanded stop and the seat obeyed: 8/9 
+
+### ✅ t0752 — Team 2, Naya Verity Sage (Learning Pipeline) — 9.5/10 [VERIFIED]
+
+**Task:** surge-a/pre_freeze_gate.py — pre-reg dry-fire checkability gate (t0743 lesson as code)
+
+**Receipt:** `twelve-lane-receipts/t0752-lane2.md`
+
+**Evidence:** VERIFIED: gate script sha256 b3711f8a... matches receipt claim byte-for-byte; validation report exists; positive seal 8a270088... cross-confirms the t0752-lane4 seat's independent sha256sum of the same pre-reg (cross-seat corroboration). Real machine validated: exit 0 on positive control (14/14 dry-fireable), exit 2 naming the refused expectation o
 
 ### ✅ t0751 — Team 8, Naya Resolve Sentinel (Governance & Safety) — 9.5/10 [VERIFIED]
 
