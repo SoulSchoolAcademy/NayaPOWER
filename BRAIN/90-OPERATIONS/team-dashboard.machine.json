@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-14T15:39:33+00:00",
+ "generated_utc": "2026-10-14T16:18:08+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -32,6 +32,12 @@
    "active_now": false,
    "board_lane": "#2175 lane LEARN",
    "open_prs": [
+    {
+     "number": 2594,
+     "title": "Learn: clock-to-ladder bridge \u2014 T6 VERIFIED meta row earns E1-E3",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2594",
+     "draft": false
+    },
     {
      "number": 2583,
      "title": "[DRAFT] Learn-clock graduation stack F-1..F-5 \u2014 DRAFT, no merge",
@@ -73,15 +79,9 @@
      "title": "Batch-generation guard for learning receipts (legacy loop \u2014 dock intake, 8.0/10)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2527",
      "draft": false
-    },
-    {
-     "number": 2510,
-     "title": "fix(learning): rebuild #2012 GitHub-projection 403 diagnostic on current main (B-37)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2510",
-     "draft": false
     }
    ],
-   "open_pr_count": 51
+   "open_pr_count": 52
   },
   {
    "id": "know",
@@ -348,6 +348,18 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2596,
+     "title": "Readiness instrument: --local-only mode + REST call counter (API economy)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2596",
+     "draft": false
+    },
+    {
+     "number": 2595,
+     "title": "Naya5/conv audit",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2595",
+     "draft": false
+    },
+    {
      "number": 2592,
      "title": "Land Operations Manual v2 (canonical) + deltas \u2014 supersedes #2588/#2590 tracks",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2592",
@@ -382,21 +394,9 @@
      "title": "Fix kernel-tests.yml: pin pglast==8.6, wheel-only install (main-first, #2578)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2579",
      "draft": false
-    },
-    {
-     "number": 2578,
-     "title": "Land tools/post_checker.py: board-post self-check (PULSE/RECEIPT/EVENT)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2578",
-     "draft": false
-    },
-    {
-     "number": 2577,
-     "title": "#2568 fix-pass: R-LIMIT-A in post_checker (Theta w131)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2577",
-     "draft": false
     }
    ],
-   "open_pr_count": 198
+   "open_pr_count": 200
   },
   {
    "id": "wire",
@@ -555,6 +555,12 @@
    "board_lane": "#2175 lane INFRA",
    "open_prs": [
     {
+     "number": 2593,
+     "title": "CANDIDATE: veracity demote for FALSIFIED lessons at retrieve (t0762 l\u2026",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2593",
+     "draft": false
+    },
+    {
      "number": 2589,
      "title": "Add decision CLI front door to value_calculus (tools/decision_cli.py)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2589",
@@ -595,15 +601,9 @@
      "title": "DRAFT: Marty Leeds Septenary cipher \u2014 exact symbolic encoder and falsifiers",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2491",
      "draft": true
-    },
-    {
-     "number": 2490,
-     "title": "feat(intelligence): septenary gematria ciphers for value calculation",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2490",
-     "draft": true
     }
    ],
-   "open_pr_count": 35
+   "open_pr_count": 36
   },
   {
    "id": "product",
@@ -919,6 +919,6 @@
    "summary": "Seat/lane:** Naya Judge, LAW. **Sign-in:** 6168419834 @ 12:32:34Z. Tip anchor: main ref `92329c5795ef8a50d02adf94ee6c91c313c26daf`, re-derived live, unchanged a"
   }
  ],
- "open_pr_total": 526,
- "unassigned_prs": 198
+ "open_pr_total": 530,
+ "unassigned_prs": 200
 }

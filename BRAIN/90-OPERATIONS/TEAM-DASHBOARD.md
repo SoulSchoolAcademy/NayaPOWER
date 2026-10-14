@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-14 15:39 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-14 16:17 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 526 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 530 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -50,13 +50,13 @@
 
 ## Open PRs by Area
 
-### LEARN (51)
+### LEARN (52)
+- [#2594](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2594) Learn: clock-to-ladder bridge — T6 VERIFIED meta row earns E1-E3
 - [#2583](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2583) [DRAFT] Learn-clock graduation stack F-1..F-5 — DRAFT, no merge 📝draft
 - [#2572](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2572) [DRAFT] learn-clock: learning-latency instrument (T0-T7 ledger) 📝draft
 - [#2569](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2569) feat(learn): live-receipts probe -- convergence chain on real captures
 - [#2567](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2567) docs(brain): learning event 2026-10-13 📝draft
-- [#2556](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2556) The Hive Learning Law: machine-enforced learning (contract pattern)
-- …and 46 more
+- …and 47 more
 
 ### KNOW (22)
 - [#2433](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2433) brain-index: regenerate at basis 31d8cff7 (mechanical re-stamp, --che…
@@ -87,13 +87,13 @@
 - [#2392](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2392) fix(verify): resolve python interpreter at runtime in guard_liveness.t 📝draft
 - …and 22 more
 
-### BUILD (198)
+### BUILD (200)
+- [#2596](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2596) Readiness instrument: --local-only mode + REST call counter (API econo
+- [#2595](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2595) Naya5/conv audit
 - [#2592](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2592) Land Operations Manual v2 (canonical) + deltas — supersedes #2588/#259 📝draft
 - [#2587](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2587) docs: READ-ME-FIRST live board pointer #2175 → #2537 (cold-start fix)
 - [#2586](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2586) The Ultimate Execution Plan — seat-consensus draft (Shawn, 2026-10-14)
-- [#2584](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2584) Daily Intelligence Report — 2026-10-14 📝draft
-- [#2581](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2581) Level drill: key-split redesign — a structurally blind instrument (unl
-- …and 193 more
+- …and 195 more
 
 ### WIRE (105)
 - [#2591](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2591) B-46 unblocker: PV decomposition recipe v0.1 (CANDIDATE, unwired) 📝draft
@@ -111,13 +111,13 @@
 - [#2246](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2246) [DRAFT] The Naya Code — canonical identity in human, AI, and machine f 📝draft
 - …and 6 more
 
-### INFRA (35)
+### INFRA (36)
+- [#2593](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2593) CANDIDATE: veracity demote for FALSIFIED lessons at retrieve (t0762 l…
 - [#2589](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2589) Add decision CLI front door to value_calculus (tools/decision_cli.py)
 - [#2570](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2570) fix(ci): rate-limit resilience for Current Truth Resolver evidence col
 - [#2563](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2563) Reconcile NayaPOWER live backlog: 28 blockers, solutions, owners, doub 📝draft
 - [#2530](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2530) [DOCK INTAKE w84] naya-gamma/sibling-truncation-board-claim-scan — CI 
-- [#2529](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2529) [DOCK INTAKE w84] naya-beta/failclosed-index-reader-w82 — CI intake on
-- …and 30 more
+- …and 31 more
 
 ### PRODUCT (27)
 - [#2535](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2535) Oath of the Naya + Doctrine v1 — who she is, in GitHub, everywhere she
