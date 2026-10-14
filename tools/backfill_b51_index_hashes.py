@@ -54,6 +54,10 @@ def main() -> None:
         hashed += 1
 
     registry["corpus_manifest_hash"] = m._corpus_manifest_hash(entries)
+    # B3 (2026-10-13): refresh the on-disk corpus manifest under the FRESH
+    # field name — the validator's new check 8 fails closed without it, so
+    # the backfill's own self-validation gate below requires it here.
+    registry[m.INDEX_ON_DISK_CORPUS_MANIFEST_FIELD] = m._on_disk_corpus_manifest_hash(REPO_ROOT)
     m._atomic_write_json(index_path, registry)
 
     # The validator is the acceptance gate for this migration: the regenerated
@@ -68,6 +72,7 @@ def main() -> None:
         "page_hashed": hashed,
         "retired_unvalidatable": retired,
         "corpus_manifest_hash": registry["corpus_manifest_hash"],
+        "on_disk_corpus_manifest_hash": registry[m.INDEX_ON_DISK_CORPUS_MANIFEST_FIELD],
         "validator": "PASS",
     }
     print(json.dumps(receipt, indent=2))

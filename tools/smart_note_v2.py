@@ -614,6 +614,12 @@ def _update_registry_locked(capture, verify, projection, registry, sn_id=None):
     # reserve_smart_note_id() only touches sequence_policy (never entries),
     # so this is the single place entries mutate: one writer, one manifest.
     registry["corpus_manifest_hash"] = _corpus_manifest_hash(registry["entries"])
+    # Writer contract (B-51 step 4, B3): the on-disk corpus manifest refreshes
+    # with the entries, under the FRESH field name — corpus_manifest_hash
+    # above is untouched (the B1/B2 lock). The newly rendered page is already
+    # on disk, so M(C) includes it; fail-closed check 8 at read time then
+    # fires on any later unindexed page addition.
+    _set_on_disk_corpus_manifest(registry)
     # No direct write: registry_transaction commits atomically on clean exit.
     return entry
 
@@ -768,6 +774,8 @@ def _retrieval_idf(field_word_sets):
 #   INDEX_CORRUPT:PAGE_HASH_MISSING      — eligible entry has no page_hash (no grandfathering)
 #   INDEX_CORRUPT:PAGE_HASH_MISMATCH    — page bytes differ from the indexed hash
 #   INDEX_CORRUPT:MANIFEST_STALE        — entries differ from corpus_manifest_hash
+#   INDEX_CORRUPT:CORPUS_MANIFEST_MISSING — no on-disk corpus manifest in the index envelope (B3 unbound)
+#   INDEX_CORRUPT:CORPUS_MANIFEST_MISMATCH — on-disk file set differs from the committed corpus manifest
 #
 # Threat model: accidental drift, NOT adversarial tampering (an actor who
 # recomputes hashes forges consistency — out of model, stated not hidden).
@@ -807,6 +815,85 @@ def _corpus_manifest_hash(entries):
     return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
 
 
+# --- B3 on-disk corpus binding (B-51 step 4; Naya Beta design 2026-10-13) ---
+#
+# B1 binds each entry to its page bytes; B2 binds the entry list to the
+# committed entries manifest. Both are blind to pages on disk that the index
+# never claims (the D-B7 drill: a new page with no reindex passes silently).
+# B3 closes that direction: a manifest of the ACTUAL ON-DISK file set,
+# hashed and stored in the index envelope under a FRESH field name.
+#
+# Naming: the spec's original "entries_manifest_hash" rename never landed —
+# the live field "corpus_manifest_hash" IS the entries hash (check 7), and
+# Theta verified B2 against that exact lock. Renaming it now would break
+# the proven B1/B2 binding. So B3 uses the new field
+# "on_disk_corpus_manifest_hash" and NEVER touches "corpus_manifest_hash".
+#
+# Self-reference: index.json and index.lock live under the allowed root
+# .naya/memory/smart-notes, so a naive "every file under the roots" walk
+# would hash the very file that carries the manifest — unverifiable by
+# construction. Those two exact paths are EXCLUDED from M(C); they are
+# index machinery, not corpus pages. (Theta wave-71 catch, found by
+# executing, not by reading.)
+#
+# M(C) definition: every regular file under INDEX_ALLOWED_PROJECTION_ROOTS
+# except root/.naya/memory/smart-notes/{index.json,index.lock}. Missing
+# roots are skipped (they cannot hold corpus pages); symlinks are not
+# followed. The manifest hash is sha256 over the canonical JSON of the
+# sorted [posix-relpath, file-sha256] record list — same canonical form as
+# the other two hashing authorities, one form, one meaning per field.
+INDEX_ON_DISK_CORPUS_MANIFEST_FIELD = "on_disk_corpus_manifest_hash"
+INDEX_CORPUS_SELF_REFERENCE_PATHS = frozenset({
+    ".naya/memory/smart-notes/index.json",
+    ".naya/memory/smart-notes/index.lock",
+})
+
+
+def _on_disk_corpus_records(root):
+    """M(C): sorted (posix-relpath, sha256-of-raw-bytes) for every corpus
+    file on disk, excluding the index's own self-reference files."""
+    records = []
+    for allowed in INDEX_ALLOWED_PROJECTION_ROOTS:
+        base = root / allowed
+        if not base.is_dir():
+            continue
+        for dirpath, dirnames, filenames in os.walk(base, followlinks=False):
+            for name in filenames:
+                full = Path(dirpath) / name
+                rel = full.relative_to(root).as_posix()
+                if rel in INDEX_CORPUS_SELF_REFERENCE_PATHS:
+                    continue
+                # G-1 fix-pass (2026-10-13): unreadable corpus files (e.g.
+                # dangling symlinks) must fail in the INDEX_CORRUPT
+                # vocabulary, not escape as a raw OSError.
+                try:
+                    records.append((rel, _page_file_hash(full)))
+                except OSError:
+                    raise SystemExit(
+                        f"INDEX_CORRUPT:CORPUS_MANIFEST_MISMATCH:unreadable corpus file {rel}")
+    records.sort(key=lambda r: r[0])
+    return records
+
+
+def _on_disk_corpus_manifest_hash(root):
+    """Single hashing authority for B3: sha256 of the canonical JSON of the
+    M(C) record list. Writer and validator share this — two implementations
+    is a future B-51."""
+    canonical = json.dumps(_on_disk_corpus_records(root),
+                           sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+    return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
+
+
+def _set_on_disk_corpus_manifest(registry, root=None):
+    """Writer-side B3 refresh: recompute M(C) from the working tree and
+    store it under the FRESH field name. Does NOT touch corpus_manifest_hash
+    (the B1/B2 lock). Called after entries mutate; the newly rendered page
+    is already on disk, so the manifest includes it."""
+    r = ROOT if root is None else root
+    registry[INDEX_ON_DISK_CORPUS_MANIFEST_FIELD] = _on_disk_corpus_manifest_hash(r)
+    return registry[INDEX_ON_DISK_CORPUS_MANIFEST_FIELD]
+
+
 def _projection_path_contained(projection_path):
     """True iff the index-declared path is relative and stays inside an allowed root."""
     if not isinstance(projection_path, str) or not projection_path:
@@ -823,10 +910,12 @@ def _projection_path_contained(projection_path):
 def _validate_index_against_corpus(registry, root=None):
     """Fail-closed validation of the retrieval index against the working-tree corpus.
 
-    Checks run in table order (0-7); the first failure wins. Any failure raises
+    Checks run in table order (0-8); the first failure wins. Any failure raises
     SystemExit("INDEX_CORRUPT:<code>:<detail>") — corruption is a broken index,
     distinguishable from "no relevant intelligence". root resolves at call time
     (not def time) so test harnesses that re-point ROOT get the live value.
+    Checks 1-7 are the Theta-verified B1/B2 lock — unchanged. Check 8 adds the
+    B3 on-disk corpus-set binding (fail-closed when the manifest is absent).
     """
     root = ROOT if root is None else root
     entries = registry.get("entries")
@@ -869,10 +958,24 @@ def _validate_index_against_corpus(registry, root=None):
     manifest = registry.get("corpus_manifest_hash")
     if not isinstance(manifest, str) or manifest != _corpus_manifest_hash(entries):
         raise SystemExit("INDEX_CORRUPT:MANIFEST_STALE:index entries differ from the manifest committed with them")
+    # Check 8 — on-disk corpus-set binding (B3). Fail closed when the index
+    # carries no on-disk manifest: an index that cannot enumerate its corpus
+    # is B3-UNBOUND by construction, and the gate says so loudly instead of
+    # answering silently from it. The fresh field name keeps the B1/B2 lock
+    # (corpus_manifest_hash == entries hash) byte-identical.
+    on_disk_manifest = registry.get(INDEX_ON_DISK_CORPUS_MANIFEST_FIELD)
+    if not isinstance(on_disk_manifest, str) or not on_disk_manifest:
+        raise SystemExit("INDEX_CORRUPT:CORPUS_MANIFEST_MISSING:index carries no on-disk corpus manifest (B3 unbound)")
+    recomputed = _on_disk_corpus_manifest_hash(root)
+    if recomputed != on_disk_manifest:
+        n = len(_on_disk_corpus_records(root))
+        raise SystemExit(
+            f"INDEX_CORRUPT:CORPUS_MANIFEST_MISMATCH:on-disk corpus differs from the committed manifest "
+            f"({n} files on disk, recomputed {recomputed[:12]}… vs committed {on_disk_manifest[:12]}…)")
 
 
 def _load_validated_registry():
-    """Load the retrieval index and fail closed on any drift (check 0 + 1-7)."""
+    """Load the retrieval index and fail closed on any drift (check 0 + 1-8)."""
     try:
         registry = load_json(REGISTRY)
     except (OSError, ValueError) as exc:

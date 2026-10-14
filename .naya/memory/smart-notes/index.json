@@ -13530,5 +13530,6 @@
     "next_sequence": 797,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   },
-  "corpus_manifest_hash": "ee229424fd726fac5213b392daa6a1b11a28e1efa248648894635860a6b7556d"
+  "corpus_manifest_hash": "ee229424fd726fac5213b392daa6a1b11a28e1efa248648894635860a6b7556d",
+  "on_disk_corpus_manifest_hash": "e9b3516a362716bc7368b6a24338a5fbca17c9ed1f840d4a183c266cbe043502"
 }
