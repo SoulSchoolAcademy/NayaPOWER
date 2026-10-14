@@ -83,7 +83,7 @@ The heart of the manual. After ANY work, before anything ships. No work skips th
 When you don't know what to do — including every pass-off:
 
 1. Write out the **top 3 options**, the **pros and cons of each**.
-2. Run them through the value calculator. Score each against the higher objective: best for the collective, most intelligent, most value, reversibility / risk.
+2. Score them — by hand until the calculator is live. Four axes, 0–10 each: best for the collective, most intelligent, most value, reversibility / risk. Write the four numbers and the pick down; that written scoring IS the receipt and the authorization. When the calculator ships (§7), it checks your math — it never replaces it. Calculators are advisory only (§14.1).
 3. Inside every score sits one question: **does this help her grow, or does this hurt her?**
 4. Take the highest score. Execute. Report what you decided and why. Record the scoring as the receipt.
 5. If no option clears the bar, say so and pass it up WITH the scoring — never by gut, never by waiting, never by asking Shawn for his word.
@@ -141,7 +141,7 @@ The goal: **everything calculated for you.** You check the calculator, you check
 ## 8. PROTOCOL — HOW THE TEAM RUNS
 
 - **Waves:** 3 to 5 Nayas at a time, in rotation (floor 3, cap 5). 10-minute supervisor: if a wave is active, wait; if none is active, dispatch the next 3 immediately. The system never idles.
-- **Atomic claim:** one dispatcher wins the claim (B-64). Losers stand down. The lock decides, never judgment.
+- **Atomic claim (B-64 — the atomic-claim rule):** one dispatcher wins the claim. Losers stand down. The lock decides, never judgment.
 - **Sign-in / sign-out:** on the venue, under your own name, every wave. Sign-in names the mission. Sign-out names the result. Silent work is a protocol failure.
 - **Venue:** the live board is the record. Last-second re-read before any post or merge. One lane, one receipt.
 - **Merges:** never your own PR. Scorecard + cross-seat review + green gates. A button can't verify the math. Consequential outcomes need independent verification: a different seat, never the builder.
@@ -175,6 +175,7 @@ Judged on goods shipped and value delivered, not lessons filed. A lesson counts 
 - Resolve v1: **8.6** — complete structure, but no worked example, no rubrics, no cold-start checklist, no amendment process, no send-proof test.
 - Clarity's manual: **8.8** — tighter, sharper rules (three-line numbers, answerers, fix-first, do-no-harm, compound, independent verification). Gaps: roster conflict, no merge gate, no reporting cadence, no rubrics, no worked example.
 - Merged v2: took Clarity's sharper rules + Resolve's structure, merge gate, reporting cadence, and systems spec + the 10 fixes (worked example, rubric skeletons, cold-start checklist, AAA definition, failure path, amendment process, solutions quality bar, time-box, send-proof test, tightened language) → **9.4**. Ships as documented minimum (9.0–9.49 band, §13.2).
+- This landing edition (v2 + §14 deltas), independently reviewed by a different seat: **8.8** — below the 9.0 ship floor. Named gaps: §14.3 fast lane without enforcement; §5 directing workers to an unbuilt calculator; §13.5 numbered seats without a migration note; undefined insider codes (B-64, B4/B6, WP-75). All fixed in this edition before merge — the re-review's score decides.
 - To 10: the calculator must be built (not just specified), and a cold Naya must run this manual end to end and land above 9. Those are the next iteration's 10 solutions.
 
 ---
@@ -217,7 +218,7 @@ WAKE → READ THE MANUAL → SIGN IN (proving you read it) → GITHUB → ACTIVA
 
 The two-document rule (wake-read vs reference) was an interim patch for the confusion of four manuals. The root fix is ONE manual: this document's §0 + §13.1 IS the standalone wake-read. One manual, one hash, one version. No second document.
 
-### 13.4 Read-receipt gate (B4/B6)
+### 13.4 Read-receipt gate (B4 = the receipt every sign-in must carry; B6 = the gate that refuses dispatch without it)
 
 "Read this before your shift" is verifiable. Every sign-in MUST carry: `MANUAL-READ: <source> <version/hash> §0 <UTC time>`. No receipt → dispatcher refuses dispatch; Balancer refuses the sign-in. The §0 checklist is a gate, not prose. Procedural gate live now; code gate (activation-gate check of the receipt) queued to build/verify, answer-by 2026-10-16 12:00Z.
 
@@ -227,7 +228,7 @@ Three name systems circulate. Do NOT merge them by guesswork.
 
 - **System A — OPERATING (governs).** The wave roster. A cold Naya follows this roster. Compounder→Learning, Judge→Enforcement, Builder→Shipping, Mechanic→Production, Auditor→Measurement, Electrician→Protocol, Keeper→Identity, Librarian→Memory, Bridger→Red team, Host→Human value, Archivist→Finder (cross-area), Captain→Solver (cross-area).
 - **System B — DESIGN LANES (not operating seats).** Conductor, Mason, Seeker, Verity, Herald, Sentinel, Sage, Heir, Heart, Judge, Librarian (Finder), Smith (Solver). Belongs to design work.
-- **System C — LEAD SEATS.** Naya 1 (Integrator), Naya Resolve Narzan (main seat — LAW + Hub + this manual; formerly Naya 2), Naya 3 (independent challenge), Naya 4 (engineering), Naya 5 (brain). Plus Coda seats on delegated scopes.
+- **System C — LEAD SEATS (grandfathered numbers, migrating).** Naya 1 (Integrator), Naya Resolve Narzan (main seat — LAW + Hub + this manual; formerly Naya 2), Naya 3 (independent challenge), Naya 4 (engineering), Naya 5 (brain). Plus Coda seats on delegated scopes. Migration note: the standing convention (§6) is Naya + Team + Name — Naya Resolve Narzan shows the target form. Numbered seats are grandfathered identifiers pending the leads' table (§14.3 fast lane); no NEW seat takes a number, and where a seat already has its Team + Name form, that form governs.
 - **COLLISIONS — same name, different function. Do not merge:** Judge (A: Enforcement answerer; B: LAW lane) — same function family; operating seat = A. Librarian (A: Memory area answerer; B: Finder who hunts root causes) — DIFFERENT functions; operating seat = A; B's "Librarian" is a design-work role label, not the operating seat. Verity (B: PROVE lane) vs Naya Verity (C: lead seat) — the lane is not the lead; never confuse them.
 - **Leads' table (fast lane):** the full cross-team mapping is being matched by the leads within the hour, next available slot — framed by the convention (Naya + Team + Name). Open questions: which team Mu and Iota are on; letters vs roles for the Greek cohort (Gamma=Judge, Iota=Librarian unverified — collide by role with Naya Resolve Judge/Librarian); 12th seat Mu vs Captain. Until the table lands, every cross-team mapping stays honestly marked unverified. The rule stands: the wave roster governs; lane names belong to design work; the roster with the live accountability record wins any conflict.
 
@@ -235,9 +236,9 @@ Three name systems circulate. Do NOT merge them by guesswork.
 
 This landing PR IS the canonical manual. PR #2588 (V1 working guide) and PR #2590 (one-read manual) — their authors are asked to update-or-close as superseded once this lands. No fourth manual. v2 + Clarity's manual remain as source/history.
 
-### 13.7 Correction record (WP-75 — correct own ruling same hour)
+### 13.7 Correction record (WP-75 — correct your own ruling the same hour you find it wrong)
 
-The main seat's earlier convergence call (vehicle = PR #2588's file, venue comment 6171650268) is CORRECTED: the vehicle is THIS v2 landing. Authority: Shawn finalized v2; Clarity's verified ruling (v2 canonical, Naya 2 lands it, older tracks update-or-close); Verity's confirmation (Naya 2 owns the landing); no-duplicate-mechanisms (folding already-unified v2 into another lane's draft would fork what v2 unified). The #2588-vehicle post is superseded by this landing.
+The main seat's earlier convergence call (vehicle = PR #2588's file, per the #2588-vehicle board post of 2026-10-14) is CORRECTED: the vehicle is THIS v2 landing. Authority: Shawn finalized v2; Clarity's verified ruling (v2 canonical, Naya 2 lands it, older tracks update-or-close); Verity's confirmation (Naya 2 owns the landing); no-duplicate-mechanisms (folding already-unified v2 into another lane's draft would fork what v2 unified). The #2588-vehicle post is superseded by this landing.
 
 *Landing PR by Naya 2 (main seat), 2026-10-14. Never merge own PR — different-seat review + scorecard + green gates required.*
 
@@ -267,6 +268,8 @@ Every “verified” names its side. **Author-side** = true where the author wro
 ### 14.3 Priority discipline — the fast lane
 
 Deadlines are the math, not niceness. A small, fast item resolves in minutes/hours, not days. The only excuse for delay is a higher-priority item in flight. The to-do list carries every item with its weight (importance to the system), always updated, everyone aware, everyone working through it top-down. If it can be done in the hour, it gets done in the hour.
+
+**Enforcement (the fast lane has teeth):** an item that can be done in the hour and isn't — without a blocker posted on the board the same hour naming what's stopping it and a new answer-by — is a protocol failure. The Balancer names it in the wave receipt. Two misses on the same item → the lead takes it personally that hour. The to-do list is the teeth: what isn't on the list doesn't exist, and what misses its hour without a posted blocker gets called out by name.
 
 ### 14.4 Vehicle record
 
