@@ -93,9 +93,14 @@ def test_standing_policy_fail_missing(tmp_path):
     assert r["verdict"] == "FAIL"
 
 
-def test_standing_policy_live_repo_passes():
+def test_standing_policy_live_repo_reports_candidate():
+    # NO-WORD RATIFICATION (2026-10-14): the live policy is honestly CANDIDATE,
+    # so C4 correctly reports FAIL ("policy status is CANDIDATE, not RATIFIED").
+    # The checker's RATIFIED-recognition is covered by test_standing_policy_pass
+    # on a synthetic fixture — this test witnesses the live state. See L391.
     r = prc.check_standing_policy()  # reads the real repo file
-    assert r["verdict"] == "PASS", r
+    assert r["verdict"] == "FAIL", r
+    assert "CANDIDATE" in r["summary"], r
 
 
 # ---- C6 migration hygiene ----------------------------------------------------

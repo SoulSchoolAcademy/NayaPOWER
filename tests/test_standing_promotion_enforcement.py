@@ -54,29 +54,41 @@ def test_absent_changed_path_evidence_cannot_hide_protected_changes():
     assert evaluate_policy(policy, context, now=NOW)['decision'] == 'DENY'
 
 
-def test_bounded_routine_candidate_is_allowed():
+def test_bounded_routine_candidate_is_denied_until_ratified():
+    # NO-WORD RATIFICATION (2026-10-14): the policy is CANDIDATE, not RATIFIED.
+    # The status gate fires before every other check, so even a fully valid
+    # candidate is DENY / policy_not_ratified. Never witness the voided
+    # RATIFIED/ALLOW claim. See L391.
     policy, context = candidate()
-    assert evaluate_policy(policy, context, now=NOW) == {'decision': 'ALLOW', 'reason': 'all_policy_gates_pass'}
+    assert evaluate_policy(policy, context, now=NOW) == {'decision': 'DENY', 'reason': 'policy_not_ratified'}
 
 
-def test_ratified_canonical_activation_is_finite_and_stops_at_review_and_expiry():
+def test_candidate_policy_document_is_finite_and_denies_at_review_and_expiry():
+    # NO-WORD RATIFICATION (2026-10-14): the voided HUMAN_DIRECTOR word-authority
+    # claim is no longer witnessed — the NO-WORD law retired word-authority, and
+    # a test asserting it would be a false witness (L391). The document stays
+    # finite (bounded window, no automatic renewal) and the policy denies at
+    # every sampled time with the honest fail-closed reason.
     _, context = candidate()
     policy = load_policy()
+    assert policy['status'] == 'CANDIDATE'
     assert policy['expiry'] == {
         'review_after': '2026-10-15T00:00:00-07:00',
         'expires_at': '2026-10-29T00:00:00-07:00',
         'automatic_renewal': False,
     }
-    assert policy['activation']['authority'] == 'HUMAN_DIRECTOR'
-    assert evaluate_policy(policy, context, now=NOW)['decision'] == 'ALLOW'
-    assert evaluate_policy(policy, context, now=datetime(2026, 10, 15, 7, tzinfo=timezone.utc))['reason'] == 'policy_review_due'
-    assert evaluate_policy(policy, context, now=datetime(2026, 10, 29, 7, tzinfo=timezone.utc))['reason'] == 'policy_expired'
+    assert evaluate_policy(policy, context, now=NOW)['decision'] == 'DENY'
+    assert evaluate_policy(policy, context, now=datetime(2026, 10, 15, 7, tzinfo=timezone.utc))['reason'] == 'policy_not_ratified'
+    assert evaluate_policy(policy, context, now=datetime(2026, 10, 29, 7, tzinfo=timezone.utc))['reason'] == 'policy_not_ratified'
 
 
-@pytest.mark.parametrize('now,reason', [
-    (datetime(2026, 10, 15, tzinfo=timezone.utc), 'policy_review_due'),
-    (datetime(2026, 10, 29, tzinfo=timezone.utc), 'policy_expired'),
+@pytest.mark.parametrize('now', [
+    datetime(2026, 10, 15, tzinfo=timezone.utc),
+    datetime(2026, 10, 29, tzinfo=timezone.utc),
 ])
-def test_review_and_expiry_boundaries_are_inclusive(now, reason):
+def test_candidate_policy_denies_at_review_and_expiry_boundaries(now):
+    # NO-WORD RATIFICATION (2026-10-14): the status gate fires before the
+    # time-bounds check on a CANDIDATE policy, so the boundary DENY carries
+    # policy_not_ratified. Fail-closed at the boundaries, witnessed honestly.
     policy, context = candidate()
-    assert evaluate_policy(policy, context, now=now) == {'decision': 'DENY', 'reason': reason}
+    assert evaluate_policy(policy, context, now=now) == {'decision': 'DENY', 'reason': 'policy_not_ratified'}
