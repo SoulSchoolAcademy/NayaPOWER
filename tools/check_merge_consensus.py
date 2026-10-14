@@ -54,8 +54,18 @@ API = "https://api.github.com"
 # "Naya <Title>" (e.g. "Naya Epsilon"); the legacy numeric seats 1-5 keep
 # working exactly as before. One shared id pattern so the author-declaration
 # rule and the review/scorecard rules recognize exactly the same seats.
+# The twelve named area leads (R5, 2026-10-12) plus the three standing leads
+# (R6, Naya Lambda 2026-10-14): the team now signs under three standing lead
+# tokens — Naya Clarity, Naya Resolve, Naya Verity (family name Narzan, e.g.
+# "Naya Verity Narzan"). The old vocabulary parsed Alpha..Mu but returned None
+# for the lead tokens, so a scorecard or review signed by a standing lead was
+# invisible to the gate and jamed the dock. Normalized forms are the bare
+# lead token ("Naya Verity Narzan" -> "Naya Verity"); the bare-seat grammar is
+# untouched — a seat still requires the "Naya" prefix, and unknown tokens
+# still return None (fail closed).
 _NAMED_SEATS = ("alpha", "beta", "gamma", "delta", "epsilon", "zeta",
-                "eta", "theta", "iota", "kappa", "lambda", "mu")
+                "eta", "theta", "iota", "kappa", "lambda", "mu",
+                "clarity", "resolve", "verity")
 _SEAT_ID = r"(?:([12345])|(" + "|".join(_NAMED_SEATS) + r"))"
 SEAT_RE = re.compile(r"naya\s*" + _SEAT_ID + r"\b", re.I)
 # The authoring seat must be an EXPLICIT declaration ("Seat: Naya N"), never

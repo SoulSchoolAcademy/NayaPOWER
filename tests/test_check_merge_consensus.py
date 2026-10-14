@@ -431,3 +431,92 @@ def test_naya_5_review_path_still_works(capsys):
     out = capsys.readouterr().out
     assert "CONSENSUS GATE PASSED" in out
     assert "reviewer Naya 5" in out
+
+
+# R6: the three standing lead tokens (Naya Lambda, lane 3 — 2026-10-14)
+# ---------------------------------------------------------------------------
+# Root cause: the gate's seat vocabulary knew the numeric seats 1-5 and the
+# twelve named area leads (Alpha..Mu), but the three standing leads —
+# Naya Clarity, Naya Resolve, Naya Verity (family name Narzan) — returned
+# None from seat_of/author_seat_of. A verdict or scorecard signed by a
+# standing lead was invisible to the gate. Fix: Clarity/Resolve/Verity join
+# _NAMED_SEATS; the bare-seat grammar is untouched (a seat still requires the
+# "Naya" prefix; unknown tokens still return None — fail closed).
+
+LEAD_SEATS = ["Clarity", "Resolve", "Verity"]
+
+
+def test_seat_of_recognizes_three_standing_lead_seats():
+    for name in LEAD_SEATS:
+        assert seat_of(f"Seat: Naya {name}") == f"Naya {name}"
+
+
+def test_seat_of_recognizes_lead_family_name_suffix():
+    # "Naya Clarity Narzan" prefixes to the lead token -> "Naya Clarity"
+    assert seat_of("Naya Clarity Narzan") == "Naya Clarity"
+    assert seat_of("Naya Resolve Narzan") == "Naya Resolve"
+    assert seat_of("Naya Verity Narzan") == "Naya Verity"
+    assert author_seat_of("Seat: Naya Verity Narzan") == "Naya Verity"
+
+
+def test_seat_of_normalizes_lead_seat_casing():
+    assert seat_of("naya resolve") == "Naya Resolve"
+    assert seat_of("NAYA CLARITY") == "Naya Clarity"
+
+
+def test_forged_or_unknown_seat_still_returns_none():
+    # Fail closed: never invent a seat from a near-miss or an unknown token.
+    assert seat_of("Seat: Naya Omega") is None
+    assert seat_of("Seat: Naya Verity2") is None
+    assert seat_of("Seat: Naya clarityy") is None
+    assert seat_of("Clarity") is None          # no "Naya" prefix -> not a seat
+    assert seat_of("no tag here") is None
+    assert author_seat_of("mentions Naya Verity in prose, no declaration") is None
+
+
+def test_all_preexisting_tokens_still_resolve():
+    for n in "12345":
+        assert seat_of(f"Seat: Naya {n}") == f"Naya {n}"
+    for name in NAMED_SEATS:
+        assert seat_of(f"Seat: Naya {name}") == f"Naya {name}"
+
+
+def test_lead_seat_scorecard_is_accepted(capsys):
+    """A scorecard signed 'Seat: Naya Verity' satisfies the gate's scorer
+    slot exactly like the R5 named-seat case: the gate is repaired, never
+    weakened."""
+    scorecard = (f"## SCORECARD\nhead: {HEAD}\nverdict: 9.5\n"
+                 f"Seat: Naya Verity")
+    review = "[NAYA 4 \u00b7 REVIEW] APPROVED \u2014 looks good\nSeat: Naya 4"
+
+    def fake_api_get(path, token):
+        if path.endswith("/pulls/2459"):
+            return _pr_response("2026-10-12T12:00:00Z", "Seat: Naya 2\nbody")
+        if path.endswith("/reviews"):
+            return []
+        return [{"body": review}, {"body": scorecard}]
+
+    with patch("check_merge_consensus.api_get", side_effect=fake_api_get):
+        run_gate("tok", "o/r", "2459", HEAD)  # must not raise
+    out = capsys.readouterr().out
+    assert "CONSENSUS GATE PASSED" in out
+    assert "Naya Verity" in out
+
+
+def test_lead_author_own_seat_still_rejected():
+    """Distinctness is untouched: the author's own standing-lead seat cannot
+    score its own PR."""
+    own_scorecard = (f"## SCORECARD\nhead: {HEAD}\nverdict: 9.9\n"
+                     f"Seat: Naya Verity")
+
+    def fake_api_get(path, token):
+        if path.endswith("/pulls/2459"):
+            return _pr_response("2026-10-12T12:00:00Z", "Seat: Naya Verity")
+        if path.endswith("/reviews"):
+            return []
+        return [{"body": own_scorecard}]
+
+    with patch("check_merge_consensus.api_get", side_effect=fake_api_get):
+        with pytest.raises(SystemExit) as exc:
+            run_gate("tok", "o/r", "2459", HEAD)
+    assert exc.value.code == 1
