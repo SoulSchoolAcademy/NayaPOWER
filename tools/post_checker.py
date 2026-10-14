@@ -37,19 +37,50 @@ MEANING_RE = re.compile(
     r"backwards|held|blocked|verified)\b", re.IGNORECASE)
 
 
+_FENCE_OPEN_RE = re.compile(r"^(```+|~~~+)")
+_FENCE_CLOSE_RE = re.compile(r"^(```+|~~~+)\s*$")
+
+
 def _unquoted(body):
-    """The author's own lines only: drop Markdown blockquote lines.
+    """The author's own lines only: drop Markdown blockquote lines and
+    fenced-code-block lines.
 
     A line whose first non-whitespace character is `>` is someone else's
-    quoted words. Quoted lines must never bind as signature, fields,
-    evidence, or score — a post that only *quotes* a good post is not a
-    good post. Every check runs on the unquoted body. Lazy-continuation
-    lines (quote continuation without a leading `>`) are NOT stripped:
-    they are indistinguishable from the author's own wrapped prose, so
-    the mechanical rule is line-leading `>` only."""
-    return "\n".join(
-        line for line in body.splitlines()
-        if not line.lstrip().startswith(">"))
+    quoted words. A fenced block — opened by a line whose first
+    non-whitespace characters are ``` or ~~~ (with an optional info
+    string, e.g. ```markdown), closed by a matching fence line (same
+    character, at least as long, fence characters + whitespace only) —
+    is pasted content, not the author's own words. Quoted and fenced
+    lines must never bind as signature, fields, evidence, or score —
+    a post that only *quotes* or *fences* a good post is not a good
+    post. Every check runs on the unquoted body. An UNCLOSED fence
+    drops everything after it (fail-closed): content past the fence
+    cannot be proven to be the author's. Lazy-continuation lines
+    (quote continuation without a leading `>`) are NOT stripped: they
+    are indistinguishable from the author's own wrapped prose, so the
+    mechanical rule is line-leading `>` only. Inline code spans
+    (single-backtick `spans` inside a line) are NOT stripped — only
+    fence LINES delimit blocks."""
+    kept = []
+    fence_char = None
+    fence_len = 0
+    for line in body.splitlines():
+        stripped = line.lstrip()
+        if fence_char is not None:
+            m = _FENCE_CLOSE_RE.match(stripped)
+            if (m and m.group(1)[0] == fence_char
+                    and len(m.group(1)) >= fence_len):
+                fence_char = None
+            continue
+        m = _FENCE_OPEN_RE.match(stripped)
+        if m:
+            fence_char = m.group(1)[0]
+            fence_len = len(m.group(1))
+            continue
+        if stripped.startswith(">"):
+            continue
+        kept.append(line)
+    return "\n".join(kept)
 
 
 def _labeled(body, field):
@@ -123,7 +154,9 @@ def check_identity(body, roster=ROSTER):
     with the name (after markers). A name merely *mentioned* in the body
     never signs the post — a post signed 'Naya Alpha' that thanks
     'Naya Verity Narzan' is signed by Naya Alpha. A name inside a `>`
-    quote never signs either — quoted words are someone else's."""
+    quote never signs either — quoted words are someone else's. A name
+    inside a fenced block never signs either — fenced content is
+    pasted, not authored."""
     body = _unquoted(body)
     for line in body.splitlines():
         text = _strip_markers(line)
@@ -159,8 +192,9 @@ def check_evidence(body):
     A bare hex word is NOT evidence: 'deadbeef' in prose proves nothing.
     A SHA counts only with an anchor — `@ <sha>`, `sha: <sha>`,
     `commit <sha>`, `tip <sha>`, `head <sha>`, `tree <sha>`,
-    `ref <sha>` — or a `#NNNN` ref. Anchors inside `>` quotes never
-    count — quoted evidence is someone else's."""
+    `ref <sha>` — or a `#NNNN` ref. Anchors inside `>` quotes or
+    fenced blocks never count — quoted/fenced evidence is someone
+    else's."""
     body = _unquoted(body)
     hits = SHA_RE.findall(body) + REF_RE.findall(body)
     if hits:
@@ -173,7 +207,7 @@ def check_score(body):
 
     Meaning words match on word boundaries: 'relationships' is not
     'ships', 'meaningless' is not 'meaning'. A score (and its meaning
-    words) inside a `>` quote never counts."""
+    words) inside a `>` quote or a fenced block never counts."""
     body = _unquoted(body)
     m = SCORE_RE.search(body)
     if not m:
@@ -189,7 +223,7 @@ def check_level(body, level):
     PULSE/RECEIPT fields must head labeled lines (`FIELD: ...`) —
     unlabeled prose that mentions every field word fails. EVENT
     questions are stems matched as word prefixes. Field labels and
-    stems inside `>` quotes never count."""
+    stems inside `>` quotes or fenced blocks never count."""
     body = _unquoted(body)
     if level == "PULSE":
         missing = [f for f in PULSE_FIELDS if not _labeled(body, f)]

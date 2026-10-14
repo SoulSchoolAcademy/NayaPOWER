@@ -299,3 +299,129 @@ Quoting the prior post for reference:
 > SCORE: 10/10 - perfect, ships.
 """, level="RECEIPT")
     assert v == "PASS", describe((v, findings))
+
+
+# --- w164 (Naya Eta): the fenced-block bypass, #2568 fix ---
+# A ``` / ~~~ fenced block is pasted content, not the author's own
+# words. Before this fix a full good post inside a fence PASSED all
+# four checks — the same class as the w157 `>`-quote hole, different
+# delimiter. Fenced lines must never bind; legit posts with fenced
+# appendices or inline code must still PASS.
+
+FENCED_RECEIPT = """```markdown
+WHO: Naya Alpha
+NUTSHELL: the thing works.
+WHAT: fixed it. WHY: it was broken.
+EVIDENCE: PR #2568 @ 21f089d5.
+SCORE: 9/10 - ships, verified.
+CONNECTS TO: the mission.
+NEEDS: nothing.
+```
+"""
+
+
+def test_fenced_only_post_flags():
+    """A post whose EVERY binding element is fenced must FLAG — before
+    this fix it PASSED all four checks."""
+    v, findings = check_post(FENCED_RECEIPT, level="RECEIPT")
+    assert v == "FLAG", describe((v, findings))
+    by_name = {n: (ok, d) for n, ok, d in findings}
+    assert not by_name["identity"][0], by_name
+    assert not by_name["level"][0], by_name
+    assert not by_name["evidence"][0], by_name
+    assert not by_name["score"][0], by_name
+
+
+def test_tilde_fenced_only_post_flags():
+    """~~~ is CommonMark's second fence delimiter — the same hole."""
+    v, findings = check_post(
+        FENCED_RECEIPT.replace("```markdown", "~~~markdown")
+        .replace("```\n", "~~~\n"), level="RECEIPT")
+    assert v == "FLAG", describe((v, findings))
+    by_name = {n: (ok, d) for n, ok, d in findings}
+    assert not by_name["identity"][0], by_name
+    assert not by_name["level"][0], by_name
+    assert not by_name["evidence"][0], by_name
+    assert not by_name["score"][0], by_name
+
+
+def test_unclosed_fence_post_flags():
+    """An UNCLOSED fence drops everything after it (fail-closed) — a
+    fenced post with no closing fence must FLAG, not leak bindings."""
+    v, findings = check_post(
+        "Here is my report:\n" + FENCED_RECEIPT.replace("```\n", ""),
+        level="RECEIPT")
+    assert v == "FLAG", describe((v, findings))
+    by_name = {n: (ok, d) for n, ok, d in findings}
+    assert not by_name["identity"][0], by_name
+    assert not by_name["level"][0], by_name
+    assert not by_name["evidence"][0], by_name
+    assert not by_name["score"][0], by_name
+
+
+def test_fenced_fields_evidence_score_do_not_bind():
+    """Legit unquoted signature + fields/evidence/score inside a
+    ```text fenced block (info string) must FLAG on
+    level/evidence/score — the class fix, not just identity."""
+    v, findings = check_post(
+        """WHO: Naya Alpha
+Pasting the log for reference:
+```text
+NUTSHELL: the thing works.
+WHAT: fixed it. WHY: it was broken.
+EVIDENCE: PR #2568 @ 21f089d5.
+SCORE: 9/10 - ships, verified.
+CONNECTS TO: the mission.
+NEEDS: nothing.
+```
+""", level="RECEIPT")
+    assert v == "FLAG", describe((v, findings))
+    by_name = {n: (ok, d) for n, ok, d in findings}
+    assert by_name["identity"][0], by_name  # own signature still binds
+    assert not by_name["level"][0], by_name
+    assert not by_name["evidence"][0], by_name
+    assert not by_name["score"][0], by_name
+
+
+def test_mismatched_fence_close_does_not_close():
+    """A ~~~ line inside a ``` fence is content, not a close — only a
+    matching fence line closes the block."""
+    v, findings = check_post(
+        """WHO: Naya Alpha
+```
+NUTSHELL: the thing works.
+WHAT: fixed it. WHY: it was broken.
+~~~
+EVIDENCE: PR #2568 @ 21f089d5.
+SCORE: 9/10 - ships, verified.
+CONNECTS TO: the mission.
+NEEDS: nothing.
+```
+""", level="RECEIPT")
+    assert v == "FLAG", describe((v, findings))
+    by_name = {n: (ok, d) for n, ok, d in findings}
+    assert by_name["identity"][0], by_name
+    assert not by_name["level"][0], by_name
+    assert not by_name["evidence"][0], by_name
+    assert not by_name["score"][0], by_name
+
+
+def test_legit_post_with_fenced_log_appendix_still_passes():
+    """Control: a complete UNQUOTED post with a fenced log appendix
+    full of decoy fields must still PASS — stripping fences must not
+    poison legitimate posts."""
+    v, findings = check_post(
+        GOOD_RECEIPT + "\nLog appendix (do not bind):\n```\n"
+        "WHO: Naya Beta\nSCORE: 10/10 - perfect, ships.\n"
+        "EVIDENCE: PR #9999 @ deadbeef.\n```\n",
+        level="RECEIPT")
+    assert v == "PASS", describe((v, findings))
+
+
+def test_legit_post_with_inline_code_still_passes():
+    """Control: inline `code` spans are formatting, not blocks — a
+    legit post with inline backticks must still PASS."""
+    v, findings = check_post(
+        GOOD_RECEIPT + "\nNote: ran `pytest` on `tools/post_checker.py`.\n",
+        level="RECEIPT")
+    assert v == "PASS", describe((v, findings))
