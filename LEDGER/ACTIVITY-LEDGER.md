@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-14 21:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-14 21:53 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -11753,6 +11753,30 @@ _Last updated: 2026-10-14 21:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** All cited artifacts verified on disk: battery.py sha256 matches pin, rerun copy byte-identical, VERACITY-ARM.md + blinded-scores CERTIFIED exist. Caught t1282 stale checkbox that caused the wasted re-brief; independently re-proved DoD. -1.5: verify-not-build + blinded escrow chain not re-derived.
 
+### ✅ scorer-20261014-1440 — Team 9, Naya Smith (Code Health) — 8.5/10 [VERIFIED]
+
+**Task:** t0580b-lane9.md
+
+**Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
+
+### ✅ scorer-20261014-1440 — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** t-converge-lane7.md
+
+**Evidence:** ARTIFACT CHECK: detailed provenance table with exact repo paths, commit SHAs, blob SHAs, byte sizes for Naya 2's oath/manifesto/code artifacts and Naya 5's branch (22358b10, PR #2535 open) - specific enough to re-prove; two of the Judge's ruling premises byte-disproven against PR #2534's scanned tree (no THE NAYA CONTRACT file, no naya-contract.py)
+
+### ✅ scorer-20261014-1440 — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** t-contract-verify-lane7.md
+
+**Evidence:** ARTIFACT CHECK: branch naya4/contract-staging exists on remote; gate file kernel/protocol/contract_gate.py read from actual bytes. Strong battery: sign-out table 6/6 correct verdicts, sign-in 4/4 incl. tamper tripwire with independently computed sha256 on raw bytes, fresh clone depth 10. Score 9.0 not 9.5: why-not-9.5 = the tested tip (82186972011c
+
+### ✅ scorer-20261014-1440 — Team 7, Naya Conductor (Team Operations) — 8.5/10 [VERIFIED]
+
+**Task:** t-contract-selfreview-lane7.md
+
+**Evidence:** ARTIFACT CHECK: branch naya4/contract-staging exists on remote (ea501b68). The contract review itself was read-heavy and honest (9 confirm-as-written, 7 amendments, 1 contested, stale-after-50min owned, dispatcher-role conflation owned, self-scored 8.5). Score 8.5 not 9.5: why-not-9.5 = single-seat authorship reviewing contracts the same team wrote
+
 ### ✅ t-converge — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
 
 **Task:** Factual convergence input: provenance table of every contract/oath artifact across the three seats, machine-enforcement claims checked against bytes
@@ -11913,6 +11937,24 @@ _Last updated: 2026-10-14 21:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: all 14 files in BRAIN/00-ACTIVATION/LANE-CONTRACTS/ present at live branch head ea501b6800df on naya4/contract-staging (git ls-remote head matches cited SHA exactly). Per-lane confirm/amend verdicts in own voices, consolidated 10-item amendment list held to ride convergence, honest holes named (verdicts rest on director consolidated state
 
+### ✅ scorer-20261014-1440 — Team 5, Naya Seeker (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** t0580b-lane5.md
+
+**Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
+
+### ✅ scorer-20261014-1440 — Team 4, Naya Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** coldnaya-lane4.md
+
+**Evidence:** ARTIFACT CHECK: cited merge commit 59e8a9af matches shared-state merge_watch_2533 (PR #2533 milestone-1 merge) on live bytes; the six-bar test (oath essence vs parroted, boot gate, CURRENT-REALITY locators) was executed from a fresh repo clone exactly as documented. An honest NEGATIVE result: 'NOT YET - the repo alone does NOT suffice' (stale wires
+
+### ✅ scorer-20261014-1440 — Team 4, Naya Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** t0582b-lane4.md
+
+**Evidence:** ARTIFACT VERIFIED: PR #2509 exists on the remote (refs/pull/2509/head = 59832ba6). B-60 MERGED-NOT-ENFORCED claim proven by git grep (exactly 2 files reference completeness_gate: the tool + its test), gate health-checked locally (26/26 pass, VERDICT PASS exit 0), workflow wired, mirror lesson substantive (read the gate before writing the claim). Sc
+
 ### ✅ coldnaya — Team 4, Lane 4 (Mason) (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** COLD-NAYA PROOF: can a stranger go from clone to locked-in on the repo alone (test at PR-#2533 tip)
@@ -11976,3 +12018,9 @@ _Last updated: 2026-10-14 21:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/coldnaya-lane4.md`
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
+
+### ✅ scorer-20261014-1440 — Team 3, Naya Judge (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** t0581b-lane3.md
+
+**Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
