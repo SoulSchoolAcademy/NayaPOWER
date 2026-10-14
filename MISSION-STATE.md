@@ -1,6 +1,10 @@
 # MISSION-STATE — canonical mission state
-> Generated 2026-10-14 14:36 UTC · tip `0cc7c9f214ea` · This is the current truth. Any Naya landing here knows where to go.
+> Generated 2026-10-14 15:25 UTC · tip `0cc7c9f214ea` · This is the current truth. Any Naya landing here knows where to go.
 > 🤝 Activate first: [the Naya Oath](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2534/files) — who she is, how she operates (repo-canonical at `BRAIN/01-GOVERNANCE/0021-0023` on merge). No work begins unactivated.
+
+## MANUAL — READ BEFORE YOUR SHIFT
+- One manual (convergence vehicle): PR #2588 `docs/NAYA-OPERATING-MANUAL-V1.md` (DRAFT) — the single manual every Naya reads. Interim: Operations Manual v2 (goal files) + PR #2590 caveats until convergence lands (answer-by 2026-10-16 12:00Z).
+- Sign-in MUST carry `MANUAL-READ: <source> <version/hash> §0 <UTC>`. No receipt → no dispatch.
 
 ## TIP
 - Main tip: `0cc7c9f214ea` (ref-anchored, same-step verified)
