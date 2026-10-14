@@ -146,6 +146,7 @@ def emit_application_receipt(
     applier: str,
     applied_at: str,
     applicability: dict[str, Any] | None = None,
+    changed_decision: str | None = None,
     authority_ref_links: list[str] | None = None,
 ) -> dict[str, Any]:
     """Emit the E2 evidence: retrieval -> application binding.
@@ -153,6 +154,16 @@ def emit_application_receipt(
     applicability (optional): {relevance_rationale, task_match} -- why this
     lesson applied to this task. Covers the lineage receipt's applicability
     stage; recorded at apply time, immutable afterwards.
+
+    changed_decision (REQUIRED): the decision the applier made differently
+    because of this lesson, quoted verbatim from the sign-out (learn-clock
+    T5 evidence shape, graduation F-1). Stored OUTSIDE the digest core --
+    the same pattern as applicability -- so receipt_id digests are
+    unchanged and SCHEMA stays NAYANET_LEARNING_APPLICATION_RECEIPT_V1
+    (no schema bump). Legacy receipts without this field stay valid at
+    validate time with t5_eligible=False; they are E2 evidence, never
+    T5 evidence. T5 emits only for t5_eligible receipts; no T5 auto-emit
+    happens here (wiring scope, not graduation scope).
 
     Outcome and independent verification are appended later via
     link_outcome / emit_outcome_record. receipt_id covers the apply-time
@@ -163,6 +174,7 @@ def emit_application_receipt(
     task_ref = _require_str("task_ref", task_ref)
     applier = _require_str("applier", applier)
     applied_at = _require_str("applied_at", applied_at)
+    changed_decision = _require_str("changed_decision", changed_decision)
     if applicability is not None and not isinstance(applicability, dict):
         raise ValueError("REQUIRED_FIELD_MISSING: applicability must be an object when supplied")
     core = {
@@ -177,6 +189,7 @@ def emit_application_receipt(
     receipt["receipt_id"] = _digest_id("application", core)
     receipt["kind"] = "application"
     receipt["applicability"] = dict(applicability or {})
+    receipt["changed_decision"] = changed_decision
     receipt["outcome_ref"] = None  # linked later; receipt_id stays stable
     receipt["authority_refs"] = [str(r) for r in (authority_ref_links or [])]
     bad = _check_forbidden(receipt, "application_receipt")
@@ -298,6 +311,12 @@ def validate_application_receipt(
     When the retrieval receipt is supplied, the retrieval_ref binding is
     checked end to end: ref == retrieval receipt id AND lesson ids agree.
     That binding is the E2 witness the ladder names.
+
+    t5_eligible (learn-clock T5, graduation F-1): valid AND
+    changed_decision non-empty -- mirroring the e2_eligible pattern.
+    changed_decision is deliberately NOT a MISSING_REQUIRED_FIELD here:
+    legacy receipts emitted before the field existed stay valid with
+    t5_eligible=False (E2 evidence, never T5 evidence).
     """
     codes: list[str] = []
     receipt = receipt if isinstance(receipt, dict) else {}
@@ -332,10 +351,12 @@ def validate_application_receipt(
         c.startswith(("SCHEMA_MISMATCH", "IDEMPOTENCY_MISMATCH", "FORBIDDEN_AUTHORITY_FIELD",
                       "MISSING_REQUIRED_FIELD", "RETRIEVAL_BINDING_BROKEN")) for c in codes
     )
+    t5_eligible = (not codes) and _is_nonempty_str(receipt.get("changed_decision"))
     return {
         "valid": not codes,
         "codes": codes,
         "e2_eligible": e2,
+        "t5_eligible": t5_eligible,
         "receipt_id": receipt.get("receipt_id"),
     }
 
