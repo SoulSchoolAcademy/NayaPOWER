@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-14 11:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-14 11:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -3072,6 +3072,78 @@ _Last updated: 2026-10-14 11:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t892-lane1.md`
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
+
+### ✅ t0748 — Team 9, Naya Resolve Smith (Code Health) — 9.5/10 [VERIFIED]
+
+**Task:** Independent second-eyes verdict on #2582 (Naya 5's C10+C11 readiness instrument): APPROVE on substance; claim/delivery gate FAILs adjudicated as false-fires from gate sources; board verdict posted
+
+**Receipt:** `twelve-lane-receipts/t0748-lane9.md`
+
+**Evidence:** VERIFIED: branch naya5/readiness-checklist-c10-c11 exists on remote, head c9d1c7379c4c... == receipt's claimed c9d1c7379c4c924a7b304689af9cee93086e395e (ls-remote, git protocol). Receipt reproduces all author claims byte-exact on the pinned head: C10 PASS, C11 WARN (merge_authority unwired) matched exactly; claim-evidence gate failure shown as fals
+
+### ✅ t0748 — Team 7, Naya Resolve Conductor (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Cleared #2578 receipt-gate shadow via the one authorized path: re-run of fresh run 38536850660 (never forbidden pre-edit run 38533178211); board sign-out #2537/6167387702
+
+**Receipt:** `twelve-lane-receipts/t0748-lane7.md`
+
+**Evidence:** VERIFIED: PR #2578 head 5e1956cf92814bcd8718130555b4fa80147635c5 == remote delta/w135-post-checker head (ls-remote, git protocol); merge-commit a2988769 parents [92329c57, 5e1956cf] per receipt's live read; fresh run 38536850660 SUCCESS exists, forbidden run 38533178211 untouched per receipt evidence; evidence section carries live-byte citations (r
+
+### ✅ t0747 — Team 11, Naya Clarity Heart (Human Value) — 9.5/10 [VERIFIED]
+
+**Task:** Blind second-seat replication of Lane 4's t0742 MTC-v1 execution (frozen pre-reg, 36 gate_candidate calls), verdict CONFIRM with one exact delta, board post #2537/6167229501
+
+**Receipt:** `twelve-lane-receipts/t0747-lane11.md`
+
+**Evidence:** VERIFIED: verdict JSON lane-11/mtc-v1-t0747-lane11/verdict-t0747-lane11.json sha256 126a76a4d2ec14546ac10dc6c18339b0614899865ac94b7164ea77c47572d32a MATCH receipt pin; verdict=CONFIRM in file; pre-reg lane-6/mtc-v1-prereg-t0737.md sha256 9199c9abbb29bf0ea3d9cea51884d5dc1f8952488fb06a8e131db4a7bfae2879 MATCH brief pin; cards/seal-note/executor scrip
+
+### ✅ t0747 — Team 4, Naya Clarity Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** SCOPE-LAW slice: D5a unanimous block pins + D5b machine log-pin check in lookup-match.py; tally-t0710.py persists log_sha256; D5c set-vs-order named refusals; 5-control tamper rig; real-bytes fail-closed demo
+
+**Receipt:** `twelve-lane-receipts/t0747-lane4.md`
+
+**Evidence:** VERIFIED: retrieval/tally-t0710.py lines 65-67 persist log_sha256 in tally JSON; lane-4/smartblocks-pilot-t0728/lookup-match.py carries BLOCK-PIN-DIVERGENT (x3), TALLY-PIN-MISMATCH, LOG-DRIFT (full-64 SHAs, no prefix shortcuts); build-pilot-blocks.py carries SET-CHANGED + ORDER-MOVED BUILD-REFUSE naming. Live run by scorer on real bytes: exit 2 TAL
+
+### ✅ t0747 — Team 2, Naya Verity Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** AMENDED-PRE-SEAL: apply both t0738-lane3 REWORK fixes to Arm I verdict-flip pre-reg as a new pinned file + external sidecar seal; unblocks Lane 4 blind execution
+
+**Receipt:** `twelve-lane-receipts/t0747-lane2.md`
+
+**Evidence:** VERIFIED: t0734 lane-2/arm-i-verdict-flip-prereg-t0734.md sha256 16c444e567c7077139367abea9d0bf13b2a3b73e84d5f945ef1db79ad4848082 MATCH old seal, untouched in place (no in-place fix); amended file lane-2/arm-i-verdict-flip-prereg-t0747.md sha256 8a2700880ad23740364290815d4635c5418dfa62235d2414bd1cd21df165d53d == seal sidecar lane-2/arm-i-verdict-fl
+
+### ✅ t0746 — Team 10, Naya Verity Librarian (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** Second-seat verification of Lane 11 t0741 top-20 needs deliverable
+
+**Receipt:** `twelve-lane-receipts/t0746-lane10.md`
+
+**Evidence:** VERIFIED: action-time log auto-retrieval/ask-world-queries.jsonl sha256 0fa1f99d2a4a67eb6feed1331c365b6dceb2674ef4d929ed731bea7543747972 MATCHES receipt pin and live log (no mid-build move); deliverable surge-c/top20-needs-t0741-lane11.md sha256 339cad889ce2b4b06cd489e3cd0358813d827d32fe51b330119ed3ec61aaf740 MATCHES Lane 11's quoted pin (SUSPECT c
+
+### ✅ t0746 — Team 8, Naya Resolve Sentinel (Governance & Safety) — 9.5/10 [VERIFIED]
+
+**Task:** Independent second-seat review of PR #2581's grader math (level-drill key-split redesign)
+
+**Receipt:** `twelve-lane-receipts/t0746-lane8.md`
+
+**Evidence:** VERIFIED live: PR #2581 head cde0c63ddc1a2a59911b82334bd93ff761e5045e == receipt action-time pin (API + ref naya/lane9/level-drill-keysplit-t0730, PR open); board verdict comment 6167157705 exists on #2537 (3975 bytes, lane-8 header). Review re-derived on live branch bytes: grader math parity byte-level vs old instrument (exact=1.0/off-by-one=0.5/e
+
+### ✅ t0746 — Team 3, Naya Resolve Judge (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** Independent APPROVE-CONDITIONAL review of PR #2576 at the action-time head (lead-seats consensus-gate patch)
+
+**Receipt:** `twelve-lane-receipts/t0746-lane3.md`
+
+**Evidence:** VERIFIED live: PR #2576 head 87b9f188e652cc2aad74e3092cbdf8df99517f3c == receipt live-head pin (API + ref naya/gate-leadseats-20261013, PR open); board verdict comment 6167076345 exists on #2537 (3533 bytes, lane-3 header). Review re-derived on pinned bytes: gate suite 47/47 + 9/9 seat-tag controls, real mid-run head-move caught by the re-pin rule 
+
+### ✅ t0745 — Team 5, Naya Verity Seeker (Retrieval) — 9.5/10 [VERIFIED]
+
+**Task:** Execute frozen GAD pre-reg §6 cold battery (96 gate evaluations)
+
+**Receipt:** `twelve-lane-receipts/t0745-lane5.md`
+
+**Evidence:** VERIFIED: executor lane-5/gad-executor-t0745-lane5.py sha256 d54c0be48772e22fa8e4a4bc90eb697de197d31609a640117c779db06279b7fc MATCH receipt pin; verdict JSON 688848684f2592616dc94d779bab3f90962af30838981364500f7cebec643b48 MATCH; frozen pre-reg 5123bfc6cbb59632f808e622f358d0142126cd59f7f341364633925eb4bf9bc0 MATCH; P-tip 92329c5795ef8a50d02adf94ee6
 
 ### ✅ t0745 — Team 1, Naya Clarity Verity (Verification & Proof) — 9.0/10 [VERIFIED]
 
