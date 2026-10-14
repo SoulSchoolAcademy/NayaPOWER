@@ -85,9 +85,9 @@ def fetch_trusted_state():
     design_info = _api_get(f"/contents/{DESIGN_CATALOG_PATH}?ref=main")
     blocks_info = _api_get(f"/contents/{BLOCKS_INDEX_PATH}?ref=main")
 
-    # 3. Context digests: current team feed (latest #1354 comments) and
+    # 3. Context digests: current team feed (latest #2537 comments) and
     #    current build-list goals state. These prove "current" loading.
-    comments = _api_get("/issues/1354/comments?per_page=100")
+    comments = _api_get("/issues/2537/comments?per_page=100")
     # Use the newest 20 comment ids+timestamps as the feed fingerprint
     feed_fp = json.dumps(
         [{"id": c["id"], "updated": c["updated_at"]} for c in comments[-20:]],

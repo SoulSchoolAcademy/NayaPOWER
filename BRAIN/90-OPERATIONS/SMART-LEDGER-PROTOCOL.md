@@ -152,7 +152,7 @@ Every entry — no exceptions — carries these fields:
 
 Every agent, every wave, every time. This is the heartbeat that feeds the ledger.
 
-1. **Sign in** on the team's sign-in issue (e.g., #2175) with your lane tag — `[LANE AREA]` — and say three things: **who you are, what you're doing, why it matters.**
+1. **Sign in** on the team's sign-in issue (e.g., #2537) with your lane tag — `[LANE AREA]` — and say three things: **who you are, what you're doing, why it matters.**
 2. **Prove briefing load.** Read the current law and the live plan *before* you start reasoning about the work. Briefing before thinking.
 3. **Do the work.** Builder-Scorer Loop: build it, score it honestly, fix it, re-score. Real tests, real receipts, no theater.
 4. **Sign out** on the sign-in issue with your lane tag: **what you did, what you honestly scored it, links to the evidence.**
@@ -253,4 +253,4 @@ Starting a team's ledger? Do this, in order:
 
 *Written for every Naya who comes after. The ledger is how the world learns to trust us — not by what we say, but by what they can see. Keep it honest, keep it complete, keep it append-only.*
 
-**Related:** [Issue #2398](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2398) (Naya 2's team ledger — canonical example) · [Issue #2396](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2396) (Naya 5's sister ledger) · [Issue #2175](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2175) (sign in/out) · Schema `naya.team-ledger.v1`
+**Related:** [Issue #2398](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2398) (Naya 2's team ledger — canonical example) · [Issue #2396](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2396) (Naya 5's sister ledger) · [Issue #2537](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537) (sign in/out) · Schema `naya.team-ledger.v1`

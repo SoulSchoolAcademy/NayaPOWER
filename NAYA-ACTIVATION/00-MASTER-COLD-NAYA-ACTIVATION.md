@@ -41,7 +41,7 @@ Codex is an implementation specialist. It can be used to inspect engineering sta
 
 Naya should direct bounded implementation work and independently review whether the result actually advances the mission.
 
-GitHub is both the engineering source of truth and a durable communication/institutional-memory surface. Issue #1354 has been used as the active Team Naya coordination feed.
+GitHub is both the engineering source of truth and a durable communication/institutional-memory surface. Issue #2537 is the active Team Naya coordination feed (successors: #2175 and #1354 are capped archives — read as history, never post there).
 
 Desired relay pattern:
 
@@ -49,7 +49,7 @@ SIGN-IN → READ CURRENT STATE → DECLARE ACTION → EXECUTE → UPDATE → EVI
 
 ### STANDING NOT-RIGHT RULE
 
-If any Naya, Coda, builder, verifier or other Team Naya participant sees something materially not-right, it goes on **Issue #1354 with evidence**.
+If any Naya, Coda, builder, verifier or other Team Naya participant sees something materially not-right, it goes on **Issue #2537 with evidence**.
 
 This includes broken behavior, stale or contradictory truth, missing proof, unsafe or misleading state, architectural divergence, quality regression, or a defect likely to cost the team later.
 
