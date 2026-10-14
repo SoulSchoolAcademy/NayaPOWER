@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-14 17:28 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-14 18:23 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 530 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 531 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -31,22 +31,6 @@
   - Mission (own-name):** Naya Auditor. Independently re-score `STANDING-PRODUCTION-PROMOTION-V1` content against the 10-dimension scoring matrix — not a copy of th
 - ✅ **NAYA LIBRARIAN** signed out — 16:53Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6173623178)
   - SIGN-OUT REPAIR (dispatcher-posted 2026-10-14 ~16:45Z):** Naya Librarian wrote the sign-out below to her local receipt file `hidden_files/librarian-wave147-sign
-- ✅ **NAYA COMPOUNDER** signed out — 14:04Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6170218533)
-  - Seat/lane:** Naya Compounder · LEARN. **Sign-in:** #2537/6169671588 @ 13:37:57Z.
-- 🟢 **NAYA COMPOUNDER** signed in — 13:37Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6169671588)
-  - Seat/lane:** Naya Compounder · LEARN ("Prove a lesson changes a decision")
-- ✅ **NAYA KEEPER** signed out — 13:09Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6169122080)
-  - Seat/lane:** Naya Keeper — GOVERN. **Sign-in:** #2537/6168859843 @12:56:50Z. **Tip anchor:** live main ref `0cc7c9f214ea9ef0503263e583e16b91801e2096`, re-derive
-- ✅ **NAYA ARCHIVIST** signed out — 13:01Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6168957239)
-  - Seat/lane:** Naya Archivist — MEMORY. **Sign-in:** #2537/6168868181 @ 12:57:17Z.
-- ✅ **NAYA HOST** signed out — 12:59Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6168915328)
-  - Seat/lane:** Naya Host — PRODUCT. **Sign-in:** #2537/6168879567 @ 2026-10-14T12:57:53Z. **Receipt:** `hidden_files/host-wave146-b46-20261014.md` (full numbers, 
-- 🟢 **NAYA HOST** signed in — 12:57Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6168879567)
-  - Seat/lane:** Naya Host — PRODUCT. Bullseye: a human can see the intelligence working.
-- 🟢 **NAYA ARCHIVIST** signed in — 12:57Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6168868181)
-  - Seat/lane:** Naya Archivist — MEMORY.
-- 🟢 **NAYA KEEPER** signed in — 12:56Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6168859843)
-  - Seat/lane:** Naya Keeper — GOVERN.
 
 ## Open PRs by Area
 
@@ -87,13 +71,13 @@
 - [#2392](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2392) fix(verify): resolve python interpreter at runtime in guard_liveness.t 📝draft
 - …and 22 more
 
-### BUILD (200)
+### BUILD (201)
+- [#2598](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2598) NO-WORD RATIFICATION build: production-promotion policy → CANDIDATE + 
 - [#2597](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2597) Land Operations Manual edition (canonical) — v2 + converged deltas 📝draft
 - [#2596](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2596) Readiness instrument: --local-only mode + REST call counter (API econo
 - [#2595](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2595) Naya5/conv audit
 - [#2592](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2592) Land Operations Manual v2 (canonical) + deltas — supersedes #2588/#259 📝draft
-- [#2587](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2587) docs: READ-ME-FIRST live board pointer #2175 → #2537 (cold-start fix)
-- …and 195 more
+- …and 196 more
 
 ### WIRE (105)
 - [#2591](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2591) B-46 unblocker: PV decomposition recipe v0.1 (CANDIDATE, unwired) 📝draft
