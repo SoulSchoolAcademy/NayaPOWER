@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-14T22:15:42+00:00",
+ "generated_utc": "2026-10-14T23:21:25+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -348,6 +348,12 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2604,
+     "title": "TS-1 (B-58): regression test for the vanished-winner fail-closed guard",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2604",
+     "draft": false
+    },
+    {
      "number": 2602,
      "title": "Add 0023 \u2014 Law 02 Continuous Action activation artifact (three tongues, CANDIDATE)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2602",
@@ -388,15 +394,9 @@
      "title": "docs: READ-ME-FIRST live board pointer #2175 \u2192 #2537 (cold-start fix)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2587",
      "draft": false
-    },
-    {
-     "number": 2586,
-     "title": "The Ultimate Execution Plan \u2014 seat-consensus draft (Shawn, 2026-10-14)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2586",
-     "draft": false
     }
    ],
-   "open_pr_count": 201
+   "open_pr_count": 202
   },
   {
    "id": "wire",
@@ -839,6 +839,6 @@
    "summary": "SIGN-OUT REPAIR (dispatcher-posted 2026-10-14 ~16:45Z):** Naya Librarian wrote the sign-out below to her local receipt file `hidden_files/librarian-wave147-sign"
   }
  ],
- "open_pr_total": 533,
- "unassigned_prs": 201
+ "open_pr_total": 534,
+ "unassigned_prs": 202
 }
