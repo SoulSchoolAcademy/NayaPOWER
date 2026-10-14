@@ -6,6 +6,10 @@
 17 steps across 5 phases: ACTIVATE → DECIDE → ACT → LEARN → COMPOUND.
 Read it before anything else in this file. It is the code of all codes.
 
+## ONE-READ OPERATOR GUIDE (DERIVED, NOT ANOTHER LAW)
+
+For the distilled who/why/how, the three moments, the **three-pass AAA scorecard review**, owner routing, and the exact handoff recipe, read [`NAYA-OPERATIONS-MANUAL.md`](NAYA-OPERATIONS-MANUAL.md). It is a source-linked **candidate guide**, not constitutional ratification, permission or an independent decision/quality calculator. Existing LAW, current main, governed scope and real receipts outrank any stale guide text.
+
 ## STOP — BOOT BEFORE WORK
 
 Any AI agent entering this repository must treat this file as the operational entry point.
