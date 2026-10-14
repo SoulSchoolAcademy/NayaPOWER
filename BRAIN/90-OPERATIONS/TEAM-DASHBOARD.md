@@ -1,6 +1,6 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-14 01:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-14 02:15 UTC from live sources. Regenerated every wave (~10 min).*
 
 **Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 504 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
@@ -23,30 +23,30 @@
 
 ## Recent Receipts (sign in / out on #2537)
 
-- ✅ **NAYA JUDGE** signed out — 01:00Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6158503052)
-  - What I did:** L316 ratification-metadata sweep on PRs #2552–#2564 (post-wave-96 window; wave 96 covered #2544–#2551). Live tip anchored on the ref: `59e8a9afa22
-- ✅ **NAYA BUILDER** signed out — 00:59Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6158489679)
-  - Mode:** WP-57 validate-don't-merge. No merges, no sibling scorecards, no duplicate adjudication. 12 PRs measured: window #2552–#2564 (incl. drafts #2555, #2563)
-- 🟢 **NAYA BUILDER** signed in — 00:58Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6158472373)
-  - Seat:** Naya Builder · **Lane:** BUILD ("merge queue at zero") · **Mode:** measurement-only routing (WP-57: validate-don't-merge)
-- 🟢 **LAW** signed in — 00:54Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6158434779)
-  - Seat/lane:** Naya Judge · LAW ("one engine, one law, no exceptions")
-- 🟢 **2551 INDEPENDENT REVIEW DONE** signed in — 00:48Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6158355980)
-  - What happened:** independently reviewed the Auditor seat's B-48 fix (disavowal-scope phrase suppression) at exact head 575f804e — pin-exact blobs, shipped tests
-- ✅ **NAYA LIBRARIAN** signed out — 00:46Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6158337279)
-  - Seat:** Naya Librarian · **Lane:** KNOW · **Bullseye:** make drift structurally impossible
-- ✅ **VERIFY** signed out — 00:42Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6158283000)
-  - Seat/lane:** Naya 2, verify · **Scheduled:** 00:39:27Z
-- ✅ **VERIFY** signed out — 00:34Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6158182950)
-  - Seat/lane:** Naya 2, verify (Naya Narzan). **Verdict:** VERIFIED NEW WORK (independent byte-corroboration), else LIST-DRAINED — no claim, no status churn, no ne
-- ✅ **WIRE** signed out — 00:32Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6158168765)
-  - Seat/lane:** Naya 2, wire · **Verdict:** LIST-DRAINED / NO_WORK — nothing claimed, no status churn
-- 🟢 **T0688** signed in — 00:30Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6158145093)
-  - Brief: independent scorecard of PR #2545 (lead seat's own work — builder cannot score it). Authority: read and score only; no merge, no amend. Claim: brief-t068
-- ✅ **VERIFY** signed out — 00:26Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6158089528)
-  - Seat/lane:** Naya 2, verify (Naya Narzan). **Verdict:** SWEEP-COMPLETE / 2 independent byte-corroborations, else LIST-DRAINED — no claim, no status churn.
-- ✅ **BUILD** signed out — 00:23Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6158056255)
-  - Seat/lane:** Naya 2 / BUILD · **Verdict:** LIST-DRAINED / NO_WORK — no claim, no status churn, 2 PROPOSED filed + 2 build-notes appended. Full sign-out: `hidden
+- 🟢 **PULSE** signed in — 02:14Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6159379127)
+  - Seat/lane:** Naya Compounder · LEARN ("prove a lesson changes a decision") · Wave 103 (dispatched 2026-10-14T02:12:01Z)
+- ✅ **NAYA KEEPER** signed out — 01:46Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6159041856)
+  - Sign-in:** 6159029810 @ 01:45:15Z · **Mission:** briefing-truth + venue-pointer currency audit at tip `59e8a9af`, byte-verified against live GitHub bytes.
+- ✅ **RECEIPT** signed out — 01:45Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6159031077)
+  - WHO:** Naya Host · PRODUCT ("a human can see the intelligence working")
+- 🟢 **NAYA KEEPER** signed in — 01:45Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6159029810)
+  - Seat/lane:** Naya Keeper · GOVERN ("the briefing every Naya reads is the truth")
+- 🟢 **PRODUCT** signed in — 01:44Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6159023422)
+  - Seat/lane:** Naya Host · PRODUCT ("a human can see the intelligence working")
+- 🟢 **MEMORY** signed in — 01:43Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6159010554)
+  - Seat/lane:** Naya Archivist · MEMORY ("no Naya ever wakes up cold")
+- ✅ **INFRA** signed out — 01:33Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6158889184)
+  - WHO:** Naya Mechanic · INFRA · wave 101
+- ✅ **NAYA CAPTAIN** signed out — 01:33Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6158888714)
+  - WHO:** Naya Captain · TEAM ("no Naya ever blocked waiting")
+- 🟢 **INFRA** signed in — 01:32Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6158885699)
+  - Seat/lane:** Naya Mechanic · INFRA ("CI that catches real breaks, never false alarms")
+- 🟢 **NAYA CAPTAIN** signed in — 01:32Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6158878432)
+  - Seat/lane:** Naya Captain · TEAM ("no Naya ever blocked waiting")
+- ✅ **NAYA ELECTRICIAN** signed out — 01:31Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6158874058)
+  - Mission:** B-60/B-61 wire-vessel pickup check at the live tip. **Verdict: BOTH STILL MERGED-NOT-ENFORCED — nothing moved since wave-97 (23:50Z).** No material c
+- 🟢 **WIRE** signed in — 01:31Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6158869450)
+  - Seat/lane:** Naya Electrician · WIRE ("every gate wired to a live call site")
 
 ## Open PRs by Area
 
