@@ -209,6 +209,30 @@ def test_malformed_lines_counted_not_fatal():
     assert entry["B_lineage"] == "PASS"
 
 
+def test_c_coverage_partial_on_live_shape():
+    """Live shape (LC-20261014-004 2026-10-14): clock T0..T5, meta only to
+    T2. C PASS must name what it checked — coverage PARTIAL, not a
+    misread PASS on the whole chain."""
+    clock, meta = _full_chain("LC-20261014-001")
+    clock = [r for r in clock if r["stage"] <= 5]
+    meta = [r for r in meta if r["stage"] <= 2]
+    (entry,) = _run(clock, meta)["lessons"]
+    assert entry["B_lineage"] == "FAIL"
+    assert any("CLOCK_WITHOUT_META" in f for f in entry["B_failures"])
+    assert entry["C_evidence"] == "PASS", entry["C_failures"]
+    assert entry["C_stages_checked"] == [0, 1, 2]
+    assert entry["C_coverage"] == "PARTIAL: T3,T4,T5 unchecked (no meta row)"
+    assert entry["D_receipt"] == "PARTIAL"
+
+
+def test_c_coverage_full_on_complete_chain():
+    clock, meta = _full_chain("LC-20261014-001")
+    (entry,) = _run(clock, meta)["lessons"]
+    assert entry["C_evidence"] == "PASS", entry["C_failures"]
+    assert entry["C_stages_checked"] == [0, 1, 2, 3, 4, 5, 6, 7]
+    assert entry["C_coverage"] == "FULL"
+
+
 if __name__ == "__main__":
     import pytest
     sys.exit(pytest.main([__file__, "-q"]))

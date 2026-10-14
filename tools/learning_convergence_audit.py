@@ -21,6 +21,11 @@ logs. It never writes, never emits, never promotes. Per lesson:
       a T6. Meta `ts` is NOT compared to clock `ts`: pre-fix rows carry
       write-time in meta `ts` (P-003); clock rows carry event time.
   (C) EVIDENCE — does each stage's meta row carry its typed contract?
+      Only stages that HAVE a meta row are evaluated (stages without one
+      are B's jurisdiction: CLOCK_WITHOUT_META). C_stages_checked records
+      exactly which stages were evaluated and C_coverage is FULL or
+      PARTIAL:<unchecked>, so a PASS is never misread as complete
+      evidence.
       T0: title + evidence. T1/T2: evidence. T3: one-sentence principle
       + enforcement >= 20 chars + evidence. T4: 64-hex brief_hash +
       principle_ids including this lesson + evidence. T5:
@@ -229,11 +234,19 @@ def _audit_lesson(lesson_id, clock_rows, meta_rows, probe_rows):
                 failures_b.append(f"META_WITHOUT_CLOCK: orphan meta row T{s}")
 
     # ---- (C) evidence contracts ----
+    # C only evaluates stages that HAVE meta rows; stages without one are
+    # B's jurisdiction (CLOCK_WITHOUT_META). Record the checked set so a
+    # PASS is never misread as "evidence complete": coverage says exactly
+    # which clock stages were checked and which were not.
+    checked_c = []
     for s in stages:
         if s in meta_rows:
+            checked_c.append(s)
             reason = _stage_contract(s, meta_rows[s], lesson_id)
             if reason:
                 failures_c.append(reason)
+    unchecked_c = [s for s in stages if s not in meta_rows]
+    c_coverage = "FULL" if not unchecked_c else f"PARTIAL: T{',T'.join(map(str, unchecked_c))} unchecked (no meta row)"
 
     # ---- (D) receipt ----
     probes = [
@@ -294,6 +307,8 @@ def _audit_lesson(lesson_id, clock_rows, meta_rows, probe_rows):
         "B_failures": failures_b,
         "C_evidence": "PASS" if not failures_c else "FAIL",
         "C_failures": failures_c,
+        "C_stages_checked": checked_c,
+        "C_coverage": c_coverage,
         "D_receipt": receipt,
         "D_latency_min": latency_min,
         "D_probes": probes,
