@@ -13,7 +13,9 @@ Reads from env:
 Seat identity: the team shares one GitHub account, so GitHub logins cannot
 distinguish seats. Seats are identified by signed tags instead:
   - PR body must declare:  Seat: Naya N   (a numeric seat, e.g. "Naya 2",
-    or one of the 12 named seats — Alpha..Mu, e.g. "Seat: Naya Epsilon")
+    or one of the 12 named seats — Alpha..Mu, e.g. "Seat: Naya Epsilon",
+    or one of the three lead seats — Clarity, Resolve, Verity,
+    e.g. "Seat: Naya Clarity")
   - Reviewer posts a comment:  [NAYA M · REVIEW] ... APPROVED ...
     (the team's IV sign-out verdict format — "## VERDICT: MERGE RECOMMENDED"
     with a seat tag — is also accepted as a review)
@@ -54,8 +56,14 @@ API = "https://api.github.com"
 # "Naya <Title>" (e.g. "Naya Epsilon"); the legacy numeric seats 1-5 keep
 # working exactly as before. One shared id pattern so the author-declaration
 # rule and the review/scorecard rules recognize exactly the same seats.
+# The three lead seats (Shawn, 2026-10-13 ~19:50 PDT — lead-qualified naming
+# law): Clarity, Resolve, Verity. They sign as "Naya Clarity" / "Naya Resolve" /
+# "Naya Verity" — no seat numbers, per the naming law. "Naya 4"-style numeric
+# tags keep working (backwards compatibility), but new declarations should use
+# the lead-qualified form.
 _NAMED_SEATS = ("alpha", "beta", "gamma", "delta", "epsilon", "zeta",
-                "eta", "theta", "iota", "kappa", "lambda", "mu")
+                "eta", "theta", "iota", "kappa", "lambda", "mu",
+                "clarity", "resolve", "verity")
 _SEAT_ID = r"(?:([12345])|(" + "|".join(_NAMED_SEATS) + r"))"
 SEAT_RE = re.compile(r"naya\s*" + _SEAT_ID + r"\b", re.I)
 # The authoring seat must be an EXPLICIT declaration ("Seat: Naya N"), never
