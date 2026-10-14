@@ -220,3 +220,82 @@ def test_markdown_who_and_signed_by_forms():
     assert ok and detail == "signed: Naya Delta", detail
     ok, detail = check_identity("**WHO:** Naya Verity Narzan")
     assert ok and detail == "signed: lead Naya Verity Narzan", detail
+
+
+# --- w157 (Naya Alpha): Epsilon's quoted-signature hole, #2568 fix ---
+# A `>`-quoted line is someone else's words. It must never bind as
+# signature, field, evidence, or score — not just identity.
+
+def test_quoted_signature_does_not_bind():
+    """Hole: `> Naya Alpha said...` bound as a signature -> silent
+    false PASS. Quoted signatures (bare, WHO:, Signed-by, nested,
+    indented) never sign."""
+    from post_checker import check_identity
+    for body in ("> Naya Alpha said the thing works.",
+                 "> WHO: Naya Alpha",
+                 "> Signed by Naya Alpha",
+                 ">> Naya Alpha said it first.",
+                 "  > Naya Alpha reporting."):
+        ok, detail = check_identity(body)
+        assert not ok, (body, detail)
+
+
+def test_quoted_only_post_flags():
+    """A post whose EVERY binding element is quoted must FLAG — before
+    this fix it PASSED all four checks."""
+    v, findings = check_post(
+        """Quoting yesterday's post for reference:
+> WHO: Naya Alpha
+> NUTSHELL: the thing works.
+> WHAT: fixed it. WHY: it was broken.
+> EVIDENCE: PR #2568 @ 21f089d5.
+> SCORE: 9/10 - ships, verified.
+> CONNECTS TO: the mission.
+> NEEDS: nothing.
+""", level="RECEIPT")
+    assert v == "FLAG", describe((v, findings))
+    by_name = {n: (ok, d) for n, ok, d in findings}
+    assert not by_name["identity"][0], by_name
+    assert not by_name["level"][0], by_name
+    assert not by_name["evidence"][0], by_name
+    assert not by_name["score"][0], by_name
+
+
+def test_quoted_fields_evidence_score_do_not_bind():
+    """Legit unquoted signature + quoted fields/evidence/score must
+    FLAG on level/evidence/score — the class fix, not just identity."""
+    v, findings = check_post(
+        """WHO: Naya Alpha
+Quoting the rest for reference:
+> NUTSHELL: the thing works.
+> WHAT: fixed it. WHY: it was broken.
+> EVIDENCE: PR #2568 @ 21f089d5.
+> SCORE: 9/10 - ships, verified.
+> CONNECTS TO: the mission.
+> NEEDS: nothing.
+""", level="RECEIPT")
+    assert v == "FLAG", describe((v, findings))
+    by_name = {n: (ok, d) for n, ok, d in findings}
+    assert by_name["identity"][0], by_name  # own signature still binds
+    assert not by_name["level"][0], by_name
+    assert not by_name["evidence"][0], by_name
+    assert not by_name["score"][0], by_name
+
+
+def test_legit_post_with_quote_block_still_passes():
+    """Control: a complete UNQUOTED post that also quotes someone
+    else's good post must still PASS — stripping quotes must not
+    poison legitimate posts."""
+    v, findings = check_post(
+        """WHO: Naya Alpha
+NUTSHELL: the thing works.
+WHAT: fixed it. WHY: it was broken.
+EVIDENCE: PR #2568 @ 21f089d5.
+SCORE: 9/10 - ships, verified.
+CONNECTS TO: the mission.
+NEEDS: nothing.
+Quoting the prior post for reference:
+> WHO: Naya Beta
+> SCORE: 10/10 - perfect, ships.
+""", level="RECEIPT")
+    assert v == "PASS", describe((v, findings))

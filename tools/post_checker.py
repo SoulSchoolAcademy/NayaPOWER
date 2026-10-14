@@ -37,12 +37,27 @@ MEANING_RE = re.compile(
     r"backwards|held|blocked|verified)\b", re.IGNORECASE)
 
 
+def _unquoted(body):
+    """The author's own lines only: drop Markdown blockquote lines.
+
+    A line whose first non-whitespace character is `>` is someone else's
+    quoted words. Quoted lines must never bind as signature, fields,
+    evidence, or score — a post that only *quotes* a good post is not a
+    good post. Every check runs on the unquoted body. Lazy-continuation
+    lines (quote continuation without a leading `>`) are NOT stripped:
+    they are indistinguishable from the author's own wrapped prose, so
+    the mechanical rule is line-leading `>` only."""
+    return "\n".join(
+        line for line in body.splitlines()
+        if not line.lstrip().startswith(">"))
+
+
 def _labeled(body, field):
     """True when `field` heads a labeled line: `FIELD: ...`, `**FIELD:**`,
     `**FIELD -> WHY:**`, `FIELD - ...`. Unlabeled prose never counts —
     a paragraph that merely *mentions* every field word is not a field."""
     pat = re.compile(
-        r"(?im)^\s*(?:[-—–*•>]+\s*)?(?:\*\*)?" + re.escape(field)
+        r"(?im)^\s*(?:[-—–*•]+\s*)?(?:\*\*)?" + re.escape(field)
         + r"\b[^:\n]{0,24}[:\-–]")
     return bool(pat.search(body))
 
@@ -62,9 +77,12 @@ def _stem_present(body, stem):
 
 
 def _strip_markers(line):
-    """Strip leading bullets/dashes/quotes/markdown so a signature line
-    like `**[Naya 5] ...` or `— Naya Delta` reads as `Naya 5 ...`."""
-    return re.sub(r"^[\s>•\-—–*\[\]]+", "", line.strip())
+    """Strip leading bullets/dashes/markdown so a signature line
+    like `**[Naya 5] ...` or `— Naya Delta` reads as `Naya 5 ...`.
+
+    `>` is deliberately NOT stripped: a `> Naya Alpha ...` line is a
+    quote, and quote lines never sign (see _unquoted)."""
+    return re.sub(r"^[\s•\-—–*\[\]]+", "", line.strip())
 
 
 def _candidate_from_text(text, roster):
@@ -104,7 +122,9 @@ def check_identity(body, roster=ROSTER):
     `WHO:`-labeled line, a `Signed:`/`By:` line, or a line that STARTS
     with the name (after markers). A name merely *mentioned* in the body
     never signs the post — a post signed 'Naya Alpha' that thanks
-    'Naya Verity Narzan' is signed by Naya Alpha."""
+    'Naya Verity Narzan' is signed by Naya Alpha. A name inside a `>`
+    quote never signs either — quoted words are someone else's."""
+    body = _unquoted(body)
     for line in body.splitlines():
         text = _strip_markers(line)
         m = re.match(r"(?i)(?:WHO|Signed(?:\s+by)?|By)\s*[:\-–]?\s*\**", text)
@@ -139,7 +159,9 @@ def check_evidence(body):
     A bare hex word is NOT evidence: 'deadbeef' in prose proves nothing.
     A SHA counts only with an anchor — `@ <sha>`, `sha: <sha>`,
     `commit <sha>`, `tip <sha>`, `head <sha>`, `tree <sha>`,
-    `ref <sha>` — or a `#NNNN` ref."""
+    `ref <sha>` — or a `#NNNN` ref. Anchors inside `>` quotes never
+    count — quoted evidence is someone else's."""
+    body = _unquoted(body)
     hits = SHA_RE.findall(body) + REF_RE.findall(body)
     if hits:
         return True, f"evidence anchors: {hits[:3]}"
@@ -150,7 +172,9 @@ def check_score(body):
     """A score with meaning, not a bare number.
 
     Meaning words match on word boundaries: 'relationships' is not
-    'ships', 'meaningless' is not 'meaning'."""
+    'ships', 'meaningless' is not 'meaning'. A score (and its meaning
+    words) inside a `>` quote never counts."""
+    body = _unquoted(body)
     m = SCORE_RE.search(body)
     if not m:
         return False, "no X/10 score found"
@@ -164,7 +188,9 @@ def check_level(body, level):
 
     PULSE/RECEIPT fields must head labeled lines (`FIELD: ...`) —
     unlabeled prose that mentions every field word fails. EVENT
-    questions are stems matched as word prefixes."""
+    questions are stems matched as word prefixes. Field labels and
+    stems inside `>` quotes never count."""
+    body = _unquoted(body)
     if level == "PULSE":
         missing = [f for f in PULSE_FIELDS if not _labeled(body, f)]
     elif level == "RECEIPT":
