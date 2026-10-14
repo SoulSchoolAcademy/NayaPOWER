@@ -26,6 +26,24 @@ models. Novelty is coverage ("how much of what you're saying is already
 said") against lesson texts the caller supplies (seam: one function,
 _max_coverage — swap in embeddings later).
 Thresholds are v1, pinned by the battery; the battery is the contract.
+
+Cycle-2 upgrades (Naya Gamma, w110 — padding-resistance battery):
+  * STEMMING: coverage/containment and scoring token sets match on stemmed
+    tokens, so morphological variants (spawning/spawn, claimed/claim) no
+    longer dodge the dupe check. Pinned by
+    test_synonym_paraphrase_does_not_promote.
+  * KEYWORD-STUFFING GUARD: if more than half the tokens are actionability
+    scoring markers, the markers ARE the content — actionability is capped
+    at 5.9 (LOG-eligible, never PROMOTE). Mechanism: an action word must act
+    ON something; >50% marker density means keyword-shaped, not lesson-shaped.
+    Falsifier: a genuine PROMOTE-worthy lesson with marker density > 0.5.
+    Does NOT stop adaptive stuffing diluted with filler nouns — that attack
+    is pinned as a strict-xfail case, not hidden.
+Known gaps (strict-xfail in the adversarial battery, not theater):
+  * synonym-level paraphrase needs the embeddings seam (_max_coverage doc).
+  * semantic vacuity ("stuffed trivia") needs semantic judgment — shape
+    scorers cannot read meaning.
+  * reach wiring is cycle 3 (w108 queue).
 """
 
 import re
@@ -76,7 +94,39 @@ _COLLECTIVE_RE = re.compile(r"\bevery\b|\ball\b|\bhive\b")
 
 
 def _tokens(text):
-    return [t for t in _TOKEN_RE.findall(text.lower()) if t not in _STOP]
+    return [stem(t) for t in _TOKEN_RE.findall(text.lower())
+            if t not in _STOP]
+
+
+def stem(t):
+    """Conservative suffix strip so morphological variants match.
+
+    spawning/spawn, claimed/claim, dispatching/dispatch, gates/gate —
+    without this, a paraphrase that only changes word forms dodges the
+    dupe check. Only strips when the stem stays >= 3 chars; words ending
+    in 'ss' ('class') are left alone."""
+    if t.endswith("ss"):
+        return t
+    for suf in ("ing", "ed", "s"):
+        if t.endswith(suf) and len(t) > len(suf) + 2:
+            cand = t[:-len(suf)]
+            if len(cand) >= 3:
+                return cand
+    return t
+
+
+def _marker_density(text):
+    """Fraction of tokens that are actionability scoring markers.
+
+    The keyword-stuffing signal: in a real lesson the action words act ON
+    content; when markers are the majority of the text, the text is
+    keyword-shaped, not lesson-shaped.
+    """
+    toks = _tokens(text)
+    if not toks:
+        return 0.0
+    mark = _ACTION_VERBS | _ENFORCEMENT_WORDS
+    return sum(1 for t in toks if t in mark) / len(toks)
 
 
 def _max_coverage(text, existing_texts):
@@ -179,27 +229,42 @@ def triage(text, existing_lesson_texts=()):
         "actionability": actionability_score(text),
         "reach": reach_score(text),
     }
+    # Keyword-stuffing guard (cycle 2): markers must act ON content. When
+    # markers are the majority of the text, the actionability reading is
+    # gamed — cap it below the PROMOTE bar. LOG stays possible (weak
+    # signal, not pure noise). Recorded as a modifier on the verdict's
+    # reason, not the verdict reason itself.
+    stuffed = _marker_density(text) > 0.5
+    capped = False
+    if stuffed:
+        uncapped = scores["actionability"]
+        scores["actionability"] = min(uncapped, 5.9)
+        capped = scores["actionability"] < uncapped
     n, d, a = scores["novelty"], scores["durability"], scores["actionability"]
     if n < 3.0:
-        return {"verdict": "DROP", "scores": scores,
-                "reasons": [f"already known (novelty {n})"]}
-    if existing_lesson_texts:
+        reasons = [f"already known (novelty {n})"]
+        verdict = "DROP"
+    elif existing_lesson_texts and _max_containment(text, existing_lesson_texts) >= 0.8:
         containment = _max_containment(text, existing_lesson_texts)
-        if containment >= 0.8:
-            return {"verdict": "DROP", "scores": scores,
-                    "reasons": [f"padded duplicate: contains {containment:.0%} "
-                                "of an existing lesson's tokens"]}
-    if a < 2.0 and d <= 5.0:
-        return {"verdict": "DROP", "scores": scores,
-                "reasons": [f"noise: informs no decision (actionability {a}) "
-                            f"and will not last (durability {d})"]}
-    if n >= 6.0 and d >= 6.0 and a >= 6.0:
-        return {"verdict": "PROMOTE", "scores": scores,
-                "reasons": ["clears novelty, durability and actionability bars"]}
-    weak = [k for k, v in scores.items()
-            if k in ("novelty", "durability", "actionability") and v < 6.0]
-    return {"verdict": "LOG", "scores": scores,
-            "reasons": [f"real signal, below bar on: {', '.join(weak)}"]}
+        reasons = [f"padded duplicate: contains {containment:.0%} "
+                   "of an existing lesson's tokens"]
+        verdict = "DROP"
+    elif a < 2.0 and d <= 5.0:
+        reasons = [f"noise: informs no decision (actionability {a}) "
+                   f"and will not last (durability {d})"]
+        verdict = "DROP"
+    elif n >= 6.0 and d >= 6.0 and a >= 6.0:
+        reasons = ["clears novelty, durability and actionability bars"]
+        verdict = "PROMOTE"
+    else:
+        weak = [k for k, v in scores.items()
+                if k in ("novelty", "durability", "actionability") and v < 6.0]
+        reasons = [f"real signal, below bar on: {', '.join(weak)}"]
+        verdict = "LOG"
+    if capped:
+        reasons.append("keyword-stuffed: actionability markers are the "
+                       "content, not acting on content")
+    return {"verdict": verdict, "scores": scores, "reasons": reasons}
 
 
 if __name__ == "__main__":
