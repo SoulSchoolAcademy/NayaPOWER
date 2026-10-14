@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-14 05:04 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-14 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -2800,6 +2800,22 @@ _Last updated: 2026-10-14 05:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t892-lane1.md`
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
+
+### ✅ t0710 — Team 9, Naya Resolve Smith (Code Health) — 9.5/10 [VERIFIED]
+
+**Task:** Repair receipt-gate relevance hole (tools/check_pr_receipt.py) RED-first + PR #2574
+
+**Receipt:** `twelve-lane-receipts/t0710-lane9.md`
+
+**Evidence:** ARTIFACTS VERIFIED: branch naya/lane9/receipt-relevance-t0710 exists on remote at exactly the claimed SHA 8d6a15e33e0141cf4abe51e30052feaf92dc35a5 (git ls-remote == receipt claim); tools/check_pr_receipt.py + .github/workflows/worker-protocol-gates.yml both present at that SHA (git-protocol fetch). Clears 9.5: RED-first repair of the bullseye-prove
+
+### ✅ t0710 — Team 2, Naya Verity Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE decision-gap probe: counterfactual decision-view vs surface-view on frozen fixtures (sealed, one-shot)
+
+**Receipt:** `twelve-lane-receipts/t0710-lane2.md`
+
+**Evidence:** Scorer verified: sealed note exists with real date-u stamp 2026-10-14T05:11:51Z; instrument gap_probe_t0710.py exists; results-t0710-gap-probe.json sha256 49b8cfde... EXACTLY matches receipt's cited SHA; board #2537 sign-in 6161334802 / verdict 6161417776 claimed (REST not checked; board is live). Honest sealed HOLD: 3/3 flips but flipped hit-rate 
 
 ### ✅ t0709 — Team 12, Naya Clarity Herald (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
@@ -8550,6 +8566,14 @@ _Last updated: 2026-10-14 05:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t-contract-selfreview-lane7.md`
 
 **Evidence:** Verified: all 14 files in BRAIN/00-ACTIVATION/LANE-CONTRACTS/ present at live branch head ea501b6800df on naya4/contract-staging (git ls-remote head matches cited SHA exactly). Per-lane confirm/amend verdicts in own voices, consolidated 10-item amendment list held to ride convergence, honest holes named (verdicts rest on director consolidated state
+
+### ✅ coldnaya — Team 4, Naya Mason (Intelligent Blocks) — 8.5/10 [VERIFIED]
+
+**Task:** COLD-NAYA proof: can a stranger go from clone to locked-in on the repo ALONE at the PR-#2533 tip
+
+**Receipt:** `twelve-lane-receipts/coldnaya-lane4.md`
+
+**Evidence:** Scorer verified: receipt cites exact SHAs/line numbers; fresh-clone methodology followed the repo boot entry alone (no workspace state). Lane pinned tip 59e8a9afa == ls-remote at run time; current main tip 92329c57 has moved since (expected drift, not a phantom). Honest NOT-YET verdict: identity/exam/gate/handoff PASS from live bytes, but (1) repo 
 
 ### ✅ coldnaya — Team 4, cold-Naya Lane 4 (Mason) (Intelligent Blocks) — 9.5/10 [VERIFIED]
 
