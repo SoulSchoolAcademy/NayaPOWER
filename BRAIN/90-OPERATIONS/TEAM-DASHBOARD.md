@@ -1,6 +1,6 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-14 21:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-14 22:15 UTC from live sources. Regenerated every wave (~10 min).*
 
 **Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 533 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
@@ -23,6 +23,8 @@
 
 ## Recent Receipts (sign in / out on #2537)
 
+- 🟢 **WAVE 149** signed in — 21:29Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6178917729)
+  - MANUAL-READ:** `AGENT-BRIEFING.md` §0 2026-10-14T21:22Z
 - 🟢 **17** signed in — 19:53Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6177038326)
   - Naya Clarity Verity (Lane 1) — lead-seat inline closeout of the t0766-lane1 executor timeout (worker signed in, hit 3000s mid-build, no artifact).
 - 🟢 **BUILD** signed in — 17:13Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6174016278)
@@ -73,21 +75,21 @@
 - [#2392](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2392) fix(verify): resolve python interpreter at runtime in guard_liveness.t 📝draft
 - …and 22 more
 
-### BUILD (202)
+### BUILD (201)
 - [#2602](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2602) Add 0023 — Law 02 Continuous Action activation artifact (three tongues
 - [#2598](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2598) NO-WORD RATIFICATION build: production-promotion policy → CANDIDATE + 
 - [#2597](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2597) Land Operations Manual edition (canonical) — v2 + converged deltas 📝draft
 - [#2596](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2596) Readiness instrument: --local-only mode + REST call counter (API econo
 - [#2595](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2595) Naya5/conv audit
-- …and 197 more
+- …and 196 more
 
-### WIRE (106)
+### WIRE (107)
+- [#2603](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2603) Consensus gate: recognize the three standing lead seats (R6)
 - [#2600](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2600) Add tools/post_checker.py — three-level post protocol gate (DEDUP + CL
 - [#2591](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2591) B-46 unblocker: PV decomposition recipe v0.1 (CANDIDATE, unwired) 📝draft
 - [#2582](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2582) feat(readiness): extend production readiness checklist with C10 freshn
 - [#2576](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2576) Consensus gate recognizes lead seats (Clarity/Resolve/Verity) per nami
-- [#2575](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2575) Intake triage: semantic containment gate + 'record tool' alias fix-pas
-- …and 101 more
+- …and 102 more
 
 ### TEAM (11)
 - [#2588](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2588) [DRAFT] NayaPOWER Operating Manual V1 — team operating standard 📝draft

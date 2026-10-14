@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-14T21:16:06+00:00",
+ "generated_utc": "2026-10-14T22:15:42+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -396,7 +396,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 202
+   "open_pr_count": 201
   },
   {
    "id": "wire",
@@ -416,6 +416,12 @@
    "active_now": false,
    "board_lane": "#2175 lane WIRE",
    "open_prs": [
+    {
+     "number": 2603,
+     "title": "Consensus gate: recognize the three standing lead seats (R6)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2603",
+     "draft": false
+    },
     {
      "number": 2600,
      "title": "Add tools/post_checker.py \u2014 three-level post protocol gate (DEDUP + CLAIM-CHECK)",
@@ -457,15 +463,9 @@
      "title": "Ratification gate: the math is the law (Shawn's rule, mechanized)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2557",
      "draft": false
-    },
-    {
-     "number": 2552,
-     "title": "Intelligence intake triage: the hive's ingestion gate",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2552",
-     "draft": false
     }
    ],
-   "open_pr_count": 106
+   "open_pr_count": 107
   },
   {
    "id": "team",
@@ -791,6 +791,14 @@
  ],
  "recent_activity": [
   {
+   "comment_id": 6178917729,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6178917729",
+   "lane": "WAVE 149",
+   "kind": "in",
+   "at": "2026-10-14T21:29:24Z",
+   "summary": "MANUAL-READ:** `AGENT-BRIEFING.md` \u00a70 2026-10-14T21:22Z"
+  },
+  {
    "comment_id": 6177038326,
    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6177038326",
    "lane": "17",
@@ -832,5 +840,5 @@
   }
  ],
  "open_pr_total": 533,
- "unassigned_prs": 202
+ "unassigned_prs": 201
 }
