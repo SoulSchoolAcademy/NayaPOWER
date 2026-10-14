@@ -114,10 +114,111 @@ def _candidate_from_text(text, roster):
     return None
 
 
-_EXPLICIT_SIG_RE = re.compile(
-    r"(?i)(?:WHO\b\s*(?:\*\*)?\s*[:\-–]|Signed\s+by\b|By\b\s*(?:[:\-–]|Naya\b))")
-_SIG_PREFIX_RE = re.compile(
-    r"(?i)(?:WHO|Signed(?:\s+by)?|By)\b\s*(?:\*\*)?\s*[:\-–]?\s*\**")
+_SEP_CHARS = ":-\u2013"
+# Escaped form for use inside a regex character class: a bare hyphen in
+# the middle would read as a range (':'..'\u2013' swallows letters).
+_SEP_CLASS = r":\-–"
+
+
+def _parse_explicit(text):
+    """Parse an explicit signature line (R-LIMIT-A Pass 1), longest-match.
+
+    Returns the name-text after the signature prefix, or None when the
+    line is not an explicit signature line. Forms, in order:
+    (a) WHO + arrow (-> / \u2192) + label + separator — name follows the
+        separator; with NO second separator, fall through to (c), so the
+        '-' in '->' reads as a dash separator (name-text '> ...').
+    (b) WHO + TO + separator. (c) WHO + separator (:/-/\u2013).
+    (d) Signed by + name-text. (e) Signed + separator + name-text.
+    (f) By + (separator | name-text starting with 'Naya' — the old
+    guard: 'By the way, ...' prose is not an explicit line).
+    '**' bold markers are removed before parsing ('**WHO:** X' reads as
+    'WHO: X'). An explicit line naming nobody still counts as seen —
+    the caller records that, so bare lines never override it.
+    """
+    clean = text.replace("**", "")
+    m = re.match(r"(?i)WHO\b", clean)
+    if m:
+        rest = clean[m.end():].lstrip()
+        arrow = None
+        if rest.startswith("->"):
+            arrow = rest[2:].lstrip()
+        elif rest.startswith("\u2192"):
+            arrow = rest[1:].lstrip()
+        if arrow is not None:
+            mm = re.match(r"(.+?)\s*[" + _SEP_CLASS + r"]\s*(.*)$",
+                          arrow, re.S)
+            if mm:
+                return mm.group(2)
+        mt = re.match(r"(?i)TO\b", rest)
+        if mt:
+            after_to = rest[mt.end():].lstrip()
+            if after_to and after_to[0] in _SEP_CHARS:
+                return after_to[1:].lstrip()
+        if rest and rest[0] in _SEP_CHARS:
+            return rest[1:].lstrip()
+        return None
+    m = re.match(r"(?i)Signed\s+by\b", clean)
+    if m:
+        after = clean[m.end():].lstrip()
+        if after and after[0] in _SEP_CHARS:
+            after = after[1:].lstrip()
+        return after
+    m = re.match(r"(?i)Signed\b", clean)
+    if m:
+        after = clean[m.end():].lstrip()
+        if after and after[0] in _SEP_CHARS:
+            return after[1:].lstrip()
+        return None
+    m = re.match(r"(?i)By\b", clean)
+    if m:
+        after = clean[m.end():].lstrip()
+        if after and after[0] in _SEP_CHARS:
+            return after[1:].lstrip()
+        if after.startswith("Naya"):
+            return after
+        return None
+    return None
+
+
+def _eligible_lines(body):
+    """Raw lines eligible for identity resolution (R-LIMIT-A).
+
+    A line is eligible iff it is NOT inside a fenced code block AND does
+    NOT start with a quote marker '>' (after leading whitespace). Fence
+    state is tracked on RAW lines: a line whose stripped form starts
+    with a run of >=3 backticks or >=3 tildes OPENS a fence (record the
+    char and run length; an info string may follow); a line whose
+    stripped form starts with a run of the SAME char of length >= the
+    opening run CLOSES it; an unclosed fence swallows to end-of-post.
+    Fence delimiter lines themselves are ineligible."""
+    eligible = []
+    in_fence = False
+    fence_char = ""
+    fence_len = 0
+    for raw in body.splitlines():
+        stripped = raw.strip()
+        fm = re.match(r"(`{3,}|~{3,})", stripped)
+        if fm:
+            run = fm.group(1)
+            if not in_fence:
+                in_fence = True
+                fence_char = run[0]
+                fence_len = len(run)
+            elif run[0] == fence_char and len(run) >= fence_len:
+                in_fence = False
+                fence_char = ""
+                fence_len = 0
+            continue
+        if in_fence:
+            continue
+        if raw.lstrip().startswith(">"):
+            continue
+        eligible.append(raw)
+    return eligible
+
+
+_TRAILING_PUNCT = set(".,;:\u00b7\u2014\u2013-")
 
 
 def _verdict_for(kind, name):
@@ -144,34 +245,47 @@ def _verdict_for(kind, name):
 def check_identity(body, roster=ROSTER):
     """Roster seats and leader-prefixed agents only. Returns (ok, detail).
 
-    The signer is resolved from an explicit signature line ONLY: a
-    `WHO:`-labeled line, a `Signed:`/`By:` line, or a line that STARTS
-    with the name (after markers). A name merely *mentioned* in the body
-    never signs the post — a post signed 'Naya Alpha' that thanks
-    'Naya Verity Narzan' is signed by Naya Alpha.
+    R-LIMIT-A — identity is attribution. A name binds ONLY as a
+    signature claim, never as a mention, quote, or code. Resolution is
+    two passes over ELIGIBLE lines (not in a fenced code block, not a
+    `>` quote line):
 
-    Two-pass scan: explicit signature lines (`WHO:`/`Signed by`/`By:`)
-    take precedence over bare name-leading lines in ANY order — a
-    mention line above the WHO line must not steal the signature.
-    When an explicit signature line exists, it IS the signature claim:
-    bare lines never override it, and an explicit line with no
-    resolvable name leaves identity unbound."""
-    lines = [_strip_markers(line) for line in body.splitlines()]
+    Pass 1 — explicit signature lines (first resolving line wins):
+    WHO + arrow+label+separator / WHO + TO + separator / WHO +
+    separator / Signed by / Signed + separator / By. If explicit lines
+    exist but NONE resolves, identity is UNBOUND — bare lines never
+    override an explicit claim.
+
+    Pass 2 — bare fallback (only if NO eligible explicit line exists):
+    the FIRST line that, after marker-stripping, consists of EXACTLY a
+    candidate name plus only trailing punctuation `[.,;:\u00b7\u2014\u2013-]*`
+    returns that candidate's verdict. Any line with extra tokens after
+    the name does NOT bind, and scanning CONTINUES. If no eligible line
+    is name-only, identity is UNBOUND.
+    """
+    eligible = _eligible_lines(body)
     explicit_seen = False
-    for text in lines:
-        if not _EXPLICIT_SIG_RE.match(text):
+    for raw in eligible:
+        name_text = _parse_explicit(_strip_markers(raw))
+        if name_text is None:
             continue
         explicit_seen = True
-        m = _SIG_PREFIX_RE.match(text)
-        cand = _candidate_from_text(text[m.end():], roster) if m else None
+        cand = _candidate_from_text(name_text, roster)
         if cand is not None:
             return _verdict_for(*cand)
     if explicit_seen:
         return False, ("explicit signature line present but no roster "
                        "seat name found — identity unbound")
-    for text in lines:
+    for raw in eligible:
+        text = _strip_markers(raw)
         cand = _candidate_from_text(text, roster)
         if cand is None:
+            continue
+        name = cand[1]
+        if not text.startswith(name):
+            continue
+        rem = text[len(name):].strip().strip("*").strip()
+        if rem and any(ch not in _TRAILING_PUNCT for ch in rem):
             continue
         return _verdict_for(*cand)
     return False, "no roster seat name found — identity unbound"

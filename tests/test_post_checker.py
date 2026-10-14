@@ -112,7 +112,9 @@ def test_leader_agent_name_recognized():
     ok, detail = check_identity("WHO: Naya Resolve Seeker · lane 3")
     assert ok and detail == "signed: leader agent Naya Resolve Seeker", detail
     ok, detail = check_identity("Naya Clarity Verity reporting")
-    assert ok and "Naya Clarity Verity" in detail, detail
+    # R-LIMIT-A (w131): bare prose with tokens after the name is a
+    # mention, not a signature — supersedes the old binding assertion.
+    assert not ok and "unbound" in detail, detail
 
 
 def test_bare_agent_name_flagged_incomplete():
@@ -320,9 +322,113 @@ def test_adversarial_combo_flags():
     v, findings = check_post(e2e, level="PULSE")
     assert v == "FLAG", describe((v, findings))
     # The FLAG comes from the level gate: the prose sentences are not
-    # fields. Identity binds the first name-leading line here because
-    # the post carries NO explicit WHO:/Signed:/By: line at all — the
-    # documented first-bare-line convention, not a bypass: with no
-    # explicit signature claim present there is nothing to take
-    # precedence. A post WITH a WHO line always resolves to it (R1).
+    # fields. Identity is UNBOUND here under R-LIMIT-A (w131): the post
+    # carries NO eligible explicit WHO:/Signed:/By: line at all, and
+    # no eligible line is exactly a name — the first line is mention
+    # prose, so the bare fallback does not bind. A post WITH a WHO
+    # line always resolves to it (R1).
     assert any(n == "level" and not ok for n, ok, _ in findings)
+
+
+# --- R-LIMIT-A (Naya Alpha, w129 decision; Naya Theta, w131 fix-pass) ---
+
+def test_limit_a_bare_prose_does_not_bind():
+    """R-LIMIT-A pass 2: a bare line with ANY token after the name is
+    prose, not a signature — it must not bind, and scanning continues."""
+    from post_checker import check_identity
+    for body in (
+        "Naya Verity Narzan was quoted above.",      # L1 mention-prose
+        "Naya Mu: shipped the fix",                   # L3 name + colon + prose
+        "Naya Mu and Naya Kappa shipped it",          # L9 multi-name prose
+        "Naya Mu, Naya Kappa",                        # L10 multi-name comma
+        "Naya Mu (lane 1)",                           # L12 name + qualifier
+        "Naya Clarity Verity reporting",              # L13 bare prose (supersedes
+        # the old test_leader_agent_name_recognized 'reporting' assertion)
+    ):
+        ok, detail = check_identity(body)
+        assert not ok and "unbound" in detail, (body, detail)
+
+
+def test_limit_a_quoted_lines_never_bind():
+    """R-LIMIT-A eligibility: lines starting with '>' are quotes — they
+    never bind in either pass, bare or explicit."""
+    from post_checker import check_identity
+    for body in (
+        "> Naya Verity Narzan was quoted above.",     # L5 quoted prose
+        "> Naya Mu",                                  # L6 quoted bare name
+        "> WHO: Naya Mu",                             # L14 quoted explicit
+    ):
+        ok, detail = check_identity(body)
+        assert not ok and "unbound" in detail, (body, detail)
+
+
+def test_limit_a_fenced_lines_never_bind():
+    """R-LIMIT-A eligibility: lines inside fenced code blocks (``` / ~~~,
+    with or without info string, unclosed swallows to EOF) never bind."""
+    from post_checker import check_identity
+    for body in (
+        "```\nNaya Mu\n```",                          # L7 fenced bare
+        "```\nNaya Verity Narzan was quoted.\n```",   # L8 fenced prose
+        "~~~\nNaya Mu\n~~~",                          # L15 tilde fence
+        "```text\nNaya Mu\n```",                      # L19 info string
+        "```\nNaya Mu",                               # L20 unclosed fence
+        "```\nWHO: Naya Mu\n```",                     # L25 fenced explicit
+    ):
+        ok, detail = check_identity(body)
+        assert not ok and "unbound" in detail, (body, detail)
+
+
+def test_limit_a_bare_name_only_still_binds():
+    """R-LIMIT-A pass 2 preserves legitimate bare sign-offs: after
+    marker-stripping, EXACTLY a name + trailing punctuation binds."""
+    from post_checker import check_identity
+    for body in (
+        "\u2014 Naya Mu",                             # L2 em-dash sign-off
+        "Naya Mu:",                                   # L4 name + colon only
+        "Naya Mu \u2014",                             # L11 name + trailing dash
+        "Naya Mu\nSaw Naya Verity Narzan.",           # L17 name-only + mention
+        "**Naya Mu**",                                # L18 bold name-only
+        "Naya Mu\n\nThanks to Naya Verity Narzan.",   # L23 name-only first
+        "Naya Mu\n```\nNaya Verity Narzan\n```",      # L24 name-only, fenced later
+        "Thanks to everyone.\nNaya Mu",               # L26 name-only last
+    ):
+        ok, detail = check_identity(body)
+        assert ok and detail == "signed: Naya Mu", (body, detail)
+
+
+def test_limit_a_explicit_forms_all_bind():
+    """R-LIMIT-A pass 1: the explicit recognizer covers EVERY documented
+    signature form — plain / dash / TO / arrow+label+colon / Signed(:) / By."""
+    from post_checker import check_identity
+    for body in (
+        "WHO: Naya Mu",                               # L21 plain
+        "WHO - Naya Mu",                              # G7 dash
+        "WHO TO: Naya Mu",                            # G2 TO form
+        "WHO -> SIGNER: Naya Mu",                     # G1' arrow + label
+        "WHO \u2192 SIGNER: Naya Mu",                 # G4' unicode arrow + label
+        "WHO -> Lane 1: Naya Mu",                     # G8 arrow, multiword label
+        "Signed: Naya Mu",                            # G3 Signed-colon
+        "Signed by Naya Mu",                          # G6 Signed-by
+        "By: Naya Mu",                                # G5 By-colon
+    ):
+        ok, detail = check_identity(body)
+        assert ok and detail == "signed: Naya Mu", (body, detail)
+
+
+def test_limit_a_arrow_without_separator_stays_unbound():
+    """Precedence pin: 'WHO -> Naya Mu' has NO second separator, so the
+    arrow form does not match; the dash reading leaves '> Naya Mu', which
+    resolves to no candidate — unbound. Same for unicode arrow without
+    separator (not a WHO field at all). Neither is a signature."""
+    from post_checker import check_identity
+    for body in ("WHO -> Naya Mu", "WHO \u2192 Naya Mu"):
+        ok, detail = check_identity(body)
+        assert not ok and "unbound" in detail, (body, detail)
+
+
+def test_limit_a_explicit_seen_without_name_stays_unbound():
+    """Preserved Mu guard: an explicit line naming nobody leaves identity
+    unbound — bare lines never override an explicit claim."""
+    from post_checker import check_identity
+    ok, detail = check_identity("WHO: TBD\nNaya Verity Narzan was quoted.")
+    assert not ok and "unbound" in detail, detail
