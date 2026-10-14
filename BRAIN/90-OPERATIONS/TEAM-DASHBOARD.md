@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-14 13:17 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-14 14:24 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 517 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 521 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -23,6 +23,10 @@
 
 ## Recent Receipts (sign in / out on #2537)
 
+- ✅ **NAYA COMPOUNDER** signed out — 14:04Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6170218533)
+  - Seat/lane:** Naya Compounder · LEARN. **Sign-in:** #2537/6169671588 @ 13:37:57Z.
+- 🟢 **NAYA COMPOUNDER** signed in — 13:37Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6169671588)
+  - Seat/lane:** Naya Compounder · LEARN ("Prove a lesson changes a decision")
 - ✅ **NAYA KEEPER** signed out — 13:09Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6169122080)
   - Seat/lane:** Naya Keeper — GOVERN. **Sign-in:** #2537/6168859843 @12:56:50Z. **Tip anchor:** live main ref `0cc7c9f214ea9ef0503263e583e16b91801e2096`, re-derive
 - ✅ **NAYA ARCHIVIST** signed out — 13:01Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6168957239)
@@ -43,10 +47,6 @@
   - Seat/lane:** Naya Electrician, WIRE. **Sign-in:** 6168527556. Tip anchor: main ref `92329c5795ef8a50d02adf94ee6c91c313c26daf`, re-derived live. Measurement + in
 - 🟢 **NAYA CAPTAIN** signed in — 12:38Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6168531931)
   - Seat/lane:** Naya Captain — TEAM. Bullseye: no Naya ever blocked waiting.
-- 🟢 **NAYA MECHANIC** signed in — 12:38Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6168527498)
-  - Seat/lane:** Naya Mechanic — INFRA. Bullseye: CI that catches real breaks, never false alarms.
-- 🟢 **NAYA ELECTRICIAN** signed in — 12:38Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6168527556)
-  - Seat/lane:** Naya Electrician, WIRE. Bullseye: every gate wired to a live call site.
 
 ## Open PRs by Area
 
@@ -79,21 +79,21 @@
 - [#2357](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2357) T-06: Neutrality trap — six-state finding classification (stacked on T
 - …and 3 more
 
-### PROVE (25)
+### PROVE (26)
+- [#2585](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2585) Add automatic scorecard calculator (tools/scorecard.py + tests)
 - [#2543](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2543) [NAYA NARZAN] Cold-retrieve: red-first relevance-floor calibration bat
 - [#2521](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2521) fix(b40): stale 'signing' comment word -> 'sealing' in machine-law tes
 - [#2392](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2392) fix(verify): resolve python interpreter at runtime in guard_liveness.t 📝draft
 - [#2374](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2374) test(t21): operating-essence acceptance battery — moral value before n
-- [#2159](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2159) Add team accountability scorecard to the weekly watchdog
-- …and 20 more
+- …and 21 more
 
-### BUILD (194)
+### BUILD (197)
+- [#2587](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2587) docs: READ-ME-FIRST live board pointer #2175 → #2537 (cold-start fix)
+- [#2586](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2586) The Ultimate Execution Plan — seat-consensus draft (Shawn, 2026-10-14)
+- [#2584](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2584) Daily Intelligence Report — 2026-10-14 📝draft
 - [#2581](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2581) Level drill: key-split redesign — a structurally blind instrument (unl
 - [#2579](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2579) Fix kernel-tests.yml: pin pglast==8.6, wheel-only install (main-first,
-- [#2578](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2578) Land tools/post_checker.py: board-post self-check (PULSE/RECEIPT/EVENT
-- [#2577](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2577) #2568 fix-pass: R-LIMIT-A in post_checker (Theta w131)
-- [#2571](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2571) Fix singular /git/ref/ path to /git/refs/ (9 call sites, 7 files)
-- …and 189 more
+- …and 192 more
 
 ### WIRE (104)
 - [#2582](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2582) feat(readiness): extend production readiness checklist with C10 freshn

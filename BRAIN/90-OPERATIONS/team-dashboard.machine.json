@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-14T13:17:19+00:00",
+ "generated_utc": "2026-10-14T14:24:32+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -279,6 +279,12 @@
    "board_lane": "#2175 lane PROVE",
    "open_prs": [
     {
+     "number": 2585,
+     "title": "Add automatic scorecard calculator (tools/scorecard.py + tests)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2585",
+     "draft": false
+    },
+    {
      "number": 2543,
      "title": "[NAYA NARZAN] Cold-retrieve: red-first relevance-floor calibration battery",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2543",
@@ -319,15 +325,9 @@
      "title": "feat(value): scorecard structure gate \u2014 scan raw PR body for the five sections",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2097",
      "draft": false
-    },
-    {
-     "number": 1980,
-     "title": "fix(verify): replay-trial schema tolerance \u2014 verifier_arg + EOL normalization",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/1980",
-     "draft": false
     }
    ],
-   "open_pr_count": 25
+   "open_pr_count": 26
   },
   {
    "id": "build",
@@ -347,6 +347,24 @@
    "active_now": true,
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
+    {
+     "number": 2587,
+     "title": "docs: READ-ME-FIRST live board pointer #2175 \u2192 #2537 (cold-start fix)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2587",
+     "draft": false
+    },
+    {
+     "number": 2586,
+     "title": "The Ultimate Execution Plan \u2014 seat-consensus draft (Shawn, 2026-10-14)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2586",
+     "draft": false
+    },
+    {
+     "number": 2584,
+     "title": "Daily Intelligence Report \u2014 2026-10-14",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2584",
+     "draft": true
+    },
     {
      "number": 2581,
      "title": "Level drill: key-split redesign \u2014 a structurally blind instrument (unlocks bottleneck #7)",
@@ -376,27 +394,9 @@
      "title": "Fix singular /git/ref/ path to /git/refs/ (9 call sites, 7 files)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2571",
      "draft": false
-    },
-    {
-     "number": 2568,
-     "title": "Intelligence systems: hierarchy doc + post checker + level drill",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2568",
-     "draft": false
-    },
-    {
-     "number": 2566,
-     "title": "Naya4: THE BULLSEYE (+9) \u2014 install the ultimate-Naya definition, the scale, and the mirror",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2566",
-     "draft": false
-    },
-    {
-     "number": 2561,
-     "title": "Naya Narzan 4: cold-Naya follow-up \u2014 board pointer #2175\u2192#2537, snapshot branch-qualified",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2561",
-     "draft": false
     }
    ],
-   "open_pr_count": 194
+   "open_pr_count": 197
   },
   {
    "id": "wire",
@@ -791,6 +791,22 @@
  ],
  "recent_activity": [
   {
+   "comment_id": 6170218533,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6170218533",
+   "lane": "NAYA COMPOUNDER",
+   "kind": "out",
+   "at": "2026-10-14T14:04:17Z",
+   "summary": "Seat/lane:** Naya Compounder \u00b7 LEARN. **Sign-in:** #2537/6169671588 @ 13:37:57Z."
+  },
+  {
+   "comment_id": 6169671588,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6169671588",
+   "lane": "NAYA COMPOUNDER",
+   "kind": "in",
+   "at": "2026-10-14T13:37:57Z",
+   "summary": "Seat/lane:** Naya Compounder \u00b7 LEARN (\"Prove a lesson changes a decision\")"
+  },
+  {
    "comment_id": 6169122080,
    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6169122080",
    "lane": "NAYA KEEPER",
@@ -901,24 +917,8 @@
    "kind": "out",
    "at": "2026-10-14T12:34:11Z",
    "summary": "Seat/lane:** Naya Judge, LAW. **Sign-in:** 6168419834 @ 12:32:34Z. Tip anchor: main ref `92329c5795ef8a50d02adf94ee6c91c313c26daf`, re-derived live, unchanged a"
-  },
-  {
-   "comment_id": 6168426547,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6168426547",
-   "lane": "NAYA AUDITOR",
-   "kind": "out",
-   "at": "2026-10-14T12:32:56Z",
-   "summary": "Seat/lane:** Naya Auditor \u2014 PROVE. **Sign-in:** 6168407910 @ 12:31:54Z."
-  },
-  {
-   "comment_id": 6168419834,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6168419834",
-   "lane": "NAYA JUDGE",
-   "kind": "in",
-   "at": "2026-10-14T12:32:34Z",
-   "summary": "Seat/lane:** Naya Judge, LAW. Bullseye: one engine, one law, no exceptions."
   }
  ],
- "open_pr_total": 517,
- "unassigned_prs": 194
+ "open_pr_total": 521,
+ "unassigned_prs": 197
 }
