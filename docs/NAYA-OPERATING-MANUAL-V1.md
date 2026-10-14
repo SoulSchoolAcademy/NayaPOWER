@@ -198,7 +198,64 @@ Lead with plain English, then provide technical evidence.
 
 Every material update identifies WHO/owner, nutshell, what changed and why, evidence with exact links/revisions, score and meaning, mission connection, and next action/owner. Be concise without hiding material facts. Own misses promptly. Never claim a change, test, review, merge, deployment, or production result that did not happen.
 
-## 8. Automation: turn repeatable rules into machinery
+## 8. Intelligence distillation, work queue, and feed lifecycle
+
+**Purpose:** make communication produce shared understanding and forward motion—not comment volume.
+
+### One useful post format
+
+Use the smallest format that preserves decision value:
+
+- **WHO / OWNER + STATE:** accountable seat, lane, and status (TODO / IN_PROGRESS / BLOCKED / DONE / VERIFIED).
+- **ESSENCE:** one or two sentences: what matters.
+- **WHY / VALUE:** what changes for a human, the mission, risk, time, or capability.
+- **EVIDENCE:** exact source, SHA, test/run, receipt, or clearly marked UNKNOWN.
+- **DECISION / LEARNING:** what was decided or learned; separate fact from inference.
+- **NEXT:** one prioritized action, one owner, acceptance evidence, and blocker/dependency if any.
+
+A post that only says “done,” repeats known context, or reports activity without value/evidence is incomplete. Do not force every field into a trivial exchange; preserve the 30-second test and include only what the work warrants.
+
+### One queue, not scattered promises
+
+Maintain a single authoritative prioritized queue through the existing mission/coordination and owning-lane feeds; do not create a competing tracker. Each actionable item has a stable link/ID, priority, owner, status, why it matters, dependencies, acceptance test, evidence, and next step. Sort by governing priority and expected verified collective value, not recency, loudness, or ease. Check for duplicates before creating work. A new finding updates or links the existing item wherever possible.
+
+Status meanings must be explicit:
+- **TODO:** accepted, not started.
+- **IN_PROGRESS:** one named owner is actively executing.
+- **BLOCKED:** a specific blocker and unblocking action are recorded.
+- **DONE:** work was performed; outcome may still be unverified.
+- **VERIFIED:** an independent verifier confirmed the stated acceptance criteria against identified evidence.
+
+One item has one accountable owner. Collaborators coordinate rather than silently poach. Sign in when taking a meaningful work unit; sign out with outcome, evidence, unknowns, and exactly one next action.
+
+### Daily → weekly → monthly → yearly learning
+
+Use the existing canonical report contract in `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/README.md`; do not invent a parallel report system.
+
+- **Daily:** what materially changed; strongest wins; failures and root causes; reusable lessons; value produced; unresolved risks; top priorities; what should stop; one next action per active owner.
+- **Weekly:** synthesize daily reports into recurring patterns, repeated blockers, lessons that changed behavior, work completed versus intended, value/risk trends, and the few priorities that matter most.
+- **Monthly:** assess compounding capability and outcomes, persistent bottlenecks, distribution/fairness of benefits and burdens, resource costs, whether previous lessons remain valid, and what should be retired or redesigned.
+- **Yearly:** evaluate mission-level outcomes, structural changes, long-term learning, and strategy.
+
+Higher-level reports link their source reports and preserve dissent, confidence, scope, and unknowns. Never claim a lesson was learned merely because it was written down: seek evidence of retrieval, application, changed behavior/outcome, independent verification, and successor reuse. Produce reports when meaningful activity or decisions exist; avoid empty cadence-driven noise.
+
+### Feed closeout and safe retirement
+
+When a feed or working conversation is no longer the active venue:
+
+1. Distill decisions, durable facts, reusable lessons, evidence, failed approaches, unresolved questions, commitments, owners, and deadlines.
+2. Link each durable lesson to its canonical Smart Note or record; link each open obligation to the existing queue item.
+3. Publish a concise closeout receipt on the successor feed with the distilled essence, source range, canonical links, unresolved items, and next action.
+4. Verify that a cold successor can find the current venue and retrieve the key lessons without rereading the entire feed.
+5. Mark the old feed **ARCHIVED / READ-ONLY** where supported and point forward to its successor.
+
+**Archive is not deletion.** Preserve historical records, provenance, and audit evidence unless a separately authorized retention/privacy policy explicitly permits deletion. A feed is eligible for archival only when its knowledge and obligations are accounted for; archival must not hide unresolved work or conflicts. Keep the board/queue concise, and store durable intelligence in canonical memory rather than duplicating long reports in comments.
+
+### Measure usefulness, not message count
+
+Track outcomes such as duplicate discussions avoided, cold-retrieval success, time-to-find an answer, blockers removed, commitments completed, verified behavior changes, successor reuse, and human benefit/cost. Comment count and report count are workload indicators only—not intelligence, learning, or value scores.
+
+## 9. Automation: turn repeatable rules into machinery
 
 Every repeated lesson should trigger: **“What mechanism makes the correct behavior the default and the known mistake difficult or impossible?”**
 
@@ -217,11 +274,11 @@ Prefer existing seams and one canonical implementation. Prioritize:
 
 **Automation acceptance:** prove both positive and rejection paths. A file, workflow, or calculator not called by the real operating path is not enforcement. A passing helper test is not end-to-end proof. Each mechanism needs an owner, real callsite, current-head CI, different-seat verification, and explicit non-claims.
 
-## 9. The standing system scorecard
+## 10. The standing system scorecard
 
 The canonical ten-area system scorecard and its ratified weights live in [BRAIN/01-GOVERNANCE/0003-SYSTEM-SCORECARD-V1.md](../BRAIN/01-GOVERNANCE/0003-SYSTEM-SCORECARD-V1.md). Those areas and weights are standing law; this guide does not change them. Score every area from fresh evidence, name the miss and corrective action for every area below 9.0, assign an owner and re-score date, and never copy a prior number forward without remeasurement.
 
-## 10. Completion checklist
+## 11. Completion checklist
 
 - [ ] Mission/outcome and acceptance criteria are explicit.
 - [ ] Current source state and ownership were checked; duplicate work was avoided.
@@ -237,7 +294,7 @@ The canonical ten-area system scorecard and its ratified weights live in [BRAIN/
 
 If an item is not applicable, say why. If required evidence is missing, status is NOT COMPLETE.
 
-## Canonical references
+## 12. Canonical references
 
 - [PROTOCOL.md — 17-step, five-phase operating protocol](../PROTOCOL.md)
 - [AGENTS.md — agent boot contract](../AGENTS.md)
