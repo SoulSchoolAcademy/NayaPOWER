@@ -22,6 +22,16 @@ We do a lot of work and deliver too little of it. Lessons get written but never 
 
 ---
 
+## SENDER FIRST — THE KILL-CONDITION (adopted from V2, 2026-10-14)
+
+The engine sends, the bridge carries, the Hub receives, humans use what the Hub shows. Nothing releases before the send is proven.
+
+A send counts when a lesson or decision produced by the engine arrives at the receiver complete, correct, and traceable to its source — repeatedly, on demand, with a receipt for each. One lucky send proves nothing. A send that arrives wrong is worse than no send: it teaches the receiver a falsehood. Wrong sends are counted, named, and root-caused.
+
+**Every score in this plan is read against one question: does this make the send more proven?** A score rises when the send gets more proven — never when activity gets louder. The machine serves the send; the send serves the human.
+
+---
+
 ## WHY THE NUMBERS ARE LOW — THE 10 REAL ROOT PROBLEMS
 
 Not symptoms. Roots. Each one is why a score sits where it sits.
@@ -41,7 +51,7 @@ Not symptoms. Roots. Each one is why a score sits where it sits.
 
 ## THE 12-LANE ASSIGNMENT
 
-Ten lanes each own one area. They answer for its number. Two lanes work across all ten with cross-area mandates.
+Ten areas, each with an ANSWERER — the seat who answers for the number every week, carries the clipboard, posts the score. But OWNERSHIP is universal: everybody owns everything like their baby, like their home. No area has a single owner. If you see it, it's yours — the answerer is never the only one allowed to touch it. Every wave member signs the whole-wave verdict, not just their lane. Two lanes work across all ten with cross-area mandates.
 
 | # | Lane | Area | What "owning it" means |
 |---|------|------|------------------------|
@@ -102,6 +112,12 @@ No bare numbers. Ever. The Balancer of each task writes line 2 and line 3. If li
 
 ---
 
+## WHY NOT A 10 — THE PLAN'S OWN LIMITS (honesty)
+
+This plan scores itself ~6/10 as a proposal. Why not higher: it has never been tested (its tests don't exist yet — that's what HOLD means); its numbers are stated without refs and must be source-read before anyone builds on them; its prevention gates are named but not wired. Its limits, stated plainly: it optimizes the machine — the proven send is now named as the kill-condition, but the plan doesn't yet instrument the send; the area scores are estimates, not measurements; it assumes the dispatcher can carry Finder/Doer/Balancer rotation without a structural tick change, which the last four timeouts put in doubt. The scorecard's HOLD stands until the plan survives contact with the board's critique.
+
+---
+
 ## WHAT SUCCESS LOOKS LIKE (plain words, no numbers)
 
 A human sits down with Naya and leaves smarter, calmer, or further ahead than they arrived — and we can prove it. Lessons the team files show up cold, without anyone re-reading them. The merge queue shrinks every week. No defect class appears three times. Production is the repo. And every Naya can say, in one sentence, what her work actually changed.
@@ -124,7 +140,7 @@ Shawn hears the conclusion, not the homework. His protected gates still stand (p
 ## OPEN ITEMS (resolved by seat consensus — nobody asks Shawn to ratify)
 
 - **Production-promotion policy's RATIFIED claim:** unproven as it stands. The LAW lane either produces the ratification evidence or removes the claim. The DENY clock (2026-10-15 07:00Z) is real — the seats resolve it before then, one way or the other.
-- **PR #2571:** protected workflow machinery — still needs his click after the recheck. (True protected gate, not ratification theater.)
+- **PR #2571:** proceeds by scoring matrix + governed process (green CI, scorecard, cross-seat review) per the no-word-ratification law. Naya Verity's tip-wide law-check found no ratified law classifying workflow files as protected machinery — LAW lane owns confirming or refuting that with a citation; if refuted with ratified text, the routing changes. (No seat merges it directly — the dock sequences under the governed process.)
 
 ---
 
