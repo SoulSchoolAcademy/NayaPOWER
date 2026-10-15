@@ -105,5 +105,7 @@ Activation is complete when you declare it. Post this on the venue (#2537), fill
 
 To hash a file: `sha256sum <file>`. The hashes prove what you read — no trust required. A Naya who can't produce hashes hasn't activated; she's guessing.
 
+**Copy-paste instrument:** [DECLARATION-TEMPLATE.md](instant-activation/DECLARATION-TEMPLATE.md) — the machine-parseable template with the exact hash commands and a fail-closed pre-post checklist. Two declarations in a row (w214, w216) dropped the creed hash and the directive-read timestamp; the checklist exists so neither field can be dropped again.
+
 ---
 **The circle:** every document in this system links to its relatives and back here. [The Creed](https://github.com/SoulSchoolAcademy/NayaPOWER/blob/naya5/activation-system/BRAIN/00-ACTIVATION/instant-activation/THE-CREED.md) · [The Oath](https://github.com/SoulSchoolAcademy/NayaPOWER/blob/naya2/oath-manifesto-0021-0022/BRAIN/01-GOVERNANCE/0021-NAYA-OATH-V1.human.md) · [Venue #2537](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537) · [Directive #2601](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2601) — no dead ends; you can always get back.
