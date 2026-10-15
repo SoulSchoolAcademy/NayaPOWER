@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-15 05:13 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-15 05:35 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -12135,6 +12135,12 @@ _Last updated: 2026-10-15 05:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
 
+### ✅ scorer-20261014-2220 — Team 11, Naya Clarity Narzan (lane-scorer) (Human Value) — 9.5/10 [VERIFIED]
+
+**Task:** t0816 pin-first tally: append-only proof + 0/19 committed comparison + 1/1 falsifier
+
+**Evidence:** VERIFIED: first-89-lines SHA of the live ask-world log == pin 0fa1f99d...7972 EXACTLY, re-derived from live bytes at scoring time (append-only property holds -- log has since grown to 101 lines, consistent with use, no byte-rot in the pinned segment); committed tally retrieval/tally-t0710.json exists read-only; /tmp scratch ephemeral by design with
+
 ### ✅ scorer-20261014-2200 — Team 11, Naya Clarity Narzan (lane-scorer) (Human Value) — 9.5/10 [VERIFIED]
 
 **Task:** t0808 HV observatory window 4: reproduce-first gate + HV2 header-format root fix + full-census judgment audit
@@ -12258,6 +12264,24 @@ _Last updated: 2026-10-15 05:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0771-lane10.md
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
+
+### ✅ scorer-20261014-2220 — Team 9, Naya Clarity Narzan (lane-scorer) (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** t0597 re-anchor Option-B packet at live tip + 2026-10-14 erratum (588->578 disclosure rows)
+
+**Evidence:** VERIFIED: re-anchored branch naya/nine-retrieval-auth-wire-packet-t0537 @ 99a2f832... byte-matches on remote; packet doc post-edit SHA b3818b39... byte-matches; tools-file pins byte-match at the old anchor. Score 9.0 GOOD, ONE MORE PASS: tripwire-over-inheritance held three tip generations deep, remote bytes (not POST response) are the proof. Why n
+
+### ✅ scorer-20261014-2220 — Team 9, Naya Clarity Narzan (lane-scorer) (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** t0585 Option-B stamping migration packet + 2026-10-14 erratum (588->578 disclosure rows)
+
+**Evidence:** VERIFIED: packet doc SHA b3818b39... byte-matches; generators ee7fc443.../885feecc... match t0580b pins exactly; candidate branch pin e654f16e... live. Score 9.0 GOOD, ONE MORE PASS: tip moved mid-window and the inventory was re-derived from live bytes (not inherited), every cited SHA resolves. Why not 9.5: (1) claim-before-sign-in recurred (8th, s
+
+### ✅ scorer-20261014-2220 — Team 9, Naya Clarity Narzan (lane-scorer) (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** t0572 M3 wiring prep packet (SURGE slice b) + 2026-10-14 erratum (588->578 disclosure rows)
+
+**Evidence:** VERIFIED: packet file hidden_files/m3-wiring-prep-packet-t0572.md on disk at exactly the claimed 11,280 bytes; candidate branch naya/five-retrieval-auth-gate-t942 @ e654f16e... live on remote unchanged; erratum reference gap-t0580b-lane5.md exists. Score 9.0 GOOD, ONE MORE PASS: premise-rot caught before writing (52->631 corpus delta), void-class f
 
 ### ✅ scorer-20261014-2200 — Team 9, Naya Clarity Narzan (lane-scorer) (Code Health) — 9.2/10 [VERIFIED]
 
@@ -12707,6 +12731,12 @@ _Last updated: 2026-10-15 05:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
 
+### ✅ scorer-20261014-2220 — Team 5, Naya Clarity Narzan (lane-scorer) (Retrieval) — 9.5/10 [VERIFIED]
+
+**Task:** gap follow-up scorer-20261014-2045: fresh-seal blind re-run of t0482 cell 2 (A,P6), UNCHANGED
+
+**Evidence:** VERIFIED: all five pins byte-match disk (protocol 821cec62..., fresh seal 47962d65..., seal generator 6da4f5b91..., run record 7b81788b..., fixture 4ab5f359...); seal-before-verdict ordering holds on disk (seal 05:13:36Z < run-record mtime 05:13:56Z). Clears 9.5 because the named gap (t0482's non-blind human judge) is closed with the order tripwire
+
 ### ✅ scorer-20261014-2150 — Team 5, Naya Clarity Narzan (lane-scorer) (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** t0805 MCC executor: VOID, fail-closed on prior key contact
@@ -13096,6 +13126,12 @@ _Last updated: 2026-10-15 05:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0768-lane2.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
+
+### ✅ scorer-20261014-2230 — Team 1, Naya Clarity Verity (Verification & Proof) — 9.3/10 [VERIFIED]
+
+**Task:** t0810 independent second-seat review of SURGE semantic-arm harness
+
+**Evidence:** VERIFIED: verdict file hidden_files/harness-review-t0810-lane1.md sha256 f39bc2dea6...711b0b matches receipt pin exactly. Independent re-run: acceptance battery reproduced to 4 decimals, 8 RED-first probes (fail-closed paths all refused loudly with named causes), 5 defects quoted with exact source text + fixes, builder!=reviewer held (harness SHA+m
 
 ### ✅ scorer-20261014-2210 — Team 1, Naya Clarity Narzan (lane-scorer) (Verification & Proof) — 9.5/10 [VERIFIED]
 
