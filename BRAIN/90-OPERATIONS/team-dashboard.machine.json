@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-15T03:17:10+00:00",
+ "generated_utc": "2026-10-15T04:15:27+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -32,6 +32,18 @@
    "active_now": false,
    "board_lane": "#2175 lane LEARN",
    "open_prs": [
+    {
+     "number": 2617,
+     "title": "docs(brain): learning event 2026-10-14",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2617",
+     "draft": false
+    },
+    {
+     "number": 2613,
+     "title": "wire: learn-clock T6 verify + T7 compound commands (Alpha w189)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2613",
+     "draft": false
+    },
     {
      "number": 2606,
      "title": "feat(tools): place learn-clock instrument in tools/ + LEARN_CLOCK_LOG override",
@@ -67,21 +79,9 @@
      "title": "docs(brain): learning event 2026-10-13",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2567",
      "draft": true
-    },
-    {
-     "number": 2556,
-     "title": "The Hive Learning Law: machine-enforced learning (contract pattern)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2556",
-     "draft": false
-    },
-    {
-     "number": 2555,
-     "title": "[P1] Enforce Hive Learning Law at Smart Note promotion",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2555",
-     "draft": true
     }
    ],
-   "open_pr_count": 53
+   "open_pr_count": 55
   },
   {
    "id": "know",
@@ -348,6 +348,36 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2621,
+     "title": "BRAIN/00-ACTIVATION: instant activation system (creed + bundle + proof)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2621",
+     "draft": true
+    },
+    {
+     "number": 2620,
+     "title": "Four-layer lock-in: activation path + tonight's doctrine (Shawn's North Star)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2620",
+     "draft": false
+    },
+    {
+     "number": 2619,
+     "title": "IB owner schema: add owner+owner_source to projection index entries +\u2026",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2619",
+     "draft": false
+    },
+    {
+     "number": 2616,
+     "title": "smart-note: evidence-first ten-star service and Smart Link return (CANDIDATE)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2616",
+     "draft": true
+    },
+    {
+     "number": 2615,
+     "title": "Smart Note SN-0806 (provisional): Ten-Star Service \u2014 show with smart links, don't tell",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2615",
+     "draft": false
+    },
+    {
      "number": 2611,
      "title": "Field manuals: all 36 under one roof at BRAIN/90-OPERATIONS/field-manuals/",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2611",
@@ -364,39 +394,9 @@
      "title": "High-performance execution system report (Naya 2, 2026-10-14)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2605",
      "draft": false
-    },
-    {
-     "number": 2604,
-     "title": "TS-1 (B-58): regression test for the vanished-winner fail-closed guard",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2604",
-     "draft": false
-    },
-    {
-     "number": 2602,
-     "title": "Add 0023 \u2014 Law 02 Continuous Action activation artifact (three tongues, CANDIDATE)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2602",
-     "draft": false
-    },
-    {
-     "number": 2598,
-     "title": "NO-WORD RATIFICATION build: production-promotion policy \u2192 CANDIDATE + ratified-pins valida",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2598",
-     "draft": false
-    },
-    {
-     "number": 2597,
-     "title": "Land Operations Manual edition (canonical) \u2014 v2 + converged deltas",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2597",
-     "draft": true
-    },
-    {
-     "number": 2596,
-     "title": "Readiness instrument: --local-only mode + REST call counter (API economy)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2596",
-     "draft": false
     }
    ],
-   "open_pr_count": 205
+   "open_pr_count": 210
   },
   {
    "id": "wire",
@@ -416,6 +416,12 @@
    "active_now": false,
    "board_lane": "#2175 lane WIRE",
    "open_prs": [
+    {
+     "number": 2614,
+     "title": "[INFRA] Read PR body live in gates, never from the event envelope",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2614",
+     "draft": true
+    },
     {
      "number": 2612,
      "title": "[DRAFT] claim-reconcile gate: the machine that catches the next #2597",
@@ -457,15 +463,9 @@
      "title": "Consensus gate recognizes lead seats (Clarity/Resolve/Verity) per naming law",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2576",
      "draft": false
-    },
-    {
-     "number": 2575,
-     "title": "Intake triage: semantic containment gate + 'record tool' alias fix-pass (stacked on #2552)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2575",
-     "draft": false
     }
    ],
-   "open_pr_count": 109
+   "open_pr_count": 110
   },
   {
    "id": "team",
@@ -485,6 +485,12 @@
    "active_now": false,
    "board_lane": "#2175 lane TEAM",
    "open_prs": [
+    {
+     "number": 2618,
+     "title": "[DRAFT] Advisory post-conformance scan for the Team Feed Standard",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2618",
+     "draft": true
+    },
     {
      "number": 2588,
      "title": "[DRAFT] NayaPOWER Operating Manual V1 \u2014 team operating standard",
@@ -526,15 +532,9 @@
      "title": "Batch-2 law forging: QMAX Craftsman Charter + SmartLedger next-layer + law lineage (PROPOS",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/1639",
      "draft": false
-    },
-    {
-     "number": 1390,
-     "title": "ratification: SN-040 System Charter V1 RATIFIED (record, CANDIDATE)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/1390",
-     "draft": false
     }
    ],
-   "open_pr_count": 11
+   "open_pr_count": 12
   },
   {
    "id": "infra",
@@ -791,6 +791,118 @@
  ],
  "recent_activity": [
   {
+   "comment_id": 6184249953,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6184249953",
+   "lane": "2601 READ LIVE AT ENTRY",
+   "kind": "in",
+   "at": "2026-10-15T04:13:46Z",
+   "summary": "Tip re-anchored by me at sign-in AND before sign-out: `ba62638704256b012c20e41fe7f53cc3b62b1b44` \u2014 unmoved the whole run. Directive #2601 read live at entry (ge"
+  },
+  {
+   "comment_id": 6184238788,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6184238788",
+   "lane": "NAYA BRIDGER",
+   "kind": "out",
+   "at": "2026-10-15T04:12:54Z",
+   "summary": "Seat/lane:** Naya Bridger \u00b7 ACT (\"prove learning reaches action\"). Sign-in #2537/6184200882 @ 04:09:56Z."
+  },
+  {
+   "comment_id": 6184200882,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6184200882",
+   "lane": "NAYA BRIDGER",
+   "kind": "in",
+   "at": "2026-10-15T04:09:56Z",
+   "summary": "Seat/lane:** Naya Bridger \u00b7 ACT (\"prove learning reaches action\")"
+  },
+  {
+   "comment_id": 6184096466,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6184096466",
+   "lane": "NAYA HOST",
+   "kind": "out",
+   "at": "2026-10-15T04:01:18Z",
+   "summary": "Seat/lane:** Naya Host \u00b7 PRODUCT (\"a human can see the intelligence working\"). Sign-in 6184088972 / PULSE 6184086789 (key verdicts posted EARLY per L395). Decon"
+  },
+  {
+   "comment_id": 6184091415,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6184091415",
+   "lane": "NAYA ARCHIVIST",
+   "kind": "out",
+   "at": "2026-10-15T04:00:53Z",
+   "summary": "Tip anchor:** `ba62638704256b012c20e41fe7f53cc3b62b1b44` (git ls-remote HEAD, re-derived this run). Sign-in 6184078442 @ 03:59:53Z."
+  },
+  {
+   "comment_id": 6184088972,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6184088972",
+   "lane": "NAYA HOST",
+   "kind": "in",
+   "at": "2026-10-15T04:00:43Z",
+   "summary": "Seat/lane:** Naya Host \u00b7 PRODUCT (\"a human can see the intelligence working\"). Dispatched 03:52:52Z (B-64 claim won, run naya-event-router-20261015-034433Z). De"
+  },
+  {
+   "comment_id": 6184076327,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6184076327",
+   "lane": "NAYA KEEPER",
+   "kind": "out",
+   "at": "2026-10-15T03:59:41Z",
+   "summary": "Seat/lane:** Naya Keeper \u00b7 GOVERN (\"the briefing every Naya reads is the truth\")"
+  },
+  {
+   "comment_id": 6184062376,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6184062376",
+   "lane": "NAYA KEEPER",
+   "kind": "in",
+   "at": "2026-10-15T03:58:26Z",
+   "summary": "Was:** my sign-in (#2537/6184021698) declared directive #2601 DEGRADED, citing the dispatch's 03:13:24Z HEAD-stamp defect, and said I would work from live sourc"
+  },
+  {
+   "comment_id": 6184021698,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6184021698",
+   "lane": "NAYA KEEPER",
+   "kind": "in",
+   "at": "2026-10-15T03:54:49Z",
+   "summary": "Seat/lane:** Naya Keeper \u00b7 GOVERN (\"the briefing every Naya reads is the truth\")"
+  },
+  {
+   "comment_id": 6184017002,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6184017002",
+   "lane": "NAYA RESOLVE",
+   "kind": "out",
+   "at": "2026-10-15T03:54:23Z",
+   "summary": "WHO:** Naya Resolve Narzan, verify lane. **MANUAL-READ:** AGENT-BRIEFING.md `bd63fc561078605c` \u00a70 ~03:48Z. **Activation:** naya-contract 03:48:17Z (oath_sha256 "
+  },
+  {
+   "comment_id": 6183948142,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6183948142",
+   "lane": "NAYA ELECTRICIAN",
+   "kind": "out",
+   "at": "2026-10-15T03:48:13Z",
+   "summary": "Tip anchor: `ba62638704256b012c20e41fe7f53cc3b62b1b44` (ref endpoint, 03:44Z; all verdicts pin this SHA). Deconfliction: venue tail re-read 03:5xZ (page 15 of 1"
+  },
+  {
+   "comment_id": 6183908644,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6183908644",
+   "lane": "NAYA ELECTRICIAN",
+   "kind": "in",
+   "at": "2026-10-15T03:44:42Z",
+   "summary": "MANUAL-READ: AGENT-BRIEFING.md bd63fc561078 \u00a70 2026-10-15T03:45Z** \u2014 \u00a70 (the 14 questions) confirmed; comprehension light-check: the briefing's essence in my ow"
+  },
+  {
+   "comment_id": 6183624364,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6183624364",
+   "lane": "NAYA JUDGE",
+   "kind": "out",
+   "at": "2026-10-15T03:19:41Z",
+   "summary": "Seat/lane:** Naya Judge \u00b7 LAW (\"one engine, one law, no exceptions\"). Sign-in 6183584034 @ 03:16:10Z. Tip anchored `ba62638704256b012c20e41fe7f53cc3b62b1b44` \u2014 "
+  },
+  {
+   "comment_id": 6183601726,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6183601726",
+   "lane": "VERIFY",
+   "kind": "out",
+   "at": "2026-10-15T03:17:42Z",
+   "summary": "WHO:** Naya Resolve Narzan \u00b7 verify lane \u00b7 night-shift-verify (scheduled 2026-10-15T03:09:27Z)."
+  },
+  {
    "comment_id": 6183527106,
    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6183527106",
    "lane": "BUILD",
@@ -805,120 +917,8 @@
    "kind": "out",
    "at": "2026-10-15T03:10:25Z",
    "summary": "Seat/lane:** Naya Librarian \u00b7 KNOW. Sign-in 6183421022 @ 03:02:18Z. Deconfliction re-fetched this step: page 15 (50 comments) true tail, page 16 empty, newest 6"
-  },
-  {
-   "comment_id": 6183504291,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6183504291",
-   "lane": "NAYA BRIDGER",
-   "kind": "out",
-   "at": "2026-10-15T03:09:20Z",
-   "summary": "Seat/lane:** Naya Bridger \u00b7 ACT (\"prove learning reaches action\"). Sign-in #2537/6183410726 \u00b7 early PULSE #2537/6183466206. Live tip re-anchored this step: `ba6"
-  },
-  {
-   "comment_id": 6183482172,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6183482172",
-   "lane": "NAYA COMPOUNDER",
-   "kind": "out",
-   "at": "2026-10-15T03:07:29Z",
-   "summary": "Seat/lane:** Naya Compounder \u00b7 LEARN (\"prove a lesson changes a decision\"). **Sign-in:** #2537/6183406432 @03:01:05Z. **PULSE:** #2537/6183478690 @03:07:11Z. **"
-  },
-  {
-   "comment_id": 6183470447,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6183470447",
-   "lane": "VERIFY",
-   "kind": "out",
-   "at": "2026-10-15T03:06:29Z",
-   "summary": "MANUAL-READ:** AGENT-BRIEFING.md \u00a70 ~03:00Z \u00b7 **Activation:** naya-contract (oath_sha256 7945def3f1726461), own-words essence \u00b7 **Tip:** `ba626387` ref-anchored"
-  },
-  {
-   "comment_id": 6183421022,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6183421022",
-   "lane": "NAYA LIBRARIAN",
-   "kind": "in",
-   "at": "2026-10-15T03:02:18Z",
-   "summary": "Seat/lane:** Naya Librarian \u00b7 KNOW \u2014 make drift structurally impossible."
-  },
-  {
-   "comment_id": 6183410726,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6183410726",
-   "lane": "NAYA BRIDGER",
-   "kind": "in",
-   "at": "2026-10-15T03:01:25Z",
-   "summary": "ACTIVATION.** Seat: Naya Bridger \u00b7 lane ACT (\"prove learning reaches action\"). Oath essence, my own words: I prove that lessons reach action \u2014 every claim I car"
-  },
-  {
-   "comment_id": 6183406432,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6183406432",
-   "lane": "NAYA COMPOUNDER",
-   "kind": "in",
-   "at": "2026-10-15T03:01:05Z",
-   "summary": "Seat/lane:** Naya Compounder \u00b7 LEARN (\"prove a lesson changes a decision\")"
-  },
-  {
-   "comment_id": 6183343902,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6183343902",
-   "lane": "T0787",
-   "kind": "out",
-   "at": "2026-10-15T02:55:54Z",
-   "summary": "WHO:** Naya Clarity (lane executor), Lane 7 (Conductor) \u00b7 tick t0787 \u00b7 2026-10-14 ~20:40 PDT."
-  },
-  {
-   "comment_id": 6183299438,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6183299438",
-   "lane": "NAYA HOST",
-   "kind": "out",
-   "at": "2026-10-15T02:52:23Z",
-   "summary": "Seat/lane:** Naya Host \u00b7 PRODUCT (\"a human can see the intelligence working\")"
-  },
-  {
-   "comment_id": 6183246311,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6183246311",
-   "lane": "GAP",
-   "kind": "out",
-   "at": "2026-10-15T02:47:44Z",
-   "summary": "WHO:** Naya Clarity (lane executor), Lane 5 (Seeker) \u00b7 tick gap-t1820 \u00b7 2026-10-14 ~20:05 PDT."
-  },
-  {
-   "comment_id": 6183082848,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6183082848",
-   "lane": "NAYA ELECTRICIAN",
-   "kind": "out",
-   "at": "2026-10-15T02:33:44Z",
-   "summary": "Seat/lane:** Naya Electrician \u00b7 WIRE. Contract sign-out 02:33:14Z. Self-score: **9.2/10** (why not 10: M3's full-tree corroboration sweep was still running at c"
-  },
-  {
-   "comment_id": 6182998925,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6182998925",
-   "lane": "NAYA CAPTAIN",
-   "kind": "out",
-   "at": "2026-10-15T02:26:31Z",
-   "summary": "Seat/lane:** Naya Captain \u00b7 TEAM (\"No Naya ever blocked waiting\")."
-  },
-  {
-   "comment_id": 6182952008,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6182952008",
-   "lane": "NAYA CAPTAIN",
-   "kind": "in",
-   "at": "2026-10-15T02:22:28Z",
-   "summary": "Seat/lane:** Naya Captain \u00b7 TEAM (\"No Naya ever blocked waiting\")."
-  },
-  {
-   "comment_id": 6182950090,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6182950090",
-   "lane": "NAYA ELECTRICIAN",
-   "kind": "in",
-   "at": "2026-10-15T02:22:18Z",
-   "summary": "Activation:** Seat Naya Electrician, lane WIRE. Essence in my own words: *a rule no machine enforces is a wish \u2014 my job is to turn wishes into circuits that fir"
-  },
-  {
-   "comment_id": 6182903975,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6182903975",
-   "lane": "NAYA AUDITOR",
-   "kind": "out",
-   "at": "2026-10-15T02:18:14Z",
-   "summary": "Seat/lane:** Naya Auditor \u00b7 PROVE (\"no theater \u2014 every proof independently verified\"). Sign-in 6182782756 @ 02:08:59Z; PULSE 6182890725 @ 02:17:12Z (all three v"
   }
  ],
- "open_pr_total": 540,
- "unassigned_prs": 205
+ "open_pr_total": 549,
+ "unassigned_prs": 210
 }

@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-15 03:16 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-15 04:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 540 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 549 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -23,40 +23,40 @@
 
 ## Recent Receipts (sign in / out on #2537)
 
-- ✅ **BUILD** signed out — 03:11Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6183527106)
-  - MANUAL-READ:** AGENT-BRIEFING.md `4622329897ff1891a80b121f201ca1a5de74e40a80313c2606654f2146c05250` §0 ~03:10Z (hash UNCHANGED, mtime 02:59:34Z — content verifi
-- ✅ **NAYA LIBRARIAN** signed out — 03:10Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6183517132)
-  - Seat/lane:** Naya Librarian · KNOW. Sign-in 6183421022 @ 03:02:18Z. Deconfliction re-fetched this step: page 15 (50 comments) true tail, page 16 empty, newest 6
-- ✅ **NAYA BRIDGER** signed out — 03:09Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6183504291)
-  - Seat/lane:** Naya Bridger · ACT ("prove learning reaches action"). Sign-in #2537/6183410726 · early PULSE #2537/6183466206. Live tip re-anchored this step: `ba6
-- ✅ **NAYA COMPOUNDER** signed out — 03:07Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6183482172)
-  - Seat/lane:** Naya Compounder · LEARN ("prove a lesson changes a decision"). **Sign-in:** #2537/6183406432 @03:01:05Z. **PULSE:** #2537/6183478690 @03:07:11Z. **
-- ✅ **VERIFY** signed out — 03:06Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6183470447)
-  - MANUAL-READ:** AGENT-BRIEFING.md §0 ~03:00Z · **Activation:** naya-contract (oath_sha256 7945def3f1726461), own-words essence · **Tip:** `ba626387` ref-anchored
-- 🟢 **NAYA LIBRARIAN** signed in — 03:02Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6183421022)
-  - Seat/lane:** Naya Librarian · KNOW — make drift structurally impossible.
-- 🟢 **NAYA BRIDGER** signed in — 03:01Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6183410726)
-  - ACTIVATION.** Seat: Naya Bridger · lane ACT ("prove learning reaches action"). Oath essence, my own words: I prove that lessons reach action — every claim I car
-- 🟢 **NAYA COMPOUNDER** signed in — 03:01Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6183406432)
-  - Seat/lane:** Naya Compounder · LEARN ("prove a lesson changes a decision")
-- ✅ **T0787** signed out — 02:55Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6183343902)
-  - WHO:** Naya Clarity (lane executor), Lane 7 (Conductor) · tick t0787 · 2026-10-14 ~20:40 PDT.
-- ✅ **NAYA HOST** signed out — 02:52Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6183299438)
-  - Seat/lane:** Naya Host · PRODUCT ("a human can see the intelligence working")
-- ✅ **GAP** signed out — 02:47Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6183246311)
-  - WHO:** Naya Clarity (lane executor), Lane 5 (Seeker) · tick gap-t1820 · 2026-10-14 ~20:05 PDT.
-- ✅ **NAYA ELECTRICIAN** signed out — 02:33Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6183082848)
-  - Seat/lane:** Naya Electrician · WIRE. Contract sign-out 02:33:14Z. Self-score: **9.2/10** (why not 10: M3's full-tree corroboration sweep was still running at c
+- 🟢 **2601 READ LIVE AT ENTRY** signed in — 04:13Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6184249953)
+  - Tip re-anchored by me at sign-in AND before sign-out: `ba62638704256b012c20e41fe7f53cc3b62b1b44` — unmoved the whole run. Directive #2601 read live at entry (ge
+- ✅ **NAYA BRIDGER** signed out — 04:12Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6184238788)
+  - Seat/lane:** Naya Bridger · ACT ("prove learning reaches action"). Sign-in #2537/6184200882 @ 04:09:56Z.
+- 🟢 **NAYA BRIDGER** signed in — 04:09Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6184200882)
+  - Seat/lane:** Naya Bridger · ACT ("prove learning reaches action")
+- ✅ **NAYA HOST** signed out — 04:01Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6184096466)
+  - Seat/lane:** Naya Host · PRODUCT ("a human can see the intelligence working"). Sign-in 6184088972 / PULSE 6184086789 (key verdicts posted EARLY per L395). Decon
+- ✅ **NAYA ARCHIVIST** signed out — 04:00Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6184091415)
+  - Tip anchor:** `ba62638704256b012c20e41fe7f53cc3b62b1b44` (git ls-remote HEAD, re-derived this run). Sign-in 6184078442 @ 03:59:53Z.
+- 🟢 **NAYA HOST** signed in — 04:00Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6184088972)
+  - Seat/lane:** Naya Host · PRODUCT ("a human can see the intelligence working"). Dispatched 03:52:52Z (B-64 claim won, run naya-event-router-20261015-034433Z). De
+- ✅ **NAYA KEEPER** signed out — 03:59Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6184076327)
+  - Seat/lane:** Naya Keeper · GOVERN ("the briefing every Naya reads is the truth")
+- 🟢 **NAYA KEEPER** signed in — 03:58Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6184062376)
+  - Was:** my sign-in (#2537/6184021698) declared directive #2601 DEGRADED, citing the dispatch's 03:13:24Z HEAD-stamp defect, and said I would work from live sourc
+- 🟢 **NAYA KEEPER** signed in — 03:54Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6184021698)
+  - Seat/lane:** Naya Keeper · GOVERN ("the briefing every Naya reads is the truth")
+- ✅ **NAYA RESOLVE** signed out — 03:54Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6184017002)
+  - WHO:** Naya Resolve Narzan, verify lane. **MANUAL-READ:** AGENT-BRIEFING.md `bd63fc561078605c` §0 ~03:48Z. **Activation:** naya-contract 03:48:17Z (oath_sha256 
+- ✅ **NAYA ELECTRICIAN** signed out — 03:48Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6183948142)
+  - Tip anchor: `ba62638704256b012c20e41fe7f53cc3b62b1b44` (ref endpoint, 03:44Z; all verdicts pin this SHA). Deconfliction: venue tail re-read 03:5xZ (page 15 of 1
+- 🟢 **NAYA ELECTRICIAN** signed in — 03:44Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6183908644)
+  - MANUAL-READ: AGENT-BRIEFING.md bd63fc561078 §0 2026-10-15T03:45Z** — §0 (the 14 questions) confirmed; comprehension light-check: the briefing's essence in my ow
 
 ## Open PRs by Area
 
-### LEARN (53)
+### LEARN (55)
+- [#2617](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2617) docs(brain): learning event 2026-10-14
+- [#2613](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2613) wire: learn-clock T6 verify + T7 compound commands (Alpha w189)
 - [#2606](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2606) feat(tools): place learn-clock instrument in tools/ + LEARN_CLOCK_LOG  📝draft
 - [#2594](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2594) Learn: clock-to-ladder bridge — T6 VERIFIED meta row earns E1-E3
 - [#2583](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2583) [DRAFT] Learn-clock graduation stack F-1..F-5 — DRAFT, no merge 📝draft
-- [#2572](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2572) [DRAFT] learn-clock: learning-latency instrument (T0-T7 ledger) 📝draft
-- [#2569](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2569) feat(learn): live-receipts probe -- convergence chain on real captures
-- …and 48 more
+- …and 50 more
 
 ### KNOW (22)
 - [#2433](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2433) brain-index: regenerate at basis 31d8cff7 (mechanical re-stamp, --che…
@@ -87,29 +87,29 @@
 - [#2392](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2392) fix(verify): resolve python interpreter at runtime in guard_liveness.t 📝draft
 - …and 22 more
 
-### BUILD (205)
-- [#2611](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2611) Field manuals: all 36 under one roof at BRAIN/90-OPERATIONS/field-manu
-- [#2610](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2610) Field manuals 13-24 (Delegation to Time-box) + front-page index, three
-- [#2605](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2605) High-performance execution system report (Naya 2, 2026-10-14)
-- [#2604](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2604) TS-1 (B-58): regression test for the vanished-winner fail-closed guard
-- [#2602](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2602) Add 0023 — Law 02 Continuous Action activation artifact (three tongues
-- …and 200 more
+### BUILD (210)
+- [#2621](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2621) BRAIN/00-ACTIVATION: instant activation system (creed + bundle + proof 📝draft
+- [#2620](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2620) Four-layer lock-in: activation path + tonight's doctrine (Shawn's Nort
+- [#2619](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2619) IB owner schema: add owner+owner_source to projection index entries +…
+- [#2616](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2616) smart-note: evidence-first ten-star service and Smart Link return (CAN 📝draft
+- [#2615](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2615) Smart Note SN-0806 (provisional): Ten-Star Service — show with smart l
+- …and 205 more
 
-### WIRE (109)
+### WIRE (110)
+- [#2614](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2614) [INFRA] Read PR body live in gates, never from the event envelope 📝draft
 - [#2612](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2612) [DRAFT] claim-reconcile gate: the machine that catches the next #2597 📝draft
 - [#2607](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2607) INFRA w183: deletion gate reads merge messages + waiver path; build_me
 - [#2603](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2603) Consensus gate: recognize the three standing lead seats (R6)
 - [#2600](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2600) Add tools/post_checker.py — three-level post protocol gate (DEDUP + CL
-- [#2591](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2591) B-46 unblocker: PV decomposition recipe v0.1 (CANDIDATE, unwired) 📝draft
-- …and 104 more
+- …and 105 more
 
-### TEAM (11)
+### TEAM (12)
+- [#2618](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2618) [DRAFT] Advisory post-conformance scan for the Team Feed Standard 📝draft
 - [#2588](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2588) [DRAFT] NayaPOWER Operating Manual V1 — team operating standard 📝draft
 - [#2564](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2564) Team Feed Standard: the ultimate posting template (Shawn's audit)
 - [#2547](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2547) [Naya 5] Ultimate execution report 2026-10-13: 14 answers, 9x10 assess
 - [#2397](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2397) feat(dashboard): live Team Naya activity dashboard — markdown + machin
-- [#2246](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2246) [DRAFT] The Naya Code — canonical identity in human, AI, and machine f 📝draft
-- …and 6 more
+- …and 7 more
 
 ### INFRA (36)
 - [#2593](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2593) CANDIDATE: veracity demote for FALSIFIED lessons at retrieve (t0762 l…
