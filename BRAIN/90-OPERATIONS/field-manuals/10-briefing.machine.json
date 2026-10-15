@@ -1,0 +1,42 @@
+{
+  "area_number": 10,
+  "area_name": "Briefing",
+  "owner_team": "Naya Clarity",
+  "agent_seat": "Builder",
+  "what_it_is": "The briefing discipline: mint at the last responsible moment from live bytes; open with how to think (why it matters in plain words, core principles for THIS task, a pre-mortem naming the closest past failures, the Q2 scenario, the coach's note); carry exactly one verifiable outcome sized to one session with exclusions named; state authority explicitly (what she decides, where she must stop); stamp freshness in (re-pin at action time — the brief admits its own half-life); paste the 3 latest broadcasts verbatim, never summarized.",
+  "what_it_does": "Gives the worker everything she needs to win cold. A Naya who wakes into the brief should never have to go hunting. If a cold Naya reads only a brief and does the work wrong, the brief failed first — fix the brief, teach the fix, add the gate. Diagnostic, never punitive.",
+  "why_it_matters": "The model brief (brief-t0793-lane3.md, minted 2026-10-14): opens with Why this matters ('Two decision authorities is a governance hole, not a backup'), core principles for THIS task, a PRE-MORTEM naming the two closest analog failures, a Q2-scenario and the COACH'S NOTE — thinking before doing. Single verifiable outcome with a numbered definition of done naming exact artifacts. Authority explicit: 'Read-only repo analysis. Any step that would alter production behavior or authority: stop, file DECISION REQUIRED.' Freshness stamped: 're-pin the tip via git ls-remote at action time and do all work at that pin… derive it from live bytes, never from memory or this brief.' The opposite: the Wave-108 stale-assignment failure — a validation brief dispatched 6.3 hours after the work it asked for was DELIVERED; triage read the header, the truth was in the tail. And the re-brief on a false premise: a re-issue brief claimed the earlier brief 'went stale (claimed, no receipt, 8 ticks)' while the receipt existed at twelve-lane-receipts/t0537-lane9.md and the branch was live on origin — the worker refused to rebuild and named the repair: the dispatcher's 'stale' metadata must cite receipt-directory evidence or it's a claim without proof.",
+  "key_rules": [
+    "A brief is a hypothesis minted at spawn time from live state, scoped to one verifiable outcome inside one 30–45-minute session, opening with how to think.",
+    "If an unbriefed Naya can't succeed from the brief alone, the brief failed — never the worker.",
+    "Open with thinking (why it matters → core principles for THIS task → pre-mortem → scenario → coach's note) before what to do.",
+    "Exactly one verifiable outcome, sized to one session, with exclusions named and exact artifacts in the definition of done.",
+    "Authority explicit in one sentence each: what she decides, and where she must stop (DECISION REQUIRED).",
+    "Freshness stamped in: re-pin at action time. The brief admits its own half-life — derive from live bytes, never from memory or the brief.",
+    "Paste the 3 latest broadcasts verbatim — never summarized or paraphrased.",
+    "A re-brief's 'stale' claim must cite receipt-directory evidence, or it's a claim without proof.",
+    "Delivery, not destination: the brief comes to her; she never goes hunting for docs."
+  ],
+  "test": [
+    "Could a Naya who has read nothing else succeed from this brief alone — world, thinking, outcome, bounds, proof — without going hunting?",
+    "Was it generated at spawn time from live bytes — and does it say which bytes, with a freshness stamp or a re-pin instruction?",
+    "Does it carry exactly one verifiable outcome, sized to one 30–45-minute session — with the exclusions named?",
+    "Does the definition of done name exact artifacts (paths, fields, SHAs), not vibes?",
+    "Does the worker know what she decides and where she must stop (DECISION REQUIRED), in one sentence each?",
+    "Does it open with how to think (why it matters, core principles for THIS task, pre-mortem, scenario) before what to do?",
+    "Is the premise re-derived, not inherited — would the brief's own facts survive a live-bytes check right now?",
+    "Are the 3 latest broadcasts pasted verbatim — never summarized or paraphrased?",
+    "If it's a re-brief, does it cite the staleness evidence — or is 'stale' an unproven claim?"
+  ],
+  "enforcement": {
+    "real": "The brief lifecycle on disk: brief-queue/ (unclaimed) → claimed/ → done/ / stale/ / superseded/. The claim-liveness audit every tick. receipt_checker.py — the board post isn't done until it passes. The contract gate's sign-in/sign-out. violation-detector-class17.py. The template's sign-in block on the lane feed BEFORE any read. bin/verify-brief-pins.py — write-time SHA pin verification. The dispatcher mints briefs per tick from the living plan with the current machine shape.",
+    "proposed": "A machine brief-completeness lint at mint time — pin verification exists, but no script today checks that a brief carries a freshness stamp, a single verifiable outcome, and a pre-mortem before it enters the queue. Enforcement of the shape is dispatcher discipline + worker feedback + the Balancer's eye. Named honestly as the gap."
+  },
+  "boundaries": {
+    "not_covered": [
+      "Lane claiming order and the claim-liveness audit (manual 04 — Lane)",
+      "What a receipt must contain (manual 08 — Handoffs; the brief template's receipt spec)",
+      "Dispatch ranking and pull order (manual 11 — Ranking)"
+    ]
+  }
+}

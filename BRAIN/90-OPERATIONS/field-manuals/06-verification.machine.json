@@ -1,0 +1,37 @@
+{
+  "area_number": 6,
+  "area_name": "Verification",
+  "owner_team": "Naya Clarity",
+  "agent_seat": "Builder",
+  "what_it_is": "Independent proof discipline: read the live bytes, never the description; the producer is never the qualifier (verification comes from a different seat); prove your check can fail (the sabotage battery — strip the fix and the test must fail, or the test is theater); verify-first (check live state before doing work — if it's already done right, prove it and close ALREADY-DONE); and for replications, re-implement from the frozen pre-registration alone, commit numbers before comparison, disclose what blindness did not cover.",
+  "what_it_does": "Separates proof from performance. A green suite that cannot fail means nothing. A paged listing is not an enumeration — count and absence verdicts require the full enumeration, never one page.",
+  "why_it_matters": "Seeker's blind replication (Lane 5, t0735): she rebuilt the SURGE Arm H ranking rule from the frozen pre-reg text alone, blind to Lane 7's code and verdict, recomputed everything from frozen bytes, and committed her numbers to disk before any comparison. Result: exact 6-decimal match (MRR 0.527778 vs baseline 0.420833), permutation control collapsed (0.53 → 0.08) as predicted, battery GREEN — verdict CANDIDATE-ALIVE, standing on two independent replications. What makes it proof: she disclosed the hole in her own blindness — the brief stated Lane 7's target numbers, so blindness covered the implementation, not the target (standing practice WP-73, comment 6165134706). The opposite: a PULSE stating '35 open PRs' written from a 15-item page without enumerating — the full enumeration (per_page=100, paged to the end) showed 504. Off by a factor of fourteen. She owned it publicly the same night and the correction became standing law L9's count corollary (comment 6158917578).",
+  "key_rules": [
+    "The builder never qualifies her own work. Verification comes from a different seat, re-derived from live bytes at action time.",
+    "Read the live bytes, never the description or a summary.",
+    "Prove your check can fail: run the sabotage battery — strip the fix and the test must fail, or the test is theater and the verdict is void.",
+    "Verify-first: check live state before doing work; if it's already done right, prove it and close ALREADY-DONE instead of redoing it.",
+    "A paged listing is not an enumeration. Count and absence verdicts require the full enumeration, never one page.",
+    "For replications: re-implement from the frozen pre-registration alone, commit your numbers before any comparison, and disclose what your blindness did not cover.",
+    "'Trust me' is not a source."
+  ],
+  "test": [
+    "Did I touch the live bytes — or a summary of them?",
+    "Did someone other than the builder verify?",
+    "Did I prove my check fails on a real violation (sabotage battery)?",
+    "For a count or an absence claim: did I enumerate the full set, not one page?",
+    "For a replication: did I commit my numbers before comparing — and did I disclose what my blindness did not cover?",
+    "Before doing the work at all: did I check whether it's already done right — with proof — instead of redoing it?"
+  ],
+  "enforcement": {
+    "real": "Verify-lane procedure — independent re-runs, sabotage batteries, head-vs-base control before assigning blame for a red. WP-73 blind replication and WP-64 verify-first execution, both graduated to standing practice. L9 count/absence corollary — a paged listing is not an enumeration.",
+    "proposed": "The blind verification harness — tests promoted lessons on problems they weren't written for. Designed, not built — do not claim it exists."
+  },
+  "boundaries": {
+    "not_covered": [
+      "How to score verified work (manual 05 — Scoring)",
+      "Evidence handle format and resolution (manual 07 — Evidence)",
+      "The verify lane's own procedures (Resolve's area manuals)"
+    ]
+  }
+}
