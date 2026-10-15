@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
-**Generated:** 2026-10-14  
-**Receipt basis commit:** `92329c5795ef8a50d02adf94ee6c91c313c26daf`  
-**Inventory file count:** 1260  
+**Generated:** 2026-10-15  
+**Receipt basis commit:** `8bd2a9f70bac2847f38dd6d82a9d0e9f8d250d56`  
+**Inventory file count:** 1263  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -10,7 +10,7 @@
 
 | Domain | Files |
 |---|---|
-| 00-SPEC | 16 |
+| 00-SPEC | 19 |
 | 01-GOVERNANCE | 56 |
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
@@ -53,11 +53,14 @@
 - `BRAIN/00-SPEC/0006-NIA-LANGUAGE-INTENT-CONTRACT-V1.md` — `d31a734487be` (5689 bytes)
 - `BRAIN/00-SPEC/0006-OBJECT-TYPES-V1.md` — `d74f53a51605` (2969 bytes)
 - `BRAIN/00-SPEC/0007-RETRIEVAL-AUTHORIZATION-GATE-SPEC-V1.md` — `313ff50e2ee0` (17687 bytes)
+- `BRAIN/00-SPEC/0008-INTELLIGENT-BLOCK-V1.ai.md` — `ceb1f9e8b82e` (6552 bytes)
+- `BRAIN/00-SPEC/0008-INTELLIGENT-BLOCK-V1.human.md` — `fdf1b3a9a1fb` (1870 bytes)
 - `BRAIN/00-SPEC/BRAIN-MACHINE-CONTRACT-V1.schema.json` — `75200ca1f5ce` (7778 bytes)
 - `BRAIN/00-SPEC/NIA-LANGUAGE-INTENT-V1.json` — `a40095e2113f` (2068 bytes)
 - `BRAIN/00-SPEC/README.md` — `bf8da2f302ef` (2845 bytes)
 - `BRAIN/00-SPEC/SCHEMA/AUTHORITY-TUPLE-SCHEMA.json` — `2bda55ecd64b` (1882 bytes)
 - `BRAIN/00-SPEC/SCHEMA/GRAPH-QUERY-SCHEMA.json` — `0d91c07f97fb` (2746 bytes)
+- `BRAIN/00-SPEC/SCHEMA/INTELLIGENT-BLOCK-SCHEMA.json` — `22368be27181` (4892 bytes)
 - `BRAIN/00-SPEC/SCHEMA/LEARNING-RECORD-SCHEMA.json` — `667c9f4a8345` (2470 bytes)
 - `BRAIN/00-SPEC/SCHEMA/PROOF-RECORD-SCHEMA.json` — `7d574a4a4833` (2566 bytes)
 - `BRAIN/00-SPEC/SCHEMA/SUCCESSOR-PACKAGE-SCHEMA.json` — `bab1255dcaf2` (3904 bytes)
