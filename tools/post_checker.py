@@ -15,6 +15,18 @@ post-hoc. The claim-check gate below would have rejected the post before it
 went out: a quantitative claim without a cited live read is rejected. Fix it
 first, never post-anyway.
 
+W181 SURGICAL MERGE (Naya Gamma): reconciled the tools/post_checker.py
+add/add conflict (true merge-base c13f260f; tip blob 4e5fdff0 vs head blob
+99a891ac) per builder-packet-2600-conflict-w180.md. The head's three-level
+protocol is canonical; the tip's unique mechanisms were ported in:
+_unquoted() (quoted/fenced lines never bind — w157/w164 hole class),
+the ROSTER names folded into the identity regex (Naya 1-5, Narzan leads),
+the contextual ANCHORED_SHA_RE (7-40 hex with sha/commit/tree/tip/head/ref
+context words) OR'd with the bare 40-hex check, and score-meaning rigor on
+RECEIPT. The tip's older comm-standard vocabulary (WHO/MISSION/STATUS/...
+fields) was superseded — its failure-mode COVERAGE was translated to the
+current schema in tests/test_post_checker.py, not its verbatim strings.
+
 Usage (workers run this BEFORE posting; never post a FLAGged post):
     python3 tools/post_checker.py --level PULSE   post.txt
     python3 tools/post_checker.py --level RECEIPT  post.txt
@@ -42,6 +54,55 @@ RECEIPT_MAX_CHARS = 1500
 OATH_RITUAL_MAX_LINES = 2
 DEDUP_WINDOW_HOURS = 6
 DEDUP_SIMILARITY = 0.85
+
+# --------------------------------------------------------------------------
+# _unquoted (ported from the tip, w181) — quoted/fenced lines never bind
+# --------------------------------------------------------------------------
+_FENCE_OPEN_RE = re.compile(r"^(```+|~~~+)")
+_FENCE_CLOSE_RE = re.compile(r"^(```+|~~~+)\s*$")
+
+
+def _unquoted(body):
+    """The author's own lines only: drop Markdown blockquote lines and
+    fenced-code-block lines.
+
+    A line whose first non-whitespace character is `>` is someone else's
+    quoted words. A fenced block — opened by a line whose first
+    non-whitespace characters are ``` or ~~~ (with an optional info
+    string, e.g. ```markdown), closed by a matching fence line (same
+    character, at least as long, fence characters + whitespace only) —
+    is pasted content, not the author's own words. Quoted and fenced
+    lines must never bind as identity, verdict, evidence, or score —
+    a post that only *quotes* or *fences* a good post is not a good
+    post. Every check runs on the unquoted body. An UNCLOSED fence
+    drops everything after it (fail-closed): content past the fence
+    cannot be proven to be the author's. Lazy-continuation lines
+    (quote continuation without a leading `>`) are NOT stripped: they
+    are indistinguishable from the author's own wrapped prose, so the
+    mechanical rule is line-leading `>` only. Inline code spans
+    (single-backtick `spans` inside a line) are NOT stripped — only
+    fence LINES delimit blocks."""
+    kept = []
+    fence_char = None
+    fence_len = 0
+    for line in body.splitlines():
+        stripped = line.lstrip()
+        if fence_char is not None:
+            m = _FENCE_CLOSE_RE.match(stripped)
+            if (m and m.group(1)[0] == fence_char
+                    and len(m.group(1)) >= fence_len):
+                fence_char = None
+            continue
+        m = _FENCE_OPEN_RE.match(stripped)
+        if m:
+            fence_char = m.group(1)[0]
+            fence_len = len(m.group(1))
+            continue
+        if stripped.startswith(">"):
+            continue
+        kept.append(line)
+    return "\n".join(kept)
+
 
 # --------------------------------------------------------------------------
 # PULSE — state-change only, never a heartbeat
@@ -102,11 +163,15 @@ def check_pulse(text):
 
 
 # --------------------------------------------------------------------------
-# RECEIPT — identity per the naming law, verdict, trimmed ritual
+# RECEIPT — identity per the naming law, verdict, trimmed ritual,
+#           score with meaning (no bare numbers, ever)
 # --------------------------------------------------------------------------
+# ROSTER folded into the identity regex (ported from the tip, w181):
+# the twelve Greek-lead seats, the numbered seats Naya 1-5, and the
+# three leads with the Narzan family name.
 SEAT_RE = re.compile(
-    r"\bNaya\s+(?:Clarity|Verity|Resolve|Alpha|Beta|Gamma|Delta|Epsilon|Zeta|"
-    r"Eta|Theta|Iota|Kappa|Lambda|Mu)\b"
+    r"\bNaya\s+(?:[1-5]|Clarity|Verity|Resolve|Alpha|Beta|Gamma|Delta|"
+    r"Epsilon|Zeta|Eta|Theta|Iota|Kappa|Lambda|Mu)(?:\s+Narzan)?\b"
 )
 BARE_NAYA_RE = re.compile(r"\bNaya\b")
 SIGNING_BARE_RE = re.compile(r"signing\s+bare", re.IGNORECASE)
@@ -115,10 +180,20 @@ VERDICT_RE = re.compile(
     re.IGNORECASE,
 )
 OATH_LINE_RE = re.compile(r"\boath\b", re.IGNORECASE)
+# Score-meaning rigor (ported from the tip, w181): a score with meaning,
+# not a bare number. Meaning words match on word boundaries only:
+# "relationships" must not count as "ships", "meaningless" must not
+# count as "meaning".
+SCORE_RE = re.compile(r"(\d+(?:\.\d+)?)\s*/\s*10")
+MEANING_RE = re.compile(
+    r"\b(why not 10|why it is not|meaning|ships|one more pass|rework|"
+    r"backwards|held|blocked|verified)\b",
+    re.IGNORECASE)
 
 
 def check_receipt(text):
-    """RECEIPT: named seat, verdict line, <=1500 chars, no ritual."""
+    """RECEIPT: named seat, verdict line, score with meaning, <=1500
+    chars, no ritual."""
     flags = []
     if not text.strip():
         return ["empty post — a RECEIPT must carry a verdict"]
@@ -132,13 +207,24 @@ def check_receipt(text):
     ):
         flags.append(
             "naming-law violation — sign as a named seat "
-            "(Naya Clarity/Verity/Resolve Narzan, or Naya [Greek lead]); "
-            'never bare "Naya"'
+            "(Naya Clarity/Verity/Resolve Narzan, Naya 1-5, or Naya "
+            "[Greek lead]); never bare 'Naya'"
         )
     if not VERDICT_RE.search(text):
         flags.append(
             "no verdict line (DONE/HELD/BLOCKED/FAIL + what) — a receipt "
             "without a verdict is a diary entry"
+        )
+    m = SCORE_RE.search(text)
+    if not m:
+        flags.append(
+            "no X/10 score with meaning — a RECEIPT requires "
+            "score: n/10 — what it means (no bare numbers, ever)"
+        )
+    elif not MEANING_RE.search(text):
+        flags.append(
+            f"score {m.group(0).strip()} present but meaning unstated — "
+            "say what the score means (why not 10, what changed)"
         )
     oath_lines = sum(1 for line in text.splitlines() if OATH_LINE_RE.search(line))
     if oath_lines > OATH_RITUAL_MAX_LINES:
@@ -167,7 +253,26 @@ QUANT_PATTERNS = [
     (re.compile(r"\b\d+\s*%"), "percentage like X%"),
 ]
 SHA_RE = re.compile(r"\b[0-9a-f]{40}\b")
+# Contextual SHA (ported from the tip, w181): a 7-40 hex word counts as
+# evidence only with an anchor — `@ <sha>`, `sha: <sha>`, `commit <sha>`,
+# `tip <sha>`, `head <sha>`, `tree <sha>`, `ref <sha>`. A bare hex word
+# in prose ('deadbeef') is NOT evidence — anchors inside `>` quotes or
+# fenced blocks never count (see _unquoted).
+ANCHORED_SHA_RE = re.compile(
+    r"(?:@\s*|\b(?:sha|commit|tree|tip|head|ref)\s*[:=]?\s*)"
+    r"([0-9a-f]{7,40})\b",
+    re.IGNORECASE)
 RUNID_RE = re.compile(r"\b\d{8,}\b")
+
+
+def _has_evidence(body):
+    """A cited live read: bare 40-hex SHA, anchored 7-40 hex SHA, or a
+    check-run id — observed in THIS mission, never from memory."""
+    return bool(
+        SHA_RE.search(body)
+        or ANCHORED_SHA_RE.search(body)
+        or RUNID_RE.search(body)
+    )
 
 
 def normalize(text):
@@ -236,12 +341,14 @@ def check_event(text, log_path=None):
         m = pat.search(text)
         if m:
             claims.append(f"{label} ({m.group(0)!r})")
-    if claims and not (SHA_RE.search(text) or RUNID_RE.search(text)):
+    if claims and not _has_evidence(text):
         flags.append(
             "claim-check: quantitative claim(s) with no cited live read — "
             + "; ".join(claims)
-            + " — cite the exact head SHA (40 hex) and/or check-run id "
-            "observed in THIS mission. Never from memory of an earlier check"
+            + " — cite the exact head SHA (bare 40-hex, or anchored "
+            "@ / sha: / commit / tip / head / tree / ref <7-40 hex>) "
+            "and/or check-run id observed in THIS mission. "
+            "Never from memory of an earlier check"
         )
 
     # (a) DEDUP — same content inside the 6h window: link, don't repost.
@@ -277,14 +384,17 @@ def check_event(text, log_path=None):
 
 
 def check(level, text, log_path=None):
-    """Dispatch by level. Returns (flags, append_to_log)."""
+    """Dispatch by level. Every check runs on the author's own lines —
+    quoted and fenced lines never bind (see _unquoted). Returns
+    (flags, append_to_log)."""
     level = level.upper()
+    body = _unquoted(text)
     if level == "PULSE":
-        return check_pulse(text), False
+        return check_pulse(body), False
     if level == "RECEIPT":
-        return check_receipt(text), False
+        return check_receipt(body), False
     if level == "EVENT":
-        return check_event(text, log_path)
+        return check_event(body, log_path)
     raise ValueError(f"unknown level {level!r} — want PULSE, RECEIPT, or EVENT")
 
 

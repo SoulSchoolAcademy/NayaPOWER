@@ -60,6 +60,7 @@ class ReceiptTests(unittest.TestCase):
         "[Naya Verity Narzan · SIGN-OUT] Lane 1 — #2568 body edit\n"
         "Mission: repair the gate-vocabulary parser. VERDICT: DONE — "
         "parser accepts Clarity/Resolve/Verity seats, 12/12 fixtures green. "
+        "score: 9.5/10 — ships, verified on the merged tree. "
         "Why it worked: the matcher read the live seat list."
     )
 
