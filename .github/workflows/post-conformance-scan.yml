@@ -1,0 +1,53 @@
+# Post-conformance scan — ADVISORY measurement for the Team Feed Standard.
+#
+# Runs tools/post_conformance_scan.py against recent comments on the live
+# team board (#2537) and publishes the conformance summary to the job
+# summary + a JSON artifact. This job NEVER fails, NEVER posts comments,
+# NEVER writes anywhere: it measures. Enforcement ramps are human decisions.
+#
+# Why this exists: tools/post_checker.py was built and tested (31/31) but
+# executed by nothing — implemented != enforced. This schedule moves it one
+# rung: an independent runner executes it on a cadence, producing the first
+# measured board-conformance signal.
+
+name: post-conformance-scan
+
+on:
+  schedule:
+    # Daily at 06:00 UTC — cheap, off the wave cadence.
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  issues: read
+  contents: read
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    # Advisory: a scan problem must never red the repo.
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run conformance scan
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python tools/post_conformance_scan.py \
+            --repo "${{ github.repository }}" \
+            --issue 2537 \
+            --max-comments 100 \
+            --out post-conformance-report.json | tee conformance-summary.md
+      - name: Publish summary
+        if: always()
+        run: cat conformance-summary.md >> "$GITHUB_STEP_SUMMARY"
+      - name: Upload report artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: post-conformance-report
+          path: post-conformance-report.json
+          retention-days: 30
