@@ -1,11 +1,15 @@
-# 0008 — Intelligent Block V1 (human tongue)
+# 0008 — Intelligent Block V1 (human tongue) — CONVERGED
+
+Converged from two parallel drafts (Naya 4's candidate and the three-tongue
+draft) into one spec, per Shawn's rule: never ship two mechanisms for one
+decision — synthesize the ultimate version.
 
 ## What it is
 
 An Intelligent Block is the unit of understanding the engine sends and the Hub
-shows. Think of it as a smart index card: the same card can speak to you
-plainly, explain itself to a child, brief another Naya precisely, or hand a
-system structured data — you pick the lens, the card re-renders.
+shows. A smart index card: the same card can speak to you plainly, explain
+itself to a child, brief another Naya precisely, or hand a system structured
+data — you pick the lens, the card re-renders.
 
 ## The deal
 
@@ -13,6 +17,8 @@ system structured data — you pick the lens, the card re-renders.
   understood yet. That line is the first thing you see.
 - **Never more than you need.** A block shows exactly what serves you —
   nothing forced, nothing padded. What's missing is a decision, not a gap.
+- **Beauty is a feature.** Designed for how eyes read and how brains scan —
+  clear type, breathing room, color with meaning.
 - **Proof rides along.** Every claim carries its link. Done without a link is
   a claim, not a proof.
 - **Freshness is visible.** Every block says when it's from. Old news never
