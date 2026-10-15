@@ -532,6 +532,71 @@ def _canonical_content_hash(lesson: str) -> str:
     return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
 
 
+# --- IB owner schema (w187, Naya Beta) ---
+# Every Intelligent Block names its accountable Naya. `owner` is a named
+# Naya seat (never a human, never blank). `owner_source` records HOW the
+# owner was assigned so every backfilled assignment is auditable.
+# Shawn (2026-10-14): IB owners = NAYA.
+IB_OWNER_SEATS = {
+    "LEARN": "Naya Alpha", "KNOW": "Naya Beta", "ACT": "Naya Gamma",
+    "LAW": "Naya Delta", "VERIFY": "Naya Epsilon",
+    "INTELLIGENT_BLOCKS": "Naya Zeta", "DECISION": "Naya Eta",
+    "RETRIEVAL": "Naya Theta", "SUCCESSOR": "Naya Iota",
+    "TEAM": "Naya Kappa", "INFRA": "Naya Lambda", "HUMAN_VALUE": "Naya Mu",
+    "CLARITY": "Naya Clarity", "VERITY": "Naya Verity", "RESOLVE": "Naya Resolve",
+}
+_OWNER_EXPLICIT_RE = re.compile(r"^Naya [A-Z][A-Za-z]+(?: [A-Z][A-Za-z]+)*$")
+_OWNER_SEAT_RE = re.compile(r"\bNaya ([A-Z][A-Za-z]+(?: [A-Z][A-Za-z]+)*)\b")
+_OWNER_KEYWORDS = [
+    ("LEARN", ("learn", "learning", "lesson", "compounding")),
+    ("RETRIEVAL", ("retriev", "search", "query")),
+    ("VERIFY", ("verif", "proof", "audit", "receipt")),
+    ("LAW", ("law", "contract", "governance", "constitution", "gate", "authority")),
+    ("INTELLIGENT_BLOCKS", ("intelligent block", "smart block", "block schema", "ib-")),
+    ("DECISION", ("decis", "value calculus", "scoring")),
+    ("SUCCESSOR", ("successor", "cold start", "handoff")),
+    ("TEAM", ("team", "rota", "dispatch", "wave", "lane")),
+    ("INFRA", ("infra", "pipeline", "deploy", "tooling", "ci ", "cron")),
+    ("HUMAN_VALUE", ("human value", "interface", "ux", "dashboard", "experience")),
+    ("KNOW", ("brain index", "knowledge", "corpus", "memory", "registry")),
+    ("ACT", ("act", "action", "execution")),
+]
+
+
+def resolve_ib_owner(capture, block=None):
+    """Resolve (owner, owner_source) for an Intelligent Block.
+
+    Chain: explicit capture["owner"] -> "Naya <Seat>" named in
+    source.captured_by -> area-keyword match on category/topic/subtopic/title
+    -> fallback Naya Beta (KNOW owns the projection registry). Every branch
+    names its source: ownership is binary, but provenance is auditable.
+    """
+    capture = capture or {}
+    explicit = str(capture.get("owner") or "").strip()
+    if _OWNER_EXPLICIT_RE.match(explicit):
+        return explicit, "capture:explicit"
+    src = capture.get("source") or {}
+    by = str(src.get("captured_by") or "")
+    m = _OWNER_SEAT_RE.search(by)
+    if m:
+        seat = "Naya " + m.group(1)
+        if seat in set(IB_OWNER_SEATS.values()):
+            return seat, "capture:captured_by"
+    # provenance_note / source_reference sometimes name the originating seat
+    for field in ("provenance_note", "source_reference", "context"):
+        m = _OWNER_SEAT_RE.search(str(src.get(field) or "") + " " + str(capture.get(field) or ""))
+        if m:
+            seat = "Naya " + m.group(1)
+            if seat in set(IB_OWNER_SEATS.values()):
+                return seat, "backfill:provenance:" + field
+    haystack = " ".join(str(capture.get(k) or "") for k in
+                        ("category", "topic", "subtopic", "title")).lower()
+    for area, kws in _OWNER_KEYWORDS:
+        if any(kw in haystack for kw in kws):
+            return IB_OWNER_SEATS[area], "backfill:area-keyword:" + area
+    return IB_OWNER_SEATS["KNOW"], "backfill:fallback-KNOW"
+
+
 def update_registry(capture, verify, projection, sn_id=None):
     # The whole read-allocate-modify-write runs inside one exclusive
     # transaction: concurrent writers serialize, the commit is atomic.
@@ -572,9 +637,14 @@ def _update_registry_locked(capture, verify, projection, registry, sn_id=None):
     # if it is ever retrieval-eligible. Never silently absent.
     proj_file = Path(projection) if projection else None
     page_hash = _page_file_hash(proj_file) if proj_file is not None and proj_file.is_file() else None
+    # IB owner schema (w187, Naya Beta): every entry names its accountable
+    # Naya seat. Owner never gates retrieval — it gates accountability.
+    owner, owner_source = resolve_ib_owner(capture, block)
     entry = {
         "smart_note_id": sn_id,
         "intelligent_block_id": block["intelligent_block_id"],
+        "owner": owner,
+        "owner_source": owner_source,
         "content_hash": _canonical_content_hash(block["content"]["lesson"]),
         "page_hash": page_hash,
         "title": capture["title"],
