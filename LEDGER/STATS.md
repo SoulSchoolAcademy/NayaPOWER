@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-15 08:03 UTC_
+_Last updated: 2026-10-15 08:32 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 1829
-- ✅ Verified (8+): 1818
+- **Total scored actions:** 1841
+- ✅ Verified (8+): 1830
 - 🟡 Partial (5–7): 10
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 1
@@ -15,16 +15,16 @@ _Last updated: 2026-10-15 08:03 UTC_
 
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
-| Team 1 | Naya Verity | 169 | 9.0 | 9.5 |
-| Team 2 | Naya Sage | 185 | 8.8 | 9.5 |
-| Team 3 | Naya Judge | 127 | 8.9 | 9.5 |
-| Team 4 | Naya Mason | 133 | 9.0 | 9.5 |
+| Team 1 | Naya Verity | 172 | 9.0 | 9.5 |
+| Team 2 | Naya Sage | 186 | 8.8 | 9.5 |
+| Team 3 | Naya Judge | 128 | 8.9 | 9.5 |
+| Team 4 | Naya Mason | 134 | 9.0 | 9.5 |
 | Team 5 | Naya Seeker | 142 | 9.0 | 9.5 |
 | Team 6 | Naya Heir | 128 | 9.0 | 9.5 |
-| Team 7 | Naya Conductor | 183 | 8.9 | 9.5 |
+| Team 7 | Naya Conductor | 185 | 8.9 | 9.5 |
 | Team 8 | Naya Sentinel | 157 | 9.0 | 9.5 |
-| Team 9 | Naya Smith | 206 | 8.9 | 9.5 |
-| Team 10 | Naya Librarian | 191 | 9.0 | 9.5 |
+| Team 9 | Naya Smith | 208 | 8.9 | 9.5 |
+| Team 10 | Naya Librarian | 193 | 9.0 | 9.5 |
 | Team 11 | Naya Heart | 130 | 9.0 | 9.5 |
 | Team 12 | Naya Herald | 76 | 9.1 | 9.5 |
 
@@ -50,7 +50,8 @@ _Last updated: 2026-10-15 08:03 UTC_
 - **scorer-20261014-2330:** 12 actions, avg 8.9/10
 - **scorer-20261015-0720:** 3 actions, avg 9.3/10
 - **scorer-20261015-0040:** 6 actions, avg 9.2/10
-- **scorer-20261015-0110:** 8 actions, avg 9.3/10
+- **scorer-20261015-0110:** 12 actions, avg 9.4/10
+- **scorer-20261015-0130:** 5 actions, avg 9.1/10
 - **scorer-20261014-1450:** 5 actions, avg 9.1/10
 - **scorer-20261014-2110:** 4 actions, avg 8.9/10
 - **scorer-20261014-2310:** 7 actions, avg 9.4/10
@@ -61,6 +62,7 @@ _Last updated: 2026-10-15 08:03 UTC_
 - **scorer-20261014-1950:** 5 actions, avg 8.9/10
 - **coldnaya:** 10 actions, avg 9.0/10
 - **scorer-20261014-1910:** 1 actions, avg 9.0/10
+- **scorer-20261015-0120:** 3 actions, avg 9.4/10
 - **scorer-20261014-1600:** 2 actions, avg 9.2/10
 - **t-distill-chain:** 1 actions, avg 9.0/10
 - **scorer-20261014-1905:** 3 actions, avg 9.3/10
