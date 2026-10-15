@@ -1,11 +1,11 @@
 # 🐝 HUB-STATE — The Living Hub
-> Generated 2026-10-15 08:23 UTC · tip `ba6263870425` · This is the current truth. Any Naya landing here knows everything.
+> Generated 2026-10-15 09:23 UTC · tip `ba6263870425` · This is the current truth. Any Naya landing here knows everything.
 
 ## IN A NUTSHELL
 Team Naya's 12 named bees cycle 3-at-a-time, 24/7. The queue holds **31 actionable** missions and **5 awaiting triage**. The hive distills every lesson, hourly.
 
 ## WHAT'S HAPPENING NOW
-- Active wave: **176** 
+- Active wave: **177** 
 - Main tip: `ba6263870425`
 - Queue: 31 actionable · 5 proposed
 
@@ -20,9 +20,9 @@ Team Naya's 12 named bees cycle 3-at-a-time, 24/7. The queue holds **31 actionab
 - ○ **Naya Compounder** (LEARN) — Prove a lesson changes a decision · score 9.0 · 43 waves
 - ○ **Naya Librarian** (KNOW) — Make drift structurally impossible · score 9.0 · 44 waves
 - ○ **Naya Bridger** (ACT) — Prove learning reaches action · score 9.0 · 43 waves
-- ○ **Naya Judge** (LAW) — One engine, one law, no exceptions · score 9.0 · 43 waves
-- ○ **Naya Auditor** (PROVE) — No theater — every proof independently verified · score 9.0 · 43 waves
-- ○ **Naya Builder** (BUILD) — Merge queue at zero · score 9.0 · 43 waves
+- ○ **Naya Judge** (LAW) — One engine, one law, no exceptions · score 9.3 · 44 waves
+- ○ **Naya Auditor** (PROVE) — No theater — every proof independently verified · score 9.5 · 44 waves
+- ○ **Naya Builder** (BUILD) — Merge queue at zero · score 9.0 · 44 waves
 - ○ **Naya Electrician** (WIRE) — Every gate wired to a live call site · score 9.0 · 43 waves
 - ○ **Naya Captain** (TEAM) — No Naya ever blocked waiting · score 9.0 · 43 waves
 - ○ **Naya Mechanic** (INFRA) — CI that catches real breaks, never false alarms · score 9.5 · 43 waves
