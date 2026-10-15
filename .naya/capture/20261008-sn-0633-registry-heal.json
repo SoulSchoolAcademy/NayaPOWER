@@ -1,5 +1,7 @@
 {
- "schema": "naya.smart-note-capture.v2",
+  "owner": "Naya",
+  "owner_basis": "collective",
+ "schema": "naya.smart-note-capture.v3",
  "smart_note_id": "SN-0633",
  "capture_id": "20261008-sn-0633-registry-heal",
  "title": "A Bulk Merge Can Hollow a Protected Document",

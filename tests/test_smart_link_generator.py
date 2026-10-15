@@ -224,3 +224,129 @@ def test_backfill_dry_run_does_not_mutate():
     before = idx["entries"][0].get("smart_link_verified_rev")
     sl.backfill(idx, sl.FakeVerifier({GOOD_PATH}), rev="rev1", dry_run=True)
     assert idx["entries"][0].get("smart_link_verified_rev") == before
+
+
+# --- owner emission (§5 of OWNER-FIELD-SPEC-V1) --------------------------------
+# Pinning: generate() must emit the same owner/owner_basis that
+# owner_backfill.derive_real_tree() derives for the same path. The test pins
+# the WIRING (emission agrees with the shared derivation), not the mapping
+# values — DOMAIN_OWNER v1 is PROPOSED and may change on lead confirmation;
+# when it does, both sides move together through the shared function.
+
+def _derive(path, provenance=None, backfill=None):
+    from owner_backfill import derive_index_entry
+    return derive_index_entry({
+        "provenance": provenance or {},
+        "backfill": backfill or {},
+        "projection_path": path,
+        "canonical_brain_path": path,
+    })
+
+
+OTHER_PATH = ("BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/TEST/SN-1000/"
+              "IB-SMART-NOTE-20261005-sn1000-test.md")
+
+
+def test_generate_emits_owner_agreeing_with_backfill():
+    for path, verified in [(GOOD_PATH, True), (OTHER_PATH, False)]:
+        verifier = sl.FakeVerifier({path}) if verified else None
+        frag = sl.generate(path, make_index([]), verifier=verifier, rev="r1")
+        owner, basis = _derive(path)
+        assert frag["owner"] == owner, f"owner drift on {path}"
+        assert frag["owner_basis"] == basis, f"owner_basis drift on {path}"
+
+
+def test_generate_owner_present_and_nonempty_unverified():
+    # owner emission must not depend on verification state: a PENDING
+    # fragment carries its owner too — never silently ownerless.
+    frag = sl.generate(OTHER_PATH, make_index([]))
+    assert frag["smart_link_status"] == "PENDING"
+    assert frag["owner"] and isinstance(frag["owner"], str)
+    assert frag["owner_basis"] and isinstance(frag["owner_basis"], str)
+    assert frag["owner_basis"].startswith("area_lead:"), (
+        "basis must record which derivation fired (P-003: no decorative fields)")
+
+
+def test_generate_owner_refuses_when_derivation_unavailable():
+    # fail closed: an unimportable derivation raises instead of emitting
+    # an ownerless fragment.
+    real = sl.derive_index_entry
+    sl.derive_index_entry = None
+    try:
+        with pytest.raises(RuntimeError, match="ownerless"):
+            sl.generate(GOOD_PATH, make_index([]))
+    finally:
+        sl.derive_index_entry = real
+
+
+def test_generate_fires_rule1_on_existing_entry_provenance():
+    # OWNER-FIELD-SPEC-V1 §5 tripwire (w202 regression: entry
+    # IB-SMART-NOTE-20261014-sn0797 stored owner "Naya Mu"/provenance while
+    # the path-only emission gave area_lead/Naya Beta). Re-generating a path
+    # whose stored entry carries seat-naming provenance bytes must emit that
+    # seat — the same answer a backfill re-apply computes — not the path owner.
+    prov_path = ("BRAIN/05-MEMORY/SMART-NOTES/2026/10/14/SYSTEM-INTELLIGENCE/"
+                 "SN-4242/IB-SMART-NOTE-20261014-sn4242-test.md")
+    stored = entry(sid="SN-4242", path=prov_path,
+                   url="https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/" + prov_path)
+    stored["provenance"] = {"note": "graduated 2026-10-14 by Naya Zeta (wave 142)"}
+    stored["owner"] = "Naya Zeta"
+    stored["owner_basis"] = "provenance"
+    frag = sl.generate(prov_path, make_index([stored]), verifier=None)
+    assert frag["owner"] == "Naya Zeta", f"rule 1 did not fire: {frag['owner']}"
+    assert frag["owner_basis"] == "provenance"
+
+
+def test_generate_new_path_stays_path_only():
+    # A brand-new path has no stored provenance bytes: rule 1 cannot fire,
+    # and the emission must NOT invent it — area_lead is the honest answer.
+    frag = sl.generate(OTHER_PATH, make_index([]))
+    owner, basis = _derive(OTHER_PATH)
+    assert frag["owner"] == owner
+    assert frag["owner_basis"] == basis
+    assert frag["owner_basis"].startswith("area_lead:")
+
+
+def test_backfill_apply_restamps_manifest(tmp_path):
+    """Pin the w211 14-red root cause: owner_backfill's textual index patch
+    mutates entries, so it must re-anchor corpus_manifest_hash over the
+    entries as committed — otherwise the fail-closed reader dies
+    MANIFEST_STALE on the next read."""
+    import json
+
+    import owner_backfill as ob
+    import smart_note_v2 as snv2
+
+    brain = tmp_path / "BRAIN" / "05-MEMORY" / "SMART-NOTES"
+    brain.mkdir(parents=True)
+    entries = []
+    for i in range(2):
+        page = brain / f"IB-TEST-{i}.md"
+        page.write_text(f"# IB-TEST-{i}\n", encoding="utf-8")
+        entries.append({
+            "smart_note_id": f"SN-90{i}",
+            "intelligent_block_id": f"IB-TEST-{i}",
+            "projection_path": f"BRAIN/05-MEMORY/SMART-NOTES/IB-TEST-{i}.md",
+            "projection_status": "GITHUB_BRAIN_PUBLISHED",
+            "page_hash": snv2._page_file_hash(page),
+            "lifecycle_state": "ACTIVE",
+        })
+    idx = {
+        "schema": "naya.smart-note-projection-index.v1",
+        "version": "1.0",
+        "source_of_truth": "runtime_intelligent_block",
+        "entries": entries,
+        "corpus_manifest_hash": snv2._corpus_manifest_hash(entries),
+    }
+    idx_dir = tmp_path / ".naya" / "memory" / "smart-notes"
+    idx_dir.mkdir(parents=True)
+    (idx_dir / "index.json").write_text(json.dumps(idx, indent=2), encoding="utf-8")
+
+    stats = ob.process(tmp_path, apply=True, corpora={"b"})
+    assert stats["b_diffs"] == 2
+
+    out = json.loads((idx_dir / "index.json").read_text(encoding="utf-8"))
+    assert out["schema"] == "naya.smart-note-projection-index.v2"
+    assert out["corpus_manifest_hash"] == snv2._corpus_manifest_hash(out["entries"])
+    # The backfill's output must satisfy the fail-closed reader end to end.
+    snv2._validate_index_against_corpus(out, root=tmp_path)

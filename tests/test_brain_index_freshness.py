@@ -166,6 +166,43 @@ def test_cli_fails_on_drift_exit_code(tmp_path):
     assert "FAIL" in proc.stdout
 
 
+# ---- freshness covers the index layer, not its payload schemas ----
+
+# OWNER-FIELD-SPEC-V1 §5: the regen tool is the canonical emitter of
+# owner/owner_basis on REAL-TREE entries (schema naya.brain.real_tree.v2).
+# This test pins the emission on the working file: a regen that drops owner
+# must fail loudly here even before --check drift is consulted.
+
+def test_real_tree_entries_carry_owner_v2():
+    """Every REAL-TREE entry carries owner + owner_basis; the corpus schema
+    is v2. 1261 entries were 100% ownerless at w186 — this test is the
+    regression tripwire."""
+    rt = json.loads((ROOT / "BRAIN" / "REAL-TREE.json").read_text())
+    assert rt["schema"] == "naya.brain.real_tree.v2", (
+        f"expected v2 schema, got {rt.get('schema')}"
+    )
+    missing = [e["path"] for e in rt["files"]
+               if not e.get("owner") or not e.get("owner_basis")]
+    assert missing == [], f"{len(missing)} entries without owner: {missing[:10]}"
+
+
+def test_real_tree_owner_derivation_matches_backfill():
+    """The regen's owner emission must agree byte-for-byte with what
+    tools/owner_backfill.py --corpus c expects: one shared derivation rule,
+    never two. A disagreement here means the two rules drifted apart and
+    the backfill would flag the regen output as drift."""
+    from owner_backfill import derive_real_tree  # noqa: E402
+    rt = json.loads((ROOT / "BRAIN" / "REAL-TREE.json").read_text())
+    mismatches = []
+    for e in rt["files"]:
+        want_owner, want_basis = derive_real_tree(e)
+        if e.get("owner") != want_owner or e.get("owner_basis") != want_basis:
+            mismatches.append(e["path"])
+        if len(mismatches) >= 10:
+            break
+    assert mismatches == [], f"regen/backfill owner disagreement: {mismatches}"
+
+
 # ---- the law is registered in the manifest ----
 
 def test_manifest_registers_the_law():

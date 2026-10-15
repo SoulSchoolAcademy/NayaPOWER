@@ -1,4 +1,6 @@
 {
+  "owner": "Naya",
+  "owner_basis": "collective",
  "smart_note_id": "SN-0120",
  "intelligence": {
   "title": "SMART NOTE — Score Where the Builder Is Blind: Split-Axis Peer Review",
@@ -14,5 +16,5 @@
   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATING-MODE/DIRECT-LANE-COLLABORATION/SN-0120/IB-SMART-NOTE-20260930-sn0120-blind-axis-peer-review.md",
   "provenance_note": "reconstructed from published projection; no runtime provenance invented"
  },
- "schema": "naya.smart-note-capture.v2"
+ "schema": "naya.smart-note-capture.v3"
 }

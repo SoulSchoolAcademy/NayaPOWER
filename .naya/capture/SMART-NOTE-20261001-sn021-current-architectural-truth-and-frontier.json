@@ -1,5 +1,7 @@
 {
-  "schema": "naya.smart-note-capture.v2",
+  "owner": "Naya",
+  "owner_basis": "collective",
+  "schema": "naya.smart-note-capture.v3",
   "smart_note_id": "SN-021",
   "capture_id": "20261001-sn021-current-architectural-truth-and-frontier",
   "title": "NayaPOWER Current Architectural Truth — One Organism, One Brain, Many Doors",

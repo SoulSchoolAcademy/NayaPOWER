@@ -1,4 +1,6 @@
 {
+  "owner": "Naya",
+  "owner_basis": "collective",
  "smart_note_id": "SN-0557",
  "intelligence": {
   "title": "Projector Commits Are a Third Brain-Index Drift Class — CI-Masked Until the Next Push",
@@ -14,5 +16,5 @@
   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/RED-CLASSIFICATION/SN-0557/IB-SMART-NOTE-20260930-sn0557-projector-commit-drift-third-class.md",
   "provenance_note": "reconstructed from published projection; no runtime provenance invented"
  },
- "schema": "naya.smart-note-capture.v2"
+ "schema": "naya.smart-note-capture.v3"
 }

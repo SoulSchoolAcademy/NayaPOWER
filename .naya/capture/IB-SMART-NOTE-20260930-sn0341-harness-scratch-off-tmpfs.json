@@ -1,4 +1,6 @@
 {
+  "owner": "Naya",
+  "owner_basis": "collective",
  "smart_note_id": "SN-0341",
  "intelligence": {
   "title": "The Instrument Lies — Adversarial Harness Scratch Must Live Off the 512M /tmp tmpfs, and Clone Errors Must Never Be Silenced",
@@ -14,5 +16,5 @@
   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/FAILURE-ATTRIBUTION/SN-0341/IB-SMART-NOTE-20260930-sn0341-harness-scratch-off-tmpfs.md",
   "provenance_note": "reconstructed from published projection; no runtime provenance invented"
  },
- "schema": "naya.smart-note-capture.v2"
+ "schema": "naya.smart-note-capture.v3"
 }

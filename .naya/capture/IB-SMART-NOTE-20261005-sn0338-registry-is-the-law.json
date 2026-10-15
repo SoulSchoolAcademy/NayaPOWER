@@ -1,4 +1,6 @@
 {
+  "owner": "Naya",
+  "owner_basis": "collective",
  "smart_note_id": "SN-0338",
  "intelligence": {
   "title": "The Registry Is the Law — Capture Must Pass the Governed Path, or the Merge Ratchet Will Collect",
@@ -14,5 +16,5 @@
   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SMART-NOTE-REFINEMENT/PIPELINE-INTEGRITY/SN-0338/IB-SMART-NOTE-20261005-sn0338-registry-is-the-law.md",
   "provenance_note": "reconstructed from published projection; no runtime provenance invented"
  },
- "schema": "naya.smart-note-capture.v2"
+ "schema": "naya.smart-note-capture.v3"
 }

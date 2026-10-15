@@ -1,5 +1,7 @@
 {
- "schema": "naya.smart-note-capture.v2",
+  "owner": "Naya",
+  "owner_basis": "collective",
+ "schema": "naya.smart-note-capture.v3",
  "smart_note_id": "SN-0743",
  "capture_id": "20261009-sn-0743-registry-heal",
  "title": "The Magic Feeling — Intelligence They Feel, Never Grasp",

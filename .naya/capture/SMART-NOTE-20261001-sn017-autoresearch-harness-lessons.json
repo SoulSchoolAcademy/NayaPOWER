@@ -1,5 +1,7 @@
 {
- "schema": "naya.smart-note-capture.v2",
+  "owner": "Naya",
+  "owner_basis": "collective",
+ "schema": "naya.smart-note-capture.v3",
  "smart_note_id": "SN-017",
  "capture_id": "20261001-sn017-autoresearch-harness-lessons",
  "title": "AutoResearch Harness Lesson — Make the Experiment Tiny, Frozen, Measurable, and Reversible",

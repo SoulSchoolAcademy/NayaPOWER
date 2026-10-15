@@ -1,4 +1,6 @@
 {
+  "owner": "Naya",
+  "owner_basis": "collective",
  "smart_note_id": "SN-561",
  "intelligence": {
   "title": "Read the Input Bytes Before Debugging the Gate — Fail-Closed Is Evidence the Validator Works",
@@ -14,5 +16,5 @@
   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/EARNED-INTELLIGENCE/VERIFIED-EXPERIENCE/SN-561/IB-SMART-NOTE-20260930-sn561-read-input-bytes-before-debugging-the-gate.md",
   "provenance_note": "reconstructed from published projection; no runtime provenance invented"
  },
- "schema": "naya.smart-note-capture.v2"
+ "schema": "naya.smart-note-capture.v3"
 }

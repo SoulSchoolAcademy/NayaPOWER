@@ -1,4 +1,6 @@
 {
+  "owner": "Naya",
+  "owner_basis": "collective",
  "smart_note_id": "SN-0213",
  "intelligence": {
   "title": "The Index-Regen Rule Lives in the Producer's Landing Step, Not Just the Merge Checklist",
@@ -14,5 +16,5 @@
   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/COUNT-LEDGER-STALENESS/SN-0213/IB-SMART-NOTE-20260930-sn0213-index-regen-landing-step.md",
   "provenance_note": "reconstructed from published projection; no runtime provenance invented"
  },
- "schema": "naya.smart-note-capture.v2"
+ "schema": "naya.smart-note-capture.v3"
 }

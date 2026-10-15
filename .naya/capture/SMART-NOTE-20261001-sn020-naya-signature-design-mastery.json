@@ -1,5 +1,7 @@
 {
-  "schema": "naya.smart-note-capture.v2",
+  "owner": "Naya",
+  "owner_basis": "collective",
+  "schema": "naya.smart-note-capture.v3",
   "smart_note_id": "SN-020",
   "capture_id": "20261001-sn020-naya-signature-design-mastery",
   "title": "Naya Signature Design Mastery — Autonomous Extraordinary Interface Doctrine",

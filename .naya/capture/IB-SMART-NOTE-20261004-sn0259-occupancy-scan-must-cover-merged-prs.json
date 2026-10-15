@@ -1,4 +1,6 @@
 {
+  "owner": "Naya",
+  "owner_basis": "collective",
  "smart_note_id": "SN-0259",
  "intelligence": {
   "title": "Occupancy Scans Must Cover Merged PRs — Regexes Don't Claim Numbers",
@@ -14,5 +16,5 @@
   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/GOVERNANCE/COLLISION-REGISTRY/SN-0259/IB-SMART-NOTE-20261004-sn0259-occupancy-scan-must-cover-merged-prs.md",
   "provenance_note": "reconstructed from published projection; no runtime provenance invented"
  },
- "schema": "naya.smart-note-capture.v2"
+ "schema": "naya.smart-note-capture.v3"
 }

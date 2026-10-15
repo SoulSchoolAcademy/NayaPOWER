@@ -1,5 +1,7 @@
 {
-  "schema": "naya.smart-note-capture.v2",
+  "owner": "Naya",
+  "owner_basis": "collective",
+  "schema": "naya.smart-note-capture.v3",
   "smart_note_id": "SN-0362",
   "capture_id": "20261006-sn0362-cold14-intelligence-interface",
   "title": "Cold-14 — The Minimum Viable Intelligence Interface for NayaNET",

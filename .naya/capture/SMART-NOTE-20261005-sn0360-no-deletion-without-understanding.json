@@ -1,5 +1,7 @@
 {
-  "schema": "naya.smart-note-capture.v2",
+  "owner": "Naya",
+  "owner_basis": "collective",
+  "schema": "naya.smart-note-capture.v3",
   "smart_note_id": "SN-0360",
   "capture_id": "SMART-NOTE-20261005-sn0360-no-deletion-without-understanding",
   "title": "No Deletion Without Understanding — The Preservation Law",
@@ -38,7 +40,7 @@
     "conformance_migration": {
       "reason": "The v1 capture failed tests/test_sn002_conformance.py::test_baseline_never_grows and test_smart_note_registry_drift.py::test_live_repository_drift_never_grows_per_class (captures_missing_intelligence 0 -> 1), turning canonical main RED. Same defect class as a2f103f4f. Migrated so the gate can pass and the law can actually be canonical.",
       "schema_from": "naya.smart-note-capture.v1",
-      "schema_to": "naya.smart-note-capture.v2",
+      "schema_to": "naya.smart-note-capture.v3",
       "authored_by": "repaired by a different seat than the author; structural migration only",
       "content_preserved": "100% of the original human narrative, machine view, deletion protocol, invalid justifications, violation response, learning lesson, falsifier and applicability are retained under their v2 homes. No intelligence was added, removed or reworded.",
       "corrected": [

@@ -1,4 +1,6 @@
 {
+  "owner": "Naya",
+  "owner_basis": "collective",
  "smart_note_id": "SN-0410",
  "intelligence": {
   "title": "SN-0410 — A Law Nobody Can Fail At Is Not a Law: Encode Ordering Guarantees as Mandatory Steps in the Boot Path",
@@ -14,5 +16,5 @@
   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-0410/IB-SMART-NOTE-20260930-sn0410-ordering-guarantee-not-prose.md",
   "provenance_note": "reconstructed from published projection; no runtime provenance invented"
  },
- "schema": "naya.smart-note-capture.v2"
+ "schema": "naya.smart-note-capture.v3"
 }

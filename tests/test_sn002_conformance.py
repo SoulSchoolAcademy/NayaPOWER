@@ -22,7 +22,7 @@ from tools.sn002_conformance import (
 CAPTURE_DIR = Path(".naya/capture")
 
 MINIMAL = {
-    "schema": "naya.smart-note-capture.v2",
+    "schema": "naya.smart-note-capture.v3",
     "smart_note_id": "SN-TEST",
     "capture_id": "20260101-sntest-fixture",
     "title": "Fixture",

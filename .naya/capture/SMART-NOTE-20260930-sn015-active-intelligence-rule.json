@@ -1,5 +1,7 @@
 {
-  "schema": "naya.smart-note-capture.v2",
+  "owner": "Naya",
+  "owner_basis": "collective",
+  "schema": "naya.smart-note-capture.v3",
   "smart_note_id": "SN-015",
   "capture_id": "20260930-sn015-active-intelligence-rule",
   "title": "Active Intelligence Rule — Stored Knowledge Must Become Connected, Retrievable, Usable Intelligence",

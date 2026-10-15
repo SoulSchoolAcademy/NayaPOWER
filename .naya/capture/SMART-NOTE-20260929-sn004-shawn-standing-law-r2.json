@@ -1,4 +1,6 @@
 {
+  "owner": "Naya",
+  "owner_basis": "collective",
  "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
  "capture_id": "20260929-sn004-shawn-standing-law-r2",
  "category": "SYSTEM_INTELLIGENCE",
@@ -99,7 +101,7 @@
   "subtopic_slug": "ACT-FIRST-AUTONOMY",
   "topic_slug": "NAYA-STANDING-LAW"
  },
- "schema": "naya.smart-note-capture.v2",
+ "schema": "naya.smart-note-capture.v3",
  "source": {
   "captured_at": "2026-09-29",
   "captured_at_utc": "2026-09-30T01:05:00Z",

@@ -1,5 +1,7 @@
 {
-  "schema": "naya.smart-note-capture.v2",
+  "owner": "Naya Mu",
+  "owner_basis": "provenance",
+  "schema": "naya.smart-note-capture.v3",
   "capture_id": "20261014-sn0797-patch-response-is-the-verify",
   "smart_note_id": "SN-0797",
   "title": "PATCH response is the verify",

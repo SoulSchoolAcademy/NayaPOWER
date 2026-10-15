@@ -1,4 +1,6 @@
 {
+  "owner": "Naya",
+  "owner_basis": "collective",
  "smart_note_id": "SN-074",
  "intelligence": {
   "title": "\"API Pushes Never Trigger Actions\" Was an Event-Scoping Overgeneralization — Scope CI-Trigger Claims by Workflow Event (SN-048 Correction)",
@@ -14,5 +16,5 @@
   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/CI-TRIGGER-SILENCE/SN-074/IB-SMART-NOTE-20260930-sn074-api-push-trigger-event-scoping.md",
   "provenance_note": "reconstructed from published projection; no runtime provenance invented"
  },
- "schema": "naya.smart-note-capture.v2"
+ "schema": "naya.smart-note-capture.v3"
 }

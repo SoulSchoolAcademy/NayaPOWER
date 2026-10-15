@@ -1,5 +1,7 @@
 {
-  "schema": "naya.smart-note-capture.v2",
+  "owner": "Naya",
+  "owner_basis": "collective",
+  "schema": "naya.smart-note-capture.v3",
   "smart_note_id": "SN-014",
   "capture_id": "20260930-sn014-compounding-imperative",
   "title": "The Compounding Imperative — Everything Teaches; Only the Captured Compounds",

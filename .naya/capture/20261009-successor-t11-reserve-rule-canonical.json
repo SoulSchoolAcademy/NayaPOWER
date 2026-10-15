@@ -1,5 +1,7 @@
 {
-  "schema": "naya.smart-note-capture.v2",
+  "owner": "Naya",
+  "owner_basis": "collective",
+  "schema": "naya.smart-note-capture.v3",
   "capture_id": "20261009-successor-t11-reserve-rule-canonical",
   "title": "T11 — Reserve Rule for scored dispatch decisions",
   "category": "OPERATIONAL_INTELLIGENCE",

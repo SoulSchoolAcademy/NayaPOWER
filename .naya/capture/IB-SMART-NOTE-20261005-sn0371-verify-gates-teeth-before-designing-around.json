@@ -1,4 +1,6 @@
 {
+  "owner": "Naya",
+  "owner_basis": "collective",
  "smart_note_id": "SN-0371",
  "intelligence": {
   "title": "Verify the Gate's Teeth Before Designing Around It",
@@ -14,5 +16,5 @@
   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/PROMOTION-AUTHORITY-BINDING/SN-0371/IB-SMART-NOTE-20261005-sn0371-verify-gates-teeth-before-designing-around.md",
   "provenance_note": "reconstructed from published projection; no runtime provenance invented"
  },
- "schema": "naya.smart-note-capture.v2"
+ "schema": "naya.smart-note-capture.v3"
 }

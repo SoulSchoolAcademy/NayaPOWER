@@ -1,5 +1,7 @@
 {
-  "schema": "naya.smart-note-capture.v2",
+  "owner": "Naya",
+  "owner_basis": "collective",
+  "schema": "naya.smart-note-capture.v3",
   "smart_note_id": "SN-0525",
   "capture_id": "20261007-sn0525-one-brain-every-ai",
   "title": "One Brain. Every AI. — Human-Owned Intelligence Is the Constant",

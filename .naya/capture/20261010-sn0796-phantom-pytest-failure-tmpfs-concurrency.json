@@ -1,5 +1,7 @@
 {
-  "schema": "naya.smart-note-capture.v2",
+  "owner": "Naya",
+  "owner_basis": "collective",
+  "schema": "naya.smart-note-capture.v3",
   "capture_id": "20261010-sn0796-phantom-pytest-failure-tmpfs-concurrency",
   "smart_note_id": "SN-0796",
   "title": "Phantom Pytest Failure from Concurrent tmpfs Exhaustion — Battery Isolation Rule",

@@ -1,5 +1,7 @@
 {
-  "schema": "naya.smart-note-capture.v2",
+  "owner": "Naya",
+  "owner_basis": "collective",
+  "schema": "naya.smart-note-capture.v3",
   "smart_note_id": "SN-0361",
   "capture_id": "20261006-sn0361-archive-recovery-thesis",
   "title": "The Recovery Thesis — NayaPOWER Was Designed, Not Invented",
