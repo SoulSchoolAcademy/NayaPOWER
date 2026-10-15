@@ -264,6 +264,23 @@ def dispatch_mint(token, repo, ref, deliverables, job):
     raise RuntimeError("mint artifact missing (infra)")
 
 
+_WEATHER_SIGNALS = ("rate limit", "ratelimit", "quota", "abuse detection")
+
+
+def _is_weather(exc):
+    """True when the exception is API-quota weather, not gate content.
+
+    Mirrors the hardened gate's _RATE_LIMIT_SIGNALS (w195): a 429, or a 403
+    whose body names rate-limit/quota/abuse-detection, earns the
+    RATE_LIMITED label. Narrow on purpose — anything else re-raises and
+    fails closed as a real gate error.
+    """
+    msg = (str(exc) or "").lower()
+    if "http 429" in msg or "status: 429" in msg:
+        return True
+    return any(sig in msg for sig in _WEATHER_SIGNALS)
+
+
 def main():
     os.makedirs(WORK, exist_ok=True)
     results = []
@@ -272,7 +289,14 @@ def main():
         results.append((name, ok, detail))
 
     token = os.environ.get("GITHUB_TOKEN", "")
-    truth = resolve_truth()
+    try:
+        truth = resolve_truth()
+    except RuntimeError as e:
+        if _is_weather(e):
+            print("GATE-PROOF: ENV_BLIND -- RATE_LIMITED "
+                  "(quota/weather, not content): %s" % e)
+            return 2
+        raise
     print("protected truth: repo=%s main=%s"
           % (truth["repository"], truth["main_sha"][:12]))
     dg_path, dg_manifest = fetch_pinned_design_gate(token, truth["repository"])
