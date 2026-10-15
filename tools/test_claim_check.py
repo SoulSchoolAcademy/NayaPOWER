@@ -94,6 +94,20 @@ t("named-green-no-receipt-flags", not ok, d)
 t("bare-issue-bind-flag-exists", isinstance(cc.BARE_ISSUE_BINDS, bool),
   f"BARE_ISSUE_BINDS={cc.BARE_ISSUE_BINDS}")
 
+# date shapes are not count claims (Kappa w219 IV on #2625 — the false positive)
+ok, d = cc.check_claim("verdict: deploy scheduled 2026/11/15\nnext: wait | owner: Naya Zeta")
+t("slash-date-not-a-count-claim", ok, d)
+
+ok, d = cc.check_claim("verdict: retro on 2026/10/15 went well\nnext: n/a | owner: Naya Zeta")
+t("october-slash-date-not-a-count-claim", ok, d)
+
+# a real N/N count next to a date must STILL bind (the fix must not over-strip)
+ok, d = cc.check_claim("verdict: 2026/11/15 deploy, all 12/12 checks green\nnext: merge | owner: Naya Zeta")
+t("date-plus-real-count-still-flags", not ok, d)
+
+ok, d = cc.check_claim("verdict: 2026/11/15 deploy, all 12/12 checks green @ ba6263870425\nnext: merge | owner: Naya Zeta")
+t("date-plus-bound-count-passes", ok, d)
+
 if __name__ == "__main__":
     # Reaching here means every t() above passed.
     print("\nALL GREEN")

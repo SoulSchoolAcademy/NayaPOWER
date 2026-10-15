@@ -112,6 +112,10 @@ def check_claim(body):
     # Scores are check_score's territory (the meaning rule), not ours:
     # strip X/10 spans so "9.5/10" never reads as an N/N count claim.
     body = re.sub(r"\d+(?:\.\d+)?\s*/\s*10\b", " ", body)
+    # Dates are not count claims (Kappa w219 IV on #2625): strip YYYY/MM/DD
+    # spans so "2026/11/15" never reads as an N/N count claim. October dates
+    # were accidentally immune via the X/10 strip; this covers every month.
+    body = re.sub(r"\b\d{4}\s*/\s*\d{1,2}\s*/\s*\d{1,2}\b", " ", body)
     claims = sorted({p.pattern for p in _CLAIM_PATTERNS
                      if p.search(body)})
     if not claims:
