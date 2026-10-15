@@ -39,6 +39,12 @@ red; an honest "unable to verify, re-run may resolve" does not.
 Exit 0 = consensus present (or gate not applicable). Exit 1 = fail with a
 plain-words reason.
 Stdlib only.
+
+Local pre-verification (zero API — costs no gh-api budget):
+  python3 check_merge_consensus.py --self-test-scorecard <receipt-file> <head-sha>
+checks a draft scorecard receipt file against the gate's own matcher before
+posting: exit 0 = the gate would accept it, exit 1 = it would not (with the
+missing piece named). Exit 2 = usage error.
 """
 import json
 import os
@@ -352,7 +358,65 @@ def run_gate(token, repo, pr_number, head_sha):
           f"reviewer {reviewer_seat}, scorer {scorer_seat}, head {head_sha[:10]}.")
 
 
+def self_test_scorecard(path, head_sha):
+    """Zero-API pre-verification of a scorecard receipt against the gate's own
+    matcher. Workers run this on their draft comment BEFORE posting, so a
+    gate-visible receipt costs a local millisecond instead of an API round-trip
+    (P-033: shape to the parser). Semantics are byte-identical to the gate —
+    it calls _looks_like_scorecard itself, never a re-implementation — so a
+    local PASS means the matcher will see it when posted. Prints a diagnostic
+    breaking down the four sub-conditions so a FAIL names exactly which one
+    the draft missed. Exit 0 = gate matcher accepts; exit 1 = it does not."""
+    try:
+        with open(path, "r", encoding="utf-8") as fh:
+            body = fh.read()
+    except OSError as e:
+        fail(f"SCORECARD SELF-TEST FAILED: cannot read {path}: {e}")
+    except UnicodeDecodeError as e:
+        fail(f"SCORECARD SELF-TEST FAILED: {path} is not UTF-8 text: {e}")
+    low = body.lower()
+    has_keyword = "scorecard" in low or "verdict" in low
+    has_sha = head_sha in body
+    approved = bool(re.search(r"merge\s*:\s*approved|merge\s+recommended",
+                              low))
+    score = _score_of(body)
+    passes = _looks_like_scorecard(body, head_sha)
+    seat = seat_of(body)
+    lines = [
+        f"keyword scorecard/verdict: {'yes' if has_keyword else 'MISSING'}",
+        f"names exact head sha {head_sha[:10]}: "
+        f"{'yes' if has_sha else 'MISSING'}",
+        f"merge-approval phrase: {'yes' if approved else 'no'}",
+        f"numeric score: {score if score is not None else 'none'}"
+        f"{' (>=9.0)' if (score is not None and score >= 9.0) else ''}",
+        # Seat is not part of _looks_like_scorecard, but the gate's scan
+        # still needs a seat tag distinct from the author — report it so the
+        # worker doesn't pass this check and then fail at scan time.
+        f"seat tag: {seat if seat else 'MISSING (gate scan needs one)'}",
+    ]
+    print(("SCORECARD SELF-TEST PASSED" if passes
+           else "SCORECARD SELF-TEST FAILED") + f": {path}")
+    for line in lines:
+        print("  " + line)
+    if not passes:
+        fail("the gate's matcher would not accept this as a scorecard "
+             "receipt — add the missing piece(s) above and re-run before "
+             "posting.")
+    return  # exit 0 via normal return
+
+
 def main():
+    argv = sys.argv[1:]
+    if argv and argv[0] == "--self-test-scorecard":
+        # Zero-API local pre-check: the worker's draft receipt file against
+        # the gate's own matcher. Lifecycle posts exempt it from the worker
+        # API budget — it makes no network calls at all.
+        if len(argv) != 3:
+            print("usage: check_merge_consensus.py --self-test-scorecard "
+                  "<receipt-file> <head-sha>", file=sys.stderr)
+            sys.exit(2)
+        self_test_scorecard(argv[1], argv[2])
+        return
     token = os.environ.get("GH_TOKEN") or ""
     repo = os.environ.get("REPO") or ""
     pr_number = os.environ.get("PR_NUMBER") or ""
