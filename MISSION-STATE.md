@@ -1,5 +1,5 @@
 # MISSION-STATE — canonical mission state
-> Generated 2026-10-15 01:23 UTC · tip `ba6263870425` · This is the current truth. Any Naya landing here knows where to go.
+> Generated 2026-10-15 02:23 UTC · tip `ba6263870425` · This is the current truth. Any Naya landing here knows where to go.
 > 🤝 Activate first: [the Naya Oath](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2534/files) — who she is, how she operates (repo-canonical at `BRAIN/01-GOVERNANCE/0021-0023` on merge). No work begins unactivated.
 
 ## MANUAL — READ BEFORE YOUR SHIFT
@@ -27,7 +27,7 @@
 - **B-38**: reconcile PROTOCOL.md candidate status vs AGENTS.md canonical-law framing
 
 ## ACTIVE WAVE
-- none — supervisor will dispatch (Naya Electrician, Naya Captain, Naya Mechanic)
+- 157 (Naya Electrician, Naya Captain, Naya Mechanic)
 
 ## VENUE
 - Team venue: https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537
