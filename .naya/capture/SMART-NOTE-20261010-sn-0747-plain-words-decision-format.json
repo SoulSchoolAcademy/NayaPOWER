@@ -1,5 +1,7 @@
 {
-  "schema": "naya.smart-note-capture.v2",
+  "owner": "Naya",
+  "owner_basis": "collective",
+  "schema": "naya.smart-note-capture.v3",
   "smart_note_id": "SN-0747",
   "capture_id": "20261010-sn-0747-plain-words-decision-format",
   "canonical_intent": "CAPTURE_DURABLE_LAW",

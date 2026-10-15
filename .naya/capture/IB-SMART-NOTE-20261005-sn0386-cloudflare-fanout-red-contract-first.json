@@ -1,4 +1,6 @@
 {
+  "owner": "Naya",
+  "owner_basis": "collective",
  "smart_note_id": "SN-0386",
  "intelligence": {
   "title": "External Fan-Out Is Its Own CI RED Class — Recover the Governed Contract First, Then Disconnect, Never Fake Green",
@@ -14,5 +16,5 @@
   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/OPERATIONS/DEPLOYMENT-EVIDENCE/SN-0386/IB-SMART-NOTE-20261005-sn0386-cloudflare-fanout-red-contract-first.md",
   "provenance_note": "reconstructed from published projection; no runtime provenance invented"
  },
- "schema": "naya.smart-note-capture.v2"
+ "schema": "naya.smart-note-capture.v3"
 }

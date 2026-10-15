@@ -1,5 +1,7 @@
 {
- "schema": "naya.smart-note-capture.v2",
+  "owner": "Naya",
+  "owner_basis": "collective",
+ "schema": "naya.smart-note-capture.v3",
  "smart_note_id": "SN-0634",
  "capture_id": "20261008-sn-0634-registry-heal",
  "title": "Operating Protocol v1.0 \u2014 Three Tongues + Machine Law",

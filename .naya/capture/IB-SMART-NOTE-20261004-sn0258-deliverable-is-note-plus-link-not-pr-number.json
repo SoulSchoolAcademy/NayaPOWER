@@ -1,4 +1,6 @@
 {
+  "owner": "Naya",
+  "owner_basis": "collective",
  "smart_note_id": "SN-0258",
  "intelligence": {
   "title": "The Deliverable Is the Note Plus the Link, Never the PR Number — Ship the Verification Pair at Authoring Time",
@@ -14,5 +16,5 @@
   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SMART-NOTE-REFINEMENT/PROOF-RETURN/SN-0258/IB-SMART-NOTE-20261004-sn0258-deliverable-is-note-plus-link-not-pr-number.md",
   "provenance_note": "reconstructed from published projection; no runtime provenance invented"
  },
- "schema": "naya.smart-note-capture.v2"
+ "schema": "naya.smart-note-capture.v3"
 }

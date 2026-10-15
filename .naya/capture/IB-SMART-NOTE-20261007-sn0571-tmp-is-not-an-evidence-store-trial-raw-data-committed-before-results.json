@@ -1,4 +1,6 @@
 {
+  "owner": "Naya",
+  "owner_basis": "collective",
  "smart_note_id": "SN-0571",
  "intelligence": {
   "title": "/tmp Is Not an Evidence Store — Trial Raw Data Must Be Committed to a Repo Branch Before Results Are Announced",
@@ -14,5 +16,5 @@
   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/PROOF-HONESTY/SN-0571/IB-SMART-NOTE-20261007-sn0571-tmp-is-not-an-evidence-store-trial-raw-data-committed-before-results.md",
   "provenance_note": "reconstructed from published projection; no runtime provenance invented"
  },
- "schema": "naya.smart-note-capture.v2"
+ "schema": "naya.smart-note-capture.v3"
 }

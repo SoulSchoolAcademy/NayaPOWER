@@ -1,4 +1,6 @@
 {
+  "owner": "Naya",
+  "owner_basis": "collective",
  "smart_note_id": "SN-0320",
  "intelligence": {
   "title": "An Infrastructure Red Is Not a Code Regression — Classify the Red Before Chasing Code",
@@ -14,5 +16,5 @@
   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/CI-TRIAGE/RED-CLASSIFICATION/SN-0320/IB-SMART-NOTE-20261004-sn0320-infra-red-is-not-code-regression.md",
   "provenance_note": "reconstructed from published projection; no runtime provenance invented"
  },
- "schema": "naya.smart-note-capture.v2"
+ "schema": "naya.smart-note-capture.v3"
 }

@@ -1,4 +1,6 @@
 {
+  "owner": "Naya",
+  "owner_basis": "collective",
  "smart_note_id": "SN-0602",
  "intelligence": {
   "title": "Intelligence Gain & Epistemic Calibration Law — Measure Capability, Causal Learning, Independence, and Complexity",
@@ -14,5 +16,5 @@
   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/GOVERNANCE/EPISTEMIC-INTEGRITY/INTELLIGENCE-GAIN-CALIBRATION-CAUSAL-LEARNING/SN-0602/IB-SMART-NOTE-20261004-sn0602-intelligence-gain-epistemic-calibration.md",
   "provenance_note": "reconstructed from published projection; no runtime provenance invented"
  },
- "schema": "naya.smart-note-capture.v2"
+ "schema": "naya.smart-note-capture.v3"
 }

@@ -1,4 +1,6 @@
 {
+  "owner": "Naya",
+  "owner_basis": "collective",
  "smart_note_id": "SN-0518",
  "intelligence": {
   "title": "A Law Is Operative Only If a Machine Can Falsify Its Violation",
@@ -14,5 +16,5 @@
   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/LAW-IS-CODE/SN-0518/IB-SMART-NOTE-20260930-sn0518-law-operative-only-if-machine-can-falsify.md",
   "provenance_note": "reconstructed from published projection; no runtime provenance invented"
  },
- "schema": "naya.smart-note-capture.v2"
+ "schema": "naya.smart-note-capture.v3"
 }

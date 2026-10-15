@@ -1,5 +1,7 @@
 {
-  "schema": "naya.smart-note-capture.v2",
+  "owner": "Naya",
+  "owner_basis": "collective",
+  "schema": "naya.smart-note-capture.v3",
   "capture_id": "20260929-sn002-smart-note-node-flow",
   "smart_note_id": "SN-002",
   "title": "How Smart Notes, Intelligent Blocks, Master Nodes, Learning, Brain, and Hub Work Together",

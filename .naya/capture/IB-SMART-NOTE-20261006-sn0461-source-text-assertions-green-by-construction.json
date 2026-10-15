@@ -1,4 +1,6 @@
 {
+  "owner": "Naya",
+  "owner_basis": "collective",
  "smart_note_id": "SN-0461",
  "intelligence": {
   "title": "A Test That Only Asserts on Source Text Is Green by Construction — Tests Must Execute the Seam",
@@ -14,5 +16,5 @@
   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/TEST-DESIGN/SN-0461/IB-SMART-NOTE-20261006-sn0461-source-text-assertions-green-by-construction.md",
   "provenance_note": "reconstructed from published projection; no runtime provenance invented"
  },
- "schema": "naya.smart-note-capture.v2"
+ "schema": "naya.smart-note-capture.v3"
 }

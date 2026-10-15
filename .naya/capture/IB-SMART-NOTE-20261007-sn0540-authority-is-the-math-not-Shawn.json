@@ -1,4 +1,6 @@
 {
+  "owner": "Naya",
+  "owner_basis": "collective",
  "smart_note_id": "SN-0540",
  "intelligence": {
   "title": "The Math Decides, Shawn Doesn't — Never Ask the Director to Choose What the Calculus Already Chooses",
@@ -14,5 +16,5 @@
   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATING-MODE/DECISION-EFFICIENCY/SN-0540/IB-SMART-NOTE-20261007-sn0540-authority-is-the-math-not-Shawn.md",
   "provenance_note": "reconstructed from published projection; no runtime provenance invented"
  },
- "schema": "naya.smart-note-capture.v2"
+ "schema": "naya.smart-note-capture.v3"
 }

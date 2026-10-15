@@ -1,5 +1,7 @@
 {
-  "schema": "naya.smart-note-capture.v2",
+  "owner": "Naya",
+  "owner_basis": "collective",
+  "schema": "naya.smart-note-capture.v3",
   "smart_note_id": "SN-022",
   "capture_id": "20261002-sn022-human-centered-design-intelligence",
   "title": "Human-Centered Design Intelligence — World-Class UX Principles Adopted into Naya Design",

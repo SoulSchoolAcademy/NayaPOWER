@@ -1,5 +1,7 @@
 {
- "schema": "naya.smart-note-capture.v2",
+  "owner": "Naya",
+  "owner_basis": "collective",
+ "schema": "naya.smart-note-capture.v3",
  "capture_id": "SMART-NOTE-20261005-sn0356-dead-workers-still-vote",
  "title": "Dead Workers Still Vote — Cloudflare Connection Hygiene",
  "category": "GOVERNANCE",

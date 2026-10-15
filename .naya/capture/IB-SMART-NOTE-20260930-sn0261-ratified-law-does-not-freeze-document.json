@@ -1,4 +1,6 @@
 {
+  "owner": "Naya",
+  "owner_basis": "collective",
  "smart_note_id": "SN-0261",
  "intelligence": {
   "title": "Ratifying the Law Does Not Freeze the Document — the Smart-Link Law, Encoded and Enforced",
@@ -14,5 +16,5 @@
   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/DOCUMENT-AUTHORITY/SN-0261/IB-SMART-NOTE-20260930-sn0261-ratified-law-does-not-freeze-document.md",
   "provenance_note": "reconstructed from published projection; no runtime provenance invented"
  },
- "schema": "naya.smart-note-capture.v2"
+ "schema": "naya.smart-note-capture.v3"
 }

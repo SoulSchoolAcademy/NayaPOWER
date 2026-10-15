@@ -1,5 +1,7 @@
 {
- "schema": "naya.smart-note-capture.v2",
+  "owner": "Naya",
+  "owner_basis": "collective",
+ "schema": "naya.smart-note-capture.v3",
  "smart_note_id": "SN-0639",
  "capture_id": "20261008-sn-0639-registry-heal",
  "title": "A RED Flag Is a Hypothesis Until It Survives Virgin State",

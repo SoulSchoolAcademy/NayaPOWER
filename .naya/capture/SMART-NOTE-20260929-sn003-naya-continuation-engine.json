@@ -1,5 +1,7 @@
 {
-  "schema": "naya.smart-note-capture.v2",
+  "owner": "Naya",
+  "owner_basis": "collective",
+  "schema": "naya.smart-note-capture.v3",
   "capture_id": "20260929-sn003-naya-continuation-engine",
   "title": "Naya Continuation Engine — Reconstruct, Find Holes, Execute, Prove, Record, Reassess",
   "category": "SYSTEM_INTELLIGENCE",

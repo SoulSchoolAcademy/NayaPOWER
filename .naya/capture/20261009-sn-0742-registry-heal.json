@@ -1,5 +1,7 @@
 {
- "schema": "naya.smart-note-capture.v2",
+  "owner": "Naya",
+  "owner_basis": "collective",
+ "schema": "naya.smart-note-capture.v3",
  "smart_note_id": "SN-0742",
  "capture_id": "20261009-sn-0742-registry-heal",
  "title": "The Self-Optimizing System — Self-Correction as Engineering",

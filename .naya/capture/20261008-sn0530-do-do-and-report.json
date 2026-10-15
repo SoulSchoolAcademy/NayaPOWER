@@ -1,5 +1,7 @@
 {
- "schema": "naya.smart-note-capture.v2",
+  "owner": "Naya",
+  "owner_basis": "collective",
+ "schema": "naya.smart-note-capture.v3",
  "smart_note_id": "SN-0530",
  "capture_id": "20261008-sn0530-do-do-and-report",
  "title": "Lane Ownership Is For Speed, Not Territory \u2014 Do, Record, Hand Off",

@@ -1,4 +1,6 @@
 {
+  "owner": "Naya",
+  "owner_basis": "collective",
  "smart_note_id": "SN-0406",
  "intelligence": {
   "title": "SN-0406 — Deduplicate by repair lane, never by silent deletion — director-ratified captures get a scorecard, not a delete key",
@@ -14,5 +16,5 @@
   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/DOCUMENT-AUTHORITY/SN-0406/IB-SMART-NOTE-20261005-sn0406-ratified-capture-deletion-repair-lane.md",
   "provenance_note": "reconstructed from published projection; no runtime provenance invented"
  },
- "schema": "naya.smart-note-capture.v2"
+ "schema": "naya.smart-note-capture.v3"
 }

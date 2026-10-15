@@ -1,5 +1,7 @@
 {
-  "schema": "naya.smart-note-capture.v2",
+  "owner": "Naya",
+  "owner_basis": "collective",
+  "schema": "naya.smart-note-capture.v3",
   "smart_note_id": "SN-0359",
   "capture_id": "20261005-sn0359-proactive-captain-r2",
   "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
@@ -38,7 +40,7 @@
       "recovered_from": "git object 4c1b3df88:.naya/capture/SMART-NOTE-20261005-sn0359-proactive-captain.json",
       "why_restored": "BLOCKERS.md records the governing precedent verbatim: 'SN-012 identifier collision remains unresolved. This is a naming defect, NOT A LICENSE TO DELETE EITHER INTELLIGENCE OBJECT.' A Director-ratified object was removed as a 'repair'. This restores it.",
       "schema_from": "naya.smart-note-capture.v1",
-      "schema_to": "naya.smart-note-capture.v2",
+      "schema_to": "naya.smart-note-capture.v3",
       "content_preserved": "100% of the original communication protocol, machine view, enforcement clause, learning lesson, falsifier and applicability are retained. Only structure, truth-state typing and the falsification measurement contract were added.",
       "corrected": [
         "truth_state 'RATIFIED' asserted a truth LEVEL for newly authored intelligence. The Smart Note Operating Contract fixes the automatic truth ceiling at CANDIDATE. Ratification of a DIRECTIVE is a governance fact, now preserved in the ratification block and kept separate from the behavioural claim (SN-042: preserve epistemic type).",

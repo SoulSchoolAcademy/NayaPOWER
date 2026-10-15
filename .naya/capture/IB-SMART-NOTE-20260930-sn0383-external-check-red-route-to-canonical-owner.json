@@ -1,4 +1,6 @@
 {
+  "owner": "Naya",
+  "owner_basis": "collective",
  "smart_note_id": "SN-0383",
  "intelligence": {
   "title": "External Checks RED Across Unrelated Commits Are the External App's Problem — Classify Ownership, Fail Closed, Route to the Canonical Owner",
@@ -14,5 +16,5 @@
   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/GATE-OWNERSHIP/SN-0383/IB-SMART-NOTE-20260930-sn0383-external-check-red-route-to-canonical-owner.md",
   "provenance_note": "reconstructed from published projection; no runtime provenance invented"
  },
- "schema": "naya.smart-note-capture.v2"
+ "schema": "naya.smart-note-capture.v3"
 }

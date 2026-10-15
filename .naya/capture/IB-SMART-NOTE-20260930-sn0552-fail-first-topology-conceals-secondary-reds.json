@@ -1,4 +1,6 @@
 {
+  "owner": "Naya",
+  "owner_basis": "collective",
  "smart_note_id": "SN-0552",
  "intelligence": {
   "title": "Fail-First CI Topology Converts Secondary REDs into Invisible Skips — Audit What Skipped Behind the RED",
@@ -14,5 +16,5 @@
   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/SKIP-DISCIPLINE/SN-0552/IB-SMART-NOTE-20260930-sn0552-fail-first-topology-conceals-secondary-reds.md",
   "provenance_note": "reconstructed from published projection; no runtime provenance invented"
  },
- "schema": "naya.smart-note-capture.v2"
+ "schema": "naya.smart-note-capture.v3"
 }

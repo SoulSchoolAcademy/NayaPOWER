@@ -1,5 +1,7 @@
 {
-  "schema": "naya.smart-note-capture.v2",
+  "owner": "Naya",
+  "owner_basis": "collective",
+  "schema": "naya.smart-note-capture.v3",
   "capture_id": "20261001-sn019-complete-the-app-doctrine",
   "title": "Complete the App Doctrine — Finish the House, Not the Shell",
   "category": "SYSTEM_INTELLIGENCE",

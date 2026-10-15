@@ -1,5 +1,7 @@
 {
-  "schema": "naya.smart-note-capture.v2",
+  "owner": "Naya",
+  "owner_basis": "collective",
+  "schema": "naya.smart-note-capture.v3",
   "smart_note_id": "SN-346",
   "capture_id": "20261005-sn0355-nonstop-loop",
   "title": "The Nonstop Loop — NayaPOWER Operating Code",

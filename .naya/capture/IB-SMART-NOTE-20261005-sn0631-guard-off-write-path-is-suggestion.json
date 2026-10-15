@@ -1,4 +1,6 @@
 {
+  "owner": "Naya",
+  "owner_basis": "collective",
  "smart_note_id": "SN-0631",
  "intelligence": {
   "title": "A Guard Off the Write Path Is a Suggestion, Not a Guard",
@@ -16,5 +18,5 @@
   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/NAYA-STANDING-LAW/LAW-AS-CODE/SN-0631/IB-SMART-NOTE-20261005-sn0631-guard-off-write-path-is-suggestion.md",
   "provenance_note": "reconstructed; renumbered; no runtime provenance invented"
  },
- "schema": "naya.smart-note-capture.v2"
+ "schema": "naya.smart-note-capture.v3"
 }

@@ -1,5 +1,7 @@
 {
-  "schema": "naya.smart-note-capture.v2",
+  "owner": "Naya",
+  "owner_basis": "collective",
+  "schema": "naya.smart-note-capture.v3",
   "smart_note_id": "SN-0357",
   "capture_id": "20261005-sn0357-self-directed-intelligence-r2",
   "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",

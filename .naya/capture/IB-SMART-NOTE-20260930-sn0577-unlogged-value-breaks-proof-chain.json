@@ -1,4 +1,6 @@
 {
+  "owner": "Naya",
+  "owner_basis": "collective",
  "smart_note_id": "SN-0577",
  "intelligence": {
   "title": "IB-SMART-NOTE — SN-0577 — Unlogged Value Breaks the Proof Chain: Feed the Instrument Daily",
@@ -14,5 +16,5 @@
   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATIONS/VALUE-LOOPS/SN-0577/IB-SMART-NOTE-20260930-sn0577-unlogged-value-breaks-proof-chain.md",
   "provenance_note": "reconstructed from published projection; no runtime provenance invented"
  },
- "schema": "naya.smart-note-capture.v2"
+ "schema": "naya.smart-note-capture.v3"
 }

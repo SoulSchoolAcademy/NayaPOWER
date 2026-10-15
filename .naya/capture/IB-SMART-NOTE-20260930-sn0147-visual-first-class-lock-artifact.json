@@ -1,4 +1,6 @@
 {
+  "owner": "Naya",
+  "owner_basis": "collective",
  "smart_note_id": "SN-0147",
  "intelligence": {
   "title": "The Image Is the Lock Artifact — Visuals Are First-Class, Not Derived",
@@ -14,5 +16,5 @@
   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/KNOWLEDGE-PROJECTION/SN-0147/IB-SMART-NOTE-20260930-sn0147-visual-first-class-lock-artifact.md",
   "provenance_note": "reconstructed from published projection; no runtime provenance invented"
  },
- "schema": "naya.smart-note-capture.v2"
+ "schema": "naya.smart-note-capture.v3"
 }

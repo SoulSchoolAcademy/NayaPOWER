@@ -1,5 +1,7 @@
 {
-  "schema": "naya.smart-note-capture.v2",
+  "owner": "Naya",
+  "owner_basis": "collective",
+  "schema": "naya.smart-note-capture.v3",
   "smart_note_id": "SN-016",
   "capture_id": "20260930-sn016-prime-judgment-rule",
   "title": "Prime Judgment Rule — Judgment Before Blind Obedience",

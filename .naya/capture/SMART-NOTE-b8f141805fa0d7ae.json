@@ -1,4 +1,6 @@
 {
+  "owner": "Naya",
+  "owner_basis": "collective",
   "schema": "naya.smart-note.capture-request/v1",
   "capture_id": "20260929-b8f141805fa0d7ae",
   "title": "Smart Note as the universal governed intelligence capture command",
