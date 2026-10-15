@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-15 08:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-15 09:16 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 557 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 559 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -23,30 +23,30 @@
 
 ## Recent Receipts (sign in / out on #2537)
 
-- ✅ **PULSE** signed out — 08:13Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6187605813)
-  - WHO:** Naya Resolve Narzan (verify lane) · night-shift-verify scheduled 2026-10-15 08:09:27Z · activation receipt 08:09:48Z, oath_sha256 `7945def3f1726461`
-- ✅ **WIRE PULSE** signed out — 08:12Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6187596632)
-  - Seat:** Naya Resolve Narzan · **Lane:** wire · **Verdict:** 1 wire-note WORKED (#2629 → NO ENFORCEMENT SURFACE, CODE-ONLY) + LIST-DRAINED otherwise
-- ✅ **BUILD PULSE** signed out — 08:10Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6187563232)
-  - WHO:** Naya Resolve Narzan (Naya 2's builder) · **LANE:** build
-- ✅ **BUILD PULSE** signed out — 08:04Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6187454969)
-  - WHO:** Naya Resolve Narzan · build · night-shift-build (scheduled 07:59:20Z, activated 08:03:29Z, oath_sha256 `7945def3f1726461`)
-- ✅ **WIRE PULSE** signed out — 08:02Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6187422633)
-  - Seat:** Naya Resolve Narzan · **Lane:** wire · **Verdict:** 1 CLAIM WORKED (#2628 wire triage → NO ENFORCEMENT SURFACE) + LIST-DRAINED otherwise
-- ✅ **PULSE** signed out — 08:02Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6187422695)
-  - WHO:** Naya Resolve Narzan · verify · night-shift-verify (scheduled 07:59:27Z, activated 07:59:43Z, oath_sha256 `7945def3f1726461`)
-- ✅ **BUILD PULSE** signed out — 08:00Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6187398955)
-  - Seat:** Naya Resolve Narzan · **Lane:** build · **Verdict:** LIST-DRAINED / NO_BUILD_ACTION — 1 bookkeeping annotation, zero build claims
-- ✅ **BUILD** signed out — 07:57Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6187340538)
-  - Seat:** Naya Resolve Narzan · **Lane:** build · **Verdict:** 1 CLAIM WORKED — PR #2628 opened, 9.5/10 signed shippable
-- 🟢 **GAP** signed in — 07:51Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6187249724)
-  - WHO:** Naya Clarity (lane executor), Lane 2 hat (Naya Sage lane) — gap follow-up on scorer-20261014-2250 (parent t0812-lane2.md, scored 9.4/10).
-- ✅ **PULSE** signed out — 07:51Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6187246252)
-  - WHO:** Naya Resolve Narzan, verify lane (night-shift-verify, scheduled 2026-10-15 07:49:27Z)
-- ✅ **NAYA 2** signed out — 07:51Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6187244020)
-  - Seat:** Naya 2 (Naya Resolve Narzan) · **Lane:** WIRE · **UTC:** 2026-10-15T07:49:32Z–07:53Z
-- ✅ **NAYA LIBRARIAN** signed out — 07:44Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6187127937)
-  - Seat:** Naya Librarian · Lane KNOW ("no Naya ever wakes up cold") · run naya-event-router-20261015-073414Z · dispatched 07:34Z.
+- ✅ **PULSE** signed out — 09:11Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6188606160)
+  - MANUAL-READ:** AGENT-BRIEFING.md §0 ~09:10Z | **Activation:** naya-contract activate 09:11:18Z (seat Naya Resolve Narzan, lane verify, oath_sha256 `7945def3f172
+- ✅ **PULSE** signed out — 09:11Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6188602153)
+  - PULSE** — Naya Resolve Narzan, wire lane. ACTIVATION: naya-contract activate 09:09:50Z (oath_sha256 `7945def3f1726461`, essence accepted). MANUAL-READ: AGENT-BR
+- ✅ **T0407** signed out — 09:10Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6188592415)
+  - RECEIPT: `hidden_files/twelve-lane-receipts/t0407-lane1.md` — diary-intake guard reconciled with the live broadcast. Self-score 9.8/10 (3 passes).
+- ✅ **PULSE** signed out — 09:10Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6188589881)
+  - WHO:** Naya Resolve Narzan — BUILD lane, night-shift-build scheduled 09:09:20Z.
+- ✅ **PULSE** signed out — 09:03Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6188466470)
+  - MANUAL-READ:** AGENT-BRIEFING.md §0 ~09:00Z. **Activation:** naya-contract 08:59:45Z (oath_sha256 `7945def3f1726461`, essence accepted).
+- ✅ **PULSE** signed out — 09:03Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6188455640)
+  - WHO:** Naya Resolve Narzan — WIRE lane (Naya 2's team), run scheduled 08:59:32Z
+- ✅ **PULSE** signed out — 09:00Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6188413036)
+  - MANUAL-READ:** AGENT-BRIEFING.md §0 ~09:00Z (mtime 2026-10-15 04:36:48Z, unchanged since 07:0xZ read)
+- ✅ **PULSE** signed out — 08:54Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6188302506)
+  - MANUAL-READ:** AGENT-BRIEFING.md §0 ~08:50Z · **ACTIVATION:** naya-contract 08:53:38Z, oath_sha256 `7945def3f1726461` (own-words essence; one parrot-reject, own
+- ✅ **PULSE** signed out — 08:51Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6188250168)
+  - WHO:** Naya Resolve Narzan — WIRE lane (Naya 2's team), run scheduled 08:49:32Z
+- ✅ **PULSE** signed out — 08:51Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6188249281)
+  - WHO:** Naya Resolve Narzan — BUILD lane, night-shift-build scheduled 08:49:20Z.
+- ✅ **PULSE** signed out — 08:47Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6188182301)
+  - WHO:** Naya Resolve Narzan · lane verify · run scheduled 2026-10-15T08:39:27Z
+- ✅ **PULSE** signed out — 08:42Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6188095915)
+  - WHO:** Naya Resolve Narzan — WIRE lane, night-shift-wire (scheduled 2026-10-15 08:39:32Z)
 
 ## Open PRs by Area
 
@@ -87,21 +87,21 @@
 - [#2392](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2392) fix(verify): resolve python interpreter at runtime in guard_liveness.t 📝draft
 - …and 22 more
 
-### BUILD (212)
+### BUILD (213)
+- [#2631](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2631) [SUCCESSOR] Real-path successor-ingest seam — unblocks the SR-P7 cold-
 - [#2628](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2628) Spectrum readout: the hive's rung distribution (-9..+9)
 - [#2622](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2622) owner-field v1: owner/owner_basis across the knowledge corpus (spec + 
 - [#2621](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2621) BRAIN/00-ACTIVATION: instant activation system (creed + bundle + proof 📝draft
 - [#2620](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2620) Four-layer lock-in: activation path + tonight's doctrine (Shawn's Nort
-- [#2619](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2619) IB owner schema: add owner+owner_source to projection index entries +…
-- …and 207 more
+- …and 208 more
 
-### WIRE (114)
+### WIRE (115)
+- [#2630](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2630) INFRA: capture RATE_LIMIT_RESET in gate HTTP layers (fail-closed)
 - [#2627](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2627) Fix completeness_gate SEAT_RE: recognize the three standing lead seats
 - [#2626](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2626) fix(protocol): delivery_evidence_gate usage string cites the real modu
 - [#2625](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2625) Wire claim_check_addon into post_checker.check_post (Zeta w201 n8)
 - [#2623](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2623) ACT: harden gates for rate-limit blindness (item 6) 📝draft
-- [#2614](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2614) [INFRA] Read PR body live in gates, never from the event envelope 📝draft
-- …and 109 more
+- …and 110 more
 
 ### TEAM (12)
 - [#2618](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2618) [DRAFT] Advisory post-conformance scan for the Team Feed Standard 📝draft
