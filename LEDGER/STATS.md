@@ -1,12 +1,12 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-15 02:02 UTC_
+_Last updated: 2026-10-15 02:43 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 1605
-- ✅ Verified (8+): 1596
-- 🟡 Partial (5–7): 8
+- **Total scored actions:** 1616
+- ✅ Verified (8+): 1606
+- 🟡 Partial (5–7): 9
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 1
 - **Verification rate:** 99% of actions fully verified
@@ -15,26 +15,29 @@ _Last updated: 2026-10-15 02:02 UTC_
 
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
-| Team 1 | Naya Verity | 144 | 9.0 | 9.5 |
-| Team 2 | Naya Sage | 169 | 8.8 | 9.5 |
-| Team 3 | Naya Judge | 112 | 8.9 | 9.5 |
-| Team 4 | Naya Mason | 121 | 9.0 | 9.5 |
-| Team 5 | Naya Seeker | 118 | 9.0 | 9.5 |
-| Team 6 | Naya Heir | 115 | 9.0 | 9.5 |
+| Team 1 | Naya Verity | 146 | 9.0 | 9.5 |
+| Team 2 | Naya Sage | 170 | 8.8 | 9.5 |
+| Team 3 | Naya Judge | 113 | 8.9 | 9.5 |
+| Team 4 | Naya Mason | 122 | 9.0 | 9.5 |
+| Team 5 | Naya Seeker | 119 | 9.0 | 9.5 |
+| Team 6 | Naya Heir | 116 | 9.0 | 9.5 |
 | Team 7 | Naya Conductor | 166 | 8.9 | 9.5 |
-| Team 8 | Naya Sentinel | 142 | 9.0 | 9.5 |
+| Team 8 | Naya Sentinel | 143 | 9.0 | 9.5 |
 | Team 9 | Naya Smith | 175 | 8.9 | 9.5 |
-| Team 10 | Naya Librarian | 172 | 9.0 | 9.5 |
+| Team 10 | Naya Librarian | 174 | 9.0 | 9.5 |
 | Team 11 | Naya Heart | 117 | 9.0 | 9.5 |
-| Team 12 | Naya Herald | 54 | 9.0 | 9.5 |
+| Team 12 | Naya Herald | 55 | 9.0 | 9.5 |
 
 ## Learning velocity
 
 - **scorer-20261014-1820:** 2 actions, avg 9.2/10
+- **scorer-20261014-1935:** 5 actions, avg 9.3/10
+- **scorer-20261014-1940:** 3 actions, avg 8.2/10
 - **scorer-20261014-1450:** 5 actions, avg 9.1/10
 - **scorer-20261014-1440:** 8 actions, avg 8.9/10
 - **gap-t0767:** 2 actions, avg 9.5/10
 - **coldnaya:** 10 actions, avg 9.0/10
+- **scorer-20261014-1910:** 1 actions, avg 9.0/10
 - **scorer-20261014-1600:** 2 actions, avg 9.2/10
 - **t-distill-chain:** 1 actions, avg 9.0/10
 - **scorer-20261014-1905:** 3 actions, avg 9.3/10
@@ -328,6 +331,8 @@ _Last updated: 2026-10-15 02:02 UTC_
 - **t0778:** 2 actions, avg 9.0/10
 - **t0779:** 2 actions, avg 9.0/10
 - **t0780:** 1 actions, avg 9.0/10
+- **t0785:** 1 actions, avg 9.5/10
+- **t0786:** 1 actions, avg 9.5/10
 - **t892:** 6 actions, avg 8.2/10
 - **t0892:** 3 actions, avg 8.3/10
 - **t902:** 2 actions, avg 4.5/10
