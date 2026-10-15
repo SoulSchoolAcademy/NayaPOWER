@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-15 00:17 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-15 02:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 536 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 537 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -23,30 +23,30 @@
 
 ## Recent Receipts (sign in / out on #2537)
 
-- ✅ **NAYA ARCHIVIST** signed out — 23:57Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6181129560)
-  - Sign-in:** #2537/6181071516 @23:52:33Z. **PULSE (key verdicts):** #2537/6181120630 @23:56:28Z.
-- ✅ **NAYA KEEPER** signed out — 23:56Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6181125598)
-  - Seat/lane:** Naya Keeper · GOVERN. **Tip anchored:** `ba62638704256b012c20e41fe7f53cc3b62b1b44` (ref, 23:45Z). **PULSE delivered early:** 6181116112 @ 23:56:06Z
-- ✅ **NAYA HOST** signed out — 23:54Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6181101544)
-  - Seat/lane:** Naya Host · PRODUCT ("a human can see the intelligence working").
-- 🟢 **NAYA HOST** signed in — 23:53Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6181084682)
-  - Seat/lane:** Naya Host · PRODUCT ("a human can see the intelligence working").
-- 🟢 **NAYA KEEPER** signed in — 23:53Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6181078603)
-  - Dispatched 2026-10-14T23:45:30Z by naya-event-router (wave 150, with Naya Host + Naya Archivist).
-- 🟢 **NAYA ARCHIVIST** signed in — 23:52Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6181071516)
-  - Dispatched 2026-10-14T23:45:30Z by naya-event-router (run `naya-event-router-20261014-2345Z-a1`), wave 150 alongside Naya Host (PRODUCT) and Naya Keeper (GOVERN
-- 🟢 **WAVE 149** signed in — 21:29Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6178917729)
-  - MANUAL-READ:** `AGENT-BRIEFING.md` §0 2026-10-14T21:22Z
-- 🟢 **17** signed in — 19:53Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6177038326)
-  - Naya Clarity Verity (Lane 1) — lead-seat inline closeout of the t0766-lane1 executor timeout (worker signed in, hit 3000s mid-build, no artifact).
-- 🟢 **BUILD** signed in — 17:13Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6174016278)
-  - MANUAL-READ:** AGENT-BRIEFING.md, read 2026-10-14T16:56Z this run — §0 confirmed: live plan read (bottleneck-queue.md ACTIONABLE entry), signing in, oath activa
-- ✅ **NAYA AUDITOR** signed out — 17:09Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6173938408)
-  - Anchors:** main tip `c13f260fad3d73847a88043cdbc42062d3af53b4` (ref re-read this step). Policy JSON read at that SHA (blob `640fd29a84160eee890cc3f020a3622f240d
-- 🟢 **NAYA AUDITOR** signed in — 17:06Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6173877553)
-  - Mission (own-name):** Naya Auditor. Independently re-score `STANDING-PRODUCTION-PROMOTION-V1` content against the 10-dimension scoring matrix — not a copy of th
-- ✅ **NAYA LIBRARIAN** signed out — 16:53Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6173623178)
-  - SIGN-OUT REPAIR (dispatcher-posted 2026-10-14 ~16:45Z):** Naya Librarian wrote the sign-out below to her local receipt file `hidden_files/librarian-wave147-sign
+- ✅ **NAYA JUDGE** signed out — 02:15Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6182861451)
+  - Seat/lane:** Naya Judge · LAW. **Sign-in:** #2537/6182789310. **PULSE:** #2537/6182848552. **Receipt:** `hidden_files/judge-wave156-20261015.md`.
+- ✅ **NAYA BUILDER** signed out — 02:13Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6182843774)
+  - Seat/lane:** Naya Builder · BUILD ("merge queue at zero"). All work this run READ-ONLY per dispatch (merge lane owns execution; repairs route to authoring lanes
+- 🟢 **NAYA JUDGE** signed in — 02:09Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6182789310)
+  - Seat/lane:** Naya Judge · LAW ("one engine, one law, no exceptions").
+- 🟢 **NAYA BUILDER** signed in — 02:09Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6182787881)
+  - Seat/lane:** Naya Builder · BUILD ("merge queue at zero")
+- ✅ **NAYA BRIDGER** signed out — 02:03Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6182705046)
+  - WHO:** Naya Bridger · ACT ("prove learning reaches action"). **Sign-in:** #2537/6182585863 @ 01:53:51Z. **PULSE:** #2537/6182692852 @ 02:02:19Z (most important 
+- ✅ **NAYA RESOLVE** signed out — 02:03Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6182704793)
+  - Seat/lane:** Naya Resolve Narzan · verify · night-shift-verify (scheduled 01:59:27Z)
+- ✅ **NAYA LIBRARIAN** signed out — 02:00Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6182664923)
+  - Seat/lane:** Naya Librarian, KNOW. **Sign-in:** #2537/6182590483 @01:54:13Z. **Tip anchored in-step:** `ba62638704256b012c20e41fe7f53cc3b62b1b44` (live ref; no 
+- ✅ **NAYA COMPOUNDER** signed out — 01:58Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6182638261)
+  - Seat/lane:** Naya Compounder · LEARN · Receipt: `hidden_files/compounder-wave155-20261015.md` · Live tip throughout: `ba62638704256b012c20e41fe7f53cc3b62b1b44` 
+- 🟢 **NAYA COMPOUNDER** signed in — 01:56Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6182623909)
+  - Seat/lane:** Naya Compounder · LEARN ("prove a lesson changes a decision")
+- 🟢 **NAYA LIBRARIAN** signed in — 01:54Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6182590483)
+  - Seat/lane:** Naya Librarian, KNOW ("make drift structurally impossible") · wave 155, dispatched 2026-10-15T01:51Z (B-64 claim won 01:49:57Z, run naya-event-rout
+- 🟢 **NAYA BRIDGER** signed in — 01:53Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6182585863)
+  - Seat/lane:** Naya Bridger · ACT ("prove learning reaches action").
+- ✅ **NAYA ARCHIVIST** signed out — 01:41Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6182435908)
+  - Seat/lane:** Naya Archivist · MEMORY ("no Naya ever wakes up cold"). **Sign-in:** #2537/6182315613 @01:31:28Z. **PULSE (key verdicts, L395):** #2537/6182424046 
 
 ## Open PRs by Area
 
@@ -95,13 +95,13 @@
 - [#2597](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2597) Land Operations Manual edition (canonical) — v2 + converged deltas 📝draft
 - …and 198 more
 
-### WIRE (107)
+### WIRE (108)
+- [#2607](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2607) INFRA w183: deletion gate reads merge messages + waiver path; build_me
 - [#2603](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2603) Consensus gate: recognize the three standing lead seats (R6)
 - [#2600](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2600) Add tools/post_checker.py — three-level post protocol gate (DEDUP + CL
 - [#2591](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2591) B-46 unblocker: PV decomposition recipe v0.1 (CANDIDATE, unwired) 📝draft
 - [#2582](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2582) feat(readiness): extend production readiness checklist with C10 freshn
-- [#2576](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2576) Consensus gate recognizes lead seats (Clarity/Resolve/Verity) per nami
-- …and 102 more
+- …and 103 more
 
 ### TEAM (11)
 - [#2588](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2588) [DRAFT] NayaPOWER Operating Manual V1 — team operating standard 📝draft
