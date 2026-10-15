@@ -1,12 +1,12 @@
 {
  "schema": "nayapower-state-core/v1",
- "generated_utc": "2026-10-15T18:36:54Z",
+ "generated_utc": "2026-10-15T18:46:53Z",
  "writer": "state-core-builder.py (single writer; all others read-only)",
  "tip": {
-  "sha": "8bd2a9f70bac2847f38dd6d82a9d0e9f8d250d56",
-  "short": "8bd2a9f70bac",
+  "sha": "9f80e8eccfbe8256ec7ce069c61cd38cc86430ce",
+  "short": "9f80e8eccfbe",
   "verified_how": "ref+commits-agree",
-  "checked_utc": "2026-10-15T18:36:02Z"
+  "checked_utc": "2026-10-15T18:46:05Z"
  },
  "venue": {
   "live": 2641,
@@ -15,41 +15,41 @@
   ]
  },
  "waves": {
-  "active": null,
+  "active": 201,
   "active_seats": [
-   "Naya Judge",
-   "Naya Auditor",
-   "Naya Builder"
+   "Naya Electrician",
+   "Naya Captain",
+   "Naya Mechanic"
   ],
   "last_completed": 200,
   "last_completed_at": "2026-10-15T18:34Z",
-  "rotation_cursor": "wave-199: Naya Electrician/Naya Captain/Naya Mechanic (roster order)"
+  "rotation_cursor": "wave-202: Naya Host/Naya Archivist/Naya Keeper (roster order)"
  },
  "lanes": {
   "free": [
    "ACT",
+   "BUILD",
    "GOVERN",
-   "INFRA",
    "KNOW",
+   "LAW",
    "LEARN",
    "MEMORY",
    "PRODUCT",
-   "TEAM",
-   "WIRE"
+   "PROVE"
   ],
   "held": [],
   "active": [
    {
-    "lane": "BUILD",
-    "since": "2026-10-15T18:23Z"
+    "lane": "INFRA",
+    "since": "2026-10-15T18:42Z"
    },
    {
-    "lane": "LAW",
-    "since": "2026-10-15T18:23Z"
+    "lane": "TEAM",
+    "since": "2026-10-15T18:42Z"
    },
    {
-    "lane": "PROVE",
-    "since": "2026-10-15T18:23Z"
+    "lane": "WIRE",
+    "since": "2026-10-15T18:42Z"
    }
   ]
  },
@@ -197,7 +197,7 @@
    "head": "7c63edad882f",
    "state": "draft",
    "gates": {
-    "test": null,
+    "test": "success",
     "receipt": "success",
     "team_review": "failure",
     "claim_evidence": "success",
@@ -208,8 +208,8 @@
   }
  ],
  "gates_on_tip": {
-  "test": "unknown",
-  "spec_integrity": "unknown",
+  "test": "green",
+  "spec_integrity": "green",
   "receipt": "unknown"
  },
  "blockers": [
@@ -252,27 +252,27 @@
  "sections": {
   "tip": {
    "source": "git/refs/heads/main (+commits cross-check)",
-   "age_s": 54
+   "age_s": 53
   },
   "waves_lanes": {
    "source": "wave-state.json + naya-roster.json + area-staleness.json",
-   "age_s": 54
+   "age_s": 53
   },
   "queue": {
    "source": "bottleneck-queue.md",
-   "age_s": 54
+   "age_s": 53
   },
   "wip": {
    "source": "github-api: pulls + check-runs at exact heads",
-   "age_s": 54
+   "age_s": 53
   },
   "gates_tip": {
    "source": "github-api: check-runs at tip",
-   "age_s": 54
+   "age_s": 53
   },
   "blockers": {
    "source": "curated from venue + worker sign-outs this hour",
-   "age_s": 54
+   "age_s": 53
   }
  }
 }
