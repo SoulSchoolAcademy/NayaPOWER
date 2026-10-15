@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
-**Generated:** 2026-10-14  
-**Receipt basis commit:** `92329c5795ef8a50d02adf94ee6c91c313c26daf`  
-**Inventory file count:** 1260  
+**Generated:** 2026-10-15  
+**Receipt basis commit:** `c6f29c5e8ef8a26f484207ecf8008c7ba17fb184`  
+**Inventory file count:** 1263  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -23,7 +23,7 @@
 | 10-INTERFACES | 380 |
 | 11-KNOWLEDGE | 7 |
 | 12-ENGINEERING | 25 |
-| 90-OPERATIONS | 24 |
+| 90-OPERATIONS | 27 |
 | 99-ARCHIVE | 2 |
 | ROOT | 6 |
 
@@ -1313,6 +1313,9 @@
 - `BRAIN/90-OPERATIONS/network-registry/README.md` — `f561613fb1e3` (850 bytes)
 - `BRAIN/90-OPERATIONS/network-registry/naya2-team.json` — `7ab1ab56f34e` (1497 bytes)
 - `BRAIN/90-OPERATIONS/network-registry/naya5-team.json` — `cca9bdad8f3f` (1489 bytes)
+- `BRAIN/90-OPERATIONS/ops-manuals/merge-ops.ai.md` — `f893695495fa` (5517 bytes)
+- `BRAIN/90-OPERATIONS/ops-manuals/merge-ops.human.md` — `61b4c3656dda` (1435 bytes)
+- `BRAIN/90-OPERATIONS/ops-manuals/merge-ops.machine.json` — `2783d4977b26` (5041 bytes)
 ### 99-ARCHIVE — Archive
 
 - `BRAIN/99-ARCHIVE/README.md` — `a012a595ea15` (707 bytes)
