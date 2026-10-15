@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-10-14",
-  "receipt_basis_commit": "92329c5795ef8a50d02adf94ee6c91c313c26daf",
-  "inventory_file_count": 1260,
+  "generated_at": "2026-10-15",
+  "receipt_basis_commit": "c6f29c5e8ef8a26f484207ecf8008c7ba17fb184",
+  "inventory_file_count": 1263,
   "domain_counts": {
     "00-ACTIVATION": 5,
     "00-ARCHITECTURE": 5,
@@ -19,7 +19,7 @@
     "10-INTERFACES": 380,
     "11-KNOWLEDGE": 7,
     "12-ENGINEERING": 25,
-    "90-OPERATIONS": 24,
+    "90-OPERATIONS": 27,
     "99-ARCHIVE": 2,
     "ROOT": 6
   },
@@ -6284,6 +6284,21 @@
       "path": "BRAIN/90-OPERATIONS/network-registry/naya5-team.json",
       "blob_sha": "cca9bdad8f3f636c67f52a1ca7bda53e299a4cf7",
       "size": 1489
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/ops-manuals/merge-ops.ai.md",
+      "blob_sha": "f893695495fa2dda78d41b049bf6bc0663df38a9",
+      "size": 5517
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/ops-manuals/merge-ops.human.md",
+      "blob_sha": "61b4c3656dda759a656bc1cd93fbe54c580b48dd",
+      "size": 1435
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/ops-manuals/merge-ops.machine.json",
+      "blob_sha": "2783d4977b26fec39af01ac125950e550fdefb67",
+      "size": 5041
     },
     {
       "path": "BRAIN/99-ARCHIVE/README.md",
