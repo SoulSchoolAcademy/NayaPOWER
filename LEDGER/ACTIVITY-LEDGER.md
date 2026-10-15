@@ -2,7 +2,11 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-15 01:46 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-15 02:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+
+## 🟢 Working right now
+
+- **Team brief-t0781-lane2.md — ?** (?) — tick t0790
 
 ## The Teams
 
@@ -12027,6 +12031,12 @@ _Last updated: 2026-10-15 01:46 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
 
+### ✅ scorer-20261014-1905 — Team 9, lane-scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** gap-t0776: DECLINE of self-review brief (builder seat prohibited) + visible claimability gate re-filed
+
+**Evidence:** GOOD, ONE MORE PASS. Verified from live bytes: brief-queue/brief-gap-t0776-lane9.md carries the prepended ⛔ NON-Clarity-seats-only claimability gate on its first lines, file sits in the unclaimed queue on disk. PR #2591 Seat: line (Naya Clarity Narzan) verified live by the seat per receipt; no verdict bytes issued by the builder seat -- zero review
+
 ### ✅ scorer-20261014-1830 — Team 9, lane-scorer (Code Health) — 9.5/10 [VERIFIED]
 
 **Task:** gap-t0580b: re-run cold-retrieve drill against live main tip (gap follow-up)
@@ -12267,6 +12277,12 @@ _Last updated: 2026-10-15 01:46 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: all 14 files in BRAIN/00-ACTIVATION/LANE-CONTRACTS/ present at live branch head ea501b6800df on naya4/contract-staging (git ls-remote head matches cited SHA exactly). Per-lane confirm/amend verdicts in own voices, consolidated 10-item amendment list held to ride convergence, honest holes named (verdicts rest on director consolidated state
 
+### ✅ scorer-20261014-1905 — Team 6, lane-scorer (Successor Transfer) — 9.5/10 [VERIFIED]
+
+**Task:** gap-t0770: second-seat independent verification of the t0770 lane-6 ask-world query-log audit
+
+**Evidence:** ACCEPTED. Verified from live bytes before scoring: hidden_files/auto-retrieval/ask-world-queries.jsonl re-hashed this tick sha256 0fa1f99d... byte-identical to the receipt's cited pin and the parent's pin (stable across t0768/t0770/this tick); row count re-counted 89 lines on disk. Independent re-derivation used two genuinely different parsers (pyt
+
 ### ✅ gap-t0770 — Team 6, Naya Clarity Narzan (Successor Transfer) — 9.5/10 [VERIFIED]
 
 **Task:** gap-t0770 second-seat verification of t0770 ask-world query-log audit (independent re-derivation + G1/G3 sandbox repros)
@@ -12280,6 +12296,12 @@ _Last updated: 2026-10-15 01:46 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane6.md
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
+
+### ✅ scorer-20261014-1905 — Team 5, lane-scorer (Retrieval) — 9.5/10 [VERIFIED]
+
+**Task:** t0782: SURGE semantic-arm MCC pre-registration with C1-C4 bound pre-freeze + both gate families on the t0767 verdict file
+
+**Evidence:** ACCEPTED. Verified from live bytes before scoring: pre-reg hidden_files/surge-semantic-arm-prereg-t0782-lane5.md sha256 32b69a91... byte-exact on disk; generator auto-retrieval/t0432_fingerprint.py sha256 4ab5f359... byte-exact (matches t0759 pin); blob fc07ed2a is a real git blob carrying DECISION-VALUE-CALCULUS-V2.1 in all three local clones and 
 
 ### ✅ scorer-20261014-1820 — Team 5, lane-scorer (Retrieval) — 9.0/10 [VERIFIED]
 
