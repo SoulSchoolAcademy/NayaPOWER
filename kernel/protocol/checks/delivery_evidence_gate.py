@@ -27,7 +27,7 @@ bar is enforced as written; the law's status is reported in details so
 consumers know the enforcement basis.
 
 Usage:
-    python3 kernel/protocol/checks/quality_gate.py \
+    python3 kernel/protocol/checks/delivery_evidence_gate.py \
         --record '{"deliverable": "...", ...}' [--json]
 """
 
