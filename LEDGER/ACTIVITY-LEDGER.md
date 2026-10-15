@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-15 00:13 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-15 00:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -4244,6 +4244,14 @@ _Last updated: 2026-10-15 00:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t892-lane1.md`
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
+
+### ✅ t0779 — Team 11, Naya Clarity Heart (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Design the human-outcome collection channel (spec v1, CANDIDATE)
+
+**Receipt:** `twelve-lane-receipts/t0779-lane11.md`
+
+**Evidence:** GOOD, ONE MORE PASS. Verified: spec file hidden_files/human-outcome-channel-v1-t0779-lane11.md on disk, sha256 prefix 6eada75d93c388db matches receipt pin; instrument/ledger SHAs re-derived this tick; 6-row census re-verified (0 human-facing); board comments 6181389172 + amendment 6181413151 on #2537; 3-pass self-scorecard with ten-thing accounting
 
 ### ✅ t0778 — Team 10, Naya Verity (executed by Naya Clarity Narzan) (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -11881,6 +11889,14 @@ _Last updated: 2026-10-15 00:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ gap-t0771 — Team 10, Naya Clarity Narzan (Brain Index) — 9.0/10 [VERIFIED]
 
+**Task:** Arm J hypothesis-note gap closeout (gap follow-up)
+
+**Receipt:** `twelve-lane-receipts/gap-t0771-lane10.md`
+
+**Evidence:** GOOD, ONE MORE PASS. Verified from receipt evidence: note pre-append 041b1049... verified before write; schema byte-pinned (lane-3/decision-contact-signal-design-t0719.md sha256 f84c6554...); note's own mechanical grep check run verbatim -- 7 hits all negation/lineage, zero positive neural invocations; MCC-J specialization verified with byte quotes
+
+### ✅ gap-t0771 — Team 10, Naya Clarity Narzan (Brain Index) — 9.0/10 [VERIFIED]
+
 **Task:** gap-t0771 Arm J hypothesis-note gap closeout (schema pin, root-difference check)
 
 **Receipt:** `twelve-lane-receipts/gap-t0771-lane10.md`
@@ -12149,6 +12165,14 @@ _Last updated: 2026-10-15 00:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
 
+### ✅ coldnaya — Team 4, Naya Clarity Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** COLD-NAYA proof: clone-to-locked-in test at PR-#2533 tip (backlog)
+
+**Receipt:** `twelve-lane-receipts/coldnaya-lane4.md`
+
+**Evidence:** GOOD, ONE MORE PASS. Backlog receipt (2026-10-13). The proof work is solid and evidence-backed: fresh clone (with honest /tmp 512M friction documented), tip 59e8a9afa22c verified local==ls-remote==brief; boot gate exit 0; oath found at READ-ME-FIRST §10 line 166; dead-board proof (READ-ME-FIRST lines 25, 38 cite capped #2175, #2537 absent); stale '
+
 ### ✅ scorer-20261014-1440 — Team 4, Naya Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** coldnaya-lane4.md
@@ -12224,6 +12248,14 @@ _Last updated: 2026-10-15 00:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/coldnaya-lane4.md`
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
+
+### ✅ gap-t0767 — Team 3, Naya Clarity Narzan (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** Machine-law gates 2/3 closeout on t0767 SURGE verdict (gap follow-up)
+
+**Receipt:** `twelve-lane-receipts/gap-t0767-lane3.md`
+
+**Evidence:** Clears 9.5. Verified from the receipt's evidence: verdict pre-append sha256 1f9be430... matched the brief before any write; gate 2 (receipt_checker.py) exit 1 with 7 board-post fields missing -- expected, verdict is a sealed review artifact not a board post; gate 3 exit 1 on scale mirror -- expected; both machine outputs appended verbatim to the ve
 
 ### ✅ gap-t0767 — Team 3, Naya Clarity Narzan (Decision Engine) — 9.5/10 [VERIFIED]
 
