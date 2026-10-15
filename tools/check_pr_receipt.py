@@ -7,6 +7,10 @@ at least one VERIFIED artifact handle:
   - 40-char git SHA       -> must exist in this repo (git cat-file -e)
   - repo path             -> must exist at HEAD (backtick-quoted or bare)
 
+TRAP (do not regress): a backticked BRANCH name (e.g. `naya5/foo`) is parsed
+as a repo path and will fail as a dead handle — a branch name is not a path.
+Workers must cite the branch head's 40-char SHA or the PR URL instead.
+
 Exit 0 = receipt valid. Exit 1 = fail with a plain-words reason.
 Stdlib only. No network except the URL liveness checks.
 """
@@ -85,7 +89,11 @@ def main():
 
     if dead:
         fail(f"{len(dead)} dead artifact handle(s): {', '.join(dead[:5])}. "
-             "Evidence that does not resolve is not evidence.")
+             "Evidence that does not resolve is not evidence. "
+             "TRAP: a backticked branch name (e.g. `naya5/foo`) is parsed as a "
+             "repo path and will fail here — a branch name is not a path. "
+             "Do not backtick branch names in ## Evidence; cite the branch "
+             "head's 40-char SHA or the PR URL instead.")
     if not verified:
         fail("`## Evidence` exists but contains no verifiable artifact handle "
              "(live URL, existing SHA, or existing repo path).")
