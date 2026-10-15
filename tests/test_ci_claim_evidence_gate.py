@@ -222,3 +222,93 @@ def test_run_gate_reaches_evidence_assembly():
         rc = run_gate("o/r", "1", "abc123", "/nonexistent", "token")
     # Bare attestation, no evidence: the gate must FAIL (closed), not crash.
     assert rc == 1
+
+
+# --- rate-limit hardening (w195: the 04:10Z double failure on #2603) --------
+
+import io  # noqa: E402
+import urllib.error  # noqa: E402
+
+from ci_claim_evidence_gate import EXIT_RATE_LIMITED, RateLimited  # noqa: E402
+
+
+def _http_error(code, body: bytes, headers=None):
+    return urllib.error.HTTPError(
+        url="https://api.github.com/x",
+        code=code,
+        msg="err",
+        hdrs=headers,
+        fp=io.BytesIO(body),
+    )
+
+
+def test_403_quota_body_raises_rate_limited_with_body_printed():
+    body = b'{"message":"API rate limit exceeded for user ID 1.","documentation_url":"https://docs.github.com"}'
+    with mock.patch("urllib.request.urlopen", side_effect=_http_error(403, body)):
+        try:
+            run_gate("o/r", "1", "abc123", "/nonexistent", "token")
+        except RateLimited as exc:
+            assert "RATE_LIMITED" in str(exc)
+            assert "API rate limit exceeded" in str(exc)  # body printed, not swallowed
+            assert exc.status == 403
+            return
+    raise AssertionError("run_gate did not raise RateLimited on quota 403")
+
+
+def test_403_permission_body_stays_gate_blind():
+    """Permission 403 is config/content, not weather -- never RATE_LIMITED."""
+    body = b'{"message":"Resource not accessible by integration"}'
+    with mock.patch("urllib.request.urlopen", side_effect=_http_error(403, body)):
+        try:
+            run_gate("o/r", "1", "abc123", "/nonexistent", "token")
+        except RateLimited:
+            raise AssertionError("permission 403 mislabeled RATE_LIMITED")
+        except GateBlind as exc:
+            assert "GATE_BLIND" in str(exc)
+            assert "Resource not accessible" in str(exc)  # body printed
+            return
+    raise AssertionError("run_gate did not raise GateBlind on permission 403")
+
+
+def test_429_raises_rate_limited():
+    with mock.patch("urllib.request.urlopen", side_effect=_http_error(429, b"slow down")):
+        try:
+            run_gate("o/r", "1", "abc123", "/nonexistent", "token")
+        except RateLimited:
+            return
+    raise AssertionError("run_gate did not raise RateLimited on 429")
+
+
+def test_ratelimit_header_zero_counts():
+    headers = {"X-RateLimit-Remaining": "0"}
+    with mock.patch("urllib.request.urlopen", side_effect=_http_error(403, b"{}", headers)):
+        try:
+            run_gate("o/r", "1", "abc123", "/nonexistent", "token")
+        except RateLimited:
+            return
+    raise AssertionError("run_gate did not raise RateLimited on exhausted quota header")
+
+
+def test_main_rate_limited_returns_exit_2():
+    import ci_claim_evidence_gate as gate_mod
+    env = {
+        "GITHUB_REPOSITORY": "o/r",
+        "PR_NUMBER": "1",
+        "PR_HEAD_SHA": "abc123",
+        "GITHUB_TOKEN": "token",
+    }
+    with mock.patch.dict(os.environ, env, clear=True), mock.patch.object(
+        gate_mod, "api_get", side_effect=RateLimited("x (RATE_LIMITED)", 403, "b")
+    ):
+        assert main() == EXIT_RATE_LIMITED == 2
+
+
+def test_oserror_still_plain_gate_blind():
+    with mock.patch("urllib.request.urlopen", side_effect=OSError("net down")):
+        try:
+            run_gate("o/r", "1", "abc123", "/nonexistent", "token")
+        except RateLimited:
+            raise AssertionError("OSError mislabeled RATE_LIMITED")
+        except GateBlind:
+            return
+    raise AssertionError("run_gate did not raise GateBlind on OSError")
