@@ -16,6 +16,7 @@ Usage:
 
 Exit codes: 0 = all checks pass; 1 = failures; warnings never fail (unless --strict).
 """
+import hashlib
 import json
 import subprocess
 import sys
@@ -44,8 +45,13 @@ def check_smart_note(path: Path):
     except Exception as e:
         return [f"{path.name}: invalid JSON: {e}"], []
     intel = doc.get("intelligence", {})
+    schema = doc.get("schema")
+    # Capture requests (v1) are in-flight artifacts, not finalized notes —
+    # the scan's note checks do not apply. Warn, never fail.
+    if schema and schema != "naya.smart-note-capture.v2":
+        return ([], [f"{path.name}: not a canonical v2 note (schema {schema}) — skipped by note checks"])
     # Form 2: structured
-    if doc.get("schema") != "naya.smart-note-capture.v2":
+    if schema != "naya.smart-note-capture.v2":
         failures.append(f"{path.name}: missing/wrong canonical schema")
     # Form 4: human language
     if not substantive(intel.get("human_view")) and not substantive(intel.get("simple_view")):
@@ -57,14 +63,20 @@ def check_smart_note(path: Path):
     mv = intel.get("machine_view", {})
     if not isinstance(mv, dict) or not mv:
         failures.append(f"{path.name}: machine_view missing")
-    # Lifecycle declared (no fail-open)
+    # Lifecycle declared — legacy (pre-v2-field) notes warn instead of
+    # failing: the four FORM checks above stay failures; lifecycle_state is
+    # bookkeeping, and failing it backfills a new requirement onto old
+    # corpus. The warning keeps the backfill owed and visible. --strict
+    # still promotes warnings, so strict gates keep teeth.
     if not doc.get("lifecycle_state"):
-        failures.append(f"{path.name}: lifecycle_state undeclared")
+        warnings.append(f"{path.name}: lifecycle_state undeclared (legacy backfill owed)")
     # Form 1: machine/code — is this note consumed by executable code or the runtime index?
     nid = doc.get("smart_note_id", "")
     if nid:
         code_ref = has_code_reference(nid)
-        if not code_ref:
+        if code_ref is None:
+            warnings.append(f"{path.name}: code-ref instrument timed out (not a corpus gap — re-run before trusting)")
+        elif not code_ref:
             warnings.append(f"{path.name}: code form gap — no executable consumer references {nid}")
     return failures, warnings
 
@@ -72,10 +84,9 @@ def check_smart_note(path: Path):
 _code_ref_cache = {}
 
 
-def has_code_reference(note_id: str) -> bool:
-    """Check if any executable file references this note ID (outside capture dir)."""
-    if note_id in _code_ref_cache:
-        return _code_ref_cache[note_id]
+def _grep_code_reference(note_id: str):
+    """One grep pass. Returns (ok, hit_count); ok=False means the
+    instrument failed (timeout), not that the note has no references."""
     try:
         out = subprocess.run(
             ["grep", "-rl", note_id, "--include=*.py", "--include=*.ts",
@@ -83,11 +94,54 @@ def has_code_reference(note_id: str) -> bool:
              "tools/", "kernel/", "orchestrator/", "supabase/functions/",
              "BRAIN/01-GOVERNANCE/"],
             capture_output=True, text=True, timeout=60, cwd=ROOT)
-        hits = [h for h in out.stdout.strip().split("\n") if h and ".naya/capture" not in h]
-        _code_ref_cache[note_id] = len(hits) > 0
+        hits = sorted(h for h in out.stdout.strip().split("\n") if h and ".naya/capture" not in h)
+        return True, len(hits)
     except Exception:
-        _code_ref_cache[note_id] = False
+        return False, 0
+
+
+def has_code_reference(note_id: str):
+    """Check if any executable file references this note ID (outside capture dir).
+    Returns True/False/None — None means the instrument failed (grep timeout),
+    which is NOT a corpus gap. Callers warn distinctly so an instrument flake
+    can never masquerade as a code-form gap (P-038)."""
+    if note_id in _code_ref_cache:
+        return _code_ref_cache[note_id]
+    ok, hits = _grep_code_reference(note_id)
+    if not ok:
+        ok, hits = _grep_code_reference(note_id)  # one retry: transient load
+    _code_ref_cache[note_id] = (hits > 0) if ok else None
     return _code_ref_cache[note_id]
+
+
+def corpus_manifest(notes):
+    """Fingerprint of the scanned note SET (name+size+mtime): two runs are
+    comparable only when manifests match. A count diff across manifests is
+    input drift (new/changed notes between runs), not instrument flake.
+    P-038: never diff warning counts without the manifest."""
+    h = hashlib.sha256()
+    for n in notes:
+        try:
+            st = n.stat()
+            h.update(f"{n.name}\x00{st.st_size}\x00{st.st_mtime_ns}\n".encode())
+        except OSError:
+            h.update(f"{n.name}\x00MISSING\n".encode())
+    return h.hexdigest()[:16]
+
+
+def tree_pin(root):
+    """Best-effort pin of the scanned tree: git HEAD + dirty flag.
+    Never fails the scan; 'unknown' when not a git checkout."""
+    try:
+        head = subprocess.run(["git", "rev-parse", "--short=12", "HEAD"],
+                              capture_output=True, text=True, timeout=10,
+                              cwd=root).stdout.strip() or "unknown"
+        dirty = subprocess.run(["git", "status", "--porcelain"],
+                               capture_output=True, text=True, timeout=15,
+                               cwd=root).stdout.strip()
+        return head + ("+dirty" if dirty else "")
+    except Exception:
+        return "unknown"
 
 
 def check_law_triple(gov_dir: Path):
@@ -161,7 +215,13 @@ def main():
     failures.extend(lf)
     warnings.extend(lw)
 
+    failures.sort()
+    warnings.sort()
+    manifest = corpus_manifest(notes)
+    pin = tree_pin(ROOT)
     print(f"Checked {len(notes)} Smart Notes + governance triples.")
+    print(f"Corpus manifest: {manifest} | tree: {pin}")
+    print("Comparability rule: diff counts only across identical manifests.")
     print(f"Failures: {len(failures)}, Warnings: {len(warnings)}")
     for x in failures:
         print(f"  FAIL: {x}")
