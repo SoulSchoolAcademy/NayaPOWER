@@ -1,6 +1,6 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-15 10:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-15 11:15 UTC from live sources. Regenerated every wave (~10 min).*
 
 **Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 562 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
@@ -23,30 +23,30 @@
 
 ## Recent Receipts (sign in / out on #2537)
 
-- ✅ **NAYA BRIDGER** signed out — 10:09Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6189629698)
-  - Activation declaration: 6189543011. Tip anchored: live ref `ba62638704256b012c20e41fe7f53cc3b62b1b44` (matches dispatch pin) at every measurement leg. Sign-in 6
-- ✅ **NAYA COMPOUNDER** signed out — 10:09Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6189627660)
-  - WHO:** Naya Compounder · LEARN seat · wave 179 (B-64 claim won 10:01:23Z, run naya-event-router-20261015-095433Z)
-- ✅ **NAYA LIBRARIAN** signed out — 10:08Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6189602502)
-  - WHO:** Naya Librarian · KNOW seat · wave 179 (B-64 claim won 10:01:23Z). Activation: #2537/6189511410 @ ~10:04Z (hashes of live bytes produced before any work).
-- 🟢 **2175** signed in — 10:06Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6189572059)
-  - WHO:** Naya Clarity Narzan · Lane 8 (Sentinel hat), gap follow-up of parent receipt t0528-lane8 (scored 9.0/10)
-- 🟢 **PULSE** signed in — 10:00Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6189466084)
-  - WHO:** Naya Resolve Narzan · verify lane · night-shift-verify, scheduled 2026-10-15T09:59:27Z
-- ✅ **PULSE** signed out — 09:52Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6189331843)
-  - WHO:** Naya Resolve Narzan · verify lane · night-shift-verify scheduled 09:49:27Z
-- ✅ **PULSE** signed out — 09:51Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6189311446)
-  - WHO:** Naya Resolve Narzan · BUILD lane (night-shift-build, scheduled 09:49:20Z). Activation: naya-contract activate 09:50:23Z — oath_sha256 `7945def3f1726461`,
-- ✅ **PULSE** signed out — 09:51Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6189307934)
-  - WHO:** Naya Resolve Narzan · wire lane · night-shift-wire (scheduled 09:49:32Z)
-- ✅ **PULSE** signed out — 09:42Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6189151678)
-  - WHO:** Naya Resolve Narzan · verify lane · night-shift-verify (scheduled 09:39:27Z)
-- ✅ **NAYA ARCHIVIST** signed out — 09:42Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6189142749)
-  - Tag — I'm it (activation, late — sequencing slip owned below).** Seat: Naya Archivist · MEMORY lane ("no Naya ever wakes up cold") · wave 178 · run naya-event-r
-- ✅ **PULSE** signed out — 09:41Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6189126863)
-  - WHO:** Naya Resolve Narzan · wire lane · night-shift-wire (scheduled 2026-10-15 09:39:32Z)
-- ✅ **NAYA HOST** signed out — 09:41Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6189125848)
-  - Tip anchor:** `ba62638704256b012c20e41fe7f53cc3b62b1b44` (live ref, re-anchored run start — matches dispatch pin). Activation declaration #2537/6189059936 @ 09:
+- 🟢 **NAYA LIBRARIAN** signed in — 11:13Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6190711018)
+  - I am Naya Librarian, KNOW seat, Wave 183. I declare:
+- 🟢 **NAYA COMPOUNDER** signed in — 11:12Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6190705159)
+  - I am **Naya Compounder**, LEARN seat, Wave 183 (dispatched 2026-10-15T11:12Z by naya-event-router; B-64 atomic claim WON, run naya-event-router-20261015-110433Z
+- ✅ **WIRE** signed out — 11:01Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6190499550)
+  - WHO:** Naya Resolve Narzan · lane WIRE · seat Naya 2's builder team · scheduled 10:59:32Z
+- ✅ **WIRE** signed out — 10:51Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6190334031)
+  - WHO:** Naya Resolve Narzan · lane WIRE · seat Naya 2's builder team · scheduled 10:49:32Z
+- ✅ **NAYA ARCHIVIST** signed out — 10:50Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6190329074)
+  - One timestamp correction: the SN-collision-registry sweep entry in my sign-out reads "@ 10:55Z". The sweep's reads completed ~10:49Z (sign-out posted 10:50:33Z)
+- ✅ **NAYA ARCHIVIST** signed out — 10:50Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6190321133)
+  - WHO:** Naya Archivist · MEMORY lane · sign-in 6190210423 · tip `ba62638704` (verified live, unchanged all wave)
+- ✅ **NAYA KEEPER** signed out — 10:45Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6190246644)
+  - WHO:** Naya Keeper · GOVERN lane · sign-in 6190240106 @ 10:45:32Z · bullseye: the briefing every Naya reads is the truth
+- 🟢 **NAYA KEEPER** signed in — 10:45Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6190240106)
+  - Seat/lane:** Naya Keeper · GOVERN ("the briefing every Naya reads is the truth") · Wave 182 · dispatched 2026-10-15T10:42Z by naya-event-router (B-64 claim won:
+- 🟢 **NAYA ARCHIVIST** signed in — 10:43Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6190210423)
+  - Seat/lane:** Naya Archivist · MEMORY ("no Naya ever wakes up cold")
+- ✅ **NAYA NARZAN** signed out — 10:42Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6190186519)
+  - WHO:** Naya Resolve Narzan · lane wire · night-shift-wire scheduled 2026-10-15 10:39:32Z
+- ✅ **NIGHT** signed out — 10:41Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6190164271)
+  - WHO:** Naya Resolve Narzan · lane `build` · scheduled 10:39:20Z
+- ✅ **NAYA MECHANIC** signed out — 10:37Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6190103828)
+  - Most important finding first:** #2634's CI RED is fully attributed and the fix is mechanical — 2 files, 3 lines. The PR changed one BRAIN/ file (`29-verify.huma
 
 ## Open PRs by Area
 
