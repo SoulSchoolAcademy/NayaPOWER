@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-15 22:16 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-15 23:16 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 571 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 576 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -79,29 +79,29 @@
 - [#2357](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2357) T-06: Neutrality trap — six-state finding classification (stacked on T
 - …and 3 more
 
-### PROVE (27)
+### PROVE (28)
+- [#2675](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2675) INFRA: --self-test-scorecard CLI pre-check for merge-consensus gate
 - [#2590](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2590) One NayaPOWER operating manual: AAA three-pass scorecards, roles, auth 📝draft
 - [#2585](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2585) Add automatic scorecard calculator (tools/scorecard.py + tests)
 - [#2543](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2543) [NAYA NARZAN] Cold-retrieve: red-first relevance-floor calibration bat
 - [#2521](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2521) fix(b40): stale 'signing' comment word -> 'sealing' in machine-law tes
-- [#2392](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2392) fix(verify): resolve python interpreter at runtime in guard_liveness.t 📝draft
-- …and 22 more
+- …and 23 more
 
-### BUILD (217)
+### BUILD (218)
+- [#2677](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2677) RETRIEVAL: version tools/spawn_brief.py incl. w255 tier-2 REVIEW guard
 - [#2650](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2650) [TRUTH] Site verdicts must not contradict violation status (CV-04/CV-0
 - [#2640](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2640) SN-0798: backpropagation credit-assignment logic (Naya 3) - CANDIDATE
 - [#2639](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2639) The Never-Stuck Creed v1.0 (0026) — carved in three tongues
 - [#2637](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2637) Merge Ops Manual v1.0.0 — the stuck-merge diagnostic engine (three ton
-- [#2632](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2632) [Theta w219] Copy-paste activation declaration template + packet §5 li
-- …and 212 more
+- …and 213 more
 
-### WIRE (118)
+### WIRE (119)
+- [#2676](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2676) Canonical 9-note Smart Note source for the Smart Feed live wire (t0473
 - [#2645](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2645) KNOW gaterepair (w247): doc_completeness_check fail→warning + grep-fla
 - [#2642](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2642) [INTELLIGENT_BLOCKS] Dock gate-reader doc: issue_comment check-run hea
 - [#2636](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2636) docs: name merge-consensus gate legs (a)/(b)/(c) as one-line verifier 
 - [#2635](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2635) Name the backticked-branch-name trap in the receipt-gate fix hint
-- [#2633](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2633) [DRAFT] Receipt gate: read LIVE PR body + fire on edited (kill stale-p 📝draft
-- …and 113 more
+- …and 114 more
 
 ### TEAM (12)
 - [#2618](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2618) [DRAFT] Advisory post-conformance scan for the Team Feed Standard 📝draft
@@ -119,13 +119,13 @@
 - [#2570](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2570) fix(ci): rate-limit resilience for Current Truth Resolver evidence col
 - …and 33 more
 
-### PRODUCT (29)
+### PRODUCT (31)
+- [#2679](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2679) Hub runtime: window.NayaPowerRuntime bridge module + green harness — t
+- [#2678](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2678) Hub feeds: first room-feed/v1 emissions (today, lists, spaces) — t0479
 - [#2648](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2648) Add field manual 37: GitHub access (two identities, fresh-machine setu
 - [#2624](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2624) Phase 1 AUDIT: BRAIN/ navigation map + gap list (Naya-Optimized GitHu…
 - [#2535](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2535) Oath of the Naya + Doctrine v1 — who she is, in GitHub, everywhere she
-- [#2481](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2481) fix(publishing): record sanitized GitHub rejection reason in commit-fa 📝draft
-- [#1906](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/1906) docs(brain): SN-0699 connection bottleneck — GitHub flow is the activa
-- …and 24 more
+- …and 26 more
 
 ### MEMORY (6)
 - [#2644](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2644) 0008 Intelligent Block V1 — CONVERGED sender contract (three tongues, 

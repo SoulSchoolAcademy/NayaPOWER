@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-15T22:16:27+00:00",
+ "generated_utc": "2026-10-15T23:16:39+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -279,6 +279,12 @@
    "board_lane": "#2175 lane PROVE",
    "open_prs": [
     {
+     "number": 2675,
+     "title": "INFRA: --self-test-scorecard CLI pre-check for merge-consensus gate",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2675",
+     "draft": false
+    },
+    {
      "number": 2590,
      "title": "One NayaPOWER operating manual: AAA three-pass scorecards, roles, authority, handoff",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2590",
@@ -319,15 +325,9 @@
      "title": "Add team accountability scorecard to the weekly watchdog",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2159",
      "draft": false
-    },
-    {
-     "number": 2134,
-     "title": "feat(value): Compile the Law Phase 1 \u2014 scorecard law, score-fill-ship, V2 merge-gate recei",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2134",
-     "draft": false
     }
    ],
-   "open_pr_count": 27
+   "open_pr_count": 28
   },
   {
    "id": "build",
@@ -347,6 +347,12 @@
    "active_now": true,
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
+    {
+     "number": 2677,
+     "title": "RETRIEVAL: version tools/spawn_brief.py incl. w255 tier-2 REVIEW guard (IV 8.5/10 \u2014 dock h",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2677",
+     "draft": false
+    },
     {
      "number": 2650,
      "title": "[TRUTH] Site verdicts must not contradict violation status (CV-04/CV-05 stale LIES)",
@@ -388,15 +394,9 @@
      "title": "Spectrum readout: the hive's rung distribution (-9..+9)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2628",
      "draft": false
-    },
-    {
-     "number": 2622,
-     "title": "owner-field v1: owner/owner_basis across the knowledge corpus (spec + backfill + regen emi",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2622",
-     "draft": false
     }
    ],
-   "open_pr_count": 217
+   "open_pr_count": 218
   },
   {
    "id": "wire",
@@ -416,6 +416,12 @@
    "active_now": false,
    "board_lane": "#2175 lane WIRE",
    "open_prs": [
+    {
+     "number": 2676,
+     "title": "Canonical 9-note Smart Note source for the Smart Feed live wire (t0473)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2676",
+     "draft": false
+    },
     {
      "number": 2645,
      "title": "KNOW gaterepair (w247): doc_completeness_check fail\u2192warning + grep-flake instrument fix",
@@ -457,15 +463,9 @@
      "title": "Fix completeness_gate SEAT_RE: recognize the three standing lead seats (rebased to live ti",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2627",
      "draft": false
-    },
-    {
-     "number": 2626,
-     "title": "fix(protocol): delivery_evidence_gate usage string cites the real module path",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2626",
-     "draft": false
     }
    ],
-   "open_pr_count": 118
+   "open_pr_count": 119
   },
   {
    "id": "team",
@@ -624,6 +624,18 @@
    "board_lane": "#2175 lane PRODUCT",
    "open_prs": [
     {
+     "number": 2679,
+     "title": "Hub runtime: window.NayaPowerRuntime bridge module + green harness \u2014 t0480",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2679",
+     "draft": false
+    },
+    {
+     "number": 2678,
+     "title": "Hub feeds: first room-feed/v1 emissions (today, lists, spaces) \u2014 t0479",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2678",
+     "draft": false
+    },
+    {
      "number": 2648,
      "title": "Add field manual 37: GitHub access (two identities, fresh-machine setup)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2648",
@@ -658,21 +670,9 @@
      "title": "test(proof): observe github dispatch guards on real handler",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/1736",
      "draft": false
-    },
-    {
-     "number": 1451,
-     "title": "SCAFFOLD (candidate): Ask Naya Knowledge API worker skeleton",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/1451",
-     "draft": false
-    },
-    {
-     "number": 1428,
-     "title": "feat(smart-note): SN-0300 five-voices briefing protocol + SN-0301 red-team first instantia",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/1428",
-     "draft": false
     }
    ],
-   "open_pr_count": 29
+   "open_pr_count": 31
   },
   {
    "id": "memory",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 571,
- "unassigned_prs": 217
+ "open_pr_total": 576,
+ "unassigned_prs": 218
 }
