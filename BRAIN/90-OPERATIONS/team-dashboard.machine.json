@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-15T17:16:30+00:00",
+ "generated_utc": "2026-10-15T18:18:17+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -693,6 +693,18 @@
    "board_lane": "#2175 lane MEMORY",
    "open_prs": [
     {
+     "number": 2644,
+     "title": "0008 Intelligent Block V1 \u2014 CONVERGED sender contract (three tongues, synthesis of #2643+#",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2644",
+     "draft": false
+    },
+    {
+     "number": 2643,
+     "title": "Intelligent Block Spec v1 (candidate) \u2014 dynamic composition for element 11",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2643",
+     "draft": false
+    },
+    {
      "number": 2554,
      "title": "AI Unifying: human-owned intelligence continuity and capture/distillation architecture",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2554",
@@ -717,7 +729,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 4
+   "open_pr_count": 6
   },
   {
    "id": "govern",
@@ -919,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 565,
+ "open_pr_total": 567,
  "unassigned_prs": 217
 }

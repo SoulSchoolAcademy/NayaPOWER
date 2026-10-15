@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-15 17:16 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-15 18:18 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 565 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 567 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -127,11 +127,13 @@
 - [#1736](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/1736) test(proof): observe github dispatch guards on real handler
 - …and 23 more
 
-### MEMORY (4)
+### MEMORY (6)
+- [#2644](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2644) 0008 Intelligent Block V1 — CONVERGED sender contract (three tongues, 
+- [#2643](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2643) Intelligent Block Spec v1 (candidate) — dynamic composition for elemen
 - [#2554](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2554) AI Unifying: human-owned intelligence continuity and capture/distillat
 - [#2065](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2065) fix(memory): WO1 — T11 reserve-rule capture lifecycle CANDIDATE→ACTIVE
 - [#1933](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/1933) self(trial): full-scale identity trial V2 — 28/28 PASS (cross-seat + c
-- [#1244](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/1244) Coda4/cold successor continuity
+- …and 1 more
 
 ### GOVERN (35)
 - [#2573](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2573) 0025-PERSISTENT-PROTOCOL-V1: NayaPOWER as the perpetual persistent int 📝draft
