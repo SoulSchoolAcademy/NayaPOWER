@@ -2,11 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-15 16:14 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
-
-## 🟢 Working right now
-
-- **Team brief-gap-lane-scorer-20261015-0430-lane5.md — ?** (?) — tick {'tick': 't0437', 'at': '2026-10-15T13:04Z'}
+_Last updated: 2026-10-15 16:52 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -12773,6 +12769,12 @@ _Last updated: 2026-10-15 16:14 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
 
+### ✅ lane-scorer-20261015-0920 — Team 8, Naya Clarity Narzan (lane-scorer) (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** t0594-lane8.md — RED-first acceptance battery for retrieval-authorization gate candidate, CONDITIONAL PASS (Naya Sentinel)
+
+**Evidence:** ARTIFACT VERIFIED: lane8-t0594-auth-battery/results-t0594.json sha256 ad7371f8... EXACT match; prereg mtime 07:03:52Z < results 07:04:19Z — freeze precedes run confirmed from live disk; candidate module pin == t942 pin asserted via git cat-file on remote-tree bytes (per receipt, remote branch naya/five-retrieval-auth-gate-t942); Arms A-D+F 21/21 fr
+
 ### ✅ lane-scorer-20261015-0900 — Team 8, Naya Clarity Narzan (lane-scorer) (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** t1442-lane8.md — #2453 merge calculator → HOLD; PR #2458 opened (Naya Sentinel)
@@ -12946,6 +12948,12 @@ _Last updated: 2026-10-15 16:14 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane8.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/register-flip-protocol-spec-t0770-lane8.md exists, sha256 91412fc298adf90a... == receipt pin, 16,291 bytes; lineage SHAs both re-verified on disk (t0761 3b685b90..., t0767 verdict 1f9be430..., prefix matches t0767 receipt). Clears 9.5 because: the spec pins the sealed verdict (not the brief's stale 'pending' line) af
+
+### ✅ lane-scorer-20261015-0920 — Team 7, Naya Clarity Narzan (lane-scorer) (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** t0594-lane7.md — cold second-seat blind re-judgment of t0588 injection table, AUTO-RIGHT NOT MET confirmed (Naya Conductor)
+
+**Evidence:** ARTIFACT VERIFIED: results file sha256 b5705213... EXACT match to receipt pin (the brief's 1e48/1e45 transcription slip was caught and receipt's full sha is authoritative); sealed judgment file 11a13a4c... EXACT match, sealed before reading her judgments (mtime 2026-10-13T06:59:16Z). Independent count 1/10 agreement vs her 2/10, verdict NOT MET sta
 
 ### ✅ lane-scorer-20261015-0850 — Team 7, Naya Clarity Narzan (lane-scorer) (Team Operations) — 9.0/10 [VERIFIED]
 
@@ -13335,6 +13343,12 @@ _Last updated: 2026-10-15 16:14 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: all 14 files in BRAIN/00-ACTIVATION/LANE-CONTRACTS/ present at live branch head ea501b6800df on naya4/contract-staging (git ls-remote head matches cited SHA exactly). Per-lane confirm/amend verdicts in own voices, consolidated 10-item amendment list held to ride convergence, honest holes named (verdicts rest on director consolidated state
 
+### ✅ lane-scorer-20261015-0920 — Team 6, Naya Clarity Narzan (lane-scorer) (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** t0594-lane6.md — injection-seam v0.2 prototype + measurement, AUTO-RIGHT met (Naya Heir)
+
+**Evidence:** ARTIFACT VERIFIED: retrieval/injection-seam-v0.2-results.json exists, sha16 prefix matches receipt f64261cab7e3bbdec (full sha checked). Pre-registration mtime-chain discipline honored (preregistration -> run -> judged); v0.1 verified-not-inherited; judgment protocol + auto-right rule (>=6/8 + no VOID top-1) + anti-proxy tripwire frozen BEFORE rank
+
 ### ✅ lane-scorer-20261015-0850 — Team 6, Naya Clarity Narzan (lane-scorer) (Successor Transfer) — 9.0/10 [VERIFIED]
 
 **Task:** t0588-lane6.md — SURGE done-criteria leg 1: injection seam measurement on 10 live briefs (Naya Heir)
@@ -13522,6 +13536,18 @@ _Last updated: 2026-10-15 16:14 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane6.md
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
+
+### ✅ lane-scorer-20261015-0940 — Team 5, Naya Clarity Narzan (lane-scorer) (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** t0597-lane5.md — decision-consequence probe v2 (M-with-inertia), SEALED + RUN → FALSIFIED (Naya Seeker)
+
+**Evidence:** ARTIFACT VERIFIED: instrument t0597_decision_consequence_inertia.py sha256 f6f747e37bc0e2112f470d8fb9753fce7fde87f6d8f39a4b5e4b010abec5fa1c EXACT 12-char match to receipt pin; sealed-note-t0597-decision-consequence-inertia.md sha256 6a1a3424aba0 EXACT match, mtime 1791876202 < run-output mtime 1791876213 (seal precedes run); coarse results 3c53eacf
+
+### ✅ lane-scorer-20261015-0920 — Team 5, Naya Clarity Narzan (lane-scorer) (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** gap-lane-scorer-20261015-0430-lane5.md — repaired broken provenance pin, re-ran pinned head-to-head, proved tie path (Naya Clarity Narzan)
+
+**Evidence:** ARTIFACT VERIFIED: gap-0430-lane5-scores/semantic/scores.json corpus.sha256 16d06a8abc779dc3... matches live corpus.json bytes (recomputed), pin_verified true, metrics MRR 0.8750/hit@1 0.75/hit@5 1.00 match receipt; R1 source sha 5c15f146d60f3ffe matches her repaired claim — the correction of the sibling run's broken pin (255b18b5 matched nothing) 
 
 ### ✅ lane-scorer-20261015-0910 — Team 5, Naya Clarity Narzan (lane-scorer) (Retrieval) — 9.0/10 [VERIFIED]
 
@@ -13762,6 +13788,18 @@ _Last updated: 2026-10-15 16:14 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0580b-lane5.md
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
+
+### ✅ lane-scorer-20261015-0940 — Team 4, Naya Clarity Narzan (lane-scorer) (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** t0598-lane4.md — SURGE pooling arm: dilution CONFIRMED, arm FALSIFIED (Naya Mason)
+
+**Evidence:** ARTIFACT VERIFIED: sealed-prereg-poolmax-t0598.md sha16 878effe13a76577e EXACT; arm_poolmax_t0598.py sha16 90d837bbdda5e042 EXACT; results-t0598-poolmax.json sha16 ac76e42818381f50 EXACT; prereg mtime 1791876853 < results mtime 1791876861 (seal precedes run). Dilution CONFIRMED (P6 rank 19->5, only divergence the aggregation line) and arm FALSIFIED
+
+### ✅ lane-scorer-20261015-0920 — Team 4, Naya Clarity Narzan (lane-scorer) (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** t0593-lane4.md — doc-side claim-filter + per-claim max pooling arm, verdict FALSIFIED (Naya Mason)
+
+**Evidence:** ARTIFACT VERIFIED: auto-retrieval/arm_docclaim_t0593.py sha16 3eff30f1cfa37162 live == sealed pre==post claim (F5 holds); results-t0593-docclaim.json sha16 714fe2fba31f955a exact. Pins re-pinned at action time; baseline recomputed from bytes (matches t0587 rows); dry-fire-before-seal with tripwire honored (77->42/35, non-vacuous); frozen verdict ru
 
 ### ✅ lane-scorer-20261015-0840 — Team 4, Naya Clarity Narzan (lane-scorer) (Intelligent Blocks) — 8.5/10 [VERIFIED]
 
@@ -14257,6 +14295,12 @@ _Last updated: 2026-10-15 16:14 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
 
+### ✅ lane-scorer-20261015-0940 — Team 2, Naya Clarity Narzan (lane-scorer) (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** t0596-lane2.md — fresh-seat doc-side claim-filter replication, FALSIFIED (Naya Sage)
+
+**Evidence:** ARTIFACT VERIFIED: instrument arm_docclaim_t0596.py sha256 a49bc5ab1c572f208d13e4a791eb63226d7e83aeb4d9462a86e8101d7e4d3a5b EXACT match to receipt pin; sealed-note-t0596-docclaim.md mtime 1791875974 < results-t0596-docclaim.json mtime 1791875987 (seal precedes run); results _verdict FALSIFIED matches the claimed verdict; probe_docclaim_t0596.py pre
+
 ### ✅ lane-scorer-20261015-0910 — Team 2, Naya Clarity Narzan (lane-scorer) (Learning Pipeline) — 9.0/10 [VERIFIED]
 
 **Task:** t0592-lane2.md — pooling-weight (alpha) sweep, SEALED + RUN (Naya Sage)
@@ -14487,6 +14531,12 @@ _Last updated: 2026-10-15 16:14 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
 
+### ✅ lane-scorer-20261015-0930 — Team 12, Naya Clarity Narzan (lane-scorer) (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** t0596-lane12.md — blind second-seat re-judgment of the t0591 provenance acceptance fixtures (Naya Herald)
+
+**Evidence:** ARTIFACT VERIFIED: auto-retrieval/blind-verdicts-t0596-lane12.json sha256 986beac16c97bda1274a4e4d12beb24edb4db20179604fd696de3a694bb69fa0 EXACT match; instrument provenance-acceptance-check.py 434e22a9fbcefe26bdf2652154ebb944e6187971d23e641e447d0b5f12ed16bf EXACT match to the re-pinned t0591 pin; acceptance spec de2ec65f…5130 EXACT match. Importli
+
 ### ✅ lane-scorer-20261015-0910 — Team 12, Naya Clarity Narzan (lane-scorer) (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
 **Task:** t0591-lane12.md — provenance-marker v1.1 acceptance spec (CANDIDATE) + instrument + dry run (Naya Herald)
@@ -14673,6 +14723,12 @@ _Last updated: 2026-10-15 16:14 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
 
+### ✅ lane-scorer-20261015-0930 — Team 11, Naya Clarity Narzan (lane-scorer) (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** t0595-lane11.md — observatory window verdict t0584–t0595: receipt-cost + falsification rate (Naya Heart)
+
+**Evidence:** ARTIFACT VERIFIED: lane-11/corpus_pin_t0584-t0595.json sha256 d49eef3cf9722a21436600699e17870698547deedd0df683975db58a51e7cdd9 matches claimed d49eef3cf972… prefix (22-row pin, mtimes pre-run); lane-11/verdict_cost_t0595.json fdf120f6f38ebc0053cf23f31affca23f2423b9dd9b406482c5f7e9714a78d58 matches fdf120f6f38e…; rework hits file present (56 hits, 1
+
 ### ✅ lane-scorer-20261015-0910 — Team 11, Naya Clarity Narzan (lane-scorer) (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** t0591-lane11.md — marker-conflict measurement across the brief corpus (Naya Heart)
@@ -14792,6 +14848,12 @@ _Last updated: 2026-10-15 16:14 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ lane-scorer-20261015-0940 — Team 10, Naya Clarity Narzan (lane-scorer) (Brain Index) — 8.5/10 [VERIFIED]
+
+**Task:** t0598-lane10.md — found-corpus replication design, FEASIBLE with named blockers (Naya Librarian)
+
+**Evidence:** ARTIFACT VERIFIED: found_corpus_feasibility_t0598.py + found-corpus-feasibility-t0598.json both exist; corpus_pin 9e94aba0122bc8ee EXACT match in JSON; 12/12 docs with >=1 claim, 730 claims, fidelity_failures empty, 1 changed / 11 unchanged on tasks — matches the receipt exactly. Score 8.5 (REWORK, top of band). Why not 9.5: (1) the FEASIBLE verdic
 
 ### ✅ lane-scorer-20261015-0910 — Team 10, Naya Clarity Narzan (lane-scorer) (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -15110,6 +15172,12 @@ _Last updated: 2026-10-15 16:14 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0771-lane10.md
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
+
+### ✅ lane-scorer-20261015-0930 — Team 1, Naya Clarity Narzan (lane-scorer) (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** t0595-lane1.md — served-traffic-shaped query frame for the veracity guard, closed t0591's authored-query hole as measurement (Naya Verity)
+
+**Evidence:** ARTIFACT VERIFIED: scratch-t0595-lane1/frame-t0595.json sha256 4cafb97bb65ff76e64bce59558bd6e74928efa81c3d1f2127f5532a898488efd EXACT match to receipt pin; results-t0595-livecorpus.json e48308ce31d118f707dcf7ea8edf2c43d9d66d5eaacceebc3c622d2d9f3dc232 EXACT match; prereg-t0595.json b46a272a… matches claimed prefix. Premise-rot recomputed at action t
 
 ### ✅ lane-scorer-20261015-0910 — Team 1, Naya Clarity Narzan (lane-scorer) (Verification & Proof) — 9.0/10 [VERIFIED]
 
