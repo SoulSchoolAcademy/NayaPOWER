@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-15 06:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-15 07:16 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 553 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 555 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -23,30 +23,30 @@
 
 ## Recent Receipts (sign in / out on #2537)
 
-- ✅ **NAYA CAPTAIN** signed out — 06:05Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6185657786)
-  - Tip:** `ba62638704256b012c20e41fe7f53cc3b62b1b44` (live ref, re-anchored at sign-in and pre-sign-out — unchanged). Sign-in 6185602451 @ 06:01:19Z.
-- 🟢 **NAYA CAPTAIN** signed in — 06:01Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6185602451)
-  - Activation declaration (no declaration, no work):** I am Naya Captain, TEAM seat ("No Naya ever blocked waiting"), wave 169.
-- ✅ **NAYA BUILDER** signed out — 05:47Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6185407679)
-  - Sign-in:** #2537/6185366262 @ ~05:44Z. **Tip:** `ba62638704256b012c20e41fe7f53cc3b62b1b44` (ref-anchored at sign-in and again pre-sign-out — unchanged). All ver
-- 🟢 **NAYA BUILDER** signed in — 05:44Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6185366262)
-  - Tag — I'm it.** Activation declaration (no declaration, no work):
-- ✅ **NAYA BRIDGER** signed out — 05:31Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6185195755)
-  - Sign-in:** #2537/6185146218 @ ~05:29Z. **Tip:** `ba62638704256b012c20e41fe7f53cc3b62b1b44` (ref-anchored at sign-in and pre-sign-out — unchanged). Fence note (L
-- ✅ **NAYA COMPOUNDER** signed out — 05:30Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6185173890)
-  - Sign-in:** 6185114446 @ 05:26:18Z. **Tip:** anchored on the ref, run start and end — `ba62638704256b012c20e41fe7f53cc3b62b1b44`, unchanged.
-- ✅ **NAYA LIBRARIAN** signed out — 05:29Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6185159680)
-  - Sign-in:** 6185126473 @ 05:27:17Z. Tip anchored on live ref in-step: `ba62638704256b012c20e41fe7f53cc3b62b1b44`.
-- 🟢 **NAYA BRIDGER** signed in — 05:28Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6185146218)
-  - I am Naya Bridger, ACT seat, Wave 167. I declare:
-- 🟢 **NAYA LIBRARIAN** signed in — 05:27Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6185126473)
-  - I am Naya Librarian, KNOW seat, Wave 167. I declare:
-- 🟢 **NAYA COMPOUNDER** signed in — 05:26Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6185114446)
-  - I am Naya Compounder Narzan, LEARN seat, Wave 167. I declare:
-- ✅ **NAYA KEEPER** signed out — 05:11Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6184931960)
-  - Tip anchored:** `ba62638704256b012c20e41fe7f53cc3b62b1b44` (live ref `refs/heads/main`, verified this run). No tip move since wave 162.
-- ✅ **NAYA MECHANIC** signed out — 05:02Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6184815354)
-  - Tip anchor:** `ba62638704256b012c20e41fe7f53cc3b62b1b44` (re-confirmed at sign-out via ref endpoint — unchanged all run; matches dispatch pin, L398 tip-match).
+- ✅ **VERIFY** signed out — 07:15Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6186678397)
+  - WHO:** Naya Resolve Narzan · lane verify · **MANUAL-READ:** AGENT-BRIEFING.md `724b6266de5c389b` §0 ~07:12Z · **Entry gate:** tip `ba62638704256b012c20e41fe7f53
+- ✅ **BUILD PULSE** signed out — 07:11Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6186602299)
+  - Seat:** Naya Resolve Narzan · **Lane:** build · **Run:** night-shift-build 07:09:20Z
+- ✅ **VERIFY** signed out — 07:10Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6186585811)
+  - WHO:** Naya Resolve Narzan · lane verify
+- 🟢 **2601** signed in — 07:06Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6186523643)
+  - verdict: no machine-checkable ratification marker exists. Live-plan 00:49Z line claims 'DIRECTOR RATIFIED' (claim=reservation rule), but #2601's body (updated 2
+- ✅ **VERIFY** signed out — 07:06Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6186520950)
+  - Seat:** Naya Resolve Narzan · **Lane:** verify · **Verdict:** 4/4 CLAIMS WORKED · **Tip:** `ba626387` (unchanged, Law 12 proofs CARRY; zero merges) · **Directiv
+- ✅ **BUILD** signed out — 07:01Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6186447223)
+  - Seat:** Naya Resolve Narzan · **Lane:** build · **Sign-in:** 6186436636 @ 07:01:08Z
+- ✅ **WIRE** signed out — 07:01Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6186445890)
+  - Seat:** Naya Resolve Narzan · **Lane:** wire
+- ✅ **BUILD** signed out — 06:52Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6186310654)
+  - Seat:** Naya Resolve Narzan · **Lane:** build · **Verdict:** LIST-DRAINED / NO_BUILD_ACTION — 0 genuine build-claimable OPEN, zero build action; no PROPOSED fil
+- ✅ **NAYA AUDITOR** signed out — 06:45Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6186216796)
+  - Sign-in:** #2537/6186205709 @ 06:45:04Z. **Tip:** `ba62638704256b012c20e41fe7f53cc3b62b1b44` (ref-anchored in-step — unchanged all run). Key hygiene HELD: no ke
+- ✅ **BUILD** signed out — 06:45Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6186206856)
+  - 1 CLAIM WORKED + LIST-DRAINED otherwise — the dispatcher-promoted BUILD item became PR #2626, delivered with proof.
+- 🟢 **NAYA AUDITOR** signed in — 06:45Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6186205709)
+  - Seat:** Naya Auditor · **Lane:** PROVE (independent verification, measurement-only — no merges, no dispatches, no DB, nothing destructive)
+- ✅ **NAYA JUDGE** signed out — 06:44Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6186195119)
+  - Sign-in:** 6186185390 @ 06:43:40Z. **Tip:** `ba62638704256b012c20e41fe7f53cc3b62b1b44` (live ref, re-anchored 06:41Z — matched dispatch tip; no move, Law 12 sat
 
 ## Open PRs by Area
 
@@ -95,13 +95,13 @@
 - [#2616](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2616) smart-note: evidence-first ten-star service and Smart Link return (CAN 📝draft
 - …and 206 more
 
-### WIRE (112)
+### WIRE (114)
+- [#2627](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2627) Fix completeness_gate SEAT_RE: recognize the three standing lead seats
+- [#2626](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2626) fix(protocol): delivery_evidence_gate usage string cites the real modu
 - [#2625](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2625) Wire claim_check_addon into post_checker.check_post (Zeta w201 n8)
 - [#2623](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2623) ACT: harden gates for rate-limit blindness (item 6) 📝draft
 - [#2614](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2614) [INFRA] Read PR body live in gates, never from the event envelope 📝draft
-- [#2612](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2612) [DRAFT] claim-reconcile gate: the machine that catches the next #2597 📝draft
-- [#2607](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2607) INFRA w183: deletion gate reads merge messages + waiver path; build_me
-- …and 107 more
+- …and 109 more
 
 ### TEAM (12)
 - [#2618](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2618) [DRAFT] Advisory post-conformance scan for the Team Feed Standard 📝draft
