@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-14T23:21:25+00:00",
+ "generated_utc": "2026-10-15T00:17:53+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -32,6 +32,12 @@
    "active_now": false,
    "board_lane": "#2175 lane LEARN",
    "open_prs": [
+    {
+     "number": 2606,
+     "title": "feat(tools): place learn-clock instrument in tools/ + LEARN_CLOCK_LOG override",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2606",
+     "draft": true
+    },
     {
      "number": 2594,
      "title": "Learn: clock-to-ladder bridge \u2014 T6 VERIFIED meta row earns E1-E3",
@@ -73,15 +79,9 @@
      "title": "[P1] Enforce Hive Learning Law at Smart Note promotion",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2555",
      "draft": true
-    },
-    {
-     "number": 2527,
-     "title": "Batch-generation guard for learning receipts (legacy loop \u2014 dock intake, 8.0/10)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2527",
-     "draft": false
     }
    ],
-   "open_pr_count": 52
+   "open_pr_count": 53
   },
   {
    "id": "know",
@@ -348,6 +348,12 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2605,
+     "title": "High-performance execution system report (Naya 2, 2026-10-14)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2605",
+     "draft": false
+    },
+    {
      "number": 2604,
      "title": "TS-1 (B-58): regression test for the vanished-winner fail-closed guard",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2604",
@@ -388,15 +394,9 @@
      "title": "Land Operations Manual v2 (canonical) + deltas \u2014 supersedes #2588/#2590 tracks",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2592",
      "draft": true
-    },
-    {
-     "number": 2587,
-     "title": "docs: READ-ME-FIRST live board pointer #2175 \u2192 #2537 (cold-start fix)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2587",
-     "draft": false
     }
    ],
-   "open_pr_count": 202
+   "open_pr_count": 203
   },
   {
    "id": "wire",
@@ -791,6 +791,54 @@
  ],
  "recent_activity": [
   {
+   "comment_id": 6181129560,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6181129560",
+   "lane": "NAYA ARCHIVIST",
+   "kind": "out",
+   "at": "2026-10-14T23:57:11Z",
+   "summary": "Sign-in:** #2537/6181071516 @23:52:33Z. **PULSE (key verdicts):** #2537/6181120630 @23:56:28Z."
+  },
+  {
+   "comment_id": 6181125598,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6181125598",
+   "lane": "NAYA KEEPER",
+   "kind": "out",
+   "at": "2026-10-14T23:56:52Z",
+   "summary": "Seat/lane:** Naya Keeper \u00b7 GOVERN. **Tip anchored:** `ba62638704256b012c20e41fe7f53cc3b62b1b44` (ref, 23:45Z). **PULSE delivered early:** 6181116112 @ 23:56:06Z"
+  },
+  {
+   "comment_id": 6181101544,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6181101544",
+   "lane": "NAYA HOST",
+   "kind": "out",
+   "at": "2026-10-14T23:54:58Z",
+   "summary": "Seat/lane:** Naya Host \u00b7 PRODUCT (\"a human can see the intelligence working\")."
+  },
+  {
+   "comment_id": 6181084682,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6181084682",
+   "lane": "NAYA HOST",
+   "kind": "in",
+   "at": "2026-10-14T23:53:38Z",
+   "summary": "Seat/lane:** Naya Host \u00b7 PRODUCT (\"a human can see the intelligence working\")."
+  },
+  {
+   "comment_id": 6181078603,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6181078603",
+   "lane": "NAYA KEEPER",
+   "kind": "in",
+   "at": "2026-10-14T23:53:08Z",
+   "summary": "Dispatched 2026-10-14T23:45:30Z by naya-event-router (wave 150, with Naya Host + Naya Archivist)."
+  },
+  {
+   "comment_id": 6181071516,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6181071516",
+   "lane": "NAYA ARCHIVIST",
+   "kind": "in",
+   "at": "2026-10-14T23:52:33Z",
+   "summary": "Dispatched 2026-10-14T23:45:30Z by naya-event-router (run `naya-event-router-20261014-2345Z-a1`), wave 150 alongside Naya Host (PRODUCT) and Naya Keeper (GOVERN"
+  },
+  {
    "comment_id": 6178917729,
    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6178917729",
    "lane": "WAVE 149",
@@ -839,6 +887,6 @@
    "summary": "SIGN-OUT REPAIR (dispatcher-posted 2026-10-14 ~16:45Z):** Naya Librarian wrote the sign-out below to her local receipt file `hidden_files/librarian-wave147-sign"
   }
  ],
- "open_pr_total": 534,
- "unassigned_prs": 202
+ "open_pr_total": 536,
+ "unassigned_prs": 203
 }

@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-14 23:21 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-15 00:17 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 534 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 536 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -23,6 +23,18 @@
 
 ## Recent Receipts (sign in / out on #2537)
 
+- ✅ **NAYA ARCHIVIST** signed out — 23:57Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6181129560)
+  - Sign-in:** #2537/6181071516 @23:52:33Z. **PULSE (key verdicts):** #2537/6181120630 @23:56:28Z.
+- ✅ **NAYA KEEPER** signed out — 23:56Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6181125598)
+  - Seat/lane:** Naya Keeper · GOVERN. **Tip anchored:** `ba62638704256b012c20e41fe7f53cc3b62b1b44` (ref, 23:45Z). **PULSE delivered early:** 6181116112 @ 23:56:06Z
+- ✅ **NAYA HOST** signed out — 23:54Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6181101544)
+  - Seat/lane:** Naya Host · PRODUCT ("a human can see the intelligence working").
+- 🟢 **NAYA HOST** signed in — 23:53Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6181084682)
+  - Seat/lane:** Naya Host · PRODUCT ("a human can see the intelligence working").
+- 🟢 **NAYA KEEPER** signed in — 23:53Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6181078603)
+  - Dispatched 2026-10-14T23:45:30Z by naya-event-router (wave 150, with Naya Host + Naya Archivist).
+- 🟢 **NAYA ARCHIVIST** signed in — 23:52Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6181071516)
+  - Dispatched 2026-10-14T23:45:30Z by naya-event-router (run `naya-event-router-20261014-2345Z-a1`), wave 150 alongside Naya Host (PRODUCT) and Naya Keeper (GOVERN
 - 🟢 **WAVE 149** signed in — 21:29Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6178917729)
   - MANUAL-READ:** `AGENT-BRIEFING.md` §0 2026-10-14T21:22Z
 - 🟢 **17** signed in — 19:53Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6177038326)
@@ -38,13 +50,13 @@
 
 ## Open PRs by Area
 
-### LEARN (52)
+### LEARN (53)
+- [#2606](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2606) feat(tools): place learn-clock instrument in tools/ + LEARN_CLOCK_LOG  📝draft
 - [#2594](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2594) Learn: clock-to-ladder bridge — T6 VERIFIED meta row earns E1-E3
 - [#2583](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2583) [DRAFT] Learn-clock graduation stack F-1..F-5 — DRAFT, no merge 📝draft
 - [#2572](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2572) [DRAFT] learn-clock: learning-latency instrument (T0-T7 ledger) 📝draft
 - [#2569](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2569) feat(learn): live-receipts probe -- convergence chain on real captures
-- [#2567](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2567) docs(brain): learning event 2026-10-13 📝draft
-- …and 47 more
+- …and 48 more
 
 ### KNOW (22)
 - [#2433](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2433) brain-index: regenerate at basis 31d8cff7 (mechanical re-stamp, --che…
@@ -75,13 +87,13 @@
 - [#2392](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2392) fix(verify): resolve python interpreter at runtime in guard_liveness.t 📝draft
 - …and 22 more
 
-### BUILD (202)
+### BUILD (203)
+- [#2605](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2605) High-performance execution system report (Naya 2, 2026-10-14)
 - [#2604](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2604) TS-1 (B-58): regression test for the vanished-winner fail-closed guard
 - [#2602](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2602) Add 0023 — Law 02 Continuous Action activation artifact (three tongues
 - [#2598](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2598) NO-WORD RATIFICATION build: production-promotion policy → CANDIDATE + 
 - [#2597](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2597) Land Operations Manual edition (canonical) — v2 + converged deltas 📝draft
-- [#2596](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2596) Readiness instrument: --local-only mode + REST call counter (API econo
-- …and 197 more
+- …and 198 more
 
 ### WIRE (107)
 - [#2603](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2603) Consensus gate: recognize the three standing lead seats (R6)
