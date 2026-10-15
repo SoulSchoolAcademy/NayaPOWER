@@ -224,3 +224,51 @@ def test_backfill_dry_run_does_not_mutate():
     before = idx["entries"][0].get("smart_link_verified_rev")
     sl.backfill(idx, sl.FakeVerifier({GOOD_PATH}), rev="rev1", dry_run=True)
     assert idx["entries"][0].get("smart_link_verified_rev") == before
+
+
+# --- owner emission (§5 of OWNER-FIELD-SPEC-V1) --------------------------------
+# Pinning: generate() must emit the same owner/owner_basis that
+# owner_backfill.derive_real_tree() derives for the same path. The test pins
+# the WIRING (emission agrees with the shared derivation), not the mapping
+# values — DOMAIN_OWNER v1 is PROPOSED and may change on lead confirmation;
+# when it does, both sides move together through the shared function.
+
+def _derive(path):
+    from owner_backfill import derive_real_tree
+    return derive_real_tree({"path": path})
+
+
+OTHER_PATH = ("BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/TEST/SN-1000/"
+              "IB-SMART-NOTE-20261005-sn1000-test.md")
+
+
+def test_generate_emits_owner_agreeing_with_backfill():
+    for path, verified in [(GOOD_PATH, True), (OTHER_PATH, False)]:
+        verifier = sl.FakeVerifier({path}) if verified else None
+        frag = sl.generate(path, make_index([]), verifier=verifier, rev="r1")
+        owner, basis = _derive(path)
+        assert frag["owner"] == owner, f"owner drift on {path}"
+        assert frag["owner_basis"] == basis, f"owner_basis drift on {path}"
+
+
+def test_generate_owner_present_and_nonempty_unverified():
+    # owner emission must not depend on verification state: a PENDING
+    # fragment carries its owner too — never silently ownerless.
+    frag = sl.generate(OTHER_PATH, make_index([]))
+    assert frag["smart_link_status"] == "PENDING"
+    assert frag["owner"] and isinstance(frag["owner"], str)
+    assert frag["owner_basis"] and isinstance(frag["owner_basis"], str)
+    assert frag["owner_basis"].startswith("area_lead:"), (
+        "basis must record which derivation fired (P-003: no decorative fields)")
+
+
+def test_generate_owner_refuses_when_derivation_unavailable():
+    # fail closed: an unimportable derivation raises instead of emitting
+    # an ownerless fragment.
+    real = sl.derive_real_tree
+    sl.derive_real_tree = None
+    try:
+        with pytest.raises(RuntimeError, match="ownerless"):
+            sl.generate(GOOD_PATH, make_index([]))
+    finally:
+        sl.derive_real_tree = real

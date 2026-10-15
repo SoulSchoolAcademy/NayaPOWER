@@ -30,6 +30,19 @@ import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 
+# OWNER-FIELD-SPEC-V1 §5: owner/owner_basis emission lives in ONE place —
+# tools/owner_backfill.py implements the derivation rules; this tool emits
+# them. Same function, same bytes, zero-diff by construction. The emission is
+# wired through the shared derive_real_tree() (path-only, area_lead) so the
+# fragment always agrees with what a backfill re-apply would stamp; the
+# provenance/collective rules apply to corpus files, not to generation-time
+# fragments. DOMAIN_OWNER v1 stays PROPOSED — the wiring pins agreement, not
+# the mapping values.
+try:
+    from owner_backfill import derive_real_tree
+except ImportError:  # pragma: no cover - fail closed, never silently ownerless
+    derive_real_tree = None
+
 REPO = "SoulSchoolAcademy/NayaPOWER"
 LINK_RE = re.compile(r"^https://github\.com/SoulSchoolAcademy/NayaPOWER/blob/main/")
 BRANCH_URL_RE = re.compile(r"github\.com/SoulSchoolAcademy/NayaPOWER/blob/(?!main/)")
@@ -222,12 +235,22 @@ def generate(projection_path: str, index: dict, verifier=None,
     if not verified:
         status = "PENDING"
     now = utcnow()
+    if derive_real_tree is None:  # fail closed: never emit an ownerless fragment
+        raise RuntimeError(
+            "owner_backfill.py could not be imported: refusing to emit an "
+            "ownerless smart-link fragment (§5 of OWNER-FIELD-SPEC-V1)")
+    # §5: the fragment carries its owner at generation time, derived from the
+    # projection path alone via the shared derive_real_tree() — the same
+    # function owner_backfill.py uses, so a backfill re-apply is a zero diff.
+    owner, owner_basis = derive_real_tree({"path": projection_path})
     fragment = {
         "projection_path": projection_path,
         "smart_link": url,
         "smart_link_status": status,
         "smart_link_verified_at": now if verified else "",
         "smart_link_verified_rev": rev if verified else "",
+        "owner": owner,
+        "owner_basis": owner_basis,
     }
     if capture:
         fragment["capture_event_id"] = capture.get("event_id", "")
