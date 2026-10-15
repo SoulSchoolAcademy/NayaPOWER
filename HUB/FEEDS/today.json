@@ -1,0 +1,408 @@
+{
+  "contract": "room-feed/v1",
+  "room": "today",
+  "emitted_at": "2026-10-15T16:01:08.545099-07:00",
+  "source_ref": "engine-job:hub-feeds-emitter-t0479",
+  "items": [
+    {
+      "id": "idx-11c10516-42e9-45b9-b2b9-57c40e5a37c6",
+      "title": "Causal Uncertainty Without False Blame — four dimensions, never one confident story",
+      "topics": [
+        "INTELLIGENT_BLOCK"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "INTELLIGENT_BLOCK · status DURABLE · event 2026-10-15 18:41:02.054932+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-4b2057d4-18f1-43d6-b6a0-c17682a24370",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-10-15 18:41:02.034686+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-9d0004d1-f7a8-4061-8790-0266ae348cf0",
+      "title": "Causal Execution Proof Contract — evidence establishes what happened, causal verification establishes why",
+      "topics": [
+        "INTELLIGENT_BLOCK"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "INTELLIGENT_BLOCK · status DURABLE · event 2026-10-15 18:41:01.22762+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-af2ed793-bc66-4ab2-b4b4-36d778cfb449",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-10-15 18:41:01.201022+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-14eb28c6-623f-4e56-ae71-f58c9f1ea127",
+      "title": "Responsibility-Boundary Contract — control determines responsibility, contracts define guarantees",
+      "topics": [
+        "INTELLIGENT_BLOCK"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "INTELLIGENT_BLOCK · status DURABLE · event 2026-10-15 18:41:00.387502+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-7154815b-f830-415e-9228-395bcb5a43cf",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-10-15 18:41:00.350455+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-935d6c1a-fd86-4627-9fdd-97197e0d0054",
+      "title": "Fairness Assumption Audit Protocol (FAAP) — four gates before any assumption may restrict the model",
+      "topics": [
+        "INTELLIGENT_BLOCK"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "INTELLIGENT_BLOCK · status DURABLE · event 2026-10-15 18:40:59.559873+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-7c1d7b5b-cc1e-4d6f-acff-f8000673457e",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-10-15 18:40:59.037368+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-7da1639a-9240-445e-a369-ee3f7d64e297",
+      "title": "PATCH response is the verify",
+      "topics": [
+        "INTELLIGENT_BLOCK"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "INTELLIGENT_BLOCK · status DURABLE · event 2026-10-14 12:41:49.203+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-3c145f3c-4033-4a3d-b290-60486f384d70",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-10-14 12:41:48.737787+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-f763202a-b4c8-4140-93c5-4a695d3b8b2e",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-10-10 17:26:12.068399+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-52782a22-2d69-452a-ae3c-398328531c70",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-10-10 17:26:12.068399+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-4fe5be75-9466-45d5-883c-7eb410bce432",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-10-10 17:26:12.068399+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-4de376bd-9c3c-4b62-9e4f-a302df57d5a9",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-10-10 17:26:12.068399+00"
+        }
+      ]
+    },
+    {
+      "id": "art-ae9bc7b0-5903-494c-a33a-81a9735b5d64",
+      "title": "EXP-2026-10-10-001/4: a scorer who knows which rows are experimental is not blind; the mapping must stay sealed until sc",
+      "topics": [
+        "SMART_NOTE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "EXP-2026-10-10-001/4: a scorer who knows which rows are experimental is not blind; the mapping must stay sealed until scores are posted."
+        }
+      ]
+    },
+    {
+      "id": "art-0390854c-faa4-429a-9b3a-25644b90ef05",
+      "title": "EXP-2026-10-10-001/3: every production write must carry its authorization reference; a write without provenance is indis",
+      "topics": [
+        "SMART_NOTE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "EXP-2026-10-10-001/3: every production write must carry its authorization reference; a write without provenance is indistinguishable from an accident."
+        }
+      ]
+    },
+    {
+      "id": "art-7130a016-d884-463f-950f-7fe659fcfff4",
+      "title": "EXP-2026-10-10-001/1: a retried capture with the same idempotency key must return the original receipt, never a duplicat",
+      "topics": [
+        "SMART_NOTE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "EXP-2026-10-10-001/1: a retried capture with the same idempotency key must return the original receipt, never a duplicate record."
+        }
+      ]
+    },
+    {
+      "id": "art-3793751e-fb30-440c-81f3-6848048d998d",
+      "title": "EXP-2026-10-10-001/2: a capture missing required fields must fail with a named error; it must never write a partial reco",
+      "topics": [
+        "SMART_NOTE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "EXP-2026-10-10-001/2: a capture missing required fields must fail with a named error; it must never write a partial record."
+        }
+      ]
+    },
+    {
+      "id": "art-21b7f6db-59d3-4f7f-8bbb-bab856abed83",
+      "title": "Coda 1 capture-proof run.",
+      "topics": [
+        "SMART_NOTE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "Coda 1 capture-proof run."
+        }
+      ]
+    },
+    {
+      "id": "art-8df86bb3-6d4c-42e4-8092-bbfa7b0db412",
+      "title": "End-to-end proof that the deployed capture chain works.",
+      "topics": [
+        "SMART_NOTE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "End-to-end proof that the deployed capture chain works."
+        }
+      ]
+    }
+  ]
+}
