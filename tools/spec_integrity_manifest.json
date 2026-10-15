@@ -48,7 +48,11 @@
     },
     {
       "path": "BRAIN/01-GOVERNANCE/0008-operating-code-v2.machine.json",
-      "reason": "DRAFT \u2014 Operating Code V2 not yet ratified by the Human Director (PR #2087 open, awaiting ratification). Pin here upon ratification with the DIRECTOR-RATIFIED envelope."
+      "reason": "DRAFT — Operating Code V2 not yet ratified by the Human Director (PR #2087 open, awaiting ratification). Pin here upon ratification with the DIRECTOR-RATIFIED envelope."
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0023-law-02-continuous-action-activation-v1.machine.json",
+      "reason": "Status CANDIDATE (not DIRECTOR-RATIFIED): law-02 activation spec, ratified_by is null -- only Shawn Vibert's ratification counts, and this manifest pins RATIFIED projections only (pinning it would fail the check's own envelope validation, same as the 0006 precedent). Pin here upon DIRECTOR-RATIFIED envelope adoption or ratification. Recorded by the repair lane 2026-10-15 closing PR #2602's authoring fix list (a)."
     }
   ],
   "note": "Pins are git blob SHAs of the ratified projections as they existed on live main at establishment. Any deliberate spec change must update the pins in the same (reviewed) PR. A pin mismatch is spec drift until proven otherwise. This manifest is a drift detector anchored at a known-good point, not a re-proof of the original ratification.",
