@@ -10,6 +10,8 @@ Levels: PULSE (8 fields), RECEIPT (7 fields), EVENT (8 questions).
 
 import re
 
+from claim_check_addon import check_claim  # receipt-presence gate (w201)
+
 ROSTER = ["Naya Alpha", "Naya Beta", "Naya Gamma", "Naya Delta",
           "Naya Epsilon", "Naya Zeta", "Naya Eta", "Naya Theta",
           "Naya Iota", "Naya Kappa", "Naya Lambda", "Naya Mu",
@@ -247,7 +249,8 @@ def check_post(body, level="RECEIPT", roster=ROSTER):
     for name, fn in [("identity", lambda b: check_identity(b, roster)),
                      ("level", lambda b: check_level(b, level)),
                      ("evidence", check_evidence),
-                     ("score", check_score)]:
+                     ("score", check_score),
+                     ("claim", check_claim)]:
         ok, detail = fn(body)
         findings.append((name, ok, detail))
     verdict = "PASS" if all(ok for _, ok, _ in findings) else "FLAG"
@@ -259,7 +262,8 @@ def describe(verdict_findings):
     verdict, findings = verdict_findings
     bad = [f"{n}: {d}" for n, ok, d in findings if not ok]
     if verdict == "PASS":
-        return "PASS — identity, fields, evidence, and score meaning present"
+        return ("PASS — identity, fields, evidence, claim receipts, "
+                "and score meaning present")
     return "FLAG — " + "; ".join(bad)
 
 
