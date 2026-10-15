@@ -12,7 +12,17 @@ bootstrap, WIRING.md).
 Commands:
   capture --title ... --evidence ... [--ts-event ISO]   # T0 (event) + T1 (captured)
   triage <lesson_id> --verdict PROMOTE|LOG|DROP --evidence ... [--ts ISO]  # T2
+  verify <lesson_id> --evidence ... [--ts ISO]             # T6 (dispatcher fold: lesson independently VERIFIED by a different seat)
+  compound <lesson_id> --evidence ... [--ts ISO]           # T7 (director review: lesson ADOPTED, later mechanism references it)
   status                                                 # dashboard: complete_through, lags, VERIFIED count
+
+LIVE OWNERS (who calls the T6/T7 leg in production):
+  T6 verify: the dispatcher at fold time — ONLY when the folded sign-out carries
+  evidence that a DIFFERENT seat independently verified the lesson (verifier named
+  + receipt). --evidence names that sign-out comment id. Never manufactured.
+  T7 compound: the director's weekly review — when a lesson earns adopted_utc in
+  lessons.jsonl because a later mechanism references it. --evidence names the
+  review note.
 
 T3+ stay on the hook CLI until their paths carry LC- ids: T3 needs a Smart Note
 that names the LC- id; T4 needs briefs that name the LC- ids of T3 lessons.
@@ -122,6 +132,30 @@ def cmd_triage(args):
     return 0
 
 
+def cmd_verify(args):
+    """T6 VERIFIED — dispatcher fold: lesson independently verified by a different seat."""
+    clock = LearnClock()
+    rec = clock.emit(args.lesson_id, 6, ts=args.ts)
+    _meta_write(args.lesson_id, 6, None,
+                f"VERIFIED :: {args.evidence}",
+                event_ts=rec["ts"])
+    print(json.dumps({"lesson_id": args.lesson_id, "stage": "T6_VERIFIED",
+                      "evidence": args.evidence}, indent=2))
+    return 0
+
+
+def cmd_compound(args):
+    """T7 COMPOUNDED — director review: lesson adopted by a later mechanism."""
+    clock = LearnClock()
+    rec = clock.emit(args.lesson_id, 7, ts=args.ts)
+    _meta_write(args.lesson_id, 7, None,
+                f"COMPOUNDED :: {args.evidence}",
+                event_ts=rec["ts"])
+    print(json.dumps({"lesson_id": args.lesson_id, "stage": "T7_COMPOUNDED",
+                      "evidence": args.evidence}, indent=2))
+    return 0
+
+
 def cmd_status(_args):
     clock = LearnClock()
     rows = []
@@ -155,6 +189,18 @@ def main(argv=None):
     p.add_argument("--evidence", required=True, help="fold entry naming the verdict (required, fail-closed)")
     p.add_argument("--ts", default=None, help="ISO UTC timestamp of the verdict (retroactive only)")
     p.set_defaults(fn=cmd_triage)
+
+    p = sub.add_parser("verify", help="T6 at dispatcher fold (different-seat independent verification)")
+    p.add_argument("lesson_id")
+    p.add_argument("--evidence", required=True, help="verifier's sign-out comment id / receipt (required, fail-closed)")
+    p.add_argument("--ts", default=None, help="ISO UTC timestamp of the verification (retroactive only)")
+    p.set_defaults(fn=cmd_verify)
+
+    p = sub.add_parser("compound", help="T7 at director review (lesson adopted by a later mechanism)")
+    p.add_argument("lesson_id")
+    p.add_argument("--evidence", required=True, help="director review note naming the adopting mechanism (required, fail-closed)")
+    p.add_argument("--ts", default=None, help="ISO UTC timestamp of the adoption (retroactive only)")
+    p.set_defaults(fn=cmd_compound)
 
     p = sub.add_parser("status", help="learning dashboard")
     p.set_defaults(fn=cmd_status)

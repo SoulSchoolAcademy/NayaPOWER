@@ -145,6 +145,95 @@ class WireTests(unittest.TestCase):
         self.assertEqual(t2_meta["verdict"], "PROMOTE")
 
 
+class WireT6T7Tests(unittest.TestCase):
+    """Alpha w189: verify (T6) and compound (T7) follow the triage leg's shape —
+    evidence required, clock enforces order, fail-closed on OUT_OF_ORDER.
+    T6's live owner is the dispatcher fold (different-seat independent
+    verification); T7's live owner is the director review (adopted_utc)."""
+
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.clock_path = Path(self.tmp.name) / "clock.jsonl"
+        self._env = dict(os.environ)
+        os.environ["LEARN_CLOCK_WATERMARK"] = str(Path(self.tmp.name) / "wm.json")
+        self._orig = LearnClock.__init__
+
+        def patched(self, path=self.clock_path):
+            self.path = Path(path)
+            self.path.parent.mkdir(parents=True, exist_ok=True)
+
+        LearnClock.__init__ = patched
+        self._orig_meta = wire._meta_write
+        tmp_meta = Path(self.tmp.name) / "meta.jsonl"
+
+        def meta(lesson_id, stage, title, evidence, event_ts=None, **extra):
+            with open(tmp_meta, "a", encoding="utf-8") as f:
+                f.write(json.dumps({"lesson_id": lesson_id, "stage": stage,
+                                    "title": title, "evidence": evidence,
+                                    "ts": event_ts, **extra}) + "\n")
+
+        wire._meta_write = meta
+        self.meta_path = tmp_meta
+
+    def tearDown(self):
+        LearnClock.__init__ = self._orig
+        wire._meta_write = self._orig_meta
+        os.environ.clear()
+        os.environ.update(self._env)
+        self.tmp.cleanup()
+
+    def _mint_through_t5(self, lid):
+        clock = LearnClock()
+        for stage in range(6):  # T0..T5 staged out-of-band (hook CLI owns T3+ today)
+            clock.emit(lid, stage)
+        return clock
+
+    def test_verify_without_t5_fails_closed(self):
+        clock2 = LearnClock()
+        clock2.emit("LC-20990101-002", 0)
+        clock2.emit("LC-20990101-002", 1)
+        rc = wire.main(["verify", "LC-20990101-002", "--evidence", "comment-123"])
+        self.assertEqual(rc, 2)  # OUT_OF_ORDER, fail-closed
+
+    def test_verify_after_t5_marks_verified(self):
+        lid = "LC-20990101-003"
+        self._mint_through_t5(lid)
+        rc = wire.main(["verify", lid, "--evidence", "comment-123"])
+        self.assertEqual(rc, 0)
+        st = LearnClock().status(lid)
+        self.assertNotIn("T6_VERIFIED", st["missing"])
+
+    def test_verify_writes_t6_meta_row(self):
+        lid = "LC-20990101-004"
+        self._mint_through_t5(lid)
+        wire.main(["verify", lid, "--evidence", "comment-123"])
+        rows = [json.loads(l) for l in self.meta_path.read_text().splitlines()]
+        t6 = [r for r in rows if r["lesson_id"] == lid and r["stage"] == 6]
+        self.assertEqual(len(t6), 1)
+        self.assertIn("comment-123", t6[0]["evidence"])
+
+    def test_compound_without_verify_fails_closed(self):
+        lid = "LC-20990101-005"
+        self._mint_through_t5(lid)
+        rc = wire.main(["compound", lid, "--evidence", "review-note-7"])
+        self.assertEqual(rc, 2)  # T7 needs T6 first
+
+    def test_compound_after_verify_complete_through_t7(self):
+        lid = "LC-20990101-006"
+        self._mint_through_t5(lid)
+        self.assertEqual(wire.main(["verify", lid, "--evidence", "comment-123"]), 0)
+        self.assertEqual(wire.main(["compound", lid, "--evidence", "review-note-7"]), 0)
+        st = LearnClock().status(lid)
+        self.assertNotIn("T7_COMPOUNDED", st["missing"])
+        self.assertTrue(st["complete_through"].startswith("T7"))
+
+    def test_evidence_required_fail_closed(self):
+        lid = "LC-20990101-007"
+        self._mint_through_t5(lid)
+        with self.assertRaises(SystemExit):
+            wire.main(["verify", lid])  # --evidence required by argparse
+
+
 class WireWatermarkTests(unittest.TestCase):
     """Eta w175: the wire's capture must consult t0-broadcast-watermark.json
     BEFORE minting a lesson id, mirroring Alpha's w174 capture-side check
