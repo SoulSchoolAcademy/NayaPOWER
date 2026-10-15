@@ -78,7 +78,21 @@ produces. Its `--check` compares against the generator's own output, and
 be updated to emit `owner`/`owner_basis` per this spec in the same commit as the
 backfill, or the check fails as drift. Same for `tools/smart_link.py::generate()`
 (index writer): new entries get owner at generation time per these rules.
-NEXT-WORKER WORK — not done this wave.
+DONE w200 (Beta): `generate()` emits owner/owner_basis via shared
+`derive_real_tree()` from `tools/owner_backfill.py` (path-only), fail-closed,
+never silently ownerless; 3 pinning tests in `tests/test_smart_link_generator.py`.
+MEASURED w202 (Beta, at this head): index backfill vs the shared derivation
+agrees on 631/632 index entries. The one divergence is
+`IB-SMART-NOTE-20261014-sn0797` — stored `owner: Naya Mu`, basis `provenance`
+(spec rule 1: the entry's provenance bytes name the seat), while `generate()`'s
+path-only derivation (rule 3) would emit Naya Beta. `derive_real_tree()`
+implements rule 3 only; rules 1–2 are not wired into `generate()`.
+NEXT-WORKER WORK: route `generate()` through the FULL ordered derivation
+(rules 1–2–3) — or document why rule 1 cannot fire at generation time — so
+emission==backfill holds for every entry, then re-measure at 632/632.
+What this update does NOT claim: it does not change DOMAIN_OWNER v1 values;
+it does not re-certify the 3 w200 pinning tests beyond their stated scope
+(wiring, not mapping values).
 
 ## What this does NOT claim
 
