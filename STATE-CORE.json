@@ -1,0 +1,278 @@
+{
+ "schema": "nayapower-state-core/v1",
+ "generated_utc": "2026-10-15T17:14:05Z",
+ "writer": "state-core-builder.py (single writer; all others read-only)",
+ "tip": {
+  "sha": "8bd2a9f70bac2847f38dd6d82a9d0e9f8d250d56",
+  "short": "8bd2a9f70bac",
+  "verified_how": "ref+commits-agree",
+  "checked_utc": "2026-10-15T17:13:17Z"
+ },
+ "venue": {
+  "live": 2641,
+  "archive": [
+   2537
+  ]
+ },
+ "waves": {
+  "active": 198,
+  "active_seats": [
+   "Naya Host",
+   "Naya Archivist",
+   "Naya Keeper"
+  ],
+  "last_completed": 197,
+  "last_completed_at": "2026-10-15T16:44Z",
+  "rotation_cursor": "wave-199: Naya Compounder/Naya Librarian/Naya Bridger (roster order)"
+ },
+ "lanes": {
+  "free": [
+   "ACT",
+   "BUILD",
+   "INFRA",
+   "KNOW",
+   "LAW",
+   "LEARN",
+   "PROVE",
+   "TEAM",
+   "WIRE"
+  ],
+  "held": [],
+  "active": [
+   {
+    "lane": "GOVERN",
+    "since": "2026-10-15T16:50Z"
+   },
+   {
+    "lane": "MEMORY",
+    "since": "2026-10-15T16:50Z"
+   },
+   {
+    "lane": "PRODUCT",
+    "since": "2026-10-15T16:50Z"
+   }
+  ]
+ },
+ "queue": {
+  "actionable": 31,
+  "proposed": 5,
+  "top": [
+   {
+    "id": "B-28",
+    "title": "#2325's merged gate still carries the scorecard's exact delta \u2014 vacuous identifier test + "
+   },
+   {
+    "id": "B-33",
+    "title": "test_learn_compound_scale truth_must_hold_quote_present scored 0 vs 9"
+   },
+   {
+    "id": "B-36",
+    "title": "wire the 14-lesson activation checklist into the real boot gate"
+   },
+   {
+    "id": "B-37",
+    "title": "rebuild the #2012 GitHub-projection diagnostic against current main"
+   },
+   {
+    "id": "B-38",
+    "title": "reconcile PROTOCOL.md candidate status vs AGENTS.md canonical-law framing"
+   }
+  ]
+ },
+ "wip": [
+  {
+   "pr": 2635,
+   "head": "df0d3ecb40d3",
+   "state": "open",
+   "gates": {
+    "test": "success",
+    "receipt": "success",
+    "team_review": "failure",
+    "claim_evidence": "success",
+    "delivery": "success"
+   },
+   "iv_ready": false,
+   "owner": "review"
+  },
+  {
+   "pr": 2636,
+   "head": "7e4b37b5eb88",
+   "state": "open",
+   "gates": {
+    "test": "success",
+    "receipt": "success",
+    "team_review": "success",
+    "claim_evidence": "success",
+    "delivery": "success"
+   },
+   "iv_ready": true,
+   "owner": "dock"
+  },
+  {
+   "pr": 2637,
+   "head": "e2f90a2d12c0",
+   "state": "open",
+   "gates": {
+    "test": "success",
+    "receipt": "success",
+    "team_review": "failure",
+    "claim_evidence": "failure",
+    "delivery": "failure"
+   },
+   "iv_ready": false,
+   "owner": "review"
+  },
+  {
+   "pr": 2638,
+   "head": "7ffc79f8463b",
+   "state": "open",
+   "gates": {
+    "test": "failure",
+    "receipt": "failure",
+    "team_review": "failure",
+    "claim_evidence": "success",
+    "delivery": "success"
+   },
+   "iv_ready": false,
+   "owner": "authoring"
+  },
+  {
+   "pr": 2639,
+   "head": "1182e52d0661",
+   "state": "open",
+   "gates": {
+    "test": "success",
+    "receipt": "success",
+    "team_review": "failure",
+    "claim_evidence": "failure",
+    "delivery": "failure"
+   },
+   "iv_ready": false,
+   "owner": "review"
+  },
+  {
+   "pr": 2640,
+   "head": "f29d297ac0bd",
+   "state": "open",
+   "gates": {
+    "test": "failure",
+    "receipt": "success",
+    "team_review": "failure",
+    "claim_evidence": "failure",
+    "delivery": "failure"
+   },
+   "iv_ready": false,
+   "owner": "authoring"
+  },
+  {
+   "pr": 2642,
+   "head": "8dc07386b342",
+   "state": "open",
+   "gates": {
+    "test": "failure",
+    "receipt": "failure",
+    "team_review": "failure",
+    "claim_evidence": "success",
+    "delivery": "success"
+   },
+   "iv_ready": false,
+   "owner": "authoring"
+  },
+  {
+   "pr": 2633,
+   "head": "af831406d7a0",
+   "state": "draft",
+   "gates": {
+    "test": "success",
+    "receipt": "success",
+    "team_review": "failure",
+    "claim_evidence": "success",
+    "delivery": "success"
+   },
+   "iv_ready": false,
+   "owner": "review"
+  },
+  {
+   "pr": 2623,
+   "head": "cd5fba56276e",
+   "state": "draft",
+   "gates": {
+    "test": "success",
+    "receipt": "failure",
+    "team_review": "failure",
+    "claim_evidence": "success",
+    "delivery": "failure"
+   },
+   "iv_ready": false,
+   "owner": "review"
+  }
+ ],
+ "gates_on_tip": {
+  "test": "green",
+  "spec_integrity": "green",
+  "receipt": "unknown"
+ },
+ "blockers": [
+  {
+   "id": "BLK-noword",
+   "what": "NO-WORD adjudication overdue (~5h past 2026-10-15 12:00Z answer-by)",
+   "owner": "dock/main-seat",
+   "since": "2026-10-15T12:00:00Z",
+   "unblock": "adjudicate or formally extend the answer-by"
+  },
+  {
+   "id": "BLK-2636",
+   "what": "PR #2636 all 16 gates green but unmerged \u2014 merge decision parked",
+   "owner": "dock lane",
+   "since": "2026-10-15T16:09:47Z",
+   "unblock": "dock executes protocol merge or names the hold"
+  },
+  {
+   "id": "BLK-l418",
+   "what": "L418 brain-index drift recurrences: #2640 (Naya 3) and #2642 (Zeta) \u2014 regen not landed",
+   "owner": "authoring lanes",
+   "since": "2026-10-15T15:24:33Z",
+   "unblock": "python3 tools/regenerate_brain_index.py + commit 3 index files, per PR"
+  },
+  {
+   "id": "BLK-w196",
+   "what": "Wave 196 closed with no closeout receipt found on either venue",
+   "owner": "dispatcher",
+   "since": "2026-10-15T16:23:00Z",
+   "unblock": "reconstruct closeout from wave-state.json or void the wave record"
+  },
+  {
+   "id": "BLK-review",
+   "what": "#2639/#2637 need independent cross-seat review (Team-review red)",
+   "owner": "review lanes",
+   "since": "2026-10-15T15:22:16Z",
+   "unblock": "first-available qualified seat scores exact head"
+  }
+ ],
+ "sections": {
+  "tip": {
+   "source": "git/refs/heads/main (+commits cross-check)",
+   "age_s": 48
+  },
+  "waves_lanes": {
+   "source": "wave-state.json + naya-roster.json + area-staleness.json",
+   "age_s": 48
+  },
+  "queue": {
+   "source": "bottleneck-queue.md",
+   "age_s": 48
+  },
+  "wip": {
+   "source": "github-api: pulls + check-runs at exact heads",
+   "age_s": 48
+  },
+  "gates_tip": {
+   "source": "github-api: check-runs at tip",
+   "age_s": 48
+  },
+  "blockers": {
+   "source": "curated from venue + worker sign-outs this hour",
+   "age_s": 48
+  }
+ }
+}
