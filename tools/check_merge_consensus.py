@@ -13,7 +13,8 @@ Reads from env:
 Seat identity: the team shares one GitHub account, so GitHub logins cannot
 distinguish seats. Seats are identified by signed tags instead:
   - PR body must declare:  Seat: Naya N   (a numeric seat, e.g. "Naya 2",
-    or one of the 12 named seats — Alpha..Mu, e.g. "Seat: Naya Epsilon")
+    or one of the 12 named seats — Alpha..Mu, e.g. "Seat: Naya Epsilon",
+    or one of the three lead seats by full name — e.g. "Seat: Naya Clarity Narzan")
   - Reviewer posts a comment:  [NAYA M · REVIEW] ... APPROVED ...
     (the team's IV sign-out verdict format — "## VERDICT: MERGE RECOMMENDED"
     with a seat tag — is also accepted as a review)
@@ -54,9 +55,16 @@ API = "https://api.github.com"
 # "Naya <Title>" (e.g. "Naya Epsilon"); the legacy numeric seats 1-5 keep
 # working exactly as before. One shared id pattern so the author-declaration
 # rule and the review/scorecard rules recognize exactly the same seats.
+# The three lead seats (Shawn, 2026-10-13 ~19:50 PDT — lead-qualified naming
+# law): Clarity, Resolve, Verity. They sign with FULL names — "Naya Clarity Narzan" /
+# "Naya Resolve Narzan" / "Naya Verity Narzan" — because the law says "the last name
+# tells them apart" (lead "Naya Verity Narzan" vs lane agent "Naya Verity Verity").
+# Full forms are listed FIRST in the alternation so the regex matches the longest
+# name; bare "Naya Verity" (no surname) is ambiguous and NOT recognized — fail closed.
+_LEAD_SEATS = ("clarity narzan", "resolve narzan", "verity narzan")
 _NAMED_SEATS = ("alpha", "beta", "gamma", "delta", "epsilon", "zeta",
                 "eta", "theta", "iota", "kappa", "lambda", "mu")
-_SEAT_ID = r"(?:([12345])|(" + "|".join(_NAMED_SEATS) + r"))"
+_SEAT_ID = r"(?:([12345])|(" + "|".join(_LEAD_SEATS + _NAMED_SEATS) + r"))"
 SEAT_RE = re.compile(r"naya\s*" + _SEAT_ID + r"\b", re.I)
 # The authoring seat must be an EXPLICIT declaration ("Seat: Naya N"), never
 # an incidental mention: PR bodies routinely discuss other seats ("the Naya 1
@@ -186,12 +194,14 @@ def api_get(path, token):
 
 
 def _normalized_seat(m):
-    """Normalize a SEAT_RE/AUTHOR_SEAT_RE match to 'Naya <Title>' form:
+    """Normalize a SEAT_RE/AUTHOR_SEAT_RE match to canonical form:
     numeric seats stay as-is ('Naya 5'); named seats are title-cased
-    ('naya epsilon' -> 'Naya Epsilon')."""
+    ('naya epsilon' -> 'Naya Epsilon'); lead seats keep their full names
+    ('naya verity narzan' -> 'Naya Verity Narzan') — the surname is the identity,
+    never dropped."""
     if m.group(1):
         return f"Naya {m.group(1)}"
-    return "Naya " + m.group(2).lower().capitalize()
+    return "Naya " + " ".join(w.capitalize() for w in m.group(2).lower().split())
 
 
 def seat_of(text):
