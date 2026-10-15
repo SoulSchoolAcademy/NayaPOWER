@@ -1,12 +1,12 @@
 {
  "schema": "nayapower-state-core/v1",
- "generated_utc": "2026-10-15T23:47:26Z",
+ "generated_utc": "2026-10-15T23:56:58Z",
  "writer": "state-core-builder.py (single writer; all others read-only)",
  "tip": {
   "sha": "9f80e8eccfbe8256ec7ce069c61cd38cc86430ce",
   "short": "9f80e8eccfbe",
   "verified_how": "ref+commits-agree",
-  "checked_utc": "2026-10-15T23:46:09Z"
+  "checked_utc": "2026-10-15T23:56:00Z"
  },
  "venue": {
   "live": 2641,
@@ -15,41 +15,41 @@
   ]
  },
  "waves": {
-  "active": null,
+  "active": 209,
   "active_seats": [
-   "Naya Judge",
-   "Naya Auditor",
-   "Naya Builder"
+   "Naya Electrician",
+   "Naya Captain",
+   "Naya Mechanic"
   ],
   "last_completed": 207,
   "last_completed_at": "2026-10-15T21:59Z",
-  "rotation_cursor": "wave-199: Naya Electrician/Naya Captain/Naya Mechanic (roster order)"
+  "rotation_cursor": "wave-210: Naya Host/Naya Archivist/Naya Keeper (roster order)"
  },
  "lanes": {
   "free": [
    "ACT",
+   "BUILD",
    "GOVERN",
-   "INFRA",
    "KNOW",
+   "LAW",
    "LEARN",
    "MEMORY",
    "PRODUCT",
-   "TEAM",
-   "WIRE"
+   "PROVE"
   ],
   "held": [],
   "active": [
    {
-    "lane": "BUILD",
-    "since": "2026-10-15T22:03Z"
+    "lane": "INFRA",
+    "since": "2026-10-15T23:51Z"
    },
    {
-    "lane": "LAW",
-    "since": "2026-10-15T22:03Z"
+    "lane": "TEAM",
+    "since": "2026-10-15T23:51Z"
    },
    {
-    "lane": "PROVE",
-    "since": "2026-10-15T22:03Z"
+    "lane": "WIRE",
+    "since": "2026-10-15T23:51Z"
    }
   ]
  },
@@ -87,12 +87,12 @@
    "gates": {
     "test": "success",
     "receipt": "success",
-    "team_review": "success",
-    "claim_evidence": "success",
-    "delivery": "success"
+    "team_review": "failure",
+    "claim_evidence": "failure",
+    "delivery": "failure"
    },
-   "iv_ready": true,
-   "owner": "dock"
+   "iv_ready": false,
+   "owner": "review"
   },
   {
    "pr": 2636,
@@ -252,27 +252,27 @@
  "sections": {
   "tip": {
    "source": "git/refs/heads/main (+commits cross-check)",
-   "age_s": 81
+   "age_s": 61
   },
   "waves_lanes": {
    "source": "wave-state.json + naya-roster.json + area-staleness.json",
-   "age_s": 81
+   "age_s": 61
   },
   "queue": {
    "source": "bottleneck-queue.md",
-   "age_s": 81
+   "age_s": 61
   },
   "wip": {
    "source": "github-api: pulls + check-runs at exact heads",
-   "age_s": 81
+   "age_s": 61
   },
   "gates_tip": {
    "source": "github-api: check-runs at tip",
-   "age_s": 81
+   "age_s": 61
   },
   "blockers": {
    "source": "curated from venue + worker sign-outs this hour",
-   "age_s": 81
+   "age_s": 61
   }
  }
 }
