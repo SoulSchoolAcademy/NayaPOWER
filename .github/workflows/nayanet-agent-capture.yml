@@ -15,6 +15,10 @@ name: NayaNET Agent Capture
 #   NAYA_RUNTIME_EMAIL, NAYA_RUNTIME_PASSWORD
 
 on:
+  schedule:
+    # Hourly pump (t0483): capture should be near-continuous. workflow_dispatch
+    # below stays so manual runs remain available.
+    - cron: "0 * * * *"
   workflow_dispatch:
     inputs:
       payload_json:
