@@ -1,13 +1,13 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-10-14",
-  "receipt_basis_commit": "92329c5795ef8a50d02adf94ee6c91c313c26daf",
-  "inventory_file_count": 1260,
+  "generated_at": "2026-10-15",
+  "receipt_basis_commit": "476d9152a005617e2559a4dff2e2f0b626ad2d89",
+  "inventory_file_count": 1263,
   "domain_counts": {
     "00-ACTIVATION": 5,
     "00-ARCHITECTURE": 5,
     "00-SPEC": 16,
-    "01-GOVERNANCE": 56,
+    "01-GOVERNANCE": 59,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
@@ -379,6 +379,21 @@
       "path": "BRAIN/01-GOVERNANCE/0020-engine-before-production-v1.machine.json",
       "blob_sha": "abc384701525c59d00e565b192b5b30994885bb8",
       "size": 947
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0026-NEVER-STUCK-CREED-V1.ai.md",
+      "blob_sha": "1cfd045c114df48166723b8e5b348003bbb6980d",
+      "size": 1708
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0026-NEVER-STUCK-CREED-V1.human.md",
+      "blob_sha": "69147cdf1911820ce48648a355c59f403945dcc8",
+      "size": 638
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0026-never-stuck-creed-v1.machine.json",
+      "blob_sha": "21801e20b9df675c5772bce625e26c391fb33f07",
+      "size": 1031
     },
     {
       "path": "BRAIN/01-GOVERNANCE/DOC-COMPLETENESS-AUDIT-2026-10-10.md",
