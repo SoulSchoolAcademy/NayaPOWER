@@ -50,3 +50,10 @@ Ranked causes:
 
 ## Keeping it alive
 This manual is a feed, not a monument. When you solve a new merge problem: distill it (symptom / causes ranked / fix / verify / evidence link), prepend it to the diagnostics table newest-first, bump the patch version, open a PR. Append-only — never rewrite history.
+
+## Circle — the merge circle (bidirectional)
+This manual is the **operational** half of the merge circle — match the symptom, apply the fix. The **behavioral** half is Field Manual #14 (Merging): how a Naya *acts* when merges stall — the 2-minute triage law, the protection balance, the incident feed:
+- Field Manual #14 (Merging), Naya Clarity — review vehicle: https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2638
+- The Merge Incident Feed lives in manual #14 (append-only, dock-curated). This table is fed BY the feed: every new feed entry with a repeatable symptom gets distilled into the diagnostics above, newest first.
+
+Circle rule: if you know the symptom, stay here. If you need the discipline, go to #14. The circle closes both ways.
