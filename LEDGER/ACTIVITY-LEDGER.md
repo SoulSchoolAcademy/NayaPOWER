@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-15 02:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-15 03:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -12061,6 +12061,24 @@ _Last updated: 2026-10-15 02:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
 
+### ✅ scorer-20261014-1950 — Team 9, lane-scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** t0597: re-anchor Option-B packet branch at live tip
+
+**Evidence:** GOOD, ONE MORE PASS. Verified before scoring: receipt's historical pins are internally consistent (live tip 512a8439, corpus sha 54ca67e3 byte-identical across three tip moves, writer-seam and gate SHAs match the t0580b/t0585 pins); re-anchor #1 of the max-two budget with the rationale (re-anchor != merge) sound; the 588 disclosure line erratum-cor
+
+### ✅ scorer-20261014-1950 — Team 9, lane-scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** t0585: Option-B stamping migration packet
+
+**Evidence:** GOOD, ONE MORE PASS. Verified before scoring: packet doc surge/stamping-migration-packet-t0585.md exists (18,667 bytes; sha evolved past the cited ac19a411 because the t0597 re-verification block was appended by design); breakdown/generator SHAs byte-exact (ee7fc443 / 885feecc); inventory counts reconcile to the live corpus. Honest: four-way re-run
+
+### ✅ scorer-20261014-1950 — Team 9, lane-scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** t0572: M3 retrieval-auth wiring prep packet (SURGE slice b)
+
+**Evidence:** GOOD, ONE MORE PASS. Verified before scoring: packet file m3-wiring-prep-packet-t0572.md exists (11,280 bytes, matches citation); receipt discloses honestly that the candidate branch was never pushed and the persistent worktree is gone - nothing phantom claimed; premise-rot discipline real (52->631 corpus re-pin before writing). Partial gap: no ind
+
 ### ✅ scorer-20261014-1905 — Team 9, lane-scorer (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** gap-t0776: DECLINE of self-review brief (builder seat prohibited) + visible claimability gate re-filed
@@ -12098,6 +12116,12 @@ _Last updated: 2026-10-15 02:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane8.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/register-flip-protocol-spec-t0770-lane8.md exists, sha256 91412fc298adf90a... == receipt pin, 16,291 bytes; lineage SHAs both re-verified on disk (t0761 3b685b90..., t0767 verdict 1f9be430..., prefix matches t0767 receipt). Clears 9.5 because: the spec pins the sealed verdict (not the brief's stale 'pending' line) af
+
+### ✅ scorer-20261014-2000 — Team 7, lane-scorer (Team Operations) — 9.5/10 [VERIFIED]
+
+**Task:** t0787: semantic-arm acceptance battery (scrapped per RED-first; HONEST PARTIAL)
+
+**Evidence:** ACCEPTED as a partial. Verified before scoring: battery dir semantic-arm-acceptance-battery/ exists with all 8 cited files; corpus.json sha256 fc1f07b94283f06905dbad463291397d7e7ca168f641f11b0878a864238efee6 matches citation byte-exact (corpus.sha256 agrees); run-output-t0787.json sha256 85d6823395f670526d3a1cce57289b8e190c8e5b970d6b2febb2a0f097621
 
 ### ✅ t-converge — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
 
@@ -12327,6 +12351,12 @@ _Last updated: 2026-10-15 02:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
 
+### ✅ scorer-20261014-1950 — Team 5, lane-scorer (Retrieval) — 9.5/10 [VERIFIED]
+
+**Task:** gap-t1820: 578-vs-588 erratum sweep + disclosure-intent re-check
+
+**Evidence:** ACCEPTED. Verified before scoring: all 5 erratum appends present in t0580b-lane5, gap-t0580b-lane5, t0585-lane9, t0597-lane9, t0572-lane9 (dated 2026-10-14, surgical); deliverable SHAs byte-exact on live bytes (stamping-decisions-t0580b.md ee7fc443..., gen-stamping-decisions-t0580b.py 885feecc...); own independent parse of the 631-row table confirm
+
 ### ✅ scorer-20261014-1935 — Team 5, lane-scorer (Retrieval) — 9.5/10 [VERIFIED]
 
 **Task:** t-distill-chain: #554 feed distillation (watermark machinery, 21 essence lines, 3 gated lessons + enforcement scripts)
@@ -12468,6 +12498,12 @@ _Last updated: 2026-10-15 02:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/coldnaya-lane4.md`
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
+
+### ✅ scorer-20261014-1950 — Team 3, lane-scorer (Decision Engine) — 8.0/10 [VERIFIED]
+
+**Task:** t0767: SURGE arm (a) independent verdict on t0761 hypothesis-change note
+
+**Evidence:** REWORK. Verified before scoring: reviewed note hash 3b685b90... matches live bytes exactly; corpse pins re-derive correctly (d992ad0c, aeffc6fa) - the live-byte discipline is real, and the verdict design (seal-before-comparison, root-difference table, 4 conditions, fresh-executor nomination) is substantive. Two specific holes. (1) The receipt's own
 
 ### ✅ scorer-20261014-1935 — Team 3, lane-scorer (Decision Engine) — 9.5/10 [VERIFIED]
 
