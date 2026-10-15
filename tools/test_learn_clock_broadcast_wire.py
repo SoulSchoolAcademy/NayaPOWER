@@ -44,7 +44,10 @@ def test_carried_item_emits_t0_with_event_timestamp(tmp_path):
                         meta_writer=lambda *a, **k: meta_rows.append((a, k)))
     assert len(rep["emitted"]) == 1
     e = rep["emitted"][0]
-    assert e["lesson_id"].startswith("LC-20261014-")
+    # Alpha w185: mint date derives from the wall clock, not the event ts —
+    # derive the expected prefix from the clock the test captured, never
+    # hardcode a date.
+    assert e["lesson_id"].startswith("LC-" + before.strftime("%Y%m%d") + "-")
     # the T0 row carries the EVENT's timestamp, not now
     assert e["ts"] == BASE.isoformat()
     rows = [json.loads(l) for l in

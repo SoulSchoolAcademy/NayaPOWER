@@ -60,21 +60,35 @@ class WireTests(unittest.TestCase):
         self.tmp.cleanup()
 
     def test_capture_mints_t0_t1(self):
-        rc = wire.cmd_capture(Args(title="test lesson", evidence="sign-out #1",
-                                   ts_event="2026-10-14T04:00:00+00:00"))
+        # Alpha w185: never date-hardcode the minted id — _next_lesson_id
+        # derives the date from the wall clock, so capture the id from the
+        # call's own stdout instead of asserting a fixed LC- prefix.
+        import io, contextlib
+        buf = io.StringIO()
+        with contextlib.redirect_stdout(buf):
+            rc = wire.cmd_capture(Args(title="test lesson", evidence="sign-out #1",
+                                       ts_event="2026-10-14T04:00:00+00:00"))
         self.assertEqual(rc, 0)
+        out, _ = json.JSONDecoder().raw_decode(buf.getvalue())
+        lesson_id = out["lesson_id"]
         clock = LearnClock(self.clock_path)
-        st = clock.status("LC-20261014-001")
+        st = clock.status(lesson_id)
         self.assertEqual(st["complete_through"], "T1_CAPTURED")
         self.assertEqual(st["hit"], ["T0_EVENT", "T1_CAPTURED"])
 
     def test_triage_after_capture(self):
-        wire.cmd_capture(Args(title="t", evidence="e", ts_event=None))
-        rc = wire.cmd_triage(Args(lesson_id="LC-20261014-001", verdict="PROMOTE",
+        import io, contextlib
+        buf = io.StringIO()
+        with contextlib.redirect_stdout(buf):
+            rc = wire.cmd_capture(Args(title="t", evidence="e", ts_event=None))
+        self.assertEqual(rc, 0)
+        out, _ = json.JSONDecoder().raw_decode(buf.getvalue())
+        lesson_id = out["lesson_id"]
+        rc = wire.cmd_triage(Args(lesson_id=lesson_id, verdict="PROMOTE",
                                   evidence="fold entry", ts=None))
         self.assertEqual(rc, 0)
         clock = LearnClock(self.clock_path)
-        self.assertEqual(clock.status("LC-20261014-001")["complete_through"], "T2_TRIAGED")
+        self.assertEqual(clock.status(lesson_id)["complete_through"], "T2_TRIAGED")
 
     def test_triage_without_capture_raises(self):
         with self.assertRaises(OutOfOrderError):
@@ -82,16 +96,27 @@ class WireTests(unittest.TestCase):
                                  evidence="e", ts=None))
 
     def test_retroactive_ts_no_regression(self):
-        wire.cmd_capture(Args(title="t", evidence="e",
-                              ts_event="2026-10-14T04:00:00+00:00"))
+        import io, contextlib
+
+        def capture(**kw):
+            buf = io.StringIO()
+            with contextlib.redirect_stdout(buf):
+                rc = wire.cmd_capture(Args(**kw))
+            out, _ = json.JSONDecoder().raw_decode(buf.getvalue())
+            return rc, out["lesson_id"]
+
+        rc, lid1 = capture(title="t", evidence="e",
+                           ts_event="2026-10-14T04:00:00+00:00")
+        self.assertEqual(rc, 0)
         # T1 stamped at now; a T2 ts must be >= T1's ts, so valid triage uses now.
-        rc = wire.cmd_triage(Args(lesson_id="LC-20261014-001", verdict="DROP",
+        rc = wire.cmd_triage(Args(lesson_id=lid1, verdict="DROP",
                                   evidence="e", ts=None))
         self.assertEqual(rc, 0)
         # regressing ts must raise
-        wire.cmd_capture(Args(title="t2", evidence="e", ts_event=None))
+        rc, lid2 = capture(title="t2", evidence="e", ts_event=None)
+        self.assertEqual(rc, 0)
         with self.assertRaises(OutOfOrderError):
-            wire.cmd_triage(Args(lesson_id="LC-20261014-002", verdict="DROP",
+            wire.cmd_triage(Args(lesson_id=lid2, verdict="DROP",
                                  evidence="e", ts="2020-01-01T00:00:00+00:00"))
 
     def test_status_counts_verified(self):
