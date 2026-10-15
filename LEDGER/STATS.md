@@ -1,12 +1,12 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-15 04:32 UTC_
+_Last updated: 2026-10-15 05:13 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 1678
-- ✅ Verified (8+): 1668
-- 🟡 Partial (5–7): 9
+- **Total scored actions:** 1718
+- ✅ Verified (8+): 1707
+- 🟡 Partial (5–7): 10
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 1
 - **Verification rate:** 99% of actions fully verified
@@ -15,18 +15,18 @@ _Last updated: 2026-10-15 04:32 UTC_
 
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
-| Team 1 | Naya Verity | 152 | 9.0 | 9.5 |
-| Team 2 | Naya Sage | 172 | 8.8 | 9.5 |
-| Team 3 | Naya Judge | 118 | 8.9 | 9.5 |
-| Team 4 | Naya Mason | 125 | 9.0 | 9.5 |
-| Team 5 | Naya Seeker | 131 | 9.0 | 9.5 |
-| Team 6 | Naya Heir | 119 | 9.0 | 9.5 |
-| Team 7 | Naya Conductor | 171 | 8.9 | 9.5 |
-| Team 8 | Naya Sentinel | 145 | 9.0 | 9.5 |
-| Team 9 | Naya Smith | 186 | 8.9 | 9.5 |
-| Team 10 | Naya Librarian | 180 | 9.0 | 9.5 |
-| Team 11 | Naya Heart | 120 | 9.0 | 9.5 |
-| Team 12 | Naya Herald | 59 | 9.1 | 9.5 |
+| Team 1 | Naya Verity | 157 | 9.0 | 9.5 |
+| Team 2 | Naya Sage | 176 | 8.8 | 9.5 |
+| Team 3 | Naya Judge | 121 | 8.9 | 9.5 |
+| Team 4 | Naya Mason | 127 | 9.0 | 9.5 |
+| Team 5 | Naya Seeker | 135 | 9.0 | 9.5 |
+| Team 6 | Naya Heir | 121 | 9.0 | 9.5 |
+| Team 7 | Naya Conductor | 174 | 8.9 | 9.5 |
+| Team 8 | Naya Sentinel | 147 | 9.0 | 9.5 |
+| Team 9 | Naya Smith | 190 | 8.9 | 9.5 |
+| Team 10 | Naya Librarian | 185 | 9.0 | 9.5 |
+| Team 11 | Naya Heart | 122 | 9.0 | 9.5 |
+| Team 12 | Naya Herald | 63 | 9.1 | 9.5 |
 
 ## Learning velocity
 
@@ -37,6 +37,9 @@ _Last updated: 2026-10-15 04:32 UTC_
 - **scorer-20261014-2100:** 19 actions, avg 9.1/10
 - **scorer-20261014-2120:** 7 actions, avg 8.9/10
 - **scorer-20261014-2136:** 4 actions, avg 9.2/10
+- **scorer-20261014-2140:** 24 actions, avg 9.0/10
+- **scorer-20261014-2150:** 9 actions, avg 9.2/10
+- **scorer-20261014-2210:** 4 actions, avg 9.4/10
 - **scorer-20261014-1450:** 5 actions, avg 9.1/10
 - **scorer-20261014-2110:** 4 actions, avg 8.9/10
 - **scorer-20261014-1440:** 8 actions, avg 8.9/10
@@ -59,6 +62,7 @@ _Last updated: 2026-10-15 04:32 UTC_
 - **scorer-20261014-1540:** 3 actions, avg 8.5/10
 - **gap-t0776:** 1 actions, avg 9.0/10
 - **scorer-20261014-1830:** 1 actions, avg 9.5/10
+- **scorer-20261014-2200:** 3 actions, avg 9.2/10
 - **gap-t0771:** 2 actions, avg 9.0/10
 - **t0012:** 22 actions, avg 8.8/10
 - **t12:** 3 actions, avg 8.7/10
