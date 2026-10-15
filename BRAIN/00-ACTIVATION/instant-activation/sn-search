@@ -1,0 +1,74 @@
+#!/usr/bin/env python3
+"""sn-search — search the Smart Note corpus. Filed isn't found unless
+retrieval works; this is the retrieval.
+
+Usage: sn-search <query words...> [--n 10]
+Searches ~/workspace/naya/smart-notes/*.md (title-weighted, then body).
+Prints: SN id, title line, file, and the best matching excerpt.
+Exit 0 always (no match = empty list, not an error).
+"""
+import os
+import re
+import sys
+from pathlib import Path
+
+CORPUS = Path.home() / "workspace/naya/smart-notes"
+
+
+def main():
+    args = [a for a in sys.argv[1:] if not a.startswith("--")]
+    n = 10
+    for a in sys.argv[1:]:
+        if a.startswith("--n"):
+            try:
+                n = int(a.split("=")[1] if "=" in a else sys.argv[sys.argv.index(a) + 1])
+            except Exception:
+                pass
+    if not args:
+        print("usage: sn-search <query words...> [--n 10]")
+        return
+    terms = [t.lower() for t in args]
+    if not CORPUS.exists():
+        print("(corpus missing)")
+        return
+    hits = []
+    for f in sorted(CORPUS.glob("*.md")):
+        try:
+            text = f.read_text()
+        except Exception:
+            continue
+        lines = text.splitlines()
+        title = next((l.lstrip("# ") for l in lines[:6] if l.startswith("#")), f.stem)
+        tl, bl = title.lower(), text.lower()
+        tscore = sum(3 for t in terms if t in tl)
+        bscore = sum(1 for t in terms if t in bl)
+        if tscore + bscore == 0:
+            continue
+        # best excerpt: first line with the most terms
+        best, bestn = "", -1
+        for l in lines:
+            ll = l.lower()
+            c = sum(1 for t in terms if t in ll)
+            if c > bestn and len(l.strip()) > 10:
+                best, bestn = l.strip(), c
+        snid = f.stem.split("-")[0].upper() if f.stem[:2].lower() == "sn" else f.stem
+        tshow = title.strip()
+        if tshow.lower().startswith(snid.lower() + "-") or tshow.lower().startswith(snid.lower() + " "):
+            label = tshow
+        else:
+            label = f"{snid} — {tshow}"
+        hits.append((tscore + bscore, label, f.name,
+                     best[:160]))
+    hits.sort(key=lambda h: -h[0])
+    if not hits:
+        print("(no matches)")
+        return
+    for score, label, fname, excerpt in hits[:n]:
+        print(label)
+        print(f"    {fname}")
+        if excerpt:
+            print(f"    …{excerpt}")
+
+
+if __name__ == "__main__":
+    main()
