@@ -233,9 +233,14 @@ def test_backfill_dry_run_does_not_mutate():
 # values — DOMAIN_OWNER v1 is PROPOSED and may change on lead confirmation;
 # when it does, both sides move together through the shared function.
 
-def _derive(path):
-    from owner_backfill import derive_real_tree
-    return derive_real_tree({"path": path})
+def _derive(path, provenance=None, backfill=None):
+    from owner_backfill import derive_index_entry
+    return derive_index_entry({
+        "provenance": provenance or {},
+        "backfill": backfill or {},
+        "projection_path": path,
+        "canonical_brain_path": path,
+    })
 
 
 OTHER_PATH = ("BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/TEST/SN-1000/"
@@ -265,10 +270,38 @@ def test_generate_owner_present_and_nonempty_unverified():
 def test_generate_owner_refuses_when_derivation_unavailable():
     # fail closed: an unimportable derivation raises instead of emitting
     # an ownerless fragment.
-    real = sl.derive_real_tree
-    sl.derive_real_tree = None
+    real = sl.derive_index_entry
+    sl.derive_index_entry = None
     try:
         with pytest.raises(RuntimeError, match="ownerless"):
             sl.generate(GOOD_PATH, make_index([]))
     finally:
-        sl.derive_real_tree = real
+        sl.derive_index_entry = real
+
+
+def test_generate_fires_rule1_on_existing_entry_provenance():
+    # OWNER-FIELD-SPEC-V1 §5 tripwire (w202 regression: entry
+    # IB-SMART-NOTE-20261014-sn0797 stored owner "Naya Mu"/provenance while
+    # the path-only emission gave area_lead/Naya Beta). Re-generating a path
+    # whose stored entry carries seat-naming provenance bytes must emit that
+    # seat — the same answer a backfill re-apply computes — not the path owner.
+    prov_path = ("BRAIN/05-MEMORY/SMART-NOTES/2026/10/14/SYSTEM-INTELLIGENCE/"
+                 "SN-4242/IB-SMART-NOTE-20261014-sn4242-test.md")
+    stored = entry(sid="SN-4242", path=prov_path,
+                   url="https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/" + prov_path)
+    stored["provenance"] = {"note": "graduated 2026-10-14 by Naya Zeta (wave 142)"}
+    stored["owner"] = "Naya Zeta"
+    stored["owner_basis"] = "provenance"
+    frag = sl.generate(prov_path, make_index([stored]), verifier=None)
+    assert frag["owner"] == "Naya Zeta", f"rule 1 did not fire: {frag['owner']}"
+    assert frag["owner_basis"] == "provenance"
+
+
+def test_generate_new_path_stays_path_only():
+    # A brand-new path has no stored provenance bytes: rule 1 cannot fire,
+    # and the emission must NOT invent it — area_lead is the honest answer.
+    frag = sl.generate(OTHER_PATH, make_index([]))
+    owner, basis = _derive(OTHER_PATH)
+    assert frag["owner"] == owner
+    assert frag["owner_basis"] == basis
+    assert frag["owner_basis"].startswith("area_lead:")

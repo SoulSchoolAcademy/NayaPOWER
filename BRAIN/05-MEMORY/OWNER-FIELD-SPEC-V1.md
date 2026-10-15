@@ -78,7 +78,7 @@ produces. Its `--check` compares against the generator's own output, and
 be updated to emit `owner`/`owner_basis` per this spec in the same commit as the
 backfill, or the check fails as drift. Same for `tools/smart_link.py::generate()`
 (index writer): new entries get owner at generation time per these rules.
-DONE w200 (Beta): `generate()` emits owner/owner_basis via shared
+DONE w202 (Beta): `generate()` emits owner/owner_basis via shared
 `derive_real_tree()` from `tools/owner_backfill.py` (path-only), fail-closed,
 never silently ownerless; 3 pinning tests in `tests/test_smart_link_generator.py`.
 MEASURED w202 (Beta, at this head): index backfill vs the shared derivation
@@ -87,9 +87,20 @@ agrees on 631/632 index entries. The one divergence is
 (spec rule 1: the entry's provenance bytes name the seat), while `generate()`'s
 path-only derivation (rule 3) would emit Naya Beta. `derive_real_tree()`
 implements rule 3 only; rules 1–2 are not wired into `generate()`.
-NEXT-WORKER WORK: route `generate()` through the FULL ordered derivation
-(rules 1–2–3) — or document why rule 1 cannot fire at generation time — so
-emission==backfill holds for every entry, then re-measure at 632/632.
+DONE w203 (Beta, lane 4): `generate()` now routes through the FULL ordered
+derivation — `tools/smart_link.py` imports `derive_index_entry()` and feeds it
+the existing entry's provenance/backfill bytes (exactly what a backfill
+re-apply reads), so emission==backfill by construction. For brand-new paths
+with no stored bytes, rule 1 cannot fire and the derivation honestly falls
+through to area_lead — no invented provenance; the backfill pass self-heals
+any owner whose pipeline-added provenance names a seat. MEASURED w203: on
+all 583 projection-shaped entries, emission == backfill-derivation == stored
+owner (0 divergences); 49 non-projection entries are refused by generate()'s
+shape gate by design. Regression tripwire added:
+`test_generate_fires_rule1_on_existing_entry_provenance` (+ a new-path
+stays-path-only test). Extension point: if a future caller passes `capture`
+AND the receiver persists its provenance bytes into the entry, the probe can
+include capture bytes — until then, only stored bytes are consulted (P-011).
 What this update does NOT claim: it does not change DOMAIN_OWNER v1 values;
 it does not re-certify the 3 w200 pinning tests beyond their stated scope
 (wiring, not mapping values).

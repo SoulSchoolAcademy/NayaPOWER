@@ -33,15 +33,18 @@ from pathlib import Path
 # OWNER-FIELD-SPEC-V1 §5: owner/owner_basis emission lives in ONE place —
 # tools/owner_backfill.py implements the derivation rules; this tool emits
 # them. Same function, same bytes, zero-diff by construction. The emission is
-# wired through the shared derive_real_tree() (path-only, area_lead) so the
-# fragment always agrees with what a backfill re-apply would stamp; the
-# provenance/collective rules apply to corpus files, not to generation-time
-# fragments. DOMAIN_OWNER v1 stays PROPOSED — the wiring pins agreement, not
-# the mapping values.
+# wired through the shared derive_index_entry() — the FULL ordered derivation
+# (rule 1 provenance → rule 3 area_lead) — fed with the provenance bytes
+# visible at generation time (the existing entry's provenance/backfill notes,
+# which are exactly what a backfill re-apply would read). For a brand-new
+# path with no stored bytes, rule 1 cannot fire and the derivation honestly
+# falls through to area_lead; the backfill pass self-heals any owner whose
+# pipeline-added provenance names a seat. DOMAIN_OWNER v1 stays PROPOSED —
+# the wiring pins agreement, not the mapping values.
 try:
-    from owner_backfill import derive_real_tree
+    from owner_backfill import derive_index_entry
 except ImportError:  # pragma: no cover - fail closed, never silently ownerless
-    derive_real_tree = None
+    derive_index_entry = None
 
 REPO = "SoulSchoolAcademy/NayaPOWER"
 LINK_RE = re.compile(r"^https://github\.com/SoulSchoolAcademy/NayaPOWER/blob/main/")
@@ -235,14 +238,23 @@ def generate(projection_path: str, index: dict, verifier=None,
     if not verified:
         status = "PENDING"
     now = utcnow()
-    if derive_real_tree is None:  # fail closed: never emit an ownerless fragment
+    if derive_index_entry is None:  # fail closed: never emit an ownerless fragment
         raise RuntimeError(
             "owner_backfill.py could not be imported: refusing to emit an "
             "ownerless smart-link fragment (§5 of OWNER-FIELD-SPEC-V1)")
-    # §5: the fragment carries its owner at generation time, derived from the
-    # projection path alone via the shared derive_real_tree() — the same
-    # function owner_backfill.py uses, so a backfill re-apply is a zero diff.
-    owner, owner_basis = derive_real_tree({"path": projection_path})
+    # §5: the fragment carries its owner at generation time, derived through
+    # the same derive_index_entry() owner_backfill.py uses on the stored
+    # entry — rule 1 fires on the existing entry's provenance/backfill bytes
+    # (exactly the bytes a backfill re-apply reads), so emission and backfill
+    # agree by construction. New paths with no stored bytes fall through to
+    # rule 3 (area_lead) honestly; no invented provenance, ever.
+    probe = {
+        "provenance": (existing or {}).get("provenance", {}),
+        "backfill": (existing or {}).get("backfill", {}),
+        "projection_path": projection_path,
+        "canonical_brain_path": projection_path,
+    }
+    owner, owner_basis = derive_index_entry(probe)
     fragment = {
         "projection_path": projection_path,
         "smart_link": url,

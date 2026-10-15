@@ -2,7 +2,7 @@
   "schema": "naya.brain.real_tree.v2",
   "generated_at": "2026-10-15",
   "receipt_basis_commit": "ba62638704256b012c20e41fe7f53cc3b62b1b44",
-  "inventory_file_count": 1260,
+  "inventory_file_count": 1261,
   "domain_counts": {
     "00-ACTIVATION": 5,
     "00-ARCHITECTURE": 5,
@@ -11,7 +11,7 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
-    "05-MEMORY": 648,
+    "05-MEMORY": 649,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
@@ -1172,6 +1172,13 @@
       "owner_basis": "area_lead:05-MEMORY",
       "blob_sha": "20c4418652af7367f83f929d14dc19a89a7e4f09",
       "size": 3595
+    },
+    {
+      "path": "BRAIN/05-MEMORY/OWNER-FIELD-SPEC-V1.md",
+      "owner": "Naya Beta",
+      "owner_basis": "area_lead:05-MEMORY",
+      "blob_sha": "1b227cf415f874dc99666d84310301ba4ae5d1ff",
+      "size": 7008
     },
     {
       "path": "BRAIN/05-MEMORY/README.md",
