@@ -1,0 +1,25 @@
+{
+  "total_count": 2,
+  "check_runs": [
+    {
+      "id": 3,
+      "name": "Receipt gate",
+      "status": "completed",
+      "conclusion": "failure",
+      "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "started_at": "2026-10-14T20:02:03Z",
+      "completed_at": "2026-10-14T20:02:03Z",
+      "html_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/actions/runs/3"
+    },
+    {
+      "id": 4,
+      "name": "Receipt gate",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "started_at": "2026-10-14T20:02:00Z",
+      "completed_at": "2026-10-14T20:02:00Z",
+      "html_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/actions/runs/4"
+    }
+  ]
+}

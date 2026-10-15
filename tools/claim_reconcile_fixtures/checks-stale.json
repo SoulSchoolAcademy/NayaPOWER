@@ -1,0 +1,15 @@
+{
+  "total_count": 1,
+  "check_runs": [
+    {
+      "id": 5,
+      "name": "test / kernel-tests",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "started_at": "2026-10-14T20:00:00Z",
+      "completed_at": "2026-10-14T20:00:00Z",
+      "html_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/actions/runs/5"
+    }
+  ]
+}

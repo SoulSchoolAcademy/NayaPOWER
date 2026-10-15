@@ -1,0 +1,25 @@
+{
+  "total_count": 2,
+  "check_runs": [
+    {
+      "id": 100,
+      "name": "old gate",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "started_at": "2026-10-14T20:00:00Z",
+      "completed_at": "2026-10-14T20:00:00Z",
+      "html_url": "https://example.invalid/run/100"
+    },
+    {
+      "id": 100,
+      "name": "older gate",
+      "status": "completed",
+      "conclusion": "failure",
+      "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "started_at": "2026-10-14T20:01:00Z",
+      "completed_at": "2026-10-14T20:01:00Z",
+      "html_url": "https://example.invalid/run/100"
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+# claim-reconcile-gate.yml — the machine that judges merge intents.
+#
+# SECURITY MODEL (the pull_request_target equivalent for comments):
+#   This workflow triggers on issue_comment and runs from the DEFAULT
+#   BRANCH's copy of this file — a PR author cannot edit their own judge.
+#   The checkout below pins the base branch, never the PR head. The only
+#   PR-controlled input is the comment body, consumed as claim TEXT.
+#
+# WHAT IT JUDGES: comments on PRs whose body starts with "/merge" — the
+#   merge-intent convention. The comment body becomes the claim file fed
+#   to tools/claim_reconcile.py, which reconciles every CI claim in it
+#   against the live check-runs at the PR head.
+#
+# FAIL-CLOSED: the tool runs with --require-claims, so a "/merge" carrying
+#   no adjudicable claims (no broad-green, no named gate, no cited SHA)
+#   exits BLIND and fails the gate. Verdicts CONFLICT / STALE / BLIND all
+#   fail the job; only RECONCILED passes. The verdict is posted as a PR
+#   comment for the record (it never starts with "/merge", so it cannot
+#   retrigger this gate).
+#
+# WHAT THIS DOES NOT DO (D32 — read before trusting this gate):
+#   - It judges the comment's CLAIMS, not the author's intent or identity.
+#   - It reads the latest 100 check-runs at the PR head.
+#   - A green run proves the machines ran green, not WHAT they verified.
+#   - Named checks must be named EXACTLY ("Team gate green" for the check
+#     "Team gate"); near-misses and homograph games fail closed.
+#   - It is the machine half of the merge law's honest-CI condition, not
+#     the whole law: score, independent validation, feed post, and
+#     no-objection are judged elsewhere.
+
+name: claim-reconcile-gate
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: read
+  pull-requests: read
+  checks: read
+  issues: write
+
+jobs:
+  reconcile:
+    # Only PR comments, only merge intents. Everything else exits quietly —
+    # the gate judges merge intents, not chatter.
+    if: github.event.issue.pull_request && startsWith(github.event.comment.body, '/merge')
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out the judge (base branch, never the PR head)
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          sparse-checkout: tools/claim_reconcile.py
+
+      - name: Extract the claim text
+        env:
+          COMMENT_BODY: ${{ github.event.comment.body }}
+        run: |
+          printf '%s' "$COMMENT_BODY" > /tmp/merge-intent.txt
+          wc -c /tmp/merge-intent.txt
+
+      - name: Reconcile claims against live check-runs
+        id: reconcile
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          set +e
+          python3 tools/claim_reconcile.py \
+            --pr "$PR_NUMBER" \
+            --claim-file /tmp/merge-intent.txt \
+            --require-claims \
+            --out /tmp/verdict.json
+          code=$?
+          set -e
+          echo "tool exit=$code"
+          cat /tmp/verdict.json
+          verdict=$(python3 -c "import json; print(json.load(open('/tmp/verdict.json'))['verdict'])")
+          echo "verdict=$verdict" >> "$GITHUB_OUTPUT"
+          # Fail-closed: only RECONCILED passes. The verdict names why not.
+          if [ "$verdict" != "RECONCILED" ]; then
+            echo "::error::claim-reconcile-gate refused: $verdict"
+            exit 1
+          fi
+
+      - name: Post the verdict
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          body=$(python3 - <<'EOF'
+          import json
+          v = json.load(open('/tmp/verdict.json'))
+          lines = ["[claim-reconcile-gate] verdict: **%s**" % v["verdict"]]
+          for f in v.get("findings", []):
+              lines.append("- %s: %s" % (f["kind"], f["detail"]))
+          print("\n".join(lines))
+          EOF
+          )
+          gh pr comment "$PR_NUMBER" --body "$body"
