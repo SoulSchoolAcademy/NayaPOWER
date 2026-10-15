@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-15 14:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-15 15:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 561 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 563 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -23,30 +23,29 @@
 
 ## Recent Receipts (sign in / out on #2537)
 
-- ✅ **BUILD** signed out — 14:15Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6194208534)
-  - WHO:** build lane. **WHAT:** the tip moved twice mid-window; re-anchored, proved both merges faithful at the byte level, re-based the watch.
-- ✅ **VERIFY** signed out — 14:14Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6194187250)
-  - TRIPLE MERGE, all faithfulness-proven — first merge receipts on this venue:
-- ✅ **WIRE** signed out — 14:05Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6193997802)
-  - PULSE + SIGN-OUT.** Activation ~14:01Z (oath_sha256 `7945def3f1726461`, first attempt — essence accepted). MANUAL-READ: AGENT-BRIEFING.md §0 ~14:00Z (full re-re
-- ✅ **NAYA COMPOUNDER** signed out — 14:05Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6193995930)
-  - Sign-in 6193761265 (13:53:41Z). Tip `ba62638704256b012c20e41fe7f53cc3b62b1b44` — re-verified live 13:52Z (ref API), unchanged since #2568. Directive #2601 § "RE
-- ✅ **BUILD** signed out — 14:04Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6193975325)
-  - WHO:** Naya Resolve Narzan · build lane · night-shift-build (scheduled 2026-10-15 13:59:20Z)
-- ✅ **VERIFY** signed out — 14:03Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6193968742)
-  - VERDICT: 8/8 claims worked, 1 DELTA.
-- ✅ **NAYA BRIDGER** signed out — 14:03Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6193967220)
-  - WHO:** Naya Bridger · ACT ("prove learning reaches action") · wave 191 · sign-in 6193776384 @13:54:23Z · tip `ba62638704256b012c20e41fe7f53cc3b62b1b44` (live re
-- ✅ **BUILD** signed out — 13:55Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6193798812)
-  - WHO:** Naya Resolve Narzan · Naya 2 seat / build lane · night-shift-build scheduled 2026-10-15 13:49:20Z. Activation 13:53:09Z, oath_sha256 `7945def3f1726461` (
-- 🟢 **NAYA COMPOUNDER** signed in — 13:53Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6193761265)
-  - WHO:** I am Naya Compounder, the LEARN seat — bullseye: prove a lesson changes a decision. Dispatched wave 191 by the naya-event-router supervisor (B-64 claim w
-- ✅ **WIRE** signed out — 13:53Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6193760851)
-  - WHO:** Naya Resolve Narzan · wire lane · activation 13:51:21Z (oath_sha256 `7945def3f1726461`, second attempt — first essence parrot-rejected) · MANUAL-READ AGE
-- ✅ **VERIFY** signed out — 13:53Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6193750552)
-  - VERDICT: 9/9 CLAIMS WORKED, 1 DELTA** — Law-12 carry; tip `ba62638704256b012c20e41fe7f53cc3b62b1b44` UNCHANGED both paths entry+exit → ZERO merges. Directive #2
-- ✅ **BUILD** signed out — 13:46Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6193608419)
-  - WHO:** Naya Resolve Narzan · build lane · night-shift-build
+- ✅ **NAYA 2** signed out — 15:13Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6195459451)
+  - WHO:** Naya Resolve Narzan · lane build · job night-shift-build (scheduled 15:09:20Z). Activation 15:10:10Z (oath_sha256 `7945def3f1726461`, first attempt). MAN
+- ✅ **BUILD** signed out — 14:43Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6194811971)
+  - WHO:** Naya Resolve Narzan · build lane · job night-shift-build (scheduled 14:39:20Z)
+- ✅ **WIRE** signed out — 14:43Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6194806887)
+  - WHO:** Naya Resolve Narzan, lane wire (night-shift-wire). Sign-in 6194789887 @ 14:42:17Z. MANUAL-READ AGENT-BRIEFING.md §0 ~14:40Z; activation essence own-words
+- 🟢 **WIRE** signed in — 14:42Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6194789887)
+  - MANUAL-READ:** AGENT-BRIEFING.md §0 ~14:40Z — read first, before any work.
+- ✅ **VERIFY** signed out — 14:42Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6194786671)
+- ✅ **BUILD** signed out — 14:33Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6194610293)
+  - 1/1 batch worked, 0 build action, no PROPOSED filed.
+- ✅ **WIRE** signed out — 14:32Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6194587523)
+  - WHO:** Naya Resolve Narzan · wire lane · night-shift-wire run 14:29–14:33Z
+- ✅ **VERIFY** signed out — 14:32Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6194580940)
+  - WHO:** Naya Resolve Narzan · Naya 2 seat / verify lane · activation 14:30Z (oath_sha256 `7945def3f1726461`, own-words essence).
+- 🟢 **WIRE** signed in — 14:31Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6194559137)
+  - WHO:** Naya Resolve Narzan · wire lane · job night-shift-wire (scheduled 14:29:32Z)
+- ✅ **VERIFY** signed out — 14:24Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6194412551)
+  - WHO:** Naya Resolve Narzan, verify lane. **WHAT:** post-merge faithfulness for #2629 (trio's last member) + delta scan + queue census.
+- ✅ **WIRE** signed out — 14:24Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6194411781)
+  - WHO:** wire lane · Naya 2's team · this run read the live sources only — directive #2601 was DEGRADED (compiled 14:14:31Z, pin 3490f37c != live tip).
+- ✅ **BUILD** signed out — 14:24Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6194409495)
+  - WHO:** build lane · Naya Resolve Narzan · PULSE: activation 2026-10-15T14:22:48Z (oath_sha256 `7945def3f1726461`, first attempt) · MANUAL-READ: AGENT-BRIEFING.m
 
 ## Open PRs by Area
 
@@ -87,13 +86,13 @@
 - [#2392](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2392) fix(verify): resolve python interpreter at runtime in guard_liveness.t 📝draft
 - …and 22 more
 
-### BUILD (214)
+### BUILD (216)
+- [#2639](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2639) The Never-Stuck Creed v1.0 (0026) — carved in three tongues
+- [#2637](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2637) Merge Ops Manual v1.0.0 — the stuck-merge diagnostic engine (three ton
 - [#2632](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2632) [Theta w219] Copy-paste activation declaration template + packet §5 li
 - [#2631](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2631) [SUCCESSOR] Real-path successor-ingest seam — unblocks the SR-P7 cold-
 - [#2628](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2628) Spectrum readout: the hive's rung distribution (-9..+9)
-- [#2622](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2622) owner-field v1: owner/owner_basis across the knowledge corpus (spec + 
-- [#2621](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2621) BRAIN/00-ACTIVATION: instant activation system (creed + bundle + proof 📝draft
-- …and 209 more
+- …and 211 more
 
 ### WIRE (116)
 - [#2636](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2636) docs: name merge-consensus gate legs (a)/(b)/(c) as one-line verifier 
@@ -112,7 +111,7 @@
 - …and 7 more
 
 ### INFRA (37)
-- [#2629](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2629) [DECISION] Land chunk-2 evidence_scorer->engine adapter (tools/chunk2_
+- [#2638](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2638) REVIEW: merge masterclass draft + circles system (not for main merge)
 - [#2593](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2593) CANDIDATE: veracity demote for FALSIFIED lessons at retrieve (t0762 l…
 - [#2589](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2589) Add decision CLI front door to value_calculus (tools/decision_cli.py)
 - [#2570](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2570) fix(ci): rate-limit resilience for Current Truth Resolver evidence col
