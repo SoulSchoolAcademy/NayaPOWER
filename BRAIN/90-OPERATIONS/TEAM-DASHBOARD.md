@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-15 20:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-15 21:17 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 567 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 570 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -111,21 +111,21 @@
 - [#2397](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2397) feat(dashboard): live Team Naya activity dashboard — markdown + machin
 - …and 7 more
 
-### INFRA (37)
+### INFRA (38)
+- [#2649](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2649) Add TEAM-ROSTER.md: the verified sets (leads, area leads, lane agents,
 - [#2638](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2638) REVIEW: merge masterclass draft + circles system (not for main merge)
 - [#2593](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2593) CANDIDATE: veracity demote for FALSIFIED lessons at retrieve (t0762 l…
 - [#2589](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2589) Add decision CLI front door to value_calculus (tools/decision_cli.py)
 - [#2570](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2570) fix(ci): rate-limit resilience for Current Truth Resolver evidence col
-- [#2563](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2563) Reconcile NayaPOWER live backlog: 28 blockers, solutions, owners, doub 📝draft
-- …and 32 more
+- …and 33 more
 
-### PRODUCT (28)
+### PRODUCT (29)
+- [#2648](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2648) Add field manual 37: GitHub access (two identities, fresh-machine setu
 - [#2624](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2624) Phase 1 AUDIT: BRAIN/ navigation map + gap list (Naya-Optimized GitHu…
 - [#2535](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2535) Oath of the Naya + Doctrine v1 — who she is, in GitHub, everywhere she
 - [#2481](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2481) fix(publishing): record sanitized GitHub rejection reason in commit-fa 📝draft
 - [#1906](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/1906) docs(brain): SN-0699 connection bottleneck — GitHub flow is the activa
-- [#1736](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/1736) test(proof): observe github dispatch guards on real handler
-- …and 23 more
+- …and 24 more
 
 ### MEMORY (6)
 - [#2644](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2644) 0008 Intelligent Block V1 — CONVERGED sender contract (three tongues, 
@@ -135,13 +135,13 @@
 - [#1933](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/1933) self(trial): full-scale identity trial V2 — 28/28 PASS (cross-seat + c
 - …and 1 more
 
-### GOVERN (35)
+### GOVERN (36)
+- [#2647](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2647) Ratify PROTOCOL.md: candidate → canonical law (Shawn 2026-10-15)
 - [#2573](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2573) 0025-PERSISTENT-PROTOCOL-V1: NayaPOWER as the perpetual persistent int 📝draft
 - [#2489](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2489) Fix: PROTOCOL.md reading list no longer calls itself ratified canonica 📝draft
 - [#2487](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2487) Fix: LAWS-INDEX-V1.md no longer calls PROTOCOL.md canonical law 📝draft
 - [#2476](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2476) Fix: PROTOCOL.md is candidate awaiting ratification, not canonical law
-- [#2414](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2414) docs(govern): canonicalize the Agent Briefing in three forms (0022) [D 📝draft
-- …and 30 more
+- …and 31 more
 
 ---
 *Same truth, two tongues: humans read this file; the Hub reads `team-dashboard.machine.json`. Both regenerated from the same live sources every wave.*

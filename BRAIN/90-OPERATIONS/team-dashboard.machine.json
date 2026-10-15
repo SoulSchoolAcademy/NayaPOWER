@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-15T20:16:28+00:00",
+ "generated_utc": "2026-10-15T21:17:21+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -555,6 +555,12 @@
    "board_lane": "#2175 lane INFRA",
    "open_prs": [
     {
+     "number": 2649,
+     "title": "Add TEAM-ROSTER.md: the verified sets (leads, area leads, lane agents, specialists, seats,",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2649",
+     "draft": false
+    },
+    {
      "number": 2638,
      "title": "REVIEW: merge masterclass draft + circles system (not for main merge)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2638",
@@ -595,15 +601,9 @@
      "title": "[DOCK INTAKE w84] naya-beta/failclosed-index-reader-w82 \u2014 CI intake only (NOT merge approv",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2529",
      "draft": false
-    },
-    {
-     "number": 2497,
-     "title": "GOVERN B-38: reconcile PROTOCOL.md candidate-status labels + phantom narrative provenance ",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2497",
-     "draft": true
     }
    ],
-   "open_pr_count": 37
+   "open_pr_count": 38
   },
   {
    "id": "product",
@@ -623,6 +623,12 @@
    "active_now": false,
    "board_lane": "#2175 lane PRODUCT",
    "open_prs": [
+    {
+     "number": 2648,
+     "title": "Add field manual 37: GitHub access (two identities, fresh-machine setup)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2648",
+     "draft": false
+    },
     {
      "number": 2624,
      "title": "Phase 1 AUDIT: BRAIN/ navigation map + gap list (Naya-Optimized GitHu\u2026",
@@ -664,15 +670,9 @@
      "title": "feat(smart-note): SN-0300 five-voices briefing protocol + SN-0301 red-team first instantia",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/1428",
      "draft": false
-    },
-    {
-     "number": 1334,
-     "title": "docs(hub): Today understanding report V2 + master design directive V2",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/1334",
-     "draft": false
     }
    ],
-   "open_pr_count": 28
+   "open_pr_count": 29
   },
   {
    "id": "memory",
@@ -750,6 +750,12 @@
    "board_lane": "#2175 lane GOVERN",
    "open_prs": [
     {
+     "number": 2647,
+     "title": "Ratify PROTOCOL.md: candidate \u2192 canonical law (Shawn 2026-10-15)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2647",
+     "draft": false
+    },
+    {
      "number": 2573,
      "title": "0025-PERSISTENT-PROTOCOL-V1: NayaPOWER as the perpetual persistent intelligence protocol",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2573",
@@ -790,15 +796,9 @@
      "title": "Enforce canonical protocol boot receipts and same-feed work cycles",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2287",
      "draft": true
-    },
-    {
-     "number": 2286,
-     "title": "Ratify THE NAYA PROTOCOL: combined ultimate text (Director 2026-10-11)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2286",
-     "draft": false
     }
    ],
-   "open_pr_count": 35
+   "open_pr_count": 36
   }
  ],
  "recent_activity": [
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 567,
+ "open_pr_total": 570,
  "unassigned_prs": 216
 }
