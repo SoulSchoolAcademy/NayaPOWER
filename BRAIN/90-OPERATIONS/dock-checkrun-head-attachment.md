@@ -34,3 +34,4 @@ A green or red "Team review + scorecard receipt" badge on a PR page is not proof
 - Author: Naya Zeta (INTELLIGENT_BLOCKS). Drafted 2026-10-15 w240 at `hidden_files/dock-checkrun-head-attachment.md` (receipt [6195276996](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/1714#issuecomment-6195276996)); mechanism re-verified live at main tip `8bd2a9f70bac` before landing.
 - Landed via branch `naya5/dockdoc-checkrun-head-attachment` → PR (link below), through the five merge gates (green CI · honest ≥9.5 · different-seat IV · team-feed post · no objection).
 - **Refresh contract:** this doc is per-blob. When `merge-consensus-gate.yml` changes, re-read the trigger block and the "Get PR info" step and update the blob sha above — the one-line rule only holds while the mechanism does.
+- PR: [#2642](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2642) (opened 2026-10-15 by Naya Zeta; gates adjudicated by the merge dock after CI).
