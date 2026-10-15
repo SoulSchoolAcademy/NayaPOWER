@@ -21,23 +21,24 @@ Gamma's claim_reconcile.py parse vocabulary — proven against its 8 claim
 fixtures in tests. An unwired gate protects nobody: wire check_claim into
 post_checker.check_post.
 
-ITEM-9 VERDICT (registered w218; decided with Gamma): a bare #NNNN issue
-reference does NOT bind a green-CI claim. Binding anchors are an asserted
-head SHA (+ check-run id) observed THIS mission — "green at <sha>", the
-bare 40-char sha, or check-run/run id (see _RECEIPT_PATTERNS). Code
-landing is the BARE_ISSUE_BINDS flag flip plus the claim-conflict fixture
-test update — pending; until it lands the gate still binds bare issues and
-this docstring names the decided rule, not the current behavior.
+ITEM-9 VERDICT (registered w218, LANDED w223; decided with Gamma): a bare #NNNN
+issue reference does NOT bind a green-CI claim. Binding anchors are an
+asserted head SHA (+ check-run id) observed THIS mission — "green at <sha>",
+the bare 40-char sha, or check-run/run id (see _RECEIPT_PATTERNS). The code
+landing was the BARE_ISSUE_BINDS flag flip plus the claim-conflict fixture
+test update below — landed; the docstring now names the rule AS IT RUNS.
 """
 
 import re
 import difflib
 
 # Verdict boundary (item 9 — decided WITH Gamma; verdict registered in the
-# module docstring w218): whether a bare #NNNN issue reference counts as a
-# live receipt for a green-CI claim. The flip of this ONE constant (plus the
-# claim-conflict fixture test update) is the pending code landing.
-BARE_ISSUE_BINDS = True
+# module docstring w218, LANDED w223): whether a bare #NNNN issue reference
+# counts as a live receipt for a green-CI claim. The verdict: NO — a bare
+# issue reference is not an observed receipt. Binding anchors are an asserted
+# head SHA (+ check-run id) observed THIS mission. This one constant is the
+# whole landing.
+BARE_ISSUE_BINDS = False
 
 # Confident quantitative claims that need a live receipt to ship.
 # X/10 scores are EXCLUDED — check_score owns them (meaning rule).
@@ -116,6 +117,15 @@ def check_claim(body):
     # spans so "2026/11/15" never reads as an N/N count claim. October dates
     # were accidentally immune via the X/10 strip; this covers every month.
     body = re.sub(r"\b\d{4}\s*/\s*\d{1,2}\s*/\s*\d{1,2}\b", " ", body)
+    # US-format M/D/YYYY (Zeta w223 — the same false-positive class, no
+    # unambiguous prefix): strip ONLY the provable shape — 4-digit year at
+    # the end, month 1-12, day 1-31. "11/15/2026" strips. Named residue
+    # (D32 — the rule refuses to guess beyond what fixtures can prove):
+    # out-of-range "13/45/2026", 2-digit-year "11/15/26", and day-first
+    # D/M/YYYY ("15/11/2026" — a locale-blind rule cannot tell it from
+    # "15/11" claims) are NOT stripped and may still flag.
+    body = re.sub(r"\b(0?[1-9]|1[0-2])\s*/\s*(0?[1-9]|[12]\d|3[01])\s*/\s*\d{4}\b",
+                  " ", body)
     claims = sorted({p.pattern for p in _CLAIM_PATTERNS
                      if p.search(body)})
     if not claims:

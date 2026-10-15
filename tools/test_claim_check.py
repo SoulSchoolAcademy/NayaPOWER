@@ -77,7 +77,13 @@ ok, d = cc.check_claim(fx("claim-ambiguous.txt"))
 t("gamma-claim-ambiguous-binds", ok, d)                   # ambiguous fails closed at CI gate; presence here
 
 ok, d = cc.check_claim(fx("claim-conflict.txt"))
-t("gamma-claim-conflict-binds", ok, d)                    # bare #NNNN binds (BARE_ISSUE_BINDS=True; item 9 owns the verdict)
+t("gamma-claim-conflict-binds", ok, d)                      # fixture binds on its 40-char SHA anchor — the bare #NNNN
+                                                            # alone no longer binds (item 9 landed; BARE_ISSUE_BINDS=False)
+
+# item-9 code landing (Zeta w223): a bare #NNNN issue reference is NOT a
+# live receipt. Green claim + bare issue only => FLAG.
+ok, d = cc.check_claim("verdict: Team gate green\nCI discussion at #2625 | owner: Naya Zeta")
+t("bare-issue-no-longer-binds", not ok, d)
 
 ok, d = cc.check_claim(fx("claim-vacuous.txt"))
 t("gamma-claim-vacuous-pass", ok, d)                      # no adjudicable claim
@@ -107,6 +113,29 @@ t("date-plus-real-count-still-flags", not ok, d)
 
 ok, d = cc.check_claim("verdict: 2026/11/15 deploy, all 12/12 checks green @ ba6263870425\nnext: merge | owner: Naya Zeta")
 t("date-plus-bound-count-passes", ok, d)
+
+# US-format M/D/YYYY — the same false-positive class, no unambiguous prefix
+# (Zeta w223): strip the provable shape, name the residue per D32
+ok, d = cc.check_claim("verdict: deploy scheduled 11/15/2026\nnext: wait | owner: Naya Zeta")
+t("us-slash-date-not-a-count-claim", ok, d)
+
+ok, d = cc.check_claim("verdict: retro on 1/5/2026 went well\nnext: n/a | owner: Naya Zeta")
+t("us-slash-date-single-digit-not-a-count-claim", ok, d)
+
+# a real N/N count next to a US date must STILL bind (the fix must not over-strip)
+ok, d = cc.check_claim("verdict: 11/15/2026 deploy, all 12/12 checks green\nnext: merge | owner: Naya Zeta")
+t("us-date-plus-real-count-still-flags", not ok, d)
+
+ok, d = cc.check_claim("verdict: 11/15/2026 deploy, all 12/12 checks green @ ba6263870425\nnext: merge | owner: Naya Zeta")
+t("us-date-plus-bound-count-passes", ok, d)
+
+# residue: out-of-range month/day and 2-digit-year forms do NOT strip —
+# a locale-blind rule cannot prove them dates, so it refuses to guess
+ok, d = cc.check_claim("verdict: 13/45 checks green\nnext: merge | owner: Naya Zeta")
+t("out-of-range-not-a-date-still-flags", not ok, d)
+
+ok, d = cc.check_claim("verdict: 11/15/26 checks green\nnext: merge | owner: Naya Zeta")
+t("two-digit-year-not-a-date-still-flags", not ok, d)
 
 if __name__ == "__main__":
     # Reaching here means every t() above passed.
