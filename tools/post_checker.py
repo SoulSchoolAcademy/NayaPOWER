@@ -1,42 +1,63 @@
-"""Post checker — the comm standard's teeth (Naya 5, 2026-10-14).
+#!/usr/bin/env python3
+"""Post checker — the three-level post protocol as bytes.
 
-Mechanizes the reconciled Team Communication Standard: a board post is
-checked against its level's required fields, roster identity, evidence,
-score meaning, and next-owner. It FLAGS missing pieces; it does not
-reject — enforcement ramps from advisory to gating.
+WHY THIS EXISTS
+---------------
+2026-10-14: Shawn's law — "what good is 1200 comments if nobody gets any value
+from it?" The night-shift dispatcher brief mandates a THREE-LEVEL POST
+PROTOCOL (PULSE / RECEIPT / EVENT) with DEDUP + CLAIM-CHECK for board posts,
+but the tool was never built — prose doesn't run. This is the enforcement.
 
-Levels: PULSE (8 fields), RECEIPT (7 fields), EVENT (8 questions).
+2026-10-14: the #2597 incident — a merge-intent post claimed "16/16 required
+green" from memory of an earlier check while the Team review + scorecard
+receipt gate was RED on the exact head. An independent verifier caught it
+post-hoc. The claim-check gate below would have rejected the post before it
+went out: a quantitative claim without a cited live read is rejected. Fix it
+first, never post-anyway.
+
+W181 SURGICAL MERGE (Naya Gamma): reconciled the tools/post_checker.py
+add/add conflict (true merge-base c13f260f; tip blob 4e5fdff0 vs head blob
+99a891ac) per builder-packet-2600-conflict-w180.md. The head's three-level
+protocol is canonical; the tip's unique mechanisms were ported in:
+_unquoted() (quoted/fenced lines never bind — w157/w164 hole class),
+the ROSTER names folded into the identity regex (Naya 1-5, Narzan leads),
+the contextual ANCHORED_SHA_RE (7-40 hex with sha/commit/tree/tip/head/ref
+context words) OR'd with the bare 40-hex check, and score-meaning rigor on
+RECEIPT. The tip's older comm-standard vocabulary (WHO/MISSION/STATUS/...
+fields) was superseded — its failure-mode COVERAGE was translated to the
+current schema in tests/test_post_checker.py, not its verbatim strings.
+
+Usage (workers run this BEFORE posting; never post a FLAGged post):
+    python3 tools/post_checker.py --level PULSE   post.txt
+    python3 tools/post_checker.py --level RECEIPT  post.txt
+    python3 tools/post_checker.py --level EVENT    post.txt
+    cat post.txt | python3 tools/post_checker.py --level PULSE
+
+Exit codes: 0 = PASS (post may go out), 1 = FLAG (reason printed; fix, don't
+post). Stdlib only.
 """
 
+import argparse
+import difflib
+import hashlib
+import json
+import os
 import re
+import sys
+from datetime import datetime, timedelta, timezone
 
-ROSTER = ["Naya Alpha", "Naya Beta", "Naya Gamma", "Naya Delta",
-          "Naya Epsilon", "Naya Zeta", "Naya Eta", "Naya Theta",
-          "Naya Iota", "Naya Kappa", "Naya Lambda", "Naya Mu",
-          "Naya 1", "Naya 2", "Naya 3", "Naya 4", "Naya 5",
-          "Naya Verity", "Naya Resolve", "Naya Clarity"]
+# --------------------------------------------------------------------------
+# Limits and windows (from the dispatcher brief, 2026-10-14)
+# --------------------------------------------------------------------------
+PULSE_MAX_CHARS = 300
+RECEIPT_MAX_CHARS = 1500
+OATH_RITUAL_MAX_LINES = 2
+DEDUP_WINDOW_HOURS = 6
+DEDUP_SIMILARITY = 0.85
 
-PULSE_FIELDS = ["WHO", "MISSION", "STATUS", "TRUTH", "SCORE", "BLOCKER",
-                "NEXT", "SOURCE"]
-RECEIPT_FIELDS = ["WHO", "NUTSHELL", "WHAT", "EVIDENCE", "SCORE",
-                  "CONNECTS", "NEEDS"]
-EVENT_QUESTIONS = ["discover", "evidence", "wrong", "falsif",
-                   "updated", "behavior", "verifier", "successor"]
-
-SHA_RE = re.compile(
-    r"(?:@\s*|\b(?:sha|commit|tree|tip|head|ref)\s*[:=]?\s*)"
-    r"([0-9a-f]{7,40})\b",
-    re.IGNORECASE)
-REF_RE = re.compile(r"#\d{3,5}")
-SCORE_RE = re.compile(r"(\d+(?:\.\d+)?)\s*/\s*10")
-
-# Score-meaning words match on word boundaries only: "relationships" must
-# not count as "ships", "meaningless" must not count as "meaning".
-MEANING_RE = re.compile(
-    r"\b(why not 10|why it is not|meaning|ships|one more pass|rework|"
-    r"backwards|held|blocked|verified)\b", re.IGNORECASE)
-
-
+# --------------------------------------------------------------------------
+# _unquoted (ported from the tip, w181) — quoted/fenced lines never bind
+# --------------------------------------------------------------------------
 _FENCE_OPEN_RE = re.compile(r"^(```+|~~~+)")
 _FENCE_CLOSE_RE = re.compile(r"^(```+|~~~+)\s*$")
 
@@ -51,7 +72,7 @@ def _unquoted(body):
     string, e.g. ```markdown), closed by a matching fence line (same
     character, at least as long, fence characters + whitespace only) —
     is pasted content, not the author's own words. Quoted and fenced
-    lines must never bind as signature, fields, evidence, or score —
+    lines must never bind as identity, verdict, evidence, or score —
     a post that only *quotes* or *fences* a good post is not a good
     post. Every check runs on the unquoted body. An UNCLOSED fence
     drops everything after it (fail-closed): content past the fence
@@ -83,211 +104,353 @@ def _unquoted(body):
     return "\n".join(kept)
 
 
-def _labeled(body, field):
-    """True when `field` heads a labeled line: `FIELD: ...`, `**FIELD:**`,
-    `**FIELD -> WHY:**`, `FIELD - ...`. Unlabeled prose never counts —
-    a paragraph that merely *mentions* every field word is not a field."""
-    pat = re.compile(
-        r"(?im)^\s*(?:[-—–*•]+\s*)?(?:\*\*)?" + re.escape(field)
-        + r"\b[^:\n]{0,24}[:\-–]")
-    return bool(pat.search(body))
+# --------------------------------------------------------------------------
+# PULSE — state-change only, never a heartbeat
+# --------------------------------------------------------------------------
+NOTHING_PATTERNS = [
+    re.compile(p, re.IGNORECASE)
+    for p in (
+        r"\bno_work\b",
+        r"list-?drained",
+        r"nothing to report",
+        r"nothing to do",
+        r"all quiet",
+        r"\bno change\b",
+        r"no-change",
+        r"\bno updates?\b",
+    )
+]
+
+STATE_CHANGE_RE = re.compile(
+    r"\b(start(?:ing|ed)?|block(?:ed|ing)?|unblock(?:ed|ing)?|done|hold|held|"
+    r"sign-?in|sign-?out|deliver(?:ed|ing)?|complet(?:e|ed|ing)|fail(?:ed|ing)?|"
+    r"merg(?:e|ed|ing)|posted?|fix(?:ed|ing)?|deploy(?:ed|ing)?|claim(?:ed|ing)?|"
+    r"releas(?:e|ed|ing))\b",
+    re.IGNORECASE,
+)
+
+STILL_WORKING_RE = re.compile(r"\bstill working\b", re.IGNORECASE)
 
 
-def _stem_present(body, stem):
-    """EVENT question stems match as a word prefix ('falsif' catches
-    'falsified'). Deliberate: EVENT questions are stems, not labels —
-    unlike PULSE/RECEIPT fields, which are label-anchored above."""
-    return bool(re.search(r"(?i)\b" + re.escape(stem) + r"\w*", body))
+def check_pulse(text):
+    """PULSE: <=300 chars, state change, never a nothing-to-report.
+    Claim-check also applies: a PULSE that makes a quantitative claim
+    must cite a live read (#2597 class is level-agnostic)."""
+    flags = []
+    if not text.strip():
+        return ["empty post — a PULSE with nothing in it is a heartbeat"]
+    if len(text) > PULSE_MAX_CHARS:
+        flags.append(
+            f"{len(text)} chars > {PULSE_MAX_CHARS} — PULSE is state-change "
+            "only; move detail to a RECEIPT"
+        )
+    for pat in NOTHING_PATTERNS:
+        if pat.search(text):
+            flags.append(
+                f"nothing-to-report pattern {pat.pattern!r} — that is a "
+                "heartbeat, not a post. Heartbeat the truth file instead"
+            )
+            break
+    if STILL_WORKING_RE.search(text) and not STATE_CHANGE_RE.search(text):
+        flags.append(
+            '"still working" with no new information — say WHAT changed or '
+            "do not post"
+        )
+    if not STATE_CHANGE_RE.search(text):
+        flags.append(
+            "no state change described (starting/blocked/unblocked/done/...) "
+            "— PULSE must carry a state change"
+        )
+    flags.extend(claim_check_flags(text))
+    return flags
 
 
-# The three leads sign with the family name: Naya Clarity Narzan, etc.
-# Their agents sign "Naya <Leader> <Name>" — no Narzan. That asymmetry is
-# deliberate: it ends the name confusion between lead and agent for good.
-# Identity resolution lives in _candidate_from_text / check_identity:
-# signature lines only, mentions never bind.
+# --------------------------------------------------------------------------
+# RECEIPT — identity per the naming law, verdict, trimmed ritual,
+#           score with meaning (no bare numbers, ever)
+# --------------------------------------------------------------------------
+# ROSTER folded into the identity regex (ported from the tip, w181):
+# the twelve Greek-lead seats, the numbered seats Naya 1-5, and the
+# three leads with the Narzan family name.
+SEAT_RE = re.compile(
+    r"\bNaya\s+(?:[1-5]|Clarity|Verity|Resolve|Alpha|Beta|Gamma|Delta|"
+    r"Epsilon|Zeta|Eta|Theta|Iota|Kappa|Lambda|Mu)(?:\s+Narzan)?\b"
+)
+BARE_NAYA_RE = re.compile(r"\bNaya\b")
+SIGNING_BARE_RE = re.compile(r"signing\s+bare", re.IGNORECASE)
+VERDICT_RE = re.compile(
+    r"\b(DONE|COMPLETE|COMPLETED|HELD|HOLD|BLOCKED|FAIL|FAILED|VERDICT)\b",
+    re.IGNORECASE,
+)
+OATH_LINE_RE = re.compile(r"\boath\b", re.IGNORECASE)
+# Score-meaning rigor (ported from the tip, w181): a score with meaning,
+# not a bare number. Meaning words match on word boundaries only:
+# "relationships" must not count as "ships", "meaningless" must not
+# count as "meaning".
+SCORE_RE = re.compile(r"(\d+(?:\.\d+)?)\s*/\s*10")
+MEANING_RE = re.compile(
+    r"\b(why not 10|why it is not|meaning|ships|one more pass|rework|"
+    r"backwards|held|blocked|verified)\b",
+    re.IGNORECASE)
 
 
-def _strip_markers(line):
-    """Strip leading bullets/dashes/markdown so a signature line
-    like `**[Naya 5] ...` or `— Naya Delta` reads as `Naya 5 ...`.
-
-    `>` is deliberately NOT stripped: a `> Naya Alpha ...` line is a
-    quote, and quote lines never sign (see _unquoted)."""
-    return re.sub(r"^[\s•\-—–*\[\]]+", "", line.strip())
-
-
-def _candidate_from_text(text, roster):
-    """Classify the name a signature line starts with, or None.
-
-    Returns (kind, name): kind is 'lead' (full `Naya <Leader> Narzan`),
-    'agent' (`Naya <Leader> <CapitalizedName>`), 'roster' (a roster seat),
-    'leader_malformed' (a `Naya <Leader>` prefix with a non-conforming
-    continuation — lowercase name, or no Narzan/agent name at all), or
-    'bare' (`Naya <Name>` with no leader prefix)."""
-    text = text.lstrip()
-    m = re.match(r"(Naya\s+(Clarity|Verity|Resolve))\s+(\S+)", text)
-    if m:
-        nxt = m.group(3).strip(".,;:·—–)]}*")
-        if nxt == "Narzan":
-            return ("lead", f"Naya {m.group(2)} Narzan")
-        if re.fullmatch(r"[A-Z][a-zA-Z\-]*", nxt):
-            return ("agent", f"Naya {m.group(2)} {nxt}")
-        return ("leader_malformed", f"Naya {m.group(2)} {nxt}")
-    m = re.match(r"Naya\s+(Clarity|Verity|Resolve)"
-                 r"(?=\s*(?:[·—–,:|\)\]\}]|$))", text)
-    if m:
-        return ("leader_malformed", f"Naya {m.group(1)}")
-    for seat in roster:
-        if re.match(re.escape(seat) + r"(?![A-Za-z])", text):
-            return ("roster", seat)
-    m = re.match(r"Naya\s+[A-Z][a-zA-Z\-]*", text)
-    if m:
-        return ("bare", m.group(0))
-    return None
-
-
-def check_identity(body, roster=ROSTER):
-    """Roster seats and leader-prefixed agents only. Returns (ok, detail).
-
-    The signer is resolved from an explicit signature line ONLY: a
-    `WHO:`-labeled line, a `Signed:`/`By:` line, or a line that STARTS
-    with the name (after markers). A name merely *mentioned* in the body
-    never signs the post — a post signed 'Naya Alpha' that thanks
-    'Naya Verity Narzan' is signed by Naya Alpha. A name inside a `>`
-    quote never signs either — quoted words are someone else's. A name
-    inside a fenced block never signs either — fenced content is
-    pasted, not authored."""
-    body = _unquoted(body)
-    for line in body.splitlines():
-        text = _strip_markers(line)
-        m = re.match(r"(?i)(?:WHO|Signed(?:\s+by)?|By)\s*[:\-–]?\s*\**", text)
-        cand = (_candidate_from_text(text[m.end():], roster) if m
-                else _candidate_from_text(text, roster))
-        if cand is None:
-            continue
-        kind, name = cand
-        if kind == "lead":
-            return True, f"signed: lead {name}"
-        if kind == "agent":
-            return True, f"signed: leader agent {name}"
-        if kind == "roster":
-            return True, f"signed: {name}"
-        if kind == "leader_malformed":
-            if name in (f"Naya {lead}" for lead in
-                        ("Clarity", "Verity", "Resolve")):
-                return False, (f"incomplete identity '{name}' — leads sign "
-                               f"with the family name: '{name} Narzan'")
-            return False, (f"malformed agent identity '{name}' — agent names "
-                           "are capitalized: "
-                           "'Naya <Clarity|Verity|Resolve> <Name>'")
-        return False, (f"incomplete identity '{name}' — "
-                       "Shawn's naming law needs the leader prefix: "
-                       "'Naya <Clarity|Verity|Resolve> <Name>'")
-    return False, "no roster seat name found — identity unbound"
-
-
-def check_evidence(body):
-    """An anchored SHA, a PR/issue ref, or a run id — or it didn't happen.
-
-    A bare hex word is NOT evidence: 'deadbeef' in prose proves nothing.
-    A SHA counts only with an anchor — `@ <sha>`, `sha: <sha>`,
-    `commit <sha>`, `tip <sha>`, `head <sha>`, `tree <sha>`,
-    `ref <sha>` — or a `#NNNN` ref. Anchors inside `>` quotes or
-    fenced blocks never count — quoted/fenced evidence is someone
-    else's."""
-    body = _unquoted(body)
-    hits = SHA_RE.findall(body) + REF_RE.findall(body)
-    if hits:
-        return True, f"evidence anchors: {hits[:3]}"
-    return False, "no anchored SHA, PR/issue ref, or run id found"
-
-
-def check_score(body):
-    """A score with meaning, not a bare number.
-
-    Meaning words match on word boundaries: 'relationships' is not
-    'ships', 'meaningless' is not 'meaning'. A score (and its meaning
-    words) inside a `>` quote or a fenced block never counts."""
-    body = _unquoted(body)
-    m = SCORE_RE.search(body)
+def check_receipt(text):
+    """RECEIPT: named seat, verdict line, score with meaning, <=1500
+    chars, no ritual. Claim-check also applies: a RECEIPT that makes a
+    quantitative claim (scorecard numbers, "13/13 green") must cite a
+    live read — the score-meaning requirement alone does not stop a
+    #2597-class memory claim."""
+    flags = []
+    if not text.strip():
+        return ["empty post — a RECEIPT must carry a verdict"]
+    if len(text) > RECEIPT_MAX_CHARS:
+        flags.append(
+            f"{len(text)} chars > {RECEIPT_MAX_CHARS} — trim the ritual; "
+            "identity, mission, verdict, win-why"
+        )
+    if SIGNING_BARE_RE.search(text) or (
+        BARE_NAYA_RE.search(text) and not SEAT_RE.search(text)
+    ):
+        flags.append(
+            "naming-law violation — sign as a named seat "
+            "(Naya Clarity/Verity/Resolve Narzan, Naya 1-5, or Naya "
+            "[Greek lead]); never bare 'Naya'"
+        )
+    if not VERDICT_RE.search(text):
+        flags.append(
+            "no verdict line (DONE/HELD/BLOCKED/FAIL + what) — a receipt "
+            "without a verdict is a diary entry"
+        )
+    m = SCORE_RE.search(text)
     if not m:
-        return False, "no X/10 score found"
-    if MEANING_RE.search(body):
-        return True, f"score {m.group(0).strip()} with meaning"
-    return False, f"score {m.group(0).strip()} present but meaning unstated"
+        flags.append(
+            "no X/10 score with meaning — a RECEIPT requires "
+            "score: n/10 — what it means (no bare numbers, ever)"
+        )
+    elif not MEANING_RE.search(text):
+        flags.append(
+            f"score {m.group(0).strip()} present but meaning unstated — "
+            "say what the score means (why not 10, what changed)"
+        )
+    oath_lines = sum(1 for line in text.splitlines() if OATH_LINE_RE.search(line))
+    if oath_lines > OATH_RITUAL_MAX_LINES:
+        flags.append(
+            f"oath restatement over {OATH_RITUAL_MAX_LINES} lines "
+            f"({oath_lines} found) — the oath lives in the briefing, not in "
+            "every post"
+        )
+    flags.extend(claim_check_flags(text))
+    return flags
 
 
-def check_level(body, level):
-    """Required fields for the post's level.
+# --------------------------------------------------------------------------
+# EVENT — board-level: DEDUP + CLAIM-CHECK
+# --------------------------------------------------------------------------
+QUANT_PATTERNS = [
+    # Fraction like 16/16 — but NOT a slash-list like "items 1/5/7"
+    # (lookarounds): an item-number enumeration is not a claim about
+    # the world. w202: PULSE sign-ins routinely write "items 1/5/7".
+    (re.compile(r"(?<!/)\b\d+\s*/\s*\d+\b(?!/)"), "fraction like 16/16"),
+    (
+        re.compile(r"\bCI\b[^.\n]{0,40}\bgreen\b|\bgreen\b[^.\n]{0,40}\bCI\b",
+                   re.IGNORECASE),
+        '"CI green"',
+    ),
+    (re.compile(r"\ball checks\b", re.IGNORECASE), '"all checks"'),
+    (re.compile(r"\bchecks?\s+green\b", re.IGNORECASE), '"checks green"'),
+    (re.compile(r"\brequired\s+green\b", re.IGNORECASE), '"required green"'),
+    (re.compile(r"\btests?\s+green\b", re.IGNORECASE), '"tests green"'),
+    (re.compile(r"\b\d+\s*%"), "percentage like X%"),
+]
+SHA_RE = re.compile(r"\b[0-9a-f]{40}\b")
+# Contextual SHA (ported from the tip, w181): a 7-40 hex word counts as
+# evidence only with an anchor — `@ <sha>`, `sha: <sha>`, `commit <sha>`,
+# `tip <sha>`, `head <sha>`, `tree <sha>`, `ref <sha>`. A bare hex word
+# in prose ('deadbeef') is NOT evidence — anchors inside `>` quotes or
+# fenced blocks never count (see _unquoted).
+ANCHORED_SHA_RE = re.compile(
+    r"(?:@\s*|\b(?:sha|commit|tree|tip|head|ref)\s*[:=]?\s*)"
+    r"([0-9a-f]{7,40})\b",
+    re.IGNORECASE)
+RUNID_RE = re.compile(r"\b\d{8,}\b")
 
-    PULSE/RECEIPT fields must head labeled lines (`FIELD: ...`) —
-    unlabeled prose that mentions every field word fails. EVENT
-    questions are stems matched as word prefixes. Field labels and
-    stems inside `>` quotes or fenced blocks never count."""
-    body = _unquoted(body)
+
+def _has_evidence(body):
+    """A cited live read: bare 40-hex SHA, anchored 7-40 hex SHA, or a
+    check-run id — observed in THIS mission, never from memory."""
+    return bool(
+        SHA_RE.search(body)
+        or ANCHORED_SHA_RE.search(body)
+        or RUNID_RE.search(body)
+    )
+
+
+def claim_check_flags(body):
+    """Claim-check gate: any quantitative claim in the post must cite a
+    live read (bare 40-hex SHA, anchored 7-40 hex SHA, or check-run id).
+    Level-agnostic — a RECEIPT or PULSE can overstate just as an EVENT
+    can (#2597 class). Returns the flag list (empty = clean)."""
+    flags = []
+    claims = []
+    for pat, label in QUANT_PATTERNS:
+        m = pat.search(body)
+        if m:
+            claims.append(f"{label} ({m.group(0)!r})")
+    if claims and not _has_evidence(body):
+        flags.append(
+            "claim-check: quantitative claim(s) with no cited live read — "
+            + "; ".join(claims)
+            + " — cite the exact head SHA (bare 40-hex, or anchored "
+            "@ / sha: / commit / tip / head / tree / ref <7-40 hex>) "
+            "and/or check-run id observed in THIS mission. "
+            "Never from memory of an earlier check"
+        )
+    return flags
+
+
+def normalize(text):
+    return re.sub(r"\s+", " ", text).strip().lower()
+
+
+def post_sha(text):
+    return hashlib.sha256(normalize(text).encode("utf-8")).hexdigest()
+
+
+def resolve_log_path(override=None):
+    """Where the dedup log lives: flag > env > repo-local > home."""
+    if override:
+        return override
+    env = os.environ.get("NAYA_POST_LOG")
+    if env:
+        return env
+    here = os.path.abspath(os.getcwd())
+    while True:
+        if os.path.isdir(os.path.join(here, ".git")):
+            return os.path.join(here, ".naya", "post-log.jsonl")
+        parent = os.path.dirname(here)
+        if parent == here:
+            break
+        here = parent
+    return os.path.join(os.path.expanduser("~"), ".naya", "post-log.jsonl")
+
+
+def read_log(path):
+    entries = []
+    if not os.path.exists(path):
+        return entries
+    with open(path, encoding="utf-8") as fh:
+        for line in fh:
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                entries.append(json.loads(line))
+            except json.JSONDecodeError:
+                continue
+    return entries
+
+
+def append_log(path, text):
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    entry = {
+        "sha": post_sha(text),
+        "ts": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "norm": normalize(text)[:4000],
+        "head": text.strip()[:80],
+    }
+    with open(path, "a", encoding="utf-8") as fh:
+        fh.write(json.dumps(entry) + "\n")
+
+
+def check_event(text, log_path=None):
+    """EVENT: claim-check then dedup. Returns (flags, should_append)."""
+    flags = []
+    if not text.strip():
+        return ["empty post — an EVENT must carry a material finding"], False
+
+    # (b) CLAIM-CHECK — quantitative claims need cited live evidence.
+    # Shared gate (w202): identical rule, all levels.
+    flags.extend(claim_check_flags(text))
+
+    # (a) DEDUP — same content inside the 6h window: link, don't repost.
+    path = resolve_log_path(log_path)
+    norm = normalize(text)
+    sha = post_sha(text)
+    now = datetime.now(timezone.utc)
+    for entry in read_log(path):
+        try:
+            ets = datetime.fromisoformat(entry["ts"])
+        except (KeyError, ValueError):
+            continue
+        if ets.tzinfo is None:
+            ets = ets.replace(tzinfo=timezone.utc)
+        if now - ets > timedelta(hours=DEDUP_WINDOW_HOURS):
+            continue
+        if entry.get("sha") == sha:
+            flags.append(
+                f"duplicate: identical post already made at {entry['ts']} — "
+                "link the original instead of reposting"
+            )
+            break
+        other = entry.get("norm", "")
+        if other and difflib.SequenceMatcher(None, norm, other).ratio() >= DEDUP_SIMILARITY:
+            flags.append(
+                f"near-duplicate of a post from {entry['ts']} "
+                f"(similarity >= {DEDUP_SIMILARITY}) — link the original "
+                "instead of reposting"
+            )
+            break
+
+    return flags, not flags
+
+
+def check(level, text, log_path=None):
+    """Dispatch by level. Every check runs on the author's own lines —
+    quoted and fenced lines never bind (see _unquoted). Returns
+    (flags, append_to_log)."""
+    level = level.upper()
+    body = _unquoted(text)
     if level == "PULSE":
-        missing = [f for f in PULSE_FIELDS if not _labeled(body, f)]
-    elif level == "RECEIPT":
-        missing = [f for f in RECEIPT_FIELDS if not _labeled(body, f)]
-    elif level == "EVENT":
-        missing = [q for q in EVENT_QUESTIONS if not _stem_present(body, q)]
-    else:
-        return False, f"unknown level {level!r}"
-    if missing:
-        return False, f"missing {level} fields: {missing}"
-    return True, f"all {level} fields present"
-
-
-def check_post(body, level="RECEIPT", roster=ROSTER):
-    """Full check. Returns (verdict, findings).
-
-    verdict: "PASS" or "FLAG". findings: list of (check, ok, detail).
-    """
-    findings = []
-    for name, fn in [("identity", lambda b: check_identity(b, roster)),
-                     ("level", lambda b: check_level(b, level)),
-                     ("evidence", check_evidence),
-                     ("score", check_score)]:
-        ok, detail = fn(body)
-        findings.append((name, ok, detail))
-    verdict = "PASS" if all(ok for _, ok, _ in findings) else "FLAG"
-    return verdict, findings
-
-
-def describe(verdict_findings):
-    """One-line human rendering."""
-    verdict, findings = verdict_findings
-    bad = [f"{n}: {d}" for n, ok, d in findings if not ok]
-    if verdict == "PASS":
-        return "PASS — identity, fields, evidence, and score meaning present"
-    return "FLAG — " + "; ".join(bad)
+        return check_pulse(body), False
+    if level == "RECEIPT":
+        return check_receipt(body), False
+    if level == "EVENT":
+        return check_event(body, log_path)
+    raise ValueError(f"unknown level {level!r} — want PULSE, RECEIPT, or EVENT")
 
 
 def main(argv=None):
-    """CLI: check a board post file (or stdin) against the standard.
-
-    Exit 0 on PASS, 1 on FLAG — wired for pre-post self-checks and CI.
-    """
-    import argparse
-    import sys
     ap = argparse.ArgumentParser(
-        description="Check a team board post against the Team Feed Standard.")
+        description="Three-level post protocol gate: PULSE/RECEIPT/EVENT. "
+        "Exit 0 = PASS (post may go out), 1 = FLAG (fix, don't post)."
+    )
+    ap.add_argument("--level", required=True,
+                    choices=["PULSE", "RECEIPT", "EVENT"])
     ap.add_argument("file", nargs="?",
-                    help="Post text file (default: read stdin)")
-    ap.add_argument("--level", default="RECEIPT",
-                    choices=["PULSE", "RECEIPT", "EVENT"],
-                    help="Post level to check against")
+                    help="post file; reads stdin when omitted")
+    ap.add_argument("--post-log", default=None,
+                    help="dedup log path (EVENT); defaults to repo-local "
+                    ".naya/post-log.jsonl or ~/.naya/post-log.jsonl")
+    ap.add_argument("--no-append", action="store_true",
+                    help="do not append a passing EVENT to the dedup log")
     args = ap.parse_args(argv)
-    body = open(args.file, encoding="utf-8").read() if args.file \
-        else sys.stdin.read()
-    verdict, findings = check_post(body, level=args.level)
-    print(describe((verdict, findings)))
-    for name, ok, detail in findings:
-        if not ok:
-            print(f"  ! {name}: {detail}")
-    return 0 if verdict == "PASS" else 1
+
+    if args.file:
+        with open(args.file, encoding="utf-8") as fh:
+            text = fh.read()
+    else:
+        text = sys.stdin.read()
+
+    flags, append = check(args.level, text, args.post_log)
+    if flags:
+        for f in flags:
+            print(f"FLAG: {f}")
+        return 1
+    if append and not args.no_append:
+        append_log(resolve_log_path(args.post_log), text)
+    print("PASS")
+    return 0
 
 
 if __name__ == "__main__":
-    import sys
-    raise SystemExit(main())
+    sys.exit(main())
