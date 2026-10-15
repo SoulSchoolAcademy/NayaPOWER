@@ -1,0 +1,8 @@
+/merge — PR #2599
+
+Why: the #2597 incident was a merge intent that claimed "green CI" while the Team gate was RED. A human caught it.
+Next: keep CI green by running this gate on every merge intent.
+
+> CI is green (quoted from the earlier thread — citing, not asserting)
+
+Do not write `CI is green at <sha>` as an example and expect it to pass.

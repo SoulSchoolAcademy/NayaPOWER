@@ -39,7 +39,25 @@ Exit codes: 0 = reconciled | 1 = CONFLICT | 2 = STALE | 3 = BLIND
 Stdlib only. CI-runnable: auth via GITHUB_TOKEN/GH_TOKEN env; offline via
 --pr-json / --checks-json fixtures.
 
+ANTI-DRIFT — the mechanism, stated exactly (Delta w213)
+------------------------------------------------------
+This module imports nothing from the repo — not the receipt gate, not any
+sibling tool. Imports are stdlib only (argparse, json, os, re, sys,
+unicodedata, urllib.request). The anti-drift guarantee is BYTE IDENTITY,
+not import: .github/workflows/claim-reconcile-gate.yml checks out
+tools/claim_reconcile.py from the DEFAULT BRANCH at workflow run time
+(ref: github.event.repository.default_branch, sparse-checkout), so the
+judge that runs is always main's bytes — a PR author cannot edit their
+own judge. Any packet claiming this tool "imports the receipt gate's
+main()" is wrong; correct it on sight.
+
 WHAT THIS DOES NOT CLAIM (D32)
+------------------------------
+- It adjudicates CLAIM TEXT, not intent: only claims it can parse.
+- A 'green CI' phrase inside quotes, blockquotes, or code is cited
+  language, not the author's assertion, and does not fire BROAD_GREEN
+  (Delta w213 narrowing); neither does an aspirational "keep CI green".
+  A bare declarative claim always fires — when in doubt, it fires.
 ------------------------------
 - It adjudicates CLAIM TEXT, not intent: only claims it can parse.
 - It reads the latest 100 check-runs; PRs beyond that are out of scope.
@@ -95,6 +113,57 @@ NAMED_GREEN_COLON = re.compile(
 )
 
 GREEN_WORDS = {"green", "passing", "pass", "success", "successful"}
+
+
+# Verbs whose object is an aspiration, not an assertion: "keep CI green"
+# is a wish about the future, not a claim about the head. Present,
+# imperative, and gerund forms only — past tense ("kept CI green")
+# asserts and still fires. Checked against the ~48 chars before a match.
+ASPIRATIONAL_VERB = re.compile(
+    r"\b(keep|keeps|keeping|make|makes|making|get|gets|getting|"
+    r"let|lets|letting|ensure|ensures|ensuring|want|wants|"
+    r"hope|hopes|hoping|aim|aims|aiming|try|tries|trying)"
+    r"\s+(the\s+|to\s+|sure\s+|certain\s+)?$",
+    re.IGNORECASE,
+)
+
+
+def _strip_non_assertive(text: str) -> str:
+    """Remove contexts where a 'green CI' phrase is cited, not asserted.
+
+    Delta w213: the broad-green detector fired on narrative/quoted prose
+    ("green CI" in Why/Next paragraphs, quoted incident language) — a
+    detector that cries wolf poisons every true positive after it.
+    Blockquote lines, fenced/inline code, and quoted phrases are someone
+    else's words or examples, never the author's own assertion. Applied
+    to BROAD_GREEN only: named claims stay strict-exact, SHA cites are
+    never stripped. Everything else still matches — fail closed.
+    """
+    text = re.sub(r"```.*?```", " ", text, flags=re.DOTALL)  # fenced code
+    text = re.sub(r"`[^`\n]*`", " ", text)  # inline code
+    text = "\n".join(
+        line for line in text.splitlines() if not re.match(r"\s*>", line)
+    )  # blockquotes are cited text
+    text = re.sub(r'"[^"\n]*"', " ", text)  # "quoted phrases"
+    text = re.sub(r"'[^'\n]*'", " ", text)  # 'quoted phrases'
+    return text
+
+
+def _is_assertive_broad_green(text: str) -> bool:
+    """True if any broad-green match is the author's own assertion.
+
+    Matches inside non-assertive contexts (quotes, blockquotes, code)
+    are ignored; matches governed by an aspirational verb ("keep CI
+    green") are wishes, not claims. A bare declarative match always
+    counts — when in doubt, it fires (fail closed).
+    """
+    scrubbed = _strip_non_assertive(text)
+    for m in BROAD_GREEN.finditer(scrubbed):
+        before = scrubbed[max(0, m.start() - 48):m.start()]
+        if ASPIRATIONAL_VERB.search(before):
+            continue
+        return True
+    return False
 
 
 # High-value Latin lookalikes -> ASCII. Not the full UTS-39 table: anything
@@ -174,7 +243,7 @@ def parse_claim(text: str) -> dict:
         if candidate not in GREEN_WORDS and len(candidate) > 2:
             named.add(candidate)
     return {
-        "broad_green": bool(BROAD_GREEN.search(text)),
+        "broad_green": _is_assertive_broad_green(text),
         "cited_shas": cited,
         "named_green": sorted(named),
     }

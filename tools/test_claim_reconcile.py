@@ -18,6 +18,13 @@ w186 hardening cases prove the matcher is adversary-proof:
   vacuous-require        -> --require-claims: a claim-less intent is BLIND
   vacuous-plain          -> without the flag, no claims = RECONCILED
                             (the tool judges text; the gate judges intent)
+w215 narrowing cases (Delta w213) prove the detector tells assertion
+from citation:
+  quoted-nofire          -> "green CI" in quotes, in a blockquote, in code,
+                            and aspirational "keep CI green" do NOT fire —
+                            RECONCILED even with a red check present
+  bare-stillfires        -> the same narrative WITH a bare declarative
+                            "CI is green" still fires — CONFLICT (fail closed)
 """
 import json
 import subprocess
@@ -50,6 +57,11 @@ CASES = {
                         "checks-clean.json", ["--require-claims"]),
     "vacuous-plain": (0, "RECONCILED", "claim-vacuous.txt", "pr-clean.json",
                       "checks-clean.json", []),
+    # w215 narrowing cases (Delta w213): assertion vs citation
+    "quoted-nofire": (0, "RECONCILED", "claim-quoted-nofire.txt", "pr-clean.json",
+                      "checks-conflict.json", []),
+    "bare-stillfires": (1, "CONFLICT", "claim-bare-stillfires.txt", "pr-clean.json",
+                        "checks-conflict.json", []),
 }
 
 
