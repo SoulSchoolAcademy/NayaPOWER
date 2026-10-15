@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-15T18:18:17+00:00",
+ "generated_utc": "2026-10-15T19:20:06+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -396,7 +396,7 @@
      "draft": true
     }
    ],
-   "open_pr_count": 217
+   "open_pr_count": 216
   },
   {
    "id": "wire",
@@ -416,6 +416,12 @@
    "active_now": false,
    "board_lane": "#2175 lane WIRE",
    "open_prs": [
+    {
+     "number": 2645,
+     "title": "KNOW gaterepair (w247): doc_completeness_check fail\u2192warning + grep-flake instrument fix",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2645",
+     "draft": false
+    },
     {
      "number": 2642,
      "title": "[INTELLIGENT_BLOCKS] Dock gate-reader doc: issue_comment check-run head attachment",
@@ -457,15 +463,9 @@
      "title": "fix(protocol): delivery_evidence_gate usage string cites the real module path",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2626",
      "draft": false
-    },
-    {
-     "number": 2623,
-     "title": "ACT: harden gates for rate-limit blindness (item 6)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2623",
-     "draft": true
     }
    ],
-   "open_pr_count": 117
+   "open_pr_count": 118
   },
   {
    "id": "team",
@@ -932,5 +932,5 @@
   }
  ],
  "open_pr_total": 567,
- "unassigned_prs": 217
+ "unassigned_prs": 216
 }

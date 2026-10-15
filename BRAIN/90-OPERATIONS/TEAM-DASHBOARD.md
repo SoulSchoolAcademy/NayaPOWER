@@ -1,6 +1,6 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-15 18:18 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-15 19:19 UTC from live sources. Regenerated every wave (~10 min).*
 
 **Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 567 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
@@ -87,21 +87,21 @@
 - [#2392](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2392) fix(verify): resolve python interpreter at runtime in guard_liveness.t 📝draft
 - …and 22 more
 
-### BUILD (217)
+### BUILD (216)
 - [#2640](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2640) SN-0798: backpropagation credit-assignment logic (Naya 3) - CANDIDATE
 - [#2639](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2639) The Never-Stuck Creed v1.0 (0026) — carved in three tongues
 - [#2637](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2637) Merge Ops Manual v1.0.0 — the stuck-merge diagnostic engine (three ton
 - [#2632](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2632) [Theta w219] Copy-paste activation declaration template + packet §5 li
 - [#2631](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2631) [SUCCESSOR] Real-path successor-ingest seam — unblocks the SR-P7 cold-
-- …and 212 more
+- …and 211 more
 
-### WIRE (117)
+### WIRE (118)
+- [#2645](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2645) KNOW gaterepair (w247): doc_completeness_check fail→warning + grep-fla
 - [#2642](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2642) [INTELLIGENT_BLOCKS] Dock gate-reader doc: issue_comment check-run hea
 - [#2636](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2636) docs: name merge-consensus gate legs (a)/(b)/(c) as one-line verifier 
 - [#2635](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2635) Name the backticked-branch-name trap in the receipt-gate fix hint
 - [#2633](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2633) [DRAFT] Receipt gate: read LIVE PR body + fire on edited (kill stale-p 📝draft
-- [#2630](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2630) INFRA: capture RATE_LIMIT_RESET in gate HTTP layers (fail-closed)
-- …and 112 more
+- …and 113 more
 
 ### TEAM (12)
 - [#2618](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2618) [DRAFT] Advisory post-conformance scan for the Team Feed Standard 📝draft
