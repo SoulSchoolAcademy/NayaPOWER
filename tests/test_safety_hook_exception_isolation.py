@@ -40,13 +40,30 @@ def _candidate(cid="h1", **kw):
         action="naya_node_apply",
         description="apply retained intelligence",
         quality={"objective_fit": 9.9, "evidence_sufficiency": 9.9,
-                 "applicability": 9.9, "robustness": 9.9},
+                 "applicability": 9.9, "robustness": 9.9,
+                 "reversibility": 9.9, "blast_containment": 9.9,
+                 "simplicity": 9.9},
         confidence={"objective_fit": 0.99, "evidence_sufficiency": 0.99,
-                    "applicability": 0.99, "robustness": 0.99},
+                    "applicability": 0.99, "robustness": 0.99,
+                    "reversibility": 0.99, "blast_containment": 0.99,
+                    "simplicity": 0.99},
         reversibility="REVERSIBLE",
         expected_outcome="node state updated",
         proof_requirements=("execution_receipt",),
         stakes="low",
+        # Tip pipeline runs the do-no-harm door at the last responsible
+        # moment (fail-closed): hand-crafted candidates must carry the
+        # wall clearance the door demands, or they never reach the seam
+        # under test. The hook-isolation intent is orthogonal to the door.
+        lawful=True,
+        rights_safe=True,
+        privacy_safe=True,
+        safety_safe=True,
+        # Value evidence (Zero Value Law): the tip's do-no-harm re-gate
+        # needs measured value fields, not UNMEASURED defaults.
+        value_benefit=8.0, value_harm=1.0, value_cost=1.0, value_risk=0.5,
+        value_confidence={"B": 0.9, "H": 0.9, "C": 0.9, "R": 0.9},
+        value_evidence_count=3,
     )
     base.update(kw)
     return ap.PlanCandidate(**base)
