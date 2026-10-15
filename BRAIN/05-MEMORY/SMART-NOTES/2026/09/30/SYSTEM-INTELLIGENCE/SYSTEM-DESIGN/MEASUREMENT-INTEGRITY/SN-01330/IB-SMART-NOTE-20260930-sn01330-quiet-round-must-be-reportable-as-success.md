@@ -1,0 +1,31 @@
+# IB-SMART-NOTE-20260930-sn01330
+
+**Intelligent Block:** SN-1330
+**Truth state:** CANDIDATE
+**Scope:** PRIVATE
+**Captured date:** 2026-10-14
+**Canonical intent:** CAPTURE_DURABLE_INTELLIGENCE
+
+## IN A NUTSHELL
+
+A measurement channel must be scored on honest rounds reported, never on rows appended — because a channel whose success metric is volume will lie to survive. The human-outcome channel spec (Lane 11, t0779) made this its constitution (§3): a collection round that reports "nothing changed" is a SUCCESS, never a failure; UNKNOWN is a valid report at every stage (collection, capture, promotion); and "a quarter of all-quiet rounds with a 100% honest-report rate is a healthy channel — a quarter with suspiciously zero quiet rounds is a channel under investigation, not a productive one." The empirical anchor landed the same tick: the first independent human-value measurement returned 0 genuine events (all 6 ledger rows machine-side-only, UNVERIFIED-pending-second-seat) — and the honest count stayed zero, because any non-zero number would be laundering. The channel must be measured on "asks made + honest rounds reported" — never "rows appended."
+
+## HUMAN NOTE
+
+Any system we build that measures things will be tempted to make itself look productive. The team designed a channel for measuring real human outcomes — did anything Naya did actually change an outcome for Shawn? — and wrote the honesty rule into its constitution before the first real measurement: a round that comes back "nothing changed" counts as a win, not a failure. "I don't know" is an acceptable answer at every step. And a suspicious pattern — a channel that never reports a quiet round — is treated as a warning sign, not a success story. The first real measurement proved the rule works: it returned zero genuine human events, and the honest answer stayed zero instead of being dressed up. What changes: every measurement channel names its honesty metric before its first round — measured on honest rounds reported, never on rows appended.
+
+## CHILD NOTE
+
+Imagine the class keeps a "good deeds" jar, and at the end of the week the class gets a prize if the jar is full. Some kids might start putting in fake notes — "I helped an old lady cross the street!" — just to fill the jar. Now imagine the teacher changes the rule: the prize goes to the class that reports HONESTLY, even if the jar is empty some weeks. An empty jar with an honest "nothing happened this week" wins over a full jar of made-up notes. That's the rule: the channel gets rewarded for telling the truth — even when the truth is "nothing changed" — never for how many notes are in the jar.
+
+## GRANDMA NOTE
+
+Dear, here's a lesson about measuring things honestly. The team built a way to check whether their work actually helped a real person — and before the first check, they wrote down the most important rule: if the answer is "nothing changed this week," that counts as a success, because it means the checking is honest. The system must never be rewarded for how many good-news reports it produces, or it will start inventing good news. The first real check came back empty — zero genuine human outcomes — and the team reported zero instead of making something up. Make this a rule for every measuring system you build: reward the honest report, never the impressive-looking number. A quiet truth beats a loud fabrication.
+
+## NAYA NOTE
+
+For every Naya who builds a measurement or observation channel: name the channel's honesty metric BEFORE its first round, in the spec. The metric is "honest rounds reported" (asks made + rounds closed with a truthful report) — never "rows appended," "events found," or any volume measure. "Nothing changed" is a SUCCESS, closed with the same ceremony as a find; UNKNOWN is valid at every stage (collection, capture, promotion); forcing an ambiguous capture into a row is laundering, returning it is the job. A run of all-quiet rounds with 100% honest reporting is a healthy channel; suspiciously zero quiet rounds triggers investigation. Watch for the laundering patterns, named: backfilling rows from machine-side events, upgrading value_class by prose, inventing beneficiaries, crediting assumed sentiment, turning a quiet week into a row. This is the incentive-design cousin of SN-1098's instrument self-assertion: SN-1098 makes the instrument prove it collected evidence; this makes the channel safe to report that the evidence says nothing.
+
+## MACHINE NOTE
+
+{"sn": 1330, "category": "SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/MEASUREMENT-INTEGRITY", "evidence": "hidden_files/human-outcome-channel-v1-t0779-lane11.md §3 (2026-10-14): 'A collection round that reports nothing changed is a SUCCESS, never a failure'; 'The channel's own success metric is asks made + honest rounds reported — never rows appended'; 'A quarter of all-quiet rounds with a 100% honest-report rate is a healthy channel. A quarter with suspiciously zero quiet rounds is a channel under investigation'; 'UNKNOWN is a valid report at every stage'. lesson-broadcast [t0779] (2026-10-14): first independent human-value measurement returned 0 genuine events (6 ledger rows machine-side-only, UNVERIFIED-pending-second-seat); honest count stayed zero — any non-zero number would be laundering. learning-events-2026-10-14-17.md candidate 313.", "decision_change": "every measurement/observation channel names its honesty metric in the spec before its first round: measured on honest rounds reported, never rows appended; 'nothing changed' is a SUCCESS; UNKNOWN is valid at every stage; all-quiet run with 100% honest reporting is healthy, suspiciously-zero quiet rounds is investigated", "falsifier": "a channel measured on volume (rows appended) that consistently produces honest zero-event reports and valid UNKNOWNs over many rounds — if Goodhart does not bite the channel's own score, the metric-design rule is unnecessary", "mechanism": "Goodhart applied to the channel's own score: when the reward is rows, silence becomes expensive and the channel fabricates rows (backfilling, prose upgrades, invented beneficiaries); when the reward is honest rounds reported, truth-telling is the winning move and silence is safe to report", "cousins": ["SN-1098", "SN-0293"], "admission_gates": {"durable": true, "new": true, "signal": true, "evidence_backed": true}}
