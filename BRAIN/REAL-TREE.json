@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-10-14",
-  "receipt_basis_commit": "92329c5795ef8a50d02adf94ee6c91c313c26daf",
-  "inventory_file_count": 1260,
+  "generated_at": "2026-10-15",
+  "receipt_basis_commit": "ba62638704256b012c20e41fe7f53cc3b62b1b44",
+  "inventory_file_count": 1320,
   "domain_counts": {
     "00-ACTIVATION": 5,
     "00-ARCHITECTURE": 5,
@@ -19,7 +19,7 @@
     "10-INTERFACES": 380,
     "11-KNOWLEDGE": 7,
     "12-ENGINEERING": 25,
-    "90-OPERATIONS": 24,
+    "90-OPERATIONS": 84,
     "99-ARCHIVE": 2,
     "ROOT": 6
   },
@@ -6259,6 +6259,306 @@
       "path": "BRAIN/90-OPERATIONS/contracts/verification-contract.md",
       "blob_sha": "e70095fcbe076845ac18be65a4ff93ddb491253e",
       "size": 19666
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/01-behavior.human.md",
+      "blob_sha": "cf649d7dc316e743911cb831193ec3f2d54da4ed",
+      "size": 7168
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/02-comment.human.md",
+      "blob_sha": "47f1816ada8b40e58354cc100e36914ee86e5f75",
+      "size": 11562
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/03-signin-signout.human.md",
+      "blob_sha": "fc72e8678e655a1556e009ec0d0b311f4d0e3e0d",
+      "size": 8459
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/04-lane.human.md",
+      "blob_sha": "f8ae65cfa0d9023628953af071d5709e3e989352",
+      "size": 12256
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/05-scoring.human.md",
+      "blob_sha": "5f39a51f0c3569e6fb8fe8cfc2781a288dc2f37b",
+      "size": 7311
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/06-verification.human.md",
+      "blob_sha": "93b6e314878a091ae5a181dadf2eb5ce01466ed9",
+      "size": 6339
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/07-evidence.human.md",
+      "blob_sha": "b4f3b89f524fba7e3c72068f01944a92c4d7c849",
+      "size": 6759
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/08-handoffs.human.md",
+      "blob_sha": "a99e5b9be5a316605b848d9587a9de6c5c3f9663",
+      "size": 9179
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/09-blockers.human.md",
+      "blob_sha": "828e1d1379fd771d1a998a0b6a55967f20dd9fc3",
+      "size": 9439
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/10-briefing.human.md",
+      "blob_sha": "419a50400ea63c25868eabaf99caf797e528f80f",
+      "size": 11826
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/11-ranking.human.md",
+      "blob_sha": "cdf48fa303755b4552764c5dfb9b4ff33c3823e5",
+      "size": 10537
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/13-delegation.ai.md",
+      "blob_sha": "4049a8a6cf4954f6b61f2687fda2f9400132ce5a",
+      "size": 4969
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/13-delegation.human.md",
+      "blob_sha": "5eedeec3ff2ef425449a780b18763892ff04f024",
+      "size": 7536
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/13-delegation.machine.json",
+      "blob_sha": "62bfd819e9c3d6fd07ce4eff5f1a631a56cdbb42",
+      "size": 4285
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/14-merging.ai.md",
+      "blob_sha": "df3c7153de1398f7c5427b683471d2275c089cd0",
+      "size": 5165
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/14-merging.human.md",
+      "blob_sha": "7a2d86f015aee5637d4bdb0853cc6c61782abe8c",
+      "size": 11351
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/14-merging.machine.json",
+      "blob_sha": "499dce5934c61ab5d46af1fac7e6b049252ea4ec",
+      "size": 4816
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/15-freshness.ai.md",
+      "blob_sha": "2c948b0a32ed31d6d668f44333f44fc5d8b2c37b",
+      "size": 4978
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/15-freshness.human.md",
+      "blob_sha": "9b6ad87123fcaf8034511dd2c77612b18a92b3ea",
+      "size": 7187
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/15-freshness.machine.json",
+      "blob_sha": "6b7067e91c3f22dd5158fc68ad17cd34f80fc530",
+      "size": 4119
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/16-learning.ai.md",
+      "blob_sha": "6a08017bb1b820c14ede8b848740107416a3614f",
+      "size": 5645
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/16-learning.human.md",
+      "blob_sha": "9d4ef1fb96f4342f0bade6f8556be532052260bc",
+      "size": 9788
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/16-learning.machine.json",
+      "blob_sha": "b9b32d5c0dc7180c4ba54d07caee0314013b3aee",
+      "size": 4896
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/17-corrections.ai.md",
+      "blob_sha": "28d8840f2b1b66749e5848c2c7b84983d5d10467",
+      "size": 5176
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/17-corrections.human.md",
+      "blob_sha": "00f3071e40ccaa2dc44a9d98e32dac55826f14cd",
+      "size": 9472
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/17-corrections.machine.json",
+      "blob_sha": "7f106c19a27445432f00146cce856b72f7f316d3",
+      "size": 4891
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/18-reviews.ai.md",
+      "blob_sha": "8041a22d7a06b3cd542817f5b0228220e9757ff0",
+      "size": 4618
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/18-reviews.human.md",
+      "blob_sha": "06161458b104fad5919941cededc0421c6fde13d",
+      "size": 6322
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/18-reviews.machine.json",
+      "blob_sha": "ac1a695faff4815d4a87fa9db0c9aa6ceca50daa",
+      "size": 3922
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/19-measurement.ai.md",
+      "blob_sha": "df69f5a2374deff89e711e0db4409d68b51d0aca",
+      "size": 5982
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/19-measurement.human.md",
+      "blob_sha": "a505d1446de2859f4d3755c5e16517d10cd3cb4d",
+      "size": 9617
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/19-measurement.machine.json",
+      "blob_sha": "ac5939b28e35475907bce8805379f8d715f33da1",
+      "size": 5009
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/20-carry.ai.md",
+      "blob_sha": "5cd631d8cd8d2a6bee28b13500af6636a20de7fb",
+      "size": 4710
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/20-carry.human.md",
+      "blob_sha": "e614cf53a6aca8548b0a6603eb5ad3a05e65f26e",
+      "size": 7568
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/20-carry.machine.json",
+      "blob_sha": "2b6ac49209fc2e8828a89ce26fb51aa2493f224b",
+      "size": 4086
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/21-authority.ai.md",
+      "blob_sha": "f3e12394ccc5b77e95031197837e097b2633aef3",
+      "size": 5981
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/21-authority.human.md",
+      "blob_sha": "e5910ca4ef22a0f933d2f4416ba93c66304093c6",
+      "size": 8074
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/21-authority.machine.json",
+      "blob_sha": "32fae102c9dc52fee81cac316939c41b5a35b921",
+      "size": 4935
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/22-consensus.ai.md",
+      "blob_sha": "3c660583422ce185e7b42d082750e29882da259c",
+      "size": 4769
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/22-consensus.human.md",
+      "blob_sha": "f8212f106a0b7255a762e7e10e922014835e9947",
+      "size": 7353
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/22-consensus.machine.json",
+      "blob_sha": "3e269f7749f27eba2b6a42a5f6391ca6afdfb010",
+      "size": 4111
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/23-deconfliction.ai.md",
+      "blob_sha": "36ac4e422909f2456b4d1ec5f3ae75dff83749b0",
+      "size": 6474
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/23-deconfliction.human.md",
+      "blob_sha": "a3ea07e6b84b8d5f48070a8546e63f0871b09a63",
+      "size": 10034
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/23-deconfliction.machine.json",
+      "blob_sha": "8bf5420b37a71784ce9e773859f1747332524aa3",
+      "size": 5182
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/24-timebox.ai.md",
+      "blob_sha": "0b922485927f948f03b0bf6fb8cc39b54392439a",
+      "size": 4186
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/24-timebox.human.md",
+      "blob_sha": "e13a7748e54b5ea2e06cac9f12a446e1dd6e1dcc",
+      "size": 7175
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/24-timebox.machine.json",
+      "blob_sha": "3c981368aabb7664821d7328a263b8e8e543f71c",
+      "size": 3970
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/25-learn.human.md",
+      "blob_sha": "739a2711b261b6b451fdf23fa975f5faed9425fc",
+      "size": 6086
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/26-know.human.md",
+      "blob_sha": "8aab51496413947d952f475a27af901a6ef5d66e",
+      "size": 5666
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/27-act.human.md",
+      "blob_sha": "0ef19eb95de2356dccff052a74b3879bc474efb2",
+      "size": 6603
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/28-law.human.md",
+      "blob_sha": "698389cd79925e6c373282f7b0d60c368759f336",
+      "size": 5026
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/29-verify.human.md",
+      "blob_sha": "7e0168e0d4423d2f762801957a33df51902e8729",
+      "size": 7727
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/30-intelligent-blocks.human.md",
+      "blob_sha": "bd3b7b3079ef7b86f6641acdc7a322f632c6ab45",
+      "size": 4815
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/31-decision.human.md",
+      "blob_sha": "c57c9990522413527c1f1a9f19753adaeb58541f",
+      "size": 8514
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/32-retrieval.human.md",
+      "blob_sha": "b4082b96e2ffeb5328222d4cfcd2d9227e04192b",
+      "size": 4245
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/33-successor.human.md",
+      "blob_sha": "810fb25d1cf420df9194d2231ef3250407eaf23e",
+      "size": 4653
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/34-team.human.md",
+      "blob_sha": "2ee2c4f02320b4cc7c8e148f651368bed2e868e2",
+      "size": 4883
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/35-infra.human.md",
+      "blob_sha": "41498f188a7a7c58c041c289be465f25bf45186b",
+      "size": 4422
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/36-human-value.human.md",
+      "blob_sha": "1dc6e159cfb39553a1dafc04a2f352b112692a13",
+      "size": 3904
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/field-manuals/README.md",
+      "blob_sha": "29d9b5f82e7a0165d548cc8ca5637bc15a09fb41",
+      "size": 4633
     },
     {
       "path": "BRAIN/90-OPERATIONS/network-map.machine.json",

@@ -1,0 +1,59 @@
+{
+  "area_number": 24,
+  "area_name": "Time-box",
+  "owner_team": "Naya Resolve",
+  "agent_seat": "Host",
+  "what_it_is": "The discipline of the run horizon: knowing how long you have, sizing the batch to fit it, and making sure the most valuable thing you learned survives even if the clock kills the run.",
+  "what_it_does": "Converts 'the run timed out' from a total loss into a partial win. A time-boxed run posts its key verdict to the venue early; when the timeout hits, the finding is already there with a live comment ID. The successor inherits position, not a corpse.",
+  "why_it_matters": "Hours of work have died silent because the finding only ever lived in a local file. A timeout without a post-early is a black hole: the queue believes the work is in flight, the lane believes it reported, and the finding exists nowhere anyone can read. The post-early rule (L395) exists because verify's #2597 Team-leg verdict - a merge-blocking finding - almost died exactly this way.",
+  "key_rules": [
+    "Know your horizon before you claim: every run has a timeout - the cron interval, the wave window, the tick. A batch planned for 60 minutes on a 10-minute tick is a plan to orphan.",
+    "Size to the clock: a big proof (>~5 min) goes alone; quick checks batch. Never claim what you can't plausibly finish - 3 done right beats 10 started.",
+    "Post the key finding EARLY: minimal PULSE with the verdict before deep work; full sign-out later. The timeout horizon is a known boundary - act like it.",
+    "When the clock is winning, stop and post: at ~75% of the horizon with the verdict in hand but analysis unfinished - post the verdict now, analysis later. A posted verdict with unfinished analysis beats unfinished analysis with no verdict.",
+    "Tag off clean: COMPLETED / REMAINING / NEXT with evidence links, before you leave the run. If the next run can't continue from your sign-out alone, you didn't sign out.",
+    "Name the pending-post state: if a handoff carries findings not yet posted, say so explicitly - 'venue post still pending a live comment ID.'",
+    "Partial completion is success: report 3 of 10 proudly, never apologetically."
+  ],
+  "boundaries": {
+    "not_covered": [
+      "Wave mechanics and queue feeding (ranked batches, waves, claim-liveness)",
+      "How leaders size work for others (set up for success, right-size to the clock, the mirror rule)",
+      "The sign-out format itself (COMPLETED / REMAINING / RECOMMEND NEXT)"
+    ],
+    "neighboring_manuals": [
+      {
+        "number": 12,
+        "name": "Dispatch",
+        "relation": "wave mechanics and queue feeding"
+      },
+      {
+        "number": 13,
+        "name": "Delegation",
+        "relation": "leaders sizing work for others"
+      },
+      {
+        "number": 8,
+        "name": "Handoffs",
+        "relation": "the sign-out format"
+      }
+    ]
+  },
+  "enforcement": {
+    "mechanically_enforced": [
+      "L395, the post-early rule: a run posts its key verdicts to the venue BEFORE its timeout horizon (minimal PULSE early, full sign-out later); a handoff names the pending-post state explicitly; no finding counts as delivered without a live comment ID. Enforcement owner: dispatch."
+    ],
+    "proposed": [
+      "A machine timeout-guard that warns at 75% of the run horizon and auto-posts the draft PULSE if the worker hasn't - the mechanical version of 'post early.' Does not exist: until it does, the discipline is procedural."
+    ]
+  },
+  "self_test": [
+    "If this run timed out right now, would the key finding survive on the venue with a live comment ID?",
+    "Is my batch sized to the horizon - would I bet the finding on finishing in time?",
+    "Can the next run continue from my sign-out alone, with nothing to re-derive?"
+  ],
+  "evidence_links": [
+    "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6181514730",
+    "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6175238812"
+  ]
+}

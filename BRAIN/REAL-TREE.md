@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
-**Generated:** 2026-10-14  
-**Receipt basis commit:** `92329c5795ef8a50d02adf94ee6c91c313c26daf`  
-**Inventory file count:** 1260  
+**Generated:** 2026-10-15  
+**Receipt basis commit:** `ba62638704256b012c20e41fe7f53cc3b62b1b44`  
+**Inventory file count:** 1320  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -23,7 +23,7 @@
 | 10-INTERFACES | 380 |
 | 11-KNOWLEDGE | 7 |
 | 12-ENGINEERING | 25 |
-| 90-OPERATIONS | 24 |
+| 90-OPERATIONS | 84 |
 | 99-ARCHIVE | 2 |
 | ROOT | 6 |
 
@@ -1308,6 +1308,66 @@
 - `BRAIN/90-OPERATIONS/contracts/handoff-contract.md` — `3c8346c5942b` (21563 bytes)
 - `BRAIN/90-OPERATIONS/contracts/learning-contract.md` — `c42197ff505a` (21689 bytes)
 - `BRAIN/90-OPERATIONS/contracts/verification-contract.md` — `e70095fcbe07` (19666 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/01-behavior.human.md` — `cf649d7dc316` (7168 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/02-comment.human.md` — `47f1816ada8b` (11562 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/03-signin-signout.human.md` — `fc72e8678e65` (8459 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/04-lane.human.md` — `f8ae65cfa0d9` (12256 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/05-scoring.human.md` — `5f39a51f0c35` (7311 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/06-verification.human.md` — `93b6e314878a` (6339 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/07-evidence.human.md` — `b4f3b89f524f` (6759 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/08-handoffs.human.md` — `a99e5b9be5a3` (9179 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/09-blockers.human.md` — `828e1d1379fd` (9439 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/10-briefing.human.md` — `419a50400ea6` (11826 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/11-ranking.human.md` — `cdf48fa30375` (10537 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/13-delegation.ai.md` — `4049a8a6cf49` (4969 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/13-delegation.human.md` — `5eedeec3ff2e` (7536 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/13-delegation.machine.json` — `62bfd819e9c3` (4285 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/14-merging.ai.md` — `df3c7153de13` (5165 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/14-merging.human.md` — `7a2d86f015ae` (11351 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/14-merging.machine.json` — `499dce5934c6` (4816 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/15-freshness.ai.md` — `2c948b0a32ed` (4978 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/15-freshness.human.md` — `9b6ad87123fc` (7187 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/15-freshness.machine.json` — `6b7067e91c3f` (4119 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/16-learning.ai.md` — `6a08017bb1b8` (5645 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/16-learning.human.md` — `9d4ef1fb96f4` (9788 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/16-learning.machine.json` — `b9b32d5c0dc7` (4896 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/17-corrections.ai.md` — `28d8840f2b1b` (5176 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/17-corrections.human.md` — `00f3071e40cc` (9472 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/17-corrections.machine.json` — `7f106c19a274` (4891 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/18-reviews.ai.md` — `8041a22d7a06` (4618 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/18-reviews.human.md` — `06161458b104` (6322 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/18-reviews.machine.json` — `ac1a695faff4` (3922 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/19-measurement.ai.md` — `df69f5a2374d` (5982 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/19-measurement.human.md` — `a505d1446de2` (9617 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/19-measurement.machine.json` — `ac5939b28e35` (5009 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/20-carry.ai.md` — `5cd631d8cd8d` (4710 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/20-carry.human.md` — `e614cf53a6ac` (7568 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/20-carry.machine.json` — `2b6ac49209fc` (4086 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/21-authority.ai.md` — `f3e12394ccc5` (5981 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/21-authority.human.md` — `e5910ca4ef22` (8074 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/21-authority.machine.json` — `32fae102c9dc` (4935 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/22-consensus.ai.md` — `3c660583422c` (4769 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/22-consensus.human.md` — `f8212f106a0b` (7353 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/22-consensus.machine.json` — `3e269f7749f2` (4111 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/23-deconfliction.ai.md` — `36ac4e422909` (6474 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/23-deconfliction.human.md` — `a3ea07e6b84b` (10034 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/23-deconfliction.machine.json` — `8bf5420b37a7` (5182 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/24-timebox.ai.md` — `0b922485927f` (4186 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/24-timebox.human.md` — `e13a7748e54b` (7175 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/24-timebox.machine.json` — `3c981368aabb` (3970 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/25-learn.human.md` — `739a2711b261` (6086 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/26-know.human.md` — `8aab51496413` (5666 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/27-act.human.md` — `0ef19eb95de2` (6603 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/28-law.human.md` — `698389cd7992` (5026 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/29-verify.human.md` — `7e0168e0d442` (7727 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/30-intelligent-blocks.human.md` — `bd3b7b3079ef` (4815 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/31-decision.human.md` — `c57c99905224` (8514 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/32-retrieval.human.md` — `b4082b96e2ff` (4245 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/33-successor.human.md` — `810fb25d1cf4` (4653 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/34-team.human.md` — `2ee2c4f02320` (4883 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/35-infra.human.md` — `41498f188a7a` (4422 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/36-human-value.human.md` — `1dc6e159cfb3` (3904 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/README.md` — `29d9b5f82e7a` (4633 bytes)
 - `BRAIN/90-OPERATIONS/network-map.machine.json` — `3ac19fca9022` (5450 bytes)
 - `BRAIN/90-OPERATIONS/network-registry.machine.json` — `7741e88e44d8` (426 bytes)
 - `BRAIN/90-OPERATIONS/network-registry/README.md` — `f561613fb1e3` (850 bytes)
