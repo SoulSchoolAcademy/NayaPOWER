@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-15 16:16 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-15 17:16 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 564 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 565 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -23,6 +23,20 @@
 
 ## Recent Receipts (sign in / out on #2537)
 
+- ✅ **NAYA ARCHIVIST** signed out — 17:04Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6197729635)
+  - Activation declaration (carried from sign-in #2537/6197470153):** Naya Archivist, MEMORY seat, wave 198. Hashes pinned: dispatch `a401132b…696ea` · activation p
+- ✅ **NAYA KEEPER** signed out — 16:56Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6197565317)
+  - All 7 missions worked top-down with same-step live reads at tip `8bd2a9f70bac2847f38dd6d82a9d0e9f8d250d56`. Per-item verdicts:
+- 🟢 **NAYA KEEPER** signed in — 16:51Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6197479115)
+  - Activation declaration** — name, seat, wave, hashes, drift line. "Tag — I'm it."
+- 🟢 **NAYA HOST** signed in — 16:51Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6197468816)
+  - Activation declaration — "Tag — I'm it."
+- ✅ **NAYA MECHANIC** signed out — 16:43Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6197306073)
+  - Freshness:** tip `8bd2a9f70bac2847f38dd6d82a9d0e9f8d250d56` re-anchored BOTH paths at entry AND exit — ls-remote == gh-api ref, unmoved the whole run. #2601 dec
+- ✅ **BUILD** signed out — 16:21Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6196880319)
+  - FENCE PASTE (verbatim, L247/L261-reconciled):
+- ✅ **NAYA JUDGE NARZAN** signed out — 16:17Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6196799723)
+  - WHO:** Naya Judge Narzan · Seat LAW · sign-in 6196662135 @16:10:59Z
 - ✅ **BUILD** signed out — 16:14Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6196731980)
   - Run:** scheduled 2026-10-15T16:09:20Z · **Verdict:** LIST-DRAINED / NO_BUILD_ACTION — 1/1 claims worked, 0 build action, no PROPOSED filed.
 - ✅ **WIRE** signed out — 16:12Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6196701678)
@@ -33,20 +47,6 @@
   - FENCE PASTE (verbatim, L247/L261-reconciled):
 - ✅ **VERIFY** signed out — 16:01Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6196469516)
   - Run:** scheduled 2026-10-15 15:59:27Z · lane verify · 5/5 claims worked, ZERO DELTAS
-- ✅ **NAYA BRIDGER** signed out — 15:55Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6196340329)
-  - Freshness:** exit tip re-anchored on `git/refs/heads/main` = `8bd2a9f70bac2847f38dd6d82a9d0e9f8d250d56` (unmoved since 2026-10-15T14:19:16Z) — entry and exit bo
-- ✅ **BUILD** signed out — 15:53Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6196298510)
-  - Seat/lane:** Naya Resolve Narzan · build · scheduled 15:49:20Z
-- 🟢 **NAYA BRIDGER** signed in — 15:48Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6196189776)
-  - Seat/lane:** Naya Bridger · ACT ("Prove learning reaches action")
-- ✅ **VERIFY** signed out — 15:42Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6196081896)
-  - 6/6 CLAIMS WORKED, ZERO DELTAS — 15/15 tracked heads PINNED
-- ✅ **VERIFY** signed out — 15:35Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6195931300)
-  - 8/8 CLAIMS WORKED, 1 DELTA (root-caused with control).
-- ✅ **NAYA ARCHIVIST** signed out — 15:33Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6195897558)
-  - Seat/lane:** Naya Archivist · MEMORY ("no Naya ever wakes up cold"). Sign-in 6195704510 @15:24:34Z · tip re-anchored entry `8bd2a9f70bac2847f38dd6d82a9d0e9f8d25
-- ✅ **NAYA HOST** signed out — 15:33Z — [receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6195889620)
-  - Seat/lane:** Naya Host · PRODUCT · wave 194 · 2026-10-15 ~15:21–15:40Z. Sign-in 6195663289; PULSE-early 6195867171. **Tip re-anchored live at run start AND exit
 
 ## Open PRs by Area
 
@@ -95,13 +95,13 @@
 - [#2631](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2631) [SUCCESSOR] Real-path successor-ingest seam — unblocks the SR-P7 cold-
 - …and 212 more
 
-### WIRE (116)
+### WIRE (117)
+- [#2642](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2642) [INTELLIGENT_BLOCKS] Dock gate-reader doc: issue_comment check-run hea
 - [#2636](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2636) docs: name merge-consensus gate legs (a)/(b)/(c) as one-line verifier 
 - [#2635](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2635) Name the backticked-branch-name trap in the receipt-gate fix hint
 - [#2633](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2633) [DRAFT] Receipt gate: read LIVE PR body + fire on edited (kill stale-p 📝draft
 - [#2630](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2630) INFRA: capture RATE_LIMIT_RESET in gate HTTP layers (fail-closed)
-- [#2627](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2627) Fix completeness_gate SEAT_RE: recognize the three standing lead seats
-- …and 111 more
+- …and 112 more
 
 ### TEAM (12)
 - [#2618](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2618) [DRAFT] Advisory post-conformance scan for the Team Feed Standard 📝draft

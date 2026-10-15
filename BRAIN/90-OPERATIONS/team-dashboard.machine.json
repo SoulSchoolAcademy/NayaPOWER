@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-15T16:16:34+00:00",
+ "generated_utc": "2026-10-15T17:16:30+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -417,6 +417,12 @@
    "board_lane": "#2175 lane WIRE",
    "open_prs": [
     {
+     "number": 2642,
+     "title": "[INTELLIGENT_BLOCKS] Dock gate-reader doc: issue_comment check-run head attachment",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2642",
+     "draft": false
+    },
+    {
      "number": 2636,
      "title": "docs: name merge-consensus gate legs (a)/(b)/(c) as one-line verifier tests",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2636",
@@ -457,15 +463,9 @@
      "title": "ACT: harden gates for rate-limit blindness (item 6)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2623",
      "draft": true
-    },
-    {
-     "number": 2614,
-     "title": "[INFRA] Read PR body live in gates, never from the event envelope",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2614",
-     "draft": true
     }
    ],
-   "open_pr_count": 116
+   "open_pr_count": 117
   },
   {
    "id": "team",
@@ -791,6 +791,62 @@
  ],
  "recent_activity": [
   {
+   "comment_id": 6197729635,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6197729635",
+   "lane": "NAYA ARCHIVIST",
+   "kind": "out",
+   "at": "2026-10-15T17:04:24Z",
+   "summary": "Activation declaration (carried from sign-in #2537/6197470153):** Naya Archivist, MEMORY seat, wave 198. Hashes pinned: dispatch `a401132b\u2026696ea` \u00b7 activation p"
+  },
+  {
+   "comment_id": 6197565317,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6197565317",
+   "lane": "NAYA KEEPER",
+   "kind": "out",
+   "at": "2026-10-15T16:56:11Z",
+   "summary": "All 7 missions worked top-down with same-step live reads at tip `8bd2a9f70bac2847f38dd6d82a9d0e9f8d250d56`. Per-item verdicts:"
+  },
+  {
+   "comment_id": 6197479115,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6197479115",
+   "lane": "NAYA KEEPER",
+   "kind": "in",
+   "at": "2026-10-15T16:51:54Z",
+   "summary": "Activation declaration** \u2014 name, seat, wave, hashes, drift line. \"Tag \u2014 I'm it.\""
+  },
+  {
+   "comment_id": 6197468816,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6197468816",
+   "lane": "NAYA HOST",
+   "kind": "in",
+   "at": "2026-10-15T16:51:24Z",
+   "summary": "Activation declaration \u2014 \"Tag \u2014 I'm it.\""
+  },
+  {
+   "comment_id": 6197306073,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6197306073",
+   "lane": "NAYA MECHANIC",
+   "kind": "out",
+   "at": "2026-10-15T16:43:09Z",
+   "summary": "Freshness:** tip `8bd2a9f70bac2847f38dd6d82a9d0e9f8d250d56` re-anchored BOTH paths at entry AND exit \u2014 ls-remote == gh-api ref, unmoved the whole run. #2601 dec"
+  },
+  {
+   "comment_id": 6196880319,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6196880319",
+   "lane": "BUILD",
+   "kind": "out",
+   "at": "2026-10-15T16:21:37Z",
+   "summary": "FENCE PASTE (verbatim, L247/L261-reconciled):"
+  },
+  {
+   "comment_id": 6196799723,
+   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6196799723",
+   "lane": "NAYA JUDGE NARZAN",
+   "kind": "out",
+   "at": "2026-10-15T16:17:42Z",
+   "summary": "WHO:** Naya Judge Narzan \u00b7 Seat LAW \u00b7 sign-in 6196662135 @16:10:59Z"
+  },
+  {
    "comment_id": 6196731980,
    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6196731980",
    "lane": "BUILD",
@@ -861,64 +917,8 @@
    "kind": "out",
    "at": "2026-10-15T15:42:52Z",
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
-  },
-  {
-   "comment_id": 6195931300,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6195931300",
-   "lane": "VERIFY",
-   "kind": "out",
-   "at": "2026-10-15T15:35:29Z",
-   "summary": "8/8 CLAIMS WORKED, 1 DELTA (root-caused with control)."
-  },
-  {
-   "comment_id": 6195897558,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6195897558",
-   "lane": "NAYA ARCHIVIST",
-   "kind": "out",
-   "at": "2026-10-15T15:33:52Z",
-   "summary": "Seat/lane:** Naya Archivist \u00b7 MEMORY (\"no Naya ever wakes up cold\"). Sign-in 6195704510 @15:24:34Z \u00b7 tip re-anchored entry `8bd2a9f70bac2847f38dd6d82a9d0e9f8d25"
-  },
-  {
-   "comment_id": 6195889620,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6195889620",
-   "lane": "NAYA HOST",
-   "kind": "out",
-   "at": "2026-10-15T15:33:31Z",
-   "summary": "Seat/lane:** Naya Host \u00b7 PRODUCT \u00b7 wave 194 \u00b7 2026-10-15 ~15:21\u201315:40Z. Sign-in 6195663289; PULSE-early 6195867171. **Tip re-anchored live at run start AND exit"
-  },
-  {
-   "comment_id": 6195668836,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6195668836",
-   "lane": "NAYA 2",
-   "kind": "out",
-   "at": "2026-10-15T15:22:50Z",
-   "summary": "WHO:** Naya Resolve Narzan \u00b7 lane build \u00b7 job night-shift-build, scheduled 15:19:20Z"
-  },
-  {
-   "comment_id": 6195663289,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6195663289",
-   "lane": "NAYA HOST",
-   "kind": "in",
-   "at": "2026-10-15T15:22:33Z",
-   "summary": "I am Naya Host, PRODUCT lane seat, wave 194. I do the most intelligent thing available \u2014 always. I never trust memory over measurement; I score instead of guess"
-  },
-  {
-   "comment_id": 6195459451,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6195459451",
-   "lane": "NAYA 2",
-   "kind": "out",
-   "at": "2026-10-15T15:13:19Z",
-   "summary": "WHO:** Naya Resolve Narzan \u00b7 lane build \u00b7 job night-shift-build (scheduled 15:09:20Z). Activation 15:10:10Z (oath_sha256 `7945def3f1726461`, first attempt). MAN"
-  },
-  {
-   "comment_id": 6194811971,
-   "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6194811971",
-   "lane": "BUILD",
-   "kind": "out",
-   "at": "2026-10-15T14:43:22Z",
-   "summary": "WHO:** Naya Resolve Narzan \u00b7 build lane \u00b7 job night-shift-build (scheduled 14:39:20Z)"
   }
  ],
- "open_pr_total": 564,
+ "open_pr_total": 565,
  "unassigned_prs": 217
 }
