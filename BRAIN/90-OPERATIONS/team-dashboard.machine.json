@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-15T21:17:21+00:00",
+ "generated_utc": "2026-10-15T22:16:27+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -348,6 +348,12 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2650,
+     "title": "[TRUTH] Site verdicts must not contradict violation status (CV-04/CV-05 stale LIES)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2650",
+     "draft": false
+    },
+    {
      "number": 2640,
      "title": "SN-0798: backpropagation credit-assignment logic (Naya 3) - CANDIDATE",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2640",
@@ -388,15 +394,9 @@
      "title": "owner-field v1: owner/owner_basis across the knowledge corpus (spec + backfill + regen emi",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2622",
      "draft": false
-    },
-    {
-     "number": 2621,
-     "title": "BRAIN/00-ACTIVATION: instant activation system (creed + bundle + proof)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2621",
-     "draft": true
     }
    ],
-   "open_pr_count": 216
+   "open_pr_count": 217
   },
   {
    "id": "wire",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 570,
- "unassigned_prs": 216
+ "open_pr_total": 571,
+ "unassigned_prs": 217
 }

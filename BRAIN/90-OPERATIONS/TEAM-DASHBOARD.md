@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-15 21:17 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-15 22:16 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 570 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 571 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -87,13 +87,13 @@
 - [#2392](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2392) fix(verify): resolve python interpreter at runtime in guard_liveness.t 📝draft
 - …and 22 more
 
-### BUILD (216)
+### BUILD (217)
+- [#2650](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2650) [TRUTH] Site verdicts must not contradict violation status (CV-04/CV-0
 - [#2640](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2640) SN-0798: backpropagation credit-assignment logic (Naya 3) - CANDIDATE
 - [#2639](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2639) The Never-Stuck Creed v1.0 (0026) — carved in three tongues
 - [#2637](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2637) Merge Ops Manual v1.0.0 — the stuck-merge diagnostic engine (three ton
 - [#2632](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2632) [Theta w219] Copy-paste activation declaration template + packet §5 li
-- [#2631](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2631) [SUCCESSOR] Real-path successor-ingest seam — unblocks the SR-P7 cold-
-- …and 211 more
+- …and 212 more
 
 ### WIRE (118)
 - [#2645](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2645) KNOW gaterepair (w247): doc_completeness_check fail→warning + grep-fla
