@@ -54,6 +54,10 @@ WHAT THIS DOES NOT DO (D32 honesty -- read before trusting this gate)
    (API pagination cap). PRs beyond that are out of scope.
 8. Infrastructure failure (API unreachable, body unfetchable) fails CLOSED
    (exit 1, GATE_BLIND). A gate that passes when blind is theater.
+   Quota 403s are the one exception: the gate could not judge because its
+   token was spent, so it reports INCONCLUSIVE (exit 2) -- retry, not FAIL.
+   tools/http_403.py is the one shared classifier; permission and unknown
+   403s stay GATE_BLIND.
 """
 
 from __future__ import annotations
@@ -62,6 +66,7 @@ import json
 import os
 import re
 import sys
+import urllib.error
 import urllib.request
 from pathlib import Path
 
@@ -71,6 +76,11 @@ from check_claim_evidence import (  # noqa: E402
     Evidence,
     adjudicate,
     find_attestations,
+)
+from http_403 import (  # noqa: E402 -- one shared 403 classifier for all gates
+    QuotaExhausted,
+    classify_403_body,
+    read_error_body,
 )
 
 # ---------------------------------------------------------------------------
@@ -200,7 +210,12 @@ _API = "https://api.github.com"
 
 
 def api_get(path: str, token: str):
-    """GET a GitHub API path. Raises GateBlind on any failure (fail closed)."""
+    """GET a GitHub API path.
+
+    A quota 403 raises QuotaExhausted -- the gate reports INCONCLUSIVE/RETRY,
+    never FAIL, because the token is spent, not broken. Any other failure
+    raises GateBlind (fail closed).
+    """
     req = urllib.request.Request(
         _API + path,
         headers={
@@ -213,7 +228,12 @@ def api_get(path: str, token: str):
     try:
         with urllib.request.urlopen(req, timeout=30) as resp:
             return json.load(resp)
-    except Exception as exc:  # noqa: BLE001 -- any IO failure blinds the gate
+    except urllib.error.HTTPError as exc:
+        body = read_error_body(exc)
+        if exc.code == 403 and classify_403_body(body) == "quota":
+            raise QuotaExhausted.for_http_error("GET " + path, exc, body)
+        raise GateBlind(f"GET {path} failed: HTTP {exc.code}") from exc
+    except Exception as exc:  # noqa: BLE001 -- any other IO failure blinds the gate
         raise GateBlind(f"GET {path} failed: {exc}") from exc
 
 
@@ -259,6 +279,12 @@ def main() -> int:
         return 1
     try:
         return run_gate(repo, pr_number, head_sha, head_dir, token)
+    except QuotaExhausted as exc:
+        # Quota is not a verdict: the gate could not judge. INCONCLUSIVE
+        # (exit 2) -- retry the workflow after backoff, do not diagnose a
+        # red gate. Exit 2 is distinct from 0 (pass) and 1 (fail).
+        print(f"CLAIM-EVIDENCE GATE: INCONCLUSIVE -- {exc} (QUOTA_403 -- retry)")
+        return 2
     except GateBlind as exc:
         print(f"CLAIM-EVIDENCE GATE: FAIL -- {exc} (GATE_BLIND)")
         return 1
