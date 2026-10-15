@@ -34,11 +34,27 @@ jobs:
 
       - name: Enforce exact-head receipt pin (fail-closed)
         env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
           HEAD_REF: ${{ github.event.pull_request.head.ref }}
-          PR_BODY: ${{ github.event.pull_request.body }}
         run: |
           set -euo pipefail
+
+          # LIVE-BODY LAW (2026-10-15, w180): never read the PR body from the
+          # event envelope (github.event.pull_request.body as an expression).
+          # Note: do NOT write a literal dollar-curly expression in a run
+          # script comment — the Actions runner substitutes expressions
+          # ANYWHERE in the step, comments included, which can break the
+          # shell script. rerun-failed-jobs replays the ORIGINAL event
+          # payload, so a body edited after the run started reads as its
+          # STALE value on re-fire (proven w180: job 116173185579 on #2606
+          # read the pre-patch body; unblocked only via empty trigger
+          # commit da40a7f0). Read the body live from the API at run time.
+          # The PR number is stable across re-fires; the body is not.
+          PR_BODY="$(gh api "repos/${REPO}/pulls/${PR_NUMBER}" --jq '.body // ""')"
+          echo "read live PR body (${#PR_BODY} bytes) for PR #${PR_NUMBER}"
 
           # Scope gate: lane branches only. Out-of-scope PRs get an explicit
           # PASS decision (a decision, not a skip — the check stays green).
