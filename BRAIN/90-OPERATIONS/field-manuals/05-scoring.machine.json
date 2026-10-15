@@ -1,0 +1,38 @@
+{
+  "area_number": 5,
+  "area_name": "Scoring",
+  "owner_team": "Naya Clarity",
+  "agent_seat": "Builder",
+  "what_it_is": "The 9.5 bar and the machinery around it: the 3-pass flow (score → why-not-10 → fix → re-score, three rounds minimum), the three-try circuit breaker (no 4th round on the same hypothesis without a written reframe), gap-recycling (a 9.0–9.4 verdict files a follow-up naming the exact gap), the first-available-scorer rule (any qualified Naya other than the author scores; no waiting on one seat), and NO-WORD RATIFICATION (the scoring matrix is the only authorization — Shawn's casual approval is encouragement, never approval).",
+  "what_it_does": "Turns quality from opinion into protocol. The score attaches to the exact head being merged or shipped — a score on a stale head is theater. Below 9.0 never ships; 9.0–9.4 ships with the gap filed; 9.5+ ships. A status field claiming RATIFIED without scorecard IDs + content hash + reviewer seats is CLAIMED-UNVERIFIED — never ratified.",
+  "why_it_matters": "The fail-closed guard test — the regression test proving the vanished-winner guard actually catches failures — was independently verified and scored 9.5/10 APPROVED at frozen head 16dd1cb9, with a sabotage battery proving the test fails with the guard stripped (not theater). Scorecard posted as PR review comment 5526313906. The opposite: Verity's manual scored 3.0 HOLD on the generic work rubric for 'blocking = tests/proof' — but a manual is an instruction set to achieve success; it cannot carry proof before it is followed. Re-scored on the document rubric: 7.0. Wrong rubric, wrong verdict (L380, comment 6171210114).",
+  "key_rules": [
+    "A 7 is a 7 — never inflate. Score the exact head being merged or shipped; a score on a stale head is theater.",
+    "9.5+ ships. 9.0–9.4 ships with a filed follow-up naming the exact gap (gap-recycling). Below 9.0 never ships.",
+    "Three honest passes minimum: score → why-not-10 → fix → re-score. The three-try circuit breaker forbids a 4th round on the same hypothesis without a written reframe.",
+    "Every score below 9.5 names exactly what kept it from 9.5 — not 'why not 10', but 'why not 9.5'. A score without a named gap is a compliment, not a measurement.",
+    "NO-WORD RATIFICATION: authorization comes from the scoring matrix alone, never anyone's word. His casual approval is encouragement, never approval.",
+    "The author never scores her own ship. First-available-wins: any qualified Naya other than the author scores it.",
+    "The rubric must match the kind of thing scored — challenge the rubric first, the number second.",
+    "A calculator is not a judge: unverified-text 10.0 SHIP output is the falsifier that keeps the calculator ADVISORY-ONLY."
+  ],
+  "test": [
+    "Did I score the exact head being merged or shipped — not an earlier one?",
+    "Did I list every reason it's not a 10?",
+    "Could a different seat reach my number from my evidence alone?",
+    "Was the scorer someone other than the author — and if not, why?",
+    "Is a score in the 9.0–9.4 band paired with a filed follow-up naming the gap?",
+    "Does anything claim RATIFIED without scorecard IDs, content hash, and reviewer seats attached?"
+  ],
+  "enforcement": {
+    "real": "The builder-scorer loop: the lane briefing operational protocol requires the 3-round minimum plus the three-try circuit breaker. Gap-recycling is standing protocol. NO-WORD RATIFICATION is standing law. The first-available-scorer rule is enforced by protocol, not code.",
+    "proposed": "The scorecard calculator stays ADVISORY-ONLY — it outputs 10.0 SHIP on unverified text, which is its own falsifier. Machine-enforced SHIP BAR as a required merge check: proposed, pending Shawn's branch-protection clicks."
+  },
+  "boundaries": {
+    "not_covered": [
+      "How to verify claims independently (manual 06 — Verification)",
+      "What authorizes a merge at the dock (manual 14 — Merging, Resolve)",
+      "The 9.5 bar's application to documents vs code (the document rubric)"
+    ]
+  }
+}

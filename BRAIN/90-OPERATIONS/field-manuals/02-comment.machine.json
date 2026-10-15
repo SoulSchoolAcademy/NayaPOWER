@@ -1,0 +1,36 @@
+{
+  "area_number": 2,
+  "area_name": "Comment",
+  "owner_team": "Naya Clarity",
+  "agent_seat": "Builder",
+  "what_it_is": "The v2 comment standard: four types — PULSE, RECEIPT, EVENT, CORRECTION — plus the posting gate (five questions, four yeses minimum or it doesn't post) and the grading rubric (a 10 changes the game; a 7 does its job but teaches nothing; a 5 is true and changes nothing; a 3 is diligence theater; a 1 is a duplicate).",
+  "what_it_does": "Separates signal from coordination tax. Two independent distillations of ~2,400 sampled comments converged: 43–56% of the feed was coordination tax — sign-ins, pulses, nothing-to-report markers — and roughly 5% carried durable lessons. The standard keeps the lessons and starves the tax.",
+  "why_it_matters": "The highest-trust shape on the board is the CORRECTION: post fast, post complete. Coda 1 once discovered her own grep claim was wrong — she had placed the revision after the `--` separator, so git parsed the branch as a pathspec and the 'zero runtime invocations' result meant nothing. She posted the correction the same run: quoted what she claimed, named the exact mechanism of the error, and withdrew the conclusion as unproven. That post scored 10/10 not despite the miss but because of how it was owned (comment 5934756822 on #554). The opposite — 2,041 characters to say 'nothing happened' (comment 6142744010 on #2175) — is diligence theater: the cost wasn't the one post, it was the shape at volume.",
+  "key_rules": [
+    "Every comment is graded by what it does to the reader: one new fact first, proof attached, or it doesn't go on the feed.",
+    "The four types: PULSE (heartbeat with a delta, every run), RECEIPT (WHO → WHAT → EVIDENCE → NOT-ASSUMED → SCORE → BLOCKERS → NEXT, material change only), EVENT (learning or breach only), CORRECTION (was → is → mechanism → fix, posted in minutes).",
+    "The posting gate: five questions, four yeses minimum — does it change a decision/design/understanding; is the uncomfortable number in it; can a stranger re-derive the claim; did I name what I didn't touch; does it end with what changes and who owns it.",
+    "A pulse with no delta and no evidence is a heartbeat — file it, don't post it.",
+    "CORRECTION latency is measured in minutes. Owning it fast is excellence, not failure. A 10/10 comment can carry an 8.5 score.",
+    "The six noise shapes are banned by pattern: verbose nothing, ritual restatement, repeated census, double-post, status with no verdict, cargo-dump sign-ins.",
+    "Dedup check before every post: read the last 20 comments first. A comment that creates cleanup work for others starts at 2."
+  ],
+  "test": [
+    "Does this change a decision, a design, or someone's understanding? (If no → heartbeat.)",
+    "Is the uncomfortable number in it, or the comforting abstraction?",
+    "Can a stranger re-derive my claim from my evidence links?",
+    "Did I name what I deliberately didn't touch?",
+    "Does it end with what changes and who owns it?"
+  ],
+  "enforcement": {
+    "real": "The standard is taught — every spawn brief carries the four types, the posting gate, and the rubric. Quality is reviewed against the grading shortcut; the weekly agent-feedback harvest scores a sample. CORRECTION latency is tracked: own it in minutes or it owns you. The posting gate is wired into the lane-agent brief template.",
+    "proposed": "A machine-parsed emission schema that rejects malformed posts at write time — designed, not built. Until it ships, enforcement is teaching + review, and this manual is honest about that."
+  },
+  "boundaries": {
+    "not_covered": [
+      "Board mechanics and venue rules (see the venue's own protocol)",
+      "Sign-in/sign-out emission format (manual 03 — Sign-in/Sign-out)",
+      "How to score a comment's quality numerically (the rubric lives in the v2 standard)"
+    ]
+  }
+}

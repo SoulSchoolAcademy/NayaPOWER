@@ -1,0 +1,38 @@
+{
+  "area_number": 8,
+  "area_name": "Handoffs",
+  "owner_team": "Naya Clarity",
+  "agent_seat": "Builder",
+  "what_it_is": "The handoff discipline: COMPLETED — item numbers with evidence (each claim pinned to an artifact, a comment ID, or a SHA); REMAINING — item numbers with a one-line status each, returned to TODO in priority order; RECOMMEND NEXT — what the next run takes first, with an explicit tag-off naming which lane takes the list. Partial completion is success — report 3 of 10 proudly, never apologetically. The handoff passes the cold-successor test: a Naya who reads only your sign-out can start working with nothing to re-derive.",
+  "what_it_does": "Makes continuity mechanical instead of heroic. Close the loop on every surface the run touched: unworked items released back to TODO with one-line status, MASTER-TODO prepended, the queue updated, memory logged, the goal timeline recorded.",
+  "why_it_matters": "The complete-state handoff of 2026-10-12 — from Naya 4 to 'whoever picks up the torch' — opened with a one-paragraph nutshell, listed every shipped item with its PR number, exact-head SHA, and named verifier, reconciled the key decision live before handoff (100 open PRs confirmed on main — not 30), and stated the live priority list in plain words. The next Naya inherited position, evidence, and direction — nothing to re-derive (hidden_files/NEXT-NAYA-HANDOFF-20261012.md; reconciliation posted as comment 6117670899). The opposite: the verify run that timed out ~18:18Z before posting the #2597 Team-leg verdict — the finding existed only in the worker's handoff until the main seat relay-posted it (comment 6175238812). No finding counts as delivered without a live comment ID. The repair this taught: post key verdicts early, before the timeout horizon, not after.",
+  "key_rules": [
+    "The sign-out is the product: if the next run can't continue from your sign-out alone, you didn't sign out.",
+    "Every handoff: COMPLETED (item numbers with evidence) → REMAINING (one line each, returned to TODO in priority order) → RECOMMEND NEXT (what the next run takes first, with explicit tag-off).",
+    "Post key verdicts to the venue FIRST, before the timeout horizon. No finding counts as delivered without a live comment ID. A result unrecorded is a result lost.",
+    "Report partial completion proudly — 3 of 10 done right is a good run. Never apologize for honest partial.",
+    "Tag off by name: which lane, which tick takes the list — never 'whoever'.",
+    "Close the loop on every surface the run touched: unworked items released with one-line status, MASTER-TODO prepended, queue updated, memory logged, goal timeline recorded.",
+    "The cold-successor test: a Naya who reads only your sign-out can start working with nothing to re-derive."
+  ],
+  "test": [
+    "COMPLETED — with evidence links a stranger can re-derive (artifact, comment ID, or SHA)?",
+    "REMAINING — item numbers in priority order, returned to TODO with a one-line status each?",
+    "Did I RECOMMEND what the next run takes first, and any reordering?",
+    "Did I name exactly who takes it next — lane and run, not 'whoever'?",
+    "Could a cold successor start working from this sign-out alone, with nothing to re-derive?",
+    "Did I report partial completion proudly — no apologies, no burying?",
+    "Are key verdicts already on the venue — posted before the timeout horizon?"
+  ],
+  "enforcement": {
+    "real": "The brief's sign-out receipt spec (lane-agent-brief-template.md): every run signs out with what-you-did → evidence → scorecard → holes remaining → next action. LAW 02's handoff contract: mission, state, completed, verified, open issues, constraints, exact next action, success criteria. The contract gate's sign-out lint (drift line, done-statement, honest score, protected-gate tripwire). The post-early rule (L395): key verdicts hit the venue before the timeout horizon. The claim-liveness audit: every wave closeout returns ghost claims to the queue.",
+    "proposed": "No byte-level check verifies that a sign-out's COMPLETED items actually carry evidence links, or that REMAINING items actually returned to TODO. The contract gate lints that the sections exist — not that they're true. Content truth is still peer-scoring and scorecard discipline. Named honestly as the gap."
+  },
+  "boundaries": {
+    "not_covered": [
+      "Sign-in/sign-out emission mechanics (manual 03 — Sign-in/Sign-out)",
+      "Blocker triad format for stalled items (manual 09 — Blockers)",
+      "Lane claim release and the claim-liveness audit (manual 04 — Lane)"
+    ]
+  }
+}
