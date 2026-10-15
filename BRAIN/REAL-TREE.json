@@ -1,12 +1,12 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-10-14",
-  "receipt_basis_commit": "92329c5795ef8a50d02adf94ee6c91c313c26daf",
-  "inventory_file_count": 1260,
+  "generated_at": "2026-10-15",
+  "receipt_basis_commit": "8bd2a9f70bac2847f38dd6d82a9d0e9f8d250d56",
+  "inventory_file_count": 1263,
   "domain_counts": {
     "00-ACTIVATION": 5,
     "00-ARCHITECTURE": 5,
-    "00-SPEC": 16,
+    "00-SPEC": 19,
     "01-GOVERNANCE": 56,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
@@ -116,6 +116,16 @@
       "size": 17687
     },
     {
+      "path": "BRAIN/00-SPEC/0008-INTELLIGENT-BLOCK-V1.ai.md",
+      "blob_sha": "ceb1f9e8b82efc2151aa1f0c4b4fa2e365d37714",
+      "size": 6552
+    },
+    {
+      "path": "BRAIN/00-SPEC/0008-INTELLIGENT-BLOCK-V1.human.md",
+      "blob_sha": "fdf1b3a9a1fb97a1a126f64a45a4981d16a6f2c8",
+      "size": 1870
+    },
+    {
       "path": "BRAIN/00-SPEC/BRAIN-MACHINE-CONTRACT-V1.schema.json",
       "blob_sha": "75200ca1f5cec5476d43f6647b72623b13c4cace",
       "size": 7778
@@ -139,6 +149,11 @@
       "path": "BRAIN/00-SPEC/SCHEMA/GRAPH-QUERY-SCHEMA.json",
       "blob_sha": "0d91c07f97fb1ac3345d9b219ac5eedfb4e0a53e",
       "size": 2746
+    },
+    {
+      "path": "BRAIN/00-SPEC/SCHEMA/INTELLIGENT-BLOCK-SCHEMA.json",
+      "blob_sha": "22368be27181f5385c93a4c79b65e61e44a747c2",
+      "size": 4892
     },
     {
       "path": "BRAIN/00-SPEC/SCHEMA/LEARNING-RECORD-SCHEMA.json",
