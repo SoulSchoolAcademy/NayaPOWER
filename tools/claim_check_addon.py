@@ -20,14 +20,23 @@ Vocabulary alignment (w201): the claim families and receipt anchors mirror
 Gamma's claim_reconcile.py parse vocabulary — proven against its 8 claim
 fixtures in tests. An unwired gate protects nobody: wire check_claim into
 post_checker.check_post.
+
+ITEM-9 VERDICT (registered w218; decided with Gamma): a bare #NNNN issue
+reference does NOT bind a green-CI claim. Binding anchors are an asserted
+head SHA (+ check-run id) observed THIS mission — "green at <sha>", the
+bare 40-char sha, or check-run/run id (see _RECEIPT_PATTERNS). Code
+landing is the BARE_ISSUE_BINDS flag flip plus the claim-conflict fixture
+test update — pending; until it lands the gate still binds bare issues and
+this docstring names the decided rule, not the current behavior.
 """
 
 import re
 import difflib
 
-# Verdict boundary (item 9 — decided WITH Gamma; this wave preserves the
-# standing behavior): whether a bare #NNNN issue reference counts as a live
-# receipt for a green-CI claim. When item 9 lands, change this ONE constant.
+# Verdict boundary (item 9 — decided WITH Gamma; verdict registered in the
+# module docstring w218): whether a bare #NNNN issue reference counts as a
+# live receipt for a green-CI claim. The flip of this ONE constant (plus the
+# claim-conflict fixture test update) is the pending code landing.
 BARE_ISSUE_BINDS = True
 
 # Confident quantitative claims that need a live receipt to ship.
