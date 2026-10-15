@@ -3,10 +3,11 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import claim_check_addon as cc
 
-fails = []
 def t(name, cond, detail=""):
+    # Fail-fast: under pytest a failure raises at collection (honest red);
+    # under direct execution the traceback names the failed case.
     print(("PASS " if cond else "FAIL ") + name + (f" — {detail}" if detail else ""))
-    if not cond: fails.append(name)
+    assert cond, f"FAIL {name} — {detail}"
 
 # --- claim-check ---
 ok, d = cc.check_claim("verdict: nothing quantitative here\nnext: sleep | owner: Naya Zeta")
@@ -50,7 +51,9 @@ t("empty-recent-passes", ok, d)
 
 # --- vocabulary alignment: Gamma's claim_reconcile fixtures (w201) ---
 # The addon requires receipt PRESENCE; truth/freshness is claim_reconcile's job.
-FX = "/home/hatch/workspace/_worktrees/gamma-w186-claim-recon-ci/tools/claim_reconcile_fixtures"
+# Repo-relative: fixtures ship in-PR under tools/claim_reconcile_fixtures
+# (w206 fix-pass — the absolute gamma-w186 worktree path died with the worktree)
+FX = os.path.join(os.path.dirname(os.path.abspath(__file__)), "claim_reconcile_fixtures")
 A40 = "a" * 40
 def fx(name):
     return open(f"{FX}/{name}").read()
@@ -91,5 +94,6 @@ t("named-green-no-receipt-flags", not ok, d)
 t("bare-issue-bind-flag-exists", isinstance(cc.BARE_ISSUE_BINDS, bool),
   f"BARE_ISSUE_BINDS={cc.BARE_ISSUE_BINDS}")
 
-print(f"\n{len(fails)} failures" if fails else "\nALL GREEN")
-sys.exit(1 if fails else 0)
+if __name__ == "__main__":
+    # Reaching here means every t() above passed.
+    print("\nALL GREEN")
