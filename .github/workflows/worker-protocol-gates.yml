@@ -15,9 +15,11 @@ name: Worker Protocol Gates
 #   overlap              [ADVISORY] Warns when another open PR touches the same
 #                        files. Never blocks — information, not bureaucracy.
 #
-# Escape hatch: if a gate false-positives, the merge lane may merge with a
-# written override in the merge commit message plus a note on #1354.
-# A gate that blocks good work is a bug — report it, don't route around it.
+# Escape hatch: if a gate false-positives, document the drop rationale in the
+# merge commit message (the no-silent-deletion gate reads `## Deletions` /
+# prose-with-rationale / `Waived-Deletions:` there) plus a note on the live
+# board #2537. A gate that blocks good work is a bug — report it, don't
+# route around it.
 
 on:
   pull_request:
