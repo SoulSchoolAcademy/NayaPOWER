@@ -63,6 +63,7 @@ import os
 import re
 import sys
 import urllib.request
+import urllib.error  # HTTPError carries X-RateLimit-Reset on 403 (ratelimit-reset, 2026-10-15)
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -213,6 +214,12 @@ def api_get(path: str, token: str):
     try:
         with urllib.request.urlopen(req, timeout=30) as resp:
             return json.load(resp)
+    except urllib.error.HTTPError as exc:
+        # 403 carries X-RateLimit-Reset: emit the clock, then fail closed.
+        reset = exc.headers.get("X-RateLimit-Reset")
+        if exc.code == 403 and reset:
+            print(f"RATE_LIMIT_RESET epoch={reset} path={path} status=403")
+        raise GateBlind(f"GET {path} failed: {exc}") from exc
     except Exception as exc:  # noqa: BLE001 -- any IO failure blinds the gate
         raise GateBlind(f"GET {path} failed: {exc}") from exc
 

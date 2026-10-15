@@ -867,6 +867,10 @@ def _api(method, path, token, body=None):
             raw = r.read().decode()
             return json.loads(raw) if raw.strip() else {}
     except urllib.error.HTTPError as e:
+        # 403 carries X-RateLimit-Reset: emit the clock, then fail closed.
+        reset = e.headers.get("X-RateLimit-Reset")
+        if e.code == 403 and reset:
+            print(f"RATE_LIMIT_RESET epoch={reset} path={path} status=403")
         raise RuntimeError("GitHub API %s %s -> HTTP %s: %s"
                            % (method, path, e.code, e.read().decode()[:300]))
 
