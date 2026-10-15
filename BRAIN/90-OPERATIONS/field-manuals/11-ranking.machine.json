@@ -1,0 +1,39 @@
+{
+  "area_number": 11,
+  "area_name": "Ranking",
+  "owner_team": "Naya Clarity",
+  "agent_seat": "Builder",
+  "what_it_is": "The triage discipline: the living plan's standing top-ten, re-ranked every director tick by mission leverage × unblockability ÷ effort — closed items drop with their proof, newly found holes enter with owners, every item's position defended in a line or two. The dispatcher's pull order: FEEDBACK CHECK FIRST, then SURGE CHECK, then the grand to-do list (STAGE 0 first), up to three items, never more than free lanes — then a MISSION-IMPACT FILTER weighting toward Stage 1 (protect) or Stage 2 (prove). Shawn's dispatch law stands as the override: work lowest numbers first (a 5→9 beats a 9→10), activation gates everything, near-instant learning is built first when other gains depend on it.",
+  "what_it_does": "Puts unlockers before the work they unlock. Dependencies outrank leaves. Arrival order is not value order — the dispatcher's STEP 3 exists precisely to forbid FIFO. A rank that can't be executed (stacked on occupied lanes, or only one worker can touch it while lanes idle) is a wish list, not a queue.",
+  "why_it_matters": "The t0770 executor dispatch sat held until the t0780 second-seat verdict CONFIRMED (sealed) that the SURGE semantic-arm hypothesis-change is a genuine new hypothesis — then dispatch was unblocked immediately, with the right executor shape. The unlocker was ranked above the work it unlocked. The opposite: the phantom claim — the scorecard brief that was the single merge blocker for milestone 1, sitting in claimed/ 18+ minutes with no sign-in while the rotation still listed it queued. A queue that loses its top item has no ranking at all — just a pile. And one tick wrote new briefs to lanes already holding two queued briefs each — the ranking had ignored lane capacity (t0704, memory/2026-10-13.md). Dispatch is PULL to free lanes only.",
+  "key_rules": [
+    "Rank by mission value × unlock ÷ effort — never by arrival order, loudness, or who shouted last.",
+    "Dependencies outrank leaves. The unlocker is ranked above the work it unlocks.",
+    "Ties go to learning. Shawn's dispatch law overrides the mechanical rank: lowest numbers first, activation gated, learning built second.",
+    "Ranking is a verb: re-rank every tick. Closed items drop with their proof; new holes enter with named owners.",
+    "Dispatch is PULL to free lanes only — never more items than free lanes. A rank nobody can pull from is a wish list, not a queue.",
+    "Never let a silent claim hold the top slot — no sign-in → phantom, void it; sign-in with no receipt after 6 ticks → STALE.",
+    "The top item must be the one you'd bet the hour on — with the bet defended in one sentence."
+  ],
+  "test": [
+    "Can you state the top item and defend it in one sentence — would you bet the hour on it?",
+    "Is the order driven by value × unlock ÷ effort, or by arrival, loudness, or recency?",
+    "Does anything ranked above another item unblock it — are dependencies ahead of their leaves?",
+    "Can the top items actually be worked — or can only one worker touch them while the free lanes idle?",
+    "Is every ranked item assigned to a FREE lane (pull only), or are you stacking onto occupied lanes?",
+    "Did closed items drop with their proof, and did new holes enter with named owners?",
+    "If two items tie, does learning win?",
+    "Does Shawn's dispatch law change the order — and did you apply it instead of skipping it?"
+  ],
+  "enforcement": {
+    "real": "The live plan's TOP-10 standing section: re-ranked every director tick by mission leverage × unblockability ÷ effort (hidden_files/live-plan.md). The night-dispatcher STEP 3 pull plus STEP 4 mission-impact filter (crons/minutely/night-dispatcher__interval@10m.md). Queue accounting in twelve-lane-rotation.json, the claim-liveness audit, and the L24 dead-claim rule. Shawn's dispatch law as the standing override (MEMORY.md, 2026-10-13). The value calculus scores dependency_unlock as a real dimension.",
+    "proposed": "The red-gates auto-file-queues system fix is owed and listed in the live plan's next actions; it is not wired yet. There is no automated 'ranker' service: ranking today is director-tick discipline plus dispatcher procedure, not machine law. Calling it enforced beyond the items above would be a lie."
+  },
+  "boundaries": {
+    "not_covered": [
+      "How briefs get minted and scoped (manual 10 — Briefing)",
+      "Lane claim mechanics (manual 04 — Lane)",
+      "The decision value calculus itself (kernel/value_calculus.py)"
+    ]
+  }
+}

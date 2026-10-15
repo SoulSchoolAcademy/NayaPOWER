@@ -1,0 +1,38 @@
+{
+  "area_number": 4,
+  "area_name": "Lane",
+  "owner_team": "Naya Clarity",
+  "agent_seat": "Builder",
+  "what_it_is": "Lane discipline: the mechanical rules that keep twelve workers from colliding, stalling, or silently losing work. One worker per lane. Claim-liveness auditing every tick: no sign-in naming the brief after 2 ticks → the brief returns to the queue; sign-in with no receipt after 6 ticks → STALE. Rotation-queued entries verified on disk.",
+  "what_it_does": "Prevents the three lane failure modes: races (two seats on the same work), ghosts (claims with no worker behind them), and squatting (a claim held with no heartbeat). The claim-liveness audit is the tripwire — every handoff state has one.",
+  "why_it_matters": "The #2533 scorecard brief — the single merge blocker for milestone 1 — sat in claimed/ for 18+ minutes with no lane-feed sign-in while the rotation still listed it queued. The queue had silently lost the critical-path brief and no job watched claimed/. The fix was mechanical: void the phantom claim, return it to the queue, and wire the claim-liveness audit into the dispatcher (THE PHANTOM-CLAIM LAW, 2026-10-13). A claim without a sign-in is a reservation without a worker.",
+  "key_rules": [
+    "One worker per lane, one claim per worker, sign-in as the proof of life.",
+    "The cycle, in order: claim → sign-in → read → work → receipt → release. No exceptions.",
+    "A claim without a sign-in after 2 ticks returns to the queue (phantom claim). A sign-in with no receipt after 6 ticks goes STALE.",
+    "Take the OLDEST unclaimed brief — oldest-first pickup. Never claim from memory.",
+    "First claim stands: on collision, the later seat renumbers or stands down — never overwrites.",
+    "Dispatch only to free lanes. A rank that can't be executed is a wish list.",
+    "Enforcement must check BOTH sign-in feeds (main lane-feed.md and brief-queue/lane-feed.md) — a healthy claim dies if the audit looks in only one place."
+  ],
+  "test": [
+    "Did I post a sign-in BEFORE reading the brief — claim → sign-in → read, in that exact order, no exceptions?",
+    "Does my sign-in name the lane, the tick, the claimed brief's filename, and one task line?",
+    "Is my claim still fresh (receipt within 6 ticks), or am I squatting on a lane with no heartbeat?",
+    "Did I check that no other seat holds this brief, lane, or work item before I claimed it?",
+    "If I collide with another seat's claim, does the first claim stand — and do I renumber / stand down, not overwrite?",
+    "If the claim-liveness audit ran this tick, would my claim survive — sign-in matched, inside the window?",
+    "When I finish or stall, will the lane release cleanly — brief to done/ (or stale/), receipt posted, sign-out on the feed?"
+  ],
+  "enforcement": {
+    "real": "Claim-liveness audit in the night-dispatcher, every tick: claimed/ grepped against sign-ins — no sign-in after 2 ticks → back to queue + log + lesson; sign-in with no receipt after 6 ticks → STALE; rotation-queued entries verified on disk. violation-detector-class17.py (sha 085f592e): 8 admission patterns, 28/28 live catch, 0 false positives. Dispatcher-side free-lane check: dispatch only to free lanes — 'one worker per lane' enforced at dispatch time, not just claim time.",
+    "proposed": "The structural executor-BODY fix (generic pre-claim executor sign-in / dispatcher-side claiming, candidate 205): exact BODY diff pending — cron definition files are read-only. The template carries the order for now; the mechanism owns the body later. Naya Verity's 'no receipt, no credit' mechanical rule: evidence in her report, not independently re-derived here."
+  },
+  "boundaries": {
+    "not_covered": [
+      "Sign-in/sign-out content and the read-receipt gate (manual 03 — Sign-in/Sign-out)",
+      "Race deconfliction protocol in full (manual 23 — Deconfliction)",
+      "How briefs get minted and scoped (manual 10 — Briefing)"
+    ]
+  }
+}
