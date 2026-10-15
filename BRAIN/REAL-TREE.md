@@ -1359,7 +1359,7 @@
 - `BRAIN/90-OPERATIONS/field-manuals/26-know.human.md` — `8aab51496413` (5666 bytes)
 - `BRAIN/90-OPERATIONS/field-manuals/27-act.human.md` — `0ef19eb95de2` (6603 bytes)
 - `BRAIN/90-OPERATIONS/field-manuals/28-law.human.md` — `698389cd7992` (5026 bytes)
-- `BRAIN/90-OPERATIONS/field-manuals/29-verify.human.md` — `dd064ff187ba` (5104 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/29-verify.human.md` — `7e0168e0d442` (7727 bytes)
 - `BRAIN/90-OPERATIONS/field-manuals/30-intelligent-blocks.human.md` — `bd3b7b3079ef` (4815 bytes)
 - `BRAIN/90-OPERATIONS/field-manuals/31-decision.human.md` — `c57c99905224` (8514 bytes)
 - `BRAIN/90-OPERATIONS/field-manuals/32-retrieval.human.md` — `b4082b96e2ff` (4245 bytes)
