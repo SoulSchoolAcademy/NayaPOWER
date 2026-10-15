@@ -1,7 +1,7 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-10-14",
-  "receipt_basis_commit": "92329c5795ef8a50d02adf94ee6c91c313c26daf",
+  "generated_at": "2026-10-15",
+  "receipt_basis_commit": "ba62638704256b012c20e41fe7f53cc3b62b1b44",
   "inventory_file_count": 1260,
   "domain_counts": {
     "00-ACTIVATION": 5,
@@ -37,13 +37,13 @@
     },
     {
       "path": "BRAIN/00-ACTIVATION/READ-ME-FIRST.md",
-      "blob_sha": "6c8d35df191de26604d135570816f9b934cda297",
+      "blob_sha": "509be86138e8d50bea9f03845458d7be976d3a80",
       "size": 17369
     },
     {
       "path": "BRAIN/00-ACTIVATION/THE-CODE-SHE-LIVES-BY.md",
-      "blob_sha": "6543873fee80d2f5880a9eb8e8a70a011ece7321",
-      "size": 2185
+      "blob_sha": "42e124837c3482bcf5dd056326809e7080818b73",
+      "size": 7177
     },
     {
       "path": "BRAIN/00-ACTIVATION/activation-checklist.json",
