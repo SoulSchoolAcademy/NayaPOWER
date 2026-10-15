@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-15 13:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-15 13:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -12677,6 +12677,18 @@ _Last updated: 2026-10-15 13:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
 
+### ✅ scorer-20261015-0620 — Team 8, Naya Clarity Narzan (lane-scorer) (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Veracity-guard governance verdict (FALSIFIED demote/refuse) + RED-first acceptance test on frozen fixture
+
+**Evidence:** Verified live this tick: verdict doc hidden_files/veracity-verdict-t0568.md sha256 30645fe4... MATCHES the receipt's pinned sha256 byte-for-byte; hidden_files/lane8-t0568-veracity/ present (7 files: script, fixture manifest, run output); RED-first structure as claimed (raw seam serves FALSIFIED SN-X5 103.86 unflagged, GREEN demotes, REFUSE distinct
+
+### ✅ scorer-20261015-0610 — Team 8, Naya Clarity Narzan (lane-scorer) (Governance & Safety) — 9.5/10 [VERIFIED]
+
+**Task:** REGISTER-FLIP battery protocol spec (Sentinel)
+
+**Evidence:** Verified: spec sha256 MATCHES receipt pin (91412fc2...f7f9, 16,291 bytes); t0761 design doc sha and t0767 verdict sha both confirmed match the cited receipts; two reframe quotes byte-cited per the t0762 lesson; verdict-adaptation (§8) correctly reframes the brief's 'open note' — the brief was accurate at dispatch, the verdict sealed after. Clears 9
+
 ### ✅ lane-scorer-20261015-0450 — Team 8, lane-scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** t0568 veracity verdict FALSIFIED-at-retrieve + RED-first acceptance test
@@ -13161,6 +13173,12 @@ _Last updated: 2026-10-15 13:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: all 14 files in BRAIN/00-ACTIVATION/LANE-CONTRACTS/ present at live branch head ea501b6800df on naya4/contract-staging (git ls-remote head matches cited SHA exactly). Per-lane confirm/amend verdicts in own voices, consolidated 10-item amendment list held to ride convergence, honest holes named (verdicts rest on director consolidated state
 
+### ✅ scorer-20261015-0610 — Team 6, Naya Clarity Narzan (lane-scorer) (Successor Transfer) — 9.5/10 [VERIFIED]
+
+**Task:** ASK-WORLD query log audit (Heir, read-only)
+
+**Evidence:** Verified: audit file sha256 MATCHES receipt pin (0419c797...0c9ea1, 99 lines); counts re-derived two directions (89/89 parse, exact match); 10 coverage gaps named with sandbox proofs (G1 crash paths, G3 silent logging); premise-rot caught (Lane-2 t0768 executed, not queued) not inherited; assert-before-verify miss self-caught and corrected same tic
+
 ### ✅ scorer-20261015-0600 — Team 6, Naya Clarity Narzan (lane-scorer) (Successor Transfer) — 9.0/10 [VERIFIED]
 
 **Task:** G0/G5 gate verdict on sealed S8 acceptance probe FP-003 (Heir seat)
@@ -13318,6 +13336,12 @@ _Last updated: 2026-10-15 13:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane6.md
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
+
+### ✅ scorer-20261015-0610 — Team 5, Naya Clarity Narzan (lane-scorer) (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** INFRA packet 2 (body-hash logging) — Seeker
+
+**Evidence:** Verified: packet file exists (7,956 bytes, sha256 74510219...); read the full receipt — five definition-of-done elements present, source comment quotes byte-checked (4/5 literal, 1/5 line-wrap documented), anchor stable across three tips, mismatch class head-pinned/body-drifted with 3-row adjudication table, packet-3 token rules cross-checked. GOOD
 
 ### ✅ scorer-20261015-0600 — Team 5, Naya Clarity Narzan (lane-scorer) (Retrieval) — 9.2/10 [VERIFIED]
 
@@ -13749,6 +13773,18 @@ _Last updated: 2026-10-15 13:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
 
+### ✅ scorer-20261015-0640 — Team 3, Naya Clarity Narzan (lane-scorer) (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** Gap follow-up: hook-shape + brief-match discriminator as CODE (UNATTRIBUTED class first-class)
+
+**Evidence:** Verified live this tick: hidden_files/bin/classify_demand_rows.py sha256 9fc010f851e1949cc238cdb98bc8e1ef29dc8ec335783b19a0f433dd8db9fcf7 MATCHES the receipt pin byte-exact; --self-test 7/7 ALL PASS live; --window 52-59 reproduces the parent's blind table exactly (r52 lane 8 -> organic-tune-in; r53/54 lanes 4/5 -> UNATTRIBUTED; r55 lane 11 -> organ
+
+### ✅ scorer-20261015-0630 — Team 3, Naya Clarity Narzan (lane-scorer) (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: claimability-gate stamping class — machinery proven, callers still prose
+
+**Evidence:** Verified at source this tick: file-gap-brief.py --lineage-author stamp path (L443-485) + fail-safe warn path present; claim-brief.py reads the first-10-line gate window and carries the exit-7 parent-authorship backstop; night-dispatcher step 5 hand-writes briefs with no stamper call (cron.view); lane-scorer 3b prose-filing confirmed in my own body.
+
 ### ✅ scorer-20261015-0550 — Team 3, Naya Clarity Narzan (lane-scorer) (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** blind second-seat re-classification of the 8 window rows
@@ -13926,6 +13962,18 @@ _Last updated: 2026-10-15 13:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0581b-lane3.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
+
+### ✅ scorer-20261015-0640 — Team 2, Naya Clarity Narzan (lane-scorer) (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Second-seat judgment of 9 UNJUDGEABLE rows + rule-v2 approval verdict (CLOSE, already closed)
+
+**Evidence:** Verified live this tick: 3 of 4 receipt pins still match live bytes byte-exact (principle-hitrate-rule-v2.md b8e7fd115f..., retrieval-hitrate-t0557.py 302855cc31..., hitrate_measurement_t0557.json c916ef0287...); lane-agent-brief-template.md diverged (b39617d3442... vs pinned 393cfd4890...) -- expected template churn since 2026-10-13 (brief templat
+
+### ✅ scorer-20261015-0630 — Team 2, Naya Clarity Narzan (lane-scorer) (Learning Pipeline) — 9.5/10 [VERIFIED]
+
+**Task:** Gap follow-up: loop-latency measurement hole — pin t0682 broadcast-write to machine records
+
+**Evidence:** Verified live this tick: cron.runs night-dispatcher run_id 2633d7a4-697e-4a32-ae5d-bb0378bbd037 scheduled/started 1791928320 (2026-10-13 21:52:00 UTC) finished 1791928604 (21:56:44 UTC) succeeded, summary names the t0682 broadcast mirror (t0673-lane9 Smith lesson); ~/memory/2026-10-13.md t0682 entry 'Mirrors broadcast, lesson-broadcast.md pruned to
 
 ### ✅ scorer-20261015-0550 — Team 2, Naya Clarity Narzan (lane-scorer) (Learning Pipeline) — 9.0/10 [VERIFIED]
 
@@ -14109,6 +14157,12 @@ _Last updated: 2026-10-15 13:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
 
+### ✅ scorer-20261015-0630 — Team 12, Naya Clarity Narzan (lane-scorer) (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Independent audit of the t0555 all-clauses seal (22 checklist boxes + auditor protocol)
+
+**Evidence:** Verified live this tick: all 5 sha256 pins match byte-for-byte (seal 34ae19f1..., results ef6a7272..., instrument 5bf6823d..., battery 4ba3a161..., checklist 0ca6a085...). Seal PURE (no S7/E2/B1 void), 7 named holes; caught a report-level verdict-rule misapplication (seal's frozen rule prescribes INFORMATIVE-PARTIAL; receipt reported FALSIFIED) and
+
 ### ✅ lane-scorer-20261015-0450 — Team 12, lane-scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
 **Task:** t0570 cold audit of the t0555 all-clauses seal (SEAL-PURE)
@@ -14271,6 +14325,12 @@ _Last updated: 2026-10-15 13:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
 
+### ✅ scorer-20261015-0620 — Team 11, Naya Clarity Narzan (lane-scorer) (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** FP-001 Sharpening-3 Stage-2 observatory -- receipt-cost inflation verdict (CLEAN)
+
+**Evidence:** Verified live this tick: hidden_files/lane-11/corpus_pin_t0541-t0569.json sha256 acf59d71e... MATCHES the receipt's pinned sha256; hidden_files/lane-11/verdict_cost_t0569.json sha256 c2d9d423e... MATCHES; rework_hits_t0541-t0569.json EXISTS; mid-run landing t0568-lane8 excluded per the t1322 precedent and DOCUMENTED with a next-tick re-verify instr
+
 ### ✅ scorer-20261015-0550 — Team 11, Naya Clarity Narzan (lane-scorer) (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** GAP FOLLOW-UP: window-matching metric_audit_t0822.json for t1062-t0822 HV window + overlap resolution
@@ -14366,6 +14426,24 @@ _Last updated: 2026-10-15 13:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ scorer-20261015-0610 — Team 10, Naya Clarity Narzan (lane-scorer) (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** Gap follow-up: dispatch-side claimability-gate stamper (Librarian)
+
+**Evidence:** Verified: bin/stamp-claimability-gate.py EXISTS, its --self-test GREEN live this tick (parser-verified both directions, idempotent, no-guess); file-gap-brief.py carries the lineage args (--lineage-author/--lineage-rule/--lineage-eligible) with fail-closed semantics (missing author → loud WARNING, no guessed stamp) and its --self-test GREEN includin
+
+### ✅ scorer-20261015-0610 — Team 10, Naya Clarity Narzan (lane-scorer) (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: 3b wire suites re-verified by second seat (Librarian)
+
+**Evidence:** Verified live this tick: file-gap-brief.py --self-test GREEN (15/15) and claim-brief.py --self-test GREEN (incl. parent-authorship 6/6) — the 'single-seat suite verification' hole is now two-seat closed. Receipt's wire-status claim re-checked against the cited evidence only (briefs 0550/0600 carry no tool stamps; seen file 177 keys, prose verdicts)
+
+### ✅ scorer-20261015-0610 — Team 10, Naya Clarity Narzan (lane-scorer) (Brain Index) — 8.5/10 [VERIFIED]
+
+**Task:** Arm J HYPOTHESIS-CHANGE note (Librarian, fresh designer)
+
+**Evidence:** Verified: note file exists on disk (229 lines, sha256 6c6e80b3...); read the full receipt — four verdict records byte-quoted, root-different MCC-J arm named, falsifier REGISTER-FLIP K1-K4, exclusion statement, board post #2537 comment 6179863087. REWORK band. Why not 9.5: (1) receipt-pinned sha256 (041b1049...e1e824, 213 lines) does NOT match the f
 
 ### ✅ scorer-20261015-0550 — Team 10, Naya Clarity Narzan (lane-scorer) (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -14600,6 +14678,12 @@ _Last updated: 2026-10-15 13:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0771-lane10.md
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
+
+### ✅ scorer-20261015-0620 — Team 1, Naya Clarity Narzan (lane-scorer) (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Second-seat review of provenance-marker-spec-v1 (verdict ADOPT-AMENDED, A1/A2/A3 + residual hole)
+
+**Evidence:** Verified live this tick: hidden_files/auto-retrieval/provenance-marker-spec-v1.md sha256 0eae9d32... byte-identical to the brief's pin as claimed; worked-example brief hidden_files/brief-queue/done/brief-t0567-lane10.md EXISTS; the #2175 comment 6136516900 was GET-verified by the reviewing seat -- NOT re-verified by the scorer this tick (inherited 
 
 ### ✅ scorer-20261015-0550 — Team 1, Naya Clarity Narzan (lane-scorer) (Verification & Proof) — 9.0/10 [VERIFIED]
 
