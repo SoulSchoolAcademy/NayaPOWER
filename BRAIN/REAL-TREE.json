@@ -1,17 +1,17 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-10-13",
-  "receipt_basis_commit": "34338065eb9793c33cf273b62e1b109aa1d35808",
-  "inventory_file_count": 1257,
+  "generated_at": "2026-10-15",
+  "receipt_basis_commit": "ba62638704256b012c20e41fe7f53cc3b62b1b44",
+  "inventory_file_count": 1260,
   "domain_counts": {
-    "00-ACTIVATION": 3,
+    "00-ACTIVATION": 5,
     "00-ARCHITECTURE": 5,
     "00-SPEC": 16,
     "01-GOVERNANCE": 56,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
-    "05-MEMORY": 647,
+    "05-MEMORY": 648,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
@@ -34,6 +34,16 @@
       "path": "BRAIN/00-ACTIVATION/DESIGN-ACTIVATION.md",
       "blob_sha": "fed3bb338e0205ac2d31c4afac69b06641f243ca",
       "size": 4229
+    },
+    {
+      "path": "BRAIN/00-ACTIVATION/READ-ME-FIRST.md",
+      "blob_sha": "509be86138e8d50bea9f03845458d7be976d3a80",
+      "size": 17369
+    },
+    {
+      "path": "BRAIN/00-ACTIVATION/THE-CODE-SHE-LIVES-BY.md",
+      "blob_sha": "42e124837c3482bcf5dd056326809e7080818b73",
+      "size": 7177
     },
     {
       "path": "BRAIN/00-ACTIVATION/activation-checklist.json",
@@ -3861,6 +3871,11 @@
       "size": 10932
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/14/SYSTEM-INTELLIGENCE/API-GOVERNANCE/PATCH-RESPONSE-VERIFY/SN-0797/IB-SMART-NOTE-20261014-sn0797-patch-response-is-the-verify.md",
+      "blob_sha": "9d393e7f8c48286bbe40946a0068be3aee41cf08",
+      "size": 9330
+    },
+    {
       "path": "BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/ACTIVATION-NAYA-INTELLIGENCE.md",
       "blob_sha": "8a02bda6be424d886a03da701ee9b5d124f93dac",
       "size": 27455
@@ -6282,8 +6297,8 @@
     },
     {
       "path": "BRAIN/CURRENT-MISSION-STATE.md",
-      "blob_sha": "015dfefe07cffb6df547d1d16eaf96e2c2774e25",
-      "size": 525047
+      "blob_sha": "758a40976f3506719821af03413121dc9e95be7a",
+      "size": 87558
     },
     {
       "path": "BRAIN/MASTER-MAP.md",

@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
-**Generated:** 2026-10-13  
-**Receipt basis commit:** `34338065eb9793c33cf273b62e1b109aa1d35808`  
-**Inventory file count:** 1257  
+**Generated:** 2026-10-15  
+**Receipt basis commit:** `ba62638704256b012c20e41fe7f53cc3b62b1b44`  
+**Inventory file count:** 1260  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -15,7 +15,7 @@
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 25 |
-| 05-MEMORY | 647 |
+| 05-MEMORY | 648 |
 | 06-PROOF | 13 |
 | 07-LEARNING | 9 |
 | 08-SUCCESSION | 2 |
@@ -33,6 +33,8 @@
 
 - `BRAIN/00-ACTIVATION/ACTIVATION-CHECKLIST.md` — `1b990d7507f6` (10868 bytes)
 - `BRAIN/00-ACTIVATION/DESIGN-ACTIVATION.md` — `fed3bb338e02` (4229 bytes)
+- `BRAIN/00-ACTIVATION/READ-ME-FIRST.md` — `509be86138e8` (17369 bytes)
+- `BRAIN/00-ACTIVATION/THE-CODE-SHE-LIVES-BY.md` — `42e124837c34` (7177 bytes)
 - `BRAIN/00-ACTIVATION/activation-checklist.json` — `0f8903747734` (3734 bytes)
 ### 00-ARCHITECTURE — (unregistered domain)
 
@@ -812,6 +814,7 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/VISION/MAGIC-FEELING/SN-0743/IB-SMART-NOTE-20261009-sn0743-magic-feeling.md` — `507e1bc3ea7d` (7680 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/VISION/SELF-OPTIMIZATION/SN-0742/IB-SMART-NOTE-20261009-sn0742-self-optimizing-system.md` — `151b620a7c56` (6817 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/10/SYSTEM-INTELLIGENCE/VERIFICATION/BATTERY-ISOLATION/SN-0796/IB-SMART-NOTE-20261010-sn0796-phantom-pytest-failure-tmpfs-concurrency.md` — `f2553ebdef9e` (10932 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/14/SYSTEM-INTELLIGENCE/API-GOVERNANCE/PATCH-RESPONSE-VERIFY/SN-0797/IB-SMART-NOTE-20261014-sn0797-patch-response-is-the-verify.md` — `9d393e7f8c48` (9330 bytes)
 - `BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/ACTIVATION-NAYA-INTELLIGENCE.md` — `8a02bda6be42` (27455 bytes)
 - `BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/MANIFEST.json` — `0fc11ff78dc9` (4099 bytes)
 - `BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/PROJECT-INTELLIGENCE-SPEC.md` — `c700b5612b24` (19507 bytes)
@@ -1316,7 +1319,7 @@
 - `BRAIN/99-ARCHIVE/brain-reconciliation-ledger-f648833b.md` — `168e14b9b430` (2096 bytes)
 ### ROOT — Brain root files
 
-- `BRAIN/CURRENT-MISSION-STATE.md` — `015dfefe07cf` (525047 bytes)
+- `BRAIN/CURRENT-MISSION-STATE.md` — `758a40976f35` (87558 bytes)
 - `BRAIN/MASTER-MAP.md` — `3a56fd561121` (9551 bytes)
 - `BRAIN/NAYAPOWER-BRAIN-INDEX.json` — _(self-referential index file; blob SHA omitted)_
 - `BRAIN/README.md` — `bf4d982f4f32` (2325 bytes)
