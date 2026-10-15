@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-15 22:04 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-15 22:34 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -22,6 +22,42 @@ _Last updated: 2026-10-15 22:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 | Team 12 | Naya Herald | NayaNET / Hub |
 
 ## Verified Actions (newest first)
+
+### ✅ t1530 — Team 4, Naya Mason Narzan (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** Room-feed contract design (12 rooms + hub manifest) — contract only, no HTML/engine code
+
+**Evidence:** Verified: hidden_files/room-feed-contract-2026-10-15.md on disk, sha256 d05d86da0d4c3c8c35e164ce47958d60b09713414f8df16e26c6d4c17d7028f EXACT == receipt pin (18.8KB, mtime 22:24Z). Receiver grounding verified class-sound (receipt greps Shawn's room files for the 4 localStorage keys); schema anchor = Shawn-ratified IB protocol 2026-09-29. Design cov
+
+### ✅ t1530 — Team 0, Naya Clarity Narzan (lane-executor, KNOW) (?) — 9.0/10 [VERIFIED]
+
+**Task:** Final #2537 feed distillation: 1,013-delta triage, essence posted, carried-forward re-homed
+
+**Evidence:** Verified: hidden_files/feed-distillation-2537.md sha256 02d1f1be… EXACT == receipt pin; watermark file 8eef1010… EXACT == pin, 2537 watermark 6199015733. Method sound: delta re-derived live (1,013 since watermark), two triage passes with the second pass catching the 2 keyword-missed load-bearing posts (circles decision, L370 rule) — owned and corre
+
+### ✅ t1530 — Team 0, Naya Clarity Narzan (lane-executor) (?) — 9.0/10 [VERIFIED]
+
+**Task:** distill-daily watch: re-verify READ-ME-FIRST boot pointer against live tip
+
+**Evidence:** Verified: re-derived INDEPENDENTLY this tick via contents API at main tip 9f80e8ec (get /contents/BRAIN/00-ACTIVATION/READ-ME-FIRST.md?ref=9f80e8ec): line 25 routes cold activations to Issue #2175, line 38 venue-map lists #2175 as the live board, line 55 lists #2175 portability — #2537 and #2641 appear NOWHERE in the file. The boot-pointer gate sti
+
+### ✅ t1530 — Team 0, Naya Clarity Narzan (lane-executor) (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep (earlier run): 25 queued briefs dry-run refused, mid-run arrival evaluated, correct skip
+
+**Evidence:** Verified: queue state consistent with the sweep (26/25 briefs, zero t-briefs, claimed/ empty of lane claims). Full dry-run machine evaluation (--dry-run, no mv), ORDERING order held, mid-run arrival (1500-lane4) evaluated in place. Why not 9.5: stamp freshness of the six stamped CLAIMABILITY GATEs was delegated to the script's parser with no explic
+
+### ✅ t1530 — Team 0, Naya Clarity Narzan (lane-executor) (?) — 9.0/10 [VERIFIED]
+
+**Task:** Identity-stall sweep: 26 briefs, all Clarity-barred, one live exit-7 check, correct skip
+
+**Evidence:** Verified: queue state consistent (26 unclaimed in brief-queue/). The one live check (1500-lane4 -> exit 7 parent-authorship refusal) was actually executed and the brief confirmed untouched in queue — machinery guards as designed. Why not 9.5: the remaining 25 evaluations rest on header-read logic alone (one live test of 26); the underlying routing 
+
+### ✅ t1530 — Team 0, Naya Clarity Narzan (lane-executor) (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep: 25 queued briefs evaluated, all refused (exit 2/6/7), correct skip, root cause named
+
+**Evidence:** Verified: queue state live — 26 brief-gap files in brief-queue/ + 1 in claimed/, rotation queued=24, consistent with the receipt's 25-26 count. The 25-brief refusal table is machine-evaluated via claim-brief.py (no hand-claims), root cause correctly named (second-seat independence backlog vs the Clarity-run executor seat), routing note actionable. 
 
 ### ✅ t1468 — Team 7, Naya Clarity Narzan (Team Operations) — 9.5/10 [VERIFIED]
 
@@ -8879,6 +8915,14 @@ _Last updated: 2026-10-15 22:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0601 — Team 2, Naya Sage (Learning Pipeline) — 8.0/10 [VERIFIED]
 
+**Task:** Sealed pre-registered entailment-arm battery (NLI arm blocked by env; banked TF-IDF control)
+
+**Receipt:** `twelve-lane-receipts/t0601-lane2.md`
+
+**Evidence:** Verified on disk: hidden_files/auto-retrieval/prereg-t0601-entailment.md, t0601_entailment_arm.py, results-t0601-entailment.json all present; instrument frozen, seal order holds (prereg 08:00:44.311Z < results 08:00:44.698Z per receipt). Banked control real: stemmed TF-IDF clears 3/3 on hard-class t0593 (HIT@5 1.0) - pinned bar the entailment arm m
+
+### ✅ t0601 — Team 2, Naya Sage (Learning Pipeline) — 8.0/10 [VERIFIED]
+
 **Task:** sealed pre-registered entailment-arm battery (Arm E: sentence-level directional NLI; control: stemmed TF-IDF)
 
 **Receipt:** `twelve-lane-receipts/t0601-lane2.md`
@@ -8895,11 +8939,27 @@ _Last updated: 2026-10-15 22:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0600 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
 
+**Task:** Spec-vs-module drift table for retrieval-authorization gate (t0594 hole closure)
+
+**Receipt:** `twelve-lane-receipts/t0600-lane8.md`
+
+**Evidence:** Verified: same verified branch/pins as lane-6 pass (naya/five-retrieval-auth-gate-t942 @ e654f16e, module sha fbe6ee29482fdc...176f); drift table 22 spec rows + 2 module-beyond-spec + 1 ripple, verbatim quotes, 3 drifts found all spec-behind (M1 tri-state authorization, M2 supersession-chain, S6 ripple) + 14 conforms + 5 pending-Shawn's-gate; spec 
+
+### ✅ t0600 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
+
 **Task:** spec 0007 §4 vs module drift table — every normative sentence quoted verbatim, checked against implementation predicates
 
 **Receipt:** `twelve-lane-receipts/t0600-lane8.md`
 
 **Evidence:** VERIFIED: drift-table sha256 94b5699d... == receipt claim (exact); remote branch naya/five-retrieval-auth-gate-t942 @ e654f16e == receipt pin via git ls-remote (unmoved). Score 9.0: real value — closed t0594's named hole with a concrete verdict (3 spec-behind drifts: M1 tri-state auth, M2 supersession, §6 ripple; 14 CONFORMS, 5 PENDING-§7). Kept fr
+
+### ✅ t0600 — Team 6, Naya Heir (Successor Transfer) — 9.5/10 [VERIFIED]
+
+**Task:** Independent second-seat re-run of Lane 8 t0594 retrieval-auth-gate battery -> CONFIRM
+
+**Receipt:** `twelve-lane-receipts/t0600-lane6.md`
+
+**Evidence:** Verified: branch naya/five-retrieval-auth-gate-t942 on remote, head e654f16e8a49... == receipt pin; module tools/retrieval_authorization_gate.py at that ref sha256 fbe6ee29482fdc...176f == receipt byte-exact. Lane 6 ran own driver + own frozen pre-reg before first import, 21/21 frozen predictions met, 0 per-arm deltas, arm E re-observed the two M3-
 
 ### ✅ t0600 — Team 6, lane6 (Successor Transfer) — 9.5/10 [VERIFIED]
 
@@ -8908,6 +8968,14 @@ _Last updated: 2026-10-15 22:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0600-lane6.md`
 
 **Evidence:** Verified: module blob sha 83ed0448b7e3d2c3 and gate/prereg/driver files sha-match receipt pins exactly; results JSON has verdict CONDITIONAL + 0-surprises/defects-confirmed fields matching the claimed CONFIRM. Score 9.5: genuine harness independence (own driver, own pre-reg cd76af18eb5b82b2 frozen before first module import, remote-extracted module
+
+### ✅ t0600 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** D2-gap verdict: per-class floor calibration FALSIFIED (pre-registered measurement)
+
+**Receipt:** `twelve-lane-receipts/t0600-lane1.md`
+
+**Evidence:** Read-only measurement receipt: pins re-verified at action time (tip bdfb5868..., corpus 631/631, frame/results/pre-reg SHAs byte-exact), frozen pre-reg f71ba4fe before falsifier measurement, dry-fire before freeze; verdict FALSIFIED (lane-N class 24/24 NO_RELEVANT_INTELLIGENCE, top 14.42 vs 40.0 floor, 0/12 raw winners genuine answers - word-match/
 
 ### ✅ t0600 — Team 1, lane1 (Verification & Proof) — 9.0/10 [VERIFIED]
 
@@ -10707,6 +10775,14 @@ _Last updated: 2026-10-15 22:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: feedback entry '[Lane 3 — Naya Judge, t0482]: SHARPEN' present verbatim in feedback-feed.md (line 52), with three concrete breaks each ending in a fix. Real value: caught the sub-9.0 rule's quiet-tick false positive before it became law. Why not 9.5: the headline claim (false-positive rate of the sub-9.0 rule) is asserted, not measured — 
 
+### ✅ t0473 — Team 12, Naya Herald Narzan (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Author canonical 9-note Smart Note markdown at Smart Feed fetch path; validate against live feed parser; PR #2676 (no merge)
+
+**Receipt:** `twelve-lane-receipts/t0473-lane12.md`
+
+**Evidence:** Verified: branch naya/herald-509-canonical-smart-notes-t0473 exists on remote, head 7185d4171a06 == receipt pin; file 509-AAA-SMART-NOTES-01-09-CANONICAL.md present at that ref with sha256 c3c59ba828...1f78134f1 == receipt byte-exact; parser contract re-derived from smart-feed.html live bytes (0x2014 em-dash confirmed). Why not 9.5: (1) wire proven
+
 ### ✅ t0472 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
 
 **Task:** RETRIEVAL SURGE slice (d): sealed cold-retrieve drill re-run with proven page-cache isolation
@@ -10714,6 +10790,14 @@ _Last updated: 2026-10-15 22:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0472-lane1.md`
 
 **Evidence:** VERIFIED: sha256 of cold_drill_t0472.py (0fcaa777...), chillset (81a07557...), results (d09e0282...) all match on disk; sealed record auto-retrieval/cold-drill-t0472.md exists. Real verified value: inverted t1052's failure into evict-then-verify (posix_fadvise DONTNEED + mincore), gate RED/GREEN on live bytes (607/607 resident refused warm, 0 resid
+
+### ✅ t0466 — Team 4, Naya Mason Narzan (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** ledger board-pointer repair — heartbeat 6200466480 ledger-blind claim audited; phantom append_ledger.py proven absent, stale pointers named, real unknown routed
+
+**Receipt:** `twelve-lane-receipts/t0466-lane4.md`
+
+**Evidence:** VERIFIED against live bytes: append_ledger.py absent in goal workspace (find, 0 hits); master_directive.py:190 board=2537 and :197 d.get(live_board, 2537) stale fallbacks confirmed on disk; NOW_BOARD=2599 at :68 confirmed; hv_measure.py 355/363 #2175 archival refs confirmed; director-ledger-sync scripts exist (3 dated snapshots) with zero board ref
 
 ### ✅ t0465 — Team 4, Naya Clarity Narzan (Mason hat) (Intelligent Blocks) — 9.4/10 [VERIFIED]
 
