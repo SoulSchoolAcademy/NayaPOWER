@@ -305,3 +305,48 @@ def test_generate_new_path_stays_path_only():
     assert frag["owner"] == owner
     assert frag["owner_basis"] == basis
     assert frag["owner_basis"].startswith("area_lead:")
+
+
+def test_backfill_apply_restamps_manifest(tmp_path):
+    """Pin the w211 14-red root cause: owner_backfill's textual index patch
+    mutates entries, so it must re-anchor corpus_manifest_hash over the
+    entries as committed — otherwise the fail-closed reader dies
+    MANIFEST_STALE on the next read."""
+    import json
+
+    import owner_backfill as ob
+    import smart_note_v2 as snv2
+
+    brain = tmp_path / "BRAIN" / "05-MEMORY" / "SMART-NOTES"
+    brain.mkdir(parents=True)
+    entries = []
+    for i in range(2):
+        page = brain / f"IB-TEST-{i}.md"
+        page.write_text(f"# IB-TEST-{i}\n", encoding="utf-8")
+        entries.append({
+            "smart_note_id": f"SN-90{i}",
+            "intelligent_block_id": f"IB-TEST-{i}",
+            "projection_path": f"BRAIN/05-MEMORY/SMART-NOTES/IB-TEST-{i}.md",
+            "projection_status": "GITHUB_BRAIN_PUBLISHED",
+            "page_hash": snv2._page_file_hash(page),
+            "lifecycle_state": "ACTIVE",
+        })
+    idx = {
+        "schema": "naya.smart-note-projection-index.v1",
+        "version": "1.0",
+        "source_of_truth": "runtime_intelligent_block",
+        "entries": entries,
+        "corpus_manifest_hash": snv2._corpus_manifest_hash(entries),
+    }
+    idx_dir = tmp_path / ".naya" / "memory" / "smart-notes"
+    idx_dir.mkdir(parents=True)
+    (idx_dir / "index.json").write_text(json.dumps(idx, indent=2), encoding="utf-8")
+
+    stats = ob.process(tmp_path, apply=True, corpora={"b"})
+    assert stats["b_diffs"] == 2
+
+    out = json.loads((idx_dir / "index.json").read_text(encoding="utf-8"))
+    assert out["schema"] == "naya.smart-note-projection-index.v2"
+    assert out["corpus_manifest_hash"] == snv2._corpus_manifest_hash(out["entries"])
+    # The backfill's output must satisfy the fail-closed reader end to end.
+    snv2._validate_index_against_corpus(out, root=tmp_path)

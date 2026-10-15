@@ -524,7 +524,7 @@ def test_concurrent_registry_writers_lose_no_updates(tmp_path):
     sn_ids = [e["smart_note_id"] for e in entries]
     assert len(sn_ids) == len(set(sn_ids)), "duplicate Smart Note IDs allocated"
     # Registry is valid JSON after every concurrent commit (atomic write).
-    assert reg["schema"] == "naya.smart-note-projection-index.v1"
+    assert reg["schema"] == "naya.smart-note-projection-index.v2"
 
 def test_concurrent_promotions_serialize_without_loss(tmp_path):
     import threading
@@ -767,7 +767,7 @@ def _sealed_registry(entries, root):
         pp = e.get("projection_path")
         if pp:
             e["page_hash"] = mod._page_file_hash(root / pp)
-    return {"schema": "naya.smart-note-projection-index.v1",
+    return {"schema": "naya.smart-note-projection-index.v2",
             "entries": entries,
             "corpus_manifest_hash": mod._corpus_manifest_hash(entries)}
 
@@ -1488,7 +1488,7 @@ def _winner_read_registry_missing_file(tmp_path, entry):
     entry["page_hash"] = "0" * 64
     rp = tmp_path / "index.json"
     rp.write_text(json.dumps({
-        "schema": "naya.smart-note-projection-index.v1",
+        "schema": "naya.smart-note-projection-index.v2",
         "entries": [entry],
         "corpus_manifest_hash": mod._corpus_manifest_hash([entry]),
     }), encoding="utf-8")

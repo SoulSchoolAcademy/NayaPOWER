@@ -40,7 +40,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
-CAPTURE_SCHEMA = "naya.smart-note-capture.v2"
+CAPTURE_SCHEMA = "naya.smart-note-capture.v3"
 CEILING_REQUIRED = "CANDIDATE"
 
 REQUIRED_TOP_KEYS = (

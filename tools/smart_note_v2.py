@@ -246,8 +246,8 @@ def registry_transaction(registry_path=None):
             if rp.exists():
                 registry = json.loads(rp.read_text(encoding="utf-8"))
             else:
-                registry = {"schema": "naya.smart-note-projection-index.v1",
-                            "version": "1.0",
+                registry = {"schema": "naya.smart-note-projection-index.v2",
+                            "version": "2.0",
                             "source_of_truth": "runtime_intelligent_block",
                             "entries": []}
             yield registry
@@ -774,7 +774,7 @@ def _retrieval_idf(field_word_sets):
 # No git dependency on the hot path: disk bytes anchor entries, the index's
 # own manifest anchors the entry list.
 
-INDEX_SCHEMA = "naya.smart-note-projection-index.v1"
+INDEX_SCHEMA = "naya.smart-note-projection-index.v2"
 
 # Projection pages may only live under these roots (relative to ROOT).
 INDEX_ALLOWED_PROJECTION_ROOTS = ("BRAIN/05-MEMORY/SMART-NOTES", ".naya/memory/smart-notes")

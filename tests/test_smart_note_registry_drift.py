@@ -59,7 +59,7 @@ def build_clean_root(tmp_path):
     reg_path.write_text(
         json.dumps(
             {
-                "schema": "naya.smart-note-projection-index.v1",
+                "schema": "naya.smart-note-projection-index.v2",
                 "entries": [
                     {
                         "smart_note_id": "SN-001",

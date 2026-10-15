@@ -167,7 +167,7 @@ def test_no_smart_note_id_can_vanish_without_a_lifecycle_record():
         "capture on disk. They were destroyed without a lifecycle record. BLOCKERS.md: "
         "'This is a naming defect, not a license to delete either intelligence object.' "
         f"Vanished: {vanished}. Recover each from git history, migrate to "
-        "naya.smart-note-capture.v2, preserve the stable id and ratification "
+        "naya.smart-note-capture.v3, preserve the stable id and ratification "
         "provenance, and record the deletion in source.restoration_provenance."
     )
 
@@ -242,8 +242,8 @@ def test_restored_objects_retain_their_provenance():
         assert deleting_commit in rp.get("deleted_in", "")
         assert rp.get("recovered_from"), f"{sid} does not record where it was recovered from"
         assert obj.get("smart_note_id") == sid, f"{sid} lost its stable identity in migration"
-        assert obj["schema"] == "naya.smart-note-capture.v2", (
-            f"{sid} must be migrated to the canonical v2 contract, not restored as malformed v1"
+        assert obj["schema"] == "naya.smart-note-capture.v3", (
+            f"{sid} must be migrated to the canonical v3 contract, not restored as malformed v2"
         )
 
 

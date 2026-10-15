@@ -45,7 +45,7 @@ def check_smart_note(path: Path):
         return [f"{path.name}: invalid JSON: {e}"], []
     intel = doc.get("intelligence", {})
     # Form 2: structured
-    if doc.get("schema") != "naya.smart-note-capture.v2":
+    if doc.get("schema") != "naya.smart-note-capture.v3":
         failures.append(f"{path.name}: missing/wrong canonical schema")
     # Form 4: human language
     if not substantive(intel.get("human_view")) and not substantive(intel.get("simple_view")):

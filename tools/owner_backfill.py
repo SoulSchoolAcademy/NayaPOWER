@@ -131,6 +131,20 @@ def textual_capture_patch(text: str, owner: str, basis: str) -> str:
     return out.replace('"naya.smart-note-capture.v2"', '"naya.smart-note-capture.v3"')
 
 
+def _restamp_manifest(text: str, manifest: str) -> str:
+    """Replace the corpus_manifest_hash value in place (textual, byte-preserving).
+
+    The writer contract (tools/smart_note_v2.py, B-51 step 3) anchors the manifest
+    over the FULL entry list as committed. Any entry mutation without a re-stamp
+    fails closed at read time as MANIFEST_STALE.
+    """
+    new_text, n = re.subn(r'"corpus_manifest_hash":\s*"[0-9a-f]+"',
+                          '"corpus_manifest_hash": "%s"' % manifest,
+                          text, count=1)
+    assert n == 1, "corpus_manifest_hash line not found for re-stamp"
+    return new_text
+
+
 def textual_index_patch(text: str, owners: list[tuple[str, str]]) -> str:
     """Insert owner/owner_basis after each entry's opening brace; bump
     top-level schema+version in place. entries appear in list order."""
@@ -187,7 +201,15 @@ def process(root: Path, apply: bool, corpora: set[str]) -> dict:
             if e.get("owner") != owner or e.get("owner_basis") != basis:
                 stats["b_diffs"] += 1
         if apply and stats["b_diffs"]:
-            idx_p.write_text(textual_index_patch(text, owners), encoding="utf-8")
+            patched = textual_index_patch(text, owners)
+            # Re-anchor the manifest: the textual patch mutates entries, so the
+            # old manifest no longer anchors what is committed. Without this,
+            # the next fail-closed read dies MANIFEST_STALE (the w211 14-red).
+            import smart_note_v2 as _snv2  # lazy sibling import: no cycle
+            reanchored = json.loads(patched)
+            manifest = _snv2._corpus_manifest_hash(reanchored["entries"])
+            patched = _restamp_manifest(patched, manifest)
+            idx_p.write_text(patched, encoding="utf-8")
         elif apply:
             pass  # nothing to change; leave bytes alone
     if "c" in corpora:

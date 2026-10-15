@@ -141,17 +141,17 @@ def test_protected_intelligence_retains_its_governed_fields():
     )
 
 
-def test_protected_objects_are_canonical_v2():
-    """A v1 object cannot satisfy the v2 governed-field contract, so state it
+def test_protected_objects_are_canonical_v3():
+    """A v2 object cannot satisfy the v3 governed-field contract, so state it
     explicitly rather than letting it fail on a confusing downstream assertion."""
     idx = _capture_index()
     bad = [
         f"{nid}: {doc.get('schema')}"
         for e in _protected()
         for nid, doc in idx.items()
-        if nid == e["smart_note_id"] and doc.get("schema") != "naya.smart-note-capture.v2"
+        if nid == e["smart_note_id"] and doc.get("schema") != "naya.smart-note-capture.v3"
     ]
-    assert not bad, f"protected objects not on canonical v2: {bad}"
+    assert not bad, f"protected objects not on canonical v3: {bad}"
 
 
 def test_protected_objects_declare_a_truth_ceiling():

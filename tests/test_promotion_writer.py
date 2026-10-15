@@ -25,7 +25,7 @@ def _fresh_ts(days_ago=1):
 def make_registry(tmp_path):
     """Create a minimal registry with one CANDIDATE note."""
     reg = {
-        "schema": "naya.smart-note-projection-index.v1",
+        "schema": "naya.smart-note-projection-index.v2",
         "version": "1.0",
         "entries": [
             {
