@@ -1,7 +1,7 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
-**Generated:** 2026-10-14  
-**Receipt basis commit:** `92329c5795ef8a50d02adf94ee6c91c313c26daf`  
+**Generated:** 2026-10-15  
+**Receipt basis commit:** `ba62638704256b012c20e41fe7f53cc3b62b1b44`  
 **Inventory file count:** 1260  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
@@ -33,8 +33,8 @@
 
 - `BRAIN/00-ACTIVATION/ACTIVATION-CHECKLIST.md` — `1b990d7507f6` (10868 bytes)
 - `BRAIN/00-ACTIVATION/DESIGN-ACTIVATION.md` — `fed3bb338e02` (4229 bytes)
-- `BRAIN/00-ACTIVATION/READ-ME-FIRST.md` — `6c8d35df191d` (17369 bytes)
-- `BRAIN/00-ACTIVATION/THE-CODE-SHE-LIVES-BY.md` — `6543873fee80` (2185 bytes)
+- `BRAIN/00-ACTIVATION/READ-ME-FIRST.md` — `509be86138e8` (17369 bytes)
+- `BRAIN/00-ACTIVATION/THE-CODE-SHE-LIVES-BY.md` — `42e124837c34` (7177 bytes)
 - `BRAIN/00-ACTIVATION/activation-checklist.json` — `0f8903747734` (3734 bytes)
 ### 00-ARCHITECTURE — (unregistered domain)
 
