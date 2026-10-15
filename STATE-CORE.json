@@ -1,12 +1,12 @@
 {
  "schema": "nayapower-state-core/v1",
- "generated_utc": "2026-10-15T17:46:49Z",
+ "generated_utc": "2026-10-15T17:56:50Z",
  "writer": "state-core-builder.py (single writer; all others read-only)",
  "tip": {
   "sha": "8bd2a9f70bac2847f38dd6d82a9d0e9f8d250d56",
   "short": "8bd2a9f70bac",
   "verified_how": "ref+commits-agree",
-  "checked_utc": "2026-10-15T17:45:59Z"
+  "checked_utc": "2026-10-15T17:55:59Z"
  },
  "venue": {
   "live": 2641,
@@ -15,15 +15,15 @@
   ]
  },
  "waves": {
-  "active": 199,
+  "active": null,
   "active_seats": [
    "Naya Compounder",
    "Naya Librarian",
    "Naya Bridger"
   ],
-  "last_completed": 198,
-  "last_completed_at": "2026-10-15T17:15Z",
-  "rotation_cursor": "wave-200: Naya Judge/Naya Auditor/Naya Builder (roster order)"
+  "last_completed": 199,
+  "last_completed_at": "2026-10-15T17:46Z",
+  "rotation_cursor": "wave-199: Naya Judge/Naya Auditor/Naya Builder (roster order)"
  },
  "lanes": {
   "free": [
