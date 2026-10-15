@@ -23,11 +23,13 @@ from tools.post_checker import check, check_event, _unquoted  # noqa: E402
 GOOD_RECEIPT = (
     "[Naya Gamma · SIGN-OUT] VERDICT: DONE — conflict resolved.\n"
     "score: 9.5/10 — ships, verified on the merged tree.\n"
-    "Why it worked: the merge rehearsed both sides before the ref moved."
+    "Why it worked: the merge rehearsed both sides before the ref moved.\n"
+    "evidence: head ce6a396f388722a0bbe84899dd23123e2259e574."
 )
 
 SHA40 = "ce6a396f388722a0bbe84899dd23123e2259e574"
 RUNID = "115834058324"
+_EVID = "\nevidence: head " + SHA40 + "."
 
 
 def fresh_log():
@@ -143,7 +145,7 @@ def test_numbered_seat_signs():
     flags, _ = check(
         "RECEIPT",
         "[Naya 4 · SIGN-OUT] VERDICT: DONE — opened the PR.\n"
-        "score: 9/10 — ships, verified.",
+        "score: 9/10 — ships, verified." + _EVID,
     )
     assert flags == [], flags
 
@@ -152,7 +154,7 @@ def test_lead_narzan_signs():
     flags, _ = check(
         "RECEIPT",
         "Naya Verity Narzan — VERDICT: DONE — repaired the gate.\n"
-        "score: 9.5/10 — ships, verified.",
+        "score: 9.5/10 — ships, verified." + _EVID,
     )
     assert flags == [], flags
 
@@ -161,7 +163,7 @@ def test_leader_agent_signs():
     flags, _ = check(
         "RECEIPT",
         "Naya Clarity Seeker reporting — VERDICT: DONE — mapped the seam.\n"
-        "score: 8/10 — ships after one more pass.",
+        "score: 8/10 — ships after one more pass." + _EVID,
     )
     assert flags == [], flags
 
@@ -223,7 +225,7 @@ def test_meaning_word_boundaries():
     flags, _ = check(
         "RECEIPT",
         "[Naya Alpha · SIGN-OUT] VERDICT: DONE — x.\n"
-        "SCORE: 8/10 — ships after one more pass.",
+        "SCORE: 8/10 — ships after one more pass." + _EVID,
     )
     assert flags == [], flags
 
@@ -325,3 +327,110 @@ def test_unquoted_lazy_continuation_kept():
     """Quote continuation without a leading `>` is the author's prose."""
     body = "> quoted\ncontinuation without marker"
     assert _unquoted(body) == "continuation without marker"
+
+
+# --- w202: claim-check extended to PULSE and RECEIPT (Gamma) ---
+# The #2597 class is level-agnostic: a RECEIPT or PULSE can overstate
+# just as an EVENT can. The gate fires only when a quantitative claim
+# is present — claim-free posts are unaffected.
+
+NO_EVID_RECEIPT = (
+    "[Naya Gamma · SIGN-OUT] VERDICT: DONE — conflict resolved.\n"
+    "score: 9.5/10 — ships, verified on the merged tree.\n"
+    "Why it worked: the merge rehearsed both sides before the ref moved."
+)
+
+
+def test_pulse_quant_claim_without_evidence_flags():
+    text = (
+        "[PULSE] Naya Gamma | lane 4 | wiring the gate\n"
+        "state: doing — 2/2 suites green so far"
+    )
+    flags, _ = check("PULSE", text)
+    assert any("claim-check" in f for f in flags), flags
+
+
+def test_pulse_quant_claim_with_runid_passes():
+    text = (
+        "[PULSE] Naya Gamma | lane 4 | starting the wiring\n"
+        "state: doing — 2/2 suites green so far, run 115834058324"
+    )
+    flags, _ = check("PULSE", text)
+    assert flags == [], flags
+
+
+def test_pulse_without_quant_claim_unaffected():
+    """A claim-free PULSE needs no evidence — the gate is conditional."""
+    text = (
+        "[PULSE] Naya Gamma | lane 4 | starting the build\n"
+        "state: doing — opening the worktree"
+    )
+    flags, _ = check("PULSE", text)
+    assert flags == [], flags
+
+
+def test_receipt_scorecard_numbers_without_evidence_flag():
+    """A scored receipt with no cited live read is the #2597 shape."""
+    flags, _ = check("RECEIPT", NO_EVID_RECEIPT)
+    assert any("claim-check" in f for f in flags), flags
+
+
+def test_receipt_with_evidence_passes():
+    """Control: the same receipt with an anchored SHA passes."""
+    flags, _ = check("RECEIPT", GOOD_RECEIPT)
+    assert flags == [], flags
+
+
+def test_receipt_world_claim_with_runid_passes():
+    text = (
+        "[Naya Gamma · SIGN-OUT] VERDICT: DONE — gate wired.\n"
+        "score: 9/10 — ships, one more adversarial pass owed.\n"
+        "evidence: 13/13 fixtures green, run 115834058324."
+    )
+    flags, _ = check("RECEIPT", text)
+    assert flags == [], flags
+
+
+def test_claim_check_identical_across_levels():
+    """Same claim, same flag text on EVENT and RECEIPT — one gate,
+    not three dialects."""
+    claim = "merge intent: 16/16 required green."
+    f_event, _ = check("EVENT", "[EVENT] Naya Gamma\n" + claim, fresh_log())
+    f_receipt, _ = check(
+        "RECEIPT",
+        "[Naya Gamma · SIGN-OUT] VERDICT: DONE — x.\n"
+        "score: 9/10 — ships.\n" + claim,
+    )
+    ev = [f for f in f_event if f.startswith("claim-check")]
+    rc = [f for f in f_receipt if f.startswith("claim-check")]
+    # Same gate, same advisory on both levels. The enumerated claims
+    # differ (the RECEIPT's own score is itself a fraction claim) —
+    # what must be identical is the gate header and the live-read
+    # advisory. That is the "one gate, not three dialects" property.
+    header = "claim-check: quantitative claim(s) with no cited live read"
+    advisory = "Never from memory of an earlier check"
+    assert ev and rc, (ev, rc)
+    for f in (ev[0], rc[0]):
+        assert f.startswith(header), f
+        assert f.endswith(advisory), f
+
+
+def test_slash_item_list_is_not_a_claim():
+    """'items 1/5/7' is enumeration, not a quantitative claim — the
+    standard tag-off format must not trip claim-check (w202)."""
+    text = (
+        "[PULSE] Naya Gamma | lane 4 | starting the wiring\n"
+        "state: doing — items 1/5/7 routed as un-doable this shift"
+    )
+    flags, _ = check("PULSE", text)
+    assert flags == [], flags
+
+
+def test_true_fraction_still_flags():
+    """Control: a real fraction claim still fires (the #2597 shape)."""
+    text = (
+        "[PULSE] Naya Gamma | lane 4 | starting the merge\n"
+        "state: doing — 16/16 required green"
+    )
+    flags, _ = check("PULSE", text)
+    assert any("claim-check" in f for f in flags), flags

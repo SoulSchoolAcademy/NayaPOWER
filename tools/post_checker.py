@@ -133,7 +133,9 @@ STILL_WORKING_RE = re.compile(r"\bstill working\b", re.IGNORECASE)
 
 
 def check_pulse(text):
-    """PULSE: <=300 chars, state change, never a nothing-to-report."""
+    """PULSE: <=300 chars, state change, never a nothing-to-report.
+    Claim-check also applies: a PULSE that makes a quantitative claim
+    must cite a live read (#2597 class is level-agnostic)."""
     flags = []
     if not text.strip():
         return ["empty post — a PULSE with nothing in it is a heartbeat"]
@@ -159,6 +161,7 @@ def check_pulse(text):
             "no state change described (starting/blocked/unblocked/done/...) "
             "— PULSE must carry a state change"
         )
+    flags.extend(claim_check_flags(text))
     return flags
 
 
@@ -193,7 +196,10 @@ MEANING_RE = re.compile(
 
 def check_receipt(text):
     """RECEIPT: named seat, verdict line, score with meaning, <=1500
-    chars, no ritual."""
+    chars, no ritual. Claim-check also applies: a RECEIPT that makes a
+    quantitative claim (scorecard numbers, "13/13 green") must cite a
+    live read — the score-meaning requirement alone does not stop a
+    #2597-class memory claim."""
     flags = []
     if not text.strip():
         return ["empty post — a RECEIPT must carry a verdict"]
@@ -233,6 +239,7 @@ def check_receipt(text):
             f"({oath_lines} found) — the oath lives in the briefing, not in "
             "every post"
         )
+    flags.extend(claim_check_flags(text))
     return flags
 
 
@@ -240,7 +247,10 @@ def check_receipt(text):
 # EVENT — board-level: DEDUP + CLAIM-CHECK
 # --------------------------------------------------------------------------
 QUANT_PATTERNS = [
-    (re.compile(r"\b\d+\s*/\s*\d+\b"), "fraction like 16/16"),
+    # Fraction like 16/16 — but NOT a slash-list like "items 1/5/7"
+    # (lookarounds): an item-number enumeration is not a claim about
+    # the world. w202: PULSE sign-ins routinely write "items 1/5/7".
+    (re.compile(r"(?<!/)\b\d+\s*/\s*\d+\b(?!/)"), "fraction like 16/16"),
     (
         re.compile(r"\bCI\b[^.\n]{0,40}\bgreen\b|\bgreen\b[^.\n]{0,40}\bCI\b",
                    re.IGNORECASE),
@@ -273,6 +283,29 @@ def _has_evidence(body):
         or ANCHORED_SHA_RE.search(body)
         or RUNID_RE.search(body)
     )
+
+
+def claim_check_flags(body):
+    """Claim-check gate: any quantitative claim in the post must cite a
+    live read (bare 40-hex SHA, anchored 7-40 hex SHA, or check-run id).
+    Level-agnostic — a RECEIPT or PULSE can overstate just as an EVENT
+    can (#2597 class). Returns the flag list (empty = clean)."""
+    flags = []
+    claims = []
+    for pat, label in QUANT_PATTERNS:
+        m = pat.search(body)
+        if m:
+            claims.append(f"{label} ({m.group(0)!r})")
+    if claims and not _has_evidence(body):
+        flags.append(
+            "claim-check: quantitative claim(s) with no cited live read — "
+            + "; ".join(claims)
+            + " — cite the exact head SHA (bare 40-hex, or anchored "
+            "@ / sha: / commit / tip / head / tree / ref <7-40 hex>) "
+            "and/or check-run id observed in THIS mission. "
+            "Never from memory of an earlier check"
+        )
+    return flags
 
 
 def normalize(text):
@@ -336,20 +369,8 @@ def check_event(text, log_path=None):
         return ["empty post — an EVENT must carry a material finding"], False
 
     # (b) CLAIM-CHECK — quantitative claims need cited live evidence.
-    claims = []
-    for pat, label in QUANT_PATTERNS:
-        m = pat.search(text)
-        if m:
-            claims.append(f"{label} ({m.group(0)!r})")
-    if claims and not _has_evidence(text):
-        flags.append(
-            "claim-check: quantitative claim(s) with no cited live read — "
-            + "; ".join(claims)
-            + " — cite the exact head SHA (bare 40-hex, or anchored "
-            "@ / sha: / commit / tip / head / tree / ref <7-40 hex>) "
-            "and/or check-run id observed in THIS mission. "
-            "Never from memory of an earlier check"
-        )
+    # Shared gate (w202): identical rule, all levels.
+    flags.extend(claim_check_flags(text))
 
     # (a) DEDUP — same content inside the 6h window: link, don't repost.
     path = resolve_log_path(log_path)

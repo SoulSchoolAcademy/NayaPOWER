@@ -61,7 +61,9 @@ class ReceiptTests(unittest.TestCase):
         "Mission: repair the gate-vocabulary parser. VERDICT: DONE — "
         "parser accepts Clarity/Resolve/Verity seats, 12/12 fixtures green. "
         "score: 9.5/10 — ships, verified on the merged tree. "
-        "Why it worked: the matcher read the live seat list."
+        "Why it worked: the matcher read the live seat list. "
+        "evidence: head ce6a396f388722a0bbe84899dd23123e2259e574, "
+        "run 115834058324."
     )
 
     def test_pass(self):
