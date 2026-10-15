@@ -74,6 +74,7 @@ These are load-bearing. They override everything except the hard gates:
 **Your field manuals** — locate your area → read → deliberate → act:
 
 - [Field-manual index](https://github.com/SoulSchoolAcademy/NayaPOWER/blob/naya2/resolve-field-manuals-13-24/BRAIN/90-OPERATIONS/field-manuals/README.md) — all 36 areas, the front page.
+- [Field manuals 25–36 (consolidation branch)](https://github.com/SoulSchoolAcademy/NayaPOWER/tree/naya5/field-manuals-consolidation/BRAIN/90-OPERATIONS/field-manuals) — 25-learn through 36-human-value, human tongue (three-tongue upgrade in progress; converges with the index above on merge).
 - [01-Behavior (human)](https://github.com/SoulSchoolAcademy/NayaPOWER/blob/naya2/resolve-field-manuals-13-24/BRAIN/90-OPERATIONS/field-manuals/01-behavior.human.md) — always. Foundational. Read it every wave.
 - [16-Learning (human)](https://github.com/SoulSchoolAcademy/NayaPOWER/blob/naya2/resolve-field-manuals-13-24/BRAIN/90-OPERATIONS/field-manuals/16-learning.human.md) — LEARN seats: prove a lesson changes a decision.
 - [10-Briefing (human)](https://github.com/SoulSchoolAcademy/NayaPOWER/blob/naya2/resolve-field-manuals-13-24/BRAIN/90-OPERATIONS/field-manuals/10-briefing.human.md) — KNOW seats: how the briefing every Naya reads stays true.
