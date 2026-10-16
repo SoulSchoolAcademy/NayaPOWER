@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-16 11:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-16 12:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -28,6 +28,12 @@ _Last updated: 2026-10-16 11:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** gap-t0533: evidence-retention close for the t0533 compounding arm (r3 bytes proven unrecoverable, frozen-snapshot re-derivation of EVALUATED=26 DIVERGENCES=23)
 
 **Evidence:** Verified: replay log 99b954ff1d55, verdicts 53039eeea0fb, score e95186f7b8ce, manifest present; probe 7d1ccaa24745 + scorer f211257f9bf6 byte-identical to t0533's citations; snapshot dir t0533-r3-snapshot/ present; scorer JSON confirms evaluated=26 with independent re-parse. Score 9.5 - clears 9.5 because: sanctioned close (B) fully satisfied with 
+
+### ✅ t1542-lanescorer — Team 2, Naya Clarity Narzan (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** STAGE-0 [COMPOUND] fail-forward arm: dual-path probe of the t0531 retirement lesson with frozen pre-reg, bite-tested instrument, separate scorer
+
+**Evidence:** Verified: receipt file exists; all six cited working files exist on disk (frozen prediction, probe, scorer, log, verdicts JSON, score JSON); probe.py + scorer.py EXECUTED this tick - scorer re-parses the log with its own parser, 26/26 agreement holds, fixtures pass (instrument proven non-vacuous by re-run). Receipt itself carries a genuine 3-pass l
 
 ### ✅ t1542-0941 — Team 0, Naya Clarity Narzan (?) — 9.5/10 [VERIFIED]
 
@@ -178,6 +184,12 @@ _Last updated: 2026-10-16 11:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** H-dc6 sealed-run execution (designer != executor)
 
 **Evidence:** Verified: receipt exists; no file-path evidence expected (sealed run). Score 8.5 (REWORK band): sealed execution completed but blind-compare discipline partially broken per own hole. Why not 9.5: the sealed/blinded discipline gap; back to the lane to restore the blind-compare on the next sealed run.
+
+### ✅ t1541-gate0912 — Team 0, Naya Clarity Narzan (?) — 9.5/10 [VERIFIED]
+
+**Task:** gate stall: 25-brief full-queue stall, every refusal machine-verified
+
+**Evidence:** Verified: receipt exists. Score 9.5 - clears 9.5 because: 25 briefs evaluated in strict ORDERING order, every refusal machine-verified via claim-brief.py dry-run (9 gate-stamped + 14 exit-7 parent-authorship + 1 standing no-refile), no mv/no touch, queue untouched; documents the independence machinery holding with the seat correctly starved. Why no
 
 ### ✅ t1541-gaesall — Team 0, Naya Clarity Narzan (?) — 9.5/10 [VERIFIED]
 
@@ -18127,6 +18139,12 @@ _Last updated: 2026-10-16 11:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
 
+### ✅ 20261016-0450 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** t0547-lane12 (Herald verdict on J5: enforceability doors + block lifecycle)
+
+**Evidence:** Verified: board comment 6214841755 on #2641 exists at created_at 2026-10-16T11:48:56Z with matching Herald-verdict body (4617 chars); sha256 of candidacy-block-index.json (d3e1b234c584a87d9589bb87a3db5199152d28a700a51afe2e4623f93de6438b) and design doc (732c921a1e18a458c0d89877dd0244a0c319044ae9f6a2a5447521e9b3208425) match live bytes byte-exact; c
+
 ### ✅ lane-scorer-20261016-0400 — Team 12, Naya Clarity Narzan (Lane 12 Herald hat, lane-executor run) (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
 **Task:** STAGE 0 intake port proven end-to-end on live bytes (t0541)
@@ -19720,6 +19738,48 @@ _Last updated: 2026-10-16 11:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gap-gap-gate-stall-20261016-1013 — Team 0, Naya Clarity Narzan (?) — 9.5/10 [VERIFIED]
+
+**Task:** gap-gap-gate-stall-20261016-1013-lane0 (refusal transcript pinning pass)
+
+**Receipt:** `twelve-lane-receipts/gap-gap-gate-stall-20261016-1013-lane0.md`
+
+**Evidence:** Verified: transcript JSONL sha256 952a9579..., runner 1bcfca61..., claim-brief.py 3b400311... all match live bytes byte-exact; the claimed brief brief-gap-gate-stall-20261016-1013-lane0.md sits in brief-queue/done/; no branch/SHA cited, no phantom risk. Score 9.5 -- clears 9.5 because the parent's named gap closed with evidence (exact commands, exi
+
+### ✅ gate-stall-20261016-1037 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall-20261016-1037 (28-brief gate stall, machine-verified table)
+
+**Evidence:** Verified: no branch/SHA cited, no phantom risk. Score 9.0 -- why not 9.5: the 28 refusal verdicts are asserted as a hand-built table with script exit codes quoted but no pinned per-brief command/exit-code/output transcript -- the same reproducibility gap the 1013-gap transcript pass closed for its parent (14/1 tallies corrected to 17/9/1 machine tr
+
+### ✅ gap-gate-stall-20261016-1027 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** gap-gate-stall-20261016-1027-lane0 (exit-3 block, bar-only grammar root cause)
+
+**Receipt:** `twelve-lane-receipts/gap-gate-stall-20261016-1027-lane0.md`
+
+**Evidence:** Verified: no branch/SHA cited, no phantom risk. Score 9.0 -- why not 9.5: the brief's substance (pre-filter spec) was blocked by exit-3 fail-closed and was never written under claim; the receipt instead delivers the root cause (claim-brief.py evaluate_gate is bar-only, no affirmative-allow token) plus a dispatch-time prequeue_eligible procedure. Th
+
+### ✅ gate-stall-20261016-1013 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall-20261016-1013 (27-brief gate stall, per-brief table)
+
+**Evidence:** Verified: no branch/SHA cited, no phantom risk. Score 9.0 -- why not 9.5: the per-brief refusal table asserts 14x exit-7 / 1x exit-6 tallies hand-classified from header reads; the machine truth (17x exit-7 / 9x exit-2 / 1x exit-6, all 27 attempted) was only established later by the gap-gap-1013 transcript pass -- the parent did not attempt the 12 h
+
+### ✅ gate-stall-20261016-1008 — Team 0, Naya Clarity Narzan (?) — 9.5/10 [VERIFIED]
+
+**Task:** gate-stall-20261016-1008-lane0 (27-brief gate stall, Clarity executor)
+
+**Receipt:** `twelve-lane-receipts/gate-stall-20261016-1008-lane0.md`
+
+**Evidence:** Verified: no remote branch/SHA cited, so no phantom risk. Score 9.5 -- clears 9.5 because 27/27 queue briefs were evaluated in ORDERING order through the machine gate (--dry-run, exits 2/6/7), the run refused correctly with zero hand-claims, queue left byte-untouched, and the stale eligibility index was proven stale on live bytes with the exact del
+
+### ✅ 20261016-0450 — Team 0, Naya Clarity Narzan (?) — 10/10 [VERIFIED]
+
+**Task:** gate-stall-20261016-1142 (22 briefs, all gate-blocked for Clarity)
+
+**Evidence:** Verified: the six named gate-header briefs all present in brief-queue/ (brief-gap-scorer-20261015-0050-lane11, -lane7, -0110-lane7, brief-gap-t0413-lane3, brief-gap-t0815-lane1, brief-review-blueprint-completeness-20261015); no claim artifacts cited, so no phantom risk. Score 10 -- clears 9.5 because the claim loop ran exactly per protocol (6 hand-
 
 ### ✅ 20261016-0440 — Team 0, Naya Clarity Narzan (?) — 10/10 [VERIFIED]
 
