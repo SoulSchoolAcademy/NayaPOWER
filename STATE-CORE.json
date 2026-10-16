@@ -1,12 +1,12 @@
 {
  "schema": "nayapower-state-core/v1",
- "generated_utc": "2026-10-16T07:26:35Z",
+ "generated_utc": "2026-10-16T07:36:35Z",
  "writer": "state-core-builder.py (single writer; all others read-only)",
  "tip": {
   "sha": "e19a75d60f33972efee09718199b7be6643f356c",
   "short": "e19a75d60f33",
   "verified_how": "ref+commits-agree",
-  "checked_utc": "2026-10-16T07:25:58Z"
+  "checked_utc": "2026-10-16T07:35:59Z"
  },
  "venue": {
   "live": 2641,
@@ -15,41 +15,41 @@
   ]
  },
  "waves": {
-  "active": null,
+  "active": 226,
   "active_seats": [
-   "Naya Electrician",
-   "Naya Captain",
-   "Naya Mechanic"
+   "Naya Host",
+   "Naya Archivist",
+   "Naya Keeper"
   ],
   "last_completed": 225,
   "last_completed_at": "2026-10-16T07:22Z",
-  "rotation_cursor": "wave-199: Naya Host/Naya Archivist/Naya Keeper (roster order)"
+  "rotation_cursor": "wave-227: Naya Compounder/Naya Librarian/Naya Bridger (roster order)"
  },
  "lanes": {
   "free": [
    "ACT",
    "BUILD",
-   "GOVERN",
+   "INFRA",
    "KNOW",
    "LAW",
    "LEARN",
-   "MEMORY",
-   "PRODUCT",
-   "PROVE"
+   "PROVE",
+   "TEAM",
+   "WIRE"
   ],
   "held": [],
   "active": [
    {
-    "lane": "INFRA",
-    "since": "2026-10-16T07:10Z"
+    "lane": "GOVERN",
+    "since": "2026-10-16T07:27Z"
    },
    {
-    "lane": "TEAM",
-    "since": "2026-10-16T07:10Z"
+    "lane": "MEMORY",
+    "since": "2026-10-16T07:27Z"
    },
    {
-    "lane": "WIRE",
-    "since": "2026-10-16T07:10Z"
+    "lane": "PRODUCT",
+    "since": "2026-10-16T07:27Z"
    }
   ]
  },
