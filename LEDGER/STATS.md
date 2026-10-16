@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-16 12:33 UTC_
+_Last updated: 2026-10-16 13:02 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 2841
-- ✅ Verified (8+): 2823
+- **Total scored actions:** 2881
+- ✅ Verified (8+): 2863
 - 🟡 Partial (5–7): 17
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 1
@@ -16,17 +16,17 @@ _Last updated: 2026-10-16 12:33 UTC_
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
 | Team 1 | Naya Verity | 256 | 9.1 | 9.6 |
-| Team 2 | Naya Sage | 260 | 8.9 | 9.5 |
-| Team 3 | Naya Judge | 182 | 8.9 | 9.5 |
+| Team 2 | Naya Sage | 261 | 8.9 | 9.5 |
+| Team 3 | Naya Judge | 183 | 8.9 | 9.5 |
 | Team 4 | Naya Mason | 234 | 9.0 | 9.6 |
-| Team 5 | Naya Seeker | 209 | 9.0 | 9.5 |
+| Team 5 | Naya Seeker | 210 | 9.0 | 9.5 |
 | Team 6 | Naya Heir | 177 | 9.0 | 9.6 |
-| Team 7 | Naya Conductor | 243 | 8.9 | 9.5 |
+| Team 7 | Naya Conductor | 246 | 8.9 | 9.5 |
 | Team 8 | Naya Sentinel | 213 | 9.0 | 9.5 |
 | Team 9 | Naya Smith | 268 | 9.0 | 9.5 |
 | Team 10 | Naya Librarian | 283 | 9.0 | 9.5 |
 | Team 11 | Naya Heart | 178 | 9.0 | 9.5 |
-| Team 12 | Naya Herald | 126 | 9.1 | 9.5 |
+| Team 12 | Naya Herald | 132 | 9.1 | 9.5 |
 
 ## Learning velocity
 
@@ -115,6 +115,8 @@ _Last updated: 2026-10-16 12:33 UTC_
 - **lane-scorer-20261016-0510:** 4 actions, avg 9.4/10
 - **lane-scorer-20261016-0520:** 2 actions, avg 9.5/10
 - **lane-scorer-20261016-0530:** 7 actions, avg 9.1/10
+- **lane-scorer-20261016-0540:** 36 actions, avg 9.2/10
+- **lane-scorer-20261016-0600:** 3 actions, avg 9.5/10
 - **scorer-20261014-1820:** 2 actions, avg 9.2/10
 - **scorer-20261014-1935:** 5 actions, avg 9.3/10
 - **scorer-20261014-1940:** 3 actions, avg 8.2/10
@@ -301,6 +303,7 @@ _Last updated: 2026-10-16 12:33 UTC_
 - **gap-gap-t-distill-chain:** 1 actions, avg 9.0/10
 - **gap-gap-gap-t-distill-chain:** 1 actions, avg 9.5/10
 - **gap-lane-scorer-20261015-2310-lane5:** 1 actions, avg 9.0/10
+- **lane-scorer-20261016-0550:** 1 actions, avg 9.0/10
 - **gap-t0770:** 1 actions, avg 9.5/10
 - **t-contract-selfreview:** 8 actions, avg 8.6/10
 - **t-contract-verify:** 9 actions, avg 8.8/10
