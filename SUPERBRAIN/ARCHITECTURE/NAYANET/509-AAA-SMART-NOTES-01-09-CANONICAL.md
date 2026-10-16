@@ -24,7 +24,7 @@ NAYAPOWER = layered-intelligence runtime. Ingest: raw inputs (notes, feeds, memo
 A power system compounds: every lesson you teach it becomes behavior within the hour, not advice filed away. Naya Power's Smart Notes turn observations into standing machinery — each note you capture makes the next answer sharper.
 
 ### WHAT IT MEANS
-Intelligence that only informs is half the job. Naya Power closes the loop: understand → decide → act → verify. The feed you are reading right now is itself the proof — these notes arrived here over a live data wire, fetched fresh from the source, not pasted in.
+Intelligence that only informs is half the job. Naya Power closes the loop: understand → decide → act → verify. These nine notes are the canonical source the Smart Feed is designed to pull — one file, one path, every section in place. The feed code that fetches them is still being built; when it lands and is proven, this loop closes for real. Proof before claims — that is the Naya way.
 
 ### WHAT'S IN IT FOR YOU
 You stop drowning in tabs, threads, and half-read documents. One hub, one feed, one clear page a day — and when you need the full picture, every layer is one click down, not a search away.
@@ -206,31 +206,31 @@ Every list you keep stays effortlessly current. Organize once, find everything b
 ## SMART NOTE 08 — Intelligent Feed / Smart Feed
 
 ### IN A NUTSHELL
-The Smart Feed is the hub's front room and its live proof: intelligence fetched fresh from its source over a live data wire, rendered in layers — the room you're reading right now.
+The Smart Feed is the hub's front room: intelligence fetched fresh from its canonical source, rendered in layers. This file is that canonical source — nine notes, one path, ready for the feed to pull. The feed code that fetches it is still being built; the sender is ready, the receiver is next.
 
 ### HUMAN
-This page is the product working. Every note you see here was fetched live from its canonical source — not pasted in, not hardcoded. If the wire ever fails, the room degrades gracefully to its last good content rather than going blank. Fresh when it can be, honest always.
+This page describes the product working. The design: every note the feed shows is fetched live from its canonical source — not pasted in, not hardcoded. If the wire ever fails, the room degrades gracefully to its last good content rather than going blank. Fresh when it can be, honest always. Right now the source file is real and the fetching code is still being built — so this page describes the promise, not the proof.
 
 ### CHILD
-This page is like a window, not a poster. A poster shows the same picture forever; a window shows what's really happening outside, right now. If the window gets stuck, you still see the last thing outside — never an empty frame.
+Think of the Smart Feed as a window, not a poster. A poster shows the same picture forever; a window shows what's really outside, right now. This file is the view outside the window — real notes, kept in one canonical place so every window shows the same view. The window itself (the code that fetches and shows them) is still being built. And when windows get stuck, they should still show the last thing outside — never an empty frame.
 
 ### GRANDMA
-You're looking at the real thing, dear — these words traveled here live from their home on the internet, fresh as this morning. And if the connection ever hiccups, the page shows you the last good version and tells you so, instead of pretending.
+You're looking at the real notes, dear — these words live in one canonical file, the single home the feed will fetch them from. The fetching isn't wired up yet, and this page won't pretend otherwise. When it is, if the connection ever hiccups, the page will show you the last good version and tell you so, instead of pretending.
 
 ### NAYA
-Welcome to my front room. This feed is my promise made visible: live bytes or it didn't happen. Every note here arrived over a real data wire, parsed and validated by the room itself. When you read me here, you're reading the source — not a copy of a copy.
+Welcome to my front room. This feed is my promise made visible: live bytes or it didn't happen — and I will not claim live bytes until the wire is proven. These nine notes are the canonical source, kept in one file at one path, ready to be fetched. When you read them here, you're reading the source — not a copy of a copy. The fetching code is the next thing to build, and I will prove it when it lands.
 
 ### MACHINE
-ROOM: SMART FEED. Transport: fetch(SOURCE, {cache:'no-store'}) → parseNotes() → validate (exactly 9 notes; every note carries every SECTION_ALIASES key) → render; on !r.ok or validation failure, throw → fallback to embedded canonical snapshot + localStorage 'naya509CanonicalTopNine'. SOURCE: https://raw.githubusercontent.com/SoulSchoolAcademy/NayaPOWER/main/SUPERBRAIN/ARCHITECTURE/NAYANET/509-AAA-SMART-NOTES-01-09-CANONICAL.md. Parser contract: split on ^## SMART NOTE \d+ — (U+2014) lines; sections on ^### headings; keys normalized (strip \r, collapse [ \t]+, lowercase).
+ROOM: SMART FEED — receiver not yet implemented (design spec below). Intended transport: fetch(SOURCE, {cache:'no-store'}) → parse → validate (exactly 9 notes; every note carries all 9 section keys) → render; on fetch/validation failure, fall back to embedded snapshot. SOURCE (sender — this file, proven): https://raw.githubusercontent.com/SoulSchoolAcademy/NayaPOWER/main/SUPERBRAIN/ARCHITECTURE/NAYANET/509-AAA-SMART-NOTES-01-09-CANONICAL.md. Parser contract (for the receiver to implement and prove): split on ^## SMART NOTE \d+ — (U+2014) lines; sections on ^### headings; keys normalized (strip \r, collapse [ \t]+, lowercase). Status 2026-10-16: sender proven (9/9 notes × 9/9 sections); receiver unproven — no feed fetch/parse code exists in the repo.
 
 ### LEARNING
-A live wire is a learning loop: the moment the source improves, every reader sees it. The feed teaches the system that freshness is a feature — and the fallback teaches that reliability outranks freshness when the two conflict.
+A live wire will be a learning loop: the moment the source improves, every reader sees it. The feed's design teaches the system that freshness is a feature — and the planned fallback teaches that reliability outranks freshness when the two conflict. The deeper lesson this file now carries: never claim the wire is live before it is. A sender with no proven receiver is a promise, not a proof.
 
 ### WHAT IT MEANS
-A demo that can't fail is a demo that can't prove anything. The Smart Feed proves the sender→receiver path end to end: one real file, one live fetch, one validator, nine notes rendered. Everything else in the hub follows this pattern.
+A demo that can't fail is a demo that can't prove anything. The Smart Feed is designed to prove the sender→receiver path end to end: one real file, one live fetch, one validator, nine notes rendered. Today the sender is proven — one real file, nine notes, every section present. The live fetch and the validator are still to come. Everything else in the hub should follow this pattern: prove each half, then prove the wire.
 
 ### WHAT'S IN IT FOR YOU
-You read the truth, fresh — the same bytes everyone else reads, with a fallback that never leaves you staring at a blank page. When intelligence matters, provenance matters; this room shows you both.
+You read the truth from one canonical place — the same bytes everyone will read once the feed is wired, with a planned fallback that never leaves you staring at a blank page. When intelligence matters, provenance matters; this room is designed to show you both. Today: the source is real and versioned. The live fetch is next.
 
 ## SMART NOTE 09 — Smart Tabs
 
