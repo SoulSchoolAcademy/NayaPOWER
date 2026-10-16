@@ -137,9 +137,11 @@ def emit_today():
 
 def emit_lists():
     # Top-20 blocks by recency -> one list per content topic.
+    # D4 doctrine: owner_scope=PRIVATE rows never enter public emitter output.
     blocks = q(
         "SELECT intelligent_block_id, title, content->>'topic' AS topic, updated_at "
-        "FROM nayanet_intelligent_blocks ORDER BY updated_at DESC NULLS LAST LIMIT 20"
+        "FROM nayanet_intelligent_blocks WHERE owner_scope != 'PRIVATE' "
+        "ORDER BY updated_at DESC NULLS LAST LIMIT 20"
     )
     by_topic = {}
     for b in blocks:
