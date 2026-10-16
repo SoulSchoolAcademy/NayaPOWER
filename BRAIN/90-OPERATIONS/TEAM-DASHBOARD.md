@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-16 15:16 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-16 17:41 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 595 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 599 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -79,21 +79,21 @@
 - [#2357](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2357) T-06: Neutrality trap — six-state finding classification (stacked on T
 - …and 3 more
 
-### PROVE (29)
+### PROVE (30)
+- [#2706](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2706) [HV-GOAL1] Human-value acceptance battery for GOAL #1 (candidate regis
 - [#2699](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2699) feat(verify): manual-29 STEP-0 insertion — seal reissue_policy / who-m
 - [#2694](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2694) fix(gate): consensus scorecard leg enforces the merge law's 9.5 bar 📝draft
 - [#2590](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2590) One NayaPOWER operating manual: AAA three-pass scorecards, roles, auth 📝draft
 - [#2585](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2585) Add automatic scorecard calculator (tools/scorecard.py + tests)
-- [#2543](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2543) [NAYA NARZAN] Cold-retrieve: red-first relevance-floor calibration bat
-- …and 24 more
+- …and 25 more
 
-### BUILD (224)
+### BUILD (227)
+- [#2708](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2708) Design Laws v1 (DRAFT): three-tongue repo placement 📝draft
+- [#2707](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2707) DESIGN: curated smart-block library — one language, best-of-best
+- [#2705](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2705) Design System v1 — the Naya Lego box (100 laws, tokens, catalog, organ 📝draft
 - [#2703](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2703) Harden TIP-NOTE marker to line-anchored heading regex + regression tes
 - [#2691](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2691) [DRAFT] PUMP phase 1: schedule plumbing for agent capture (review only 📝draft
-- [#2688](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2688) HIVE mother-brain navigation — two-speed repo orientation (machine + h
-- [#2687](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2687) Living Map compiler v1 — the map becomes a measurement
-- [#2686](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2686) System Schematics — the staple doc (peer-reviewed)
-- …and 219 more
+- …and 222 more
 
 ### WIRE (123)
 - [#2704](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2704) fix(gate): consensus gate skips issue_comment events without a verdict

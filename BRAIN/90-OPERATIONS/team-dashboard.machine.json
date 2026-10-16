@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-16T15:16:46+00:00",
+ "generated_utc": "2026-10-16T17:41:29+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -279,6 +279,12 @@
    "board_lane": "#2175 lane PROVE",
    "open_prs": [
     {
+     "number": 2706,
+     "title": "[HV-GOAL1] Human-value acceptance battery for GOAL #1 (candidate registration \u2014 NOT merge-",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2706",
+     "draft": false
+    },
+    {
      "number": 2699,
      "title": "feat(verify): manual-29 STEP-0 insertion \u2014 seal reissue_policy / who-may-amend",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2699",
@@ -319,15 +325,9 @@
      "title": "fix(verify): resolve python interpreter at runtime in guard_liveness.test.mjs",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2392",
      "draft": true
-    },
-    {
-     "number": 2374,
-     "title": "test(t21): operating-essence acceptance battery \u2014 moral value before numerical optimizatio",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2374",
-     "draft": false
     }
    ],
-   "open_pr_count": 29
+   "open_pr_count": 30
   },
   {
    "id": "build",
@@ -347,6 +347,24 @@
    "active_now": true,
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
+    {
+     "number": 2708,
+     "title": "Design Laws v1 (DRAFT): three-tongue repo placement",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2708",
+     "draft": true
+    },
+    {
+     "number": 2707,
+     "title": "DESIGN: curated smart-block library \u2014 one language, best-of-best",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2707",
+     "draft": false
+    },
+    {
+     "number": 2705,
+     "title": "Design System v1 \u2014 the Naya Lego box (100 laws, tokens, catalog, organized library)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2705",
+     "draft": true
+    },
     {
      "number": 2703,
      "title": "Harden TIP-NOTE marker to line-anchored heading regex + regression tests",
@@ -376,27 +394,9 @@
      "title": "System Schematics \u2014 the staple doc (peer-reviewed)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2686",
      "draft": false
-    },
-    {
-     "number": 2684,
-     "title": "[Naya 5] The canonical complete-puzzle system map",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2684",
-     "draft": false
-    },
-    {
-     "number": 2677,
-     "title": "RETRIEVAL: version tools/spawn_brief.py incl. w255 tier-2 REVIEW guard (IV 8.5/10 \u2014 dock h",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2677",
-     "draft": false
-    },
-    {
-     "number": 2650,
-     "title": "[TRUTH] Site verdicts must not contradict violation status (CV-04/CV-05 stale LIES)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2650",
-     "draft": false
     }
    ],
-   "open_pr_count": 224
+   "open_pr_count": 227
   },
   {
    "id": "wire",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 595,
- "unassigned_prs": 224
+ "open_pr_total": 599,
+ "unassigned_prs": 227
 }
