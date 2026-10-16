@@ -31,6 +31,14 @@ jobs:
           # `unknown` (loud) without an authenticated key rather than fake green.
         run: python3 tools/map-compiler/map_compiler.py --out HUB/MAP-STATE.json
 
+      - name: Validate state against schema (fail-closed)
+        # The state file is a measurement other systems render. An invalid
+        # file must never be committed — fail the run here, loudly.
+        run: |
+          python3 -m pip install --quiet --break-system-packages jsonschema
+          python3 -m jsonschema -i HUB/MAP-STATE.json tools/map-compiler/MAP-STATE.schema.json
+          echo "state file valid against MAP-STATE.schema.json"
+
       - name: Commit state file (only write this workflow performs)
         run: |
           git config user.name "living-map-compiler"

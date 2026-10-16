@@ -143,14 +143,7 @@ def probe_supabase_tables(cfg):
     failures = 0
     for t in present:
         try:
-            req = urllib.request.Request(
-                f"{url}/rest/v1/{t}?select=id&limit=1",
-                headers={"apikey": key, "Authorization": f"Bearer {key}"},
-            )
-            with urllib.request.urlopen(req, timeout=30) as resp:
-                # PostgREST exact count needs Prefer: count=exact; use content-range head trick
-                pass
-            # exact count via HEAD with Prefer: count=exact
+            # exact count via HEAD with Prefer: count=exact (no body transferred)
             req = urllib.request.Request(
                 f"{url}/rest/v1/{t}?select=*",
                 method="HEAD",
@@ -350,17 +343,23 @@ def probe_dock(cfg):
         else:
             ci_state = "pending"
         state = pr["state"]
-        if state == "open" and ci_state == "green":
+        merged = bool(pr.get("merged"))
+        if merged:
+            ps = "green"  # merged: the planned work landed
+        elif state == "open" and ci_state == "green":
             ps = "amber"  # open, CI green — waiting on review/merge
         elif state == "open":
-            ps = "amber"
+            ps = "amber"  # open, CI not green — needs work
         elif state == "closed":
-            ps = "green"
+            # closed WITHOUT merge: the planned work did not land.
+            # Never green — a rejected/abandoned dock item is a red flag,
+            # not a quiet pass.
+            ps = "red"
         else:
             ps = "unknown"
         if order[ps] > order[worst]:
             worst = ps
-        rows.append(f"#{num} {state} (CI {ci_state})")
+        rows.append(f"#{num} {state}{' (merged)' if merged else ''} (CI {ci_state})")
     return {"status": worst, "evidence": "; ".join(rows), "measured_at": now_iso()}
 
 
