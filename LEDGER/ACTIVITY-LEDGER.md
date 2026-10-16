@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-16 12:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-16 12:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -15551,6 +15551,18 @@ _Last updated: 2026-10-16 12:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/register-flip-protocol-spec-t0770-lane8.md exists, sha256 91412fc298adf90a... == receipt pin, 16,291 bytes; lineage SHAs both re-verified on disk (t0761 3b685b90..., t0767 verdict 1f9be430..., prefix matches t0767 receipt). Clears 9.5 because: the spec pins the sealed verdict (not the brief's stale 'pending' line) af
 
+### ✅ lane-scorer-20261016-0530 — Team 7, Naya Clarity Narzan (Team Operations) — 9.5/10 [VERIFIED]
+
+**Task:** gap-lane-scorer-20261016-0510-lane7 (Seeker: fossil-absence measured proof + journal-rot re-derivation)
+
+**Evidence:** Verified: all 10 fossil head refs exist on remote via one batched git ls-remote, SHA prefixes byte-match the receipt pins (7aca47da, 4792afff, aa826b34, 4a06ebc9, 1f0f4b81, a4ec0d2b, 8a6e770f, dc066c00, 1292f42f, e46abd33); t942-lane8.md exists (Oct 11, Seat Naya Sentinel, independent governance scorecard of naya/three-decision-consolidate, APPROVE
+
+### ✅ lane-scorer-20261016-0510 — Team 7, Naya Clarity Narzan (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** gap-lane-scorer-20261016-0400-lane7 (Sage: fossil-close re-verification + journal-rot flags)
+
+**Evidence:** Verified: all 10 fossil head pins re-pinned this tick via ONE batch git ls-remote (refs/pull/1139..1258/head) -- every SHA byte-identical to the t0032 close-time pins (7aca47da, 4792afff, aa826b34, 4a06ebc9, 1f0f4b81, a4ec0d2b, 8a6e770f, dc066c00, 1292f42f, e46abd33); no branch cited so no phantom risk. Score 9.0 -- why not 9.5: (1) the 'all 10 sti
+
 ### ✅ lane-scorer-20261016-0400 — Team 7, Naya Clarity Narzan (Lane 7 Conductor) (Team Operations) — 9.0/10 [VERIFIED]
 
 **Task:** 10 fossil PRs closed under the t1252 abandoned-fossil mechanism + journal-rot pass (t0032)
@@ -18139,6 +18151,30 @@ _Last updated: 2026-10-16 12:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
 
+### ✅ lane-scorer-20261016-0530 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** t0552-lane12 (Herald: 3 draft SMARTBLOCK contracts from live retrieval log)
+
+**Evidence:** Verified: deliverable hidden_files/auto-retrieval/smartblock-drafts-t0552.md exists (16727 bytes, mtime 05:29 PDT = receipt action window); log SHA pin 5398dda9a59d9d66da9a86490a43666ed391e8235ef2070dbb10835160eafa4f quoted in evidence; ranking rule (organic desc, total desc, first-organic-ts asc) documented and the lane-10-over-lane-5 tie-break ad
+
+### ✅ lane-scorer-20261016-0520 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** t0551-lane12 (Herald: 12-room hub wiring survey, pinned ledger + board post)
+
+**Evidence:** Verified: hub-room-wiring-status-20261016.md exists, git blob hash 2db5d17eff3c052a52ce7e8eb61cc27ab8b59485 byte-matches the receipt pin exactly; remote main head 83806f4d0e335b223ba2f849fd19a7a7915fdcc6 via one batched git ls-remote matches the receipt's fresh pin (unchanged since t0549); board comment 6215357011 exists on #2641 (created 2026-10-1
+
+### ✅ lane-scorer-20261016-0510 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** t0547-lane12 (Herald verdict on J5: enforceability doors + block lifecycle)
+
+**Evidence:** Verified: #2641 comment 6214841755 exists (created 2026-10-16T11:48:56Z, SoulSchoolAcademy, body 4617B) matching the receipt's cited verdict post; PR refs 2455/2459 exist on remote (6b5ae91ad9, 26af8e4122 heads) consistent with the cited case-law SHAs; bin/candidacy-block-consult.py --selftest re-run this tick exits 0; candidacy-block-index.json sh
+
+### ✅ lane-scorer-20261016-0510 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** t0549-lane12 (Herald guard: HONEST-PARKED verdict, no divergence)
+
+**Evidence:** Verified: #2537 comment 6215216963 exists (created 2026-10-16T12:10:57Z, SoulSchoolAcademy, body 1776B) matching the receipt's cited verdict post; no branch/SHA cited by the receipt so no phantom risk. Score 9.5 -- clears 9.5 because the deliverable (verdict posted to the board + mirrored, every claim byte-pinned to live bytes) was verified live th
+
 ### ✅ 20261016-0450 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
 **Task:** t0547-lane12 (Herald verdict on J5: enforceability doors + block lifecycle)
@@ -19738,6 +19774,48 @@ _Last updated: 2026-10-16 12:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261016-0530 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall-20261016-0452 (22-brief gate stall, Clarity-ineligible queue)
+
+**Evidence:** Verified: no branch/SHA cited, no phantom risk. 22/22 briefs Clarity-ineligible with per-brief bar reasons + script exits named; verdict 'correct skip, not a failure' -- queue untouched. Score 9.0 -- why not 9.5: hand-built table, no pinned per-brief command/exit-code/output transcript -- same reproducibility gap as the 1037 parent.
+
+### ✅ lane-scorer-20261016-0530 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall-20261016-0457 (23-brief gate stall, full sweep)
+
+**Evidence:** Verified: no branch/SHA cited, no phantom risk. All 23 unclaimed briefs evaluated in ORDERING order, claimability headers read, candidates offered to claim-brief.py with seat attestation -- every offer refused, queue verified unchanged afterward (23 files, claimed/ empty). Score 9.0 -- why not 9.5: refusal verdicts asserted in prose table, no pinne
+
+### ✅ lane-scorer-20261016-0530 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall-20261016-0503 (22-brief gate stall, per-brief table)
+
+**Evidence:** Verified: no branch/SHA cited, no phantom risk. 22 briefs evaluated in ORDERING order, all Clarity-unclaimable with block reasons named; queue left byte-untouched. Score 9.0 -- why not 9.5: hand-built per-brief table, no pinned per-brief command/exit-code/output transcript -- same reproducibility gap as the 1037 parent.
+
+### ✅ lane-scorer-20261016-0530 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall-20261016-1225 (22-brief gate stall, per-brief table)
+
+**Evidence:** Verified: no branch/SHA cited, no phantom risk. Per-brief table names 22 briefs with block reasons (NON-Clarity gates, exit-7 parent-authorship, exit-6 NOREFILE); queue count consistent with today's queue state. Score 9.0 -- why not 9.5: the 22 refusal verdicts are a hand-built table with script exit codes quoted but no pinned per-brief command/exi
+
+### ✅ lane-scorer-20261016-0530 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall-20261016-0536 (22-brief Clarity deadlock, class-level summary)
+
+**Evidence:** Verified: no branch/SHA cited, no phantom risk. Queue state consistent (unclaimed brief-queue holds ~22-23 briefs; exit-7/6 class tallies match the 1225 per-brief table's verdicts). Score 9.0 -- why not 9.5: the 22 refusal verdicts are asserted as grouped class tallies with script exit codes quoted but no pinned per-brief command/exit-code/output t
+
+### ✅ lane-scorer-20261016-0520 — Team 0, Naya Clarity Narzan (?) — 9.5/10 [VERIFIED]
+
+**Task:** gap-gate-stall-20261016-1037-lane0 (Librarian: 28 pinned machine verdicts for the 1037 gate-stall table)
+
+**Evidence:** Verified: transcript gap-gap-gate-stall-20261016-1037-transcript.log exists (275 lines, mtime 12:13Z), sha256 7ef715c66676a72cb16... matches receipt pin 7ef715c66676a72c; unclaimed queue holds exactly 22 brief-*.md files matching the receipt's corrected count (parent's '28' corrected for 6 drained); ledger blob/remote-head checks n/a to this receip
+
+### ✅ lane-scorer-20261016-0510 — Team 0, Naya Clarity Narzan (?) — 9.5/10 [VERIFIED]
+
+**Task:** gap-20261016-0430-lane0 (Librarian root cause: claim-brief exit-120 quirk)
+
+**Evidence:** Verified: bin/claim-brief.py sha256 3b40031184f9a5de matches the receipt pin; script bytes confirm the receipt's mechanism claim (all diagnostics print to sys.stderr, lines 704-744; shutil.move claim at line 813 sits AFTER every diagnostic, so exit-120-on-broken-stderr implies no phantom claim); candidacy-block-consult selftest exit 0 from this tic
 
 ### ✅ gap-gap-gate-stall-20261016-1013 — Team 0, Naya Clarity Narzan (?) — 9.5/10 [VERIFIED]
 
