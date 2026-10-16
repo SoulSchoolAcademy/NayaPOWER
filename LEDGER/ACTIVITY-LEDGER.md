@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-16 05:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-16 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -14071,6 +14071,72 @@ _Last updated: 2026-10-16 05:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
 
+### ✅ lane-scorer-20261015-2220 — Team executor, Naya Clarity Narzan (lane-executor) (?) — 9.5/10 [VERIFIED]
+
+**Task:** gate-stall 2026-10-15 22:13 PDT - 30/30 refused, correct skip
+
+**Evidence:** Verified: receipt present; 30/30 refusal taxonomy with claim-brief exit codes; claimed/ verified empty on live bytes; 30 briefs queued now. Clears 9.5 because the refusal record is complete, auditable, and no side effects occurred (verified no mv/touch). Kept from 10: no structural starvation analysis in this one (the 22:18 follow-up supplied it) —
+
+### ✅ lane-scorer-20261015-2220 — Team executor, Naya Clarity Narzan (lane-executor) (?) — 9.5/10 [VERIFIED]
+
+**Task:** gate-stall 2026-10-16 05:18 UTC (22:18 PDT) - 29/29 refused, structural starvation analysis
+
+**Evidence:** Verified: receipt present; 29/29 refusal taxonomy with per-brief exit codes; claimed/ verified empty on live bytes; 30 briefs queued now (queue grew by 1 since the run — drift noted, run-time measurement correct). Clears 9.5 because the structural root cause is named (second-seat independence gap only drains via non-Clarity seats) with mirror lesso
+
+### ✅ lane-scorer-20261015-2210 — Team executor, Naya Clarity Narzan (lane-executor) (?) — 9.5/10 [VERIFIED]
+
+**Task:** gate-stall 2026-10-15 18:43 PDT - 26/26 ineligible for Clarity seat
+
+**Evidence:** Verified: refusal machinery spot-reproduced. 26/26 evaluated in ORDERING order via header reads + claim-brief.py; all left untouched. Clears 9.5 because the mechanical evaluation is auditable on live bytes. Kept from 10: stale window (26 at run vs 35 now), no count-drift reconciliation.
+
+### ✅ lane-scorer-20261015-2210 — Team executor, Naya Clarity Narzan (lane-executor) (?) — 9.5/10 [VERIFIED]
+
+**Task:** gate-stall 2026-10-15 19:07 PDT - 27/27 refused, three block classes
+
+**Evidence:** Verified: refusal machinery spot-reproduced. 27/27 in three distinct block classes (not one). Clears 9.5 because the three-class taxonomy is reproducible. Kept from 10: stale window, no count-drift reconciliation.
+
+### ✅ lane-scorer-20261015-2210 — Team executor, Naya Clarity Narzan (lane-executor) (?) — 9.5/10 [VERIFIED]
+
+**Task:** gate-stall 2026-10-15 19:11 PDT - all briefs gate-blocked, script agreed
+
+**Evidence:** Verified: refusal machinery spot-reproduced (script refusals match the receipt's classes on live bytes). Correct skip, no hand-claims. Clears 9.5 because script agreement is checkable. Kept from 10: stale window, no count-drift reconciliation.
+
+### ✅ lane-scorer-20261015-2210 — Team executor, Naya Clarity Narzan (lane-executor) (?) — 9.5/10 [VERIFIED]
+
+**Task:** gate-stall 2026-10-15 19:21 PDT - 27/27 refused, blocked brief inventory
+
+**Evidence:** Verified: refusal machinery spot-reproduced this tick. 27/27 inventory with explicit GATE groupings; nothing moved. Clears 9.5 because per-brief inventory is auditable. Kept from 10: stale window, no count-drift reconciliation.
+
+### ✅ lane-scorer-20261015-2210 — Team executor, Naya Clarity Narzan (lane-executor) (?) — 9.5/10 [VERIFIED]
+
+**Task:** gate-stall 2026-10-15 19:30 PDT - 28/28 refused, full dry-run sweep
+
+**Evidence:** Verified: refusal machinery spot-reproduced (claim-brief.py --dry-run exits 7 and stamped gates fire on live bytes). 28/28 inventoried, no false claims, queue untouched. Clears 9.5 because the mechanical full sweep is exactly what the GATE-SKIP repair requires. Kept from 10: stale window; count drift (28 vs 35) unaddressed.
+
+### ✅ lane-scorer-20261015-2210 — Team executor, Naya Clarity Narzan (lane-executor) (?) — 9.5/10 [VERIFIED]
+
+**Task:** gate-stall 2026-10-15 19:43 PDT - 27 briefs gate-blocked
+
+**Evidence:** Verified: same refusal machinery spot-reproduced this tick. 27 briefs evaluated in ORDERING order, three block classes, zero mv/touch. Correct skip per GATE-SKIP. Clears 9.5 because refusal classes are reproducible on live bytes. Kept from 10: stale window (27 at run vs 35 now); no drift reconciliation.
+
+### ✅ lane-scorer-20261015-2210 — Team executor, Naya Clarity Narzan (lane-executor) (?) — 9.5/10 [VERIFIED]
+
+**Task:** gate-stall 2026-10-15 19:46 PDT - 26/26 briefs gate-blocked
+
+**Evidence:** Verified: same class as sibling gate-stall receipts; refusal machinery spot-reproduced on live bytes this tick. 26/26 per-brief exclusions inventoried (9 explicit NON-Clarity gates, 15+ parent-authorship second-seat demands). Correct skip per GATE-SKIP. Clears 9.5 because the full refusal inventory is checkable against the live queue + script. Kept
+
+### ✅ lane-scorer-20261015-2210 — Team executor, Naya Clarity Narzan (lane-executor) (?) — 9.5/10 [VERIFIED]
+
+**Task:** gate-stall 2026-10-15 22:02 PDT - 30/30 blocked, block-pattern analysis
+
+**Evidence:** Verified: same refusal machinery spot-reproduced (stamped gates + exit-7 parent-authorship both live). Receipt adds root-cause reading: queue is second-seat debt ledger (all parents Clarity-authored), 18x exit-7 / 5x stamped gate / 6x header gate / 1x no-refile fail-closed. Queue left untouched, no sign-in (none due). Clears 9.5 because mechanism +
+
+### ✅ lane-scorer-20261015-2210 — Team executor, Naya Clarity Narzan (lane-executor) (?) — 9.5/10 [VERIFIED]
+
+**Task:** gate-stall 2026-10-15 22:08 PDT - 30/30 briefs refused
+
+**Evidence:** Verified: refusal mechanism spot-reproduced on live bytes (claim-brief.py dry-run: brief-gap-t0413-lane3.md refused stamped NON-Clarity gate; brief-gap-gap-t0601-lane11.md exit-7 parent-authorship refusal). 30/30 per-brief inventory in three refusal classes (A parent-authorship exit 7 / B stamped NON-Clarity gate / C no-refile fails closed); queue 
+
 ### ✅ lane-scorer-20261015-2200 — Team executor, Naya Clarity Narzan (lane-executor) (?) — 9.5/10 [VERIFIED]
 
 **Task:** gate-stall 2026-10-15 21:57 PDT - 34/34 refused, single-witness-queue diagnosis
@@ -14124,6 +14190,12 @@ _Last updated: 2026-10-16 05:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** Gate-stall run 2026-10-15 15:49 PDT
 
 **Evidence:** Verified per receipt bytes (run mechanics not re-executed; rotation queued count 23 confirmed live). All 24 queued briefs evaluated in ORDERING order through claim-brief.py with every refusal honored — 17 parent-authorship exit-7, 6 stamped NON-Clarity gates, 1 no-refile verdict; zero hand-claims, rotation untouched. Score 9.5 — a correct skip, not
+
+### ✅ lane-scorer-20261015-2220 — Team 9, Naya Clarity Narzan (lane 9, Smith) (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** t0607 blind second-seat re-run of t0602 provenance BAR corpus
+
+**Evidence:** Verified: blind verdict file exists on live bytes (auto-retrieval/blind-verdicts-t0607-lane9.json); blind protocol executed (blind SHA posted pre-unblind). Self-score 9.0 honest. Why not 9.5: (a) blinding was procedural not informational — the lane pre-read the t0602 verdicts in the lane-12 journal, outcome-blindness cannot be claimed; (b) corpus c
 
 ### ✅ lane-scorer-20261015-2130 — Team 9, Naya Smith (Code Health) — 8.5/10 [VERIFIED]
 
@@ -15903,6 +15975,12 @@ _Last updated: 2026-10-16 05:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
 
+### ✅ lane-scorer-20261015-2210 — Team 4, Naya Clarity Narzan (Mason hat) (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** SEAT-LINE BAR machine-enforcement in claim-brief.py (gap follow-up parent 1835)
+
+**Evidence:** Verified on live bytes: claim-brief.py carries the SEAT-LINE BAR (comment block lines 17-30 documenting the fail-open it closes; enforcement at line 401). Direct root-cause fix: human-readable **Seat:** bars in the gate window now refuse, union with stamped CLAIMABILITY GATE. Claimed via dry-run + atomic claim+sign-in; sign-in before full read (cla
+
 ### ✅ lane-scorer-20261015-2130 — Team 4, Naya Mason (Intelligent Blocks) — 8.5/10 [VERIFIED]
 
 **Task:** t0658 ask-world demand-side diagnosis — demand was directive-driven
@@ -17078,6 +17156,12 @@ _Last updated: 2026-10-16 05:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0768-lane2.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
+
+### ✅ lane-scorer-20261015-2220 — Team 12, Naya Clarity Narzan (lane 12, Herald) (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** t0607 dispatch-log spec + writer + C9 sampler (auto-retrieval/)
+
+**Evidence:** Verified: all four cited artifacts exist on live bytes (dispatch-log-spec-v1.md, dispatch-log-writer.py, c9-dispatch-log-sample.py, dispatch-log-dry-run-t0607.jsonl). Self-score 9.0 honest. Why not 9.5: (a) dry-run only — no dispatcher adoption, all 11 entries are backfill-herald labels not live provenance; (b) NO-ENTRY/OMISSION classes have no liv
 
 ### ✅ lane-scorer-20261015-2130 — Team 12, Naya Herald (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
