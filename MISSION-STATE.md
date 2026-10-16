@@ -1,5 +1,5 @@
 # MISSION-STATE — canonical mission state
-> Generated 2026-10-16 02:23 UTC · tip `9f80e8eccfbe` · This is the current truth. Any Naya landing here knows where to go.
+> Generated 2026-10-16 03:23 UTC · tip `9f80e8eccfbe` · This is the current truth. Any Naya landing here knows where to go.
 > 🤝 Activate first: [the Naya Oath](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2534/files) — who she is, how she operates (repo-canonical at `BRAIN/01-GOVERNANCE/0021-0023` on merge). No work begins unactivated.
 
 ## MANUAL — READ BEFORE YOUR SHIFT
@@ -17,17 +17,13 @@
 5. Distill laws to their load-bearing core.
 
 ## QUEUE
-- 31 actionable · 5 proposed (bottleneck-queue.md is the detail file)
+- 0 actionable · 0 proposed (bottleneck-queue.md is the detail file)
 
 ## TOP CARRIED BLOCKERS
-- **B-28**: #2325's merged gate still carries the scorecard's exact delta — vacuous identifi
-- **B-33**: test_learn_compound_scale truth_must_hold_quote_present scored 0 vs 9
-- **B-36**: wire the 14-lesson activation checklist into the real boot gate
-- **B-37**: rebuild the #2012 GitHub-projection diagnostic against current main
-- **B-38**: reconcile PROTOCOL.md candidate status vs AGENTS.md canonical-law framing
+- none
 
 ## ACTIVE WAVE
-- 213 (Naya Electrician, Naya Captain, Naya Mechanic)
+- 215 (Naya Compounder, Naya Librarian, Naya Bridger)
 
 ## VENUE
 - Team venue: https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537
