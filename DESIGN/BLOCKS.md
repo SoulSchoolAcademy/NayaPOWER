@@ -65,8 +65,10 @@ Board recipe (Law 31): dark obsidian body · theme-tinted hairline edge ·
 radial wash in the cover zone only · white title · silver body · jewel kicker.
 One spectrum step per board. One accent per element. One jewel per board.
 
-Board type framing (Destination / Reading / Orbit): [VERIFY exact type names
-against the Naya_2 source before treating as canonical.]
+Board type framing (Naya_2 canonical, verified 2026-10-16): **Destination**
+(a world you enter — strongest elevation) / **Reading** (asymmetric, quieter
+spectrum — reports, dense text) / **Orbit** (circular crown — connected
+objects).
 
 ## Orbs & jewels — "Spherical. Orbital. Lit from within."
 
@@ -119,8 +121,9 @@ anatomy. Same order, every time.
 | CHART / DATA-VIZ | Honest numbers | Axes labeled, no truncated deception |
 | SMART LINK / SHARE SHEET | Send intelligence out | Destination clear · Confirm before sending |
 
-Status: specified with do/don't doctrine. Copy-paste code specimens: [VERIFY —
-confirm each block has a code specimen before treating as build-ready.]
+Status: specified with do/don't doctrine. Copy-paste code specimens: all 10
+built and verified in `BLOCKS-CODE.md` (2026-10-16) — code, states, do/don't,
+anatomy each.
 
 ## Supporting pieces
 
@@ -131,8 +134,5 @@ copy-paste code) · `.toc` pills · `.gate-bar` (spectrum launch bar).
 
 ## What is NOT here (yet)
 
-- Spacing scale tokens (`--space-*`) — ad-hoc per component today. [OPEN]
-- The ten blocks' code specimens — [VERIFY].
-- Referenced machine artifacts: `contract/naya-design-contract-v1.machine.json`,
-  `tools/design_law/design_calculator.py` — cited in sources, not present.
-  [VERIFY / OPEN]
+Nothing open. Every gap the sources named is closed; every ruling recorded
+above. New gaps go here when found — never buried.

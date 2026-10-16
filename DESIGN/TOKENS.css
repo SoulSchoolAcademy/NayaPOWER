@@ -47,6 +47,10 @@
   --lime-rgb: 184,238,87;
   --indigo: #6675ff;
   --indigo-rgb: 102,117,255;
+  --orange: #ff9a5a;            /* room accent: connections. Verified in Smart Hub source. */
+  --orange-rgb: 255,154,90;
+  --rich-orange: #ff7a3d;   /* room accent: mail. Verified in Smart Hub source. */
+  --rich-orange-rgb: 255,122,61;
 
   /* Truth states — a claim and a proof must never look the same */
   --verified: #2fe89e;
@@ -71,6 +75,43 @@
   --r-xl: 26px;
   --r-pill: 999px;
 
+  /* Spacing — 4px base. Grounded: the N5 source's padding/gap values cluster
+     on 4px multiples (8/12/16/20/24/28/32/40/44/64). Spacing is rhythm, not
+     decoration: consistent steps make unrelated pages feel like one system. */
+  --space-base: 4px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 28px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-11: 44px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  /* Semantic gaps — the three distances a page needs */
+  --gap-sm: var(--space-2);    /* 8px — inside components */
+  --gap-md: var(--space-4);    /* 16px — between components */
+  --gap-lg: var(--space-6);    /* 24px — between sections */
+  --gap-xl: var(--space-8);    /* 32px — major separations */
+
+  /* Per-room accents — one room, one spectrum color. Verified verbatim
+     against the Smart Hub applied source (2026-10-16). */
+  --accent-feed: var(--green);
+  --accent-today: var(--magenta);
+  --accent-reports: var(--indigo);
+  --accent-library: var(--blue);
+  --accent-connect: var(--teal);
+  --accent-ledger: var(--gold);
+  --accent-connections: var(--orange);
+  --accent-lists: var(--purple);
+  --accent-mail: var(--rich-orange);
+  --accent-spaces: var(--lime);
+  --accent-settings: #e8eaf2;
+
   /* Type scale — size separates, color doesn't.
      NOTE: the working scale is Law 52 (see below). These display tokens
      are for hero/chapter contexts only. */
@@ -79,6 +120,11 @@
   --type-headline: 24px;
   --type-body: 18px;
   --type-small: 14px;
+
+  /* Fonts — voice serif ruling 2026-10-16: Newsreader via Google Fonts CDN,
+     Georgia guaranteed fallback (see Law 52 note below). */
+  --font-ui: Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-voice: "Newsreader", Georgia, "Times New Roman", serif;
 }
 
 /* ============================================================================
@@ -88,6 +134,11 @@
    Titles white, body silver, detail muted slate. Serif for voice/display
    only; sans for UI/body/data. Nothing readable ever goes below 12px.
    Fonts: UI/body = Inter, ui-sans-serif, system-ui, sans-serif.
-          Voice/display = Newsreader (opsz), Georgia fallback. [VERIFY: Newsreader
-          webfont hosting — Georgia is the safe fallback until confirmed.]
+          Voice/display = Newsreader (opsz), Georgia fallback.
+   RULING (2026-10-16, DECISIONS.md): Newsreader is the voice serif, loaded
+   via Google Fonts CDN (reliable, versioned). Georgia is the guaranteed
+   fallback — in any context where webfonts are unavailable, Georgia stands
+   alone as the voice serif and the system does not degrade. Token:
+   --font-voice: "Newsreader", Georgia, "Times New Roman", serif.
+   --font-ui: Inter, ui-sans-serif, system-ui, sans-serif.
    ========================================================================== */

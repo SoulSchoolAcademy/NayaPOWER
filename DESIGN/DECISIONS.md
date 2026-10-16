@@ -42,20 +42,34 @@ variant proposal, not a new system.
 
 ## Open gaps — not hidden, not forgotten
 
-- [OPEN] **No spacing scale.** `--space-*` / `--gap-*` tokens do not exist;
-  spacing is ad-hoc per component. Needed for a true build system.
-- [VERIFY] **Ten canonical blocks' code specimens.** Specified with do/don't
-  doctrine in Naya_2; confirm each has a copy-paste code specimen before
-  treating as build-ready.
-- [OPEN] **Machine artifacts absent.** Referenced in sources but not present:
-  `contract/naya-design-contract-v1.machine.json`,
-  `tools/design_law/design_calculator.py` (the 0–100 page scorer).
-- [VERIFY] **Board type names** (Destination / Reading / Orbit) — confirm
-  exact canonical names against the Naya_2 source.
-- [VERIFY] **Per-room accent mapping** — confirm exact room→spectrum
-  assignments against the Smart Hub source before pinning.
-- [VERIFY] **Newsreader webfont hosting** — Georgia fallback stands until
-  confirmed.
+- [CLOSED 2026-10-16] **Spacing scale.** `--space-*` tokens defined on a 4px
+  base (`--space-base: 4px`, steps 1–24) + semantic `--gap-sm/md/lg/xl`.
+  Grounded: N5 source padding/gap values cluster on 4px multiples
+  (8/12/16/20/24/28/32/40/44/64). In TOKENS.css + TOKENS.md.
+- [CLOSED 2026-10-16] **Ten canonical blocks' code specimens.** All 10 built
+  in BLOCKS-CODE.md with code, states, do/don't, anatomy. Each verified by
+  execution review before landing.
+- [CLOSED 2026-10-16] **Machine artifacts.** Built from pinned sources (no
+  invented values), housed in DESIGN/ to keep the library self-contained:
+  `DESIGN/contract/naya-design-contract-v1.machine.json` (exact mirror of
+  TOKENS.css + Law 52 + ship gate + machine predicates) and
+  `DESIGN/tools/design_law/design_calculator.py` (0–100 scorer, v1 — covers
+  machine-checkable predicates only: no private colors, 12px type floor,
+  kicker word cap, 1.5px idle rims, token presence. Honest limits documented
+  in-file: it checks conformance, not beauty — the human eye still required).
+- [CLOSED 2026-10-16] **Board type names.** Confirmed verbatim in the Naya_2
+  source: **Destination / Reading / Orbit** — "destination board",
+  "reading board", "orbit board" all present. Canonical.
+- [CLOSED 2026-10-16] **Per-room accent mapping.** Pinned verbatim from the
+  Smart Hub applied source: feed=green, today=magenta, reports=indigo,
+  library=blue, connect=teal, ledger=gold, connections=orange, lists=purple,
+  mail=rich-orange, spaces=lime, settings=#e8eaf2. Added `--orange` and
+  `--rich-orange` to the extended family (source-verified values, not
+  invented). In TOKENS.css + TOKENS.md.
+- [CLOSED 2026-10-16] **Newsreader webfont hosting.** Ruling: Newsreader is
+  the voice serif via Google Fonts CDN (reliable, versioned). Georgia is the
+  guaranteed fallback — where webfonts are unavailable, Georgia stands alone
+  and the system does not degrade. Tokens `--font-ui`, `--font-voice` added.
 
 ## How rulings change
 

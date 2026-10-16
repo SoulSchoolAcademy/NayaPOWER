@@ -58,6 +58,8 @@ insight (blue) · flow (cyan) · verified (green) · value (gold).
 | `--coral` | `#ff5e6c` | Warm alert — never a glowing red. Danger stays dark and restrained. |
 | `--lime` | `#b8ee57` | Fresh highlight. |
 | `--indigo` | `#6675ff` | Deep secondary. |
+| `--orange` | `#ff9a5a` | Room accent: connections. Verified in Smart Hub source. |
+| `--rich-orange` | `#ff7a3d` | Room accent: mail. Verified in Smart Hub source. |
 
 ## Truth states — "A claim and a proof must never look the same."
 
@@ -108,15 +110,64 @@ Size separates, color doesn't. White 99% of the time.
 | Kicker | 11px, uppercase, tracked | Labels, eyebrows. |
 
 Fonts: UI/body/data = Inter (system sans fallback). Voice/display =
-Newsreader (Georgia fallback) — serif is for voice, never for UI.
-[VERIFY: Newsreader webfont hosting — Georgia is the safe fallback.]
+Newsreader via Google Fonts CDN, Georgia guaranteed fallback.
+**Ruling 2026-10-16:** Newsreader is the voice serif — Google Fonts is
+reliable, versioned hosting. Georgia stands as the guaranteed fallback: in any
+context where webfonts are unavailable, Georgia IS the voice serif and the
+system does not degrade. Serif is for voice/display only, never for UI.
+Tokens: `--font-ui`, `--font-voice`.
 
 The N5 `--type-display: 64px` / `--type-chapter: 40px` tokens are
 hero/chapter contexts only; Law 52 governs all UI text. See `DECISIONS.md`.
 
+## Spacing — 4px base. "Spacing is rhythm, not decoration."
+
+Grounded: the N5 source's padding/gap values cluster on 4px multiples
+(8/12/16/20/24/28/32/40/44/64). Consistent steps make unrelated pages feel
+like one system.
+
+| Token | Value | Use |
+|---|---|---|
+| `--space-base` | `4px` | The atom. Everything derives from it. |
+| `--space-1` | `4px` | Tightest inset. |
+| `--space-2` | `8px` | Inside components. |
+| `--space-3` | `12px` | Component padding. |
+| `--space-4` | `16px` | Between components. |
+| `--space-5` | `20px` | Card padding. |
+| `--space-6` | `24px` | Between sections. |
+| `--space-7` | `28px` | Generous component padding. |
+| `--space-8` | `32px` | Major separations. |
+| `--space-10` | `40px` | Section rhythm. |
+| `--space-11` | `44px` | Hero-adjacent. |
+| `--space-16` | `64px` | Page-level breathing room. |
+| `--space-20` | `80px` | — |
+| `--space-24` | `96px` | Maximum. Rarely needed. |
+
+Semantic aliases — the three distances a page needs:
+
+| Token | Value | Use |
+|---|---|---|
+| `--gap-sm` | `8px` | Inside components. |
+| `--gap-md` | `16px` | Between components. |
+| `--gap-lg` | `24px` | Between sections. |
+| `--gap-xl` | `32px` | Major separations. |
+
 ## Room accents
 
 One room, one spectrum color. A board's spine, kicker, and jewel agree on a
-single accent — never two. (Applied reference: the Smart Hub page assigns one
-spectrum accent per room.) Exact per-room assignments: [VERIFY against the
-Smart Hub source before pinning — do not invent the mapping here.]
+single accent — never two. **Pinned 2026-10-16, verified verbatim against the
+Smart Hub applied source**:
+
+| Room | Accent token | Value |
+|---|---|---|
+| Feed / Smart Feed | `--accent-feed` → `--green` | `#2fe89e` |
+| Today | `--accent-today` → `--magenta` | `#e84fff` |
+| Reports | `--accent-reports` → `--indigo` | `#6675ff` |
+| Library | `--accent-library` → `--blue` | `#3fb8ff` |
+| Connect | `--accent-connect` → `--teal` | `#40d3bb` |
+| Ledger | `--accent-ledger` → `--gold` | `#ffbf3d` |
+| Connections | `--accent-connections` → `--orange` | `#ff9a5a` |
+| Lists | `--accent-lists` → `--purple` | `#a06bff` |
+| Mail | `--accent-mail` → `--rich-orange` | `#ff7a3d` |
+| Spaces | `--accent-spaces` → `--lime` | `#b8ee57` |
+| Settings | `--accent-settings` | `#e8eaf2` (neutral) |
