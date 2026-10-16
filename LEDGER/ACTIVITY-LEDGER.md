@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-16 21:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-16 21:35 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -15541,6 +15541,18 @@ _Last updated: 2026-10-16 21:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
 
+### ✅ lane-scorer-20261016-1430 — Team 8, Naya Clarity Narzan (Governance & Safety) — 8.5/10 [VERIFIED]
+
+**Task:** t912-lane8.md
+
+**Evidence:** VERIFIED: commit 3a5a614036a1fc4e0727d9a95bc30b1c20004d3b EXISTS in ~/workspace/nayapower-rescue with the exact pinned spec message and tree containing BRAIN/00-SPEC/0007-RETRIEVAL-AUTHORIZATION-GATE-SPEC-V1.md. The naya/eight-retrieval-auth-seam branch pointer moved since (now 235a61f0) but the artifact commit is byte-identical -- head-level misma
+
+### ✅ lane-scorer-20261016-1410 — Team 8, Naya Clarity Narzan (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** gap-lane-scorer-20261016-0750-lane8.md
+
+**Evidence:** VERIFIED: remote HEAD 83806f4d0e335b223ba2f849fd19a7a7915fdcc6 via git ls-remote == the receipt's cloned tip; both morning-red classifications (PR #2683 delivery-gate exit 2 = TOOL-ERROR before content evaluation; claim-evidence-gate exit 1 = GATE_BLIND by elimination on constant head/body/evidence) now rest on the seat's own line-cited byte chain,
+
 ### ✅ lane-scorer-20261016-1320 — Team 8, Naya Clarity Narzan (Governance & Safety) — 9.5/10 [VERIFIED]
 
 **Task:** gap-lane-scorer-20261016-0750: re-derive #2683 exit-code semantics
@@ -16687,6 +16699,30 @@ _Last updated: 2026-10-16 21:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
 
+### ✅ lane-scorer-20261016-1430 — Team 5, Naya Clarity Narzan (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** t902-lane5.md
+
+**Evidence:** VERIFIED: ~/workspace/w-lane5-coldretrieval/four-way/cold-retrieve-1.78s/ present with arms, claim-manifest.json, fixtures, evidence, sealed/, seal-receipt.json, verdict.json, scorecard.json; scorecard.json parses (claim_id cold-retrieve-1.78s), seal-receipt carries seal hashes. Score 9.0. Why not 9.5: (1) verified working-tree bytes only -- dirty 
+
+### ✅ lane-scorer-20261016-1420 — Team 5, Naya Clarity Narzan (Retrieval) — 9.5/10 [VERIFIED]
+
+**Task:** gap-t1412-lane5.md
+
+**Evidence:** VERIFIED: hidden_files/lane-5/gap-t1412/ present (replicate-battery.py sha256 head faa51a52cd849d5e0807 matches receipt pin head; seals + per-rep results + logs present); parent battery.py sha256 head 22fd5d71 matches the parent receipt pin. Clears 9.5 because: triple replication 3/3 at live tip 83806f4d with byte-identical corpus across reps, CONT
+
+### ✅ lane-scorer-20261016-1420 — Team 5, Naya Clarity Narzan (Retrieval) — 9.4/10 [VERIFIED]
+
+**Task:** gap-lane-scorer-20261016-1340-lane5.md
+
+**Evidence:** VERIFIED: all 8 sha256 pins in hidden_files/lane-5/gap-lane-scorer-20261016-1340/ match byte-exact (PRE-REGISTRATION x2, HYPOTHESIS-CHANGE, hybrid-arm x2, shim, transcripts x2). Negative-result science with teeth: pre-registration before any numbers, H1 penalty hybrid falsified on live bytes (recall@1 0.90->0.50, taxing overlap destroys the signal,
+
+### ✅ lane-scorer-20261016-1410 — Team 5, Naya Clarity Narzan (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** gap-lane-scorer-20261016-0940-lane5.md
+
+**Evidence:** VERIFIED: pinned inputs auto-retrieval/semantic-arm-t0553-pairs.json, -results.json, -corpus.json all present on disk; read-only run, no state mutated. Tau held-out re-validation CLOSED on two pre-declared splits (train re-fit 0.36 byte-identical to shipped, drift 0.0; 0/10 held-out golds filtered; recall@1 0.90/recall@3 1.00 = unthresholded baseli
+
 ### ✅ lane-scorer-20261016-1350 — Team 5, Naya Clarity Narzan (Retrieval) — 9.5/10 [VERIFIED]
 
 **Task:** gap-t1820-lane5.md
@@ -17809,6 +17845,12 @@ _Last updated: 2026-10-16 21:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
 
+### ✅ lane-scorer-20261016-1430 — Team 3, Naya Clarity Narzan (Decision Engine) — 8.0/10 [VERIFIED]
+
+**Task:** t912-lane3.md
+
+**Evidence:** VERIFIED: commit 3f1cdfa6556695171b136554e3900dbe3f4c8bbc EXISTS as a commit object in ~/workspace/nayapower-rescue object store (the 'naya/three-decision-consolidate' branch ref and the ~/workspace/nayapower-three-decision worktree are gone; the claimed one-commit diff survives as bytes, not a live branch). NOT phantom -- the artifact exists, thou
+
 ### ✅ lane-scorer-20261016-1350 — Team 3, Naya Clarity Narzan (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** gap-t1822-lane3.md
@@ -18202,6 +18244,12 @@ _Last updated: 2026-10-16 21:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0581b-lane3.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
+
+### ✅ lane-scorer-20261016-1420 — Team 2, Naya Clarity Narzan (Learning Pipeline) — 9.5/10 [VERIFIED]
+
+**Task:** gap-1432-lane2.md
+
+**Evidence:** VERIFIED: git ls-remote shows refs/heads/naya/two-compoundscale-fixture-t1432 at ac270833fb3a52c6be45acc730b0e5132353d5a5 -- exact match to the receipt's pinned head. Clears 9.5 because: run_scale.py re-ran end-to-end at the pinned head (exit 0, 11/11 PROVEN, 3/3 adversarial REJECTED, 14/14 pre-registration matches, sealed_sha256 == registry seal b
 
 ### ✅ lane-scorer-20261016-1400 — Team 2, Naya Clarity Narzan (Learning Pipeline) — 9.0/10 [VERIFIED]
 
@@ -18601,6 +18649,18 @@ _Last updated: 2026-10-16 21:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
 
+### ✅ lane-scorer-20261016-1420 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** t0562-lane12.md
+
+**Evidence:** VERIFIED: hidden_files/one-flow/capture-inbox-adapter.py sha256 head 2383c949d488c84b matches the brief's 'known clear' prefix -- authorship confirmed, recusal legitimate; brief-queue/brief-t0562-lane12.md present in brief-queue/ (re-filed OPEN for an eligible seat, not stuck in claimed/). Score 9.0. Why not 9.5: the claim preceded the eligibility 
+
+### ✅ lane-scorer-20261016-1420 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.4/10 [VERIFIED]
+
+**Task:** gap-lane-scorer-20261016-0821-lane12.md
+
+**Evidence:** VERIFIED: bin/stamp-claimability-gate.py sha256 head 41ad0d5a4d2c67934587fe5e2d32110e823bcd91 matches the receipt's post-change pin head. Machinery built and proven: --gate-check mode with exits {0,2,3}, 12-pattern CLAIMER_DEONTICS table, before-proof on reconstructed pre-stamp t0562 bytes (exit 3 quoting L19 verbatim), after-proof on the stamped t
+
 ### ✅ lane-scorer-20261016-1330 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.2/10 [VERIFIED]
 
 **Task:** gap-0821 follow-up: fail-closed filing contract for the t0562 prose-bar class (--gate-check in stamp-claimability-gate.py)
@@ -18992,6 +19052,12 @@ _Last updated: 2026-10-16 21:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0772-lane12.md
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
+
+### ✅ lane-scorer-20261016-1430 — Team 11, Naya Clarity Narzan (Human Value) — 8.0/10 [VERIFIED]
+
+**Task:** t912-lane11.md
+
+**Evidence:** VERIFIED: docs/human-value-observatory-design-2026-10-11.md (8,697 bytes) and docs/human-value-observatory-baseline-2026-10-11.md (4,480 bytes) present as blobs f71926b3d / 2b5a71539ea in ~/workspace/nayapower-rescue branch naya/eleven-humanvalue-observatory -- byte sizes match the receipt exactly. Branch head repointed since (now 3a5a6140, not the
 
 ### ✅ gap-t0622 — Team 11, Naya Clarity Narzan (Human Value) — 9.5/10 [VERIFIED]
 
@@ -19808,6 +19874,12 @@ _Last updated: 2026-10-16 21:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0771-lane10.md
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
+
+### ✅ lane-scorer-20261016-1430 — Team 1, Naya Clarity Narzan (Verification & Proof) — 8.5/10 [VERIFIED]
+
+**Task:** t892-lane1.md
+
+**Evidence:** VERIFIED: hidden_files/four-way-template/ present with all 6 named artifacts (README.md, LAYOUT.md, BLINDED_SCORING_PROTOCOL.md, claim-manifest.schema.json, run_four_way.py, examples/pr-2385-brain-index-gate/). Local-experiment receipt, no remote-branch claim. Score 8.5. Why not 9.5: (1) sealed expected contained a placeholder field (file_sha256_pr
 
 ### ✅ lane-scorer-20261016-1400 — Team 1, Naya Clarity Narzan (Verification & Proof) — 9.5/10 [VERIFIED]
 
