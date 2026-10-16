@@ -26,15 +26,15 @@ Two real options, both viable:
 
 **Why the scorecard decides:** both work; the math picks. Whoever scores it tonight, highest score wins, and the page is built against the winner.
 
-**Blocked on Shawn:** nobody can verify the live Supabase state (are the tables really there? is Realtime on? are the secrets set?) without his authorization. That's a genuine human gate — the bridge can't be called "working" until the production side is verified.
+**Blocked on nobody now:** Shawn authorized the production check, and it's done — the live database is reachable, the bridge's tables exist, and one gap was found: the public feed table was never created live, so the contract says exactly how to set it up (apply the migration, set the privacy rules, turn on Realtime, confirm the secrets). Until that's done, the page reads the GitHub feed files — the work doesn't stall.
 
 ### 3. The Hub page receiver — TO BUILD (this is the actual work)
 
 The Hub page (`HUB/app/index.html`) currently mentions Supabase only in marketing copy — it has no data reader at all. This is what gets built:
 
 - A **Smart Feed loader** that reads the published notes (from whichever transport wins) and renders each as the beautiful card: **essence** (the in-a-nutshell) → **human view** → **Naya view** → **machine view**.
-- **Play** — uses the existing `naya-voice.js` playback module. Version 1 speaks with the browser's voice; Naya's true cloned voice arrives when Shawn's reference audio is baked in (his call which one the gasp test needs).
-- **Save** — version 1 saves in the browser (localStorage). A server-side personal save is a later decision.
+- **Play** — the page already has her real voice built in: the `NayaVoice` module checks for pre-baked Naya audio first. **Her voice, always — no browser voice, ever.** So the contract requires it: every published note carries its own `audio_url`, baked with her true cloned voice at capture time, and the page plays that.
+- **Save** — in the browser for v1. Simple, works today, nothing new to build. Server-side comes later with the personal lane.
 - **Share** — the Web Share button plus the Smart Link the pipeline already returns.
 
 **Why this way:** the page renders exactly what the bridge writes — same vocabulary, no translation layer, no new mechanism. The four views on the card map one-to-one to fields the bridge already emits.
@@ -52,8 +52,8 @@ The Hub page (`HUB/app/index.html`) currently mentions Supabase only in marketin
 ## The decisions that are genuinely Shawn's
 
 1. **Authorize production verification** — check the live Supabase tables, Realtime status, and confirm the capture secrets are set. Nothing else unblocks "it works."
-2. **Voice for the gasp test** — browser voice now, or wait for Naya's true cloned voice from your reference audio?
-3. **Save** — browser-only for v1, or server-side personal save now?
+2. **Voice** — decided: her real voice, always. No browser voice, ever.
+3. **Save** — decided: browser v1 now, server-side later.
 
 Everything else the teams decide tonight by scorecard — that's the operating order.
 
