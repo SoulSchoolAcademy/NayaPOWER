@@ -22,8 +22,16 @@ on:
           JSON object: { human_note: { subject, text }, naya_note: { text },
           idempotency_key, source, invoking_seat }. Example source:
           "nayanet-agent-capture:capture-agent".
-        required: true
+          Optional: schedule events carry no inputs (the capture feed wires the
+          scheduled payload later); a schedule firing with no payload fails
+          closed with SCHEDULED_CAPTURE_NO_FEED instead of capturing.
+        required: false
         type: string
+  schedule:
+    # PUMP MISSION phase 1 (2026-10-16): the pump, not just the pipes.
+    # Hourly probe proves scheduled runs fire on their own (acceptance 1).
+    # Cadence is the director's call to adjust; minute offset dodges the :00 herd.
+    - cron: '7 * * * *'
 
 permissions:
   contents: read
@@ -46,6 +54,18 @@ jobs:
           def fail(msg):
               print(f"AGENT_CAPTURE_FAILED: {msg}", file=sys.stderr)
               sys.exit(1)
+
+          # PUMP MISSION phase 1: schedule events carry no inputs. Fail closed
+          # with a machine code (never a raw exception, never fake success)
+          # until the capture feed (runtime loop) wires the scheduled payload.
+          event_name = os.environ.get("GITHUB_EVENT_NAME", "")
+          payload_raw = os.environ.get("PAYLOAD_JSON", "")
+          if not payload_raw.strip():
+              if event_name == "schedule":
+                  fail("SCHEDULED_CAPTURE_NO_FEED: schedule fired with no payload; "
+                       "capture feed not wired yet (PUMP MISSION). "
+                       "No capture attempted, no secrets touched.")
+              fail("payload_json is required for workflow_dispatch")
 
           url = os.environ.get("SUPABASE_URL", "").rstrip("/")
           anon = os.environ.get("SUPABASE_ANON_KEY", "")
