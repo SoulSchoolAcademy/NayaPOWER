@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-16T13:16:31+00:00",
+ "generated_utc": "2026-10-16T14:16:25+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -417,6 +417,12 @@
    "board_lane": "#2175 lane WIRE",
    "open_prs": [
     {
+     "number": 2704,
+     "title": "fix(gate): consensus gate skips issue_comment events without a verdict",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2704",
+     "draft": false
+    },
+    {
      "number": 2697,
      "title": "HTTP-DETAIL: log truncated HTTP error bodies in ci_claim_evidence_gate.api_get",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2697",
@@ -457,15 +463,9 @@
      "title": "KNOW gaterepair (w247): doc_completeness_check fail\u2192warning + grep-flake instrument fix",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2645",
      "draft": false
-    },
-    {
-     "number": 2636,
-     "title": "docs: name merge-consensus gate legs (a)/(b)/(c) as one-line verifier tests",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2636",
-     "draft": false
     }
    ],
-   "open_pr_count": 122
+   "open_pr_count": 123
   },
   {
    "id": "team",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 594,
+ "open_pr_total": 595,
  "unassigned_prs": 224
 }
