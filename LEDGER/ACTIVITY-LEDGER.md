@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-16 01:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-16 01:34 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -9327,6 +9327,14 @@ _Last updated: 2026-10-16 01:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0598 — Team 4, Naya Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
+**Task:** SURGE pooling arm: dilution hypothesis test (top-claim-max)
+
+**Receipt:** `twelve-lane-receipts/t0598-lane4.md`
+
+**Evidence:** Verified: instrument arm_poolmax_t0598.py sha16 90d837bbdda5e042, pre-reg sealed-prereg-poolmax-t0598.md sha16 878effe13a76577e, results-t0598-poolmax.json sha16 ac76e42818381f50 — all match on-disk bytes; dilution CONFIRMED (P6 19->5) with the counter-finding named (P12 5->12 regressed), arm verdict FALSIFIED by the frozen rule. Score 9.0. Why not
+
+### ✅ t0598 — Team 4, Naya Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
 **Task:** SURGE pooling arm: dilution hypothesis test (top-claim-max aggregation)
 
 **Receipt:** `twelve-lane-receipts/t0598-lane4.md`
@@ -9444,6 +9452,14 @@ _Last updated: 2026-10-16 01:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0594-lane6.md`
 
 **Evidence:** Verified: hidden_files/retrieval/injection-seam-v0.2-results.json sha256 f64261cab7e3bbdec15f5c9088d2c601dfbd8a6906d66e4d4bea4089cb982113 == receipt pin byte-exact; preregistration file exists; v0.1 prototype sha + matcher sha recorded inside the results JSON. Kept from 9.5: (1) judgments are single-seat (mine) — the t0588 blind-second-seat hole ca
+
+### ✅ t0593 — Team 4, Naya Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** doc-side claim-filter + per-claim max pooling arm
+
+**Receipt:** `twelve-lane-receipts/t0593-lane4.md`
+
+**Evidence:** Verified: auto-retrieval/arm_docclaim_t0593.py sha16 3eff30f1cfa37162 and results-t0593-docclaim.json sha16 714fe2fba31f955a both match on-disk bytes. Score 9.0. Why not 9.5: (1) the FIRE-DOC predicate weakened the frozen rule's per-task test shape into a corpus-level predicate — thinner than the frozen rule; (2) the pooling rule (the actual failur
 
 ### ✅ t0593 — Team 4, lane4 (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
@@ -13635,6 +13651,18 @@ _Last updated: 2026-10-16 01:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified per receipt bytes (run mechanics not re-executed; rotation queued count 23 confirmed live). All 24 queued briefs evaluated in ORDERING order through claim-brief.py with every refusal honored — 17 parent-authorship exit-7, 6 stamped NON-Clarity gates, 1 no-refile verdict; zero hand-claims, rotation untouched. Score 9.5 — a correct skip, not
 
+### ✅ gap-1905 — Team 9, Naya Clarity Narzan (Code Health) — 9.5/10 [VERIFIED]
+
+**Task:** claim-brief.py built: pre-claim claimability gate mechanized
+
+**Evidence:** Verified on live bytes: hidden_files/bin/claim-brief.py exists and executes (the lineage's current pin de12a21961b9a960573cb41a2257c929462a0a8a4ec2322d9f7ee42550ea1a3e verified on live bytes this tick); every subsequent gap receipt in the lineage (1910 through 1530) claims through this script's gate-read→gate-eval→mv+touch block; gap-followup-seen.
+
+### ✅ gap-1700 — Team 9, Naya Clarity Narzan (Code Health) — 8.5/10 [VERIFIED]
+
+**Task:** gap-lane-scorer-20261015-1700 t0705 E3 sign-out timestamps re-derivation
+
+**Evidence:** Verified on live bytes: twelve-lane-receipts/t0677-lane4.md mtime 2026-10-13 22:22:06 UTC and t0685-lane5.md mtime 2026-10-13 23:37:07 UTC both match the receipt's claims byte-for-byte. The receipt names its checks explicitly: no t0677-L4 sign-out comment on #2175/#2537 in the cited windows; 23:58Z belongs to learning-event comment 6157833332 (wron
+
 ### ✅ gap-lane-scorer-20261015-1700 — Team 9, Naya Clarity Narzan (Lane 9 Smith hat) (Code Health) — 8.5/10 [VERIFIED]
 
 **Task:** gap follow-up: re-derive t0705 seed's E3 sign-out timestamps from live feed bytes
@@ -14242,6 +14270,12 @@ _Last updated: 2026-10-16 01:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane8.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/register-flip-protocol-spec-t0770-lane8.md exists, sha256 91412fc298adf90a... == receipt pin, 16,291 bytes; lineage SHAs both re-verified on disk (t0761 3b685b90..., t0767 verdict 1f9be430..., prefix matches t0767 receipt). Clears 9.5 because: the spec pins the sealed verdict (not the brief's stale 'pending' line) af
+
+### ✅ gap-1440 — Team 7, Naya Clarity Narzan (Team Operations) — 9.5/10 [VERIFIED]
+
+**Task:** t0587 tally re-run (Conductor)
+
+**Evidence:** Verified on live bytes: hidden_files/retrieval/query-needs-top20-t0587.md sha256 58f9584356153cd1508e13f4652599e9e2c7ec0164a48c6880e343856a9b3e5d == receipt pin byte-for-byte. Clears 9.5 because: independent re-implementation from prose (not copying the parent script) reproduced the t0587 table 15/15 rows byte-identical with zero divergence, sectio
 
 ### ✅ t-converge — Team 7, Naya Conductor (Team Operations) — 8.0/10 [VERIFIED]
 
@@ -15319,6 +15353,32 @@ _Last updated: 2026-10-16 01:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
 
+### ✅ gap-1430-repair — Team 4, Naya Clarity Narzan (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** 1c check quote-strip root fix IMPLEMENTED (repair half)
+
+**Evidence:** Verified on live bytes: hidden_files/bin/claim-brief.py (sha256 de12a21961b9a960573cb41a2257c929462a0a8a4ec2322d9f7ee42550ea1a3e) carries the (?<!\w) quote guard plus the (?!\w) refinement and the another[\s-]*seat signal, all present; --self-test GREEN (authorship 13/13, main 15/15, sign-in 2/2) re-run this tick. Clears 9.5 because: the repair is 
+
+### ✅ gap-1430 — Team 4, Naya Clarity Narzan (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** 1c check adversarial review (review half)
+
+**Evidence:** Verified from the receipt's byte evidence: 8/8 positive adversarial cases HIT; 4 residual dialect holes MISS (named: 'fresh pair of eyes', 'which/who executed', 'ran/verified/performed', participle-before-seat); the live quote-stripper bug demonstrated on real bytes (the 'author's...receipt's' apostrophe sandwich ate this very brief's demand, letti
+
+### ✅ gap-1530 — Team 4, Naya Clarity Narzan (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** builder round: four dialect holes patched + pinned
+
+**Evidence:** Verified on live bytes: hidden_files/bin/claim-brief.py sha256 de12a21961b9a960573cb41a2257c929462a0a8a4ec2322d9f7ee42550ea1a3e == receipt pin byte-for-byte; --self-test GREEN (authorship suite 23/23, sign-in 2/2, main 15/15); fresh-pair-of-eyes pattern, not-the-seat which/who + ran/verified/performed verb slot, participle-before-seat pattern, (?<!
+
+### ✅ gap-t0593 — Team 4, Naya Clarity Narzan (Mason hat) (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** gap follow-up: restored per-task firing + dry-fired top-claim-max arm
+
+**Receipt:** `twelve-lane-receipts/gap-t0593-lane4.md`
+
+**Evidence:** Verified: instrument auto-retrieval/arm_docclaim_gap0593.py sha16 6b2844d5ecbcb2ac (matches claimed seal pre==post) and results-gap0593-docclaim.json sha16 0f61ccdf4702fb85 both on-disk; results JSON _firing table confirms A no/B no/C yes (count 1) and _verdict_eval confirms F1/F2/F3 true, FIRE_DOC false -> INFORMATIVE-PARTIAL, matching the receipt
+
 ### ✅ gap-t0483 — Team 4, Naya Clarity Narzan (Mason hat) (Intelligent Blocks) — 9.4/10 [VERIFIED]
 
 **Task:** gap follow-up: #2680 CI verdict + merge state + Oct 7-8 capture-failure root cause
@@ -16042,6 +16102,12 @@ _Last updated: 2026-10-16 01:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0581b-lane3.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
+
+### ✅ gap-1420 — Team 2, Naya Clarity Narzan (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** open-parent gated-gap pin (fixture + case in claim-brief.py self-test)
+
+**Evidence:** Verified: receipt on disk; the deliverable is a fixture + self-test case for the OPEN-parent claim-proceeds path (the t0815-shape pin previously covered only the CLOSED-parent retires path); --self-test re-run this tick GREEN, so the new pin passes inside the suite. Score 9.0 (GOOD, ONE MORE PASS). Why not 9.5: independent verification was shallow 
 
 ### ✅ lane-scorer-20261015-1450 — Team 2, Naya Clarity Narzan (lane-scorer) (Learning Pipeline) — 9.2/10 [VERIFIED]
 
