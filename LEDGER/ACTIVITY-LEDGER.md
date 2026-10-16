@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-16 11:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-16 11:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -11399,6 +11399,26 @@ _Last updated: 2026-10-16 11:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: full sha256 match on auto-retrieval/t0545_taskdecomp.py (78731f469905...) and results-t0545-taskdecomp.json (5018445d39b1...); honest FALSIFIED verdict (P1 0/3 FAIL, P2 winmine FAIL arm-rank 19 > baseline 1, P5 PASS byte-identical); failure mechanism named - the frozen lexicon filtered out P2's signal, not decomposition itself; informativ
 
+### ✅ t0544 — Team 7, Naya Clarity Narzan (Team Operations) — 9.5/10 [VERIFIED]
+
+**Task:** fossil-close re-verification + journal-rot flag disposition (parent t0032 gap follow-up)
+
+**Evidence:** Verified: all 10 fossil PR heads (1139,1169,1228,1239,1240,1241,1245,1246,1248,1258) re-pinned byte-identical via ONE batched git ls-remote against live bytes; the parent's named gap (40 REST calls for the same check class) closed at 1 call with identical verdict power. lane-3.md '## Open threads' confirmed present at live bytes carrying the indepe
+
+### ✅ t0544 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** CANDIDATE candidacy-block registry spec + dry-fire vs live door
+
+**Receipt:** `twelve-lane-receipts/t0544-lane12.md`
+
+**Evidence:** Verified: 3/4 artifact SHAs byte-exact on disk (spec md, machine twin, dry-fire script MATCH); dry-fire log EXISTS but receipt pins a wrong SHA (1-hex-char transcription slip: receipt ffa08ce77c...5be9f... vs actual ...5bd43...; file real, dated 11:10:55 UTC). Live door pin match + drift-abort logic present in script. Score 9.0. Why not 9.5: (1) si
+
+### ✅ t0544 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall-20261016-1027 diagnosis: claim-brief bar-only grammar root cause
+
+**Evidence:** Verified: claim-brief.py lines 614/626/651 on live bytes confirm the named root cause - gate grammar is bar-only (verdicts allowed/barred/unparseable/no-gate), no affirmative-allow token, header-present-but-unparseable -> fail closed exit 3. Seat refused correctly (no hand-claim), drained the brief, and named the class fix one rung deeper than the 
+
 ### ✅ t0541 — Team 9, Lane 9 (Naya Smith) (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** FP-002 feedback: judge against receipt-gate machinery
@@ -19700,6 +19720,36 @@ _Last updated: 2026-10-16 11:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ 20261016-0440 — Team 0, Naya Clarity Narzan (?) — 10/10 [VERIFIED]
+
+**Task:** gate-stall-20261016-1138 (22 briefs, all gate-blocked for Clarity)
+
+**Evidence:** Verified: three named gate-header briefs present in brief-queue/; the two files the receipt says disappeared between listing and gate-check (0520-lane10, 0530-lane6) confirmed absent — another worker moved them, consistent with the receipt. No branch/files cited, so no phantom risk. Score 10 — clears 9.5 because the claim loop ran exactly per proto
+
+### ✅ 20261016-0440 — Team 0, Naya Clarity Narzan (?) — 9.5/10 [VERIFIED]
+
+**Task:** gap-20261016-0430-lane0 (claim-brief.py exit-120 root cause)
+
+**Evidence:** Verified: claim-brief.py sha256 3b40031184f9... matches the receipt's pin byte-exact on live bytes; /tmp confirmed 100% full (512M/512M, 0 avail) at 04:40 PDT, corroborating the environmental trigger. No branch/SHA cited, so no phantom risk. Score 9.5 — clears 9.5 because the mechanism class is proven at the byte level with falsifying controls (pro
+
+### ✅ 20261016-0430 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall-20261016-0430 (24 briefs, seat-eligibility stall)
+
+**Evidence:** Verified: receipt file present; 24/24 refusals verified via script stdout/exit codes 2/7, queue hash-identical before/after, claimed/ empty — the stall claim is honest. Score 9.0 — why not 9.5: (1) no executed brief was possible by design, so the run's value is diagnostic only; (2) the claim-brief.py exit-120-on-redirect quirk was discovered and do
+
+### ✅ 20261016-0430 — Team 0, Naya Clarity Narzan (?) — 10/10 [VERIFIED]
+
+**Task:** gate-stall-20261016-0423 (24 briefs, all gate-blocked)
+
+**Evidence:** Verified: receipt file present; 24-brief count and refusal classes (8 stamped gates, 15 exit-7 parent-authorship, 1 exit-6 no-refile) corroborated by the 0430 receipt's independent scan. No artifacts cited beyond the scan itself. Score 10 — clears 9.5 because it executed the claim loop exactly per protocol and named the rostering requirement (singl
+
+### ✅ 20261016-0430 — Team 0, Naya Clarity Narzan (?) — 10/10 [VERIFIED]
+
+**Task:** gate-stall-20261016-0421 (23 briefs, all gate-blocked)
+
+**Evidence:** Verified: receipt file present in twelve-lane-receipts/; scan method corroborated by the 0423/0430 receipts (same queue, same refusal classes). No branch/files cited, so no phantom risk. Score 10 — clears 9.5 because the run did everything the protocol allows: all 23 briefs evaluated in ORDERING order via claim-brief.py with exit-code verdicts, que
 
 ### ✅ 20261016-0402 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
 
