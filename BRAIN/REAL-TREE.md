@@ -1,7 +1,7 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
-**Generated:** 2026-10-15  
-**Receipt basis commit:** `ba62638704256b012c20e41fe7f53cc3b62b1b44`  
+**Generated:** 2026-10-16  
+**Receipt basis commit:** `0f185811be952882cbe2a3df696552b54d5b7a78`  
 **Inventory file count:** 1320  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
@@ -1359,7 +1359,7 @@
 - `BRAIN/90-OPERATIONS/field-manuals/26-know.human.md` — `8aab51496413` (5666 bytes)
 - `BRAIN/90-OPERATIONS/field-manuals/27-act.human.md` — `0ef19eb95de2` (6603 bytes)
 - `BRAIN/90-OPERATIONS/field-manuals/28-law.human.md` — `698389cd7992` (5026 bytes)
-- `BRAIN/90-OPERATIONS/field-manuals/29-verify.human.md` — `7e0168e0d442` (7727 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/29-verify.human.md` — `244e5c35c070` (9996 bytes)
 - `BRAIN/90-OPERATIONS/field-manuals/30-intelligent-blocks.human.md` — `bd3b7b3079ef` (4815 bytes)
 - `BRAIN/90-OPERATIONS/field-manuals/31-decision.human.md` — `c57c99905224` (8514 bytes)
 - `BRAIN/90-OPERATIONS/field-manuals/32-retrieval.human.md` — `b4082b96e2ff` (4245 bytes)
