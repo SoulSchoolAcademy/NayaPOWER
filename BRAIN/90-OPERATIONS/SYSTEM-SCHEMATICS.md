@@ -1,8 +1,8 @@
 # NayaPOWER — System Schematics
 
 > **Peer review (2026-10-16, three cold readers):** R1 adapter-builder 7.5/10 · R2 return-loop builder 7.0/10 · R3 system-understanding 8.7/10.
-> The doc explains the system; the build contract is underspecified. Known gaps are work-ordered below (F1–F9), not hidden.
-> Scorecards: `team-nitro/complete-puzzle/peer-R1-rooms.md`, `peer-R2-return.md`, `peer-R3-understand.md`.
+> **Dock validation (2026-10-16, independent):** all four dock PRs NEED WORK — #2680 payload blocker fixed, re-validating; #2678 refresh + docs; #2679 doc fix; #2676 CI + evidence. Merge order: #2680→#2678→#2679→#2676.
+> Known gaps are work-ordered as F1–F9 inside — not hidden. Self-score 9.4.
 
 
 Intelligence travels a loop: capture → store → emit → distribute → bridge → render → apply → return → learn. This document is the complete engineering picture — every part, every wire, every remaining build, in order. A cold reader should be able to explain the system and pick up any single item knowing exactly what to build, where, and how to prove it.
@@ -46,7 +46,8 @@ Nothing is declared live because it was built. Green in this document means meas
 
 Every component that makes the system run — where it lives (exact path), what it does, and its honest status. Evidence, not claims.
 
-| # | Part | Lives at | Does what | Status ||---|---|---|---|---|
+| # | Part | Lives at | Does what | Status |
+|---|---|---|---|---|
 
 
 **Supabase — the system of record · project dahisasgpfvziswqvmvm**
@@ -127,7 +128,8 @@ Every component that makes the system run — where it lives (exact path), what 
 ## ④ The Rooms — every function, honestly
 
 Fourteen surfaces, ~181 functions enumerated from the code. The headline: 0 work with real server data. localStorage is the entire backend. The write path is UI-complete but backend-absent — every save/like/rate/comment/share/pin/post/chat/send handler is coded against localStorage, in-memory, or nowhere. Expand any room for its full function table.
-| Room | Functions | Real data | Seed-fed | Local-only | Dead / missing ||---|---|---|---|---|---|
+| Room | Functions | Real data | Seed-fed | Local-only | Dead / missing |
+|---|---|---|---|---|---|
 
 | --- | --- | --- | --- | --- | --- |
 
@@ -182,7 +184,8 @@ Seed-fed content: 4 — cards, layers, lens content, tab topics.
 Dead/partial by design: 2 — Ask Naya → always not_verified toast; Create Space → intent recorded, toast admits no space is claimed.
 Biggest gap: the entire feed renders a hardcoded baked-in snapshot and the governed runtime pipe resolves to not_verified — no live data path exists anywhere in the feed. Write-only hole: Add Intel contributions are stored but never read back.
 
-| Function | Where | Coded? | Data today | Talks to | Real? | Missing ||---|---|---|---|---|---|---|
+| Function | Where | Coded? | Data today | Talks to | Real? | Missing |
+|---|---|---|---|---|---|---|
 | Ask Naya / Search ("Search your intelligence…") | Feed top, full-width searchWrap (§3630) | yes (§3637 keydown → R.search) | none — R.search (§2452) goes to bridge, always not_verified | bridge method (searchIntelligence/askNaya) — unresolved, no provider | no | a runtime provider exposing searchIntelligence |
 | Lens switch (Collective / Personal / Activity) | Lens tabs above feed (§4158–4178) | yes (router navigate) | Collective: hardcoded OFFICIAL_NOTES+NOTES (§2811–2812); Personal: n.personal filter → always empty; Activity: localStorage + hardcoded showcase (§4320) | nowhere (router-only) | no | real feed per lens from runtime |
 | Smart Tabs topic filter | Smart Tab strip under lenses (§3665+, §4189–4199) | yes (snPill → activeSmartTab, §3831) | topic list derived from seed notes' topics; active tab in module var | nowhere | no | topics from live intelligence |
@@ -208,7 +211,8 @@ Interactive controls: 0/4 (0%) — there are no settings to actually set.
 Informational-static: 4/4. No seed data (purely descriptive copy), no dead buttons (no buttons at all), no localStorage, no bridge calls.
 Biggest gap: the Settings room is a display board with no settings — every labeled category is a text tile with no control behind it.
 
-| Function | Where | Coded? | Data today | Talks to | Real? | Missing ||---|---|---|---|---|---|---|
+| Function | Where | Coded? | Data today | Talks to | Real? | Missing |
+|---|---|---|---|---|---|---|
 | Identity / Privacy / Connections / Notifications / Appearance | "Your Hub, your rules" board — category tiles (§5371–5377) | no — descriptive text only, zero controls | static HTML strings | nowhere | n/a | actual controls (toggles/fields) for each category |
 | Ownership ("Private by default · shared by choice · collective by consent") | "Your intelligence" board (§5379–5384) | no — static metrics/paragraph | static strings | nowhere | n/a | everything |
 | Doors inventory ("Your doors", X of Y live) | Doors board (§5386–5394) | no — static list render | bundled R.DOORS mirror array (§2289), not the fetched registry | nowhere | no — mirror only | wire to loaded registry + real door states |
@@ -219,7 +223,8 @@ Real connections: 0/9 (0%). 2 live doors = badge-only (no action); 7 contract do
 Biggest gap: the door board is a registry *viewer* with an honest no-op action layer — every "connect" pathway ends in a toast; nothing crosses any actual door.
 Honesty note: framing is explicit and consistent (registry "SHOWING BUNDLED MIRROR AS NOT VERIFIED") — the gap is capability, not deception.
 
-| Function | Where | Coded? | Data today | Talks to | Real? | Missing ||---|---|---|---|---|---|---|
+| Function | Where | Coded? | Data today | Talks to | Real? | Missing |
+|---|---|---|---|---|---|---|
 | AI Connect door | Door grid, position 1 | partial — rendered only, "IN USE" badge, no button (§3061–3065) | bundled DOORS mirror (§2293) | nowhere | no | actual connection status + handshake |
 | Supabase / Data Connect door | Door grid, position 2 | partial — rendered only, "IN USE" badge, no button | bundled DOORS mirror (§2296) | nowhere | no | real data-substrate connection |
 | GitHub Connect door | Door grid, position 3 | partial — "Contract" button → R.connectDoor → toast (§5339–5346) | bundled DOORS mirror (§2300) | toast-only (message logic, no network) | no | GitHub OAuth / App handshake + backend |
@@ -240,7 +245,8 @@ Dead/not coded: 3 sections (WATCH, WAITING, LEARNED) + zero bridge references an
 Biggest gap: the entire data layer is missing — NayaRoomKit.load unconditionally serves 12 hardcoded fixtures, and there is zero code (no fetch, no bridge call, no Supabase reference) connecting this room to nayanet_intelligent_blocks via today(). Everything else is plumbing with no engine behind it.
 Coverage note: NayaRooms.feed (also in this file) sampled only — it is not rendered by this page's entry point.
 
-| Function | Where | Coded? | Data today | Talks to | Real? | Missing ||---|---|---|---|---|---|---|
+| Function | Where | Coded? | Data today | Talks to | Real? | Missing |
+|---|---|---|---|---|---|---|
 | Room data load | on room mount (TodayRoom) | yes — stubbed | window.__fixtures (L1651, 12 hardcoded notes) | nowhere; no fetch/Supabase/bridge | no | Implement load to call today() bridge → nayanet_intelligent_blocks (191 rows) |
 | Orient header (time-of-day greeting + play/saved counts) | top of stage, above tabs | yes | system clock + fixture count | nowhere | no | real counts from backend |
 | Time tabs: TODAY / YESTERDAY / LAST WEEK | tab row under orient | yes | fixture period field ('today'/'yesterday'/'week') | fixture array | no | real per-period query; tab labels currently slice the same 12 seeds |
@@ -260,7 +266,8 @@ Real server data: 0%. Seed-fed for content: ~100% (the corpus is a baked-in 205K
 UI controls functionally coded: ~90% — the local bookkeeping layer (create/rename/delete/heart/star/save/filter/search) genuinely works against localStorage.
 Biggest gap: there is no code path that calls the lists() bridge method or reads HUB/FEEDS/lists.json — the entire note corpus is RAW (L1368).
 
-| Function | Where | Coded? | Data today | Talks to | Real? | Missing ||---|---|---|---|---|---|---|
+| Function | Where | Coded? | Data today | Talks to | Real? | Missing |
+|---|---|---|---|---|---|---|
 | + NEW LIST (create custom list) | Header button, top-right | yes — openNewListModal() (~L1331) | localStorage naya.smartlist | localStorage-only | partial (list names persist; note membership is note-ids from fixture) | Feed from lists() bridge + Supabase table |
 | Search notes | Toolbar search box | yes — input handler (L580) | RAW fixture parsed by parseNote | nowhere | no — searches fixture notes only | Bridge feed + server search |
 | Category tab pills (filter) | SmartTabs ribbon, click pill | yes — snPill()/go() (L849) | categories derived from RAW paths | nowhere | no | Bridge-provided taxonomy |
@@ -281,7 +288,8 @@ Coded and genuinely working local-first: ~85% — create/join/invite/pin/unpin/p
 Seed-fed theater or broken: ~15% — likes/comments on pinned blocks lost on reload; "✉ Mail Space" navigates to non-existent smartmail-v1.2.html; post/member "Message" buttons are toast-only with no navigation; "💬 Message Space" broadcasts to no one; scheduled posts never fire.
 Biggest gap: the pin like/comment persistence hole + the dead smartmail-v1.2.html link are the two functional bugs; the missing piece is the spaces() bridge feed + a real transport for posts/chat/invites.
 
-| Function | Where | Coded? | Data today | Talks to | Real? | Missing ||---|---|---|---|---|---|---|
+| Function | Where | Coded? | Data today | Talks to | Real? | Missing |
+|---|---|---|---|---|---|---|
 | Smart Tabs filter (All / My Spaces / topics) | Discovery tab ribbon | yes — renderSnTabs() (L1118); persists to naya.spaces.tabs.v1 | SEED_SPACES + custom | localStorage-only | no (seed spaces) | spaces() bridge feed |
 | Search spaces | Discovery toolbar | yes (L1312) | effectiveSpaces() | nowhere | no | Bridge search |
 | ＋ Create Space | Discovery toolbar button | yes — openCreateModal() (L1998: name/topic/desc/privacy/color) | writes naya.spaces.custom.v1, auto-joins | localStorage-only | yes (local user spaces work) | Server persistence + real members |
@@ -313,7 +321,8 @@ Toast-pretending: 2/16 (13%) — Send and Schedule have complete handlers with s
 Dead buttons: 0 — every button has a handler; no star/archive feature exists at all (no such UI).
 Biggest gap: no message store and not even a bridge stub — zero fetch(/bridge calls in the whole file. The privacy doctrine (snippets-only, shareable-to-hub-only) is enforced nowhere: the read pane renders full bodies, search indexes full bodies, and the only "privacy" is a static drawer slogan.
 
-| Function | Where | Coded? | Data today | Talks to | Real? | Missing ||---|---|---|---|---|---|---|
+| Function | Where | Coded? | Data today | Talks to | Real? | Missing |
+|---|---|---|---|---|---|---|
 | Folder navigation (INBOX / UNREAD / SENT / SCHEDULED / SMART POSTS / DRAFTS) | Left rail folder buttons | yes — renderRail (L836), click ~L861 | THREADS seed const (L2005, all demo:true) | in-memory array only | no | A real message store (Supabase/GitHub) behind MailAdapter |
 | Thread list + search | Middle column; "Search mail…" input | yes — renderList (L994), input handler (L1005) | Filters THREADS seed in-memory (matches subject/body/from, L1041) | in-memory | no | Real corpus to search |
 | Filter chips (ALL / WITH NOTES / UNREAD) + bulk SELECT toggle | Above thread list | yes — chip handler ~L1017, SELECT toggle ~L1010 | In-memory filter of seed threads | in-memory | no | Real data |
@@ -338,7 +347,8 @@ Seed-fed: 8/11 (73%) — tabs, search, week navigation, cards, full board, score
 Dead buttons: 0.
 Biggest gap: no report source at all — the room's entire "brain memory" is a const on line 1720. The fixture fallback (SAMPLE_REPORTS) and the "Adapter output wins" comment show the seam was designed, but no adapter input is ever provided and no bridge call exists. Scores on the scorecard dials are distilled from prose, not computed from evidence.
 
-| Function | Where | Coded? | Data today | Talks to | Real? | Missing ||---|---|---|---|---|---|---|
+| Function | Where | Coded? | Data today | Talks to | Real? | Missing |
+|---|---|---|---|---|---|---|
 | Period tabs (DAILY / WEEKLY / MONTHLY / YEARLY) | Top tab bar | yes — periodTabs (L1291) | ALL_REPORTS from RAW_MD seed (L1720) parsed in-memory | in-memory | no | Query v7_intelligence_reports by period via bridge |
 | Search with highlight | Search bar under tabs | yes — searchBar (L1304), hl (L999) | Searches parsed seed reports in-memory | in-memory | no | Real corpus |
 | Week strip / week rail / day board navigation | "THIS WEEK" section + day chips | yes — weekStrip (L1108), weekRail (L1522), goDay (L1517), dayBoard (L1125) | Derived from seed daily reports (newestKey/weekOf) | in-memory | no | Real report-date calendar |
@@ -357,7 +367,8 @@ Real: 0% · Seed/demo-fed: ~100% · Dead (button with no handler): 0% — every 
 Biggest gap: no code path reaches nayanet_smart_ledger — the 28 demo beats + 1–2 "realReceipts" (themselves demo-staging artifacts) stand in for 381 real rows; no bridge method ledger() is called anywhere.
 Also missing: the lane/seat/action filtering and export that an accountability surface needs — they are absent, not partial.
 
-| Function | Where | Coded? | Data today | Talks to | Real? | Missing ||---|---|---|---|---|---|---|
+| Function | Where | Coded? | Data today | Talks to | Real? | Missing |
+|---|---|---|---|---|---|---|
 | Live hero stats (ITEMS FLOWING / SOURCES ALIVE / NEWEST) | Top hero section | yes (~770–790) | in-memory allItems array from PACKS | nowhere (computed locally) | no | real event counts from nayanet_smart_ledger via ledger() |
 | Source jewel filter buttons (INTEL REPORTS / SMART NOTES / LEDGER / CONNECT) | Jewel row under hero | yes (~815) | hardcoded meta map + setFilter() | nowhere | no | nothing structural; just needs real item counts |
 | Stream tabs ALL / INTEL / ACTIONS / CONNECTIONS | Tabs bar | yes (~856–880 setFilter) | FILTERS (~687) | nowhere | no | add lane / seat / action-kind / proof-state filters; none exist |
@@ -375,7 +386,8 @@ Also missing: the lane/seat/action filtering and export that an accountability s
 Real: ~15% (pin/edit persistence, share, export work locally) · Seed-fed: ~75% (all 26 blocks are the static CANON_BLOCKS seed; edits persist only in this browser) · Dead: ~10% (tab editor/menu fully coded but un-wired; ref-count display permanently 0; naya.library.pins.v1 key defined but unused).
 Biggest gap: no call to library() / nayanet_intelligent_blocks + nayanet_intelligence_index — the corpus is frozen at the 26-block seed, so search/tabs/provenance/ref-counts all operate on static content.
 
-| Function | Where | Coded? | Data today | Talks to | Real? | Missing ||---|---|---|---|---|---|---|
+| Function | Where | Coded? | Data today | Talks to | Real? | Missing |
+|---|---|---|---|---|---|---|
 | Category tabs (All 26 / Features / Smart Connect / The Ecosystem) | Tab row above grid | yes (renderSnTabs ~658) | hardcoded array in loadSnTabs() (~506) | nowhere | no | derive tabs/facets from nayanet_intelligence_index |
 | Search blocks (debounced) | Toolbar search input | yes (~927–932) | in-memory blocks (title/summary/content/topics) | nowhere | no | search against nayanet_intelligent_blocks |
 | Block cards grid + pin badges | Main grid | yes (renderBlocks ~702) | localStorage naya.library.blocks.v3 ← CANON_BLOCKS seed | localStorage only | partial (pins persist; corpus is seed) | corpus from nayanet_intelligent_blocks via library() |
@@ -395,7 +407,8 @@ Biggest gap: no call to library() / nayanet_intelligent_blocks + nayanet_intelli
 Real: 0% (from the intended members source) · Seed-fed: ~70% (5 hardcoded contacts; lists/notes persist in localStorage so the *mechanics* work locally) · Dead: ~30% — NayaPeople.add/promptName wired to nothing; strength/last-contact/search don't exist at all.
 Biggest gap: zero connection to members — 7,472 rows exist and no code path calls connections(); the room can never show anyone beyond the 5 hardcoded seeds without the add-contact button being wired.
 
-| Function | Where | Coded? | Data today | Talks to | Real? | Missing ||---|---|---|---|---|---|---|
+| Function | Where | Coded? | Data today | Talks to | Real? | Missing |
+|---|---|---|---|---|---|---|
 | Relationship cards (avatar, name, role, list membership) | Contact grid | yes (card ~530) | NayaPeople.ensureSeeded ← hardcoded PACK → localStorage | localStorage only | no | rows from members (7,472) via connections() |
 | Filter chips (All + lists, with counts) | Filter row | yes (renderFilters ~462, chip ~502) | localStorage naya.connections.lists | localStorage only | partial (lists persist locally) | real list/segment source |
 | + New list | Filter row button | yes (~472–499 inline form) | user input → localStorage | localStorage only | partial (works locally) | sync lists to a real store |
@@ -414,7 +427,8 @@ What works: Real navigation — 12 external links, name → identity handoff, an
 What's broken/dead: Auto-Login is silent-dead for first-timers (just an alert()); there is no health/status strip and no room drawer in this file — the shell nav is 12 external icons, not room links.
 Biggest gap: HUB_APP_URL = 'hub/' (relative) is the deployment seam; the "one deployment seam" comment is the only integration thinking — no fetch, no server identity, no room nav.
 
-| Function | Where | Coded? | Data today | Talks to | Real? | Missing ||---|---|---|---|---|---|---|
+| Function | Where | Coded? | Data today | Talks to | Real? | Missing |
+|---|---|---|---|---|---|---|
 | Auto-Login button → checkAutoLogin() (~L1705, wired onclick ~L1278) | Header, "Auto-Login" | yes | localStorage key nayanet_smart_alias | nowhere (redirect only) | no | A first-timer path — it just alert()s ("No saved key found…"). Nothing for new users. |
 | Name entry form submit (~L1740) | Hero, "Enter NayaNET →" + name field | yes | input value + sessionStorage.nayanet_user_name | navigates to identity.html?name=… | partial (real nav, device-only identity) | Server identity/account creation. |
 | "Jump back in →" (welcomeBack IIFE ~L1869) | Welcome-back panel (returning visitors only) | yes | localStorage nayanet_smart_name/nayanet_smart_alias | redirects to hubEntryUrl() | partial | Works as a local bookmark; no credential verification. |
@@ -427,7 +441,8 @@ What works: The full device-local flow works as designed — alias entry live-up
 What's broken/dead: Everything behind the flow is device-local theater: random "vault key," unprovisioned Smart Link domain, a permanently-visible security badge, a dead hub-app.html guard, and a "Naya Player" button that isn't a player.
 Biggest gap: No server-side identity — the key never leaves the device, so "auto-login" anywhere else is just reading another browser's localStorage; cross-device identity doesn't exist.
 
-| Function | Where | Coded? | Data today | Talks to | Real? | Missing ||---|---|---|---|---|---|---|
+| Function | Where | Coded? | Data today | Talks to | Real? | Missing |
+|---|---|---|---|---|---|---|
 | Alias input → updateSmartCredentials() (~L210) | "Type Your Custom Smart Alias" field | yes | input value, regex [a-z0-9] | 4 tiles in-page | no | Smart Link (alias.nayanet.app) is a claimed domain that is never provisioned; mail ID is a label. Nothing checks availability/resolves. |
 | "Enter the Intelligent Hub →" → activateAndRedirect() (~L217) | Big CTA | yes | input + random nayanet_key_ string | localStorage x3, then redirect to hub/?name=…&alias=… | partial | The "key" is Math.random() — device-local, not a credential; the honesty-guard checking for 'hub-app.html' is dead code (HUB_APP_URL is 'hub/', never matches). |
 | Greeting + daypart (daypart(), rawName from URL/session) | Card title | yes | URL param / sessionStorage / fallback "Pioneer" | nowhere | no | Fine as-is. |
@@ -440,7 +455,8 @@ What works: Steps 1–2 are genuinely functional (real external links to claude.
 What's broken/dead: Steps 3, 4, "Open Smart Doors," and the finale CTA are all self-anchors — the four most important actions on the page go nowhere. Step progress isn't persisted.
 Biggest gap: The onboarding funnel ends at step 2 — steps 3–4 are placeholders dressed as CTAs; the page is a 4-step flow where half the steps are dead.
 
-| Function | Where | Coded? | Data today | Talks to | Real? | Missing ||---|---|---|---|---|---|---|
+| Function | Where | Coded? | Data today | Talks to | Real? | Missing |
+|---|---|---|---|---|---|---|
 | Scroll-reveal (IntersectionObserver ~L243) | All sections | yes (cosmetic) | none | nowhere | n/a | — |
 | Step-completion handler ([data-step] click ~L257) | Every step button | partial | none | in-page only (adds .is-done, rail ✓) | no | No persistence — progress isn't saved; refresh resets all four checkmarks. |
 | Step 1 "Get Muse — free" | Step 1 action | yes | hardcoded URL | https://claude.ai (external) | yes (real link) | — |
@@ -455,7 +471,8 @@ Biggest gap: The onboarding funnel ends at step 2 — steps 3–4 are placeholde
 
 The schematics core: exactly what travels between parts, how, and whether it flows. A builder implementing any wire finds the contract here.
 
-| Wire | From → To | Carries | How | Status ||---|---|---|---|---|
+| Wire | From → To | Carries | How | Status |
+|---|---|---|---|---|
 
 | W1 capture | Scheduler → v7_create_smart_note (P10) | Note payload → transaction row (P8) | Workflow P15 with secrets NAYA_SUPABASE_URL · NAYA_SUPABASE_ANON_KEY · NAYA_RUNTIME_EMAIL · NAYA_RUNTIME_PASSWORD. Ran 14× Oct 7–10, 2 successes, then silence — no schedule trigger exists. | PR #2680 adds hourly pump |
 
@@ -463,7 +480,7 @@ The schematics core: exactly what travels between parts, how, and whether it flo
 
 | W3 project | Edge fn nayanet-github-dispatch (P14) → repo | Canonical note → IB-######/smart-note.md commit | Fail-closed, idempotent, single-transaction authority grant. 9 receipts and counting. | flows |
 
-| W4 emit | emit_hub_feeds.py (P17) → HUB/FEEDS/*.json (P18) | Table rows → public JSON: today.json (←191 block rows) · lists.json · spaces.json. 9 feeds remain: reports, library, connect, ledger, connections, mail, settings, manifest, feed. | Reads Supabase (credential per emitter config — verify in the #2678 diff); writes JSON to repo; merge-gated. | 3/12 in PR #2678 |
+| W4 emit | emit_hub_feeds.py (P17) → HUB/FEEDS/*.json (P18) | Table rows → public JSON: today.json (← nayanet_intelligence_index + smart_note_artifacts — settled by #2678 diff read 2026-10-16; was provisionally attributed to blocks) · lists.json · spaces.json. 9 feeds remain: reports, library, connect, ledger, connections, mail, settings, manifest, feed. | Reads Supabase via the Management API server-side (bypasses RLS — settled by #2678 diff read; must stay server-side-only and documented as such); writes JSON to repo; merge-gated. Staleness caveat: committed JSONs are stale-on-arrival without a refresh mechanism — capped below the merge bar until one exists. | 3/12 in PR #2678 |
 
 | W5 distribute | Merge → raw.githubusercontent.com | Committed feed files → CDN bytes | Nothing to build — merge is the deploy. Feed freshness = emitter cadence + merge latency. | waiting on merges |
 
@@ -481,7 +498,8 @@ Builds have a strict sequence — each row names what blocks it and the exact ac
 
 *[Diagram: see the visual HTML edition — nayapower-schematics.html]*
 
-| # | Build | Blocked by | Done when ||---|---|---|---|
+| # | Build | Blocked by | Done when |
+|---|---|---|---|
 
 | B1 | Merge the dock: #2676 #2678 #2679 #2680 | Review (merge bar: green CI, ≥9.5, different seat, no objection) | All four merged; HUB/FEEDS/today.json served from raw.githubusercontent.com |
 
@@ -502,6 +520,37 @@ Builds have a strict sequence — each row names what blocks it and the exact ac
 | B9 | 9 remaining emitters (reports, library, connect, ledger, connections, mail, settings, manifest, feed) | B1 (pattern) · D2 for mail | Each feed file committed on its cadence; rooms swapped |
 
 | B10 | UI honesty + dead-link sweep (any seat) | none | Spaces header reads SMART SPACES; ROOM_FILES map corrected; smartmail-v1.2.html dead link repointed; mail enforces snippets-only; identity badge honest; start.html CTAs land somewhere real |
+
+D5 · Write-side auth for the return loopShawn decides
+
+Options: (a) session-token writes via RLS; (b) edge-function intermediary holding the service key. The browser is anon and the table is RLS-locked — schema without auth is a doc, not a build. Unblocks: W7/B6.
+
+Peer-review work orders (F1–F9)
+
+From the three cold peer reviews (R1 7.5 · R2 7.0 · R3 8.7). Resolved items stay listed so the history is visible.
+
+| # | Fix | Status |
+|---|---|---|
+
+| F1 | today.json source contradiction (W4 vs loader spec) | resolved — index + artifacts, via #2678 diff read |
+
+| F2 | Feed JSON schema ownership: emitter defines, room consumes | open |
+
+| F3 | B3 startability ruling: prep now, implement post-B2; D3 gates targets | open |
+
+| F4 | Write-side auth decision | D5 — Shawn |
+
+| F5 | W7 event contract from one live smart_note_events row read | open |
+
+| F6 | B6 blocker wording: correctness (seed ids ≠ real block ids), not volume | applied |
+
+| F7 | Identify the engine's learn/distill component, or mark B7-must-specify | open |
+
+| F8 | Glossary: door (hub room, 12) vs connect-door (integration, 9) vs surface (audited UI, 14) vs step (loop stage, 12) | applied below |
+
+| F9 | Enumerate the 12 proof steps, or mark 4 TBD (8 named today) | open |
+
+Glossary (F8): a door is a hub room (12); a connect-door is an integration on the door board (9: AI, Data, GitHub, MCP, Naya-to-Naya, Email, Calendar, Voice, Web); a surface is an audited UI surface (14, incl. entry pages); a step is a loop stage (12). A wire is an interface contract between parts (8).
 
 ## ⑦ The Decisions
 
@@ -536,4 +585,6 @@ NayaPOWER System Schematics · the staple document.
 
 Drawn from live bytes: Supabase OpenAPI pull (47 paths), workflow run history, PR states via API, room-file audit (file:line), Shawn's 12-door model. Statuses verified 2026-10-16. Green means evidence; everything else says what it is. Provenance note: the 12,026-row / 22-table totals were independently verified via Management API; per-table counts (191 blocks, 381 ledger rows, 7,472 members) are relayed from the system map and not yet independently reproduced.
 
+Dock validation (2026-10-16, independent): all four dock PRs NEED WORK — #2680 payload blocker fixed, re-validating; #2678 needs refresh mechanism + server-side docs; #2679 needs envelope doc correction; #2676 needs green CI + receiver evidence. Merge order: #2680 → #2678 → #2679 → #2676, each gated on its fixes.
+Self-score 9.4 (peer builders'-briefing scores 7.0–8.7; gaps work-ordered above, not hidden).
 Companion depth: team-nitro/complete-puzzle/room-function-audit.md (the 181-function audit) · team-nitro/complete-puzzle/blueprint.md (per-door dossiers) · team-nitro/loader-specs.md (adapter specs) · team-nitro/runtime-contract.md (bridge contract) · team-nitro/data-flow-map.md (sender→receiver audit).
