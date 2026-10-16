@@ -40,11 +40,15 @@ Rooms 1–5 (Smart Feed, Today, Reports, Smart Ledger, Activity Feed) are covere
 **Returns:** item check/uncheck → row update → realtime broadcast → every device converges.
 **Honest states:** offline edits queue locally and sync on reconnect; the page says "2 changes waiting to sync."
 
-## Room 10 — Smart Mail ⛔ BLOCKED on Shawn's word
+## Room 10 — Smart Mail (NayaNET-native messaging — NOT email)
+**Shawn's word, 2026-10-16 ~00:25 PDT:** Smart Mail is the communication system *inside* NayaNET — mail anyone by their alias, mail the spaces. It is not email and never touches external mail. (Correction: the earlier "mail line" hold was premised on external email — wrong premise. The internal system has his word: build it.)
 **Audited:** `mail-3.html` (188 KB). Keys: `naya.smartmail.sent`, `naya.mail.compose.request`, `naya.people.registry`. 0 network. No bridge seam.
-**Receives (when unblocked):** `mail-thread` — `{id, subject, preview, from, received_at, thread_ref}`.
-**Sender (one writer):** the mail line — which does not exist yet. **The mail read path is one of the two decisions owed by Shawn** (standing: "the read-path word (unlocks both directions at once) and the mail line"). No mail contract ships, no mail table is created, no mail code is written until his word lands. The compose box stays a local draft pad (`naya.mail.compose.request`) and says so honestly.
-**Contract status:** SHAPE DEFINED, BUILD BARRED. The room is contract-ready the day he says go.
+**Receives:** `mail-thread` — `{id, subject, preview, from_alias, to_alias|space_ref, received_at, thread_ref}`; `mail-message` — `{id, thread_id, from_alias, body, sent_at}`.
+**Sender (one writer):** the messaging service (to build) — alias registry + space channels. Tables: new `smart_mail_threads`, `smart_mail_messages` (to create).
+**Returns:** compose → send → row insert → realtime → the recipient's Smart Mail lights up. The compose box stops being a draft pad and becomes a sender.
+**Addressing:** aliases resolve via the people registry and the space registry (`naya.people.registry` is the local seed).
+**Honest states:** "no messages yet," offline outbox ("1 message waiting to send"), unknown alias ("no one on NayaNET goes by that alias").
+**Contract status:** UNBLOCKED — build it.
 
 ## Room 11 — Smart Spaces
 **Audited:** `spaces-4.html` (175 KB). Keys: `naya.spaces.pins.v1`, `naya.connection.v1`. 0 network. No bridge seam.
@@ -77,6 +81,6 @@ Rooms 1–5 (Smart Feed, Today, Reports, Smart Ledger, Activity Feed) are covere
 4. PowerCast (own goal, own pipeline — parallelizable)
 5. Spaces, Connections (new tables, consent paths — steady work)
 6. Settings (write-path service + gate classes — careful work)
-7. Mail — BARRED until Shawn's word. Shape is ready; hands off.
+7. Smart Mail (UNBLOCKED per Shawn's word — alias messaging + space channels, NayaNET-native)
 
 **Amendment guardrail:** frozen means frozen — version bump + migration note + both sides updated. Silent shape drift is a breach.
