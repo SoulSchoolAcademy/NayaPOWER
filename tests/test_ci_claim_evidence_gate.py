@@ -222,3 +222,65 @@ def test_run_gate_reaches_evidence_assembly():
         rc = run_gate("o/r", "1", "abc123", "/nonexistent", "token")
     # Bare attestation, no evidence: the gate must FAIL (closed), not crash.
     assert rc == 1
+
+
+# --- w269: HTTP error detail (the 403 byte-level discriminator) --------------
+# Mocked IO only -- no network. The whole point of w269: urllib's bare
+# error string discards GitHub's JSON error payload, so a 403 reads as
+# "Forbidden (GATE_BLIND)" with quota-vs-permission UNDETERMINED. The detail
+# line restores the discriminator.
+
+import io  # noqa: E402
+import urllib.error  # noqa: E402
+from http.client import HTTPMessage  # noqa: E402
+
+from ci_claim_evidence_gate import api_get  # noqa: E402
+
+
+def _http_error_403(body: str):
+    headers = HTTPMessage()
+    headers["X-RateLimit-Limit"] = "5000"
+    headers["X-RateLimit-Remaining"] = "0"
+    return urllib.error.HTTPError(
+        url="https://api.github.com/repos/o/r/pulls/1",
+        code=403,
+        msg="Forbidden",
+        hdrs=headers,
+        fp=io.BytesIO(body.encode("utf-8")),
+    )
+
+
+def test_http_error_logs_response_body_and_headers(capsys):
+    """A 403 must log the server's JSON error + headers before failing closed."""
+    payload = '{"message": "API rate limit exceeded for installation ID 12345.", "documentation_url": "https://docs.github.com/rest/overview/resources-in-the-rest-api#rate-limiting"}'
+    with mock.patch("urllib.request.urlopen", side_effect=_http_error_403(payload)):
+        try:
+            api_get("/repos/o/r/pulls/1", "token")
+        except GateBlind as exc:
+            assert "HTTP 403" in str(exc)
+        else:
+            raise AssertionError("api_get did not raise GateBlind on 403")
+    out = capsys.readouterr().out
+    assert "GATE_BLIND HTTP DETAIL" in out
+    assert "API rate limit exceeded" in out  # the discriminator survives
+    assert "X-RateLimit-Remaining" in out
+
+
+def test_http_error_detail_survives_unreadable_body(capsys):
+    """An unreadable response body must not crash the detail formatter."""
+    err = _http_error_403("x")
+
+    def boom():
+        raise OSError("fp broken")
+
+    err.read = boom
+    with mock.patch("urllib.request.urlopen", side_effect=err):
+        try:
+            api_get("/repos/o/r/pulls/1", "token")
+        except GateBlind:
+            pass
+        else:
+            raise AssertionError("api_get did not raise GateBlind on 403")
+    out = capsys.readouterr().out
+    assert "GATE_BLIND HTTP DETAIL" in out
+    assert "<response body unreadable>" in out
