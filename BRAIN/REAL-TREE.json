@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-10-15",
-  "receipt_basis_commit": "ba62638704256b012c20e41fe7f53cc3b62b1b44",
-  "inventory_file_count": 1320,
+  "generated_at": "2026-10-16",
+  "receipt_basis_commit": "9f80e8eccfbe8256ec7ce069c61cd38cc86430ce",
+  "inventory_file_count": 1321,
   "domain_counts": {
     "00-ACTIVATION": 5,
     "00-ARCHITECTURE": 5,
@@ -19,7 +19,7 @@
     "10-INTERFACES": 380,
     "11-KNOWLEDGE": 7,
     "12-ENGINEERING": 25,
-    "90-OPERATIONS": 84,
+    "90-OPERATIONS": 85,
     "99-ARCHIVE": 2,
     "ROOT": 6
   },
@@ -6259,6 +6259,11 @@
       "path": "BRAIN/90-OPERATIONS/contracts/verification-contract.md",
       "blob_sha": "e70095fcbe076845ac18be65a4ff93ddb491253e",
       "size": 19666
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/dock-checkrun-head-attachment.md",
+      "blob_sha": "908e9e44350ac1cfe30e818a83240636b078a024",
+      "size": 5505
     },
     {
       "path": "BRAIN/90-OPERATIONS/field-manuals/01-behavior.human.md",
