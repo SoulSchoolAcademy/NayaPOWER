@@ -2,10 +2,12 @@
 """PR-body rung of the merge receipt gate (Lane 9, t922 rebuild).
 
 Verifies that a PR body's SCORECARD-RECEIPT-PIN block pins the EXACT merge
-head SHA. Blocks three failure modes:
+head SHA. Blocks four failure modes:
   MISSING  - no receipt-pin block in the PR body
   TAMPERED - block present but fields malformed or empty
   STALE    - pinned SHA != the expected merge head SHA
+  FUTURE   - decided_at is dated later than now (+skew): the receipt cannot
+             have been posted yet, so it certifies nothing (Judge wave-216)
 
 Usage:
     python3 tools/check_scorecard_receipt_pin.py <expected-head-sha> [pr-body-file]
@@ -33,19 +35,35 @@ docs/merge-receipt-gate-wiring.md.
 
 NAMED HOLE (2026-10-11): no cryptographic signature verification of the pin -
 tamper detection here is field-integrity only (40-hex shape, non-empty
-attribution, parseable timestamp). A signing key is a protected-ops decision
-and belongs to Shawn's gate. STILL OPEN: CI wiring as a blocking check +
-Shawn's required-check click - readiness is documented, the click is his.
+attribution, parseable timestamp, decided_at not future-dated since 2026-10-16).
+A signing key is a protected-ops decision and belongs to Shawn's gate.
+STILL OPEN: CI wiring as a blocking check + Shawn's required-check click -
+readiness is documented, the click is his.
 """
 
 import json
+import os
 import re
 import sys
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 
 BLOCK_HEADER = "## SCORECARD-RECEIPT-PIN"
 FULL_SHA_RE = re.compile(r"^[0-9a-f]{40}$")
 REQUIRED_KEYS = ("merge_head_sha", "decided_by", "decided_at", "board_comment_id")
+
+# Judge wave-216 (2026-10-16, L300/L316 class): a receipt timestamped in the
+# future passed the mechanical gate on shape alone (#2682's future-dated
+# receipt). Temporal honesty now fails closed. Naive timestamps are read as
+# UTC; a small skew absorbs CI clock drift without opening the hole.
+# Overridable at runtime for CI clock weirdness: RECEIPT_PIN_FUTURE_SKEW_SECONDS.
+def _skew_seconds():
+    try:
+        return max(0, int(os.environ.get("RECEIPT_PIN_FUTURE_SKEW_SECONDS", "300")))
+    except ValueError:
+        return 300
+
+
+FUTURE_SKEW_SECONDS = _skew_seconds()
 
 
 def _extract_pin_block(body):
@@ -75,6 +93,17 @@ def _parse_ts(value):
         return None
 
 
+def _is_future_dated(dt, now, skew_seconds=FUTURE_SKEW_SECONDS):
+    """True when the receipt claims a decision later than now (+skew).
+
+    A future-dated decided_at cannot be a real posted receipt — temporal
+    dishonesty fails closed (Judge wave-216, L300/L316 class).
+    """
+    if dt.tzinfo is None:
+        dt = dt.replace(tzinfo=timezone.utc)
+    return dt > now + timedelta(seconds=skew_seconds)
+
+
 def check_pin(body, expected_head_sha):
     """Return (verdict, reason). verdict is 'PASS' or a failure class."""
     if not isinstance(expected_head_sha, str) or not FULL_SHA_RE.match(expected_head_sha):
@@ -93,8 +122,15 @@ def check_pin(body, expected_head_sha):
             "pinned SHA %s... != expected head %s... (head moved - re-score on the current head)"
             % (pinned[:12], expected_head_sha[:12])
         )
-    if _parse_ts(fields["decided_at"]) is None:
+    decided = _parse_ts(fields["decided_at"])
+    if decided is None:
         return "TAMPERED", "decided_at not a parseable ISO-8601 timestamp"
+    if _is_future_dated(decided, datetime.now(timezone.utc)):
+        return "FUTURE", (
+            "decided_at %s is later than now (+%ds skew) - the receipt cannot "
+            "have been posted yet (temporal dishonesty fails closed)"
+            % (fields["decided_at"], FUTURE_SKEW_SECONDS)
+        )
     if not re.fullmatch(r"\d+", fields["board_comment_id"]):
         return "TAMPERED", "board_comment_id must be digits (receipt must be posted)"
     return "PASS", "pin valid: receipt certifies exact merge head %s" % expected_head_sha

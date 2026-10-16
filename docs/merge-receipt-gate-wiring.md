@@ -17,6 +17,9 @@ EXACT merge head SHA being merged. The gate blocks merges whose receipt is:
   receipt not posted (no board comment id)
 - **STALE** — pinned SHA != the current merge head SHA (head moved since the
   scorecard ran — re-score on the current head, re-pin, re-verify)
+- **FUTURE** — `decided_at` is later than now (+skew): the receipt cannot
+  have been posted yet, so it certifies nothing (temporal honesty fails
+  closed; Judge wave-216, L300/L316 class, closes the hole #2682 exploited)
 
 ## The two rungs
 
@@ -31,7 +34,7 @@ python3 tools/check_scorecard_receipt_pin.py <expected-head-sha> [pr-body-file]
 - Required keys: `merge_head_sha`, `decided_by`, `decided_at`,
   `board_comment_id`.
 - Exit 0 + JSON `{"verdict": "PASS"}` on a valid pin; exit 1 + JSON
-  `{"verdict": "MISSING"|"TAMPERED"|"STALE", "reason": ...}` otherwise.
+  `{"verdict": "MISSING"|"TAMPERED"|"STALE"|"FUTURE", "reason": ...}` otherwise.
 
 Receipt-pin block format:
 
@@ -67,7 +70,7 @@ separate precondition.
 - **Triggers:** `pull_request` `opened` + `synchronize`, base branch `main`.
 - **Check name as it appears in Actions:** `Receipt pin gate / Receipt pin — exact head SHA`.
 - **What it does:** Rung 1 runs `tools/check_scorecard_receipt_pin.py
-  <head-sha>` against the PR body (fail-closed: MISSING/TAMPERED/STALE → red);
+  <head-sha>` against the PR body (fail-closed: MISSING/TAMPERED/STALE/FUTURE → red);
   Rung 2 runs `tools/auto_merge_gate.py --p12-only` on the pin extracted from
   the body. Two rungs, same rule: the receipt must certify the exact head.
 - **Scope:** lane branches (`naya/*`) only; other PRs get an explicit PASS
@@ -80,8 +83,9 @@ separate precondition.
 
 ## Proven
 
-`tests/test_receipt_pin_gate.py` — 19 tests (14 from t922 + 2 for the pin CLI's
-`--pr-state-out` + 3 for the gate's `--p12-only`), all passing.
+`tests/test_receipt_pin_gate.py` — 28 tests (14 from t922 + 2 for the pin CLI's
+`--pr-state-out` + 3 for the gate's `--p12-only` + 9 for the FUTURE rung:
+8 behavior + 1 strict-operator pin with a fixed now), all passing.
 
 Fail-closed demos (t952, exact workflow commands, local simulation —
 a real Actions run awaits the first PR off this branch; no PR opened this
@@ -91,5 +95,7 @@ tick per brief):
 - (b) pin naming a stale head SHA → `{"verdict": "STALE", ...}`, exit 1 → FAIL
 - (c) pin naming the exact head SHA → `{"verdict": "PASS"}` + P12
   `{"allowed": true, "reasons": []}`, exit 0 → green
+- (d) pin with future-dated `decided_at` → `{"verdict": "FUTURE", ...}`,
+  exit 1 → FAIL, no pr-state written (P12 never sees it)
 
 Exact run evidence lives in the t952 lane receipt.

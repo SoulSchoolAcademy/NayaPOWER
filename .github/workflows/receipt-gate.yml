@@ -2,8 +2,9 @@ name: Receipt pin gate
 
 # Lane 9 (Code Health), 2026-10-11: the rebuilt receipt gate (exact-head-SHA pin)
 # wired as a blocking CI check. The scorecard receipt is preventative, not
-# archival: a PR whose receipt is MISSING, TAMPERED, or pinned to a STALE head
-# must not merge — the head must be re-scored and the receipt re-pinned.
+# archival: a PR whose receipt is MISSING, TAMPERED, pinned to a STALE head,
+# or FUTURE-dated must not merge — the head must be re-scored and the receipt
+# re-pinned.
 #
 # The #2385 lesson is law here: this check DECIDES (pass or fail). It never
 # skips into Pending. PRs outside the governed scope get an explicit PASS
@@ -52,7 +53,8 @@ jobs:
 
           # Rung 1 — PR body: the receipt must pin the exact PR head SHA.
           # Missing block -> MISSING, malformed fields -> TAMPERED,
-          # pin != head SHA -> STALE. Any of those FAILS this check.
+          # pin != head SHA -> STALE, decided_at in the future -> FUTURE.
+          # Any of those FAILS this check.
           printf '%s' "$PR_BODY" > /tmp/pr-body.md
           python3 tools/check_scorecard_receipt_pin.py \
             "$HEAD_SHA" /tmp/pr-body.md \
