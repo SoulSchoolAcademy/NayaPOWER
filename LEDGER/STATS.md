@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-16 06:13 UTC_
+_Last updated: 2026-10-16 06:43 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 2627
-- ✅ Verified (8+): 2612
+- **Total scored actions:** 2638
+- ✅ Verified (8+): 2623
 - 🟡 Partial (5–7): 14
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 1
@@ -15,13 +15,13 @@ _Last updated: 2026-10-16 06:13 UTC_
 
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
-| Team 1 | Naya Verity | 245 | 9.1 | 9.6 |
-| Team 2 | Naya Sage | 240 | 8.8 | 9.5 |
-| Team 3 | Naya Judge | 176 | 8.9 | 9.5 |
-| Team 4 | Naya Mason | 224 | 9.0 | 9.6 |
-| Team 5 | Naya Seeker | 201 | 9.0 | 9.5 |
+| Team 1 | Naya Verity | 246 | 9.1 | 9.6 |
+| Team 2 | Naya Sage | 242 | 8.8 | 9.5 |
+| Team 3 | Naya Judge | 177 | 8.9 | 9.5 |
+| Team 4 | Naya Mason | 226 | 9.0 | 9.6 |
+| Team 5 | Naya Seeker | 202 | 9.0 | 9.5 |
 | Team 6 | Naya Heir | 172 | 9.0 | 9.6 |
-| Team 7 | Naya Conductor | 236 | 8.9 | 9.5 |
+| Team 7 | Naya Conductor | 237 | 8.9 | 9.5 |
 | Team 8 | Naya Sentinel | 203 | 9.0 | 9.5 |
 | Team 9 | Naya Smith | 264 | 9.0 | 9.5 |
 | Team 10 | Naya Librarian | 274 | 9.0 | 9.5 |
@@ -118,6 +118,7 @@ _Last updated: 2026-10-16 06:13 UTC_
 - **lane-scorer-20261015-2250:** 13 actions, avg 9.0/10
 - **lane-scorer-20261015-2300:** 15 actions, avg 8.9/10
 - **lane-scorer-20261015-2310:** 23 actions, avg 9.1/10
+- **lane-scorer-20261015-2320:** 4 actions, avg 9.4/10
 - **scorer-20261014-1520:** 2 actions, avg 9.2/10
 - **scorer-20261014-1540:** 3 actions, avg 8.5/10
 - **gap-t0771:** 2 actions, avg 9.0/10
@@ -183,6 +184,8 @@ _Last updated: 2026-10-16 06:13 UTC_
 - **lane-scorer-20261015-1430:** 3 actions, avg 9.4/10
 - **gap-1420:** 1 actions, avg 9.0/10
 - **gap-lane-scorer-20261015-1420:** 1 actions, avg 9.5/10
+- **lane-scorer-20261015-2330:** 3 actions, avg 9.0/10
+- **lane-scorer-20261015-2340:** 4 actions, avg 8.9/10
 - **scorer-20261014-1440:** 8 actions, avg 8.9/10
 - **gap-t0767:** 2 actions, avg 9.5/10
 - **scorer-20261014-1950:** 5 actions, avg 8.9/10
