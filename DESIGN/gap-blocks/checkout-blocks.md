@@ -34,9 +34,9 @@ What it is: the board that says "here is what you're paying for" before any mone
         <span class="pay-item-meta">Annual membership · renews Oct 2027</span>
       </div>
       <div class="pay-stepper" role="group" aria-label="Quantity for Naya MAXIS AI Score">
-        <button type="button" class="pay-step" aria-label="Decrease quantity">−</button>
+        <button type="button" class="naya-btn icon micro pay-step" aria-label="Decrease quantity">−</button>
         <output class="pay-qty" aria-live="polite">1</output>
-        <button type="button" class="pay-step" aria-label="Increase quantity">+</button>
+        <button type="button" class="naya-btn icon micro pay-step" aria-label="Increase quantity">+</button>
       </div>
       <span class="pay-price">$149.00</span>
     </li>
@@ -47,9 +47,9 @@ What it is: the board that says "here is what you're paying for" before any mone
         <span class="pay-item-meta">Cohort 12 · starts Nov 3</span>
       </div>
       <div class="pay-stepper" role="group" aria-label="Quantity for AI Masterclass seat">
-        <button type="button" class="pay-step" aria-label="Decrease quantity">−</button>
+        <button type="button" class="naya-btn icon micro pay-step" aria-label="Decrease quantity">−</button>
         <output class="pay-qty" aria-live="polite">2</output>
-        <button type="button" class="pay-step" aria-label="Increase quantity">+</button>
+        <button type="button" class="naya-btn icon micro pay-step" aria-label="Increase quantity">+</button>
       </div>
       <span class="pay-price">$298.00</span>
     </li>
@@ -60,9 +60,9 @@ What it is: the board that says "here is what you're paying for" before any mone
         <span class="pay-item-meta">14 episodes · yours to keep</span>
       </div>
       <div class="pay-stepper" role="group" aria-label="Quantity for Powercast bundle">
-        <button type="button" class="pay-step" aria-label="Decrease quantity">−</button>
+        <button type="button" class="naya-btn icon micro pay-step" aria-label="Decrease quantity">−</button>
         <output class="pay-qty" aria-live="polite">1</output>
-        <button type="button" class="pay-step" aria-label="Increase quantity">+</button>
+        <button type="button" class="naya-btn icon micro pay-step" aria-label="Increase quantity">+</button>
       </div>
       <span class="pay-price">$49.00</span>
     </li>
@@ -172,21 +172,13 @@ What it is: the board that says "here is what you're paying for" before any mone
 .pay-item-name{ display:block; font-size:15px; font-weight:600; color:#fbfbfd; }
 .pay-item-meta{ display:block; font-size:13px; color:rgba(255,255,255,.72); margin-top:2px; }
 
-/* qty stepper */
+/* qty stepper — the buttons ARE .naya-btn.icon.micro: the one DNA, no bespoke
+   button system. .pay-step carries only the stepper's glyph sizing; every
+   button visual — gradient heart, white-ish idle border, insets, lift,
+   flowing conic ring, press — comes from .naya-btn. The 44px circle is
+   Law 5's minimum touch target. */
 .pay-stepper{ display:flex; align-items:center; gap:8px; }
-.pay-step{
-  width:34px; height:34px; border-radius:50%; cursor:pointer;
-  background:#050505; color:#fbfbfd; font-size:17px; line-height:1;
-  border:1.5px solid rgba(255,255,255,.65);
-  transition:border-color .18s var(--ease), box-shadow .18s var(--ease), transform .18s var(--ease);
-}
-.pay-step:hover{
-  transform:translateY(-2px);
-  border-color:#a06bff;
-  box-shadow:0 0 26px -4px rgba(160,107,255,.8);
-}
-.pay-step:active{ transform:translateY(1px) scale(.96); }
-.pay-step:focus-visible{ outline:2px solid #fff; outline-offset:3px; }
+.pay-step{ font-size:17px; line-height:1; flex:none; }
 .pay-qty{ min-width:22px; text-align:center; font-size:15px; font-weight:700; color:#fbfbfd; }
 .pay-price{ font-size:15px; font-weight:700; color:#fbfbfd; min-width:78px; text-align:right; font-variant-numeric:tabular-nums; }
 
@@ -208,26 +200,45 @@ What it is: the board that says "here is what you're paying for" before any mone
 .pay-promo.is-invalid .pay-promo-input{ border-color:#ff5e6c; box-shadow:0 0 26px -6px rgba(255,94,108,.6); }
 .pay-promo.is-invalid .pay-promo-msg{ color:#ff8a96; }
 
-/* canonical button, checkout-local skin of .naya-btn DNA */
+/* ---------- .naya-btn — the one button DNA (canonical, per DESIGN/BLOCKS.md) ----------
+   54px min-height, 999px radius, black gradient heart, 1.5px white-ish idle
+   border, inset top-light + inset bottom-shadow + drop shadow. Hover lifts
+   with a flowing conic ring; press compresses. No flat buttons — ever.
+   The icon variant is glyph-only: 58px circle, .micro 44px. */
 .naya-btn{
   --nb-accent:#a06bff; --nb-accent-rgb:160,107,255;
+  position:relative;
   display:inline-flex; align-items:center; justify-content:center; gap:10px;
-  min-height:52px; padding:0 26px; border-radius:999px; cursor:pointer;
+  min-height:54px; padding:0 26px; border-radius:999px; cursor:pointer;
   background:linear-gradient(180deg,#101014 0%,#050505 60%,#020203 100%);
   color:#fbfbfd; font-size:14px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
   border:1.5px solid rgba(255,255,255,.85);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.22), inset 0 -6px 12px rgba(0,0,0,.6), 0 10px 24px rgba(0,0,0,.6);
   transition:border-color .18s cubic-bezier(.16,.84,.22,1), box-shadow .18s cubic-bezier(.16,.84,.22,1), transform .18s cubic-bezier(.16,.84,.22,1);
 }
+/* the flowing conic ring — ignition you can watch travel */
+.naya-btn::after{
+  content:""; position:absolute; inset:-3px; border-radius:inherit; pointer-events:none;
+  background:conic-gradient(from 0deg, transparent 0deg, rgba(var(--nb-accent-rgb),.95) 50deg, transparent 100deg);
+  -webkit-mask:radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2px));
+  mask:radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2px));
+  opacity:0; transition:opacity .18s cubic-bezier(.16,.84,.22,1);
+}
 .naya-btn:hover{
   transform:translateY(-2px);
   border-color:var(--nb-accent);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.25), inset 0 -6px 12px rgba(0,0,0,.6), 0 10px 24px rgba(0,0,0,.6), 0 0 32px -4px rgba(var(--nb-accent-rgb),.8);
 }
+.naya-btn:hover::after{ opacity:1; animation:nb-ring 1.5s linear infinite; }
 .naya-btn:active{ transform:translateY(1px) scale(.98); }
 .naya-btn:focus-visible{ outline:2px solid #fff; outline-offset:4px; }
 .naya-btn:disabled{ opacity:.45; cursor:not-allowed; transform:none; box-shadow:inset 0 -6px 12px rgba(0,0,0,.6); }
 .naya-btn:disabled:hover{ border-color:rgba(255,255,255,.85); }
+.naya-btn:disabled::after{ display:none; }
+@keyframes nb-ring{ to{ transform:rotate(360deg); } }
+/* icon variant — glyph-only actions */
+.naya-btn.icon{ width:58px; height:58px; min-height:0; padding:0; border-radius:50%; }
+.naya-btn.icon.micro{ width:44px; height:44px; }
 
 /* totals: labels left, numbers right — the table law */
 .pay-totals{ margin:14px 0 0; }
@@ -272,6 +283,7 @@ What it is: the board that says "here is what you're paying for" before any mone
 @media (prefers-reduced-motion:reduce){
   .pay-board,.pay-item,.pay-step,.naya-btn,.pay-grand{ transition:none; }
   .pay-board:hover,.pay-item:hover,.pay-step:hover,.naya-btn:hover,.pay-grand:hover{ transform:none; }
+  .naya-btn:hover::after{ opacity:0; animation:none; } /* the conic ring never shows */
 }
 ```
 
@@ -289,7 +301,7 @@ Empty-state HTML (toggled by the integrator with `.is-empty` when the cart has n
 
 - **Rest:** black ground, white-lit 1.5px edges, corner jewel ◆ in the board's tone. Items rest dark; thumb jewels carry each item's own color (law order, never twice in a row).
 - **Hover (board):** lifts 5px, border and glow ignite in the board's tone (choosing purple). **Hover (item):** lifts 2px, border ignites in that item's own jewel color. **Hover (grand total):** the serif total ignites **gold** — the only place gold appears, and only on touch. Gold is attention, earned.
-- **Active/press:** steppers compress (down 1px, scale .96); the Apply button presses in like every `.naya-btn`.
+- **Active/press:** steppers press in like every `.naya-btn` (down 1px, scale .98); the Apply button presses in the same way.
 - **Focus:** `:focus-visible` gives a 2px white ring on every stepper, input, and button. Focus is not optional — Law 5.
 - **Disabled:** the Apply button drops to 45% opacity, no motion, no ignition. Disabled never ignites.
 - **Empty:** `.is-empty` hides items/promo/totals and shows the quiet empty panel with a live "Browse the catalog" button — the board is idle, not dead.
@@ -304,10 +316,15 @@ Empty-state HTML (toggled by the integrator with `.is-empty` when the cart has n
 
 - **Corner jewel ◆:** the board's identity mark — purple, choosing intelligence. It says "this board belongs to the checkout."
 - **Thumb jewels:** rotated diamonds, one spectrum step per item in law order. They are *identity*, not decoration — in a cart of five lookalike items, the jewel is how your eye finds the one you're editing.
-- **Qty stepper:** real `<button>`s, 34px with 44px of usable tap through padding, `<output aria-live>` so screen readers hear the count change. It will not fake — when quantity hits 0, the item leaves the list; no phantom rows.
+- **Qty stepper:** real `<button>`s wearing `.naya-btn.icon.micro` — 44px
+  circles, Law 5's minimum touch target, the one DNA (gradient heart,
+  white-ish idle border, flowing conic ring on hover, press compresses).
+  `<output aria-live>` so screen readers hear the count change. It will not
+  fake — when quantity hits 0, the item leaves the list; no phantom rows.
 - **Promo row:** one code, one button, one message line. It applies a discount only when the backend accepts the code — `.is-applied` is set by a real response, never by the front end guessing.
 - **Totals:** labels left, numbers right, tabular figures so columns stay honest. Tax says "estimated" until the backend confirms it — the word *estimated* is the honesty.
 - **What it will NOT fake:** this board never shows a price the page can't prove. If prices arrive asynchronously, the totals area shows a quiet "Loading your total…" state rather than a zero or a guess. Fake totals are a trust violation (Law 75).
+- **Backend gate:** every number on this board — line prices, the promo discount, tax, the total — renders only from backend-confirmed values. The specimen's figures ($535.68 and friends) are illustrative; a live build binds all three renderings of the total (PAY-001's board, PAY-002's Pay button label, PAY-003's hologram) to the same confirmed source (family contract §1). Nothing here computes money client-side.
 
 ---
 
@@ -452,6 +469,11 @@ The submit button starts **disabled** (45% opacity, no ignition — disabled nev
 - **The Pay button:** one per view, ≥52px, carries the real total. It stays disabled until validation passes — a pay button that fires on a broken form is unfinished.
 - **The secure line:** "Locked in transit. We never see your full card number — only the payment processor does." A promise in plain words. It must be *true* for the build that ships this block.
 - **PRIVACY BOUNDARY (this is part of the spec):** card data lives **only** in the input fields, bound for the payment backend on submit. This block **never** renders a card number back as text — not in a summary, not in an error message, not in a receipt preview. It **never** logs card fields to console, analytics, or error reporters (strip them before any capture). The display layer shows **at most the last-4 plus the brand** ("Visa ···· 4242"), and only when the backend returns that masked form. No full number ever touches the DOM as text. This is not a guideline — a build that echoes a PAN violates the block.
+Enforced mechanically: `DESIGN/gap-blocks/validate-checkout-privacy.sh`
+fails the build on any PAN-shaped string in the spec, any card identifier
+outside an input attribute, any logging call, or any display-layer number
+beyond last-4 + brand. Run it in CI; the boundary is structural, not
+aspirational.
 - **What it will NOT fake:** the form never shows a "processing" success before the processor answers, never pre-fills test card numbers, and the brand jewel never lights for a brand the digits don't prove. A specimen may show the layout with placeholder-shaped fields — it must never show a plausible real card number (Law 75: fake success is a trust violation; fake data is its cousin).
 
 ---
@@ -612,6 +634,7 @@ The honest receipt line has two variants — only one ships per render:
 - **Charged-to line:** brand + last-4 only ("Visa ···· 4242") — the full number never appears here, per the PAY-002 privacy boundary. Last-4 arrives from the backend's masked response; the front end never truncates a PAN it shouldn't have.
 - **Receipt rows:** what / where (the charge destination is the *merchant of record*, stated plainly) / when in UTC, so there's no timezone argument later. Jewel bullets in law order carry the rows; the jewels are identity, not buttons.
 - **Receipt-sent line:** two truth states, and the spec chooses between them — green ✓ only when the backend confirms delivery, gold ? while it's claimed. The line is a *claim* until the mailer says otherwise.
+- **Backend gate:** this block renders ONLY on a confirmed charge response from the payment processor. The fields it may consume: charge id, confirmed amount, masked brand + last-4, receipt-email delivery status. It never renders on a timeout, a guess, or an optimistic local state — the specimen's charge is illustrative, and `.is-ignited` fires only on the confirmed response. No processor, no confirmation block.
 - **Actions:** "Back to the Hub" (primary, one per view) and "Download receipt" (quiet — same DNA, speaks softly). Download serves the receipt *the backend already generated*; it never fabricates a PDF client-side from page text.
 - **What it will NOT fake:** this block never claims the charge succeeded before the processor answers (Law 75 — fake success is a trust violation). The `.is-ignited` class is added by a confirmed success response, never by a timeout, a guess, or an optimistic render. The receipt email is never claimed as sent until the mailer confirms it. And it never shows a total the page can't prove — the amount comes from the confirmed charge, not from PAY-001's estimate.
 
@@ -644,6 +667,8 @@ What it is: the panel for when the payment doesn't go through. Declined card, fa
       <span><strong>Ask your bank.</strong> A quick call clears most declines — mention the amount, $535.68.</span></li>
   </ul>
 
+  <!-- specimen: the integrator renders the real reference from the failed
+       attempt's processor response — never a hardcoded string -->
   <p class="pay-error-code">Reference: <code>ch_3P2k_402_declined</code> — keep this if you call your bank.</p>
 
   <div class="pay-error-actions">
@@ -887,6 +912,7 @@ Rows are real `<label>`s wrapping real radio inputs — keyboard, screen reader,
 
 - **Brand jewels:** orbs in the brand's own color — Visa blue, Mastercard orange, Amex emerald. Identity, not decoration: at a glance you know which card is which without reading a digit.
 - **Last-4 + expiry:** the only numbers on the row, and both arrive from the backend already masked. The row *names* the card ("Visa ···· 4242") the way a person would.
+- **Backend gate:** the method list renders only from the processor's saved-method response, already masked. An empty response renders the one-row picker (PAY-005's empty state) — never specimen cards, never guessed rows.
 - **Default chip:** gold outline, letterspaced, quiet. One per picker.
 - **New-card row:** dashed border at rest (it *promises* a different kind of action — "go somewhere," Law 4), solid on hover, hands off to PAY-002. The handoff carries nothing sensitive — no partial numbers, no session card data.
 - **PRIVACY BOUNDARY (this is part of the spec):** this block shows **at most the last-4 and the brand**, exactly as the payment backend returns them masked. It **never** renders, stores, or transmits a full card number — the full PAN exists only inside the processor's vault and inside PAY-002's transient input fields. Removing a saved method, if offered anywhere, goes through the processor's delete — the front end holds no card data to delete. Same rule as PAY-002: no card fields in console, analytics, or error reports, ever.
@@ -903,5 +929,6 @@ The five blocks share one contract, so a checkout built from them behaves like o
 3. **No fake success anywhere.** Confirmation ignites on a confirmed response. The receipt email is claimed only when confirmed. "No money moved" is stated only when confirmed. Law 75, everywhere.
 4. **Every interactive thing is alive.** Steppers, rows, fields, buttons — rest dark with white-lit edges, ignite in their own color on touch. Nothing flat, nothing dead.
 5. **Plain words under pressure.** Validation messages, error panels, and microcopy never blame the user. The checkout is the moment trust is thinnest; the words carry it.
+6. **Backend-gated money states (director review fix, 2026-10-16).** Nothing here implements a payment processor — every money state is a rendering of a backend response, never a client-side decision. PAY-003 renders only on a confirmed charge; "no money moved" (PAY-004) only on a confirmed no-charge; totals and promo (PAY-001) only from confirmed prices; the method list (PAY-005) only from the processor's masked saved-method response. Specimen numbers are illustrative — a live build binds them to real responses, and a state with no backend answer behind it does not render.
 
 *End of the checkout block family. Five blocks, all four parts each. Shipped, not drafted.*

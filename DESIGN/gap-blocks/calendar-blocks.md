@@ -18,8 +18,21 @@ TYPE (Law 6) — serif voice on headers, white 99%.
 
 A sixth type takes orange `#ff9a5a`, a seventh takes red `#ff5e6c` —
 continuing the wheel, never reusing a stop while one sits unused. Adjacent
-pills in one cell always walk in this order. Gold is reserved: today wears
-gold, and only today.
+pills in one cell always walk in this order. Gold is scoped to event
+surfaces — pills, spines, tags, dots — and never marks a state. Today
+wears the white-hot chrome edge (see the disambiguation below); the two
+never share a surface.
+
+**The gold disambiguation — recorded 2026-10-16 (BUILD seat, director
+review fix).** Gold previously did double duty: the decisions/deadlines
+event color *and* the "today, only today" indicator — two meanings on one
+color, unexplained. Resolved by re-homing the present moment to chrome:
+today wears a 2px white-hot edge + white glow + the 4s breathe
+(CAL-001, CAL-003, CAL-005); the now-line wears white (CAL-004). Chrome is
+a state; gold is content. Gold now has exactly one job — decisions &
+deadlines, on event surfaces. The Strip stays canonical
+(magenta → purple → blue → green → gold); nothing was removed, the jobs
+were separated.
 
 **Family token sheet** (every snippet below assumes these; copy once):
 
@@ -31,12 +44,59 @@ gold, and only today.
 background:var(--ground);color:var(--ink)}
 ```
 
+**The one button DNA** (canonical, per `DESIGN/BLOCKS.md` — every snippet
+below assumes this; copy once with the token sheet). 54px min-height, 999px
+radius, black gradient heart, 1.5px white-ish idle border, inset top-light
++ inset bottom-shadow + drop shadow. Hover lifts with a flowing conic ring;
+press compresses. No flat buttons — ever. The icon variant is glyph-only:
+58px circle, `.micro` 44px (Law 5's minimum touch target).
+
+```css
+.naya-btn{
+  --nb-accent:#a06bff; --nb-accent-rgb:160,107,255; /* chrome purple default */
+  position:relative;
+  display:inline-flex; align-items:center; justify-content:center; gap:10px;
+  min-height:54px; padding:0 26px; border-radius:999px; cursor:pointer;
+  background:linear-gradient(180deg,#101014 0%,#050505 60%,#020203 100%);
+  color:#fbfbfd; font-size:14px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+  border:1.5px solid rgba(255,255,255,.85);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.22), inset 0 -6px 12px rgba(0,0,0,.6), 0 10px 24px rgba(0,0,0,.6);
+  transition:border-color .18s cubic-bezier(.16,.84,.22,1), box-shadow .18s cubic-bezier(.16,.84,.22,1),
+    transform .18s cubic-bezier(.16,.84,.22,1);
+}
+/* the flowing conic ring — ignition you can watch travel */
+.naya-btn::after{
+  content:""; position:absolute; inset:-3px; border-radius:inherit; pointer-events:none;
+  background:conic-gradient(from 0deg, transparent 0deg, rgba(var(--nb-accent-rgb),.95) 50deg, transparent 100deg);
+  -webkit-mask:radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2px));
+  mask:radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2px));
+  opacity:0; transition:opacity .18s cubic-bezier(.16,.84,.22,1);
+}
+.naya-btn:hover{ transform:translateY(-2px); border-color:var(--nb-accent);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.25), inset 0 -6px 12px rgba(0,0,0,.6),
+    0 10px 24px rgba(0,0,0,.6), 0 0 32px -4px rgba(var(--nb-accent-rgb),.8); }
+.naya-btn:hover::after{ opacity:1; animation:nb-ring 1.5s linear infinite; }
+.naya-btn:active{ transform:translateY(1px) scale(.98); }
+.naya-btn:focus-visible{ outline:2px solid #fff; outline-offset:4px; }
+.naya-btn:disabled{ opacity:.45; cursor:not-allowed; transform:none; }
+.naya-btn:disabled::after{ display:none; }
+@keyframes nb-ring{ to{ transform:rotate(360deg); } }
+/* icon variant — glyph-only actions. .micro: 44px circle. */
+.naya-btn.icon{ width:58px; height:58px; min-height:0; padding:0; border-radius:50%; }
+.naya-btn.icon.micro{ width:44px; height:44px; }
+@media (prefers-reduced-motion:reduce){
+  .naya-btn,.naya-btn::after{ transition:none; }
+  .naya-btn:hover{ transform:none; }
+  .naya-btn:hover::after{ opacity:0; animation:none; }
+}
+```
+
 ---
 
 ## CAL-001 · Month-view board
 
 A full month on black ground: serif weekday headers, day cells with
-white-lit edges, today ignited in gold, event pills in wheel order. Law 1:
+white-lit edges, today ignited in white-hot chrome, event pills in wheel order. Law 1:
 nothing dead — every in-month cell lifts and ignites; chevrons promise "go
 somewhere" and do.
 
@@ -53,13 +113,13 @@ box-shadow:inset 0 2px 2px rgba(255,255,255,.12),inset 0 -8px 18px rgba(0,0,0,.5
 text-shadow:0 2px 8px rgba(0,0,0,.8),0 0 22px rgba(255,255,255,.14)}
 .cal-title small{font-size:14px;opacity:.75;font-family:system-ui,sans-serif;letter-spacing:.18em;text-transform:uppercase;margin-left:10px}
 .cal-nav{display:flex;gap:10px}
-.cal-chev{width:44px;height:44px;border-radius:50%;background:#050505;border:1.5px solid rgba(255,255,255,.85);
-color:#fff;cursor:pointer;display:grid;place-items:center;transition:transform .18s cubic-bezier(.16,.84,.22,1),border-color .18s,box-shadow .18s}
-.cal-chev i{width:10px;height:10px;border-top:2px solid #fff;border-right:2px solid #fff;transform:rotate(-135deg);margin-left:3px}
-.cal-chev.next i{transform:rotate(45deg);margin-left:-3px}
-.cal-chev:hover{transform:translateY(-2px);border-color:#a06bff;box-shadow:0 0 26px rgba(160,107,255,.55)}
-.cal-chev:active{transform:translateY(1px)}
-.cal-chev:focus-visible{outline:2px solid #fff;outline-offset:3px}
+/* chevrons ARE .naya-btn.icon.micro — the one DNA, no bespoke button system.
+   .cal-chev carries only the drawn chevron glyph (Law 4: icons are drawn);
+   every button visual — gradient heart, idle border, insets, lift, flowing
+   conic ring, press — comes from .naya-btn. */
+.naya-btn.icon.micro.cal-chev i{width:10px;height:10px;border-top:2px solid #fff;border-right:2px solid #fff;
+transform:rotate(-135deg);margin-left:3px}
+.naya-btn.icon.micro.cal-chev.next i{transform:rotate(45deg);margin-left:-3px}
 .cal-week{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-bottom:8px}
 .cal-week span{font-family:Georgia,serif;font-size:14px;color:#fff;opacity:.92;text-align:center;padding:8px 0;letter-spacing:.14em;text-transform:uppercase}
 .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
@@ -69,10 +129,15 @@ transition:transform .18s cubic-bezier(.16,.84,.22,1),border-color .18s,box-shad
 .cal-day .dnum{font-family:Georgia,serif;font-size:18px;color:#fff}
 .cal-day:hover{transform:translateY(-2px);border-color:#a06bff;box-shadow:0 0 26px rgba(160,107,255,.5)}
 .cal-day.is-selected{border-color:#a06bff;box-shadow:0 0 32px rgba(160,107,255,.65),inset 0 0 18px rgba(160,107,255,.12);transform:translateY(-2px)}
-.cal-day.is-today{border:2px solid #ffbf3d;box-shadow:0 0 34px rgba(255,191,61,.6),inset 0 0 20px rgba(255,191,61,.1);
+/* today = white-hot chrome (disambiguation, 2026-10-16): the present moment is
+   a state, not a theme. Gold is events-only — the two never share a surface.
+   Motion spec: cal-breathe, 4s, ease-in-out, infinite; keyframes interpolate
+   the glow box-shadow 30px/.45 → 44px/.7 → 30px/.45 (glow only, layout never
+   moves); prefers-reduced-motion: animation:none, edge holds statically. */
+.cal-day.is-today{border:2px solid #fff;box-shadow:0 0 34px rgba(255,255,255,.55),inset 0 0 20px rgba(255,255,255,.12);
 animation:cal-breathe 4s ease-in-out infinite}
-.cal-day.is-today .dnum{color:#ffbf3d}
-@keyframes cal-breathe{0%,100%{box-shadow:0 0 30px rgba(255,191,61,.5)}50%{box-shadow:0 0 44px rgba(255,191,61,.75)}}
+.cal-day.is-today .dnum{color:#fff;text-shadow:0 0 18px rgba(255,255,255,.8)}
+@keyframes cal-breathe{0%,100%{box-shadow:0 0 30px rgba(255,255,255,.45)}50%{box-shadow:0 0 44px rgba(255,255,255,.7)}}
 .cal-day.is-out{opacity:.34;min-height:104px}
 .cal-day.is-out:hover{border-color:rgba(255,255,255,.7);box-shadow:none}
 .cal-pill{display:flex;align-items:center;gap:6px;margin-top:6px;padding:4px 7px;border-radius:8px;
@@ -87,14 +152,15 @@ transition:transform .18s cubic-bezier(.16,.84,.22,1),box-shadow .18s}
 background:none;border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:3px 10px;cursor:pointer;
 transition:all .18s cubic-bezier(.16,.84,.22,1)}
 .cal-more:hover{border-color:#a06bff;opacity:1;box-shadow:0 0 18px rgba(160,107,255,.5);transform:translateY(-1px)}
-@media (prefers-reduced-motion:reduce){.cal-day.is-today{animation:none}.cal-day,.cal-chev,.cal-pill,.cal-more{transition:none}}
+@media (prefers-reduced-motion:reduce){.cal-day.is-today{animation:none}.cal-day,.cal-pill,.cal-more{transition:none}}
+/* chevrons ride the family .naya-btn reduced-motion rule (ring off, no lift) */
 </style>
 <div class="cal cal-month">
   <div class="cal-head">
     <h2 class="cal-title">October <small>2026</small></h2>
     <div class="cal-nav">
-      <button class="cal-chev" aria-label="Previous month"><i></i></button>
-      <button class="cal-chev next" aria-label="Next month"><i></i></button>
+      <button class="naya-btn icon micro cal-chev" aria-label="Previous month"><i></i></button>
+      <button class="naya-btn icon micro cal-chev next" aria-label="Next month"><i></i></button>
     </div>
   </div>
   <div class="cal-week" aria-hidden="true"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
@@ -175,19 +241,28 @@ a live build sets `is-today` from the viewer's clock.
 - **Rest:** black cell `#0a0a0e`, 1.5px white-lit edge, serif day number. Pills rest dark with a 1px tinted border — color is earned by interaction, per Law 1.
 - **Hover:** lifts 2px, edge ignites purple (chrome), glow `0 0 26px`. Pills ignite in their *own* event color — the pill is themed, the cell is chrome.
 - **Selected:** held purple edge + purple glow + 2px lift. One selected day at a time; clicking moves it, never stacks it.
-- **Today:** 2px gold edge, gold glow, slow 4s breathe. Gold belongs to today and to nothing else — a selected day that is not today wears purple.
+- **Today:** 2px white-hot edge, white glow, slow 4s breathe (motion spec:
+  `cal-breathe`, 4s, ease-in-out, infinite; reduced-motion holds the edge
+  statically). Today is chrome, not theme — gold is events-only, so the two
+  never share a surface. A selected day that is not today wears purple;
+  today outranks selection, always.
 - **Out-of-month:** 34% opacity, no ignition on hover — clicking one jumps the board to that month (the cell keeps its promise).
 - **Overflow:** two pills render, then jewel dots in wheel order, then an honest `+N more` chip. The chip opens the day's agenda (CAL-004) — it never pretends the cell showed everything.
 
 ### Do / Don't
 
-**Do** walk the wheel down each cell — magenta → purple → blue → green → gold, adjacent pills always in law order, never adjacent duplicates. **Don't** paint event types by mood of the day; the meaning of each color is fixed across the whole family, or the wheel becomes decoration.
+**Do** walk the wheel down each cell — magenta → purple → blue → green → gold, adjacent pills always in law order, never adjacent duplicates. **Do** keep state and content on separate surfaces: the today edge is white-hot chrome, a gold pill is a deadline event — when today holds a deadline, the two sit side by side and never confuse, because one is the day's state and the other is the event's type. **Don't** paint event types by mood of the day; the meaning of each color is fixed across the whole family, or the wheel becomes decoration.
 
 ### Anatomy
 
 - **Board chrome:** 5-layer board shadow, 24px radius, tone under-glow. The board is the world; cells live inside it.
 - **Title:** serif voice, month in 24px, year as an uppercase letterspaced kicker. White 99%.
-- **Chevrons:** drawn CSS chevrons (Law 4 — icons are drawn), 44px targets, chrome-purple ignition. A chevron promises "go somewhere."
+- **Chevrons:** `.naya-btn.icon.micro` — the one button DNA, 44px circle
+  (Law 5's minimum touch target), drawn CSS chevron glyph (Law 4 — icons are
+  drawn). Hover lifts 2px with the flowing conic ring in chrome purple;
+  press compresses. No bespoke chevron styling — a chevron promises "go
+  somewhere," and it wears the same body as every button that keeps a
+  promise.
 - **Weekday row:** serif, uppercase, letterspaced — the voice of the calendar.
 - **Day cell:** the unit. Number (serif) + pills + dots + more-chip, in that order.
 - **Event pill:** diamond jewel + time + title. The diamond is the bullet law at calendar scale.
@@ -341,7 +416,8 @@ font-size:13px;cursor:pointer;transition:all .18s cubic-bezier(.16,.84,.22,1)}
 .cal-mini button:hover:not(:disabled){transform:translateY(-2px);border-color:#a06bff;box-shadow:0 0 18px rgba(160,107,255,.55);background:rgba(160,107,255,.12)}
 .cal-mini button:focus-visible{outline:2px solid #fff;outline-offset:2px}
 .cal-mini button.is-chosen{background:rgba(160,107,255,.2);border-color:#a06bff;box-shadow:0 0 20px rgba(160,107,255,.6);font-weight:700}
-.cal-mini button.is-todayd{border-color:#ffbf3d;color:#ffbf3d}
+/* today = white-hot chrome (disambiguation, 2026-10-16): state, not theme */
+.cal-mini button.is-todayd{border-color:#fff;color:#fff;box-shadow:0 0 18px rgba(255,255,255,.5)}
 .cal-mini button:disabled{opacity:.32;cursor:not-allowed;text-decoration:line-through;text-decoration-color:rgba(255,255,255,.4)}
 .cal-mini button:disabled:hover{transform:none;box-shadow:none;border-color:transparent;background:transparent}
 .cal-tz{margin-top:12px;font-size:11px;color:#fff;opacity:.55;letter-spacing:.04em}
@@ -415,7 +491,8 @@ font-size:13px;cursor:pointer;transition:all .18s cubic-bezier(.16,.84,.22,1)}
 - **Dropdown open:** elevated panel (Law 3 — overlay rides highest), tone under-glow. `aria-expanded` tells the truth.
 - **Day hover:** lifts, purple edge + glow. Day focus (keyboard): white 2px ring — arrow keys move, Enter chooses, Esc closes and returns focus to the trigger.
 - **Chosen:** held purple edge + glow + bold number. One chosen day; choosing moves it.
-- **Today in the mini-grid:** gold edge + gold number — the family rule, at 36px scale.
+- **Today in the mini-grid:** white-hot edge + white number — the family
+  rule, at 36px scale. Chrome, not theme: gold is events-only.
 - **Past dates:** 32% opacity, strikethrough, `cursor:not-allowed`, `disabled`, removed from tab order. Dimmed *and* inert — never the fake-disabled look that still clicks.
 
 ### Do / Don't
@@ -426,7 +503,7 @@ font-size:13px;cursor:pointer;transition:all .18s cubic-bezier(.16,.84,.22,1)}
 
 - **Trigger:** the form-facing face — reads as an input, behaves as a button. Glyph is drawn SVG, never emoji.
 - **Dropdown panel:** the mini month — weekday initials, 36px day buttons, the month title in serif voice.
-- **Day button:** the unit — number, hover ignition, chosen hold, today gold, past inert.
+- **Day button:** the unit — number, hover ignition, chosen hold, today white-hot, past inert.
 - **Timezone footnote:** the honesty line — "Calendar date only — no timezone is assumed or stored." It is part of the block, not documentation.
 
 **What it will NOT fake:** it never pretends to know the user's timezone — the value is a calendar date (`YYYY-MM-DD`), stored noon-neutral, displayed as-is. It never converts, never appends a zone abbreviation it doesn't know, and never disables dates by guessing. Past-ness is computed against the viewer's clock or an explicit `data-today`; the frozen October 16 in the specimen is labeled as a specimen.
@@ -464,13 +541,17 @@ transition:transform .28s cubic-bezier(.16,.84,.22,1),border-color .28s,box-shad
 border:1px solid var(--ec);border-radius:999px;padding:2px 10px}
 .cal-ev .meta{font-size:13px;color:#fff;opacity:.8;margin-top:6px}
 .cal-now{position:relative;height:0;z-index:2}
+/* the now-line marks the present moment in chrome-white (disambiguation,
+   2026-10-16): a moment-marker, not an event — gold is events-only */
 .cal-now i{position:absolute;left:58px;right:0;top:0;height:2px;border-radius:2px;
-background:linear-gradient(90deg,#ffbf3d,rgba(255,191,61,0));box-shadow:0 0 14px rgba(255,191,61,.7)}
-.cal-now b{position:absolute;left:60px;top:-16px;font-size:10px;letter-spacing:.18em;color:#ffbf3d;font-weight:400;text-transform:uppercase}
+background:linear-gradient(90deg,#fff,rgba(255,255,255,0));box-shadow:0 0 14px rgba(255,255,255,.7)}
+.cal-now b{position:absolute;left:60px;top:-16px;font-size:10px;letter-spacing:.18em;color:#fff;font-weight:400;text-transform:uppercase}
 .cal-empty{text-align:center;padding:56px 20px}
+/* empty-day jewel: white-hot chrome diamond — emptiness with dignity.
+   Gold is events-only; an empty day carries no event color. */
 .cal-empty .jewel{width:34px;height:34px;margin:0 auto 18px;transform:rotate(45deg);border-radius:8px;
-background:radial-gradient(circle at 35% 30%,#fff,var(--gold,#ffbf3d) 45%,#050507 90%);
-border:1.5px solid rgba(255,255,255,.8);box-shadow:0 0 30px rgba(255,191,61,.55)}
+background:radial-gradient(circle at 35% 30%,#fff,#cfd2e8 45%,#050507 90%);
+border:1.5px solid rgba(255,255,255,.8);box-shadow:0 0 30px rgba(255,255,255,.55)}
 .cal-empty h3{font-family:Georgia,serif;font-size:20px;color:#fff;margin:0 0 8px}
 .cal-empty p{font-size:14px;color:#fff;opacity:.85;margin:0}
 @media (prefers-reduced-motion:reduce){.cal-ev{transition:none}}
@@ -514,8 +595,10 @@ live build computes it or omits it.
 
 - **Rest:** gutter times in serif, spines glowing quietly in each event's color, cards dark with white-lit edges.
 - **Hover:** the card lifts 4px and ignites in the event's own color — same language as CAL-002, one family.
-- **Now-line:** gold gradient line with a "now" flag. Gold = attention, earned; the current moment is the one thing that deserves it.
-- **Empty:** centered gold jewel, serif "Nothing scheduled", 14px "The day is yours." No fake suggestions, no "maybe add…" nudges, no grayed-out ghost events.
+- **Now-line:** white-hot gradient line with a "now" flag. The present
+  moment is chrome, not theme — gold is events-only, and the now-line sits
+  between event spines, so it must never read as one of them.
+- **Empty:** centered white-hot jewel, serif "Nothing scheduled", 14px "The day is yours." No fake suggestions, no "maybe add…" nudges, no grayed-out ghost events.
 - **Past events (viewing today):** the card keeps its colors but the spine dims to 40% and the title takes no hover lift — the past is readable, not clickable-theater. (Your app sets `aria-disabled` where the event can't be acted on.)
 
 ### Do / Don't
@@ -528,7 +611,7 @@ live build computes it or omits it.
 - **Spine:** 3px glowing line per event in its type color — the same identity mark as CAL-002's card spine, so the two blocks read as one object.
 - **Node jewel:** the rotated diamond where gutter meets spine — Law 4, bullets are jewels, at timeline scale.
 - **Event card:** CAL-002's language compressed — tag, serif title, one meta line. One idea per card.
-- **Now-line:** the honest present — gold, labeled, clock-driven.
+- **Now-line:** the honest present — white-hot, labeled, clock-driven.
 - **Empty state:** jewel + two lines. Emptiness is a state with dignity, not a hole to fill with suggestions.
 
 **What it will NOT fake:** it never invents events — an empty day renders the empty state, never placeholder cards. The now-line never renders for a non-today view. Past events never pretend to be upcoming: no hover theater on what can't be acted on. The "3 events" count is the real count.
@@ -553,8 +636,15 @@ border:1.5px solid rgba(255,255,255,.32);transition:transform .18s cubic-bezier(
 .cal-st .why{font-size:11px;color:#fff;opacity:.55;margin-top:8px;line-height:1.5}
 .cal-st.s-hover{transform:translateY(-2px);border-color:#a06bff;box-shadow:0 0 26px rgba(160,107,255,.5)}
 .cal-st.s-selected{transform:translateY(-2px);border-color:#a06bff;box-shadow:0 0 32px rgba(160,107,255,.65),inset 0 0 18px rgba(160,107,255,.12)}
-.cal-st.s-today{border:2px solid #ffbf3d;box-shadow:0 0 34px rgba(255,191,61,.6);animation:cal-breathe 4s ease-in-out infinite}
-.cal-st.s-today .dnum{color:#ffbf3d}
+/* today = white-hot chrome (disambiguation, 2026-10-16): state, not theme.
+   Motion spec: cal-breathe, 4s, ease-in-out, infinite — keyframes defined
+   HERE, in this block, so the state strip never depends on CAL-001's
+   stylesheet. Glow interpolates 30px/.45 → 44px/.7; layout never moves.
+   prefers-reduced-motion: animation:none, edge holds statically. */
+.cal-st.s-today{border:2px solid #fff;box-shadow:0 0 34px rgba(255,255,255,.55);
+animation:cal-breathe 4s ease-in-out infinite}
+.cal-st.s-today .dnum{color:#fff;text-shadow:0 0 18px rgba(255,255,255,.8)}
+@keyframes cal-breathe{0%,100%{box-shadow:0 0 30px rgba(255,255,255,.45)}50%{box-shadow:0 0 44px rgba(255,255,255,.7)}}
 .cal-st.s-events{border-color:rgba(255,255,255,.5)}
 .cal-st.s-events .dots{display:flex;gap:5px;margin-top:10px}
 .cal-st.s-events .dots i{width:7px;height:7px;transform:rotate(45deg);background:var(--pc);box-shadow:0 0 7px var(--pc)}
@@ -568,7 +658,7 @@ border:1.5px solid rgba(255,255,255,.32);transition:transform .18s cubic-bezier(
   <div class="cal-st"><span class="dnum">12</span><p class="why">Dark cell, white-lit edge. Waiting.</p><span class="lbl">Rest</span></div>
   <div class="cal-st s-hover"><span class="dnum">13</span><p class="why">Lifts 2px, ignites chrome-purple. Clickable.</p><span class="lbl">Hover</span></div>
   <div class="cal-st s-selected"><span class="dnum">14</span><p class="why">Held purple edge + glow. One at a time.</p><span class="lbl">Selected</span></div>
-  <div class="cal-st s-today"><span class="dnum">16</span><p class="why">Gold edge, gold glow, slow breathe. Only today.</p><span class="lbl">Today</span></div>
+  <div class="cal-st s-today"><span class="dnum">16</span><p class="why">White-hot edge, white glow, slow breathe. Only today — chrome, not theme.</p><span class="lbl">Today</span></div>
   <div class="cal-st s-events"><span class="dnum">15</span><div class="dots"><i style="--pc:#a06bff"></i><i style="--pc:#3fb8ff"></i><i style="--pc:#ffbf3d"></i></div><p class="why">Jewel dots in wheel order. Never adjacent duplicates.</p><span class="lbl">Has events</span></div>
   <div class="cal-st s-disabled"><span class="dnum">9</span><p class="why">Dimmed, struck, inert — and out of tab order.</p><span class="lbl">Disabled</span></div>
   <div class="cal-st s-out"><span class="dnum">30</span><p class="why">Belongs to another month. Click jumps there.</p><span class="lbl">Out of month</span></div>
@@ -582,14 +672,17 @@ The seven, each frozen above so a builder can implement without running anything
 - **Rest:** the baseline — black, white-lit, serif number. All other states are deltas from this.
 - **Hover:** lift + chrome-purple ignition. Frozen here with the class so the state is visible statically.
 - **Selected:** the hover ignition *held* — edge, glow, lift persist. Moving selection moves the hold; it is never stacked on two days.
-- **Today:** gold 2px edge, gold glow, 4s breathe. If today is also selected, gold wins — today outranks selection, always.
+- **Today:** white-hot 2px edge, white glow, 4s breathe. If today is also
+  selected, white-hot wins — today outranks selection, always. (Motion spec:
+  `cal-breathe`, 4s, ease-in-out, infinite, keyframes in this block's own
+  stylesheet; reduced-motion holds the edge statically.)
 - **Has-events:** jewel dots (or pills in CAL-001) in wheel order. The dots are information, not decoration — their colors are the event types.
 - **Disabled:** 32% opacity, strikethrough number, `cursor:not-allowed`, `disabled` + `tabindex="-1"` in real markup. Looks dead because it *is* dead.
 - **Out-of-month:** 34% opacity, no ignition — but still clickable, jumping the board to its month. Dimmed is not dead here; the label says what it does.
 
 ### Do / Don't
 
-**Do** freeze today above selection in the precedence order — when both apply, the day wears gold, because today is the fact and selection is the choice. **Don't** invent an eighth state for "weekend" or "holiday" tinting; tinting days by category is a flood by another name — holidays are events, and events already have colors.
+**Do** freeze today above selection in the precedence order — when both apply, the day wears white-hot, because today is the fact and selection is the choice. **Don't** invent an eighth state for "weekend" or "holiday" tinting; tinting days by category is a flood by another name — holidays are events, and events already have colors.
 
 ### Anatomy
 
@@ -605,5 +698,14 @@ The seven, each frozen above so a builder can implement without running anything
 ## Family notes
 
 - **One meaning per color, everywhere:** the family table at the top is the contract. A purple pill in CAL-001, a purple spine in CAL-004, and a purple tag in CAL-002 all mean deep work. If a sixth event type appears, it takes orange — the wheel continues, it never restarts.
-- **Gold's two jobs are one job:** today (CAL-001, CAL-003, CAL-005) and the now-line (CAL-004) are both "attention, earned" — the present moment, marked. That is a single meaning, not a reuse.
+- **Gold has one job (disambiguation recorded 2026-10-16):** decisions & deadlines, on event surfaces only — pills, spines, tags, dots. The present moment is chrome, not theme: today wears the white-hot edge (CAL-001, CAL-003, CAL-005), the now-line wears white (CAL-004), the empty-day jewel is a white-hot diamond. No surface carries gold as both state and event meaning.
+- **Motion spec — every moving claim, verifiable** (director review fix, 2026-10-16). No motion claim ships without keyframes, duration, easing, and a reduced-motion fallback:
+
+| Motion | Where | Keyframes | Duration / easing / iteration | Reduced-motion fallback |
+|---|---|---|---|---|
+| `cal-breathe` | `.cal-day.is-today` (CAL-001), `.cal-st.s-today` (CAL-005) | glow box-shadow: 30px @ .45 → 44px @ .7 → 30px @ .45 (glow only — layout never moves) | 4s · ease-in-out · infinite | `animation:none` — edge holds statically |
+| Hover lifts | day cells, pills, chevrons, trigger, mini-grid buttons, agenda cards, more-chip | transition on `transform` / `border-color` / `box-shadow` | .18s (cells, controls) / .28s (cards) · `cubic-bezier(.16,.84,.22,1)` | `transition:none` — states snap instantly, meaning preserved |
+| `nb-ring` | `.naya-btn:hover::after` (chevrons) | rotate 0° → 360° | 1.5s · linear · infinite | ring hidden, no lift |
+
+  Verify in DevTools: (1) Rendering → *Emulate prefers-reduced-motion* → today holds its white-hot edge with zero animation and every hover snaps. (2) Animations panel at 10% speed → the 4s breathe and the 1.5s ring read exactly as specified. (3) `cal-breathe` is defined twice — once in CAL-001, once in CAL-005 — by design: each block is self-contained and no block depends on another block's keyframes.
 - **What the family does not cover:** week-view grids, drag-to-reschedule, and recurring-event editors are real needs and are *not* specified here — they are future blocks (CAL-006+), not implied features of these five. Nothing in these specs pretends they exist.
