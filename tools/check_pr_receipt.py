@@ -75,6 +75,24 @@ def main():
     paths = [p for p in re.findall(r"`([^`]+)`", section)
              if "/" in p or p.endswith((".md", ".py", ".yml", ".yaml", ".json"))]
 
+    # Parse-time pre-check (prevention, not just diagnosis): a backticked
+    # handle shaped like a branch path that does NOT exist at HEAD is the
+    # trap in disguise — it was parsed as a repo path and can only fail
+    # downstream as dead. Fire here, with the trap named.
+    # Fires ONLY on otherwise-dead handles: real paths resolve via
+    # path_exists and skip this check, so no passing evidence becomes failing.
+    branch_like = [p for p in dict.fromkeys(paths)
+                   if re.fullmatch(r"[A-Za-z0-9_.-]+(/[A-Za-z0-9_.-]+)+",
+                                   p.strip())
+                   and not path_exists(p.strip())]
+    if branch_like:
+        fail("TRAP: branch-like backticked handle(s) in `## Evidence`: "
+             + ", ".join(f"path:{p.strip()}" for p in branch_like[:5])
+             + ". TRAP: a backticked branch name (e.g. `naya5/foo`) is parsed "
+             "as a repo path and will fail here — a branch name is not a path. "
+             "Do not backtick branch names in ## Evidence; cite the branch "
+             "head's 40-char SHA or the PR URL instead.")
+
     verified = []
     dead = []
     for u in dict.fromkeys(urls):
