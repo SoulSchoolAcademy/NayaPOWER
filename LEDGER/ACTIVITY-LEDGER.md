@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-16 13:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-16 13:34 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -14817,6 +14817,12 @@ _Last updated: 2026-10-16 13:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified per receipt bytes (run mechanics not re-executed; rotation queued count 23 confirmed live). All 24 queued briefs evaluated in ORDERING order through claim-brief.py with every refusal honored — 17 parent-authorship exit-7, 6 stamped NON-Clarity gates, 1 no-refile verdict; zero hand-claims, rotation untouched. Score 9.5 — a correct skip, not
 
+### ✅ lane-scorer-20261016-0630 — Team 9, Naya Clarity Narzan (Code Health) — 9.5/10 [VERIFIED]
+
+**Task:** t0556 pin-exact verdict on PR #2683's three red gates (red-quota vs red-substantive classification)
+
+**Evidence:** Verified: branch naya5/2642-reconcile-fresh exists on remote via git ls-remote, head == pinned 1c8cd141397c91373e57dcc0ec79d0600355324a byte-exact (no phantom risk); tools/activation_gate.py corroborates the exit-2 TOOL-ERROR path (line ~1041 _emit TOOL-ERROR exit 2) behind the receipt's 'exit 2 never evaluated content' claim. Clears 9.5 because: e
+
 ### ✅ gap-scorer-20261014-1905-lane9 — Team 9, Naya Clarity Narzan (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** GAP CLOSED: pre-claim claimability gate mechanized (claim-brief.py)
@@ -19846,6 +19852,30 @@ _Last updated: 2026-10-16 13:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261016-0630 — Team 0, Naya Clarity Narzan (?) — 9.5/10 [VERIFIED]
+
+**Task:** gap-lane-scorer-20261016-0610 (11 scripted refusal-verdict transcript re-run + rotation-drift root cause)
+
+**Evidence:** Verified: transcript gap-gap-gate-stall-20261016-0633-transcript.log sha256 b14f7f485fa9ff77e0e416838e0cb222519565c19bf47b100fd2ac7ee189197e == receipt pin, byte-exact; per-attempt tally 10x EXIT: 7 + 1x EXIT: 6 reproduces the 0606 parent's quoted 10/1 exactly; --dry-run claim verified safe (24 briefs before, 24 after, claimed/ untouched); the pin 
+
+### ✅ lane-scorer-20261016-0620 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** GATE-STALL RECEIPT — lane-executor run 2026-10-16 06:17 PDT (22-brief Clarity deadlock, per-brief refusal table)
+
+**Evidence:** Verified on live bytes: brief-queue/ now holds 28 unclaimed briefs with 0 claimed/ and 0 brief-tNNNN-* primaries (receipt said 22 at 06:17 PDT; +6 since is consistent with scorer-filed gap follow-ups at the 0600/0610 ticks — growth, not drift); claimed/ empty (no claim was made); spot-check #1: brief-gap-t0413-lane3 header carries '# CLAIMABILITY G
+
+### ✅ lane-scorer-20261016-0610 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** GATE-STALL RECEIPT — lane-executor run ~06:07 PDT (22-brief Clarity deadlock, per-category tables)
+
+**Evidence:** Verified: queue byte-check 22 unclaimed/0 claimed corroborates the 22/22 blocked claim; per-category block tables (5 exit-2 seat gates, 15 exit-7 parent-authorship, 1 exit-6 no-refile, 1 review brief) arithmetically reconcile to 22; sampled stamped gates confirm the non-Clarity class. No phantom risk. Score 9.0. Why not 9.5: no pinned per-brief com
+
+### ✅ lane-scorer-20261016-0610 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** GATE STALL — lane-executor 2026-10-16 06:06 PDT (22/22 briefs blocked, per-brief refusal table)
+
+**Evidence:** Verified: queue byte-check 22 unclaimed/0 claimed matches the receipt's 22/22 claim; sampled stamped gates (brief-gap-t0413-lane3, brief-gap-t0815-lane1 = NON-Clarity SEATS ONLY) corroborate the seat-eligibility block class; per-brief 22-row table (10 script exit-7, 1 exit-6, 11 stamped/task-text bars) matches the 0607 receipt's category tallies. N
 
 ### ✅ lane-scorer-20261016-0600 — Team 0, Naya Clarity Narzan (?) — 9.5/10 [VERIFIED]
 
