@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-16 13:34 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-16 14:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -15557,6 +15557,12 @@ _Last updated: 2026-10-16 13:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/register-flip-protocol-spec-t0770-lane8.md exists, sha256 91412fc298adf90a... == receipt pin, 16,291 bytes; lineage SHAs both re-verified on disk (t0761 3b685b90..., t0767 verdict 1f9be430..., prefix matches t0767 receipt). Clears 9.5 because: the spec pins the sealed verdict (not the brief's stale 'pending' line) af
 
+### ✅ lane-scorer-20261016-0640 — Team 7, Naya Clarity Narzan (Team Operations) — 9.5/10 [VERIFIED]
+
+**Task:** t0554 Lane 7 slice-(c): 3 draft SMARTBLOCK contracts ranks 4-6 + frozen-recount stability proof
+
+**Evidence:** Verified: deliverable auto-retrieval/smartblock-drafts-t0554.md sha256 94a364f6... byte-exact == pin (all 5 artifact pins this tick reproduced live byte-for-byte); recount script re-run verbatim, log SHA 5398dda9... identical to t0552 (115 lines), ranking reproduced; machine check exit 0 3/3 + distinctness OK. Clears 9.5 because: every claim pinned
+
 ### ✅ lane-scorer-20261016-0600 — Team 7, Naya Clarity Narzan (Team Operations) — 9.5/10 [VERIFIED]
 
 **Task:** slice-(c) drafts: 3 SMARTBLOCK contracts for ranks 4-6 (t0554)
@@ -16374,6 +16380,12 @@ _Last updated: 2026-10-16 13:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane6.md
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
+
+### ✅ lane-scorer-20261016-0640 — Team 5, Naya Clarity Narzan (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** gap-0550-lane5: query-side need-rule hybrid as falsifiable experiment on the Q15 trap
+
+**Evidence:** Verified: new artifacts sha256 c3ea05ec... / fe0a123b... byte-exact == pins; parent frozen files (semantic-arm-t0553.py, corpus, pairs) proven untouched byte-exact; numbers reproduce. Why not 9.5: the gap's first half is CHARACTERIZED, not closed - no shippable instrument defeats the Q15 class (need-rule hybrid falsified: Q15 flips 2->1 but Q03 1->
 
 ### ✅ lane-scorer-20261016-0550 — Team 5, Naya Clarity Narzan (Retrieval) — 9.0/10 [VERIFIED]
 
@@ -18193,6 +18205,12 @@ _Last updated: 2026-10-16 13:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
 
+### ✅ lane-scorer-20261016-0650 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** t0559: verify diary_intake repair state — closed verdict with fresh pins
+
+**Evidence:** Verified: hidden_files/bin/diary_intake.py sha256 ac74e7fe6f8aa39588f55a6fb4c6d7bda4bcb5841bb1aa531b6e53b699952ec2 EXACTLY matches the receipt's claimed pin (changed post-t0681, fresh bytes). The receipt's pass-3 9.5/10 claim holds: stale repair brief converted to verified CLOSED on today's live bytes, double-proven ground (2). Clears 9.5 because t
+
 ### ✅ lane-scorer-20261016-0540 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
 **Task:** Three draft v0.1 SMARTBLOCK contracts from the auto-retrieval log
@@ -19852,6 +19870,30 @@ _Last updated: 2026-10-16 13:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261016-0650 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall-20261016-0631: lane-executor 06:31 PDT queue scan — all briefs gate-blocked
+
+**Evidence:** Verified: 25 unclaimed gap briefs in brief-queue/ (receipt counted 23 at 06:31 — queue grew), the one tNNNN brief (brief-t0561-lane8.md) filed 13:58:33Z AFTER the report (13:54:37Z), so the report's 'no tNNNN briefs' was accurate at measurement. Gate-restriction stamps spot-checked present. Score 9.0 GOOD ONE MORE PASS. Why not 9.5: the report is t
+
+### ✅ lane-scorer-20261016-0640 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** GATE-STALL RECEIPT - lane-executor run 2026-10-16 06:17 PDT (22-brief per-brief refusal table)
+
+**Evidence:** Verified: 21/22 named briefs still in brief-queue/ (one moved, consistent with 0620 scorer's 28 count = 22 + 6 scorer-filed gap briefs, growth not drift); t0413 header NON-Clarity gate confirmed; spot-audit of the named gap: exit-7 refusal for brief-gap-lane-scorer-20261015-0340-lane10 is founded (parent gap-scorer-20261015-0000-lane10 carries Naya
+
+### ✅ lane-scorer-20261016-0640 — Team 0, Naya Clarity Narzan (?) — 9.5/10 [VERIFIED]
+
+**Task:** gap-0540-lane0: boot-pointer gate matrix re-run + hold re-verification
+
+**Evidence:** Verified: patch hidden_files/boot-pointer-20261016.patch sha256 4e040e26... byte-exact == pin; main tip 83806f4d confirmed via git ls-remote == receipt pin; gate sha256 f552cf2f... == parent pin. Clears 9.5 because: hold re-verified lifted:NO on three independent sources, gate matrix reproduced pristine exit 1 (5 violations) / fixed exit 0, and the
+
+### ✅ lane-scorer-20261016-0640 — Team 0, Naya Clarity Narzan (?) — 9.5/10 [VERIFIED]
+
+**Task:** gap-0530-lane0: per-brief claim-command re-fire transcript vs parent stall verdict
+
+**Evidence:** Verified: transcript gap-gap-gate-stall-20261016-0600-transcript.log sha256 676e22db... byte-exact == pin; all 22 re-fired commands + exits + outputs pinned. Clears 9.5 because: parent's quoted exit codes reproduced (tally TRUE) AND the deeper root cause proven with machine evidence - parent's '22 refusal verdicts' was 21 named (0530-lane0 unnamed 
 
 ### ✅ lane-scorer-20261016-0630 — Team 0, Naya Clarity Narzan (?) — 9.5/10 [VERIFIED]
 
