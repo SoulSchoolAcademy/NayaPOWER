@@ -70,6 +70,20 @@ def main():
         print(f"Could not list PRs ({e}); advisory skipped.")
         return
 
+    # Marker FIRST, before the N per-PR file fetches: once the warning is
+    # posted it never needs posting again, so every already-warned run costs
+    # 2 calls (list + comments) instead of N+2. The comments fetch is the
+    # only thing that can prove "already posted"; without it we must not
+    # conclude anything, so a comments failure skips the advisory outright.
+    try:
+        comments = api(f"/repos/{repo}/issues/{pr_num}/comments?per_page=100")
+    except Exception as e:
+        print(f"Could not read comments ({e}); advisory skipped.")
+        return
+    if any(MARKER in (c.get("body") or "") for c in comments):
+        print("Overlap warning already posted; skipping.")
+        return
+
     hits = []
     for pr in prs:
         n = pr["number"]
@@ -86,15 +100,6 @@ def main():
 
     if not hits:
         print("No overlapping open PRs.")
-        return
-
-    try:
-        comments = api(f"/repos/{repo}/issues/{pr_num}/comments?per_page=100")
-    except Exception as e:
-        print(f"Could not read comments ({e}); skipping post.")
-        return
-    if any(MARKER in (c.get("body") or "") for c in comments):
-        print("Overlap warning already posted; skipping.")
         return
 
     lines = [MARKER, "## Duplicate-work watch",

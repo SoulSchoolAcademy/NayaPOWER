@@ -52,8 +52,11 @@ WHAT THIS DOES NOT DO (D32 honesty -- read before trusting this gate)
    their seat; without it, a same-seat review can pass as independent.
 7. Only the first 100 reviews and first 100 check runs are considered
    (API pagination cap). PRs beyond that are out of scope.
-8. Infrastructure failure (API unreachable, body unfetchable) fails CLOSED
-   (exit 1, GATE_BLIND). A gate that passes when blind is theater.
+8. Infrastructure failure: a GENUINE failure (API permission denied,
+   malformed response) fails CLOSED (exit 1, GATE_BLIND). A TRANSIENT
+   failure (rate limit, 5xx, network error) that survives all retries is
+   UNKNOWN (exit 2) — re-run, not a FAIL. A gate that renders a rate limit
+   as a verdict trains everyone to ignore red.
 """
 
 from __future__ import annotations
@@ -62,6 +65,8 @@ import json
 import os
 import re
 import sys
+import time
+import urllib.error
 import urllib.request
 from pathlib import Path
 
@@ -198,9 +203,74 @@ def render_report(pr_number, head_sha, author_seat, attestations, evidence, resu
 
 _API = "https://api.github.com"
 
+# Retry tuning (mirrors tools/check_merge_consensus.py): merge bursts share
+# one GITHUB_TOKEN, so 403/429 rate limits are routine. 5xx and plain network
+# errors are transient too. Up to 5 attempts per call; the server's
+# Retry-After is honored (capped), else exponential backoff. A 403 whose body
+# says "Resource not accessible" is a permission problem: fail fast.
+_API_MAX_ATTEMPTS = 5
+_API_BACKOFF_BASE_S = 1
+_API_MAX_WAIT_S = 120
+
+
+class GateBlind(Exception):
+    """The gate could not see what it must judge. Fail closed (exit 1)."""
+
+
+class GateTransient(Exception):
+    """A transient API/network failure survived every retry. The gate is
+    UNKNOWN (exit 2): re-run, not a FAIL."""
+
+
+def _retry_after(headers):
+    try:
+        ra = headers.get("Retry-After") if headers else None
+        return int(ra) if ra else None
+    except (TypeError, ValueError):
+        return None
+
+
+def _classify_api_error(exc):
+    """Classify a GitHub API failure as ('transient'|'blind', detail,
+    retry_after_or_None). Never raises.
+
+    Transient: 429, rate-limited 403, 5xx, and every non-HTTP failure
+    (URLError, timeout, connection reset, bad JSON) — the network moved,
+    not the verdict. Blind: permission 403s, 404s, other HTTP errors —
+    retrying cannot change the answer.
+    """
+    if isinstance(exc, urllib.error.HTTPError):
+        try:
+            raw = exc.read() or b""
+        except Exception:
+            raw = b""
+        body_text = raw.decode("utf-8", "replace") if raw else ""
+        try:
+            msg = json.loads(body_text).get("message", "") if body_text else ""
+        except Exception:
+            msg = body_text[:200]
+        low = f"{msg} {body_text}".lower()
+        retry_after = _retry_after(exc.headers)
+        if exc.code == 429 or (exc.code == 403
+                               and ("rate limit" in low
+                                    or retry_after is not None)):
+            return "transient", f"rate-limited (HTTP {exc.code}): {msg}", \
+                retry_after
+        if 500 <= exc.code < 600:
+            return "transient", f"server error (HTTP {exc.code}): {msg}", \
+                retry_after
+        return "blind", f"HTTP {exc.code}: {msg or body_text[:200]}", None
+    return "transient", f"{type(exc).__name__}: {exc}", None
+
 
 def api_get(path: str, token: str):
-    """GET a GitHub API path. Raises GateBlind on any failure (fail closed)."""
+    """GET a GitHub API path.
+
+    Transient failures (429 / rate-limited 403 / 5xx / network errors) are
+    retried with backoff; on exhaustion raises GateTransient (UNKNOWN —
+    re-run). Genuine failures (permission denied, 404, malformed) raise
+    GateBlind (FAIL) immediately. Never leaks a traceback.
+    """
     req = urllib.request.Request(
         _API + path,
         headers={
@@ -210,21 +280,42 @@ def api_get(path: str, token: str):
             "User-Agent": "nayapower-claim-evidence-gate",
         },
     )
-    try:
-        with urllib.request.urlopen(req, timeout=30) as resp:
-            return json.load(resp)
-    except Exception as exc:  # noqa: BLE001 -- any IO failure blinds the gate
-        raise GateBlind(f"GET {path} failed: {exc}") from exc
-
-
-class GateBlind(Exception):
-    """The gate could not see what it must judge. Fail closed."""
+    attempt = 0
+    while True:
+        attempt += 1
+        try:
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                return json.load(resp)
+        except Exception as exc:  # noqa: BLE001 -- classified below, never raw
+            kind, detail, retry_after = _classify_api_error(exc)
+            if kind == "transient" and attempt < _API_MAX_ATTEMPTS:
+                wait = retry_after if retry_after else \
+                    _API_BACKOFF_BASE_S * (2 ** (attempt - 1))
+                wait = max(1, min(wait, _API_MAX_WAIT_S))
+                print(f"api_get: transient ({detail}), waiting {wait}s "
+                      f"(attempt {attempt}/{_API_MAX_ATTEMPTS})",
+                      file=sys.stderr)
+                time.sleep(wait)
+                continue
+            if kind == "transient":
+                raise GateTransient(
+                    f"GET {path} failed after {_API_MAX_ATTEMPTS} attempts: "
+                    f"{detail}") from exc
+            raise GateBlind(f"GET {path} failed: {detail}") from exc
 
 
 def run_gate(repo: str, pr_number: str, head_sha: str, head_dir: str, token: str) -> int:
-    """Full gate run. Returns process exit code (0 pass, 1 fail)."""
-    pr = api_get(f"/repos/{repo}/pulls/{pr_number}", token)
-    body = pr.get("body") or ""
+    """Full gate run. Returns process exit code (0 pass, 1 fail, 2 unknown)."""
+    # The PR object is fetched only for its body. When the caller already
+    # has it (PR_BODY from the workflow's event payload), skip that call:
+    # the body is the same untrusted text either way, and the gate treats
+    # it as untrusted in both paths. Absent env -> live fetch, exactly as
+    # before. (The saving materializes when the workflow wires
+    # PR_BODY: ${{ github.event.pull_request.body }}.)
+    body = os.environ.get("PR_BODY")
+    if body is None:
+        pr = api_get(f"/repos/{repo}/pulls/{pr_number}", token)
+        body = pr.get("body") or ""
     author_seat = parse_seat_tag(body)
 
     attestations = find_attestations(body)
@@ -259,6 +350,13 @@ def main() -> int:
         return 1
     try:
         return run_gate(repo, pr_number, head_sha, head_dir, token)
+    except GateTransient as exc:
+        # A transient API limit is not a verdict about the claims. The gate
+        # is UNKNOWN: exit 2 (non-zero, distinct from FAIL's 1) so the log
+        # says UNKNOWN and the fix is a re-run, not an investigation.
+        print(f"CLAIM-EVIDENCE GATE: UNKNOWN -- transient {exc} "
+              f"-- re-run, not a FAIL")
+        return 2
     except GateBlind as exc:
         print(f"CLAIM-EVIDENCE GATE: FAIL -- {exc} (GATE_BLIND)")
         return 1

@@ -175,22 +175,141 @@ def test_undeclared_author_seat_documented_behavior():
     assert r["pass"] is True
 
 
-# --- IO fail-closed (the "gate that passes when blind is theater" claim) ---
+# --- IO fail-closed / transient UNKNOWN --------------------------------------
 
+import io  # noqa: E402
 import os  # noqa: E402
 from unittest import mock  # noqa: E402
 
-from ci_claim_evidence_gate import GateBlind, main, run_gate  # noqa: E402
+from ci_claim_evidence_gate import (  # noqa: E402
+    GateBlind,
+    GateTransient,
+    api_get,
+    main,
+    run_gate,
+)
 
 
-def test_api_failure_raises_gate_blind():
-    """Any GitHub API failure blinds the gate -- it must not pass blind."""
-    with mock.patch("urllib.request.urlopen", side_effect=OSError("net down")):
+def _http_error(code, message, retry_after=None):
+    import urllib.error
+    body = ('{"message": "%s"}' % message).encode()
+    headers = {"Retry-After": str(retry_after)} if retry_after else {}
+    return urllib.error.HTTPError("http://x/", code, message, headers,
+                                 io.BytesIO(body))
+
+
+class _FakeResp:
+    """A urlopen context-manager stand-in returning parsed JSON."""
+    def __init__(self, payload):
+        self._payload = payload
+    def __enter__(self):
+        return self
+    def __exit__(self, *exc):
+        return False
+    def read(self):
+        return json_payload(self._payload)
+
+
+def json_payload(obj):
+    import json as _json
+    return _json.dumps(obj).encode()
+
+
+def test_transient_network_failure_raises_gate_transient():
+    """A dead network is transient, not blind: retries, then GateTransient
+    (UNKNOWN), never a silent pass and never a traceback."""
+    import ci_claim_evidence_gate as gate_mod
+    with mock.patch("urllib.request.urlopen", side_effect=OSError("net down")), \
+         mock.patch.object(gate_mod, "time") as mock_time:
         try:
             run_gate("o/r", "1", "abc123", "/nonexistent", "token")
-        except GateBlind:
+        except GateTransient:
+            assert mock_time.sleep.call_count == 4  # 5 attempts, 4 waits
             return
-    raise AssertionError("run_gate did not raise GateBlind on API failure")
+    raise AssertionError("run_gate did not raise GateTransient on net failure")
+
+
+def test_persistent_rate_limit_raises_gate_transient():
+    """429 on every attempt: 5 tries, then GateTransient (UNKNOWN)."""
+    import ci_claim_evidence_gate as gate_mod
+    errs = [_http_error(429, "API rate limit exceeded") for _ in range(5)]
+    with mock.patch("urllib.request.urlopen", side_effect=errs) as m, \
+         mock.patch.object(gate_mod, "time"):
+        try:
+            api_get("/repos/o/r/pulls/1", "token")
+        except GateTransient as e:
+            assert "rate-limited" in str(e)
+            assert m.call_count == 5
+            return
+    raise AssertionError("api_get did not raise GateTransient on 429")
+
+
+def test_rate_limit_then_success_recovers():
+    """Transient then green: the retry heals and the call returns data."""
+    import ci_claim_evidence_gate as gate_mod
+    errs = [_http_error(429, "API rate limit exceeded"),
+            _http_error(429, "API rate limit exceeded")]
+    with mock.patch("urllib.request.urlopen",
+                    side_effect=errs + [_FakeResp({"ok": True})]) as m, \
+         mock.patch.object(gate_mod, "time") as mock_time:
+        assert api_get("/repos/o/r/pulls/1", "token") == {"ok": True}
+    assert m.call_count == 3
+    assert mock_time.sleep.call_count == 2
+
+
+def test_5xx_is_transient_not_blind():
+    """A 502 is the host's problem, not the verdict's: GateTransient."""
+    import ci_claim_evidence_gate as gate_mod
+    errs = [_http_error(502, "Bad Gateway") for _ in range(5)]
+    with mock.patch("urllib.request.urlopen", side_effect=errs), \
+         mock.patch.object(gate_mod, "time"):
+        try:
+            api_get("/repos/o/r/pulls/1", "token")
+        except GateTransient:
+            return
+    raise AssertionError("api_get did not raise GateTransient on 502")
+
+
+def test_permission_403_raises_gate_blind_fast():
+    """A 403 'Resource not accessible' is genuine: GateBlind, no retries."""
+    err = _http_error(403, "Resource not accessible by integration")
+    with mock.patch("urllib.request.urlopen", side_effect=[err]) as m:
+        try:
+            api_get("/repos/o/r/pulls/1", "token")
+        except GateBlind as e:
+            assert "403" in str(e)
+            assert m.call_count == 1
+            return
+    raise AssertionError("api_get did not raise GateBlind on permission 403")
+
+
+def test_404_raises_gate_blind_fast():
+    """A 404 is genuine: GateBlind, no retries."""
+    err = _http_error(404, "Not Found")
+    with mock.patch("urllib.request.urlopen", side_effect=[err]) as m:
+        try:
+            api_get("/repos/o/r/pulls/1", "token")
+        except GateBlind:
+            assert m.call_count == 1
+            return
+    raise AssertionError("api_get did not raise GateBlind on 404")
+
+
+def test_main_transient_returns_unknown_not_fail(capsys):
+    """main() maps GateTransient to exit 2 with an UNKNOWN line, never a
+    FAIL line and never a traceback."""
+    import ci_claim_evidence_gate as gate_mod
+    env = {"GITHUB_REPOSITORY": "o/r", "PR_NUMBER": "1",
+           "PR_HEAD_SHA": "abc", "GITHUB_TOKEN": "t"}
+    with mock.patch.dict(os.environ, env, clear=True), \
+         mock.patch.object(gate_mod, "run_gate",
+                           side_effect=GateTransient("GET x failed: net")):
+        assert main() == 2
+    out = capsys.readouterr().out
+    assert "UNKNOWN" in out
+    assert "re-run, not a FAIL" in out
+    assert "FAIL --" not in out
+    assert "Traceback" not in out
 
 
 def test_main_missing_env_fails_closed():
