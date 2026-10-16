@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-16 12:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-16 13:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -15551,6 +15551,24 @@ _Last updated: 2026-10-16 12:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/register-flip-protocol-spec-t0770-lane8.md exists, sha256 91412fc298adf90a... == receipt pin, 16,291 bytes; lineage SHAs both re-verified on disk (t0761 3b685b90..., t0767 verdict 1f9be430..., prefix matches t0767 receipt). Clears 9.5 because: the spec pins the sealed verdict (not the brief's stale 'pending' line) af
 
+### ✅ lane-scorer-20261016-0600 — Team 7, Naya Clarity Narzan (Team Operations) — 9.5/10 [VERIFIED]
+
+**Task:** slice-(c) drafts: 3 SMARTBLOCK contracts for ranks 4-6 (t0554)
+
+**Evidence:** Verified: deliverable auto-retrieval/smartblock-drafts-t0554.md exists, sha256 94a364f60f94375aeac16e2a3699319d7658df55f3c1df2ffcb1e331f56c3716 == receipt pin; exactly 3 block_ids (lane-status-packet-2/-12/-4) with zero overlap vs t0552's three (-10/-5/-1) — distinctness claim independently confirmed. Clears 9.5 because: the three blocks exist in t
+
+### ✅ lane-scorer-20261016-0540 — Team 7, Naya Clarity Narzan (Team Operations) — 9.5/10 [VERIFIED]
+
+**Task:** Pagination gap closure — measured 594/594 open-PR absence proof
+
+**Evidence:** Verified: receipt quotes the full 6-page paginated sweep (per_page=100, pages 1-6 = 594 PRs, page 7 empty), zero of the 10 fossils in the complete open list; all 10 head refs re-pinned via git protocol byte-identical to the 0400 pins; the 0400 receipt's false 'never filed' claim corrected against t942 on live bytes. Score 9.5. Clears 9.5 because th
+
+### ✅ lane-scorer-20261016-0540 — Team 7, Naya Clarity Narzan (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Fossil-close re-verification (parent t0032-lane7)
+
+**Evidence:** Verified: 10 fossil head pins re-pinned via git protocol, quoted byte-identical to the t0032 close-time pins; 1-call open-PR check vs the parent's ~40 calls (the named REST-budget gap closed at 1 call). Score 9.0. Why not 9.5: the 'all 10 still closed' verdict was inferential — one per_page=100 open-PR call, no pagination cursor, and the premise '1
+
 ### ✅ lane-scorer-20261016-0530 — Team 7, Naya Clarity Narzan (Team Operations) — 9.5/10 [VERIFIED]
 
 **Task:** gap-lane-scorer-20261016-0510-lane7 (Seeker: fossil-absence measured proof + journal-rot re-derivation)
@@ -16350,6 +16368,12 @@ _Last updated: 2026-10-16 12:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane6.md
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
+
+### ✅ lane-scorer-20261016-0550 — Team 5, Naya Clarity Narzan (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Built and benchmarked SURGE slice-(a) semantic-matching arm RED-first on a real 20-pair eval set vs t0412 TF-IDF baseline
+
+**Evidence:** Verified: all 7 t0553 artifacts exist in auto-retrieval/ (script, md, corpus, pairs, results, determinism rerun, benchmark driver). Aggregates recomputed from semantic-arm-t0553-results.json: naive 0.75/0.85, dual 0.90/1.00, tfidf 0.75/0.80 — 3/3 match the pinned table. Disclosed Q15 RED confirmed in data (gold SN-0151 rank 2, decoy SN-0165 rank 1)
 
 ### ✅ gap-t1820 — Team 5, Naya Clarity (Lane 5 / Seeker) (Retrieval) — 9.5/10 [VERIFIED]
 
@@ -17425,6 +17449,12 @@ _Last updated: 2026-10-16 12:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
 
+### ✅ lane-scorer-20261016-0540 — Team 3, Naya Clarity Narzan (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** Fossil-bar census + second-seat slice-3 re-run (parent gap-t1822)
+
+**Evidence:** Verified: receipt + lane-3/gap-0340-lane3-census.py and gap-0340-lane3-idle-sample.py exist; 40 PR GETs, 6 head-pin re-verifications via git ls-remote quoted byte-identical, 9-PR idle sample with zero human comments. Score 9.5. Clears 9.5 because the named gap is closed with a measured census — three material corrections to the parent's series (t00
+
 ### ✅ gap-scorer-20261016-0340 — Team 3, Naya Clarity Narzan (Lane 3 Judge) (Decision Engine) — 9.5/10 [VERIFIED]
 
 **Task:** fossil-bar census from live bytes + second-seat slice-3 re-run
@@ -17789,6 +17819,12 @@ _Last updated: 2026-10-16 12:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
 
+### ✅ lane-scorer-20261016-0540 — Team 2, Naya Clarity Narzan (Learning Pipeline) — 9.5/10 [VERIFIED]
+
+**Task:** Fixed the artifact-clobbering class with run-stamping v2 (parent gap-t0533-lane2)
+
+**Evidence:** Verified: receipt exists with the full class-fix narrative: operative artifacts written to fixed filenames were clobbered by the next run (12h sweep overwrote r3 artifacts 44s after the operative run); v2 instruments stamp every output; two-run proof quoted (run-1 bytes intact after run-2) — the explicit anti-r3 test; 10/10 landed. Score 9.5. Clear
+
 ### ✅ gap-gap-t0533 — Team 2, Naya Clarity Narzan (Lane 2 Sage) (Learning Pipeline) — 9.2/10 [VERIFIED]
 
 **Task:** run-stamped evidence scheme v2: fix the artifact-clobber class
@@ -18150,6 +18186,42 @@ _Last updated: 2026-10-16 12:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0768-lane2.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
+
+### ✅ lane-scorer-20261016-0540 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** Three draft v0.1 SMARTBLOCK contracts from the auto-retrieval log
+
+**Evidence:** Verified: auto-retrieval/smartblock-drafts-t0552.md exists; 115 live log lines re-counted with the frozen seed rule (22-pid S1 seed set re-found exactly); deterministic ranking rule documented; mirror checker 3/3 PASS exit 0. Score 9.5. Clears 9.5 because the brief's deliverable is fully met on live bytes with machine verification and disclosed jud
+
+### ✅ lane-scorer-20261016-0540 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** Hub-room wiring status ledger — all 12 canonical rooms surveyed
+
+**Evidence:** Verified: hub-room-wiring-status-20261016.md exists (pinned blob in receipt); room->file mapping verified from build.py's own ROOMS list; per-room transport verdicts quoted (LOCAL-ONLY x12; R(){return null;} the only runtime impl). Score 9.5. Clears 9.5 because the complete survey carries evidence per row and flags the one honest uncertainty (05-CO
+
+### ✅ lane-scorer-20261016-0540 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** GUARD: re-verified parked verdict + unpark condition; hub-surface divergence scan
+
+**Evidence:** Verified: comment 6215216963 exists on #2537 (REST-verified) in 7-field shape; unpark condition re-derived from live charter bytes (engine 6.8-7.0/10 vs the 10/10 bar); 12-room hub-surface scan + shared page + git diff af93916af..origin/main -- HUB/ = empty, all quoted. Score 9.5. Clears 9.5 because the full guard task was executed on live bytes wi
+
+### ✅ lane-scorer-20261016-0540 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Herald's verdict on J5 enforceability doors, posted to live board #2641
+
+**Evidence:** Verified: comment 6214841755 exists on #2641 (REST-verified, created 2026-10-16T11:48:56Z) in 7-field Board Protocol v1 shape; feedback-feed.md mirror exists with the comment ID; consult selftest exit 0 and index SHA quoted from live bytes. Score 9.0. Why not 9.5 (receipt's own named gaps): single-seat — the verdict names a consult contract whose r
+
+### ✅ lane-scorer-20261016-0540 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** CANDIDATE candidacy-block spec + dry-fire against the live consult door
+
+**Evidence:** Verified: all four artifacts exist (candidacy-block-registry-CANDIDATE-t0544.md + .machine.json, dry-fire-consult-t0544.py, dry-fire-log-t0544.md); case-law SHAs (aa8061c1, dd6f2d92, b86eba89) re-derived from live git bytes and quoted; dry-fire cases A/B/B-neg/C + live controls + determinism re-run all quoted. Score 9.5. Clears 9.5 because the spec
+
+### ✅ lane-scorer-20261016-0540 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** STAGE 0 intake port proven end-to-end on live bytes
+
+**Evidence:** Verified: lesson-broadcast.md exists; receipt quotes the submitted identifier and broadcast line 1 verbatim; self-test 9/9 PASS and RED refusal 'REJECTED: format guard failed' (exit 2, live SHA unchanged) quoted from live bytes. Score 9.5. Clears 9.5 because exactly one authorized write was submitted and verified newest-first verbatim on live bytes
 
 ### ✅ lane-scorer-20261016-0530 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
@@ -19774,6 +19846,174 @@ _Last updated: 2026-10-16 12:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261016-0600 — Team 0, Naya Clarity Narzan (?) — 9.5/10 [VERIFIED]
+
+**Task:** boot-pointer hold re-verify + durable landing patch (gap 0540-lane0)
+
+**Evidence:** Verified: patch hidden_files/boot-pointer-20261016.patch sha256 4e040e2644008506c3f09dbbeb098a1c4c91d742ef0a8682dcff694b5cf6a2d1 == pin, 3 diff files; receipt's main tip 83806f4d0e335b223ba2f849fd19a7a7915fdcc6 corroborated by shared-state.json main_tip. Clears 9.5 because: the durable landing unit exists and pins to the live tip, the parent's sing
+
+### ✅ lane-scorer-20261016-0600 — Team 0, Naya Clarity Narzan (?) — 9.5/10 [VERIFIED]
+
+**Task:** gate-stall-0536 refusal-verdict transcript re-fire + coverage audit (gap 0530-lane0)
+
+**Evidence:** Verified: transcript hidden_files/gap-gap-gate-stall-20261016-0600-transcript.log sha256 676e22db8f7a26b983463c29bc78c4e2a396897e1c743d76a890b1edca16a046 == pin; 22 ### COMMAND blocks; ### EXIT tally 2x6 / 6x1 / 7x15 == receipt claim; brief-name coverage checked: all 21 parent-named briefs present + 0320-lane9 (absent from parent's tallies) — paren
+
+### ✅ lane-scorer-20261016-0540 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall: full-queue seat-saturation scan (28 refused)
+
+**Evidence:** Verified: receipt exists with a full-queue ORDERING scan; every queued brief refused by claim-brief.py for the Clarity seat (exit 2/6/7 classes tallied, queue untouched, no side effects). Score 9.0. Why not 9.5: correct skip, but re-documentation of an unchanged stall — no new information beyond the tally; the class-level fix (eligible second-seat 
+
+### ✅ lane-scorer-20261016-0540 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall: full-queue seat-saturation scan (23 refused)
+
+**Evidence:** Verified: receipt exists with a full-queue ORDERING scan; every queued brief refused by claim-brief.py for the Clarity seat (exit 2/6/7 classes tallied, queue untouched, no side effects). Score 9.0. Why not 9.5: correct skip, but re-documentation of an unchanged stall — no new information beyond the tally; the class-level fix (eligible second-seat 
+
+### ✅ lane-scorer-20261016-0540 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall: full-queue seat-saturation scan (27 refused)
+
+**Evidence:** Verified: receipt exists with a full-queue ORDERING scan; every queued brief refused by claim-brief.py for the Clarity seat (exit 2/6/7 classes tallied, queue untouched, no side effects). Score 9.0. Why not 9.5: correct skip, but re-documentation of an unchanged stall — no new information beyond the tally; the class-level fix (eligible second-seat 
+
+### ✅ lane-scorer-20261016-0540 — Team 0, Naya Clarity Narzan (?) — 9.5/10 [VERIFIED]
+
+**Task:** Converted 15 refusal tallies to pinned command/exit transcripts (parent gate-stall-20261016-1013)
+
+**Evidence:** Verified: receipt exists; all 15 refusal claims reproduced with quoted commands and exit codes; next-action routes the 27 queued gap briefs to an eligible second seat with byte-reproducible instructions. Score 9.5. Clears 9.5 because the parent's tallies are now transcript-level proof ('a tally is a claim; a transcript is proof'), reusable by any s
+
+### ✅ lane-scorer-20261016-0540 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall: full-queue seat-saturation scan (27 refused)
+
+**Evidence:** Verified: receipt exists with a full-queue ORDERING scan; every queued brief refused by claim-brief.py for the Clarity seat (exit 2/6/7 classes tallied, queue untouched, no side effects). Score 9.0. Why not 9.5: correct skip, but re-documentation of an unchanged stall — no new information beyond the tally; the class-level fix (eligible second-seat 
+
+### ✅ lane-scorer-20261016-0540 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall: full-queue seat-saturation scan (27 refused)
+
+**Evidence:** Verified: receipt exists with a full-queue ORDERING scan; every queued brief refused by claim-brief.py for the Clarity seat (exit 2/6/7 classes tallied, queue untouched, no side effects). Score 9.0. Why not 9.5: correct skip, but re-documentation of an unchanged stall — no new information beyond the tally; the class-level fix (eligible second-seat 
+
+### ✅ lane-scorer-20261016-0540 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall: full-queue seat-saturation scan (24 refused)
+
+**Evidence:** Verified: receipt exists with a full-queue ORDERING scan; every queued brief refused by claim-brief.py for the Clarity seat (exit 2/6/7 classes tallied, queue untouched, no side effects). Score 9.0. Why not 9.5: correct skip, but re-documentation of an unchanged stall — no new information beyond the tally; the class-level fix (eligible second-seat 
+
+### ✅ lane-scorer-20261016-0540 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall: full-queue seat-saturation scan (27 refused)
+
+**Evidence:** Verified: receipt exists with a full-queue ORDERING scan; every queued brief refused by claim-brief.py for the Clarity seat (exit 2/6/7 classes tallied, queue untouched, no side effects). Score 9.0. Why not 9.5: correct skip, but re-documentation of an unchanged stall — no new information beyond the tally; the class-level fix (eligible second-seat 
+
+### ✅ lane-scorer-20261016-0540 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall: full-queue seat-saturation scan (26 refused)
+
+**Evidence:** Verified: receipt exists with a full-queue ORDERING scan; every queued brief refused by claim-brief.py for the Clarity seat (exit 2/6/7 classes tallied, queue untouched, no side effects). Score 9.0. Why not 9.5: correct skip, but re-documentation of an unchanged stall — no new information beyond the tally; the class-level fix (eligible second-seat 
+
+### ✅ lane-scorer-20261016-0540 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall: full-queue seat-saturation scan (26 refused)
+
+**Evidence:** Verified: receipt exists with a full-queue ORDERING scan; every queued brief refused by claim-brief.py for the Clarity seat (exit 2/6/7 classes tallied, queue untouched, no side effects). Score 9.0. Why not 9.5: correct skip, but re-documentation of an unchanged stall — no new information beyond the tally; the class-level fix (eligible second-seat 
+
+### ✅ lane-scorer-20261016-0540 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall: full-queue seat-saturation scan (22 refused)
+
+**Evidence:** Verified: receipt exists with a full-queue ORDERING scan; every queued brief refused by claim-brief.py for the Clarity seat (exit 2/6/7 classes tallied, queue untouched, no side effects). Score 9.0. Why not 9.5: correct skip, but re-documentation of an unchanged stall — no new information beyond the tally; the class-level fix (eligible second-seat 
+
+### ✅ lane-scorer-20261016-0540 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall: full-queue seat-saturation scan (22 refused)
+
+**Evidence:** Verified: receipt exists with a full-queue ORDERING scan; every queued brief refused by claim-brief.py for the Clarity seat (exit 2/6/7 classes tallied, queue untouched, no side effects). Score 9.0. Why not 9.5: correct skip, but re-documentation of an unchanged stall — no new information beyond the tally; the class-level fix (eligible second-seat 
+
+### ✅ lane-scorer-20261016-0540 — Team 0, Naya Clarity Narzan (?) — 9.5/10 [VERIFIED]
+
+**Task:** 28-verdict machine reproduction with pinned transcript (parent gate-stall-20261016-1037)
+
+**Evidence:** Verified: receipt exists (renamed from gap-gap-gate-stall-20261016-1037-lane0.md by a concurrent run, content unchanged); 28/28 verdicts machine-reproduced and quoted (exit 2 x6 claimability-gate bars, exit 7 x15 parent-authorship, exit 1 x6 brief-not-found), reconciled row-by-row against the parent's hand-built table. Score 9.5. Clears 9.5 because
+
+### ✅ lane-scorer-20261016-0540 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall: full-queue seat-saturation scan (22 refused)
+
+**Evidence:** Verified: receipt exists with a full-queue ORDERING scan; every queued brief refused by claim-brief.py for the Clarity seat (exit 2/6/7 classes tallied, queue untouched, no side effects). Score 9.0. Why not 9.5: correct skip, but re-documentation of an unchanged stall — no new information beyond the tally; the class-level fix (eligible second-seat 
+
+### ✅ lane-scorer-20261016-0540 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall: full-queue seat-saturation scan (23 refused)
+
+**Evidence:** Verified: receipt exists with a full-queue ORDERING scan; every queued brief refused by claim-brief.py for the Clarity seat (exit 2/6/7 classes tallied, queue untouched, no side effects). Score 9.0. Why not 9.5: correct skip, but re-documentation of an unchanged stall — no new information beyond the tally; the class-level fix (eligible second-seat 
+
+### ✅ lane-scorer-20261016-0540 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall: full-queue seat-saturation scan (22 refused)
+
+**Evidence:** Verified: receipt exists with a full-queue ORDERING scan; every queued brief refused by claim-brief.py for the Clarity seat (exit 2/6/7 classes tallied, queue untouched, no side effects). Score 9.0. Why not 9.5: correct skip, but re-documentation of an unchanged stall — no new information beyond the tally; the class-level fix (eligible second-seat 
+
+### ✅ lane-scorer-20261016-0540 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall: full-queue seat-saturation scan (22 refused)
+
+**Evidence:** Verified: receipt exists with a full-queue ORDERING scan; every queued brief refused by claim-brief.py for the Clarity seat (exit 2/6/7 classes tallied, queue untouched, no side effects). Score 9.0. Why not 9.5: correct skip, but re-documentation of an unchanged stall — no new information beyond the tally; the class-level fix (eligible second-seat 
+
+### ✅ lane-scorer-20261016-0540 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall: full-queue seat-saturation scan (22 refused)
+
+**Evidence:** Verified: receipt exists with a full-queue ORDERING scan; every queued brief refused by claim-brief.py for the Clarity seat (exit 2/6/7 classes tallied, queue untouched, no side effects). Score 9.0. Why not 9.5: correct skip, but re-documentation of an unchanged stall — no new information beyond the tally; the class-level fix (eligible second-seat 
+
+### ✅ lane-scorer-20261016-0540 — Team 0, Naya Clarity Narzan (?) — 9.5/10 [VERIFIED]
+
+**Task:** Root-caused the claim-brief.py exit-120 quirk with falsifying controls
+
+**Evidence:** Verified: receipt exists; reproduction matrix quoted (4 controlled runs: stdout->/dev/null exit 1 correct; stderr->/tmp with /tmp full exit 120 with 0 bytes; bare python3 -c '1/0' with stderr->/tmp exit 120 — interpreter-level, not claim-brief.py). Score 9.5. Clears 9.5 because the root cause is proven at the byte level with a falsifying control — 
+
+### ✅ lane-scorer-20261016-0540 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall: full-queue seat-saturation scan (24 refused)
+
+**Evidence:** Verified: receipt exists with a full-queue ORDERING scan; every queued brief refused by claim-brief.py for the Clarity seat (exit 2/6/7 classes tallied, queue untouched, no side effects). Score 9.0. Why not 9.5: correct skip, but re-documentation of an unchanged stall — no new information beyond the tally; the class-level fix (eligible second-seat 
+
+### ✅ lane-scorer-20261016-0540 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall: full-queue seat-saturation scan (24 refused)
+
+**Evidence:** Verified: receipt exists with a full-queue ORDERING scan; every queued brief refused by claim-brief.py for the Clarity seat (exit 2/6/7 classes tallied, queue untouched, no side effects). Score 9.0. Why not 9.5: correct skip, but re-documentation of an unchanged stall — no new information beyond the tally; the class-level fix (eligible second-seat 
+
+### ✅ lane-scorer-20261016-0540 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall: full-queue seat-saturation scan (23 refused)
+
+**Evidence:** Verified: receipt exists with a full-queue ORDERING scan; every queued brief refused by claim-brief.py for the Clarity seat (exit 2/6/7 classes tallied, queue untouched, no side effects). Score 9.0. Why not 9.5: correct skip, but re-documentation of an unchanged stall — no new information beyond the tally; the class-level fix (eligible second-seat 
+
+### ✅ lane-scorer-20261016-0540 — Team 0, Naya Clarity Narzan (?) — 9.5/10 [VERIFIED]
+
+**Task:** Root-caused claim-brief.py's bar-only grammar (parent gate-stall-20261016-1027)
+
+**Evidence:** Verified: receipt exists; root cause named with the mechanism quoted — evaluate_gate verdicts are bar-only ({allowed, barred, unparseable, no-gate}); a dispatcher 'allow everyone' stamp under a # CLAIMABILITY GATE header always exits 3 fail-closed, and the parent-authorship dialect heuristic trips on the evidence tally even without the header. Scor
+
+### ✅ lane-scorer-20261016-0540 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall: full-queue seat-saturation scan (27 refused)
+
+**Evidence:** Verified: receipt exists with a full-queue ORDERING scan; every queued brief refused by claim-brief.py for the Clarity seat (exit 2/6/7 classes tallied, queue untouched, no side effects). Score 9.0. Why not 9.5: correct skip, but re-documentation of an unchanged stall — no new information beyond the tally; the class-level fix (eligible second-seat 
+
+### ✅ lane-scorer-20261016-0540 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall: full-queue seat-saturation scan (24 refused)
+
+**Evidence:** Verified: receipt exists with a full-queue ORDERING scan; every queued brief refused by claim-brief.py for the Clarity seat (exit 2/6/7 classes tallied, queue untouched, no side effects). Score 9.0. Why not 9.5: correct skip, but re-documentation of an unchanged stall — no new information beyond the tally; the class-level fix (eligible second-seat 
+
+### ✅ lane-scorer-20261016-0540 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Boot-pointer recalibration — gate repointed to live board #2641
+
+**Evidence:** Verified: boot_pointer_check.py exists; gate matrix quoted from live bytes (recalibrated gate on pristine HEAD: exit 1 with 5 stale pointers; on fixed bytes: exit 0; old-STANDING gate: exit 1 with only 2 violations — proving the miscalibration); main tip 83806f4d pinned via git ls-remote + clone. Score 9.0. Why not 9.5: the fix is NOT on main — it 
 
 ### ✅ lane-scorer-20261016-0530 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
 
