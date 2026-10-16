@@ -76,3 +76,30 @@ variant proposal, not a new system.
 When Shawn corrects the design, the correction becomes a new law or sharpens
 an old one — same day, in this directory. A ruling here changes only by a
 newer generation or an explicit Shawn correction. Never by one Naya's taste.
+
+---
+
+# DECISIONS.md addition — button taxonomy ruling (2026-10-16)
+
+## Working default: one canonical button, seven job-based variants
+
+The seven `.naya-btn` variants stay canonical: `lead` / `machine` / `streak` /
+`proximity` / `icon` / `icon.portal` / `quiet`. A new button idea becomes a
+`.naya-btn` variant proposal — never a new system.
+
+**Alias map (N4 v2.0 names → canonical, recorded not adopted as names):**
+`primary` → `lead` (the one action the page exists to do; one per view, never
+two side by side) · `secondary` → `machine` (supporting actions, paired
+actions, toolbars) · `ghost` → `quiet` (low-stakes, reversible, dismissive
+exits). The four BTN-008 skins are these aliases wearing job-colored fire —
+same DNA, no new variants.
+
+**Proposals — documented, NOT adopted:** `danger` (obsidian washed red, red
+edge fire — destructive actions, always with confirmation, never the default
+dialog button) · `.naya-btn.split` (portal split, BTN-016 — actions that take
+you somewhere verified) · `.naya-btn.prism` (prism CTA, BTN-018 — hero
+front-door calls to action).
+
+This ruling resolves the reconciliation note from the catalog-extension
+pass. It is a working default for the block-catalog adoption — it awaits
+Shawn's formal ruling before any new variant ships.
