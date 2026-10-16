@@ -1,0 +1,44 @@
+# Living Map compiler — the map stops being a document, becomes a measurement.
+#
+# Hourly: re-measures live state (tables, feeds, bridge, rooms, capture, dock)
+# and commits HUB/MAP-STATE.json. Judgments stay human; measurements mechanical.
+# A probe that cannot measure reports `unknown` loudly — never silent, never green.
+#
+# Read-only probes; the ONLY write this workflow performs is the state-file commit.
+name: map-compiler
+
+on:
+  schedule:
+    - cron: "17 * * * *"  # hourly, offset to avoid top-of-hour contention
+  workflow_dispatch:
+
+permissions:
+  contents: write  # the state-file commit is the single authorized write
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Compile the map
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # No SUPABASE_KEY here by design: the supabase_tables probe reports
+          # `unknown` (loud) without an authenticated key rather than fake green.
+        run: python3 tools/map-compiler/map_compiler.py --out HUB/MAP-STATE.json
+
+      - name: Commit state file (only write this workflow performs)
+        run: |
+          git config user.name "living-map-compiler"
+          git config user.email "living-map-compiler@users.noreply.github.com"
+          git add HUB/MAP-STATE.json
+          if git diff --cached --quiet; then
+            echo "No state change — nothing to commit."
+          else
+            git commit -m "Living Map state $(date -u +%Y-%m-%dT%H:%MZ)"
+            git push origin HEAD:${{ github.ref_name }}
+          fi
