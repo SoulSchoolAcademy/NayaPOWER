@@ -6,6 +6,8 @@ A block without all four is a draft.
 
 _Adoption 2026-10-16: 144 extracted blocks merged in (model-numbered BTN–MSC). The button-taxonomy ruling is a working default, pending Shawn's formal ruling._
 
+_Adoption 2026-10-16: 19 gap blocks integrated (CAL/PAY/CMT/CHT/ONB) with full spec files under `DESIGN/gap-blocks/` and `DESIGN/gap-blocks-2/`. Wave 1 scored 9.0 (calendar) / 8.8 (checkout) with identified fixes pending; wave 2 mechanically verified, independent scorecard pending. Nothing here is claimed above its evidence._
+
 ## Buttons — one canonical DNA
 
 **Law 21: one canonical button. `.naya-btn` is the only button system.**
@@ -1269,7 +1271,446 @@ event, a wrapping row of tiny 9.5px stage chips. _Use:_ Chronological event
 streams and their stage markers.
 _Source:_ Naya_Smart_Hub_Design.html
 
+## Calendar — five blocks, one law order
+
+_Family score: 9.0/10 (independent review, 2026-10-16). Identified fixes pending — see GAP-BUILD-NOTES.md._
+
+Family contract, one line each: one meaning per color across all five blocks (magenta = celebrations, purple = deep work, blue = meetings, green = health, gold = decisions/deadlines; a sixth type takes orange, a seventh red — the wheel continues, never restarts); today is gold and outranks selection, always; nothing invents events — uncertainty is styled, never hidden; named as not-yet: week-view grid, drag-to-reschedule, recurring-event editor (future CAL-006+).
+
+**CAL-001 — Month-view board.** A full month on black ground: serif weekday headers, 104px day cells with white-lit edges, today ignited in gold with a slow 4s breathe, event pills walking the wheel in law order (adjacent pills never duplicate a color). In-month cells lift and ignite on hover; out-of-month cells sit dimmed and jump to their month when clicked. Overflow shows two pills, then jewel dots in wheel order, then an honest `+N more` chip that opens the day's agenda (CAL-004) — it never pretends the cell showed everything. States: rest (black cell, serif number, pills dark with tinted borders) · hover (2px lift, chrome-purple ignition; pills ignite their own event color) · selected (held purple edge + glow, one at a time — clicking moves it, never stacks it) · today (2px gold edge + gold glow; a selected day that is not today wears purple) · out-of-month (dimmed, no ignition, still jumps to its month — dimmed is not dead) · overflow (+N more is the real count of hidden events). Do: walk the wheel down each cell — magenta → purple → blue → green → gold, adjacent pills always in law order. Don't: paint event types by mood of the day; a color's meaning is fixed across the whole family or the wheel becomes decoration. Anatomy: board chrome (5-layer shadow, 24px radius, tone under-glow) · serif month title with letterspaced year kicker · drawn CSS chevrons on 44px targets with chrome-purple ignition · serif uppercase weekday row · the day cell (number + pills + dots + more-chip, in that order) · the event pill (diamond jewel + time + title — the bullet law at calendar scale). It never invents events for empty cells, and today comes from the viewer's clock or an explicit `data-today` — never a guess. _Use:_ The month grid of a scheduling surface — month-level browsing with day selection feeding an agenda (CAL-004).
+_Source:_ gap-blocks/calendar-blocks.md
+
+**CAL-002 — Event card.** One event, fully dressed: an 86px time rail (serif time + uppercase duration), a glowing 3px spine in the event's fixed type color, a letterspaced type tag, serif title, and a location/attendees row with drawn SVG glyphs (pin, people — never emoji). All-day events collapse the rail into a glowing color band with an "ALL DAY" flag; multi-day spans carry the range in the rail ("Oct 20 → 22"); tentative events get a dashed edge, a `~` after the time, and say so in plain words. States: rest (dark card, color only on spine, tag, and glyph strokes — never a flood) · hover (lifts 6px, edge + glow ignite in the event's own color — the card is themed, so it burns its own hue) · active/press (settles back 4px) · focus (2px white ring) · all-day (never shows a fake `00:00–23:59`) · multi-day span (the rail carries the range; in CAL-001 the same event renders one pill per day with `→` honesty markers) · tentative (dashed edge + tilde + plain-words note). Do: let the card ignite in the event's own spectrum color — purple for deep work, blue for meetings, gold for deadlines. Don't: rest the card in its color; a card that wears its hue at rest is a flood, and floods are forbidden. Anatomy: the time rail · the 3px glowing spine (the identity mark, shared with CAL-004's timeline) · the type tag in the event's fixed color · the serif title · the meta row of drawn glyphs · the tentative styling (the honesty layer). It renders the time it was given — no invented timezone, no silent conversion; the attendee count is the real count or the row is omitted. _Use:_ One event in full detail — agenda rows, search results, reminders.
+_Source:_ gap-blocks/calendar-blocks.md
+
+**CAL-003 — Date picker.** A compact picker for embedding in forms: an input-styled trigger showing the chosen date (or an honest "Choose a date" placeholder — never a fake pre-filled date), opening a dropdown mini month grid with keyboard-honest focus states; past dates are visibly dimmed and truly inert. States: trigger rest (black body, white edge, drawn calendar glyph) · trigger hover (2px lift, purple chrome ignition — it is chrome, it burns chrome's color) · dropdown open (elevated panel; `aria-expanded` tells the truth) · day hover (purple ignition) / day focus (white ring — arrow keys move, Enter chooses, Esc closes and returns focus to the trigger) · chosen (held purple edge + glow + bold number, one at a time) · today in the mini-grid (gold edge + gold number — the family rule at 36px scale) · past dates (32% opacity, strikethrough, `disabled`, out of tab order — dimmed AND inert, never the fake-disabled look that still clicks). Do: make past dates visibly dimmed and keyboard-unreachable — a disabled date that still takes focus is a lie with styling. Don't: pre-fill the trigger with "today" to look alive; an unchosen picker says "Choose a date" until a human chooses. Anatomy: the trigger (the form-facing face — reads as an input, behaves as a button) · the dropdown panel (weekday initials, 36px day buttons, serif month title) · the day button (hover ignition, chosen hold, today gold, past inert) · the timezone footnote — "Calendar date only — no timezone is assumed or stored" — part of the block, not documentation. The value is a calendar date (`YYYY-MM-DD`), stored noon-neutral, displayed as-is — never converted, never a zone abbreviation it doesn't know. _Use:_ Date selection inside forms — booking flows, filters, schedulers.
+_Source:_ gap-blocks/calendar-blocks.md
+
+**CAL-004 — Agenda list.** The day's events as a vertical timeline: serif time gutter, a glowing 3px spectrum spine per event type, cards in CAL-002's language, and a gold "now" line with a labeled flag — positioned from the clock, and only ever rendered when the viewed day *is* today. An empty day gets the empty state with dignity: a centered gold jewel, "Nothing scheduled," "The day is yours" — no fake suggestions, no ghost events. States: rest (gutter times in serif, spines glowing quietly, cards dark with white-lit edges) · hover (the card lifts 4px and ignites in the event's own color — same language as CAL-002, one family) · now-line (gold, labeled, clock-driven) · empty (jewel + two lines — emptiness is a state with dignity, not a hole to fill) · past events (spine dims to 40%, no hover lift — readable, not clickable-theater). Do: give every event one glowing spine in its fixed type color, in wheel order down the day — the timeline should read as a walked spectrum. Don't: render a now-line on any day that isn't today; a fake "now" on last Tuesday is a trust violation with styling. Anatomy: the time gutter (serif times, right-aligned — the rail the day hangs on) · the spine (CAL-002's identity mark at timeline scale) · the node jewel (the rotated diamond where gutter meets spine) · the compressed event card (tag, serif title, one meta line — one idea per card) · the now-line (the honest present) · the empty state. The event count is the real count; past events never pretend to be upcoming. _Use:_ Day-level schedule views — the day selected in CAL-001 rendered in full.
+_Source:_ gap-blocks/calendar-blocks.md
+
+**CAL-005 — Day-cell state system.** The seven honest states of a calendar day, specified once so CAL-001 and CAL-003 never drift: rest, hover, selected, today, has-events, disabled, out-of-month — each a composable class (`.s-hover`, `.s-selected`, `.s-today`, `.s-events`, `.s-disabled`, `.s-out`), with a written precedence order: today > selected > hover > has-events > rest; disabled and out-of-month modify the base independently. A state is visual truth: if it looks clickable it is clickable; if it looks dead it is dead — disabled is removed from keyboard reach and ignores clicks. States: rest (the baseline — black, white-lit, serif number; all other states are deltas from this) · hover (lift + chrome-purple ignition) · selected (the hover ignition *held* — edge, glow, lift persist; never on two days at once) · today (gold 2px edge, gold glow, 4s breathe — if today is also selected, gold wins: today outranks selection, always) · has-events (jewel dots in wheel order — information, not decoration; their colors are the event types) · disabled (32% opacity, struck number, inert) · out-of-month (34% opacity, no ignition — but still clickable, jumping the board to its month; dimmed is not dead). Do: freeze today above selection in the precedence order — today is the fact, selection is the choice. Don't: invent an eighth state for "weekend" or "holiday" tinting; tinting days by category is a flood by another name — holidays are events, and events already have colors. Anatomy: the cell (one class per state — states compose by class, never by inline-style improvisation) · the precedence order (written down so two builders never disagree) · the state label on every specimen (teaching statically) · reduced motion (the today-breathe stops, transitions drop — motion is earned by meaning; the meaning survives without it). Today is computed, never guessed — a frozen specimen says it's a specimen. _Use:_ The state contract for any builder implementing CAL-001 or CAL-003 — implement the seven states once, never drift.
+_Source:_ gap-blocks/calendar-blocks.md
+
+## Checkout — the payment block family
+
+_Family score: 8.8/10 (independent review, 2026-10-16). Identified fixes pending — see GAP-BUILD-NOTES.md._
+
+Family contract, one line each: one total, one truth — PAY-001's total, PAY-002's button label, and PAY-003's hologram all render the same confirmed number; privacy is structural — card data lives in transient inputs bound for the processor, and the display layer never sees more than last-4 + brand; no fake success anywhere — confirmation ignites on a confirmed response only; every interactive thing is alive; plain words under pressure — validation and microcopy never blame the user. Named as not-yet: saved-address block, order tracking/shipment; the processing spinner is a transient Pay-button state (a spinner that outlives the attempt is a lie); 3-D Secure stays processor-owned.
+
+**PAY-001 — Order summary board.** The board that says "here is what you're paying for" before any money moves: line items with tone-jewel thumbnails and real quantity steppers, one promo code row, and the three rows that matter — subtotal, estimated tax (*estimated* is the honesty), and the grand total — closed by one honest line so nobody feels tricked at the total: "Prices confirmed at checkout. The total is the total — no surprises on the next step." States: rest (black ground, white-lit 1.5px edges, corner jewel ◆ in choosing-purple; thumb jewels carry each item's own color, never twice in a row) · hover — board (lifts 5px, purple tone ignition), item (lifts 2px, ignites its own jewel color), grand total (the serif total ignites gold — the only place gold appears on the board, and only on touch) · active/press (steppers compress; the Apply button presses in like every `.naya-btn`) · focus (2px white ring on every stepper, input, and button) · disabled (Apply drops to 45% opacity — disabled never ignites) · empty (`.is-empty` — the quiet cart-empty panel with a live button; idle, not dead) · promo applied (emerald edge, set by a real backend response — never by the front end guessing) / promo invalid (red edge + a plain-words sentence, never blaming). Do: let the grand total be the one gold moment on the board — serif, earned, only on hover; the total is the final word of the page. Don't: show strike-through "original price" theater next to numbers you never charged; and if the backend can't confirm a price yet, say "Price loads at the next step" instead of showing a number. Anatomy: the corner jewel ◆ (the board's identity mark — purple, choosing intelligence) · the thumb jewels (rotated diamonds, identity not decoration — in a cart of five lookalike items, the jewel is how your eye finds the one you're editing) · the qty stepper (real buttons, `aria-live` output — when quantity hits 0 the item leaves the list; no phantom rows) · the promo row (one code, one button, one message line) · the totals (labels left, numbers right, tabular figures so columns stay honest). This board never shows a price the page can't prove — a missing price reads "Loading your total…", never a zero or a guess. Privacy: no card data touches this block — it totals, it never sees payment instruments. _Use:_ The "here's what you're paying for" step of checkout, plus honest cart-empty states.
+_Source:_ gap-blocks/checkout-blocks.md
+
+**PAY-002 — Payment form.** The four fields where money changes hands — name on card, card number, expiry, CVC — with floating labels, white-lit edges at rest, and purple chrome ignition on focus; validation speaks like a person, not a parser ("That number looks short" — never "Invalid input," never blame). The Pay button starts disabled and enables only when all four fields pass; it carries the real total, ≥52px, one per view. States: rest (dark fields, labels sitting inside like a placeholder — readable, nothing shouting) · focus (border ignites purple with a held glow; the label lifts, shrinks, and letterspaces into a kicker) · valid (emerald edge — alive and well, the reward for fast feedback) · invalid (red edge + red glow + one plain-words sentence underneath; red is urgency, not alarm — no shaking, no exclamation flood) · disabled (Pay at 45% opacity — it does not pulse, glow, or beg) · empty (all fields blank is the natural rest state, not an error). Do: validate inline, per field, the moment the user leaves it — fast feedback is kindness; a surprise error at the bottom of a submitted form is not. Don't: clear the whole form on a failed payment, or red-ring every field when one card number is the problem — mark the one field that's wrong, keep everything else, keep the user's typing. Anatomy: the floating labels (the field's purpose never disappears) · the card-number field (`inputmode="numeric"` for the right mobile keyboard, `cc-number` autocomplete, letter-spaced tabular figures — the pattern is a courtesy, not a contract) · the brand jewel (lights in the brand's own color from the leading digits — confirms the brand, never echoes digits) · the CVC field (`type="password"`, masked at rest, like it should be) · the one Pay button (label carries the real total from PAY-001 — never a hardcoded number the page can't prove) · the secure line — "Locked in transit. We never see your full card number — only the payment processor does" — a promise in plain words that must be *true* in the shipping build. Privacy: card data lives only in these input fields, bound for the payment backend on submit — the block never renders a card number back as text (not in a summary, not in an error message, not in a receipt preview), never logs card fields to console, analytics, or error reporters, and the display layer shows at most brand + last four, arriving from the backend already masked. A build that echoes a PAN violates the block. _Use:_ The card-details step of checkout — the one place card data is ever entered.
+_Source:_ gap-blocks/checkout-blocks.md
+
+**PAY-003 — Confirmation state.** The moment after money moves: the paid amount as a hologram number — layered Georgia light you look *into*, one ignition when the processor confirms success, then a soft 5s breathe — plus receipt rows (what / when in UTC / receipt status) and two truth states on the receipt email: green ✓ only when the backend confirms the email landed, gold ? while it's claimed and awaiting its stamp. States: rest (emerald-tone board, the hologram amount breathing on a slow loop — maximum life, minimum noise) · the one ignition (`.is-ignited` added by the confirmed success response — scale, light, settle, once; never by a timeout, a guess, or an optimistic render) · hover (the board lifts 5px and ignites emerald; receipt rows stay still — they're records, not controls) · receipt sent (emerald ✓ — the backend confirmed the email) / receipt pending (gold ? — the gold line never upgrades itself) · error-inside-confirmation (charge succeeded but the receipt email failed: "Charged ✓ — receipt email failed, retrying. Your money is safe." — red is reserved for the charge failing, not a delayed email). Do: make the paid amount the most beautiful number on the page — the moment the user trusted you with money, the number should feel *held*, not just displayed. Don't: confetti, coin bursts, or a "YOU DID IT!!!" modal — a payment confirmation is a receipt, not a birthday party; restraint is what makes the one ignition feel like something. Anatomy: the hologram amount (Georgia 56px, four layers of shadow — top light, grounding, glow, far glow; breathes, never blinks or dances) · the charged-to line (brand + last-4 only — the full number never appears here; the last-4 arrives from the backend's masked response, never truncated client-side from a PAN it shouldn't have) · the receipt rows (what / merchant of record stated plainly / when in UTC, so there's no timezone argument later — jewel bullets in law order carry the rows) · the receipt-sent line (a *claim* until the mailer says otherwise) · the actions ("Back to the Hub" primary, one per view; "Download receipt" quiet — serving the receipt the backend already generated, never fabricating one client-side). This block never claims the charge succeeded before the processor answers. Privacy: only brand + last-4 on the charged-to line — per the PAY-002 boundary. _Use:_ Post-payment confirmation — the held moment, the receipt, the honest email status.
+_Source:_ gap-blocks/checkout-blocks.md
+
+**PAY-004 — Error state.** The panel for when the payment doesn't go through: the headline and first line name the cause honestly — declined, processor didn't answer, or session timed out — and every variant opens with the load-bearing sentence: "No money moved." — rendered only when the backend confirms no charge was created, never on a guess. Three concrete next-steps in likelihood order, a real reference code for the bank call, and retry as the primary action. States: rest (red-tone board breathing on a slow 6s loop — urgency you can feel, not an alarm you flinch from; `role="alert"` announces it once) · hover (lifts 5px, red edge brightens; "Try again" wears chrome-purple — retry is *the* primary action) · active (retry presses in) · declined vs. failed vs. timed-out (the cause is always named honestly) · unknown charge state ("We're confirming with the processor whether anything was charged — nothing is final yet," offering "Check status" instead of "Try again" — guessing here is how double-charges happen) · retry-in-flight (button disables with a "Trying again…" label swap — no double-charges from double-clicks; retry is a new charge attempt and needs consent every time). Do: say "no money moved" before anything else — the user's first fear is the double-charge; kill it in the first sentence, then explain. Don't: headline the raw processor code ("Error 402: card_declined") or paste a stack trace near the user — and never imply the user did something wrong: no "you entered," no "your fault," no red ✕ stamped over their card. Anatomy: the red (an edge and a glow at ~45% border strength, breathing — no flashing, no red flood; a panel that screams at a declined card teaches users to fear the checkout) · "no money moved" (confirmed only) · the three next-steps (jewel bullets in law order, each a concrete action — "check the details" first because it's the most common cause and the cheapest fix; "ask your bank" names the amount, because the bank will ask) · the reference code (real, from the failed attempt, monospace — the one piece of machine truth the user can carry elsewhere) · retry as primary (one primary action per view — it re-submits the *same* validated form data, never clears the fields). Privacy: no card data re-rendered, no full numbers in any message; the retry re-submits transient fields, never a stored PAN. _Use:_ Failed-payment recovery — declined cards, processor failures, expired sessions.
+_Source:_ gap-blocks/checkout-blocks.md
+
+**PAY-005 — Payment method picker.** The "which card?" moment: saved methods as rows — a brand jewel in the brand's own color (Visa blue, Mastercard orange, Amex emerald), last-4, expiry, one marked default with a quiet gold chip — built as a real radiogroup where the rows *are* the controls, plus a dashed "Use a new card" row that hands off to PAY-002. Selecting a row is a choice, and choices ignite purple. States: rest (dark rows, white-lit 1.5px edges, brand jewels glowing in their brand colors; the default card wears the gold "Default" chip — gold is attention, earned, and the default card earned it) · hover (the row lifts 2px and ignites choosing-purple; the new-card row's dashed border goes solid and its → nudges 4px — a chevron promises "go somewhere") · selected (purple edge, purple wash, purple glow, and the ✓ check orb fades in at full scale — one at a time; the visual obeys the radiogroup) · focus (`:focus-within` white ring) · active (presses 1px — the row is a real control, it feels like one) · empty (no saved methods — no apology panel; the "Use a new card" row *is* the picker, pre-highlighted, heading to PAY-002). Do: mark exactly one default and let the user change it where the row lives — the chip is gold because the default is the card the user already trusted. Don't: show the expiry as a countdown ("expires in 4 months!!") or nudge the user toward any card — the picker is neutral ground, it presents, it never persuades; and never add a delete affordance inline on the row — removing a payment method is destructive and deserves its own confirmed moment elsewhere. Anatomy: the brand jewels (identity, not decoration — at a glance you know which card is which without reading a digit) · last-4 + expiry (the only numbers on the row, arriving from the backend already masked) · the default chip (gold outline, letterspaced, one per picker) · the new-card row (dashed at rest — it *promises* a different kind of action — solid on hover; the handoff carries nothing sensitive, no partial numbers, no session card data). Privacy: at most last-4 + brand, exactly as the payment backend returns them masked — the block never renders, stores, or transmits a full card number; the full PAN exists only in the processor's vault and PAY-002's transient fields. Removing a saved method goes through the processor's delete — the front end holds no card data to delete. The picker never invents a saved method for the demo, and the default chip is set by the user's stored preference, never by recency or by the block guessing. _Use:_ Saved-payment selection — choosing the instrument, handing off to PAY-002 for new cards.
+_Source:_ gap-blocks/checkout-blocks.md
+
+## Comments — conversation, kept honest
+
+A comment thread earns its liveness the hard way: every state arrives from real
+data, and everything it refuses to show is stated out loud. Nesting is capped at
+three and the cap is visible; what looks nested is nested, what continues says
+it continues.
+
+_Verification: mechanical only (HTML parses, CSS balanced, zero yellow) — independent scorecard pending. Do not treat as triple-A until scored._
+
+**CMT-001 — Comment thread.** The whole conversation: a composer on top,
+top-level comments below, replies nested under honest depth rails to a hard cap
+of 3, then a dashed "Continue thread" panel for the rest. Nothing is flat and
+nothing is dead — collapse chevrons lift, rails ignite on hover in their depth
+color (magenta → purple → blue), and the Post button is alive the moment there
+is something to say. **Code:** one `.cmt` scope holds the composer (avatar
+jewel, dark field, 52px Post button disabled until text exists), comment items
+with action rows, the rail system (`.cmt-kids.d1/d2/d3` walking the Strip),
+collapse chevrons with honest counts, the continue panel (a nested board riding
+higher, labeled "Thread continues — depth capped at 3"), tombstones, and an
+empty state. A family token sheet carries the ground, ink, and the fixed
+reaction palette once. **States:** rest (quiet conversation, white 96% bodies);
+hover (rail ignites, action pills lift 2px in their own color — reply
+chrome-purple, love pink, share blue); press (settles 1px); focus (white 2px
+ring on every control); collapsed (kids hidden, chevron flips, the count —
+"2 replies" — stays real); continue thread (dashed button, nested board,
+stated cap, deep replies flat and in order); composer rest/focus (dark field,
+purple ignition, 38% truly-inert Post until text); tombstone (dashed edge,
+italic "This comment was removed" — body gone, not teased); empty thread
+(jewel, "No comments yet", "Say the first true thing"); edited (a quiet italic
+flag, disclosed not paraded). **Do** cap nesting at 3 and name the cap in the
+open; derive every timestamp from a real `datetime` in the markup — the
+plain-words label ("2h ago", "Mar 4") is a rendering of truth, never "2 hours
+14 minutes ago" theater and never "just now" for anything older than a minute.
+**Don't** indent a fourth level "just this once"; one fake indent is a lie the
+whole thread inherits. **Anatomy:** the composer is the thread's front door —
+your app wires the real submit and waits for the server's receipt; the avatar
+jewel is a rotated diamond in the author's stable assigned color, initials in
+serif; the name row shows display name only (private by default — no emails, no
+handles); the nesting rail is a 2px line in the depth's Strip color, marking
+*where you are in the conversation*, never how anyone feels; the fold control
+is a 44px chevron plus the real reply count; the continue panel makes the cap
+visible; the tombstone is the honest grave. _Use:_ Any discussion surface that
+needs threads with a stated, structural depth limit — Smart Feed comments,
+lesson threads, review discussions. _Source:_ gap-blocks-2/comments-blocks.md
+_What it will NOT fake:_ it never renders a fourth indent — the cap is
+structural, not a suggestion. It never invents replies to fill a thread — an
+empty thread says so. It never shows a "Posting…" state that resolves locally
+and claims delivery. Removed comments show nothing of the body, ever.
+Timestamps never claim precision the data doesn't carry.
+
+**CMT-002 — Single comment.** The atom the thread is built from: avatar jewel
+(52px, one size up for presence), serif 18px name, plain-words timestamp,
+15px body, and an action row — reply in chrome-purple, love in pink as a
+toggle, share in blue. **Code:** one self-contained `article` — the jewel, the
+name row, the body with an honest four-line clamp (`.is-clamped`, full text
+kept in the markup and the accessibility tree), and the action row from the
+same `.cmt-act` family CMT-001 uses; the specimen script only toggles the clamp
+and the love state locally. **States:** rest (dark board, white-lit edge,
+actions transparent with white glyphs — color earned by interaction); hover
+(lifts 4px, edge brightens, soft tone under-glow — chrome-adjacent, never a
+reaction color); action hover (each pill lifts and ignites its own color);
+love-on (`aria-pressed="true"` — held pink edge, filled heart, tabular-numeral
+count, toggling off returns it to rest, because play can be taken back);
+press (settles 1px); focus (white 2px ring); clamped (four lines, "Show more /
+Show less" labeling the truth both ways); disabled (38% opacity, `disabled`,
+truly inert — never hover theater on a dead control). **Do** keep the love
+count identical to the reaction row's love count — same data, same number,
+rendered twice, never computed twice; clamp long bodies with a real control.
+**Don't** truncate with an orphaned ellipsis; don't let the single comment
+drift from the thread's comment — CMT-002 *is* CMT-001's atom, so if they
+disagree on spacing, type, or behavior, one of them is wrong. **Anatomy:** the
+jewel follows the family law (assigned once per author, never changed between
+renders); the name row shows display name and nothing else; the body holds
+1.6 line height and the clamp control is part of the block, not an afterthought;
+the action row offers reply (chrome), love (pink toggle, one count one truth
+shared with the reaction row), share (blue, firing the app's real share path);
+the count is the server's count in tabular numerals. _Use:_ Featured comments,
+quotes, and embeds — anywhere one comment stands alone but must stay
+identical to its in-thread sibling. _Source:_ gap-blocks-2/comments-blocks.md
+_What it will NOT fake:_ the love count is the real count or the pill is
+absent — no "0 loves", no invented social proof. Share never confirms what it
+didn't do. Reply never opens a composer that can't post. The clamped body never
+hides text from assistive technology.
+
+**CMT-003 — Reaction row.** The play layer: jewel pills with honest counts,
+toggle on/off, a dashed plus that opens the fixed five-reaction set in wheel
+order — love pink, celebrate magenta, thoughtful purple, agree blue, laugh
+green (a sixth takes indigo, never restarts the wheel). Reactions are opt-in
+delight: no badges, no streaks, no "top fan", no leaderboards. **Code:** a
+`.cmt-rx` group with pills (drawn SVG glyph + tabular-numeral count, 1.5px
+edge in the reaction's fixed color) and a plus button; the popover holds the
+five in wheel order, keyboard-operable with Esc closing and focus returning;
+the specimen toggles locally, and the comment says it — a live build
+re-renders counts from the server after each toggle lands. **States:** rest
+(dark pills, 1.5px colored edge — present, not loud); hover (lifts 2px, glows
+in the pill's own color — never blanket purple); mine (held glow + inner wash
++ filled glyph — your reaction, visibly yours); press (settles 1px); focus
+(white 2px ring, Esc closes the popover); plus rest/open (the dashed circle
+promises more, the elevated panel keeps the promise); zero count (the pill
+does not exist — no "0" pill, no grayed ghost). **Do** render only reactions
+that exist — three honest pills beat five with two zeros; let anyone take a
+reaction back with no guilt copy and no "are you sure?". **Don't** sort pills
+by count to manufacture a leaderboard; don't add badges, streaks, or any
+status game — play that keeps score stops being play. **Anatomy:** the pill
+is the unit — one per reaction that exists; glyphs are drawn, never emoji;
+the plus is the fixed set's front door; reactor names appear as display names
+only in the `title`, droppable where privacy rules say so — the count is
+public, the names are a choice. _Use:_ The play layer under any comment —
+feed cards, replies, stand-alone comments. _Source:_ gap-blocks-2/comments-blocks.md
+_What it will NOT fake:_ counts are the server's counts — never rounded, never
+"12k" theater, never incremented optimistically and left there when the request
+fails (a failed toggle rolls the pill back and says so plainly). Zero-count
+reactions are absent, not grayed out. The popover never offers a reaction
+outside the fixed set.
+
+## Chat — calm motion, truth-states only
+
+Living but calm: motion breathes at 72 beats per minute — slow enough to be
+calm, alive enough to be awake — and every state is earned. A typing indicator
+exists only while a live signal says someone is typing; a read receipt turns
+only after the other side actually rendered the message; the scroll sticks to
+the bottom only if the reader is already there. Nothing in this family ever
+performs liveness it does not have.
+
+_Verification: mechanical only (HTML parses, CSS balanced, zero yellow) — independent scorecard pending. Do not treat as triple-A until scored._
+
+**CHT-003 — Chat bubbles (in/out).** The atomic message object: incoming on the
+left (dark board, white-lit edge — the world speaking in), outgoing on the
+right (held 1.5px purple edge — my voice, choosing intelligence, going out; a
+spine, never a flood), a rotated-square tail pointing the way the words came
+from. Consecutive messages from one sender collapse into a group — one avatar,
+one timestamp, no repeated faces. **Code:** `.chat-row` flex lines with
+incoming/outgoing bubble geometry, tails as rotated squares in the bubble's own
+background, grouping classes (`.grp`, `.grp-first`) with the rule stated in the
+specimen — same sender *and* under 5 minutes apart, never across a date
+divider; receipts are drawn SVG ticks whose only writer is `setReceipt(el,
+state)`, and a screen reader hears the contract words ("Sending / Sent /
+Delivered / Read"). **States:** rest in (white-lit edge, white light for the
+world's words), rest out (held purple edge + soft under-glow); hover (lifts
+2px, ignites white for incoming, purple for outgoing); press (settles 1px);
+grouped (avatar hides but keeps its space, margins tighten 4px → 2px,
+adjoining corners square, tails suppressed, one name + time on the first row);
+receipts — the four forward-only truth-states: `sending` (single dim tick),
+`sent` (single white tick — the server has it), `delivered` (double white tick
+with glow — their device has it), `read` (double gold tick + gold "SEEN" —
+their client *rendered* it, reported back through the transport); edited (an
+italic tag inside the bubble — disclosed, no history paraded); long messages
+(wrap at 480px/70% — a 2,000-word message is a document problem, never a "…").
+**Do** render receipts only from the transport's truth — the block displays
+states, it never invents them; `setReceipt` is the single writer of
+`data-state`. **Don't** ever show "read" because the message is old, because
+the app was backgrounded, or because it looks better — a fake read is a trust
+violation with styling, and this family has exactly one unforgivable sin.
+**Anatomy:** the row is a flex line, avatar + bubble, outgoing reversed; the
+avatar orb is a 36px lit jewel — incoming blue, outgoing purple, the tone
+following the speaker's edge; the bubble carries 15px text (never smaller —
+chat is read at a glance, in motion), 18px radius with the speaker-side corner
+squared where the tail grows; the meta line gives name + time for incoming,
+time + ticks for outgoing; ticks are drawn strokes, never emoji, never
+characters. _Use:_ The message object itself — any conversation surface, from
+DMs to the Studio channel. _Source:_ gap-blocks-2/chat-blocks.md
+_What it will NOT fake:_ it never marks read before the other side renders —
+the `read` state arrives through the transport, never from a timer, a guess,
+or the app being in the foreground. It never groups messages from different
+senders, more than 5 minutes apart, or across a date divider. It never logs,
+previews, or echoes message content anywhere outside the bubble. It never
+shows an avatar for a speaker the renderer doesn't know — unknown senders get
+the orb in chrome-white, never a fake face.
+
+**CHT-004 — Typing indicator.** Three living dots in an incoming bubble shell —
+the calm heartbeat of someone about to speak, pulsing at 72bpm, staggered at
+quarter-beat intervals. Its whole point: it exists **only while a live signal
+says someone is typing** — no signal, no dots — and 30 seconds with no
+keep-alive and no message dismisses it honestly. **Code:** the shell reuses the
+incoming bubble's geometry so the dots read as the speaker's unfinished
+sentence; `chatTyping.show(el, signalId)` *throws* without a live signal id
+(the throw is the law in code); `keepalive` re-asserts on a 20s cadence from
+the transport; `arrived` unmounts the instant the real message renders; the
+30s watchdog fires `chat:typing-expired` on honest dismissal; reduced motion
+drops the pulse to steady dots, and the meaning survives. **States:** rest
+(three white dots breathing in the incoming shell — the speaker is the world
+speaking in); live (the pulse — scale .72 → 1.12, opacity .45 → 1, one beat
+per 0.833s, `ease-in-out`, never snappy); keep-alive (invisible — the dots
+simply continue while the contract resets underneath); watchdog expiry (dots
+fade, the row unmounts — the honest end of an unfinished thought, no message
+owed); message arrival (replaced by the words, never lingering "for effect");
+reduced motion (steady dots at 85% opacity). **Do** require a live signal id
+for every render — no signal, no dots, no exceptions. **Don't** keep the
+indicator alive to look responsive while the other side went quiet; after 30
+seconds the honest answer is absence, not persistence — a typing indicator that
+outlives the typist is a ghost with styling. **Anatomy:** the shell (incoming
+geometry, white-lit edge, left tail — Sam's place, Sam's unfinished sentence);
+the dots (three 9px white orbs, stagger 0 / .208s / .416s so the pulse travels
+left to right like a breath, never a flicker); the heartbeat (`--bpm:0.833s`
+— 72 beats per minute, the resting human pulse; nothing here animates faster
+than one beat); the "who" line ("Sam is typing" — felt in dots, stated in
+words, announced to screen readers via `role="status"`); the watchdog (30s,
+non-negotiable, in code — not a guideline, a timer). _Use:_ Any live
+conversation where a transport can report typing truth — never as decoration
+on a quiet screen. _Source:_ gap-blocks-2/chat-blocks.md
+_What it will NOT fake:_ it never renders on a schedule, on a timer "to look
+alive," or because the conversation went quiet and the screen felt dead —
+those are the three classic forgeries and the `throw` exists to stop all
+three. It never converts an expired indicator into a message — absence stays
+absence. It never shows two indicators for one signal id. The aria
+announcement fires only for real signals; a fake announcement lies to a
+screen-reader user exactly as badly as fake dots lie to a sighted one.
+
+**CHT-005 — Message list.** The conversation as a room: bubbles (CHT-003)
+day-grouped under serif date dividers, in a board that scrolls with an honest
+contract — it sticks to the bottom only if the reader is already there, and it
+never yanks a reading user. **Code:** a 5-layer-shadowed board with a header
+(avatar orb + serif room name + presence line rendered *only* from a live
+presence feed), a scroll region holding date dividers ("Today · Oct 16" —
+serif, letterspaced, uppercase, hairline rules fading both ways), and a sticky
+"New messages" pill with an honest count; `chatAppend` is the only writer of
+new rows and measures `atBottom()` (within 64px) *before* the row lands; the
+empty room and the loading line ("Loading your messages…" with one breathing
+orb) are specified verbatim. **States:** rest (board, header, scroll region,
+serif chapter marks, bubbles per CHT-003); day divider (the hard boundary —
+groups never cross it); new message with reader at bottom (the row appends and
+the list glides — nothing is taken from the reader); new message with reader
+up-list (the list does not move; the pill appears — "New messages" with the
+honest count — a real button that keeps its promise: one tap, bottom reached,
+count clears); reader scrolls home (touching the bottom edge clears the pill —
+the contract resolves itself); empty (centered purple jewel, "No messages yet",
+"Say the first word" — an empty room is a state with dignity); loading
+history (one breathing orb, one honest sentence — words, never fake
+message-shaped skeletons); presence ("3 here now" — no feed, no line; a
+guessed headcount is a forgery of company). **Do** measure the edge *before*
+the row lands — the decision to move belongs to the moment before the world
+changed, not after. **Don't** smooth-scroll a reading user to the bottom
+"because something arrived" — yanking a reader mid-sentence is the chat
+equivalent of grabbing their book; the pill is the polite knock, the yank is
+the shove. **Anatomy:** the board (the room — 5-layer shadow, 24px radius,
+tone under-glow; bubbles live inside it); the header (the warm front door —
+44px orb, serif room name); the scroll region (480px, thin purple scrollbar,
+keyboard-enterable); the date divider (serif voice chapter marks — the one
+place the family's TYPE law shows at chat scale); the scroll pill (the
+contract made visible — sticky, 44px, chrome ignition, honest count badge);
+the empty state (jewel + two lines, verbatim — the words do not improvise);
+the loading state (loading is a state with words, not shapes). _Use:_ The
+full conversation room — DMs, channels, group threads — wherever bubbles need
+a room and a scroll contract. _Source:_ gap-blocks-2/chat-blocks.md
+_What it will NOT fake:_ it never auto-scrolls a reader who isn't at the
+bottom — the 64px edge is measured, not assumed. The new-messages count is the
+real count of rows appended while away, never a badge for decoration. It never
+renders divider labels for days with no messages on either side — a divider
+marks a boundary between real rows, never an empty chapter. It never shows a
+presence count without a live feed, never shows "online" from a last-seen
+timestamp, and never renders fake message-shaped skeletons while loading. The
+empty state never suggests what to say — "say the first word" is an
+invitation, not a prompt.
+
+## Onboarding — the welcome family
+
+Three blocks, one family, one law order. Every reachable node lifts and
+ignites (Law 1); the 5-stop strip walks the steps in law order and a color's
+meaning never changes between blocks (Law 2 — magenta meets, purple chooses,
+blue connects, green grows, gold earns the light; a sixth step continues the
+wheel with orange, a seventh with red, never reusing a stop); the welcome
+board rides the field, nodes ride above the thread, the ring rides its own
+board (Law 3); serif voice on step names and headlines (Law 6). The family
+laws: each step earns the next — progress is real, never theater. One job
+per step, one CTA per card. Honest percentages. Celebration with restraint:
+one ignition, then calm.
+
+_Verification: mechanical only (HTML parses, CSS balanced, zero yellow) — independent scorecard pending. Do not treat as triple-A until scored._
+
+**ONB-001 — Stepper.** The multi-step progress rail: five jewel nodes (done,
+current, locked) sitting over a dark thread that fills in the 5-stop
+spectrum as you advance. The fill width is derived from the current step's
+real index on every render — never hardcoded per story. One job is named
+per step, and skippable steps carry an honest "Optional" chip. A locked
+step is dim and truly inert — disabled, out of tab order, no hover lift, no
+glow; it never fakes being clickable. Never a wall of forms: the rail shows
+the journey and each step carries exactly one job. If no steps are
+configured, there is no rail — an honest "No steps yet" panel, and the
+plain-words line that this is not step zero of five. States: Rest (dark
+thread, step-colored jewel nodes, serif step titles); Hover (reachable
+steps lift and ignite in their own step color — done steps are revisit
+buttons, and clicking one goes back); Active/press (the node brightens, it
+feels held); Current (held ignition in the step's own color plus a slow
+three-second breathe; exactly one current step ever); Locked (34% opacity,
+unreachable because the next step is earned, not previewed); Empty (the
+honest panel). **Do** mark skippable steps with a plain "Optional" chip and
+give the step's own content an honest "Skip this step" control — skipping
+is a first-class choice, not a hidden shame. **Don't** unlock all steps
+"for preview": a locked step you can peek into teaches the user that locks
+are theater, and then nothing in the flow is trusted. Anatomy: the thread
+(dark track, strip-gradient fill in law order — the fill is the walked
+spectrum, it never runs backward); the node jewel (rotated diamond, white
+to step-color to black with its own glow — done shows a drawn check, Law 4,
+current shows the number and breathes, locked shows the number at 34%);
+the label stack (letterspaced kicker, serif title, status line with a
+jewel dot in the step color — the dot is information, not decoration);
+the optional chip (in the step's own color — a promise the flow still
+completes when skipped); the one-job line under each label (a step with
+two jobs is two steps — split it). What it will NOT fake: the thread never
+fills past the current step — a full thread on step two of five is a lie;
+locked steps never respond to hover; the rail never renders more nodes
+than the flow has; "You are here" sits on exactly one step; a skipped
+optional step advances the flow honestly, it is not silently "completed."
+_Use:_ Multi-step first-run flows (signup tours, setup wizards) where each
+step earns the next and progress must be real — the rail that shows the
+journey without becoming a wall of forms.
+_Source:_ gap-blocks-2/onboarding-blocks.md (this spec file holds the full code; it is being copied into the repo alongside this catalog update).
+
+**ONB-002 — Welcome card.** The first-run greeting board: Naya's face and
+her energy — a drawn SVG orb (white to purple to black, two eyes with
+catchlights, one calm arc) with a slow five-second halo breathe — a warm
+front door riding the full 5-layer shadow. "First run" kicker, one serif
+headline, one warm line of plain words, exactly one clear next action. The
+headline greets by name only from the block's `data-name` attribute: the
+specimen carries none, so the honest default renders "Welcome." — no
+placeholder, no "there," no invented name. Personal without creepy: the
+card's honesty footnote, printed on the block itself, says "This card knows
+only what you've told it." One primary CTA — "Begin the tour" (52px, black
+heart, white rim, drawn arrow glyph; it says where it goes, not "Get
+started") — and one quiet text exit ("I'll explore on my own") that is an
+exit, not a competing button: no lift, no glow, no color. States: Rest
+(the board on its shadow, the halo breathing — presence, not decoration);
+Hover (the board lifts 5px and ignites chrome-purple — it is chrome, so it
+burns chrome's color — and the CTA lifts and ignites with it); Active/press
+(the CTA settles 1px, it feels held); Focus (white 2px ring on the CTA —
+keyboard users get the same ignition promise); Quiet exit (65% opacity,
+underline only on intent); Nameless (the honest default). **Do** keep
+exactly one primary CTA — the card has one job: get the user to the first
+step. **Don't** add a second bright button "just in case," and never three
+competing CTAs — every extra button halves the chance the user presses any
+of them. Anatomy: the face (drawn geometry with energy — never an emoji,
+never a stock avatar, never just a logo); the kicker (it names the moment
+honestly); the headline (serif, 32px, name slot filled from `data-name`
+and from nothing else); the one line (15px, warm, max 44ch — one promise,
+not a paragraph of features); the one CTA (canonical button DNA); the
+quiet exit (present but never competing); the honesty footnote (part of
+the block, not documentation). What it will NOT fake: it never greets by
+a name it wasn't given — no "Welcome, friend," no mail-merged guess from
+an email local-part; it never claims the tour is "quick" unless the flow
+really is five small steps; the face is drawn geometry, not a photo of a
+person who doesn't exist.
+_Use:_ The first-run greeting — the warm front door when the app opens for
+the first time, greeting the user by name only when the name was given.
+_Source:_ gap-blocks-2/onboarding-blocks.md (this spec file holds the full code; it is being copied into the repo alongside this catalog update).
+
+**ONB-003 — Progress indicator.** Progress as honest truth: a linear bar
+and a ring variant, the percent a real number from real work, and a
+celebration that fires exactly one ignition and then goes calm. Four
+mouths, one truth: the serif number, the bar's fill width, the ring's
+stroke offset, and the progressbar's `aria-valuenow` all derive from a
+single source — a mismatch is a bug, not a style choice. The specimen
+freezes at 62% as a teaching state; a live build binds the number to the
+work and nothing else. Numbers breathe — no static numbers on screen.
+States: Rest (dark board, serif percent breathing on a 4s loop, strip-
+gradient fill, honest sub-count like "5 of 8 done" — the percent's receipt);
+Hover (the board lifts 3px; the ring answers with a soft glow but no lift —
+it is a readout, not a button; readouts may glow without lifting); Zero
+(0%, empty bar, "Ready when you are" — a real state, not a hidden one);
+Complete (one 1.1s gold ignition on board and ring, then calm: gold edge,
+gold 100%, the breathe stops — gold is attention, earned, and the finish
+line is the only thing that wears it); Indeterminate (when the work
+genuinely can't report a number, a soft spectrum drift crosses the bar and
+the label says "No number yet" in plain words — never parked at 99%, never
+an invented 47%); Reduced motion (ignition, breathe, and drift all stop —
+100% still reads 100%; the meaning survives without the motion).
+**Do** derive the number, the fill width, the ring offset, and
+`aria-valuenow` from one source. **Don't** stall at 99% while work finishes
+(theater), don't ease a fake 0-to-100 on load (the number must mean
+completed work), and don't celebrate twice — re-adding the complete state
+to re-fire the ignition is confetti with extra steps. Anatomy: the label
+row (letterspaced job name plus serif percent — the percent is this block's
+headline); the linear bar (12px inset track, strip fill in law order that
+resolves to gold at 100%); the ring (168px SVG, round cap, gradient walked
+around the path, serif number in the middle — the ring frames the truth, it
+doesn't decorate it); the sub-count (the receipt; if the count isn't known,
+the line says so instead of inventing one); the celebration (1.1s, once,
+then calm — no confetti, no particle spam, no encore). What it will NOT fake: the percent is
+completed work over total work — never time elapsed, never a guess, never "almost there" parked at 99%; the indeterminate state
+is only for genuinely unmeasurable work — a measurable job shown as
+indeterminate is honesty theater; the complete state is added once, when
+the backend confirms 100% — the animation firing is the receipt that the
+work is done.
+_Use:_ Setup and sync progress where the number must mean completed work —
+linear for tight layouts, ring for centered moments, indeterminate only
+when the work truly can't report yet.
+_Source:_ gap-blocks-2/onboarding-blocks.md (this spec file holds the full code; it is being copied into the repo alongside this catalog update).
+
 ## What is NOT here (yet)
 
-Nothing open. Every gap the sources named is closed; every ruling recorded
-above. New gaps go here when found — never buried.
+The catalog is honest about its edges:
+
+- **Wave-1 fixes pending.** CAL-001..005 (9.0/10) and PAY-001..005 (8.8/10)
+  carry identified fixes not yet applied — see `gap-blocks/GAP-BUILD-NOTES.md`.
+  Do not treat them as triple-A until the fixes land and re-score.
+- **Wave-2 independent scorecard pending.** CMT-001..003, CHT-003..005,
+  ONB-001..003 are mechanically verified only — a different seat has not
+  yet scored them.
+- **Next gap tier:** notification center, general error state, form
+  validation + file upload, auth companions (signup / reset / SSO).
+
+New gaps go here when found — never buried.
