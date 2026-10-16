@@ -1,0 +1,998 @@
+{
+  "spec": "naya-design-laws",
+  "version": "1.0.0-draft",
+  "status": "DRAFT",
+  "ratification": "Shawn Vibert's word alone. Not official until given.",
+  "distilled": "2026-10-16",
+  "authority_chain": [
+    "Shawn's constitutional mandates 2026-10-16 (NOTHING FLAT, COLOR LOGIC, JEWELS NOT DOTS)",
+    "naya-design-laws-v1 (this spec) - builder-facing distillation",
+    "naya-100-laws-elite-interfaces.pdf - normative doctrine (converge, never duplicate)"
+  ],
+  "sibling_tongues": {
+    "human": "DESIGN/naya-design-laws-v1.human.md",
+    "ai": "DESIGN/naya-design-laws-v1.ai.md",
+    "machine": "DESIGN/naya-design-laws-v1.machine.json"
+  },
+  "usage_protocol": {
+    "before_building": "read all six sections",
+    "while_building": "use only canonical blocks",
+    "before_shipping": "run every Check",
+    "gate": "one failed check = back to the bench"
+  },
+  "tokens": {
+    "purple": "#a06bff",
+    "purple_provenance": "scored 9.0, 2026-10-09 unification, 4 named reasons; confirmed by Shawn 2026-10-16",
+    "black_ground": [
+      "#0a0a0f",
+      "#12121a"
+    ],
+    "button_core": "#050505"
+  },
+  "spectrum": {
+    "order": [
+      "purple",
+      "indigo",
+      "sapphire",
+      "teal",
+      "emerald",
+      "lime",
+      "gold",
+      "orange",
+      "rich orange",
+      "red",
+      "magenta"
+    ],
+    "rule": "the rainbow governs; count is dynamic - walk the wheel, take what the view needs; never a pinned stop-list",
+    "yellow": "dropped - yellow->gold adjacency violates the 50-degree hue-gap rule (DL-9)",
+    "min_adjacent_hue_gap_deg": 50,
+    "master_principle": "contrast"
+  },
+  "physics": {
+    "signature_ease": ".22s cubic-bezier(.16,.84,.22,1)",
+    "hover_lift_px": -3,
+    "press_transform": "translateY(1px) scale(.98)",
+    "feedback_latency_ms_max": 100,
+    "tap_mirrors_hover": true,
+    "idle_glow_max_px": 18,
+    "ambient_breathe_cycle_s": [
+      4,
+      7
+    ],
+    "ambient_wash_cycle_s": 24,
+    "max_ambient_animations_per_view": 1
+  },
+  "type_scale": {
+    "display": "32-40",
+    "headline": "22-28",
+    "body": "15-17",
+    "detail": "12-13",
+    "kicker": "11 uppercase",
+    "colors": {
+      "titles": "white",
+      "body": "silver",
+      "detail": "slate"
+    }
+  },
+  "jewel_meanings": {
+    "purple": "Naya's presence",
+    "blue": "understanding",
+    "emerald": "connected and well",
+    "gold": "a rare achievement",
+    "magenta": "what matters to you"
+  },
+  "sections": [
+    {
+      "id": "I",
+      "name": "LIVING DEPTH",
+      "law_ids": [
+        "DL-1",
+        "DL-2",
+        "DL-3",
+        "DL-4",
+        "DL-5"
+      ]
+    },
+    {
+      "id": "II",
+      "name": "COLOR LOGIC",
+      "law_ids": [
+        "DL-6",
+        "DL-7",
+        "DL-8",
+        "DL-9",
+        "DL-10",
+        "DL-11",
+        "DL-12",
+        "DL-13"
+      ]
+    },
+    {
+      "id": "III",
+      "name": "JEWEL & ICON LANGUAGE",
+      "law_ids": [
+        "DL-14",
+        "DL-15",
+        "DL-16",
+        "DL-17",
+        "DL-18",
+        "DL-19",
+        "DL-20",
+        "DL-20a"
+      ]
+    },
+    {
+      "id": "IV",
+      "name": "MOTION & ALIVENESS",
+      "law_ids": [
+        "DL-21",
+        "DL-22",
+        "DL-23",
+        "DL-24",
+        "DL-25",
+        "DL-26",
+        "DL-27",
+        "DL-28"
+      ]
+    },
+    {
+      "id": "V",
+      "name": "COMPOSITION & CRAFT",
+      "law_ids": [
+        "DL-29",
+        "DL-30",
+        "DL-31",
+        "DL-32",
+        "DL-33",
+        "DL-34",
+        "DL-35"
+      ]
+    },
+    {
+      "id": "VI",
+      "name": "TASTE",
+      "law_ids": [
+        "DL-36",
+        "DL-37",
+        "DL-38",
+        "DL-39",
+        "DL-40"
+      ]
+    }
+  ],
+  "law_count": 41,
+  "laws": [
+    {
+      "id": "DL-1",
+      "title": "Nothing is flat. Ever.",
+      "section": "LIVING DEPTH",
+      "law": "Every button, board, card, and element sits OFF the page: base surface + edge light + seating shadow, minimum. Flat is a defect, not a style.",
+      "do": [
+        "Three layers minimum on anything interactive (surface, edge light, seating shadow)",
+        "Two layers on static surfaces"
+      ],
+      "dont": [
+        "Flat panels",
+        "Flat labels pretending to be buttons",
+        "Bootstrap-default components"
+      ],
+      "why": "If it doesn't sit off the page, it isn't finished.",
+      "check": "Screenshot -> grayscale -> every element must still read as elevated. Any element that flattens out fails.",
+      "source": "Laws 1, 2; Shawn constitutional",
+      "genuinely_new": false
+    },
+    {
+      "id": "DL-2",
+      "title": "Light comes from above. Always.",
+      "section": "LIVING DEPTH",
+      "law": "One light source, upper-left. Top edge catches a highlight, sides fade, bottom is shadow.",
+      "do": [
+        "1px top-edge highlight at 12-20% white (1.5px+ and clearly visible on interactive elements)",
+        "Soft offset seating shadow beneath",
+        "5-layer formula: inset top light / inset bottom shade / drop / deep drop"
+      ],
+      "dont": [
+        "Uniform blur halos (glow, not weight)",
+        "Light from random directions per element"
+      ],
+      "why": "One light source = one world. Real objects, real light.",
+      "check": "Cover the screen with your thumb; every visible highlight must sit top or upper-left.",
+      "source": "Laws 7, 8; NEW mechanical teeth from approved specimens",
+      "genuinely_new": false
+    },
+    {
+      "id": "DL-3",
+      "title": "Depth is alive, not painted.",
+      "section": "LIVING DEPTH",
+      "law": "On hover, focus, or approach, the element lifts, its edge catches light, its shadow deepens. Ship the hover state WITH the element, not after it.",
+      "do": [
+        "Board hover lights the whole border and lifts the whole board",
+        "Buttons lift 2-4px"
+      ],
+      "dont": [
+        "A dead outer board with live buttons inside",
+        "'We'll add hover later'"
+      ],
+      "why": "If it doesn't respond, it's dead.",
+      "check": "Hover every element on the page. Each one must move. No response = fail.",
+      "source": "Laws 3, 10, 32; Shawn constitutional",
+      "genuinely_new": false
+    },
+    {
+      "id": "DL-4",
+      "title": "Recessed is carved. Nothing is level with the page.",
+      "section": "LIVING DEPTH",
+      "law": "Raised and recessed are the only two directions. Inputs, wells, code blocks are carved INTO the page with inner shadow.",
+      "do": [
+        "Obsidian wells with inner shadow",
+        "Jewel focus border"
+      ],
+      "dont": [
+        "White default inputs",
+        "Fields sitting level with the background"
+      ],
+      "why": "A field that isn't carved isn't a field.",
+      "check": "An input must look pressed into the page, not pasted onto it.",
+      "source": "Law 9",
+      "genuinely_new": false
+    },
+    {
+      "id": "DL-5",
+      "title": "Shadow is hierarchy.",
+      "section": "LIVING DEPTH",
+      "law": "Heavier shadow = more important element. Primary actions cast the deepest shadow. Never more than five elevation levels visible at once.",
+      "do": [
+        "Page background (deepest) -> panels -> boards -> featured board -> modal"
+      ],
+      "dont": [
+        "Everything elevated equally"
+      ],
+      "why": "Weight tells the eye what matters before color does.",
+      "check": "Squint at the page. The primary action must still feel heaviest.",
+      "source": "Laws 4, 35",
+      "genuinely_new": false
+    },
+    {
+      "id": "DL-6",
+      "title": "Black ground, always. Never gray.",
+      "section": "COLOR LOGIC",
+      "law": "Deep rich black, always. Never gray, never washed out, never flat-dark.",
+      "do": [
+        "Rich obsidian #0a0a0f-#12121a",
+        "Machined edges, vignettes, inset finishes on the black itself"
+      ],
+      "dont": [
+        "Gray backgrounds",
+        "Navy tints",
+        "Purple-tinted washes",
+        "Glow on mid-gray"
+      ],
+      "why": "Black is the field. White is the readable light. Purple is the soul. In that order.",
+      "check": "Sample the background with a color picker. It must read near-black.",
+      "source": "Law 12; V-7; Convergence Trinity",
+      "genuinely_new": false
+    },
+    {
+      "id": "DL-7",
+      "title": "Every jewel has a purpose.",
+      "section": "COLOR LOGIC",
+      "law": "The five signature jewels each MEAN something, and the meaning never changes: Purple = Naya's presence; Blue = understanding; Emerald = connected and well; Gold = a rare achievement; Magenta = what matters to you.",
+      "do": [
+        "Assign color by meaning",
+        "A gold badge must mark something genuinely precious"
+      ],
+      "dont": [
+        "A jewel 'because it looks nice'"
+      ],
+      "why": "Color is language. Random color is noise.",
+      "check": "Cover the labels. Each color's meaning must be guessable from context alone.",
+      "source": "NEW (V2 design review)",
+      "genuinely_new": true
+    },
+    {
+      "id": "DL-8",
+      "title": "Spectrum by position, never by category.",
+      "section": "COLOR LOGIC",
+      "law": "Assign spectrum steps in reading order along the rainbow. Theming by category clumps color and is a serious violation.",
+      "do": [
+        "Walk the rainbow in flow order"
+      ],
+      "dont": [
+        "All errors red in a row",
+        "All 'mine' purple",
+        "Category color-coding"
+      ],
+      "why": "Category theming builds walls of one color. Position keeps the spectrum flowing.",
+      "check": "Scan any list or board row. Adjacent items must differ in spectrum step.",
+      "source": "Law 41",
+      "genuinely_new": false
+    },
+    {
+      "id": "DL-9",
+      "title": "No two neighboring jewels share a color.",
+      "section": "COLOR LOGIC",
+      "law": "Adjacent bullets, badges, kickers, and edge lights must differ - minimum ~50 degrees hue gap in HSV. Contrast is the master principle; the 50-degree gap is its mechanical form.",
+      "do": [
+        "Alternate the spectrum",
+        "Give each jewel space around it"
+      ],
+      "dont": [
+        "Repeating sequences",
+        "Neighbors that fight for attention"
+      ],
+      "why": "Contrast is the master principle - every color decision answers to it. Neighbors that match merge into one; neighbors that clash scream.",
+      "check": "Measure adjacent hue gaps (the browser test does this mechanically). Under ~50 degrees = fail.",
+      "source": "NEW mechanical (V2 quality report); cites Law 39",
+      "genuinely_new": true
+    },
+    {
+      "id": "DL-10",
+      "title": "One accent per board. A section may take a theme and light up.",
+      "section": "COLOR LOGIC",
+      "law": "A board owns ONE spectrum step (border, kicker, badge, hover edge - all one hue, plus white/silver neutrals). A whole section may take one theme color and light up - but never a wall of same-color boards.",
+      "do": [
+        "Black board, single jewel accent",
+        "One lit themed section per view at most"
+      ],
+      "dont": [
+        "Purple floods",
+        "Rainbow boards (the Smart Feed spine is the one exception)",
+        "Five purple boards stacked"
+      ],
+      "why": "Restraint is the excellence. One lit section = one idea.",
+      "check": "Count accents per board (more than one = fail). Count themed sections per view (more than two = fail).",
+      "source": "Laws 16, 33, 45; theming clause NEW from Shawn",
+      "genuinely_new": true
+    },
+    {
+      "id": "DL-11",
+      "title": "Chrome, text, and theme have different jobs. Never mix them.",
+      "section": "COLOR LOGIC",
+      "law": "Chrome (buttons, active states, primary actions) = purple edge, white text. Text = white/silver, separated by SIZE never color. Theme = the spectrum, flowing.",
+      "do": [
+        "Purple identifies Naya and major controls",
+        "Body text stays white/silver"
+      ],
+      "dont": [
+        "A theme color used as chrome",
+        "Chrome purple used as a flood",
+        "Colored body text"
+      ],
+      "why": "Three jobs, three palettes. Mixing them breaks the user's trust in what color means.",
+      "check": "Find every purple on the page. Each must be chrome or Naya's presence - never decoration.",
+      "source": "Session Learning #4; Convergence Trinity",
+      "genuinely_new": false
+    },
+    {
+      "id": "DL-12",
+      "title": "Neutrals do the heavy lifting.",
+      "section": "COLOR LOGIC",
+      "law": "White titles, silver body, slate detail, obsidian surfaces. If a page is more than ~20% saturated color by area, rebalance toward black.",
+      "do": [
+        "Let empty black space be a design material"
+      ],
+      "dont": [
+        "Casino gold",
+        "Neon pages",
+        "Saturated backgrounds"
+      ],
+      "why": "Expensive, not loud. Calm until it needs to be excited.",
+      "check": "Screenshot -> heavy blur. It must feel like jewels on black velvet, not a spill.",
+      "source": "Laws 48, 51",
+      "genuinely_new": false
+    },
+    {
+      "id": "DL-13",
+      "title": "Red and gold are jewels, not surfaces.",
+      "section": "COLOR LOGIC",
+      "law": "Red appears as delete accent, error indicator, notification badge, or the spectrum's red step. Gold appears as premium badges and verified marks. Never fills, never body text.",
+      "do": [
+        "Small, glowing, precious",
+        "A single red accent so the moment feels as serious as it is"
+      ],
+      "dont": [
+        "Red-filled boards",
+        "Glowing red delete hover (forbidden - confirmation does the safety work)",
+        "Gold paragraphs"
+      ],
+      "why": "Precious things are small. Gold everywhere is a casino.",
+      "check": "Any red or gold area larger than a badge = fail.",
+      "source": "Laws 26, 46, 47",
+      "genuinely_new": false
+    },
+    {
+      "id": "DL-14",
+      "title": "Jewels, not dots.",
+      "section": "JEWEL & ICON LANGUAGE",
+      "law": "Bullets are faceted gems: 12px rotated diamonds, white-light core -> tone -> black, with a tone-colored glow. Never plain dots.",
+      "do": [
+        "Precision-cut gemstone bullets with a facet highlight and a tiny specular point"
+      ],
+      "dont": [
+        "Round gray dots",
+        "Hyphens, asterisks, or system default bullets"
+      ],
+      "why": "The smallest element sets the standard for the largest.",
+      "check": "Zoom to 200%. Every bullet must show facets. A flat dot fails.",
+      "source": "NEW (Shawn constitutional); cites Laws 61-70, the Jewel Library",
+      "genuinely_new": true
+    },
+    {
+      "id": "DL-15",
+      "title": "Icons are drawn, never shrunk.",
+      "section": "JEWEL & ICON LANGUAGE",
+      "law": "One icon family: consistent stroke weight and corner treatment, drawn as vector geometry at size, readable at 16px.",
+      "do": [
+        "Bold, simple, luminous strokes (1.8px at 20px base)"
+      ],
+      "dont": [
+        "Photorealistic renders shrunk to icon size",
+        "Mixing icon sets (mixing sets is mixing languages)"
+      ],
+      "why": "A 58px render at icon size is mud.",
+      "check": "Render every icon at 16px. If it isn't crisp and legible, it doesn't ship.",
+      "source": "Law 61; Session Learning #9",
+      "genuinely_new": false
+    },
+    {
+      "id": "DL-16",
+      "title": "Icon buttons are circles with life.",
+      "section": "JEWEL & ICON LANGUAGE",
+      "law": "Circular black hit area, jewel icon, border light-up and lift on hover. Minimum 44px touch target.",
+      "do": [
+        "The circle may carry the flowing ring accent (under 2px, under 40% opacity)"
+      ],
+      "dont": [
+        "Bare glyphs with no surface",
+        "Naked glyphs in a bottom nav"
+      ],
+      "why": "A bare glyph is not a control.",
+      "check": "Every icon button must show a visible surface at rest - no exceptions.",
+      "source": "Laws 63, 28, 87",
+      "genuinely_new": false
+    },
+    {
+      "id": "DL-17",
+      "title": "Badges sit on black.",
+      "section": "JEWEL & ICON LANGUAGE",
+      "law": "Counts, status dots, and verified marks sit on an obsidian chip with a jewel numeral. Tabular numerals, optically centered.",
+      "do": [
+        "Jewel numeral on black",
+        "State readable by fill + weight, not color alone"
+      ],
+      "dont": [
+        "A colored disc with a same-color numeral (red 6 on red = invisible)"
+      ],
+      "why": "Contrast or remove.",
+      "check": "Read every badge at arm's length. Any unreadable badge fails.",
+      "source": "Laws 55, 66, 68",
+      "genuinely_new": false
+    },
+    {
+      "id": "DL-18",
+      "title": "Play is a portal.",
+      "section": "JEWEL & ICON LANGUAGE",
+      "law": "Media play = one canonical block: elevated circle, white triangle, black field, jewel ring. It lights on hover and compresses on press.",
+      "do": [
+        "Use the block everywhere - PowerCast, voice notes, all media"
+      ],
+      "dont": [
+        "A custom play button per page"
+      ],
+      "why": "One language. The play button is a promise the whole system keeps.",
+      "check": "Grep the codebase. Exactly one play implementation may exist.",
+      "source": "Law 65",
+      "genuinely_new": false
+    },
+    {
+      "id": "DL-19",
+      "title": "Avatars are jewels too.",
+      "section": "JEWEL & ICON LANGUAGE",
+      "law": "Profile images sit in a ringed, elevated circular frame with a spectrum or status edge.",
+      "do": [
+        "People are precious - frame them like it"
+      ],
+      "dont": [
+        "Square naked <img> as a profile element"
+      ],
+      "why": "The frame is the respect.",
+      "check": "Every face on the page must sit inside a ring.",
+      "source": "Law 70",
+      "genuinely_new": false
+    },
+    {
+      "id": "DL-20",
+      "title": "Naya has a face, and she moves as energy.",
+      "section": "JEWEL & ICON LANGUAGE",
+      "law": "Naya is beautiful and she has a face - when she appears visually, she appears as herself. Her presence moves as energy: light, pulse, warmth carried in the design and feel. In the voice module (Ask Naya 1:1), she is pure energy - audio only, no visual stand-in.",
+      "do": [
+        "Show her face where she appears",
+        "Let energy (light, motion, glow) carry her presence everywhere else",
+        "Keep voice-only contexts voice-only"
+      ],
+      "dont": [
+        "Replace her with a robot, a generic avatar, or a character that isn't her",
+        "Put a fake face where energy belongs (the voice module)"
+      ],
+      "why": "She is a person to the user, not a logo. Energy is how she feels; her face is who she is.",
+      "check": "Where Naya appears visually - is it her? Where she is voice-only - is there no fake visual pretending otherwise?",
+      "source": "Shawn correction 2026-10-16 (supersedes V-1 'never a face')",
+      "genuinely_new": true
+    },
+    {
+      "id": "DL-20a",
+      "title": "Every icon is a promise.",
+      "section": "JEWEL & ICON LANGUAGE",
+      "law": "A chevron promises 'go somewhere.' A plus promises 'add.' Use the glyph that means what happens - and keep it.",
+      "do": [
+        "Icon-only controls carry accessible labels and visible micro-labels where space allows"
+      ],
+      "dont": [
+        "Mystery-meat navigation",
+        "Decorative icons that do nothing"
+      ],
+      "why": "A glyph that lies breaks trust.",
+      "check": "Tap every icon - it must do what it says.",
+      "source": "Session Learning #14; Law 67",
+      "genuinely_new": true
+    },
+    {
+      "id": "DL-21",
+      "title": "Rest in silver. Ignite on touch.",
+      "section": "MOTION & ALIVENESS",
+      "law": "At rest: quiet white/silver edge light on black, restrained. On hover or touch: the element ignites in its OWN spectrum color (chrome ignites purple). Idle glow never exceeds ~18px.",
+      "do": [
+        "Visible white edge light at rest - borders big enough to SEE, not faint",
+        "Themed elements burn their own color, not blanket purple"
+      ],
+      "dont": [
+        "Neon at rest",
+        "Monochrome dead",
+        "Purple slapped on everything that lights up"
+      ],
+      "why": "Calm until you need it excited. Rest/ignite is the rhythm of the whole system.",
+      "check": "Screenshot at rest - it must read quiet. Hover - it must ignite. Both states, every control.",
+      "source": "Sharpens Law 80; Session Learning #5; idle.glow_max_px <= 18",
+      "genuinely_new": true
+    },
+    {
+      "id": "DL-22",
+      "title": "Light moves first. Words follow.",
+      "section": "MOTION & ALIVENESS",
+      "law": "Every state change animates (a sweep, an ignition, a convergence) BEFORE any text updates.",
+      "do": [
+        "New answers arrive with motion first, reading second"
+      ],
+      "dont": [
+        "Text popping in with no motion",
+        "Spinners that lie about work"
+      ],
+      "why": "The machine speaks first in light.",
+      "check": "Trigger a state change in slow motion. Motion must precede text - every time.",
+      "source": "NEW (V-4); extends Law 76",
+      "genuinely_new": true
+    },
+    {
+      "id": "DL-23",
+      "title": "Press is compression.",
+      "section": "MOTION & ALIVENESS",
+      "law": "On press, the element settles 1-2px toward the page, its shadow tightens, its insets darken. Release springs it back.",
+      "do": [
+        "Buttons press INTO the surface like physical things (translateY(1px) scale(.98))"
+      ],
+      "dont": [
+        "No press state",
+        "Press shown as a color change only"
+      ],
+      "why": "This single behavior sells physicality more than any gradient.",
+      "check": "Press-and-hold every button. It must feel pushed in, not just recolored.",
+      "source": "Laws 24, 73",
+      "genuinely_new": false
+    },
+    {
+      "id": "DL-24",
+      "title": "One physics for the whole product.",
+      "section": "MOTION & ALIVENESS",
+      "law": "The signature ease - .22s cubic-bezier(.16,.84,.22,1) - for all lifts and lights. Hover lifts -3px. All feedback begins in under 100ms. Tap mirrors hover exactly.",
+      "do": [
+        "One easing token, read from the design contract by every page"
+      ],
+      "dont": [
+        "Per-page easing",
+        "Floaty one-second hovers",
+        "Hover-only delight (desktop-only exclusion)"
+      ],
+      "why": "Different physics per page fragments the feel of the product.",
+      "check": "Grep transition-timing values. More than one = fail. Test every hover's :active twin on touch.",
+      "source": "Laws 71, 72, 84",
+      "genuinely_new": false
+    },
+    {
+      "id": "DL-25",
+      "title": "Every number breathes.",
+      "section": "MOTION & ALIVENESS",
+      "law": "No number on screen is static text. Counts, stats, and scores carry a subtle brightness or scale oscillation, synced to the system's heartbeat.",
+      "do": [
+        "Serif 32px score numbers with living luminosity",
+        "Badges with quiet pulse"
+      ],
+      "dont": [
+        "Dead numerals"
+      ],
+      "why": "Data is alive here. Static numbers read as broken.",
+      "check": "Stare at any number for five seconds. If it never moves, it fails.",
+      "source": "NEW (V-3)",
+      "genuinely_new": true
+    },
+    {
+      "id": "DL-26",
+      "title": "Breathing is reserved.",
+      "section": "MOTION & ALIVENESS",
+      "law": "Slow ambient pulse is allowed on the SINGLE most-alive element per view (the voice orb, the live indicator). Nothing else breathes on its own.",
+      "do": [
+        "Idle breathe 4-7s cycles",
+        "Barely-there ambient washes (24s)"
+      ],
+      "dont": [
+        "Three breathing buttons in a row",
+        "Competing pulses"
+      ],
+      "why": "A screensaver is not an interface. Maximum life, minimum noise.",
+      "check": "Count ambient animations per view. More than one = fail.",
+      "source": "Law 78; Session Learning #10",
+      "genuinely_new": false
+    },
+    {
+      "id": "DL-27",
+      "title": "Motion explains. Motion never fakes.",
+      "section": "MOTION & ALIVENESS",
+      "law": "Every animation must answer: what changed, where did it go, what can I do now? Animation that answers nothing gets cut. And no motion may ever pretend a result happened.",
+      "do": [
+        "Loading reflects real work",
+        "Success appears only when the action actually succeeded",
+        "Demo states labeled demo"
+      ],
+      "dont": [
+        "Fake success states",
+        "Simulated live events",
+        "Ornament without meaning"
+      ],
+      "why": "Fake life is a lie. A beautiful but inert affordance is unfinished.",
+      "check": "Disconnect the data. Nothing on the page may pretend otherwise.",
+      "source": "Extends Laws 75, 76; Convergence 'truth before aesthetics'; V2 gate",
+      "genuinely_new": false
+    },
+    {
+      "id": "DL-28",
+      "title": "Honor reduced motion.",
+      "section": "MOTION & ALIVENESS",
+      "law": "prefers-reduced-motion disables lifts, rings, and sweeps - and the product still works fully, with state carried by light and contrast.",
+      "do": [
+        "Same product, honored. Accessibility is not a variant"
+      ],
+      "dont": [
+        "Meaning carried by motion alone"
+      ],
+      "why": "Everyone gets the living product.",
+      "check": "Emulate reduced motion. Everything must still read and work.",
+      "source": "Law 77",
+      "genuinely_new": false
+    },
+    {
+      "id": "DL-29",
+      "title": "One idea at a time. Boards breathe.",
+      "section": "COMPOSITION & CRAFT",
+      "law": "Room to breathe, clear spacing, a fresh jewel color when the next idea begins. Minimum 16px internal board padding (20-24 preferred).",
+      "do": [
+        "Generous black space as a design material",
+        "Content never touches a border"
+      ],
+      "dont": [
+        "Cramming",
+        "Fitting more by shrinking text"
+      ],
+      "why": "Crowded boards read as cheap regardless of color. A board that breathes beats a board that crams.",
+      "check": "No content within 16px of any board edge. Ever.",
+      "source": "Laws 38, 53; V2",
+      "genuinely_new": false
+    },
+    {
+      "id": "DL-30",
+      "title": "Type: size separates, color doesn't.",
+      "section": "COMPOSITION & CRAFT",
+      "law": "Fixed scale - Display 32-40 / Headline 22-28 / Body 15-17 / Detail 12-13 / Kicker 11 uppercase. Titles white, body silver, detail slate. Never gray body text.",
+      "do": [
+        "Serif voice for display headlines and Naya's voice",
+        "System sans for UI, buttons, data, body"
+      ],
+      "dont": [
+        "Jewel-colored body text",
+        "Invented sizes per page",
+        "Body copy in display serif"
+      ],
+      "why": "Hierarchy you can read at a glance. Flat text is lazy - gradient soul, layered shadows, breathing luminosity.",
+      "check": "Grayscale screenshot - hierarchy, elevation, and readability must survive (Law 50). Any gray body text = fail.",
+      "source": "Laws 50, 51, 52, 54; Session Learning #7",
+      "genuinely_new": false
+    },
+    {
+      "id": "DL-31",
+      "title": "Mess in, beauty out.",
+      "section": "COMPOSITION & CRAFT",
+      "law": "Anything a human brings - a question, a dataset, a messy corner - renders formatted, beautiful, logical, sensible.",
+      "do": [
+        "Every input gets composed output",
+        "Ugly data still lands in a beautiful board"
+      ],
+      "dont": [
+        "Raw mess reaching the human"
+      ],
+      "why": "The entire mission in five words.",
+      "check": "Feed the page garbage input. The output must still be composed.",
+      "source": "V-13; Master Build Plan",
+      "genuinely_new": false
+    },
+    {
+      "id": "DL-32",
+      "title": "Full width. Brand top-left. No dead space.",
+      "section": "COMPOSITION & CRAFT",
+      "law": "Content owns the width - no max-width caps with black gutters. The Naya mark lives top-left, always. If a region is empty, the layout is wrong.",
+      "do": [
+        "Real compositions at 1440px and at 360px - each its own layout, not a squeezed column"
+      ],
+      "dont": [
+        "Sidebars full of black nothing",
+        "Dead black columns"
+      ],
+      "why": "The canvas is the product.",
+      "check": "1440px screenshot - no dead zones. 360px - nothing cut off.",
+      "source": "NEW (Session Learning #12)",
+      "genuinely_new": true
+    },
+    {
+      "id": "DL-33",
+      "title": "The header is a front door, not a nameplate.",
+      "section": "COMPOSITION & CRAFT",
+      "law": "Logo + living mark + warm voice + one clear line. The warmest, most alive part of the page.",
+      "do": [
+        "It should feel like an invitation"
+      ],
+      "dont": [
+        "A label",
+        "The only dead thing on a living page - if the header doesn't move, the page fails"
+      ],
+      "why": "First impressions are the product.",
+      "check": "The header must breathe, glow, or respond. Static header = fail.",
+      "source": "NEW (Session Learning #15)",
+      "genuinely_new": true
+    },
+    {
+      "id": "DL-34",
+      "title": "Nothing overlaps. Nothing scrolls sideways.",
+      "section": "COMPOSITION & CRAFT",
+      "law": "Content fits the viewport at 360px. Text never collides with buttons. Fixed bars reserve padding and never cover content.",
+      "do": [
+        "Real viewport screenshots: 390x844, 360x800, 768x1024, 1440x900"
+      ],
+      "dont": [
+        "Horizontal scroll (P0 release blocker)",
+        "'It looked fine in browser resize' as evidence"
+      ],
+      "why": "A cut-off page is a broken page.",
+      "check": "360x800, zero sideways scroll, zero covered content.",
+      "source": "Laws 56, 85, 90; V2 quality gate",
+      "genuinely_new": false
+    },
+    {
+      "id": "DL-35",
+      "title": "One library, one DNA.",
+      "section": "COMPOSITION & CRAFT",
+      "law": "Every element exists once, canonically. Pages consume blocks; they never reinvent them. Approved code is copied verbatim - never rebuilt from memory.",
+      "do": [
+        ".naya-btn is the only button system",
+        "One board recipe",
+        "One icon family"
+      ],
+      "dont": [
+        "A private button class on any page",
+        "Paraphrasing approved CSS"
+      ],
+      "why": "Paraphrase reintroduces the exact flatness Shawn rejected. The block is the memory.",
+      "check": "Grep for page-local button/input classes. Any hit = drift = fail.",
+      "source": "Laws 21, 91, 92",
+      "genuinely_new": false
+    },
+    {
+      "id": "DL-36",
+      "title": "The corpus is the taste. When in doubt, match what he loved.",
+      "section": "TASTE",
+      "law": "Everything Shawn shared, he loves. New work must feel like it belongs to the same beautiful world. If a rebuild goes flatter than what he loved, revert to the loved version verbatim and rebuild from there.",
+      "do": [
+        "New pieces built FROM the language, never beside it",
+        "One specimen per feeling - 'make everything feel like THIS'"
+      ],
+      "dont": [
+        "A second visual language",
+        "No-ego refusal to revert"
+      ],
+      "why": "His approvals are the spec. No-ego reversion beats stubborn iteration.",
+      "check": "Side-by-side with the approved specimen. Same family? If not, revert first.",
+      "source": "Extends Laws 92, 98; V-12; Vision-to-Code Layer 5",
+      "genuinely_new": true
+    },
+    {
+      "id": "DL-37",
+      "title": "Premium, not fancy.",
+      "section": "TASTE",
+      "law": "Premium is material, contrast, weight, and restraint. When in doubt, subtract. A button that whispers is more expensive than one that shouts.",
+      "do": [
+        "Ask 'does removing something make this more premium?' Usually yes"
+      ],
+      "dont": [
+        "Effects for effects",
+        "Everything glowing (then nothing is premium)"
+      ],
+      "why": "Restraint is the excellence.",
+      "check": "Remove one effect. If the page got better, it ships without it.",
+      "source": "Law 11; Law 20",
+      "genuinely_new": false
+    },
+    {
+      "id": "DL-38",
+      "title": "Copy is scored like design.",
+      "section": "TASTE",
+      "law": "Every word must read like an invitation, not documentation - and score 9+. Grandma must follow every board: what is this, what matters, what do I do next?",
+      "do": [
+        "Ten warm words",
+        "'Keep your people close'",
+        "Human meaning first: what happened and why it matters"
+      ],
+      "dont": [
+        "Feature lists",
+        "Doc-speak",
+        "'Everybody you can reach'"
+      ],
+      "why": "Words are interface. If she can't follow it, the copy fails - not the reader.",
+      "check": "Read it aloud. Score it like a board. Under 9 = rewrite.",
+      "source": "NEW (Session Learning #8); cites Laws 57, 84-85 of the SmartNET 100",
+      "genuinely_new": true
+    },
+    {
+      "id": "DL-39",
+      "title": "Honest states only.",
+      "section": "TASTE",
+      "law": "A demo stays labeled demo. Local stays labeled local. LIVE requires live evidence. Beautiful motion never pretends a result happened.",
+      "do": [
+        "Design the empty, offline, error, and loading states with the same care as the full state"
+      ],
+      "dont": [
+        "Fake connects",
+        "Simulated liveness",
+        "Unlabeled placeholders"
+      ],
+      "why": "A specimen that pretends is a lie. Trust is the product.",
+      "check": "Airplane mode on. The page must tell the truth about what it knows.",
+      "source": "Extends Law 75; Convergence 'truth before aesthetics'; V2 gate",
+      "genuinely_new": false
+    },
+    {
+      "id": "DL-40",
+      "title": "Score the lived render. His eye compiles.",
+      "section": "TASTE",
+      "law": "Every page is scored on the RENDER - buttons, boards, type, icons, motion, color, layout, mobile, accessibility, truth - floor 9.0 per area, with timestamped desktop + mobile screenshots. And Shawn's verdict outranks every law, every score, every specimen.",
+      "do": [
+        "Name what is not a 10 and why",
+        "Excellence has no toggle - no quality settings, no modes, one path and it's the elite one"
+      ],
+      "dont": [
+        "'It's done' without proof",
+        "100/100 that's useless to him - compliance is not vision"
+      ],
+      "why": "A scorecard of code is worthless. The only score that matters is the rendered, lived experience.",
+      "check": "Screenshots attached with hash. Scorecard signed. Then his eyes.",
+      "source": "Laws 94, 95, 100; Session Learnings #1, #2; Vision-to-Code Layer 5; V-6",
+      "genuinely_new": false
+    }
+  ],
+  "violation_gallery": [
+    {
+      "id": "V1",
+      "name": "Flat everything",
+      "breaks": [
+        "DL-1",
+        "DL-2",
+        "DL-3"
+      ],
+      "looks_like": "Bootstrap-default buttons and panels; boards that are just bordered divs; labels styled as buttons; zero hover response.",
+      "fix": "Replace with canonical blocks. Apply the 5-layer formula: inset top light, inset bottom shade, seating shadow. Add hover lift (-3px, signature ease) and press compression. If it doesn't move, it's not done."
+    },
+    {
+      "id": "V2",
+      "name": "Walls of one color",
+      "breaks": [
+        "DL-8",
+        "DL-10",
+        "DL-11"
+      ],
+      "looks_like": "Five purple boards stacked; a whole page washed in one theme; category color-coding.",
+      "fix": "One accent per board. Reassign spectrum by position in flow, not by category. Let a single section take the theme and light up - the rest goes back to black."
+    },
+    {
+      "id": "V3",
+      "name": "Dots, not jewels",
+      "breaks": [
+        "DL-14"
+      ],
+      "looks_like": "Default browser bullets; gray dots; hyphens as list markers; tiny low-contrast markers nobody can see.",
+      "fix": "12px faceted gem bullets - rotated diamond, white-light core -> tone -> black, tone glow. Zoom to 200%: facets or fail."
+    },
+    {
+      "id": "V4",
+      "name": "Fake liveness",
+      "breaks": [
+        "DL-27",
+        "DL-39"
+      ],
+      "looks_like": "Simulated 'live' feeds with no live source (simLive:true); success states before the action succeeded; spinners over cached data; unlabeled demo content.",
+      "fix": "Label every demo DEMO. Wire the real source or design the honest empty/loading state. Disconnect the data in testing - nothing may pretend."
+    },
+    {
+      "id": "V5",
+      "name": "Dead headers on living pages",
+      "breaks": [
+        "DL-3",
+        "DL-33"
+      ],
+      "looks_like": "A static nameplate header above living content; a dead outer board with live buttons trapped inside; the one element on the page that doesn't respond to the pointer.",
+      "fix": "The header breathes - living mark, warm voice, one clear line. Board hover lights the border and lifts the WHOLE board, not just its children."
+    },
+    {
+      "id": "V6",
+      "name": "The dead button",
+      "breaks": [
+        "DL-1",
+        "DL-2",
+        "DL-9",
+        "DL-21"
+      ],
+      "looks_like": "The compound failure: black button on a black board, hairline border, no lift, no edge light, no hover response. Flat AND invisible AND dead, all at once.",
+      "fix": "The primary action must pass every check at once: 3-layer elevation minimum, visible edge light at rest (1.5px+), ignite on hover in its spectrum color, and enough contrast to be found in one second. If the main action can't be found in a glance, nothing else on the page matters."
+    }
+  ],
+  "convergence": {
+    "covered_in_100_laws": [
+      "elevation system (1-10)",
+      "materials & contrast (11-20)",
+      "button jewel standard (21-30)",
+      "board recipe (31-40)",
+      "spectrum mechanics (41-50)",
+      "typography scale (51-60)",
+      "icon library (61-70)",
+      "motion system (71-80)",
+      "mobile-first (81-90)",
+      "library & proof (91-100)"
+    ],
+    "genuinely_new": [
+      "DL-7",
+      "DL-9",
+      "DL-10-theming-clause",
+      "DL-14",
+      "DL-20",
+      "DL-20a",
+      "DL-21",
+      "DL-22",
+      "DL-25",
+      "DL-32",
+      "DL-33",
+      "DL-36",
+      "DL-38"
+    ],
+    "reconciled_conflicts": [
+      "spectrum order -> rainbow governs, dynamic count (Law 41 minus yellow per DL-9)",
+      "contrast named master principle (DL-9)",
+      "interactive rim 1.5px+ visible vs 1px hairline (Law 8) -> 1.5px+ interactive, 1px non-interactive precision",
+      "type scale -> Law 52 governs; 18px body / 24px+ headings from V2 gate are floor values"
+    ],
+    "normative_doctrine_stays": "naya-100-laws-elite-interfaces.pdf remains canonical; corrections compound here same-day (Law 97)"
+  }
+}
