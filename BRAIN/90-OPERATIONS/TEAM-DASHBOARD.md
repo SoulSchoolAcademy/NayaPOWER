@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-16 03:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-16 04:16 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 587 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 591 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -50,13 +50,13 @@
 
 ## Open PRs by Area
 
-### LEARN (56)
+### LEARN (57)
+- [#2693](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2693) docs(brain): learning event 2026-10-15 📝draft
 - [#2682](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2682) feat(learn): clock-to-ladder bridge - T6 VERIFIED meta row earns E1-E3
 - [#2617](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2617) docs(brain): learning event 2026-10-14
 - [#2613](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2613) wire: learn-clock T6 verify + T7 compound commands (Alpha w189)
 - [#2606](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2606) feat(tools): place learn-clock instrument in tools/ + LEARN_CLOCK_LOG  📝draft
-- [#2594](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2594) Learn: clock-to-ladder bridge — T6 VERIFIED meta row earns E1-E3
-- …and 51 more
+- …and 52 more
 
 ### KNOW (23)
 - [#2683](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2683) [INTELLIGENT_BLOCKS] #2642 reconcile: dock gate-reader doc + brain-ind
@@ -79,13 +79,13 @@
 - [#2357](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2357) T-06: Neutrality trap — six-state finding classification (stacked on T
 - …and 3 more
 
-### PROVE (28)
+### PROVE (29)
+- [#2694](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2694) fix(gate): consensus scorecard leg enforces the merge law's 9.5 bar 📝draft
 - [#2675](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2675) INFRA: --self-test-scorecard CLI pre-check for merge-consensus gate
 - [#2590](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2590) One NayaPOWER operating manual: AAA three-pass scorecards, roles, auth 📝draft
 - [#2585](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2585) Add automatic scorecard calculator (tools/scorecard.py + tests)
 - [#2543](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2543) [NAYA NARZAN] Cold-retrieve: red-first relevance-floor calibration bat
-- [#2521](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2521) fix(b40): stale 'signing' comment word -> 'sealing' in machine-law tes
-- …and 23 more
+- …and 24 more
 
 ### BUILD (223)
 - [#2691](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2691) [DRAFT] PUMP phase 1: schedule plumbing for agent capture (review only 📝draft
@@ -95,13 +95,13 @@
 - [#2684](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2684) [Naya 5] The canonical complete-puzzle system map
 - …and 218 more
 
-### WIRE (120)
+### WIRE (121)
+- [#2692](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2692) [DOCK] gate-403-response-body: byte-capture the next gate 403
 - [#2690](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2690) Gate reliability: transient API failures → UNKNOWN (exit 2), never wro
 - [#2681](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2681) Teach fail-closed gates quota-vs-permission 403 (INCONCLUSIVE/RETRY)
 - [#2676](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2676) Canonical 9-note Smart Note source for the Smart Feed live wire (t0473
 - [#2645](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2645) KNOW gaterepair (w247): doc_completeness_check fail→warning + grep-fla
-- [#2636](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2636) docs: name merge-consensus gate legs (a)/(b)/(c) as one-line verifier 
-- …and 115 more
+- …and 116 more
 
 ### TEAM (12)
 - [#2618](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2618) [DRAFT] Advisory post-conformance scan for the Team Feed Standard 📝draft
@@ -111,13 +111,13 @@
 - [#2397](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2397) feat(dashboard): live Team Naya activity dashboard — markdown + machin
 - …and 7 more
 
-### INFRA (39)
+### INFRA (40)
+- [#2695](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2695) [DECISION] Converge consensus _classify_http_error onto tools/http_403
 - [#2689](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2689) CI rate-limit resilience: cut redundant API burn (~85% on hot paths)
 - [#2649](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2649) Add TEAM-ROSTER.md: the verified sets (leads, area leads, lane agents,
 - [#2638](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2638) REVIEW: merge masterclass draft + circles system (not for main merge)
 - [#2593](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2593) CANDIDATE: veracity demote for FALSIFIED lessons at retrieve (t0762 l…
-- [#2589](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2589) Add decision CLI front door to value_calculus (tools/decision_cli.py)
-- …and 34 more
+- …and 35 more
 
 ### PRODUCT (33)
 - [#2685](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2685) HUB/BLUEPRINT.ai.md — canonical team reference: the complete system ma

@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-16T03:16:11+00:00",
+ "generated_utc": "2026-10-16T04:16:21+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -32,6 +32,12 @@
    "active_now": false,
    "board_lane": "#2175 lane LEARN",
    "open_prs": [
+    {
+     "number": 2693,
+     "title": "docs(brain): learning event 2026-10-15",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2693",
+     "draft": true
+    },
     {
      "number": 2682,
      "title": "feat(learn): clock-to-ladder bridge - T6 VERIFIED meta row earns E1-E3 (#1713)",
@@ -73,15 +79,9 @@
      "title": "[DRAFT] learn-clock: learning-latency instrument (T0-T7 ledger)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2572",
      "draft": true
-    },
-    {
-     "number": 2569,
-     "title": "feat(learn): live-receipts probe -- convergence chain on real captures",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2569",
-     "draft": false
     }
    ],
-   "open_pr_count": 56
+   "open_pr_count": 57
   },
   {
    "id": "know",
@@ -279,6 +279,12 @@
    "board_lane": "#2175 lane PROVE",
    "open_prs": [
     {
+     "number": 2694,
+     "title": "fix(gate): consensus scorecard leg enforces the merge law's 9.5 bar",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2694",
+     "draft": true
+    },
+    {
      "number": 2675,
      "title": "INFRA: --self-test-scorecard CLI pre-check for merge-consensus gate",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2675",
@@ -319,15 +325,9 @@
      "title": "test(t21): operating-essence acceptance battery \u2014 moral value before numerical optimizatio",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2374",
      "draft": false
-    },
-    {
-     "number": 2159,
-     "title": "Add team accountability scorecard to the weekly watchdog",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2159",
-     "draft": false
     }
    ],
-   "open_pr_count": 28
+   "open_pr_count": 29
   },
   {
    "id": "build",
@@ -417,6 +417,12 @@
    "board_lane": "#2175 lane WIRE",
    "open_prs": [
     {
+     "number": 2692,
+     "title": "[DOCK] gate-403-response-body: byte-capture the next gate 403",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2692",
+     "draft": false
+    },
+    {
      "number": 2690,
      "title": "Gate reliability: transient API failures \u2192 UNKNOWN (exit 2), never wrong FAIL",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2690",
@@ -457,15 +463,9 @@
      "title": "[DRAFT] Receipt gate: read LIVE PR body + fire on edited (kill stale-payload class)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2633",
      "draft": true
-    },
-    {
-     "number": 2630,
-     "title": "INFRA: capture RATE_LIMIT_RESET in gate HTTP layers (fail-closed)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2630",
-     "draft": false
     }
    ],
-   "open_pr_count": 120
+   "open_pr_count": 121
   },
   {
    "id": "team",
@@ -555,6 +555,12 @@
    "board_lane": "#2175 lane INFRA",
    "open_prs": [
     {
+     "number": 2695,
+     "title": "[DECISION] Converge consensus _classify_http_error onto tools/http_403.py",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2695",
+     "draft": false
+    },
+    {
      "number": 2689,
      "title": "CI rate-limit resilience: cut redundant API burn (~85% on hot paths)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2689",
@@ -595,15 +601,9 @@
      "title": "Reconcile NayaPOWER live backlog: 28 blockers, solutions, owners, double-check law",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2563",
      "draft": true
-    },
-    {
-     "number": 2530,
-     "title": "[DOCK INTAKE w84] naya-gamma/sibling-truncation-board-claim-scan \u2014 CI intake only (NOT mer",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2530",
-     "draft": false
     }
    ],
-   "open_pr_count": 39
+   "open_pr_count": 40
   },
   {
    "id": "product",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 587,
+ "open_pr_total": 591,
  "unassigned_prs": 223
 }
