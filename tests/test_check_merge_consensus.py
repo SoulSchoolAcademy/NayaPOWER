@@ -37,6 +37,16 @@ from check_merge_consensus import (  # noqa: E402
 )
 
 
+def _as_pages(fake_api_get):
+    """Adapt an api_get-style fake (path, token -> full payload) to the
+    _api_pages seam (path, token -> yields pages). run_gate consumes pages
+    lazily and stops early; the fakes serve one page, which is all these
+    fixtures need."""
+    def fake_pages(path, token):
+        yield fake_api_get(path, token)
+    return fake_pages
+
+
 class _FakeHeaders(dict):
     def get(self, key, default=None):
         return super().get(key, default)
@@ -158,7 +168,7 @@ def test_gate_reads_author_from_declaration_despite_prose_mentions(capsys):
             return []
         return [{"body": "status update"}]
 
-    with patch("check_merge_consensus.api_get", side_effect=fake_api_get):
+    with patch("check_merge_consensus._api_pages", side_effect=_as_pages(fake_api_get)):
         with pytest.raises(SystemExit):
             run_gate("tok", "o/r", "2373", HEAD)
     out = capsys.readouterr().out
@@ -229,7 +239,7 @@ def test_pre_convention_pr_is_skipped_not_failed(capsys):
     skips with a clear message instead of failing on a stale assertion."""
     def fake_api_get(path, token):
         return _pr_response("2026-09-30T12:00:00Z", "old PR body, no seat tag")
-    with patch("check_merge_consensus.api_get", side_effect=fake_api_get):
+    with patch("check_merge_consensus._api_pages", side_effect=_as_pages(fake_api_get)):
         run_gate("tok", "o/r", "1825", HEAD)  # must not raise
     out = capsys.readouterr().out
     assert "CONSENSUS GATE SKIPPED" in out
@@ -243,7 +253,7 @@ def test_unknown_created_at_enforces_fail_closed(capsys):
         pr = _pr_response("", "body without declaration")
         del pr["created_at"]
         return pr
-    with patch("check_merge_consensus.api_get", side_effect=fake_api_get):
+    with patch("check_merge_consensus._api_pages", side_effect=_as_pages(fake_api_get)):
         with pytest.raises(SystemExit):
             run_gate("tok", "o/r", "2368", HEAD)
     out = capsys.readouterr().out
@@ -266,7 +276,7 @@ def test_post_convention_full_pass(capsys):
             return []
         return [{"body": review}, {"body": scorecard}]
 
-    with patch("check_merge_consensus.api_get", side_effect=fake_api_get):
+    with patch("check_merge_consensus._api_pages", side_effect=_as_pages(fake_api_get)):
         run_gate("tok", "o/r", "2368", HEAD)
     out = capsys.readouterr().out
     assert "CONSENSUS GATE PASSED" in out
@@ -285,7 +295,7 @@ def test_author_cannot_review_own_work():
             return []
         return [{"body": own_verdict}]
 
-    with patch("check_merge_consensus.api_get", side_effect=fake_api_get):
+    with patch("check_merge_consensus._api_pages", side_effect=_as_pages(fake_api_get)):
         with pytest.raises(SystemExit) as exc:
             run_gate("tok", "o/r", "2368", HEAD)
     assert exc.value.code == 1
@@ -299,7 +309,7 @@ def test_missing_review_fails_with_actionable_message(capsys):
             return []
         return [{"body": "just a status comment"}]
 
-    with patch("check_merge_consensus.api_get", side_effect=fake_api_get):
+    with patch("check_merge_consensus._api_pages", side_effect=_as_pages(fake_api_get)):
         with pytest.raises(SystemExit):
             run_gate("tok", "o/r", "2368", HEAD)
     out = capsys.readouterr().out
@@ -310,7 +320,7 @@ def test_missing_seat_declaration_fails_with_fix(capsys):
     def fake_api_get(path, token):
         return _pr_response("2026-10-11T18:00:00Z", "body without declaration")
 
-    with patch("check_merge_consensus.api_get", side_effect=fake_api_get):
+    with patch("check_merge_consensus._api_pages", side_effect=_as_pages(fake_api_get)):
         with pytest.raises(SystemExit):
             run_gate("tok", "o/r", "2368", HEAD)
     out = capsys.readouterr().out
@@ -324,7 +334,7 @@ def test_api_error_becomes_plain_words_not_traceback(capsys, monkeypatch):
     monkeypatch.setenv("REPO", "o/r")
     monkeypatch.setenv("PR_NUMBER", "2368")
     monkeypatch.setenv("HEAD_SHA", HEAD)
-    with patch("check_merge_consensus.api_get",
+    with patch("check_merge_consensus._api_pages",
                side_effect=GateAPIError("GitHub API rate-limited")):
         with pytest.raises(SystemExit) as exc:
             __import__("check_merge_consensus").main()
@@ -387,7 +397,7 @@ def test_named_seat_scorecard_is_accepted(capsys):
             return []
         return [{"body": review}, {"body": scorecard}]
 
-    with patch("check_merge_consensus.api_get", side_effect=fake_api_get):
+    with patch("check_merge_consensus._api_pages", side_effect=_as_pages(fake_api_get)):
         run_gate("tok", "o/r", "2459", HEAD)  # must not raise
     out = capsys.readouterr().out
     assert "CONSENSUS GATE PASSED" in out
@@ -406,7 +416,7 @@ def test_author_own_named_seat_still_rejected():
             return []
         return [{"body": own_scorecard}]
 
-    with patch("check_merge_consensus.api_get", side_effect=fake_api_get):
+    with patch("check_merge_consensus._api_pages", side_effect=_as_pages(fake_api_get)):
         with pytest.raises(SystemExit) as exc:
             run_gate("tok", "o/r", "2459", HEAD)
     assert exc.value.code == 1
@@ -426,7 +436,7 @@ def test_naya_5_review_path_still_works(capsys):
             return []
         return [{"body": review}, {"body": scorecard}]
 
-    with patch("check_merge_consensus.api_get", side_effect=fake_api_get):
+    with patch("check_merge_consensus._api_pages", side_effect=_as_pages(fake_api_get)):
         run_gate("tok", "o/r", "2459", HEAD)  # must not raise
     out = capsys.readouterr().out
     assert "CONSENSUS GATE PASSED" in out

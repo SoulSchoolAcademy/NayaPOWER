@@ -36,8 +36,13 @@ fail() with plain words ("unable to verify consensus: ..."), never a stack
 trace. A permanently-red check with a stack trace trains everyone to ignore
 red; an honest "unable to verify, re-run may resolve" does not.
 
-Exit 0 = consensus present (or gate not applicable). Exit 1 = fail with a
-plain-words reason.
+A transient API failure (rate limit, 5xx, network error) that survives all
+retries is NOT a failure of consensus: it exits 2 with a plain-words
+"CONSENSUS GATE UNKNOWN" line — re-run, not a FAIL. Genuine problems
+(permission denied, missing review, missing scorecard) exit 1.
+
+Exit 0 = consensus present (or gate not applicable). Exit 1 = FAIL with a
+plain-words reason. Exit 2 = UNKNOWN (transient API failure — re-run).
 Stdlib only.
 """
 import json
@@ -72,9 +77,10 @@ SEAT_CONVENTION_CUTOFF = "2026-10-11T16:30:00Z"
 
 # Retry tuning: GitHub answers 403 (secondary rate limit) or 429 when the API
 # is under pressure — common during merge bursts when dozens of workflow runs
-# share one GITHUB_TOKEN. Each page fetch gets up to 5 attempts. A 403/429
-# that carries a Retry-After header (or a rate-limit message) is a transient
-# limit: honor the header (capped), else exponential backoff. A 403 whose body
+# share one GITHUB_TOKEN. 5xx and plain network errors are transient too.
+# Each page fetch gets up to 5 attempts. A 403/429 that carries a Retry-After
+# header (or a rate-limit message), a 5xx, or a network error is transient:
+# honor the header (capped), else exponential backoff. A 403 whose body
 # says "Resource not accessible" is a permission problem: fail fast, retries
 # cannot help.
 _API_MAX_ATTEMPTS = 5
@@ -86,13 +92,20 @@ class GateAPIError(Exception):
     """A GitHub API failure, classified for a clean fail-closed message."""
 
 
+class TransientAPIError(GateAPIError):
+    """A transient GitHub API failure (rate limit, 5xx, network error) that
+    survived every retry. The gate is UNKNOWN, not FAILED: re-run the check.
+    Subclasses GateAPIError so existing fail-closed handling still catches
+    it; main() checks for it first to print the distinct UNKNOWN verdict."""
+
+
 def fail(msg):
     print(f"CONSENSUS GATE FAILED: {msg}")
     sys.exit(1)
 
 
 def _classify_http_error(e):
-    """Classify an HTTPError as ('rate_limit'|'permission'|'error', detail,
+    """Classify an HTTPError as ('transient'|'permission'|'error', detail,
     retry_after_seconds_or_None). Reads the response body for GitHub's
     message; never raises."""
     try:
@@ -116,17 +129,34 @@ def _classify_http_error(e):
     low = f"{msg} {body_text}".lower()
     if e.code == 429 or (e.code == 403
                          and ("rate limit" in low or retry_after is not None)):
-        return "rate_limit", msg or "rate limited", retry_after
+        return "transient", "rate-limited: " + (msg or f"HTTP {e.code}"), \
+            retry_after
+    if 500 <= e.code < 600:
+        return "transient", "server error: " + (msg or f"HTTP {e.code}"), \
+            retry_after
     if e.code == 403 and "resource not accessible" in low:
         return "permission", msg or "forbidden", None
     return "error", msg or f"HTTP {e.code}", None
 
 
+def _transient_wait(attempt, retry_after, what):
+    """Sleep before the next retry of a transient failure, logging the
+    wait to stderr."""
+    wait = retry_after if retry_after else \
+        _API_BACKOFF_BASE_S * (2 ** (attempt - 1))
+    wait = max(1, min(wait, _API_MAX_WAIT_S))
+    print(f"api_get: {what}, waiting {wait}s "
+          f"(attempt {attempt}/{_API_MAX_ATTEMPTS})", file=sys.stderr)
+    time.sleep(wait)
+
+
 def _fetch_page(url, headers):
-    """GET one page. Transient rate limits (403/429) are retried with the
-    server's Retry-After (capped) or exponential backoff; permission 403s and
-    other failures become GateAPIError immediately. Returns
-    (parsed_json, link_header). Never leaks a traceback to the caller."""
+    """GET one page. Transient failures (rate-limited 403/429, 5xx, network
+    errors) are retried with the server's Retry-After (capped) or exponential
+    backoff; on exhaustion they become TransientAPIError (UNKNOWN verdict).
+    Permission 403s and other failures become GateAPIError immediately.
+    Returns (parsed_json, link_header). Never leaks a traceback to the
+    caller."""
     attempt = 0
     while True:
         attempt += 1
@@ -138,18 +168,13 @@ def _fetch_page(url, headers):
             return data, link
         except urllib.error.HTTPError as e:
             kind, detail, retry_after = _classify_http_error(e)
-            if kind == "rate_limit" and attempt < _API_MAX_ATTEMPTS:
-                wait = retry_after if retry_after else \
-                    _API_BACKOFF_BASE_S * (2 ** (attempt - 1))
-                wait = max(1, min(wait, _API_MAX_WAIT_S))
-                print(f"api_get: rate-limited (HTTP {e.code}), waiting {wait}s "
-                      f"(attempt {attempt}/{_API_MAX_ATTEMPTS})",
-                      file=sys.stderr)
-                time.sleep(wait)
+            if kind == "transient" and attempt < _API_MAX_ATTEMPTS:
+                _transient_wait(attempt, retry_after,
+                                f"{detail} (HTTP {e.code})")
                 continue
-            if kind == "rate_limit":
-                raise GateAPIError(
-                    f"GitHub API rate-limited after {_API_MAX_ATTEMPTS} "
+            if kind == "transient":
+                raise TransientAPIError(
+                    f"GitHub API still failing after {_API_MAX_ATTEMPTS} "
                     f"attempts ({detail}). Re-run the check; merge bursts "
                     f"exhaust the shared token quota.")
             if kind == "permission":
@@ -158,31 +183,56 @@ def _fetch_page(url, headers):
                     f"workflow's GITHUB_TOKEN lacks permission for this "
                     f"endpoint; retrying will not help.")
             raise GateAPIError(f"GitHub API error (HTTP {e.code}): {detail}")
+        except OSError as e:
+            # Network blip, DNS failure, refused connection, timeout, reset:
+            # the network moved, not the verdict. (Catches URLError and its
+            # bare-OSError cousins like TimeoutError/ConnectionResetError.)
+            # Retry, then UNKNOWN.
+            detail = f"network error: {e}"
+            if attempt < _API_MAX_ATTEMPTS:
+                _transient_wait(attempt, None, detail)
+                continue
+            raise TransientAPIError(
+                f"GitHub API unreachable after {_API_MAX_ATTEMPTS} attempts "
+                f"({detail}). Re-run the check.")
 
 
 def api_get(path, token):
-    # Follow pagination: list endpoints return up to 30 items per page by
-    # default, so gate-invisible reviews/scorecards on busy PRs (>30 comments)
-    # would silently fail the gate. Single-object endpoints return a dict
-    # and are returned as-is.
+    # Full drain: concatenates every page (single-object endpoints return
+    # the dict as-is). Kept for callers that need the whole list. The gate's
+    # own verdict scans prefer _api_pages with early exit (below).
+    items = None
+    for data in _api_pages(path, token):
+        if isinstance(data, list):
+            items = (items or []) + data
+        else:
+            return data
+    return items if items is not None else []
+
+
+def _api_pages(path, token):
+    """Yield one parsed page at a time, following Link: rel="next".
+
+    Single-object endpoints yield their dict once, then stop. Callers with
+    existential scans (first hit in page order decides) break out early
+    instead of draining every page — same verdict, fewer API calls.
+    """
+    # List endpoints return up to 30 items per page by default, so
+    # gate-invisible reviews/scorecards on busy PRs (>30 comments) would
+    # silently fail the gate without per_page=100 + page following.
     sep = "&" if "?" in path else "?"
     url = API + path + sep + "per_page=100"
     headers = {"Authorization": f"Bearer {token}",
                "Accept": "application/vnd.github+json",
                "User-Agent": "naya-consensus-gate/2.1"}
-    items = None
     while url:
         data, link = _fetch_page(url, headers)
-        if isinstance(data, list):
-            items = (items or []) + data
-        else:
-            return data
+        yield data
         url = None
         for part in link.split(","):
             if 'rel="next"' in part:
                 url = part.split(";")[0].strip().strip("<>")
                 break
-    return items if items is not None else []
 
 
 def _normalized_seat(m):
@@ -286,7 +336,8 @@ def _looks_like_scorecard(body, head_sha):
 
 
 def run_gate(token, repo, pr_number, head_sha):
-    pr = api_get(f"/repos/{repo}/pulls/{pr_number}", token)
+    # The PR object is a single-object endpoint: exactly one page.
+    pr = next(_api_pages(f"/repos/{repo}/pulls/{pr_number}", token))
     pr_created = pr.get("created_at") or ""
     # The seat-receipt convention did not exist when a pre-cutoff PR was
     # opened; enforcing it retroactively is a stale assertion. Merge under
@@ -305,42 +356,50 @@ def run_gate(token, repo, pr_number, head_sha):
              "the PR body and re-run.")
 
     # --- Requirement 1: cross-seat review ---
-    reviews = api_get(f"/repos/{repo}/pulls/{pr_number}/reviews", token)
-    comments = api_get(f"/repos/{repo}/issues/{pr_number}/comments", token)
-
+    # Pages are consumed lazily and fetching stops the moment both an
+    # approving non-author review AND a valid scorecard receipt are found.
+    # Both scans are existential — the first hit in page order decides —
+    # so an unfetched later page can never change the verdict; stopping
+    # early only saves API calls (common case: ~2 calls, not full
+    # pagination of both endpoints).
     reviewer_seat = None
-    # Path A: native GitHub approval from a different login.
-    for r in reviews:
-        if (r.get("state") == "APPROVED"
-                and (r["user"]["login"] or "").lower() != pr_author_login):
-            reviewer_seat = seat_of(r.get("body")) or "external reviewer"
+    for page in _api_pages(f"/repos/{repo}/pulls/{pr_number}/reviews", token):
+        # Path A: native GitHub approval from a different login.
+        for r in page:
+            if (r.get("state") == "APPROVED"
+                    and (r["user"]["login"] or "").lower() != pr_author_login):
+                reviewer_seat = seat_of(r.get("body")) or "external reviewer"
+                break
+        if reviewer_seat:
             break
-    # Path B: seat-tagged review comment (incantation or IV verdict format)
-    # from a different seat.
-    if not reviewer_seat:
-        for c in comments:
+
+    # --- Requirement 2: scorecard receipt naming this exact head SHA ---
+    # (scanned on the same comment pages as Path B, stopping when both
+    # the reviewer and the scorer are known)
+    scorer_seat = None
+    for page in _api_pages(f"/repos/{repo}/issues/{pr_number}/comments",
+                           token):
+        for c in page:
             body = c.get("body") or ""
-            if _looks_like_review(body):
+            # Path B: seat-tagged review comment (incantation or IV verdict
+            # format) from a different seat — only if Path A found nothing.
+            if reviewer_seat is None and _looks_like_review(body):
                 s = seat_of(body)
                 if s and s != author_seat:
                     reviewer_seat = s
-                    break
+            if scorer_seat is None and _looks_like_scorecard(body, head_sha):
+                s = seat_of(body)
+                if s and s != author_seat:
+                    scorer_seat = s
+            if reviewer_seat and scorer_seat:
+                break
+        if reviewer_seat and scorer_seat:
+            break
     if not reviewer_seat:
         fail(f"no review from a seat other than the author ({author_seat}). "
              f"Post '[NAYA M · REVIEW] APPROVED' (or an IV verdict comment "
              f"with your seat tag) as a PR comment, or submit a GitHub "
              f"approving review from a different account.")
-
-    # --- Requirement 2: scorecard receipt naming this exact head SHA ---
-    scorer_seat = None
-    for c in comments:
-        body = c.get("body") or ""
-        if not _looks_like_scorecard(body, head_sha):
-            continue
-        s = seat_of(body)
-        if s and s != author_seat:
-            scorer_seat = s
-            break
     if not scorer_seat:
         fail(f"no scorecard receipt naming head SHA {head_sha[:10]} from a seat "
              f"other than the author ({author_seat}). Post '## SCORECARD' (or "
@@ -361,6 +420,13 @@ def main():
         fail("missing GH_TOKEN/REPO/PR_NUMBER/HEAD_SHA in environment.")
     try:
         run_gate(token, repo, pr_number, head_sha)
+    except TransientAPIError as e:
+        # A transient API failure is not a verdict about consensus. The gate
+        # is UNKNOWN: exit 2 (non-zero, but distinct from FAIL's 1) so the
+        # log line says UNKNOWN and the fix is a re-run, not an investigation.
+        print(f"CONSENSUS GATE UNKNOWN: transient API failure — re-run, "
+              f"not a FAIL: {e}")
+        sys.exit(2)
     except GateAPIError as e:
         # Fail closed (unverified consensus == no consensus) but say so
         # plainly: a transient API error is not a missing review.
