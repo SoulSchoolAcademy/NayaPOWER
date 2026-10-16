@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-16 07:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-16 08:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 592 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 594 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -119,13 +119,13 @@
 - [#2589](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2589) Add decision CLI front door to value_calculus (tools/decision_cli.py)
 - …and 34 more
 
-### PRODUCT (33)
+### PRODUCT (35)
+- [#2701](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2701) HUB sync contract — Goal #1 Hub Smart Feed contract (three tongues)
+- [#2700](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2700) [DRAFT] HUB MASTER BUILD CONTRACT v1 (review only, do not merge) 📝draft
 - [#2685](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2685) HUB/BLUEPRINT.ai.md — canonical team reference: the complete system ma
 - [#2680](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2680) t0483: hourly schedule pump for NayaNET Agent Capture
 - [#2679](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2679) Hub runtime: window.NayaPowerRuntime bridge module + green harness — t
-- [#2678](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2678) Hub feeds: first room-feed/v1 emissions (today, lists, spaces) — t0479
-- [#2648](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2648) Add field manual 37: GitHub access (two identities, fresh-machine setu
-- …and 28 more
+- …and 30 more
 
 ### MEMORY (6)
 - [#2644](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2644) 0008 Intelligent Block V1 — CONVERGED sender contract (three tongues, 

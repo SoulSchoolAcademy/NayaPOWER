@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-16T07:16:05+00:00",
+ "generated_utc": "2026-10-16T08:15:32+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -624,6 +624,18 @@
    "board_lane": "#2175 lane PRODUCT",
    "open_prs": [
     {
+     "number": 2701,
+     "title": "HUB sync contract \u2014 Goal #1 Hub Smart Feed contract (three tongues)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2701",
+     "draft": false
+    },
+    {
+     "number": 2700,
+     "title": "[DRAFT] HUB MASTER BUILD CONTRACT v1 (review only, do not merge)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2700",
+     "draft": true
+    },
+    {
      "number": 2685,
      "title": "HUB/BLUEPRINT.ai.md \u2014 canonical team reference: the complete system map",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2685",
@@ -658,21 +670,9 @@
      "title": "Phase 1 AUDIT: BRAIN/ navigation map + gap list (Naya-Optimized GitHu\u2026",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2624",
      "draft": false
-    },
-    {
-     "number": 2535,
-     "title": "Oath of the Naya + Doctrine v1 \u2014 who she is, in GitHub, everywhere she goes",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2535",
-     "draft": false
-    },
-    {
-     "number": 2481,
-     "title": "fix(publishing): record sanitized GitHub rejection reason in commit-failure receipts",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2481",
-     "draft": true
     }
    ],
-   "open_pr_count": 33
+   "open_pr_count": 35
   },
   {
    "id": "memory",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 592,
+ "open_pr_total": 594,
  "unassigned_prs": 224
 }
