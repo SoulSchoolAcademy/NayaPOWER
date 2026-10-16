@@ -113,11 +113,20 @@ jobs:
               # endpoint answers — and exit 0. We NEVER post a Smart Note
               # from this path: no invented intelligence ever enters the
               # canonical record.
-              s, auth_res = post_json(
-                  f"{url}/auth/v1/token?grant_type=password",
-                  {"email": email, "password": password},
-                  {"apikey": anon},
-              )
+              try:
+                  s, auth_res = post_json(
+                      f"{url}/auth/v1/token?grant_type=password",
+                      {"email": email, "password": password},
+                      {"apikey": anon},
+                  )
+              except OSError as e:
+                  # Network-level failure (DNS, refused, timeout): no HTTP
+                  # response exists, so fail loud in plain words — never a
+                  # traceback. OSError covers urllib.error.URLError (a
+                  # subclass) AND raw TimeoutError/ConnectionError, which
+                  # escape urlopen unwrapped when they strike during the
+                  # response-read phase. HTTPError is handled inside post_json.
+                  fail(f"heartbeat: runtime sign-in failed (network error): {str(e)[:300]}")
               token = auth_res.get("access_token") if isinstance(auth_res, dict) else None
               if s != 200 or not token:
                   fail(f"heartbeat: runtime sign-in failed (http {s}): {str(auth_res)[:300]}")
