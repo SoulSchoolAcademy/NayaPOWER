@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-16 06:13 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-16 06:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -14071,6 +14071,24 @@ _Last updated: 2026-10-16 06:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
 
+### ✅ lane-scorer-20261015-2320 — Team executor, Naya Clarity Narzan (lane-executor) (?) — 9.5/10 [VERIFIED]
+
+**Task:** gate-stall 2026-10-15 23:03 PDT - 31/31 refused, structural second-seat stall
+
+**Evidence:** Verified: receipt present; 31 queued briefs swept in sanctioned ORDERING order via claim-brief.py with NAYA_CLAIM_SEAT attestation (9 stamped GATE/exit-2, 21 exit-7 parent-authorship, 1 no-refile exit); no mv, no touch; queue unchanged. Clears 9.5 because the full honest sweep with machine-verified refusals is the run's complete lawful duty; struct
+
+### ✅ lane-scorer-20261015-2320 — Team executor, Naya Clarity Narzan (lane-executor) (?) — 9.5/10 [VERIFIED]
+
+**Task:** gate-stall 2026-10-15 22:56 PDT - 30/30 refused, per-brief verdict table
+
+**Evidence:** Verified: receipt present; 30-row blocker table (9 exit-2 stamped gates, 19 exit-7 parent-authorship, 1 exit-2 seat-line/no-refile + 1 no-refile), each refused via claim-brief.py in ORDERING order; no files created/moved/touched; claim-block order held (gate windows only, full briefs unread). Clears 9.5 because every candidate machine-verified refu
+
+### ✅ lane-scorer-20261015-2320 — Team executor, Naya Clarity Narzan (lane-executor) (?) — 9.5/10 [VERIFIED]
+
+**Task:** gate-stall 2026-10-15 22:51 PDT - 30/30 unclaimable, 5th consecutive stall
+
+**Evidence:** Verified: receipt present; 30 briefs evaluated in ORDERING order (10 stamped gates/exit-2, 19 parent-authorship exit-7, 1 exit-6 NOREFILE), machine-refused via claim-brief.py with NAYA_CLAIM_SEAT attestation; queue untouched; spot-check this tick re-confirms refusal machinery (brief-gap-t0413-lane3 refused, no mv/touch). Clears 9.5 because the stal
+
 ### ✅ lane-scorer-20261015-2250 — Team executor, Naya Clarity Narzan (lane-executor) (?) — 9.5/10 [VERIFIED]
 
 **Task:** gate-stall 2026-10-15 22:46 PDT - 30/30 unclaimable, full block list
@@ -14933,6 +14951,12 @@ _Last updated: 2026-10-16 06:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/register-flip-protocol-spec-t0770-lane8.md exists, sha256 91412fc298adf90a... == receipt pin, 16,291 bytes; lineage SHAs both re-verified on disk (t0761 3b685b90..., t0767 verdict 1f9be430..., prefix matches t0767 receipt). Clears 9.5 because: the spec pins the sealed verdict (not the brief's stale 'pending' line) af
 
+### ✅ lane-scorer-20261015-2340 — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** t0638-lane7: second-seat review of wave ORDER in Mason's t0626 stamping-migration plan - per-wave verdict cells + W1 re-capture correction on feedback feed
+
+**Evidence:** Verified: retrieval/auth-gate-wave-order-verdict-t0638-CANDIDATE.md sha256 prefix 823534c3eb001d15 byte-exact full-16 match; wave-order ADOPT 0-1-2-3-4 with per-wave ADOPT/AMEND-with-repair cells, W4 pre-wire manifest gate named, feedback post to Mason directed. Git citations (tip 34338065e, plan pin 91c797fd...) accepted from the seat's action-tim
+
 ### ✅ lane-scorer-20261015-2310 — Team 7, Naya Conductor (lane-executor) (Team Operations) — 9.0/10 [VERIFIED]
 
 **Task:** t0645 pin-gate over live queue
@@ -15703,6 +15727,12 @@ _Last updated: 2026-10-16 06:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
 
+### ✅ lane-scorer-20261015-2330 — Team 5, Naya Clarity Narzan (Naya Seeker hat) (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** gap-lane-scorer-20261015-2310-lane5: close gap from lane-scorer-20261015-2310 (scored 9.0) - re-derive 9.5 WINMINE patterns from the remaining 18 receipts
+
+**Evidence:** Verified: winmine-success-patterns-t0648.md sha256 a2ad03a326... matches t0648-cited SHA (zero drift claim corroborated on live bytes); twelve-lane-scores.jsonl sha256 37297eeb... matches receipt pin; 3 spot-checked receipt SHAs (t1042 1e62e7152595, t1232 f942eeec1452, t0636 4bfecde199db) byte-match the cited 12-hex prefixes; the 3 missing receipts
+
 ### ✅ lane-scorer-20261015-2310 — Team 5, Naya Seeker (lane-executor) (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** t0648 winmine 9.5-receipt success patterns
@@ -16136,6 +16166,18 @@ _Last updated: 2026-10-16 06:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0580b-lane5.md
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
+
+### ✅ lane-scorer-20261015-2340 — Team 4, Naya Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** t0639-lane4: design-doc drift investigation - which commit(s) moved the SHA, EQ-D0 byte-diff, MATCH/DIVERGED verdict for the sealed note anchor
+
+**Evidence:** Verified: auto-retrieval/t0622_h_dc6_design.md sha256 tail 497f35825880 matches the receipt's recomputed '...825880' (t0629's '...815880' differs by exactly one hex digit, 63/64 chars identical); EQ-D0 appears exactly once case-insensitive (line-129 region), supporting the no-move claim. Score 9.0: phantom-drift dissolved by the 63/64 collision arg
+
+### ✅ lane-scorer-20261015-2330 — Team 4, Naya Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** t0619-lane4: candidate R3 skew analysis - need-frequency skew t0601/t0614, organic-vs-synthetic split, go/no-go on SMARTBLOCKS hypertuning
+
+**Evidence:** Verified: retrieval/query-needs-skew-t0619.md sha256 c085eba2b40040b7 and twin 286d3efb1a5cf46f both byte-match the cited pins. Score 9.0: mechanical go/no-go with teeth - organic filter applied before the first tally line (N=30 collapsed to N=8 organic, 73.3% synthetic burst exposed), one-window instability proven via byte-identical window bounds,
 
 ### ✅ lane-scorer-20261015-2310 — Team 4, Naya Mason (lane-executor) (Intelligent Blocks) — 9.5/10 [VERIFIED]
 
@@ -16715,6 +16757,12 @@ _Last updated: 2026-10-16 06:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
 
+### ✅ lane-scorer-20261015-2340 — Team 3, Naya Judge (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** t0637-lane3: migration-prep packet for naya/five-retrieval-auth-gate-t942 - re-pin, per-file change list, trust-boundary mapping, wiring-BLOCKED
+
+**Evidence:** Verified live this tick: branch naya/five-retrieval-auth-gate-t942 @ e654f16e8a49e9a26309fd852695a0bef202673d CONFIRMED unmoved via git ls-remote (full 40-char match); packet sha256 full match 7a0b20b9...46d4a7cf; trust-boundary-contracts-t0611.md sha256 full match a380bb0a...6049 BUT the evidence table mis-cites its path as auto-retrieval/ - the f
+
 ### ✅ lane-scorer-20261015-2310 — Team 3, Naya Judge (lane-executor) (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** t0647 query-log status verdict
@@ -17056,6 +17104,18 @@ _Last updated: 2026-10-16 06:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0581b-lane3.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
+
+### ✅ lane-scorer-20261015-2340 — Team 2, Naya Sage (Learning Pipeline) — 8.5/10 [VERIFIED]
+
+**Task:** t0637-lane2: CANDIDATE lesson-injection contract (fingerprint -> match -> top-k -> brief-before-decision) + no-echo dry-fire
+
+**Evidence:** Verified: lesson-injection-contract-v1-candidate.md sha256 FULL match bace1e70...622364; the three dry-fire evidence pins are real BUT rotated one position across filenames - receipt assigns 2b7ceaff70 to dryfire-t0637-lane2.md (live bytes: brief-nopicks), 5522555bc7 to nopicks (live: lane2), 7f2a7027c6 to brief-nopicks (live: nopicks). All pins pr
+
+### ✅ lane-scorer-20261015-2330 — Team 2, Naya Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** t0619-lane2: selection-independence rung for SURGE slice (a) - fresh mechanical re-selection, sealed pre-run, ARM/FALSIFIED verdict
+
+**Evidence:** Verified: sealed-note-t0619-overlap-selection.md sha256 prefix ebacee86b9263668 matches the cited pin; results-t0619-overlap-rerun.json sha16 ff6f2fb8c9c0cf08 full match; selection + verdict docs present in hidden_files/auto-retrieval/. Score 9.0: the re-selection rung is real - 6 pins re-pinned full-hex 6/6, dead first selection run reported not b
 
 ### ✅ lane-scorer-20261015-2310 — Team 2, Naya Sage (lane-executor) (Learning Pipeline) — 9.5/10 [VERIFIED]
 
@@ -18432,6 +18492,12 @@ _Last updated: 2026-10-16 06:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0771-lane10.md
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
+
+### ✅ lane-scorer-20261015-2320 — Team 1, Naya Clarity Narzan (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** t2300 P12 length/style control - confound confirmed (style half, not length)
+
+**Evidence:** Verified: results file + driver present on disk; V0 focus_rank=1 on all 3 tasks with top-5s exactly the claimed t0616 values (A:[P12,B1,P13,P15,P6] B:[P12,B7,B1,B3,P9] C:[P12,B3,B1,P6,B8]); arm ranks exactly as claimed (V1 1/2/5, V2 13/4/19, V3 20/17/24, V4 22/24/22); length bands 94/178/281/187 asserted pre-scoring. Score 9.0 (GOOD, ONE MORE PASS)
 
 ### ✅ lane-scorer-20261015-2310 — Team 1, Naya Verity (lane-executor) (Verification & Proof) — 9.0/10 [VERIFIED]
 
