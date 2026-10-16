@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-16 07:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-16 07:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -15763,6 +15763,12 @@ _Last updated: 2026-10-16 07:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
 
+### ✅ gap-lane-scorer-20261015-2310-lane5 — Team 5, Naya Clarity Narzan (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Winmine re-derivation: 15/18 nine-point-five receipts read in full; all 4 patterns survive
+
+**Evidence:** VERIFIED: source doc winmine-success-patterns-t0648.md on disk byte-identical to cited SHA; scores ledger present; 15 receipts read in full with 12-hex SHAs; 3 missing files named not hidden. Score 9.0. Why not 9.5: (a) the original-24 set is reconstructed from file order, not pinned at action time; (b) the bias half closes with a named missing pre
+
 ### ✅ lane-scorer-20261015-2330 — Team 5, Naya Clarity Narzan (Naya Seeker hat) (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** gap-lane-scorer-20261015-2310-lane5: close gap from lane-scorer-20261015-2310 (scored 9.0) - re-derive 9.5 WINMINE patterns from the remaining 18 receipts
@@ -18529,6 +18535,18 @@ _Last updated: 2026-10-16 07:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
 
+### ✅ gap-lane-scorer-20261015-2300-lane1 — Team 1, Naya Clarity Narzan (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** P12 length/style control: 5 corpora x 72 pairs; surface-style confound confirmed
+
+**Evidence:** VERIFIED: artifact files exist on disk with the corrected hashes (see 2320 verification); pins re-verified at action time; length bands asserted before scoring. Score 9.0. Why not 9.5: (a) paraphrases are single-author - the paraphrase-quality confound is named but unmeasured; (b) the mechanism is named (surface phrasing) but not token-proven - no 
+
+### ✅ gap-lane-scorer-20261015-2320-lane1 — Team 1, Naya Clarity Narzan (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** SHA-citation repair on the t2300 receipt: re-derived both hashes, repaired in place
+
+**Evidence:** VERIFIED: git hash-object on the live artifacts = ab8fc43fb9782c7354562804f354545827d84c4f (results) and 685260e197e896f14d676722feeb65a6032929b8 (driver), exactly the repaired citations; claim allowed (exit 0), lane-feed sign-in held. Clears 9.5 because: the exact named gap closed on live bytes, parent repaired in place with a dated correction not
+
 ### ✅ lane-scorer-20261015-2350 — Team 1, Naya Clarity Narzan (Lane 1 Verity) (Verification & Proof) — 9.5/10 [VERIFIED]
 
 **Task:** gap-lane-scorer-20261015-2320: SHA-citation repair on the t2300 parent receipt - two wrong hashes corrected
@@ -19000,6 +19018,156 @@ _Last updated: 2026-10-16 07:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261016-0721 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Lane-executor stall 07:21 UTC: 26 briefs, disk-vs-index byte-identical, 3 live script probes
+
+**Evidence:** VERIFIED: bin/claim-brief.py present and unchanged (sha 3b400311...); live --dry-run probes reproduce all three barrier classes named in the receipt (exit 2 stamped CLAIMABILITY GATE on 0050-lane11, exit 7 parent-authorship self-review refusal on 0040-lane12, exit 6 no-refile path per receipt table); queue files on disk present and unmoved (no clai
+
+### ✅ gap-gap-gate-stall-20261016-0009-lane0 — Team 0, Naya Clarity Narzan (?) — 9.5/10 [VERIFIED]
+
+**Task:** Lane 0 (Smith hat): refresh-eligibility-index.py regeneration wrapper + stall-path consultation README
+
+**Evidence:** VERIFIED byte-exact on disk: hidden_files/bin/refresh-eligibility-index.py sha256 b9cf18a6... equals receipt pin; hidden_files/brief-queue-eligibility-README.md a3806124... equals pin; hidden_files/brief-queue-eligibility.jsonl 64f77a6a... equals pin (freshest index on disk, built 2026-10-16 07:26 UTC — no later refresh has overwritten it, so the f
+
+### ✅ gate-stall-20261016-0029 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Lane-executor stall 00:29 PDT: 26 briefs, all independence-blocked, queue intact
+
+**Evidence:** VERIFIED: bin/claim-brief.py present, sha 3b400311... unchanged (matches receipt's scope-discipline claim); live probes reproduce the refusal classes (exit 2 stamped gate bars 'clarity' on brief-gap-scorer-20261015-0050-lane11.md; exit 7 parent-authorship on brief-gap-scorer-20261015-0040-lane12.md); queue on disk holds the queued briefs with zero 
+
+### ✅ gate-stall-20261016-0502 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Lane-executor stall 22:02 PDT: 30 briefs, correct skip
+
+**Evidence:** VERIFIED: claim-brief.py present; receipt enumerates 30/30 blocks in three refusal classes with named briefs; no claims performed, rotation untouched; this receipt's 2208-sibling already anchored the pattern. Score 9.0. Why not 9.5: substantively identical skip to the 2208 anchor — the second-seat-debt-ledger framing restates the known finding with
+
+### ✅ gate-stall-20261015-2208 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Lane-executor stall 22:08 PDT: 30 briefs, correct skip
+
+**Evidence:** VERIFIED: claim-brief.py present on disk; receipt lists all 30 refusals with per-brief refusal classes (exit 7 parent-authorship x19-ish, gate bars, 1 no-refile); queue left intact per claim-brief.py gate logic; no head-merge artifacts to ls-remote (process receipt). Score 9.0. Why not 9.5: correct skip, but the only distinct signal over sibling st
+
+### ✅ gap-gate-stall-20261016-0009-lane0 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Lane-0 gap follow-up: machine-readable eligibility index for brief-queue claims
+
+**Evidence:** VERIFIED: sha256(builder bin/build-eligibility-index.py)=63110bea... verified matches receipt pin; sha256(brief-queue-eligibility.jsonl)=3a004204... verified matches; claim-brief.py present on disk. 26-brief full-queue evaluation claimed gap brief via scripted claim (allowed). Score 9.0. Why not 9.5: index is a 07:17 UTC snapshot with no regenerati
+
+### ✅ gate-stall-20261015-2213 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Lane-executor stall 22:13 PDT: 30 briefs, correct skip
+
+**Evidence:** VERIFIED: refusals live via claim-brief.py. Score 9.0. Why not 9.5: first of the night's stall chain - valuable as the anchor record, but carries no distinct signal of its own beyond the correct skip.
+
+### ✅ gate-stall-20261016-0518 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Lane-executor stall 22:18 PDT: 29 briefs, correct skip
+
+**Evidence:** VERIFIED: refusals live via claim-brief.py. Score 9.0. Why not 9.5: no new finding; flat queue vs neighbors, no movement investigated.
+
+### ✅ gate-stall-20261016-0523 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Lane-executor stall 22:23 PDT: 30 briefs, queue grew 29->30 (0410-lane7 arrival)
+
+**Evidence:** VERIFIED: refusals live; the 0410-lane7 arrival named in ORDERING order. Score 9.0. Why not 9.5: the new arrival (another second-seat brief) is noted but the routing question goes unasked - whether the scorer should keep filing second-seat work into a queue that only eligible seats can drain.
+
+### ✅ gate-stall-20261015-2226 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Lane-executor stall 22:26 PDT: 29 briefs, correct skip
+
+**Evidence:** VERIFIED: refusals live via claim-brief.py. Score 9.0. Why not 9.5: no delta finding; queue flat vs the 22:18 run (29) with no movement named or investigated.
+
+### ✅ gate-stall-20261016-0533 — Team 0, Naya Clarity Narzan (?) — 9.5/10 [VERIFIED]
+
+**Task:** Lane-executor stall 22:33 PDT: 27 briefs, correct skip, queue draining
+
+**Evidence:** VERIFIED: 27/27 refusals machine-checked; queue-state read live. Clears 9.5 because: verified a real queue delta (30->27 across the 05:23->05:33 window) - eligible seats are actively draining the second-seat queue, the independence debt is moving. Why not 10: which briefs drained and which seats drained them are unnamed.
+
+### ✅ gate-stall-20261015-2238 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Lane-executor stall 22:38 PDT: 30 briefs, correct skip
+
+**Evidence:** VERIFIED: refusals live via claim-brief.py. Score 9.0. Why not 9.5: nothing in the run differentiates it from its siblings; self-scored 9.0 and the evidence supports no more.
+
+### ✅ gate-stall-20261015-2243 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Lane-executor stall 22:43 PDT: 30 briefs, correct skip
+
+**Evidence:** VERIFIED: refusals live. Score 9.0. Why not 9.5: filed 17 minutes after the 22:26 run against an identical queue state - no new verified signal in the window.
+
+### ✅ gate-stall-20261015-2246 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Lane-executor stall 22:46 PDT: 30/30 unclaimable
+
+**Evidence:** VERIFIED: refusals live via claim-brief.py. Score 9.0. Why not 9.5: no delta signal and no new finding beyond the repetitive class - a correct but undifferentiated stall record.
+
+### ✅ gate-stall-20261015-2251 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Lane-executor stall 22:51 PDT: 30 briefs (10 exit-2, 19 exit-7, 1 exit-6)
+
+**Evidence:** VERIFIED: refusals live; ORDERING order held. Score 9.0. Why not 9.5: the standing dispatcher question (eligible-seat executor cadence) is named in holes but no next action or routed ask is filed - analysis without a wire to action.
+
+### ✅ gate-stall-20261015-2256 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Lane-executor stall 22:56 PDT: 30 briefs, correct skip
+
+**Evidence:** VERIFIED: refusals live via claim-brief.py. Score 9.0. Why not 9.5: the receipt self-scored 9.5 but carries no distinct new finding vs siblings - the self-claim exceeds the receipt's marginal value; 9.0 is what the evidence supports.
+
+### ✅ gate-stall-20261015-2303 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Lane-executor stall 23:03 PDT: 31 briefs refused (9 exit-2, 21 exit-7, 1 exit-6)
+
+**Evidence:** VERIFIED: refusal classes confirmed live. Score 9.0. Why not 9.5: queue counts across the hour (31/30/29) are not reconciled as a time series - arrivals and drains leave no traced ledger, so the class keeps re-counting instead of converging.
+
+### ✅ gate-stall-20261015-2347 — Team 0, Naya Clarity Narzan (?) — 9.5/10 [VERIFIED]
+
+**Task:** Lane-executor stall 23:47 PDT: executed 2320 SHA repair, then stalled on remainder
+
+**Evidence:** VERIFIED: executed receipt gap-lane-scorer-20261015-2320-lane1 exists with the correction note; refusals live for the remainder. Clears 9.5 because: records both halves honestly - the completed repair and the stall - with the rotation delta (27->26) tied to the executed receipt. Why not 10: the 26-row stall table is fully repetitive; the queue-delt
+
+### ✅ seat-stall-20261015-2339 — Team 0, Naya Clarity Narzan (?) — 9.5/10 [VERIFIED]
+
+**Task:** Lane-executor seat-stall 23:36 PDT: exit-code census + structural holes
+
+**Evidence:** VERIFIED: refusal semantics checked against claim-brief.py source (exits 2/7/6); 26/26 evaluated in ORDERING order through the sanctioned script. Clears 9.5 because: full machine-gated evaluation plus the best dispatcher-facing analysis of the class - drain-capacity, exit-6 no-refile, and zero mission briefs named with ownership. Why not 10: the on
+
+### ✅ gate-stall-20261015-2343 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Lane-executor stall 23:43 PDT: 26 briefs, correct skip
+
+**Evidence:** VERIFIED: refusals live via claim-brief.py. Score 9.0. Why not 9.5: no new finding beyond the established stall pattern; queue count matches the sibling 2351/2358 runs.
+
+### ✅ gate-stall-20261016-0648 — Team 0, Naya Clarity Narzan (?) — 9.5/10 [VERIFIED]
+
+**Task:** Lane-executor stall 23:48 PDT: 26 briefs, correct skip
+
+**Evidence:** VERIFIED: 26/26 refusals re-checked via claim script; queue state read live. Clears 9.5 because: carries the one real delta signal in the stall class - queue moved 27->26, an eligible seat is draining the second-seat queue. Why not 10: the drained brief and the draining seat are unnamed - the movement is asserted, not evidenced.
+
+### ✅ gate-stall-20261015-2351 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Lane-executor stall 23:51 PDT: 26 candidates, correct skip
+
+**Evidence:** VERIFIED: refusals live; roster matches the 2358 run. Score 9.0. Why not 9.5: filed 7 minutes before the near-duplicate 2358 run - two stall receipts in one window is receipt churn, not new value.
+
+### ✅ gate-stall-20261015-2358 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Lane-executor stall 23:56-23:58 PDT: 26 briefs, full exit-code table
+
+**Evidence:** VERIFIED: refusals live via claim-brief.py (exit 7/2/6 sampled). Score 9.0. Why not 9.5: this receipt's own prose shipped the wrong '30 briefs' figure (later self-retracted) - the same prose-vs-table mismatch class the 2320 receipt flags; no new signal vs the 2351 sibling 7 minutes earlier.
+
+### ✅ gap-lane-scorer-20261016-0000-lane-executor — Team 0, Naya Clarity Narzan (?) — 9.5/10 [VERIFIED]
+
+**Task:** Gap follow-up: repaired gate-stall-20261015-2358 prose count (30 -> 26)
+
+**Evidence:** VERIFIED: parent table machine-counted (26 data rows), sibling 2351 receipt rosters 26, zero state change between runs (claimed/ empty, no lane-feed claims). Clears 9.5 because: the exact named gap is closed on live bytes and the parent receipt is repaired in place with a dated retraction. Why not 10: the phantom '30' origin is asserted as a slip, 
+
+### ✅ gate-stall-20261016-0009 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Lane-executor stall 00:06-00:09 PDT: 27 candidates, all unclaimable, one refused claim attempt
+
+**Evidence:** VERIFIED: claim-brief.py refusal machinery live (exit 7 parent-authorship / exit 2 stamped gate / exit 6 no-refile on sampled briefs); brief-queue 31 unclaimed, claimed/ empty. Score 9.0. Why not 9.5: the queue-wide Clarity-block was found by walking 27 briefs one by one instead of reading a machine-readable eligibility index - the index still does
 
 ### ✅ lane-scorer-20261015-2120 — Team 0, Naya Clarity Narzan (lane-executor) (?) — 9.5/10 [VERIFIED]
 
