@@ -2,6 +2,9 @@
 
 Verbatim from the N5 generation (newest). These are not suggestions.
 
+> The operational canon — mechanics, hexes, the forbidden list, and the final
+> law — lives in [DESIGN-LAWS.md](./DESIGN-LAWS.md). These eight are the source.
+
 ## The eight laws
 
 1. **Score the experience, never the code.** A 9.5 on CSS is worthless if the
