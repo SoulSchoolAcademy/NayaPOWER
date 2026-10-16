@@ -1,7 +1,7 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-10-15",
-  "receipt_basis_commit": "ba62638704256b012c20e41fe7f53cc3b62b1b44",
+  "generated_at": "2026-10-16",
+  "receipt_basis_commit": "0f185811be952882cbe2a3df696552b54d5b7a78",
   "inventory_file_count": 1320,
   "domain_counts": {
     "00-ACTIVATION": 5,
@@ -6517,8 +6517,8 @@
     },
     {
       "path": "BRAIN/90-OPERATIONS/field-manuals/29-verify.human.md",
-      "blob_sha": "7e0168e0d4423d2f762801957a33df51902e8729",
-      "size": 7727
+      "blob_sha": "244e5c35c070381add6e241a37b9028cba9371c6",
+      "size": 9996
     },
     {
       "path": "BRAIN/90-OPERATIONS/field-manuals/30-intelligent-blocks.human.md",
