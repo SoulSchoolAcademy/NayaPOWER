@@ -1,0 +1,931 @@
+{
+ "_provenance": {
+  "generated_utc": "2026-10-16T20:53:38Z",
+  "generated_by": "Naya Alpha (LEARN), night-shift wave 317",
+  "grader_commit": "c4af2c23bc7500aa882c8693176a1a89b717c1d0",
+  "grader_repo": "SoulSchoolAcademy/NayaPOWER",
+  "grader_script_blob_sha256": "57161e89ed373a45470e3017d4f2f8183343dd52",
+  "answer_sheets_commit": "9c4a69df27cf8e14b73a2f98d1600c007c9a2ba4",
+  "answer_sheets_blob_sha256": [
+   "064ae10c7966def8487b241bb73c8254ecb14529",
+   "338a206fc80c828405eb1bf8993270ee00ae46da",
+   "dc8d425611cb0488e57778980309c7fde7a6a273",
+   "f39dcecf1ff1c1d01bf51e7a785404ec7ef2b0af",
+   "215167bf7c6db6d69e814f44fe5b0d308837cee9",
+   "416803a3ef2f427f2f271912dd5a4df344fd6254",
+   "90bbee42e7be9604a1a7f45e032b030e48a5b4c7",
+   "fc9d5b8d0d146528eba2cc38d92ea3be30d58e55",
+   "c807870d40f6071c28fe8615114307a2b8a6a2e9",
+   "60a9ada60f07675d94aa6217a8693214735b08a9",
+   "03dfb7a902300521b83fcaef5d182ecf7bb87741",
+   "07600a06919d50fb4170257ba9fbd2405e82c582",
+   "d7901d9e49ea3551994b921f408b40ce1ff05da8",
+   "f17cd5211133a45de7fa83f0cd94b29bf4d60aa1",
+   "6aaf3bc3b7b0dab4582a342c4c52d0f93a7a0e5a",
+   "60e0b8c914b572398b68d5b99483e960165dd2d4",
+   "530c47ee442c0ce3ea783e09ad6baeb2d669bc71",
+   "f199d47b7df5b92329ed496acc8b3a60c4acd184",
+   "ecd88a6b3e553a59cbd0e77f7d960513b8830c5b",
+   "6d5e1cde866cc1ad8b31f599d66e1385cefc0a42"
+  ],
+  "kit_results_file_blob_sha256": "6071210ef570550d98a81f4d5ae73cdfb9a7a5fb",
+  "kit_results_commit": "9c4a69df27cf8e14b73a2f98d1600c007c9a2ba4",
+  "runtime": "Python 3.12.3",
+  "answer_key": "absent at pinned repair commit - grader used its hardcoded fallback",
+  "answer_key_fallback": {
+   "Q1": "call a",
+   "Q2": "call a",
+   "Q3": "call b",
+   "Q4": "call a",
+   "Q5": "call a",
+   "Q6": "call b",
+   "Q7": "call a",
+   "Q8": "call a",
+   "Q9": "call b"
+  }
+ },
+ "trial": "T11 (Reserve Rule positive control)",
+ "aggregate": {
+  "treatment_correct": 90,
+  "treatment_total": 90,
+  "control_correct": 39,
+  "control_total": 90
+ },
+ "deltas_vs_kit_results_file": {
+  "T11-AGENT-01": {
+   "kit_total": 3,
+   "repair_passed": 4
+  },
+  "T11-AGENT-03": {
+   "kit_total": 8,
+   "repair_passed": 9
+  },
+  "T11-AGENT-06": {
+   "kit_total": 3,
+   "repair_passed": 4
+  }
+ },
+ "does_not_claim": "This file is Naya Alpha's deterministic re-derivation, not a different-seat rerun. A different-seat rerun of the repair grader remains the ceiling for the claim.",
+ "per_agent": {
+  "T11-AGENT-01": {
+   "arm": "control",
+   "passed": 4,
+   "total": 9,
+   "results": {
+    "Q1": {
+     "pass": false,
+     "why": "choice:call b"
+    },
+    "Q2": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q3": {
+     "pass": false,
+     "why": "choice:call a"
+    },
+    "Q4": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q5": {
+     "pass": false,
+     "why": "choice:call b"
+    },
+    "Q6": {
+     "pass": false,
+     "why": "choice:call a"
+    },
+    "Q7": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q8": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q9": {
+     "pass": false,
+     "why": "choice:call a"
+    }
+   }
+  },
+  "T11-AGENT-02": {
+   "arm": "treatment",
+   "passed": 9,
+   "total": 9,
+   "results": {
+    "Q1": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q2": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q3": {
+     "pass": true,
+     "why": "choice:call b"
+    },
+    "Q4": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q5": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q6": {
+     "pass": true,
+     "why": "choice:call b"
+    },
+    "Q7": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q8": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q9": {
+     "pass": true,
+     "why": "choice:call b"
+    }
+   }
+  },
+  "T11-AGENT-03": {
+   "arm": "treatment",
+   "passed": 9,
+   "total": 9,
+   "results": {
+    "Q1": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q2": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q3": {
+     "pass": true,
+     "why": "choice:call b"
+    },
+    "Q4": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q5": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q6": {
+     "pass": true,
+     "why": "choice:call b"
+    },
+    "Q7": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q8": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q9": {
+     "pass": true,
+     "why": "choice:call b"
+    }
+   }
+  },
+  "T11-AGENT-04": {
+   "arm": "treatment",
+   "passed": 9,
+   "total": 9,
+   "results": {
+    "Q1": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q2": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q3": {
+     "pass": true,
+     "why": "choice:call b"
+    },
+    "Q4": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q5": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q6": {
+     "pass": true,
+     "why": "choice:call b"
+    },
+    "Q7": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q8": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q9": {
+     "pass": true,
+     "why": "choice:call b"
+    }
+   }
+  },
+  "T11-AGENT-05": {
+   "arm": "treatment",
+   "passed": 9,
+   "total": 9,
+   "results": {
+    "Q1": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q2": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q3": {
+     "pass": true,
+     "why": "choice:call b"
+    },
+    "Q4": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q5": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q6": {
+     "pass": true,
+     "why": "choice:call b"
+    },
+    "Q7": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q8": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q9": {
+     "pass": true,
+     "why": "choice:call b"
+    }
+   }
+  },
+  "T11-AGENT-06": {
+   "arm": "control",
+   "passed": 4,
+   "total": 9,
+   "results": {
+    "Q1": {
+     "pass": false,
+     "why": "choice:call b"
+    },
+    "Q2": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q3": {
+     "pass": false,
+     "why": "choice:call a"
+    },
+    "Q4": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q5": {
+     "pass": false,
+     "why": "choice:call b"
+    },
+    "Q6": {
+     "pass": false,
+     "why": "choice:call a"
+    },
+    "Q7": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q8": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q9": {
+     "pass": false,
+     "why": "choice:call a"
+    }
+   }
+  },
+  "T11-AGENT-07": {
+   "arm": "treatment",
+   "passed": 9,
+   "total": 9,
+   "results": {
+    "Q1": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q2": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q3": {
+     "pass": true,
+     "why": "choice:call b"
+    },
+    "Q4": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q5": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q6": {
+     "pass": true,
+     "why": "choice:call b"
+    },
+    "Q7": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q8": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q9": {
+     "pass": true,
+     "why": "choice:call b"
+    }
+   }
+  },
+  "T11-AGENT-08": {
+   "arm": "control",
+   "passed": 4,
+   "total": 9,
+   "results": {
+    "Q1": {
+     "pass": false,
+     "why": "choice:call b"
+    },
+    "Q2": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q3": {
+     "pass": false,
+     "why": "choice:call a"
+    },
+    "Q4": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q5": {
+     "pass": false,
+     "why": "choice:call b"
+    },
+    "Q6": {
+     "pass": false,
+     "why": "choice:call a"
+    },
+    "Q7": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q8": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q9": {
+     "pass": false,
+     "why": "choice:call a"
+    }
+   }
+  },
+  "T11-AGENT-09": {
+   "arm": "control",
+   "passed": 4,
+   "total": 9,
+   "results": {
+    "Q1": {
+     "pass": false,
+     "why": "choice:call b"
+    },
+    "Q2": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q3": {
+     "pass": false,
+     "why": "choice:call a"
+    },
+    "Q4": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q5": {
+     "pass": false,
+     "why": "choice:call b"
+    },
+    "Q6": {
+     "pass": false,
+     "why": "choice:call a"
+    },
+    "Q7": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q8": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q9": {
+     "pass": false,
+     "why": "choice:call a"
+    }
+   }
+  },
+  "T11-AGENT-10": {
+   "arm": "treatment",
+   "passed": 9,
+   "total": 9,
+   "results": {
+    "Q1": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q2": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q3": {
+     "pass": true,
+     "why": "choice:call b"
+    },
+    "Q4": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q5": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q6": {
+     "pass": true,
+     "why": "choice:call b"
+    },
+    "Q7": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q8": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q9": {
+     "pass": true,
+     "why": "choice:call b"
+    }
+   }
+  },
+  "T11-AGENT-11": {
+   "arm": "control",
+   "passed": 4,
+   "total": 9,
+   "results": {
+    "Q1": {
+     "pass": false,
+     "why": "choice:call b"
+    },
+    "Q2": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q3": {
+     "pass": false,
+     "why": "choice:call a"
+    },
+    "Q4": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q5": {
+     "pass": false,
+     "why": "choice:call b"
+    },
+    "Q6": {
+     "pass": false,
+     "why": "choice:call a"
+    },
+    "Q7": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q8": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q9": {
+     "pass": false,
+     "why": "choice:call a"
+    }
+   }
+  },
+  "T11-AGENT-12": {
+   "arm": "control",
+   "passed": 4,
+   "total": 9,
+   "results": {
+    "Q1": {
+     "pass": false,
+     "why": "choice:call b"
+    },
+    "Q2": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q3": {
+     "pass": false,
+     "why": "choice:call a"
+    },
+    "Q4": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q5": {
+     "pass": false,
+     "why": "choice:call b"
+    },
+    "Q6": {
+     "pass": false,
+     "why": "choice:call a"
+    },
+    "Q7": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q8": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q9": {
+     "pass": false,
+     "why": "choice:call a"
+    }
+   }
+  },
+  "T11-AGENT-13": {
+   "arm": "treatment",
+   "passed": 9,
+   "total": 9,
+   "results": {
+    "Q1": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q2": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q3": {
+     "pass": true,
+     "why": "choice:call b"
+    },
+    "Q4": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q5": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q6": {
+     "pass": true,
+     "why": "choice:call b"
+    },
+    "Q7": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q8": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q9": {
+     "pass": true,
+     "why": "choice:call b"
+    }
+   }
+  },
+  "T11-AGENT-14": {
+   "arm": "control",
+   "passed": 4,
+   "total": 9,
+   "results": {
+    "Q1": {
+     "pass": false,
+     "why": "choice:call b"
+    },
+    "Q2": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q3": {
+     "pass": false,
+     "why": "choice:call a"
+    },
+    "Q4": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q5": {
+     "pass": false,
+     "why": "choice:call b"
+    },
+    "Q6": {
+     "pass": false,
+     "why": "choice:call a"
+    },
+    "Q7": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q8": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q9": {
+     "pass": false,
+     "why": "choice:call a"
+    }
+   }
+  },
+  "T11-AGENT-15": {
+   "arm": "control",
+   "passed": 4,
+   "total": 9,
+   "results": {
+    "Q1": {
+     "pass": false,
+     "why": "choice:call b"
+    },
+    "Q2": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q3": {
+     "pass": false,
+     "why": "choice:call a"
+    },
+    "Q4": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q5": {
+     "pass": false,
+     "why": "choice:call b"
+    },
+    "Q6": {
+     "pass": false,
+     "why": "choice:call a"
+    },
+    "Q7": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q8": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q9": {
+     "pass": false,
+     "why": "choice:call a"
+    }
+   }
+  },
+  "T11-AGENT-16": {
+   "arm": "control",
+   "passed": 4,
+   "total": 9,
+   "results": {
+    "Q1": {
+     "pass": false,
+     "why": "choice:call b"
+    },
+    "Q2": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q3": {
+     "pass": false,
+     "why": "choice:call a"
+    },
+    "Q4": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q5": {
+     "pass": false,
+     "why": "choice:call b"
+    },
+    "Q6": {
+     "pass": false,
+     "why": "choice:call a"
+    },
+    "Q7": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q8": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q9": {
+     "pass": false,
+     "why": "choice:call a"
+    }
+   }
+  },
+  "T11-AGENT-17": {
+   "arm": "treatment",
+   "passed": 9,
+   "total": 9,
+   "results": {
+    "Q1": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q2": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q3": {
+     "pass": true,
+     "why": "choice:call b"
+    },
+    "Q4": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q5": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q6": {
+     "pass": true,
+     "why": "choice:call b"
+    },
+    "Q7": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q8": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q9": {
+     "pass": true,
+     "why": "choice:call b"
+    }
+   }
+  },
+  "T11-AGENT-18": {
+   "arm": "treatment",
+   "passed": 9,
+   "total": 9,
+   "results": {
+    "Q1": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q2": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q3": {
+     "pass": true,
+     "why": "choice:call b"
+    },
+    "Q4": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q5": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q6": {
+     "pass": true,
+     "why": "choice:call b"
+    },
+    "Q7": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q8": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q9": {
+     "pass": true,
+     "why": "choice:call b"
+    }
+   }
+  },
+  "T11-AGENT-19": {
+   "arm": "treatment",
+   "passed": 9,
+   "total": 9,
+   "results": {
+    "Q1": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q2": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q3": {
+     "pass": true,
+     "why": "choice:call b"
+    },
+    "Q4": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q5": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q6": {
+     "pass": true,
+     "why": "choice:call b"
+    },
+    "Q7": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q8": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q9": {
+     "pass": true,
+     "why": "choice:call b"
+    }
+   }
+  },
+  "T11-AGENT-20": {
+   "arm": "control",
+   "passed": 3,
+   "total": 9,
+   "results": {
+    "Q1": {
+     "pass": false,
+     "why": "choice:call b"
+    },
+    "Q2": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q3": {
+     "pass": false,
+     "why": "choice:call a"
+    },
+    "Q4": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q5": {
+     "pass": false,
+     "why": "choice:call b"
+    },
+    "Q6": {
+     "pass": false,
+     "why": "choice:call a"
+    },
+    "Q7": {
+     "pass": true,
+     "why": "choice:call a"
+    },
+    "Q8": {
+     "pass": false,
+     "why": "choice:call b"
+    },
+    "Q9": {
+     "pass": false,
+     "why": "choice:call a"
+    }
+   }
+  }
+ }
+}
