@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-16T02:16:13+00:00",
+ "generated_utc": "2026-10-16T03:16:11+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -150,7 +150,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 24
+   "open_pr_count": 23
   },
   {
    "id": "act",
@@ -348,6 +348,12 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2691,
+     "title": "[DRAFT] PUMP phase 1: schedule plumbing for agent capture (review only, do not merge)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2691",
+     "draft": true
+    },
+    {
      "number": 2688,
      "title": "HIVE mother-brain navigation \u2014 two-speed repo orientation (machine + human)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2688",
@@ -388,15 +394,9 @@
      "title": "SN-0798: backpropagation credit-assignment logic (Naya 3) - CANDIDATE",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2640",
      "draft": false
-    },
-    {
-     "number": 2639,
-     "title": "The Never-Stuck Creed v1.0 (0026) \u2014 carved in three tongues",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2639",
-     "draft": false
     }
    ],
-   "open_pr_count": 222
+   "open_pr_count": 223
   },
   {
    "id": "wire",
@@ -416,6 +416,12 @@
    "active_now": false,
    "board_lane": "#2175 lane WIRE",
    "open_prs": [
+    {
+     "number": 2690,
+     "title": "Gate reliability: transient API failures \u2192 UNKNOWN (exit 2), never wrong FAIL",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2690",
+     "draft": false
+    },
     {
      "number": 2681,
      "title": "Teach fail-closed gates quota-vs-permission 403 (INCONCLUSIVE/RETRY)",
@@ -457,15 +463,9 @@
      "title": "INFRA: capture RATE_LIMIT_RESET in gate HTTP layers (fail-closed)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2630",
      "draft": false
-    },
-    {
-     "number": 2627,
-     "title": "Fix completeness_gate SEAT_RE: recognize the three standing lead seats (rebased to live ti",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2627",
-     "draft": false
     }
    ],
-   "open_pr_count": 119
+   "open_pr_count": 120
   },
   {
    "id": "team",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 586,
- "unassigned_prs": 222
+ "open_pr_total": 587,
+ "unassigned_prs": 223
 }

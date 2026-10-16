@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-16 02:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-16 03:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 586 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 587 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -58,13 +58,13 @@
 - [#2594](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2594) Learn: clock-to-ladder bridge — T6 VERIFIED meta row earns E1-E3
 - …and 51 more
 
-### KNOW (24)
+### KNOW (23)
 - [#2683](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2683) [INTELLIGENT_BLOCKS] #2642 reconcile: dock gate-reader doc + brain-ind
 - [#2433](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2433) brain-index: regenerate at basis 31d8cff7 (mechanical re-stamp, --che…
 - [#2415](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2415) BRAIN: regenerate index layer at live tip 665098e3
 - [#2407](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2407) repair(brain-index): re-stamp index on main 665098e3 (drift-13)
 - [#2390](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2390) repair(brain-index): re-stamp index on main f33bba34
-- …and 19 more
+- …and 18 more
 
 ### ACT (3)
 - [#2457](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2457) flip #3: lane-9 test-leg fixes (second ADVISE-count site + receipt-gat
@@ -87,21 +87,21 @@
 - [#2521](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2521) fix(b40): stale 'signing' comment word -> 'sealing' in machine-law tes
 - …and 23 more
 
-### BUILD (222)
+### BUILD (223)
+- [#2691](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2691) [DRAFT] PUMP phase 1: schedule plumbing for agent capture (review only 📝draft
 - [#2688](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2688) HIVE mother-brain navigation — two-speed repo orientation (machine + h
 - [#2687](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2687) Living Map compiler v1 — the map becomes a measurement
 - [#2686](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2686) System Schematics — the staple doc (peer-reviewed)
 - [#2684](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2684) [Naya 5] The canonical complete-puzzle system map
-- [#2677](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2677) RETRIEVAL: version tools/spawn_brief.py incl. w255 tier-2 REVIEW guard
-- …and 217 more
+- …and 218 more
 
-### WIRE (119)
+### WIRE (120)
+- [#2690](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2690) Gate reliability: transient API failures → UNKNOWN (exit 2), never wro
 - [#2681](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2681) Teach fail-closed gates quota-vs-permission 403 (INCONCLUSIVE/RETRY)
 - [#2676](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2676) Canonical 9-note Smart Note source for the Smart Feed live wire (t0473
 - [#2645](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2645) KNOW gaterepair (w247): doc_completeness_check fail→warning + grep-fla
 - [#2636](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2636) docs: name merge-consensus gate legs (a)/(b)/(c) as one-line verifier 
-- [#2635](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2635) Name the backticked-branch-name trap in the receipt-gate fix hint
-- …and 114 more
+- …and 115 more
 
 ### TEAM (12)
 - [#2618](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2618) [DRAFT] Advisory post-conformance scan for the Team Feed Standard 📝draft
