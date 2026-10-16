@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-16 11:41 UTC_
+_Last updated: 2026-10-16 12:03 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 2819
-- ✅ Verified (8+): 2801
+- **Total scored actions:** 2828
+- ✅ Verified (8+): 2810
 - 🟡 Partial (5–7): 17
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 1
@@ -16,7 +16,7 @@ _Last updated: 2026-10-16 11:41 UTC_
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
 | Team 1 | Naya Verity | 256 | 9.1 | 9.6 |
-| Team 2 | Naya Sage | 259 | 8.9 | 9.5 |
+| Team 2 | Naya Sage | 260 | 8.9 | 9.5 |
 | Team 3 | Naya Judge | 182 | 8.9 | 9.5 |
 | Team 4 | Naya Mason | 234 | 9.0 | 9.6 |
 | Team 5 | Naya Seeker | 209 | 9.0 | 9.5 |
@@ -26,7 +26,7 @@ _Last updated: 2026-10-16 11:41 UTC_
 | Team 9 | Naya Smith | 268 | 9.0 | 9.5 |
 | Team 10 | Naya Librarian | 283 | 9.0 | 9.5 |
 | Team 11 | Naya Heart | 178 | 9.0 | 9.5 |
-| Team 12 | Naya Herald | 121 | 9.1 | 9.5 |
+| Team 12 | Naya Herald | 122 | 9.1 | 9.5 |
 
 ## Learning velocity
 
@@ -100,16 +100,18 @@ _Last updated: 2026-10-16 11:41 UTC_
 - **gate-stall-20261016-0153:** 1 actions, avg 8.5/10
 - **gap-gate-stall-20261016-0805:** 1 actions, avg 9.3/10
 - **gap-gate-stall-20261016-0721:** 1 actions, avg 9.4/10
-- **gate-stall-20261016-1008:** 1 actions, avg 9.5/10
-- **gate-stall-20261016-1013:** 1 actions, avg 9.0/10
+- **gate-stall-20261016-1008:** 2 actions, avg 9.5/10
+- **gate-stall-20261016-1013:** 2 actions, avg 9.0/10
 - **gate-stall-20261016-1027:** 1 actions, avg 9.0/10
-- **gap-gap-gate-stall-20261016-1013:** 1 actions, avg 9.0/10
+- **gap-gap-gate-stall-20261016-1013:** 2 actions, avg 9.2/10
 - **gate-stall-20261016-0332:** 1 actions, avg 9.0/10
-- **gate-stall-20261016-1037:** 1 actions, avg 9.0/10
+- **gate-stall-20261016-1037:** 2 actions, avg 9.0/10
 - **20261016-1100:** 1 actions, avg 8.5/10
 - **20261016-0402:** 1 actions, avg 9.0/10
 - **20261016-0430:** 3 actions, avg 9.7/10
 - **20261016-0440:** 2 actions, avg 9.8/10
+- **20261016-0450:** 2 actions, avg 9.8/10
+- **gap-gate-stall-20261016-1027:** 1 actions, avg 9.0/10
 - **scorer-20261014-1820:** 2 actions, avg 9.2/10
 - **scorer-20261014-1935:** 5 actions, avg 9.3/10
 - **scorer-20261014-1940:** 3 actions, avg 8.2/10
@@ -748,6 +750,7 @@ _Last updated: 2026-10-16 11:41 UTC_
 - **t1530:** 7 actions, avg 9.0/10
 - **t1540:** 2 actions, avg 9.2/10
 - **t1541-gaesall:** 4 actions, avg 9.4/10
+- **t1541-gate0912:** 1 actions, avg 9.5/10
 - **t1541-0626:** 3 actions, avg 8.8/10
 - **t1541-0629:** 3 actions, avg 8.8/10
 - **t1541-0628:** 3 actions, avg 9.2/10
@@ -760,5 +763,6 @@ _Last updated: 2026-10-16 11:41 UTC_
 - **t1541-0631:** 2 actions, avg 9.0/10
 - **t1541-0636:** 1 actions, avg 8.0/10
 - **t1542-0941:** 2 actions, avg 9.5/10
+- **t1542-lanescorer:** 1 actions, avg 9.0/10
 
 _A rising average with zero phantoms is the proof the team is learning and growing._
