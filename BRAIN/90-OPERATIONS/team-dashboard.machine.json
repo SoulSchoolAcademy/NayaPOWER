@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-16T20:16:49+00:00",
+ "generated_utc": "2026-10-16T21:16:03+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -348,6 +348,18 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2710,
+     "title": "IB: persist tools/ph_aggregation.py \u2014 p/h aggregation step for grade-acceptance cold execu",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2710",
+     "draft": false
+    },
+    {
+     "number": 2709,
+     "title": "[ACT] Pre-post PR body self-check (pr_body_selfcheck.py)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2709",
+     "draft": false
+    },
+    {
      "number": 2708,
      "title": "Design Laws v1 (DRAFT): three-tongue repo placement",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2708",
@@ -382,21 +394,9 @@
      "title": "HIVE mother-brain navigation \u2014 two-speed repo orientation (machine + human)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2688",
      "draft": false
-    },
-    {
-     "number": 2687,
-     "title": "Living Map compiler v1 \u2014 the map becomes a measurement",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2687",
-     "draft": false
-    },
-    {
-     "number": 2686,
-     "title": "System Schematics \u2014 the staple doc (peer-reviewed)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2686",
-     "draft": false
     }
    ],
-   "open_pr_count": 227
+   "open_pr_count": 229
   },
   {
    "id": "wire",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 599,
- "unassigned_prs": 227
+ "open_pr_total": 601,
+ "unassigned_prs": 229
 }

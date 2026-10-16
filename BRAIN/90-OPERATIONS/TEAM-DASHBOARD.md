@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-16 20:16 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-16 21:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 599 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 601 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -87,13 +87,13 @@
 - [#2585](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2585) Add automatic scorecard calculator (tools/scorecard.py + tests)
 - …and 25 more
 
-### BUILD (227)
+### BUILD (229)
+- [#2710](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2710) IB: persist tools/ph_aggregation.py — p/h aggregation step for grade-a
+- [#2709](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2709) [ACT] Pre-post PR body self-check (pr_body_selfcheck.py)
 - [#2708](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2708) Design Laws v1 (DRAFT): three-tongue repo placement 📝draft
 - [#2707](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2707) DESIGN: curated smart-block library — one language, best-of-best
 - [#2705](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2705) Design System v1 — the Naya Lego box (100 laws, tokens, catalog, organ 📝draft
-- [#2703](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2703) Harden TIP-NOTE marker to line-anchored heading regex + regression tes
-- [#2691](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2691) [DRAFT] PUMP phase 1: schedule plumbing for agent capture (review only 📝draft
-- …and 222 more
+- …and 224 more
 
 ### WIRE (123)
 - [#2704](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2704) fix(gate): consensus gate skips issue_comment events without a verdict
