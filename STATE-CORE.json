@@ -1,12 +1,12 @@
 {
  "schema": "nayapower-state-core/v1",
- "generated_utc": "2026-10-16T00:17:01Z",
+ "generated_utc": "2026-10-16T00:26:55Z",
  "writer": "state-core-builder.py (single writer; all others read-only)",
  "tip": {
   "sha": "9f80e8eccfbe8256ec7ce069c61cd38cc86430ce",
   "short": "9f80e8eccfbe",
   "verified_how": "ref+commits-agree",
-  "checked_utc": "2026-10-16T00:16:04Z"
+  "checked_utc": "2026-10-16T00:26:00Z"
  },
  "venue": {
   "live": 2641,
@@ -15,15 +15,15 @@
   ]
  },
  "waves": {
-  "active": 209,
+  "active": null,
   "active_seats": [
    "Naya Electrician",
    "Naya Captain",
    "Naya Mechanic"
   ],
-  "last_completed": 207,
-  "last_completed_at": "2026-10-15T21:59Z",
-  "rotation_cursor": "wave-210: Naya Host/Naya Archivist/Naya Keeper (roster order)"
+  "last_completed": 209,
+  "last_completed_at": "2026-10-16T00:18Z",
+  "rotation_cursor": "wave-199: Naya Host/Naya Archivist/Naya Keeper (roster order)"
  },
  "lanes": {
   "free": [
@@ -87,12 +87,12 @@
    "gates": {
     "test": "success",
     "receipt": "success",
-    "team_review": "failure",
-    "claim_evidence": "failure",
-    "delivery": "failure"
+    "team_review": "success",
+    "claim_evidence": "success",
+    "delivery": "success"
    },
-   "iv_ready": false,
-   "owner": "review"
+   "iv_ready": true,
+   "owner": "dock"
   },
   {
    "pr": 2636,
