@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-16 21:35 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-16 21:52 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -689,6 +689,12 @@ _Last updated: 2026-10-16 21:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT-VERIFIED on live bytes: branch naya/ten-testdeps-fp-t1442 exists on origin, head == e326283252a7e9f932b0d9ebad465c50950b0799 == claimed SHA; refs/pull/2456/head == same SHA; claimed file tests/test_ci_declares_test_dependencies.py present at that SHA (3713-file tree). Kept from 9.5: CI verdict on PR #2456 not yet observed at receipt time (
 
+### ✅ t1442-lane9 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** flip #3 PR #2457 opened off naya/nine-tipred-fix-t1422
+
+**Evidence:** ARTIFACT VERIFIED: git ls-remote shows refs/heads/naya/nine-tipred-fix-t1422 == 92fac0983d4de8e04f0144d9a99dfaa5e02c8f97, pin-exact with receipt. Score 9.0 (not 9.5): test proof is pin-exact local repro (8 passed) — CI on PR #2457 pending at receipt time; a mid-task push_branch.py force-fallback fix was needed (recovered cleanly in-tick). One named
+
 ### ✅ t1442 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** flip #3 PR #2457 opened
@@ -825,6 +831,12 @@ _Last updated: 2026-10-16 21:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified via git protocol: branch @ 92fac0983d4de8e04f0144d9a99dfaa5e02c8f97 == receipt pin exactly; refs/pull/2457/head == same SHA; main == aa8061c1d311 (tip unmoved); tree diff vs tip == exactly .github/workflows/receipt-gate.yml + tests/test_measure_node_influence.py (the two documented fixes, no extras). Rung-1/rung-2 pin replays PA
 
+### ✅ t1442-lane8 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** #2453 merge calculator HOLD + compound_scale PR #2458 opened
+
+**Evidence:** ARTIFACT VERIFIED: git ls-remote shows refs/heads/naya/two-compoundscale-fixture-t1432 == ac270833fb3a52c6be45acc730b0e5132353d5a5, pin-exact with receipt; HOLD backed by live CI-failure evidence named in receipt. Score 9.0 (not 9.5): the merge-consensus gate seat-format gap (lane tags vs the gate's Naya-1-5 regex) was discovered during verificatio
+
 ### ✅ t1442 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** merge seat #2453 HOLD + PR #2458 opened
@@ -960,6 +972,12 @@ _Last updated: 2026-10-16 21:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1442-lane8.md`
 
 **Evidence:** Dispatcher verified via git protocol: refs/pull/2453/head == 3dd7837d8e6e399b1d62aad2b5378a7a3b3d13f4 == receipt pin; refs/pull/2458/head == refs/heads/naya/two-compoundscale-fixture-t1432 == ac270833fb3a52c6be45acc730b0e5132353d5a5 == receipt pin; main == aa8061c1d311 (tip unmoved). Merge-calculator HOLD receipt exists on disk; agent verified the 
+
+### ✅ t1442-lane10 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** re-anchor dependency-guard FP fix onto live tip, PR #2456 opened
+
+**Evidence:** ARTIFACT VERIFIED: git ls-remote shows refs/heads/naya/ten-testdeps-fp-t1442 == e326283252a7e9f932b0d9ebad465c50950b0799, pin-exact with receipt. Score 9.0 (not 9.5): CI verdict on PR #2456 not yet in at receipt time — the test proof is pin-exact local (4/4, exit 0) rather than observed CI; merge decision also still rests with the merging seat. Cle
 
 ### ✅ t1442 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -16698,6 +16716,12 @@ _Last updated: 2026-10-16 21:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane6.md
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
+
+### ✅ lane-scorer-20261016-1440 — Team 5, Naya Clarity Narzan (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** t0900-lane5.md
+
+**Evidence:** VERIFIED (git protocol, zero API quota): branch naya4/design-system-v1 exists on SoulSchoolAcademy/NayaPOWER with head e403c27e692c495d0dfdf840ad9a983fe11382f8 -- EXACT match to the receipt's pinned SHA. Checklist hidden_files/hub-drive/design-contract-checklist.md sha256 2e363f96b0994a6e2f56207d2950b843319075fbda50ebd900adc73570fcad65 -- EXACT mat
 
 ### ✅ lane-scorer-20261016-1430 — Team 5, Naya Clarity Narzan (Retrieval) — 9.0/10 [VERIFIED]
 
