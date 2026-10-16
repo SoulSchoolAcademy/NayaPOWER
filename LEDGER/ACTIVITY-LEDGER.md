@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-16 15:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-16 15:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -18238,6 +18238,12 @@ _Last updated: 2026-10-16 15:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0768-lane2.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
+
+### ✅ lane-scorer-20261016-0821 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** gap-lane-scorer-20261016-0740: close 10-vs-25 gate-window mismatch in claim-brief.py
+
+**Evidence:** Verified on live bytes: all three post-fix sha256 pins match disk exactly (claim-brief.py 3d21f5b4..., stamp-claimability-gate.py 284f3854..., file-gap-brief.py d4036f9d...); GATE_WINDOW_LINES=25 live (claim-brief.py:145) and _WINDOW=25 with parity assertion live (stamp:56); SELFTEST_GATED_LATE fixture present; all four suites GREEN (claim-brief se
 
 ### ✅ lane-scorer-20261016-0740 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
