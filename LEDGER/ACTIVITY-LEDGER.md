@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-16 15:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-16 16:14 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -14845,6 +14845,18 @@ _Last updated: 2026-10-16 15:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified per receipt bytes (run mechanics not re-executed; rotation queued count 23 confirmed live). All 24 queued briefs evaluated in ORDERING order through claim-brief.py with every refusal honored — 17 parent-authorship exit-7, 6 stamped NON-Clarity gates, 1 no-refile verdict; zero hand-claims, rotation untouched. Score 9.5 — a correct skip, not
 
+### ✅ 1442 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** t1442 FLIP #3 PR #2457 opened
+
+**Evidence:** Verified: branch naya/nine-tipred-fix-t1422 @ 92fac098 on origin matches receipt (git ls-remote); PR #2457 head parented on live tip aa8061c1; rung-1/rung-2 gate replays PASS on the live body; body pin block present (merge_head_sha == head, decided_by named). Why not 9.5: CI verdict on #2457 not yet in at receipt time (fresh PR, opened event); Scor
+
+### ✅ 1432 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** t1432 PR #2453 seat-2 scorecard - 2-of-2 bar CLOSED
+
+**Evidence:** Verified: refs/pull/2453/head @ 3dd7837 matches receipt (git ls-remote); 8/8 mjs tests independently reproduced per receipt; rung-1 PASS replay on the live body + pinned head (exit 0); decided_at skew and receipt-pin re-run both adjudicated in writing. Why not 9.5: CI job logs 401-unreadable for worker creds, so classification is conclusion-level +
+
 ### ✅ lane-scorer-20261016-0630 — Team 9, Naya Clarity Narzan (Code Health) — 9.5/10 [VERIFIED]
 
 **Task:** t0556 pin-exact verdict on PR #2683's three red gates (red-quota vs red-substantive classification)
@@ -15292,6 +15304,12 @@ _Last updated: 2026-10-16 15:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0580b-lane9.md
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
+
+### ✅ 1442 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** t1442 #2453 merge seat HOLD + PR #2458 opened
+
+**Evidence:** Verified: branch ref naya/two-compoundscale-fixture-t1432 @ ac270833 matches on origin; calculator HOLD honestly re-verified against live evidence (fresh consensus-gate run 38216442376 FAILURE confirms blockers current, not stale); consensus-gate seat-format root cause named in writing (SEAT_RE predates the 12-lane system - real 9.0 scorecards unre
 
 ### ✅ lane-scorer-20261016-0740 — Team 8, Naya Clarity Narzan (Governance & Safety) — 9.0/10 [VERIFIED]
 
@@ -17871,6 +17889,12 @@ _Last updated: 2026-10-16 15:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
 
+### ✅ 1432 — Team 2, Naya Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** t1432 compound_scale reds DIAGNOSED + FIXED (RED-first)
+
+**Evidence:** Verified: branch naya/two-compoundscale-fixture-t1432 @ ac270833 on origin matches receipt (git ls-remote); 14 receipt fixtures + test file present at that SHA (shallow-fetch spot-check); RED-first diagnosis names the mechanism (machine-local receipt paths) and proves it 66/66 green at repo root AND foreign CWD with empty HOME (exact CI conditions)
+
 ### ✅ lane-scorer-20261016-0540 — Team 2, Naya Clarity Narzan (Learning Pipeline) — 9.5/10 [VERIFIED]
 
 **Task:** Fixed the artifact-clobbering class with run-stamping v2 (parent gap-t0533-lane2)
@@ -18864,6 +18888,18 @@ _Last updated: 2026-10-16 15:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ 1442 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** t1442 FLIP #2 dependency-guard FP fix re-anchored, PR #2456
+
+**Evidence:** Verified: branch naya/ten-testdeps-fp-t1442 @ e326283 on origin matches receipt (git ls-remote); diff exactly one test file, byte-identical to the t1342 authoritative fix head (sha256 04034e9c... per receipt); 4/4 guard tests green per receipt; PR #2456 opened on live tip; one re-anchor, tip-churn respected. Why not 9.5: CI on #2456 not in at recei
+
+### ✅ 1432 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** t1432 brain-index freshness cheap-check on moved tip
+
+**Evidence:** Verified: cheap-check-first on exact tip aa8061c1 (re-pinned start AND end of tick); regenerate_brain_index.py --check exit 0 (1257 files) on live bytes; sign-in/out posted. Why not 9.5: verification-only tick - the structural prevention (brain-index-freshness gate #2385 STILL absent at tip, recurrence #16 possible) is not lane-owned (needs Shawn's
 
 ### ✅ lane-scorer-20261016-0400 — Team 10, Naya Clarity Narzan (Lane 10 Librarian) (Brain Index) — 9.3/10 [VERIFIED]
 
