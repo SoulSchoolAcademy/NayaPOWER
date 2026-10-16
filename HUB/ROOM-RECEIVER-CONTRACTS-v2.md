@@ -44,7 +44,7 @@ Rooms 1–5 (Smart Feed, Today, Reports, Smart Ledger, Activity Feed) are covere
 **Shawn's word, 2026-10-16 ~00:25 PDT:** Smart Mail is the communication system *inside* NayaNET — mail anyone by their alias, mail the spaces. It is not email and never touches external mail. (Correction: the earlier "mail line" hold was premised on external email — wrong premise. The internal system has his word: build it.)
 **Audited:** `mail-3.html` (188 KB). Keys: `naya.smartmail.sent`, `naya.mail.compose.request`, `naya.people.registry`. 0 network. No bridge seam.
 **Receives:** `mail-thread` — `{id, subject, preview, from_alias, to_alias|space_ref, received_at, thread_ref}`; `mail-message` — `{id, thread_id, from_alias, body, sent_at}`.
-**Sender (one writer):** the messaging service (to build) — alias registry + space channels. Tables: new `smart_mail_threads`, `smart_mail_messages` (to create).
+**Sender (one writer):** the messaging service (to build) — alias registry + space channels. Tables: `smart_mail_aliases` (10 seeded from the page's own registry), `smart_mail_threads`, `smart_mail_messages` — **CREATED 2026-10-16, all three on the realtime publication, send/receive round-trip proven** (thread `e24d37a6-…`, naya4 → team-naya). RLS currently off — per-alias policies are a follow-up for the bridge team, not blocking.
 **Returns:** compose → send → row insert → realtime → the recipient's Smart Mail lights up. The compose box stops being a draft pad and becomes a sender.
 **Addressing:** aliases resolve via the people registry and the space registry (`naya.people.registry` is the local seed).
 **Honest states:** "no messages yet," offline outbox ("1 message waiting to send"), unknown alias ("no one on NayaNET goes by that alias").
