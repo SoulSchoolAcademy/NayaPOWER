@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
-"""Hub feeds emitter — tick t0479 (Lane 4, Mason/ACT build item #4).
+"""Hub feeds emitter — tick t0479 (Lane 4, Mason/ACT build item #4),
+extended 2026-10-16 (Naya Clarity Narzan, builder seat — Smart Feed sender,
+build request 6219405538).
 
 Reads the live Supabase tables through the sb-api Management path (read-only SQL)
-and writes room-feed/v1 JSON envelopes for the first three hub rooms:
-today, lists, spaces.
+and writes room-feed/v1 JSON envelopes for the hub rooms:
+today, lists, spaces, feed (smart-feed.json).
 
 SECURITY — SERVER-SIDE ONLY:
   This emitter talks to Supabase through the Management API, which BYPASSES
@@ -20,7 +22,11 @@ Source tables (row counts re-derived at emission time):
 Privacy: this job emits METADATA-LEVEL items only (ids, titles, topics,
 short summaries). Full block content bodies are NOT emitted; all
 nayanet_intelligent_blocks rows are owner_scope=PRIVATE, and full public
-publication of PRIVATE-scope content awaits Shawn's word.
+publication of PRIVATE-scope content awaits Shawn's word. The smart-feed
+emitter additionally excludes PRIVATE rows at the SQL level
+(WHERE owner_scope != 'PRIVATE' — D4 doctrine, fail-closed): with the
+current corpus the feed is therefore empty-but-valid by design, and it
+will populate automatically if non-PRIVATE rows ever exist.
 
 IDEMPOTENCY: a feed file is rewritten only when its *content* changed.
 `emitted_at` records the last content change, not the last run, so an
@@ -28,7 +34,7 @@ unchanged re-emission is a byte-level no-op and the scheduled workflow's
 diff guard commits nothing.
 
 Usage:
-  python3 emit_hub_feeds.py            # writes today.json lists.json spaces.json
+  python3 emit_hub_feeds.py            # writes today.json lists.json spaces.json smart-feed.json
 Output dir: the directory containing this script (HUB/FEEDS/).
 Env (optional): SB_API — path to the sb-api Management helper (default below);
                 SB_PYTHONPATH — PYTHONPATH to use for the helper (default below).
@@ -176,6 +182,58 @@ def emit_spaces():
     return items, total
 
 
+# Voice-layer keys for the Smart Feed card, in display order. Confirmed
+# against live rows 2026-10-16: content currently carries only
+# topic/lesson/category — no voice keys exist yet, so layers[] is empty
+# until non-PRIVATE rows with voice fields appear. Absent voices are
+# omitted; never fabricated.
+VOICE_LAYERS = [
+    ("human_note", "HUMAN NOTE"),
+    ("child_note", "CHILD NOTE"),
+    ("grandma_note", "GRANDMA NOTE"),
+    ("naya_note", "NAYA NOTE"),
+    ("machine_note", "MACHINE NOTE"),
+]
+
+
+def emit_smart_feed():
+    """Smart Feed sender leg (Goal #1) — the missing sender for the live
+    Smart Feed card. Emits one room-feed/v1 envelope with room "feed".
+
+    Privacy (D4 doctrine, already decided — not revisited here):
+    WHERE owner_scope != 'PRIVATE' — collective/consented rows only. The !=
+    form is NULL-safe in the excluding direction (fail-closed: a NULL
+    owner_scope row is excluded, never emitted).
+    """
+    rows = q(
+        "SELECT intelligent_block_id, title, content->>'topic' AS topic, "
+        "content, created_at, updated_at "
+        "FROM nayanet_intelligent_blocks "
+        "WHERE owner_scope != 'PRIVATE' "
+        "ORDER BY updated_at DESC NULLS LAST LIMIT 20"
+    )
+    items = []
+    for r in rows:
+        content = r.get("content") or {}
+        if not isinstance(content, dict):
+            content = {}
+        layers = []
+        for key, name in VOICE_LAYERS:
+            body = content.get(key)
+            if body:
+                layers.append({"name": name, "key": key, "body": body})
+        items.append({
+            "id": f"note-{r['intelligent_block_id']}",
+            "title": r["title"] or "(untitled block)",
+            "topics": [r["topic"] or "GENERAL"],
+            "kind": "note",
+            "created_at": r.get("created_at"),
+            "updated_at": r.get("updated_at"),
+            "layers": layers,
+        })
+    return items, len(rows)
+
+
 def envelope(room, items):
     return {
         "contract": CONTRACT,
@@ -189,7 +247,10 @@ def envelope(room, items):
 def validate(room, data):
     assert data["contract"] == CONTRACT, "contract field"
     assert data["room"] == room, "room match"
-    assert isinstance(data["items"], list) and data["items"], "non-empty items"
+    # D4: empty-but-valid output is acceptable — items must be a list, but
+    # may be legitimately empty (e.g. the smart feed when every row is
+    # PRIVATE). Per-item checks below are vacuous on an empty list.
+    assert isinstance(data["items"], list), "items must be a list"
     for it in data["items"]:
         for f in ("id", "title", "topics", "kind"):
             assert f in it and it[f], f"item missing {f}: {it.get('id')}"
@@ -226,21 +287,34 @@ def write_if_changed(path, data):
     return True
 
 
+# Room key -> emitted filename. The bridge maps room key "feed" to
+# smart-feed.json (not feed.json): validateEnvelope requires data.room to
+# match the room key, and the filename is the bridge's ROOM_FEED entry.
+ROOM_FILES = {
+    "today": "today.json",
+    "lists": "lists.json",
+    "spaces": "spaces.json",
+    "feed": "smart-feed.json",
+}
+
+
 def main():
     outdir = os.path.dirname(os.path.abspath(__file__))
     counts = {}
     today, counts["today_rows"] = emit_today()
     lists, counts["lists_rows"] = emit_lists()
     spaces, counts["spaces_rows"] = emit_spaces()
+    feed, counts["feed_rows"] = emit_smart_feed()
     changed = 0
-    for room, items in (("today", today), ("lists", lists), ("spaces", spaces)):
+    for room, items in (("today", today), ("lists", lists),
+                        ("spaces", spaces), ("feed", feed)):
         data = envelope(room, items)
         size = validate(room, data)
-        path = os.path.join(outdir, f"{room}.json")
+        path = os.path.join(outdir, ROOM_FILES[room])
         if write_if_changed(path, data):
             changed += 1
-            print(f"{room}.json: {len(items)} items, {size} bytes, {path}")
-    print(f"feeds changed: {changed}/3")
+            print(f"{ROOM_FILES[room]}: {len(items)} items, {size} bytes, {path}")
+    print(f"feeds changed: {changed}/4")
     print("row counts read:", counts)
 
 
