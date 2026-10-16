@@ -192,3 +192,45 @@ def test_claim_gate_api_get_500_stays_gate_blind():
         except GateBlind:
             return
         raise AssertionError("expected GateBlind, got a return")
+
+
+# --- _download_bytes hop-1: Lambda w261 IV miss --------------------------------
+# Hop-1 (the API call before the 302) could 403 on quota and the raw HTTPError
+# escaped the classifier entirely. It must become QuotaExhausted; any other
+# refusal keeps its pre-existing shape (raw HTTPError). Note: the issuance
+# site catches RuntimeError, and QuotaExhausted subclasses it, so that site
+# stays fail-closed by the documented contract -- the fix is the
+# classification, not a rewire.
+
+
+def _hop1_opener(exc):
+    opener = mock.Mock()
+    opener.open.side_effect = exc
+    return mock.patch("urllib.request.build_opener", return_value=opener)
+
+
+def test_download_bytes_hop1_quota_403_raises_quota_exhausted():
+    from activation_gate import _download_bytes
+    body = b'{"message":"API rate limit exceeded for installation ID 12345."}'
+    with _hop1_opener(fake_403(body, 45)):
+        try:
+            _download_bytes("https://api.github.com/x", "tok")
+        except QuotaExhausted as e:
+            assert e.retry_after == 45
+            assert "installation ID 12345" in str(e)
+            assert isinstance(e, RuntimeError)  # fail-closed sites keep catching it
+            return
+        raise AssertionError("expected QuotaExhausted, got a return")
+
+
+def test_download_bytes_hop1_permission_403_stays_raw_http_error():
+    from activation_gate import _download_bytes
+    body = b'{"message":"Resource not accessible by personal access token."}'
+    with _hop1_opener(fake_403(body)):
+        try:
+            _download_bytes("https://api.github.com/x", "tok")
+        except urllib.error.HTTPError as e:
+            assert e.code == 403
+            assert not isinstance(e, QuotaExhausted)
+            return
+        raise AssertionError("expected raw HTTPError, got a return")

@@ -527,6 +527,13 @@ def _download_bytes(url, token):
         opener.open(req, timeout=30)
     except Redirected as r:
         loc = r.location
+    except urllib.error.HTTPError as e:
+        # Hop-1 refused: a quota 403 becomes QuotaExhausted (INCONCLUSIVE/RETRY),
+        # never a raw HTTPError escaping the classifier (Lambda w261 IV miss).
+        body = read_error_body(e)
+        if e.code == 403 and classify_403_body(body) == "quota":
+            raise QuotaExhausted.for_http_error("artifact download hop-1", e, body)
+        raise
     else:
         raise RuntimeError("artifact download did not redirect — refusing")
     req2 = urllib.request.Request(loc)
