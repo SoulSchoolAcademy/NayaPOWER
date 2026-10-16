@@ -14,7 +14,7 @@ These are the newest generation. Everything below is superseded.
 | Spectrum: PDF/N4 12-step purple-led vs N5 5-step magenta-led | **N5 wins** | Newest. Law order: magenta → purple → blue → green → gold. |
 | Type scale: 24/18/14 shorthand vs Law 52 full scale | **Law 52 wins** | Newest and complete. 24/18/14 survives as the mnemonic; Law 52 (Display 32–40 / Headline 22–28 / Body 15–17 / Detail 12–13 / Kicker 11) governs. |
 | Buttons: 4 showcase systems vs `.naya-btn` | **`.naya-btn` wins** | Law 21: one canonical button. Full variant/state/action spec. See retirements below. |
-| Serif voice: N4 Cormorant → N5 Georgia → Naya_2 Newsreader | **Newsreader wins** | Newest. Georgia is the safe fallback. [VERIFY webfont hosting] |
+| Serif voice: N4 Cormorant → N5 Georgia → Naya_2 Newsreader | **Newsreader wins** | Newest. Georgia is the safe fallback. |
 | Motion ease: PDF `cubic-bezier(.16,.84,.22,1)` vs N5 `cubic-bezier(.22,1,.36,1)` | **N5 wins** | Newest. Minor difference; N5 is pinned in TOKENS.css. |
 
 ## Retired systems — considered and retired

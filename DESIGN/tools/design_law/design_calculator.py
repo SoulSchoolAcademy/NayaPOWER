@@ -65,8 +65,23 @@ def check_no_private_colors(text, contract):
 
 def check_type_floor(text, contract):
     floor = contract["predicates"]["detail_never_below_px"]
-    sizes = extract_font_sizes(text)
-    return sorted(s for s in sizes if s < floor)
+    # Law 52: 11px kickers (uppercase, tracked) are legal — exempt sizes tied
+    # to kicker/eyebrow/tagline-classed elements, via stylesheet or inline style.
+    kicker_sizes = []
+    for style in re.findall(r"<style[^>]*>(.*?)</style>", text, re.I | re.S):
+        for m in re.finditer(r"([^{}]+)\{([^}]*)\}", style):
+            if re.search(r"kicker|eyebrow|tagline", m.group(1), re.I):
+                kicker_sizes += [float(s) for s in re.findall(r"font-size:\s*([0-9.]+)px", m.group(2))]
+    for m in re.finditer(r'<[^>]*class="[^"]*(?:kicker|eyebrow|tagline)[^"]*"[^>]*style="[^"]*font-size:\s*([0-9.]+)px', text, re.I):
+        kicker_sizes.append(float(m.group(1)))
+    small = []
+    for s in extract_font_sizes(text):
+        if s < floor:
+            if s in kicker_sizes:
+                kicker_sizes.remove(s)  # consume one exempt occurrence
+            else:
+                small.append(s)
+    return sorted(small)
 
 
 def check_kicker_words(text, contract):

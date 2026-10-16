@@ -11,7 +11,7 @@ A block without all four is a draft.
 border, inset top-light + inset bottom-shadow + drop shadow. Hover lifts with
 a flowing conic ring; press compresses. No flat buttons — ever.
 
-**The six variants — the variant for each job:**
+**The seven variants — the variant for each job:**
 
 | Variant | The job |
 |---|---|
@@ -21,6 +21,7 @@ a flowing conic ring; press compresses. No flat buttons — ever.
 | `.naya-btn.proximity` | Cursor-tracking spotlight; wakes before touch. Living controls. |
 | `.naya-btn.icon` | Glyph-only actions. 58px circle (`.micro`: 44px). |
 | `.naya-btn.icon.portal` | PLAY. 66px media-play circle. Play is always a portal. |
+| `.naya-btn--quiet` | Low-emphasis action. Same DNA, minimal chrome — speaks softly. |
 
 Sizes: `.small` (44px), `.compact` (42px). States: rest · hover/focus ·
 active · disabled — all five, every variant.
@@ -60,6 +61,8 @@ Three systems (N5, copy-paste ready):
 | `.board-mix` | Theme-edged destination: glowing spine, corner jewel (◆), theme border. A world you enter. |
 | `.board-tone` | Tone spine + radial tone wash, hover border-light. Quieter destinations. |
 | `.layer` | Nested meaning cards inside boards — "In a nutshell" → "What it means" → "How to use it". |
+
+CSS → canonical type: `.board-mix` = **Destination** · `.board-tone` = **Reading** · `.layer` = **Orbit** (nested meaning-layers).
 
 Board recipe (Law 31): dark obsidian body · theme-tinted hairline edge ·
 radial wash in the cover zone only · white title · silver body · jewel kicker.

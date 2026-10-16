@@ -12,10 +12,11 @@ Verbatim from the N5 generation (newest). These are not suggestions.
    identifies. Adjacent things never share a hue.
 4. **White light at rest, own color on touch.** Visible 1.5px+ rims idle.
    Ignition belongs to the thing being touched.
-5. **Black heart, white voice, visible skin.** #050505 center, white text and
+5. **Black heart, white voice, visible skin.** #050507 center, white text and
    icon, real rim. The glyph is a promise.
 6. **Size separates, color doesn't.** 24 / 18 / 14. Nothing else. White 99%
-   of the time. Headers get a voice.
+   of the time. Headers get a voice. (Resolution: Law 52 governs — 24/18/14 is
+   the mnemonic. See DECISIONS.md.)
 7. **Icons are drawn, not shrunk.** Vector geometry, readable at 16px. A
    shrunken render is mud.
 8. **Verify before claiming.** Read the file. Count the matches. Watch it
