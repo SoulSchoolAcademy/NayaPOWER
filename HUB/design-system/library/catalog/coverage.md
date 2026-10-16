@@ -1,6 +1,6 @@
 # Block Catalog — Coverage Report (t0907)
 
-**457 canonical blocks** · model numbers `NAYA-<CAT>-<NNN>` · 19 of 49 interface-inventory items HAVE · **30 GAPs = the build list for the next wave**
+**459 canonical blocks** · model numbers `NAYA-<CAT>-<NNN>` · 18 of 49 interface-inventory items HAVE · **31 GAPs = the build list for the next wave**
 
 Source: `block-catalog.json` (this folder). Models referenced below are checkable there.
 
@@ -15,14 +15,14 @@ Source: `block-catalog.json` (this folder). Models referenced below are checkabl
 | 5 | danger button | ✅ HAVE | NAYA-CRD-084 ("The irreversible action · Danger", red edge fire) |
 | 6 | icon buttons | ✅ HAVE | NAYA-BTN-031..035 ("06 · Icon Buttons — .icon-btn") |
 | 7 | cards | ✅ HAVE | 114 CRD records: NAYA-CRD-002/003/004 (board shell, door card, intel board), NAYA-CRD-091 (content card) |
-| 8 | badges | ✅ HAVE | NAYA-JWL-080 (VERIFIED jewel — status badge; jewel form, not a text-label badge) |
+| 8 | badges | ❌ GAP | No text-label badge in the mined sources — NAYA-JWL-080 is a status jewel (orb glyph: `<span class="orb orb--sm">`), not a text/number pill badge. gap-t0907 downgraded: the jewel form does not carry badge anatomy. Build: text-label pill badge block |
 | 9 | avatars | ❌ GAP | App icons exist; no user-avatar block. Build: avatar with presence states |
 | 10 | input | ✅ HAVE | NAYA-CRD-085 (INPUT/FORM specimen — labeled input with recessed well) |
 | 11 | textarea | ❌ GAP | Build: multiline variant of the input block |
 | 12 | select | ❌ GAP | Build: dropdown select block |
 | 13 | checkbox | ✅ HAVE | NAYA-FRM-001..006 (Pre-ship checklist checkbox rows) |
 | 14 | radio | ❌ GAP | Build: radio group block |
-| 15 | toggle | ✅ HAVE | NAYA-CRD-090 (TOGGLE/SETTINGS specimen) |
+| 15 | toggle | ✅ HAVE | NAYA-FRM-007 (gap-t0907 promotion: toggle pairs in the production settings-row block; specimen was NAYA-CRD-090) |
 | 16 | slider | ❌ GAP | Build: range slider block |
 | 17 | search bar | ✅ HAVE | NAYA-CRD-089 (SEARCH INTERFACE specimen) |
 | 18 | tabs | ❌ GAP | Build: tab bar block |
@@ -39,7 +39,7 @@ Source: `block-catalog.json` (this folder). Models referenced below are checkabl
 | 29 | chat bubble | ❌ GAP | Build: chat message bubble block |
 | 30 | gallery grid | ❌ GAP | Build: image grid block |
 | 31 | lightbox | ❌ GAP | Build: media overlay block |
-| 32 | audio player | ✅ HAVE | NAYA-CRD-092 (MEDIA PLAYER — voice-audio specimen) |
+| 32 | audio player | ✅ HAVE | NAYA-MED-001 (gap-t0907 promotion: standalone production media-player block; specimen was NAYA-CRD-092) |
 | 33 | video player | ❌ GAP | Build: video player block |
 | 34 | progress bar | ❌ GAP | Build: progress indicator block |
 | 35 | spinner | ❌ GAP | Build: loading spinner block |
@@ -58,13 +58,13 @@ Source: `block-catalog.json` (this folder). Models referenced below are checkabl
 | 48 | CTA band | ❌ GAP | CTA *button* exists (NAYA-BTN-158 "✦ ENTER THE STANDARD"); no full-width band section. Build: CTA band section |
 | 49 | login form | ❌ GAP | Build: login form block |
 | 50 | signup form | ❌ GAP | Build: signup form block |
-| 51 | settings row | ✅ HAVE | NAYA-CRD-090 (TOGGLE/SETTINGS pairs label + state — the settings-row pattern) |
+| 51 | settings row | ✅ HAVE | NAYA-FRM-007 (gap-t0907 promotion: production settings-row block, specimen wrappers trimmed; specimen was NAYA-CRD-090) |
 
-Note: items 10, 15–17, 20, 21, 25, 32, 44 rest on the "missing ten" **anatomy specimens** (do/don't cards demonstrating the block). They are the design reference for building production versions — marked HAVE as designed, and the next wave should promote them to tested blocks.
+Note: items 10, 17, 20, 21, 25, 44 rest on the "missing ten" **anatomy specimens** (do/don't cards demonstrating the block). They are the design reference for building production versions — marked HAVE as designed, and the next wave should promote them to tested blocks. gap-t0907 closed the other three generous HAVEs: items 15, 32, 51 now rest on production blocks (NAYA-FRM-007, NAYA-MED-001); item 8 (badges) was re-verified against the sources and found unsupported — downgraded to GAP with justification.
 
-## The GAP build list (30, next wave)
+## The GAP build list (31, next wave)
 
-hero, avatars, textarea, select, radio, slider, tabs, accordion, tooltip, dropdown menu, pagination, comment, chat bubble, gallery grid, lightbox, video player, progress bar, spinner, skeleton loader, empty state, error state, 404, breadcrumbs, footer, sidebar, stat card, timeline, pricing card, testimonial, CTA band, login form, signup form
+hero, text-label badge, avatars, textarea, select, radio, slider, tabs, accordion, tooltip, dropdown menu, pagination, comment, chat bubble, gallery grid, lightbox, video player, progress bar, spinner, skeleton loader, empty state, error state, 404, breadcrumbs, footer, sidebar, stat card, timeline, pricing card, testimonial, CTA band, login form, signup form
 
 ## Exclusions from the catalog (justified)
 

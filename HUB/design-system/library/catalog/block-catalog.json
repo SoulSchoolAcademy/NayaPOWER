@@ -6483,7 +6483,7 @@
     "source_file": "Naya_Lego_Blocks_N4.html"
    }
   ],
-  "notes": "t0907: merged 2 byte-identical dups (elemset-056,lego4-050) | | byte-identical to half-A elemset-056 | | duplicate of showcase1-050 (Color has jobs. Never cross them.)"
+  "notes": "t0907: merged 2 byte-identical dups (elemset-056,lego4-050) | | duplicate of showcase1-050 (Color has jobs. Never cross them.) | | byte-identical to half-A elemset-056"
  },
  {
   "model": "NAYA-CRD-017",
@@ -6927,7 +6927,7 @@
     "source_file": "Naya_Design_Standard_Showcase__1.html"
    }
   ],
-  "notes": "t0907: merged 2 byte-identical dups (lego4-036,showcase1-036) | button state card (contains state buttons) \u2014 | button state card \u2014 | byte-identical to half-A showcase1-036"
+  "notes": "t0907: merged 2 byte-identical dups (lego4-036,showcase1-036) | button state card \u2014 | byte-identical to half-A showcase1-036 | button state card (contains state buttons) \u2014"
  },
  {
   "model": "NAYA-CRD-030",
@@ -7606,7 +7606,7 @@
     "source_file": "Naya_Design_Standard_Showcase__1.html"
    }
   ],
-  "notes": "t0907: merged 2 byte-identical dups (lego4-038,showcase1-038) | button state card \u2014 | byte-identical to half-A showcase1-038 | button state card (contains state buttons) \u2014"
+  "notes": "t0907: merged 2 byte-identical dups (lego4-038,showcase1-038) | button state card (contains state buttons) \u2014 | button state card \u2014 | byte-identical to half-A showcase1-038"
  },
  {
   "model": "NAYA-CRD-050",
@@ -10002,6 +10002,34 @@
    }
   ],
   "notes": "t0907: near-dup variant of 6 (same demo+classes, distinct html) | check glyph \u2014 | t0907: UNCAT->FRM (checkbox row, checklist control)"
+ },
+ {
+  "model": "NAYA-FRM-007",
+  "name": "Toggle / settings row \u2014 production block",
+  "category": "FRM",
+  "tags": [
+   "dashboard",
+   "feed",
+   "settings"
+  ],
+  "use_cases": [
+   "dashboard",
+   "feed",
+   "form",
+   "settings"
+  ],
+  "html": "<div class=\"setting-row\"><div><strong>Living motion</strong><small>Respect system preference</small></div><button class=\"naya-toggle\" role=\"switch\" aria-checked=\"true\" aria-label=\"Living motion\"><span></span></button></div><div class=\"setting-row\"><div><strong>Private by default</strong><small>Protection is explicit</small></div><button class=\"naya-toggle\" role=\"switch\" aria-checked=\"false\" aria-label=\"Private by default\"><span></span></button></div>",
+  "css_classes": [
+   "naya-toggle",
+   "setting-row"
+  ],
+  "sources": [
+   {
+    "temp_id": "promote-001",
+    "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html"
+   }
+  ],
+  "notes": "gap-t0907: promoted from specimen NAYA-CRD-090 (temp uds-140) \u2014 specimen wrappers (block-card/block-kicker/block-law) trimmed; production markup is byte-identical to the specimen's source inner"
  },
  {
   "model": "NAYA-JWL-001",
@@ -14294,6 +14322,38 @@
    }
   ],
   "notes": "t0907: near-dup variant of 9 (same demo+classes, distinct html) | scorecard row \u2014"
+ },
+ {
+  "model": "NAYA-MED-001",
+  "name": "Media player \u2014 production block",
+  "category": "MED",
+  "tags": [
+   "dashboard",
+   "feed",
+   "player"
+  ],
+  "use_cases": [
+   "dashboard",
+   "feed",
+   "player"
+  ],
+  "html": "<div class=\"media-player\"><button class=\"naya-btn icon portal\" aria-label=\"Play specimen\"><svg class=\"icon\"><use href=\"#i-play\"/></svg></button><div class=\"media-copy\"><strong>Intelligence in Naya\u2019s voice</strong><small>00:00 \u00b7 specimen</small><div class=\"timeline\"><span></span></div></div><button class=\"naya-btn icon micro\" aria-label=\"Download\"><svg class=\"icon\"><use href=\"#i-download\"/></svg></button></div>",
+  "css_classes": [
+   "icon",
+   "media-copy",
+   "media-player",
+   "micro",
+   "naya-btn",
+   "portal",
+   "timeline"
+  ],
+  "sources": [
+   {
+    "temp_id": "promote-002",
+    "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html"
+   }
+  ],
+  "notes": "gap-t0907: promoted from specimen NAYA-CRD-092 (temp uds-142) \u2014 specimen wrappers trimmed; source bytes preserved (use href self-close, specimen '00:00' copy)"
  },
  {
   "model": "NAYA-NAV-001",
