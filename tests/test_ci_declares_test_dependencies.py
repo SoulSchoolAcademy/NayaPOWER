@@ -175,6 +175,57 @@ def _path_constants(tree, path):
     return consts
 
 
+def _function_local_path_constants(func_node, module_consts, file_path):
+    """Simple NAME = <path-expr> assigns in one function body's top statements.
+
+    Gap follow-up on the t1342 scanner fix (Fix 2): the t1342 resolver harvested
+    only module-level constants, so a function-local
+    `tools_dir = str(ROOT / "tools"); sys.path.insert(0, tools_dir)` silently
+    failed to resolve. This harvests the same simple form one scope down.
+    Only the function's own top-level statements are read — nested scopes
+    (inner functions, classes) stay unmodeled and are caught loudly by
+    test_all_suite_sys_path_sites_are_statically_resolvable. Single pass,
+    ordered: a name that also exists at module level keeps the module value.
+    """
+    consts = {}
+    for stmt in func_node.body:
+        if not (isinstance(stmt, ast.Assign) and len(stmt.targets) == 1
+                and isinstance(stmt.targets[0], ast.Name)):
+            continue
+        name = stmt.targets[0].id
+        if name in consts or name in module_consts:
+            continue
+        val = _resolve_path_expr(
+            stmt.value, {**module_consts, **consts, "__file__": file_path})
+        if isinstance(val, Path):
+            consts[name] = val
+    return consts
+
+
+def _walk_sys_path_sites(tree, module_consts, file_path):
+    """Yield (sys.path.insert/append call node, merged const table) pairs.
+
+    Single enumeration shared by the scanner and the completeness tripwire so
+    they can never disagree on what the suite's sys.path sites are. Merging
+    order: module-level constants, then the enclosing function's locals, then
+    __file__ — so a call-site argument can reference any of them directly.
+    """
+    sites = []
+
+    def visit(node, func_consts):
+        if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
+            func_consts = _function_local_path_constants(
+                node, module_consts, file_path)
+        if _is_sys_path_call(node):
+            sites.append((node, {**module_consts, **func_consts,
+                                 "__file__": file_path}))
+        for child in ast.iter_child_nodes(node):
+            visit(child, func_consts)
+
+    visit(tree, {})
+    return sites
+
+
 def _is_sys_path_call(node) -> bool:
     """True for `sys.path.insert(0, X)` / `sys.path.append(X)` call nodes."""
     if not isinstance(node, ast.Call) or not node.args:
@@ -207,13 +258,19 @@ def _suite_sys_path_roots() -> set:
             tree = ast.parse(path.read_text(encoding="utf-8"))
         except SyntaxError:
             continue
-        consts = _path_constants(tree, path)
-        for node in ast.walk(tree):
-            if not _is_sys_path_call(node):
-                continue
+        module_consts = _path_constants(tree, path)
+        for node, consts in _walk_sys_path_sites(tree, module_consts, path):
+            # Gap follow-up Fix 1: __file__ must be visible at call-site
+            # resolution, not just during constant harvesting — 22 of the
+            # suite's 51 in-repo sites reference __file__ directly in the
+            # insert argument and silently failed to resolve before this.
             resolved = _resolve_path_expr(node.args[-1], consts)
             if resolved is None:
                 continue
+            # Lexical normalization only (no filesystem touch): join-forms like
+            # os.path.join(dirname(__file__), "..", "tools") otherwise register
+            # as a distinct "tests/../tools" root alongside "tools".
+            resolved = Path(os.path.normpath(resolved))
             try:
                 resolved.relative_to(REPO)
             except ValueError:
@@ -340,6 +397,85 @@ def test_sys_path_roots_are_detected_first_party():
     # and the negative direction still bites: not everything is first-party
     assert "totally-not-a-real-dependency" not in first_party
     assert "requests" not in first_party
+
+
+def _is_unmodeled_sys_path_mutation(node) -> str | None:
+    """Name the form if this node mutates sys.path outside insert/append."""
+    func = getattr(node, "func", None)
+    if isinstance(node, ast.Call) and isinstance(func, ast.Attribute):
+        target = func.value
+        if (isinstance(target, ast.Attribute) and target.attr == "path"
+                and isinstance(target.value, ast.Name)
+                and target.value.id == "sys"
+                and func.attr not in ("insert", "append")):
+            return f"sys.path.{func.attr}(...)"
+    if isinstance(node, ast.AugAssign) and isinstance(node.target, ast.Attribute):
+        target = node.target
+        if (target.attr == "path" and isinstance(target.value, ast.Name)
+                and target.value.id == "sys"):
+            return "sys.path <augmented assign>"
+    return None
+
+
+def test_all_suite_sys_path_sites_are_statically_resolvable():
+    """Completeness tripwire for the t1342 scanner fix (gap follow-up t1342-lane10).
+
+    The resolver is best-effort by design: an exotic sys.path form (computed or
+    conditional path, env-var path, ...) resolves to None and is SKIPPED
+    SILENTLY — and a skipped in-repo root makes the guard false-positive on the
+    modules imported from it (the exact failure the t1342 fix removed). This
+    test converts every future silent skip into a LOUD red at the exact site.
+
+    Every `sys.path.insert/append` call in tests/*.py must either
+      (a) statically resolve to a directory inside the checkout — it is then
+          first-party and claimed by _suite_sys_path_roots(); or
+      (b) be an absolute-path literal pointing OUTSIDE the checkout — a
+          per-machine fixture (e.g. /tmp/bridge-proto), not ours to claim.
+    Every sys.path mutation that is NOT insert/append (extend, +=, ...) fails
+    loudly: the scanner does not model those forms.
+    """
+    bad_sites = []
+    unmodeled = []
+    for path in sorted(TESTS.glob("*.py")):
+        try:
+            tree = ast.parse(path.read_text(encoding="utf-8"))
+        except SyntaxError:
+            continue
+        module_consts = _path_constants(tree, path)
+        for node, consts in _walk_sys_path_sites(tree, module_consts, path):
+            site = f"{path.name}:{node.lineno}"
+            arg = node.args[-1]
+            resolved = _resolve_path_expr(arg, consts)
+            if resolved is not None:
+                try:
+                    resolved.relative_to(REPO)
+                    continue  # (a) in-repo: claimed first-party
+                except ValueError:
+                    pass
+            if (isinstance(arg, ast.Constant) and isinstance(arg.value, str)
+                    and Path(arg.value).is_absolute()):
+                try:
+                    Path(arg.value).relative_to(REPO)
+                except ValueError:
+                    continue  # (b) out-of-repo absolute fixture literal
+            bad_sites.append((site, ast.unparse(arg)))
+        for node in ast.walk(tree):
+            form = _is_unmodeled_sys_path_mutation(node)
+            if form is not None:
+                unmodeled.append((f"{path.name}:{node.lineno}", form))
+    assert not unmodeled, (
+        "sys.path mutation forms the scanner does not model: "
+        + ", ".join(f"{s} {f}" for s, f in unmodeled)
+        + ". Extend the scanner or rewrite the site as sys.path.insert/append."
+    )
+    assert not bad_sites, (
+        "sys.path sites the scanner cannot statically resolve (silent-skip "
+        "risk — these would false-positive if they point at in-repo dirs): "
+        + ", ".join(f"{s}: {a}" for s, a in bad_sites)
+        + ". Make the path statically resolvable (module/function-level "
+        "constant, __file__-relative, os.path.join, Path / ..., .resolve(), "
+        ".parent, .parents[N]) or move the fixture outside the checkout."
+    )
 
 
 def test_guard_detects_an_undeclared_dependency():
