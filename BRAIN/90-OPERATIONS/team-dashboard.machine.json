@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-16T06:15:57+00:00",
+ "generated_utc": "2026-10-16T07:16:05+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -279,16 +279,16 @@
    "board_lane": "#2175 lane PROVE",
    "open_prs": [
     {
+     "number": 2699,
+     "title": "feat(verify): manual-29 STEP-0 insertion \u2014 seal reissue_policy / who-may-amend",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2699",
+     "draft": false
+    },
+    {
      "number": 2694,
      "title": "fix(gate): consensus scorecard leg enforces the merge law's 9.5 bar",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2694",
      "draft": true
-    },
-    {
-     "number": 2675,
-     "title": "INFRA: --self-test-scorecard CLI pre-check for merge-consensus gate",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2675",
-     "draft": false
     },
     {
      "number": 2590,
@@ -465,7 +465,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 123
+   "open_pr_count": 122
   },
   {
    "id": "team",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 593,
+ "open_pr_total": 592,
  "unassigned_prs": 224
 }

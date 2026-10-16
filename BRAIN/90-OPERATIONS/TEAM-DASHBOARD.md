@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-16 06:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-16 07:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 593 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 592 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -80,8 +80,8 @@
 - …and 3 more
 
 ### PROVE (29)
+- [#2699](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2699) feat(verify): manual-29 STEP-0 insertion — seal reissue_policy / who-m
 - [#2694](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2694) fix(gate): consensus scorecard leg enforces the merge law's 9.5 bar 📝draft
-- [#2675](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2675) INFRA: --self-test-scorecard CLI pre-check for merge-consensus gate
 - [#2590](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2590) One NayaPOWER operating manual: AAA three-pass scorecards, roles, auth 📝draft
 - [#2585](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2585) Add automatic scorecard calculator (tools/scorecard.py + tests)
 - [#2543](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2543) [NAYA NARZAN] Cold-retrieve: red-first relevance-floor calibration bat
@@ -95,13 +95,13 @@
 - [#2686](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2686) System Schematics — the staple doc (peer-reviewed)
 - …and 219 more
 
-### WIRE (123)
+### WIRE (122)
 - [#2697](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2697) HTTP-DETAIL: log truncated HTTP error bodies in ci_claim_evidence_gate
 - [#2696](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2696) fix(gate): fail-closed FUTURE rung on receipt-pin decided_at (Judge wa
 - [#2692](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2692) [DOCK] gate-403-response-body: byte-capture the next gate 403
 - [#2690](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2690) Gate reliability: transient API failures → UNKNOWN (exit 2), never wro
 - [#2681](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2681) Teach fail-closed gates quota-vs-permission 403 (INCONCLUSIVE/RETRY)
-- …and 118 more
+- …and 117 more
 
 ### TEAM (12)
 - [#2618](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2618) [DRAFT] Advisory post-conformance scan for the Team Feed Standard 📝draft
