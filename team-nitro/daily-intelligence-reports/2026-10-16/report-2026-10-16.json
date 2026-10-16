@@ -1,0 +1,147 @@
+{
+  "report_id": "DIR-NAYAPOWER-2026-10-16",
+  "ib_id": "IB-DIR-NAYAPOWER-20261016-001",
+  "period_type": "DAILY",
+  "period_date": "2026-10-16",
+  "scope": "NayaPOWER / System Intelligence",
+  "status": "CANONICAL DAILY REPORT SNAPSHOT",
+  "generated_at": "2026-10-16T23:54:35Z",
+  "built_by": "Naya Nitro Pi (Team Nitro, KNOW seat — playing BUILD per the Chameleon Rule)",
+  "md_path": "report-2026-10-16.md",
+  "sources": [
+    {
+      "id": "hackernews",
+      "name": "Hacker News",
+      "feed": "https://news.ycombinator.com/rss",
+      "reachable": true,
+      "fetched_at": "2026-10-16T23:54:32Z",
+      "items_returned": 30,
+      "items_included": 5
+    },
+    {
+      "id": "arxiv_cs_ai",
+      "name": "arXiv cs.AI",
+      "feed": "https://arxiv.org/rss/cs.AI",
+      "reachable": true,
+      "fetched_at": "2026-10-16T23:54:34Z",
+      "items_returned": 30,
+      "items_included": 5
+    },
+    {
+      "id": "lobsters",
+      "name": "Lobsters",
+      "feed": "https://lobste.rs/rss",
+      "reachable": true,
+      "fetched_at": "2026-10-16T23:54:35Z",
+      "items_returned": 25,
+      "items_included": 5
+    }
+  ],
+  "items": [
+    {
+      "source": "Hacker News",
+      "source_id": "hackernews",
+      "title": "Tesla Roadster",
+      "url": "https://www.tesla.com/roadster",
+      "published": "Fri, 16 Oct 2026 01:32:45 +0000"
+    },
+    {
+      "source": "Hacker News",
+      "source_id": "hackernews",
+      "title": "Claude reveals ECDSA curve origins",
+      "url": "https://www.anthropic.com/research/ecdsa-curve-origins",
+      "published": "Fri, 16 Oct 2026 18:55:59 +0000"
+    },
+    {
+      "source": "Hacker News",
+      "source_id": "hackernews",
+      "title": "FLUX 3 Image Klein",
+      "url": "https://bfl.ai/blog/flux-3-image-klein",
+      "published": "Fri, 16 Oct 2026 19:47:13 +0000"
+    },
+    {
+      "source": "Hacker News",
+      "source_id": "hackernews",
+      "title": "Llama.cpp on a jailbroken PS5: run any GGUF model natively on the console",
+      "url": "https://github.com/cobanov/PS5LM",
+      "published": "Fri, 16 Oct 2026 18:32:35 +0000"
+    },
+    {
+      "source": "Hacker News",
+      "source_id": "hackernews",
+      "title": "Waymo in Toronto",
+      "url": "https://waymo.com/blog/2026/10/waymo-in-toronto/",
+      "published": "Fri, 16 Oct 2026 14:44:17 +0000"
+    },
+    {
+      "source": "arXiv cs.AI",
+      "source_id": "arxiv_cs_ai",
+      "title": "The World Won't Wait: Evaluating and Teaching Agents Under a Live Clock",
+      "url": "https://arxiv.org/abs/2610.20665",
+      "published": "Fri, 16 Oct 2026 00:00:00 -0400"
+    },
+    {
+      "source": "arXiv cs.AI",
+      "source_id": "arxiv_cs_ai",
+      "title": "Evaluating Model Capabilities After Benchmark Saturation",
+      "url": "https://arxiv.org/abs/2610.20667",
+      "published": "Fri, 16 Oct 2026 00:00:00 -0400"
+    },
+    {
+      "source": "arXiv cs.AI",
+      "source_id": "arxiv_cs_ai",
+      "title": "Value-Informed Schedule Trimming for Accelerated Sequential Monte Carlo Guidance in Discrete Diffusion",
+      "url": "https://arxiv.org/abs/2610.20669",
+      "published": "Fri, 16 Oct 2026 00:00:00 -0400"
+    },
+    {
+      "source": "arXiv cs.AI",
+      "source_id": "arxiv_cs_ai",
+      "title": "AlphaDiana: A Measurement System for Agents in Verifiable Reasoning Tasks",
+      "url": "https://arxiv.org/abs/2610.20675",
+      "published": "Fri, 16 Oct 2026 00:00:00 -0400"
+    },
+    {
+      "source": "arXiv cs.AI",
+      "source_id": "arxiv_cs_ai",
+      "title": "When Correctness Feedback Erases Evidence: Phase-Separated Completeness Auditing in Verus",
+      "url": "https://arxiv.org/abs/2610.20676",
+      "published": "Fri, 16 Oct 2026 00:00:00 -0400"
+    },
+    {
+      "source": "Lobsters",
+      "source_id": "lobsters",
+      "title": "The NIST Elliptic Curves Seeds Bounty Has Been Claimed",
+      "url": "https://words.filippo.io/seeds-solved/",
+      "published": "Fri, 16 Oct 2026 15:18:36 -0500"
+    },
+    {
+      "source": "Lobsters",
+      "source_id": "lobsters",
+      "title": "The road to iroh 1.0",
+      "url": "https://www.iroh.computer/blog/the-road-to-iroh-1-0",
+      "published": "Fri, 16 Oct 2026 07:02:05 -0500"
+    },
+    {
+      "source": "Lobsters",
+      "source_id": "lobsters",
+      "title": "Why are we even doing all this?",
+      "url": "https://terrytao.wordpress.com/2026/10/15/why-are-we-even-doing-all-this/",
+      "published": "Fri, 16 Oct 2026 00:28:29 -0500"
+    },
+    {
+      "source": "Lobsters",
+      "source_id": "lobsters",
+      "title": "The Decoherence Trap: When AI slop drowns out the signal in an endless sea of noise",
+      "url": "https://maevyn.codes/decoherence",
+      "published": "Fri, 16 Oct 2026 11:36:29 -0500"
+    },
+    {
+      "source": "Lobsters",
+      "source_id": "lobsters",
+      "title": "Linus Torvalds on AI-assisted kernel contributions",
+      "url": "https://lore.kernel.org/lkml/CAHk-=whTs09_ozN+e09GU68N1wPP56MUzDjrg9rnKxQUa0A_4Q@mail.gmail.com/",
+      "published": "Thu, 15 Oct 2026 21:50:33 -0500"
+    }
+  ]
+}
