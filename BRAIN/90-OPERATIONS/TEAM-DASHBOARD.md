@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-15 23:16 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-16 00:16 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 576 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 579 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -50,13 +50,13 @@
 
 ## Open PRs by Area
 
-### LEARN (55)
+### LEARN (56)
+- [#2682](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2682) feat(learn): clock-to-ladder bridge - T6 VERIFIED meta row earns E1-E3
 - [#2617](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2617) docs(brain): learning event 2026-10-14
 - [#2613](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2613) wire: learn-clock T6 verify + T7 compound commands (Alpha w189)
 - [#2606](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2606) feat(tools): place learn-clock instrument in tools/ + LEARN_CLOCK_LOG  📝draft
 - [#2594](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2594) Learn: clock-to-ladder bridge — T6 VERIFIED meta row earns E1-E3
-- [#2583](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2583) [DRAFT] Learn-clock graduation stack F-1..F-5 — DRAFT, no merge 📝draft
-- …and 50 more
+- …and 51 more
 
 ### KNOW (22)
 - [#2433](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2433) brain-index: regenerate at basis 31d8cff7 (mechanical re-stamp, --che…
@@ -95,13 +95,13 @@
 - [#2637](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2637) Merge Ops Manual v1.0.0 — the stuck-merge diagnostic engine (three ton
 - …and 213 more
 
-### WIRE (119)
+### WIRE (120)
+- [#2681](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2681) Teach fail-closed gates quota-vs-permission 403 (INCONCLUSIVE/RETRY)
 - [#2676](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2676) Canonical 9-note Smart Note source for the Smart Feed live wire (t0473
 - [#2645](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2645) KNOW gaterepair (w247): doc_completeness_check fail→warning + grep-fla
 - [#2642](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2642) [INTELLIGENT_BLOCKS] Dock gate-reader doc: issue_comment check-run hea
 - [#2636](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2636) docs: name merge-consensus gate legs (a)/(b)/(c) as one-line verifier 
-- [#2635](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2635) Name the backticked-branch-name trap in the receipt-gate fix hint
-- …and 114 more
+- …and 115 more
 
 ### TEAM (12)
 - [#2618](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2618) [DRAFT] Advisory post-conformance scan for the Team Feed Standard 📝draft
@@ -119,13 +119,13 @@
 - [#2570](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2570) fix(ci): rate-limit resilience for Current Truth Resolver evidence col
 - …and 33 more
 
-### PRODUCT (31)
+### PRODUCT (32)
+- [#2680](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2680) t0483: hourly schedule pump for NayaNET Agent Capture
 - [#2679](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2679) Hub runtime: window.NayaPowerRuntime bridge module + green harness — t
 - [#2678](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2678) Hub feeds: first room-feed/v1 emissions (today, lists, spaces) — t0479
 - [#2648](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2648) Add field manual 37: GitHub access (two identities, fresh-machine setu
 - [#2624](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2624) Phase 1 AUDIT: BRAIN/ navigation map + gap list (Naya-Optimized GitHu…
-- [#2535](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2535) Oath of the Naya + Doctrine v1 — who she is, in GitHub, everywhere she
-- …and 26 more
+- …and 27 more
 
 ### MEMORY (6)
 - [#2644](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2644) 0008 Intelligent Block V1 — CONVERGED sender contract (three tongues, 

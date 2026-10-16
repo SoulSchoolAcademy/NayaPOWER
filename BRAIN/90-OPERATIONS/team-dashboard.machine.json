@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-15T23:16:39+00:00",
+ "generated_utc": "2026-10-16T00:17:14+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -32,6 +32,12 @@
    "active_now": false,
    "board_lane": "#2175 lane LEARN",
    "open_prs": [
+    {
+     "number": 2682,
+     "title": "feat(learn): clock-to-ladder bridge - T6 VERIFIED meta row earns E1-E3 (#1713)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2682",
+     "draft": false
+    },
     {
      "number": 2617,
      "title": "docs(brain): learning event 2026-10-14",
@@ -73,15 +79,9 @@
      "title": "feat(learn): live-receipts probe -- convergence chain on real captures",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2569",
      "draft": false
-    },
-    {
-     "number": 2567,
-     "title": "docs(brain): learning event 2026-10-13",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2567",
-     "draft": true
     }
    ],
-   "open_pr_count": 55
+   "open_pr_count": 56
   },
   {
    "id": "know",
@@ -417,6 +417,12 @@
    "board_lane": "#2175 lane WIRE",
    "open_prs": [
     {
+     "number": 2681,
+     "title": "Teach fail-closed gates quota-vs-permission 403 (INCONCLUSIVE/RETRY)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2681",
+     "draft": false
+    },
+    {
      "number": 2676,
      "title": "Canonical 9-note Smart Note source for the Smart Feed live wire (t0473)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2676",
@@ -457,15 +463,9 @@
      "title": "INFRA: capture RATE_LIMIT_RESET in gate HTTP layers (fail-closed)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2630",
      "draft": false
-    },
-    {
-     "number": 2627,
-     "title": "Fix completeness_gate SEAT_RE: recognize the three standing lead seats (rebased to live ti",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2627",
-     "draft": false
     }
    ],
-   "open_pr_count": 119
+   "open_pr_count": 120
   },
   {
    "id": "team",
@@ -624,6 +624,12 @@
    "board_lane": "#2175 lane PRODUCT",
    "open_prs": [
     {
+     "number": 2680,
+     "title": "t0483: hourly schedule pump for NayaNET Agent Capture",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2680",
+     "draft": false
+    },
+    {
      "number": 2679,
      "title": "Hub runtime: window.NayaPowerRuntime bridge module + green harness \u2014 t0480",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2679",
@@ -664,15 +670,9 @@
      "title": "docs(brain): SN-0699 connection bottleneck \u2014 GitHub flow is the activation bottleneck",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/1906",
      "draft": false
-    },
-    {
-     "number": 1736,
-     "title": "test(proof): observe github dispatch guards on real handler",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/1736",
-     "draft": false
     }
    ],
-   "open_pr_count": 31
+   "open_pr_count": 32
   },
   {
    "id": "memory",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 576,
+ "open_pr_total": 579,
  "unassigned_prs": 218
 }
