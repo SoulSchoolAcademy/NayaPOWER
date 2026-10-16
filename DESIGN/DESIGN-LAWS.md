@@ -40,25 +40,33 @@ Nothing is flat. Nothing is dead. Nothing is "not active." If you click a button
 
 ## LAW 2 — SPECTRUM (color logic)
 
-**The rule:** color walks the spectrum in law order. Adjacent things never share a hue.
+**The rule:** color follows the rainbow's natural flow. The count is dynamic; the order is law.
 
-**The Walk** — zones down a page, purple-first, 7 stops:
+**The wheel, not the list.** "It's not a law that has to be five or seven or nine." Five stops, seven, ten — whatever the design needs. What never changes: the spectrum is walked **in spectral order** — the rainbow's natural flow (red → orange → yellow → green → cyan → indigo → purple → magenta) — **never clumped** (no purple-purple-purple, no green-green-green), **never random**, and always the **most beautiful** version of each hue. We speak the natural design language of the universe — not random colors for whatever reason. It has to look stunning.
 
-> **purple → blue → green → gold → orange → red → magenta →** (back to purple)
+**The wheel** (11 stops — the most beautiful of each hue):
 
 | Stop | Hex | RGB (for glow math) | Job |
 |------|-----|---------------------|-----|
+| magenta | `#e84fff` | `232,79,255` | The living edge |
 | purple | `#a06bff` | `160,107,255` | Choosing intelligence — the soul |
+| indigo | `#6675ff` | `102,117,255` | The deep signal |
 | blue | `#3fb8ff` | `63,184,255` | Knowledge moving |
+| emerald | `#35e0a1` | `53,224,161` | Forest deep green |
 | green | `#2fe89e` | `47,232,158` | Alive and well |
+| lime | `#b8ee57` | `184,238,87` | New growth |
 | gold | `#ffbf3d` | `255,191,61` | Attention, earned |
 | orange | `#ff9a5a` | `255,154,90` | Warmth, momentum |
 | red | `#ff5e6c` | `255,94,108` | Urgency, the living edge |
-| magenta | `#e84fff` | `232,79,255` | The living edge, demonstration |
+| pink | `#ed58cd` | `237,88,205` | Delight, the flourish |
 
-The page accent picks *where the walk starts*; every zone after it takes the next stop. Green is never followed by green. Purple is never followed by purple. The walk is not set in stone — judgment applies to what the situation needs — but clumping is never judgment. Clumping is a defect. (This exact defect has a history: "purple-purple-purple and repeated reds" was corrected into the no-duplicate rule, measured at ≥51.6° hue separation between adjacent jewels.)
+For N zones needing separation, take N stops evenly spaced around the wheel from the page accent. Three zones: purple, blue, green. Five: magenta, purple, cyan, green, gold. Ten: ten. The page accent picks where the walk starts; the count fits the need; the order never breaks.
 
-**The Strip** — the component form, magenta-first, 5 stops: **magenta → purple → blue → green → gold**. Jewel rows, spectrum bars, law-order strips, and per-object accents use this form. Same hues, same order, tighter instrument.
+**Contrast is the most important thing.** The whole point of the spectrum is breaking up the view so the eye can rest on each thing — like black with white text, never black with black text. Adjacent stops must read as *distinct*. Which is why: **yellow and gold never sit together** — not enough contrast between them. The wheel carries gold, never yellow. (Same law in text form: white 99%, never gray body text, never black-on-black.)
+
+Clumping is never judgment — clumping is a defect. (This exact defect has a history: "purple-purple-purple and repeated reds" was corrected into the no-duplicate rule, measured at ≥51.6° hue separation between adjacent jewels.)
+
+**The Strip** — the component form, magenta-first, 5 stops: **magenta → purple → blue → green → gold**. Jewel rows, spectrum bars, law-order strips, and per-object accents use this form. Same wheel, tighter instrument.
 
 **The three jobs of color — never mix them:**
 1. **Chrome** (buttons, active states, primary actions): purple edge, white text. Chrome rests silver-white and *ignites* color on hover.
@@ -141,6 +149,7 @@ There is one button DNA (`.naya-btn`) with job-specific variants (lead, machine,
 10. **Transmitting an adjective instead of an image.** "Elegant" is not a spec.
 11. **Compliance without vision.** A 100/100 score on a checklist that Shawn looks at and says "that's not it" is worthless.
 12. **Patching the specimen** when the vision sharpens — rebuild. **Sanding down the unreasonable parts** — don't.
+13. **The dead button.** Black button, black text, a hairline of border you can barely see, flat, nothing on hover. One element breaking the contrast law, the alive law, the button law, and the text law all at once. If you see it, all four laws failed — fix all four.
 
 ---
 
@@ -166,6 +175,6 @@ These laws exist so the first build lands close. They do not replace his eye. Wh
 
 ## Open reconciliations (for Shawn's eye)
 
-1. **Strip vs Walk start:** the written V-10 starts magenta; the verbal teaching starts purple. This spec keeps both as different instruments (strip = components, walk = page zones). If they should be one, say the word.
-2. **Hex drift:** the same hue names carry different hexes across files (purple `#9d75ff` vs `#a06bff`, magenta `#d86cff` vs `#e84fff` vs `#ed58cd`). This spec uses the richest values; a single canonical hex set still wants your stamp.
-3. **Voice font:** Cormorant (teaching) vs Georgia/Newsreader (specimens). This spec allows Newsreader/Georgia.
+1. **Hex drift:** the same hue names carry different hexes across files (purple `#9d75ff` vs `#a06bff`, magenta `#d86cff` vs `#e84fff` vs `#ed58cd`). This spec uses the richest values; a single canonical hex set still wants your stamp.
+2. **Voice font:** Cormorant (teaching) vs Georgia/Newsreader (specimens). This spec allows Newsreader/Georgia.
+3. **Resolved 2026-10-16:** strip-vs-walk is two instruments, not a conflict — the Walk (dynamic count, page zones) and the Strip (5-stop, components) both draw from the one wheel.
