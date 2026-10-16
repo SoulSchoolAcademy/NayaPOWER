@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-16 00:16 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-16 01:16 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 579 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 584 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -58,13 +58,13 @@
 - [#2594](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2594) Learn: clock-to-ladder bridge — T6 VERIFIED meta row earns E1-E3
 - …and 51 more
 
-### KNOW (22)
+### KNOW (23)
+- [#2683](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2683) [INTELLIGENT_BLOCKS] #2642 reconcile: dock gate-reader doc + brain-ind
 - [#2433](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2433) brain-index: regenerate at basis 31d8cff7 (mechanical re-stamp, --che…
 - [#2415](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2415) BRAIN: regenerate index layer at live tip 665098e3
 - [#2407](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2407) repair(brain-index): re-stamp index on main 665098e3 (drift-13)
 - [#2390](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2390) repair(brain-index): re-stamp index on main f33bba34
-- [#2388](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2388) feat(protocol): Brain-Index Freshness Law as mechanical law (Shawn 202
-- …and 17 more
+- …and 18 more
 
 ### ACT (3)
 - [#2457](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2457) flip #3: lane-9 test-leg fixes (second ADVISE-count site + receipt-gat
@@ -87,13 +87,13 @@
 - [#2521](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2521) fix(b40): stale 'signing' comment word -> 'sealing' in machine-law tes
 - …and 23 more
 
-### BUILD (218)
+### BUILD (221)
+- [#2687](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2687) Living Map compiler v1 — the map becomes a measurement
+- [#2686](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2686) System Schematics — the staple doc (peer-reviewed)
+- [#2684](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2684) [Naya 5] The canonical complete-puzzle system map
 - [#2677](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2677) RETRIEVAL: version tools/spawn_brief.py incl. w255 tier-2 REVIEW guard
 - [#2650](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2650) [TRUTH] Site verdicts must not contradict violation status (CV-04/CV-0
-- [#2640](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2640) SN-0798: backpropagation credit-assignment logic (Naya 3) - CANDIDATE
-- [#2639](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2639) The Never-Stuck Creed v1.0 (0026) — carved in three tongues
-- [#2637](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2637) Merge Ops Manual v1.0.0 — the stuck-merge diagnostic engine (three ton
-- …and 213 more
+- …and 216 more
 
 ### WIRE (120)
 - [#2681](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2681) Teach fail-closed gates quota-vs-permission 403 (INCONCLUSIVE/RETRY)
@@ -119,13 +119,13 @@
 - [#2570](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2570) fix(ci): rate-limit resilience for Current Truth Resolver evidence col
 - …and 33 more
 
-### PRODUCT (32)
+### PRODUCT (33)
+- [#2685](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2685) HUB/BLUEPRINT.ai.md — canonical team reference: the complete system ma
 - [#2680](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2680) t0483: hourly schedule pump for NayaNET Agent Capture
 - [#2679](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2679) Hub runtime: window.NayaPowerRuntime bridge module + green harness — t
 - [#2678](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2678) Hub feeds: first room-feed/v1 emissions (today, lists, spaces) — t0479
 - [#2648](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2648) Add field manual 37: GitHub access (two identities, fresh-machine setu
-- [#2624](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2624) Phase 1 AUDIT: BRAIN/ navigation map + gap list (Naya-Optimized GitHu…
-- …and 27 more
+- …and 28 more
 
 ### MEMORY (6)
 - [#2644](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2644) 0008 Intelligent Block V1 — CONVERGED sender contract (three tongues, 

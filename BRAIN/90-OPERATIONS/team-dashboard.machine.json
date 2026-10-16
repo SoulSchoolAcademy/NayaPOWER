@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-16T00:17:14+00:00",
+ "generated_utc": "2026-10-16T01:16:38+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -102,6 +102,12 @@
    "board_lane": "#2175 lane KNOW",
    "open_prs": [
     {
+     "number": 2683,
+     "title": "[INTELLIGENT_BLOCKS] #2642 reconcile: dock gate-reader doc + brain-index regen at 9f80e8ec",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2683",
+     "draft": false
+    },
+    {
      "number": 2433,
      "title": "brain-index: regenerate at basis 31d8cff7 (mechanical re-stamp, --che\u2026",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2433",
@@ -142,15 +148,9 @@
      "title": "WIRE: D31 incident-representation claims gate on the drift-canary governance path",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2348",
      "draft": false
-    },
-    {
-     "number": 2344,
-     "title": "WIRE: D34 cache-invalidation claims gate on the drift-canary governance path",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2344",
-     "draft": false
     }
    ],
-   "open_pr_count": 22
+   "open_pr_count": 23
   },
   {
    "id": "act",
@@ -348,6 +348,24 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2687,
+     "title": "Living Map compiler v1 \u2014 the map becomes a measurement",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2687",
+     "draft": false
+    },
+    {
+     "number": 2686,
+     "title": "System Schematics \u2014 the staple doc (peer-reviewed)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2686",
+     "draft": false
+    },
+    {
+     "number": 2684,
+     "title": "[Naya 5] The canonical complete-puzzle system map",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2684",
+     "draft": false
+    },
+    {
      "number": 2677,
      "title": "RETRIEVAL: version tools/spawn_brief.py incl. w255 tier-2 REVIEW guard (IV 8.5/10 \u2014 dock h",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2677",
@@ -376,27 +394,9 @@
      "title": "Merge Ops Manual v1.0.0 \u2014 the stuck-merge diagnostic engine (three tongues)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2637",
      "draft": false
-    },
-    {
-     "number": 2632,
-     "title": "[Theta w219] Copy-paste activation declaration template + packet \u00a75 link",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2632",
-     "draft": false
-    },
-    {
-     "number": 2631,
-     "title": "[SUCCESSOR] Real-path successor-ingest seam \u2014 unblocks the SR-P7 cold-successor trial",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2631",
-     "draft": false
-    },
-    {
-     "number": 2628,
-     "title": "Spectrum readout: the hive's rung distribution (-9..+9)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2628",
-     "draft": false
     }
    ],
-   "open_pr_count": 218
+   "open_pr_count": 221
   },
   {
    "id": "wire",
@@ -624,6 +624,12 @@
    "board_lane": "#2175 lane PRODUCT",
    "open_prs": [
     {
+     "number": 2685,
+     "title": "HUB/BLUEPRINT.ai.md \u2014 canonical team reference: the complete system map",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2685",
+     "draft": false
+    },
+    {
      "number": 2680,
      "title": "t0483: hourly schedule pump for NayaNET Agent Capture",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2680",
@@ -664,15 +670,9 @@
      "title": "fix(publishing): record sanitized GitHub rejection reason in commit-failure receipts",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2481",
      "draft": true
-    },
-    {
-     "number": 1906,
-     "title": "docs(brain): SN-0699 connection bottleneck \u2014 GitHub flow is the activation bottleneck",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/1906",
-     "draft": false
     }
    ],
-   "open_pr_count": 32
+   "open_pr_count": 33
   },
   {
    "id": "memory",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 579,
- "unassigned_prs": 218
+ "open_pr_total": 584,
+ "unassigned_prs": 221
 }
