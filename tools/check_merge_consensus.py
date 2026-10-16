@@ -421,8 +421,26 @@ def main():
     repo = os.environ.get("REPO") or ""
     pr_number = os.environ.get("PR_NUMBER") or ""
     head_sha = os.environ.get("HEAD_SHA") or ""
+    event_name = os.environ.get("EVENT_NAME") or ""
+    trigger_comment = os.environ.get("TRIGGER_COMMENT_BODY") or ""
     if not (token and repo and pr_number and head_sha):
         fail("missing GH_TOKEN/REPO/PR_NUMBER/HEAD_SHA in environment.")
+    # --- Trigger relevance (Naya Delta, w307): an issue_comment event fires
+    # for ANY comment on the PR — bot pulses, questions, drive-bys. Running
+    # the full gate on a non-verdict comment paints a verdict about an
+    # unrelated PR onto the main tip (proven: check-run 116934064137 FAILED
+    # on tip 83806f4d0e33 while evaluating PR #2536's body, fired by a
+    # 10:43:41Z issue_comment event). A consensus event exists only when the
+    # triggering comment USES a review incantation or a scorecard receipt as
+    # its own declaration — judged by the gate's own matchers, never a
+    # re-implementation. Otherwise the run skips silently: no information is
+    # lost, because verdicts re-register on their own events.
+    if event_name == "issue_comment" and not (
+            _looks_like_review(trigger_comment)
+            or _looks_like_scorecard(trigger_comment, head_sha)):
+        print("CONSENSUS GATE SKIPPED: triggering comment carries no review "
+              "verdict or scorecard receipt — no consensus event to evaluate.")
+        return
     try:
         run_gate(token, repo, pr_number, head_sha)
     except GateAPIError as e:

@@ -97,4 +97,6 @@ jobs:
           REPO: ${{ github.repository }}
           PR_NUMBER: ${{ steps.pr.outputs.pr_number }}
           HEAD_SHA: ${{ steps.pr.outputs.head_sha }}
+          EVENT_NAME: ${{ github.event_name }}
+          TRIGGER_COMMENT_BODY: ${{ github.event.comment.body }}
         run: python3 tools/check_merge_consensus.py
