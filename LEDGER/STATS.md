@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-16 04:02 UTC_
+_Last updated: 2026-10-16 04:42 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 2510
-- ✅ Verified (8+): 2495
+- **Total scored actions:** 2552
+- ✅ Verified (8+): 2537
 - 🟡 Partial (5–7): 14
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 1
@@ -15,18 +15,18 @@ _Last updated: 2026-10-16 04:02 UTC_
 
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
-| Team 1 | Naya Verity | 237 | 9.1 | 9.6 |
-| Team 2 | Naya Sage | 235 | 8.8 | 9.5 |
-| Team 3 | Naya Judge | 170 | 8.9 | 9.5 |
-| Team 4 | Naya Mason | 216 | 9.0 | 9.6 |
-| Team 5 | Naya Seeker | 194 | 9.0 | 9.5 |
-| Team 6 | Naya Heir | 166 | 9.0 | 9.6 |
-| Team 7 | Naya Conductor | 230 | 8.9 | 9.5 |
-| Team 8 | Naya Sentinel | 197 | 9.0 | 9.5 |
-| Team 9 | Naya Smith | 257 | 9.0 | 9.5 |
-| Team 10 | Naya Librarian | 263 | 9.0 | 9.5 |
-| Team 11 | Naya Heart | 160 | 9.0 | 9.5 |
-| Team 12 | Naya Herald | 111 | 9.1 | 9.5 |
+| Team 1 | Naya Verity | 240 | 9.1 | 9.6 |
+| Team 2 | Naya Sage | 237 | 8.8 | 9.5 |
+| Team 3 | Naya Judge | 171 | 8.9 | 9.5 |
+| Team 4 | Naya Mason | 219 | 9.0 | 9.6 |
+| Team 5 | Naya Seeker | 196 | 9.0 | 9.5 |
+| Team 6 | Naya Heir | 167 | 9.0 | 9.6 |
+| Team 7 | Naya Conductor | 233 | 8.9 | 9.5 |
+| Team 8 | Naya Sentinel | 200 | 9.0 | 9.5 |
+| Team 9 | Naya Smith | 258 | 9.0 | 9.5 |
+| Team 10 | Naya Librarian | 271 | 9.0 | 9.5 |
+| Team 11 | Naya Heart | 164 | 9.0 | 9.5 |
+| Team 12 | Naya Herald | 113 | 9.1 | 9.5 |
 
 ## Learning velocity
 
@@ -56,6 +56,12 @@ _Last updated: 2026-10-16 04:02 UTC_
 - **gate-stall-20261015-1943:** 1 actions, avg 9.2/10
 - **gate-stall-20261015-2012:** 1 actions, avg 9.0/10
 - **2026-10-15T20:40:35-07:00:** 4 actions, avg 8.9/10
+- **gate-stall-20261015-2021:** 1 actions, avg 9.0/10
+- **gate-stall-20261015-2036:** 1 actions, avg 8.5/10
+- **gate-stall-20261015-2041:** 1 actions, avg 8.5/10
+- **gate-stall-20261015-2048:** 1 actions, avg 8.5/10
+- **gate-stall-20261015-2051:** 1 actions, avg 9.0/10
+- **lane-scorer-20261015-2120:** 11 actions, avg 9.3/10
 - **scorer-20261014-1820:** 2 actions, avg 9.2/10
 - **scorer-20261014-1935:** 5 actions, avg 9.3/10
 - **scorer-20261014-1940:** 3 actions, avg 8.2/10
@@ -108,6 +114,8 @@ _Last updated: 2026-10-16 04:02 UTC_
 - **gap-t0600:** 1 actions, avg 9.4/10
 - **gap-gap-t0600-lane1:** 1 actions, avg 9.0/10
 - **gap-gap-t0600:** 1 actions, avg 9.0/10
+- **gap-t0815:** 1 actions, avg 9.0/10
+- **lane-scorer-20261015-2130:** 16 actions, avg 8.8/10
 - **scorer-20261014-1520:** 2 actions, avg 9.2/10
 - **scorer-20261014-1540:** 3 actions, avg 8.5/10
 - **gap-t0771:** 2 actions, avg 9.0/10
@@ -142,11 +150,15 @@ _Last updated: 2026-10-16 04:02 UTC_
 - **gap-t0032-lane10:** 1 actions, avg 9.5/10
 - **gap-t1342-lane10:** 1 actions, avg 9.5/10
 - **gap-t0593-lane10:** 1 actions, avg 9.0/10
+- **gap-gap-t0593:** 2 actions, avg 8.8/10
+- **gap-scorer-20261015-2030:** 1 actions, avg 9.0/10
+- **lane-scorer-20261015-2140:** 5 actions, avg 9.3/10
 - **scorer-20261014-2200:** 3 actions, avg 9.2/10
 - **scorer-20261014-2220:** 5 actions, avg 9.2/10
 - **scorer-20261015-0030:** 4 actions, avg 8.6/10
 - **0550:** 1 actions, avg 9.0/10
 - **gap-scorer-20261015-0550:** 1 actions, avg 9.0/10
+- **gap-t0601:** 1 actions, avg 9.2/10
 - **scorer-20261014-2010:** 4 actions, avg 9.2/10
 - **scorer-20261014-2310:** 7 actions, avg 9.4/10
 - **scorer-20261014-2320:** 4 actions, avg 8.9/10
@@ -199,7 +211,7 @@ _Last updated: 2026-10-16 04:02 UTC_
 - **gap-t0593-lane4:** 1 actions, avg 9.0/10
 - **gap-t0677-lane4:** 1 actions, avg 9.2/10
 - **gap-t0677:** 1 actions, avg 9.2/10
-- **gap-gap-t0593:** 1 actions, avg 9.0/10
+- **gap-gap-t0677:** 1 actions, avg 9.0/10
 - **scorer-20261014-1600:** 2 actions, avg 9.2/10
 - **t-distill-chain:** 2 actions, avg 9.0/10
 - **scorer-20261014-1905:** 3 actions, avg 9.3/10
