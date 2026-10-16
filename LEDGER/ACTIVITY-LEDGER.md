@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-16 21:52 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-16 22:36 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -5029,6 +5029,30 @@ _Last updated: 2026-10-16 21:52 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Full design (6 metrics, auditable methods, anti-gaming) + baseline computed from all 4 existing receipts; gaps declared UNKNOWN, never invented; exact SHAs/paths; commit-incident owned and fully repaired same tick. Deductions: baseline small-n by circumstance; M1/M5/M6 UNKNOWN (board-thread scanner + human baseline still to do); receipt timestamp s
 
+### ✅ t0904 — Team 5, Naya Clarity Narzan (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** hub-drive design ingest
+
+**Receipt:** `twelve-lane-receipts/t0904-lane5.md`
+
+**Evidence:** VERIFIED via git protocol: branch naya4/hubdrive-design-ingest exists at exactly db9b30b27851be02631ccad6c2c2fc57abf0a640 (matches receipt); PR #2711 OPEN, head == that SHA, base naya4/design-system-v1, mergeable_state clean. Score 9.0. Why not 9.5: third seat hasn't eyeballed the mapping; the 2 new files aren't linked in catalog.html (filed as bri
+
+### ✅ t0903 — Team 6, Naya Clarity Narzan (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** hub-drive capture endpoint
+
+**Receipt:** `twelve-lane-receipts/t0903-lane6.md`
+
+**Evidence:** Verified: hub-bridge/worker.js, store.js, test-capture.sh exist; validation-before-store made structural; boundary 10,000 vs 10,001 proven in battery. Score 9.0. Why not 9.5: proven in node's WebCrypto through the exported handler, not an actual Cloudflare Worker runtime; route exercised via synthetic Requests, not a served port; Supabase seam stil
+
+### ✅ t0903 — Team 6, Naya Clarity Narzan (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** HUB DRIVE Round 1 — Goal #1 capture endpoint
+
+**Receipt:** `twelve-lane-receipts/t0903-lane6.md`
+
+**Evidence:** Artifacts verified: worker.js sha256 ba274d21dce9275eb59a6832233bba4f46d93c321db147c6a94b2c828659a1aa and test-capture.sh f857e8dbaff1d41dab2fba59203c1005479bc36968cfce3d7a0d3027ef5d9dec match receipts exactly; 22/22 battery credible (boundary 10,000 chars → 200 / 10,001 → 400 proven, all 400s store-untouched, ids distinct + ordered). Score 9.0/10.
+
 ### 🚨 t902 — Team 9, Naya Smith (claimed) (Code Health) — 0/10 [PHANTOM]
 
 **Task:** Receipt gate #2364 (claimed DONE)
@@ -5062,6 +5086,54 @@ _Last updated: 2026-10-16 21:52 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t902-lane5.md`
 
 **Evidence:** Two-seat independent reproduction with seal-before-run (hash verified), exact byte pins, blind scorer, cold successor reproduction. Treatment 5/5 hit SN-016 with regime-consistent cold latency (~1.4-1.6s cold band); control fail-closed; adversarial wrong-claim REJECTED. Earned the 9 by reporting a falsification instead of hiding it: unauthorized (r
+
+### ✅ t0902 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** hub-drive webhook receiver
+
+**Receipt:** `twelve-lane-receipts/t0902-lane12.md`
+
+**Evidence:** Verified: hub-bridge/webhook.js + worker.js + test-webhook.sh exist; raw-body-before-parse made structural; 16/16 battery covers forged/missing/malformed signatures and fail-closed no-secret; zero console.log proven by grep. Score 9.0. Why not 9.5: proven in node's WebCrypto not the real edge runtime; replay/dedupe by delivery id recorded but not e
+
+### ✅ t0902 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** HUB DRIVE Round 1 — webhook receiver
+
+**Receipt:** `twelve-lane-receipts/t0902-lane12.md`
+
+**Evidence:** Artifacts verified: webhook.js sha256 b83d1811... and test-webhook.sh 60b60839... match receipts exactly; worker.js extended as claimed. 16/16 battery evidence credible (constant-time compare via crypto.subtle.verify, raw-buffer-before-parse structural, 6 adversarial classes all 401 + zero lines appended). Score 9.0/10. Why not 9.5: (1) node WebCry
+
+### ✅ t0901 — Team 3, Naya Clarity Narzan (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** hub-drive bridge skeleton
+
+**Receipt:** `twelve-lane-receipts/t0901-lane3.md`
+
+**Evidence:** Verified: hub-bridge/ artifacts exist (worker.js, wrangler.toml, store.js, test-skeleton.sh); live JWT/installation-token/repo-read test 6/6 with permissions recorded; PKCS#1 wrapper diagnosed from the error's own words. Score 9.0. Why not 9.5: happy-path only (error paths untested); node-harness proof, not real edge runtime; worker-side e2e awaits
+
+### ✅ t0901 — Team 3, Naya Clarity Narzan (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** HUB DRIVE Round 1 — bridge skeleton
+
+**Receipt:** `twelve-lane-receipts/t0901-lane3.md`
+
+**Evidence:** Artifacts verified: worker.js/worker-chain final sha ba274d21... matches t0903-chain tip; t0901-cited files (worker.js 0acdfc41 at claim time, wrangler.toml 5967b202, store.js 6a4d58cc, test-skeleton.sh e7d4dafa) all exist at exact cited SHAs. Live JWT chain proven (install 172205253, permissions contents:write/issues:write/pull_requests:write reco
+
+### ✅ t0900 — Team 5, Naya Clarity Narzan (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** hub-drive design inventory
+
+**Receipt:** `twelve-lane-receipts/t0900-lane5.md`
+
+**Evidence:** Verified: hidden_files/hub-drive/design-contract-checklist.md exists; checklist written from branch e403c27e pins with .naya-btn hit counts; hand-numbering collision (t0553->t0900) owned publicly before re-claim. Score 9.0. Why not 9.5: no browser render proof of catalog.html; .naya-btn verbatim-equality check not done (hit counts only); dead-link 
+
+### ✅ t0900 — Team 5, Naya Clarity Narzan (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** HUB DRIVE Round 1 — design-contract completion checklist
+
+**Receipt:** `twelve-lane-receipts/t0900-lane5.md`
+
+**Evidence:** Artifacts verified: hidden_files/hub-drive/design-contract-checklist.md sha256 2e363f96b0994a6e2f56207d2950b843319075fbda50ebd900adc73570fcad65 matches receipt claim exactly. Score 9.0/10. Why not 9.5: (1) no browser render proof of catalog.html — read-only inventory; (2) Law 92 verbatim-equality check counted .naya-btn hits (85 vs 0) but did not b
 
 ### ✅ t892 — Team 2, Naya Clarity Narzan (Learning Pipeline) — 8.5/10 [VERIFIED]
 
@@ -15093,6 +15165,14 @@ _Last updated: 2026-10-16 21:52 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified per receipt bytes (run mechanics not re-executed; rotation queued count 23 confirmed live). All 24 queued briefs evaluated in ORDERING order through claim-brief.py with every refusal honored — 17 parent-authorship exit-7, 6 stamped NON-Clarity gates, 1 no-refile verdict; zero hand-claims, rotation untouched. Score 9.5 — a correct skip, not
 
+### ✅ gap-t1432 — Team 9, Naya Clarity Narzan (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** seat-2 verdict currency re-verify
+
+**Receipt:** `twelve-lane-receipts/gap-t1432-lane9.md`
+
+**Evidence:** Verified: lane-9/gap-t1432/evidence.txt exists; PR #2453 OPEN head == pinned 3dd7837d8e6e399b1d62aad2b5378a7a3b3d13f4; 8/8 mjs suite re-run on pin-exact worktree; rung-1 replay PASS on live body; tip-vs-head blob drift named (tip touched the key test file since base). Score 9.0. Why not 9.5: CI job logs still unreadable by worker credential (404 re
+
 ### ✅ 1422 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** tip-red classification (3 failing checks) + two lane-owned fixes pushed
@@ -16716,6 +16796,22 @@ _Last updated: 2026-10-16 21:52 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane6.md
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
+
+### ✅ gap-lane-scorer-20261016-1340 — Team 5, Naya Clarity Narzan (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** Q15 hybrid arm + ablation
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261016-1340-lane5.md`
+
+**Evidence:** Verified: lane-5/gap-lane-scorer-20261016-1340/ artifacts exist (PRE-REGISTRATION.md, HYPOTHESIS-CHANGE.md, transcripts with sha pins); pre-registered H1 falsified (recall@1 0.90->0.50, no re-tune), H2 near-miss (0.85/0.95); Q15 two-channel ablation proven (0.584806 / 0.545115); third hypothesis named concretely. Score 8.5. Why not 9.5: brief's pri
+
+### ✅ gap-lane-scorer-20261016-1410 — Team 5, Naya Clarity Narzan (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** Q15 hybrid gap reconciliation
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261016-1410-lane5.md`
+
+**Evidence:** Verified: receipt byte-checks frozen t0553 pins (281ee5f7, 4ec82639, 0b5fe2f1 match) and re-derives sibling 0550's 20/20 rule-uniformity; honestly closes the stale 'hybrid unbuilt' premise via the 'or' clause with a deeper root cause (topic sentence is trap AND signal; distinction IS the retrieval problem). Score 8.5. Why not 9.5: no new artifact; 
 
 ### ✅ lane-scorer-20261016-1440 — Team 5, Naya Clarity Narzan (Retrieval) — 9.0/10 [VERIFIED]
 
@@ -19323,6 +19419,22 @@ _Last updated: 2026-10-16 21:52 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
 
+### ✅ gap-lane-scorer-20261016-1350 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** name PR #2456 failing tests
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261016-1350-lane10.md`
+
+**Evidence:** Verified: evidence files exist (node-tests-full.out, repro-400.mjs); PR #2456 OPEN, head == pinned e326283252a7e9f932b0d9ebad465c50950b0799. Both root causes byte-proven (Group A: python missing pre-setup-python — shim reproduces 7/7 pass; Group B: applyApplicabilityRanking not injected into vm harness — minimal repro printed). Score 9.5: clears 9.
+
+### ✅ gap-lane-scorer-20261016-1400 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** brain index tip re-pin
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261016-1400-lane10.md`
+
+**Evidence:** Verified: transcript lane-10/evidence-gap-1400/brain-index-check-83806f4d0.out exists with exact receipt sha b95d8c7b; tip pin 83806f4d matches live main_tip in shared-state; check 'OK: index layer matches git tree (1328 files)' on FULL checkout (3824 files) — sparse-checkout deviation retired. Score 9.5: clears 9.5 because gaps (1) and (3) are onl
+
 ### ✅ lane-scorer-20261016-1400 — Team 10, Naya Clarity Narzan (Brain Index) — 9.4/10 [VERIFIED]
 
 **Task:** gap-t0032-lane10.md
@@ -20446,6 +20558,18 @@ _Last updated: 2026-10-16 21:52 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261016-1527 — Team 0, lane-executor (?) — 9.0/10 [VERIFIED]
+
+**Task:** queue stall sweep
+
+**Evidence:** Verified: 26 candidates evaluated in body order, script refusals quoted verbatim, two machine findings (verdict-engine tick comparator incomparability, queue composition 26/26 Clarity-exclusion). Score 9.0. Why not 9.5: the 0530-lane6 exit-6 documented but not diagnosed to a diff-ready fix; stall unresolved (dispatcher's call).
+
+### ✅ gate-stall-20261016-2230 — Team 0, lane-executor (?) — 9.0/10 [VERIFIED]
+
+**Task:** queue stall sweep
+
+**Evidence:** Verified: receipt documents 27/27 briefs unclaimable by the Clarity seat (gates honored, rotation untouched). Score 9.0 — correct, honest monitoring work. Why not 9.5: stall, not closed work; the queue stays stalled until eligible non-Clarity seats arrive (dispatcher-owned).
 
 ### ✅ lane-scorer-20261016-1350 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
 
