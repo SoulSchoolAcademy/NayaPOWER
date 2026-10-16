@@ -17,6 +17,31 @@ These are the newest generation. Everything below is superseded.
 | Serif voice: N4 Cormorant → N5 Georgia → Naya_2 Newsreader | **Newsreader wins** | Newest. Georgia is the safe fallback. |
 | Motion ease: PDF `cubic-bezier(.16,.84,.22,1)` vs N5 `cubic-bezier(.22,1,.36,1)` | **N5 wins** | Newest. Minor difference; N5 is pinned in TOKENS.css. |
 
+## Button taxonomy — working default, pending Shawn's formal ruling
+
+Working default for the block-catalog adoption (2026-10-16): one canonical
+button, seven job-based variants. The seven `.naya-btn` variants stay
+canonical: `lead` / `machine` / `streak` / `proximity` / `icon` /
+`icon.portal` / `quiet`. A new button idea becomes a `.naya-btn` variant
+proposal — never a new system.
+
+**Alias map (N4 v2.0 names → canonical, recorded not adopted as names):**
+`primary` → `lead` (the one action the page exists to do; one per view, never
+two side by side) · `secondary` → `machine` (supporting actions, paired
+actions, toolbars) · `ghost` → `quiet` (low-stakes, reversible, dismissive
+exits). The four BTN-008 skins are these aliases wearing job-colored fire —
+same DNA, no new variants.
+
+**Proposals — documented, NOT adopted:** `danger` (obsidian washed red, red
+edge fire — destructive actions, always with confirmation, never the default
+dialog button) · `.naya-btn.split` (portal split, BTN-016 — actions that take
+you somewhere verified) · `.naya-btn.prism` (prism CTA, BTN-018 — hero
+front-door calls to action).
+
+This ruling resolves the reconciliation note from the catalog-extension
+pass. It is a working default for the block-catalog adoption — it awaits
+Shawn's formal ruling before any new variant ships.
+
 ## Retired systems — considered and retired
 
 These were real studies. They lost to the one-language rule, not to lack of
