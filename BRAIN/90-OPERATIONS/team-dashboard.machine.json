@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-16T01:16:38+00:00",
+ "generated_utc": "2026-10-16T02:16:13+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -150,7 +150,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 23
+   "open_pr_count": 24
   },
   {
    "id": "act",
@@ -348,6 +348,12 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2688,
+     "title": "HIVE mother-brain navigation \u2014 two-speed repo orientation (machine + human)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2688",
+     "draft": false
+    },
+    {
      "number": 2687,
      "title": "Living Map compiler v1 \u2014 the map becomes a measurement",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2687",
@@ -388,15 +394,9 @@
      "title": "The Never-Stuck Creed v1.0 (0026) \u2014 carved in three tongues",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2639",
      "draft": false
-    },
-    {
-     "number": 2637,
-     "title": "Merge Ops Manual v1.0.0 \u2014 the stuck-merge diagnostic engine (three tongues)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2637",
-     "draft": false
     }
    ],
-   "open_pr_count": 221
+   "open_pr_count": 222
   },
   {
    "id": "wire",
@@ -435,12 +435,6 @@
      "draft": false
     },
     {
-     "number": 2642,
-     "title": "[INTELLIGENT_BLOCKS] Dock gate-reader doc: issue_comment check-run head attachment",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2642",
-     "draft": false
-    },
-    {
      "number": 2636,
      "title": "docs: name merge-consensus gate legs (a)/(b)/(c) as one-line verifier tests",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2636",
@@ -463,9 +457,15 @@
      "title": "INFRA: capture RATE_LIMIT_RESET in gate HTTP layers (fail-closed)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2630",
      "draft": false
+    },
+    {
+     "number": 2627,
+     "title": "Fix completeness_gate SEAT_RE: recognize the three standing lead seats (rebased to live ti",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2627",
+     "draft": false
     }
    ],
-   "open_pr_count": 120
+   "open_pr_count": 119
   },
   {
    "id": "team",
@@ -555,6 +555,12 @@
    "board_lane": "#2175 lane INFRA",
    "open_prs": [
     {
+     "number": 2689,
+     "title": "CI rate-limit resilience: cut redundant API burn (~85% on hot paths)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2689",
+     "draft": false
+    },
+    {
      "number": 2649,
      "title": "Add TEAM-ROSTER.md: the verified sets (leads, area leads, lane agents, specialists, seats,",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2649",
@@ -595,15 +601,9 @@
      "title": "[DOCK INTAKE w84] naya-gamma/sibling-truncation-board-claim-scan \u2014 CI intake only (NOT mer",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2530",
      "draft": false
-    },
-    {
-     "number": 2529,
-     "title": "[DOCK INTAKE w84] naya-beta/failclosed-index-reader-w82 \u2014 CI intake only (NOT merge approv",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2529",
-     "draft": false
     }
    ],
-   "open_pr_count": 38
+   "open_pr_count": 39
   },
   {
    "id": "product",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 584,
- "unassigned_prs": 221
+ "open_pr_total": 586,
+ "unassigned_prs": 222
 }

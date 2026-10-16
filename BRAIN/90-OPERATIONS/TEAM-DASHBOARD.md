@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-16 01:16 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-16 02:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 584 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 586 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -58,13 +58,13 @@
 - [#2594](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2594) Learn: clock-to-ladder bridge — T6 VERIFIED meta row earns E1-E3
 - …and 51 more
 
-### KNOW (23)
+### KNOW (24)
 - [#2683](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2683) [INTELLIGENT_BLOCKS] #2642 reconcile: dock gate-reader doc + brain-ind
 - [#2433](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2433) brain-index: regenerate at basis 31d8cff7 (mechanical re-stamp, --che…
 - [#2415](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2415) BRAIN: regenerate index layer at live tip 665098e3
 - [#2407](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2407) repair(brain-index): re-stamp index on main 665098e3 (drift-13)
 - [#2390](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2390) repair(brain-index): re-stamp index on main f33bba34
-- …and 18 more
+- …and 19 more
 
 ### ACT (3)
 - [#2457](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2457) flip #3: lane-9 test-leg fixes (second ADVISE-count site + receipt-gat
@@ -87,21 +87,21 @@
 - [#2521](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2521) fix(b40): stale 'signing' comment word -> 'sealing' in machine-law tes
 - …and 23 more
 
-### BUILD (221)
+### BUILD (222)
+- [#2688](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2688) HIVE mother-brain navigation — two-speed repo orientation (machine + h
 - [#2687](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2687) Living Map compiler v1 — the map becomes a measurement
 - [#2686](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2686) System Schematics — the staple doc (peer-reviewed)
 - [#2684](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2684) [Naya 5] The canonical complete-puzzle system map
 - [#2677](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2677) RETRIEVAL: version tools/spawn_brief.py incl. w255 tier-2 REVIEW guard
-- [#2650](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2650) [TRUTH] Site verdicts must not contradict violation status (CV-04/CV-0
-- …and 216 more
+- …and 217 more
 
-### WIRE (120)
+### WIRE (119)
 - [#2681](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2681) Teach fail-closed gates quota-vs-permission 403 (INCONCLUSIVE/RETRY)
 - [#2676](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2676) Canonical 9-note Smart Note source for the Smart Feed live wire (t0473
 - [#2645](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2645) KNOW gaterepair (w247): doc_completeness_check fail→warning + grep-fla
-- [#2642](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2642) [INTELLIGENT_BLOCKS] Dock gate-reader doc: issue_comment check-run hea
 - [#2636](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2636) docs: name merge-consensus gate legs (a)/(b)/(c) as one-line verifier 
-- …and 115 more
+- [#2635](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2635) Name the backticked-branch-name trap in the receipt-gate fix hint
+- …and 114 more
 
 ### TEAM (12)
 - [#2618](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2618) [DRAFT] Advisory post-conformance scan for the Team Feed Standard 📝draft
@@ -111,13 +111,13 @@
 - [#2397](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2397) feat(dashboard): live Team Naya activity dashboard — markdown + machin
 - …and 7 more
 
-### INFRA (38)
+### INFRA (39)
+- [#2689](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2689) CI rate-limit resilience: cut redundant API burn (~85% on hot paths)
 - [#2649](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2649) Add TEAM-ROSTER.md: the verified sets (leads, area leads, lane agents,
 - [#2638](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2638) REVIEW: merge masterclass draft + circles system (not for main merge)
 - [#2593](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2593) CANDIDATE: veracity demote for FALSIFIED lessons at retrieve (t0762 l…
 - [#2589](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2589) Add decision CLI front door to value_calculus (tools/decision_cli.py)
-- [#2570](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2570) fix(ci): rate-limit resilience for Current Truth Resolver evidence col
-- …and 33 more
+- …and 34 more
 
 ### PRODUCT (33)
 - [#2685](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2685) HUB/BLUEPRINT.ai.md — canonical team reference: the complete system ma
