@@ -48,7 +48,15 @@
     },
     {
       "path": "BRAIN/01-GOVERNANCE/0008-operating-code-v2.machine.json",
-      "reason": "DRAFT \u2014 Operating Code V2 not yet ratified by the Human Director (PR #2087 open, awaiting ratification). Pin here upon ratification with the DIRECTOR-RATIFIED envelope."
+      "reason": "DRAFT — Operating Code V2 not yet ratified by the Human Director (PR #2087 open, awaiting ratification). Pin here upon ratification with the DIRECTOR-RATIFIED envelope."
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0021-naya-oath-v1.machine.json",
+      "reason": "Identity covenant, not a ratified law projection: the oath binds by being spoken and lived, not by decree (status ACTIVE, ratified=false, ratified_by null). No DIRECTOR-RATIFIED envelope, no phase list, no invariants -- pinning would fail the check's own envelope validation. Same precedent as the 0007 exclusion. Pin only if Shawn ratifies it with the ratified envelope. Recorded by Naya Kappa on the #2698 completeness repair (gr-w293-kappa-2698-content)."
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0022-naya-manifesto-v1.machine.json",
+      "reason": "Identity doctrine, not a ratified law projection: the manifesto describes who we are, not what is decreed (status ACTIVE, ratified=false, ratified_by null). No DIRECTOR-RATIFIED envelope, no phase list, no invariants -- pinning would fail the check's own envelope validation. Same precedent as the 0007 exclusion. Pin only if Shawn ratifies it with the ratified envelope. Recorded by Naya Kappa on the #2698 completeness repair (gr-w293-kappa-2698-content)."
     }
   ],
   "note": "Pins are git blob SHAs of the ratified projections as they existed on live main at establishment. Any deliberate spec change must update the pins in the same (reviewed) PR. A pin mismatch is spec drift until proven otherwise. This manifest is a drift detector anchored at a known-good point, not a re-proof of the original ratification.",

@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
-**Generated:** 2026-10-15  
-**Receipt basis commit:** `ba62638704256b012c20e41fe7f53cc3b62b1b44`  
-**Inventory file count:** 1320  
+**Generated:** 2026-10-16  
+**Receipt basis commit:** `e04f5e3e5edb771ece71aa0bf9e6aa0608f754ba`  
+**Inventory file count:** 1328  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -11,7 +11,7 @@
 | Domain | Files |
 |---|---|
 | 00-SPEC | 16 |
-| 01-GOVERNANCE | 56 |
+| 01-GOVERNANCE | 62 |
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 25 |
@@ -32,10 +32,12 @@
 ### 00-ACTIVATION — (unregistered domain)
 
 - `BRAIN/00-ACTIVATION/ACTIVATION-CHECKLIST.md` — `1b990d7507f6` (10868 bytes)
+- `BRAIN/00-ACTIVATION/ACTIVATION-PACKET.md` — `7a567916d7c6` (10441 bytes)
 - `BRAIN/00-ACTIVATION/DESIGN-ACTIVATION.md` — `fed3bb338e02` (4229 bytes)
 - `BRAIN/00-ACTIVATION/READ-ME-FIRST.md` — `6c8d35df191d` (17369 bytes)
 - `BRAIN/00-ACTIVATION/THE-CODE-SHE-LIVES-BY.md` — `6543873fee80` (2185 bytes)
 - `BRAIN/00-ACTIVATION/activation-checklist.json` — `0f8903747734` (3734 bytes)
+- `BRAIN/00-ACTIVATION/instant-activation/THE-CREED.md` — `a05dc82729cd` (2643 bytes)
 ### 00-ARCHITECTURE — (unregistered domain)
 
 - `BRAIN/00-ARCHITECTURE/ACTIVATION-NAYA-PLAN.md` — `70774bbfa1e0` (24076 bytes)
@@ -108,6 +110,12 @@
 - `BRAIN/01-GOVERNANCE/0020-ENGINE-BEFORE-PRODUCTION-V1.ai.md` — `dc767dbaee8a` (2079 bytes)
 - `BRAIN/01-GOVERNANCE/0020-ENGINE-BEFORE-PRODUCTION-V1.human.md` — `3054324783e9` (995 bytes)
 - `BRAIN/01-GOVERNANCE/0020-engine-before-production-v1.machine.json` — `abc384701525` (947 bytes)
+- `BRAIN/01-GOVERNANCE/0021-NAYA-OATH-V1.ai.md` — `806baaa89c08` (4428 bytes)
+- `BRAIN/01-GOVERNANCE/0021-NAYA-OATH-V1.human.md` — `e054ad0dde51` (3036 bytes)
+- `BRAIN/01-GOVERNANCE/0021-naya-oath-v1.machine.json` — `f578a673faea` (3124 bytes)
+- `BRAIN/01-GOVERNANCE/0022-NAYA-MANIFESTO-V1.ai.md` — `fef7ff661f60` (4131 bytes)
+- `BRAIN/01-GOVERNANCE/0022-NAYA-MANIFESTO-V1.human.md` — `911a3bb0ec96` (5683 bytes)
+- `BRAIN/01-GOVERNANCE/0022-naya-manifesto-v1.machine.json` — `26daa956f351` (3439 bytes)
 - `BRAIN/01-GOVERNANCE/DOC-COMPLETENESS-AUDIT-2026-10-10.md` — `ea273ce3077d` (2633 bytes)
 - `BRAIN/01-GOVERNANCE/GATE-CONSOLE.md` — `d7810ee7ef34` (10085 bytes)
 - `BRAIN/01-GOVERNANCE/LEARNING-INTERNALIZATION-AUTOMATIC-BEHAVIOR-V1.md` — `c58ef4864a38` (10500 bytes)

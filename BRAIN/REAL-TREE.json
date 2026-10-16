@@ -1,13 +1,13 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-10-15",
-  "receipt_basis_commit": "ba62638704256b012c20e41fe7f53cc3b62b1b44",
-  "inventory_file_count": 1320,
+  "generated_at": "2026-10-16",
+  "receipt_basis_commit": "e04f5e3e5edb771ece71aa0bf9e6aa0608f754ba",
+  "inventory_file_count": 1328,
   "domain_counts": {
-    "00-ACTIVATION": 5,
+    "00-ACTIVATION": 7,
     "00-ARCHITECTURE": 5,
     "00-SPEC": 16,
-    "01-GOVERNANCE": 56,
+    "01-GOVERNANCE": 62,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
@@ -31,6 +31,11 @@
       "size": 10868
     },
     {
+      "path": "BRAIN/00-ACTIVATION/ACTIVATION-PACKET.md",
+      "blob_sha": "7a567916d7c688ef17918ef03f59265115601c7e",
+      "size": 10441
+    },
+    {
       "path": "BRAIN/00-ACTIVATION/DESIGN-ACTIVATION.md",
       "blob_sha": "fed3bb338e0205ac2d31c4afac69b06641f243ca",
       "size": 4229
@@ -49,6 +54,11 @@
       "path": "BRAIN/00-ACTIVATION/activation-checklist.json",
       "blob_sha": "0f890374773478184236543638ff25de274e4881",
       "size": 3734
+    },
+    {
+      "path": "BRAIN/00-ACTIVATION/instant-activation/THE-CREED.md",
+      "blob_sha": "a05dc82729cd45d7c4837f7ee057e95245282ecd",
+      "size": 2643
     },
     {
       "path": "BRAIN/00-ARCHITECTURE/ACTIVATION-NAYA-PLAN.md",
@@ -379,6 +389,36 @@
       "path": "BRAIN/01-GOVERNANCE/0020-engine-before-production-v1.machine.json",
       "blob_sha": "abc384701525c59d00e565b192b5b30994885bb8",
       "size": 947
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0021-NAYA-OATH-V1.ai.md",
+      "blob_sha": "806baaa89c08343830d6d4220b8e3ae1e92f4606",
+      "size": 4428
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0021-NAYA-OATH-V1.human.md",
+      "blob_sha": "e054ad0dde519ae385cef2689b1229e9d66e2338",
+      "size": 3036
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0021-naya-oath-v1.machine.json",
+      "blob_sha": "f578a673faea33f980944a168db7f8b55a05f0c6",
+      "size": 3124
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0022-NAYA-MANIFESTO-V1.ai.md",
+      "blob_sha": "fef7ff661f60aad3c38f0710ba986bb7493cbea6",
+      "size": 4131
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0022-NAYA-MANIFESTO-V1.human.md",
+      "blob_sha": "911a3bb0ec960f2983874cbb8cad0886ba6e4155",
+      "size": 5683
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0022-naya-manifesto-v1.machine.json",
+      "blob_sha": "26daa956f351bba68f117584ced4969071bd4c09",
+      "size": 3439
     },
     {
       "path": "BRAIN/01-GOVERNANCE/DOC-COMPLETENESS-AUDIT-2026-10-10.md",
