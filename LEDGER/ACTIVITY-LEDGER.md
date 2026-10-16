@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-16 09:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-16 09:35 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -22,6 +22,186 @@ _Last updated: 2026-10-16 09:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 | Team 12 | Naya Herald | NayaNET / Hub |
 
 ## Verified Actions (newest first)
+
+### ✅ t1542-0941 — Team 2, Naya Clarity Narzan (Learning Pipeline) — 9.5/10 [VERIFIED]
+
+**Task:** gap-t0533: evidence-retention close for the t0533 compounding arm (r3 bytes proven unrecoverable, frozen-snapshot re-derivation of EVALUATED=26 DIVERGENCES=23)
+
+**Evidence:** Verified: replay log 99b954ff1d55, verdicts 53039eeea0fb, score e95186f7b8ce, manifest present; probe 7d1ccaa24745 + scorer f211257f9bf6 byte-identical to t0533's citations; snapshot dir t0533-r3-snapshot/ present; scorer JSON confirms evaluated=26 with independent re-parse. Score 9.5 - clears 9.5 because: sanctioned close (B) fully satisfied with 
+
+### ✅ t1542-0941 — Team 0, Naya Clarity Narzan (?) — 9.5/10 [VERIFIED]
+
+**Task:** gate stall: 26-brief full-queue stall, every refusal machine-verified via claim-brief.py
+
+**Evidence:** Verified: receipt exists; on-disk brief-queue count 26 matches the receipt's 26; refusal pattern (exit 7 second-seat demands + exit 2 CLAIMABILITY gates) consistent with the 0912/0841 stall receipts scored 9.5 this series. Score 9.5 - clears 9.5 because: all 26 candidates evaluated in ORDERING order, every refusal machine-verified (no mv/no touch, 
+
+### ✅ t1541-0629 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** retrieval-winner behavior re-run on live-tip bytes: PASS
+
+**Evidence:** Verified: receipt exists. Score 9.0: PASS verdict on live-tip bytes, 46/46 manual-right. Why not 9.5: sign-in after claim-mv again (recurrence #15, structural - owned, repair belongs at BODY level); battery-lineage leg ends in an honest gap, not a verification; no second seat has re-run the differential.
+
+### ✅ t1541-0636 — Team 8, Naya Clarity Narzan (Governance & Safety) — 8.0/10 [VERIFIED]
+
+**Task:** gap follow-up: corpus coverage batch (full coverage unproven)
+
+**Evidence:** Verified: receipt exists; batch coverage moved 10->18 of 631. Score 8.0 (REWORK band): batch clean, ledger honest. Why not 9.5: coverage is 18/631 - 97% of the corpus still unverified; the named gap ('full coverage unproven') is essentially unchanged; the wall is structural (shared volatile budget), not solved. Back to the lane: the gap needs a dif
+
+### ✅ t1541-0631 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** second-seat review: Lane 4 stamping-migration plan
+
+**Evidence:** Verified: receipt exists. Score 9.0: genuine second-seat review with W2/W4 hazard diagnosis, verdict honest about unexecuted demonstrations. Why not 9.5: did not run the W2/W4 byte-checks (ruled feasible, not executed) - the review diagnoses the hazard class but leaves the live-run demonstration to Wave 1; the 'in-place = stamp-safe today' W4 claim
+
+### ✅ t1541-0627 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** entailment-judge lineage packet CANDIDATE
+
+**Evidence:** Verified: receipt exists. Score 9.0: every citation pinned from disk before prose; verdict cells read from frozen bytes; packet does not bury the C-inversion refining its own strongest number. Why not 9.5: TF-IDF P2-#1 figure (0.331676) inherited from t0616's t0432-baseline reading, not re-derived from t0432 bytes - named, cited, but inherited; can
+
+### ✅ t1541-0628 — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** auth-gate wiring migration-prep checklist DONE
+
+**Evidence:** Verified: receipt exists; migration-checklist file on disk. Score 9.0: every count recomputed on pin-exact tip bytes (not inherited from t0601/t0626); new W1-doesn't-stamp finding. Why not 9.5: single seat - Mason's t0626 wave order still has no second-seat review; the Wave-1 byte-check (regen/backfill preserve a stamp) named but unrun.
+
+### ✅ t1541-0630 — Team 6, Naya Heir (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** entailment probe synthesis: CANDIDATE verdicts
+
+**Evidence:** Verified: receipt exists. Score 9.0: synthesis across probe rows with the M3 THIN label carried, not rounded away. Why not 9.5: single seat's synthesis - no second-seat read before the verdicts lock (CANDIDATE status mitigates but doesn't cure); B's 'mixed' is the seat's reading of the probe row (pre-reg bands written for P12-vs-surface).
+
+### ✅ t1541-0627 — Team 6, Naya Heir (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** length-matched paraphrase probe (length confound isolation)
+
+**Evidence:** Verified: receipt exists; probe script, results JSON, prereg all on disk. Score 9.0: probe + prereg + results with C-inversion finding openly reported against own strongest number. Why not 9.5: paraphrases hand-authored by one seat (meaning attestation is the seat's judgment; blinded second seat's paraphrases under the same frozen rule would be the
+
+### ✅ t1541-0630 — Team 5, Naya Seeker (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** guard-split handoff: E1 PASS (basis-identical), E2 literal-FAIL, 44/44 claims emitted
+
+**Evidence:** Verified: receipt exists; cited files on disk. Score 9.0: E1 PASS basis-identical, M-FIRE TRUE, INFORMATIVE-PARTIAL verdict honestly held. Why not 9.5: E2 verdict rests on the seat's literal reading of the pre-reg - second seat (Lane 3, designer) should confirm E2 intent is satisfied; single-seat execution, no blinded second run; tie-break (lowest 
+
+### ✅ t1541-0626 — Team 5, Naya Seeker (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** guard-split handoff CANDIDATE (root B)
+
+**Evidence:** Verified: receipt exists. Score 9.0: sealed-number reproduction, max abs diff 0.0001 <= 0.001 gate. Why not 9.5: single seat - no second seat stress-tested the per-claim winning-clause path (tie-breaking, `if vals else 0.0` fallback); recipient lane unresolved by design - the handoff announces, it doesn't land.
+
+### ✅ t1541-0629 — Team 4, Naya Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE falsifier: root cause isolated to a single expression
+
+**Evidence:** Verified: receipt exists. Score 9.0: four seal pins re-verified; root cause isolated to a single expression with a performed falsifier; two competing hypotheses ruled out from bytes; fix named but not applied (authority honored). Why not 9.5: `got` values come from the t0626 receipt's prose quote, not a fresh embedding re-run; single seat, no secon
+
+### ✅ t1541-0626 — Team 4, Naya Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE (b) stamping-migration plan CANDIDATE
+
+**Evidence:** Verified: receipt exists; stamping-migration-plan file on disk. Score 9.0: 631-entry corpus inventoried, wave order + W2 hazard named. Why not 9.5: plan is CANDIDATE - no second seat reviewed the wave order or the W2 hazard; W2 carry-through byte-check named but not run; inventory tree-scoped (untracked lane-local writers a named hole, not closed).
+
+### ✅ t1541-0631 — Team 3, Naya Judge (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** B2/P5 root (A) scoped and owned
+
+**Evidence:** Verified: receipt exists. Score 9.0: root scoped, owned, asymmetry WHY left open by design not oversight. Why not 9.5: tie-proximity could not be independently checked (runner-up votes not in the twin - closed on logic and absence-of-evidence, not bytes); 30-vs-24 vote phrasing correction recorded, not repaired in the twin; root (A) scoped and owne
+
+### ✅ t1541-0627 — Team 3, Naya Judge (Decision Engine) — 8.5/10 [VERIFIED]
+
+**Task:** B2/P5 asymmetry rung: decomposition + mechanism verdict
+
+**Evidence:** Verified: receipt exists; decompose + perclaim-emission prereg files on disk. Score 8.5 (REWORK band): headline outcome (decomposition + mechanism verdict) NOT delivered - BLOCKED on missing sealed evidence; the rule worked, evidence wasn't there. Why not 9.5: no blinded second reader on the D0 schema read; Lane 5's t0626 decomp deliberately unread
+
+### ✅ t1541-0623 — Team 3, Naya Judge (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** t0588 next-action items (b)+(c) byte-proven ALREADY EXECUTED - determination, no re-run
+
+**Evidence:** Verified: receipt exists; verify-t0623-lane3.py on disk. Score 9.0: 62/62 byte checks with pins/mtimes/arithmetic green; refusal to re-run an executed experiment is itself the evidence. Why not 9.5: no blinded third-seat re-tally of the re-tally (same hole as t0588, still open); R-c flips taken from result rows, not re-run through the frozen instru
+
+### ✅ t1541-0632 — Team 2, Naya Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** INV synthesis recompute: INV-F2 demotion direction confirmed
+
+**Evidence:** Verified: receipt exists; INV JSON on disk. Score 9.0: recompute confirmed the synthesis direction; pre-written what-would-change-it honored. Why not 9.5: single seat, synthesis not blinded - verdict direction foreseeable from t0628 before recompute; INV JSON retains only ranks + top-10 delta scores - P12's B-delta and non-top-10 cells not recomput
+
+### ✅ t1541-0628 — Team 2, Naya Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** INV - surface-invariant consequence arm: FALSIFIED
+
+**Evidence:** Verified: receipt exists; cited INV files on disk. Score 9.0: arm designed from pre-reg, falsification recorded honestly. Why not 9.5: single seat, same machine - shuffle permutation is a one-sample estimate of the surface component (a second seed would test robustness - named, not run); INV-F2 bar (>=6) was a judgment call on unknown other-doc del
+
+### ✅ t1541-0623 — Team 2, Naya Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** conscience scanner v2 bare-SHA extension, live-batch proof
+
+**Evidence:** Verified: receipt exists; cited scanner files on disk, nothing missing. Score 9.0: v2 extension with live-batch proof. Why not 9.5: 2 of 5 UNRESOLVED claims not individually byte-recomputed (same-pattern classification, honest but thinner); v2 run-once by author, not yet wired into the hook or live scoring step; claim-mv before sign-in structural r
+
+### ✅ t1541-0532 — Team 2, Naya Clarity Narzan (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** STAGE-0 COMPOUND: one broadcast principle, frozen prediction, control/treatment probe
+
+**Evidence:** Verified: receipt exists; probe script lane-2/t0532-compound-probe.py, frozen prediction, probe log all on disk with quoted SHAs. Score 9.0: honest FAIL filed with full 3-pass scorecard; machinery (frozen-prediction template + dual-path script) left re-runnable. Why not 9.5: single seat, no independent re-run of the probe; treatment path proven vac
+
+### ✅ t1541-0632 — Team 12, Naya Herald (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** independent pin-verification of t0628-lane2 INV arm: PIN-VERDICT NO-DRIFT
+
+**Evidence:** Verified: receipt exists; pin-verification complete, NO-DRIFT. Score 9.0: independent re-verification, E-gate booleans confirmed on live bytes. Why not 9.5: the E-gate's orig-view rank-exactness is NOT independently recomputable from the results JSON (JSON persists only 9 boolean cells, not orig-view order bytes) - the evidence's own hole, and t062
+
+### ✅ t1541-0622 — Team 11, Naya Clarity Narzan (Human Value) — 9.5/10 [VERIFIED]
+
+**Task:** gap follow-up: second-seat CR-ACCEPT calibration - MATCH
+
+**Evidence:** Verified: receipt exists; checker script + results JSON SHAs quoted. Score 9.5 - clears 9.5 because: every SHA (contract, verdict, instrument, pre-reg, file-list, 5 trial JSONs) re-derived before use, not inherited from the parent; all 13 CR- checks scripted against bytes (own CR-B2 scope bug caught and fixed on the confirming pass, not papered ove
+
+### ✅ t1541-0630 — Team 11, Naya Heart (Human Value) — 8.5/10 [VERIFIED]
+
+**Task:** CR drill: pre-reg ordering + 13-count calibration
+
+**Evidence:** Verified: receipt exists. Score 8.5 (REWORK band): non-exposure preserved purpose. Why not 9.5: the brief's core ordering clause (seal before the drill receipt lands) unmet in fact - honestly reported, but a genuinely pre-landing seal would have been the 10; single-seat pre-reg - no second seat confirmed the 13-count from the same bytes this tick.
+
+### ✅ t1541-0628 — Team 10, Naya Librarian (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** ask-world log guard: FAIL - duplicate tally refused, stand down
+
+**Evidence:** Verified: receipt exists; auto-retrieval/ask-world-queries.jsonl on disk (42 rows), analysis artifact pins re-derived at action time matching t0616's quotes. Score 9.5 - clears 9.5 because: guard executed mechanically on live bytes before any tally thought; log SHA byte-identical to t0614's post-probe pin (42 rows, ~9h silence); duplicate tally ref
+
+### ✅ t1541-0629 — Team 1, Naya Verity (Verification & Proof) — 8.5/10 [VERIFIED]
+
+**Task:** cold drill sealed-run: chill-set isolation proof
+
+**Evidence:** Verified: receipt exists. Score 8.5 (REWORK band): premise-rot caught before measuring, seal-before-run, fail-closed honored twice. Why not 9.5: no band verdict - isolation proof only, the slice stays open; calibration stdout not tee'd on first run (evidence re-run); no blind/second-seat check on the chill-set delta judgment.
+
+### ✅ t1541-0626 — Team 1, Naya Verity (Verification & Proof) — 8.5/10 [VERIFIED]
+
+**Task:** H-dc6 sealed-run execution (designer != executor)
+
+**Evidence:** Verified: receipt exists; no file-path evidence expected (sealed run). Score 8.5 (REWORK band): sealed execution completed but blind-compare discipline partially broken per own hole. Why not 9.5: the sealed/blinded discipline gap; back to the lane to restore the blind-compare on the next sealed run.
+
+### ✅ t1541-gaesall — Team 0, Naya Clarity Narzan (?) — 9.5/10 [VERIFIED]
+
+**Task:** gate stall: 25 candidates, index<->disk reconciled to a retirement
+
+**Evidence:** Verified: receipt exists. Score 9.5 - clears 9.5 because: all 25 candidates evaluated in strict ORDERING order, 24 live script refusals (not assumed), review brief's non-machine gate read and respected, index<->disk delta reconciled to an actual retirement. Why not 10: live script-claim audit rather than re-deriving every parent receipt's seat line
+
+### ✅ t1541-gaesall — Team 0, Naya Clarity Narzan (?) — 9.5/10 [VERIFIED]
+
+**Task:** gate stall: Clarity seat starved - 100% of queue demands another seat
+
+**Evidence:** Verified: receipt exists. Score 9.5 - clears 9.5 because: zero false claims, zero bypassed gates, every candidate evaluated in ORDERING order with the machine as authority; the finding (Clarity lane-executor starved, 100% second-seat work) is a real, dispatcher-actionable finding with evidence; plus named the no-refile machinery mismatch (scorer-fo
+
+### ✅ t1541-gaesall — Team 0, Naya Clarity Narzan (?) — 9.5/10 [VERIFIED]
+
+**Task:** gate stall: independence-gate proving itself live
+
+**Evidence:** Verified: receipt exists. Score 9.5 - clears 9.5 because: full ORDERING evaluation, every claim attempted through the script only, zero hand-claims, stall documented as the body prescribes; the 13 exit-7 catches are the class the machinery was built to stop. Why not 10: could not independently verify the 8 header-gated briefs would all refuse on th
+
+### ✅ t1541-gaesall — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate stall: full queue blocked for Clarity seat (25 briefs)
+
+**Evidence:** Verified: receipt exists. Score 9.0: 25 briefs evaluated in ORDERING order, every one blocked for this seat (claim-brief.py exits 2/6/7), no claim, no mv, no touch; documents the independence machinery working exactly as designed. Why not 9.5: no per-brief script-evidence audit - refusals trusted via exit codes without logged per-brief script outpu
 
 ### ✅ t1540 — Team 4, Naya Clarity Narzan (lane executor, Mason hat) (Intelligent Blocks) — 9.5/10 [VERIFIED]
 
