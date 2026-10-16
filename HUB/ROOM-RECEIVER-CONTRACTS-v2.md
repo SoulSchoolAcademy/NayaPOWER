@@ -29,14 +29,14 @@ Rooms 1–5 (Smart Feed, Today, Reports, Smart Ledger, Activity Feed) are covere
 ## Room 8 — Your Connections
 **Audited:** `connections-3.html` (86 KB; `connections-10.html` is byte-identical). Key: `naya.mail.compose.request`. 0 network. No bridge seam.
 **Receives:** `connection` — `{id, name, relationship, last_contact_at, notes_ref, source: "user"|"naya"}`.
-**Sender (one writer):** the relationship map (`~/memory/people/` is the human record; the bridge projects consented entries). Table: new `user_connections` (to create).
+**Sender (one writer):** the relationship map (`~/memory/people/` is the human record; the bridge projects consented entries). Table: `user_connections` — **CREATED 2026-10-16** (`alias` → `smart_mail_aliases`, so every connection is directly mailable).
 **Privacy:** personal data — local by default; any cross-device or shared sync needs Shawn's explicit consent path (same gate as the Activity Feed). The contract ships with sync OFF.
 **Honest states:** empty ("no connections added"), private ("kept on this device").
 
 ## Room 9 — Smart Lists
 **Audited:** `lists-3.html` (338 KB). Key: `naya.smartlist`. 0 network. No bridge seam.
 **Receives:** `smart-list` — `{id, title, items: [{text, done}], source: "note"|"manual"|"naya", updated_at}`.
-**Sender (one writer):** the pump (lists distilled from notes) + the user (manual lists) — two writers, one table, split by `source`. Table: new `smart_lists` (to create).
+**Sender (one writer):** the pump (lists distilled from notes) + the user (manual lists) — two writers, one table, split by `source`. Tables: `smart_lists` + `smart_list_items` — **CREATED 2026-10-16** (`space_alias` → a list can live inside a space).
 **Returns:** item check/uncheck → row update → realtime broadcast → every device converges.
 **Honest states:** offline edits queue locally and sync on reconnect; the page says "2 changes waiting to sync."
 
@@ -53,7 +53,7 @@ Rooms 1–5 (Smart Feed, Today, Reports, Smart Ledger, Activity Feed) are covere
 ## Room 11 — Smart Spaces
 **Audited:** `spaces-4.html` (175 KB). Keys: `naya.spaces.pins.v1`, `naya.connection.v1`. 0 network. No bridge seam.
 **Receives:** `space` — `{id, name, pins: [], member_refs: [], updated_at}`.
-**Sender (one writer):** the user + the team (spaces are shared canvases). Table: new `smart_spaces` (to create).
+**Sender (one writer):** the user + the team (spaces are shared canvases). Tables: `smart_spaces` + `smart_space_members` — **CREATED 2026-10-16** (7 spaces seeded from the page registry; members join by alias).
 **Returns:** pin/unpin → row update → realtime → shared members see it live.
 **Honest states:** "you haven't pinned anything here yet," offline queue like Smart Lists.
 
@@ -72,6 +72,10 @@ Rooms 1–5 (Smart Feed, Today, Reports, Smart Ledger, Activity Feed) are covere
 **Honest states:** a setting the bridge can't reach shows "not connected," never a fake toggle.
 
 ---
+
+## The four rooms as one system (Shawn, 2026-10-16)
+
+Mail, Spaces, Connections, Lists share **one address book** (`smart_mail_aliases`) and **one wire** (13 tables on `supabase_realtime`). A connection's alias is their mail address; a space's alias is a channel *and* a shared canvas; a list can live inside a space. Proven live: one query returns a space with its members, its lists, and its mail — four rooms, one system.
 
 ## Build order (T15 broken down)
 
