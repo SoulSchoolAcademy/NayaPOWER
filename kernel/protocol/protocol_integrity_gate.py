@@ -150,6 +150,90 @@ def check_activation_checklist() -> tuple[bool, str]:
     return True, "activation checklist verified: 14 lessons + Operating Code V2 match pinned canonical bytes"
 
 
+def _normalize_newlines(body: bytes) -> bytes:
+    """Universal newlines to LF before hashing (Naya 3, 2026-10-13).
+
+    A Windows checkout stores CRLF where the canonical pins use LF; the
+    documents are semantically identical. Normalizing CRLF/CR -> LF lets
+    equivalent platform line endings pass while any real content change,
+    deletion, or tampering still fails the hash comparison. The gate is
+    not weakened: normalization is semantics-preserving for these text
+    files, and every other failure mode still fails closed.
+    """
+    return body.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+
+
+def check_naya_contract(manifest: dict) -> tuple[bool, str]:
+    """Gate 2 — the Naya Contract must machine-verify at boot.
+
+    Re-hashes NAYA-ACTIVATION/NAYA-CONTRACT-V1.md, naya-contract.json,
+    AND the three identity files the contract declares mandatory
+    (oath, human doctrine, machine doctrine) from the repo's own bytes
+    and compares to the pinned fingerprints in the protocol manifest.
+    Naya 3 proved the gate said PASS with the oath and doctrine absent —
+    that gap is closed: missing identity pins in the manifest, or missing
+    identity files on disk, refuse boot (fail closed).
+    This is contract law, not guidance: who she is, how she operates,
+    how she behaves, the process she follows.
+    Anything missing, tampered, or unreadable fails the gate —
+    no contract pass = no start (fail closed).
+    A passing hash proves document integrity — not comprehension,
+    authorization, or correct behavior.
+    """
+    import hashlib
+    contract = manifest.get("naya_contract")
+    if not contract:
+        return False, "manifest has no naya_contract section — boot refused (fail closed)"
+    pins = contract.get("pinned_sha256") or {}
+    if not pins:
+        return False, "naya_contract has no pinned hashes — boot refused (fail closed)"
+    required_identity = contract.get("identity_files") or []
+    missing_pins = [f for f in required_identity if f not in pins]
+    if missing_pins:
+        return False, (
+            f"manifest missing identity pins: {missing_pins} — "
+            "boot refused (fail closed). The contract declares these mandatory."
+        )
+    for rel, pinned in pins.items():
+        target = ROOT / rel
+        try:
+            body = target.read_bytes()
+        except Exception as e:
+            return False, f"contract file unreadable: {rel} ({e}) — boot refused (fail closed)"
+        digest = hashlib.sha256(_normalize_newlines(body)).hexdigest()
+        if digest != pinned:
+            return False, (
+                f"contract DRIFT: {rel} expected {pinned[:12]} got {digest[:12]} — "
+                "boot refused (fail closed). Amendment requires Shawn's word."
+            )
+    return True, f"naya contract verified: {len(pins)} files match pinned canonical bytes (contract law)"
+
+
+def check_contract_enforcer_live() -> tuple[bool, str]:
+    """Gate 9 — the runtime contract enforcer must self-verify at boot.
+
+    naya-contract.py is not a dead file that merely hashes correctly;
+    its own integrity command must EXECUTE cleanly. This binds the
+    runtime enforcer into the boot path — one system, not two:
+    the gate proves the bytes, the enforcer proves it runs.
+    Any failure (nonzero exit, crash, timeout) fails closed.
+    """
+    tool = ROOT / "NAYA-ACTIVATION" / "naya-contract.py"
+    if not tool.exists():
+        return False, "contract enforcer missing: NAYA-ACTIVATION/naya-contract.py — boot refused (fail closed)"
+    try:
+        result = subprocess.run(
+            [sys.executable, str(tool), "integrity"],
+            capture_output=True, text=True, timeout=30, cwd=ROOT,
+        )
+    except Exception as e:
+        return False, f"contract enforcer did not run ({e}) — boot refused (fail closed)"
+    if result.returncode != 0:
+        err = (result.stderr.strip() or result.stdout.strip())[:200]
+        return False, f"contract enforcer integrity FAILED: {err} — boot refused (fail closed)"
+    return True, "contract enforcer live: naya-contract.py self-integrity holds (one system)"
+
+
 def run_gate(agent_id: str = "unknown") -> dict:
     manifest = load_manifest()
     checks = []
@@ -162,6 +246,8 @@ def run_gate(agent_id: str = "unknown") -> dict:
         ("truth_states_distinct", lambda: check_truth_states_distinct(manifest)),
         ("never_do_complete", lambda: check_never_do_nonempty(manifest)),
         ("activation_checklist", check_activation_checklist),
+        ("naya_contract", lambda: check_naya_contract(manifest)),
+        ("contract_enforcer_live", check_contract_enforcer_live),
     ]
 
     all_pass = True

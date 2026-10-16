@@ -137,6 +137,17 @@ def _sha256_hex(data):
     return hashlib.sha256(bytes(data)).hexdigest()
 
 
+def _normalize_newlines(data):
+    """Universal newlines to LF before hashing (Naya 3, 2026-10-13).
+
+    Windows checkouts store CRLF where canonical pins use LF; the bytes
+    are semantically identical. Normalize so equivalent platform line
+    endings verify, while real content changes still fail the pin.
+    """
+    blob = bytes(data)
+    return blob.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+
+
 def canonical_lesson_bytes(lesson):
     """Deterministic serialization of one lesson dict -> bytes."""
     return json.dumps(lesson, sort_keys=True, separators=(",", ":"),
@@ -196,7 +207,7 @@ def load_canonical(repo_root, v2_root=None):
             blob = _read_bytes(v2_root, rel)
         except OSError as e:
             return None, "cannot read V2 file %s: %s" % (rel, e)
-        v2_hashes[rel] = _sha256_hex(blob)
+        v2_hashes[rel] = _sha256_hex(_normalize_newlines(blob))
         if rel == V2_MACHINE_JSON:
             try:
                 v2_machine = json.loads(blob.decode("utf-8"))
