@@ -77,6 +77,12 @@ Rooms 1–5 (Smart Feed, Today, Reports, Smart Ledger, Activity Feed) are covere
 
 Mail, Spaces, Connections, Lists share **one address book** (`smart_mail_aliases`) and **one wire** (13 tables on `supabase_realtime`). A connection's alias is their mail address; a space's alias is a channel *and* a shared canvas; a list can live inside a space. Proven live: one query returns a space with its members, its lists, and its mail — four rooms, one system.
 
+## Room 13 — Smart Growth (RECORDED, separate, not in the current build line)
+**Shawn, 2026-10-16:** there is a page missing — Smart Growth (a.k.a. Naya Growth), the 10th room per the 2026-10-08 taxonomy. No page file has been supplied yet.
+**What it is:** the growth/invitation system — the EMAIL PROVIDER system where a member connects their own email (Gmail/Outlook OAuth), imports contacts, and sends invitations from their own account, with sent/opened/clicked/joined tracking. (Spec: `nayanet-viral-growth-system-spec`, 2026-10-05.)
+**What it is NOT:** Smart Mail. Smart Mail is NayaNET-native messaging (aliases + spaces) and never touches email. Email providers live here, in Smart Growth, and nowhere else. The two systems share nothing but the member.
+**Status:** RECORDED. The main rooms come first, per Shawn's word. When its page exists, it gets the same contract treatment: receiver contract → bridge-ready → sender (the provider-OAuth service) → honest states.
+
 ## Build order (T15 broken down)
 
 1. Library (table exists, data exists — fastest win after the first five)
