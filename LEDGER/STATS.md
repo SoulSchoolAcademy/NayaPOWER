@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-16 21:35 UTC_
+_Last updated: 2026-10-16 21:52 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 2977
-- ✅ Verified (8+): 2959
+- **Total scored actions:** 2981
+- ✅ Verified (8+): 2963
 - 🟡 Partial (5–7): 17
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 1
@@ -19,12 +19,12 @@ _Last updated: 2026-10-16 21:35 UTC_
 | Team 2 | Naya Sage | 269 | 8.9 | 9.5 |
 | Team 3 | Naya Judge | 188 | 8.9 | 9.5 |
 | Team 4 | Naya Mason | 239 | 9.0 | 9.6 |
-| Team 5 | Naya Seeker | 220 | 9.0 | 9.5 |
+| Team 5 | Naya Seeker | 221 | 9.0 | 9.5 |
 | Team 6 | Naya Heir | 180 | 9.0 | 9.6 |
 | Team 7 | Naya Conductor | 250 | 8.9 | 9.5 |
-| Team 8 | Naya Sentinel | 221 | 9.0 | 9.5 |
-| Team 9 | Naya Smith | 278 | 9.0 | 9.5 |
-| Team 10 | Naya Librarian | 292 | 9.0 | 9.5 |
+| Team 8 | Naya Sentinel | 222 | 9.0 | 9.5 |
+| Team 9 | Naya Smith | 279 | 9.0 | 9.5 |
+| Team 10 | Naya Librarian | 293 | 9.0 | 9.5 |
 | Team 11 | Naya Heart | 179 | 9.0 | 9.5 |
 | Team 12 | Naya Herald | 145 | 9.1 | 9.5 |
 
@@ -328,6 +328,7 @@ _Last updated: 2026-10-16 21:35 UTC_
 - **lane-scorer-20261016-0550:** 1 actions, avg 9.0/10
 - **lane-scorer-20261016-1340:** 1 actions, avg 9.0/10
 - **lane-scorer-20261016-1410:** 2 actions, avg 9.0/10
+- **lane-scorer-20261016-1440:** 1 actions, avg 9.0/10
 - **gap-t0770:** 1 actions, avg 9.5/10
 - **t-contract-selfreview:** 8 actions, avg 8.6/10
 - **t-contract-verify:** 9 actions, avg 8.8/10
@@ -774,6 +775,9 @@ _Last updated: 2026-10-16 21:35 UTC_
 - **t1422:** 27 actions, avg 8.8/10
 - **t1432:** 51 actions, avg 9.0/10
 - **t1442:** 52 actions, avg 9.0/10
+- **t1442-lane10:** 1 actions, avg 9.0/10
+- **t1442-lane8:** 1 actions, avg 9.0/10
+- **t1442-lane9:** 1 actions, avg 9.0/10
 - **t1443:** 6 actions, avg 9.0/10
 - **t1462:** 7 actions, avg 8.9/10
 - **t1463:** 3 actions, avg 8.8/10
