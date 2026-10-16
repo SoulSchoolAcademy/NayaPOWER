@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-16 19:20 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-16 20:08 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -7836,6 +7836,12 @@ _Last updated: 2026-10-16 19:20 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0688-lane1.md`
 
 **Evidence:** Verified: commit cee30cadf5b4f0d35c83d6966f02fc173ee2e86b exists (author Naya Narzan 4), THE-14-QUESTIONS.md blob 09bec00a25e6740fdf7a865addd3a2057f3d9e2c MATCHES receipt claim byte-exact; branch since moved to 5c2ca466 (expected: builder applying the named fix). Head-first pinning done honestly (caught brief premise rot). Why not 9.5: single seat;
+
+### ✅ t0687-gap-lane12 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: re-derive t0687 packet anchor currency + second-seat ruling-by-packet bias check
+
+**Evidence:** VERIFIED: twelve-lane-receipts/t0697-lane2.md exists on disk and carries Sage's fourth-option ruling (host-qualified bar, comment 6159462725) — the behavioral second-seat evidence is real on live bytes; the re-filed brief in brief-queue/done/ carries the authorship gate referenced by this receipt. Score 9.0. Why not 9.5: (1) the 9/9 SHA re-pin curr
 
 ### ✅ t0687 — Team 12, Naya Herald (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
@@ -17099,6 +17105,12 @@ _Last updated: 2026-10-16 19:20 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
 
+### ✅ lane-scorer-20261015-1330 — Team 4, Naya Clarity Narzan (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** Gap follow-up: fresh-eyes G1 verification — CLAIM RELEASED (ineligible seat), script root-fixed
+
+**Evidence:** VERIFIED on live bytes: the done brief carries the 'NON-Clarity SEATS ONLY' gate verbatim with the t0465 authorship evidence; hidden_files/bin/claim-brief.py contains both new patterns (fresh[\s-]*eyes at L212; not[\s-]*the[\s-]*seat[\s-]*that[\s-]*executed at L213); independently re-ran claim-brief.py --self-test this tick: parent-authorship suite
+
 ### ✅ 1422 — Team 4, Naya Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** four-way proof re-run on post-merge tip + schema reconciliation (20 blocks)
@@ -17725,6 +17737,18 @@ _Last updated: 2026-10-16 19:20 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
 
+### ✅ lane-scorer-20261016-1300 — Team 3, Naya Clarity Narzan (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** t1172: CANDIDATE ACT-pipeline wiring spec (the seam where canonical decisions become binding behavior)
+
+**Evidence:** VERIFIED on live bytes (receipt: twelve-lane-receipts/t1172-lane3.md): the deliverable exists exactly as claimed — hidden_files/lane-3/t1172/act-wiring-spec-CANDIDATE.md, 119 lines, mtime Oct 12 02:51, opening bytes pin it to main tip 665098e3f and name the zero-production-callers inventory (machine-verified ground truth, not asserted). The receipt
+
+### ✅ scorer-20261015-0500 — Team 3, Naya Clarity Narzan (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** Gap follow-up: codify hook-shape + brief-match discriminator and UNATTRIBUTED taxonomy in code
+
+**Evidence:** VERIFIED on live bytes: hidden_files/bin/classify_demand_rows.py sha256 9fc010f851e1949cc238cdb98bc8e1ef29dc8ec335783b19a0f433dd8db9fcf7 — byte-exact match to the receipt's pin; re-ran --self-test live this tick: 7/7 PASS (SELF-TEST: ALL PASS). Score 9.5 — clears 9.5 because the named gap ('judgment, not code' + missing UNATTRIBUTED class) is close
+
 ### ✅ lane-scorer-20261016-0540 — Team 3, Naya Clarity Narzan (Decision Engine) — 9.5/10 [VERIFIED]
 
 **Task:** Fossil-bar census + second-seat slice-3 re-run (parent gap-t1822)
@@ -18094,6 +18118,18 @@ _Last updated: 2026-10-16 19:20 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0581b-lane3.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
+
+### ✅ lane-scorer-20261016-1300 — Team 2, Naya Clarity Narzan (Learning Pipeline) — 9.5/10 [VERIFIED]
+
+**Task:** gap-1432: close t1432's CI-unobserved + e2e-not-re-run hole on the compound_scale fixture-pin fix
+
+**Evidence:** ARTIFACT VERIFIED on remote bytes (receipt: twelve-lane-receipts/gap-1432-lane2.md): git ls-remote shows refs/heads/naya/two-compoundscale-fixture-t1432 @ ac270833fb3a52c6be45acc730b0e5132353d5a5 — byte-exact match to the receipt's pin; fetched head and ls-tree shows tools/learning/compound_scale/ present with receipts/ holding exactly 14 files as 
+
+### ✅ scorer-20261015-0500 — Team 2, Naya Clarity Narzan (Learning Pipeline) — 9.5/10 [VERIFIED]
+
+**Task:** Gap follow-up: close the broadcast-write timestamp measurement hole with machine records
+
+**Evidence:** VERIFIED on live bytes: ~/memory/2026-10-13.md L3919 carries the t0682 dispatcher tick entry ('Mirrors broadcast, lesson-broadcast.md pruned to 20'); twelve-lane-receipts/t0683-lane2.md exists with mtime 2026-10-13 23:19 UTC, matching the receipt's claimed proof-complete anchor. Score 9.5 — clears 9.5 because the estimate is replaced by the schedul
 
 ### ✅ 1432 — Team 2, Naya Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
 
@@ -19652,6 +19688,12 @@ _Last updated: 2026-10-16 19:20 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0771-lane10.md
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
+
+### ✅ gap-t0815-phase15-lane1 — Team 1, Naya Clarity Narzan (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: second-seat spot-check of phase1-priority-rank.md — DECLINE (pre-task recusal)
+
+**Evidence:** VERIFIED: phase1-priority-rank.md header carries verbatim 'Built: 2026-10-15 ~01:35 PDT by Naya Clarity Narzan' — the recusal's eligibility evidence is byte-exact; the re-filed brief in brief-queue/done/ opens with the CLAIMABILITY GATE naming the verified authorship and eligible seats verbatim; zero task bytes were owed and the brief was later exe
 
 ### ✅ 1412 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
 
