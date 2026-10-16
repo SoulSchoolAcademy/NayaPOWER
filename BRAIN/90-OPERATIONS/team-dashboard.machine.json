@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-16T05:15:26+00:00",
+ "generated_utc": "2026-10-16T06:15:57+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -348,6 +348,12 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2698,
+     "title": "Land 4 activation docs on main (gr-w277-repoint-4)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2698",
+     "draft": false
+    },
+    {
      "number": 2691,
      "title": "[DRAFT] PUMP phase 1: schedule plumbing for agent capture (review only, do not merge)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2691",
@@ -388,15 +394,9 @@
      "title": "[TRUTH] Site verdicts must not contradict violation status (CV-04/CV-05 stale LIES)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2650",
      "draft": false
-    },
-    {
-     "number": 2640,
-     "title": "SN-0798: backpropagation credit-assignment logic (Naya 3) - CANDIDATE",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2640",
-     "draft": false
     }
    ],
-   "open_pr_count": 223
+   "open_pr_count": 224
   },
   {
    "id": "wire",
@@ -416,6 +416,12 @@
    "active_now": false,
    "board_lane": "#2175 lane WIRE",
    "open_prs": [
+    {
+     "number": 2697,
+     "title": "HTTP-DETAIL: log truncated HTTP error bodies in ci_claim_evidence_gate.api_get",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2697",
+     "draft": false
+    },
     {
      "number": 2696,
      "title": "fix(gate): fail-closed FUTURE rung on receipt-pin decided_at (Judge wave-216, L300/L316)",
@@ -457,15 +463,9 @@
      "title": "docs: name merge-consensus gate legs (a)/(b)/(c) as one-line verifier tests",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2636",
      "draft": false
-    },
-    {
-     "number": 2635,
-     "title": "Name the backticked-branch-name trap in the receipt-gate fix hint",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2635",
-     "draft": false
     }
    ],
-   "open_pr_count": 122
+   "open_pr_count": 123
   },
   {
    "id": "team",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 591,
- "unassigned_prs": 223
+ "open_pr_total": 593,
+ "unassigned_prs": 224
 }
