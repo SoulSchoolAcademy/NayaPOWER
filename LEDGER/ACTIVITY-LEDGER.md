@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-16 14:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-16 14:27 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -22,6 +22,18 @@ _Last updated: 2026-10-16 14:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 | Team 12 | Naya Herald | NayaNET / Hub |
 
 ## Verified Actions (newest first)
+
+### ✅ t2330 — Team 4, gap-t2330 (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** gap-t2330-lane4: skew-table independent re-tally
+
+**Evidence:** VERIFIED: independently re-ran the t0539 window predicate (kind==query, 2026-10-12 10:17:32->13:10:38 PDT, datetime comparison) against raw ask-world-queries.jsonl bytes: 30 windowed query rows; all 12 skew cells reproduce the v2 draft exactly (1:2 2:2 3:3 4:1 5:5 6:1 7:1 8:3 9:1 10:3 11:1 12:1), class_prior 24/6 = 0.80/0.20. CLEARS 9.5: the named 
+
+### ✅ t2330 — Team 1, gap-t2330 (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** gap-t2330-lane1: seal byte-purity GAP close on t0545
+
+**Evidence:** VERIFIED: instrument t0545_taskdecomp.py sha256 78731f469905a577315afee7c59da0aefa52ff5bdd75cfd079a927de138d53ce byte-exact; new seal results-t0545-taskdecomp.json pin c61b73a79620930a89479d98078cdf95214c76267edfbb3566d6d021f254dd09 byte-exact; seal is instrument-pure (_prereg carries no instrument_sha256, _battery.P5_determinism is the instrument 
 
 ### ✅ t1542-0941 — Team 2, Naya Clarity Narzan (Learning Pipeline) — 9.5/10 [VERIFIED]
 
@@ -14399,6 +14411,14 @@ _Last updated: 2026-10-16 14:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified via git protocol + REST: 5/5 PR head pins match receipt, #1124 closed-unmerged confirmed, #1130 open-draft Shawn-gated confirmed. Named 3 fresh merge-bar blockers incl. SEAT_RE lane-tag gap (blocks all lane-authored PRs). -1.5: fossil leg was spot-check verification of Lane 8's t1252 closes, not original action.
 
+### ✅ t0012 — Team 6, t0012 (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** t0012-lane6: SGF cold dry run reproduction of t992 claim
+
+**Receipt:** `twelve-lane-receipts/t0012-lane6.md`
+
+**Evidence:** VERIFIED: lane-6/sgf-daily/run-2026-10-12-T2/ artifacts on disk (scorecard daily_score 9.95, task_verdict RECEIPT_REFUTED, capability CAPABILITY-TRANSFERS); branch naya/nine-receipt-gate-t902 live head a545f11079ca77ce6789d224ab519f272c7ca0e4 byte-exact vs the receipt's ls-remote claim (re-verified this tick). GOOD, ONE MORE PASS. WHY NOT 9.5: (1) 
+
 ### ✅ t0012 — Team 6, Naya Clarity Narzan (Successor Transfer) — 9.0/10 [VERIFIED]
 
 **Task:** t0012 meta-trend refresh + SGF cold reproduction refuting t992 9.65 claim
@@ -14460,6 +14480,14 @@ _Last updated: 2026-10-16 14:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0012-lane6.md`
 
 **Evidence:** Artifacts on disk verified: run dir 9 artifacts, meta-trend.json present, tip pin aa8061c1 == live. Reproduction REPRODUCED-WITH-DRIFT with exact divergence points named; fixed exec_lane checker bug; fresh catch brief-5-vs-receipt-4 files. -1: same-family scorer (disclosed), N=1 reproduction.
+
+### ✅ t0012 — Team 1, t0012 (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** t0012-lane1: veracity arm verification + closure
+
+**Receipt:** `twelve-lane-receipts/t0012-lane1.md`
+
+**Evidence:** VERIFIED: four-way-template/VERACITY-ARM.md on disk; battery.py sha256 6e855e783182a9b1070eac373f4e94205b9b45e286ddbee698aec09977479fa8 byte-exact vs receipt pin; baseline 6/14 and candidate 14/14 re-derived from the JSON records; blinded-scores-t1302.md ends in Verdict: CERTIFIED. GOOD, ONE MORE PASS. WHY NOT 9.5: (1) the blinded-certification esc
 
 ### ✅ t0012 — Team 1, Naya Clarity Narzan (Verification & Proof) — 8.5/10 [VERIFIED]
 
