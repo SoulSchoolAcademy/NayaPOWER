@@ -431,3 +431,72 @@ def test_naya_5_review_path_still_works(capsys):
     out = capsys.readouterr().out
     assert "CONSENSUS GATE PASSED" in out
     assert "reviewer Naya 5" in out
+
+
+HEAD_STC = "9f80e8eccfbe8256ec7ce069c61cd38cc86430ce"
+
+
+class _SelfTestScorecard:
+    """theta-w246-selftest-cli: the --self-test-scorecard entry point."""
+
+
+def test_self_test_scorecard_accepts_valid_receipt(tmp_path, capsys):
+    from check_merge_consensus import self_test_scorecard
+
+    receipt = tmp_path / "receipt.md"
+    receipt.write_text(
+        f"## SCORECARD\nhead: {HEAD_STC}\nHonest scorecard: 9.5/10\n"
+        "Seat: Naya Epsilon\n"
+    )
+    self_test_scorecard(str(receipt), HEAD_STC)  # must not raise
+    out = capsys.readouterr().out
+    assert "SCORECARD SELF-TEST PASSED" in out
+
+
+def test_self_test_scorecard_rejects_wrong_sha(tmp_path, capsys):
+    from check_merge_consensus import self_test_scorecard
+
+    receipt = tmp_path / "receipt.md"
+    receipt.write_text(
+        "## SCORECARD\nhead: deadbeefdeadbeefdeadbeefdeadbeefdeadbeef\n"
+        "Honest scorecard: 9.5/10\nSeat: Naya Epsilon\n"
+    )
+    with pytest.raises(SystemExit) as exc:
+        self_test_scorecard(str(receipt), HEAD_STC)
+    assert exc.value.code == 1
+    out = capsys.readouterr().out
+    assert "SCORECARD SELF-TEST FAILED" in out
+    assert "MISSING" in out  # the diagnostic names the missing piece
+
+
+def test_self_test_scorecard_missing_file_fails_closed(capsys):
+    from check_merge_consensus import self_test_scorecard
+
+    with pytest.raises(SystemExit) as exc:
+        self_test_scorecard("/no/such/receipt.md", HEAD_STC)
+    assert exc.value.code == 1
+    assert "CONSENSUS GATE FAILED" in capsys.readouterr().out
+
+
+def test_self_test_scorecard_verdict_matches_gate_matcher(tmp_path):
+    """Parity property: the CLI's verdict equals _looks_like_scorecard on the
+    same body. The CLI must never accept what the gate rejects."""
+    from check_merge_consensus import _looks_like_scorecard, self_test_scorecard
+
+    bodies = [
+        f"## SCORECARD\nhead: {HEAD_STC}\nverdict: 9.5\nSeat: Naya Epsilon",
+        f"## VERDICT: MERGE RECOMMENDED\nhead: {HEAD_STC}\nSeat: Naya Kappa",
+        f"## SCORECARD\nhead: {HEAD_STC}\nscorecard: 8.0\nSeat: Naya Epsilon",
+        "some notes with no scorecard keyword and no sha",
+        f"## SCORECARD\nhead: wrongsha\nHonest scorecard: 9.4/10\nSeat: Naya Epsilon",
+    ]
+    for i, body in enumerate(bodies):
+        receipt = tmp_path / f"r{i}.md"
+        receipt.write_text(body)
+        try:
+            self_test_scorecard(str(receipt), HEAD_STC)
+            accepted = True
+        except SystemExit as e:
+            assert e.code == 1
+            accepted = False
+        assert accepted == _looks_like_scorecard(body, HEAD_STC), body
