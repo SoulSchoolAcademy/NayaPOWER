@@ -127,6 +127,9 @@ jobs:
               )
               if s is None or s >= 500:
                   fail(f"heartbeat: receiver endpoint unreachable or erroring (http {s})")
+              # Any HTTP response below 500 counts as reachable: a 4xx means the
+              # function is deployed and routing (GET can never create a note);
+              # only 5xx or no response at all fails loud.
               print(f"HEARTBEAT_OK secrets=ok signin=ok receiver=http_{s} (no Smart Note posted)")
               sys.exit(0)
 
