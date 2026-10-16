@@ -1,6 +1,6 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-16 04:16 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-16 05:15 UTC from live sources. Regenerated every wave (~10 min).*
 
 **Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 591 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
@@ -95,13 +95,13 @@
 - [#2684](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2684) [Naya 5] The canonical complete-puzzle system map
 - …and 218 more
 
-### WIRE (121)
+### WIRE (122)
+- [#2696](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2696) fix(gate): fail-closed FUTURE rung on receipt-pin decided_at (Judge wa
 - [#2692](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2692) [DOCK] gate-403-response-body: byte-capture the next gate 403
 - [#2690](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2690) Gate reliability: transient API failures → UNKNOWN (exit 2), never wro
 - [#2681](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2681) Teach fail-closed gates quota-vs-permission 403 (INCONCLUSIVE/RETRY)
 - [#2676](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2676) Canonical 9-note Smart Note source for the Smart Feed live wire (t0473
-- [#2645](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2645) KNOW gaterepair (w247): doc_completeness_check fail→warning + grep-fla
-- …and 116 more
+- …and 117 more
 
 ### TEAM (12)
 - [#2618](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2618) [DRAFT] Advisory post-conformance scan for the Team Feed Standard 📝draft
@@ -111,13 +111,13 @@
 - [#2397](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2397) feat(dashboard): live Team Naya activity dashboard — markdown + machin
 - …and 7 more
 
-### INFRA (40)
-- [#2695](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2695) [DECISION] Converge consensus _classify_http_error onto tools/http_403
+### INFRA (39)
 - [#2689](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2689) CI rate-limit resilience: cut redundant API burn (~85% on hot paths)
 - [#2649](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2649) Add TEAM-ROSTER.md: the verified sets (leads, area leads, lane agents,
 - [#2638](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2638) REVIEW: merge masterclass draft + circles system (not for main merge)
 - [#2593](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2593) CANDIDATE: veracity demote for FALSIFIED lessons at retrieve (t0762 l…
-- …and 35 more
+- [#2589](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2589) Add decision CLI front door to value_calculus (tools/decision_cli.py)
+- …and 34 more
 
 ### PRODUCT (33)
 - [#2685](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2685) HUB/BLUEPRINT.ai.md — canonical team reference: the complete system ma

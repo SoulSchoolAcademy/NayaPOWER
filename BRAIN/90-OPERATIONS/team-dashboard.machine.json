@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-16T04:16:21+00:00",
+ "generated_utc": "2026-10-16T05:15:26+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -417,6 +417,12 @@
    "board_lane": "#2175 lane WIRE",
    "open_prs": [
     {
+     "number": 2696,
+     "title": "fix(gate): fail-closed FUTURE rung on receipt-pin decided_at (Judge wave-216, L300/L316)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2696",
+     "draft": false
+    },
+    {
      "number": 2692,
      "title": "[DOCK] gate-403-response-body: byte-capture the next gate 403",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2692",
@@ -457,15 +463,9 @@
      "title": "Name the backticked-branch-name trap in the receipt-gate fix hint",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2635",
      "draft": false
-    },
-    {
-     "number": 2633,
-     "title": "[DRAFT] Receipt gate: read LIVE PR body + fire on edited (kill stale-payload class)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2633",
-     "draft": true
     }
    ],
-   "open_pr_count": 121
+   "open_pr_count": 122
   },
   {
    "id": "team",
@@ -555,12 +555,6 @@
    "board_lane": "#2175 lane INFRA",
    "open_prs": [
     {
-     "number": 2695,
-     "title": "[DECISION] Converge consensus _classify_http_error onto tools/http_403.py",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2695",
-     "draft": false
-    },
-    {
      "number": 2689,
      "title": "CI rate-limit resilience: cut redundant API burn (~85% on hot paths)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2689",
@@ -601,9 +595,15 @@
      "title": "Reconcile NayaPOWER live backlog: 28 blockers, solutions, owners, double-check law",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2563",
      "draft": true
+    },
+    {
+     "number": 2530,
+     "title": "[DOCK INTAKE w84] naya-gamma/sibling-truncation-board-claim-scan \u2014 CI intake only (NOT mer",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2530",
+     "draft": false
     }
    ],
-   "open_pr_count": 40
+   "open_pr_count": 39
   },
   {
    "id": "product",
