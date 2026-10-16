@@ -13,10 +13,15 @@ name: Mission State Watch
 # "no checkout" as a design goal; that was wrong and produced a
 # deterministic exit-2 (python3 could not find the script on the bare
 # runner). The checkout below fixes it.
+#
+# RATE-LIMIT DISCIPLINE (2026-10-16): cadence reduced from every 45 min to
+# hourly. The director refreshes ~every 30 min; worst-case staleness
+# detection moves from ~45 to ~60 min — acceptable for an advisory alert —
+# while cutting scheduled runs (and their API calls) by 25%.
 
 on:
   schedule:
-    - cron: '*/45 * * * *'
+    - cron: '0 * * * *'
   workflow_dispatch:
 
 jobs:

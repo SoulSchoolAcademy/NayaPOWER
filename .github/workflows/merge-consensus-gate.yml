@@ -28,6 +28,13 @@ permissions:
   pull-requests: read
   issues: read
 
+# Rate-limit discipline: a rapid push/comment burst must not run N stale
+# copies of this gate. Only the newest run per PR survives — a newer event
+# always re-evaluates with fresher state anyway.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.event.issue.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   consensus:
     name: Team review + scorecard receipt
@@ -46,12 +53,13 @@ jobs:
           if [ "${{ github.event_name }}" = "issue_comment" ]; then
             PR_NUM="${{ github.event.issue.number }}"
             echo "pr_number=$PR_NUM" >> $GITHUB_OUTPUT
-            # Retry the API call up to 5 times with backoff (rate-limit
+            # Retry the API call up to 3 times with backoff (rate-limit
             # resilience: comment events fire during merge bursts when the
-            # shared token quota is exhausted; a hard fail here is the same
-            # chronic-red family as the consensus step itself)
+            # shared token quota is exhausted. Attempts beyond 3 burn quota
+            # against a sustained outage with ~zero chance of recovery; a
+            # hard fail here surfaces as re-runnable, not as a verdict.)
             HEAD_SHA=""
-            for attempt in 1 2 3 4 5; do
+            for attempt in 1 2 3; do
               if HEAD_SHA=$(gh api "repos/${{ github.repository }}/pulls/$PR_NUM" --jq .head.sha 2>/dev/null) && [ -n "$HEAD_SHA" ]; then
                 break
               fi
@@ -59,7 +67,7 @@ jobs:
               sleep $((attempt * 10))
             done
             if [ -z "$HEAD_SHA" ]; then
-              echo "ERROR: could not resolve head SHA for PR $PR_NUM after 5 attempts (API unavailable, not a consensus verdict)" >&2
+              echo "ERROR: could not resolve head SHA for PR $PR_NUM after 3 attempts (API unavailable, not a consensus verdict)" >&2
               exit 1
             fi
             # Fail-closed SHA binding: only a well-formed 40-hex git SHA may

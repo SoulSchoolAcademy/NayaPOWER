@@ -26,6 +26,13 @@ on:
     branches: [main]
     types: [opened, synchronize, reopened, edited]
 
+# Rate-limit discipline: a rapid push burst (worker sprints) must not run N
+# stale copies of every gate. Only the newest run per PR survives; older
+# queued/in-progress runs are cancelled before they burn API calls.
+concurrency:
+  group: worker-protocol-gates-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
 jobs:
   receipt:
     name: Receipt gate (evidence or it didn't happen)
@@ -61,11 +68,29 @@ jobs:
   overlap:
     name: Duplicate-work watch (advisory)
     runs-on: ubuntu-latest
+    # Rate-limit discipline: this job is the hottest API consumer in the gate
+    # suite (1 + N calls, N = open PRs). `edited` events change no files, so
+    # they are skipped outright. On synchronize the file set may have
+    # changed — but the advisory posts once per PR (marker-gated), so a
+    # 1-call marker pre-check skips the N+2-call scan when the warning is
+    # already posted. If the API is blind the pre-check degrades to 0 and the
+    # scan runs, preserving the script's own graceful-skip behavior.
+    if: github.event.action != 'edited'
     steps:
+      - name: Check for an already-posted overlap warning (1 API call)
+        id: marker
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          count=$(gh api "repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments?per_page=100" \
+            --jq '[.[] | select(.body != null and (.body | contains("<!-- overlap-watch -->")))] | length' 2>/dev/null || echo 0)
+          echo "posted=$count" >> "$GITHUB_OUTPUT"
       - uses: actions/checkout@v4
+        if: steps.marker.outputs.posted == '0'
         with:
           fetch-depth: 0
       - name: Warn on overlapping open PRs
+        if: steps.marker.outputs.posted == '0'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}

@@ -12,6 +12,12 @@ on:
   push:
     branches: ["main"]
 
+# Rate-limit discipline: a rapid push burst must not run N stale copies of
+# this gate. Only the newest run per PR (or per ref on push) survives.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   spec-integrity:
     runs-on: ubuntu-latest

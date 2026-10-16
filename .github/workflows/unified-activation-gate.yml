@@ -37,6 +37,12 @@ permissions:
   contents: read
   actions: write # the proof dispatches the real mint workflow (issuance e2e)
 
+# Rate-limit discipline: a rapid push burst must not run N stale copies of
+# this proof. Only the newest run per PR (or per ref on push) survives.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   gate-proof:
     runs-on: ubuntu-latest

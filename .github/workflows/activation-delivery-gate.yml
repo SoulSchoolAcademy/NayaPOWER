@@ -46,6 +46,12 @@ permissions:
   pull-requests: read
   actions: read
 
+# Rate-limit discipline: a rapid push burst must not run N stale copies of
+# this gate. Only the newest run per PR survives.
+concurrency:
+  group: activation-delivery-gate-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
 jobs:
   delivery-gate:
     runs-on: ubuntu-latest
