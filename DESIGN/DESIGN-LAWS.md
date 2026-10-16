@@ -141,7 +141,7 @@ There is one button DNA (`.naya-btn`) with job-specific variants (lead, machine,
 2. **Clumped color.** Purple-purple-purple. A run of greens. Adjacent zones sharing a hue.
 3. **Theme color on chrome; chrome color as a flood.** Spectrum accents never rest on buttons; purple never floods a surface.
 4. **Gray body text.** It's unreadable.
-5. **A face, an avatar, a robot, a character standing in for her.** Never.
+5. **Shrinking Naya to one thing.** She has a face AND she is energy — never just a logo, never just a robot, never a stock avatar or mascot standing in for her. Her presence is light with a face, not a costume.
 6. **Quality toggles.** No "basic vs premium," no modes. Excellence has no toggle.
 7. **Light backgrounds.** Zero white or light surfaces, ever.
 8. **A second version of something that exists.** Never duplicate a canonical object. Ten specimens is a menu; one is a standard.
