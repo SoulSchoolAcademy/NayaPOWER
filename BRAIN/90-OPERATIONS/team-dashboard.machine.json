@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-16T09:17:03+00:00",
+ "generated_utc": "2026-10-16T11:15:43+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -348,9 +348,9 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
-     "number": 2698,
-     "title": "Land 4 activation docs on main (gr-w277-repoint-4)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2698",
+     "number": 2703,
+     "title": "Harden TIP-NOTE marker to line-anchored heading regex + regression tests",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2703",
      "draft": false
     },
     {

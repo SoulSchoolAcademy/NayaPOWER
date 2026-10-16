@@ -1,6 +1,6 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-16 09:16 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-16 11:15 UTC from live sources. Regenerated every wave (~10 min).*
 
 **Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 594 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
@@ -88,7 +88,7 @@
 - …and 24 more
 
 ### BUILD (224)
-- [#2698](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2698) Land 4 activation docs on main (gr-w277-repoint-4)
+- [#2703](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2703) Harden TIP-NOTE marker to line-anchored heading regex + regression tes
 - [#2691](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2691) [DRAFT] PUMP phase 1: schedule plumbing for agent capture (review only 📝draft
 - [#2688](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2688) HIVE mother-brain navigation — two-speed repo orientation (machine + h
 - [#2687](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2687) Living Map compiler v1 — the map becomes a measurement
