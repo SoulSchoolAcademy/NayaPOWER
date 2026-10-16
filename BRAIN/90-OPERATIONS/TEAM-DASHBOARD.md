@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-16 22:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-16 23:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 601 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 604 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -87,13 +87,13 @@
 - [#2585](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2585) Add automatic scorecard calculator (tools/scorecard.py + tests)
 - …and 25 more
 
-### BUILD (229)
+### BUILD (230)
+- [#2714](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2714) DESIGN: adopt 144-block catalog extension into BLOCKS.md
+- [#2712](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2712) fix(connect): land CONNECT seam on tip 83806f4d — registry entrypoint 
 - [#2710](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2710) IB: persist tools/ph_aggregation.py — p/h aggregation step for grade-a
 - [#2709](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2709) [ACT] Pre-post PR body self-check (pr_body_selfcheck.py)
 - [#2708](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2708) Design Laws v1 (DRAFT): three-tongue repo placement 📝draft
-- [#2707](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2707) DESIGN: curated smart-block library — one language, best-of-best
-- [#2705](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2705) Design System v1 — the Naya Lego box (100 laws, tokens, catalog, organ 📝draft
-- …and 224 more
+- …and 225 more
 
 ### WIRE (123)
 - [#2704](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2704) fix(gate): consensus gate skips issue_comment events without a verdict
@@ -119,13 +119,13 @@
 - [#2589](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2589) Add decision CLI front door to value_calculus (tools/decision_cli.py)
 - …and 34 more
 
-### PRODUCT (35)
+### PRODUCT (37)
+- [#2713](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2713) t0907: block catalog — 457 canonical NAYA-XXX-NNN blocks + coverage
+- [#2711](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2711) Hub Drive: ingest design-language block sources
 - [#2701](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2701) HUB sync contract — Goal #1 Hub Smart Feed contract (three tongues)
 - [#2700](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2700) [DRAFT] HUB MASTER BUILD CONTRACT v1 (review only, do not merge) 📝draft
 - [#2685](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2685) HUB/BLUEPRINT.ai.md — canonical team reference: the complete system ma
-- [#2680](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2680) t0483: hourly schedule pump for NayaNET Agent Capture
-- [#2679](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2679) Hub runtime: window.NayaPowerRuntime bridge module + green harness — t
-- …and 30 more
+- …and 32 more
 
 ### MEMORY (6)
 - [#2644](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2644) 0008 Intelligent Block V1 — CONVERGED sender contract (three tongues, 

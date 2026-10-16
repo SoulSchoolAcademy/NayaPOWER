@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-16T22:16:16+00:00",
+ "generated_utc": "2026-10-16T23:15:36+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -348,6 +348,18 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2714,
+     "title": "DESIGN: adopt 144-block catalog extension into BLOCKS.md",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2714",
+     "draft": false
+    },
+    {
+     "number": 2712,
+     "title": "fix(connect): land CONNECT seam on tip 83806f4d \u2014 registry entrypoint + selector test",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2712",
+     "draft": false
+    },
+    {
      "number": 2710,
      "title": "IB: persist tools/ph_aggregation.py \u2014 p/h aggregation step for grade-acceptance cold execu",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2710",
@@ -382,21 +394,9 @@
      "title": "Harden TIP-NOTE marker to line-anchored heading regex + regression tests",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2703",
      "draft": false
-    },
-    {
-     "number": 2691,
-     "title": "[DRAFT] PUMP phase 1: schedule plumbing for agent capture (review only, do not merge)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2691",
-     "draft": true
-    },
-    {
-     "number": 2688,
-     "title": "HIVE mother-brain navigation \u2014 two-speed repo orientation (machine + human)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2688",
-     "draft": false
     }
    ],
-   "open_pr_count": 229
+   "open_pr_count": 230
   },
   {
    "id": "wire",
@@ -624,6 +624,18 @@
    "board_lane": "#2175 lane PRODUCT",
    "open_prs": [
     {
+     "number": 2713,
+     "title": "t0907: block catalog \u2014 457 canonical NAYA-XXX-NNN blocks + coverage",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2713",
+     "draft": false
+    },
+    {
+     "number": 2711,
+     "title": "Hub Drive: ingest design-language block sources",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2711",
+     "draft": false
+    },
+    {
      "number": 2701,
      "title": "HUB sync contract \u2014 Goal #1 Hub Smart Feed contract (three tongues)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2701",
@@ -658,21 +670,9 @@
      "title": "Hub feeds: first room-feed/v1 emissions (today, lists, spaces) \u2014 t0479",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2678",
      "draft": false
-    },
-    {
-     "number": 2648,
-     "title": "Add field manual 37: GitHub access (two identities, fresh-machine setup)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2648",
-     "draft": false
-    },
-    {
-     "number": 2624,
-     "title": "Phase 1 AUDIT: BRAIN/ navigation map + gap list (Naya-Optimized GitHu\u2026",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2624",
-     "draft": false
     }
    ],
-   "open_pr_count": 35
+   "open_pr_count": 37
   },
   {
    "id": "memory",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 601,
- "unassigned_prs": 229
+ "open_pr_total": 604,
+ "unassigned_prs": 230
 }
