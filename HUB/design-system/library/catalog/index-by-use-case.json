@@ -1064,7 +1064,9 @@
   "NAYA-TYP-027",
   "NAYA-TYP-028",
   "NAYA-TYP-029",
-  "NAYA-TYP-030"
+  "NAYA-TYP-030",
+  "NAYA-CAL-001",
+  "NAYA-ONB-003"
  ],
  "feed": [
   "NAYA-BTN-001",
@@ -1521,7 +1523,16 @@
   "NAYA-TYP-027",
   "NAYA-TYP-028",
   "NAYA-TYP-029",
-  "NAYA-TYP-030"
+  "NAYA-TYP-030",
+  "NAYA-CAL-002",
+  "NAYA-CAL-004",
+  "NAYA-PAY-001",
+  "NAYA-PAY-003",
+  "NAYA-CHT-003",
+  "NAYA-CHT-005",
+  "NAYA-CMT-001",
+  "NAYA-CMT-002",
+  "NAYA-CMT-003"
  ],
  "chat": [
   "NAYA-BTN-001",
@@ -1763,7 +1774,10 @@
   "NAYA-JWL-083",
   "NAYA-JWL-084",
   "NAYA-JWL-085",
-  "NAYA-JWL-086"
+  "NAYA-JWL-086",
+  "NAYA-CHT-003",
+  "NAYA-CHT-004",
+  "NAYA-CHT-005"
  ],
  "settings": [
   "NAYA-BTN-001",
@@ -2566,7 +2580,8 @@
   "NAYA-TYP-027",
   "NAYA-TYP-028",
   "NAYA-TYP-029",
-  "NAYA-TYP-030"
+  "NAYA-TYP-030",
+  "NAYA-ONB-002"
  ],
  "form": [
   "NAYA-BTN-001",
@@ -2771,7 +2786,11 @@
   "NAYA-LST-039",
   "NAYA-LST-040",
   "NAYA-LST-041",
-  "NAYA-LST-042"
+  "NAYA-LST-042",
+  "NAYA-PAY-002",
+  "NAYA-PAY-005",
+  "NAYA-CAL-003",
+  "NAYA-ONB-001"
  ],
  "player": [
   "NAYA-BTN-001",
@@ -2930,11 +2949,35 @@
   "NAYA-BTN-158",
   "NAYA-MED-001"
  ],
- "onboarding": [],
- "checkout": [],
+ "onboarding": [
+  "NAYA-ONB-001",
+  "NAYA-ONB-002",
+  "NAYA-ONB-003"
+ ],
+ "checkout": [
+  "NAYA-PAY-001",
+  "NAYA-PAY-002",
+  "NAYA-PAY-003",
+  "NAYA-PAY-004",
+  "NAYA-PAY-005"
+ ],
  "search": [],
  "notifications": [],
- "error-states": [],
+ "error-states": [
+  "NAYA-PAY-004"
+ ],
  "loading-states": [],
- "empty-states": []
+ "empty-states": [],
+ "calendar": [
+  "NAYA-CAL-001",
+  "NAYA-CAL-002",
+  "NAYA-CAL-003",
+  "NAYA-CAL-004",
+  "NAYA-CAL-005"
+ ],
+ "comments": [
+  "NAYA-CMT-001",
+  "NAYA-CMT-002",
+  "NAYA-CMT-003"
+ ]
 }

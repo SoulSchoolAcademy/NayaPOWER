@@ -1,6 +1,6 @@
 # Block Catalog — Coverage Report (t0907)
 
-**459 canonical blocks** · model numbers `NAYA-<CAT>-<NNN>` · 18 of 49 interface-inventory items HAVE · **31 GAPs = the build list for the next wave**
+**478 canonical blocks** · model numbers `NAYA-<CAT>-<NNN>` · 25 of 51 interface-inventory items HAVE · **26 GAPs = the build list for the next wave**
 
 Source: `block-catalog.json` (this folder). Models referenced below are checkable there.
 
@@ -19,9 +19,9 @@ Source: `block-catalog.json` (this folder). Models referenced below are checkabl
 | 9 | avatars | ❌ GAP | App icons exist; no user-avatar block. Build: avatar with presence states |
 | 10 | input | ✅ HAVE | NAYA-CRD-085 (INPUT/FORM specimen — labeled input with recessed well) |
 | 11 | textarea | ❌ GAP | Build: multiline variant of the input block |
-| 12 | select | ❌ GAP | Build: dropdown select block |
+| 12 | select | ❌ GAP (partial) | NAYA-CAL-003 (dropdown date picker — partial coverage, not a generic select) |
 | 13 | checkbox | ✅ HAVE | NAYA-FRM-001..006 (Pre-ship checklist checkbox rows) |
-| 14 | radio | ❌ GAP | Build: radio group block |
+| 14 | radio | ✅ HAVE | NAYA-PAY-005 (genuine radiogroup — real <label>+radio, no JS needed) |
 | 15 | toggle | ✅ HAVE | NAYA-FRM-007 (gap-t0907 promotion: toggle pairs in the production settings-row block; specimen was NAYA-CRD-090) |
 | 16 | slider | ❌ GAP | Build: range slider block |
 | 17 | search bar | ✅ HAVE | NAYA-CRD-089 (SEARCH INTERFACE specimen) |
@@ -35,24 +35,24 @@ Source: `block-catalog.json` (this folder). Models referenced below are checkabl
 | 25 | table | ✅ HAVE | NAYA-CRD-088 (DATA TABLE specimen — Block/State/Proof columns) |
 | 26 | list row | ✅ HAVE | NAYA-LST-002 (list specimen, "Every bullet a jewel") |
 | 27 | feed card | ✅ HAVE | NAYA-CRD-091 (content card), NAYA-CRD-004 (intelligence board) |
-| 28 | comment | ❌ GAP | Build: comment thread block |
-| 29 | chat bubble | ❌ GAP | Build: chat message bubble block |
+| 28 | comment | ✅ HAVE | NAYA-CMT-001 (comment thread), NAYA-CMT-002 (single comment), NAYA-CMT-003 (reaction row) |
+| 29 | chat bubble | ✅ HAVE | NAYA-CHT-003 (chat bubbles in/out), NAYA-CHT-004 (typing indicator), NAYA-CHT-005 (message list) |
 | 30 | gallery grid | ❌ GAP | Build: image grid block |
 | 31 | lightbox | ❌ GAP | Build: media overlay block |
 | 32 | audio player | ✅ HAVE | NAYA-MED-001 (gap-t0907 promotion: standalone production media-player block; specimen was NAYA-CRD-092) |
 | 33 | video player | ❌ GAP | Build: video player block |
-| 34 | progress bar | ❌ GAP | Build: progress indicator block |
+| 34 | progress bar | ✅ HAVE | NAYA-ONB-003 (bar + ring + indeterminate, four-mouths-one-truth) |
 | 35 | spinner | ❌ GAP | Build: loading spinner block |
 | 36 | skeleton loader | ❌ GAP | Build: skeleton shimmer block |
-| 37 | empty state | ❌ GAP | Build: empty-state illustration + copy block |
-| 38 | error state | ❌ GAP | Build: error-state block |
+| 37 | empty state | ✅ HAVE | NAYA-CAL-004 (empty day with dignity), NAYA-PAY-001 (empty cart) |
+| 38 | error state | ✅ HAVE | NAYA-PAY-004 ('No money moved' — unknown-cause stated, never hidden) |
 | 39 | 404 | ❌ GAP | Build: 404 page block |
 | 40 | breadcrumbs | ❌ GAP | Build: breadcrumb trail block |
 | 41 | footer | ❌ GAP | Build: footer block |
 | 42 | sidebar | ❌ GAP | hub-rail (NAYA-NAV-001) is adjacent vertical nav, not a sidebar panel. Build: sidebar panel block |
 | 43 | stat card | ❌ GAP | Build: metric/stat card (number + label + delta) |
 | 44 | chart container | ✅ HAVE | NAYA-CRD-093 (CHART/DATA-VIZ anatomy specimen) |
-| 45 | timeline | ❌ GAP | Build: timeline block |
+| 45 | timeline | ✅ HAVE | NAYA-CAL-004 (agenda timeline with event spine) |
 | 46 | pricing card | ❌ GAP | Build: pricing tier card |
 | 47 | testimonial | ❌ GAP | Build: testimonial/quote card |
 | 48 | CTA band | ❌ GAP | CTA *button* exists (NAYA-BTN-158 "✦ ENTER THE STANDARD"); no full-width band section. Build: CTA band section |

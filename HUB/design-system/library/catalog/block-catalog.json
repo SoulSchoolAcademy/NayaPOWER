@@ -15778,5 +15778,625 @@
    }
   ],
   "notes": "contract predicate row \u2014"
+ },
+ {
+  "model": "NAYA-CAL-001",
+  "name": "CAL-001 \u00b7 Month-view board \u2014 production block",
+  "category": "CAL",
+  "tags": [
+   "calendar",
+   "dashboard",
+   "planner"
+  ],
+  "use_cases": [
+   "calendar",
+   "dashboard"
+  ],
+  "html": "<div class=\"cal cal-month\"><div class=\"cal-head\"><h2 class=\"cal-title\">October <small>2026</small></h2><div class=\"cal-nav\"><button class=\"cal-chev\" aria-label=\"Previous month\"><i></i></button></div></div><div class=\"cal-grid\" role=\"grid\"><div class=\"cal-day is-today is-selected\" role=\"gridcell\" tabindex=\"0\" aria-current=\"date\"><span class=\"dnum\">16</span><div class=\"cal-pill\" style=\"--pc:#a06bff\"><span class=\"t\">09:00</span>Deep work</div></div></div></div>",
+  "css_classes": [
+   "cal-chev",
+   "cal-day",
+   "cal-dots",
+   "cal-grid",
+   "cal-head",
+   "cal-month",
+   "cal-more",
+   "cal-nav",
+   "cal-pill",
+   "cal-title",
+   "cal-week",
+   "dnum",
+   "is-out",
+   "is-selected",
+   "is-today"
+  ],
+  "sources": [
+   {
+    "temp_id": "cal-001",
+    "source_file": "calendar-blocks.md"
+   }
+  ],
+  "notes": "ingest 2026-10-16 (peer review 9.2 ships): full month board on black ground \u2014 serif weekday headers, day cells with white-lit edges, today ignited in gold, event pills in wheel order. 6 states (rest/hover/selected/today/out-of-month/overflow); chevrons promise 'go somewhere' and do; +N more chip opens the day agenda, never fakes full display. GOLD DECISION 2026-10-16: gold = \"attention, earned\" (single meaning); today is its loudest instance; \"and only today\" struck. INGEST: local board-formula CSS -> DEPENDENCY on canonical board shell (keep family tone vars local); event-color wheel stays family-local."
+ },
+ {
+  "model": "NAYA-CAL-002",
+  "name": "CAL-002 \u00b7 Event card \u2014 production block",
+  "category": "CAL",
+  "tags": [
+   "calendar",
+   "feed",
+   "planner"
+  ],
+  "use_cases": [
+   "calendar",
+   "feed"
+  ],
+  "html": "<article class=\"cal-event\" style=\"--ec:#3fb8ff\" tabindex=\"0\"><div class=\"cal-rail\"><span class=\"t\">10:30</span><span class=\"dur\">45 min</span></div><div class=\"cal-body\"><span class=\"cal-type\">Meeting</span><h3 class=\"cal-title\">Design sync</h3></div></article>",
+  "css_classes": [
+   "cal-allday-flag",
+   "cal-body",
+   "cal-event",
+   "cal-meta",
+   "cal-rail",
+   "cal-span-note",
+   "cal-title",
+   "cal-type",
+   "dur",
+   "is-allday",
+   "is-span",
+   "is-tentative"
+  ],
+  "sources": [
+   {
+    "temp_id": "cal-002",
+    "source_file": "calendar-blocks.md"
+   }
+  ],
+  "notes": "ingest 2026-10-16 (peer review 9.2 ships): one event fully dressed \u2014 time rail, serif title, type tag in fixed spectrum color, location/attendees row with drawn SVG glyphs. 7 states incl all-day (rail becomes glowing band, never fake 00:00-23:59), multi-day span, tentative (dashed edge = honest uncertainty). Hover ignites in the event's own color; rest never floods. GOLD DECISION 2026-10-16: gold = \"attention, earned\" (single meaning); today is its loudest instance; \"and only today\" struck. INGEST: local board-formula CSS -> DEPENDENCY on canonical board shell (keep family tone vars local); event-color wheel stays family-local."
+ },
+ {
+  "model": "NAYA-CAL-003",
+  "name": "CAL-003 \u00b7 Date picker \u2014 production block",
+  "category": "CAL",
+  "tags": [
+   "calendar",
+   "form",
+   "planner"
+  ],
+  "use_cases": [
+   "calendar",
+   "form"
+  ],
+  "html": "<div class=\"cal cal-pick\"><button class=\"cal-trigger\" aria-haspopup=\"dialog\"><span class=\"cal-pick-date\">Oct 16, 2026</span></button></div>",
+  "css_classes": [
+   "cal-drop",
+   "cal-drop-head",
+   "cal-mini",
+   "cal-pick",
+   "cal-trigger",
+   "cal-tz",
+   "is-chosen",
+   "is-todayd",
+   "ph",
+   "wd"
+  ],
+  "sources": [
+   {
+    "temp_id": "cal-003",
+    "source_file": "calendar-blocks.md"
+   }
+  ],
+  "notes": "ingest 2026-10-16 (peer review 9.2 ships): compact picker for embedding in forms \u2014 input-styled trigger, dropdown mini month grid, full keyboard map (arrows/Enter/Esc), past dates visibly dimmed and truly inert, timezone footnote inside the block. 7 states. Closes coverage #12 (select) as partial \u2014 dropdown picker, not a generic select. GOLD DECISION 2026-10-16: gold = \"attention, earned\" (single meaning); today is its loudest instance; \"and only today\" struck. INGEST: local board-formula CSS -> DEPENDENCY on canonical board shell (keep family tone vars local); event-color wheel stays family-local."
+ },
+ {
+  "model": "NAYA-CAL-004",
+  "name": "CAL-004 \u00b7 Agenda list \u2014 production block",
+  "category": "CAL",
+  "tags": [
+   "calendar",
+   "feed",
+   "planner"
+  ],
+  "use_cases": [
+   "calendar",
+   "feed"
+  ],
+  "html": "<div class=\"cal cal-agenda\"><div class=\"cal-timeline\"><div class=\"cal-ag-row\" style=\"--ec:#a06bff\"><span class=\"cal-ag-time\">09:00</span><div class=\"cal-ag-body\"><h4>Deep work</h4></div></div></div></div>",
+  "css_classes": [
+   "cal-agenda",
+   "cal-empty",
+   "cal-ev",
+   "cal-gutter",
+   "cal-now",
+   "cal-spine",
+   "cal-tl",
+   "jewel",
+   "meta",
+   "sub",
+   "tag"
+  ],
+  "sources": [
+   {
+    "temp_id": "cal-004",
+    "source_file": "calendar-blocks.md"
+   }
+  ],
+  "notes": "ingest 2026-10-16 (peer review 9.2 ships): the day's timeline \u2014 event spine shared with CAL-002, empty day has dignity (jewel + 'The day is yours', no fake suggestions), past events dim honestly. 5 states incl empty + past. Closes coverage #45 (timeline) and touches #37 (empty state). GOLD DECISION 2026-10-16: gold = \"attention, earned\" (single meaning); today is its loudest instance; \"and only today\" struck. INGEST: local board-formula CSS -> DEPENDENCY on canonical board shell (keep family tone vars local); event-color wheel stays family-local."
+ },
+ {
+  "model": "NAYA-CAL-005",
+  "name": "CAL-005 \u00b7 Day-cell state system \u2014 production block",
+  "category": "CAL",
+  "tags": [
+   "calendar",
+   "planner"
+  ],
+  "use_cases": [
+   "calendar"
+  ],
+  "html": "<div class=\"cal cal-states\"><div class=\"cal-day is-today\"><span class=\"dnum\">16</span></div><div class=\"cal-day is-selected\"><span class=\"dnum\">17</span></div></div>",
+  "css_classes": [
+   "cal-st",
+   "cal-states",
+   "dnum",
+   "dots",
+   "lbl",
+   "s-disabled",
+   "s-events",
+   "s-hover",
+   "s-out",
+   "s-selected",
+   "s-today",
+   "why"
+  ],
+  "sources": [
+   {
+    "temp_id": "cal-005",
+    "source_file": "calendar-blocks.md"
+   }
+  ],
+  "notes": "ingest 2026-10-16 (peer review 9.2 ships): the frozen 7-state day-cell system \u2014 precedence order written down (today > selected > hover > events > rest) so two builders can never disagree. The contract CAL-001's cells obey. GOLD DECISION 2026-10-16: gold = \"attention, earned\" (single meaning); today is its loudest instance; \"and only today\" struck. INGEST: local board-formula CSS -> DEPENDENCY on canonical board shell (keep family tone vars local); event-color wheel stays family-local."
+ },
+ {
+  "model": "NAYA-PAY-001",
+  "name": "PAY-001 \u00b7 Order summary board \u2014 production block",
+  "category": "PAY",
+  "tags": [
+   "checkout",
+   "feed"
+  ],
+  "use_cases": [
+   "checkout",
+   "feed"
+  ],
+  "html": "<section class=\"pay-board pay-summary\" aria-label=\"Order summary\"><header class=\"pay-head\"><p class=\"pay-kicker\">CHECKOUT</p><h3 class=\"pay-title\">Your order</h3></header><ul class=\"pay-items\"><li class=\"pay-item\" data-tone=\"magenta\"><span class=\"pay-price\">$149.00</span></li></ul></section>",
+  "css_classes": [
+   "pay-board",
+   "pay-corner",
+   "pay-head",
+   "pay-item",
+   "pay-item-body",
+   "pay-item-meta",
+   "pay-item-name",
+   "pay-items",
+   "pay-kicker",
+   "pay-price",
+   "pay-qty",
+   "pay-step",
+   "pay-stepper",
+   "pay-summary",
+   "pay-thumb",
+   "pay-title"
+  ],
+  "sources": [
+   {
+    "temp_id": "pay-001",
+    "source_file": "checkout-blocks.md"
+   }
+  ],
+  "notes": "ingest 2026-10-16 (peer review 9.4 ships): the board that says 'here is what you are paying for' before money moves \u2014 line items, quantities, one promo code, the three rows that matter, tax says 'estimated' until confirmed. 7 states incl empty cart + promo. Touches coverage #37 (empty state). INGEST: local .naya-btn -> DEPENDENCY on canonical NAYA-BTN DNA (do not redefine); board-formula CSS -> DEPENDENCY on canonical board shell; family tone vars stay local."
+ },
+ {
+  "model": "NAYA-PAY-002",
+  "name": "PAY-002 \u00b7 Payment form \u2014 production block",
+  "category": "PAY",
+  "tags": [
+   "checkout",
+   "form"
+  ],
+  "use_cases": [
+   "checkout",
+   "form"
+  ],
+  "html": "<div class=\"pay-field\"><label for=\"pay-card\">Card number</label><input id=\"pay-card\" inputmode=\"numeric\" autocomplete=\"cc-number\" aria-describedby=\"pay-privacy\"></div>",
+  "css_classes": [
+   "naya-btn",
+   "pay-board",
+   "pay-field",
+   "pay-form"
+  ],
+  "sources": [
+   {
+    "temp_id": "pay-002",
+    "source_file": "checkout-blocks.md"
+   }
+  ],
+  "notes": "ingest 2026-10-16 (peer review 9.4 ships): payment form with the privacy boundary written INTO the spec \u2014 PAN never touches the DOM as text (a spec requirement, not a guideline). 7 states. INTEGRATOR FLAG: the specimen 'Pay $535.68' button label is hardcoded in the specimen only \u2014 the prose requires the real total wired from PAY-001; never copy the number. INGEST: local .naya-btn -> DEPENDENCY on canonical NAYA-BTN DNA (do not redefine); board-formula CSS -> DEPENDENCY on canonical board shell; family tone vars stay local."
+ },
+ {
+  "model": "NAYA-PAY-003",
+  "name": "PAY-003 \u00b7 Confirmation state \u2014 production block",
+  "category": "PAY",
+  "tags": [
+   "checkout",
+   "feed"
+  ],
+  "use_cases": [
+   "checkout",
+   "feed"
+  ],
+  "html": "<div class=\"pay-holo\" aria-label=\"Amount paid\"><span class=\"pay-check\">\u2713</span><p class=\"pay-done-line\">Payment complete</p></div>",
+  "css_classes": [
+   "pay-board",
+   "pay-holo",
+   "pay-receipt"
+  ],
+  "sources": [
+   {
+    "temp_id": "pay-003",
+    "source_file": "checkout-blocks.md"
+   }
+  ],
+  "notes": "ingest 2026-10-16 (peer review 9.4 ships): confirmation \u2014 one ignition then breathe; 'restraint is what makes the one ignition feel like something.' 5 states. Gold 'attention, earned' conforms to the 2026-10-16 gold decision. INGEST: local .naya-btn -> DEPENDENCY on canonical NAYA-BTN DNA (do not redefine); board-formula CSS -> DEPENDENCY on canonical board shell; family tone vars stay local."
+ },
+ {
+  "model": "NAYA-PAY-004",
+  "name": "PAY-004 \u00b7 Error state \u2014 production block",
+  "category": "PAY",
+  "tags": [
+   "checkout",
+   "error-states"
+  ],
+  "use_cases": [
+   "checkout",
+   "error-states"
+  ],
+  "html": "<div class=\"pay-board pay-error\" role=\"alert\"><span class=\"pay-err-jewel\"></span><h3>No money moved</h3><p class=\"pay-err-plain\">Your card was not charged.</p></div>",
+  "css_classes": [
+   "pay-board",
+   "pay-error",
+   "pay-retry"
+  ],
+  "sources": [
+   {
+    "temp_id": "pay-004",
+    "source_file": "checkout-blocks.md"
+   }
+  ],
+  "notes": "ingest 2026-10-16 (peer review 9.4 ships): payment error \u2014 'No money moved' is the load-bearing sentence; unknown-cause state is stated, never hidden; calm red-breathe, never alarm. 6 states. Closes coverage #38 (error state). INGEST: local .naya-btn -> DEPENDENCY on canonical NAYA-BTN DNA (do not redefine); board-formula CSS -> DEPENDENCY on canonical board shell; family tone vars stay local."
+ },
+ {
+  "model": "NAYA-PAY-005",
+  "name": "PAY-005 \u00b7 Payment method picker \u2014 production block",
+  "category": "PAY",
+  "tags": [
+   "checkout",
+   "form"
+  ],
+  "use_cases": [
+   "checkout",
+   "form"
+  ],
+  "html": "<div class=\"pay-board pay-methods\" role=\"radiogroup\" aria-label=\"Choose a payment method\"><label class=\"pay-method\"><input type=\"radio\" name=\"pm\"><span class=\"pay-method-card\">Visa \u00b7\u00b7\u00b7\u00b7 4242</span></label></div>",
+  "css_classes": [
+   "pay-board",
+   "pay-method",
+   "pay-methods"
+  ],
+  "sources": [
+   {
+    "temp_id": "pay-005",
+    "source_file": "checkout-blocks.md"
+   }
+  ],
+  "notes": "ingest 2026-10-16 (peer review 9.4 ships): method picker \u2014 a genuine radiogroup (real <label>+radio, no JS needed); never invents saved methods for the demo; privacy boundary in-spec. 6 states incl empty. Closes coverage #14 (radio). INGEST: local .naya-btn -> DEPENDENCY on canonical NAYA-BTN DNA (do not redefine); board-formula CSS -> DEPENDENCY on canonical board shell; family tone vars stay local."
+ },
+ {
+  "model": "NAYA-ONB-001",
+  "name": "ONB-001 \u00b7 Stepper \u2014 production block",
+  "category": "ONB",
+  "tags": [
+   "onboarding",
+   "form"
+  ],
+  "use_cases": [
+   "onboarding",
+   "form"
+  ],
+  "html": "<div class=\"onb onb-rail\"><div class=\"onb-thread\"><div class=\"onb-fill\"></div></div><ol class=\"onb-steps\"><li class=\"onb-step is-current\" style=\"--sc:#3fb8ff\"><button class=\"onb-node\" aria-label=\"Step 3 current\"><span class=\"in\">3</span></button></li></ol></div>",
+  "css_classes": [
+   "in",
+   "is-current",
+   "is-locked",
+   "jewel",
+   "onb-fill",
+   "onb-job",
+   "onb-label",
+   "onb-no-steps",
+   "onb-node",
+   "onb-opt",
+   "onb-rail",
+   "onb-step",
+   "onb-steps",
+   "onb-thread"
+  ],
+  "sources": [
+   {
+    "temp_id": "onb-001",
+    "source_file": "onboarding-blocks.md"
+   }
+  ],
+  "notes": "ingest 2026-10-16 (peer review 9.3 ships): multi-step progress rail \u2014 five jewel nodes (done/current/locked), spectrum thread that fills from the real step index (never hardcoded), one job named per step, skippable steps marked 'optional'. 6 states; locked steps truly inert (disabled + aria-disabled, out of tab order). INTEGRATOR: wire an actual 'Skip this step' control in skippable step content per the do/don't (the specimen's chip alone is not the control). INGEST: local .onb-cta -> DEPENDENCY on canonical NAYA-BTN DNA (the block already names it as such); keep step-color walk + tone vars local."
+ },
+ {
+  "model": "NAYA-ONB-002",
+  "name": "ONB-002 \u00b7 Welcome card \u2014 production block",
+  "category": "ONB",
+  "tags": [
+   "onboarding",
+   "landing"
+  ],
+  "use_cases": [
+   "onboarding",
+   "landing"
+  ],
+  "html": "<article class=\"onb onb-welcome\" aria-label=\"Welcome\"><div class=\"onb-face\"></div><p class=\"onb-kicker\">WELCOME</p><h2>Become who you are here to be</h2><button class=\"onb-cta\">Begin</button></article>",
+  "css_classes": [
+   "onb-cta",
+   "onb-face",
+   "onb-hello",
+   "onb-kicker",
+   "onb-knows",
+   "onb-line",
+   "onb-quiet",
+   "onb-welcome"
+  ],
+  "sources": [
+   {
+    "temp_id": "onb-002",
+    "source_file": "onboarding-blocks.md"
+   }
+  ],
+  "notes": "ingest 2026-10-16 (peer review 9.4 ships): the warm front door \u2014 drawn Naya face (lit orb, never a stock avatar), kicker, headline, one line, one CTA, quiet exit. Nameless default is the honest state (no invented name); privacy footnote in-spec ('This card knows only what you have told it'). 6 states incl quiet exit + nameless default. Gold finish-line usage conforms to the 2026-10-16 gold decision. INGEST: local .onb-cta -> DEPENDENCY on canonical NAYA-BTN DNA (the block already names it as such); keep step-color walk + tone vars local."
+ },
+ {
+  "model": "NAYA-ONB-003",
+  "name": "ONB-003 \u00b7 Progress indicator \u2014 production block",
+  "category": "ONB",
+  "tags": [
+   "onboarding",
+   "dashboard"
+  ],
+  "use_cases": [
+   "onboarding",
+   "dashboard"
+  ],
+  "html": "<div class=\"onb onb-prog\" role=\"progressbar\" aria-valuenow=\"62\" aria-valuemin=\"0\" aria-valuemax=\"100\"><div class=\"onb-bar\"><span style=\"width:62%\"></span></div><svg class=\"onb-ring\" viewBox=\"0 0 120 120\"><circle stroke-dashoffset=\"128.93\"/></svg></div>",
+  "css_classes": [
+   "is-complete",
+   "is-ind",
+   "lbl",
+   "onb-bar",
+   "onb-fillbar",
+   "onb-pct",
+   "onb-prog",
+   "onb-prog-top",
+   "onb-ring",
+   "onb-ring-num",
+   "onb-ringwrap",
+   "onb-sub",
+   "ring-prog",
+   "ring-track"
+  ],
+  "sources": [
+   {
+    "temp_id": "onb-003",
+    "source_file": "onboarding-blocks.md"
+   }
+  ],
+  "notes": "ingest 2026-10-16 (peer review 9.3 ships): progress indicator \u2014 bar + ring + complete + indeterminate; four mouths one truth (number, bar width, ring offset, aria-valuenow all say 62; ring math verified 339.29 x (1-0.62) = 128.93). Indeterminate is honest ('No number yet', never an invented 47%). 6 states. INTEGRATOR: add the zero-state specimen ('0%, empty bar, 'Ready when you are') - specified but not shown. Closes coverage #34 (progress bar). INGEST: local .onb-cta -> DEPENDENCY on canonical NAYA-BTN DNA (the block already names it as such); keep step-color walk + tone vars local."
+ },
+ {
+  "model": "NAYA-CHT-003",
+  "name": "CHT-003 \u00b7 Chat bubbles (in/out) \u2014 production block",
+  "category": "CHT",
+  "tags": [
+   "chat",
+   "feed"
+  ],
+  "use_cases": [
+   "chat",
+   "feed"
+  ],
+  "html": "<div class=\"chat-row out\"><div class=\"chat-bub out\">Ship it tonight.<span class=\"chat-ticks\" data-state=\"read\"><svg></svg></span></div></div>",
+  "css_classes": [
+   "chat-ava",
+   "chat-bub",
+   "chat-edited",
+   "chat-meta",
+   "chat-name",
+   "chat-row",
+   "chat-ticks",
+   "chat-time",
+   "grp",
+   "grp-first",
+   "in",
+   "out",
+   "sr"
+  ],
+  "sources": [
+   {
+    "temp_id": "cht-003",
+    "source_file": "chat-blocks.md"
+   }
+  ],
+  "notes": "ingest 2026-10-16 (peer review 9.4 ships): the atomic message object \u2014 incoming white-lit edge, outgoing purple edge; consecutive same-sender messages group (<5 min, never across a divider); read receipts are truth-states (sent/delivered/read; setReceipt is the ONLY writer; states move forward only \u2014 'a fake read is a trust violation with styling'). 7 states incl edited + long. INGEST FIX APPLIED: 'CHT-004+' future-work references corrected to 'CHT-006+'. Closes coverage #29 (chat bubble). INGEST: local board-formula CSS -> DEPENDENCY on canonical board shell (keep chat tone vars local)."
+ },
+ {
+  "model": "NAYA-CHT-004",
+  "name": "CHT-004 \u00b7 Typing indicator \u2014 production block",
+  "category": "CHT",
+  "tags": [
+   "chat"
+  ],
+  "use_cases": [
+   "chat"
+  ],
+  "html": "<div class=\"chat chat-typing\" role=\"status\" aria-live=\"polite\" aria-label=\"Sam is typing\"><span class=\"typing-dot\"></span><span class=\"typing-dot\"></span><span class=\"typing-dot\"></span></div>",
+  "css_classes": [
+   "chat-ava",
+   "chat-dots",
+   "chat-typing",
+   "who"
+  ],
+  "sources": [
+   {
+    "temp_id": "cht-004",
+    "source_file": "chat-blocks.md"
+   }
+  ],
+  "notes": "ingest 2026-10-16 (peer review 9.5 TRIPLE-A ships): typing indicator \u2014 exists ONLY while a live signal says someone is typing; show() throws without a signal id (the law in code); non-negotiable 30s watchdog; aria honesty ('a screen-reader user is lied to exactly as badly by a fake announcement'). 6 states. The best single block reviewed tonight. INGEST: local board-formula CSS -> DEPENDENCY on canonical board shell (keep chat tone vars local)."
+ },
+ {
+  "model": "NAYA-CHT-005",
+  "name": "CHT-005 \u00b7 Message list \u2014 production block",
+  "category": "CHT",
+  "tags": [
+   "chat",
+   "feed"
+  ],
+  "use_cases": [
+   "chat",
+   "feed"
+  ],
+  "html": "<div class=\"chat chat-list\" role=\"log\" aria-label=\"Conversation\"><div class=\"chat-day\">Today</div><button class=\"chat-pill\">New messages <span class=\"chat-count\">3</span></button></div>",
+  "css_classes": [
+   "chat-ava",
+   "chat-day",
+   "chat-empty",
+   "chat-head",
+   "chat-list",
+   "chat-loading",
+   "chat-new",
+   "chat-scroll",
+   "jewel",
+   "presence"
+  ],
+  "sources": [
+   {
+    "temp_id": "cht-005",
+    "source_file": "chat-blocks.md"
+   }
+  ],
+  "notes": "ingest 2026-10-16 (peer review 9.3 ships): the message room \u2014 scroll contract decides atBottom() BEFORE the row lands; 'New messages' pill is a real button (one tap to bottom, count clears); empty room is honest ('No messages yet \u2014 say the first word'); loading as words, never skeletons; presence only from live feed. 8 states. DEPENDENCY: composes NAYA-CHT-003 rows. INGEST FIX APPLIED: in/out table gains presence row \u2014 green #2fe89e = 'presence \u2014 alive and here'. INGEST: local board-formula CSS -> DEPENDENCY on canonical board shell (keep chat tone vars local)."
+ },
+ {
+  "model": "NAYA-CMT-001",
+  "name": "CMT-001 \u00b7 Comment thread \u2014 production block",
+  "category": "CMT",
+  "tags": [
+   "comments",
+   "feed"
+  ],
+  "use_cases": [
+   "comments",
+   "feed"
+  ],
+  "html": "<div class=\"cmt cmt-thread\" aria-label=\"Comments\"><div class=\"cmt-compose\"><textarea class=\"cmt-field\" placeholder=\"Say something honest\"></textarea><button class=\"cmt-post\">Post</button></div></div>",
+  "css_classes": [
+   "cap",
+   "cmt-act",
+   "cmt-actions",
+   "cmt-av",
+   "cmt-body",
+   "cmt-chev",
+   "cmt-compose",
+   "cmt-deep",
+   "cmt-edited",
+   "cmt-empty",
+   "cmt-field",
+   "cmt-fold",
+   "cmt-head",
+   "cmt-item",
+   "cmt-kids",
+   "cmt-love"
+  ],
+  "sources": [
+   {
+    "temp_id": "cmt-001",
+    "source_file": "comments-blocks.md"
+   }
+  ],
+  "notes": "ingest 2026-10-16 (peer review 9.4 ships): the whole conversation \u2014 composer on top, top-level comments below, replies nested under honest rails to depth 3, then a 'Continue thread' panel (the cap is structural AND visible). Collapse/expand per comment, plain-words timestamps ('2h ago', never fake precision), tombstones for removed (total removal, not a tease). 10 states. INTEGRATOR: specimen timestamps are frozen Oct 16 2026 and say so \u2014 derive from server in live build. Closes coverage #28 (comment). INGEST: local .cmt-* action pills/buttons -> DEPENDENCY on canonical NAYA-BTN DNA (ancestor: NAYA-BTN-139 COMMENT button); avatar jewel -> NAYA-JWL DNA; board shell -> canonical board; reaction/rail colors stay family-local."
+ },
+ {
+  "model": "NAYA-CMT-002",
+  "name": "CMT-002 \u00b7 Single comment \u2014 production block",
+  "category": "CMT",
+  "tags": [
+   "comments",
+   "feed"
+  ],
+  "use_cases": [
+   "comments",
+   "feed"
+  ],
+  "html": "<article class=\"cmt cmt-one\" aria-label=\"Comment\"><span class=\"cmt-av\"><b>J</b></span><div class=\"cmt-main\"><h4 class=\"cmt-name\">June Okafor</h4><p class=\"cmt-body\">\u2026</p><button class=\"cmt-love\" aria-pressed=\"false\">Love <span class=\"cmt-count\">12</span></button></div></article>",
+  "css_classes": [
+   "cmt-actions",
+   "cmt-av",
+   "cmt-body",
+   "cmt-count",
+   "cmt-morebtn",
+   "cmt-name",
+   "cmt-one",
+   "is-clamped"
+  ],
+  "sources": [
+   {
+    "temp_id": "cmt-002",
+    "source_file": "comments-blocks.md"
+   }
+  ],
+  "notes": "ingest 2026-10-16 (peer review 9.3 ships): the comment atom \u2014 provably the thread's atom (do/don't forbids drift between CMT-001 and CMT-002); clamped-body control built in; love count is the SAME object as CMT-003's love pill (one count, one truth, never computed twice). 8 states. DEPENDENCY: action pills inherit NAYA-BTN DNA (ancestor NAYA-BTN-139 COMMENT button). INGEST: local .cmt-* action pills/buttons -> DEPENDENCY on canonical NAYA-BTN DNA (ancestor: NAYA-BTN-139 COMMENT button); avatar jewel -> NAYA-JWL DNA; board shell -> canonical board; reaction/rail colors stay family-local."
+ },
+ {
+  "model": "NAYA-CMT-003",
+  "name": "CMT-003 \u00b7 Reaction row \u2014 production block",
+  "category": "CMT",
+  "tags": [
+   "comments",
+   "feed"
+  ],
+  "use_cases": [
+   "comments",
+   "feed"
+  ],
+  "html": "<div class=\"cmt rx-wrap\" role=\"group\" aria-label=\"Reactions\"><button class=\"rx-pill\" data-rx=\"love\" aria-pressed=\"true\"><i>\u25c6</i>Love <b>12</b></button></div>",
+  "css_classes": [
+   "cmt-rx",
+   "is-mine",
+   "rx",
+   "rx-add",
+   "rx-pop",
+   "rx-wrap"
+  ],
+  "sources": [
+   {
+    "temp_id": "cmt-003",
+    "source_file": "comments-blocks.md"
+   }
+  ],
+  "notes": "ingest 2026-10-16 (peer review 9.4 ships): reaction row \u2014 fixed 5-set in wheel order (pink love, magenta celebrate, purple thoughtful, blue agree, green laugh; sixth takes indigo), zero-count reactions are ABSENT never grayed out; 'reactions are play, not status' as structural law ('no badges, no streaks, no top fan'). 7 states. INGEST: local .cmt-* action pills/buttons -> DEPENDENCY on canonical NAYA-BTN DNA (ancestor: NAYA-BTN-139 COMMENT button); avatar jewel -> NAYA-JWL DNA; board shell -> canonical board; reaction/rail colors stay family-local."
  }
 ]
