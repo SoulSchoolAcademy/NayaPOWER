@@ -71,6 +71,8 @@ PERMISSION_EXPLAIN = {
     "connect.request": "send connection requests on your behalf",
     "contacts.read": "read your contacts",
     "feed.publish": "publish posts to your personal feed",
+    "list.create": "create and organize Smart Lists",
+    "list.share": "share lists with others",
     "mail.compose": "compose mail in Smart Mail",
     "mail.send": "send mail through Smart Mail",
     "media.upload": "upload media (photos) into the page's media store",
@@ -94,11 +96,13 @@ REQUIREMENT_EXPLAIN = {
     "feed_service": "a feed service to publish into",
     "github_kb_sync": "GitHub knowledge-base sync",
     "identity_directory": "an identity directory for connections",
+    "list_store": "a list store holding your lists",
     "media_store": "a media store holding the page's uploads",
     "membership_rules": "membership rules for the space",
     "message_service": "a message service to carry the mail",
     "moderation_rules": "moderation rules for community content",
     "navigation_service": "a navigation service across your pages",
+    "object_index": "an object index of the things lists organize",
     "page_registry": "a page registry listing your pages",
     "recipient_authorization": "recipient authorization to receive mail",
     "report_pipeline": "a report pipeline producing Intelligence Today",
@@ -156,6 +160,8 @@ def _module_for(function_id):
     table = {
         "feature.cover": ("feature_cover", "render_cover", "decl_for"),
         "feature.smart_mail": ("feature_smart_mail", "render_smart_mail",
+                               "decl_for"),
+        "feature.smart_list": ("feature_smart_list", "render_smart_list",
                                "decl_for"),
     }
     if function_id not in table:

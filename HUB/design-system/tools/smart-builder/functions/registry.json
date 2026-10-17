@@ -573,7 +573,7 @@
             "lists wired"
           ],
           "activated_by": "contract.features.smart_list",
-          "status": "specified",
+          "status": "built",
           "code": null,
           "depends_on": [
             "systems.lists"
