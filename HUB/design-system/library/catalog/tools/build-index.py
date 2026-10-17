@@ -37,7 +37,7 @@ CATNAME = {'BTN':'button','CRD':'board','TYP':'banner','JWL':'jewel','LST':'list
            'NAV':'navigation','FRM':'form','CHT':'chat','PAY':'payment','CAL':'calendar',
            'LAY':'layout','ONB':'onboarding','CMT':'comment','MED':'media'}
 
-cat = json.load(open(args.catalog))
+cat = json.load(open(args.catalog, encoding='utf-8'))
 css_cache, css_bank = {}, {}
 pieces, stats = {}, {'archived': 0, 'unarchived': 0, 'no_source': 0}
 
@@ -90,7 +90,7 @@ index = {
     'pieces': pieces,
 }
 out = args.out
-json.dump(index, open(out, 'w'), ensure_ascii=False)
+json.dump(index, open(out, 'w', encoding='utf-8'), ensure_ascii=False)
 print('entries:', len(pieces), '| css bank:', len(css_bank), '| status:', stats)
 print('wrote:', out, round(os.path.getsize(out) / 1048576, 2), 'MB')
 print('sha256:', hashlib.sha256(open(out, 'rb').read()).hexdigest())
