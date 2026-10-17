@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-17 22:35 UTC_
+_Last updated: 2026-10-17 23:13 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 3571
-- ✅ Verified (8+): 3543
+- **Total scored actions:** 3581
+- ✅ Verified (8+): 3553
 - 🟡 Partial (5–7): 27
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 1
@@ -17,16 +17,16 @@ _Last updated: 2026-10-17 22:35 UTC_
 |------|-------|---------|-----------|------|
 | Team 1 | Naya Verity | 307 | 9.1 | 9.6 |
 | Team 2 | Naya Sage | 300 | 8.9 | 9.5 |
-| Team 3 | Naya Judge | 237 | 9.0 | 9.5 |
+| Team 3 | Naya Judge | 238 | 9.0 | 9.5 |
 | Team 4 | Naya Mason | 254 | 9.1 | 9.6 |
 | Team 5 | Naya Seeker | 303 | 9.0 | 9.6 |
-| Team 6 | Naya Heir | 194 | 9.0 | 9.6 |
+| Team 6 | Naya Heir | 196 | 9.0 | 9.6 |
 | Team 7 | Naya Conductor | 281 | 8.9 | 9.5 |
-| Team 8 | Naya Sentinel | 274 | 9.0 | 9.5 |
-| Team 9 | Naya Smith | 318 | 9.0 | 9.5 |
+| Team 8 | Naya Sentinel | 275 | 9.0 | 9.5 |
+| Team 9 | Naya Smith | 319 | 9.0 | 9.5 |
 | Team 10 | Naya Librarian | 357 | 9.0 | 9.5 |
-| Team 11 | Naya Heart | 217 | 9.0 | 9.5 |
-| Team 12 | Naya Herald | 177 | 9.1 | 9.5 |
+| Team 11 | Naya Heart | 220 | 9.0 | 9.5 |
+| Team 12 | Naya Herald | 179 | 9.1 | 9.5 |
 
 ## Learning velocity
 
@@ -368,6 +368,8 @@ _Last updated: 2026-10-17 22:35 UTC_
 - **lane-scorer-20261017-1240:** 2 actions, avg 9.5/10
 - **lane-scorer-20261017-1330:** 1 actions, avg 9.0/10
 - **lane-scorer-20261017-1410:** 1 actions, avg 9.5/10
+- **20261017-1540:** 2 actions, avg 9.3/10
+- **20261017-1550:** 3 actions, avg 8.5/10
 - **scorer-20261014-2010:** 4 actions, avg 9.2/10
 - **scorer-20261014-2310:** 7 actions, avg 9.4/10
 - **scorer-20261014-2320:** 4 actions, avg 8.9/10
@@ -534,6 +536,7 @@ _Last updated: 2026-10-17 22:35 UTC_
 - **gap-t0770:** 1 actions, avg 9.5/10
 - **gap-t1242-lane6:** 2 actions, avg 8.8/10
 - **gap-t1242:** 1 actions, avg 8.5/10
+- **20261017-1600:** 1 actions, avg 9.4/10
 - **t-contract-selfreview:** 8 actions, avg 8.6/10
 - **t-contract-verify:** 9 actions, avg 8.8/10
 - **t-converge:** 9 actions, avg 8.9/10
@@ -859,7 +862,7 @@ _Last updated: 2026-10-17 22:35 UTC_
 - **t0701:** 5 actions, avg 9.1/10
 - **t0702:** 3 actions, avg 9.0/10
 - **t0703:** 6 actions, avg 9.2/10
-- **t0704:** 4 actions, avg 9.2/10
+- **t0704:** 5 actions, avg 9.3/10
 - **t0705:** 5 actions, avg 9.3/10
 - **t0706:** 3 actions, avg 9.3/10
 - **t0707:** 6 actions, avg 9.2/10
@@ -867,7 +870,7 @@ _Last updated: 2026-10-17 22:35 UTC_
 - **t0709:** 8 actions, avg 9.4/10
 - **t0710:** 4 actions, avg 9.2/10
 - **t0711:** 1 actions, avg 9.5/10
-- **t0712:** 4 actions, avg 9.2/10
+- **t0712:** 5 actions, avg 9.3/10
 - **t0713:** 1 actions, avg 9.0/10
 - **t0714:** 2 actions, avg 9.2/10
 - **t0715:** 2 actions, avg 9.2/10
@@ -942,6 +945,7 @@ _Last updated: 2026-10-17 22:35 UTC_
 - **t0792:** 1 actions, avg 9.5/10
 - **t0793:** 1 actions, avg 9.5/10
 - **t0796:** 1 actions, avg 9.5/10
+- **t0797:** 2 actions, avg 9.5/10
 - **t0802:** 2 actions, avg 9.1/10
 - **t0803:** 1 actions, avg 9.0/10
 - **t0804:** 1 actions, avg 9.0/10
