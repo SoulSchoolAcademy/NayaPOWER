@@ -43,8 +43,8 @@ jobs:
           python-version: "3.12"
       - name: Verify generated inventory is current
         run: python tools/smart_builder/build_library_inventory.py --check
-      - name: Test inventory generator and assembler
+      - name: Test inventory generator, assembler, and template contracts
         working-directory: tools/smart_builder
-        run: python -m unittest -v test_build_library_inventory.py test_assemble.py
+        run: python -m unittest -v test_build_library_inventory.py test_assemble.py test_materialize_template.py
       - name: Verify deterministic assembly output and receipt
         run: python tools/smart_builder/assemble.py --check
