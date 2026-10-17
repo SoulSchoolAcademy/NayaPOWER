@@ -210,7 +210,29 @@ def main() -> int:
         if args.check:
             if not output_path.exists() or output_path.read_text(encoding="utf-8") != output:
                 raise ValueError(f"Generated HTML is stale: {output_path}")
-            if not receipt_path.exists() or receipt_path.read_text(encoding="utf-8") != receipt_text:
+            if not receipt_path.exists():
+                raise ValueError(f"Build receipt is missing: {receipt_path}")
+            existing_receipt_text = receipt_path.read_text(encoding="utf-8")
+            if existing_receipt_text != receipt_text:
+                try:
+                    existing_receipt = json.loads(existing_receipt_text)
+                    expected_receipt = json.loads(receipt_text)
+                    differing_keys = [
+                        key for key in sorted(set(existing_receipt) | set(expected_receipt))
+                        if existing_receipt.get(key) != expected_receipt.get(key)
+                    ]
+                    print("Receipt fields differing from recomputed evidence: " + ", ".join(differing_keys), file=sys.stderr)
+                    for key in differing_keys:
+                        if key in {"dependencies"}:
+                            existing_deps = {d.get("path"): d for d in existing_receipt.get(key, [])}
+                            expected_deps = {d.get("path"): d for d in expected_receipt.get(key, [])}
+                            for path in sorted(set(existing_deps) | set(expected_deps)):
+                                if existing_deps.get(path) != expected_deps.get(path):
+                                    print(f"  {path}: expected={expected_deps.get(path)} actual={existing_deps.get(path)}", file=sys.stderr)
+                        else:
+                            print(f"  {key}: expected={expected_receipt.get(key)} actual={existing_receipt.get(key)}", file=sys.stderr)
+                except json.JSONDecodeError:
+                    print("Existing receipt is not valid JSON", file=sys.stderr)
                 raise ValueError(f"Build receipt is stale: {receipt_path}")
             print("PASS: assembled HTML and receipt match the pinned contract and library source")
             return 0
