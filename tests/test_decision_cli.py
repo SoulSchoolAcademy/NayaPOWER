@@ -33,7 +33,7 @@ def full_opt(name, pv_b, pros, cons, refs=2):
     }
 
 
-def test_full_decision_selects_best_pv():
+def test_full_decision_ranks_best_pv_but_withholds_act_without_trusted_gates():
     report = decide({
         "situation": "pick a path",
         "options": [
@@ -42,8 +42,11 @@ def test_full_decision_selects_best_pv():
             full_opt("C", 3, [], ["slow", "risky"]),
         ],
     })
-    assert report["decision"] == "ACT"
-    assert report["selected"] == "A"
+    assert report["decision"] == "READ_MORE"
+    assert report["selected"] is None
+    assert report["governance_authorization"] == "UNRESOLVED_NO_TRUSTED_GATE_RESOLVER"
+    assert "ranked A" in report["next"]
+    assert "ACT is withheld" in report["next"]
 
 
 def test_no_pv_means_read_more():
@@ -76,7 +79,7 @@ def test_unreadable_input():
     assert report["decision"] is None
 
 
-def test_cli_act_exit_0_and_pros_in_output():
+def test_cli_withholds_act_exit_1_and_preserves_advisory_pros():
     payload = json.dumps({
         "situation": "pick",
         "options": [full_opt("A", 10, ["visible pro"], []),
@@ -84,9 +87,10 @@ def test_cli_act_exit_0_and_pros_in_output():
     out = subprocess.run(
         [sys.executable, "tools/decision_cli.py"],
         input=payload, capture_output=True, text=True)
-    assert out.returncode == 0
+    assert out.returncode == 1
     assert "visible pro" in out.stdout
-    assert "Engine: ACT" in out.stdout
+    assert "Engine: READ_MORE" in out.stdout
+    assert "ACT is withheld" in out.stdout
 
 
 def test_cli_read_more_exit_1():
