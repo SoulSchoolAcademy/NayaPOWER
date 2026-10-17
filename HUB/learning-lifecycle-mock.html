@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How Naya is learning — mock</title>
+<style>
+  :root{
+    --black:#0A0A0F; --white:#F5F5F7; --page-bg:#050508;
+    --blue:#4D9FFF; --green:#2ECC71; --gold:#F5C518; --purple:#A855F7;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{background:var(--page-bg); color:var(--white); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; font-size:18px; line-height:1.5;}
+  /* Mock ribbon: black + 1px purple edge + purple glow. Purple is accent/glow only — never solid fill. */
+  .mock-ribbon{position:sticky; top:0; z-index:10; background:#000; border-bottom:1px solid var(--purple); box-shadow:0 0 24px rgba(168,85,247,.35); color:var(--white); font-weight:700; font-size:14px; text-align:center; padding:10px 12px; letter-spacing:1px;}
+  .panel{max-width:960px; margin:0 auto; padding:24px 16px 64px;}
+  h1{font-size:24px; font-weight:800; margin:8px 0 6px;}
+  h2{font-size:18px; font-weight:800; margin:40px 0 10px;}
+  .lede{color:var(--white); font-size:18px; margin-bottom:28px; max-width:34em;}
+  .legend{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:28px;}
+  .legend span{font-size:14px; padding:6px 12px; border-radius:999px; border:1px solid #333;}
+  .l-blue{color:var(--blue); border-color:var(--blue);}
+  .l-green{color:var(--green); border-color:var(--green);}
+  .l-gold{color:var(--gold); border-color:var(--gold);}
+  .l-purple{color:var(--purple); border-color:var(--purple); box-shadow:0 0 12px rgba(168,85,247,.45);}
+  .grid{display:grid; gap:16px; grid-template-columns:1fr;}
+  @media(min-width:768px){ .grid{grid-template-columns:1fr 1fr;} }
+  .card{background:var(--black); border-radius:16px; padding:24px; border:1px solid; position:relative;}
+  .card.blue{border-color:var(--blue);}
+  .card.green{border-color:var(--green);}
+  .card.gold{border-color:var(--gold);}
+  .card.purple{border-color:var(--purple); box-shadow:0 0 24px rgba(168,85,247,.35);}
+  .rung{position:absolute; top:18px; right:18px; font-size:14px; text-transform:uppercase; letter-spacing:1px; padding:4px 12px; border-radius:999px; border:1px solid currentColor; background:#000;}
+  .rung.blue{color:var(--blue);} .rung.green{color:var(--green);}
+  .rung.gold{color:var(--gold);} .rung.purple{color:var(--purple);}
+  .nutshell{font-size:18px; font-weight:700; margin:28px 0 4px; padding-right:90px;}
+  .sub{font-size:14px; color:var(--white); margin-bottom:12px;}
+  /* Expandable four layers: 200ms ease, chevron rotates. Reduced-motion: instant. */
+  .expand{width:100%; background:none; border:none; border-top:1px solid #222; padding:10px 0 0; margin-top:10px; cursor:pointer; display:flex; justify-content:space-between; align-items:center; font-size:18px; font-weight:600; color:var(--white); font-family:inherit; text-align:left;}
+  .chev{color:var(--purple); font-size:18px; transition:transform 200ms ease;}
+  .card-expand.open .chev{transform:rotate(180deg);}
+  .layers{max-height:0; overflow:hidden; transition:max-height 200ms ease;}
+  .card-expand.open .layers{max-height:640px;}
+  .layers p{font-size:18px; color:var(--white); margin:8px 0 14px;}
+  .layers p strong{color:var(--white);}
+  @media(prefers-reduced-motion:reduce){ *{transition:none !important;} .layers{transition:none !important;} }
+</style>
+</head>
+<body>
+<div class="mock-ribbon">MOCK — SAMPLE DATA, NOT LIVE</div>
+<main class="panel">
+  <h1>How Naya is learning</h1>
+  <p class="lede">What changed, what worked, what's proven — with the proof tag on everything. Blue is built, green is checked, gold is proven live, purple glow is still learning.</p>
+  <div class="legend">
+    <span class="l-blue">Blue — Built</span>
+    <span class="l-green">Green — Checked</span>
+    <span class="l-gold">Gold — Proven live</span>
+    <span class="l-purple">Purple glow — Still learning</span>
+  </div>
+
+  <h2>Populated feed (sample)</h2>
+  <div class="grid">
+
+    <article class="card purple" data-mock="true">
+      <span class="rung purple">Still learning</span>
+      <p class="nutshell">Naya is testing whether lessons make her decisions better.</p>
+      <p class="sub">LEARN lane · in progress</p>
+      <div class="card-expand">
+        <button class="expand" aria-expanded="false">See the four layers <span class="chev">▾</span></button>
+        <div class="layers">
+          <p><strong>What it means:</strong> a four-step experiment is running to prove that reusing a lesson actually changes a real decision for the better. It hasn't finished yet.</p>
+          <p><strong>How to use it:</strong> watch this space. When the experiment completes, the tag will turn green or gold — you'll see it happen here first.</p>
+          <p><strong>What's in it for you:</strong> this is the moment Naya proves she's compounding, not just collecting. We're not claiming it until the proof lands.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="card blue" data-mock="true">
+      <span class="rung blue">Built</span>
+      <p class="nutshell">A new check was added that catches empty learning records.</p>
+      <p class="sub">LEARN lane · envelope: RESOLVED</p>
+      <div class="card-expand">
+        <button class="expand" aria-expanded="false">See the four layers <span class="chev">▾</span></button>
+        <div class="layers">
+          <p><strong>What it means:</strong> the learning system now refuses to store a lesson with no content. It exists and it runs.</p>
+          <p><strong>How to use it:</strong> you don't have to do anything — it protects the learning store automatically.</p>
+          <p><strong>What's in it for you:</strong> junk can't pollute what Naya learns. Blue means built; the check hasn't been independently verified yet.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="card green" data-mock="true">
+      <span class="rung green">Checked</span>
+      <p class="nutshell">The memory system now proves a lesson survives a full round trip.</p>
+      <p class="sub">MEMORY lane · envelope: REUSED</p>
+      <div class="card-expand">
+        <button class="expand" aria-expanded="false">See the four layers <span class="chev">▾</span></button>
+        <div class="layers">
+          <p><strong>What it means:</strong> a different Naya ran the tests: a lesson goes in, comes back out byte-identical, and gets reused by a later decision.</p>
+          <p><strong>How to use it:</strong> trust that stored lessons are retrievable — the machinery was verified, not just written.</p>
+          <p><strong>What's in it for you:</strong> what Naya learns today is still there and usable tomorrow. Green means verified off-production.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="card gold" data-mock="true">
+      <span class="rung gold">Proven live</span>
+      <p class="nutshell">The Hub itself loads in under two seconds on a phone.</p>
+      <p class="sub">PRODUCT lane · envelope: BEHAVIORALLY_VERIFIED</p>
+      <div class="card-expand">
+        <button class="expand" aria-expanded="false">See the four layers <span class="chev">▾</span></button>
+        <div class="layers">
+          <p><strong>What it means:</strong> measured on the real live system — real device, real network — not in a lab.</p>
+          <p><strong>How to use it:</strong> open the Hub anywhere. It just appears.</p>
+          <p><strong>What's in it for you:</strong> speed you can feel. Gold means proven on the live system, the highest tag there is.</p>
+        </div>
+      </div>
+    </article>
+
+  </div>
+
+  <h2 data-mock="true">Nothing proven yet. The system is still learning — here is what is being watched:</h2>
+  <div class="grid">
+
+    <article class="card purple" data-mock="true">
+      <span class="rung purple">Still learning</span>
+      <p class="nutshell">Naya is testing whether lessons make her decisions better.</p>
+      <p class="sub">LEARN lane · in progress</p>
+      <div class="card-expand">
+        <button class="expand" aria-expanded="false">See the four layers <span class="chev">▾</span></button>
+        <div class="layers">
+          <p><strong>What it means:</strong> a four-step experiment is running to prove that reusing a lesson actually changes a real decision for the better. It hasn't finished yet.</p>
+          <p><strong>How to use it:</strong> watch this space. When the experiment completes, the tag will turn green or gold — you'll see it happen here first.</p>
+          <p><strong>What's in it for you:</strong> this is the moment Naya proves she's compounding, not just collecting. We're not claiming it until the proof lands.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="card purple" data-mock="true">
+      <span class="rung purple">Still learning</span>
+      <p class="nutshell">A new lesson about reusing old fixes is being watched.</p>
+      <p class="sub">LEARN lane · envelope: DETECTED</p>
+      <div class="card-expand">
+        <button class="expand" aria-expanded="false">See the four layers <span class="chev">▾</span></button>
+        <div class="layers">
+          <p><strong>What it means:</strong> Naya detected that an old fix solved a new problem. It hasn't been checked yet, so it renders as still learning.</p>
+          <p><strong>How to use it:</strong> watch this space. When it gets checked, the tag turns blue, then green — you'll see it happen here first.</p>
+          <p><strong>What's in it for you:</strong> nothing is claimed before it's proven. The purple glow is the promise kept.</p>
+        </div>
+      </div>
+    </article>
+
+  </div>
+
+</main>
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('.card-expand .expand').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var wrap = btn.parentElement;
+      var open = wrap.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+  if (reduce) {
+    document.querySelectorAll('.layers, .chev').forEach(function(el){ el.style.transition = 'none'; });
+  }
+})();
+</script>
+</body>
+</html>
