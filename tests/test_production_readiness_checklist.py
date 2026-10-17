@@ -386,6 +386,62 @@ def test_classify_unknown_when_ci_unreadable():
     assert r["classification"] == "UNKNOWN", r
 
 
+def _quota_failures(n):
+    return [{"run_id": 38864375072 + i,
+             "failing_steps": ["Enforce ratified standing policy before "
+                               "automatic promotion"],
+             "policy_step_duration_s": 87.5 + i}
+            for i in range(n)]
+
+
+def test_classify_fail_closed_on_quota():
+    # Verified 2026-10-16: policy step failed after ~87s (the gh-api-retry
+    # backoff), CI green, blocker #978 closed — installation-token rate limit.
+    r = prc.classify_promotion_failures(
+        _quota_failures(2), _ci(),
+        gate_state={"blocker_open": False})
+    assert r["classification"] == "FAIL_CLOSED_ON_QUOTA", r
+    assert r["policy_step_slowest_s"] >= 60
+    assert r["production_blocker_978_open"] is False
+    assert "quota" in r["detail"].lower()
+
+
+def test_classify_quota_not_claimed_when_blocker_open():
+    # Blocker open is a lawful refusal of its own — not the quota class.
+    r = prc.classify_promotion_failures(
+        _quota_failures(1), _ci(),
+        gate_state={"blocker_open": True})
+    assert r["classification"] == "NEEDS_INVESTIGATION", r
+
+
+def test_classify_quota_not_claimed_when_step_fast():
+    # A fast policy-step failure with green CI and closed blocker is not the
+    # retry-backoff signature — stays NEEDS_INVESTIGATION, honestly.
+    failures = _quota_failures(1)
+    failures[0]["policy_step_duration_s"] = 4.2
+    r = prc.classify_promotion_failures(
+        failures, _ci(), gate_state={"blocker_open": False})
+    assert r["classification"] == "NEEDS_INVESTIGATION", r
+    assert "closed" in r["detail"]
+
+
+def test_classify_quota_not_claimed_when_durations_unreadable():
+    # No durations recorded: the instrument must not claim the quota class
+    # on elimination alone.
+    r = prc.classify_promotion_failures(
+        _failures(1, ["Enforce ratified standing policy before automatic promotion"]),
+        _ci(), gate_state={"blocker_open": False})
+    assert r["classification"] == "NEEDS_INVESTIGATION", r
+
+
+def test_classify_quota_backward_compatible_two_arg_call():
+    # Existing two-arg callers keep the old behavior (no gate state known).
+    r = prc.classify_promotion_failures(
+        _failures(1, ["Enforce ratified standing policy before automatic promotion"]),
+        _ci())
+    assert r["classification"] == "NEEDS_INVESTIGATION", r
+
+
 def test_check_workflow_health_carries_classification(monkeypatch):
     head = "c" * 40
 

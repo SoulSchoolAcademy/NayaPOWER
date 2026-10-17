@@ -13,7 +13,8 @@ Checks (each emits PASS / WARN / FAIL / UNKNOWN with evidence):
   C2 production_stamp    — the production branch holds a deploy-stamp commit for the tip.
   C3 workflow_health     — recent Governed Production Promotion runs: verdicts +
                            failing step, classified FAIL_CLOSED_BY_DESIGN /
-                           SUPERSEDED_TIP_RACE / NEEDS_INVESTIGATION.
+                           SUPERSEDED_TIP_RACE / FAIL_CLOSED_ON_QUOTA /
+                           NEEDS_INVESTIGATION.
   C4 standing_policy     — STANDING-PRODUCTION-PROMOTION-V1.json is RATIFIED and well-formed.
   C5 dispatch_contract   — workflow_dispatch requires confirm=DEPLOY + exact 40-hex source_sha,
                            and the YAML contains fail-closed binding checks.
@@ -27,6 +28,14 @@ Exit codes: 0 = all PASS (WARN allowed), 1 = any FAIL, 2 = instrument error.
 GitHub API access: uses GITHUB_TOKEN env when present (CI). Otherwise delegates to
 the NAYA_GH_API helper script (default: ~/workspace/naya/bin/gh-api), which carries
 the credential without exposing it. With neither, C2/C3 report UNKNOWN.
+
+Run modes (API economy — every REST call spends from a monthly budget):
+  --local-only       zero REST API calls; C2/C3/C9 report UNKNOWN with an
+                     explicit "local-only" reason instead of spending.
+  --max-api-calls N  cap REST calls at N (default 10, the per-run budget);
+                     once the cap is hit, remaining API checks report UNKNOWN
+                     ("api budget exhausted") instead of spending silently.
+The report's "api_calls" field records how many REST calls the run made.
 """
 from __future__ import annotations
 
@@ -53,12 +62,68 @@ PROMOTION_WORKFLOW_FILE = "governed-supabase-production-deploy.yml"
 REQUIRED_CI_WORKFLOWS = ("kernel-tests.yml", "collective-chain-readiness-gate.yml")
 API_HOST = "https://api.github.com"
 REPO = "SoulSchoolAcademy/NayaPOWER"
+# The promotion workflow fail-closes while this issue is open (its policy step
+# reads the issue state live via gh_api_retry). The classifier uses the same
+# read to distinguish a lawful blocker refusal from a quota/transport failure.
+PRODUCTION_BLOCKER_ISSUE = 978
+# gh-api-retry.sh backoff inside the policy step totals ~86s (9+13+21+43) before
+# it gives up on a persistent API error. A policy step that runs >=60s and then
+# fails, with required CI green and the blocker closed, carries the
+# installation-token rate-limit signature (verified 2026-10-16 on runs
+# 38864375072 and 38504797428: both ~87-88s, both died in the blocker-state
+# read with "API rate limit exceeded for installation").
+QUOTA_RETRY_SIGNATURE_S = 60
 
 SHA_RE = re.compile(r"^[0-9a-f]{40}$")
 MIGRATION_NAME_RE = re.compile(r"^[0-9]{14}_[a-z0-9_]+\.sql$")
 STAMP_MSG_RE = re.compile(r"deploy: stamp Naya runtime source ([0-9a-f]{40})")
 
 SCHEMA = "NAYAPOWER_PRODUCTION_READINESS_CHECKLIST_V1"
+
+
+# ---- API economy (per-run budget) -------------------------------------------
+# Every REST call spends from a monthly budget that does not refill. gh_get is
+# the single REST choke point; _api_get wraps it with two guards:
+#   * --local-only: make zero REST calls (C2/C3/C9 report UNKNOWN, explicit).
+#   * --max-api-calls N: once N calls are spent, further API checks report
+#     UNKNOWN ("api budget exhausted") instead of spending silently.
+# git-protocol reads (C1 tip re-resolution) are NOT REST calls and are never
+# counted. Tests reset these globals via fixture; see test file.
+_LOCAL_ONLY: bool = False
+_MAX_API_CALLS: int = 10
+_api_call_count: int = 0
+
+
+class _ApiSkipped(Exception):
+    """Raised when a REST call is deliberately not made (flag or budget)."""
+
+    def __init__(self, check_id: str, reason: str):
+        super().__init__(reason)
+        self.check_id = check_id
+        self.reason = reason
+
+
+def _api_get(path: str):
+    """Budgeted REST GET: the single choke point for all GitHub API calls."""
+    global _api_call_count
+    if _LOCAL_ONLY:
+        raise _ApiSkipped("", "local-only run: REST skipped by --local-only")
+    if _api_call_count >= _MAX_API_CALLS:
+        raise _ApiSkipped("", f"REST budget exhausted "
+                              f"({_api_call_count}/{_MAX_API_CALLS} calls)")
+    _api_call_count += 1
+    return gh_get(path)
+
+
+def _api_unknown(check_id: str, skipped: _ApiSkipped,
+                 extra: dict | None = None) -> dict:
+    """UNKNOWN verdict for a check whose API reads were deliberately skipped."""
+    evidence = {"reason": ("local_only" if _LOCAL_ONLY else "api_budget_exhausted"),
+                "api_calls": _api_call_count}
+    if extra:
+        evidence.update(extra)
+    return check_result(check_id, "UNKNOWN",
+                        f"skipped: {skipped.reason}", evidence)
 
 
 # ---------------------------------------------------------------- utilities
@@ -122,7 +187,10 @@ def check_production_stamp(tip_sha: str | None) -> dict:
     if not tip_sha:
         return check_result("C2", "UNKNOWN", "no tip SHA to look for",
                             {"reason": "C1 did not produce a SHA"})
-    data = gh_get(f"/repos/{REPO}/branches/production")
+    try:
+        data = _api_get(f"/repos/{REPO}/branches/production")
+    except _ApiSkipped as skipped:
+        return _api_unknown("C2", skipped, {"wanted_sha": tip_sha})
     if data is None:
         return check_result("C2", "UNKNOWN", "GitHub API unreachable (no credential path)",
                             {"reason": "no_api"})
@@ -152,11 +220,23 @@ def check_workflow_health(recent: int = 12) -> dict:
     Classifies promotion failures as FAIL_CLOSED_BY_DESIGN (the standing-policy
     step correctly refused while required CI is red), SUPERSEDED_TIP_RACE
     (main moved between the push event and the runner's tip-currency check —
-    a benign supersede, not a broken path), vs NEEDS_INVESTIGATION
-    (the gate model cannot explain the failure). A working gate refusing is
-    not a broken deploy path — the verdict names the true hole.
+    a benign supersede, not a broken path), FAIL_CLOSED_ON_QUOTA (the policy
+    step failed closed because its own API reads hit installation-token rate
+    limiting — required CI green, blocker closed, step ran through the retry
+    backoff; the gate refused correctly, the hole is quota, not the deploy
+    path), vs NEEDS_INVESTIGATION (the gate model cannot explain the failure).
+    A working gate refusing is not a broken deploy path — the verdict names
+    the true hole.
     """
-    data = gh_get(f"/repos/{REPO}/actions/workflows/{PROMOTION_WORKFLOW_FILE}/runs?per_page={recent}")
+    try:
+        return _check_workflow_health_impl(recent)
+    except _ApiSkipped as skipped:
+        return _api_unknown("C3", skipped)
+
+
+def _check_workflow_health_impl(recent: int = 12) -> dict:
+    """C3 implementation; _ApiSkipped propagates to the wrapper above."""
+    data = _api_get(f"/repos/{REPO}/actions/workflows/{PROMOTION_WORKFLOW_FILE}/runs?per_page={recent}")
     if data is None:
         return check_result("C3", "UNKNOWN", "GitHub API unreachable (no credential path)",
                             {"reason": "no_api"})
@@ -179,16 +259,25 @@ def check_workflow_health(recent: int = 12) -> dict:
                          "conclusion": conclusion, "created_at": r.get("created_at")})
         if latest_failed_sha is None and r.get("head_sha"):
             latest_failed_sha = r["head_sha"]
-        jobs = gh_get(f"/repos/{REPO}/actions/runs/{rid}/jobs?per_page=30")
+        jobs = _api_get(f"/repos/{REPO}/actions/runs/{rid}/jobs?per_page=30")
         steps = []
+        policy_durations = []
         if isinstance(jobs, dict):
             for j in jobs.get("jobs", []):
                 for s in j.get("steps", []) or []:
+                    name = s.get("name") or ""
                     if s.get("conclusion") not in ("success", "skipped", None):
-                        steps.append(s.get("name"))
+                        steps.append(name)
+                    if "standing policy" in name.lower():
+                        dur = _step_duration_s(s.get("started_at"),
+                                               s.get("completed_at"))
+                        if dur is not None:
+                            policy_durations.append(dur)
         for st in steps:
             failing_steps[st] = failing_steps.get(st, 0) + 1
         failures[-1]["failing_steps"] = steps
+        failures[-1]["policy_step_duration_s"] = (
+            max(policy_durations) if policy_durations else None)
     evidence = {"runs_examined": len(runs), "successes": successes,
                 "failures": failures, "failing_step_histogram": failing_steps,
                 "required_ci_at_latest_tip": required_ci_status(latest_failed_sha)}
@@ -199,7 +288,11 @@ def check_workflow_health(recent: int = 12) -> dict:
     if failing_ci:
         ci_note = (f"; required CI failing at latest tip {latest_failed_sha[:12] if latest_failed_sha else '?'}: "
                    f"{', '.join(failing_ci)}")
-    classification = classify_promotion_failures(failures, evidence["required_ci_at_latest_tip"])
+    blocker_open = _production_blocker_open()
+    evidence["production_blocker_978_open"] = blocker_open
+    classification = classify_promotion_failures(
+        failures, evidence["required_ci_at_latest_tip"],
+        gate_state={"blocker_open": blocker_open})
     evidence["promotion_failure_classification"] = classification
     class_note = (f"; classification: {classification['classification']} — "
                   f"{classification['detail']}")
@@ -223,7 +316,7 @@ def failed_jobs_for_run(run_id: int | None) -> list[str] | None:
     """
     if not run_id:
         return None
-    jobs = gh_get(f"/repos/{REPO}/actions/runs/{run_id}/jobs?per_page=30")
+    jobs = _api_get(f"/repos/{REPO}/actions/runs/{run_id}/jobs?per_page=30")
     if not isinstance(jobs, dict):
         return None
     out = []
@@ -245,8 +338,8 @@ def required_ci_status(head_sha: str | None) -> dict:
         return {}
     out: dict[str, dict] = {}
     for wf in REQUIRED_CI_WORKFLOWS:
-        data = gh_get(f"/repos/{REPO}/actions/workflows/{wf}/runs"
-                      f"?head_sha={head_sha}&event=push&per_page=10")
+        data = _api_get(f"/repos/{REPO}/actions/workflows/{wf}/runs"
+                        f"?head_sha={head_sha}&event=push&per_page=10")
         if not isinstance(data, dict):
             out[wf] = {"status": "unknown", "conclusion": None, "reason": "no_api",
                        "failed_jobs": None}
@@ -290,6 +383,39 @@ def _is_strict_ancestor_of_tip(full_sha: str) -> bool | None:
     return git(["merge-base", "--is-ancestor", full_sha, tip]) is not None
 
 
+def _step_duration_s(started_at, completed_at):
+    """Seconds between a job step's started_at and completed_at (ISO 8601).
+
+    Returns None when either timestamp is missing or unparseable — the
+    instrument records what it could actually read, never guesses.
+    """
+    if not started_at or not completed_at:
+        return None
+    try:
+        start = datetime.fromisoformat(str(started_at).replace("Z", "+00:00"))
+        end = datetime.fromisoformat(str(completed_at).replace("Z", "+00:00"))
+        return (end - start).total_seconds()
+    except (ValueError, TypeError):
+        return None
+
+
+def _production_blocker_open():
+    """Read the production blocker issue state (True=open, False=closed).
+
+    Returns None when the read is skipped or unreadable — deliberately never
+    fatal: a budget-exhausted local-only run must not lose the whole C3 check
+    over one advisory read.
+    """
+    try:
+        data = _api_get(f"/repos/{REPO}/issues/{PRODUCTION_BLOCKER_ISSUE}")
+    except _ApiSkipped:
+        return None
+    if not isinstance(data, dict):
+        return None
+    state = data.get("state")
+    return {"open": True, "closed": False}.get(state)
+
+
 def _race_failures(failures: list[dict]) -> list[dict]:
     """Failures matching the superseded-tip race signature.
 
@@ -312,8 +438,10 @@ def _race_failures(failures: list[dict]) -> list[dict]:
     return out
 
 
-def classify_promotion_failures(failures: list[dict], ci_status: dict) -> dict:
-    """FAIL_CLOSED_BY_DESIGN vs SUPERSEDED_TIP_RACE vs NEEDS_INVESTIGATION.
+def classify_promotion_failures(failures: list[dict], ci_status: dict,
+                                gate_state: dict | None = None) -> dict:
+    """FAIL_CLOSED_BY_DESIGN vs SUPERSEDED_TIP_RACE vs FAIL_CLOSED_ON_QUOTA
+    vs NEEDS_INVESTIGATION.
 
     The promotion workflow's standing-policy step fail-closes whenever required
     CI is red at the exact head SHA (it raises SystemExit("FAIL CLOSED:
@@ -321,9 +449,16 @@ def classify_promotion_failures(failures: list[dict], ci_status: dict) -> dict:
     under those conditions is the gate OPERATING CORRECTLY — the readiness
     hole is the red CI, not the deploy path. Separately, a run that fails only
     at the authorization-mode step because main moved past its head SHA is a
-    benign supersede, not a pathology. This classifier distinguishes both from
-    failures the gate model cannot explain, so the readiness verdict names the
-    true hole instead of blaming a working gate.
+    benign supersede, not a pathology. And a run whose policy step fails after
+    running through the API retry backoff — with CI green and the production
+    blocker closed — is the gate failing closed on installation-token rate
+    limiting: again the gate operating correctly, the hole being quota, not
+    the deploy path. This classifier distinguishes all three from failures the
+    gate model cannot explain, so the readiness verdict names the true hole
+    instead of blaming a working gate.
+
+    gate_state (optional): {"blocker_open": True/False/None} — the production
+    blocker issue state as read during this run; None when unreadable.
     """
     ci_failing = [w for w, s in ci_status.items()
                   if s.get("status") == "completed" and s.get("conclusion") == "failure"]
@@ -386,9 +521,43 @@ def classify_promotion_failures(failures: list[dict], ci_status: dict) -> dict:
                 "detail": ("required-CI state unreadable; cannot tell "
                            "fail-closed from pathology"),
                 **evidence}
+    gate = gate_state or {}
+    blocker_open = gate.get("blocker_open")
+    slowest_policy_s = max(
+        [f.get("policy_step_duration_s") or 0
+         for f in failures
+         if f.get("run_id") not in race_ids
+         and any("standing policy" in (st or "").lower()
+                 for st in f.get("failing_steps", []))] or [0])
+    evidence["policy_step_slowest_s"] = round(slowest_policy_s, 1)
+    evidence["production_blocker_978_open"] = blocker_open
+    if (policy_trips and not ci_failing and not ci_unknown
+            and blocker_open is False
+            and explained == len(failures)
+            and slowest_policy_s >= QUOTA_RETRY_SIGNATURE_S):
+        ids = ", ".join(str(f.get("run_id")) for f in failures
+                        if f.get("run_id") not in race_ids)
+        detail = (f"every promotion failure is the standing-policy step failing "
+                  f"closed after ~{slowest_policy_s:.0f}s — the gh-api-retry "
+                  f"backoff signature for installation-token API rate limiting "
+                  f"(run(s) {ids}). Required CI green, production blocker #978 "
+                  f"closed: the gate refused correctly because it could not "
+                  f"verify the blocker state. The hole is API quota, not the "
+                  f"deploy path. Confirm on any future instance: the failing "
+                  f"job's log shows 'API rate limit exceeded for installation' "
+                  f"inside the policy step.")
+        if races:
+            ids_r = ", ".join(str(i) for i in sorted(race_ids))
+            detail += (f" Plus {len(races)} superseded-tip race failure(s) "
+                       f"(run(s) {ids_r}): main moved after the push event — "
+                       f"benign, no failure receipt written; see evidence.")
+        return {"classification": "FAIL_CLOSED_ON_QUOTA", "detail": detail,
+                **evidence}
     detail = ("promotion failures not fully explained by red required "
               f"CI (policy-step trips: {policy_trips}/{len(failures)}; "
-              f"red CI: {ci_failing or 'none'})")
+              f"red CI: {ci_failing or 'none'}"
+              f"; blocker #978: {'open' if blocker_open else 'closed' if blocker_open is False else 'unreadable'}"
+              f"; slowest policy step: {slowest_policy_s:.0f}s)")
     if races:
         ids = ", ".join(str(i) for i in sorted(race_ids))
         detail += (f"; {len(races)} superseded-tip race failure(s) (run(s) "
@@ -401,8 +570,8 @@ def _paged_open_prs(max_pages: int = 3) -> list | None:
     """Fetch open PRs oldest-first across bounded pages (API caps at 100/page)."""
     out: list = []
     for page in range(1, max_pages + 1):
-        data = gh_get(f"/repos/{REPO}/pulls?state=open&per_page=100"
-                      f"&sort=created&direction=asc&page={page}")
+        data = _api_get(f"/repos/{REPO}/pulls?state=open&per_page=100"
+                        f"&sort=created&direction=asc&page={page}")
         if data is None:
             return None
         if not isinstance(data, list) or not data:
@@ -421,6 +590,14 @@ def check_branch_hygiene(dirty_scan_limit: int = 15) -> dict:
     ones — with bounded API cost. A healthy fast-moving repo can carry a large
     fresh pile; a stale or conflicted pile is integration debt.
     """
+    try:
+        return _check_branch_hygiene_impl(dirty_scan_limit)
+    except _ApiSkipped as skipped:
+        return _api_unknown("C9", skipped)
+
+
+def _check_branch_hygiene_impl(dirty_scan_limit: int = 15) -> dict:
+    """C9 implementation; _ApiSkipped propagates to the wrapper above."""
     data = _paged_open_prs()
     if data is None:
         return check_result("C9", "UNKNOWN", "GitHub API unreachable (no credential path)",
@@ -433,7 +610,7 @@ def check_branch_hygiene(dirty_scan_limit: int = 15) -> dict:
     # mergeable_state needs a per-PR fetch: scan only the oldest, bounded.
     dirty, blocked, scan_failures = [], [], 0
     for p in prs[:dirty_scan_limit]:
-        detail = gh_get(f"/repos/{REPO}/pulls/{p['number']}")
+        detail = _api_get(f"/repos/{REPO}/pulls/{p['number']}")
         state = detail.get("mergeable_state") if isinstance(detail, dict) else None
         if state == "dirty":
             dirty.append(p["number"])
@@ -441,7 +618,7 @@ def check_branch_hygiene(dirty_scan_limit: int = 15) -> dict:
             blocked.append(p["number"])
         elif state is None:
             scan_failures += 1
-    merged_data = gh_get(f"/repos/{REPO}/pulls?state=closed&per_page=100")
+    merged_data = _api_get(f"/repos/{REPO}/pulls?state=closed&per_page=100")
     merged_24h = 0
     if isinstance(merged_data, list):
         merged_24h = sum(
@@ -614,6 +791,8 @@ def run() -> tuple[dict, int]:
     verdict, exit_code = score(checks)
     report = {"schema": SCHEMA, "verdict": verdict,
               "checks": checks,
+              "api_calls": _api_call_count,
+              "local_only": _LOCAL_ONLY,
               "summary": {v: sum(1 for c in checks if c["verdict"] == v)
                           for v in ("PASS", "WARN", "FAIL", "UNKNOWN")}}
     return report, exit_code
@@ -621,6 +800,17 @@ def run() -> tuple[dict, int]:
 
 def main(argv: list[str] | None = None) -> int:
     args = sys.argv[1:] if argv is None else argv
+    global _LOCAL_ONLY, _MAX_API_CALLS, _api_call_count
+    _LOCAL_ONLY = "--local-only" in args
+    _api_call_count = 0
+    if "--max-api-calls" in args:
+        i = args.index("--max-api-calls")
+        try:
+            _MAX_API_CALLS = int(args[i + 1])
+        except (IndexError, ValueError):
+            print(json.dumps({"schema": SCHEMA, "verdict": "INSTRUMENT_ERROR",
+                              "error": "--max-api-calls needs an integer value"}))
+            return 2
     try:
         report, exit_code = run()
     except Exception as e:  # instrument must fail loudly, never silently
@@ -638,6 +828,8 @@ def main(argv: list[str] | None = None) -> int:
     print(f"\nverdict: {report['verdict']} "
           f"(PASS {report['summary']['PASS']}, WARN {report['summary']['WARN']}, "
           f"FAIL {report['summary']['FAIL']}, UNKNOWN {report['summary']['UNKNOWN']})")
+    print(f"api_calls: {report['api_calls']}"
+          + (" (local-only: zero REST calls)" if report["local_only"] else ""))
     return exit_code
 
 
