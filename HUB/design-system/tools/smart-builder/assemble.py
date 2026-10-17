@@ -187,9 +187,9 @@ def main():
     ap.add_argument('--manifest', required=True)
     a = ap.parse_args()
 
-    contract = json.load(open(a.contract))
-    index = json.load(open(a.index))
-    tpl = open(a.template).read()
+    contract = json.load(open(a.contract, encoding='utf-8'))
+    index = json.load(open(a.index, encoding='utf-8'))
+    tpl = open(a.template, encoding='utf-8').read()
     pieces, cssbank = index['pieces'], index['css_bank']
 
     # raw bytes for deterministic identity
@@ -201,7 +201,7 @@ def main():
     reg_path = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                             'functions', 'registry.json')
     reg_present = os.path.exists(reg_path)
-    reg = json.load(open(reg_path)) if reg_present else None
+    reg = json.load(open(reg_path, encoding='utf-8')) if reg_present else None
     reg_statuses = ({f['id'].replace('feature.', ''): f['status']
                      for f in reg['groups']['feature']['functions']}
                     if reg_present else {})
@@ -325,7 +325,7 @@ def main():
     }.items():
         page = page.replace(key, val)
 
-    open(a.out, 'w').write(page)
+    open(a.out, 'w', encoding='utf-8', newline='\n').write(page)
     page_bytes = page.encode()
 
     # Deterministic build identity: same contract + index + template +
@@ -362,7 +362,7 @@ def main():
             'events': breaker_events,
         },
     }
-    json.dump(manifest, open(a.manifest, 'w'), indent=2)
+    json.dump(manifest, open(a.manifest, 'w', encoding='utf-8'), indent=2)
     print('page:', a.out, manifest['build']['page']['bytes'], 'bytes')
     print('build id:', build_id[:16])
     print('manifest:', a.manifest)
