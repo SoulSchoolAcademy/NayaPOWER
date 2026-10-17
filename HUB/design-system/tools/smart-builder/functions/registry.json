@@ -871,7 +871,7 @@
             "bars wired"
           ],
           "activated_by": "contract.features.smart_bars",
-          "status": "specified",
+          "status": "built",
           "code": null,
           "depends_on": [],
           "version": "1.0.0",
@@ -891,7 +891,12 @@
           "ready": [
             "navigation bars render"
           ],
-          "connected": []
+          "connected": [
+            {
+              "action": "cross-page sync",
+              "grant": "nayanet"
+            }
+          ]
         },
         {
           "id": "feature.community",
