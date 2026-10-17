@@ -1008,7 +1008,7 @@
             "scheduler wired"
           ],
           "activated_by": "contract.features.scheduler",
-          "status": "specified",
+          "status": "built",
           "code": null,
           "depends_on": [
             "systems.scheduler"
@@ -1033,13 +1033,13 @@
             "missed_job_reported"
           ],
           "ready": [
-            "scheduler UI",
-            "local queue"
+            "schedule card renders",
+            "job spec created and queued locally"
           ],
           "connected": [
             {
-              "action": "auto-post",
-              "grant": "network"
+              "action": "deliver posts to NayaNET feed on schedule",
+              "grant": "nayanet"
             }
           ]
         },
