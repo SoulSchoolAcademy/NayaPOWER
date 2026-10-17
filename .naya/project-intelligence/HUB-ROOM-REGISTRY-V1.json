@@ -1,0 +1,1134 @@
+{
+  "schema": "nayanet.hub.room-registry.v1",
+  "version": "1.0.0",
+  "status": "TARGET_CONTRACT_NOT_RUNTIME_PROOF",
+  "authority": "Shawn Vibert, Human Director",
+  "coordination_issue": 554,
+  "canonical_sources": [
+    "HUB/PROJECT-INTELLIGENCE.md",
+    "HUB/DESIGN-CONTRACT.md",
+    ".naya/project-intelligence/HUB-ROOM-FUNCTIONALITY-CONSENSUS-V1.md"
+  ],
+  "invariants": [
+    "One shell, eleven rooms, one governed intelligence substrate.",
+    "Hub is a projection, never a second brain, second database, or shadow authority system.",
+    "Every visible control has a real causal path or an honest unavailable state.",
+    "Connection/capability never creates authority.",
+    "No fake data, activity, mail, receipts, verification or learning.",
+    "Current concept remains the visual floor; production implementation may improve it but may not flatten it.",
+    "UNKNOWN, BLOCKED, IMPLEMENTED, VERIFIED and PRODUCTION_PROVEN are distinct states."
+  ],
+  "universal_states": [
+    "LOADING",
+    "EMPTY",
+    "READY",
+    "BLOCKED",
+    "NOT_VERIFIED",
+    "VERIFIED",
+    "ERROR",
+    "UNKNOWN",
+    "UNAUTHORIZED",
+    "OFFLINE",
+    "DISABLED"
+  ],
+  "causal_path": [
+    "CONTROL",
+    "HUMAN_INTENT",
+    "AUTHORITY_SCOPE",
+    "RUNTIME_OPERATION",
+    "OBSERVATION",
+    "UI_STATE",
+    "EVIDENCE_OR_RECEIPT_WHERE_REQUIRED"
+  ],
+  "room_acceptance_baseline": [
+    "purpose is clear",
+    "visual/interaction contract is coherent",
+    "every visible control is causally bound or honestly unavailable",
+    "authorized canonical data only",
+    "unsupported claims remain unknown/not verified",
+    "cross-room links resolve to canonical objects",
+    "consequential actions emit receipts",
+    "errors are understandable/recoverable",
+    "accessibility works",
+    "responsive identity preserved",
+    "performance meets project budget",
+    "independent evidence can verify the room"
+  ],
+  "rooms": [
+    {
+      "id": "feed",
+      "name": "Smart Feed",
+      "route": "/feed",
+      "theme": "emerald",
+      "question": "What useful intelligence/activity should I see now?",
+      "presentation": "Cinematic obsidian intelligence river; full Intelligence Boards mixed with compact signals, people moments, activity pulses and receipt signals.",
+      "zones": [
+        {
+          "id": "mode-tabs",
+          "name": "Mode tabs",
+          "elements": [
+            "COLLECTIVE",
+            "PERSONAL",
+            "ACTIVITY"
+          ]
+        },
+        {
+          "id": "capture-truth",
+          "name": "Composer + truth strip",
+          "elements": [
+            "Capture an intelligence input",
+            "connection state",
+            "sync state",
+            "last verified write"
+          ]
+        },
+        {
+          "id": "living-stream",
+          "name": "Living stream",
+          "elements": [
+            "newest-first canonical items"
+          ]
+        },
+        {
+          "id": "deep-memory",
+          "name": "Deep-memory anchor",
+          "elements": [
+            "current history boundary",
+            "older-history retrieval"
+          ]
+        }
+      ],
+      "controls": [
+        {
+          "id": "mode-switch",
+          "label": "Mode tabs",
+          "behavior": "Switch actual datasets and preserve scroll position by mode."
+        },
+        {
+          "id": "capture-send",
+          "label": "Capture / Send",
+          "behavior": "Validate and submit a real Smart Note; show loading then success receipt or failure with draft preserved."
+        },
+        {
+          "id": "board-actions",
+          "label": "Board actions",
+          "behavior": "Favorite / Save / Like / Love / Rank / Share / Ask Naya against the selected canonical object."
+        },
+        {
+          "id": "signal-open",
+          "label": "Signal row",
+          "behavior": "Open the underlying canonical object."
+        },
+        {
+          "id": "load-history",
+          "label": "Load more history",
+          "behavior": "Cursor-based retrieval; never simulate infinite scroll."
+        },
+        {
+          "id": "catch-up",
+          "label": "Catch me up",
+          "behavior": "Naya summarizes only qualifying evidence from missed items."
+        }
+      ],
+      "data_rules": [
+        "Collective respects consent and sharing state.",
+        "Personal is private-by-default.",
+        "Activity represents events rather than claiming every event is intelligence.",
+        "No fake activity or fixture data.",
+        "Local UI state is never durable proof."
+      ],
+      "takes_from": [
+        "whole estate activity and intelligence",
+        "canonical runtime retrieval"
+      ],
+      "hands_to": [
+        "Today highlights",
+        "Reports history",
+        "Library references",
+        "Ledger receipts"
+      ],
+      "acceptance": [
+        "Create one real Personal Smart Note.",
+        "It appears in Personal with a real receipt.",
+        "It survives reload.",
+        "It remains absent from Collective unless explicitly shared.",
+        "Disconnected capture retains the draft and creates no phantom item."
+      ]
+    },
+    {
+      "id": "today",
+      "name": "Your Intelligence Today",
+      "route": "/today",
+      "theme": "magenta",
+      "question": "Given everything the system knows, what matters to me right now?",
+      "presentation": "Cinematic daily briefing / highlights reel rather than a dashboard grid.",
+      "zones": [
+        {
+          "id": "hero",
+          "name": "Daily hero",
+          "elements": [
+            "greeting",
+            "date",
+            "summary",
+            "evidence state"
+          ]
+        },
+        {
+          "id": "highlights",
+          "name": "Seven signature panels",
+          "elements": [
+            "What Happened",
+            "What Changed",
+            "What I Learned",
+            "What Matters Now",
+            "Remember This",
+            "What Am I Missing?",
+            "Naya's View"
+          ]
+        },
+        {
+          "id": "next-actions",
+          "name": "Next Actions deck",
+          "elements": [
+            "prioritized governed actions"
+          ]
+        },
+        {
+          "id": "replay",
+          "name": "Replay",
+          "elements": [
+            "PLAY TODAY'S HIGHLIGHTS"
+          ]
+        },
+        {
+          "id": "date-control",
+          "name": "Date scrubber",
+          "elements": [
+            "Yesterday",
+            "Today",
+            "date picker"
+          ]
+        }
+      ],
+      "controls": [
+        {
+          "id": "date",
+          "label": "Date scrubber",
+          "behavior": "Navigate historical dates; future dates are disabled."
+        },
+        {
+          "id": "panel-drill",
+          "label": "Panel drill-in",
+          "behavior": "Open supporting Feed / Reports context."
+        },
+        {
+          "id": "action-cta",
+          "label": "Action CTA",
+          "behavior": "Execute a governed action and record the outcome."
+        },
+        {
+          "id": "refresh",
+          "label": "Refresh",
+          "behavior": "Recompute today's snapshot and show updated-at time."
+        },
+        {
+          "id": "missed",
+          "label": "What did I miss?",
+          "behavior": "Return evidence-backed answer or an honest no-evidence state."
+        },
+        {
+          "id": "replay",
+          "label": "Play today's highlights",
+          "behavior": "Guide the user through qualifying daily highlights without inventing events."
+        }
+      ],
+      "data_rules": [
+        "Unsupported categories remain NOT_VERIFIED.",
+        "No guessed summaries.",
+        "Every highlighted statement must have a support path."
+      ],
+      "takes_from": [
+        "Feed events and notes",
+        "Reports context",
+        "Connections changes",
+        "Ledger receipts"
+      ],
+      "hands_to": [
+        "Spaces tasks",
+        "Mail follow-ups",
+        "Lists highlights",
+        "Library sources"
+      ],
+      "acceptance": [
+        "Create three qualifying events.",
+        "WHAT HAPPENED shows all three with timestamps.",
+        "Unsupported categories remain NOT_VERIFIED."
+      ]
+    },
+    {
+      "id": "reports",
+      "name": "Your Reports",
+      "route": "/reports",
+      "theme": "indigo",
+      "question": "What does accumulated intelligence mean across time?",
+      "presentation": "Publication corridor with period rail and chaptered synthesis.",
+      "zones": [
+        {
+          "id": "period",
+          "name": "Timescale + period picker",
+          "elements": [
+            "DAY",
+            "WEEK",
+            "MONTH",
+            "QUARTER",
+            "YEAR"
+          ]
+        },
+        {
+          "id": "summary",
+          "name": "Summary headline",
+          "elements": [
+            "synthesis",
+            "source count"
+          ]
+        },
+        {
+          "id": "chapters",
+          "name": "Chapters",
+          "elements": [
+            "Breakthroughs",
+            "Decisions",
+            "Accomplishments",
+            "Failures",
+            "Problems",
+            "Lessons",
+            "Patterns",
+            "Opportunities",
+            "Unresolved",
+            "Next Priorities"
+          ]
+        },
+        {
+          "id": "export",
+          "name": "Export",
+          "elements": [
+            "PDF",
+            "Markdown"
+          ]
+        }
+      ],
+      "controls": [
+        {
+          "id": "generate",
+          "label": "Generate",
+          "behavior": "Run real synthesis with visible progress and a Ledger receipt."
+        },
+        {
+          "id": "statement-drill",
+          "label": "Statement drill-in",
+          "behavior": "Open source support for each claim; unsupported statements visibly warn."
+        },
+        {
+          "id": "export",
+          "label": "Export",
+          "behavior": "Generate a real artifact matching the visible data."
+        },
+        {
+          "id": "star",
+          "label": "Star chapter",
+          "behavior": "Pin a chapter to future reports."
+        }
+      ],
+      "data_rules": [
+        "Every visible statement has at least one support path.",
+        "No fabricated trends or conclusions."
+      ],
+      "takes_from": [
+        "Feed",
+        "Today",
+        "Library",
+        "Ledger"
+      ],
+      "hands_to": [
+        "Smart Connect governed export/share"
+      ],
+      "acceptance": [
+        "Visible statements expose support paths.",
+        "A deliberately unsupported statement visibly fails rather than disappearing."
+      ]
+    },
+    {
+      "id": "library",
+      "name": "Intelligent Library",
+      "route": "/library",
+      "theme": "sapphire",
+      "question": "What do we know and how can I find, trust and use it?",
+      "presentation": "Quiet grand library with living taxonomy and a beautiful canonical reading room.",
+      "zones": [
+        {
+          "id": "search",
+          "name": "Library search",
+          "elements": [
+            "titles",
+            "concepts",
+            "content"
+          ]
+        },
+        {
+          "id": "taxonomy",
+          "name": "Taxonomy rail + shelves",
+          "elements": [
+            "Concepts",
+            "Smart Notes",
+            "Documents",
+            "Reports",
+            "Powercasts",
+            "Academy lessons"
+          ]
+        },
+        {
+          "id": "reading-room",
+          "name": "Reading room",
+          "elements": [
+            "identity",
+            "version",
+            "Intelligence Board",
+            "related items",
+            "evidence footer"
+          ]
+        },
+        {
+          "id": "actions",
+          "name": "Actions dock",
+          "elements": [
+            "Add to List",
+            "Share",
+            "Cite",
+            "Report Issue",
+            "Subscribe"
+          ]
+        }
+      ],
+      "controls": [
+        {
+          "id": "search",
+          "label": "Search",
+          "behavior": "Retrieve canonical results with truth state and provenance."
+        },
+        {
+          "id": "filters",
+          "label": "Filters",
+          "behavior": "Filter by topic, recency, verification, source."
+        },
+        {
+          "id": "perspective",
+          "label": "Perspective tabs",
+          "behavior": "Switch Human / Simplified / Naya's Take / Evidence views of the same canonical object."
+        },
+        {
+          "id": "version",
+          "label": "Version ribbon",
+          "behavior": "Show supersession diff and provenance."
+        },
+        {
+          "id": "stale",
+          "label": "Stale badge",
+          "behavior": "Clearly identify superseded content."
+        },
+        {
+          "id": "subscribe",
+          "label": "Subscribe",
+          "behavior": "Create real subscription state."
+        },
+        {
+          "id": "add-list",
+          "label": "Add to List",
+          "behavior": "Link the canonical item without copying it."
+        }
+      ],
+      "data_rules": [
+        "Canonical source and version must be identifiable.",
+        "Superseded items cannot appear current.",
+        "Views never create duplicate intelligence objects."
+      ],
+      "takes_from": [
+        "promoted canonical intelligence"
+      ],
+      "hands_to": [
+        "citations to Mail",
+        "governed derivatives to Connect",
+        "references to every room"
+      ],
+      "acceptance": [
+        "Open a canonical item and verify version equality.",
+        "Open a superseded version and verify it cannot be presented as current."
+      ]
+    },
+    {
+      "id": "connect",
+      "name": "Smart Connect",
+      "aka": "Smart Doors",
+      "route": "/connect",
+      "theme": "teal",
+      "question": "How can an authorized human/system connect to NayaPOWER?",
+      "presentation": "Mission-control door atlas; each channel is a physical jewel-door object.",
+      "zones": [
+        {
+          "id": "doors",
+          "name": "Door gallery",
+          "elements": [
+            "door identity",
+            "audience",
+            "live status",
+            "primary action"
+          ]
+        },
+        {
+          "id": "detail",
+          "name": "Door detail",
+          "elements": [
+            "permissions",
+            "scopes",
+            "key management",
+            "health",
+            "usage",
+            "revocation"
+          ]
+        },
+        {
+          "id": "share",
+          "name": "Governed share composer",
+          "elements": [
+            "intelligence",
+            "recipient",
+            "scope",
+            "consent",
+            "preview",
+            "execute"
+          ]
+        },
+        {
+          "id": "activity",
+          "name": "Activity floor",
+          "elements": [
+            "connect events",
+            "disconnect events",
+            "share events",
+            "Ledger receipts"
+          ]
+        }
+      ],
+      "controls": [
+        {
+          "id": "connect",
+          "label": "Connect",
+          "behavior": "Run real authentication/connection flow; idle→connecting→connected or error→retry."
+        },
+        {
+          "id": "disconnect",
+          "label": "Disconnect / Revoke",
+          "behavior": "Sever the connection when the capability supports it and update dependent state."
+        },
+        {
+          "id": "share",
+          "label": "Share",
+          "behavior": "Show scope and consent preview before governed execution."
+        },
+        {
+          "id": "permissions",
+          "label": "Permission management",
+          "behavior": "Expose connectivity and action authority as distinct states."
+        }
+      ],
+      "data_rules": [
+        "Only actual runtime capability may be shown as LIVE.",
+        "REGISTERED_CONTRACT_ONLY and ROADMAP remain visibly non-live.",
+        "CONNECTED never implies AUTHORIZED."
+      ],
+      "takes_from": [
+        "BRAIN Smart Door Contract/Registry",
+        "Settings connection administration"
+      ],
+      "hands_to": [
+        "share results to relevant rooms",
+        "connect/share receipts to Ledger"
+      ],
+      "acceptance": [
+        "Connect a real door.",
+        "Verify transport health.",
+        "Disconnect it.",
+        "Dependent views update and Ledger records both actions."
+      ]
+    },
+    {
+      "id": "ledger",
+      "name": "Smart Ledger",
+      "route": "/ledger",
+      "theme": "yellow",
+      "question": "What happened and what proves it?",
+      "presentation": "Jeweler's vault: quiet, exact, warm and trustworthy.",
+      "zones": [
+        {
+          "id": "summary",
+          "name": "Summary strip",
+          "elements": [
+            "verified action count",
+            "weekly receipts",
+            "chain state"
+          ]
+        },
+        {
+          "id": "table",
+          "name": "Ledger table",
+          "elements": [
+            "timestamp",
+            "actor",
+            "action",
+            "subject",
+            "verification",
+            "proof"
+          ]
+        },
+        {
+          "id": "receipt",
+          "name": "Receipt drawer",
+          "elements": [
+            "hash",
+            "parent receipt",
+            "evidence",
+            "supersession"
+          ]
+        },
+        {
+          "id": "value",
+          "name": "Value signals",
+          "elements": [
+            "only governed value economics when actually available"
+          ]
+        }
+      ],
+      "controls": [
+        {
+          "id": "filters",
+          "label": "Filters",
+          "behavior": "Filter actor / action / date / state."
+        },
+        {
+          "id": "proof",
+          "label": "Proof link",
+          "behavior": "Open the supporting evidence chain."
+        },
+        {
+          "id": "export",
+          "label": "Export audit pack",
+          "behavior": "Produce JSON/PDF with matching hashes."
+        },
+        {
+          "id": "verify",
+          "label": "Verify",
+          "behavior": "Recheck the current evidence."
+        },
+        {
+          "id": "dispute",
+          "label": "Dispute",
+          "behavior": "Create a governed dispute record without deleting original history."
+        }
+      ],
+      "data_rules": [
+        "No fabricated transactions.",
+        "No guessed value.",
+        "Disputes never delete history."
+      ],
+      "takes_from": [
+        "whole estate consequential actions"
+      ],
+      "hands_to": [
+        "proof references to all relevant rooms"
+      ],
+      "acceptance": [
+        "Perform a governed action elsewhere.",
+        "Matching receipt appears here with identifiers/hashes.",
+        "Integrity mismatch is visibly reported if inspected data is altered."
+      ]
+    },
+    {
+      "id": "connections",
+      "name": "Your Connections",
+      "route": "/connections",
+      "theme": "lime",
+      "question": "What governed relationships exist?",
+      "presentation": "Constellation of people, Nayas, organizations and agents.",
+      "zones": [
+        {
+          "id": "roster",
+          "name": "Search + roster",
+          "elements": [
+            "people",
+            "Nayas",
+            "organizations",
+            "agents",
+            "context groups"
+          ]
+        },
+        {
+          "id": "graph",
+          "name": "Constellation canvas",
+          "elements": [
+            "zoom",
+            "pan",
+            "focus"
+          ]
+        },
+        {
+          "id": "portrait",
+          "name": "Portrait panel",
+          "elements": [
+            "identity",
+            "shared contexts",
+            "permitted intelligence",
+            "recent interactions"
+          ]
+        },
+        {
+          "id": "suggestions",
+          "name": "Suggestions",
+          "elements": [
+            "reasoned suggestions"
+          ]
+        }
+      ],
+      "controls": [
+        {
+          "id": "node",
+          "label": "Node tap",
+          "behavior": "Center the selected node."
+        },
+        {
+          "id": "message",
+          "label": "Message",
+          "behavior": "Open Smart Mail with the selected relationship."
+        },
+        {
+          "id": "share",
+          "label": "Share intelligence",
+          "behavior": "Open governed Smart Connect flow."
+        },
+        {
+          "id": "privacy",
+          "label": "Privacy control",
+          "behavior": "Expose governed private/shared/public state."
+        },
+        {
+          "id": "relationship",
+          "label": "Connect / Accept / Decline",
+          "behavior": "Show relationship context before decision."
+        }
+      ],
+      "data_rules": [
+        "Only governed relationship records may appear.",
+        "Suggestions require explainable evidence."
+      ],
+      "takes_from": [
+        "identity",
+        "connection state",
+        "governed relationship records"
+      ],
+      "hands_to": [
+        "Mail",
+        "Connect",
+        "Spaces membership"
+      ],
+      "acceptance": [
+        "Create a connection.",
+        "Verify it appears in roster and graph.",
+        "Change sharing permission and verify dependent views update."
+      ]
+    },
+    {
+      "id": "lists",
+      "name": "Smart Lists",
+      "route": "/lists",
+      "theme": "purple",
+      "question": "How do I organize useful intelligence for action?",
+      "presentation": "Curator gallery: live canonical intelligence strips, never duplicated copies.",
+      "zones": [
+        {
+          "id": "shelf",
+          "name": "List shelf",
+          "elements": [
+            "lists",
+            "count",
+            "cover note",
+            "management"
+          ]
+        },
+        {
+          "id": "membership",
+          "name": "Membership view",
+          "elements": [
+            "live Intelligence Board strips"
+          ]
+        },
+        {
+          "id": "unlisted",
+          "name": "Unlisted inbox",
+          "elements": [
+            "recent intelligence awaiting curation"
+          ]
+        }
+      ],
+      "controls": [
+        {
+          "id": "new-list",
+          "label": "New List",
+          "behavior": "Create list metadata and optional initial membership."
+        },
+        {
+          "id": "save",
+          "label": "Save to List",
+          "behavior": "Add canonical reference to selected list."
+        },
+        {
+          "id": "drag",
+          "label": "Drag to List",
+          "behavior": "Use physical drop target with keyboard Move To fallback."
+        },
+        {
+          "id": "remove",
+          "label": "Remove",
+          "behavior": "Remove membership only; never delete source."
+        },
+        {
+          "id": "move",
+          "label": "Move",
+          "behavior": "Change membership between lists."
+        },
+        {
+          "id": "annotate",
+          "label": "Annotate",
+          "behavior": "Attach human curatorial context."
+        },
+        {
+          "id": "smart-add",
+          "label": "Smart Add Suggestion",
+          "behavior": "Suggestion→accept/deny→learning signal."
+        },
+        {
+          "id": "share",
+          "label": "Share List",
+          "behavior": "Use governed Smart Connect flow."
+        }
+      ],
+      "data_rules": [
+        "Lists contain references, not copies.",
+        "Deleting a list does not delete canonical intelligence."
+      ],
+      "takes_from": [
+        "canonical boards from any room"
+      ],
+      "hands_to": [
+        "Reports scopes",
+        "Spaces shared context"
+      ],
+      "acceptance": [
+        "Edit a Library item and see list strip update.",
+        "Delete the list and verify source intelligence remains."
+      ]
+    },
+    {
+      "id": "mail",
+      "name": "Smart Mail",
+      "route": "/mail",
+      "theme": "rich-orange",
+      "question": "How do I communicate through governed real messaging?",
+      "presentation": "Warm orange writing desk with context-rich thread timeline.",
+      "zones": [
+        {
+          "id": "triage",
+          "name": "Triage column",
+          "elements": [
+            "Unread",
+            "awaiting reply",
+            "attention"
+          ]
+        },
+        {
+          "id": "context",
+          "name": "Context strip",
+          "elements": [
+            "sender",
+            "relationship",
+            "Spaces",
+            "related intelligence",
+            "Naya brief"
+          ]
+        },
+        {
+          "id": "thread",
+          "name": "Thread timeline",
+          "elements": [
+            "real messages",
+            "Board chips",
+            "receipts",
+            "state changes"
+          ]
+        },
+        {
+          "id": "followups",
+          "name": "Follow-ups dock",
+          "elements": [
+            "detected/proposed next actions"
+          ]
+        }
+      ],
+      "controls": [
+        {
+          "id": "compose",
+          "label": "Compose",
+          "behavior": "Open real composer with recipient context."
+        },
+        {
+          "id": "draft",
+          "label": "Ask Naya to draft",
+          "behavior": "Create/edit a draft only; no implicit send authority."
+        },
+        {
+          "id": "send",
+          "label": "Send",
+          "behavior": "Human-controlled real send when capability exists."
+        },
+        {
+          "id": "board-chip",
+          "label": "Board chip",
+          "behavior": "Expand linked intelligence without losing the thread."
+        },
+        {
+          "id": "followup",
+          "label": "Accept follow-up",
+          "behavior": "Create a bound task for Today."
+        },
+        {
+          "id": "thread-state",
+          "label": "Mute / Archive",
+          "behavior": "Apply real thread state."
+        }
+      ],
+      "data_rules": [
+        "Naya may draft but may not silently send.",
+        "No fake mailbox activity.",
+        "Send state must come from real provider/runtime observation."
+      ],
+      "takes_from": [
+        "Connections",
+        "Feed context",
+        "Library citations"
+      ],
+      "hands_to": [
+        "follow-ups to Today",
+        "consequential sends to Ledger"
+      ],
+      "acceptance": [
+        "Send a reply.",
+        "Verify message appearance, unread state, receipt and follow-up state."
+      ]
+    },
+    {
+      "id": "spaces",
+      "name": "Smart Spaces",
+      "route": "/spaces",
+      "theme": "red-orange",
+      "question": "What context am I working in and who/what belongs here?",
+      "presentation": "Specialized studio per Space with context-aware Naya dock.",
+      "zones": [
+        {
+          "id": "switcher",
+          "name": "Space switcher",
+          "elements": [
+            "Spaces as context doors"
+          ]
+        },
+        {
+          "id": "tabs",
+          "name": "Tab deck",
+          "elements": [
+            "FOCUS FEED",
+            "NOTES",
+            "TASKS",
+            "PEOPLE",
+            "MATERIALS",
+            "SETTINGS"
+          ]
+        },
+        {
+          "id": "naya",
+          "name": "Space Naya dock",
+          "elements": [
+            "Space-only context"
+          ]
+        }
+      ],
+      "controls": [
+        {
+          "id": "new-space",
+          "label": "New Space",
+          "behavior": "Create name/theme/members/visibility under governance."
+        },
+        {
+          "id": "add",
+          "label": "Add to Space",
+          "behavior": "Link canonical intelligence under permission constraints."
+        },
+        {
+          "id": "invite",
+          "label": "Invite member",
+          "behavior": "Invite→pending→accepted with viewer/contributor/keeper role."
+        },
+        {
+          "id": "task",
+          "label": "Task complete",
+          "behavior": "Write a real outcome receipt."
+        },
+        {
+          "id": "members",
+          "label": "Member management",
+          "behavior": "Invite/change role/remove."
+        },
+        {
+          "id": "sharing",
+          "label": "Sharing rules",
+          "behavior": "Define what the Space may share outward."
+        }
+      ],
+      "data_rules": [
+        "Adding intelligence to a Space links it; it does not transfer ownership.",
+        "Private-by-default intelligence remains private unless explicitly governed.",
+        "Leaving a Space revokes visibility where governed."
+      ],
+      "takes_from": [
+        "Connections members",
+        "Lists curation"
+      ],
+      "hands_to": [
+        "Today tasks",
+        "Mail messages",
+        "Feed activity"
+      ],
+      "acceptance": [
+        "Create a real Space.",
+        "Add one note.",
+        "Invite one member.",
+        "Verify all are live objects and unlinking note leaves original unchanged."
+      ]
+    },
+    {
+      "id": "settings",
+      "name": "Settings",
+      "route": "/settings",
+      "theme": "gray",
+      "question": "What is my relationship with NayaNET and what can I control?",
+      "presentation": "Precision instrument panel; every setting explains consequence before change.",
+      "zones": [
+        {
+          "id": "identity",
+          "name": "Identity",
+          "elements": [
+            "name",
+            "handle",
+            "namespace",
+            "Naya identity",
+            "session",
+            "sign-out"
+          ]
+        },
+        {
+          "id": "privacy",
+          "name": "Privacy & sharing",
+          "elements": [
+            "private-by-default",
+            "board audience defaults",
+            "revocation"
+          ]
+        },
+        {
+          "id": "services",
+          "name": "Connected services",
+          "elements": [
+            "Smart Connect mirror"
+          ]
+        },
+        {
+          "id": "naya-state",
+          "name": "Naya state",
+          "elements": [
+            "presence",
+            "learning posture",
+            "governed autonomy"
+          ]
+        },
+        {
+          "id": "system",
+          "name": "System & data",
+          "elements": [
+            "NayaPOWER",
+            "GitHub Brain",
+            "backups",
+            "export",
+            "delete",
+            "accessibility",
+            "interface preferences"
+          ]
+        }
+      ],
+      "controls": [
+        {
+          "id": "save",
+          "label": "Save",
+          "behavior": "Persist through governed runtime and roll back UI on failure; show change receipt."
+        },
+        {
+          "id": "signout",
+          "label": "Sign out",
+          "behavior": "Actually end session and return to Welcome."
+        },
+        {
+          "id": "export-data",
+          "label": "Export my data",
+          "behavior": "Run governed export job with progress, eventual artifact and receipt."
+        },
+        {
+          "id": "delete-data",
+          "label": "Delete my data",
+          "behavior": "Two-step governed destructive flow."
+        },
+        {
+          "id": "test-connection",
+          "label": "Test connection",
+          "behavior": "Prove the real connection now."
+        },
+        {
+          "id": "preferences",
+          "label": "Type / motion / density",
+          "behavior": "Persist user-controlled experience preferences."
+        }
+      ],
+      "data_rules": [
+        "Settings reflects runtime truth.",
+        "Local preference is never treated as global persistence.",
+        "No invented connected services."
+      ],
+      "takes_from": [
+        "Identity",
+        "privacy",
+        "authority",
+        "connection truth"
+      ],
+      "hands_to": [
+        "identity/privacy/authority state to every room"
+      ],
+      "acceptance": [
+        "Change a name, reload, and see it everywhere.",
+        "Disconnect a service and verify every dependent room reflects the state."
+      ]
+    }
+  ]
+}

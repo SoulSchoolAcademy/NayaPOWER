@@ -174,3 +174,87 @@ Broken, stale, contradictory, misleading, unsafe, missing-proof, below-standard,
 ---
 
 *Canonical v2 — reconciled 2026-10-01. This is the build law. The design contract is the visual law. Together they are how we get to 10/10 without going backward.*
+
+---
+
+## 8. TURN-ON READINESS — EXECUTION CONTRACT
+
+The project objective is now expressed as an executable sequence rather than another design exercise.
+
+### 9.1 What "ready to turn the lights on" means
+
+The Hub is ready for human experience only when all of these are true on the same production surface:
+
+1. **The eleven rooms are fully specified** in both human-functional language and deterministic machine form.
+2. **The app shell and router are real** and route WELCOME → IDENTITY → INTELLIGENT HUB without legacy detours.
+3. **The visual baseline is preserved** through componentization; production code does not flatten the concept.
+4. **The shared primitives exist** for room navigation, buttons, jewel icons, Intelligence Boards, truth states, loading/error/empty states and responsive behavior.
+5. **A single runtime adapter exists** between the Hub and governed NayaPOWER capabilities; the browser does not become a second brain or query canonical storage outside the governed seam.
+6. **Smart Feed is the first complete vertical slice**: a real capture/retrieval path, real Personal/Collective/Activity mode behavior, real provenance, real receipts where required, reload continuity, and honest offline/blocked/error behavior.
+7. **The remaining rooms have real causal contracts** ready for implementation and can be activated without inventing new product semantics.
+8. **Independent evidence exists** for visual, functional, intelligence, honesty, performance, accessibility, continuity and craft gates.
+
+### 9.2 Deterministic room specification source
+
+The complete room-functionality registry is:
+
+`.naya/project-intelligence/HUB-ROOM-REGISTRY-V1.json`
+
+It is the machine-readable projection of the room consensus candidate and contains, for every room:
+
+- canonical route and theme;
+- human question / purpose;
+- presentation intent;
+- zones;
+- controls and behavioral contracts;
+- data-discipline rules;
+- incoming/outgoing cross-room flows;
+- room acceptance criteria.
+
+This registry is **TARGET CONTRACT_NOT_RUNTIME_PROOF**. It must never be used as evidence that a room is implemented or live.
+
+### 9.3 Production implementation topology
+
+The intended runtime composition is:
+
+`WELCOME → IDENTITY → APP SHELL → ROOM → HUB RUNTIME ADAPTER → GOVERNED RUNTIME → CANONICAL INTELLIGENCE`
+
+The adapter owns transport and capability binding.
+
+The governed runtime owns identity, authority, state transitions and receipts.
+
+Canonical NayaPOWER data remains the source of truth.
+
+The Hub only projects observed state.
+
+### 9.4 Smart Feed completion boundary
+
+Smart Feed is complete only when the following end-to-end proof exists:
+
+`human capture → authorized runtime operation → canonical intelligence write → receipt → fresh retrieval → Personal display → reload persistence`
+
+and, where sharing is intentionally exercised:
+
+`Personal → governed share → Collective visibility`
+
+The negative path must also be proven:
+
+`disconnected / unauthorized / failed write → honest state → no phantom intelligence`
+
+No static fixture, local-only object, guessed Intelligent Block ID, client-side "success" flag, or simulated activity can close this gate.
+
+### 9.5 Current main reality that implementation must respect
+
+The current main Hub source confirms:
+
+- the visual concept is still a large single-file laboratory rather than a production component app;
+- no `HUB/app` package/runtime is currently present;
+- the concept itself contains substantial interactive markup/CSS/JS, but those interactions are not evidence of a governed production causal path;
+- the current Identity HTML still contains legacy Academy/Powercast navigation, so the intended WELCOME → IDENTITY → HUB journey is not yet the live implementation;
+- the documented frozen baseline reference (`ffedda20`) and the current concept file blob (`7b1126a014b3b27026a0360dbc1b8226a9be9f50`) are not byte-identical references and require explicit baseline reconciliation before a visual-diff gate can be considered closed.
+
+These are implementation findings, not speculative defects.
+
+### 9.6 No-more-speculation rule
+
+Do not create another competing room document.
