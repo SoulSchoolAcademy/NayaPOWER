@@ -519,7 +519,7 @@
             "mail wired"
           ],
           "activated_by": "contract.features.smart_mail",
-          "status": "specified",
+          "status": "built",
           "code": null,
           "depends_on": [
             "systems.smart_mail"

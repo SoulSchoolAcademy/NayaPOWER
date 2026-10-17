@@ -155,6 +155,8 @@ def _module_for(function_id):
     """
     table = {
         "feature.cover": ("feature_cover", "render_cover", "decl_for"),
+        "feature.smart_mail": ("feature_smart_mail", "render_smart_mail",
+                               "decl_for"),
     }
     if function_id not in table:
         return None
