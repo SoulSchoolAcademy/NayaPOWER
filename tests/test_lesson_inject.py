@@ -192,3 +192,26 @@ def test_missing_store_is_error():
     rc, _out, err = run_cli("/nonexistent/store.jsonl", "--areas", "x")
     assert rc == 2
     assert "error" in err.lower()
+
+
+# --- gap closure (VERIFY/Chi 15:41Z handoff: G4) ---------------------------------
+
+def test_failure_signature_namespaces_strict():
+    # G4 PINNED: each applies_when namespace matches only its own kind.
+    # A lesson's failure_signature NEVER cross-matches a mission area or
+    # mission class of the same name; it matches the mission's own
+    # failure_signatures. This test locks the semantics either way the
+    # taxonomy could have been pinned — the strict reading is the one.
+    sig_only = make_lesson("L-SIG", sigs=["dispatch"])  # no areas/classes
+    # Same name as a mission AREA — must NOT inject.
+    assert li.matches(sig_only, ["dispatch"], [], []) is False
+    # Same name as a mission CLASS — must NOT inject.
+    assert li.matches(sig_only, [], ["dispatch"], []) is False
+    # Same name as a mission FAILURE SIGNATURE — must inject.
+    assert li.matches(sig_only, [], [], ["dispatch"]) is True
+    # And through the full pipeline: only the own-namespace lesson fires.
+    lessons = [sig_only, make_lesson("L-AREA", areas=["dispatch"])]
+    sel = li.inject(lessons, ["dispatch"], [], [])
+    assert [l["lesson_id"] for _, _, _, l in sel] == ["L-AREA"]
+    sel = li.inject(lessons, [], [], ["dispatch"])
+    assert [l["lesson_id"] for _, _, _, l in sel] == ["L-SIG"]

@@ -11,10 +11,10 @@ Usage:
         --areas wave-dispatcher --mission-classes dispatch \\
         --failure-signatures void-dispatch
 
-Spec §6.1:
+Spec §6.1 (pinned semantics — see matches() docstring):
   1. Filter: injectable status AND (area in applies_when.areas
      OR mission_class in applies_when.mission_classes
-     OR any failure_signature matches the mission context).
+     OR any failure_signature matches the mission's failure_signatures).
   2. Rank: score = (hits + 1) / (injections + 2)  (Laplace smoothing).
   3. Select: top 5 by score; guarantee >= 1 exploration slot
      (injections < 3) whenever matching candidates exist.
@@ -91,8 +91,19 @@ def laplace(hits, injections):
 
 
 def matches(lesson, areas, mission_classes, failure_signatures):
-    """OR-match across applies_when tags. Failure signatures match against
-    the union of the mission's own tags (the mission context)."""
+    """OR-match across applies_when tag namespaces — PINNED SEMANTICS.
+
+    Each namespace matches only its own kind: lesson areas against mission
+    areas, lesson mission_classes against mission classes, lesson
+    failure_signatures against the mission's own failure_signatures. A
+    lesson's failure_signature NEVER cross-matches a mission area or class of
+    the same name: the applies_when taxonomy separates the three namespaces
+    precisely so filed intent is preserved (a union match would let a lesson
+    filed against failure "void-dispatch" fire on any mission whose area
+    happens to be named "void-dispatch"). Spec §6.1's "mission context" for
+    failure_signatures is pinned to the mission's own failure_signatures.
+    Pinned by test_failure_signature_namespaces_strict.
+    """
     aw = lesson.get("applies_when")
     if not isinstance(aw, dict):
         return False
@@ -101,11 +112,10 @@ def matches(lesson, areas, mission_classes, failure_signatures):
     lesson_areas = set(aw.get("areas") or [])
     lesson_classes = set(aw.get("mission_classes") or [])
     lesson_sigs = set(aw.get("failure_signatures") or [])
-    mission_context = set(areas) | set(mission_classes) | set(failure_signatures)
     return bool(
         (lesson_areas & set(areas))
         or (lesson_classes & set(mission_classes))
-        or (lesson_sigs & mission_context)
+        or (lesson_sigs & set(failure_signatures))
     )
 
 

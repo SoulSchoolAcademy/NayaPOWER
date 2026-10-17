@@ -184,3 +184,52 @@ def test_retired_lesson_skipped_in_review(store):
     rc, report, _ = run_cli(sp, fp)
     assert rc == 0
     assert report["retire_candidates"] == []
+
+
+# --- gap closures (VERIFY/Chi 15:41Z handoff: G1/G2/G3) ------------------------
+
+def test_dispute_with_unclear_verdict_never_dropped(store):
+    # G1: spec §6.2 is unconditional — a dispute is never silently dropped,
+    # even when the verdict is `unclear`.
+    sp, fp = store([make_lesson("L-1", inj=5, hits=4, misses=0)],
+                   [{"lesson_id": "L-1", "verdict": "unclear", "dispute": True}])
+    rc, report, _ = run_cli(sp, fp)
+    assert rc == 0
+    lessons = read_store(sp)
+    assert (lessons[0]["hits"], lessons[0]["misses"]) == (4, 1)  # dispute -> miss
+    assert lessons[0]["injections"] == 6
+    assert lessons[0]["needs_rewrite_review"] is True
+    assert report["disputes_flagged_rewrite_review"] == ["L-1"]
+    assert report["judgments_applied"] == 1
+    assert report["judgments_unclear_skipped"] == 0
+
+
+def test_dispute_with_invalid_verdict_still_honored(store):
+    # G1 edge: a dispute on a malformed verdict is data, not garbage —
+    # the dispute wins (miss + flag), and it is NOT filed as invalid.
+    sp, fp = store([make_lesson("L-1", inj=5, hits=4, misses=0)],
+                   [{"lesson_id": "L-1", "verdict": "bogus", "dispute": True}])
+    rc, report, _ = run_cli(sp, fp)
+    assert rc == 0
+    lessons = read_store(sp)
+    assert (lessons[0]["hits"], lessons[0]["misses"]) == (4, 1)
+    assert lessons[0]["needs_rewrite_review"] is True
+    assert report["disputes_flagged_rewrite_review"] == ["L-1"]
+    assert report["invalid_verdicts"] == []
+    assert report["judgments_applied"] == 1
+
+
+def test_judgments_applied_excludes_unknown_and_invalid(store):
+    # G2: judgments_applied counts only judgments that actually moved counters.
+    # G3: unknown lesson ids and invalid verdicts are separate categories.
+    sp, fp = store([make_lesson("L-1", inj=5, hits=4, misses=0)],
+                   [{"lesson_id": "L-1", "verdict": "hit"},
+                    {"lesson_id": "L-NOPE", "verdict": "hit"},
+                    {"lesson_id": "L-1", "verdict": "bogus"}])
+    rc, report, _ = run_cli(sp, fp)
+    assert rc == 0
+    assert report["judgments_applied"] == 1
+    assert report["unknown_lesson_ids"] == ["L-NOPE"]
+    assert report["invalid_verdicts"] == [{"lesson_id": "L-1", "verdict": "bogus"}]
+    lessons = read_store(sp)
+    assert (lessons[0]["hits"], lessons[0]["misses"], lessons[0]["injections"]) == (5, 0, 6)

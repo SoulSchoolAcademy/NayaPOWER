@@ -112,31 +112,40 @@ def hit_rate(lesson):
 
 
 def score_store(lessons, judgments):
-    """Apply fold judgments. Returns (deltas, disputes, unknown_ids).
+    """Apply fold judgments. Returns (deltas, disputes, unknown_ids,
+    invalid_verdicts, applied, unclear_skipped).
 
     deltas: {lesson_id: {"hits": +n, "misses": +n, "injections": +n}}
-    `unclear` verdicts are not counted. Disputes count as misses and are
-    flagged for rewrite review.
+    `unclear` verdicts are not counted. Disputes are NEVER silently dropped:
+    a dispute counts as a miss AND flags the lesson for rewrite review,
+    unconditionally (§6.2) — even when the verdict is `unclear` or malformed.
+    Disagreement is data.
     """
     by_id = {l.get("lesson_id"): l for l in lessons}
     deltas = {}
     disputes = []
-    unknown = []
+    unknown_ids = []
+    invalid_verdicts = []
+    applied = 0
+    unclear_skipped = 0
     for j in judgments:
         lid = j.get("lesson_id")
         verdict = str(j.get("verdict", "")).strip().lower()
+        disputed = bool(j.get("dispute"))
         lesson = by_id.get(lid)
         if lesson is None:
-            unknown.append(lid)
+            unknown_ids.append(lid)  # surfaced, never silent — counters have no home
             continue
-        if verdict not in VALID_VERDICTS:
-            unknown.append(lid)
+        if verdict not in VALID_VERDICTS and not disputed:
+            invalid_verdicts.append({"lesson_id": lid, "verdict": j.get("verdict")})
             continue
-        d = deltas.setdefault(lid, {"hits": 0, "misses": 0, "injections": 0})
-        if verdict == "unclear":
+        if verdict == "unclear" and not disputed:
+            unclear_skipped += 1
             continue  # not counted, per spec
-        if j.get("dispute"):
-            # Dispute = miss + rewrite-review flag. Disagreement is data.
+        d = deltas.setdefault(lid, {"hits": 0, "misses": 0, "injections": 0})
+        if disputed:
+            # §6.2 unconditional: dispute = miss + rewrite-review flag.
+            # A dispute is data, never dropped — even on unclear/invalid verdict.
             d["misses"] += 1
             d["injections"] += 1
             lesson["needs_rewrite_review"] = True
@@ -147,12 +156,13 @@ def score_store(lessons, judgments):
         else:  # miss
             d["misses"] += 1
             d["injections"] += 1
+        applied += 1
     for lid, d in deltas.items():
         lesson = by_id[lid]
         lesson["hits"] = int(lesson.get("hits", 0)) + d["hits"]
         lesson["misses"] = int(lesson.get("misses", 0)) + d["misses"]
         set_injections(lesson, get_injections(lesson) + d["injections"])
-    return deltas, disputes, unknown
+    return deltas, disputes, unknown_ids, invalid_verdicts, applied, unclear_skipped
 
 
 def review(lessons):
@@ -208,21 +218,22 @@ def main(argv=None):
 
     before = {l.get("lesson_id"): (get_injections(l), l.get("hits", 0), l.get("misses", 0))
               for l in lessons}
-    deltas, disputes, unknown = score_store(lessons, judgments)
+    deltas, disputes, unknown_ids, invalid_verdicts, applied, unclear_skipped = \
+        score_store(lessons, judgments)
     promote, retire, trial = review(lessons)
 
-    applied = []
+    flipped = []
     if args.apply:
         for entry in promote:
             for lesson in lessons:
                 if lesson.get("lesson_id") == entry["lesson_id"]:
                     lesson["status"] = "promoted"
-                    applied.append(entry["lesson_id"])
+                    flipped.append(entry["lesson_id"])
         for entry in retire:
             for lesson in lessons:
                 if lesson.get("lesson_id") == entry["lesson_id"]:
                     lesson["status"] = "retired"
-                    applied.append(entry["lesson_id"])
+                    flipped.append(entry["lesson_id"])
 
     if not args.dry_run:
         try:
@@ -234,17 +245,16 @@ def main(argv=None):
     after = {l.get("lesson_id"): (get_injections(l), l.get("hits", 0), l.get("misses", 0))
              for l in lessons}
     report = {
-        "judgments_applied": len(judgments) - len([j for j in judgments
-                                                   if str(j.get("verdict", "")).lower() == "unclear"]),
-        "judgments_unclear_skipped": sum(
-            1 for j in judgments if str(j.get("verdict", "")).lower() == "unclear"),
-        "unknown_lesson_ids": unknown,
+        "judgments_applied": applied,  # only judgments that actually moved counters
+        "judgments_unclear_skipped": unclear_skipped,
+        "unknown_lesson_ids": unknown_ids,
+        "invalid_verdicts": invalid_verdicts,
         "disputes_flagged_rewrite_review": disputes,
         "counter_deltas": deltas,
         "promote_candidates": promote,
         "retire_candidates": retire,
         "trial_unscored": trial,
-        "statuses_flipped": applied if args.apply else [],
+        "statuses_flipped": flipped if args.apply else [],
         "dry_run": args.dry_run,
     }
     print(json.dumps(report, indent=2))
