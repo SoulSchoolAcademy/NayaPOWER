@@ -189,8 +189,19 @@ def decide(decision):
         if isinstance(opt, dict):
             pros_cons[opt.get("name") or ""] = {
                 "pros": opt.get("pros") or [], "cons": opt.get("cons") or []}
-    if result["decision"] == "ACT":
-        nxt = ("Decide: %s. The engine's math authorizes — no word needed."
+    # This adapter has no trusted authority/safety resolver. The Candidate
+    # flags above are provisional assumptions for ranking only; they must
+    # never be interpreted as authorization. Preserve the engine's ranking,
+    # but fail closed at the CLI boundary until a trusted resolver exists.
+    decision_status = result["decision"]
+    selected = result["selected"]
+    governance_authorization = "UNRESOLVED_NO_TRUSTED_GATE_RESOLVER"
+    if decision_status == "ACT":
+        decision_status = "READ_MORE"
+        selected = None
+        nxt = ("Advisory ranking only. The calculator ranked %s, but ACT is "
+               "withheld: no trusted authority/law/rights/privacy/safety gate "
+               "resolver is connected. Resolve those gates independently."
                % result["selected"])
     elif result["decision"] == "ASK":
         nxt = ("Engine says ASK — a human decision is needed. Bring the "
@@ -202,8 +213,9 @@ def decide(decision):
                "numbers, then re-decide.")
     return {
         "situation": decision.get("situation", ""),
-        "decision": result["decision"],
-        "selected": result["selected"],
+        "decision": decision_status,
+        "selected": selected,
+        "governance_authorization": governance_authorization,
         "top3": result["top3"],
         "rows": result["rows"],
         "pros_cons": pros_cons,
