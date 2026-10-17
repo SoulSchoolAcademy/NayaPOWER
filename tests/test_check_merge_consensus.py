@@ -195,8 +195,19 @@ HEAD = "d0144aee427dab3a1ab2df05f97962cb83b81f35"
 
 
 def test_scorecard_matcher_accepts_legacy_format():
-    body = f"## SCORECARD\nhead: {HEAD}\nverdict: 9.0\nSeat: Naya 3"
+    body = f"## SCORECARD\nhead: {HEAD}\nverdict: 9.5\nSeat: Naya 3"
     assert _looks_like_scorecard(body, HEAD)
+
+
+def test_scorecard_matcher_rejects_90_numeric_without_approval_phrase():
+    # The merge law's independent-validation bar is 9.5 (derive_constraints
+    # for should_merge). A bare 9.0 scorecard — the #2635 leg-2 shape — must
+    # not satisfy the scorecard leg, even though the instrument used to
+    # accept it (>= 9.0, unexamined default).
+    body = f"## SCORECARD\nhead: {HEAD}\nverdict: 9.0\nSeat: Naya 3"
+    assert not _looks_like_scorecard(body, HEAD)
+    body = f"Honest scorecard: 9.4/10\nhead {HEAD}\nSeat: Naya 3"
+    assert not _looks_like_scorecard(body, HEAD)
 
 
 def test_scorecard_matcher_accepts_iv_format():
