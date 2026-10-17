@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<!-- IDENTITY LAW (consent-line, 2026-10-17): one person, one connected smart
+     world. The contract's identity block resolves ONCE in the assembler
+     (assemble.py resolve_identity); templates decide PRESENTATION only and
+     never redefine identity. Feature modules read context['identity']. -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -199,94 +203,167 @@ footer .kicker{color:var(--slate); display:block; margin-bottom:8px;}
 <body>
 
 <style>
-/* builder-page additions: real controls, no private invention beyond layout */
-.modepanel{margin-top:6px;}
+/* === Builder v2: the design laws, enforced === */
+/* Law 1: text is white. Always. */
+.kicker, .sec-head .kicker{color:var(--white) !important;}
+/* Law 6: unlit is white. Only the lit state shows its color. */
+.mode[aria-pressed="false"]{--accent:#d8d8e0 !important; border-color:rgba(255,255,255,.16) !important;}
+.mode[aria-pressed="false"] h3{color:var(--white) !important;}
+.mode[aria-pressed="false"] .fine{color:var(--slate) !important;}
+.mode[aria-pressed="true"]{border-color:var(--accent) !important; box-shadow:0 0 24px -6px var(--accent);}
+/* Law 7: templates are horizontal rectangles, one after another. Law 5: each its own color. */
+#templist .grid{grid-template-columns:1fr !important;}
+#templist .typecard{cursor:pointer; display:flex; align-items:center; gap:18px; text-align:left;
+  border:1px solid rgba(255,255,255,.12); border-left:4px solid var(--tc);
+  padding:20px 22px; margin-bottom:14px; background:var(--card);
+  transition:border-color .25s var(--ease), box-shadow .3s var(--ease), opacity .25s;}
+#templist .typecard .tk{flex:none; min-width:110px;}
+#templist .typecard h3{margin:0 0 4px;}
+#templist .typecard p{margin:0;}
+#templist .typecard .tbtns{margin-left:auto; display:flex; gap:10px; flex:none;}
+#templist .typecard:not(.selected){opacity:.62;}
+#templist .typecard.selected{border-color:var(--tc); box-shadow:0 0 28px -8px var(--tc); opacity:1;}
+.tbtn{font:inherit; font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+  background:transparent; color:var(--white); border:1px solid rgba(255,255,255,.25);
+  border-radius:999px; padding:10px 18px; cursor:pointer;}
+.tbtn:hover{border-color:var(--white);}
+.tbtn.solid{background:var(--white); color:#0a0a0f; border-color:var(--white);}
+/* Law 5 for features: each its own color, never a wall of one color. */
+.feat{border-left:4px solid var(--lc);}
+/* Contract + edits + address fields */
 .flabel{display:block; font-size:12px; letter-spacing:.14em; text-transform:uppercase;
-  font-weight:700; color:var(--slate); margin:14px 0 6px;}
+  font-weight:700; color:var(--white); margin:14px 0 6px;}
 textarea, input[type="text"]{width:100%; background:var(--obsidian); border:1px solid var(--line);
-  border-radius:var(--radius-md); color:var(--paper); font:inherit; font-size:15px;
+  border-radius:var(--radius-md); color:var(--white); font:inherit; font-size:15px;
   padding:12px 14px; resize:vertical;}
-textarea:focus, input[type="text"]:focus{outline:none; border-color:var(--sp-teal);}
-#templist .typecard{cursor:pointer; transition:transform .2s var(--ease), box-shadow .3s var(--ease);}
-#templist .typecard:hover{transform:translateY(-3px);}
-#templist .typecard.selected{box-shadow:0 0 0 2px var(--sp-yellow), 0 18px 40px rgba(0,0,0,.5);}
-#templist .typecard:not(.selected){opacity:.55;}
+textarea:focus, input[type="text"]:focus{outline:none; border-color:var(--white);}
+.addrwrap{display:flex; align-items:center; gap:0;}
+.addrwrap .prefix{background:var(--raise); border:1px solid var(--line); border-right:0;
+  border-radius:var(--radius-md) 0 0 var(--radius-md); padding:12px 6px 12px 14px; color:var(--slate); white-space:nowrap;}
+.addrwrap input{border-radius:0 var(--radius-md) var(--radius-md) 0;}
+.crow{display:flex; gap:14px; margin-bottom:10px;}
+.crow .ck{flex:none; min-width:130px; font-size:12px; letter-spacing:.14em; text-transform:uppercase; font-weight:700; color:var(--white);}
+.crow .cv{color:var(--silver);}
+.crow .cv b{color:var(--white);}
+/* Preview modal */
+#preview-modal{position:fixed; inset:0; background:rgba(2,2,3,.82); display:flex;
+  align-items:center; justify-content:center; z-index:60; padding:20px;}
+#preview-modal[hidden]{display:none;}
+#preview-card{max-width:560px; width:100%; background:var(--card); border-radius:var(--radius-lg);
+  border:1px solid var(--line); border-top:4px solid var(--pc,#fff); padding:28px;}
+#preview-card h2{margin:0 0 6px;}
+#preview-card p{color:var(--silver);}
 .badge{display:inline-block; font-size:10px; letter-spacing:.14em; text-transform:uppercase; font-weight:700;
   border-radius:999px; padding:3px 10px; margin-left:10px; vertical-align:2px;}
 .badge.ok{background:rgba(47,232,158,.14); color:var(--verified); border:1px solid rgba(47,232,158,.4);}
 .badge.soon{background:rgba(241,215,90,.12); color:var(--sp-yellow); border:1px solid rgba(241,215,90,.4);}
-label.feat input{flex:none;}
-#resolver-note{margin-top:14px;}
 #appcontract{background:var(--obsidian-deep); border:1px solid var(--line); border-radius:var(--radius-md);
   padding:16px; font-size:12.5px; line-height:1.5; color:var(--silver); white-space:pre-wrap; word-break:break-word;}
 .copyrow{display:flex; gap:12px; flex-wrap:wrap;}
+#editlog .edit{border-left:3px solid var(--white); padding:8px 12px; margin-bottom:8px; color:var(--silver);}
+#editlog .edit b{color:var(--white);}
 </style>
 <nav class="nav"><div class="wrap">
-  <a href="#intake">Intake</a><a href="#templates">Templates</a><a href="#features">Features</a>
-  <a href="#privacy">Privacy</a><a href="#build">Build</a><a href="#machine">Machine</a>
+  <a href="#intake">Intake</a><a href="#contract">Contract</a><a href="#address">Address</a>
+  <a href="#templates">Templates</a><a href="#edits">Edits</a><a href="#features">Features</a>
+  <a href="#privacy">Privacy</a><a href="#build">Build</a>
 </div></nav>
 
 <header class="hero"><div class="wrap">
   <div class="status">
-    <span class="pill"><span class="led"></span>Smart App Factory · Live</span>
+    <span class="pill"><span class="led"></span>Smart App Factory &middot; Live</span>
     <span class="pill">built by the pipeline, from a contract</span>
   </div>
-  <span class="kicker" style="color:var(--sp-purple)">%%KICKER%%</span>
+  <span class="kicker">%%KICKER%%</span>
   <h1>%%TITLE%%</h1>
   <p class="lede">%%LEDE%%</p>
-  <p style="margin-top:18px; display:flex; gap:12px; flex-wrap:wrap;">
-    <button class="naya-btn" data-scroll="#intake"><span class="nb-label">Start building</span></button>
-    <button class="naya-btn" data-scroll="#features"><span class="nb-label">See what's inside</span></button>
-  </p>
+  <p style="margin-top:18px;"><button class="naya-btn" data-scroll="#intake"><span class="nb-label">Start with what you want</span></button></p>
 </div></header>
 
 <div class="wrap">
 
 <section id="intake">
   <div class="sec-head">
-    <span class="kicker" style="color:var(--sp-indigo)">&#167;1 &middot; Tell it what you want</span>
-    <h2>A living form that holds the contract</h2>
-    <p>Three ways in — questions, pointing at pieces, or just talking. Pick a mode; the contract listens in all three.</p>
+    <span class="kicker">&#167;1 &middot; Tell it what you want</span>
+    <h2>Type it, paste it, or say it</h2>
+    <p>Write in plain words. Paste from anywhere. Or dictate &mdash; the contract listens in all three modes, then answers the questions for you.</p>
   </div>
   <div class="nb-chrome"><div class="demo-board" style="--c:#6675ff">
     %%INTAKE_MODES%%
-    <p id="modeline" style="margin:18px 0 16px; font-size:14px; color:var(--slate);">Intake mode: <b style="color:var(--paper)">questions</b> &mdash; the contract is listening.</p>
+    <p id="modeline" style="margin:18px 0 16px; font-size:14px; color:var(--slate);">Intake mode: <b style="color:var(--white)">questions</b> &mdash; the contract is listening.</p>
     <div id="panel-questions" class="modepanel">
-      <label class="flabel" for="intent">What is the app for, in plain words?</label>
-      <textarea id="intent" rows="3" placeholder="A page for my bakery &mdash; warm, morning light, people can order ahead."></textarea>
-      <label class="flabel" for="address">Address</label>
-      <input id="address" type="text" value="nayanet.live/your-name">
+      <label class="flabel" for="intent">What is the app for?</label>
+      <textarea id="intent" rows="4" placeholder="A page for my bakery &mdash; warm, morning light, people can order ahead."></textarea>
     </div>
     <div id="panel-specimens" class="modepanel" hidden>
-      <p>Point at pieces you like &mdash; buttons, boards, banners. Then leave a note: &ldquo;button XYZ here&rdquo;, &ldquo;make this one coral&rdquo;.</p>
-      <label class="flabel" for="specnote">Your note</label>
-      <textarea id="specnote" rows="2" placeholder="I want this page but personal to me."></textarea>
+      <p style="color:var(--silver)">Paste words from anywhere &mdash; a doc, ChatGPT, Claude, your notes. They land in the contract like images do.</p>
+      <label class="flabel" for="specnote">Your words</label>
+      <textarea id="specnote" rows="4" placeholder="Paste it here."></textarea>
     </div>
     <div id="panel-dictation" class="modepanel" hidden>
       <p><button class="naya-btn" id="dictate"><span class="nb-label">Dictate</span></button></p>
       <label class="flabel" for="dicttext">Your words, as you speak them</label>
-      <textarea id="dicttext" rows="3" placeholder="Talk the page into existence&hellip;"></textarea>
+      <textarea id="dicttext" rows="4" placeholder="Talk the page into existence&hellip;"></textarea>
     </div>
+  </div></div>
+</section>
+
+<section id="contract">
+  <div class="sec-head">
+    <span class="kicker">&#167;2 &middot; Your design contract</span>
+    <h2>It answers the questions for you</h2>
+    <p>The builder reads your intent and fills the contract &mdash; sensible answers, generally right. Edit anything; you have the final word.</p>
+  </div>
+  <div class="nb-chrome"><div class="demo-board" style="--c:#55b9ee">
+    <div id="contractview"></div>
+    <p style="margin-top:12px;"><button class="naya-btn" id="regencontract"><span class="nb-label">Regenerate from my words</span></button></p>
+  </div></div>
+</section>
+
+<section id="address">
+  <div class="sec-head">
+    <span class="kicker">&#167;3 &middot; Your address</span>
+    <h2>Where it lives</h2>
+    <p>Pick a name &mdash; letters and numbers, no spaces. It lives at your address on NayaNET.</p>
+  </div>
+  <div class="nb-chrome"><div class="demo-board" style="--c:#40d3bb">
+    <label class="flabel" for="addrname">Page name</label>
+    <div class="addrwrap"><span class="prefix">nayanet.live/</span><input id="addrname" type="text" value="your-name" autocomplete="off" spellcheck="false"></div>
+    <p id="addrwarn" class="fine" style="color:var(--white); margin-top:8px; border-left:3px solid var(--sp-red); padding-left:10px;" hidden>No spaces &mdash; letters and numbers only.</p>
   </div></div>
 </section>
 
 <section id="templates">
   <div class="sec-head">
-    <span class="kicker" style="color:var(--sp-yellow)">&#167;2 &middot; Pick your starting points</span>
-    <h2>Templates are starting points, not limits</h2>
-    <p>Pick one, several, or all twelve &mdash; they sync as one Smart World, hub plus rooms. <span id="tempcount" style="color:var(--paper)"></span></p>
+    <span class="kicker">&#167;4 &middot; Starting points, not limits</span>
+    <h2>Pick your templates</h2>
+    <p>One, several, or all &mdash; they sync as one Smart World. <span id="tempcount" style="color:var(--white)"></span> Preview any of them before you commit.</p>
   </div>
   <div id="templist">%%TEMPLATES%%</div>
 </section>
 
+<section id="edits">
+  <div class="sec-head">
+    <span class="kicker">&#167;5 &middot; Make it yours</span>
+    <h2>Want changes? Say so</h2>
+    <p>Write edits in plain words &mdash; &ldquo;make the banner coral&rdquo;, &ldquo;swap this button&rdquo;. Or work them out in ChatGPT or Claude, paste the result back here, and apply.</p>
+  </div>
+  <div class="nb-chrome"><div class="demo-board" style="--c:#b8ee57">
+    <label class="flabel" for="edittext">Your edits</label>
+    <textarea id="edittext" rows="3" placeholder="I want this page but personal to me. Make the header image bigger."></textarea>
+    <p style="margin-top:12px;"><button class="naya-btn" id="applyedit"><span class="nb-label">Apply edits</span></button></p>
+    <div id="editlog" style="margin-top:14px;"></div>
+  </div></div>
+</section>
+
 <section id="features">
   <div class="sec-head">
-    <span class="kicker" style="color:var(--sp-teal)">&#167;3 &middot; It comes working</span>
-    <h2>Every Smart App ships with these</h2>
-    <p>Checked by default. Uncheck what you don&rsquo;t want. A feature that isn&rsquo;t wired yet says so honestly &mdash; never faked, never blocked silently.</p>
+    <span class="kicker">&#167;6 &middot; It comes working</span>
+    <h2>Standard features</h2>
+    <p>Checked by default &mdash; uncheck what you don&rsquo;t want. Each has its own color, its own honest status. Nothing faked.</p>
   </div>
   <div id="featurechecks"></div>
-  <div id="resolver-note" class="nb-chrome" hidden><div class="lawcard" style="--lc:#40d3bb">
+  <div id="resolver-note" class="nb-chrome" hidden><div class="lawcard" style="--lc:#ffffff">
     <div class="ln" style="text-transform:uppercase"><span class="ld"></span><span>Why this feature waits</span></div>
     <p id="resolver-text"></p>
   </div></div>
@@ -294,7 +371,7 @@ label.feat input{flex:none;}
 
 <section id="privacy">
   <div class="sec-head">
-    <span class="kicker" style="color:var(--sp-emerald)">&#167;4 &middot; Your dial, not our doctrine</span>
+    <span class="kicker">&#167;7 &middot; Your dial, not our doctrine</span>
     <h2>Who can see your app?</h2>
     <p>Private where it starts, public wherever you take it. Each connection is its own switch &mdash; your call.</p>
   </div>
@@ -304,7 +381,7 @@ label.feat input{flex:none;}
       <button class="card mode" aria-pressed="false" data-vis="network"><h3>Approved connections</h3><p class="fine">People you approve.</p></button>
       <button class="card mode" aria-pressed="false" data-vis="public"><h3>Public</h3><p class="fine">Anyone can visit.</p></button>
     </div>
-    <h3 style="margin:22px 0 10px; font-size:16px;">Connections</h3>
+    <h3 style="margin:22px 0 10px; font-size:16px; color:var(--white);">Connections</h3>
     <div class="grid g3" id="conngroup">
       <button class="card mode" aria-pressed="false" data-conn="muse"><h3>Muse</h3><p class="fine">Your AI, in your app.</p></button>
       <button class="card mode" aria-pressed="false" data-conn="github"><h3>GitHub</h3><p class="fine">Your knowledge base, synced.</p></button>
@@ -316,9 +393,9 @@ label.feat input{flex:none;}
 
 <section id="build">
   <div class="sec-head">
-    <span class="kicker" style="color:var(--sp-rich-orange)">&#167;5 &middot; Make it yours</span>
-    <h2>Okay, build</h2>
-    <p>Two authors, one finalizer &mdash; you. Press build and the contract below is what the factory runs on.</p>
+    <span class="kicker">&#167;8 &middot; Okay, build</span>
+    <h2>Two authors, one finalizer &mdash; you</h2>
+    <p>Press build. The contract below is exactly what the factory runs on.</p>
   </div>
   <div class="nb-chrome"><div class="demo-board" style="--c:#ff6b3d">
     <p><button class="naya-btn" id="buildbtn"><span class="nb-label">Build my Smart App</span></button></p>
@@ -335,13 +412,13 @@ label.feat input{flex:none;}
 
 <section id="machine">
   <div class="sec-head">
-    <span class="kicker" style="color:var(--sp-magenta)">&#167;6 &middot; For the machines</span>
+    <span class="kicker">&#167;9 &middot; For the machines</span>
     <h2>The machine contract</h2>
     <p>This page was generated from the contract data by the pipeline &mdash; the same assembler that builds every page. Same truth, two faces.</p>
   </div>
   <div class="nb-chrome"><div class="demo-board" style="--c:#e84fff">
     <details class="machine">
-      <summary>smart-builder &middot; builder page v1 &mdash; view / copy</summary>
+      <summary>smart-builder &middot; builder page v2 &mdash; view / copy</summary>
       <div class="body">
         <div class="copyrow"><button class="naya-btn" id="copyjson"><span class="nb-label">Copy JSON</span></button></div>
         <pre id="machinejson">%%MACHINE_JSON%%</pre>
@@ -352,9 +429,20 @@ label.feat input{flex:none;}
 
 </div>
 
+<div id="preview-modal" hidden><div id="preview-card">
+  <span class="kicker" id="pv-kicker">Template preview</span>
+  <h2 id="pv-title"></h2>
+  <p id="pv-desc"></p>
+  <div id="pv-body"></div>
+  <p style="margin-top:18px; display:flex; gap:10px;">
+    <button class="tbtn solid" id="pv-select">Select this template</button>
+    <button class="tbtn" id="pv-close">Close</button>
+  </p>
+</div></div>
+
 <footer><div class="wrap">
   <span class="kicker">Smart Builder &middot; Your Smart App</span>
-  Built by the Smart Builder pipeline from contract <b>smart-builder/builder-page-v1</b> &mdash; the factory building its own front door. Every control on this page works, or it doesn&rsquo;t ship.
+  Built by the Smart Builder pipeline from contract <b>smart-builder/builder-page-v1</b>. Every control on this page works, or it doesn&rsquo;t ship. Set in the Naya design laws &mdash; white on black, every board its own color, restraint always.
 </div></footer>
 
 <div id="toast" role="status"></div>
@@ -369,7 +457,7 @@ function toast(msg){
 function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
 function machine(){ return JSON.parse(document.getElementById("machinejson").textContent); }
 
-/* ---------- intake modes ---------- */
+/* ---------- intake modes (Law 6: unlit white, lit its color) ---------- */
 var panels = {questions:"panel-questions", specimens:"panel-specimens", dictation:"panel-dictation"};
 document.addEventListener("click", function(e){
   var m = e.target.closest("#intake .mode[data-mode]");
@@ -379,27 +467,143 @@ document.addEventListener("click", function(e){
     var id = m.getAttribute("data-mode");
     Object.keys(panels).forEach(function(k){ document.getElementById(panels[k]).hidden = (k !== id); });
     document.getElementById("modeline").innerHTML =
-      'Intake mode: <b style="color:var(--paper)">' + esc(m.querySelector("h3").textContent.toLowerCase()) + '</b> &mdash; the contract is listening.';
+      'Intake mode: <b style="color:var(--white)">' + esc(m.querySelector("h3").textContent.toLowerCase()) + '</b> &mdash; the contract is listening.';
+    renderContract();
   }
   var s = e.target.closest("[data-scroll]");
   if (s){ var el = document.querySelector(s.getAttribute("data-scroll")); if (el) el.scrollIntoView({behavior:"smooth"}); }
-  var t = e.target.closest("#templist .typecard");
-  if (t){ t.classList.toggle("selected"); updateTempCount(); }
 });
 
-/* ---------- templates: multi-select, all on by default ---------- */
+/* ---------- contract: answers the questions from your words ---------- */
+function intentText(){
+  var mode = document.querySelector('#intake .mode[data-mode][aria-pressed="true"]');
+  var id = mode ? mode.getAttribute("data-mode") : "questions";
+  return (document.getElementById(id === "questions" ? "intent" : id === "specimens" ? "specnote" : "dicttext").value || "").trim();
+}
+function renderContract(){
+  var intent = intentText() || "Tell me what the app is for — the contract fills itself in.";
+  var temps = selectedTemplates();
+  var feats = [];
+  document.querySelectorAll('#featurechecks input[data-fid]:checked').forEach(function(cb){
+    feats.push(cb.getAttribute("data-fid"));
+  });
+  var vis = document.querySelector('#visgroup [aria-pressed="true"]');
+  var host = document.getElementById("contractview");
+  host.innerHTML =
+    crow("Intent", "<b>" + esc(intent) + "</b>") +
+    crow("Templates", temps.length ? temps.map(esc).join(", ") : "all twelve — one Smart World") +
+    crow("Features", feats.length + " standard features on") +
+    crow("Address", "nayanet.live/<b>" + esc(addrName()) + "</b>") +
+    crow("Privacy", esc(vis ? vis.getAttribute("data-vis") : "private") + " — your dial") +
+    crow("Edits", editLog.length ? editLog.length + " applied" : "none yet");
+}
+function crow(k, v){
+  return '<div class="crow"><span class="ck">' + esc(k) + '</span><span class="cv">' + v + '</span></div>';
+}
+document.getElementById("regencontract").addEventListener("click", function(){
+  renderContract(); toast("Contract regenerated from your words.");
+});
+
+/* ---------- address ---------- */
+function addrName(){
+  return (document.getElementById("addrname").value || "your-name").toLowerCase().replace(/[^a-z0-9-]/g, "");
+}
+document.getElementById("addrname").addEventListener("input", function(){
+  var bad = /[^a-z0-9-]/.test(this.value);
+  document.getElementById("addrwarn").hidden = !bad;
+  renderContract();
+});
+
+/* ---------- templates: rectangles, own color, preview (Laws 5, 7, 11) ---------- */
+function templateData(){
+  return machine().template_list;
+}
+function enhanceTemplates(){
+  var data = templateData();
+  var cards = document.querySelectorAll("#templist .typecard");
+  cards.forEach(function(card, i){
+    var d = data[i] || {};
+    var btns = document.createElement("div");
+    btns.className = "tbtns";
+    btns.innerHTML = '<button class="tbtn" data-prev="' + i + '">Preview</button>' +
+                     '<button class="tbtn solid" data-sel="' + i + '">Select</button>';
+    card.appendChild(btns);
+    card.classList.add("selected");
+    card.setAttribute("data-title", d.title || "");
+  });
+  updateTempCount();
+}
 function updateTempCount(){
   var cards = document.querySelectorAll("#templist .typecard");
   var sel = document.querySelectorAll("#templist .typecard.selected").length;
   document.getElementById("tempcount").textContent = sel + " of " + cards.length + " selected — they sync as one Smart World.";
+  renderContract();
 }
 function selectedTemplates(){
   var out = [];
-  document.querySelectorAll("#templist .typecard.selected h3").forEach(function(h){ out.push(h.textContent.trim()); });
+  document.querySelectorAll("#templist .typecard.selected").forEach(function(c){
+    out.push(c.getAttribute("data-title"));
+  });
   return out;
 }
+document.getElementById("templist").addEventListener("click", function(e){
+  var pv = e.target.closest("[data-prev]");
+  if (pv){ openPreview(parseInt(pv.getAttribute("data-prev"), 10)); return; }
+  var sl = e.target.closest("[data-sel]");
+  if (sl){
+    var card = sl.closest(".typecard");
+    card.classList.toggle("selected");
+    sl.textContent = card.classList.contains("selected") ? "Select" : "Selected";
+    updateTempCount(); return;
+  }
+  var card = e.target.closest(".typecard");
+  if (card && !e.target.closest("button")){
+    card.classList.toggle("selected"); updateTempCount();
+  }
+});
+var previewIdx = -1;
+function openPreview(i){
+  var d = templateData()[i];
+  previewIdx = i;
+  var card = document.getElementById("preview-card");
+  card.style.setProperty("--pc", d.color || "#fff");
+  document.getElementById("pv-title").textContent = d.title;
+  document.getElementById("pv-desc").textContent = d.desc;
+  document.getElementById("pv-body").innerHTML =
+    crow("Composes as", "hero → content → features → connect") +
+    crow("Identity", "its own color — " + esc(d.color || "")) +
+    crow("Syncs with", "every other selected template, one Smart World");
+  document.getElementById("pv-select").textContent =
+    document.querySelectorAll("#templist .typecard")[i].classList.contains("selected") ? "Deselect" : "Select this template";
+  document.getElementById("preview-modal").hidden = false;
+}
+document.getElementById("pv-close").addEventListener("click", function(){
+  document.getElementById("preview-modal").hidden = true;
+});
+document.getElementById("pv-select").addEventListener("click", function(){
+  var card = document.querySelectorAll("#templist .typecard")[previewIdx];
+  card.classList.toggle("selected"); updateTempCount();
+  document.getElementById("preview-modal").hidden = true;
+});
+document.getElementById("preview-modal").addEventListener("click", function(e){
+  if (e.target === this) this.hidden = true;
+});
 
-/* ---------- features: the resolver, in the page ---------- */
+/* ---------- edits ---------- */
+var editLog = [];
+document.getElementById("applyedit").addEventListener("click", function(){
+  var t = document.getElementById("edittext").value.trim();
+  if (!t){ toast("Write the edit first — plain words are fine."); return; }
+  editLog.push(t);
+  var div = document.createElement("div");
+  div.className = "edit";
+  div.innerHTML = "<b>Edit " + editLog.length + ":</b> " + esc(t);
+  document.getElementById("editlog").appendChild(div);
+  document.getElementById("edittext").value = "";
+  renderContract(); toast("Edit applied to the contract.");
+});
+
+/* ---------- features: each its own color (Law 5), honest statuses ---------- */
 function resolveFeature(f, statuses){
   var st = statuses[f.id] || "unknown";
   if (st === "built") return {activates:true};
@@ -416,9 +620,9 @@ function renderFeatures(){
     var row = document.createElement("div");
     row.className = "nb-chrome";
     row.innerHTML =
-      '<label class="lawcard feat" style="--lc:#40d3bb; display:flex; gap:12px; align-items:flex-start; cursor:pointer;">' +
+      '<label class="lawcard feat" style="--lc:' + esc(f.color || "#fff") + '; display:flex; gap:12px; align-items:flex-start; cursor:pointer;">' +
       '<input type="checkbox" data-fid="' + esc(f.id) + '"' + (f.default ? " checked" : "") +
-      ' style="margin-top:4px; width:18px; height:18px; accent-color:#40d3bb;">' +
+      ' style="margin-top:4px; width:18px; height:18px; accent-color:' + esc(f.color || "#fff") + ';">' +
       '<span><span class="ln" style="text-transform:uppercase"><span class="ld"></span><span>' + esc(f.label) + '</span>' +
       '<span class="badge ' + (r.activates ? "ok" : "soon") + '">' + (r.activates ? "Works" : "Coming soon") + '</span></span>' +
       '<p style="margin:6px 0 0;">' + esc(f.desc) + '</p>' +
@@ -440,14 +644,15 @@ function renderFeatures(){
       note.hidden = true;
       toast(f.label + (cb.checked ? " on." : " off."));
     }
+    renderContract();
   });
 }
 
-/* ---------- privacy + connections ---------- */
+/* ---------- privacy + connections (Law 6) ---------- */
 document.getElementById("visgroup").addEventListener("click", function(e){
   var b = e.target.closest("[data-vis]"); if (!b) return;
   this.querySelectorAll("[data-vis]").forEach(function(x){ x.setAttribute("aria-pressed","false"); });
-  b.setAttribute("aria-pressed","true");
+  b.setAttribute("aria-pressed","true"); renderContract();
 });
 document.getElementById("conngroup").addEventListener("click", function(e){
   var b = e.target.closest("[data-conn]"); if (!b) return;
@@ -462,12 +667,12 @@ document.getElementById("dictate").addEventListener("click", function(){
   var ta = document.getElementById("dicttext");
   if (!SR){ toast("Dictation isn’t in this browser — type it instead."); ta.focus(); return; }
   var rec = new SR(); rec.lang = "en-US";
-  rec.onresult = function(ev){ ta.value += ev.results[0][0].transcript; };
+  rec.onresult = function(ev){ ta.value += ev.results[0][0].transcript; renderContract(); };
   rec.onerror = function(){ toast("Didn’t catch that — try again."); };
   rec.start(); toast("Listening…");
 });
 
-/* ---------- build: the contract this page produces ---------- */
+/* ---------- build ---------- */
 function collectState(){
   var mode = document.querySelector('#intake .mode[data-mode][aria-pressed="true"]');
   var vis = document.querySelector('#visgroup [aria-pressed="true"]');
@@ -483,15 +688,16 @@ function collectState(){
     intake: {
       mode: mode ? mode.getAttribute("data-mode") : "questions",
       intent: document.getElementById("intent").value,
-      address: document.getElementById("address").value,
-      note: document.getElementById("specnote").value,
+      pasted: document.getElementById("specnote").value,
       dictated: document.getElementById("dicttext").value
     },
+    address: "nayanet.live/" + addrName(),
     templates: selectedTemplates(),
+    edits: editLog.slice(),
     features: feats,
     privacy: vis ? vis.getAttribute("data-vis") : "private",
     connections: conns,
-    note: "Generated by the Smart Builder page — itself built by the pipeline from contract smart-builder/builder-page-v1."
+    note: "Generated by the Smart Builder page — itself built by the pipeline from contract smart-builder/builder-page-v1, under the Naya design laws."
   };
 }
 document.getElementById("buildbtn").addEventListener("click", function(){
@@ -500,9 +706,10 @@ document.getElementById("buildbtn").addEventListener("click", function(){
   document.getElementById("appcontract").textContent = txt;
   document.getElementById("contractout").hidden = false;
   document.getElementById("buildsummary").innerHTML =
-    "Contract ready: <b style='color:var(--paper)'>" + st.templates.length + " template(s)</b>, " +
-    "<b style='color:var(--paper)'>" + Object.keys(st.features).filter(function(k){return st.features[k];}).length + " features</b>, " +
-    "visibility <b style='color:var(--paper)'>" + esc(st.privacy) + "</b>. This is what the factory runs on.";
+    "Contract ready: <b style='color:var(--white)'>" + st.templates.length + " template(s)</b>, " +
+    "<b style='color:var(--white)'>" + Object.keys(st.features).filter(function(k){return st.features[k];}).length + " features</b>, " +
+    "<b style='color:var(--white)'>" + st.edits.length + " edit(s)</b>, " +
+    "visibility <b style='color:var(--white)'>" + esc(st.privacy) + "</b>. This is what the factory runs on.";
   document.getElementById("contractout").scrollIntoView({behavior:"smooth", block:"nearest"});
   toast("Your Smart App contract is ready.");
 });
@@ -526,8 +733,11 @@ document.getElementById("copyjson").addEventListener("click", function(){
 
 /* ---------- init ---------- */
 renderFeatures();
-document.querySelectorAll("#templist .typecard").forEach(function(c){ c.classList.add("selected"); });
-updateTempCount();
+enhanceTemplates();
+renderContract();
+["intent","specnote","dicttext"].forEach(function(id){
+  document.getElementById(id).addEventListener("input", renderContract);
+});
 </script>
 </body>
 </html>

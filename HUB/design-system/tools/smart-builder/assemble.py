@@ -59,6 +59,18 @@ def lawcard(title, desc, color, attrs=''):
         '<p>%s</p></div></div>' % (attrs, color, esc(title), esc(desc))
     )
 
+# ---- Design Law 4: never similar together ----
+# Adjacent spectrum positions look almost the same side by side (yellow/gold,
+# orange/rich-orange). Sequences use this maximally-spaced order instead, so
+# neighbors are always visibly distinct.
+SPACED = [0, 5, 10, 3, 8, 1, 6, 11, 4, 9, 2, 7]
+def seq_color(spectrum, i, fixed=None):
+    """A sequence element's color: its fixed identity when the contract names
+    one (Design Law 5), else the spaced spectrum order (Design Law 4)."""
+    if fixed:
+        return fixed
+    return spectrum[SPACED[i % len(SPACED)]]
+
 # ---- trust boundary + structured validation (fail closed) ----
 # The assembler resolves ONLY models present in the governed builder index.
 # Unknown models, missing sections, or incompatible entries are structured
@@ -435,15 +447,15 @@ def main():
     # intake modes -> the real .card piece
     modes = []
     for i, m in enumerate(contract['intake']['modes']):
-        c = SPECTRUM[(SEC['intake'] + i) % len(SPECTRUM)]
+        c = seq_color(SPECTRUM, i)
         modes.append(
             '<div class="nb-chrome"><button class="card mode" aria-pressed="%s" data-mode="%s" '
             'style="--accent:%s;--accent-soft:%s73;text-align:left;cursor:pointer;width:100%%;'
             'font:inherit;color:inherit">'
             '<span style="display:block;font-size:11px;letter-spacing:.22em;text-transform:uppercase;'
-            'font-weight:700;color:%s;margin-bottom:10px">%s</span>'
+            'font-weight:700;color:var(--white);margin-bottom:10px">%s</span>'
             '<h3>%s</h3><p class="fine">%s</p></button></div>'
-            % ("true" if i == 0 else "false", esc(m['id']), c, c, c,
+            % ("true" if i == 0 else "false", esc(m['id']), c, c,
                esc(m['n']), esc(m['title']), esc(m['desc'])))
     intake_modes = '<div class="grid g3" role="group" aria-label="Intake modes">%s</div>' % ''.join(modes)
 
@@ -458,8 +470,8 @@ def main():
         '<div class="tk">%s</div>'
         '<h3 style="font-size:19px;margin:0 0 6px;color:var(--white)">%s</h3>'
         '<p style="font-size:14px;color:var(--slate);margin:0">%s</p></div></div>'
-        % (SPECTRUM[(SEC['templates'] + i) % len(SPECTRUM)], esc(n), esc(t), esc(d))
-        for i, (n, t, d) in enumerate(contract['templates']))
+        % (seq_color(SPECTRUM, i, e[3] if len(e) > 3 else None), esc(e[0]), esc(e[1]), esc(e[2]))
+        for i, e in enumerate(contract['templates']))
     templates = '<div class="grid g4">%s</div>' % templates
 
     # features / gallery / customize -> the real .lawcard piece
@@ -472,18 +484,18 @@ def main():
                                        reg_statuses, SPECTRUM, SEC['features'])
     else:
         features = ''.join(
-            lawcard(t, d, SPECTRUM[(SEC['features'] + i) % len(SPECTRUM)])
+            lawcard(t, d, seq_color(SPECTRUM, i))
             for i, (t, d) in enumerate(feats))
     gallery_html = ''.join(
-        lawcard(t, d, SPECTRUM[(SEC['gallery'] + i) % len(SPECTRUM)])
+        lawcard(t, d, seq_color(SPECTRUM, i))
         for i, (t, d) in enumerate(contract['gallery']['points']))
     customize_html = ''.join(
-        lawcard(t, d, SPECTRUM[(SEC['customize'] + i) % len(SPECTRUM)])
+        lawcard(t, d, seq_color(SPECTRUM, i))
         for i, (t, d) in enumerate(contract['customize']['points']))
 
     # loop -> the real .lawcard piece
     loop = ''.join(
-        lawcard(t, d, SPECTRUM[(SEC['loop'] + i) % len(SPECTRUM)])
+        lawcard(t, d, seq_color(SPECTRUM, i))
         for i, (t, d) in enumerate(contract['loop']))
 
     page = tpl
@@ -535,7 +547,7 @@ def main():
     # assembler -> same bytes, every time. The receipt (time, verification)
     # legitimately changes between runs; the identity never does.
     build_id = sha256(contract_bytes + index_bytes + template_bytes
-                      + ASSEMBLER_VERSION.encode())
+                      + open(__file__, 'rb').read())
 
     manifest = {
         # 1. DESIGN CONTRACT — what the customer wanted
