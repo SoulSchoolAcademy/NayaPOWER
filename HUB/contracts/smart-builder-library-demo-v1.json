@@ -20,16 +20,15 @@
     {
       "id": "find",
       "title": "Find the right part",
-      "intro": "Search and command palette components, with their declared dependencies resolved.",
+      "intro": "The registered search field, resolved with its declared design dependencies.",
       "block_ids": [
-        "inputs-search-field-search-field",
-        "new-command-palette-nayablocks-wirepalette"
+        "inputs-search-field-search-field"
       ]
     },
     {
       "id": "today",
       "title": "An intelligent home",
-      "intro": "The same registered navigation and metric components available for future page recipes.",
+      "intro": "Registered navigation and metric components available for future page recipes.",
       "block_ids": [
         "navigation-app-room-nav-app-nav",
         "cards-metric-trio-metric",
@@ -38,11 +37,10 @@
     },
     {
       "id": "actions",
-      "title": "Real component states",
-      "intro": "Registered controls shown from their original source snippets—not redrawn approximations.",
+      "title": "Reusable actions",
+      "intro": "Registered button variants rendered from their source specimens.",
       "block_ids": [
-        "buttons-canonical-button-naya-btn",
-        "overlays-toast-system-nayablocks-toast"
+        "buttons-canonical-button-naya-btn"
       ]
     }
   ]
