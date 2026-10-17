@@ -155,6 +155,18 @@ def _module_for(function_id):
     """
     table = {
         "feature.cover": ("feature_cover", "render_cover", "decl_for"),
+        # Wave B (wire-them-all): flagship dispatch rows. The modules'
+        # render(decl, registry_status, context) signatures match; their
+        # grant_required refusals are caught and converted to
+        # ResolverRefusal by resolve() (gate 4 is the canonical
+        # permission enforcer for this flow).
+        "feature.smart_tabs": ("feature_smart_tabs", "render_smart_tabs",
+                               "decl_for"),
+        "feature.intelligence_today": ("feature_intelligence_today",
+                                       "render_intelligence_today",
+                                       "decl_for"),
+        "feature.contacts": ("feature_contacts", "render_contacts",
+                             "decl_for"),
     }
     if function_id not in table:
         return None

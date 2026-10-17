@@ -56,8 +56,21 @@ from feature_community import (CommunityRefusal, decl_for as cm_decl_for,
                                 render_community,
                                 FEATURE_ID as FEATURE_COMMUNITY_ID,
                                 FEATURE_COMMUNITY_VERSION)
+from feature_smart_tabs import (TabsRefusal, decl_for as st_decl_for,
+                                 render_smart_tabs,
+                                 FEATURE_ID as FEATURE_SMART_TABS_ID,
+                                 FEATURE_SMART_TABS_VERSION)
+from feature_intelligence_today import (IntelligenceRefusal,
+                                         decl_for as it_decl_for,
+                                         render_intelligence_today,
+                                         FEATURE_ID as FEATURE_INTELLIGENCE_TODAY_ID,
+                                         FEATURE_INTELLIGENCE_TODAY_VERSION)
+from feature_contacts import (ContactsRefusal, decl_for as ct_decl_for,
+                               render_contacts,
+                               FEATURE_ID as FEATURE_CONTACTS_ID,
+                               FEATURE_CONTACTS_VERSION)
 
-ASSEMBLER_VERSION = "assemble-v1.10"  # v1.10: wave-C modules (smart_bars, connect, community)
+ASSEMBLER_VERSION = "assemble-v1.11"  # v1.11: wave-B modules (smart_tabs, intelligence_today, contacts)
 
 # ---- breaker module wiring ----
 # Every wired module follows the cover pattern: decl_for(contract) parses
@@ -159,6 +172,34 @@ def _render_community(decl, st, ctx, contract):
                           FEATURE_COMMUNITY_ID, FEATURE_COMMUNITY_VERSION,
                           None)
 
+def _waveb_adapter(decl, st, ctx, render_fn, fid, version, wired_event):
+    # Wave B modules return a plain HTML string ('' when not enabled).
+    # Their grant_required refusals are the fail-closed defense-in-depth
+    # for the connections-grant layer (the assembler adds the missing[]
+    # field for structural parity with the resolver's permission_denied).
+    # The wired event carries the grants (audit: ready with zero grants).
+    html = render_fn(decl, st, context=ctx)
+    grants = (ctx or {}).get('connections', {}) if isinstance(ctx, dict) else {}
+    evts = [{'event': wired_event, 'feature': fid, 'version': version,
+             'grants': grants}] if (html and wired_event) else []
+    return html, evts, {}
+
+def _render_smart_tabs(decl, st, ctx, contract):
+    return _waveb_adapter(decl, st, ctx, render_smart_tabs,
+                          FEATURE_SMART_TABS_ID, FEATURE_SMART_TABS_VERSION,
+                          'smart_tabs.updated')
+
+def _render_intelligence_today(decl, st, ctx, contract):
+    return _waveb_adapter(decl, st, ctx, render_intelligence_today,
+                          FEATURE_INTELLIGENCE_TODAY_ID,
+                          FEATURE_INTELLIGENCE_TODAY_VERSION,
+                          'intelligence_today.updated')
+
+def _render_contacts(decl, st, ctx, contract):
+    return _waveb_adapter(decl, st, ctx, render_contacts,
+                          FEATURE_CONTACTS_ID, FEATURE_CONTACTS_VERSION,
+                          'contacts.updated')
+
 # Reserved receipt keys — modules may not shadow them via extra_receipt.
 _RECEIPT_RESERVED_KEYS = frozenset(
     {'built_utc', 'events', 'grants', 'privacy', 'identity', 'consent'})
@@ -205,6 +246,18 @@ BREAKER_MODULES = [
      'decl_for': cm_decl_for, 'refusal': CommunityRefusal,
      'version': FEATURE_COMMUNITY_VERSION,
      'render': _render_community},
+    {'key': 'smart_tabs', 'fid': FEATURE_SMART_TABS_ID,
+     'decl_for': st_decl_for, 'refusal': TabsRefusal,
+     'version': FEATURE_SMART_TABS_VERSION,
+     'render': _render_smart_tabs},
+    {'key': 'intelligence_today', 'fid': FEATURE_INTELLIGENCE_TODAY_ID,
+     'decl_for': it_decl_for, 'refusal': IntelligenceRefusal,
+     'version': FEATURE_INTELLIGENCE_TODAY_VERSION,
+     'render': _render_intelligence_today},
+    {'key': 'contacts', 'fid': FEATURE_CONTACTS_ID,
+     'decl_for': ct_decl_for, 'refusal': ContactsRefusal,
+     'version': FEATURE_CONTACTS_VERSION,
+     'render': _render_contacts},
 ]
 BREAKER_MODULE_KEYS = {m['key'] for m in BREAKER_MODULES}
 
@@ -547,8 +600,26 @@ def activate_breakers(contract, reg_statuses, reg_present, context):
                 continue
             mdecl = mod_decls.get(mod['key'])
             if mdecl is None:
-                mdecl = {'enabled': True}  # policy-enabled via omission
-            if not mdecl.get('enabled'):
+                # Omitted + gate active: synthesize an enabled decl THROUGH
+                # the module's decl_for (not a bare fallback) so its
+                # defaults, dial-filling, and _connections/_privacy stashing
+                # run — the module never hardcodes the default, but its
+                # decl_for owns the declaration shape.
+                synth_feats = dict(feats) if isinstance(feats, dict) else {}
+                synth_feats[mod['key']] = {'enabled': True}
+                synth = dict(contract)
+                synth['features'] = synth_feats
+                try:
+                    mdecl = mod['decl_for'](synth)
+                except mod['refusal'] as e:
+                    problems.append({'code': e.code, 'feature': fid,
+                                     'detail': e.detail})
+                    return (cover_html, module_html, problems, events,
+                            enabled, extra_receipt)
+                if mdecl is None:
+                    mdecl = {'enabled': True}  # module declined; bare fallback
+            # decl_for may return False (explicit opt-out) — not a dict.
+            if mdecl is False or not (mdecl.get('enabled') if isinstance(mdecl, dict) else mdecl):
                 continue
             try:
                 html, evts, extra = mod['render'](

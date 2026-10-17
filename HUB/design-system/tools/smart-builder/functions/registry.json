@@ -834,7 +834,7 @@
             "tabs wired"
           ],
           "activated_by": "contract.features.smart_tabs",
-          "status": "specified",
+          "status": "built",
           "code": null,
           "depends_on": [
             "systems.tabs"
@@ -855,8 +855,7 @@
             "tab_switch_tested"
           ],
           "ready": [
-            "tabs UI",
-            "local page list"
+            "render local navigation from contract-carried pages (no I/O, no grant)"
           ],
           "connected": []
         },
