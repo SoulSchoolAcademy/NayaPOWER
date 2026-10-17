@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import argparse, contextlib, hashlib, json, math, os, re, tempfile
+import argparse, contextlib, hashlib, json, math, os, re, sys, tempfile
 try:
     import fcntl
 except ImportError:  # Windows: lock with msvcrt so concurrent writers still serialize.
@@ -386,7 +386,90 @@ def allocate_smart_note_id(capture, ib):
         registry = {"entries": []}
     return _allocate_from_registry(capture, ib, registry)
 
-def reserve_smart_note_id(capture, ib, registry_path=None):
+def _get_check_sn():
+    """B-31: single canonical binding for the four-surface checker.
+
+    tools/check_sn_claim_coverage.py supports both documented import forms
+    (``python -m tools.smart_note_v2`` and ``python tools/smart_note_v2.py``),
+    exactly like truth_state_guard/applicability above. The binding is
+    resolved lazily and cached so (a) a missing checker module fails closed
+    with SN_CLAIM_COVERAGE_UNAVAILABLE at enforcement time instead of
+    breaking every smart_note_v2 import, and (b) there is exactly ONE
+    use-site for tests to intercept -- patching ``_get_check_sn`` (not the
+    checker's module attribute) is the supported seam. Patching the module
+    attribute is UNSOUND: without a tools/__init__.py the two import forms
+    create two module identities and a module-attribute mock silently misses
+    while the live check runs (observed: OOM on the live PR-head fetch).
+    """
+    global _check_sn_fn
+    if _check_sn_fn is None:
+        try:
+            from tools.check_sn_claim_coverage import check_sn as fn
+        except ImportError:
+            from check_sn_claim_coverage import check_sn as fn
+        _check_sn_fn = fn
+    return _check_sn_fn
+
+
+_check_sn_fn = None
+
+
+def _enforce_four_surface_coverage(sn_id, ib, fixtures=None, repo=None):
+    """B-31: refuse allocation when the four-surface scan finds a foreign claim.
+
+    The standing rule (AGENTS.md) requires the SN-collision registry to cover
+    (1) #554 comments, (2) open Smart-Note PR heads, (3) the commit graph,
+    (4) date partitions. The registry-local check in _allocate_from_registry
+    cannot see claims living on those surfaces, so allocation runs this scan
+    and refuses (SystemExit) on COLLISION or on any unreadable surface --
+    fail closed, never a silent pass.
+
+    The scan runs on a read snapshot BEFORE the registry transaction: the
+    live board/PR scans take minutes and must not hold the registry's
+    exclusive flock. The residual TOCTOU window (a foreign claim landing
+    between scan and commit) is documented, not closed; the in-transaction
+    sequence advance still prevents registry-local reuse.
+
+    Skipped only under test (PYTEST_CURRENT_TEST), always logged to stderr
+    so a production skip is visible, never silent. There is deliberately NO
+    SN_COVERAGE_SKIP-style env bypass: a gate one environment variable can
+    switch off is advice, not refusal (L258 -- a hole shaped like a feature).
+    Tests that need the scan offline pass fixtures= explicitly.
+    """
+    import os as _os
+    if _os.environ.get("PYTEST_CURRENT_TEST"):
+        print(f"FOUR_SURFACE_CHECK_SKIPPED:{sn_id}:reason=PYTEST_CURRENT_TEST",
+              file=sys.stderr)
+        return
+    try:
+        check_sn = _get_check_sn()
+    except ImportError as e:
+        raise SystemExit(
+            f"SN_CLAIM_COVERAGE_UNAVAILABLE:{sn_id}:reason=check_module_missing:{e}"
+        )
+    if repo:
+        verdict = check_sn(sn_id, requester_ib=ib, fixtures=fixtures,
+                           repo=repo)
+    else:
+        verdict = check_sn(sn_id, requester_ib=ib, fixtures=fixtures)
+    if verdict["verdict"] == "CLEAR":
+        return
+    if verdict["verdict"] == "COLLISION":
+        claims = ";".join(
+            f"{h['surface']}#{h.get('comment_id') or h.get('pr') or h.get('sha') or h.get('path')}"
+            for h in verdict["foreign_claims"]
+        )
+        raise SystemExit(
+            f"SMART_NOTE_ID_COLLISION:{sn_id}:four_surface_claims={claims}"
+        )
+    raise SystemExit(
+        f"SN_CLAIM_SURFACE_UNREADABLE:{sn_id}:"
+        f"surfaces={','.join(verdict['unreadable_surfaces'])}"
+    )
+
+
+def reserve_smart_note_id(capture, ib, registry_path=None,
+                          coverage_fixtures=None, coverage_repo=None):
     """Authoritatively reserve a Smart Note ID for (capture, ib).
 
     The allocation read and the sequence advance commit atomically inside
@@ -401,18 +484,48 @@ def reserve_smart_note_id(capture, ib, registry_path=None):
     sequence guarantees uniqueness, never reuse — not contiguity.
     Re-reserving a known intelligent block returns its existing SN
     without burning a sequence number.
-    """
-    with registry_transaction(registry_path) as registry:
-        sn_id = _allocate_from_registry(capture, ib, registry)
-        seq_match = re.fullmatch(r"SN-(\d+)", sn_id)
-        if seq_match:
-            policy = registry.setdefault("sequence_policy", {"human_id_format": "SN-###"})
-            policy["next_sequence"] = max(int(policy.get("next_sequence", 1)),
-                                          int(seq_match.group(1)) + 1)
-            policy["purpose"] = ("Stable human-facing Smart Note identity. IB-ID remains canonical "
-                                 "machine identity; capture timestamp remains provenance.")
-        return sn_id
 
+    B-31: before committing, the candidate id must clear the four-surface
+    SN-collision scan (_enforce_four_surface_coverage). A foreign claim on
+    any surface, or an unreadable surface, refuses the allocation. The scan
+    is slow (live board/PR reads) so it runs outside the registry lock;
+    the loop below only ever commits an id that (a) was scanned clean and
+    (b) is the transaction's current allocation -- a registry that moved
+    under the scan retries with the new candidate instead of committing an
+    unscanned id. The residual TOCTOU window (a foreign claim landing
+    between scan and commit) is documented, not closed; the in-transaction
+    sequence advance still prevents registry-local reuse.
+
+    coverage_fixtures / coverage_repo are the test seam: they drive the
+    four-surface scan offline (synthetic board/PR fixtures, scratch repo)
+    without touching the live venue. Production callers leave both None.
+    """
+    rp = Path(registry_path) if registry_path else REGISTRY
+    scanned_clean = set()
+    while True:
+        snapshot = load_json(rp) if rp.exists() else {"entries": []}
+        provisional = _allocate_from_registry(capture, ib, snapshot)
+        if provisional not in scanned_clean:
+            # Slow live scan runs outside the registry lock (see docstring).
+            _enforce_four_surface_coverage(provisional, ib,
+                                           fixtures=coverage_fixtures,
+                                           repo=coverage_repo)
+            scanned_clean.add(provisional)
+        with registry_transaction(registry_path) as registry:
+            sn_id = _allocate_from_registry(capture, ib, registry)
+            if sn_id not in scanned_clean:
+                # Registry moved under the scan (concurrent allocator took
+                # our candidate). Roll back without writing and retry: the
+                # next loop scans the new candidate before committing it.
+                continue
+            seq_match = re.fullmatch(r"SN-(\d+)", sn_id)
+            if seq_match:
+                policy = registry.setdefault("sequence_policy", {"human_id_format": "SN-###"})
+                policy["next_sequence"] = max(int(policy.get("next_sequence", 1)),
+                                              int(seq_match.group(1)) + 1)
+                policy["purpose"] = ("Stable human-facing Smart Note identity. IB-ID remains canonical "
+                                     "machine identity; capture timestamp remains provenance.")
+            return sn_id
 def projection_path(capture, ib, root=None, sn_id=None):
     # root resolves at call time (not def time) so test harnesses that
     # re-point BRAIN_SMART_NOTE_ROOT get the live value.
@@ -532,13 +645,37 @@ def _canonical_content_hash(lesson: str) -> str:
     return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
 
 
-def update_registry(capture, verify, projection, sn_id=None):
+def update_registry(capture, verify, projection, sn_id=None,
+                    coverage_fixtures=None, coverage_repo=None):
     # The whole read-allocate-modify-write runs inside one exclusive
     # transaction: concurrent writers serialize, the commit is atomic.
     # (Problem B fix — the pre-lock code lost updates under concurrency.)
     # sn_id, when reserved upstream via reserve_smart_note_id(), makes the
     # recorded entry agree with the projected directory (projection-path
-    # race fix); without it the authoritative allocation happens here.
+    # race fix).
+    # B-31: when no id was reserved upstream, the authoritative allocation
+    # happens here -- and it MUST clear the four-surface scan first. The
+    # old code called _allocate_from_registry directly inside the
+    # transaction: a second, unscanned claim path around the gate. Now the
+    # unreserved path reserves through reserve_smart_note_id (scan outside
+    # the lock, commit inside), exactly like the `project` CLI flow already
+    # does. B-31 wave-13: the EXPLICIT path scans too -- an sn_id passed by
+    # the caller is a caller-asserted reservation, not a scanned one, and
+    # trusting it without a scan was a second claim path around the gate
+    # (only the project flow's own reserve() call happened to scan). The
+    # transaction below only records ids that cleared the scan.
+    # coverage_fixtures / coverage_repo are the test seam, threaded through.
+    block = verify["persisted"]["block"]
+    ib = block["intelligent_block_id"]
+    if sn_id is None:
+        sn_id = reserve_smart_note_id(
+            capture, ib,
+            coverage_fixtures=coverage_fixtures,
+            coverage_repo=coverage_repo)
+    else:
+        _enforce_four_surface_coverage(
+            sn_id, ib,
+            fixtures=coverage_fixtures, repo=coverage_repo)
     with registry_transaction() as registry:
         return _update_registry_locked(capture, verify, projection, registry, sn_id=sn_id)
 

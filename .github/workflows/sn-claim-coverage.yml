@@ -1,0 +1,50 @@
+# SN claim coverage — four-surface audit (B-31).
+#
+# Standing rule (AGENTS.md): the SN-collision registry must cover (1) #554
+# comments, (2) open Smart-Note PR heads, (3) the commit graph, (4) date
+# partitions. tools/check_sn_claim_coverage.py is the mechanization; this
+# workflow runs it in --audit mode (one pass over all four surfaces) so a
+# claim landing outside the registry fails the run instead of drifting
+# silently. Allocation-time enforcement lives in
+# tools/smart_note_v2.py::_enforce_four_surface_coverage (refuses the
+# allocation); this workflow is the continuous proof.
+name: sn-claim-coverage
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "BRAIN/05-MEMORY/SMART-NOTES/**"
+      - ".naya/memory/smart-notes/**"
+      - "tools/check_sn_claim_coverage.py"
+      - "tools/smart_note_v2.py"
+      - ".github/workflows/sn-claim-coverage.yml"
+  schedule:
+    - cron: "17 */6 * * *" # every 6h: the watch never sleeps
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: read
+  pull-requests: read
+
+jobs:
+  four-surface-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # commit-graph surface needs full history
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Four-surface SN-collision audit
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: |
+          python3 tools/check_sn_claim_coverage.py --audit --repo "$GITHUB_WORKSPACE"
+      - name: Check unit tests
+        run: |
+          python3 -m pytest tools/test_check_sn_claim_coverage.py -q
