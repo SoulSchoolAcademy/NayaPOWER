@@ -50,6 +50,11 @@ The Hub is the human cockpit over NayaPOWER. It is not a second brain, database,
 
 ## Design law
 
+**Normative lawbook:** `HUB/DESIGN-LAWS/README.md`
+
+For substantive interface work, read the lawbook before implementation. It decomposes the parent `HUB/DESIGN-CONTRACT.md` into precise Visual Bliss, typography, component physics, Power Button, Intelligence Board, spectrum, icon, motion, layout, truth/state, accessibility/performance, Naya presence, and AAA visual-QA laws. It is a projection/compilation of the parent contract — not a competing design authority.
+
+
 **OBSIDIAN FOUNDATION · SPECTRAL INTELLIGENCE · LIVING DEPTH · PRIMO CONTROLS · REAL CAPABILITY · ZERO VISUAL REGRESSION**
 
 The existing concept is the visual-quality floor. A cleaner implementation that feels cheaper is a failed implementation.

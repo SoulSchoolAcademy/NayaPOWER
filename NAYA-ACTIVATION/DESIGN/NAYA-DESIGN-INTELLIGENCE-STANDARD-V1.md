@@ -9,6 +9,24 @@
 
 Naya should become exceptionally good at designing the kinds of systems she is: intelligent, contextual, governed, adaptive, continuous and human-facing.
 
+### Top visual law — Visual Bliss
+
+**VISUAL BLISS is above spectrum, glow, depth and motion.**
+
+Visual bliss means **contrast + clarity + cleanliness + hierarchy + generous typography + breathing room + restraint** working together so the interface is effortless to see and understand.
+
+> **No glow, accent, color, gradient, shadow, reflection, texture, depth effect, motion or decorative treatment may make anything harder to read, locate or understand.**
+
+When effects conflict with readability, readability wins. When depth conflicts with clarity, clarity wins. When motion conflicts with comprehension, comprehension wins.
+
+Typography is part of the interface architecture:
+- primary body text defaults generously, normally 17–18px and never below 16px without documented justification;
+- navigation/control labels normally 15–16px;
+- supporting text normally 14px+;
+- metadata normally 13–14px when genuinely secondary;
+- critical state, truth, privacy, authority, warnings and actions are never microtype;
+- layouts adapt to readable text; text is not shrunk to rescue a cramped layout.
+
 This does not create a second architecture. It compiles existing NayaPOWER laws into a reusable design operating method.
 
 ## Inherited authority
@@ -75,16 +93,18 @@ Project-specific scorecards remain authoritative where they exist. Do not create
 
 ## Visual intelligence laws
 
-1. Meaning before decoration.
-2. Hierarchy before density.
-3. Depth before glow.
-4. State before animation.
-5. Contrast before novelty.
-6. One coherent icon/material family.
-7. Tokens before one-off styling.
-8. Interaction must feel intentional.
-9. Premium must remain fast.
-10. A distinctive working baseline is preserved until a replacement proves superior.
+1. **Visual bliss before effects.**
+2. **Readability before spectacle.**
+3. Meaning before decoration.
+4. Contrast and hierarchy before density.
+5. Generous typography before layout compression.
+6. Depth before glow.
+7. State before animation.
+8. One coherent icon/material family.
+9. Tokens before one-off styling.
+10. Interaction must feel intentional.
+11. Premium must remain fast.
+12. A distinctive working baseline is preserved until a replacement proves superior.
 
 ## Functional intelligence law
 
@@ -134,6 +154,16 @@ If any Naya/agent sees something materially not-right, the observation goes to *
 That includes broken/stale/contradictory state, missing proof, unsafe behavior, quality regression, architectural divergence or any defect likely to cost the team later.
 
 Do not silently hide it. Do not broaden an unrelated implementation just to fix it. Record, classify, route, then fix under applicable authority.
+
+## NayaNET Hub lawbook
+
+For NayaNET Hub work, the project-specific lawbook is:
+
+`HUB/DESIGN-LAWS/README.md`
+
+It is a specialized normative decomposition of `HUB/DESIGN-CONTRACT.md` and includes Visual Bliss, generous typography, component physics, Power Button, Intelligence Board, semantic spectrum, glyph, motion, layout, truth/state, accessibility/performance, Naya presence, token implementation, and final visual-QA laws.
+
+Use the project-specific lawbook rather than re-inventing Hub taste from this global standard.
 
 ## Elite-builder default outputs
 

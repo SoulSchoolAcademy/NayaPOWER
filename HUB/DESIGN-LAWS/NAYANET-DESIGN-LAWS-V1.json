@@ -1,0 +1,390 @@
+{
+  "$schema": "nayanet.design-laws.v1",
+  "version": "1.0.0",
+  "status": "HUMAN_DIRECTOR_DIRECTED_PROPOSED_CANONICAL",
+  "parent_contract": "HUB/DESIGN-CONTRACT.md",
+  "purpose": "Machine-readable compilation of NayaNET interface laws. Does not create a second design authority.",
+  "north_star": "Make sophisticated intelligence feel simple, beautiful, trustworthy, alive and useful to the human.",
+  "precedence": [
+    "human_understanding_and_safety",
+    "truth_state_accuracy",
+    "visual_bliss",
+    "purpose_and_hierarchy",
+    "accessibility_and_human_comfort",
+    "causal_functionality",
+    "performance_and_responsiveness",
+    "material_depth",
+    "semantic_color",
+    "motion_and_delight",
+    "decoration"
+  ],
+  "visual_bliss": {
+    "hard_rule": "No glow, accent, color, gradient, shadow, reflection, texture, depth effect, animation, particle, blur, transparency or decorative treatment may make content harder to read, locate, distinguish or understand.",
+    "components": [
+      "contrast",
+      "clarity",
+      "cleanliness",
+      "hierarchy",
+      "typography",
+      "spacing",
+      "restraint",
+      "material_quality"
+    ],
+    "conflicts": {
+      "spectacle_vs_readability": "readability_wins",
+      "depth_vs_clarity": "clarity_wins",
+      "color_vs_hierarchy": "hierarchy_wins",
+      "motion_vs_comprehension": "comprehension_wins"
+    }
+  },
+  "typography": {
+    "body_target_px": [
+      17,
+      18
+    ],
+    "body_floor_px": 16,
+    "control_target_px": [
+      15,
+      16
+    ],
+    "support_floor_px": 14,
+    "metadata_target_px": [
+      13,
+      14
+    ],
+    "critical_microtype_forbidden": true,
+    "shrink_to_rescue_layout_forbidden": true,
+    "zoom_200_percent_must_work": true
+  },
+  "component_classes": [
+    {
+      "id": "POWER_OBJECT",
+      "examples": [
+        "button",
+        "action_control"
+      ]
+    },
+    {
+      "id": "INTELLIGENCE_SURFACE",
+      "examples": [
+        "board",
+        "report",
+        "reader",
+        "room",
+        "panel"
+      ]
+    },
+    {
+      "id": "IDENTITY_PORTAL",
+      "examples": [
+        "input",
+        "identity_form",
+        "connection_field"
+      ]
+    },
+    {
+      "id": "ENERGY_PATH",
+      "examples": [
+        "progress",
+        "loading",
+        "sync",
+        "playback",
+        "transfer"
+      ]
+    },
+    {
+      "id": "INTELLIGENCE_GLYPH",
+      "examples": [
+        "icon",
+        "state_mark",
+        "identity_emblem"
+      ]
+    }
+  ],
+  "component_physics": [
+    "material",
+    "form",
+    "depth",
+    "light",
+    "color",
+    "state",
+    "motion",
+    "sound_or_haptic",
+    "consequence",
+    "memory"
+  ],
+  "elevation_tiers": {
+    "E0": "background_plane",
+    "E1": "passive_surface",
+    "E2": "interactive_surface",
+    "E3": "selected_or_raised_object",
+    "E4": "temporary_focus_inspector_or_portal",
+    "E5": "critical_modal_confirmation_only"
+  },
+  "states": [
+    "LOADING",
+    "EMPTY",
+    "READY",
+    "BLOCKED",
+    "NOT_VERIFIED",
+    "VERIFIED",
+    "ERROR"
+  ],
+  "button": {
+    "min_touch_target_css_px": 44,
+    "hover_lift_px": -2,
+    "motion_ms": [
+      160,
+      240
+    ],
+    "signature_ease": "cubic-bezier(.16,.84,.22,1)",
+    "anatomy": [
+      "material_body",
+      "perimeter_edge",
+      "upper_specular_highlight",
+      "lower_depth",
+      "cast_shadow",
+      "semantic_accent",
+      "label",
+      "glyph_optional",
+      "focus",
+      "state_feedback"
+    ],
+    "required_states": [
+      "rest",
+      "hover",
+      "focus",
+      "pressed",
+      "loading_if_async",
+      "disabled",
+      "success_if_applicable",
+      "error_if_applicable"
+    ],
+    "dead_live_looking_control_forbidden": true,
+    "causal_chain": [
+      "control",
+      "intent",
+      "authority_scope",
+      "capability",
+      "observation",
+      "result",
+      "state_evidence"
+    ]
+  },
+  "board": {
+    "anatomy": [
+      "identity_glyph",
+      "title",
+      "orientation",
+      "truth_provenance",
+      "dominant_theme",
+      "primary_intelligence",
+      "nested_layers_optional",
+      "meaningful_actions",
+      "source_evidence",
+      "continuity_state"
+    ],
+    "principle": "board_is_intelligence_destination_not_generic_card",
+    "body_text_must_remain_neutral": true,
+    "theme_flood_forbidden": true
+  },
+  "spectrum": [
+    {
+      "name": "purple",
+      "hex": "#9d75ff",
+      "meaning": "intelligence_emergence_identity"
+    },
+    {
+      "name": "indigo",
+      "hex": "#6675ff",
+      "meaning": "comprehension_depth"
+    },
+    {
+      "name": "sapphire",
+      "hex": "#55b9ee",
+      "meaning": "knowledge_information"
+    },
+    {
+      "name": "teal",
+      "hex": "#4fe0c3",
+      "meaning": "connection_flow"
+    },
+    {
+      "name": "emerald",
+      "hex": "#55e39a",
+      "meaning": "healthy_active_available"
+    },
+    {
+      "name": "lime",
+      "hex": "#b8ee57",
+      "meaning": "learning_growth"
+    },
+    {
+      "name": "yellow",
+      "hex": "#f1d75a",
+      "meaning": "attention_signal"
+    },
+    {
+      "name": "gold",
+      "hex": "#e8b64c",
+      "meaning": "value_significance_consequence"
+    },
+    {
+      "name": "orange",
+      "hex": "#ff9a5a",
+      "meaning": "action_movement"
+    },
+    {
+      "name": "rich_orange",
+      "hex": "#ff7a3c",
+      "meaning": "transition_momentum"
+    },
+    {
+      "name": "red",
+      "hex": "#ff5a6e",
+      "meaning": "warning_risk_consequence"
+    },
+    {
+      "name": "magenta",
+      "hex": "#d86cff",
+      "meaning": "human_significance_expression_creation"
+    }
+  ],
+  "icons": {
+    "family": "faceted_precision_intelligence_glyph",
+    "emoji_primary_icon_forbidden": true,
+    "mixed_random_icon_packs_forbidden": true,
+    "states": [
+      "rest",
+      "aware_or_hover",
+      "active",
+      "focus",
+      "disabled",
+      "loading_if_applicable",
+      "success_or_error_if_applicable"
+    ]
+  },
+  "motion": {
+    "law": "motion_communicates_actual_state_never_manufactures_state",
+    "durations_ms": {
+      "micro": [
+        100,
+        180
+      ],
+      "standard": [
+        180,
+        280
+      ],
+      "context_transform": [
+        280,
+        500
+      ]
+    },
+    "reduced_motion_required": true,
+    "infinite_pulse_default_forbidden": true,
+    "layout_shift_on_hover_forbidden": true
+  },
+  "layout": {
+    "desktop": [
+      "left_rail",
+      "center_canvas",
+      "contextual_secondary_region_only_when_useful"
+    ],
+    "prominent_intelligence_search": true,
+    "permanent_overloaded_three_column_dashboard_forbidden": true,
+    "real_router_history_required": true
+  },
+  "truth": {
+    "ui_state_is_a_claim": true,
+    "verified_requires_evidence": true,
+    "connected_requires_backend_evidence": true,
+    "unknown_must_not_silently_become_empty_or_verified": true,
+    "important_success_receipt_fields": [
+      "what",
+      "when",
+      "object",
+      "scope",
+      "result",
+      "evidence"
+    ]
+  },
+  "accessibility": {
+    "keyboard": true,
+    "visible_focus": true,
+    "semantic_elements": true,
+    "color_only_state_forbidden": true,
+    "min_touch_target_css_px": 44,
+    "reduced_motion": true,
+    "zoom_200_percent": true
+  },
+  "performance": {
+    "concept_monolith_not_production_architecture": true,
+    "prefer_compositor_motion": [
+      "transform",
+      "opacity"
+    ],
+    "avoid": [
+      "layout_thrash",
+      "uncontrolled_animation_loops",
+      "excessive_blur",
+      "heavy_shadow_on_mass_feed_items"
+    ],
+    "long_feed_strategy": [
+      "pagination",
+      "lazy_loading",
+      "virtualization_where_useful"
+    ]
+  },
+  "prohibited_patterns": [
+    "generic_flat_saas",
+    "tiny_text_for_aesthetic",
+    "glow_reducing_legibility",
+    "fake_activity",
+    "fake_connected_state",
+    "random_emoji_primary_icons",
+    "gradient_for_gradient_sake",
+    "all_controls_primary",
+    "decorative_kpi_cards",
+    "dashboard_grid_as_default",
+    "three_column_overload",
+    "client_state_as_canonical_truth",
+    "visual_regression_for_engineering_convenience"
+  ],
+  "acceptance": {
+    "scorecard_source": "HUB/PROJECT-INTELLIGENCE.md",
+    "material_dimension_floor": 9,
+    "visual_excellence_target": 10,
+    "independent_rescore_required": true,
+    "human_director_visual_validation_where_required": true,
+    "evidence_package": [
+      "before_after",
+      "state_matrix",
+      "responsive_matrix",
+      "accessibility",
+      "performance",
+      "known_limits",
+      "self_score",
+      "independent_review"
+    ]
+  },
+  "laws": [
+    "00-MASTER-DESIGN-LAW.md",
+    "01-VISUAL-BLISS-LAW.md",
+    "02-TYPOGRAPHY-READABILITY-LAW.md",
+    "03-COMPONENT-PHYSICS-LAW.md",
+    "04-POWER-BUTTON-LAW.md",
+    "05-INTELLIGENCE-BOARD-LAW.md",
+    "06-COLOR-SPECTRUM-LAW.md",
+    "07-ICON-GLYPH-LAW.md",
+    "08-MOTION-LIVENESS-LAW.md",
+    "09-LAYOUT-NAVIGATION-COMPOSITION-LAW.md",
+    "10-TRUTH-STATE-INTERACTION-LAW.md",
+    "11-ACCESSIBILITY-RESPONSIVE-PERFORMANCE-LAW.md",
+    "12-NAYA-PRESENCE-INPUT-SEARCH-LAW.md",
+    "13-AAA-VISUAL-QA-ACCEPTANCE-LAW.md",
+    "14-TOKEN-COMPONENT-IMPLEMENTATION-LAW.md",
+    "15-WORLD-CHAMPION-REVIEW-LAW.md"
+  ],
+  "token_law": "14-TOKEN-COMPONENT-IMPLEMENTATION-LAW.md",
+  "final_craft_review": "15-WORLD-CHAMPION-REVIEW-LAW.md"
+}

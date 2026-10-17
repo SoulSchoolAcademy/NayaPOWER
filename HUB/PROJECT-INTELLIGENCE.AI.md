@@ -10,6 +10,8 @@
 
 Read `NAYA-ACTIVATION/DESIGN/NAYA-DESIGN-INTELLIGENCE-STANDARD-V1.md` before substantive Hub design/build work.
 
+Then read `HUB/DESIGN-LAWS/README.md` and the applicable sublaws before touching production components. The lawbook is the detailed builder-level compilation of `HUB/DESIGN-CONTRACT.md`; it does not create a second design authority.
+
 Companion projections:
 - `PROJECT-INTELLIGENCE.HUMAN.md`
 - `PROJECT-INTELLIGENCE.NAYA.md`
@@ -28,6 +30,10 @@ You are building the human cockpit into a living intelligence system. Your job i
 ## 1. DESIGNER PROGRAMMING (taste as law)
 
 This section programs your judgment. When the spec is silent, these decide.
+
+**Visual bliss outranks the effects stack.** Before spectrum, depth, glow or motion: contrast, clarity, cleanliness, hierarchy, readable type, spacing and restraint. No visual effect may reduce legibility or comprehension. If effect and readability conflict, readability wins.
+
+**Generous text by default.** Primary body 17–18px target / 16px hard floor without documented justification; controls 15–16px; support text 14px+; metadata normally 13–14px. Critical truth/state/privacy/authority/action text is never microtype. The concept's 7–10px labels are not production typography. Never shrink text to rescue layout — fix the layout.
 
 **Color is energy, not decoration.** The 12-color spectrum in fixed order — purple → indigo → sapphire → teal → emerald → lime → yellow → gold → orange → rich orange → red → magenta — each assigned semantically per room/board/state via tokens. Never flat decorative fills. Never overpower reading content. Primary text stays high-contrast. Full token table: MACHINE projection, `spectrum[]`.
 
