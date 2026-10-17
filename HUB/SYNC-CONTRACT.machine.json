@@ -1,0 +1,172 @@
+{
+ "contract": "hub_smart_feed",
+ "version": "1.0",
+ "verified_against_tip": "e19a75d6",
+ "verified_at": "2026-10-16T07:35:00Z",
+ "standing_rule": "bridge_complete_means_flow_works_not_code_exists",
+ "sender": {
+  "status": "built_reuse_do_not_duplicate",
+  "workflow": ".github/workflows/nayanet-agent-capture.yml",
+  "emit_contract": {
+   "human_note": {
+    "subject": "string",
+    "text": "string"
+   },
+   "naya_note": {
+    "text": "string"
+   },
+   "idempotency_key": "string",
+   "source": "string_prefix_nayanet-agent-capture",
+   "invoking_seat": "string"
+  },
+  "edge_function": "supabase/functions/v7-smart-note-canonical/index.ts",
+  "block_format": "NAYANET_INTELLIGENT_BLOCK_V1",
+  "id_scheme": "IB-######",
+  "persists_to": [
+   "smart_note_events",
+   "nayanet_cognition_events",
+   "learning_evidence",
+   "nayanet_authority_grants"
+  ],
+  "public_read": "nayanet_intelligence_publications",
+  "returns": [
+   "ok",
+   "pipeline",
+   "intelligent_block_id",
+   "transaction_id",
+   "smart_link",
+   "feed_verification"
+  ],
+  "secrets_required": [
+   "NAYA_SUPABASE_URL",
+   "NAYA_SUPABASE_ANON_KEY",
+   "NAYA_RUNTIME_EMAIL",
+   "NAYA_RUNTIME_PASSWORD"
+  ]
+ },
+ "transport": {
+  "status": "open_decision_team_scorecard_tonight",
+  "option_a": "supabase_direct_rest_on_nayanet_intelligence_publications",
+  "option_b": "github_feed_files_feeds_smart-notes.json_via_cdn"
+ },
+ "page_receiver": {
+  "status": "to_build",
+  "target": "HUB/app/index.html",
+  "field_map": {
+   "essence": "meaning.in_a_nutshell",
+   "human_view": "perspectives.human",
+   "naya_view": "perspectives.naya",
+   "machine_view": "perspectives.machine"
+  },
+  "play": "prebaked_naya_cloned_voice_audio_required_via_registerBakedAudio_no_browser_tts",
+  "save": "localStorage_v1_server_side_later",
+  "share": "navigator.share + clipboard + Smart Link",
+  "states": [
+   "loading",
+   "empty",
+   "error",
+   "malformed-payload",
+   "offline"
+  ]
+ },
+ "github_output": {
+  "per_note_projection": "exists (.naya/.../IB-######/smart-note.md)",
+  "per_page_feed": "to_build (feeds/<page>.json emitter)"
+ },
+ "alignment": {
+  "master_directive": "#2601 fresh, contract lands as work item",
+  "compiler": "not_found_at_tip_prose_only__contract_uses_v7_IB_vocabulary_directly"
+ },
+ "acceptance": {
+  "gasp_test": [
+   "say_it",
+   "see_it_in_seconds",
+   "press_play_naya_speaks",
+   "save",
+   "share"
+  ],
+  "latency_measured": "capture_to_render"
+ },
+ "human_gates": [
+  "production_verification_CLEARED_2026-10-16",
+  "voice_DECICED_her_real_voice_always",
+  "save_DECIDED_browser_v1_now"
+ ],
+ "rollout": {
+  "phase_order": [
+   "hub_page",
+   "reports_page",
+   "today_page",
+   "ledger_page",
+   "rooms_5_to_12"
+  ],
+  "per_room_rule": "receiver_ready_plus_sender_ready_one_feed_per_room_done_only_when_page_renders_live",
+  "rooms": [
+   "Intelligent Hub Home (Smart Feed)",
+   "Your Reports",
+   "Your Intelligence Today",
+   "Smart Ledger",
+   "Intelligent Library",
+   "Smart Connect",
+   "Your Connections",
+   "Smart Lists",
+   "Smart Mail",
+   "Smart Spaces",
+   "Settings"
+  ]
+ },
+ "live_verification": {
+  "authorized_by": "Shawn",
+  "at": "2026-10-16T07:30:00Z",
+  "project": "dahisasgpfvziswqvmvm.supabase.co",
+  "tables_exist": [
+   "smart_note_events",
+   "nayanet_cognition_events",
+   "nayanet_intelligence_lineage",
+   "learning_evidence"
+  ],
+  "tables_missing_live": [
+   "nayanet_intelligence_publications"
+  ],
+  "realtime": "unverified",
+  "secrets": "unverifiable_from_here_holder_confirms"
+ },
+ "bridge_spec": {
+  "github_workflow": {
+   "trigger": "workflow_dispatch",
+   "permissions": "contents: read",
+   "secrets": [
+    "NAYA_SUPABASE_URL",
+    "NAYA_SUPABASE_ANON_KEY",
+    "NAYA_RUNTIME_EMAIL",
+    "NAYA_RUNTIME_PASSWORD"
+   ],
+   "fail_closed": true
+  },
+  "supabase_function": {
+   "env": [
+    "SUPABASE_URL",
+    "SUPABASE_ANON_KEY"
+   ],
+   "verify_jwt_false_reason": "governed_github_oidc_in_function",
+   "writes_service_role": [
+    "smart_note_events",
+    "nayanet_cognition_events",
+    "learning_evidence",
+    "nayanet_authority_grants"
+   ],
+   "public_read": "nayanet_intelligence_publications"
+  },
+  "emitter": {
+   "permissions": "contents: write scoped to feeds/**",
+   "idempotent": true
+  }
+ },
+ "supabase_setup_checklist": [
+  "apply_nayanet_intelligence_publications_migration",
+  "rls_anon_select_published_only",
+  "enable_realtime_on_read_tables",
+  "confirm_4_repo_secrets",
+  "voice_bake_audio_url_per_note"
+ ]
+}
