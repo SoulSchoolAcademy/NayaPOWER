@@ -25,6 +25,12 @@ permissions:
   contents: read
   pull-requests: read
 
+# Rate-limit discipline: a rapid push burst must not run N stale copies of
+# this gate. Only the newest run per PR survives.
+concurrency:
+  group: receipt-gate-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
 jobs:
   receipt-pin:
     name: Receipt pin — exact head SHA

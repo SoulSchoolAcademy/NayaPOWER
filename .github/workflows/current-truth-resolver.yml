@@ -10,7 +10,12 @@ on:
   push:
     branches: [main]
     paths:
-      - "BRAIN/**"
+      # Rate-limit discipline (2026-10-16): the collector below reads exactly
+      # these two JSON inputs (plus the contract and its own code). Triggering
+      # on all of BRAIN/** re-ran this ~15-call collection on every docs
+      # merge; the daily cron still provides the cold-truth pulse regardless.
+      - "BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.json"
+      - "BRAIN/NAYAPOWER-BRAIN-INDEX.json"
       - "NAYANODE/0014-CURRENT-REALITY-CONTRACT-V1.md"
       - "tools/current_truth_resolver.py"
       - ".github/workflows/current-truth-resolver.yml"
