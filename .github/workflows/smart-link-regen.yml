@@ -1,0 +1,58 @@
+name: Smart-Link Regen
+
+# GATE-NEEDED: this workflow lives in Shawn's protected jurisdiction
+# (.github/workflows/). It is prepared as a proposal and must NOT be merged
+# without his explicit word. The non-workflow mechanism (P11 in
+# tools/auto_merge_gate.py + the merging lane's post-merge regen run) already
+# covers the requirement; this workflow is the belt-and-suspenders automation.
+
+# On every push to main that touches smart notes or the index, re-verify all
+# smart_links against the new tip. On drift, open an auto-PR with the repair
+# (never push directly to main — the merge gate stays in the loop).
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "BRAIN/05-MEMORY/SMART-NOTES/**"
+      - ".naya/memory/smart-notes/index.json"
+
+jobs:
+  smart-link-regen:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Regen + verify smart links
+        id: regen
+        run: |
+          python tools/smart_link_regen.py --rev ${{ github.sha }} --write \
+            --receipt-out /tmp/smart-link-regen-receipt.json
+          echo "exit=$?"
+          echo "exit_code=$?" >> "$GITHUB_OUTPUT"
+      - name: Open auto-PR on drift
+        if: steps.regen.outputs.exit_code == '1'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          BR="bot/smart-link-regen-${{ github.sha }}"
+          git checkout -b "$BR"
+          git -c user.name="NayaPOWER Lane Agent" -c user.email="lane-agent@nayapower.local" \
+            commit -am "bot: smart-link regen at ${{ github.sha }}"
+          git push origin "$BR"
+          gh pr create --base main --head "$BR" \
+            --title "bot: smart-link regen at ${{ github.sha }}" \
+            --body "Automatic Smart-Link regen (tools/smart_link_regen.py) found drift at ${{ github.sha }}. Receipt attached in the run log. Unrecoverable links (if any) are flagged BROKEN for a human lane."
+      - name: Fail loudly on unrecoverable links
+        if: steps.regen.outputs.exit_code == '2'
+        run: |
+          echo "UNRECOVERABLE smart links remain — human lane needed" >&2
+          cat /tmp/smart-link-regen-receipt.json >&2
+          exit 2
