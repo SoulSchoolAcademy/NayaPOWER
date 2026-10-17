@@ -1,0 +1,303 @@
+[
+  {
+    "category": "calendar",
+    "id": "CAL-001",
+    "name": "Month-view board",
+    "source_file": "gap-blocks/calendar-blocks.md",
+    "status": "NEW",
+    "subcategory": "month-view",
+    "tags": [
+      "calendar",
+      "month",
+      "grid",
+      "board",
+      "new"
+    ],
+    "used_for": [
+      "The calendar's home view \u2014 a month you can read at a glance",
+      "Selecting a day to drive the agenda list (CAL-004)",
+      "Month navigation via prev/next chevrons"
+    ],
+    "variants": [
+      "rest",
+      "hover (lift + chrome-purple ignition)",
+      "selected (held purple edge)",
+      "today (gold edge + breathe)",
+      "out-of-month",
+      "overflow (+N more chip)"
+    ],
+    "visual_description": "A full month on black ground: serif month title with chrome-purple chevron buttons, serif weekday header row, 7-column grid of dark day cells with 1.5px white-lit edges. Today (16th) wears a 2px gold edge with gold glow and a slow breathe; event pills in wheel order (purple, blue, gold on today); overflow days show jewel dots plus an honest \"+2 more\" chip; out-of-month days sit at 34% opacity."
+  },
+  {
+    "category": "calendar",
+    "id": "CAL-002",
+    "name": "Event card",
+    "source_file": "gap-blocks/calendar-blocks.md",
+    "status": "NEW",
+    "subcategory": "event",
+    "tags": [
+      "calendar",
+      "event",
+      "card",
+      "new"
+    ],
+    "used_for": [
+      "The atomic event object \u2014 one event, fully dressed",
+      "Cards inside the agenda timeline (CAL-004)",
+      "All-day, multi-day, and tentative events with honest styling"
+    ],
+    "variants": [
+      "rest",
+      "hover (lift + own-color ignition)",
+      "active (press)",
+      "focus-visible",
+      "all-day",
+      "multi-day span",
+      "tentative (dashed edge)"
+    ],
+    "visual_description": "One event fully dressed: a serif time rail on the left, a 3px glowing spine in the event's fixed spectrum color, a letterspaced type tag in that color, a serif title, and a location/attendees row with drawn SVG glyphs. Hover lifts 6px and ignites the border in the event's own color. Variants: all-day (rail collapses to a glowing band), multi-day span (rail carries the range with an honesty note), tentative (dashed edge, tilde time)."
+  },
+  {
+    "category": "calendar",
+    "id": "CAL-003",
+    "name": "Date picker",
+    "source_file": "gap-blocks/calendar-blocks.md",
+    "status": "NEW",
+    "subcategory": "picker",
+    "tags": [
+      "calendar",
+      "picker",
+      "date",
+      "form",
+      "new"
+    ],
+    "used_for": [
+      "Choosing a single calendar date inside forms",
+      "Date input where past dates must be visibly and truly unavailable",
+      "Keyboard-operable date selection"
+    ],
+    "variants": [
+      "trigger rest",
+      "trigger hover (lift + chrome-purple)",
+      "dropdown open",
+      "day hover",
+      "day focus (white ring)",
+      "chosen",
+      "today",
+      "past (disabled)"
+    ],
+    "visual_description": "An input-styled black trigger (drawn calendar glyph, \"Choose a date\" placeholder) that opens an elevated mini month panel: serif month title, 7-column grid of 36px day buttons, today in gold, chosen day held in chrome-purple, past dates at 32% opacity with strikethrough and fully inert (disabled, out of tab order). Full keyboard contract: arrows move, Enter chooses, Esc closes. A footnote states calendar-date-only, no timezone assumed."
+  },
+  {
+    "category": "calendar",
+    "id": "CAL-004",
+    "name": "Agenda list",
+    "source_file": "gap-blocks/calendar-blocks.md",
+    "status": "NEW",
+    "subcategory": "agenda",
+    "tags": [
+      "calendar",
+      "agenda",
+      "timeline",
+      "day",
+      "new"
+    ],
+    "used_for": [
+      "The day view \u2014 what is happening, in order",
+      "The target of CAL-001's +N more chip and day selection",
+      "Honest empty days"
+    ],
+    "variants": [
+      "rest",
+      "event hover (lift + own-color ignition)",
+      "now-line (today only)",
+      "empty state",
+      "past events (dimmed, no hover theater)"
+    ],
+    "visual_description": "The day's events as a vertical timeline: serif time gutter, a glowing 3px spectrum spine per event in its fixed type color, a rotated-diamond node jewel at each junction, and cards in the CAL-002 language (tag, serif title, one meta line). A gold now-line with a \"now\" flag marks the present \u2014 rendered only when viewing today. The empty state centers a gold jewel over serif \"Nothing scheduled\" and \"The day is yours.\""
+  },
+  {
+    "category": "calendar",
+    "id": "CAL-005",
+    "name": "Day-cell state system",
+    "source_file": "gap-blocks/calendar-blocks.md",
+    "status": "NEW",
+    "subcategory": "states",
+    "tags": [
+      "calendar",
+      "states",
+      "specimen",
+      "new"
+    ],
+    "used_for": [
+      "The single source of truth for day-cell states across the calendar family",
+      "Teaching states statically \u2014 builders implement without running a demo",
+      "Precedence disputes (today beats selected, always)"
+    ],
+    "variants": [
+      "rest",
+      "hover",
+      "selected",
+      "today",
+      "has-events",
+      "disabled",
+      "out-of-month"
+    ],
+    "visual_description": "The seven honest states of a calendar day frozen as static specimens with labels: rest, hover (lift + chrome-purple), selected (held purple), today (gold edge + breathe, outranks selection), has-events (jewel dots in wheel order), disabled (32% opacity, struck, inert), out-of-month (34% opacity, click jumps month). One class per state with a written precedence order so CAL-001 and CAL-003 never drift."
+  },
+  {
+    "category": "checkout",
+    "id": "PAY-001",
+    "name": "Order summary board",
+    "source_file": "gap-blocks/checkout-blocks.md",
+    "status": "NEW",
+    "subcategory": "summary",
+    "tags": [
+      "checkout",
+      "order",
+      "summary",
+      "cart",
+      "total",
+      "new"
+    ],
+    "used_for": [
+      "The pre-payment \"here is what you're paying for\" surface in any checkout flow",
+      "Cart review before the payment form",
+      "Anywhere a total must be stated with tabular figures and an honest price promise"
+    ],
+    "variants": [
+      "rest",
+      "hover (board lifts 5px, ignites purple; items lift 2px in own jewel color; total ignites gold)",
+      "active (stepper press)",
+      "focus-visible (white ring)",
+      "disabled (Apply button)",
+      "empty (.is-empty quiet panel)",
+      "promo applied (emerald) / invalid (red + plain-words message)"
+    ],
+    "visual_description": "A deep-black board (24px radius, 5-layer shadow, purple tone spine, corner jewel) holding line items \u2014 each with a rotated-diamond thumb jewel in its own spectrum color, name, qty stepper, and right-aligned price \u2014 above a promo-code row, subtotal/estimated-tax rows, and a Georgia-serif grand total that ignites gold on hover. Honest microcopy: \"Prices confirmed at checkout.\""
+  },
+  {
+    "category": "checkout",
+    "id": "PAY-002",
+    "name": "Payment form",
+    "source_file": "gap-blocks/checkout-blocks.md",
+    "status": "NEW",
+    "subcategory": "form",
+    "tags": [
+      "checkout",
+      "payment",
+      "form",
+      "card",
+      "validation",
+      "privacy",
+      "new"
+    ],
+    "used_for": [
+      "Capturing card details bound for the payment processor",
+      "Any card-entry surface that must obey the privacy boundary: card data lives only in the inputs, the display layer shows at most last-4 plus brand"
+    ],
+    "variants": [
+      "rest",
+      "focus (purple ignition, label lifts)",
+      "active (Pay press)",
+      "focus-visible (white ring)",
+      "disabled (Pay until valid)",
+      "valid (emerald edge)",
+      "invalid (red edge + plain-words message, never blames the user)",
+      "empty (blank form is rest, not error)"
+    ],
+    "visual_description": "A black board with four floating-label fields (name, card number, expiry, CVC) \u2014 white-lit 1.5px edges at rest, purple ignition on focus, emerald edge when valid, red edge with a plain-words helping sentence when invalid. A brand jewel orb lights in the card brand's own color on recognition. The Pay button (one per view, 56px) carries the real total and stays disabled until the form validates."
+  },
+  {
+    "category": "checkout",
+    "id": "PAY-003",
+    "name": "Confirmation state",
+    "source_file": "gap-blocks/checkout-blocks.md",
+    "status": "NEW",
+    "subcategory": "state",
+    "tags": [
+      "checkout",
+      "confirmation",
+      "success",
+      "receipt",
+      "hologram",
+      "new"
+    ],
+    "used_for": [
+      "The post-payment \"it worked\" surface",
+      "Receipt presentation with honest sent-vs-pending truth states",
+      "Any confirmed-transaction moment that needs restraint: one ignition, then breathe"
+    ],
+    "variants": [
+      "rest (breathe)",
+      "ignited (.is-ignited: one 1.1s flare on confirmed success)",
+      "hover (board lifts, ignites emerald)",
+      "receipt sent (emerald \u2713, backend-confirmed)",
+      "receipt pending (gold ?, claimed awaiting its stamp)",
+      "receipt-email-failed (charged \u2713, retrying \u2014 never reads as payment failure)",
+      "reduced-motion (ignition and breathe off)"
+    ],
+    "visual_description": "An emerald-tone success board: the paid amount as a 56px Georgia hologram number (four layered shadows, slow breathe) that fires exactly one ignition when the processor confirms, then settles. Receipt rows (what/when/receipt) with law-order jewel bullets; the receipt line is emerald \u2713 only when the backend confirms delivery, gold ? while claimed and pending. One primary action and one quiet action."
+  },
+  {
+    "category": "checkout",
+    "id": "PAY-004",
+    "name": "Error state",
+    "source_file": "gap-blocks/checkout-blocks.md",
+    "status": "NEW",
+    "subcategory": "state",
+    "tags": [
+      "checkout",
+      "error",
+      "declined",
+      "retry",
+      "plain-words",
+      "new"
+    ],
+    "used_for": [
+      "Declined or failed payments \u2014 the honest, calm, actionable failure surface",
+      "Processor timeouts and expired sessions (headline and cause line change; \"no money moved\" only when confirmed)",
+      "Any payment failure where retry needs explicit consent"
+    ],
+    "variants": [
+      "rest (slow red breathe)",
+      "hover (board lifts, edge brightens)",
+      "active (retry press)",
+      "focus-visible (white ring)",
+      "declined / processor-failed / session-expired (named cause, always \"no money moved\" when confirmed)",
+      "charge-state-unknown (\"Check status\" instead of \"Try again\" \u2014 never guesses)",
+      "retry-in-flight (button disabled, \"Trying again\u2026\")"
+    ],
+    "visual_description": "A red-tone board breathing on a slow 6s loop \u2014 urgency, not alarm: red edge and glow, never a flood, never flashing. Plain-words headline (\"That didn't go through\") with \"no money moved\" in the first line, three concrete next-steps with jewel bullets, a small monospace reference code for the bank call, and \"Try again\" as the chrome-purple primary action. role=\"alert\"."
+  },
+  {
+    "category": "checkout",
+    "id": "PAY-005",
+    "name": "Payment method picker",
+    "source_file": "gap-blocks/checkout-blocks.md",
+    "status": "NEW",
+    "subcategory": "picker",
+    "tags": [
+      "checkout",
+      "payment",
+      "picker",
+      "methods",
+      "saved-card",
+      "privacy",
+      "new"
+    ],
+    "used_for": [
+      "The \"which card?\" step for accounts with saved payment methods",
+      "Anywhere a stored-method choice must obey the privacy boundary: last-4 plus brand only, exactly as the backend returns masked"
+    ],
+    "variants": [
+      "rest",
+      "hover (row lifts 2px, ignites purple; new-card row's \u2192 nudges)",
+      "active (row press)",
+      "focus-within (white ring)",
+      "selected (.is-selected: purple edge, wash, glow, check orb)",
+      "empty (no saved methods: the new-card row becomes the whole picker, pre-highlighted)"
+    ],
+    "visual_description": "Saved cards as full-row radio labels: brand jewel orb in the brand's own color (Visa blue, Mastercard orange, Amex emerald), last-4 plus expiry, one gold \"Default\" chip. The selected row ignites purple \u2014 choosing intelligence \u2014 with a \u2713 check orb fading in. A dashed \"Use a new card\" row hands off to PAY-002. Never shows full numbers."
+  }
+]

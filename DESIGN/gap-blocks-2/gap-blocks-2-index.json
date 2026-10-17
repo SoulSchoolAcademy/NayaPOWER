@@ -1,0 +1,277 @@
+[
+ {
+  "category": "comments",
+  "id": "CMT-001",
+  "name": "Comment thread",
+  "source_file": "gap-blocks-2/comments-blocks.md",
+  "status": "NEW",
+  "subcategory": "thread",
+  "tags": [
+   "comments",
+   "thread",
+   "replies",
+   "nesting",
+   "timestamps",
+   "new"
+  ],
+  "used_for": [
+   "The full conversation surface — composer, comments, nested replies, collapse",
+   "Anywhere replies nest: threads cap at 3 levels, then a stated “Continue thread” panel",
+   "Honest empty threads and removed-comment tombstones"
+  ],
+  "variants": [
+   "rest",
+   "hover (rail ignites in depth color, actions lift)",
+   "active (press)",
+   "focus-visible (white ring)",
+   "collapsed (honest reply count)",
+   "continue-thread (depth cap 3, nested board)",
+   "composer focus (purple ignition)",
+   "composer disabled (empty — truly inert)",
+   "tombstone (removed)",
+   "empty thread"
+  ],
+  "visual_description": "A full comment thread on black ground: composer on top (avatar jewel, dark field, 52px Post button disabled until there is text), then comments — avatar diamond jewels with serif initials, serif display names, plain-words timestamps (“2h ago”, “Mar 4”) over real datetimes, and reply/love/share action pills. Replies nest under 2px rails walking the Strip (magenta → purple → blue) to a hard depth cap of 3; deeper replies continue in a dashed “Continue thread — 3 more replies” panel labeled “depth capped at 3”. Collapse chevrons (44px) fold replies with honest counts; removed comments become dashed tombstones (“This comment was removed.”); an empty thread centers a jewel over “No comments yet / Say the first true thing.”"
+ },
+ {
+  "category": "comments",
+  "id": "CMT-002",
+  "name": "Single comment",
+  "source_file": "gap-blocks-2/comments-blocks.md",
+  "status": "NEW",
+  "subcategory": "comment",
+  "tags": [
+   "comments",
+   "comment",
+   "avatar",
+   "actions",
+   "new"
+  ],
+  "used_for": [
+   "The atomic comment object — the building block CMT-001 is made of",
+   "Anywhere one comment renders alone: feeds, quotes, previews",
+   "Long bodies with honest four-line clamp and “Show more”"
+  ],
+  "variants": [
+   "rest",
+   "hover (lifts 4px, edge brightens)",
+   "active (press)",
+   "focus-visible (white ring)",
+   "love on (held pink, filled heart, aria-pressed true)",
+   "clamped body (Show more / Show less)",
+   "disabled action (truly inert)"
+  ],
+  "visual_description": "One comment fully dressed on a dark board: a 52px avatar diamond jewel (white → tone → black radial, serif initials, author's stable color glow), serif 18px display name with a plain-words timestamp, body at white 96%, and a reply/love/share action row of 44px pills — reply ignites chrome-purple, love ignites pink and toggles with a filled heart and tabular count, share ignites blue. Long bodies clamp at four lines with an honest “Show more” button (full text stays in the accessibility tree). The love count is the same number as the reaction row's love pill — one truth, rendered twice."
+ },
+ {
+  "category": "comments",
+  "id": "CMT-003",
+  "name": "Reaction row",
+  "source_file": "gap-blocks-2/comments-blocks.md",
+  "status": "NEW",
+  "subcategory": "reactions",
+  "tags": [
+   "comments",
+   "reactions",
+   "pills",
+   "toggle",
+   "new"
+  ],
+  "used_for": [
+   "The play layer under any comment — opt-in, toggleable, honest counts",
+   "Reactions anywhere in the product: same fixed set, same colors, same rules",
+   "Anywhere delight must never become a status game (no badges, no streaks)"
+  ],
+  "variants": [
+   "rest (1.5px edge in reaction color)",
+   "hover (lift + own-color glow)",
+   "active (press)",
+   "focus-visible (white ring)",
+   "mine (held glow + wash + filled glyph)",
+   "add popover (five reactions, wheel order)",
+   "zero count (pill absent — never rendered)"
+  ],
+  "visual_description": "A row of jewel reaction pills on black: each pill carries a drawn SVG glyph and an honest count in tabular numerals, edged 1.5px in its fixed wheel color — love pink #ed58cd, celebrate magenta #e84fff, thoughtful purple #a06bff, agree blue #3fb8ff, laugh green #2fe89e. Pills lift 2px and glow in their own color on hover; your reaction holds its glow with a filled glyph. A dashed 44px plus opens an elevated popover with the fixed five in wheel order. Zero-count reactions are absent, never grayed out; reactor names (display names only) live in the title and are droppable. No badges, no streaks, no leaderboards."
+ },
+ {
+  "category": "chat",
+  "id": "CHT-003",
+  "name": "Chat bubbles (in/out)",
+  "source_file": "gap-blocks-2/chat-blocks.md",
+  "status": "NEW",
+  "subcategory": "message",
+  "tags": [
+   "chat",
+   "message",
+   "bubble",
+   "receipts",
+   "new"
+  ],
+  "used_for": [
+   "The atomic message object in any conversation surface",
+   "Grouped threads with collapsing avatars and single timestamps",
+   "Honest read receipts driven only by transport truth (sent/delivered/read)"
+  ],
+  "variants": [
+   "rest (incoming white-lit edge / outgoing held purple edge)",
+   "hover (lift 2px, ignite own side color)",
+   "press (settle 1px)",
+   "grouped (avatar hidden, tightened corners, one tail)",
+   "receipts: sending / sent / delivered / read (gold SEEN)",
+   "edited (italic honesty tag)"
+  ],
+  "visual_description": "The atomic message object: incoming bubbles on the left in dark board with 1.5px white-lit edges and left tails; outgoing on the right in dark with a held purple edge, soft purple under-glow, and right tails. 36px lit avatar orbs (blue incoming, purple outgoing); consecutive same-sender messages collapse into groups with one avatar and tightened corners. Read receipts are drawn SVG ticks in four forward-only truth-states — sending, sent, delivered, read (double gold tick plus gold \"SEEN\") — never shown before the other side renders."
+ },
+ {
+  "category": "chat",
+  "id": "CHT-004",
+  "name": "Typing indicator",
+  "source_file": "gap-blocks-2/chat-blocks.md",
+  "status": "NEW",
+  "subcategory": "presence",
+  "tags": [
+   "chat",
+   "typing",
+   "indicator",
+   "presence",
+   "new"
+  ],
+  "used_for": [
+   "Showing someone is about to speak — only while a live signal says so",
+   "Calm ambient liveness in a conversation (72bpm pulse, never jittery)",
+   "The auto-dismiss contract: 30s with no keep-alive, the dots honestly leave"
+  ],
+  "variants": [
+   "rest (three white dots breathing at 72bpm)",
+   "live (quarter-beat stagger, left-to-right breath)",
+   "keep-alive (invisible — dots simply continue)",
+   "watchdog expiry (fades, unmounts, fires chat:typing-expired)",
+   "message arrival (replaced by the real message)",
+   "reduced-motion (steady dots)"
+  ],
+  "visual_description": "Three living dots in the incoming bubble shell (dark gradient, white-lit edge, left tail): 9px white orbs breathing at 72bpm with a quarter-beat stagger so the pulse travels left to right like a breath. A 12px \"Sam is typing\" line sits beneath for eyes that miss motion and for screen readers (role=status, aria-live=polite). Rendered only through chatTyping.show with a live signal id — the code throws on fake typing — and a non-negotiable 30s watchdog dismisses the dots when no keep-alive and no message arrive."
+ },
+ {
+  "category": "chat",
+  "id": "CHT-005",
+  "name": "Message list",
+  "source_file": "gap-blocks-2/chat-blocks.md",
+  "status": "NEW",
+  "subcategory": "conversation",
+  "tags": [
+   "chat",
+   "conversation",
+   "list",
+   "scroll",
+   "empty-state",
+   "new"
+  ],
+  "used_for": [
+   "The conversation room — bubbles day-grouped under serif date dividers",
+   "The honest scroll contract: stick to bottom only if the reader is already there",
+   "Empty and loading states that never fake content"
+  ],
+  "variants": [
+   "rest (board, header, scroll region, serif dividers)",
+   "new message at bottom (glides with the reader)",
+   "new message up-list (pill appears, list never yanks)",
+   "scroll pill (44px real button, honest count badge)",
+   "empty state (\"No messages yet — say the first word.\")",
+   "loading (one breathing orb, words not fake bubbles)",
+   "presence line (live feed only)"
+  ],
+  "visual_description": "The conversation as a room: a deep-black 5-layer board with a warm front-door header (44px avatar orb, serif room name, live-only presence line), a 480px scroll region holding CHT-003 bubbles day-grouped under serif uppercase date dividers with fading hairline rules. The scroll contract is measured before every append — at bottom, the list glides; up-list, a sticky 44px chrome-igniting pill with an honest count badge appears and the reader is never yanked. The empty state centers a purple jewel over serif \"No messages yet\" and \"Say the first word.\"; loading shows one breathing orb and the sentence \"Loading your messages…\", never fake message-shaped skeletons."
+ },
+ {
+  "category": "onboarding",
+  "id": "ONB-001",
+  "name": "Stepper",
+  "source_file": "gap-blocks-2/onboarding-blocks.md",
+  "status": "NEW",
+  "subcategory": "stepper",
+  "tags": [
+   "onboarding",
+   "stepper",
+   "progress",
+   "steps",
+   "jewels",
+   "new"
+  ],
+  "used_for": [
+   "The multi-step progress rail — where the user is in a flow, at a glance",
+   "Done/current/locked steps with a spectrum thread that fills as you advance",
+   "Honest optional steps and one-job-per-step labeling"
+  ],
+  "variants": [
+   "rest",
+   "hover (step lifts 2px, node ignites in its own step color)",
+   "active (node brightens on press)",
+   "current (held ignition + 3s breathe)",
+   "locked (34% opacity, disabled, inert)",
+   "empty (honest \"No steps yet\" panel)"
+  ],
+  "visual_description": "A five-step progress rail on black ground: a dark thread with a spectrum-strip fill (magenta to gold) walking the 5-stop law order behind five rotated-diamond jewel nodes in each step's own color. Done nodes show a drawn white check; the current node (step 3, blue) breathes with a held ignition and a \"You are here\" marker; locked steps 4 and 5 sit dim and inert. Each step carries a serif title, a status with a jewel dot, a letterspaced \"OPTIONAL\" chip where skippable, and a one-line \"One job\" caption. The thread fill is derived from the current step's real index."
+ },
+ {
+  "category": "onboarding",
+  "id": "ONB-002",
+  "name": "Welcome card",
+  "source_file": "gap-blocks-2/onboarding-blocks.md",
+  "status": "NEW",
+  "subcategory": "welcome",
+  "tags": [
+   "onboarding",
+   "welcome",
+   "first-run",
+   "greeting",
+   "naya-face",
+   "new"
+  ],
+  "used_for": [
+   "The first-run greeting board — Naya's face, one warm line, one next action",
+   "Personal-without-creepy greetings (name only when the app supplies it)",
+   "Any first-run moment with exactly one job"
+  ],
+  "variants": [
+   "rest (halo breathe)",
+   "hover (board lifts 5px, ignites chrome-purple)",
+   "active (CTA press)",
+   "focus-visible (white ring)",
+   "quiet exit (\"I'll explore on my own\")",
+   "nameless default (no invented name)"
+  ],
+  "visual_description": "A centered 5-layer-shadow board on black ground: Naya's drawn face at top — a lit orb (white to purple to black radial gradient) with two catchlit eyes, one calm arc smile, and a slow-breathing halo glow — above a letterspaced \"First run\" kicker, a 32px Georgia \"Welcome.\" headline, one warm 15px line in her voice, a single 52px black CTA button (\"Begin the tour\" with a drawn arrow glyph), one quiet underlined exit link, and the honesty footnote \"This card knows only what you've told it.\""
+ },
+ {
+  "category": "onboarding",
+  "id": "ONB-003",
+  "name": "Progress indicator",
+  "source_file": "gap-blocks-2/onboarding-blocks.md",
+  "status": "NEW",
+  "subcategory": "indicator",
+  "tags": [
+   "onboarding",
+   "progress",
+   "percent",
+   "bar",
+   "ring",
+   "celebration",
+   "new"
+  ],
+  "used_for": [
+   "Progress as honest truth — percent, fill, ring offset and aria-valuenow from one source",
+   "Linear bar and 168px ring variants for any measurable flow",
+   "Completion moments that deserve one ignition, then calm",
+   "Genuinely unmeasurable work (honest indeterminate state)"
+  ],
+  "variants": [
+   "rest (serif percent breathes on 4s loop)",
+   "hover (board lifts 3px, ring glows)",
+   "zero (\"Ready when you are\")",
+   "complete (one 1.1s gold ignition, then calm)",
+   "indeterminate (\"No number yet\" + drifting spectrum, never a fake percent)",
+   "reduced-motion (ignition, breathe, drift off)"
+  ],
+  "visual_description": "A dark board holding an honest progress readout: an uppercase letterspaced job label beside a large breathing Georgia percent, a 12px inset track with a spectrum-strip fill (magenta to gold, resolving to gold at 100%), and a \"5 of 8 done\" sub-count as the number's receipt. A 168px ring variant walks the same gradient around an 11px stroke with the serif number centered. At 100% exactly one 1.1s gold ignition fires, then the block settles calm — no confetti, no encore. The indeterminate state shows a soft drifting spectrum band labeled \"No number yet\" in plain words."
+ }
+]

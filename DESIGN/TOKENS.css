@@ -1,0 +1,144 @@
+/* ============================================================================
+   NAYA DESIGN TOKENS — canonical :root
+   Source: Naya_Epic_Elements_-_Lego_pieces_N5.html (N5 generation, newest)
+   Copied verbatim. Do not edit values here — rulings live in DECISIONS.md.
+   Usage: <link rel="stylesheet" href="DESIGN/TOKENS.css"> then build with
+   var(--token) references only. A page with a private color is drift.
+   ========================================================================== */
+
+:root {
+  /* The field — the world. Deep, never gray. */
+  --field: #050507;
+  --obsidian: #0B0D12;
+  --raise: #10141d;
+  --card: #141a28;
+  --deep: #0a0e16;
+
+  /* The light — text 99% of the time. Every idle rim. */
+  --white: #F8F7FB;
+  --ink: #F5F7FB;
+  --quiet: rgba(248,247,251,.72);
+  --secondary: rgba(248,247,251,.55);
+  --line: rgba(255,255,255,.12);
+
+  /* The soul — chrome accent. Naya's presence. Never a flood. */
+  --soul: #a06bff;
+
+  /* The spectrum — in law order. Richest first, ultra-rich magenta leading. */
+  --magenta: #e84fff;  /* The living edge. Leads every flow. */
+  --purple: #a06bff;   /* Choosing intelligence. The soul. */
+  --blue: #3fb8ff;     /* Knowledge moving. */
+  --green: #2fe89e;    /* Alive and well. */
+  --gold: #ffbf3d;     /* Attention, earned. */
+
+  /* Spectrum RGB triplets — for rgba() glows */
+  --magenta-rgb: 232,79,255;
+  --purple-rgb: 160,107,255;
+  --blue-rgb: 63,184,255;
+  --green-rgb: 47,232,158;
+  --gold-rgb: 255,191,61;
+
+  /* Extended family */
+  --teal: #40d3bb;
+  --teal-rgb: 64,211,187;
+  --coral: #ff5e6c;
+  --coral-rgb: 255,94,108;
+  --lime: #b8ee57;
+  --lime-rgb: 184,238,87;
+  --indigo: #6675ff;
+  --indigo-rgb: 102,117,255;
+  --orange: #ff9a5a;            /* room accent: connections. Verified in Smart Hub source. */
+  --orange-rgb: 255,154,90;
+  --rich-orange: #ff7a3d;   /* room accent: mail. Verified in Smart Hub source. */
+  --rich-orange-rgb: 255,122,61;
+
+  /* Truth states — a claim and a proof must never look the same */
+  --verified: #2fe89e;
+  --verified-rgb: 47,232,158;
+  --claim: #ffbf3d;
+  --claim-rgb: 255,191,61;
+  --demo: #e84fff;
+  --demo-rgb: 232,79,255;
+
+  /* Motion */
+  --ease: cubic-bezier(.22,1,.36,1);
+  --snap: cubic-bezier(.32,.72,0,1);
+
+  /* Elevation */
+  --lift: 0 18px 50px rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.4);
+  --ring: 0 0 0 2px rgba(160,107,255,.35);
+
+  /* Radii */
+  --r-sm: 11px;
+  --r-md: 13px;
+  --r-lg: 18px;
+  --r-xl: 26px;
+  --r-pill: 999px;
+
+  /* Spacing — 4px base. Grounded: the N5 source's padding/gap values cluster
+     on 4px multiples (8/12/16/20/24/28/32/40/44/64). Spacing is rhythm, not
+     decoration: consistent steps make unrelated pages feel like one system. */
+  --space-base: 4px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 28px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-11: 44px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  /* Semantic gaps — the three distances a page needs */
+  --gap-sm: var(--space-2);    /* 8px — inside components */
+  --gap-md: var(--space-4);    /* 16px — between components */
+  --gap-lg: var(--space-6);    /* 24px — between sections */
+  --gap-xl: var(--space-8);    /* 32px — major separations */
+
+  /* Per-room accents — one room, one spectrum color. Verified verbatim
+     against the Smart Hub applied source (2026-10-16). */
+  --accent-feed: var(--green);
+  --accent-today: var(--magenta);
+  --accent-reports: var(--indigo);
+  --accent-library: var(--blue);
+  --accent-connect: var(--teal);
+  --accent-ledger: var(--gold);
+  --accent-connections: var(--orange);
+  --accent-lists: var(--purple);
+  --accent-mail: var(--rich-orange);
+  --accent-spaces: var(--lime);
+  --accent-settings: #e8eaf2;
+
+  /* Type scale — size separates, color doesn't.
+     NOTE: the working scale is Law 52 (see below). These display tokens
+     are for hero/chapter contexts only. */
+  --type-display: 64px;
+  --type-chapter: 40px;
+  --type-headline: 24px;
+  --type-body: 18px;
+  --type-small: 14px;
+
+  /* Fonts — voice serif ruling 2026-10-16: Newsreader via Google Fonts CDN,
+     Georgia guaranteed fallback (see Law 52 note below). */
+  --font-ui: Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-voice: "Newsreader", Georgia, "Times New Roman", serif;
+}
+
+/* ============================================================================
+   LAW 52 — the working type scale (Naya_2 canonical, governs all UI text).
+   Display 32–40 / Headline 22–28 / Body 15–17 (line-height 1.45–1.6) /
+   Detail 12–13 (never below 12px) / Kicker 11 uppercase tracked.
+   Titles white, body silver, detail muted slate. Serif for voice/display
+   only; sans for UI/body/data. Nothing readable ever goes below 12px.
+   Fonts: UI/body = Inter, ui-sans-serif, system-ui, sans-serif.
+          Voice/display = Newsreader (opsz), Georgia fallback.
+   RULING (2026-10-16, DECISIONS.md): Newsreader is the voice serif, loaded
+   via Google Fonts CDN (reliable, versioned). Georgia is the guaranteed
+   fallback — in any context where webfonts are unavailable, Georgia stands
+   alone as the voice serif and the system does not degrade. Token:
+   --font-voice: "Newsreader", Georgia, "Times New Roman", serif.
+   --font-ui: Inter, ui-sans-serif, system-ui, sans-serif.
+   ========================================================================== */
