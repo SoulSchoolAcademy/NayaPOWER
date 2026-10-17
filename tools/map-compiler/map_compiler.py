@@ -315,6 +315,27 @@ def probe_capture(cfg):
     return {"status": status, "evidence": evidence, "measured_at": now_iso()}
 
 
+def dock_pr_status(pr_state, merged, ci_state):
+    """Honesty-critical dock PR state mapping (pure function, regression-tested).
+
+    merged              -> green   (the planned work landed)
+    open (any CI state) -> amber   (in flight: waiting on review/merge, or needs work)
+    closed, not merged  -> red     (rejected/abandoned — never green, even with green CI)
+    anything else       -> unknown (loud unknown, never silent green)
+    """
+    if merged:
+        return "green"
+    if pr_state == "open":
+        # amber whether CI is green (waiting on review/merge) or not (needs work)
+        return "amber"
+    if pr_state == "closed":
+        # closed WITHOUT merge: the planned work did not land.
+        # Never green — a rejected/abandoned dock item is a red flag,
+        # not a quiet pass.
+        return "red"
+    return "unknown"
+
+
 def probe_dock(cfg):
     """States + CI of the dock PRs."""
     token = cfg.get("gh_token", "")
@@ -344,19 +365,7 @@ def probe_dock(cfg):
             ci_state = "pending"
         state = pr["state"]
         merged = bool(pr.get("merged"))
-        if merged:
-            ps = "green"  # merged: the planned work landed
-        elif state == "open" and ci_state == "green":
-            ps = "amber"  # open, CI green — waiting on review/merge
-        elif state == "open":
-            ps = "amber"  # open, CI not green — needs work
-        elif state == "closed":
-            # closed WITHOUT merge: the planned work did not land.
-            # Never green — a rejected/abandoned dock item is a red flag,
-            # not a quiet pass.
-            ps = "red"
-        else:
-            ps = "unknown"
+        ps = dock_pr_status(state, merged, ci_state)
         if order[ps] > order[worst]:
             worst = ps
         rows.append(f"#{num} {state}{' (merged)' if merged else ''} (CI {ci_state})")
