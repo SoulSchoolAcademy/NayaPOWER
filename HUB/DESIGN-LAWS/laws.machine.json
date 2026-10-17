@@ -1,0 +1,330 @@
+{
+  "amendment_protocol": "amend by scored evidence only; PR against HUB/DESIGN-LAWS/ with scorecard attached",
+  "board": {
+    "anatomy_order": [
+      "rail",
+      "wash",
+      "identity_row",
+      "headline",
+      "meta",
+      "nutshell",
+      "layers",
+      "actions",
+      "provenance_footer"
+    ],
+    "headline": {
+      "letter_spacing_em": -0.055,
+      "line_height": 1.0,
+      "max_width_px": 820,
+      "size": "clamp(30px, 3.6vw, 50px)",
+      "weight": 800
+    },
+    "inner_max_width_px": [
+      860,
+      980
+    ],
+    "layout": "full-bleed section, never grid card",
+    "max_layers": 3,
+    "nutshell": {
+      "color": "#eeeaf2",
+      "line_height": 1.7,
+      "max_words": 60,
+      "paragraphs": 1,
+      "size_px": 17,
+      "well": {
+        "background": "#08080d",
+        "border": "2px solid #ffffff16",
+        "radius_px": 18
+      }
+    },
+    "padding_desktop": "46px 42px 50px 46px",
+    "padding_mobile": "36px 24px",
+    "separator": "1px solid #ffffff12",
+    "text_floor_px": 10
+  },
+  "button": {
+    "flat_banned": true,
+    "hierarchy": {
+      "ghost": "quiet/secondary, no glow until hover",
+      "primary_catch": {
+        "background": "linear-gradient(145deg,#ffe1a1,#e8c766 60%,#c79a35)",
+        "border": "2px solid #e8c76688",
+        "max_per_viewport": 1,
+        "text": "#1a1206"
+      },
+      "standard": "see standard"
+    },
+    "on_states": {
+      "ask": {
+        "background": "tone@16%",
+        "border": "var(--tone)",
+        "text": "#ffffff"
+      },
+      "default": {
+        "background": "#0a1710",
+        "border": "#55e39a",
+        "text": "#c9ffdf"
+      },
+      "love": {
+        "background": "#170a0d",
+        "border": "#ff5e6c",
+        "text": "#ffb4bd"
+      }
+    },
+    "standard": {
+      "background": "linear-gradient(145deg, #14131c, #08080c)",
+      "border": "2px solid #8b63ff55",
+      "hover": {
+        "border_color": "var(--tone)",
+        "glow": "0 0 24px tone@28%",
+        "translateY_px": -2
+      },
+      "label": {
+        "letter_spacing_em": 0.1,
+        "size_px": 10,
+        "weight": 800
+      },
+      "min_height_px": 44,
+      "padding": "0 18px",
+      "radius_px": 12,
+      "shadow": "inset 0 1px #fff3, 0 8px 18px #0007",
+      "sheen": "radial-gradient(circle at 50% 0%, #fff7, transparent 30%)"
+    }
+  },
+  "glyph": {
+    "background": "radial-gradient(circle at 35% 30%, color-mix(in srgb, var(--tone) 26%, transparent), #09090e 72%)",
+    "border": "2px solid color-mix(in srgb, var(--tone) 55%, #fff 10%)",
+    "icon": {
+      "color": "var(--tone)",
+      "size_px": [
+        24,
+        26
+      ],
+      "stroke": [
+        1.7,
+        1.8
+      ]
+    },
+    "radius_px": [
+      14,
+      15
+    ],
+    "shadow": "inset 0 1px #fff4, 0 10px 26px #0009, 0 0 22px tone@22%",
+    "size_px": [
+      45,
+      52
+    ]
+  },
+  "motion": {
+    "decorative_animation": "banned",
+    "ease": "cubic-bezier(.16,.84,.22,1)",
+    "hover_lift_px": -2,
+    "micro_s": 0.2,
+    "overlay_s": 0.32,
+    "reduced_motion": "all transitions/animations none"
+  },
+  "precedence": [
+    "law-zero",
+    "design-north-star",
+    "design-laws-v1",
+    "room-specs"
+  ],
+  "reference_implementation": "workspace/your_files/smart-feed-blueprint/smart-feed.html \u2014 faithful restoration of the canonical V7 page (9 canonical blocks, 10-layer stack), NOT a redesign; redesigns require the director's explicit word",
+  "schema": "nayanet.design-laws.v1",
+  "scorecard": {
+    "bar": 9.0,
+    "deductions": {
+      "flat_button": -2,
+      "gold_violation": -2,
+      "missing_provenance": -1,
+      "text_under_10px": -2,
+      "two_tones_one_board": -1
+    },
+    "dimensions": [
+      "per_board_theming",
+      "button_premiumness",
+      "color_flow",
+      "text_density",
+      "board_elevation",
+      "room_completeness",
+      "naya_presence",
+      "proof"
+    ]
+  },
+  "spectrum_semantics": {
+    "blue": {
+      "hex": "#55b9ee",
+      "meaning": "law \u00b7 truth \u00b7 clarity"
+    },
+    "gold": {
+      "hex": "#e8c766",
+      "meaning": "memory \u00b7 milestone \u00b7 precious",
+      "restraint": "never body text; max one gold-dominant board per viewport; never outshine purple"
+    },
+    "green": {
+      "hex": "#55e39a",
+      "meaning": "alive \u00b7 verified \u00b7 growing"
+    },
+    "indigo": {
+      "hex": "#6675ff",
+      "meaning": "depth \u00b7 ambient",
+      "restraint": "background washes only"
+    },
+    "magenta": {
+      "hex": "#ff4fd8",
+      "meaning": "collective \u00b7 network"
+    },
+    "red": {
+      "hex": "#ff5e6c",
+      "meaning": "alert \u00b7 honest gap"
+    }
+  },
+  "tokens": {
+    "bg": "#050507",
+    "blue": "#55b9ee",
+    "ease": "cubic-bezier(.16,.84,.22,1)",
+    "faint": "#6f6976",
+    "gold": "#e8c766",
+    "green": "#55e39a",
+    "indigo": "#6675ff",
+    "ink": "#f8f7fb",
+    "line": "rgba(255,255,255,.09)",
+    "magenta": "#ff4fd8",
+    "muted": "#aaa4b1",
+    "purple": "#9d75ff",
+    "red": "#ff5e6c"
+  },
+  "tone_flow": {
+    "carriers": [
+      "rail",
+      "wash",
+      "glyph",
+      "layer_borders",
+      "action_hovers",
+      "truth_accents"
+    ],
+    "min_carriers": 4,
+    "rail": {
+      "glow": "0 0 20px tone@40%",
+      "gradient": "linear-gradient(var(--tone), transparent)",
+      "width_px": 2
+    },
+    "tones_per_board": 1,
+    "wash": {
+      "gradient": "radial-gradient(800px 280px at 72% 0%, tone@7-8%, transparent 70%)",
+      "pointer_events": "none"
+    }
+  },
+  "truth_seals": {
+    "LOCAL_DRAFT": {
+      "border": "#55b9ee55",
+      "tone": "blue"
+    },
+    "NOT_VERIFIED": {
+      "border": "#e8c76655",
+      "tone": "gold"
+    },
+    "VERIFIED": {
+      "border": "#55e39a55",
+      "tone": "green"
+    }
+  },
+  "type": {
+    "converse": {
+      "line_height": [
+        1.6,
+        1.7
+      ],
+      "size_px": [
+        16,
+        18
+      ]
+    },
+    "floor_px": 10,
+    "proclaim": {
+      "letter_spacing_em": -0.055,
+      "size": "clamp(30px, 3.6vw, 50px)",
+      "weight": 800
+    },
+    "whisper": {
+      "letter_spacing_em": [
+        0.24,
+        0.3
+      ],
+      "size_px": [
+        10,
+        11
+      ],
+      "weight": 800
+    }
+  },
+  "version": "1.2.0",
+  "layers": {
+    "order": [
+      "human",
+      "child",
+      "grandma",
+      "naya",
+      "machine",
+      "learning",
+      "meaning",
+      "foryou",
+      "howto",
+      "connects"
+    ],
+    "spec": {
+      "human": {
+        "name": "HUMAN NOTE",
+        "color": "#9d75ff",
+        "state": "HUMAN INPUT"
+      },
+      "child": {
+        "name": "CHILD NOTE",
+        "color": "#6675ff",
+        "state": "SIMPLIFIED"
+      },
+      "grandma": {
+        "name": "GRANDMA NOTE",
+        "color": "#55b9ee",
+        "state": "WHY LOOK"
+      },
+      "naya": {
+        "name": "NAYA NOTE",
+        "color": "#55e39a",
+        "state": "INTERPRETATION"
+      },
+      "machine": {
+        "name": "MACHINE NOTE",
+        "color": "#26c875",
+        "state": "EVIDENCE BOUNDARY"
+      },
+      "learning": {
+        "name": "LEARNING LESSON",
+        "color": "#b8ee57",
+        "state": "LEARNING"
+      },
+      "meaning": {
+        "name": "WHAT IT MEANS",
+        "color": "#f1d75a",
+        "state": "SIGNIFICANCE"
+      },
+      "foryou": {
+        "name": "WHAT'S IN IT FOR YOU?",
+        "color": "#e8c766",
+        "state": "HUMAN VALUE"
+      },
+      "howto": {
+        "name": "HOW TO USE",
+        "color": "#55b9ee",
+        "state": "ACTION GUIDANCE"
+      },
+      "connects": {
+        "name": "HOW IT ALL CONNECTS",
+        "color": "board --tone",
+        "state": "CONNECTIONS"
+      }
+    },
+    "rule": "every board carries the full stack; differentiation via tone + content, never by dropping layers",
+    "dot": "layer canonical color with glow; container border = board tone, shifting to layer color on open"
+  }
+}
