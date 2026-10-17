@@ -12,11 +12,15 @@ name: Receipt pin gate
 # Scope: PRs from lane branches (head ref starts with `naya/`) targeting
 # main. Lane branches are where the Scorecard Law's receipt discipline is
 # enforced; everything else is governed by the merge-consensus gate.
+#
+# Trigger note: `edited` is load-bearing. A receipt fix is a BODY edit, not a
+# push — without `edited`, a fixed receipt never re-ran this gate until the
+# next push. (`reopened` matches the consensus gate's trigger set.)
 
 on:
   pull_request:
     branches: [main]
-    types: [opened, synchronize]
+    types: [opened, synchronize, reopened, edited]
 
 # Least privilege: the gate reads the PR body and the repo's own tools.
 # Declared explicitly so a future default restriction cannot silently 403
@@ -32,11 +36,41 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Read live PR body (fail-closed)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          set -euo pipefail
+          # STALE-PAYLOAD CLASS (proven w181): github.event's pull_request.body
+          # is frozen at trigger time. A body edit made after the run started
+          # — or a manual re-run of this run — would evaluate a STALE copy,
+          # so a fixed receipt could never turn this gate green. Read the
+          # LIVE body: the gate always judges what the PR says NOW. Retry
+          # with backoff: quota weather must not flip a receipt verdict
+          # (consensus-gate pattern). API failure after retries fails CLOSED
+          # with plain words — never a silent stale read.
+          OK=0
+          LIVE_BODY=""
+          for attempt in 1 2 3 4 5; do
+            if LIVE_BODY=$(gh api "repos/${{ github.repository }}/pulls/$PR_NUMBER" --jq '.body // ""' 2>/dev/null); then
+              OK=1
+              break
+            fi
+            echo "live-body fetch attempt $attempt failed, retrying..." >&2
+            sleep $((attempt * 10))
+          done
+          if [ "$OK" != "1" ]; then
+            echo "ERROR: could not read live PR body for PR #$PR_NUMBER after 5 attempts (API unavailable — this is not a receipt verdict)" >&2
+            exit 1
+          fi
+          printf '%s' "$LIVE_BODY" > /tmp/pr-body.md
+          echo "live PR body read (${#LIVE_BODY} bytes) for PR #$PR_NUMBER"
+
       - name: Enforce exact-head receipt pin (fail-closed)
         env:
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
           HEAD_REF: ${{ github.event.pull_request.head.ref }}
-          PR_BODY: ${{ github.event.pull_request.body }}
         run: |
           set -euo pipefail
 
@@ -53,7 +87,8 @@ jobs:
           # Rung 1 — PR body: the receipt must pin the exact PR head SHA.
           # Missing block -> MISSING, malformed fields -> TAMPERED,
           # pin != head SHA -> STALE. Any of those FAILS this check.
-          printf '%s' "$PR_BODY" > /tmp/pr-body.md
+          # /tmp/pr-body.md carries the LIVE body (previous step) — never
+          # the trigger-time event payload.
           python3 tools/check_scorecard_receipt_pin.py \
             "$HEAD_SHA" /tmp/pr-body.md \
             --pr-state-out /tmp/pr-state.json
