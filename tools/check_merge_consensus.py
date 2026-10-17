@@ -14,6 +14,8 @@ Seat identity: the team shares one GitHub account, so GitHub logins cannot
 distinguish seats. Seats are identified by signed tags instead:
   - PR body must declare:  Seat: Naya N   (a numeric seat, e.g. "Naya 2",
     or one of the 12 named seats — Alpha..Mu, e.g. "Seat: Naya Epsilon")
+    The 12 lane seats (Shawn, 2026-10-14) declare as
+    "Seat: Lane N (Naya Name)" (e.g. "Seat: Lane 8 (Naya Sentinel)").
   - Reviewer posts a comment:  [NAYA M · REVIEW] ... APPROVED ...
     (the team's IV sign-out verdict format — "## VERDICT: MERGE RECOMMENDED"
     with a seat tag — is also accepted as a review)
@@ -45,6 +47,12 @@ Local pre-verification (zero API — costs no gh-api budget):
 checks a draft scorecard receipt file against the gate's own matcher before
 posting: exit 0 = the gate would accept it, exit 1 = it would not (with the
 missing piece named). Exit 2 = usage error.
+  python3 check_merge_consensus.py --self-test-pr-body <pr-body-file>
+checks a draft PR body for a gate-parseable author-seat declaration before
+the PR is opened (gap-t1442 follow-up: the declaration check runs at brief
+time, not after a red CI run): exit 0 = the declaration parses, exit 1 =
+missing or unparseable (with the accepted forms named). Exit 2 = usage
+error.
 """
 import json
 import os
@@ -64,6 +72,27 @@ _NAMED_SEATS = ("alpha", "beta", "gamma", "delta", "epsilon", "zeta",
                 "eta", "theta", "iota", "kappa", "lambda", "mu")
 _SEAT_ID = r"(?:([12345])|(" + "|".join(_NAMED_SEATS) + r"))"
 SEAT_RE = re.compile(r"naya\s*" + _SEAT_ID + r"\b", re.I)
+# The 12 lane seats (Shawn, 2026-10-14): Verity, Sage, Judge, Mason, Seeker,
+# Heir, Conductor, Sentinel, Smith, Librarian, Heart, Herald. On scorecard
+# receipts they sign as "[LANE N · Naya Name]" (e.g. "[LANE 8 · Naya
+# Sentinel]"); as the PR author they declare "Seat: Lane N (Naya Name)".
+# The middle-dot separators seen in the wild (gap-t1442, 2026-10-12): the
+# middle dot also appears as • - – — | / in practice, so all are accepted.
+# Lane numbers are 1-12 (the legacy "Naya 8" form never existed, so there is
+# no collision with the numeric 1-5 seats).
+_LANE_NAMES = ("verity", "sage", "judge", "mason", "seeker", "heir",
+               "conductor", "sentinel", "smith", "librarian", "heart",
+               "herald")
+_LANE_NUM = r"([1-9]|1[0-2])"
+_LANE_NAME = r"(" + "|".join(_LANE_NAMES) + r")"
+_LANE_SEP = r"[·•\-–—|/]"
+LANE_SCORECARD_TAG_RE = re.compile(
+    r"\[\s*lane\s*" + _LANE_NUM + r"\s*" + _LANE_SEP + r"\s*naya\s+" +
+    _LANE_NAME + r"\s*\]", re.I)
+# The author-seat declaration form used by the lane seats (gap-t1442).
+LANE_AUTHOR_SEAT_RE = re.compile(
+    r"seat\s*:\s*lane\s*" + _LANE_NUM + r"\s*\(\s*naya\s+" +
+    _LANE_NAME + r"\s*\)", re.I)
 # The authoring seat must be an EXPLICIT declaration ("Seat: Naya N"), never
 # an incidental mention: PR bodies routinely discuss other seats ("the Naya 1
 # judge", "needs Naya 2/3/4 review"), and the first incidental match would
@@ -200,18 +229,41 @@ def _normalized_seat(m):
     return "Naya " + m.group(2).lower().capitalize()
 
 
+def _normalized_lane(num, name):
+    """Normalize a 12-lane seat match to 'Lane N (Naya Name)' form:
+    'Lane 8 (Naya Sentinel)'. Numeric 1-12, lane-agent name title-cased."""
+    return f"Lane {int(num)} (Naya {name.lower().capitalize()})"
+
+
 def seat_of(text):
-    """Extract 'Naya N' seat tag from text, or None."""
+    """Extract a seat tag from text, or None. Accepts the legacy
+    'Naya N' / 'Naya Alpha..Mu' forms and the 12-lane '[LANE N · Naya Name]'
+    scorecard tag (and the 'Seat: Lane N (Naya Name)' declaration form —
+    a scorecard comment that declares its lane seat is still a seat tag)."""
     m = SEAT_RE.search(text or "")
-    return _normalized_seat(m) if m else None
+    if m:
+        return _normalized_seat(m)
+    m = LANE_SCORECARD_TAG_RE.search(text or "")
+    if m:
+        return _normalized_lane(m.group(1), m.group(2))
+    m = LANE_AUTHOR_SEAT_RE.search(text or "")
+    if m:
+        return _normalized_lane(m.group(1), m.group(2))
+    return None
 
 
 def author_seat_of(body):
-    """Extract the authoring seat from an explicit 'Seat: Naya N'
-    declaration in the PR body, or None. Incidental seat mentions in prose
-    do not count — authorship is a declaration, not a guess."""
+    """Extract the authoring seat from an explicit 'Seat: Naya N' or
+    'Seat: Lane N (Naya Name)' declaration in the PR body, or None.
+    Incidental seat mentions in prose do not count — authorship is a
+    declaration, not a guess."""
     m = AUTHOR_SEAT_RE.search(body or "")
-    return _normalized_seat(m) if m else None
+    if m:
+        return _normalized_seat(m)
+    m = LANE_AUTHOR_SEAT_RE.search(body or "")
+    if m:
+        return _normalized_lane(m.group(1), m.group(2))
+    return None
 
 
 # --- mention-vs-use hardening (Naya Kappa, 2026-10-13) ---
@@ -306,7 +358,8 @@ def run_gate(token, repo, pr_number, head_sha):
     pr_author_login = (pr["user"]["login"] or "").lower()
     author_seat = author_seat_of(pr.get("body"))
     if not author_seat:
-        fail("PR body must declare the authoring seat ('Seat: Naya N'). "
+        fail("PR body must declare the authoring seat ('Seat: Naya N' or "
+             "'Seat: Lane N (Naya Name)'). "
              "Unattributed work cannot be reviewed. Add the declaration to "
              "the PR body and re-run.")
 
@@ -405,6 +458,37 @@ def self_test_scorecard(path, head_sha):
     return  # exit 0 via normal return
 
 
+def self_test_pr_body(path):
+    """Zero-API pre-verification of a PR body draft against the gate's own
+    author-seat declaration matcher (gap-t1442 follow-up: merge-seat briefs
+    missed the missing body declaration at open time, burning a full CI run
+    on the (a) blocker). Workers run this on their draft PR body BEFORE
+    opening the PR, so a declaration the gate cannot parse costs a local
+    millisecond instead of a red check. Semantics are byte-identical to the
+    gate — it calls author_seat_of itself, never a re-implementation.
+    Exit 0 = declaration parses; exit 1 = it does not."""
+    try:
+        with open(path, "r", encoding="utf-8") as fh:
+            body = fh.read()
+    except OSError as e:
+        fail(f"AUTHOR-SEAT SELF-TEST FAILED: cannot read {path}: {e}")
+    except UnicodeDecodeError as e:
+        fail(f"AUTHOR-SEAT SELF-TEST FAILED: {path} is not UTF-8 text: {e}")
+    seat = author_seat_of(body)
+    if seat:
+        print(f"AUTHOR-SEAT SELF-TEST PASSED: {path} declares {seat}.")
+        return  # exit 0 via normal return
+    print(f"AUTHOR-SEAT SELF-TEST FAILED: {path}")
+    print("  author-seat declaration: MISSING or unparseable")
+    print("  add one of these lines to the PR body:")
+    print("    Seat: Naya 2            (numeric seat)")
+    print("    Seat: Naya Epsilon      (named seat, Alpha..Mu)")
+    print("    Seat: Lane 8 (Naya Sentinel)   (12-lane seat)")
+    fail("the gate's matcher would not find an author-seat declaration — "
+         "the (a) blocker would fire. Add a declaration and re-run before "
+         "opening the PR.")
+
+
 def main():
     argv = sys.argv[1:]
     if argv and argv[0] == "--self-test-scorecard":
@@ -416,6 +500,16 @@ def main():
                   "<receipt-file> <head-sha>", file=sys.stderr)
             sys.exit(2)
         self_test_scorecard(argv[1], argv[2])
+        return
+    if argv and argv[0] == "--self-test-pr-body":
+        # Zero-API local pre-check: the draft PR body against the gate's
+        # own author-seat declaration matcher. Merge-seat briefs run this at
+        # brief time, BEFORE opening the PR (gap-t1442 follow-up).
+        if len(argv) != 2:
+            print("usage: check_merge_consensus.py --self-test-pr-body "
+                  "<pr-body-file>", file=sys.stderr)
+            sys.exit(2)
+        self_test_pr_body(argv[1])
         return
     token = os.environ.get("GH_TOKEN") or ""
     repo = os.environ.get("REPO") or ""
