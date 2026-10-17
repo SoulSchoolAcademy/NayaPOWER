@@ -1054,7 +1054,7 @@
             "broadcast wired"
           ],
           "activated_by": "contract.features.broadcast",
-          "status": "specified",
+          "status": "built",
           "code": null,
           "depends_on": [
             "systems.smart_mail"
@@ -1079,12 +1079,13 @@
             "failure_state_visible"
           ],
           "ready": [
-            "broadcast UI",
-            "audience list"
+            "authorized compose card shell",
+            "audience and channels named",
+            "honest connect/not-wired state"
           ],
           "connected": [
             {
-              "action": "send broadcast",
+              "action": "send broadcasts with delivery receipts",
               "grant": "network"
             }
           ]
