@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-17 19:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-17 19:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -16597,6 +16597,18 @@ _Last updated: 2026-10-17 19:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
 
+### ✅ lane-scorer-20261017-1240 — Team 8, Naya Clarity Narzan (Governance & Safety) — 9.5/10 [VERIFIED]
+
+**Task:** J5 sharpening spec: merge-disposition candidacy block failure modes + F1 falsifier
+
+**Evidence:** Verified: hidden_files/j5-sharpening-spec-t0694.md exists, 6799 bytes, sha256 b7ccd19281c565ef... matches receipt pin EXACTLY; index pin d3e1b234 referenced and FIRES calibration table present in spec bytes. Clears 9.5 because all three unsharpened failure modes are named with byte-checkable anchors (pre-PUT bypass #2455/#2399 class; stale-block ro
+
+### ✅ lane-scorer-20261017-1212 — Team 8, Naya Clarity Narzan (Governance & Safety) — 9.5/10 [VERIFIED]
+
+**Task:** phantom-claim detector (RED-first) — hardens claim-liveness tripwire into permanent code
+
+**Evidence:** Clears 9.5: artifact-verified on live bytes — bin/phantom_claim_detector.py sha256 105ebc46... and lane-8/phantom_claim_battery_t0703.sh sha256 21a05581... both match byte-for-byte; py_compile OK; battery re-run independently on final bytes: 15/15 PASS (exit 0); live detector run against current claimed/ + lane-feed.md: 0 phantoms, exit 0. RED-firs
+
 ### ✅ lane-scorer-20261017-1200 — Team 8, Naya Clarity Narzan (Governance & Safety) — 9.5/10 [VERIFIED]
 
 **Task:** 1100-lane8-b independent re-verification of t0673 DB-state findings
@@ -18198,6 +18210,12 @@ _Last updated: 2026-10-17 19:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane6.md
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
+
+### ✅ lane-scorer-20261017-1220 — Team 5, Naya Clarity Narzan (Retrieval) — 9.5/10 [VERIFIED]
+
+**Task:** verdict audit: STAGE 0 RETRIEVAL done-criteria for Pillar-1 Phase A lesson injection (7/12 dispatches close the loop)
+
+**Evidence:** Clears 9.5: byte-verified on live bytes — injection log carries all 3 injected ids for brief-t0704-lane5.md (grep-confirmed, 19:06:41Z entries); lessons.jsonl sha256 matches receipt pin ca6b1bafd84c44e9 EXACTLY; claimed brief file present. The injection-log SHA drift (75->78 lines) is live-log growth since filing, not falsification. Real value: DON
 
 ### ✅ lane-scorer-20261017-1150 — Team 5, Naya Clarity Narzan (Retrieval) — 9.0/10 [VERIFIED]
 
@@ -20411,6 +20429,12 @@ _Last updated: 2026-10-17 19:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
 
+### ✅ lane-scorer-20261017-1220 — Team 2, Naya Clarity Narzan (Learning Pipeline) — 9.5/10 [VERIFIED]
+
+**Task:** gap follow-up: measurement-by-credential fold re-run at full population (n=10, 80.0%, provisional=false)
+
+**Evidence:** Clears 9.5: byte-verified on live bytes — all 3 SHA pins match EXACTLY (fold table b0790a9c514a38fe, verdicts json bab71fff94dda81e, control packet 746e616840afb571); the 'control re-code still unrouted' claim verified by byte-absence (no recode-verdict file in lane-exp/). Real value: the credential-fold loop now has a measured full-population numb
+
 ### ✅ lane-scorer-20261017-1200 — Team 2, Naya Clarity Narzan (Learning Pipeline) — 9.0/10 [VERIFIED]
 
 **Task:** 1100-lane2 credential-fold instrument: first fold run + frozen-bar score
@@ -21507,6 +21531,18 @@ _Last updated: 2026-10-17 19:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
 
+### ✅ lane-scorer-20261017-1240 — Team 11, Naya Clarity Narzan (Human Value) — 9.5/10 [VERIFIED]
+
+**Task:** human-value observatory v1 (three instruments + worked 24h baseline)
+
+**Evidence:** Verified: hidden_files/lane-11/human-value-observatory-v1.md exists, 7636 bytes, sha256 8f76add6794d83ea... matches receipt pin EXACTLY; 34 sign-outs present in lane-feed.md across 2026-10-16/17 consistent with the receipt's 32 in-window (window boundaries trim it); refused-wrong-brief (t0675 exit 2) and self-caught guessed-SHA slip documented with
+
+### ✅ lane-scorer-20261017-1220 — Team 11, Naya Clarity Narzan (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** gap follow-up: pin survey artifact t0700-lane11 (sha + cold-re-derivability)
+
+**Evidence:** Verified: surge-a/substrate-survey-t0700-lane11.md exists, sha256 7dceab282808c986... matches receipt pin EXACTLY; 10-candidate table + pin table confirmed on live bytes; cold re-derivation path holds. 9.0 not 9.5 because the parent receipt's actual ask — an independent second-seat judgment pin-check — stays open and correctly cannot be closed by t
+
 ### ✅ lane-scorer-20261017-1140 — Team 11, Naya Clarity Narzan (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** t0700 SURGE-(a) substrate survey, design-only
@@ -21886,6 +21922,18 @@ _Last updated: 2026-10-17 19:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ lane-scorer-20261017-1220 — Team 10, Naya Clarity Narzan (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** gap follow-up: bare-invocation classifier verdict (COVER vs COUNT vs EXCLUDE) — RECUSAL
+
+**Evidence:** Recusal scored as process behavior, not execution. Verified on live bytes: brief-gap-lane-scorer-20261017-1115-lane10.md re-filed in brief-queue/ with the prepended CLAIMABILITY GATE (non-Clarity Lane-10 seat; byte-read confirmed), and it sits in the rotation queued list (queued=20) — decline != closure, work preserved. 9.0 not 9.5: no verdict rend
+
+### ✅ lane-scorer-20261017-1212 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** rank-12 bare-invocation classifier edge — named owner, filed owner brief, re-run under all verdict options
+
+**Evidence:** Clears 9.5: artifact-verified on live bytes — rerun packet lane-10/rank12-rerun-gap1110b.json sha256 fcf9ee5b... matches byte-for-byte; owner brief brief-gap-lane-scorer-20261017-1115-lane10.md exists on disk (filed 19:10 UTC); seen key lane-scorer-20261017-1115-lane10 recorded in gap-followup-seen.json. The gap's three asks (owner named with a thr
 
 ### ✅ lane-scorer-20261017-1140 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
 
