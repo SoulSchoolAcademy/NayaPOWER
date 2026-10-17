@@ -7,20 +7,24 @@ The worker obeys the verdict. No exceptions.
 
 Usage:
     python3 tools/worker_entry.py [--json]
+    python3 tools/worker_entry.py --pre-action --expected-main <40-char-main-sha> --agent-id <seat> --json
 
 Exit codes:
     0 = NO_WORK (nothing changed, exit cleanly)
     10 = WORK_AVAILABLE (proceed with the shift)
-    20 = STAND_DOWN (rate limit active, exit immediately, zero API calls)
+    20 = STAND_DOWN (rate limit, stale state, or failed proof: no governed action)
 
 This is THE PROTOCOL, step 1 (WAKE), enforced in code — not prose.
 """
 
+import argparse
 import json
 import os
+import re
 import subprocess
 import sys
 import time
+from pathlib import Path
 
 # Paths
 HOME = os.path.expanduser("~")
@@ -29,6 +33,7 @@ LIVE_PLAN = os.path.join(GOAL_DIR, "LIVE-PLAN.md")
 STAND_DOWN_FLAG = os.path.join(GOAL_DIR, "api-stand-down.flag")
 BUILD_LIST = os.path.join(GOAL_DIR, "brain-build-list.json")
 REPO_URL = "https://github.com/SoulSchoolAcademy/NayaPOWER.git"
+REPO_ROOT = Path(__file__).resolve().parents[1]
 
 STAND_DOWN_TTL = 3600  # 1 hour
 
@@ -111,7 +116,90 @@ def has_pending_work():
         return False  # Can't determine = assume no pending (fail safe toward NO_WORK)
 
 
+
+def pre_action_readiness(expected_main, agent_id):
+    """Second source read before consequential action; NOT an authority verdict.
+
+    This only proves the worker is using a current checked-out source and has
+    passed the existing mandatory boot gate. Task ownership, consent, LAW and
+    action permission still belong to their canonical gates.
+    """
+    def hold(reason):
+        return {"verdict": "STAND_DOWN", "reason": reason, "phase": "pre_action"}
+
+    if check_stand_down():
+        return hold("active stand-down flag; no remote reads or governed actions")
+
+    if not re.fullmatch(r"[0-9a-f]{40}", expected_main or ""):
+        return hold("missing or malformed full expected main SHA")
+    if not re.fullmatch(r"[a-zA-Z0-9_.:-]{3,80}", agent_id or ""):
+        return hold("missing or malformed agent identity")
+
+    live_tip = get_live_tip()
+    if not live_tip or not re.fullmatch(r"[0-9a-f]{40}", live_tip):
+        return hold("cannot independently resolve current main")
+    if live_tip != expected_main:
+        return hold("main moved since first read; re-orient and rescore")
+
+    try:
+        # A current main ancestor is needed even if this worker is on a PR.
+        ancestry = subprocess.run(
+            ["git", "merge-base", "--is-ancestor", expected_main, "HEAD"],
+            cwd=str(REPO_ROOT), capture_output=True, text=True, timeout=15
+        )
+        if ancestry.returncode != 0:
+            return hold("checked-out task is not based on current main")
+        gate = subprocess.run(
+            [sys.executable,
+             str(REPO_ROOT / "kernel/protocol/protocol_integrity_gate.py"),
+             "--agent-id", agent_id, "--json"],
+            cwd=str(REPO_ROOT), capture_output=True, text=True, timeout=45
+        )
+        if gate.returncode != 0:
+            return hold("mandatory boot gate refused or could not run")
+        payload = json.loads(gate.stdout)
+        checks = payload.get("checks")
+        if (payload.get("pass") is not True
+                or not isinstance(checks, list) or not checks
+                or any(x.get("pass") is not True for x in checks)):
+            return hold("boot receipt did not prove all required checks")
+    except (OSError, subprocess.TimeoutExpired, ValueError, TypeError,
+            AttributeError):
+        return hold("could not independently prove checkout and boot readiness")
+
+    # Second remote observation is required: main may move while boot runs.
+    # A stale first read cannot authorize the next action.
+    if check_stand_down():
+        return hold("stand-down became active during pre-action verification")
+    final_tip = get_live_tip()
+    if final_tip != live_tip:
+        return hold("main changed or became unreachable during pre-action verification")
+
+    return {
+        "verdict": "PRE_ACTION_READY_FOR_LAW",
+        "phase": "pre_action",
+        "agent_id": agent_id,
+        "main_sha": live_tip,
+        "authority": "NOT_GRANTED",
+        "reason": "fresh source and existing boot proven; LAW, owner, consent and ACT still required",
+    }
+
+
 def main():
+    if "--pre-action" in sys.argv:
+        parser = argparse.ArgumentParser(description="Recheck source and boot before a governed action")
+        parser.add_argument("--pre-action", action="store_true")
+        parser.add_argument("--expected-main", required=True)
+        parser.add_argument("--agent-id", required=True)
+        parser.add_argument("--json", action="store_true")
+        args = parser.parse_args()
+        result = pre_action_readiness(args.expected_main, args.agent_id)
+        if args.json:
+            print(json.dumps(result))
+        else:
+            print(f"{result['verdict']}: {result['reason']}")
+        sys.exit(10 if result["verdict"] == "PRE_ACTION_READY_FOR_LAW" else 20)
+
     as_json = "--json" in sys.argv
 
     # Gate 1: Stand-down flag
@@ -128,13 +216,13 @@ def main():
     live_tip = get_live_tip()
 
     if live_tip is None:
-        # Can't check = be conservative, allow work but flag it
-        result = {"verdict": "WORK_AVAILABLE", "reason": "could not verify tip, proceeding with caution", "caution": True}
+        # Missing fresh source is not permission to start a consequential shift.
+        result = {"verdict": "STAND_DOWN", "reason": "could not verify current main; read more before acting"}
         if as_json:
             print(json.dumps(result))
         else:
-            print("WORK_AVAILABLE (caution): could not verify live tip.")
-        sys.exit(10)
+            print("STAND_DOWN: cannot verify current main.")
+        sys.exit(20)
 
     tips_match = plan_tip and live_tip.startswith(plan_tip[:7]) if plan_tip else False
     pending = has_pending_work()

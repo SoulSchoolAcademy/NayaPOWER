@@ -29,6 +29,10 @@ Before changing code, documentation, infrastructure, or configuration:
 11. Read `BRAIN/01-GOVERNANCE/0004-NONSTOP-LOOP-V1.ai.md` and `BRAIN/01-GOVERNANCE/0004-nonstop-loop-v1.machine.json` — standing NONSTOP LOOP operating law and machine twin.
 12. Establish the human director, authority, scope, current state, proof state, blockers, and exactly one next action.
 
+13. **CHECK THE EXISTING TODO — FIRST READ:** inspect [`BACKLOG.md`](BACKLOG.md) as a **derived priority projection**, then re-resolve current `main`, live [mission #2154](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2154), its linked coordination board, [owner index #1599](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/1599), current task PR and actual active lane claim. Never treat an embedded backlog SHA, dated score or named lead as a fresh fact or an active lease. Rank the highest-value *admissible, unclaimed* task by dependency and expected verified human benefit.
+14. **CHECK THE TODO AGAIN — ACTION-TIME READ:** immediately before any consequential write/ACT, re-read current `main`, mission/board, exact PR head, owner lease, evidence and applicable LAW/permission/consent. If anything changed or is unavailable, **reconcile, READ_MORE or REFUSE**; do not act on the stale first read. Record what was rechecked in the existing action/worker receipt. After ACT, verify the new bytes, evidence and next handoff. This is an operating requirement; universal machine enforcement across every external AI/provider must be independently proven, not assumed from this prose.
+
+
 Do not rely on hidden conversation memory. Do not infer project truth from this file when stronger current evidence says otherwise.
 
 ## CONTINUOUS DISTILLATION / OPTIMIZATION
