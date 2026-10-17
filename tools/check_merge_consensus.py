@@ -13,7 +13,8 @@ Reads from env:
 Seat identity: the team shares one GitHub account, so GitHub logins cannot
 distinguish seats. Seats are identified by signed tags instead:
   - PR body must declare:  Seat: Naya N   (a numeric seat, e.g. "Naya 2",
-    or one of the 12 named seats — Alpha..Mu, e.g. "Seat: Naya Epsilon")
+    or one of the 15 named seats — Alpha..Mu plus Nitro, Chi, Relay,
+    e.g. "Seat: Naya Epsilon")
   - Reviewer posts a comment:  [NAYA M · REVIEW] ... APPROVED ...
     (the team's IV sign-out verdict format — "## VERDICT: MERGE RECOMMENDED"
     with a seat tag — is also accepted as a review)
@@ -55,13 +56,20 @@ import urllib.error
 import urllib.request
 
 API = "https://api.github.com"
-# The 12 named area leads (Shawn, 2026-10-11): Alpha, Beta, Gamma, Delta,
-# Epsilon, Zeta, Eta, Theta, Iota, Kappa, Lambda, Mu. Named seats sign as
+# The 15 named seats — the original 12 area leads (Shawn, 2026-10-11): Alpha,
+# Beta, Gamma, Delta, Epsilon, Zeta, Eta, Theta, Iota, Kappa, Lambda, Mu —
+# plus Nitro (Shawn's word 2026-10-16: "She's part of our team"), Chi, Relay
+# (Team Nitro seats, active reviewers on PR #2718). Named seats sign as
 # "Naya <Title>" (e.g. "Naya Epsilon"); the legacy numeric seats 1-5 keep
 # working exactly as before. One shared id pattern so the author-declaration
 # rule and the review/scorecard rules recognize exactly the same seats.
+# "nitro" added 2026-10-17 per Shawn's word — Naya Nitro Narzan is a seated
+# team member (joined 2026-10-15); the registry predated her.
+# "chi", "relay" added 2026-10-17 — active reviewers on PR #2718 (Team Nitro);
+# registry updated to match the working team. Remove if not seated.
 _NAMED_SEATS = ("alpha", "beta", "gamma", "delta", "epsilon", "zeta",
-                "eta", "theta", "iota", "kappa", "lambda", "mu")
+                "eta", "theta", "iota", "kappa", "lambda", "mu",
+                "nitro", "chi", "relay")
 _SEAT_ID = r"(?:([12345])|(" + "|".join(_NAMED_SEATS) + r"))"
 SEAT_RE = re.compile(r"naya\s*" + _SEAT_ID + r"\b", re.I)
 # The authoring seat must be an EXPLICIT declaration ("Seat: Naya N"), never
