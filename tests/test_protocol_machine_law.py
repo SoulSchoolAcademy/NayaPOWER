@@ -59,7 +59,7 @@ def test_receipt_fails_with_missing_answers():
 
 def test_receipt_tamper_detected():
     r = issue_receipt("naya-test", CORRECT)
-    r.passed = False  # tamper after signing
+    r.passed = False  # tamper after sealing
     assert not r.verify()
 
 
