@@ -1,0 +1,43 @@
+name: Protected Path Watch
+
+# The human gate's tripwire on the direct-merge path.
+#
+# Standing law (tools/auto_merge_gate.py): .github/workflows/, CONSTITUTION/,
+# BRAIN/01-GOVERNANCE/, GOVERNANCE/, NAYA-ACTIVATION/ are never merged without a
+# proven supreme-law exception (ratified_by=Shawn Vibert + evidence comment id).
+# The auto-merge gate only sees merges that go through it; a direct merge to
+# main bypasses it (witnessed: PR #2152, 2026-10-10). This workflow inspects
+# every push to main and flags unexcepted protected-path changes to #1718.
+#
+# REPORT-ONLY BY DESIGN. The push already landed, so this never fails the check
+# run: a red check on main would freeze the merge queue per the red-main
+# discipline (D33). Violations go to the LAW feed as incidents; the
+# ratify-or-restore decision stays with the director.
+#
+# Exception marker (in the merge/push commit message):
+#   Supreme-law-exception: ratified_by=Shawn Vibert evidence=<comment_id> scope=<20+ chars describing what was ratified>
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  watch:
+    name: Human-gate tripwire
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Check pushed commits for unexcepted protected-path changes
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: |
+          python3 tools/protected_path_push_check.py \
+            --base-ref "${{ github.event.before }}" \
+            --head-ref "${{ github.sha }}" \
+            --post || true
