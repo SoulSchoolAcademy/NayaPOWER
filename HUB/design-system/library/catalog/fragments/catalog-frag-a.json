@@ -1,0 +1,5989 @@
+[
+ {
+  "temp_id": "jewel-001",
+  "source_file": "Naya_Jewel_Library_-_N5.html",
+  "demo_name": "01 · Orbs — finished objects of light",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"orb orb--xs\" style=\"--oc:#e84fff;--oc-rgb:232,79,255\"></span>",
+  "css_classes": [
+   "orb",
+   "orb--xs"
+  ],
+  "notes": "orb variant via class modifiers — variant classes: orb | duplicate of jewel-013 (BULLET · 30px Lists, gem points)"
+ },
+ {
+  "temp_id": "jewel-002",
+  "source_file": "Naya_Jewel_Library_-_N5.html",
+  "demo_name": "01 · Orbs — finished objects of light",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"orb orb--xs\" style=\"--oc:#a06bff;--oc-rgb:160,107,255\"></span>",
+  "css_classes": [
+   "orb",
+   "orb--xs"
+  ],
+  "notes": "orb variant via class modifiers — variant classes: orb"
+ },
+ {
+  "temp_id": "jewel-003",
+  "source_file": "Naya_Jewel_Library_-_N5.html",
+  "demo_name": "01 · Orbs — finished objects of light",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"orb orb--xs\" style=\"--oc:#3fb8ff;--oc-rgb:63,184,255\"></span>",
+  "css_classes": [
+   "orb",
+   "orb--xs"
+  ],
+  "notes": "orb variant via class modifiers — variant classes: orb"
+ },
+ {
+  "temp_id": "jewel-004",
+  "source_file": "Naya_Jewel_Library_-_N5.html",
+  "demo_name": "01 · Orbs — finished objects of light",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"orb orb--sm\" style=\"--oc:#a06bff;--oc-rgb:160,107,255\"></span>",
+  "css_classes": [
+   "orb",
+   "orb--sm"
+  ],
+  "notes": "orb variant via class modifiers — variant classes: orb"
+ },
+ {
+  "temp_id": "jewel-005",
+  "source_file": "Naya_Jewel_Library_-_N5.html",
+  "demo_name": "01 · Orbs — finished objects of light",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"orb orb--glyph orb--icon\" style=\"--oc:#e84fff;--oc-rgb:232,79,255\">✦</span>",
+  "css_classes": [
+   "orb",
+   "orb--glyph",
+   "orb--icon"
+  ],
+  "notes": "orb variant via class modifiers — variant classes: orb"
+ },
+ {
+  "temp_id": "jewel-006",
+  "source_file": "Naya_Jewel_Library_-_N5.html",
+  "demo_name": "01 · Orbs — finished objects of light",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"orb orb--glyph orb--icon\" style=\"--oc:#2fe89e;--oc-rgb:47,232,158\">▶</span>",
+  "css_classes": [
+   "orb",
+   "orb--glyph",
+   "orb--icon"
+  ],
+  "notes": "orb variant via class modifiers — variant classes: orb"
+ },
+ {
+  "temp_id": "jewel-007",
+  "source_file": "Naya_Jewel_Library_-_N5.html",
+  "demo_name": "01 · Orbs — finished objects of light",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"orb orb--glyph orb--icon\" style=\"--oc:#ffbf3d;--oc-rgb:255,191,61\">◈</span>",
+  "css_classes": [
+   "orb",
+   "orb--glyph",
+   "orb--icon"
+  ],
+  "notes": "orb variant via class modifiers — variant classes: orb"
+ },
+ {
+  "temp_id": "jewel-008",
+  "source_file": "Naya_Jewel_Library_-_N5.html",
+  "demo_name": "MAGENTA The living edge",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"orb\" style=\"--oc:#e84fff;--oc-rgb:232,79,255\"></span>",
+  "css_classes": [
+   "orb"
+  ],
+  "notes": "orb variant via class modifiers — variant classes: orb"
+ },
+ {
+  "temp_id": "jewel-009",
+  "source_file": "Naya_Jewel_Library_-_N5.html",
+  "demo_name": "PURPLE Naya's presence",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"orb\" style=\"--oc:#a06bff;--oc-rgb:160,107,255\"></span>",
+  "css_classes": [
+   "orb"
+  ],
+  "notes": "orb variant via class modifiers — variant classes: orb"
+ },
+ {
+  "temp_id": "jewel-010",
+  "source_file": "Naya_Jewel_Library_-_N5.html",
+  "demo_name": "BLUE Knowledge moving",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"orb\" style=\"--oc:#3fb8ff;--oc-rgb:63,184,255\"></span>",
+  "css_classes": [
+   "orb"
+  ],
+  "notes": "orb variant via class modifiers — variant classes: orb"
+ },
+ {
+  "temp_id": "jewel-011",
+  "source_file": "Naya_Jewel_Library_-_N5.html",
+  "demo_name": "GREEN Alive and well",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"orb\" style=\"--oc:#2fe89e;--oc-rgb:47,232,158\"></span>",
+  "css_classes": [
+   "orb"
+  ],
+  "notes": "orb variant via class modifiers — variant classes: orb"
+ },
+ {
+  "temp_id": "jewel-012",
+  "source_file": "Naya_Jewel_Library_-_N5.html",
+  "demo_name": "GOLD Attention, earned",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"orb\" style=\"--oc:#ffbf3d;--oc-rgb:255,191,61\"></span>",
+  "css_classes": [
+   "orb"
+  ],
+  "notes": "orb variant via class modifiers — variant classes: orb"
+ },
+ {
+  "temp_id": "jewel-014",
+  "source_file": "Naya_Jewel_Library_-_N5.html",
+  "demo_name": "SECTION MARK · 56px Room icons, headers",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"orb orb--sm\" style=\"--oc:#3fb8ff;--oc-rgb:63,184,255\"></span>",
+  "css_classes": [
+   "orb",
+   "orb--sm"
+  ],
+  "notes": "orb variant via class modifiers — variant classes: orb | duplicate of jewel-023 (CLAIM Stated, quiet blue)"
+ },
+ {
+  "temp_id": "jewel-015",
+  "source_file": "Naya_Jewel_Library_-_N5.html",
+  "demo_name": "BLACK ORB · 120px Dark soul, color rim",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"orb orb--black\" style=\"--oc:#2fe89e;--oc-rgb:47,232,158\"></span>",
+  "css_classes": [
+   "orb",
+   "orb--black"
+  ],
+  "notes": "orb variant via class modifiers — variant classes: orb"
+ },
+ {
+  "temp_id": "jewel-016",
+  "source_file": "Naya_Jewel_Library_-_N5.html",
+  "demo_name": "01 · Orbs — finished objects of light",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"orb orb--hero\" style=\"--oc:#a06bff;--oc-rgb:160,107,255\"></span>",
+  "css_classes": [
+   "orb",
+   "orb--hero"
+  ],
+  "notes": "orb variant via class modifiers — variant classes: orb"
+ },
+ {
+  "temp_id": "jewel-017",
+  "source_file": "Naya_Jewel_Library_-_N5.html",
+  "demo_name": "APP ICON Glyph at the core",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"orb orb--glyph\" style=\"--oc:#e84fff;--oc-rgb:232,79,255\">✦</span>",
+  "css_classes": [
+   "orb",
+   "orb--glyph"
+  ],
+  "notes": "orb variant via class modifiers — variant classes: orb"
+ },
+ {
+  "temp_id": "jewel-018",
+  "source_file": "Naya_Jewel_Library_-_N5.html",
+  "demo_name": "APP ICON Love, luminous",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"orb orb--glyph\" style=\"--oc:#3fb8ff;--oc-rgb:63,184,255\">♥</span>",
+  "css_classes": [
+   "orb",
+   "orb--glyph"
+  ],
+  "notes": "orb variant via class modifiers — variant classes: orb"
+ },
+ {
+  "temp_id": "jewel-019",
+  "source_file": "Naya_Jewel_Library_-_N5.html",
+  "demo_name": "TWIN ORBIT Two rings, counter-rotating",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"orb orb--twin\" style=\"--oc:#2fe89e;--oc-rgb:47,232,158\"></span>",
+  "css_classes": [
+   "orb",
+   "orb--twin"
+  ],
+  "notes": "orb variant via class modifiers — variant classes: orb"
+ },
+ {
+  "temp_id": "jewel-020",
+  "source_file": "Naya_Jewel_Library_-_N5.html",
+  "demo_name": "ORB BUTTON Press it — it gives",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<button class=\"orb orb--btn\" type=\"button\" aria-label=\"Activate orb\" style=\"--oc:#ffbf3d;--oc-rgb:255,191,61\"></button>",
+  "css_classes": [
+   "orb",
+   "orb--btn"
+  ],
+  "notes": "orb variant via class modifiers — variant classes: orb"
+ },
+ {
+  "temp_id": "jewel-021",
+  "source_file": "Naya_Jewel_Library_-_N5.html",
+  "demo_name": "VERIFIED Proven, glowing green",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"orb orb--sm\" style=\"--oc:#2fe89e;--oc-rgb:47,232,158\"></span>",
+  "css_classes": [
+   "orb",
+   "orb--sm"
+  ],
+  "notes": "orb variant via class modifiers — variant classes: orb"
+ },
+ {
+  "temp_id": "jewel-022",
+  "source_file": "Naya_Jewel_Library_-_N5.html",
+  "demo_name": "DEMONSTRATION Shown, golden",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"orb orb--sm\" style=\"--oc:#ffbf3d;--oc-rgb:255,191,61\"></span>",
+  "css_classes": [
+   "orb",
+   "orb--sm"
+  ],
+  "notes": "orb variant via class modifiers — variant classes: orb"
+ },
+ {
+  "temp_id": "jewel-024",
+  "source_file": "Naya_Jewel_Library_-_N5.html",
+  "demo_name": "VERIFIED Only when independent evidence exists",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"mini-orb\" style=\"--c:var(--green)\"></span>",
+  "css_classes": [
+   "mini-orb"
+  ],
+  "notes": "luminous mark —"
+ },
+ {
+  "temp_id": "jewel-025",
+  "source_file": "Naya_Jewel_Library_-_N5.html",
+  "demo_name": "DEMONSTRATION Intentional specimen content",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"mini-orb\" style=\"--c:var(--gold)\"></span>",
+  "css_classes": [
+   "mini-orb"
+  ],
+  "notes": "luminous mark —"
+ },
+ {
+  "temp_id": "jewel-026",
+  "source_file": "Naya_Jewel_Library_-_N5.html",
+  "demo_name": "INTELLIGENCE Jewel facets · not generic cards",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"mini-orb\" style=\"--c:var(--blue)\"></span>",
+  "css_classes": [
+   "mini-orb"
+  ],
+  "notes": "luminous mark —"
+ },
+ {
+  "temp_id": "jewel-027",
+  "source_file": "Naya_Jewel_Library_-_N5.html",
+  "demo_name": "LIVING EDGE The leading color",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"mini-orb\" style=\"--c:var(--magenta)\"></span>",
+  "css_classes": [
+   "mini-orb"
+  ],
+  "notes": "luminous mark —"
+ },
+ {
+  "temp_id": "jewel-028",
+  "source_file": "Naya_Jewel_Library_-_N5.html",
+  "demo_name": "03 · Gem Bullets — for lists",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"gem-bullet\" style=\"--tone:var(--magenta)\"></span>",
+  "css_classes": [
+   "gem-bullet"
+  ],
+  "notes": "list bullet —"
+ },
+ {
+  "temp_id": "jewel-029",
+  "source_file": "Naya_Jewel_Library_-_N5.html",
+  "demo_name": "03 · Gem Bullets — for lists",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"gem-bullet\" style=\"--tone:var(--purple)\"></span>",
+  "css_classes": [
+   "gem-bullet"
+  ],
+  "notes": "list bullet —"
+ },
+ {
+  "temp_id": "jewel-030",
+  "source_file": "Naya_Jewel_Library_-_N5.html",
+  "demo_name": "03 · Gem Bullets — for lists",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"gem-bullet\" style=\"--tone:var(--blue)\"></span>",
+  "css_classes": [
+   "gem-bullet"
+  ],
+  "notes": "list bullet —"
+ },
+ {
+  "temp_id": "jewel-031",
+  "source_file": "Naya_Jewel_Library_-_N5.html",
+  "demo_name": "03 · Gem Bullets — for lists",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"gem-bullet\" style=\"--tone:var(--green)\"></span>",
+  "css_classes": [
+   "gem-bullet"
+  ],
+  "notes": "list bullet —"
+ },
+ {
+  "temp_id": "jewel-032",
+  "source_file": "Naya_Jewel_Library_-_N5.html",
+  "demo_name": "03 · Gem Bullets — for lists",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"gem-bullet\" style=\"--tone:var(--gold)\"></span>",
+  "css_classes": [
+   "gem-bullet"
+  ],
+  "notes": "list bullet —"
+ },
+ {
+  "temp_id": "jewel-033",
+  "source_file": "Naya_Jewel_Library_-_N5.html",
+  "demo_name": "Bullets",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"orb-ctx-card\"><h4>Bullets</h4><ul class=\"orb-bullet-list\"><li>Every list item earns its light<span class=\"orb orb--xs\" style=\"--oc:#e84fff;--oc-rgb:232,79,255\"></span></li><li>Spectrum order, never twice adjacent<span class=\"orb orb--xs\" style=\"--oc:#a06bff;--oc-rgb:160,107,255\"></span></li><li>Small but never flat<span class=\"orb orb--xs\" style=\"--oc:#3fb8ff;--oc-rgb:63,184,255\"></span></li></ul></div>",
+  "css_classes": [
+   "orb",
+   "orb--xs",
+   "orb-bullet-list",
+   "orb-ctx-card"
+  ],
+  "notes": "orb in context card —"
+ },
+ {
+  "temp_id": "jewel-034",
+  "source_file": "Naya_Jewel_Library_-_N5.html",
+  "demo_name": "Section marks",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"orb-ctx-card\"><h4>Section marks<span class=\"orb orb--sm\" style=\"--oc:#a06bff;--oc-rgb:160,107,255\"></span></h4><p style=\"margin:0;color:var(--quiet);font-size:15px\">A 56px orb beside a heading turns a title into a destination. One color per section, in spectrum order.</p></div>",
+  "css_classes": [
+   "orb",
+   "orb--sm",
+   "orb-ctx-card"
+  ],
+  "notes": "orb in context card —"
+ },
+ {
+  "temp_id": "jewel-035",
+  "source_file": "Naya_Jewel_Library_-_N5.html",
+  "demo_name": "App icons",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"orb-ctx-card\"><h4>App icons</h4><div style=\"display:flex;gap:16px;align-items:center\"><span class=\"orb orb--glyph orb--icon\" style=\"--oc:#e84fff;--oc-rgb:232,79,255\">✦</span><span class=\"orb orb--glyph orb--icon\" style=\"--oc:#2fe89e;--oc-rgb:47,232,158\">▶</span><span class=\"orb orb--glyph orb--icon\" style=\"--oc:#ffbf3d;--oc-rgb:255,191,61\">◈</span></div><p style=\"margin:14px 0 0;color:var(--quiet);font-size:15px\">64px glyph orbs — the icon set for rooms and apps.</p></div>",
+  "css_classes": [
+   "orb",
+   "orb--glyph",
+   "orb--icon",
+   "orb-ctx-card"
+  ],
+  "notes": "orb in context card —"
+ },
+ {
+  "temp_id": "elitebtn-001",
+  "source_file": "Naya__Elite_Buttons_N5.html",
+  "demo_name": "magenta · hero",
+  "demo_num": "01",
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<span class=\"lv-wrap\"><span class=\"lv-aura\" aria-hidden=\"true\"></span><button class=\"lv-btn lv-hero\" style=\"--lv-accent:#e84fff;--lv-accent-rgb:232,79,255\"><span class=\"lv-label\">ENTER THE STANDARD<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M12 2l2.4 7.2H22l-6 4.6 2.3 7.2-6.3-4.5-6.3 4.5L8 13.8 2 9.2h7.6z\"></svg></span></button></span>",
+  "css_classes": [
+   "lv-aura",
+   "lv-btn",
+   "lv-hero",
+   "lv-label",
+   "lv-wrap"
+  ],
+  "notes": "demo-meaning: What matters most"
+ },
+ {
+  "temp_id": "elitebtn-002",
+  "source_file": "Naya__Elite_Buttons_N5.html",
+  "demo_name": "purple · hero",
+  "demo_num": "02",
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<span class=\"lv-wrap\"><span class=\"lv-aura\" aria-hidden=\"true\"></span><button class=\"lv-btn lv-hero\" style=\"--lv-accent:#a06bff;--lv-accent-rgb:160,107,255\"><span class=\"lv-label\">SEE IT WORKING<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M4 5h16v14H4z M8 12h8\"></svg></span></button></span>",
+  "css_classes": [
+   "lv-aura",
+   "lv-btn",
+   "lv-hero",
+   "lv-label",
+   "lv-wrap"
+  ],
+  "notes": "demo-meaning: Naya's presence"
+ },
+ {
+  "temp_id": "elitebtn-003",
+  "source_file": "Naya__Elite_Buttons_N5.html",
+  "demo_name": "blue · hero",
+  "demo_num": "03",
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<span class=\"lv-wrap\"><span class=\"lv-aura\" aria-hidden=\"true\"></span><button class=\"lv-btn lv-hero\" style=\"--lv-accent:#3fb8ff;--lv-accent-rgb:63,184,255\"><span class=\"lv-label\">READ THE LAW<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M12 2v20M2 12h20\"></svg></span></button></span>",
+  "css_classes": [
+   "lv-aura",
+   "lv-btn",
+   "lv-hero",
+   "lv-label",
+   "lv-wrap"
+  ],
+  "notes": "demo-meaning: Understanding"
+ },
+ {
+  "temp_id": "elitebtn-004",
+  "source_file": "Naya__Elite_Buttons_N5.html",
+  "demo_name": "magenta · standard",
+  "demo_num": "04",
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<span class=\"lv-wrap\"><span class=\"lv-aura\" aria-hidden=\"true\"></span><button class=\"lv-btn\" style=\"--lv-accent:#e84fff;--lv-accent-rgb:232,79,255\"><span class=\"lv-label\">WRITE MAIL<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M4 6h16v12H4z M4 7l8 6 8-6\"></svg></span></button></span>",
+  "css_classes": [
+   "lv-aura",
+   "lv-btn",
+   "lv-label",
+   "lv-wrap"
+  ],
+  "notes": "demo-meaning: What matters most"
+ },
+ {
+  "temp_id": "elitebtn-005",
+  "source_file": "Naya__Elite_Buttons_N5.html",
+  "demo_name": "purple · standard",
+  "demo_num": "05",
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<span class=\"lv-wrap\"><span class=\"lv-aura\" aria-hidden=\"true\"></span><button class=\"lv-btn\" style=\"--lv-accent:#a06bff;--lv-accent-rgb:160,107,255\"><span class=\"lv-label\">ADD CONNECTION<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M12 5v14M5 12h14\"></svg></span></button></span>",
+  "css_classes": [
+   "lv-aura",
+   "lv-btn",
+   "lv-label",
+   "lv-wrap"
+  ],
+  "notes": "demo-meaning: Naya's presence"
+ },
+ {
+  "temp_id": "elitebtn-006",
+  "source_file": "Naya__Elite_Buttons_N5.html",
+  "demo_name": "blue · standard",
+  "demo_num": "06",
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<span class=\"lv-wrap\"><span class=\"lv-aura\" aria-hidden=\"true\"></span><button class=\"lv-btn\" style=\"--lv-accent:#3fb8ff;--lv-accent-rgb:63,184,255\"><span class=\"lv-label\">OPEN REPORT<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M5 12h14M13 6l6 6-6 6\"></svg></span></button></span>",
+  "css_classes": [
+   "lv-aura",
+   "lv-btn",
+   "lv-label",
+   "lv-wrap"
+  ],
+  "notes": "demo-meaning: Understanding"
+ },
+ {
+  "temp_id": "elitebtn-007",
+  "source_file": "Naya__Elite_Buttons_N5.html",
+  "demo_name": "green · standard",
+  "demo_num": "07",
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<span class=\"lv-wrap\"><span class=\"lv-aura\" aria-hidden=\"true\"></span><button class=\"lv-btn\" style=\"--lv-accent:#2fe89e;--lv-accent-rgb:47,232,158\"><span class=\"lv-label\">JOINED<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M5 13l4 4L19 7\"></svg></span></button></span>",
+  "css_classes": [
+   "lv-aura",
+   "lv-btn",
+   "lv-label",
+   "lv-wrap"
+  ],
+  "notes": "demo-meaning: Connected and well"
+ },
+ {
+  "temp_id": "elitebtn-008",
+  "source_file": "Naya__Elite_Buttons_N5.html",
+  "demo_name": "gold · standard",
+  "demo_num": "08",
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<span class=\"lv-wrap\"><span class=\"lv-aura\" aria-hidden=\"true\"></span><button class=\"lv-btn\" style=\"--lv-accent:#ffbf3d;--lv-accent-rgb:255,191,61\"><span class=\"lv-label\">VIEW LEDGER<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M12 3l8 5-8 5-8-5z M4 13l8 5 8-5\"></svg></span></button></span>",
+  "css_classes": [
+   "lv-aura",
+   "lv-btn",
+   "lv-label",
+   "lv-wrap"
+  ],
+  "notes": "demo-meaning: A rare achievement"
+ },
+ {
+  "temp_id": "elitebtn-009",
+  "source_file": "Naya__Elite_Buttons_N5.html",
+  "demo_name": "teal · standard",
+  "demo_num": "09",
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<span class=\"lv-wrap\"><span class=\"lv-aura\" aria-hidden=\"true\"></span><button class=\"lv-btn\" style=\"--lv-accent:#40d3bb;--lv-accent-rgb:64,211,187\"><span class=\"lv-label\">CONNECT<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M8 12h8M12 8v8\"></svg></span></button></span>",
+  "css_classes": [
+   "lv-aura",
+   "lv-btn",
+   "lv-label",
+   "lv-wrap"
+  ],
+  "notes": "demo-meaning: Smart Connect"
+ },
+ {
+  "temp_id": "elitebtn-010",
+  "source_file": "Naya__Elite_Buttons_N5.html",
+  "demo_name": "coral · standard",
+  "demo_num": "10",
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<span class=\"lv-wrap\"><span class=\"lv-aura\" aria-hidden=\"true\"></span><button class=\"lv-btn\" style=\"--lv-accent:#ff5e6c;--lv-accent-rgb:255,94,108\"><span class=\"lv-label\">PAY ATTENTION<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M12 8v5M12 16.5v.5\"></svg></span></button></span>",
+  "css_classes": [
+   "lv-aura",
+   "lv-btn",
+   "lv-label",
+   "lv-wrap"
+  ],
+  "notes": "demo-meaning: Warm attention"
+ },
+ {
+  "temp_id": "elitebtn-011",
+  "source_file": "Naya__Elite_Buttons_N5.html",
+  "demo_name": "lime · standard",
+  "demo_num": "11",
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<span class=\"lv-wrap\"><span class=\"lv-aura\" aria-hidden=\"true\"></span><button class=\"lv-btn\" style=\"--lv-accent:#b8ee57;--lv-accent-rgb:184,238,87\"><span class=\"lv-label\">SAVE TO LIST<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M6 4h12v16l-6-4-6 4z\"></svg></span></button></span>",
+  "css_classes": [
+   "lv-aura",
+   "lv-btn",
+   "lv-label",
+   "lv-wrap"
+  ],
+  "notes": "demo-meaning: Smart Lists"
+ },
+ {
+  "temp_id": "elitebtn-012",
+  "source_file": "Naya__Elite_Buttons_N5.html",
+  "demo_name": "indigo · standard",
+  "demo_num": "12",
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<span class=\"lv-wrap\"><span class=\"lv-aura\" aria-hidden=\"true\"></span><button class=\"lv-btn\" style=\"--lv-accent:#6675ff;--lv-accent-rgb:102,117,255\"><span class=\"lv-label\">GOVERN<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M12 3v18M5 7l7-4 7 4\"></svg></span></button></span>",
+  "css_classes": [
+   "lv-aura",
+   "lv-btn",
+   "lv-label",
+   "lv-wrap"
+  ],
+  "notes": "demo-meaning: Law and structure"
+ },
+ {
+  "temp_id": "elitebtn-013",
+  "source_file": "Naya__Elite_Buttons_N5.html",
+  "demo_name": "danger · variant",
+  "demo_num": "13",
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<span class=\"lv-wrap\"><span class=\"lv-aura\" aria-hidden=\"true\"></span><button class=\"lv-btn lv-btn--danger\"><span class=\"lv-label\">DELETE<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M6 6l12 12M18 6L6 18\"></svg></span></button></span>",
+  "css_classes": [
+   "lv-aura",
+   "lv-btn",
+   "lv-btn--danger",
+   "lv-label",
+   "lv-wrap"
+  ],
+  "notes": "demo-meaning: Depth, not alarm"
+ },
+ {
+  "temp_id": "elitebtn-014",
+  "source_file": "Naya__Elite_Buttons_N5.html",
+  "demo_name": "No flat elements",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<span class=\"law-chip\">No flat elements</span>",
+  "css_classes": [
+   "law-chip"
+  ],
+  "notes": "law chip"
+ },
+ {
+  "temp_id": "elitebtn-015",
+  "source_file": "Naya__Elite_Buttons_N5.html",
+  "demo_name": "Everything has depth",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<span class=\"law-chip\">Everything has depth</span>",
+  "css_classes": [
+   "law-chip"
+  ],
+  "notes": "law chip"
+ },
+ {
+  "temp_id": "elitebtn-016",
+  "source_file": "Naya__Elite_Buttons_N5.html",
+  "demo_name": "Everything responds",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<span class=\"law-chip\">Everything responds</span>",
+  "css_classes": [
+   "law-chip"
+  ],
+  "notes": "law chip"
+ },
+ {
+  "temp_id": "elitebtn-017",
+  "source_file": "Naya__Elite_Buttons_N5.html",
+  "demo_name": "Light up, don't glow out",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<span class=\"law-chip\">Light up, don't glow out</span>",
+  "css_classes": [
+   "law-chip"
+  ],
+  "notes": "law chip"
+ },
+ {
+  "temp_id": "btnfam-001",
+  "source_file": "Naya_Beautiful_Button_Set_N4.html",
+  "demo_name": "✦ ENTER THE STANDARD",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<span class=\"btn-glow\"></span>",
+  "css_classes": [
+   "btn-glow"
+  ],
+  "notes": "glow layer — | duplicate of btnfam-002 (◈ SEE IT WORKING) | duplicate of btnfam-003 (＋ READ THE LAW)"
+ },
+ {
+  "temp_id": "btnfam-004",
+  "source_file": "Naya_Beautiful_Button_Set_N4.html",
+  "demo_name": "02 · Living System — .lv-btn",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"lv-btn lv-hero\" style=\"--lv-accent:#e84fff;--lv-accent-rgb:232,79,255\"><span class=\"lv-label\">✦ Magenta Hero</span></button>",
+  "css_classes": [
+   "lv-btn",
+   "lv-hero",
+   "lv-label"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "btnfam-005",
+  "source_file": "Naya_Beautiful_Button_Set_N4.html",
+  "demo_name": "02 · Living System — .lv-btn",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"lv-btn lv-hero\" style=\"--lv-accent:#a06bff;--lv-accent-rgb:160,107,255\"><span class=\"lv-label\">◈ Purple Hero</span></button>",
+  "css_classes": [
+   "lv-btn",
+   "lv-hero",
+   "lv-label"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "btnfam-006",
+  "source_file": "Naya_Beautiful_Button_Set_N4.html",
+  "demo_name": "02 · Living System — .lv-btn",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"lv-btn lv-hero\" style=\"--lv-accent:#3fb8ff;--lv-accent-rgb:63,184,255\"><span class=\"lv-label\">＋ Blue Hero</span></button>",
+  "css_classes": [
+   "lv-btn",
+   "lv-hero",
+   "lv-label"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "btnfam-007",
+  "source_file": "Naya_Beautiful_Button_Set_N4.html",
+  "demo_name": "02 · Living System — .lv-btn",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"lv-btn\" style=\"--lv-accent:#e84fff;--lv-accent-rgb:232,79,255\"><span class=\"lv-label\">Magenta</span></button>",
+  "css_classes": [
+   "lv-btn",
+   "lv-label"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "btnfam-008",
+  "source_file": "Naya_Beautiful_Button_Set_N4.html",
+  "demo_name": "02 · Living System — .lv-btn",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"lv-btn\" style=\"--lv-accent:#a06bff;--lv-accent-rgb:160,107,255\"><span class=\"lv-label\">Purple</span></button>",
+  "css_classes": [
+   "lv-btn",
+   "lv-label"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "btnfam-009",
+  "source_file": "Naya_Beautiful_Button_Set_N4.html",
+  "demo_name": "02 · Living System — .lv-btn",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"lv-btn\" style=\"--lv-accent:#3fb8ff;--lv-accent-rgb:63,184,255\"><span class=\"lv-label\">Blue</span></button>",
+  "css_classes": [
+   "lv-btn",
+   "lv-label"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "btnfam-010",
+  "source_file": "Naya_Beautiful_Button_Set_N4.html",
+  "demo_name": "02 · Living System — .lv-btn",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"lv-btn\" style=\"--lv-accent:#2fe89e;--lv-accent-rgb:47,232,158\"><span class=\"lv-label\">Green</span></button>",
+  "css_classes": [
+   "lv-btn",
+   "lv-label"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "btnfam-011",
+  "source_file": "Naya_Beautiful_Button_Set_N4.html",
+  "demo_name": "02 · Living System — .lv-btn",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"lv-btn\" style=\"--lv-accent:#ffbf3d;--lv-accent-rgb:255,191,61\"><span class=\"lv-label\">Gold</span></button>",
+  "css_classes": [
+   "lv-btn",
+   "lv-label"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "btnfam-012",
+  "source_file": "Naya_Beautiful_Button_Set_N4.html",
+  "demo_name": "02 · Living System — .lv-btn",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"lv-btn\" style=\"--lv-accent:#40d3bb;--lv-accent-rgb:64,211,187\"><span class=\"lv-label\">Teal</span></button>",
+  "css_classes": [
+   "lv-btn",
+   "lv-label"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "btnfam-013",
+  "source_file": "Naya_Beautiful_Button_Set_N4.html",
+  "demo_name": "02 · Living System — .lv-btn",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"lv-btn\" style=\"--lv-accent:#ff5e6c;--lv-accent-rgb:255,94,108\"><span class=\"lv-label\">Coral</span></button>",
+  "css_classes": [
+   "lv-btn",
+   "lv-label"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "btnfam-014",
+  "source_file": "Naya_Beautiful_Button_Set_N4.html",
+  "demo_name": "02 · Living System — .lv-btn",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"lv-btn\" style=\"--lv-accent:#b8ee57;--lv-accent-rgb:184,238,87\"><span class=\"lv-label\">Lime</span></button>",
+  "css_classes": [
+   "lv-btn",
+   "lv-label"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "btnfam-015",
+  "source_file": "Naya_Beautiful_Button_Set_N4.html",
+  "demo_name": "02 · Living System — .lv-btn",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"lv-btn\" style=\"--lv-accent:#6675ff;--lv-accent-rgb:102,117,255\"><span class=\"lv-label\">Indigo</span></button>",
+  "css_classes": [
+   "lv-btn",
+   "lv-label"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "btnfam-016",
+  "source_file": "Naya_Beautiful_Button_Set_N4.html",
+  "demo_name": "02 · Living System — .lv-btn",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"lv-btn lv-btn--danger\"><span class=\"lv-label\">✕ Delete</span></button>",
+  "css_classes": [
+   "lv-btn",
+   "lv-btn--danger",
+   "lv-label"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "btnfam-017",
+  "source_file": "Naya_Beautiful_Button_Set_N4.html",
+  "demo_name": "02 · Living System — .lv-btn",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"lv-btn lv-sm\" style=\"--lv-accent:#a06bff;--lv-accent-rgb:160,107,255\"><span class=\"lv-label\">Small</span></button>",
+  "css_classes": [
+   "lv-btn",
+   "lv-label",
+   "lv-sm"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "btnfam-018",
+  "source_file": "Naya_Beautiful_Button_Set_N4.html",
+  "demo_name": "02 · Living System — .lv-btn",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"lv-btn\" disabled=\"\"><span class=\"lv-label\">Disabled</span></button>",
+  "css_classes": [
+   "lv-btn",
+   "lv-label"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "btnfam-019",
+  "source_file": "Naya_Beautiful_Button_Set_N4.html",
+  "demo_name": "07 · Room Controls — harvested from the boards",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"seg-tab on\" type=\"button\">ONCE</button>",
+  "css_classes": [
+   "on",
+   "seg-tab"
+  ],
+  "notes": "segmented tab —"
+ },
+ {
+  "temp_id": "btnfam-020",
+  "source_file": "Naya_Beautiful_Button_Set_N4.html",
+  "demo_name": "07 · Room Controls — harvested from the boards",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"seg-tab\" type=\"button\">DAILY</button>",
+  "css_classes": [
+   "seg-tab"
+  ],
+  "notes": "segmented tab —"
+ },
+ {
+  "temp_id": "btnfam-021",
+  "source_file": "Naya_Beautiful_Button_Set_N4.html",
+  "demo_name": "07 · Room Controls — harvested from the boards",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"seg-tab\" type=\"button\">WEEKLY</button>",
+  "css_classes": [
+   "seg-tab"
+  ],
+  "notes": "segmented tab —"
+ },
+ {
+  "temp_id": "btnfam-022",
+  "source_file": "Naya_Beautiful_Button_Set_N4.html",
+  "demo_name": "01 · Heroes — .living-btn",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"living-btn\" data-spectrum=\"magenta\"><span class=\"btn-glow\"></span><span class=\"btn-label\">✦ ENTER THE STANDARD</span></button>",
+  "css_classes": [
+   "btn-glow",
+   "btn-label",
+   "living-btn"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "btnfam-023",
+  "source_file": "Naya_Beautiful_Button_Set_N4.html",
+  "demo_name": "01 · Heroes — .living-btn",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"living-btn\" data-spectrum=\"purple\"><span class=\"btn-glow\"></span><span class=\"btn-label\">◈ SEE IT WORKING</span></button>",
+  "css_classes": [
+   "btn-glow",
+   "btn-label",
+   "living-btn"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "btnfam-024",
+  "source_file": "Naya_Beautiful_Button_Set_N4.html",
+  "demo_name": "01 · Heroes — .living-btn",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"living-btn\" data-spectrum=\"blue\"><span class=\"btn-glow\"></span><span class=\"btn-label\">＋ READ THE LAW</span></button>",
+  "css_classes": [
+   "btn-glow",
+   "btn-label",
+   "living-btn"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "btnfam-025",
+  "source_file": "Naya_Beautiful_Button_Set_N4.html",
+  "demo_name": "03 · Essential — .cx-btn",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"cx-btn\">＋ CREATE</button>",
+  "css_classes": [
+   "cx-btn"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "btnfam-026",
+  "source_file": "Naya_Beautiful_Button_Set_N4.html",
+  "demo_name": "03 · Essential — .cx-btn",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"cx-btn\">◈ DETAILS</button>",
+  "css_classes": [
+   "cx-btn"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "btnfam-027",
+  "source_file": "Naya_Beautiful_Button_Set_N4.html",
+  "demo_name": "03 · Essential — .cx-btn",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"cx-btn\">→ CONTINUE</button>",
+  "css_classes": [
+   "cx-btn"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "btnfam-028",
+  "source_file": "Naya_Beautiful_Button_Set_N4.html",
+  "demo_name": "04 · Standard — .primo",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"primo theme-magenta\">Magenta</button>",
+  "css_classes": [
+   "primo",
+   "theme-magenta"
+  ],
+  "notes": "primo button —"
+ },
+ {
+  "temp_id": "btnfam-029",
+  "source_file": "Naya_Beautiful_Button_Set_N4.html",
+  "demo_name": "04 · Standard — .primo",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"primo theme-purple\">Purple</button>",
+  "css_classes": [
+   "primo",
+   "theme-purple"
+  ],
+  "notes": "primo button —"
+ },
+ {
+  "temp_id": "btnfam-030",
+  "source_file": "Naya_Beautiful_Button_Set_N4.html",
+  "demo_name": "04 · Standard — .primo",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"primo theme-blue\">Blue</button>",
+  "css_classes": [
+   "primo",
+   "theme-blue"
+  ],
+  "notes": "primo button —"
+ },
+ {
+  "temp_id": "btnfam-031",
+  "source_file": "Naya_Beautiful_Button_Set_N4.html",
+  "demo_name": "04 · Standard — .primo",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"primo theme-green\">Green</button>",
+  "css_classes": [
+   "primo",
+   "theme-green"
+  ],
+  "notes": "primo button —"
+ },
+ {
+  "temp_id": "btnfam-032",
+  "source_file": "Naya_Beautiful_Button_Set_N4.html",
+  "demo_name": "04 · Standard — .primo",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"primo theme-gold\">Gold</button>",
+  "css_classes": [
+   "primo",
+   "theme-gold"
+  ],
+  "notes": "primo button —"
+ },
+ {
+  "temp_id": "btnfam-033",
+  "source_file": "Naya_Beautiful_Button_Set_N4.html",
+  "demo_name": "05 · Orbit — .orbit-btn",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"orbit-btn\" style=\"--oc:#e84fff;--oc-rgb:232,79,255\"><span class=\"orbit-label\">✦ Create</span></button>",
+  "css_classes": [
+   "orbit-btn",
+   "orbit-label"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "btnfam-034",
+  "source_file": "Naya_Beautiful_Button_Set_N4.html",
+  "demo_name": "05 · Orbit — .orbit-btn",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"orbit-btn\" style=\"--oc:#a06bff;--oc-rgb:160,107,255\"><span class=\"orbit-label\">◈ Launch</span></button>",
+  "css_classes": [
+   "orbit-btn",
+   "orbit-label"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "btnfam-035",
+  "source_file": "Naya_Beautiful_Button_Set_N4.html",
+  "demo_name": "05 · Orbit — .orbit-btn",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"orbit-btn\" style=\"--oc:#3fb8ff;--oc-rgb:63,184,255\"><span class=\"orbit-label\">＋ Begin</span></button>",
+  "css_classes": [
+   "orbit-btn",
+   "orbit-label"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "btnfam-036",
+  "source_file": "Naya_Beautiful_Button_Set_N4.html",
+  "demo_name": "06 · Icon Buttons — .icon-btn",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"icon-btn\" style=\"--ic:#e84fff;--ic-rgb:232,79,255\" aria-label=\"Like\"><svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 21s-7-4.5-7-11a7 7 0 0114 0c0 6.5-7 11-7 11z\"></svg></button>",
+  "css_classes": [
+   "icon-btn"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "btnfam-037",
+  "source_file": "Naya_Beautiful_Button_Set_N4.html",
+  "demo_name": "06 · Icon Buttons — .icon-btn",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"icon-btn\" style=\"--ic:#a06bff;--ic-rgb:160,107,255\" aria-label=\"Share\"><svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"18\" cy=\"5\" r=\"3\"><circle cx=\"6\" cy=\"12\" r=\"3\"><circle cx=\"18\" cy=\"19\" r=\"3\"><path d=\"M8.6 13.5l6.8 4M15.4 6.5l-6.8 4\"></svg></button>",
+  "css_classes": [
+   "icon-btn"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "btnfam-038",
+  "source_file": "Naya_Beautiful_Button_Set_N4.html",
+  "demo_name": "06 · Icon Buttons — .icon-btn",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"icon-btn\" style=\"--ic:#3fb8ff;--ic-rgb:63,184,255\" aria-label=\"Add\"><svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"><path d=\"M12 5v14M5 12h14\"></svg></button>",
+  "css_classes": [
+   "icon-btn"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "btnfam-039",
+  "source_file": "Naya_Beautiful_Button_Set_N4.html",
+  "demo_name": "06 · Icon Buttons — .icon-btn",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"icon-btn\" style=\"--ic:#2fe89e;--ic-rgb:47,232,158\" aria-label=\"Play\"><svg viewbox=\"0 0 24 24\" fill=\"currentColor\" stroke=\"none\"><path d=\"M8 5v14l11-7z\"></svg></button>",
+  "css_classes": [
+   "icon-btn"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "btnfam-040",
+  "source_file": "Naya_Beautiful_Button_Set_N4.html",
+  "demo_name": "06 · Icon Buttons — .icon-btn",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"icon-btn\" style=\"--ic:#ffbf3d;--ic-rgb:255,191,61\" aria-label=\"Star\"><svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 2l2.4 7.2H22l-6 4.6 2.3 7.2-6.3-4.5-6.3 4.5L8 13.8 2 9.2h7.6z\"></svg></button>",
+  "css_classes": [
+   "icon-btn"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "btnfam-041",
+  "source_file": "Naya_Beautiful_Button_Set_N4.html",
+  "demo_name": "07 · Room Controls — harvested from the boards",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"like-pill on\" type=\"button\">♥ 12</button>",
+  "css_classes": [
+   "like-pill",
+   "on"
+  ],
+  "notes": "toggle pill —"
+ },
+ {
+  "temp_id": "btnfam-042",
+  "source_file": "Naya_Beautiful_Button_Set_N4.html",
+  "demo_name": "07 · Room Controls — harvested from the boards",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"tog-chip on\" type=\"button\">Design</button>",
+  "css_classes": [
+   "on",
+   "tog-chip"
+  ],
+  "notes": "toggle chip —"
+ },
+ {
+  "temp_id": "btnfam-043",
+  "source_file": "Naya_Beautiful_Button_Set_N4.html",
+  "demo_name": "07 · Room Controls — harvested from the boards",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"tog-chip\" type=\"button\">Voice</button>",
+  "css_classes": [
+   "tog-chip"
+  ],
+  "notes": "toggle chip —"
+ },
+ {
+  "temp_id": "btnfam-044",
+  "source_file": "Naya_Beautiful_Button_Set_N4.html",
+  "demo_name": "07 · Room Controls — harvested from the boards",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"send-cta\" type=\"button\">SEND NOW</button>",
+  "css_classes": [
+   "send-cta"
+  ],
+  "notes": "send CTA —"
+ },
+ {
+  "temp_id": "btnfam-045",
+  "source_file": "Naya_Beautiful_Button_Set_N4.html",
+  "demo_name": "07 · Room Controls — harvested from the boards",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"mic-btn\" type=\"button\" aria-label=\"Record\">🎤</button>",
+  "css_classes": [
+   "mic-btn"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elemset-001",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "Color has four jobs. Never cross them.",
+  "demo_num": null,
+  "category": "UNCAT",
+  "tags": [
+   "theme",
+   "dashboard",
+   "feed",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"swatch\" style=\"background:#020203\"></div>",
+  "css_classes": [
+   "swatch"
+  ],
+  "notes": "color swatch — | duplicate of showcase1-001 (Color has four jobs. Never cross them.)",
+  "proposed_category": "COLOR"
+ },
+ {
+  "temp_id": "elemset-002",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "Color has four jobs. Never cross them.",
+  "demo_num": null,
+  "category": "UNCAT",
+  "tags": [
+   "theme",
+   "dashboard",
+   "feed",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"swatch\" style=\"background:#ffffff\"></div>",
+  "css_classes": [
+   "swatch"
+  ],
+  "notes": "color swatch — | duplicate of showcase1-002 (Color has four jobs. Never cross them.)",
+  "proposed_category": "COLOR"
+ },
+ {
+  "temp_id": "elemset-003",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "Color has four jobs. Never cross them.",
+  "demo_num": null,
+  "category": "UNCAT",
+  "tags": [
+   "theme",
+   "dashboard",
+   "feed",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"swatch\" style=\"background:#8a5cff\"></div>",
+  "css_classes": [
+   "swatch"
+  ],
+  "notes": "color swatch — | duplicate of showcase1-003 (Color has four jobs. Never cross them.)",
+  "proposed_category": "COLOR"
+ },
+ {
+  "temp_id": "elemset-004",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "The living button. One DNA, every app.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn naya-btn--primary\" type=\"button\">At Rest</button>",
+  "css_classes": [
+   "naya-btn",
+   "naya-btn--primary"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elemset-005",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "The living button. One DNA, every app.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn naya-btn--primary is-aware\" type=\"button\">Cursor Near</button>",
+  "css_classes": [
+   "is-aware",
+   "naya-btn",
+   "naya-btn--primary"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elemset-006",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "The living button. One DNA, every app.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn naya-btn--primary\" type=\"button\" style=\"transform:translateY(-3px) scale(1.012)\">On Hover</button>",
+  "css_classes": [
+   "naya-btn",
+   "naya-btn--primary"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elemset-007",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "Truth is part of the visual language.",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"torb\" style=\"--tc2:#35e39b\">✓</span>",
+  "css_classes": [
+   "torb"
+  ],
+  "notes": "truth orb — | duplicate of showcase1-012 (Truth is part of the visual language.)"
+ },
+ {
+  "temp_id": "elemset-008",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "Truth is part of the visual language.",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"torb\" style=\"--tc2:#ffd45a\">?</span>",
+  "css_classes": [
+   "torb"
+  ],
+  "notes": "truth orb — | duplicate of showcase1-013 (Truth is part of the visual language.)"
+ },
+ {
+  "temp_id": "elemset-009",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "Truth is part of the visual language.",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"torb\" style=\"--tc2:#ed42c4\">◈</span>",
+  "css_classes": [
+   "torb"
+  ],
+  "notes": "truth orb — | duplicate of showcase1-014 (Truth is part of the visual language.)"
+ },
+ {
+  "temp_id": "elemset-010",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "≥ 1.5",
+  "demo_num": null,
+  "category": "TYP",
+  "tags": [
+   "landing",
+   "feed",
+   "dashboard",
+   "report",
+   "profile"
+  ],
+  "html": "<div class=\"pred\"><span class=\"jw\" style=\"--j:#ed42c4\">◆</span><span class=\"pred-name\">lighting.idle.border_min_px</span><b style=\"color:#ed42c4\">≥ 1.5</b></div>",
+  "css_classes": [
+   "jw",
+   "pred",
+   "pred-name"
+  ],
+  "notes": "contract predicate row — | duplicate of showcase1-015 (≥ 1.5)"
+ },
+ {
+  "temp_id": "elemset-011",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "9.0",
+  "demo_num": null,
+  "category": "TYP",
+  "tags": [
+   "landing",
+   "feed",
+   "dashboard",
+   "report",
+   "profile"
+  ],
+  "html": "<div class=\"pred\"><span class=\"jw\" style=\"--j:#8a5cff\">✧</span><span class=\"pred-name\">gates.ship_threshold</span><b style=\"color:#8a5cff\">9.0</b></div>",
+  "css_classes": [
+   "jw",
+   "pred",
+   "pred-name"
+  ],
+  "notes": "contract predicate row — | duplicate of showcase1-016 (9.0)"
+ },
+ {
+  "temp_id": "elemset-012",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "24 / 18 / 14",
+  "demo_num": null,
+  "category": "TYP",
+  "tags": [
+   "landing",
+   "feed",
+   "dashboard",
+   "report",
+   "profile"
+  ],
+  "html": "<div class=\"pred\"><span class=\"jw\" style=\"--j:#3ca8ff\">▲</span><span class=\"pred-name\">typography.hierarchy_px</span><b style=\"color:#3ca8ff\">24 / 18 / 14</b></div>",
+  "css_classes": [
+   "jw",
+   "pred",
+   "pred-name"
+  ],
+  "notes": "contract predicate row — | duplicate of showcase1-017 (24 / 18 / 14)"
+ },
+ {
+  "temp_id": "elemset-013",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "12",
+  "demo_num": null,
+  "category": "TYP",
+  "tags": [
+   "landing",
+   "feed",
+   "dashboard",
+   "report",
+   "profile"
+  ],
+  "html": "<div class=\"pred\"><span class=\"jw\" style=\"--j:#35e39b\">✦</span><span class=\"pred-name\">typography.tagline_max_words</span><b style=\"color:#35e39b\">12</b></div>",
+  "css_classes": [
+   "jw",
+   "pred",
+   "pred-name"
+  ],
+  "notes": "contract predicate row — | duplicate of showcase1-018 (12)"
+ },
+ {
+  "temp_id": "elemset-014",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "99",
+  "demo_num": null,
+  "category": "TYP",
+  "tags": [
+   "landing",
+   "feed",
+   "dashboard",
+   "report",
+   "profile"
+  ],
+  "html": "<div class=\"pred\"><span class=\"jw\" style=\"--j:#ffd45a\">◆</span><span class=\"pred-name\">text.white_minimum_pct</span><b style=\"color:#ffd45a\">99</b></div>",
+  "css_classes": [
+   "jw",
+   "pred",
+   "pred-name"
+  ],
+  "notes": "contract predicate row — | duplicate of showcase1-019 (99)"
+ },
+ {
+  "temp_id": "elemset-015",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "forbidden",
+  "demo_num": null,
+  "category": "TYP",
+  "tags": [
+   "landing",
+   "feed",
+   "dashboard",
+   "report",
+   "profile"
+  ],
+  "html": "<div class=\"pred\"><span class=\"jw\" style=\"--j:#ed42c4\">✧</span><span class=\"pred-name\">jewel.adjacent_duplicate</span><b style=\"color:#ed42c4\">forbidden</b></div>",
+  "css_classes": [
+   "jw",
+   "pred",
+   "pred-name"
+  ],
+  "notes": "contract predicate row — | duplicate of showcase1-020 (forbidden)"
+ },
+ {
+  "temp_id": "elemset-016",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "forbidden",
+  "demo_num": null,
+  "category": "TYP",
+  "tags": [
+   "landing",
+   "feed",
+   "dashboard",
+   "report",
+   "profile"
+  ],
+  "html": "<div class=\"pred\"><span class=\"jw\" style=\"--j:#8a5cff\">▲</span><span class=\"pred-name\">icons.shrunken_renders</span><b style=\"color:#8a5cff\">forbidden</b></div>",
+  "css_classes": [
+   "jw",
+   "pred",
+   "pred-name"
+  ],
+  "notes": "contract predicate row — | duplicate of showcase1-021 (forbidden)"
+ },
+ {
+  "temp_id": "elemset-017",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "forbidden",
+  "demo_num": null,
+  "category": "TYP",
+  "tags": [
+   "landing",
+   "feed",
+   "dashboard",
+   "report",
+   "profile"
+  ],
+  "html": "<div class=\"pred\"><span class=\"jw\" style=\"--j:#3ca8ff\">✦</span><span class=\"pred-name\">layout.max_width_caps</span><b style=\"color:#3ca8ff\">forbidden</b></div>",
+  "css_classes": [
+   "jw",
+   "pred",
+   "pred-name"
+  ],
+  "notes": "contract predicate row — | duplicate of showcase1-022 (forbidden)"
+ },
+ {
+  "temp_id": "elemset-018",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "One contract, three tongues.",
+  "demo_num": null,
+  "category": "TYP",
+  "tags": [
+   "landing",
+   "feed",
+   "dashboard",
+   "report",
+   "profile"
+  ],
+  "html": "<p class=\"aiphase\">I · BUILD</p>",
+  "css_classes": [
+   "aiphase"
+  ],
+  "notes": "AI phase badge — | duplicate of showcase1-023 (One contract, three tongues.)"
+ },
+ {
+  "temp_id": "elemset-019",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "One contract, three tongues.",
+  "demo_num": null,
+  "category": "TYP",
+  "tags": [
+   "landing",
+   "feed",
+   "dashboard",
+   "report",
+   "profile"
+  ],
+  "html": "<p class=\"aiphase\">II · PROVE</p>",
+  "css_classes": [
+   "aiphase"
+  ],
+  "notes": "AI phase badge — | duplicate of elemset-063 (Pre-ship checklist · all must pass) | duplicate of showcase1-024 (One contract, three tongues.) | duplicate of showcase1-057 (Pre-ship checklist · all must pass)"
+ },
+ {
+  "temp_id": "elemset-020",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "WHITE Light. Text 99% of the time. Every idle rim.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"job\" style=\"--jc:#ffffff\"><div class=\"swatch\" style=\"background:#020203\"></div><h3>OBSIDIAN</h3><p>Field. The world and dominant canvas. Deep, never gray.</p></div>",
+  "css_classes": [
+   "job",
+   "swatch"
+  ],
+  "notes": "color-job card — | duplicate of showcase1-025 (WHITE Light. Text 99% of the time. Every idle rim.)"
+ },
+ {
+  "temp_id": "elemset-021",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "OBSIDIAN Field. The world and dominant canvas. Deep, never gray.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"job\" style=\"--jc:#ffffff\"><div class=\"swatch\" style=\"background:#ffffff\"></div><h3>WHITE</h3><p>Light. Text 99% of the time. Every idle rim.</p></div>",
+  "css_classes": [
+   "job",
+   "swatch"
+  ],
+  "notes": "color-job card — | duplicate of showcase1-026 (OBSIDIAN Field. The world and dominant canvas. Deep, never gray.)"
+ },
+ {
+  "temp_id": "elemset-022",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "OBSIDIAN Field. The world and dominant canvas. Deep, never gray.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"job\" style=\"--jc:#8a5cff\"><div class=\"swatch\" style=\"background:#8a5cff\"></div><h3>PURPLE</h3><p>Soul. Chrome accent. Naya's presence. Never a flood.</p></div>",
+  "css_classes": [
+   "job",
+   "swatch"
+  ],
+  "notes": "color-job card — | duplicate of showcase1-027 (OBSIDIAN Field. The world and dominant canvas. Deep, never gray.)"
+ },
+ {
+  "temp_id": "elemset-023",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "MAGENTA",
+  "demo_num": null,
+  "category": "UNCAT",
+  "tags": [
+   "theme",
+   "dashboard",
+   "feed",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"spec\" style=\"--c:#ed42c4\"><b>MAGENTA</b><span>The living edge</span></div>",
+  "css_classes": [
+   "spec"
+  ],
+  "notes": "spectrum chip — | duplicate of showcase1-028 (MAGENTA)",
+  "proposed_category": "COLOR"
+ },
+ {
+  "temp_id": "elemset-024",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "PURPLE",
+  "demo_num": null,
+  "category": "UNCAT",
+  "tags": [
+   "theme",
+   "dashboard",
+   "feed",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"spec\" style=\"--c:#8a5cff\"><b>PURPLE</b><span>Choosing intelligence</span></div>",
+  "css_classes": [
+   "spec"
+  ],
+  "notes": "spectrum chip — | duplicate of showcase1-029 (PURPLE)",
+  "proposed_category": "COLOR"
+ },
+ {
+  "temp_id": "elemset-025",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "BLUE",
+  "demo_num": null,
+  "category": "UNCAT",
+  "tags": [
+   "theme",
+   "dashboard",
+   "feed",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"spec\" style=\"--c:#3ca8ff\"><b>BLUE</b><span>Knowledge moving</span></div>",
+  "css_classes": [
+   "spec"
+  ],
+  "notes": "spectrum chip — | duplicate of showcase1-030 (BLUE)",
+  "proposed_category": "COLOR"
+ },
+ {
+  "temp_id": "elemset-026",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "GREEN",
+  "demo_num": null,
+  "category": "UNCAT",
+  "tags": [
+   "theme",
+   "dashboard",
+   "feed",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"spec\" style=\"--c:#35e39b\"><b>GREEN</b><span>Alive and well</span></div>",
+  "css_classes": [
+   "spec"
+  ],
+  "notes": "spectrum chip — | duplicate of showcase1-031 (GREEN)",
+  "proposed_category": "COLOR"
+ },
+ {
+  "temp_id": "elemset-027",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "GOLD",
+  "demo_num": null,
+  "category": "UNCAT",
+  "tags": [
+   "theme",
+   "dashboard",
+   "feed",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"spec\" style=\"--c:#ffd45a\"><b>GOLD</b><span>Attention, earned</span></div>",
+  "css_classes": [
+   "spec"
+  ],
+  "notes": "spectrum chip — | duplicate of showcase1-032 (GOLD)",
+  "proposed_category": "COLOR"
+ },
+ {
+  "temp_id": "elemset-028",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "The living button. One DNA, every app.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn naya-btn--primary\" type=\"button\"><span class=\"nb-icon\" aria-hidden=\"true\">✦</span><span class=\"nb-label\">Create App</span></button>",
+  "css_classes": [
+   "naya-btn",
+   "naya-btn--primary",
+   "nb-icon",
+   "nb-label"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elemset-029",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "The living button. One DNA, every app.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn naya-btn--secondary\" type=\"button\"><span class=\"nb-icon\" aria-hidden=\"true\">→</span><span class=\"nb-label\">View Details</span></button>",
+  "css_classes": [
+   "naya-btn",
+   "naya-btn--secondary",
+   "nb-icon",
+   "nb-label"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elemset-030",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "The living button. One DNA, every app.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn naya-btn--ghost\" type=\"button\"><span class=\"nb-label\">Cancel</span></button>",
+  "css_classes": [
+   "naya-btn",
+   "naya-btn--ghost",
+   "nb-label"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elemset-031",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "The living button. One DNA, every app.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn naya-btn--danger\" type=\"button\"><span class=\"nb-icon\" aria-hidden=\"true\">✕</span><span class=\"nb-label\">Delete</span></button>",
+  "css_classes": [
+   "naya-btn",
+   "naya-btn--danger",
+   "nb-icon",
+   "nb-label"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elemset-032",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "The living button. One DNA, every app.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn naya-btn--primary naya-btn--icon\" type=\"button\" aria-label=\"Add\"><span class=\"nb-icon\" aria-hidden=\"true\">＋</span></button>",
+  "css_classes": [
+   "naya-btn",
+   "naya-btn--icon",
+   "naya-btn--primary",
+   "nb-icon"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elemset-033",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "The living button. One DNA, every app.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn naya-btn--secondary naya-btn--icon\" type=\"button\" aria-label=\"Search\"><span class=\"nb-icon\" aria-hidden=\"true\">⌕</span></button>",
+  "css_classes": [
+   "naya-btn",
+   "naya-btn--icon",
+   "naya-btn--secondary",
+   "nb-icon"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elemset-034",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "The living button. One DNA, every app.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn naya-btn--ghost naya-btn--icon\" type=\"button\" aria-label=\"More options\"><span class=\"nb-icon\" aria-hidden=\"true\">⋯</span></button>",
+  "css_classes": [
+   "naya-btn",
+   "naya-btn--ghost",
+   "naya-btn--icon",
+   "nb-icon"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elemset-035",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "Scale — same DNA at every size",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn naya-btn--primary naya-btn--sm\" type=\"button\">Small</button>",
+  "css_classes": [
+   "naya-btn",
+   "naya-btn--primary",
+   "naya-btn--sm"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elemset-036",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "Scale — same DNA at every size",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn naya-btn--primary\" type=\"button\">Medium · Default</button>",
+  "css_classes": [
+   "naya-btn",
+   "naya-btn--primary"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elemset-037",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "Scale — same DNA at every size",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn naya-btn--primary naya-btn--lg\" type=\"button\">Large</button>",
+  "css_classes": [
+   "naya-btn",
+   "naya-btn--lg",
+   "naya-btn--primary"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elemset-038",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "Scale — same DNA at every size",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn naya-btn--secondary\" type=\"button\" disabled=\"\">Disabled</button>",
+  "css_classes": [
+   "naya-btn",
+   "naya-btn--secondary"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elemset-039",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "The one action",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"lib-law\"><span class=\"lib-tag\" style=\"color:#c9b8ff;border-color:rgba(138,92,255,.5)\">Primary</span><h4>The one action</h4><p>One per view. The thing the page exists to do — , , . Purple edge fire. If everything is primary, nothing is. Never place two primaries side by side.<code>Create App</code><code>Publish</code><code>Save</code></p></div>",
+  "css_classes": [
+   "lib-law",
+   "lib-tag"
+  ],
+  "notes": "variant usage card —"
+ },
+ {
+  "temp_id": "elemset-040",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "The supporting action",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"lib-law\"><span class=\"lib-tag\" style=\"color:#e8e6df\">Secondary</span><h4>The supporting action</h4><p>Important but not the point — , , . Same obsidian body, silver-white fire. Sits beside a primary without competing. Use for paired actions and toolbars.<code>View Details</code><code>Export</code><code>Duplicate</code></p></div>",
+  "css_classes": [
+   "lib-law",
+   "lib-tag"
+  ],
+  "notes": "variant usage card —"
+ },
+ {
+  "temp_id": "elemset-041",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "The quiet exit",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"lib-law\"><span class=\"lib-tag\" style=\"color:#ffffff\">Ghost</span><h4>The quiet exit</h4><p>Low-stakes, reversible, or dismissive — , , . Transparent body, hairline only, the softest breathing in the set. Never use ghost for the main action; never use it on busy backgrounds.<code>Cancel</code><code>Not now</code><code>Learn more</code></p></div>",
+  "css_classes": [
+   "lib-law",
+   "lib-tag"
+  ],
+  "notes": "variant usage card —"
+ },
+ {
+  "temp_id": "elemset-042",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "The irreversible action",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"lib-law\"><span class=\"lib-tag\" style=\"color:#ff9aa3;border-color:rgba(255,77,94,.5)\">Danger</span><h4>The irreversible action</h4><p>Destructive or hard to undo — , , . Red edge fire, always paired with a confirmation. Never the default button in a dialog. Never for warnings that aren't destructive.<code>Delete</code><code>Remove access</code><code>End session</code></p></div>",
+  "css_classes": [
+   "lib-law",
+   "lib-tag"
+  ],
+  "notes": "variant usage card —"
+ },
+ {
+  "temp_id": "elemset-043",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "The familiar symbol",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"lib-law\"><span class=\"lib-tag\" style=\"color:#ffd45a;border-color:rgba(255,212,90,.45)\">Icon-only</span><h4>The familiar symbol</h4><p>Only when the glyph is unambiguous —  add,  search,  more. Always with . 52px touch target, 44px minimum at . If a label would prevent a mistake, use a labeled button.<code>＋</code><code>⌕</code><code>⋯</code><code>aria-label</code><code>--sm</code></p></div>",
+  "css_classes": [
+   "lib-law",
+   "lib-tag"
+  ],
+  "notes": "variant usage card —"
+ },
+ {
+  "temp_id": "elemset-044",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "Non-negotiables",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"lib-law\"><span class=\"lib-tag\" style=\"color:#35e39b;border-color:rgba(53,227,155,.45)\">The Laws</span><h4>Non-negotiables</h4><p>One DNA across every app — never restyle locally. Sentence-case labels, verb first. 44px minimum touch target. Focus ignites like hover. Disabled never ignites. Fire is 5%: if a screen glows at rest, it's wrong.</p></div>",
+  "css_classes": [
+   "lib-law",
+   "lib-tag"
+  ],
+  "notes": "variant usage card —"
+ },
+ {
+  "temp_id": "elemset-045",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "Size separates. Color doesn't.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"typecard\" style=\"--tc:#ed42c4\"><p class=\"tk\">HEADLINE · 24PX</p><p style=\"font-family:var(--voice); font-size:24px; color:#fff; margin:0; line-height:1.35\">Your intelligence, collected.</p><p style=\"font-size:14px; color:#fff; opacity:.65; margin:14px 0 0\">Serif voice. Light-carved. It leads, never shouts.</p></div>",
+  "css_classes": [
+   "tk",
+   "typecard"
+  ],
+  "notes": " | duplicate of showcase1-039 (Size separates. Color doesn't.)"
+ },
+ {
+  "temp_id": "elemset-046",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "Size separates. Color doesn't.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"typecard\" style=\"--tc:#8a5cff\"><p class=\"tk\">BODY · 18PX</p><p style=\"font-size:18px; color:#fff; margin:0; line-height:1.6\">Keep your people close. Organize them, remember them, reach them.</p><p style=\"font-size:14px; color:#fff; opacity:.65; margin:14px 0 0\">Most text lives here. White, generous, readable.</p></div>",
+  "css_classes": [
+   "tk",
+   "typecard"
+  ],
+  "notes": " | duplicate of showcase1-040 (Size separates. Color doesn't.)"
+ },
+ {
+  "temp_id": "elemset-047",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "Size separates. Color doesn't.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"typecard\" style=\"--tc:#3ca8ff\"><p class=\"tk\">DETAIL · 14PX</p><p style=\"font-size:14px; color:#fff; margin:0; line-height:1.6\">Evidence lives here: PR #1858 · tip 78661f59 · 40/40 tests.</p><p style=\"font-size:14px; color:#fff; opacity:.65; margin:14px 0 0\">The floor. Nothing readable ever goes smaller.</p></div>",
+  "css_classes": [
+   "tk",
+   "typecard"
+  ],
+  "notes": " | duplicate of showcase1-041 (Size separates. Color doesn't.)"
+ },
+ {
+  "temp_id": "elemset-048",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "Truth is part of the visual language.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"truth\" style=\"--tc2:#35e39b\"><span class=\"torb\" style=\"--tc2:#35e39b\">✓</span><div><b>AUTH · VERIFIED</b><p>Independent evidence exists. The number survived contact with reality.</p></div></div>",
+  "css_classes": [
+   "torb",
+   "truth"
+  ],
+  "notes": "verification status block — | duplicate of showcase1-042 (Truth is part of the visual language.)"
+ },
+ {
+  "temp_id": "elemset-049",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "Truth is part of the visual language.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"truth\" style=\"--tc2:#ffd45a\"><span class=\"torb\" style=\"--tc2:#ffd45a\">?</span><div><b>CLAIM · UNVERIFIED</b><p>Self-reported, awaiting its stamp. Shown honestly, never hidden.</p></div></div>",
+  "css_classes": [
+   "torb",
+   "truth"
+  ],
+  "notes": "verification status block — | duplicate of showcase1-043 (Truth is part of the visual language.)"
+ },
+ {
+  "temp_id": "elemset-050",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "Truth is part of the visual language.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"truth\" style=\"--tc2:#ed42c4\"><span class=\"torb\" style=\"--tc2:#ed42c4\">◈</span><div><b>DEMONSTRATION</b><p>Specimen content. Beautiful on purpose, not pretending to be live.</p></div></div>",
+  "css_classes": [
+   "torb",
+   "truth"
+  ],
+  "notes": "verification status block — | duplicate of showcase1-044 (Truth is part of the visual language.)"
+ },
+ {
+  "temp_id": "elemset-051",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "MACHINE LAW · NORMATIVE",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"tongue\" style=\"--tc3:#8a5cff\"><h3>MACHINE LAW · NORMATIVE</h3><div class=\"pred\"><span class=\"jw\" style=\"--j:#ed42c4\">◆</span><span class=\"pred-name\">lighting.idle.border_min_px</span><b style=\"color:#ed42c4\">≥ 1.5</b></div><div class=\"pred\"><span class=\"jw\" style=\"--j:#8a5cff\">✧</span><span class=\"pred-name\">gates.ship_threshold</span><b style=\"color:#8a5cff\">9.0</b></div><div class=\"pred\"><span class=\"jw\" style=\"--j:#3ca8ff\">▲</span><span class=\"pred-name\">typography.hierarchy_px</span><b style=\"color:#3ca8ff\">24 / 18 / 14</b></div><div class=\"pred\"><span class=\"jw\" style=\"--j:#35e39b\">✦</span><span class=\"pred-name\">typography.tagline_max_words</span><b style=\"color:#35e39b\">12</b></div><div class=\"pred\"><span class=\"jw\" style=\"--j:#ffd45a\">◆</span><span class=\"pred-name\">text.white_minimum_pct</span><b style=\"color:#ffd45a\">99</b></div><div class=\"pred\"><span class=\"jw\" style=\"--j:#ed42c4\">✧</span><span class=\"pred-name\">jewel.adjacent_duplicate</span><b style=\"color:#ed42c4\">forbidden</b></div><div class=\"pred\"><span class=\"jw\" style=\"--j:#8a5cff\">▲</span><span class=\"pred-name\">icons.shrunken_renders</span><b style=\"color:#8a5cff\">forbidden</b></div><div class=\"pred\"><span class=\"jw\" style=\"--j:#3ca8ff\">✦</span><span class=\"pred-name\">layout.max_width_caps</span><b style=\"color:#3ca8ff\">forbidden</b></div></div>",
+  "css_classes": [
+   "jw",
+   "pred",
+   "pred-name",
+   "tongue"
+  ],
+  "notes": "contract tongue column — | duplicate of showcase1-045 (MACHINE LAW · NORMATIVE)"
+ },
+ {
+  "temp_id": "elemset-052",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "AI LAW · PROCEDURE",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"tongue\" style=\"--tc3:#3ca8ff\"><h3>AI LAW · PROCEDURE</h3><p class=\"aiphase\">I · BUILD</p><ul><li><span class=\"jw\" style=\"--j:#ed42c4\">◆</span><span>Pick the layout that matches what the page .<em>is</em></span></li><li><span class=\"jw\" style=\"--j:#8a5cff\">✧</span><span>Give every element one color job.</span></li><li><span class=\"jw\" style=\"--j:#6675ff\">▲</span><span>Light everything: white at rest, own color on touch.</span></li><li><span class=\"jw\" style=\"--j:#3ca8ff\">✦</span><span>Build buttons with black hearts.</span></li><li><span class=\"jw\" style=\"--j:#55d5ee\">◆</span><span>Size separates, color doesn't — 24 / 18 / 14.</span></li></ul><p class=\"aiphase\">II · PROVE</p><ul><li><span class=\"jw\" style=\"--j:#35e39b\">◆</span><span>Draw icons. Never shrink photos.</span></li><li><span class=\"jw\" style=\"--j:#b8ee57\">✧</span><span>Make the header a front door.</span></li><li><span class=\"jw\" style=\"--j:#f1d75a\">▲</span><span>Let the page breathe.</span></li><li><span class=\"jw\" style=\"--j:#ff9a5a\">✦</span><span>Score what you see. Below 9? Back to the bench.</span></li><li><span class=\"jw\" style=\"--j:#ff5e6c\">◆</span><span>Prove it before you claim it.</span></li></ul></div>",
+  "css_classes": [
+   "aiphase",
+   "jw",
+   "tongue"
+  ],
+  "notes": "contract tongue column — | duplicate of showcase1-046 (AI LAW · PROCEDURE)"
+ },
+ {
+  "temp_id": "elemset-053",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "HUMAN LAW · PHILOSOPHY",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"tongue\" style=\"--tc3:#35e39b\"><h3>HUMAN LAW · PHILOSOPHY</h3><ul class=\"hbul\"><li><span class=\"jw\" style=\"--j:#ed42c4\">◆</span><span>Naya is black, white, and purple — with a rainbow that knows its place.</span></li><li><span class=\"jw\" style=\"--j:#8a5cff\">✧</span><span>Black is the night everything floats in. White is the light. Purple is the signature.</span></li><li><span class=\"jw\" style=\"--j:#3ca8ff\">▲</span><span>The spectrum gives things identity but never shouts over the brand.</span></li><li><span class=\"jw\" style=\"--j:#35e39b\">✦</span><span>Everything glows gently; the page breathes but stays calm.</span></li><li><span class=\"jw\" style=\"--j:#ffd45a\">◆</span><span>Words are white and clear. Nothing ships below excellent.</span></li></ul></div>",
+  "css_classes": [
+   "hbul",
+   "jw",
+   "tongue"
+  ],
+  "notes": "contract tongue column — | duplicate of showcase1-047 (HUMAN LAW · PHILOSOPHY)"
+ },
+ {
+  "temp_id": "elemset-054",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "Score the experience, never the code.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"lawcard\" style=\"--lc:#ed42c4\"><p class=\"ln\">LAW 1<span class=\"ld\"></span></p><h3>Score the experience, never the code.</h3><p>A 9.5 on CSS is worthless if the rendered page is a 5. The lived page is the only scorecard.</p></div>",
+  "css_classes": [
+   "lawcard",
+   "ld",
+   "ln"
+  ],
+  "notes": " | duplicate of showcase1-048 (Score the experience, never the code.)"
+ },
+ {
+  "temp_id": "elemset-055",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "Back it or bench it.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"lawcard\" style=\"--lc:#8a5cff\"><p class=\"ln\">LAW 2<span class=\"ld\"></span></p><h3>Back it or bench it.</h3><p>9.0+ ships. Below 9 goes back to the bench. No exceptions, no almost.</p></div>",
+  "css_classes": [
+   "lawcard",
+   "ld",
+   "ln"
+  ],
+  "notes": " | duplicate of showcase1-049 (Back it or bench it.)"
+ },
+ {
+  "temp_id": "elemset-056",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "Color has jobs. Never cross them.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"lawcard\" style=\"--lc:#3ca8ff\"><p class=\"ln\">LAW 4<span class=\"ld\"></span></p><h3>Color has jobs. Never cross them.</h3><p>Chrome acts. Text speaks. Theme identifies. Adjacent things never share a hue.</p></div>",
+  "css_classes": [
+   "lawcard",
+   "ld",
+   "ln"
+  ],
+  "notes": " | duplicate of showcase1-050 (Color has jobs. Never cross them.)"
+ },
+ {
+  "temp_id": "elemset-057",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "White light at rest, own color on touch.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"lawcard\" style=\"--lc:#35e39b\"><p class=\"ln\">LAW 5<span class=\"ld\"></span></p><h3>White light at rest, own color on touch.</h3><p>Visible 1.5px+ rims idle. Ignition belongs to the thing being touched.</p></div>",
+  "css_classes": [
+   "lawcard",
+   "ld",
+   "ln"
+  ],
+  "notes": " | duplicate of showcase1-051 (White light at rest, own color on touch.)"
+ },
+ {
+  "temp_id": "elemset-058",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "Black heart, white voice, visible skin.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"lawcard\" style=\"--lc:#ffd45a\"><p class=\"ln\">LAW 6<span class=\"ld\"></span></p><h3>Black heart, white voice, visible skin.</h3><p>#050505 center, white text and icon, real rim. The glyph is a promise.</p></div>",
+  "css_classes": [
+   "lawcard",
+   "ld",
+   "ln"
+  ],
+  "notes": " | duplicate of showcase1-052 (Black heart, white voice, visible skin.)"
+ },
+ {
+  "temp_id": "elemset-059",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "Size separates, color doesn't.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"lawcard\" style=\"--lc:#ed42c4\"><p class=\"ln\">LAW 7<span class=\"ld\"></span></p><h3>Size separates, color doesn't.</h3><p>24 headlines, 18 body, 14 details. White 99%. Headers get a voice.</p></div>",
+  "css_classes": [
+   "lawcard",
+   "ld",
+   "ln"
+  ],
+  "notes": " | duplicate of showcase1-053 (Size separates, color doesn't.)"
+ },
+ {
+  "temp_id": "elemset-060",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "Icons are drawn, not shrunk.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"lawcard\" style=\"--lc:#8a5cff\"><p class=\"ln\">LAW 9<span class=\"ld\"></span></p><h3>Icons are drawn, not shrunk.</h3><p>Vector geometry, readable at 16px. A shrunken render is mud.</p></div>",
+  "css_classes": [
+   "lawcard",
+   "ld",
+   "ln"
+  ],
+  "notes": " | duplicate of showcase1-054 (Icons are drawn, not shrunk.)"
+ },
+ {
+  "temp_id": "elemset-061",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "Verify before claiming.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"lawcard\" style=\"--lc:#3ca8ff\"><p class=\"ln\">LAW 13<span class=\"ld\"></span></p><h3>Verify before claiming.</h3><p>Read the file. Count the matches. Watch it render. Then say it's done.</p></div>",
+  "css_classes": [
+   "lawcard",
+   "ld",
+   "ln"
+  ],
+  "notes": " | duplicate of showcase1-055 (Verify before claiming.)"
+ },
+ {
+  "temp_id": "elemset-062",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "Pre-ship checklist · all must pass",
+  "demo_num": null,
+  "category": "TYP",
+  "tags": [
+   "landing",
+   "feed",
+   "dashboard",
+   "report",
+   "profile"
+  ],
+  "html": "<p class=\"aiphase\">I · SEE</p>",
+  "css_classes": [
+   "aiphase"
+  ],
+  "notes": "AI phase badge — | duplicate of showcase1-056 (Pre-ship checklist · all must pass)"
+ },
+ {
+  "temp_id": "elemset-064",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "One standard. Every page. No drift.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn naya-btn--foundation naya-btn--foundation-obsidian\" type=\"button\" aria-pressed=\"true\" data-message=\"Black Ground — Obsidian is the field: deep, calm, and built to make light visible.\"><span class=\"nb-jewel\" aria-hidden=\"true\">◆</span><span class=\"nb-copy\"><span class=\"nb-title\">BLACK GROUND</span><span class=\"nb-sub\">Obsidian field</span></span></button>",
+  "css_classes": [
+   "naya-btn",
+   "naya-btn--foundation",
+   "naya-btn--foundation-obsidian",
+   "nb-copy",
+   "nb-jewel",
+   "nb-sub",
+   "nb-title"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elemset-065",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "One standard. Every page. No drift.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn naya-btn--foundation naya-btn--foundation-light\" type=\"button\" aria-pressed=\"false\" data-message=\"White Light — the living light: text, rims, and clarity stay unmistakably bright.\"><span class=\"nb-jewel\" aria-hidden=\"true\">✧</span><span class=\"nb-copy\"><span class=\"nb-title\">WHITE LIGHT</span><span class=\"nb-sub\">Living light</span></span></button>",
+  "css_classes": [
+   "naya-btn",
+   "naya-btn--foundation",
+   "naya-btn--foundation-light",
+   "nb-copy",
+   "nb-jewel",
+   "nb-sub",
+   "nb-title"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elemset-066",
+  "source_file": "Naya_Design_Element_Set_N4.html",
+  "demo_name": "One standard. Every page. No drift.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn naya-btn--foundation naya-btn--foundation-soul\" type=\"button\" aria-pressed=\"false\" data-message=\"Purple Soul — Naya's signature: chrome, presence, and soul — never a flood.\"><span class=\"nb-jewel\" aria-hidden=\"true\">▲</span><span class=\"nb-copy\"><span class=\"nb-title\">PURPLE SOUL</span><span class=\"nb-sub\">Soul signature</span></span></button>",
+  "css_classes": [
+   "naya-btn",
+   "naya-btn--foundation",
+   "naya-btn--foundation-soul",
+   "nb-copy",
+   "nb-jewel",
+   "nb-sub",
+   "nb-title"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elem2-001",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "One contract, three tongues",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"jewel mini\" style=\"--jewel:#9d75ff\">◆</span>",
+  "css_classes": [
+   "jewel",
+   "mini"
+  ],
+  "notes": " | duplicate of elem2-007 (One contract, three tongues) | duplicate of elem2-017 (One contract, three tongues)"
+ },
+ {
+  "temp_id": "elem2-002",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "One contract, three tongues",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"jewel mini\" style=\"--jewel:#3ca8ff\">✦</span>",
+  "css_classes": [
+   "jewel",
+   "mini"
+  ],
+  "notes": " | duplicate of elem2-008 (One contract, three tongues) | duplicate of elem2-018 (One contract, three tongues)"
+ },
+ {
+  "temp_id": "elem2-003",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "One contract, three tongues",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"jewel mini\" style=\"--jewel:#35e39b\">△</span>",
+  "css_classes": [
+   "jewel",
+   "mini"
+  ],
+  "notes": " | duplicate of elem2-009 (One contract, three tongues) | duplicate of elem2-019 (One contract, three tongues)"
+ },
+ {
+  "temp_id": "elem2-004",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "One contract, three tongues",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"jewel mini\" style=\"--jewel:#ffd45a\">✧</span>",
+  "css_classes": [
+   "jewel",
+   "mini"
+  ],
+  "notes": " | duplicate of elem2-010 (One contract, three tongues) | duplicate of elem2-020 (One contract, three tongues)"
+ },
+ {
+  "temp_id": "elem2-005",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "One contract, three tongues",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"jewel mini\" style=\"--jewel:#ff8c42\">◆</span>",
+  "css_classes": [
+   "jewel",
+   "mini"
+  ],
+  "notes": " | duplicate of elem2-011 (One contract, three tongues)"
+ },
+ {
+  "temp_id": "elem2-006",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "One contract, three tongues",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"jewel mini\" style=\"--jewel:#ed42c4\">✦</span>",
+  "css_classes": [
+   "jewel",
+   "mini"
+  ],
+  "notes": " | duplicate of elem2-012 (One contract, three tongues)"
+ },
+ {
+  "temp_id": "elem2-013",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "One contract, three tongues",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"jewel mini\" style=\"--jewel:#9d75ff\">△</span>",
+  "css_classes": [
+   "jewel",
+   "mini"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elem2-014",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "One contract, three tongues",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"jewel mini\" style=\"--jewel:#3ca8ff\">✧</span>",
+  "css_classes": [
+   "jewel",
+   "mini"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elem2-015",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "One contract, three tongues",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"jewel mini\" style=\"--jewel:#35e39b\">◆</span>",
+  "css_classes": [
+   "jewel",
+   "mini"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elem2-016",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "One contract, three tongues",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"jewel mini\" style=\"--jewel:#ffd45a\">✦</span>",
+  "css_classes": [
+   "jewel",
+   "mini"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elem2-021",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "One contract, three tongues",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"jewel mini\" style=\"--jewel:#ff6b8a\">◆</span>",
+  "css_classes": [
+   "jewel",
+   "mini"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elem2-022",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "Why v2 exists",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"jewel\" style=\"--jewel:#8a5cff\">◆</span>",
+  "css_classes": [
+   "jewel"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elem2-023",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "Why v2 exists",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"jewel\" style=\"--jewel:#3ca8ff\">✦</span>",
+  "css_classes": [
+   "jewel"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elem2-024",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "Why v2 exists",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"jewel\" style=\"--jewel:#35e39b\">△</span>",
+  "css_classes": [
+   "jewel"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elem2-025",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "Why v2 exists",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"jewel\" style=\"--jewel:#ffd45a\">✧</span>",
+  "css_classes": [
+   "jewel"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elem2-026",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "Why v2 exists",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"jewel\" style=\"--jewel:#ff6b8a\">◆</span>",
+  "css_classes": [
+   "jewel"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elem2-027",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "Why v2 exists",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"jewel\" style=\"--jewel:#ff8c42\">✦</span>",
+  "css_classes": [
+   "jewel"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elem2-028",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "One contract, three tongues",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"jewel\" style=\"--jewel:#8a5cff\">△</span>",
+  "css_classes": [
+   "jewel"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elem2-029",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "One contract, three tongues",
+  "demo_num": null,
+  "category": "LST",
+  "tags": [
+   "dashboard",
+   "feed",
+   "settings",
+   "form",
+   "landing"
+  ],
+  "html": "<div class=\"law-step\"><span class=\"jewel mini\" style=\"--jewel:#9d75ff\">◆</span><div><strong>White edge, always visible.</strong><span>Borders at rest are at least 1.5px of white light. If you can’t see the edge, it isn’t there.</span></div></div>",
+  "css_classes": [
+   "jewel",
+   "law-step",
+   "mini"
+  ],
+  "notes": "law step —"
+ },
+ {
+  "temp_id": "elem2-030",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "One contract, three tongues",
+  "demo_num": null,
+  "category": "LST",
+  "tags": [
+   "dashboard",
+   "feed",
+   "settings",
+   "form",
+   "landing"
+  ],
+  "html": "<div class=\"law-step\"><span class=\"jewel mini\" style=\"--jewel:#3ca8ff\">✦</span><div><strong>9.0 or it doesn’t ship.</strong><span>Nothing reaches Shawn below 9. Scored on the rendered page, never the code.</span></div></div>",
+  "css_classes": [
+   "jewel",
+   "law-step",
+   "mini"
+  ],
+  "notes": "law step —"
+ },
+ {
+  "temp_id": "elem2-031",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "One contract, three tongues",
+  "demo_num": null,
+  "category": "LST",
+  "tags": [
+   "dashboard",
+   "feed",
+   "settings",
+   "form",
+   "landing"
+  ],
+  "html": "<div class=\"law-step\"><span class=\"jewel mini\" style=\"--jewel:#35e39b\">△</span><div><strong>Type speaks in three sizes.</strong><span>24 for kickers, 18 for headlines, 14 for details. Size separates — color never does.</span></div></div>",
+  "css_classes": [
+   "jewel",
+   "law-step",
+   "mini"
+  ],
+  "notes": "law step —"
+ },
+ {
+  "temp_id": "elem2-032",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "One contract, three tongues",
+  "demo_num": null,
+  "category": "LST",
+  "tags": [
+   "dashboard",
+   "feed",
+   "settings",
+   "form",
+   "landing"
+  ],
+  "html": "<div class=\"law-step\"><span class=\"jewel mini\" style=\"--jewel:#ffd45a\">✧</span><div><strong>Twelve words or fewer.</strong><span>A tagline that needs thirteen words isn’t a tagline. Cut it.</span></div></div>",
+  "css_classes": [
+   "jewel",
+   "law-step",
+   "mini"
+  ],
+  "notes": "law step —"
+ },
+ {
+  "temp_id": "elem2-033",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "One contract, three tongues",
+  "demo_num": null,
+  "category": "LST",
+  "tags": [
+   "dashboard",
+   "feed",
+   "settings",
+   "form",
+   "landing"
+  ],
+  "html": "<div class=\"law-step\"><span class=\"jewel mini\" style=\"--jewel:#ff8c42\">◆</span><div><strong>Draw icons. Never shrink photos.</strong><span>Every icon is vector geometry, readable at 16px. No exceptions, no excuses.</span></div></div>",
+  "css_classes": [
+   "jewel",
+   "law-step",
+   "mini"
+  ],
+  "notes": "law step —"
+ },
+ {
+  "temp_id": "elem2-034",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "One contract, three tongues",
+  "demo_num": null,
+  "category": "LST",
+  "tags": [
+   "dashboard",
+   "feed",
+   "settings",
+   "form",
+   "landing"
+  ],
+  "html": "<div class=\"law-step\"><span class=\"jewel mini\" style=\"--jewel:#ed42c4\">✦</span><div><strong>Full width. No cages.</strong><span>No max-width caps, no black gutters. The page uses the screen it’s given.</span></div></div>",
+  "css_classes": [
+   "jewel",
+   "law-step",
+   "mini"
+  ],
+  "notes": "law step —"
+ },
+ {
+  "temp_id": "elem2-035",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "One contract, three tongues",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"jewel\" style=\"--jewel:#3ca8ff\">✧</span>",
+  "css_classes": [
+   "jewel"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elem2-036",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "One contract, three tongues",
+  "demo_num": null,
+  "category": "LST",
+  "tags": [
+   "dashboard",
+   "feed",
+   "settings",
+   "form",
+   "landing"
+  ],
+  "html": "<div class=\"law-step\"><span class=\"jewel mini\" style=\"--jewel:#9d75ff\">◆</span><div><strong>Pick the layout that matches what the page IS.</strong><span>People scroll. Products grid. Feeds flow. The layout tells the story before a word is read.</span></div></div>",
+  "css_classes": [
+   "jewel",
+   "law-step",
+   "mini"
+  ],
+  "notes": "law step —"
+ },
+ {
+  "temp_id": "elem2-037",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "One contract, three tongues",
+  "demo_num": null,
+  "category": "LST",
+  "tags": [
+   "dashboard",
+   "feed",
+   "settings",
+   "form",
+   "landing"
+  ],
+  "html": "<div class=\"law-step\"><span class=\"jewel mini\" style=\"--jewel:#3ca8ff\">✦</span><div><strong>Give every element one color job.</strong><span>Chrome gets purple. Text gets white. Accents get their own spectrum color. Never mix them.</span></div></div>",
+  "css_classes": [
+   "jewel",
+   "law-step",
+   "mini"
+  ],
+  "notes": "law step —"
+ },
+ {
+  "temp_id": "elem2-038",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "One contract, three tongues",
+  "demo_num": null,
+  "category": "LST",
+  "tags": [
+   "dashboard",
+   "feed",
+   "settings",
+   "form",
+   "landing"
+  ],
+  "html": "<div class=\"law-step\"><span class=\"jewel mini\" style=\"--jewel:#35e39b\">△</span><div><strong>Light everything: white at rest, color on touch.</strong><span>White edge you can see when idle. Its own color ignites on hover. No exceptions.</span></div></div>",
+  "css_classes": [
+   "jewel",
+   "law-step",
+   "mini"
+  ],
+  "notes": "law step —"
+ },
+ {
+  "temp_id": "elem2-039",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "One contract, three tongues",
+  "demo_num": null,
+  "category": "LST",
+  "tags": [
+   "dashboard",
+   "feed",
+   "settings",
+   "form",
+   "landing"
+  ],
+  "html": "<div class=\"law-step\"><span class=\"jewel mini\" style=\"--jewel:#ffd45a\">✧</span><div><strong>Build buttons with black hearts.</strong><span>Black center, white text and icon, visible white border. The icon must promise what happens.</span></div></div>",
+  "css_classes": [
+   "jewel",
+   "law-step",
+   "mini"
+  ],
+  "notes": "law step —"
+ },
+ {
+  "temp_id": "elem2-040",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "One contract, three tongues",
+  "demo_num": null,
+  "category": "LST",
+  "tags": [
+   "dashboard",
+   "feed",
+   "settings",
+   "form",
+   "landing"
+  ],
+  "html": "<div class=\"law-step\"><span class=\"jewel mini\" style=\"--jewel:#ff8c42\">◆</span><div><strong>Size separates, color doesn't.</strong><span>24 for kickers, 18 for headlines, 14 for details. White text, always readable.</span></div></div>",
+  "css_classes": [
+   "jewel",
+   "law-step",
+   "mini"
+  ],
+  "notes": "law step —"
+ },
+ {
+  "temp_id": "elem2-041",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "One contract, three tongues",
+  "demo_num": null,
+  "category": "LST",
+  "tags": [
+   "dashboard",
+   "feed",
+   "settings",
+   "form",
+   "landing"
+  ],
+  "html": "<div class=\"law-step\"><span class=\"jewel mini\" style=\"--jewel:#ed42c4\">✦</span><div><strong>Draw icons. Don't shrink photos.</strong><span>Bold vector shapes that read at any size. If you can't make it good, leave it out.</span></div></div>",
+  "css_classes": [
+   "jewel",
+   "law-step",
+   "mini"
+  ],
+  "notes": "law step —"
+ },
+ {
+  "temp_id": "elem2-042",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "One contract, three tongues",
+  "demo_num": null,
+  "category": "LST",
+  "tags": [
+   "dashboard",
+   "feed",
+   "settings",
+   "form",
+   "landing"
+  ],
+  "html": "<div class=\"law-step\"><span class=\"jewel mini\" style=\"--jewel:#9d75ff\">△</span><div><strong>Make the header a front door.</strong><span>Logo, living mark, warm words, one clear line. Composed — not just placed side by side.</span></div></div>",
+  "css_classes": [
+   "jewel",
+   "law-step",
+   "mini"
+  ],
+  "notes": "law step —"
+ },
+ {
+  "temp_id": "elem2-043",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "One contract, three tongues",
+  "demo_num": null,
+  "category": "LST",
+  "tags": [
+   "dashboard",
+   "feed",
+   "settings",
+   "form",
+   "landing"
+  ],
+  "html": "<div class=\"law-step\"><span class=\"jewel mini\" style=\"--jewel:#3ca8ff\">✧</span><div><strong>Let the page breathe.</strong><span>Slow drifting light, gentle pulsing, soft glowing. Alive but calm. Always respect reduced-motion.</span></div></div>",
+  "css_classes": [
+   "jewel",
+   "law-step",
+   "mini"
+  ],
+  "notes": "law step —"
+ },
+ {
+  "temp_id": "elem2-044",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "One contract, three tongues",
+  "demo_num": null,
+  "category": "LST",
+  "tags": [
+   "dashboard",
+   "feed",
+   "settings",
+   "form",
+   "landing"
+  ],
+  "html": "<div class=\"law-step\"><span class=\"jewel mini\" style=\"--jewel:#35e39b\">◆</span><div><strong>Score what you see, not what you wrote.</strong><span>Look at the rendered page. Score it honestly. Below 9? Back to the bench.</span></div></div>",
+  "css_classes": [
+   "jewel",
+   "law-step",
+   "mini"
+  ],
+  "notes": "law step —"
+ },
+ {
+  "temp_id": "elem2-045",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "One contract, three tongues",
+  "demo_num": null,
+  "category": "LST",
+  "tags": [
+   "dashboard",
+   "feed",
+   "settings",
+   "form",
+   "landing"
+  ],
+  "html": "<div class=\"law-step\"><span class=\"jewel mini\" style=\"--jewel:#ffd45a\">✦</span><div><strong>Prove it before you claim it.</strong><span>Read the file. Count the matches. Watch it render. Then say it's done.</span></div></div>",
+  "css_classes": [
+   "jewel",
+   "law-step",
+   "mini"
+  ],
+  "notes": "law step —"
+ },
+ {
+  "temp_id": "elem2-046",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "One contract, three tongues",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"jewel\" style=\"--jewel:#35e39b\">◆</span>",
+  "css_classes": [
+   "jewel"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elem2-047",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "One contract, three tongues",
+  "demo_num": null,
+  "category": "LST",
+  "tags": [
+   "dashboard",
+   "feed",
+   "settings",
+   "form",
+   "landing"
+  ],
+  "html": "<div class=\"law-step\"><span class=\"jewel mini\" style=\"--jewel:#9d75ff\">◆</span><div><strong>Black is the night. White is the light. Purple is the signature.</strong></div></div>",
+  "css_classes": [
+   "jewel",
+   "law-step",
+   "mini"
+  ],
+  "notes": "law step —"
+ },
+ {
+  "temp_id": "elem2-048",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "One contract, three tongues",
+  "demo_num": null,
+  "category": "LST",
+  "tags": [
+   "dashboard",
+   "feed",
+   "settings",
+   "form",
+   "landing"
+  ],
+  "html": "<div class=\"law-step\"><span class=\"jewel mini\" style=\"--jewel:#3ca8ff\">✦</span><div><strong>The spectrum gives things identity — never shouts over the brand.</strong></div></div>",
+  "css_classes": [
+   "jewel",
+   "law-step",
+   "mini"
+  ],
+  "notes": "law step —"
+ },
+ {
+  "temp_id": "elem2-049",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "One contract, three tongues",
+  "demo_num": null,
+  "category": "LST",
+  "tags": [
+   "dashboard",
+   "feed",
+   "settings",
+   "form",
+   "landing"
+  ],
+  "html": "<div class=\"law-step\"><span class=\"jewel mini\" style=\"--jewel:#35e39b\">△</span><div><strong>Everything glows gently. The page breathes but stays calm.</strong></div></div>",
+  "css_classes": [
+   "jewel",
+   "law-step",
+   "mini"
+  ],
+  "notes": "law step —"
+ },
+ {
+  "temp_id": "elem2-050",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "One contract, three tongues",
+  "demo_num": null,
+  "category": "LST",
+  "tags": [
+   "dashboard",
+   "feed",
+   "settings",
+   "form",
+   "landing"
+  ],
+  "html": "<div class=\"law-step\"><span class=\"jewel mini\" style=\"--jewel:#ffd45a\">✧</span><div><strong>Words are white and clear. Every page knows what it is.</strong></div></div>",
+  "css_classes": [
+   "jewel",
+   "law-step",
+   "mini"
+  ],
+  "notes": "law step —"
+ },
+ {
+  "temp_id": "elem2-051",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "One contract, three tongues",
+  "demo_num": null,
+  "category": "LST",
+  "tags": [
+   "dashboard",
+   "feed",
+   "settings",
+   "form",
+   "landing"
+  ],
+  "html": "<div class=\"law-step\"><span class=\"jewel mini\" style=\"--jewel:#ff6b8a\">◆</span><div><strong>Nothing ships below excellent.</strong></div></div>",
+  "css_classes": [
+   "jewel",
+   "law-step",
+   "mini"
+  ],
+  "notes": "law step —"
+ },
+ {
+  "temp_id": "elem2-052",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "The laws at a glance",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"jewel\" style=\"--jewel:#8a5cff\">✦</span>",
+  "css_classes": [
+   "jewel"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elem2-053",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "The laws at a glance",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"jewel\" style=\"--jewel:#3ca8ff\">△</span>",
+  "css_classes": [
+   "jewel"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elem2-054",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "The laws at a glance",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"jewel\" style=\"--jewel:#35e39b\">✧</span>",
+  "css_classes": [
+   "jewel"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elem2-055",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "The laws at a glance",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"jewel\" style=\"--jewel:#ffd45a\">◆</span>",
+  "css_classes": [
+   "jewel"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elem2-056",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "The laws at a glance",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"jewel\" style=\"--jewel:#ff6b8a\">✦</span>",
+  "css_classes": [
+   "jewel"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elem2-057",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "The laws at a glance",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"jewel\" style=\"--jewel:#ff8c42\">△</span>",
+  "css_classes": [
+   "jewel"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elem2-058",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "The laws at a glance",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"jewel\" style=\"--jewel:#ff5e6c\">✧</span>",
+  "css_classes": [
+   "jewel"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elem2-059",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "The laws at a glance",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"jewel\" style=\"--jewel:#ed42c4\">◆</span>",
+  "css_classes": [
+   "jewel"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elem2-060",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "Score the experience, never the code ◆",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"card\" style=\"--accent:#8a5cff;--accent-soft:rgba(138,92,255,.45)\"><h3>Score the experience, never the code<span class=\"jewel\" style=\"--jewel:#8a5cff\">◆</span></h3><p>A 9.5 on CSS is worthless if the rendered page is a 5. The only score that matters is the lived, rendered experience.</p></div>",
+  "css_classes": [
+   "card",
+   "jewel"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elem2-061",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "Verify before claiming ✦",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"card\" style=\"--accent:#3ca8ff;--accent-soft:rgba(60,168,255,.45)\"><h3>Verify before claiming<span class=\"jewel\" style=\"--jewel:#3ca8ff\">✦</span></h3><p>Read the file. Count the matches. Watch it render. Then speak. A claim without verification is a lie told to yourself first.</p></div>",
+  "css_classes": [
+   "card",
+   "jewel"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elem2-062",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "Text is crafted, not placed △",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"card\" style=\"--accent:#35e39b;--accent-soft:rgba(53,227,155,.45)\"><h3>Text is crafted, not placed<span class=\"jewel\" style=\"--jewel:#35e39b\">△</span></h3><p>Gradient soul, layered shadows, breathing light. Display type gets a real voice. Flat text is a defect.</p></div>",
+  "css_classes": [
+   "card",
+   "jewel"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elem2-063",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "Icons are drawn, not shrunk ✧",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"card\" style=\"--accent:#ffd45a;--accent-soft:rgba(255,212,90,.45)\"><h3>Icons are drawn, not shrunk<span class=\"jewel\" style=\"--jewel:#ffd45a\">✧</span></h3><p>Vector geometry, readable at 16px, native to the page’s language. A shrunken render is mud.</p></div>",
+  "css_classes": [
+   "card",
+   "jewel"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elem2-064",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "Copy gets scorecarded too ◆",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"card\" style=\"--accent:#ff6b8a;--accent-soft:rgba(255,107,138,.45)\"><h3>Copy gets scorecarded too<span class=\"jewel\" style=\"--jewel:#ff6b8a\">◆</span></h3><p>Ten words that earn their place beat thirty that don’t. Warm, clear, concise — or rewritten.</p></div>",
+  "css_classes": [
+   "card",
+   "jewel"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elem2-065",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "If you can’t make it good, omit it ✦",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"card\" style=\"--accent:#ff8c42;--accent-soft:rgba(255,140,66,.45)\"><h3>If you can’t make it good, omit it<span class=\"jewel\" style=\"--jewel:#ff8c42\">✦</span></h3><p>An empty space is honest. A bad icon is a lie. Restraint is a design decision.</p></div>",
+  "css_classes": [
+   "card",
+   "jewel"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elem2-066",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "Machine Law — the normative source △",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"card\" style=\"--accent:#8a5cff;--accent-soft:rgba(138,92,255,.5)\"><h3>Machine Law — the normative source<span class=\"jewel\" style=\"--jewel:#8a5cff\">△</span></h3><p>JSON predicates. Every SHALL verifiable against rendered output.</p><div class=\"law-steps\" style=\"margin-top:14px\"><div class=\"law-step\"><span class=\"jewel mini\" style=\"--jewel:#9d75ff\">◆</span><div><strong>White edge, always visible.</strong><span>Borders at rest are at least 1.5px of white light. If you can’t see the edge, it isn’t there.</span></div></div><div class=\"law-step\"><span class=\"jewel mini\" style=\"--jewel:#3ca8ff\">✦</span><div><strong>9.0 or it doesn’t ship.</strong><span>Nothing reaches Shawn below 9. Scored on the rendered page, never the code.</span></div></div><div class=\"law-step\"><span class=\"jewel mini\" style=\"--jewel:#35e39b\">△</span><div><strong>Type speaks in three sizes.</strong><span>24 for kickers, 18 for headlines, 14 for details. Size separates — color never does.</span></div></div><div class=\"law-step\"><span class=\"jewel mini\" style=\"--jewel:#ffd45a\">✧</span><div><strong>Twelve words or fewer.</strong><span>A tagline that needs thirteen words isn’t a tagline. Cut it.</span></div></div><div class=\"law-step\"><span class=\"jewel mini\" style=\"--jewel:#ff8c42\">◆</span><div><strong>Draw icons. Never shrink photos.</strong><span>Every icon is vector geometry, readable at 16px. No exceptions, no excuses.</span></div></div><div class=\"law-step\"><span class=\"jewel mini\" style=\"--jewel:#ed42c4\">✦</span><div><strong>Full width. No cages.</strong><span>No max-width caps, no black gutters. The page uses the screen it’s given.</span></div></div></div></div>",
+  "css_classes": [
+   "card",
+   "jewel",
+   "law-step",
+   "law-steps",
+   "mini"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elem2-067",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "AI Law — the build procedure ✧",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"card\" style=\"--accent:#3ca8ff;--accent-soft:rgba(60,168,255,.5)\"><h3>AI Law — the build procedure<span class=\"jewel\" style=\"--jewel:#3ca8ff\">✧</span></h3><p>Ten steps, in order. No skipping.</p><div class=\"law-steps\"><div class=\"law-step\"><span class=\"jewel mini\" style=\"--jewel:#9d75ff\">◆</span><div><strong>Pick the layout that matches what the page IS.</strong><span>People scroll. Products grid. Feeds flow. The layout tells the story before a word is read.</span></div></div><div class=\"law-step\"><span class=\"jewel mini\" style=\"--jewel:#3ca8ff\">✦</span><div><strong>Give every element one color job.</strong><span>Chrome gets purple. Text gets white. Accents get their own spectrum color. Never mix them.</span></div></div><div class=\"law-step\"><span class=\"jewel mini\" style=\"--jewel:#35e39b\">△</span><div><strong>Light everything: white at rest, color on touch.</strong><span>White edge you can see when idle. Its own color ignites on hover. No exceptions.</span></div></div><div class=\"law-step\"><span class=\"jewel mini\" style=\"--jewel:#ffd45a\">✧</span><div><strong>Build buttons with black hearts.</strong><span>Black center, white text and icon, visible white border. The icon must promise what happens.</span></div></div><div class=\"law-step\"><span class=\"jewel mini\" style=\"--jewel:#ff8c42\">◆</span><div><strong>Size separates, color doesn't.</strong><span>24 for kickers, 18 for headlines, 14 for details. White text, always readable.</span></div></div><div class=\"law-step\"><span class=\"jewel mini\" style=\"--jewel:#ed42c4\">✦</span><div><strong>Draw icons. Don't shrink photos.</strong><span>Bold vector shapes that read at any size. If you can't make it good, leave it out.</span></div></div><div class=\"law-step\"><span class=\"jewel mini\" style=\"--jewel:#9d75ff\">△</span><div><strong>Make the header a front door.</strong><span>Logo, living mark, warm words, one clear line. Composed — not just placed side by side.</span></div></div><div class=\"law-step\"><span class=\"jewel mini\" style=\"--jewel:#3ca8ff\">✧</span><div><strong>Let the page breathe.</strong><span>Slow drifting light, gentle pulsing, soft glowing. Alive but calm. Always respect reduced-motion.</span></div></div><div class=\"law-step\"><span class=\"jewel mini\" style=\"--jewel:#35e39b\">◆</span><div><strong>Score what you see, not what you wrote.</strong><span>Look at the rendered page. Score it honestly. Below 9? Back to the bench.</span></div></div><div class=\"law-step\"><span class=\"jewel mini\" style=\"--jewel:#ffd45a\">✦</span><div><strong>Prove it before you claim it.</strong><span>Read the file. Count the matches. Watch it render. Then say it's done.</span></div></div></div></div>",
+  "css_classes": [
+   "card",
+   "jewel",
+   "law-step",
+   "law-steps",
+   "mini"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elem2-068",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "Human Law — the philosophy ◆",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"card\" style=\"--accent:#35e39b;--accent-soft:rgba(53,227,155,.5)\"><h3>Human Law — the philosophy<span class=\"jewel\" style=\"--jewel:#35e39b\">◆</span></h3><div class=\"law-steps\" style=\"margin-top:12px\"><div class=\"law-step\"><span class=\"jewel mini\" style=\"--jewel:#9d75ff\">◆</span><div><strong>Black is the night. White is the light. Purple is the signature.</strong></div></div><div class=\"law-step\"><span class=\"jewel mini\" style=\"--jewel:#3ca8ff\">✦</span><div><strong>The spectrum gives things identity — never shouts over the brand.</strong></div></div><div class=\"law-step\"><span class=\"jewel mini\" style=\"--jewel:#35e39b\">△</span><div><strong>Everything glows gently. The page breathes but stays calm.</strong></div></div><div class=\"law-step\"><span class=\"jewel mini\" style=\"--jewel:#ffd45a\">✧</span><div><strong>Words are white and clear. Every page knows what it is.</strong></div></div><div class=\"law-step\"><span class=\"jewel mini\" style=\"--jewel:#ff6b8a\">◆</span><div><strong>Nothing ships below excellent.</strong></div></div></div><p class=\"fine\">One brain, many doors — and every door looks like it belongs.</p></div>",
+  "css_classes": [
+   "card",
+   "fine",
+   "jewel",
+   "law-step",
+   "law-steps",
+   "mini"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elem2-069",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "Lighting ✦",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"card\" style=\"--accent:#8a5cff;--accent-soft:rgba(138,92,255,.5)\"><h3>Lighting<span class=\"jewel\" style=\"--jewel:#8a5cff\">✦</span></h3><p>White edge light at rest — 1.5px minimum, visible. Own color ignites on hover. Selection shows white only, never permanent color glow.</p></div>",
+  "css_classes": [
+   "card",
+   "jewel"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elem2-070",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "Color jobs △",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"card\" style=\"--accent:#3ca8ff;--accent-soft:rgba(60,168,255,.5)\"><h3>Color jobs<span class=\"jewel\" style=\"--jewel:#3ca8ff\">△</span></h3><p>Chrome is purple edge, white text. Text is white 99%, separated by size. Theme follows the spectrum per element. Never cross the jobs.</p></div>",
+  "css_classes": [
+   "card",
+   "jewel"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elem2-071",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "Buttons ✧",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"card\" style=\"--accent:#35e39b;--accent-soft:rgba(53,227,155,.5)\"><h3>Buttons<span class=\"jewel\" style=\"--jewel:#35e39b\">✧</span></h3><p>Black heart (#050505), white voice plus icon, visible 1.5px skin, elevated. The glyph promises the action — plus means add, chevron means go.</p></div>",
+  "css_classes": [
+   "card",
+   "jewel"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elem2-072",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "Typography ◆",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"card\" style=\"--accent:#ffd45a;--accent-soft:rgba(255,212,90,.5)\"><h3>Typography<span class=\"jewel\" style=\"--jewel:#ffd45a\">◆</span></h3><p>24 / 18 / 14. Body 17–18px, floor 16px. Display type gets a real voice with crafted light — gradient or carved, layered shadows, breathing glow.</p></div>",
+  "css_classes": [
+   "card",
+   "jewel"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elem2-073",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "Icons ✦",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"card\" style=\"--accent:#ff6b8a;--accent-soft:rgba(255,107,138,.5)\"><h3>Icons<span class=\"jewel\" style=\"--jewel:#ff6b8a\">✦</span></h3><p>Drawn vector geometry, readable at 16px, native to the page. No shrunken renders. If you can’t make it good, don’t place it.</p></div>",
+  "css_classes": [
+   "card",
+   "jewel"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elem2-074",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "Header △",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"card\" style=\"--accent:#ff8c42;--accent-soft:rgba(255,140,66,.5)\"><h3>Header<span class=\"jewel\" style=\"--jewel:#ff8c42\">△</span></h3><p>Logo top-left, living mark, warm voice, one clear line. Composed, not assembled. It breathes with the page — a front door, not a nameplate.</p></div>",
+  "css_classes": [
+   "card",
+   "jewel"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elem2-075",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "Aliveness ✧",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"card\" style=\"--accent:#ff5e6c;--accent-soft:rgba(255,94,108,.5)\"><h3>Aliveness<span class=\"jewel\" style=\"--jewel:#ff5e6c\">✧</span></h3><p>Ambient drift, edge breathing, rotating sheens, glow pulses — 4-second cycles minimum, slow and purposeful. Reduced motion disables everything.</p></div>",
+  "css_classes": [
+   "card",
+   "jewel"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elem2-076",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "Gates ◆",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"card\" style=\"--accent:#ed42c4;--accent-soft:rgba(237,66,196,.5)\"><h3>Gates<span class=\"jewel\" style=\"--jewel:#ed42c4\">◆</span></h3><p>9.0 to ship — scored on the rendered experience, never the code. Self-scorecard mandatory. Verify before claiming. No exceptions.</p></div>",
+  "css_classes": [
+   "card",
+   "jewel"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "elem2-077",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "Try it — the spectrum law, live",
+  "demo_num": null,
+  "category": "UNCAT",
+  "tags": [
+   "theme",
+   "dashboard",
+   "feed",
+   "settings",
+   "landing"
+  ],
+  "html": "<button class=\"sw\" style=\"--c:#9d75ff\" data-c=\"#9d75ff\" data-name=\"Purple — Naya herself\" aria-label=\"Purple\"></button>",
+  "css_classes": [
+   "sw"
+  ],
+  "notes": "color swatch —",
+  "proposed_category": "COLOR"
+ },
+ {
+  "temp_id": "elem2-078",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "Try it — the spectrum law, live",
+  "demo_num": null,
+  "category": "UNCAT",
+  "tags": [
+   "theme",
+   "dashboard",
+   "feed",
+   "settings",
+   "landing"
+  ],
+  "html": "<button class=\"sw\" style=\"--c:#3ca8ff\" data-c=\"#3ca8ff\" data-name=\"Blue — calm truth\" aria-label=\"Blue\"></button>",
+  "css_classes": [
+   "sw"
+  ],
+  "notes": "color swatch —",
+  "proposed_category": "COLOR"
+ },
+ {
+  "temp_id": "elem2-079",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "Try it — the spectrum law, live",
+  "demo_num": null,
+  "category": "UNCAT",
+  "tags": [
+   "theme",
+   "dashboard",
+   "feed",
+   "settings",
+   "landing"
+  ],
+  "html": "<button class=\"sw\" style=\"--c:#35e39b\" data-c=\"#35e39b\" data-name=\"Green — living growth\" aria-label=\"Green\"></button>",
+  "css_classes": [
+   "sw"
+  ],
+  "notes": "color swatch —",
+  "proposed_category": "COLOR"
+ },
+ {
+  "temp_id": "elem2-080",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "Try it — the spectrum law, live",
+  "demo_num": null,
+  "category": "UNCAT",
+  "tags": [
+   "theme",
+   "dashboard",
+   "feed",
+   "settings",
+   "landing"
+  ],
+  "html": "<button class=\"sw\" style=\"--c:#ffd45a\" data-c=\"#ffd45a\" data-name=\"Gold — earned wisdom\" aria-label=\"Gold\"></button>",
+  "css_classes": [
+   "sw"
+  ],
+  "notes": "color swatch —",
+  "proposed_category": "COLOR"
+ },
+ {
+  "temp_id": "elem2-081",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "Pre-ship checklist",
+  "demo_num": null,
+  "category": "UNCAT",
+  "tags": [
+   "dashboard",
+   "feed",
+   "settings",
+   "landing"
+  ],
+  "html": "<label class=\"check\" style=\"--cc:#9d75ff\"><input type=\"checkbox\"><span>White edge light is visible on every card and button at rest</span></label>",
+  "css_classes": [
+   "check"
+  ],
+  "notes": "check glyph —",
+  "proposed_category": "ICON"
+ },
+ {
+  "temp_id": "elem2-082",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "Pre-ship checklist",
+  "demo_num": null,
+  "category": "UNCAT",
+  "tags": [
+   "dashboard",
+   "feed",
+   "settings",
+   "landing"
+  ],
+  "html": "<label class=\"check\" style=\"--cc:#3ca8ff\"><input type=\"checkbox\"><span>Themed elements ignite their own color; chrome ignites purple</span></label>",
+  "css_classes": [
+   "check"
+  ],
+  "notes": "check glyph —",
+  "proposed_category": "ICON"
+ },
+ {
+  "temp_id": "elem2-083",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "Pre-ship checklist",
+  "demo_num": null,
+  "category": "UNCAT",
+  "tags": [
+   "dashboard",
+   "feed",
+   "settings",
+   "landing"
+  ],
+  "html": "<label class=\"check\" style=\"--cc:#35e39b\"><input type=\"checkbox\"><span>Every button has a black heart, white voice, and a truthful icon</span></label>",
+  "css_classes": [
+   "check"
+  ],
+  "notes": "check glyph —",
+  "proposed_category": "ICON"
+ },
+ {
+  "temp_id": "elem2-084",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "Pre-ship checklist",
+  "demo_num": null,
+  "category": "UNCAT",
+  "tags": [
+   "dashboard",
+   "feed",
+   "settings",
+   "landing"
+  ],
+  "html": "<label class=\"check\" style=\"--cc:#ffd45a\"><input type=\"checkbox\"><span>Type hierarchy is 24 / 18 / 14 — size separates, color doesn’t</span></label>",
+  "css_classes": [
+   "check"
+  ],
+  "notes": "check glyph —",
+  "proposed_category": "ICON"
+ },
+ {
+  "temp_id": "elem2-085",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "Pre-ship checklist",
+  "demo_num": null,
+  "category": "UNCAT",
+  "tags": [
+   "dashboard",
+   "feed",
+   "settings",
+   "landing"
+  ],
+  "html": "<label class=\"check\" style=\"--cc:#ff6b8a\"><input type=\"checkbox\"><span>Copy is plain enough for anyone to understand on first read</span></label>",
+  "css_classes": [
+   "check"
+  ],
+  "notes": "check glyph —",
+  "proposed_category": "ICON"
+ },
+ {
+  "temp_id": "elem2-086",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "Pre-ship checklist",
+  "demo_num": null,
+  "category": "UNCAT",
+  "tags": [
+   "dashboard",
+   "feed",
+   "settings",
+   "landing"
+  ],
+  "html": "<label class=\"check\" style=\"--cc:#ff8c42\"><input type=\"checkbox\"><span>Scored the rendered page honestly — 9+ or back to the bench</span></label>",
+  "css_classes": [
+   "check"
+  ],
+  "notes": "check glyph —",
+  "proposed_category": "ICON"
+ },
+ {
+  "temp_id": "elem2-087",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "Self-scorecard — the drift test, honestly",
+  "demo_num": null,
+  "category": "LST",
+  "tags": [
+   "dashboard",
+   "feed",
+   "settings",
+   "form",
+   "landing"
+  ],
+  "html": "<div class=\"score-row\" style=\"--sc:#9d75ff\"><span class=\"dim\">Color discipline</span><span class=\"num\">9</span><span class=\"note\">Chrome purple, text white, cards cycle the spectrum in order — purple, blue, green, yellow, gold, orange, red, magenta. No floods, no crossed jobs.</span></div>",
+  "css_classes": [
+   "dim",
+   "note",
+   "num",
+   "score-row"
+  ],
+  "notes": "scorecard row —"
+ },
+ {
+  "temp_id": "elem2-088",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "Self-scorecard — the drift test, honestly",
+  "demo_num": null,
+  "category": "LST",
+  "tags": [
+   "dashboard",
+   "feed",
+   "settings",
+   "form",
+   "landing"
+  ],
+  "html": "<div class=\"score-row\" style=\"--sc:#3ca8ff\"><span class=\"dim\">Lighting</span><span class=\"num\">8</span><span class=\"note\">Every card and pill carries a 1.5px white border at rest and ignites its own accent on hover — verified in the bytes; the hover transition itself is unwatched in render.</span></div>",
+  "css_classes": [
+   "dim",
+   "note",
+   "num",
+   "score-row"
+  ],
+  "notes": "scorecard row —"
+ },
+ {
+  "temp_id": "elem2-089",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "Self-scorecard — the drift test, honestly",
+  "demo_num": null,
+  "category": "LST",
+  "tags": [
+   "dashboard",
+   "feed",
+   "settings",
+   "form",
+   "landing"
+  ],
+  "html": "<div class=\"score-row\" style=\"--sc:#35e39b\"><span class=\"dim\">Typography &amp; craft</span><span class=\"num\">9</span><span class=\"note\">24 / 18 / 14 / 17 observed throughout. Cormorant display type with carved light and breathing glow. No flat display text, no gray body copy.</span></div>",
+  "css_classes": [
+   "dim",
+   "note",
+   "num",
+   "score-row"
+  ],
+  "notes": "scorecard row —"
+ },
+ {
+  "temp_id": "elem2-090",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "Self-scorecard — the drift test, honestly",
+  "demo_num": null,
+  "category": "LST",
+  "tags": [
+   "dashboard",
+   "feed",
+   "settings",
+   "form",
+   "landing"
+  ],
+  "html": "<div class=\"score-row\" style=\"--sc:#ffd45a\"><span class=\"dim\">Copy</span><span class=\"num\">9</span><span class=\"note\">Tagline is 10 words. Section ledes are short and warm. The machine predicates are quoted verbatim, not paraphrased into vagueness.</span></div>",
+  "css_classes": [
+   "dim",
+   "note",
+   "num",
+   "score-row"
+  ],
+  "notes": "scorecard row —"
+ },
+ {
+  "temp_id": "elem2-091",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "Self-scorecard — the drift test, honestly",
+  "demo_num": null,
+  "category": "LST",
+  "tags": [
+   "dashboard",
+   "feed",
+   "settings",
+   "form",
+   "landing"
+  ],
+  "html": "<div class=\"score-row\" style=\"--sc:#ff8c42\"><span class=\"dim\">Icons &amp; marks</span><span class=\"num\">8</span><span class=\"note\">The orb mark is pure CSS geometry with orbiting light — drawn, not shrunk, native to the language. Pill glyphs are honest text marks, minimal by design.</span></div>",
+  "css_classes": [
+   "dim",
+   "note",
+   "num",
+   "score-row"
+  ],
+  "notes": "scorecard row —"
+ },
+ {
+  "temp_id": "elem2-092",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "Self-scorecard — the drift test, honestly",
+  "demo_num": null,
+  "category": "LST",
+  "tags": [
+   "dashboard",
+   "feed",
+   "settings",
+   "form",
+   "landing"
+  ],
+  "html": "<div class=\"score-row\" style=\"--sc:#ed42c4\"><span class=\"dim\">Header composition</span><span class=\"num\">9</span><span class=\"note\">Real NayaNET logo top-left, living orb mark right, warm serif voice, one clear tagline — composed as a lockup, breathing with the page.</span></div>",
+  "css_classes": [
+   "dim",
+   "note",
+   "num",
+   "score-row"
+  ],
+  "notes": "scorecard row —"
+ },
+ {
+  "temp_id": "elem2-093",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "Self-scorecard — the drift test, honestly",
+  "demo_num": null,
+  "category": "LST",
+  "tags": [
+   "dashboard",
+   "feed",
+   "settings",
+   "form",
+   "landing"
+  ],
+  "html": "<div class=\"score-row\" style=\"--sc:#ff5e6c\"><span class=\"dim\">Layout &amp; metaphor</span><span class=\"num\">9</span><span class=\"note\">Full-width, no max-width caps, no dead space, no dead buttons — every anchor resolves. A report scrolls vertically, as a report should.</span></div>",
+  "css_classes": [
+   "dim",
+   "note",
+   "num",
+   "score-row"
+  ],
+  "notes": "scorecard row —"
+ },
+ {
+  "temp_id": "elem2-094",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "Self-scorecard — the drift test, honestly",
+  "demo_num": null,
+  "category": "LST",
+  "tags": [
+   "dashboard",
+   "feed",
+   "settings",
+   "form",
+   "landing"
+  ],
+  "html": "<div class=\"score-row\" style=\"--sc:#9d75ff\"><span class=\"dim\">Aliveness</span><span class=\"num\">8</span><span class=\"note\">Ambient drift, edge breathing, glow pulses on 6s+ cycles with a reduced-motion off-switch — written to spec, motion unwatched in render.</span></div>",
+  "css_classes": [
+   "dim",
+   "note",
+   "num",
+   "score-row"
+  ],
+  "notes": "scorecard row —"
+ },
+ {
+  "temp_id": "elem2-095",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "Self-scorecard — the drift test, honestly",
+  "demo_num": null,
+  "category": "LST",
+  "tags": [
+   "dashboard",
+   "feed",
+   "settings",
+   "form",
+   "landing"
+  ],
+  "html": "<div class=\"score-row\" style=\"--sc:#3ca8ff\"><span class=\"dim\">Gate honesty</span><span class=\"num\">9</span><span class=\"note\">No claim in this report exceeds the bytes. The render gap is named here instead of smoothed over — that is the verification law working.</span></div>",
+  "css_classes": [
+   "dim",
+   "note",
+   "num",
+   "score-row"
+  ],
+  "notes": "scorecard row —"
+ },
+ {
+  "temp_id": "elem2-096",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "Self-scorecard — the drift test, honestly",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"scorecard\"><div class=\"score-row\" style=\"--sc:#9d75ff\"><span class=\"dim\">Color discipline</span><span class=\"num\">9</span><span class=\"note\">Chrome purple, text white, cards cycle the spectrum in order — purple, blue, green, yellow, gold, orange, red, magenta. No floods, no crossed jobs.</span></div><div class=\"score-row\" style=\"--sc:#3ca8ff\"><span class=\"dim\">Lighting</span><span class=\"num\">8</span><span class=\"note\">Every card and pill carries a 1.5px white border at rest and ignites its own accent on hover — verified in the bytes; the hover transition itself is unwatched in render.</span></div><div class=\"score-row\" style=\"--sc:#35e39b\"><span class=\"dim\">Typography &amp; craft</span><span class=\"num\">9</span><span class=\"note\">24 / 18 / 14 / 17 observed throughout. Cormorant display type with carved light and breathing glow. No flat display text, no gray body copy.</span></div><div class=\"score-row\" style=\"--sc:#ffd45a\"><span class=\"dim\">Copy</span><span class=\"num\">9</span><span class=\"note\">Tagline is 10 words. Section ledes are short and warm. The machine predicates are quoted verbatim, not paraphrased into vagueness.</span></div><div class=\"score-row\" style=\"--sc:#ff8c42\"><span class=\"dim\">Icons &amp; marks</span><span class=\"num\">8</span><span class=\"note\">The orb mark is pure CSS geometry with orbiting light — drawn, not shrunk, native to the language. Pill glyphs are honest text marks, minimal by design.</span></div><div class=\"score-row\" style=\"--sc:#ed42c4\"><span class=\"dim\">Header composition</span><span class=\"num\">9</span><span class=\"note\">Real NayaNET logo top-left, living orb mark right, warm serif voice, one clear tagline — composed as a lockup, breathing with the page.</span></div><div class=\"score-row\" style=\"--sc:#ff5e6c\"><span class=\"dim\">Layout &amp; metaphor</span><span class=\"num\">9</span><span class=\"note\">Full-width, no max-width caps, no dead space, no dead buttons — every anchor resolves. A report scrolls vertically, as a report should.</span></div><div class=\"score-row\" style=\"--sc:#9d75ff\"><span class=\"dim\">Aliveness</span><span class=\"num\">8</span><span class=\"note\">Ambient drift, edge breathing, glow pulses on 6s+ cycles with a reduced-motion off-switch — written to spec, motion unwatched in render.</span></div><div class=\"score-row\" style=\"--sc:#3ca8ff\"><span class=\"dim\">Gate honesty</span><span class=\"num\">9</span><span class=\"note\">No claim in this report exceeds the bytes. The render gap is named here instead of smoothed over — that is the verification law working.</span></div></div>",
+  "css_classes": [
+   "dim",
+   "note",
+   "num",
+   "score-row",
+   "scorecard"
+  ],
+  "notes": "scorecard block —"
+ },
+ {
+  "temp_id": "elem2-097",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "Self-scorecard — the drift test, honestly",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"verdict\"> The page obeys the contract in every byte I can check, but the contract’s own supreme procedure —  — cannot be satisfied without watching it render. This is the law working as designed: it refuses a 9 I can’t earn. Five contract ambiguities found in the drift test are listed in the builder’s handoff.<strong>Overall: 8.7 — CONDITIONAL.</strong><em>score the rendered experience, never the code</em></div>",
+  "css_classes": [
+   "verdict"
+  ],
+  "notes": "verdict banner —"
+ },
+ {
+  "temp_id": "elem2-098",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "Design Contract v2.0 The laws Naya lives by — checkable, not just beau",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"orb-mark\" aria-hidden=\"true\"></span>",
+  "css_classes": [
+   "orb-mark"
+  ],
+  "notes": "decorative orb —"
+ },
+ {
+  "temp_id": "elem2-099",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "Design Contract v2.0",
+  "demo_num": null,
+  "category": "NAV",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "settings",
+   "landing"
+  ],
+  "html": "<a class=\"pill\" style=\"--c:#9d75ff\" href=\"#layers\">Machine Law<span class=\"glyph\">§</span></a>",
+  "css_classes": [
+   "glyph",
+   "pill"
+  ],
+  "notes": "contract nav link —"
+ },
+ {
+  "temp_id": "elem2-100",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "Design Contract v2.0",
+  "demo_num": null,
+  "category": "NAV",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "settings",
+   "landing"
+  ],
+  "html": "<a class=\"pill\" style=\"--c:#3ca8ff\" href=\"#layers\">AI Law<span class=\"glyph\">§</span></a>",
+  "css_classes": [
+   "glyph",
+   "pill"
+  ],
+  "notes": "contract nav link —"
+ },
+ {
+  "temp_id": "elem2-101",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "Design Contract v2.0",
+  "demo_num": null,
+  "category": "NAV",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "settings",
+   "landing"
+  ],
+  "html": "<a class=\"pill\" style=\"--c:#35e39b\" href=\"#layers\">Human Law<span class=\"glyph\">§</span></a>",
+  "css_classes": [
+   "glyph",
+   "pill"
+  ],
+  "notes": "contract nav link —"
+ },
+ {
+  "temp_id": "elem2-102",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "Design Contract v2.0",
+  "demo_num": null,
+  "category": "NAV",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "settings",
+   "landing"
+  ],
+  "html": "<a class=\"pill\" style=\"--c:#ffd45a\" href=\"#scorecard\">Self-Scorecard<span class=\"glyph\">✓</span></a>",
+  "css_classes": [
+   "glyph",
+   "pill"
+  ],
+  "notes": "contract nav link —"
+ },
+ {
+  "temp_id": "elem2-103",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "Design Contract v2.0",
+  "demo_num": null,
+  "category": "NAV",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "settings",
+   "landing"
+  ],
+  "html": "<a class=\"pill\" style=\"--c:#ff8c42\" href=\"#demo\">Try it<span class=\"glyph\">◆</span></a>",
+  "css_classes": [
+   "glyph",
+   "pill"
+  ],
+  "notes": "contract nav link —"
+ },
+ {
+  "temp_id": "elem2-104",
+  "source_file": "Naya_Design_Elements_N2.html",
+  "demo_name": "Design Contract v2.0",
+  "demo_num": null,
+  "category": "NAV",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "settings",
+   "landing"
+  ],
+  "html": "<a class=\"pill\" style=\"--c:#ed42c4\" href=\"#preship\">Pre-ship<span class=\"glyph\">✓</span></a>",
+  "css_classes": [
+   "glyph",
+   "pill"
+  ],
+  "notes": "contract nav link —"
+ },
+ {
+  "temp_id": "showcase1-004",
+  "source_file": "Naya_Design_Standard_Showcase__1.html",
+  "demo_name": "Black heart. White voice. Visible skin.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"sp-join\" style=\"--sc:#3ca8ff\">＋ Join the space</button>",
+  "css_classes": [
+   "sp-join"
+  ],
+  "notes": "space join button —"
+ },
+ {
+  "temp_id": "showcase1-005",
+  "source_file": "Naya_Design_Standard_Showcase__1.html",
+  "demo_name": "Black heart. White voice. Visible skin.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"sp-join\" style=\"--sc:#35e39b\">✓ Joined</button>",
+  "css_classes": [
+   "sp-join"
+  ],
+  "notes": "space join button —"
+ },
+ {
+  "temp_id": "showcase1-006",
+  "source_file": "Naya_Design_Standard_Showcase__1.html",
+  "demo_name": "Black heart. White voice. Visible skin.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"cx-btn\" type=\"button\">REST</button>",
+  "css_classes": [
+   "cx-btn"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "showcase1-007",
+  "source_file": "Naya_Design_Standard_Showcase__1.html",
+  "demo_name": "Black heart. White voice. Visible skin.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"cx-btn\" type=\"button\" style=\"border-color:#8a5cff; box-shadow:0 0 30px -2px #8a5cff;\">FIRE</button>",
+  "css_classes": [
+   "cx-btn"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "showcase1-008",
+  "source_file": "Naya_Design_Standard_Showcase__1.html",
+  "demo_name": "Black heart. White voice. Visible skin.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"cx-btn\" type=\"button\" style=\"transform:scale(.97)\">TOUCH</button>",
+  "css_classes": [
+   "cx-btn"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "showcase1-009",
+  "source_file": "Naya_Design_Standard_Showcase__1.html",
+  "demo_name": "One board. One color. A destination you enter.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"nestcard\"><p class=\"nk\" style=\"--nc:#8a5cff\">IN A NUTSHELL<span class=\"ndot\"></span></p><p>Capture the essence. Verify the result. Let the next moment benefit.</p></div>",
+  "css_classes": [
+   "ndot",
+   "nestcard",
+   "nk"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "showcase1-010",
+  "source_file": "Naya_Design_Standard_Showcase__1.html",
+  "demo_name": "One board. One color. A destination you enter.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"nestcard\"><p class=\"nk\" style=\"--nc:#3ca8ff\">WHAT IT MEANS<span class=\"ndot\"></span></p><p>Understanding changes what Naya actually does next.</p></div>",
+  "css_classes": [
+   "ndot",
+   "nestcard",
+   "nk"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "showcase1-011",
+  "source_file": "Naya_Design_Standard_Showcase__1.html",
+  "demo_name": "One board. One color. A destination you enter.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"nestcard\"><p class=\"nk\" style=\"--nc:#35e39b\">HOW TO USE IT<span class=\"ndot\"></span></p><p>Retrieve the lesson, check its limits, carry it into action.</p></div>",
+  "css_classes": [
+   "ndot",
+   "nestcard",
+   "nk"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "showcase1-033",
+  "source_file": "Naya_Design_Standard_Showcase__1.html",
+  "demo_name": "Black heart. White voice. Visible skin.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"cx-btn\" type=\"button\">✉  WRITE MAIL</button>",
+  "css_classes": [
+   "cx-btn"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "showcase1-034",
+  "source_file": "Naya_Design_Standard_Showcase__1.html",
+  "demo_name": "Black heart. White voice. Visible skin.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"cx-btn\" type=\"button\">＋  ADD CONNECTION</button>",
+  "css_classes": [
+   "cx-btn"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "showcase1-035",
+  "source_file": "Naya_Design_Standard_Showcase__1.html",
+  "demo_name": "Black heart. White voice. Visible skin.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"cx-btn\" type=\"button\">→  OPEN REPORT</button>",
+  "css_classes": [
+   "cx-btn"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "showcase1-036",
+  "source_file": "Naya_Design_Standard_Showcase__1.html",
+  "demo_name": "IDLE",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"state\"><b>IDLE</b><button class=\"cx-btn\" type=\"button\">REST</button><p style=\"font-size:14px; color:#fff; opacity:.8; margin:10px 0 0\">White rim visible. Quiet.</p></div>",
+  "css_classes": [
+   "cx-btn",
+   "state"
+  ],
+  "notes": "button state card (contains state buttons) —"
+ },
+ {
+  "temp_id": "showcase1-037",
+  "source_file": "Naya_Design_Standard_Showcase__1.html",
+  "demo_name": "HOVER",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"state\"><b>HOVER</b><button class=\"cx-btn\" type=\"button\" style=\"border-color:#8a5cff; box-shadow:0 0 30px -2px #8a5cff;\">FIRE</button><p style=\"font-size:14px; color:#fff; opacity:.8; margin:10px 0 0\">Own color ignites. Lifts.</p></div>",
+  "css_classes": [
+   "cx-btn",
+   "state"
+  ],
+  "notes": "button state card (contains state buttons) —"
+ },
+ {
+  "temp_id": "showcase1-038",
+  "source_file": "Naya_Design_Standard_Showcase__1.html",
+  "demo_name": "PRESS",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"state\"><b>PRESS</b><button class=\"cx-btn\" type=\"button\" style=\"transform:scale(.97)\">TOUCH</button><p style=\"font-size:14px; color:#fff; opacity:.8; margin:10px 0 0\">Compresses. Alive.</p></div>",
+  "css_classes": [
+   "cx-btn",
+   "state"
+  ],
+  "notes": "button state card (contains state buttons) —"
+ },
+ {
+  "temp_id": "showcase1-058",
+  "source_file": "Naya_Design_Standard_Showcase__1.html",
+  "demo_name": "Principles don't survive contact with a deadline.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"drift\" style=\"--dc:#ffffff\"><span class=\"dw dw-dark\" style=\"--j:#ff5e6c\">✕</span><div><p class=\"dread\">They read <em>&quot;white light at rest&quot;</em></p><p class=\"dshipped\">…and shipped hairline borders.</p></div></div>",
+  "css_classes": [
+   "dread",
+   "drift",
+   "dshipped",
+   "dw",
+   "dw-dark"
+  ],
+  "notes": "drift misreading card —"
+ },
+ {
+  "temp_id": "showcase1-059",
+  "source_file": "Naya_Design_Standard_Showcase__1.html",
+  "demo_name": "Principles don't survive contact with a deadline.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"drift\" style=\"--dc:#ed42c4\"><span class=\"dw dw-dark\" style=\"--j:#ff5e6c\">✖</span><div><p class=\"dread\">They read <em>&quot;purple is the signature&quot;</em></p><p class=\"dshipped\">…and flooded pages purple.</p></div></div>",
+  "css_classes": [
+   "dread",
+   "drift",
+   "dshipped",
+   "dw",
+   "dw-dark"
+  ],
+  "notes": "drift misreading card —"
+ },
+ {
+  "temp_id": "showcase1-060",
+  "source_file": "Naya_Design_Standard_Showcase__1.html",
+  "demo_name": "Principles don't survive contact with a deadline.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"drift\" style=\"--dc:#ffd45a\"><span class=\"dw dw-dark\" style=\"--j:#ff5e6c\">×</span><div><p class=\"dread\">They read <em>&quot;jewel bullets&quot;</em></p><p class=\"dshipped\">…and shipped three purples in a row.</p></div></div>",
+  "css_classes": [
+   "dread",
+   "drift",
+   "dshipped",
+   "dw",
+   "dw-dark"
+  ],
+  "notes": "drift misreading card —"
+ },
+ {
+  "temp_id": "showcase1-061",
+  "source_file": "Naya_Design_Standard_Showcase__1.html",
+  "demo_name": "Every bullet a jewel. Never twice in a row.",
+  "demo_num": null,
+  "category": "LST",
+  "tags": [
+   "dashboard",
+   "feed",
+   "settings",
+   "form",
+   "landing"
+  ],
+  "html": "<div class=\"jewelrow\"><span class=\"jw\" style=\"--j:#ed42c4\">◆</span><span class=\"jw\" style=\"--j:#8a5cff\">✧</span><span class=\"jw\" style=\"--j:#3ca8ff\">▲</span><span class=\"jw\" style=\"--j:#35e39b\">✦</span><span class=\"jw\" style=\"--j:#ffd45a\">◆</span><span style=\"font-size:14px; color:#fff; opacity:.85\">the five-jewel cycle</span></div>",
+  "css_classes": [
+   "jewelrow",
+   "jw"
+  ],
+  "notes": "five-jewel cycle demo row —"
+ },
+ {
+  "temp_id": "showcase1-062",
+  "source_file": "Naya_Design_Standard_Showcase__1.html",
+  "demo_name": "Every bullet a jewel. Never twice in a row.",
+  "demo_num": null,
+  "category": "LST",
+  "tags": [
+   "dashboard",
+   "feed",
+   "settings",
+   "form",
+   "landing"
+  ],
+  "html": "<ul class=\"blist\"><li><span class=\"jw\" style=\"--j:#ed42c4\">◆</span><span>Magenta opens — the richest color leads the list.</span></li><li><span class=\"jw\" style=\"--j:#8a5cff\">✧</span><span>Purple deepens — the eye knows this is a new point.</span></li><li><span class=\"jw\" style=\"--j:#3ca8ff\">▲</span><span>Blue carries — knowledge moving down the page.</span></li><li><span class=\"jw\" style=\"--j:#35e39b\">✦</span><span>Green follows — alive and well, never the same twice.</span></li><li><span class=\"jw\" style=\"--j:#ffd45a\">◆</span><span>Gold closes — the headline point earns the brightest jewel.</span></li></ul>",
+  "css_classes": [
+   "blist",
+   "jw"
+  ],
+  "notes": "jewel bullet list —"
+ },
+ {
+  "temp_id": "showcase1-063",
+  "source_file": "Naya_Design_Standard_Showcase__1.html",
+  "demo_name": "Nothing reaches Shawn unchecked.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"gate\"><p class=\"kicker\" style=\"--kc:#8a5cff\">Pre-ship checklist · all must pass</p><p class=\"aiphase\">I · SEE</p><ul><li><span class=\"jw\" style=\"--j:#ed42c4\">◆</span><span>Rendered and  — screenshot reviewed, not assumed.<strong>looked at</strong></span></li><li><span class=\"jw\" style=\"--j:#8a5cff\">✧</span><span>No two adjacent jewels share a color — checked by machine.</span></li><li><span class=\"jw\" style=\"--j:#6675ff\">▲</span><span>All text white or theme — zero gray, checked by machine.</span></li><li><span class=\"jw\" style=\"--j:#3ca8ff\">✦</span><span>Type at 24 / 18 / 14 — headlines, body, details.</span></li></ul><p class=\"aiphase\">II · PROVE</p><ul><li><span class=\"jw\" style=\"--j:#55d5ee\">◆</span><span>Every board: one color, spine + kicker + corner jewel agree.</span></li><li><span class=\"jw\" style=\"--j:#35e39b\">◆</span><span>Real logo. Never a drawn substitute.</span></li><li><span class=\"jw\" style=\"--j:#b8ee57\">✧</span><span>Human words first — a child can follow it; technicals are evidence.</span></li><li><span class=\"jw\" style=\"--j:#ffd45a\">▲</span><span>Honest score against the fifteen laws. 9.0+ or it doesn't ship.</span></li></ul></div>",
+  "css_classes": [
+   "aiphase",
+   "gate",
+   "jw",
+   "kicker"
+  ],
+  "notes": "pre-ship checklist card —"
+ },
+ {
+  "temp_id": "showcase1-064",
+  "source_file": "Naya_Design_Standard_Showcase__1.html",
+  "demo_name": "That is the whole contract.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<p class=\"verdict\">If a page violates any ,it does not ship.<strong>SHALL</strong><br></p>",
+  "css_classes": [
+   "verdict"
+  ],
+  "notes": "verdict banner —"
+ },
+ {
+  "temp_id": "showcase1-065",
+  "source_file": "Naya_Design_Standard_Showcase__1.html",
+  "demo_name": "Nayanet · The Design Standard · Ultimate Spec · v1.7",
+  "demo_num": null,
+  "category": "UNCAT",
+  "tags": [
+   "dashboard",
+   "feed",
+   "settings",
+   "landing"
+  ],
+  "html": "<img class=\"logo\" src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAIAAADdvvtQAAAACXBIWXMAAFxGAABcRgEUlENBAAAgAElEQVR4nOy9d5BcyXkn+H1pninXDmjfABoYeO/GYIYcI3JGpJakKFGkuPQUuaJ4GxdxOoXuZEK7utuLizjdbmhDq1XEhgzJFUXRD8UdDu0MMd7C+wa60d5Vm+\" alt=\"Naya logo\">",
+  "css_classes": [
+   "logo"
+  ],
+  "notes": "logo image (base64) — | duplicate of showcase1-068 (Principles don't survive contact with a deadline.)",
+  "proposed_category": "MED"
+ },
+ {
+  "temp_id": "showcase1-066",
+  "source_file": "Naya_Design_Standard_Showcase__1.html",
+  "demo_name": "Nayanet · The Design Standard · Ultimate Spec · v1.7",
+  "demo_num": null,
+  "category": "TYP",
+  "tags": [
+   "landing",
+   "feed",
+   "dashboard",
+   "report",
+   "profile"
+  ],
+  "html": "<p class=\"invitation\">This page is the law. Mined from thirteen living pages and the best of every miner's work, judged against fifteen laws. If it isn't on this page, it isn't the standard.</p>",
+  "css_classes": [
+   "invitation"
+  ],
+  "notes": "typographic specimen —"
+ },
+ {
+  "temp_id": "showcase1-067",
+  "source_file": "Naya_Design_Standard_Showcase__1.html",
+  "demo_name": "Nayanet · The Design Standard · Ultimate Spec · v1.7",
+  "demo_num": null,
+  "category": "TYP",
+  "tags": [
+   "landing",
+   "feed",
+   "dashboard",
+   "report",
+   "profile"
+  ],
+  "html": "<div class=\"trinity\"><span class=\"t1\">BLACK GROUND</span><span class=\"t2\">WHITE LIGHT</span><span class=\"t3\">PURPLE SOUL</span></div>",
+  "css_classes": [
+   "t1",
+   "t2",
+   "t3",
+   "trinity"
+  ],
+  "notes": "three-value strip —"
+ }
+]

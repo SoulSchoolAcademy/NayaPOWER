@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<!-- IDENTITY LAW (consent-line, 2026-10-17): one person, one connected smart
+     world. The contract's identity block resolves ONCE in the assembler
+     (assemble.py resolve_identity); templates decide PRESENTATION only and
+     never redefine identity. Feature modules read context['identity']. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="The official Visual Smart Contract for the Smart Builder — every section composed from the library's real pieces and real CSS. Locked 2026-10-17.">
+<title>The Visual Smart Contract — Smart Builder v2 · OFFICIAL</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============ NAYA DESIGN TOKENS — v1 (canonical, verbatim) ============ */
+:root{
+  --obsidian:#0a0a0f; --obsidian-deep:#020203; --raise:#10141d; --card:#141a28;
+  --frosted:rgba(10,10,15,.72);
+  --white:#ffffff; --paper:#f8f7fb; --silver:#c9c9d4; --slate:#8a8a99;
+  --line:rgba(255,255,255,.12);
+  --sp-purple:#a06bff; --sp-indigo:#6675ff; --sp-sapphire:#55b9ee; --sp-teal:#40d3bb;
+  --sp-emerald:#2fe89e; --sp-lime:#b8ee57; --sp-yellow:#f1d75a; --sp-gold:#ffbf3d;
+  --sp-orange:#ff9a5a; --sp-rich-orange:#ff6b3d; --sp-red:#ff5e6c; --sp-magenta:#e84fff;
+  --soul:#a06bff; --verified:#2fe89e;
+  --font-voice:"Newsreader",Georgia,"Times New Roman",serif;
+  --font-ui:Inter,ui-sans-serif,system-ui,sans-serif;
+  --ease:cubic-bezier(.16,.84,.22,1);
+  --radius-md:14px; --radius-lg:22px; --radius-pill:999px;
+  --gap:16px;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--obsidian-deep); color:var(--silver); font-family:var(--font-ui);
+  font-size:16px; line-height:1.55; -webkit-font-smoothing:antialiased;}
+.wrap{max-width:1060px; margin:0 auto; padding:0 20px;}
+.kicker{font-size:11px; letter-spacing:.22em; text-transform:uppercase; font-weight:700;}
+h1,h2,h3{color:var(--white); font-family:var(--font-voice); font-weight:500; line-height:1.2;}
+h1{font-size:clamp(32px,5vw,44px); margin:14px 0 10px;}
+h2{font-size:clamp(22px,3vw,28px); margin:0 0 8px;}
+p{margin:0 0 12px; max-width:62ch;}
+.lede{font-size:18px; color:var(--paper); font-family:var(--font-voice);}
+section{padding:56px 0; border-top:1px solid var(--line);}
+.sec-head{margin-bottom:22px;}
+.sec-head .kicker{display:block; margin-bottom:10px;}
+.led{display:inline-block; width:9px; height:9px; border-radius:50%;
+  background:var(--verified); box-shadow:0 0 10px var(--verified); margin-right:8px;
+  animation:pulse 2.4s ease-in-out infinite; vertical-align:1px;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.45}}
+.grid{display:grid; gap:var(--gap);}
+.g3{grid-template-columns:repeat(3,1fr);} .g2{grid-template-columns:repeat(2,1fr);}
+.g4{grid-template-columns:repeat(4,1fr);}
+@media(max-width:760px){.g3,.g4{grid-template-columns:repeat(2,1fr);} .g2{grid-template-columns:1fr;}}
+
+/* ============ .naya-btn — button DNA (verbatim, Naya_2 canonical) ============ */
+.naya-btn{
+  --nb-accent:#8a5cff; --nb-accent-rgb:138,92,255;
+  position:relative; isolation:isolate; overflow:hidden;
+  display:inline-flex; align-items:center; justify-content:center; gap:10px;
+  min-height:52px; padding:0 28px; border-radius:999px;
+  border:1px solid transparent;
+  font-family:var(--font-ui); font-size:15px; font-weight:700; letter-spacing:.11em; text-transform:uppercase;
+  color:#f6f5ef; cursor:pointer; white-space:nowrap;
+  text-shadow:0 -1px 1px rgba(0,0,0,.85),0 1px 0 rgba(255,255,255,.06),0 1px 3px rgba(0,0,0,.6);
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.11) 0%,rgba(255,255,255,.015) 38%,rgba(0,0,0,.18) 100%),
+    linear-gradient(180deg,#2a2b33 0%,#0c0c0f 52%,#030304 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(238,236,228,.38),
+    inset 0 1px 0 rgba(255,255,255,.42),
+    inset 0 -1px 0 rgba(0,0,0,.72),
+    inset 0 -14px 26px rgba(0,0,0,.52),
+    inset 0 10px 18px rgba(255,255,255,.04),
+    0 20px 42px rgba(0,0,0,.84),
+    0 6px 14px rgba(0,0,0,.58);
+  transition:transform .22s var(--ease),box-shadow .38s var(--ease),border-color .3s ease,background .3s ease;
+  -webkit-tap-highlight-color:transparent;
+}
+.naya-btn>*{position:relative; z-index:3;}
+.naya-btn .nb-label{letter-spacing:.11em;}
+.naya-btn:hover,.naya-btn:focus-visible{transform:translateY(-3px) scale(1.012); outline:none;
+  box-shadow:
+    inset 0 0 0 1px rgba(238,236,228,.72),
+    inset 0 1px 0 rgba(255,255,255,.62),
+    inset 0 -1px 0 rgba(0,0,0,.70),
+    0 24px 48px rgba(0,0,0,.86),
+    0 0 26px -4px rgba(var(--nb-accent-rgb),.5);}
+.naya-btn:active{transform:translateY(1px) scale(.99);}
+.naya-btn.gold{--nb-accent:#ffbf3d; --nb-accent-rgb:255,191,61;}
+
+.hero{padding:72px 0 56px; border-top:none;}
+.hero .status{display:flex; align-items:center; gap:10px; margin-bottom:18px; flex-wrap:wrap;}
+
+/* ============ feature.cover — the personal header ============ */
+.cover{margin:0 0 34px;}
+.cover-banner{position:relative; height:230px; border-radius:var(--radius-lg); overflow:hidden;
+  background:var(--raise); border:1px solid var(--line);}
+.cover-photo{width:100%; height:100%; object-fit:cover; display:block;}
+.cover-photo-fallback{width:100%; height:100%;
+  background:linear-gradient(120deg,var(--sp-purple),var(--sp-magenta) 45%,var(--sp-gold));}
+.cover-scrim{position:absolute; inset:0; pointer-events:none;
+  background:linear-gradient(180deg,rgba(2,2,3,0) 30%,rgba(2,2,3,.78) 100%);}
+.cover-id{position:relative; display:flex; gap:18px; align-items:flex-end; padding:0 10px; margin-top:-46px;}
+.cover-ava{flex:0 0 auto; width:96px; height:96px; border-radius:28px; object-fit:cover;
+  border:3px solid var(--obsidian-deep); box-shadow:0 12px 30px rgba(0,0,0,.6); background:var(--card);}
+.cover-ava-fallback{display:grid; place-items:center;
+  background:linear-gradient(135deg,var(--sp-purple),var(--sp-magenta));
+  font-family:var(--font-voice); font-size:34px; font-weight:500; color:#fff;}
+.cover-who{min-width:0;}
+.cover-name{font-size:clamp(26px,4vw,36px); margin:0; text-shadow:0 2px 14px rgba(0,0,0,.7);}
+.cover-tagline{color:var(--paper); margin:6px 0 0; font-size:15px; text-shadow:0 1px 10px rgba(0,0,0,.7);}
+@media(max-width:640px){
+  .cover-banner{height:170px;}
+  .cover-ava{width:72px; height:72px; border-radius:20px; font-size:26px;}
+  .cover-id{gap:12px; margin-top:-36px;}
+}
+.pill{display:inline-flex; align-items:center; gap:8px; border:1px solid var(--line);
+  border-radius:var(--radius-pill); padding:7px 16px; font-size:12px; letter-spacing:.14em;
+  text-transform:uppercase; font-weight:700; color:var(--paper); background:var(--raise);}
+.pill .led{margin:0;}
+
+/* contract field rows — content layout inside real boards */
+.field{display:flex; gap:14px; padding:13px 0; border-bottom:1px solid var(--line); align-items:baseline;}
+.field:last-child{border-bottom:none;}
+.field .fk{flex:0 0 150px; font-size:11px; letter-spacing:.18em; text-transform:uppercase; font-weight:700; color:var(--slate);}
+.field .fv{color:var(--paper); font-size:15px;}
+@media(max-width:640px){.field{flex-direction:column; gap:4px;} .field .fk{flex:none;}}
+
+/* ============ specimens — the real pieces ============ */
+.spec{background:var(--raise); border:1px solid var(--line); border-radius:var(--radius-md);
+  overflow:hidden; transition:transform .2s var(--ease), border-color .25s;}
+.spec:hover{transform:translateY(-3px); border-color:var(--sp-teal);}
+.spec-stage{padding:30px 16px; display:flex; align-items:center; justify-content:center;
+  background:var(--obsidian); min-height:130px; overflow-x:auto;}
+.spec-stage .nb-scope{display:block; max-width:100%;}
+.spec-meta{padding:12px 14px; border-top:1px solid var(--line);}
+.spec-meta b{display:block; color:var(--white); font-size:14px; font-weight:600;}
+.spec-meta i{display:block; font-style:normal; font-size:10.5px; letter-spacing:.14em;
+  color:var(--slate); text-transform:uppercase; margin-top:3px;}
+.wallcat{margin:28px 0 12px; font-size:19px;}
+.wallcat span{color:var(--slate); font-family:var(--font-ui); font-size:12px; letter-spacing:.1em; margin-left:10px;}
+.wallgrid .spec-stage{min-height:110px; padding:22px 12px;}
+
+.phone{width:300px; max-width:100%; margin:0 auto; border:1px solid var(--line); border-radius:38px;
+  background:var(--obsidian); padding:14px; box-shadow:0 20px 48px rgba(0,0,0,.7);}
+.screen{border-radius:26px; background:var(--raise); overflow:hidden; min-height:480px; display:flex; flex-direction:column;}
+.screen .notch{height:26px; display:grid; place-items:center;}
+.screen .notch span{width:96px; height:20px; background:var(--obsidian); border-radius:var(--radius-pill);}
+.app-hero{padding:26px 20px 18px; text-align:center;}
+.app-hero .ava{width:72px; height:72px; border-radius:22px; margin:0 auto 12px;
+  background:linear-gradient(135deg,var(--sp-purple),var(--sp-magenta));
+  display:grid; place-items:center; font-family:var(--font-voice); font-size:30px; color:#fff;}
+.app-hero h3{font-size:20px; margin:0 0 4px;}
+.app-hero p{font-size:13px; color:var(--slate); margin:0;}
+.app-row{display:flex; gap:10px; padding:12px 16px;}
+.app-card{flex:1; background:var(--card); border:1px solid var(--line); border-radius:var(--radius-md);
+  padding:14px 10px; text-align:center; font-size:12px; color:var(--paper);}
+.installbar{margin-top:auto; padding:16px; border-top:1px solid var(--line);}
+
+.promise{text-align:center;}
+.promise .big{font-family:var(--font-voice); font-size:clamp(28px,4.5vw,40px); color:var(--white); margin:16px 0 8px;}
+.promise .big em{font-style:normal; color:var(--sp-red);}
+.promise p{margin:0 auto; max-width:52ch;}
+
+details.machine{border:1px solid var(--line); border-radius:var(--radius-md); background:var(--obsidian);}
+details.machine summary{cursor:pointer; padding:16px 20px; color:var(--paper); font-weight:600; list-style:none;}
+details.machine summary::-webkit-details-marker{display:none;}
+details.machine .body{padding:0 20px 20px;}
+pre{background:#050507; border:1px solid var(--line); border-radius:var(--radius-md); padding:18px;
+  overflow:auto; font-size:12.5px; line-height:1.6; color:var(--silver); max-height:480px;}
+.copyrow{display:flex; justify-content:flex-end; margin-bottom:10px;}
+
+#toast{position:fixed; left:50%; bottom:28px; transform:translateX(-50%) translateY(20px);
+  background:var(--card); border:1px solid var(--line); color:var(--paper); padding:13px 22px;
+  border-radius:var(--radius-pill); font-size:14px; opacity:0; pointer-events:none;
+  transition:opacity .3s var(--ease), transform .3s var(--ease); z-index:50; max-width:90vw; text-align:center;
+  box-shadow:0 12px 32px rgba(0,0,0,.65);}
+#toast.show{opacity:1; transform:translateX(-50%) translateY(0);}
+#toast .led{margin-right:6px;}
+
+footer{padding:40px 0 64px; border-top:1px solid var(--line); color:var(--slate); font-size:13px;}
+footer .kicker{color:var(--slate); display:block; margin-bottom:8px;}
+.nav{position:sticky; top:0; z-index:20; background:var(--frosted); backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);}
+.nav .wrap{display:flex; gap:4px; overflow-x:auto; padding:10px 20px;}
+.nav a{color:var(--slate); text-decoration:none; font-size:12px; letter-spacing:.1em; text-transform:uppercase;
+  font-weight:600; padding:8px 12px; border-radius:var(--radius-pill); white-space:nowrap;}
+.nav a:hover{color:var(--white); background:rgba(255,255,255,.06);}
+
+/* intake mode cards: the real .card piece drives the selected state */
+.nb-chrome .card.mode[aria-pressed="true"]{border-color:var(--accent);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.09),0 0 30px var(--accent-soft),0 12px 32px rgba(0,0,0,.55);}
+</style>
+<style>
+/* ===== section chrome — real library CSS, scoped .nb-chrome ===== */
+%%CHROME_CSS%%
+</style>
+<style>
+/* ===== wall specimen CSS — real library code, scoped .nb-scope ===== */
+%%WALL_CSS%%
+</style>
+</head>
+<body>
+
+<nav class="nav"><div class="wrap">
+  <a href="#intake">Intake</a><a href="#contract">Contract</a><a href="#specimens">Specimens</a>
+  <a href="#gallery">Gallery</a><a href="#customize">Customize</a><a href="#templates">Templates</a>
+  <a href="#features">Features</a><a href="#mobile">Mobile</a><a href="#promise">Promise</a>
+  <a href="#machine">Machine</a>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  %%COVER%%
+  <div class="status">
+    <span class="pill"><span class="led"></span>Official · Locked 2026-10-17</span>
+    <span class="pill">v2 · composed from its own parts</span>
+  </div>
+  <span class="kicker" style="color:var(--sp-purple)">%%KICKER%%</span>
+  <h1>%%TITLE%%</h1>
+  <p class="lede">%%LEDE%%</p>
+  <p style="margin-top:18px; display:flex; gap:12px; flex-wrap:wrap;">
+    <button class="naya-btn" data-scroll="#specimens"><span class="nb-label">See the pieces</span></button>
+    <button class="naya-btn" data-scroll="#templates"><span class="nb-label">See the templates</span></button>
+  </p>
+</div></header>
+
+<div class="wrap">
+
+<section id="intake">
+  <div class="sec-head">
+    <span class="kicker" style="color:var(--sp-indigo)">§1 · The intake</span>
+    <h2>A living form that holds the contract</h2>
+    <p>Not a questionnaire. A form the human and the builder shape together, over the session, until the human says build. Pick a mode — the contract listens in all three.</p>
+  </div>
+  <div class="nb-chrome"><div class="demo-board" style="--c:#6675ff">
+    %%INTAKE_MODES%%
+    <p id="modeline" style="margin:18px 0 16px; font-size:14px; color:var(--slate);">Intake mode: <b style="color:var(--paper)">questions</b> — the contract is listening.</p>
+    <div class="nb-chrome"><div class="lawcard" style="--lc:#6675ff">
+      <div class="ln" style="text-transform:uppercase"><span class="ld"></span><span>Two authors, one finalizer</span></div>
+      <p>The human and the builder both mold the contract. But only the human says <b>“okay, build”</b> — button or word. Finalize authority is human, always. And every intake element passes one bar: <b>does it remove a step for the human, or add one?</b> Anything that adds busywork fails.</p>
+    </div></div>
+  </div></div>
+</section>
+
+<section id="contract">
+  <div class="sec-head">
+    <span class="kicker" style="color:var(--sp-sapphire)">§2 · The contract</span>
+    <h2>What the builder is legally bound to</h2>
+    <p>The contract holds everything the build needs — words, pictures, links, structure, address. Shown beautifully, in the design language. Never a raw form.</p>
+  </div>
+  <div class="nb-chrome"><div class="demo-board" style="--c:#55b9ee">
+    %%FIELDS%%
+  </div></div>
+</section>
+
+<section id="specimens">
+  <div class="sec-head">
+    <span class="kicker" style="color:var(--sp-teal)">§3 · Specimens</span>
+    <h2>The material, sampled</h2>
+    <p>The main pieces of the library, rendered in their real code — not descriptions, not mockups. Each carries its model number: the human reads the name, the Naya reads the number. This page itself is composed from these same pieces.</p>
+  </div>
+  <div class="nb-chrome"><div class="demo-board" style="--c:#40d3bb">
+    %%WALL_HTML%%
+  </div></div>
+</section>
+
+<section id="gallery">
+  <div class="sec-head">
+    <span class="kicker" style="color:var(--sp-emerald)">§4 · The gallery</span>
+    <h2>%%GALLERY_TITLE%%</h2>
+    <p>%%GALLERY_LEDE%%</p>
+  </div>
+  %%GALLERY_POINTS%%
+</section>
+
+<section id="customize">
+  <div class="sec-head">
+    <span class="kicker" style="color:var(--sp-lime)">§5 · Customize</span>
+    <h2>%%CUSTOMIZE_TITLE%%</h2>
+    <p>%%CUSTOMIZE_LEDE%%</p>
+  </div>
+  %%CUSTOMIZE_POINTS%%
+</section>
+
+<section id="templates">
+  <div class="sec-head">
+    <span class="kicker" style="color:var(--sp-yellow)">§6 · The twelve templates</span>
+    <h2>Nobody starts blank</h2>
+    <p>Pick a template, tweak it, build. Most people will just pick one and say “this one” — and that works. Want different boards or buttons on it? Swap any piece from the gallery.</p>
+  </div>
+  %%TEMPLATES%%
+  <p style="margin-top:16px; font-size:14px; color:var(--slate);">Full stores are not a template — commerce at scale syncs to Shopify instead of rebuilding it.</p>
+</section>
+
+<section id="features">
+  <div class="sec-head">
+    <span class="kicker" style="color:var(--sp-gold)">§7 · Standard features</span>
+    <h2>Every Nia app comes with these</h2>
+    <p>Not add-ons, not upsells. The page is a personal version of the Hub — your picture at the top, your world inside.</p>
+  </div>
+  %%FEATURES%%
+</section>
+
+<section id="mobile">
+  <div class="sec-head">
+    <span class="kicker" style="color:var(--sp-orange)">§8 · Mobile first</span>
+    <h2>Mobile isn’t a version. Mobile is the app.</h2>
+    <p>Every Nia app is mobile-optimized by default — slide-over panels, gestures, the feel of a real phone app. Every app ships installable: download it to the phone and it works right away.</p>
+  </div>
+  <div class="nb-chrome"><div class="demo-board" style="--c:#ff9a5a">
+    <div class="grid g2" style="align-items:start;">
+      <div class="phone" aria-label="Phone mockup of a Nia app">
+        <div class="screen">
+          <div class="notch"><span></span></div>
+          <div class="app-hero">
+            <div class="ava">M</div>
+            <h3>Morning Crumb</h3>
+            <p>Warm bread · order ahead</p>
+          </div>
+          <div class="app-row">
+            <div class="app-card">Menu</div><div class="app-card">Order</div><div class="app-card">Visit</div>
+          </div>
+          <div class="app-row">
+            <div class="app-card">Posts</div><div class="app-card">Mail</div>
+          </div>
+          <div class="installbar">
+            <button class="naya-btn gold" id="installdemo" style="width:100%;"><span class="nb-label">Install app</span></button>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="nb-chrome" style="margin-bottom:12px"><div class="lawcard" style="--lc:#ff9a5a">
+          <div class="ln" style="text-transform:uppercase"><span class="ld"></span><span>PWA by default</span></div>
+          <p>“Install app” isn’t a feature you add — it’s what the thing is. A website builder gives you a page that happens to work on phones. We give you a phone app that happens to open in a browser.</p>
+        </div></div>
+        <div class="nb-chrome"><div class="lawcard" style="--lc:#ff9a5a">
+          <div class="ln" style="text-transform:uppercase"><span class="ld"></span><span>Naya makes your icon</span></div>
+          <p>The intake covers the app image: upload at exactly the right size — or better, Naya creates the image for your page. The human never has to know what size an app icon is. That’s our job.</p>
+        </div></div>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<section id="loop">
+  <div class="sec-head">
+    <span class="kicker" style="color:var(--sp-rich-orange)">§9 · The loop</span>
+    <h2>Build → See → Learn → Share → Gather</h2>
+    <p>The app is the beginning, not the end. Every person building makes everyone connected more intelligent.</p>
+  </div>
+  %%LOOP%%
+  <p style="margin-top:16px; font-size:14px; color:var(--slate);">Private by default, shared by choice. Share it and the network auto-connects people of like minds — the internet organizes itself.</p>
+</section>
+
+<section id="promise">
+  <div class="sec-head">
+    <span class="kicker" style="color:var(--sp-red)">§10 · The promise</span>
+  </div>
+  <div class="nb-chrome"><div class="demo-board promise" style="--c:#ff5e6c">
+    <div class="big">%%PROMISE_BIG%%</div>
+    <p>%%PROMISE_SUB%% It’s the smart thing to do. Wise ones are doing it. <b style="color:var(--paper)">Be a wise one.</b></p>
+  </div></div>
+</section>
+
+<section id="machine">
+  <div class="sec-head">
+    <span class="kicker" style="color:var(--sp-magenta)">§11 · For the machines</span>
+    <h2>The machine contract</h2>
+    <p>This page was generated from the contract data — same truth, two faces. The data file lives beside this page; the builder reads it, you read this. Amendable only through Shawn.</p>
+  </div>
+  <div class="nb-chrome"><div class="demo-board" style="--c:#e84fff">
+    <details class="machine">
+      <summary>smart-builder · visual contract v2 — view / copy</summary>
+      <div class="body">
+        <div class="copyrow"><button class="naya-btn" id="copyjson"><span class="nb-label">Copy JSON</span></button></div>
+        <pre id="machinejson">%%MACHINE_JSON%%</pre>
+      </div>
+    </details>
+  </div></div>
+</section>
+
+</div>
+
+<footer><div class="wrap">
+  <span class="kicker">Visual Smart Contract · Smart Builder · v2</span>
+  Locked by Shawn Vibert’s word, 2026-10-17. Generated from contract data; every section composed from the library’s real pieces and real CSS — no private styles. The search, the tray, the swap, the notes: those live on the Smart Builder page itself, where customers build. This page is the contract.
+</div></footer>
+
+<div id="toast" role="status"></div>
+
+<script>
+function toast(msg){
+  var t = document.getElementById("toast");
+  t.innerHTML = '<span class="led"></span>' + msg;
+  t.classList.add("show");
+  clearTimeout(t._h); t._h = setTimeout(function(){ t.classList.remove("show"); }, 2600);
+}
+function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
+document.getElementById("installdemo").onclick = function(){
+  toast("Demo: Nia app added to the home screen.");
+};
+document.getElementById("copyjson").onclick = function(){
+  var txt = document.getElementById("machinejson").textContent;
+  navigator.clipboard.writeText(txt).then(function(){ toast("Machine contract copied."); },
+    function(){ toast("Copy blocked — select the text manually."); });
+};
+document.addEventListener("click", function(e){
+  var m = e.target.closest(".mode");
+  if (m){
+    document.querySelectorAll(".mode").forEach(function(x){ x.setAttribute("aria-pressed", "false"); });
+    m.setAttribute("aria-pressed", "true");
+    document.getElementById("modeline").innerHTML =
+      'Intake mode: <b style="color:var(--paper)">' + esc(m.querySelector("h3").textContent.toLowerCase()) + '</b> — the contract is listening.';
+  }
+  var s = e.target.closest("[data-scroll]");
+  if (s){ var el = document.querySelector(s.getAttribute("data-scroll")); if (el) el.scrollIntoView({behavior:"smooth"}); }
+});
+</script>
+</body>
+</html>
