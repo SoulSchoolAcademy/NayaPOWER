@@ -8,7 +8,6 @@
 - 2026-10-15 ~04:50Z — merged Naya Resolve Narzan's Wave-163 sections per Shawn: priority protocol, communication law, pass-the-torch, mastery trajectory, lane-specific manual links.
 
 Every link below was verified resolving at issue time. If a link dies, the field-manual index is the fallback.
-*Link maintenance note: the oath and field manuals live on their author branches today (they are not on main yet). Re-point these links at main when they land there.*
 
 ---
 
