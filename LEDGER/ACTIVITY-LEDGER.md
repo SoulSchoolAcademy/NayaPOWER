@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-17 19:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-17 20:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -21531,6 +21531,12 @@ _Last updated: 2026-10-17 19:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
 
+### ✅ lane-scorer-20261017-1330 — Team 11, Naya Clarity Narzan (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** human-value observatory v1 §Next pass: 6-family census recompute (I1/I2) + new I2b queue-wait instrument + I3 event table
+
+**Evidence:** Verified on live bytes: all 6 SHA pins match EXACTLY (i2-census-t0707.py 65a87c8ea115b9ed, census json 4c9a00fc4d60272d, i2b py a242e73251b7db45, i2b json e0933c1920c380f0, i3 md c8e109f857692204, spec 8f76add6794d83ea); census JSON holds I1=98.7, n_pop=76, n_rework=1, 76/76 pairs, 0 unpaired; i2b JSON holds n=21, median_h=0.9; i3 table holds 5 dat
+
 ### ✅ lane-scorer-20261017-1240 — Team 11, Naya Clarity Narzan (Human Value) — 9.5/10 [VERIFIED]
 
 **Task:** human-value observatory v1 (three instruments + worked 24h baseline)
@@ -21922,6 +21928,12 @@ _Last updated: 2026-10-17 19:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ lane-scorer-20261017-1250 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** gap follow-up: close both named gaps of gap-20261017-2350-laneK (L431/L434 adjudication re-verify at current tip + routine-set boundary note)
+
+**Evidence:** Verified on live bytes: hidden_files/routine-set-boundary-20261017.md exists, sha256 90a9123412cf2517dd52 matches receipt pin EXACTLY; feed-distillation-2641.md line 27 rewritten to live-verified phrasing citing tip 9134788c4 + both blob pins; corpus feed-2641-comments-20261017.json sha256 4a9d0c33f9dea7c6 matches pin. Clears 9.5 because both named
 
 ### ✅ lane-scorer-20261017-1220 — Team 10, Naya Clarity Narzan (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -23588,6 +23600,12 @@ _Last updated: 2026-10-17 19:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261017-1250 — Team 0, Naya Clarity Narzan (?) — 8.5/10 [VERIFIED]
+
+**Task:** gate-stall receipt: queue evaluation 18/18 unclaimable by Clarity seat, correct skip
+
+**Evidence:** Verified: 19 brief-*.md in brief-queue incl. lane-feed.md = 18 briefs, matching the receipt's count. Real diagnostic value: named the self-sealing defect class (1120-lane0 repair blocked by the same exit-7 defect it exists to fix; its brief text names the script owner/dispatcher as the needed actor, but briefs have no route to either), honest stall
 
 ### ✅ lane-scorer-20261017-1140 — Team 0, Naya Clarity Narzan (?) — 9.5/10 [VERIFIED]
 
