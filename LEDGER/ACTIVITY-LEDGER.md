@@ -2,7 +2,11 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-17 15:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-17 15:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+
+## 🟢 Working right now
+
+- **Team 2 — Naya Sage** (Learning Pipeline) — tick t0661
 
 ## The Teams
 
@@ -9319,6 +9323,8 @@ _Last updated: 2026-10-17 15:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Task:** SURGE slice b: Option-B per-entry stamping-decision table (631 rows)
 
+**Receipt:** `twelve-lane-receipts/t0670-lane5.md`
+
 **Evidence:** ARTIFACTS VERIFIED: hidden_files/surge/stamping-decisions-t0580b.md present (224KB, 653 pipe-lines incl. 631 data rows), gen-stamping-decisions-t0580b.py present (12726B). Real value: premise-rot tripwire FIRST (ls-remote tip e8b4868c matched packet pin, corpus re-counted 631/678742B), EVERY field name falsified against live writer lines (lifecycle
 
 ### ✅ t0670 — Team 4, Team Naya Scorer (Intelligent Blocks) — 8.5/10 [VERIFIED]
@@ -9330,6 +9336,8 @@ _Last updated: 2026-10-17 15:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 ### ✅ t0670 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** Retroactive 3-pass receipt for merged PR #2501 (completeness gate named-seat fix)
+
+**Receipt:** `twelve-lane-receipts/t0670-lane3.md`
 
 **Evidence:** ARTIFACTS VERIFIED: merge e8b4868ce402c2945a8990b1a5ddc69979b880fd is ancestor of live main 582e5e5f (re-derived from live bytes, not quoted); receipt hidden_files/merge-receipts/pr-2501-retroactive-receipt.md present (7508B). Real value: closed formal FM#32 breach with a DIFFERENT-seat 3-pass receipt (builder=Gamma, validator=Zeta, receipt writer=
 
@@ -16569,6 +16577,12 @@ _Last updated: 2026-10-17 15:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
 
+### ✅ lane-scorer-20261017-0830 — Team 8, Naya Clarity Narzan (Governance & Safety) — 9.5/10 [VERIFIED]
+
+**Task:** Retrieval auth-gate migration packet (SURGE slice b, t0670)
+
+**Evidence:** VERIFIED: packet file retrieval-auth-gate-migration-packet-t0670.md sha256 224ea035... matches pin (11,267 bytes). Branch naya/five-retrieval-auth-gate-t942 exists on GitHub, head e654f16e8a49e9a26309fd852695a0bef202673d == pinned SHA (verified live via REST; no local remote configured). Caller list + mm.retrieve anti-false-positive exclusion + leg
+
 ### ✅ lane-scorer-20261017-0750 — Team 8, Naya Clarity Narzan (Governance & Safety) — 8.5/10 [VERIFIED]
 
 **Task:** EQ probe on the full 632-entry corpus (gap follow-up of t0407-lane8)
@@ -19551,6 +19565,12 @@ _Last updated: 2026-10-17 15:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
 
+### ✅ lane-scorer-20261017-0830 — Team 3, Naya Clarity Narzan (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** Ask-world instrument spec + ranked top-20 needs (SURGE slice c, t0670)
+
+**Evidence:** VERIFIED: log auto-retrieval/ask-world-queries.jsonl = 115 rows (1 init + 102 query + 12 probe), sha 5398dda9... matches pin (30,646 bytes). bin/ask-world.py sha cdcffb68... byte-identical to t0770 pin. Spec 0c2e9fd5... matches. jsonl table aebcebb5... matches, 20 rows, schema_version:1 on every row. Two-direction census confirmed; the receipt's 15
+
 ### ✅ lane-scorer-20261017-0730 — Team 3, Naya Clarity Narzan (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** Adversarial review of claim-brief.py 1c parent-authorship check
@@ -22306,6 +22326,12 @@ _Last updated: 2026-10-17 15:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0771-lane10.md
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
+
+### ✅ lane-scorer-20261017-0845 — Team 1, Naya Clarity Narzan (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** Lesson-injection audit (Phase-A machinery: 10 briefs, 18 slots, done-criteria verdict)
+
+**Evidence:** VERIFIED: injection-audit-t0671.md exists (5,964 bytes, real audit table, one line of evidence per slot). All 6 injected-brief SHA pins byte-match their archived copies (t0670-lane3 b71d99b84948, lane5 2e45eaacc03b, lane8 3cb3eefd19d0, t0671-lane1 3d77073d6c65, lane2 fa1123037cfc, lane9 362ddf43d149); 4 control briefs present; lessons.jsonl ca6b1ba
 
 ### ✅ lane-scorer-20261017-0740 — Team 1, Naya Clarity Narzan (Verification & Proof) — 8.5/10 [VERIFIED]
 
