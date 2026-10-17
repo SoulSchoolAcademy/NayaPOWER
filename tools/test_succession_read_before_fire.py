@@ -50,41 +50,45 @@ def run_main(pkg_text, venue_body=None, venue_err=None):
     return rc, calls["n"]
 
 
-VENUE_LIVE = "[#2721 — Team coordination feed — live board](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2721)"
+def main():
+    VENUE_LIVE = "[#2721 — Team coordination feed — live board](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2721)"
 
-# T1: consumed board vs live board -> exit 2 fail-closed, venue read exactly once
-rc, n = run_main("[TEAM NAYA] feed (successor to #2641)", venue_body=VENUE_LIVE)
-check("T1 stale-package refused", rc == 2 and n == 1, f"rc={rc} calls={n}")
+    # T1: consumed board vs live board -> exit 2 fail-closed, venue read exactly once
+    rc, n = run_main("[TEAM NAYA] feed (successor to #2641)", venue_body=VENUE_LIVE)
+    check("T1 stale-package refused", rc == 2 and n == 1, f"rc={rc} calls={n}")
 
-# T2: package names the live board -> exit 0 FIRE ALLOWED
-rc, n = run_main("[TEAM NAYA] feed (successor to #2721)", venue_body=VENUE_LIVE)
-check("T2 live-package allowed", rc == 0 and n == 1, f"rc={rc} calls={n}")
+    # T2: package names the live board -> exit 0 FIRE ALLOWED
+    rc, n = run_main("[TEAM NAYA] feed (successor to #2721)", venue_body=VENUE_LIVE)
+    check("T2 live-package allowed", rc == 0 and n == 1, f"rc={rc} calls={n}")
 
-# T3: unparseable package (no successor line) -> exit 2, venue never read
-rc, n = run_main("a draft with no board reference at all", venue_body=VENUE_LIVE)
-check("T3 unparseable fail-closed, no venue read", rc == 2 and n == 0, f"rc={rc} calls={n}")
+    # T3: unparseable package (no successor line) -> exit 2, venue never read
+    rc, n = run_main("a draft with no board reference at all", venue_body=VENUE_LIVE)
+    check("T3 unparseable fail-closed, no venue read", rc == 2 and n == 0, f"rc={rc} calls={n}")
 
-# T4: venue body has no live-board line -> exit 2
-rc, n = run_main("[TEAM NAYA] feed (successor to #2721)", venue_body="no live board line here")
-check("T4 venue-without-live-line fail-closed", rc == 2 and n == 1, f"rc={rc} calls={n}")
+    # T4: venue body has no live-board line -> exit 2
+    rc, n = run_main("[TEAM NAYA] feed (successor to #2721)", venue_body="no live board line here")
+    check("T4 venue-without-live-line fail-closed", rc == 2 and n == 1, f"rc={rc} calls={n}")
 
-# T5: extractor unit checks
-check("T5 extract_package_source paren form", srb.extract_package_source("x (successor to #2641) y") == "2641")
-check("T5 extract_package_source arrow form", srb.extract_package_source("#2641 -> successor") == "2641")
-check("T5 extract_package_source no match", srb.extract_package_source("nothing here") is None)
-check("T5 extract_live_board", srb.extract_live_board(VENUE_LIVE) == "2721")
-check("T5 extract_live_board no match", srb.extract_live_board("plain text") is None)
+    # T5: extractor unit checks
+    check("T5 extract_package_source paren form", srb.extract_package_source("x (successor to #2641) y") == "2641")
+    check("T5 extract_package_source arrow form", srb.extract_package_source("#2641 -> successor") == "2641")
+    check("T5 extract_package_source no match", srb.extract_package_source("nothing here") is None)
+    check("T5 extract_live_board", srb.extract_live_board(VENUE_LIVE) == "2721")
+    check("T5 extract_live_board no match", srb.extract_live_board("plain text") is None)
 
-# T6: NAYA_GH_API env overrides the default gh-api path
-os.environ["NAYA_GH_API"] = "/tmp/fake-gh-api"
-try:
-    spec2 = importlib.util.spec_from_file_location("srb2", HERE / "succession_read_before_fire.py")
-    m2 = importlib.util.module_from_spec(spec2)
-    spec2.loader.exec_module(m2)
-    check("T6 env override honored", m2.GH_API == "/tmp/fake-gh-api", f"got {m2.GH_API}")
-finally:
-    del os.environ["NAYA_GH_API"]
-check("T6 default path intact", srb.GH_API == "/home/hatch/workspace/naya/bin/gh-api", f"got {srb.GH_API}")
+    # T6: NAYA_GH_API env overrides the default gh-api path
+    os.environ["NAYA_GH_API"] = "/tmp/fake-gh-api"
+    try:
+        spec2 = importlib.util.spec_from_file_location("srb2", HERE / "succession_read_before_fire.py")
+        m2 = importlib.util.module_from_spec(spec2)
+        spec2.loader.exec_module(m2)
+        check("T6 env override honored", m2.GH_API == "/tmp/fake-gh-api", f"got {m2.GH_API}")
+    finally:
+        del os.environ["NAYA_GH_API"]
+    check("T6 default path intact", srb.GH_API == "/home/hatch/workspace/naya/bin/gh-api", f"got {srb.GH_API}")
 
-print(f"\n{len(PASS)} passed, {len(FAIL)} failed")
-sys.exit(0 if not FAIL else 1)
+    print(f"\n{len(PASS)} passed, {len(FAIL)} failed")
+    sys.exit(0 if not FAIL else 1)
+
+if __name__ == "__main__":
+    main()
