@@ -63,14 +63,23 @@ class TestResolver(unittest.TestCase):
         self.assertIn("detail", d)
 
     def test_3_specified_not_built_stays_off(self):
-        """feature.smart_mail is specified, not built -> not_implemented."""
-        with self.assertRaises(ResolverRefusal) as cm:
-            resolve("feature.smart_mail", ctx(
-                available=["authenticated_identity", "recipient_authorization",
-                           "message_service", "delivery_receipts"],
-                granted_permissions=["mail.compose", "mail.send"]))
-        self.assertEqual(cm.exception.code, "not_implemented")
-        self.assertEqual(cm.exception.function, "feature.smart_mail")
+        """A specified-but-not-built feature -> not_implemented."""
+        # The live registry has all features built; simulate the specified
+        # state so this gate is proven independent of registry contents.
+        idx = resolver.registry_index()
+        entry = idx["feature.smart_mail"]
+        real_status = entry["status"]
+        entry["status"] = "specified"
+        try:
+            with self.assertRaises(ResolverRefusal) as cm:
+                resolve("feature.smart_mail", ctx(
+                    available=["authenticated_identity", "recipient_authorization",
+                               "message_service", "delivery_receipts"],
+                    granted_permissions=["mail.compose", "mail.send"]))
+            self.assertEqual(cm.exception.code, "not_implemented")
+            self.assertEqual(cm.exception.function, "feature.smart_mail")
+        finally:
+            entry["status"] = real_status
 
     def test_4_permission_denied_explains(self):
         """Cover without media.upload granted -> permission_denied, names it,
@@ -104,11 +113,19 @@ class TestResolver(unittest.TestCase):
         with self.assertRaises(ResolverRefusal) as cm:
             resolve("feature.nope", ctx())  # unknown, nothing else set up
         self.assertEqual(cm.exception.code, "unknown_function")
-        # smart_mail is specified: even with nothing granted, the report is
+        # A specified feature: even with nothing granted, the report is
         # not_implemented (gate 2), not permission_denied (gate 4).
-        with self.assertRaises(ResolverRefusal) as cm2:
-            resolve("feature.smart_mail", ctx())
-        self.assertEqual(cm2.exception.code, "not_implemented")
+        # (Simulated — the live registry has smart_mail built.)
+        idx2 = resolver.registry_index()
+        entry2 = idx2["feature.smart_mail"]
+        real2 = entry2["status"]
+        entry2["status"] = "specified"
+        try:
+            with self.assertRaises(ResolverRefusal) as cm2:
+                resolve("feature.smart_mail", ctx())
+            self.assertEqual(cm2.exception.code, "not_implemented")
+        finally:
+            entry2["status"] = real2
 
     def test_undeclared_contract_activates_honestly_empty(self):
         """Capability ready but contract declares nothing -> activates with
