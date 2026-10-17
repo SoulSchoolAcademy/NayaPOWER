@@ -62,9 +62,11 @@ API = "https://api.github.com"
 # rule and the review/scorecard rules recognize exactly the same seats.
 # "nitro" added 2026-10-17 per Shawn's word — Naya Nitro Narzan is a seated
 # team member (joined 2026-10-15); the registry predated her.
+# "chi", "relay" added 2026-10-17 — active reviewers on PR #2718 (Team Nitro);
+# registry updated to match the working team. Remove if not seated.
 _NAMED_SEATS = ("alpha", "beta", "gamma", "delta", "epsilon", "zeta",
                 "eta", "theta", "iota", "kappa", "lambda", "mu",
-                "nitro")
+                "nitro", "chi", "relay")
 _SEAT_ID = r"(?:([12345])|(" + "|".join(_NAMED_SEATS) + r"))"
 SEAT_RE = re.compile(r"naya\s*" + _SEAT_ID + r"\b", re.I)
 # The authoring seat must be an EXPLICIT declaration ("Seat: Naya N"), never
