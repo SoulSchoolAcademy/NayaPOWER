@@ -47,6 +47,11 @@ def test_full_decision_ranks_best_pv_but_withholds_act_without_trusted_gates():
     assert report["governance_authorization"] == "UNRESOLVED_NO_TRUSTED_GATE_RESOLVER"
     assert "ranked A" in report["next"]
     assert "ACT is withheld" in report["next"]
+    candidate_rows = [row for row in report["rows"] if not row.get("is_baseline")]
+    assert candidate_rows
+    assert all(row["gate"] == "UNRESOLVED" for row in candidate_rows)
+    assert all(any("resolver is not connected" in reason for reason in row["gate_reasons"])
+               for row in candidate_rows)
 
 
 def test_forged_gate_flags_cannot_authorize_act():
