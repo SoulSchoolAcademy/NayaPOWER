@@ -712,7 +712,7 @@
             "reports wired"
           ],
           "activated_by": "contract.features.intelligence_today",
-          "status": "specified",
+          "status": "built",
           "code": null,
           "depends_on": [
             "systems.reports"
@@ -736,13 +736,14 @@
             "empty_state_handled"
           ],
           "ready": [
-            "briefing UI",
-            "local report render"
+            "render contract-carried reports (no I/O, no grant)"
           ],
           "connected": [
             {
-              "action": "sync intelligence",
-              "grant": "muse"
+              "action": "fetch external report sources",
+              "declares": "contract.features.intelligence_today.external_sources",
+              "grant": "network",
+              "status": "specified"
             }
           ]
         },
