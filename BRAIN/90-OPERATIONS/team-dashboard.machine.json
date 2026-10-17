@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-17T12:15:57+00:00",
+ "generated_utc": "2026-10-17T13:16:05+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -348,6 +348,12 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2728,
+     "title": "distill-daily: point boot bytes at live board #2721",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2728",
+     "draft": false
+    },
+    {
      "number": 2727,
      "title": "ACT: PR-author self-check template (w368 landing of w365 build)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2727",
@@ -388,15 +394,9 @@
      "title": "DESIGN: curated smart-block library \u2014 one language, best-of-best",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2707",
      "draft": false
-    },
-    {
-     "number": 2705,
-     "title": "Design System v1 \u2014 the Naya Lego box (100 laws, tokens, catalog, organized library)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2705",
-     "draft": true
     }
    ],
-   "open_pr_count": 231
+   "open_pr_count": 232
   },
   {
    "id": "wire",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 608,
- "unassigned_prs": 231
+ "open_pr_total": 609,
+ "unassigned_prs": 232
 }
