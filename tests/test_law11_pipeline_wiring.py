@@ -125,6 +125,43 @@ def test_clean_candidate_flows_through_plan():
     assert receipt.phase == "PLAN_ACCEPTED"
 
 
+def test_lapsed_window_blocks_at_plan_action():
+    # Threading proof: a candidate's observation_windows reach the Law 11 v2
+    # gate, and a lapsed monitor (review overdue + zero findings) excludes
+    # the candidate — the door refuses on the window's own evidence.
+    from datetime import datetime, timedelta, timezone
+    from kernel.protocol.harm_assessment import (
+        HARM_DELAYED,
+        NEUTRAL_PRACTICAL,
+        SEVERITY_LOW,
+        HarmAssessment,
+        ObservationWindow,
+    )
+    assessment = HarmAssessment(
+        stakeholder_group="pipe_group", group_size=100,
+        harm_type=HARM_DELAYED, severity=SEVERITY_LOW,
+        likelihood=0.1, likelihood_reliability="high",
+        reversibility="reversible", time_to_appear="months",
+        cumulative_risk=False, detectability="high",
+        mitigation_available=True, consent_obtained=True,
+        monitoring_ready=True, stop_conditions_defined=True,
+        neutrality_state=NEUTRAL_PRACTICAL,
+    )
+    overdue = (datetime.now(timezone.utc) - timedelta(hours=1)).isoformat()
+    window = ObservationWindow(
+        window_id="w-pipe", action_ref="pipe", stakeholder_group="pipe_group",
+        indicators=("error_rate",), stop_triggers=("error_rate > 5%",),
+        review_dates=(overdue,),
+    )
+    cand = _candidate("p-lapsed",
+                      harm_assessments=(assessment,),
+                      observation_windows=(window,))
+    plan, receipt = ap.plan_action(_authority(), [cand], _profile(), now=NOW)
+    assert plan is None
+    assert receipt.phase == "PLAN_REFUSED"
+    assert ap.PLAN_SAFETY_NEEDS_EVIDENCE in receipt.codes
+
+
 # --- execute_plan: Law 11 door check ---
 
 def _hand_plan(candidate, grant_id="grant-1"):

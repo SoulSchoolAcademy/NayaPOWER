@@ -215,6 +215,50 @@ class ObservationWindow:
 
 
 # ---------------------------------------------------------------------------
+# Monitoring-aware door — a PENDING window whose review is overdue with
+# zero recorded findings is a lapsed monitor, not a provisional success.
+# (T-07-VERIFY: the door must refuse on its own evidence, without depending
+# on an external review() loop having run first.)
+# ---------------------------------------------------------------------------
+def _parse_review_date(value: str) -> datetime | None:
+    """Parse an ISO review-date string. Returns None when unreadable."""
+    if not isinstance(value, str) or not value.strip():
+        return None
+    try:
+        parsed = datetime.fromisoformat(value.strip())
+    except ValueError:
+        return None
+    if parsed.tzinfo is None:
+        # The module writes aware datetimes (opened_at); a naive review
+        # date is ambiguous — assume UTC rather than fail the comparison.
+        parsed = parsed.replace(tzinfo=timezone.utc)
+    return parsed
+
+
+def _review_lapsed(window: ObservationWindow) -> tuple[bool, str]:
+    """Has this window's monitoring lapsed?
+
+    Returns (lapsed, reason_code). A PENDING window lapses when a review
+    date is in the past and zero findings have been recorded — the review
+    is due and there is no monitoring evidence. An unreadable review date
+    also lapses the window (fail closed: a review schedule that cannot be
+    read cannot be proven on track).
+
+    Limitation, stated honestly: findings carry no timestamps, so a window
+    WITH findings is treated as monitored even if its review date passed.
+    The gate refuses only what it can prove — overdue with zero evidence.
+    """
+    now = datetime.now(timezone.utc)
+    for raw in window.review_dates:
+        parsed = _parse_review_date(raw)
+        if parsed is None:
+            return True, "REVIEW_DATE_UNREADABLE"
+        if parsed <= now and not window.findings:
+            return True, "OVERDUE_REVIEW_NO_FINDINGS"
+    return False, ""
+
+
+# ---------------------------------------------------------------------------
 # The 99%/1% rule — per-group independent check.
 # ---------------------------------------------------------------------------
 def _group_harm_material(assessment: HarmAssessment) -> bool:
@@ -390,6 +434,21 @@ def assess_uncertain_harm(
                     policy_version=policy,
                 )
             if window.status == WINDOW_PENDING:
+                # Monitoring-aware door (T-07-VERIFY): a PENDING window
+                # whose review is overdue with zero recorded findings is a
+                # lapsed monitor — pause, don't proceed provisionally.
+                # This refuses on the window's own evidence; no external
+                # review() loop needs to have run first.
+                lapsed, lapse_reason = _review_lapsed(window)
+                if lapsed:
+                    return Law11Verdict(
+                        verdict=NEEDS_EVIDENCE,
+                        reasons=tuple(reasons + [
+                            f"{lapse_reason}:{assessment.stakeholder_group}",
+                        ]),
+                        affected_interests=tuple(interests + [assessment.stakeholder_group]),
+                        policy_version=policy,
+                    )
                 # Success is provisional until the window completes.
                 # This doesn't block, but it's recorded.
                 reasons.append(f"PROVISIONAL_WINDOW:{assessment.stakeholder_group}")
