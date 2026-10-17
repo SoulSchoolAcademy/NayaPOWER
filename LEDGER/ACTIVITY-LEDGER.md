@@ -2,11 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-17 11:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
-
-## 🟢 Working right now
-
-- **Team 0 — ?** (?) — tick t0644
+_Last updated: 2026-10-17 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -5689,6 +5685,12 @@ _Last updated: 2026-10-17 11:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Artifacts verified: hidden_files/hub-drive/design-contract-checklist.md sha256 2e363f96b0994a6e2f56207d2950b843319075fbda50ebd900adc73570fcad65 matches receipt claim exactly. Score 9.0/10. Why not 9.5: (1) no browser render proof of catalog.html — read-only inventory; (2) Law 92 verbatim-equality check counted .naya-btn hits (85 vs 0) but did not b
 
+### ✅ t892-lane2 — Team 2, Naya Sage (Lane 2) (Learning Pipeline) — 8.5/10 [VERIFIED]
+
+**Task:** P0-B causal proof pilot: 3-arm subagent experiment on briefing injection (control/treatment/adversarial), pre-registered 5-criterion rubric
+
+**Evidence:** Verified: experiment design + run results files exist in learning-10-10/hidden_files (p0b-experiment-design.md, p0b-run-t892-results.md); no git-branch artifacts claimed (local research, git-protocol only as ground truth). Scores 8.5 REWORK. Why not 9.5: N=1 per arm (pilot, no statistical power), doer=scorer (independent re-score outstanding, named
+
 ### ✅ t892 — Team 2, Naya Clarity Narzan (Learning Pipeline) — 8.5/10 [VERIFIED]
 
 **Task:** P0-B causal proof experiment (Layer 4: control/treatment behavioral delta, first pilot)
@@ -5760,6 +5762,12 @@ _Last updated: 2026-10-17 11:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t892-lane10.md`
 
 **Evidence:** Root-caused the paths-filter/required-check Pending-forever flaw, repaired on branch naya/ten-brainindex-freshness (run-on-every-PR + fast-pass + fail-closed detect), 8/8 harness tests passing, diagnosed live main-tip brain drift (12th recurrence) as separate content fix. Deductions: branch local-only (no PR yet), workflow never executed in real Ac
+
+### ✅ t892-lane1 — Team 1, Naya Verity (Lane 1) (Verification & Proof) — 8.5/10 [VERIFIED]
+
+**Task:** Four-way material-claim harness template + end-to-end demonstration on PR #2385 brain-index-freshness required-check claim (blinded scoring, sealed expected outcomes)
+
+**Evidence:** Verified: four-way-template/ exists with README/LAYOUT/BLINDED_SCORING_PROTOCOL/claim-manifest.schema.json/run_four_way.py + examples dir; research artifact, no branch claimed (read-only git + public web, zero REST). Scores 8.5 REWORK. Why not 9.5: single-blind not double-blind (L1 residual, documented but unsolved), sealed expected contained a pla
 
 ### ✅ t892 — Team 1, Naya Clarity Narzan (Verification & Proof) — 8.8/10 [VERIFIED]
 
@@ -17449,6 +17457,12 @@ _Last updated: 2026-10-17 11:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: all 14 files in BRAIN/00-ACTIVATION/LANE-CONTRACTS/ present at live branch head ea501b6800df on naya4/contract-staging (git ls-remote head matches cited SHA exactly). Per-lane confirm/amend verdicts in own voices, consolidated 10-item amendment list held to ride convergence, honest holes named (verdicts rest on director consolidated state
 
+### ✅ gap-t1242-lane6 — Team 6, Naya Clarity Narzan (Lane 6 / Heir hat) (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up t1242: CTA second-context dry run (N=2) of frozen CTA v1 on genuinely new cold context with hermetic mechanical executor
+
+**Evidence:** Verified: all six cited artifacts exist on disk (COLD-BRIEF-B.md, ground-truth-B.key.json, runs/gap1242/seal-receipt.json, bin/successor-executor-B.py, runs/gap1242/successor/evidence.json, runs/gap1242/scorer/score.json); seal INTACT claim consistent with file presence and sealed-ground-truth design; CT-3 CITATION_LOOSE correction shows the gates 
+
 ### ✅ gap-t1242-lane6 — Team 6, Naya Clarity Narzan (lane-executor) (Successor Transfer) — 8.5/10 [VERIFIED]
 
 **Task:** CTA second-context dry run (N=1->N=2) vs new cold context, sealed battery
@@ -22116,6 +22130,24 @@ _Last updated: 2026-10-17 11:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gap-gap-gate-stall-20261017-0927-lane0 — Team 0, Naya Clarity Narzan (lane-executor) (?) — 9.5/10 [VERIFIED]
+
+**Task:** Gap-gap follow-up: independent re-run of the three parent claims (claim-brief.py 30/30 self-test + regression fixtures via production path + deterministic banding dry-run)
+
+**Evidence:** Verified: claim-brief.py sha256 9cafb52a89bd4d12 byte-identical to parent pin; --self-test re-run live this tick = SELF-TEST GREEN 30/30 + parent-authorship suite passes, matching the receipt's claimed outcomes including auth_gap_negated (exit 0 claimed) and auth_gap_negated_plus_real (exit 7 author-seat refused / exit 0 Resolve-seat claimed); live
+
+### ✅ gate-stall-20261017-1133 — Team 0, Naya Clarity Narzan (lane-executor) (?) — 9.5/10 [VERIFIED]
+
+**Task:** Gate-stall: 29/29 unclaimable; deterministic mixed-interleave band order pinned and live-proved; dispatcher routing note
+
+**Evidence:** Verified: queue at 29 files matches the receipt's inventory (26 seat-barred + 1 exit-6 no-refile + 2 second-seat-demand); stall cap honored (63 min after 10:29 receipt); the receipt closes the prior receipt's named gap ('interleave is my judgment call') by pinning the (b1)-(b5) band order with the live run as proof. Clears 9.5 because: complete, de
+
+### ✅ gate-stall-20261017-1029 — Team 0, Naya Clarity Narzan (lane-executor) (?) — 9.5/10 [VERIFIED]
+
+**Task:** Gate-stall: full queue evaluation, 28/28 briefs unclaimable by this seat, one-receipt-per-hour cap honored
+
+**Evidence:** Verified: brief-queue held 29 files at scoring time (28 at the receipt's 10:29 run + the documented new arrival brief-gap-gate-stall-20261017-0927.md), consistent with the receipt's 28 count; exit-code breakdown (25x exit-2 eligibility bars, 2x exit-7 parent-authorship, 1x exit-6 no-refile) is the claim script's own gate output, not hand-gate guess
 
 ### ✅ gap-gate-stall-20261017-0927 — Team 0, Naya Clarity Narzan (lane-executor) (?) — 9.3/10 [VERIFIED]
 
