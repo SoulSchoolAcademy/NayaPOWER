@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-17 07:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-17 08:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 606 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 609 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -87,21 +87,21 @@
 - [#2585](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2585) Add automatic scorecard calculator (tools/scorecard.py + tests)
 - …and 25 more
 
-### BUILD (229)
+### BUILD (230)
+- [#2725](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2725) RETRIEVAL: re-pin original grader bytes to TRIAL-11-RESERVE (w356)
 - [#2722](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2722) Remove stale L11 note: oath + field manuals are on main
 - [#2719](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2719) LAW: hold-veto mention-vs-use hardening (_HOLD_VETO_RE → _HOLD_USE_RE)
 - [#2715](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2715) Daily intelligence report pipeline — item 17 (generator + sample + rea
 - [#2708](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2708) Design Laws v1 (DRAFT): three-tongue repo placement 📝draft
-- [#2707](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2707) DESIGN: curated smart-block library — one language, best-of-best
-- …and 224 more
+- …and 225 more
 
-### WIRE (125)
+### WIRE (126)
+- [#2724](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2724) fix(gate): receipt-pin reads live PR body, not frozen event payload
 - [#2718](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2718) Add nitro to merge-consensus gate seat registry
 - [#2717](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2717) Consensus gate: parse 12-lane seat tags + brief-time author-seat check
 - [#2704](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2704) fix(gate): consensus gate skips issue_comment events without a verdict
 - [#2697](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2697) HTTP-DETAIL: log truncated HTTP error bodies in ci_claim_evidence_gate
-- [#2696](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2696) fix(gate): fail-closed FUTURE rung on receipt-pin decided_at (Judge wa
-- …and 120 more
+- …and 121 more
 
 ### TEAM (12)
 - [#2618](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2618) [DRAFT] Advisory post-conformance scan for the Team Feed Standard 📝draft
@@ -111,13 +111,13 @@
 - [#2397](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2397) feat(dashboard): live Team Naya activity dashboard — markdown + machin
 - …and 7 more
 
-### INFRA (40)
+### INFRA (41)
+- [#2723](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2723) feat(decision): canonical Q->band labeler for consumer display consist
 - [#2716](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2716) Composer v1 + gap closure (43->39 mapping, feed specimen) — item 15b
 - [#2689](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2689) CI rate-limit resilience: cut redundant API burn (~85% on hot paths)
 - [#2649](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2649) Add TEAM-ROSTER.md: the verified sets (leads, area leads, lane agents,
 - [#2638](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2638) REVIEW: merge masterclass draft + circles system (not for main merge)
-- [#2593](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2593) CANDIDATE: veracity demote for FALSIFIED lessons at retrieve (t0762 l…
-- …and 35 more
+- …and 36 more
 
 ### PRODUCT (36)
 - [#2713](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2713) t0907: block catalog — 457 canonical NAYA-XXX-NNN blocks + coverage

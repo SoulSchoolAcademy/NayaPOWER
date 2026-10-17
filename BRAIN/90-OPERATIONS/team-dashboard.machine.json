@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-17T07:16:11+00:00",
+ "generated_utc": "2026-10-17T08:15:17+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -348,6 +348,12 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2725,
+     "title": "RETRIEVAL: re-pin original grader bytes to TRIAL-11-RESERVE (w356)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2725",
+     "draft": false
+    },
+    {
      "number": 2722,
      "title": "Remove stale L11 note: oath + field manuals are on main",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2722",
@@ -388,15 +394,9 @@
      "title": "Harden TIP-NOTE marker to line-anchored heading regex + regression tests",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2703",
      "draft": false
-    },
-    {
-     "number": 2691,
-     "title": "[DRAFT] PUMP phase 1: schedule plumbing for agent capture (review only, do not merge)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2691",
-     "draft": true
     }
    ],
-   "open_pr_count": 229
+   "open_pr_count": 230
   },
   {
    "id": "wire",
@@ -416,6 +416,12 @@
    "active_now": false,
    "board_lane": "#2175 lane WIRE",
    "open_prs": [
+    {
+     "number": 2724,
+     "title": "fix(gate): receipt-pin reads live PR body, not frozen event payload",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2724",
+     "draft": false
+    },
     {
      "number": 2718,
      "title": "Add nitro to merge-consensus gate seat registry",
@@ -457,15 +463,9 @@
      "title": "Gate reliability: transient API failures \u2192 UNKNOWN (exit 2), never wrong FAIL",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2690",
      "draft": false
-    },
-    {
-     "number": 2681,
-     "title": "Teach fail-closed gates quota-vs-permission 403 (INCONCLUSIVE/RETRY)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2681",
-     "draft": false
     }
    ],
-   "open_pr_count": 125
+   "open_pr_count": 126
   },
   {
    "id": "team",
@@ -555,6 +555,12 @@
    "board_lane": "#2175 lane INFRA",
    "open_prs": [
     {
+     "number": 2723,
+     "title": "feat(decision): canonical Q->band labeler for consumer display consistency",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2723",
+     "draft": false
+    },
+    {
      "number": 2716,
      "title": "Composer v1 + gap closure (43->39 mapping, feed specimen) \u2014 item 15b",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2716",
@@ -595,15 +601,9 @@
      "title": "fix(ci): rate-limit resilience for Current Truth Resolver evidence collection",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2570",
      "draft": false
-    },
-    {
-     "number": 2563,
-     "title": "Reconcile NayaPOWER live backlog: 28 blockers, solutions, owners, double-check law",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2563",
-     "draft": true
     }
    ],
-   "open_pr_count": 40
+   "open_pr_count": 41
   },
   {
    "id": "product",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 606,
- "unassigned_prs": 229
+ "open_pr_total": 609,
+ "unassigned_prs": 230
 }
