@@ -13,7 +13,8 @@ manifest/arms/verifier).
 
 **Manifest convention** (`trials/<trial-id>/archive/manifest.json`):
 - `verifier` is resolved relative to `trials/<trial-id>/` (e.g. `../harness/verifier-r2.mjs`).
-- Each arm entry: `submission_dir`, `applicability`, `recorded_verdict`, `file_hashes`
+- Each arm entry: `submission_dir`, `applicability` (SR-P1-era) or `verifier_arg`
+  (SR-P2+; the replay runner prefers `verifier_arg` when present), `recorded_verdict`, `file_hashes`
   (SHA-256 of every archived submission file).
 - `sandbox_posture` records how the verifier ran. Replay EXECUTES archived arm
   submissions — agent-written code — under that same posture. Never replay an

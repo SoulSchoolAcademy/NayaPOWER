@@ -89,8 +89,11 @@ for (const arm of armNames) {
 for (const arm of armNames) {
   const a = manifest.arms[arm];
   const armDir = path.join(root, a.submission_dir);
+  // verifier_arg (optional, SR-P2+): explicit verifier argument per arm.
+  // Falls back to `applicability` for SR-P1-era manifests (contract §10).
+  const varg = a.verifier_arg || a.applicability;
   const { stdout, stderr } = await new Promise((resolve) =>
-    execFile('node', [verifierPath, armDir, a.applicability], { timeout: 60000 },
+    execFile('node', [verifierPath, armDir, varg], { timeout: 60000 },
       (error, stdout, stderr) => resolve({ stdout: stdout || '', stderr: stderr || '', error })));
   const lines = stdout.trim().split('\n').map(l => l.trim()).filter(Boolean);
   const verdict = lines[lines.length - 1];
