@@ -960,7 +960,7 @@
             "answers wired"
           ],
           "activated_by": "contract.features.naya_answers",
-          "status": "specified",
+          "status": "built",
           "code": null,
           "depends_on": [
             "systems.github_kb"
@@ -985,12 +985,15 @@
             "failure_state_visible"
           ],
           "ready": [
-            "ask UI"
+            "local Ask widget shell",
+            "KB source named",
+            "don't-know path declared",
+            "honest connect panel"
           ],
           "connected": [
             {
-              "action": "answer via Muse",
-              "grant": "muse"
+              "action": "live answers from GitHub knowledge base",
+              "grant": "github"
             }
           ]
         },

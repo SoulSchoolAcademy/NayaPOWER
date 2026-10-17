@@ -69,8 +69,20 @@ from feature_contacts import (ContactsRefusal, decl_for as ct_decl_for,
                                render_contacts,
                                FEATURE_ID as FEATURE_CONTACTS_ID,
                                FEATURE_CONTACTS_VERSION)
+from feature_naya_answers import (NayaAnswersRefusal, decl_for as na_decl_for,
+                                   render_naya_answers,
+                                   FEATURE_ID as FEATURE_NAYA_ANSWERS_ID,
+                                   FEATURE_NAYA_ANSWERS_VERSION)
+from feature_scheduler import (SchedulerRefusal, decl_for as sc_decl_for,
+                                render_scheduler,
+                                FEATURE_ID as FEATURE_SCHEDULER_ID,
+                                FEATURE_SCHEDULER_VERSION)
+from feature_broadcast import (BroadcastRefusal, decl_for as bc_decl_for,
+                                render_broadcast,
+                                FEATURE_ID as FEATURE_BROADCAST_ID,
+                                FEATURE_BROADCAST_VERSION)
 
-ASSEMBLER_VERSION = "assemble-v1.11"  # v1.11: wave-B modules (smart_tabs, intelligence_today, contacts)
+ASSEMBLER_VERSION = "assemble-v1.12"  # v1.12: wave-D modules (naya_answers, scheduler, broadcast)
 
 # ---- breaker module wiring ----
 # Every wired module follows the cover pattern: decl_for(contract) parses
@@ -200,6 +212,39 @@ def _render_contacts(decl, st, ctx, contract):
                           FEATURE_CONTACTS_ID, FEATURE_CONTACTS_VERSION,
                           'contacts.updated')
 
+def _waved_adapter(decl, st, ctx, render_fn, fid, version, mode_fn,
+                   granted_fn, grant, wired_event=None):
+    # Wave D modules return a plain HTML string. The readiness entry
+    # mirrors the consent line in the receipt (mode/grant/granted audit
+    # trail, like smart_list). wired_event is optional (scheduler emits
+    # scheduler.job.created; others emit none).
+    html = render_fn(decl, st, context=ctx)
+    mode = mode_fn(decl, ctx)
+    is_granted = granted_fn(ctx)
+    readiness = [{'feature': fid, 'mode': mode, 'grant': grant,
+                  'granted': is_granted}]
+    evts = [{'event': wired_event, 'feature': fid,
+             'version': version}] if (html and wired_event) else []
+    return html, evts, {'readiness': readiness}
+
+def _render_naya_answers(decl, st, ctx, contract):
+    from feature_naya_answers import mode_for, granted, GRANT
+    return _waved_adapter(decl, st, ctx, render_naya_answers,
+                          FEATURE_NAYA_ANSWERS_ID, FEATURE_NAYA_ANSWERS_VERSION,
+                          mode_for, granted, GRANT)
+
+def _render_scheduler(decl, st, ctx, contract):
+    from feature_scheduler import mode_for, granted, GRANT, JOB_CREATED_EVENT
+    return _waved_adapter(decl, st, ctx, render_scheduler,
+                          FEATURE_SCHEDULER_ID, FEATURE_SCHEDULER_VERSION,
+                          mode_for, granted, GRANT, JOB_CREATED_EVENT)
+
+def _render_broadcast(decl, st, ctx, contract):
+    from feature_broadcast import mode_for, granted, GRANT
+    return _waved_adapter(decl, st, ctx, render_broadcast,
+                          FEATURE_BROADCAST_ID, FEATURE_BROADCAST_VERSION,
+                          mode_for, granted, GRANT)
+
 # Reserved receipt keys — modules may not shadow them via extra_receipt.
 _RECEIPT_RESERVED_KEYS = frozenset(
     {'built_utc', 'events', 'grants', 'privacy', 'identity', 'consent'})
@@ -258,6 +303,18 @@ BREAKER_MODULES = [
      'decl_for': ct_decl_for, 'refusal': ContactsRefusal,
      'version': FEATURE_CONTACTS_VERSION,
      'render': _render_contacts},
+    {'key': 'naya_answers', 'fid': FEATURE_NAYA_ANSWERS_ID,
+     'decl_for': na_decl_for, 'refusal': NayaAnswersRefusal,
+     'version': FEATURE_NAYA_ANSWERS_VERSION,
+     'render': _render_naya_answers},
+    {'key': 'scheduler', 'fid': FEATURE_SCHEDULER_ID,
+     'decl_for': sc_decl_for, 'refusal': SchedulerRefusal,
+     'version': FEATURE_SCHEDULER_VERSION,
+     'render': _render_scheduler},
+    {'key': 'broadcast', 'fid': FEATURE_BROADCAST_ID,
+     'decl_for': bc_decl_for, 'refusal': BroadcastRefusal,
+     'version': FEATURE_BROADCAST_VERSION,
+     'render': _render_broadcast},
 ]
 BREAKER_MODULE_KEYS = {m['key'] for m in BREAKER_MODULES}
 

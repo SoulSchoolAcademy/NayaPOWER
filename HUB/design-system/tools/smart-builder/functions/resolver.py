@@ -167,6 +167,15 @@ def _module_for(function_id):
                                        "decl_for"),
         "feature.contacts": ("feature_contacts", "render_contacts",
                              "decl_for"),
+        # Wave D (wire-them-all): flagship dispatch rows.
+        "feature.naya_answers": ("feature_naya_answers", "render_naya_answers",
+                                 "decl_for"),
+        "feature.scheduler": ("feature_scheduler", "render_scheduler",
+                              "decl_for"),
+        "feature.broadcast": ("feature_broadcast", "render_broadcast",
+                              "decl_for"),
+        "feature.smart_list": ("feature_smart_list", "render_smart_list",
+                               "decl_for"),
     }
     if function_id not in table:
         return None
