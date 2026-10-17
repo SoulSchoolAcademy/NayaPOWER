@@ -65,20 +65,48 @@ Every template should define:
 - validation and acceptance checks;
 - author, version, provenance, license/reuse terms, and update history.
 
-### Initial starter template collection
+### Initial starter template collection and priority hypothesis
 
-This is the initial proposed collection; names and order can evolve through evidence and Director decisions.
+Templates are starting compositions, not mutually exclusive product silos. People may combine multiple templates/rooms into one connected Smart App or personal hub. The ranking below is a **hypothesis about general-population usefulness**, not a fact. We must ship, observe real usage, and revise the order from evidence.
 
-1. **My Personal World** — an “about me” page and personal app that introduces the person, links their chosen social profiles and projects, presents their interests and work, and offers clear ways to connect or collaborate.
-2. **Business Home** — a business page with its story, offerings, contact paths, FAQs, updates, and relevant customer actions.
-3. **Creator / Portfolio** — a home for a creator's work, identity, publications, media, social links, and audience interaction.
-4. **Project / Launch** — a project hub with goals, current status, milestones, updates, supporters, and a related community Space.
-5. **Knowledge Base / Ask Naya** — a page where visitors can ask questions and Naya answers from approved, connected knowledge sources, with source-aware and permission-aware responses.
-6. **Smart Blog / Publication** — a topic-focused page with posts, a publishing schedule, archives, subscriptions or notifications where supported, and community discussion.
-7. **Community / Smart Space** — a community entry point with posts, comments, questions, moderation, member participation, and links to related projects.
-8. **Event / Workshop** — an event page with essential details, updates, participation or registration flows where supported, reminders, and a related community.
-9. **Service / Booking** — a service page with offerings, common questions, contact or booking actions where the necessary integration exists, and clear availability states.
-10. **Product / Offer / Campaign** — a page explaining an offer, product, initiative, or campaign, with updates, calls to action, and permission-aware outreach.
+1. **My Personal World** — the flagship personal front door: who I am, chosen profiles, projects, apps, and ways to connect.
+2. **Today Briefing** — a daily view of what matters now, current activity, useful priorities, and next actions.
+3. **Smart List / Organizer** — a focused starting experience for organizing notes, contacts, topics, posts, tasks, resources, or other items into useful lists.
+4. **Business Landing** — a simple business home for offerings, contact paths, FAQs, and updates.
+5. **Booking / Appointment** — a service and booking experience where a real, authorized booking provider is available.
+6. **Product / Offer Page** — a product, offer, initiative, or campaign with clear information and next steps.
+7. **Event / Workshop** — event information, participation, updates, and registration where supported.
+8. **Community Hub / Smart Space** — shared purpose, posts, questions, moderation, and participation when enabled.
+9. **Creator / Portfolio** — selected work, identity, media, publications, and collaboration paths.
+10. **Menu / Price List** — a clear, editable menu or catalog of services, options, and prices.
+11. **Signup / Interest Page** — an opt-in form or registration path with honest consent and data handling.
+12. **Dashboard** — a more specialized operational view, ranked lower for general first-time use but valuable for some roles.
+
+The earlier Knowledge Base, Smart Blog, Learning Library, Project/Launch, and Team/Organization compositions remain useful patterns and rooms/modules. They should not disappear just because the first public-facing ranking is limited to twelve. Their best structures can be included as optional rooms, variants, or saved templates rather than forcing users to choose exactly one.
+
+### Templates compose; standard features travel with the app
+
+A template is a recommended starting arrangement, not a limit on what the app can become. A user may start with My Personal World, then add Today Briefing, Smart Lists, a business page, a community Space, and other rooms. These parts should share identity, permissions, design, navigation, and canonical events instead of becoming disconnected mini-apps.
+
+The app should arrive as a **complete, useful first-day experience**, with standard feature choices preselected. The build intake should show clear checkboxes, checked by default for standard features; the owner can uncheck, remove, or add features before or after the first build. Naya should explain a material dependency instead of hiding it. "Complete on day one" is the target experience—not permission to pretend an unimplemented or unverified feature works.
+
+Cross-cutting standard features include:
+- **Smart Mail**, where supported and authorized;
+- **Smart Lists**, usable to organize different kinds of items—not just a dedicated "list page";
+- **Smart Spaces**, for connected rooms/community where desired;
+- **Connections**, to supported services and people, each with its own permission and connection state;
+- **Ask Naya/Muse access**, where the actual integration and authorization exist;
+- **Today / activity / reports**, where canonical event data supports them;
+- **Smart Notes and Smart Links**, with capture, persistence, and learning proof kept distinct;
+- **notifications and automation**, only when configured, authorized, and verified.
+
+Feature selection is a composition step, not a new architecture. The same module contract and resolver must govern every template and room. A function is available to execute only when it is implemented, its requirements are met, and the required permission/authority is granted. Otherwise it stays blocked with a useful reason. A reported resolver or test is not accepted as independently proven until the wiring team verifies it against the real activation path. Unknown functions fail closed.
+
+### Privacy and network visibility are owner-controlled choices
+
+The app starts private when the owner's intent is unclear, but privacy is a **choice and control**, not a permanent restriction. Owners can deliberately make selected pages or a whole NayaNET presence public, keep them private, or share with selected people/collaborators. The UI should make the audience setting understandable and easy to change.
+
+Connections to Muse/Naya, GitHub, other supported services, and NayaNET each need their own explicit setting and authorization. Connecting a service does not automatically publish its data. Making a profile public does not make private notes, credentials, connected-source contents, drafts, or private rooms public. Public-network participation and publication must be intentional, scoped, and reversible where technically possible.
 
 Templates may be community-created. Owners should be able to **save a successful app as a template**, keep it private or choose to share/publish it, and let others use it as a starting point. Reuse must preserve attribution and license terms. A template copy starts a new instance; it must not accidentally expose the original owner's private data, credentials, content, audience, or connected accounts.
 
