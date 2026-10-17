@@ -92,7 +92,7 @@ def test_self_match_invariant(entries):
 
 def test_registry_schema_and_files_exist():
     data = json.loads(REGISTRY.read_text())
-    assert data["version"] == 1
+    assert data["version"] >= 1  # registry grows; pinning ==1 breaks every legitimate addition
     problems = data["problems"]
     assert len(problems) >= 5
     ids = [p["id"] for p in problems]
@@ -141,3 +141,88 @@ def test_default_registry_resolves_from_any_cwd(tmp_path, monkeypatch, capsys):
     monkeypatch.chdir(tmp_path)
     code = detector.main(["--work", WORK_NEW])
     assert code == 0  # default registry found next to the module
+
+
+# ---------------------------------------------------------------------------
+# SP-009..SP-013 — drift_canary liveness/fairness seams (2026-10-11)
+# Regression: a D22 liveness-qualifier rebuild got a false CLEAR before these
+# entries existed (the builder caught it by manual seam search). These tests
+# pin the fix: the same work description must now FLAG.
+# ---------------------------------------------------------------------------
+
+WORK_D22_NEAR_MISS = (
+    "build a liveness-claim qualifier that judges whether claimed progress "
+    "is genuine: safety vs liveness, activity vs progress, "
+    "deadlock/livelock/starvation detection, waiting-state honesty, "
+    "authority boundaries"
+)
+WORK_D23_PARAPHRASE = (
+    "a well-founded measure that tells real progress from mere activity, "
+    "counting only verified reductions in outstanding obligations"
+)
+WORK_D24_PARAPHRASE = (
+    "prove fair scheduling without false progress: separate proofs for "
+    "opportunity, service, and qualifying evidence"
+)
+WORK_D25_PARAPHRASE = (
+    "when weak fairness is not enough — prevent starvation of work that "
+    "flickers in and out of eligibility"
+)
+WORK_D26_PARAPHRASE = (
+    "verify a liveness qualification by proving the three links separately "
+    "with lasso classification over observations"
+)
+WORK_NEW_LIVENESS_ADJACENT = (
+    "add voice playback to Intelligent Blocks so Naya reads answers aloud "
+    "in her own voice on mobile"
+)
+
+
+def test_d22_near_miss_now_flags(entries):
+    """The exact work description that false-CLEARed must FLAG SP-009."""
+    flags, _ = verdict(WORK_D22_NEAR_MISS, entries)
+    ids = [e["id"] for e, _ in flags]
+    assert "SP-009" in ids
+    canonicals = [e["canonical"] for e, _ in flags if e["id"] == "SP-009"]
+    assert canonicals == ["drift_canary/liveness.py"]
+
+
+def test_d23_paraphrase_flags(entries):
+    flags, _ = verdict(WORK_D23_PARAPHRASE, entries)
+    assert "SP-010" in [e["id"] for e, _ in flags]
+
+
+def test_d24_paraphrase_flags(entries):
+    flags, _ = verdict(WORK_D24_PARAPHRASE, entries)
+    assert "SP-011" in [e["id"] for e, _ in flags]
+
+
+def test_d25_paraphrase_flags(entries):
+    flags, _ = verdict(WORK_D25_PARAPHRASE, entries)
+    assert "SP-012" in [e["id"] for e, _ in flags]
+
+
+def test_d26_paraphrase_flags(entries):
+    flags, _ = verdict(WORK_D26_PARAPHRASE, entries)
+    assert "SP-013" in [e["id"] for e, _ in flags]
+
+
+def test_new_entries_do_not_overflag(entries):
+    """Genuinely new work stays CLEAR after the registry grew 8 -> 13."""
+    flags, advisories = verdict(WORK_NEW_LIVENESS_ADJACENT, entries)
+    assert flags == []
+    assert advisories == []
+
+
+def test_new_entry_ids_unique_and_sequential(entries):
+    ids = [e["id"] for e in entries]
+    assert len(ids) == len(set(ids))
+    for new_id in ("SP-009", "SP-010", "SP-011", "SP-012", "SP-013"):
+        assert new_id in ids
+
+
+def test_new_entries_point_at_real_files(entries):
+    for e in entries:
+        if e["id"] in ("SP-009", "SP-010", "SP-011", "SP-012", "SP-013"):
+            assert (REPO_ROOT / e["canonical"]).is_file(), e["canonical"]
+            assert "CODE-ONLY" in e["evidence"] or "extend this seam" in e["evidence"]
