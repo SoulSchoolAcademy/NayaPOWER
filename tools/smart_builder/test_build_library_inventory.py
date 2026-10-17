@@ -31,7 +31,7 @@ class LibraryInventoryTests(unittest.TestCase):
             '<div class="num">91</div><div class="num">58</div><div class="num">149</div>'
             '<div class="num">31</div><select id="category" aria-label="Filter">'
             '<option value="">All categories</option></select>'
-            '<script>const items=[]; const q=document.getElementById(\\'q\\')</script>',
+            "<script>const items=[]; const q=document.getElementById('q')</script>",
             encoding="utf-8")
         return main, canonical, gallery
 
