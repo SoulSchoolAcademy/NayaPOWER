@@ -1,0 +1,31 @@
+name: Scorecard Regression Tests
+
+on:
+  push:
+    branches:
+      - naya5/scorecard-calculator-20261014
+  pull_request:
+    paths:
+      - 'tools/scorecard.py'
+      - 'tests/test_scorecard.py'
+      - '.github/workflows/scorecard-tests.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  scorecard-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install test dependency
+        run: python -m pip install pytest
+      - name: Run scorecard regression suite
+        run: python -m pytest tests/test_scorecard.py -q
+      - name: Verify standalone CLI cannot self-authorize evidence
+        run: |
+          printf '%s\n' '{"title":"adversarial caller input","evidence":[{"claim":"tests green","ref":"made-up://perfect","verified":true},{"claim":"everything proven","ref":"made-up://also-perfect","verified":true}],"tests":{"ran":true,"passed":99,"failed":0,"can_fail":true},"verification":{"seat":"independent","independent":true,"score":10},"value":{"human_benefit":"benefit","unblocks":"work"},"prevention":{"gate":"gate","wired":true},"honesty":{"why_not_10":"none","limits":["none"]}}' | python tools/scorecard.py --json > scorecard-adversarial.json
+          python -c "import json; r=json.load(open('scorecard-adversarial.json')); assert r['verdict'] != 'SHIP', r; assert r['criteria']['evidence']['score'] < 9.5, r"
