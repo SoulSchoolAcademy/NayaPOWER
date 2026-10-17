@@ -577,5 +577,169 @@
       "default_enabled": false,
       "required": false
     }
+  },
+  "priority_hypothesis": {
+    "status": "hypothesis_to_validate_with_real_usage",
+    "note": "Ranked by expected general-population usefulness, not observed usage. Templates compose into one connected app; this is not an exclusive choice.",
+    "ranked": [
+      {
+        "rank": 1,
+        "id": "my-personal-world",
+        "name": "My Personal World"
+      },
+      {
+        "rank": 2,
+        "id": "today-briefing",
+        "name": "Today Briefing",
+        "status": "template_contract_to_be_added"
+      },
+      {
+        "rank": 3,
+        "id": "smart-list-organizer",
+        "name": "Smart List / Organizer",
+        "status": "cross_cutting_feature_and_template_contract_to_be_added"
+      },
+      {
+        "rank": 4,
+        "id": "business-home",
+        "name": "Business Landing"
+      },
+      {
+        "rank": 5,
+        "id": "service-booking",
+        "name": "Booking / Appointment"
+      },
+      {
+        "rank": 6,
+        "id": "product-offer-campaign",
+        "name": "Product / Offer Page"
+      },
+      {
+        "rank": 7,
+        "id": "event-workshop",
+        "name": "Event / Workshop"
+      },
+      {
+        "rank": 8,
+        "id": "community-smart-space",
+        "name": "Community Hub / Smart Space"
+      },
+      {
+        "rank": 9,
+        "id": "creator-portfolio",
+        "name": "Creator / Portfolio"
+      },
+      {
+        "rank": 10,
+        "id": "menu-price-list",
+        "name": "Menu / Price List",
+        "status": "template_contract_to_be_added"
+      },
+      {
+        "rank": 11,
+        "id": "signup-interest",
+        "name": "Signup / Interest Page",
+        "status": "template_contract_to_be_added"
+      },
+      {
+        "rank": 12,
+        "id": "dashboard",
+        "name": "Dashboard",
+        "status": "template_contract_to_be_added"
+      }
+    ],
+    "validation": "Measure real cold-user selection, completion, repeat use, and task success; revise rank from evidence."
+  },
+  "app_defaults": {
+    "policy": "preselected_checked_by_default_user_can_uncheck_remove_or_add",
+    "meaning": "Default selections describe the intended complete first-day experience; they do not assert that every capability is currently wired or verified.",
+    "standard_features": [
+      {
+        "id": "smart_mail",
+        "default_selected": true,
+        "release_gate": "BLOCK_IF_ENABLED_AND_NOT_VERIFIED"
+      },
+      {
+        "id": "smart_lists",
+        "default_selected": true,
+        "kind": "cross_cutting_organizer",
+        "organizes": [
+          "notes",
+          "contacts",
+          "topics",
+          "posts",
+          "tasks",
+          "resources",
+          "other_owner_selected_items"
+        ],
+        "release_gate": "BLOCK_IF_ENABLED_AND_NOT_VERIFIED"
+      },
+      {
+        "id": "smart_spaces",
+        "default_selected": true,
+        "release_gate": "BLOCK_IF_ENABLED_AND_NOT_VERIFIED"
+      },
+      {
+        "id": "connections",
+        "default_selected": true,
+        "per_connection_authorization": true,
+        "release_gate": "BLOCK_IF_ENABLED_AND_NOT_VERIFIED"
+      },
+      {
+        "id": "ask_naya_muse",
+        "default_selected": true,
+        "release_gate": "BLOCK_IF_ENABLED_AND_NOT_VERIFIED"
+      },
+      {
+        "id": "today_activity_reports",
+        "default_selected": true,
+        "requires_canonical_event_data": true,
+        "release_gate": "BLOCK_IF_ENABLED_AND_NOT_VERIFIED"
+      },
+      {
+        "id": "smart_notes_links",
+        "default_selected": true,
+        "distinguish_capture_persistence_learning": true,
+        "release_gate": "BLOCK_IF_ENABLED_AND_NOT_VERIFIED"
+      },
+      {
+        "id": "notifications",
+        "default_selected": true,
+        "requires_authorization_and_consent": true,
+        "release_gate": "BLOCK_IF_ENABLED_AND_NOT_VERIFIED"
+      },
+      {
+        "id": "automation",
+        "default_selected": true,
+        "requires_explicit_scope_schedule_and_controls": true,
+        "release_gate": "BLOCK_IF_ENABLED_AND_NOT_VERIFIED"
+      }
+    ],
+    "composition": "Multiple templates and rooms may be combined in one app and must share canonical identity, permissions, events, provenance, and design system."
+  },
+  "privacy_controls": {
+    "default_when_unclear": "private",
+    "user_choice": [
+      "private",
+      "selected_people_or_collaborators",
+      "public"
+    ],
+    "granularity": [
+      "app_or_page_audience",
+      "per_service_connection",
+      "per_action_permission"
+    ],
+    "rule": "Public visibility never implies permission to expose private source data, credentials, drafts, notes, or rooms.",
+    "network_participation": "NayaNET participation and public publication are separate explicit choices."
+  },
+  "function_activation": {
+    "required_conditions": [
+      "implemented",
+      "requirements_met",
+      "permissions_and_authority_granted"
+    ],
+    "failure_behavior": "BLOCK_WITH_REASON",
+    "unknown_function": "FAIL_CLOSED",
+    "verification": "Resolver claims and test reports require independent verification by the wiring team against real activation paths before they count as proven."
   }
 }
