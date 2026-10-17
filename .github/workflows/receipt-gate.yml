@@ -16,7 +16,7 @@ name: Receipt pin gate
 on:
   pull_request:
     branches: [main]
-    types: [opened, synchronize]
+    types: [opened, synchronize, edited, reopened]
 
 # Least privilege: the gate reads the PR body and the repo's own tools.
 # Declared explicitly so a future default restriction cannot silently 403
@@ -30,6 +30,8 @@ jobs:
     name: Receipt pin — exact head SHA
     runs-on: ubuntu-latest
     steps:
+      - name: Record trigger activity (B-48 observability)
+        run: echo "trigger_activity=${{ github.event.action }}"
       - uses: actions/checkout@v4
 
       - name: Enforce exact-head receipt pin (fail-closed)
