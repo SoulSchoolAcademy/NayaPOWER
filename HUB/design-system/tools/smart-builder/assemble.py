@@ -29,8 +29,11 @@ from feature_notifications import (NotificationsRefusal,
 from feature_automation import (AutomationRefusal, decl_for as am_decl_for,
                                  render_automation, FEATURE_AUTOMATION_ID,
                                  FEATURE_AUTOMATION_VERSION)
+from feature_smart_mail import (SmartMailRefusal, decl_for as sm_decl_for,
+                                 render_smart_mail, FEATURE_ID as FEATURE_SMART_MAIL_ID,
+                                 FEATURE_VERSION as FEATURE_SMART_MAIL_VERSION)
 
-ASSEMBLER_VERSION = "assemble-v1.5"  # v1.5: wave-E module 3/3 (automation)
+ASSEMBLER_VERSION = "assemble-v1.6"  # v1.6: wave-A module 1/3 (smart_mail)
 
 # ---- breaker module wiring ----
 # Every wired module follows the cover pattern: decl_for(contract) parses
@@ -55,6 +58,22 @@ def _render_automation(decl, st, ctx, contract):
     html, events, audit = render_automation(decl, st, context=ctx)
     return html, events, {'automation_audit': audit}
 
+def _wavea_connected_events(mod_fid, mod_version, connected):
+    # Wave A modules return (html, connected) where connected is a list of
+    # {"event": ..., "grant": ...} for the CONNECTED capabilities actually
+    # wired — the grant mirror for the receipt (audit trail).
+    return [{'event': c.get('event', 'connected.wired'), 'feature': mod_fid,
+             'grant': c.get('grant'), 'version': mod_version}
+            for c in (connected or [])]
+
+def _render_smart_mail(decl, st, ctx, contract):
+    html, connected = render_smart_mail(decl, st, context=ctx)
+    evts = [{'event': 'smart_mail.wired', 'feature': FEATURE_SMART_MAIL_ID,
+             'version': FEATURE_SMART_MAIL_VERSION}]
+    evts.extend(_wavea_connected_events(
+        FEATURE_SMART_MAIL_ID, FEATURE_SMART_MAIL_VERSION, connected))
+    return html, evts, {}
+
 # Reserved receipt keys — modules may not shadow them via extra_receipt.
 _RECEIPT_RESERVED_KEYS = frozenset(
     {'built_utc', 'events', 'grants', 'identity', 'consent'})
@@ -73,6 +92,10 @@ BREAKER_MODULES = [
      'decl_for': am_decl_for, 'refusal': AutomationRefusal,
      'version': FEATURE_AUTOMATION_VERSION,
      'render': _render_automation},
+    {'key': 'smart_mail', 'fid': FEATURE_SMART_MAIL_ID,
+     'decl_for': sm_decl_for, 'refusal': SmartMailRefusal,
+     'version': FEATURE_SMART_MAIL_VERSION,
+     'render': _render_smart_mail},
 ]
 BREAKER_MODULE_KEYS = {m['key'] for m in BREAKER_MODULES}
 
@@ -422,13 +445,15 @@ def activate_breakers(contract, reg_statuses, reg_present, context):
                 html, evts, extra = mod['render'](
                     mdecl, reg_statuses.get(mod['key']), context, contract)
             except mod['refusal'] as e:
-                # canonical permission shape: the resolver's gate 4
-                # (permission_denied) is the one law; module-level
-                # grant_required refusals are normalized to it here.
-                code = ('permission_denied' if e.code == 'grant_required'
-                        else e.code)
-                err = {'code': code, 'feature': fid, 'detail': e.detail}
-                if code == 'permission_denied':
+                # Consent-line shape: the module's grant_required names the
+                # missing connection grant; the resolver's gate 4
+                # (permission_denied) names the missing registry permission.
+                # Both are fail-closed; both carry the same STRUCTURE
+                # {code, feature, detail, missing} — one shape, two honest
+                # codes for two distinct layers (connection grant vs
+                # registry permission).
+                err = {'code': e.code, 'feature': fid, 'detail': e.detail}
+                if e.code == 'grant_required':
                     err['missing'] = [e.detail.split(
                         'contract.connections.')[-1].split()[0]
                         if 'contract.connections.' in e.detail else 'unknown']

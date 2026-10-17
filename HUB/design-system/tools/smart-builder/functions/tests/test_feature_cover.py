@@ -183,16 +183,16 @@ class FeatureCoverAcceptance(unittest.TestCase):
     def test_unbuilt_breaker_refused(self):
         c = json.load(open(SMOKE))
         c["features"] = {"cover": dict(COVER_DECL),
-                         "smart_mail": True}  # smart_mail is still specified
+                         "connect": True}  # connect is still specified
         cp = os.path.join(self.tmp, "contract.json")
         json.dump(c, open(cp, "w"))
         r, page, _ = run_assemble(cp, self.tmp)
         self.assertEqual(r.returncode, 2)
         errs = json.loads(r.stdout)["errors"]
-        mail_errs = [e for e in errs
-                     if e.get("feature") == "feature.smart_mail"]
-        self.assertTrue(mail_errs, errs)
-        self.assertEqual(mail_errs[0]["code"], "feature_not_built")
+        conn_errs = [e for e in errs
+                     if e.get("feature") == "feature.connect"]
+        self.assertTrue(conn_errs, errs)
+        self.assertEqual(conn_errs[0]["code"], "feature_not_built")
         self.assertNotIn('data-feature="cover"', page)  # fail closed: nothing renders
 
     # ---- registry binding: the contract cannot out-claim the registry ----
