@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-17T00:15:24+00:00",
+ "generated_utc": "2026-10-17T01:15:51+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -348,6 +348,12 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2715,
+     "title": "Daily intelligence report pipeline \u2014 item 17 (generator + sample + read contract)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2715",
+     "draft": false
+    },
+    {
      "number": 2714,
      "title": "DESIGN: adopt 144-block catalog extension into BLOCKS.md",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2714",
@@ -388,15 +394,9 @@
      "title": "Design System v1 \u2014 the Naya Lego box (100 laws, tokens, catalog, organized library)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2705",
      "draft": true
-    },
-    {
-     "number": 2703,
-     "title": "Harden TIP-NOTE marker to line-anchored heading regex + regression tests",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2703",
-     "draft": false
     }
    ],
-   "open_pr_count": 230
+   "open_pr_count": 231
   },
   {
    "id": "wire",
@@ -555,6 +555,12 @@
    "board_lane": "#2175 lane INFRA",
    "open_prs": [
     {
+     "number": 2716,
+     "title": "Composer v1 + gap closure (43->39 mapping, feed specimen) \u2014 item 15b",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2716",
+     "draft": false
+    },
+    {
      "number": 2689,
      "title": "CI rate-limit resilience: cut redundant API burn (~85% on hot paths)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2689",
@@ -595,15 +601,9 @@
      "title": "Reconcile NayaPOWER live backlog: 28 blockers, solutions, owners, double-check law",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2563",
      "draft": true
-    },
-    {
-     "number": 2530,
-     "title": "[DOCK INTAKE w84] naya-gamma/sibling-truncation-board-claim-scan \u2014 CI intake only (NOT mer",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2530",
-     "draft": false
     }
    ],
-   "open_pr_count": 39
+   "open_pr_count": 40
   },
   {
    "id": "product",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 604,
- "unassigned_prs": 230
+ "open_pr_total": 606,
+ "unassigned_prs": 231
 }
