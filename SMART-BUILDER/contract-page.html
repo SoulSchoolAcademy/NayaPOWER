@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b0b12">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>The Smart Builder Contract</title>
+<link rel="manifest" href="manifest.webmanifest">
+<!-- PWA note: manifest.webmanifest and the app icon are produced by the
+     deploy step (intake icon choice), never invented here. The assembler
+     only guarantees the link and the mobile-first meta are present. -->
+<style>
+.naya-field {
+    --field-bg: var(--obsidian);
+    --field-rim: var(--line);
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    color: var(--white);
+    max-width: 420px;
+    margin: 0;
+  }
+  .naya-field .naya-field__label {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--quiet);
+    margin: 0 0 8px 2px;
+  }
+  .naya-field .naya-field__control {
+    position: relative;
+  }
+  .naya-field .naya-field__input {
+    width: 100%;
+    box-sizing: border-box;
+    appearance: none;
+    background: var(--field-bg);
+    border: 1.5px solid var(--field-rim);
+    border-radius: var(--r-md);
+    padding: 13px 14px;
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--white);
+    outline: none;
+    transition: border-color .18s var(--ease), box-shadow .18s var(--ease), background .18s var(--ease), opacity .18s var(--ease);
+    box-shadow: inset 0 1px 2px rgba(0,0,0,.35);
+  }
+  .naya-field .naya-field__input::placeholder {
+    color: var(--secondary);
+  }
+  .naya-field .naya-field__input:hover {
+    border-color: rgba(255,255,255,.22);
+    background: var(--raise);
+  }
+  .naya-field .naya-field__input:focus-visible,
+  .naya-field .naya-field__input:focus {
+    border-color: var(--soul);
+    background: var(--raise);
+    box-shadow: 0 0 0 3px rgba(160,107,255,.28), inset 0 1px 2px rgba(0,0,0,.35);
+  }
+  .naya-field .naya-field__meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 8px 2px 0;
+    font-size: 12px;
+    line-height: 1.45;
+  }
+  .naya-field .naya-field__hint {
+    color: var(--secondary);
+  }
+  .naya-field .naya-field__error {
+    color: var(--coral);
+    display: none;
+    font-weight: 500;
+  }
+  .naya-field[data-state="error"] .naya-field__input {
+    border-color: var(--coral);
+    background: var(--obsidian);
+  }
+  .naya-field[data-state="error"] .naya-field__input:focus,
+  .naya-field[data-state="error"] .naya-field__input:focus-visible {
+    border-color: var(--coral);
+    box-shadow: 0 0 0 3px rgba(255,94,108,.18), inset 0 1px 2px rgba(0,0,0,.35);
+  }
+  .naya-field[data-state="error"] .naya-field__hint { display: none; }
+  .naya-field[data-state="error"] .naya-field__error { display: block; }
+  .naya-field[data-state="disabled"] .naya-field__label { color: var(--secondary); }
+  .naya-field .naya-field__input:disabled {
+    opacity: .45;
+    cursor: not-allowed;
+    border-color: var(--line);
+    background: var(--obsidian);
+    box-shadow: none;
+  }
+  .naya-field[data-state="disabled"] .naya-field__hint { color: var(--secondary); }
+  .naya-field[data-state="disabled"] .naya-field__input:hover { background: var(--obsidian); }
+.naya-toggle {
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    color: var(--white);
+  }
+  .naya-switch {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+  .naya-switch .naya-switch__track {
+    width: 52px;
+    height: 30px;
+    border-radius: var(--r-pill);
+    background: var(--obsidian);
+    border: 1.5px solid var(--line);
+    position: relative;
+    transition: background .22s var(--ease), border-color .22s var(--ease), box-shadow .22s var(--ease), opacity .18s var(--ease);
+    box-shadow: inset 0 1px 3px rgba(0,0,0,.5);
+  }
+  .naya-switch .naya-switch__knob {
+    position: absolute;
+    top: 50%;
+    left: 4px;
+    transform: translate(0, -50%);
+    width: 22px;
+    height: 22px;
+    border-radius: var(--r-pill);
+    background: var(--white);
+    opacity: .75;
+    box-shadow: 0 2px 6px rgba(0,0,0,.45);
+    transition: transform .22s var(--ease), opacity .22s var(--ease), background .22s var(--ease);
+  }
+  .naya-switch:hover .naya-switch__track {
+    border-color: rgba(255,255,255,.22);
+  }
+  .naya-switch:focus-visible {
+    outline: none;
+  }
+  .naya-switch:focus-visible .naya-switch__track {
+    border-color: var(--soul);
+    box-shadow: 0 0 0 3px rgba(160,107,255,.28), inset 0 1px 3px rgba(0,0,0,.5);
+  }
+  .naya-switch[data-on="false"] .naya-switch__track {
+    background: var(--obsidian);
+    border-color: var(--line);
+  }
+  .naya-switch[data-on="true"] .naya-switch__track {
+    background: var(--verified);
+    border-color: var(--verified);
+    box-shadow: 0 0 12px rgba(47,232,158,.25), inset 0 1px 2px rgba(0,0,0,.15);
+  }
+  .naya-switch[data-on="true"] .naya-switch__knob {
+    transform: translate(22px, -50%);
+    background: var(--white);
+    opacity: 1;
+  }
+  .naya-switch:disabled {
+    cursor: not-allowed;
+  }
+  .naya-switch:disabled .naya-switch__track {
+    opacity: .4;
+    box-shadow: none;
+  }
+  .naya-switch:disabled .naya-switch__knob {
+    opacity: .5;
+  }
+  .naya-switch__word {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    margin-left: 12px;
+    color: var(--secondary);
+    transition: color .22s var(--ease);
+    user-select: none;
+  }
+  .naya-switch[data-on="true"] .naya-switch__word { color: var(--verified); }
+  .naya-switch:disabled .naya-switch__word { color: var(--secondary); opacity: .6; }
+  .naya-settings {
+    max-width: 560px;
+    background: var(--card);
+    border: 1.5px solid var(--line);
+    border-radius: var(--r-lg);
+    padding: 8px;
+    box-shadow: var(--lift);
+  }
+  .naya-settings__kicker {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--quiet);
+    padding: 12px 16px 4px;
+  }
+  .naya-settings__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 16px;
+    border-radius: var(--r-md);
+    transition: background .18s var(--ease);
+  }
+  .naya-settings__row + .naya-settings__row {
+    border-top: 1px solid var(--line);
+    border-radius: 0;
+  }
+  .naya-settings__row:hover {
+    background: var(--raise);
+  }
+  .naya-settings__text { min-width: 0; }
+  .naya-settings__title {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.45;
+    margin: 0 0 2px;
+  }
+  .naya-settings__desc {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--secondary);
+    margin: 0;
+  }
+  .naya-settings__row[data-disabled="true"] .naya-settings__title { color: var(--secondary); }
+  .naya-settings__row[data-disabled="true"] .naya-settings__desc { opacity: .6; }
+  .naya-settings__row[data-disabled="true"]:hover { background: none; }
+.naya-search {
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    color: var(--white);
+    max-width: 560px;
+  }
+  .naya-search__box {
+    position: relative;
+  }
+  .naya-search__icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 17px;
+    height: 17px;
+    color: var(--secondary);
+    pointer-events: none;
+  }
+  .naya-search__input {
+    width: 100%;
+    box-sizing: border-box;
+    appearance: none;
+    background: var(--obsidian);
+    border: 1.5px solid var(--line);
+    border-radius: var(--r-pill);
+    padding: 13px 18px 13px 44px;
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--white);
+    outline: none;
+    transition: border-color .18s var(--ease), box-shadow .18s var(--ease), background .18s var(--ease);
+    box-shadow: inset 0 1px 2px rgba(0,0,0,.35);
+  }
+  .naya-search__input::placeholder { color: var(--secondary); }
+  .naya-search__input:hover {
+    border-color: rgba(255,255,255,.22);
+    background: var(--raise);
+  }
+  .naya-search__input:focus-visible,
+  .naya-search__input:focus {
+    border-color: var(--soul);
+    background: var(--raise);
+    box-shadow: 0 0 0 3px rgba(160,107,255,.28), inset 0 1px 2px rgba(0,0,0,.35);
+  }
+  .naya-search__scopes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 12px 2px 0;
+  }
+  .naya-pill {
+    appearance: none;
+    border: 1.5px solid var(--line);
+    background: var(--obsidian);
+    color: var(--quiet);
+    border-radius: var(--r-pill);
+    padding: 7px 15px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all .18s var(--ease);
+  }
+  .naya-pill:hover {
+    border-color: rgba(255,255,255,.22);
+    color: var(--white);
+  }
+  .naya-pill[data-active="true"] {
+    background: var(--white);
+    border-color: var(--white);
+    color: var(--field);
+    font-weight: 600;
+  }
+  .naya-pill:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(160,107,255,.28);
+  }
+  .naya-search__results {
+    margin: 16px 0 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 8px;
+  }
+  .naya-result {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: var(--card);
+    border: 1.5px solid var(--line);
+    border-radius: var(--r-md);
+    padding: 14px 16px;
+    box-shadow: var(--lift);
+    transition: border-color .18s var(--ease), transform .18s var(--ease);
+    cursor: pointer;
+  }
+  .naya-result:hover {
+    border-color: rgba(255,255,255,.22);
+    transform: translateY(-1px);
+  }
+  .naya-result__scope {
+    flex: none;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--soul);
+    border: 1px solid rgba(160,107,255,.4);
+    border-radius: var(--r-pill);
+    padding: 3px 9px;
+    margin-top: 1px;
+  }
+  .naya-result__body { min-width: 0; flex: 1; }
+  .naya-result__title {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.45;
+    margin: 0 0 2px;
+  }
+  .naya-result__snippet {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--secondary);
+    margin: 0;
+  }
+  .naya-badge {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    border-radius: var(--r-pill);
+    padding: 4px 10px;
+    margin-top: 1px;
+    border: 1px solid transparent;
+  }
+  .naya-badge--verified {
+    color: var(--verified);
+    border-color: rgba(47,232,158,.4);
+    background: rgba(47,232,158,.08);
+  }
+  .naya-badge--claim {
+    color: var(--claim);
+    border-color: rgba(255,191,61,.4);
+    background: rgba(255,191,61,.08);
+  }
+  .naya-search__empty {
+    margin: 16px 0 0;
+    background: var(--card);
+    border: 1.5px dashed var(--line);
+    border-radius: var(--r-md);
+    padding: 28px 24px;
+    text-align: center;
+    box-shadow: none;
+  }
+  .naya-search__empty[hidden] { display: none; }
+  .naya-search__empty-title {
+    font-size: 17px;
+    font-weight: 600;
+    margin: 0 0 6px;
+  }
+  .naya-search__empty-title .naya-search__query { color: var(--soul); }
+  .naya-search__empty-sub {
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--secondary);
+    margin: 0 0 14px;
+  }
+  .naya-search__empty-try {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+.naya-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-height: 54px; padding: 0 28px;
+    border-radius: var(--r-pill);
+    border: 1.5px solid var(--line);
+    background: linear-gradient(180deg, var(--card), var(--field));
+    color: var(--white);
+    font-family: Inter, system-ui, -apple-system, sans-serif;
+    font-size: 15px; font-weight: 600; letter-spacing: .01em; line-height: 1;
+    cursor: pointer;
+    box-shadow: inset 0 1px 0 var(--line), var(--lift);
+    transition: transform .22s var(--ease), box-shadow .22s var(--ease), border-color .22s var(--ease);
+  }
+  .naya-btn:hover {
+    transform: translateY(-2px);
+    border-color: var(--quiet);
+    box-shadow: inset 0 1px 0 var(--line), var(--lift), 0 12px 32px rgba(160,107,255,.42);
+  }
+  .naya-btn:active { transform: translateY(0) scale(.98); }
+  .naya-btn:focus-visible { outline: 2.5px solid var(--soul); outline-offset: 3px; }
+  .naya-btn--quiet {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-height: 54px; padding: 0 24px;
+    border-radius: var(--r-pill);
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--secondary);
+    font-family: Inter, system-ui, -apple-system, sans-serif;
+    font-size: 15px; font-weight: 500; line-height: 1;
+    cursor: pointer;
+    transition: transform .2s var(--ease), color .2s var(--ease), background-color .2s var(--ease);
+  }
+  .naya-btn--quiet:hover {
+    color: var(--white);
+    background: rgba(255,255,255,.06);
+    transform: translateY(-1px);
+  }
+  .naya-btn--quiet:active { transform: translateY(0) scale(.97); }
+  .naya-btn--quiet:focus-visible { outline: 2.5px solid var(--secondary); outline-offset: 3px; }
+  .naya-modal-overlay {
+    position: fixed; inset: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: center;
+    padding: 24px;
+    background: rgba(5,5,7,.72);
+    -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+    opacity: 0; visibility: hidden; pointer-events: none;
+    transition: opacity .28s var(--ease), visibility 0s linear .28s;
+  }
+  .naya-modal-overlay.is-open {
+    opacity: 1; visibility: visible; pointer-events: auto;
+    transition: opacity .28s var(--ease);
+  }
+  .naya-dialog {
+    position: relative;
+    width: min(440px, 100%);
+    padding: 28px;
+    border-radius: var(--r-lg);
+    border: 1.5px solid var(--line);
+    background: linear-gradient(180deg, var(--card), var(--obsidian));
+    box-shadow: var(--lift), 0 48px 96px rgba(5,5,7,.65);
+    opacity: 0; transform: translateY(16px) scale(.97);
+  }
+  .naya-modal-overlay.is-open .naya-dialog { animation: naya-dialog-in .42s var(--ease) forwards; }
+  @keyframes naya-dialog-in {
+    from { opacity: 0; transform: translateY(16px) scale(.97); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  .naya-dialog__close {
+    position: absolute; top: 14px; right: 14px;
+    width: 34px; height: 34px; border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    border: 1px solid transparent; background: transparent;
+    color: var(--secondary); font-size: 15px; line-height: 1;
+    cursor: pointer;
+    transition: color .18s var(--ease), background-color .18s var(--ease), transform .18s var(--ease);
+  }
+  .naya-dialog__close:hover { color: var(--white); background: rgba(255,255,255,.08); }
+  .naya-dialog__close:active { transform: scale(.92); }
+  .naya-dialog__close:focus-visible { outline: 2px solid var(--secondary); outline-offset: 2px; }
+  .naya-dialog__kicker {
+    margin: 0 0 10px;
+    font-family: Inter, system-ui, -apple-system, sans-serif;
+    font-size: 11px; font-weight: 600; line-height: 1.2;
+    letter-spacing: .14em; text-transform: uppercase;
+    color: var(--secondary);
+  }
+  .naya-dialog__title {
+    margin: 0 0 12px;
+    font-family: Inter, system-ui, -apple-system, sans-serif;
+    font-size: 24px; font-weight: 700; line-height: 1.25; letter-spacing: -.01em;
+    color: var(--white);
+  }
+  .naya-dialog__body {
+    margin: 0;
+    font-family: Inter, system-ui, -apple-system, sans-serif;
+    font-size: 15px; font-weight: 400; line-height: 1.6;
+    color: var(--quiet);
+  }
+  .naya-dialog__actions {
+    display: flex; flex-direction: column; align-items: stretch; gap: 10px;
+    margin-top: 26px;
+  }
+  .naya-dialog__actions .naya-btn { width: 100%; }
+  @media (prefers-reduced-motion: reduce) {
+    .naya-modal-overlay, .naya-dialog, .naya-btn, .naya-btn--quiet, .naya-dialog__close { transition: none; animation: none; }
+    .naya-modal-overlay.is-open .naya-dialog { opacity: 1; transform: none; }
+  }
+.naya-toasts {
+    position: fixed; right: 20px; bottom: 20px; z-index: 200;
+    display: flex; flex-direction: column; gap: 12px;
+    width: min(360px, calc(100vw - 40px));
+  }
+  .naya-toast {
+    position: relative; overflow: hidden;
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 14px 12px 14px 18px;
+    border-radius: var(--r-md);
+    border: 1.5px solid var(--line);
+    background: linear-gradient(180deg, var(--raise), var(--obsidian));
+    box-shadow: var(--lift);
+    animation: naya-toast-in .45s var(--ease) both;
+  }
+  .naya-toast.is-leaving { animation: naya-toast-out .35s var(--ease) both; }
+  @keyframes naya-toast-in {
+    from { opacity: 0; transform: translateX(32px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes naya-toast-out {
+    from { opacity: 1; transform: translateX(0); }
+    to   { opacity: 0; transform: translateX(32px); }
+  }
+  .naya-toast::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+    background: var(--line);
+  }
+  .naya-toast__icon {
+    flex: 0 0 auto;
+    width: 30px; height: 30px; border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    border: 1.5px solid var(--line);
+    background: var(--field);
+    font-family: Inter, system-ui, -apple-system, sans-serif;
+    font-size: 14px; font-weight: 700; line-height: 1;
+  }
+  .naya-toast__body { flex: 1 1 auto; min-width: 0; padding-top: 1px; }
+  .naya-toast__title {
+    margin: 0;
+    font-family: Inter, system-ui, -apple-system, sans-serif;
+    font-size: 15px; font-weight: 600; line-height: 1.35;
+    color: var(--white);
+  }
+  .naya-toast__detail {
+    margin: 3px 0 0;
+    font-family: Inter, system-ui, -apple-system, sans-serif;
+    font-size: 13px; font-weight: 400; line-height: 1.45;
+    color: var(--secondary);
+  }
+  .naya-toast__close {
+    flex: 0 0 auto;
+    width: 28px; height: 28px; border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    border: 1px solid transparent; background: transparent;
+    color: var(--secondary); font-size: 12px; line-height: 1;
+    cursor: pointer;
+    transition: color .18s var(--ease), background-color .18s var(--ease), transform .18s var(--ease);
+  }
+  .naya-toast__close:hover { color: var(--white); background: rgba(255,255,255,.08); }
+  .naya-toast__close:active { transform: scale(.92); }
+  .naya-toast__close:focus-visible { outline: 2px solid var(--secondary); outline-offset: 2px; }
+  .naya-toast--verified { border-color: rgba(47,232,158,.38); }
+  .naya-toast--verified::before { background: var(--verified); }
+  .naya-toast--verified .naya-toast__icon {
+    color: var(--verified);
+    border-color: rgba(47,232,158,.55);
+    box-shadow: 0 0 16px rgba(47,232,158,.28);
+  }
+  .naya-toast--claim { border-color: rgba(255,191,61,.38); }
+  .naya-toast--claim::before { background: var(--claim); }
+  .naya-toast--claim .naya-toast__icon {
+    color: var(--claim);
+    border-color: rgba(255,191,61,.55);
+    border-style: dashed;
+  }
+  .naya-toast--demo { border-color: rgba(232,79,255,.38); }
+  .naya-toast--demo::before { background: var(--demo); }
+  .naya-toast--demo .naya-toast__icon {
+    color: var(--demo);
+    border-color: rgba(232,79,255,.55);
+    box-shadow: 0 0 16px rgba(232,79,255,.28);
+  }
+  .naya-toast-demo-row { display: flex; flex-wrap: wrap; gap: 8px; }
+  .naya-toast-demo-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-height: 44px; padding: 0 20px;
+    border-radius: var(--r-pill);
+    border: 1.5px solid var(--line);
+    background: linear-gradient(180deg, var(--card), var(--obsidian));
+    box-shadow: var(--lift);
+    color: var(--quiet);
+    font-family: Inter, system-ui, -apple-system, sans-serif;
+    font-size: 13px; font-weight: 600; line-height: 1;
+    cursor: pointer;
+    transition: transform .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease);
+  }
+  .naya-toast-demo-btn:hover { transform: translateY(-2px); color: var(--white); border-color: var(--quiet); }
+  .naya-toast-demo-btn:active { transform: translateY(0) scale(.97); }
+  .naya-toast-demo-btn:focus-visible { outline: 2.5px solid var(--secondary); outline-offset: 3px; }
+  @media (prefers-reduced-motion: reduce) {
+    .naya-toast, .naya-toast.is-leaving, .naya-toast-demo-btn { animation: none; transition: none; }
+  }
+.naya-table-block{
+    background:linear-gradient(180deg,var(--card),var(--obsidian));
+    border:1.5px solid var(--line);
+    border-radius:var(--r-lg);
+    padding:22px;
+    max-width:760px;
+    font-family:Inter,-apple-system,"Segoe UI",sans-serif;
+  }
+  .naya-kicker{
+    font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;
+    color:var(--secondary);margin:0 0 12px;
+  }
+  .naya-table{width:100%;border-collapse:collapse;}
+  .naya-table th{
+    font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;
+    color:var(--secondary);text-align:left;
+    padding:10px 12px;border-bottom:1.5px solid var(--line);
+  }
+  .naya-table td{
+    padding:13px 12px;border-bottom:1px solid var(--line);
+    font-size:15px;line-height:1.5;color:var(--white);
+    vertical-align:middle;
+  }
+  .naya-table tbody tr{transition:background .25s var(--ease);}
+  .naya-table tbody tr:hover{background:var(--raise);}
+  .naya-table tbody tr:last-child td{border-bottom:none;}
+  .naya-table tr.selected{background:var(--raise);box-shadow:inset 2px 0 0 var(--soul);}
+  .naya-table .num{text-align:right;font-variant-numeric:tabular-nums;}
+  .naya-title{font-weight:600;color:var(--white);}
+  .naya-detail{font-size:12.5px;color:var(--secondary);white-space:nowrap;}
+  .truth{
+    display:inline-flex;align-items:center;gap:6px;
+    font-size:12px;font-weight:600;white-space:nowrap;
+    color:var(--t);
+    padding:4px 11px;border:1.5px solid var(--line);border-radius:var(--r-pill);
+    transition:box-shadow .25s var(--ease),border-color .25s var(--ease);
+  }
+  .truth:hover{box-shadow:0 0 14px -3px var(--t);border-color:var(--t);}
+  .truth.verified{--t:var(--verified);}
+  .truth.claim{--t:var(--claim);}
+  .truth.demo{--t:var(--demo);}
+  .truth .mark{font-size:11px;line-height:1;}
+.naya-chart-block{
+    background:linear-gradient(180deg,var(--card),var(--obsidian));
+    border:1.5px solid var(--line);
+    border-radius:var(--r-lg);
+    padding:22px;
+    max-width:760px;
+    font-family:Inter,-apple-system,"Segoe UI",sans-serif;
+  }
+  .naya-chart{display:flex;gap:12px;margin-top:4px;}
+  .naya-yaxis{
+    display:flex;flex-direction:column;justify-content:space-between;
+    height:230px;min-width:30px;text-align:right;
+    font-size:11px;color:var(--secondary);font-variant-numeric:tabular-nums;
+  }
+  .naya-plot{position:relative;flex:1;height:230px;}
+  .naya-grid{
+    position:absolute;left:0;right:0;height:1px;
+    background:var(--line);opacity:.55;
+  }
+  .naya-baseline{
+    position:absolute;left:0;right:0;bottom:0;height:1.5px;background:var(--line);
+  }
+  .naya-bars{
+    position:absolute;inset:0;display:flex;align-items:stretch;gap:10px;
+  }
+  .naya-barcol{
+    flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;
+  }
+  .naya-barval{
+    font-size:13px;font-weight:700;color:var(--white);
+    font-variant-numeric:tabular-nums;margin-bottom:8px;line-height:1;
+  }
+  .naya-bar{
+    width:min(64px,72%);height:var(--h);
+    border-radius:var(--r-sm) var(--r-sm) 0 0;
+    background:var(--bar);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.25);
+    transition:transform .3s var(--ease),box-shadow .3s var(--ease);
+  }
+  .naya-barcol:hover .naya-bar{
+    transform:translateY(-4px);
+    box-shadow:0 12px 28px -8px var(--bar), inset 0 1px 0 rgba(255,255,255,.25);
+  }
+  .naya-xlabels{display:flex;margin-left:42px;}
+  .naya-xlabels span{
+    flex:1;text-align:center;font-size:12px;color:var(--secondary);padding-top:10px;
+  }
+  .naya-honest{
+    margin:14px 0 0;font-size:12px;color:var(--secondary);line-height:1.5;
+  }
+  .naya-honest strong{color:var(--verified);font-weight:700;}
+.nb-card {
+    background: var(--card);
+    border: 1.5px solid var(--line);
+    border-radius: var(--r-lg);
+    padding: 22px 24px;
+    box-shadow: var(--lift);
+    transition: transform .35s var(--ease), border-color .35s var(--ease), box-shadow .35s var(--ease);
+    max-width: 380px;
+    cursor: default;
+    outline: none;
+  }
+  .nb-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255,255,255,.28);
+    box-shadow: 0 14px 44px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.08);
+  }
+  .nb-card:focus-visible {
+    border-color: var(--soul);
+    box-shadow: 0 0 0 3px rgba(160,107,255,.35), var(--lift);
+  }
+  .nb-card__kicker {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: Inter, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--quiet);
+    margin: 0 0 10px;
+  }
+  .nb-card__kicker::before {
+    content: "◆";
+    color: var(--magenta);
+    font-size: 10px;
+  }
+  .nb-card__headline {
+    font-family: Inter, sans-serif;
+    font-size: 22px;
+    line-height: 1.3;
+    color: var(--white);
+    margin: 0 0 8px;
+  }
+  .nb-card__body {
+    font-family: Inter, sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--secondary);
+    margin: 0 0 16px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .nb-card__action {
+    font-family: Inter, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--quiet);
+    text-decoration: none;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 2px;
+    transition: color .25s var(--ease), border-color .25s var(--ease);
+  }
+  .nb-card__action:hover { color: var(--white); border-color: var(--white); }
+  .nb-card__action:focus-visible {
+    outline: none;
+    color: var(--white);
+    box-shadow: 0 0 0 3px rgba(160,107,255,.35);
+    border-radius: var(--r-sm);
+  }
+.nb-player {
+    background: var(--card);
+    border: 1.5px solid var(--line);
+    border-radius: var(--r-lg);
+    padding: 18px 20px;
+    box-shadow: var(--lift);
+    max-width: 520px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    transition: border-color .35s var(--ease);
+  }
+  .nb-player:hover { border-color: rgba(255,255,255,.22); }
+  .nb-portal {
+    flex: 0 0 auto;
+    width: 66px;
+    height: 66px;
+    border-radius: 50%;
+    background: var(--field);
+    border: 1.5px solid rgba(255,255,255,.45);
+    box-shadow: 0 0 0 3px rgba(160,107,255,.55), 0 8px 24px rgba(0,0,0,.5), inset 0 2px 6px rgba(255,255,255,.12);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform .3s var(--ease), box-shadow .3s var(--ease);
+    padding: 0;
+  }
+  .nb-portal:hover { transform: scale(1.06); }
+  .nb-portal:active { transform: scale(.97); }
+  .nb-portal:focus-visible { outline: none; box-shadow: 0 0 0 5px rgba(160,107,255,.45), var(--lift); }
+  .nb-portal svg { width: 24px; height: 24px; fill: var(--white); margin-left: 3px; }
+  .nb-portal.is-paused svg { margin-left: 0; }
+  .nb-player__meta { flex: 1 1 auto; min-width: 0; }
+  .nb-player__kicker {
+    font-family: Inter, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--quiet);
+    margin: 0 0 4px;
+  }
+  .nb-player__title {
+    font-family: Inter, sans-serif;
+    font-size: 16px;
+    color: var(--white);
+    margin: 0 0 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .nb-player__track {
+    position: relative;
+    height: 6px;
+    border-radius: var(--r-pill);
+    background: var(--raise);
+    border: 1px solid var(--line);
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .nb-player__buffer {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 0%;
+    background: rgba(248,247,251,.18);
+    border-radius: var(--r-pill);
+  }
+  .nb-player__fill {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 0%;
+    background: var(--soul);
+    border-radius: var(--r-pill);
+    box-shadow: 0 0 8px rgba(160,107,255,.8);
+    transition: width .25s linear;
+  }
+  .nb-player__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 8px;
+  }
+  .nb-player__time {
+    font-family: Inter, sans-serif;
+    font-size: 12px;
+    color: var(--secondary);
+    font-variant-numeric: tabular-nums;
+  }
+  .nb-player__state {
+    font-family: Inter, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--secondary);
+  }
+  .nb-player__state.is-buffering {
+    color: var(--quiet);
+    animation: nb-pulse 1.1s ease-in-out infinite;
+  }
+  @keyframes nb-pulse {
+    0%, 100% { opacity: .45; }
+    50% { opacity: 1; }
+  }
+.nb-share {
+    background: var(--card);
+    border: 1.5px solid var(--line);
+    border-radius: var(--r-lg);
+    padding: 22px 24px;
+    box-shadow: var(--lift);
+    max-width: 420px;
+  }
+  .nb-share__kicker {
+    font-family: Inter, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--quiet);
+    margin: 0 0 4px;
+  }
+  .nb-share__title {
+    font-family: Inter, sans-serif;
+    font-size: 18px;
+    color: var(--white);
+    margin: 0 0 16px;
+  }
+  .nb-share__dest {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    background: var(--raise);
+    border: 1.5px solid var(--line);
+    border-radius: var(--r-md);
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    color: var(--white);
+    font-family: Inter, sans-serif;
+    text-align: left;
+    transition: border-color .3s var(--ease), transform .3s var(--ease), background .3s var(--ease);
+  }
+  .nb-share__dest:hover { border-color: rgba(255,255,255,.3); transform: translateX(4px); }
+  .nb-share__dest:focus-visible { outline: none; border-color: var(--soul); box-shadow: 0 0 0 3px rgba(160,107,255,.35); }
+  .nb-share__dest.is-selected { border-color: var(--soul); background: var(--obsidian); }
+  .nb-share__icon {
+    flex: 0 0 auto;
+    width: 38px;
+    height: 38px;
+    border-radius: var(--r-sm);
+    background: var(--field);
+    border: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .nb-share__icon svg { width: 18px; height: 18px; fill: none; stroke: var(--soul); stroke-width: 1.8; }
+  .nb-share__name { font-size: 15px; font-weight: 600; }
+  .nb-share__hint { font-size: 12px; color: var(--secondary); display: block; margin-top: 2px; }
+  .nb-share__confirm {
+    display: none;
+    border-top: 1px solid var(--line);
+    margin-top: 16px;
+    padding-top: 18px;
+  }
+  .nb-share__confirm.is-open { display: block; }
+  .nb-share__question {
+    font-family: Inter, sans-serif;
+    font-size: 16px;
+    color: var(--white);
+    margin: 0 0 16px;
+  }
+  .nb-share__question strong { color: var(--soul); }
+  .nb-share__actions { display: flex; gap: 10px; }
+  .nb-btn {
+    font-family: Inter, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: var(--r-pill);
+    padding: 11px 22px;
+    cursor: pointer;
+    border: 1.5px solid transparent;
+    transition: transform .25s var(--ease), box-shadow .25s var(--ease), background .25s var(--ease);
+  }
+  .nb-btn:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(160,107,255,.4); }
+  .nb-btn--send {
+    background: var(--white);
+    color: var(--field);
+    box-shadow: 0 4px 18px rgba(0,0,0,.45);
+  }
+  .nb-btn--send:hover { transform: translateY(-2px); box-shadow: 0 8px 26px rgba(0,0,0,.55); }
+  .nb-btn--cancel {
+    background: transparent;
+    color: var(--quiet);
+    border-color: var(--line);
+  }
+  .nb-btn--cancel:hover { color: var(--white); border-color: rgba(255,255,255,.3); }
+  .nb-share__sent {
+    display: none;
+    border-top: 1px solid var(--line);
+    margin-top: 16px;
+    padding-top: 18px;
+    align-items: center;
+    gap: 12px;
+    font-family: Inter, sans-serif;
+    font-size: 15px;
+    color: var(--verified);
+  }
+  .nb-share__sent.is-open { display: flex; }
+  .nb-share__sent .nb-share__actions { margin-left: auto; }
+</style>
+</head>
+<body data-page-slug="smart-builder-contract" data-contract-version="1.0" data-library-version="nitro/design-library@0fe51806cc + nitro/design-specimens@825b45c1dbf">
+<nav data-piece="nav.top-bar">
+<nav data-naya-piece="nav.top-bar" class="nav" aria-label="Demo navigation" style="position:static">
+        <span class="nav-orb" aria-hidden="true"></span>
+        <span class="nav-label">NayaNET</span>
+        <span class="nav-links">
+          <a href="#buttons">Blocks</a><a href="#cards">Boards</a><a href="#data">Ledger</a>
+        </span>
+      </nav>
+</nav>
+<section id="what" class="naya-section" data-function="states the mission: finished pieces in, live Naya app out">
+<h2>What we're building</h2>
+<p>GitHub as an intelligent smart app builder. Someone says "create nayanet.live/anything" — any topic, any name — and a page gets built from finished pieces and goes live, categorized.</p><p>Not a website builder. A Naya app builder. Naya apps are mini hub portals — active, live, smart, intelligent. Web pages are done; smart apps are the future.</p>
+<header data-naya-piece="hero.naya-entrance" class="hero wrap">
+  <h1>The Naya <span class="soul">Ultimate</span> Lego Library</h1>
+  <p class="tagline">The best of the best. One library. Every component copy-paste ready.</p>
+  <p class="law-line">One standard · Every page · No drift</p>
+  <div class="spectrum-bar" aria-label="Spectrum: magenta, purple, blue, green, gold"><span></span><span></span><span></span><span></span><span></span></div>
+  <p class="spectrum-label">Magenta → Purple → Blue → Green → Gold</p>
+  <div style="height:56px"></div>
+  <div class="hero-buttons">
+    <button class="naya-btn naya-btn--primary" data-spectrum="magenta" onclick="document.getElementById('buttons').scrollIntoView({behavior:'smooth'})">
+      <span class="btn-glow"></span>
+      <span class="btn-label">✦ ENTER THE STANDARD</span>
+    </button>
+    <button class="naya-btn naya-btn--primary" data-spectrum="purple" onclick="document.getElementById('smarttabs').scrollIntoView({behavior:'smooth'})">
+      <span class="btn-glow"></span>
+      <span class="btn-label">◈ SEE IT WORKING</span>
+    </button>
+    <button class="naya-btn naya-btn--primary" data-spectrum="blue" onclick="document.getElementById('laws').scrollIntoView({behavior:'smooth'})">
+      <span class="btn-glow"></span>
+      <span class="btn-label">＋ READ THE LAW</span>
+    </button>
+  </div>
+  <p class="micro btn-note">These three buttons are the standard. Living depth. Lit at rest. Ignite on touch.<br>Every button you ever build starts here.</p>
+  <nav class="toc">
+    <a href="#buttons">Buttons</a><a href="#smarttabs">SmartTabs</a><a href="#spectrum">Spectrum</a><a href="#boards">Boards</a><a href="#jewels">Jewels</a><a href="#type">Typography</a><a href="#truth">Truth</a><a href="#laws">Laws</a><a href="#rules">Do's & Don'ts</a><a href="#machine">Machine Law</a>
+  </nav>
+</header>
+</section>
+<section id="why" class="naya-section" data-function="competitive positioning — why finished pieces win">
+<h2>Why it beats everything else</h2>
+<p>Lovable, Replit, Base44, Claude, ChatGPT — they start from nothing, guess, output garbage, and the human fights for weeks or months. Ours starts from finished pieces that already work, plus a contract where intent, function, and look are specified BEFORE building.</p><p>Nothing to guess, nothing to fight. First output: beautiful AND working.</p>
+<div data-naya-piece="layout.three-tongue" class="tongues">
+      <div class="tongue" style="--tc3:var(--soul)"><h3>Machine · normative</h3><ul><li><span class="jw" style="--j:var(--magenta)">◆</span>idle.glow_max_px ≤ 18</li><li><span class="jw" style="--j:var(--soul)">◆</span>rest.chrome = silver</li></ul></div>
+      <div class="tongue" style="--tc3:var(--emerald)"><h3>AI · operational</h3><ul><li><span class="jw" style="--j:var(--emerald)">◆</span>Glow only where a value is earned</li><li><span class="jw" style="--j:var(--emerald)">◆</span>White at rest, color on touch</li></ul></div>
+      <div class="tongue" style="--tc3:var(--gold)"><h3>Human · plain words</h3><ul><li><span class="jw" style="--j:var(--gold)">◆</span>Calm until you need it excited</li><li><span class="jw" style="--j:var(--gold)">◆</span>Expensive, not loud</li></ul></div>
+    </div>
+</section>
+<section id="intake" class="naya-section" data-function="the intake questionnaire and living form that produces the contract">
+<h2>How it works — the intake</h2>
+<p>A living form, co-crafted by both sides. The user picks pieces, switches things, types answers; Naya drafts, suggests, fills in. Molded in the open until "okay, build" fires assembly.</p><p>Images upload right in chat (like ChatGPT) and ride the contract into the build — nobody uploads twice. Links typed into the builder become contract fields. Page copy comes from talking, pasting, or dropping a doc — straight into the contract. The builder proposes the page skeleton from intent; the user approves or rearranges it. The user always sees a beautiful visual of what's going on — pieces, elements, answers, all organized.</p>
+<div data-naya-piece="card.truth-trio" class="truthgrid">
+    <div class="truth" style="--tc2:#2fe89e"><span class="torb" style="--tc2:#2fe89e">✓</span><div><b>AUTH · VERIFIED</b><p>Independent evidence exists. The number survived contact with reality.</p></div></div>
+    <div class="truth" style="--tc2:#ffbf3d"><span class="torb" style="--tc2:#ffbf3d">?</span><div><b>CLAIM · UNVERIFIED</b><p>Self-reported, awaiting its stamp. Shown honestly, never hidden.</p></div></div>
+    <div class="truth" style="--tc2:#e84fff"><span class="torb" style="--tc2:#e84fff">◈</span><div><b>DEMONSTRATION</b><p>Specimen content. Beautiful on purpose, not pretending to be live.</p></div></div>
+  </div>
+<label data-naya-piece="input.recessed-field" class="recessed-field"><span>What should Naya remember?</span><input type="text" placeholder="Type it like you're telling a friend…"></label>
+</section>
+<section id="function-contract" class="naya-section" data-function="captures intent, vision, goal, function — the part other builders skip">
+<h2>The function contract</h2>
+<p>The questionnaire captures what everything DOES — intent, vision, goal, function — not just how it looks. That's the part every other builder skips.</p><p>Division of labor: the user never says what it looks like. They pick the parts and say what it DOES. Beauty is the system's job — the pieces plus the contract handle that. The system anticipates: everything is pre-done, pre-wired, pre-beautiful — the user just fills in the intent. Tell it what you intend, pick the pieces, boom, done. So beautiful, so logical, so intelligent that once you've experienced it, you can't imagine doing it any other way.</p>
+<div data-naya-piece="card.metric-trio" class="metric" style="--tone:var(--magenta)"><span class="metric-mark"><svg class="icon"><use href="#i-spark"/></svg></span><b>What matters</b><span>Priority is explicit.</span></div>
+</section>
+<section id="gallery" class="naya-section" data-function="search and discovery across the piece library with dual labels">
+<h2>The gallery</h2>
+<p>Searchable. Type "buttons" — all the buttons come up. Type "boards" — all the boards. Every piece carries two labels: one humans understand, one Nayas read to pull the right piece.</p>
+<label data-naya-piece="input.search-field" class="recessed-field search-field"><svg class="icon"><use href="#i-search"/></svg><input type="text" placeholder="Ask Naya anything…"><span class="naya-kbd">⌘K</span></label>
+</section>
+<section id="templates" class="naya-section" data-function="one-click starts — pre-made contracts, flagship personal page first">
+<h2>Templates</h2>
+<p>Pre-made contracts — the fastest path: pick, tweak, build. Ten to start: personal page (the flagship — my world in one page: about me, social profiles, everything linked; shareable, invites people to build with me), business landing, booking, product page (not full stores — too complex, unless Shopify sync earns it later), portfolio, event, menu/price list, community hub, signup, dashboard/tracker (the one that shows off the "smart").</p>
+<div data-naya-piece="layout.template-grid" class="typecards">
+      <div class="typecard" style="--tc:var(--soul)"><p class="tk">Headline · 24px</p><p style="font-family:var(--voice);font-size:24px;color:#fff;margin:0;line-height:1.35">Your intelligence, collected.</p><p style="font-size:14px;color:var(--ink-dim);margin:14px 0 0">Serif voice. Light-carved. It leads, never shouts.</p></div>
+      <div class="typecard" style="--tc:var(--emerald)"><p class="tk">Body · 18px</p><p style="font-size:18px;color:#fff;margin:0;line-height:1.5">The quick brown fox of interface copy.</p><p style="font-size:14px;color:var(--ink-dim);margin:14px 0 0">Detail sits at 14px — quiet, legible, honest.</p></div>
+    </div>
+</section>
+<section id="connected" class="naya-section" data-function="keeps the page alive via the owner&#x27;s connected services">
+<h2>Connected world</h2>
+<p>Pages stay alive by connecting to the owner's services — Google Drive, whatever they use. The page works WITH their world, not as a dead brochure. Same connector model as mine, pointed at the page owner's world.</p><p>Template is the one-click start; connections keep it living — both ride the contract.</p>
+<div data-naya-piece="card.job-grid" class="jobs">
+      <div class="job" style="--jc:var(--soul)"><div class="swatch" style="background:linear-gradient(120deg,var(--soul),transparent)"></div><h3>Design</h3><p>Bring the library page to a 9+.</p></div>
+      <div class="job" style="--jc:var(--emerald)"><div class="swatch" style="background:linear-gradient(120deg,var(--emerald),transparent)"></div><h3>Verify</h3><p>Independent eyes on every claim.</p></div>
+      <div class="job" style="--jc:var(--gold)"><div class="swatch" style="background:linear-gradient(120deg,var(--gold),transparent)"></div><h3>Ship</h3><p>Merge what earned it, nothing else.</p></div>
+    </div>
+</section>
+<section id="naya-runs" class="naya-section" data-function="automatic operation — interactions, conversations, mail">
+<h2>Naya runs it</h2>
+<p>Naya can run your page and your business — interactions, live conversations, mail, all automatic. AI ↔ personal app ↔ their apps, and Muse ↔ all apps — together the whole world gets automated, shared, understood.</p>
+<div data-naya-piece="board.layered-intelligence" class="board-tone" style="--tone:var(--purple)">
+    <div class="board-content">
+      <p class="board-tag">Intelligent Block · IB-0001</p>
+      <h3 class="board-name">The board is a world.</h3>
+      <p class="board-sub">Not a rectangle. A destination you enter.</p>
+      <div class="layer-grid">
+        <div class="layer" style="--tone:var(--purple)"><p class="micro"><span class="gem-bullet"></span>In a nutshell</p><p>Capture the essence. Verify the result.</p></div>
+        <div class="layer" style="--tone:var(--blue)"><p class="micro"><span class="gem-bullet"></span>What it means</p><p>Understanding changes what Naya does next.</p></div>
+        <div class="layer" style="--tone:var(--gold)"><p class="micro"><span class="gem-bullet"></span>How to use it</p><p>Retrieve, check limits, carry into action.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="private" class="naya-section" data-function="privacy default with opt-in sharing to the network">
+<h2>Private by default</h2>
+<p>It's their own world. Smart mail, spaces, all of it usable privately — nobody needs to know. Sharing to NayaNET is opt-in; then it appears on the activity feed, and the network intelligently connects like minds. It auto-organizes.</p>
+<div data-naya-piece="board.elevated" class="elevated-board" style="--tone:var(--soul)">
+        <span class="board-spine"></span><span class="board-corner"></span>
+        <h3 style="font-family:var(--voice);font-size:24px;margin:0 0 6px;color:#fff">The Reading Room</h3>
+        <p style="color:var(--ink-dim);font-size:14px;margin:0;max-width:420px;line-height:1.6">Every note you ever kept, arranged the way your mind already arranged them.</p>
+      </div>
+</section>
+<section id="vision-loop" class="naya-section" data-function="the build-see-learn-share loop that grows the network">
+<h2>The vision loop</h2>
+<p>BUILD → SEE → LEARN → SHARE, one loop. Build with NayaNET; reports (daily, weekly, monthly, yearly) show their world; the feed shows where each project stands; everything learned gets smart-noted with a smart link and shared so the whole community learns and grows.</p><p>Nobody's learning stays trapped. Every page is both the thing built AND how the network grows.</p>
+<div data-naya-piece="jewel.orb-spectrum" class="orb-row">
+  <div class="orb-wrap"><span class="orb" style="--oc:#e84fff;--oc-rgb:232,79,255"></span><p class="micro">MAGENTA<small>The living edge</small></p></div>
+  <div class="orb-wrap"><span class="orb" style="--oc:#a06bff;--oc-rgb:160,107,255"></span><p class="micro">PURPLE<small>Naya's presence</small></p></div>
+  <div class="orb-wrap"><span class="orb" style="--oc:#3fb8ff;--oc-rgb:63,184,255"></span><p class="micro">BLUE<small>Knowledge moving</small></p></div>
+  <div class="orb-wrap"><span class="orb" style="--oc:#2fe89e;--oc-rgb:47,232,158"></span><p class="micro">GREEN<small>Alive and well</small></p></div>
+  <div class="orb-wrap"><span class="orb" style="--oc:#ffbf3d;--oc-rgb:255,191,61"></span><p class="micro">GOLD<small>Attention, earned</small></p></div>
+</div>
+</section>
+<section id="how-we-build" class="naya-section" data-function="the compose-don&#x27;t-create build discipline and the function law">
+<h2>How we build it</h2>
+<p>Compose, don't create. Builders compose pre-built elite pieces — never invent new ones, never even need to read the laws. Tweak freely (one-token changes, DNA intact). New pieces only through the full process.</p><p>Function law: pretty + useless = not done. Every element intentional, logical, actually works. The builder clicks everything — real behavior, not staged. Scorecards score the working page, never the screenshot.</p>
+<div data-naya-piece="card.law-cards" class="laws">
+      <div class="lawcard" style="--lc:var(--magenta)"><p class="ln"><span class="ld"></span>Law 1</p><h3>Score the experience, never the code.</h3><p>The lived page is the only scorecard.</p></div>
+      <div class="lawcard" style="--lc:var(--emerald)"><p class="ln"><span class="ld"></span>Law 2</p><h3>Restraint is the excellence.</h3><p>Less glow, fewer colors, generous black space.</p></div>
+      <div class="lawcard" style="--lc:var(--gold)"><p class="ln"><span class="ld"></span>Law 3</p><h3>Every effect encodes information.</h3><p>No visual is acceptable merely because it moves.</p></div>
+    </div>
+<label data-naya-piece="feedback.checklist-item" class="check" style="--cc:#9d75ff"><input type="checkbox"><span>White edge light is visible on every card and button at rest</span></label>
+</section>
+<section id="mobile" class="naya-section" data-function="PWA installability and mobile-first defaults handled by the intake">
+<h2>Mobile-first — the default, not a feature</h2>
+<p>Everything we build is mobile-optimized and looks like a killer mobile smart app by default. These are smart mobile apps — PWAs. Every Naya app ships with install-app built in: download it to the phone and it works like an app right away.</p><p>The intake thinks proactively: one of the intake steps is the app icon — upload the image at the right size, or better, Naya creates the image for your page. Icon, install, mobile presentation and function are common practice, handled by default, so anyone can spin up one of these mini smart apps and it's on their phone working immediately.</p>
+<div data-naya-piece="hero.vessel-orb" class="vessel vessel-demo" aria-label="Hero image vessel">
+        <span class="orb orb--hero" style="--oc:var(--soul);--oc-rgb:var(--purple-rgb)"></span>
+        <span class="vessel-label">Your hero, housed</span>
+      </div>
+<ul data-naya-piece="jewel.gem-bullets" class="gem-list">
+  <li><span class="gem-bullet" style="--tone:var(--magenta)"></span>Color has four jobs. Never cross them.</li>
+  <li><span class="gem-bullet" style="--tone:var(--purple)"></span>Black heart. White voice. Visible skin.</li>
+  <li><span class="gem-bullet" style="--tone:var(--blue)"></span>One board. One color. A destination you enter.</li>
+  <li><span class="gem-bullet" style="--tone:var(--green)"></span>Size separates. Color doesn't.</li>
+  <li><span class="gem-bullet" style="--tone:var(--gold)"></span>Every bullet a jewel. Never twice in a row.</li>
+</ul>
+</section>
+<section id="deploy" class="naya-section" data-function="deploy rules — subdomains, the score gate, never overwrite proven pages">
+<h2>Deploy</h2>
+<p>Build on subdomains, never the main page. A page goes live when it scores 9+ and Shawn has looked at it — after that, updates ship automatically. Never overwrite a proven page with unproven work.</p>
+<div data-naya-piece="board.world-destination" class="board-mix" style="--ic:#a06bff">
+    <span class="corner" style="--ic:#a06bff">◆</span>
+    <h3>Color has four jobs. Never cross them.</h3>
+    <p>Chrome acts. Text speaks. Theme identifies. Adjacent things never share a hue.</p>
+  </div>
+</section>
+<section id="setup" class="naya-section" data-function="readiness checklist that gates the exam">
+<h2>Setup 10/10 — before the exam</h2>
+<p>Pieces organized in GitHub. Contract canonical and ratified. Every law paired with its visual example. Deploy pipeline live. Voice font picked. The smart creator page gets built only after setup is truly 10/10.</p>
+<label data-naya-piece="feedback.checklist-item" class="check" style="--cc:#9d75ff"><input type="checkbox"><span>White edge light is visible on every card and button at rest</span></label>
+</section>
+<section id="exam" class="naya-section" data-function="the five-step acceptance test for the smart creator page">
+<h2>The exam — Shawn's acceptance test</h2>
+<p>The smart creator page gets built only after setup is 10/10. Then: built from existing pieces (check first — nothing invented); it must actually WORK — generates a real contract you can see and access; Shawn fills it in, picks pieces, clicks build; he says "the contract's there — build it"; the team builds the page from the contract; he judges beautiful + working on first output.</p>
+<div data-naya-piece="layout.nest-cards" class="nest">
+      <div class="nestcard"><p class="nk" style="--nc:var(--soul)"><span class="ndot"></span>In a nutshell</p><p>Capture the essence. Verify the result. Let the next moment benefit.</p></div>
+      <div class="nestcard"><p class="nk" style="--nc:var(--emerald)"><span class="ndot"></span>What it means</p><p>A lesson that stays learned is worth ten that were merely stored.</p></div>
+    </div>
+</section>
+<footer data-piece="footer.real">
+<footer data-naya-piece="footer.real" class="naya-footer">
+        <div class="naya-footer-inner">
+          <div><div class="naya-footer-brand">NayaNET</div><p class="naya-footer-tag">Intelligence you can hold. Built to compound, designed to disappear.</p></div>
+          <div><h4>Build</h4><a href="#buttons">Buttons</a><a href="#cards">Cards</a><a href="#new">New P0</a></div>
+          <div><h4>Learn</h4><a href="#data">Data</a><a href="#specialty">Specialty</a><a href="#overlays">Overlays</a></div>
+          <div><h4>Go</h4><a href="#navigation">Navigation</a><a href="#inputs">Inputs</a><a href="#media">Media</a></div>
+        </div>
+        <div class="naya-footer-base"><span>© 2026 NayaNET — black is the suit.</span><span>Made of light, kept honest.</span></div>
+      </footer>
+</footer>
+<section class="naya-fn-slot" id="fn-slot-mail" data-fn-mount="mail" data-naya-fn-slot="fn.smart-mail" aria-label="Smart mail">
+<p class="fn-slot-note">Smart mail mounts here.</p>
+</section>
+<section class="naya-fn-slot" id="fn-slot-posting" data-fn-mount="posting" data-naya-fn-slot="fn.posting-feed" aria-label="Posting feed">
+<p class="fn-slot-note">Posting feed mounts here.</p>
+</section>
+<script>
+window.NAYA_PAGE={"contract_version":"1.0","functions":["fn.smart-mail","fn.posting-feed"],"functions_default":["mail","posting"],"library_version":"nitro/design-library@0fe51806cc + nitro/design-specimens@825b45c1dbf","page_slug":"smart-builder-contract","sections":["what","why","intake","function-contract","gallery","templates","connected","naya-runs","private","vision-loop","how-we-build","mobile","deploy","setup","exam"]};
+</script>
+<script data-naya-fn="fn.smart-mail">
+(function () {
+  "use strict";
+  var FN = "fn.smart-mail";
+  function warn(m) { try { console.warn("[naya:" + FN + "] " + m); } catch (e) {} }
+  var mount = document.querySelector("[data-fn-mount='mail']");
+  if (!mount) { warn("mount [data-fn-mount='mail'] missing; skipping."); return; }
+  var drafts = [];
+  function status(msg, ok) {
+    var el = mount.querySelector("[data-mail-status]");
+    if (el) { el.textContent = msg; el.setAttribute("data-state", ok ? "ok" : "warn"); }
+  }
+  mount.innerHTML = ""
+    + "<form data-mail-form novalidate>"
+    + "<label>To<input type='email' data-mail-to required placeholder='name@example.com'></label>"
+    + "<label>Subject<input type='text' data-mail-subject placeholder='Subject'></label>"
+    + "<label>Message<textarea data-mail-body rows='4' placeholder='Write it like you would say it...'></textarea></label>"
+    + "<button type='submit' class='naya-btn naya-btn--primary'>Send mail</button>"
+    + "<p data-mail-status role='status' aria-live='polite'></p>"
+    + "</form>";
+  var form = mount.querySelector("[data-mail-form]");
+  form.addEventListener("submit", function (ev) {
+    ev.preventDefault();
+    var to = mount.querySelector("[data-mail-to]").value.trim();
+    var subject = mount.querySelector("[data-mail-subject]").value.trim();
+    var body = mount.querySelector("[data-mail-body]").value.trim();
+    if (!to || to.indexOf("@") < 1) { status("Add a valid recipient address first.", false); return; }
+    var payload = { to: to, subject: subject, body: body };
+    var page = window.NAYA_PAGE || {};
+    if (page.bridge_url) {
+      status("Sending...", true);
+      fetch(page.bridge_url + "/mail/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      }).then(function (r) {
+        if (!r.ok) { throw new Error("HTTP " + r.status); }
+        return r.json();
+      }).then(function () {
+        drafts.push(payload);
+        form.reset();
+        status("Sent.", true);
+      }).catch(function (err) {
+        drafts.push(payload);
+        status("Could not reach the mail backend (" + err.message + "). Draft kept on this device.", false);
+      });
+    } else {
+      drafts.push(payload);
+      status("Mail backend not configured (set window.NAYA_PAGE.bridge_url). Draft kept on this device.", false);
+    }
+  });
+})();
+</script>
+<script data-naya-fn="fn.posting-feed">
+(function () {
+  "use strict";
+  var FN = "fn.posting-feed";
+  function warn(m) { try { console.warn("[naya:" + FN + "] " + m); } catch (e) {} }
+  var mount = document.querySelector("[data-fn-mount='posting']");
+  if (!mount) { warn("mount [data-fn-mount='posting'] missing; skipping."); return; }
+  var posts = [];
+  try { posts = JSON.parse(mount.getAttribute("data-posts") || "[]"); }
+  catch (e) { warn("data-posts JSON invalid; starting empty."); }
+  function note(msg) {
+    var el = mount.querySelector("[data-feed-status]");
+    if (el) { el.textContent = msg; }
+  }
+  function render() {
+    var list = mount.querySelector("[data-feed-list]");
+    list.innerHTML = "";
+    posts.forEach(function (p) {
+      var item = document.createElement("article");
+      var head = document.createElement("p");
+      head.textContent = p.author + (p.synced === false ? " - not synced" : "");
+      var body = document.createElement("p");
+      body.textContent = p.text;
+      item.appendChild(head);
+      item.appendChild(body);
+      list.appendChild(item);
+    });
+  }
+  mount.innerHTML = ""
+    + "<form data-feed-form>"
+    + "<label>Share an update<textarea data-feed-text rows='3' placeholder='What is happening in your world?'></textarea></label>"
+    + "<button type='submit' class='naya-btn naya-btn--primary'>Post</button>"
+    + "<p data-feed-status role='status' aria-live='polite'></p>"
+    + "</form>"
+    + "<div data-feed-list></div>";
+  mount.querySelector("[data-feed-form]").addEventListener("submit", function (ev) {
+    ev.preventDefault();
+    var text = mount.querySelector("[data-feed-text]").value.trim();
+    if (!text) { note("Write something first."); return; }
+    var post = { author: "You", text: text, synced: true };
+    var page = window.NAYA_PAGE || {};
+    function publishLocal() {
+      posts.unshift(post);
+      render();
+      mount.querySelector("[data-feed-form]").reset();
+    }
+    if (page.bridge_url) {
+      note("Posting...");
+      fetch(page.bridge_url + "/feed/post", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text: text })
+      }).then(function (r) {
+        if (!r.ok) { throw new Error("HTTP " + r.status); }
+        return r.json();
+      }).then(function () {
+        publishLocal();
+        note("Posted.");
+      }).catch(function (err) {
+        post.synced = false;
+        publishLocal();
+        note("Backend unreachable (" + err.message + "). Kept locally, marked not synced.");
+      });
+    } else {
+      post.synced = false;
+      publishLocal();
+      note("No feed backend configured (window.NAYA_PAGE.bridge_url). Post kept on this device.");
+    }
+  });
+  render();
+})();
+</script>
+</body>
+</html>

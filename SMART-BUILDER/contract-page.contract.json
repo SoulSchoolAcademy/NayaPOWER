@@ -1,0 +1,161 @@
+{
+  "contract_version": "1.0",
+  "deploy": {
+    "target": "subdomain-preview"
+  },
+  "functions_default": [
+    "mail",
+    "posting"
+  ],
+  "page": {
+    "category": "product",
+    "slug": "smart-builder-contract",
+    "title": "The Smart Builder Contract",
+    "topic": "The Smart Builder \u2014 the Naya app builder"
+  },
+  "pwa": {
+    "icon": "naya-created",
+    "installable": true
+  },
+  "sections": [
+    {
+      "body": "GitHub as an intelligent smart app builder. Someone says \"create nayanet.live/anything\" \u2014 any topic, any name \u2014 and a page gets built from finished pieces and goes live, categorized.\n\nNot a website builder. A Naya app builder. Naya apps are mini hub portals \u2014 active, live, smart, intelligent. Web pages are done; smart apps are the future.",
+      "function": "states the mission: finished pieces in, live Naya app out",
+      "heading": "What we're building",
+      "pieces": [
+        "hero.naya-entrance"
+      ],
+      "section_id": "what"
+    },
+    {
+      "body": "Lovable, Replit, Base44, Claude, ChatGPT \u2014 they start from nothing, guess, output garbage, and the human fights for weeks or months. Ours starts from finished pieces that already work, plus a contract where intent, function, and look are specified BEFORE building.\n\nNothing to guess, nothing to fight. First output: beautiful AND working.",
+      "function": "competitive positioning \u2014 why finished pieces win",
+      "heading": "Why it beats everything else",
+      "pieces": [
+        "layout.three-tongue"
+      ],
+      "section_id": "why"
+    },
+    {
+      "body": "A living form, co-crafted by both sides. The user picks pieces, switches things, types answers; Naya drafts, suggests, fills in. Molded in the open until \"okay, build\" fires assembly.\n\nImages upload right in chat (like ChatGPT) and ride the contract into the build \u2014 nobody uploads twice. Links typed into the builder become contract fields. Page copy comes from talking, pasting, or dropping a doc \u2014 straight into the contract. The builder proposes the page skeleton from intent; the user approves or rearranges it. The user always sees a beautiful visual of what's going on \u2014 pieces, elements, answers, all organized.",
+      "function": "the intake questionnaire and living form that produces the contract",
+      "heading": "How it works \u2014 the intake",
+      "pieces": [
+        "card.truth-trio",
+        "input.recessed-field"
+      ],
+      "section_id": "intake"
+    },
+    {
+      "body": "The questionnaire captures what everything DOES \u2014 intent, vision, goal, function \u2014 not just how it looks. That's the part every other builder skips.\n\nDivision of labor: the user never says what it looks like. They pick the parts and say what it DOES. Beauty is the system's job \u2014 the pieces plus the contract handle that. The system anticipates: everything is pre-done, pre-wired, pre-beautiful \u2014 the user just fills in the intent. Tell it what you intend, pick the pieces, boom, done. So beautiful, so logical, so intelligent that once you've experienced it, you can't imagine doing it any other way.",
+      "function": "captures intent, vision, goal, function \u2014 the part other builders skip",
+      "heading": "The function contract",
+      "pieces": [
+        "card.metric-trio"
+      ],
+      "section_id": "function-contract"
+    },
+    {
+      "body": "Searchable. Type \"buttons\" \u2014 all the buttons come up. Type \"boards\" \u2014 all the boards. Every piece carries two labels: one humans understand, one Nayas read to pull the right piece.",
+      "function": "search and discovery across the piece library with dual labels",
+      "heading": "The gallery",
+      "pieces": [
+        "input.search-field"
+      ],
+      "section_id": "gallery"
+    },
+    {
+      "body": "Pre-made contracts \u2014 the fastest path: pick, tweak, build. Ten to start: personal page (the flagship \u2014 my world in one page: about me, social profiles, everything linked; shareable, invites people to build with me), business landing, booking, product page (not full stores \u2014 too complex, unless Shopify sync earns it later), portfolio, event, menu/price list, community hub, signup, dashboard/tracker (the one that shows off the \"smart\").",
+      "function": "one-click starts \u2014 pre-made contracts, flagship personal page first",
+      "heading": "Templates",
+      "pieces": [
+        "layout.template-grid"
+      ],
+      "section_id": "templates"
+    },
+    {
+      "body": "Pages stay alive by connecting to the owner's services \u2014 Google Drive, whatever they use. The page works WITH their world, not as a dead brochure. Same connector model as mine, pointed at the page owner's world.\n\nTemplate is the one-click start; connections keep it living \u2014 both ride the contract.",
+      "function": "keeps the page alive via the owner's connected services",
+      "heading": "Connected world",
+      "pieces": [
+        "card.job-grid"
+      ],
+      "section_id": "connected"
+    },
+    {
+      "body": "Naya can run your page and your business \u2014 interactions, live conversations, mail, all automatic. AI \u2194 personal app \u2194 their apps, and Muse \u2194 all apps \u2014 together the whole world gets automated, shared, understood.",
+      "function": "automatic operation \u2014 interactions, conversations, mail",
+      "heading": "Naya runs it",
+      "pieces": [
+        "board.layered-intelligence"
+      ],
+      "section_id": "naya-runs"
+    },
+    {
+      "body": "It's their own world. Smart mail, spaces, all of it usable privately \u2014 nobody needs to know. Sharing to NayaNET is opt-in; then it appears on the activity feed, and the network intelligently connects like minds. It auto-organizes.",
+      "function": "privacy default with opt-in sharing to the network",
+      "heading": "Private by default",
+      "pieces": [
+        "board.elevated"
+      ],
+      "section_id": "private"
+    },
+    {
+      "body": "BUILD \u2192 SEE \u2192 LEARN \u2192 SHARE, one loop. Build with NayaNET; reports (daily, weekly, monthly, yearly) show their world; the feed shows where each project stands; everything learned gets smart-noted with a smart link and shared so the whole community learns and grows.\n\nNobody's learning stays trapped. Every page is both the thing built AND how the network grows.",
+      "function": "the build-see-learn-share loop that grows the network",
+      "heading": "The vision loop",
+      "pieces": [
+        "jewel.orb-spectrum"
+      ],
+      "section_id": "vision-loop"
+    },
+    {
+      "body": "Compose, don't create. Builders compose pre-built elite pieces \u2014 never invent new ones, never even need to read the laws. Tweak freely (one-token changes, DNA intact). New pieces only through the full process.\n\nFunction law: pretty + useless = not done. Every element intentional, logical, actually works. The builder clicks everything \u2014 real behavior, not staged. Scorecards score the working page, never the screenshot.",
+      "function": "the compose-don't-create build discipline and the function law",
+      "heading": "How we build it",
+      "pieces": [
+        "card.law-cards",
+        "feedback.checklist-item"
+      ],
+      "section_id": "how-we-build"
+    },
+    {
+      "body": "Everything we build is mobile-optimized and looks like a killer mobile smart app by default. These are smart mobile apps \u2014 PWAs. Every Naya app ships with install-app built in: download it to the phone and it works like an app right away.\n\nThe intake thinks proactively: one of the intake steps is the app icon \u2014 upload the image at the right size, or better, Naya creates the image for your page. Icon, install, mobile presentation and function are common practice, handled by default, so anyone can spin up one of these mini smart apps and it's on their phone working immediately.",
+      "function": "PWA installability and mobile-first defaults handled by the intake",
+      "heading": "Mobile-first \u2014 the default, not a feature",
+      "pieces": [
+        "hero.vessel-orb",
+        "jewel.gem-bullets"
+      ],
+      "section_id": "mobile"
+    },
+    {
+      "body": "Build on subdomains, never the main page. A page goes live when it scores 9+ and Shawn has looked at it \u2014 after that, updates ship automatically. Never overwrite a proven page with unproven work.",
+      "function": "deploy rules \u2014 subdomains, the score gate, never overwrite proven pages",
+      "heading": "Deploy",
+      "pieces": [
+        "board.world-destination"
+      ],
+      "section_id": "deploy"
+    },
+    {
+      "body": "Pieces organized in GitHub. Contract canonical and ratified. Every law paired with its visual example. Deploy pipeline live. Voice font picked. The smart creator page gets built only after setup is truly 10/10.",
+      "function": "readiness checklist that gates the exam",
+      "heading": "Setup 10/10 \u2014 before the exam",
+      "pieces": [
+        "feedback.checklist-item"
+      ],
+      "section_id": "setup"
+    },
+    {
+      "body": "The smart creator page gets built only after setup is 10/10. Then: built from existing pieces (check first \u2014 nothing invented); it must actually WORK \u2014 generates a real contract you can see and access; Shawn fills it in, picks pieces, clicks build; he says \"the contract's there \u2014 build it\"; the team builds the page from the contract; he judges beautiful + working on first output.",
+      "function": "the five-step acceptance test for the smart creator page",
+      "heading": "The exam \u2014 Shawn's acceptance test",
+      "pieces": [
+        "layout.nest-cards"
+      ],
+      "section_id": "exam"
+    }
+  ],
+  "remap_note": "All piece ids remapped to registry v1.0 ids (compose-don't-create); original invented ids in assembler worker report."
+}
