@@ -1,0 +1,37 @@
+"""Directive Register CI check.
+
+Runs on every PR. Validates that BRAIN/01-GOVERNANCE/directive-register.json
+is valid. If the register is broken, the PR fails.
+
+This is a MACHINE GATE, not a suggestion. The register is the single source
+of truth for directive counts, owners, and statuses. If it's wrong, every
+claim based on it is wrong.
+"""
+name: Directive Register Check
+
+on:
+  pull_request:
+    paths:
+      - 'BRAIN/01-GOVERNANCE/directive-register.json'
+      - 'tools/tests/test_directive_register.py'
+      - '.github/workflows/directive-register-check.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'BRAIN/01-GOVERNANCE/directive-register.json'
+
+jobs:
+  validate-register:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run directive register tests
+        run: |
+          python -m pytest tools/tests/test_directive_register.py -v
