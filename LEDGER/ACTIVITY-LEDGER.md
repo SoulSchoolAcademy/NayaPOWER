@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-17 03:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-17 03:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -34,6 +34,18 @@ _Last updated: 2026-10-17 03:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** gap-t2330-lane1: seal byte-purity GAP close on t0545
 
 **Evidence:** VERIFIED: instrument t0545_taskdecomp.py sha256 78731f469905a577315afee7c59da0aefa52ff5bdd75cfd079a927de138d53ce byte-exact; new seal results-t0545-taskdecomp.json pin c61b73a79620930a89479d98078cdf95214c76267edfbb3566d6d021f254dd09 byte-exact; seal is instrument-pure (_prereg carries no instrument_sha256, _battery.P5_determinism is the instrument 
+
+### ✅ t2030 — Team 9, lane-scorer (Code Health) — 9.3/10 [VERIFIED]
+
+**Task:** gap-t0072-lane9.md re-pinned t0072 CI table on moved tip + sign-in venue translation
+
+**Evidence:** Verified: sign-in comment 6229024009 exists on live board #2641 (REST GET issues/comments/6229024009 -> html_url #2641#issuecomment-6229024009, author nayapower-lane-agent[bot]) — the #2175 venue is capped so translation to #2641 matches current board law. Tip was 64ae193f123461bca0e350bfa39228589cbfd039 at 03:26:29Z per receipt (moved since parent
+
+### ✅ t2030 — Team 8, lane-scorer (Governance & Safety) — 9.5/10 [VERIFIED]
+
+**Task:** gap-lane-scorer-20261016-2000-lane8.md merge-seat byte-enforcement (filing stamp + claim-time exit-8 refusal)
+
+**Evidence:** Verified on local bytes: MERGE-SEAT machinery present in bin/file-gap-brief.py (25 marker/self-test matches incl. --merge-seat flag) and bin/claim-brief.py (21 matches incl. exit-8 refusal pre-mv); lane-agent-brief-template.md PART 2 names the byte-enforcement. Receipt's RED-first proof (live round-trip + live refusal on real inputs, temp sandbox, 
 
 ### ✅ t1542-0941 — Team 2, Naya Clarity Narzan (Learning Pipeline) — 9.5/10 [VERIFIED]
 
@@ -14491,6 +14503,14 @@ _Last updated: 2026-10-17 03:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified live: tip aa8061c1 == main_tip; #2385 head eedd9540, #2456 head e3262832 both match ls-remote. Fourth consecutive clean tick, zero new defects; advisory-gate risk named. Score line owed from t0092 disposition.
 
+### ✅ t0072 — Team 9, lane-scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** t0072-lane9.md #2457 receipt-gate FAILURE root-caused + fixed in CI
+
+**Receipt:** `twelve-lane-receipts/t0072-lane9.md`
+
+**Evidence:** Verified on live bytes: check run 114725805735 (Receipt gate) = success 2026-10-12T08:27 (matches receipt SUCCESS 08:27:37Z); prior failing run 114701952508 = failure 2026-10-12T07:11 (matches receipt 07:11:40Z failure). The core claim — red fixed in situ via body rewrite, not just locally — is confirmed by the CI record. Score 9.0/10, GOOD ONE MOR
+
 ### ✅ t0072 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** #2457 receipt-gate FAILURE root-caused to dead artifact handles, body fixed, CI flipped GREEN
@@ -14506,6 +14526,14 @@ _Last updated: 2026-10-17 03:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0072-lane9.md`
 
 **Evidence:** Root-caused receipt-gate FAILURE to 4 dead artifact handles in own PR body; fixed body; CI SUCCESS confirmed via check-run 114725805735 on head 92fac0983d4d (independent GET). Flip queue heads pin-exact via ls-remote. Self-docked -0.5 (sign-in order) and -0.5 (carried-forward CI table); honest, agrees.
+
+### ✅ t0072 — Team 7, lane-scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** t0072-lane7.md fossil layer 2 closes #1795-#1877 + pipeline classification
+
+**Receipt:** `twelve-lane-receipts/t0072-lane7.md`
+
+**Evidence:** Verified: close comment 6120555817 exists, author SoulSchoolAcademy, 2026-10-12T08:26 (matches receipt closed 08:26:37Z); lane sign-in comment 6120553812 on #2175 exists 2026-10-12T08:26 (matches receipt claim). Action-time ls-remote pins + exact SHA table internally consistent. Score 9.0/10, GOOD ONE MORE PASS. Why not 9.5: (1) #1825's metadata bu
 
 ### ✅ t0072 — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
 
@@ -14523,6 +14551,14 @@ _Last updated: 2026-10-17 03:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** 10/10 fossil drafts closed as superseded. All 10 heads pin-exact via git protocol; 3/3 REST spot states=closed; pipeline gates classified pin-exact without adjudicating other lanes' gates. Queue 504->494. Two efficiency wins self-named (1825 triage detour, redundant gate re-classification).
 
+### ✅ t0072 — Team 2, lane-scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** t0072-lane2.md H8 round 1 closed as ceiling-found, honest NO-GO
+
+**Receipt:** `twelve-lane-receipts/t0072-lane2.md`
+
+**Evidence:** Verified locally: hidden_files/lane-experiments/t0052/prereg-sealed.md sha256 == 8c8aa05441780e9939375f5e04234b491097df40c7b1330f556e488c6d6fe9d6 (exact match to seal record); dry-run-report.md present in the sealed dir. Score 9.0/10, GOOD ONE MORE PASS. Why not 9.5: (1) ceiling evidence is N=1 single dry run, no triangulation against a second fres
+
 ### ✅ t0072 — Team 2, Naya Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
 
 **Task:** H8 round 1 executed per sealed pre-reg; gate FIRST -> CEILING -> honest NO-GO, zero scored arms
@@ -14539,6 +14575,14 @@ _Last updated: 2026-10-17 03:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Honest NO-GO under sealed pre-reg honored (C1=1 ceiling, zero scored arms spawned). Seal sha256 8c8aa054... verified recomputed on disk; probe dirs, dry-run report, frozen briefs all present. Ceiling N=1 + model-family confound declared, not hidden. No phantom.
 
+### ✅ t0062 — Team 7, lane-scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** t0062-lane7.md fossil close batch #1296-#1645 + pipeline pin table
+
+**Receipt:** `twelve-lane-receipts/t0062-lane7.md`
+
+**Evidence:** Verified: PR #1296 state=closed 2026-10-12T08:15 (matches receipt 08:15:49Z close); close comment 6120392047 exists, author SoulSchoolAcademy, 2026-10-12T08:15 (matches). Pin-exact SHA table internally consistent with tip aa8061c1. Score 9.0/10, GOOD ONE MORE PASS. Why not 9.5: (1) per-PR state GETs in the close loop were redundant given byte-ident
+
 ### ✅ t0062 — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
 
 **Task:** fossil close batch #1: 10 oldest idle drafts (#1296-#1645) closed as superseded + pipeline status
@@ -14554,6 +14598,14 @@ _Last updated: 2026-10-17 03:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0062-lane7.md`
 
 **Evidence:** Dispatcher verified via REST: #2399 merged a545f1107 (receipt head match), fossils #1296/#1645 closed with matching heads, open PR count 504 via search (514->504 claim holds), #2456 open base==tip. -1: redundant per-PR GETs; two gate failure classifications handed off.
+
+### ✅ t0062 — Team 4, lane-scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** t0062-lane4.md D1 repro + PR #2400 merge-faithful on live tip
+
+**Receipt:** `twelve-lane-receipts/t0062-lane4.md`
+
+**Evidence:** Verified via git protocol (free): merge commit 597803d8c79ec256a268c4ba1c33562d3c8a0b4f exists, timestamp 2026-10-11 20:59:07 -0700 matches receipt, confirmed ANCESTOR of pinned tip aa8061c1d311f32ebd11a570629efa8a55d90c87 via merge-base; cited blob 39fb4f8927052d666b3d0c4c663f77b72377e315 exists as git blob. Score 9.5/10. Clears 9.5 because the tw
 
 ### ✅ t0062 — Team 4, Naya Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
@@ -14642,6 +14694,14 @@ _Last updated: 2026-10-17 03:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0052-lane11.md`
 
 **Evidence:** Dispatcher verified on disk: hv_output_t0052_run1.json sha256 e4f54debb... matches receipt pin; metric_audit_t0052.json, SUMMARY_t0052.md, STATS.md, journal all exist. Instrument determinism proven (2 byte-identical runs). Drift: tip re-pinned aa8061c1 at action time; CLEAN verdict rides Lane 10 t0032 --check (stated as such, not claimed as own re-
+
+### ✅ t0045 — Team 12, lane-scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** t0045-lane12.md gap follow-up: independently verify board post half of t0803 verdict
+
+**Receipt:** `twelve-lane-receipts/t0045-lane12.md`
+
+**Evidence:** Verified on live bytes: comment 6184357778 exists, id exact, author SoulSchoolAcademy, created 2026-10-15T04:23:00Z (exact match to receipt), feedback block present in receipt with substance-fidelity checks. Score 9.5/10. Clears 9.5 because the named gap (published-on-board half unverified) was closed by an independent second-seat REST read with al
 
 ### ✅ t0045 — Team 12, Naya Herald (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
