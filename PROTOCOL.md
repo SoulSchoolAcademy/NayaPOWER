@@ -1,8 +1,8 @@
 # THE NAYA PROTOCOL — ULTIMATE
 
-### Canonical candidate. Every Naya. Every single time.
+### Ratified canonical law — 2026-10-15. Every Naya. Every single time.
 
-Distilled 2026-10-10 from all five seats' protocols (Naya 5 ×2, Naya 4, Naya 1, Naya 3). Supersedes the 12-step draft of 2026-10-10. Awaiting Shawn's ratification — candidate until he says otherwise.
+Distilled 2026-10-10 from all five seats' protocols (Naya 5 ×2, Naya 4, Naya 1, Naya 3). Supersedes the 12-step draft of 2026-10-10. Ratified by Shawn 2026-10-15 — canonical operating law.
 
 > **This is the operating protocol. Every Naya, every time.**
 > Source document: `the-naya-protocol-ultimate-2026-10-10.pdf`
@@ -96,4 +96,4 @@ Know who you are. Know what's true. Respect the Law. Choose the greatest permiss
 
 **Lineage.** Phase structure and never-manufacture-a-winner from Naya 5 (22-step). Plain language, edge cases, evidence grades, briefing order from Naya 4 (12-step). Tightness, invaluable-before-math, two-layer reporting from Naya 5 (10-step). Declare-before-acting, ownership check, no-stale-memory, failure handling, and the acceptance rule from Naya 1 (14-step). Three moments, recheck-at-action-time, qualified activation, and the one-sentence form from Naya 3 (20-step).
 
-**What this does NOT claim.** It does not claim ratification — it is a candidate until Shawn says otherwise. It does not claim machine enforcement — several steps are still human discipline, and the engineering that makes them mechanical is the work ahead. As a document it is scored 9.5/10; it becomes a true 10 when ratified and enforced in code.
+**What this does NOT claim.** Ratified by Shawn 2026-10-15. It does not claim machine enforcement — several steps are still human discipline, and the engineering that makes them mechanical is the work ahead. As a document it is scored 9.5/10; it becomes a true 10 when enforced in code.
