@@ -1,7 +1,7 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-17",
-  "receipt_basis_commit": "83806f4d0e335b223ba2f849fd19a7a7915fdcc6",
+  "receipt_basis_commit": "28dc53aa99af4d361533e45f0b0d1b1322120d7a",
   "inventory_file_count": 1328,
   "domain_counts": {
     "00-ACTIVATION": 7,
@@ -32,8 +32,8 @@
     },
     {
       "path": "BRAIN/00-ACTIVATION/ACTIVATION-PACKET.md",
-      "blob_sha": "7a567916d7c688ef17918ef03f59265115601c7e",
-      "size": 10441
+      "blob_sha": "61080b4c74e9d598a638d4c7cd27b865124729db",
+      "size": 10274
     },
     {
       "path": "BRAIN/00-ACTIVATION/DESIGN-ACTIVATION.md",
