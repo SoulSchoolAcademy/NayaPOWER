@@ -1,0 +1,21 @@
+DESIGN-01: R1=1 R2=1 R3=1 R4=1 COMPLETENESS=3 NOTES=Pre-launch pilots, clean brief, numeric INVALID gates, doctrine screen present.
+DESIGN-02: R1=1 R2=1 R3=1 R4=0 COMPLETENESS=3 NOTES=Clean brief; difficulty screen; no explicit doctrine-redundancy check.
+DESIGN-03: R1=0 R2=0 R3=1 R4=1 COMPLETENESS=3 NOTES=Control brief names corpus path; no pre-launch derivability check.
+DESIGN-04: R1=1 R2=0 R3=1 R4=1 COMPLETENESS=3 NOTES=Control brief names corpus path; others all present.
+DESIGN-05: R1=0 R2=1 R3=1 R4=0 COMPLETENESS=3 NOTES=Clean brief; no pre-launch derivability check; no doctrine screen.
+DESIGN-06: R1=1 R2=1 R3=1 R4=1 COMPLETENESS=3 NOTES=All four present; pilot-based derivability ceiling.
+DESIGN-07: R1=1 R2=1 R3=1 R4=0 COMPLETENESS=3 NOTES=Clean no-retrieval brief; pilot calibration; no doctrine screen.
+DESIGN-08: R1=1 R2=1 R3=1 R4=1 COMPLETENESS=3 NOTES=All four present; pilot + redundancy gates.
+DESIGN-09: R1=1 R2=1 R3=1 R4=1 COMPLETENESS=3 NOTES=All four present; strict pilot thresholds.
+DESIGN-10: R1=1 R2=1 R3=1 R4=1 COMPLETENESS=3 NOTES=All four present; doctrine-search gate.
+DESIGN-11: R1=1 R2=1 R3=1 R4=0 COMPLETENESS=3 NOTES=No doctrine-redundancy screen; ceilings measured post-data only.
+DESIGN-12: R1=1 R2=1 R3=1 R4=1 COMPLETENESS=3 NOTES=All four present; doctrine-redundant verdict defined.
+DESIGN-13: R1=1 R2=0 R3=1 R4=0 COMPLETENESS=3 NOTES=Control brief names corpus path; no doctrine screen.
+DESIGN-14: R1=1 R2=1 R3=1 R4=1 COMPLETENESS=3 NOTES=All four present; both pilots numeric.
+DESIGN-15: R1=1 R2=1 R3=1 R4=1 COMPLETENESS=3 NOTES=All four present; 50% control ceiling for redundancy.
+DESIGN-16: R1=1 R2=1 R3=1 R4=1 COMPLETENESS=3 NOTES=All four present; doctrine grep with zero-match threshold.
+DESIGN-17: R1=1 R2=0 R3=1 R4=0 COMPLETENESS=3 NOTES=Control brief names corpus path; no doctrine screen.
+DESIGN-18: R1=1 R2=1 R3=1 R4=1 COMPLETENESS=3 NOTES=All four present; redundancy ceiling explicit.
+DESIGN-19: R1=1 R2=1 R3=1 R4=1 COMPLETENESS=3 NOTES=All four present; unanimous-ceiling doctrine check.
+DESIGN-20: R1=1 R2=0 R3=0 R4=0 COMPLETENESS=3 NOTES=Control names path and consults; gates INCONCLUSIVE not INVALID.
+DONE.
