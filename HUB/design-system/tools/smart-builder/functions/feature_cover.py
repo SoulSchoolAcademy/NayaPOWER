@@ -149,6 +149,12 @@ def render_cover(decl, registry_status, context=None):
             "(contract never activates an unbuilt capability)" % (registry_status,))
 
     name = str(decl.get("name") or "").strip()
+    if not name:
+        # centralized identity: one person, one connected smart world. The
+        # contract's identity block resolves once in the assembler; modules
+        # fall back to it, templates never redefine it.
+        ident = (context or {}).get("identity") or {}
+        name = str(ident.get("name") or "").strip()
     tagline = str(decl.get("tagline") or "").strip()
     display_name = name or "Your page"
     alt_owner = name or "the owner"

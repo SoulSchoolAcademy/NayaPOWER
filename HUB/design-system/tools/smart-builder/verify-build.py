@@ -149,6 +149,41 @@ def day_one_check(sb_dir, index_path, chrome):
                     % (len([u for u in net_urls if u.startswith('http')]),
                        os.path.getsize(shot))}
 
+def consent_honesty_check(page_html, manifest):
+    """UI/receipt honesty (consent-line): the assembler must never emit copy
+    or receipt fields saying 'connected' when the feature is merely ready.
+
+    Naming convention the verifier asserts: every feature row carries
+    data-feature + data-consent. data-consent="connected" requires the
+    build receipt's consent entry for that feature to show at least one
+    grant-active connected action; data-consent="ready" requires none.
+    The receipt must also mirror the machine block's resolved connections
+    (the audit trail). Returns (ok, note)."""
+    receipt = manifest.get('receipt', {})
+    consent = receipt.get('consent', {})
+    rows = re.findall(r'data-feature="([^"]+)"[^>]*data-consent="([^"]+)"',
+                      page_html)
+    for fid, state in rows:
+        entry = consent.get(fid, {})
+        has_active = bool(entry.get('connected_active'))
+        if state == 'connected' and not has_active:
+            return (False, 'page claims CONNECTED for %s but the receipt shows '
+                           'no active grant' % fid)
+        if state == 'ready' and has_active:
+            return (False, 'page labels %s READY but the receipt shows active '
+                           'connected actions' % fid)
+    m = re.search(r'<pre id="machinejson">(.*?)</pre>', page_html, re.S)
+    if m:
+        try:
+            mach = json.loads(m.group(1))
+        except Exception:
+            return False, 'machine JSON in page does not parse'
+        if mach.get('connections') != receipt.get('grants'):
+            return (False, 'receipt grants do not mirror the machine block '
+                           '(audit trail broken)')
+    return True, '%d feature row(s) honest; receipt mirrors %d grant(s)' % (
+        len(rows), len(receipt.get('grants', {})))
+
 def main():
     import argparse
     ap = argparse.ArgumentParser()
@@ -245,15 +280,24 @@ def main():
     elif not a.skip_day_one:
         print('day-one: SKIPPED —', day_one['note'])
 
+    # consent-line honesty: never claim "connected" for a merely-ready
+    # feature; the receipt must mirror the resolved grants. Part of
+    # structural PASS.
+    consent_ok, consent_note = consent_honesty_check(s, manifest)
+    if not consent_ok:
+        fail('consent honesty: ' + consent_note)
+    print('ok: consent honesty —', consent_note)
+
     manifest['verification'] = {
         'structural': 'passed',
         'render': render_status,
         'render_note': render_note,
         'day_one': day_one,
+        'consent_honesty': 'passed',
     }
     json.dump(manifest, open(a.manifest, 'w'), indent=2)
     print('VERIFY structural PASSED; render:', render_status.upper(),
-          '; day-one:', day_one['status'].upper())
+          '; day-one:', day_one['status'].upper(), '; consent: HONEST')
 
 if __name__ == '__main__':
     main()

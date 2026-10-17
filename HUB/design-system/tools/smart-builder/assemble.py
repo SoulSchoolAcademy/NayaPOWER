@@ -18,7 +18,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)),
 from feature_cover import (CoverRefusal, decl_for, render_cover,
                            FEATURE_COVER_ID, FEATURE_COVER_VERSION)
 
-ASSEMBLER_VERSION = "assemble-v1.1"  # v1.1: feature breakers wired (cover first)
+ASSEMBLER_VERSION = "assemble-v1.2"  # v1.2: default-on (coverage-gated) + consent-line (ready/connected) + centralized identity
 
 def esc(s):
     return htmlmod.escape(str(s), quote=True)
@@ -51,12 +51,12 @@ def specimen_card(model, p):
         '</div>' % (esc(model), p['html'], esc(p['label']), esc(model), esc(p['kind']))
     )
 
-def lawcard(title, desc, color):
+def lawcard(title, desc, color, attrs=''):
     return (
         '<div class="nb-chrome" style="margin-bottom:12px">'
-        '<div class="lawcard" style="--lc:%s">'
+        '<div class="lawcard"%s style="--lc:%s">'
         '<div class="ln" style="text-transform:uppercase"><span class="ld"></span><span>%s</span></div>'
-        '<p>%s</p></div></div>' % (color, esc(title), esc(desc))
+        '<p>%s</p></div></div>' % (attrs, color, esc(title), esc(desc))
     )
 
 # ---- trust boundary + structured validation (fail closed) ----
@@ -94,20 +94,142 @@ def validate_contract(contract, pieces):
     return errors
 
 
+# ---- default-on mechanism (Shawn's product rule, 2026-10-17) ----
+# Standard features ship ON by default (opt-out): every template is a full
+# functioning app; the intake shows checkmarks all checked and the user
+# unchecks to remove. The default-on policy is COVERAGE-GATED: it flips
+# ACTIVE only when EVERY standard feature is registry-'built', computed
+# deterministically from the registry at assembly time — no human gate.
+# Until then the assembler stays opt-in and every existing contract keeps
+# working byte-for-byte unchanged. reports rides on intelligence_today
+# unless the registry ever splits them out.
+STANDARD_FEATURES = [
+    'feature.smart_mail',
+    'feature.smart_list',
+    'feature.space',
+    'feature.connect',
+    'feature.intelligence_today',
+    'feature.social_feed',
+    'feature.smart_tabs',
+]
+STANDARD_SHORT = {fid.replace('feature.', '') for fid in STANDARD_FEATURES}
+
+def default_on_policy_active(reg_statuses):
+    """Coverage gate: ACTIVE iff every standard feature id is registry-'built'.
+    Pure function of the registry -> deterministic, no human gate.
+    (reg_statuses is keyed by short name, e.g. 'smart_mail'.)"""
+    return all(reg_statuses.get(fid.replace('feature.', '')) == 'built'
+               for fid in STANDARD_FEATURES)
+
+def standard_resolution(feats, reg_statuses, reg_present):
+    """Three-state resolution for standard features.
+
+    Returns (enabled_ids, problems):
+      - explicit false  -> OFF (suppressed; renders nothing, never an error)
+      - explicit true   -> ON  (registry-gated; refuse unless built)
+      - omitted         -> ON iff the default-on policy is active, else OFF
+
+    Sharpened fail-closed: ANY enabled standard feature with registry
+    status != 'built' refuses the build with a structured error naming
+    the feature. (When the policy is active the check is vacuous for
+    default-on features — the gate required them built to flip.)
+    """
+    enabled, problems = [], []
+    policy = default_on_policy_active(reg_statuses) if reg_present else False
+    for fid in STANDARD_FEATURES:
+        short = fid.replace('feature.', '')
+        val = feats.get(short) if isinstance(feats, dict) else None
+        if isinstance(val, dict):
+            declared = bool(val.get('enabled'))
+        elif val is True:
+            declared = True
+        elif not val:
+            declared = None  # omitted / falsy -> defer to the policy
+        else:
+            problems.append({'code': 'bad_breaker_declaration',
+                             'feature': fid,
+                             'detail': 'must be an object or true'})
+            continue
+        if declared is None:
+            if policy:
+                enabled.append(fid)
+            # policy inactive -> stays opt-in: OFF, no error
+        elif declared:
+            enabled.append(fid)
+        # declared falsy -> explicit opt-out: OFF
+    if not reg_present:
+        for fid in enabled:
+            problems.append({'code': 'registry_unavailable', 'feature': fid,
+                             'detail': 'cannot bind the feature claim without '
+                                       'the registry'})
+    else:
+        for fid in enabled:
+            st = reg_statuses.get(fid.replace('feature.', ''))
+            if st != 'built':
+                problems.append({'code': 'feature_not_built', 'feature': fid,
+                                 'detail': 'registry status is %r — the contract '
+                                           'never activates an unbuilt capability'
+                                           % (st,)})
+    return enabled, problems
+
+# ---- consent-line refinement (Naya 3, adopted 2026-10-17) ----
+# Every feature's capability contract carries ready (works with zero
+# grants) vs connected (each action names its required grant). The resolver
+# enforces: feature ON -> ready behaviors active; a connected action fires
+# ONLY when its grant is recorded (grant = contract.connections.<name>
+# is True — strict boolean, not truthy). Modules receive the grants in
+# context and must gate connected actions themselves; the receipt mirrors
+# the grants as the audit trail.
+def resolve_consent(enabled_fids, reg_by_id, grants):
+    """Consent resolution over the enabled feature set (same code path as
+    default-on resolution: the enabled set flows here). Returns
+    {fid: {'ready': [...], 'connected_active': [...], 'connected_gated': [...]}}.
+    connected entries keep their {action, grant} shape."""
+    consent = {}
+    for fid in enabled_fids:
+        entry = reg_by_id.get(fid, {})
+        ready = list(entry.get('ready', []))
+        active, gated = [], []
+        for c in entry.get('connected', []):
+            (active if grants.get(c.get('grant')) is True else gated).append(c)
+        consent[fid] = {'ready': ready, 'connected_active': active,
+                        'connected_gated': gated}
+    return consent
+
+def resolve_identity(contract):
+    """Identity resolves ONCE, here in the assembler — never per template.
+    One person, one connected smart world: identity/relationships/
+    intelligence are shared across pages/rooms; templates decide
+    PRESENTATION only. Returns (identity_dict_or_None, problems)."""
+    raw = contract.get('identity')
+    if raw is None:
+        return None, []
+    if not isinstance(raw, dict):
+        return None, [{'code': 'bad_identity',
+                       'detail': 'identity must be an object, got %s'
+                                 % type(raw).__name__}]
+    return raw, []
+
 def activate_breakers(contract, reg_statuses, reg_present, context):
     """Contract flips breakers; the registry gates them (fail closed).
 
-    Returns (cover_html, problems, events).
+    Returns (cover_html, problems, events, enabled_fids).
     - features as a list (contract-page) -> no breakers; cover not rendered.
-    - features as a dict -> each declared breaker must be registry-'built',
-      else a structured refusal. Only then does cover render.
-    context: the resolved connections+privacy dict, handed to every
-    feature module (connections stay opt-in inside modules).
+    - features as a dict -> standard features resolve via the three-state
+      default-on mechanism; non-standard breakers (incl. cover) keep the
+      existing registry gate. Any enabled-but-unbuilt feature refuses.
+    context: the resolved connections+privacy+identity dict, handed to
+    every feature module (connections stay opt-in inside modules).
     """
-    problems, events, cover_html = [], [], ''
+    problems, events, cover_html, enabled = [], [], '', []
     feats = contract.get('features')
     if not isinstance(feats, dict):
-        return cover_html, problems, events
+        return cover_html, problems, events, enabled
+    # standard features: three-state resolution (explicit / default-on / off)
+    std_enabled, std_problems = standard_resolution(feats, reg_statuses,
+                                                    reg_present)
+    problems += std_problems
+    enabled += std_enabled
     decl = None
     try:
         decl = decl_for(contract)
@@ -117,6 +239,8 @@ def activate_breakers(contract, reg_statuses, reg_present, context):
         problems.append({'code': e.code, 'feature': FEATURE_COVER_ID,
                          'detail': e.detail})
     for key, val in feats.items():
+        if str(key) in STANDARD_SHORT:
+            continue  # handled by standard_resolution above
         if isinstance(val, dict):
             declared = bool(val.get('enabled'))
         elif val is True:
@@ -140,36 +264,51 @@ def activate_breakers(contract, reg_statuses, reg_present, context):
                              'detail': 'registry status is %r — the contract never '
                                        'activates an unbuilt capability'
                                        % (reg_statuses.get(key),)})
+        else:
+            enabled.append('feature.' + str(key))
     if problems or decl is None or not decl.get('enabled'):
-        return cover_html, problems, events
+        return cover_html, problems, events, enabled
     try:
         cover_html = render_cover(decl, reg_statuses.get('cover'),
                                 context=context)
     except CoverRefusal as e:
         problems.append({'code': e.code, 'feature': FEATURE_COVER_ID,
                          'detail': e.detail})
-        return '', problems, events
+        return '', problems, events, enabled
     events.append({'event': 'cover.updated', 'feature': FEATURE_COVER_ID,
                    'version': FEATURE_COVER_VERSION})
-    return cover_html, problems, events
+    return cover_html, problems, events, enabled
 
 
-def render_breaker_rows(feats, reg_by_id, reg_statuses, spectrum, sec_idx):
-    """§7 for customer contracts: one honest row per flipped breaker —
+def render_breaker_rows(enabled_fids, consent, reg_by_id, reg_statuses,
+                         spectrum, sec_idx):
+    """§7 for customer contracts: one honest row per ENABLED breaker —
     its registry name, its intent, and its registry status. Never claims
     operational unless the registry says built (unbuilt breakers cannot
-    reach this code — activate_breakers refuses them first)."""
+    reach this code — activate_breakers refuses them first).
+
+    Consent honesty: the row carries data-feature + data-consent. The word
+    "connected" appears ONLY when the receipt shows an active grant for
+    that feature; otherwise the row says "ready". The verifier asserts this.
+    """
     rows = []
-    for i, (key, val) in enumerate(feats.items()):
-        declared = val is True or (isinstance(val, dict) and val.get('enabled'))
-        if not declared:
-            continue
-        entry = reg_by_id.get('feature.' + str(key), {})
-        status = reg_statuses.get(key, 'unknown')
+    for i, fid in enumerate(enabled_fids):
+        short = fid.replace('feature.', '')
+        entry = reg_by_id.get(fid, {})
+        status = reg_statuses.get(short, 'unknown')
+        c = consent.get(fid, {})
+        if c.get('connected_active'):
+            grants = sorted({a['grant'] for a in c['connected_active']})
+            consent_word = 'connected (%s)' % ', '.join(grants)
+            data_consent = 'connected'
+        else:
+            consent_word = 'ready'
+            data_consent = 'ready'
         rows.append(lawcard(
-            '%s — %s' % (entry.get('name', key), status),
+            '%s — %s · %s' % (entry.get('name', fid), status, consent_word),
             entry.get('intent', ''),
-            spectrum[(sec_idx + i) % len(spectrum)]))
+            spectrum[(sec_idx + i) % len(spectrum)],
+            attrs=' data-feature="%s" data-consent="%s"' % (fid, data_consent)))
     return ''.join(rows)
 
 def safe_json_for_pre(obj):
@@ -254,14 +393,23 @@ def main():
     # connections + privacy: resolved once, handed to every feature module.
     context, context_problems = resolve_contract_context(contract)
     problems += context_problems
+    # identity: resolved ONCE here — templates reference it, never redefine it.
+    identity, identity_problems = resolve_identity(contract)
+    problems += identity_problems
+    context['identity'] = identity
     # feature breakers: the contract flips them, the registry gates them.
-    cover_html, breaker_problems, breaker_events = activate_breakers(
+    # default-on resolution and the consent grant check share this code path:
+    # the enabled set flows into both rendering and consent resolution.
+    cover_html, breaker_problems, breaker_events, enabled_fids = activate_breakers(
         contract, reg_statuses, reg_present, context)
     problems += breaker_problems
     if problems:
         print(json.dumps({'status': 'refused', 'errors': problems}, indent=2))
         sys.exit(2)
     print('ok: contract validates —', len(problems), 'problems')
+    # consent-line: feature ON -> ready active; connected actions fire only
+    # on recorded grants. The receipt mirrors the grants (audit trail).
+    consent = resolve_consent(enabled_fids, reg_by_id, context['connections'])
 
     # ---- design decisions come from the contract, not the assembler ----
     SPECTRUM = contract['design']['spectrum']
@@ -320,8 +468,8 @@ def main():
     # honest registry statuses, never claimed operational unless built.
     feats = contract['features']
     if isinstance(feats, dict):
-        features = render_breaker_rows(feats, reg_by_id, reg_statuses,
-                                       SPECTRUM, SEC['features'])
+        features = render_breaker_rows(enabled_fids, consent, reg_by_id,
+                                       reg_statuses, SPECTRUM, SEC['features'])
     else:
         features = ''.join(
             lawcard(t, d, SPECTRUM[(SEC['features'] + i) % len(SPECTRUM)])
@@ -343,10 +491,17 @@ def main():
     # a capability as operational unless the registry says it is built.
     if reg_present:
         contract['machine']['features_status'] = reg_statuses
-    # resolved connections + privacy travel with the machine block so every
-    # consumer (and every feature module) reads the same resolved context.
+    # resolved connections + privacy + identity travel with the machine block
+    # so every consumer (and every feature module) reads the same resolved
+    # context. consent: per-feature ready vs grant-gated connected actions.
     contract['machine']['connections'] = context['connections']
     contract['machine']['privacy'] = context['privacy']
+    contract['machine']['identity'] = identity
+    contract['machine']['consent'] = {
+        fid: {'ready': c['ready'],
+              'connected_active': [a['action'] for a in c['connected_active']],
+              'connected_gated': [a['action'] for a in c['connected_gated']]}
+        for fid, c in consent.items()}
     machine_raw = safe_json_for_pre(contract['machine'])
     for key, val in {
         '%%TITLE%%': esc(contract['title']),
@@ -408,6 +563,12 @@ def main():
             'built_utc': datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'),
             # capability-contract events the build actually fired
             'events': breaker_events,
+            # consent-line audit trail: the active grants, mirrored on
+            # EVERY build receipt, plus the per-feature ready/connected
+            # resolution the resolver computed.
+            'grants': context['connections'],
+            'identity': identity,
+            'consent': consent,
         },
     }
     json.dump(manifest, open(a.manifest, 'w'), indent=2)
