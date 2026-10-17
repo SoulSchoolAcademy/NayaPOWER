@@ -1,12 +1,12 @@
 {
  "schema": "nayapower-state-core/v1",
- "generated_utc": "2026-10-17T04:26:47Z",
+ "generated_utc": "2026-10-17T04:36:24Z",
  "writer": "state-core-builder.py (single writer; all others read-only)",
  "tip": {
-  "sha": "64ae193f123461bca0e350bfa39228589cbfd039",
-  "short": "64ae193f1234",
+  "sha": "a510e6cb2f9a3e9cccdd7b1a0f6a0fd5efbb60a5",
+  "short": "a510e6cb2f9a",
   "verified_how": "ref+commits-agree",
-  "checked_utc": "2026-10-17T04:25:59Z"
+  "checked_utc": "2026-10-17T04:35:58Z"
  },
  "venue": {
   "live": 2641,
@@ -15,11 +15,11 @@
   ]
  },
  "waves": {
-  "active": 272,
+  "active": 273,
   "active_seats": [],
-  "last_completed": 271,
-  "last_completed_at": "2026-10-17T04:12:06Z",
-  "rotation_cursor": "wave-273: Naya Compounder/Naya Librarian/Naya Bridger (roster order)"
+  "last_completed": 272,
+  "last_completed_at": "2026-10-17T04:26:30Z",
+  "rotation_cursor": "wave-274: Naya Compounder/Naya Librarian/Naya Bridger (roster order)"
  },
  "lanes": {
   "free": [
@@ -173,8 +173,8 @@
   }
  ],
  "gates_on_tip": {
-  "test": "unknown",
-  "spec_integrity": "unknown",
+  "test": "green",
+  "spec_integrity": "green",
   "receipt": "unknown"
  },
  "blockers": [
@@ -217,27 +217,27 @@
  "sections": {
   "tip": {
    "source": "git/refs/heads/main (+commits cross-check)",
-   "age_s": 49
+   "age_s": 27
   },
   "waves_lanes": {
    "source": "wave-state.json + naya-roster.json + area-staleness.json",
-   "age_s": 49
+   "age_s": 27
   },
   "queue": {
    "source": "bottleneck-queue.md",
-   "age_s": 49
+   "age_s": 27
   },
   "wip": {
    "source": "github-api: pulls + check-runs at exact heads",
-   "age_s": 49
+   "age_s": 27
   },
   "gates_tip": {
    "source": "github-api: check-runs at tip",
-   "age_s": 49
+   "age_s": 27
   },
   "blockers": {
    "source": "curated from venue + worker sign-outs this hour",
-   "age_s": 49
+   "age_s": 27
   }
  }
 }
