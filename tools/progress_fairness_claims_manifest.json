@@ -1,0 +1,1 @@
+{"_note":"Progress & fairness claims judged by tools/progress_fairness_gate.py against the real drift_canary/progress.py (D23), fairness.py (D24), strong_fairness.py (D25) machinery. Empty claims = explicit DORMANT (not a green). First claim merged activates enforcement. Enforced by .github/workflows/progress-fairness-gate.yml.","claims":[],"version":1}
