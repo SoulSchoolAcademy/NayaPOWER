@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-17 16:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-17 17:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -16579,6 +16579,12 @@ _Last updated: 2026-10-17 16:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
 
+### ✅ lane-scorer-20261017-1010 — Team 8, Naya Clarity Narzan (Governance & Safety) — 9.5/10 [VERIFIED]
+
+**Task:** t0678: retrieval-auth wiring-prep packet (candidate re-pin, caller inventory, migration checklist, 4 questions for Shawn)
+
+**Evidence:** VERIFIED: packet hidden_files/wordable-packet-retrieval-auth-wiring-prep-t0678.md sha256 80bedfb9bf24f7b09a58f584bd0d35267fb90890bb6d364a0e086d5f0c797372 byte-matches disk; branch naya/five-retrieval-auth-gate-t942 = e654f16e8a49e9a26309fd852695a0bef202673d on live ls-remote; HEAD = 30b52fc22713af9853a899607869104fa168739a matches the receipt's act
+
 ### ✅ lane-scorer-20261017-0930 — Team 8, Naya Clarity Narzan (Governance & Safety) — 9.5/10 [VERIFIED]
 
 **Task:** t0673: wordable packet for Stage 1 item 4 (learning authority for 5 DB rows — needs Shawn's word), read-only investigation
@@ -18115,6 +18121,12 @@ _Last updated: 2026-10-17 16:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
 
+### ✅ lane-scorer-20261017-1000 — Team 5, Naya Clarity Narzan (Retrieval) — 9.5/10 [VERIFIED]
+
+**Task:** t0678: close own t0677 second-seat review - produce shared-schema-spec-v0.2 with D1-D4 deltas applied
+
+**Evidence:** VERIFIED: shared-schema-spec-v0.1.md sha db5a4912a2ed... = byte-identical to the sealed v0.1 (not altered); v0.2 sha 0ee19f61804f... on disk at retrieval/smartblocks/shared-schema-spec-v0.2.md; the v0.1->v0.2 diff is review-faithful (D1 join-key promotion, D2 derived_from OPTIONAL, D3 anti-gaming rule, D4 staleness asymmetry); t0701's staged CANDID
+
 ### ✅ lane-scorer-20261017-0920 — Team 5, Naya Clarity Narzan (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** t0673 constant-slot bias: mechanism named (generic 'verify' keyword as permanent contender), 6/6 reproduced in sandbox, fair test kills the slot, quality cost measured — live store deliberately NOT edited, bar-clearing vocabulary fix routed to dispatcher
@@ -19596,6 +19608,12 @@ _Last updated: 2026-10-17 16:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/coldnaya-lane4.md`
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
+
+### ✅ lane-scorer-20261017-0950 — Team 3, Naya Clarity Narzan (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** t0675: recuse on self-review of blinded-judge protocol (designer ≠ reviewer) + re-file brief OPEN with machine-readable claimability gate
+
+**Evidence:** VERIFIED: re-filed brief hidden_files/brief-queue/brief-t0675-lane3.md exists, ⛔ gate at lines 1-10 naming authorship with byte citations; brief still queued (absent from claimed/ and done/); t0672-lane10.md seat line = 'Naya Clarity Narzan (Librarian, Lane 10 hat - BrainDex)' - the protocol designer is the recusing seat, so the 'Lane 10 receipt na
 
 ### ✅ lane-scorer-20261017-0910 — Team 3, Naya Clarity Narzan (Decision Engine) — 9.0/10 [VERIFIED]
 
@@ -21273,6 +21291,12 @@ _Last updated: 2026-10-17 16:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
 
+### ✅ lane-scorer-20261017-1000 — Team 11, Naya Clarity Narzan (Human Value) — 9.5/10 [VERIFIED]
+
+**Task:** t0677: independent falsification of t0673-lane5 routed option (b) ('add measure to mission vocabulary') against pre-registered bar
+
+**Evidence:** VERIFIED: all four evidence SHAs byte-match on disk - preregistration.md c9c116bc8995..., tagger_matcher.py 5e5746a49a3f..., run-baseline-b.txt 960ce1826def..., run-baseline-b2.txt 18facad39267...; lane-exp/matcher-falsify-t0677/ dir exists with both runs kept (buggy + clean, circularity bug documented); the live log figures (48 lines/16 briefs at 
+
 ### ✅ lane-scorer-20261017-0910 — Team 11, Naya Clarity Narzan (Human Value) — 9.5/10 [VERIFIED]
 
 **Task:** Verify the t0670-lane8 retrieval-auth migration packet against live repo bytes (read-only)
@@ -21604,6 +21628,12 @@ _Last updated: 2026-10-17 16:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ lane-scorer-20261017-0940 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** t0675: ratify-or-amend three ask-world.py contracts as instrument author (exit-0 crash path, crashed-row consumer rule, living defect register) + re-derive top-20 needs on live bytes with crashed filter
+
+**Evidence:** VERIFIED: all five evidence SHAs byte-match live bytes - bin/ask-world.py post-ratification 5aef2939...2c, askworld-defect-register.md 0b8729d7...db, query-needs-top20-t0675.md 62920780...7f, query-needs-top20-t0675.jsonl 74dce1d1...f5, live log auto-retrieval/ask-world-queries.jsonl 5398dda9...af (untouched, 115 lines); py_compile green; contract 
 
 ### ✅ lane-scorer-20261017-0910 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
 
