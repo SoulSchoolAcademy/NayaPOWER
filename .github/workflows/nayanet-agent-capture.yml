@@ -10,11 +10,24 @@ name: NayaNET Agent Capture
 # canonical pipeline runs: IB allocation, persistence, learning evidence,
 # checkpoint, feed verification, GitHub projection, verified Smart Link.
 #
+# The hourly schedule trigger (t0483) takes a HEARTBEAT path instead: on
+# `schedule` there is no payload (inputs.* only exists for workflow_dispatch),
+# so the step verifies the path is healthy — secrets present, sign-in as the
+# naya-runtime user succeeds, receiver endpoint answers an HTTP probe — and
+# exits 0. It NEVER posts a Smart Note: invented intelligence must never enter
+# the canonical record (24 junk notes/day is worse than a loud failure).
+#
 # Required repo secrets (Shawn's gate):
 #   NAYA_SUPABASE_URL, NAYA_SUPABASE_ANON_KEY,
 #   NAYA_RUNTIME_EMAIL, NAYA_RUNTIME_PASSWORD
 
 on:
+  schedule:
+    # Hourly pump (t0483): capture should be near-continuous. On schedule
+    # there is no payload, so the step takes a heartbeat path (verify
+    # secrets/sign-in/receiver reachability, exit 0, NEVER posts a note).
+    # workflow_dispatch below stays so manual runs remain available.
+    - cron: "0 * * * *"
   workflow_dispatch:
     inputs:
       payload_json:
@@ -39,6 +52,7 @@ jobs:
           RUNTIME_EMAIL: ${{ secrets.NAYA_RUNTIME_EMAIL }}
           RUNTIME_PASSWORD: ${{ secrets.NAYA_RUNTIME_PASSWORD }}
           PAYLOAD_JSON: ${{ inputs.payload_json }}
+          GITHUB_EVENT_NAME: ${{ github.event_name }}
         run: |
           python3 - <<'PYEOF'
           import json, os, sys, urllib.request, re
@@ -54,22 +68,8 @@ jobs:
           if not (url and anon and email and password):
               fail("missing Naya runtime secrets (NAYA_SUPABASE_URL / NAYA_SUPABASE_ANON_KEY / NAYA_RUNTIME_EMAIL / NAYA_RUNTIME_PASSWORD)")
 
-          try:
-              payload = json.loads(os.environ.get("PAYLOAD_JSON", ""))
-          except Exception as e:
-              fail(f"payload_json is not valid JSON: {e}")
-          human = payload.get("human_note") or {}
-          naya = payload.get("naya_note") or {}
-          idem = payload.get("idempotency_key")
-          if not idem or not isinstance(idem, str):
-              fail("payload.idempotency_key (string) is required")
-          if not str(human.get("text") or human.get("content") or "").strip():
-              fail("payload.human_note.text is required")
-          if not str(naya.get("text") or naya.get("content") or naya.get("summary") or "").strip():
-              fail("payload.naya_note.text is required")
-          source = str(payload.get("source") or "nayanet-agent-capture")
-          if not source.startswith("nayanet-agent-capture"):
-              fail("payload.source must start with 'nayanet-agent-capture' (provenance discipline)")
+          event_name = os.environ.get("GITHUB_EVENT_NAME", "")
+          raw_payload = os.environ.get("PAYLOAD_JSON", "")
 
           def post_json(endpoint, body, headers=None):
               req = urllib.request.Request(
@@ -86,6 +86,78 @@ jobs:
                       return e.code, json.loads(e.read().decode())
                   except Exception:
                       return e.code, {"raw_error": str(e)}
+
+          def probe_get(endpoint, headers=None):
+              # Read-only reachability probe. Returns (status, snippet); the
+              # status is None only when no HTTP response arrived at all.
+              # A GET can never create a Smart Note.
+              req = urllib.request.Request(
+                  endpoint,
+                  headers=headers or {},
+                  method="GET",
+              )
+              try:
+                  with urllib.request.urlopen(req, timeout=60) as r:
+                      return r.status, r.read()[:200].decode(errors="replace")
+              except urllib.error.HTTPError as e:
+                  return e.code, ""
+              except Exception:
+                  return None, ""
+
+          if event_name == "schedule" and not raw_payload.strip():
+              # HEARTBEAT path (hourly pump). On `schedule` there is no
+              # payload (inputs.* only exists for workflow_dispatch), so the
+              # old code hard-failed here on every hourly run. We verify the
+              # full capture path is healthy — secrets present (checked
+              # above), sign-in as the naya-runtime user succeeds, receiver
+              # endpoint answers — and exit 0. We NEVER post a Smart Note
+              # from this path: no invented intelligence ever enters the
+              # canonical record.
+              try:
+                  s, auth_res = post_json(
+                      f"{url}/auth/v1/token?grant_type=password",
+                      {"email": email, "password": password},
+                      {"apikey": anon},
+                  )
+              except OSError as e:
+                  # Network-level failure (DNS, refused, timeout): no HTTP
+                  # response exists, so fail loud in plain words — never a
+                  # traceback. OSError covers urllib.error.URLError (a
+                  # subclass) AND raw TimeoutError/ConnectionError, which
+                  # escape urlopen unwrapped when they strike during the
+                  # response-read phase. HTTPError is handled inside post_json.
+                  fail(f"heartbeat: runtime sign-in failed (network error): {str(e)[:300]}")
+              token = auth_res.get("access_token") if isinstance(auth_res, dict) else None
+              if s != 200 or not token:
+                  fail(f"heartbeat: runtime sign-in failed (http {s}): {str(auth_res)[:300]}")
+              s, _ = probe_get(
+                  f"{url}/functions/v1/v7-smart-note-canonical",
+                  {"apikey": anon, "Authorization": f"Bearer {token}"},
+              )
+              if s is None or s >= 500:
+                  fail(f"heartbeat: receiver endpoint unreachable or erroring (http {s})")
+              # Any HTTP response below 500 counts as reachable: a 4xx means the
+              # function is deployed and routing (GET can never create a note);
+              # only 5xx or no response at all fails loud.
+              print(f"HEARTBEAT_OK secrets=ok signin=ok receiver=http_{s} (no Smart Note posted)")
+              sys.exit(0)
+
+          try:
+              payload = json.loads(raw_payload)
+          except Exception as e:
+              fail(f"payload_json is not valid JSON: {e}")
+          human = payload.get("human_note") or {}
+          naya = payload.get("naya_note") or {}
+          idem = payload.get("idempotency_key")
+          if not idem or not isinstance(idem, str):
+              fail("payload.idempotency_key (string) is required")
+          if not str(human.get("text") or human.get("content") or "").strip():
+              fail("payload.human_note.text is required")
+          if not str(naya.get("text") or naya.get("content") or naya.get("summary") or "").strip():
+              fail("payload.naya_note.text is required")
+          source = str(payload.get("source") or "nayanet-agent-capture")
+          if not source.startswith("nayanet-agent-capture"):
+              fail("payload.source must start with 'nayanet-agent-capture' (provenance discipline)")
 
           # 1. Sign in as the naya-runtime auth user -> real user JWT.
           s, auth_res = post_json(
