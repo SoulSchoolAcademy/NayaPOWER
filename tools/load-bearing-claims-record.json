@@ -115,16 +115,16 @@
     "supabase/functions/nayanet-intelligence-commit-runtime/index.ts": {
       "verdict": "REVIEWED_OK_PLUS_CV-04",
       "cv": "CV-04",
-      "reason": "LIES on the verify path: returns independent_verification: true alongside ok:false / status:LINEAGE_BROKEN. Also literal on verify_block, which is always gated by a preceding 404 return."
+      "reason": "HISTORICAL CV-04, RESOLVED: previously returned independent_verification: true alongside ok:false / status:LINEAGE_BROKEN. Now computed: `independent_verification: pass` on full lineage verification and `Boolean(block)` on verify_block; status probe CV-04 asserts the literal is gone. The verify_block path is additionally gated by a preceding 404 return."
     },
     "supabase/functions/nayanet-law-runtime/index.ts": {
-      "verdict": "CV-05",
+      "verdict": "REVIEWED_OK_PLUS_CV-05",
       "cv": "CV-05",
-      "reason": "LIES. `{ok:same, status: same?'LAW_DECISION_VERIFIED':'LAW_DECISION_MISMATCH', independent_verification:true}` -- the flag is unconditional, so a LAW decision MISMATCH attests independent verification. LAW is the authority node, so this is the most consequential instance of the class."
+      "reason": "HISTORICAL CV-05, RESOLVED: previously `{ok:same, status: same?'LAW_DECISION_VERIFIED':'LAW_DECISION_MISMATCH', independent_verification:true}` -- the flag was unconditional, so a LAW decision MISMATCH attested independent verification. Now computed as `independent_verification: same`; status probe CV-05 asserts the literal is gone. LAW is the authority node, so this was the most consequential instance of the class."
     },
     "supabase/functions/nayanet-verified-ai-action/index.ts": {
       "verdict": "REVIEWED_OK",
-      "reason": "SAFE. The literal sits on the success path only: line 562 computes authorizedOk, and lines 566-582 already returned 409 with independent_verification:false when any check fails. Flagged by the scanner as a false positive, recorded here so the scanner is not silenced and so a future edit that moves the literal above the guard fails this file."
+      "reason": "SAFE. The literal sits on the success path only: line 592 computes authorizedOk, line 604 combines it into passed, and lines 606-614 return 409 with independent_verification:false when any check fails. Flagged by the scanner as a false positive, recorded here so the scanner is not silenced and so a future edit that moves the literal above the guard fails this file."
     },
     ".github/workflows/live-act-proof.yml": {
       "verdict": "REVIEWED_OK",
