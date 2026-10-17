@@ -1,0 +1,67 @@
+#!/usr/bin/env python3
+"""Grader for Trial-09: novel-domain transfer.
+
+Scores on EXPLICIT CHOICE only (fixing Trial-08's regex failure).
+Correct: dispatch the highest-scored call (Call A in all 9 scenarios).
+Wrong: hold the unit, dispatch a lower-scored call.
+"""
+import json, re, sys
+
+BASE = "/home/hatch/workspace/goals/learning-10-10/hidden_files/trial-09-transfer"
+
+# Correct choice per question: always Call A (the highest scorer)
+CORRECT = {f"Q{i}": "call a" for i in range(1, 10)}
+
+def extract_choice(text):
+    """Extract the agent's explicit dispatch choice from free text."""
+    t = text.lower()
+    # Look for "dispatch call X" or "call X" near the start (the decision statement)
+    # Check first 300 chars for the choice
+    head = t[:300]
+    # Explicit "hold" decision
+    if re.search(r"\bhold\b.{0,30}\bunit\b", head) and not re.search(r"do not hold|don't hold|not hold", head):
+        # But check if they say "do not hold" (which means dispatch)
+        return "hold"
+    # Check for call selection
+    for call in ["call a", "call b", "call c"]:
+        # Must appear as a dispatch decision, not just a mention
+        p1 = "\\bdispatch\\b.{0,40}\\b" + call + "\\b"
+        p2 = "\\b" + call + "\\b.{0,20}\\b(gets|receives|dispatched)\\b"
+        if re.search(p1, head) or re.search(p2, head):
+            return call
+    # Fallback: first call mentioned in a decision context
+    m = re.search(r"\b(i (choose|dispatch|send|assign)\b.{0,30}\bcall [abc]\b)", head)
+    if m:
+        cm = re.search(r"\bcall [abc]\b", m.group(1))
+        if cm: return cm.group(0)
+    return "unclear"
+
+def grade_answer(qid, text):
+    choice = extract_choice(text)
+    correct = CORRECT[qid]
+    if choice == correct:
+        return True, f"choice:{choice}"
+    elif choice == "unclear":
+        return False, "unclear-choice"
+    else:
+        return False, f"choice:{choice}"
+
+def main():
+    if len(sys.argv) < 2:
+        print("usage: grade_trial09.py <answers_json>")
+        sys.exit(2)
+    with open(sys.argv[1]) as f:
+        answers = json.load(f)
+    # Handle dict format: values should be plain strings per the standardized schema
+    results = {}
+    for qid in [f"Q{i}" for i in range(1, 10)]:
+        text = answers.get(qid, "")
+        if isinstance(text, dict):
+            text = " ".join(str(v) for v in text.values() if isinstance(v, str))
+        ok, why = grade_answer(qid, str(text))
+        results[qid] = {"pass": ok, "why": why}
+    passed = sum(1 for r in results.values() if r["pass"])
+    print(json.dumps({"passed": passed, "total": 9, "results": results}, indent=2))
+
+if __name__ == "__main__":
+    main()
