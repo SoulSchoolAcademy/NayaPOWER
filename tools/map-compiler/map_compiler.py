@@ -173,7 +173,7 @@ def probe_feeds(cfg):
     if not token:
         return {"status": "unknown", "evidence": "measurement unavailable: no GH_TOKEN",
                 "measured_at": now_iso()}
-    live, missing, stale = [], [], []
+    live, missing = [], []
     for name in EXPECTED_FEEDS:
         path = f"HUB/FEEDS/{name}.json"
         data, err = gh_get(f"/repos/{OWNER}/{REPO}/contents/{path}?ref=main", token)
