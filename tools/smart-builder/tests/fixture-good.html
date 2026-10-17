@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Naya App — good fixture</title>
+<style>
+.naya-btn {
+  min-height: 48px;
+  padding: 12px 24px;
+  background: #7c3aed;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+}
+.naya-btn:hover {
+  background: #a855f7;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(168, 85, 247, .4);
+}
+.naya-input { min-height: 48px; padding: 10px 14px; font-size: 16px; }
+.naya-link { color: #7c3aed; }
+.naya-link:hover { color: #a855f7; text-decoration: underline; }
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+</style>
+</head>
+<body>
+<main>
+  <section id="hero" data-naya-piece="hero-wrap">
+    <h1>Welcome to my world</h1>
+    <button id="cta-btn" class="naya-btn naya-btn-primary" onclick="startApp()"
+            data-naya-piece="btn-primary">Start</button>
+    <button id="alt-btn" class="naya-btn" data-naya-piece="btn-secondary">Learn more</button>
+    <a class="naya-link" href="https://nayanet.live/feed"
+       data-naya-piece="link-main">See the Smart Feed</a>
+  </section>
+  <section id="signup" data-naya-piece="form-signup">
+    <form action="/join" method="post">
+      <label for="email">Email</label>
+      <input id="email" class="naya-input" type="email" name="email"
+             data-naya-piece="input-email">
+      <button class="naya-btn naya-btn-primary" type="submit">Join</button>
+    </form>
+  </section>
+</main>
+<script>
+document.getElementById('alt-btn').addEventListener('click', function () {
+  document.getElementById('signup').scrollIntoView();
+});
+function startApp() { window.location.href = 'https://nayanet.live/feed'; }
+</script>
+</body>
+</html>

@@ -1,0 +1,742 @@
+{
+  "registry_version": "1.0",
+  "library_version": "nitro/design-library@0fe51806cc + nitro/design-specimens@825b45c1dbf",
+  "pieces": [
+    {
+      "naya_id": "hero.naya-entrance",
+      "human_label": "Naya entrance hero (N5 lego)",
+      "category": "hero",
+      "source_file": "DESIGN/SPECIMENS/element-sets/epic-elements-lego-n5.html",
+      "source_branch": "nitro/design-specimens-tmp",
+      "html": "<header class=\"hero wrap\">\n  <h1>The Naya <span class=\"soul\">Ultimate</span> Lego Library</h1>\n  <p class=\"tagline\">The best of the best. One library. Every component copy-paste ready.</p>\n  <p class=\"law-line\">One standard \u00b7 Every page \u00b7 No drift</p>\n  <div class=\"spectrum-bar\" aria-label=\"Spectrum: magenta, purple, blue, green, gold\"><span></span><span></span><span></span><span></span><span></span></div>\n  <p class=\"spectrum-label\">Magenta \u2192 Purple \u2192 Blue \u2192 Green \u2192 Gold</p>\n  <div style=\"height:56px\"></div>\n  <div class=\"hero-buttons\">\n    <button class=\"naya-btn naya-btn--primary\" data-spectrum=\"magenta\" onclick=\"document.getElementById('buttons').scrollIntoView({behavior:'smooth'})\">\n      <span class=\"btn-glow\"></span>\n      <span class=\"btn-label\">\u2726 ENTER THE STANDARD</span>\n    </button>\n    <button class=\"naya-btn naya-btn--primary\" data-spectrum=\"purple\" onclick=\"document.getElementById('smarttabs').scrollIntoView({behavior:'smooth'})\">\n      <span class=\"btn-glow\"></span>\n      <span class=\"btn-label\">\u25c8 SEE IT WORKING</span>\n    </button>\n    <button class=\"naya-btn naya-btn--primary\" data-spectrum=\"blue\" onclick=\"document.getElementById('laws').scrollIntoView({behavior:'smooth'})\">\n      <span class=\"btn-glow\"></span>\n      <span class=\"btn-label\">\uff0b READ THE LAW</span>\n    </button>\n  </div>\n  <p class=\"micro btn-note\">These three buttons are the standard. Living depth. Lit at rest. Ignite on touch.<br>Every button you ever build starts here.</p>\n  <nav class=\"toc\">\n    <a href=\"#buttons\">Buttons</a><a href=\"#smarttabs\">SmartTabs</a><a href=\"#spectrum\">Spectrum</a><a href=\"#boards\">Boards</a><a href=\"#jewels\">Jewels</a><a href=\"#type\">Typography</a><a href=\"#truth\">Truth</a><a href=\"#laws\">Laws</a><a href=\"#rules\">Do's & Don'ts</a><a href=\"#machine\">Machine Law</a>\n  </nav>\n</header>",
+      "css_classes": [
+        ".hero",
+        ".living-btn",
+        ".naya-btn",
+        ".naya-btn--primary",
+        ".soul",
+        ".spectrum-bar",
+        ".tagline",
+        ".toc"
+      ],
+      "function": "The entrance ritual: identity headline, spectrum strip, three living CTA buttons and an anchor nav. One spectrum-bar + one hero per page.",
+      "props": {
+        "tunable": [
+          "headline",
+          "tagline",
+          "cta_labels",
+          "cta_targets"
+        ]
+      },
+      "normalizations": [
+        "living-btn -> naya-btn naya-btn--primary (3 buttons): pre-canonical specimen class retired per DESIGN contract (.naya-btn is THE button); data-spectrum + onclick behavior preserved verbatim"
+      ]
+    },
+    {
+      "naya_id": "hero.vessel-orb",
+      "human_label": "Hero image vessel with orb",
+      "category": "hero",
+      "source_file": "DESIGN/SPECIMENS/page-specimens/naya-smart-blocks.html",
+      "source_branch": "nitro/design-specimens-tmp",
+      "html": "<div class=\"vessel vessel-demo\" aria-label=\"Hero image vessel\">\n        <span class=\"orb orb--hero\" style=\"--oc:var(--soul);--oc-rgb:var(--purple-rgb)\"></span>\n        <span class=\"vessel-label\">Your hero, housed</span>\n      </div>",
+      "css_classes": [
+        ".vessel",
+        ".orb",
+        ".orb--hero",
+        ".vessel-label"
+      ],
+      "function": "Houses the page hero visual: a framed vessel with a 200px hero orb lit from within. The signature entrance for smart apps.",
+      "props": {
+        "tunable": [
+          "orb_color",
+          "label"
+        ]
+      }
+    },
+    {
+      "naya_id": "nav.top-bar",
+      "human_label": "Top navigation bar",
+      "category": "nav",
+      "source_file": "DESIGN/SPECIMENS/page-specimens/naya-smart-blocks.html",
+      "source_branch": "nitro/design-specimens-tmp",
+      "html": "<nav class=\"nav\" aria-label=\"Demo navigation\" style=\"position:static\">\n        <span class=\"nav-orb\" aria-hidden=\"true\"></span>\n        <span class=\"nav-label\">NayaNET</span>\n        <span class=\"nav-links\">\n          <a href=\"#buttons\">Blocks</a><a href=\"#cards\">Boards</a><a href=\"#data\">Ledger</a>\n        </span>\n      </nav>",
+      "css_classes": [
+        ".nav",
+        ".nav-orb",
+        ".nav-label",
+        ".nav-links"
+      ],
+      "function": "Top bar: orb mark, identity label, destination links. The way in and the way back.",
+      "props": {
+        "tunable": [
+          "brand_label",
+          "links"
+        ]
+      }
+    },
+    {
+      "naya_id": "nav.room-tabs",
+      "human_label": "SmartTabs pill tabs",
+      "category": "nav",
+      "source_file": "DESIGN/SPECIMENS/page-specimens/naya-smart-blocks.html",
+      "source_branch": "nitro/design-specimens-tmp",
+      "html": "<div class=\"smarttabs\" role=\"tablist\" aria-label=\"Rooms\">\n        <button class=\"smarttab\" role=\"tab\" aria-selected=\"true\" aria-controls=\"pane-all\" style=\"--tone:var(--magenta)\"><span class=\"tab-dot\"></span>All</button>\n        <button class=\"smarttab\" role=\"tab\" aria-selected=\"false\" aria-controls=\"pane-saved\" style=\"--tone:var(--soul)\"><span class=\"tab-dot\"></span>Saved</button>\n        <button class=\"smarttab\" role=\"tab\" aria-selected=\"false\" aria-controls=\"pane-shared\" style=\"--tone:var(--emerald)\"><span class=\"tab-dot\"></span>Shared</button>\n      </div>",
+      "css_classes": [
+        ".smarttabs",
+        ".smarttab"
+      ],
+      "function": "Pill tabs that switch context without leaving the room. The active pill ignites; the rest stay quiet.",
+      "props": {
+        "tunable": [
+          "tabs",
+          "active_tab"
+        ]
+      }
+    },
+    {
+      "naya_id": "nav.toc-pills",
+      "human_label": "Anchor TOC pills",
+      "category": "nav",
+      "source_file": "DESIGN/SPECIMENS/page-specimens/naya-smart-blocks.html",
+      "source_branch": "nitro/design-specimens-tmp",
+      "html": "<div class=\"toc\"><a href=\"#buttons\">Buttons</a><a href=\"#cards\">Cards</a><a href=\"#new\">New P0</a></div>",
+      "css_classes": [
+        ".toc"
+      ],
+      "function": "1px-line section chips for jumping down a long page. The in-page map.",
+      "props": {
+        "tunable": [
+          "anchors"
+        ]
+      }
+    },
+    {
+      "naya_id": "button.canonical-primary",
+      "human_label": "Canonical primary button",
+      "category": "button",
+      "source_file": "DESIGN/SPECIMENS/element-sets/element-set-n4.html",
+      "source_branch": "nitro/design-specimens-tmp",
+      "html": "<button class=\"naya-btn naya-btn--primary\" type=\"button\"><span class=\"nb-icon\" aria-hidden=\"true\">\u2726</span><span class=\"nb-label\">Create App</span></button>",
+      "css_classes": [
+        ".naya-btn",
+        ".naya-btn--primary",
+        ".nb-icon",
+        ".nb-label"
+      ],
+      "function": "THE button DNA: black heart, white voice, visible rim at rest, ignites on touch. Primary job \u2014 the one main action per page.",
+      "props": {
+        "tunable": [
+          "label",
+          "icon",
+          "color_job"
+        ]
+      }
+    },
+    {
+      "naya_id": "button.canonical-secondary",
+      "human_label": "Secondary button",
+      "category": "button",
+      "source_file": "DESIGN/SPECIMENS/element-sets/element-set-n4.html",
+      "source_branch": "nitro/design-specimens-tmp",
+      "html": "<button class=\"naya-btn naya-btn--secondary\" type=\"button\"><span class=\"nb-icon\" aria-hidden=\"true\">\u2192</span><span class=\"nb-label\">View Details</span></button>",
+      "css_classes": [
+        ".naya-btn",
+        ".naya-btn--secondary",
+        ".nb-icon",
+        ".nb-label"
+      ],
+      "function": "Second-weight action in the one DNA. For non-primary moves that still deserve real affordance.",
+      "props": {
+        "tunable": [
+          "label",
+          "icon"
+        ]
+      }
+    },
+    {
+      "naya_id": "button.canonical-ghost",
+      "human_label": "Ghost button",
+      "category": "button",
+      "source_file": "DESIGN/SPECIMENS/element-sets/element-set-n4.html",
+      "source_branch": "nitro/design-specimens-tmp",
+      "html": "<button class=\"naya-btn naya-btn--ghost\" type=\"button\"><span class=\"nb-label\">Cancel</span></button>",
+      "css_classes": [
+        ".naya-btn",
+        ".naya-btn--ghost",
+        ".nb-label"
+      ],
+      "function": "Quietest DNA: dismissal and back-out actions. No color job \u2014 it recedes.",
+      "props": {
+        "tunable": [
+          "label"
+        ]
+      }
+    },
+    {
+      "naya_id": "button.canonical-danger",
+      "human_label": "Danger button",
+      "category": "button",
+      "source_file": "DESIGN/SPECIMENS/element-sets/element-set-n4.html",
+      "source_branch": "nitro/design-specimens-tmp",
+      "html": "<button class=\"naya-btn naya-btn--danger\" type=\"button\"><span class=\"nb-icon\" aria-hidden=\"true\">\u2715</span><span class=\"nb-label\">Delete</span></button>",
+      "css_classes": [
+        ".naya-btn",
+        ".naya-btn--danger",
+        ".nb-icon",
+        ".nb-label"
+      ],
+      "function": "Destructive actions in the one DNA. Restrained, never glowing red.",
+      "props": {
+        "tunable": [
+          "label"
+        ]
+      }
+    },
+    {
+      "naya_id": "button.icon-button",
+      "human_label": "Icon-only button",
+      "category": "button",
+      "source_file": "DESIGN/SPECIMENS/element-sets/element-set-n4.html",
+      "source_branch": "nitro/design-specimens-tmp",
+      "html": "<button class=\"naya-btn naya-btn--primary naya-btn--icon\" type=\"button\" aria-label=\"Add\"><span class=\"nb-icon\" aria-hidden=\"true\">\uff0b</span></button>",
+      "css_classes": [
+        ".naya-btn",
+        ".naya-btn--icon",
+        ".nb-icon"
+      ],
+      "function": "Icon-only circular DNA for compact toolbars. Label moves to aria-label; the glyph is the promise.",
+      "props": {
+        "tunable": [
+          "aria_label",
+          "icon"
+        ]
+      }
+    },
+    {
+      "naya_id": "button.size-scale",
+      "human_label": "Button size scale (small, medium, large)",
+      "category": "button",
+      "source_file": "DESIGN/SPECIMENS/element-sets/element-set-n4.html",
+      "source_branch": "nitro/design-specimens-tmp",
+      "html": "<button class=\"naya-btn naya-btn--primary naya-btn--sm\" type=\"button\">Small</button>\n        <button class=\"naya-btn naya-btn--primary\" type=\"button\">Medium \u00b7 Default</button>\n        <button class=\"naya-btn naya-btn--primary naya-btn--lg\" type=\"button\">Large</button>",
+      "css_classes": [
+        ".naya-btn",
+        ".naya-btn--primary",
+        ".naya-btn--sm",
+        ".naya-btn--lg"
+      ],
+      "function": "Same DNA at three sizes. Scale separates hierarchy \u2014 the design never changes.",
+      "props": {
+        "tunable": [
+          "size",
+          "label"
+        ]
+      }
+    },
+    {
+      "naya_id": "button.split-orb",
+      "human_label": "Split button with orb",
+      "category": "button",
+      "source_file": "DESIGN/SPECIMENS/page-specimens/naya-smart-blocks.html",
+      "source_branch": "nitro/design-specimens-tmp",
+      "html": "<button class=\"naya-btn split\">Publish now <span class=\"split-orb\"><svg class=\"icon\"><use href=\"#i-arrow\"/></svg></span></button>",
+      "css_classes": [
+        ".naya-btn",
+        ".split",
+        ".split-orb",
+        ".icon"
+      ],
+      "function": "Action + launch orb: commit the action, the orb confirms where it goes. For publish/launch verbs.",
+      "props": {
+        "tunable": [
+          "label",
+          "icon"
+        ]
+      }
+    },
+    {
+      "naya_id": "board.world-destination",
+      "human_label": "Destination board (board-mix)",
+      "category": "board",
+      "source_file": "DESIGN/SPECIMENS/element-sets/epic-elements-lego-n5.html",
+      "source_branch": "nitro/design-specimens-tmp",
+      "html": "<div class=\"board-mix\" style=\"--ic:#a06bff\">\n    <span class=\"corner\" style=\"--ic:#a06bff\">\u25c6</span>\n    <h3>Color has four jobs. Never cross them.</h3>\n    <p>Chrome acts. Text speaks. Theme identifies. Adjacent things never share a hue.</p>\n  </div>",
+      "css_classes": [
+        ".board-mix",
+        ".corner"
+      ],
+      "function": "A world, not a rectangle: theme-edged, corner-jewel-marked board. One spectrum color owns the room's destination.",
+      "props": {
+        "tunable": [
+          "accent_color",
+          "title",
+          "copy"
+        ]
+      }
+    },
+    {
+      "naya_id": "board.layered-intelligence",
+      "human_label": "Layered intelligent block (board-tone)",
+      "category": "board",
+      "source_file": "DESIGN/SPECIMENS/element-sets/epic-elements-lego-n5.html",
+      "source_branch": "nitro/design-specimens-tmp",
+      "html": "<div class=\"board-tone\" style=\"--tone:var(--purple)\">\n    <div class=\"board-content\">\n      <p class=\"board-tag\">Intelligent Block \u00b7 IB-0001</p>\n      <h3 class=\"board-name\">The board is a world.</h3>\n      <p class=\"board-sub\">Not a rectangle. A destination you enter.</p>\n      <div class=\"layer-grid\">\n        <div class=\"layer\" style=\"--tone:var(--purple)\"><p class=\"micro\"><span class=\"gem-bullet\"></span>In a nutshell</p><p>Capture the essence. Verify the result.</p></div>\n        <div class=\"layer\" style=\"--tone:var(--blue)\"><p class=\"micro\"><span class=\"gem-bullet\"></span>What it means</p><p>Understanding changes what Naya does next.</p></div>\n        <div class=\"layer\" style=\"--tone:var(--gold)\"><p class=\"micro\"><span class=\"gem-bullet\"></span>How to use it</p><p>Retrieve, check limits, carry into action.</p></div>\n      </div>\n    </div>\n  </div>",
+      "css_classes": [
+        ".board-tone",
+        ".board-content",
+        ".board-tag",
+        ".board-name",
+        ".board-sub",
+        ".layer-grid",
+        ".layer",
+        ".gem-bullet",
+        ".micro"
+      ],
+      "function": "The intelligent block pattern: tag, name, sub, then meaning nested in layers (nutshell \u2192 meaning \u2192 use).",
+      "props": {
+        "tunable": [
+          "accent_color",
+          "tag",
+          "title",
+          "layers"
+        ]
+      }
+    },
+    {
+      "naya_id": "board.elevated",
+      "human_label": "Elevated board",
+      "category": "board",
+      "source_file": "DESIGN/SPECIMENS/page-specimens/naya-smart-blocks.html",
+      "source_branch": "nitro/design-specimens-tmp",
+      "html": "<div class=\"elevated-board\" style=\"--tone:var(--soul)\">\n        <span class=\"board-spine\"></span><span class=\"board-corner\"></span>\n        <h3 style=\"font-family:var(--voice);font-size:24px;margin:0 0 6px;color:#fff\">The Reading Room</h3>\n        <p style=\"color:var(--ink-dim);font-size:14px;margin:0;max-width:420px;line-height:1.6\">Every note you ever kept, arranged the way your mind already arranged them.</p>\n      </div>",
+      "css_classes": [
+        ".elevated-board",
+        ".board-spine",
+        ".board-corner"
+      ],
+      "function": "Deep black board with an identity spine and corner marks that catch the light. A room you step into.",
+      "props": {
+        "tunable": [
+          "tone",
+          "title",
+          "copy"
+        ]
+      }
+    },
+    {
+      "naya_id": "card.truth-trio",
+      "human_label": "Truth badge cards",
+      "category": "card",
+      "source_file": "DESIGN/SPECIMENS/element-sets/epic-elements-lego-n5.html",
+      "source_branch": "nitro/design-specimens-tmp",
+      "html": "<div class=\"truthgrid\">\n    <div class=\"truth\" style=\"--tc2:#2fe89e\"><span class=\"torb\" style=\"--tc2:#2fe89e\">\u2713</span><div><b>AUTH \u00b7 VERIFIED</b><p>Independent evidence exists. The number survived contact with reality.</p></div></div>\n    <div class=\"truth\" style=\"--tc2:#ffbf3d\"><span class=\"torb\" style=\"--tc2:#ffbf3d\">?</span><div><b>CLAIM \u00b7 UNVERIFIED</b><p>Self-reported, awaiting its stamp. Shown honestly, never hidden.</p></div></div>\n    <div class=\"truth\" style=\"--tc2:#e84fff\"><span class=\"torb\" style=\"--tc2:#e84fff\">\u25c8</span><div><b>DEMONSTRATION</b><p>Specimen content. Beautiful on purpose, not pretending to be live.</p></div></div>\n  </div>",
+      "css_classes": [
+        ".truthgrid",
+        ".truth",
+        ".torb"
+      ],
+      "function": "A claim and a proof must never look the same: VERIFIED (green orb), CLAIM (gold), DEMONSTRATION (magenta).",
+      "props": {
+        "tunable": [
+          "states"
+        ]
+      }
+    },
+    {
+      "naya_id": "card.law-cards",
+      "human_label": "Law cards",
+      "category": "card",
+      "source_file": "DESIGN/SPECIMENS/page-specimens/naya-smart-blocks.html",
+      "source_branch": "nitro/design-specimens-tmp",
+      "html": "<div class=\"laws\">\n      <div class=\"lawcard\" style=\"--lc:var(--magenta)\"><p class=\"ln\"><span class=\"ld\"></span>Law 1</p><h3>Score the experience, never the code.</h3><p>The lived page is the only scorecard.</p></div>\n      <div class=\"lawcard\" style=\"--lc:var(--emerald)\"><p class=\"ln\"><span class=\"ld\"></span>Law 2</p><h3>Restraint is the excellence.</h3><p>Less glow, fewer colors, generous black space.</p></div>\n      <div class=\"lawcard\" style=\"--lc:var(--gold)\"><p class=\"ln\"><span class=\"ld\"></span>Law 3</p><h3>Every effect encodes information.</h3><p>No visual is acceptable merely because it moves.</p></div>\n    </div>",
+      "css_classes": [
+        ".laws",
+        ".lawcard",
+        ".ln",
+        ".ld"
+      ],
+      "function": "Law dials: numbered law cards with a spectrum light, one per law. The contract made visible.",
+      "props": {
+        "tunable": [
+          "accent_color",
+          "law_number",
+          "title",
+          "text"
+        ]
+      }
+    },
+    {
+      "naya_id": "card.job-grid",
+      "human_label": "Job cards",
+      "category": "card",
+      "source_file": "DESIGN/SPECIMENS/page-specimens/naya-smart-blocks.html",
+      "source_branch": "nitro/design-specimens-tmp",
+      "html": "<div class=\"jobs\">\n      <div class=\"job\" style=\"--jc:var(--soul)\"><div class=\"swatch\" style=\"background:linear-gradient(120deg,var(--soul),transparent)\"></div><h3>Design</h3><p>Bring the library page to a 9+.</p></div>\n      <div class=\"job\" style=\"--jc:var(--emerald)\"><div class=\"swatch\" style=\"background:linear-gradient(120deg,var(--emerald),transparent)\"></div><h3>Verify</h3><p>Independent eyes on every claim.</p></div>\n      <div class=\"job\" style=\"--jc:var(--gold)\"><div class=\"swatch\" style=\"background:linear-gradient(120deg,var(--gold),transparent)\"></div><h3>Ship</h3><p>Merge what earned it, nothing else.</p></div>\n    </div>",
+      "css_classes": [
+        ".jobs",
+        ".job",
+        ".swatch"
+      ],
+      "function": "Three-up card grid with a color swatch wash per card \u2014 for offerings, actions, template previews.",
+      "props": {
+        "tunable": [
+          "accent_color",
+          "title",
+          "text"
+        ]
+      }
+    },
+    {
+      "naya_id": "card.metric-trio",
+      "human_label": "Metric cards",
+      "category": "card",
+      "source_file": "DESIGN/SPECIMENS/page-specimens/naya-smart-blocks.html",
+      "source_branch": "nitro/design-specimens-tmp",
+      "html": "<div class=\"metric\" style=\"--tone:var(--magenta)\"><span class=\"metric-mark\"><svg class=\"icon\"><use href=\"#i-spark\"/></svg></span><b>What matters</b><span>Priority is explicit.</span></div>",
+      "css_classes": [
+        ".metric",
+        ".metric-mark"
+      ],
+      "function": "What matters / what changed / what happens next \u2014 dashboard-grade numbers, alive not a brochure.",
+      "props": {
+        "tunable": [
+          "accent_color",
+          "label",
+          "value"
+        ]
+      }
+    },
+    {
+      "naya_id": "input.recessed-field",
+      "human_label": "Recessed text field",
+      "category": "input",
+      "source_file": "DESIGN/SPECIMENS/page-specimens/naya-smart-blocks.html",
+      "source_branch": "nitro/design-specimens-tmp",
+      "html": "<label class=\"recessed-field\"><span>What should Naya remember?</span><input type=\"text\" placeholder=\"Type it like you're telling a friend\u2026\"></label>",
+      "css_classes": [
+        ".recessed-field"
+      ],
+      "function": "Recessed black field with a floating question-label. Ignites purple on focus \u2014 Naya's signature input.",
+      "props": {
+        "tunable": [
+          "label",
+          "placeholder",
+          "type"
+        ]
+      }
+    },
+    {
+      "naya_id": "input.search-field",
+      "human_label": "Search field",
+      "category": "input",
+      "source_file": "DESIGN/SPECIMENS/page-specimens/naya-smart-blocks.html",
+      "source_branch": "nitro/design-specimens-tmp",
+      "html": "<label class=\"recessed-field search-field\"><svg class=\"icon\"><use href=\"#i-search\"/></svg><input type=\"text\" placeholder=\"Ask Naya anything\u2026\"><span class=\"naya-kbd\">\u2318K</span></label>",
+      "css_classes": [
+        ".recessed-field",
+        ".search-field",
+        ".icon",
+        ".naya-kbd"
+      ],
+      "function": "Search with icon and keyboard hint (\u2318K). The asking field every smart app opens.",
+      "props": {
+        "tunable": [
+          "placeholder"
+        ]
+      }
+    },
+    {
+      "naya_id": "input.jeweled-check",
+      "human_label": "Jeweled checkbox",
+      "category": "input",
+      "source_file": "DESIGN/SPECIMENS/page-specimens/naya-smart-blocks.html",
+      "source_branch": "nitro/design-specimens-tmp",
+      "html": "<label class=\"naya-check\"><input type=\"checkbox\" checked><span class=\"box\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 16 16\"><path d=\"M3 8.5l3.5 3.5L13 4.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></span><span class=\"txt\">Render it, then look at it \u2014 screenshot reviewed, not assumed</span></label>",
+      "css_classes": [
+        ".naya-check",
+        ".box",
+        ".txt"
+      ],
+      "function": "Jeweled checklist item: SVG check mark in a lit box, ignites its own color when checked. The pre-ship pattern.",
+      "props": {
+        "tunable": [
+          "label",
+          "checked",
+          "accent_color"
+        ]
+      }
+    },
+    {
+      "naya_id": "section.law-shell",
+      "human_label": "Law section shell",
+      "category": "section",
+      "source_file": "DESIGN/SPECIMENS/element-sets/lego-blocks-n4.html",
+      "source_branch": "nitro/design-specimens-tmp",
+      "html": "<section style=\"--sc:#55b9ee\">\n    <p class=\"secnum\">02 \u00b7 Buttons</p>\n    <h2 class=\"law\">Black heart. White voice. Visible skin.</h2>\n    <p class=\"secdeck\">A button reads as a button before it is touched: <strong style=\"color:#fff\">#050505</strong> center, white text, a real icon, a 1.5px+ white rim at rest \u2014 then purple fire for chrome, or its own spectrum color when it belongs to a themed thing. The glyph is a promise: it shows what happens.</p>\n    <div class=\"demo\">\n      <div class=\"demo-row\">\n        <button class=\"cx-btn\" type=\"button\">\u2709&nbsp; WRITE MAIL</button>\n        <button class=\"cx-btn\" type=\"button\">\uff0b&nbsp; ADD CONNECTION</button>\n        <button class=\"cx-btn\" type=\"button\">\u2192&nbsp; OPEN REPORT</button>\n        <span style=\"--sc:#40d3bb\"><button class=\"sp-join\" style=\"--sc:#40d3bb\">\uff0b Join the space</button></span>\n        <span style=\"--sc:#ff5e6c\"><button class=\"sp-join\" style=\"--sc:#ff5e6c\">\u2713 Joined</button></span>\n      </div>\n      <div class=\"states\">\n        <div class=\"state\"><b>IDLE</b><button class=\"cx-btn\" type=\"button\">REST</button><p style=\"font-size:14px; color:#fff; opacity:.8; margin:10px 0 0\">White rim visible. Quiet.</p></div>\n        <div class=\"state\"><b>HOVER</b><button class=\"cx-btn\" type=\"button\" style=\"border-color:#9d75ff; box-shadow:0 0 30px -2px #9d75ff;\">FIRE</button><p style=\"font-size:14px; color:#fff; opacity:.8; margin:10px 0 0\">Own color ignites. Lifts.</p></div>\n        <div class=\"state\"><b>PRESS</b><button class=\"cx-btn\" type=\"button\" style=\"transform:scale(.97)\">TOUCH</button><p style=\"font-size:14px; color:#fff; opacity:.8; margin:10px 0 0\">Compresses. Alive.</p></div>\n      </div>\n    </div>\n  </section>",
+      "css_classes": [
+        ".secnum",
+        ".law",
+        ".secdeck",
+        ".demo",
+        ".demo-row",
+        ".states",
+        ".state"
+      ],
+      "function": "The lego section anatomy: number, law headline, deck copy, demo row, live states. One spectrum color per section.",
+      "props": {
+        "tunable": [
+          "accent_color",
+          "number",
+          "headline",
+          "deck"
+        ]
+      }
+    },
+    {
+      "naya_id": "section.why-section",
+      "human_label": "Why-section shell with bullets",
+      "category": "section",
+      "source_file": "DESIGN/SPECIMENS/element-sets/jewel-library-n5.html",
+      "source_branch": "nitro/design-specimens-tmp",
+      "html": "<div class=\"lego-section\">\n<h2>01 \u00b7 Orbs \u2014 finished objects of light</h2>\n<p class=\"why\"><strong>Why:</strong> A jewel is a cut stone. An <strong>orb</strong> is a finished object \u2014 spherical, orbital, lit from within. Each holds one spectrum color at its core. A ring of light circles every orb. Hover \u2014 the orbit flares and the orb lifts toward you. <strong>Use for:</strong> bullets, section marks, app icons, truth states.</p>\n<div class=\"orb-row\">\n  <div class=\"orb-wrap\"><span class=\"orb\" style=\"--oc:#e84fff;--oc-rgb:232,79,255\"></span><p class=\"micro\">MAGENTA<small>The living edge</small></p></div>\n  <div class=\"orb-wrap\"><span class=\"orb\" style=\"--oc:#a06bff;--oc-rgb:160,107,255\"></span><p class=\"micro\">PURPLE<small>Naya's presence</small></p></div>\n  <div class=\"orb-wrap\"><span class=\"orb\" style=\"--oc:#3fb8ff;--oc-rgb:63,184,255\"></span><p class=\"micro\">BLUE<small>Knowledge moving</small></p></div>\n  <div class=\"orb-wrap\"><span class=\"orb\" style=\"--oc:#2fe89e;--oc-rgb:47,232,158\"></span><p class=\"micro\">GREEN<small>Alive and well</small></p></div>\n  <div class=\"orb-wrap\"><span class=\"orb\" style=\"--oc:#ffbf3d;--oc-rgb:255,191,61\"></span><p class=\"micro\">GOLD<small>Attention, earned</small></p></div>\n</div>\n<div class=\"orb-scale\">\n  <div class=\"orb-demo\"><span class=\"orb orb--xs\" style=\"--oc:#e84fff;--oc-rgb:232,79,255\"></span><p class=\"micro\">BULLET \u00b7 30px<small>Lists, gem points</small></p></div>\n  <div class=\"orb-demo\"><span class=\"orb orb--sm\" style=\"--oc:#3fb8ff;--oc-rgb:63,184,255\"></span><p class=\"micro\">SECTION MARK \u00b7 56px<small>Room icons, headers</small></p></div>\n  <div class=\"orb-demo\"><span class=\"orb orb--black\" style=\"--oc:#2fe89e;--oc-rgb:47,232,158\"></span><p class=\"micro\">BLACK ORB \u00b7 120px<small>Dark soul, color rim</small></p></div>\n</div>\n\n<div class=\"orb-hero-stage\">\n  <div class=\"orb-hero-wrap\"><span class=\"orb orb--hero\" style=\"--oc:#a06bff;--oc-rgb:160,107,255\"></span></div>\n  <p class=\"micro\">HERO ORB \u00b7 200px<small>Twin counter-rotating orbits. The centerpiece \u2014 one per page, never more.</small></p>\n</div>\n\n<h3 style=\"font-size:22px;margin:44px 0 4px\">Orb variants.</h3>\n<p style=\"color:var(--quiet);font-size:16px;margin:0 0 8px\">Glyphs at the core turn orbs into app icons. Twin rings double the orbit. The orb button presses like something real.</p>\n<div class=\"orb-row\">\n  <div class=\"orb-wrap\"><span class=\"orb orb--glyph\" style=\"--oc:#e84fff;--oc-rgb:232,79,255\">\u2726</span><p class=\"micro\">APP ICON<small>Glyph at the core</small></p></div>\n  <div class=\"orb-wrap\"><span class=\"orb orb--glyph\" style=\"--oc:#3fb8ff;--oc-rgb:63,184,255\">\u2665</span><p class=\"micro\">APP ICON<small>Love, luminous</small></p></div>\n  <div class=\"orb-wrap\"><span class=\"orb orb--twin\" style=\"--oc:#2fe89e;--oc-rgb:47,232,158\"></span><p class=\"micro\">TWIN ORBIT<small>Two rings, counter-rotating</small></p></div>\n  <div class=\"orb-wrap\"><button class=\"orb orb--btn\" type=\"button\" aria-label=\"Activate orb\" style=\"--oc:#ffbf3d;--oc-rgb:255,191,61\"></button><p class=\"micro\">ORB BUTTON<small>Press it \u2014 it gives</small></p></div>\n</div>\n\n<h3 style=\"font-size:22px;margin:44px 0 4px\">Truth orbs.</h3>\n<p style=\"color:var(--quiet);font-size:16px;margin:0 0 8px\">The truth language, as objects. Green is proven. Gold is shown. Blue is stated.</p>\n<div class=\"orb-row\">\n  <div class=\"orb-wrap\"><span class=\"orb orb--sm\" style=\"--oc:#2fe89e;--oc-rgb:47,232,158\"></span><p class=\"micro\">VERIFIED<small>Proven, glowing green</small></p></div>\n  <div class=\"orb-wrap\"><span class=\"orb orb--sm\" style=\"--oc:#ffbf3d;--oc-rgb:255,191,61\"></span><p class=\"micro\">DEMONSTRATION<small>Shown, golden</small></p></div>\n  <div class=\"orb-wrap\"><span class=\"orb orb--sm\" style=\"--oc:#3fb8ff;--oc-rgb:63,184,255\"></span><p class=\"micro\">CLAIM<small>Stated, quiet blue</small></p></div>\n</div>\n\n<h3 style=\"font-size:22px;margin:44px 0 4px\">Orbs in context.</h3>\n<p style=\"color:var(--quiet);font-size:16px;margin:0 0 8px\">Where orbs live in real interfaces \u2014 bullets, section marks, app icons.</p>\n<div class=\"orb-context\">\n  <div class=\"orb-ctx-card\">\n    <h4>Bullets</h4>\n    <ul class=\"orb-bullet-list\">\n      <li><span class=\"orb orb--xs\" style=\"--oc:#e84fff;--oc-rgb:232,79,255\"></span>Every list item earns its light</li>\n      <li><span class=\"orb orb--xs\" style=\"--oc:#a06bff;--oc-rgb:160,107,255\"></span>Spectrum order, never twice adjacent</li>\n      <li><span class=\"orb orb--xs\" style=\"--oc:#3fb8ff;--oc-rgb:63,184,255\"></span>Small but never flat</li>\n    </ul>\n  </div>\n  <div class=\"orb-ctx-card\">\n    <h4><span class=\"orb orb--sm\" style=\"--oc:#a06bff;--oc-rgb:160,107,255\"></span>Section marks</h4>\n    <p style=\"margin:0;color:var(--quiet);font-size:15px\">A 56px orb beside a heading turns a title into a destination. One color per section, in spectrum order.</p>\n  </div>\n  <div class=\"orb-ctx-card\">\n    <h4>App icons</h4>\n    <div style=\"display:flex;gap:16px;align-items:center\">\n      <span class=\"orb orb--glyph orb--icon\" style=\"--oc:#e84fff;--oc-rgb:232,79,255\">\u2726</span>\n      <span class=\"orb orb--glyph orb--icon\" style=\"--oc:#2fe89e;--oc-rgb:47,232,158\">\u25b6</span>\n      <span class=\"orb orb--glyph orb--icon\" style=\"--oc:#ffbf3d;--oc-rgb:255,191,61\">\u25c8</span>\n    </div>\n    <p style=\"margin:14px 0 0;color:var(--quiet);font-size:15px\">64px glyph orbs \u2014 the icon set for rooms and apps.</p>\n  </div>\n</div>\n<button class=\"copy-btn\" onclick=\"copyCode('orbCode')\">Copy orb system</button>\n<pre class=\"code\" id=\"orbCode\">&lt;!-- ORB \u2014 one object, every scale. Set --oc / --oc-rgb to any spectrum color. --&gt;\n&lt;span class=\"orb\" style=\"--oc:#e84fff;--oc-rgb:232,79,255\"&gt;&lt;/span&gt;\n&lt;span class=\"orb orb--sm\" style=\"--oc:#3fb8ff;--oc-rgb:63,184,255\"&gt;&lt;/span&gt; &lt;!-- section mark --&gt;\n&lt;span class=\"orb orb--xs\" style=\"--oc:#2fe89e;--oc-rgb:47,232,158\"&gt;&lt;/span&gt; &lt;!-- bullet --&gt;\n&lt;span class=\"orb orb--black\" style=\"--oc:#ffbf3d;--oc-rgb:255,191,61\"&gt;&lt;/span&gt; &lt;!-- black variant --&gt;\n&lt;span class=\"orb orb--hero\" style=\"--oc:#a06bff;--oc-rgb:160,107,255\"&gt;&lt;/span&gt; &lt;!-- hero: wrap in .orb-hero-wrap for twin orbits --&gt;\n&lt;span class=\"orb orb--glyph\" style=\"--oc:#e84fff;--oc-rgb:232,79,255\"&gt;\u2726&lt;/span&gt; &lt;!-- app icon --&gt;\n&lt;span class=\"orb orb--twin\" style=\"--oc:#2fe89e;--oc-rgb:47,232,158\"&gt;&lt;/span&gt; &lt;!-- twin rings --&gt;\n&lt;button class=\"orb orb--btn\" style=\"--oc:#ffbf3d;--oc-rgb:255,191,61\" aria-label=\"Activate\"&gt;&lt;/button&gt;\n\n&lt;style&gt;\n.orb { --oc:#a06bff; --oc-rgb:160,107,255; position:relative; display:inline-block;\n  width:120px; height:120px; border-radius:50%;\n  background:\n    radial-gradient(circle at 34% 26%, rgba(255,255,255,.95) 0%, rgba(255,255,255,.30) 13%, transparent 30%),\n    radial-gradient(circle at 50% 62%, rgba(255,255,255,.10) 0%, transparent 42%),\n    radial-gradient(circle at 50% 50%, var(--oc) 0%, var(--oc) 56%, #040406 100%);\n  box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.5), inset 0 -12px 24px rgba(0,0,0,.62),\n    0 0 30px rgba(var(--oc-rgb),.55), 0 24px 48px rgba(0,0,0,.65);\n  animation: orb-breathe 5s ease-in-out infinite; }\n.orb::before { /* orbiting ring of light */\n  content:\"\"; position:absolute; inset:-17px; border-radius:50%;\n  background: conic-gradient(from 0deg, transparent 0deg, transparent 282deg,\n    rgba(var(--oc-rgb),.85) 328deg, rgba(255,255,255,.95) 350deg, transparent 360deg);\n  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);\n  -webkit-mask-composite: xor; mask-composite: exclude; padding:3px;\n  animation: orb-spin 6s linear infinite; }\n.orb:hover { transform: translateY(-8px) scale(1.06); }\n.orb:hover::before { animation-duration:1.5s; }\n@keyframes orb-spin { to { transform: rotate(360deg); } }\n@keyframes orb-breathe { 0%,100% { transform:scale(1); } 50% { transform:scale(1.045); } }\n.orb--sm { width:56px; height:56px; } .orb--sm::before { inset:-10px; }\n.orb--xs { width:30px; height:30px; } .orb--xs::before { inset:-7px; }\n.orb--black { background:\n    radial-gradient(circle at 34% 26%, rgba(255,255,255,.55) 0%, transparent 26%),\n    radial-gradient(circle at 50% 55%, #1b1b22 0%, #050507 72%);\n  box-shadow: inset 0 0 0 2px rgba(var(--oc-rgb),.9), 0 0 30px rgba(var(--oc-rgb),.5); }\n/* \u2014 expansion: hero, glyph, twin, pressable \u2014 */\n.orb--hero { width:200px; height:200px; }\n.orb--hero::before { inset:-26px; padding:4px; animation-duration:9s; }\n.orb-hero-wrap { position:relative; display:inline-block; padding:38px; }\n.orb-hero-wrap::before { content:\"\"; position:absolute; inset:0; border-radius:50%; pointer-events:none; opacity:.55;\n  background:conic-gradient(from 180deg, transparent 0deg, transparent 298deg, rgba(255,255,255,.75) 338deg, transparent 360deg);\n  -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);\n  -webkit-mask-composite:xor; mask-composite:exclude; padding:2px;\n  animation:orb-spin-rev 16s linear infinite; }\n@keyframes orb-spin-rev { to { transform:rotate(-360deg); } }\n.orb--twin::after { inset:-30px; left:auto; right:auto; top:auto; bottom:auto; height:auto; border-radius:50%; filter:none; z-index:auto;\n  background:conic-gradient(from 90deg, transparent 0deg, transparent 310deg, rgba(var(--oc-rgb),.6) 345deg, transparent 360deg);\n  -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);\n  -webkit-mask-composite:xor; mask-composite:exclude; padding:2px;\n  animation:orb-spin-rev 11s linear infinite; opacity:.7; }\n.orb--glyph { display:inline-grid; place-items:center; font-size:46px; color:#fff;\n  text-shadow:0 2px 10px rgba(0,0,0,.75), 0 0 22px rgba(var(--oc-rgb),.95); }\n.orb--icon { width:64px; height:64px; font-size:26px; }\n.orb--icon::before { inset:-11px; padding:2px; }\nbutton.orb--btn { cursor:pointer; font-family:inherit; border:none; }\n.orb--btn:active { transform:scale(.9); transition:transform .1s ease; }\n&lt;/style&gt;</pre>\n</div>",
+      "css_classes": [
+        ".lego-section",
+        ".why",
+        ".gem-list",
+        ".gem-bullet"
+      ],
+      "function": "Section shell with a 'Why' rationale block and a gem-bullet list cycling the spectrum. Teaches while it shows.",
+      "props": {
+        "tunable": [
+          "title",
+          "why",
+          "items"
+        ]
+      }
+    },
+    {
+      "naya_id": "jewel.orb-spectrum",
+      "human_label": "Orb spectrum row",
+      "category": "jewel",
+      "source_file": "DESIGN/SPECIMENS/element-sets/jewel-library-n5.html",
+      "source_branch": "nitro/design-specimens-tmp",
+      "html": "<div class=\"orb-row\">\n  <div class=\"orb-wrap\"><span class=\"orb\" style=\"--oc:#e84fff;--oc-rgb:232,79,255\"></span><p class=\"micro\">MAGENTA<small>The living edge</small></p></div>\n  <div class=\"orb-wrap\"><span class=\"orb\" style=\"--oc:#a06bff;--oc-rgb:160,107,255\"></span><p class=\"micro\">PURPLE<small>Naya's presence</small></p></div>\n  <div class=\"orb-wrap\"><span class=\"orb\" style=\"--oc:#3fb8ff;--oc-rgb:63,184,255\"></span><p class=\"micro\">BLUE<small>Knowledge moving</small></p></div>\n  <div class=\"orb-wrap\"><span class=\"orb\" style=\"--oc:#2fe89e;--oc-rgb:47,232,158\"></span><p class=\"micro\">GREEN<small>Alive and well</small></p></div>\n  <div class=\"orb-wrap\"><span class=\"orb\" style=\"--oc:#ffbf3d;--oc-rgb:255,191,61\"></span><p class=\"micro\">GOLD<small>Attention, earned</small></p></div>\n</div>",
+      "css_classes": [
+        ".orb-row",
+        ".orb-wrap",
+        ".orb",
+        ".micro"
+      ],
+      "function": "Five orbs, five spectrum colors in law order. Finished objects of light \u2014 for identity, section marks, truth states.",
+      "props": {
+        "tunable": [
+          "colors"
+        ]
+      }
+    },
+    {
+      "naya_id": "jewel.gem-bullets",
+      "human_label": "Gem bullets",
+      "category": "jewel",
+      "source_file": "DESIGN/SPECIMENS/element-sets/jewel-library-n5.html",
+      "source_branch": "nitro/design-specimens-tmp",
+      "html": "<ul class=\"gem-list\">\n  <li><span class=\"gem-bullet\" style=\"--tone:var(--magenta)\"></span>Color has four jobs. Never cross them.</li>\n  <li><span class=\"gem-bullet\" style=\"--tone:var(--purple)\"></span>Black heart. White voice. Visible skin.</li>\n  <li><span class=\"gem-bullet\" style=\"--tone:var(--blue)\"></span>One board. One color. A destination you enter.</li>\n  <li><span class=\"gem-bullet\" style=\"--tone:var(--green)\"></span>Size separates. Color doesn't.</li>\n  <li><span class=\"gem-bullet\" style=\"--tone:var(--gold)\"></span>Every bullet a jewel. Never twice in a row.</li>\n</ul>",
+      "css_classes": [
+        ".gem-list",
+        ".gem-bullet"
+      ],
+      "function": "Bullets as drawn jewels: rotated 45\u00b0, white-to-color gradient, glowing. Cycle magenta \u2192 purple \u2192 blue \u2192 green \u2192 gold, never twice adjacent.",
+      "props": {
+        "tunable": [
+          "tone",
+          "items"
+        ]
+      }
+    },
+    {
+      "naya_id": "typography.law-scale",
+      "human_label": "Law type scale rows",
+      "category": "typography",
+      "source_file": "DESIGN/SPECIMENS/element-sets/epic-elements-lego-n5.html",
+      "source_branch": "nitro/design-specimens-tmp",
+      "html": "<div class=\"type-spec\"><div class=\"t-label micro\">DISPLAY \u00b7 64 \u00b7 heroes only</div><div class=\"type-64\">The page breathes.</div></div>",
+      "css_classes": [
+        ".type-spec",
+        ".t-label",
+        ".micro",
+        ".type-64",
+        ".type-40",
+        ".type-24",
+        ".type-18",
+        ".type-14"
+      ],
+      "function": "The voice scale: size separates, color never does. Display 64 / Chapter 40 / Headline 24 / Body 18 / Small 14.",
+      "props": {
+        "tunable": [
+          "level",
+          "sample_text"
+        ]
+      }
+    },
+    {
+      "naya_id": "footer.real",
+      "human_label": "Real page footer",
+      "category": "footer",
+      "source_file": "DESIGN/SPECIMENS/page-specimens/naya-smart-blocks.html",
+      "source_branch": "nitro/design-specimens-tmp",
+      "html": "<footer class=\"naya-footer\">\n        <div class=\"naya-footer-inner\">\n          <div><div class=\"naya-footer-brand\">NayaNET</div><p class=\"naya-footer-tag\">Intelligence you can hold. Built to compound, designed to disappear.</p></div>\n          <div><h4>Build</h4><a href=\"#buttons\">Buttons</a><a href=\"#cards\">Cards</a><a href=\"#new\">New P0</a></div>\n          <div><h4>Learn</h4><a href=\"#data\">Data</a><a href=\"#specialty\">Specialty</a><a href=\"#overlays\">Overlays</a></div>\n          <div><h4>Go</h4><a href=\"#navigation\">Navigation</a><a href=\"#inputs\">Inputs</a><a href=\"#media\">Media</a></div>\n        </div>\n        <div class=\"naya-footer-base\"><span>\u00a9 2026 NayaNET \u2014 black is the suit.</span><span>Made of light, kept honest.</span></div>\n      </footer>",
+      "css_classes": [
+        ".naya-footer",
+        ".naya-footer-inner",
+        ".naya-footer-brand",
+        ".naya-footer-tag",
+        ".naya-footer-base"
+      ],
+      "function": "The bottom of every page: brand, invitation, the map, and the quiet line that says who made this.",
+      "props": {
+        "tunable": [
+          "brand",
+          "columns",
+          "base_line"
+        ]
+      }
+    },
+    {
+      "naya_id": "footer.spectrum-close",
+      "human_label": "Spectrum close footer",
+      "category": "footer",
+      "source_file": "DESIGN/SPECIMENS/element-sets/epic-elements-lego-n5.html",
+      "source_branch": "nitro/design-specimens-tmp",
+      "html": "<footer>\n  <div class=\"spectrum-bar\"><span></span><span></span><span></span><span></span><span></span></div>\n  <p>THE NAYA ULTIMATE LEGO LIBRARY \u00b7 One standard. Every page. No drift.</p>\n  <p class=\"micro\" style=\"margin-top:8px\">Black ground \u00b7 White light \u00b7 Purple soul \u00b7 Magenta leads</p>\n  <p class=\"micro\" style=\"margin-top:16px\">Your idea. Your intelligence. Your Smart App. Your internet, your way.</p>\n</footer>",
+      "css_classes": [
+        ".spectrum-bar",
+        ".micro"
+      ],
+      "function": "Spectrum-bar close: five-light strip, truth lines, the closing word. The signature end-of-page.",
+      "props": {
+        "tunable": [
+          "lines"
+        ]
+      }
+    },
+    {
+      "naya_id": "feedback.checklist-item",
+      "human_label": "Pre-ship checklist item",
+      "category": "feedback",
+      "source_file": "DESIGN/SPECIMENS/element-sets/elements-n2.html",
+      "source_branch": "nitro/design-specimens-tmp",
+      "html": "<label class=\"check\" style=\"--cc:#9d75ff\"><input type=\"checkbox\"><span>White edge light is visible on every card and button at rest</span></label>",
+      "css_classes": [
+        ".checks",
+        ".check"
+      ],
+      "function": "A pre-ship checklist item: checkbox in its own accent color, honest text. All six, or it doesn't ship.",
+      "props": {
+        "tunable": [
+          "label",
+          "accent_color"
+        ]
+      }
+    },
+    {
+      "naya_id": "layout.section-number-kicker",
+      "human_label": "Section number + kicker header",
+      "category": "layout",
+      "source_file": "DESIGN/SPECIMENS/element-sets/epic-elements-lego-n5.html",
+      "source_branch": "nitro/design-specimens-tmp",
+      "html": "<p class=\"kicker\">04 \u00b7 A world, not a rectangle</p>\n  <h2><span class=\"n\">04</span>One board. One color. A destination you enter.</h2>\n  <p class=\"lede\">The board is the intelligent object: <strong>theme-edged, jewel-marked, elevated.</strong> One spectrum color per board \u2014 spine, kicker, corner jewel all speak it. Text stays white. Inside, meaning nests: the nutshell, then what it means, how to use it.</p>",
+      "css_classes": [
+        ".kicker",
+        ".n",
+        ".lede"
+      ],
+      "function": "The standard section opener: spectrum kicker with number, serif headline, explanatory lede. Every section starts here.",
+      "props": {
+        "tunable": [
+          "number",
+          "kicker",
+          "headline",
+          "lede"
+        ]
+      }
+    },
+    {
+      "naya_id": "layout.three-tongue",
+      "human_label": "Three-tongue law cards",
+      "category": "layout",
+      "source_file": "DESIGN/SPECIMENS/page-specimens/naya-smart-blocks.html",
+      "source_branch": "nitro/design-specimens-tmp",
+      "html": "<div class=\"tongues\">\n      <div class=\"tongue\" style=\"--tc3:var(--soul)\"><h3>Machine \u00b7 normative</h3><ul><li><span class=\"jw\" style=\"--j:var(--magenta)\">\u25c6</span>idle.glow_max_px \u2264 18</li><li><span class=\"jw\" style=\"--j:var(--soul)\">\u25c6</span>rest.chrome = silver</li></ul></div>\n      <div class=\"tongue\" style=\"--tc3:var(--emerald)\"><h3>AI \u00b7 operational</h3><ul><li><span class=\"jw\" style=\"--j:var(--emerald)\">\u25c6</span>Glow only where a value is earned</li><li><span class=\"jw\" style=\"--j:var(--emerald)\">\u25c6</span>White at rest, color on touch</li></ul></div>\n      <div class=\"tongue\" style=\"--tc3:var(--gold)\"><h3>Human \u00b7 plain words</h3><ul><li><span class=\"jw\" style=\"--j:var(--gold)\">\u25c6</span>Calm until you need it excited</li><li><span class=\"jw\" style=\"--j:var(--gold)\">\u25c6</span>Expensive, not loud</li></ul></div>\n    </div>",
+      "css_classes": [
+        ".tongues",
+        ".tongue",
+        ".jw"
+      ],
+      "function": "One law in three tongues: Machine (normative), AI (operational), Human (plain words). The one contract, three voices.",
+      "props": {
+        "tunable": [
+          "accent_color",
+          "tounges"
+        ]
+      }
+    },
+    {
+      "naya_id": "layout.nest-cards",
+      "human_label": "Nested meaning cards",
+      "category": "layout",
+      "source_file": "DESIGN/SPECIMENS/page-specimens/naya-smart-blocks.html",
+      "source_branch": "nitro/design-specimens-tmp",
+      "html": "<div class=\"nest\">\n      <div class=\"nestcard\"><p class=\"nk\" style=\"--nc:var(--soul)\"><span class=\"ndot\"></span>In a nutshell</p><p>Capture the essence. Verify the result. Let the next moment benefit.</p></div>\n      <div class=\"nestcard\"><p class=\"nk\" style=\"--nc:var(--emerald)\"><span class=\"ndot\"></span>What it means</p><p>A lesson that stays learned is worth ten that were merely stored.</p></div>\n    </div>",
+      "css_classes": [
+        ".nest",
+        ".nestcard",
+        ".nk",
+        ".ndot"
+      ],
+      "function": "Nested meaning: In a nutshell \u2192 What it means \u2192 How to use it. Elevation rises as meaning deepens.",
+      "props": {
+        "tunable": [
+          "accent_color",
+          "layers"
+        ]
+      }
+    },
+    {
+      "naya_id": "layout.segmented-control",
+      "human_label": "Segmented control",
+      "category": "layout",
+      "source_file": "DESIGN/SPECIMENS/page-specimens/naya-smart-blocks.html",
+      "source_branch": "nitro/design-specimens-tmp",
+      "html": "<div class=\"segmented\" role=\"tablist\" aria-label=\"Voice\">\n        <button role=\"tab\" aria-selected=\"true\">Human</button>\n        <button role=\"tab\" aria-selected=\"false\">Naya</button>\n        <button role=\"tab\" aria-selected=\"false\">Machine</button>\n      </div>",
+      "css_classes": [
+        ".segmented"
+      ],
+      "function": "Switch the lens, never the page: Human / Naya / Machine voice tabs in one control.",
+      "props": {
+        "tunable": [
+          "segments",
+          "selected"
+        ]
+      }
+    },
+    {
+      "naya_id": "layout.template-grid",
+      "human_label": "Card grid (template wall)",
+      "category": "layout",
+      "source_file": "DESIGN/SPECIMENS/page-specimens/naya-smart-blocks.html",
+      "source_branch": "nitro/design-specimens-tmp",
+      "html": "<div class=\"typecards\">\n      <div class=\"typecard\" style=\"--tc:var(--soul)\"><p class=\"tk\">Headline \u00b7 24px</p><p style=\"font-family:var(--voice);font-size:24px;color:#fff;margin:0;line-height:1.35\">Your intelligence, collected.</p><p style=\"font-size:14px;color:var(--ink-dim);margin:14px 0 0\">Serif voice. Light-carved. It leads, never shouts.</p></div>\n      <div class=\"typecard\" style=\"--tc:var(--emerald)\"><p class=\"tk\">Body \u00b7 18px</p><p style=\"font-size:18px;color:#fff;margin:0;line-height:1.5\">The quick brown fox of interface copy.</p><p style=\"font-size:14px;color:var(--ink-dim);margin:14px 0 0\">Detail sits at 14px \u2014 quiet, legible, honest.</p></div>\n    </div>",
+      "css_classes": [
+        ".typecards",
+        ".typecard",
+        ".tk"
+      ],
+      "function": "The template-wall pattern: a responsive card grid. Used for the gallery \u2014 one card per template or example.",
+      "props": {
+        "tunable": [
+          "items"
+        ]
+      }
+    }
+  ]
+}

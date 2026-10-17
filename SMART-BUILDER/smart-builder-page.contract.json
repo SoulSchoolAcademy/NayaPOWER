@@ -1,0 +1,110 @@
+{
+  "contract_version": "1.0",
+  "page": {
+    "title": "Smart Builder \u2014 build your Naya app",
+    "topic": "The page where anyone builds a Naya app: pick a template or build custom, all from our pieces library.",
+    "category": "builder",
+    "slug": "smart-builder"
+  },
+  "pwa": {
+    "installable": true,
+    "icon": "naya-created"
+  },
+  "sections": [
+    {
+      "section_id": "hero",
+      "heading": "Build your Naya app",
+      "body": "Pick a template or build custom \u2014 every piece below is real, working, and yours to compose.",
+      "pieces": [
+        "hero.naya-entrance"
+      ],
+      "function": "entry CTA scrolls to the template gallery"
+    },
+    {
+      "section_id": "template-gallery",
+      "heading": "Twelve templates, pre-done",
+      "body": "Pick one, tweak it, build. The flagship personal page first \u2014 your world in one page.",
+      "pieces": [
+        "layout.template-grid",
+        "template.personal-page",
+        "template.business-landing",
+        "template.booking",
+        "template.product-page",
+        "template.portfolio",
+        "template.event",
+        "template.menu-price-list",
+        "template.community-hub",
+        "template.signup",
+        "template.dashboard-tracker",
+        "template.personal-smart-hub",
+        "template.business-smart-hub"
+      ],
+      "function": "template pick opens the notes + part-swap step"
+    },
+    {
+      "section_id": "parts-gallery",
+      "heading": "Every piece in the library",
+      "body": "The full inventory \u2014 buttons, boards, banners, cards. What you see is what builds.",
+      "pieces": [
+        "layout.three-tongue",
+        "card.law-cards"
+      ],
+      "function": "browse only"
+    },
+    {
+      "section_id": "search",
+      "heading": "Find any piece",
+      "body": "Type 'buttons' \u2014 all the buttons come up. Filter by style and color.",
+      "pieces": [
+        "input.search-field"
+      ],
+      "function": "live filters the parts gallery"
+    },
+    {
+      "section_id": "custom-builder",
+      "heading": "Build from scratch",
+      "body": "Choose every part yourself. Most will pick a template \u2014 the custom path is here for those who want it.",
+      "pieces": [
+        "board.elevated"
+      ],
+      "function": "opens the part picker"
+    },
+    {
+      "section_id": "notes",
+      "heading": "Make it yours with notes",
+      "body": "Swap to button XYZ. This one in gold. Or just say: give me the functionality, make it personal to me.",
+      "pieces": [
+        "input.recessed-field"
+      ],
+      "function": "notes ride the contract into the build"
+    },
+    {
+      "section_id": "functions",
+      "heading": "Standard functions, on by default",
+      "body": "Smart mail, spaces, posting, personal reports, intelligence-today, contacts, smart tabs \u2014 every page ships with them. Toggle what you don't want.",
+      "pieces": [
+        "card.job-grid",
+        "board.layered-intelligence"
+      ],
+      "function": "function toggles"
+    },
+    {
+      "section_id": "hub-format",
+      "heading": "Your personal hub",
+      "body": "Picture and cover photo at top \u2014 then your world. Private by default; sharing to NayaNET is your choice.",
+      "pieces": [
+        "hero.vessel-orb"
+      ],
+      "function": "cover photo upload slot"
+    }
+  ],
+  "functions_default": [
+    "mail",
+    "posting",
+    "spaces",
+    "reports"
+  ],
+  "deploy": {
+    "target": "subdomain-preview"
+  }
+}
