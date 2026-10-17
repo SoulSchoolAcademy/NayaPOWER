@@ -1,0 +1,432 @@
+{
+  "field_semantics": {
+    "change_specific": "True iff the workflow has a path-filtered push-to-main trigger: its firing is attributable to the changed files, so its production consequences are the change's jurisdiction.",
+    "production_consequential": "Property of the WORKFLOW, independent of trigger shape: True iff the workflow, when triggered, executes production-consequential actions (OIDC-minted live-runtime invocation, production ref writes, production promotion).",
+    "reviewed_at": "Date a human last reviewed this file's classification against its exact bytes (sha256). Reset to null by --emit-manifest whenever the bytes change.",
+    "standing_ratification": "Required when a workflow is production_consequential AND fires on unfiltered push-to-main (standing pipeline): the recorded authority for its standing production execution. status=RATIFIED (ratification document in-tree) or PLACEMENT_ONLY (director-placed bytes, no separate ratification document found \u2014 explicit, reviewable). workflow_run-only production workflows inherit authorization from their change-specific chain root."
+  },
+  "generated_by": "tools/trigger_chain_jurisdiction.py --emit-manifest",
+  "repo": "SoulSchoolAcademy/NayaPOWER",
+  "rule": "change-specific = path-filtered push-to-main triggers + workflow_run descendants; every-push workflows are the standing pipeline and cannot smuggle jurisdiction. Two enforcement layers: (1) the verdict gates each change's change-specific production chain; (2) the manifest curates EVERY push-to-main workflow, so the class cannot silently grow \u2014 an unfiltered production workflow without a standing_ratification record fails the freshness test. pull_request_target triggers are a different trigger class (PR-time, base-repo context with secrets) and are out of scope for this push-to-main gate.",
+  "version": 2,
+  "workflows": {
+    "activation-delivery-gate.yml": {
+      "change_specific": false,
+      "evidence": "UNCLASSIFIED \u2014 curate before CI can pass",
+      "production_consequential": null,
+      "push_main": false,
+      "push_path_filters": null,
+      "reviewed_at": "2026-10-12",
+      "sha256": "c758801fce6fc412579f4cfbd1676c34ce38a45fed977b62a508c678da530b3f",
+      "standing_ratification": null,
+      "workflow_name": "Activation Delivery Gate",
+      "workflow_run_parents": []
+    },
+    "activation-mint.yml": {
+      "change_specific": false,
+      "evidence": "UNCLASSIFIED \u2014 curate before CI can pass",
+      "production_consequential": null,
+      "push_main": false,
+      "push_path_filters": null,
+      "reviewed_at": "2026-10-12",
+      "sha256": "168d83c00c0656dcc24215f444c027006eb8873e2a8150e903ce7021d16f219a",
+      "standing_ratification": null,
+      "workflow_name": "Activation Mint",
+      "workflow_run_parents": []
+    },
+    "activity-feed.yml": {
+      "change_specific": false,
+      "evidence": "UNCLASSIFIED \u2014 curate before CI can pass",
+      "production_consequential": null,
+      "push_main": false,
+      "push_path_filters": null,
+      "reviewed_at": "2026-10-12",
+      "sha256": "46ea0b5f79325b0b752c9c3a9979e1d1750b99d7df9b142acbd3d9e6dbc7a0a8",
+      "standing_ratification": null,
+      "workflow_name": "Activity Feed Projection",
+      "workflow_run_parents": []
+    },
+    "collective-chain-readiness-gate.yml": {
+      "change_specific": false,
+      "evidence": "unfiltered push-to-main (standing pipeline): readiness check only; no OIDC mint, no runtime invoke, no writes (verified live bytes).",
+      "production_consequential": false,
+      "push_main": true,
+      "push_path_filters": null,
+      "reviewed_at": "2026-10-12",
+      "sha256": "b16c3b100aa68890f62afee1355bcd05914f7f1173ac903b16cc7f873d054f18",
+      "standing_ratification": null,
+      "workflow_name": "Collective Chain Readiness Gate",
+      "workflow_run_parents": []
+    },
+    "current-truth-resolver.yml": {
+      "change_specific": true,
+      "evidence": "path-triggered on BRAIN/** etc.: collects GitHub evidence, resolves truth locally, publishes to the job summary. No live-runtime invoke, no ref writes.",
+      "production_consequential": false,
+      "push_main": true,
+      "push_path_filters": [
+        "BRAIN/**",
+        "NAYANODE/0014-CURRENT-REALITY-CONTRACT-V1.md",
+        "tools/current_truth_resolver.py",
+        ".github/workflows/current-truth-resolver.yml"
+      ],
+      "reviewed_at": "2026-10-12",
+      "sha256": "4938e6e4f9032de8d597432e0f2f290b89d5cca8369f9dde2115617be16624b0",
+      "standing_ratification": null,
+      "workflow_name": "Current Truth Resolver",
+      "workflow_run_parents": []
+    },
+    "design-gate.yml": {
+      "change_specific": false,
+      "evidence": "unfiltered push-to-main (standing pipeline): design check only; no OIDC mint, no runtime invoke, no writes (verified live bytes).",
+      "production_consequential": false,
+      "push_main": true,
+      "push_path_filters": null,
+      "reviewed_at": "2026-10-12",
+      "sha256": "18d7207e372069e2d60153e3fb07dba8de57621ad80747183efd51f46b8c2b7d",
+      "standing_ratification": null,
+      "workflow_name": "Design Gate",
+      "workflow_run_parents": []
+    },
+    "doc-completeness-gate.yml": {
+      "change_specific": true,
+      "evidence": "path-triggered on .naya/capture/** + BRAIN/01-GOVERNANCE/**: read-only completeness check. No OIDC mint, no runtime invoke.",
+      "production_consequential": false,
+      "push_main": true,
+      "push_path_filters": [
+        ".naya/capture/**",
+        "BRAIN/01-GOVERNANCE/**"
+      ],
+      "reviewed_at": "2026-10-12",
+      "sha256": "3af61dfca5898a53ddfdd810b1149a1485ebf7ea98b8ad573efa2a17bba4d7f4",
+      "standing_ratification": null,
+      "workflow_name": "doc-completeness-gate",
+      "workflow_run_parents": []
+    },
+    "governed-supabase-production-deploy.yml": {
+      "change_specific": false,
+      "evidence": "UNFILTERED push-to-main: on push (not only dispatch) it takes PROMOTION_MODE=STANDING_POLICY and can auto-promote main->production under the ratified standing policy (step 'Enforce ratified standing policy before automatic promotion' asserts RATIFIED status, then promotes subject to preconditions). Production-consequential; unfiltered, so it is standing pipeline rather than change-specific.",
+      "production_consequential": true,
+      "push_main": true,
+      "push_path_filters": null,
+      "reviewed_at": "2026-10-12",
+      "sha256": "380d41e37160020924139726ec6a210fcfdd07dbae2232640b512b32ff64cfb9",
+      "standing_ratification": {
+        "authority": "HUMAN_DIRECTOR",
+        "basis": "STANDING-PRODUCTION-PROMOTION-V1: status RATIFIED, authority HUMAN_DIRECTOR, constitutional amendment STANDING-PRODUCTION-AUTHORIZATION-AMENDMENT-V1; automatic execution true, fail_mode FAIL_CLOSED on unmet preconditions.",
+        "ratified_at": "2026-09-29",
+        "record": ".naya/governance/STANDING-PRODUCTION-PROMOTION-V1.json",
+        "status": "RATIFIED"
+      },
+      "workflow_name": "Governed Production Promotion",
+      "workflow_run_parents": []
+    },
+    "kernel-tests.yml": {
+      "change_specific": false,
+      "evidence": "unfiltered push-to-main (standing pipeline): runs node --test and pytest; no OIDC mint, no runtime invoke, no writes (verified live bytes). This is the workflow that executes the pytest gate below.",
+      "production_consequential": false,
+      "push_main": true,
+      "push_path_filters": null,
+      "reviewed_at": "2026-10-12",
+      "sha256": "271d113f28c4c4c945ea2bcd498df3a362ac06323da242007b433e1c2862a51a",
+      "standing_ratification": null,
+      "workflow_name": "Kernel Tests",
+      "workflow_run_parents": []
+    },
+    "live-act-proof.yml": {
+      "change_specific": true,
+      "evidence": "path-triggered on act/law/know runtime paths, but the consequential job (law-to-act, mode:execute naya_node_apply) is gated on needs.preflight.outputs.eligible == 'true' (fail-closed preflight); the unconditional job (independent-act-verification) only inspects / rereads (mode:inspect-plan, reread) \u2014 no state-changing runtime call.",
+      "production_consequential": false,
+      "push_main": true,
+      "push_path_filters": [
+        "supabase/functions/nayanet-act-runtime/**",
+        "supabase/functions/nayanet-law-runtime/**",
+        "supabase/functions/nayanet-know-runtime/**",
+        "supabase/functions/_shared/connect_selector.ts",
+        "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-ACT.json",
+        "BRAIN/10-INTERFACES/0002-SMART-DOOR-REGISTRY-V1.json",
+        ".github/workflows/live-act-proof.yml"
+      ],
+      "reviewed_at": "2026-10-12",
+      "sha256": "28d7dbf1ddb3e70f7f88e37b0f94f9a9e18c87b1d9770f6aaa4576cce0b3d424",
+      "standing_ratification": null,
+      "workflow_name": "Live ACT Node Proof",
+      "workflow_run_parents": []
+    },
+    "live-connect-proof.yml": {
+      "change_specific": false,
+      "evidence": "UNCLASSIFIED \u2014 curate before CI can pass",
+      "production_consequential": null,
+      "push_main": false,
+      "push_path_filters": null,
+      "reviewed_at": "2026-10-12",
+      "sha256": "905710ab4bc3e6987d3e1dc5969f79bd2a7cd876e1e9347001ae1e1824fa7f6c",
+      "standing_ratification": null,
+      "workflow_name": "Live CONNECT Graph Proof",
+      "workflow_run_parents": []
+    },
+    "live-cvo-runtime-proof.yml": {
+      "change_specific": false,
+      "evidence": "UNFILTERED push-to-main: on EVERY main push the cvo-runtime job mints a GitHub OIDC runtime identity and POSTs {\"mode\":\"cvo\"} to the LIVE Supabase runtime, asserting production_action_executed is True (live bytes lines 24-63). Production-consequential by the same bar as live-intelligence-commit-proof; unfiltered, so it is standing pipeline rather than change-specific.",
+      "production_consequential": true,
+      "push_main": true,
+      "push_path_filters": null,
+      "reviewed_at": "2026-10-12",
+      "sha256": "ad04c16f000d92ef6d862c2cda7881a5ffa7f7d788a0b5f0850a4c472ed762f2",
+      "standing_ratification": {
+        "authority": "HUMAN_DIRECTOR",
+        "basis": "Workflow placed by the human director's manual click under the standing human-only-workflows law; the on-push live-runtime execution is in the placed bytes. Standing operation under the NayaPOWER Operation Protocol (Shawn, 2026-10-11). No separate ratification document for the standing production execution was found in-tree as of 2026-10-12.",
+        "status": "PLACEMENT_ONLY"
+      },
+      "workflow_name": "Live CVO Runtime Proof",
+      "workflow_run_parents": []
+    },
+    "live-intelligence-commit-proof.yml": {
+      "change_specific": true,
+      "evidence": "push(main, paths .naya/capture/**): fresh-lesson job mints GitHub OIDC runtime identity (ACTIONS_ID_TOKEN_REQUEST_URL) and POSTs to the live Supabase runtime function; permissions contents:write; workflow_run descendant live-supabase-runtime-proof executes live runtime too. No fail-closed precondition on the push path (only a head_commit.message dedup guard).",
+      "production_consequential": true,
+      "push_main": true,
+      "push_path_filters": [
+        ".naya/capture/**"
+      ],
+      "reviewed_at": "2026-10-12",
+      "sha256": "ee9971ab9f1df087c210b1020d6747cd45ddf0e4ef5cf8506af9999e84364c7c",
+      "standing_ratification": null,
+      "workflow_name": "Live Intelligence Commit Proof",
+      "workflow_run_parents": []
+    },
+    "live-know-proof.yml": {
+      "change_specific": false,
+      "evidence": "UNCLASSIFIED \u2014 curate before CI can pass",
+      "production_consequential": null,
+      "push_main": false,
+      "push_path_filters": null,
+      "reviewed_at": "2026-10-12",
+      "sha256": "0eb95dc60804e36a2e1adfe2d49582c28a6003636e1b1961a50ae39e6381d31d",
+      "standing_ratification": null,
+      "workflow_name": "Live KNOW Node Proof",
+      "workflow_run_parents": []
+    },
+    "live-law-proof.yml": {
+      "change_specific": true,
+      "evidence": "path-triggered on law-runtime paths, but its jobs only POST read-only modes (evaluate, verify_existing_action) to the runtime \u2014 authorization evaluation, no commit/deploy/ref writes.",
+      "production_consequential": false,
+      "push_main": true,
+      "push_path_filters": [
+        "supabase/functions/nayanet-law-runtime/**",
+        "BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.*",
+        "BRAIN/02-ARCHITECTURE/0003-NINE-NODE-ORGANISM-MAP-V1.*",
+        "BRAIN/10-INTERFACES/0001-SMART-DOOR-CONTRACT-V1.*",
+        "BRAIN/10-INTERFACES/0002-SMART-DOOR-REGISTRY-V1.json",
+        "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-LAW.json",
+        ".github/workflows/live-law-proof.yml"
+      ],
+      "reviewed_at": "2026-10-12",
+      "sha256": "f12b6c5ff8940913aa295c54f5219b844b828de6cf51121c01e723f76a3d2ca1",
+      "standing_ratification": null,
+      "workflow_name": "Live LAW Node Proof",
+      "workflow_run_parents": []
+    },
+    "live-prove-proof.yml": {
+      "change_specific": false,
+      "evidence": "UNCLASSIFIED \u2014 curate before CI can pass",
+      "production_consequential": null,
+      "push_main": false,
+      "push_path_filters": null,
+      "reviewed_at": "2026-10-12",
+      "sha256": "2a5df4518cfcc8058c929b384fb1b04ddda1a2d02aba364f86f958e250f0be01",
+      "standing_ratification": null,
+      "workflow_name": "Live PROVE Node Proof",
+      "workflow_run_parents": []
+    },
+    "live-supabase-runtime-proof.yml": {
+      "change_specific": false,
+      "evidence": "CHAINED via workflow_run on 'Live Intelligence Commit Proof': mints OIDC runtime identities and executes cold Naya runtime / CONNECT runtime / causal experiments against the live runtime. Authorized via the root workflow's deploy authorization.",
+      "production_consequential": true,
+      "push_main": false,
+      "push_path_filters": null,
+      "reviewed_at": "2026-10-12",
+      "sha256": "d433e36bc956789ae025fd4162befb71d60e07eced9051d1076c7a8a46070a4e",
+      "standing_ratification": null,
+      "workflow_name": "Live Supabase Runtime Proof",
+      "workflow_run_parents": [
+        "Live Intelligence Commit Proof"
+      ]
+    },
+    "live-verified-ai-action-proof.yml": {
+      "change_specific": false,
+      "evidence": "fires on every push to main (standing pipeline) AND its consequential jobs (authorized-action, authority-absent-refusal, idempotency) are gated on needs.preflight.outputs.eligible == 'true' \u2014 skipped by design unless parity-eligible. GATED.",
+      "production_consequential": false,
+      "push_main": true,
+      "push_path_filters": null,
+      "reviewed_at": "2026-10-12",
+      "sha256": "dd81d46d738926768290cae36c2aec1d1698f32f8e7b2b7daa19a54340000832",
+      "standing_ratification": null,
+      "workflow_name": "Live Verified AI Action Proof",
+      "workflow_run_parents": []
+    },
+    "merge-consensus-gate.yml": {
+      "change_specific": false,
+      "evidence": "UNCLASSIFIED \u2014 curate before CI can pass",
+      "production_consequential": null,
+      "push_main": false,
+      "push_path_filters": null,
+      "reviewed_at": "2026-10-12",
+      "sha256": "4786c610d1782af7e5dbb17263f069b166da1083d618f67e909121c3692cb119",
+      "standing_ratification": null,
+      "workflow_name": "Merge consensus gate",
+      "workflow_run_parents": []
+    },
+    "mission-state-watch.yml": {
+      "change_specific": false,
+      "evidence": "UNCLASSIFIED \u2014 curate before CI can pass",
+      "production_consequential": null,
+      "push_main": false,
+      "push_path_filters": null,
+      "reviewed_at": "2026-10-12",
+      "sha256": "e2cd946d56ba9e68560cfc0e8f3cc2562ead9a03c048771b3da41537b8d80c7a",
+      "standing_ratification": null,
+      "workflow_name": "Mission State Watch",
+      "workflow_run_parents": []
+    },
+    "nayanet-agent-capture.yml": {
+      "change_specific": false,
+      "evidence": "UNCLASSIFIED \u2014 curate before CI can pass",
+      "production_consequential": null,
+      "push_main": false,
+      "push_path_filters": null,
+      "reviewed_at": "2026-10-12",
+      "sha256": "09d47b9705b920a935aa6a64005eef773360f6057d601d00e569a6abfeded673",
+      "standing_ratification": null,
+      "workflow_name": "NayaNET Agent Capture",
+      "workflow_run_parents": []
+    },
+    "protocol-gates.yml": {
+      "change_specific": false,
+      "evidence": "unfiltered push-to-main (standing pipeline): protocol checks; no OIDC mint, no runtime invoke, no writes (verified live bytes).",
+      "production_consequential": false,
+      "push_main": true,
+      "push_path_filters": null,
+      "reviewed_at": "2026-10-12",
+      "sha256": "44a3f8b87cdf3928936acbd380ff3dc6a2015b2f414ebb3a03f772870d0b2e58",
+      "standing_ratification": null,
+      "workflow_name": "Protocol Gates",
+      "workflow_run_parents": []
+    },
+    "protocol-watchdog.yml": {
+      "change_specific": false,
+      "evidence": "UNCLASSIFIED \u2014 curate before CI can pass",
+      "production_consequential": null,
+      "push_main": false,
+      "push_path_filters": null,
+      "reviewed_at": "2026-10-12",
+      "sha256": "561232db93c2743f40a557be6fd8b32792912a2d5af136a5afa36df44b092488",
+      "standing_ratification": null,
+      "workflow_name": "Protocol Watchdog",
+      "workflow_run_parents": []
+    },
+    "ratified-guard.yml": {
+      "change_specific": false,
+      "evidence": "unfiltered push-to-main (standing pipeline): ratified-object deletion guard; no OIDC mint, no runtime invoke, no writes (verified live bytes).",
+      "production_consequential": false,
+      "push_main": true,
+      "push_path_filters": null,
+      "reviewed_at": "2026-10-12",
+      "sha256": "dc72055489db0ca2303ccd7d533776eb0a0a51d37f7b872f2d501944a3903644",
+      "standing_ratification": null,
+      "workflow_name": "Ratified Guard",
+      "workflow_run_parents": []
+    },
+    "receipt-gate.yml": {
+      "change_specific": false,
+      "evidence": "UNCLASSIFIED \u2014 curate before CI can pass",
+      "production_consequential": null,
+      "push_main": false,
+      "push_path_filters": null,
+      "reviewed_at": "2026-10-12",
+      "sha256": "f4d4d92ea38604b40ff382de2abb1b3cf86f34e3f10357d82cb60a7fc76978a7",
+      "standing_ratification": null,
+      "workflow_name": "Receipt pin gate",
+      "workflow_run_parents": []
+    },
+    "safety-grant-gate.yml": {
+      "change_specific": false,
+      "evidence": "unfiltered push-to-main (standing pipeline): anonymous-grant allowlist check; no OIDC mint, no runtime invoke, no writes (verified live bytes).",
+      "production_consequential": false,
+      "push_main": true,
+      "push_path_filters": null,
+      "reviewed_at": "2026-10-12",
+      "sha256": "c4ebc5e39e8e1d46a429e10e0580d841e39985793f5099411b73eaa3547dd302",
+      "standing_ratification": null,
+      "workflow_name": "Safety Grant Gate",
+      "workflow_run_parents": []
+    },
+    "spec-integrity.yml": {
+      "change_specific": false,
+      "evidence": "unfiltered push-to-main (standing pipeline): spec pin check; no OIDC mint, no runtime invoke, no writes (verified live bytes).",
+      "production_consequential": false,
+      "push_main": true,
+      "push_path_filters": null,
+      "reviewed_at": "2026-10-12",
+      "sha256": "ebba553d7949901c2a04af00625e279eda44679d030844d2b7cb1ccb1c1f7067",
+      "standing_ratification": null,
+      "workflow_name": "Spec Integrity",
+      "workflow_run_parents": []
+    },
+    "trigger-chain-jurisdiction.yml": {
+      "change_specific": false,
+      "evidence": "unfiltered push-to-main (standing pipeline): this gate itself \u2014 runs the trigger-chain script read-only and fails the check on BLOCK. No OIDC mint, no runtime invoke, no writes (verified live bytes 2026-10-12).",
+      "production_consequential": false,
+      "push_main": true,
+      "push_path_filters": null,
+      "reviewed_at": "2026-10-12",
+      "sha256": "7048926d795619189be1c04aa675ecaadb0ce689c4aa7c83730a2372a1e27f3c",
+      "standing_ratification": null,
+      "workflow_name": "Trigger-Chain Jurisdiction Gate",
+      "workflow_run_parents": []
+    },
+    "unified-activation-gate.yml": {
+      "change_specific": false,
+      "evidence": "UNCLASSIFIED \u2014 curate before CI can pass",
+      "production_consequential": null,
+      "push_main": false,
+      "push_path_filters": null,
+      "reviewed_at": "2026-10-12",
+      "sha256": "6185a0282f5462ef6301169dba192d62cbb7ac4e07b9895741e69a429e5dced4",
+      "standing_ratification": null,
+      "workflow_name": "Unified Activation Gate",
+      "workflow_run_parents": []
+    },
+    "wo3-admission-gate-proof.yml": {
+      "change_specific": false,
+      "evidence": "UNCLASSIFIED \u2014 curate before CI can pass",
+      "production_consequential": null,
+      "push_main": false,
+      "push_path_filters": [
+        "supabase/functions/nayanet-learning-verify/**",
+        "tools/learning_admission_gate.py",
+        "tests/test_learning_admission_gate.py",
+        "tests/gen_admission_fixtures.py",
+        "tests/parity_check.mjs",
+        "tests/wo3_proof.mjs",
+        ".github/workflows/wo3-admission-gate-proof.yml"
+      ],
+      "reviewed_at": "2026-10-12",
+      "sha256": "9fc4c7e715a4f3bb82a828c900f1f275eff0c4e945d26f4083d0a83a64508fee",
+      "standing_ratification": null,
+      "workflow_name": "WO3 Admission Gate Proof",
+      "workflow_run_parents": []
+    },
+    "worker-protocol-gates.yml": {
+      "change_specific": false,
+      "evidence": "UNCLASSIFIED \u2014 curate before CI can pass",
+      "production_consequential": null,
+      "push_main": false,
+      "push_path_filters": null,
+      "reviewed_at": "2026-10-12",
+      "sha256": "2a157938b1f21be8a6f75ff035a7ac70f4ccf1fd80a597d4d2094435e0c29ff3",
+      "standing_ratification": null,
+      "workflow_name": "Worker Protocol Gates",
+      "workflow_run_parents": []
+    }
+  }
+}
