@@ -1,7 +1,7 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
-**Generated:** 2026-10-16  
-**Receipt basis commit:** `e04f5e3e5edb771ece71aa0bf9e6aa0608f754ba`  
+**Generated:** 2026-10-17  
+**Receipt basis commit:** `83806f4d0e335b223ba2f849fd19a7a7915fdcc6`  
 **Inventory file count:** 1328  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
@@ -138,7 +138,7 @@
 
 - `BRAIN/03-KERNEL/0001-KERNEL-CONTRACT-V1.md` — `c0fbdb92d466` (671 bytes)
 - `BRAIN/03-KERNEL/0002-KERNEL-ACCEPTANCE-V1.md` — `2ceacf3091fa` (411 bytes)
-- `BRAIN/03-KERNEL/0003-RUNTIME-REGISTRY-V1.json` — `cc5f5559c0bf` (13674 bytes)
+- `BRAIN/03-KERNEL/0003-RUNTIME-REGISTRY-V1.json` — `79661f697092` (13753 bytes)
 - `BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json` — `bb9868d5aea0` (25514 bytes)
 - `BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.md` — `900f3d525938` (3347 bytes)
 - `BRAIN/03-KERNEL/0005-NINE-NODE-ULTIMATE-LOCK-AND-NOTE-READINESS-V1.md` — `a71ae7e732e1` (6272 bytes)
