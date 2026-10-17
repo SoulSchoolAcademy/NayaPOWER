@@ -2,7 +2,7 @@
 
 ## ⚖️ THE NAYA PROTOCOL — READ FIRST
 
-**[PROTOCOL.md](./PROTOCOL.md) is the canonical operating law. Every Naya, every time.**
+**[PROTOCOL.md](./PROTOCOL.md) is the canonical CANDIDATE protocol — awaiting Shawn's ratification.** Until he ratifies, Operating Code V2 remains the binding law. Read PROTOCOL.md as the proposed code of all codes; do not cite it as ratified.
 17 steps across 5 phases: ACTIVATE → DECIDE → ACT → LEARN → COMPOUND.
 Read it before anything else in this file. It is the code of all codes.
 
