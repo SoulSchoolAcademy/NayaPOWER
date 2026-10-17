@@ -44,8 +44,20 @@ from feature_smart_list import (SmartListRefusal, decl_for as sl_decl_for,
                                  granted as sl_granted,
                                  FEATURE_ID as FEATURE_SMART_LIST_ID,
                                  FEATURE_SMART_LIST_VERSION)
+from feature_smart_bars import (SmartBarsRefusal, decl_for as sb_decl_for,
+                                 render_smart_bars,
+                                 FEATURE_ID as FEATURE_SMART_BARS_ID,
+                                 FEATURE_SMART_BARS_VERSION)
+from feature_connect import (ConnectRefusal, decl_for as cn_decl_for,
+                              render_connect,
+                              FEATURE_ID as FEATURE_CONNECT_ID,
+                              FEATURE_CONNECT_VERSION)
+from feature_community import (CommunityRefusal, decl_for as cm_decl_for,
+                                render_community,
+                                FEATURE_ID as FEATURE_COMMUNITY_ID,
+                                FEATURE_COMMUNITY_VERSION)
 
-ASSEMBLER_VERSION = "assemble-v1.9"  # v1.9: wave-D/E module (smart_list)
+ASSEMBLER_VERSION = "assemble-v1.10"  # v1.10: wave-C modules (smart_bars, connect, community)
 
 # ---- breaker module wiring ----
 # Every wired module follows the cover pattern: decl_for(contract) parses
@@ -116,9 +128,40 @@ def _render_smart_list(decl, st, ctx, contract):
              'version': FEATURE_SMART_LIST_VERSION}] if html else []
     return html, evts, {'readiness': readiness}
 
+def _wavec_adapter(decl, st, ctx, render_fn, fid, version, wired_event):
+    # Wave C modules return (html, meta); meta = {"mode": ..., "consent":
+    # "ready"|"connected"}. The meta rides the readiness receipt key
+    # (audit trail). wired_event may be None (modules documenting
+    # "Build-time events: none" emit no event).
+    html, meta = render_fn(decl, st, context=ctx)
+    readiness = [{'feature': fid, 'mode': meta.get('mode'),
+                  'consent': meta.get('consent')}]
+    evts = [{'event': wired_event, 'feature': fid,
+             'version': version}] if (html and wired_event) else []
+    return html, evts, {'readiness': readiness}
+
+def _render_smart_bars(decl, st, ctx, contract):
+    # The module documents its build-time event as bars.rendered.
+    return _wavec_adapter(decl, st, ctx, render_smart_bars,
+                          FEATURE_SMART_BARS_ID, FEATURE_SMART_BARS_VERSION,
+                          'bars.rendered')
+
+def _render_connect(decl, st, ctx, contract):
+    # The module documents "Build-time events: none" — the registry's
+    # connect events are visitor-lifecycle, not build-time. No wired event.
+    return _wavec_adapter(decl, st, ctx, render_connect,
+                          FEATURE_CONNECT_ID, FEATURE_CONNECT_VERSION,
+                          None)
+
+def _render_community(decl, st, ctx, contract):
+    # The module documents "Build-time events: none". No wired event.
+    return _wavec_adapter(decl, st, ctx, render_community,
+                          FEATURE_COMMUNITY_ID, FEATURE_COMMUNITY_VERSION,
+                          None)
+
 # Reserved receipt keys — modules may not shadow them via extra_receipt.
 _RECEIPT_RESERVED_KEYS = frozenset(
-    {'built_utc', 'events', 'grants', 'identity', 'consent'})
+    {'built_utc', 'events', 'grants', 'privacy', 'identity', 'consent'})
 
 BREAKER_MODULES = [
     # key, feature id, decl_for, refusal class, version, render adapter
@@ -150,6 +193,18 @@ BREAKER_MODULES = [
      'decl_for': sl_decl_for, 'refusal': SmartListRefusal,
      'version': FEATURE_SMART_LIST_VERSION,
      'render': _render_smart_list},
+    {'key': 'smart_bars', 'fid': FEATURE_SMART_BARS_ID,
+     'decl_for': sb_decl_for, 'refusal': SmartBarsRefusal,
+     'version': FEATURE_SMART_BARS_VERSION,
+     'render': _render_smart_bars},
+    {'key': 'connect', 'fid': FEATURE_CONNECT_ID,
+     'decl_for': cn_decl_for, 'refusal': ConnectRefusal,
+     'version': FEATURE_CONNECT_VERSION,
+     'render': _render_connect},
+    {'key': 'community', 'fid': FEATURE_COMMUNITY_ID,
+     'decl_for': cm_decl_for, 'refusal': CommunityRefusal,
+     'version': FEATURE_COMMUNITY_VERSION,
+     'render': _render_community},
 ]
 BREAKER_MODULE_KEYS = {m['key'] for m in BREAKER_MODULES}
 
@@ -499,15 +554,15 @@ def activate_breakers(contract, reg_statuses, reg_present, context):
                 html, evts, extra = mod['render'](
                     mdecl, reg_statuses.get(mod['key']), context, contract)
             except mod['refusal'] as e:
-                # Consent-line shape: the module's grant_required names the
-                # missing connection grant; the resolver's gate 4
+                # Consent-line shape: the module's grant refusal
+                # ('grant_required' / 'missing_grant') names the missing
+                # connection grant; the resolver's gate 4
                 # (permission_denied) names the missing registry permission.
                 # Both are fail-closed; both carry the same STRUCTURE
-                # {code, feature, detail, missing} — one shape, two honest
-                # codes for two distinct layers (connection grant vs
-                # registry permission).
+                # {code, feature, detail, missing} — one shape, honest codes
+                # for distinct layers (connection grant vs registry perm).
                 err = {'code': e.code, 'feature': fid, 'detail': e.detail}
-                if e.code == 'grant_required':
+                if e.code in ('grant_required', 'missing_grant'):
                     err['missing'] = [e.detail.split(
                         'contract.connections.')[-1].split()[0]
                         if 'contract.connections.' in e.detail else 'unknown']
@@ -844,6 +899,7 @@ def main():
             # EVERY build receipt, plus the per-feature ready/connected
             # resolution the resolver computed.
             'grants': context['connections'],
+            'privacy': context['privacy'],
             'identity': identity,
             'consent': consent,
         }, **extra_receipt),

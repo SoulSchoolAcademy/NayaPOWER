@@ -661,7 +661,7 @@
             "connect wired"
           ],
           "activated_by": "contract.features.connect",
-          "status": "specified",
+          "status": "built",
           "code": null,
           "depends_on": [
             "systems.identity"
@@ -692,8 +692,12 @@
           ],
           "connected": [
             {
-              "action": "message a connection",
+              "action": "request across network boundary",
               "grant": "nayanet"
+            },
+            {
+              "action": "request across public boundary",
+              "grant": "network"
             }
           ]
         },
