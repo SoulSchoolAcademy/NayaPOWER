@@ -208,3 +208,109 @@ Linear + ring variants, the ring math checks out (r=54 → 339.29 circumference;
 ---
 
 *Scored 2026-10-16 by VERIFY / Chi (Team Nitro). Independent read — no Phase 1 summary was trusted; every file above was read in full before scoring. A seat never verifies its own work.*
+
+
+---
+
+# RE-SCORE 2026-10-17 — the 16 fixed blocks, independently re-scored
+
+**Seat:** VERIFY / Chi · Team Nitro (the same seat that scored Phase 1; the fixer was BUILD / Nu — a seat never verifies its own work).
+**Head scored:** `7291dc2fb` (fix-round commit; matches `git ls-remote origin nitro/design-library` at re-score time).
+**Method:** every fix in the diff read against its named criticism; the fixed sections re-read in full. A fix counts only if it *resolves* the criticism, not if it merely mentions it. No inflated grades.
+
+## Calendar — fixed 3 of 5 (CAL-001 and CAL-005 were already 9.5 and untouched)
+
+### CAL-002 · Event card — 9.0 → **9.5** · CLEARS
+Fix verdict: **HOLDS.** The keyboard contract exists as *code* (`keydown` on Enter/Space → `cal:open-event`, same signal as click) *and* as a written state ("Keyboard contract: Enter or Space activates… goes exactly one place: the event's detail view"), and inert cards are excluded by contract (`aria-disabled` cards get no handler path — they never sit focusable-but-dead). The ≤560px stacked variant exists as real CSS: rail collapses to a top band, body stacks, spine goes horizontal — "re-flows, never crushes."
+Why not 10: the card keeps `role="article"` with button-like activation — a documented judgment call ("it IS content"), and the contract is explicit enough that a builder won't misread it, but a stricter seat could argue for `role="button"`. Recorded, not deducted.
+
+### CAL-003 · Date picker — 9.0 → **9.5** · CLEARS
+Fix verdict: **HOLDS.** The flip contract is measured at open time (`drop.classList.toggle('is-flip', (window.innerHeight - r.bottom) < 340)`) and the CSS (`.cal-drop.is-flip{top:auto;bottom:calc(100% + 10px)}`) matches; the overflow contract is `max-height:min(440px,calc(100vh - 96px))` with internal scroll and `overscroll-behavior:contain`. Both criticisms answered in code, not prose.
+Why not 10: nothing new surfaced. The 340px threshold is asserted rather than derived (it's roughly the panel's own height + margin — reasonable, unstated).
+
+### CAL-004 · Agenda list — 9.0 → **9.5** · CLEARS
+Fix verdict: **HOLDS.** The now-line is now `<li class="cal-now">` inside the `<ol>` (valid), with `list-style:none` and the node-jewel `::before` suppressed — geometry kept, markup honest. The specimen's past rows carry `aria-disabled="true"` with no `tabindex`, and the States section cross-references the specimen ("exactly as specified") — the specimen finally practices its own rule.
+Why not 10: nothing new surfaced.
+
+## Checkout — fixed 5 of 5
+
+### PAY-001 · Order summary board — 9.0 → **9.5** · CLEARS
+Fix verdict: **HOLDS.** All three criticisms answered: thumb glyphs are now drawn SVG (`<svg viewBox…>` per jewel, no unicode, comment cites Law 4); the dead `.pay-apply` class is dropped from the markup; the single-source rule is family contract §7 ("import, never re-type… a fix to the DNA lands once, in the source"). The rule is stated as law, which is what the criticism asked for ("the fix isn't enforced — no single source rule").
+Why not 10: §7 names the canonical source as a rule, but the PAY-001 stylesheet still *renders* the DNA inline as "reference rendering" — a builder skimming the code still sees copyable CSS. The law is written; the temptation isn't removed.
+
+### PAY-002 · Payment form — 9.0 → **9.5** · CLEARS
+Fix verdict: **HOLDS.** The enable contract is pinned as code: enables iff all four fields carry `.is-valid`, evaluated on `blur` **and** `input`; a failed payment never clears the form (the submit handler keeps every value; cross-linked to PAY-004's retry). The prose states the same rule verbatim — prose and code are one truth.
+Why not 10: the *per-field validity rule* itself ("what counts as a valid card number") is still the integrator's — honestly labeled "specimen-grade; a live build runs the processor's real rules." The scorecard asked for the state contract, not the Luhn algorithm; this is the right boundary, but it's recorded.
+
+### PAY-003 · Confirmation state — 8.5 → **9.5** · CLEARS
+Fix verdict: **HOLDS.** `.naya-btn--quiet` is defined ONCE in family contract §8 (the full CSS, in the shared contract), referenced by PAY-003 and PAY-004, and PAY-003's own stylesheet carries only the ownership comment. A builder implementing either block alone now inherits the definition from the family contract, not from a sibling.
+Why not 10: nothing new surfaced.
+
+### PAY-004 · Error state — 9.0 → **9.5** · CLEARS
+Fix verdict: **HOLDS.** The quiet-variant dependency resolves through §8; the block defines no control of its own. **On the fixer's flagged cross-block item:** `.pay-receipt-jewel` IS defined in PAY-003's stylesheet (lines 622–630) and consumed by PAY-004's markup (line 701) — the pattern matches, but the *severity* doesn't. Every use is `aria-hidden="true"` decorative bullet geometry; a builder shipping PAY-004 alone gets a missing diamond, not an unstyled interactive button. Verdict: decorative-only, scored accordingly — it stays a hygiene follow-up (fold into the family contract), not a score deduction. PAY-004 clears honestly.
+Why not 10: the `.pay-receipt-jewel` note above — the family's second shared idiom without a canonical home yet.
+
+### PAY-005 · Payment method picker — 9.0 → **9.5** · CLEARS
+Fix verdict: **HOLDS.** The Default chip is purple ("choosing intelligence") in the CSS, the States prose, the Do/Don't, and the anatomy — all four consistent, no stale gold reference anywhere. Gold is now sacred to the total across the family.
+Why not 10: nothing new surfaced.
+
+## Comments — fixed 3 of 3
+
+### CMT-001 · Comment thread — 8.5 → **9.5** · CLEARS
+Fix verdict: **HOLDS.** Both bespoke systems are gone: the chevron is `class="naya-btn icon micro cmt-chev"` with a glyph-only hook (drawn chevron, the CAL-001 pattern exactly), and Post is `class="naya-btn cmt-post"` with a layout-only hook (alignment + 52px floor). The family intro now states the one-button DNA rule up front. No re-implemented DNA remains.
+Why not 10: nothing new surfaced.
+
+### CMT-002 · Single comment — 9.0 → **9.5** · CLEARS
+Fix verdict: **HOLDS.** `.cmt-morebtn` is retired to a sizing hook; the clamp toggle wears `.naya-btn--quiet` in the markup, and the family note names the checkout §8 canonical home ("owned ONCE for the whole catalog"). The third quiet idiom no longer exists.
+Why not 10: nothing new surfaced.
+
+### CMT-003 · Reaction row — 9.0 → **9.5** · CLEARS
+Fix verdict: **HOLDS.** The popover is `role="group"` with native buttons, `aria-haspopup="true"` is removed, and the Focus state states the actual contract (Tab moves, Esc closes, focus returns). The promise now matches the shipped behavior — the honest downgrade the scorecard asked for.
+Why not 10: nothing new surfaced.
+
+## Chat — fixed 2 of 3 (CHT-004 was already 9.5 and untouched)
+
+### CHT-003 · Chat bubbles — 9.0 → **9.5** · CLEARS
+Fix verdict: **HOLDS.** The tail is a solid square in the bubble's base tone (`#0e0e13` / `#0d0a16`), `background:inherit` fully removed, with the comment naming the failure mode it avoids. The specimen is honest: 21:04, 21:05, 21:06 are `grp-first` + two `grp` — one group, per the <5 min same-sender rule; the incoming 21:02 rows correctly form their own group.
+Why not 10: nothing new surfaced.
+
+### CHT-005 · Message list — 8.5 → **9.5** · CLEARS
+Fix verdict: **HOLDS.** All three forward references corrected (`CHT-004+` → `CHT-006+` in the Edited note, the family "does not cover" note, and the empty-state verbatim spec), and the empty room names its door: "The composer arrives with CHT-006 — this room is ready for it." The invitation is no longer a dead end.
+Why not 10: nothing new surfaced.
+
+## Onboarding — fixed 3 of 3
+
+### ONB-001 · Stepper — 9.0 → **9.5** · CLEARS
+Fix verdict: **HOLDS.** The Do/Don't now scopes the skip *control* to the step-content block (ONB-004+) and states the rail's whole promise: "the chip is the rail's whole promise about skipping… This rail never renders a skip control." The scorecard offered this scoping as an acceptable fix, and it's the one that landed. (The skip *behavior* — "skipping advances the flow honestly" — remains described in the block, which is flow contract, not a control promise.)
+Why not 10: nothing new surfaced.
+
+### ONB-002 · Welcome card — 9.0 → **9.5** · CLEARS
+Fix verdict: **HOLDS.** The CTA is `class="naya-btn onb-cta"` with a layout-only hook; the quiet exit is a real `<button>` with `data-dest="hub-home"` (no `href="#"`), with focus-visible styling added. Both criticisms answered in code.
+Why not 10: nothing new surfaced.
+
+### ONB-003 · Progress indicator — 9.0 → **9.5** · CLEARS
+Fix verdict: **HOLDS.** `onb-drift` runs on `transform:translateX` (compositor-only); the math checks: width 34%, `translateX(-100%)` = −34% offset, `translateX(294%)` × 34% ≈ 100% — the same travel as the old margin-left range, minus the layout thrash.
+Why not 10: nothing new surfaced.
+
+## Rollup — RE-SCORE 2026-10-17
+
+| Family | Score | 9.5+ blocks | Below the bar |
+|---|---|---|---|
+| Calendar | **9.5** | CAL-001, CAL-002, CAL-003, CAL-004, CAL-005 | — |
+| Checkout | **9.5** | PAY-001, PAY-002, PAY-003, PAY-004, PAY-005 | — |
+| Comments | **9.5** | CMT-001, CMT-002, CMT-003 | — |
+| Chat | **9.5** | CHT-003, CHT-004, CHT-005 | — |
+| Onboarding | **9.5** | ONB-001, ONB-002, ONB-003 | — |
+
+**Blocks at 9.5+ — 19 of 19. The fix round cleared every block it touched: 16 of 16.**
+
+The fix quality was high: every named criticism was answered in *code* (class hooks, measured-at-open-time JS, valid markup), not prose alone. The two hardest verifications — the CAL-002 keyboard contract and the PAY-002 enable contract — both ship the contract as executable specimen code *and* matching prose; prose and code are one truth. The fixer's flagged `.pay-receipt-jewel` cross-block item is assessed above: decorative-only, hygiene follow-up, no score impact.
+
+**Residual follow-ups (not scored, for the next BUILD seat):**
+1. `.pay-receipt-jewel` — defined in PAY-003's stylesheet, consumed by PAY-004's markup. Fold into the family contract (same §8 treatment as the quiet variant) so no block consumes what a sibling defines.
+2. `DESIGN/BLOCKS.md` calendar family header still reads "_Family score: 9.0/10 (independent review, 2026-10-16)_" — now stale after this re-score (9.5). One-line sync.
+3. PAY-001's stylesheet still *renders* the `.naya-btn` DNA inline as "reference rendering" — §7 states the single-source law, but the copyable temptation remains. Consider rendering a pointer comment instead of the full DNA.
+
+---
+
+*Re-scored 2026-10-17 by VERIFY / Chi (Team Nitro). Independent read — the fixer's summary was not trusted; every fix above was verified in the diff and the fixed files before scoring. A seat never verifies its own work.*
