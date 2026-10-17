@@ -1,0 +1,39 @@
+name: Verification notifications
+
+# Shawn: "there should be some kind of notification goes out for any agent
+# goes in to now verify that it's our score it."
+#
+# Posts PR verification lifecycle events to the team feed (#2154):
+#   assigned  -> a verifier is assigned to a PR
+#   started   -> a verifier begins verification ("now verifying")
+#   reviewed  -> a [NAYA N · REVIEW] verdict lands (APPROVED / CHANGES REQUESTED)
+#   scored    -> a scorecard names the PR head SHA with a score
+#
+# Notify-only. Never gates, never merges, never reviews. The merge-consensus
+# gate remains the sole authority for merges. Notification text deliberately
+# avoids the consensus-gate trigger phrases so a notification can never
+# false-pass the gate.
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  issues: write
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    # Belt-and-braces loop guard: never process our own notification
+    # comments. The script also ignores marker-bearing comments.
+    if: ${{ !contains(github.event.comment.body, '<!-- vn:') }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Detect and notify verification event
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          IS_PR: ${{ contains(github.event.issue.html_url, '/pull/') }}
+          COMMENT_BODY: ${{ github.event.comment.body }}
+        run: python3 tools/notify_verification.py
