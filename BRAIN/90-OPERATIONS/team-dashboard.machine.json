@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-17T20:15:23+00:00",
+ "generated_utc": "2026-10-17T21:15:43+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -348,6 +348,24 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2748,
+     "title": "Smart Builder pipeline: PIECES + FUNCTIONS + CONTRACT \u2014 the system that builds itself (DO ",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2748",
+     "draft": false
+    },
+    {
+     "number": 2747,
+     "title": "feat: make Smart Builder library searchable and machine-accessible",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2747",
+     "draft": false
+    },
+    {
+     "number": 2746,
+     "title": "docs: establish Smart Builder human contract",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2746",
+     "draft": false
+    },
+    {
      "number": 2742,
      "title": "Design laws v2 \u2014 3-pass scored 9+ for ratification",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2742",
@@ -376,27 +394,9 @@
      "title": "fix(activation): pin Operating Code V2 LF in Windows checkouts",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2732",
      "draft": false
-    },
-    {
-     "number": 2731,
-     "title": "ACTIVATION-PACKET: re-point author-branch links at main",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2731",
-     "draft": false
-    },
-    {
-     "number": 2728,
-     "title": "distill-daily: point boot bytes at live board #2721",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2728",
-     "draft": false
-    },
-    {
-     "number": 2725,
-     "title": "RETRIEVAL: re-pin original grader bytes to TRIAL-11-RESERVE (w356)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2725",
-     "draft": false
     }
    ],
-   "open_pr_count": 234
+   "open_pr_count": 237
   },
   {
    "id": "wire",
@@ -555,6 +555,12 @@
    "board_lane": "#2175 lane INFRA",
    "open_prs": [
     {
+     "number": 2745,
+     "title": "Visual Smart Contract v1 \u2014 the official machine contract for the smart builder (DRAFT, NOT",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2745",
+     "draft": false
+    },
+    {
      "number": 2740,
      "title": "Design specimens: categorized piece library with identities",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2740",
@@ -595,15 +601,9 @@
      "title": "Add decision CLI front door to value_calculus (tools/decision_cli.py)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2589",
      "draft": false
-    },
-    {
-     "number": 2570,
-     "title": "fix(ci): rate-limit resilience for Current Truth Resolver evidence collection",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2570",
-     "draft": false
     }
    ],
-   "open_pr_count": 41
+   "open_pr_count": 42
   },
   {
    "id": "product",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 617,
- "unassigned_prs": 234
+ "open_pr_total": 621,
+ "unassigned_prs": 237
 }

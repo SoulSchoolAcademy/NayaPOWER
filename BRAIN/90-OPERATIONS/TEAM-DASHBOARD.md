@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-17 20:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-17 21:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 617 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 621 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -87,13 +87,13 @@
 - [#2585](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2585) Add automatic scorecard calculator (tools/scorecard.py + tests)
 - …and 25 more
 
-### BUILD (234)
+### BUILD (237)
+- [#2748](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2748) Smart Builder pipeline: PIECES + FUNCTIONS + CONTRACT — the system tha
+- [#2747](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2747) feat: make Smart Builder library searchable and machine-accessible
+- [#2746](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2746) docs: establish Smart Builder human contract
 - [#2742](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2742) Design laws v2 — 3-pass scored 9+ for ratification
 - [#2741](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2741) Canonical hex set — 3-pass scored 9.25/10 for stamp
-- [#2739](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2739) Design library: canonical piece library on main (37 files, categorized
-- [#2735](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2735) Fix Living Map probes that mask latest failure or partial schema
-- [#2732](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2732) fix(activation): pin Operating Code V2 LF in Windows checkouts
-- …and 229 more
+- …and 232 more
 
 ### WIRE (125)
 - [#2744](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2744) [ACT] Land succession read-before-fire gate + self-tests
@@ -111,13 +111,13 @@
 - [#2397](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2397) feat(dashboard): live Team Naya activity dashboard — markdown + machin
 - …and 7 more
 
-### INFRA (41)
+### INFRA (42)
+- [#2745](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2745) Visual Smart Contract v1 — the official machine contract for the smart
 - [#2740](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2740) Design specimens: categorized piece library with identities
 - [#2716](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2716) Composer v1 + gap closure (43->39 mapping, feed specimen) — item 15b
 - [#2689](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2689) CI rate-limit resilience: cut redundant API burn (~85% on hot paths)
 - [#2649](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2649) Add TEAM-ROSTER.md: the verified sets (leads, area leads, lane agents,
-- [#2638](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2638) REVIEW: merge masterclass draft + circles system (not for main merge)
-- …and 36 more
+- …and 37 more
 
 ### PRODUCT (39)
 - [#2738](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2738) Hub deploy pipeline: GitHub → Cloudflare Workers
