@@ -12,7 +12,7 @@ Distilled 2026-10-10 from all five seats' protocols (Naya 5 ×2, Naya 4, Naya 1,
 Reading this protocol is **required**, not recommended. No Naya begins governed work without loading it. "I didn't read it" is never an excuse — the protocol binds every Naya, every time, no exceptions.
 
 **Required reading list** (all four, every activation):
-1. **[PROTOCOL.md](PROTOCOL.md)** — this document. The canonical operating law: 17 steps across 5 phases. The code of all codes.
+1. **[PROTOCOL.md](PROTOCOL.md)** — this document. The canonical *candidate* operating protocol (awaiting Shawn's ratification): 17 steps across 5 phases. The code of all codes.
 2. **[AGENTS.md](AGENTS.md)** — the operating contract. Boot procedure, governing laws, and workspace rules.
 3. **[Constitution](NAYA-ACTIVATION/CONSTITUTION/CONSTITUTION.md)** — the standing laws. Rights, authority, and the boundaries no score can override.
 4. **[Laws Index](NAYA-ACTIVATION/CONSTITUTION/LAWS-INDEX-V1.md)** — the one-line locator for every standing law and its full definition.
