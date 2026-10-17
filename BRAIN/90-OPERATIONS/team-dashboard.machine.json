@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-17T02:15:57+00:00",
+ "generated_utc": "2026-10-17T03:15:42+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -630,12 +630,6 @@
      "draft": false
     },
     {
-     "number": 2711,
-     "title": "Hub Drive: ingest design-language block sources",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2711",
-     "draft": false
-    },
-    {
      "number": 2701,
      "title": "HUB sync contract \u2014 Goal #1 Hub Smart Feed contract (three tongues)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2701",
@@ -670,9 +664,15 @@
      "title": "Hub feeds: first room-feed/v1 emissions (today, lists, spaces) \u2014 t0479",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2678",
      "draft": false
+    },
+    {
+     "number": 2648,
+     "title": "Add field manual 37: GitHub access (two identities, fresh-machine setup)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2648",
+     "draft": false
     }
    ],
-   "open_pr_count": 37
+   "open_pr_count": 36
   },
   {
    "id": "memory",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 606,
+ "open_pr_total": 605,
  "unassigned_prs": 230
 }

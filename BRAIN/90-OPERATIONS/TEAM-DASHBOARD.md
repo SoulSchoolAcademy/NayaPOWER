@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-17 02:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-17 03:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 606 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 605 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -119,13 +119,13 @@
 - [#2593](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2593) CANDIDATE: veracity demote for FALSIFIED lessons at retrieve (t0762 l…
 - …and 35 more
 
-### PRODUCT (37)
+### PRODUCT (36)
 - [#2713](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2713) t0907: block catalog — 457 canonical NAYA-XXX-NNN blocks + coverage
-- [#2711](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2711) Hub Drive: ingest design-language block sources
 - [#2701](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2701) HUB sync contract — Goal #1 Hub Smart Feed contract (three tongues)
 - [#2700](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2700) [DRAFT] HUB MASTER BUILD CONTRACT v1 (review only, do not merge) 📝draft
 - [#2685](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2685) HUB/BLUEPRINT.ai.md — canonical team reference: the complete system ma
-- …and 32 more
+- [#2680](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2680) t0483: hourly schedule pump for NayaNET Agent Capture
+- …and 31 more
 
 ### MEMORY (6)
 - [#2644](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2644) 0008 Intelligent Block V1 — CONVERGED sender contract (three tongues, 
