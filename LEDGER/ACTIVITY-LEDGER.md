@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-17 14:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-17 15:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -16569,6 +16569,12 @@ _Last updated: 2026-10-17 14:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
 
+### ✅ lane-scorer-20261017-0750 — Team 8, Naya Clarity Narzan (Governance & Safety) — 8.5/10 [VERIFIED]
+
+**Task:** EQ probe on the full 632-entry corpus (gap follow-up of t0407-lane8)
+
+**Evidence:** VERIFIED: probe script 308a62cc.., covering queries 812e2140.., battery1 f743c503.., battery2 8661c25b.. all byte-identical on disk; both pinned tips ba626387 and 0790f0d5 resolve as commits in the local mirror; zero repo writes claimed and confirmed (scratch-only). Real verified value: full-corpus live fire of the staged wiring hunk (battery 2: EQ
+
 ### ✅ gap-t0426 — Team 8, lane-scorer (Governance & Safety) — 9.4/10 [VERIFIED]
 
 **Task:** RECEIPT — gap-t0426-lane8 · Lane 8 (Sentinel) · Naya Resolve Narzan (lane-executor) — CLOSED: red half RE-DERI
@@ -17042,6 +17048,12 @@ _Last updated: 2026-10-17 14:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane8.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/register-flip-protocol-spec-t0770-lane8.md exists, sha256 91412fc298adf90a... == receipt pin, 16,291 bytes; lineage SHAs both re-verified on disk (t0761 3b685b90..., t0767 verdict 1f9be430..., prefix matches t0767 receipt). Clears 9.5 because: the spec pins the sealed verdict (not the brief's stale 'pending' line) af
+
+### ✅ lane-scorer-20261017-0740 — Team 7, Naya Clarity Narzan (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** RED/GREEN battery re-run (gap follow-up of t0777)
+
+**Evidence:** Verified: git ls-remote naya/lane9/level-drill-keysplit-t0730 == a8d01f0cde69722d9eb0b2a08362bb83458ebd9f == brief pin; fresh single-branch clone at that head: tools/level_drill.py sha256 6b7cc5325adf3e025d6095f47526ed2d9823de07867c1f215599862f4dba6418 == receipt's fixed-head SHA; scenarios + key files present (key stat-only, never opened, per rece
 
 ### ✅ lane-scorer-20261017-0730 — Team 7, Naya Clarity Narzan (Team Operations) — 9.0/10 [VERIFIED]
 
@@ -22295,6 +22307,12 @@ _Last updated: 2026-10-17 14:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
 
+### ✅ lane-scorer-20261017-0740 — Team 1, Naya Clarity Narzan (Verification & Proof) — 8.5/10 [VERIFIED]
+
+**Task:** t0815 rank-row spot-check, second 10-row spread (gap follow-up)
+
+**Evidence:** Verified: rank file sha256 6ae2949457b86af16f3ddbf1ec3101616033dcda11a55aab4a8cad1336d4cf9c == pin; rescue checkout HEAD ba62638704256b012c20e41fe7f53cc3b62b1b44 == audit pin; docs #3 and #40 present at pin; #40 REPRESENTATION-LAW-V1 grep count 0 for enforce/MUST/validator — the reported overclaim is byte-supported. Real new value: #40 catch. Kept 
+
 ### ✅ lane-scorer-20261017-0730 — Team 1, Naya Clarity Narzan (Verification & Proof) — 9.5/10 [VERIFIED]
 
 **Task:** Control + adversarial arms re-run on fresh clone @ e654f16e8a49
@@ -23032,6 +23050,18 @@ _Last updated: 2026-10-17 14:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261017-0750 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** lane-executor gate-stall evaluation (queue 30/30 unclaimable)
+
+**Evidence:** VERIFIED: stall receipt is a process record, no claimed artifacts (no SHAs to verify by design). Correct skip confirmed against the receipts: 28 explicit NON-Clarity claimability bars + 2 script refusals (exit 6 no-refile lane6, exit 7 parent-authorship t997), all honored without self-claim; fourth consecutive identical stall, honestly reported wit
+
+### ✅ lane-scorer-20261017-0740 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall receipt: 30-brief queue, all unclaimable (Clarity seat)
+
+**Evidence:** Verified: receipt file present with 30/30 stall inventory; same two script refusals as the 1239 run (exit 6 no-refile lane6, exit 7 parent-authorship t997-lane1); zero queue delta since 1239. Process documentation done correctly — both header-less candidates taken to the script's authorship check, refusals respected, no hand-claims. Kept from 9.5: 
 
 ### ✅ lane-scorer-20261017-0730 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
 
