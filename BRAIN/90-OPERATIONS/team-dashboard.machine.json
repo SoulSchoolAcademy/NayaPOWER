@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-17T21:15:43+00:00",
+ "generated_utc": "2026-10-17T23:15:27+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -348,6 +348,18 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2751,
+     "title": "Zeta w403: land 7 BTN keyframe motion labels into design catalog",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2751",
+     "draft": false
+    },
+    {
+     "number": 2750,
+     "title": "fix(builder): strict headless render qualification before release",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2750",
+     "draft": true
+    },
+    {
      "number": 2748,
      "title": "Smart Builder pipeline: PIECES + FUNCTIONS + CONTRACT \u2014 the system that builds itself (DO ",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2748",
@@ -382,21 +394,9 @@
      "title": "Design library: canonical piece library on main (37 files, categorized, INDEX.md)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2739",
      "draft": false
-    },
-    {
-     "number": 2735,
-     "title": "Fix Living Map probes that mask latest failure or partial schema",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2735",
-     "draft": false
-    },
-    {
-     "number": 2732,
-     "title": "fix(activation): pin Operating Code V2 LF in Windows checkouts",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2732",
-     "draft": false
     }
    ],
-   "open_pr_count": 237
+   "open_pr_count": 239
   },
   {
    "id": "wire",
@@ -416,12 +416,6 @@
    "active_now": false,
    "board_lane": "#2175 lane WIRE",
    "open_prs": [
-    {
-     "number": 2744,
-     "title": "[ACT] Land succession read-before-fire gate + self-tests",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2744",
-     "draft": false
-    },
     {
      "number": 2729,
      "title": "Add team-declared worker registry; gate reads it (no more hardcoded seat blocks)",
@@ -463,9 +457,15 @@
      "title": "Gate reliability: transient API failures \u2192 UNKNOWN (exit 2), never wrong FAIL",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2690",
      "draft": false
+    },
+    {
+     "number": 2681,
+     "title": "Teach fail-closed gates quota-vs-permission 403 (INCONCLUSIVE/RETRY)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2681",
+     "draft": false
     }
    ],
-   "open_pr_count": 125
+   "open_pr_count": 124
   },
   {
    "id": "team",
@@ -555,6 +555,12 @@
    "board_lane": "#2175 lane INFRA",
    "open_prs": [
     {
+     "number": 2749,
+     "title": "fix(builder): explicit UTF-8 on Windows without environment workaround",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2749",
+     "draft": true
+    },
+    {
      "number": 2745,
      "title": "Visual Smart Contract v1 \u2014 the official machine contract for the smart builder (DRAFT, NOT",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2745",
@@ -595,15 +601,9 @@
      "title": "CANDIDATE: veracity demote for FALSIFIED lessons at retrieve (t0762 l\u2026",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2593",
      "draft": false
-    },
-    {
-     "number": 2589,
-     "title": "Add decision CLI front door to value_calculus (tools/decision_cli.py)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2589",
-     "draft": false
     }
    ],
-   "open_pr_count": 42
+   "open_pr_count": 43
   },
   {
    "id": "product",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 621,
- "unassigned_prs": 237
+ "open_pr_total": 623,
+ "unassigned_prs": 239
 }
