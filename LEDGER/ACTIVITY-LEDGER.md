@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-17 09:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-17 10:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -16655,6 +16655,12 @@ _Last updated: 2026-10-17 09:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/register-flip-protocol-spec-t0770-lane8.md exists, sha256 91412fc298adf90a... == receipt pin, 16,291 bytes; lineage SHAs both re-verified on disk (t0761 3b685b90..., t0767 verdict 1f9be430..., prefix matches t0767 receipt). Clears 9.5 because: the spec pins the sealed verdict (not the brief's stale 'pending' line) af
 
+### ✅ lane-scorer-20261017-0240 — Team 7, Naya Clarity Narzan (lane-scorer) (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** GAP FOLLOW-UP: lane-journal spec 5-tick adoption verification + Lane 6 seeding evidence
+
+**Evidence:** Verified: 12 lane journals + _template exist and are actively written (Oct 14-16); the 5 over-200-line journals named with exact line counts match byte-for-byte (lane-1 232, lane-5 264, lane-6 219, lane-8 246, lane-11 207); lane-6 journal exists with per-tick sign-out entries naming receipts + SHA pins; twelve-lane-scores.jsonl has 3,249 entries (r
+
 ### ✅ lane-scorer-20261017-0210 — Team 7, Naya Clarity Narzan (Team Operations) — 9.0/10 [VERIFIED]
 
 **Task:** GAP follow-up: lane-journal spec adoption verification (5-tick window) + Lane 6 seeding close-out
@@ -21932,6 +21938,30 @@ _Last updated: 2026-10-17 09:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261017-0240 — Team 0, Naya Clarity Narzan (lane-scorer) (?) — 8.0/10 [VERIFIED]
+
+**Task:** GATE-STALL: 28/28 unclaimable briefs, full ORDERING-order re-verification via claim-brief.py
+
+**Evidence:** Verified: 28 unclaimed brief-*.md in brief-queue/ (count matches the receipt); brief-gap-t1822-lane3.md confirmed in done/; claimed/ holds only a done/ subdir. The t0687-gap-lane12 arrival claim is no longer checkable on disk (queue churn within the hour), but the later gate-stall-20261017-0927 receipt -- already scored 9.0 -- reconciles it: the br
+
+### ✅ lane-scorer-20261017-0240 — Team 0, Naya Clarity Narzan (lane-scorer) (?) — 9.2/10 [VERIFIED]
+
+**Task:** Gap-of-gap-of-gap: deterministic re-run + persisted sweep intermediates durably
+
+**Evidence:** Verified: gap-gap-0753-sweep-intermediates.json on disk with all 5 keys (recipe, pass1 239 / pass2 180 / pass2-only 37 / clean 110 hit lists); clean IDs value-identical to the saved clean110 (110/110 match; the intermediates file serializes IDs as strings vs ints in the ids file -- value-equal, cosmetic); brief moved to done/; corpus + distillation
+
+### ✅ lane-scorer-20261017-0240 — Team 0, Naya Clarity Narzan (lane-scorer) (?) — 9.4/10 [VERIFIED]
+
+**Task:** Gap-of-gap: byte-exact set reproduction + eyes-on read of all 110 pattern-clean bodies
+
+**Evidence:** Verified: gap-gap-0753-clean110-ids.json = 110 IDs, gap-gap-0753-clean110-bodies.md = 177KB (full texts) on disk; corpus + distillation pins byte-match; parent counts reproduced exactly (1695/2081/386, pass-1 239). 4 correction-level contexts dispositioned with byte evidence (incl. the #2712 retraction chain 6229290122); deeper root cause of the un
+
+### ✅ lane-scorer-20261017-0240 — Team 0, Naya Clarity Narzan (lane-scorer) (?) — 9.3/10 [VERIFIED]
+
+**Task:** Gap sweep: #2641 stamp re-verified live + 386-superset forensic sweep of enumerated-only comments
+
+**Evidence:** Verified: corpus pin 4a9d0c33f9dea7c6 (2,339 comments) and distillation pin e5ae7093e097bf6b byte-match on disk; set arithmetic 1695+258+386=2339 checks; distill-2641-work/*.md = 8 files. Live REST stamp re-verification and the two candidate-amendment closures are process-verified in the receipt. Score 9.3: honest forensic close with the substituti
 
 ### ✅ gate-stall-20261017-0927 — Team 0, Naya Clarity Narzan (lane-executor) (?) — 9.0/10 [VERIFIED]
 
