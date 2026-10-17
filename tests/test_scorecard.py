@@ -41,16 +41,10 @@ def test_caller_supplied_evidence_cannot_ship():
     assert report["verdict"] == "FIX"
 
 
-def test_trusted_verifier_can_authenticate_evidence():
-    seen = []
-    def verifier(item):
-        seen.append(item["ref"])
-        return item["ref"] in {"tests/test_scorecard.py 12/12", "tree 9d6af390"}
-    report = score_work(good_work(), evidence_verifier=verifier)
-    assert len(seen) == 2
-    assert report["criteria"]["evidence"]["score"] == 10.0
-    assert report["overall"] == 10.0
-    assert report["verdict"] == "SHIP"
+def test_caller_cannot_inject_a_trusted_verifier():
+    # A caller-controlled lambda must not be accepted as authenticated proof.
+    with pytest.raises(TypeError):
+        score_work(good_work(), evidence_verifier=lambda _item: True)
 
 
 def test_forged_verified_flag_does_not_bypass_trust_boundary():
@@ -61,16 +55,6 @@ def test_forged_verified_flag_does_not_bypass_trust_boundary():
     report = score_work(forged)
     assert report["criteria"]["evidence"]["score"] == 8.0
     assert report["verdict"] == "FIX"
-
-
-def test_trusted_verifier_rejects_one_fabricated_reference():
-    report = score_work(
-        good_work(),
-        evidence_verifier=lambda item: item["ref"] == "tests/test_scorecard.py 12/12",
-    )
-    assert report["criteria"]["evidence"]["score"] == 5.0
-    assert report["overall"] == 5.0
-    assert report["verdict"] == "HOLD"
 
 
 def test_self_verification_capped_by_inviolable():
@@ -186,7 +170,7 @@ def test_to_10_lists_solutions_for_gaps():
 
 def test_unverified_refs_generate_trusted_verifier_remediation():
     report = score_work(good_work())
-    assert any("trusted independent verifier" in fix for fix in report["to_10"])
+    assert any("canonical authenticated evidence resolver" in fix for fix in report["to_10"])
 
 
 def test_to_10_capped_at_10():
@@ -211,29 +195,18 @@ def test_pass_3_fix_announces():
 
 
 
-def test_trusted_verifier_exception_fails_closed():
-    def broken_verifier(_item):
-        raise RuntimeError("verifier unavailable")
-    report = score_work(good_work(), evidence_verifier=broken_verifier)
-    assert report["criteria"]["evidence"]["score"] == 2.0
-    assert "failed closed" in report["criteria"]["evidence"]["reasons"][0]
-    assert report["verdict"] == "HOLD"
-
-
 def test_malformed_evidence_item_prevents_perfect_evidence_score():
     work = good_work(evidence=[
         {"claim": "tests green", "ref": "tests/test_scorecard.py 12/12"},
         {"claim": "missing ref"},
     ])
-    report = score_work(work, evidence_verifier=lambda item: True)
+    report = score_work(work)
     assert report["criteria"]["evidence"]["score"] == 5.0
     assert report["verdict"] == "HOLD"
 
 
-def test_single_authenticated_reference_cannot_score_10():
+def test_single_reference_cannot_score_10_without_internal_resolver():
     report = score_work(
-        good_work(evidence=[{"claim": "tests green", "ref": "tests/test_scorecard.py 12/12"}]),
-        evidence_verifier=lambda item: True,
-    )
+        good_work(evidence=[{"claim": "tests green", "ref": "tests/test_scorecard.py 12/12"}]))
     assert report["criteria"]["evidence"]["score"] == 8.0
     assert report["verdict"] == "FIX"
