@@ -141,3 +141,54 @@ PARTIAL_COMPROMISE_RULES = (
     "difficulty_accounted: recomputation must address population change",
     "independence_reproven: B-E families usable only if independence established",
 )
+
+
+def contain_dependence(
+    suspect_claim: str,
+    dependents: dict[str, tuple[str, ...]],
+) -> dict[str, str]:
+    """Naya_pro_process.svg: contain dependence, not the entire graph.
+
+    When a claim is suspect, walk its dependents:
+    - A dependent relying ENTIRELY on the suspect claim → "BLOCKED"
+      (needs revalidation before any use)
+    - A dependent with OTHER evidence beyond the suspect claim →
+      "REQUALIFY" (independently test the valid portion; it can continue)
+
+    `dependents` maps each lesson/claim to the tuple of evidence/claims
+    it depends on. Returns a verdict per dependent of the suspect claim
+    (transitively: a BLOCKED dependent's own dependents are also BLOCKED).
+    """
+    verdicts: dict[str, str] = {}
+
+    def depends_only_on_suspect(node: str, seen: set[str]) -> bool:
+        """True if every dependency chain from node ends at suspect_claim."""
+        if node in seen:
+            return False  # cycle: not purely dependent
+        if node == suspect_claim:
+            return True
+        deps = dependents.get(node, ())
+        if not deps:
+            return False  # root with no deps: independent
+        seen = seen | {node}
+        return all(depends_only_on_suspect(d, seen) for d in deps)
+
+    # Find all nodes that (transitively) depend on the suspect claim
+    def reaches_suspect(node: str, seen: set[str]) -> bool:
+        if node in seen:
+            return False
+        if node == suspect_claim:
+            return True
+        seen = seen | {node}
+        return any(reaches_suspect(d, seen) for d in dependents.get(node, ()))
+
+    for node in dependents:
+        if node == suspect_claim:
+            continue
+        if not reaches_suspect(node, set()):
+            continue  # unaffected: does not depend on suspect at all
+        if depends_only_on_suspect(node, set()):
+            verdicts[node] = "BLOCKED"
+        else:
+            verdicts[node] = "REQUALIFY"
+    return verdicts
