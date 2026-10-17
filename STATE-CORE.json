@@ -1,12 +1,12 @@
 {
  "schema": "nayapower-state-core/v1",
- "generated_utc": "2026-10-17T20:46:34Z",
+ "generated_utc": "2026-10-17T20:56:57Z",
  "writer": "state-core-builder.py (single writer; all others read-only)",
  "tip": {
   "sha": "014c1fefa405f21749062d220e4929fbfab3ef4a",
   "short": "014c1fefa405",
   "verified_how": "ref+commits-agree",
-  "checked_utc": "2026-10-17T20:46:00Z"
+  "checked_utc": "2026-10-17T20:56:06Z"
  },
  "venue": {
   "live": 2641,
@@ -15,22 +15,21 @@
   ]
  },
  "waves": {
-  "active": 323,
-  "active_seats": [
-   "Naya Compounder",
-   "Naya Librarian",
-   "Naya Bridger"
-  ],
-  "last_completed": 322,
-  "last_completed_at": "2026-10-17T20:02:27Z",
-  "rotation_cursor": "wave-324: Naya Judge/Naya Auditor/Naya Builder (roster order)"
+  "active": 198,
+  "active_seats": [],
+  "last_completed": 323,
+  "last_completed_at": "2026-10-17T20:47:00Z",
+  "rotation_cursor": "wave-199: Naya Compounder/Naya Librarian/Naya Bridger (roster order)"
  },
  "lanes": {
   "free": [
+   "ACT",
    "BUILD",
    "GOVERN",
    "INFRA",
+   "KNOW",
    "LAW",
+   "LEARN",
    "MEMORY",
    "PRODUCT",
    "PROVE",
@@ -38,20 +37,7 @@
    "WIRE"
   ],
   "held": [],
-  "active": [
-   {
-    "lane": "ACT",
-    "since": "2026-10-17T20:11:25Z"
-   },
-   {
-    "lane": "KNOW",
-    "since": "2026-10-17T20:11:25Z"
-   },
-   {
-    "lane": "LEARN",
-    "since": "2026-10-17T20:11:25Z"
-   }
-  ]
+  "active": []
  },
  "queue": {
   "actionable": 0,
@@ -231,27 +217,27 @@
  "sections": {
   "tip": {
    "source": "git/refs/heads/main (+commits cross-check)",
-   "age_s": 36
+   "age_s": 53
   },
   "waves_lanes": {
    "source": "wave-state.json + naya-roster.json + area-staleness.json",
-   "age_s": 36
+   "age_s": 53
   },
   "queue": {
    "source": "bottleneck-queue.md",
-   "age_s": 36
+   "age_s": 53
   },
   "wip": {
    "source": "github-api: pulls + check-runs at exact heads",
-   "age_s": 36
+   "age_s": 53
   },
   "gates_tip": {
    "source": "github-api: check-runs at tip",
-   "age_s": 36
+   "age_s": 53
   },
   "blockers": {
    "source": "curated from venue + worker sign-outs this hour",
-   "age_s": 36
+   "age_s": 53
   }
  }
 }
