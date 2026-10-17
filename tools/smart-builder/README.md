@@ -5,6 +5,16 @@ We do it manually once to set it up; after that this pipeline builds every
 page, including itself. Same process for page #1 and page #1,000,000 —
 only the contract data changes.
 
+## Three libraries (Shawn's 20:43Z directive)
+
+- **PIECES** (`SMART-BUILDER/PIECES-REGISTRY.json`) — what you see. 35 real
+  pieces, dual labels (human + Naya-readable).
+- **FUNCTIONS** (`SMART-BUILDER/FUNCTIONS-REGISTRY.json`) — what you
+  activate. 15 pre-built function units, each wired once, activated per
+  page by declaration. Never hand-wired per page.
+- **CONTRACT** (the page-contract JSON) — binds them. Declares sections +
+  pieces + functions; the assembler does the rest.
+
 ## The pipeline (Shawn's six steps)
 
 1. **Contract in, machine-readable** — a page-contract JSON (see the

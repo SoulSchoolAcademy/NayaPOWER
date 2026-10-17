@@ -1,0 +1,429 @@
+{
+  "functions_registry_version": "1.0",
+  "generated_by": "build_registry.py (Team Nitro, seat WIRE/Omega)",
+  "functions": [
+    {
+      "naya_id": "fn.smart-mail",
+      "human_label": "Smart mail",
+      "category": "communication",
+      "aliases": [
+        "mail"
+      ],
+      "activation": {
+        "field": "functions",
+        "default_on": true
+      },
+      "requires_dom": [
+        "[data-fn-mount='mail']"
+      ],
+      "wiring_js": "(function () {\n  \"use strict\";\n  var FN = \"fn.smart-mail\";\n  function warn(m) { try { console.warn(\"[naya:\" + FN + \"] \" + m); } catch (e) {} }\n  var mount = document.querySelector(\"[data-fn-mount='mail']\");\n  if (!mount) { warn(\"mount [data-fn-mount='mail'] missing; skipping.\"); return; }\n  var drafts = [];\n  function status(msg, ok) {\n    var el = mount.querySelector(\"[data-mail-status]\");\n    if (el) { el.textContent = msg; el.setAttribute(\"data-state\", ok ? \"ok\" : \"warn\"); }\n  }\n  mount.innerHTML = \"\"\n    + \"<form data-mail-form novalidate>\"\n    + \"<label>To<input type='email' data-mail-to required placeholder='name@example.com'></label>\"\n    + \"<label>Subject<input type='text' data-mail-subject placeholder='Subject'></label>\"\n    + \"<label>Message<textarea data-mail-body rows='4' placeholder='Write it like you would say it...'></textarea></label>\"\n    + \"<button type='submit' class='naya-btn naya-btn--primary'>Send mail</button>\"\n    + \"<p data-mail-status role='status' aria-live='polite'></p>\"\n    + \"</form>\";\n  var form = mount.querySelector(\"[data-mail-form]\");\n  form.addEventListener(\"submit\", function (ev) {\n    ev.preventDefault();\n    var to = mount.querySelector(\"[data-mail-to]\").value.trim();\n    var subject = mount.querySelector(\"[data-mail-subject]\").value.trim();\n    var body = mount.querySelector(\"[data-mail-body]\").value.trim();\n    if (!to || to.indexOf(\"@\") < 1) { status(\"Add a valid recipient address first.\", false); return; }\n    var payload = { to: to, subject: subject, body: body };\n    var page = window.NAYA_PAGE || {};\n    if (page.bridge_url) {\n      status(\"Sending...\", true);\n      fetch(page.bridge_url + \"/mail/send\", {\n        method: \"POST\",\n        headers: { \"Content-Type\": \"application/json\" },\n        body: JSON.stringify(payload)\n      }).then(function (r) {\n        if (!r.ok) { throw new Error(\"HTTP \" + r.status); }\n        return r.json();\n      }).then(function () {\n        drafts.push(payload);\n        form.reset();\n        status(\"Sent.\", true);\n      }).catch(function (err) {\n        drafts.push(payload);\n        status(\"Could not reach the mail backend (\" + err.message + \"). Draft kept on this device.\", false);\n      });\n    } else {\n      drafts.push(payload);\n      status(\"Mail backend not configured (set window.NAYA_PAGE.bridge_url). Draft kept on this device.\", false);\n    }\n  });\n})();\n",
+      "spec_behaviors": [
+        "Compose form (to/subject/body) with inline validation",
+        "SEND posts to the declared transport endpoint when configured",
+        "Fail-closed when unconfigured: draft kept on device, clear message",
+        "Never claims a send the backend did not confirm"
+      ],
+      "status": "READY",
+      "transport_contract": {
+        "method": "POST",
+        "endpoint": "{bridge_url}/mail/send",
+        "body": {
+          "to": "string",
+          "subject": "string",
+          "body": "string"
+        },
+        "unconfigured": "fail-closed: draft kept on device, clear message"
+      }
+    },
+    {
+      "naya_id": "fn.spaces",
+      "human_label": "Spaces",
+      "category": "community",
+      "aliases": [
+        "spaces"
+      ],
+      "activation": {
+        "field": "functions",
+        "default_on": true
+      },
+      "requires_dom": [
+        "[data-fn-mount='spaces']"
+      ],
+      "wiring_js": "(function () {\n  \"use strict\";\n  var FN = \"fn.spaces\";\n  function warn(m) { try { console.warn(\"[naya:\" + FN + \"] \" + m); } catch (e) {} }\n  var mount = document.querySelector(\"[data-fn-mount='spaces']\");\n  if (!mount) { warn(\"mount [data-fn-mount='spaces'] missing; skipping.\"); return; }\n  var spaces = [];\n  try { spaces = JSON.parse(mount.getAttribute(\"data-spaces\") || \"[]\"); }\n  catch (e) { warn(\"data-spaces JSON invalid; using defaults.\"); }\n  if (!spaces.length) { spaces = [{ name: \"Builders\" }, { name: \"Learners\" }, { name: \"Makers\" }]; }\n  var joined = {};\n  var filter = \"\";\n  function render() {\n    var list = mount.querySelector(\"[data-spaces-list]\");\n    if (!list) { return; }\n    list.innerHTML = \"\";\n    spaces.forEach(function (sp, i) {\n      if (filter && String(sp.name).toLowerCase().indexOf(filter) < 0) { return; }\n      var card = document.createElement(\"div\");\n      card.setAttribute(\"data-space-card\", \"\");\n      var title = document.createElement(\"strong\");\n      title.textContent = sp.name;\n      var btn = document.createElement(\"button\");\n      btn.type = \"button\";\n      btn.className = \"naya-btn naya-btn--secondary\";\n      btn.textContent = joined[i] ? \"Leave\" : \"Join\";\n      btn.setAttribute(\"aria-pressed\", joined[i] ? \"true\" : \"false\");\n      (function (idx) {\n        btn.addEventListener(\"click\", function () { joined[idx] = !joined[idx]; render(); });\n      })(i);\n      card.appendChild(title);\n      card.appendChild(document.createTextNode(\" \"));\n      card.appendChild(btn);\n      list.appendChild(card);\n    });\n    var count = mount.querySelector(\"[data-spaces-count]\");\n    if (count) {\n      var n = Object.keys(joined).filter(function (k) { return joined[k]; }).length;\n      count.textContent = n + \" joined\";\n    }\n  }\n  mount.innerHTML = \"\"\n    + \"<label>Find a space<input type='search' data-spaces-filter placeholder='Search spaces...'></label>\"\n    + \"<p data-spaces-count role='status'></p>\"\n    + \"<div data-spaces-list></div>\";\n  mount.querySelector(\"[data-spaces-filter]\").addEventListener(\"input\", function (ev) {\n    filter = ev.target.value.trim().toLowerCase();\n    render();\n  });\n  render();\n})();\n",
+      "spec_behaviors": [
+        "Renders space cards from data-spaces JSON (or built-in defaults)",
+        "Join/Leave toggles per space with aria-pressed state",
+        "Live filter narrows the space list as you type",
+        "Joined count updates on every toggle"
+      ],
+      "status": "READY"
+    },
+    {
+      "naya_id": "fn.posting-feed",
+      "human_label": "Posting feed",
+      "category": "communication",
+      "aliases": [
+        "posting",
+        "feed"
+      ],
+      "activation": {
+        "field": "functions",
+        "default_on": true
+      },
+      "requires_dom": [
+        "[data-fn-mount='posting']"
+      ],
+      "wiring_js": "(function () {\n  \"use strict\";\n  var FN = \"fn.posting-feed\";\n  function warn(m) { try { console.warn(\"[naya:\" + FN + \"] \" + m); } catch (e) {} }\n  var mount = document.querySelector(\"[data-fn-mount='posting']\");\n  if (!mount) { warn(\"mount [data-fn-mount='posting'] missing; skipping.\"); return; }\n  var posts = [];\n  try { posts = JSON.parse(mount.getAttribute(\"data-posts\") || \"[]\"); }\n  catch (e) { warn(\"data-posts JSON invalid; starting empty.\"); }\n  function note(msg) {\n    var el = mount.querySelector(\"[data-feed-status]\");\n    if (el) { el.textContent = msg; }\n  }\n  function render() {\n    var list = mount.querySelector(\"[data-feed-list]\");\n    list.innerHTML = \"\";\n    posts.forEach(function (p) {\n      var item = document.createElement(\"article\");\n      var head = document.createElement(\"p\");\n      head.textContent = p.author + (p.synced === false ? \" - not synced\" : \"\");\n      var body = document.createElement(\"p\");\n      body.textContent = p.text;\n      item.appendChild(head);\n      item.appendChild(body);\n      list.appendChild(item);\n    });\n  }\n  mount.innerHTML = \"\"\n    + \"<form data-feed-form>\"\n    + \"<label>Share an update<textarea data-feed-text rows='3' placeholder='What is happening in your world?'></textarea></label>\"\n    + \"<button type='submit' class='naya-btn naya-btn--primary'>Post</button>\"\n    + \"<p data-feed-status role='status' aria-live='polite'></p>\"\n    + \"</form>\"\n    + \"<div data-feed-list></div>\";\n  mount.querySelector(\"[data-feed-form]\").addEventListener(\"submit\", function (ev) {\n    ev.preventDefault();\n    var text = mount.querySelector(\"[data-feed-text]\").value.trim();\n    if (!text) { note(\"Write something first.\"); return; }\n    var post = { author: \"You\", text: text, synced: true };\n    var page = window.NAYA_PAGE || {};\n    function publishLocal() {\n      posts.unshift(post);\n      render();\n      mount.querySelector(\"[data-feed-form]\").reset();\n    }\n    if (page.bridge_url) {\n      note(\"Posting...\");\n      fetch(page.bridge_url + \"/feed/post\", {\n        method: \"POST\",\n        headers: { \"Content-Type\": \"application/json\" },\n        body: JSON.stringify({ text: text })\n      }).then(function (r) {\n        if (!r.ok) { throw new Error(\"HTTP \" + r.status); }\n        return r.json();\n      }).then(function () {\n        publishLocal();\n        note(\"Posted.\");\n      }).catch(function (err) {\n        post.synced = false;\n        publishLocal();\n        note(\"Backend unreachable (\" + err.message + \"). Kept locally, marked not synced.\");\n      });\n    } else {\n      post.synced = false;\n      publishLocal();\n      note(\"No feed backend configured (window.NAYA_PAGE.bridge_url). Post kept on this device.\");\n    }\n  });\n  render();\n})();\n",
+      "spec_behaviors": [
+        "Composer with validation (empty post refused)",
+        "Posts render newest-first from data-posts or new submissions",
+        "POSTs to the declared transport when configured",
+        "Fail-closed: backend unreachable posts are marked 'not synced', never faked as live"
+      ],
+      "status": "READY",
+      "transport_contract": {
+        "method": "POST",
+        "endpoint": "{bridge_url}/feed/post",
+        "body": {
+          "text": "string"
+        },
+        "unconfigured": "fail-closed: post kept locally, marked not synced"
+      }
+    },
+    {
+      "naya_id": "fn.search",
+      "human_label": "Search",
+      "category": "discovery",
+      "aliases": [
+        "search"
+      ],
+      "activation": {
+        "field": "functions",
+        "default_on": false
+      },
+      "requires_dom": [
+        "[data-fn-mount='search']"
+      ],
+      "wiring_js": "(function () {\n  \"use strict\";\n  var FN = \"fn.search\";\n  function warn(m) { try { console.warn(\"[naya:\" + FN + \"] \" + m); } catch (e) {} }\n  var mount = document.querySelector(\"[data-fn-mount='search']\");\n  if (!mount) { warn(\"mount [data-fn-mount='search'] missing; skipping.\"); return; }\n  var targetSel = mount.getAttribute(\"data-search-target\") || \"[data-search-item]\";\n  var scopeSel = mount.getAttribute(\"data-search-scope\");\n  var scope = scopeSel ? document.querySelector(scopeSel) : document;\n  if (!scope) { warn(\"search scope '\" + scopeSel + \"' not found; skipping.\"); return; }\n  var input = mount.querySelector(\"input[type='search'], input[type='text']\");\n  if (!input) {\n    input = document.createElement(\"input\");\n    input.type = \"search\";\n    input.setAttribute(\"placeholder\", \"Search...\");\n    input.setAttribute(\"aria-label\", \"Search\");\n    mount.insertBefore(input, mount.firstChild);\n  }\n  function apply() {\n    var q = input.value.trim().toLowerCase();\n    var items = scope.querySelectorAll(targetSel);\n    var shown = 0;\n    for (var i = 0; i < items.length; i++) {\n      var hit = !q || items[i].textContent.toLowerCase().indexOf(q) >= 0;\n      items[i].hidden = !hit;\n      if (hit) { shown++; }\n    }\n    var count = mount.querySelector(\"[data-search-count]\");\n    if (count) { count.textContent = shown + \" of \" + items.length; }\n  }\n  input.addEventListener(\"input\", apply);\n  apply();\n})();\n",
+      "spec_behaviors": [
+        "Live-filters [data-search-item] targets (or data-search-target) by text",
+        "Scope defaults to the whole document, overridable via data-search-scope",
+        "Shows shown/total count when a [data-search-count] element exists",
+        "Case-insensitive, no-results simply hides all"
+      ],
+      "status": "READY"
+    },
+    {
+      "naya_id": "fn.gallery",
+      "human_label": "Gallery",
+      "category": "discovery",
+      "aliases": [
+        "gallery"
+      ],
+      "activation": {
+        "field": "functions",
+        "default_on": false
+      },
+      "requires_dom": [
+        "[data-fn-mount='gallery']"
+      ],
+      "wiring_js": "(function () {\n  \"use strict\";\n  var FN = \"fn.gallery\";\n  function warn(m) { try { console.warn(\"[naya:\" + FN + \"] \" + m); } catch (e) {} }\n  var mount = document.querySelector(\"[data-fn-mount='gallery']\");\n  if (!mount) { warn(\"mount [data-fn-mount='gallery'] missing; skipping.\"); return; }\n  var items = [];\n  try { items = JSON.parse(mount.getAttribute(\"data-gallery-items\") || \"[]\"); }\n  catch (e) { warn(\"data-gallery-items JSON invalid; nothing to show.\"); }\n  var selected = -1;\n  function render() {\n    mount.innerHTML = \"\";\n    items.forEach(function (it, i) {\n      var card = document.createElement(\"button\");\n      card.type = \"button\";\n      card.className = \"naya-btn naya-btn--ghost\";\n      card.setAttribute(\"aria-pressed\", i === selected ? \"true\" : \"false\");\n      var label = document.createElement(\"span\");\n      label.textContent = (it.label || \"Item \" + (i + 1)) + (it.note ? \" - \" + it.note : \"\");\n      card.appendChild(label);\n      (function (idx) {\n        card.addEventListener(\"click\", function () {\n          selected = idx;\n          render();\n          var detail = { functionId: FN, index: idx, item: items[idx] };\n          if (typeof CustomEvent === \"function\") {\n            mount.dispatchEvent(new CustomEvent(\"naya:gallery-select\", { bubbles: true, detail: detail }));\n          }\n        });\n      })(i);\n      mount.appendChild(card);\n    });\n  }\n  render();\n})();\n",
+      "spec_behaviors": [
+        "Renders item cards from data-gallery-items JSON",
+        "Click selects exactly one item (aria-pressed)",
+        "Emits naya:gallery-select CustomEvent with the chosen item",
+        "Deterministic render from data - no invented items"
+      ],
+      "status": "READY"
+    },
+    {
+      "naya_id": "fn.smart-tabs",
+      "human_label": "Smart tabs",
+      "category": "discovery",
+      "aliases": [
+        "tabs",
+        "smart-tabs"
+      ],
+      "activation": {
+        "field": "functions",
+        "default_on": false
+      },
+      "requires_dom": [
+        "[data-fn-mount='tabs']"
+      ],
+      "wiring_js": "(function () {\n  \"use strict\";\n  var FN = \"fn.smart-tabs\";\n  function warn(m) { try { console.warn(\"[naya:\" + FN + \"] \" + m); } catch (e) {} }\n  var mount = document.querySelector(\"[data-fn-mount='tabs']\");\n  if (!mount) { warn(\"mount [data-fn-mount='tabs'] missing; skipping.\"); return; }\n  var list = mount.querySelector(\"[role='tablist']\");\n  if (!list) { warn(\"no [role='tablist'] inside mount; skipping.\"); return; }\n  var tabs = list.querySelectorAll(\"[role='tab']\");\n  if (!tabs.length) { warn(\"tablist has no [role='tab'] children; skipping.\"); return; }\n  function panelFor(tab) {\n    var id = tab.getAttribute(\"aria-controls\");\n    return id ? mount.querySelector(\"#\" + id) : null;\n  }\n  function select(tab) {\n    for (var i = 0; i < tabs.length; i++) {\n      var active = tabs[i] === tab;\n      tabs[i].setAttribute(\"aria-selected\", active ? \"true\" : \"false\");\n      tabs[i].tabIndex = active ? 0 : -1;\n      var panel = panelFor(tabs[i]);\n      if (panel) { panel.hidden = !active; }\n    }\n  }\n  for (var i = 0; i < tabs.length; i++) {\n    (function (tab) {\n      tab.addEventListener(\"click\", function () { select(tab); });\n      tab.addEventListener(\"keydown\", function (ev) {\n        if (ev.key !== \"ArrowRight\" && ev.key !== \"ArrowLeft\") { return; }\n        ev.preventDefault();\n        var idx = Array.prototype.indexOf.call(tabs, tab);\n        var next = (idx + (ev.key === \"ArrowRight\" ? 1 : tabs.length - 1)) % tabs.length;\n        tabs[next].focus();\n        select(tabs[next]);\n      });\n    })(tabs[i]);\n  }\n  select(list.querySelector(\"[aria-selected='true']\") || tabs[0]);\n})();\n",
+      "spec_behaviors": [
+        "Wires any [role=tablist] found inside its mount",
+        "Click and ArrowLeft/ArrowRight switch tabs with correct aria-selected",
+        "Panels linked by aria-controls show/hide; roving tabindex",
+        "No-op with console warning when no tablist exists"
+      ],
+      "status": "READY"
+    },
+    {
+      "naya_id": "fn.reports",
+      "human_label": "Reports",
+      "category": "system",
+      "aliases": [
+        "reports"
+      ],
+      "activation": {
+        "field": "functions",
+        "default_on": true
+      },
+      "requires_dom": [
+        "[data-fn-mount='reports']"
+      ],
+      "wiring_js": "(function () {\n  \"use strict\";\n  var FN = \"fn.reports\";\n  function warn(m) { try { console.warn(\"[naya:\" + FN + \"] \" + m); } catch (e) {} }\n  var mount = document.querySelector(\"[data-fn-mount='reports']\");\n  if (!mount) { warn(\"mount [data-fn-mount='reports'] missing; skipping.\"); return; }\n  var data = {};\n  try { data = JSON.parse(mount.getAttribute(\"data-reports\") || \"{}\"); }\n  catch (e) { warn(\"data-reports JSON invalid; showing empty periods.\"); }\n  var periods = [\"daily\", \"weekly\", \"monthly\", \"yearly\"];\n  var active = periods[0];\n  function render() {\n    var body = mount.querySelector(\"[data-reports-body]\");\n    body.innerHTML = \"\";\n    var rows = data[active] || [];\n    var total = 0;\n    rows.forEach(function (r) {\n      total += Number(r.value) || 0;\n      var row = document.createElement(\"div\");\n      var k = document.createElement(\"strong\");\n      k.textContent = r.label;\n      var v = document.createElement(\"span\");\n      v.textContent = \": \" + String(r.value);\n      row.appendChild(k);\n      row.appendChild(v);\n      body.appendChild(row);\n    });\n    var t = document.createElement(\"p\");\n    t.textContent = \"Total: \" + total + (rows.length ? \" - average \" + (total / rows.length).toFixed(1) : \"\");\n    body.appendChild(t);\n    var btns = mount.querySelectorAll(\"[data-period]\");\n    for (var i = 0; i < btns.length; i++) {\n      btns[i].setAttribute(\"aria-pressed\", btns[i].getAttribute(\"data-period\") === active ? \"true\" : \"false\");\n    }\n  }\n  var bar = document.createElement(\"div\");\n  bar.setAttribute(\"role\", \"group\");\n  bar.setAttribute(\"aria-label\", \"Report period\");\n  periods.forEach(function (p) {\n    var b = document.createElement(\"button\");\n    b.type = \"button\";\n    b.className = \"naya-btn naya-btn--ghost\";\n    b.setAttribute(\"data-period\", p);\n    b.textContent = p.charAt(0).toUpperCase() + p.slice(1);\n    (function (period) {\n      b.addEventListener(\"click\", function () { active = period; render(); });\n    })(p);\n    bar.appendChild(b);\n  });\n  var body = document.createElement(\"div\");\n  body.setAttribute(\"data-reports-body\", \"\");\n  mount.appendChild(bar);\n  mount.appendChild(body);\n  render();\n})();\n",
+      "spec_behaviors": [
+        "Period switcher: daily / weekly / monthly / yearly",
+        "Rows render from data-reports JSON per period",
+        "Totals and averages are computed client-side from the data, not staged",
+        "Empty period shows an honest empty state"
+      ],
+      "status": "READY"
+    },
+    {
+      "naya_id": "fn.intelligence-today",
+      "human_label": "Intelligence today",
+      "category": "system",
+      "aliases": [
+        "today",
+        "intelligence-today"
+      ],
+      "activation": {
+        "field": "functions",
+        "default_on": false
+      },
+      "requires_dom": [
+        "[data-fn-mount='today']"
+      ],
+      "wiring_js": "(function () {\n  \"use strict\";\n  var FN = \"fn.intelligence-today\";\n  function warn(m) { try { console.warn(\"[naya:\" + FN + \"] \" + m); } catch (e) {} }\n  var mount = document.querySelector(\"[data-fn-mount='today']\");\n  if (!mount) { warn(\"mount [data-fn-mount='today'] missing; skipping.\"); return; }\n  var items = [];\n  try { items = JSON.parse(mount.getAttribute(\"data-today-items\") || \"[]\"); }\n  catch (e) { warn(\"data-today-items JSON invalid; nothing to show.\"); }\n  var dismissed = {};\n  function render() {\n    var list = mount.querySelector(\"[data-today-list]\");\n    list.innerHTML = \"\";\n    var shown = 0;\n    items.forEach(function (it, i) {\n      if (dismissed[i]) { return; }\n      shown++;\n      var li = document.createElement(\"li\");\n      var text = document.createElement(\"span\");\n      text.textContent = it;\n      var btn = document.createElement(\"button\");\n      btn.type = \"button\";\n      btn.className = \"naya-btn naya-btn--ghost\";\n      btn.setAttribute(\"aria-label\", \"Dismiss highlight\");\n      btn.textContent = \"Dismiss\";\n      (function (idx) {\n        btn.addEventListener(\"click\", function () { dismissed[idx] = true; render(); });\n      })(i);\n      li.appendChild(text);\n      li.appendChild(document.createTextNode(\" \"));\n      li.appendChild(btn);\n      list.appendChild(li);\n    });\n    if (!shown) { list.innerHTML = \"<li>All caught up.</li>\"; }\n    var badge = mount.querySelector(\"[data-today-count]\");\n    if (badge) { badge.textContent = shown + \" highlight\" + (shown === 1 ? \"\" : \"s\"); }\n  }\n  mount.innerHTML = \"<p data-today-count role='status'></p><ul data-today-list></ul>\";\n  render();\n})();\n",
+      "spec_behaviors": [
+        "Renders today's highlights from data-today-items JSON",
+        "Each highlight is dismissible; count badge updates",
+        "Empty state reads 'All caught up.'"
+      ],
+      "status": "READY"
+    },
+    {
+      "naya_id": "fn.contacts",
+      "human_label": "Contacts",
+      "category": "community",
+      "aliases": [
+        "contacts"
+      ],
+      "activation": {
+        "field": "functions",
+        "default_on": false
+      },
+      "requires_dom": [
+        "[data-fn-mount='contacts']"
+      ],
+      "wiring_js": "(function () {\n  \"use strict\";\n  var FN = \"fn.contacts\";\n  function warn(m) { try { console.warn(\"[naya:\" + FN + \"] \" + m); } catch (e) {} }\n  var mount = document.querySelector(\"[data-fn-mount='contacts']\");\n  if (!mount) { warn(\"mount [data-fn-mount='contacts'] missing; skipping.\"); return; }\n  var contacts = [];\n  try { contacts = JSON.parse(mount.getAttribute(\"data-contacts\") || \"[]\"); }\n  catch (e) { warn(\"data-contacts JSON invalid; starting empty.\"); }\n  var filter = \"\";\n  function render() {\n    var list = mount.querySelector(\"[data-contacts-list]\");\n    list.innerHTML = \"\";\n    contacts.forEach(function (c) {\n      if (filter && (String(c.name) + \" \" + String(c.note || \"\")).toLowerCase().indexOf(filter) < 0) { return; }\n      var li = document.createElement(\"li\");\n      var strong = document.createElement(\"strong\");\n      strong.textContent = c.name;\n      li.appendChild(strong);\n      if (c.note) {\n        var span = document.createElement(\"span\");\n        span.textContent = \" - \" + c.note;\n        li.appendChild(span);\n      }\n      list.appendChild(li);\n    });\n    var count = mount.querySelector(\"[data-contacts-count]\");\n    if (count) { count.textContent = contacts.length + \" contact\" + (contacts.length === 1 ? \"\" : \"s\"); }\n  }\n  mount.innerHTML = \"\"\n    + \"<label>Search<input type='search' data-contacts-filter placeholder='Search contacts...'></label>\"\n    + \"<form data-contacts-form>\"\n    + \"<label>Name<input type='text' data-contact-name required></label>\"\n    + \"<label>Note<input type='text' data-contact-note placeholder='How you know them'></label>\"\n    + \"<button type='submit' class='naya-btn naya-btn--primary'>Add contact</button>\"\n    + \"</form>\"\n    + \"<p data-contacts-count role='status'></p><ul data-contacts-list></ul>\";\n  mount.querySelector(\"[data-contacts-filter]\").addEventListener(\"input\", function (ev) {\n    filter = ev.target.value.trim().toLowerCase();\n    render();\n  });\n  mount.querySelector(\"[data-contacts-form]\").addEventListener(\"submit\", function (ev) {\n    ev.preventDefault();\n    var name = mount.querySelector(\"[data-contact-name]\").value.trim();\n    var note = mount.querySelector(\"[data-contact-note]\").value.trim();\n    if (!name) { return; }\n    var c = { name: name, note: note };\n    var page = window.NAYA_PAGE || {};\n    if (page.bridge_url) {\n      fetch(page.bridge_url + \"/contacts/add\", {\n        method: \"POST\",\n        headers: { \"Content-Type\": \"application/json\" },\n        body: JSON.stringify(c)\n      }).then(function (r) {\n        if (!r.ok) { throw new Error(\"HTTP \" + r.status); }\n        return r.json();\n      }).catch(function (err) {\n        warn(\"contacts backend unreachable (\" + err.message + \"); kept locally.\");\n      });\n    }\n    contacts.push(c);\n    mount.querySelector(\"[data-contacts-form]\").reset();\n    render();\n  });\n  render();\n})();\n",
+      "spec_behaviors": [
+        "Add-contact form with required name",
+        "Live search filter across name + note",
+        "Count badge updates on every add",
+        "Best-effort POST to transport when configured; always kept locally"
+      ],
+      "status": "READY",
+      "transport_contract": {
+        "method": "POST",
+        "endpoint": "{bridge_url}/contacts/add",
+        "body": {
+          "name": "string",
+          "note": "string"
+        },
+        "unconfigured": "kept locally only"
+      }
+    },
+    {
+      "naya_id": "fn.booking",
+      "human_label": "Booking",
+      "category": "commerce",
+      "aliases": [
+        "booking"
+      ],
+      "activation": {
+        "field": "functions",
+        "default_on": false
+      },
+      "requires_dom": [
+        "[data-fn-mount='booking']"
+      ],
+      "wiring_js": "(function () {\n  \"use strict\";\n  var FN = \"fn.booking\";\n  function warn(m) { try { console.warn(\"[naya:\" + FN + \"] \" + m); } catch (e) {} }\n  var mount = document.querySelector(\"[data-fn-mount='booking']\");\n  if (!mount) { warn(\"mount [data-fn-mount='booking'] missing; skipping.\"); return; }\n  var slots = [];\n  try { slots = JSON.parse(mount.getAttribute(\"data-slots\") || \"[]\"); }\n  catch (e) { warn(\"data-slots JSON invalid; using defaults.\"); }\n  if (!slots.length) { slots = [\"09:00\", \"11:00\", \"14:00\", \"16:00\"]; }\n  var chosen = null;\n  var saved = [];\n  function status(msg, ok) {\n    var el = mount.querySelector(\"[data-booking-status]\");\n    if (el) { el.textContent = msg; el.setAttribute(\"data-state\", ok ? \"ok\" : \"warn\"); }\n  }\n  function renderSaved() {\n    var list = mount.querySelector(\"[data-booking-saved]\");\n    list.innerHTML = \"\";\n    saved.forEach(function (s) {\n      var li = document.createElement(\"li\");\n      li.textContent = s.date + \" \" + s.slot + \" - \" + s.name + (s.confirmed ? \" (confirmed)\" : \" (saved on this device)\");\n      list.appendChild(li);\n    });\n  }\n  var html = \"<label>Date<input type='date' data-booking-date required></label>\"\n    + \"<div data-booking-slots role='group' aria-label='Time slots'>\";\n  slots.forEach(function (s) {\n    html += \"<button type='button' class='naya-btn naya-btn--ghost' data-slot='\" + s + \"'>\" + s + \"</button>\";\n  });\n  html += \"</div>\"\n    + \"<label>Name<input type='text' data-booking-name required placeholder='Your name'></label>\"\n    + \"<button type='button' class='naya-btn naya-btn--primary' data-booking-confirm>Confirm booking</button>\"\n    + \"<p data-booking-status role='status' aria-live='polite'></p>\"\n    + \"<ul data-booking-saved></ul>\";\n  mount.innerHTML = html;\n  var slotBtns = mount.querySelectorAll(\"[data-slot]\");\n  for (var i = 0; i < slotBtns.length; i++) {\n    (function (b) {\n      b.addEventListener(\"click\", function () {\n        chosen = b.getAttribute(\"data-slot\");\n        for (var j = 0; j < slotBtns.length; j++) {\n          slotBtns[j].setAttribute(\"aria-pressed\", slotBtns[j] === b ? \"true\" : \"false\");\n        }\n      });\n    })(slotBtns[i]);\n  }\n  mount.querySelector(\"[data-booking-confirm]\").addEventListener(\"click\", function () {\n    var date = mount.querySelector(\"[data-booking-date]\").value;\n    var name = mount.querySelector(\"[data-booking-name]\").value.trim();\n    if (!date || !chosen || !name) { status(\"Pick a date, a time slot, and add your name.\", false); return; }\n    var req = { date: date, slot: chosen, name: name, confirmed: false };\n    var page = window.NAYA_PAGE || {};\n    function keepLocal(confirmed) {\n      req.confirmed = confirmed;\n      saved.push(req);\n      renderSaved();\n    }\n    if (page.bridge_url) {\n      status(\"Confirming...\", true);\n      fetch(page.bridge_url + \"/booking/confirm\", {\n        method: \"POST\",\n        headers: { \"Content-Type\": \"application/json\" },\n        body: JSON.stringify(req)\n      }).then(function (r) {\n        if (!r.ok) { throw new Error(\"HTTP \" + r.status); }\n        return r.json();\n      }).then(function () {\n        keepLocal(true);\n        status(\"Booked.\", true);\n      }).catch(function (err) {\n        keepLocal(false);\n        status(\"Booking backend unreachable (\" + err.message + \"). Request saved on this device.\", false);\n      });\n    } else {\n      keepLocal(false);\n      status(\"No booking backend configured (window.NAYA_PAGE.bridge_url). Request saved on this device.\", false);\n    }\n  });\n})();\n",
+      "spec_behaviors": [
+        "Date picker plus slot buttons from data-slots JSON",
+        "Confirm requires date + slot + name (validated inline)",
+        "CONFIRM posts to the declared transport when configured",
+        "Fail-closed: requests saved on device with '(saved on this device)' label"
+      ],
+      "status": "READY",
+      "transport_contract": {
+        "method": "POST",
+        "endpoint": "{bridge_url}/booking/confirm",
+        "body": {
+          "date": "YYYY-MM-DD",
+          "slot": "string",
+          "name": "string"
+        },
+        "unconfigured": "fail-closed: request saved on device, clear message"
+      }
+    },
+    {
+      "naya_id": "fn.rsvp",
+      "human_label": "RSVP",
+      "category": "community",
+      "aliases": [
+        "rsvp"
+      ],
+      "activation": {
+        "field": "functions",
+        "default_on": false
+      },
+      "requires_dom": [
+        "[data-fn-mount='rsvp']"
+      ],
+      "wiring_js": "(function () {\n  \"use strict\";\n  var FN = \"fn.rsvp\";\n  function warn(m) { try { console.warn(\"[naya:\" + FN + \"] \" + m); } catch (e) {} }\n  var mount = document.querySelector(\"[data-fn-mount='rsvp']\");\n  if (!mount) { warn(\"mount [data-fn-mount='rsvp'] missing; skipping.\"); return; }\n  var attendees = [];\n  function tally() {\n    var yes = attendees.filter(function (a) { return a.attending; }).length;\n    var guests = attendees.reduce(function (n, a) { return n + (a.attending ? (Number(a.count) || 1) : 0); }, 0);\n    var el = mount.querySelector(\"[data-rsvp-tally]\");\n    if (el) { el.textContent = yes + \" attending - \" + guests + \" guests\"; }\n  }\n  function status(msg) {\n    var el = mount.querySelector(\"[data-rsvp-status]\");\n    if (el) { el.textContent = msg; }\n  }\n  mount.innerHTML = \"\"\n    + \"<form data-rsvp-form>\"\n    + \"<label>Name<input type='text' data-rsvp-name required></label>\"\n    + \"<label>Guests<input type='number' data-rsvp-count min='1' value='1'></label>\"\n    + \"<label><input type='checkbox' data-rsvp-yes checked> I will attend</label>\"\n    + \"<button type='submit' class='naya-btn naya-btn--primary'>RSVP</button>\"\n    + \"<p data-rsvp-status role='status' aria-live='polite'></p>\"\n    + \"</form>\"\n    + \"<p data-rsvp-tally role='status'></p><ul data-rsvp-list></ul>\";\n  mount.querySelector(\"[data-rsvp-form]\").addEventListener(\"submit\", function (ev) {\n    ev.preventDefault();\n    var a = {\n      name: mount.querySelector(\"[data-rsvp-name]\").value.trim(),\n      count: mount.querySelector(\"[data-rsvp-count]\").value,\n      attending: mount.querySelector(\"[data-rsvp-yes]\").checked\n    };\n    if (!a.name) { status(\"Add your name first.\"); return; }\n    var page = window.NAYA_PAGE || {};\n    if (page.bridge_url) {\n      fetch(page.bridge_url + \"/rsvp/submit\", {\n        method: \"POST\",\n        headers: { \"Content-Type\": \"application/json\" },\n        body: JSON.stringify(a)\n      }).then(function (r) {\n        if (!r.ok) { throw new Error(\"HTTP \" + r.status); }\n        return r.json();\n      }).catch(function (err) {\n        warn(\"rsvp backend unreachable (\" + err.message + \"); kept locally.\");\n      });\n    }\n    attendees.push(a);\n    var li = document.createElement(\"li\");\n    li.textContent = a.name + (a.attending ? \" - attending\" : \" - can't make it\") + \" (\" + (Number(a.count) || 1) + \")\";\n    mount.querySelector(\"[data-rsvp-list]\").appendChild(li);\n    mount.querySelector(\"[data-rsvp-form]\").reset();\n    tally();\n    status(\"RSVP recorded\" + (page.bridge_url ? \".\" : \" on this device (no backend configured).\"));\n  });\n  tally();\n})();\n",
+      "spec_behaviors": [
+        "Name + guest count + attending toggle form",
+        "Attendee list appends in order with live tally (attending / guests)",
+        "Best-effort POST to transport when configured; always kept locally"
+      ],
+      "status": "READY",
+      "transport_contract": {
+        "method": "POST",
+        "endpoint": "{bridge_url}/rsvp/submit",
+        "body": {
+          "name": "string",
+          "count": "number",
+          "attending": "boolean"
+        },
+        "unconfigured": "kept locally only"
+      }
+    },
+    {
+      "naya_id": "fn.countdown",
+      "human_label": "Countdown",
+      "category": "system",
+      "aliases": [
+        "countdown"
+      ],
+      "activation": {
+        "field": "functions",
+        "default_on": false
+      },
+      "requires_dom": [
+        "[data-fn-mount='countdown']"
+      ],
+      "wiring_js": "(function () {\n  \"use strict\";\n  var FN = \"fn.countdown\";\n  function warn(m) { try { console.warn(\"[naya:\" + FN + \"] \" + m); } catch (e) {} }\n  var mount = document.querySelector(\"[data-fn-mount='countdown']\");\n  if (!mount) { warn(\"mount [data-fn-mount='countdown'] missing; skipping.\"); return; }\n  var target = mount.getAttribute(\"data-target\");\n  var t = Date.parse(target || \"\");\n  if (!target || isNaN(t)) {\n    warn(\"data-target missing or not a valid date (\" + target + \"); skipping.\");\n    return;\n  }\n  function pad(n) { return (n < 10 ? \"0\" : \"\") + n; }\n  function tick() {\n    var diff = t - Date.now();\n    if (diff <= 0) { mount.textContent = \"It's time.\"; return false; }\n    var s = Math.floor(diff / 1000);\n    var d = Math.floor(s / 86400); s -= d * 86400;\n    var h = Math.floor(s / 3600); s -= h * 3600;\n    var m = Math.floor(s / 60); s -= m * 60;\n    mount.textContent = d + \"d \" + pad(h) + \"h \" + pad(m) + \"m \" + pad(s) + \"s\";\n    return true;\n  }\n  if (tick()) { setInterval(tick, 1000); }\n})();\n",
+      "spec_behaviors": [
+        "Ticks every second toward the data-target date",
+        "Renders Nd HHh MMm SSs, zero-padded",
+        "Shows \"It's time.\" when the target passes",
+        "Invalid/missing data-target: console warning, no crash"
+      ],
+      "status": "READY"
+    },
+    {
+      "naya_id": "fn.product-checkout",
+      "human_label": "Product checkout",
+      "category": "commerce",
+      "aliases": [
+        "checkout",
+        "product-checkout"
+      ],
+      "activation": {
+        "field": "functions",
+        "default_on": false
+      },
+      "requires_dom": [
+        "[data-fn-mount='checkout']"
+      ],
+      "wiring_js": "(function () {\n  \"use strict\";\n  var FN = \"fn.product-checkout\";\n  function warn(m) { try { console.warn(\"[naya:\" + FN + \"] \" + m); } catch (e) {} }\n  var mount = document.querySelector(\"[data-fn-mount='checkout']\");\n  if (!mount) { warn(\"mount [data-fn-mount='checkout'] missing; skipping.\"); return; }\n  var products = [];\n  try { products = JSON.parse(mount.getAttribute(\"data-products\") || \"[]\"); }\n  catch (e) { warn(\"data-products JSON invalid.\"); }\n  if (!products.length) { warn(\"no products in data-products; nothing to sell.\"); return; }\n  function money(cents) { return \"$\" + (cents / 100).toFixed(2); }\n  var qty = {};\n  function total() {\n    return products.reduce(function (n, p, i) {\n      return n + (Number(p.price_cents) || 0) * (qty[i] || 0);\n    }, 0);\n  }\n  function renderSummary() {\n    var el = mount.querySelector(\"[data-checkout-total]\");\n    if (el) { el.textContent = \"Total: \" + money(total()); }\n  }\n  function status(msg, ok) {\n    var el = mount.querySelector(\"[data-checkout-status]\");\n    if (el) { el.textContent = msg; el.setAttribute(\"data-state\", ok ? \"ok\" : \"warn\"); }\n  }\n  var list = document.createElement(\"div\");\n  list.setAttribute(\"data-checkout-list\", \"\");\n  products.forEach(function (p, i) {\n    var row = document.createElement(\"div\");\n    var name = document.createElement(\"strong\");\n    name.textContent = p.name;\n    var price = document.createElement(\"span\");\n    price.textContent = \" \" + money(Number(p.price_cents) || 0) + \" \";\n    var minus = document.createElement(\"button\");\n    minus.type = \"button\";\n    minus.className = \"naya-btn naya-btn--ghost\";\n    minus.textContent = \"-\";\n    minus.setAttribute(\"aria-label\", \"Remove one \" + p.name);\n    var q = document.createElement(\"span\");\n    q.textContent = \" 0 \";\n    var plus = document.createElement(\"button\");\n    plus.type = \"button\";\n    plus.className = \"naya-btn naya-btn--ghost\";\n    plus.textContent = \"+\";\n    plus.setAttribute(\"aria-label\", \"Add one \" + p.name);\n    (function (idx, qEl) {\n      minus.addEventListener(\"click\", function () {\n        qty[idx] = Math.max(0, (qty[idx] || 0) - 1);\n        qEl.textContent = \" \" + qty[idx] + \" \";\n        renderSummary();\n      });\n      plus.addEventListener(\"click\", function () {\n        qty[idx] = (qty[idx] || 0) + 1;\n        qEl.textContent = \" \" + qty[idx] + \" \";\n        renderSummary();\n      });\n    })(i, q);\n    row.appendChild(name);\n    row.appendChild(price);\n    row.appendChild(minus);\n    row.appendChild(q);\n    row.appendChild(plus);\n    list.appendChild(row);\n  });\n  var summary = document.createElement(\"p\");\n  summary.setAttribute(\"data-checkout-total\", \"\");\n  summary.setAttribute(\"role\", \"status\");\n  var pay = document.createElement(\"button\");\n  pay.type = \"button\";\n  pay.className = \"naya-btn naya-btn--primary\";\n  pay.textContent = \"Checkout\";\n  var st = document.createElement(\"p\");\n  st.setAttribute(\"data-checkout-status\", \"\");\n  st.setAttribute(\"role\", \"status\");\n  st.setAttribute(\"aria-live\", \"polite\");\n  pay.addEventListener(\"click\", function () {\n    var lines = [];\n    products.forEach(function (p, i) {\n      if (qty[i] > 0) { lines.push({ name: p.name, price_cents: Number(p.price_cents) || 0, qty: qty[i] }); }\n    });\n    if (!lines.length) { status(\"Add at least one item first.\", false); return; }\n    var page = window.NAYA_PAGE || {};\n    if (page.bridge_url) {\n      status(\"Starting checkout...\", true);\n      fetch(page.bridge_url + \"/checkout/create\", {\n        method: \"POST\",\n        headers: { \"Content-Type\": \"application/json\" },\n        body: JSON.stringify({ items: lines, total_cents: total() })\n      }).then(function (r) {\n        if (!r.ok) { throw new Error(\"HTTP \" + r.status); }\n        return r.json();\n      }).then(function (resp) {\n        if (resp && resp.checkout_url) { window.location.href = resp.checkout_url; }\n        else { status(\"Checkout created. Complete payment on the provider page.\", true); }\n      }).catch(function (err) {\n        status(\"Checkout backend unreachable (\" + err.message + \"). No charge was made.\", false);\n      });\n    } else {\n      status(\"Checkout is not connected (window.NAYA_PAGE.bridge_url is unset). No charge was made - connect a payment backend to go live.\", false);\n    }\n  });\n  mount.appendChild(list);\n  mount.appendChild(summary);\n  mount.appendChild(pay);\n  mount.appendChild(st);\n  renderSummary();\n})();\n",
+      "spec_behaviors": [
+        "Product cards render from data-products JSON (name + price_cents)",
+        "Quantity steppers with computed order total (money math, not staged)",
+        "PAY posts the order to the declared transport when configured",
+        "Fail-closed: unconfigured backend shows 'No charge was made' - never fakes a charge"
+      ],
+      "status": "READY",
+      "transport_contract": {
+        "method": "POST",
+        "endpoint": "{bridge_url}/checkout/create",
+        "body": {
+          "items": [
+            {
+              "name": "string",
+              "price_cents": "number",
+              "qty": "number"
+            }
+          ],
+          "total_cents": "number"
+        },
+        "response": {
+          "checkout_url": "string (optional)"
+        },
+        "unconfigured": "fail-closed: 'No charge was made', clear message"
+      }
+    },
+    {
+      "naya_id": "fn.signup",
+      "human_label": "Signup",
+      "category": "community",
+      "aliases": [
+        "signup"
+      ],
+      "activation": {
+        "field": "functions",
+        "default_on": false
+      },
+      "requires_dom": [
+        "[data-fn-mount='signup']"
+      ],
+      "wiring_js": "(function () {\n  \"use strict\";\n  var FN = \"fn.signup\";\n  function warn(m) { try { console.warn(\"[naya:\" + FN + \"] \" + m); } catch (e) {} }\n  var mount = document.querySelector(\"[data-fn-mount='signup']\");\n  if (!mount) { warn(\"mount [data-fn-mount='signup'] missing; skipping.\"); return; }\n  var listName = mount.getAttribute(\"data-list\") || \"updates\";\n  function status(msg, ok) {\n    var el = mount.querySelector(\"[data-signup-status]\");\n    if (el) { el.textContent = msg; el.setAttribute(\"data-state\", ok ? \"ok\" : \"warn\"); }\n  }\n  mount.innerHTML = \"\"\n    + \"<form data-signup-form novalidate>\"\n    + \"<label>Name<input type='text' data-signup-name placeholder='Your name'></label>\"\n    + \"<label>Email<input type='email' data-signup-email required placeholder='you@example.com'></label>\"\n    + \"<button type='submit' class='naya-btn naya-btn--primary'>Sign up</button>\"\n    + \"<p data-signup-status role='status' aria-live='polite'></p>\"\n    + \"</form>\";\n  mount.querySelector(\"[data-signup-form]\").addEventListener(\"submit\", function (ev) {\n    ev.preventDefault();\n    var email = mount.querySelector(\"[data-signup-email]\").value.trim();\n    var name = mount.querySelector(\"[data-signup-name]\").value.trim();\n    if (!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email)) {\n      status(\"Enter a valid email address.\", false);\n      return;\n    }\n    var payload = { name: name, email: email, list: listName };\n    var page = window.NAYA_PAGE || {};\n    if (page.bridge_url) {\n      fetch(page.bridge_url + \"/signup/submit\", {\n        method: \"POST\",\n        headers: { \"Content-Type\": \"application/json\" },\n        body: JSON.stringify(payload)\n      }).then(function (r) {\n        if (!r.ok) { throw new Error(\"HTTP \" + r.status); }\n        return r.json();\n      }).then(function () {\n        status(\"You're in. Welcome\" + (name ? \", \" + name : \"\") + \".\", true);\n      }).catch(function (err) {\n        status(\"Signup backend unreachable (\" + err.message + \"). Please try again later.\", false);\n      });\n    } else {\n      status(\"You're on the list (kept on this device - no signup backend configured).\", true);\n    }\n  });\n})();\n",
+      "spec_behaviors": [
+        "Name + email form with client-side email format validation",
+        "Success message personalizes with the name",
+        "POSTs to the declared transport when configured",
+        "Fail-closed: backend errors surface as a clear retry message"
+      ],
+      "status": "READY",
+      "transport_contract": {
+        "method": "POST",
+        "endpoint": "{bridge_url}/signup/submit",
+        "body": {
+          "name": "string",
+          "email": "string",
+          "list": "string"
+        },
+        "unconfigured": "kept on device with honest notice"
+      }
+    },
+    {
+      "naya_id": "fn.pwa-install",
+      "human_label": "PWA install",
+      "category": "system",
+      "aliases": [
+        "pwa",
+        "install"
+      ],
+      "activation": {
+        "field": "functions",
+        "default_on": false
+      },
+      "requires_dom": [
+        "[data-fn-mount='pwa']"
+      ],
+      "wiring_js": "(function () {\n  \"use strict\";\n  var FN = \"fn.pwa-install\";\n  function warn(m) { try { console.warn(\"[naya:\" + FN + \"] \" + m); } catch (e) {} }\n  var mount = document.querySelector(\"[data-fn-mount='pwa']\");\n  if (!mount) { warn(\"mount [data-fn-mount='pwa'] missing; skipping.\"); return; }\n  var deferred = null;\n  var btn = document.createElement(\"button\");\n  btn.type = \"button\";\n  btn.className = \"naya-btn naya-btn--primary\";\n  btn.textContent = \"Install app\";\n  var note = document.createElement(\"p\");\n  note.setAttribute(\"role\", \"status\");\n  function installed() {\n    return (window.matchMedia && window.matchMedia(\"(display-mode: standalone)\").matches)\n      || window.navigator.standalone === true;\n  }\n  function refresh() {\n    if (installed()) {\n      btn.disabled = true;\n      btn.textContent = \"Installed\";\n      note.textContent = \"This app is installed.\";\n    } else if (!deferred) {\n      note.textContent = \"To install: open your browser menu and choose Add to Home Screen / Install app. The intake icon step provides the app icon.\";\n    } else {\n      note.textContent = \"\";\n    }\n  }\n  window.addEventListener(\"beforeinstallprompt\", function (ev) {\n    ev.preventDefault();\n    deferred = ev;\n    refresh();\n  });\n  window.addEventListener(\"appinstalled\", function () {\n    deferred = null;\n    refresh();\n  });\n  btn.addEventListener(\"click\", function () {\n    if (!deferred) { refresh(); return; }\n    deferred.prompt();\n    if (deferred.userChoice && typeof deferred.userChoice.then === \"function\") {\n      deferred.userChoice.then(function () { deferred = null; refresh(); });\n    } else {\n      deferred = null;\n      refresh();\n    }\n  });\n  mount.appendChild(btn);\n  mount.appendChild(note);\n  refresh();\n})();\n",
+      "spec_behaviors": [
+        "Captures beforeinstallprompt (preventDefault) for the real install flow",
+        "Install button triggers prompt(); handles the userChoice result",
+        "Shows 'Installed' state in standalone/display-mode",
+        "Fallback install instructions when no prompt is available - never a dead button"
+      ],
+      "status": "READY"
+    }
+  ]
+}

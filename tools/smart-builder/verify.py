@@ -24,7 +24,8 @@ SHIP_THRESHOLD = 9.0
 # ---------------------------------------------------------------------------
 class PageParser(HTMLParser):
     """Collects the elements the gate inspects: buttons, anchors, inputs,
-    ids, data-naya-piece markers, inline CSS, and script text."""
+    ids, data-naya-piece markers, data-naya-fn script stamps, inline CSS,
+    and script text."""
 
     def __init__(self):
         super().__init__(convert_charrefs=True)
@@ -33,6 +34,7 @@ class PageParser(HTMLParser):
         self.inputs = []       # {attrs, line, wrapped_in_label}
         self.ids = {}          # id -> tag
         self.pieces = []       # {value, tag, line} for data-naya-piece
+        self.fn_scripts = []   # {naya_id, line} for <script data-naya-fn>
         self.styles = []       # css text from <style> blocks
         self.style_attrs = []  # inline style attribute values
         self.scripts = []      # script text
@@ -64,6 +66,9 @@ class PageParser(HTMLParser):
         if "data-naya-piece" in attrs:
             self.pieces.append({"value": attrs.get("data-naya-piece") or "",
                                 "tag": tag, "line": line})
+        if tag == "script" and attrs.get("data-naya-fn"):
+            self.fn_scripts.append({"naya_id": attrs["data-naya-fn"],
+                                    "line": line})
         if attrs.get("style"):
             self.style_attrs.append(attrs["style"])
         if tag == "style":
@@ -109,6 +114,34 @@ def classes_of(attrs):
     return set((attrs.get("class") or "").split())
 
 
+SELECTOR_RE = re.compile(r"^\[([A-Za-z0-9_-]+)=['\"]([^'\"]*)['\"]\]$")
+
+
+def parse_selector(selector):
+    m = SELECTOR_RE.match(selector.strip())
+    return (m.group(1), m.group(2)) if m else None
+
+
+def selector_present(html_text, selector):
+    parsed = parse_selector(selector)
+    if parsed is None:
+        return False
+    attr, value = parsed
+    pat = re.compile(r'%s\s*=\s*["\']%s["\']' % (re.escape(attr), re.escape(value)))
+    return pat.search(html_text) is not None
+
+
+def extract_page_config(scripts):
+    """Pull the window.NAYA_PAGE JSON object out of the page scripts."""
+    m = re.search(r"window\.NAYA_PAGE\s*=\s*(\{.*?\});", scripts, re.DOTALL)
+    if not m:
+        return {}
+    try:
+        return json.loads(m.group(1))
+    except (json.JSONDecodeError, ValueError):
+        return {}
+
+
 # ---------------------------------------------------------------------------
 # The gate
 # ---------------------------------------------------------------------------
@@ -117,7 +150,8 @@ class Scorecard:
         self.why_not_10 = []
         self.deduction_by_check = {"design_laws": 0.0,
                                    "click_everything": 0.0,
-                                   "contract_traceability": 0.0}
+                                   "contract_traceability": 0.0,
+                                   "functions": 0.0}
 
     def deduct(self, check, amount, rule, element, detail):
         self.why_not_10.append({"rule": rule, "element": element,
@@ -160,13 +194,23 @@ def normalize_registry(raw):
     return pieces if isinstance(pieces, dict) else {}
 
 
+def normalize_functions_registry(raw):
+    """Functions registry maps naya_id -> function dict (list form)."""
+    funcs = raw.get("functions", []) if isinstance(raw, dict) else []
+    norm = {}
+    for fn in funcs:
+        if isinstance(fn, dict) and fn.get("naya_id"):
+            norm[fn["naya_id"]] = fn
+    return norm
+
+
 def normalize_contract(raw):
     """Contract carries sections: [{section_id, pieces:[...]}]."""
     sections = raw.get("sections", []) if isinstance(raw, dict) else []
     return [s for s in sections if isinstance(s, dict)]
 
 
-def run_checks(page, contract, registry):
+def run_checks(page, contract, registry, html_text, fn_registry):
     card = Scorecard()
 
     button_piece_classes = set()
@@ -297,6 +341,53 @@ def run_checks(page, contract, registry):
     for rule, element, detail in tviol[:3]:
         card.deduct("contract_traceability", 1.0, rule, element, detail)
 
+    # -- Check 4: activated functions (1.0/violation, max 3.0) ---------------
+    # Activated function ids come from window.NAYA_PAGE (assembler-written).
+    # 4a: wiring script with the data-naya-fn stamp must be present.
+    # 4b: every requires_dom selector must match an element in the HTML.
+    #     (Checked against the DOM-visible markup only -- script bodies are
+    #     stripped, since wiring units quote their own mount selectors.)
+    # 4c: activation config must be valid (known id, field 'functions',
+    #     default_on boolean, status READY).
+    fviol = []
+    page_config = extract_page_config(scripts)
+    activated = page_config.get("functions") or []
+    dom_text = re.sub(r"<script\b[^>]*>.*?</script>", "", html_text,
+                      flags=re.DOTALL | re.IGNORECASE)
+    stamped = {s["naya_id"] for s in page.fn_scripts}
+    for fid in activated:
+        if fid not in stamped:
+            fviol.append(("4a", "function '%s'" % fid,
+                          "activated function has no <script data-naya-fn=\"%s\"> "
+                          "wiring unit in the page" % fid))
+            continue
+        if fn_registry:
+            fn = fn_registry.get(fid)
+            if fn is None:
+                fviol.append(("4c", "function '%s'" % fid,
+                              "activated function is not in the functions registry"))
+                continue
+            act = fn.get("activation") or {}
+            if act.get("field") != "functions" or not isinstance(act.get("default_on"), bool):
+                fviol.append(("4c", "function '%s'" % fid,
+                              "activation config invalid: field must be 'functions' "
+                              "and default_on a boolean"))
+            elif fn.get("status") != "READY":
+                fviol.append(("4c", "function '%s'" % fid,
+                              "function status is '%s', not READY -- cannot be activated"
+                              % fn.get("status")))
+            for selector in fn.get("requires_dom") or []:
+                if parse_selector(selector) is None:
+                    fviol.append(("4b", "function '%s'" % fid,
+                                  "requires_dom selector '%s' is not a simple "
+                                  "[attr='value'] selector" % selector))
+                elif not selector_present(dom_text, selector):
+                    fviol.append(("4b", "function '%s'" % fid,
+                                  "requires_dom selector '%s' matches no element "
+                                  "in the HTML" % selector))
+    for rule, element, detail in fviol[:3]:
+        card.deduct("functions", 1.0, rule, element, detail)
+
     return card
 
 
@@ -308,6 +399,9 @@ def main(argv=None):
                     help="page contract JSON (sections + pieces)")
     ap.add_argument("--registry", required=True,
                     help="piece registry JSON (naya_id -> piece)")
+    ap.add_argument("--functions-registry", default=None,
+                    help="functions registry JSON (naya_id -> function); "
+                         "without it, only the wiring-stamp check (4a) runs")
     args = ap.parse_args(argv)
 
     try:
@@ -320,6 +414,9 @@ def main(argv=None):
 
     contract = normalize_contract(load_json(args.contract, "contract"))
     registry = normalize_registry(load_json(args.registry, "registry"))
+    fn_registry = (normalize_functions_registry(
+        load_json(args.functions_registry, "functions registry"))
+        if args.functions_registry else {})
 
     page = PageParser()
     try:
@@ -328,7 +425,7 @@ def main(argv=None):
     except Exception as exc:  # fail closed on unparseable input
         _input_error("cannot parse HTML %s: %s" % (args.html, exc))
 
-    card = run_checks(page, contract, registry)
+    card = run_checks(page, contract, registry, html_text, fn_registry)
     score = card.score()
     verdict = "SHIP" if score >= SHIP_THRESHOLD else "REWORK"
 
@@ -345,6 +442,7 @@ def main(argv=None):
             "inputs": len(page.inputs),
             "sections": len(contract),
             "piece_markers": len(page.pieces),
+            "function_scripts": len(page.fn_scripts),
         },
     }
     print(json.dumps(result, indent=2))

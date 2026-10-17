@@ -50,6 +50,27 @@ Checker scored 8.75 vs coordinator's 9.25 — three mechanical findings, all fix
 3. Verifier check 3b read `naya_ids` (dead on the real `pieces` schema) → now reads `pieces`; check 1a's registry-button fallback now uses `category`/`css_classes`.
 Post-fix: fixtures behave (good→exit 0, bad→exit 1), build #1 re-assembled byte-identical (2c85959d), verifier 10.0 SHIP.
 
+## Functions library integrated (WIRE/Omega, 2026-10-17)
+
+Shawn's 20:43Z directive: the third library. Architecture is now PIECES
+(what you see) + FUNCTIONS (what you activate) + CONTRACT (binds them).
+
+- `SMART-BUILDER/FUNCTIONS-REGISTRY.json`: 15 pre-built function units,
+  all READY, 0 GAPs — smart-mail, spaces, posting-feed, search, gallery,
+  smart-tabs, reports, intelligence-today, contacts, booking, rsvp,
+  countdown, product-checkout, signup, pwa-install. Each carries dual
+  labels, an activation contract, required DOM mounts, deterministic
+  vanilla-JS wiring, and an explicit transport contract where a backend is
+  involved (fail-closed when unconfigured — never fakes a working backend).
+- Assembler: page-contract declares `functions` (or `functions_default`)
+  → pre-built units wired in, one stamped `<script data-naya-fn>` each;
+  unknown fn id → exit 2 GAP. Short aliases supported (`mail` →
+  `fn.smart-mail`).
+- Verifier: new check 4 (4a wiring stamp present, 4b mount points exist,
+  4c activation valid), 1.0/violation, cap 3.0.
+- Build #1 re-run with functions (`mail`, `posting` ON): byte-identical
+  across runs (c19ded90), verifier 10.0 SHIP, exit 0.
+
 ## Build #2 — smart-builder page (2026-10-17) — BLOCKED ON NAMED GAPS
 
 Shawn's smart-builder page spec (PAGE-CONTRACT-smart-builder-page.md):

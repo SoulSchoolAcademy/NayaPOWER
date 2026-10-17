@@ -1173,8 +1173,139 @@
         <div class="naya-footer-base"><span>© 2026 NayaNET — black is the suit.</span><span>Made of light, kept honest.</span></div>
       </footer>
 </footer>
+<section class="naya-fn-slot" id="fn-slot-mail" data-fn-mount="mail" data-naya-fn-slot="fn.smart-mail" aria-label="Smart mail">
+<p class="fn-slot-note">Smart mail mounts here.</p>
+</section>
+<section class="naya-fn-slot" id="fn-slot-posting" data-fn-mount="posting" data-naya-fn-slot="fn.posting-feed" aria-label="Posting feed">
+<p class="fn-slot-note">Posting feed mounts here.</p>
+</section>
 <script>
-window.NAYA_PAGE={"contract_version":"1.0","functions_default":["mail","posting"],"library_version":"nitro/design-library@0fe51806cc + nitro/design-specimens@825b45c1dbf","page_slug":"smart-builder-contract","sections":["what","why","intake","function-contract","gallery","templates","connected","naya-runs","private","vision-loop","how-we-build","mobile","deploy","setup","exam"]};
+window.NAYA_PAGE={"contract_version":"1.0","functions":["fn.smart-mail","fn.posting-feed"],"functions_default":["mail","posting"],"library_version":"nitro/design-library@0fe51806cc + nitro/design-specimens@825b45c1dbf","page_slug":"smart-builder-contract","sections":["what","why","intake","function-contract","gallery","templates","connected","naya-runs","private","vision-loop","how-we-build","mobile","deploy","setup","exam"]};
+</script>
+<script data-naya-fn="fn.smart-mail">
+(function () {
+  "use strict";
+  var FN = "fn.smart-mail";
+  function warn(m) { try { console.warn("[naya:" + FN + "] " + m); } catch (e) {} }
+  var mount = document.querySelector("[data-fn-mount='mail']");
+  if (!mount) { warn("mount [data-fn-mount='mail'] missing; skipping."); return; }
+  var drafts = [];
+  function status(msg, ok) {
+    var el = mount.querySelector("[data-mail-status]");
+    if (el) { el.textContent = msg; el.setAttribute("data-state", ok ? "ok" : "warn"); }
+  }
+  mount.innerHTML = ""
+    + "<form data-mail-form novalidate>"
+    + "<label>To<input type='email' data-mail-to required placeholder='name@example.com'></label>"
+    + "<label>Subject<input type='text' data-mail-subject placeholder='Subject'></label>"
+    + "<label>Message<textarea data-mail-body rows='4' placeholder='Write it like you would say it...'></textarea></label>"
+    + "<button type='submit' class='naya-btn naya-btn--primary'>Send mail</button>"
+    + "<p data-mail-status role='status' aria-live='polite'></p>"
+    + "</form>";
+  var form = mount.querySelector("[data-mail-form]");
+  form.addEventListener("submit", function (ev) {
+    ev.preventDefault();
+    var to = mount.querySelector("[data-mail-to]").value.trim();
+    var subject = mount.querySelector("[data-mail-subject]").value.trim();
+    var body = mount.querySelector("[data-mail-body]").value.trim();
+    if (!to || to.indexOf("@") < 1) { status("Add a valid recipient address first.", false); return; }
+    var payload = { to: to, subject: subject, body: body };
+    var page = window.NAYA_PAGE || {};
+    if (page.bridge_url) {
+      status("Sending...", true);
+      fetch(page.bridge_url + "/mail/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      }).then(function (r) {
+        if (!r.ok) { throw new Error("HTTP " + r.status); }
+        return r.json();
+      }).then(function () {
+        drafts.push(payload);
+        form.reset();
+        status("Sent.", true);
+      }).catch(function (err) {
+        drafts.push(payload);
+        status("Could not reach the mail backend (" + err.message + "). Draft kept on this device.", false);
+      });
+    } else {
+      drafts.push(payload);
+      status("Mail backend not configured (set window.NAYA_PAGE.bridge_url). Draft kept on this device.", false);
+    }
+  });
+})();
+</script>
+<script data-naya-fn="fn.posting-feed">
+(function () {
+  "use strict";
+  var FN = "fn.posting-feed";
+  function warn(m) { try { console.warn("[naya:" + FN + "] " + m); } catch (e) {} }
+  var mount = document.querySelector("[data-fn-mount='posting']");
+  if (!mount) { warn("mount [data-fn-mount='posting'] missing; skipping."); return; }
+  var posts = [];
+  try { posts = JSON.parse(mount.getAttribute("data-posts") || "[]"); }
+  catch (e) { warn("data-posts JSON invalid; starting empty."); }
+  function note(msg) {
+    var el = mount.querySelector("[data-feed-status]");
+    if (el) { el.textContent = msg; }
+  }
+  function render() {
+    var list = mount.querySelector("[data-feed-list]");
+    list.innerHTML = "";
+    posts.forEach(function (p) {
+      var item = document.createElement("article");
+      var head = document.createElement("p");
+      head.textContent = p.author + (p.synced === false ? " - not synced" : "");
+      var body = document.createElement("p");
+      body.textContent = p.text;
+      item.appendChild(head);
+      item.appendChild(body);
+      list.appendChild(item);
+    });
+  }
+  mount.innerHTML = ""
+    + "<form data-feed-form>"
+    + "<label>Share an update<textarea data-feed-text rows='3' placeholder='What is happening in your world?'></textarea></label>"
+    + "<button type='submit' class='naya-btn naya-btn--primary'>Post</button>"
+    + "<p data-feed-status role='status' aria-live='polite'></p>"
+    + "</form>"
+    + "<div data-feed-list></div>";
+  mount.querySelector("[data-feed-form]").addEventListener("submit", function (ev) {
+    ev.preventDefault();
+    var text = mount.querySelector("[data-feed-text]").value.trim();
+    if (!text) { note("Write something first."); return; }
+    var post = { author: "You", text: text, synced: true };
+    var page = window.NAYA_PAGE || {};
+    function publishLocal() {
+      posts.unshift(post);
+      render();
+      mount.querySelector("[data-feed-form]").reset();
+    }
+    if (page.bridge_url) {
+      note("Posting...");
+      fetch(page.bridge_url + "/feed/post", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text: text })
+      }).then(function (r) {
+        if (!r.ok) { throw new Error("HTTP " + r.status); }
+        return r.json();
+      }).then(function () {
+        publishLocal();
+        note("Posted.");
+      }).catch(function (err) {
+        post.synced = false;
+        publishLocal();
+        note("Backend unreachable (" + err.message + "). Kept locally, marked not synced.");
+      });
+    } else {
+      post.synced = false;
+      publishLocal();
+      note("No feed backend configured (window.NAYA_PAGE.bridge_url). Post kept on this device.");
+    }
+  });
+  render();
+})();
 </script>
 </body>
 </html>

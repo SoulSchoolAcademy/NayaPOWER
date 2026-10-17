@@ -1,24 +1,27 @@
 #!/usr/bin/env python3
 """
-Smart Builder ASSEMBLER (Team Nitro, seat BUILD/Nu).
+Smart Builder ASSEMBLER (Team Nitro, seat BUILD/Nu; functions: WIRE/Omega).
 
 Contract data + library version in, finished HTML out.
 Deterministic: same inputs -> same bytes, every time. Stdlib only.
 
 Usage:
     python3 assemble.py --contract page.contract.json --registry registry.json \
+        --functions-registry FUNCTIONS-REGISTRY.json \
         --out page.html [--tokens tokens.css]
 
 Exit codes:
     0  assembled OK
     1  usage / structural error (bad JSON, missing required blocks)
-    2  GAP: a referenced piece (or the nav/footer slot) has no registry entry.
-       The assembler NEVER improvises a piece.
+    2  GAP: a referenced piece (or the nav/footer slot) has no registry entry,
+       or a contract function id has no functions-registry entry.
+       The assembler NEVER improvises a piece or a function.
 
 Determinism contract:
     - section order is exactly contract order (json preserves document order)
+    - function order is contract 'functions' order, then 'functions_default' order
     - no timestamps, no randomness, no environment reads
-    - the only JSON serialization is the page config with sort_keys=True
+    - the only JSON serializations use sort_keys=True
     - no set/dict iteration that can vary run to run (registry lookup only)
 """
 import argparse
@@ -28,6 +31,8 @@ import re
 import sys
 
 GAP_EXIT = 2
+
+SELECTOR_RE = re.compile(r"^\[([A-Za-z0-9_-]+)=['\"]([^'\"]*)['\"]\]$")
 
 
 def fail_gap(message):
@@ -74,6 +79,24 @@ def stamp_piece(nid, fragment):
                   fragment, count=1)
 
 
+def parse_selector(selector):
+    """Parse a simple [attr='value'] selector. Returns (attr, value) or None."""
+    m = SELECTOR_RE.match(selector.strip())
+    if not m:
+        return None
+    return m.group(1), m.group(2)
+
+
+def selector_present(markup, selector):
+    """True if the [attr='value'] selector matches an element in the markup."""
+    parsed = parse_selector(selector)
+    if parsed is None:
+        return False
+    attr, value = parsed
+    pat = re.compile(r'%s\s*=\s*["\']%s["\']' % (re.escape(attr), re.escape(value)))
+    return pat.search(markup) is not None
+
+
 def build_head(page, token_css, pwa):
     lines = [
         "<!DOCTYPE html>",
@@ -98,18 +121,55 @@ def build_head(page, token_css, pwa):
     return lines
 
 
+def load_functions_registry(path):
+    raw = load_json(path, "functions registry")
+    if not isinstance(raw, dict) or "functions" not in raw:
+        fail_error("functions registry must be an object with 'functions'")
+    by_id = {}
+    alias_to_id = {}
+    for entry in raw["functions"]:
+        if not isinstance(entry, dict):
+            fail_error("functions registry entry is not an object")
+        nid = entry.get("naya_id")
+        if not nid:
+            fail_error("functions registry entry is missing naya_id")
+        if nid in by_id:
+            fail_error("functions registry has duplicate naya_id: %s" % nid)
+        for key in ("wiring_js", "requires_dom", "activation", "human_label", "status"):
+            if key not in entry:
+                fail_error("functions registry entry %s is missing '%s'" % (nid, key))
+        if not isinstance(entry["requires_dom"], list):
+            fail_error("functions registry entry %s: requires_dom must be a list" % nid)
+        by_id[nid] = entry
+        for alias in entry.get("aliases", []) or []:
+            alias_to_id.setdefault(str(alias), nid)
+    return by_id, alias_to_id
+
+
+def resolve_function(fid, by_id, alias_to_id, where):
+    """Resolve a contract function id (canonical or alias) to its entry."""
+    if fid in by_id:
+        return by_id[fid]
+    if fid in alias_to_id:
+        return by_id[alias_to_id[fid]]
+    fail_gap("GAP: %s references unknown function id '%s' (no functions-registry entry)" % (where, fid))
+
+
 def main():
     ap = argparse.ArgumentParser(
-        description="Smart Builder assembler: page contract + piece registry -> HTML."
+        description="Smart Builder assembler: page contract + piece registry + functions registry -> HTML."
     )
     ap.add_argument("--contract", required=True, help="page-contract JSON file")
     ap.add_argument("--registry", required=True, help="piece registry JSON file")
+    ap.add_argument("--functions-registry", required=True,
+                    help="functions registry JSON file (wiring units)")
     ap.add_argument("--out", required=True, help="output HTML file")
     ap.add_argument("--tokens", default=None, help="optional CSS file with design tokens to inline")
     args = ap.parse_args()
 
     contract = load_json(args.contract, "contract")
     registry = load_json(args.registry, "registry")
+    fn_by_id, fn_aliases = load_functions_registry(args.functions_registry)
 
     if not isinstance(contract, dict) or "page" not in contract or "sections" not in contract:
         fail_error("contract must be an object with 'page' and 'sections'")
@@ -150,7 +210,19 @@ def main():
     if footer_piece is None:
         fail_gap("GAP: registry has no footer-category piece")
 
-    # 3. Token CSS: inlined from --tokens, else a placeholder comment.
+    # 3. FUNCTIONS: contract 'functions' (explicit) + 'functions_default',
+    #    deduplicated in order. Aliases resolve; unknown ids fail closed (exit 2).
+    explicit = contract.get("functions") or []
+    defaults = contract.get("functions_default") or []
+    if not isinstance(explicit, list) or not isinstance(defaults, list):
+        fail_error("contract 'functions' and 'functions_default' must be arrays")
+    activated = []
+    for fid in list(explicit) + list(defaults):
+        entry = resolve_function(str(fid), fn_by_id, fn_aliases, "contract")
+        if entry["naya_id"] not in [e["naya_id"] for e in activated]:
+            activated.append(entry)
+
+    # 4. Token CSS: inlined from --tokens, else a placeholder comment.
     if args.tokens:
         try:
             with open(args.tokens, "r", encoding="utf-8") as fh:
@@ -194,11 +266,45 @@ def main():
     out_lines.append(stamp_piece(footer_piece["naya_id"], footer_piece["html"]))
     out_lines.append("</footer>")
 
-    # All scripts live BELOW the markup: wiring may only target DOM that exists.
+    # 5. FUNCTION MOUNT POINTS: for each activated function, every requires_dom
+    #    selector must match an element in the page. Missing mounts get a
+    #    deterministic placeholder slot injected here (before the scripts).
+    markup = "\n".join(out_lines)
+    for entry in activated:
+        for selector in entry["requires_dom"]:
+            parsed = parse_selector(selector)
+            if parsed is None:
+                fail_error("functions registry entry %s has an unparseable "
+                           "requires_dom selector: %s" % (entry["naya_id"], selector))
+            if selector_present(markup, selector):
+                continue
+            attr, value = parsed
+            mount_name = value
+            out_lines.append(
+                '<section class="naya-fn-slot" id="fn-slot-%s" %s="%s" '
+                'data-naya-fn-slot="%s" aria-label="%s">'
+                % (
+                    html.escape(mount_name, quote=True),
+                    html.escape(attr, quote=True),
+                    html.escape(value, quote=True),
+                    html.escape(entry["naya_id"], quote=True),
+                    html.escape(str(entry.get("human_label", entry["naya_id"])), quote=True),
+                )
+            )
+            out_lines.append(
+                '<p class="fn-slot-note">%s mounts here.</p>'
+                % html.escape(str(entry.get("human_label", entry["naya_id"])), quote=False)
+            )
+            out_lines.append("</section>")
+            markup = "\n".join(out_lines)
+
+    # 6. All scripts live BELOW the markup: wiring may only target DOM that exists.
+    #    First the page config, then one stamped script per activated function.
     page_config = {
         "contract_version": contract.get("contract_version"),
         "library_version": library_version,
         "page_slug": page.get("slug"),
+        "functions": [e["naya_id"] for e in activated],
         "functions_default": contract.get("functions_default", []),
         "sections": [s.get("section_id") for s in sections],
     }
@@ -207,14 +313,19 @@ def main():
         "window.NAYA_PAGE=" + json.dumps(page_config, sort_keys=True, separators=(",", ":")) + ";"
     )
     out_lines.append("</script>")
+    for entry in activated:
+        out_lines.append('<script data-naya-fn="%s">' % html.escape(entry["naya_id"], quote=True))
+        out_lines.append(entry["wiring_js"].rstrip("\n"))
+        out_lines.append("</script>")
     out_lines.append("</body>")
     out_lines.append("</html>")
 
     with open(args.out, "w", encoding="utf-8", newline="\n") as fh:
         fh.write("\n".join(out_lines) + "\n")
 
-    sys.stdout.write("assembled: %s (contract %s, library %s, %d sections)\n" % (
-        args.out, contract.get("contract_version"), library_version, len(sections)
+    sys.stdout.write("assembled: %s (contract %s, library %s, %d sections, %d functions: %s)\n" % (
+        args.out, contract.get("contract_version"), library_version, len(sections),
+        len(activated), ", ".join(e["naya_id"] for e in activated) or "none"
     ))
 
 
