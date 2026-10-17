@@ -240,9 +240,12 @@ _MENTION_QUOTE_RE = re.compile(r"`[^`\n]*`|\"[^\n\"]*\"|'[^\n']*'|“[^”\n]*�
 _NEGATION_RE = re.compile(
     r"\b(no|not|n't|never|missing|without|lacks?|lacking|absent|"
     r"failed|fails?|unable|deferred|blocked)\b", re.I)
-_HOLD_VETO_RE = re.compile(
-    r"\b(HOLD|CHANGES?\s+REQUESTED|NEEDS?\s+(?:WORK|CHANGES)|"
-    r"DO\s+NOT\s+MERGE|NOT\s+READY)\b", re.I)
+_HOLD_USE_RE = re.compile(
+    r"\[\s*NAYA\b[^\]\n]*\bREVIEW\b[^\]\n]*\]\s*(?:HOLD|CHANGES?\s+REQUESTED|NOT\s+READY)\b"  # [NAYA X · REVIEW] HOLD
+    r"|\bVERDICT\s*:\s*(?:MERGE\s*[:\-]?\s*)?(?:HOLD|CHANGES?\s+REQUESTED|"
+    r"NEEDS?\s+(?:WORK|CHANGES)|NOT\s+READY)\b"  # VERDICT: (merge) HOLD / CHANGES REQUESTED / NEEDS WORK / NOT READY
+    r"|\bDO\s+NOT\s+MERGE\b",  # DO NOT MERGE as a standalone verdict
+    re.I)
 _APPROVAL_USE_RE = re.compile(
     r"\[\s*NAYA\b[^\]\n]*\bREVIEW\b[^\]\n]*\]\s*APPROVED\b"   # [NAYA X · REVIEW] APPROVED
     r"|\bVERDICT\s*:\s*(?:MERGE\s*[:\-]?\s*)?APPROVED\b"      # VERDICT: APPROVED / VERDICT: merge APPROVED
@@ -253,12 +256,18 @@ _APPROVAL_USE_RE = re.compile(
 def _looks_like_review(body):
     """True only when the comment USES an approval keyword as its own
     verdict declaration — never when it merely MENTIONS one (quoted,
-    negated, or declared absent), and never when the comment also carries
-    an explicit HOLD / non-approval verdict (fail closed)."""
+    negated, or declared absent). An explicit HOLD / non-approval verdict
+    fires the fail-closed veto only when the commenter DECLARES it as their
+    own verdict — prose discussion of the hold-veto mechanism never vetoes
+    (w333 repair: whole-text _HOLD_VETO_RE vetoed Epsilon 6226819187's
+    genuine APPROVED over the prose "(hold-veto fail-closed; ...)")."""
     text = body or ""
-    if _HOLD_VETO_RE.search(text):
-        return False
     cleaned = _MENTION_QUOTE_RE.sub(" ", text)
+    for m in _HOLD_USE_RE.finditer(cleaned):
+        line_start = cleaned.rfind("\n", 0, m.start()) + 1
+        if _NEGATION_RE.search(cleaned[line_start:m.start()]):
+            continue  # mention: the hold is described as absent
+        return False  # verdict declaration: fail closed
     for m in _APPROVAL_USE_RE.finditer(cleaned):
         line_start = cleaned.rfind("\n", 0, m.start()) + 1
         if _NEGATION_RE.search(cleaned[line_start:m.start()]):
