@@ -87,21 +87,17 @@ No glow used to hide weak geometry.
 
 ## 4. PERSISTENT SHELL
 
-### Left rail
+### Shell controls and room drawer
 
-Desktop reference: **64px compact jewel rail** before expanded-label state.
+**The production shell follows the latest Human Director direction recorded on Issue #554.**
 
-Purpose:
-- eleven canonical room jewels;
-- active room/surface state;
-- fast stable orientation.
-
-Rules:
-- every jewel has unique semantic silhouette + room color;
-- active jewel may breathe softly only while state justifies it;
-- labels remain available; icon memory is never required;
-- external ecosystem links are visually secondary;
-- mobile replaces the rail intentionally rather than shrinking it.
+- **Top-left corner control:** opens the left room drawer.
+- **Top-right corner control:** opens the right product/navigation drawer.
+- **Left room drawer:** Today, Reports, Library, Connect, Ledger, Connections, Lists, Mail, Spaces, Settings.
+- **Smart Feed is not listed in the room drawer.** It is the Main Show / primary intelligence experience.
+- **Right product drawer:** HOME, NAYA POWER, 5-DAY CHALLENGE, ENTER FREE, POWERCAST, WHITE PAPER, ABOUT US, LOGIN.
+- Collective / Personal / Activity remains in **one** coordinated sticky mode zone when applicable.
+- Mobile uses an intentional navigation adaptation; it does not compress an obsolete persistent rail.
 
 ### Top intelligence bar
 

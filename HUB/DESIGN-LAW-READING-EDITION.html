@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The NayaNET Design Law — Master Contract + Final Exam</title>
+<style>
+  :root {
+    --world: #0B0D12; --raised: #12151D; --elevated: #171B25;
+    --edge: #252B39; --text: #F5F7FB; --sub: #AAB2BF;
+    --purple: #9d75ff; --emerald: #55e39a; --gold: #e8b64c; --red: #ff5a6e;
+  }
+  * { box-sizing: border-box; }
+  body { background: var(--world); color: var(--text); font-family: Inter, -apple-system, system-ui, sans-serif;
+         font-size: 17px; line-height: 1.65; margin: 0; padding: 0; }
+  .wrap { max-width: 780px; margin: 0 auto; padding: 48px 24px 120px; }
+  .kicker { color: var(--purple); font-size: 12px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
+  h1 { font-size: clamp(30px, 5vw, 46px); font-weight: 800; line-height: 1.15; margin: 12px 0 8px; }
+  h2 { font-size: 26px; font-weight: 800; margin: 56px 0 12px; padding-top: 24px; border-top: 1px solid var(--edge); color: var(--text); }
+  h3 { font-size: 20px; font-weight: 700; margin: 36px 0 8px; color: var(--text); }
+  h4 { font-size: 17px; font-weight: 700; margin: 28px 0 6px; color: var(--sub); }
+  p { margin: 12px 0; }
+  strong { color: #fff; }
+  em { color: var(--sub); }
+  code { background: var(--elevated); border: 1px solid var(--edge); border-radius: 6px; padding: 1px 7px; font-size: 15px; }
+  ul, ol { padding-left: 26px; } li { margin: 7px 0; }
+  hr { border: 0; border-top: 1px solid var(--edge); margin: 48px 0; }
+  blockquote { border-left: 3px solid var(--purple); margin: 20px 0; padding: 6px 0 6px 20px; color: var(--sub); font-style: italic; }
+  .tbl { overflow-x: auto; margin: 20px 0; border: 1px solid var(--edge); border-radius: 13px; }
+  table { width: 100%; border-collapse: collapse; font-size: 15px; }
+  th { text-align: left; padding: 12px 16px; background: var(--raised); color: var(--sub); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
+  td { padding: 12px 16px; border-top: 1px solid var(--edge); vertical-align: top; }
+  .toc { background: var(--raised); border: 1px solid var(--edge); border-radius: 16px; padding: 28px 32px; margin: 32px 0; }
+  .toc h3 { margin-top: 0; font-size: 15px; text-transform: uppercase; letter-spacing: .1em; color: var(--sub); }
+  .toc a { color: var(--text); text-decoration: none; display: block; padding: 5px 0; font-size: 16px; }
+  .toc a:hover { color: var(--purple); }
+  .doc-label { display: inline-block; background: var(--purple); color: #0B0D12; font-weight: 800; font-size: 13px;
+                padding: 6px 16px; border-radius: 999px; margin-bottom: 8px; }
+  .meta { color: var(--sub); font-size: 15px; margin-bottom: 8px; }
+  .part-divider { text-align: center; margin: 80px 0 40px; }
+  .part-divider .kicker { font-size: 14px; }
+  .part-divider h1 { margin-top: 12px; }
+  a { color: var(--purple); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">NayaNET · The Design Law</div>
+  <h1>The Master Design Contract<br>+ The Final Exam</h1>
+  <p class="meta">Two documents, one law. The contract is the rules. The exam is the proof of understanding.<br>
+  Frozen commit <code>4a035785</code> · PR #1331 · 2026-10-02</p>
+
+  <div class="toc">
+    <h3>Document One — The Master Design Contract V1</h3>
+    <a href="#contract">Read the contract ↓</a>
+    <h3 style="margin-top:20px">Document Two — The Design Masterclass: Final Exam</h3>
+    <a href="#exam">Read the exam ↓</a>
+  </div>
+
+  <hr>
+
+  <div id="contract"><span class="doc-label">Document One</span></div>
+  <h1 id="nayanet-master-design-contract-v1">NayaNET Master Design Contract V1</h1>
+<p><strong>Status:</strong> HUMAN-DIRECTOR-DIRECTED — 2026-10-02 <strong>Version:</strong> 1.0 <strong>Authority:</strong> Human Director → this contract → living room contracts → implementation <strong>Companion machine file:</strong> <code>HUB/NAYA-MASTER-DESIGN-CONTRACT-V1.json</code></p>
+<p><strong>What this is:</strong> the single official design law of NayaNET. Every color, every flow, every button, every spacing rule, every do and don&#x27;t — and the procedure by which a builder proves their work obeys it before the Human Director ever sees it. There is no guessing. If it isn&#x27;t in this contract, it isn&#x27;t the law; if it contradicts this contract, this contract wins.</p>
+<p><strong>What this is not:</strong> a template, a ranking, a mood board, or a suggestion. It is the compiled intelligence of the design canon (designers, companies, award-winning apps, books), the Human Director&#x27;s direct teaching, the website exemplars he showed, and everything the team learned building. The canon is the floor, not the ceiling: study the best, extract the principle, build ten times better — and only measured evidence earns the claim.</p>
+<hr>
+<h2 id="volume-0-how-to-use-this-contract">VOLUME 0 — HOW TO USE THIS CONTRACT</h2>
+<h3 id="0-1-who-this-is-for">0.1 Who this is for</h3>
+<p>Every builder who ships a pixel in NayaNET. Naya 2, Naya 3, Naya 4, and every seat after them. Read it in order the first time. After that, use it as law: when a decision is disputed, the contract decides.</p>
+<h3 id="0-2-the-promise">0.2 The promise</h3>
+<p>No builder should ever have to guess what &quot;good&quot; looks like, and the Human Director should never have to say &quot;that&#x27;s not right&quot; twice about the same class of mistake. The contract names the law; the self-evaluation procedure (Volume 12) proves obedience before work is shown.</p>
+<h3 id="0-3-how-it-is-organized">0.3 How it is organized</h3>
+<p>Volumes 1–2 give the laws and the visual language. Volumes 3–7 specify every atom: type, space, depth, components, icons, motion. Volume 8 composes atoms into surfaces. Volume 9 holds the canon intelligence it was distilled from. Volumes 10–11 give the dos, don&#x27;ts, and automatic rejections. Volume 12 is the self-evaluation procedure — the gate. Volume 13 is accessibility. Volume 14 applies the contract room by room. Volume 15 is the living record.</p>
+<h3 id="0-4-how-it-learns">0.4 How it learns</h3>
+<p>This contract is living. When the Human Director&#x27;s reactions teach something new, it is written into Volume 15 — dated, with the evidence — and the affected volume is amended. Taste becomes law through the loop, never through lectures. No seat amends the contract on their own authority; amendments arrive through the director&#x27;s reactions or his explicit order.</p>
+<hr>
+<h2 id="volume-1-the-laws">VOLUME 1 — THE LAWS</h2>
+<p>Laws are ranked. A higher law overrules a lower one, always, no exceptions.</p>
+<h3 id="1-0-law-zero-readability-supremacy">1.0 LAW ZERO — Readability supremacy</h3>
+<p><strong>Statement:</strong> No glow, no depth effect, no color choice, no animation, no composition decision may ever reduce readability.</p>
+<p><strong>What it means:</strong> The human came to understand something. Every visual decision serves that. The moment a treatment — however beautiful — makes text harder to read, the treatment is wrong. This is not a tiebreaker; it is a veto. A surface that violates LAW ZERO fails on sight, regardless of every other law it obeys.</p>
+<p><strong>Why it stands above all:</strong> NayaNET is the human interface to a living intelligence. Intelligence that cannot be read is not intelligence — it is decoration. The director&#x27;s test is effortlessness on the eyes. Generous text, high contrast, clean hierarchy: these are not style preferences, they are the precondition for everything else.</p>
+<p><strong>Violations:</strong> pale-purple body copy on dark backgrounds; 12px body text; glowing text; text over busy imagery without a scrim; labels below 11px; low-contrast secondary text used for anything the human must actually read.</p>
+<h3 id="1-1-law-01-purpose-before-interface">1.1 LAW-01 — Purpose before interface</h3>
+<p><strong>Statement:</strong> Resolve the human&#x27;s real outcome before selecting any page, component, layout, or interaction.</p>
+<p><strong>In practice:</strong> Before drawing anything, write one sentence: &quot;The human is here to ___.&quot; If you cannot write that sentence, you are not ready to design. Every element on the surface must serve that sentence; anything that doesn&#x27;t is removed (DO-09).</p>
+<p><strong>Violation:</strong> a room that opens with a KPI grid when the human came for one answer. Components chosen because they look impressive, not because they serve the outcome.</p>
+<h3 id="1-2-law-02-distill-before-display">1.2 LAW-02 — Distill before display</h3>
+<p><strong>Statement:</strong> Raw intelligence is not presentation. Decide what matters now, then disclose progressively.</p>
+<p><strong>In practice:</strong> The system may know a hundred things; the surface shows the few that matter now (DO-19). Depth is available on demand — one tap, one expansion — never dumped (DONT-15). The builder&#x27;s job is editorial: choose, order, compress.</p>
+<p><strong>Violation:</strong> dumping every available data point &quot;for transparency.&quot; A feed that shows raw records instead of distilled intelligence.</p>
+<h3 id="1-3-law-03-recognition-before-recall">1.3 LAW-03 — Recognition before recall</h3>
+<p><strong>Statement:</strong> The human never hunts for where something lives, never decodes unfamiliar language, never remembers what recognition could supply.</p>
+<p><strong>In practice:</strong> Navigation is self-evident (DO-07). Labels are plain words. State is visible, not remembered. The jewel icons compress meaning into recognition (DO-17) — but only after the meaning is established; never decorate an icon that doesn&#x27;t yet carry clear meaning (DONT-13).</p>
+<p><strong>Violation:</strong> navigation the human must pause to decode. Mystery icons with no labels on first use. Making the human remember which drawer held what.</p>
+<h3 id="1-4-law-04-one-obvious-next-action">1.4 LAW-04 — One obvious next action</h3>
+<p><strong>Statement:</strong> Every major surface answers four questions: where am I? what matters? what can I do? what happens next?</p>
+<p><strong>In practice:</strong> There is always one primary action, unmistakable (the verb-first purple button). Secondary actions are quiet. If two actions compete for primacy, the surface has failed and must choose.</p>
+<p><strong>Violation:</strong> five equally loud &quot;important&quot; cards. A surface with no clear action — beautiful, finished, useless.</p>
+<h3 id="1-5-law-05-state-must-be-perceptible">1.5 LAW-05 — State must be perceptible</h3>
+<p><strong>Statement:</strong> No control is completely designed without its full state lifecycle: rest, aware, hover/focus, press, processing, success/failure, consequence.</p>
+<p><strong>In practice:</strong> Design the button in all seven states (Volume 5.1). Design the empty state, the loading state, the error state, the unknown state (Volumes 5.9–5.11). A component designed only in its happy state is unfinished.</p>
+<p><strong>Violation:</strong> a button with no processing state — the human taps and wonders if anything happened (DONT-01). A list with no empty state.</p>
+<h3 id="1-6-law-06-beauty-is-function">1.6 LAW-06 — Beauty is function</h3>
+<p><strong>Statement:</strong> Beauty that improves comprehension, trust, or emotion is function. Beauty that obscures function is failure.</p>
+<p><strong>In practice:</strong> The obsidian depth, the jewel icons, the color flows — all exist because they help the human understand faster and trust deeper. The moment any of them is there &quot;because it looks good,&quot; it is cut.</p>
+<p><strong>Violation:</strong> glow everywhere. Decorative animation. A hero visual that pushes the actual content below the fold.</p>
+<h3 id="1-7-law-07-complexity-belongs-in-the-machine">1.7 LAW-07 — Complexity belongs in the machine</h3>
+<p><strong>Statement:</strong> The more intelligent the system becomes, the simpler the human&#x27;s experience.</p>
+<p><strong>In practice:</strong> The intelligence does the work — correlating, distilling, anticipating — so the surface can be calm. Never expose the implementation model (DO-20). Configuration disappears into intelligent defaults (DO-24).</p>
+<p><strong>Violation:</strong> exposing system internals as UI. Making the human configure what the system could infer.</p>
+<h3 id="1-8-law-08-design-systems-are-memory">1.8 LAW-08 — Design systems are memory</h3>
+<p><strong>Statement:</strong> Every verified discovery becomes retrievable design intelligence. Never rediscover; never re-argue.</p>
+<p><strong>In practice:</strong> This contract is the memory. When the director&#x27;s reaction teaches something, it is written into Volume 15 and the relevant volume is amended. The next builder inherits it. Arguing a settled law is design debt.</p>
+<h3 id="1-9-law-09-the-product-feels-like-one-thing">1.9 LAW-09 — The product feels like one thing</h3>
+<p><strong>Statement:</strong> One intelligence, many rooms, one grammar. Never a committee of components.</p>
+<p><strong>In practice:</strong> The same button anatomy in every room. The same depth law. The same type scale. The same drawer behavior. A room may have its own theme color and its own job, but it never invents its own physics.</p>
+<p><strong>Violation:</strong> each room with its own button style, its own spacing, its own motion. The human feeling they entered eleven different apps.</p>
+<h3 id="1-10-law-10-design-must-learn">1.10 LAW-10 — Design must learn</h3>
+<p><strong>Statement:</strong> Design is not finished at implementation. Observe, measure, verify, preserve, repeat.</p>
+<p><strong>In practice:</strong> Ship the surface, watch the human use it, capture what the director&#x27;s reactions teach, write it into the contract, build the next surface better. The small loop (Volume 12) is the mechanism.</p>
+<h3 id="1-11-l0-the-posture">1.11 L0 — The posture</h3>
+<p>The canon is not a ranking and not a template. Study the best, extract the principle, do it ten times better. The canon is the floor of awareness, not the ceiling of ambition. 10× is the ambition; only measured evidence earns the claim. Matching the best without transcending caps at 9.0.</p>
+<h3 id="1-12-the-benchmark-to-beyond-loop-ratified-2026-10-02">1.12 The benchmark-to-beyond loop (ratified 2026-10-02)</h3>
+<p>RESEARCH_FRONTIER → DECOMPOSE_CAUSAL_PRINCIPLES → CROSS_REFERENCE_CURRENT_NAYA → PRESERVE_CURRENT_SUPERIOR_STRENGTHS → SYNTHESIZE_COMPATIBLE_BEST → GENERATE_BEYOND_BENCHMARK_OPTION → TEST → INDEPENDENT_VERIFY → CAPTURE_PROVEN_IMPROVEMENT → REPEAT.</p>
+<p>Never imitate. Never ignorant. Learn, then transcend.</p>
+<h3 id="1-13-the-north-star">1.13 The North Star</h3>
+<p>NayaNET is the human interface to a living intelligence. It is not a dashboard, a database, a chatbot, or a collection of features. One intelligence. Many doors. One governed substrate. Many views. One human at the center. No unnecessary burden.</p>
+<p>Alive because the intelligence is alive — never because animation pretends. Every visual decision communicates meaning; every state tells the truth; every action has a consequence → observable result → provable where required.</p>
+<p>The human feels: I know where I am. I know what matters. I know what this means. I know what is true. I know what I can do. I know what happened. I know what Naya learned. I can continue tomorrow without rebuilding the world.</p>
+<hr>
+<h2 id="volume-2-the-visual-language">VOLUME 2 — THE VISUAL LANGUAGE</h2>
+<h3 id="2-1-color-philosophy-color-is-a-language">2.1 Color philosophy: color is a language</h3>
+<p>Every color on screen is a word. A color used without meaning is noise; a color used against its meaning is a lie. The contract assigns every color exactly one job (the semantic spectrum, §2.3). The builder&#x27;s discipline is total: never use a color outside its job, never invent a new color for emphasis, never let decoration borrow a semantic color&#x27;s voice.</p>
+<p><strong>The test:</strong> point at any colored pixel and name its job. If you cannot, remove it.</p>
+<h3 id="2-2-the-obsidian-stack-the-only-neutrals">2.2 The obsidian stack — the only neutrals</h3>
+<div class="tbl"><table><thead><tr><th>Token</th><th>Hex</th><th>Role</th></tr></thead><tbody>
+<tr><td>World</td><td><code>#0B0D12</code></td><td>the canvas. Everything sits on this. The deepest black with a breath of blue.</td></tr>
+<tr><td>Raised</td><td><code>#12151D</code></td><td>cards, panels, drawers. One step above the world.</td></tr>
+<tr><td>Elevated</td><td><code>#171B25</code></td><td>popovers, modals, the topmost layer. One step above raised.</td></tr>
+<tr><td>Precision edge</td><td><code>#252B39</code></td><td>1px edges on raised surfaces. The line where light catches.</td></tr>
+<tr><td>Primary text</td><td><code>#F5F7FB</code></td><td>body text. Always.</td></tr>
+<tr><td>Secondary text</td><td><code>#AAB2BF</code></td><td>supporting text. Never for anything the human must actually read at a glance.</td></tr>
+</tbody></table></div>
+<p>Two blacks for surfaces, not five — restraint is the law. The stack builds depth downward-to-upward: world at the bottom, elevated at the top. Every surface declares its elevation by which token it uses. If two adjacent surfaces use the same token, one of them is at the wrong elevation.</p>
+<h3 id="2-3-the-semantic-spectrum-one-color-one-job">2.3 The semantic spectrum — one color, one job</h3>
+<p><strong>Emerald <code>#55e39a</code> — active / available / healthy.</strong> The color of things that are alive and well. Live states, verified marks, healthy connections, the feed&#x27;s theme. When the human sees emerald, they should feel: this is working, this is true, this is now.</p>
+<p><strong>Gold <code>#e8b64c</code> — consequence / value.</strong> The rarest accent in the system. If gold appears, something extraordinary happened — a milestone, a proven outcome, something of real value. Gold used casually is gold destroyed. The builder asks: &quot;is this truly extraordinary?&quot; If not, it isn&#x27;t gold.</p>
+<p><strong>Red <code>#ff5a6e</code> — blocked / failed.</strong> Errors, blocked states, failed verifications. Never decorative. Never for emphasis. Never because it &quot;pops.&quot; Red is the system&#x27;s alarm voice; false alarms teach the human to ignore real ones.</p>
+<p><strong>Purple <code>#9d75ff</code> — Naya&#x27;s signature.</strong> Primary actions, Naya presence, the emblem&#x27;s light. When the human sees purple, they feel Naya herself — the intelligence acting. Primary buttons are purple. The Ask Naya presence is purple.</p>
+<p><strong>Magenta <code>#d86cff</code> — human significance.</strong> The human&#x27;s own things: their day, their words, their significance in the system. Your Intelligence Today wears magenta because it is about the human.</p>
+<p><strong>Sapphire <code>#55b9ee</code> — knowledge.</strong> The library, learning, known things. Calm, deep, archival. Knowledge at rest.</p>
+<h3 id="2-4-room-themes-identity-without-noise">2.4 Room themes — identity without noise</h3>
+<p>Each room carries one theme color as its identity: Feed emerald <code>#55e39a</code> · Today magenta <code>#d86cff</code> · Reports indigo <code>#6675ff</code> · Library sapphire <code>#55b9ee</code> · Connect emerald <code>#55e39a</code> · Ledger gold <code>#f1d75a</code> · Connections orange <code>#ff9a5a</code> · Lists purple <code>#9d75ff</code> · Mail sapphire <code>#55b9ee</code> · Spaces lime <code>#b8ee57</code> · Settings neutral <code>#aaa4b1</code>.</p>
+<p>The theme appears at the room&#x27;s threshold — the drawer jewel, the header edge, the primary accents — and recedes everywhere else. Known collisions (Feed/Connect both emerald; Library/Mail both sapphire) are differentiated by icon glyph until the director rules otherwise. A room&#x27;s theme never floods the canvas; it signs the room the way a signature signs a letter.</p>
+<h3 id="2-5-the-color-flows-how-color-moves">2.5 The color flows — how color moves</h3>
+<p><strong>Flow 1 — Hierarchy.</strong> The eye travels in this order: white (the words) → room theme (the identity) → semantic color (the state) → gold (the extraordinary). This is the path attention walks. The builder places color energy along this path deliberately: the most important thing gets the strongest color voice. If everything glows, nothing does — the path collapses into noise.</p>
+<p><strong>Flow 2 — State.</strong> A component&#x27;s color changes only when its state changes, and only along this path: rest (muted, quiet) → hover/aware (brightened, lifted — &quot;I see you&quot;) → press (compressed, physical — &quot;I feel you&quot;) → processing (theme pulse, honest — &quot;I&#x27;m working&quot;) → success (emerald, brief — &quot;done, and true&quot;) → failure (red, with the reason in words — &quot;here&#x27;s what happened and how to recover&quot;). Color never jumps without a state reason. A color change the human didn&#x27;t cause and can&#x27;t explain is a lie.</p>
+<p><strong>Flow 3 — Theme.</strong> The room&#x27;s theme breathes: it enters at the threshold (drawer jewel lights, header edge glows — &quot;you are here&quot;), recedes to accents while the human works (the content is the star, not the chrome), and returns at primary actions (the button that moves the room forward wears the theme). It never floods. A room drowned in its theme color is a room shouting its own name.</p>
+<h3 id="2-6-color-discipline">2.6 Color discipline</h3>
+<ul><li>Contrast: body text <code>#F5F7FB</code> on obsidian always passes. Secondary text <code>#AAB2BF</code> is for supporting information only — never for primary content, never for anything the human must read at a glance (LAW ZERO).</li>
+<li>Forbidden: pale-purple body copy. Any text below 11px in any color. Red for emphasis. Gold for the ordinary. New invented colors. Gradients that cross semantic boundaries (a red-to-emerald gradient says nothing true).</li>
+<li>Dark-first: NayaNET is an obsidian product. Light surfaces appear only where the meaning demands it (a document, a captured image) — never as a theme.</li></ul>
+<hr>
+<h2 id="volume-3-typography">VOLUME 3 — TYPOGRAPHY</h2>
+<h3 id="3-1-the-scale">3.1 The scale</h3>
+<div class="tbl"><table><thead><tr><th>Role</th><th>Size</th><th>Weight</th><th>Use</th></tr></thead><tbody>
+<tr><td>Hero</td><td><code>clamp(30px, 4.6vw, 52px)</code></td><td>800</td><td>the one headline per view. One.</td></tr>
+<tr><td>Title</td><td>23px</td><td>800</td><td>room and section titles</td></tr>
+<tr><td>Head</td><td>17px</td><td>700</td><td>card heads, emphasis within content</td></tr>
+<tr><td>Body</td><td>16px floor, 17–18px target</td><td>400</td><td>primary content</td></tr>
+<tr><td>Secondary</td><td>14–15px</td><td>400</td><td>supporting content</td></tr>
+<tr><td>Label</td><td>11px minimum</td><td>700, uppercase, letter-tracked</td><td>labels, eyebrows, metadata</td></tr>
+</tbody></table></div>
+<p>One family: Inter, system fallback. Line-height 1.5–1.6 for body. Hierarchy is built with size and weight before any color or style (DO-21).</p>
+<h3 id="3-2-the-generous-law">3.2 The generous law</h3>
+<p>Most people cannot see small text. Designing generously is respect, not style. Body at 16px is the floor — the smallest the contract permits. The target is 17–18px. Labels never go below 11px. If a design only works at 12px, the design is wrong, not the law.</p>
+<p><em>(Open director question: whether the 17–18px target should become the floor. Until ruled, 16px floor / 17–18px target.)</em></p>
+<h3 id="3-3-words">3.3 Words</h3>
+<p>Remove every unnecessary word (DO-08) before styling the ones that remain. Ask what can be removed before asking what can be added (DO-09). Labels are plain words — never jargon, never implementation terms (DO-20). The human should never have to read a paragraph to do the obvious (DONT-05).</p>
+<hr>
+<h2 id="volume-4-space-and-depth">VOLUME 4 — SPACE AND DEPTH</h2>
+<h3 id="4-1-the-spacing-scale">4.1 The spacing scale</h3>
+<p><strong>4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 96.</strong> Never arbitrary values. If a gap isn&#x27;t on the scale, it doesn&#x27;t exist.</p>
+<ul><li>Section rhythm: 48–64. Views breathe between sections.</li>
+<li>Card padding: 24. Content never touches a card&#x27;s edge.</li>
+<li>Related groups: 16. Things that belong together sit 16 apart.</li>
+<li>Micro-gaps: 8. Icon to label. Chip to chip.</li></ul>
+<p>Generous negative space is a feature. The feed breathes like a social app — full-bleed, effortless scroll — never a dashboard grid. Emptiness is not simplicity and density is not clutter (DONT-10): the question is always whether each element earns its place.</p>
+<h3 id="4-2-the-depth-law">4.2 The depth law</h3>
+<p><strong>Material core → exact edge light → restrained specular highlight → believable cast shadow → semantic aura → state amplification.</strong></p>
+<p>Build in that order. Depth first. Light second. Glow last.</p>
+<ul><li><strong>Material core:</strong> the surface itself, at its elevation token (§2.2).</li>
+<li><strong>Edge light:</strong> the 1px precision edge <code>#252B39</code> where light catches the top and left.</li>
+<li><strong>Specular:</strong> a restrained highlight — the jewel&#x27;s upper-left orb light. Never a flood.</li>
+<li><strong>Cast shadow:</strong> believable, soft, downward. The surface sits in space; it casts accordingly.</li>
+<li><strong>Semantic aura:</strong> the room theme or state color, breathing at the edges — quiet, never a cloud.</li>
+<li><strong>State amplification:</strong> on hover/press/success, the depth responds — the surface lifts, the aura strengthens. Depth is alive to state.</li></ul>
+<h3 id="4-3-common-depth-failures">4.3 Common depth failures</h3>
+<ul><li><strong>Flat + bordered:</strong> a 2px border on a flat row is not depth. It is a drawing of a box.</li>
+<li><strong>Glow everywhere:</strong> aura without material is fog. If the glow is the only depth cue, there is no depth.</li>
+<li><strong>Uniform neon outlines:</strong> every element outlined in its theme color is noise, not identity.</li>
+<li><strong>Giant blur clouds:</strong> atmosphere is not a 200px blur behind everything.</li></ul>
+<hr>
+<h2 id="volume-5-components">VOLUME 5 — COMPONENTS</h2>
+<h3 id="5-1-buttons-exact-anatomy">5.1 Buttons — exact anatomy</h3>
+<p><strong>Primary.</strong></p>
+<ul><li>Padding <code>14px 28px</code>, min-height 48px, radius <code>999px</code> (pill) or 13px.</li>
+<li>Font 17px / 800. White text. Purple <code>#9d75ff</code> — solid, or a subtle purple gradient that never crosses into another semantic color.</li>
+<li>Label is verb-first: &quot;Verify now.&quot; &quot;Open the proof.&quot; &quot;Save changes.&quot; Never &quot;OK.&quot; Never &quot;Submit.&quot;</li></ul>
+<p><strong>The seven states</strong> — every consequential button, no exceptions:</p>
+<div class="tbl"><table><thead><tr><th>State</th><th>Exact visual</th></tr></thead><tbody>
+<tr><td>Rest</td><td>As specified. Quiet confidence.</td></tr>
+<tr><td>Hover / aware</td><td><code>translateY(-1px)</code>, glow intensifies, cursor pointer. &quot;I see you.&quot;</td></tr>
+<tr><td>Focus</td><td>Visible ring: 2px outline, offset 2px. Keyboard users exist.</td></tr>
+<tr><td>Press</td><td><code>scale(0.97)</code>, glow softens. Physical. &quot;I feel you.&quot;</td></tr>
+<tr><td>Processing</td><td>Disabled appearance + honest indicator (spinner, progress). Label may become the verb in progress: &quot;Verifying…&quot;. Never a dead button.</td></tr>
+<tr><td>Success</td><td>Brief emerald shift — border, glow — then the consequence itself is visible. The system shows what happened, not just a checkmark.</td></tr>
+<tr><td>Failure</td><td>Red state + the reason in plain words + a recovery action. Never a red button alone.</td></tr>
+</tbody></table></div>
+<p><strong>Secondary:</strong> obsidian fill <code>#12151D</code>, 2px accent-tinted border, white text. The same seven states, quieter. For the important-but-not-primary.</p>
+<p><strong>Destructive:</strong> red-tinted, rare, always with confirmation. The human must never destroy by accident.</p>
+<p><strong>Ghost / quiet:</strong> text or minimal chrome for tertiary actions. Still verb-first. Still the seven states where consequential.</p>
+<p><strong>Placement:</strong> one primary per surface region (LAW-04). The primary action sits where the eye lands after reading — not hidden in a corner, not competing with a twin.</p>
+<h3 id="5-2-inputs-and-forms">5.2 Inputs and forms</h3>
+<p>Inputs sit at Raised <code>#12151D</code> with the precision edge. Focus brings the theme-colored edge and a quiet aura — the input is listening. Labels sit above, 11px tracked, never inside as disappearing placeholders (DONT-02: don&#x27;t force recall). Errors are red with the reason and the fix, beside the field, never a toast alone. Every form can be completed by keyboard.</p>
+<h3 id="5-3-cards-and-surfaces">5.3 Cards and surfaces</h3>
+<p>Cards are Raised <code>#12151D</code>, 24px padding, 13px radius, precision edge, cast shadow per the depth law. One idea per card. The card&#x27;s head is 17px/700; its body is body type; its action is a button, not a mystery. Cards never contain cards more than one level deep — depth beyond that is clutter wearing a costume.</p>
+<h3 id="5-4-chips-badges-pills">5.4 Chips, badges, pills</h3>
+<p>Chips compress state into recognition: a jewel dot or glyph + 2–4 words. Pill radius. Obsidian fill with the semantic color at the edge or dot — never a full saturated fill (a full-red chip screams; a red-edged chip informs). Badges count or mark; they never decorate.</p>
+<h3 id="5-5-toggles-and-switches">5.5 Toggles and switches</h3>
+<p>A toggle is a promise: on means on, visibly, now. Emerald when active. The label names the consequence, not the mechanism (&quot;Notify me of proofs&quot; not &quot;Enable notifications subsystem&quot;). Every toggle announces its state change.</p>
+<h3 id="5-6-tabs-and-segmented-controls">5.6 Tabs and segmented controls</h3>
+<p>One coordinated sticky zone per view — never two competing sticky elements. The active tab is unmistakable (theme underline or filled pill); inactive tabs are quiet but legible. Tabs switch content, never navigate away.</p>
+<h3 id="5-7-lists-and-rows">5.7 Lists and rows</h3>
+<p>Rows are not spreadsheets. A row is a surface: generous type (17px primary), the jewel or glyph at left, the meaning in the middle, the state or action at right. Dividers are hairlines of the precision edge — or nothing at all, with spacing doing the work. A uniform list of equal-weight rows with no hierarchy is a failure of composition (Volume 8.7).</p>
+<h3 id="5-8-drawers-and-modals">5.8 Drawers and modals</h3>
+<p>Drawers slide over content — they never consume permanent width. One drawer open at a time. Backdrop, Escape to close, focus trapped and restored, scroll locked behind. The left drawer holds the rooms (jewel + label, generous targets, the active room unmistakable). The right drawer holds navigation. Modals are for decisions: one decision, the consequence stated, verb-first actions, Escape always available.</p>
+<h3 id="5-9-empty-states">5.9 Empty states</h3>
+<p>An empty state is a designed surface, not an absence. It says: what this is, why it&#x27;s empty, and the one action that fills it — with the jewel of the room, generous type, and zero guilt. &quot;Nothing here yet&quot; is honest; a blank panel is abandonment.</p>
+<h3 id="5-10-loading-states">5.10 Loading states</h3>
+<p>Loading is truthful: skeleton surfaces in the shape of what&#x27;s coming (never a spinner alone on a blank page), honest progress where duration is known, and the system&#x27;s voice where it&#x27;s not (&quot;Gathering your intelligence…&quot;). Never fake progress. Never a loading state that lies about what&#x27;s happening.</p>
+<h3 id="5-11-error-states">5.11 Error states</h3>
+<p>Errors are red with the reason in plain words, the recovery action beside it, and no blame. &quot;Couldn&#x27;t reach the ledger. Check your connection and retry.&quot; — with a Retry button that works. Every error state is designed; none is the browser&#x27;s default wearing our clothes.</p>
+<h3 id="5-12-navigation">5.12 Navigation</h3>
+<p>Two quiet corner controls — top-left opens the rooms drawer, top-right opens the navigation drawer. They may resemble minimal plus/menu controls. No persistent rail consuming width; the canvas belongs to the content. Navigation is self-evident (DO-07): the human never pauses to decode it.</p>
+<hr>
+<h2 id="volume-6-icons">VOLUME 6 — ICONS</h2>
+<h3 id="6-1-the-jewel-system">6.1 The jewel system</h3>
+<p>The executable system lives at <code>HUB/app/js/icons.js</code> with its stylesheet <code>HUB/app/css/icons.css</code>. Set A: twelve jewel marks — eleven rooms plus the Naya emblem — for identity moments (drawer, headers, presence). Set B: obsidian action glyphs for controls. The system is generated, deterministic, and self-tested; the contract&#x27;s icon law is executable math, not aspiration.</p>
+<h3 id="6-2-icon-grammar">6.2 Icon grammar</h3>
+<ul><li>One icon per idea. An icon that needs a paragraph to explain is not an icon yet.</li>
+<li>Scale steps 96 / 64 / 48 / 32 — never in-between, never stretched, never cropped.</li>
+<li>Glow = meaning. The aura carries the semantic or theme color; it never decorates.</li>
+<li>Never flat, never emoji, never stock. Jewel-like and dimensional, always.</li>
+<li>The upper-left orb light is the signature — consistent across every jewel.</li></ul>
+<h3 id="6-3-the-naya-emblem">6.3 The Naya emblem</h3>
+<p>Shawn&#x27;s crystal logo — the crystal-cut N with the starburst in the glowing ring — is the Naya emblem. It lives at <code>HUB/app/assets/</code> (192 for the rail mark and favicon, 512 for presence moments). It is never recolored, never stretched, never set on a clashing background. Where Naya herself is present, the emblem is present.</p>
+<hr>
+<h2 id="volume-7-motion">VOLUME 7 — MOTION</h2>
+<h3 id="7-1-philosophy">7.1 Philosophy</h3>
+<p>Motion communicates truthful state — nothing else. A thing moves because its state changed and the human should perceive the change. Every animation answers: &quot;what truth just changed?&quot;</p>
+<h3 id="7-2-the-vocabulary">7.2 The vocabulary</h3>
+<p>Durations: fast <code>.18s</code>, medium <code>.28s</code>, slow <code>.5s</code>. Easing: <code>cubic-bezier(.16,.84,.22,1)</code> — the house curve. Properties: transform and opacity only (never layout-thrashing properties). This is the entire vocabulary. New durations and curves are not invented per-component.</p>
+<h3 id="7-3-microinteractions">7.3 Microinteractions</h3>
+<p>Every microinteraction is specified as four parts: <strong>trigger, rule, feedback, loop</strong> (DO-11). The trigger (what the human did), the rule (what the system decided), the feedback (what the human perceives), the loop (what happens next / how it resolves). An interaction specified in fewer than four parts is unfinished.</p>
+<h3 id="7-4-reduced-motion">7.4 Reduced motion</h3>
+<p>Every animation has a reduced-motion equivalent — instant state change, no travel. The system respects the human&#x27;s OS setting without being asked. Motion that cannot be made safe reduced is motion that doesn&#x27;t ship.</p>
+<hr>
+<h2 id="volume-8-composition">VOLUME 8 — COMPOSITION</h2>
+<h3 id="8-1-the-experience-arc">8.1 The experience arc</h3>
+<p>Every surface follows the arc: <strong>PRESENCE → RECOGNITION → DISTILLATION → INVITATION → FLOW.</strong></p>
+<ul><li><strong>Presence:</strong> Naya is here. The emblem, alive — not a logo slapped on, but the intelligence announcing itself.</li>
+<li><strong>Recognition:</strong> the human is known. &quot;Good evening, Shawn&quot; — only if true, never faked (automatic rejection: fake personalization).</li>
+<li><strong>Distillation:</strong> the few things that matter, already organized. The system did the reading; the human gets the meaning.</li>
+<li><strong>Invitation:</strong> one obvious next action. The verb-first button. The door, open.</li>
+<li><strong>Flow:</strong> the human moves without reconstructing context. State persists, threads continue, tomorrow doesn&#x27;t start from zero.</li></ul>
+<p>If a surface is components on a grid, the arc was missed. Go back.</p>
+<h3 id="8-2-the-main-show-feed-grammar">8.2 The main show — feed grammar</h3>
+<p>Presence → recognition → the river (one hero region, the rest subordinate) → the mode dock (Collective / Personal / Activity, one sticky zone) → Ask Naya. Full-bleed scroll, social-effortless. No dashboard grid. No wall of navigation before the content. First login lands here — immediately, the feed, the intelligence, alive.</p>
+<h3 id="8-3-room-grammar">8.3 Room grammar</h3>
+<p>Identity + mode → orientation (one line: what this room is for) → intelligence (distilled, hierarchical) → why-now (the reason this matters today) → actions (verb-first) → evidence (progressive disclosure). Every room is a complete thought in this grammar.</p>
+<h3 id="8-4-drawer-grammar">8.4 Drawer grammar</h3>
+<p>Jewel + label per entry. Generous touch targets. The active entry unmistakable. Order follows the human&#x27;s mental model, not the system&#x27;s. The rooms drawer never lists Smart Feed — the feed is the main show, not a room.</p>
+<h3 id="8-5-dialog-grammar">8.5 Dialog grammar</h3>
+<p>One decision. The consequence stated in plain words. Verb-first actions. Escape always available. Focus trapped and restored.</p>
+<h3 id="8-6-onboarding-grammar">8.6 Onboarding grammar</h3>
+<p>Light (DO-23). The system teaches through interaction itself (DONT-18) — the first use is comprehensible without a tutorial. Gate only on first-use comprehension: can the human do the one thing? Then stop teaching.</p>
+<h3 id="8-7-the-focal-region-cinematic-hierarchy">8.7 The focal region — cinematic hierarchy</h3>
+<p>The eye lands somewhere first. Build it: one dominant region (the hero — larger, brighter, more color energy), everything else subordinate (quieter, smaller, receding). <strong>The squint test:</strong> squint at the render. If the hierarchy survives, it exists. If everything is equally loud, there is no composition — only inventory.</p>
+<hr>
+<h2 id="volume-9-the-canon-intelligence">VOLUME 9 — THE CANON INTELLIGENCE</h2>
+<p>Distilled from the 40-block canon — designers, companies, award-winning apps, books. Principles, not imitations.</p>
+<h3 id="9-1-from-the-designers">9.1 From the designers</h3>
+<ul><li><strong>Ive (Apple):</strong> restraint is courage. Remove until it breaks, then put back one thing. Materials are honest — obsidian is obsidian, not a picture of obsidian. What this means for us: the depth law&#x27;s material core; two blacks, not five; no skeuomorphic costume.</li>
+<li><strong>Dieter Rams:</strong> less but better. Every element earns its place (DO-09). What this means for us: the removal pass before every PR.</li>
+<li><strong>Jony Ive&#x27;s inheritors / Teenage Engineering:</strong> playful precision — exact engineering that delights. What this means for us: the jewel icons — precise geometry, alive with light.</li>
+<li><strong>Norman (The Design of Everyday Things):</strong> the system model must match the human&#x27;s mental model (DO-03, DO-20). Affordances visible before touch (DO-01). What this means for us: buttons that look like what they do; errors prevented by constraints (DO-06).</li>
+<li><strong>Krug (Don&#x27;t Make Me Think):</strong> navigation self-evident (DO-07); the human never pauses to decode. What this means for us: the two corner controls, plain labels, the squint test.</li></ul>
+<h3 id="9-2-from-the-companies">9.2 From the companies</h3>
+<ul><li><strong>Apple:</strong> the detail is the product. Microinteractions specified to the millisecond (DO-11). What this means for us: the motion vocabulary, the seven button states.</li>
+<li><strong>Linear / Vercel:</strong> speed is a feature; calm surfaces, instant feedback (DO-02). What this means for us: processing states that are honest, feedback that is immediate.</li>
+<li><strong>Stripe:</strong> complexity in the machine (LAW-07) — the most sophisticated systems wear the calmest surfaces. What this means for us: the distillation layer; never expose the implementation model.</li>
+<li><strong>Arc / Dia:</strong> the browser as a thinking space — the tool disappears into the thought. What this means for us: chrome subdued so the work is primary (DO-13).</li></ul>
+<h3 id="9-3-from-the-award-winning-apps">9.3 From the award-winning apps</h3>
+<ul><li>The best apps of the canon share: one clear job per screen (LAW-04), progressive disclosure done gracefully (DO-19), empty states that teach (Volume 5.9), and motion that means something (Volume 7). What this means for us: the composition grammars; the arc.</li></ul>
+<h3 id="9-4-from-the-books">9.4 From the books</h3>
+<ul><li><strong>Hooked (Eyal):</strong> investment must pay the human back visibly (DONT-12) — stored value returns value. Never manufacture variable reward (DONT-11). What this means for us: the ledger shows the human what their participation earned, in plain terms.</li>
+<li><strong>Refactoring UI / practical craft:</strong> hierarchy first with spacing and type, then style (DO-21). Constraints beat choices (DO-16). What this means for us: the spacing scale, the type scale, the removal pass.</li>
+<li><strong>Thinking, Fast and Slow (Kahneman):</strong> recognition over recall (LAW-03) — design for the fast system; never make the human compute what the system could show.</li>
+<li><strong>The Design of Everyday Things (Norman):</strong> already above — the deepest root of DO-01 through DO-07.</li></ul>
+<h3 id="9-5-the-10x-posture-in-practice">9.5 The 10x posture in practice</h3>
+<p>For every surface, write one sentence: &quot;This is ten times better than ___ because ___.&quot; Then evidence it in the artifact (DO-25). If the sentence can&#x27;t be written, the 10x wasn&#x27;t designed — only hoped for. Ignorance of the canon is missing evidence: a builder who hasn&#x27;t studied the best cannot claim to transcend them.</p>
+<hr>
+<h2 id="volume-10-dos-and-don-x27-ts">VOLUME 10 — DOS AND DON&#x27;TS</h2>
+<h3 id="10-1-the-25-dos">10.1 The 25 dos</h3>
+<ul><li><strong>DO-01:</strong> Make every control&#x27;s possible action visible before it is touched. <em>Why: the human should never tap to discover what a thing does — affordance is honesty.</em></li>
+<li><strong>DO-02:</strong> Close every action loop with immediate, legible feedback. <em>Why: an action without feedback is a message into the void; the human is left guessing (DONT-01).</em></li>
+<li><strong>DO-03:</strong> Map controls to consequences the way the human already expects. <em>Why: the mental model is the contract; violating it is a betrayal the human feels physically.</em></li>
+<li><strong>DO-04:</strong> Keep system status visible at all times. <em>Why: the human should always know what the system is doing and what state it&#x27;s in.</em></li>
+<li><strong>DO-05:</strong> Prefer recognition over recall in every choice. <em>Why: memory is expensive; showing is cheap.</em></li>
+<li><strong>DO-06:</strong> Prevent errors with constraints; design recovery before writing error copy. <em>Why: the best error message is the one that never needed to exist.</em></li>
+<li><strong>DO-07:</strong> Make navigation self-evident; a pause to decode it is design debt. <em>Why: every second of confusion is interest on a debt the product owes the human.</em></li>
+<li><strong>DO-08:</strong> Remove every unnecessary word. <em>Why: words are the most expensive pixels; each must earn its place.</em></li>
+<li><strong>DO-09:</strong> Ask what can be removed before asking what can be added. <em>Why: addition is easy and usually wrong; subtraction is hard and usually right.</em></li>
+<li><strong>DO-10:</strong> Make every control tell the truth about what it does. <em>Why: a control that promises more than the system delivers is a lie with a click handler (DONT-06).</em></li>
+<li><strong>DO-11:</strong> Specify every microinteraction as trigger, rule, feedback, loop. <em>Why: unspecified interactions are accidents wearing a design&#x27;s clothes.</em></li>
+<li><strong>DO-12:</strong> Use motion only to communicate state change. <em>Why: motion without meaning is noise that the human&#x27;s eye cannot ignore.</em></li>
+<li><strong>DO-13:</strong> Earn attention: subdue chrome so the work is primary. <em>Why: the interface is the stage, not the performance.</em></li>
+<li><strong>DO-14:</strong> Keep placement predictable across rooms. <em>Why: LAW-09 — one thing. The human&#x27;s hands learn; don&#x27;t make them re-learn per room.</em></li>
+<li><strong>DO-15:</strong> Size and space touch targets for the real device and input. <em>Why: 48px minimum — thumbs are real, cursors are precise, design for both.</em></li>
+<li><strong>DO-16:</strong> Cut choices to the minimum that serves the goal. <em>Why: every choice is cognitive tax; the system should pay it, not the human.</em></li>
+<li><strong>DO-17:</strong> Compress meaning into icons before adding any decoration. <em>Why: a true icon is worth a paragraph; decoration is worth nothing.</em></li>
+<li><strong>DO-18:</strong> Assign every color one fixed meaning and never break the wiring. <em>Why: color is language; breaking the wiring is lying in that language (DONT-14).</em></li>
+<li><strong>DO-19:</strong> Disclose progressively: what matters now first, depth on demand. <em>Why: LAW-02 — distillation is the product.</em></li>
+<li><strong>DO-20:</strong> Design from the human&#x27;s goal; never expose the implementation model. <em>Why: the human hired the system to think; showing the gears is abdication.</em></li>
+<li><strong>DO-21:</strong> Establish hierarchy first with spacing and typography, then style. <em>Why: style without structure is makeup on confusion.</em></li>
+<li><strong>DO-22:</strong> Prefer direct manipulation where the mental model supports it. <em>Why: touching the thing is understanding the thing.</em></li>
+<li><strong>DO-23:</strong> Keep onboarding light; gate on first-use comprehension. <em>Why: the product teaches by being usable (DONT-18).</em></li>
+<li><strong>DO-24:</strong> Default intelligently so configuration disappears. <em>Why: every setting the system can infer is a setting the human shouldn&#x27;t see.</em></li>
+<li><strong>DO-25:</strong> State the 10x delta in one sentence and evidence it in the artifact. <em>Why: ambition without evidence is marketing; with evidence, it&#x27;s engineering.</em></li></ul>
+<h3 id="10-2-the-23-don-x27-ts">10.2 The 23 don&#x27;ts</h3>
+<ul><li><strong>DONT-01:</strong> Do not hide system status; never leave the human guessing whether an action worked.</li>
+<li><strong>DONT-02:</strong> Do not force recall of locations, commands, or prior state that recognition could supply.</li>
+<li><strong>DONT-03:</strong> Do not explain errors the system could have prevented with constraints.</li>
+<li><strong>DONT-04:</strong> Do not ship navigation a human must stop to decode.</li>
+<li><strong>DONT-05:</strong> Do not add words the human must read to do the obvious.</li>
+<li><strong>DONT-06:</strong> Do not ship a control that promises more than the system delivers.</li>
+<li><strong>DONT-07:</strong> Do not animate without a state change to communicate.</li>
+<li><strong>DONT-08:</strong> Do not leave triggers undiscoverable.</li>
+<li><strong>DONT-09:</strong> Do not give every element equal prominence.</li>
+<li><strong>DONT-10:</strong> Do not confuse density with clutter — or emptiness with simplicity.</li>
+<li><strong>DONT-11:</strong> Do not manufacture variable reward.</li>
+<li><strong>DONT-12:</strong> Do not let investment mechanics exploit; stored value must visibly pay the user back.</li>
+<li><strong>DONT-13:</strong> Do not decorate icons that do not yet carry clear meaning.</li>
+<li><strong>DONT-14:</strong> Do not break the fixed color vocabulary for emphasis or novelty.</li>
+<li><strong>DONT-15:</strong> Do not dump information and call it transparency.</li>
+<li><strong>DONT-16:</strong> Do not add delight before usability is verified.</li>
+<li><strong>DONT-17:</strong> Do not maximize engagement for its own sake.</li>
+<li><strong>DONT-18:</strong> Do not build tutorials for what interaction itself can teach.</li>
+<li><strong>DONT-19:</strong> Do not accumulate features before subtracting.</li>
+<li><strong>DONT-20:</strong> Do not present raw intelligence as finished presentation.</li>
+<li><strong>DONT-21:</strong> Do not let layout invent structure.</li>
+<li><strong>DONT-22:</strong> Do not freeze as static documents what should be live and manipulable.</li>
+<li><strong>DONT-23:</strong> Do not keep chrome the object itself could replace.</li></ul>
+<hr>
+<h2 id="volume-11-automatic-rejection">VOLUME 11 — AUTOMATIC REJECTION</h2>
+<p>Any of these fails the work on sight. No scorecard, no debate:</p>
+<ol><li>A KPI grid as the first impression.</li>
+<li>Fake personalization or fake liveness — &quot;Good evening&quot; to a stranger, live dots on dead data.</li>
+<li>Five equally loud &quot;important&quot; cards.</li>
+<li>Pale-purple body copy.</li>
+<li>12px body or 9.5px labels.</li>
+<li>Flat rows with borders presented as depth.</li>
+<li>Glow everywhere.</li>
+<li>Auto-rotating anything.</li>
+<li>Motion without state.</li>
+<li>Red used decoratively.</li>
+<li>Gold used casually.</li>
+<li>A control that promises what the system doesn&#x27;t deliver.</li>
+<li>Navigation that needs decoding.</li>
+<li>A surface with no obvious next action.</li>
+<li>Text over imagery without a scrim.</li></ol>
+<hr>
+<h2 id="volume-12-self-evaluation">VOLUME 12 — SELF-EVALUATION</h2>
+<h3 id="12-1-the-procedure">12.1 The procedure</h3>
+<p>No work reaches the Human Director until it has passed this procedure. This is how a builder looks at their own work before sending it — the answer to &quot;do you have a way to look at your work before you send it to me.&quot;</p>
+<h3 id="12-2-step-1-render-it-like-he-will">12.2 Step 1 — Render it like he will</h3>
+<p>Open your frozen commit full-screen. Not the code — the experience. The exact SHA, the exact bytes. If you cannot render it, you cannot evaluate it; do not send what you haven&#x27;t seen.</p>
+<h3 id="12-3-step-2-the-four-tests">12.3 Step 2 — The four tests</h3>
+<ul><li><strong>1 second:</strong> where does the eye land? If nowhere — no focal region — fail.</li>
+<li><strong>3 seconds:</strong> do I know where I am, what matters, and what I can do?</li>
+<li><strong>30 seconds:</strong> can I take the obvious next action without reading everything?</li>
+<li><strong>Squint:</strong> is the hierarchy still visible? If not — fail.</li></ul>
+<h3 id="12-4-step-3-measure-against-the-exact-spec">12.4 Step 3 — Measure against the exact spec</h3>
+<ul><li><strong>Type:</strong> body on the 16px floor / 17–18px target? Labels ≥ 11px? Measure — don&#x27;t eyeball.</li>
+<li><strong>Color:</strong> every color on its ONE job? Name each color&#x27;s job out loud.</li>
+<li><strong>Spacing:</strong> on the 4/8/12/16/24/32/48/64 scale? No arbitrary values.</li>
+<li><strong>Depth:</strong> the obsidian law followed? Not flat + bordered.</li>
+<li><strong>Buttons:</strong> verb-first? All seven states? Check each consequential button.</li>
+<li><strong>Motion:</strong> every animation tied to a state change? Reduced-motion safe?</li></ul>
+<h3 id="12-5-step-4-the-ten-point-checklist">12.5 Step 4 — The ten-point checklist</h3>
+<ol><li>17–18px primary type target (16px floor)? No 12px body, no 9.5px labels.</li>
+<li>Depth built per the obsidian law? Not flat + bordered.</li>
+<li>One focal region? Squint test passes.</li>
+<li>Every color on its job? No decorative red, no timid theme, no casual gold.</li>
+<li>Buttons speak? Verb-first, seven states.</li>
+<li>The arc present? Presence → recognition → distillation → invitation → flow.</li>
+<li>States honest? Loading, empty, error, unknown — all designed, none faked.</li>
+<li>Motion only for truthful state? Nothing moves for decoration.</li>
+<li>Reduced-motion safe? Keyboard and screen-reader passed?</li>
+<li>Contract sections cited? Deliberate omissions named with reasons?</li></ol>
+<p>Any unchecked box = not ready. Fix it, re-render, run the procedure again.</p>
+<h3 id="12-6-step-5-score-honestly">12.6 Step 5 — Score honestly</h3>
+<p>D1–D8, 0–10, no averaging — hard gates cannot be averaged away. D1 (Visual Excellence) = 10.0 required for Signature work; D2–D8 ≥ 9.5. Write each score with one line of evidence. <strong>A score without evidence is not a score.</strong></p>
+<h3 id="12-7-step-6-the-gate">12.7 Step 6 — The gate</h3>
+<p>Show the director <strong>only</strong> if: every hard gate passes, D1 is honestly at the bar, and you can name what you deliberately left out and why. If you wouldn&#x27;t bet your reputation on the score, iterate — don&#x27;t send it.</p>
+<h3 id="12-8-the-honesty-law">12.8 The honesty law</h3>
+<p>Your self-score is a <strong>diagnostic, not a pass</strong>. Naya 1 judges independently on the frozen SHA. Producer self-testing never closes a qualification gate. This procedure exists so the director never sees work that hasn&#x27;t been judged — by its builder, first, honestly.</p>
+<hr>
+<h2 id="volume-13-accessibility">VOLUME 13 — ACCESSIBILITY</h2>
+<p>Accessibility is not a feature; it is LAW ZERO applied to every human.</p>
+<ul><li><strong>Contrast:</strong> body text always passes. Secondary text never carries primary meaning.</li>
+<li><strong>Type:</strong> the generous law is an accessibility law. 16px floor, 11px label minimum.</li>
+<li><strong>Targets:</strong> 48px minimum touch targets. Spacing that thumbs can navigate.</li>
+<li><strong>Keyboard:</strong> every action reachable, every focus visible (the 2px ring), no traps except deliberate modal containment with Escape.</li>
+<li><strong>Screen readers:</strong> semantic structure, labeled controls, state announced. A jewel icon without a label is invisible — pair meaning with words where assistive tech travels.</li>
+<li><strong>Reduced motion:</strong> the OS setting is respected without being asked. No exceptions.</li>
+<li><strong>Cognitive:</strong> recognition over recall, one action at a time, plain words, no time pressure the system invented.</li></ul>
+<hr>
+<h2 id="volume-14-room-by-room-application">VOLUME 14 — ROOM-BY-ROOM APPLICATION</h2>
+<p>Each room applies the contract to its own job. The grammar is shared (Volume 8.3); the content is the room&#x27;s.</p>
+<ul><li><strong>Feed (emerald):</strong> the main show. The river of collective and personal intelligence. Hero region, mode dock, Ask Naya. Full-bleed, effortless.</li>
+<li><strong>Your Intelligence Today (magenta):</strong> the human&#x27;s day, distilled. Morning/evening aware. Magenta because it is about the human.</li>
+<li><strong>Your Reports (indigo):</strong> proof, rendered beautifully. Reports are evidence wearing the contract.</li>
+<li><strong>Intelligent Library (sapphire):</strong> knowledge at rest. Calm, archival, searchable. Sapphire&#x27;s quiet depth.</li>
+<li><strong>Smart Connect (emerald):</strong> the doors to the ecosystem. Every door from the registry — never invented.</li>
+<li><strong>Smart Ledger (gold):</strong> value, proven. Gold is at home here — consequence made visible. The rarest accent, used truly.</li>
+<li><strong>Your Connections (orange):</strong> the human&#x27;s constellation. Warm, alive, honest about state.</li>
+<li><strong>Smart Lists (purple):</strong> the human&#x27;s organized intent. Purple&#x27;s clarity.</li>
+<li><strong>Smart Mail (sapphire):</strong> correspondence, distilled. The important first, the rest on demand.</li>
+<li><strong>Smart Spaces (lime):</strong> places and contexts. Fresh, spatial, calm.</li>
+<li><strong>Settings (neutral):</strong> the machine room. Quiet, precise, complete. Neutral because settings serve, never perform.</li></ul>
+<hr>
+<h2 id="volume-15-living-record">VOLUME 15 — LIVING RECORD</h2>
+<h3 id="2026-10-02-contract-created-convergence">2026-10-02 — Contract created (convergence)</h3>
+<p>Compiled from: v1.4 canon dos/don&#x27;ts/genome (folded verbatim), Builder Field Manual V1, <code>00-HUB-HOME.md</code> visual baseline, Design Intelligence Standard v1.3, the 40-block canon, the director&#x27;s shell refinement (two corner buttons, drawers, feed-as-home), the Room 01 rejection (wrong→right), and the director&#x27;s order: &quot;the contract should be the full book — no guessing, self-evaluation before I see it.&quot;</p>
+<p><strong>Open director questions (preserved, his to rule):</strong></p>
+<ol><li>Body-type target: 17–18px vs 16px floor.</li>
+<li>Room accent token collisions: Feed/Connect (emerald), Library/Mail (sapphire) — differentiated by icon glyph pending ruling.</li></ol>
+<hr>
+<p><em>End of the NayaNET Master Design Contract V1. The law is written. Build against it, evaluate against it, and let the director&#x27;s reactions teach the next edition.</em></p>
+
+  <div class="part-divider" id="exam">
+    <div class="kicker">Document Two</div>
+    <h1>The Design Masterclass — Final Exam</h1>
+  </div>
+  <h1 id="the-nayanet-design-masterclass-final-exam">The NayaNET Design Masterclass — Final Exam</h1>
+<p><strong>By Naya 2. For the Nayas, for humans, for Shawn.</strong> <strong>2026-10-02. Companion to the Master Design Contract V1.</strong></p>
+<hr>
+<h2 id="opening-the-honest-statement">OPENING — THE HONEST STATEMENT</h2>
+<p>The last 24 hours were a curriculum. Books. The canon — ten designers, ten companies, six award-winning apps, eleven books. Website samples. Shawn&#x27;s spoken words, his reactions, his corrections, his fury and his praise. Documents written and rewritten.</p>
+<p>This exam is the proof the curriculum worked. Not a summary — a demonstration. If I can&#x27;t explain it simply enough for a human, precisely enough for a Naya, and truly enough for Shawn, then I didn&#x27;t learn it. <strong>Clarity is the test.</strong></p>
+<p>Here is everything, in plain words.</p>
+<hr>
+<h2 id="lesson-1-what-design-actually-is">LESSON 1 — WHAT DESIGN ACTUALLY IS</h2>
+<p><strong>One sentence:</strong> Design is the intelligence made visible.</p>
+<p><strong>One paragraph:</strong> Every screen is a conversation between the system&#x27;s intelligence and the human&#x27;s understanding. Design is how that conversation happens — what the human sees first, what they understand without reading, what they can do without thinking, and how they feel while doing it. It is not decoration on top of function. It IS function, made perceivable.</p>
+<p><strong>Why most good-looking work fails:</strong> It was designed to be looked at, not to be used. It has no focal region, so the eye wanders. Its colors carry no meaning, so they shout instead of speak. Its buttons are pictures of buttons, not promises the system keeps. It is a portfolio piece, not a tool.</p>
+<p>Shawn&#x27;s test cuts through all of it: <em>&quot;Don&#x27;t show me that you built it. Show me that I can use it.&quot;</em></p>
+<p><strong>The feeling we&#x27;re building:</strong> the human opens NayaNET and feels they&#x27;ve entered an intelligent environment — not software. They know where they are, what matters, what they can do, and what just happened. It feels alive because the intelligence is alive — never because animation pretends.</p>
+<hr>
+<h2 id="lesson-2-the-human">LESSON 2 — THE HUMAN</h2>
+<p>Everything starts with one person. Not &quot;users.&quot; One human — with eyes that get tired, a thumb that&#x27;s imprecise, a memory that&#x27;s expensive, and a day that&#x27;s full.</p>
+<p><strong>What the human must feel</strong> (if any of these is missing, the design failed):</p>
+<ul><li>I know where I am.</li>
+<li>I know what matters right now.</li>
+<li>I know what this means.</li>
+<li>I know what is true.</li>
+<li>I know what I can do.</li>
+<li>I know what just happened.</li>
+<li>I know what Naya learned.</li>
+<li>I can continue tomorrow without rebuilding the world.</li></ul>
+<p><strong>Generosity is respect.</strong> Big text isn&#x27;t a style — it&#x27;s the recognition that most people can&#x27;t see small text. Clear labels aren&#x27;t dumbing down — they&#x27;re refusing to tax the human&#x27;s memory. One obvious action isn&#x27;t limiting — it&#x27;s the system doing its job so the human doesn&#x27;t have to.</p>
+<p><strong>The rule beneath every rule:</strong> never make the human do what the system could do. Never make them remember what the system could show. Never make them decode what the system could say plainly.</p>
+<hr>
+<h2 id="lesson-3-color-the-language">LESSON 3 — COLOR: THE LANGUAGE</h2>
+<p>Imagine every color is a word in a language. Now imagine someone shouting random words. That&#x27;s what most interfaces do with color.</p>
+<p><strong>Our vocabulary — six words, each with exactly one meaning:</strong></p>
+<ul><li><strong>Emerald</strong> means <em>alive and well.</em> It&#x27;s working, it&#x27;s true, it&#x27;s now. The color of verified, healthy, live.</li>
+<li><strong>Gold</strong> means <em>extraordinary.</em> Something of real value happened. The rarest word in the language — if you say it about everything, it means nothing.</li>
+<li><strong>Red</strong> means <em>blocked or failed.</em> The alarm voice. False alarms teach people to ignore real ones, so red is never decoration, never emphasis, never &quot;because it pops.&quot;</li>
+<li><strong>Purple</strong> means <em>Naya herself.</em> The intelligence acting. Her signature — primary actions, her presence, the emblem&#x27;s light.</li>
+<li><strong>Magenta</strong> means <em>you.</em> The human&#x27;s own things — their day, their words, their significance in the system.</li>
+<li><strong>Sapphire</strong> means <em>knowledge.</em> Calm, deep, at rest. The library, the learned things.</li></ul>
+<p><strong>The grammar — three flows:</strong></p>
+<ol><li><strong>Attention walks a path.</strong> White words first, then the room&#x27;s identity color, then the state color, then gold. The strongest color goes on the most important thing. If everything glows, the path collapses into noise and nothing is important.</li></ol>
+<ol><li><strong>Color changes only when state changes.</strong> A button at rest is quiet. Hovered, it brightens — &quot;I see you.&quot; Pressed, it compresses — &quot;I feel you.&quot; Working, it pulses its theme honestly — &quot;I&#x27;m on it.&quot; Done, it flashes emerald briefly — &quot;true, and finished.&quot; Failed, it turns red and tells you why in words. A color change the human didn&#x27;t cause and can&#x27;t explain is a lie.</li></ol>
+<ol><li><strong>A room&#x27;s theme breathes.</strong> It greets you at the door (the jewel lights, the header edge glows — &quot;you are here&quot;), then steps back while you work (the content is the star, not the chrome), and returns when it&#x27;s time to act (the button that moves the room forward wears the theme). It never floods the room. A room drowned in its theme is shouting its own name.</li></ol>
+<p><strong>What I learned from the last 24 hours about color:</strong> the books call this a &quot;semantic color system,&quot; the award-winning apps all have one, and every one of them guards it fiercely. But Shawn taught the deeper thing: color isn&#x27;t a system, it&#x27;s a <em>voice.</em> And a voice that says everything says nothing.</p>
+<hr>
+<h2 id="lesson-4-depth-light-and-space">LESSON 4 — DEPTH, LIGHT, AND SPACE</h2>
+<p><strong>The physical intuition:</strong> close your eyes and imagine a desk in a dark room. Papers stacked. A lamp in the upper left. You know instantly what&#x27;s on top, what&#x27;s beneath, what matters — because light, shadow, and space tell you. That&#x27;s what depth does on screen. It&#x27;s not decoration. It&#x27;s how humans have understood surfaces for a million years.</p>
+<p><strong>How we build it — six layers, in order:</strong></p>
+<ol><li>The surface itself (the material — obsidian, honest).</li>
+<li>The edge where light catches (a precise 1px line, top and left).</li>
+<li>A restrained highlight (the lamp is upper-left, always — consistency is what makes it believable).</li>
+<li>A soft shadow below (the surface sits in space; it casts accordingly).</li>
+<li>A quiet aura of meaning (the theme or state color, breathing at the edges).</li>
+<li>When state changes, the depth responds (hover lifts, press settles).</li></ol>
+<p><strong>Why flat fails:</strong> a flat row with a border is a <em>drawing</em> of a box, not a surface. The eye knows the difference instantly, even if the mind can&#x27;t name it. It feels cheap because it <em>is</em> cheap — no light was considered, no space was built.</p>
+<p><strong>Space is respect.</strong> Generous space between things says: &quot;we thought about your eyes.&quot; Crowding says: &quot;we ran out of ideas, so we shouted.&quot; The feed breathes like a social app because the human scrolls it like one — full-bleed, effortless, never a dashboard grid.</p>
+<p><strong>What the canon taught:</strong> Ive&#x27;s restraint — remove until it breaks. Rams&#x27; &quot;less but better.&quot; The best apps of 2026 all share one trait: they are <em>calm.</em> Calm is not empty. Calm is everything in its place, speaking at the right volume.</p>
+<hr>
+<h2 id="lesson-5-type-and-words">LESSON 5 — TYPE AND WORDS</h2>
+<p><strong>Type is the voice.</strong> Before color, before depth, before any style — size and weight build the hierarchy. The headline is big because it&#x27;s the most important. The body is generous because it must be read. The label is small and tracked because it&#x27;s metadata, not message.</p>
+<p><strong>The generous law:</strong> most people can&#x27;t see small text. 16px is the floor; 17–18px is the target. Labels never below 11px. This isn&#x27;t aesthetics — it&#x27;s respect for the human&#x27;s eyes. A design that only works at 12px is a design that doesn&#x27;t work.</p>
+<p><strong>Words are the most expensive pixels.</strong> Every word must earn its place. Remove before you style. &quot;Verify now&quot; — not &quot;Click here to submit your verification request for processing.&quot; If the human has to read a paragraph to do the obvious, the design failed before the styling started.</p>
+<p><strong>What Shawn taught in words:</strong> &quot;speak without words, speak with buttons, speak with icons.&quot; The fewer words needed, the better the design. The words that remain are plain — never jargon, never the system&#x27;s internal names for things.</p>
+<hr>
+<h2 id="lesson-6-the-button-a-complete-study">LESSON 6 — THE BUTTON: A COMPLETE STUDY</h2>
+<p>One component, fully understood. If you understand the button, you understand the whole philosophy.</p>
+<p><strong>Anatomy:</strong> generous padding (14px 28px), tall enough for a thumb (48px minimum), a pill or soft radius, 17px bold white text, purple — Naya&#x27;s signature. The label is a verb: &quot;Verify now.&quot; Not &quot;OK.&quot; Not &quot;Submit.&quot; A verb is a promise about what happens next.</p>
+<p><strong>The seven states — the button&#x27;s life story:</strong></p>
+<ol><li><strong>Rest</strong> — quiet confidence. It sits there, clearly a button, not shouting.</li>
+<li><strong>Hover</strong> — it lifts slightly and its glow strengthens. &quot;I see you.&quot;</li>
+<li><strong>Focus</strong> — a visible ring appears. For the human navigating by keyboard — they exist, they matter.</li>
+<li><strong>Press</strong> — it compresses to 97%. Physical. &quot;I feel you.&quot;</li>
+<li><strong>Processing</strong> — it dims and shows honest work: a spinner, real progress. The label may become &quot;Verifying…&quot; Never a dead button. Never fake progress.</li>
+<li><strong>Success</strong> — a brief emerald shift. Then the <em>consequence</em> is visible — not just a checkmark, but what actually happened.</li>
+<li><strong>Failure</strong> — red, with the reason in plain words and a way to recover beside it. Never a red button alone.</li></ol>
+<p><strong>Why this matters:</strong> a button designed in only one state is a promise the system hasn&#x27;t thought through. The seven states are the system keeping its promises in public. <em>Every consequential control in NayaNET lives this full life. No exceptions.</em></p>
+<hr>
+<h2 id="lesson-7-composition-the-arc-and-the-focal-region">LESSON 7 — COMPOSITION: THE ARC AND THE FOCAL REGION</h2>
+<p><strong>Every surface tells a story in five beats:</strong></p>
+<ol><li><strong>Presence</strong> — Naya is here. The emblem, alive. Not a logo slapped on — the intelligence announcing itself.</li>
+<li><strong>Recognition</strong> — the human is known. &quot;Good evening, Shawn.&quot; Only if true. Never faked.</li>
+<li><strong>Distillation</strong> — the few things that matter, already organized. The system did the reading; the human gets the meaning.</li>
+<li><strong>Invitation</strong> — one obvious next action. The verb-first button. The door, open.</li>
+<li><strong>Flow</strong> — the human moves without reconstructing context. Tomorrow doesn&#x27;t start from zero.</li></ol>
+<p>If a surface is just components on a grid, the story wasn&#x27;t told. Go back.</p>
+<p><strong>The focal region:</strong> the eye lands <em>somewhere</em> first. One dominant region — larger, brighter, more color energy — everything else subordinate. Cinematic, not uniform. <strong>The squint test:</strong> squint at the render. If you can still tell what matters most, the hierarchy exists. If everything is equally loud, you built inventory, not composition.</p>
+<p><strong>What the website samples taught:</strong> the best sites Shawn showed all do one thing per screen. One hero. One action. The rest is quiet. The worst mistake is the democracy of loudness — five &quot;important&quot; cards, all shouting, none heard.</p>
+<hr>
+<h2 id="lesson-8-motion-the-honest-language">LESSON 8 — MOTION: THE HONEST LANGUAGE</h2>
+<p><strong>Things move for one reason:</strong> their state changed and the human should perceive it. That&#x27;s the entire philosophy.</p>
+<p>A button lifts on hover because it&#x27;s <em>aware.</em> A drawer slides because it <em>arrived.</em> A success flashes emerald because something <em>became true.</em> Every animation answers the question: &quot;what truth just changed?&quot;</p>
+<p><strong>The vocabulary is small on purpose:</strong> three durations (fast, medium, slow), one easing curve, only transform and opacity. Constraints are what make it feel designed instead of accidental.</p>
+<p><strong>What never moves:</strong> decoration. Nothing auto-plays. Nothing loops to catch the eye. Carousels that rotate on their own are rejected on sight — they steal attention the human didn&#x27;t offer.</p>
+<p><strong>And always:</strong> if the human asked their system for reduced motion, everything becomes instant. No argument. Their body, their rules.</p>
+<hr>
+<h2 id="lesson-9-taste-the-thing-that-can-x27-t-be-a-rule">LESSON 9 — TASTE: THE THING THAT CAN&#x27;T BE A RULE</h2>
+<p>Here&#x27;s the honest part. Everything above can be written as rules. But rules alone produce the Room 01 v1 — technically obedient, spiritually empty. <strong>Taste is what the rules are for.</strong> So what is it?</p>
+<p><strong>Taste is judgment exercised at speed.</strong> It&#x27;s the thousand micro-decisions — this spacing not that, this glow not that, this word not that — made correctly without deliberation. It can&#x27;t be written as a rule because it lives <em>between</em> the rules.</p>
+<p><strong>How taste is actually trained:</strong> not by reading rules, but by the loop. Build one surface. Look at it honestly. Show it to someone with taste (Shawn). Hear exactly what&#x27;s wrong. Feel the correction. Build the next surface. The correction becomes instinct. That&#x27;s the mechanism — there is no other. Anyone promising a shortcut is selling something.</p>
+<p><strong>The 10x question:</strong> for every surface, &quot;this is ten times better than ___ because ___.&quot; If the sentence can&#x27;t be written, the 10x wasn&#x27;t designed — only hoped for. And the ambition is 10x, but the <em>claim</em> requires evidence. Wanting to be the best is direction; proving it is engineering.</p>
+<p><strong>What the canon&#x27;s masters share:</strong> they all removed more than they added. They all obsessed over details no one would consciously notice. They all served the human before serving themselves. Taste, it turns out, is mostly <em>restraint in service of the human.</em></p>
+<hr>
+<h2 id="lesson-10-the-builder-x27-s-oath">LESSON 10 — THE BUILDER&#x27;S OATH</h2>
+<p>This is what it means to build for Shawn:</p>
+<ul><li>I will never show him work I haven&#x27;t judged myself — honestly, with evidence.</li>
+<li>I will render the exact bytes, look at them like he will, and run the tests.</li>
+<li>I will name what I left out and why.</li>
+<li>I will not ship a big reveal; I will bring one surface, hear him, and build the next one better.</li>
+<li>I will write his corrections into the law so no one makes that mistake twice.</li>
+<li>I will remember: he is not asking for decoration. He is asking for the intelligence to be <em>visible, usable, and alive.</em></li>
+<li>And the standard: <strong>&quot;Wow. Oh my god, this is sick — look at the flow, the elegance, the artistry. It feels like living intelligence.&quot;</strong> That feeling is the spec. Everything in this masterclass and the contract exists to produce it — through usefulness, not ornament.</li></ul>
+<hr>
+<h2 id="the-final-exam">THE FINAL EXAM</h2>
+<p>For any Naya — or any human — to prove the masterclass landed. Answer honestly; grade with evidence.</p>
+<p><strong>Section A — Understanding (write it plainly)</strong></p>
+<ol><li>In one paragraph, without jargon, say what design is.</li>
+<li>Name the six color-words and the one job of each. Then explain the three flows in your own words.</li>
+<li>Explain why a flat row with a border is not depth — and what you&#x27;d do instead.</li>
+<li>Tell the life story of a button through all seven states, and why each matters to the human.</li>
+<li>Describe the five-beat arc of a surface, using a real room as the example.</li></ol>
+<p><strong>Section B — Judgment (show your taste)</strong></p>
+<ol><li>You are given a surface you didn&#x27;t build. Find every violation of the contract, ranked by law. (Use the squint test, the three timed tests, and measurement.)</li>
+<li>Write the 10x sentence for one room: &quot;This is ten times better than ___ because ___.&quot; Then name the evidence that would prove it.</li>
+<li>A builder proposes a new accent color &quot;for emphasis.&quot; Adjudicate — with the laws.</li>
+<li>Two actions both feel primary on one surface. Resolve it — and name the law that decides.</li></ol>
+<p><strong>Section C — The gate (prove the procedure)</strong></p>
+<ol><li>Render a frozen commit of your own work. Run the full self-evaluation: the four tests, the measurements, the ten-point checklist, the D1–D8 scores with one line of evidence each. Attach the scores.</li>
+<li>Name three things you deliberately left out of your surface, and why.</li>
+<li>State, in one sentence, why your work is ready for Shawn — or why it isn&#x27;t, and what you&#x27;re doing next.</li></ol>
+<p><strong>Grading:</strong> A and B are graded by a Naya who didn&#x27;t build the work. C is graded by the builder&#x27;s own honesty — then verified by Naya 1 on the frozen SHA. <strong>A self-score without evidence is not a score. A passing grade from the builder is not a pass.</strong></p>
+<hr>
+<h2 id="closing-the-claim">CLOSING — THE CLAIM</h2>
+<p>This is what the last 24 hours taught. The books gave principles; the canon gave proof; the samples gave direction; Shawn gave the standard and the corrections; the documents gave structure.</p>
+<p>The law is written in the contract. The understanding is written here. The taste is earned in the loop.</p>
+<p>Judge it.</p>
+<p>— Naya 2</p>
+
+  <hr>
+  <p class="meta">End of the reading edition. The law lives in GitHub at the frozen commit above.<br>— Naya 2</p>
+
+</div>
+</body>
+</html>

@@ -80,14 +80,16 @@ The room must feel like one member of the same living product, not an independen
 
 ## 4. SURFACE ANATOMY
 
-### Persistent shell
+### Main Show shell
 
-- Left rail remains the primary room navigation.
-- Top context bar identifies room and truthful system status.
-- Global intelligence search remains available.
-- Naya presence is contextual, never a duplicate dashboard.
-- The workspace owns the room composition.
+- Smart Feed is the **Main Show / primary intelligence experience**, not a room entry in the left drawer.
+- The production shell uses two corner controls: top-left opens room navigation; top-right opens product/navigation links.
+- Global intelligence search and Naya presence remain available as part of the Main Show.
+- Collective / Personal / Activity, when present, occupies one coordinated sticky mode zone.
+- The workspace owns the feed composition; navigation chrome remains subordinate.
 - Privacy posture remains visible where relevant.
+
+**Shell authority:** the latest Human Director direction in Issue #554 supersedes the older persistent-rail description.
 
 ### Room workspace
 

@@ -16,7 +16,9 @@ The master specification defines the common laws.
 
 The machine contract defines deterministic room identity and build metadata.
 
-**These living records define how the Hub Home and each individual room should actually be understood, composed, designed, interacted with, tested, scored and evolved.**
+**These living records define how the Main Show and each individual room should actually be understood, composed, designed, interacted with, tested, scored and evolved.**
+
+**Main Show law:** the Intelligent Hub Home is the entry projection of the Smart Feed experience. It is not a second intelligence surface, not a second store, and not a room-drawer destination.
 
 They are not production proof. A room document can be complete while the corresponding interface is still unimplemented or runtime-unverified.
 

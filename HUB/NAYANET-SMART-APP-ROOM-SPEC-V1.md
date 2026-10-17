@@ -202,13 +202,19 @@ as applicable.
 
 The Hub is one persistent environment, not eleven separate websites.
 
-## Persistent shell anatomy
+## Production shell anatomy — #554 authority
 
-**LEFT RAIL**  
-Primary room navigation. Stable order. Distinct jewel identity per room. Labels remain readable; icons do not replace names until the human has learned them.
+**TWO CORNER CONTROLS**  
+Top-left opens the left room drawer. Top-right opens the right product/navigation drawer. There is no persistent 64px room rail in the current production shell direction.
 
-**TOP CONTEXT BAR**  
-Current room + relevant scope/space + truthful system status. No decorative status lights disconnected from real state.
+**LEFT ROOM DRAWER**  
+Today, Reports, Library, Connect, Ledger, Connections, Lists, Mail, Spaces, Settings. Smart Feed is excluded because it is the Main Show / primary intelligence experience.
+
+**RIGHT PRODUCT DRAWER**  
+HOME, NAYA POWER, 5-DAY CHALLENGE, ENTER FREE, POWERCAST, WHITE PAPER, ABOUT US, LOGIN.
+
+**ONE COORDINATED MODE ZONE**  
+Collective / Personal / Activity remains in one sticky zone under the top bar when applicable. Never create competing sticky navigation zones.
 
 **GLOBAL INTELLIGENCE SEARCH**  
 Prominent, not hidden. Search intelligence by meaning, source, relationship, time, truth and context.
@@ -225,10 +231,10 @@ Contextual thinking partner. Naya understands the active room/object and can exp
 - Deep links restore the intended room/object.
 - Reload preserves legitimate context.
 - Room change does not recreate identity.
-- Mobile converts navigation intentionally; it does not merely squeeze the desktop rail.
-- The active room has one unmistakable selected state.
+- Mobile adapts navigation intentionally rather than squeezing a desktop rail.
+- Smart Feed remains the first authenticated Main Show experience.
 - Search and Naya remain globally available without stealing focus.
-- External ecosystem links are visually secondary.
+- External ecosystem links remain visually secondary.
 
 ---
 
