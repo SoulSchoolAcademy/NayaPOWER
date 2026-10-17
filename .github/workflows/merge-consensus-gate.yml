@@ -20,13 +20,14 @@ on:
   issue_comment:
     types: [created, edited]
 
-# Least privilege: the gate only reads PRs, reviews, and PR comments
-# (served by the issues API). Declared explicitly so a future default
-# restriction cannot silently 403 the gate into permanent red.
+# Least privilege: the gate reads PRs, reviews, PR comments (issues API), and
+# workflow runs for the PR-scoped merge-authority check. actions: read is
+# required for that read-only Actions API call; write access is not needed.
 permissions:
   contents: read
   pull-requests: read
   issues: read
+  actions: read
 
 jobs:
   consensus:
@@ -100,3 +101,66 @@ jobs:
           EVENT_NAME: ${{ github.event_name }}
           TRIGGER_COMMENT_BODY: ${{ github.event.comment.body }}
         run: python3 tools/check_merge_consensus.py
+
+  # L245: the DELEGATED-MERGE-AUTHORITY packet is built from REAL PR data by
+  # tools/assemble_merge_packet.py and verified by the canonical check
+  # tools/protocol/checks/merge_authority.py. This MUST be its own job:
+  # GitHub creates one check run per job, named by the job's `name:` field,
+  # and the post-merge authority audit (tools/authority_audit.py) looks up
+  # the check run named exactly "Verify merge authority" on each merged
+  # head. A step inside the consensus job would be invisible to the audit.
+  #
+  # Aggregation scope (L307 prong (b), T-H4): PR-scoped. The kernel `test`
+  # job failing at head AND at the live base tip is an inherited tip
+  # defect — recorded, never a veto. Only a head failure with a green (or
+  # unknown) base counts. The gate's own previous check-run never vetoes.
+  authority:
+    name: Verify merge authority
+    runs-on: ubuntu-latest
+    # Only run for PR comments, not issue comments
+    if: github.event_name != 'issue_comment' || github.event.issue.pull_request
+    steps:
+      - uses: actions/checkout@v4
+      - name: Get PR info
+        id: pr
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Same PR-number/head-SHA resolution as the consensus job (the
+          # jobs cannot share step outputs). For pull_request events the
+          # payload carries both; issue_comment events need the API lookup
+          # with the same retry/backoff discipline.
+          if [ "${{ github.event_name }}" = "issue_comment" ]; then
+            PR_NUM="${{ github.event.issue.number }}"
+            echo "pr_number=$PR_NUM" >> $GITHUB_OUTPUT
+            HEAD_SHA=""
+            for attempt in 1 2 3 4 5; do
+              if HEAD_SHA=$(gh api "repos/${{ github.repository }}/pulls/$PR_NUM" --jq .head.sha 2>/dev/null) && [ -n "$HEAD_SHA" ]; then
+                break
+              fi
+              echo "gh api attempt $attempt failed, retrying..." >&2
+              sleep $((attempt * 10))
+            done
+            if [ -z "$HEAD_SHA" ]; then
+              echo "ERROR: could not resolve head SHA for PR $PR_NUM after 5 attempts (API unavailable, not an authority verdict)" >&2
+              exit 1
+            fi
+            echo "head_sha=$HEAD_SHA" >> $GITHUB_OUTPUT
+          else
+            echo "pr_number=${{ github.event.pull_request.number }}" >> $GITHUB_OUTPUT
+            echo "head_sha=${{ github.event.pull_request.head.sha }}" >> $GITHUB_OUTPUT
+          fi
+      - name: Verify merge authority (L245)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          # The packet is built from REAL PR data (fail-closed: missing
+          # fields or API failure never read as permission); the check's
+          # exact reason is the verdict. Posture: until branch protection
+          # requires this check, a red check plus the freeze directive is
+          # the interim enforcement - same as the consensus job. API
+          # failures fail closed with plain words ("unable to verify"),
+          # never a traceback.
+          python3 tools/assemble_merge_packet.py \
+            --pr "${{ steps.pr.outputs.pr_number }}" --verify
