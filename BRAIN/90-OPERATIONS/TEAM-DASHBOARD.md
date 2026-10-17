@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-17 16:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-17 17:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 610 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 615 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -58,13 +58,13 @@
 - [#2613](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2613) wire: learn-clock T6 verify + T7 compound commands (Alpha w189)
 - …and 53 more
 
-### KNOW (23)
+### KNOW (24)
+- [#2736](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2736) fix(brain-index): make regeneration line-ending deterministic on every
 - [#2683](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2683) [INTELLIGENT_BLOCKS] #2642 reconcile: dock gate-reader doc + brain-ind
 - [#2433](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2433) brain-index: regenerate at basis 31d8cff7 (mechanical re-stamp, --che…
 - [#2415](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2415) BRAIN: regenerate index layer at live tip 665098e3
 - [#2407](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2407) repair(brain-index): re-stamp index on main 665098e3 (drift-13)
-- [#2390](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2390) repair(brain-index): re-stamp index on main f33bba34
-- …and 18 more
+- …and 19 more
 
 ### ACT (3)
 - [#2457](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2457) flip #3: lane-9 test-leg fixes (second ADVISE-count site + receipt-gat
@@ -87,13 +87,13 @@
 - [#2585](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2585) Add automatic scorecard calculator (tools/scorecard.py + tests)
 - …and 25 more
 
-### BUILD (233)
+### BUILD (234)
+- [#2739](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2739) Design library: canonical piece library on main (37 files, categorized
 - [#2735](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2735) Fix Living Map probes that mask latest failure or partial schema
 - [#2732](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2732) fix(activation): pin Operating Code V2 LF in Windows checkouts
 - [#2731](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2731) ACTIVATION-PACKET: re-point author-branch links at main
 - [#2730](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2730) Phase B: repo-native lesson injection + scoring machinery
-- [#2728](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2728) distill-daily: point boot bytes at live board #2721
-- …and 228 more
+- …and 229 more
 
 ### WIRE (124)
 - [#2729](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2729) Add team-declared worker registry; gate reads it (no more hardcoded se
@@ -111,21 +111,21 @@
 - [#2397](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2397) feat(dashboard): live Team Naya activity dashboard — markdown + machin
 - …and 7 more
 
-### INFRA (40)
+### INFRA (41)
+- [#2740](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2740) Design specimens: categorized piece library with identities
 - [#2716](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2716) Composer v1 + gap closure (43->39 mapping, feed specimen) — item 15b
 - [#2689](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2689) CI rate-limit resilience: cut redundant API burn (~85% on hot paths)
 - [#2649](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2649) Add TEAM-ROSTER.md: the verified sets (leads, area leads, lane agents,
 - [#2638](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2638) REVIEW: merge masterclass draft + circles system (not for main merge)
-- [#2593](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2593) CANDIDATE: veracity demote for FALSIFIED lessons at retrieve (t0762 l…
-- …and 35 more
+- …and 36 more
 
-### PRODUCT (37)
+### PRODUCT (39)
+- [#2738](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2738) Hub deploy pipeline: GitHub → Cloudflare Workers
+- [#2737](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2737) EMIT: hub feeds emitter (rebased on main)
 - [#2733](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2733) test(activation): fail closed when compiled current state disagrees wi 📝draft
 - [#2713](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2713) t0907: block catalog — 457 canonical NAYA-XXX-NNN blocks + coverage
 - [#2701](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2701) HUB sync contract — Goal #1 Hub Smart Feed contract (three tongues)
-- [#2700](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2700) [DRAFT] HUB MASTER BUILD CONTRACT v1 (review only, do not merge) 📝draft
-- [#2685](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2685) HUB/BLUEPRINT.ai.md — canonical team reference: the complete system ma
-- …and 32 more
+- …and 34 more
 
 ### MEMORY (6)
 - [#2644](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2644) 0008 Intelligent Block V1 — CONVERGED sender contract (three tongues, 

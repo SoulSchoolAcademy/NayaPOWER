@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-17T16:15:39+00:00",
+ "generated_utc": "2026-10-17T17:15:33+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -102,6 +102,12 @@
    "board_lane": "#2175 lane KNOW",
    "open_prs": [
     {
+     "number": 2736,
+     "title": "fix(brain-index): make regeneration line-ending deterministic on every platform",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2736",
+     "draft": false
+    },
+    {
      "number": 2683,
      "title": "[INTELLIGENT_BLOCKS] #2642 reconcile: dock gate-reader doc + brain-index regen at 9f80e8ec",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2683",
@@ -142,15 +148,9 @@
      "title": "feat(ci): dedicated brain-index-freshness required gate workflow (Shawn 2026-10-11)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2385",
      "draft": false
-    },
-    {
-     "number": 2348,
-     "title": "WIRE: D31 incident-representation claims gate on the drift-canary governance path",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2348",
-     "draft": false
     }
    ],
-   "open_pr_count": 23
+   "open_pr_count": 24
   },
   {
    "id": "act",
@@ -348,6 +348,12 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2739,
+     "title": "Design library: canonical piece library on main (37 files, categorized, INDEX.md)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2739",
+     "draft": false
+    },
+    {
      "number": 2735,
      "title": "Fix Living Map probes that mask latest failure or partial schema",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2735",
@@ -388,15 +394,9 @@
      "title": "Remove stale L11 note: oath + field manuals are on main",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2722",
      "draft": false
-    },
-    {
-     "number": 2715,
-     "title": "Daily intelligence report pipeline \u2014 item 17 (generator + sample + read contract)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2715",
-     "draft": false
     }
    ],
-   "open_pr_count": 233
+   "open_pr_count": 234
   },
   {
    "id": "wire",
@@ -555,6 +555,12 @@
    "board_lane": "#2175 lane INFRA",
    "open_prs": [
     {
+     "number": 2740,
+     "title": "Design specimens: categorized piece library with identities",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2740",
+     "draft": false
+    },
+    {
      "number": 2716,
      "title": "Composer v1 + gap closure (43->39 mapping, feed specimen) \u2014 item 15b",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2716",
@@ -595,15 +601,9 @@
      "title": "fix(ci): rate-limit resilience for Current Truth Resolver evidence collection",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2570",
      "draft": false
-    },
-    {
-     "number": 2563,
-     "title": "Reconcile NayaPOWER live backlog: 28 blockers, solutions, owners, double-check law",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2563",
-     "draft": true
     }
    ],
-   "open_pr_count": 40
+   "open_pr_count": 41
   },
   {
    "id": "product",
@@ -623,6 +623,18 @@
    "active_now": false,
    "board_lane": "#2175 lane PRODUCT",
    "open_prs": [
+    {
+     "number": 2738,
+     "title": "Hub deploy pipeline: GitHub \u2192 Cloudflare Workers",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2738",
+     "draft": false
+    },
+    {
+     "number": 2737,
+     "title": "EMIT: hub feeds emitter (rebased on main)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2737",
+     "draft": false
+    },
     {
      "number": 2733,
      "title": "test(activation): fail closed when compiled current state disagrees with live GitHub",
@@ -658,21 +670,9 @@
      "title": "t0483: hourly schedule pump for NayaNET Agent Capture",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2680",
      "draft": false
-    },
-    {
-     "number": 2679,
-     "title": "Hub runtime: window.NayaPowerRuntime bridge module + green harness \u2014 t0480",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2679",
-     "draft": false
-    },
-    {
-     "number": 2678,
-     "title": "Hub feeds: first room-feed/v1 emissions (today, lists, spaces) \u2014 t0479",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2678",
-     "draft": false
     }
    ],
-   "open_pr_count": 37
+   "open_pr_count": 39
   },
   {
    "id": "memory",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 610,
- "unassigned_prs": 233
+ "open_pr_total": 615,
+ "unassigned_prs": 234
 }
