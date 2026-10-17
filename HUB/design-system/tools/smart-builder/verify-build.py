@@ -66,6 +66,8 @@ def main():
     ap.add_argument('--page', required=True)
     ap.add_argument('--manifest', required=True)
     ap.add_argument('--index', required=True)
+    ap.add_argument('--require-render', action='store_true',
+                    help='Fail acceptance if headless browser rendering is unavailable or fails')
     a = ap.parse_args()
 
     if not os.path.exists(a.page):
@@ -146,6 +148,8 @@ def main():
     }
     json.dump(manifest, open(a.manifest, 'w'), indent=2)
     print('VERIFY structural PASSED; render:', render_status.upper())
+    if a.require_render and render_status != 'passed':
+        fail('release acceptance requires browser render PASS, got ' + render_status)
 
 if __name__ == '__main__':
     main()
