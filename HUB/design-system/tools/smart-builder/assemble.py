@@ -82,7 +82,7 @@ from feature_broadcast import (BroadcastRefusal, decl_for as bc_decl_for,
                                 FEATURE_ID as FEATURE_BROADCAST_ID,
                                 FEATURE_BROADCAST_VERSION)
 
-ASSEMBLER_VERSION = "assemble-v1.13"  # v1.13: composable templates (resolve_templates)
+ASSEMBLER_VERSION = "assemble-v1.14"  # v1.14: + quarantine refusal (piece_quarantined) + intake-page seam (contract["intake_page"]) — additive, existing contracts byte-identical
 
 # ---- breaker module wiring ----
 # Every wired module follows the cover pattern: decl_for(contract) parses
@@ -386,6 +386,11 @@ def validate_contract(contract, pieces):
         for m in models:
             if m not in pieces:
                 errors.append({'code': 'unknown_model', 'model': m, 'category': cat})
+            elif pieces[m].get('quarantined'):
+                # library quality gate: quarantined pieces never reach a page.
+                # Structured reason travels so the builder knows what to swap.
+                errors.append({'code': 'piece_quarantined', 'model': m, 'category': cat,
+                               'reason': pieces[m].get('quarantine_reason')})
             elif not pieces[m].get('html'):
                 errors.append({'code': 'empty_piece', 'model': m})
     design = contract.get('design', {})
@@ -1006,6 +1011,331 @@ def resolve_contract_context(contract):
                                    % (list(PRIVACY_MODES), privacy)})
     return {'connections': connections, 'privacy': privacy}, problems
 
+# ---- intake page seam (assemble v1.14, additive) ----
+# Renders the Smart Builder intake page (Shawn's 22:30Z rebuild spec) from
+# contract['intake_page']. Active ONLY when the contract carries the
+# 'intake_page' key — every existing contract assembles byte-for-byte as before.
+# New placeholders (all consumed by templates/intake-page.html):
+#   %%INTAKE_INTENT%% %%INTAKE_QUESTIONS%% %%PIECE_GALLERY%% %%SELECTION_TRAY%%
+#   %%TEMPLATE_COLUMN%% %%FEATURE_SHOWCASE%% %%FEATURE_DATA_JSON%%
+#   %%CONTRACT_OUTPUT%% %%PIECE_MANIFEST%%
+INTAKE_PAGE_REQUIRED = ['steps', 'intent', 'questions', 'feature_showcase',
+                        'feature_icons', 'template_samples']
+
+def validate_intake_page(ip, contract, pieces, reg_by_id):
+    """Fail-closed validation for the intake_page block. Returns problems."""
+    problems = []
+    if not isinstance(ip, dict):
+        return [{'code': 'bad_intake_page',
+                 'detail': 'intake_page must be an object, got %s'
+                           % type(ip).__name__}]
+    for k in INTAKE_PAGE_REQUIRED:
+        if k not in ip:
+            problems.append({'code': 'missing_key', 'key': 'intake_page.' + k})
+    if problems:
+        return problems
+    # every icon model must resolve to a real, non-quarantined piece
+    icon_models = list(ip['feature_icons'].values())
+    for a in ip['intent'].get('affordances', []):
+        if a.get('icon'):
+            icon_models.append(a['icon'])
+    for m in icon_models:
+        if m not in pieces:
+            problems.append({'code': 'unknown_model', 'model': m,
+                             'where': 'intake_page icon'})
+        elif pieces[m].get('quarantined'):
+            problems.append({'code': 'piece_quarantined', 'model': m,
+                             'where': 'intake_page icon',
+                             'reason': pieces[m].get('quarantine_reason')})
+        elif not pieces[m].get('html'):
+            problems.append({'code': 'empty_piece', 'model': m,
+                             'where': 'intake_page icon'})
+    for fid in ip['feature_showcase']:
+        if 'feature.' + fid not in reg_by_id:
+            problems.append({'code': 'unknown_feature',
+                             'feature': 'feature.' + fid})
+    if len(ip['template_samples']) != len(contract.get('templates', [])):
+        problems.append({'code': 'template_sample_mismatch',
+                         'detail': 'template_samples has %d entries for %d templates'
+                                   % (len(ip['template_samples']),
+                                      len(contract.get('templates', [])))})
+    return problems
+
+
+def intake_sec_head(step_n, title, lede, color):
+    return (
+        '<div class="sec-head"><span class="kicker" style="color:%s">Step %d</span>'
+        '<h2>%s</h2><p>%s</p></div>' % (color, step_n, esc(title), esc(lede)))
+
+
+def render_intake_intent(ip, pieces, spectrum):
+    st = ip['steps'][0]
+    cards = []
+    for i, a in enumerate(ip['intent']['affordances']):
+        c = seq_color(spectrum, i)
+        icon = ('<div class="a-icon"><div class="nb-scope">%s</div></div>'
+                % pieces[a['icon']]['html']) if a.get('icon') else ''
+        aid = a['id']
+        if aid == 'type':
+            control = (
+                '<label class="fine" for="vision-type" style="font-weight:700;color:var(--paper)">'
+                'Your vision</label>'
+                '<textarea id="vision-type" placeholder="My app is\u2026"></textarea>'
+                '<button class="naya-btn small teal" id="btn-save-type">'
+                '<span class="nb-label">%s</span></button>' % esc(a['cta']))
+        elif aid == 'paste':
+            control = (
+                '<label class="fine" for="vision-paste" style="font-weight:700;color:var(--paper)">'
+                'Paste it here</label>'
+                '<textarea id="vision-paste" placeholder="Paste notes, docs, messages\u2026"></textarea>'
+                '<button class="naya-btn small teal" id="btn-import-paste">'
+                '<span class="nb-label">%s</span></button>' % esc(a['cta']))
+        else:
+            control = (
+                '<button class="naya-btn small teal" id="btn-dictate">'
+                '<span class="nb-label">%s</span></button>'
+                '<p class="fine" id="dictate-status" role="status"></p>' % esc(a['cta']))
+        cards.append(
+            '<div class="afford" style="--ac:%s">%s<h3>%s</h3><p>%s</p>%s</div>'
+            % (c, icon, esc(a['label']), esc(a['desc']), control))
+    return (intake_sec_head(st['n'], st['title'], st['lede'],
+                            seq_color(spectrum, 1))
+            + '<div class="afford-grid">%s</div>' % ''.join(cards))
+
+
+def render_intake_questions(ip, spectrum, reg_by_id):
+    st = ip['steps'][1]
+    qs = {q['id']: q for q in ip['questions']}
+    chips = []
+    for fid in ip['feature_showcase']:
+        entry = reg_by_id['feature.' + fid]
+        chips.append(
+            '<label class="fn-chip"><input type="checkbox" name="fn" value="%s" checked> %s</label>'
+            % (esc(fid), esc(entry.get('name', fid))))
+    q = qs['functions']
+    return (
+        intake_sec_head(st['n'], st['title'], st['lede'], seq_color(spectrum, 2))
+        + '<div class="nb-chrome"><div class="demo-board" style="--c:%s">'
+          '<form id="qform">'
+          '<div class="qfield"><label for="q-vision">%s</label>'
+          '<textarea id="q-vision" placeholder="%s"></textarea></div>'
+          '<div class="qfield"><label for="q-goal">%s</label>'
+          '<textarea id="q-goal" placeholder="%s"></textarea></div>'
+          '<div class="qfield"><label id="fn-label">%s</label>'
+          '<p class="fine">%s</p><div class="fn-chips" role="group" aria-labelledby="fn-label">%s</div></div>'
+          '<div class="qfield"><label for="q-behavior">%s</label>'
+          '<textarea id="q-behavior" placeholder="%s"></textarea></div>'
+          '<button class="naya-btn small teal" type="submit" id="btn-save-answers">'
+          '<span class="nb-label">Save my answers</span></button>'
+          '</form></div></div>'
+        % (seq_color(spectrum, 2),
+           esc(qs['vision']['q']), esc(qs['vision'].get('hint', '')),
+           esc(qs['goal']['q']), esc(qs['goal'].get('hint', '')),
+           esc(q['q']), esc(q.get('hint', '')), ''.join(chips),
+           esc(qs['behavior']['q']), esc(qs['behavior'].get('hint', ''))))
+
+
+def intake_piece_card(cat, model, p, color):
+    search = ' '.join([model, p['label'], p['kind'], p['category']]
+                      + p.get('tags', [])).lower()
+    return (
+        '<div class="piece-card" style="--pc:%s" data-model="%s" data-cat="%s" '
+        'data-label="%s" data-search="%s" aria-pressed="false">'
+        '<div class="piece-stage"><div class="nb-scope">%s</div></div>'
+        '<div class="piece-cat">%s</div>'
+        '<div class="piece-meta"><b>%s</b><span class="model">%s \u00b7 %s</span>'
+        '<p class="piece-note" hidden></p>'
+        '<div class="piece-actions">'
+        '<button class="mini-btn piece-select" data-model="%s" aria-pressed="false">Select</button>'
+        '<button class="mini-btn piece-notes" aria-expanded="false" '
+        'aria-label="Add a note to %s">Notes</button>'
+        '</div>'
+        '<div class="note-editor" hidden>'
+        '<textarea aria-label="Note for %s" placeholder="\u201cMake this one coral\u2026\u201d"></textarea>'
+        '<button class="mini-btn note-save">Save note</button>'
+        '</div></div></div>'
+        % (color, esc(model), esc(cat), esc(p['label']), esc(search), p['html'],
+           esc(cat), esc(p['label']), esc(model), esc(p['kind']),
+           esc(model), esc(model), esc(model)))
+
+
+def render_intake_gallery(ip, wall, pieces, spectrum):
+    st = ip['steps'][2]
+    chips = ['<button class="catchip" data-cat="All" aria-pressed="true">All</button>']
+    cards = []
+    i = 0
+    for cat, models in wall.items():
+        c = seq_color(spectrum, i)
+        chips.append('<button class="catchip" data-cat="%s" aria-pressed="false">%s</button>'
+                     % (esc(cat), esc(cat)))
+        for m in models:
+            cards.append(intake_piece_card(cat, m, pieces[m], c))
+        i += 1
+    return (
+        intake_sec_head(st['n'], st['title'], st['lede'], seq_color(spectrum, 3))
+        + '<div class="gal-tools">'
+          '<input type="search" id="piece-search" aria-label="Search pieces" '
+          'placeholder="Search pieces \u2014 try \u201cbuttons\u201d">'
+          '%s</div>'
+          '<p class="fine" id="gal-empty" style="display:none">No pieces match \u2014 '
+          'try a different word.</p>'
+          '<div class="piece-grid" id="piece-grid">%s</div>'
+        % (''.join(chips), ''.join(cards)))
+
+
+def render_intake_tray():
+    return (
+        '<div class="tray" id="tray"><div class="tray-head"><h3>Your selection</h3>'
+        '<button class="mini-btn" id="tray-clear">Clear</button></div>'
+        '<div class="tray-items" id="tray-items">'
+        '<p class="tray-empty">Nothing selected yet \u2014 tap <b>Select</b> on any piece '
+        'above and it lands here.</p></div></div>')
+
+
+def render_intake_templates(ip, templates, spectrum):
+    st = ip['steps'][3]
+    rows = []
+    for i, e in enumerate(templates):
+        num, title, desc, color = e[0], e[1], e[2], e[3] if len(e) > 3 else seq_color(spectrum, i)
+        sample = ip['template_samples'][i]
+        flag = ''
+        if '\u00b7' in num:
+            tag = num.split('\u00b7', 1)[1].strip()
+            flag = '<span class="tpl-flag">%s</span>' % esc(tag)
+        rows.append(
+            '<div class="tpl-row" style="--tc:%s" data-tpl="%d">'
+            '<div class="tpl-num">%s</div>'
+            '<div class="tpl-main"><h3>%s</h3><p>%s</p>'
+            '<div class="tpl-actions">'
+            '<a class="naya-btn small" href="%s" target="_blank" rel="noopener">'
+            '<span class="nb-label">Open the real sample page</span></a>'
+            '<button class="naya-btn small teal tpl-pick" data-tpl="%d">'
+            '<span class="nb-label">Pick this template</span></button>'
+            '</div></div>%s</div>'
+            % (color, i, esc(num), esc(title), esc(desc), esc(sample), i, flag))
+    return (intake_sec_head(st['n'], st['title'], st['lede'], seq_color(spectrum, 4))
+            + '<div class="tpl-col">%s</div>' % ''.join(rows))
+
+
+def feature_status_badge(status):
+    if status == 'built':
+        return '<span class="badge built">Built \u00b7 live</span>'
+    return '<span class="badge specified">Specified \u00b7 wiring in progress</span>'
+
+
+def render_intake_features(ip, spectrum, reg_by_id, pieces):
+    rows, data = [], []
+    for i, fid in enumerate(ip['feature_showcase']):
+        entry = reg_by_id['feature.' + fid]
+        c = seq_color(spectrum, i)
+        icon_model = ip['feature_icons'][fid]
+        icon_html = ('<div class="feat-icon"><div class="nb-scope">%s</div></div>'
+                     % pieces[icon_model]['html'])
+        status = entry.get('status', 'specified')
+        rows.append(
+            '<div class="feat-row" style="--fc:%s" data-feature="feature.%s" data-consent="ready">'
+            '%s<div class="feat-main"><h3>%s</h3><p>%s</p></div>'
+            '%s'
+            '<label class="feat-check"><input type="checkbox" data-feat="%s" checked> On</label>'
+            '<button class="naya-btn small feat-see" data-fid="%s">'
+            '<span class="nb-label">See it</span></button></div>'
+            % (c, esc(fid), icon_html, esc(entry.get('name', fid)),
+               esc(entry.get('intent', '')),
+               feature_status_badge(status), esc(fid), esc(fid)))
+        note = ip.get('reports_note') if fid == 'intelligence_today' else ''
+        data.append({
+            'fid': fid, 'name': entry.get('name', fid),
+            'intent': entry.get('intent', ''),
+            'status': status,
+            'statusLabel': ('Built \u00b7 live on day one' if status == 'built'
+                            else 'Specified \u00b7 wiring in progress'),
+            'requires': entry.get('requires', []),
+            'permissions': entry.get('permissions', []),
+            'acceptance': entry.get('acceptance', []),
+            'note': note,
+            'iconHtml': pieces[icon_model]['html'],
+        })
+    reports = ('<p class="feat-reports"><b style="color:var(--paper)">Reports</b> \u2014 %s</p>'
+               % esc(ip.get('reports_note', ''))) if ip.get('reports_note') else ''
+    head = ('<div class="sec-head"><span class="kicker" style="color:%s">Standard features</span>'
+            '<h2>Every Naya app comes with these</h2>'
+            '<p>Not add-ons, not upsells. Each one is <b>on</b> \u2014 untick to remove. '
+            'Tap <b>See it</b> on any feature to see it the way it will live on your phone: '
+            'the real module where one is built, an honest status where it is still being wired '
+            '\u2014 never a fake.</p></div>' % seq_color(spectrum, 5))
+    return head + '<div class="feat-list">%s</div>' % ''.join(rows) + reports, data
+
+
+def render_intake_output(ip, spectrum):
+    st = ip['steps'][4]
+    return (
+        intake_sec_head(st['n'], st['title'], st['lede'], seq_color(spectrum, 6))
+        + '<div class="out-grid">'
+          '<div class="out-panel"><h3>Your vision</h3>'
+          '<p class="out-empty" id="out-vision">Saved in steps 1\u20132 \u2014 it appears here.</p></div>'
+          '<div class="out-panel"><h3>Your pieces<span class="count" id="out-pieces-count"></span></h3>'
+          '<div id="out-pieces"><p class="out-empty">No pieces yet \u2014 pick some in step 3.</p></div></div>'
+          '<div class="out-panel"><h3>Your template</h3>'
+          '<p class="out-empty" id="out-template">Not chosen yet \u2014 pick one in step 4.</p></div>'
+          '<div class="out-panel"><h3>Your features</h3><div id="out-features"></div></div>'
+          '</div>'
+          '<div class="out-actions">'
+          '<button class="naya-btn" id="btn-copy-contract"><span class="nb-label">Copy the contract JSON</span></button>'
+          '<button class="naya-btn gold" id="btn-ok-build"><span class="nb-label">Okay, build</span></button>'
+          '</div>'
+          '<p class="fine">This is the intake\u2019s output \u2014 the contract your app is built from. '
+          '\u201cOkay, build\u201d hands it to the builder; nothing deploys without your word.</p>')
+
+
+def render_intake_manifest(ip, wall, pieces, spectrum):
+    groups = []
+    wall_models = [(m, cat) for cat, models in wall.items() for m in models]
+    groups.append(('Gallery pieces', wall_models))
+    icon_models = sorted((set(ip['feature_icons'].values())
+                         | {a['icon'] for a in ip['intent'].get('affordances', []) if a.get('icon')})
+                         - {m for m, _ in wall_models})
+    groups.append(('Icons', [(m, 'icon') for m in icon_models]))
+    out = ['<div class="manifest"><h3>Piece manifest \u2014 every piece on this page, on the record</h3>'
+           '<p class="fine">The human reads the name, the Naya reads the number. '
+           'Quarantined pieces never appear here.</p>']
+    for gname, models in groups:
+        out.append('<div class="mgroup">%s \u00b7 %d</div><ul>' % (esc(gname), len(models)))
+        for m, cat in models:
+            p = pieces[m]
+            out.append('<li><b>%s</b>%s</li>' % (esc(m), esc(p['label'])))
+        out.append('</ul>')
+    out.append('</div>')
+    return ''.join(out)
+
+
+def render_intake(contract, pieces, spectrum, sec, reg_by_id, reg_statuses):
+    """Render every intake placeholder. Returns (replacements, extra_css_ids).
+
+    extra_css_ids: CSS for icon pieces referenced outside the wall (feature
+    and affordance icons) so they render in their real code too."""
+    ip = contract['intake_page']
+    wall, templates = contract['wall'], contract['templates']
+    features_html, feature_data = render_intake_features(ip, spectrum, reg_by_id, pieces)
+    replacements = {
+        '%%INTAKE_INTENT%%': render_intake_intent(ip, pieces, spectrum),
+        '%%INTAKE_QUESTIONS%%': render_intake_questions(ip, spectrum, reg_by_id),
+        '%%PIECE_GALLERY%%': render_intake_gallery(ip, wall, pieces, spectrum),
+        '%%SELECTION_TRAY%%': render_intake_tray(),
+        '%%TEMPLATE_COLUMN%%': render_intake_templates(ip, templates, spectrum),
+        '%%FEATURE_SHOWCASE%%': features_html,
+        '%%FEATURE_DATA_JSON%%': safe_json_for_pre(feature_data),
+        '%%CONTRACT_OUTPUT%%': render_intake_output(ip, spectrum),
+        '%%PIECE_MANIFEST%%': render_intake_manifest(ip, wall, pieces, spectrum),
+    }
+    icon_models = (set(ip['feature_icons'].values())
+                   | {a['icon'] for a in ip['intent'].get('affordances', []) if a.get('icon')})
+    wall_css_seen = set()
+    extra = [pieces[m]['css_id'] for m in icon_models
+             if pieces[m].get('css_id') and pieces[m]['css_id'] not in wall_css_seen
+             and not wall_css_seen.add(pieces[m]['css_id'])]
+    return replacements, extra
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--contract', required=True)
@@ -1045,6 +1375,10 @@ def main():
     identity, identity_problems = resolve_identity(contract)
     problems += identity_problems
     context['identity'] = identity
+    # intake page: validate the intake_page block with the same fail-closed bar
+    if 'intake_page' in contract:
+        problems += validate_intake_page(contract['intake_page'], contract,
+                                         pieces, reg_by_id)
     # composable templates: resolve the multi-template composition BEFORE
     # the feature gate runs, so composed features flow through the
     # default-on three-state resolution (explicit composed false reads as
@@ -1088,6 +1422,14 @@ def main():
         wall_html.append(
             '<h3 class="wallcat">%s <span>%d pieces</span></h3>'
             '<div class="grid g4 wallgrid">%s</div>' % (esc(cat), len(models), ''.join(cards)))
+    # intake seam: render the intake placeholders; collect icon CSS the wall missed
+    intake_replacements = {}
+    if 'intake_page' in contract:
+        intake_replacements, intake_extra_css = render_intake(
+            contract, pieces, SPECTRUM, SEC, reg_by_id, reg_statuses)
+        for cid in intake_extra_css:
+            if cid and cid not in wall_css_ids:
+                wall_css_ids.append(cid)
     wall_css = '\n'.join('/* css:%s */\n%s' % (cid, cssbank[cid]) for cid in wall_css_ids)
 
     # ---- contract-driven sections: every section composed from real pieces ----
@@ -1179,7 +1521,7 @@ def main():
               'connected_gated': [a['action'] for a in c['connected_gated']]}
         for fid, c in consent.items()}
     machine_raw = safe_json_for_pre(contract['machine'])
-    for key, val in {
+    for key, val in dict({
         '%%TITLE%%': esc(contract['title']),
         '%%KICKER%%': esc(contract['kicker']),
         '%%LEDE%%': esc(contract['lede']),
@@ -1217,7 +1559,7 @@ def main():
         '%%PROMISE_BIG%%': esc(contract['promise']['big']).replace('within 24 hours.', '<em>within 24 hours.</em>'),
         '%%PROMISE_SUB%%': esc(contract['promise']['sub']),
         '%%MACHINE_JSON%%': machine_raw,  # raw: <pre> content, never an attribute
-    }.items():
+    }, **intake_replacements).items():
         page = page.replace(key, val)
 
     open(a.out, 'w').write(page)

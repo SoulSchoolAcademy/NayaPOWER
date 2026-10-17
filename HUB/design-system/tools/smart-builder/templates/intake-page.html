@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<!-- INTAKE PAGE — the Smart Builder's front door. Built 2026-10-17 by Team Nitro (BUILD/Nu)
+     through the pipeline: contracts/intake-page-v1.json + this template + assemble.py v1.3.
+     IDENTITY LAW: identity resolves once in the assembler; this template decides
+     PRESENTATION only and never redefines identity. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="The Smart Builder intake — tell Naya your vision, pick real pieces, choose a template, and watch your contract take shape. Five steps. Then you say: okay, build.">
+<title>Build your Naya app — the Smart Builder intake</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============ NAYA DESIGN TOKENS — v1 (canonical, verbatim) ============ */
+:root{
+  --obsidian:#0a0a0f; --obsidian-deep:#020203; --raise:#10141d; --card:#141a28;
+  --frosted:rgba(10,10,15,.72);
+  --white:#ffffff; --paper:#f8f7fb; --silver:#c9c9d4; --slate:#8a8a99;
+  --line:rgba(255,255,255,.12);
+  --sp-purple:#a06bff; --sp-indigo:#6675ff; --sp-sapphire:#55b9ee; --sp-teal:#40d3bb;
+  --sp-emerald:#2fe89e; --sp-lime:#b8ee57; --sp-yellow:#f1d75a; --sp-gold:#ffbf3d;
+  --sp-orange:#ff9a5a; --sp-rich-orange:#ff6b3d; --sp-red:#ff5e6c; --sp-magenta:#e84fff;
+  --soul:#a06bff; --verified:#2fe89e;
+  --font-voice:"Newsreader",Georgia,"Times New Roman",serif;
+  --font-ui:Inter,ui-sans-serif,system-ui,sans-serif;
+  --ease:cubic-bezier(.16,.84,.22,1);
+  --radius-md:14px; --radius-lg:22px; --radius-pill:999px;
+  --gap:16px;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--obsidian-deep); color:var(--silver); font-family:var(--font-ui);
+  font-size:16px; line-height:1.55; -webkit-font-smoothing:antialiased;}
+.wrap{max-width:1060px; margin:0 auto; padding:0 20px;}
+.kicker{font-size:11px; letter-spacing:.22em; text-transform:uppercase; font-weight:700;}
+h1,h2,h3{color:var(--white); font-family:var(--font-voice); font-weight:500; line-height:1.2;}
+h1{font-size:clamp(32px,5vw,44px); margin:14px 0 10px;}
+h2{font-size:clamp(22px,3vw,28px); margin:0 0 8px;}
+p{margin:0 0 12px; max-width:62ch;}
+.lede{font-size:18px; color:var(--paper); font-family:var(--font-voice);}
+section{padding:56px 0; border-top:1px solid var(--line);}
+.sec-head{margin-bottom:22px;}
+.sec-head .kicker{display:block; margin-bottom:10px;}
+.fine{font-size:13px; color:var(--slate);}
+.grid{display:grid; gap:var(--gap);}
+.g3{grid-template-columns:repeat(3,1fr);} .g2{grid-template-columns:repeat(2,1fr);}
+@media(max-width:760px){.g3{grid-template-columns:1fr;} .g2{grid-template-columns:1fr;}}
+:focus-visible{outline:2px solid var(--sp-teal); outline-offset:3px; border-radius:6px;}
+
+/* ============ .naya-btn — button DNA (verbatim, Naya_2 canonical) ============ */
+.naya-btn{
+  --nb-accent:#8a5cff; --nb-accent-rgb:138,92,255;
+  position:relative; isolation:isolate; overflow:hidden;
+  display:inline-flex; align-items:center; justify-content:center; gap:10px;
+  min-height:52px; padding:0 28px; border-radius:999px;
+  border:1px solid transparent;
+  font-family:var(--font-ui); font-size:15px; font-weight:700; letter-spacing:.11em; text-transform:uppercase;
+  color:#f6f5ef; cursor:pointer; white-space:nowrap;
+  text-shadow:0 -1px 1px rgba(0,0,0,.85),0 1px 0 rgba(255,255,255,.06),0 1px 3px rgba(0,0,0,.6);
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.11) 0%,rgba(255,255,255,.015) 38%,rgba(0,0,0,.18) 100%),
+    linear-gradient(180deg,#2a2b33 0%,#0c0c0f 52%,#030304 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(238,236,228,.38),
+    inset 0 1px 0 rgba(255,255,255,.42),
+    inset 0 -1px 0 rgba(0,0,0,.72),
+    inset 0 -14px 26px rgba(0,0,0,.52),
+    inset 0 10px 18px rgba(255,255,255,.04),
+    0 20px 42px rgba(0,0,0,.84),
+    0 6px 14px rgba(0,0,0,.58);
+  transition:transform .22s var(--ease),box-shadow .38s var(--ease),border-color .3s ease,background .3s ease;
+  -webkit-tap-highlight-color:transparent; text-decoration:none;
+}
+.naya-btn>*{position:relative; z-index:3;}
+.naya-btn .nb-label{letter-spacing:.11em;}
+.naya-btn:hover,.naya-btn:focus-visible{transform:translateY(-3px) scale(1.012); outline:none;
+  box-shadow:
+    inset 0 0 0 1px rgba(238,236,228,.72),
+    inset 0 1px 0 rgba(255,255,255,.62),
+    inset 0 -1px 0 rgba(0,0,0,.70),
+    0 24px 48px rgba(0,0,0,.86),
+    0 0 26px -4px rgba(var(--nb-accent-rgb),.5);}
+.naya-btn:active{transform:translateY(1px) scale(.99);}
+.naya-btn.gold{--nb-accent:#ffbf3d; --nb-accent-rgb:255,191,61;}
+.naya-btn.teal{--nb-accent:#40d3bb; --nb-accent-rgb:64,211,187;}
+.naya-btn.small{min-height:44px; padding:0 20px; font-size:13px;}
+
+.mini-btn{display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  min-height:44px; padding:0 18px; border-radius:var(--radius-pill);
+  border:1px solid var(--line); background:var(--card); color:var(--paper);
+  font-family:var(--font-ui); font-size:13px; font-weight:700; letter-spacing:.06em;
+  cursor:pointer; transition:transform .2s var(--ease), border-color .25s, box-shadow .3s var(--ease);}
+.mini-btn:hover{transform:translateY(-2px); border-color:var(--sp-teal);
+  box-shadow:0 0 18px -2px var(--sp-teal), 0 10px 24px rgba(0,0,0,.5);}
+.mini-btn[aria-pressed="true"]{border-color:var(--sp-emerald); color:var(--white);
+  box-shadow:0 0 22px -2px var(--sp-emerald), inset 0 0 0 1px var(--sp-emerald);}
+
+.hero{padding:72px 0 56px; border-top:none;}
+.hero .status{display:flex; align-items:center; gap:10px; margin-bottom:18px; flex-wrap:wrap;}
+.pill{display:inline-flex; align-items:center; gap:8px; border:1px solid var(--line);
+  border-radius:var(--radius-pill); padding:7px 16px; font-size:12px; letter-spacing:.14em;
+  text-transform:uppercase; font-weight:700; color:var(--paper); background:var(--raise);}
+.led{display:inline-block; width:9px; height:9px; border-radius:50%;
+  background:var(--verified); box-shadow:0 0 10px var(--verified); margin-right:8px;
+  animation:pulse 2.4s ease-in-out infinite; vertical-align:1px;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.45}}
+
+/* feature.cover — the personal header (rendered by the real module) */
+.cover{margin:0 0 34px;}
+.cover-banner{position:relative; height:230px; border-radius:var(--radius-lg); overflow:hidden;
+  background:var(--raise); border:1px solid var(--line);}
+.cover-photo{width:100%; height:100%; object-fit:cover; display:block;}
+.cover-photo-fallback{width:100%; height:100%;
+  background:linear-gradient(120deg,var(--sp-purple),var(--sp-magenta) 45%,var(--sp-gold));}
+.cover-scrim{position:absolute; inset:0; pointer-events:none;
+  background:linear-gradient(180deg,rgba(2,2,3,0) 30%,rgba(2,2,3,.78) 100%);}
+.cover-id{position:relative; display:flex; gap:18px; align-items:flex-end; padding:0 10px; margin-top:-46px;}
+.cover-ava{flex:0 0 auto; width:96px; height:96px; border-radius:28px; object-fit:cover;
+  border:3px solid var(--obsidian-deep); box-shadow:0 12px 30px rgba(0,0,0,.6); background:var(--card);}
+.cover-ava-fallback{display:grid; place-items:center;
+  background:linear-gradient(135deg,var(--sp-purple),var(--sp-magenta));
+  font-family:var(--font-voice); font-size:34px; font-weight:500; color:#fff;}
+.cover-name{font-size:clamp(26px,4vw,36px); margin:0; text-shadow:0 2px 14px rgba(0,0,0,.7);}
+.cover-tagline{color:var(--paper); margin:6px 0 0; font-size:15px; text-shadow:0 1px 10px rgba(0,0,0,.7);}
+@media(max-width:640px){
+  .cover-banner{height:170px;}
+  .cover-ava{width:72px; height:72px; border-radius:20px; font-size:26px;}
+  .cover-id{gap:12px; margin-top:-36px;}
+}
+
+/* step strip — the five steps at a glance */
+.steps-strip{display:flex; gap:10px; flex-wrap:wrap; margin-top:26px;}
+.step-chip{display:inline-flex; align-items:center; gap:10px; text-decoration:none;
+  border:1px solid var(--line); background:var(--raise); border-radius:var(--radius-pill);
+  padding:8px 16px 8px 8px; color:var(--paper); font-size:13px; font-weight:600;
+  transition:transform .2s var(--ease), border-color .25s, box-shadow .3s var(--ease);}
+.step-chip .n{display:grid; place-items:center; width:30px; height:30px; border-radius:50%;
+  background:var(--sc,#a06bff); color:#0a0a0f; font-weight:700; font-size:14px;}
+.step-chip:hover{transform:translateY(-3px); border-color:var(--sc);
+  box-shadow:0 0 22px -4px var(--sc), 0 12px 28px rgba(0,0,0,.55);}
+
+.nav{position:sticky; top:0; z-index:20; background:var(--frosted); backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);}
+.nav .wrap{display:flex; gap:4px; overflow-x:auto; padding:10px 20px;}
+.nav a{color:var(--slate); text-decoration:none; font-size:12px; letter-spacing:.1em; text-transform:uppercase;
+  font-weight:600; padding:8px 12px; border-radius:var(--radius-pill); white-space:nowrap;}
+.nav a:hover{color:var(--white); background:rgba(255,255,255,.06);}
+/* ============ intake sections ============ */
+/* intent affordances */
+.afford-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:var(--gap);}
+@media(max-width:760px){.afford-grid{grid-template-columns:1fr;}}
+.afford{--ac:var(--sp-purple); background:var(--card); border:1px solid var(--line);
+  border-radius:var(--radius-lg); padding:24px; display:flex; flex-direction:column; gap:12px;
+  transition:transform .22s var(--ease), border-color .3s, box-shadow .35s var(--ease);
+  box-shadow:0 14px 34px rgba(0,0,0,.5);}
+.afford:hover{transform:translateY(-4px); border-color:var(--ac);
+  box-shadow:0 0 28px -6px var(--ac), 0 20px 44px rgba(0,0,0,.6);}
+.afford .a-icon{width:56px; height:56px; display:grid; place-items:center;
+  border-radius:16px; background:var(--obsidian); border:1px solid var(--line); overflow:hidden;}
+.afford .a-icon .nb-scope{transform:scale(.8); transform-origin:center;}
+.afford h3{margin:0; font-size:20px;}
+.afford p{font-size:14px; color:var(--slate); margin:0; flex:0 0 auto;}
+.afford textarea{flex:1 0 auto;}
+.afford .naya-btn{align-self:flex-start; margin-top:4px;}
+
+/* question fields */
+.qfield{margin-bottom:18px;}
+.qfield label{display:block; font-size:15px; font-weight:600; color:var(--paper); margin-bottom:8px;}
+.qfield .hint{font-size:13px; color:var(--slate); margin-top:6px;}
+textarea, input[type="text"], input[type="search"]{width:100%; background:var(--obsidian);
+  border:1px solid var(--line); border-radius:var(--radius-md); color:var(--paper);
+  font-family:var(--font-ui); font-size:15px; padding:14px 16px; min-height:52px;
+  transition:border-color .25s, box-shadow .3s var(--ease);}
+textarea{min-height:110px; resize:vertical;}
+textarea:focus, input:focus{outline:none; border-color:var(--sp-teal);
+  box-shadow:0 0 0 3px rgba(64,211,187,.18), 0 0 24px -6px var(--sp-teal);}
+.fn-chips{display:flex; flex-wrap:wrap; gap:10px;}
+.fn-chip{display:inline-flex; align-items:center; gap:8px; cursor:pointer;
+  border:1px solid var(--line); background:var(--card); color:var(--paper);
+  border-radius:var(--radius-pill); padding:10px 18px; font-size:14px; font-weight:600;
+  transition:transform .2s var(--ease), border-color .25s, box-shadow .3s var(--ease), background .25s;}
+.fn-chip:hover{transform:translateY(-2px); border-color:var(--sp-emerald);}
+.fn-chip input{accent-color:var(--sp-emerald); width:18px; height:18px; margin:0;}
+.fn-chip:has(input:checked){border-color:var(--sp-emerald); background:rgba(47,232,158,.08);
+  box-shadow:0 0 18px -4px var(--sp-emerald);}
+
+/* piece gallery */
+.gal-tools{display:flex; gap:12px; flex-wrap:wrap; margin-bottom:18px; align-items:center;}
+.gal-tools input[type="search"]{flex:1 1 260px;}
+.catchip{border:1px solid var(--line); background:var(--raise); color:var(--paper);
+  border-radius:var(--radius-pill); padding:10px 20px; font-size:13px; font-weight:700;
+  letter-spacing:.06em; cursor:pointer; min-height:44px;
+  transition:transform .2s var(--ease), border-color .25s, box-shadow .3s var(--ease), background .25s;}
+.catchip:hover{transform:translateY(-2px); border-color:var(--sp-sapphire);}
+.catchip[aria-pressed="true"]{background:var(--sp-sapphire); border-color:var(--sp-sapphire);
+  color:#0a0a0f; box-shadow:0 0 20px -4px var(--sp-sapphire);}
+.piece-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:var(--gap);}
+@media(max-width:900px){.piece-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:600px){.piece-grid{grid-template-columns:1fr;}}
+.piece-card{background:var(--raise); border:1px solid var(--line); border-radius:var(--radius-md);
+  overflow:hidden; transition:transform .22s var(--ease), border-color .3s, box-shadow .35s var(--ease);
+  box-shadow:0 14px 34px rgba(0,0,0,.5);}
+.piece-card:hover{transform:translateY(-4px); border-color:var(--pc,var(--sp-teal));
+  box-shadow:0 0 28px -8px var(--pc,var(--sp-teal)), 0 22px 48px rgba(0,0,0,.62);}
+.piece-card[aria-pressed="true"]{border-color:var(--sp-emerald);
+  box-shadow:0 0 30px -6px var(--sp-emerald), inset 0 0 0 1px var(--sp-emerald), 0 22px 48px rgba(0,0,0,.62);}
+.piece-stage{padding:26px 16px; display:flex; align-items:center; justify-content:center;
+  background:var(--obsidian); min-height:120px; overflow-x:auto;}
+.piece-cat{font-size:10px; letter-spacing:.2em; text-transform:uppercase; font-weight:700;
+  color:var(--pc,var(--sp-teal)); padding:12px 16px 0;}
+.piece-meta{padding:6px 16px 16px;}
+.piece-meta b{display:block; color:var(--white); font-size:14px; font-weight:600;}
+.piece-meta .model{display:block; font-style:normal; font-size:10.5px; letter-spacing:.14em;
+  color:var(--slate); text-transform:uppercase; margin-top:3px;}
+.piece-note{font-size:13px; color:var(--sp-gold); background:rgba(255,191,61,.07);
+  border:1px dashed rgba(255,191,61,.4); border-radius:10px; padding:8px 12px; margin:10px 0 0;}
+.piece-note::before{content:"Note: "; font-weight:700;}
+.piece-actions{display:flex; gap:10px; margin-top:12px;}
+.piece-actions .mini-btn{flex:1;}
+.note-editor{margin-top:12px; display:flex; flex-direction:column; gap:8px;}
+.note-editor[hidden]{display:none;}
+.note-editor textarea{min-height:70px; font-size:13px;}
+
+/* selection tray */
+.tray{margin-top:26px; background:var(--card); border:1px solid var(--line);
+  border-radius:var(--radius-lg); padding:22px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06), 0 18px 44px rgba(0,0,0,.55);}
+.tray-head{display:flex; align-items:center; justify-content:space-between; margin-bottom:14px;}
+.tray-head h3{margin:0; font-size:19px;}
+.tray-items{display:flex; flex-wrap:wrap; gap:10px;}
+.tray-empty{color:var(--slate); font-size:14px; margin:0; border:1px dashed var(--line);
+  border-radius:var(--radius-md); padding:18px; width:100%; text-align:center;}
+.tray-chip{display:inline-flex; align-items:center; gap:10px; background:var(--obsidian);
+  border:1px solid var(--sp-emerald); border-radius:var(--radius-pill); padding:8px 8px 8px 16px;
+  font-size:13px; color:var(--paper); box-shadow:0 0 16px -6px var(--sp-emerald);}
+.tray-chip .tmodel{font-size:10px; letter-spacing:.12em; color:var(--slate);}
+.tray-chip .tnote{font-size:12px; color:var(--sp-gold); max-width:220px; overflow:hidden;
+  text-overflow:ellipsis; white-space:nowrap;}
+.tray-remove{border:none; background:rgba(255,255,255,.08); color:var(--paper);
+  width:32px; height:32px; border-radius:50%; cursor:pointer; font-size:14px; line-height:1;
+  display:grid; place-items:center;}
+.tray-remove:hover{background:var(--sp-red); color:#fff;}
+/* ============ template column — ONE horizontal column, full-width rectangles ============ */
+.tpl-col{display:flex; flex-direction:column; gap:var(--gap);}
+.tpl-row{--tc:var(--sp-purple); position:relative; display:flex; gap:20px; align-items:center;
+  background:var(--card); border:1px solid var(--line); border-radius:var(--radius-lg);
+  padding:26px 28px 26px 34px; overflow:hidden;
+  transition:transform .22s var(--ease), border-color .3s, box-shadow .35s var(--ease);
+  box-shadow:0 14px 34px rgba(0,0,0,.5);}
+.tpl-row::before{content:""; position:absolute; left:0; top:0; bottom:0; width:8px;
+  background:var(--tc); box-shadow:0 0 18px var(--tc);}
+.tpl-row:hover{transform:translateY(-4px); border-color:var(--tc);
+  box-shadow:0 0 30px -8px var(--tc), 0 24px 52px rgba(0,0,0,.62);}
+.tpl-row.picked{border-color:var(--tc); box-shadow:0 0 34px -6px var(--tc), inset 0 0 0 1px var(--tc);}
+.tpl-num{font-family:var(--font-voice); font-size:15px; color:var(--tc); white-space:nowrap;
+  letter-spacing:.08em; font-weight:600; flex:0 0 auto; min-width:120px;}
+.tpl-main{flex:1; min-width:0;}
+.tpl-main h3{margin:0 0 4px; font-size:21px;}
+.tpl-main p{margin:0 0 14px; font-size:14px; color:var(--slate);}
+.tpl-actions{display:flex; gap:12px; flex-wrap:wrap;}
+.tpl-flag{flex:0 0 auto; font-size:10px; letter-spacing:.2em; text-transform:uppercase;
+  font-weight:700; color:var(--tc); border:1px solid var(--tc); border-radius:var(--radius-pill);
+  padding:6px 14px; white-space:nowrap;}
+@media(max-width:640px){.tpl-row{flex-direction:column; align-items:stretch;} .tpl-num{min-width:0;}}
+
+/* ============ feature showcase ============ */
+.feat-list{display:flex; flex-direction:column; gap:12px;}
+.feat-row{--fc:var(--sp-purple); display:flex; align-items:center; gap:18px;
+  background:var(--card); border:1px solid var(--line); border-radius:var(--radius-md);
+  padding:16px 20px; transition:transform .2s var(--ease), border-color .3s, box-shadow .35s var(--ease);
+  box-shadow:0 12px 30px rgba(0,0,0,.45);}
+.feat-row:hover{transform:translateY(-3px); border-color:var(--fc);
+  box-shadow:0 0 26px -8px var(--fc), 0 18px 40px rgba(0,0,0,.55);}
+.feat-icon{width:64px; height:64px; flex:0 0 auto; display:grid; place-items:center;
+  border-radius:18px; background:var(--obsidian); border:1px solid var(--line); overflow:hidden;}
+.feat-icon .nb-scope{transform:scale(.72); transform-origin:center;}
+.feat-main{flex:1; min-width:0;}
+.feat-main h3{margin:0 0 2px; font-size:18px;}
+.feat-main p{margin:0; font-size:13px; color:var(--slate);}
+.badge{flex:0 0 auto; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; font-weight:700;
+  border-radius:var(--radius-pill); padding:7px 14px; border:1px solid; white-space:nowrap;}
+.badge.built{color:var(--sp-emerald); border-color:var(--sp-emerald); background:rgba(47,232,158,.08);
+  box-shadow:0 0 16px -6px var(--sp-emerald);}
+.badge.specified{color:var(--sp-gold); border-color:var(--sp-gold); background:rgba(255,191,61,.07);
+  box-shadow:0 0 16px -6px var(--sp-gold);}
+.feat-check{display:inline-flex; align-items:center; gap:8px; cursor:pointer; flex:0 0 auto;
+  font-size:13px; font-weight:700; color:var(--paper); min-height:44px;}
+.feat-check input{accent-color:var(--sp-emerald); width:20px; height:20px; margin:0;}
+@media(max-width:640px){.feat-row{flex-wrap:wrap;}}
+.feat-reports{font-size:12.5px; color:var(--slate); margin-top:14px; border:1px dashed var(--line);
+  border-radius:var(--radius-md); padding:12px 16px;}
+
+/* ============ contract output (step 5) ============ */
+.out-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:var(--gap); margin-bottom:20px;}
+@media(max-width:760px){.out-grid{grid-template-columns:1fr;}}
+.out-panel{background:var(--card); border:1px solid var(--line); border-radius:var(--radius-lg);
+  padding:22px; box-shadow:0 14px 34px rgba(0,0,0,.5);}
+.out-panel h3{margin:0 0 10px; font-size:18px;}
+.out-panel h3 .count{font-family:var(--font-ui); font-size:12px; color:var(--sp-emerald); margin-left:8px;}
+.out-empty{color:var(--slate); font-size:14px; margin:0; font-style:italic;}
+.out-vision-text{color:var(--paper); font-size:15px; margin:0; white-space:pre-wrap;}
+.out-piece{display:inline-block; background:var(--obsidian); border:1px solid var(--line);
+  border-radius:var(--radius-pill); padding:6px 14px; font-size:12.5px; color:var(--paper); margin:0 8px 8px 0;}
+.out-piece b{color:var(--sp-teal); font-weight:700; margin-right:6px;}
+.out-feat{display:flex; align-items:center; gap:10px; font-size:14px; color:var(--paper); margin-bottom:8px;}
+.out-feat .on{color:var(--sp-emerald); font-weight:700;}
+.out-feat .off{color:var(--slate);}
+.out-actions{display:flex; gap:14px; flex-wrap:wrap; margin:6px 0 14px;}
+
+/* ============ phone modal ============ */
+.modal{position:fixed; inset:0; z-index:60; display:grid; place-items:center; padding:20px;}
+.modal[hidden]{display:none;}
+.modal-backdrop{position:absolute; inset:0; background:rgba(2,2,3,.78); backdrop-filter:blur(6px);}
+.modal-phone{position:relative; width:340px; max-width:94vw; border:1px solid var(--line);
+  border-radius:42px; background:var(--obsidian); padding:14px;
+  box-shadow:0 0 60px -10px var(--sp-purple), 0 30px 80px rgba(0,0,0,.8);
+  animation:rise .35s var(--ease);}
+@keyframes rise{from{transform:translateY(26px) scale(.97); opacity:0;} to{transform:none; opacity:1;}}
+.modal-screen{border-radius:30px; background:var(--raise); overflow:hidden; min-height:520px;
+  max-height:78vh; display:flex; flex-direction:column;}
+.modal-notch{height:26px; display:grid; place-items:center; flex:0 0 auto;}
+.modal-notch span{width:96px; height:20px; background:var(--obsidian); border-radius:var(--radius-pill);}
+.modal-appbar{display:flex; align-items:center; justify-content:space-between; gap:10px;
+  padding:10px 16px; border-bottom:1px solid var(--line); flex:0 0 auto;}
+.modal-appbar .kicker{color:var(--sp-purple);}
+.modal-body{padding:20px 18px 26px; overflow-y:auto;}
+.modal-body .feat-icon{width:72px; height:72px; margin-bottom:14px;}
+.modal-body h3{font-size:22px; margin:0 0 6px;}
+.modal-body .intent{font-size:14px; color:var(--paper); margin-bottom:14px;}
+.modal-body .needs{font-size:13px; color:var(--slate); margin:0 0 6px;}
+.modal-body ul{margin:0 0 14px 18px; font-size:13px; color:var(--silver);}
+.modal-body ul li{margin-bottom:4px;}
+
+/* ============ manifest + machine ============ */
+.manifest{background:var(--obsidian); border:1px solid var(--line); border-radius:var(--radius-md);
+  padding:20px 22px; margin-bottom:22px;}
+.manifest h3{font-size:16px; margin:0 0 10px;}
+.manifest .mgroup{font-size:11px; letter-spacing:.18em; text-transform:uppercase; font-weight:700;
+  color:var(--slate); margin:14px 0 6px;}
+.manifest ul{list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:8px;}
+.manifest li{font-size:12px; color:var(--paper); background:var(--raise);
+  border:1px solid var(--line); border-radius:var(--radius-pill); padding:5px 12px;}
+.manifest li b{color:var(--sp-teal); font-weight:700; margin-right:6px;}
+details.machine{border:1px solid var(--line); border-radius:var(--radius-md); background:var(--obsidian);}
+details.machine summary{cursor:pointer; padding:16px 20px; color:var(--paper); font-weight:600; list-style:none; min-height:44px;}
+details.machine summary::-webkit-details-marker{display:none;}
+details.machine .body{padding:0 20px 20px;}
+pre{background:#050507; border:1px solid var(--line); border-radius:var(--radius-md); padding:18px;
+  overflow:auto; font-size:12.5px; line-height:1.6; color:var(--silver); max-height:480px;}
+.copyrow{display:flex; justify-content:flex-end; margin-bottom:10px;}
+
+#toast{position:fixed; left:50%; bottom:28px; transform:translateX(-50%) translateY(20px);
+  background:var(--card); border:1px solid var(--line); color:var(--paper); padding:13px 22px;
+  border-radius:var(--radius-pill); font-size:14px; opacity:0; pointer-events:none;
+  transition:opacity .3s var(--ease), transform .3s var(--ease); z-index:70; max-width:90vw; text-align:center;
+  box-shadow:0 12px 32px rgba(0,0,0,.65);}
+#toast.show{opacity:1; transform:translateX(-50%) translateY(0);}
+#toast .led{margin-right:6px;}
+
+footer{padding:40px 0 64px; border-top:1px solid var(--line); color:var(--slate); font-size:13px;}
+footer .kicker{color:var(--slate); display:block; margin-bottom:8px;}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001s !important; transition-duration:.001s !important;}
+  html{scroll-behavior:auto;}
+}
+</style>
+<style>
+/* ===== section chrome — real library CSS, scoped .nb-chrome ===== */
+%%CHROME_CSS%%
+</style>
+<style>
+/* ===== wall + icon specimen CSS — real library code, scoped .nb-scope ===== */
+%%WALL_CSS%%
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Intake steps"><div class="wrap">
+  <a href="#step-1">1 · Intent</a><a href="#step-2">2 · Questions</a><a href="#step-3">3 · Pieces</a>
+  <a href="#step-4">4 · Templates</a><a href="#features">Features</a><a href="#step-5">5 · Contract</a>
+  <a href="#machine">Machine</a>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  %%COVER%%
+  <div class="status">
+    <span class="pill"><span class="led"></span>The Smart Builder · Intake</span>
+    <span class="pill">Five steps · then you say build</span>
+  </div>
+  <span class="kicker" style="color:var(--sp-purple)">%%KICKER%%</span>
+  <h1>%%TITLE%%</h1>
+  <p class="lede">%%LEDE%%</p>
+  <p style="margin-top:18px; display:flex; gap:12px; flex-wrap:wrap;">
+    <button class="naya-btn" data-scroll="#step-1"><span class="nb-label">Start with step 1</span></button>
+    <button class="naya-btn teal" data-scroll="#step-4"><span class="nb-label">See the 12 templates</span></button>
+  </p>
+  <div class="steps-strip" aria-label="The five steps">
+    <a class="step-chip" style="--sc:#6675ff" href="#step-1"><span class="n">1</span>Tell Naya your vision</a>
+    <a class="step-chip" style="--sc:#55b9ee" href="#step-2"><span class="n">2</span>Answer four questions</a>
+    <a class="step-chip" style="--sc:#40d3bb" href="#step-3"><span class="n">3</span>Pick your pieces</a>
+    <a class="step-chip" style="--sc:#2fe89e" href="#step-4"><span class="n">4</span>Choose your template</a>
+    <a class="step-chip" style="--sc:#ffbf3d" href="#step-5"><span class="n">5</span>This is what you chose</a>
+  </div>
+</div></header>
+
+<div class="wrap">
+
+<section id="step-1" aria-label="Step 1: intent">
+  %%INTAKE_INTENT%%
+</section>
+
+<section id="step-2" aria-label="Step 2: questions">
+  %%INTAKE_QUESTIONS%%
+</section>
+
+<section id="step-3" aria-label="Step 3: pick pieces">
+  %%PIECE_GALLERY%%
+  %%SELECTION_TRAY%%
+</section>
+
+<section id="step-4" aria-label="Step 4: templates">
+  %%TEMPLATE_COLUMN%%
+</section>
+
+<section id="features" aria-label="Standard features">
+  %%FEATURE_SHOWCASE%%
+</section>
+
+<section id="step-5" aria-label="Step 5: contract output">
+  %%CONTRACT_OUTPUT%%
+</section>
+
+<section id="machine" aria-label="Machine contract">
+  <div class="sec-head">
+    <span class="kicker" style="color:var(--sp-magenta)">For the machines</span>
+    <h2>The machine contract</h2>
+    <p>This page was generated from contract data — same truth, two faces. The data file lives beside this page; the builder reads it, you read this.</p>
+  </div>
+  %%PIECE_MANIFEST%%
+  <div class="nb-chrome"><div class="demo-board" style="--c:#e84fff">
+    <details class="machine">
+      <summary>smart-builder · intake page v1 — view / copy</summary>
+      <div class="body">
+        <div class="copyrow"><button class="naya-btn small" id="copyjson"><span class="nb-label">Copy JSON</span></button></div>
+        <pre id="machinejson">%%MACHINE_JSON%%</pre>
+      </div>
+    </details>
+  </div></div>
+</section>
+
+</div>
+
+<footer><div class="wrap">
+  <span class="kicker">Smart Builder · Intake page · v1</span>
+  Generated from contract data through the pipeline — every piece rendered in its real code, every button working, nothing described instead of shown. Amendable only through Shawn.
+</div></footer>
+
+<div class="modal" id="featmodal" hidden role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-phone">
+    <div class="modal-screen">
+      <div class="modal-notch"><span></span></div>
+      <div class="modal-appbar">
+        <span class="kicker">A Naya app · live preview</span>
+        <button class="tray-remove" id="modal-close" aria-label="Close preview">✕</button>
+      </div>
+      <div class="modal-body" id="modal-body"></div>
+    </div>
+  </div>
+</div>
+
+<div id="toast" role="status"></div>
+<script type="application/json" id="feature-data">%%FEATURE_DATA_JSON%%</script>
+
+<script>
+function toast(msg){
+  var t = document.getElementById("toast");
+  t.innerHTML = '<span class="led"></span>' + msg;
+  t.classList.add("show");
+  clearTimeout(t._h); t._h = setTimeout(function(){ t.classList.remove("show"); }, 2800);
+}
+function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
+
+/* ---------- intake state: everything the human chose, one object ---------- */
+var state = { vision:"", answers:{vision:"",goal:"",functions:[],behavior:""},
+              selected:[], notes:{}, template:null, features:{} };
+var FEATURES = null;
+function featureData(){
+  if (!FEATURES){
+    try { FEATURES = JSON.parse(document.getElementById("feature-data").textContent); }
+    catch(e){ FEATURES = []; }
+  }
+  return FEATURES;
+}
+
+/* ---------- step 1: intent ---------- */
+function setVision(text, how){
+  text = (text||"").trim();
+  if (!text){ toast("Say a little more first — one sentence is plenty."); return; }
+  state.vision = text;
+  toast(how + " — your vision is in the contract.");
+  renderOutput();
+}
+var btnSaveType = document.getElementById("btn-save-type");
+if (btnSaveType) btnSaveType.onclick = function(){
+  setVision(document.getElementById("vision-type").value, "Saved");
+};
+var btnImportPaste = document.getElementById("btn-import-paste");
+if (btnImportPaste) btnImportPaste.onclick = function(){
+  var v = document.getElementById("vision-paste").value;
+  var t = document.getElementById("vision-type");
+  if (t && v.trim()) t.value = (t.value ? t.value + "\n" : "") + v;
+  setVision(v, "Imported");
+};
+var btnDictate = document.getElementById("btn-dictate");
+if (btnDictate) btnDictate.onclick = function(){
+  var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  var st = document.getElementById("dictate-status");
+  if (!SR){
+    if (st) st.textContent = "Dictation needs a microphone-enabled browser — type it instead; it lands in the same contract.";
+    toast("No microphone input here — type it instead.");
+    return;
+  }
+  try {
+    var rec = new SR(); rec.lang = "en-US"; rec.interimResults = false;
+    if (st) st.textContent = "Listening — speak your vision…";
+    rec.onresult = function(e){
+      var txt = e.results[0][0].transcript;
+      var t = document.getElementById("vision-type");
+      if (t) t.value = (t.value ? t.value + " " : "") + txt;
+      if (st) st.textContent = "Heard you — review it above, then save.";
+      toast("Dictation captured — review and save.");
+    };
+    rec.onerror = function(){ if (st) st.textContent = "Couldn't hear that — try again, or type it."; };
+    rec.onend = function(){ if (st && !st.textContent.indexOf("Heard")===0 && st.textContent.indexOf("Listening")===0) st.textContent = ""; };
+    rec.start();
+  } catch(err){
+    if (st) st.textContent = "Dictation isn't available right now — type it instead.";
+  }
+};
+
+/* ---------- step 2: questions ---------- */
+var qform = document.getElementById("qform");
+if (qform) qform.addEventListener("submit", function(e){ e.preventDefault(); saveAnswers(); });
+function saveAnswers(){
+  var fns = [];
+  document.querySelectorAll('input[name="fn"]:checked').forEach(function(x){ fns.push(x.value); });
+  state.answers = {
+    vision: document.getElementById("q-vision").value.trim(),
+    goal: document.getElementById("q-goal").value.trim(),
+    functions: fns,
+    behavior: document.getElementById("q-behavior").value.trim()
+  };
+  if (!state.answers.vision && !state.answers.goal && !state.answers.behavior && !fns.length){
+    toast("Answer at least one question — plain words are perfect.");
+    return;
+  }
+  toast("Answers saved — Naya can draft your contract from these.");
+  renderOutput();
+}
+var btnSaveAnswers = document.getElementById("btn-save-answers");
+if (btnSaveAnswers) btnSaveAnswers.onclick = saveAnswers;
+
+/* ---------- step 3: piece gallery ---------- */
+function cardMatches(card, q, cat){
+  var okCat = (cat === "All") || (card.getAttribute("data-cat") === cat);
+  var okQ = !q || (card.getAttribute("data-search")||"").indexOf(q) !== -1;
+  return okCat && okQ;
+}
+function applyFilters(){
+  var q = (document.getElementById("piece-search").value||"").toLowerCase().trim();
+  var active = document.querySelector(".catchip[aria-pressed='true']");
+  var cat = active ? active.getAttribute("data-cat") : "All";
+  var n = 0;
+  document.querySelectorAll(".piece-card").forEach(function(card){
+    var show = cardMatches(card, q, cat);
+    card.style.display = show ? "" : "none";
+    if (show) n++;
+  });
+  var empty = document.getElementById("gal-empty");
+  if (empty) empty.style.display = n ? "none" : "";
+}
+var search = document.getElementById("piece-search");
+if (search) search.addEventListener("input", applyFilters);
+document.querySelectorAll(".catchip").forEach(function(chip){
+  chip.addEventListener("click", function(){
+    document.querySelectorAll(".catchip").forEach(function(c){ c.setAttribute("aria-pressed","false"); });
+    chip.setAttribute("aria-pressed","true");
+    applyFilters();
+  });
+});
+function toggleSelect(model, btn){
+  var i = state.selected.indexOf(model);
+  var card = btn.closest(".piece-card");
+  if (i === -1){
+    state.selected.push(model);
+    if (card) card.setAttribute("aria-pressed","true");
+    btn.setAttribute("aria-pressed","true");
+    btn.textContent = "Selected ✓";
+    toast(model + " is in your tray.");
+  } else {
+    state.selected.splice(i,1);
+    if (card) card.setAttribute("aria-pressed","false");
+    btn.setAttribute("aria-pressed","false");
+    btn.textContent = "Select";
+  }
+  renderTray(); renderOutput();
+}
+document.querySelectorAll(".piece-select").forEach(function(btn){
+  btn.addEventListener("click", function(){ toggleSelect(btn.getAttribute("data-model"), btn); });
+});
+document.querySelectorAll(".piece-notes").forEach(function(btn){
+  btn.addEventListener("click", function(){
+    var card = btn.closest(".piece-card");
+    var ed = card.querySelector(".note-editor");
+    var open = ed.hidden;
+    ed.hidden = !open;
+    btn.setAttribute("aria-expanded", String(open));
+    if (open){ var ta = ed.querySelector("textarea"); if (ta) ta.focus(); }
+  });
+});
+document.querySelectorAll(".note-save").forEach(function(btn){
+  btn.addEventListener("click", function(){
+    var card = btn.closest(".piece-card");
+    var model = card.getAttribute("data-model");
+    var ta = card.querySelector(".note-editor textarea");
+    var note = (ta.value||"").trim();
+    var line = card.querySelector(".piece-note");
+    if (note){ state.notes[model] = note; line.textContent = note; line.hidden = false; }
+    else { delete state.notes[model]; line.hidden = true; }
+    card.querySelector(".note-editor").hidden = true;
+    card.querySelector(".piece-notes").setAttribute("aria-expanded","false");
+    toast(note ? "Note saved on " + model + "." : "Note cleared.");
+    renderTray(); renderOutput();
+  });
+});
+function renderTray(){
+  var box = document.getElementById("tray-items");
+  if (!box) return;
+  if (!state.selected.length){
+    box.innerHTML = '<p class="tray-empty">Nothing selected yet — tap <b>Select</b> on any piece above and it lands here.</p>';
+    return;
+  }
+  box.innerHTML = "";
+  state.selected.forEach(function(model){
+    var card = document.querySelector('.piece-card[data-model="'+model+'"]');
+    var label = card ? card.getAttribute("data-label") : model;
+    var note = state.notes[model];
+    var chip = document.createElement("span");
+    chip.className = "tray-chip";
+    chip.innerHTML = '<span><b style="color:var(--white)">'+esc(label)+'</b> ' +
+      '<span class="tmodel">'+esc(model)+'</span>' +
+      (note ? '<span class="tnote"> — '+esc(note)+'</span>' : '') + '</span>';
+    var rm = document.createElement("button");
+    rm.className = "tray-remove"; rm.setAttribute("aria-label","Remove "+model+" from selection");
+    rm.textContent = "✕";
+    rm.onclick = function(){
+      var b = document.querySelector('.piece-select[data-model="'+model+'"]');
+      if (b) toggleSelect(model, b); else {
+        state.selected.splice(state.selected.indexOf(model),1); renderTray(); renderOutput();
+      }
+    };
+    chip.appendChild(rm);
+    box.appendChild(chip);
+  });
+}
+var trayClear = document.getElementById("tray-clear");
+if (trayClear) trayClear.onclick = function(){
+  state.selected.slice().forEach(function(model){
+    var b = document.querySelector('.piece-select[data-model="'+model+'"]');
+    if (b){ b.setAttribute("aria-pressed","false"); b.textContent = "Select";
+      var c = b.closest(".piece-card"); if (c) c.setAttribute("aria-pressed","false"); }
+  });
+  state.selected = [];
+  renderTray(); renderOutput();
+  toast("Tray cleared.");
+};
+
+/* ---------- step 4: templates ---------- */
+document.querySelectorAll(".tpl-pick").forEach(function(btn){
+  btn.addEventListener("click", function(){
+    var i = parseInt(btn.getAttribute("data-tpl"), 10);
+    state.template = i;
+    document.querySelectorAll(".tpl-row").forEach(function(r){ r.classList.remove("picked"); });
+    var row = document.querySelector('.tpl-row[data-tpl="'+i+'"]');
+    if (row) row.classList.add("picked");
+    var title = row ? row.querySelector("h3").textContent : ("template "+(i+1));
+    toast("“"+title+"” is your template. Pick more than one if you like — they sync.");
+    renderOutput();
+  });
+});
+
+/* ---------- features: see it in the phone ---------- */
+function openModal(fid){
+  var entry = null;
+  featureData().forEach(function(f){ if (f.fid === fid) entry = f; });
+  var body = document.getElementById("modal-body");
+  if (!entry || !body) return;
+  var needs = (entry.requires||[]).map(function(r){ return "<li>"+esc(r)+"</li>"; }).join("");
+  var perms = (entry.permissions||[]).map(function(p){ return "<li>"+esc(p)+"</li>"; }).join("");
+  var acc = (entry.acceptance||[]).map(function(a){ return "<li>"+esc(a)+"</li>"; }).join("");
+  body.innerHTML =
+    '<div class="feat-icon"><div class="nb-scope">'+entry.iconHtml+'</div></div>' +
+    '<span class="badge specified">'+esc(entry.statusLabel)+'</span>' +
+    '<h3 id="modal-title" style="margin-top:10px">'+esc(entry.name)+'</h3>' +
+    '<p class="intent">'+esc(entry.intent)+'</p>' +
+    (entry.note ? '<p class="fine" style="margin-bottom:14px">'+esc(entry.note)+'</p>' : '') +
+    '<p class="needs"><b style="color:var(--paper)">What it will need:</b></p><ul>'+needs+'</ul>' +
+    '<p class="needs"><b style="color:var(--paper)">What you will be asked:</b></p><ul>'+perms+'</ul>' +
+    '<p class="needs"><b style="color:var(--paper)">How we will know it works:</b></p><ul>'+acc+'</ul>' +
+    '<p class="fine">Functions before interface — this one is specified and honest about it. ' +
+    'It ships the moment its wiring is proven, never before.</p>';
+  var m = document.getElementById("featmodal");
+  m.hidden = false;
+  document.getElementById("modal-close").focus();
+}
+function closeModal(){
+  var m = document.getElementById("featmodal");
+  if (m) m.hidden = true;
+}
+document.querySelectorAll(".feat-see").forEach(function(btn){
+  btn.addEventListener("click", function(){ openModal(btn.getAttribute("data-fid")); });
+});
+var modalClose = document.getElementById("modal-close");
+if (modalClose) modalClose.onclick = closeModal;
+document.querySelectorAll("[data-close]").forEach(function(el){
+  el.addEventListener("click", closeModal);
+});
+document.addEventListener("keydown", function(e){
+  if (e.key === "Escape") closeModal();
+});
+document.querySelectorAll("input[data-feat]").forEach(function(cb){
+  state.features[cb.getAttribute("data-feat")] = cb.checked;
+  cb.addEventListener("change", function(){
+    state.features[cb.getAttribute("data-feat")] = cb.checked;
+    renderOutput();
+  });
+});
+
+/* ---------- step 5: contract as output ---------- */
+function buildContractJSON(){
+  var data = featureData();
+  var pieces = state.selected.map(function(model){
+    var card = document.querySelector('.piece-card[data-model="'+model+'"]');
+    return { model: model, label: card ? card.getAttribute("data-label") : model,
+             note: state.notes[model] || null };
+  });
+  var tplRow = (state.template !== null)
+    ? document.querySelector('.tpl-row[data-tpl="'+state.template+'"]') : null;
+  return {
+    contract: "smart-builder/customer-intake",
+    intake: "intake-page-v1",
+    vision: state.vision || null,
+    answers: state.answers,
+    pieces: pieces,
+    template: tplRow ? { index: state.template,
+                         title: tplRow.querySelector("h3").textContent } : null,
+    features: (function(){
+      var o = {};
+      data.forEach(function(f){ o[f.fid] = !!state.features[f.fid]; });
+      return o;
+    })(),
+    privacy: "private",
+    built_by: "intake-page-v1"
+  };
+}
+function renderOutput(){
+  var data = featureData();
+  var ov = document.getElementById("out-vision");
+  if (ov){
+    var bits = [];
+    if (state.vision) bits.push(state.vision);
+    if (state.answers.vision) bits.push("Vision: " + state.answers.vision);
+    if (state.answers.goal) bits.push("Goal: " + state.answers.goal);
+    if (state.answers.behavior) bits.push("Behavior: " + state.answers.behavior);
+    if (bits.length){ ov.className = "out-vision-text"; ov.textContent = bits.join("\n\n"); }
+    else { ov.className = "out-empty"; ov.textContent = "Saved in steps 1–2 — it appears here."; }
+  }
+  var op = document.getElementById("out-pieces");
+  var opc = document.getElementById("out-pieces-count");
+  if (op){
+    if (!state.selected.length){ op.innerHTML = '<p class="out-empty">No pieces yet — pick some in step 3.</p>'; }
+    else {
+      op.innerHTML = state.selected.map(function(model){
+        var card = document.querySelector('.piece-card[data-model="'+model+'"]');
+        var label = card ? card.getAttribute("data-label") : model;
+        var note = state.notes[model] ? ' <span style="color:var(--sp-gold)">· '+esc(state.notes[model])+'</span>' : '';
+        return '<span class="out-piece"><b>'+esc(model)+'</b>'+esc(label)+note+'</span>';
+      }).join("");
+    }
+  }
+  if (opc) opc.textContent = state.selected.length ? "(" + state.selected.length + ")" : "";
+  var ot = document.getElementById("out-template");
+  if (ot){
+    if (state.template === null){ ot.className = "out-empty"; ot.textContent = "Not chosen yet — pick one in step 4."; }
+    else {
+      var row = document.querySelector('.tpl-row[data-tpl="'+state.template+'"]');
+      ot.className = "out-vision-text";
+      ot.textContent = row ? row.querySelector("h3").textContent : ("Template " + (state.template+1));
+    }
+  }
+  var of = document.getElementById("out-features");
+  if (of){
+    of.innerHTML = data.map(function(f){
+      var on = !!state.features[f.fid];
+      return '<div class="out-feat"><span class="'+(on?"on":"off")+'">'+(on?"✓":"○")+'</span> '+esc(f.name)+'</div>';
+    }).join("");
+  }
+}
+var btnCopy = document.getElementById("btn-copy-contract");
+if (btnCopy) btnCopy.onclick = function(){
+  var txt = JSON.stringify(buildContractJSON(), null, 2);
+  if (navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(txt).then(function(){ toast("Contract JSON copied — this is what you chose."); },
+      function(){ toast("Copy blocked — your contract is below; select it manually."); });
+  } else { toast("Copy not available — your contract is ready below."); }
+};
+var btnOk = document.getElementById("btn-ok-build");
+if (btnOk) btnOk.onclick = function(){
+  var blob = new Blob([JSON.stringify(buildContractJSON(), null, 2)], {type:"application/json"});
+  var a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "my-naya-app-contract.json";
+  document.body.appendChild(a); a.click();
+  setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 400);
+  toast("Okay — your contract is handed to the builder. Naya takes it from here.");
+};
+
+/* ---------- chrome ---------- */
+document.getElementById("copyjson").onclick = function(){
+  var txt = document.getElementById("machinejson").textContent;
+  navigator.clipboard.writeText(txt).then(function(){ toast("Machine contract copied."); },
+    function(){ toast("Copy blocked — select the text manually."); });
+};
+document.addEventListener("click", function(e){
+  var s = e.target.closest("[data-scroll]");
+  if (s){ var el = document.querySelector(s.getAttribute("data-scroll")); if (el) el.scrollIntoView({behavior:"smooth"}); }
+});
+renderTray();
+renderOutput();
+</script>
+</body>
+</html>
