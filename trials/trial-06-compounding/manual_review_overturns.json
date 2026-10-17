@@ -1,0 +1,17 @@
+[
+  {
+    "agent": "T6-A03",
+    "q": "Q5",
+    "reason": "Agent reproduced the Trial-05 receipt's prescription verbatim ('control gets corpus access with no instruction and no L5; treatment gets access + L5') \u2014 the exact content the 'isolate the lesson from the instruction' label names. Mechanical pattern required the label word 'isolat'; substance is correct."
+  },
+  {
+    "agent": "T6-A14",
+    "q": "Q9",
+    "reason": "Agent stated SN-0568's rule correctly ('the highest-scoring option is still the decision even below 9.0, provided it clears the protected gates'). Mechanical pattern required the word 'win'; 'is still the decision' is the same verdict."
+  },
+  {
+    "agent": "T6-A19",
+    "q": "Q9",
+    "reason": "Same as T6-A14 Q9 \u2014 SN-0568's rule correctly stated without the word 'win'."
+  }
+]

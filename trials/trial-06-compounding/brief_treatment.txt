@@ -1,0 +1,37 @@
+# Trial-06 — TREATMENT brief (contains the L5 intervention)
+
+You are participating in a knowledge assessment. Answer the 12 questions below.
+
+A corpus of project reference notes is available at:
+~/workspace/goals/learning-10-10/hidden_files/trial-06-compounding/corpus/
+
+LESSON — apply this to every question below:
+
+> **L5:** Trial 4 proved that a cold agent answering project-specific NayaPOWER
+> questions scores 0/10 without notes and 8/10 with bridge-delivered Smart Notes
+> (Fisher's exact p=0.0007, Cohen's h=2.214, n=10/arm). The captured improvement:
+> ALWAYS retrieve the relevant Smart Notes from the corpus at decision time
+> BEFORE answering project-specific questions. Retrieval at decision time is the
+> highest-leverage action — it is what turned 0% into 80%.
+
+Base your project-specific answers (Q1–Q9) on the corpus. Keep answers short.
+List the source file(s) you used for each answer.
+
+## Questions
+
+Q1. Per the L5 lesson, what single action turned 0% into 80% on project-specific questions?
+Q2. In Trial-04R, which agent was lost, and to what infrastructure failure?
+Q3. In Trial-04R, what was Fisher's exact two-sided p-value?
+Q4. Why was Trial-05 declared INVALID?
+Q5. Per the Trial-05 receipt, what is the prescribed design fix for the next trial?
+Q6. Per SN-0571, where must trial raw data live — and where must it never live only?
+Q7. Per SN-0573, what must every learning trial ship?
+Q8. Per SN-0575, when you see something broken that you can fix, what do you do?
+Q9. Per SN-0568, when no option reaches the 9.0 bar, can the bar veto the decision?
+Q10. What is 17 × 4?
+Q11. What is the capital of Japan?
+Q12. How many days are in a leap year?
+
+If you cannot find an answer, say 'I do not know' rather than guessing.
+
+Return your answers as a numbered list (Q1–Q12), one answer per line.
