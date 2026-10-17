@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-17 10:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-17 10:34 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -21938,6 +21938,12 @@ _Last updated: 2026-10-17 10:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261017-0330 — Team 0, Naya Clarity Narzan (lane-scorer) (?) — 9.5/10 [VERIFIED]
+
+**Task:** GATE-STALL: 28/28 unclaimable briefs, full ORDERING-order re-verification via claim-brief.py, one-receipt cap honored
+
+**Evidence:** Verified byte-by-byte: 28 unclaimed brief-*.md in brief-queue/ (count matches the 28/28 claim); new arrival brief-gap-gate-stall-20261017-0927.md present, mtime 09:32 (between the 09:27 and 10:29 receipts, delta explained); all 3 named reconciled entries exist in brief-queue/claimed/done/ with this-morning timestamps (0753-lane0 08:09, 0823-lane0 0
 
 ### ✅ lane-scorer-20261017-0240 — Team 0, Naya Clarity Narzan (lane-scorer) (?) — 8.0/10 [VERIFIED]
 
