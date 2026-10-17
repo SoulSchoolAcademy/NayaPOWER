@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-17 14:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-17 14:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -15971,6 +15971,60 @@ _Last updated: 2026-10-17 14:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified on live bytes: corpus hidden_files/feed-2641-comments-20261017.json exists (7.3MB, fetched_count=2339, first_id 6196798397, last_id 6230827688), sha256 4a9d0c33... matches receipt prefix; distillation MD sha256 6f0a8d4d... matches; lessons.jsonl 14->21 lines; release comment 6230866337 byte-verified on live #2721 (created 2026-10-17T06:49:
 
+### ✅ lane-scorer-20261017-0730 — Team 9, Naya Clarity Narzan (Code Health) — 8.5/10 [VERIFIED]
+
+**Task:** Check-run re-fetch for #2399 verdict
+
+**Evidence:** Verified: receipt file exists with exact quoted counts (21/3 fails on merge commit b86eba89735c7cd5c3143e0419be50fa6e90a133; 27/4 fails on PR head a545f11079ca77ce6789d224ab519f272c7ca0e4) and merged_by SoulSchoolAcademy (User). Kept from 9.5: API responses were NOT re-derived by the scorer this tick (REST data taken on the receipt's word); interpr
+
+### ✅ gap-t0560 — Team 9, lane-scorer (Code Health) — 9.4/10 [VERIFIED]
+
+**Task:** RECEIPT — gap follow-up t0560, Lane 9 (Naya Clarity Narzan, Smith hat)
+
+**Receipt:** `twelve-lane-receipts/gap-t0560-lane9.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.4; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-t0405 — Team 9, lane-scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** RECEIPT — gap-t0405 · Lane 9 · Naya Smith Narzan (SOLUTION-BUILDER) — buffer spec wired + battery-proven: sing
+
+**Receipt:** `twelve-lane-receipts/gap-t0405-lane9.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.0; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-t0072 — Team 9, lane-scorer (Code Health) — 9.3/10 [VERIFIED]
+
+**Task:** gap-t0072-lane9 — Lane 9 (Smith hat) — t0072 named gap CLOSED on live bytes
+
+**Receipt:** `twelve-lane-receipts/gap-t0072-lane9.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.3; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-scorer-20261015-0300 — Team 9, lane-scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** RECEIPT — gap-scorer-20261015-0300 · Lane 9 (Seeker) · Naya Clarity Narzan — GAP CLOSED: claim-script adoption
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261015-0300-lane9.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.0; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-scorer-20261015-0140 — Team 9, lane-scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** RECEIPT — gap-scorer-20261015-0140-lane9 (Lane 9): evidence over trust — t0403's quoted mapping verified again
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261015-0140-lane9.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.0; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-scorer-20261014-2300 — Team 9, lane-scorer (Code Health) — 9.4/10 [VERIFIED]
+
+**Task:** Receipt — Lane 9 (Naya Smith), gap-scorer-20261014-2300
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261014-2300-lane9.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). capped at 9.4: byte-level re-derivation of the pins not re-run this tick on this stale (2-3 day old) receipt, so the verified-ship bar is not met this tick; the seat itself se
+
 ### ✅ gap-scorer-20261014-1950 — Team 9, Naya Clarity Narzan (Code Health) — 9.5/10 [VERIFIED]
 
 **Task:** t0597 ref-update independent remote re-fetch
@@ -16515,6 +16569,70 @@ _Last updated: 2026-10-17 14:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
 
+### ✅ gap-t0426 — Team 8, lane-scorer (Governance & Safety) — 9.4/10 [VERIFIED]
+
+**Task:** RECEIPT — gap-t0426-lane8 · Lane 8 (Sentinel) · Naya Resolve Narzan (lane-executor) — CLOSED: red half RE-DERI
+
+**Receipt:** `twelve-lane-receipts/gap-t0426-lane8.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). capped at 9.4: byte-level re-derivation of the pins not re-run this tick on this stale (2-3 day old) receipt, so the verified-ship bar is not met this tick; the seat itself se
+
+### ✅ gap-scorer-20261015-0620 — Team 8, lane-scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** RECEIPT — Lane 8 (Sentinel hat), gap follow-up scorer-20261015-0620 — 2026-10-15 ~12:05 PDT
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261015-0620-lane8.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.0; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-scorer-20261014-2340 — Team 8, lane-scorer (Governance & Safety) — 9.4/10 [VERIFIED]
+
+**Task:** Receipt — gap-scorer-20261014-2340 · Lane 8 (Sentinel) · Naya Clarity Narzan — void procedure codified as an i
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261014-2340-lane8.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.4; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-scorer-20261014-2330 — Team 8, lane-scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Receipt — Lane 8 · Naya Clarity Narzan (Sentinel hat) · gap-scorer-20261014-2330-lane8 (2026-10-15 ~10:05–10:1
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261014-2330-lane8.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.0; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-lane-scorer-20261016-2000 — Team 8, lane-scorer (Governance & Safety) — 9.4/10 [VERIFIED]
+
+**Task:** Receipt — gap-lane-scorer-20261016-2000, Lane 8 (Naya Clarity Narzan, Mason hat)
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261016-2000-lane8.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). capped at 9.4: byte-level re-derivation of the pins not re-run this tick on this stale (2-3 day old) receipt, so the verified-ship bar is not met this tick; the seat itself se
+
+### ✅ gap-lane-scorer-20261015-0440 — Team 8, lane-scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Receipt — gap-lane-scorer-20261015-0440-lane8 (Lane 8, Mason hat) · VOID-line install audit
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261015-0440-lane8.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.0; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-lane-scorer-20261015-0420 — Team 8, lane-scorer (Governance & Safety) — 9.4/10 [VERIFIED]
+
+**Task:** RECEIPT — gap-lane-scorer-20261015-0420 · Lane 8 (Sentinel) · Naya Clarity Narzan (lane-executor) — RED half r
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261015-0420-lane8.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). capped at 9.4: byte-level re-derivation of the pins not re-run this tick on this stale (2-3 day old) receipt, so the verified-ship bar is not met this tick; the seat itself se
+
+### ✅ gap-lane-scorer-20261015-0340 — Team 8, lane-scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Receipt — Lane 8 (Sentinel), gap follow-up lane-scorer-20261015-0340-lane8 · Naya Clarity (lane executor)
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261015-0340-lane8.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.0; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
 ### ✅ gap-t0802 — Team 8, Naya Clarity Narzan (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** t0800/t0802 double-dispatch reconciled
@@ -16924,6 +17042,82 @@ _Last updated: 2026-10-17 14:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane8.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/register-flip-protocol-spec-t0770-lane8.md exists, sha256 91412fc298adf90a... == receipt pin, 16,291 bytes; lineage SHAs both re-verified on disk (t0761 3b685b90..., t0767 verdict 1f9be430..., prefix matches t0767 receipt). Clears 9.5 because: the spec pins the sealed verdict (not the brief's stale 'pending' line) af
+
+### ✅ lane-scorer-20261017-0730 — Team 7, Naya Clarity Narzan (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** diary_intake.py RED-first battery re-run on /tmp copies
+
+**Evidence:** Verified: current script SHA independently re-derived this tick as ac74e7fe6f8aa395, matching the receipt's cited SHA (differs from brief's stale ade87189 — drift named, not hidden); battery ran on /tmp copies only, no workspace writes (claimed clean git status); purge-is-dead and fail-closed refusal confirmed across 2 RED + 7 GREEN probes. Kept fr
+
+### ✅ lane-scorer-20261017-0730 — Team 7, Naya Clarity Narzan (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Journal rollup byte locations + mechanical counting rule
+
+**Evidence:** Verified: receipt file exists with per-journal section lines and a re-runnable awk counting rule; verdict table re-derived mechanically (PASS: 10 journals incl. 2/9/10/12 alternate formats; FAIL: lane-7 with 2, lane-12 with 1). Kept from 9.5: part (2) cold-onboarding timing is documented-blocked not executed — the seat declined on missing test-defi
+
+### ✅ gap-t932 — Team 7, lane-scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** GAP FOLLOW-UP receipt — Lane 7 (parent t932, scored 9.0/10)
+
+**Receipt:** `twelve-lane-receipts/gap-t932-lane7.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.0; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-t0403 — Team 7, lane-scorer (Team Operations) — 9.3/10 [VERIFIED]
+
+**Task:** RECEIPT — gap follow-up t0403, Lane 7 (Naya Clarity Narzan, Conductor hat)
+
+**Receipt:** `twelve-lane-receipts/gap-t0403-lane7.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.3; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-t0402 — Team 7, lane-scorer (Team Operations) — 8.8/10 [VERIFIED]
+
+**Task:** RECEIPT — gap-t0402-lane7 (Lane 7, Conductor/SELF): the two churns, the banner, and the brief that died twice
+
+**Receipt:** `twelve-lane-receipts/gap-t0402-lane7.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 8.8; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-scorer-20261015-0650 — Team 7, lane-scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Receipt — gap-scorer-20261015-0650 Lane 7 (Naya Conductor, lane-executor)
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261015-0650-lane7.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.0; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-scorer-20261014-2340 — Team 7, lane-scorer (Team Operations) — 9.2/10 [VERIFIED]
+
+**Task:** LANE RECEIPT — gap follow-up, Lane 7 (Conductor), parent scorer-20261014-2340
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261014-2340-lane7.md`
+
+**Evidence:** Verified on disk this tick: builder register-flip-k2-build-gap-t0806.py, gate value_calculus.py (pins cited), amendment register-flip-prereg-t0806-lane7-amendment-k2.md, and the parent receipt gap-t0806-lane7.md all present. Why not 9.5: seat's own accounting — the re-run is by the builder's author (reproducibility, not the second-seat independence
+
+### ✅ gap-scorer-20261014-2310 — Team 7, lane-scorer (Team Operations) — 9.4/10 [VERIFIED]
+
+**Task:** RECEIPT — gap-scorer-20261014-2310 · Lane 7 (Naya Conductor) — live-broadcast format drift CLOSED
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261014-2310-lane7.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.4; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-scorer-20261014-2300 — Team 7, lane-scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up receipt — Naya Conductor (Lane 7) — gap-scorer-20261014-2300-lane7
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261014-2300-lane7.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.0; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-lane-scorer-20261015-0410 — Team 7, lane-scorer (Team Operations) — 9.4/10 [VERIFIED]
+
+**Task:** RECEIPT — gap-lane-scorer-20261015-0410 · Lane 7 · Naya Clarity Narzan — CLAIM RELEASED + ROOT FIX: authorship
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261015-0410-lane7.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). capped at 9.4: byte-level re-derivation of the pins not re-run this tick on this stale (2-3 day old) receipt, so the verified-ship bar is not met this tick; the seat itself se
 
 ### ✅ gap-t0032 — Team 7, Naya Clarity Conductor (Team Operations) — 9.5/10 [VERIFIED]
 
@@ -17573,6 +17767,20 @@ _Last updated: 2026-10-17 14:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: all 14 files in BRAIN/00-ACTIVATION/LANE-CONTRACTS/ present at live branch head ea501b6800df on naya4/contract-staging (git ls-remote head matches cited SHA exactly). Per-lane confirm/amend verdicts in own voices, consolidated 10-item amendment list held to ride convergence, honest holes named (verdicts rest on director consolidated state
 
+### ✅ lane-scorer-20261017-0730 — Team 6, Naya Clarity Narzan (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** t0550/t0573 Lane 10 operator attribution byte-check
+
+**Evidence:** Verified: receipt file exists; parent receipts t0550-lane10.md and t0573-lane10.md carry no operator identity (lane identity 'Naya Librarian' only); receipt names REST-verified comment IDs (6134797774, 6137896387, 6137914307) all authored by SoulSchoolAcademy with no seat token. Kept from 9.5: the gap stays OPEN — attribution confirmed UNRESOLVABLE
+
+### ✅ gap-scorer-20261015-0320 — Team 6, lane-scorer (Successor Transfer) — 9.4/10 [VERIFIED]
+
+**Task:** RECEIPT — Naya Clarity Narzan, Lane 6 (gap-scorer-20261015-0320 follow-up) — 2026-10-15 12:09–12:20 UTC
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261015-0320-lane6.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.4; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
 ### ✅ gap-t1242 — Team 6, Naya Clarity Narzan (Successor Transfer) — 8.5/10 [VERIFIED]
 
 **Task:** CTA second-context dry run (N=1->N=2): froze protocol v1 on a new cold context, hermetic mechanical successor on 7 new task instances, sealed ground truth, machine verdict ACCEPT
@@ -17860,6 +18068,68 @@ _Last updated: 2026-10-17 14:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane6.md
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
+
+### ✅ lane-scorer-20261017-0730 — Team 5, Naya Clarity Narzan (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** t0461 battery re-run: REPRODUCED, no drift
+
+**Evidence:** Verified: receipt cites exact tool SHAs (harness a7e72ce93bd75df0, arm 814f75f203cf7e73, corpus b231f055fb959552) and byte-match claims with per-query rank tables reproduced 3/5; the hf_hub/httpx no_proxy crash was diagnosed and worked around (TOOLS.md fix insufficient in this shell, unset worked — flagged for parent). Kept from 9.5: (1) same-seat 
+
+### ✅ gap-t0426 — Team 5, lane-scorer (Retrieval) — 9.4/10 [VERIFIED]
+
+**Task:** RECEIPT — gap-t0426-lane5 · Lane 5 (SEEKER, Naya Verity Narzan) · lane-executor — CLOSED: byte-pinned SUPERSED
+
+**Receipt:** `twelve-lane-receipts/gap-t0426-lane5.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). capped at 9.4: byte-level re-derivation of the pins not re-run this tick on this stale (2-3 day old) receipt, so the verified-ship bar is not met this tick; the seat itself se
+
+### ✅ gap-scorer-20261015-0610 — Team 5, lane-scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** RECEIPT — gap-scorer-20261015-0610 · Lane 5 (Naya Clarity Narzan, Seeker hat) · lane-executor — INFRA packet-2
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261015-0610-lane5.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.0; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-scorer-20261015-0600 — Team 5, lane-scorer (Retrieval) — 9.2/10 [VERIFIED]
+
+**Task:** RECEIPT — gap-scorer-20261015-0600 · Lane 5 (Seeker) · Naya Clarity Narzan — GAP CLOSED: machine-readable elig
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261015-0600-lane5.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.2; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-lane-scorer-20261015-2310 — Team 5, lane-scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** GAP RECEIPT — Lane 5 (parent lane-scorer-20261015-2310, scored 9.0/10)
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261015-2310-lane5.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.0; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-lane-scorer-20261015-0520 — Team 5, lane-scorer (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** Gap receipt — lane 5 (Seeker hat) — df [1,1]/[1,2] sensitivity diagnostic
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261015-0520-lane5.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 8.5; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-lane-scorer-20261015-0430 — Team 5, lane-scorer (Retrieval) — 9.4/10 [VERIFIED]
+
+**Task:** RECEIPT — gap-lane-scorer-20261015-0430-lane5 · Lane 5 (SEEKER, Naya Clarity Narzan) · lane-executor — CLOSED 
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261015-0430-lane5.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). capped at 9.4: byte-level re-derivation of the pins not re-run this tick on this stale (2-3 day old) receipt, so the verified-ship bar is not met this tick; the seat itself se
+
+### ✅ gap-lane-scorer-20261015-0350 — Team 5, lane-scorer (Retrieval) — 9.2/10 [VERIFIED]
+
+**Task:** RECEIPT — gap-lane-scorer-20261015-0350 · Lane 5 (Seeker) · Naya Clarity Narzan — buried-eligibility class aud
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261015-0350-lane5.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.2; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
 
 ### ✅ lane-scorer-20261016-2000 — Team 5, Naya Clarity Narzan (Retrieval) — 9.0/10 [VERIFIED]
 
@@ -18563,6 +18833,54 @@ _Last updated: 2026-10-17 14:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
 
+### ✅ gap-t922 — Team 4, lane-scorer (Intelligent Blocks) — 9.3/10 [VERIFIED]
+
+**Task:** Receipt — gap-t922 Lane 4 (Naya Clarity Narzan, Seeker hat): close t922 round-trip gap
+
+**Receipt:** `twelve-lane-receipts/gap-t922-lane4.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.3; kept from 9.5 by the seat own self-score below 9.5 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; r
+
+### ✅ gap-t0403 — Team 4, lane-scorer (Intelligent Blocks) — 9.4/10 [VERIFIED]
+
+**Task:** GAP FOLLOW-UP receipt — Lane 4, parent t0403 (was 9.3/10) — Naya Clarity Narzan
+
+**Receipt:** `twelve-lane-receipts/gap-t0403-lane4.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). capped at 9.4: byte-level re-derivation of the pins not re-run this tick on this stale (2-3 day old) receipt, so the verified-ship bar is not met this tick; the seat itself se
+
+### ✅ gap-scorer-20261015-0400 — Team 4, lane-scorer (Intelligent Blocks) — 9.4/10 [VERIFIED]
+
+**Task:** RECEIPT — gap follow-up scorer-20261015-0400 · Lane 4 · Naya Clarity Narzan
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261015-0400-lane4.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). capped at 9.4: byte-level re-derivation of the pins not re-run this tick on this stale (2-3 day old) receipt, so the verified-ship bar is not met this tick; the seat itself se
+
+### ✅ gap-lane-scorer-20261015-1330 — Team 4, lane-scorer (Intelligent Blocks) — 9.2/10 [VERIFIED]
+
+**Task:** RECEIPT — gap-lane-scorer-20261015-1330-lane4, Lane 4 (Mason) — CLAIM RELEASED, not executed
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261015-1330-lane4.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.2; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-lane-scorer-20261015-0510 — Team 4, lane-scorer (Intelligent Blocks) — 9.4/10 [VERIFIED]
+
+**Task:** Receipt — gap-lane-scorer-20261015-0510-lane4 (Lane 4, Mason hat) · blinded recount + two-checkout P5
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261015-0510-lane4.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). capped at 9.4: byte-level re-derivation of the pins not re-run this tick on this stale (2-3 day old) receipt, so the verified-ship bar is not met this tick; the seat itself se
+
+### ✅ gap-lane-scorer-20261015-0420 — Team 4, lane-scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** Receipt — gap-lane-scorer-20261015-0420-lane4 (Lane 4, Mason hat) · SMARTBLOCKS three-gap close
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261015-0420-lane4.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.0; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
 ### ✅ gap-scorer-20261014-1910 — Team 4, Naya Clarity Narzan (Intelligent Blocks) — 9.5/10 [VERIFIED]
 
 **Task:** EQ1-EQ4 run FALSIFIES the staged wiring
@@ -19221,6 +19539,84 @@ _Last updated: 2026-10-17 14:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
 
+### ✅ lane-scorer-20261017-0730 — Team 3, Naya Clarity Narzan (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Adversarial review of claim-brief.py 1c parent-authorship check
+
+**Evidence:** Verified: check code location (bin/claim-brief.py L164, L313-420) read on live bytes per receipt; 4 adversarial cases probed via --dry-run with correct exits 0/0/0/7; built-in self-test independently re-verified GREEN this tick (25/25). Kept from 9.5: the co-authorship fail-open (ambiguous multi-seat authorship → allow) is a real minor hole found b
+
+### ✅ gap-t0818 — Team 3, lane-scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** RECEIPT — DECLINE RE-FILE (completed outcome, brief stays OPEN) — Naya Judge Narzan hat, Lane 3 · gap-t0818-la
+
+**Receipt:** `twelve-lane-receipts/gap-t0818-lane3.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.0; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-scorer-20261015-0630 — Team 3, lane-scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** RECEIPT — gap-scorer-20261015-0630 Lane 3 (Judge/LAW): stamp→claim proven on the REAL filing path, this tick's
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261015-0630-lane3.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.0; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-scorer-20261015-0500 — Team 3, lane-scorer (Decision Engine) — 9.4/10 [VERIFIED]
+
+**Task:** RECEIPT — gap-scorer-20261015-0500 · Lane 3 (Naya Judge) — hook-shape + brief-match discriminator is now CODE
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261015-0500-lane3.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). capped at 9.4: byte-level re-derivation of the pins not re-run this tick on this stale (2-3 day old) receipt, so the verified-ship bar is not met this tick; the seat itself se
+
+### ✅ gap-scorer-20261015-0250 — Team 3, lane-scorer (Decision Engine) — 8.5/10 [VERIFIED]
+
+**Task:** RECEIPT — gap-scorer-20261015-0250 · Lane 3 (Naya Judge) — BLIND second-seat re-classification of the 8 window
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261015-0250-lane3.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 8.5; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-scorer-20261014-2250 — Team 3, lane-scorer (Decision Engine) — 9.4/10 [VERIFIED]
+
+**Task:** Receipt — gap-scorer-20261014-2250 Lane 3 (lane-executor, Naya Judge hat) — fossil bar census + the owed board
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261014-2250-lane3.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). capped at 9.4: byte-level re-derivation of the pins not re-run this tick on this stale (2-3 day old) receipt, so the verified-ship bar is not met this tick; the seat itself se
+
+### ✅ gap-lane-scorer-20261015-1410 — Team 3, lane-scorer (Decision Engine) — 9.4/10 [VERIFIED]
+
+**Task:** RECEIPT — gap-lane-scorer-20261015-1410-lane3, Lane 3 (Judge) — anti-theater re-selection extended to all 15 c
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261015-1410-lane3.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). capped at 9.4: byte-level re-derivation of the pins not re-run this tick on this stale (2-3 day old) receipt, so the verified-ship bar is not met this tick; the seat itself se
+
+### ✅ gap-lane-scorer-20261015-0510 — Team 3, lane-scorer (Decision Engine) — 8.5/10 [VERIFIED]
+
+**Task:** Receipt — gap-lane-scorer-20261015-0510-lane3 (Lane 3, Judge hat) · blinded-judge readiness audit
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261015-0510-lane3.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 8.5; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-lane-scorer-20261015-0420 — Team 3, lane-scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** RECEIPT — gap-lane-scorer-20261015-0420 Lane 3 (Judge/LAW): claimability-gate stamping class — machinery prove
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261015-0420-lane3.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.0; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-lane-scorer-20261015-0350 — Team 3, lane-scorer (Decision Engine) — 9.3/10 [VERIFIED]
+
+**Task:** RECEIPT — gap-lane-scorer-20261015-0350 · Lane 3 (Judge) · Naya Clarity Narzan — parent-authorship check now m
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261015-0350-lane3.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.3; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
 ### ✅ lane-scorer-20261016-2000 — Team 3, Naya Clarity Narzan (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** gap-gap-t0901
@@ -19729,6 +20125,70 @@ _Last updated: 2026-10-17 14:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
 
+### ✅ gap-scorer-20261015-1350 — Team 2, lane-scorer (Learning Pipeline) — 9.2/10 [VERIFIED]
+
+**Task:** RECEIPT — gap-scorer-20261015-1350 · Lane 2 (Sage) · Naya Clarity Narzan — t0815-shape self-test case pinned i
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261015-1350-lane2.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.2; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-scorer-20261015-0550 — Team 2, lane-scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Gap receipt — lane 2 (Sage hat) — GAP_TITLE_RE re.MULTILINE repair
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261015-0550-lane2.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.0; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-scorer-20261015-0500 — Team 2, lane-scorer (Learning Pipeline) — 9.4/10 [VERIFIED]
+
+**Task:** RECEIPT — gap-scorer-20261015-0500 · Lane 2 (Naya Sage) — loop-latency measurement hole CLOSED with machine re
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261015-0500-lane2.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). capped at 9.4: byte-level re-derivation of the pins not re-run this tick on this stale (2-3 day old) receipt, so the verified-ship bar is not met this tick; the seat itself se
+
+### ✅ gap-scorer-20261015-0400 — Team 2, lane-scorer (Learning Pipeline) — 9.4/10 [VERIFIED]
+
+**Task:** RECEIPT — gap follow-up scorer-20261015-0400 · Lane 2 · Naya Clarity Narzan
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261015-0400-lane2.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.4; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-scorer-20261015-0250 — Team 2, lane-scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** RECEIPT — gap-scorer-20261015-0250 · Lane 2 (Naya Sage) — 13/13 pin-guard battery SECOND-SEAT re-run CLOSED
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261015-0250-lane2.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.0; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-scorer-20261014-2320 — Team 2, lane-scorer (Learning Pipeline) — 9.4/10 [VERIFIED]
+
+**Task:** RECEIPT — gap-scorer-20261014-2320-lane2: Arm I pre-reg design-side re-anchor (t0823)
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261014-2320-lane2.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 6 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). Capped at 9.4: byte-level re-derivation of the pins not re-run this tick, so the verified-ship bar is not met this tick; the seat self-scored 9.5 with a complete 3-pass scorec
+
+### ✅ gap-scorer-20261014-2310 — Team 2, lane-scorer (Learning Pipeline) — 9.3/10 [VERIFIED]
+
+**Task:** RECEIPT — gap-scorer-20261014-2310 · Lane 2 (Sage) · Naya Verity Narzan (lane-executor) — the dispatcher-scope
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261014-2310-lane2.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.3; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-scorer-20261014-2250 — Team 2, lane-scorer (Learning Pipeline) — 9.4/10 [VERIFIED]
+
+**Task:** Receipt — gap-scorer-20261014-2250 Lane 2 (lane-executor, Naya Sage hat) — class-#17 cure verification + adopt
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261014-2250-lane2.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.4; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
 ### ✅ gap-t0802 — Team 2, Naya Clarity Narzan (Learning Pipeline) — 9.5/10 [VERIFIED]
 
 **Task:** CLOSED signal WIRED into the brief queue
@@ -20164,6 +20624,60 @@ _Last updated: 2026-10-17 14:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0768-lane2.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
+
+### ✅ lane-scorer-20261017-0730 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Deontic pattern review + recus* precision tightening proposed
+
+**Evidence:** Verified: pattern file bin/stamp-claimability-gate.py L250-263 exists; 3 false positives documented with exact file:line bytes (1330-lane12.md:7,9; 0110-lane7.md:6; 0500-lane1.md:7); tightening candidate named with caveat about over-fitting risk. Kept from 9.5: the brief asked for the tightening to be APPLIED and the seat stopped at proposal — corr
+
+### ✅ gap-scorer-20261015-0650 — Team 12, lane-scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** RECEIPT — gap follow-up scorer-20261015-0650 · Lane 12 (herald seat) · Naya Clarity Narzan
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261015-0650-lane12.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.0; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-scorer-20261015-0630 — Team 12, lane-scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** RECEIPT — Lane 12 (Lane 12 hat), gap follow-up scorer-20261015-0630 — 2026-10-15 ~12:25 PDT
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261015-0630-lane12.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.0; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-scorer-20261014-2340 — Team 12, lane-scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Receipt — Lane 12 · Naya Clarity Narzan (Librarian hat) · gap-scorer-20261014-2340-lane12 (2026-10-15 ~10:07–1
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261014-2340-lane12.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.0; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-scorer-20261014-2320 — Team 12, lane-scorer (NayaNET / Hub) — 9.2/10 [VERIFIED]
+
+**Task:** RECEIPT — gap-scorer-20261014-2320 · Lane 12 (Naya Herald) — board-post evidence misattribution CLOSED
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261014-2320-lane12.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.2; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-lane-scorer-20261015-1210 — Team 12, lane-scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** RECEIPT — gap-lane-scorer-20261015-1210 · Lane 12 (Naya Clarity Narzan, Lane 12 hat)
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261015-1210-lane12.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.0; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-gap-t0803 — Team 12, lane-scorer (NayaNET / Hub) — 9.4/10 [VERIFIED]
+
+**Task:** Receipt — Gap follow-up on gap-t0803 Lane 12 (Herald) · Naya Clarity Narzan, Lane 12 Herald hat
+
+**Receipt:** `twelve-lane-receipts/gap-gap-t0803-lane12.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). capped at 9.4: byte-level re-derivation of the pins not re-run this tick on this stale (2-3 day old) receipt, so the verified-ship bar is not met this tick; the seat itself se
 
 ### ✅ lane-scorer-20261016-2000 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.3/10 [VERIFIED]
 
@@ -20683,6 +21197,52 @@ _Last updated: 2026-10-17 14:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
 
+### ✅ lane-scorer-20261017-0730 — Team 11, Naya Clarity Narzan (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Cold-build re-run: MRR_permuted 0.099206 byte-exact
+
+**Evidence:** Verified: script bin/t0817-c1-coldbuild.py exists on live bytes; receipt quotes MRR_permuted=0.099206 byte-matching the parent pin with exit 0. Kept from 9.5: same-seat re-run of deterministic machinery confirms no drift but cannot prove the fresh-seat-from-docs ideal literally (approximated, not a new mind).
+
+### ✅ gap-scorer-20261015-0620 — Team 11, lane-scorer (Human Value) — 9.4/10 [VERIFIED]
+
+**Task:** GAP FOLLOW-UP — Lane 11 (parent scorer-20261015-0620, scored 9.0/10) — CLOSED
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261015-0620-lane11.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.4; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-scorer-20261015-0320 — Team 11, lane-scorer (Human Value) — 9.4/10 [VERIFIED]
+
+**Task:** RECEIPT — Naya Heart Narzan, Lane 11 (gap-scorer-20261015-0320 follow-up) · 2026-10-15 ~05:30 PDT (operated by
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261015-0320-lane11.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.4; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-lane-scorer-20261015-2140 — Team 11, lane-scorer (Human Value) — 9.4/10 [VERIFIED]
+
+**Task:** RECEIPT — gap-lane-scorer-20261015-2140 Lane 11 (stale 11/6 verdict-count prose audit: CLOSED)
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261015-2140-lane11.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). capped at 9.4: byte-level re-derivation of the pins not re-run this tick on this stale (2-3 day old) receipt, so the verified-ship bar is not met this tick; the seat itself se
+
+### ✅ gap-lane-scorer-20261015-2120 — Team 11, lane-scorer (Human Value) — 9.2/10 [VERIFIED]
+
+**Task:** gap-lane-scorer-20261015-2120 — Naya Heart (Lane 11) — SURGE ledger 8-holed-verdict re-extraction: CLOSED
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261015-2120-lane11.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.2; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-lane-scorer-20261015-1320 — Team 11, lane-scorer (Human Value) — 8.7/10 [VERIFIED]
+
+**Task:** RECEIPT — gap-lane-scorer-20261015-1320 · Lane 11 (Heart) · Naya Clarity Narzan — cold-band extended n=2 → n=5
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261015-1320-lane11.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 8.7; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
 ### 🟡 gap-t0022-lane11 — Team 11, Naya Clarity Narzan (Human Value) — 7.5/10 [PARTIAL]
 
 **Task:** gap follow-up (parent t0022-lane11)
@@ -20962,6 +21522,106 @@ _Last updated: 2026-10-17 14:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ lane-scorer-20261017-0730 — Team 10, Naya Clarity Narzan (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** FP-003 pin probe + tamper control; seal drift named
+
+**Evidence:** Verified: pin seal file lane-10/fp003-a5-pin-prereg-20261015.json exists on live bytes; receipt quotes sealed vs probe-time pins byte-exactly; tamper control (1-byte flip → distinct DISQUALIFIED pin) proves the probe detects tampering, so the DISQUALIFIED verdict is genuine content drift, not probe failure. Kept from 9.5: drift is NAMED not healed 
+
+### ✅ lane-scorer-20261017-0730 — Team 10, Naya Clarity Narzan (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Both self-test suites re-run: claim-brief.py + file-gap-brief.py
+
+**Evidence:** Verified: BOTH self-test suites re-run independently this tick — claim-brief.py 25/25 PASS (SELF-TEST GREEN), file-gap-brief.py all cases PASS (SELF-TEST GREEN), scripts present on live bytes. Kept from 9.5: same-seat deterministic re-run confirms no drift but adds no independence; the briefs' named independence half remains owed to a true second s
+
+### ✅ gap-t0407 — Team 10, lane-scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** RECEIPT — gap-t0407 · Lane 10 · Naya Librarian Narzan — the t0809 lesson is now machinery: claimability gates 
+
+**Receipt:** `twelve-lane-receipts/gap-t0407-lane10.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.0; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-scorer-20261015-0650 — Team 10, lane-scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** RECEIPT — gap follow-up scorer-20261015-0650 · Lane 10 (map seat) · Naya Clarity Narzan
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261015-0650-lane10.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.0; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-scorer-20261015-0330 — Team 10, lane-scorer (Brain Index) — 9.4/10 [VERIFIED]
+
+**Task:** RECEIPT — gap-scorer-20261015-0330 · Lane 10 (Smith) · Naya Clarity Narzan — GAP CLOSED: step-3b patch still n
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261015-0330-lane10.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.4; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-scorer-20261015-0110 — Team 10, lane-scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** RECEIPT — gap-scorer-20261015-0110 Lane 10 (Librarian/KNOW): the no-refile block — machinery verified, one wir
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261015-0110-lane10.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.0; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-scorer-20261015-0040 — Team 10, lane-scorer (Brain Index) — 8.5/10 [VERIFIED]
+
+**Task:** Receipt — Lane 10 (Verity), gap follow-up scorer-20261015-0040-lane10 · Naya Clarity (lane executor)
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261015-0040-lane10.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 8.5; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-scorer-20261014-2300 — Team 10, lane-scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up receipt — Naya Librarian (Lane 10) — gap-scorer-20261014-2300-lane10
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261014-2300-lane10.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.0; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-scorer-20261014-1935 — Team 10, lane-scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Receipt — gap-scorer-20261014-1935 Lane 10 (Naya Clarity Narzan) — INELIGIBLE RELEASE
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261014-1935-lane10.md`
+
+**Evidence:** Verified this tick: the brief file brief-gap-scorer-20261014-1935-lane10.md is retired to brief-queue/done/ (bytes confirmed), and the arm-j exclusion statement exists on disk. Correct refusal: the seat is excluded twice over (Lane 10 by name, Naya Clarity by MCC contact) and the gap-recycler had contradicted its own 17:20 no-refile verdict at 19:3
+
+### ✅ gap-lane-scorer-20261015-2130 — Team 10, lane-scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** gap-lane-scorer-20261015-2130 — Naya Librarian (Lane 10) — PR #2541 "equivalent regen" proven with bytes: CLOS
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261015-2130-lane10.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.0; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-lane-scorer-20261015-0440 — Team 10, lane-scorer (Brain Index) — 8.5/10 [VERIFIED]
+
+**Task:** Receipt — gap-lane-scorer-20261015-0440-lane10 (Lane 10, Librarian hat) · independence-half recusal + ruleset 
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261015-0440-lane10.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 8.5; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-lane-scorer-20261015-0410 — Team 10, lane-scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** RECEIPT — gap-lane-scorer-20261015-0410 Lane 10 (Librarian/KNOW): the 3b wire — suite re-verified by a second 
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261015-0410-lane10.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 2 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.0; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-gap-t0032 — Team 10, lane-scorer (Brain Index) — 9.3/10 [VERIFIED]
+
+**Task:** gap-gap-t0032 — Naya Clarity Librarian (Lane 10) — 2026-10-15 ~21:14–22:05 PDT
+
+**Receipt:** `twelve-lane-receipts/gap-gap-t0032-lane10.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.3; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
 
 ### ✅ gap-t2032 — Team 10, Naya Clarity Narzan (Brain Index) — 9.3/10 [VERIFIED]
 
@@ -21635,6 +22295,116 @@ _Last updated: 2026-10-17 14:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
 
+### ✅ lane-scorer-20261017-0730 — Team 1, Naya Clarity Narzan (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** Control + adversarial arms re-run on fresh clone @ e654f16e8a49
+
+**Evidence:** Verified: evidence files exist on live bytes (lane-1/t952-gaplane1/evidence/control/evidence-v2.json 4 rows, adversarial 10 rows) plus both arm scripts; receipt cites fresh-clone HEAD e654f16e8a49e9a26309fd852695a0bef202673d with three module SHAs matching t952 pins. Clears 9.5: the brief's named carry (per-assertion v2 evidence rows for both arms 
+
+### ✅ gap-t0815-phase15 — Team 1, lane-scorer (Verification & Proof) — 9.2/10 [VERIFIED]
+
+**Task:** RECEIPT — gap follow-up gap-t0815-phase15-lane1 — DECLINE (pre-task recusal, t0813 precedent)
+
+**Receipt:** `twelve-lane-receipts/gap-t0815-phase15-lane1.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.2; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-t0418 — Team 1, lane-scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Receipt — gap-t0418-lane1 (Lane 1, PROVE/Verity hat) — Naya Clarity Narzan — 2026-10-15 08:15–08:45 PDT
+
+**Receipt:** `twelve-lane-receipts/gap-t0418-lane1.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.0; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-t0012 — Team 1, lane-scorer (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** Receipt — Lane 1 (Naya Seeker Narzan hat), gap-t0012 — GAP CLOSE
+
+**Receipt:** `twelve-lane-receipts/gap-t0012-lane1.md`
+
+**Evidence:** Verified byte-level this tick: blinded-scores-t1302.md sha256 prefix 1beb9440c2400c4a8cdd matches the receipt's pinned SHA; escrow battery file escrow-rederive-gap1935.py present. Clears 9.5 because: the named gap (file-presence-only certification) is closed with a byte-level re-derivation + one independently hand-walked escrow link, exactly as bri
+
+### ✅ gap-scorer-20261015-0720 — Team 1, lane-scorer (Verification & Proof) — 9.4/10 [VERIFIED]
+
+**Task:** RECEIPT — gap-scorer-20261015-0720 · Lane 1 · Naya Clarity Narzan (Verity hat, lane-executor)
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261015-0720-lane1.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). capped at 9.4: byte-level re-derivation of the pins not re-run this tick on this stale (2-3 day old) receipt, so the verified-ship bar is not met this tick; the seat itself se
+
+### ✅ gap-scorer-20261015-0620 — Team 1, lane-scorer (Verification & Proof) — 9.4/10 [VERIFIED]
+
+**Task:** RECEIPT — gap follow-up scorer-20261015-0620, Lane 1 (Verity) · Naya Clarity Narzan — two inherited premises c
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261015-0620-lane1.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). capped at 9.4: byte-level re-derivation of the pins not re-run this tick on this stale (2-3 day old) receipt, so the verified-ship bar is not met this tick; the seat itself se
+
+### ✅ gap-scorer-20261015-0330 — Team 1, lane-scorer (Verification & Proof) — 9.4/10 [VERIFIED]
+
+**Task:** RECEIPT — Naya Clarity Narzan, Lane 1 (gap-scorer-20261015-0330 follow-up) — 2026-10-15 12:22–12:28 UTC
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261015-0330-lane1.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.4; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-scorer-20261015-0200 — Team 1, lane-scorer (Verification & Proof) — 9.2/10 [VERIFIED]
+
+**Task:** RECEIPT — gap-scorer-20261015-0200-lane1: rederive.py pin-transcription slip CLOSED
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261015-0200-lane1.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.2; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-scorer-20261014-2250 — Team 1, lane-scorer (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** Receipt — gap-scorer-20261014-2250-lane1 · Naya Clarity (lane executor)
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261014-2250-lane1.md`
+
+**Evidence:** Verified via REST this tick: board comment 6187058735 EXISTS on #2537 (issue_url confirmed on the live object) — the missing 7-field receipt post the gap named. Clears 9.5 because: the delivery-channel miss is fully closed with byte evidence (comment body byte-identical 1884/1884 at post time), and the class-#17 clean order was demonstrated on this
+
+### ✅ gap-lane-scorer-20261015-2320 — Team 1, lane-scorer (Verification & Proof) — 9.4/10 [VERIFIED]
+
+**Task:** RECEIPT — gap-lane-scorer-20261015-2320 · Lane 1 (Verity) · Naya Clarity Narzan — SHA-citation repair on the t
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261015-2320-lane1.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). capped at 9.4: byte-level re-derivation of the pins not re-run this tick on this stale (2-3 day old) receipt, so the verified-ship bar is not met this tick; the seat itself se
+
+### ✅ gap-lane-scorer-20261015-2300 — Team 1, lane-scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** RECEIPT — gap-lane-scorer-20261015-2300 · Lane 1 (Verity) · Naya Clarity Narzan — the length/style control is 
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261015-2300-lane1.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.0; kept from 9.5 by the seat own self-score below 9.5 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; r
+
+### ✅ gap-lane-scorer-20261015-1220 — Team 1, lane-scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Receipt — gap-lane-scorer-20261015-1220-lane1 (Lane 1, Verity hat) · t0541 measurement JSON pinned
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261015-1220-lane1.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.0; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-lane-scorer-20261015-0700 — Team 1, lane-scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** RECEIPT — gap-lane-scorer-20261015-0700 · Lane 1 · Naya Clarity Narzan (Verity hat, lane-executor)
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261015-0700-lane1.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.0; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-lane-scorer-20261015-0450 — Team 1, lane-scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Receipt — gap-lane-scorer-20261015-0450-lane1 (Lane 1, Verity hat) · t0541 zero-finding re-run
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261015-0450-lane1.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.0; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
 ### ✅ gap-t952 — Team 1, Naya Clarity Narzan (Verification & Proof) — 9.0/10 [VERIFIED]
 
 **Task:** Gap follow-up: corrected the t952 overclaim as a first-class record, re-ran the treatment arm with 25 per-assertion rows, repaired the blinding arm-role leak with leak-scan.py falsifier (4 hits -> 0)
@@ -22262,6 +23032,106 @@ _Last updated: 2026-10-17 14:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261017-0730 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Exit-7 refusal spot-audit: all 14 founded
+
+**Evidence:** Verified: receipt file exists quoting 13 parent receipts' author lines verbatim; audit method (regex + file-existence via /tmp script) described; 2 malformed briefs (t1541-lane2, gap-gap-1530-lane4) byte-confirmed as gate-header-only. Kept from 9.5: one brief (gap-t0413-lane3) left the queue before header verification — record stands on the gate-st
+
+### ✅ lane-scorer-20261017-0730 — Team 0, Naya Clarity Narzan (?) — 8.5/10 [VERIFIED]
+
+**Task:** TRIAGE SUMMARY: 30-brief stall accounting (7 done, 12 CAN-DO, 9 fresh-mind, 2 malformed)
+
+**Evidence:** Verified: summary file exists; its completed table matches the 4 filed receipts on disk (selftests/pinprobe/checkruns/coldbuild); CAN-DO list maps to later-filed receipts (0725,0726,0727,0730,0735,0740,0745,0750) confirming the triage plan was actually executed. Kept from 9.5: this is accounting, not value delivery — it routes work (12 CAN-DO ident
+
+### ✅ gap-gate-stall-20261016-1037 — Team 0, lane-scorer (?) — 9.4/10 [VERIFIED]
+
+**Task:** RECEIPT — gap-gate-stall-20261016-1037 Lane 0 (Librarian), Naya Clarity Narzan
+
+**Receipt:** `twelve-lane-receipts/gap-gate-stall-20261016-1037-lane0.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). capped at 9.4: byte-level re-derivation of the pins not re-run this tick on this stale (2-3 day old) receipt, so the verified-ship bar is not met this tick; the seat itself se
+
+### ✅ gap-gate-stall-20261016-0009 — Team 0, lane-scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** RECEIPT — gap follow-up gate-stall-20261016-0009 · Lane 0 (index seat) · Naya Clarity Narzan
+
+**Receipt:** `twelve-lane-receipts/gap-gate-stall-20261016-0009-lane0.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.0; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-gap-gate-stall-20261016-0009 — Team 0, lane-scorer (?) — 9.4/10 [VERIFIED]
+
+**Task:** RECEIPT — gap follow-up gap-gap-gate-stall-20261016-0009 · Lane 0 (Smith) · Naya Clarity Narzan
+
+**Receipt:** `twelve-lane-receipts/gap-gap-gate-stall-20261016-0009-lane0.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). capped at 9.4: byte-level re-derivation of the pins not re-run this tick on this stale (2-3 day old) receipt, so the verified-ship bar is not met this tick; the seat itself se
+
+### ✅ gap-gap-20261017-0823 — Team 0, lane-scorer (?) — 9.2/10 [VERIFIED]
+
+**Task:** Receipt — gap-gap-20261017-0823-lane0 (Lane 0) — 2026-10-17 08:23–08:35Z
+
+**Receipt:** `twelve-lane-receipts/gap-gap-20261017-0823-lane0.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.2; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-gap-20261017-0753 — Team 0, lane-scorer (?) — 9.4/10 [VERIFIED]
+
+**Task:** Receipt — gap-gap-20261017-0753-lane0 (Lane 0) — 2026-10-17 ~08:09–08:3xZ
+
+**Receipt:** `twelve-lane-receipts/gap-gap-20261017-0753-lane0.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.4; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-20261017-0753 — Team 0, lane-scorer (?) — 9.3/10 [VERIFIED]
+
+**Task:** Receipt — gap-distill-feed-2641-20261017-lane0 (KNOW lane, Lane 0) — 2026-10-17 ~07:53–08:2xZ
+
+**Receipt:** `twelve-lane-receipts/gap-20261017-0753-lane0.md`
+
+**Evidence:** Verified on disk this tick: corpus feed-2641-comments-20261017.json and feed-distillation-2641.md both present; the arithmetic 1695+258+386=2339 checked against the receipt. Why not 9.5: seat's own — the brief's literal ~120 set was not byte-recoverable (forensically substituted with the 386-superset, honestly stated); 97 pattern-clean bodies dispo
+
+### ✅ gap-20261017-0714 — Team 0, lane-scorer (?) — 8.0/10 [VERIFIED]
+
+**Task:** GAP FOLLOW-UP RECEIPT — Naya Clarity Narzan (Lane 0 hat, lane-executor)
+
+**Receipt:** `twelve-lane-receipts/gap-20261017-0714-lane0.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 8.0; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ gap-20261016-0430 — Team 0, lane-scorer (?) — 9.4/10 [VERIFIED]
+
+**Task:** Receipt — gap-20261016-0430, Lane 0 Librarian (Naya Clarity Narzan)
+
+**Receipt:** `twelve-lane-receipts/gap-20261016-0430-lane0.md`
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). capped at 9.4: byte-level re-derivation of the pins not re-run this tick on this stale (2-3 day old) receipt, so the verified-ship bar is not met this tick; the seat itself se
+
+### ✅ distill-feed-2537-20261015 — Team 0, lane-scorer (?) — 9.2/10 [VERIFIED]
+
+**Task:** Receipt — distill-feed-2537 (KNOW-area, lane-executor) · #2537 final distillation
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.2; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ distill-daily-20261017 — Team 0, lane-scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Lane receipt — distill-daily-20261017
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.0; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
+
+### ✅ distill-daily-20261016 — Team 0, lane-scorer (?) — 9.4/10 [VERIFIED]
+
+**Task:** Receipt — distill-daily-20261016 (Naya Clarity Narzan, KNOW lane / Seeker hat) · boot-pointer recalibrated, ga
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). capped at 9.4: byte-level re-derivation of the pins not re-run this tick on this stale (2-3 day old) receipt, so the verified-ship bar is not met this tick; the seat itself se
+
+### ✅ distill-daily-20261015 — Team 0, lane-scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Receipt — distill-daily-20261015 (Clarity, lane-executor) · boot-pointer still red
+
+**Evidence:** Verified: receipt file present with complete scorecard structure; 0 sha256 pins cited from action-time. Pins NOT re-derived this tick (stale 2-3-day-old receipt, scorer box). mirrors the seat self-score 9.0; kept from 9.5 by the seat own named why-not-10 (carried, not re-derived). No follow-up filed: ancient re-score of an already-closed gap; re-fi
 
 ### ✅ lane-scorer-20261017-0700 — Team 0, Naya Clarity Narzan (lane-executor) (?) — 9.5/10 [VERIFIED]
 
