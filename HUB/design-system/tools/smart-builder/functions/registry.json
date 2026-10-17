@@ -734,7 +734,7 @@
             "cover wired"
           ],
           "activated_by": "contract.features.cover",
-          "status": "specified",
+          "status": "built",
           "code": null,
           "depends_on": [],
           "version": "1.0.0",

@@ -43,7 +43,7 @@ The 13 breakers: smart_mail · space · social_feed · connect · intelligence_t
 
 ---
 
-## STATUS BOARD — 6 built, 37 specified
+## STATUS BOARD — 7 built, 36 specified
 
 | Group | Built | Specified |
 |---|---|---|
@@ -52,7 +52,7 @@ The 13 breakers: smart_mail · space · social_feed · connect · intelligence_t
 | Template (4) | 1 — list (as contract data) | 3 — pick, swap_piece, note |
 | Customize (4) | 0 | 4 — color, position, apply_note, name_function |
 | Build (6) | 3 — assemble, verify, receipt | 3 — scorecard, preview, deploy |
-| Feature (13) | 0 | 13 — all specified; most depend on Hub systems (mail, spaces, feed, identity, reports, contacts, tabs, community, github_kb, scheduler) |
+| Feature (13) | 1 — cover (contract-activated, acceptance-tested) | 12 — specified; most depend on Hub systems (mail, spaces, feed, identity, reports, contacts, tabs, community, github_kb, scheduler) |
 
 **The hard part, named:** the 13 feature breakers depend on the Hub's smart rooms being plumbed (Smart Mail room, Spaces, feed, identity, reports, contacts, tabs, community, GitHub KB sync, scheduler). The builder can't activate what isn't wired. That's the next plumbing job — same law applies: functions before interface.
 

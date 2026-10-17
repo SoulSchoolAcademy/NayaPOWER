@@ -13,7 +13,12 @@ Fine-tuning = edit the contract (words, wall picks), re-run.
 import argparse, json, hashlib, html as htmlmod, os, sys
 from datetime import datetime, timezone
 
-ASSEMBLER_VERSION = "assemble-v1"
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                                'functions'))
+from feature_cover import (CoverRefusal, decl_for, render_cover,
+                           FEATURE_COVER_ID, FEATURE_COVER_VERSION)
+
+ASSEMBLER_VERSION = "assemble-v1.1"  # v1.1: feature breakers wired (cover first)
 
 def esc(s):
     return htmlmod.escape(str(s), quote=True)
@@ -78,7 +83,91 @@ def validate_contract(contract, pieces):
     for sec, idx in design.get('sections', {}).items():
         if not isinstance(idx, int) or not (0 <= idx < n):
             errors.append({'code': 'bad_section_color', 'section': sec, 'index': idx})
+    # features: contract-page contracts carry a list of [title, desc] pairs;
+    # customer contracts carry a breaker dict (contract.features.<breaker>).
+    # Anything else is a malformed contract — fail closed.
+    feats = contract.get('features')
+    if feats is not None and not isinstance(feats, (list, dict)):
+        errors.append({'code': 'bad_features_shape',
+                       'detail': 'features must be a list or an object, got %s'
+                                 % type(feats).__name__})
     return errors
+
+
+def activate_breakers(contract, reg_statuses, reg_present):
+    """Contract flips breakers; the registry gates them (fail closed).
+
+    Returns (cover_html, problems, events).
+    - features as a list (contract-page) -> no breakers; cover not rendered.
+    - features as a dict -> each declared breaker must be registry-'built',
+      else a structured refusal. Only then does cover render.
+    """
+    problems, events, cover_html = [], [], ''
+    feats = contract.get('features')
+    if not isinstance(feats, dict):
+        return cover_html, problems, events
+    decl = None
+    try:
+        decl = decl_for(contract)
+    except CoverRefusal as e:
+        # malformed cover is reported, but the other breakers are still
+        # checked so the refusal names every problem, not just the first
+        problems.append({'code': e.code, 'feature': FEATURE_COVER_ID,
+                         'detail': e.detail})
+    for key, val in feats.items():
+        if isinstance(val, dict):
+            declared = bool(val.get('enabled'))
+        elif val is True:
+            declared = True
+        elif not val:
+            continue  # falsy -> breaker not flipped
+        else:
+            problems.append({'code': 'bad_breaker_declaration',
+                             'feature': 'feature.' + str(key),
+                             'detail': 'must be an object or true'})
+            continue
+        if not declared:
+            continue
+        if not reg_present:
+            problems.append({'code': 'registry_unavailable',
+                             'feature': 'feature.' + str(key),
+                             'detail': 'cannot bind the feature claim without the registry'})
+        elif reg_statuses.get(key) != 'built':
+            problems.append({'code': 'feature_not_built',
+                             'feature': 'feature.' + str(key),
+                             'detail': 'registry status is %r — the contract never '
+                                       'activates an unbuilt capability'
+                                       % (reg_statuses.get(key),)})
+    if problems or decl is None or not decl.get('enabled'):
+        return cover_html, problems, events
+    try:
+        cover_html = render_cover(decl, reg_statuses.get('cover'))
+    except CoverRefusal as e:
+        problems.append({'code': e.code, 'feature': FEATURE_COVER_ID,
+                         'detail': e.detail})
+        return '', problems, events
+    events.append({'event': 'cover.updated', 'feature': FEATURE_COVER_ID,
+                   'version': FEATURE_COVER_VERSION})
+    return cover_html, problems, events
+
+
+def render_breaker_rows(feats, reg_by_id, reg_statuses, spectrum, sec_idx):
+    """§7 for customer contracts: one honest row per flipped breaker —
+    its registry name, its intent, and its registry status. Never claims
+    operational unless the registry says built (unbuilt breakers cannot
+    reach this code — activate_breakers refuses them first)."""
+    rows = []
+    for i, (key, val) in enumerate(feats.items()):
+        declared = val is True or (isinstance(val, dict) and val.get('enabled'))
+        if not declared:
+            continue
+        entry = reg_by_id.get('feature.' + str(key), {})
+        status = reg_statuses.get(key, 'unknown')
+        rows.append(lawcard(
+            '%s — %s' % (entry.get('name', key), status),
+            entry.get('intent', ''),
+            spectrum[(sec_idx + i) % len(spectrum)]))
+    return ''.join(rows)
 
 def safe_json_for_pre(obj):
     # A </pre> or <script> sequence inside contract data must never break out
@@ -108,8 +197,23 @@ def main():
     index_bytes = open(a.index, 'rb').read()
     template_bytes = open(a.template, 'rb').read()
 
+    # ---- registry first: every feature claim binds to it, before anything renders ----
+    reg_path = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                            'functions', 'registry.json')
+    reg_present = os.path.exists(reg_path)
+    reg = json.load(open(reg_path)) if reg_present else None
+    reg_statuses = ({f['id'].replace('feature.', ''): f['status']
+                     for f in reg['groups']['feature']['functions']}
+                    if reg_present else {})
+    reg_by_id = ({f['id']: f for f in reg['groups']['feature']['functions']}
+                 if reg_present else {})
+
     # ---- validate before assembling: fail closed, structured errors ----
     problems = validate_contract(contract, pieces)
+    # feature breakers: the contract flips them, the registry gates them.
+    cover_html, breaker_problems, breaker_events = activate_breakers(
+        contract, reg_statuses, reg_present)
+    problems += breaker_problems
     if problems:
         print(json.dumps({'status': 'refused', 'errors': problems}, indent=2))
         sys.exit(2)
@@ -167,9 +271,17 @@ def main():
     templates = '<div class="grid g4">%s</div>' % templates
 
     # features / gallery / customize -> the real .lawcard piece
-    features = ''.join(
-        lawcard(t, d, SPECTRUM[(SEC['features'] + i) % len(SPECTRUM)])
-        for i, (t, d) in enumerate(contract['features']))
+    # contract-page contracts carry features as [title, desc] pairs;
+    # customer contracts carry flipped breakers — rendered with their
+    # honest registry statuses, never claimed operational unless built.
+    feats = contract['features']
+    if isinstance(feats, dict):
+        features = render_breaker_rows(feats, reg_by_id, reg_statuses,
+                                       SPECTRUM, SEC['features'])
+    else:
+        features = ''.join(
+            lawcard(t, d, SPECTRUM[(SEC['features'] + i) % len(SPECTRUM)])
+            for i, (t, d) in enumerate(feats))
     gallery_html = ''.join(
         lawcard(t, d, SPECTRUM[(SEC['gallery'] + i) % len(SPECTRUM)])
         for i, (t, d) in enumerate(contract['gallery']['points']))
@@ -185,19 +297,14 @@ def main():
     page = tpl
     # feature claims bound to registry statuses: the contract never advertises
     # a capability as operational unless the registry says it is built.
-    reg_path = os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                            'functions', 'registry.json')
-    if os.path.exists(reg_path):
-        reg = json.load(open(reg_path))
-        contract['machine']['features_status'] = {
-            f['id'].replace('feature.', ''): f['status']
-            for f in reg['groups']['feature']['functions']
-        }
+    if reg_present:
+        contract['machine']['features_status'] = reg_statuses
     machine_raw = safe_json_for_pre(contract['machine'])
     for key, val in {
         '%%TITLE%%': esc(contract['title']),
         '%%KICKER%%': esc(contract['kicker']),
         '%%LEDE%%': esc(contract['lede']),
+        '%%COVER%%': cover_html,  # '' unless the contract flipped the cover breaker
         '%%INTAKE_MODES%%': intake_modes,
         '%%FIELDS%%': fields,
         '%%WALL_HTML%%': ''.join(wall_html),
@@ -251,6 +358,8 @@ def main():
         # execution-time receipt metadata (not part of the identity)
         'receipt': {
             'built_utc': datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'),
+            # capability-contract events the build actually fired
+            'events': breaker_events,
         },
     }
     json.dump(manifest, open(a.manifest, 'w'), indent=2)

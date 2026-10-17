@@ -86,6 +86,30 @@ section{padding:56px 0; border-top:1px solid var(--line);}
 
 .hero{padding:72px 0 56px; border-top:none;}
 .hero .status{display:flex; align-items:center; gap:10px; margin-bottom:18px; flex-wrap:wrap;}
+
+/* ============ feature.cover — the personal header ============ */
+.cover{margin:0 0 34px;}
+.cover-banner{position:relative; height:230px; border-radius:var(--radius-lg); overflow:hidden;
+  background:var(--raise); border:1px solid var(--line);}
+.cover-photo{width:100%; height:100%; object-fit:cover; display:block;}
+.cover-photo-fallback{width:100%; height:100%;
+  background:linear-gradient(120deg,var(--sp-purple),var(--sp-magenta) 45%,var(--sp-gold));}
+.cover-scrim{position:absolute; inset:0; pointer-events:none;
+  background:linear-gradient(180deg,rgba(2,2,3,0) 30%,rgba(2,2,3,.78) 100%);}
+.cover-id{position:relative; display:flex; gap:18px; align-items:flex-end; padding:0 10px; margin-top:-46px;}
+.cover-ava{flex:0 0 auto; width:96px; height:96px; border-radius:28px; object-fit:cover;
+  border:3px solid var(--obsidian-deep); box-shadow:0 12px 30px rgba(0,0,0,.6); background:var(--card);}
+.cover-ava-fallback{display:grid; place-items:center;
+  background:linear-gradient(135deg,var(--sp-purple),var(--sp-magenta));
+  font-family:var(--font-voice); font-size:34px; font-weight:500; color:#fff;}
+.cover-who{min-width:0;}
+.cover-name{font-size:clamp(26px,4vw,36px); margin:0; text-shadow:0 2px 14px rgba(0,0,0,.7);}
+.cover-tagline{color:var(--paper); margin:6px 0 0; font-size:15px; text-shadow:0 1px 10px rgba(0,0,0,.7);}
+@media(max-width:640px){
+  .cover-banner{height:170px;}
+  .cover-ava{width:72px; height:72px; border-radius:20px; font-size:26px;}
+  .cover-id{gap:12px; margin-top:-36px;}
+}
 .pill{display:inline-flex; align-items:center; gap:8px; border:1px solid var(--line);
   border-radius:var(--radius-pill); padding:7px 16px; font-size:12px; letter-spacing:.14em;
   text-transform:uppercase; font-weight:700; color:var(--paper); background:var(--raise);}
@@ -182,6 +206,7 @@ footer .kicker{color:var(--slate); display:block; margin-bottom:8px;}
 </div></nav>
 
 <header class="hero"><div class="wrap">
+  %%COVER%%
   <div class="status">
     <span class="pill"><span class="led"></span>Official · Locked 2026-10-17</span>
     <span class="pill">v2 · composed from its own parts</span>
