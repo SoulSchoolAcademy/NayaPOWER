@@ -1558,3 +1558,41 @@ def test_retrieve_winner_without_nutshell_fails_closed(tmp_path, monkeypatch):
         assert str(exc) == "WINNER_EXPLANATION_EMPTY", str(exc)
     else:
         raise AssertionError("title-only winner must fail closed, not be admitted silently")
+
+
+def test_nutshell_text_non_utf8_projection_yields_empty(tmp_path, monkeypatch):
+    """G5r (law L300): a hash-consistent non-UTF-8 projection page must not
+    poison retrieval. Pre-repair, UnicodeDecodeError (a ValueError subclass,
+    not caught by _nutshell_text's (OSError, TypeError)) escaped
+    _ranked_candidates on EVERY query — one bad byte in one page killed the
+    whole corpus. Post-repair the unreadable page yields '' per the
+    docstring contract and the query completes. Non-vacuous: the registry is
+    sealed clean (validator passes — byte binding is hash-consistent), so the
+    failure surface is exactly the decode, not the index gate."""
+    brain = tmp_path / "BRAIN" / "05-MEMORY" / "SMART-NOTES"
+    brain.mkdir(parents=True, exist_ok=True)
+    (brain / "good.md").write_text(
+        "# Good\n\n## IN A NUTSHELL\n\nretrieval machinery compounds verified intelligence\n",
+        encoding="utf-8")
+    (brain / "bad.md").write_bytes(
+        b"# Bad\n\n## IN A NUTSHELL\n\ncorrupt\xff bytes planted\n")
+    entries = [
+        {"smart_note_id": "SN-G5R-GOOD", "intelligent_block_id": "IB-G5R-GOOD",
+         "title": "Good note", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["retrieval", "machinery"], "truth_state": "CANDIDATE",
+         "lifecycle_state": "ACTIVE", "captured_at": "2026-10-13T00:00:00Z",
+         "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/good.md"},
+        {"smart_note_id": "SN-G5R-BAD", "intelligent_block_id": "IB-G5R-BAD",
+         "title": "Bad note", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["retrieval"], "truth_state": "CANDIDATE",
+         "lifecycle_state": "ACTIVE", "captured_at": "2026-10-13T00:00:00Z",
+         "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/bad.md"},
+    ]
+    rp = tmp_path / "index.json"
+    rp.write_text(json.dumps(_sealed_registry(entries, tmp_path)), encoding="utf-8")
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    monkeypatch.setattr(mod, "REGISTRY", rp)
+    monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 0)  # ranking pin: the floor is live-corpus calibrated, not for synthetic corpora
+    assert mod._nutshell_text("BRAIN/05-MEMORY/SMART-NOTES/bad.md") == ""
+    ranked = mod._ranked_candidates("retrieval machinery")
+    assert any(e["intelligent_block_id"] == "IB-G5R-GOOD" for _, _, e in ranked)
