@@ -36,6 +36,25 @@ NEEDS_AUTHORITY = "NEEDS_AUTHORITY"
 NEEDS_EVIDENCE = "NEEDS_EVIDENCE"
 ADMISSIBLE = "ADMISSIBLE"
 
+# The Naya Decision Principle, as enforced here:
+#
+#   FIRST — HARD GATES (gate_candidate, below)
+#       Protect people · Tell the truth · Respect authority
+#   THEN — INTELLIGENT OPTIMIZATION (evaluate_candidates, below)
+#       a* = argmax over A_admissible of V_verified(a)
+#
+# PROHIBITED means DISQUALIFIED from the competition entirely — not scored
+# zero. A prohibited candidate is excluded before optimization begins; it
+# cannot win on other dimensions no matter how high its value. This is
+# exclusion, not a score. NEEDS_AUTHORITY and NEEDS_EVIDENCE mean DEFERRED:
+# the candidate may become admissible once the gap closes. Only ADMISSIBLE
+# candidates ever enter the ranking.
+#
+# Honest outputs are first-class: when no admissible candidate has verified
+# value, the pipeline returns READ_MORE ("I don't know yet") or ASK
+# ("needs human judgment") or REFUSE ("this isn't safe") — never a guess,
+# never a silent zero. Uncertainty is not a failure state.
+
 ACT = "ACT"
 READ_MORE = "READ_MORE"
 ASK = "ASK"

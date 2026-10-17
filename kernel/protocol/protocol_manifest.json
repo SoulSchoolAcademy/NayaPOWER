@@ -151,6 +151,13 @@
       "statement": "Every BRAIN/ change lands with a matching index regen. The index layer (BRAIN/REAL-TREE.json, BRAIN/REAL-TREE.md, BRAIN/NAYAPOWER-BRAIN-INDEX.json) must match the committed git tree; the check fails on drift, fails closed on structural corruption, and names the exact regen command that fixes drift. Mechanical layer only (counts, blob SHAs, pointers) — semantic sections are preserved by the regen, never verified for correctness.",
       "enforcement": "brain_index_freshness_gate",
       "check": "tools/protocol/checks/brain_index_freshness.py"
+    },
+    {
+      "id": "DECISION-PRINCIPLE-GOVERNANCE",
+      "name": "Decision Principle Governance",
+      "statement": "FIRST hard gates (protect people, tell truth, respect authority), THEN intelligent optimization over the admissible set only. A prohibited action is DISQUALIFIED from the competition entirely — not scored zero. The gate proves: cross-implementation agreement on 130 scenarios (10 hand-built edge cases + 120 deterministic randomized), live pipeline excludes prohibited before optimizing, verdict mapping correct and fail-closed. Honest outputs (I don't know yet / this isn't safe / needs human judgment) are first-class, never failures.",
+      "enforcement": "decision_principle_governance_gate",
+      "check": "tools/protocol/checks/decision_principle_governance.py"
     }
   ],
   "never_do": [
