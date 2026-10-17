@@ -25,6 +25,30 @@ Author seat, reviewer seat, and scorer seat: reviewer and scorer may be the
 same seat, but BOTH must differ from the author seat. (The author cannot
 review or score their own work.)
 
+The three legs (a)/(b)/(c) — one line each, written as a test a cold
+verifier can run:
+  (a) Seat declaration — read: the PR BODY. Pass: an explicit "Seat: Naya N"
+      line matches (AUTHOR_SEAT_RE: seat\s*:\s*naya\s*<1-5|alpha..mu>);
+      incidental seat mentions in prose do NOT count (dogfood: PR #2373).
+      Fail: no explicit declaration -> exit 1 "PR body must declare the
+      authoring seat".
+  (b) Cross-seat review — read: PR reviews + PR issue comments. Pass: a
+      comment USES an approval keyword as its own verdict ([NAYA X · REVIEW]
+      APPROVED / VERDICT: APPROVED / MERGE RECOMMENDED) from a seat != the
+      author, or a native GitHub APPROVED from a different login; quoted,
+      negated, or HOLD-carrying approvals never count (mention-vs-use,
+      2026-10-13). Fail: no non-author approval -> exit 1 "no review from a
+      seat other than the author".
+  (c) Scorecard receipt — read: PR issue comments. Pass: a comment says
+      "scorecard"/"verdict", names the EXACT head SHA under test, and carries
+      a merge-approval phrase or a numeric score >= 9.0, from a seat != the
+      author; the exact-head rule is the security property and is never
+      relaxed (an older head's receipt must not green-light a newer one).
+      Fail: receipt missing, names a different head, score < 9.0, or scorer
+      == author -> exit 1 "no scorecard receipt naming head SHA".
+Scope note: PRs opened before 2026-10-11T16:30:00Z predate the seat-receipt
+convention and SKIP the gate — the legs above do not apply to them.
+
 Native GitHub APPROVED reviews from a *different login* than the PR author
 also satisfy the review requirement (future-proof for distinct seat accounts).
 
