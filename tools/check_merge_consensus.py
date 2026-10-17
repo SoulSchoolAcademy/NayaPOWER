@@ -60,8 +60,11 @@ API = "https://api.github.com"
 # "Naya <Title>" (e.g. "Naya Epsilon"); the legacy numeric seats 1-5 keep
 # working exactly as before. One shared id pattern so the author-declaration
 # rule and the review/scorecard rules recognize exactly the same seats.
+# "nitro" added 2026-10-17 per Shawn's word — Naya Nitro Narzan is a seated
+# team member (joined 2026-10-15); the registry predated her.
 _NAMED_SEATS = ("alpha", "beta", "gamma", "delta", "epsilon", "zeta",
-                "eta", "theta", "iota", "kappa", "lambda", "mu")
+                "eta", "theta", "iota", "kappa", "lambda", "mu",
+                "nitro")
 _SEAT_ID = r"(?:([12345])|(" + "|".join(_NAMED_SEATS) + r"))"
 SEAT_RE = re.compile(r"naya\s*" + _SEAT_ID + r"\b", re.I)
 # The authoring seat must be an EXPLICIT declaration ("Seat: Naya N"), never
