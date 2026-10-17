@@ -350,12 +350,34 @@ def build_ledger_section(cached=None):
 
 
 def build_mission_section(cached=None):
-    """Mission state #2154 — current priorities, parked items, blockers."""
+    """Mission state #2154 — current priorities, parked items, blockers.
+
+    P0-F5 (falsified 2026-10-13, Naya Gamma): the mission section is
+    SOURCE-BOUND — the full mission body is stored, sha-pinned, never
+    silently truncated to a preview. Mission orientation answers draw
+    from the full body. An empty mission body is PARTIAL: completeness
+    and priority-selection questions fail closed (UNKNOWN + READ_MORE),
+    never a truncated answer presented as current.
+    """
+    import hashlib
+
     ok, issue = gh_api("GET", f"/repos/{REPO}/issues/{MISSION_ISSUE}")
     if not ok:
         return mark_unknown("mission", f"API failed: {issue}")
 
     body = issue.get("body") or ""
+    if not body.strip():
+        # Fail closed: no mission source, no orientation claim. (Pre-fix
+        # this returned status OK with an empty preview — false completeness.)
+        return {
+            "status": "PARTIAL",
+            "issue": MISSION_ISSUE,
+            "reason": "mission body empty — no source-bound priorities available",
+            "url": issue.get("html_url", ""),
+            "as_of_utc": now_utc(),
+            "as_of_ts": utc_now_ts(),
+        }
+
     return {
         "status": "OK",
         "issue": MISSION_ISSUE,
@@ -363,7 +385,14 @@ def build_mission_section(cached=None):
         "state": issue.get("state", ""),
         "comment_count": issue.get("comments", 0),
         "updated_at": issue.get("updated_at", ""),
+        # Full source-bound mission text — the orientation source. Priorities
+        # may live beyond char 2000; the preview below is display-only.
+        "body_full": body,
+        "body_full_len": len(body),
+        "body_sha12": hashlib.sha256(body.encode()).hexdigest()[:12],
         "body_preview": body[:2000],
+        "preview_truncated": len(body) > 2000,
+        "mission_priorities_state": "FULL",
         "url": issue.get("html_url", ""),
         "as_of_utc": now_utc(),
         "as_of_ts": utc_now_ts(),
@@ -760,12 +789,29 @@ def cmd_query(args):
             mark_unknown_answer(unknown_with_directive("mission", state, sections))
         else:
             mission = sections.get("mission", {})
-            answer = (
-                f"OBSERVED — mission state (#{mission.get('issue')}):\n"
-                f"  Title: {mission.get('title', '')}\n"
-                f"  Updated: {mission.get('updated_at', '')}\n"
-                f"  Preview:\n{mission.get('body_preview', '')[:1000]}"
-            )
+            full = mission.get("body_full") or ""
+            if not full:
+                # P0-F5 fail closed: a preview-only snapshot (built before
+                # the full-source change) cannot support a positive
+                # current-orientation claim. Read the source or refresh.
+                mark_unknown_answer(
+                    "UNKNOWN — mission section is PARTIAL (preview-only "
+                    "snapshot: no full source-bound mission text).\n"
+                    "READ_MORE: run `refresh` for a source-bound mission, or "
+                    f"read the live source directly: {mission.get('url', '#2154')}. "
+                    "No priority/completeness answer can be given from a preview."
+                )
+            else:
+                answer = (
+                    f"OBSERVED — mission state (#{mission.get('issue')}):\n"
+                    f"  Title: {mission.get('title', '')}\n"
+                    f"  Updated: {mission.get('updated_at', '')}\n"
+                    f"  Source-bound: full mission text, "
+                    f"{mission.get('body_full_len', len(full))} chars, "
+                    f"sha {mission.get('body_sha12', '?')}\n"
+                    f"  URL: {mission.get('url', '')}\n"
+                    f"  Full mission text:\n{full}"
+                )
 
     elif any(w in question for w in ["ledger", "proven"]):
         usable, state = section_usable("ledger", sections)

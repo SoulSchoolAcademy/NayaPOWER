@@ -338,6 +338,106 @@ class TestQueryRouting(unittest.TestCase):
         self.assertIn("UNKNOWN", out)
 
 
+class TestMissionSourceBound(unittest.TestCase):
+    """P0-F5: the mission section is SOURCE-BOUND, never silently truncated.
+
+    Falsification spec: PR #2477 review comment 6128553449 — "independently
+    falsify a mission with priority 6/7 beyond character 2000."
+    A mission whose priorities 6/7 live beyond char 2000 must be fully
+    visible in the world model's mission orientation; an orientation drawn
+    from the truncated preview is false completeness.
+    """
+
+    @staticmethod
+    def _falsifier_body():
+        padding = "Filler line so the mission body is long. " * 60
+        return (
+            "MISSION STATE\n"
+            "Priority 1: engine consolidation\n"
+            "Priority 2: cold retrieve hardening\n"
+            + padding
+            + "\nPriority 6: falsifier priority beyond two thousand chars\n"
+            + "Priority 7: second falsifier priority beyond two thousand chars\n"
+        )
+
+    @staticmethod
+    def _falsifier_issue(body):
+        return {
+            "number": 2154, "title": "Mission State", "state": "open",
+            "comments": 10, "updated_at": "2026-10-13T00:00:00Z",
+            "body": body, "html_url": "https://github.com/x/issues/2154",
+        }
+
+    def _run_query(self, model, question):
+        import io
+        from contextlib import redirect_stdout
+        with patch.object(wm, "load_model", return_value=model):
+            buf = io.StringIO()
+            args = type("Args", (), {"question": question.split()})()
+            with redirect_stdout(buf):
+                rc = wm.cmd_query(args)
+            return rc, buf.getvalue()
+
+    def test_mission_section_stores_full_source_bound_body(self):
+        body = self._falsifier_body()
+        self.assertGreater(body.find("Priority 6"), 2000)  # falsifier guard
+        with patch.object(wm, "gh_api",
+                          return_value=(True, self._falsifier_issue(body))):
+            section = wm.build_mission_section()
+        self.assertEqual(section["status"], "OK")
+        # The full source-bound body must be present and complete.
+        self.assertEqual(section["mission_priorities_state"], "FULL")
+        self.assertEqual(section["body_full_len"], len(body))
+        self.assertIn("Priority 6", section["body_full"])
+        self.assertIn("Priority 7", section["body_full"])
+
+    def test_mission_query_answers_from_full_source(self):
+        body = self._falsifier_body()
+        with patch.object(wm, "gh_api",
+                          return_value=(True, self._falsifier_issue(body))):
+            section = wm.build_mission_section()
+        model = {"snapshot_utc": "now",
+                 "sections": {"mission": dict(section, as_of_ts=time.time())}}
+        rc, out = self._run_query(model, "what are the priorities?")
+        self.assertEqual(rc, 0)
+        self.assertIn("Priority 6", out)
+        self.assertIn("Priority 7", out)
+        # No false completeness: the answer says it is source-bound.
+        self.assertIn("source-bound", out.lower())
+
+    def test_mission_empty_body_is_partial_and_fails_closed(self):
+        with patch.object(wm, "gh_api",
+                          return_value=(True, self._falsifier_issue(""))):
+            section = wm.build_mission_section()
+        self.assertEqual(section["status"], "PARTIAL")
+        model = {"snapshot_utc": "now",
+                 "sections": {"mission": dict(section, as_of_ts=time.time())}}
+        rc, out = self._run_query(model, "what are the priorities?")
+        self.assertNotEqual(rc, 0)  # fails closed: no positive answer
+        self.assertIn("UNKNOWN", out)
+        self.assertIn("READ_MORE", out)
+        self.assertNotIn("OBSERVED", out)
+
+    def test_preview_only_snapshot_refuses_completeness(self):
+        # Snapshots built before the full-source change carry only a preview.
+        # They must refuse completeness answers, not present the preview as
+        # the whole mission.
+        old_section = {
+            "status": "OK", "issue": 2154, "title": "Mission State",
+            "state": "open", "comment_count": 10,
+            "updated_at": "2026-10-13T00:00:00Z",
+            "body_preview": "Priority 1: engine consolidation",
+            "url": "https://github.com/x/issues/2154",
+            "as_of_utc": "2026-10-13T00:00:00+00:00",
+            "as_of_ts": time.time(),
+        }
+        model = {"snapshot_utc": "now", "sections": {"mission": old_section}}
+        rc, out = self._run_query(model, "what are the priorities?")
+        self.assertNotEqual(rc, 0)
+        self.assertIn("UNKNOWN", out)
+        self.assertIn("READ_MORE", out)
+
+
 class TestRefreshSkipsFresh(unittest.TestCase):
     def test_refresh_skips_fresh_sections(self):
         """Refresh must not call builders for fresh sections (API economy)."""
