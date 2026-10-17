@@ -49,6 +49,24 @@ def test_full_decision_ranks_best_pv_but_withholds_act_without_trusted_gates():
     assert "ACT is withheld" in report["next"]
 
 
+def test_forged_gate_flags_cannot_authorize_act():
+    opt = full_opt("forged", 100, ["large benefit"], [])
+    # Caller-supplied booleans are not a trusted authority/policy receipt.
+    opt.update({
+        "authorized": True,
+        "lawful": True,
+        "rights_safe": True,
+        "privacy_safe": True,
+        "safety_safe": True,
+        "verified": True,
+    })
+    report = decide({"situation": "adversarial gate bypass", "options": [opt]})
+    assert report["decision"] == "READ_MORE"
+    assert report["selected"] is None
+    assert report["governance_authorization"] == "UNRESOLVED_NO_TRUSTED_GATE_RESOLVER"
+    assert "ACT is withheld" in report["next"]
+
+
 def test_no_pv_means_read_more():
     opt = full_opt("A", 10, ["fast"], [])
     del opt["pv"]
