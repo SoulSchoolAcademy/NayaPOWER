@@ -62,6 +62,7 @@ import json
 import os
 import re
 import sys
+import urllib.error
 import urllib.request
 from pathlib import Path
 
@@ -198,9 +199,42 @@ def render_report(pr_number, head_sha, author_seat, attestations, evidence, resu
 
 _API = "https://api.github.com"
 
+# Max chars of an HTTP error response body kept in the log line.
+_HTTP_BODY_LOG_MAX = 500
+
+
+def _http_detail(exc: Exception, token: str) -> str:
+    """Build the HTTP-DETAIL line for a failed GET. Never returns the token.
+
+    Reads the error response body (truncated), always names the status code
+    even when the body is empty or unreadable, and scrubs the token from the
+    emitted text as defense in depth.
+    """
+    code = getattr(exc, "code", None)
+    try:
+        raw = exc.read()  # type: ignore[attr-defined]
+    except Exception as read_exc:  # noqa: BLE001 -- body may be unreadable
+        return f"HTTP {code}: response body unreadable ({read_exc})"
+    if isinstance(raw, bytes):
+        body = raw.decode("utf-8", errors="replace")
+    else:
+        body = str(raw)
+    body = body.strip()
+    if len(body) > _HTTP_BODY_LOG_MAX:
+        body = body[:_HTTP_BODY_LOG_MAX] + f"...[truncated, {len(body)} chars total]"
+    detail = f"HTTP {code}: {body}" if body else f"HTTP {code}: <empty body>"
+    # Defense in depth: the bearer token must never appear in a log line,
+    # even if some upstream body ever echoed request material.
+    return detail.replace(token, "<redacted>") if token else detail
+
 
 def api_get(path: str, token: str):
-    """GET a GitHub API path. Raises GateBlind on any failure (fail closed)."""
+    """GET a GitHub API path. Raises GateBlind on any failure (fail closed).
+
+    On HTTPError the GateBlind message carries HTTP-DETAIL: the status code
+    plus a truncated response body, so the next 403 mystery is a 5-minute
+    read instead of a wall. The token is NEVER logged.
+    """
     req = urllib.request.Request(
         _API + path,
         headers={
@@ -213,6 +247,8 @@ def api_get(path: str, token: str):
     try:
         with urllib.request.urlopen(req, timeout=30) as resp:
             return json.load(resp)
+    except urllib.error.HTTPError as exc:
+        raise GateBlind(f"GET {path} failed: {exc} ({_http_detail(exc, token)})") from exc
     except Exception as exc:  # noqa: BLE001 -- any IO failure blinds the gate
         raise GateBlind(f"GET {path} failed: {exc}") from exc
 
