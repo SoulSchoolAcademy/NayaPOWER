@@ -1,0 +1,100 @@
+{
+  "contract": "room-feed/v1",
+  "room": "lists",
+  "emitted_at": "2026-10-15T16:01:08.547687-07:00",
+  "source_ref": "engine-job:hub-feeds-emitter-t0479",
+  "items": [
+    {
+      "id": "list-runtime-continuity",
+      "title": "Intelligent Blocks — RUNTIME_CONTINUITY",
+      "topics": [
+        "RUNTIME_CONTINUITY"
+      ],
+      "kind": "list",
+      "list_id": "list-runtime-continuity",
+      "members": [
+        "IB-NAYA-FLOW-LESSON-207f611c16714130876db60ad70cffb3",
+        "IB-NAYA-FLOW-LESSON-f10e28ef6a5045f39f2ae09a0077844d",
+        "IB-NAYA-FLOW-LESSON-b36c18a88f8f4e91bf2a32258ec52fc3",
+        "IB-NAYA-FLOW-LESSON-f8f44e141a6148bda970191355fe97c8",
+        "IB-NAYA-FLOW-LESSON-05c287e9bfed40a194146a27d46448aa",
+        "IB-NAYA-FLOW-LESSON-25a1481136564a50812c59820195ee0f",
+        "IB-NAYA-FLOW-LESSON-4af4417aad94456f95dfb49752250668",
+        "IB-NAYA-FLOW-LESSON-c691bcfe3dfb46aab5fa24071be174d9"
+      ],
+      "membership_rule": "all nayanet_intelligent_blocks with content->>'topic' = 'RUNTIME_CONTINUITY', ordered by updated_at desc"
+    },
+    {
+      "id": "list-constitutional-law",
+      "title": "Intelligent Blocks — CONSTITUTIONAL_LAW",
+      "topics": [
+        "CONSTITUTIONAL_LAW"
+      ],
+      "kind": "list",
+      "list_id": "list-constitutional-law",
+      "members": [
+        "IB-SMART-NOTE-20261010-sn-0749-engine-before-production",
+        "IB-SMART-NOTE-20261010-sn-0748-reversibility-rule",
+        "IB-SMART-NOTE-20261010-sn-0747-plain-words-decision-format",
+        "IB-SMART-NOTE-20261010-sn-0746-calculator-as-default",
+        "IB-SMART-NOTE-20261010-sn-0745-law-of-one"
+      ],
+      "membership_rule": "all nayanet_intelligent_blocks with content->>'topic' = 'CONSTITUTIONAL_LAW', ordered by updated_at desc"
+    },
+    {
+      "id": "list-epistemic-governance",
+      "title": "Intelligent Blocks — EPISTEMIC_GOVERNANCE",
+      "topics": [
+        "EPISTEMIC_GOVERNANCE"
+      ],
+      "kind": "list",
+      "list_id": "list-epistemic-governance",
+      "members": [
+        "IB-SMART-NOTE-20261010-sn-0781-causal-uncertainty",
+        "IB-SMART-NOTE-20261010-sn-0780-causal-trace",
+        "IB-SMART-NOTE-20261010-sn-0779-responsibility-boundary",
+        "IB-SMART-NOTE-20261010-sn-0778-fairness-assumption-audit-protocol"
+      ],
+      "membership_rule": "all nayanet_intelligent_blocks with content->>'topic' = 'EPISTEMIC_GOVERNANCE', ordered by updated_at desc"
+    },
+    {
+      "id": "list-api-governance",
+      "title": "Intelligent Blocks — API-GOVERNANCE",
+      "topics": [
+        "API-GOVERNANCE"
+      ],
+      "kind": "list",
+      "list_id": "list-api-governance",
+      "members": [
+        "IB-SMART-NOTE-20261014-sn0797-patch-response-is-the-verify"
+      ],
+      "membership_rule": "all nayanet_intelligent_blocks with content->>'topic' = 'API-GOVERNANCE', ordered by updated_at desc"
+    },
+    {
+      "id": "list-dispatch",
+      "title": "Intelligent Blocks — DISPATCH",
+      "topics": [
+        "DISPATCH"
+      ],
+      "kind": "list",
+      "list_id": "list-dispatch",
+      "members": [
+        "IB-SMART-NOTE-20261009-successor-t11-reserve-rule-canonical"
+      ],
+      "membership_rule": "all nayanet_intelligent_blocks with content->>'topic' = 'DISPATCH', ordered by updated_at desc"
+    },
+    {
+      "id": "list-governance",
+      "title": "Intelligent Blocks — GOVERNANCE",
+      "topics": [
+        "GOVERNANCE"
+      ],
+      "kind": "list",
+      "list_id": "list-governance",
+      "members": [
+        "IB-SMART-NOTE-20261008-sn0530-do-do-and-report"
+      ],
+      "membership_rule": "all nayanet_intelligent_blocks with content->>'topic' = 'GOVERNANCE', ordered by updated_at desc"
+    }
+  ]
+}
