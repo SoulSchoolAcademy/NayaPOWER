@@ -757,6 +757,20 @@ def plan_action(authority: LawAuthority,
         else:
             law11v2_admissible.append(c)
 
+    # The v2 exclusions are receipt evidence: the audit trail must name
+    # every layer that excluded a candidate and why (same as Law 11 v1
+    # and Conflict Resolution below). This is the ONE canonical rendering:
+    # refusal receipts carry the identical per-candidate strings as the
+    # accepted receipt, so exclusion tuples are parseable from any phase.
+    law11v2_evidence = tuple(
+        f"candidate {cid} EXCLUDED by Law 11 v2 (uncertainty handler) [{v}]: "
+        f"{s if s else 'no reason recorded'}"
+        for cid, v, s in law11v2_excluded
+    )
+    law11v2_evidence_text = (
+        "; ".join(law11v2_evidence) + ". " if law11v2_evidence else ""
+    )
+
     # --- Conflict Resolution phase (Law of One). Runs AFTER Law 11 hard
     # prohibitions and BEFORE value scoring: a good calculation cannot
     # erase a group's harm. For candidates carrying a governed impact matrix,
@@ -906,7 +920,7 @@ def plan_action(authority: LawAuthority,
             else:
                 _kept.append(c)
         cr_admissible = _kept
-    cr_evidence = law11_evidence + tuple(
+    cr_evidence = law11_evidence + law11v2_evidence + tuple(
         f"candidate {cid} EXCLUDED by Conflict Resolution [{v}]: {s}"
         for cid, v, s in cr_excluded
     ) + tuple(f"Conflict Resolution note: {n}" for n in cr_notes)
@@ -917,12 +931,12 @@ def plan_action(authority: LawAuthority,
         if any(v == CR_PROHIBITED for _, v, _ in cr_excluded):
             return refused(
                 PLAN_SAFETY_PROHIBITED,
-                evidence=f"all {len(law11v2_admissible)} candidate(s) with impact "
+                evidence=f"{law11v2_evidence_text}all {len(law11v2_admissible)} candidate(s) with impact "
                          f"matrices failed Conflict Resolution; nothing admissible. {detail}",
             )
         return refused(
             PLAN_SAFETY_NEEDS_EVIDENCE,
-            evidence=f"all {len(law11v2_admissible)} candidate(s) with impact "
+            evidence=f"{law11v2_evidence_text}all {len(law11v2_admissible)} candidate(s) with impact "
                      f"matrices need evidence per Conflict Resolution. {detail}",
         )
 
@@ -953,13 +967,13 @@ def plan_action(authority: LawAuthority,
         if any(verdict == PROHIBITED for _, verdict, _ in excluded):
             return refused(
                 PLAN_SAFETY_PROHIBITED,
-                evidence=f"{prior}{cr_prior}all {len(cr_admissible)} conflict-resolved candidate(s) "
+                evidence=f"{prior}{law11v2_evidence_text}{cr_prior}all {len(cr_admissible)} conflict-resolved candidate(s) "
                          f"PROHIBITED by the do-no-harm gate; nothing admissible to "
                          f"execute. {detail}",
             )
         return refused(
             PLAN_SAFETY_NEEDS_EVIDENCE,
-            evidence=f"{prior}{cr_prior}all {len(cr_admissible)} conflict-resolved candidate(s) "
+            evidence=f"{prior}{law11v2_evidence_text}{cr_prior}all {len(cr_admissible)} conflict-resolved candidate(s) "
                      f"NEEDS_EVIDENCE by the do-no-harm gate; critical safety evidence "
                      f"unresolved, nothing admissible to execute. {detail}",
         )
