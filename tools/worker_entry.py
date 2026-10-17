@@ -18,6 +18,7 @@ This is THE PROTOCOL, step 1 (WAKE), enforced in code — not prose.
 
 import json
 import os
+import re
 import subprocess
 import sys
 import time
@@ -32,33 +33,46 @@ REPO_URL = "https://github.com/SoulSchoolAcademy/NayaPOWER.git"
 
 STAND_DOWN_TTL = 3600  # 1 hour
 
+# Line-anchored TIP NOTE heading: only a real markdown heading line counts.
+# The 2026-10-15 ~19:03Z defect: a pass note quoted "## TIP NOTE" in prose
+# (mid-line) and split("## TIP NOTE") treated the quote as a section
+# boundary, freezing the gate tip at a stale prose SHA. The 09:29Z fix
+# preferred the "(machine contract)" marker as a substring anywhere; the
+# 09:31Z hardening anchors the marker to the heading line itself — a prose
+# "(machine contract)" inside a section body cannot hijack the parse.
+TIP_NOTE_HEADING_RE = re.compile(r"^##[ \t]+TIP NOTE\b([^\n]*)$", re.MULTILINE)
+TIP_NOTE_CONTRACT_MARKER = "machine contract"
+NEXT_HEADING_RE = re.compile(r"^#{1,6}[ \t]", re.MULTILINE)
 
-def read_tip_from_plan():
-    """Extract last-verified tip from LIVE-PLAN.md TIP NOTE section."""
+
+def read_tip_from_plan(path=None):
+    """Extract last-verified tip from LIVE-PLAN.md TIP NOTE section.
+
+    Only a line-anchored `## TIP NOTE` heading delimits sections — prose that
+    merely mentions the heading text mid-line is never a boundary. The
+    contract is the heading whose OWN LINE carries the "(machine contract)"
+    marker; without a marker, the last heading wins (the contract is appended
+    last; prose quotes come earlier). `path` overrides the live plan file so
+    the parser is unit-testable without touching production state.
+    """
     try:
-        with open(LIVE_PLAN) as f:
+        with open(path or LIVE_PLAN) as f:
             content = f.read()
-        # Look for tip SHA in TIP NOTE section (40-char hex)
-        import re
-        # Find the TIP NOTE section, then the first 40-hex SHA after "tip:"
-        # The machine-contract occurrence is the authority. Pass-note prose may
-        # quote the "## TIP NOTE" heading textually — a prose quote must never
-        # be read as the contract (2026-10-16: a prose quote in the 19:03Z pass
-        # note froze the gate tip at 9f80e8e while the contract carried
-        # e19a75d6, misfiring WORK_AVAILABLE on every run). Prefer the section
-        # carrying the "(machine contract)" marker; fall back to the last
-        # occurrence (the contract is appended last; prose quotes come earlier).
-        sections = content.split("## TIP NOTE")
-        if len(sections) < 2:
+        headings = list(TIP_NOTE_HEADING_RE.finditer(content))
+        if not headings:
             return None
-        section = None
-        for cand in sections[1:]:
-            sec = cand.split("##")[0]  # until next section
-            if "machine contract" in sec:
-                section = sec
+        chosen = None
+        for m in headings:
+            if TIP_NOTE_CONTRACT_MARKER in m.group(1):
+                chosen = m
                 break
-        if section is None:
-            section = sections[-1].split("##")[0]
+        if chosen is None:
+            chosen = headings[-1]
+        # Section runs to the next line-anchored heading (any level) or EOF.
+        rest = content[chosen.end():]
+        nxt = NEXT_HEADING_RE.search(rest)
+        section = rest[:nxt.start()] if nxt else rest
+        # Look for tip SHA in TIP NOTE section (40-char hex)
         match = re.search(r'\b([0-9a-f]{40})\b', section)
         if match:
             return match.group(1)
