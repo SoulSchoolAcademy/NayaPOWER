@@ -128,14 +128,16 @@ def _adjudicate_item(
         return True, True, f"external machine evidence: ci_run {item.ref}"
 
     if item.kind == "seat_review":
-        if seat and seat != author:
+        if not seat:
+            # Unattributable regardless of author: an empty seat is never
+            # anyone's own seat, so this must not read as self-attestation.
+            return False, False, f"seat_review {item.ref} names no seat -- unattributable"
+        if seat != author:
             return True, True, f"independent seat review by {item.seat} ({item.ref})"
-        if seat == author:
-            return False, False, (
-                f"seat_review by {item.seat} is the author's own seat -- "
-                "self-attestation, not independent evidence"
-            )
-        return False, False, f"seat_review {item.ref} names no seat -- unattributable"
+        return False, False, (
+            f"seat_review by {item.seat} is the author's own seat -- "
+            "self-attestation, not independent evidence"
+        )
 
     if item.kind == "commit":
         # The change existing is evidence of existence, never of verification.

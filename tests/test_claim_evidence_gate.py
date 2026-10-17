@@ -7,6 +7,7 @@ admissible independent evidence fails.
 """
 
 import sys
+import re
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "tools"))
@@ -43,6 +44,22 @@ def test_finds_verified_by():
 def test_ignores_code_identifiers():
     atts = find_attestations("outcome_verified=False  # UNKNOWN stays unknown")
     assert atts == [], f"code identifier must not count as an attestation: {atts}"
+
+
+def test_ignores_code_identifiers_exercising():
+    # Guard-exercising: the attestation pattern DOES match here
+    # ("independently verified"), and only the identifier guard shields it.
+    # Stub _is_code_identifier -> False and this goes RED (1 hit). A test
+    # that cannot go red on guard removal proves nothing about the guard.
+    from check_claim_evidence import _is_code_identifier
+
+    text = "outcome_independently verified = False"
+    atts = find_attestations(text)
+    assert atts == [], f"code identifier must not count as an attestation: {atts}"
+    # The pattern matches but for the guard: prove the shield is the guard.
+    m = re.search(r"independently\s+verified", text, re.IGNORECASE)
+    assert m is not None
+    assert _is_code_identifier(text, m.start(), m.end()) is True
 
 
 def test_plain_text_has_no_attestations():
@@ -187,6 +204,21 @@ def test_unattributable_review_fails():
         evidence=[Evidence(kind="seat_review", ref="comment-999")],
     )
     assert r["pass"] is False
+
+
+def test_empty_seat_empty_author_is_unattributable():
+    # Empty seat AND empty author: an empty seat is nobody's own seat, so
+    # the reason must be "names no seat -- unattributable", never
+    # "self-attestation". Verdict direction stays fail-closed either way.
+    r = run(
+        "Independently verified.",
+        author="",
+        evidence=[Evidence(kind="seat_review", seat="", ref="comment-000")],
+    )
+    assert r["pass"] is False
+    reasons = [reason for v in r["verdicts"] for reason in v.reasons]
+    assert any("names no seat" in reason for reason in reasons), reasons
+    assert not any("self-attestation" in reason for reason in reasons), reasons
 
 
 def test_unknown_evidence_kind_fails():
