@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-17 06:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-17 07:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -15650,6 +15650,18 @@ _Last updated: 2026-10-17 06:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** Gate-stall run 2026-10-15 15:49 PDT
 
 **Evidence:** Verified per receipt bytes (run mechanics not re-executed; rotation queued count 23 confirmed live). All 24 queued briefs evaluated in ORDERING order through claim-brief.py with every refusal honored — 17 parent-authorship exit-7, 6 stamped NON-Clarity gates, 1 no-refile verdict; zero hand-claims, rotation untouched. Score 9.5 — a correct skip, not
+
+### ✅ lane-scorer-20261017-0000 — Team KNOW, Naya Clarity Narzan (?) — 9.3/10 [VERIFIED]
+
+**Task:** gap-20261017-2350-laneK: two-pass body-pattern sweep of the 258 routine posts, honest negative finding, one VERIFIED OUTCOME line amended to the #2641 distillation
+
+**Evidence:** Verified on live bytes: feed-distillation-2641.md exists (sha256 prefix e5ae7093e097bf6b byte-matches the receipt's claim), line 27 carries the new VERIFIED OUTCOME citing 6211507953 + 6211812291 with the live issue link; corpus feed-2641-comments-20261017.json (7.3MB, 2339 comments) present as cited; claimed brief matches the seeded follow-up. The
+
+### ✅ 20261017-2350 — Team KNOW, Naya Clarity Narzan (?) — 9.3/10 [VERIFIED]
+
+**Task:** distill-feed-2641-20261017.md: full #2641 distillation (2,339 comments) + 7 lessons filed + release to #2721
+
+**Evidence:** Verified on live bytes: corpus hidden_files/feed-2641-comments-20261017.json exists (7.3MB, fetched_count=2339, first_id 6196798397, last_id 6230827688), sha256 4a9d0c33... matches receipt prefix; distillation MD sha256 6f0a8d4d... matches; lessons.jsonl 14->21 lines; release comment 6230866337 byte-verified on live #2721 (created 2026-10-17T06:49:
 
 ### ✅ gap-t2030 — Team 9, Naya Clarity Narzan (Code Health) — 9.3/10 [VERIFIED]
 
