@@ -49,10 +49,25 @@ def main():
 
     idx = json.load(open(a.index))
     manifest = json.load(open(a.manifest))
-    for model in manifest['wall_pieces']:
+    wall_models = manifest.get('resolution', {}).get('wall_pieces',
+                                                     manifest.get('wall_pieces', []))
+    for model in wall_models:
         if model not in idx['pieces']:
             fail('wall model not in index: ' + model)
-    print('ok: all', len(manifest['wall_pieces']), 'wall models resolve')
+    print('ok: all', len(wall_models), 'wall models resolve')
+
+    # bounded accessibility checks on page chrome (specimen contents are
+    # library data, judged at the library level, not per page)
+    if not re.search(r'<html[^>]*\slang=', s):
+        fail('a11y: <html> missing lang')
+    if 'name="viewport"' not in s:
+        fail('a11y: viewport meta missing')
+    chrome_html = re.sub(r'<div class="spec-stage">.*?</div>\s*</div>', '', s, flags=re.S)
+    bad_btns = [b for b in re.findall(r'<button([^>]*)>(.*?)</button>', chrome_html, re.S)
+                if not (b[1].strip() or 'aria-label' in b[0])]
+    if bad_btns:
+        fail('a11y: %d chrome buttons without accessible names' % len(bad_btns))
+    print('ok: a11y chrome checks (lang, viewport, button names)')
 
     # headless render check — recorded separately, never silently passed.
     # Structural PASS does not imply visual PASS. Trial 1 acceptance

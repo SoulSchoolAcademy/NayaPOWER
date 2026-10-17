@@ -523,6 +523,28 @@
           "code": null,
           "depends_on": [
             "systems.smart_mail"
+          ],
+          "version": "1.0.0",
+          "requires": [
+            "authenticated_identity",
+            "recipient_authorization",
+            "message_service",
+            "delivery_receipts"
+          ],
+          "permissions": [
+            "mail.compose",
+            "mail.send"
+          ],
+          "events": [
+            "mail.send.requested",
+            "mail.send.accepted",
+            "mail.send.failed"
+          ],
+          "acceptance": [
+            "unauthorized_send_denied",
+            "authorized_send_tested",
+            "failure_state_visible",
+            "receipt_persisted"
           ]
         },
         {
@@ -540,6 +562,26 @@
           "code": null,
           "depends_on": [
             "systems.spaces"
+          ],
+          "version": "1.0.0",
+          "requires": [
+            "authenticated_identity",
+            "space_service",
+            "membership_rules"
+          ],
+          "permissions": [
+            "space.create",
+            "space.join"
+          ],
+          "events": [
+            "space.created",
+            "space.joined",
+            "space.left"
+          ],
+          "acceptance": [
+            "private_space_stays_private",
+            "join_flow_tested",
+            "member_list_correct"
           ]
         },
         {
@@ -557,6 +599,24 @@
           "code": null,
           "depends_on": [
             "systems.feed"
+          ],
+          "version": "1.0.0",
+          "requires": [
+            "authenticated_identity",
+            "feed_service",
+            "audience_rules"
+          ],
+          "permissions": [
+            "feed.publish"
+          ],
+          "events": [
+            "feed.post.published",
+            "feed.post.failed"
+          ],
+          "acceptance": [
+            "post_appears_for_audience",
+            "private_post_not_leaked",
+            "failure_state_visible"
           ]
         },
         {
@@ -574,6 +634,26 @@
           "code": null,
           "depends_on": [
             "systems.identity"
+          ],
+          "version": "1.0.0",
+          "requires": [
+            "authenticated_identity",
+            "identity_directory",
+            "consent_records"
+          ],
+          "permissions": [
+            "connect.request",
+            "connect.accept"
+          ],
+          "events": [
+            "connect.requested",
+            "connect.accepted",
+            "connect.declined"
+          ],
+          "acceptance": [
+            "no_contact_without_consent",
+            "request_flow_tested",
+            "decline_respected"
           ]
         },
         {
@@ -591,6 +671,24 @@
           "code": null,
           "depends_on": [
             "systems.reports"
+          ],
+          "version": "1.0.0",
+          "requires": [
+            "authenticated_identity",
+            "report_pipeline",
+            "data_authorization"
+          ],
+          "permissions": [
+            "reports.read"
+          ],
+          "events": [
+            "reports.generated",
+            "reports.viewed"
+          ],
+          "acceptance": [
+            "only_own_data_shown",
+            "report_renders",
+            "empty_state_handled"
           ]
         },
         {
@@ -608,6 +706,21 @@
           "code": null,
           "depends_on": [
             "systems.contacts"
+          ],
+          "version": "1.0.0",
+          "requires": [
+            "authenticated_identity",
+            "contact_store"
+          ],
+          "permissions": [
+            "contacts.read"
+          ],
+          "events": [
+            "contacts.viewed"
+          ],
+          "acceptance": [
+            "only_own_contacts_shown",
+            "list_renders"
           ]
         },
         {
@@ -623,7 +736,21 @@
           "activated_by": "contract.features.cover",
           "status": "specified",
           "code": null,
-          "depends_on": []
+          "depends_on": [],
+          "version": "1.0.0",
+          "requires": [
+            "media_store"
+          ],
+          "permissions": [
+            "media.upload"
+          ],
+          "events": [
+            "cover.updated"
+          ],
+          "acceptance": [
+            "upload_applies",
+            "fallback_when_missing"
+          ]
         },
         {
           "id": "feature.smart_tabs",
@@ -640,6 +767,21 @@
           "code": null,
           "depends_on": [
             "systems.tabs"
+          ],
+          "version": "1.0.0",
+          "requires": [
+            "page_registry",
+            "navigation_service"
+          ],
+          "permissions": [
+            "tabs.navigate"
+          ],
+          "events": [
+            "tabs.switched"
+          ],
+          "acceptance": [
+            "all_owned_pages_reachable",
+            "tab_switch_tested"
           ]
         },
         {
@@ -655,7 +797,21 @@
           "activated_by": "contract.features.smart_bars",
           "status": "specified",
           "code": null,
-          "depends_on": []
+          "depends_on": [],
+          "version": "1.0.0",
+          "requires": [
+            "navigation_service"
+          ],
+          "permissions": [
+            "bars.render"
+          ],
+          "events": [
+            "bars.rendered"
+          ],
+          "acceptance": [
+            "bars_present_on_sections",
+            "mobile_collapse_tested"
+          ]
         },
         {
           "id": "feature.community",
@@ -672,6 +828,25 @@
           "code": null,
           "depends_on": [
             "systems.community"
+          ],
+          "version": "1.0.0",
+          "requires": [
+            "authenticated_identity",
+            "comment_service",
+            "moderation_rules"
+          ],
+          "permissions": [
+            "community.comment",
+            "community.post"
+          ],
+          "events": [
+            "community.comment.posted",
+            "community.comment.removed"
+          ],
+          "acceptance": [
+            "comment_appears",
+            "abuse_path_exists",
+            "private_page_no_public_comments"
           ]
         },
         {
@@ -689,6 +864,25 @@
           "code": null,
           "depends_on": [
             "systems.github_kb"
+          ],
+          "version": "1.0.0",
+          "requires": [
+            "authenticated_identity",
+            "github_kb_sync",
+            "answer_service"
+          ],
+          "permissions": [
+            "answers.ask"
+          ],
+          "events": [
+            "answers.asked",
+            "answers.answered",
+            "answers.failed"
+          ],
+          "acceptance": [
+            "answer_uses_owner_kb",
+            "unknown_question_handled",
+            "failure_state_visible"
           ]
         },
         {
@@ -706,6 +900,25 @@
           "code": null,
           "depends_on": [
             "systems.scheduler"
+          ],
+          "version": "1.0.0",
+          "requires": [
+            "authenticated_identity",
+            "scheduler_service",
+            "feed_service"
+          ],
+          "permissions": [
+            "scheduler.create"
+          ],
+          "events": [
+            "scheduler.job.created",
+            "scheduler.job.fired",
+            "scheduler.job.failed"
+          ],
+          "acceptance": [
+            "scheduled_post_publishes",
+            "cancel_works",
+            "missed_job_reported"
           ]
         },
         {
@@ -723,6 +936,25 @@
           "code": null,
           "depends_on": [
             "systems.smart_mail"
+          ],
+          "version": "1.0.0",
+          "requires": [
+            "authenticated_identity",
+            "recipient_authorization",
+            "message_service",
+            "delivery_receipts"
+          ],
+          "permissions": [
+            "broadcast.send"
+          ],
+          "events": [
+            "broadcast.sent",
+            "broadcast.failed"
+          ],
+          "acceptance": [
+            "unauthorized_broadcast_denied",
+            "receipts_recorded",
+            "failure_state_visible"
           ]
         }
       ]

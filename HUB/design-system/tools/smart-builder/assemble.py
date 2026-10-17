@@ -21,10 +21,6 @@ def esc(s):
 def sha16(b: bytes) -> str:
     return hashlib.sha256(b).hexdigest()[:16]
 
-# spectrum in law order, by section position (hero takes purple)
-SPECTRUM = ["#a06bff", "#6675ff", "#55b9ee", "#40d3bb", "#2fe89e", "#b8ee57",
-            "#f1d75a", "#ffbf3d", "#ff9a5a", "#ff6b3d", "#ff5e6c", "#e84fff"]
-
 # section chrome: real library CSS blocks, re-scoped .nb-scope -> .nb-chrome
 # so section chrome never collides with wall specimen CSS.
 CHROME_CSS_IDS = [
@@ -58,6 +54,41 @@ def lawcard(title, desc, color):
         '<p>%s</p></div></div>' % (color, esc(title), esc(desc))
     )
 
+# ---- trust boundary + structured validation (fail closed) ----
+# The assembler resolves ONLY models present in the governed builder index.
+# Unknown models, missing sections, or incompatible entries are structured
+# failures — never silent substitutions, never improvised pieces.
+REQUIRED_TOP_KEYS = ['title', 'kicker', 'lede', 'intake', 'fields', 'wall',
+                     'gallery', 'customize', 'templates', 'features', 'loop',
+                     'promise', 'machine', 'design']
+
+def validate_contract(contract, pieces):
+    errors = []
+    for k in REQUIRED_TOP_KEYS:
+        if k not in contract:
+            errors.append({'code': 'missing_key', 'key': k})
+    for cat, models in contract.get('wall', {}).items():
+        for m in models:
+            if m not in pieces:
+                errors.append({'code': 'unknown_model', 'model': m, 'category': cat})
+            elif not pieces[m].get('html'):
+                errors.append({'code': 'empty_piece', 'model': m})
+    design = contract.get('design', {})
+    n = len(design.get('spectrum', []))
+    for sec, idx in design.get('sections', {}).items():
+        if not isinstance(idx, int) or not (0 <= idx < n):
+            errors.append({'code': 'bad_section_color', 'section': sec, 'index': idx})
+    return errors
+
+def safe_json_for_pre(obj):
+    # A </pre> or <script> sequence inside contract data must never break out
+    # of the embedding element. \u-escapes are valid JSON and parse back clean.
+    return (json.dumps(obj, indent=2, ensure_ascii=False)
+            .replace('<', '\\u003c').replace('>', '\\u003e').replace('&', '\\u0026'))
+
+def sha256(b: bytes) -> str:
+    return hashlib.sha256(b).hexdigest()
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--contract', required=True)
@@ -71,6 +102,24 @@ def main():
     index = json.load(open(a.index))
     tpl = open(a.template).read()
     pieces, cssbank = index['pieces'], index['css_bank']
+
+    # raw bytes for deterministic identity
+    contract_bytes = open(a.contract, 'rb').read()
+    index_bytes = open(a.index, 'rb').read()
+    template_bytes = open(a.template, 'rb').read()
+
+    # ---- validate before assembling: fail closed, structured errors ----
+    problems = validate_contract(contract, pieces)
+    if problems:
+        print(json.dumps({'status': 'refused', 'errors': problems}, indent=2))
+        sys.exit(2)
+    print('ok: contract validates —', len(problems), 'problems')
+
+    # ---- design decisions come from the contract, not the assembler ----
+    SPECTRUM = contract['design']['spectrum']
+    SEC = contract['design']['sections']
+    def spec(sec):
+        return SPECTRUM[SEC[sec] % len(SPECTRUM)]
 
     # ---- wall: real pieces, CSS collected for inlining ----
     wall_css_ids, wall_html = [], []
@@ -90,7 +139,7 @@ def main():
     # intake modes -> the real .card piece
     modes = []
     for i, m in enumerate(contract['intake']['modes']):
-        c = SPECTRUM[(i + 1) % len(SPECTRUM)]
+        c = SPECTRUM[(SEC['intake'] + i) % len(SPECTRUM)]
         modes.append(
             '<div class="nb-chrome"><button class="card mode" aria-pressed="%s" data-mode="%s" '
             'style="--accent:%s;--accent-soft:%s73;text-align:left;cursor:pointer;width:100%%;'
@@ -113,28 +162,38 @@ def main():
         '<div class="tk">%s</div>'
         '<h3 style="font-size:19px;margin:0 0 6px;color:var(--white)">%s</h3>'
         '<p style="font-size:14px;color:var(--slate);margin:0">%s</p></div></div>'
-        % (SPECTRUM[(6 + i) % len(SPECTRUM)], esc(n), esc(t), esc(d))
+        % (SPECTRUM[(SEC['templates'] + i) % len(SPECTRUM)], esc(n), esc(t), esc(d))
         for i, (n, t, d) in enumerate(contract['templates']))
     templates = '<div class="grid g4">%s</div>' % templates
 
     # features / gallery / customize -> the real .lawcard piece
     features = ''.join(
-        lawcard(t, d, SPECTRUM[(7 + i) % len(SPECTRUM)])
+        lawcard(t, d, SPECTRUM[(SEC['features'] + i) % len(SPECTRUM)])
         for i, (t, d) in enumerate(contract['features']))
     gallery_html = ''.join(
-        lawcard(t, d, SPECTRUM[(4 + i) % len(SPECTRUM)])
+        lawcard(t, d, SPECTRUM[(SEC['gallery'] + i) % len(SPECTRUM)])
         for i, (t, d) in enumerate(contract['gallery']['points']))
     customize_html = ''.join(
-        lawcard(t, d, SPECTRUM[(5 + i) % len(SPECTRUM)])
+        lawcard(t, d, SPECTRUM[(SEC['customize'] + i) % len(SPECTRUM)])
         for i, (t, d) in enumerate(contract['customize']['points']))
 
     # loop -> the real .lawcard piece
     loop = ''.join(
-        lawcard(t, d, SPECTRUM[(9 + i) % len(SPECTRUM)])
+        lawcard(t, d, SPECTRUM[(SEC['loop'] + i) % len(SPECTRUM)])
         for i, (t, d) in enumerate(contract['loop']))
 
     page = tpl
-    machine_raw = json.dumps(contract['machine'], indent=2, ensure_ascii=False)
+    # feature claims bound to registry statuses: the contract never advertises
+    # a capability as operational unless the registry says it is built.
+    reg_path = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                            'functions', 'registry.json')
+    if os.path.exists(reg_path):
+        reg = json.load(open(reg_path))
+        contract['machine']['features_status'] = {
+            f['id'].replace('feature.', ''): f['status']
+            for f in reg['groups']['feature']['functions']
+        }
+    machine_raw = safe_json_for_pre(contract['machine'])
     for key, val in {
         '%%TITLE%%': esc(contract['title']),
         '%%KICKER%%': esc(contract['kicker']),
@@ -160,20 +219,43 @@ def main():
         page = page.replace(key, val)
 
     open(a.out, 'w').write(page)
+    page_bytes = page.encode()
+
+    # Deterministic build identity: same contract + index + template +
+    # assembler -> same bytes, every time. The receipt (time, verification)
+    # legitimately changes between runs; the identity never does.
+    build_id = sha256(contract_bytes + index_bytes + template_bytes
+                      + ASSEMBLER_VERSION.encode())
 
     manifest = {
-        'assembler': ASSEMBLER_VERSION,
-        'built_utc': datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'),
-        'contract': {'path': a.contract, 'sha16': sha16(open(a.contract, 'rb').read())},
-        'index': {'path': a.index, 'entries': len(pieces),
-                  'meta': index.get('meta', {})},
-        'template_sha16': sha16(open(a.template, 'rb').read()),
-        'page': {'path': a.out, 'bytes': len(page.encode()), 'sha16': sha16(page.encode())},
-        'wall_pieces': [m for models in contract['wall'].values() for m in models],
+        # 1. DESIGN CONTRACT — what the customer wanted
+        'contract': {'path': a.contract, 'sha256': sha256(contract_bytes)},
+        # 2. RESOLUTION PLAN — exact component versions resolved
+        'resolution': {
+            'index': {'path': a.index, 'sha256': sha256(index_bytes),
+                      'entries': len(pieces)},
+            'wall_pieces': [m for models in contract['wall'].values() for m in models],
+        },
+        # 3. BUILD ARTIFACT — deterministic
+        'build': {
+            'id': build_id,
+            'assembler': ASSEMBLER_VERSION,
+            'template_sha256': sha256(template_bytes),
+            'page': {'path': a.out, 'bytes': len(page_bytes),
+                     'sha256': sha256(page_bytes)},
+        },
+        # 4. VERIFICATION RECORD — appended by verify-build.py
         'verification': 'pending — run verify-build.py',
+        # 5. DEPLOYMENT RECEIPT — appended at deploy time
+        'deployment': 'pending — human approves preview first',
+        # execution-time receipt metadata (not part of the identity)
+        'receipt': {
+            'built_utc': datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'),
+        },
     }
     json.dump(manifest, open(a.manifest, 'w'), indent=2)
-    print('page:', a.out, manifest['page']['bytes'], 'bytes')
+    print('page:', a.out, manifest['build']['page']['bytes'], 'bytes')
+    print('build id:', build_id[:16])
     print('manifest:', a.manifest)
 
 if __name__ == '__main__':
