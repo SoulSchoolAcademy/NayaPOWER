@@ -147,16 +147,16 @@ class FeatureSocialFeedAcceptance(unittest.TestCase):
         # suppression is silent: no structured error, exit 0 (not a refusal)
         self.assertNotIn('"status": "refused"', r.stdout)
 
-    def test_omitted_flag_stays_dark_under_opt_in(self):
+    def test_omitted_flag_defaults_on_under_active_gate(self):
+        # Coverage gate ACTIVE (all 7 standard features built) -> omitted
+        # = ON (default-on live). The module renders with its fallbacks.
         c = json.load(open(SMOKE))
-        c["features"] = {"cover": True}  # social_feed key omitted entirely
+        c["features"] = {}
         p = os.path.join(self.tmp, "contract.json")
         json.dump(c, open(p, "w"))
         r, page, _ = run_assemble(p, self.tmp)
         self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
-        self.assertNotIn('data-feature="social_feed"', page)
-
-    # ---- privacy: non-public posts never leak (private_post_not_leaked) ----
+        self.assertIn('data-feature="social_feed"', page)
     def test_private_post_not_leaked(self):
         decl = json.loads(json.dumps(FEED_DECL))
         decl["posts"].append({"text": "SECRET FAMILY RECIPE DO NOT SHARE",

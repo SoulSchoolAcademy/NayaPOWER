@@ -232,18 +232,20 @@ class FeatureSmartListAcceptance(unittest.TestCase):
 
     # ---- three-state: omitted = assembler policy (STANDARD -> default ON) ----
     def test_omitted_defaults_on(self):
-        # Coverage-gated default-on (integrator ruling): the D/E bundle's
-        # immediate default-on was stripped — single policy is the flagship
-        # gate (ACTIVE iff ALL 7 standard features are registry-built).
-        # Coverage is incomplete, so omitted -> OFF (opt-in until the flip).
+        # Coverage-gated default-on: the gate is ACTIVE (all 7 standard
+        # features built) -> omitted = ON. The default title and honest
+        # empty state render.
         c = json.load(open(SMOKE))
         c["title"] = "Omitted breaker contract"
-        c["features"] = {}  # smart_list omitted; gate inactive -> OFF
+        c["features"] = {}  # smart_list omitted; gate active -> ON
         p = os.path.join(self.workdir, "contract.json")
         json.dump(c, open(p, "w"))
         r, page, _ = run_assemble(p, self.workdir, self.tree)
         self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
-        self.assertNotIn('data-feature="smart_list"', page)
+        self.assertIn('data-feature="smart_list"', page)
+        lst = list_html(page)
+        self.assertIn("Smart list", lst)  # default title
+        self.assertIn("No notes yet.", lst)  # honest empty state
 
     # ---- privacy dial: visibility follows contract.privacy ----
     def test_privacy_dial(self):
@@ -271,7 +273,7 @@ class FeatureSmartListAcceptance(unittest.TestCase):
             self.workdir, self.tree)
         self.assertEqual(r.returncode, 2)
         codes = [e["code"] for e in json.loads(r.stdout)["errors"]]
-        self.assertIn("bad_smart_list_declaration", codes)
+        self.assertIn("bad_privacy", codes)
         self.assertNotIn('data-feature="smart_list"', page)
 
     # ---- grant: manage_endpoint declared = CONNECTED demand (sync/share).
@@ -327,19 +329,18 @@ class FeatureSmartListAcceptance(unittest.TestCase):
 
     # ---- day-one: minimal contract -> useful render, zero errors ----
     def test_day_one(self):
-        # Day-one minimal contract: smart_list omitted and the coverage
-        # gate is inactive -> the page renders cleanly WITHOUT smart_list
-        # (opt-in until all 7 standard features are built). Zero errors,
-        # zero failed fetches — the day-one bar is a working page, not a
-        # forced feature.
+        # Day-one minimal contract: the coverage gate is ACTIVE (all 7
+        # standard features built) -> smart_list omitted = ON (default-on
+        # live). The page renders cleanly WITH smart_list, zero errors,
+        # zero failed fetches.
         c = json.load(open(SMOKE))
         c["title"] = "Day one"
-        c["features"] = {}  # smart_list omitted; gate inactive -> OFF
+        c["features"] = {}  # smart_list omitted; gate active -> ON
         p = os.path.join(self.workdir, "contract.json")
         json.dump(c, open(p, "w"))
         r, page, _ = run_assemble(p, self.workdir, self.tree)
         self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
-        self.assertNotIn('data-feature="smart_list"', page)
+        self.assertIn('data-feature="smart_list"', page)
 
     # ---- gate: contract-page contracts (features as list) -> no breakers ----
     def test_refusal_when_not_declared(self):
@@ -376,7 +377,8 @@ class FeatureSmartListAcceptance(unittest.TestCase):
             sl_contract(self.tmp, "a list please"), self.workdir, self.tree)
         self.assertEqual(r.returncode, 2)
         codes = [e["code"] for e in json.loads(r.stdout)["errors"]]
-        self.assertIn("bad_smart_list_declaration", codes)
+        # malformed declaration (string instead of dict/true/false)
+        self.assertIn("bad_breaker_declaration", codes)
 
     # ---- registry binding: the contract cannot out-claim the registry ----
     def test_unbuilt_breaker_refused(self):

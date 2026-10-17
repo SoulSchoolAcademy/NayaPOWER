@@ -460,18 +460,22 @@ def standard_resolution(feats, reg_statuses, reg_present):
     enabled, problems = [], []
     for fid in STANDARD_FEATURES:
         short = fid.replace('feature.', '')
-        val = feats.get(short) if isinstance(feats, dict) else None
-        if isinstance(val, dict):
-            declared = bool(val.get('enabled'))
-        elif val is True:
-            declared = True
-        elif not val:
-            declared = None  # omitted / falsy -> defer to the policy
+        if not isinstance(feats, dict) or short not in feats:
+            declared = None  # omitted (or features not a dict) -> defer to policy
+            val = None
         else:
-            problems.append({'code': 'bad_breaker_declaration',
-                             'feature': fid,
-                             'detail': 'must be an object or true'})
-            continue
+            val = feats.get(short)
+            if isinstance(val, dict):
+                declared = bool(val.get('enabled'))
+            elif val is True:
+                declared = True
+            elif not val:
+                declared = False  # explicit false (or other falsy) -> OFF
+            else:
+                problems.append({'code': 'bad_breaker_declaration',
+                                 'feature': fid,
+                                 'detail': 'must be an object or true'})
+                continue
         if declared is None:
             # omitted -> the single policy landing point (coverage-gated)
             if reg_present and _default_breaker_enabled(short, reg_statuses):

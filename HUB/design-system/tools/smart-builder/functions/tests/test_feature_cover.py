@@ -181,12 +181,27 @@ class FeatureCoverAcceptance(unittest.TestCase):
 
     # ---- the general gate: ANY unbuilt breaker fails the contract closed ----
     def test_unbuilt_breaker_refused(self):
+        # All 17 features are now built; flip one to specified in a temp
+        # tree to prove the fail-closed gate still binds.
+        import shutil
+        tree = os.path.join(self.tmp, "sbtree")
+        if os.path.exists(tree):
+            shutil.rmtree(tree)
+        shutil.copytree(SB_DIR, tree)
+        regp = os.path.join(tree, "functions", "registry.json")
+        reg = json.load(open(regp))
+        for g in reg["groups"].values():
+            for f in g.get("functions", []):
+                if f.get("id") == "feature.connect":
+                    f["status"] = "specified"
+        json.dump(reg, open(regp, "w"))
+        asm = os.path.join(tree, "assemble.py")
         c = json.load(open(SMOKE))
         c["features"] = {"cover": dict(COVER_DECL),
-                         "connect": True}  # connect is still specified
+                         "connect": True}  # flipped to specified above
         cp = os.path.join(self.tmp, "contract.json")
         json.dump(c, open(cp, "w"))
-        r, page, _ = run_assemble(cp, self.tmp)
+        r, page, _ = run_assemble(cp, self.tmp, assemble=asm)
         self.assertEqual(r.returncode, 2)
         errs = json.loads(r.stdout)["errors"]
         conn_errs = [e for e in errs

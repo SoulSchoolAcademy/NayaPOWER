@@ -140,16 +140,16 @@ class FeatureSmartMailAcceptance(unittest.TestCase):
         # suppression is silent: no structured error, exit 0 (not a refusal)
         self.assertNotIn('"status": "refused"', r.stdout)
 
-    def test_omitted_flag_stays_dark_under_opt_in(self):
+    def test_omitted_flag_defaults_on_under_active_gate(self):
+        # Coverage gate ACTIVE (all 7 standard features built) -> omitted
+        # = ON (default-on live). The module renders with its fallbacks.
         c = json.load(open(SMOKE))
-        c["features"] = {"cover": True}  # smart_mail key omitted entirely
+        c["features"] = {}
         p = os.path.join(self.tmp, "contract.json")
         json.dump(c, open(p, "w"))
         r, page, _ = run_assemble(p, self.tmp)
         self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
-        self.assertNotIn('data-feature="smart_mail"', page)
-
-    # ---- sanitization: hostile recipients are structured refusals ----
+        self.assertIn('data-feature="smart_mail"', page)
     def test_unsafe_email_refused(self):
         bad = [
             "not-an-email",

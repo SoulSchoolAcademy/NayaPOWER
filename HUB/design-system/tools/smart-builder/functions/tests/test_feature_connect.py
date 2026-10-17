@@ -189,15 +189,15 @@ class FeatureConnectAcceptance(unittest.TestCase):
 
     # ---- three-state: omitted -> assembler policy (connect: default-on) ----
     def test_omitted_policy_on_renders_idle(self):
-        # Coverage-gated default-on (integrator ruling): the bundle's
-        # BREAKER_DEFAULTS (connect:True) was STRIPPED — single policy is
-        # the flagship gate (ACTIVE iff ALL 7 standard features built).
-        # Coverage is incomplete, so omitted -> OFF (no idle shell).
+        # Coverage gate ACTIVE (all 7 standard features built) -> omitted
+        # = ON. Connect renders the honest idle shell (no contact paths
+        # without consent).
         contract = customer_contract(self.tmp, {})
         r, page, manifest = run_assemble(contract, self.tmp,
                                          assemble=self.built_assemble())
         self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
-        self.assertNotIn('data-feature="connect"', page)
+        self.assertIn('data-feature="connect"', page)
+        self.assertIn('data-mode="idle"', page)
     def test_omitted_policy_best_effort_when_unbuilt(self):
         # Policy defaults never fail a build the contract didn't claim:
         # omitted + registry 'specified' -> silently skipped, zero errors.

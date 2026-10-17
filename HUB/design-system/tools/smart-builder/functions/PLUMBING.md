@@ -43,18 +43,18 @@ The 13 breakers: smart_mail · space · social_feed · connect · intelligence_t
 
 ---
 
-## STATUS BOARD — 7 built, 36 specified
+## STATUS BOARD — 23 built, 20 specified (2026-10-17, wire-them-all)
 
 | Group | Built | Specified |
 |---|---|---|
 | Intake (11) | 0 | 11 — the living form is designed, not yet coded |
 | Library (5) | 2 — resolve, verify | 3 — search, browse, recommend |
-| Template (4) | 1 — list (as contract data) | 3 — pick, swap_piece, note |
+| Template (4) | 2 — list (as contract data), compose (multi-template merge law) | 2 — pick, swap_piece |
 | Customize (4) | 0 | 4 — color, position, apply_note, name_function |
 | Build (6) | 3 — assemble, verify, receipt | 3 — scorecard, preview, deploy |
-| Feature (13) | 1 — cover (contract-activated, acceptance-tested) | 12 — specified; most depend on Hub systems (mail, spaces, feed, identity, reports, contacts, tabs, community, github_kb, scheduler) |
+| Feature (17) | 17 — cover, smart_notes, notifications, automation, smart_mail, space, social_feed, smart_list, smart_bars, connect, community, smart_tabs, intelligence_today, contacts, naya_answers, scheduler, broadcast (all contract-activated, acceptance-tested, registry-built) | 0 |
 
-**The hard part, named:** the 13 feature breakers depend on the Hub's smart rooms being plumbed (Smart Mail room, Spaces, feed, identity, reports, contacts, tabs, community, GitHub KB sync, scheduler). The builder can't activate what isn't wired. That's the next plumbing job — same law applies: functions before interface.
+**The coverage gate is ACTIVE:** all 7 standard features (smart_mail, smart_list, space, connect, intelligence_today, social_feed, smart_tabs) are registry-built, so Shawn's default-on rule is live — omitted standard features render. The 10 non-standard features stay opt-in.
 
 ---
 
