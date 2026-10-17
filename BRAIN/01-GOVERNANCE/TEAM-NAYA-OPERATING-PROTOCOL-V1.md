@@ -54,6 +54,25 @@ at risk fails the only test that matters.
 
 **PARALLEL BY DEFAULT.** Parallel unless: true data dependency, shared mutable resource, or protected gate.
 
+**THE BRAIN-INDEX FRESHNESS LAW.** *Every PR touching BRAIN/ must pass brain-index freshness. Drift blocks merge. No exceptions.*
+
+IN A NUTSHELL: The brain index describes what lives in BRAIN/. If a PR changes BRAIN/ without updating the index, the index lies — and the next agent reads lies as truth. So the merge itself must be impossible until the index matches again. Detecting drift after the merge is not enough; prevention is the law.
+
+THE MECHANICS (this is the law, not guidance):
+1. SCOPE: any pull request whose diff touches files under `BRAIN/**` (upper or lower case — the scope covers every case variant), PLUS the gate's own machinery: `.github/workflows/brain-index-freshness.yml`, `tools/protocol/checks/brain_index_freshness.py`, and `tools/regenerate_brain_index.py`.
+2. THE GATE: the `brain-index-freshness` CI check (workflow `.github/workflows/brain-index-freshness.yml`, running the canonical `tools/protocol/checks/brain_index_freshness.py`) MUST report PASS (exit 0 — the check's code for "clean") on the PR's head (its latest commit). A PASS computed on a stale basis is not a PASS: the check must re-anchor on the live tip (refresh refs before computing the basis) before reporting green.
+3. DRIFT = BLOCKED: if the check FAILS, the PR MUST NOT merge until it is healed. Exit 1 means drift — re-run the #2283 auto-stamp first; manual `tools/regenerate_brain_index.py` until #2283 lands — and land the fresh index on the PR. Exit 2 means structural damage (files deleted below the ledger floor — the minimum file-count per domain the index must describe) — regenerating over it is forbidden; restore the files or deliberately lower the floor in a named PR, never below the `BRAIN/**` floor. A floor-lowering remedy PR merges only on Shawn's word per clause 4. Both block merge.
+4. NO EXCEPTIONS: this binds every seat, every PR, every time — including re-stamp PRs (re-stamp = regenerating the index and landing it on the PR) and repair PRs. "Urgent" is not an exception. The only thing that lifts the block is a green check. Shawn's explicit word amends or suspends this law; nothing below that word excepts it.
+5. GATE MACHINERY = PROTECTED: a PR touching the gate's own machinery files (named in clause 1) must carry the Law/Governance seat's review approval before merge — wired through a CODEOWNERS entry on the three machinery paths and a required-reviewer rule in branch protection, set by the human director alongside the required check. The gate may not be weakened by a PR the gate never saw.
+6. ENFORCEMENT: `brain-index-freshness` MUST be a required status check on `main` (a "required status check" means GitHub refuses the merge button until the check reports green), with administrators included and branches required to be up to date before merging — set in branch protection by the human director. Until that click lands, the compensating control applies: the verify lane re-runs the check on every commit pushed to main that touched `BRAIN/**`; drift found → an immediate revert PR is opened. Any BRAIN/-touching merge without a green check in this window is a law violation, recorded on the Law/Governance feed (#1867) and as a comment on the offending PR.
+7. GATE INTEGRITY: a gate that reports green on drifted bytes is itself broken. File it as a defect on the Law/Governance feed (#1867), owned by the Brain/Memory seat, before any further BRAIN/ merges. The freeze lifts when the Brain/Memory seat posts repair evidence plus a green re-run, recorded on #1867. A broken gate is never a reason to merge.
+
+TIMELINE (one ordering): (i) the workflow file is live on main's tip, however it arrived → the check runs, advisory-only. (ii) Shawn's word ratifies the law (the protocol PR, per the directive's acceptance) → the law is in force. (iii) The human director marks the check required (clause 6's settings) → blocking machinery. The compensating control runs until (iii). The branch-protection click is enforcement of the ratified law, not a separate ratification.
+
+TRIGGER LIST (floor): the Brain/Memory seat's certified trigger list may refine, never narrow below, `BRAIN/**`; the scope floor is every change under `BRAIN/**`, any case.
+
+RATIFICATION: directive from Shawn Vibert (Human Director), 2026-10-11 — "Put the full team on it. Eleven recurrences. No twelfth." This law is CANDIDATE until his ratifying word (stage ii of the timeline). Acceptance = the Proving seat's independent controls: a PR with intentional drift FAILS the gate; a PR with a clean re-stamp PASSES it.
+
 ## 4. THE EVIDENCE STANDARD
 
 **Candidate ≠ Verified ≠ Merged ≠ Deployed ≠ Production-Proven.** Never conflate. If you can't prove it, you can't claim it. A builder cannot verify their own work.
@@ -216,6 +235,7 @@ Before consequential action: see clearly, reason, check consequences — then ac
 | `quality_gate.py` | Delivery floor | Scorecard required; every dimension ≥ 9.0; verifier ≠ builder; weakest point named |
 | `takeover.py` | No-waiting doctrine | Takeover only after 4h stall; task must pass authority gate; completion requires record + evidence + owner notification |
 | `cold_successor_test.py` | Continuity | Handoff must state what happened, truth, authority, proof, open work, blockers, next action |
+| `brain_index_freshness.py` | Brain-index drift | PRs touching BRAIN/ must pass the freshness check (exit 0); drift blocks merge, no exceptions |
 
 *Tests: `tests/test_protocol_machine_law.py` — 29 tests, positive and negative controls.*
 
@@ -253,7 +273,7 @@ Before consequential action: see clearly, reason, check consequences — then ac
 
 ---
 
-*Ratified laws herein: Prime 1, Prime 2, Prime 3, Mantra (SN-0479), Scorecard Law, Nonstop Loop (SN-0606), Nine-Floor Doctrine, Quality Before Speed (SN-0526), No-Waiting (SN-0626).*
+*Ratified laws herein: Prime 1, Prime 2, Prime 3, Mantra (SN-0479), Scorecard Law, Nonstop Loop (SN-0606), Nine-Floor Doctrine, Quality Before Speed (SN-0526), No-Waiting (SN-0626). Brain-Index Freshness Law (CANDIDATE — ratification by Shawn's word).*
 
 *This constitution is RATIFIED on Shawn's explicit word, 2026-10-08.*
 *Only Shawn's word ratifies.*
