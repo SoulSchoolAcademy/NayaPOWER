@@ -71,6 +71,12 @@ FRESHNESS_LIMITS = {
     "laws": 86400,     # 24 h — laws change rarely
 }
 
+# B-41: the mission section caches only the first N characters of the issue
+# body. Cached completeness is a first-class field (never inferred later):
+# PARTIAL previews are visibly partial and fail closed for any decision
+# that requires the complete mission.
+MISSION_PREVIEW_LIMIT = 2000
+
 # ---------------------------------------------------------------------------
 # Utilities
 # ---------------------------------------------------------------------------
@@ -350,12 +356,21 @@ def build_ledger_section(cached=None):
 
 
 def build_mission_section(cached=None):
-    """Mission state #2154 — current priorities, parked items, blockers."""
+    """Mission state #2154 — current priorities, parked items, blockers.
+
+    B-41: only the first MISSION_PREVIEW_LIMIT chars are cached. The
+    section carries machine-visible completeness metadata — a preview
+    that hit the limit is PARTIAL and can never support a completeness
+    claim (see require_complete_mission). The Board reads this field;
+    it must never re-infer truncation from preview length alone.
+    """
     ok, issue = gh_api("GET", f"/repos/{REPO}/issues/{MISSION_ISSUE}")
     if not ok:
         return mark_unknown("mission", f"API failed: {issue}")
 
     body = issue.get("body") or ""
+    preview = body[:MISSION_PREVIEW_LIMIT]
+    preview_complete = len(body) <= MISSION_PREVIEW_LIMIT
     return {
         "status": "OK",
         "issue": MISSION_ISSUE,
@@ -363,7 +378,12 @@ def build_mission_section(cached=None):
         "state": issue.get("state", ""),
         "comment_count": issue.get("comments", 0),
         "updated_at": issue.get("updated_at", ""),
-        "body_preview": body[:2000],
+        "body_preview": preview,
+        # B-41 completeness metadata: PARTIAL previews are visibly partial.
+        "body_preview_chars": len(preview),
+        "body_chars_total": len(body),
+        "body_preview_complete": preview_complete,
+        "preview_completeness": "COMPLETE" if preview_complete else "PARTIAL",
         "url": issue.get("html_url", ""),
         "as_of_utc": now_utc(),
         "as_of_ts": utc_now_ts(),
@@ -540,7 +560,14 @@ def cmd_status(args):
         freshness = section_status(ts, limit)
         age = f"{int(now - ts)}s ago" if ts else "never"
         status = section.get("status", "?")
-        print(f"  {name:8s} {freshness:7s} ({status}) — updated {age}")
+        detail = ""
+        if name == "mission":
+            # B-41: preview completeness is as visible as freshness.
+            # Legacy snapshots (no field recorded) show UNRECORDED, not "?".
+            detail = section.get("preview_completeness")
+            if not detail and section.get("status") == "OK":
+                detail = "UNRECORDED"
+        print(f"  {name:8s} {freshness:7s} ({status}) — updated {age} {detail}")
     return 0
 
 
@@ -584,6 +611,54 @@ def unknown_with_directive(section_name, state, sections):
     )
 
 
+def mission_preview_usable(sections):
+    """Is the cached mission preview known-complete? (B-41)
+
+    Returns (complete: bool, state: str). state is one of
+    COMPLETE / PARTIAL / UNRECORDED (pre-B-41 snapshot, unknown) /
+    NOT_OK (the mission section itself failed).
+    """
+    mission = sections.get("mission", {})
+    if mission.get("status") != "OK":
+        return False, mission.get("status", "UNKNOWN") or "UNKNOWN"
+    flag = mission.get("body_preview_complete")
+    if flag is True:
+        return True, "COMPLETE"
+    if flag is False:
+        return False, "PARTIAL"
+    # Pre-B-41 snapshot: no completeness recorded — unknown means unusable.
+    return False, "UNRECORDED"
+
+
+def require_complete_mission(sections):
+    """Fail-closed gate for decisions that need the COMPLETE mission. (B-41)
+
+    The mission section caches only the first MISSION_PREVIEW_LIMIT
+    characters. A decision that requires priority completeness — highest-
+    priority selection, "all priorities", any completeness claim — may
+    proceed ONLY when the preview is recorded complete. Otherwise the call
+    FAILS CLOSED: returns (False, reason). Consumers call this one gate;
+    no second inference path.
+    """
+    mission = sections.get("mission", {})
+    if mission.get("status") != "OK":
+        return False, (
+            f"mission section is {mission.get('status', 'UNKNOWN')} — "
+            f"no completeness claim possible."
+        )
+    if mission.get("body_preview_complete") is True:
+        return True, ""
+    preview_chars = mission.get("body_preview_chars", "?")
+    total_chars = mission.get("body_chars_total", "?")
+    return False, (
+        f"MISSION_PRIORITIES_PARTIAL — cached mission preview is not known "
+        f"complete ({preview_chars}/{total_chars} chars cached). Priority "
+        f"completeness cannot be established from a partial preview. "
+        f"READ_MORE: read the full mission source "
+        f"{mission.get('url', 'issue #2154')} before any priority decision."
+    )
+
+
 def cmd_query(args):
     """Answer questions about reality.
 
@@ -597,6 +672,10 @@ def cmd_query(args):
     - Totals are never stated from PARTIAL data (P0-F3) — only lower bounds.
     - Permission/authority/consent questions are never answered from cached
       briefing headings (P0-F4) — they need live authority state.
+    - Mission previews are capped at MISSION_PREVIEW_LIMIT chars (B-41):
+      partial previews are labeled MISSION_PRIORITIES_PARTIAL, and any
+      question requiring priority completeness fails closed (UNKNOWN +
+      READ_MORE) until the full, source-bound mission is available.
     - Verdicts in answers: OBSERVED (fresh data), HISTORICAL (last-known,
       explicitly not current), UNKNOWN, READ_MORE.
     - Exit codes: 0 = answered from fresh data; 2 = UNKNOWN or READ_MORE.
@@ -760,12 +839,38 @@ def cmd_query(args):
             mark_unknown_answer(unknown_with_directive("mission", state, sections))
         else:
             mission = sections.get("mission", {})
-            answer = (
-                f"OBSERVED — mission state (#{mission.get('issue')}):\n"
-                f"  Title: {mission.get('title', '')}\n"
-                f"  Updated: {mission.get('updated_at', '')}\n"
-                f"  Preview:\n{mission.get('body_preview', '')[:1000]}"
-            )
+            # B-41: ANY mention of priorities is completeness-requiring —
+            # a blacklist of phrasings is fail-open by construction (an
+            # unseen phrasing slips to a positive answer from partial data).
+            # Only bare orientation ("what is the mission state?",
+            # blockers/parked) answers from a preview.
+            completeness_intent = "priorit" in question or "complet" in question
+            if completeness_intent:
+                gate_ok, gate_reason = require_complete_mission(sections)
+                if not gate_ok:
+                    mark_unknown_answer(f"UNKNOWN — {gate_reason}")
+                    # fall through: answer printed below with rc=2
+            if answer is None:  # gate passed or no completeness intent
+                preview_ok, preview_state = mission_preview_usable(sections)
+                lines = [
+                    f"OBSERVED — mission state (#{mission.get('issue')}):",
+                    f"  Title: {mission.get('title', '')}",
+                    f"  Updated: {mission.get('updated_at', '')}",
+                ]
+                if not preview_ok:
+                    # B-41: partial mission information is visibly partial.
+                    lines.append(
+                        "  PARTIAL PREVIEW — MISSION_PRIORITIES_PARTIAL: "
+                        f"cached {mission.get('body_preview_chars', '?')} of "
+                        f"{mission.get('body_chars_total', '?')} chars "
+                        f"({preview_state}). Later mission priorities may be "
+                        "missing from this preview — do not treat it as "
+                        "the complete mission."
+                    )
+                lines.append(
+                    f"  Preview:\n{mission.get('body_preview', '')[:1000]}"
+                )
+                answer = "\n".join(lines)
 
     elif any(w in question for w in ["ledger", "proven"]):
         usable, state = section_usable("ledger", sections)
@@ -851,6 +956,7 @@ def cmd_query(args):
             '  query "how many PRs are open?"\n'
             '  query "what is the live tip?"\n'
             '  query "what is the mission state?"\n'
+            '  query "what is the highest priority?"\n'
             '  query "what does the ledger say?"\n'
             '  query "what are the standing laws?"'
         )
