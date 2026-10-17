@@ -1,0 +1,6 @@
+/merge — PR #2599
+
+Why: the #2597 incident showed why we check.
+Next: keep CI green.
+
+CI is green at aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa — merging per the five-condition law.
