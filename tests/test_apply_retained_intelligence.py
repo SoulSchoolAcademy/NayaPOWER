@@ -1,5 +1,10 @@
 """Tests for kernel/act_pipeline.apply_retained_intelligence — GAP-1 wire.
 
+LOCAL MIRROR tests (not production enforcement): they prove the Python mirror's
+unit-level memory-to-action binding. The production ADVISE path is the TS
+runtime supabase/functions/nayanet-act-runtime (see
+tests/act_learning_activation_seam.test.mjs).
+
 Proves retrieval actually reaches the action decision: ACTIVE records served
 from the MemoryStore bind to the authorized-apply seam; integrated policy
 lessons outrank retained memory; QUARANTINED records never reach action

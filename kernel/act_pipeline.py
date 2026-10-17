@@ -549,6 +549,17 @@ def apply_retained_intelligence(
 ) -> dict[str, Any]:
     """Bind retained memory to the authorized-apply decision seam.
 
+    LOCAL MIRROR — NOT THE PRODUCTION ADVISE PATH (labeled 2026-10-12, ACT lane):
+    the canonical, enforced ADVISE bridge is the TS runtime
+    supabase/functions/nayanet-act-runtime (registered entrypoint per
+    BRAIN/03-KERNEL/0003-RUNTIME-REGISTRY-V1.json), which carries the production
+    trust gates (owner_id DB filter, SELECTED_INTELLIGENCE_OWNER_MISMATCH reread
+    guard, advisory prescription allowlist). This Python seam mirrors the
+    memory-to-action binding at unit level for tests and as the LEARN four-arm
+    experiment instrument: it has ZERO production call sites and must never be
+    cited as production enforcement. Promoting it requires the production gates
+    (owner/trust-state/advisory-allowlist) this mirror deliberately omits.
+
     Canonical memory→action wire (learning-loop GAP-1): serves ACTIVE,
     integrity-verified records matching `situation` from the memory store —
     QUARANTINED records are never served, SUPERSEDED/DECAYED/ARCHIVED never
