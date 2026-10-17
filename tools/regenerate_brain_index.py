@@ -495,6 +495,22 @@ def normalize_md(text: str) -> str:
     return text
 
 
+def write_lf(path: Path, text: str) -> None:
+    """Write text to `path` with LF line endings on every platform.
+
+    Path.write_text() defaults to newline=None, which translates "\\n" to
+    os.linesep. On Windows that is CRLF, so regenerating the index layer
+    there rewrites every line of all three files: measured at ~8,400 changed
+    lines where the true change is ~15. The BRAIN-INDEX-FRESHNESS gate
+    normalizes line endings on both sides before comparing, so CI stays green
+    and only the contributor sees the damage — which is how this survived
+    nine separate "fix brain index drift" branches.
+
+    Requires Python 3.10+ for the newline= parameter. CI runs 3.11/3.12.
+    """
+    path.write_text(text, encoding="utf-8", newline="\n")
+
+
 def check(root: Path) -> int:
     files = inventory(root)
     counts = domain_counts(files)
@@ -588,15 +604,12 @@ def main() -> int:
 
     basis = basis_commit(root)
     today = datetime.date.today().isoformat()
-    (root / "BRAIN" / "REAL-TREE.json").write_text(
-        build_real_tree_json(basis, files, counts, today), encoding="utf-8"
-    )
-    (root / "BRAIN" / "REAL-TREE.md").write_text(
-        build_real_tree_md(basis, files, counts, today), encoding="utf-8"
-    )
-    (root / "BRAIN" / "NAYAPOWER-BRAIN-INDEX.json").write_text(
-        patch_brain_index(root, basis, counts, today), encoding="utf-8"
-    )
+    write_lf(root / "BRAIN" / "REAL-TREE.json",
+             build_real_tree_json(basis, files, counts, today))
+    write_lf(root / "BRAIN" / "REAL-TREE.md",
+             build_real_tree_md(basis, files, counts, today))
+    write_lf(root / "BRAIN" / "NAYAPOWER-BRAIN-INDEX.json",
+             patch_brain_index(root, basis, counts, today))
     print(f"regenerated index layer from basis {basis[:8]}: {len(files)} files, "
           f"{len(counts)-1} domains + ROOT")
     return 0

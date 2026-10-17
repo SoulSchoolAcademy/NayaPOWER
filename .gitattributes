@@ -1,0 +1,34 @@
+# Line-ending determinism for NayaPOWER.
+#
+# Why this exists
+# ---------------
+# CI runs on Linux; most seats work on Windows. Without this file, a Windows
+# checkout with core.autocrlf=true materialises CRLF in the working tree,
+# while the committed blobs are LF. Any tool that regenerates a committed
+# artifact then produces a diff that is almost entirely phantom line-ending
+# churn.
+#
+# This was measured, not assumed. Regenerating the brain index layer on
+# Windows produced ~8,400 changed lines across three files where the true
+# change was ~15. Nine separate branches named variations on "fix brain
+# index drift" failed before the cause was found.
+#
+# `text=auto` lets git detect binary files and leave them alone.
+# `eol=lf` pins text files to LF in the working tree on every platform, so
+# the working tree matches what CI checks out and what the committed blobs
+# store.
+#
+# Companion fix: tools/regenerate_brain_index.py writes through write_lf(),
+# which passes newline="\n" explicitly rather than relying on the platform
+# default. That fix makes the generator deterministic on its own; this file
+# stops the same drift arriving from the checkout side.
+#
+# Guarded by: tests/test_brain_index_line_endings.py
+
+* text=auto eol=lf
+
+# Generated index layer — gate-compared byte-for-byte against the committed
+# tree by BRAIN-INDEX-FRESHNESS. Never let these drift on line endings.
+BRAIN/REAL-TREE.json      text eol=lf
+BRAIN/REAL-TREE.md        text eol=lf
+BRAIN/NAYAPOWER-BRAIN-INDEX.json text eol=lf
